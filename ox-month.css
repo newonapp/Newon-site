@@ -957,16 +957,30 @@ html {
   text-align: center;
 }
 
-.ox-footer a {
-  color: var(--ox-muted);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  font-size: 0.9375rem;
-  transition: color 0.2s;
+.ox-footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
 }
 
-.ox-footer a:hover {
+.footer-icon-row--ox {
+  margin-bottom: 0.35rem;
+}
+
+.footer-icon-btn--ox {
+  color: var(--ox-muted);
+  background: var(--ox-surface);
+  border-color: var(--ox-border-hover);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 5%, transparent) inset;
+}
+
+.footer-icon-btn--ox:hover {
   color: var(--ox-text);
+  border-color: var(--ox-border-hover);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 8%, transparent) inset,
+    0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
 .ox-footer-meta {
@@ -975,8 +989,22 @@ html {
   color: var(--ox-faint);
 }
 
+.ox-footer-meta a {
+  color: var(--ox-muted);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+
+.ox-footer-meta a:hover {
+  color: var(--ox-text);
+}
+
 /* Newon의 앱 드롭다운 — OX 화면 테마 연동 */
 #ox-month .apps-flyout__trigger {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--ox-muted);
 }
 
@@ -1017,6 +1045,9 @@ html {
 }
 
 #ox-month .ox-mobile-menu .mobile-apps-drawer__summary {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--ox-muted);
 }
 
