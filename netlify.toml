@@ -1,5 +1,5 @@
 # Netlify: 저장소 연결 또는 이 폴더를 드래그하여 배포
-# https://app.netlify.com → Add new site → 배포 후 Domain settings에서 www.newon.app 연결
+# https://app.netlify.com → Add new site → 배포 후 Domain settings에서 newon.app 연결
 
 [build]
   publish = "."

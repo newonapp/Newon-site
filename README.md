@@ -1,6 +1,6 @@
 # Newon 웹사이트
 
-정적 사이트(`index.html`, `styles.css`, `ox-month.css`, `assets/**`)를 **GitHub Pages**에 올려 **www.newon.app**으로 연결하는 방법입니다.
+정적 사이트(`index.html`, `styles.css`, `ox-month.css`, `assets/**`)를 **GitHub Pages**에 올려 **newon.app**(루트 도메인)으로 연결하는 방법입니다.
 
 ## 1. 저장소에 올리기
 
@@ -23,23 +23,24 @@ git push -u origin main
 2. **Build and deployment** → **Source**: **GitHub Actions**
 3. `Deploy static site to GitHub Pages` 워크플로가 `main` 푸시 때 실행되는지 확인
 
-## 3. 도메인 연결 (www.newon.app)
+## 3. 도메인 연결 (newon.app)
 
-1. Settings → Pages → **Custom domain** 에 `www.newon.app` 입력 후 저장  
-   (저장소 루트의 `CNAME` 파일과 맞춰 두었습니다.)
-2. DNS(도메인 업체 패널) 예시:
+1. 저장소 **Settings → Pages → Custom domain** 에 **`newon.app`** 입력 후 저장  
+   (루트의 `CNAME` 파일 내용과 동일하게 맞춰 두었습니다.)
+2. DNS에서 **apex(`newon.app`)** 를 GitHub Pages로 붙입니다. 도메인 업체 패널 예시(A 레코드, 값은 [GitHub 문서](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain)와 동일한지 확인):
 
-   | 유형 | 이름 | 값 |
-   |------|------|-----|
-   | CNAME | www | `YOUR_USER.github.io` |
+   | 유형 | 이름(호스트) | 값 |
+   |------|----------------|-----|
+   | A | `@`(또는 비움) | `185.199.108.153` |
+   | A | `@` | `185.199.109.153` |
+   | A | `@` | `185.199.110.153` |
+   | A | `@` | `185.199.111.153` |
 
-   - 저장소가 **`USERNAME.github.io`** 인 **유저/조직 사이트**이면 CNAME 값은 `USERNAME.github.io` 입니다.
-   - **프로젝트 페이지**(`USERNAME.github.io/REPO/`)라도 커스텀 도메인을 쓰면 GitHub이 안내하는 대상(보통 `USERNAME.github.io`)을 넣으면 됩니다.
+   IPv6를 쓰는 업체라면 문서에 나온 **AAAA** 레코드도 추가합니다.
+3. DNS가 퍼진 뒤 GitHub에서 **Enforce HTTPS** 를 켤 수 있게 될 때까지 기다립니다.
 
-3. DNS 반영 후 GitHub에서 **Enforce HTTPS** 가능해질 때까지 기다립니다.
-
-**루트 도메인만 쓰는 경우(`newon.app`)**  
-업체에서 apex를 GitHub로 연결(A 레코드 또는 ALIAS)한 뒤, GitHub Pages 설정에서 필요하면 `www`로 리다이렉트를 켭니다. 루트만 쓰려면 `CNAME` 내용을 `newon.app`으로 바꾸고 DNS를 GitHub 도움말에 맞게 구성하면 됩니다.
+**`www.newon.app` 도 같이 쓰려면**  
+DNS에 `www` → **`YOUR_USER.github.io`** CNAME을 추가하고, Pages 설정에서 `www`를 추가(또는 GitHub이 안내하는 대로)하면 됩니다.
 
 ## 4. 배포에 포함되는 것
 
