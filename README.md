@@ -1,6 +1,6 @@
 # Newon 웹사이트
 
-저장소 **루트가 곧 배포 루트**입니다. CSS·이미지는 **`/styles.css`**, **`/assets/...`** 처럼 **사이트 최상위** 기준 경로를 씁니다. (`newon.app` 같은 커스텀 도메인 루트에 맞춤.) 로컬에서 `index.html`만 더블클릭(file://)으로 열면 경로가 깨질 수 있으니 `python3 -m http.server` 등으로 확인하세요.
+저장소 **루트가 곧 배포 루트**입니다. `index.html` 기준 **상대 경로**로 `styles.css`, `ox-month.css`, `assets/...` 를 불러옵니다. GitHub Pages **프로젝트 페이지**(`*.github.io/저장소명/`)와 **커스텀 도메인** 루트 모두에서 동일하게 동작합니다.
 
 ## 저장소 구조 (GitHub에 올리는 그대로)
 
@@ -10,6 +10,7 @@
 ├── styles.css
 ├── ox-month.css
 ├── CNAME
+├── .nojekyll
 ├── assets/
 │   ├── logo.png
 │   ├── feature-grid.png
@@ -27,7 +28,7 @@
 
 ```bash
 cd Newon
-git add index.html styles.css ox-month.css assets CNAME .github .gitignore README.md 업로드-체크리스트.txt
+git add index.html styles.css ox-month.css assets CNAME .nojekyll .github .gitignore README.md 업로드-체크리스트.txt
 # 선택: netlify.toml vercel.json
 git commit -m "Deploy site"
 git branch -M main
