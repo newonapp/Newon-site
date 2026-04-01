@@ -1,0 +1,21 @@
+Newon 사이트 업로드용 묶음
+============================
+
+이 폴더 안의 모든 파일·폴더를 웹 서버의 문서 루트에 그대로 올리세요.
+
+필수 구조 (이름·위치 유지):
+  index.html     ← 반드시 루트
+  styles.css
+  ox-month.css
+  assets/        ← 로고·OX 이미지 전부 여기
+  CNAME          ← GitHub Pages가 아니면 삭제해도 됨
+
+FTP/다른 호스팅: 이 폴더 내용을 public_html(또는 www)에 업로드.
+
+【한 번에 올리기】
+  프로젝트 루트에 생기는 newon-site.zip 파일 하나를
+  호스팅 파일관리자에서 업로드한 뒤 "압축 풀기" 하세요.
+  (풀었을 때 index.html 이 그 폴더에 바로 보여야 합니다.)
+
+소스 수정 후 다시 만들려면 프로젝트 루트에서:
+  ./scripts/prepare-publish.sh
