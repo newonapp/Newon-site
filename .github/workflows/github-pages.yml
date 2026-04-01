@@ -34,6 +34,7 @@ jobs:
           cp index.html styles.css ox-month.css _publish/
           cp -R assets _publish/assets
           if [ -f CNAME ]; then cp CNAME _publish/; fi
+          if [ -f .nojekyll ]; then cp .nojekyll _publish/; fi
 
       - name: Verify images (must exist at deploy root)
         run: |

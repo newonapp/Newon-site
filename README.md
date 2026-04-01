@@ -1,6 +1,6 @@
 # Newon 웹사이트
 
-저장소 **루트가 곧 배포 루트**입니다. (`index.html`, CSS, `assets/` — ZIP·`publish/` 복사본 없음)
+저장소 **루트가 곧 배포 루트**입니다. CSS·이미지는 **`/styles.css`**, **`/assets/...`** 처럼 **사이트 최상위** 기준 경로를 씁니다. (`newon.app` 같은 커스텀 도메인 루트에 맞춤.) 로컬에서 `index.html`만 더블클릭(file://)으로 열면 경로가 깨질 수 있으니 `python3 -m http.server` 등으로 확인하세요.
 
 ## 저장소 구조 (GitHub에 올리는 그대로)
 
