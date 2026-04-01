@@ -35,6 +35,28 @@ jobs:
           cp -R assets _publish/assets
           if [ -f CNAME ]; then cp CNAME _publish/; fi
 
+      - name: Verify images (must exist at deploy root)
+        run: |
+          set -euo pipefail
+          for rel in \
+            assets/logo.png \
+            assets/feature-grid.png \
+            assets/hero-promo.png \
+            assets/ox-month/logo.png \
+            assets/ox-month/step-add-habit.png \
+            assets/ox-month/step-daily-check.png \
+            assets/ox-month/step-stats.png
+          do
+            f="_publish/$rel"
+            if [[ ! -f "$f" ]]; then
+              echo "::error::Missing $f — check repo assets/ and git add"
+              exit 1
+            fi
+          done
+          test -f _publish/index.html
+          echo "OK — index.html + all PNGs in _publish"
+          ls -laR _publish/assets
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
