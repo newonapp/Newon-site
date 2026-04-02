@@ -2,29 +2,6 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <script>
-      (function () {
-        if (location.protocol === "file:") return;
-        // 이 HTML이 있는 폴더를 기준으로 assets/ 경로를 맞춤 (호스팅이 하위 경로여도 이미지 로드됨)
-        var p = location.pathname || "/";
-        var base;
-        if (p === "/" || p === "") {
-          base = "/";
-        } else if (p.endsWith("/")) {
-          base = p;
-        } else if (/\.html?$/i.test(p)) {
-          base = p.replace(/[^/]+$/, "") || "/";
-          if (!base.endsWith("/")) base += "/";
-        } else {
-          base = p.endsWith("/") ? p : p + "/";
-        }
-        var el = document.createElement("base");
-        el.href = base;
-        var cs = document.querySelector("meta[charset]");
-        if (cs) cs.insertAdjacentElement("afterend", el);
-        else document.head.insertBefore(el, document.head.firstChild);
-      })();
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Newon — 새로운 것을 켜다</title>
     <meta
@@ -40,9 +17,9 @@
       property="og:description"
       content="아이디어를 실행 상태로 바꾸는 앱 개발 스튜디오"
     />
-    <meta property="og:image" content="https://newon.app/assets/logo.png" />
+    <meta property="og:image" content="https://newon.app/logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="icon" type="image/png" href="logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -62,7 +39,7 @@
             <span class="brand-mark" aria-hidden="true">
               <img
                 class="brand-img"
-                src="assets/logo.png"
+                src="logo.png"
                 alt=""
                 width="40"
                 height="40"
@@ -92,7 +69,7 @@
               >
                 <a href="#ox-month" role="menuitem" class="apps-flyout__item">
                   <span class="apps-flyout__icon">
-                    <img src="assets/ox-month/logo.png" alt="" width="44" height="44" />
+                    <img src="ox-month-logo.png" alt="" width="44" height="44" />
                   </span>
                   <span class="apps-flyout__meta">
                     <span class="apps-flyout__name">OX MONTH</span>
@@ -118,7 +95,7 @@
             <summary class="mobile-apps-drawer__summary">Newon의 앱</summary>
             <a href="#ox-month" class="mobile-apps-drawer__item">
               <span class="mobile-apps-drawer__icon">
-                <img src="assets/ox-month/logo.png" alt="" width="36" height="36" />
+                <img src="ox-month-logo.png" alt="" width="36" height="36" />
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">OX MONTH</span>
@@ -137,7 +114,7 @@
               <div class="hero-logo-wrap">
                 <img
                   class="hero-logo-img"
-                  src="assets/logo.png"
+                  src="logo.png"
                   alt="Newon 로고. 윤곽선으로 된 대문자 N과 오른쪽 위의 흰 점"
                   width="200"
                   height="200"
@@ -279,7 +256,7 @@
           <div class="footer-brand">
             <img
               class="footer-brand-img"
-              src="assets/logo.png"
+              src="logo.png"
               alt=""
               width="32"
               height="32"
@@ -356,7 +333,7 @@
       <header class="ox-header">
         <div class="ox-container ox-header-inner">
           <a class="ox-brand" href="#ox-top" aria-label="OX MONTH 상단으로">
-            <img src="assets/ox-month/logo.png" alt="" width="36" height="36" />
+            <img src="ox-month-logo.png" alt="" width="36" height="36" />
             <span>OX MONTH</span>
           </a>
           <nav class="ox-nav ox-nav--apps-only" aria-label="Newon 앱">
@@ -386,7 +363,7 @@
                   aria-current="page"
                 >
                   <span class="apps-flyout__icon">
-                    <img src="assets/ox-month/logo.png" alt="" width="44" height="44" />
+                    <img src="ox-month-logo.png" alt="" width="44" height="44" />
                   </span>
                   <span class="apps-flyout__meta">
                     <span class="apps-flyout__name">OX MONTH</span>
@@ -425,7 +402,7 @@
             <summary class="mobile-apps-drawer__summary">Newon의 앱</summary>
             <a href="#ox-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
               <span class="mobile-apps-drawer__icon">
-                <img src="assets/ox-month/logo.png" alt="" width="36" height="36" />
+                <img src="ox-month-logo.png" alt="" width="36" height="36" />
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">OX MONTH</span>
@@ -456,7 +433,7 @@
               <div class="ox-hero-frame ox-hero-frame--logo">
                 <img
                   class="ox-hero-logo-img"
-                  src="assets/ox-month/logo.png"
+                  src="ox-month-logo.png"
                   alt="OX MONTH 앱 아이콘"
                   width="512"
                   height="512"
@@ -557,7 +534,7 @@
             </div>
             <div class="ox-visual-frame">
               <img
-                src="assets/feature-grid.png"
+                src="feature-grid.png"
                 alt="OX MONTH 월간 그리드 화면: 날짜별로 습관별 O와 X 표시"
                 width="1200"
                 height="900"
@@ -584,7 +561,7 @@
                 </div>
                 <div class="ox-step-media">
                   <img
-                    src="assets/ox-month/step-add-habit.png"
+                    src="step-add-habit.png"
                     alt="이번 달 습관 목록과 새 습관 입력 화면"
                     width="1200"
                     height="900"
@@ -599,7 +576,7 @@
                 </div>
                 <div class="ox-step-media">
                   <img
-                    src="assets/ox-month/step-daily-check.png"
+                    src="step-daily-check.png"
                     alt="오늘 날짜별 습관 목록에서 O와 X 버튼으로 체크하는 화면"
                     width="1200"
                     height="900"
@@ -614,7 +591,7 @@
                 </div>
                 <div class="ox-step-media">
                   <img
-                    src="assets/hero-promo.png"
+                    src="hero-promo.png"
                     alt="OX MONTH 앱 화면: 스마트폰에서 앱 이름과 로고가 보이는 런칭 이미지"
                     width="1200"
                     height="900"
@@ -629,7 +606,7 @@
                 </div>
                 <div class="ox-step-media">
                   <img
-                    src="assets/ox-month/step-stats.png"
+                    src="step-stats.png"
                     alt="이번 달 통계: O 비율과 습관별 요약 카드"
                     width="1200"
                     height="900"

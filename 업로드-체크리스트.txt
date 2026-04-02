@@ -1,0 +1,28 @@
+GitHub / 배포용 폴더 구조 (저장소 루트 = 사이트 루트)
+================================================
+
+아래가 프로젝트 루트에 그대로 있으면 됩니다. ZIP 없이 git push 로 올리세요.
+
+  index.html
+  styles.css
+  ox-month.css
+  .nojekyll            (빈 파일, 정적 사이트 힌트)
+  CNAME                 (커스텀 도메인용, 선택)
+
+  logo.png
+  ox-month-logo.png
+  feature-grid.png
+  hero-promo.png
+  step-add-habit.png
+  step-daily-check.png
+  step-stats.png
+
+브라우저 요청 URL(배포 루트가 사이트 루트일 때):
+  .../logo.png
+  .../ox-month-logo.png
+
+커밋 예시:
+
+  git add index.html styles.css ox-month.css *.png CNAME .nojekyll .github
+  git commit -m "Update site"
+  git push
