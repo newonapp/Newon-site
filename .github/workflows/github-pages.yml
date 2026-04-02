@@ -1,5 +1,5 @@
 # GitHub: Settings → Pages → Build: GitHub Actions
-# main 푸시 시 HTML·CSS·assets(이미지 포함)만 묶어서 배포합니다.
+# main 푸시 시 HTML·CSS·루트 PNG만 묶어서 배포합니다.
 
 name: Deploy static site to GitHub Pages
 
@@ -32,7 +32,17 @@ jobs:
           set -e
           mkdir -p _publish
           cp index.html styles.css ox-month.css _publish/
-          cp -R assets _publish/assets
+          for img in \
+            logo.png \
+            ox-month-logo.png \
+            feature-grid.png \
+            hero-promo.png \
+            step-add-habit.png \
+            step-daily-check.png \
+            step-stats.png
+          do
+            cp "$img" _publish/
+          done
           if [ -f CNAME ]; then cp CNAME _publish/; fi
           if [ -f .nojekyll ]; then cp .nojekyll _publish/; fi
 
@@ -40,23 +50,23 @@ jobs:
         run: |
           set -euo pipefail
           for rel in \
-            assets/logo.png \
-            assets/feature-grid.png \
-            assets/hero-promo.png \
-            assets/ox-month/logo.png \
-            assets/ox-month/step-add-habit.png \
-            assets/ox-month/step-daily-check.png \
-            assets/ox-month/step-stats.png
+            logo.png \
+            ox-month-logo.png \
+            feature-grid.png \
+            hero-promo.png \
+            step-add-habit.png \
+            step-daily-check.png \
+            step-stats.png
           do
             f="_publish/$rel"
             if [[ ! -f "$f" ]]; then
-              echo "::error::Missing $f — check repo assets/ and git add"
+              echo "::error::Missing $f — check repo root PNGs and git add"
               exit 1
             fi
           done
           test -f _publish/index.html
           echo "OK — index.html + all PNGs in _publish"
-          ls -laR _publish/assets
+          ls -la _publish/*.png
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
