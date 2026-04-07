@@ -1,5 +1,5 @@
 # GitHub: Settings → Pages → Build: GitHub Actions
-# main 푸시 시 HTML·CSS·루트 PNG만 묶어서 배포합니다.
+# main 푸시 시 빌드된 다국어 정적 사이트를 배포합니다.
 
 name: Deploy static site to GitHub Pages
 
@@ -27,11 +27,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build localized pages
+        run: node scripts/build-i18n.mjs
+
       - name: Assemble public site
         run: |
           set -e
           mkdir -p _publish
           cp index.html styles.css ox-month.css _publish/
+          for d in ko en ja es pt-br fr de hi id; do
+            cp -R "$d" _publish/
+          done
+          cp -R locales _publish/locales
+          if [ -d i18n-img ]; then cp -R i18n-img _publish/i18n-img; fi
           for img in \
             logo.png \
             ox-month-logo.png \
@@ -46,7 +59,7 @@ jobs:
           if [ -f CNAME ]; then cp CNAME _publish/; fi
           if [ -f .nojekyll ]; then cp .nojekyll _publish/; fi
 
-      - name: Verify images (must exist at deploy root)
+      - name: Verify site tree
         run: |
           set -euo pipefail
           for rel in \
@@ -60,12 +73,18 @@ jobs:
           do
             f="_publish/$rel"
             if [[ ! -f "$f" ]]; then
-              echo "::error::Missing $f — check repo root PNGs and git add"
+              echo "::error::Missing $f"
               exit 1
             fi
           done
           test -f _publish/index.html
-          echo "OK — index.html + all PNGs in _publish"
+          for lang in ko en ja es pt-br fr de hi id; do
+            test -f "_publish/$lang/index.html"
+            test -f "_publish/$lang/privacy/index.html"
+            test -f "_publish/$lang/terms/index.html"
+          done
+          test -f _publish/locales/en.json
+          echo "OK — localized site in _publish"
           ls -la _publish/*.png
 
       - name: Setup Pages

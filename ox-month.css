@@ -109,6 +109,7 @@ html {
   justify-content: space-between;
   min-height: var(--ox-header-h);
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .ox-brand {
