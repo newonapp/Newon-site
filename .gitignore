@@ -5,3 +5,5 @@ Thumbs.db
 .env.*
 *.local
 _publish
+upload-pack
+Newon-site-upload.zip
