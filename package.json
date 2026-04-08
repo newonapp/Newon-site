@@ -5,6 +5,7 @@
     "push": "bash scripts/push-to-github.sh",
     "upload": "bash scripts/push-to-github.sh",
     "publish": "node scripts/publish-site.mjs",
-    "ship": "node scripts/publish-site.mjs && bash scripts/push-to-github.sh"
+    "ship": "node scripts/publish-site.mjs && bash scripts/push-to-github.sh",
+    "push:first": "bash first-time-push.sh"
   }
 }
