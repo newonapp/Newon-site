@@ -1,0 +1,19 @@
+================================================================================
+  터미널에 "한 줄"로 붙여 넣기 (줄바꿈 없이 전체 복사 → 붙여넣기 → Enter)
+================================================================================
+
+■ 보통 올리기 (아래 한 줄 전체 복사)
+
+cd /Users/kyungnawon/Newon && git add -A && (git diff --cached --quiet || git commit -m "Site update") && git push origin main
+
+
+■ 위에서 push 가 안 되고 "unrelated histories" 같은 말이 나오면 — 한 번만 (아래 한 줄 전체 복사)
+
+cd /Users/kyungnawon/Newon && git push --force-with-lease origin main
+
+
+■ 더 쉬움: Finder에서 프로젝트 폴더 열고
+    올리기.command
+  더블클릭
+
+================================================================================

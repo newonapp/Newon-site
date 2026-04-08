@@ -49,6 +49,9 @@ const COPY_FILES = [
   "netlify.toml",
   "README.md",
   "올리는법-GitHubDesktop.txt",
+  "복사해서-터미널에-붙여넣기.txt",
+  "올리기.command",
+  "올리기-처음만-강제.command",
 ];
 
 function copyDir(src, dest) {
@@ -98,6 +101,11 @@ for (const name of COPY_DIRS) {
 
 for (const name of COPY_FILES) {
   copyFileIfExists(path.join(ROOT, name), path.join(DEST, name));
+}
+
+for (const cmd of ["올리기.command", "올리기-처음만-강제.command"]) {
+  const p = path.join(DEST, cmd);
+  if (fs.existsSync(p)) fs.chmodSync(p, 0o755);
 }
 
 // 3) 파일 목록
