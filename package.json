@@ -1,0 +1,10 @@
+{
+  "name": "newon-site",
+  "private": true,
+  "scripts": {
+    "push": "bash scripts/push-to-github.sh",
+    "upload": "bash scripts/push-to-github.sh",
+    "publish": "node scripts/publish-site.mjs",
+    "ship": "node scripts/publish-site.mjs && bash scripts/push-to-github.sh"
+  }
+}

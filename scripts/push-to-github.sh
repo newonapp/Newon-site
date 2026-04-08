@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # 저장소 변경분을 한 번에 커밋하고 현재 브랜치로 push 합니다.
-# 사용: ./scripts/push-to-github.sh
-#      ./scripts/push-to-github.sh "커밋 메시지"
+# 사용: ./upload-to-github.sh  또는  ./scripts/push-to-github.sh
+#       npm run push  또는  npm run upload
+#       ./upload-to-github.sh "커밋 메시지"
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
