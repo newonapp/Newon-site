@@ -109,6 +109,7 @@ html {
   justify-content: space-between;
   min-height: var(--ox-header-h);
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .ox-brand {
@@ -644,6 +645,61 @@ html {
 .ox-visual-frame img {
   width: 100%;
   vertical-align: middle;
+}
+
+/* Promo stills (OX MONTH marketing art, black backdrop) */
+.ox-showcase {
+  padding: var(--ox-section-y) 0;
+  border-top: 1px solid var(--ox-border);
+}
+
+.ox-showcase--tight {
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0;
+}
+
+.ox-showcase-figure {
+  margin: 0 auto;
+  max-width: 22rem;
+  border-radius: var(--ox-radius-lg);
+  border: 1px solid var(--ox-border);
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.4);
+}
+
+.ox-showcase-figure--wide {
+  max-width: min(40rem, 100%);
+}
+
+.ox-showcase-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.ox-showcase-dual {
+  border-top: 1px solid var(--ox-border);
+}
+
+.ox-showcase-dual__grid {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+@media (min-width: 900px) {
+  .ox-showcase-dual__grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.ox-showcase-dual .ox-showcase-figure {
+  max-width: none;
+}
+
+#ox-month[data-theme="light"] .ox-showcase-figure {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
 }
 
 /* Steps */
