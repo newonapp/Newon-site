@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newon</title>
+    <link rel="canonical" href="https://newon.app/en/" />
+    <meta http-equiv="refresh" content="0;url=/en/" />
+    <script>
+      (function () {
+        var supported = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
+        var raw = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+        var code;
+        if (raw === "pt-br" || raw === "pt_br") code = "pt-br";
+        else if (raw.indexOf("pt") === 0) code = "pt-br";
+        else code = raw.split(/[-_]/)[0];
+        if (supported.indexOf(code) === -1) code = "en";
+        var path = "/" + code + "/";
+        var h = location.hash || "";
+        if (location.pathname === "/" || location.pathname === "/index.html") {
+          location.replace(path + h);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <p style="font-family: system-ui, sans-serif; padding: 1.5rem; color: #333">
+      <a href="/en/">Continue to Newon (English)</a>
+    </p>
+  </body>
+</html>

@@ -21,6 +21,7 @@ const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
 
 const COPY_DIRS = [
   ".github",
+  ".vscode",
   "templates",
   "scripts",
   "locales",

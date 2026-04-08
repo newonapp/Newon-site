@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "GitHub에 올리기 (add → commit → push)",
+      "type": "shell",
+      "command": "git add -A && (git diff --cached --quiet || git commit -m \"Site update\") && git push origin main",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "focus": true,
+        "clear": false
+      }
+    }
+  ]
+}
