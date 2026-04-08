@@ -10,14 +10,19 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 const I18N_IMG = path.join(ROOT, "i18n-img");
+const OX_IMG = path.join(ROOT, "ox-img");
 
 /**
- * [[IMG:file.png]] → /i18n-img/{lang}/file.png if that file exists, else /file.png (site root)
+ * [[IMG:file.png]] → /i18n-img/{lang}/file.png if present, else /ox-img/file.png if present, else /file.png
  */
 function localizedImageUrl(langDir, filename) {
   const localized = path.join(I18N_IMG, langDir, filename);
   if (fs.existsSync(localized)) {
     return `/i18n-img/${langDir}/${filename}`;
+  }
+  const oxShared = path.join(OX_IMG, filename);
+  if (fs.existsSync(oxShared)) {
+    return `/ox-img/${filename}`;
   }
   return `/${filename}`;
 }

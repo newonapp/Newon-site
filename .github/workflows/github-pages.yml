@@ -1,5 +1,5 @@
 # GitHub: Settings → Pages → Build: GitHub Actions
-# main 푸시 시 빌드된 다국어 정적 사이트를 배포합니다.
+# main 푸시 시 빌드 + 정적 자산을 한 번에 묶어 GitHub Pages에 배포합니다.
 
 name: Deploy static site to GitHub Pages
 
@@ -32,60 +32,8 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Build localized pages
-        run: node scripts/build-i18n.mjs
-
-      - name: Assemble public site
-        run: |
-          set -e
-          mkdir -p _publish
-          cp index.html styles.css ox-month.css _publish/
-          for d in ko en ja es pt-br fr de hi id; do
-            cp -R "$d" _publish/
-          done
-          cp -R locales _publish/locales
-          if [ -d i18n-img ]; then cp -R i18n-img _publish/i18n-img; fi
-          for img in \
-            logo.png \
-            ox-month-logo.png \
-            feature-grid.png \
-            hero-promo.png \
-            step-add-habit.png \
-            step-daily-check.png \
-            step-stats.png
-          do
-            cp "$img" _publish/
-          done
-          if [ -f CNAME ]; then cp CNAME _publish/; fi
-          if [ -f .nojekyll ]; then cp .nojekyll _publish/; fi
-
-      - name: Verify site tree
-        run: |
-          set -euo pipefail
-          for rel in \
-            logo.png \
-            ox-month-logo.png \
-            feature-grid.png \
-            hero-promo.png \
-            step-add-habit.png \
-            step-daily-check.png \
-            step-stats.png
-          do
-            f="_publish/$rel"
-            if [[ ! -f "$f" ]]; then
-              echo "::error::Missing $f"
-              exit 1
-            fi
-          done
-          test -f _publish/index.html
-          for lang in ko en ja es pt-br fr de hi id; do
-            test -f "_publish/$lang/index.html"
-            test -f "_publish/$lang/privacy/index.html"
-            test -f "_publish/$lang/terms/index.html"
-          done
-          test -f _publish/locales/en.json
-          echo "OK — localized site in _publish"
-          ls -la _publish/*.png
+      - name: Build and assemble site
+        run: node scripts/publish-site.mjs
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
