@@ -21,6 +21,8 @@ const ROOT_ASSETS = [
   "ox-month.css",
   "logo.png",
   "ox-month-logo.png",
+  "subping-logo.png",
+  "subping-hero-mark.png",
   "feature-grid.png",
   "hero-promo.png",
   "step-add-habit.png",
@@ -84,6 +86,9 @@ function assemble() {
   const ox = path.join(ROOT, "ox-img");
   if (fs.existsSync(ox)) copyDir(ox, path.join(OUT, "ox-img"));
 
+  const spimg = path.join(ROOT, "subping-img");
+  if (fs.existsSync(spimg)) copyDir(spimg, path.join(OUT, "subping-img"));
+
   for (const png of ROOT_ASSETS.slice(3)) {
     copyFileIfExists(path.join(ROOT, png), path.join(OUT, png));
   }
@@ -96,8 +101,7 @@ function assemble() {
 function verify() {
   const required = [
     ...ROOT_ASSETS.map((f) => path.join(OUT, f)),
-    path.join(OUT, "ox-img", "month-grid.png"),
-    path.join(OUT, "ox-img", "social-proof.png"),
+    path.join(OUT, "ox-img", "ox-month-panels.png"),
     path.join(OUT, "locales", "en.json"),
   ];
   for (const lang of LANGS) {

@@ -26,11 +26,13 @@ const COPY_DIRS = [
   "scripts",
   "locales",
   "ox-img",
+  "subping-img",
   "i18n-img",
   ...LANGS,
 ];
 
 const COPY_FILES = [
+  ".gitignore",
   "index.html",
   "styles.css",
   "ox-month.css",
@@ -39,6 +41,8 @@ const COPY_FILES = [
   "first-time-push.sh",
   "logo.png",
   "ox-month-logo.png",
+  "subping-logo.png",
+  "subping-hero-mark.png",
   "feature-grid.png",
   "hero-promo.png",
   "step-add-habit.png",
@@ -50,6 +54,7 @@ const COPY_FILES = [
   "netlify.toml",
   "README.md",
   "올리는법-GitHubDesktop.txt",
+  "업로드-체크리스트.txt",
   "복사해서-터미널에-붙여넣기.txt",
   "올리기.command",
   "올리기-처음만-강제.command",

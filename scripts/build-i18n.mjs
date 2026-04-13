@@ -13,12 +13,49 @@ const I18N_IMG = path.join(ROOT, "i18n-img");
 const OX_IMG = path.join(ROOT, "ox-img");
 
 /**
- * [[IMG:file.png]] → /i18n-img/{lang}/file.png if present, else /ox-img/file.png if present, else /file.png
+ * [[IMG:file.png]] resolution:
+ * 1) ox-showcase-NN.png: KO uses i18n-img/ko/ (else ja); all other langs use i18n-img/en/ (English UI art).
+ * 2) /i18n-img/{lang}/file.png if present
+ * 3) Korean only: /subping-img/ before EN fallback
+ * 4) /i18n-img/en/file.png if present
+ * 5) /subping-img/file.png
+ * 6) /ox-img/file.png, else /file.png
  */
 function localizedImageUrl(langDir, filename) {
+  if (/^ox-showcase-\d+\.png$/.test(filename)) {
+    if (langDir === "ko") {
+      const koScroll = path.join(I18N_IMG, "ko", filename);
+      if (fs.existsSync(koScroll)) {
+        return `/i18n-img/ko/${filename}`;
+      }
+      const jaScroll = path.join(I18N_IMG, "ja", filename);
+      if (fs.existsSync(jaScroll)) {
+        return `/i18n-img/ja/${filename}`;
+      }
+    } else {
+      const enScroll = path.join(I18N_IMG, "en", filename);
+      if (fs.existsSync(enScroll)) {
+        return `/i18n-img/en/${filename}`;
+      }
+    }
+  }
   const localized = path.join(I18N_IMG, langDir, filename);
   if (fs.existsSync(localized)) {
     return `/i18n-img/${langDir}/${filename}`;
+  }
+  if (langDir === "ko") {
+    const subpingKo = path.join(ROOT, "subping-img", filename);
+    if (fs.existsSync(subpingKo)) {
+      return `/subping-img/${filename}`;
+    }
+  }
+  const english = path.join(I18N_IMG, "en", filename);
+  if (fs.existsSync(english)) {
+    return `/i18n-img/en/${filename}`;
+  }
+  const subpingShared = path.join(ROOT, "subping-img", filename);
+  if (fs.existsSync(subpingShared)) {
+    return `/subping-img/${filename}`;
   }
   const oxShared = path.join(OX_IMG, filename);
   if (fs.existsSync(oxShared)) {
@@ -30,6 +67,14 @@ function localizedImageUrl(langDir, filename) {
 function applyLocImgs(template, langDir) {
   return template.replace(/\[\[IMG:([^\]]+)\]\]/g, (_, filename) =>
     localizedImageUrl(langDir, filename.trim())
+  );
+}
+
+/** All locales: 9-up horizontal scroll; composite ox-month-panels strip only */
+function stripOxMonthShowcaseVariants(template, _langDir) {
+  return template.replace(
+    /<!-- OX_MONTH_PANELS_SINGLE_START -->[\s\S]*?<!-- OX_MONTH_PANELS_SINGLE_END -->\n?/,
+    ""
   );
 }
 
@@ -132,6 +177,7 @@ for (const { dir, file, htmlLang } of LANGS) {
   tpl = tpl.replace(/\{\{CANONICAL\}\}/g, baseUrl);
   tpl = applyTemplate(tpl, flat, flatEn);
   tpl = applyLocImgs(tpl, dir);
+  tpl = stripOxMonthShowcaseVariants(tpl, dir);
 
   const outDir = path.join(ROOT, dir);
   fs.mkdirSync(outDir, { recursive: true });
