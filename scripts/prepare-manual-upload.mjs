@@ -27,6 +27,7 @@ const COPY_DIRS = [
   "locales",
   "ox-img",
   "subping-img",
+  "aimoney-img",
   "i18n-img",
   ...LANGS,
 ];
@@ -42,6 +43,7 @@ const COPY_FILES = [
   "logo.png",
   "ox-month-logo.png",
   "subping-logo.png",
+  "aimoney-logo.png",
   "subping-hero-mark.png",
   "feature-grid.png",
   "hero-promo.png",

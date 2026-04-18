@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Newon: 로컬 미리보기 서버",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/serve-publish.mjs",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "newon-publish",
+      "console": "integratedTerminal"
+    }
+  ]
+}

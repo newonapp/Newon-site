@@ -6,7 +6,8 @@
     "ogDescription": "Studio yang membawa ide ke pengalaman yang tenang dan tahan lama.",
     "titleHome": "Newon — Nyalakan ide baru",
     "titleOx": "OX MONTH — Lacak kebiasaan dengan O/X",
-    "titleSubPing": "SubPing — Langganan & tagihan berulang dalam satu pandangan"
+    "titleSubPing": "SubPing — Langganan & tagihan berulang dalam satu pandangan",
+    "titleAimoney": "AIMONEY — Kelola uang yang cerdas dan nyaman"
   },
   "ui": {
     "language": "Bahasa",
@@ -41,6 +42,8 @@
     "appsLabel": "Aplikasi Newon",
     "oxDesc": "Kebiasaan · O/X · Log bulanan",
     "subpingDesc": "Langganan · pengingat · satu tempat",
+    "aimoneyDesc": "Kelola uang yang cerdas dan nyaman",
+    "mobileAimoneyHint": "Lihat AIMONEY",
     "mobileSummary": "Aplikasi Newon",
     "mobileOxHint": "Lihat perkenalan aplikasi",
     "mobileSubpingHint": "Lihat SubPing"
@@ -101,7 +104,7 @@
     "mobileSummary": "Aplikasi Newon",
     "mobileHint": "Aplikasi · layar ini",
     "mobileSubpingHint": "Lihat SubPing",
-    "badge": "Kebiasaan · Bulan · O/X",
+    "badge": "🚀 Kebiasaan · Bulan · O/X",
     "globalReachBadge": "41 negara · 9 bahasa",
     "globalReachSummary": "Jurnal kebiasaan yang dibuat untuk audiens global—sembilan bahasa tersedia sekarang, rencana meluas ke 41 negara secara bertahap.",
     "globalReachDescription": "OX MONTH cocok jika Anda ingin mencatat hari tanpa beban input berlebih. Aplikasi ini kini mendukung sembilan bahasa—Korea, Inggris, Jepang, Spanyol, Portugis (Brasil), Prancis, Jerman, Hindi, dan Indonesia—dan akan diluncurkan bertahap di 41 negara seiring listing toko serta lokalisasi siap.",

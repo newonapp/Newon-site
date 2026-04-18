@@ -22,6 +22,7 @@ const ROOT_ASSETS = [
   "logo.png",
   "ox-month-logo.png",
   "subping-logo.png",
+  "aimoney-logo.png",
   "subping-hero-mark.png",
   "feature-grid.png",
   "hero-promo.png",
@@ -88,6 +89,9 @@ function assemble() {
 
   const spimg = path.join(ROOT, "subping-img");
   if (fs.existsSync(spimg)) copyDir(spimg, path.join(OUT, "subping-img"));
+
+  const aiimg = path.join(ROOT, "aimoney-img");
+  if (fs.existsSync(aiimg)) copyDir(aiimg, path.join(OUT, "aimoney-img"));
 
   for (const png of ROOT_ASSETS.slice(3)) {
     copyFileIfExists(path.join(ROOT, png), path.join(OUT, png));

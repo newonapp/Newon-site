@@ -6,7 +6,8 @@
     "ogDescription": "Un estudio que lleva las ideas a productos serenos y duraderos.",
     "titleHome": "Newon — Enciende ideas nuevas",
     "titleOx": "OX MONTH — Registra hábitos con O/X",
-    "titleSubPing": "SubPing — Suscripciones y pagos recurrentes de un vistazo"
+    "titleSubPing": "SubPing — Suscripciones y pagos recurrentes de un vistazo",
+    "titleAimoney": "AIMONEY — Gestión del dinero inteligente y cómoda"
   },
   "ui": {
     "language": "Idioma",
@@ -41,6 +42,8 @@
     "appsLabel": "Apps de Newon",
     "oxDesc": "Hábitos · O/X · Registro mensual",
     "subpingDesc": "Suscripciones · avisos · en un solo lugar",
+    "aimoneyDesc": "Gestión del dinero inteligente y cómoda",
+    "mobileAimoneyHint": "Ver AIMONEY",
     "mobileSummary": "Apps de Newon",
     "mobileOxHint": "Ver la app",
     "mobileSubpingHint": "Ver SubPing"
@@ -101,7 +104,7 @@
     "mobileSummary": "Apps de Newon",
     "mobileHint": "App · esta pantalla",
     "mobileSubpingHint": "Ver SubPing",
-    "badge": "Hábitos · Mes · O/X",
+    "badge": "🚀 Hábitos · Mes · O/X",
     "globalReachBadge": "41 países · 9 idiomas",
     "globalReachSummary": "Un diario de hábitos pensado para muchas regiones: nueve idiomas ya disponibles y un despliegue planificado en 41 países.",
     "globalReachDescription": "OX MONTH está pensado para quien quiere registrar el día a día sin fricción. Hoy incluye nueve idiomas—coreano, inglés, japonés, español, portugués (Brasil), francés, alemán, hindi e indonesio—y avanzamos por fases hacia su disponibilidad en 41 países según vayan cerrándose tiendas y traducciones.",

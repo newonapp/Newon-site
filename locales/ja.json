@@ -6,7 +6,8 @@
     "ogDescription": "アイデアを形にするアプリスタジオ。",
     "titleHome": "Newon — 新しいアイデアをオンに",
     "titleOx": "OX MONTH — 習慣を O/X で記録",
-    "titleSubPing": "SubPing — サブスクと定期支払いを一目で"
+    "titleSubPing": "SubPing — サブスクと定期支払いを一目で",
+    "titleAimoney": "AIMONEY — スマートで手間のいらない家計管理"
   },
   "ui": {
     "language": "言語",
@@ -41,6 +42,8 @@
     "appsLabel": "Newon のアプリ",
     "oxDesc": "習慣 · O/X チェック · 月間記録",
     "subpingDesc": "サブスク · 通知 · まとめて管理",
+    "aimoneyDesc": "スマートで手間のいらない家計管理",
+    "mobileAimoneyHint": "AIMONEY を見る",
     "mobileSummary": "Newon のアプリ",
     "mobileOxHint": "アプリ紹介を見る",
     "mobileSubpingHint": "SubPing を見る"
@@ -101,7 +104,7 @@
     "mobileSummary": "Newon のアプリ",
     "mobileHint": "アプリ紹介 · この画面",
     "mobileSubpingHint": "SubPing を見る",
-    "badge": "習慣管理 · 月間記録 · O/X",
+    "badge": "🚀 習慣管理 · 月間記録 · O/X",
     "globalReachBadge": "41の国・地域を予定 · 9言語",
     "globalReachSummary": "日常の継続を支援するグローバル向けの習慣記録。41の国・地域への展開を段階的に進め、9言語に対応しています。",
     "globalReachDescription": "OX MONTHは、重い入力なしで毎日の実践を残したい人のためのアプリです。韓国語・英語・日本語・スペイン語・ポルトガル語（ブラジル）・フランス語・ドイツ語・ヒンディー語・インドネシア語の9言語に対応し、準備が整い次第、41の国・地域へ順次リリースしていく予定です。",
