@@ -1,31 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Newon</title>
-    <link rel="canonical" href="https://newon.app/en/" />
-    <meta http-equiv="refresh" content="0;url=/en/" />
-    <script>
-      (function () {
-        var supported = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
-        var raw = (navigator.language || navigator.userLanguage || "en").toLowerCase();
-        var code;
-        if (raw === "pt-br" || raw === "pt_br") code = "pt-br";
-        else if (raw.indexOf("pt") === 0) code = "pt-br";
-        else code = raw.split(/[-_]/)[0];
-        if (supported.indexOf(code) === -1) code = "en";
-        var path = "/" + code + "/";
-        var h = location.hash || "";
-        if (location.pathname === "/" || location.pathname === "/index.html") {
-          location.replace(path + h);
-        }
-      })();
-    </script>
+    <title>सेवा की शर्तें — Newon</title>
+    <meta name="description" content="Newon एक ऐप स्टूडियो है जो विचारों को वास्तविक उत्पादों में बदलता है — सरल, केंद्रित और टिकाऊ।" />
+    <link rel="canonical" href="https://newon.app/hi/terms/" />
+    <link rel="alternate" hreflang="ko" href="https://newon.app/ko/terms/" />
+    <link rel="alternate" hreflang="en" href="https://newon.app/en/terms/" />
+    <link rel="alternate" hreflang="ja" href="https://newon.app/ja/terms/" />
+    <link rel="alternate" hreflang="es" href="https://newon.app/es/terms/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://newon.app/pt-br/terms/" />
+    <link rel="alternate" hreflang="fr" href="https://newon.app/fr/terms/" />
+    <link rel="alternate" hreflang="de" href="https://newon.app/de/terms/" />
+    <link rel="alternate" hreflang="hi" href="https://newon.app/hi/terms/" />
+    <link rel="alternate" hreflang="id" href="https://newon.app/id/terms/" />
+    <link rel="alternate" hreflang="x-default" href="https://newon.app/en/terms/" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/ox-month.css" />
+    <style>
+      .legal-page { padding: calc(var(--header-h) + 2rem) 0 4rem; min-height: 70vh; }
+      .legal-inner { width: min(720px, calc(100% - var(--space) * 2)); margin: 0 auto; }
+      .legal-inner h1 { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 0.5rem; }
+      .legal-meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+      .legal-inner h2 { font-size: 1.1rem; margin: 2rem 0 0.75rem; }
+      .legal-inner p { margin: 0 0 1rem; color: var(--text-muted); }
+      .legal-back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); font-weight: 500; }
+      .legal-back:hover { color: var(--text); }
+    </style>
   </head>
   <body>
-    <p style="font-family: system-ui, sans-serif; padding: 1.5rem; color: #333">
-      <a href="/en/">Continue to Newon (English)</a>
-    </p>
+    <a class="skip-link" href="#legal-main">सामग्री पर जाएँ</a>
+    <header class="site-header">
+      <div class="container header-inner" style="justify-content: flex-start; gap: 1rem">
+        <a class="legal-back" href="../">होम पर वापस</a>
+      </div>
+    </header>
+    <main id="legal-main" class="legal-page">
+      <div class="legal-inner">
+        <h1>सेवा की शर्तें</h1>
+        <p class="legal-meta">अंतिम अपडेट: 1 मई 2026</p>
+        <div class="legal-body"><p>ये शर्तें Newon वेबसाइट और ऐप्स के उपयोग पर लागू हैं। उपयोग से सहमति मानी जाएगी।</p><h2>उपयोग</h2><p>कानूनी उपयोग; दुरुपयोग, रिवर्स इंजीनियरिंग या बाधा नहीं।</p><h2>खाता और सामग्री</h2><p>कुछ सुविधाओं के लिए खाता आवश्यक। आप अपनी गतिविधि के जिम्मेदार हैं।</p><h2>परिवर्तन</h2><p>हम सुविधाएँ बदल या बंद कर सकते हैं; उचित सूचना देंगे।</p><h2>अस्वीकरण</h2><p>सेवा "जैसी है" कानूनी सीमा तक।</p><h2>दायित्व सीमा</h2><p>कानूनी अधिकतम सीमा तक अप्रत्यक्ष हानि हेतु Newon उत्तरदायी नहीं।</p><h2>संपर्क</h2><p>newon@newon.app</p><p>शर्तें अपडेट हो सकती हैं।</p></div>
+      </div>
+    </main>
   </body>
 </html>

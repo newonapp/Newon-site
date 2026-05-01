@@ -2,11 +2,18 @@
   "name": "newon-site",
   "private": true,
   "scripts": {
+    "validate:sp": "node scripts/validate-sp-locales.mjs",
+    "merge:sp": "node scripts/merge-subping-locales.mjs",
     "올리기": "bash -c 'git add -A && (git diff --cached --quiet || git commit -m \"Site update\") && git push origin main'",
     "push": "bash scripts/push-to-github.sh",
     "upload": "bash scripts/push-to-github.sh",
     "publish": "node scripts/publish-site.mjs",
     "preview": "node scripts/publish-site.mjs && python3 -m http.server 8765 --directory _publish",
+    "미리보기": "node scripts/quick-preview.mjs",
+    "browse": "node scripts/quick-preview.mjs",
+    "serve": "node scripts/publish-site.mjs && node scripts/serve-publish.mjs",
+    "open:preview": "node scripts/open-simple-browser.mjs",
+    "open:cursor": "node scripts/open-simple-browser.mjs",
     "pack:upload": "node scripts/prepare-manual-upload.mjs",
     "ship": "node scripts/publish-site.mjs && bash scripts/push-to-github.sh",
     "push:first": "bash first-time-push.sh"

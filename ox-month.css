@@ -10,7 +10,7 @@
   --ox-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-#ox-month[data-theme="dark"] {
+:is(#ox-month,#subping-app)[data-theme="dark"] {
   --ox-bg: #050505;
   --ox-bg-soft: #0c0c0c;
   --ox-surface: #111111;
@@ -23,7 +23,7 @@
   --ox-hero-img-bg: rgba(255, 255, 255, 0.04);
 }
 
-#ox-month[data-theme="light"] {
+:is(#ox-month,#subping-app)[data-theme="light"] {
   --ox-bg: #fafafa;
   --ox-bg-soft: #f0f0f0;
   --ox-surface: #ffffff;
@@ -46,7 +46,7 @@ html {
   scroll-behavior: smooth;
 }
 
-#ox-month.ox-page {
+:is(#ox-month,#subping-app).ox-page {
   font-family: var(--ox-font);
   font-size: 1rem;
   line-height: 1.65;
@@ -268,7 +268,7 @@ html {
   pointer-events: none;
 }
 
-#ox-month[data-theme="light"] .ox-hero::before {
+:is(#ox-month,#subping-app)[data-theme="light"] .ox-hero::before {
   background: radial-gradient(ellipse 70% 45% at 50% -10%, rgba(0, 0, 0, 0.06), transparent);
 }
 
@@ -324,12 +324,12 @@ html {
   opacity: 0.88;
 }
 
-#ox-month[data-theme="dark"] .ox-badge--secondary {
+:is(#ox-month,#subping-app)[data-theme="dark"] .ox-badge--secondary {
   border-color: color-mix(in srgb, var(--ox-border) 85%, var(--ox-text) 15%);
   background: rgba(255, 255, 255, 0.03);
 }
 
-#ox-month[data-theme="light"] .ox-badge--secondary {
+:is(#ox-month,#subping-app)[data-theme="light"] .ox-badge--secondary {
   background: color-mix(in srgb, var(--ox-text) 4%, transparent);
 }
 
@@ -391,7 +391,7 @@ html {
   user-select: none;
 }
 
-#ox-month[data-theme="dark"] .ox-btn-soon {
+:is(#ox-month,#subping-app)[data-theme="dark"] .ox-btn-soon {
   background: rgba(255, 255, 255, 0.06);
 }
 
@@ -480,11 +480,11 @@ html {
   letter-spacing: -0.02em;
 }
 
-#ox-month[data-theme="dark"] .ox-store-badge {
+:is(#ox-month,#subping-app)[data-theme="dark"] .ox-store-badge {
   background: rgba(255, 255, 255, 0.06);
 }
 
-#ox-month[data-theme="dark"] .ox-store-badge:hover {
+:is(#ox-month,#subping-app)[data-theme="dark"] .ox-store-badge:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
@@ -500,7 +500,7 @@ html {
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset, 0 24px 56px rgba(0, 0, 0, 0.35);
 }
 
-#ox-month[data-theme="light"] .ox-hero-frame {
+:is(#ox-month,#subping-app)[data-theme="light"] .ox-hero-frame {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
 
@@ -527,13 +527,54 @@ html {
     0 18px 42px rgba(0, 0, 0, 0.35);
 }
 
-#ox-month[data-theme="light"] .ox-hero-frame--logo .ox-hero-logo-img {
+:is(#ox-month,#subping-app)[data-theme="light"] .ox-hero-frame--logo .ox-hero-logo-img {
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--ox-text) 8%, transparent),
     0 16px 36px rgba(0, 0, 0, 0.12);
 }
 
-/* 앱 소개 — 텍스트 중심(스크린샷은 아래 섹션에서 각 1회만 사용) */
+/* OX MONTH / SubPing — 앱 소개 아래 가로 스크롤 스크린샷 (각 썸네일 폭 = 히어로 로고와 동일 max-width) */
+:is(#ox-month, #subping-app) .sp-showcase-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0.25rem;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  padding-bottom: 0.35rem;
+  outline: none;
+}
+
+:is(#ox-month, #subping-app) .sp-showcase-scroll:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--ox-text) 45%, transparent);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+:is(#ox-month, #subping-app) .sp-showcase-scroll__track {
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+  padding: 0.15rem 0.25rem 0.35rem;
+}
+
+:is(#ox-month, #subping-app) .sp-showcase-scroll__item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: min(220px, 52vw);
+  margin: 0;
+}
+
+:is(#ox-month, #subping-app) .sp-showcase-scroll__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--ox-radius);
+  border: 1px solid color-mix(in srgb, var(--ox-border) 78%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset;
+}
+
+/* 앱 소개 — 텍스트 중심 */
 .ox-app-intro__inner {
   max-width: 40rem;
 }
@@ -593,6 +634,24 @@ html {
   color: var(--ox-text) !important;
   letter-spacing: -0.02em;
   line-height: 1.55 !important;
+}
+
+.ox-app-intro__legal {
+  margin: 1rem 0 0;
+  padding-top: 0.875rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.ox-app-intro__legal-link {
+  color: var(--ox-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+
+.ox-app-intro__legal-link:hover {
+  color: var(--ox-text);
 }
 
 .ox-br-desktop {
@@ -838,7 +897,7 @@ html {
   max-width: none;
 }
 
-#ox-month[data-theme="light"] .ox-showcase-figure {
+:is(#ox-month,#subping-app)[data-theme="light"] .ox-showcase-figure {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
 }
 
@@ -905,7 +964,7 @@ html {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
 }
 
-#ox-month[data-theme="light"] .ox-step-media {
+:is(#ox-month,#subping-app)[data-theme="light"] .ox-step-media {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.07);
 }
 
@@ -1016,7 +1075,7 @@ html {
     box-shadow 0.3s var(--ox-ease);
 }
 
-#ox-month[data-theme="light"] .ox-premium-card {
+:is(#ox-month,#subping-app)[data-theme="light"] .ox-premium-card {
   background: color-mix(in srgb, var(--ox-bg-soft) 70%, #fff);
 }
 
@@ -1025,7 +1084,7 @@ html {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
 }
 
-#ox-month[data-theme="light"] .ox-premium-card:hover {
+:is(#ox-month,#subping-app)[data-theme="light"] .ox-premium-card:hover {
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
 }
 
@@ -1055,39 +1114,6 @@ html {
   line-height: 1.55;
 }
 
-.ox-premium-audience {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.ox-premium-audience li {
-  position: relative;
-  margin: 0;
-  padding: 0.8rem 0 0.8rem 1.35rem;
-  font-size: 0.90625rem;
-  color: var(--ox-muted);
-  line-height: 1.55;
-  border-bottom: 1px solid var(--ox-border);
-}
-
-.ox-premium-audience li:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.ox-premium-audience li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 1.05rem;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--ox-text);
-  opacity: 0.35;
-}
-
 .ox-premium-highlight {
   text-align: center;
   padding: clamp(1.75rem, 4vw, 2.25rem) clamp(1rem, 3vw, 1.5rem);
@@ -1104,7 +1130,7 @@ html {
     0 24px 48px rgba(0, 0, 0, 0.18);
 }
 
-#ox-month[data-theme="light"] .ox-premium-highlight {
+:is(#ox-month,#subping-app)[data-theme="light"] .ox-premium-highlight {
   background: linear-gradient(165deg, #fff 0%, var(--ox-surface) 100%);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
@@ -1129,6 +1155,15 @@ html {
   letter-spacing: -0.03em;
   line-height: 1.38;
   color: var(--ox-text);
+}
+
+/* SubPing 마무리: OX MONTH 프리미엄 하이라이트 + ox-closing과 동일 타이포 */
+#subping-app .ox-premium-highlight__line,
+#subping-app .ox-closing p {
+  font-size: clamp(1.15rem, 2.75vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: -0.022em;
+  line-height: 1.45;
 }
 
 /* Closing */
@@ -1197,19 +1232,19 @@ html {
 }
 
 /* Newon의 앱 드롭다운 — OX 화면 테마 연동 */
-#ox-month .apps-flyout__trigger {
+:is(#ox-month,#subping-app) .apps-flyout__trigger {
   font-size: 1.0625rem;
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--ox-muted);
 }
 
-#ox-month .apps-flyout__trigger:hover,
-#ox-month .apps-flyout__trigger[aria-expanded="true"] {
+:is(#ox-month,#subping-app) .apps-flyout__trigger:hover,
+:is(#ox-month,#subping-app) .apps-flyout__trigger[aria-expanded="true"] {
   color: var(--ox-text);
 }
 
-#ox-month .apps-flyout__panel {
+:is(#ox-month,#subping-app) .apps-flyout__panel {
   background: color-mix(in srgb, var(--ox-surface) 92%, transparent);
   -webkit-backdrop-filter: blur(18px) saturate(1.15);
   backdrop-filter: blur(18px) saturate(1.15);
@@ -1219,58 +1254,58 @@ html {
     0 28px 56px rgba(0, 0, 0, 0.4);
 }
 
-#ox-month .apps-flyout__item:hover {
+:is(#ox-month,#subping-app) .apps-flyout__item:hover {
   background: color-mix(in srgb, var(--ox-text) 8%, transparent);
 }
 
-#ox-month .apps-flyout__item--current {
+:is(#ox-month,#subping-app) .apps-flyout__item--current {
   background: color-mix(in srgb, var(--ox-text) 6%, transparent);
   box-shadow: 0 0 0 1px var(--ox-border-hover) inset;
 }
 
-#ox-month .apps-flyout__icon {
+:is(#ox-month,#subping-app) .apps-flyout__icon {
   border-color: var(--ox-border);
 }
 
-#ox-month .apps-flyout__desc {
+:is(#ox-month,#subping-app) .apps-flyout__desc {
   color: var(--ox-faint);
 }
 
-#ox-month .ox-mobile-menu .mobile-apps-drawer {
+:is(#ox-month,#subping-app) .ox-mobile-menu .mobile-apps-drawer {
   border-color: var(--ox-border);
 }
 
-#ox-month .ox-mobile-menu .mobile-apps-drawer__summary {
+:is(#ox-month,#subping-app) .ox-mobile-menu .mobile-apps-drawer__summary {
   font-size: 1.0625rem;
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--ox-muted);
 }
 
-#ox-month .ox-mobile-menu .mobile-apps-drawer[open] .mobile-apps-drawer__summary {
+:is(#ox-month,#subping-app) .ox-mobile-menu .mobile-apps-drawer[open] .mobile-apps-drawer__summary {
   color: var(--ox-text);
 }
 
-#ox-month .ox-mobile-menu .mobile-apps-drawer__item {
+:is(#ox-month,#subping-app) .ox-mobile-menu .mobile-apps-drawer__item {
   border-color: var(--ox-border);
 }
 
-#ox-month .ox-mobile-menu .mobile-apps-drawer__hint {
+:is(#ox-month,#subping-app) .ox-mobile-menu .mobile-apps-drawer__hint {
   color: var(--ox-faint);
 }
 
-#ox-month .ox-mobile-menu .mobile-apps-drawer__item--current {
+:is(#ox-month,#subping-app) .ox-mobile-menu .mobile-apps-drawer__item--current {
   background: color-mix(in srgb, var(--ox-text) 5%, transparent);
 }
 
 /* OX 구간 스크롤 리빌 */
-#ox-month .ox-reveal-on-scroll:not(.is-visible) {
+:is(#ox-month,#subping-app) .ox-reveal-on-scroll:not(.is-visible) {
   opacity: 0;
   transform: translateY(28px);
   filter: blur(4px);
 }
 
-#ox-month .ox-reveal-on-scroll.is-visible {
+:is(#ox-month,#subping-app) .ox-reveal-on-scroll.is-visible {
   animation: ox-reveal-in 0.88s var(--ox-ease) both;
 }
 
@@ -1287,12 +1322,12 @@ html {
   }
 }
 
-#ox-month .ox-feature-card {
+:is(#ox-month,#subping-app) .ox-feature-card {
   position: relative;
   overflow: hidden;
 }
 
-#ox-month .ox-feature-card::after {
+:is(#ox-month,#subping-app) .ox-feature-card::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -1308,7 +1343,7 @@ html {
   pointer-events: none;
 }
 
-#ox-month .ox-feature-card:hover::after {
+:is(#ox-month,#subping-app) .ox-feature-card:hover::after {
   opacity: 1;
 }
 
@@ -1326,17 +1361,17 @@ html {
     box-shadow: none;
   }
 
-  #ox-month.ox-page {
+  :is(#ox-month,#subping-app).ox-page {
     transition: none;
   }
 
-  #ox-month .ox-reveal-on-scroll:not(.is-visible) {
+  :is(#ox-month,#subping-app) .ox-reveal-on-scroll:not(.is-visible) {
     opacity: 1;
     transform: none;
     filter: none;
   }
 
-  #ox-month .ox-reveal-on-scroll.is-visible {
+  :is(#ox-month,#subping-app) .ox-reveal-on-scroll.is-visible {
     animation: none;
   }
 
@@ -1345,6 +1380,147 @@ html {
   }
 
   .ox-premium-card:hover {
+    box-shadow: none;
+  }
+}
+
+/* SubPing detail */
+:is(#ox-month, #subping-app) .sp-intro-html p {
+  margin: 0 0 1rem;
+  color: var(--ox-muted);
+}
+
+:is(#ox-month, #subping-app) .sp-intro-html p:last-child {
+  margin-bottom: 0;
+}
+
+/* SubPing 앱 소개 — lead / closing + 본문 포인트(strong) */
+:is(#subping-app) .sp-intro-html p.ox-app-intro__lead {
+  color: var(--ox-text) !important;
+  font-size: 0.96875rem !important;
+}
+
+:is(#subping-app) .sp-intro-html p.ox-app-intro__lead strong {
+  font-weight: 700;
+}
+
+:is(#subping-app) .sp-intro-html p:not(.ox-app-intro__lead):not(.ox-app-intro__closing) strong {
+  color: var(--ox-text);
+  font-weight: 700;
+}
+
+:is(#subping-app) .sp-intro-html p.ox-app-intro__closing {
+  margin-top: 1.375rem !important;
+  padding-top: 1.125rem;
+  border-top: 1px solid var(--ox-border);
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: var(--ox-text) !important;
+  letter-spacing: -0.02em;
+  line-height: 1.55 !important;
+}
+
+:is(#subping-app) .sp-intro-html p.ox-app-intro__closing strong {
+  font-weight: 700;
+}
+
+:is(#ox-month, #subping-app) .ox-subtitle--sp {
+  font-size: 0.875rem;
+  opacity: 0.92;
+  margin: 0.2rem 0 0;
+}
+
+:is(#ox-month, #subping-app) .ox-container.narrow {
+  max-width: 720px;
+}
+
+/* 추천 섹션 제목: 프리미엄(✨)과 동일 타이포 + 🎯, 가운데 정렬 */
+:is(#ox-month, #subping-app) .ox-reco-head {
+  text-align: center;
+}
+
+/* 추천 제목만 살짝 위로 (OX MONTH · SubPing 공통) */
+:is(#ox-month, #subping-app) #sp-reco-title.ox-premium-heading,
+:is(#ox-month, #subping-app) #ox-reco-title.ox-premium-heading {
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* SubPing · OX MONTH — “추천” 블록: 2×2 그리드 + 카드 (co-build-list + OX 토큰) */
+:is(#ox-month, #subping-app) #sp-reco .co-build-list,
+:is(#ox-month, #subping-app) #ox-reco .co-build-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.875rem;
+  max-width: 28rem;
+  margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  :is(#ox-month, #subping-app) #sp-reco .co-build-list,
+  :is(#ox-month, #subping-app) #ox-reco .co-build-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    max-width: 48rem;
+  }
+
+  /* OX MONTH: 항목 3개 — 아래줄 한 칸 가운데(한 칸 너비와 동일) */
+  :is(#ox-month, #subping-app) #ox-reco .co-build-list li:nth-child(3):last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 100%;
+    max-width: calc((100% - 1rem) / 2);
+  }
+}
+
+:is(#ox-month, #subping-app) #sp-reco .co-build-list li,
+:is(#ox-month, #subping-app) #ox-reco .co-build-list li {
+  margin: 0;
+  padding: 1.25rem 1.1rem;
+  border-radius: var(--ox-radius);
+  border: 1px solid var(--ox-border);
+  background: color-mix(in srgb, var(--ox-bg) 55%, var(--ox-surface));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset;
+  font-size: 0.90625rem;
+  font-weight: 500;
+  color: var(--ox-muted);
+  line-height: 1.52;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 5.5rem;
+  transition:
+    border-color 0.3s var(--ox-ease),
+    transform 0.3s var(--ox-ease),
+    box-shadow 0.3s var(--ox-ease);
+}
+
+:is(#ox-month, #subping-app) #sp-reco .co-build-list li:hover,
+:is(#ox-month, #subping-app) #ox-reco .co-build-list li:hover {
+  border-color: var(--ox-border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+}
+
+:is(#ox-month, #subping-app)[data-theme="light"] #sp-reco .co-build-list li,
+:is(#ox-month, #subping-app)[data-theme="light"] #ox-reco .co-build-list li {
+  background: color-mix(in srgb, var(--ox-bg-soft) 70%, #fff);
+}
+
+:is(#ox-month, #subping-app)[data-theme="light"] #sp-reco .co-build-list li:hover,
+:is(#ox-month, #subping-app)[data-theme="light"] #ox-reco .co-build-list li:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(#ox-month, #subping-app) #sp-reco .co-build-list li:hover,
+  :is(#ox-month, #subping-app) #ox-reco .co-build-list li:hover {
+    transform: none;
     box-shadow: none;
   }
 }
