@@ -6,8 +6,7 @@
     "ogDescription": "Studio yang membawa ide ke pengalaman yang tenang dan tahan lama.",
     "titleHome": "Newon — Nyalakan ide baru",
     "titleOx": "OX MONTH — Lacak kebiasaan dengan O/X",
-    "titleSubPing": "SubPing — Langganan & tagihan berulang dalam satu pandangan",
-    "titleAimoney": "AIMONEY — Kelola uang yang cerdas dan nyaman"
+    "titleSubPing": "SubPing — Langganan & tagihan berulang dalam satu pandangan"
   },
   "ui": {
     "language": "Bahasa",
@@ -21,7 +20,8 @@
     "langHi": "हिन्दी",
     "langId": "Bahasa Indonesia",
     "backHome": "Kembali ke beranda",
-    "legalUpdated": "Terakhir diperbarui: April 2026"
+    "legalUpdated": "Terakhir diperbarui: 1 Mei 2026",
+    "privacyPolicyLink": "Kebijakan Privasi"
   },
   "common": {
     "skipToContent": "Lompat ke konten",
@@ -42,8 +42,6 @@
     "appsLabel": "Aplikasi Newon",
     "oxDesc": "Kebiasaan · O/X · Log bulanan",
     "subpingDesc": "Langganan · pengingat · satu tempat",
-    "aimoneyDesc": "Kelola uang yang cerdas dan nyaman",
-    "mobileAimoneyHint": "Lihat AIMONEY",
     "mobileSummary": "Aplikasi Newon",
     "mobileOxHint": "Lihat perkenalan aplikasi",
     "mobileSubpingHint": "Lihat SubPing"
@@ -193,13 +191,10 @@
     "premHiLine": "Lebih dari log — pengalaman yang mendorong perubahan",
     "closing": "Catatan kecil, perubahan besar",
     "footerInstagramAria": "Instagram Newon · tab baru",
-    "footerEmailAria": "Email newon@newon.app"
+    "footerEmailAria": "Email newon@newon.app",
+    "deleteAccountLink": "Hapus akun"
   },
   "legal": {
-    "privacy": {
-      "title": "Kebijakan privasi",
-      "bodyHtml": "<p>Kebijakan ini menjelaskan bagaimana Newon menangani informasi saat Anda menggunakan situs dan aplikasi.</p><h2>Informasi yang dikumpulkan</h2><p>Kami dapat menerima data yang Anda berikan (mis. email) dan data teknis terbatas untuk mengoperasikan layanan. Lihat setiap aplikasi untuk detail.</p><h2>Penggunaan</h2><p>Kami menggunakan informasi untuk menyediakan dan meningkatkan layanan, merespons pertanyaan, dan mematuhi hukum. Kami tidak menjual data pribadi.</p><h2>Penyimpanan & keamanan</h2><p>Data disimpan selama diperlukan dengan perlindungan wajar.</p><h2>Hak Anda</h2><p>Bergantung wilayah, Anda mungkin memiliki hak akses, koreksi, atau penghapusan. Hubungi email di bawah.</p><h2>Kontak</h2><p>newon@newon.app</p><p>Kebijakan dapat diperbarui sesekali.</p>"
-    },
     "terms": {
       "title": "Ketentuan layanan",
       "bodyHtml": "<p>Ketentuan ini mengatur penggunaan situs dan aplikasi Newon. Dengan menggunakan layanan, Anda menyetujui ketentuan.</p><h2>Penggunaan</h2><p>Anda harus menggunakan layanan secara sah dan tidak menyalahgunakan, merekayasa balik, atau mengganggu.</p><h2>Akun & konten</h2><p>Beberapa fitur memerlukan akun. Anda bertanggung jawab atas aktivitas Anda.</p><h2>Perubahan</h2><p>Kami dapat mengubah atau menghentikan fitur; kami akan memberi tahu bila wajar.</p><h2>Penyangkalan</h2><p>Layanan disediakan \"apa adanya\" sejauh diizinkan hukum.</p><h2>Batas tanggung jawab</h2><p>Sejauh diizinkan hukum, Newon tidak bertanggung jawab atas kerugian tidak langsung.</p><h2>Kontak</h2><p>newon@newon.app</p><p>Ketentuan dapat diperbarui.</p>"
@@ -276,6 +271,7 @@
     "closingHiKicker": "Dalam satu baris",
     "closingHiLine": "Kelola langganan — dan simpan lebih banyak uang.",
     "closingFoot": "Saat pengeluaran terlihat, dompet berubah.",
-    "footerRights": "© SubPing ·"
+    "footerRights": "© SubPing ·",
+    "deleteAccountLink": "Hapus akun"
   }
 }

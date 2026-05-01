@@ -150,8 +150,18 @@ a {
 }
 
 .footer-legal-links--ox {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   justify-content: center;
+}
+
+.ox-footer-delete-account {
+  margin: 0 0 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.ox-footer-delete-account .footer-legal {
+  font-size: 0.9rem;
 }
 
 .footer-legal {

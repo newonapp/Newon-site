@@ -22,7 +22,6 @@ const ROOT_ASSETS = [
   "logo.png",
   "ox-month-logo.png",
   "subping-logo.png",
-  "aimoney-logo.png",
   "subping-hero-mark.png",
   "feature-grid.png",
   "hero-promo.png",
@@ -79,6 +78,21 @@ function assemble() {
     copyDir(src, path.join(OUT, lang));
   }
 
+  const privacyRoot = path.join(ROOT, "privacy");
+  if (fs.existsSync(privacyRoot)) {
+    copyDir(privacyRoot, path.join(OUT, "privacy"));
+  }
+
+  const oxmonthRoot = path.join(ROOT, "oxmonth");
+  if (fs.existsSync(oxmonthRoot)) {
+    copyDir(oxmonthRoot, path.join(OUT, "oxmonth"));
+  }
+
+  const subpingRoot = path.join(ROOT, "subping");
+  if (fs.existsSync(subpingRoot)) {
+    copyDir(subpingRoot, path.join(OUT, "subping"));
+  }
+
   copyDir(path.join(ROOT, "locales"), path.join(OUT, "locales"));
 
   const i18n = path.join(ROOT, "i18n-img");
@@ -89,9 +103,6 @@ function assemble() {
 
   const spimg = path.join(ROOT, "subping-img");
   if (fs.existsSync(spimg)) copyDir(spimg, path.join(OUT, "subping-img"));
-
-  const aiimg = path.join(ROOT, "aimoney-img");
-  if (fs.existsSync(aiimg)) copyDir(aiimg, path.join(OUT, "aimoney-img"));
 
   for (const png of ROOT_ASSETS.slice(3)) {
     copyFileIfExists(path.join(ROOT, png), path.join(OUT, png));
@@ -115,6 +126,9 @@ function verify() {
       path.join(OUT, lang, "terms", "index.html")
     );
   }
+  required.push(path.join(OUT, "privacy", "index.html"));
+  required.push(path.join(OUT, "oxmonth", "delete-account", "index.html"));
+  required.push(path.join(OUT, "subping", "delete-account", "index.html"));
   for (const f of required) {
     if (!fs.existsSync(f)) {
       console.error(`publish-site verify: missing ${path.relative(ROOT, f)}`);

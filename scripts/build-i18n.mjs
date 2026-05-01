@@ -163,6 +163,35 @@ function hreflangBlockLegal(page) {
   return lines.join("\n");
 }
 
+/** Public unified policy URL (Korean body); links from Play / app pages. */
+function hreflangBlockPrivacyRoot() {
+  const base = "https://newon.app";
+  const lines = LANGS.map(
+    ({ dir: d, hreflang: h }) =>
+      `    <link rel="alternate" hreflang="${h}" href="${base}/${d}/privacy/" />`
+  );
+  lines.push(`    <link rel="alternate" hreflang="x-default" href="https://www.newon.app/privacy/" />`);
+  return lines.join("\n");
+}
+
+function writeRootPrivacyPage() {
+  const data = loadJson("ko.json");
+  const flat = flatten(data);
+  const flatEn = flatten(loadJson("en.json"));
+
+  let pt = fs.readFileSync(path.join(ROOT, "templates", "privacy.html"), "utf8");
+  pt = pt.replace(/\{\{LANG_DIR\}\}/g, "ko");
+  pt = pt.replace(/\{\{HTML_LANG\}\}/g, "ko");
+  pt = pt.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangBlockPrivacyRoot());
+  pt = pt.replace(/\{\{CANONICAL\}\}/g, "https://www.newon.app/privacy/");
+  pt = applyTemplate(pt, flat, flatEn);
+  pt = applyLocImgs(pt, "ko");
+
+  const pd = path.join(ROOT, "privacy");
+  fs.mkdirSync(pd, { recursive: true });
+  fs.writeFileSync(path.join(pd, "index.html"), pt);
+}
+
 const flatEn = flatten(loadJson("en.json"));
 
 for (const { dir, file, htmlLang } of LANGS) {
@@ -196,5 +225,39 @@ for (const { dir, file, htmlLang } of LANGS) {
     fs.writeFileSync(path.join(pd, "index.html"), pt);
   }
 }
+
+writeRootPrivacyPage();
+
+function writeOxmonthDeleteAccountPage() {
+  const data = loadJson("ko.json");
+  const flat = flatten(data);
+  const flatEn = flatten(loadJson("en.json"));
+
+  let pt = fs.readFileSync(path.join(ROOT, "templates", "oxmonth-delete-account.html"), "utf8");
+  pt = pt.replace(/\{\{HTML_LANG\}\}/g, "ko");
+  pt = pt.replace(/\{\{CANONICAL\}\}/g, "https://www.newon.app/oxmonth/delete-account/");
+  pt = applyTemplate(pt, flat, flatEn);
+  const outDir = path.join(ROOT, "oxmonth", "delete-account");
+  fs.mkdirSync(outDir, { recursive: true });
+  fs.writeFileSync(path.join(outDir, "index.html"), pt);
+}
+
+writeOxmonthDeleteAccountPage();
+
+function writeSubpingDeleteAccountPage() {
+  const data = loadJson("ko.json");
+  const flat = flatten(data);
+  const flatEn = flatten(loadJson("en.json"));
+
+  let pt = fs.readFileSync(path.join(ROOT, "templates", "subping-delete-account.html"), "utf8");
+  pt = pt.replace(/\{\{HTML_LANG\}\}/g, "ko");
+  pt = pt.replace(/\{\{CANONICAL\}\}/g, "https://www.newon.app/subping/delete-account/");
+  pt = applyTemplate(pt, flat, flatEn);
+  const outDir = path.join(ROOT, "subping", "delete-account");
+  fs.mkdirSync(outDir, { recursive: true });
+  fs.writeFileSync(path.join(outDir, "index.html"), pt);
+}
+
+writeSubpingDeleteAccountPage();
 
 console.log("i18n build OK:", LANGS.map((l) => l.dir).join(", "));

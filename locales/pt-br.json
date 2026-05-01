@@ -6,8 +6,7 @@
     "ogDescription": "Estúdio que leva ideias a experiências calmas e duradouras.",
     "titleHome": "Newon — Acenda ideias novas",
     "titleOx": "OX MONTH — Registre hábitos com O/X",
-    "titleSubPing": "SubPing — Assinaturas e pagos recorrentes em um só lugar",
-    "titleAimoney": "AIMONEY — Gestão de dinheiro inteligente e prática"
+    "titleSubPing": "SubPing — Assinaturas e pagos recorrentes em um só lugar"
   },
   "ui": {
     "language": "Idioma",
@@ -21,7 +20,8 @@
     "langHi": "हिन्दी",
     "langId": "Bahasa Indonesia",
     "backHome": "Voltar ao início",
-    "legalUpdated": "Última atualização: abril de 2026"
+    "legalUpdated": "Última atualização: 1º de maio de 2026",
+    "privacyPolicyLink": "Política de Privacidade"
   },
   "common": {
     "skipToContent": "Ir para o conteúdo",
@@ -42,8 +42,6 @@
     "appsLabel": "Apps da Newon",
     "oxDesc": "Hábitos · O/X · Registro mensal",
     "subpingDesc": "Assinaturas · lembretes · num só lugar",
-    "aimoneyDesc": "Gestão de dinheiro inteligente e prática",
-    "mobileAimoneyHint": "Ver AIMONEY",
     "mobileSummary": "Apps da Newon",
     "mobileOxHint": "Ver o app",
     "mobileSubpingHint": "Ver SubPing"
@@ -203,13 +201,10 @@
     "premHiLine": "Além do registro — experiência que impulsiona mudança",
     "closing": "Pequenos registros, grande mudança",
     "footerInstagramAria": "Instagram Newon · nova aba",
-    "footerEmailAria": "E-mail newon@newon.app"
+    "footerEmailAria": "E-mail newon@newon.app",
+    "deleteAccountLink": "Excluir conta"
   },
   "legal": {
-    "privacy": {
-      "title": "Política de privacidade",
-      "bodyHtml": "<p>Esta política descreve como a Newon trata informações quando você usa o site e os aplicativos.</p><h2>Informações que coletamos</h2><p>Podemos receber dados que você envia (por exemplo, e-mail) e dados técnicos limitados necessários para operar o serviço. Consulte cada app para detalhes.</p><h2>Uso</h2><p>Usamos as informações para fornecer e melhorar o serviço, responder a pedidos e cumprir a lei. Não vendemos dados pessoais.</p><h2>Retenção e segurança</h2><p>Retemos dados apenas pelo tempo necessário e aplicamos salvaguardas razoáveis.</p><h2>Seus direitos</h2><p>Conforme sua região, você pode ter direitos de acesso, correção ou exclusão. Contate o e-mail abaixo.</p><h2>Contato</h2><p>newon@newon.app</p><p>Podemos atualizar esta política ocasionalmente.</p>"
-    },
     "terms": {
       "title": "Termos de uso",
       "bodyHtml": "<p>Estes termos regem o uso do site e dos aplicativos Newon. Ao usar, você concorda com eles.</p><h2>Uso</h2><p>Você deve usar o serviço de forma lícita e não abusar, reverter engenharia ou interferir.</p><h2>Contas e conteúdo</h2><p>Alguns recursos exigem conta. Você é responsável pela sua atividade.</p><h2>Alterações e disponibilidade</h2><p>Podemos modificar ou descontinuar recursos; avisaremos quando razoável.</p><h2>Isenção</h2><p>O serviço é fornecido “como está”, na medida permitida pela lei.</p><h2>Limitação de responsabilidade</h2><p>Na medida máxima permitida, a Newon não se responsabiliza por danos indiretos.</p><h2>Contato</h2><p>newon@newon.app</p><p>Os termos podem ser atualizados.</p>"
@@ -286,6 +281,7 @@
     "closingHiKicker": "Em uma linha",
     "closingHiLine": "Gerencie assinaturas — e guarde mais dinheiro.",
     "closingFoot": "Quando o gasto fica visível, a carteira muda.",
-    "footerRights": "© SubPing ·"
+    "footerRights": "© SubPing ·",
+    "deleteAccountLink": "Excluir conta"
   }
 }

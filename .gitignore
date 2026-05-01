@@ -7,3 +7,8 @@ Thumbs.db
 _publish
 upload-pack
 Newon-site-upload.zip
+# 로컬 백업·수동 복사본 (GitHub에는 소스만; Actions가 빌드함)
+Newon-site-upload*/
+
+# 브라우저/도구가 만든 잘못된 경로(예: 로컬 서버 URL 붙여넣기)
+http:/
