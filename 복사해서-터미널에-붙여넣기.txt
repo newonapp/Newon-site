@@ -1,0 +1,32 @@
+================================================================================
+  GitHub에 한 번에 올리기 (명령 붙여넣기 실수 방지)
+================================================================================
+
+■ 방법 A — Cursor / 터미널 (프로젝트 폴더에서)
+
+   npm run 올리기
+
+■ 방법 B — 한 줄 복사 (줄바꿈 없이 전체 복사 → 붙여넣기 → Enter)
+
+   cd /Users/kyungnawon/Newon && git add -A && (git diff --cached --quiet || git commit -m "Site update") && git push origin main
+
+■ 방법 C — Cursor 에서 Run Task (이 방법 쓸 때)
+
+   1) 키보드:  ⌘ + Shift + P  (맥)
+   2) 입력창에:  Tasks: Run Task
+   3) 엔터 → 목록에서  「GitHub에 올리기 (add → commit → push)」 선택
+
+   (메뉴로는: 상단 Terminal → Run Task… 가 보이면 거기서도 동일)
+
+■ 방법 D — Finder
+
+   올리기.command 더블클릭
+
+
+■ push 가 안 되고 "unrelated histories" 가 나오면 — 한 번만 (한 줄 전체 복사)
+
+   cd /Users/kyungnawon/Newon && git push --force-with-lease origin main
+   
+   또는  올리기-처음만-강제.command  더블클릭
+
+================================================================================

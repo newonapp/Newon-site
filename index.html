@@ -1,52 +1,31 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Termos de uso — Newon</title>
-    <meta name="description" content="A Newon é um estúdio de apps que transforma ideias em produtos reais: simples, focados e feitos para durar." />
-    <link rel="canonical" href="https://newon.app/pt-br/terms/" />
-    <link rel="alternate" hreflang="ko" href="https://newon.app/ko/terms/" />
-    <link rel="alternate" hreflang="en" href="https://newon.app/en/terms/" />
-    <link rel="alternate" hreflang="ja" href="https://newon.app/ja/terms/" />
-    <link rel="alternate" hreflang="es" href="https://newon.app/es/terms/" />
-    <link rel="alternate" hreflang="pt-BR" href="https://newon.app/pt-br/terms/" />
-    <link rel="alternate" hreflang="fr" href="https://newon.app/fr/terms/" />
-    <link rel="alternate" hreflang="de" href="https://newon.app/de/terms/" />
-    <link rel="alternate" hreflang="hi" href="https://newon.app/hi/terms/" />
-    <link rel="alternate" hreflang="id" href="https://newon.app/id/terms/" />
-    <link rel="alternate" hreflang="x-default" href="https://newon.app/en/terms/" />
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/ox-month.css" />
-    <style>
-      .legal-page { padding: calc(var(--header-h) + 2rem) 0 4rem; min-height: 70vh; }
-      .legal-inner { width: min(720px, calc(100% - var(--space) * 2)); margin: 0 auto; }
-      .legal-inner h1 { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 0.5rem; }
-      .legal-meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
-      .legal-inner h2 { font-size: 1.1rem; margin: 2rem 0 0.75rem; }
-      .legal-inner p { margin: 0 0 1rem; color: var(--text-muted); }
-      .legal-back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); font-weight: 500; }
-      .legal-back:hover { color: var(--text); }
-    </style>
+    <title>Newon</title>
+    <link rel="canonical" href="https://newon.app/en/" />
+    <meta http-equiv="refresh" content="0;url=/en/" />
+    <script>
+      (function () {
+        var supported = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
+        var raw = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+        var code;
+        if (raw === "pt-br" || raw === "pt_br") code = "pt-br";
+        else if (raw.indexOf("pt") === 0) code = "pt-br";
+        else code = raw.split(/[-_]/)[0];
+        if (supported.indexOf(code) === -1) code = "en";
+        var path = "/" + code + "/";
+        var h = location.hash || "";
+        if (location.pathname === "/" || location.pathname === "/index.html") {
+          location.replace(path + h);
+        }
+      })();
+    </script>
   </head>
   <body>
-    <a class="skip-link" href="#legal-main">Ir para o conteúdo</a>
-    <header class="site-header">
-      <div class="container header-inner" style="justify-content: flex-start; gap: 1rem">
-        <a class="legal-back" href="../">Voltar ao início</a>
-      </div>
-    </header>
-    <main id="legal-main" class="legal-page">
-      <div class="legal-inner">
-        <h1>Termos de uso</h1>
-        <p class="legal-meta">Última atualização: abril de 2026</p>
-        <div class="legal-body"><p>Estes termos regem o uso do site e dos aplicativos Newon. Ao usar, você concorda com eles.</p><h2>Uso</h2><p>Você deve usar o serviço de forma lícita e não abusar, reverter engenharia ou interferir.</p><h2>Contas e conteúdo</h2><p>Alguns recursos exigem conta. Você é responsável pela sua atividade.</p><h2>Alterações e disponibilidade</h2><p>Podemos modificar ou descontinuar recursos; avisaremos quando razoável.</p><h2>Isenção</h2><p>O serviço é fornecido “como está”, na medida permitida pela lei.</p><h2>Limitação de responsabilidade</h2><p>Na medida máxima permitida, a Newon não se responsabiliza por danos indiretos.</p><h2>Contato</h2><p>newon@newon.app</p><p>Os termos podem ser atualizados.</p></div>
-      </div>
-    </main>
+    <p style="font-family: system-ui, sans-serif; padding: 1.5rem; color: #333">
+      <a href="/en/">Continue to Newon (English)</a>
+    </p>
   </body>
 </html>

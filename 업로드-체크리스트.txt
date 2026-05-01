@@ -1,14 +1,15 @@
-GitHub / 배포용 폴더 구조 (저장소 루트 = 사이트 루트)
-================================================
+GitHub 수동 업로드 / Pages 루트에 둘 것 (ZIP 말고, 폴더 구조 그대로)
+=========================================================
 
-아래가 프로젝트 루트에 그대로 있으면 됩니다. ZIP 없이 git push 로 올리세요.
+① 맥에서 먼저:  cd Newon  →  npm run publish
+② Finder에서 열 폴더:  _publish  (이 안의 것만 GitHub 루트에 올림)
 
+루트 파일:
   index.html
   styles.css
   ox-month.css
-  .nojekyll            (빈 파일, 정적 사이트 힌트)
-  CNAME                 (커스텀 도메인용, 선택)
-
+  .nojekyll
+  CNAME
   logo.png
   ox-month-logo.png
   feature-grid.png
@@ -17,12 +18,17 @@ GitHub / 배포용 폴더 구조 (저장소 루트 = 사이트 루트)
   step-daily-check.png
   step-stats.png
 
-브라우저 요청 URL(배포 루트가 사이트 루트일 때):
-  .../logo.png
-  .../ox-month-logo.png
+반드시 같이 있어야 하는 폴더 (하나라도 빠지면 페이지 깨짐):
+  ko/     en/     ja/     es/     pt-br/     fr/     de/     hi/     id/
+  locales/
+  ox-img/
+  i18n-img/
 
-커밋 예시:
+각 언어 폴더 안에는 보통: index.html, privacy/index.html, terms/index.html
 
-  git add index.html styles.css ox-month.css *.png CNAME .nojekyll .github
-  git commit -m "Update site"
-  git push
+올리지 않아도 됨 (사이트 표시와 무관):
+  *.zip, upload-to-github.sh, UPLOAD.txt, netlify.toml, vercel.json (Pages만 쓸 때)
+
+GitHub Actions로 배포할 때:
+  워크플로는 저장소 전체를 받은 뒤  node scripts/publish-site.mjs  로 위와 같은 _publish 를 만들어 Pages에 올립니다.
+  웹에서 루트 파일 몇 개만 올리는 것으로는 대체되지 않습니다.

@@ -289,6 +289,18 @@ html {
   max-width: 34rem;
 }
 
+.ox-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.875rem;
+}
+
+.ox-badge-row .ox-badge {
+  margin-bottom: 0;
+}
+
 .ox-badge {
   display: inline-flex;
   align-items: center;
@@ -301,6 +313,24 @@ html {
   color: var(--ox-muted);
   margin-bottom: 0.875rem;
   letter-spacing: 0.06em;
+}
+
+.ox-badge--secondary {
+  border-style: dashed;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ox-text);
+  opacity: 0.88;
+}
+
+#ox-month[data-theme="dark"] .ox-badge--secondary {
+  border-color: color-mix(in srgb, var(--ox-border) 85%, var(--ox-text) 15%);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+#ox-month[data-theme="light"] .ox-badge--secondary {
+  background: color-mix(in srgb, var(--ox-text) 4%, transparent);
 }
 
 .ox-badge-dot {
@@ -320,12 +350,21 @@ html {
 }
 
 .ox-subtitle {
-  margin: 0 0 0.875rem;
+  margin: 0 0 0.5rem;
   font-size: clamp(1.05rem, 2.3vw, 1.28rem);
   font-weight: 500;
   color: var(--ox-muted);
   line-height: 1.55;
   white-space: pre-line;
+}
+
+.ox-hero-reach-summary {
+  margin: 0 0 1rem;
+  font-size: clamp(0.88rem, 1.9vw, 0.98rem);
+  font-weight: 500;
+  color: var(--ox-faint);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
 }
 
 .ox-desc {
@@ -354,6 +393,99 @@ html {
 
 #ox-month[data-theme="dark"] .ox-btn-soon {
   background: rgba(255, 255, 255, 0.06);
+}
+
+.ox-store-release {
+  margin: 0;
+}
+
+.ox-store-release__label {
+  margin: 0 0 0.875rem;
+  font-size: clamp(0.95rem, 2.1vw, 1.05rem);
+  font-weight: 600;
+  color: var(--ox-text);
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+}
+
+.ox-store-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  align-items: stretch;
+}
+
+.ox-store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.9rem 0.5rem 0.65rem;
+  border-radius: 12px;
+  border: 1px solid var(--ox-border-hover);
+  background: var(--ox-surface);
+  color: var(--ox-text);
+  text-decoration: none;
+  min-height: 3.25rem;
+  box-sizing: border-box;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.12s ease;
+}
+
+.ox-store-badge:hover {
+  border-color: color-mix(in srgb, var(--ox-text) 28%, var(--ox-border-hover));
+  background: color-mix(in srgb, var(--ox-text) 7%, var(--ox-surface));
+}
+
+.ox-store-badge:active {
+  transform: scale(0.98);
+}
+
+.ox-store-badge:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--ox-text) 55%, transparent);
+  outline-offset: 2px;
+}
+
+.ox-store-badge__icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+.ox-store-badge__icon--play {
+  margin: -2px 0;
+}
+
+.ox-store-badge__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.0625rem;
+  line-height: 1.12;
+  text-align: left;
+}
+
+.ox-store-badge__small {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ox-muted);
+}
+
+.ox-store-badge__name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+#ox-month[data-theme="dark"] .ox-store-badge {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+#ox-month[data-theme="dark"] .ox-store-badge:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .ox-hero-visual {
@@ -442,6 +574,14 @@ html {
 
 .ox-app-intro__lead strong {
   font-weight: 700;
+}
+
+.ox-app-intro__reach {
+  margin: 0;
+  padding: 0.875rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--ox-muted);
 }
 
 .ox-app-intro__closing {

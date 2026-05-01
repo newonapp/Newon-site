@@ -1,0 +1,14 @@
+{
+  "name": "newon-site",
+  "private": true,
+  "scripts": {
+    "올리기": "bash -c 'git add -A && (git diff --cached --quiet || git commit -m \"Site update\") && git push origin main'",
+    "push": "bash scripts/push-to-github.sh",
+    "upload": "bash scripts/push-to-github.sh",
+    "publish": "node scripts/publish-site.mjs",
+    "preview": "node scripts/publish-site.mjs && python3 -m http.server 8765 --directory _publish",
+    "pack:upload": "node scripts/prepare-manual-upload.mjs",
+    "ship": "node scripts/publish-site.mjs && bash scripts/push-to-github.sh",
+    "push:first": "bash first-time-push.sh"
+  }
+}

@@ -1,0 +1,143 @@
+>>> 하나씩 웹 업로드 하지 마세요. GitHub Desktop 으로 한 번에 올리세요.
+>>> 프로젝트 폴더의  올리는법-GitHubDesktop.txt  참고 (이 pack 안에도 복사됨).
+
+=== GitHub에 올릴 파일 목록 (upload-pack 기준) ===
+총 122개 파일
+
+.github/workflows/github-pages.yml
+.gitignore
+.nojekyll
+.vscode/tasks.json
+CNAME
+README.md
+de/index.html
+de/privacy/index.html
+de/terms/index.html
+en/index.html
+en/privacy/index.html
+en/terms/index.html
+es/index.html
+es/privacy/index.html
+es/terms/index.html
+feature-grid.png
+first-time-push.sh
+fr/index.html
+fr/privacy/index.html
+fr/terms/index.html
+hero-promo.png
+hi/index.html
+hi/privacy/index.html
+hi/terms/index.html
+i18n-img/README.txt
+i18n-img/en/feature-grid.png
+i18n-img/en/hero-promo.png
+i18n-img/en/step-add-habit.png
+i18n-img/en/step-daily-check.png
+i18n-img/en/step-stats.png
+i18n-img/es/ai-coach.png
+i18n-img/es/daily-check.png
+i18n-img/es/feature-lines.png
+i18n-img/es/habit-setup.png
+i18n-img/es/month-grid.png
+i18n-img/es/month-stats.png
+i18n-img/es/notifications.png
+i18n-img/es/social-proof.png
+i18n-img/es/widgets.png
+i18n-img/ja/ai-coach.png
+i18n-img/ja/daily-check.png
+i18n-img/ja/feature-lines.png
+i18n-img/ja/habit-setup.png
+i18n-img/ja/month-grid.png
+i18n-img/ja/month-stats.png
+i18n-img/ja/notifications.png
+i18n-img/ja/social-proof.png
+i18n-img/ja/widgets.png
+i18n-img/ko/ai-coach.png
+i18n-img/ko/daily-check.png
+i18n-img/ko/feature-grid.png
+i18n-img/ko/feature-lines.png
+i18n-img/ko/habit-setup.png
+i18n-img/ko/month-grid.png
+i18n-img/ko/month-stats.png
+i18n-img/ko/notifications.png
+i18n-img/ko/social-proof.png
+i18n-img/ko/widgets.png
+i18n-img/pt-br/ai-coach.png
+i18n-img/pt-br/daily-check.png
+i18n-img/pt-br/feature-lines.png
+i18n-img/pt-br/habit-setup.png
+i18n-img/pt-br/month-grid.png
+i18n-img/pt-br/month-stats.png
+i18n-img/pt-br/notifications.png
+i18n-img/pt-br/social-proof.png
+i18n-img/pt-br/widgets.png
+id/index.html
+id/privacy/index.html
+id/terms/index.html
+index.html
+ja/index.html
+ja/privacy/index.html
+ja/terms/index.html
+ko/index.html
+ko/privacy/index.html
+ko/terms/index.html
+locales/appCommonInfo.i18n.json
+locales/de.json
+locales/en.json
+locales/es.json
+locales/fr.json
+locales/hi.json
+locales/id.json
+locales/ja.json
+locales/ko.json
+locales/pt-br.json
+logo.png
+netlify.toml
+ox-img/ai-coach.png
+ox-img/daily-check.png
+ox-img/feature-lines.png
+ox-img/habit-setup.png
+ox-img/month-grid.png
+ox-img/month-stats.png
+ox-img/notifications.png
+ox-img/social-proof.png
+ox-img/widgets.png
+ox-month-logo.png
+ox-month.css
+package.json
+pt-br/index.html
+pt-br/privacy/index.html
+pt-br/terms/index.html
+scripts/build-i18n.mjs
+scripts/prepare-manual-upload.mjs
+scripts/publish-site.mjs
+scripts/push-to-github.sh
+step-add-habit.png
+step-daily-check.png
+step-stats.png
+styles.css
+templates/index.html
+templates/privacy.html
+templates/terms.html
+upload-to-github.sh
+vercel.json
+복사해서-터미널에-붙여넣기.txt
+업로드-체크리스트.txt
+올리기-처음만-강제.command
+올리기.command
+올리는법-GitHubDesktop.txt
+
+=== 한 번에 올리기 (추천) ===
+1. 프로젝트 폴더에 생긴  Newon-site-upload.zip  더블클릭 → 압축 풀림
+2. 풀린 폴더(이름이 길면 맨 안쪽까지 들어가서) .github, index.html 보이는 그 폴더에서
+   Cmd+A (전체 선택)
+3. GitHub → newonapp/Newon-site → Add file → Upload files
+4. 선택한 것을 통째로 드래그 → 한 번에 올라감 (GitHub 웹 제한으로 실패하면 아래 참고)
+
+=== zip 없이 ===
+Finder에서 upload-pack 열고 → Cmd+A → Upload files 로 드래그
+
+=== 웹에서 막히면 ===
+GitHub Desktop 설치 → 저장소 클론 후 upload-pack 내용을 폴더에 붙여넣기 → Commit 전체 → Push
+
+5. Settings → Pages → Source: GitHub Actions

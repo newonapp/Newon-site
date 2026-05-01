@@ -2,24 +2,28 @@
 
 저장소 **루트가 곧 배포 루트**입니다. `index.html` 기준 **상대 경로**로 `styles.css`, `ox-month.css`, 루트의 `*.png`(로고·스크린샷)를 불러옵니다. GitHub Pages **프로젝트 페이지**(`*.github.io/저장소명/`)와 **커스텀 도메인** 루트 모두에서 동일하게 동작합니다.
 
-## 저장소 구조 (GitHub에 올리는 그대로)
+## 배포에 실제로 올라가는 것 (`npm run publish` → `_publish/`)
+
+GitHub **수동 업로드**를 할 때는 `_publish` **안의 전부**(아래 폴더 포함)를 저장소 루트에 두면 됩니다. 루트 HTML·PNG만으로는 다국어 페이지가 동작하지 않습니다.
+
+```text
+_publish/   (Pages 루트와 동일하게 맞출 때)
+├── index.html, styles.css, ox-month.css, .nojekyll, CNAME
+├── *.png (로고·스텝 이미지 등)
+├── ko/ en/ ja/ es/ pt-br/ fr/ de/ hi/ id/
+├── locales/
+├── ox-img/
+└── i18n-img/
+```
+
+## 소스 저장소 예시 (git push 하는 경우)
 
 ```text
 .
-├── index.html
-├── styles.css
-├── ox-month.css
-├── CNAME
-├── .nojekyll
-├── logo.png
-├── ox-month-logo.png
-├── feature-grid.png
-├── hero-promo.png
-├── step-add-habit.png
-├── step-daily-check.png
-├── step-stats.png
+├── scripts/ templates/ locales/ ox-img/ i18n-img/
+├── ko/ en/ … (빌드 생성물)
 ├── .github/workflows/github-pages.yml
-└── … (README, .gitignore, 업로드-체크리스트.txt 등 메타)
+└── …
 ```
 
 ## 1. GitHub에 올리기
@@ -41,18 +45,15 @@ git push -u origin main
 
 1. 저장소 **Settings → Pages**  
 2. **Source**: **GitHub Actions**  
-3. `main` 푸시 시 워크플로가 `index.html`, CSS, **위 PNG 목록**을 Pages에 배포합니다.
+3. `main` 푸시 시 워크플로가 `node scripts/publish-site.mjs`로 `_publish` 전체를 만든 뒤, 그 결과(언어 폴더·`locales`·이미지 폴더 포함)를 Pages에 배포합니다.
 
 ## 3. 도메인 (newon.app)
 
 **Settings → Pages → Custom domain** 에 `newon.app` 입력. DNS A 레코드는 [GitHub 문서](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain) 참고.
 
-## 4. 워크플로가 올리는 것
+## 4. 워크플로 / 수동 업로드 공통
 
-- `index.html`, `styles.css`, `ox-month.css`
-- `logo.png`, `ox-month-logo.png`, `feature-grid.png`, `hero-promo.png`, `step-add-habit.png`, `step-daily-check.png`, `step-stats.png`
-- `CNAME`
-
-`netlify.toml`, `vercel.json` 은 워크플로 아티팩트에 포함하지 않습니다.
+- **한 줄 요약:** `_publish`와 같은 구조가 Pages 루트에 있어야 합니다 (위 트리 참고).
+- 워크플로 아티팩트는 `_publish` 디렉터리 전체이며, 루트의 `netlify.toml`·`vercel.json`은 Pages 배포 패키지에 넣지 않습니다.
 
 빠짐 방지: **`업로드-체크리스트.txt`** 참고.
