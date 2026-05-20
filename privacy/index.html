@@ -37,12 +37,27 @@
       .legal-back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); font-weight: 500; }
       .legal-back:hover { color: var(--text); }
     </style>
+    <script src="/lang-nav.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#legal-main">본문으로 건너뛰기</a>
     <header class="site-header">
-      <div class="container header-inner" style="justify-content: flex-start; gap: 1rem">
+      <div class="container header-inner" style="justify-content: space-between; gap: 1rem; flex-wrap: wrap">
         <a class="legal-back" href="../">홈으로</a>
+        <div class="lang-switcher" data-lang-switcher>
+          <label class="visually-hidden" for="lang-select-legal">언어</label>
+          <select id="lang-select-legal" class="lang-select" data-lang-select aria-label="언어">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="es">Español</option>
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="hi">हिन्दी</option>
+            <option value="id">Bahasa Indonesia</option>
+          </select>
+        </div>
       </div>
     </header>
     <main id="legal-main" class="legal-page">
@@ -52,5 +67,20 @@
         <div class="legal-body"><p class="legal-lead"><strong>적용 범위.</strong> 본 개인정보 처리방침(이하 "방침")은 <strong>Newon</strong>(이하 "회사")이 개발 및 운영하는 <strong>모든 모바일 애플리케이션</strong>과 관련 웹 콘텐츠에 적용됩니다. 이 정책은 Newon에서 개발한 앱 전체에 공통으로 적용됩니다. 적용 앱 예시로는 <strong>OX MONTH</strong>, <strong>SubPing</strong> 및 기타 Newon 앱이 포함될 수 있습니다. 본 페이지는 <strong>로그인 없이 누구나</strong> 열람할 수 있는 공개 문서입니다.</p><h2>1. 서비스 소개</h2><p>Newon은 모바일 앱을 개발·운영하는 주체로서, 이용자가 앱을 이용할 때 정보가 어떻게 처리되는지 본 방침으로 설명합니다. 앱별 기능·데이터 처리 방식은 일부 다를 수 있으며, 세부 사항은 각 앱의 스토어 설명 및 앱 내 안내를 함께 참고해 주시기 바랍니다.</p><h2>2. 수집하는 정보</h2><p>앱마다 수집 항목이 다를 수 있으며, 일반적으로 아래 범주에 해당할 수 있습니다.</p><ul class="legal-list"><li><strong>사용자 입력 데이터:</strong> 이용자가 앱에서 직접 입력·저장하는 정보(예: 습관 기록, 구독·지출·가계부 관련 입력 등 앱 기능에 필요한 내용)입니다.</li><li><strong>앱 사용 기록:</strong> 서비스 품질 개선, 오류 분석, 보안을 위해 제한적으로 수집될 수 있는 기기·앱 이용 관련 정보(예: 비정상 종료·성능 정보, 대략적인 이용 맥락 등)입니다. 구체적인 항목은 앱·OS 설정 및 제3자 SDK 정책에 따릅니다.</li><li><strong>개인 식별 정보:</strong> 회사는 서비스 제공에 필요한 <strong>최소한의 범위</strong>에서만 정보를 처리합니다. 계정이 없는 앱의 경우 이름, 이메일 등 <strong>본인을 직접 식별하는 정보를 수집하지 않을 수 있습니다.</strong> 문의 등으로 연락 주실 때에는 대화에 필요한 연락처 정보가 처리될 수 있습니다.</li></ul><h2>3. 정보 사용 목적</h2><p>수집된 정보는 다음 목적 범위 내에서 이용될 수 있습니다: 앱 기능 제공 및 운영, 이용자 경험 개선, 고객 문의 대응, 품질·보안 분석, 법령 준수, 분쟁 대응. 회사는 이용자의 개인정보를 <strong>판매하지 않습니다.</strong></p><h2>4. 광고</h2><p>일부 앱에서는 <strong>Google AdMob</strong> 등 광고 네트워크를 사용할 수 있습니다. 광고 제공을 위해 광고 식별자, 기기·앱 관련 정보가 처리될 수 있으며, 맞춤 광고 여부는 기기 또는 앱 설정에서 조정할 수 있는 경우가 많습니다. 자세한 처리 방식은 Google의 정책 및 아래 제3자 서비스 항목을 참고해 주세요.</p><h2>5. 데이터 저장</h2><p>앱·기능에 따라 데이터는 <strong>이용자 기기(로컬)에만 저장</strong>되거나, 동기화·백업·분석 등 목적을 위해 <strong>회사 또는 제3자가 운영하는 서버</strong>로 전송·저장될 수 있습니다. 어떤 방식이 적용되는지는 앱별 설계가 다르므로, <strong>앱 내 설정·스토어 설명</strong>에서 확인하시기 바랍니다. 로컬에만 저장되는 정보는 앱 삭제·기기 초기화 등에 따라 함께 제거될 수 있습니다.</p><h2>6. 제3자 서비스</h2><p>서비스 운영을 위해 아래와 같은 제3자 서비스·SDK를 사용할 수 있습니다(앱별로 적용 여부가 다릅니다).</p><ul class="legal-list"><li><strong>Google AdMob:</strong> 광고 표시 및 관련 분석</li><li>기타 앱 스토어·분석·클라우드 등 운영에 필요한 서비스</li></ul><p>제3자는 자체 개인정보처리방침에 따라 정보를 처리할 수 있으므로, 해당 정책을 함께 검토해 주시기 바랍니다.</p><h2>7. 사용자 권리</h2><p>이용자는 관할 법령이 정하는 바에 따라 개인정보 열람, 정정·삭제, 처리 정지, 동의 철회 등을 요청할 수 있습니다. 요청은 아래 문의처로 접수해 주시며, 회사는 관련 법령에 따라 조치합니다.</p><h2>8. 아동의 개인정보 보호 (13세 미만)</h2><p>회사의 서비스는 원칙적으로 <strong>만 13세 미만 아동</strong>을 대상으로 설계하지 않습니다. 부모 등 법정대리인의 동의 없이 고의로 13세 미만 아동으로부터 개인정보를 수집하는 것을 지향하지 않습니다. 만약 그러한 사실이 확인되면 지체 없이 삭제 등 필요한 조치를 취하기 위해 노력합니다. 부모님께서는 아동의 기기·스토어 계정 설정을 함께 관리해 주시기 바랍니다.</p><h2>9. 보안</h2><p>회사는 무단 접근, 유출, 훼손 등을 방지하기 위해 암호화, 접근 통제, 내부 관리 절차 등 합리적이고 업계 관행에 맞는 보호 조치를 적용합니다. 다만 인터넷·모바일 환경에서는 어떤 시스템도 완전한 보안을 보장할 수 없으므로, 이용자께서도 기기 잠금·OS 업데이트 등을 통해 스스로 정보를 보호해 주시기 바랍니다.</p><h2>10. 정책 변경</h2><p>본 방침은 법령·서비스 변경에 따라 수정될 수 있습니다. 중요한 변경이 있는 경우 앱 내 공지, 스토어 설명 갱신, 본 페이지 상단의 <strong>최종 수정일</strong> 안내 등 합리적인 방법으로 고지합니다. 변경 후에도 서비스를 계속 이용하는 경우 변경된 방침에 동의한 것으로 해석될 수 있는 점을 안내드립니다.</p><h2>11. 문의처</h2><p>개인정보 처리와 관련한 문의는 아래로 연락해 주시기 바랍니다.</p><p><strong>운영 주체:</strong> Newon<br /><strong>이메일:</strong> <a href="mailto:newon@newon.app">newon@newon.app</a></p></div>
       </div>
     </main>
+    <script>
+      (function () {
+        var cur = "ko";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+          sel.addEventListener("change", function () {
+            var next = sel.value;
+            try {
+              localStorage.setItem("newon-lang-dir", next);
+            } catch (e) {}
+            location.href = newonBuildLangHref(next);
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

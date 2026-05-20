@@ -1,0 +1,5 @@
+# Apache / cPanel — place in www.newon.app document root alongside terms/ and privacy/.
+RewriteEngine On
+RewriteRule ^terms$ /terms/ [R=301,L]
+RewriteRule ^privacy$ /privacy/ [R=301,L]
+DirectoryIndex index.html
