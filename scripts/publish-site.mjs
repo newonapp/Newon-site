@@ -19,7 +19,7 @@ const OUT = path.join(ROOT, "_publish");
 const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
 
 /** 사이트 루트 URL (/파일명) 그대로 쓰는 HTML·CSS·JS — HTML과 같은 층에 둠 */
-const PUBLISH_ROOT_CORE = ["index.html", "lang-nav.js", "styles.css", "ox-month.css"];
+const PUBLISH_ROOT_CORE = ["index.html", "lang-nav.js", "lang-dropdown.js", "styles.css", "ox-month.css"];
 
 /**
  * 사이트 루트에 두는 래스터 에셋 (템플릿에서 /logo.png 처럼 참조).
@@ -32,6 +32,7 @@ const PUBLISH_ROOT_IMAGES = [
   "pillmate-logo.png",
   "savy-logo.png",
   "babylog-logo.png",
+  "petlog-logo.png",
   "subping-hero-mark.png",
   "feature-grid.png",
   "hero-promo.png",

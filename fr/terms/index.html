@@ -33,12 +33,29 @@
       .legal-back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); font-weight: 500; }
       .legal-back:hover { color: var(--text); }
     </style>
+    <script src="/lang-nav.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#legal-main">Aller au contenu</a>
     <header class="site-header">
-      <div class="container header-inner" style="justify-content: flex-start; gap: 1rem">
+      <div class="container header-inner header-inner--legal">
         <a class="legal-back" href="../">Retour à l’accueil</a>
+        <div class="navbar-controls">
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-legal">Langue</label>
+          <select id="lang-select-legal" class="lang-select" data-lang-select aria-label="Langue">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="es">Español</option>
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="hi">हिन्दी</option>
+            <option value="id">Bahasa Indonesia</option>
+          </select>
+        </div>
+        </div>
       </div>
     </header>
     <main id="legal-main" class="legal-page">
@@ -48,5 +65,14 @@
         <div class="legal-body"><p>Ces conditions régissent l’utilisation du site et des applications Newon. En utilisant le service, vous les acceptez.</p><h2>Utilisation</h2><p>Vous devez utiliser le service légalement et ne pas abuser, rétro-concevoir ou perturber le service.</p><h2>Comptes et contenu</h2><p>Certaines fonctions peuvent exiger un compte. Vous êtes responsable de votre activité.</p><h2>Modifications</h2><p>Nous pouvons modifier ou arrêter des fonctions ; nous informerons lorsque c’est raisonnable.</p><h2>Avertissement</h2><p>Le service est fourni « tel quel », dans la mesure permise par la loi.</p><h2>Responsabilité</h2><p>Dans la limite maximale permise, Newon décline les dommages indirects.</p><h2>Contact</h2><p>newon@newon.app</p><p>Les conditions peuvent être mises à jour.</p></div>
       </div>
     </main>
+    <script>
+      (function () {
+        var cur = "fr";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
   </body>
 </html>

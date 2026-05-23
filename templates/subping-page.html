@@ -1,21 +1,23 @@
-    <div id="subping-app" class="ox-page site-shell" data-theme="dark" hidden>
+    <div id="subping-app" class="ox-page site-shell" data-theme="light" hidden>
       <a class="ox-skip" href="#sp-main">{{t:sp.skip}}</a>
 
       <header class="ox-header">
-        <div class="ox-container ox-header-inner">
-          <a class="ox-brand" href="#sp-top" aria-label="{{t:sp.brandAria}}">
-            <img src="/subping-logo.png" alt="" width="36" height="36" />
-            <span>SubPing</span>
-          </a>
-          <nav class="ox-nav ox-nav--apps-only" aria-label="{{t:nav.appsAria}}">
-            <div class="apps-flyout apps-flyout--in-ox" data-apps-flyout>
+        <div class="ox-container navbar-bar navbar-bar--ox navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub navbar-hub--ox">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="{{t:nav.brandHomeAria}}">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+              </a>
+              <nav class="ox-nav ox-nav--apps-only" aria-label="{{t:nav.appsAria}}">
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
               <button
                 type="button"
-                class="apps-flyout__trigger"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
                 id="apps-trigger-sp"
                 aria-expanded="false"
                 aria-haspopup="true"
                 aria-controls="apps-panel-sp"
+                aria-label="{{t:nav.appsAria}}"
               >
                 <span>{{t:nav.appsLabel}}</span>
                 <span class="apps-flyout__chev" aria-hidden="true"></span>
@@ -52,12 +54,35 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">{{t:nav.pillmateDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
-          </nav>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a href="#sp-top" class="navbar-app-showcase" aria-label="{{t:sp.brandAria}}">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/subping-logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">SubPing</span>
+              <span class="navbar-app-showcase__tagline">{{t:nav.subpingDesc}}</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--ox navbar-bar__controls--brand-toolbar">
           <div class="lang-switcher lang-switcher--ox" data-lang-switcher>
             <label class="visually-hidden" for="lang-select-sp">{{t:ui.language}}</label>
-            <select id="lang-select-sp" class="lang-select" data-lang-select aria-label="{{t:ui.language}}">
+            <select id="lang-select-sp" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
               <option value="ko">{{t:ui.langKo}}</option>
               <option value="en">{{t:ui.langEn}}</option>
               <option value="ja">{{t:ui.langJa}}</option>
@@ -70,7 +95,6 @@
             </select>
           </div>
           <div class="ox-header-actions">
-            <a class="ox-link-newon js-go-home" href="#">{{t:sp.navNewon}}</a>
             <button
               type="button"
               class="ox-theme-toggle"
@@ -90,6 +114,8 @@
             >
               <span></span><span></span>
             </button>
+          </div>
+          </div>
           </div>
         </div>
         <div id="sp-mobile" class="ox-mobile-menu ox-mobile-menu--apps-only" hidden>
@@ -111,6 +137,15 @@
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">SubPing</span>
                 <span class="mobile-apps-drawer__hint">{{t:sp.mobileHintSp}}</span>
+              </span>
+            </a>
+            <a href="#pillmate-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">{{t:sp.mobilePillmateHint}}</span>
               </span>
             </a>
           </details>
@@ -197,8 +232,8 @@
                   class="ox-hero-logo-img"
                   src="/subping-hero-mark.png"
                   alt="{{t:sp.heroLogoAlt}}"
-                  width="512"
-                  height="512"
+                  width="940"
+                  height="940"
                 />
               </div>
             </div>
@@ -458,9 +493,9 @@
       <footer class="ox-footer">
         <div class="ox-container ox-footer-inner">
           <div class="footer-legal-links footer-legal-links--ox">
-            <a class="footer-legal" href="../privacy/">{{t:footer.privacy}}</a>
+            <a class="footer-legal" href="privacy/">{{t:footer.privacy}}</a>
             <span class="footer-legal-sep" aria-hidden="true">·</span>
-            <a class="footer-legal" href="../terms/">{{t:footer.terms}}</a>
+            <a class="footer-legal" href="terms/">{{t:footer.terms}}</a>
           </div>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="{{t:footer.socialAria}}">
             <a

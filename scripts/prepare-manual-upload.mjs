@@ -45,6 +45,7 @@ const COPY_FILES = [
   "logo.png",
   "ox-month-logo.png",
   "subping-logo.png",
+  "pillmate-logo.png",
   "subping-hero-mark.png",
   "feature-grid.png",
   "hero-promo.png",

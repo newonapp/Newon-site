@@ -33,12 +33,29 @@
       .legal-back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); font-weight: 500; }
       .legal-back:hover { color: var(--text); }
     </style>
+    <script src="/lang-nav.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#legal-main">本文へスキップ</a>
     <header class="site-header">
-      <div class="container header-inner" style="justify-content: flex-start; gap: 1rem">
+      <div class="container header-inner header-inner--legal">
         <a class="legal-back" href="../">ホームへ戻る</a>
+        <div class="navbar-controls">
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-legal">言語</label>
+          <select id="lang-select-legal" class="lang-select" data-lang-select aria-label="言語">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="es">Español</option>
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="hi">हिन्दी</option>
+            <option value="id">Bahasa Indonesia</option>
+          </select>
+        </div>
+        </div>
       </div>
     </header>
     <main id="legal-main" class="legal-page">
@@ -48,5 +65,14 @@
         <div class="legal-body"><p>本規約は、Newon のウェブサイトおよびアプリケーションの利用条件です。利用により本規約に同意したものとみなします。</p><h2>利用</h2><p>法令に従い適正にご利用ください。不正利用、解析、妨害等を禁止します。</p><h2>アカウントとコンテンツ</h2><p>機能によりアカウントが必要な場合があります。アカウント活動に関する責任は利用者にあります。</p><h2>変更・提供停止</h2><p>安定運用・法令等のため機能を変更・停止する場合があります。合理的な範囲で通知します。</p><h2>免責</h2><p>サービスは「現状有姿」で提供され、中断・無エラーを保証しません。</p><h2>責任制限</h2><p>法が認める最大限の範囲で、間接損害等について責任を負いません。</p><h2>お問い合わせ</h2><p>newon@newon.app</p><p>規約は更新される場合があります。</p></div>
       </div>
     </main>
+    <script>
+      (function () {
+        var cur = "ja";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
   </body>
 </html>

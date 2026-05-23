@@ -33,12 +33,29 @@
       .legal-back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); font-weight: 500; }
       .legal-back:hover { color: var(--text); }
     </style>
+    <script src="/lang-nav.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#legal-main">Lompat ke konten</a>
     <header class="site-header">
-      <div class="container header-inner" style="justify-content: flex-start; gap: 1rem">
+      <div class="container header-inner header-inner--legal">
         <a class="legal-back" href="../">Kembali ke beranda</a>
+        <div class="navbar-controls">
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-legal">Bahasa</label>
+          <select id="lang-select-legal" class="lang-select" data-lang-select aria-label="Bahasa">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="es">Español</option>
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="hi">हिन्दी</option>
+            <option value="id">Bahasa Indonesia</option>
+          </select>
+        </div>
+        </div>
       </div>
     </header>
     <main id="legal-main" class="legal-page">
@@ -48,5 +65,14 @@
         <div class="legal-body"><p>Ketentuan ini mengatur penggunaan situs dan aplikasi Newon. Dengan menggunakan layanan, Anda menyetujui ketentuan.</p><h2>Penggunaan</h2><p>Anda harus menggunakan layanan secara sah dan tidak menyalahgunakan, merekayasa balik, atau mengganggu.</p><h2>Akun & konten</h2><p>Beberapa fitur memerlukan akun. Anda bertanggung jawab atas aktivitas Anda.</p><h2>Perubahan</h2><p>Kami dapat mengubah atau menghentikan fitur; kami akan memberi tahu bila wajar.</p><h2>Penyangkalan</h2><p>Layanan disediakan "apa adanya" sejauh diizinkan hukum.</p><h2>Batas tanggung jawab</h2><p>Sejauh diizinkan hukum, Newon tidak bertanggung jawab atas kerugian tidak langsung.</p><h2>Kontak</h2><p>newon@newon.app</p><p>Ketentuan dapat diperbarui.</p></div>
       </div>
     </main>
+    <script>
+      (function () {
+        var cur = "id";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
   </body>
 </html>

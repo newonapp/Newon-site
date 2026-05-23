@@ -33,12 +33,29 @@
       .legal-back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); font-weight: 500; }
       .legal-back:hover { color: var(--text); }
     </style>
+    <script src="/lang-nav.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#legal-main">본문으로 건너뛰기</a>
     <header class="site-header">
-      <div class="container header-inner" style="justify-content: flex-start; gap: 1rem">
+      <div class="container header-inner header-inner--legal">
         <a class="legal-back" href="../">홈으로</a>
+        <div class="navbar-controls">
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-legal">언어</label>
+          <select id="lang-select-legal" class="lang-select" data-lang-select aria-label="언어">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="es">Español</option>
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="hi">हिन्दी</option>
+            <option value="id">Bahasa Indonesia</option>
+          </select>
+        </div>
+        </div>
       </div>
     </header>
     <main id="legal-main" class="legal-page">
@@ -48,5 +65,14 @@
         <div class="legal-body"><p>본 이용약관(이하 "약관")은 뉴온 웹사이트 및 애플리케이션 이용에 적용됩니다. 서비스를 이용하면 약관에 동의한 것으로 봅니다.</p><h2>서비스 이용</h2><p>법령에 반하지 않는 범위에서 이용해야 하며, 무단 복제·역설계·운영 방해 등을 해서는 안 됩니다.</p><h2>계정 및 콘텐츠</h2><p>일부 기능은 계정이 필요할 수 있으며, 계정 활동 및 관련 콘텐츠에 대한 책임은 이용자에게 있습니다.</p><h2>변경 및 중단</h2><p>안정적 운영·법규 준수 등을 위해 기능을 변경하거나 중단할 수 있으며, 합리적인 범위에서 고지합니다.</p><h2>면책</h2><p>서비스를 "있는 그대로" 제공하며, 법이 허용하는 한 중단·오류 없음을 보장하지 않습니다.</p><h2>책임의 제한</h2><p>법이 허용하는 최대 한도 내에서, 간접·결과적 손해에 대해 회사는 책임지지 않습니다.</p><h2>문의</h2><p>newon@newon.app</p><p>약관은 변경될 수 있으며, 변경 후에도 이용을 계속하면 갱신된 약관에 동의한 것으로 간주될 수 있습니다.</p></div>
       </div>
     </main>
+    <script>
+      (function () {
+        var cur = "ko";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
   </body>
 </html>

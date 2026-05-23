@@ -71,6 +71,8 @@ function listen(port, tries) {
     }
   });
   server.listen(port, "127.0.0.1", () => {
+    /* quick-preview.mjs 등이 실제 바인딩 포트를 알 수 있도록(8765 점유 시 8766으로 올라감) */
+    console.log(`__NEWON_SERVE_PORT__ ${port}`);
     console.log(`\n  미리보기: http://127.0.0.1:${port}/\n  한국어: http://127.0.0.1:${port}/ko/\n  종료: Ctrl+C\n`);
   });
 }

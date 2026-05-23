@@ -33,12 +33,29 @@
       .legal-back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); font-weight: 500; }
       .legal-back:hover { color: var(--text); }
     </style>
+    <script src="/lang-nav.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#legal-main">सामग्री पर जाएँ</a>
     <header class="site-header">
-      <div class="container header-inner" style="justify-content: flex-start; gap: 1rem">
+      <div class="container header-inner header-inner--legal">
         <a class="legal-back" href="../">होम पर वापस</a>
+        <div class="navbar-controls">
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-legal">भाषा</label>
+          <select id="lang-select-legal" class="lang-select" data-lang-select aria-label="भाषा">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="es">Español</option>
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="hi">हिन्दी</option>
+            <option value="id">Bahasa Indonesia</option>
+          </select>
+        </div>
+        </div>
       </div>
     </header>
     <main id="legal-main" class="legal-page">
@@ -48,5 +65,14 @@
         <div class="legal-body"><p>ये शर्तें Newon वेबसाइट और ऐप्स के उपयोग पर लागू हैं। उपयोग से सहमति मानी जाएगी।</p><h2>उपयोग</h2><p>कानूनी उपयोग; दुरुपयोग, रिवर्स इंजीनियरिंग या बाधा नहीं।</p><h2>खाता और सामग्री</h2><p>कुछ सुविधाओं के लिए खाता आवश्यक। आप अपनी गतिविधि के जिम्मेदार हैं।</p><h2>परिवर्तन</h2><p>हम सुविधाएँ बदल या बंद कर सकते हैं; उचित सूचना देंगे।</p><h2>अस्वीकरण</h2><p>सेवा "जैसी है" कानूनी सीमा तक।</p><h2>दायित्व सीमा</h2><p>कानूनी अधिकतम सीमा तक अप्रत्यक्ष हानि हेतु Newon उत्तरदायी नहीं।</p><h2>संपर्क</h2><p>newon@newon.app</p><p>शर्तें अपडेट हो सकती हैं।</p></div>
       </div>
     </main>
+    <script>
+      (function () {
+        var cur = "hi";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
   </body>
 </html>

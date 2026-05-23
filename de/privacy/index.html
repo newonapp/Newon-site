@@ -37,12 +37,29 @@
       .legal-back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); font-weight: 500; }
       .legal-back:hover { color: var(--text); }
     </style>
+    <script src="/lang-nav.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#legal-main">Zum Inhalt springen</a>
     <header class="site-header">
-      <div class="container header-inner" style="justify-content: flex-start; gap: 1rem">
+      <div class="container header-inner header-inner--legal">
         <a class="legal-back" href="../">Zur Startseite</a>
+        <div class="navbar-controls">
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-legal">Sprache</label>
+          <select id="lang-select-legal" class="lang-select" data-lang-select aria-label="Sprache">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="es">Español</option>
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="hi">हिन्दी</option>
+            <option value="id">Bahasa Indonesia</option>
+          </select>
+        </div>
+        </div>
       </div>
     </header>
     <main id="legal-main" class="legal-page">
@@ -52,5 +69,14 @@
         <div class="legal-body"><p class="legal-lead"><strong>Scope.</strong> This Privacy Policy ("Policy") applies to <strong>all mobile applications</strong> developed and operated by <strong>Newon</strong> ("we", "us", or the "Company"), including related web content. It is a <strong>company-wide</strong> policy for Newon apps. Examples include <strong>OX MONTH</strong>, <strong>SubPing</strong>, and other Newon apps. This page is <strong>public</strong> and does not require a login.</p><h2>1. About our services</h2><p>Newon develops and operates mobile apps. This Policy explains how information may be processed when you use our services. Specific features and data practices may vary by app; please also read each app’s store listing and in-app notices.</p><h2>2. Information we may collect</h2><p>Collection may vary by app. In general, categories may include:</p><ul class="legal-list"><li><strong>Information you provide:</strong> data you enter or save in the app (for example habit logs, subscription or spending-related inputs, or other content needed for app features).</li><li><strong>App usage information:</strong> limited device or app-related information for quality improvement, error analysis, or security (for example crash/diagnostic information). Specific items depend on the app, OS settings, and third-party SDK policies.</li><li><strong>Identifying information:</strong> we aim to process only what is <strong>necessary</strong> to provide the service. Apps without accounts may <strong>not</strong> collect direct identifiers such as your name or email. If you contact us, we may process contact details needed to respond.</li></ul><h2>3. How we use information</h2><p>We may use information to: provide and operate the apps, improve user experience, respond to inquiries, analyze quality and security, comply with law, and handle disputes. We <strong>do not sell</strong> your personal information.</p><h2>4. Advertising</h2><p>Some apps may use <strong>Google AdMob</strong> or similar ad networks. Advertising-related identifiers and device/app information may be processed to deliver ads. You can often adjust ad personalization in device or app settings. See Google’s policies and the Third-party services section below.</p><h2>5. Data storage</h2><p>Depending on the app or feature, data may be stored <strong>only on your device</strong> or may be transmitted to and stored on <strong>servers</strong> operated by us or third parties (for example sync, backup, or analysis). Check each app’s settings and store description for what applies. Locally stored data may be removed if you delete the app or reset the device.</p><h2>6. Third-party services</h2><p>We may use third-party services or SDKs (which may vary by app), including:</p><ul class="legal-list"><li><strong>Google AdMob:</strong> ads and related measurement</li><li>Other services needed for distribution, analytics, or cloud infrastructure</li></ul><p>Third parties may process information under their own privacy policies; we encourage you to review them.</p><h2>7. Your rights</h2><p>Depending on applicable law, you may have rights to access, correct, delete, restrict processing, or withdraw consent. Contact us using the details below and we will respond in line with applicable laws.</p><h2>8. Children’s privacy (under 13)</h2><p>Our services are not directed to children <strong>under 13</strong>. We do not knowingly collect personal information from children under 13 without appropriate parental consent. If we learn that we have collected such information, we will take steps to delete it. Parents should use device and store parental controls where available.</p><h2>9. Security</h2><p>We use reasonable administrative, technical, and organizational measures to protect information. No method of transmission or storage is 100% secure; please also protect your device with locks and updates.</p><h2>10. Changes to this Policy</h2><p>We may update this Policy from time to time. For material changes, we may provide notice through the app, store listing updates, or by updating the <strong>Last updated</strong> date on this page. Continued use after changes may constitute acceptance where permitted by law.</p><h2>11. Contact</h2><p>For privacy-related questions, contact:</p><p><strong>Company:</strong> Newon<br /><strong>Email:</strong> <a href="mailto:newon@newon.app">newon@newon.app</a></p></div>
       </div>
     </main>
+    <script>
+      (function () {
+        var cur = "de";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
   </body>
 </html>

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Reads locale JSON from locales/*.json and templates/*.html,
- * emits static pages: {lang}/index.html, {lang}/privacy/index.html, {lang}/terms/index.html
+ * emits: {lang}/index.html, {lang}/privacy/, {lang}/terms/,
+ * {lang}/oxmonth/delete-account/, {lang}/subping/delete-account/, plus root redirects for legacy URLs.
  */
 import fs from "fs";
 import path from "path";
@@ -15,11 +16,15 @@ const OX_IMG = path.join(ROOT, "ox-img");
 /**
  * [[IMG:file.png]] resolution:
  * 1) ox-showcase-NN.png: KO uses i18n-img/ko/ (else ja); all other langs use i18n-img/en/ (English UI art).
- * 2) /i18n-img/{lang}/file.png if present
- * 3) Korean only: /subping-img/ before EN fallback
- * 4) /i18n-img/en/file.png if present
- * 5) /subping-img/file.png
- * 6) /ox-img/file.png, else /file.png
+ * 2) pm-showcase-NN.png: KO uses /subping-img/ (Korean UI). JA / ES / pt-BR use i18n-img/{lang}/ when present.
+ *    All other locales (EN, FR, DE, HI, ID, …) use i18n-img/en/ (same English screenshots); then /subping-img/ fallback.
+ * 3) sv-showcase-NN.png: i18n-img/{lang}/ if present; otherwise i18n-img/en/ (English UI); otherwise i18n-img/ko/.
+ * 3b) bl-showcase-NN.png / pl-showcase-NN.png: i18n-img/{lang}/ if present; otherwise i18n-img/en/; otherwise i18n-img/ko/.
+ * 4) /i18n-img/{lang}/file.png if present
+ * 5) Korean only: /subping-img/ before EN fallback
+ * 6) /i18n-img/en/file.png if present
+ * 7) /subping-img/file.png
+ * 8) /ox-img/file.png, else /file.png
  */
 function localizedImageUrl(langDir, filename) {
   if (/^ox-showcase-\d+\.png$/.test(filename)) {
@@ -37,6 +42,56 @@ function localizedImageUrl(langDir, filename) {
       if (fs.existsSync(enScroll)) {
         return `/i18n-img/en/${filename}`;
       }
+    }
+  }
+  if (/^pm-showcase-\d+\.png$/.test(filename)) {
+    if (langDir === "ko") {
+      const subpingKo = path.join(ROOT, "subping-img", filename);
+      if (fs.existsSync(subpingKo)) {
+        return `/subping-img/${filename}`;
+      }
+    }
+    if (langDir === "ja" || langDir === "es" || langDir === "pt-br") {
+      const ownPm = path.join(I18N_IMG, langDir, filename);
+      if (fs.existsSync(ownPm)) {
+        return `/i18n-img/${langDir}/${filename}`;
+      }
+    }
+    const enPm = path.join(I18N_IMG, "en", filename);
+    if (fs.existsSync(enPm)) {
+      return `/i18n-img/en/${filename}`;
+    }
+    const subpingPm = path.join(ROOT, "subping-img", filename);
+    if (fs.existsSync(subpingPm)) {
+      return `/subping-img/${filename}`;
+    }
+  }
+  if (/^sv-showcase-\d+\.png$/.test(filename)) {
+    const forLang = path.join(I18N_IMG, langDir, filename);
+    if (fs.existsSync(forLang)) {
+      return `/i18n-img/${langDir}/${filename}`;
+    }
+    const enSv = path.join(I18N_IMG, "en", filename);
+    if (fs.existsSync(enSv)) {
+      return `/i18n-img/en/${filename}`;
+    }
+    const koSv = path.join(I18N_IMG, "ko", filename);
+    if (fs.existsSync(koSv)) {
+      return `/i18n-img/ko/${filename}`;
+    }
+  }
+  if (/^bl-showcase-\d+\.png$/.test(filename) || /^pl-showcase-\d+\.png$/.test(filename)) {
+    const forLang = path.join(I18N_IMG, langDir, filename);
+    if (fs.existsSync(forLang)) {
+      return `/i18n-img/${langDir}/${filename}`;
+    }
+    const enBl = path.join(I18N_IMG, "en", filename);
+    if (fs.existsSync(enBl)) {
+      return `/i18n-img/en/${filename}`;
+    }
+    const koBl = path.join(I18N_IMG, "ko", filename);
+    if (fs.existsSync(koBl)) {
+      return `/i18n-img/ko/${filename}`;
     }
   }
   const localized = path.join(I18N_IMG, langDir, filename);
@@ -224,40 +279,49 @@ for (const { dir, file, htmlLang } of LANGS) {
     fs.mkdirSync(pd, { recursive: true });
     fs.writeFileSync(path.join(pd, "index.html"), pt);
   }
+
+  for (const del of [
+    { tpl: "oxmonth-delete-account.html", canon: `https://newon.app/${dir}/oxmonth/delete-account/`, rel: ["oxmonth", "delete-account"] },
+    { tpl: "subping-delete-account.html", canon: `https://newon.app/${dir}/subping/delete-account/`, rel: ["subping", "delete-account"] },
+  ]) {
+    let delHtml = fs.readFileSync(path.join(ROOT, "templates", del.tpl), "utf8");
+    delHtml = delHtml.replace(/\{\{LANG_DIR\}\}/g, dir);
+    delHtml = delHtml.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+    delHtml = delHtml.replace(/\{\{CANONICAL\}\}/g, del.canon);
+    delHtml = applyTemplate(delHtml, flat, flatEn);
+    delHtml = applyLocImgs(delHtml, dir);
+    const delOut = path.join(ROOT, dir, ...del.rel);
+    fs.mkdirSync(delOut, { recursive: true });
+    fs.writeFileSync(path.join(delOut, "index.html"), delHtml);
+  }
 }
 
 writeRootPrivacyPage();
 
-function writeOxmonthDeleteAccountPage() {
-  const data = loadJson("ko.json");
-  const flat = flatten(data);
-  const flatEn = flatten(loadJson("en.json"));
-
-  let pt = fs.readFileSync(path.join(ROOT, "templates", "oxmonth-delete-account.html"), "utf8");
-  pt = pt.replace(/\{\{HTML_LANG\}\}/g, "ko");
-  pt = pt.replace(/\{\{CANONICAL\}\}/g, "https://www.newon.app/oxmonth/delete-account/");
-  pt = applyTemplate(pt, flat, flatEn);
-  const outDir = path.join(ROOT, "oxmonth", "delete-account");
-  fs.mkdirSync(outDir, { recursive: true });
-  fs.writeFileSync(path.join(outDir, "index.html"), pt);
+/** Legacy URLs /oxmonth/delete-account/ and /subping/delete-account/ → localized page */
+function writeRootDeleteAccountRedirects() {
+  const list = JSON.stringify(LANGS.map((l) => l.dir));
+  const ox = `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="robots" content="noindex"/><title>Redirect</title><script>(function(){var L=${list};var d="ko";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/oxmonth/delete-account/"+(location.hash||""));})();</script></head><body><p style="font-family:system-ui,sans-serif;padding:1.5rem"><a href="/ko/oxmonth/delete-account/">OX MONTH account deletion — continue</a></p></body></html>`;
+  const sp = `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="robots" content="noindex"/><title>Redirect</title><script>(function(){var L=${list};var d="ko";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/subping/delete-account/"+(location.hash||""));})();</script></head><body><p style="font-family:system-ui,sans-serif;padding:1.5rem"><a href="/ko/subping/delete-account/">SubPing account deletion — continue</a></p></body></html>`;
+  const oxDir = path.join(ROOT, "oxmonth", "delete-account");
+  const spDir = path.join(ROOT, "subping", "delete-account");
+  fs.mkdirSync(oxDir, { recursive: true });
+  fs.mkdirSync(spDir, { recursive: true });
+  fs.writeFileSync(path.join(oxDir, "index.html"), ox);
+  fs.writeFileSync(path.join(spDir, "index.html"), sp);
 }
 
-writeOxmonthDeleteAccountPage();
+writeRootDeleteAccountRedirects();
 
-function writeSubpingDeleteAccountPage() {
-  const data = loadJson("ko.json");
-  const flat = flatten(data);
-  const flatEn = flatten(loadJson("en.json"));
-
-  let pt = fs.readFileSync(path.join(ROOT, "templates", "subping-delete-account.html"), "utf8");
-  pt = pt.replace(/\{\{HTML_LANG\}\}/g, "ko");
-  pt = pt.replace(/\{\{CANONICAL\}\}/g, "https://www.newon.app/subping/delete-account/");
-  pt = applyTemplate(pt, flat, flatEn);
-  const outDir = path.join(ROOT, "subping", "delete-account");
-  fs.mkdirSync(outDir, { recursive: true });
-  fs.writeFileSync(path.join(outDir, "index.html"), pt);
+/** Root /terms/ → multilingual Newon terms (honors newon-lang-dir). Legacy Savy EULA: /terms/savy-ai-eula.html */
+function writeRootTermsRedirect() {
+  const list = JSON.stringify(LANGS.map((l) => l.dir));
+  const html = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="robots" content="noindex"/><title>Redirect</title><script>(function(){var L=${list};var d="en";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/terms/"+(location.search||"")+(location.hash||""));})();</script></head><body style="font-family:system-ui,sans-serif;padding:1.5rem"><p><a href="/en/terms/">Newon Terms</a> · <a href="/terms/savy-ai-eula.html">Savy EULA (standalone)</a></p></body></html>`;
+  const dir = path.join(ROOT, "terms");
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, "index.html"), html);
 }
 
-writeSubpingDeleteAccountPage();
+writeRootTermsRedirect();
 
 console.log("i18n build OK:", LANGS.map((l) => l.dir).join(", "));

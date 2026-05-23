@@ -28,12 +28,29 @@
       .legal-back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); font-weight: 500; }
       .legal-back:hover { color: var(--text); }
     </style>
+    <script src="/lang-nav.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#legal-main">{{t:common.skipToContent}}</a>
     <header class="site-header">
-      <div class="container header-inner" style="justify-content: flex-start; gap: 1rem">
+      <div class="container header-inner header-inner--legal">
         <a class="legal-back" href="../">{{t:ui.backHome}}</a>
+        <div class="navbar-controls">
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-legal">{{t:ui.language}}</label>
+          <select id="lang-select-legal" class="lang-select" data-lang-select aria-label="{{t:ui.language}}">
+            <option value="ko">{{t:ui.langKo}}</option>
+            <option value="en">{{t:ui.langEn}}</option>
+            <option value="ja">{{t:ui.langJa}}</option>
+            <option value="es">{{t:ui.langEs}}</option>
+            <option value="pt-br">{{t:ui.langPtBr}}</option>
+            <option value="fr">{{t:ui.langFr}}</option>
+            <option value="de">{{t:ui.langDe}}</option>
+            <option value="hi">{{t:ui.langHi}}</option>
+            <option value="id">{{t:ui.langId}}</option>
+          </select>
+        </div>
+        </div>
       </div>
     </header>
     <main id="legal-main" class="legal-page">
@@ -43,5 +60,14 @@
         <div class="legal-body">{{html:legal.privacy.bodyHtml}}</div>
       </div>
     </main>
+    <script>
+      (function () {
+        var cur = "{{LANG_DIR}}";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
   </body>
 </html>

@@ -33,12 +33,29 @@
       .legal-back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); font-weight: 500; }
       .legal-back:hover { color: var(--text); }
     </style>
+    <script src="/lang-nav.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#legal-main">Skip to content</a>
     <header class="site-header">
-      <div class="container header-inner" style="justify-content: flex-start; gap: 1rem">
+      <div class="container header-inner header-inner--legal">
         <a class="legal-back" href="../">Back to home</a>
+        <div class="navbar-controls">
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-legal">Language</label>
+          <select id="lang-select-legal" class="lang-select" data-lang-select aria-label="Language">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="es">Español</option>
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="hi">हिन्दी</option>
+            <option value="id">Bahasa Indonesia</option>
+          </select>
+        </div>
+        </div>
       </div>
     </header>
     <main id="legal-main" class="legal-page">
@@ -48,5 +65,14 @@
         <div class="legal-body"><p>These Terms of Service (“Terms”) govern your use of Newon’s website and applications. By using our services, you agree to these Terms.</p><h2>Use of services</h2><p>You agree to use our services lawfully and not to misuse, reverse engineer, or attempt to disrupt them.</p><h2>Accounts and content</h2><p>Some features may require an account. You are responsible for your account activity and any content you submit where applicable.</p><h2>Changes and availability</h2><p>We may modify or discontinue features to improve reliability or comply with requirements. We will provide notice when reasonable.</p><h2>Disclaimer</h2><p>Services are provided “as is” to the extent permitted by law. We do not guarantee uninterrupted or error-free operation.</p><h2>Limitation of liability</h2><p>To the maximum extent permitted by applicable law, Newon is not liable for indirect or consequential damages arising from use of the services.</p><h2>Contact</h2><p>newon@newon.app</p><p>We may update these Terms from time to time. Continued use after changes means you accept the updated Terms.</p></div>
       </div>
     </main>
+    <script>
+      (function () {
+        var cur = "en";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
   </body>
 </html>

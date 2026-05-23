@@ -33,12 +33,29 @@
       .legal-back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); font-weight: 500; }
       .legal-back:hover { color: var(--text); }
     </style>
+    <script src="/lang-nav.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#legal-main">Zum Inhalt springen</a>
     <header class="site-header">
-      <div class="container header-inner" style="justify-content: flex-start; gap: 1rem">
+      <div class="container header-inner header-inner--legal">
         <a class="legal-back" href="../">Zur Startseite</a>
+        <div class="navbar-controls">
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-legal">Sprache</label>
+          <select id="lang-select-legal" class="lang-select" data-lang-select aria-label="Sprache">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="es">Español</option>
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="hi">हिन्दी</option>
+            <option value="id">Bahasa Indonesia</option>
+          </select>
+        </div>
+        </div>
       </div>
     </header>
     <main id="legal-main" class="legal-page">
@@ -48,5 +65,14 @@
         <div class="legal-body"><p>Diese Bedingungen gelten für Website und Anwendungen von Newon. Mit der Nutzung stimmst du zu.</p><h2>Nutzung</h2><p>Du nutzt den Dienst rechtmäßig und verzichtest auf Missbrauch, Reverse Engineering oder Störungen.</p><h2>Konten & Inhalte</h2><p>Manche Funktionen erfordern ein Konto. Du bist für deine Aktivität verantwortlich.</p><h2>Änderungen</h2><p>Wir können Funktionen ändern oder einstellen; wir informieren, soweit angemessen.</p><h2>Haftungsausschluss</h2><p>Der Dienst wird „wie besehen“ im gesetzlich zulässigen Umfang bereitgestellt.</p><h2>Haftungsbegrenzung</h2><p>Soweit gesetzlich zulässig, haftet Newon nicht für indirekte Schäden.</p><h2>Kontakt</h2><p>newon@newon.app</p><p>Die Bedingungen können aktualisiert werden.</p></div>
       </div>
     </main>
+    <script>
+      (function () {
+        var cur = "de";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
   </body>
 </html>

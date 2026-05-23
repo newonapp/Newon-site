@@ -4,36 +4,47 @@
  * opens the system default browser to /ko/. Stop with Ctrl+C.
  */
 import { spawn, execSync } from "node:child_process";
-import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
-function probeKo(port) {
-  return new Promise((resolve) => {
-    const req = http.get(`http://127.0.0.1:${port}/ko/`, { timeout: 400 }, (res) => {
-      res.resume();
-      resolve(res.statusCode != null && res.statusCode < 500);
-    });
-    req.on("error", () => resolve(false));
-    req.on("timeout", () => {
-      req.destroy();
-      resolve(false);
-    });
-  });
-}
-
-/** serve-publish는 8765부터 자동으로 다음 포트를 씀 */
-async function waitForServer() {
-  const deadline = Date.now() + 25000;
-  while (Date.now() < deadline) {
-    for (let p = 8765; p <= 8820; p++) {
-      if (await probeKo(p)) return p;
+/**
+ * 이전에 띄운 serve-publish가 8765에 남아 있으면, 새 프로세스는 8766+로 붙는다.
+ * 포트만 스캔하면 “옛 서버”를 잡아 브라우저가 stale _publish를 보게 되므로,
+ * 자식 stdout의 __NEWON_SERVE_PORT__ 로 실제 포트를 읽는다.
+ */
+async function waitForServePortFromChild(child) {
+  return new Promise((resolve, reject) => {
+    const deadline = Date.now() + 25000;
+    let buf = "";
+    const onData = (chunk) => {
+      buf += chunk.toString("utf8");
+      const m = buf.match(/__NEWON_SERVE_PORT__\s+(\d+)/);
+      if (m) {
+        cleanup();
+        resolve(Number(m[1], 10));
+      }
+    };
+    const tick = () => {
+      if (Date.now() > deadline) {
+        cleanup();
+        reject(new Error("서버가 뜨지 않았습니다(__NEWON_SERVE_PORT__ 타임아웃)."));
+      }
+    };
+    const interval = setInterval(tick, 150);
+    function cleanup() {
+      clearInterval(interval);
+      if (child.stdout) child.stdout.removeListener("data", onData);
     }
-    await new Promise((r) => setTimeout(r, 120));
-  }
-  throw new Error("서버가 뜨지 않았습니다.");
+    if (!child.stdout) {
+      clearInterval(interval);
+      reject(new Error("serve-publish stdout을 읽을 수 없습니다."));
+      return;
+    }
+    child.stdout.on("data", onData);
+    tick();
+  });
 }
 
 function openSystemBrowser(url) {
@@ -52,7 +63,7 @@ async function main() {
   const child = spawn("node", ["scripts/serve-publish.mjs"], {
     cwd: ROOT,
     env: { ...process.env, PORT: "8765" },
-    stdio: "inherit",
+    stdio: ["inherit", "pipe", "inherit"],
     shell: false,
   });
 
@@ -61,9 +72,13 @@ async function main() {
     process.exit(1);
   });
 
+  child.stdout.on("data", (chunk) => {
+    process.stdout.write(chunk);
+  });
+
   let port;
   try {
-    port = await waitForServer();
+    port = await waitForServePortFromChild(child);
   } catch (e) {
     console.error(e.message || e);
     child.kill("SIGINT");

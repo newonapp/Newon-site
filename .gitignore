@@ -7,6 +7,7 @@ Thumbs.db
 _publish
 upload-pack
 Newon-site-upload.zip
+Newon-pages.zip
 # 로컬 백업·수동 복사본 (GitHub에는 소스만; Actions가 빌드함)
 Newon-site-upload*/
 

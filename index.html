@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="refresh" content="0; url=/terms/" />
-  <link rel="canonical" href="https://www.newon.app/terms/" />
-  <title>Savy AI — Newon</title>
-</head>
-<body>
-  <p><a href="/terms/">Terms of Use</a> · <a href="/privacy/">Privacy Policy</a></p>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Newon</title>
+    <link rel="canonical" href="https://www.newon.app/en/terms/" />
+    <script>
+      (function () {
+        var L = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
+        var d = "en";
+        try {
+          var v = localStorage.getItem("newon-lang-dir");
+          if (v && L.indexOf(v) !== -1) d = v;
+        } catch (e) {}
+        var tail = (location.search || "") + (location.hash || "");
+        location.replace("/" + d + "/terms/" + tail);
+      })();
+    </script>
+  </head>
+  <body style="font-family: system-ui, sans-serif; padding: 1.25rem">
+    <noscript>
+      <p style="margin: 0">
+        <a href="/en/terms/">Terms</a>
+        ·
+        <a href="/privacy/">Privacy</a>
+      </p>
+    </noscript>
+  </body>
 </html>

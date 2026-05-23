@@ -42,10 +42,11 @@
   <body>
     <a class="skip-link" href="#legal-main">본문으로 건너뛰기</a>
     <header class="site-header">
-      <div class="container header-inner" style="justify-content: space-between; gap: 1rem; flex-wrap: wrap">
+      <div class="container header-inner header-inner--legal">
         <a class="legal-back" href="../">홈으로</a>
-        <div class="lang-switcher" data-lang-switcher>
-          <label class="visually-hidden" for="lang-select-legal">언어</label>
+        <div class="navbar-controls">
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-legal">언어</label>
           <select id="lang-select-legal" class="lang-select" data-lang-select aria-label="언어">
             <option value="ko">한국어</option>
             <option value="en">English</option>
@@ -57,6 +58,7 @@
             <option value="hi">हिन्दी</option>
             <option value="id">Bahasa Indonesia</option>
           </select>
+        </div>
         </div>
       </div>
     </header>
@@ -72,15 +74,9 @@
         var cur = "ko";
         document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
           sel.value = cur;
-          sel.addEventListener("change", function () {
-            var next = sel.value;
-            try {
-              localStorage.setItem("newon-lang-dir", next);
-            } catch (e) {}
-            location.href = newonBuildLangHref(next);
-          });
         });
       })();
     </script>
+    <script src="/lang-dropdown.js"></script>
   </body>
 </html>

@@ -37,12 +37,29 @@
       .legal-back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); font-weight: 500; }
       .legal-back:hover { color: var(--text); }
     </style>
+    <script src="/lang-nav.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#legal-main">本文へスキップ</a>
     <header class="site-header">
-      <div class="container header-inner" style="justify-content: flex-start; gap: 1rem">
+      <div class="container header-inner header-inner--legal">
         <a class="legal-back" href="../">ホームへ戻る</a>
+        <div class="navbar-controls">
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-legal">言語</label>
+          <select id="lang-select-legal" class="lang-select" data-lang-select aria-label="言語">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="es">Español</option>
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="hi">हिन्दी</option>
+            <option value="id">Bahasa Indonesia</option>
+          </select>
+        </div>
+        </div>
       </div>
     </header>
     <main id="legal-main" class="legal-page">
@@ -52,5 +69,14 @@
         <div class="legal-body"><p>本ポリシーは、Newon（「当社」）がウェブサイトおよびモバイルアプリを提供する際の情報の取り扱いを説明します。</p><h2>収集する情報</h2><p>お問い合わせで提供いただくメール等と、サービス運営に必要な限定的な技術情報を取得する場合があります。詳細は各アプリの設定およびストア記載をご確認ください。</p><h2>利用目的</h2><p>サービスの提供・改善、お問い合わせ対応、法遵守のために利用します。個人情報を販売しません。</p><h2>保管とセキュリティ</h2><p>目的達成に必要な期間のみ保管し、サービスの性質に応じた合理的な保護措置を講じます。</p><h2>お客様の権利</h2><p>地域により、アクセス・訂正・削除等の権利がある場合があります。下記メールまでご連絡ください。</p><h2>お問い合わせ</h2><p>newon@newon.app</p><p>本ポリシーは変更されることがあります。</p></div>
       </div>
     </main>
+    <script>
+      (function () {
+        var cur = "ja";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
   </body>
 </html>

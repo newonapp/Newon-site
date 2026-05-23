@@ -22,35 +22,30 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/ox-month.css" />
+    <link rel="stylesheet" href="/ox-month.css?v=20260523-brand-header-app" />
+    <script src="/lang-nav.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">{{t:common.skipToContent}}</a>
 
     <div id="home" class="site-shell">
       <header class="site-header">
-        <div class="container header-inner">
-          <a class="brand" href="#top" aria-label="{{t:nav.brandHomeAria}}">
-            <span class="brand-mark" aria-hidden="true">
-              <img
-                class="brand-img"
-                src="/logo.png"
-                alt=""
-                width="40"
-                height="40"
-              />
-            </span>
-            <span class="brand-name">Newon</span>
-          </a>
-          <nav class="nav nav--apps-only" aria-label="{{t:nav.appsAria}}">
-            <div class="apps-flyout" data-apps-flyout>
+        <div class="container navbar-bar navbar-bar--home navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="{{t:nav.brandHomeAria}}">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+              </a>
+              <nav class="nav nav--apps-only" aria-label="{{t:nav.appsAria}}">
+            <div class="apps-flyout apps-flyout--align-start" data-apps-flyout>
               <button
                 type="button"
-                class="apps-flyout__trigger"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar"
                 id="apps-trigger-home"
                 aria-expanded="false"
                 aria-haspopup="true"
                 aria-controls="apps-panel-home"
+                aria-label="{{t:nav.appsAria}}"
               >
                 <span>{{t:nav.appsLabel}}</span>
                 <span class="apps-flyout__chev" aria-hidden="true"></span>
@@ -82,12 +77,65 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">{{t:nav.pillmateDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#savy-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/savy-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SAVY</span>
+                    <span class="apps-flyout__desc">{{t:nav.savyDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#babylog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">BabyLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.babylogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#petlog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PetLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.petlogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
-          </nav>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a class="navbar-app-showcase navbar-app-showcase--hub" href="#top" aria-label="{{t:nav.brandHomeAria}}">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">Newon</span>
+              <span class="navbar-app-showcase__tagline">{{t:nav.headerHubTagline}}</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--brand-toolbar">
           <div class="lang-switcher" data-lang-switcher>
             <label class="visually-hidden" for="lang-select-home">{{t:ui.language}}</label>
-            <select id="lang-select-home" class="lang-select" data-lang-select aria-label="{{t:ui.language}}">
+            <select id="lang-select-home" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
               <option value="ko">{{t:ui.langKo}}</option>
               <option value="en">{{t:ui.langEn}}</option>
               <option value="ja">{{t:ui.langJa}}</option>
@@ -100,7 +148,16 @@
             </select>
           </div>
           <button
-            class="nav-toggle"
+            type="button"
+            class="navbar-theme-toggle"
+            id="home-theme"
+            aria-label="{{t:common.themeToDark}}"
+            title="{{t:common.themeToggle}}"
+          >
+            🌙
+          </button>
+          <button
+            class="nav-toggle nav-toggle--toolbar"
             type="button"
             aria-expanded="false"
             aria-controls="mobile-nav"
@@ -108,6 +165,8 @@
           >
             <span></span><span></span>
           </button>
+          </div>
+          </div>
         </div>
         <div id="mobile-nav" class="mobile-nav mobile-nav--apps-only" hidden>
           <details class="mobile-apps-drawer">
@@ -128,6 +187,42 @@
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">SubPing</span>
                 <span class="mobile-apps-drawer__hint">{{t:nav.mobileSubpingHint}}</span>
+              </span>
+            </a>
+            <a href="#pillmate-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobilePillmateHint}}</span>
+              </span>
+            </a>
+            <a href="#savy-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/savy-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SAVY</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileSavyHint}}</span>
+              </span>
+            </a>
+            <a href="#babylog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/babylog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">BabyLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileBabylogHint}}</span>
+              </span>
+            </a>
+            <a href="#petlog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/petlog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PetLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobilePetlogHint}}</span>
               </span>
             </a>
           </details>
@@ -386,20 +481,22 @@
       <a class="ox-skip" href="#ox-main">{{t:ox.skip}}</a>
 
       <header class="ox-header">
-        <div class="ox-container ox-header-inner">
-          <a class="ox-brand" href="#ox-top" aria-label="{{t:ox.brandAria}}">
-            <img src="/ox-month-logo.png" alt="" width="36" height="36" />
-            <span>OX MONTH</span>
-          </a>
-          <nav class="ox-nav ox-nav--apps-only" aria-label="{{t:nav.appsAria}}">
-            <div class="apps-flyout apps-flyout--in-ox" data-apps-flyout>
+        <div class="ox-container navbar-bar navbar-bar--ox navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub navbar-hub--ox">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="{{t:nav.brandHomeAria}}">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+              </a>
+              <nav class="ox-nav ox-nav--apps-only" aria-label="{{t:nav.appsAria}}">
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
               <button
                 type="button"
-                class="apps-flyout__trigger"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
                 id="apps-trigger-ox"
                 aria-expanded="false"
                 aria-haspopup="true"
                 aria-controls="apps-panel-ox"
+                aria-label="{{t:nav.appsAria}}"
               >
                 <span>{{t:nav.appsLabel}}</span>
                 <span class="apps-flyout__chev" aria-hidden="true"></span>
@@ -436,12 +533,65 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">{{t:nav.pillmateDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#savy-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/savy-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SAVY</span>
+                    <span class="apps-flyout__desc">{{t:nav.savyDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#babylog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">BabyLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.babylogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#petlog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PetLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.petlogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
-          </nav>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a href="#ox-top" class="navbar-app-showcase" aria-label="{{t:ox.brandAria}}">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/ox-month-logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">OX MONTH</span>
+              <span class="navbar-app-showcase__tagline">{{t:nav.oxDesc}}</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--ox navbar-bar__controls--brand-toolbar">
           <div class="lang-switcher lang-switcher--ox" data-lang-switcher>
             <label class="visually-hidden" for="lang-select-ox">{{t:ui.language}}</label>
-            <select id="lang-select-ox" class="lang-select" data-lang-select aria-label="{{t:ui.language}}">
+            <select id="lang-select-ox" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
               <option value="ko">{{t:ui.langKo}}</option>
               <option value="en">{{t:ui.langEn}}</option>
               <option value="ja">{{t:ui.langJa}}</option>
@@ -454,7 +604,6 @@
             </select>
           </div>
           <div class="ox-header-actions">
-            <a class="ox-link-newon js-go-home" href="#">{{t:ox.navNewon}}</a>
             <button
               type="button"
               class="ox-theme-toggle"
@@ -474,6 +623,8 @@
             >
               <span></span><span></span>
             </button>
+          </div>
+          </div>
           </div>
         </div>
         <div id="ox-mobile" class="ox-mobile-menu ox-mobile-menu--apps-only" hidden>
@@ -495,6 +646,42 @@
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">SubPing</span>
                 <span class="mobile-apps-drawer__hint">{{t:ox.mobileSubpingHint}}</span>
+              </span>
+            </a>
+            <a href="#pillmate-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">{{t:ox.mobilePillmateHint}}</span>
+              </span>
+            </a>
+            <a href="#savy-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/savy-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SAVY</span>
+                <span class="mobile-apps-drawer__hint">{{t:ox.mobileSavyHint}}</span>
+              </span>
+            </a>
+            <a href="#babylog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/babylog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">BabyLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:ox.mobileBabylogHint}}</span>
+              </span>
+            </a>
+            <a href="#petlog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/petlog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PetLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:ox.mobilePetlogHint}}</span>
               </span>
             </a>
           </details>
@@ -610,7 +797,7 @@
                 </p>
               </div>
               <p class="ox-app-intro__legal">
-                <a class="ox-app-intro__legal-link" href="/privacy/">{{t:ui.privacyPolicyLink}}</a>
+                <a class="ox-app-intro__legal-link" href="privacy/">{{t:ui.privacyPolicyLink}}</a>
               </p>
             </div>
           </div>
@@ -939,12 +1126,12 @@
       <footer class="ox-footer">
         <div class="ox-container ox-footer-inner">
           <div class="footer-legal-links footer-legal-links--ox">
-            <a class="footer-legal" href="../privacy/">{{t:footer.privacy}}</a>
+            <a class="footer-legal" href="privacy/">{{t:footer.privacy}}</a>
             <span class="footer-legal-sep" aria-hidden="true">·</span>
-            <a class="footer-legal" href="../terms/">{{t:footer.terms}}</a>
+            <a class="footer-legal" href="terms/">{{t:footer.terms}}</a>
           </div>
           <p class="ox-footer-delete-account">
-            <a class="footer-legal" href="/oxmonth/delete-account/">{{t:ox.deleteAccountLink}}</a>
+            <a class="footer-legal" href="oxmonth/delete-account/">{{t:ox.deleteAccountLink}}</a>
           </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="{{t:footer.socialAria}}">
             <a
@@ -1051,24 +1238,2877 @@
       </footer>
     </div>
 
-    <div id="subping-app" class="ox-page site-shell" data-theme="dark" hidden>
+    <div id="pillmate-app" class="ox-page site-shell" data-theme="light" hidden>
+      <a class="ox-skip" href="#pm-main">{{t:ox.skip}}</a>
+
+      <header class="ox-header">
+        <div class="ox-container navbar-bar navbar-bar--ox navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub navbar-hub--ox">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="{{t:nav.brandHomeAria}}">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+              </a>
+              <nav class="ox-nav ox-nav--apps-only" aria-label="{{t:nav.appsAria}}">
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
+              <button
+                type="button"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
+                id="apps-trigger-pm"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="apps-panel-pm"
+                aria-label="{{t:nav.appsAria}}"
+              >
+                <span>{{t:nav.appsLabel}}</span>
+                <span class="apps-flyout__chev" aria-hidden="true"></span>
+              </button>
+              <div
+                id="apps-panel-pm"
+                class="apps-flyout__panel"
+                role="menu"
+                aria-labelledby="apps-trigger-pm"
+                hidden
+              >
+                <a href="#ox-month" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/ox-month-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">OX MONTH</span>
+                    <span class="apps-flyout__desc">{{t:nav.oxDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#subping-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/subping-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SubPing</span>
+                    <span class="apps-flyout__desc">{{t:nav.subpingDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a
+                  href="#pm-top"
+                  role="menuitem"
+                  class="apps-flyout__item apps-flyout__item--current"
+                  aria-current="page"
+                >
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">{{t:nav.pillmateDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#savy-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/savy-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SAVY</span>
+                    <span class="apps-flyout__desc">{{t:nav.savyDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#babylog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">BabyLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.babylogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#petlog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PetLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.petlogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a href="#pm-top" class="navbar-app-showcase" aria-label="{{t:pm.brandAria}}">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/pillmate-logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">Pillmate</span>
+              <span class="navbar-app-showcase__tagline">{{t:nav.pillmateDesc}}</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--ox navbar-bar__controls--brand-toolbar">
+          <div class="lang-switcher lang-switcher--ox" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-pm">{{t:ui.language}}</label>
+            <select id="lang-select-pm" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
+              <option value="ko">{{t:ui.langKo}}</option>
+              <option value="en">{{t:ui.langEn}}</option>
+              <option value="ja">{{t:ui.langJa}}</option>
+              <option value="es">{{t:ui.langEs}}</option>
+              <option value="pt-br">{{t:ui.langPtBr}}</option>
+              <option value="fr">{{t:ui.langFr}}</option>
+              <option value="de">{{t:ui.langDe}}</option>
+              <option value="hi">{{t:ui.langHi}}</option>
+              <option value="id">{{t:ui.langId}}</option>
+            </select>
+          </div>
+          <div class="ox-header-actions">
+            <button
+              type="button"
+              class="ox-theme-toggle"
+              id="pm-theme"
+              aria-label="{{t:common.themeToLight}}"
+              title="{{t:common.themeToggle}}"
+            >
+              ☀
+            </button>
+            <button
+              type="button"
+              class="ox-nav-toggle"
+              id="pm-nav-toggle"
+              aria-expanded="false"
+              aria-controls="pm-mobile"
+              aria-label="{{t:common.menu}}"
+            >
+              <span></span><span></span>
+            </button>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div id="pm-mobile" class="ox-mobile-menu ox-mobile-menu--apps-only" hidden>
+          <details class="mobile-apps-drawer mobile-apps-drawer--ox">
+            <summary class="mobile-apps-drawer__summary">{{t:ox.mobileSummary}}</summary>
+            <a href="#ox-month" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/ox-month-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">OX MONTH</span>
+                <span class="mobile-apps-drawer__hint">{{t:pm.drawerOx}}</span>
+              </span>
+            </a>
+            <a href="#subping-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/subping-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SubPing</span>
+                <span class="mobile-apps-drawer__hint">{{t:pm.drawerSp}}</span>
+              </span>
+            </a>
+            <a href="#pm-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">{{t:pm.drawerPm}}</span>
+              </span>
+            </a>
+            <a href="#savy-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/savy-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SAVY</span>
+                <span class="mobile-apps-drawer__hint">{{t:pm.mobileSavyHint}}</span>
+              </span>
+            </a>
+            <a href="#babylog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/babylog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">BabyLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:pm.mobileBabylogHint}}</span>
+              </span>
+            </a>
+            <a href="#petlog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/petlog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PetLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:pm.mobilePetlogHint}}</span>
+              </span>
+            </a>
+          </details>
+        </div>
+      </header>
+
+      <main id="pm-main">
+        <section id="pm-top" class="ox-hero ox-reveal-on-scroll is-visible">
+          <div class="ox-container ox-hero-grid">
+            <div class="ox-hero-copy">
+              <div class="ox-badge-row">
+                <p class="ox-badge">
+                  <span class="ox-badge-dot" aria-hidden="true"></span>
+                  {{t:pm.badge}}
+                </p>
+                <p class="ox-badge ox-badge--secondary">{{t:ox.globalReachBadge}}</p>
+              </div>
+              <h1>{{t:pm.h1}}</h1>
+              <p class="ox-subtitle">{{html:pm.subtitleHtml}}</p>
+              <p class="ox-hero-reach-summary">{{t:pm.heroReachSummary}}</p>
+              <div class="ox-store-release" role="status" aria-live="polite">
+                <p class="ox-store-release__label">{{t:ox.storeReleaseLine}}</p>
+                <div class="ox-store-badges">
+                  <a
+                    class="ox-store-badge ox-store-badge--apple"
+                    href="{{html:pm.appStoreUrl}}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{t:pm.appStoreBadgeAria}}"
+                  >
+                    <svg
+                      class="ox-store-badge__icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                      />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">{{t:ox.appStoreBadgeKicker}}</span>
+                      <span class="ox-store-badge__name">App Store</span>
+                    </span>
+                  </a>
+                  <a
+                    class="ox-store-badge ox-store-badge--google"
+                    href="{{html:pm.googlePlayUrl}}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{t:pm.googlePlayBadgeAria}}"
+                  >
+                    <svg
+                      class="ox-store-badge__icon ox-store-badge__icon--play"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 28 28"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path fill="#00D9FF" d="M3 4.5v19l11-9.7L3 4.5z" />
+                      <path fill="#00F076" d="M15.4 14.3 25 20.8c.6-.4 1-1 1-1.8V9c0-.7-.4-1.4-1-1.8l-9.6 6.1z" />
+                      <path fill="#FFCE00" d="M15.4 13.7 25 7.2c-.6-.4-1.3-.6-2-.4L3 4.5l12.4 9.2z" />
+                      <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">{{t:ox.googlePlayBadgeKicker}}</span>
+                      <span class="ox-store-badge__name">Google Play</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="ox-hero-visual">
+              <div class="ox-hero-frame ox-hero-frame--logo">
+                <img
+                  class="ox-hero-logo-img"
+                  src="/pillmate-logo.png"
+                  alt="{{t:pm.heroLogoAlt}}"
+                  width="940"
+                  height="940"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="pm-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pm-intro-title">
+          <div class="ox-container ox-app-intro__inner">
+            <div class="ox-app-intro__copy">
+              <p class="ox-section-label">{{t:pm.introLabel}}</p>
+              <h2 id="pm-intro-title" class="ox-app-intro__title">
+                <span class="ox-app-intro__title-icon" aria-hidden="true">💊</span>
+                {{t:pm.introTitle}}
+              </h2>
+              <div class="ox-app-intro__body">{{html:pm.introHtml}}</div>
+              <p class="ox-app-intro__closing">{{t:pm.introClosing}}</p>
+              <p class="ox-app-intro__legal">
+                <a class="ox-app-intro__legal-link" href="privacy/">{{t:ui.privacyPolicyLink}}</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="pm-showcase-scroll"
+          class="ox-section ox-reveal-on-scroll"
+          aria-label="{{t:pm.showcaseCollageAria}}"
+        >
+          <div class="ox-container">
+            <div class="sp-showcase-scroll" tabindex="0">
+              <div class="sp-showcase-scroll__track">
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:pm-showcase-01.png]]"
+                    alt="{{t:pm.imgShot1Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:pm-showcase-02.png]]"
+                    alt="{{t:pm.imgShot2Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:pm-showcase-03.png]]"
+                    alt="{{t:pm.imgShot3Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:pm-showcase-04.png]]"
+                    alt="{{t:pm.imgShot4Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:pm-showcase-05.png]]"
+                    alt="{{t:pm.imgShot5Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:pm-showcase-06.png]]"
+                    alt="{{t:pm.imgShot6Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:pm-showcase-07.png]]"
+                    alt="{{t:pm.imgShot7Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="pm-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="pm-features-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">{{t:pm.featuresLabel}}</p>
+              <h2 id="pm-features-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">💊</span>
+                {{t:pm.featuresTitle}}
+              </h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">✅</span>
+                <h3>{{t:pm.feat1Title}}</h3>
+                <p class="ox-feature-lead">{{t:pm.feat1Lead}}</p>
+                <p class="ox-feature-note">{{t:pm.feat1Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🕐</span>
+                <h3>{{t:pm.feat2Title}}</h3>
+                <p class="ox-feature-lead">{{t:pm.feat2Lead}}</p>
+                <p class="ox-feature-note">{{t:pm.feat2Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔔</span>
+                <h3>{{t:pm.feat3Title}}</h3>
+                <p class="ox-feature-lead">{{t:pm.feat3Lead}}</p>
+                <p class="ox-feature-note">{{t:pm.feat3Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📅</span>
+                <h3>{{t:pm.feat4Title}}</h3>
+                <p class="ox-feature-lead">{{t:pm.feat4Lead}}</p>
+                <p class="ox-feature-note">{{t:pm.feat4Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📝</span>
+                <h3>{{t:pm.feat5Title}}</h3>
+                <p class="ox-feature-lead">{{t:pm.feat5Lead}}</p>
+                <p class="ox-feature-note">{{t:pm.feat5Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">👨‍👩‍👧</span>
+                <h3>{{t:pm.feat6Title}}</h3>
+                <p class="ox-feature-lead">{{t:pm.feat6Lead}}</p>
+                <p class="ox-feature-note">{{t:pm.feat6Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📲</span>
+                <h3>{{t:pm.feat7Title}}</h3>
+                <p class="ox-feature-lead">{{t:pm.feat7Lead}}</p>
+                <p class="ox-feature-note">{{t:pm.feat7Note}}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="pm-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="pm-how-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <h2 id="pm-how-title" class="ox-section-title-inline">{{t:pm.howTitle}}</h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <h3>{{t:pm.how1Title}}</h3>
+                <p class="ox-feature-lead">{{t:pm.how1P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:pm.how2Title}}</h3>
+                <p class="ox-feature-lead">{{t:pm.how2P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:pm.how3Title}}</h3>
+                <p class="ox-feature-lead">{{t:pm.how3P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:pm.how4Title}}</h3>
+                <p class="ox-feature-lead">{{t:pm.how4P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:pm.how5Title}}</h3>
+                <p class="ox-feature-lead">{{t:pm.how5P}}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="pm-premium"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="pm-premium-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <header class="ox-premium-intro">
+              <p class="ox-section-label">{{t:pm.premiumLabel}}</p>
+              <h2 id="pm-premium-title" class="ox-premium-heading">
+                <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
+                {{t:pm.premiumTitle}}
+              </h2>
+              <p class="ox-premium-tagline">{{html:pm.premiumTagline}}</p>
+            </header>
+
+            <div class="ox-premium-stack">
+              <section class="ox-premium-block" aria-labelledby="pm-premium-features-heading">
+                <h3 id="pm-premium-features-heading" class="ox-premium-block__title">
+                  <span class="ox-premium-emoji" aria-hidden="true">🔓</span>
+                  {{t:pm.premFeatHeading}}
+                </h3>
+                <div class="ox-premium-grid">
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      {{t:pm.prem1Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:pm.prem1Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:pm.prem1Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      {{t:pm.prem2Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:pm.prem2Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:pm.prem2Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🎨</span>
+                      {{t:pm.prem3Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:pm.prem3Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:pm.prem3Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      {{t:pm.prem4Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:pm.prem4Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:pm.prem4Note}}</p>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="pm-reco" class="ox-section ox-reveal-on-scroll" aria-labelledby="pm-reco-title">
+          <div class="ox-container ox-reco-head">
+            <h2 id="pm-reco-title" class="ox-premium-heading">
+              <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
+              {{t:pm.recoTitle}}
+            </h2>
+            <ul class="co-build-list" style="margin-top: 1rem">
+              <li>{{t:pm.reco1}}</li>
+              <li>{{t:pm.reco2}}</li>
+              <li>{{t:pm.reco3}}</li>
+              <li>{{t:pm.reco4}}</li>
+              <li>{{t:pm.reco5}}</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="pm-closing-highlight"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="pm-closing-highlight-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <div class="ox-premium-highlight">
+              <p class="ox-premium-highlight__kicker">
+                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                {{t:pm.premHiKicker}}
+              </p>
+              <p class="ox-premium-highlight__line" id="pm-closing-highlight-title">
+                {{t:pm.premHiLine}}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="{{t:pm.closing}}">
+          <p>{{t:pm.closing}}</p>
+        </section>
+      </main>
+      <footer class="ox-footer">
+        <div class="ox-container ox-footer-inner">
+          <div class="footer-legal-links footer-legal-links--ox">
+            <a class="footer-legal" href="privacy/">{{t:footer.privacy}}</a>
+            <span class="footer-legal-sep" aria-hidden="true">·</span>
+            <a class="footer-legal" href="terms/">{{t:footer.terms}}</a>
+          </div>
+          <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="{{t:footer.socialAria}}">
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="mailto:newon@newon.app"
+              aria-label="{{t:ox.footerEmailAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="22,6 12,13 2,6"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="{{html:footer.instagramUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:ox.footerInstagramAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="{{html:footer.youtubeUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:footer.youtubeAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:footer.tiktokAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="ox-footer-meta">{{t:pm.footerRights}} <a href="#" class="js-go-home">{{t:common.newonLink}}</a></p>
+        </div>
+      </footer>
+    </div>
+
+
+    <div id="savy-app" class="ox-page site-shell" data-theme="light" hidden>
+      <a class="ox-skip" href="#sv-main">{{t:ox.skip}}</a>
+
+      <header class="ox-header">
+        <div class="ox-container navbar-bar navbar-bar--ox navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub navbar-hub--ox">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="{{t:nav.brandHomeAria}}">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+              </a>
+              <nav class="ox-nav ox-nav--apps-only" aria-label="{{t:nav.appsAria}}">
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
+              <button
+                type="button"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
+                id="apps-trigger-sv"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="apps-panel-sv"
+                aria-label="{{t:nav.appsAria}}"
+              >
+                <span>{{t:nav.appsLabel}}</span>
+                <span class="apps-flyout__chev" aria-hidden="true"></span>
+              </button>
+              <div
+                id="apps-panel-sv"
+                class="apps-flyout__panel"
+                role="menu"
+                aria-labelledby="apps-trigger-sv"
+                hidden
+              >
+                <a href="#ox-month" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/ox-month-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">OX MONTH</span>
+                    <span class="apps-flyout__desc">{{t:nav.oxDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#subping-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/subping-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SubPing</span>
+                    <span class="apps-flyout__desc">{{t:nav.subpingDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">{{t:nav.pillmateDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a
+                  href="#sv-top"
+                  role="menuitem"
+                  class="apps-flyout__item apps-flyout__item--current"
+                  aria-current="page"
+                >
+                  <span class="apps-flyout__icon">
+                    <img src="/savy-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SAVY</span>
+                    <span class="apps-flyout__desc">{{t:nav.savyDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#babylog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">BabyLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.babylogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#petlog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PetLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.petlogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a href="#sv-top" class="navbar-app-showcase" aria-label="{{t:sv.brandAria}}">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/savy-logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">SAVY</span>
+              <span class="navbar-app-showcase__tagline">{{t:nav.savyDesc}}</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--ox navbar-bar__controls--brand-toolbar">
+          <div class="lang-switcher lang-switcher--ox" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-sv">{{t:ui.language}}</label>
+            <select id="lang-select-sv" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
+              <option value="ko">{{t:ui.langKo}}</option>
+              <option value="en">{{t:ui.langEn}}</option>
+              <option value="ja">{{t:ui.langJa}}</option>
+              <option value="es">{{t:ui.langEs}}</option>
+              <option value="pt-br">{{t:ui.langPtBr}}</option>
+              <option value="fr">{{t:ui.langFr}}</option>
+              <option value="de">{{t:ui.langDe}}</option>
+              <option value="hi">{{t:ui.langHi}}</option>
+              <option value="id">{{t:ui.langId}}</option>
+            </select>
+          </div>
+          <div class="ox-header-actions">
+            <button
+              type="button"
+              class="ox-theme-toggle"
+              id="sv-theme"
+              aria-label="{{t:common.themeToLight}}"
+              title="{{t:common.themeToggle}}"
+            >
+              ☀
+            </button>
+            <button
+              type="button"
+              class="ox-nav-toggle"
+              id="sv-nav-toggle"
+              aria-expanded="false"
+              aria-controls="sv-mobile"
+              aria-label="{{t:common.menu}}"
+            >
+              <span></span><span></span>
+            </button>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div id="sv-mobile" class="ox-mobile-menu ox-mobile-menu--apps-only" hidden>
+          <details class="mobile-apps-drawer mobile-apps-drawer--ox">
+            <summary class="mobile-apps-drawer__summary">{{t:ox.mobileSummary}}</summary>
+            <a href="#ox-month" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/ox-month-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">OX MONTH</span>
+                <span class="mobile-apps-drawer__hint">{{t:sv.drawerOx}}</span>
+              </span>
+            </a>
+            <a href="#subping-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/subping-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SubPing</span>
+                <span class="mobile-apps-drawer__hint">{{t:sv.drawerSp}}</span>
+              </span>
+            </a>
+            <a href="#pillmate-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">{{t:sv.drawerPm}}</span>
+              </span>
+            </a>
+            <a href="#babylog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/babylog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">BabyLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:sv.mobileBabylogHint}}</span>
+              </span>
+            </a>
+            <a href="#petlog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/petlog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PetLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:sv.mobilePetlogHint}}</span>
+              </span>
+            </a>
+            <a href="#sv-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/savy-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SAVY</span>
+                <span class="mobile-apps-drawer__hint">{{t:sv.drawerSv}}</span>
+              </span>
+            </a>
+          </details>
+        </div>
+      </header>
+
+      <main id="sv-main">
+        <section id="sv-top" class="ox-hero ox-reveal-on-scroll is-visible">
+          <div class="ox-container ox-hero-grid">
+            <div class="ox-hero-copy">
+              <div class="ox-badge-row">
+                <p class="ox-badge">
+                  <span class="ox-badge-dot" aria-hidden="true"></span>
+                  {{t:sv.badge}}
+                </p>
+                <p class="ox-badge ox-badge--secondary">{{t:sv.globalReachBadge}}</p>
+              </div>
+              <h1>{{t:sv.h1}}</h1>
+              <p class="ox-subtitle">{{html:sv.subtitleHtml}}</p>
+              <p class="ox-hero-reach-summary">{{t:sv.heroReachSummary}}</p>
+              <div class="ox-store-release" role="status" aria-live="polite">
+                <p class="ox-store-release__label">{{t:ox.storeReleaseLine}}</p>
+                <div class="ox-store-badges">
+                  <a
+                    class="ox-store-badge ox-store-badge--apple"
+                    href="{{html:sv.appStoreUrl}}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{t:sv.appStoreBadgeAria}}"
+                  >
+                    <svg
+                      class="ox-store-badge__icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                      />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">{{t:ox.appStoreBadgeKicker}}</span>
+                      <span class="ox-store-badge__name">App Store</span>
+                    </span>
+                  </a>
+                  <a
+                    class="ox-store-badge ox-store-badge--google"
+                    href="{{html:sv.googlePlayUrl}}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{t:sv.googlePlayBadgeAria}}"
+                  >
+                    <svg
+                      class="ox-store-badge__icon ox-store-badge__icon--play"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 28 28"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path fill="#00D9FF" d="M3 4.5v19l11-9.7L3 4.5z" />
+                      <path fill="#00F076" d="M15.4 14.3 25 20.8c.6-.4 1-1 1-1.8V9c0-.7-.4-1.4-1-1.8l-9.6 6.1z" />
+                      <path fill="#FFCE00" d="M15.4 13.7 25 7.2c-.6-.4-1.3-.6-2-.4L3 4.5l12.4 9.2z" />
+                      <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">{{t:ox.googlePlayBadgeKicker}}</span>
+                      <span class="ox-store-badge__name">Google Play</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="ox-hero-visual">
+              <div class="ox-hero-frame ox-hero-frame--logo">
+                <img
+                  class="ox-hero-logo-img"
+                  src="/savy-logo.png"
+                  alt="{{t:sv.heroLogoAlt}}"
+                  width="940"
+                  height="940"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="sv-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="sv-intro-title">
+          <div class="ox-container ox-app-intro__inner">
+            <div class="ox-app-intro__copy">
+              <p class="ox-section-label">{{t:sv.introLabel}}</p>
+              <h2 id="sv-intro-title" class="ox-app-intro__title">
+                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
+                {{t:sv.introTitle}}
+              </h2>
+              <div class="ox-app-intro__body">{{html:sv.introHtml}}</div>
+              <p class="ox-app-intro__closing">{{t:sv.introClosing}}</p>
+              <p class="ox-app-intro__legal">
+                <a class="ox-app-intro__legal-link" href="privacy/">{{t:ui.privacyPolicyLink}}</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="sv-showcase-scroll"
+          class="ox-section ox-reveal-on-scroll"
+          aria-label="{{t:sv.showcaseCollageAria}}"
+        >
+          <div class="ox-container">
+            <div class="sp-showcase-scroll" tabindex="0">
+              <div class="sp-showcase-scroll__track">
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:sv-showcase-01.png]]"
+                    alt="{{t:sv.imgShot1Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:sv-showcase-02.png]]"
+                    alt="{{t:sv.imgShot2Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:sv-showcase-03.png]]"
+                    alt="{{t:sv.imgShot3Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:sv-showcase-04.png]]"
+                    alt="{{t:sv.imgShot4Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:sv-showcase-05.png]]"
+                    alt="{{t:sv.imgShot5Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:sv-showcase-06.png]]"
+                    alt="{{t:sv.imgShot6Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="sv-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="sv-features-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">{{t:sv.featuresLabel}}</p>
+              <h2 id="sv-features-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">🚀</span>
+                {{t:sv.featuresTitle}}
+              </h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">💳</span>
+                <h3>{{t:sv.feat1Title}}</h3>
+                <p class="ox-feature-lead">{{t:sv.feat1Lead}}</p>
+                <p class="ox-feature-note">{{t:sv.feat1Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">💰</span>
+                <h3>{{t:sv.feat2Title}}</h3>
+                <p class="ox-feature-lead">{{t:sv.feat2Lead}}</p>
+                <p class="ox-feature-note">{{t:sv.feat2Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📋</span>
+                <h3>{{t:sv.feat3Title}}</h3>
+                <p class="ox-feature-lead">{{t:sv.feat3Lead}}</p>
+                <p class="ox-feature-note">{{t:sv.feat3Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📉</span>
+                <h3>{{t:sv.feat4Title}}</h3>
+                <p class="ox-feature-lead">{{t:sv.feat4Lead}}</p>
+                <p class="ox-feature-note">{{t:sv.feat4Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📊</span>
+                <h3>{{t:sv.feat5Title}}</h3>
+                <p class="ox-feature-lead">{{t:sv.feat5Lead}}</p>
+                <p class="ox-feature-note">{{t:sv.feat5Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔔</span>
+                <h3>{{t:sv.feat6Title}}</h3>
+                <p class="ox-feature-lead">{{t:sv.feat6Lead}}</p>
+                <p class="ox-feature-note">{{t:sv.feat6Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
+                <h3>{{t:sv.feat7Title}}</h3>
+                <p class="ox-feature-lead">{{t:sv.feat7Lead}}</p>
+                <p class="ox-feature-note">{{t:sv.feat7Note}}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="sv-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="sv-how-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <h2 id="sv-how-title" class="ox-section-title-inline">{{t:sv.howTitle}}</h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <h3>{{t:sv.how1Title}}</h3>
+                <p class="ox-feature-lead">{{t:sv.how1P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:sv.how2Title}}</h3>
+                <p class="ox-feature-lead">{{t:sv.how2P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:sv.how3Title}}</h3>
+                <p class="ox-feature-lead">{{t:sv.how3P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:sv.how4Title}}</h3>
+                <p class="ox-feature-lead">{{t:sv.how4P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:sv.how5Title}}</h3>
+                <p class="ox-feature-lead">{{t:sv.how5P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:sv.how6Title}}</h3>
+                <p class="ox-feature-lead">{{t:sv.how6P}}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="sv-premium"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="sv-premium-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <header class="ox-premium-intro">
+              <p class="ox-section-label">{{t:sv.premiumLabel}}</p>
+              <h2 id="sv-premium-title" class="ox-premium-heading">
+                <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
+                {{t:sv.premiumTitle}}
+              </h2>
+              <p class="ox-premium-tagline">{{html:sv.premiumTagline}}</p>
+            </header>
+
+            <div class="ox-premium-stack">
+              <section class="ox-premium-block" aria-labelledby="sv-premium-features-heading">
+                <h3 id="sv-premium-features-heading" class="ox-premium-block__title">
+                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  {{t:sv.premFeatHeading}}
+                </h3>
+                <div class="ox-premium-grid">
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      {{t:sv.prem1Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:sv.prem1Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:sv.prem1Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      {{t:sv.prem2Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:sv.prem2Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:sv.prem2Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
+                      {{t:sv.prem3Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:sv.prem3Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:sv.prem3Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📈</span>
+                      {{t:sv.prem4Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:sv.prem4Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:sv.prem4Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      {{t:sv.prem5Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:sv.prem5Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:sv.prem5Note}}</p>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="sv-reco" class="ox-section ox-reveal-on-scroll" aria-labelledby="sv-reco-title">
+          <div class="ox-container ox-reco-head">
+            <h2 id="sv-reco-title" class="ox-premium-heading">
+              <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
+              {{t:sv.recoTitle}}
+            </h2>
+            <ul class="co-build-list" style="margin-top: 1rem">
+              <li>{{t:sv.reco1}}</li>
+              <li>{{t:sv.reco2}}</li>
+              <li>{{t:sv.reco3}}</li>
+              <li>{{t:sv.reco4}}</li>
+              <li>{{t:sv.reco5}}</li>
+              <li>{{t:sv.reco6}}</li>
+              <li>{{t:sv.reco7}}</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="sv-closing-highlight"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="sv-closing-highlight-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <div class="ox-premium-highlight">
+              <p class="ox-premium-highlight__kicker">
+                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                {{t:sv.premHiKicker}}
+              </p>
+              <p class="ox-premium-highlight__line" id="sv-closing-highlight-title">
+                {{t:sv.premHiLine}}
+              </p>
+              <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
+                {{t:sv.premHiSub}}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="{{t:sv.closingAria}}">
+          <div class="ox-closing__stack">{{html:sv.closingHtml}}</div>
+        </section>
+      </main>
+      <footer class="ox-footer">
+        <div class="ox-container ox-footer-inner">
+          <div class="footer-legal-links footer-legal-links--ox">
+            <a class="footer-legal" href="privacy/">{{t:footer.privacy}}</a>
+            <span class="footer-legal-sep" aria-hidden="true">·</span>
+            <a class="footer-legal" href="terms/">{{t:footer.terms}}</a>
+          </div>
+          <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="{{t:footer.socialAria}}">
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="mailto:newon@newon.app"
+              aria-label="{{t:ox.footerEmailAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="22,6 12,13 2,6"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="{{html:footer.instagramUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:ox.footerInstagramAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="{{html:footer.youtubeUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:footer.youtubeAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:footer.tiktokAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="ox-footer-meta">{{t:sv.footerRights}} <a href="#" class="js-go-home">{{t:common.newonLink}}</a></p>
+        </div>
+      </footer>
+    </div>
+
+
+    <div id="babylog-app" class="ox-page site-shell" data-theme="light" hidden>
+      <a class="ox-skip" href="#bl-main">{{t:ox.skip}}</a>
+
+      <header class="ox-header">
+        <div class="ox-container navbar-bar navbar-bar--ox navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub navbar-hub--ox">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="{{t:nav.brandHomeAria}}">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+              </a>
+              <nav class="ox-nav ox-nav--apps-only" aria-label="{{t:nav.appsAria}}">
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
+              <button
+                type="button"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
+                id="apps-trigger-bl"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="apps-panel-bl"
+                aria-label="{{t:nav.appsAria}}"
+              >
+                <span>{{t:nav.appsLabel}}</span>
+                <span class="apps-flyout__chev" aria-hidden="true"></span>
+              </button>
+              <div
+                id="apps-panel-bl"
+                class="apps-flyout__panel"
+                role="menu"
+                aria-labelledby="apps-trigger-bl"
+                hidden
+              >
+                <a href="#ox-month" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/ox-month-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">OX MONTH</span>
+                    <span class="apps-flyout__desc">{{t:nav.oxDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#subping-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/subping-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SubPing</span>
+                    <span class="apps-flyout__desc">{{t:nav.subpingDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">{{t:nav.pillmateDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#savy-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/savy-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SAVY</span>
+                    <span class="apps-flyout__desc">{{t:nav.savyDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a
+                  href="#bl-top"
+                  role="menuitem"
+                  class="apps-flyout__item apps-flyout__item--current"
+                  aria-current="page"
+                >
+                  <span class="apps-flyout__icon">
+                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">BabyLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.babylogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#petlog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PetLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.petlogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a href="#bl-top" class="navbar-app-showcase" aria-label="{{t:bl.brandAria}}">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/babylog-logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">BabyLog</span>
+              <span class="navbar-app-showcase__tagline">{{t:nav.babylogDesc}}</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--ox navbar-bar__controls--brand-toolbar">
+          <div class="lang-switcher lang-switcher--ox" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-bl">{{t:ui.language}}</label>
+            <select id="lang-select-bl" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
+              <option value="ko">{{t:ui.langKo}}</option>
+              <option value="en">{{t:ui.langEn}}</option>
+              <option value="ja">{{t:ui.langJa}}</option>
+              <option value="es">{{t:ui.langEs}}</option>
+              <option value="pt-br">{{t:ui.langPtBr}}</option>
+              <option value="fr">{{t:ui.langFr}}</option>
+              <option value="de">{{t:ui.langDe}}</option>
+              <option value="hi">{{t:ui.langHi}}</option>
+              <option value="id">{{t:ui.langId}}</option>
+            </select>
+          </div>
+          <div class="ox-header-actions">
+            <button
+              type="button"
+              class="ox-theme-toggle"
+              id="bl-theme"
+              aria-label="{{t:common.themeToLight}}"
+              title="{{t:common.themeToggle}}"
+            >
+              ☀
+            </button>
+            <button
+              type="button"
+              class="ox-nav-toggle"
+              id="bl-nav-toggle"
+              aria-expanded="false"
+              aria-controls="bl-mobile"
+              aria-label="{{t:common.menu}}"
+            >
+              <span></span><span></span>
+            </button>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div id="bl-mobile" class="ox-mobile-menu ox-mobile-menu--apps-only" hidden>
+          <details class="mobile-apps-drawer mobile-apps-drawer--ox">
+            <summary class="mobile-apps-drawer__summary">{{t:ox.mobileSummary}}</summary>
+            <a href="#ox-month" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/ox-month-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">OX MONTH</span>
+                <span class="mobile-apps-drawer__hint">{{t:bl.drawerOx}}</span>
+              </span>
+            </a>
+            <a href="#subping-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/subping-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SubPing</span>
+                <span class="mobile-apps-drawer__hint">{{t:bl.drawerSp}}</span>
+              </span>
+            </a>
+            <a href="#pillmate-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">{{t:bl.drawerPm}}</span>
+              </span>
+            </a>
+            <a href="#savy-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/savy-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SAVY</span>
+                <span class="mobile-apps-drawer__hint">{{t:bl.drawerSv}}</span>
+              </span>
+            </a>
+            <a href="#bl-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/babylog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">BabyLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:bl.drawerBl}}</span>
+              </span>
+            </a>
+            <a href="#petlog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/petlog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PetLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:bl.drawerPl}}</span>
+              </span>
+            </a>
+          </details>
+        </div>
+      </header>
+
+      <main id="bl-main">
+        <section id="bl-top" class="ox-hero ox-reveal-on-scroll is-visible">
+          <div class="ox-container ox-hero-grid">
+            <div class="ox-hero-copy">
+              <div class="ox-badge-row">
+                <p class="ox-badge">
+                  <span class="ox-badge-dot" aria-hidden="true"></span>
+                  {{t:bl.badge}}
+                </p>
+                <p class="ox-badge ox-badge--secondary">{{t:bl.globalReachBadge}}</p>
+              </div>
+              <h1>{{t:bl.h1}}</h1>
+              <p class="ox-subtitle">{{html:bl.subtitleHtml}}</p>
+              <p class="ox-hero-reach-summary">{{t:bl.heroReachSummary}}</p>
+              <div class="ox-store-release" role="status" aria-live="polite">
+                <p class="ox-store-release__label">{{t:ox.storeReleaseLine}}</p>
+                <div class="ox-store-badges">
+                  <a
+                    class="ox-store-badge ox-store-badge--apple"
+                    href="{{html:bl.appStoreUrl}}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{t:bl.appStoreBadgeAria}}"
+                  >
+                    <svg
+                      class="ox-store-badge__icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                      />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">{{t:ox.appStoreBadgeKicker}}</span>
+                      <span class="ox-store-badge__name">App Store</span>
+                    </span>
+                  </a>
+                  <a
+                    class="ox-store-badge ox-store-badge--google"
+                    href="{{html:bl.googlePlayUrl}}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{t:bl.googlePlayBadgeAria}}"
+                  >
+                    <svg
+                      class="ox-store-badge__icon ox-store-badge__icon--play"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 28 28"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path fill="#00D9FF" d="M3 4.5v19l11-9.7L3 4.5z" />
+                      <path fill="#00F076" d="M15.4 14.3 25 20.8c.6-.4 1-1 1-1.8V9c0-.7-.4-1.4-1-1.8l-9.6 6.1z" />
+                      <path fill="#FFCE00" d="M15.4 13.7 25 7.2c-.6-.4-1.3-.6-2-.4L3 4.5l12.4 9.2z" />
+                      <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">{{t:ox.googlePlayBadgeKicker}}</span>
+                      <span class="ox-store-badge__name">Google Play</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="ox-hero-visual">
+              <div class="ox-hero-frame ox-hero-frame--logo">
+                <img
+                  class="ox-hero-logo-img"
+                  src="/babylog-logo.png"
+                  alt="{{t:bl.heroLogoAlt}}"
+                  width="940"
+                  height="940"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="bl-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="bl-intro-title">
+          <div class="ox-container ox-app-intro__inner">
+            <div class="ox-app-intro__copy">
+              <p class="ox-section-label">{{t:bl.introLabel}}</p>
+              <h2 id="bl-intro-title" class="ox-app-intro__title">
+                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
+                {{t:bl.introTitle}}
+              </h2>
+              <div class="ox-app-intro__body">{{html:bl.introHtml}}</div>
+              <p class="ox-app-intro__closing">{{t:bl.introClosing}}</p>
+              <p class="ox-app-intro__legal">
+                <a class="ox-app-intro__legal-link" href="privacy/">{{t:ui.privacyPolicyLink}}</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="bl-showcase-scroll"
+          class="ox-section ox-reveal-on-scroll"
+          aria-label="{{t:bl.showcaseCollageAria}}"
+        >
+          <div class="ox-container">
+            <div class="sp-showcase-scroll" tabindex="0">
+              <div class="sp-showcase-scroll__track">
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:bl-showcase-01.png]]"
+                    alt="{{t:bl.imgShot1Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:bl-showcase-02.png]]"
+                    alt="{{t:bl.imgShot2Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:bl-showcase-03.png]]"
+                    alt="{{t:bl.imgShot3Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:bl-showcase-04.png]]"
+                    alt="{{t:bl.imgShot4Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:bl-showcase-05.png]]"
+                    alt="{{t:bl.imgShot5Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:bl-showcase-06.png]]"
+                    alt="{{t:bl.imgShot6Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:bl-showcase-07.png]]"
+                    alt="{{t:bl.imgShot7Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="bl-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="bl-features-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">{{t:bl.featuresLabel}}</p>
+              <h2 id="bl-features-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">🚀</span>
+                {{t:bl.featuresTitle}}
+              </h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🍼</span>
+                <h3>{{t:bl.feat1Title}}</h3>
+                <p class="ox-feature-lead">{{t:bl.feat1Lead}}</p>
+                <p class="ox-feature-note">{{t:bl.feat1Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">👶</span>
+                <h3>{{t:bl.feat2Title}}</h3>
+                <p class="ox-feature-lead">{{t:bl.feat2Lead}}</p>
+                <p class="ox-feature-note">{{t:bl.feat2Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📏</span>
+                <h3>{{t:bl.feat3Title}}</h3>
+                <p class="ox-feature-lead">{{t:bl.feat3Lead}}</p>
+                <p class="ox-feature-note">{{t:bl.feat3Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📅</span>
+                <h3>{{t:bl.feat4Title}}</h3>
+                <p class="ox-feature-lead">{{t:bl.feat4Lead}}</p>
+                <p class="ox-feature-note">{{t:bl.feat4Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📊</span>
+                <h3>{{t:bl.feat5Title}}</h3>
+                <p class="ox-feature-lead">{{t:bl.feat5Lead}}</p>
+                <p class="ox-feature-note">{{t:bl.feat5Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">👨‍👩‍👧</span>
+                <h3>{{t:bl.feat6Title}}</h3>
+                <p class="ox-feature-lead">{{t:bl.feat6Lead}}</p>
+                <p class="ox-feature-note">{{t:bl.feat6Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">💬</span>
+                <h3>{{t:bl.feat7Title}}</h3>
+                <p class="ox-feature-lead">{{t:bl.feat7Lead}}</p>
+                <p class="ox-feature-note">{{t:bl.feat7Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
+                <h3>{{t:bl.feat8Title}}</h3>
+                <p class="ox-feature-lead">{{t:bl.feat8Lead}}</p>
+                <p class="ox-feature-note">{{t:bl.feat8Note}}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="bl-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="bl-how-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <h2 id="bl-how-title" class="ox-section-title-inline">{{t:bl.howTitle}}</h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <h3>{{t:bl.how1Title}}</h3>
+                <p class="ox-feature-lead">{{t:bl.how1P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:bl.how2Title}}</h3>
+                <p class="ox-feature-lead">{{t:bl.how2P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:bl.how3Title}}</h3>
+                <p class="ox-feature-lead">{{t:bl.how3P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:bl.how4Title}}</h3>
+                <p class="ox-feature-lead">{{t:bl.how4P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:bl.how5Title}}</h3>
+                <p class="ox-feature-lead">{{t:bl.how5P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:bl.how6Title}}</h3>
+                <p class="ox-feature-lead">{{t:bl.how6P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:bl.how7Title}}</h3>
+                <p class="ox-feature-lead">{{t:bl.how7P}}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="bl-premium"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="bl-premium-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <header class="ox-premium-intro">
+              <p class="ox-section-label">{{t:bl.premiumLabel}}</p>
+              <h2 id="bl-premium-title" class="ox-premium-heading">
+                <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
+                {{t:bl.premiumTitle}}
+              </h2>
+              <p class="ox-premium-tagline">{{html:bl.premiumTagline}}</p>
+            </header>
+
+            <div class="ox-premium-stack">
+              <section class="ox-premium-block" aria-labelledby="bl-premium-features-heading">
+                <h3 id="bl-premium-features-heading" class="ox-premium-block__title">
+                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  {{t:bl.premFeatHeading}}
+                </h3>
+                <div class="ox-premium-grid">
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📄</span>
+                      {{t:bl.prem1Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:bl.prem1Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:bl.prem1Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      {{t:bl.prem2Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:bl.prem2Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:bl.prem2Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      {{t:bl.prem3Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:bl.prem3Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:bl.prem3Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">👨‍👩‍👧</span>
+                      {{t:bl.prem4Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:bl.prem4Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:bl.prem4Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
+                      {{t:bl.prem5Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:bl.prem5Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:bl.prem5Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      {{t:bl.prem6Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:bl.prem6Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:bl.prem6Note}}</p>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="bl-reco" class="ox-section ox-reveal-on-scroll" aria-labelledby="bl-reco-title">
+          <div class="ox-container ox-reco-head">
+            <h2 id="bl-reco-title" class="ox-premium-heading">
+              <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
+              {{t:bl.recoTitle}}
+            </h2>
+            <ul class="co-build-list" style="margin-top: 1rem">
+              <li>{{t:bl.reco1}}</li>
+              <li>{{t:bl.reco2}}</li>
+              <li>{{t:bl.reco3}}</li>
+              <li>{{t:bl.reco4}}</li>
+              <li>{{t:bl.reco5}}</li>
+              <li>{{t:bl.reco6}}</li>
+              <li>{{t:bl.reco7}}</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="bl-closing-highlight"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="bl-closing-highlight-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <div class="ox-premium-highlight">
+              <p class="ox-premium-highlight__kicker">
+                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                {{t:bl.premHiKicker}}
+              </p>
+              <p class="ox-premium-highlight__line" id="bl-closing-highlight-title">
+                {{t:bl.premHiLine}}
+              </p>
+              <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
+                {{t:bl.premHiSub}}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="{{t:bl.closingAria}}">
+          <div class="ox-closing__stack">{{html:bl.closingHtml}}</div>
+        </section>
+      </main>
+      <footer class="ox-footer">
+        <div class="ox-container ox-footer-inner">
+          <div class="footer-legal-links footer-legal-links--ox">
+            <a class="footer-legal" href="privacy/">{{t:footer.privacy}}</a>
+            <span class="footer-legal-sep" aria-hidden="true">·</span>
+            <a class="footer-legal" href="terms/">{{t:footer.terms}}</a>
+          </div>
+          <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="{{t:footer.socialAria}}">
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="mailto:newon@newon.app"
+              aria-label="{{t:ox.footerEmailAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="22,6 12,13 2,6"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="{{html:footer.instagramUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:ox.footerInstagramAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="{{html:footer.youtubeUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:footer.youtubeAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:footer.tiktokAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="ox-footer-meta">{{t:bl.footerRights}} <a href="#" class="js-go-home">{{t:common.newonLink}}</a></p>
+        </div>
+      </footer>
+    </div>
+
+    <div id="petlog-app" class="ox-page site-shell" data-theme="light" hidden>
+      <a class="ox-skip" href="#pl-main">{{t:ox.skip}}</a>
+
+      <header class="ox-header">
+        <div class="ox-container navbar-bar navbar-bar--ox navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub navbar-hub--ox">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="{{t:nav.brandHomeAria}}">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+              </a>
+              <nav class="ox-nav ox-nav--apps-only" aria-label="{{t:nav.appsAria}}">
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
+              <button
+                type="button"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
+                id="apps-trigger-pl"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="apps-panel-pl"
+                aria-label="{{t:nav.appsAria}}"
+              >
+                <span>{{t:nav.appsLabel}}</span>
+                <span class="apps-flyout__chev" aria-hidden="true"></span>
+              </button>
+              <div
+                id="apps-panel-pl"
+                class="apps-flyout__panel"
+                role="menu"
+                aria-labelledby="apps-trigger-pl"
+                hidden
+              >
+                <a href="#ox-month" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/ox-month-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">OX MONTH</span>
+                    <span class="apps-flyout__desc">{{t:nav.oxDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#subping-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/subping-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SubPing</span>
+                    <span class="apps-flyout__desc">{{t:nav.subpingDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">{{t:nav.pillmateDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#savy-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/savy-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SAVY</span>
+                    <span class="apps-flyout__desc">{{t:nav.savyDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#babylog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">BabyLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.babylogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a
+                  href="#pl-top"
+                  role="menuitem"
+                  class="apps-flyout__item apps-flyout__item--current"
+                  aria-current="page"
+                >
+                  <span class="apps-flyout__icon">
+                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PetLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.petlogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a href="#pl-top" class="navbar-app-showcase" aria-label="{{t:pl.brandAria}}">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/petlog-logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">PetLog</span>
+              <span class="navbar-app-showcase__tagline">{{t:nav.petlogDesc}}</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--ox navbar-bar__controls--brand-toolbar">
+          <div class="lang-switcher lang-switcher--ox" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-pl">{{t:ui.language}}</label>
+            <select id="lang-select-pl" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
+              <option value="ko">{{t:ui.langKo}}</option>
+              <option value="en">{{t:ui.langEn}}</option>
+              <option value="ja">{{t:ui.langJa}}</option>
+              <option value="es">{{t:ui.langEs}}</option>
+              <option value="pt-br">{{t:ui.langPtBr}}</option>
+              <option value="fr">{{t:ui.langFr}}</option>
+              <option value="de">{{t:ui.langDe}}</option>
+              <option value="hi">{{t:ui.langHi}}</option>
+              <option value="id">{{t:ui.langId}}</option>
+            </select>
+          </div>
+          <div class="ox-header-actions">
+            <button
+              type="button"
+              class="ox-theme-toggle"
+              id="pl-theme"
+              aria-label="{{t:common.themeToLight}}"
+              title="{{t:common.themeToggle}}"
+            >
+              ☀
+            </button>
+            <button
+              type="button"
+              class="ox-nav-toggle"
+              id="pl-nav-toggle"
+              aria-expanded="false"
+              aria-controls="pl-mobile"
+              aria-label="{{t:common.menu}}"
+            >
+              <span></span><span></span>
+            </button>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div id="pl-mobile" class="ox-mobile-menu ox-mobile-menu--apps-only" hidden>
+          <details class="mobile-apps-drawer mobile-apps-drawer--ox">
+            <summary class="mobile-apps-drawer__summary">{{t:ox.mobileSummary}}</summary>
+            <a href="#ox-month" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/ox-month-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">OX MONTH</span>
+                <span class="mobile-apps-drawer__hint">{{t:pl.drawerOx}}</span>
+              </span>
+            </a>
+            <a href="#subping-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/subping-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SubPing</span>
+                <span class="mobile-apps-drawer__hint">{{t:pl.drawerSp}}</span>
+              </span>
+            </a>
+            <a href="#pillmate-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">{{t:pl.drawerPm}}</span>
+              </span>
+            </a>
+            <a href="#savy-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/savy-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SAVY</span>
+                <span class="mobile-apps-drawer__hint">{{t:pl.drawerSv}}</span>
+              </span>
+            </a>
+            <a href="#babylog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/babylog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">BabyLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:pl.drawerBl}}</span>
+              </span>
+            </a>
+            <a href="#pl-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/petlog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PetLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:pl.drawerPl}}</span>
+              </span>
+            </a>
+          </details>
+        </div>
+      </header>
+
+      <main id="pl-main">
+        <section id="pl-top" class="ox-hero ox-reveal-on-scroll is-visible">
+          <div class="ox-container ox-hero-grid">
+            <div class="ox-hero-copy">
+              <div class="ox-badge-row">
+                <p class="ox-badge">
+                  <span class="ox-badge-dot" aria-hidden="true"></span>
+                  {{t:pl.badge}}
+                </p>
+                <p class="ox-badge ox-badge--secondary">{{t:pl.globalReachBadge}}</p>
+              </div>
+              <h1>{{t:pl.h1}}</h1>
+              <p class="ox-subtitle">{{html:pl.subtitleHtml}}</p>
+              <p class="ox-hero-reach-summary">{{t:pl.heroReachSummary}}</p>
+              <div class="ox-store-release" role="status" aria-live="polite">
+                <p class="ox-store-release__label">{{t:ox.storeReleaseLine}}</p>
+                <div class="ox-store-badges">
+                  <a
+                    class="ox-store-badge ox-store-badge--apple"
+                    href="{{html:pl.appStoreUrl}}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{t:pl.appStoreBadgeAria}}"
+                  >
+                    <svg
+                      class="ox-store-badge__icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                      />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">{{t:ox.appStoreBadgeKicker}}</span>
+                      <span class="ox-store-badge__name">App Store</span>
+                    </span>
+                  </a>
+                  <a
+                    class="ox-store-badge ox-store-badge--google"
+                    href="{{html:pl.googlePlayUrl}}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{t:pl.googlePlayBadgeAria}}"
+                  >
+                    <svg
+                      class="ox-store-badge__icon ox-store-badge__icon--play"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 28 28"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path fill="#00D9FF" d="M3 4.5v19l11-9.7L3 4.5z" />
+                      <path fill="#00F076" d="M15.4 14.3 25 20.8c.6-.4 1-1 1-1.8V9c0-.7-.4-1.4-1-1.8l-9.6 6.1z" />
+                      <path fill="#FFCE00" d="M15.4 13.7 25 7.2c-.6-.4-1.3-.6-2-.4L3 4.5l12.4 9.2z" />
+                      <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">{{t:ox.googlePlayBadgeKicker}}</span>
+                      <span class="ox-store-badge__name">Google Play</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="ox-hero-visual">
+              <div class="ox-hero-frame ox-hero-frame--logo">
+                <img
+                  class="ox-hero-logo-img"
+                  src="/petlog-logo.png"
+                  alt="{{t:pl.heroLogoAlt}}"
+                  width="940"
+                  height="940"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="pl-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pl-intro-title">
+          <div class="ox-container ox-app-intro__inner">
+            <div class="ox-app-intro__copy">
+              <p class="ox-section-label">{{t:pl.introLabel}}</p>
+              <h2 id="pl-intro-title" class="ox-app-intro__title">
+                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
+                {{t:pl.introTitle}}
+              </h2>
+              <div class="ox-app-intro__body">{{html:pl.introHtml}}</div>
+              <p class="ox-app-intro__closing">{{t:pl.introClosing}}</p>
+              <p class="ox-app-intro__legal">
+                <a class="ox-app-intro__legal-link" href="privacy/">{{t:ui.privacyPolicyLink}}</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="pl-showcase-scroll"
+          class="ox-section ox-reveal-on-scroll"
+          aria-label="{{t:pl.showcaseCollageAria}}"
+        >
+          <div class="ox-container">
+            <div class="sp-showcase-scroll" tabindex="0">
+              <div class="sp-showcase-scroll__track">
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:pl-showcase-01.png]]"
+                    alt="{{t:pl.imgShot1Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:pl-showcase-02.png]]"
+                    alt="{{t:pl.imgShot2Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:pl-showcase-03.png]]"
+                    alt="{{t:pl.imgShot3Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:pl-showcase-04.png]]"
+                    alt="{{t:pl.imgShot4Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:pl-showcase-05.png]]"
+                    alt="{{t:pl.imgShot5Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:pl-showcase-06.png]]"
+                    alt="{{t:pl.imgShot6Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:pl-showcase-07.png]]"
+                    alt="{{t:pl.imgShot7Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="pl-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="pl-features-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">{{t:pl.featuresLabel}}</p>
+              <h2 id="pl-features-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">🚀</span>
+                {{t:pl.featuresTitle}}
+              </h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🍽️</span>
+                <h3>{{t:pl.feat1Title}}</h3>
+                <p class="ox-feature-lead">{{t:pl.feat1Lead}}</p>
+                <p class="ox-feature-note">{{t:pl.feat1Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🐾</span>
+                <h3>{{t:pl.feat2Title}}</h3>
+                <p class="ox-feature-lead">{{t:pl.feat2Lead}}</p>
+                <p class="ox-feature-note">{{t:pl.feat2Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">💉</span>
+                <h3>{{t:pl.feat3Title}}</h3>
+                <p class="ox-feature-lead">{{t:pl.feat3Lead}}</p>
+                <p class="ox-feature-note">{{t:pl.feat3Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📅</span>
+                <h3>{{t:pl.feat4Title}}</h3>
+                <p class="ox-feature-lead">{{t:pl.feat4Lead}}</p>
+                <p class="ox-feature-note">{{t:pl.feat4Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📊</span>
+                <h3>{{t:pl.feat5Title}}</h3>
+                <p class="ox-feature-lead">{{t:pl.feat5Lead}}</p>
+                <p class="ox-feature-note">{{t:pl.feat5Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">👨‍👩‍👧</span>
+                <h3>{{t:pl.feat6Title}}</h3>
+                <p class="ox-feature-lead">{{t:pl.feat6Lead}}</p>
+                <p class="ox-feature-note">{{t:pl.feat6Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">💬</span>
+                <h3>{{t:pl.feat7Title}}</h3>
+                <p class="ox-feature-lead">{{t:pl.feat7Lead}}</p>
+                <p class="ox-feature-note">{{t:pl.feat7Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
+                <h3>{{t:pl.feat8Title}}</h3>
+                <p class="ox-feature-lead">{{t:pl.feat8Lead}}</p>
+                <p class="ox-feature-note">{{t:pl.feat8Note}}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="pl-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="pl-how-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <h2 id="pl-how-title" class="ox-section-title-inline">{{t:pl.howTitle}}</h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <h3>{{t:pl.how1Title}}</h3>
+                <p class="ox-feature-lead">{{t:pl.how1P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:pl.how2Title}}</h3>
+                <p class="ox-feature-lead">{{t:pl.how2P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:pl.how3Title}}</h3>
+                <p class="ox-feature-lead">{{t:pl.how3P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:pl.how4Title}}</h3>
+                <p class="ox-feature-lead">{{t:pl.how4P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:pl.how5Title}}</h3>
+                <p class="ox-feature-lead">{{t:pl.how5P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:pl.how6Title}}</h3>
+                <p class="ox-feature-lead">{{t:pl.how6P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:pl.how7Title}}</h3>
+                <p class="ox-feature-lead">{{t:pl.how7P}}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="pl-premium"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="pl-premium-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <header class="ox-premium-intro">
+              <p class="ox-section-label">{{t:pl.premiumLabel}}</p>
+              <h2 id="pl-premium-title" class="ox-premium-heading">
+                <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
+                {{t:pl.premiumTitle}}
+              </h2>
+              <p class="ox-premium-tagline">{{html:pl.premiumTagline}}</p>
+            </header>
+
+            <div class="ox-premium-stack">
+              <section class="ox-premium-block" aria-labelledby="pl-premium-features-heading">
+                <h3 id="pl-premium-features-heading" class="ox-premium-block__title">
+                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  {{t:pl.premFeatHeading}}
+                </h3>
+                <div class="ox-premium-grid">
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📄</span>
+                      {{t:pl.prem1Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:pl.prem1Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:pl.prem1Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      {{t:pl.prem2Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:pl.prem2Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:pl.prem2Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      {{t:pl.prem3Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:pl.prem3Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:pl.prem3Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">👨‍👩‍👧</span>
+                      {{t:pl.prem4Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:pl.prem4Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:pl.prem4Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
+                      {{t:pl.prem5Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:pl.prem5Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:pl.prem5Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      {{t:pl.prem6Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:pl.prem6Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:pl.prem6Note}}</p>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="pl-reco" class="ox-section ox-reveal-on-scroll" aria-labelledby="pl-reco-title">
+          <div class="ox-container ox-reco-head">
+            <h2 id="pl-reco-title" class="ox-premium-heading">
+              <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
+              {{t:pl.recoTitle}}
+            </h2>
+            <ul class="co-build-list" style="margin-top: 1rem">
+              <li>{{t:pl.reco1}}</li>
+              <li>{{t:pl.reco2}}</li>
+              <li>{{t:pl.reco3}}</li>
+              <li>{{t:pl.reco4}}</li>
+              <li>{{t:pl.reco5}}</li>
+              <li>{{t:pl.reco6}}</li>
+              <li>{{t:pl.reco7}}</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="pl-closing-highlight"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="pl-closing-highlight-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <div class="ox-premium-highlight">
+              <p class="ox-premium-highlight__kicker">
+                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                {{t:pl.premHiKicker}}
+              </p>
+              <p class="ox-premium-highlight__line" id="pl-closing-highlight-title">
+                {{t:pl.premHiLine}}
+              </p>
+              <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
+                {{t:pl.premHiSub}}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="{{t:pl.closingAria}}">
+          <div class="ox-closing__stack">{{html:pl.closingHtml}}</div>
+        </section>
+      </main>
+      <footer class="ox-footer">
+        <div class="ox-container ox-footer-inner">
+          <div class="footer-legal-links footer-legal-links--ox">
+            <a class="footer-legal" href="privacy/">{{t:footer.privacy}}</a>
+            <span class="footer-legal-sep" aria-hidden="true">·</span>
+            <a class="footer-legal" href="terms/">{{t:footer.terms}}</a>
+          </div>
+          <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="{{t:footer.socialAria}}">
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="mailto:newon@newon.app"
+              aria-label="{{t:ox.footerEmailAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="22,6 12,13 2,6"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="{{html:footer.instagramUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:ox.footerInstagramAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="{{html:footer.youtubeUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:footer.youtubeAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:footer.tiktokAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="ox-footer-meta">{{t:pl.footerRights}} <a href="#" class="js-go-home">{{t:common.newonLink}}</a></p>
+        </div>
+      </footer>
+    </div>
+
+    <div id="subping-app" class="ox-page site-shell" data-theme="light" hidden>
       <a class="ox-skip" href="#sp-main">{{t:sp.skip}}</a>
 
       <header class="ox-header">
-        <div class="ox-container ox-header-inner">
-          <a class="ox-brand" href="#sp-top" aria-label="{{t:sp.brandAria}}">
-            <img src="/subping-logo.png" alt="" width="36" height="36" />
-            <span>SubPing</span>
-          </a>
-          <nav class="ox-nav ox-nav--apps-only" aria-label="{{t:nav.appsAria}}">
-            <div class="apps-flyout apps-flyout--in-ox" data-apps-flyout>
+        <div class="ox-container navbar-bar navbar-bar--ox navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub navbar-hub--ox">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="{{t:nav.brandHomeAria}}">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+              </a>
+              <nav class="ox-nav ox-nav--apps-only" aria-label="{{t:nav.appsAria}}">
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
               <button
                 type="button"
-                class="apps-flyout__trigger"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
                 id="apps-trigger-sp"
                 aria-expanded="false"
                 aria-haspopup="true"
                 aria-controls="apps-panel-sp"
+                aria-label="{{t:nav.appsAria}}"
               >
                 <span>{{t:nav.appsLabel}}</span>
                 <span class="apps-flyout__chev" aria-hidden="true"></span>
@@ -1105,12 +4145,65 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">{{t:nav.pillmateDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#savy-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/savy-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SAVY</span>
+                    <span class="apps-flyout__desc">{{t:nav.savyDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#babylog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">BabyLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.babylogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#petlog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PetLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.petlogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
-          </nav>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a href="#sp-top" class="navbar-app-showcase" aria-label="{{t:sp.brandAria}}">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/subping-logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">SubPing</span>
+              <span class="navbar-app-showcase__tagline">{{t:nav.subpingDesc}}</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--ox navbar-bar__controls--brand-toolbar">
           <div class="lang-switcher lang-switcher--ox" data-lang-switcher>
             <label class="visually-hidden" for="lang-select-sp">{{t:ui.language}}</label>
-            <select id="lang-select-sp" class="lang-select" data-lang-select aria-label="{{t:ui.language}}">
+            <select id="lang-select-sp" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
               <option value="ko">{{t:ui.langKo}}</option>
               <option value="en">{{t:ui.langEn}}</option>
               <option value="ja">{{t:ui.langJa}}</option>
@@ -1123,7 +4216,6 @@
             </select>
           </div>
           <div class="ox-header-actions">
-            <a class="ox-link-newon js-go-home" href="#">{{t:sp.navNewon}}</a>
             <button
               type="button"
               class="ox-theme-toggle"
@@ -1143,6 +4235,8 @@
             >
               <span></span><span></span>
             </button>
+          </div>
+          </div>
           </div>
         </div>
         <div id="sp-mobile" class="ox-mobile-menu ox-mobile-menu--apps-only" hidden>
@@ -1164,6 +4258,42 @@
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">SubPing</span>
                 <span class="mobile-apps-drawer__hint">{{t:sp.mobileHintSp}}</span>
+              </span>
+            </a>
+            <a href="#pillmate-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">{{t:sp.mobilePillmateHint}}</span>
+              </span>
+            </a>
+            <a href="#savy-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/savy-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SAVY</span>
+                <span class="mobile-apps-drawer__hint">{{t:sp.mobileSavyHint}}</span>
+              </span>
+            </a>
+            <a href="#babylog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/babylog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">BabyLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:sp.mobileBabylogHint}}</span>
+              </span>
+            </a>
+            <a href="#petlog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/petlog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PetLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:sp.mobilePetlogHint}}</span>
               </span>
             </a>
           </details>
@@ -1248,8 +4378,8 @@
                   class="ox-hero-logo-img"
                   src="/subping-hero-mark.png"
                   alt="{{t:sp.heroLogoAlt}}"
-                  width="512"
-                  height="512"
+                  width="940"
+                  height="940"
                 />
               </div>
             </div>
@@ -1266,7 +4396,7 @@
               </h2>
               <div class="ox-app-intro__body sp-intro-html">{{html:sp.introHtml}}</div>
               <p class="ox-app-intro__legal">
-                <a class="ox-app-intro__legal-link" href="/privacy/">{{t:ui.privacyPolicyLink}}</a>
+                <a class="ox-app-intro__legal-link" href="privacy/">{{t:ui.privacyPolicyLink}}</a>
               </p>
             </div>
           </div>
@@ -1512,12 +4642,12 @@
       <footer class="ox-footer">
         <div class="ox-container ox-footer-inner">
           <div class="footer-legal-links footer-legal-links--ox">
-            <a class="footer-legal" href="../privacy/">{{t:footer.privacy}}</a>
+            <a class="footer-legal" href="privacy/">{{t:footer.privacy}}</a>
             <span class="footer-legal-sep" aria-hidden="true">·</span>
-            <a class="footer-legal" href="../terms/">{{t:footer.terms}}</a>
+            <a class="footer-legal" href="terms/">{{t:footer.terms}}</a>
           </div>
           <p class="ox-footer-delete-account">
-            <a class="footer-legal" href="/subping/delete-account/">{{t:sp.deleteAccountLink}}</a>
+            <a class="footer-legal" href="subping/delete-account/">{{t:sp.deleteAccountLink}}</a>
           </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="{{t:footer.socialAria}}">
             <a
@@ -1630,6 +4760,10 @@
         var TITLE_HOME = {{js:meta.titleHome}};
         var TITLE_OX = {{js:meta.titleOx}};
         var TITLE_SP = {{js:meta.titleSubPing}};
+        var TITLE_PILLMATE = {{js:meta.titlePillmate}};
+        var TITLE_SAVY = {{js:meta.titleSavy}};
+        var TITLE_BABYLOG = {{js:meta.titleBabylog}};
+        var TITLE_PETLOG = {{js:meta.titlePetlog}};
         var LABEL_MENU_OPEN = {{js:common.menuOpen}};
         var LABEL_MENU_CLOSE = {{js:common.menuClose}};
         var LABEL_THEME_LIGHT = {{js:common.themeToLight}};
@@ -1637,8 +4771,29 @@
         var elHome = document.getElementById("home");
         var elOx = document.getElementById("ox-month");
         var elSp = document.getElementById("subping-app");
+        var elPm = document.getElementById("pillmate-app");
+        var elSv = document.getElementById("savy-app");
+        var elBl = document.getElementById("babylog-app");
+        var elPl = document.getElementById("petlog-app");
         var themeKey = "ox-month-theme";
         var themeKeySp = "subping-app-theme";
+        var themeKeyPm = "pillmate-app-theme";
+        var themeKeySv = "savy-app-theme";
+        var themeKeyBl = "babylog-app-theme";
+        var themeKeyPl = "petlog-app-theme";
+        /** 하나로 저장: 어느 앱에서 바꿔도 전 앱 설명 화면에 동일 테마 적용 */
+        var themeKeyUnified = "newon-app-theme";
+        function bindNavbarScrollFade() {
+          function updScrollClass() {
+            var y = window.scrollY || 0;
+            document.querySelectorAll(".site-header, .ox-header").forEach(function (el) {
+              el.classList.toggle("is-scrolled", y > 8);
+            });
+          }
+          updScrollClass();
+          window.addEventListener("scroll", updScrollClass, { passive: true });
+        }
+        bindNavbarScrollFade();
         function staggerOxReveals() {
           requestAnimationFrame(function () {
             var reds = elOx.querySelectorAll(".ox-reveal-on-scroll:not(.is-visible)");
@@ -1675,6 +4830,82 @@
           });
         }
 
+        function staggerPmReveals() {
+          if (!elPm) return;
+          requestAnimationFrame(function () {
+            var reds = elPm.querySelectorAll(".ox-reveal-on-scroll:not(.is-visible)");
+            if (!reds.length) return;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              reds.forEach(function (el) {
+                el.classList.add("is-visible");
+              });
+            } else {
+              reds.forEach(function (el, i) {
+                setTimeout(function () {
+                  el.classList.add("is-visible");
+                }, 50 + i * 75);
+              });
+            }
+          });
+        }
+
+        function staggerSvReveals() {
+          if (!elSv) return;
+          requestAnimationFrame(function () {
+            var reds = elSv.querySelectorAll(".ox-reveal-on-scroll:not(.is-visible)");
+            if (!reds.length) return;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              reds.forEach(function (el) {
+                el.classList.add("is-visible");
+              });
+            } else {
+              reds.forEach(function (el, i) {
+                setTimeout(function () {
+                  el.classList.add("is-visible");
+                }, 50 + i * 75);
+              });
+            }
+          });
+        }
+
+        function staggerBlReveals() {
+          if (!elBl) return;
+          requestAnimationFrame(function () {
+            var reds = elBl.querySelectorAll(".ox-reveal-on-scroll:not(.is-visible)");
+            if (!reds.length) return;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              reds.forEach(function (el) {
+                el.classList.add("is-visible");
+              });
+            } else {
+              reds.forEach(function (el, i) {
+                setTimeout(function () {
+                  el.classList.add("is-visible");
+                }, 50 + i * 75);
+              });
+            }
+          });
+        }
+
+        function staggerPlReveals() {
+          if (!elPl) return;
+          requestAnimationFrame(function () {
+            var reds = elPl.querySelectorAll(".ox-reveal-on-scroll:not(.is-visible)");
+            if (!reds.length) return;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              reds.forEach(function (el) {
+                el.classList.add("is-visible");
+              });
+            } else {
+              reds.forEach(function (el, i) {
+                setTimeout(function () {
+                  el.classList.add("is-visible");
+                }, 50 + i * 75);
+              });
+            }
+          });
+        }
+
         function closeMobileMenus() {
           var t = document.querySelector(".nav-toggle");
           var m = document.getElementById("mobile-nav");
@@ -1695,25 +4926,33 @@
             st.setAttribute("aria-expanded", "false");
             sm.hidden = true;
           }
+          var pt = document.getElementById("pm-nav-toggle");
+          var pmM = document.getElementById("pm-mobile");
+          if (pt && pmM) {
+            pt.setAttribute("aria-expanded", "false");
+            pmM.hidden = true;
+          }
+          var svt = document.getElementById("sv-nav-toggle");
+          var svm = document.getElementById("sv-mobile");
+          if (svt && svm) {
+            svt.setAttribute("aria-expanded", "false");
+            svm.hidden = true;
+          }
+          var blt = document.getElementById("bl-nav-toggle");
+          var blm = document.getElementById("bl-mobile");
+          if (blt && blm) {
+            blt.setAttribute("aria-expanded", "false");
+            blm.hidden = true;
+          }
+          var plt = document.getElementById("pl-nav-toggle");
+          var plm = document.getElementById("pl-mobile");
+          if (plt && plm) {
+            plt.setAttribute("aria-expanded", "false");
+            plm.hidden = true;
+          }
         }
 
-        function applyOxThemeFromStorage() {
-          var saved = localStorage.getItem(themeKey);
-          if (saved === "light" || saved === "dark") {
-            elOx.setAttribute("data-theme", saved);
-          } else {
-            elOx.setAttribute("data-theme", "light");
-          }
-          syncOxThemeButton();
-        }
 
-        function applySpThemeFromStorage() {
-          var saved = localStorage.getItem(themeKeySp);
-          if (saved === "light" || saved === "dark") {
-            elSp.setAttribute("data-theme", saved);
-          }
-          syncSpThemeButton();
-        }
 
         function syncOxThemeButton() {
           var btn = document.getElementById("ox-theme");
@@ -1731,11 +4970,170 @@
           btn.textContent = dark ? "☀" : "🌙";
         }
 
-        function showHome() {
+        function syncPmThemeButton() {
+          var btn = document.getElementById("pm-theme");
+          if (!btn || !elPm) return;
+          var dark = elPm.getAttribute("data-theme") === "dark";
+          btn.setAttribute("aria-label", dark ? LABEL_THEME_LIGHT : LABEL_THEME_DARK);
+          btn.textContent = dark ? "☀" : "🌙";
+        }
+
+        function syncSvThemeButton() {
+          var btn = document.getElementById("sv-theme");
+          if (!btn || !elSv) return;
+          var dark = elSv.getAttribute("data-theme") === "dark";
+          btn.setAttribute("aria-label", dark ? LABEL_THEME_LIGHT : LABEL_THEME_DARK);
+          btn.textContent = dark ? "☀" : "🌙";
+        }
+
+        function syncBlThemeButton() {
+          var btn = document.getElementById("bl-theme");
+          if (!btn || !elBl) return;
+          var dark = elBl.getAttribute("data-theme") === "dark";
+          btn.setAttribute("aria-label", dark ? LABEL_THEME_LIGHT : LABEL_THEME_DARK);
+          btn.textContent = dark ? "☀" : "🌙";
+        }
+
+        function syncPlThemeButton() {
+          var btn = document.getElementById("pl-theme");
+          if (!btn || !elPl) return;
+          var dark = elPl.getAttribute("data-theme") === "dark";
+          btn.setAttribute("aria-label", dark ? LABEL_THEME_LIGHT : LABEL_THEME_DARK);
+          btn.textContent = dark ? "☀" : "🌙";
+        }
+
+        function getSystemThemePreference() {
+          try {
+            if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+              return "dark";
+            }
+          } catch (e) {}
+          return "light";
+        }
+
+        /**
+         * newon-app-theme 가 없으면 레거시 앱별 키 또는 OS 다크 설정으로 시드 후
+         * 모든 앱 루트에 동일 data-theme 적용 (앱별로 다른 기본값이 남지 않게).
+         */
+        function ensureUnifiedThemeSeeded() {
+          try {
+            var cur = localStorage.getItem(themeKeyUnified);
+            if (cur === "light" || cur === "dark") return;
+          } catch (e) {}
+
+          try {
+            var keys = [themeKey, themeKeySp, themeKeyPm, themeKeySv, themeKeyBl, themeKeyPl];
+            var vals = [];
+            var i;
+            var j;
+            for (i = 0; i < keys.length; i++) {
+              var v = localStorage.getItem(keys[i]);
+              if (v === "light" || v === "dark") vals.push(v);
+            }
+            var u;
+            if (!vals.length) {
+              u = getSystemThemePreference();
+            } else {
+              var one = vals[0];
+              var conflict = false;
+              for (j = 1; j < vals.length; j++) {
+                if (vals[j] !== one) {
+                  conflict = true;
+                  break;
+                }
+              }
+              u = conflict ? getSystemThemePreference() : one;
+            }
+            try {
+              localStorage.setItem(themeKeyUnified, u);
+            } catch (err) {}
+            for (i = 0; i < keys.length; i++) {
+              try {
+                localStorage.removeItem(keys[i]);
+              } catch (ignore) {}
+            }
+          } catch (e2) {}
+        }
+
+        /** 홈 헤더·html[data-newon-shell-theme]용 현재 선택 테마 */
+        function getResolvedUnifiedShellTheme() {
+          try {
+            var u = localStorage.getItem(themeKeyUnified);
+            if (u === "light" || u === "dark") return u;
+          } catch (e) {}
+          return getSystemThemePreference();
+        }
+
+        function syncHtmlShellTheme() {
+          document.documentElement.setAttribute("data-newon-shell-theme", getResolvedUnifiedShellTheme());
+        }
+
+        function syncHomeThemeButton() {
+          var btn = document.getElementById("home-theme");
+          if (!btn) return;
+          var dark = getResolvedUnifiedShellTheme() === "dark";
+          btn.setAttribute("aria-label", dark ? LABEL_THEME_LIGHT : LABEL_THEME_DARK);
+          btn.textContent = dark ? "☀" : "🌙";
+        }
+
+        function setAllAppRootsTheme(theme) {
+          if (theme !== "light" && theme !== "dark") return;
+          elOx.setAttribute("data-theme", theme);
+          elSp.setAttribute("data-theme", theme);
+          if (elPm) elPm.setAttribute("data-theme", theme);
+          if (elSv) elSv.setAttribute("data-theme", theme);
+          if (elBl) elBl.setAttribute("data-theme", theme);
+          if (elPl) elPl.setAttribute("data-theme", theme);
+        }
+
+        function syncAllAppThemeButtons() {
+          syncOxThemeButton();
+          syncSpThemeButton();
+          syncPmThemeButton();
+          syncSvThemeButton();
+          syncBlThemeButton();
+          syncPlThemeButton();
+        }
+
+        function applyThemesFromStorage() {
+          ensureUnifiedThemeSeeded();
+          var u = getResolvedUnifiedShellTheme();
+          if (u !== "light" && u !== "dark") {
+            u = "light";
+          }
+          setAllAppRootsTheme(u);
+          syncAllAppThemeButtons();
+          syncHtmlShellTheme();
+          syncHomeThemeButton();
+        }
+
+        function persistUnifiedTheme(theme) {
+          if (theme !== "light" && theme !== "dark") return;
+          try {
+            localStorage.setItem(themeKeyUnified, theme);
+            localStorage.removeItem(themeKey);
+            localStorage.removeItem(themeKeySp);
+            localStorage.removeItem(themeKeyPm);
+            localStorage.removeItem(themeKeySv);
+            localStorage.removeItem(themeKeyBl);
+            localStorage.removeItem(themeKeyPl);
+          } catch (e) {}
+          setAllAppRootsTheme(theme);
+          syncAllAppThemeButtons();
+          syncHtmlShellTheme();
+          syncHomeThemeButton();
+        }
+
+        function showHome(options) {
+          options = options || {};
           elHome.hidden = false;
           elOx.hidden = true;
           elSp.hidden = true;
-          document.title = TITLE_HOME;
+          if (elPm) elPm.hidden = true;
+          if (elSv) elSv.hidden = true;
+          if (elBl) elBl.hidden = true;
+          if (elPl) elPl.hidden = true;
+          document.title = options.title != null ? options.title : TITLE_HOME;
           closeMobileMenus();
           elOx.querySelectorAll(".ox-reveal-on-scroll").forEach(function (el) {
             if (!el.classList.contains("ox-hero")) {
@@ -1747,7 +5145,42 @@
               el.classList.remove("is-visible");
             }
           });
+          if (elPm) {
+            elPm.querySelectorAll(".ox-reveal-on-scroll").forEach(function (el) {
+              if (!el.classList.contains("ox-hero")) {
+                el.classList.remove("is-visible");
+              }
+            });
+          }
+          if (elSv) {
+            elSv.querySelectorAll(".ox-reveal-on-scroll").forEach(function (el) {
+              if (!el.classList.contains("ox-hero")) {
+                el.classList.remove("is-visible");
+              }
+            });
+          }
+          if (elBl) {
+            elBl.querySelectorAll(".ox-reveal-on-scroll").forEach(function (el) {
+              if (!el.classList.contains("ox-hero")) {
+                el.classList.remove("is-visible");
+              }
+            });
+          }
+          if (elPl) {
+            elPl.querySelectorAll(".ox-reveal-on-scroll").forEach(function (el) {
+              if (!el.classList.contains("ox-hero")) {
+                el.classList.remove("is-visible");
+              }
+            });
+          }
           requestAnimationFrame(function () {
+            if (options.scrollToId) {
+              var sec = document.getElementById(options.scrollToId);
+              if (sec) {
+                sec.scrollIntoView({ behavior: "smooth", block: "start" });
+                return;
+              }
+            }
             window.scrollTo(0, 0);
           });
         }
@@ -1756,8 +5189,11 @@
           elHome.hidden = true;
           elOx.hidden = false;
           elSp.hidden = true;
+          if (elPm) elPm.hidden = true;
+          if (elSv) elSv.hidden = true;
+          if (elBl) elBl.hidden = true;
+          if (elPl) elPl.hidden = true;
           document.title = TITLE_OX;
-          applyOxThemeFromStorage();
           closeMobileMenus();
           requestAnimationFrame(function () {
             window.scrollTo(0, 0);
@@ -1769,12 +5205,95 @@
           elHome.hidden = true;
           elOx.hidden = true;
           elSp.hidden = false;
+          if (elPm) elPm.hidden = true;
+          if (elSv) elSv.hidden = true;
+          if (elBl) elBl.hidden = true;
+          if (elPl) elPl.hidden = true;
           document.title = TITLE_SP;
-          applySpThemeFromStorage();
           closeMobileMenus();
           requestAnimationFrame(function () {
             window.scrollTo(0, 0);
             staggerSpReveals();
+          });
+        }
+
+        function showPillmate() {
+          if (!elPm) {
+            showHome();
+            return;
+          }
+          elHome.hidden = true;
+          elOx.hidden = true;
+          elSp.hidden = true;
+          elPm.hidden = false;
+          if (elSv) elSv.hidden = true;
+          if (elBl) elBl.hidden = true;
+          if (elPl) elPl.hidden = true;
+          document.title = TITLE_PILLMATE;
+          closeMobileMenus();
+          requestAnimationFrame(function () {
+            window.scrollTo(0, 0);
+            staggerPmReveals();
+          });
+        }
+
+        function showSavy() {
+          if (!elSv) {
+            showHome();
+            return;
+          }
+          elHome.hidden = true;
+          elOx.hidden = true;
+          elSp.hidden = true;
+          if (elPm) elPm.hidden = true;
+          if (elBl) elBl.hidden = true;
+          if (elPl) elPl.hidden = true;
+          elSv.hidden = false;
+          document.title = TITLE_SAVY;
+          closeMobileMenus();
+          requestAnimationFrame(function () {
+            window.scrollTo(0, 0);
+            staggerSvReveals();
+          });
+        }
+
+        function showBabylog() {
+          if (!elBl) {
+            showHome();
+            return;
+          }
+          elHome.hidden = true;
+          elOx.hidden = true;
+          elSp.hidden = true;
+          if (elPm) elPm.hidden = true;
+          if (elSv) elSv.hidden = true;
+          if (elPl) elPl.hidden = true;
+          elBl.hidden = false;
+          document.title = TITLE_BABYLOG;
+          closeMobileMenus();
+          requestAnimationFrame(function () {
+            window.scrollTo(0, 0);
+            staggerBlReveals();
+          });
+        }
+
+        function showPetlog() {
+          if (!elPl) {
+            showHome();
+            return;
+          }
+          elHome.hidden = true;
+          elOx.hidden = true;
+          elSp.hidden = true;
+          if (elPm) elPm.hidden = true;
+          if (elSv) elSv.hidden = true;
+          if (elBl) elBl.hidden = true;
+          elPl.hidden = false;
+          document.title = TITLE_PETLOG;
+          closeMobileMenus();
+          requestAnimationFrame(function () {
+            window.scrollTo(0, 0);
+            staggerPlReveals();
           });
         }
 
@@ -1784,6 +5303,14 @@
             showOx();
           } else if (h === "#subping-app" || h === "#subping") {
             showSubping();
+          } else if (h === "#pillmate" || h === "#pillmate-app") {
+            showPillmate();
+          } else if (h === "#savy-app" || h === "#savy") {
+            showSavy();
+          } else if (h === "#babylog-app" || h === "#babylog") {
+            showBabylog();
+          } else if (h === "#petlog-app" || h === "#petlog") {
+            showPetlog();
           } else {
             showHome();
           }
@@ -1817,17 +5344,28 @@
           });
         });
 
-        window.addEventListener("hashchange", routeFromHash);
+        window.addEventListener("hashchange", function () {
+          routeFromHash();
+          applyThemesFromStorage();
+        });
         routeFromHash();
+        applyThemesFromStorage();
+
+        var homeThemeBtn = document.getElementById("home-theme");
+        if (homeThemeBtn) {
+          syncHomeThemeButton();
+          homeThemeBtn.addEventListener("click", function () {
+            var next = getResolvedUnifiedShellTheme() === "dark" ? "light" : "dark";
+            persistUnifiedTheme(next);
+          });
+        }
 
         var themeBtn = document.getElementById("ox-theme");
         if (themeBtn) {
           syncOxThemeButton();
           themeBtn.addEventListener("click", function () {
             var next = elOx.getAttribute("data-theme") === "dark" ? "light" : "dark";
-            elOx.setAttribute("data-theme", next);
-            localStorage.setItem(themeKey, next);
-            syncOxThemeButton();
+            persistUnifiedTheme(next);
           });
         }
 
@@ -1836,9 +5374,25 @@
           syncSpThemeButton();
           themeBtnSp.addEventListener("click", function () {
             var next = elSp.getAttribute("data-theme") === "dark" ? "light" : "dark";
-            elSp.setAttribute("data-theme", next);
-            localStorage.setItem(themeKeySp, next);
-            syncSpThemeButton();
+            persistUnifiedTheme(next);
+          });
+        }
+
+        var themeBtnPm = document.getElementById("pm-theme");
+        if (themeBtnPm && elPm) {
+          syncPmThemeButton();
+          themeBtnPm.addEventListener("click", function () {
+            var next = elPm.getAttribute("data-theme") === "dark" ? "light" : "dark";
+            persistUnifiedTheme(next);
+          });
+        }
+
+        var themeBtnSv = document.getElementById("sv-theme");
+        if (themeBtnSv && elSv) {
+          syncSvThemeButton();
+          themeBtnSv.addEventListener("click", function () {
+            var next = elSv.getAttribute("data-theme") === "dark" ? "light" : "dark";
+            persistUnifiedTheme(next);
           });
         }
 
@@ -1870,6 +5424,88 @@
             a.addEventListener("click", function () {
               spToggle.setAttribute("aria-expanded", "false");
               spMenu.hidden = true;
+            });
+          });
+        }
+
+        var pmToggle = document.getElementById("pm-nav-toggle");
+        var pmMenu = document.getElementById("pm-mobile");
+        if (pmToggle && pmMenu) {
+          pmToggle.addEventListener("click", function () {
+            var open = pmToggle.getAttribute("aria-expanded") === "true";
+            pmToggle.setAttribute("aria-expanded", String(!open));
+            pmMenu.hidden = open;
+          });
+          pmMenu.querySelectorAll("a").forEach(function (a) {
+            a.addEventListener("click", function () {
+              pmToggle.setAttribute("aria-expanded", "false");
+              pmMenu.hidden = true;
+            });
+          });
+        }
+
+        var svToggle = document.getElementById("sv-nav-toggle");
+        var svMenu = document.getElementById("sv-mobile");
+        if (svToggle && svMenu) {
+          svToggle.addEventListener("click", function () {
+            var open = svToggle.getAttribute("aria-expanded") === "true";
+            svToggle.setAttribute("aria-expanded", String(!open));
+            svMenu.hidden = open;
+          });
+          svMenu.querySelectorAll("a").forEach(function (a) {
+            a.addEventListener("click", function () {
+              svToggle.setAttribute("aria-expanded", "false");
+              svMenu.hidden = true;
+            });
+          });
+        }
+
+        var themeBtnBl = document.getElementById("bl-theme");
+        if (themeBtnBl && elBl) {
+          syncBlThemeButton();
+          themeBtnBl.addEventListener("click", function () {
+            var next = elBl.getAttribute("data-theme") === "dark" ? "light" : "dark";
+            persistUnifiedTheme(next);
+          });
+        }
+
+        var blToggle = document.getElementById("bl-nav-toggle");
+        var blMenu = document.getElementById("bl-mobile");
+        if (blToggle && blMenu) {
+          blToggle.addEventListener("click", function () {
+            var open = blToggle.getAttribute("aria-expanded") === "true";
+            blToggle.setAttribute("aria-expanded", String(!open));
+            blMenu.hidden = open;
+          });
+          blMenu.querySelectorAll("a").forEach(function (a) {
+            a.addEventListener("click", function () {
+              blToggle.setAttribute("aria-expanded", "false");
+              blMenu.hidden = true;
+            });
+          });
+        }
+
+        var themeBtnPl = document.getElementById("pl-theme");
+        if (themeBtnPl && elPl) {
+          syncPlThemeButton();
+          themeBtnPl.addEventListener("click", function () {
+            var next = elPl.getAttribute("data-theme") === "dark" ? "light" : "dark";
+            persistUnifiedTheme(next);
+          });
+        }
+
+        var plToggle = document.getElementById("pl-nav-toggle");
+        var plMenu = document.getElementById("pl-mobile");
+        if (plToggle && plMenu) {
+          plToggle.addEventListener("click", function () {
+            var open = plToggle.getAttribute("aria-expanded") === "true";
+            plToggle.setAttribute("aria-expanded", String(!open));
+            plMenu.hidden = open;
+          });
+          plMenu.querySelectorAll("a").forEach(function (a) {
+            a.addEventListener("click", function () {
+              plToggle.setAttribute("aria-expanded", "false");
+              plMenu.hidden = true;
             });
           });
         }
@@ -1914,11 +5550,6 @@
 
         document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
           sel.value = NEWON_LANG_DIR;
-          sel.addEventListener("change", function () {
-            var next = sel.value;
-            var h = location.hash || "";
-            location.href = "/" + next + "/" + h;
-          });
         });
 
         var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1955,5 +5586,6 @@
         }
       })();
     </script>
+    <script src="/lang-dropdown.js"></script>
   </body>
 </html>

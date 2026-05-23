@@ -13,6 +13,7 @@ GitHub 수동 업로드 / Pages 루트에 둘 것 (ZIP 말고, 폴더 구조 그
   logo.png
   ox-month-logo.png
   subping-logo.png
+  pillmate-logo.png
   subping-hero-mark.png
   feature-grid.png
   hero-promo.png
