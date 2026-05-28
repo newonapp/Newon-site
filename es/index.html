@@ -31,7 +31,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/ox-month.css?v=20260523-brand-header-app" />
+    <link rel="stylesheet" href="/ox-month.css?v=20260528-piggyup-showcase" />
+    <script src="/theme-shell.js"></script>
     <script src="/lang-nav.js"></script>
   </head>
   <body>
@@ -43,7 +44,7 @@
           <div class="navbar-bar__cell navbar-bar__cell--left">
             <div class="navbar-hub">
               <a class="navbar-hub__logo js-go-home" href="#" aria-label="Inicio Newon">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="nav nav--apps-only" aria-label="Apps de Newon">
             <div class="apps-flyout apps-flyout--align-start" data-apps-flyout>
@@ -126,6 +127,16 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">Hábitos de ahorro · análisis de gastos · coach IA</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
@@ -137,7 +148,7 @@
                 <img class="navbar-app-showcase__icon-img" src="/logo.png" alt="" width="56" height="56" decoding="async" />
               </span>
               <span class="navbar-app-showcase__title">Newon</span>
-              <span class="navbar-app-showcase__tagline">Newon · Suite de apps</span>
+              <span class="navbar-app-showcase__tagline">newon@newon.app</span>
             </a>
           </div>
           <div class="navbar-bar__cell navbar-bar__cell--controls">
@@ -232,6 +243,15 @@
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">PetLog</span>
                 <span class="mobile-apps-drawer__hint">Ver intro de PetLog</span>
+              </span>
+            </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">Ver intro de PiggyUp</span>
               </span>
             </a>
           </details>
@@ -494,7 +514,7 @@
           <div class="navbar-bar__cell navbar-bar__cell--left">
             <div class="navbar-hub navbar-hub--ox">
               <a class="navbar-hub__logo js-go-home" href="#" aria-label="Inicio Newon">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="ox-nav ox-nav--apps-only" aria-label="Apps de Newon">
             <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
@@ -579,6 +599,16 @@
                   <span class="apps-flyout__meta">
                     <span class="apps-flyout__name">PetLog</span>
                     <span class="apps-flyout__desc">Mascotas · salud · familia · IA</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">Hábitos de ahorro · análisis de gastos · coach IA</span>
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
@@ -693,6 +723,15 @@
                 <span class="mobile-apps-drawer__hint">Ver intro de PetLog</span>
               </span>
             </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">Ver intro de PiggyUp</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -738,7 +777,7 @@
                       />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Download on</span>
+                      <span class="ox-store-badge__small">Descargue en la</span>
                       <span class="ox-store-badge__name">App Store</span>
                     </span>
                   </a>
@@ -764,7 +803,7 @@
                       <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Get it on</span>
+                      <span class="ox-store-badge__small">Disponible en</span>
                       <span class="ox-store-badge__name">Google Play</span>
                     </span>
                   </a>
@@ -982,24 +1021,24 @@
             </header>
             <div class="ox-features">
               <article class="ox-feature-card">
-                <h3>1️⃣ Add a habit</h3>
-                <p class="ox-feature-lead">Create a habit or start from a template—keep the list light and yours.</p>
+                <h3>️1. Añade un hábito</h3>
+                <p class="ox-feature-lead">Crea un hábito o comienza a partir de una plantilla: mantén la lista clara y la tuya.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>2️⃣ Log with O/X</h3>
-                <p class="ox-feature-lead">Mark each day on the grid—your whole month and gaps are easy to see.</p>
+                <h3>2º ️Registro con O/X</h3>
+                <p class="ox-feature-lead">Marque cada día en la cuadrícula: todo su mes y las brechas son fáciles de ver.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>3️⃣ Turn on reminders</h3>
-                <p class="ox-feature-lead">Schedule nudges by time of day so you don’t miss a check-in.</p>
+                <h3>️3. Activa los recordatorios</h3>
+                <p class="ox-feature-lead">Programa los empujones por hora del día para que no te pierdas la llegada.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>4️⃣ Review stats</h3>
-                <p class="ox-feature-lead">See O/X ratios, streaks, and which habits need a little care.</p>
+                <h3>4️. Estadísticas de revisión</h3>
+                <p class="ox-feature-lead">Vea las proporciones O/X, las rayas y qué hábitos necesitan un poco de cuidado.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>5️⃣ Keep the streak</h3>
-                <p class="ox-feature-lead">Use AI coach and history to set your next goal and stay consistent.</p>
+                <h3>5️. Mantener la racha</h3>
+                <p class="ox-feature-lead">Utiliza el entrenador y el historial de IA para establecer tu próximo objetivo y mantenerte constante.</p>
               </article>
             </div>
           </div>
@@ -1015,7 +1054,7 @@
               <p class="ox-section-label">Precios</p>
               <h2 id="ox-premium-title" class="ox-premium-heading">
                 <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
-                Premium
+                Prémium
               </h2>
               <p class="ox-premium-tagline">
                 Análisis más profundo y<br />una experiencia de registro más fluida
@@ -1233,7 +1272,7 @@
           <div class="navbar-bar__cell navbar-bar__cell--left">
             <div class="navbar-hub navbar-hub--ox">
               <a class="navbar-hub__logo js-go-home" href="#" aria-label="Inicio Newon">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="ox-nav ox-nav--apps-only" aria-label="Apps de Newon">
             <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
@@ -1321,13 +1360,23 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">Hábitos de ahorro · análisis de gastos · coach IA</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
             </div>
           </div>
           <div class="navbar-bar__cell navbar-bar__cell--center">
-            <a href="#pm-top" class="navbar-app-showcase" aria-label="Back to top of Pillmate">
+            <a href="#pm-top" class="navbar-app-showcase" aria-label="Volver al principio de 0">
               <span class="navbar-app-showcase__icon">
                 <img class="navbar-app-showcase__icon-img" src="/pillmate-logo.png" alt="" width="56" height="56" decoding="async" />
               </span>
@@ -1384,7 +1433,7 @@
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">OX MONTH</span>
-                <span class="mobile-apps-drawer__hint">OX MONTH intro</span>
+                <span class="mobile-apps-drawer__hint">0 intro</span>
               </span>
             </a>
             <a href="#subping-app" class="mobile-apps-drawer__item">
@@ -1393,7 +1442,7 @@
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">SubPing</span>
-                <span class="mobile-apps-drawer__hint">SubPing intro</span>
+                <span class="mobile-apps-drawer__hint">0 intro</span>
               </span>
             </a>
             <a href="#pm-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
@@ -1402,7 +1451,7 @@
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">Pillmate</span>
-                <span class="mobile-apps-drawer__hint">Pillmate · this screen</span>
+                <span class="mobile-apps-drawer__hint">0 · esta pantalla</span>
               </span>
             </a>
             <a href="#savy-app" class="mobile-apps-drawer__item">
@@ -1432,6 +1481,15 @@
                 <span class="mobile-apps-drawer__hint">Ver intro de PetLog</span>
               </span>
             </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">Ver intro de PiggyUp</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -1443,13 +1501,13 @@
               <div class="ox-badge-row">
                 <p class="ox-badge">
                   <span class="ox-badge-dot" aria-hidden="true"></span>
-                  Medication · reminders · daily routine
+                  Medicación · recordatorios · rutina diaria
                 </p>
                 <p class="ox-badge ox-badge--secondary">173 países · 13 idiomas</p>
               </div>
               <h1>Pillmate</h1>
-              <p class="ox-subtitle">Don't miss a dose—<br /><strong>manage today's medication easily</strong></p>
-              <p class="ox-hero-reach-summary">Record and track daily medications, supplements, and health routines in one place.</p>
+              <p class="ox-subtitle">No se olvide de una dosis-01gestione la medicación de hoy fácilmente2</p>
+              <p class="ox-hero-reach-summary">Registre y realice un seguimiento de los medicamentos, suplementos y rutinas de salud diarias en un solo lugar.</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">Disponible en App Store y Google Play</p>
                 <div class="ox-store-badges">
@@ -1458,7 +1516,7 @@
                     href="https://newon.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Pillmate on the App Store (opens in a new tab)"
+                    aria-label="0 en el 1 (se abre en una nueva pestaña)"
                   >
                     <svg
                       class="ox-store-badge__icon"
@@ -1475,7 +1533,7 @@
                       />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Download on</span>
+                      <span class="ox-store-badge__small">Descargue en la</span>
                       <span class="ox-store-badge__name">App Store</span>
                     </span>
                   </a>
@@ -1484,7 +1542,7 @@
                     href="https://newon.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Pillmate on Google Play (opens in a new tab)"
+                    aria-label="0 en 1 (se abre en una nueva pestaña)"
                   >
                     <svg
                       class="ox-store-badge__icon ox-store-badge__icon--play"
@@ -1501,7 +1559,7 @@
                       <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Get it on</span>
+                      <span class="ox-store-badge__small">Disponible en</span>
                       <span class="ox-store-badge__name">Google Play</span>
                     </span>
                   </a>
@@ -1513,7 +1571,7 @@
                 <img
                   class="ox-hero-logo-img"
                   src="/pillmate-logo.png"
-                  alt="Pillmate app logo: red and cream capsule with wordmark"
+                  alt="0 logotipo de la aplicación: cápsula roja y crema con marca denominativa"
                   width="940"
                   height="940"
                 />
@@ -1524,13 +1582,13 @@
         <section id="pm-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pm-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <div class="ox-app-intro__copy">
-              <p class="ox-section-label">About the app</p>
+              <p class="ox-section-label">Acerca de la aplicación</p>
               <h2 id="pm-intro-title" class="ox-app-intro__title">
                 <span class="ox-app-intro__title-icon" aria-hidden="true">💊</span>
-                About Pillmate
+                Aprox. 0
               </h2>
-              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>Pillmate</strong> helps you manage daily pills and supplements by time of day and check them off quickly.</p><p>Split doses into morning, lunch, evening, and bedtime, and use reminders so important times are not missed.</p></div>
-              <p class="ox-app-intro__closing">Turns easy-to-forget habits into safer, steadier care.</p>
+              <div class="ox-app-intro__body">0123 le ayuda a administrar las píldoras y suplementos diarios por hora del día y marcarlos rápidamente.45Dividir las dosis en la mañana, el almuerzo, la noche y la hora de acostarse, y usar recordatorios para que no se pierdan los momentos importantes.6</div>
+              <p class="ox-app-intro__closing">Convierte los hábitos fáciles de olvidar en un cuidado más seguro y estable.</p>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">Política de privacidad</a>
               </p>
@@ -1625,54 +1683,54 @@
         <section id="pm-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="pm-features-title">
           <div class="ox-container">
             <header class="ox-section-head">
-              <p class="ox-section-label">Features</p>
+              <p class="ox-section-label">Características</p>
               <h2 id="pm-features-title" class="ox-section-title-inline">
                 <span class="ox-section-title-inline__icon" aria-hidden="true">💊</span>
-                Key features
+                Características principales
               </h2>
             </header>
             <div class="ox-features">
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">✅</span>
-                <h3>Today's dose check</h3>
-                <p class="ox-feature-lead">See today's pills at a glance</p>
-                <p class="ox-feature-note">Log doses quickly as you take them</p>
+                <h3>Comprobación de la dosis de hoy</h3>
+                <p class="ox-feature-lead">Vea las píldoras de hoy de un vistazo</p>
+                <p class="ox-feature-note">Registre las dosis rápidamente a medida que las toma</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🕐</span>
-                <h3>Time-of-day schedules</h3>
-                <p class="ox-feature-lead">Morning · lunch · evening · bedtime</p>
-                <p class="ox-feature-note">Keep routines easy to scan</p>
+                <h3>Horarios de la hora del día</h3>
+                <p class="ox-feature-lead">Mañana · almuerzo · noche · hora de acostarse</p>
+                <p class="ox-feature-note">Mantenga las rutinas fáciles de escanear</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🔔</span>
-                <h3>Dose reminders</h3>
-                <p class="ox-feature-lead">Reminders at set times</p>
-                <p class="ox-feature-note">Guidance so important doses are not missed</p>
+                <h3>Recordatorios de dosis</h3>
+                <p class="ox-feature-lead">Recordatorios a horas fijas</p>
+                <p class="ox-feature-note">Orientación para que no se pierdan dosis importantes</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📅</span>
-                <h3>Dose history</h3>
-                <p class="ox-feature-lead">Review by date</p>
-                <p class="ox-feature-note">See consistency at a glance</p>
+                <h3>Historial de dosis</h3>
+                <p class="ox-feature-lead">Evaluar para</p>
+                <p class="ox-feature-note">Vea la consistencia de un vistazo</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📝</span>
-                <h3>Medication notes</h3>
-                <p class="ox-feature-lead">Name, how to take, amount</p>
-                <p class="ox-feature-note">Keep what you need in one place</p>
+                <h3>Notas sobre los medicamentos</h3>
+                <p class="ox-feature-lead">Nombre, cómo tomar, importe</p>
+                <p class="ox-feature-note">Guarda lo que necesitas en un solo lugar</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">👨‍👩‍👧</span>
-                <h3>Family care</h3>
-                <p class="ox-feature-lead">Parents, kids, household routines</p>
-                <p class="ox-feature-note">Support the people you look after</p>
+                <h3>Acogimiento familiar</h3>
+                <p class="ox-feature-lead">Padres, hijos, rutinas del hogar</p>
+                <p class="ox-feature-note">Apoya a las personas que cuidas</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📲</span>
-                <h3>Home widget</h3>
-                <p class="ox-feature-lead">Without opening the app</p>
-                <p class="ox-feature-note">Check today's dose status on the home screen</p>
+                <h3>Widget de Inicio</h3>
+                <p class="ox-feature-lead">Sin abrir la aplicación</p>
+                <p class="ox-feature-note">Compruebe el estado actual de la dosis en la pantalla de inicio</p>
               </article>
             </div>
           </div>
@@ -1681,28 +1739,28 @@
         <section id="pm-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="pm-how-title">
           <div class="ox-container">
             <header class="ox-section-head">
-              <h2 id="pm-how-title" class="ox-section-title-inline">📖 How to use</h2>
+              <h2 id="pm-how-title" class="ox-section-title-inline">Cómo se usa</h2>
             </header>
             <div class="ox-features">
               <article class="ox-feature-card">
-                <h3>1️⃣ Add a medication</h3>
-                <p class="ox-feature-lead">Register pills or supplements you are taking.</p>
+                <h3>️1. Añade un medicamento</h3>
+                <p class="ox-feature-lead">Registre las píldoras o suplementos que está tomando.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>2️⃣ Set dose times</h3>
-                <p class="ox-feature-lead">Choose slots like morning, lunch, evening, or bedtime.</p>
+                <h3>️2. Establecer tiempos de dosis</h3>
+                <p class="ox-feature-lead">Elige franjas horarias como la mañana, el almuerzo, la noche o la hora de acostarse.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>3️⃣ Get reminders</h3>
-                <p class="ox-feature-lead">Receive alerts at scheduled times so nothing slips by.</p>
+                <h3>️3. Recibe recordatorios</h3>
+                <p class="ox-feature-lead">Recibe alertas a las horas programadas para que nada pase desapercibido.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>4️⃣ Check off today</h3>
-                <p class="ox-feature-lead">After taking a dose, mark it to log today's progress.</p>
+                <h3>4 ️„Check off today“</h3>
+                <p class="ox-feature-lead">Después de tomar una dosis, márquela para registrar el progreso de hoy.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>5️⃣ Review history</h3>
-                <p class="ox-feature-lead">Browse past days and keep the habit going.</p>
+                <h3>Historia de la revisión</h3>
+                <p class="ox-feature-lead">Echa un vistazo a los días pasados y mantén el hábito.</p>
               </article>
             </div>
           </div>
@@ -1715,52 +1773,52 @@
         >
           <div class="ox-container ox-premium-layout">
             <header class="ox-premium-intro">
-              <p class="ox-section-label">Pricing</p>
+              <p class="ox-section-label">Precio</p>
               <h2 id="pm-premium-title" class="ox-premium-heading">
                 <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
-                Premium
+                Prémium
               </h2>
-              <p class="ox-premium-tagline">More organized care and<br />a smoother logging experience</p>
+              <p class="ox-premium-tagline">Una atención más organizada y una experiencia de tala más fluida</p>
             </header>
 
             <div class="ox-premium-stack">
               <section class="ox-premium-block" aria-labelledby="pm-premium-features-heading">
                 <h3 id="pm-premium-features-heading" class="ox-premium-block__title">
                   <span class="ox-premium-emoji" aria-hidden="true">🔓</span>
-                  Premium features
+                  Características premium
                 </h3>
                 <div class="ox-premium-grid">
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">📊</span>
-                      Monthly dose log
+                      Registro de dosis mensual
                     </h4>
-                    <p class="ox-premium-card__lead">See a month of adherence at a glance</p>
-                    <p class="ox-premium-card__note">Spot missed days and steady streaks quickly</p>
+                    <p class="ox-premium-card__lead">Vea un mes de cumplimiento de un vistazo</p>
+                    <p class="ox-premium-card__note">Detecta días perdidos y rachas constantes rápidamente</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
-                      AI dose report
+                      Informe de dosis de IA
                     </h4>
-                    <p class="ox-premium-card__lead">Based on your logs,</p>
-                    <p class="ox-premium-card__note">see patterns and ways to improve</p>
+                    <p class="ox-premium-card__lead">según sus</p>
+                    <p class="ox-premium-card__note">ver patrones y formas de mejorar</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">🎨</span>
-                      Premium themes
+                      Temas Premium
                     </h4>
-                    <p class="ox-premium-card__lead">More colors and styles to</p>
-                    <p class="ox-premium-card__note">personalize your care space</p>
+                    <p class="ox-premium-card__lead">Más colores y estilos para</p>
+                    <p class="ox-premium-card__note">personaliza tu espacio de atención</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
-                      Remove ads
+                      Eliminar la publicidad
                     </h4>
-                    <p class="ox-premium-card__lead">Focus without interruptions in</p>
-                    <p class="ox-premium-card__note">a calmer experience</p>
+                    <p class="ox-premium-card__lead">Enfoque sin interrupciones en</p>
+                    <p class="ox-premium-card__note">una experiencia más tranquila</p>
                   </article>
                 </div>
               </section>
@@ -1772,14 +1830,14 @@
           <div class="ox-container ox-reco-head">
             <h2 id="pm-reco-title" class="ox-premium-heading">
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
-              Great if you…
+              Genial si...
             </h2>
             <ul class="co-build-list" style="margin-top: 1rem">
-              <li>Take daily meds or supplements</li>
-              <li>Often forget dose times</li>
-              <li>Help parents or family stay on track</li>
-              <li>Want a consistent dose log</li>
-              <li>Want a clearer health routine</li>
+              <li>Tomar medicamentos o suplementos diarios</li>
+              <li>A menudo olvida los tiempos de dosis</li>
+              <li>Ayuda a los padres o a la familia a mantener el rumbo</li>
+              <li>Desea un registro de dosis constante</li>
+              <li>Desea una rutina de salud más clara</li>
             </ul>
           </div>
         </section>
@@ -1793,17 +1851,17 @@
             <div class="ox-premium-highlight">
               <p class="ox-premium-highlight__kicker">
                 <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
-                In one line
+                En una línea
               </p>
               <p class="ox-premium-highlight__line" id="pm-closing-highlight-title">
-                Log today's doses and keep a healthy routine going.
+                Registre las dosis de hoy y mantenga una rutina saludable.
               </p>
             </div>
           </div>
         </section>
 
-        <section class="ox-closing ox-reveal-on-scroll" aria-label="Small dose logs build lasting healthy habits.">
-          <p>Small dose logs build lasting healthy habits.</p>
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="Los registros de dosis pequeñas crean hábitos saludables duraderos.">
+          <p>Los registros de dosis pequeñas crean hábitos saludables duraderos.</p>
         </section>
       </main>
       <footer class="ox-footer">
@@ -1913,7 +1971,7 @@
               </svg>
             </a>
           </div>
-          <p class="ox-footer-meta">© Pillmate · <a href="#" class="js-go-home">Newon</a></p>
+          <p class="ox-footer-meta">© 0 · <a href="#" class="js-go-home">Newon</a></p>
         </div>
       </footer>
     </div>
@@ -1927,7 +1985,7 @@
           <div class="navbar-bar__cell navbar-bar__cell--left">
             <div class="navbar-hub navbar-hub--ox">
               <a class="navbar-hub__logo js-go-home" href="#" aria-label="Inicio Newon">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="ox-nav ox-nav--apps-only" aria-label="Apps de Newon">
             <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
@@ -2015,13 +2073,23 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">Hábitos de ahorro · análisis de gastos · coach IA</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
             </div>
           </div>
           <div class="navbar-bar__cell navbar-bar__cell--center">
-            <a href="#sv-top" class="navbar-app-showcase" aria-label="Back to top of SAVY">
+            <a href="#sv-top" class="navbar-app-showcase" aria-label="Volver al principio de 0">
               <span class="navbar-app-showcase__icon">
                 <img class="navbar-app-showcase__icon-img" src="/savy-logo.png" alt="" width="56" height="56" decoding="async" />
               </span>
@@ -2078,7 +2146,7 @@
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">OX MONTH</span>
-                <span class="mobile-apps-drawer__hint">OX MONTH intro</span>
+                <span class="mobile-apps-drawer__hint">0 intro</span>
               </span>
             </a>
             <a href="#subping-app" class="mobile-apps-drawer__item">
@@ -2087,7 +2155,7 @@
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">SubPing</span>
-                <span class="mobile-apps-drawer__hint">SubPing intro</span>
+                <span class="mobile-apps-drawer__hint">0 intro</span>
               </span>
             </a>
             <a href="#pillmate-app" class="mobile-apps-drawer__item">
@@ -2117,6 +2185,15 @@
                 <span class="mobile-apps-drawer__hint">Ver intro de PetLog</span>
               </span>
             </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">Ver intro de PiggyUp</span>
+              </span>
+            </a>
             <a href="#sv-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
               <span class="mobile-apps-drawer__icon">
                 <img src="/savy-logo.png" alt="" width="36" height="36" />
@@ -2137,13 +2214,13 @@
               <div class="ox-badge-row">
                 <p class="ox-badge">
                   <span class="ox-badge-dot" aria-hidden="true"></span>
-                  💳 Spending · income · subscriptions · AI insights
+                  💳 Gastos · ingresos · suscripciones · insights de IA
                 </p>
-                <p class="ox-badge ox-badge--secondary">173 countries · 13 languages supported</p>
+                <p class="ox-badge ox-badge--secondary">173 países · 13 idiomas admitidos</p>
               </div>
               <h1>SAVY</h1>
-              <p class="ox-subtitle">See your money flow at a glance</p>
-              <p class="ox-hero-reach-summary">A smart finance app that brings scattered spending, income, and subscriptions together—and helps you trim waste.</p>
+              <p class="ox-subtitle">Vea su flujo de dinero de un vistazo</p>
+              <p class="ox-hero-reach-summary">Una aplicación de finanzas inteligentes que reúne gastos, ingresos y suscripciones dispersos y te ayuda a reducir el desperdicio.</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">Disponible en App Store y Google Play</p>
                 <div class="ox-store-badges">
@@ -2169,7 +2246,7 @@
                       />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Download on</span>
+                      <span class="ox-store-badge__small">Descargue en la</span>
                       <span class="ox-store-badge__name">App Store</span>
                     </span>
                   </a>
@@ -2195,7 +2272,7 @@
                       <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Get it on</span>
+                      <span class="ox-store-badge__small">Disponible en</span>
                       <span class="ox-store-badge__name">Google Play</span>
                     </span>
                   </a>
@@ -2207,7 +2284,7 @@
                 <img
                   class="ox-hero-logo-img"
                   src="/savy-logo.png"
-                  alt="SAVY app logo: wallet, cards, and Korean won coin"
+                  alt="Logotipo de la aplicación 0: billetera, tarjetas y moneda de won coreano"
                   width="940"
                   height="940"
                 />
@@ -2218,13 +2295,13 @@
         <section id="sv-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="sv-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <div class="ox-app-intro__copy">
-              <p class="ox-section-label">About the app</p>
+              <p class="ox-section-label">Acerca de la aplicación</p>
               <h2 id="sv-intro-title" class="ox-app-intro__title">
                 <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
-                About the app
+                Acerca de la aplicación
               </h2>
-              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>SAVY</strong> is</p><p>a spending tracker that helps you record and review your money flow quickly—without a heavy household ledger.</p><p>Log daily expenses and income in seconds, and keep recurring subscriptions visible in one place.</p><p>SAVY is more than a ledger: it organizes your spending patterns and supports healthier money habits.</p><p>Small consistent entries add up to visible savings and change.</p></div>
-              <p class="ox-app-intro__closing">Small spending logs build better money habits.</p>
+              <div class="ox-app-intro__body">0123 is45a un rastreador de gastos que le ayuda a registrar y revisar su flujo de dinero rápidamente, sin un libro mayor pesado.67 Registre los gastos e ingresos diarios en segundos, y mantenga las suscripciones recurrentes visibles en un solo lugar.8910 es más que un libro mayor: organiza sus patrones de gastos y respalda hábitos de dinero más saludables.1112Las pequeñas entradas consistentes suman ahorros y cambios visibles.13</div>
+              <p class="ox-app-intro__closing">Los pequeños registros de gastos crean mejores hábitos de dinero.</p>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">Política de privacidad</a>
               </p>
@@ -2309,17 +2386,17 @@
         <section id="sv-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="sv-features-title">
           <div class="ox-container">
             <header class="ox-section-head">
-              <p class="ox-section-label">Features</p>
+              <p class="ox-section-label">Características</p>
               <h2 id="sv-features-title" class="ox-section-title-inline">
                 <span class="ox-section-title-inline__icon" aria-hidden="true">🚀</span>
-                Key features
+                Características principales
               </h2>
             </header>
             <div class="ox-features">
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">💳</span>
-                <h3>Expense logging</h3>
-                <p class="ox-feature-lead">Enter what you spent today in a few taps</p>
+                <h3>Registro de gastos</h3>
+                <p class="ox-feature-lead">Introduce lo que gastaste hoy en unos pocos toques</p>
                 <p class="ox-feature-note">Lightweight inputs make it easy to stay consistent</p>
               </article>
               <article class="ox-feature-card">
@@ -2365,7 +2442,7 @@
         <section id="sv-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="sv-how-title">
           <div class="ox-container">
             <header class="ox-section-head">
-              <h2 id="sv-how-title" class="ox-section-title-inline">📖 How to use</h2>
+              <h2 id="sv-how-title" class="ox-section-title-inline">Cómo se usa</h2>
             </header>
             <div class="ox-features">
               <article class="ox-feature-card">
@@ -2403,10 +2480,10 @@
         >
           <div class="ox-container ox-premium-layout">
             <header class="ox-premium-intro">
-              <p class="ox-section-label">Pricing</p>
+              <p class="ox-section-label">Precio</p>
               <h2 id="sv-premium-title" class="ox-premium-heading">
                 <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
-                Premium
+                Prémium
               </h2>
               <p class="ox-premium-tagline">Deeper analysis and<br />a smoother money-management experience</p>
             </header>
@@ -2468,7 +2545,7 @@
           <div class="ox-container ox-reco-head">
             <h2 id="sv-reco-title" class="ox-premium-heading">
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
-              Great if you…
+              Genial si...
             </h2>
             <ul class="co-build-list" style="margin-top: 1rem">
               <li>Want to reduce unnecessary spending</li>
@@ -2491,7 +2568,7 @@
             <div class="ox-premium-highlight">
               <p class="ox-premium-highlight__kicker">
                 <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
-                In one line
+                En una línea
               </p>
               <p class="ox-premium-highlight__line" id="sv-closing-highlight-title">
                 Record money—and change the flow.
@@ -2628,7 +2705,7 @@
           <div class="navbar-bar__cell navbar-bar__cell--left">
             <div class="navbar-hub navbar-hub--ox">
               <a class="navbar-hub__logo js-go-home" href="#" aria-label="Inicio Newon">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="ox-nav ox-nav--apps-only" aria-label="Apps de Newon">
             <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
@@ -2713,6 +2790,16 @@
                   <span class="apps-flyout__meta">
                     <span class="apps-flyout__name">PetLog</span>
                     <span class="apps-flyout__desc">Mascotas · salud · familia · IA</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">Hábitos de ahorro · análisis de gastos · coach IA</span>
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
@@ -2824,7 +2911,16 @@
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">PetLog</span>
-                <span class="mobile-apps-drawer__hint">Ver intro de PetLog</span>
+                <span class="mobile-apps-drawer__hint"></span>
+              </span>
+            </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">Ver intro de PiggyUp</span>
               </span>
             </a>
           </details>
@@ -2870,7 +2966,7 @@
                       />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Download on</span>
+                      <span class="ox-store-badge__small">Descargue en la</span>
                       <span class="ox-store-badge__name">App Store</span>
                     </span>
                   </a>
@@ -2896,7 +2992,7 @@
                       <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Get it on</span>
+                      <span class="ox-store-badge__small">Disponible en</span>
                       <span class="ox-store-badge__name">Google Play</span>
                     </span>
                   </a>
@@ -3067,13 +3163,13 @@
                 <span class="ox-feature-emoji" aria-hidden="true">💬</span>
                 <h3>Community</h3>
                 <p class="ox-feature-lead">Share experiences and learn from other parents.</p>
-                <p class="ox-feature-note">Ask questions and browse parent-friendly discussions.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
                 <h3>AI parenting insights</h3>
                 <p class="ox-feature-lead">From your logs—patterns and practical next steps.</p>
-                <p class="ox-feature-note">Premium tiers add deeper summaries from your routines.</p>
+                <p class="ox-feature-note"></p>
               </article>
             </div>
           </div>
@@ -3356,7 +3452,7 @@
           <div class="navbar-bar__cell navbar-bar__cell--left">
             <div class="navbar-hub navbar-hub--ox">
               <a class="navbar-hub__logo js-go-home" href="#" aria-label="Inicio Newon">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="ox-nav ox-nav--apps-only" aria-label="Apps de Newon">
             <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
@@ -3441,6 +3537,16 @@
                   <span class="apps-flyout__meta">
                     <span class="apps-flyout__name">PetLog</span>
                     <span class="apps-flyout__desc">Mascotas · salud · familia · IA</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">Hábitos de ahorro · análisis de gastos · coach IA</span>
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
@@ -3555,6 +3661,15 @@
                 <span class="mobile-apps-drawer__hint">PetLog · esta pantalla</span>
               </span>
             </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">Ver intro de PiggyUp</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -3598,7 +3713,7 @@
                       />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Download on</span>
+                      <span class="ox-store-badge__small">Descargue en la</span>
                       <span class="ox-store-badge__name">App Store</span>
                     </span>
                   </a>
@@ -3624,7 +3739,7 @@
                       <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Get it on</span>
+                      <span class="ox-store-badge__small">Disponible en</span>
                       <span class="ox-store-badge__name">Google Play</span>
                     </span>
                   </a>
@@ -3759,49 +3874,49 @@
                 <span class="ox-feature-emoji" aria-hidden="true">🍽️</span>
                 <h3>Meals &amp; walks</h3>
                 <p class="ox-feature-lead">Track food, hydration, walks, and daily routines.</p>
-                <p class="ox-feature-note">Lightweight screens keep daily logs quick.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🐾</span>
                 <h3>Pet profiles</h3>
                 <p class="ox-feature-lead">Breed, birthdays, weight, notes—organized per pet.</p>
-                <p class="ox-feature-note">Switch pets and keep every profile tidy.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">💉</span>
                 <h3>Health timeline</h3>
                 <p class="ox-feature-lead">Store vaccines, clinics, meds, and checkups.</p>
-                <p class="ox-feature-note">One place for medical history and follow-ups.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📅</span>
                 <h3>Scheduling</h3>
                 <p class="ox-feature-lead">Clinic visits, vaccinations, grooming in one planner.</p>
-                <p class="ox-feature-note">Repeats and reminders help you stay ahead.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📊</span>
                 <h3>Statistics</h3>
                 <p class="ox-feature-lead">Visualize routines and wellbeing data.</p>
-                <p class="ox-feature-note">Charts make trends easier to notice early.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">👨‍👩‍👧</span>
                 <h3>Family sharing</h3>
                 <p class="ox-feature-lead">Collaborate with family on the same record.</p>
-                <p class="ox-feature-note">Everyone sees the same care plan and updates.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">💬</span>
                 <h3>Community</h3>
                 <p class="ox-feature-lead">Swap experiences and trusted tips with fellow pet lovers.</p>
-                <p class="ox-feature-note">Learn from other pet parents and share ideas.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
                 <h3>AI health analysis</h3>
                 <p class="ox-feature-lead">Interpret patterns from your logs for proactive care.</p>
-                <p class="ox-feature-note">Premium adds richer AI reads of your pet’s patterns.</p>
+                <p class="ox-feature-note"></p>
               </article>
             </div>
           </div>
@@ -4076,6 +4191,738 @@
       </footer>
     </div>
 
+    <div id="piggyup-app" class="ox-page site-shell" data-theme="light" hidden>
+      <a class="ox-skip" href="#pu-main">Ir al contenido</a>
+
+      <header class="ox-header">
+        <div class="ox-container navbar-bar navbar-bar--ox navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub navbar-hub--ox">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="Inicio Newon">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
+              </a>
+              <nav class="ox-nav ox-nav--apps-only" aria-label="Apps de Newon">
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
+              <button
+                type="button"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
+                id="apps-trigger-pu"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="apps-panel-pu"
+                aria-label="Apps de Newon"
+              >
+                <span>Apps de Newon</span>
+                <span class="apps-flyout__chev" aria-hidden="true"></span>
+              </button>
+              <div
+                id="apps-panel-pu"
+                class="apps-flyout__panel"
+                role="menu"
+                aria-labelledby="apps-trigger-pu"
+                hidden
+              >
+                <a href="#ox-month" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/ox-month-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">OX MONTH</span>
+                    <span class="apps-flyout__desc">Hábitos · O/X · Registro mensual</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#subping-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/subping-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SubPing</span>
+                    <span class="apps-flyout__desc">Suscripciones · avisos · en un solo lugar</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">Recordatorios de medicación · pauta de pastillas</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#savy-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/savy-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SAVY</span>
+                    <span class="apps-flyout__desc">Gastos · ingresos · suscripciones · IA</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#babylog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">BabyLog</span>
+                    <span class="apps-flyout__desc">Crianza · crecimiento · familia · IA</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#petlog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PetLog</span>
+                    <span class="apps-flyout__desc">Mascotas · salud · familia · IA</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a
+                  href="#pu-top"
+                  role="menuitem"
+                  class="apps-flyout__item apps-flyout__item--current"
+                  aria-current="page"
+                >
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">Hábitos de ahorro · análisis de gastos · coach IA</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a href="#pu-top" class="navbar-app-showcase" aria-label="Volver arriba en PiggyUp">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/piggyup-logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">PiggyUp</span>
+              <span class="navbar-app-showcase__tagline">Hábitos de ahorro · análisis de gastos · coach IA</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--ox navbar-bar__controls--brand-toolbar">
+          <div class="lang-switcher lang-switcher--ox" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-pu">Idioma</label>
+            <select id="lang-select-pu" class="lang-select lang-select--toolbar" data-lang-select aria-label="Idioma">
+              <option value="ko">한국어</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="es">Español</option>
+              <option value="pt-br">Português (Brasil)</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="hi">हिन्दी</option>
+              <option value="id">Bahasa Indonesia</option>
+            </select>
+          </div>
+          <div class="ox-header-actions">
+            <button
+              type="button"
+              class="ox-theme-toggle"
+              id="pu-theme"
+              aria-label="Modo claro"
+              title="Cambiar tema"
+            >
+              ☀
+            </button>
+            <button
+              type="button"
+              class="ox-nav-toggle"
+              id="pu-nav-toggle"
+              aria-expanded="false"
+              aria-controls="pu-mobile"
+              aria-label="Menú"
+            >
+              <span></span><span></span>
+            </button>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div id="pu-mobile" class="ox-mobile-menu ox-mobile-menu--apps-only" hidden>
+          <details class="mobile-apps-drawer mobile-apps-drawer--ox">
+            <summary class="mobile-apps-drawer__summary">Apps de Newon</summary>
+            <a href="#ox-month" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/ox-month-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">OX MONTH</span>
+                <span class="mobile-apps-drawer__hint">Intro OX MONTH</span>
+              </span>
+            </a>
+            <a href="#subping-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/subping-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SubPing</span>
+                <span class="mobile-apps-drawer__hint">Intro SubPing</span>
+              </span>
+            </a>
+            <a href="#pillmate-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">Intro Pillmate</span>
+              </span>
+            </a>
+            <a href="#savy-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/savy-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SAVY</span>
+                <span class="mobile-apps-drawer__hint">Intro SAVY</span>
+              </span>
+            </a>
+            <a href="#babylog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/babylog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">BabyLog</span>
+                <span class="mobile-apps-drawer__hint">Intro BabyLog</span>
+              </span>
+            </a>
+            <a href="#petlog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/petlog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PetLog</span>
+                <span class="mobile-apps-drawer__hint">Intro PetLog</span>
+              </span>
+            </a>
+            <a href="#pu-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">PiggyUp · esta pantalla</span>
+              </span>
+            </a>
+          </details>
+        </div>
+      </header>
+
+      <main id="pu-main">
+        <section id="pu-top" class="ox-hero ox-reveal-on-scroll is-visible">
+          <div class="ox-container ox-hero-grid">
+            <div class="ox-hero-copy">
+              <div class="ox-badge-row">
+                <p class="ox-badge">
+                  <span class="ox-badge-dot" aria-hidden="true"></span>
+                  💰 Hábitos de ahorro · análisis de gastos · coach IA
+                </p>
+                <p class="ox-badge ox-badge--secondary">173 países · 13 idiomas</p>
+              </div>
+              <h1>PiggyUp</h1>
+              <p class="ox-subtitle">Los pequeños ahorros suman un gran cambio</p>
+              <p class="ox-hero-reach-summary">Una app de ahorro simpática e inteligente: registra gastos, analiza hábitos y recibe insights con IA.</p>
+              <div class="ox-store-release" role="status" aria-live="polite">
+                <p class="ox-store-release__label">Disponible en App Store y Google Play</p>
+                <div class="ox-store-badges">
+                  <a
+                    class="ox-store-badge ox-store-badge--apple"
+                    href="https://newon.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="PiggyUp en App Store (nueva pestaña)"
+                  >
+                    <svg
+                      class="ox-store-badge__icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                      />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">Descargue en la</span>
+                      <span class="ox-store-badge__name">App Store</span>
+                    </span>
+                  </a>
+                  <a
+                    class="ox-store-badge ox-store-badge--google"
+                    href="https://newon.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="PiggyUp en Google Play (nueva pestaña)"
+                  >
+                    <svg
+                      class="ox-store-badge__icon ox-store-badge__icon--play"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 28 28"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path fill="#00D9FF" d="M3 4.5v19l11-9.7L3 4.5z" />
+                      <path fill="#00F076" d="M15.4 14.3 25 20.8c.6-.4 1-1 1-1.8V9c0-.7-.4-1.4-1-1.8l-9.6 6.1z" />
+                      <path fill="#FFCE00" d="M15.4 13.7 25 7.2c-.6-.4-1.3-.6-2-.4L3 4.5l12.4 9.2z" />
+                      <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">Disponible en</span>
+                      <span class="ox-store-badge__name">Google Play</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="ox-hero-visual">
+              <div class="ox-hero-frame ox-hero-frame--logo">
+                <img
+                  class="ox-hero-logo-img"
+                  src="/piggyup-logo.png"
+                  alt="Logotipo de PiggyUp: alcancía rosa"
+                  width="940"
+                  height="940"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="pu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pu-intro-title">
+          <div class="ox-container ox-app-intro__inner">
+            <div class="ox-app-intro__copy">
+              <p class="ox-section-label">Sobre la app</p>
+              <h2 id="pu-intro-title" class="ox-app-intro__title">
+                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
+                Sobre la app
+              </h2>
+              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>PiggyUp</strong> es</p><p>una app ligera para registrar gastos y crear hábitos de ahorro sin un libro de cuentas pesado.</p><p>Desde registros diarios hasta insights de IA, reduce el estrés del dinero y convierte pequeños logros en crecimiento.</p><p>Con un cerdito amigable, se siente más como compañero de estilo de vida que como banca rígida.</p><p>Pequeños registros suman un cambio real.</p></div>
+              <p class="ox-app-intro__closing">Pequeños ahorros crean mejores hábitos.</p>
+              <p class="ox-app-intro__legal">
+                <a class="ox-app-intro__legal-link" href="privacy/">Política de privacidad</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="pu-showcase-scroll"
+          class="ox-section ox-reveal-on-scroll"
+          aria-label="Siete capturas de PiggyUp. Desplázate horizontalmente para verlas todas."
+        >
+          <div class="ox-container">
+            <div class="sp-showcase-scroll" tabindex="0">
+              <div class="sp-showcase-scroll__track">
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/en/pu-showcase-01.png"
+                    alt="PiggyUp — Una nueva forma de registrar ahorros en lugar de gastos"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/en/pu-showcase-02.png"
+                    alt="PiggyUp — Datos de ahorro por categoría"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/en/pu-showcase-03.png"
+                    alt="PiggyUp — Tus hábitos de ahorro en datos"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/en/pu-showcase-04.png"
+                    alt="PiggyUp — Únete a retos de ahorro"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/en/pu-showcase-05.png"
+                    alt="PiggyUp — Registra fácil, simple y rápido"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/en/pu-showcase-06.png"
+                    alt="PiggyUp — Pequeños hábitos, grandes ahorros"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/en/pu-showcase-07.png"
+                    alt="PiggyUp — Análisis avanzado de gastos y ahorro con IA"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="pu-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="pu-features-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">Funciones</p>
+              <h2 id="pu-features-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">🚀</span>
+                Funciones principales
+              </h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">💸</span>
+                <h3>Registro de gastos</h3>
+                <p class="ox-feature-lead">Anota el gasto de hoy en pocos toques</p>
+                <p class="ox-feature-note">y gestiona categorías con entradas rápidas que crean hábitos naturales.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🐷</span>
+                <h3>Metas de ahorro</h3>
+                <p class="ox-feature-lead">Define montos y planes</p>
+                <p class="ox-feature-note">y sigue el progreso de un vistazo.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔔</span>
+                <h3>Alertas de ahorro</h3>
+                <p class="ox-feature-lead">Gestiona gastos repetidos, riesgos y recordatorios</p>
+                <p class="ox-feature-note">con notificaciones para no perder el hábito.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📊</span>
+                <h3>Análisis de gastos</h3>
+                <p class="ox-feature-lead">Revisa patrones por categoría y flujo mensual</p>
+                <p class="ox-feature-note">y ve dónde va más tu dinero.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📈</span>
+                <h3>Gráficos y estadísticas</h3>
+                <p class="ox-feature-lead">Visualiza ahorros, gastos y metas</p>
+                <p class="ox-feature-note">de forma intuitiva.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
+                <h3>Insights de ahorro con IA</h3>
+                <p class="ox-feature-lead">La IA analiza tus hábitos</p>
+                <p class="ox-feature-note">y sugiere mejoras y puntos de ahorro.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🎯</span>
+                <h3>Progreso de metas</h3>
+                <p class="ox-feature-lead">Sigue logros y crecimiento</p>
+                <p class="ox-feature-note">y convierte pequeños ahorros en una gran historia.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="pu-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="pu-how-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <h2 id="pu-how-title" class="ox-section-title-inline">📖 Cómo usar</h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <h3>1️⃣ Registrar gasto</h3>
+                <p class="ox-feature-lead">Introduce monto y categoría de hoy.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>2️⃣ Definir meta</h3>
+                <p class="ox-feature-lead">Elige objetivo y plan de ahorro.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>3️⃣ Ver patrones</h3>
+                <p class="ox-feature-lead">Revisa el flujo por categoría.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>4️⃣ Leer insights IA</h3>
+                <p class="ox-feature-lead">Consulta informes y consejos de ahorro.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>5️⃣ Crear el hábito</h3>
+                <p class="ox-feature-lead">Registra poco a poco cada día.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>6️⃣ Alcanzar la meta</h3>
+                <p class="ox-feature-lead">Celebra los hitos al crecer.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="pu-premium"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="pu-premium-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <header class="ox-premium-intro">
+              <p class="ox-section-label">Precios</p>
+              <h2 id="pu-premium-title" class="ox-premium-heading">
+                <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
+                Premium
+              </h2>
+              <p class="ox-premium-tagline">Análisis más profundo y<br />experiencia de ahorro más inteligente</p>
+            </header>
+
+            <div class="ox-premium-stack">
+              <section class="ox-premium-block" aria-labelledby="pu-premium-features-heading">
+                <h3 id="pu-premium-features-heading" class="ox-premium-block__title">
+                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  Funciones premium
+                </h3>
+                <div class="ox-premium-grid">
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      Análisis avanzado
+                    </h4>
+                    <p class="ox-premium-card__lead">Vistas por mes, categoría</p>
+                    <p class="ox-premium-card__note">y gastos repetidos.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      Informes IA
+                    </h4>
+                    <p class="ox-premium-card__lead">Según tu flujo de gasto,</p>
+                    <p class="ox-premium-card__note">insights de ahorro personalizados.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
+                      Notificaciones avanzadas
+                    </h4>
+                    <p class="ox-premium-card__lead">Control fino de presupuesto, repetidos</p>
+                    <p class="ox-premium-card__note">y metas de ahorro.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📈</span>
+                      Estadísticas detalladas
+                    </h4>
+                    <p class="ox-premium-card__lead">Más formas de ver gastos</p>
+                    <p class="ox-premium-card__note">y ahorros en el tiempo.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      Sin anuncios
+                    </h4>
+                    <p class="ox-premium-card__lead">Enfócate en ahorrar</p>
+                    <p class="ox-premium-card__note">sin interrupciones.</p>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="pu-reco" class="ox-section ox-reveal-on-scroll" aria-labelledby="pu-reco-title">
+          <div class="ox-container ox-reco-head">
+            <h2 id="pu-reco-title" class="ox-premium-heading">
+              <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
+              Ideal si…
+            </h2>
+            <ul class="co-build-list" style="margin-top: 1rem">
+              <li>Quieres gastar menos de lo necesario</li>
+              <li>Te preguntas adónde va el dinero</li>
+              <li>Quieres hábitos de ahorro</li>
+              <li>Buscas una app simpática y fácil</li>
+              <li>Quieres análisis con IA</li>
+              <li>Te gustan metas de ahorro</li>
+              <li>Quieres una rutina financiera más clara</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="pu-closing-highlight"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="pu-closing-highlight-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <div class="ox-premium-highlight">
+              <p class="ox-premium-highlight__kicker">
+                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                En una línea
+              </p>
+              <p class="ox-premium-highlight__line" id="pu-closing-highlight-title">
+                Registra dinero y crea hábitos de ahorro.
+              </p>
+              <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
+                Pequeños ahorros, gran cambio.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="Mensaje final">
+          <div class="ox-closing__stack"><p>Empieza un hábito de ahorro más simpático e inteligente<br />con <strong>PiggyUp</strong>.</p></div>
+        </section>
+      </main>
+      <footer class="ox-footer">
+        <div class="ox-container ox-footer-inner">
+          <div class="footer-legal-links footer-legal-links--ox">
+            <a class="footer-legal" href="privacy/">Política de privacidad</a>
+            <span class="footer-legal-sep" aria-hidden="true">·</span>
+            <a class="footer-legal" href="terms/">Términos del servicio</a>
+          </div>
+          <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="Contacto y redes">
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="mailto:newon@newon.app"
+              aria-label="Correo a newon@newon.app"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="22,6 12,13 2,6"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.instagram.com/newon.app.global?igsh=MTdxZ3U3cjZyZ29p&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram de Newon · nueva pestaña"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://youtube.com/@newonglobal?si=pviB1hC7yMuD_tXw"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube de Newon · se abre en una pestaña nueva"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok de Newon · se abre en una pestaña nueva"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="ox-footer-meta">© PiggyUp · <a href="#" class="js-go-home">Newon</a></p>
+        </div>
+      </footer>
+    </div>
+
+
+    
+
     <div id="subping-app" class="ox-page site-shell" data-theme="light" hidden>
       <a class="ox-skip" href="#sp-main">Ir al contenido</a>
 
@@ -4084,7 +4931,7 @@
           <div class="navbar-bar__cell navbar-bar__cell--left">
             <div class="navbar-hub navbar-hub--ox">
               <a class="navbar-hub__logo js-go-home" href="#" aria-label="Inicio Newon">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="ox-nav ox-nav--apps-only" aria-label="Apps de Newon">
             <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
@@ -4169,6 +5016,16 @@
                   <span class="apps-flyout__meta">
                     <span class="apps-flyout__name">PetLog</span>
                     <span class="apps-flyout__desc">Mascotas · salud · familia · IA</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">Hábitos de ahorro · análisis de gastos · coach IA</span>
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
@@ -4262,7 +5119,7 @@
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">SAVY</span>
-                <span class="mobile-apps-drawer__hint">Ver SAVY</span>
+                <span class="mobile-apps-drawer__hint">Open SAVY intro</span>
               </span>
             </a>
             <a href="#babylog-app" class="mobile-apps-drawer__item">
@@ -4281,6 +5138,15 @@
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">PetLog</span>
                 <span class="mobile-apps-drawer__hint">Ver intro de PetLog</span>
+              </span>
+            </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">Ver intro de PiggyUp</span>
               </span>
             </a>
           </details>
@@ -4326,7 +5192,7 @@
                       />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Download on</span>
+                      <span class="ox-store-badge__small">Descargue en la</span>
                       <span class="ox-store-badge__name">App Store</span>
                     </span>
                   </a>
@@ -4352,7 +5218,7 @@
                       <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Get it on</span>
+                      <span class="ox-store-badge__small">Disponible en</span>
                       <span class="ox-store-badge__name">Google Play</span>
                     </span>
                   </a>
@@ -4751,6 +5617,7 @@
         var TITLE_SAVY = "SAVY — Gastos, ingresos y suscripciones · Newon";
         var TITLE_BABYLOG = "BabyLog — Diario parental y crecimiento · Newon";
         var TITLE_PETLOG = "PetLog — Registro de mascotas y salud · Newon";
+        var TITLE_PIGGYUP = "PiggyUp — Hábitos de ahorro · Newon";
         var LABEL_MENU_OPEN = "Abrir menú";
         var LABEL_MENU_CLOSE = "Cerrar menú";
         var LABEL_THEME_LIGHT = "Modo claro";
@@ -4762,12 +5629,14 @@
         var elSv = document.getElementById("savy-app");
         var elBl = document.getElementById("babylog-app");
         var elPl = document.getElementById("petlog-app");
+        var elPu = document.getElementById("piggyup-app");
         var themeKey = "ox-month-theme";
         var themeKeySp = "subping-app-theme";
         var themeKeyPm = "pillmate-app-theme";
         var themeKeySv = "savy-app-theme";
         var themeKeyBl = "babylog-app-theme";
         var themeKeyPl = "petlog-app-theme";
+        var themeKeyPu = "piggyup-app-theme";
         /** 하나로 저장: 어느 앱에서 바꿔도 전 앱 설명 화면에 동일 테마 적용 */
         var themeKeyUnified = "newon-app-theme";
         function bindNavbarScrollFade() {
@@ -4893,6 +5762,26 @@
           });
         }
 
+
+        function staggerPuReveals() {
+          if (!elPu) return;
+          requestAnimationFrame(function () {
+            var reds = elPu.querySelectorAll(".ox-reveal-on-scroll:not(.is-visible)");
+            if (!reds.length) return;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              reds.forEach(function (el) {
+                el.classList.add("is-visible");
+              });
+            } else {
+              reds.forEach(function (el, i) {
+                setTimeout(function () {
+                  el.classList.add("is-visible");
+                }, 50 + i * 75);
+              });
+            }
+          });
+        }
+
         function closeMobileMenus() {
           var t = document.querySelector(".nav-toggle");
           var m = document.getElementById("mobile-nav");
@@ -4936,6 +5825,12 @@
           if (plt && plm) {
             plt.setAttribute("aria-expanded", "false");
             plm.hidden = true;
+          }
+          var put = document.getElementById("pu-nav-toggle");
+          var pum = document.getElementById("pu-mobile");
+          if (put && pum) {
+            put.setAttribute("aria-expanded", "false");
+            pum.hidden = true;
           }
         }
 
@@ -4989,6 +5884,14 @@
           btn.textContent = dark ? "☀" : "🌙";
         }
 
+        function syncPuThemeButton() {
+          var btn = document.getElementById("pu-theme");
+          if (!btn || !elPu) return;
+          var dark = elPu.getAttribute("data-theme") === "dark";
+          btn.setAttribute("aria-label", dark ? LABEL_THEME_LIGHT : LABEL_THEME_DARK);
+          btn.textContent = dark ? "☀" : "🌙";
+        }
+
         function getSystemThemePreference() {
           try {
             if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -5009,7 +5912,7 @@
           } catch (e) {}
 
           try {
-            var keys = [themeKey, themeKeySp, themeKeyPm, themeKeySv, themeKeyBl, themeKeyPl];
+            var keys = [themeKey, themeKeySp, themeKeyPm, themeKeySv, themeKeyBl, themeKeyPl, themeKeyPu];
             var vals = [];
             var i;
             var j;
@@ -5071,6 +5974,7 @@
           if (elSv) elSv.setAttribute("data-theme", theme);
           if (elBl) elBl.setAttribute("data-theme", theme);
           if (elPl) elPl.setAttribute("data-theme", theme);
+          if (elPu) elPu.setAttribute("data-theme", theme);
         }
 
         function syncAllAppThemeButtons() {
@@ -5080,6 +5984,7 @@
           syncSvThemeButton();
           syncBlThemeButton();
           syncPlThemeButton();
+          syncPuThemeButton();
         }
 
         function applyThemesFromStorage() {
@@ -5104,6 +6009,7 @@
             localStorage.removeItem(themeKeySv);
             localStorage.removeItem(themeKeyBl);
             localStorage.removeItem(themeKeyPl);
+            localStorage.removeItem(themeKeyPu);
           } catch (e) {}
           setAllAppRootsTheme(theme);
           syncAllAppThemeButtons();
@@ -5120,6 +6026,7 @@
           if (elSv) elSv.hidden = true;
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
           document.title = options.title != null ? options.title : TITLE_HOME;
           closeMobileMenus();
           elOx.querySelectorAll(".ox-reveal-on-scroll").forEach(function (el) {
@@ -5160,6 +6067,13 @@
               }
             });
           }
+          if (elPu) {
+            elPu.querySelectorAll(".ox-reveal-on-scroll").forEach(function (el) {
+              if (!el.classList.contains("ox-hero")) {
+                el.classList.remove("is-visible");
+              }
+            });
+          }
           requestAnimationFrame(function () {
             if (options.scrollToId) {
               var sec = document.getElementById(options.scrollToId);
@@ -5180,6 +6094,10 @@
           if (elSv) elSv.hidden = true;
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
           document.title = TITLE_OX;
           closeMobileMenus();
           requestAnimationFrame(function () {
@@ -5196,6 +6114,10 @@
           if (elSv) elSv.hidden = true;
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
           document.title = TITLE_SP;
           closeMobileMenus();
           requestAnimationFrame(function () {
@@ -5216,6 +6138,10 @@
           if (elSv) elSv.hidden = true;
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
           document.title = TITLE_PILLMATE;
           closeMobileMenus();
           requestAnimationFrame(function () {
@@ -5235,6 +6161,10 @@
           if (elPm) elPm.hidden = true;
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
           elSv.hidden = false;
           document.title = TITLE_SAVY;
           closeMobileMenus();
@@ -5255,6 +6185,10 @@
           if (elPm) elPm.hidden = true;
           if (elSv) elSv.hidden = true;
           if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
           elBl.hidden = false;
           document.title = TITLE_BABYLOG;
           closeMobileMenus();
@@ -5284,6 +6218,27 @@
           });
         }
 
+        function showPiggyup() {
+          if (!elPu) {
+            showHome();
+            return;
+          }
+          elHome.hidden = true;
+          elOx.hidden = true;
+          elSp.hidden = true;
+          if (elPm) elPm.hidden = true;
+          if (elSv) elSv.hidden = true;
+          if (elBl) elBl.hidden = true;
+          if (elPl) elPl.hidden = true;
+          elPu.hidden = false;
+          document.title = TITLE_PIGGYUP;
+          closeMobileMenus();
+          requestAnimationFrame(function () {
+            window.scrollTo(0, 0);
+            staggerPuReveals();
+          });
+        }
+
         function routeFromHash() {
           var h = location.hash;
           if (h === "#ox-month") {
@@ -5298,6 +6253,8 @@
             showBabylog();
           } else if (h === "#petlog-app" || h === "#petlog") {
             showPetlog();
+          } else if (h === "#piggyup-app" || h === "#piggyup") {
+            showPiggyup();
           } else {
             showHome();
           }
@@ -5493,6 +6450,31 @@
             a.addEventListener("click", function () {
               plToggle.setAttribute("aria-expanded", "false");
               plMenu.hidden = true;
+            });
+          });
+        }
+
+        var themeBtnPu = document.getElementById("pu-theme");
+        if (themeBtnPu && elPu) {
+          syncPuThemeButton();
+          themeBtnPu.addEventListener("click", function () {
+            var next = elPu.getAttribute("data-theme") === "dark" ? "light" : "dark";
+            persistUnifiedTheme(next);
+          });
+        }
+
+        var puToggle = document.getElementById("pu-nav-toggle");
+        var puMenu = document.getElementById("pu-mobile");
+        if (puToggle && puMenu) {
+          puToggle.addEventListener("click", function () {
+            var open = puToggle.getAttribute("aria-expanded") === "true";
+            puToggle.setAttribute("aria-expanded", String(!open));
+            puMenu.hidden = open;
+          });
+          puMenu.querySelectorAll("a").forEach(function (a) {
+            a.addEventListener("click", function () {
+              puToggle.setAttribute("aria-expanded", "false");
+              puMenu.hidden = true;
             });
           });
         }

@@ -202,6 +202,7 @@
     sel.addEventListener("change", function () {
       syncBtnLabel(sel, btn);
       syncSelectedMarks(root);
+      if (sel.value) navigateToLang(sel.value);
     });
 
     btn.addEventListener("click", function (e) {

@@ -6,7 +6,7 @@
           <div class="navbar-bar__cell navbar-bar__cell--left">
             <div class="navbar-hub navbar-hub--ox">
               <a class="navbar-hub__logo js-go-home" href="#" aria-label="{{t:nav.brandHomeAria}}">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="ox-nav ox-nav--apps-only" aria-label="{{t:nav.appsAria}}">
             <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
@@ -91,6 +91,16 @@
                   <span class="apps-flyout__meta">
                     <span class="apps-flyout__name">PetLog</span>
                     <span class="apps-flyout__desc">{{t:nav.petlogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.piggyupDesc}}</span>
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
@@ -203,6 +213,15 @@
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">PetLog</span>
                 <span class="mobile-apps-drawer__hint">{{t:pl.drawerPl}}</span>
+              </span>
+            </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobilePiggyupHint}}</span>
               </span>
             </a>
           </details>

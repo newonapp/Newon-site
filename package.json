@@ -19,6 +19,7 @@
     "open:newon": "node scripts/open-simple-browser.mjs \"https://newon.app/ko/\"",
     "open:pillmate": "node scripts/open-simple-browser.mjs \"https://newon.app/ko/#pillmate-app\"",
     "pack:upload": "node scripts/prepare-manual-upload.mjs",
+    "묶기": "node scripts/prepare-manual-upload.mjs",
     "pack:pages": "node scripts/zip-publish.mjs",
     "ship": "node scripts/publish-site.mjs && bash scripts/push-to-github.sh",
     "push:first": "bash first-time-push.sh"

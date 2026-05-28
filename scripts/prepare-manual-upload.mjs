@@ -37,6 +37,8 @@ const COPY_DIRS = [
 const COPY_FILES = [
   ".gitignore",
   "index.html",
+  "lang-nav.js",
+  "lang-dropdown.js",
   "styles.css",
   "ox-month.css",
   "package.json",
@@ -46,6 +48,9 @@ const COPY_FILES = [
   "ox-month-logo.png",
   "subping-logo.png",
   "pillmate-logo.png",
+  "savy-logo.png",
+  "babylog-logo.png",
+  "petlog-logo.png",
   "subping-hero-mark.png",
   "feature-grid.png",
   "hero-promo.png",
@@ -57,6 +62,7 @@ const COPY_FILES = [
   "vercel.json",
   "netlify.toml",
   "README.md",
+  "GitHub에-파일로-올리기.txt",
   "올리는법-GitHubDesktop.txt",
   "업로드-체크리스트.txt",
   "복사해서-터미널에-붙여넣기.txt",
@@ -89,6 +95,25 @@ function walkFiles(dir, base, out) {
   }
 }
 
+/** macOS에서 upload-pack 재생성 시 ENOTEMPTY 가 나는 경우 대비 */
+function rmDirForce(dir) {
+  if (!fs.existsSync(dir)) return;
+  for (let i = 0; i < 5; i++) {
+    spawnSync("rm", ["-rf", dir]);
+    if (!fs.existsSync(dir)) return;
+    try {
+      fs.rmSync(dir, { recursive: true, force: true, maxRetries: 3, retryDelay: 300 });
+    } catch {
+      /* retry */
+    }
+    if (!fs.existsSync(dir)) return;
+    spawnSync("sleep", ["0.3"]);
+  }
+  if (fs.existsSync(dir)) {
+    throw new Error(`폴더를 비울 수 없습니다: ${dir}\n터미널: rm -rf "${dir}"`);
+  }
+}
+
 // 1) 최신 HTML / 검증
 const build = spawnSync(process.execPath, [path.join(ROOT, "scripts", "publish-site.mjs")], {
   cwd: ROOT,
@@ -97,7 +122,7 @@ const build = spawnSync(process.execPath, [path.join(ROOT, "scripts", "publish-s
 if (build.status !== 0) process.exit(build.status ?? 1);
 
 // 2) 비우고 채우기
-fs.rmSync(DEST, { recursive: true, force: true });
+rmDirForce(DEST);
 fs.mkdirSync(DEST, { recursive: true });
 
 for (const name of COPY_DIRS) {
@@ -123,28 +148,28 @@ const listed = [];
 walkFiles(DEST, "", listed);
 listed.sort();
 const manifest = [
-  ">>> 하나씩 웹 업로드 하지 마세요. GitHub Desktop 으로 한 번에 올리세요.",
-  ">>> 프로젝트 폴더의  올리는법-GitHubDesktop.txt  참고 (이 pack 안에도 복사됨).",
+  "================================================================================",
+  "  이 폴더(또는 Newon-site-upload.zip 을 푼 내용)를 GitHub에 올리세요",
+  "  저장소: https://github.com/newonapp/Newon-site",
+  "================================================================================",
   "",
-  "=== GitHub에 올릴 파일 목록 (upload-pack 기준) ===",
-  `총 ${listed.length}개 파일`,
+  "【가장 쉬움】 GitHub Desktop",
+  "  1) desktop.github.com 설치 → Newon-site Clone",
+  "  2) 상위 폴더의 Newon-site-upload.zip 풀기",
+  "  3) 풀린 것 전체를 Clone 폴더에 드래그(덮어쓰기) → Commit → Push",
+  "",
+  "【터미널로 zip 다시 만들기】",
+  "  cd /Users/kyungnawon/Newon && npm run 묶기",
+  "",
+  "【자세한 글】 GitHub에-파일로-올리기.txt (프로젝트·이 pack 안)",
+  "",
+  `=== 포함 파일 (${listed.length}개) ===`,
   "",
   ...listed.map((l) => l),
   "",
-  "=== 한 번에 올리기 (추천) ===",
-  "1. 프로젝트 폴더에 생긴  Newon-site-upload.zip  더블클릭 → 압축 풀림",
-  "2. 풀린 폴더(이름이 길면 맨 안쪽까지 들어가서) .github, index.html 보이는 그 폴더에서",
-  "   Cmd+A (전체 선택)",
-  "3. GitHub → newonapp/Newon-site → Add file → Upload files",
-  "4. 선택한 것을 통째로 드래그 → 한 번에 올라감 (GitHub 웹 제한으로 실패하면 아래 참고)",
-  "",
-  "=== zip 없이 ===",
-  "Finder에서 upload-pack 열고 → Cmd+A → Upload files 로 드래그",
-  "",
-  "=== 웹에서 막히면 ===",
-  "GitHub Desktop 설치 → 저장소 클론 후 upload-pack 내용을 폴더에 붙여넣기 → Commit 전체 → Push",
-  "",
-  "5. Settings → Pages → Source: GitHub Actions",
+  "=== Pages 설정 (한 번만) ===",
+  "  Settings → Pages → Source: GitHub Actions",
+  "  Custom domain: www.newon.app",
   "",
 ];
 fs.writeFileSync(path.join(DEST, "이_폴더를_GitHub에_올리세요.txt"), manifest.join("\n"), "utf8");
@@ -166,7 +191,17 @@ if (z.status !== 0) {
   console.log("ZIP:", ZIP_OUT, `(${(st.size / 1024 / 1024).toFixed(2)} MB)`);
 }
 
+if (process.platform === "darwin") {
+  if (fs.existsSync(ZIP_OUT)) spawnSync("open", ["-R", ZIP_OUT]);
+  else spawnSync("open", [DEST]);
+}
+
 console.log("");
-console.log("준비 완료:", DEST);
-console.log("목록:", path.join(DEST, "이_폴더를_GitHub에_올리세요.txt"));
+console.log("준비 완료");
+console.log("  ZIP:     ", ZIP_OUT);
+console.log("  폴더:    ", DEST);
+console.log("  안내:    ", path.join(ROOT, "GitHub에-파일로-올리기.txt"));
+console.log("");
+console.log("다음: zip 풀기 → GitHub Desktop 으로 Clone 폴더에 붙여넣기 → Push");
+console.log("(웹 Upload files 는 파일이 많아 실패할 수 있음)");
 console.log("");

@@ -31,7 +31,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/ox-month.css?v=20260523-brand-header-app" />
+    <link rel="stylesheet" href="/ox-month.css?v=20260528-piggyup-showcase" />
+    <script src="/theme-shell.js"></script>
     <script src="/lang-nav.js"></script>
   </head>
   <body>
@@ -43,7 +44,7 @@
           <div class="navbar-bar__cell navbar-bar__cell--left">
             <div class="navbar-hub">
               <a class="navbar-hub__logo js-go-home" href="#" aria-label="Newon ホーム">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="nav nav--apps-only" aria-label="Newon アプリ">
             <div class="apps-flyout apps-flyout--align-start" data-apps-flyout>
@@ -126,6 +127,16 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">節約習慣 · 消費分析 · AIコーチ</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
@@ -137,7 +148,7 @@
                 <img class="navbar-app-showcase__icon-img" src="/logo.png" alt="" width="56" height="56" decoding="async" />
               </span>
               <span class="navbar-app-showcase__title">Newon</span>
-              <span class="navbar-app-showcase__tagline">Newon アプリハブ</span>
+              <span class="navbar-app-showcase__tagline">newon@newon.app</span>
             </a>
           </div>
           <div class="navbar-bar__cell navbar-bar__cell--controls">
@@ -232,6 +243,15 @@
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">PetLog</span>
                 <span class="mobile-apps-drawer__hint">PetLog の紹介を見る</span>
+              </span>
+            </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">PiggyUpの紹介を見る</span>
               </span>
             </a>
           </details>
@@ -494,7 +514,7 @@
           <div class="navbar-bar__cell navbar-bar__cell--left">
             <div class="navbar-hub navbar-hub--ox">
               <a class="navbar-hub__logo js-go-home" href="#" aria-label="Newon ホーム">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="ox-nav ox-nav--apps-only" aria-label="Newon アプリ">
             <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
@@ -579,6 +599,16 @@
                   <span class="apps-flyout__meta">
                     <span class="apps-flyout__name">PetLog</span>
                     <span class="apps-flyout__desc">ペット記録 · 健康 · 家族共有 · AI</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">節約習慣 · 消費分析 · AIコーチ</span>
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
@@ -693,6 +723,15 @@
                 <span class="mobile-apps-drawer__hint">PetLog の紹介を見る</span>
               </span>
             </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">PiggyUpの紹介を見る</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -738,7 +777,7 @@
                       />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Download on</span>
+                      <span class="ox-store-badge__small">次でダウンロード：</span>
                       <span class="ox-store-badge__name">App Store</span>
                     </span>
                   </a>
@@ -764,7 +803,7 @@
                       <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Get it on</span>
+                      <span class="ox-store-badge__small">ぜひご利用ください</span>
                       <span class="ox-store-badge__name">Google Play</span>
                     </span>
                   </a>
@@ -982,24 +1021,24 @@
             </header>
             <div class="ox-features">
               <article class="ox-feature-card">
-                <h3>1️⃣ Add a habit</h3>
-                <p class="ox-feature-lead">Create a habit or start from a template—keep the list light and yours.</p>
+                <h3>1️恤習慣をつける</h3>
+                <p class="ox-feature-lead">習慣をつけるか、テンプレートから始めましょう。リストと自分のリストを軽くしておきましょう。</p>
               </article>
               <article class="ox-feature-card">
-                <h3>2️⃣ Log with O/X</h3>
-                <p class="ox-feature-lead">Mark each day on the grid—your whole month and gaps are easy to see.</p>
+                <h3>2 ️- O/Xでのログ</h3>
+                <p class="ox-feature-lead">毎日をグリッドにマークしてください。1か月間とギャップは簡単に確認できます。</p>
               </article>
               <article class="ox-feature-card">
-                <h3>3️⃣ Turn on reminders</h3>
-                <p class="ox-feature-lead">Schedule nudges by time of day so you don’t miss a check-in.</p>
+                <h3>️3恤リマインダーをオンにする</h3>
+                <p class="ox-feature-lead">チェックインを逃さないよう、1日の時間帯にナッジをスケジュールしましょう。</p>
               </article>
               <article class="ox-feature-card">
-                <h3>4️⃣ Review stats</h3>
-                <p class="ox-feature-lead">See O/X ratios, streaks, and which habits need a little care.</p>
+                <h3>4 -️レビューの統計情報</h3>
+                <p class="ox-feature-lead">O/X比、ストリーク、どの習慣に少し注意が必要かを参照してください。</p>
               </article>
               <article class="ox-feature-card">
-                <h3>5️⃣ Keep the streak</h3>
-                <p class="ox-feature-lead">Use AI coach and history to set your next goal and stay consistent.</p>
+                <h3>5️.連続記録を維持する</h3>
+                <p class="ox-feature-lead">AIコーチと履歴を使用して、次の目標を設定し、一貫性を保ちます。</p>
               </article>
             </div>
           </div>
@@ -1118,7 +1157,7 @@
             <a class="footer-legal" href="terms/">利用規約</a>
           </div>
           <p class="ox-footer-delete-account">
-            <a class="footer-legal" href="oxmonth/delete-account/">Delete account</a>
+            <a class="footer-legal" href="oxmonth/delete-account/">口座を削除</a>
           </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="連絡・ソーシャル">
             <a
@@ -1233,7 +1272,7 @@
           <div class="navbar-bar__cell navbar-bar__cell--left">
             <div class="navbar-hub navbar-hub--ox">
               <a class="navbar-hub__logo js-go-home" href="#" aria-label="Newon ホーム">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="ox-nav ox-nav--apps-only" aria-label="Newon アプリ">
             <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
@@ -1321,13 +1360,23 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">節約習慣 · 消費分析 · AIコーチ</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
             </div>
           </div>
           <div class="navbar-bar__cell navbar-bar__cell--center">
-            <a href="#pm-top" class="navbar-app-showcase" aria-label="Back to top of Pillmate">
+            <a href="#pm-top" class="navbar-app-showcase" aria-label="0のトップに戻る">
               <span class="navbar-app-showcase__icon">
                 <img class="navbar-app-showcase__icon-img" src="/pillmate-logo.png" alt="" width="56" height="56" decoding="async" />
               </span>
@@ -1384,7 +1433,7 @@
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">OX MONTH</span>
-                <span class="mobile-apps-drawer__hint">OX MONTH intro</span>
+                <span class="mobile-apps-drawer__hint">0はじめに</span>
               </span>
             </a>
             <a href="#subping-app" class="mobile-apps-drawer__item">
@@ -1393,7 +1442,7 @@
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">SubPing</span>
-                <span class="mobile-apps-drawer__hint">SubPing intro</span>
+                <span class="mobile-apps-drawer__hint">0はじめに</span>
               </span>
             </a>
             <a href="#pm-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
@@ -1402,7 +1451,7 @@
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">Pillmate</span>
-                <span class="mobile-apps-drawer__hint">Pillmate · this screen</span>
+                <span class="mobile-apps-drawer__hint">0・この画面</span>
               </span>
             </a>
             <a href="#savy-app" class="mobile-apps-drawer__item">
@@ -1432,6 +1481,15 @@
                 <span class="mobile-apps-drawer__hint">PetLog の紹介を見る</span>
               </span>
             </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">PiggyUpの紹介を見る</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -1443,13 +1501,13 @@
               <div class="ox-badge-row">
                 <p class="ox-badge">
                   <span class="ox-badge-dot" aria-hidden="true"></span>
-                  Medication · reminders · daily routine
+                  投薬・リマインダー・デイリールーチン
                 </p>
                 <p class="ox-badge ox-badge--secondary">173の国・地域 · 13言語</p>
               </div>
               <h1>Pillmate</h1>
-              <p class="ox-subtitle">Don't miss a dose—<br /><strong>manage today's medication easily</strong></p>
-              <p class="ox-hero-reach-summary">Record and track daily medications, supplements, and health routines in one place.</p>
+              <p class="ox-subtitle">1回の投与をお見逃しなく- 01今日の薬を簡単に管理2</p>
+              <p class="ox-hero-reach-summary">毎日の投薬、サプリメント、健康習慣を1か所で記録し、追跡します。</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">App Store・Google Play で配信中</p>
                 <div class="ox-store-badges">
@@ -1458,7 +1516,7 @@
                     href="https://newon.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Pillmate on the App Store (opens in a new tab)"
+                    aria-label="1の0 （新しいタブで開きます）"
                   >
                     <svg
                       class="ox-store-badge__icon"
@@ -1475,7 +1533,7 @@
                       />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Download on</span>
+                      <span class="ox-store-badge__small">次でダウンロード：</span>
                       <span class="ox-store-badge__name">App Store</span>
                     </span>
                   </a>
@@ -1484,7 +1542,7 @@
                     href="https://newon.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Pillmate on Google Play (opens in a new tab)"
+                    aria-label="0対1 （新しいタブで開きます）"
                   >
                     <svg
                       class="ox-store-badge__icon ox-store-badge__icon--play"
@@ -1501,7 +1559,7 @@
                       <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Get it on</span>
+                      <span class="ox-store-badge__small">ぜひご利用ください</span>
                       <span class="ox-store-badge__name">Google Play</span>
                     </span>
                   </a>
@@ -1513,7 +1571,7 @@
                 <img
                   class="ox-hero-logo-img"
                   src="/pillmate-logo.png"
-                  alt="Pillmate app logo: red and cream capsule with wordmark"
+                  alt="0アプリロゴ：ワードマーク付きの赤とクリームのカプセル"
                   width="940"
                   height="940"
                 />
@@ -1524,13 +1582,13 @@
         <section id="pm-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pm-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <div class="ox-app-intro__copy">
-              <p class="ox-section-label">About the app</p>
+              <p class="ox-section-label">このアプリについて</p>
               <h2 id="pm-intro-title" class="ox-app-intro__title">
                 <span class="ox-app-intro__title-icon" aria-hidden="true">💊</span>
-                About Pillmate
+                約0
               </h2>
-              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>Pillmate</strong> helps you manage daily pills and supplements by time of day and check them off quickly.</p><p>Split doses into morning, lunch, evening, and bedtime, and use reminders so important times are not missed.</p></div>
-              <p class="ox-app-intro__closing">Turns easy-to-forget habits into safer, steadier care.</p>
+              <div class="ox-app-intro__body">0123は、1日の時間帯ごとに毎日の錠剤やサプリメントを管理し、それらをすばやくチェックするのに役立ちます。45朝、昼、夜、就寝時間に用量を分割し、重要な時間を逃さないようにリマインダーを使用します。6</div>
+              <p class="ox-app-intro__closing">忘れやすい習慣をより安全で安定したケアに変えます。</p>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">Privacy Policy</a>
               </p>
@@ -1625,54 +1683,54 @@
         <section id="pm-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="pm-features-title">
           <div class="ox-container">
             <header class="ox-section-head">
-              <p class="ox-section-label">Features</p>
+              <p class="ox-section-label">特長</p>
               <h2 id="pm-features-title" class="ox-section-title-inline">
                 <span class="ox-section-title-inline__icon" aria-hidden="true">💊</span>
-                Key features
+                主な機能
               </h2>
             </header>
             <div class="ox-features">
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">✅</span>
-                <h3>Today's dose check</h3>
-                <p class="ox-feature-lead">See today's pills at a glance</p>
-                <p class="ox-feature-note">Log doses quickly as you take them</p>
+                <h3>本日の線量チェック</h3>
+                <p class="ox-feature-lead">今日の薬を一目で見る</p>
+                <p class="ox-feature-note">服用時に線量をすばやく記録する</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🕐</span>
-                <h3>Time-of-day schedules</h3>
-                <p class="ox-feature-lead">Morning · lunch · evening · bedtime</p>
-                <p class="ox-feature-note">Keep routines easy to scan</p>
+                <h3>時間帯のスケジュール</h3>
+                <p class="ox-feature-lead">朝・昼・夜・寝る時間</p>
+                <p class="ox-feature-note">ルーチンをスキャンしやすく保つ</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🔔</span>
-                <h3>Dose reminders</h3>
-                <p class="ox-feature-lead">Reminders at set times</p>
-                <p class="ox-feature-note">Guidance so important doses are not missed</p>
+                <h3>用量リマインダー</h3>
+                <p class="ox-feature-lead">設定された時刻のリマインダー</p>
+                <p class="ox-feature-note">重要な投与量が見逃せないガイダンス</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📅</span>
-                <h3>Dose history</h3>
-                <p class="ox-feature-lead">Review by date</p>
-                <p class="ox-feature-note">See consistency at a glance</p>
+                <h3>投与履歴</h3>
+                <p class="ox-feature-lead">日付によるレビュー</p>
+                <p class="ox-feature-note">一貫性を一目で確認</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📝</span>
-                <h3>Medication notes</h3>
-                <p class="ox-feature-lead">Name, how to take, amount</p>
-                <p class="ox-feature-note">Keep what you need in one place</p>
+                <h3>薬物療法に関する注意事項</h3>
+                <p class="ox-feature-lead">名前、服用方法、金額</p>
+                <p class="ox-feature-note">必要なものを1か所にまとめましょう</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">👨‍👩‍👧</span>
-                <h3>Family care</h3>
-                <p class="ox-feature-lead">Parents, kids, household routines</p>
-                <p class="ox-feature-note">Support the people you look after</p>
+                <h3>ファミリーケア</h3>
+                <p class="ox-feature-lead">両親、子供、家庭のルーチン</p>
+                <p class="ox-feature-note">世話をする人をサポートする</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📲</span>
-                <h3>Home widget</h3>
-                <p class="ox-feature-lead">Without opening the app</p>
-                <p class="ox-feature-note">Check today's dose status on the home screen</p>
+                <h3>ホームウィジェット</h3>
+                <p class="ox-feature-lead">アプリを開かずに</p>
+                <p class="ox-feature-note">ホーム画面で本日の投与状況を確認する</p>
               </article>
             </div>
           </div>
@@ -1681,28 +1739,28 @@
         <section id="pm-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="pm-how-title">
           <div class="ox-container">
             <header class="ox-section-head">
-              <h2 id="pm-how-title" class="ox-section-title-inline">📖 How to use</h2>
+              <h2 id="pm-how-title" class="ox-section-title-inline">How to use</h2>
             </header>
             <div class="ox-features">
               <article class="ox-feature-card">
-                <h3>1️⃣ Add a medication</h3>
-                <p class="ox-feature-lead">Register pills or supplements you are taking.</p>
+                <h3>1 ”️薬を追加する”</h3>
+                <p class="ox-feature-lead">服用している錠剤やサプリメントを登録してください。</p>
               </article>
               <article class="ox-feature-card">
-                <h3>2️⃣ Set dose times</h3>
-                <p class="ox-feature-lead">Choose slots like morning, lunch, evening, or bedtime.</p>
+                <h3>2️相关用量時間の設定</h3>
+                <p class="ox-feature-lead">午前、昼食、夕方、就寝時間などの時間帯を選択してください。</p>
               </article>
               <article class="ox-feature-card">
-                <h3>3️⃣ Get reminders</h3>
-                <p class="ox-feature-lead">Receive alerts at scheduled times so nothing slips by.</p>
+                <h3>️3 -リマインダーを受け取る</h3>
+                <p class="ox-feature-lead">スケジュールされた時間にアラートを受信して、スリップすることはありません。</p>
               </article>
               <article class="ox-feature-card">
-                <h3>4️⃣ Check off today</h3>
-                <p class="ox-feature-lead">After taking a dose, mark it to log today's progress.</p>
+                <h3>4 ️-本日チェックオフ</h3>
+                <p class="ox-feature-lead">服用後、今日の進捗状況を記録するためにマークします。</p>
               </article>
               <article class="ox-feature-card">
-                <h3>5️⃣ Review history</h3>
-                <p class="ox-feature-lead">Browse past days and keep the habit going.</p>
+                <h3>5 ️”レビュー履歴”</h3>
+                <p class="ox-feature-lead">過去の日々を閲覧して、習慣を維持しましょう。</p>
               </article>
             </div>
           </div>
@@ -1715,52 +1773,52 @@
         >
           <div class="ox-container ox-premium-layout">
             <header class="ox-premium-intro">
-              <p class="ox-section-label">Pricing</p>
+              <p class="ox-section-label">価格設定</p>
               <h2 id="pm-premium-title" class="ox-premium-heading">
                 <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
-                Premium
+                プレミアム
               </h2>
-              <p class="ox-premium-tagline">More organized care and<br />a smoother logging experience</p>
+              <p class="ox-premium-tagline">より整理されたケアと0 aよりスムーズなロギングエクスペリエンス</p>
             </header>
 
             <div class="ox-premium-stack">
               <section class="ox-premium-block" aria-labelledby="pm-premium-features-heading">
                 <h3 id="pm-premium-features-heading" class="ox-premium-block__title">
                   <span class="ox-premium-emoji" aria-hidden="true">🔓</span>
-                  Premium features
+                  プレミアム機能
                 </h3>
                 <div class="ox-premium-grid">
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">📊</span>
-                      Monthly dose log
+                      毎月の線量ログ
                     </h4>
-                    <p class="ox-premium-card__lead">See a month of adherence at a glance</p>
-                    <p class="ox-premium-card__note">Spot missed days and steady streaks quickly</p>
+                    <p class="ox-premium-card__lead">1か月間の遵守状況を一目で確認</p>
+                    <p class="ox-premium-card__note">見逃した日をすばやく見つけ、ストリークを安定させます</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
-                      AI dose report
+                      AI線量レポート
                     </h4>
-                    <p class="ox-premium-card__lead">Based on your logs,</p>
-                    <p class="ox-premium-card__note">see patterns and ways to improve</p>
+                    <p class="ox-premium-card__lead">あなたのログに基づいて、</p>
+                    <p class="ox-premium-card__note">パターンと改善方法を見る</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">🎨</span>
-                      Premium themes
+                      プレミアムテーマ
                     </h4>
-                    <p class="ox-premium-card__lead">More colors and styles to</p>
-                    <p class="ox-premium-card__note">personalize your care space</p>
+                    <p class="ox-premium-card__lead">より多くの色とスタイルを</p>
+                    <p class="ox-premium-card__note">ケアスペースをパーソナライズする</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
-                      Remove ads
+                      広告を削除
                     </h4>
-                    <p class="ox-premium-card__lead">Focus without interruptions in</p>
-                    <p class="ox-premium-card__note">a calmer experience</p>
+                    <p class="ox-premium-card__lead">中断することなくフォーカス</p>
+                    <p class="ox-premium-card__note">より落ち着いた体験</p>
                   </article>
                 </div>
               </section>
@@ -1772,14 +1830,14 @@
           <div class="ox-container ox-reco-head">
             <h2 id="pm-reco-title" class="ox-premium-heading">
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
-              Great if you…
+              次のようなことができれば嬉しいです
             </h2>
             <ul class="co-build-list" style="margin-top: 1rem">
-              <li>Take daily meds or supplements</li>
-              <li>Often forget dose times</li>
-              <li>Help parents or family stay on track</li>
-              <li>Want a consistent dose log</li>
-              <li>Want a clearer health routine</li>
+              <li>毎日の薬やサプリメントを服用する</li>
+              <li>投与時間を忘れることが多い</li>
+              <li>保護者や家族が順調に過ごせるようサポートする</li>
+              <li>一貫した線量ログが欲しい</li>
+              <li>より明確な健康習慣を望む</li>
             </ul>
           </div>
         </section>
@@ -1793,17 +1851,17 @@
             <div class="ox-premium-highlight">
               <p class="ox-premium-highlight__kicker">
                 <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
-                In one line
+                1行で
               </p>
               <p class="ox-premium-highlight__line" id="pm-closing-highlight-title">
-                Log today's doses and keep a healthy routine going.
+                今日の用量を記録し、健康的なルーチンを続けてください。
               </p>
             </div>
           </div>
         </section>
 
-        <section class="ox-closing ox-reveal-on-scroll" aria-label="Small dose logs build lasting healthy habits.">
-          <p>Small dose logs build lasting healthy habits.</p>
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="小用量の丸太は、持続的な健康習慣を構築します。">
+          <p>小用量の丸太は、持続的な健康習慣を構築します。</p>
         </section>
       </main>
       <footer class="ox-footer">
@@ -1913,7 +1971,7 @@
               </svg>
             </a>
           </div>
-          <p class="ox-footer-meta">© Pillmate · <a href="#" class="js-go-home">Newon</a></p>
+          <p class="ox-footer-meta">© 0 · <a href="#" class="js-go-home">Newon</a></p>
         </div>
       </footer>
     </div>
@@ -1927,7 +1985,7 @@
           <div class="navbar-bar__cell navbar-bar__cell--left">
             <div class="navbar-hub navbar-hub--ox">
               <a class="navbar-hub__logo js-go-home" href="#" aria-label="Newon ホーム">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="ox-nav ox-nav--apps-only" aria-label="Newon アプリ">
             <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
@@ -2015,13 +2073,23 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">節約習慣 · 消費分析 · AIコーチ</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
             </div>
           </div>
           <div class="navbar-bar__cell navbar-bar__cell--center">
-            <a href="#sv-top" class="navbar-app-showcase" aria-label="Back to top of SAVY">
+            <a href="#sv-top" class="navbar-app-showcase" aria-label="0のトップに戻る">
               <span class="navbar-app-showcase__icon">
                 <img class="navbar-app-showcase__icon-img" src="/savy-logo.png" alt="" width="56" height="56" decoding="async" />
               </span>
@@ -2078,7 +2146,7 @@
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">OX MONTH</span>
-                <span class="mobile-apps-drawer__hint">OX MONTH intro</span>
+                <span class="mobile-apps-drawer__hint">0はじめに</span>
               </span>
             </a>
             <a href="#subping-app" class="mobile-apps-drawer__item">
@@ -2087,7 +2155,7 @@
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">SubPing</span>
-                <span class="mobile-apps-drawer__hint">SubPing intro</span>
+                <span class="mobile-apps-drawer__hint">0はじめに</span>
               </span>
             </a>
             <a href="#pillmate-app" class="mobile-apps-drawer__item">
@@ -2096,7 +2164,7 @@
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">Pillmate</span>
-                <span class="mobile-apps-drawer__hint">Pillmate intro</span>
+                <span class="mobile-apps-drawer__hint">0はじめに</span>
               </span>
             </a>
             <a href="#babylog-app" class="mobile-apps-drawer__item">
@@ -2117,13 +2185,22 @@
                 <span class="mobile-apps-drawer__hint">PetLog の紹介を見る</span>
               </span>
             </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">PiggyUpの紹介を見る</span>
+              </span>
+            </a>
             <a href="#sv-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
               <span class="mobile-apps-drawer__icon">
                 <img src="/savy-logo.png" alt="" width="36" height="36" />
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">SAVY</span>
-                <span class="mobile-apps-drawer__hint">SAVY · this screen</span>
+                <span class="mobile-apps-drawer__hint">0・この画面</span>
               </span>
             </a>
           </details>
@@ -2137,13 +2214,13 @@
               <div class="ox-badge-row">
                 <p class="ox-badge">
                   <span class="ox-badge-dot" aria-hidden="true"></span>
-                  💳 Spending · income · subscriptions · AI insights
+                  💳 支出・収入・サブスクリプション・AIインサイト
                 </p>
-                <p class="ox-badge ox-badge--secondary">173 countries · 13 languages supported</p>
+                <p class="ox-badge ox-badge--secondary">173か国・13言語対応</p>
               </div>
               <h1>SAVY</h1>
-              <p class="ox-subtitle">See your money flow at a glance</p>
-              <p class="ox-hero-reach-summary">A smart finance app that brings scattered spending, income, and subscriptions together—and helps you trim waste.</p>
+              <p class="ox-subtitle">資金の流れを一目で確認</p>
+              <p class="ox-hero-reach-summary">分散した支出、収入、サブスクリプションをまとめて、無駄を減らすのに役立つスマートファイナンスアプリ。</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">App Store・Google Play で配信中</p>
                 <div class="ox-store-badges">
@@ -2152,7 +2229,7 @@
                     href="https://newon.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="SAVY on the App Store (opens in a new tab)"
+                    aria-label="1の0 （新しいタブで開きます）"
                   >
                     <svg
                       class="ox-store-badge__icon"
@@ -2169,7 +2246,7 @@
                       />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Download on</span>
+                      <span class="ox-store-badge__small">次でダウンロード：</span>
                       <span class="ox-store-badge__name">App Store</span>
                     </span>
                   </a>
@@ -2178,7 +2255,7 @@
                     href="https://newon.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="SAVY on Google Play (opens in a new tab)"
+                    aria-label="0対1 （新しいタブで開きます）"
                   >
                     <svg
                       class="ox-store-badge__icon ox-store-badge__icon--play"
@@ -2195,7 +2272,7 @@
                       <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Get it on</span>
+                      <span class="ox-store-badge__small">ぜひご利用ください</span>
                       <span class="ox-store-badge__name">Google Play</span>
                     </span>
                   </a>
@@ -2207,7 +2284,7 @@
                 <img
                   class="ox-hero-logo-img"
                   src="/savy-logo.png"
-                  alt="SAVY app logo: wallet, cards, and Korean won coin"
+                  alt="0アプリのロゴ：ウォレット、カード、韓国ウォンコイン"
                   width="940"
                   height="940"
                 />
@@ -2218,13 +2295,13 @@
         <section id="sv-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="sv-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <div class="ox-app-intro__copy">
-              <p class="ox-section-label">About the app</p>
+              <p class="ox-section-label">このアプリについて</p>
               <h2 id="sv-intro-title" class="ox-app-intro__title">
                 <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
-                About the app
+                このアプリについて
               </h2>
-              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>SAVY</strong> is</p><p>a spending tracker that helps you record and review your money flow quickly—without a heavy household ledger.</p><p>Log daily expenses and income in seconds, and keep recurring subscriptions visible in one place.</p><p>SAVY is more than a ledger: it organizes your spending patterns and supports healthier money habits.</p><p>Small consistent entries add up to visible savings and change.</p></div>
-              <p class="ox-app-intro__closing">Small spending logs build better money habits.</p>
+              <div class="ox-app-intro__body">0123 is 45 a支出トラッカーは、重い家計台帳を使用せずに、資金の流れをすばやく記録して確認するのに役立ちます。67毎日の支出と収入を数秒で記録し、定期的なサブスクリプションを1か所で表示し続けることができます。8910は台帳以上のものです。支出パターンを整理し、より健康的なお金の習慣をサポートします。1112一貫した小さなエントリは、目に見える節約と変化をもたらします。13</div>
+              <p class="ox-app-intro__closing">小規模な支出ログは、より良いお金の習慣を構築します。</p>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">Privacy Policy</a>
               </p>
@@ -2309,54 +2386,54 @@
         <section id="sv-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="sv-features-title">
           <div class="ox-container">
             <header class="ox-section-head">
-              <p class="ox-section-label">Features</p>
+              <p class="ox-section-label">特長</p>
               <h2 id="sv-features-title" class="ox-section-title-inline">
                 <span class="ox-section-title-inline__icon" aria-hidden="true">🚀</span>
-                Key features
+                主な機能
               </h2>
             </header>
             <div class="ox-features">
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">💳</span>
-                <h3>Expense logging</h3>
-                <p class="ox-feature-lead">Enter what you spent today in a few taps</p>
-                <p class="ox-feature-note">Lightweight inputs make it easy to stay consistent</p>
+                <h3>経費ロギング</h3>
+                <p class="ox-feature-lead">数回タップするだけで、本日のお支払い額を入力できます</p>
+                <p class="ox-feature-note">軽量な入力により、一貫性を維持しやすくなります</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">💰</span>
-                <h3>Income logging</h3>
-                <p class="ox-feature-lead">Track salary, side income, allowance, and more</p>
-                <p class="ox-feature-note">See the full in/out picture more accurately</p>
+                <h3>収入の記録</h3>
+                <p class="ox-feature-lead">給与、副収入、手当などを追跡</p>
+                <p class="ox-feature-note">完全なイン/アウト画像をより正確に表示する</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📋</span>
-                <h3>Subscription management</h3>
-                <p class="ox-feature-lead">Organize recurring charges and subscriptions</p>
-                <p class="ox-feature-note">Catch easy-to-miss repeating expenses</p>
+                <h3>サブスクリプション管理</h3>
+                <p class="ox-feature-lead">定期的な請求とサブスクリプションを整理する</p>
+                <p class="ox-feature-note">見逃しやすい経費の繰り返しをキャッチ</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📉</span>
-                <h3>Spending analysis</h3>
-                <p class="ox-feature-lead">Category totals, monthly trends, and patterns</p>
-                <p class="ox-feature-note">Spot where money leaks out</p>
+                <h3>支出分析</h3>
+                <p class="ox-feature-lead">カテゴリの合計、月間トレンド、パターン</p>
+                <p class="ox-feature-note">お金が流出する場所を見つける</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📊</span>
-                <h3>Charts &amp; statistics</h3>
-                <p class="ox-feature-lead">Visualize income, spending, and balance flow</p>
-                <p class="ox-feature-note">Make the numbers intuitive at a glance</p>
+                <h3>チャートと統計</h3>
+                <p class="ox-feature-lead">収入、支出、バランスの流れを視覚化する</p>
+                <p class="ox-feature-note">一目で直感的な数字に</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🔔</span>
-                <h3>Notifications</h3>
-                <p class="ox-feature-lead">Renewal dates, budget alerts, logging nudges</p>
-                <p class="ox-feature-note">Stay on top of important money moments</p>
+                <h3>通知</h3>
+                <p class="ox-feature-lead">更新日、予算アラート、ロギングナッジ</p>
+                <p class="ox-feature-note">重要なお金の瞬間を把握</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
-                <h3>AI spending insights</h3>
-                <p class="ox-feature-lead">Analyze patterns from your logs</p>
-                <p class="ox-feature-note">Get ideas on where you can save</p>
+                <h3>AI支出のインサイト</h3>
+                <p class="ox-feature-lead">ログからパターンを分析する</p>
+                <p class="ox-feature-note">節約できる場所のアイデアを得る</p>
               </article>
             </div>
           </div>
@@ -2365,32 +2442,32 @@
         <section id="sv-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="sv-how-title">
           <div class="ox-container">
             <header class="ox-section-head">
-              <h2 id="sv-how-title" class="ox-section-title-inline">📖 How to use</h2>
+              <h2 id="sv-how-title" class="ox-section-title-inline">How to use</h2>
             </header>
             <div class="ox-features">
               <article class="ox-feature-card">
-                <h3>1️⃣ Log expenses</h3>
-                <p class="ox-feature-lead">Enter today’s amount and category.</p>
+                <h3>1 ”️経費の記録”</h3>
+                <p class="ox-feature-lead">本日の金額とカテゴリを入力します。</p>
               </article>
               <article class="ox-feature-card">
-                <h3>2️⃣ Add income</h3>
-                <p class="ox-feature-lead">Record salary, side income, allowance, and more.</p>
+                <h3>収入を追加する</h3>
+                <p class="ox-feature-lead">給与、副収入、手当などを記録します。</p>
               </article>
               <article class="ox-feature-card">
-                <h3>3️⃣ Register subscriptions</h3>
-                <p class="ox-feature-lead">Add recurring payments and subscription services.</p>
+                <h3>️3 *サブスクリプションを登録する</h3>
+                <p class="ox-feature-lead">定期支払いとサブスクリプションサービスを追加します。</p>
               </article>
               <article class="ox-feature-card">
-                <h3>4️⃣ Review statistics</h3>
-                <p class="ox-feature-lead">Check category breakdowns and monthly cash flow.</p>
+                <h3>統計の確認</h3>
+                <p class="ox-feature-lead">カテゴリの内訳と毎月のキャッシュフローを確認します。</p>
               </article>
               <article class="ox-feature-card">
-                <h3>5️⃣ Analyze spending</h3>
-                <p class="ox-feature-lead">Use AI insights and charts to understand habits.</p>
+                <h3>5️.支出を分析する</h3>
+                <p class="ox-feature-lead">AIの洞察とチャートを使用して習慣を理解します。</p>
               </article>
               <article class="ox-feature-card">
-                <h3>6️⃣ Save smarter</h3>
-                <p class="ox-feature-lead">Cut unnecessary spend and build better routines.</p>
+                <h3>6 -️よりスマートに節約</h3>
+                <p class="ox-feature-lead">不要な支出を削減し、より良いルーチンを構築します。</p>
               </article>
             </div>
           </div>
@@ -2403,60 +2480,60 @@
         >
           <div class="ox-container ox-premium-layout">
             <header class="ox-premium-intro">
-              <p class="ox-section-label">Pricing</p>
+              <p class="ox-section-label">価格設定</p>
               <h2 id="sv-premium-title" class="ox-premium-heading">
                 <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
-                Premium
+                プレミアム
               </h2>
-              <p class="ox-premium-tagline">Deeper analysis and<br />a smoother money-management experience</p>
+              <p class="ox-premium-tagline">より詳細な分析とよりスムーズな資金管理エクスペリエンス</p>
             </header>
 
             <div class="ox-premium-stack">
               <section class="ox-premium-block" aria-labelledby="sv-premium-features-heading">
                 <h3 id="sv-premium-features-heading" class="ox-premium-block__title">
                   <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
-                  🔒 Premium features
+                  プレミアム機能
                 </h3>
                 <div class="ox-premium-grid">
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">📊</span>
-                      📊 Advanced spending analysis
+                      📊 高度な支出分析
                     </h4>
-                    <p class="ox-premium-card__lead">Deeper views by month, category,</p>
-                    <p class="ox-premium-card__note">and repeating spend patterns</p>
+                    <p class="ox-premium-card__lead">月別、カテゴリ別、</p>
+                    <p class="ox-premium-card__note">そして繰り返しの支出パターン</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
-                      🤖 AI spending reports
+                      🤖 AI支出レポート
                     </h4>
-                    <p class="ox-premium-card__lead">From your logs, see habits</p>
-                    <p class="ox-premium-card__note">and practical savings opportunities</p>
+                    <p class="ox-premium-card__lead">ログから、習慣を見る</p>
+                    <p class="ox-premium-card__note">そして実用的な節約の機会</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
-                      🔔 Richer notifications
+                      🔔 より豊富な通知
                     </h4>
-                    <p class="ox-premium-card__lead">Finer control for renewals, budgets,</p>
-                    <p class="ox-premium-card__note">and recurring charges</p>
+                    <p class="ox-premium-card__lead">更新、予算、</p>
+                    <p class="ox-premium-card__note">および定期的な請求</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">📈</span>
-                      📈 Detailed statistics
+                      統計の詳細
                     </h4>
-                    <p class="ox-premium-card__lead">More ways to view income</p>
-                    <p class="ox-premium-card__note">and spending over time</p>
+                    <p class="ox-premium-card__lead">収入を確認するその他の方法</p>
+                    <p class="ox-premium-card__note">そして時間の経過と共に費やす</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
-                      🚫 Remove ads
+                      広告を削除
                     </h4>
-                    <p class="ox-premium-card__lead">Focus on your finances</p>
-                    <p class="ox-premium-card__note">without interruptions</p>
+                    <p class="ox-premium-card__lead">自分の財務に焦点を当てる</p>
+                    <p class="ox-premium-card__note">中断することなく</p>
                   </article>
                 </div>
               </section>
@@ -2468,16 +2545,16 @@
           <div class="ox-container ox-reco-head">
             <h2 id="sv-reco-title" class="ox-premium-heading">
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
-              Great if you…
+              次のようなことができれば嬉しいです
             </h2>
             <ul class="co-build-list" style="margin-top: 1rem">
-              <li>Want to reduce unnecessary spending</li>
-              <li>Wonder where your money goes each month</li>
-              <li>Juggle many subscriptions and need clarity</li>
-              <li>Want a ledger without tedious entry work</li>
-              <li>Want income and spending in one view</li>
-              <li>Want AI help to improve spending habits</li>
-              <li>Want a more structured money routine</li>
+              <li>不必要な支出を減らしたい</li>
+              <li>毎月どこにお金が使われているのか気になります</li>
+              <li>多くのサブスクリプションを処理し、明確さを必要としています</li>
+              <li>面倒な入力作業をせずに台帳を作成したい</li>
+              <li>収入と支出を1つのビューにまとめたい</li>
+              <li>支出習慣を改善するためにAIの助けを求めている</li>
+              <li>より構造化されたマネールーチンを望む</li>
             </ul>
           </div>
         </section>
@@ -2491,20 +2568,20 @@
             <div class="ox-premium-highlight">
               <p class="ox-premium-highlight__kicker">
                 <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
-                In one line
+                1行で
               </p>
               <p class="ox-premium-highlight__line" id="sv-closing-highlight-title">
-                Record money—and change the flow.
+                お金を記録し、フローを変更します。
               </p>
               <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
-                Small logs turn into big savings.
+                小さな丸太は大きな節約になります。
               </p>
             </div>
           </div>
         </section>
 
-        <section class="ox-closing ox-reveal-on-scroll" aria-label="Closing message">
-          <div class="ox-closing__stack"><p><strong>SAVY</strong> helps you start smarter money management.</p></div>
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="まもなく閉店の表示">
+          <div class="ox-closing__stack">0123は、よりスマートな資金管理を開始するのに役立ちます。4</div>
         </section>
       </main>
       <footer class="ox-footer">
@@ -2614,7 +2691,7 @@
               </svg>
             </a>
           </div>
-          <p class="ox-footer-meta">© SAVY · <a href="#" class="js-go-home">Newon</a></p>
+          <p class="ox-footer-meta">© 0 · <a href="#" class="js-go-home">Newon</a></p>
         </div>
       </footer>
     </div>
@@ -2628,7 +2705,7 @@
           <div class="navbar-bar__cell navbar-bar__cell--left">
             <div class="navbar-hub navbar-hub--ox">
               <a class="navbar-hub__logo js-go-home" href="#" aria-label="Newon ホーム">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="ox-nav ox-nav--apps-only" aria-label="Newon アプリ">
             <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
@@ -2713,6 +2790,16 @@
                   <span class="apps-flyout__meta">
                     <span class="apps-flyout__name">PetLog</span>
                     <span class="apps-flyout__desc">ペット記録 · 健康 · 家族共有 · AI</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">節約習慣 · 消費分析 · AIコーチ</span>
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
@@ -2824,7 +2911,16 @@
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">PetLog</span>
-                <span class="mobile-apps-drawer__hint">PetLog の紹介を見る</span>
+                <span class="mobile-apps-drawer__hint"></span>
+              </span>
+            </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">PiggyUpの紹介を見る</span>
               </span>
             </a>
           </details>
@@ -2870,7 +2966,7 @@
                       />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Download on</span>
+                      <span class="ox-store-badge__small">次でダウンロード：</span>
                       <span class="ox-store-badge__name">App Store</span>
                     </span>
                   </a>
@@ -2896,7 +2992,7 @@
                       <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Get it on</span>
+                      <span class="ox-store-badge__small">ぜひご利用ください</span>
                       <span class="ox-store-badge__name">Google Play</span>
                     </span>
                   </a>
@@ -3067,13 +3163,13 @@
                 <span class="ox-feature-emoji" aria-hidden="true">💬</span>
                 <h3>Community</h3>
                 <p class="ox-feature-lead">Share experiences and learn from other parents.</p>
-                <p class="ox-feature-note">Ask questions and browse parent-friendly discussions.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
                 <h3>AI parenting insights</h3>
                 <p class="ox-feature-lead">From your logs—patterns and practical next steps.</p>
-                <p class="ox-feature-note">Premium tiers add deeper summaries from your routines.</p>
+                <p class="ox-feature-note"></p>
               </article>
             </div>
           </div>
@@ -3356,7 +3452,7 @@
           <div class="navbar-bar__cell navbar-bar__cell--left">
             <div class="navbar-hub navbar-hub--ox">
               <a class="navbar-hub__logo js-go-home" href="#" aria-label="Newon ホーム">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="ox-nav ox-nav--apps-only" aria-label="Newon アプリ">
             <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
@@ -3441,6 +3537,16 @@
                   <span class="apps-flyout__meta">
                     <span class="apps-flyout__name">PetLog</span>
                     <span class="apps-flyout__desc">ペット記録 · 健康 · 家族共有 · AI</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">節約習慣 · 消費分析 · AIコーチ</span>
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
@@ -3555,6 +3661,15 @@
                 <span class="mobile-apps-drawer__hint">PetLog · この画面</span>
               </span>
             </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">PiggyUpの紹介を見る</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -3598,7 +3713,7 @@
                       />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Download on</span>
+                      <span class="ox-store-badge__small">次でダウンロード：</span>
                       <span class="ox-store-badge__name">App Store</span>
                     </span>
                   </a>
@@ -3624,7 +3739,7 @@
                       <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Get it on</span>
+                      <span class="ox-store-badge__small">ぜひご利用ください</span>
                       <span class="ox-store-badge__name">Google Play</span>
                     </span>
                   </a>
@@ -3759,49 +3874,49 @@
                 <span class="ox-feature-emoji" aria-hidden="true">🍽️</span>
                 <h3>Meals &amp; walks</h3>
                 <p class="ox-feature-lead">Track food, hydration, walks, and daily routines.</p>
-                <p class="ox-feature-note">Lightweight screens keep daily logs quick.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🐾</span>
                 <h3>Pet profiles</h3>
                 <p class="ox-feature-lead">Breed, birthdays, weight, notes—organized per pet.</p>
-                <p class="ox-feature-note">Switch pets and keep every profile tidy.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">💉</span>
                 <h3>Health timeline</h3>
                 <p class="ox-feature-lead">Store vaccines, clinics, meds, and checkups.</p>
-                <p class="ox-feature-note">One place for medical history and follow-ups.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📅</span>
                 <h3>Scheduling</h3>
                 <p class="ox-feature-lead">Clinic visits, vaccinations, grooming in one planner.</p>
-                <p class="ox-feature-note">Repeats and reminders help you stay ahead.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📊</span>
                 <h3>Statistics</h3>
                 <p class="ox-feature-lead">Visualize routines and wellbeing data.</p>
-                <p class="ox-feature-note">Charts make trends easier to notice early.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">👨‍👩‍👧</span>
                 <h3>Family sharing</h3>
                 <p class="ox-feature-lead">Collaborate with family on the same record.</p>
-                <p class="ox-feature-note">Everyone sees the same care plan and updates.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">💬</span>
                 <h3>Community</h3>
                 <p class="ox-feature-lead">Swap experiences and trusted tips with fellow pet lovers.</p>
-                <p class="ox-feature-note">Learn from other pet parents and share ideas.</p>
+                <p class="ox-feature-note"></p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
                 <h3>AI health analysis</h3>
                 <p class="ox-feature-lead">Interpret patterns from your logs for proactive care.</p>
-                <p class="ox-feature-note">Premium adds richer AI reads of your pet’s patterns.</p>
+                <p class="ox-feature-note"></p>
               </article>
             </div>
           </div>
@@ -4076,6 +4191,738 @@
       </footer>
     </div>
 
+    <div id="piggyup-app" class="ox-page site-shell" data-theme="light" hidden>
+      <a class="ox-skip" href="#pu-main">本文へスキップ</a>
+
+      <header class="ox-header">
+        <div class="ox-container navbar-bar navbar-bar--ox navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub navbar-hub--ox">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="Newon ホーム">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
+              </a>
+              <nav class="ox-nav ox-nav--apps-only" aria-label="Newon アプリ">
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
+              <button
+                type="button"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
+                id="apps-trigger-pu"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="apps-panel-pu"
+                aria-label="Newon アプリ"
+              >
+                <span>Newon のアプリ</span>
+                <span class="apps-flyout__chev" aria-hidden="true"></span>
+              </button>
+              <div
+                id="apps-panel-pu"
+                class="apps-flyout__panel"
+                role="menu"
+                aria-labelledby="apps-trigger-pu"
+                hidden
+              >
+                <a href="#ox-month" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/ox-month-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">OX MONTH</span>
+                    <span class="apps-flyout__desc">習慣 · O/X チェック · 月間記録</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#subping-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/subping-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SubPing</span>
+                    <span class="apps-flyout__desc">サブスク · 通知 · まとめて管理</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">服薬リマインダー · お薬のスケジュール</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#savy-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/savy-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SAVY</span>
+                    <span class="apps-flyout__desc">支出 · 収入 · サブスク · AI 分析</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#babylog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">BabyLog</span>
+                    <span class="apps-flyout__desc">育児記録 · 成長 · 家族共有 · AI</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#petlog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PetLog</span>
+                    <span class="apps-flyout__desc">ペット記録 · 健康 · 家族共有 · AI</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a
+                  href="#pu-top"
+                  role="menuitem"
+                  class="apps-flyout__item apps-flyout__item--current"
+                  aria-current="page"
+                >
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">節約習慣 · 消費分析 · AIコーチ</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a href="#pu-top" class="navbar-app-showcase" aria-label="PiggyUpの先頭へ">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/piggyup-logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">PiggyUp</span>
+              <span class="navbar-app-showcase__tagline">節約習慣 · 消費分析 · AIコーチ</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--ox navbar-bar__controls--brand-toolbar">
+          <div class="lang-switcher lang-switcher--ox" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-pu">言語</label>
+            <select id="lang-select-pu" class="lang-select lang-select--toolbar" data-lang-select aria-label="言語">
+              <option value="ko">한국어</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="es">Español</option>
+              <option value="pt-br">Português (Brasil)</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="hi">हिन्दी</option>
+              <option value="id">Bahasa Indonesia</option>
+            </select>
+          </div>
+          <div class="ox-header-actions">
+            <button
+              type="button"
+              class="ox-theme-toggle"
+              id="pu-theme"
+              aria-label="ライトモードに切り替え"
+              title="テーマを切り替え"
+            >
+              ☀
+            </button>
+            <button
+              type="button"
+              class="ox-nav-toggle"
+              id="pu-nav-toggle"
+              aria-expanded="false"
+              aria-controls="pu-mobile"
+              aria-label="メニュー"
+            >
+              <span></span><span></span>
+            </button>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div id="pu-mobile" class="ox-mobile-menu ox-mobile-menu--apps-only" hidden>
+          <details class="mobile-apps-drawer mobile-apps-drawer--ox">
+            <summary class="mobile-apps-drawer__summary">Newon のアプリ</summary>
+            <a href="#ox-month" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/ox-month-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">OX MONTH</span>
+                <span class="mobile-apps-drawer__hint">OX MONTHの紹介</span>
+              </span>
+            </a>
+            <a href="#subping-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/subping-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SubPing</span>
+                <span class="mobile-apps-drawer__hint">SubPingの紹介</span>
+              </span>
+            </a>
+            <a href="#pillmate-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">Pillmateの紹介</span>
+              </span>
+            </a>
+            <a href="#savy-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/savy-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SAVY</span>
+                <span class="mobile-apps-drawer__hint">SAVYの紹介</span>
+              </span>
+            </a>
+            <a href="#babylog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/babylog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">BabyLog</span>
+                <span class="mobile-apps-drawer__hint">BabyLogの紹介</span>
+              </span>
+            </a>
+            <a href="#petlog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/petlog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PetLog</span>
+                <span class="mobile-apps-drawer__hint">PetLogの紹介</span>
+              </span>
+            </a>
+            <a href="#pu-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">PiggyUp · この画面</span>
+              </span>
+            </a>
+          </details>
+        </div>
+      </header>
+
+      <main id="pu-main">
+        <section id="pu-top" class="ox-hero ox-reveal-on-scroll is-visible">
+          <div class="ox-container ox-hero-grid">
+            <div class="ox-hero-copy">
+              <div class="ox-badge-row">
+                <p class="ox-badge">
+                  <span class="ox-badge-dot" aria-hidden="true"></span>
+                  💰 節約習慣 · 消費分析 · AI節約コーチ
+                </p>
+                <p class="ox-badge ox-badge--secondary">173か国で配信中 · 13言語対応</p>
+              </div>
+              <h1>PiggyUp</h1>
+              <p class="ox-subtitle">小さな節約が、大きな変化につながります</p>
+              <p class="ox-hero-reach-summary">支出記録から節約分析、AIインサイトまで。かわいくて賢い節約習慣アプリです。</p>
+              <div class="ox-store-release" role="status" aria-live="polite">
+                <p class="ox-store-release__label">App Store・Google Play で配信中</p>
+                <div class="ox-store-badges">
+                  <a
+                    class="ox-store-badge ox-store-badge--apple"
+                    href="https://newon.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="App StoreでPiggyUp（新しいタブ）"
+                  >
+                    <svg
+                      class="ox-store-badge__icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                      />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">次でダウンロード：</span>
+                      <span class="ox-store-badge__name">App Store</span>
+                    </span>
+                  </a>
+                  <a
+                    class="ox-store-badge ox-store-badge--google"
+                    href="https://newon.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Google PlayでPiggyUp（新しいタブ）"
+                  >
+                    <svg
+                      class="ox-store-badge__icon ox-store-badge__icon--play"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 28 28"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path fill="#00D9FF" d="M3 4.5v19l11-9.7L3 4.5z" />
+                      <path fill="#00F076" d="M15.4 14.3 25 20.8c.6-.4 1-1 1-1.8V9c0-.7-.4-1.4-1-1.8l-9.6 6.1z" />
+                      <path fill="#FFCE00" d="M15.4 13.7 25 7.2c-.6-.4-1.3-.6-2-.4L3 4.5l12.4 9.2z" />
+                      <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">ぜひご利用ください</span>
+                      <span class="ox-store-badge__name">Google Play</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="ox-hero-visual">
+              <div class="ox-hero-frame ox-hero-frame--logo">
+                <img
+                  class="ox-hero-logo-img"
+                  src="/piggyup-logo.png"
+                  alt="PiggyUpアプリのロゴ：かわいいピンクの貯金箱"
+                  width="940"
+                  height="940"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="pu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pu-intro-title">
+          <div class="ox-container ox-app-intro__inner">
+            <div class="ox-app-intro__copy">
+              <p class="ox-section-label">アプリ紹介</p>
+              <h2 id="pu-intro-title" class="ox-app-intro__title">
+                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
+                アプリ紹介
+              </h2>
+              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>PiggyUp</strong>は</p><p>複雑な家計簿なしで支出を記録し、自然に節約習慣をつくれるアプリです。</p><p>毎日の記録からAI節約分析まで、お金のストレスを減らし、小さな節約の成長を実感できます。</p><p>かわいいブタのキャラクターと一緒に、堅い金融アプリではなくライフスタイル型の節約体験を楽しめます。</p><p>小さな記録が積み重なると、大きな変化が始まります。</p></div>
+              <p class="ox-app-intro__closing">小さな節約が、より良い習慣をつくります。</p>
+              <p class="ox-app-intro__legal">
+                <a class="ox-app-intro__legal-link" href="privacy/">Privacy Policy</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="pu-showcase-scroll"
+          class="ox-section ox-reveal-on-scroll"
+          aria-label="PiggyUpのスクリーンショット7枚。横にスクロールしてすべて表示できます。"
+        >
+          <div class="ox-container">
+            <div class="sp-showcase-scroll" tabindex="0">
+              <div class="sp-showcase-scroll__track">
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/en/pu-showcase-01.png"
+                    alt="PiggyUp — 支出ではなく節約を記録する新しい方法"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/en/pu-showcase-02.png"
+                    alt="PiggyUp — カテゴリー別の節約データを視覚的に確認"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/en/pu-showcase-03.png"
+                    alt="PiggyUp — 節約習慣をデータで見える化"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/en/pu-showcase-04.png"
+                    alt="PiggyUp — さまざまな節約チャレンジに参加"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/en/pu-showcase-05.png"
+                    alt="PiggyUp — かんたん・シンプル・すばやく記録"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/en/pu-showcase-06.png"
+                    alt="PiggyUp — 小さな習慣が大きな節約につながる"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/en/pu-showcase-07.png"
+                    alt="PiggyUp — AIによる高度な支出・節約分析"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="pu-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="pu-features-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">機能</p>
+              <h2 id="pu-features-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">🚀</span>
+                主な機能
+              </h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">💸</span>
+                <h3>支出記録</h3>
+                <p class="ox-feature-lead">今日使った金額を手軽に記録し、</p>
+                <p class="ox-feature-note">カテゴリー別の流れを管理。素早い入力で自然に節約習慣が身につきます。</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🐷</span>
+                <h3>節約目標</h3>
+                <p class="ox-feature-lead">目標金額と節約プランを設定し、</p>
+                <p class="ox-feature-note">進捗をひと目で確認。小さな節約も続ければ大きな目標へ。</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔔</span>
+                <h3>節約アラート</h3>
+                <p class="ox-feature-lead">繰り返し支出・リスク・記録リマインダーなどを</p>
+                <p class="ox-feature-note">通知で管理し、習慣を見逃しません。</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📊</span>
+                <h3>支出分析</h3>
+                <p class="ox-feature-lead">カテゴリー別パターンと月間の流れを</p>
+                <p class="ox-feature-note">分析し、どこにお金を使っているか把握できます。</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📈</span>
+                <h3>統計・グラフ</h3>
+                <p class="ox-feature-lead">節約額・支出の流れ・目標達成率を</p>
+                <p class="ox-feature-note">グラフで直感的に確認できます。</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
+                <h3>AI節約分析</h3>
+                <p class="ox-feature-lead">AIが消費習慣を分析し、</p>
+                <p class="ox-feature-note">節約ポイントと改善のヒントを提案します。</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🎯</span>
+                <h3>目標達成の追跡</h3>
+                <p class="ox-feature-lead">節約目標の達成率と成長記録を</p>
+                <p class="ox-feature-note">確認し、小さな節約を大きな変化に。</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="pu-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="pu-how-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <h2 id="pu-how-title" class="ox-section-title-inline">📖 使い方</h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <h3>1️⃣ 支出を記録</h3>
+                <p class="ox-feature-lead">今日の金額とカテゴリーを入力します。</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>2️⃣ 節約目標を設定</h3>
+                <p class="ox-feature-lead">目標金額と節約プランを決めます。</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>3️⃣ パターンを確認</h3>
+                <p class="ox-feature-lead">カテゴリー別の支出の流れを見ます。</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>4️⃣ AI分析を確認</h3>
+                <p class="ox-feature-lead">AI節約レポートとインサイトを読みます。</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>5️⃣ 習慣を続ける</h3>
+                <p class="ox-feature-lead">少しずつ記録を続けましょう。</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>6️⃣ 目標を達成</h3>
+                <p class="ox-feature-lead">節約目標を達成して成長を実感します。</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="pu-premium"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="pu-premium-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <header class="ox-premium-intro">
+              <p class="ox-section-label">料金</p>
+              <h2 id="pu-premium-title" class="ox-premium-heading">
+                <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
+                プレミアム
+              </h2>
+              <p class="ox-premium-tagline">より深い分析と<br />よりスマートな節約体験</p>
+            </header>
+
+            <div class="ox-premium-stack">
+              <section class="ox-premium-block" aria-labelledby="pu-premium-features-heading">
+                <h3 id="pu-premium-features-heading" class="ox-premium-block__title">
+                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  プレミアム機能
+                </h3>
+                <div class="ox-premium-grid">
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      高度な支出分析
+                    </h4>
+                    <p class="ox-premium-card__lead">月別・カテゴリー別・</p>
+                    <p class="ox-premium-card__note">繰り返し支出を詳しく分析。</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      AI節約レポート
+                    </h4>
+                    <p class="ox-premium-card__lead">支出の流れに基づき、</p>
+                    <p class="ox-premium-card__note">あなた向けの節約インサイトを提供。</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
+                      詳細な通知
+                    </h4>
+                    <p class="ox-premium-card__lead">予算超過・繰り返し支出・</p>
+                    <p class="ox-premium-card__note">節約目標を細かく管理。</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📈</span>
+                      詳細統計
+                    </h4>
+                    <p class="ox-premium-card__lead">支出と節約の流れを</p>
+                    <p class="ox-premium-card__note">さまざまな形で確認。</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      広告非表示
+                    </h4>
+                    <p class="ox-premium-card__lead">邪魔なく、</p>
+                    <p class="ox-premium-card__note">節約管理に集中できます。</p>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="pu-reco" class="ox-section ox-reveal-on-scroll" aria-labelledby="pu-reco-title">
+          <div class="ox-container ox-reco-head">
+            <h2 id="pu-reco-title" class="ox-premium-heading">
+              <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
+              こんな方におすすめ
+            </h2>
+            <ul class="co-build-list" style="margin-top: 1rem">
+              <li>無駄な支出を減らしたい方</li>
+              <li>お金の行き先が気になる方</li>
+              <li>節約習慣をつくりたい方</li>
+              <li>かわいくて簡単な家計アプリを探している方</li>
+              <li>AIによる支出分析が欲しい方</li>
+              <li>目標ベースで節約したい方</li>
+              <li>より体系的なお金の管理をしたい方</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="pu-closing-highlight"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="pu-closing-highlight-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <div class="ox-premium-highlight">
+              <p class="ox-premium-highlight__kicker">
+                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                ひとこと
+              </p>
+              <p class="ox-premium-highlight__line" id="pu-closing-highlight-title">
+                お金を記録し、節約習慣をつくる体験
+              </p>
+              <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
+                小さな節約が大きな変化を生みます
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="締めのメッセージ">
+          <div class="ox-closing__stack"><p><strong>PiggyUp</strong>と一緒に<br />かわいくて賢い節約習慣を始めましょう。</p></div>
+        </section>
+      </main>
+      <footer class="ox-footer">
+        <div class="ox-container ox-footer-inner">
+          <div class="footer-legal-links footer-legal-links--ox">
+            <a class="footer-legal" href="privacy/">プライバシーポリシー</a>
+            <span class="footer-legal-sep" aria-hidden="true">·</span>
+            <a class="footer-legal" href="terms/">利用規約</a>
+          </div>
+          <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="連絡・ソーシャル">
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="mailto:newon@newon.app"
+              aria-label="newon@newon.app · メールを送る"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="22,6 12,13 2,6"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.instagram.com/newon.app.global?igsh=MTdxZ3U3cjZyZ29p&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Newon Instagram · 新しいタブで開きます"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://youtube.com/@newonglobal?si=pviB1hC7yMuD_tXw"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Newon YouTube · 新しいタブで開きます"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Newon TikTok · 新しいタブで開きます"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="ox-footer-meta">© PiggyUp · <a href="#" class="js-go-home">Newon</a></p>
+        </div>
+      </footer>
+    </div>
+
+
+    
+
     <div id="subping-app" class="ox-page site-shell" data-theme="light" hidden>
       <a class="ox-skip" href="#sp-main">本文へスキップ</a>
 
@@ -4084,7 +4931,7 @@
           <div class="navbar-bar__cell navbar-bar__cell--left">
             <div class="navbar-hub navbar-hub--ox">
               <a class="navbar-hub__logo js-go-home" href="#" aria-label="Newon ホーム">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="36" height="36" decoding="async" />
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="ox-nav ox-nav--apps-only" aria-label="Newon アプリ">
             <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
@@ -4169,6 +5016,16 @@
                   <span class="apps-flyout__meta">
                     <span class="apps-flyout__name">PetLog</span>
                     <span class="apps-flyout__desc">ペット記録 · 健康 · 家族共有 · AI</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">節約習慣 · 消費分析 · AIコーチ</span>
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
@@ -4262,7 +5119,7 @@
               </span>
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">SAVY</span>
-                <span class="mobile-apps-drawer__hint">SAVY の紹介を見る</span>
+                <span class="mobile-apps-drawer__hint">Open SAVY intro</span>
               </span>
             </a>
             <a href="#babylog-app" class="mobile-apps-drawer__item">
@@ -4281,6 +5138,15 @@
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">PetLog</span>
                 <span class="mobile-apps-drawer__hint">PetLog の紹介を見る</span>
+              </span>
+            </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">PiggyUpの紹介を見る</span>
               </span>
             </a>
           </details>
@@ -4326,7 +5192,7 @@
                       />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Download on</span>
+                      <span class="ox-store-badge__small">次でダウンロード：</span>
                       <span class="ox-store-badge__name">App Store</span>
                     </span>
                   </a>
@@ -4352,7 +5218,7 @@
                       <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
                     </svg>
                     <span class="ox-store-badge__text">
-                      <span class="ox-store-badge__small">Get it on</span>
+                      <span class="ox-store-badge__small">ぜひご利用ください</span>
                       <span class="ox-store-badge__name">Google Play</span>
                     </span>
                   </a>
@@ -4751,6 +5617,7 @@
         var TITLE_SAVY = "SAVY — 支出・収入・サブスク · Newon";
         var TITLE_BABYLOG = "BabyLog — 育児記録・成長 · Newon";
         var TITLE_PETLOG = "PetLog — ペット記録・健康 · Newon";
+        var TITLE_PIGGYUP = "PiggyUp — 節約習慣・消費分析 · Newon";
         var LABEL_MENU_OPEN = "メニューを開く";
         var LABEL_MENU_CLOSE = "メニューを閉じる";
         var LABEL_THEME_LIGHT = "ライトモードに切り替え";
@@ -4762,12 +5629,14 @@
         var elSv = document.getElementById("savy-app");
         var elBl = document.getElementById("babylog-app");
         var elPl = document.getElementById("petlog-app");
+        var elPu = document.getElementById("piggyup-app");
         var themeKey = "ox-month-theme";
         var themeKeySp = "subping-app-theme";
         var themeKeyPm = "pillmate-app-theme";
         var themeKeySv = "savy-app-theme";
         var themeKeyBl = "babylog-app-theme";
         var themeKeyPl = "petlog-app-theme";
+        var themeKeyPu = "piggyup-app-theme";
         /** 하나로 저장: 어느 앱에서 바꿔도 전 앱 설명 화면에 동일 테마 적용 */
         var themeKeyUnified = "newon-app-theme";
         function bindNavbarScrollFade() {
@@ -4893,6 +5762,26 @@
           });
         }
 
+
+        function staggerPuReveals() {
+          if (!elPu) return;
+          requestAnimationFrame(function () {
+            var reds = elPu.querySelectorAll(".ox-reveal-on-scroll:not(.is-visible)");
+            if (!reds.length) return;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              reds.forEach(function (el) {
+                el.classList.add("is-visible");
+              });
+            } else {
+              reds.forEach(function (el, i) {
+                setTimeout(function () {
+                  el.classList.add("is-visible");
+                }, 50 + i * 75);
+              });
+            }
+          });
+        }
+
         function closeMobileMenus() {
           var t = document.querySelector(".nav-toggle");
           var m = document.getElementById("mobile-nav");
@@ -4936,6 +5825,12 @@
           if (plt && plm) {
             plt.setAttribute("aria-expanded", "false");
             plm.hidden = true;
+          }
+          var put = document.getElementById("pu-nav-toggle");
+          var pum = document.getElementById("pu-mobile");
+          if (put && pum) {
+            put.setAttribute("aria-expanded", "false");
+            pum.hidden = true;
           }
         }
 
@@ -4989,6 +5884,14 @@
           btn.textContent = dark ? "☀" : "🌙";
         }
 
+        function syncPuThemeButton() {
+          var btn = document.getElementById("pu-theme");
+          if (!btn || !elPu) return;
+          var dark = elPu.getAttribute("data-theme") === "dark";
+          btn.setAttribute("aria-label", dark ? LABEL_THEME_LIGHT : LABEL_THEME_DARK);
+          btn.textContent = dark ? "☀" : "🌙";
+        }
+
         function getSystemThemePreference() {
           try {
             if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -5009,7 +5912,7 @@
           } catch (e) {}
 
           try {
-            var keys = [themeKey, themeKeySp, themeKeyPm, themeKeySv, themeKeyBl, themeKeyPl];
+            var keys = [themeKey, themeKeySp, themeKeyPm, themeKeySv, themeKeyBl, themeKeyPl, themeKeyPu];
             var vals = [];
             var i;
             var j;
@@ -5071,6 +5974,7 @@
           if (elSv) elSv.setAttribute("data-theme", theme);
           if (elBl) elBl.setAttribute("data-theme", theme);
           if (elPl) elPl.setAttribute("data-theme", theme);
+          if (elPu) elPu.setAttribute("data-theme", theme);
         }
 
         function syncAllAppThemeButtons() {
@@ -5080,6 +5984,7 @@
           syncSvThemeButton();
           syncBlThemeButton();
           syncPlThemeButton();
+          syncPuThemeButton();
         }
 
         function applyThemesFromStorage() {
@@ -5104,6 +6009,7 @@
             localStorage.removeItem(themeKeySv);
             localStorage.removeItem(themeKeyBl);
             localStorage.removeItem(themeKeyPl);
+            localStorage.removeItem(themeKeyPu);
           } catch (e) {}
           setAllAppRootsTheme(theme);
           syncAllAppThemeButtons();
@@ -5120,6 +6026,7 @@
           if (elSv) elSv.hidden = true;
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
           document.title = options.title != null ? options.title : TITLE_HOME;
           closeMobileMenus();
           elOx.querySelectorAll(".ox-reveal-on-scroll").forEach(function (el) {
@@ -5160,6 +6067,13 @@
               }
             });
           }
+          if (elPu) {
+            elPu.querySelectorAll(".ox-reveal-on-scroll").forEach(function (el) {
+              if (!el.classList.contains("ox-hero")) {
+                el.classList.remove("is-visible");
+              }
+            });
+          }
           requestAnimationFrame(function () {
             if (options.scrollToId) {
               var sec = document.getElementById(options.scrollToId);
@@ -5180,6 +6094,10 @@
           if (elSv) elSv.hidden = true;
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
           document.title = TITLE_OX;
           closeMobileMenus();
           requestAnimationFrame(function () {
@@ -5196,6 +6114,10 @@
           if (elSv) elSv.hidden = true;
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
           document.title = TITLE_SP;
           closeMobileMenus();
           requestAnimationFrame(function () {
@@ -5216,6 +6138,10 @@
           if (elSv) elSv.hidden = true;
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
           document.title = TITLE_PILLMATE;
           closeMobileMenus();
           requestAnimationFrame(function () {
@@ -5235,6 +6161,10 @@
           if (elPm) elPm.hidden = true;
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
           elSv.hidden = false;
           document.title = TITLE_SAVY;
           closeMobileMenus();
@@ -5255,6 +6185,10 @@
           if (elPm) elPm.hidden = true;
           if (elSv) elSv.hidden = true;
           if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elPu) elPu.hidden = true;
           elBl.hidden = false;
           document.title = TITLE_BABYLOG;
           closeMobileMenus();
@@ -5284,6 +6218,27 @@
           });
         }
 
+        function showPiggyup() {
+          if (!elPu) {
+            showHome();
+            return;
+          }
+          elHome.hidden = true;
+          elOx.hidden = true;
+          elSp.hidden = true;
+          if (elPm) elPm.hidden = true;
+          if (elSv) elSv.hidden = true;
+          if (elBl) elBl.hidden = true;
+          if (elPl) elPl.hidden = true;
+          elPu.hidden = false;
+          document.title = TITLE_PIGGYUP;
+          closeMobileMenus();
+          requestAnimationFrame(function () {
+            window.scrollTo(0, 0);
+            staggerPuReveals();
+          });
+        }
+
         function routeFromHash() {
           var h = location.hash;
           if (h === "#ox-month") {
@@ -5298,6 +6253,8 @@
             showBabylog();
           } else if (h === "#petlog-app" || h === "#petlog") {
             showPetlog();
+          } else if (h === "#piggyup-app" || h === "#piggyup") {
+            showPiggyup();
           } else {
             showHome();
           }
@@ -5493,6 +6450,31 @@
             a.addEventListener("click", function () {
               plToggle.setAttribute("aria-expanded", "false");
               plMenu.hidden = true;
+            });
+          });
+        }
+
+        var themeBtnPu = document.getElementById("pu-theme");
+        if (themeBtnPu && elPu) {
+          syncPuThemeButton();
+          themeBtnPu.addEventListener("click", function () {
+            var next = elPu.getAttribute("data-theme") === "dark" ? "light" : "dark";
+            persistUnifiedTheme(next);
+          });
+        }
+
+        var puToggle = document.getElementById("pu-nav-toggle");
+        var puMenu = document.getElementById("pu-mobile");
+        if (puToggle && puMenu) {
+          puToggle.addEventListener("click", function () {
+            var open = puToggle.getAttribute("aria-expanded") === "true";
+            puToggle.setAttribute("aria-expanded", String(!open));
+            puMenu.hidden = open;
+          });
+          puMenu.querySelectorAll("a").forEach(function (a) {
+            a.addEventListener("click", function () {
+              puToggle.setAttribute("aria-expanded", "false");
+              puMenu.hidden = true;
             });
           });
         }
