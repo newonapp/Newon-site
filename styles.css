@@ -348,7 +348,7 @@ html[data-newon-shell-theme="light"] .navbar-app-showcase__icon-img {
 
 @media (max-width: 639px) {
   :root {
-    --brand-header-min-h: clamp(76px, 16vw, 90px);
+    --brand-header-min-h: clamp(58px, 13vw, 68px);
   }
 
   .navbar-bar--brand-header {
@@ -510,17 +510,58 @@ html[data-newon-shell-theme="light"] .nav-toggle.nav-toggle--toolbar span {
     column-gap: 0.5rem;
   }
 
-  .navbar-bar.navbar-bar--home,
-  .navbar-bar.navbar-bar--ox {
-    grid-template-columns: auto minmax(0, 1fr) auto;
+  /* Phone: brand left (logo + name), controls right — no duplicate hub icon */
+  .navbar-bar.navbar-bar--home.navbar-bar--brand-header,
+  .navbar-bar.navbar-bar--ox.navbar-bar--brand-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 0.625rem;
+  }
+
+  .navbar-bar.navbar-bar--brand-header .navbar-bar__cell--left {
+    display: none;
+  }
+
+  .navbar-bar.navbar-bar--brand-header .navbar-bar__cell--center {
+    display: flex;
+    grid-column: 1;
+    justify-self: start;
+    justify-content: flex-start;
+    min-width: 0;
+  }
+
+  .navbar-bar.navbar-bar--brand-header .navbar-bar__cell--controls {
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  .navbar-bar.navbar-bar--brand-header .navbar-app-showcase {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 0.625rem;
+    margin-inline: 0;
+    max-width: none;
+    padding-block: 0;
+  }
+
+  .navbar-bar.navbar-bar--brand-header .navbar-app-showcase__icon-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  .navbar-bar.navbar-bar--brand-header .navbar-app-showcase__title {
+    font-size: 1.125rem;
+    line-height: 1.15;
   }
 
   .navbar-bar__cell--center {
     display: none;
   }
 
-  .navbar-bar.navbar-bar--home .navbar-bar__cell--center,
-  .navbar-bar.navbar-bar--ox .navbar-bar__cell--center {
+  .navbar-bar:not(.navbar-bar--brand-header).navbar-bar--home .navbar-bar__cell--center,
+  .navbar-bar:not(.navbar-bar--brand-header).navbar-bar--ox .navbar-bar__cell--center {
     display: flex;
     justify-content: center;
     min-width: 0;
