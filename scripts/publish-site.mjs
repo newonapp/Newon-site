@@ -63,6 +63,9 @@ const PUBLISH_COPY_DIRS = [
 
 const PUBLISH_ROOT_OPTIONAL = ["CNAME", ".nojekyll"];
 
+/** Legal redirects + AdMob (must be at site root for App Store / Google). */
+const PUBLISH_ROOT_LEGAL = ["terms.html", "privacy.html", "app-ads.txt"];
+
 const ALL_PUBLISH_ROOT_FILES = [...PUBLISH_ROOT_CORE, ...PUBLISH_ROOT_IMAGES];
 
 function copyDir(src, dest) {
@@ -135,6 +138,12 @@ function assemble() {
   for (const name of PUBLISH_ROOT_OPTIONAL) {
     copyFileIfExists(path.join(ROOT, name), path.join(OUT, name));
   }
+
+  for (const name of PUBLISH_ROOT_LEGAL) {
+    if (!copyFileIfExists(path.join(ROOT, name), path.join(OUT, name))) {
+      console.warn(`publish-site: optional legal root file missing ${name}`);
+    }
+  }
 }
 
 function verify() {
@@ -154,6 +163,9 @@ function verify() {
   }
   required.push(path.join(OUT, "privacy", "index.html"));
   required.push(path.join(OUT, "terms", "index.html"));
+  for (const name of ["terms.html", "privacy.html"]) {
+    required.push(path.join(OUT, name));
+  }
   required.push(path.join(OUT, "oxmonth", "delete-account", "index.html"));
   required.push(path.join(OUT, "subping", "delete-account", "index.html"));
   for (const f of required) {
