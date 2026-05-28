@@ -13,3 +13,6 @@ Newon-site-upload*/
 
 # 브라우저/도구가 만든 잘못된 경로(예: 로컬 서버 URL 붙여넣기)
 http:/
+
+node_modules/
+scripts/.translate-cache.json
