@@ -1,30 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Newon</title>
-    <link rel="canonical" href="https://www.newon.app/en/terms/" />
-    <script>
-      (function () {
-        var L = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
-        var d = "en";
-        try {
-          var v = localStorage.getItem("newon-lang-dir");
-          if (v && L.indexOf(v) !== -1) d = v;
-        } catch (e) {}
-        var tail = (location.search || "") + (location.hash || "");
-        location.replace("/" + d + "/terms/" + tail);
-      })();
-    </script>
-  </head>
-  <body style="font-family: system-ui, sans-serif; padding: 1.25rem">
-    <noscript>
-      <p style="margin: 0">
-        <a href="/en/terms/">Terms</a>
-        ·
-        <a href="/privacy/">Privacy</a>
-      </p>
-    </noscript>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Newon</title>
+  <script>
+    (function () {
+      var langs = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
+      var lang = "ko";
+      try {
+        var saved = localStorage.getItem("newon-lang-dir");
+        if (saved && langs.indexOf(saved) !== -1) lang = saved;
+      } catch (e) {}
+      location.replace("/" + lang + "/");
+    })();
+  </script>
+</head>
+<body>
+  <p style="font-family: system-ui, sans-serif; padding: 1.2rem">
+    Redirecting… <a href="/ko/">Open Newon</a>
+  </p>
+</body>
 </html>

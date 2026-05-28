@@ -7,9 +7,20 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { spawnSync } from "child_process";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
+
+function runLocalePatches() {
+  const r = spawnSync(process.execPath, [path.join(__dirname, "run-all-locale-patches.mjs")], {
+    cwd: ROOT,
+    stdio: "inherit",
+  });
+  if (r.status !== 0) process.exit(r.status ?? 1);
+}
+
+runLocalePatches();
 const I18N_IMG = path.join(ROOT, "i18n-img");
 const OX_IMG = path.join(ROOT, "ox-img");
 
@@ -19,7 +30,7 @@ const OX_IMG = path.join(ROOT, "ox-img");
  * 2) pm-showcase-NN.png: KO uses /subping-img/ (Korean UI). JA / ES / pt-BR use i18n-img/{lang}/ when present.
  *    All other locales (EN, FR, DE, HI, ID, …) use i18n-img/en/ (same English screenshots); then /subping-img/ fallback.
  * 3) sv-showcase-NN.png: i18n-img/{lang}/ if present; otherwise i18n-img/en/ (English UI); otherwise i18n-img/ko/.
- * 3b) bl-showcase-NN.png / pl-showcase-NN.png: i18n-img/{lang}/ if present; otherwise i18n-img/en/; otherwise i18n-img/ko/.
+ * 3b) bl-showcase-NN.png / pl-showcase-NN.png / pu-showcase-NN.png: i18n-img/{lang}/ if present; otherwise i18n-img/en/; otherwise i18n-img/ko/.
  * 4) /i18n-img/{lang}/file.png if present
  * 5) Korean only: /subping-img/ before EN fallback
  * 6) /i18n-img/en/file.png if present
@@ -80,7 +91,7 @@ function localizedImageUrl(langDir, filename) {
       return `/i18n-img/ko/${filename}`;
     }
   }
-  if (/^bl-showcase-\d+\.png$/.test(filename) || /^pl-showcase-\d+\.png$/.test(filename)) {
+  if (/^bl-showcase-\d+\.png$/.test(filename) || /^pl-showcase-\d+\.png$/.test(filename) || /^pu-showcase-\d+\.png$/.test(filename)) {
     const forLang = path.join(I18N_IMG, langDir, filename);
     if (fs.existsSync(forLang)) {
       return `/i18n-img/${langDir}/${filename}`;
