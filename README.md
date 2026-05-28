@@ -21,7 +21,7 @@ _publish/   (Pages 루트와 동일하게 맞출 때)
 ```
 
 ## 소스 저장소 예시 (git push 하는 경우)
-
+ 
 ```text
 .
 ├── scripts/ templates/ locales/ ox-img/ i18n-img/ subping-img/
