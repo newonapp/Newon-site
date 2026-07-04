@@ -12,6 +12,8 @@ const withTranslate = args.includes("--translate") || args.includes("--auto-tran
 const translateArgs = args.filter((a) => a === "--force" || a.startsWith("--lang="));
 
 const STEPS = [
+  "apply-newon-plus-locales.mjs",
+  "apply-newon-plus-nav-locales.mjs",
   "apply-ox-sp-hero-copy.mjs",
   "merge-subping-locales.mjs",
   "apply-petlog-locales.mjs",

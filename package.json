@@ -21,6 +21,7 @@
     "open:pillmate": "node scripts/open-simple-browser.mjs \"https://newon.app/ko/#pillmate-app\"",
     "open:ox-month": "node scripts/open-simple-browser.mjs /ko/#ox-month",
     "open:subping": "node scripts/open-simple-browser.mjs /ko/#subping-app",
+    "open:newon-plus": "node scripts/open-simple-browser.mjs /ko/#newon-plus-app",
     "pack:upload": "node scripts/prepare-manual-upload.mjs",
     "묶기": "node scripts/prepare-manual-upload.mjs",
     "pack:pages": "node scripts/zip-publish.mjs",

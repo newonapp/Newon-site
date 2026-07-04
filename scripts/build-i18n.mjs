@@ -33,7 +33,7 @@ const OX_IMG = path.join(ROOT, "ox-img");
  * 2b) sp-showcase-NN.png (SubPing): KO → /subping-img/; JA / ES / pt-BR → i18n-img/{lang}/;
  *     EN + FR + DE + HI + ID → i18n-img/en/ (English UI art).
  * 3) sv-showcase-NN.png: i18n-img/{lang}/ if present; otherwise i18n-img/en/ (English UI); otherwise i18n-img/ko/.
- * 3b) bl-showcase-NN.png / pl-showcase-NN.png / pu-showcase-NN.png / cu-showcase-NN.png / gu-showcase-NN.png: i18n-img/{lang}/ if present; otherwise i18n-img/en/; otherwise i18n-img/ko/.
+ * 3b) bl-showcase-NN.png / pl-showcase-NN.png / pu-showcase-NN.png / cu-showcase-NN.png / gu-showcase-NN.png / np-showcase-NN.png: i18n-img/{lang}/ if present; otherwise i18n-img/en/; otherwise i18n-img/ko/.
  * 4) /i18n-img/{lang}/file.png if present
  * 5) Korean only: /subping-img/ before EN fallback
  * 6) /i18n-img/en/file.png if present
@@ -116,7 +116,7 @@ function localizedImageUrl(langDir, filename) {
       return `/i18n-img/ko/${filename}`;
     }
   }
-  if (/^bl-showcase-\d+\.png$/.test(filename) || /^pl-showcase-\d+\.png$/.test(filename) || /^pu-showcase-\d+\.png$/.test(filename) || /^cu-showcase-\d+\.png$/.test(filename) || /^gu-showcase-\d+\.png$/.test(filename)) {
+  if (/^bl-showcase-\d+\.png$/.test(filename) || /^pl-showcase-\d+\.png$/.test(filename) || /^pu-showcase-\d+\.png$/.test(filename) || /^cu-showcase-\d+\.png$/.test(filename) || /^gu-showcase-\d+\.png$/.test(filename) || /^np-showcase-\d+\.png$/.test(filename)) {
     const forLang = path.join(I18N_IMG, langDir, filename);
     if (fs.existsSync(forLang)) {
       return `/i18n-img/${langDir}/${filename}`;

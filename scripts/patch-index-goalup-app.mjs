@@ -20,7 +20,10 @@ if (!s.includes('id="goalup-app"')) {
 } else {
   const inc = fs.readFileSync(path.join(ROOT, "templates", "goalup-app-inc.html"), "utf8");
   const start = s.indexOf('<div id="goalup-app"');
-  const end = s.indexOf('<div id="subping-app"');
+  let end = s.indexOf('<div id="countup-app"');
+  if (end < 0 || end <= start) end = s.indexOf('<div id="newon-plus-app"');
+  if (end < 0 || end <= start) end = s.indexOf('<div id="noting-app"');
+  if (end < 0 || end <= start) end = s.indexOf('<div id="subping-app"');
   if (start >= 0 && end > start) {
     s = s.slice(0, start) + inc + "\n\n    " + s.slice(end);
     console.log("refreshed goalup-app section");

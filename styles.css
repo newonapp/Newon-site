@@ -1,12 +1,12 @@
 :root {
-  --bg: #050505;
-  --bg-elevated: #0c0c0c;
-  --surface: #111111;
-  --border: rgba(255, 255, 255, 0.1);
-  --border-strong: rgba(255, 255, 255, 0.18);
+  --bg: #000000;
+  --bg-elevated: #000000;
+  --surface: #000000;
+  --border: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.2);
   --text: #f5f5f5;
-  --text-muted: rgba(245, 245, 245, 0.58);
-  --text-soft: rgba(245, 245, 245, 0.42);
+  --text-muted: rgba(245, 245, 245, 0.72);
+  --text-soft: rgba(245, 245, 245, 0.56);
   --accent: #ffffff;
   --font: "Noto Sans", "Noto Sans JP", "Noto Sans KR", "Noto Sans Devanagari", -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -27,6 +27,36 @@
 
 html[data-newon-shell-theme="dark"] {
   color-scheme: dark;
+  --bg: #000000;
+  --bg-elevated: #000000;
+  --surface: #000000;
+  --border: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --text: #f5f5f5;
+  --text-muted: rgba(245, 245, 245, 0.72);
+  --text-soft: rgba(245, 245, 245, 0.56);
+  --accent: #ffffff;
+}
+
+html[data-newon-shell-theme="dark"],
+html[data-newon-shell-theme="dark"] body {
+  background: #000000;
+  color: #f5f5f5;
+}
+
+html[data-newon-shell-theme="dark"] #home,
+html[data-newon-shell-theme="dark"] #home .hero,
+html[data-newon-shell-theme="dark"] #home .section,
+html[data-newon-shell-theme="dark"] .site-footer,
+html[data-newon-shell-theme="dark"] .mobile-nav {
+  background: #000000;
+}
+
+html[data-newon-shell-theme="dark"] .meaning-list li,
+html[data-newon-shell-theme="dark"] .card,
+html[data-newon-shell-theme="dark"] .hero-logo-wrap,
+html[data-newon-shell-theme="dark"] .co-build-list li {
+  background: #000000;
 }
 
 html[data-newon-shell-theme="light"] {
@@ -785,6 +815,23 @@ html[data-newon-shell-theme="light"] .navbar-bar--home .lang-menu.lang-menu--too
   box-shadow:
     0 4px 6px rgba(0, 0, 0, 0.04),
     0 22px 48px rgba(0, 0, 0, 0.12);
+}
+
+html[data-newon-shell-theme="dark"] .lang-menu__panel {
+  background: #000000;
+  color: #f5f5f5;
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 22px 48px rgba(0, 0, 0, 0.65);
+}
+
+html[data-newon-shell-theme="dark"] .lang-menu__option:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+html[data-newon-shell-theme="dark"] .lang-menu__check {
+  color: #f5f5f5;
 }
 
 .lang-menu__option {
@@ -2232,6 +2279,26 @@ html[data-newon-shell-theme="light"]
 
 .co-newon-plus-panel {
   text-align: center;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    border-color 0.3s var(--ease-premium),
+    transform 0.3s var(--ease-premium),
+    box-shadow 0.3s var(--ease-premium);
+}
+
+.co-newon-plus-panel:hover,
+.co-newon-plus-panel:focus-visible {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+}
+
+.co-newon-plus-panel:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--text) 55%, transparent);
+  outline-offset: 3px;
 }
 
 .co-newon-plus-panel p {
@@ -2536,25 +2603,12 @@ html[data-newon-shell-theme="dark"] .hero-bg {
 }
 
 html[data-newon-shell-theme="dark"] .co-goal-panel,
-html[data-newon-shell-theme="dark"] .co-newon-plus-panel {
-  background: linear-gradient(
-    155deg,
-    rgba(255, 255, 255, 0.04) 0%,
-    var(--surface) 42%,
-    var(--bg-elevated) 100%
-  );
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
-    0 20px 48px rgba(0, 0, 0, 0.22);
-}
-
+html[data-newon-shell-theme="dark"] .co-newon-plus-panel,
 html[data-newon-shell-theme="dark"] .co-stats-card {
-  background: linear-gradient(
-    165deg,
-    rgba(255, 255, 255, 0.05) 0%,
-    var(--surface) 48%,
-    var(--bg-elevated) 100%
-  );
+  background: #000000;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
 html[data-newon-shell-theme="light"] .site-header,
@@ -2564,7 +2618,12 @@ html[data-newon-shell-theme="light"] .site-header.is-scrolled {
 
 html[data-newon-shell-theme="dark"] .site-header,
 html[data-newon-shell-theme="dark"] .site-header.is-scrolled {
-  background: rgba(8, 8, 8, 0.9);
+  background: rgba(0, 0, 0, 0.94);
+}
+
+html[data-newon-shell-theme="dark"] .apps-flyout__panel {
+  background: #000000;
+  border-color: rgba(255, 255, 255, 0.14);
 }
 
 html[data-newon-shell-theme="dark"] .mobile-apps-drawer__item--current {

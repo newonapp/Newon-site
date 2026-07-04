@@ -43,6 +43,7 @@ const PUBLISH_ROOT_IMAGES = [
   "piggyup-logo.png",
   "goalup-logo.png",
   "countup-logo.png",
+  "newon-plus-logo.png",
   "subping-hero-mark.png",
   "feature-grid.png",
   "hero-promo.png",
