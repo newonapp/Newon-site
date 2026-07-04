@@ -94,15 +94,25 @@
   }
 
   function navigateToLang(nextDir) {
+    document.querySelectorAll(SEL).forEach(function (sel) {
+      if (sel.value !== nextDir) sel.value = nextDir;
+    });
+    document.querySelectorAll("[data-lang-menu-root]").forEach(function (root) {
+      var sel = root.querySelector(SEL);
+      var btn = root.querySelector(".lang-menu__btn");
+      if (sel && btn) syncBtnLabel(sel, btn);
+      syncSelectedMarks(root);
+    });
+
     if (typeof newonApplyLangChoice === "function") {
       newonApplyLangChoice(nextDir);
-    } else {
-      try {
-        localStorage.setItem("newon-lang-dir", nextDir);
-      } catch (e) {}
-      if (typeof newonBuildLangHref === "function") {
-        location.href = newonBuildLangHref(nextDir);
-      }
+      return;
+    }
+    try {
+      localStorage.setItem("newon-lang-dir", nextDir);
+    } catch (e) {}
+    if (typeof newonBuildLangHref === "function") {
+      location.assign(newonBuildLangHref(nextDir));
     }
   }
 

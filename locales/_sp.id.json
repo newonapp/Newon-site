@@ -8,7 +8,7 @@
   "mobilePillmateHint": "Lihat Pillmate",
   "badge": "Langganan · tagihan rutin · wawasan pengeluaran",
   "subtitle": "Lihat uang yang keluar setiap bulan sekilas",
-  "heroReachSummary": "Aplikasi langganan dan tagihan berulang untuk semua orang. Tersedia di 173 negara dan 13 bahasa, termasuk Korea, Inggris, dan Jepang.",
+  "heroReachSummary": "Kelola langganan dan tagihan berulang—dari streaming hingga sewa—dan pantau pengeluaran bulan ini serta jadwal berikutnya.",
   "h1": "SubPing",
   "heroLogoAlt": "Logo SubPing",
   "showcaseCollageAria": "Tujuh tangkapan layar SubPing. Gulir horizontal untuk melihat semuanya.",
@@ -70,5 +70,9 @@
   "closingHiKicker": "Dalam satu baris",
   "closingHiLine": "Kelola langganan — dan simpan lebih banyak uang.",
   "closingFoot": "Saat pengeluaran terlihat, dompet berubah.",
+  "appStoreUrl": "https://newon.app",
+  "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.subping&pcampaignid=web_share",
+  "appStoreBadgeAria": "SubPing di App Store (tab baru)",
+  "googlePlayBadgeAria": "SubPing di Google Play (tab baru)",
   "footerRights": "© SubPing ·"
 }

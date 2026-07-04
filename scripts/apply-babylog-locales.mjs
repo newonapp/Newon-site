@@ -43,6 +43,18 @@ const navPtBr = {
   drawerBl: "Abrir apresentação do BabyLog",
 };
 
+/** Image alt strings tied to localized screenshots — merge without wiping translated body copy. */
+const BL_MEDIA_KEYS = [
+  "showcaseCollageAria",
+  "imgShot1Alt",
+  "imgShot2Alt",
+  "imgShot3Alt",
+  "imgShot4Alt",
+  "imgShot5Alt",
+  "imgShot6Alt",
+  "imgShot7Alt",
+];
+
 function patchNav(metaTitle, desc, hint, drawerBlVal) {
   return (j) => {
     j.meta = j.meta || {};
@@ -62,16 +74,27 @@ function patchNav(metaTitle, desc, hint, drawerBlVal) {
   };
 }
 
-function applyFull(file, bl, nav) {
+function mergeBlMedia(j, bl) {
+  j.bl = j.bl || {};
+  for (const k of BL_MEDIA_KEYS) {
+    if (bl[k] != null) j.bl[k] = bl[k];
+  }
+}
+
+function applyFull(file, bl, nav, { replaceBl = false } = {}) {
   const p = path.join(localesDir, file);
   const j = JSON.parse(fs.readFileSync(p, "utf8"));
-  j.bl = bl;
+  if (replaceBl) {
+    j.bl = bl;
+  } else {
+    mergeBlMedia(j, bl);
+  }
   patchNav(nav.titleBabylog, nav.babylogDesc, nav.mobileBabylogHint, nav.drawerBl)(j);
   fs.writeFileSync(p, JSON.stringify(j, null, 2) + "\n", "utf8");
 }
 
-applyFull("ko.json", blKo, navKo);
-applyFull("en.json", blEn, navEn);
+applyFull("ko.json", blKo, navKo, { replaceBl: true });
+applyFull("en.json", blEn, navEn, { replaceBl: true });
 applyFull("ja.json", blJa, navJa);
 applyFull("es.json", blEs, navEs);
 applyFull("pt-br.json", blPtBr, navPtBr);

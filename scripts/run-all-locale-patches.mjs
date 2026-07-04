@@ -12,12 +12,20 @@ const withTranslate = args.includes("--translate") || args.includes("--auto-tran
 const translateArgs = args.filter((a) => a === "--force" || a.startsWith("--lang="));
 
 const STEPS = [
+  "apply-ox-sp-hero-copy.mjs",
   "merge-subping-locales.mjs",
   "apply-petlog-locales.mjs",
   "apply-babylog-locales.mjs",
   "apply-pm-locales.mjs",
   "apply-savy-locales.mjs",
   "apply-piggyup-locales.mjs",
+  "apply-goalup-countup-locales.mjs",
+  "apply-goalup-locales.mjs",
+  "apply-countup-locales.mjs",
+  "apply-noting-locales.mjs",
+  "sync-sp-mobile-hints.mjs",
+  "apply-translate-cache.mjs",
+  "apply-home-locale-translations.mjs",
 ];
 
 if (withTranslate) {

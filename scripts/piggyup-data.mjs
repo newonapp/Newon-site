@@ -100,8 +100,8 @@ export const puKo = {
   drawerBl: "BabyLog 소개",
   drawerPl: "PetLog 소개",
   drawerPu: "PiggyUp · 이 화면",
-  appStoreUrl: "https://newon.app",
-  googlePlayUrl: "https://newon.app",
+  appStoreUrl: "https://apps.apple.com/kr/app/piggyup-ai-%EC%A0%88%EC%95%BD-%EA%B4%80%EB%A6%AC-%EC%B1%8C%EB%A6%B0%EC%A7%80/id6772744969",
+  googlePlayUrl: "https://play.google.com/store/apps/details?id=com.newon.piggyup&pcampaignid=web_share",
   appStoreBadgeAria: "App Store에서 PiggyUp(새 탭)",
   googlePlayBadgeAria: "Google Play에서 PiggyUp(새 탭)",
 };
@@ -206,8 +206,8 @@ export const puEn = {
   drawerBl: "Open BabyLog intro",
   drawerPl: "Open PetLog intro",
   drawerPu: "PiggyUp · this screen",
-  appStoreUrl: "https://newon.app",
-  googlePlayUrl: "https://newon.app",
+  appStoreUrl: "https://apps.apple.com/kr/app/piggyup-ai-%EC%A0%88%EC%95%BD-%EA%B4%80%EB%A6%AC-%EC%B1%8C%EB%A6%B0%EC%A7%80/id6772744969",
+  googlePlayUrl: "https://play.google.com/store/apps/details?id=com.newon.piggyup&pcampaignid=web_share",
   appStoreBadgeAria: "PiggyUp on the App Store (opens in a new tab)",
   googlePlayBadgeAria: "PiggyUp on Google Play (opens in a new tab)",
 };

@@ -11,8 +11,21 @@
     <meta name="twitter:url" content="{{CANONICAL}}" />
     <meta property="og:title" content="{{t:meta.ogTitle}}" />
     <meta property="og:description" content="{{t:meta.ogDescription}}" />
+    <meta property="og:site_name" content="{{t:meta.ogSiteName}}" />
     <meta property="og:image" content="https://newon.app/logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{t:meta.twitterTitle}}" />
+    <meta name="twitter:description" content="{{t:meta.twitterDescription}}" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Newon",
+  "url": "https://newon.app",
+  "description": {{js:meta.orgDescription}},
+  "logo": "https://newon.app/logo.png"
+}
+    </script>
 {{HREFLANG_BLOCK}}
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,7 +35,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/ox-month.css?v=20260528-piggyup-showcase" />
+    <link rel="stylesheet" href="/ox-month.css?v=20260601-noting-white" />
     <script src="/theme-shell.js"></script>
     <script src="/lang-nav.js"></script>
   </head>
@@ -125,6 +138,26 @@
                   <span class="apps-flyout__meta">
                     <span class="apps-flyout__name">PiggyUp</span>
                     <span class="apps-flyout__desc">{{t:nav.piggyupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.goalupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.countupDesc}}</span>
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
@@ -245,6 +278,24 @@
                 <span class="mobile-apps-drawer__hint">{{t:nav.mobilePiggyupHint}}</span>
               </span>
             </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileGoalupHint}}</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileCountupHint}}</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -273,8 +324,51 @@
               <p class="hero-lead">
                 {{t:home.heroLead}}
               </p>
-              <div class="hero-actions">
-                <a class="btn btn-primary" href="#about">{{t:home.btnAbout}}</a>
+              <div class="hero-actions hero-store-links">
+                <a
+                  class="hero-store-link hero-store-link--apple"
+                  href="https://apps.apple.com/developer/nawon-kyung/id1896528749"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="{{t:home.appStoreIconAria}}"
+                >
+                  <svg
+                    class="hero-store-link__icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  class="hero-store-link hero-store-link--google"
+                  href="https://play.google.com/store/apps/dev?id=8016507493063681249"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="{{t:home.googlePlayIconAria}}"
+                >
+                  <svg
+                    class="hero-store-link__icon hero-store-link__icon--play"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 28 28"
+                    width="22"
+                    height="22"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path fill="#00D9FF" d="M3 4.5v19l11-9.7L3 4.5z" />
+                    <path fill="#00F076" d="M15.4 14.3 25 20.8c.6-.4 1-1 1-1.8V9c0-.7-.4-1.4-1-1.8l-9.6 6.1z" />
+                    <path fill="#FFCE00" d="M15.4 13.7 25 7.2c-.6-.4-1.3-.6-2-.4L3 4.5l12.4 9.2z" />
+                    <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
@@ -299,6 +393,7 @@
                 {{html:home.meaningP1Html}}
               </p>
               <p>{{t:home.meaningP2}}</p>
+              <p>{{t:home.meaningP3}}</p>
             </div>
           </div>
         </section>
@@ -317,6 +412,7 @@
               <p>
                 {{t:home.aboutP2}}
               </p>
+              <p>{{html:home.aboutP3Html}}</p>
             </div>
           </div>
         </section>
@@ -335,6 +431,7 @@
               <p>
                 {{t:home.workP2}}
               </p>
+              <p>{{html:home.workP3Html}}</p>
             </div>
           </div>
         </section>
@@ -346,10 +443,13 @@
               <span class="section-icon" aria-hidden="true">📱</span>
               {{t:home.productsTitle}}
             </h2>
-            <ul class="co-build-list">
+            <ul class="co-build-list co-build-list--products">
               <li>{{t:home.productLi0}}</li>
               <li>{{t:home.productLi1}}</li>
               <li>{{t:home.productLi2}}</li>
+              <li>{{t:home.productLi3}}</li>
+              <li>{{t:home.productLi4}}</li>
+              <li>{{t:home.productLi5}}</li>
             </ul>
           </div>
         </section>
@@ -366,6 +466,28 @@
               <p>
                 {{t:home.visionP2}}
               </p>
+              <p>
+                {{t:home.visionP3}}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="numbers" class="section section-co section-co--numbers reveal-on-scroll">
+          <div class="container">
+            <p class="section-label">{{t:home.statsLabel}}</p>
+            <h2 class="section-title section-title--with-icon">
+              <span class="section-icon" aria-hidden="true">🌎</span>
+              {{t:home.statsTitle}}
+            </h2>
+            <ul class="co-stats-grid">
+              <li class="co-stats-card">{{html:home.statCard0Html}}</li>
+              <li class="co-stats-card">{{html:home.statCard1Html}}</li>
+              <li class="co-stats-card">{{html:home.statCard2Html}}</li>
+              <li class="co-stats-card">{{html:home.statCard3Html}}</li>
+            </ul>
+            <div class="co-goal-panel co-newon-plus-panel">
+              <p>{{html:home.statNewonPlusHtml}}</p>
             </div>
           </div>
         </section>
@@ -386,6 +508,7 @@
           </div>
           <div class="footer-links">
             <a class="footer-link" href="https://newon.app">https://newon.app</a>
+            <p class="footer-copy">{{t:footer.tagline}}</p>
             <div class="footer-legal-links">
               <a class="footer-legal" href="privacy/">{{t:footer.privacy}}</a>
               <span class="footer-legal-sep" aria-hidden="true">·</span>
@@ -603,6 +726,26 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.goalupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.countupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
@@ -723,6 +866,24 @@
                 <span class="mobile-apps-drawer__hint">{{t:nav.mobilePiggyupHint}}</span>
               </span>
             </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileGoalupHint}}</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileCountupHint}}</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -736,7 +897,6 @@
                   <span class="ox-badge-dot" aria-hidden="true"></span>
                   {{t:ox.badge}}
                 </p>
-                <p class="ox-badge ox-badge--secondary">{{t:ox.globalReachBadge}}</p>
               </div>
               <h1>{{t:ox.h1}}</h1>
               <p class="ox-subtitle">
@@ -1383,6 +1543,26 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.goalupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.countupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
@@ -1501,6 +1681,24 @@
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">PiggyUp</span>
                 <span class="mobile-apps-drawer__hint">{{t:nav.mobilePiggyupHint}}</span>
+              </span>
+            </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileGoalupHint}}</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileCountupHint}}</span>
               </span>
             </a>
           </details>
@@ -2096,6 +2294,26 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.goalupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.countupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
@@ -2205,6 +2423,24 @@
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">PiggyUp</span>
                 <span class="mobile-apps-drawer__hint">{{t:nav.mobilePiggyupHint}}</span>
+              </span>
+            </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileGoalupHint}}</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileCountupHint}}</span>
               </span>
             </a>
             <a href="#sv-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
@@ -2816,6 +3052,26 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.goalupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.countupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
@@ -2934,6 +3190,24 @@
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">PiggyUp</span>
                 <span class="mobile-apps-drawer__hint">{{t:nav.mobilePiggyupHint}}</span>
+              </span>
+            </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileGoalupHint}}</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileCountupHint}}</span>
               </span>
             </a>
           </details>
@@ -3563,6 +3837,26 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.goalupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.countupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
@@ -3681,6 +3975,24 @@
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">PiggyUp</span>
                 <span class="mobile-apps-drawer__hint">{{t:nav.mobilePiggyupHint}}</span>
+              </span>
+            </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileGoalupHint}}</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileCountupHint}}</span>
               </span>
             </a>
           </details>
@@ -4310,6 +4622,26 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.goalupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.countupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
@@ -4428,6 +4760,24 @@
               <span class="mobile-apps-drawer__text">
                 <span class="mobile-apps-drawer__name">PiggyUp</span>
                 <span class="mobile-apps-drawer__hint">{{t:pu.drawerPu}}</span>
+              </span>
+            </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileGoalupHint}}</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileCountupHint}}</span>
               </span>
             </a>
           </details>
@@ -4936,6 +5286,2248 @@
 
     
 
+    <div id="goalup-app" class="ox-page site-shell" data-theme="light" hidden>
+      <a class="ox-skip" href="#gu-main">{{t:ox.skip}}</a>
+
+      <header class="ox-header">
+        <div class="ox-container navbar-bar navbar-bar--ox navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub navbar-hub--ox">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="{{t:nav.brandHomeAria}}">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
+              </a>
+              <nav class="ox-nav ox-nav--apps-only" aria-label="{{t:nav.appsAria}}">
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
+              <button
+                type="button"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
+                id="apps-trigger-gu"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="apps-panel-gu"
+                aria-label="{{t:nav.appsAria}}"
+              >
+                <span>{{t:nav.appsLabel}}</span>
+                <span class="apps-flyout__chev" aria-hidden="true"></span>
+              </button>
+              <div
+                id="apps-panel-gu"
+                class="apps-flyout__panel"
+                role="menu"
+                aria-labelledby="apps-trigger-gu"
+                hidden
+              >
+                <a href="#ox-month" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/ox-month-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">OX MONTH</span>
+                    <span class="apps-flyout__desc">{{t:nav.oxDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#subping-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/subping-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SubPing</span>
+                    <span class="apps-flyout__desc">{{t:nav.subpingDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">{{t:nav.pillmateDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#savy-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/savy-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SAVY</span>
+                    <span class="apps-flyout__desc">{{t:nav.savyDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#babylog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">BabyLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.babylogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#petlog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PetLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.petlogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.piggyupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a
+                  href="#gu-top"
+                  role="menuitem"
+                  class="apps-flyout__item apps-flyout__item--current"
+                  aria-current="page"
+                >
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.goalupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.countupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a href="#gu-top" class="navbar-app-showcase" aria-label="{{t:gu.brandAria}}">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/goalup-logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">GoalUp</span>
+              <span class="navbar-app-showcase__tagline">{{t:nav.goalupDesc}}</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--ox navbar-bar__controls--brand-toolbar">
+          <div class="lang-switcher lang-switcher--ox" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-gu">{{t:ui.language}}</label>
+            <select id="lang-select-gu" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
+              <option value="ko">{{t:ui.langKo}}</option>
+              <option value="en">{{t:ui.langEn}}</option>
+              <option value="ja">{{t:ui.langJa}}</option>
+              <option value="es">{{t:ui.langEs}}</option>
+              <option value="pt-br">{{t:ui.langPtBr}}</option>
+              <option value="fr">{{t:ui.langFr}}</option>
+              <option value="de">{{t:ui.langDe}}</option>
+              <option value="hi">{{t:ui.langHi}}</option>
+              <option value="id">{{t:ui.langId}}</option>
+            </select>
+          </div>
+          <div class="ox-header-actions">
+            <button
+              type="button"
+              class="ox-theme-toggle"
+              id="gu-theme"
+              aria-label="{{t:common.themeToLight}}"
+              title="{{t:common.themeToggle}}"
+            >
+              ☀
+            </button>
+            <button
+              type="button"
+              class="ox-nav-toggle"
+              id="gu-nav-toggle"
+              aria-expanded="false"
+              aria-controls="gu-mobile"
+              aria-label="{{t:common.menu}}"
+            >
+              <span></span><span></span>
+            </button>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div id="gu-mobile" class="ox-mobile-menu ox-mobile-menu--apps-only" hidden>
+          <details class="mobile-apps-drawer mobile-apps-drawer--ox">
+            <summary class="mobile-apps-drawer__summary">{{t:ox.mobileSummary}}</summary>
+            <a href="#ox-month" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/ox-month-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">OX MONTH</span>
+                <span class="mobile-apps-drawer__hint">{{t:gu.drawerOx}}</span>
+              </span>
+            </a>
+            <a href="#subping-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/subping-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SubPing</span>
+                <span class="mobile-apps-drawer__hint">{{t:gu.drawerSp}}</span>
+              </span>
+            </a>
+            <a href="#pillmate-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">{{t:gu.drawerPm}}</span>
+              </span>
+            </a>
+            <a href="#savy-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/savy-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SAVY</span>
+                <span class="mobile-apps-drawer__hint">{{t:gu.drawerSv}}</span>
+              </span>
+            </a>
+            <a href="#babylog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/babylog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">BabyLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:gu.drawerBl}}</span>
+              </span>
+            </a>
+            <a href="#petlog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/petlog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PetLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:gu.drawerPl}}</span>
+              </span>
+            </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:gu.drawerPu}}</span>
+              </span>
+            </a>
+            <a href="#gu-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:gu.drawerGu}}</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileCountupHint}}</span>
+              </span>
+            </a>
+          </details>
+        </div>
+      </header>
+
+      <main id="gu-main">
+        <section id="gu-top" class="ox-hero ox-reveal-on-scroll is-visible">
+          <div class="ox-container ox-hero-grid">
+            <div class="ox-hero-copy">
+              <div class="ox-badge-row">
+                <p class="ox-badge">
+                  <span class="ox-badge-dot" aria-hidden="true"></span>
+                  {{t:gu.badge}}
+                </p>
+                <p class="ox-badge ox-badge--secondary">{{t:gu.globalReachBadge}}</p>
+              </div>
+              <h1>{{t:gu.h1}}</h1>
+              <p class="ox-subtitle">{{html:gu.subtitleHtml}}</p>
+              <p class="ox-hero-reach-summary">{{t:gu.heroReachSummary}}</p>
+              <div class="ox-store-release" role="status" aria-live="polite">
+                <p class="ox-store-release__label">{{t:ox.storeReleaseLine}}</p>
+                <div class="ox-store-badges">
+                  <a
+                    class="ox-store-badge ox-store-badge--apple"
+                    href="{{html:gu.appStoreUrl}}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{t:gu.appStoreBadgeAria}}"
+                  >
+                    <svg
+                      class="ox-store-badge__icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                      />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">{{t:ox.appStoreBadgeKicker}}</span>
+                      <span class="ox-store-badge__name">App Store</span>
+                    </span>
+                  </a>
+                  <a
+                    class="ox-store-badge ox-store-badge--google"
+                    href="{{html:gu.googlePlayUrl}}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{t:gu.googlePlayBadgeAria}}"
+                  >
+                    <svg
+                      class="ox-store-badge__icon ox-store-badge__icon--play"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 28 28"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path fill="#00D9FF" d="M3 4.5v19l11-9.7L3 4.5z" />
+                      <path fill="#00F076" d="M15.4 14.3 25 20.8c.6-.4 1-1 1-1.8V9c0-.7-.4-1.4-1-1.8l-9.6 6.1z" />
+                      <path fill="#FFCE00" d="M15.4 13.7 25 7.2c-.6-.4-1.3-.6-2-.4L3 4.5l12.4 9.2z" />
+                      <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">{{t:ox.googlePlayBadgeKicker}}</span>
+                      <span class="ox-store-badge__name">Google Play</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="ox-hero-visual">
+              <div class="ox-hero-frame ox-hero-frame--logo">
+                <img
+                  class="ox-hero-logo-img"
+                  src="/goalup-logo.png"
+                  alt="{{t:gu.heroLogoAlt}}"
+                  width="940"
+                  height="940"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="gu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="gu-intro-title">
+          <div class="ox-container ox-app-intro__inner">
+            <div class="ox-app-intro__copy">
+              <p class="ox-section-label">{{t:gu.introLabel}}</p>
+              <h2 id="gu-intro-title" class="ox-app-intro__title">
+                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
+                {{t:gu.introTitle}}
+              </h2>
+              <div class="ox-app-intro__body">{{html:gu.introHtml}}</div>
+              <p class="ox-app-intro__closing">{{t:gu.introClosing}}</p>
+              <p class="ox-app-intro__legal">
+                <a class="ox-app-intro__legal-link" href="privacy/">{{t:ui.privacyPolicyLink}}</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="gu-showcase-scroll"
+          class="ox-section ox-reveal-on-scroll"
+          aria-label="{{t:gu.showcaseCollageAria}}"
+        >
+          <div class="ox-container">
+            <div class="sp-showcase-scroll" tabindex="0">
+              <div class="sp-showcase-scroll__track">
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:gu-showcase-01.png]]"
+                    alt="{{t:gu.imgShot1Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:gu-showcase-02.png]]"
+                    alt="{{t:gu.imgShot2Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:gu-showcase-03.png]]"
+                    alt="{{t:gu.imgShot3Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:gu-showcase-04.png]]"
+                    alt="{{t:gu.imgShot4Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:gu-showcase-05.png]]"
+                    alt="{{t:gu.imgShot5Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:gu-showcase-06.png]]"
+                    alt="{{t:gu.imgShot6Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:gu-showcase-07.png]]"
+                    alt="{{t:gu.imgShot7Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="gu-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="gu-features-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">{{t:gu.featuresLabel}}</p>
+              <h2 id="gu-features-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">🚀</span>
+                {{t:gu.featuresTitle}}
+              </h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔥</span>
+                <h3>{{t:gu.feat1Title}}</h3>
+                <p class="ox-feature-lead">{{t:gu.feat1Lead}}</p>
+                <p class="ox-feature-note">{{t:gu.feat1Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🏆</span>
+                <h3>{{t:gu.feat2Title}}</h3>
+                <p class="ox-feature-lead">{{t:gu.feat2Lead}}</p>
+                <p class="ox-feature-note">{{t:gu.feat2Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔔</span>
+                <h3>{{t:gu.feat3Title}}</h3>
+                <p class="ox-feature-lead">{{t:gu.feat3Lead}}</p>
+                <p class="ox-feature-note">{{t:gu.feat3Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📊</span>
+                <h3>{{t:gu.feat4Title}}</h3>
+                <p class="ox-feature-lead">{{t:gu.feat4Lead}}</p>
+                <p class="ox-feature-note">{{t:gu.feat4Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📈</span>
+                <h3>{{t:gu.feat5Title}}</h3>
+                <p class="ox-feature-lead">{{t:gu.feat5Lead}}</p>
+                <p class="ox-feature-note">{{t:gu.feat5Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
+                <h3>{{t:gu.feat6Title}}</h3>
+                <p class="ox-feature-lead">{{t:gu.feat6Lead}}</p>
+                <p class="ox-feature-note">{{t:gu.feat6Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🎯</span>
+                <h3>{{t:gu.feat7Title}}</h3>
+                <p class="ox-feature-lead">{{t:gu.feat7Lead}}</p>
+                <p class="ox-feature-note">{{t:gu.feat7Note}}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="gu-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="gu-how-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <h2 id="gu-how-title" class="ox-section-title-inline">{{t:gu.howTitle}}</h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <h3>{{t:gu.how1Title}}</h3>
+                <p class="ox-feature-lead">{{t:gu.how1P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:gu.how2Title}}</h3>
+                <p class="ox-feature-lead">{{t:gu.how2P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:gu.how3Title}}</h3>
+                <p class="ox-feature-lead">{{t:gu.how3P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:gu.how4Title}}</h3>
+                <p class="ox-feature-lead">{{t:gu.how4P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:gu.how5Title}}</h3>
+                <p class="ox-feature-lead">{{t:gu.how5P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:gu.how6Title}}</h3>
+                <p class="ox-feature-lead">{{t:gu.how6P}}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="gu-premium"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="gu-premium-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <header class="ox-premium-intro">
+              <p class="ox-section-label">{{t:gu.premiumLabel}}</p>
+              <h2 id="gu-premium-title" class="ox-premium-heading">
+                <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
+                {{t:gu.premiumTitle}}
+              </h2>
+              <p class="ox-premium-tagline">{{html:gu.premiumTagline}}</p>
+            </header>
+
+            <div class="ox-premium-stack">
+              <section class="ox-premium-block" aria-labelledby="gu-premium-features-heading">
+                <h3 id="gu-premium-features-heading" class="ox-premium-block__title">
+                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  {{t:gu.premFeatHeading}}
+                </h3>
+                <div class="ox-premium-grid">
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      {{t:gu.prem1Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:gu.prem1Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:gu.prem1Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      {{t:gu.prem2Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:gu.prem2Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:gu.prem2Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🎯
+                      {{t:gu.prem3Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:gu.prem3Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:gu.prem3Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📈</span>
+                      {{t:gu.prem4Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:gu.prem4Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:gu.prem4Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      {{t:gu.prem5Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:gu.prem5Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:gu.prem5Note}}</p>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="gu-reco" class="ox-section ox-reveal-on-scroll" aria-labelledby="gu-reco-title">
+          <div class="ox-container ox-reco-head">
+            <h2 id="gu-reco-title" class="ox-premium-heading">
+              <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
+              {{t:gu.recoTitle}}
+            </h2>
+            <ul class="co-build-list" style="margin-top: 1rem">
+              <li>{{t:gu.reco1}}</li>
+              <li>{{t:gu.reco2}}</li>
+              <li>{{t:gu.reco3}}</li>
+              <li>{{t:gu.reco4}}</li>
+              <li>{{t:gu.reco5}}</li>
+              <li>{{t:gu.reco6}}</li>
+              <li>{{t:gu.reco7}}</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="gu-closing-highlight"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="gu-closing-highlight-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <div class="ox-premium-highlight">
+              <p class="ox-premium-highlight__kicker">
+                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                {{t:gu.premHiKicker}}
+              </p>
+              <p class="ox-premium-highlight__line" id="gu-closing-highlight-title">
+                {{t:gu.premHiLine}}
+              </p>
+              <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
+                {{t:gu.premHiSub}}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="{{t:gu.closingAria}}">
+          <div class="ox-closing__stack">{{html:gu.closingHtml}}</div>
+        </section>
+      </main>
+      <footer class="ox-footer">
+        <div class="ox-container ox-footer-inner">
+          <div class="footer-legal-links footer-legal-links--ox">
+            <a class="footer-legal" href="privacy/">{{t:footer.privacy}}</a>
+            <span class="footer-legal-sep" aria-hidden="true">·</span>
+            <a class="footer-legal" href="terms/">{{t:footer.terms}}</a>
+          </div>
+          <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="{{t:footer.socialAria}}">
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="mailto:newon@newon.app"
+              aria-label="{{t:ox.footerEmailAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="22,6 12,13 2,6"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="{{html:footer.instagramUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:ox.footerInstagramAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="{{html:footer.youtubeUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:footer.youtubeAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:footer.tiktokAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="ox-footer-meta">{{t:gu.footerRights}} <a href="#" class="js-go-home">{{t:common.newonLink}}</a></p>
+        </div>
+      </footer>
+    </div>
+
+
+    
+
+    <div id="countup-app" class="ox-page site-shell" data-theme="light" hidden>
+      <a class="ox-skip" href="#cu-main">{{t:ox.skip}}</a>
+
+      <header class="ox-header">
+        <div class="ox-container navbar-bar navbar-bar--ox navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub navbar-hub--ox">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="{{t:nav.brandHomeAria}}">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
+              </a>
+              <nav class="ox-nav ox-nav--apps-only" aria-label="{{t:nav.appsAria}}">
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
+              <button
+                type="button"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
+                id="apps-trigger-cu"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="apps-panel-cu"
+                aria-label="{{t:nav.appsAria}}"
+              >
+                <span>{{t:nav.appsLabel}}</span>
+                <span class="apps-flyout__chev" aria-hidden="true"></span>
+              </button>
+              <div
+                id="apps-panel-cu"
+                class="apps-flyout__panel"
+                role="menu"
+                aria-labelledby="apps-trigger-cu"
+                hidden
+              >
+                <a href="#ox-month" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/ox-month-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">OX MONTH</span>
+                    <span class="apps-flyout__desc">{{t:nav.oxDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#subping-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/subping-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SubPing</span>
+                    <span class="apps-flyout__desc">{{t:nav.subpingDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">{{t:nav.pillmateDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#savy-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/savy-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SAVY</span>
+                    <span class="apps-flyout__desc">{{t:nav.savyDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#babylog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">BabyLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.babylogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#petlog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PetLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.petlogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.piggyupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.goalupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a
+                  href="#cu-top"
+                  role="menuitem"
+                  class="apps-flyout__item apps-flyout__item--current"
+                  aria-current="page"
+                >
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.countupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a href="#cu-top" class="navbar-app-showcase" aria-label="{{t:cu.brandAria}}">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/countup-logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">CountUp</span>
+              <span class="navbar-app-showcase__tagline">{{t:nav.countupDesc}}</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--ox navbar-bar__controls--brand-toolbar">
+          <div class="lang-switcher lang-switcher--ox" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-cu">{{t:ui.language}}</label>
+            <select id="lang-select-cu" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
+              <option value="ko">{{t:ui.langKo}}</option>
+              <option value="en">{{t:ui.langEn}}</option>
+              <option value="ja">{{t:ui.langJa}}</option>
+              <option value="es">{{t:ui.langEs}}</option>
+              <option value="pt-br">{{t:ui.langPtBr}}</option>
+              <option value="fr">{{t:ui.langFr}}</option>
+              <option value="de">{{t:ui.langDe}}</option>
+              <option value="hi">{{t:ui.langHi}}</option>
+              <option value="id">{{t:ui.langId}}</option>
+            </select>
+          </div>
+          <div class="ox-header-actions">
+            <button
+              type="button"
+              class="ox-theme-toggle"
+              id="cu-theme"
+              aria-label="{{t:common.themeToLight}}"
+              title="{{t:common.themeToggle}}"
+            >
+              ☀
+            </button>
+            <button
+              type="button"
+              class="ox-nav-toggle"
+              id="cu-nav-toggle"
+              aria-expanded="false"
+              aria-controls="cu-mobile"
+              aria-label="{{t:common.menu}}"
+            >
+              <span></span><span></span>
+            </button>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div id="cu-mobile" class="ox-mobile-menu ox-mobile-menu--apps-only" hidden>
+          <details class="mobile-apps-drawer mobile-apps-drawer--ox">
+            <summary class="mobile-apps-drawer__summary">{{t:ox.mobileSummary}}</summary>
+            <a href="#ox-month" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/ox-month-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">OX MONTH</span>
+                <span class="mobile-apps-drawer__hint">{{t:cu.drawerOx}}</span>
+              </span>
+            </a>
+            <a href="#subping-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/subping-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SubPing</span>
+                <span class="mobile-apps-drawer__hint">{{t:cu.drawerSp}}</span>
+              </span>
+            </a>
+            <a href="#pillmate-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">{{t:cu.drawerPm}}</span>
+              </span>
+            </a>
+            <a href="#savy-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/savy-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SAVY</span>
+                <span class="mobile-apps-drawer__hint">{{t:cu.drawerSv}}</span>
+              </span>
+            </a>
+            <a href="#babylog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/babylog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">BabyLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:cu.drawerBl}}</span>
+              </span>
+            </a>
+            <a href="#petlog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/petlog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PetLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:cu.drawerPl}}</span>
+              </span>
+            </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:cu.drawerPu}}</span>
+              </span>
+            </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:cu.drawerGu}}</span>
+              </span>
+            </a>
+            <a href="#cu-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:cu.drawerCu}}</span>
+              </span>
+            </a>
+          </details>
+        </div>
+      </header>
+
+      <main id="cu-main">
+        <section id="cu-top" class="ox-hero ox-reveal-on-scroll is-visible">
+          <div class="ox-container ox-hero-grid">
+            <div class="ox-hero-copy">
+              <div class="ox-badge-row">
+                <p class="ox-badge">
+                  <span class="ox-badge-dot" aria-hidden="true"></span>
+                  {{t:cu.badge}}
+                </p>
+                <p class="ox-badge ox-badge--secondary">{{t:cu.globalReachBadge}}</p>
+              </div>
+              <h1>{{t:cu.h1}}</h1>
+              <p class="ox-subtitle">{{html:cu.subtitleHtml}}</p>
+              <p class="ox-hero-reach-summary">{{t:cu.heroReachSummary}}</p>
+              <div class="ox-store-release" role="status" aria-live="polite">
+                <p class="ox-store-release__label">{{t:ox.storeReleaseLine}}</p>
+                <div class="ox-store-badges">
+                  <a
+                    class="ox-store-badge ox-store-badge--apple"
+                    href="{{html:cu.appStoreUrl}}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{t:cu.appStoreBadgeAria}}"
+                  >
+                    <svg
+                      class="ox-store-badge__icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                      />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">{{t:ox.appStoreBadgeKicker}}</span>
+                      <span class="ox-store-badge__name">App Store</span>
+                    </span>
+                  </a>
+                  <a
+                    class="ox-store-badge ox-store-badge--google"
+                    href="{{html:cu.googlePlayUrl}}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{t:cu.googlePlayBadgeAria}}"
+                  >
+                    <svg
+                      class="ox-store-badge__icon ox-store-badge__icon--play"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 28 28"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path fill="#00D9FF" d="M3 4.5v19l11-9.7L3 4.5z" />
+                      <path fill="#00F076" d="M15.4 14.3 25 20.8c.6-.4 1-1 1-1.8V9c0-.7-.4-1.4-1-1.8l-9.6 6.1z" />
+                      <path fill="#FFCE00" d="M15.4 13.7 25 7.2c-.6-.4-1.3-.6-2-.4L3 4.5l12.4 9.2z" />
+                      <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">{{t:ox.googlePlayBadgeKicker}}</span>
+                      <span class="ox-store-badge__name">Google Play</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="ox-hero-visual">
+              <div class="ox-hero-frame ox-hero-frame--logo">
+                <img
+                  class="ox-hero-logo-img"
+                  src="/countup-logo.png"
+                  alt="{{t:cu.heroLogoAlt}}"
+                  width="940"
+                  height="940"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="cu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="cu-intro-title">
+          <div class="ox-container ox-app-intro__inner">
+            <div class="ox-app-intro__copy">
+              <p class="ox-section-label">{{t:cu.introLabel}}</p>
+              <h2 id="cu-intro-title" class="ox-app-intro__title">
+                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
+                {{t:cu.introTitle}}
+              </h2>
+              <div class="ox-app-intro__body">{{html:cu.introHtml}}</div>
+              <p class="ox-app-intro__closing">{{t:cu.introClosing}}</p>
+              <p class="ox-app-intro__legal">
+                <a class="ox-app-intro__legal-link" href="privacy/">{{t:ui.privacyPolicyLink}}</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="cu-showcase-scroll"
+          class="ox-section ox-reveal-on-scroll"
+          aria-label="{{t:cu.showcaseCollageAria}}"
+        >
+          <div class="ox-container">
+            <div class="sp-showcase-scroll" tabindex="0">
+              <div class="sp-showcase-scroll__track">
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:cu-showcase-01.png]]"
+                    alt="{{t:cu.imgShot1Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:cu-showcase-02.png]]"
+                    alt="{{t:cu.imgShot2Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:cu-showcase-03.png]]"
+                    alt="{{t:cu.imgShot3Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:cu-showcase-04.png]]"
+                    alt="{{t:cu.imgShot4Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:cu-showcase-05.png]]"
+                    alt="{{t:cu.imgShot5Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="[[IMG:cu-showcase-06.png]]"
+                    alt="{{t:cu.imgShot6Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="cu-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="cu-features-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">{{t:cu.featuresLabel}}</p>
+              <h2 id="cu-features-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">🚀</span>
+                {{t:cu.featuresTitle}}
+              </h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔢</span>
+                <h3>{{t:cu.feat1Title}}</h3>
+                <p class="ox-feature-lead">{{t:cu.feat1Lead}}</p>
+                <p class="ox-feature-note">{{t:cu.feat1Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🎯</span>
+                <h3>{{t:cu.feat2Title}}</h3>
+                <p class="ox-feature-lead">{{t:cu.feat2Lead}}</p>
+                <p class="ox-feature-note">{{t:cu.feat2Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔥</span>
+                <h3>{{t:cu.feat3Title}}</h3>
+                <p class="ox-feature-lead">{{t:cu.feat3Lead}}</p>
+                <p class="ox-feature-note">{{t:cu.feat3Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔔</span>
+                <h3>{{t:cu.feat4Title}}</h3>
+                <p class="ox-feature-lead">{{t:cu.feat4Lead}}</p>
+                <p class="ox-feature-note">{{t:cu.feat4Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📊</span>
+                <h3>{{t:cu.feat5Title}}</h3>
+                <p class="ox-feature-lead">{{t:cu.feat5Lead}}</p>
+                <p class="ox-feature-note">{{t:cu.feat5Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📈</span>
+                <h3>{{t:cu.feat6Title}}</h3>
+                <p class="ox-feature-lead">{{t:cu.feat6Lead}}</p>
+                <p class="ox-feature-note">{{t:cu.feat6Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
+                <h3>{{t:cu.feat7Title}}</h3>
+                <p class="ox-feature-lead">{{t:cu.feat7Lead}}</p>
+                <p class="ox-feature-note">{{t:cu.feat7Note}}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="cu-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="cu-how-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <h2 id="cu-how-title" class="ox-section-title-inline">{{t:cu.howTitle}}</h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <h3>{{t:cu.how1Title}}</h3>
+                <p class="ox-feature-lead">{{t:cu.how1P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:cu.how2Title}}</h3>
+                <p class="ox-feature-lead">{{t:cu.how2P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:cu.how3Title}}</h3>
+                <p class="ox-feature-lead">{{t:cu.how3P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:cu.how4Title}}</h3>
+                <p class="ox-feature-lead">{{t:cu.how4P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:cu.how5Title}}</h3>
+                <p class="ox-feature-lead">{{t:cu.how5P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:cu.how6Title}}</h3>
+                <p class="ox-feature-lead">{{t:cu.how6P}}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="cu-premium"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="cu-premium-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <header class="ox-premium-intro">
+              <p class="ox-section-label">{{t:cu.premiumLabel}}</p>
+              <h2 id="cu-premium-title" class="ox-premium-heading">
+                <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
+                {{t:cu.premiumTitle}}
+              </h2>
+              <p class="ox-premium-tagline">{{html:cu.premiumTagline}}</p>
+            </header>
+
+            <div class="ox-premium-stack">
+              <section class="ox-premium-block" aria-labelledby="cu-premium-features-heading">
+                <h3 id="cu-premium-features-heading" class="ox-premium-block__title">
+                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  {{t:cu.premFeatHeading}}
+                </h3>
+                <div class="ox-premium-grid">
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      {{t:cu.prem1Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:cu.prem1Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:cu.prem1Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      {{t:cu.prem2Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:cu.prem2Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:cu.prem2Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🎯</span>
+                      {{t:cu.prem3Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:cu.prem3Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:cu.prem3Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📈</span>
+                      {{t:cu.prem4Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:cu.prem4Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:cu.prem4Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🧩</span>
+                      {{t:cu.prem5Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:cu.prem5Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:cu.prem5Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      {{t:cu.prem6Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:cu.prem6Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:cu.prem6Note}}</p>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="cu-reco" class="ox-section ox-reveal-on-scroll" aria-labelledby="cu-reco-title">
+          <div class="ox-container ox-reco-head">
+            <h2 id="cu-reco-title" class="ox-premium-heading">
+              <span class="ox-premium-heading__spark" aria-hidden="true">🔢</span>
+              {{t:cu.recoTitle}}
+            </h2>
+            <ul class="co-build-list" style="margin-top: 1rem">
+              <li>{{t:cu.reco1}}</li>
+              <li>{{t:cu.reco2}}</li>
+              <li>{{t:cu.reco3}}</li>
+              <li>{{t:cu.reco4}}</li>
+              <li>{{t:cu.reco5}}</li>
+              <li>{{t:cu.reco6}}</li>
+              <li>{{t:cu.reco7}}</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="cu-closing-highlight"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="cu-closing-highlight-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <div class="ox-premium-highlight">
+              <p class="ox-premium-highlight__kicker">
+                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                {{t:cu.premHiKicker}}
+              </p>
+              <p class="ox-premium-highlight__line" id="cu-closing-highlight-title">
+                {{t:cu.premHiLine}}
+              </p>
+              <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
+                {{t:cu.premHiSub}}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="{{t:cu.closingAria}}">
+          <div class="ox-closing__stack">{{html:cu.closingHtml}}</div>
+        </section>
+      </main>
+      <footer class="ox-footer">
+        <div class="ox-container ox-footer-inner">
+          <div class="footer-legal-links footer-legal-links--ox">
+            <a class="footer-legal" href="privacy/">{{t:footer.privacy}}</a>
+            <span class="footer-legal-sep" aria-hidden="true">·</span>
+            <a class="footer-legal" href="terms/">{{t:footer.terms}}</a>
+          </div>
+          <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="{{t:footer.socialAria}}">
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="mailto:newon@newon.app"
+              aria-label="{{t:ox.footerEmailAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="22,6 12,13 2,6"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="{{html:footer.instagramUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:ox.footerInstagramAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="{{html:footer.youtubeUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:footer.youtubeAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:footer.tiktokAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="ox-footer-meta">{{t:cu.footerRights}} <a href="#" class="js-go-home">{{t:common.newonLink}}</a></p>
+        </div>
+      </footer>
+    </div>
+
+
+    
+
+    <div id="noting-app" class="ox-page site-shell ox-page--noting" data-theme="light" hidden>
+      <a class="ox-skip" href="#nt-main">{{t:ox.skip}}</a>
+
+      <header class="ox-header">
+        <div class="ox-container navbar-bar navbar-bar--ox navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub navbar-hub--ox">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="{{t:nav.brandHomeAria}}">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
+              </a>
+              <nav class="ox-nav ox-nav--apps-only" aria-label="{{t:nav.appsAria}}">
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
+              <button
+                type="button"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
+                id="apps-trigger-nt"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="apps-panel-nt"
+                aria-label="{{t:nav.appsAria}}"
+              >
+                <span>{{t:nav.appsLabel}}</span>
+                <span class="apps-flyout__chev" aria-hidden="true"></span>
+              </button>
+              <div
+                id="apps-panel-nt"
+                class="apps-flyout__panel"
+                role="menu"
+                aria-labelledby="apps-trigger-nt"
+                hidden
+              >
+                <a href="#ox-month" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/ox-month-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">OX MONTH</span>
+                    <span class="apps-flyout__desc">{{t:nav.oxDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#subping-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/subping-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SubPing</span>
+                    <span class="apps-flyout__desc">{{t:nav.subpingDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">{{t:nav.pillmateDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#savy-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/savy-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SAVY</span>
+                    <span class="apps-flyout__desc">{{t:nav.savyDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#babylog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">BabyLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.babylogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#petlog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PetLog</span>
+                    <span class="apps-flyout__desc">{{t:nav.petlogDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.piggyupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a
+                  href="#nt-top"
+                  role="menuitem"
+                  class="apps-flyout__item apps-flyout__item--current"
+                  aria-current="page"
+                >
+                  <span class="apps-flyout__icon">
+                    <img src="/noting-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Noting</span>
+                    <span class="apps-flyout__desc">{{t:nav.notingDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a href="#nt-top" class="navbar-app-showcase" aria-label="{{t:nt.brandAria}}">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/noting-logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">Noting</span>
+              <span class="navbar-app-showcase__tagline">{{t:nav.notingDesc}}</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--ox navbar-bar__controls--brand-toolbar">
+          <div class="lang-switcher lang-switcher--ox" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-nt">{{t:ui.language}}</label>
+            <select id="lang-select-nt" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
+              <option value="ko">{{t:ui.langKo}}</option>
+              <option value="en">{{t:ui.langEn}}</option>
+              <option value="ja">{{t:ui.langJa}}</option>
+              <option value="es">{{t:ui.langEs}}</option>
+              <option value="pt-br">{{t:ui.langPtBr}}</option>
+              <option value="fr">{{t:ui.langFr}}</option>
+              <option value="de">{{t:ui.langDe}}</option>
+              <option value="hi">{{t:ui.langHi}}</option>
+              <option value="id">{{t:ui.langId}}</option>
+            </select>
+          </div>
+          <div class="ox-header-actions">
+            <button
+              type="button"
+              class="ox-theme-toggle"
+              id="nt-theme"
+              aria-label="{{t:common.themeToLight}}"
+              title="{{t:common.themeToggle}}"
+            >
+              ☀
+            </button>
+            <button
+              type="button"
+              class="ox-nav-toggle"
+              id="nt-nav-toggle"
+              aria-expanded="false"
+              aria-controls="nt-mobile"
+              aria-label="{{t:common.menu}}"
+            >
+              <span></span><span></span>
+            </button>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div id="nt-mobile" class="ox-mobile-menu ox-mobile-menu--apps-only" hidden>
+          <details class="mobile-apps-drawer mobile-apps-drawer--ox">
+            <summary class="mobile-apps-drawer__summary">{{t:ox.mobileSummary}}</summary>
+            <a href="#ox-month" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/ox-month-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">OX MONTH</span>
+                <span class="mobile-apps-drawer__hint">{{t:nt.drawerOx}}</span>
+              </span>
+            </a>
+            <a href="#subping-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/subping-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SubPing</span>
+                <span class="mobile-apps-drawer__hint">{{t:nt.drawerSp}}</span>
+              </span>
+            </a>
+            <a href="#pillmate-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">{{t:nt.drawerPm}}</span>
+              </span>
+            </a>
+            <a href="#savy-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/savy-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SAVY</span>
+                <span class="mobile-apps-drawer__hint">{{t:nt.drawerSv}}</span>
+              </span>
+            </a>
+            <a href="#babylog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/babylog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">BabyLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:nt.drawerBl}}</span>
+              </span>
+            </a>
+            <a href="#petlog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/petlog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PetLog</span>
+                <span class="mobile-apps-drawer__hint">{{t:nt.drawerPl}}</span>
+              </span>
+            </a>
+            <a href="#nt-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/noting-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Noting</span>
+                <span class="mobile-apps-drawer__hint">{{t:nt.drawerNt}}</span>
+              </span>
+            </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nt.drawerPu}}</span>
+              </span>
+            </a>
+          </details>
+        </div>
+      </header>
+
+      <main id="nt-main">
+        <section id="nt-top" class="ox-hero ox-reveal-on-scroll is-visible">
+          <div class="ox-container ox-hero-grid">
+            <div class="ox-hero-copy">
+              <div class="ox-badge-row">
+                <p class="ox-badge">
+                  <span class="ox-badge-dot" aria-hidden="true"></span>
+                  {{t:nt.badge}}
+                </p>
+                <p class="ox-badge ox-badge--secondary">{{t:nt.globalReachBadge}}</p>
+              </div>
+              <h1>{{t:nt.h1}}</h1>
+              <p class="ox-subtitle">{{html:nt.subtitleHtml}}</p>
+              <p class="ox-hero-reach-summary">{{t:nt.heroReachSummary}}</p>
+                            <div class="ox-store-release" role="status" aria-live="polite">
+                <p class="ox-store-release__label">{{t:nt.webReleaseLabel}}</p>
+                <div class="ox-web-cta-wrap">
+                  <a
+                    class="ox-web-cta btn btn-primary"
+                    href="{{html:nt.webUrl}}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{t:nt.webCtaAria}}"
+                  >{{t:nt.webCtaBtn}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="ox-hero-visual">
+              <div class="ox-hero-frame ox-hero-frame--logo">
+                <img
+                  class="ox-hero-logo-img"
+                  src="/noting-logo.png"
+                  alt="{{t:nt.heroLogoAlt}}"
+                  width="940"
+                  height="940"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="nt-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="nt-intro-title">
+          <div class="ox-container ox-app-intro__inner">
+            <div class="ox-app-intro__copy">
+              <p class="ox-section-label">{{t:nt.introLabel}}</p>
+              <h2 id="nt-intro-title" class="ox-app-intro__title">
+                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
+                {{t:nt.introTitle}}
+              </h2>
+              <div class="ox-app-intro__body">{{html:nt.introHtml}}</div>
+              <p class="ox-app-intro__closing">{{t:nt.introClosing}}</p>
+              <p class="ox-app-intro__legal">
+                <a class="ox-app-intro__legal-link" href="privacy/">{{t:ui.privacyPolicyLink}}</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="nt-showcase-scroll"
+          class="ox-section ox-reveal-on-scroll"
+          aria-label="{{t:nt.showcaseCollageAria}}"
+        >
+          <div class="ox-container">
+            <div class="sp-showcase-scroll" tabindex="0">
+              <div class="sp-showcase-scroll__track">
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/noting-logo.png"
+                    alt="{{t:nt.imgShot1Alt}}"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/noting-logo.png"
+                    alt="{{t:nt.imgShot2Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/noting-logo.png"
+                    alt="{{t:nt.imgShot3Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/noting-logo.png"
+                    alt="{{t:nt.imgShot4Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/noting-logo.png"
+                    alt="{{t:nt.imgShot5Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/noting-logo.png"
+                    alt="{{t:nt.imgShot6Alt}}"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="nt-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="nt-features-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">{{t:nt.featuresLabel}}</p>
+              <h2 id="nt-features-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">🚀</span>
+                {{t:nt.featuresTitle}}
+              </h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📖</span>
+                <h3>{{t:nt.feat1Title}}</h3>
+                <p class="ox-feature-lead">{{t:nt.feat1Lead}}</p>
+                <p class="ox-feature-note">{{t:nt.feat1Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📚</span>
+                <h3>{{t:nt.feat2Title}}</h3>
+                <p class="ox-feature-lead">{{t:nt.feat2Lead}}</p>
+                <p class="ox-feature-note">{{t:nt.feat2Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🏷️</span>
+                <h3>{{t:nt.feat3Title}}</h3>
+                <p class="ox-feature-lead">{{t:nt.feat3Lead}}</p>
+                <p class="ox-feature-note">{{t:nt.feat3Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔍</span>
+                <h3>{{t:nt.feat4Title}}</h3>
+                <p class="ox-feature-lead">{{t:nt.feat4Lead}}</p>
+                <p class="ox-feature-note">{{t:nt.feat4Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">✍️</span>
+                <h3>{{t:nt.feat5Title}}</h3>
+                <p class="ox-feature-lead">{{t:nt.feat5Lead}}</p>
+                <p class="ox-feature-note">{{t:nt.feat5Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🎨</span>
+                <h3>{{t:nt.feat6Title}}</h3>
+                <p class="ox-feature-lead">{{t:nt.feat6Lead}}</p>
+                <p class="ox-feature-note">{{t:nt.feat6Note}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">✨</span>
+                <h3>{{t:nt.feat7Title}}</h3>
+                <p class="ox-feature-lead">{{t:nt.feat7Lead}}</p>
+                <p class="ox-feature-note">{{t:nt.feat7Note}}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="nt-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="nt-how-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <h2 id="nt-how-title" class="ox-section-title-inline">{{t:nt.howTitle}}</h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <h3>{{t:nt.how1Title}}</h3>
+                <p class="ox-feature-lead">{{t:nt.how1P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:nt.how2Title}}</h3>
+                <p class="ox-feature-lead">{{t:nt.how2P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:nt.how3Title}}</h3>
+                <p class="ox-feature-lead">{{t:nt.how3P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:nt.how4Title}}</h3>
+                <p class="ox-feature-lead">{{t:nt.how4P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:nt.how5Title}}</h3>
+                <p class="ox-feature-lead">{{t:nt.how5P}}</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>{{t:nt.how6Title}}</h3>
+                <p class="ox-feature-lead">{{t:nt.how6P}}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="nt-premium"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="nt-premium-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <header class="ox-premium-intro">
+              <p class="ox-section-label">{{t:nt.premiumLabel}}</p>
+              <h2 id="nt-premium-title" class="ox-premium-heading">
+                <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
+                {{t:nt.premiumTitle}}
+              </h2>
+              <p class="ox-premium-tagline">{{html:nt.premiumTagline}}</p>
+            </header>
+
+            <div class="ox-premium-stack">
+              <section class="ox-premium-block" aria-labelledby="nt-premium-features-heading">
+                <h3 id="nt-premium-features-heading" class="ox-premium-block__title">
+                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  {{t:nt.premFeatHeading}}
+                </h3>
+                <div class="ox-premium-grid">
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      {{t:nt.prem1Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:nt.prem1Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:nt.prem1Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      {{t:nt.prem2Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:nt.prem2Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:nt.prem2Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
+                      {{t:nt.prem3Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:nt.prem3Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:nt.prem3Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📈</span>
+                      {{t:nt.prem4Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:nt.prem4Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:nt.prem4Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      {{t:nt.prem5Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:nt.prem5Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:nt.prem5Note}}</p>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="nt-reco" class="ox-section ox-reveal-on-scroll" aria-labelledby="nt-reco-title">
+          <div class="ox-container ox-reco-head">
+            <h2 id="nt-reco-title" class="ox-premium-heading">
+              <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
+              {{t:nt.recoTitle}}
+            </h2>
+            <ul class="co-build-list" style="margin-top: 1rem">
+              <li>{{t:nt.reco1}}</li>
+              <li>{{t:nt.reco2}}</li>
+              <li>{{t:nt.reco3}}</li>
+              <li>{{t:nt.reco4}}</li>
+              <li>{{t:nt.reco5}}</li>
+              <li>{{t:nt.reco6}}</li>
+              <li>{{t:nt.reco7}}</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="nt-closing-highlight"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="nt-closing-highlight-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <div class="ox-premium-highlight">
+              <p class="ox-premium-highlight__kicker">
+                <span class="ox-premium-emoji" aria-hidden="true">📚</span>
+                {{t:nt.premHiKicker}}
+              </p>
+              <p class="ox-premium-highlight__line" id="nt-closing-highlight-title">
+                {{t:nt.premHiLine}}
+              </p>
+              <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
+                {{t:nt.premHiSub}}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="{{t:nt.closingAria}}">
+          <div class="ox-closing__stack">{{html:nt.closingHtml}}</div>
+          <p class="ox-closing__cta">
+            <a
+              class="ox-web-cta btn btn-primary"
+              href="{{html:nt.webUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >{{t:nt.closingCtaBtn}}</a>
+          </p>
+        </section>
+      </main>
+      <footer class="ox-footer">
+        <div class="ox-container ox-footer-inner">
+          <div class="footer-legal-links footer-legal-links--ox">
+            <a class="footer-legal" href="privacy/">{{t:footer.privacy}}</a>
+            <span class="footer-legal-sep" aria-hidden="true">·</span>
+            <a class="footer-legal" href="terms/">{{t:footer.terms}}</a>
+          </div>
+          <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="{{t:footer.socialAria}}">
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="mailto:newon@newon.app"
+              aria-label="{{t:ox.footerEmailAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="22,6 12,13 2,6"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="{{html:footer.instagramUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:ox.footerInstagramAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="{{html:footer.youtubeUrl}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:footer.youtubeAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{t:footer.tiktokAria}}"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="ox-footer-meta">{{t:nt.footerRights}} <a href="#" class="js-go-home">{{t:common.newonLink}}</a></p>
+        </div>
+      </footer>
+    </div>
+
+
+    
+
     <div id="subping-app" class="ox-page site-shell" data-theme="light" hidden>
       <a class="ox-skip" href="#sp-main">{{t:sp.skip}}</a>
 
@@ -5039,6 +7631,26 @@
                   <span class="apps-flyout__meta">
                     <span class="apps-flyout__name">PiggyUp</span>
                     <span class="apps-flyout__desc">{{t:nav.piggyupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.goalupDesc}}</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">{{t:nav.countupDesc}}</span>
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
@@ -5162,6 +7774,24 @@
                 <span class="mobile-apps-drawer__hint">{{t:nav.mobilePiggyupHint}}</span>
               </span>
             </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileGoalupHint}}</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">{{t:nav.mobileCountupHint}}</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -5175,7 +7805,6 @@
                   <span class="ox-badge-dot" aria-hidden="true"></span>
                   {{t:sp.badge}}
                 </p>
-                <p class="ox-badge ox-badge--secondary">{{t:ox.globalReachBadge}}</p>
               </div>
               <h1>{{t:sp.h1}}</h1>
               <p class="ox-subtitle">{{html:sp.subtitle}}</p>
@@ -5185,10 +7814,10 @@
                 <div class="ox-store-badges">
                   <a
                     class="ox-store-badge ox-store-badge--apple"
-                    href="{{html:ox.appStoreUrl}}"
+                    href="{{html:sp.appStoreUrl}}"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="{{t:ox.appStoreBadgeAria}}"
+                    aria-label="{{t:sp.appStoreBadgeAria}}"
                   >
                     <svg
                       class="ox-store-badge__icon"
@@ -5211,10 +7840,10 @@
                   </a>
                   <a
                     class="ox-store-badge ox-store-badge--google"
-                    href="{{html:ox.googlePlayUrl}}"
+                    href="{{html:sp.googlePlayUrl}}"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="{{t:ox.googlePlayBadgeAria}}"
+                    aria-label="{{t:sp.googlePlayBadgeAria}}"
                   >
                     <svg
                       class="ox-store-badge__icon ox-store-badge__icon--play"
@@ -5631,6 +8260,9 @@
         var TITLE_BABYLOG = {{js:meta.titleBabylog}};
         var TITLE_PETLOG = {{js:meta.titlePetlog}};
         var TITLE_PIGGYUP = {{js:meta.titlePiggyup}};
+        var TITLE_NOTING = {{js:meta.titleNoting}};
+        var TITLE_GOALUP = {{js:meta.titleGoalup}};
+        var TITLE_COUNTUP = {{js:meta.titleCountup}};
         var LABEL_MENU_OPEN = {{js:common.menuOpen}};
         var LABEL_MENU_CLOSE = {{js:common.menuClose}};
         var LABEL_THEME_LIGHT = {{js:common.themeToLight}};
@@ -5643,6 +8275,9 @@
         var elBl = document.getElementById("babylog-app");
         var elPl = document.getElementById("petlog-app");
         var elPu = document.getElementById("piggyup-app");
+        var elNt = document.getElementById("noting-app");
+        var elGu = document.getElementById("goalup-app");
+        var elCu = document.getElementById("countup-app");
         var themeKey = "ox-month-theme";
         var themeKeySp = "subping-app-theme";
         var themeKeyPm = "pillmate-app-theme";
@@ -5650,6 +8285,9 @@
         var themeKeyBl = "babylog-app-theme";
         var themeKeyPl = "petlog-app-theme";
         var themeKeyPu = "piggyup-app-theme";
+        var themeKeyNt = "noting-app-theme";
+        var themeKeyGu = "goalup-app-theme";
+        var themeKeyCu = "countup-app-theme";
         /** 하나로 저장: 어느 앱에서 바꿔도 전 앱 설명 화면에 동일 테마 적용 */
         var themeKeyUnified = "newon-app-theme";
         function bindNavbarScrollFade() {
@@ -5795,6 +8433,67 @@
           });
         }
 
+
+
+        function staggerGuReveals() {
+          if (!elGu) return;
+          requestAnimationFrame(function () {
+            var reds = elGu.querySelectorAll(".ox-reveal-on-scroll:not(.is-visible)");
+            if (!reds.length) return;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              reds.forEach(function (el) {
+                el.classList.add("is-visible");
+              });
+            } else {
+              reds.forEach(function (el, i) {
+                setTimeout(function () {
+                  el.classList.add("is-visible");
+                }, 50 + i * 75);
+              });
+            }
+          });
+        }
+
+
+        function staggerCuReveals() {
+          if (!elCu) return;
+          requestAnimationFrame(function () {
+            var reds = elCu.querySelectorAll(".ox-reveal-on-scroll:not(.is-visible)");
+            if (!reds.length) return;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              reds.forEach(function (el) {
+                el.classList.add("is-visible");
+              });
+            } else {
+              reds.forEach(function (el, i) {
+                setTimeout(function () {
+                  el.classList.add("is-visible");
+                }, 50 + i * 75);
+              });
+            }
+          });
+        }
+
+
+        function staggerNtReveals() {
+          if (!elNt) return;
+          requestAnimationFrame(function () {
+            var reds = elNt.querySelectorAll(".ox-reveal-on-scroll:not(.is-visible)");
+            if (!reds.length) return;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              reds.forEach(function (el) {
+                el.classList.add("is-visible");
+              });
+            } else {
+              reds.forEach(function (el, i) {
+                setTimeout(function () {
+                  el.classList.add("is-visible");
+                }, 50 + i * 75);
+              });
+            }
+          });
+        }
+
         function closeMobileMenus() {
           var t = document.querySelector(".nav-toggle");
           var m = document.getElementById("mobile-nav");
@@ -5905,6 +8604,30 @@
           btn.textContent = dark ? "☀" : "🌙";
         }
 
+        function syncNtThemeButton() {
+          var btn = document.getElementById("nt-theme");
+          if (!btn || !elNt) return;
+          var dark = elNt.getAttribute("data-theme") === "dark";
+          btn.setAttribute("aria-label", dark ? LABEL_THEME_LIGHT : LABEL_THEME_DARK);
+          btn.textContent = dark ? "☀" : "🌙";
+        }
+
+        function syncGuThemeButton() {
+          var btn = document.getElementById("gu-theme");
+          if (!btn || !elGu) return;
+          var dark = elGu.getAttribute("data-theme") === "dark";
+          btn.setAttribute("aria-label", dark ? LABEL_THEME_LIGHT : LABEL_THEME_DARK);
+          btn.textContent = dark ? "☀" : "🌙";
+        }
+
+        function syncCuThemeButton() {
+          var btn = document.getElementById("cu-theme");
+          if (!btn || !elCu) return;
+          var dark = elCu.getAttribute("data-theme") === "dark";
+          btn.setAttribute("aria-label", dark ? LABEL_THEME_LIGHT : LABEL_THEME_DARK);
+          btn.textContent = dark ? "☀" : "🌙";
+        }
+
         function getSystemThemePreference() {
           try {
             if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -5925,7 +8648,7 @@
           } catch (e) {}
 
           try {
-            var keys = [themeKey, themeKeySp, themeKeyPm, themeKeySv, themeKeyBl, themeKeyPl, themeKeyPu];
+            var keys = [themeKey, themeKeySp, themeKeyPm, themeKeySv, themeKeyBl, themeKeyPl, themeKeyPu, themeKeyGu, themeKeyCu];
             var vals = [];
             var i;
             var j;
@@ -5988,6 +8711,9 @@
           if (elBl) elBl.setAttribute("data-theme", theme);
           if (elPl) elPl.setAttribute("data-theme", theme);
           if (elPu) elPu.setAttribute("data-theme", theme);
+          if (elNt) elNt.setAttribute("data-theme", theme);
+          if (elGu) elGu.setAttribute("data-theme", theme);
+          if (elCu) elCu.setAttribute("data-theme", theme);
         }
 
         function syncAllAppThemeButtons() {
@@ -5998,6 +8724,8 @@
           syncBlThemeButton();
           syncPlThemeButton();
           syncPuThemeButton();
+          syncGuThemeButton();
+          syncCuThemeButton();
         }
 
         function applyThemesFromStorage() {
@@ -6023,6 +8751,9 @@
             localStorage.removeItem(themeKeyBl);
             localStorage.removeItem(themeKeyPl);
             localStorage.removeItem(themeKeyPu);
+            localStorage.removeItem(themeKeyNt);
+            localStorage.removeItem(themeKeyGu);
+            localStorage.removeItem(themeKeyCu);
           } catch (e) {}
           setAllAppRootsTheme(theme);
           syncAllAppThemeButtons();
@@ -6040,6 +8771,9 @@
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
           if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
           document.title = options.title != null ? options.title : TITLE_HOME;
           closeMobileMenus();
           elOx.querySelectorAll(".ox-reveal-on-scroll").forEach(function (el) {
@@ -6108,9 +8842,9 @@
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
           if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
           document.title = TITLE_OX;
           closeMobileMenus();
           requestAnimationFrame(function () {
@@ -6128,9 +8862,9 @@
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
           if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
           document.title = TITLE_SP;
           closeMobileMenus();
           requestAnimationFrame(function () {
@@ -6152,9 +8886,9 @@
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
           if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
           document.title = TITLE_PILLMATE;
           closeMobileMenus();
           requestAnimationFrame(function () {
@@ -6175,9 +8909,9 @@
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
           if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
           elSv.hidden = false;
           document.title = TITLE_SAVY;
           closeMobileMenus();
@@ -6199,9 +8933,9 @@
           if (elSv) elSv.hidden = true;
           if (elPl) elPl.hidden = true;
           if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
           elBl.hidden = false;
           document.title = TITLE_BABYLOG;
           closeMobileMenus();
@@ -6243,12 +8977,87 @@
           if (elSv) elSv.hidden = true;
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
           elPu.hidden = false;
           document.title = TITLE_PIGGYUP;
           closeMobileMenus();
           requestAnimationFrame(function () {
             window.scrollTo(0, 0);
             staggerPuReveals();
+          });
+        }
+
+        function showGoalup() {
+          if (!elGu) {
+            showHome();
+            return;
+          }
+          elHome.hidden = true;
+          elOx.hidden = true;
+          elSp.hidden = true;
+          if (elPm) elPm.hidden = true;
+          if (elSv) elSv.hidden = true;
+          if (elBl) elBl.hidden = true;
+          if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elCu) elCu.hidden = true;
+          elGu.hidden = false;
+          document.title = TITLE_GOALUP;
+          closeMobileMenus();
+          requestAnimationFrame(function () {
+            window.scrollTo(0, 0);
+            staggerGuReveals();
+          });
+        }
+
+        function showCountup() {
+          if (!elCu) {
+            showHome();
+            return;
+          }
+          elHome.hidden = true;
+          elOx.hidden = true;
+          elSp.hidden = true;
+          if (elPm) elPm.hidden = true;
+          if (elSv) elSv.hidden = true;
+          if (elBl) elBl.hidden = true;
+          if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elGu) elGu.hidden = true;
+          elCu.hidden = false;
+          document.title = TITLE_COUNTUP;
+          closeMobileMenus();
+          requestAnimationFrame(function () {
+            window.scrollTo(0, 0);
+            staggerCuReveals();
+          });
+        }
+
+
+        function showNoting() {
+          if (!elNt) {
+            showHome();
+            return;
+          }
+          elHome.hidden = true;
+          elOx.hidden = true;
+          elSp.hidden = true;
+          if (elPm) elPm.hidden = true;
+          if (elSv) elSv.hidden = true;
+          if (elBl) elBl.hidden = true;
+          if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
+          elNt.hidden = false;
+          document.title = TITLE_NOTING;
+          closeMobileMenus();
+          requestAnimationFrame(function () {
+            window.scrollTo(0, 0);
+            staggerNtReveals();
           });
         }
 
@@ -6268,6 +9077,12 @@
             showPetlog();
           } else if (h === "#piggyup-app" || h === "#piggyup") {
             showPiggyup();
+          } else if (h === "#goalup-app" || h === "#goalup") {
+            showGoalup();
+          } else if (h === "#countup-app" || h === "#countup") {
+            showCountup();
+          } else if (h === "#noting-app" || h === "#noting") {
+            showNoting();
           } else {
             showHome();
           }
@@ -6491,6 +9306,7 @@
             });
           });
         }
+
 
         function closeAllAppFlyouts() {
           document.querySelectorAll("[data-apps-flyout] .apps-flyout__trigger").forEach(function (b) {

@@ -8,7 +8,7 @@
   "mobilePillmateHint": "Ver Pillmate",
   "badge": "Assinaturas · contas recorrentes · visão do gasto",
   "subtitle": "Veja o dinheiro que sai todo mês num relance",
-  "heroReachSummary": "Um app de assinaturas e contas recorrentes para todo mundo. Disponível em 173 países e 13 idiomas, incluindo coreano, inglês e japonês.",
+  "heroReachSummary": "Organize assinaturas e contas recorrentes—de streaming a aluguel—e acompanhe o gasto do mês e as próximas cobranças.",
   "h1": "SubPing",
   "heroLogoAlt": "Logotipo SubPing",
   "showcaseCollageAria": "Sete telas do SubPing. Role na horizontal para ver todas.",
@@ -70,5 +70,9 @@
   "closingHiKicker": "Em uma linha",
   "closingHiLine": "Gerencie assinaturas — e guarde mais dinheiro.",
   "closingFoot": "Quando o gasto fica visível, a carteira muda.",
+  "appStoreUrl": "https://newon.app",
+  "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.subping&pcampaignid=web_share",
+  "appStoreBadgeAria": "SubPing na App Store (nova aba)",
+  "googlePlayBadgeAria": "SubPing no Google Play (nova aba)",
   "footerRights": "© SubPing ·"
 }

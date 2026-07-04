@@ -4,6 +4,7 @@
   "scripts": {
     "validate:sp": "node scripts/validate-sp-locales.mjs",
     "validate:locales": "node scripts/check-locales.mjs",
+    "translate:locales": "node scripts/run-all-locale-patches.mjs --translate",
     "sync:locales-en": "node scripts/sync-locale-fallback-from-en.mjs",
     "merge:sp": "node scripts/merge-subping-locales.mjs",
     "올리기": "bash -c 'git add -A && (git diff --cached --quiet || git commit -m \"Site update\") && git push origin main'",
@@ -18,10 +19,15 @@
     "open:cursor": "node scripts/open-simple-browser.mjs",
     "open:newon": "node scripts/open-simple-browser.mjs \"https://newon.app/ko/\"",
     "open:pillmate": "node scripts/open-simple-browser.mjs \"https://newon.app/ko/#pillmate-app\"",
+    "open:ox-month": "node scripts/open-simple-browser.mjs /ko/#ox-month",
+    "open:subping": "node scripts/open-simple-browser.mjs /ko/#subping-app",
     "pack:upload": "node scripts/prepare-manual-upload.mjs",
     "묶기": "node scripts/prepare-manual-upload.mjs",
     "pack:pages": "node scripts/zip-publish.mjs",
     "ship": "node scripts/publish-site.mjs && bash scripts/push-to-github.sh",
     "push:first": "bash first-time-push.sh"
+  },
+  "devDependencies": {
+    "@vitalets/google-translate-api": "^9.2.1"
   }
 }

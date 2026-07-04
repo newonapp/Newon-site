@@ -8,7 +8,7 @@
   "mobilePillmateHint": "Open Pillmate intro",
   "badge": "Subscriptions · recurring bills · spending insights",
   "subtitle": "See the money that leaves every month at a glance.",
-  "heroReachSummary": "A subscription and recurring-bill app for people everywhere. Available in 173 countries and 13 languages including Korean, English, and Japanese.",
+  "heroReachSummary": "Track every subscription and recurring bill in one place—see this month's spend and upcoming payments without missing a due date.",
   "h1": "SubPing",
   "heroLogoAlt": "SubPing logo",
   "showcaseCollageAria": "SubPing app screenshots — seven screens. Scroll horizontally to view all.",
@@ -70,5 +70,9 @@
   "closingHiKicker": "In one line",
   "closingHiLine": "Manage subscriptions—and keep more money.",
   "closingFoot": "When spending is visible, your wallet changes.",
+  "appStoreUrl": "https://newon.app",
+  "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.subping&pcampaignid=web_share",
+  "appStoreBadgeAria": "SubPing on the App Store (opens in a new tab)",
+  "googlePlayBadgeAria": "SubPing on Google Play (opens in a new tab)",
   "footerRights": "© SubPing ·"
 }

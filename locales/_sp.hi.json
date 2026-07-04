@@ -8,7 +8,7 @@
   "mobilePillmateHint": "Pillmate देखें",
   "badge": "सब्सक्रिप्शन · नियमित बिल · खर्च की समझ",
   "subtitle": "हर महीने निकलने वाले पैसे को एक नज़र में देखें",
-  "heroReachSummary": "दुनिया भर के उपयोगकर्ताओं के लिए सब्सक्रिप्शन और नियमित भुगतान ऐप। 173 देशों में उपलब्ध और 13 भाषाओं में, जिनमें कोरियाई, अंग्रेज़ी और जापानी शामिल हैं।",
+  "heroReachSummary": "Netflix से लीज़ तक—सभी सब्सक्रिप्शन और नियमित बिल एक जगह; इस महीने का खर्च और अगली तारीखें न चूकें।",
   "h1": "SubPing",
   "heroLogoAlt": "SubPing लोगो",
   "showcaseCollageAria": "SubPing की सात स्क्रीन। सभी देखने के लिए क्षैतिज स्क्रॉल करें।",
@@ -70,5 +70,9 @@
   "closingHiKicker": "एक पंक्ति में",
   "closingHiLine": "सब्सक्रिप्शन प्रबंधित करें — और ज़्यादा पैसा बचाएँ।",
   "closingFoot": "जब खर्च दिखाई देता है, बटुआ बदल जाता है।",
+  "appStoreUrl": "https://newon.app",
+  "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.subping&pcampaignid=web_share",
+  "appStoreBadgeAria": "App Store पर SubPing (नया टैब)",
+  "googlePlayBadgeAria": "Google Play पर SubPing (नया टैब)",
   "footerRights": "© SubPing ·"
 }

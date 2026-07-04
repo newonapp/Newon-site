@@ -8,7 +8,7 @@
   "mobilePillmateHint": "Pillmate の紹介を見る",
   "badge": "サブスク管理 · 定期支払い · 支出の洞察",
   "subtitle": "毎月出ていくお金を、一目で把握",
-  "heroReachSummary": "世界中のユーザー向けのサブスク・定期支払い管理アプリ。173の国・地域で提供し、韓国語・英語・日本語を含む13言語に対応しています。",
+  "heroReachSummary": "Netflixや通信費・保険まで、すべての定期支払いを一か所で整理。今月の支出と次の決済日程を見逃さないサブスク管理アプリです。",
   "h1": "SubPing",
   "heroLogoAlt": "SubPingロゴ",
   "showcaseCollageAria": "SubPingの画面例7枚。左右にスクロールしてすべて表示できます",
@@ -70,5 +70,9 @@
   "closingHiKicker": "ひとつにまとめたメッセージ",
   "closingHiLine": "サブスクを管理すれば、お金が残る。",
   "closingFoot": "支出が見えると、財布が変わる。",
+  "appStoreUrl": "https://newon.app",
+  "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.subping&pcampaignid=web_share",
+  "appStoreBadgeAria": "App StoreでSubPing（新しいタブ）",
+  "googlePlayBadgeAria": "Google PlayでSubPing（新しいタブ）",
   "footerRights": "© SubPing ·"
 }

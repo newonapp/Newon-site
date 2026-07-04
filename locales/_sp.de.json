@@ -8,7 +8,7 @@
   "mobilePillmateHint": "Pillmate ansehen",
   "badge": "Abos · Daueraufträge · Ausgabenüberblick",
   "subtitle": "Sehen Sie auf einen Blick, wohin jeden Monat Geld fließt",
-  "heroReachSummary": "Eine Abo- und Dauerauftrags-App für Nutzer weltweit. In 173 Ländern verfügbar und in 13 Sprachen, darunter Koreanisch, Englisch und Japanisch.",
+  "heroReachSummary": "Abos und wiederkehrende Rechnungen an einem Ort—Streaming, Miete, Versicherung: Monatsausgaben und Termine im Blick.",
   "h1": "SubPing",
   "heroLogoAlt": "SubPing-Logo",
   "showcaseCollageAria": "Sieben SubPing-Screens. Horizontal scrollen, um alle zu sehen.",
@@ -70,5 +70,9 @@
   "closingHiKicker": "In einem Satz",
   "closingHiLine": "Abos im Griff — und mehr Geld behalten.",
   "closingFoot": "Sichtbare Ausgaben verändern die Geldbörse.",
+  "appStoreUrl": "https://newon.app",
+  "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.subping&pcampaignid=web_share",
+  "appStoreBadgeAria": "SubPing im App Store (neuer Tab)",
+  "googlePlayBadgeAria": "SubPing bei Google Play (neuer Tab)",
   "footerRights": "© SubPing ·"
 }

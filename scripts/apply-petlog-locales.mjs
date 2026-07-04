@@ -70,7 +70,14 @@ applyFull("pt-br.json", plPtBr, NAV_PT_BR);
 
 const other = ["fr.json", "de.json", "hi.json", "id.json"];
 for (const f of other) {
-  applyFull(f, plEn, NAV_EN);
+  const p = path.join(localesDir, f);
+  const j = JSON.parse(fs.readFileSync(p, "utf8"));
+  j.meta = j.meta || {};
+  j.meta.titlePetlog = NAV_EN.metaTitlePetlog;
+  j.nav = j.nav || {};
+  j.nav.petlogDesc = NAV_EN.petlogDesc;
+  patchHints(j, NAV_EN.mobilePetlogHint);
+  fs.writeFileSync(p, JSON.stringify(j, null, 2) + "\n", "utf8");
 }
 
 console.log("apply-petlog-locales: OK");

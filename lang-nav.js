@@ -24,6 +24,15 @@
     return null;
   }
 
+  function normalizeHref(href) {
+    if (!href) return "/";
+    var out = href.replace(/\/{2,}/g, "/");
+    if (out.length > 1 && out.endsWith("/") && out.indexOf("#") === -1 && out.indexOf("?") === -1) {
+      return out;
+    }
+    return out;
+  }
+
   function build(nextDir) {
     if (LANGS.indexOf(nextDir) === -1) nextDir = "en";
     var h = g.location.hash || "";
@@ -34,18 +43,26 @@
     for (i = 0; i < segs.length; i++) {
       if (LANGS.indexOf(segs[i]) !== -1) {
         segs[i] = nextDir;
-        return "/" + segs.join("/") + "/" + tail;
+        return normalizeHref("/" + segs.join("/") + "/" + tail);
       }
     }
-    if (segs.length === 1 && segs[0] === "privacy") return "/" + nextDir + "/privacy/" + tail;
-    if (segs.length === 1 && segs[0] === "terms") return "/" + nextDir + "/terms/" + tail;
+    if (segs.length === 1 && segs[0] === "privacy") {
+      return normalizeHref("/" + nextDir + "/privacy/" + tail);
+    }
+    if (segs.length === 1 && segs[0] === "terms") {
+      return normalizeHref("/" + nextDir + "/terms/" + tail);
+    }
     if (segs.length >= 2 && segs[0] === "oxmonth" && segs[1] === "delete-account") {
-      return "/" + nextDir + "/oxmonth/delete-account/" + tail;
+      return normalizeHref("/" + nextDir + "/oxmonth/delete-account/" + tail);
     }
     if (segs.length >= 2 && segs[0] === "subping" && segs[1] === "delete-account") {
-      return "/" + nextDir + "/subping/delete-account/" + tail;
+      return normalizeHref("/" + nextDir + "/subping/delete-account/" + tail);
     }
-    return "/" + nextDir + "/" + tail;
+    return normalizeHref("/" + nextDir + "/" + tail);
+  }
+
+  function currentHref() {
+    return g.location.pathname + (g.location.search || "") + (g.location.hash || "");
   }
 
   function applyLangChoice(nextDir) {
@@ -53,7 +70,10 @@
     try {
       g.localStorage.setItem("newon-lang-dir", nextDir);
     } catch (e) {}
-    g.location.href = build(nextDir);
+    var next = build(nextDir);
+    var cur = currentHref();
+    if (normalizeHref(cur) === normalizeHref(next)) return;
+    g.location.assign(next);
   }
 
   function redirectStoredLangPreferred() {
@@ -67,9 +87,7 @@
     var cur = resolveCurrentLangDir();
     if (!cur || cur === pref) return;
     var next = build(pref);
-    var normCur =
-      g.location.pathname + (g.location.search || "") + (g.location.hash || "");
-    if (normCur === next || normCur.replace(/\/+$/, "/") === next.replace(/\/+$/, "/")) return;
+    if (normalizeHref(currentHref()) === normalizeHref(next)) return;
     g.location.replace(next);
   }
 

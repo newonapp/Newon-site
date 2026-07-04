@@ -41,6 +41,8 @@ const PUBLISH_ROOT_IMAGES = [
   "babylog-logo.png",
   "petlog-logo.png",
   "piggyup-logo.png",
+  "goalup-logo.png",
+  "countup-logo.png",
   "subping-hero-mark.png",
   "feature-grid.png",
   "hero-promo.png",

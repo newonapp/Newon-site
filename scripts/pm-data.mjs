@@ -85,8 +85,8 @@ export const pmEn = {
   drawerOx: "OX MONTH intro",
   drawerSp: "SubPing intro",
   drawerPm: "Pillmate · this screen",
-  appStoreUrl: "https://newon.app",
-  googlePlayUrl: "https://newon.app",
+  appStoreUrl: "https://apps.apple.com/kr/app/pillmate-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-%EB%B3%B5%EC%95%BD-%EC%95%8C%EB%A6%BC/id6768017347",
+  googlePlayUrl: "https://play.google.com/store/apps/details?id=com.newon.pill.mate&pcampaignid=web_share",
   appStoreBadgeAria: "Pillmate on the App Store (opens in a new tab)",
   googlePlayBadgeAria: "Pillmate on Google Play (opens in a new tab)",
 };
@@ -176,8 +176,8 @@ export const pmKo = {
   drawerOx: "OX MONTH 소개",
   drawerSp: "SubPing 소개",
   drawerPm: "Pillmate · 이 화면",
-  appStoreUrl: "https://newon.app",
-  googlePlayUrl: "https://newon.app",
+  appStoreUrl: "https://apps.apple.com/kr/app/pillmate-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-%EB%B3%B5%EC%95%BD-%EC%95%8C%EB%A6%BC/id6768017347",
+  googlePlayUrl: "https://play.google.com/store/apps/details?id=com.newon.pill.mate&pcampaignid=web_share",
   appStoreBadgeAria: "App Store에서 Pillmate(새 탭)",
   googlePlayBadgeAria: "Google Play에서 Pillmate(새 탭)",
 };

@@ -15,25 +15,47 @@ const LOCALES = path.join(ROOT, "locales");
 const CACHE_PATH = path.join(__dirname, ".translate-cache.json");
 
 const TARGET_LANGS = ["ja", "es", "pt-br", "fr", "de", "hi", "id"];
-const APP_KEYS = ["ox", "pm", "sv", "bl", "pl"];
+const APP_KEYS = ["ox", "pm", "sv", "bl", "pl", "sp", "pu", "gu", "cu", "nt"];
+const ROOT_KEYS = ["home", "nav", "footer", "ui", "meta", "common", "legal"];
 const META_KEYS = [
   "titleOx",
   "titlePillmate",
   "titleBabylog",
   "titlePetlog",
   "titleSavy",
+  "titlePiggyup",
+  "titleGoalup",
+  "titleCountup",
+  "titleNoting",
+  "titleHome",
+  "description",
+  "ogTitle",
+  "ogDescription",
+  "twitterTitle",
+  "twitterDescription",
+  "orgDescription",
 ];
 const NAV_KEYS = [
   "pillmateDesc",
   "babylogDesc",
   "petlogDesc",
   "savyDesc",
+  "piggyupDesc",
+  "goalupDesc",
+  "countupDesc",
+  "notingDesc",
   "mobileOxHint",
   "mobileSubpingHint",
   "mobilePillmateHint",
   "mobileBabylogHint",
   "mobilePetlogHint",
   "mobileSavyHint",
+  "mobilePiggyupHint",
+  "mobileGoalupHint",
+  "mobileCountupHint",
+  "mobileNotingHint",
+  "headerHubTagline",
+  "mobileSummary",
 ];
 
 const MYMEMORY_LANG = {
@@ -68,6 +90,14 @@ const SKIP_SUBSTRINGS = [
 ];
 
 const force = process.argv.includes("--force");
+const forceRootArg = process.argv.find((a) => a.startsWith("--force-root="));
+const forceRoots = forceRootArg
+  ? forceRootArg
+      .split("=")[1]
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
+  : [];
 const langArg = process.argv.find((a) => a.startsWith("--lang="));
 const onlyLang = langArg ? langArg.split("=")[1] : null;
 
@@ -96,7 +126,7 @@ function shouldSkipTranslate(text) {
 function protect(text) {
   const tokens = [];
   let safe = text.replace(
-    /(\[\[IMG:[^\]]+\]\]|\{\{[^}]+\}\}|<[^>]+>|OX MONTH|SubPing|Pillmate|BabyLog|PetLog|PiggyUp|SAVY|Newon|Google Play|App Store)/gi,
+    /(\[\[IMG:[^\]]+\]\]|\{\{[^}]+\}\}|<[^>]+>|OX MONTH|SubPing|Pillmate|BabyLog|PetLog|PiggyUp|SAVY|GoalUp|CountUp|Noting|Newon|Google Play|App Store)/gi,
     (m) => {
       const id = tokens.length;
       tokens.push(m);
@@ -203,17 +233,18 @@ function deepAssign(target, source) {
   }
 }
 
-async function translateBlock(enBlock, locBlock, targetLang, cache, stats) {
+async function translateBlock(enBlock, locBlock, targetLang, cache, stats, blockForce = false) {
   const out = structuredClone(locBlock || {});
   for (const [k, enVal] of Object.entries(enBlock)) {
     if (enVal && typeof enVal === "object" && !Array.isArray(enVal)) {
-      out[k] = await translateBlock(enVal, out[k] || {}, targetLang, cache, stats);
+      out[k] = await translateBlock(enVal, out[k] || {}, targetLang, cache, stats, blockForce);
       continue;
     }
     if (typeof enVal !== "string") continue;
     const cur = out[k];
     const needs =
       force ||
+      blockForce ||
       cur === undefined ||
       cur === null ||
       cur === "" ||
@@ -229,7 +260,7 @@ async function translateBlock(enBlock, locBlock, targetLang, cache, stats) {
         fs.writeFileSync(CACHE_PATH, JSON.stringify(cache, null, 0));
         process.stdout.write(`  …${stats.translated} strings\n`);
       }
-      await sleep(80);
+      await sleep(25);
     } catch (e) {
       console.error(`\n[${targetLang}] failed key ${k}: ${e.message}`);
       stats.failed++;
@@ -241,17 +272,19 @@ async function translateBlock(enBlock, locBlock, targetLang, cache, stats) {
 }
 
 async function patchMetaNav(lang, en, loc, cache, stats) {
+  const metaForce = force || forceRoots.includes("meta");
+  const navForce = force || forceRoots.includes("nav");
   loc.meta = loc.meta || {};
   for (const key of META_KEYS) {
     const enVal = en.meta?.[key];
     const cur = loc.meta[key];
     if (typeof enVal !== "string" || !enVal) continue;
-    if (!force && cur && cur !== enVal) continue;
+    if (!metaForce && cur && cur !== enVal) continue;
     if (shouldSkipTranslate(enVal)) continue;
     try {
       loc.meta[key] = await translateOne(enVal, lang, cache);
       stats.translated++;
-      await sleep(80);
+      await sleep(25);
     } catch (e) {
       if (String(e.message).includes("quota")) throw e;
     }
@@ -261,12 +294,12 @@ async function patchMetaNav(lang, en, loc, cache, stats) {
     const enVal = en.nav?.[key];
     const cur = loc.nav[key];
     if (typeof enVal !== "string" || !enVal) continue;
-    if (!force && cur && cur !== enVal) continue;
+    if (!navForce && cur && cur !== enVal) continue;
     if (shouldSkipTranslate(enVal)) continue;
     try {
       loc.nav[key] = await translateOne(enVal, lang, cache);
       stats.translated++;
-      await sleep(80);
+      await sleep(25);
     } catch (e) {
       if (String(e.message).includes("quota")) throw e;
     }
@@ -290,7 +323,12 @@ async function main() {
 
     for (const app of APP_KEYS) {
       if (!en[app]) continue;
-      loc[app] = await translateBlock(en[app], loc[app], lang, cache, stats);
+      loc[app] = await translateBlock(en[app], loc[app], lang, cache, stats, false);
+    }
+    for (const root of ROOT_KEYS) {
+      if (!en[root]) continue;
+      const blockForce = forceRoots.includes(root);
+      loc[root] = await translateBlock(en[root], loc[root], lang, cache, stats, blockForce);
     }
     await patchMetaNav(lang, en, loc, cache, stats);
 

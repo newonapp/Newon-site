@@ -3,16 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Newon — 새로운 것을 켜다</title>
-    <meta name="description" content="Newon은 새로운 아이디어를 실제 서비스로 빠르게 구현하는 앱 개발 회사입니다." />
+    <title>Newon | 아이디어를 현실로 만드는 앱 스튜디오</title>
+    <meta name="description" content="Newon은 아이디어를 현실로 만드는 앱 스튜디오입니다. 생산성, 기록, 금융, 라이프스타일 분야의 앱을 개발하며 Noting, OX MONTH, SAVY, SubPing, Pillmate, BabyLog, PetLog, PiggyUp 등 다양한 서비스를 제공합니다." />
     <link rel="canonical" href="https://newon.app/ko/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://newon.app/ko/" />
     <meta name="twitter:url" content="https://newon.app/ko/" />
-    <meta property="og:title" content="Newon — 새로운 것을 켜다" />
-    <meta property="og:description" content="아이디어를 실행 상태로 바꾸는 앱 개발 스튜디오" />
+    <meta property="og:title" content="Newon | 아이디어를 현실로 만드는 앱 스튜디오" />
+    <meta property="og:description" content="Newon은 아이디어를 현실로 만드는 앱 스튜디오입니다. 생산성, 기록, 금융, 라이프스타일 분야의 앱을 개발하며 Noting, OX MONTH, SAVY, SubPing, Pillmate, BabyLog, PetLog, PiggyUp 등 다양한 서비스를 제공합니다." />
+    <meta property="og:site_name" content="Newon" />
     <meta property="og:image" content="https://newon.app/logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Newon | 아이디어를 현실로 만드는 앱 스튜디오" />
+    <meta name="twitter:description" content="Newon은 아이디어를 현실로 만드는 앱 스튜디오입니다. 생산성, 기록, 금융, 라이프스타일 분야의 앱을 개발하며 다양한 서비스를 제공합니다." />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Newon",
+  "url": "https://newon.app",
+  "description": "아이디어를 현실로 만드는 앱 스튜디오",
+  "logo": "https://newon.app/logo.png"
+}
+    </script>
     <link rel="alternate" hreflang="ko" href="https://newon.app/ko/" />
     <link rel="alternate" hreflang="en" href="https://newon.app/en/" />
     <link rel="alternate" hreflang="ja" href="https://newon.app/ja/" />
@@ -31,7 +44,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/ox-month.css?v=20260528-piggyup-showcase" />
+    <link rel="stylesheet" href="/ox-month.css?v=20260601-noting-white" />
     <script src="/theme-shell.js"></script>
     <script src="/lang-nav.js"></script>
   </head>
@@ -134,6 +147,26 @@
                   <span class="apps-flyout__meta">
                     <span class="apps-flyout__name">PiggyUp</span>
                     <span class="apps-flyout__desc">절약 습관 · 소비 분석 · AI 코치</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">목표 관리 · 챌린지 · 성장 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">카운트 기록 · 목표 추적 · 성장</span>
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
@@ -254,6 +287,24 @@
                 <span class="mobile-apps-drawer__hint">PiggyUp 소개 보기</span>
               </span>
             </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">GoalUp 소개 보기</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">CountUp 소개 보기</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -274,16 +325,59 @@
               </div>
             </div>
             <div class="hero-copy">
-              <p class="eyebrow">앱 스튜디오 · 아이디어를 켜는 팀</p>
+              <p class="eyebrow">앱 스튜디오 · 라이프 플랫폼</p>
               <h1 class="hero-title hero-title--co">
                 아이디어를 켜고,<br />
                 <span class="hero-accent">변화를 시작합니다</span>
               </h1>
               <p class="hero-lead">
-                생각을 현실로 이어지는 순간까지. 단순하고 오래 쓰이는 경험을 설계합니다.
+                생각을 현실로 이어지는 순간까지, 단순하고 오래 사용하는 경험을 설계합니다.
               </p>
-              <div class="hero-actions">
-                <a class="btn btn-primary" href="#about">회사 소개</a>
+              <div class="hero-actions hero-store-links">
+                <a
+                  class="hero-store-link hero-store-link--apple"
+                  href="https://apps.apple.com/developer/nawon-kyung/id1896528749"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="App Store에서 Nawon Kyung 앱 보기(새 탭)"
+                >
+                  <svg
+                    class="hero-store-link__icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  class="hero-store-link hero-store-link--google"
+                  href="https://play.google.com/store/apps/dev?id=8016507493063681249"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Google Play에서 NEWON 앱 보기(새 탭)"
+                >
+                  <svg
+                    class="hero-store-link__icon hero-store-link__icon--play"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 28 28"
+                    width="22"
+                    height="22"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path fill="#00D9FF" d="M3 4.5v19l11-9.7L3 4.5z" />
+                    <path fill="#00F076" d="M15.4 14.3 25 20.8c.6-.4 1-1 1-1.8V9c0-.7-.4-1.4-1-1.8l-9.6 6.1z" />
+                    <path fill="#FFCE00" d="M15.4 13.7 25 7.2c-.6-.4-1.3-.6-2-.4L3 4.5l12.4 9.2z" />
+                    <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
@@ -295,7 +389,7 @@
 
         <section id="meaning" class="section section-co reveal-on-scroll">
           <div class="container narrow">
-            <p class="section-label">Identity</p>
+            <p class="section-label">정체성</p>
             <h2 class="section-title section-title--with-icon">
               <span class="section-icon" aria-hidden="true">💡</span>
               이름의 의미
@@ -307,65 +401,71 @@
               <p>
                 새로운<span class="co-on">(New)</span> 아이디어를 켜고<span class="co-on">(On)</span>, 생각을 현실로 연결하는 순간을 의미합니다.
               </p>
-              <p>작은 생각 하나가 실행되는 그 순간, Newon은 시작됩니다.</p>
+              <p>작은 아이디어 하나가 실행되는 순간, Newon은 시작됩니다.</p>
+              <p>우리는 단순한 앱을 만드는 것이 아니라 사람들의 일상 속에서 오랫동안 사용되는 경험을 만듭니다.</p>
             </div>
           </div>
         </section>
 
         <section id="about" class="section section-co reveal-on-scroll">
           <div class="container narrow">
-            <p class="section-label">Company</p>
+            <p class="section-label">회사</p>
             <h2 class="section-title section-title--with-icon">
               <span class="section-icon" aria-hidden="true">🏢</span>
               회사 소개
             </h2>
             <div class="co-prose">
               <p class="co-prose__lead">
-                Newon은 일상의 문제를 단순하고 직관적인 방식으로 해결하는 앱을 만드는 회사입니다.
+                Newon은 목표, 습관, 건강, 금융, 가족 기록 등 일상의 다양한 영역을 더 쉽고 스마트하게 관리할 수 있도록 돕는 앱을 만드는 팀입니다.
               </p>
               <p>
-                우리는 복잡함을 줄이고, 누구나 쉽게 사용할 수 있는 경험을 통해 아이디어가 실제 변화로 이어지도록 만듭니다.
+                우리는 복잡함을 줄이고, 누구나 쉽게 사용할 수 있는 서비스를 통해 아이디어가 실제 변화로 이어지도록 만듭니다.
               </p>
+              <p>현재 Newon은<br /><br />• 10개 앱 출시<br />• 177개국 서비스<br />• 13개 언어 지원<br /><br />을 통해 전 세계 사용자가 더 나은 일상을 경험할 수 있도록 돕고 있습니다.</p>
             </div>
           </div>
         </section>
 
         <section id="work" class="section section-co reveal-on-scroll">
           <div class="container narrow">
-            <p class="section-label">What we do</p>
+            <p class="section-label">하는 일</p>
             <h2 class="section-title section-title--with-icon">
               <span class="section-icon" aria-hidden="true">🔗</span>
               우리가 하는 일
             </h2>
             <div class="co-prose">
               <p>
-                Newon은 하나의 서비스에 머무르지 않고 다양한 아이디어를 기반으로 여러 앱을 지속적으로 만들어갑니다.
+                Newon은 하나의 서비스에 머무르지 않고 다양한 아이디어를 기반으로 새로운 앱을 지속적으로 만들어갑니다.
               </p>
               <p>
                 각 서비스는 사용자의 일상 속에서 자연스럽게 사용되며 작지만 분명한 변화를 만들어냅니다.
               </p>
+              <p>우리가 만드는 것은 단순한 기능이 아니라<br /><br />기록하고,<br />관리하고,<br />성장하는 경험입니다.</p>
             </div>
           </div>
         </section>
 
         <section id="build" class="section section-co section-co--build reveal-on-scroll">
           <div class="container">
-            <p class="section-label">Products</p>
+            <p class="section-label">제품</p>
             <h2 class="section-title section-title--with-icon">
               <span class="section-icon" aria-hidden="true">📱</span>
               우리가 만드는 것
             </h2>
-            <ul class="co-build-list">
+            <ul class="co-build-list co-build-list--products">
               <li>습관과 기록을 돕는 앱</li>
-              <li>일상을 더 편하게 만드는 도구</li>
-              <li>개인의 삶을 정리하고 개선하는 서비스</li>
+              <li>목표와 성장을 돕는 앱</li>
+              <li>건강한 일상을 위한 앱</li>
+              <li>금융과 소비를 관리하는 앱</li>
+              <li>가족과 반려동물을 위한 앱</li>
+              <li>삶을 더 편리하게 만드는 서비스</li>
             </ul>
           </div>
         </section>
 
         <section id="goal" class="section section-co section-co--goal reveal-on-scroll">
           <div class="container narrow">
-            <p class="section-label">Vision</p>
+            <p class="section-label">비전</p>
             <h2 class="section-title section-title--with-icon">
               <span class="section-icon" aria-hidden="true">🎯</span>
               우리의 목표
@@ -375,6 +475,28 @@
               <p>
                 사용자의 일상에 자연스럽게 녹아들어 지속적인 변화를 만들어내는 것이 목표입니다.
               </p>
+              <p>
+                10개의 앱에서 시작해 더 많은 사람들의 삶을 연결하는 글로벌 라이프 플랫폼으로 성장하고자 합니다.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="numbers" class="section section-co section-co--numbers reveal-on-scroll">
+          <div class="container">
+            <p class="section-label">통계</p>
+            <h2 class="section-title section-title--with-icon">
+              <span class="section-icon" aria-hidden="true">🌎</span>
+              숫자로 보는 Newon
+            </h2>
+            <ul class="co-stats-grid">
+              <li class="co-stats-card"><span class="co-stats-card__value">10+</span><span class="co-stats-card__label">앱 출시</span></li>
+              <li class="co-stats-card"><span class="co-stats-card__value">177</span><span class="co-stats-card__label">서비스 국가</span></li>
+              <li class="co-stats-card"><span class="co-stats-card__value">13</span><span class="co-stats-card__label">지원 언어</span></li>
+              <li class="co-stats-card"><span class="co-stats-card__value">1</span><span class="co-stats-card__label">통합 계정</span></li>
+            </ul>
+            <div class="co-goal-panel co-newon-plus-panel">
+              <p><strong>Newon+</strong>하나의 구독<br />모든 Newon 앱</p>
             </div>
           </div>
         </section>
@@ -395,6 +517,7 @@
           </div>
           <div class="footer-links">
             <a class="footer-link" href="https://newon.app">https://newon.app</a>
+            <p class="footer-copy">아이디어를 현실로 연결하는 앱 스튜디오</p>
             <div class="footer-legal-links">
               <a class="footer-legal" href="privacy/">개인정보 처리방침</a>
               <span class="footer-legal-sep" aria-hidden="true">·</span>
@@ -612,6 +735,26 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">목표 관리 · 챌린지 · 성장 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">카운트 기록 · 목표 추적 · 성장</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
@@ -732,6 +875,24 @@
                 <span class="mobile-apps-drawer__hint">PiggyUp 소개 보기</span>
               </span>
             </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">GoalUp 소개 보기</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">CountUp 소개 보기</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -745,19 +906,18 @@
                   <span class="ox-badge-dot" aria-hidden="true"></span>
                   🚀 습관 관리 · 월간 기록 · O/X 체크
                 </p>
-                <p class="ox-badge ox-badge--secondary">173개국 출시 · 13개 언어</p>
               </div>
               <h1>OX MONTH</h1>
               <p class="ox-subtitle">
                 하루의 실천을 O/X로 기록하고, 한 달의 변화를 확인하세요
               </p>
-              <p class="ox-hero-reach-summary">전 세계 사용자를 위한 습관 기록 앱. 173개국에 출시되어 있으며, 한국어·영어·일본어를 포함해 13개 언어를 지원합니다.</p>
+              <p class="ox-hero-reach-summary">O/X 한 번의 체크로 습관을 쌓고, 월간 기록과 통계로 변화를 확인하는 습관 관리 앱입니다.</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">App Store, Google Play 출시</p>
                 <div class="ox-store-badges">
                   <a
                     class="ox-store-badge ox-store-badge--apple"
-                    href="https://newon.app"
+                    href="https://apps.apple.com/kr/app/ox-month-ai-%EC%8A%B5%EA%B4%80-%EA%B4%80%EB%A6%AC/id6767996492"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="App Store에서 OX MONTH(새 탭)"
@@ -783,7 +943,7 @@
                   </a>
                   <a
                     class="ox-store-badge ox-store-badge--google"
-                    href="https://newon.app"
+                    href="https://play.google.com/store/apps/details?id=com.newon.ox.month&pcampaignid=web_share"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Google Play에서 OX MONTH(새 탭)"
@@ -1370,6 +1530,26 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">목표 관리 · 챌린지 · 성장 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">카운트 기록 · 목표 추적 · 성장</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
@@ -1490,6 +1670,24 @@
                 <span class="mobile-apps-drawer__hint">PiggyUp 소개 보기</span>
               </span>
             </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">GoalUp 소개 보기</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">CountUp 소개 보기</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -1513,7 +1711,7 @@
                 <div class="ox-store-badges">
                   <a
                     class="ox-store-badge ox-store-badge--apple"
-                    href="https://newon.app"
+                    href="https://apps.apple.com/kr/app/pillmate-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-%EB%B3%B5%EC%95%BD-%EC%95%8C%EB%A6%BC/id6768017347"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="App Store에서 Pillmate(새 탭)"
@@ -1539,7 +1737,7 @@
                   </a>
                   <a
                     class="ox-store-badge ox-store-badge--google"
-                    href="https://newon.app"
+                    href="https://play.google.com/store/apps/details?id=com.newon.pill.mate&pcampaignid=web_share"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Google Play에서 Pillmate(새 탭)"
@@ -2083,6 +2281,26 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">목표 관리 · 챌린지 · 성장 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">카운트 기록 · 목표 추적 · 성장</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
@@ -2194,6 +2412,24 @@
                 <span class="mobile-apps-drawer__hint">PiggyUp 소개 보기</span>
               </span>
             </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">GoalUp 소개 보기</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">CountUp 소개 보기</span>
+              </span>
+            </a>
             <a href="#sv-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
               <span class="mobile-apps-drawer__icon">
                 <img src="/savy-logo.png" alt="" width="36" height="36" />
@@ -2226,7 +2462,7 @@
                 <div class="ox-store-badges">
                   <a
                     class="ox-store-badge ox-store-badge--apple"
-                    href="https://newon.app"
+                    href="https://apps.apple.com/kr/app/savy-%EC%8A%A4%EB%A7%88%ED%8A%B8-ai-%EA%B0%80%EA%B3%84%EB%B6%80/id6768017037"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="App Store에서 SAVY(새 탭)"
@@ -2252,7 +2488,7 @@
                   </a>
                   <a
                     class="ox-store-badge ox-store-badge--google"
-                    href="https://newon.app"
+                    href="https://play.google.com/store/apps/details?id=com.newon.savy&pcampaignid=web_share"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Google Play에서 SAVY(새 탭)"
@@ -2803,6 +3039,26 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">목표 관리 · 챌린지 · 성장 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">카운트 기록 · 목표 추적 · 성장</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
@@ -2923,6 +3179,24 @@
                 <span class="mobile-apps-drawer__hint">PiggyUp 소개 보기</span>
               </span>
             </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">GoalUp 소개 보기</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">CountUp 소개 보기</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -2946,7 +3220,7 @@
                 <div class="ox-store-badges">
                   <a
                     class="ox-store-badge ox-store-badge--apple"
-                    href="https://newon.app"
+                    href="https://apps.apple.com/kr/app/babylog-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-ai-%EC%9C%A1%EC%95%84-%EA%B8%B0%EB%A1%9D/id6768019196"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="App Store에서 BabyLog(새 탭)"
@@ -2972,7 +3246,7 @@
                   </a>
                   <a
                     class="ox-store-badge ox-store-badge--google"
-                    href="https://newon.app"
+                    href="https://play.google.com/store/apps/details?id=com.newon.babylog&pcampaignid=web_share"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Google Play에서 BabyLog(새 탭)"
@@ -3145,13 +3419,13 @@
                 <span class="ox-feature-emoji" aria-hidden="true">📅</span>
                 <h3>일정 관리</h3>
                 <p class="ox-feature-lead">병원 방문, 예방접종, 학원, 학교 일정 등을 관리할 수 있습니다.</p>
-                <p class="ox-feature-note">keep important dates in one calendar.</p>
+                <p class="ox-feature-note">중요한 일정을 한곳에서 관리할 수 있습니다.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📊</span>
                 <h3>통계 분석</h3>
                 <p class="ox-feature-lead">아이의 생활 패턴과 성장 데이터를 시각적으로 확인할 수 있습니다.</p>
-                <p class="ox-feature-note">so patterns are easy to understand.</p>
+                <p class="ox-feature-note">패턴을 쉽게 이해할 수 있도록 보여줍니다.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">👨‍👩‍👧</span>
@@ -3550,6 +3824,26 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">목표 관리 · 챌린지 · 성장 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">카운트 기록 · 목표 추적 · 성장</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
@@ -3670,6 +3964,24 @@
                 <span class="mobile-apps-drawer__hint">PiggyUp 소개 보기</span>
               </span>
             </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">GoalUp 소개 보기</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">CountUp 소개 보기</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -3693,7 +4005,7 @@
                 <div class="ox-store-badges">
                   <a
                     class="ox-store-badge ox-store-badge--apple"
-                    href="https://newon.app"
+                    href="https://apps.apple.com/kr/app/petlog-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-ai-%EB%B0%98%EB%A0%A4-%EA%B8%B0%EB%A1%9D/id6770971033"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="App Store에서 PetLog(새 탭)"
@@ -3719,7 +4031,7 @@
                   </a>
                   <a
                     class="ox-store-badge ox-store-badge--google"
-                    href="https://newon.app"
+                    href="https://play.google.com/store/apps/details?id=com.newon.petlog&pcampaignid=web_share"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Google Play에서 PetLog(새 탭)"
@@ -4297,6 +4609,26 @@
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">목표 관리 · 챌린지 · 성장 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">카운트 기록 · 목표 추적 · 성장</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
               </nav>
@@ -4417,6 +4749,24 @@
                 <span class="mobile-apps-drawer__hint">PiggyUp · 이 화면</span>
               </span>
             </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">GoalUp 소개 보기</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">CountUp 소개 보기</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -4440,7 +4790,7 @@
                 <div class="ox-store-badges">
                   <a
                     class="ox-store-badge ox-store-badge--apple"
-                    href="https://newon.app"
+                    href="https://apps.apple.com/kr/app/piggyup-ai-%EC%A0%88%EC%95%BD-%EA%B4%80%EB%A6%AC-%EC%B1%8C%EB%A6%B0%EC%A7%80/id6772744969"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="App Store에서 PiggyUp(새 탭)"
@@ -4466,7 +4816,7 @@
                   </a>
                   <a
                     class="ox-store-badge ox-store-badge--google"
-                    href="https://newon.app"
+                    href="https://play.google.com/store/apps/details?id=com.newon.piggyup&pcampaignid=web_share"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Google Play에서 PiggyUp(새 탭)"
@@ -4923,6 +5273,2248 @@
 
     
 
+    <div id="goalup-app" class="ox-page site-shell" data-theme="light" hidden>
+      <a class="ox-skip" href="#gu-main">본문으로 건너뛰기</a>
+
+      <header class="ox-header">
+        <div class="ox-container navbar-bar navbar-bar--ox navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub navbar-hub--ox">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="Newon 홈">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
+              </a>
+              <nav class="ox-nav ox-nav--apps-only" aria-label="Newon 앱">
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
+              <button
+                type="button"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
+                id="apps-trigger-gu"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="apps-panel-gu"
+                aria-label="Newon 앱"
+              >
+                <span>Newon의 앱</span>
+                <span class="apps-flyout__chev" aria-hidden="true"></span>
+              </button>
+              <div
+                id="apps-panel-gu"
+                class="apps-flyout__panel"
+                role="menu"
+                aria-labelledby="apps-trigger-gu"
+                hidden
+              >
+                <a href="#ox-month" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/ox-month-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">OX MONTH</span>
+                    <span class="apps-flyout__desc">습관 관리 · O/X 체크 · 월간 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#subping-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/subping-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SubPing</span>
+                    <span class="apps-flyout__desc">구독 · 알림 · 스마트 관리</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">복약 알림 · 건강 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#savy-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/savy-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SAVY</span>
+                    <span class="apps-flyout__desc">지출 · 수입 · 구독 · AI 분석</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#babylog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">BabyLog</span>
+                    <span class="apps-flyout__desc">육아 기록 · 성장 · 가족 공유 · AI</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#petlog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PetLog</span>
+                    <span class="apps-flyout__desc">반려 기록 · 건강 · 가족 공유 · AI</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">절약 습관 · 소비 분석 · AI 코치</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a
+                  href="#gu-top"
+                  role="menuitem"
+                  class="apps-flyout__item apps-flyout__item--current"
+                  aria-current="page"
+                >
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">목표 관리 · 챌린지 · 성장 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">카운트 기록 · 목표 추적 · 성장</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a href="#gu-top" class="navbar-app-showcase" aria-label="GoalUp 상단으로">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/goalup-logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">GoalUp</span>
+              <span class="navbar-app-showcase__tagline">목표 관리 · 챌린지 · 성장 기록</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--ox navbar-bar__controls--brand-toolbar">
+          <div class="lang-switcher lang-switcher--ox" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-gu">언어</label>
+            <select id="lang-select-gu" class="lang-select lang-select--toolbar" data-lang-select aria-label="언어">
+              <option value="ko">한국어</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="es">Español</option>
+              <option value="pt-br">Português (Brasil)</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="hi">हिन्दी</option>
+              <option value="id">Bahasa Indonesia</option>
+            </select>
+          </div>
+          <div class="ox-header-actions">
+            <button
+              type="button"
+              class="ox-theme-toggle"
+              id="gu-theme"
+              aria-label="라이트 모드로 전환"
+              title="테마 전환"
+            >
+              ☀
+            </button>
+            <button
+              type="button"
+              class="ox-nav-toggle"
+              id="gu-nav-toggle"
+              aria-expanded="false"
+              aria-controls="gu-mobile"
+              aria-label="메뉴"
+            >
+              <span></span><span></span>
+            </button>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div id="gu-mobile" class="ox-mobile-menu ox-mobile-menu--apps-only" hidden>
+          <details class="mobile-apps-drawer mobile-apps-drawer--ox">
+            <summary class="mobile-apps-drawer__summary">Newon의 앱</summary>
+            <a href="#ox-month" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/ox-month-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">OX MONTH</span>
+                <span class="mobile-apps-drawer__hint">OX MONTH 소개</span>
+              </span>
+            </a>
+            <a href="#subping-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/subping-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SubPing</span>
+                <span class="mobile-apps-drawer__hint">SubPing 소개</span>
+              </span>
+            </a>
+            <a href="#pillmate-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">Pillmate 소개</span>
+              </span>
+            </a>
+            <a href="#savy-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/savy-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SAVY</span>
+                <span class="mobile-apps-drawer__hint">SAVY 소개</span>
+              </span>
+            </a>
+            <a href="#babylog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/babylog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">BabyLog</span>
+                <span class="mobile-apps-drawer__hint">BabyLog 소개</span>
+              </span>
+            </a>
+            <a href="#petlog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/petlog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PetLog</span>
+                <span class="mobile-apps-drawer__hint">PetLog 소개</span>
+              </span>
+            </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">PiggyUp 소개</span>
+              </span>
+            </a>
+            <a href="#gu-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">GoalUp · 이 화면</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">CountUp 소개 보기</span>
+              </span>
+            </a>
+          </details>
+        </div>
+      </header>
+
+      <main id="gu-main">
+        <section id="gu-top" class="ox-hero ox-reveal-on-scroll is-visible">
+          <div class="ox-container ox-hero-grid">
+            <div class="ox-hero-copy">
+              <div class="ox-badge-row">
+                <p class="ox-badge">
+                  <span class="ox-badge-dot" aria-hidden="true"></span>
+                  🎯 목표 관리 · 챌린지 · AI 성장 코치
+                </p>
+                <p class="ox-badge ox-badge--secondary">173개국 출시 · 13개 언어 지원</p>
+              </div>
+              <h1>GoalUp</h1>
+              <p class="ox-subtitle">작은 목표가 모여 더 큰 성장을 만듭니다</p>
+              <p class="ox-hero-reach-summary">목표 설정부터 진행률 분석, AI 성장 인사이트까지 한 번에 관리하는 스마트 목표 관리 앱입니다.</p>
+              <div class="ox-store-release" role="status" aria-live="polite">
+                <p class="ox-store-release__label">App Store, Google Play 출시</p>
+                <div class="ox-store-badges">
+                  <a
+                    class="ox-store-badge ox-store-badge--apple"
+                    href="https://apps.apple.com/kr/app/goalup-ai-%EB%AA%A9%ED%91%9C-%EA%B4%80%EB%A6%AC-%EC%B1%8C%EB%A6%B0%EC%A7%80/id6780510853"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="App Store에서 GoalUp(새 탭)"
+                  >
+                    <svg
+                      class="ox-store-badge__icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                      />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">Download on</span>
+                      <span class="ox-store-badge__name">App Store</span>
+                    </span>
+                  </a>
+                  <a
+                    class="ox-store-badge ox-store-badge--google"
+                    href="https://newon.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Google Play에서 GoalUp(새 탭)"
+                  >
+                    <svg
+                      class="ox-store-badge__icon ox-store-badge__icon--play"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 28 28"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path fill="#00D9FF" d="M3 4.5v19l11-9.7L3 4.5z" />
+                      <path fill="#00F076" d="M15.4 14.3 25 20.8c.6-.4 1-1 1-1.8V9c0-.7-.4-1.4-1-1.8l-9.6 6.1z" />
+                      <path fill="#FFCE00" d="M15.4 13.7 25 7.2c-.6-.4-1.3-.6-2-.4L3 4.5l12.4 9.2z" />
+                      <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">Get it on</span>
+                      <span class="ox-store-badge__name">Google Play</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="ox-hero-visual">
+              <div class="ox-hero-frame ox-hero-frame--logo">
+                <img
+                  class="ox-hero-logo-img"
+                  src="/goalup-logo.png"
+                  alt="GoalUp 앱 로고: 보라색 깃발"
+                  width="940"
+                  height="940"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="gu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="gu-intro-title">
+          <div class="ox-container ox-app-intro__inner">
+            <div class="ox-app-intro__copy">
+              <p class="ox-section-label">앱 소개</p>
+              <h2 id="gu-intro-title" class="ox-app-intro__title">
+                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
+                앱 소개
+              </h2>
+              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>GoalUp</strong>은 목표를 세우고 꾸준히 실천하며</p><p>성장 습관을 만들어가는 앱입니다.</p><p>매일의 작은 행동부터 장기 목표까지 체계적으로 관리할 수 있으며 AI 성장 분석을 통해 더 효율적인 목표 달성을 경험할 수 있습니다.</p><p>챌린지, 목표 추적, 통계 분석 기능을 통해 꾸준한 성장을 시각적으로 확인해보세요.</p><p>작은 목표가 모이면 더 큰 변화가 시작됩니다.</p></div>
+              <p class="ox-app-intro__closing">오늘의 작은 실천이 미래의 큰 성장을 만듭니다.</p>
+              <p class="ox-app-intro__legal">
+                <a class="ox-app-intro__legal-link" href="privacy/">개인정보처리방침</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="gu-showcase-scroll"
+          class="ox-section ox-reveal-on-scroll"
+          aria-label="GoalUp 앱 미리보기 7장입니다. 가로로 스크롤하여 모두 볼 수 있습니다."
+        >
+          <div class="ox-container">
+            <div class="sp-showcase-scroll" tabindex="0">
+              <div class="sp-showcase-scroll__track">
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/ko/gu-showcase-01.png"
+                    alt="GoalUp — 목표 관리부터 습관 형성, 챌린지, AI 분석까지"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/ko/gu-showcase-02.png"
+                    alt="GoalUp — 오늘 해야 할 목표를 한눈에 관리"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/ko/gu-showcase-03.png"
+                    alt="GoalUp — 추천 챌린지에 함께 참여하고 성장"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/ko/gu-showcase-04.png"
+                    alt="GoalUp — 목표를 체계적으로 관리하고 진행 상황 확인"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/ko/gu-showcase-05.png"
+                    alt="GoalUp — AI 기반 고급 통계 분석"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/ko/gu-showcase-06.png"
+                    alt="GoalUp — 나만의 챌린지를 빠르게 시작"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/ko/gu-showcase-07.png"
+                    alt="GoalUp — 프리미엄 AI 코치와 고급 분석"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="gu-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="gu-features-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">기능</p>
+              <h2 id="gu-features-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">🚀</span>
+                주요 기능
+              </h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔥</span>
+                <h3>목표 관리</h3>
+                <p class="ox-feature-lead">목표를 생성하고 카테고리별로 관리할 수 있습니다.</p>
+                <p class="ox-feature-note">반복 주기, 중요도, 알림 등을 설정하여 체계적인 목표 관리를 제공합니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🏆</span>
+                <h3>챌린지</h3>
+                <p class="ox-feature-lead">개인 또는 친구와 함께 챌린지를 진행할 수 있습니다.</p>
+                <p class="ox-feature-note">꾸준한 실천을 게임처럼 즐길 수 있습니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔔</span>
+                <h3>목표 알림</h3>
+                <p class="ox-feature-lead">목표 달성을 잊지 않도록 알림을 제공합니다.</p>
+                <p class="ox-feature-note">반복 알림과 리마인더를 지원합니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📊</span>
+                <h3>성장 분석</h3>
+                <p class="ox-feature-lead">성공률, 연속 기록, 완료 추이를 분석합니다.</p>
+                <p class="ox-feature-note">꾸준함을 데이터로 확인할 수 있습니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📈</span>
+                <h3>통계 시각화</h3>
+                <p class="ox-feature-lead">주간, 월간, 연간 목표 달성률을 시각적으로 제공합니다.</p>
+                <p class="ox-feature-note">성장 과정을 직관적으로 확인할 수 있습니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
+                <h3>AI 성장 분석</h3>
+                <p class="ox-feature-lead">AI가 목표 패턴을 분석하여 맞춤 인사이트를 제공합니다.</p>
+                <p class="ox-feature-note">더 효율적인 습관 형성을 도와줍니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🎯</span>
+                <h3>연속 기록</h3>
+                <p class="ox-feature-lead">연속 달성 기록과 성장 흐름을 확인할 수 있습니다.</p>
+                <p class="ox-feature-note">꾸준한 실천 습관 형성을 지원합니다.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="gu-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="gu-how-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <h2 id="gu-how-title" class="ox-section-title-inline">📖 사용 방법</h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <h3>1️⃣ 목표 만들기</h3>
+                <p class="ox-feature-lead">달성하고 싶은 목표를 추가하세요.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>2️⃣ 일정 설정</h3>
+                <p class="ox-feature-lead">주기와 알림을 설정하세요.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>3️⃣ 꾸준히 기록하기</h3>
+                <p class="ox-feature-lead">매일 목표를 완료하며 성장해보세요.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>4️⃣ AI 분석 확인</h3>
+                <p class="ox-feature-lead">성장 리포트와 인사이트를 확인하세요.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>5️⃣ 챌린지 참여</h3>
+                <p class="ox-feature-lead">친구들과 함께 목표를 달성해보세요.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>6️⃣ 성장 경험하기</h3>
+                <p class="ox-feature-lead">작은 성공이 더 큰 목표로 이어집니다.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="gu-premium"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="gu-premium-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <header class="ox-premium-intro">
+              <p class="ox-section-label">요금</p>
+              <h2 id="gu-premium-title" class="ox-premium-heading">
+                <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
+                프리미엄
+              </h2>
+              <p class="ox-premium-tagline">더 깊은 분석과<br />더 스마트한 목표 경험을 제공합니다.</p>
+            </header>
+
+            <div class="ox-premium-stack">
+              <section class="ox-premium-block" aria-labelledby="gu-premium-features-heading">
+                <h3 id="gu-premium-features-heading" class="ox-premium-block__title">
+                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  프리미엄 기능
+                </h3>
+                <div class="ox-premium-grid">
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      고급 통계
+                    </h4>
+                    <p class="ox-premium-card__lead">주간, 월간, 연간 목표 패턴을</p>
+                    <p class="ox-premium-card__note">분석합니다.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      AI 성장 리포트
+                    </h4>
+                    <p class="ox-premium-card__lead">사용자의 기록을 기반으로</p>
+                    <p class="ox-premium-card__note">성장 인사이트를 제공합니다.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🎯
+                      AI 목표 코치
+                    </h4>
+                    <p class="ox-premium-card__lead">성공 가능성을 예측하고</p>
+                    <p class="ox-premium-card__note">목표 전략을 제안합니다.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📈</span>
+                      상세 분석
+                    </h4>
+                    <p class="ox-premium-card__lead">시간대, 요일별 성공 패턴을</p>
+                    <p class="ox-premium-card__note">제공합니다.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      광고 제거
+                    </h4>
+                    <p class="ox-premium-card__lead">광고 없이</p>
+                    <p class="ox-premium-card__note">GoalUp을 이용할 수 있습니다.</p>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="gu-reco" class="ox-section ox-reveal-on-scroll" aria-labelledby="gu-reco-title">
+          <div class="ox-container ox-reco-head">
+            <h2 id="gu-reco-title" class="ox-premium-heading">
+              <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
+              이런 분들에게 추천
+            </h2>
+            <ul class="co-build-list" style="margin-top: 1rem">
+              <li>꾸준한 습관을 만들고 싶은 분</li>
+              <li>목표 달성을 체계적으로 관리하고 싶은 분</li>
+              <li>AI 성장 분석을 경험하고 싶은 분</li>
+              <li>동기부여가 필요한 분</li>
+              <li>챌린지를 좋아하는 분</li>
+              <li>자기계발을 꾸준히 이어가고 싶은 분</li>
+              <li>성장 과정을 기록하고 싶은 분</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="gu-closing-highlight"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="gu-closing-highlight-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <div class="ox-premium-highlight">
+              <p class="ox-premium-highlight__kicker">
+                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                한 줄 강조 문구
+              </p>
+              <p class="ox-premium-highlight__line" id="gu-closing-highlight-title">
+                목표를 기록하고 성장 습관을 만드는 경험
+              </p>
+              <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
+                작은 목표가 큰 변화를 만듭니다.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="마무리 문구">
+          <div class="ox-closing__stack"><p><strong>GoalUp</strong>과 함께<br />더 꾸준하고<br />더 의미 있는 성장을 시작하세요.</p></div>
+        </section>
+      </main>
+      <footer class="ox-footer">
+        <div class="ox-container ox-footer-inner">
+          <div class="footer-legal-links footer-legal-links--ox">
+            <a class="footer-legal" href="privacy/">개인정보 처리방침</a>
+            <span class="footer-legal-sep" aria-hidden="true">·</span>
+            <a class="footer-legal" href="terms/">이용약관</a>
+          </div>
+          <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="연락·소셜">
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="mailto:newon@newon.app"
+              aria-label="newon@newon.app · 이메일 보내기"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="22,6 12,13 2,6"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.instagram.com/newon.app?igsh=MXU5amtmNngycnJ5&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Newon Instagram · 새 탭에서 열림"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.youtube.com/@newonapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Newon YouTube · 새 탭에서 열림"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Newon TikTok · 새 탭에서 열림"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="ox-footer-meta">© GoalUp · <a href="#" class="js-go-home">Newon</a></p>
+        </div>
+      </footer>
+    </div>
+
+
+    
+
+    <div id="countup-app" class="ox-page site-shell" data-theme="light" hidden>
+      <a class="ox-skip" href="#cu-main">본문으로 건너뛰기</a>
+
+      <header class="ox-header">
+        <div class="ox-container navbar-bar navbar-bar--ox navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub navbar-hub--ox">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="Newon 홈">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
+              </a>
+              <nav class="ox-nav ox-nav--apps-only" aria-label="Newon 앱">
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
+              <button
+                type="button"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
+                id="apps-trigger-cu"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="apps-panel-cu"
+                aria-label="Newon 앱"
+              >
+                <span>Newon의 앱</span>
+                <span class="apps-flyout__chev" aria-hidden="true"></span>
+              </button>
+              <div
+                id="apps-panel-cu"
+                class="apps-flyout__panel"
+                role="menu"
+                aria-labelledby="apps-trigger-cu"
+                hidden
+              >
+                <a href="#ox-month" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/ox-month-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">OX MONTH</span>
+                    <span class="apps-flyout__desc">습관 관리 · O/X 체크 · 월간 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#subping-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/subping-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SubPing</span>
+                    <span class="apps-flyout__desc">구독 · 알림 · 스마트 관리</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">복약 알림 · 건강 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#savy-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/savy-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SAVY</span>
+                    <span class="apps-flyout__desc">지출 · 수입 · 구독 · AI 분석</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#babylog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">BabyLog</span>
+                    <span class="apps-flyout__desc">육아 기록 · 성장 · 가족 공유 · AI</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#petlog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PetLog</span>
+                    <span class="apps-flyout__desc">반려 기록 · 건강 · 가족 공유 · AI</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">절약 습관 · 소비 분석 · AI 코치</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">목표 관리 · 챌린지 · 성장 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a
+                  href="#cu-top"
+                  role="menuitem"
+                  class="apps-flyout__item apps-flyout__item--current"
+                  aria-current="page"
+                >
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">카운트 기록 · 목표 추적 · 성장</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a href="#cu-top" class="navbar-app-showcase" aria-label="CountUp 상단으로">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/countup-logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">CountUp</span>
+              <span class="navbar-app-showcase__tagline">카운트 기록 · 목표 추적 · 성장</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--ox navbar-bar__controls--brand-toolbar">
+          <div class="lang-switcher lang-switcher--ox" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-cu">언어</label>
+            <select id="lang-select-cu" class="lang-select lang-select--toolbar" data-lang-select aria-label="언어">
+              <option value="ko">한국어</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="es">Español</option>
+              <option value="pt-br">Português (Brasil)</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="hi">हिन्दी</option>
+              <option value="id">Bahasa Indonesia</option>
+            </select>
+          </div>
+          <div class="ox-header-actions">
+            <button
+              type="button"
+              class="ox-theme-toggle"
+              id="cu-theme"
+              aria-label="라이트 모드로 전환"
+              title="테마 전환"
+            >
+              ☀
+            </button>
+            <button
+              type="button"
+              class="ox-nav-toggle"
+              id="cu-nav-toggle"
+              aria-expanded="false"
+              aria-controls="cu-mobile"
+              aria-label="메뉴"
+            >
+              <span></span><span></span>
+            </button>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div id="cu-mobile" class="ox-mobile-menu ox-mobile-menu--apps-only" hidden>
+          <details class="mobile-apps-drawer mobile-apps-drawer--ox">
+            <summary class="mobile-apps-drawer__summary">Newon의 앱</summary>
+            <a href="#ox-month" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/ox-month-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">OX MONTH</span>
+                <span class="mobile-apps-drawer__hint">OX MONTH 소개</span>
+              </span>
+            </a>
+            <a href="#subping-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/subping-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SubPing</span>
+                <span class="mobile-apps-drawer__hint">SubPing 소개</span>
+              </span>
+            </a>
+            <a href="#pillmate-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">Pillmate 소개</span>
+              </span>
+            </a>
+            <a href="#savy-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/savy-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SAVY</span>
+                <span class="mobile-apps-drawer__hint">SAVY 소개</span>
+              </span>
+            </a>
+            <a href="#babylog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/babylog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">BabyLog</span>
+                <span class="mobile-apps-drawer__hint">BabyLog 소개</span>
+              </span>
+            </a>
+            <a href="#petlog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/petlog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PetLog</span>
+                <span class="mobile-apps-drawer__hint">PetLog 소개</span>
+              </span>
+            </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">PiggyUp 소개</span>
+              </span>
+            </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">GoalUp 소개</span>
+              </span>
+            </a>
+            <a href="#cu-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">CountUp · 이 화면</span>
+              </span>
+            </a>
+          </details>
+        </div>
+      </header>
+
+      <main id="cu-main">
+        <section id="cu-top" class="ox-hero ox-reveal-on-scroll is-visible">
+          <div class="ox-container ox-hero-grid">
+            <div class="ox-hero-copy">
+              <div class="ox-badge-row">
+                <p class="ox-badge">
+                  <span class="ox-badge-dot" aria-hidden="true"></span>
+                  🔢 카운트 기록 · 목표 추적 · AI 인사이트
+                </p>
+                <p class="ox-badge ox-badge--secondary">173개국 출시 · 13개 언어 지원</p>
+              </div>
+              <h1>CountUp</h1>
+              <p class="ox-subtitle">작은 기록이 모여 더 큰 성장을 만듭니다</p>
+              <p class="ox-hero-reach-summary">매일의 행동을 카운트하고 목표 달성률, 연속 기록, 성장 흐름까지 한 번에 관리하는 스마트 카운트 앱입니다.</p>
+              <div class="ox-store-release" role="status" aria-live="polite">
+                <p class="ox-store-release__label">App Store, Google Play 출시</p>
+                <div class="ox-store-badges">
+                  <a
+                    class="ox-store-badge ox-store-badge--apple"
+                    href="https://newon.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="App Store에서 CountUp(새 탭)"
+                  >
+                    <svg
+                      class="ox-store-badge__icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                      />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">Download on</span>
+                      <span class="ox-store-badge__name">App Store</span>
+                    </span>
+                  </a>
+                  <a
+                    class="ox-store-badge ox-store-badge--google"
+                    href="https://newon.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Google Play에서 CountUp(새 탭)"
+                  >
+                    <svg
+                      class="ox-store-badge__icon ox-store-badge__icon--play"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 28 28"
+                      width="28"
+                      height="28"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path fill="#00D9FF" d="M3 4.5v19l11-9.7L3 4.5z" />
+                      <path fill="#00F076" d="M15.4 14.3 25 20.8c.6-.4 1-1 1-1.8V9c0-.7-.4-1.4-1-1.8l-9.6 6.1z" />
+                      <path fill="#FFCE00" d="M15.4 13.7 25 7.2c-.6-.4-1.3-.6-2-.4L3 4.5l12.4 9.2z" />
+                      <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
+                    </svg>
+                    <span class="ox-store-badge__text">
+                      <span class="ox-store-badge__small">Get it on</span>
+                      <span class="ox-store-badge__name">Google Play</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="ox-hero-visual">
+              <div class="ox-hero-frame ox-hero-frame--logo">
+                <img
+                  class="ox-hero-logo-img"
+                  src="/countup-logo.png"
+                  alt="CountUp 앱 로고: 노란 상승 화살표"
+                  width="940"
+                  height="940"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="cu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="cu-intro-title">
+          <div class="ox-container ox-app-intro__inner">
+            <div class="ox-app-intro__copy">
+              <p class="ox-section-label">앱 소개</p>
+              <h2 id="cu-intro-title" class="ox-app-intro__title">
+                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
+                앱 소개
+              </h2>
+              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>CountUp</strong>은 반복되는 행동을 쉽고 빠르게 기록하며</p><p>꾸준한 성장 습관을 만들어가는 앱입니다.</p><p>운동, 물 마시기, 공부, 독서, 저축, 루틴 등 원하는 모든 목표를 카운트로 관리할 수 있습니다.</p><p>매일의 작은 기록부터 장기적인 성장 변화까지 한눈에 확인해보세요.</p><p>작은 카운트가 모이면 더 큰 변화가 시작됩니다.</p></div>
+              <p class="ox-app-intro__closing">오늘의 작은 기록이 미래의 큰 성장을 만듭니다.</p>
+              <p class="ox-app-intro__legal">
+                <a class="ox-app-intro__legal-link" href="privacy/">개인정보처리방침</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="cu-showcase-scroll"
+          class="ox-section ox-reveal-on-scroll"
+          aria-label="CountUp 앱 미리보기 6장입니다. 가로로 스크롤하여 모두 볼 수 있습니다."
+        >
+          <div class="ox-container">
+            <div class="sp-showcase-scroll" tabindex="0">
+              <div class="sp-showcase-scroll__track">
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/ko/cu-showcase-01.png"
+                    alt="CountUp — 작은 기록이 큰 변화를 만듭니다"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/ko/cu-showcase-02.png"
+                    alt="CountUp — 매일의 작은 행동을 기록하고 목표를 쉽게 카운트"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/ko/cu-showcase-03.png"
+                    alt="CountUp — 연속 기록과 통계로 꾸준함 확인"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/ko/cu-showcase-04.png"
+                    alt="CountUp — AI 코치, 성장 리포트, 고급 통계 프리미엄"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/ko/cu-showcase-05.png"
+                    alt="CountUp — AI 코치 데이터 기반 인사이트"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/i18n-img/ko/cu-showcase-06.png"
+                    alt="CountUp — 10초 만에 새 카운트 만들기"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="cu-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="cu-features-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">기능</p>
+              <h2 id="cu-features-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">🚀</span>
+                주요 기능
+              </h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔢</span>
+                <h3>카운트 기록</h3>
+                <p class="ox-feature-lead">원하는 행동을 쉽고 빠르게 카운트할 수 있습니다.</p>
+                <p class="ox-feature-note">하루 여러 번 기록하며 작은 실천을 쌓아갈 수 있습니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🎯</span>
+                <h3>목표 설정</h3>
+                <p class="ox-feature-lead">목표 횟수와 기간을 설정하고 진행률을 확인할 수 있습니다.</p>
+                <p class="ox-feature-note">목표까지 얼마나 남았는지 직관적으로 보여줍니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔥</span>
+                <h3>연속 기록</h3>
+                <p class="ox-feature-lead">꾸준히 기록한 날과 연속 달성 흐름을 확인할 수 있습니다.</p>
+                <p class="ox-feature-note">습관이 끊기지 않도록 동기부여를 제공합니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔔</span>
+                <h3>기록 알림</h3>
+                <p class="ox-feature-lead">원하는 시간에 기록 리마인드를 받을 수 있습니다.</p>
+                <p class="ox-feature-note">잊지 않고 매일 실천할 수 있도록 도와줍니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📊</span>
+                <h3>성장 통계</h3>
+                <p class="ox-feature-lead">일별, 주별, 월별 카운트 흐름을 분석합니다.</p>
+                <p class="ox-feature-note">내가 얼마나 성장했는지 데이터로 확인할 수 있습니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📈</span>
+                <h3>통계 시각화</h3>
+                <p class="ox-feature-lead">기록 추이와 목표 달성률을 그래프로 보여줍니다.</p>
+                <p class="ox-feature-note">성장 과정을 직관적으로 확인할 수 있습니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
+                <h3>AI 인사이트</h3>
+                <p class="ox-feature-lead">AI가 기록 패턴을 분석하여 맞춤 성장 인사이트를 제공합니다.</p>
+                <p class="ox-feature-note">더 꾸준한 습관 형성을 도와줍니다.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="cu-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="cu-how-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <h2 id="cu-how-title" class="ox-section-title-inline">📖 사용 방법</h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <h3>1️⃣ 카운트 만들기</h3>
+                <p class="ox-feature-lead">기록하고 싶은 행동이나 목표를 추가하세요.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>2️⃣ 목표 설정</h3>
+                <p class="ox-feature-lead">목표 횟수, 기간, 알림을 설정하세요.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>3️⃣ 매일 카운트하기</h3>
+                <p class="ox-feature-lead">실천할 때마다 간단하게 숫자를 올려보세요.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>4️⃣ 기록 흐름 확인</h3>
+                <p class="ox-feature-lead">캘린더와 통계로 성장 흐름을 확인하세요.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>5️⃣ AI 인사이트 확인</h3>
+                <p class="ox-feature-lead">나의 기록 패턴과 성장 포인트를 확인하세요.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>6️⃣ 꾸준히 성장하기</h3>
+                <p class="ox-feature-lead">작은 기록을 이어가며 더 큰 변화를 만들어보세요.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="cu-premium"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="cu-premium-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <header class="ox-premium-intro">
+              <p class="ox-section-label">요금</p>
+              <h2 id="cu-premium-title" class="ox-premium-heading">
+                <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
+                프리미엄
+              </h2>
+              <p class="ox-premium-tagline">더 깊은 분석과<br />더 스마트한 카운트 경험을 제공합니다.</p>
+            </header>
+
+            <div class="ox-premium-stack">
+              <section class="ox-premium-block" aria-labelledby="cu-premium-features-heading">
+                <h3 id="cu-premium-features-heading" class="ox-premium-block__title">
+                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  프리미엄 기능
+                </h3>
+                <div class="ox-premium-grid">
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      고급 통계
+                    </h4>
+                    <p class="ox-premium-card__lead">일별, 주별, 월별 기록 패턴을</p>
+                    <p class="ox-premium-card__note">더 자세히 분석합니다.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      AI 성장 리포트
+                    </h4>
+                    <p class="ox-premium-card__lead">사용자의 카운트 기록을 기반으로</p>
+                    <p class="ox-premium-card__note">성장 인사이트를 제공합니다.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🎯</span>
+                      AI 목표 코치
+                    </h4>
+                    <p class="ox-premium-card__lead">기록 패턴을 분석해</p>
+                    <p class="ox-premium-card__note">목표 달성 전략을 제안합니다.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📈</span>
+                      상세 분석
+                    </h4>
+                    <p class="ox-premium-card__lead">시간대, 요일별 기록 패턴과</p>
+                    <p class="ox-premium-card__note">성공 흐름을 제공합니다.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🧩</span>
+                      위젯 확장
+                    </h4>
+                    <p class="ox-premium-card__lead">홈 화면에서 더 편하게</p>
+                    <p class="ox-premium-card__note">카운트를 기록하고 확인할 수 있습니다.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      광고 제거
+                    </h4>
+                    <p class="ox-premium-card__lead">광고 없이</p>
+                    <p class="ox-premium-card__note">CountUp을 이용할 수 있습니다.</p>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="cu-reco" class="ox-section ox-reveal-on-scroll" aria-labelledby="cu-reco-title">
+          <div class="ox-container ox-reco-head">
+            <h2 id="cu-reco-title" class="ox-premium-heading">
+              <span class="ox-premium-heading__spark" aria-hidden="true">🔢</span>
+              이런 분들에게 추천
+            </h2>
+            <ul class="co-build-list" style="margin-top: 1rem">
+              <li>매일 작은 행동을 기록하고 싶은 분</li>
+              <li>운동, 공부, 독서, 물 마시기 등을 카운트하고 싶은 분</li>
+              <li>목표 횟수와 진행률을 관리하고 싶은 분</li>
+              <li>꾸준한 습관을 만들고 싶은 분</li>
+              <li>성장 과정을 숫자로 확인하고 싶은 분</li>
+              <li>AI 기반 기록 분석을 받고 싶은 분</li>
+              <li>간단하고 예쁜 카운트 앱을 찾는 분</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="cu-closing-highlight"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="cu-closing-highlight-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <div class="ox-premium-highlight">
+              <p class="ox-premium-highlight__kicker">
+                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                한 줄 강조 문구
+              </p>
+              <p class="ox-premium-highlight__line" id="cu-closing-highlight-title">
+                행동을 카운트하고 성장 습관을 만드는 경험
+              </p>
+              <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
+                작은 기록이 큰 변화를 만듭니다.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="마무리 문구">
+          <div class="ox-closing__stack"><p><strong>CountUp</strong>과 함께<br />더 꾸준하고<br />더 의미 있는 기록을 시작하세요.</p></div>
+        </section>
+      </main>
+      <footer class="ox-footer">
+        <div class="ox-container ox-footer-inner">
+          <div class="footer-legal-links footer-legal-links--ox">
+            <a class="footer-legal" href="privacy/">개인정보 처리방침</a>
+            <span class="footer-legal-sep" aria-hidden="true">·</span>
+            <a class="footer-legal" href="terms/">이용약관</a>
+          </div>
+          <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="연락·소셜">
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="mailto:newon@newon.app"
+              aria-label="newon@newon.app · 이메일 보내기"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="22,6 12,13 2,6"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.instagram.com/newon.app?igsh=MXU5amtmNngycnJ5&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Newon Instagram · 새 탭에서 열림"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.youtube.com/@newonapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Newon YouTube · 새 탭에서 열림"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Newon TikTok · 새 탭에서 열림"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="ox-footer-meta">© CountUp · <a href="#" class="js-go-home">Newon</a></p>
+        </div>
+      </footer>
+    </div>
+
+
+    
+
+    <div id="noting-app" class="ox-page site-shell ox-page--noting" data-theme="light" hidden>
+      <a class="ox-skip" href="#nt-main">본문으로 건너뛰기</a>
+
+      <header class="ox-header">
+        <div class="ox-container navbar-bar navbar-bar--ox navbar-bar--brand-header">
+          <div class="navbar-bar__cell navbar-bar__cell--left">
+            <div class="navbar-hub navbar-hub--ox">
+              <a class="navbar-hub__logo js-go-home" href="#" aria-label="Newon 홈">
+                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
+              </a>
+              <nav class="ox-nav ox-nav--apps-only" aria-label="Newon 앱">
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
+              <button
+                type="button"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
+                id="apps-trigger-nt"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="apps-panel-nt"
+                aria-label="Newon 앱"
+              >
+                <span>Newon의 앱</span>
+                <span class="apps-flyout__chev" aria-hidden="true"></span>
+              </button>
+              <div
+                id="apps-panel-nt"
+                class="apps-flyout__panel"
+                role="menu"
+                aria-labelledby="apps-trigger-nt"
+                hidden
+              >
+                <a href="#ox-month" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/ox-month-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">OX MONTH</span>
+                    <span class="apps-flyout__desc">습관 관리 · O/X 체크 · 월간 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#subping-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/subping-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SubPing</span>
+                    <span class="apps-flyout__desc">구독 · 알림 · 스마트 관리</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Pillmate</span>
+                    <span class="apps-flyout__desc">복약 알림 · 건강 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#savy-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/savy-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">SAVY</span>
+                    <span class="apps-flyout__desc">지출 · 수입 · 구독 · AI 분석</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#babylog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">BabyLog</span>
+                    <span class="apps-flyout__desc">육아 기록 · 성장 · 가족 공유 · AI</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#petlog-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PetLog</span>
+                    <span class="apps-flyout__desc">반려 기록 · 건강 · 가족 공유 · AI</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">PiggyUp</span>
+                    <span class="apps-flyout__desc">절약 습관 · 소비 분석 · AI 코치</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a
+                  href="#nt-top"
+                  role="menuitem"
+                  class="apps-flyout__item apps-flyout__item--current"
+                  aria-current="page"
+                >
+                  <span class="apps-flyout__icon">
+                    <img src="/noting-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">Noting</span>
+                    <span class="apps-flyout__desc">필사 · 독서 기록 · 독서 노트</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+              </nav>
+            </div>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--center">
+            <a href="#nt-top" class="navbar-app-showcase" aria-label="Noting 상단으로">
+              <span class="navbar-app-showcase__icon">
+                <img class="navbar-app-showcase__icon-img" src="/noting-logo.png" alt="" width="56" height="56" decoding="async" />
+              </span>
+              <span class="navbar-app-showcase__title">Noting</span>
+              <span class="navbar-app-showcase__tagline">필사 · 독서 기록 · 독서 노트</span>
+            </a>
+          </div>
+          <div class="navbar-bar__cell navbar-bar__cell--controls">
+          <div class="navbar-bar__controls navbar-bar__controls--ox navbar-bar__controls--brand-toolbar">
+          <div class="lang-switcher lang-switcher--ox" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-nt">언어</label>
+            <select id="lang-select-nt" class="lang-select lang-select--toolbar" data-lang-select aria-label="언어">
+              <option value="ko">한국어</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="es">Español</option>
+              <option value="pt-br">Português (Brasil)</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="hi">हिन्दी</option>
+              <option value="id">Bahasa Indonesia</option>
+            </select>
+          </div>
+          <div class="ox-header-actions">
+            <button
+              type="button"
+              class="ox-theme-toggle"
+              id="nt-theme"
+              aria-label="라이트 모드로 전환"
+              title="테마 전환"
+            >
+              ☀
+            </button>
+            <button
+              type="button"
+              class="ox-nav-toggle"
+              id="nt-nav-toggle"
+              aria-expanded="false"
+              aria-controls="nt-mobile"
+              aria-label="메뉴"
+            >
+              <span></span><span></span>
+            </button>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div id="nt-mobile" class="ox-mobile-menu ox-mobile-menu--apps-only" hidden>
+          <details class="mobile-apps-drawer mobile-apps-drawer--ox">
+            <summary class="mobile-apps-drawer__summary">Newon의 앱</summary>
+            <a href="#ox-month" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/ox-month-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">OX MONTH</span>
+                <span class="mobile-apps-drawer__hint">OX MONTH 소개</span>
+              </span>
+            </a>
+            <a href="#subping-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/subping-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SubPing</span>
+                <span class="mobile-apps-drawer__hint">SubPing 소개</span>
+              </span>
+            </a>
+            <a href="#pillmate-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Pillmate</span>
+                <span class="mobile-apps-drawer__hint">Pillmate 소개</span>
+              </span>
+            </a>
+            <a href="#savy-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/savy-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">SAVY</span>
+                <span class="mobile-apps-drawer__hint">SAVY 소개</span>
+              </span>
+            </a>
+            <a href="#babylog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/babylog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">BabyLog</span>
+                <span class="mobile-apps-drawer__hint">BabyLog 소개</span>
+              </span>
+            </a>
+            <a href="#petlog-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/petlog-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PetLog</span>
+                <span class="mobile-apps-drawer__hint">PetLog 소개</span>
+              </span>
+            </a>
+            <a href="#nt-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/noting-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">Noting</span>
+                <span class="mobile-apps-drawer__hint">Noting · 이 화면</span>
+              </span>
+            </a>
+            <a href="#piggyup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">PiggyUp</span>
+                <span class="mobile-apps-drawer__hint">PiggyUp 소개</span>
+              </span>
+            </a>
+          </details>
+        </div>
+      </header>
+
+      <main id="nt-main">
+        <section id="nt-top" class="ox-hero ox-reveal-on-scroll is-visible">
+          <div class="ox-container ox-hero-grid">
+            <div class="ox-hero-copy">
+              <div class="ox-badge-row">
+                <p class="ox-badge">
+                  <span class="ox-badge-dot" aria-hidden="true"></span>
+                  📚 필사 기록 · 독서 노트 · 명언 저장
+                </p>
+                <p class="ox-badge ox-badge--secondary">173개국 출시 · 13개 언어 지원</p>
+              </div>
+              <h1>NOTING</h1>
+              <p class="ox-subtitle">좋은 문장을 오래 기억하세요</p>
+              <p class="ox-hero-reach-summary">책을 읽으며 마음에 남은 문장과 생각을 기록하고 정리할 수 있는 필사 플랫폼입니다. 좋은 문장을 단순히 저장하는 것을 넘어 다시 읽고, 다시 생각하고, 삶에 적용할 수 있도록 도와줍니다. 필사 기록, 독서 노트, 책별 정리, 태그 관리까지 하나의 공간에서 경험해보세요.</p>
+                            <div class="ox-store-release" role="status" aria-live="polite">
+                <p class="ox-store-release__label">Web 서비스 제공</p>
+                <div class="ox-web-cta-wrap">
+                  <a
+                    class="ox-web-cta btn btn-primary"
+                    href="https://noting.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Noting 웹 서비스 시작 (새 탭)"
+                  >웹으로 시작하기</a>
+                </div>
+              </div>
+            </div>
+            <div class="ox-hero-visual">
+              <div class="ox-hero-frame ox-hero-frame--logo">
+                <img
+                  class="ox-hero-logo-img"
+                  src="/noting-logo.png"
+                  alt="Noting 앱 로고: 연필 아이콘"
+                  width="940"
+                  height="940"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="nt-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="nt-intro-title">
+          <div class="ox-container ox-app-intro__inner">
+            <div class="ox-app-intro__copy">
+              <p class="ox-section-label">앱 소개</p>
+              <h2 id="nt-intro-title" class="ox-app-intro__title">
+                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
+                앱 소개
+              </h2>
+              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>Noting</strong>은 단순한 메모 앱이 아닙니다.</p><p>책 속 문장과 나의 생각을 함께 기록하고 관리할 수 있는 필사 중심 독서 플랫폼입니다.</p><p>읽고 끝나는 독서가 아닌, 기억하고 성장하는 독서를 만들 수 있도록 설계되었습니다.</p><p>좋은 문장을 저장하고, 생각을 기록하고, 시간이 지나 다시 꺼내보며 나만의 지식 아카이브를 만들어보세요.</p><p>작은 문장 하나가 인생을 바꿀 수 있습니다.</p></div>
+              <p class="ox-app-intro__closing">좋은 문장은 기록될 때 더 오래 남습니다.</p>
+              <p class="ox-app-intro__legal">
+                <a class="ox-app-intro__legal-link" href="privacy/">개인정보처리방침</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="nt-showcase-scroll"
+          class="ox-section ox-reveal-on-scroll"
+          aria-label="Noting 앱 미리보기 6장입니다. 가로로 스크롤하여 모두 볼 수 있습니다."
+        >
+          <div class="ox-container">
+            <div class="sp-showcase-scroll" tabindex="0">
+              <div class="sp-showcase-scroll__track">
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/noting-logo.png"
+                    alt="Noting — 필사 기록 화면"
+                    width="520"
+                    height="520"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/noting-logo.png"
+                    alt="Noting — 책별 정리"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/noting-logo.png"
+                    alt="Noting — 태그 관리"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/noting-logo.png"
+                    alt="Noting — 독서 노트"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/noting-logo.png"
+                    alt="Noting — 검색"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure class="sp-showcase-scroll__item">
+                  <img
+                    src="/noting-logo.png"
+                    alt="Noting — 오늘의 문장"
+                    width="520"
+                    height="520"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="nt-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="nt-features-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">기능</p>
+              <h2 id="nt-features-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">🚀</span>
+                주요 기능
+              </h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📖</span>
+                <h3>필사 기록</h3>
+                <p class="ox-feature-lead">책을 읽으며 마음에 드는 문장을 저장할 수 있습니다.</p>
+                <p class="ox-feature-note">책 제목과 페이지를 함께 기록할 수 있습니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">📚</span>
+                <h3>책별 정리</h3>
+                <p class="ox-feature-lead">저장한 필사를 책별로 정리하고 관리할 수 있습니다.</p>
+                <p class="ox-feature-note">읽은 책의 핵심 내용을 한눈에 확인할 수 있습니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🏷️</span>
+                <h3>태그 관리</h3>
+                <p class="ox-feature-lead">습관, 성장, 경제, 사업 등 원하는 태그로 정리할 수 있습니다.</p>
+                <p class="ox-feature-note">필요한 문장을 빠르게 찾을 수 있습니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🔍</span>
+                <h3>강력한 검색</h3>
+                <p class="ox-feature-lead">기록한 모든 문장과 메모를 검색할 수 있습니다.</p>
+                <p class="ox-feature-note">수백 개의 필사도 쉽게 찾을 수 있습니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">✍️</span>
+                <h3>독서 노트</h3>
+                <p class="ox-feature-lead">필사와 함께 나만의 생각을 기록할 수 있습니다.</p>
+                <p class="ox-feature-note">문장을 단순 저장하지 않고 내 것으로 만들 수 있습니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">🎨</span>
+                <h3>다양한 글씨체</h3>
+                <p class="ox-feature-lead">취향에 맞는 글씨체를 선택해 감성적인 필사 경험을 제공합니다.</p>
+                <p class="ox-feature-note">더 편안하게 읽고 기록할 수 있습니다.</p>
+              </article>
+              <article class="ox-feature-card">
+                <span class="ox-feature-emoji" aria-hidden="true">✨</span>
+                <h3>오늘의 문장</h3>
+                <p class="ox-feature-lead">저장한 필사 중 하나를 랜덤으로 다시 보여줍니다.</p>
+                <p class="ox-feature-note">좋은 문장을 반복해서 기억할 수 있습니다.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="nt-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="nt-how-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <h2 id="nt-how-title" class="ox-section-title-inline">📖 사용 방법</h2>
+            </header>
+            <div class="ox-features">
+              <article class="ox-feature-card">
+                <h3>1️⃣ 책 등록</h3>
+                <p class="ox-feature-lead">읽고 있는 책을 추가하세요.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>2️⃣ 문장 저장</h3>
+                <p class="ox-feature-lead">마음에 드는 문장을 기록하세요.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>3️⃣ 태그 선택</h3>
+                <p class="ox-feature-lead">주제에 맞는 태그를 지정하세요.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>4️⃣ 생각 작성</h3>
+                <p class="ox-feature-lead">문장에 대한 나의 생각을 기록하세요.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>5️⃣ 다시 읽기</h3>
+                <p class="ox-feature-lead">저장한 문장을 언제든 꺼내보세요.</p>
+              </article>
+              <article class="ox-feature-card">
+                <h3>6️⃣ 성장 기록</h3>
+                <p class="ox-feature-lead">독서와 함께 쌓인 생각을 확인하세요.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="nt-premium"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="nt-premium-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <header class="ox-premium-intro">
+              <p class="ox-section-label">요금</p>
+              <h2 id="nt-premium-title" class="ox-premium-heading">
+                <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
+                프리미엄
+              </h2>
+              <p class="ox-premium-tagline">더 깊이 있는 독서 경험을 제공합니다.</p>
+            </header>
+
+            <div class="ox-premium-stack">
+              <section class="ox-premium-block" aria-labelledby="nt-premium-features-heading">
+                <h3 id="nt-premium-features-heading" class="ox-premium-block__title">
+                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  🔒 프리미엄 기능
+                </h3>
+                <div class="ox-premium-grid">
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      🤖 AI 독서 요약
+                    </h4>
+                    <p class="ox-premium-card__lead">필사와 메모를 기반으로 핵심 내용을 요약합니다.</p>
+                    <p class="ox-premium-card__note"></p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      📊 독서 통계
+                    </h4>
+                    <p class="ox-premium-card__lead">월별 독서량과 필사 기록을 분석합니다.</p>
+                    <p class="ox-premium-card__note"></p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
+                      ☁️ 클라우드 백업
+                    </h4>
+                    <p class="ox-premium-card__lead">모든 기록을 안전하게 저장하고 동기화합니다.</p>
+                    <p class="ox-premium-card__note"></p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📈</span>
+                      🎨 프리미엄 글씨체
+                    </h4>
+                    <p class="ox-premium-card__lead">다양한 감성 글꼴을 사용할 수 있습니다.</p>
+                    <p class="ox-premium-card__note"></p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      📄 PDF 내보내기
+                    </h4>
+                    <p class="ox-premium-card__lead">필사 노트를 PDF로 저장할 수 있습니다.</p>
+                    <p class="ox-premium-card__note"></p>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="nt-reco" class="ox-section ox-reveal-on-scroll" aria-labelledby="nt-reco-title">
+          <div class="ox-container ox-reco-head">
+            <h2 id="nt-reco-title" class="ox-premium-heading">
+              <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
+              이런 분들에게 추천
+            </h2>
+            <ul class="co-build-list" style="margin-top: 1rem">
+              <li>독서를 꾸준히 기록하고 싶은 분</li>
+              <li>좋은 문장을 오래 기억하고 싶은 분</li>
+              <li>필사를 좋아하는 분</li>
+              <li>독서 노트를 체계적으로 관리하고 싶은 분</li>
+              <li>자기계발 책을 자주 읽는 분</li>
+              <li>생각을 글로 정리하는 습관을 만들고 싶은 분</li>
+              <li>책을 읽고도 금방 잊어버리는 분</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="nt-closing-highlight"
+          class="ox-section ox-premium ox-reveal-on-scroll"
+          aria-labelledby="nt-closing-highlight-title"
+        >
+          <div class="ox-container ox-premium-layout">
+            <div class="ox-premium-highlight">
+              <p class="ox-premium-highlight__kicker">
+                <span class="ox-premium-emoji" aria-hidden="true">📚</span>
+                읽고 끝나는 독서가 아닌
+              </p>
+              <p class="ox-premium-highlight__line" id="nt-closing-highlight-title">
+                기록하고 성장하는 독서
+              </p>
+              <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
+                좋은 문장이 삶의 자산이 됩니다.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="마무리 문구">
+          <div class="ox-closing__stack"><p><strong>NOTING</strong>과 함께<br />좋은 문장을 모으고<br />생각을 기록하세요.</p></div>
+          <p class="ox-closing__cta">
+            <a
+              class="ox-web-cta btn btn-primary"
+              href="https://noting.app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >지금 시작하기</a>
+          </p>
+        </section>
+      </main>
+      <footer class="ox-footer">
+        <div class="ox-container ox-footer-inner">
+          <div class="footer-legal-links footer-legal-links--ox">
+            <a class="footer-legal" href="privacy/">개인정보 처리방침</a>
+            <span class="footer-legal-sep" aria-hidden="true">·</span>
+            <a class="footer-legal" href="terms/">이용약관</a>
+          </div>
+          <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="연락·소셜">
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="mailto:newon@newon.app"
+              aria-label="newon@newon.app · 이메일 보내기"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="22,6 12,13 2,6"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.instagram.com/newon.app?igsh=MXU5amtmNngycnJ5&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Newon Instagram · 새 탭에서 열림"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.youtube.com/@newonapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Newon YouTube · 새 탭에서 열림"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </a>
+            <a
+              class="footer-icon-btn footer-icon-btn--ox"
+              href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Newon TikTok · 새 탭에서 열림"
+            >
+              <svg
+                class="footer-icon-btn__svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="ox-footer-meta">© Noting · <a href="#" class="js-go-home">Newon</a></p>
+        </div>
+      </footer>
+    </div>
+
+
+    
+
     <div id="subping-app" class="ox-page site-shell" data-theme="light" hidden>
       <a class="ox-skip" href="#sp-main">본문으로 건너뛰기</a>
 
@@ -5026,6 +7618,26 @@
                   <span class="apps-flyout__meta">
                     <span class="apps-flyout__name">PiggyUp</span>
                     <span class="apps-flyout__desc">절약 습관 · 소비 분석 · AI 코치</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#goalup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">GoalUp</span>
+                    <span class="apps-flyout__desc">목표 관리 · 챌린지 · 성장 기록</span>
+                  </span>
+                  <span class="apps-flyout__go" aria-hidden="true">→</span>
+                </a>
+                <a href="#countup-app" role="menuitem" class="apps-flyout__item">
+                  <span class="apps-flyout__icon">
+                    <img src="/countup-logo.png" alt="" width="44" height="44" />
+                  </span>
+                  <span class="apps-flyout__meta">
+                    <span class="apps-flyout__name">CountUp</span>
+                    <span class="apps-flyout__desc">카운트 기록 · 목표 추적 · 성장</span>
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
                 </a>
@@ -5149,6 +7761,24 @@
                 <span class="mobile-apps-drawer__hint">PiggyUp 소개 보기</span>
               </span>
             </a>
+            <a href="#goalup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/goalup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">GoalUp</span>
+                <span class="mobile-apps-drawer__hint">GoalUp 소개 보기</span>
+              </span>
+            </a>
+            <a href="#countup-app" class="mobile-apps-drawer__item">
+              <span class="mobile-apps-drawer__icon">
+                <img src="/countup-logo.png" alt="" width="36" height="36" />
+              </span>
+              <span class="mobile-apps-drawer__text">
+                <span class="mobile-apps-drawer__name">CountUp</span>
+                <span class="mobile-apps-drawer__hint">CountUp 소개 보기</span>
+              </span>
+            </a>
           </details>
         </div>
       </header>
@@ -5162,11 +7792,10 @@
                   <span class="ox-badge-dot" aria-hidden="true"></span>
                   구독 관리 · 정기결제 · 지출 분석
                 </p>
-                <p class="ox-badge ox-badge--secondary">173개국 출시 · 13개 언어</p>
               </div>
               <h1>SubPing</h1>
               <p class="ox-subtitle">매달 빠져나가는 돈, 한눈에 확인하세요</p>
-              <p class="ox-hero-reach-summary">전 세계 사용자를 위한 구독·정기결제 관리 앱. 173개국에 출시되어 있으며, 한국어·영어·일본어를 포함해 13개 언어를 지원합니다.</p>
+              <p class="ox-hero-reach-summary">넷플릭스·통신비·보험까지 모든 정기 지출을 한곳에서 정리하고, 결제 일정과 이번 달 지출을 놓치지 않게 알려주는 구독 관리 앱입니다.</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">App Store, Google Play 출시</p>
                 <div class="ox-store-badges">
@@ -5175,7 +7804,7 @@
                     href="https://newon.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="App Store에서 OX MONTH(새 탭)"
+                    aria-label="App Store에서 SubPing(새 탭)"
                   >
                     <svg
                       class="ox-store-badge__icon"
@@ -5198,10 +7827,10 @@
                   </a>
                   <a
                     class="ox-store-badge ox-store-badge--google"
-                    href="https://newon.app"
+                    href="https://play.google.com/store/apps/details?id=com.newon.subping&pcampaignid=web_share"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Google Play에서 OX MONTH(새 탭)"
+                    aria-label="Google Play에서 SubPing(새 탭)"
                   >
                     <svg
                       class="ox-store-badge__icon ox-store-badge__icon--play"
@@ -5610,7 +8239,7 @@
     <script>
       (function () {
         var NEWON_LANG_DIR = "ko";
-        var TITLE_HOME = "Newon — 새로운 것을 켜다";
+        var TITLE_HOME = "Newon | 아이디어를 현실로 만드는 앱 스튜디오";
         var TITLE_OX = "OX MONTH — 습관을 O/X로 기록하세요";
         var TITLE_SP = "SubPing — 구독과 정기 결제를 한눈에";
         var TITLE_PILLMATE = "Pillmate — 복약 관리 · Newon";
@@ -5618,6 +8247,9 @@
         var TITLE_BABYLOG = "BabyLog — 육아 기록·성장 · Newon";
         var TITLE_PETLOG = "PetLog — 반려 기록·건강 · Newon";
         var TITLE_PIGGYUP = "PiggyUp — 절약 습관·소비 분석 · Newon";
+        var TITLE_NOTING = "Noting — 필사·독서 기록 · Newon";
+        var TITLE_GOALUP = "GoalUp — 목표 관리·챌린지 · Newon";
+        var TITLE_COUNTUP = "CountUp — 카운트·목표 추적 · Newon";
         var LABEL_MENU_OPEN = "메뉴 열기";
         var LABEL_MENU_CLOSE = "메뉴 닫기";
         var LABEL_THEME_LIGHT = "라이트 모드로 전환";
@@ -5630,6 +8262,9 @@
         var elBl = document.getElementById("babylog-app");
         var elPl = document.getElementById("petlog-app");
         var elPu = document.getElementById("piggyup-app");
+        var elNt = document.getElementById("noting-app");
+        var elGu = document.getElementById("goalup-app");
+        var elCu = document.getElementById("countup-app");
         var themeKey = "ox-month-theme";
         var themeKeySp = "subping-app-theme";
         var themeKeyPm = "pillmate-app-theme";
@@ -5637,6 +8272,9 @@
         var themeKeyBl = "babylog-app-theme";
         var themeKeyPl = "petlog-app-theme";
         var themeKeyPu = "piggyup-app-theme";
+        var themeKeyNt = "noting-app-theme";
+        var themeKeyGu = "goalup-app-theme";
+        var themeKeyCu = "countup-app-theme";
         /** 하나로 저장: 어느 앱에서 바꿔도 전 앱 설명 화면에 동일 테마 적용 */
         var themeKeyUnified = "newon-app-theme";
         function bindNavbarScrollFade() {
@@ -5782,6 +8420,67 @@
           });
         }
 
+
+
+        function staggerGuReveals() {
+          if (!elGu) return;
+          requestAnimationFrame(function () {
+            var reds = elGu.querySelectorAll(".ox-reveal-on-scroll:not(.is-visible)");
+            if (!reds.length) return;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              reds.forEach(function (el) {
+                el.classList.add("is-visible");
+              });
+            } else {
+              reds.forEach(function (el, i) {
+                setTimeout(function () {
+                  el.classList.add("is-visible");
+                }, 50 + i * 75);
+              });
+            }
+          });
+        }
+
+
+        function staggerCuReveals() {
+          if (!elCu) return;
+          requestAnimationFrame(function () {
+            var reds = elCu.querySelectorAll(".ox-reveal-on-scroll:not(.is-visible)");
+            if (!reds.length) return;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              reds.forEach(function (el) {
+                el.classList.add("is-visible");
+              });
+            } else {
+              reds.forEach(function (el, i) {
+                setTimeout(function () {
+                  el.classList.add("is-visible");
+                }, 50 + i * 75);
+              });
+            }
+          });
+        }
+
+
+        function staggerNtReveals() {
+          if (!elNt) return;
+          requestAnimationFrame(function () {
+            var reds = elNt.querySelectorAll(".ox-reveal-on-scroll:not(.is-visible)");
+            if (!reds.length) return;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              reds.forEach(function (el) {
+                el.classList.add("is-visible");
+              });
+            } else {
+              reds.forEach(function (el, i) {
+                setTimeout(function () {
+                  el.classList.add("is-visible");
+                }, 50 + i * 75);
+              });
+            }
+          });
+        }
+
         function closeMobileMenus() {
           var t = document.querySelector(".nav-toggle");
           var m = document.getElementById("mobile-nav");
@@ -5892,6 +8591,30 @@
           btn.textContent = dark ? "☀" : "🌙";
         }
 
+        function syncNtThemeButton() {
+          var btn = document.getElementById("nt-theme");
+          if (!btn || !elNt) return;
+          var dark = elNt.getAttribute("data-theme") === "dark";
+          btn.setAttribute("aria-label", dark ? LABEL_THEME_LIGHT : LABEL_THEME_DARK);
+          btn.textContent = dark ? "☀" : "🌙";
+        }
+
+        function syncGuThemeButton() {
+          var btn = document.getElementById("gu-theme");
+          if (!btn || !elGu) return;
+          var dark = elGu.getAttribute("data-theme") === "dark";
+          btn.setAttribute("aria-label", dark ? LABEL_THEME_LIGHT : LABEL_THEME_DARK);
+          btn.textContent = dark ? "☀" : "🌙";
+        }
+
+        function syncCuThemeButton() {
+          var btn = document.getElementById("cu-theme");
+          if (!btn || !elCu) return;
+          var dark = elCu.getAttribute("data-theme") === "dark";
+          btn.setAttribute("aria-label", dark ? LABEL_THEME_LIGHT : LABEL_THEME_DARK);
+          btn.textContent = dark ? "☀" : "🌙";
+        }
+
         function getSystemThemePreference() {
           try {
             if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -5912,7 +8635,7 @@
           } catch (e) {}
 
           try {
-            var keys = [themeKey, themeKeySp, themeKeyPm, themeKeySv, themeKeyBl, themeKeyPl, themeKeyPu];
+            var keys = [themeKey, themeKeySp, themeKeyPm, themeKeySv, themeKeyBl, themeKeyPl, themeKeyPu, themeKeyGu, themeKeyCu];
             var vals = [];
             var i;
             var j;
@@ -5975,6 +8698,9 @@
           if (elBl) elBl.setAttribute("data-theme", theme);
           if (elPl) elPl.setAttribute("data-theme", theme);
           if (elPu) elPu.setAttribute("data-theme", theme);
+          if (elNt) elNt.setAttribute("data-theme", theme);
+          if (elGu) elGu.setAttribute("data-theme", theme);
+          if (elCu) elCu.setAttribute("data-theme", theme);
         }
 
         function syncAllAppThemeButtons() {
@@ -5985,6 +8711,8 @@
           syncBlThemeButton();
           syncPlThemeButton();
           syncPuThemeButton();
+          syncGuThemeButton();
+          syncCuThemeButton();
         }
 
         function applyThemesFromStorage() {
@@ -6010,6 +8738,9 @@
             localStorage.removeItem(themeKeyBl);
             localStorage.removeItem(themeKeyPl);
             localStorage.removeItem(themeKeyPu);
+            localStorage.removeItem(themeKeyNt);
+            localStorage.removeItem(themeKeyGu);
+            localStorage.removeItem(themeKeyCu);
           } catch (e) {}
           setAllAppRootsTheme(theme);
           syncAllAppThemeButtons();
@@ -6027,6 +8758,9 @@
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
           if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
           document.title = options.title != null ? options.title : TITLE_HOME;
           closeMobileMenus();
           elOx.querySelectorAll(".ox-reveal-on-scroll").forEach(function (el) {
@@ -6095,9 +8829,9 @@
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
           if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
           document.title = TITLE_OX;
           closeMobileMenus();
           requestAnimationFrame(function () {
@@ -6115,9 +8849,9 @@
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
           if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
           document.title = TITLE_SP;
           closeMobileMenus();
           requestAnimationFrame(function () {
@@ -6139,9 +8873,9 @@
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
           if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
           document.title = TITLE_PILLMATE;
           closeMobileMenus();
           requestAnimationFrame(function () {
@@ -6162,9 +8896,9 @@
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
           if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
           elSv.hidden = false;
           document.title = TITLE_SAVY;
           closeMobileMenus();
@@ -6186,9 +8920,9 @@
           if (elSv) elSv.hidden = true;
           if (elPl) elPl.hidden = true;
           if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
-          if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
           elBl.hidden = false;
           document.title = TITLE_BABYLOG;
           closeMobileMenus();
@@ -6230,12 +8964,87 @@
           if (elSv) elSv.hidden = true;
           if (elBl) elBl.hidden = true;
           if (elPl) elPl.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
           elPu.hidden = false;
           document.title = TITLE_PIGGYUP;
           closeMobileMenus();
           requestAnimationFrame(function () {
             window.scrollTo(0, 0);
             staggerPuReveals();
+          });
+        }
+
+        function showGoalup() {
+          if (!elGu) {
+            showHome();
+            return;
+          }
+          elHome.hidden = true;
+          elOx.hidden = true;
+          elSp.hidden = true;
+          if (elPm) elPm.hidden = true;
+          if (elSv) elSv.hidden = true;
+          if (elBl) elBl.hidden = true;
+          if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elCu) elCu.hidden = true;
+          elGu.hidden = false;
+          document.title = TITLE_GOALUP;
+          closeMobileMenus();
+          requestAnimationFrame(function () {
+            window.scrollTo(0, 0);
+            staggerGuReveals();
+          });
+        }
+
+        function showCountup() {
+          if (!elCu) {
+            showHome();
+            return;
+          }
+          elHome.hidden = true;
+          elOx.hidden = true;
+          elSp.hidden = true;
+          if (elPm) elPm.hidden = true;
+          if (elSv) elSv.hidden = true;
+          if (elBl) elBl.hidden = true;
+          if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elNt) elNt.hidden = true;
+          if (elGu) elGu.hidden = true;
+          elCu.hidden = false;
+          document.title = TITLE_COUNTUP;
+          closeMobileMenus();
+          requestAnimationFrame(function () {
+            window.scrollTo(0, 0);
+            staggerCuReveals();
+          });
+        }
+
+
+        function showNoting() {
+          if (!elNt) {
+            showHome();
+            return;
+          }
+          elHome.hidden = true;
+          elOx.hidden = true;
+          elSp.hidden = true;
+          if (elPm) elPm.hidden = true;
+          if (elSv) elSv.hidden = true;
+          if (elBl) elBl.hidden = true;
+          if (elPl) elPl.hidden = true;
+          if (elPu) elPu.hidden = true;
+          if (elGu) elGu.hidden = true;
+          if (elCu) elCu.hidden = true;
+          elNt.hidden = false;
+          document.title = TITLE_NOTING;
+          closeMobileMenus();
+          requestAnimationFrame(function () {
+            window.scrollTo(0, 0);
+            staggerNtReveals();
           });
         }
 
@@ -6255,6 +9064,12 @@
             showPetlog();
           } else if (h === "#piggyup-app" || h === "#piggyup") {
             showPiggyup();
+          } else if (h === "#goalup-app" || h === "#goalup") {
+            showGoalup();
+          } else if (h === "#countup-app" || h === "#countup") {
+            showCountup();
+          } else if (h === "#noting-app" || h === "#noting") {
+            showNoting();
           } else {
             showHome();
           }
@@ -6478,6 +9293,7 @@
             });
           });
         }
+
 
         function closeAllAppFlyouts() {
           document.querySelectorAll("[data-apps-flyout] .apps-flyout__trigger").forEach(function (b) {

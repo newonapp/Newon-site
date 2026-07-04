@@ -97,8 +97,8 @@ export const svEn = {
   drawerSp: "SubPing intro",
   drawerPm: "Pillmate intro",
   drawerSv: "SAVY · this screen",
-  appStoreUrl: "https://newon.app",
-  googlePlayUrl: "https://newon.app",
+  appStoreUrl: "https://apps.apple.com/kr/app/savy-%EC%8A%A4%EB%A7%88%ED%8A%B8-ai-%EA%B0%80%EA%B3%84%EB%B6%80/id6768017037",
+  googlePlayUrl: "https://play.google.com/store/apps/details?id=com.newon.savy&pcampaignid=web_share",
   appStoreBadgeAria: "SAVY on the App Store (opens in a new tab)",
   googlePlayBadgeAria: "SAVY on Google Play (opens in a new tab)",
 };
@@ -199,8 +199,8 @@ export const svKo = {
   drawerSp: "SubPing 소개",
   drawerPm: "Pillmate 소개",
   drawerSv: "SAVY · 이 화면",
-  appStoreUrl: "https://newon.app",
-  googlePlayUrl: "https://newon.app",
+  appStoreUrl: "https://apps.apple.com/kr/app/savy-%EC%8A%A4%EB%A7%88%ED%8A%B8-ai-%EA%B0%80%EA%B3%84%EB%B6%80/id6768017037",
+  googlePlayUrl: "https://play.google.com/store/apps/details?id=com.newon.savy&pcampaignid=web_share",
   appStoreBadgeAria: "App Store에서 SAVY(새 탭)",
   googlePlayBadgeAria: "Google Play에서 SAVY(새 탭)",
 };

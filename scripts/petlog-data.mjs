@@ -126,8 +126,8 @@ export const plKo = {
   drawerSv: "SAVY 소개",
   drawerBl: "BabyLog 소개 보기",
   drawerPl: "PetLog · 이 화면",
-  appStoreUrl: "https://newon.app",
-  googlePlayUrl: "https://newon.app",
+  appStoreUrl: "https://apps.apple.com/kr/app/petlog-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-ai-%EB%B0%98%EB%A0%A4-%EA%B8%B0%EB%A1%9D/id6770971033",
+  googlePlayUrl: "https://play.google.com/store/apps/details?id=com.newon.petlog&pcampaignid=web_share",
   appStoreBadgeAria: "App Store에서 PetLog(새 탭)",
   googlePlayBadgeAria: "Google Play에서 PetLog(새 탭)",
 };
@@ -250,8 +250,8 @@ export const plEn = {
   drawerSv: "SAVY intro",
   drawerBl: "Open BabyLog intro",
   drawerPl: "PetLog · this screen",
-  appStoreUrl: "https://newon.app",
-  googlePlayUrl: "https://newon.app",
+  appStoreUrl: "https://apps.apple.com/kr/app/petlog-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-ai-%EB%B0%98%EB%A0%A4-%EA%B8%B0%EB%A1%9D/id6770971033",
+  googlePlayUrl: "https://play.google.com/store/apps/details?id=com.newon.petlog&pcampaignid=web_share",
   appStoreBadgeAria: "PetLog on the App Store (new tab)",
   googlePlayBadgeAria: "PetLog on Google Play (new tab)",
 };
