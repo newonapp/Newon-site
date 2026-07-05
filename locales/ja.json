@@ -137,7 +137,7 @@
     "statCard0Html": "<span class=\"co-stats-card__value\">10+</span><span class=\"co-stats-card__label\">アプリ公開</span>",
     "statCard1Html": "<span class=\"co-stats-card__value\">177</span><span class=\"co-stats-card__label\">サービス国</span>",
     "statCard2Html": "<span class=\"co-stats-card__value\">13</span><span class=\"co-stats-card__label\">対応言語</span>",
-    "statCard3Html": "<span class=\"co-stats-card__value\">1</span><span class=\"co-stats-card__label\">統合アカウント</span>",
+    "statCard3Html": "<span class=\"co-stats-card__value\">100+</span><span class=\"co-stats-card__label\">累計インストール</span>",
     "statNewonPlusHtml": "<strong>Newon+</strong>ひとつのサブスク<br />すべての Newon アプリ"
   },
   "footer": {

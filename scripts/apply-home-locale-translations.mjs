@@ -57,7 +57,7 @@ const PATCHES = {
       statCard2Html:
         "<span class=\"co-stats-card__value\">13</span><span class=\"co-stats-card__label\">対応言語</span>",
       statCard3Html:
-        "<span class=\"co-stats-card__value\">1</span><span class=\"co-stats-card__label\">統合アカウント</span>",
+        "<span class=\"co-stats-card__value\">100+</span><span class=\"co-stats-card__label\">累計インストール</span>",
       statNewonPlusHtml: "<strong>Newon+</strong>ひとつのサブスク<br />すべての Newon アプリ",
     },
     footer: {
@@ -114,7 +114,7 @@ const PATCHES = {
       statCard2Html:
         "<span class=\"co-stats-card__value\">13</span><span class=\"co-stats-card__label\">Idiomas</span>",
       statCard3Html:
-        "<span class=\"co-stats-card__value\">1</span><span class=\"co-stats-card__label\">Cuenta integrada</span>",
+        "<span class=\"co-stats-card__value\">100+</span><span class=\"co-stats-card__label\">Instalaciones</span>",
       statNewonPlusHtml: "<strong>Newon+</strong>Una suscripción<br />Para todas las apps",
     },
     footer: {
@@ -171,7 +171,7 @@ const PATCHES = {
       statCard2Html:
         "<span class=\"co-stats-card__value\">13</span><span class=\"co-stats-card__label\">Idiomas</span>",
       statCard3Html:
-        "<span class=\"co-stats-card__value\">1</span><span class=\"co-stats-card__label\">Conta integrada</span>",
+        "<span class=\"co-stats-card__value\">100+</span><span class=\"co-stats-card__label\">Instalações</span>",
       statNewonPlusHtml: "<strong>Newon+</strong>Uma assinatura<br />Para todos os apps",
     },
     footer: {
@@ -228,7 +228,7 @@ const PATCHES = {
       statCard2Html:
         "<span class=\"co-stats-card__value\">13</span><span class=\"co-stats-card__label\">Langues</span>",
       statCard3Html:
-        "<span class=\"co-stats-card__value\">1</span><span class=\"co-stats-card__label\">Compte intégré</span>",
+        "<span class=\"co-stats-card__value\">100+</span><span class=\"co-stats-card__label\">Installations</span>",
       statNewonPlusHtml: "<strong>Newon+</strong>Un abonnement<br />Pour toutes les apps",
     },
     footer: {
@@ -285,7 +285,7 @@ const PATCHES = {
       statCard2Html:
         "<span class=\"co-stats-card__value\">13</span><span class=\"co-stats-card__label\">Sprachen</span>",
       statCard3Html:
-        "<span class=\"co-stats-card__value\">1</span><span class=\"co-stats-card__label\">Integriertes Konto</span>",
+        "<span class=\"co-stats-card__value\">100+</span><span class=\"co-stats-card__label\">Installationen</span>",
       statNewonPlusHtml: "<strong>Newon+</strong>Ein Abo<br />Für alle Apps",
     },
     footer: {
@@ -342,7 +342,7 @@ const PATCHES = {
       statCard2Html:
         "<span class=\"co-stats-card__value\">13</span><span class=\"co-stats-card__label\">भाषाएँ</span>",
       statCard3Html:
-        "<span class=\"co-stats-card__value\">1</span><span class=\"co-stats-card__label\">एकीकृत खाता</span>",
+        "<span class=\"co-stats-card__value\">100+</span><span class=\"co-stats-card__label\">कुल इंस्टॉल</span>",
       statNewonPlusHtml: "<strong>Newon+</strong>एक सदस्यता<br />हर Newon ऐप के लिए",
     },
     footer: {
@@ -399,7 +399,7 @@ const PATCHES = {
       statCard2Html:
         "<span class=\"co-stats-card__value\">13</span><span class=\"co-stats-card__label\">Bahasa</span>",
       statCard3Html:
-        "<span class=\"co-stats-card__value\">1</span><span class=\"co-stats-card__label\">Akun terintegrasi</span>",
+        "<span class=\"co-stats-card__value\">100+</span><span class=\"co-stats-card__label\">Instalasi</span>",
       statNewonPlusHtml: "<strong>Newon+</strong>Satu langganan<br />Untuk semua aplikasi",
     },
     footer: {

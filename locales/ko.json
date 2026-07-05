@@ -131,7 +131,7 @@
     "statCard0Html": "<span class=\"co-stats-card__value\">10+</span><span class=\"co-stats-card__label\">앱 출시</span>",
     "statCard1Html": "<span class=\"co-stats-card__value\">177</span><span class=\"co-stats-card__label\">서비스 국가</span>",
     "statCard2Html": "<span class=\"co-stats-card__value\">13</span><span class=\"co-stats-card__label\">지원 언어</span>",
-    "statCard3Html": "<span class=\"co-stats-card__value\">1</span><span class=\"co-stats-card__label\">통합 계정</span>",
+    "statCard3Html": "<span class=\"co-stats-card__value\">100+</span><span class=\"co-stats-card__label\">누적 설치</span>",
     "statNewonPlusHtml": "<strong>Newon+</strong>하나의 구독<br />모든 Newon 앱",
     "subpingTitle": "SubPing",
     "subpingLead": "구독과 결제 일정을 정리하고, 알림으로 놓치지 않게 돕는 앱입니다.",
