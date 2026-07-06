@@ -9,8 +9,8 @@ const LOCALES = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "l
 const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
 
 const NEWON_PLUS_DESC = {
-  ko: "패키지 구독 · 프리미엄 혜택 · 통합 관리",
-  en: "Package subscription · Premium benefits · Unified management",
+  ko: "Newon Membership · 통합 계정 · 앱 허브",
+  en: "Newon Membership · Unified account · App hub",
   ja: "パッケージ加入 · プレミアム特典 · 統合管理",
   es: "Suscripción paquete · Beneficios premium · Gestión integrada",
   "pt-br": "Assinatura pacote · Benefícios premium · Gestão integrada",

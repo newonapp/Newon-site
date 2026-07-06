@@ -180,7 +180,6 @@
                   <span class="ox-badge-dot" aria-hidden="true"></span>
                   {{t:pm.badge}}
                 </p>
-                <p class="ox-badge ox-badge--secondary">{{t:ox.globalReachBadge}}</p>
               </div>
               <h1>{{t:pm.h1}}</h1>
               <p class="ox-subtitle">{{html:pm.subtitleHtml}}</p>
@@ -249,8 +248,7 @@
                   class="ox-hero-logo-img"
                   src="/pillmate-logo.png"
                   alt="{{t:pm.heroLogoAlt}}"
-                  width="940"
-                  height="940"
+                  width="512" height="512"
                 />
               </div>
             </div>
@@ -258,14 +256,15 @@
         </section>
         <section id="pm-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pm-intro-title">
           <div class="ox-container ox-app-intro__inner">
-            <div class="ox-app-intro__copy">
+            <header class="ox-app-intro__head">
               <p class="ox-section-label">{{t:pm.introLabel}}</p>
               <h2 id="pm-intro-title" class="ox-app-intro__title">
                 <span class="ox-app-intro__title-icon" aria-hidden="true">💊</span>
                 {{t:pm.introTitle}}
               </h2>
-              <div class="ox-app-intro__body">{{html:pm.introHtml}}</div>
-              <p class="ox-app-intro__closing">{{t:pm.introClosing}}</p>
+            </header>
+            <div class="ox-app-intro__panel">
+              <div class="ox-app-intro__body">{{html:pm.introHtml}}<p class="ox-app-intro__closing">{{t:pm.introClosing}}</p></div>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">{{t:ui.privacyPolicyLink}}</a>
               </p>
@@ -355,7 +354,49 @@
               </div>
             </div>
           </div>
+        </section><section id="pm-reviews" class="ox-section ox-reviews ox-reveal-on-scroll" aria-labelledby="pm-reviews-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">{{t:pm.reviewsLabel}}</p>
+              <h2 id="pm-reviews-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">💬</span>
+                {{t:pm.reviewsTitle}}
+              </h2>
+            </header>
+            <div class="ox-reviews-grid">
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--a" aria-hidden="true">{{t:pm.review1Emoji}}</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;{{t:pm.review1Quote}}&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; {{t:pm.review1Meta}}</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--b" aria-hidden="true">{{t:pm.review2Emoji}}</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;{{t:pm.review2Quote}}&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; {{t:pm.review2Meta}}</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--c" aria-hidden="true">{{t:pm.review3Emoji}}</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;{{t:pm.review3Quote}}&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; {{t:pm.review3Meta}}</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--d" aria-hidden="true">{{t:pm.review4Emoji}}</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;{{t:pm.review4Quote}}&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; {{t:pm.review4Meta}}</footer>
+              </article>
+            </div>
+          </div>
         </section>
+
+        
 
         <section id="pm-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="pm-features-title">
           <div class="ox-container">
@@ -467,7 +508,7 @@
                 <div class="ox-premium-grid">
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">💊</span>
                       {{t:pm.prem1Title}}
                     </h4>
                     <p class="ox-premium-card__lead">{{t:pm.prem1Lead}}</p>
@@ -483,7 +524,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🎨</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">📅</span>
                       {{t:pm.prem3Title}}
                     </h4>
                     <p class="ox-premium-card__lead">{{t:pm.prem3Lead}}</p>
@@ -491,11 +532,43 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">📦</span>
                       {{t:pm.prem4Title}}
                     </h4>
                     <p class="ox-premium-card__lead">{{t:pm.prem4Lead}}</p>
                     <p class="ox-premium-card__note">{{t:pm.prem4Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">👨‍👩‍👧</span>
+                      {{t:pm.prem5Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:pm.prem5Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:pm.prem5Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
+                      {{t:pm.prem6Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:pm.prem6Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:pm.prem6Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">☁️</span>
+                      {{t:pm.prem7Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:pm.prem7Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:pm.prem7Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      {{t:pm.prem8Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:pm.prem8Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:pm.prem8Note}}</p>
                   </article>
                 </div>
               </section>
@@ -509,12 +582,13 @@
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
               {{t:pm.recoTitle}}
             </h2>
-            <ul class="co-build-list" style="margin-top: 1rem">
+            <ul class="co-build-list">
               <li>{{t:pm.reco1}}</li>
               <li>{{t:pm.reco2}}</li>
               <li>{{t:pm.reco3}}</li>
               <li>{{t:pm.reco4}}</li>
               <li>{{t:pm.reco5}}</li>
+              <li>{{t:pm.reco6}}</li>
             </ul>
           </div>
         </section>
@@ -527,18 +601,21 @@
           <div class="ox-container ox-premium-layout">
             <div class="ox-premium-highlight">
               <p class="ox-premium-highlight__kicker">
-                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                <span class="ox-premium-emoji" aria-hidden="true">💊</span>
                 {{t:pm.premHiKicker}}
               </p>
               <p class="ox-premium-highlight__line" id="pm-closing-highlight-title">
                 {{t:pm.premHiLine}}
               </p>
+              <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
+                {{html:pm.premHiSub}}
+              </p>
             </div>
           </div>
         </section>
 
-        <section class="ox-closing ox-reveal-on-scroll" aria-label="{{t:pm.closing}}">
-          <p>{{t:pm.closing}}</p>
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="{{t:pm.closingAria}}">
+          <div class="ox-closing__stack">{{html:pm.closingHtml}}</div>
         </section>
       </main>
       <footer class="ox-footer">
@@ -548,6 +625,9 @@
             <span class="footer-legal-sep" aria-hidden="true">·</span>
             <a class="footer-legal" href="terms/">{{t:footer.terms}}</a>
           </div>
+          <p class="ox-footer-delete-account">
+            <a class="footer-legal" href="pillmate/delete-account/">{{t:pm.deleteAccountLink}}</a>
+          </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="{{t:footer.socialAria}}">
             <a
               class="footer-icon-btn footer-icon-btn--ox"

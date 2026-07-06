@@ -2,12 +2,14 @@
 /**
  * Reads locale JSON from locales/*.json and templates/*.html,
  * emits: {lang}/index.html, {lang}/privacy/, {lang}/terms/,
- * {lang}/oxmonth/delete-account/, {lang}/subping/delete-account/, plus root redirects for legacy URLs.
+ * per-app delete-account pages under each {lang}/, plus root redirects.
  */
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { spawnSync } from "child_process";
+
+import { DELETE_ACCOUNT_APPS } from "./delete-account-data.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -316,17 +318,23 @@ for (const { dir, file, htmlLang } of LANGS) {
     fs.writeFileSync(path.join(pd, "index.html"), pt);
   }
 
-  for (const del of [
-    { tpl: "oxmonth-delete-account.html", canon: `https://newon.app/${dir}/oxmonth/delete-account/`, rel: ["oxmonth", "delete-account"] },
-    { tpl: "subping-delete-account.html", canon: `https://newon.app/${dir}/subping/delete-account/`, rel: ["subping", "delete-account"] },
-  ]) {
-    let delHtml = fs.readFileSync(path.join(ROOT, "templates", del.tpl), "utf8");
+  for (const app of DELETE_ACCOUNT_APPS) {
+    const tplName =
+      app.ns === "ox"
+        ? "oxmonth-delete-account.html"
+        : app.ns === "sp"
+          ? "subping-delete-account.html"
+          : "app-delete-account.html";
+    let delHtml = fs.readFileSync(path.join(ROOT, "templates", tplName), "utf8");
+    if (tplName === "app-delete-account.html") {
+      delHtml = delHtml.replace(/__NS__/g, app.ns);
+    }
     delHtml = delHtml.replace(/\{\{LANG_DIR\}\}/g, dir);
     delHtml = delHtml.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
-    delHtml = delHtml.replace(/\{\{CANONICAL\}\}/g, del.canon);
+    delHtml = delHtml.replace(/\{\{CANONICAL\}\}/g, `https://newon.app/${dir}/${app.slug}/delete-account/`);
     delHtml = applyTemplate(delHtml, flat, flatEn);
     delHtml = applyLocImgs(delHtml, dir);
-    const delOut = path.join(ROOT, dir, ...del.rel);
+    const delOut = path.join(ROOT, dir, app.slug, "delete-account");
     fs.mkdirSync(delOut, { recursive: true });
     fs.writeFileSync(path.join(delOut, "index.html"), delHtml);
   }
@@ -334,17 +342,15 @@ for (const { dir, file, htmlLang } of LANGS) {
 
 writeRootPrivacyPage();
 
-/** Legacy URLs /oxmonth/delete-account/ and /subping/delete-account/ → localized page */
+/** Root /{slug}/delete-account/ → localized page */
 function writeRootDeleteAccountRedirects() {
   const list = JSON.stringify(LANGS.map((l) => l.dir));
-  const ox = `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="robots" content="noindex"/><title>Redirect</title><script>(function(){var L=${list};var d="ko";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/oxmonth/delete-account/"+(location.hash||""));})();</script></head><body><p style="font-family:system-ui,sans-serif;padding:1.5rem"><a href="/ko/oxmonth/delete-account/">OX MONTH account deletion — continue</a></p></body></html>`;
-  const sp = `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="robots" content="noindex"/><title>Redirect</title><script>(function(){var L=${list};var d="ko";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/subping/delete-account/"+(location.hash||""));})();</script></head><body><p style="font-family:system-ui,sans-serif;padding:1.5rem"><a href="/ko/subping/delete-account/">SubPing account deletion — continue</a></p></body></html>`;
-  const oxDir = path.join(ROOT, "oxmonth", "delete-account");
-  const spDir = path.join(ROOT, "subping", "delete-account");
-  fs.mkdirSync(oxDir, { recursive: true });
-  fs.mkdirSync(spDir, { recursive: true });
-  fs.writeFileSync(path.join(oxDir, "index.html"), ox);
-  fs.writeFileSync(path.join(spDir, "index.html"), sp);
+  for (const app of DELETE_ACCOUNT_APPS) {
+    const html = `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="robots" content="noindex"/><title>Redirect</title><script>(function(){var L=${list};var d="ko";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/${app.slug}/delete-account/"+(location.hash||""));})();</script></head><body><p style="font-family:system-ui,sans-serif;padding:1.5rem"><a href="/ko/${app.slug}/delete-account/">${app.name} account deletion — continue</a></p></body></html>`;
+    const dir = path.join(ROOT, app.slug, "delete-account");
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, "index.html"), html);
+  }
 }
 
 writeRootDeleteAccountRedirects();

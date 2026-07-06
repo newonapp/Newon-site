@@ -732,6 +732,8 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   color: var(--ox-muted);
   line-height: 1.55;
   white-space: pre-line;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .ox-hero-reach-summary {
@@ -741,6 +743,8 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   color: var(--ox-faint);
   line-height: 1.5;
   letter-spacing: -0.01em;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .ox-desc {
@@ -979,6 +983,8 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   font-size: 0.96875rem;
   color: var(--ox-muted);
   line-height: 1.65;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .ox-app-intro__body p:last-child {
@@ -1031,6 +1037,83 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   color: var(--ox-text);
 }
 
+/* 앱 소개 — 헤더는 박스 밖, 본문은 패널 박스 (OX MONTH 패턴 공통) */
+.ox-app-intro .ox-app-intro__inner {
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+.ox-app-intro .ox-app-intro__head {
+  text-align: center;
+  margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.ox-app-intro .ox-app-intro__head .ox-section-label {
+  margin-bottom: 0.75rem;
+}
+
+.ox-app-intro .ox-app-intro__head .ox-app-intro__title {
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.ox-app-intro .ox-app-intro__panel {
+  padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.25rem, 3.5vw, 2rem);
+  border-radius: var(--ox-radius-lg);
+  border: 1px solid var(--ox-border);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--ox-surface) 92%, transparent) 0%,
+    var(--ox-surface) 48%,
+    color-mix(in srgb, var(--ox-bg-soft) 40%, var(--ox-surface)) 100%
+  );
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset,
+    0 20px 44px rgba(0, 0, 0, 0.14);
+  text-align: center;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#noting-app,#newon-plus-app)[data-theme="light"]
+  .ox-app-intro__panel {
+  background: #ffffff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#noting-app,#newon-plus-app)[data-theme="dark"]
+  .ox-app-intro__panel {
+  background: #000000;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 6%, transparent) inset;
+}
+
+.ox-app-intro .ox-app-intro__body {
+  max-width: 36rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.ox-app-intro .ox-app-intro__legal {
+  text-align: center;
+}
+
+.ox-app-intro .ox-app-intro__panel > .ox-app-intro__closing:empty {
+  display: none;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#noting-app,#newon-plus-app)
+  .ox-premium-tagline {
+  max-width: 28rem;
+  margin-inline: auto;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  line-height: 1.55;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#noting-app,#newon-plus-app)
+  .ox-section-head {
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
 .ox-br-desktop {
   display: none;
 }
@@ -1054,7 +1137,8 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 .ox-section-head .ox-section-title-inline {
-  margin: 0 0 0.25rem;
+  margin: 0 auto 0.25rem;
+  justify-content: center;
 }
 
 .ox-section-title-inline__icon {
@@ -1072,6 +1156,8 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 .ox-section-head {
   margin-bottom: clamp(1.5rem, 4vw, 2.25rem);
   max-width: 36rem;
+  margin-inline: auto;
+  text-align: center;
 }
 
 .ox-section-label {
@@ -1101,6 +1187,134 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 /* Feature grid */
+
+/* User review stories (above features) */
+.ox-reviews {
+  --ox-review-avatar-size: clamp(3.25rem, 8vw, 3.75rem);
+}
+
+.ox-reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 52rem;
+  margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .ox-reviews-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.125rem;
+  }
+}
+
+.ox-review-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 1.35rem 1.25rem 1.2rem;
+  border-radius: calc(var(--ox-radius) + 2px);
+  border: 1px solid var(--ox-border);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--ox-surface) 88%, #fff 12%) 0%,
+    var(--ox-surface) 55%,
+    color-mix(in srgb, var(--ox-bg) 70%, var(--ox-surface) 30%) 100%
+  );
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 5%, transparent) inset,
+    0 14px 32px rgba(0, 0, 0, 0.14);
+  transition:
+    border-color 0.3s var(--ox-ease),
+    transform 0.35s var(--ox-ease),
+    box-shadow 0.35s var(--ox-ease);
+}
+
+.ox-review-card:hover {
+  border-color: var(--ox-border-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 7%, transparent) inset,
+    0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+.ox-review-avatar {
+  flex-shrink: 0;
+  width: var(--ox-review-avatar-size);
+  height: var(--ox-review-avatar-size);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: calc(var(--ox-review-avatar-size) * 0.58);
+  line-height: 1;
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--ox-bg) 55%, transparent),
+    0 8px 20px rgba(0, 0, 0, 0.18),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.ox-review-avatar--a {
+  background: linear-gradient(145deg, #ffd6e8 0%, #ffb8d0 48%, #ff9ec4 100%);
+}
+
+.ox-review-avatar--b {
+  background: linear-gradient(145deg, #d6ebff 0%, #b8d8ff 48%, #9ec8ff 100%);
+}
+
+.ox-review-avatar--c {
+  background: linear-gradient(145deg, #fff0c9 0%, #ffe4a3 48%, #ffd67a 100%);
+}
+
+.ox-review-avatar--d {
+  background: linear-gradient(145deg, #d8f5e4 0%, #b8ebcf 48%, #98e0b8 100%);
+}
+
+.ox-review-quote {
+  margin: 0;
+  padding: 0;
+  border: none;
+  max-width: 22rem;
+}
+
+.ox-review-quote p {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.62;
+  letter-spacing: -0.015em;
+  color: var(--ox-text);
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.ox-review-meta {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ox-faint);
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app, #piggyup-app, #goalup-app, #countup-app, #noting-app, #newon-plus-app)[data-theme="dark"]
+  .ox-review-card {
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--ox-surface) 92%, #fff 8%) 0%,
+    var(--ox-surface) 100%
+  );
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app, #piggyup-app, #goalup-app, #countup-app, #noting-app, #newon-plus-app)[data-theme="light"]
+  .ox-review-card {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset,
+    0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
 .ox-features {
   display: grid;
   gap: 0.875rem;
@@ -1124,6 +1338,8 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 .ox-feature-card {
+  display: flex;
+  flex-direction: column;
   padding: 1.375rem 1.25rem;
   border-radius: var(--ox-radius);
   border: 1px solid var(--ox-border);
@@ -1154,6 +1370,8 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--ox-text);
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .ox-feature-lead {
@@ -1162,13 +1380,18 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   font-weight: 500;
   color: var(--ox-muted) !important;
   line-height: 1.55 !important;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .ox-feature-note {
   margin: 0 !important;
+  margin-top: auto !important;
   font-size: 0.8125rem !important;
   color: var(--ox-faint) !important;
   line-height: 1.52 !important;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 /* Feature visual strip */
@@ -1489,6 +1712,8 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   font-size: 0.875rem;
   color: var(--ox-muted);
   line-height: 1.58;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .ox-premium-card__note {
@@ -1496,6 +1721,8 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   font-size: 0.8125rem;
   color: var(--ox-faint);
   line-height: 1.55;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .ox-premium-highlight {
@@ -1542,8 +1769,12 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   font-size: clamp(1.125rem, 2.8vw, 1.45rem);
   font-weight: 600;
   letter-spacing: -0.03em;
-  line-height: 1.38;
+  line-height: 1.45;
   color: var(--ox-text);
+  max-width: 28rem;
+  margin-inline: auto;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .ox-premium-highlight__line--sub {
@@ -1556,17 +1787,70 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 .ox-closing__stack p + p {
-  margin-top: 1rem;
+  margin-top: 0.875rem;
 }
 
-/* SubPing 마무리: OX MONTH 프리미엄 하이라이트 + ox-closing과 동일 타이포 */
-:is(#subping-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#noting-app,#newon-plus-app) .ox-premium-highlight__line,
-:is(#subping-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#noting-app,#newon-plus-app) .ox-closing p {
-  font-size: clamp(1.15rem, 2.75vw, 1.45rem);
-  font-weight: 600;
-  letter-spacing: -0.022em;
-  line-height: 1.45;
+.ox-closing__stack {
+  max-width: 36rem;
+  margin-inline: auto;
 }
+
+.ox-closing__stack p {
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.ox-closing__stack p:first-child {
+  font-size: clamp(1.15rem, 2.7vw, 1.42rem);
+  font-weight: 700;
+  color: var(--ox-text);
+  line-height: 1.5;
+}
+
+.ox-closing__stack p:last-child {
+  color: var(--ox-muted);
+}
+
+/* Web point-color highlighter (matches home hero-accent) */
+.ox-accent {
+  position: relative;
+  display: inline;
+  color: inherit;
+  font-weight: inherit;
+}
+
+.ox-accent::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.08em;
+  width: 100%;
+  height: 0.32em;
+  z-index: -1;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#noting-app,#newon-plus-app)[data-theme="light"] .ox-accent::after {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#noting-app,#newon-plus-app)[data-theme="dark"] .ox-accent::after {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.ox-subtitle .ox-accent {
+  color: var(--ox-text);
+  font-weight: 600;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0.06em 0.1em;
+}
+
+.ox-subtitle .ox-accent::after {
+  height: 0.38em;
+  bottom: 0.06em;
+}
+
+/* SubPing 마무리: OX MONTH와 동일 타이포 (하이라이트 라인) */
 
 /* Closing */
 .ox-closing {
@@ -1576,11 +1860,14 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 .ox-closing p {
-  margin: 0;
-  font-size: clamp(1.15rem, 2.75vw, 1.45rem);
-  font-weight: 600;
-  letter-spacing: -0.022em;
-  line-height: 1.45;
+  margin: 0 auto;
+  max-width: 36rem;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.62;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 /* Footer */
@@ -1867,7 +2154,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #np-reco, #nt-reco)
   .co-build-list {
   list-style: none;
-  margin: 0;
+  margin: 1rem 0 0;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
@@ -1913,6 +2200,8 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   align-items: center;
   justify-content: center;
   text-align: center;
+  overflow-wrap: break-word;
+  word-break: keep-all;
   min-height: 5.5rem;
   transition:
     border-color 0.3s var(--ox-ease),

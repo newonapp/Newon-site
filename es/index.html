@@ -60,10 +60,10 @@
                 <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
               </a>
               <nav class="nav nav--apps-only" aria-label="Apps de Newon">
-            <div class="apps-flyout apps-flyout--align-start" data-apps-flyout>
+            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
               <button
                 type="button"
-                class="apps-flyout__trigger apps-flyout__trigger--toolbar"
+                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
                 id="apps-trigger-home"
                 aria-expanded="false"
                 aria-haspopup="true"
@@ -350,7 +350,7 @@
                 <span class="hero-accent">y empieza el cambio</span>
               </h1>
               <p class="hero-lead">
-                Hasta que el pensamiento se vuelve realidad: diseñamos experiencias simples y duraderas.
+                Newon is not just a company that makes apps.<br /><br />From productivity and health to finance and family records,<br />we build services that solve real problems in everyday life.<br /><br />We aim for experiences people keep using—not feature overload—and products people love—not one-time downloads.
               </p>
               <div class="hero-actions hero-store-links">
                 <a
@@ -406,60 +406,84 @@
           </div>
         </section>
 
-        <section id="meaning" class="section section-co reveal-on-scroll">
+        <section id="meaning" class="section section-co section-co--meaning reveal-on-scroll">
           <div class="container narrow">
             <p class="section-label">Identidad</p>
             <h2 class="section-title section-title--with-icon">
               <span class="section-icon" aria-hidden="true">💡</span>
               Qué significa el nombre
             </h2>
-            <p class="co-equation">
-              Newon <span class="co-equation__eq">=</span> New <span class="co-equation__plus">+</span> On
-            </p>
-            <div class="co-prose co-prose--tight">
-              <p>
-                Encendemos ideas <span class="co-on">nuevas (New)</span> <span class="co-on">on (On)</span>: el momento en que el pensamiento se conecta con la realidad.
+            <div class="co-meaning-panel">
+              <p class="co-equation">
+                Newon <span class="co-equation__eq">=</span> New <span class="co-equation__plus">+</span> On
               </p>
-              <p>Cuando una pequeña idea pasa a la acción, Newon comienza.</p>
-              <p>No solo creamos apps: creamos experiencias que la gente usa en su día a día durante mucho tiempo.</p>
+              <p class="co-meaning-panel__lead">Encendemos ideas <span class="co-on">nuevas (New)</span> <span class="co-on">on (On)</span>: el momento en que el pensamiento se conecta con la realidad.</p>
+              <p class="co-meaning-panel__intro">Cuando una pequeña idea pasa a la acción, Newon comienza.</p>
+              <ul class="co-meaning-grid">
+                <li class="co-meaning-card"><span class="co-meaning-card__text">build habits</span></li>
+                <li class="co-meaning-card"><span class="co-meaning-card__text">protect health</span></li>
+                <li class="co-meaning-card"><span class="co-meaning-card__text">help reach goals</span></li>
+                <li class="co-meaning-card"><span class="co-meaning-card__text">and record family memories</span></li>
+              </ul>
+              <p class="co-meaning-panel__closing">No solo creamos apps: creamos experiencias que la gente usa en su día a día durante mucho tiempo.</p>
+              <p class="co-meaning-panel__closing">What we build is not features—it is an experience that repeats naturally and takes root in daily life.</p>
             </div>
           </div>
         </section>
 
-        <section id="about" class="section section-co reveal-on-scroll">
-          <div class="container narrow">
+        <section id="about" class="section section-co section-co--about reveal-on-scroll">
+          <div class="container">
             <p class="section-label">Empresa</p>
             <h2 class="section-title section-title--with-icon">
               <span class="section-icon" aria-hidden="true">🏢</span>
               Sobre nosotros
             </h2>
-            <div class="co-prose">
+            <div class="co-prose co-prose--tight co-about-prose">
               <p class="co-prose__lead">
                 Newon es un equipo que crea apps para ayudarte a gestionar metas, hábitos, salud, finanzas, registros familiares y más, haciendo la vida cotidiana más fácil e inteligente.
               </p>
               <p>
                 Reducimos la complejidad y creamos servicios que cualquiera puede usar, para que las ideas se conviertan en cambio real.
               </p>
-              <p>Hoy, Newon ayuda a personas de todo el mundo a vivir mejor cada día gracias a:<br /><br />• 10 apps publicadas<br />• Servicio en 177 países<br />• Soporte en 13 idiomas</p>
             </div>
+            <p class="co-about-intro">Today, Newon is</p>
+            <ul class="co-about-grid">
+              <li class="co-about-card"><span class="co-about-card__value">10+</span><span class="co-about-card__label">Services</span></li>
+              <li class="co-about-card"><span class="co-about-card__value">177</span><span class="co-about-card__label">Countries</span></li>
+              <li class="co-about-card"><span class="co-about-card__value">13</span><span class="co-about-card__label">Languages</span></li>
+              <li class="co-about-card"><span class="co-about-card__value">Global</span><span class="co-about-card__label">Expanding reach</span></li>
+              <li class="co-about-card"><span class="co-about-card__value">Newon+</span><span class="co-about-card__label">Ecosystem in progress</span></li>
+            </ul>
+            <p class="co-about-outro">We keep growing so more people can experience a better everyday life.</p>
           </div>
         </section>
 
-        <section id="work" class="section section-co reveal-on-scroll">
-          <div class="container narrow">
+        <section id="work" class="section section-co section-co--work reveal-on-scroll">
+          <div class="container">
             <p class="section-label">Qué hacemos</p>
             <h2 class="section-title section-title--with-icon">
               <span class="section-icon" aria-hidden="true">🔗</span>
               Qué hacemos
             </h2>
-            <div class="co-prose">
+            <div class="co-prose co-prose--tight co-work-prose">
               <p>
                 Newon no se queda en un solo producto: seguimos lanzando nuevas apps a partir de muchas ideas.
               </p>
               <p>
                 Cada servicio encaja de forma natural en la vida diaria y crea cambios pequeños pero claros.
               </p>
-              <p>Lo que creamos no son solo funciones, sino una experiencia de<br /><br />registrar,<br />gestionar<br />y crecer.</p>
+            </div>
+            <ul class="co-work-grid">
+              <li class="co-work-card"><span class="co-work-card__text">Record habits</span></li>
+              <li class="co-work-card"><span class="co-work-card__text">Reach goals</span></li>
+              <li class="co-work-card"><span class="co-work-card__text">Manage spending</span></li>
+              <li class="co-work-card"><span class="co-work-card__text">Care for health</span></li>
+              <li class="co-work-card"><span class="co-work-card__text">Capture family time</span></li>
+            </ul>
+            <p class="co-work-outro">We create experiences for a better life.</p>
+            <div class="co-prose co-prose--tight co-work-closing">
+              <p>Each service works on its own<br /><br />and creates greater value<br />when used together.</p>
+              <p>We are not a team that ships features—we design sustainable change for people.</p>
             </div>
           </div>
         </section>
@@ -471,13 +495,14 @@
               <span class="section-icon" aria-hidden="true">📱</span>
               Lo que creamos
             </h2>
+            <p class="co-prose__lead">Newon is not one app—it is a family of services that support everyday life by area.<br /><br />Each app works on its own, and creates greater value when used together.</p>
             <ul class="co-build-list co-build-list--products">
-              <li>Apps para hábitos y registros</li>
-              <li>Apps para metas y crecimiento</li>
-              <li>Apps para una vida saludable</li>
-              <li>Apps para finanzas y gastos</li>
-              <li>Apps para familia y mascotas</li>
-              <li>Servicios que hacen la vida más cómoda</li>
+              <li><strong>Habits · Goals · Growth</strong><br /><br /><img src="/ox-month-logo.png" alt="" width="24" height="24" decoding="async" /> <img src="/goalup-logo.png" alt="" width="24" height="24" decoding="async" /> <img src="/countup-logo.png" alt="" width="24" height="24" decoding="async" /><br />OX MONTH · GoalUp · CountUp</li>
+              <li><strong>Finance · Spending · Saving</strong><br /><br /><img src="/savy-logo.png" alt="" width="24" height="24" decoding="async" /> <img src="/subping-logo.png" alt="" width="24" height="24" decoding="async" /> <img src="/piggyup-logo.png" alt="" width="24" height="24" decoding="async" /><br />Savy · SubPing · PiggyUp</li>
+              <li><strong>Health · Daily care</strong><br /><br /><img src="/pillmate-logo.png" alt="" width="24" height="24" decoding="async" /><br />Pillmate</li>
+              <li><strong>Family · Records · Care</strong><br /><br /><img src="/babylog-logo.png" alt="" width="24" height="24" decoding="async" /> <img src="/petlog-logo.png" alt="" width="24" height="24" decoding="async" /><br />BabyLog · PetLog</li>
+              <li><strong>AI-powered life services</strong><br /><br /><img src="/savy-logo.png" alt="" width="24" height="24" decoding="async" /> <img src="/goalup-logo.png" alt="" width="24" height="24" decoding="async" /> <img src="/babylog-logo.png" alt="" width="24" height="24" decoding="async" /> <img src="/petlog-logo.png" alt="" width="24" height="24" decoding="async" /><br />Savy · GoalUp · BabyLog · PetLog</li>
+              <li><strong>Unified subscription ecosystem</strong><br /><br /><img src="/newon-plus-logo.png" alt="" width="24" height="24" decoding="async" /><br />Newon+</li>
             </ul>
           </div>
         </section>
@@ -490,14 +515,27 @@
               Nuestro objetivo
             </h2>
             <div class="co-goal-panel">
-              <p>No apps con infinitas funciones, sino <strong>apps que se usan mucho tiempo</strong>.</p>
-              <p>
-                Nuestro objetivo es integrarnos en la vida diaria y ayudar a que el cambio perdure.
-              </p>
-              <p>
-                Partiendo de 10 apps, queremos crecer como plataforma de vida global que conecte más vidas.
-              </p>
+              <p>We want to build apps people love for years</p>
+              <p>—not apps packed with endless features.</p>
+              <p>Nuestro objetivo es integrarnos en la vida diaria y ayudar a que el cambio perdure.</p>
+              <p>Partiendo de 10 apps, queremos crecer como plataforma de vida global que conecte más vidas.</p>
+              <p>Starting from 10 apps, we are growing into a global life platform where dozens of services connect.</p>
             </div>
+          </div>
+        </section>
+
+        <section id="why" class="section section-co section-co--why reveal-on-scroll">
+          <div class="container">
+            <p class="section-label">Value</p>
+            <h2 class="section-title section-title--with-icon">
+              <span class="section-icon" aria-hidden="true">✨</span>
+              Why Newon
+            </h2>
+            <ul class="co-stats-grid co-stats-grid--why">
+              <li class="co-stats-card"><span class="co-stats-card__value">Built to last</span><span class="co-stats-card__label">We build apps people open every day—not trendy features that fade.</span></li>
+              <li class="co-stats-card"><span class="co-stats-card__value">Global reach</span><span class="co-stats-card__label">Available in 177 countries and 13 languages.</span></li>
+              <li class="co-stats-card"><span class="co-stats-card__value">Growing ecosystem</span><span class="co-stats-card__label">Beyond single apps—one connected life platform.</span></li>
+            </ul>
           </div>
         </section>
 
@@ -508,6 +546,7 @@
               <span class="section-icon" aria-hidden="true">🌎</span>
               Newon en cifras
             </h2>
+            <p class="co-prose__lead">Newon is a global life service brand that keeps growing.</p>
             <ul class="co-stats-grid">
               <li class="co-stats-card"><span class="co-stats-card__value">10+</span><span class="co-stats-card__label">Apps publicadas</span></li>
               <li class="co-stats-card"><span class="co-stats-card__value">177</span><span class="co-stats-card__label">Países</span></li>
@@ -942,12 +981,12 @@
               <div class="ox-badge-row">
                 <p class="ox-badge">
                   <span class="ox-badge-dot" aria-hidden="true"></span>
-                  🚀 Hábitos · Mes · O/X
+                  Seguimiento de 🚀 hábitos · Registros mensuales · Comprobación O/X
                 </p>
               </div>
               <h1>OX MONTH</h1>
               <p class="ox-subtitle">
-                Registra cada día con O/X y mira tu mes de cambio.
+                <span class="ox-accent">Small logs create big change</span>
               </p>
               <p class="ox-hero-reach-summary">Crea hábitos con un simple check O/X y ve tu mes de cambio con registros y estadísticas en una sola app.</p>
               <div class="ox-store-release" role="status" aria-live="polite">
@@ -1024,12 +1063,14 @@
 
         <section id="ox-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="ox-intro-title">
           <div class="ox-container ox-app-intro__inner">
-            <div class="ox-app-intro__copy">
-              <p class="ox-section-label">Entiende la app</p>
+            <header class="ox-app-intro__head">
+              <p class="ox-section-label">Marca</p>
               <h2 id="ox-intro-title" class="ox-app-intro__title">
                 <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
-                Sobre la app
+                ¿Por qué OX MONTH?
               </h2>
+            </header>
+            <div class="ox-app-intro__panel">
               <div class="ox-app-intro__body">
                 <p class="ox-app-intro__lead"><strong>OX MONTH</strong> es</p>
                 <p>
@@ -1155,7 +1196,50 @@
         </section>
         <!-- OX_MONTH_JA_SCROLL_END -->
 
+        <section id="ox-reviews" class="ox-section ox-reviews ox-reveal-on-scroll" aria-labelledby="ox-reviews-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">Reviews</p>
+              <h2 id="ox-reviews-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">💬</span>
+                User stories
+              </h2>
+            </header>
+            <div class="ox-reviews-grid">
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--a" aria-hidden="true">👩🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;One check at a time—and before I knew it, I was on day 100 of working out.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Nursing student · 21</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--b" aria-hidden="true">👨🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;A daily O beat any grand plan I ever made.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Police exam prep · 26</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--c" aria-hidden="true">👩🏼</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;I finally felt that habits are about systems, not willpower.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Elementary teacher · 31</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--d" aria-hidden="true">👨🏽</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;After years of three-day resolutions, I finally built a real routine.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Developer · 34</footer>
+              </article>
+            </div>
+          </div>
+        </section>
+
         
+
         <section id="ox-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="ox-features-title">
           <div class="ox-container">
             <header class="ox-section-head">
@@ -1268,6 +1352,22 @@
                 <div class="ox-premium-grid">
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">∞</span>
+                      Hábitos ilimitados
+                    </h4>
+                    <p class="ox-premium-card__lead">Añade todos los hábitos que quieras cada mes.</p>
+                    <p class="ox-premium-card__note">Comience varios a la vez con plantillas de hábitos.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🎨</span>
+                      Temas premium
+                    </h4>
+                    <p class="ox-premium-card__lead">Más colores para</p>
+                    <p class="ox-premium-card__note">personalizar tu espacio</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">📊</span>
                       Estadísticas mensuales avanzadas
                     </h4>
@@ -1290,11 +1390,27 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🎨</span>
-                      Temas premium
+                      <span class="ox-premium-emoji" aria-hidden="true">💪</span>
+                      Failure Guard Plus
                     </h4>
-                    <p class="ox-premium-card__lead">Más colores para</p>
-                    <p class="ox-premium-card__note">personalizar tu espacio</p>
+                    <p class="ox-premium-card__lead">Recibe ánimo e información incluso en X días.</p>
+                    <p class="ox-premium-card__note">Los recordatorios inteligentes te ayudan a no perderte ningún check-in.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🏆</span>
+                      Desafíos
+                    </h4>
+                    <p class="ox-premium-card__lead">Stay consistent with 7, 14, or 30-day challenges.</p>
+                    <p class="ox-premium-card__note">Custom challenges and badges mark your progress.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">☁️</span>
+                      Backup &amp; sync
+                    </h4>
+                    <p class="ox-premium-card__lead">Cloud backup and restore keep your logs safe</p>
+                    <p class="ox-premium-card__note">across devices, with direct past-date editing.</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
@@ -1316,10 +1432,13 @@
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
               Ideal si quieres…
             </h2>
-            <ul class="co-build-list" style="margin-top: 1rem">
+            <ul class="co-build-list">
               <li>Mantener hábitos</li>
               <li>Entender tus patrones</li>
               <li>Un flujo de registro más profundo</li>
+              <li>🎯 Want to turn goals into action</li>
+              <li>📈 Want to understand your patterns</li>
+              <li>✨ Love stacking small daily wins</li>
             </ul>
           </div>
         </section>
@@ -1332,18 +1451,21 @@
           <div class="ox-container ox-premium-layout">
             <div class="ox-premium-highlight">
               <p class="ox-premium-highlight__kicker">
-                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                <span class="ox-premium-emoji" aria-hidden="true">✔</span>
                 Destacado
               </p>
               <p class="ox-premium-highlight__line" id="ox-closing-highlight-title">
                 Más allá del registro: experiencia que impulsa el cambio
               </p>
+              <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
+                OX MONTH makes habits<br />easier to keep.
+              </p>
             </div>
           </div>
         </section>
 
-        <section class="ox-closing ox-reveal-on-scroll" aria-label="Pequeños registros, gran cambio">
-          <p>Pequeños registros, gran cambio</p>
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="OX MONTH closing">
+          <div class="ox-closing__stack"><p>Today's check<br /><span class="ox-accent">Changes tomorrow's life</span></p><p>OX MONTH isn't just a habit tracker—<br />it's a space to steadily build the life you want.</p><p>Small O marks add up<br /><span class="ox-accent">to better days ahead.</span></p></div>
         </section>
       </main>
 
@@ -1756,12 +1878,11 @@
               <div class="ox-badge-row">
                 <p class="ox-badge">
                   <span class="ox-badge-dot" aria-hidden="true"></span>
-                  Medicación · recordatorios · rutina diaria
+                  💊 Med reminders · Health logs · Family sharing · Daily routine
                 </p>
-                <p class="ox-badge ox-badge--secondary">173 países · 13 idiomas</p>
               </div>
               <h1>Pillmate</h1>
-              <p class="ox-subtitle">No se olvide de una dosis-01gestione la medicación de hoy fácilmente2</p>
+              <p class="ox-subtitle"><span class="ox-accent">Make today's doses easier<br />and stay consistent</span></p>
               <p class="ox-hero-reach-summary">Registre y realice un seguimiento de los medicamentos, suplementos y rutinas de salud diarias en un solo lugar.</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">Disponible en App Store y Google Play</p>
@@ -1827,8 +1948,7 @@
                   class="ox-hero-logo-img"
                   src="/pillmate-logo.png"
                   alt="0 logotipo de la aplicación: cápsula roja y crema con marca denominativa"
-                  width="940"
-                  height="940"
+                  width="512" height="512"
                 />
               </div>
             </div>
@@ -1836,14 +1956,15 @@
         </section>
         <section id="pm-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pm-intro-title">
           <div class="ox-container ox-app-intro__inner">
-            <div class="ox-app-intro__copy">
-              <p class="ox-section-label">Acerca de la aplicación</p>
+            <header class="ox-app-intro__head">
+              <p class="ox-section-label">Marca</p>
               <h2 id="pm-intro-title" class="ox-app-intro__title">
                 <span class="ox-app-intro__title-icon" aria-hidden="true">💊</span>
-                Aprox. 0
+                ¿Por qué Pillmate?
               </h2>
-              <div class="ox-app-intro__body">0123 le ayuda a administrar las píldoras y suplementos diarios por hora del día y marcarlos rápidamente.45Dividir las dosis en la mañana, el almuerzo, la noche y la hora de acostarse, y usar recordatorios para que no se pierdan los momentos importantes.6</div>
-              <p class="ox-app-intro__closing">Convierte los hábitos fáciles de olvidar en un cuidado más seguro y estable.</p>
+            </header>
+            <div class="ox-app-intro__panel">
+              <div class="ox-app-intro__body">0123 le ayuda a administrar las píldoras y suplementos diarios por hora del día y marcarlos rápidamente.45Dividir las dosis en la mañana, el almuerzo, la noche y la hora de acostarse, y usar recordatorios para que no se pierdan los momentos importantes.6<p class="ox-app-intro__closing">Convierte los hábitos fáciles de olvidar en un cuidado más seguro y estable.</p></div>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">Política de privacidad</a>
               </p>
@@ -1933,7 +2054,49 @@
               </div>
             </div>
           </div>
+        </section><section id="pm-reviews" class="ox-section ox-reviews ox-reveal-on-scroll" aria-labelledby="pm-reviews-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">Reviews</p>
+              <h2 id="pm-reviews-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">💬</span>
+                User stories
+              </h2>
+            </header>
+            <div class="ox-reviews-grid">
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--a" aria-hidden="true">👩🏼</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;I almost never forget my meds anymore.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Nurse · 29</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--b" aria-hidden="true">👨🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;I can help manage my parents' health too—that's a big plus.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Office worker · 35</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--c" aria-hidden="true">👩🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;Health really comes down to showing up every day.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Pilates instructor · 32</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--d" aria-hidden="true">👨🏽</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;Taking supplements became a natural habit.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Fitness coach · 42</footer>
+              </article>
+            </div>
+          </div>
         </section>
+
+        
 
         <section id="pm-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="pm-features-title">
           <div class="ox-container">
@@ -2045,7 +2208,7 @@
                 <div class="ox-premium-grid">
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">💊</span>
                       Registro de dosis mensual
                     </h4>
                     <p class="ox-premium-card__lead">Vea un mes de cumplimiento de un vistazo</p>
@@ -2061,7 +2224,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🎨</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">📅</span>
                       Temas Premium
                     </h4>
                     <p class="ox-premium-card__lead">Más colores y estilos para</p>
@@ -2069,11 +2232,43 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">📦</span>
                       Eliminar la publicidad
                     </h4>
                     <p class="ox-premium-card__lead">Enfoque sin interrupciones en</p>
                     <p class="ox-premium-card__note">una experiencia más tranquila</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">👨‍👩‍👧</span>
+                      Compartir en familia
+                    </h4>
+                    <p class="ox-premium-card__lead">Invite unlimited family members</p>
+                    <p class="ox-premium-card__note">with caregiver alerts.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
+                      Advanced reminders
+                    </h4>
+                    <p class="ox-premium-card__lead">Repeat, weekend, snooze, and escalation</p>
+                    <p class="ox-premium-card__note">for precise timing.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">☁️</span>
+                      Backup &amp; export
+                    </h4>
+                    <p class="ox-premium-card__lead">Cloud backup plus PDF/CSV</p>
+                    <p class="ox-premium-card__note">to keep records safe.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      Eliminar la publicidad
+                    </h4>
+                    <p class="ox-premium-card__lead">No banners or full-screen ads—</p>
+                    <p class="ox-premium-card__note">focus on your meds.</p>
                   </article>
                 </div>
               </section>
@@ -2087,12 +2282,13 @@
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
               Genial si...
             </h2>
-            <ul class="co-build-list" style="margin-top: 1rem">
+            <ul class="co-build-list">
               <li>Tomar medicamentos o suplementos diarios</li>
               <li>A menudo olvida los tiempos de dosis</li>
               <li>Ayuda a los padres o a la familia a mantener el rumbo</li>
               <li>Desea un registro de dosis constante</li>
               <li>Desea una rutina de salud más clara</li>
+              <li>✨ Want a healthier daily routine</li>
             </ul>
           </div>
         </section>
@@ -2105,18 +2301,21 @@
           <div class="ox-container ox-premium-layout">
             <div class="ox-premium-highlight">
               <p class="ox-premium-highlight__kicker">
-                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                <span class="ox-premium-emoji" aria-hidden="true">💊</span>
                 En una línea
               </p>
               <p class="ox-premium-highlight__line" id="pm-closing-highlight-title">
                 Registre las dosis de hoy y mantenga una rutina saludable.
               </p>
+              <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
+                Pillmate helps you<br />stay consistent with your health.
+              </p>
             </div>
           </div>
         </section>
 
-        <section class="ox-closing ox-reveal-on-scroll" aria-label="Los registros de dosis pequeñas crean hábitos saludables duraderos.">
-          <p>Los registros de dosis pequeñas crean hábitos saludables duraderos.</p>
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="Pillmate closing">
+          <div class="ox-closing__stack"><p>Steady doses<br /><span class="ox-accent">Build a healthier life</span></p><p>Pillmate isn't just a reminder app—<br />it's a platform for healthy routines.</p><p>Small daily care<br /><span class="ox-accent">creates a healthier future.</span></p></div>
         </section>
       </main>
       <footer class="ox-footer">
@@ -2126,6 +2325,9 @@
             <span class="footer-legal-sep" aria-hidden="true">·</span>
             <a class="footer-legal" href="terms/">Términos del servicio</a>
           </div>
+          <p class="ox-footer-delete-account">
+            <a class="footer-legal" href="pillmate/delete-account/">Delete account</a>
+          </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="Contacto y redes">
             <a
               class="footer-icon-btn footer-icon-btn--ox"
@@ -2526,12 +2728,11 @@
               <div class="ox-badge-row">
                 <p class="ox-badge">
                   <span class="ox-badge-dot" aria-hidden="true"></span>
-                  💳 Gastos · ingresos · suscripciones · insights de IA
+                  💳 Spending · Income · Subscriptions · AI analysis
                 </p>
-                <p class="ox-badge ox-badge--secondary">173 países · 13 idiomas admitidos</p>
               </div>
               <h1>SAVY</h1>
-              <p class="ox-subtitle">Vea su flujo de dinero de un vistazo</p>
+              <p class="ox-subtitle"><span class="ox-accent">See your money flow at a glance</span></p>
               <p class="ox-hero-reach-summary">Una aplicación de finanzas inteligentes que reúne gastos, ingresos y suscripciones dispersos y te ayuda a reducir el desperdicio.</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">Disponible en App Store y Google Play</p>
@@ -2597,8 +2798,7 @@
                   class="ox-hero-logo-img"
                   src="/savy-logo.png"
                   alt="Logotipo de la aplicación 0: billetera, tarjetas y moneda de won coreano"
-                  width="940"
-                  height="940"
+                  width="512" height="512"
                 />
               </div>
             </div>
@@ -2606,14 +2806,15 @@
         </section>
         <section id="sv-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="sv-intro-title">
           <div class="ox-container ox-app-intro__inner">
-            <div class="ox-app-intro__copy">
-              <p class="ox-section-label">Acerca de la aplicación</p>
+            <header class="ox-app-intro__head">
+              <p class="ox-section-label">Marca</p>
               <h2 id="sv-intro-title" class="ox-app-intro__title">
-                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
-                Acerca de la aplicación
+                <span class="ox-app-intro__title-icon" aria-hidden="true">💰</span>
+                ¿Por qué SAVY?
               </h2>
-              <div class="ox-app-intro__body">0123 is45a un rastreador de gastos que le ayuda a registrar y revisar su flujo de dinero rápidamente, sin un libro mayor pesado.67 Registre los gastos e ingresos diarios en segundos, y mantenga las suscripciones recurrentes visibles en un solo lugar.8910 es más que un libro mayor: organiza sus patrones de gastos y respalda hábitos de dinero más saludables.1112Las pequeñas entradas consistentes suman ahorros y cambios visibles.13</div>
-              <p class="ox-app-intro__closing">Los pequeños registros de gastos crean mejores hábitos de dinero.</p>
+            </header>
+            <div class="ox-app-intro__panel">
+              <div class="ox-app-intro__body">0123 is45a un rastreador de gastos que le ayuda a registrar y revisar su flujo de dinero rápidamente, sin un libro mayor pesado.67 Registre los gastos e ingresos diarios en segundos, y mantenga las suscripciones recurrentes visibles en un solo lugar.8910 es más que un libro mayor: organiza sus patrones de gastos y respalda hábitos de dinero más saludables.1112Las pequeñas entradas consistentes suman ahorros y cambios visibles.13<p class="ox-app-intro__closing">Los pequeños registros de gastos crean mejores hábitos de dinero.</p></div>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">Política de privacidad</a>
               </p>
@@ -2693,7 +2894,49 @@
               </div>
             </div>
           </div>
+        </section><section id="sv-reviews" class="ox-section ox-reviews ox-reveal-on-scroll" aria-labelledby="sv-reviews-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">Reviews</p>
+              <h2 id="sv-reviews-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">💬</span>
+                User stories
+              </h2>
+            </header>
+            <div class="ox-reviews-grid">
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--a" aria-hidden="true">👩🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;I finally understood why money always felt tight.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Grad student · 25</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--b" aria-hidden="true">👨🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;The AI read my spending habits more accurately than I expected.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Accountant · 35</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--c" aria-hidden="true">👩🏼</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;It feels like learning my spending style—not just logging expenses.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; UX designer · 28</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--d" aria-hidden="true">👨🏽</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;First time I've kept a budget past three months.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; IT planner · 40</footer>
+              </article>
+            </div>
+          </div>
         </section>
+
+        
 
         <section id="sv-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="sv-features-title">
           <div class="ox-container">
@@ -2803,13 +3046,13 @@
             <div class="ox-premium-stack">
               <section class="ox-premium-block" aria-labelledby="sv-premium-features-heading">
                 <h3 id="sv-premium-features-heading" class="ox-premium-block__title">
-                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  <span class="ox-premium-emoji" aria-hidden="true">🔓</span>
                   🔒 Funciones premium
                 </h3>
                 <div class="ox-premium-grid">
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
                       📊 Análisis de gastos avanzado
                     </h4>
                     <p class="ox-premium-card__lead">Vistas más profundas por mes, categoría,</p>
@@ -2817,7 +3060,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">💡</span>
                       🤖 Informes de gastos de IA
                     </h4>
                     <p class="ox-premium-card__lead">Desde tus registros, mira hábitos</p>
@@ -2825,7 +3068,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
                       🔔 Notificaciones más ricas
                     </h4>
                     <p class="ox-premium-card__lead">Un control más preciso de renovaciones, presupuestos,</p>
@@ -2833,7 +3076,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">📈</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
                       📈 Estadísticas detalladas
                     </h4>
                     <p class="ox-premium-card__lead">Más formas de ver los ingresos</p>
@@ -2841,11 +3084,35 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">📈</span>
                       🚫 Eliminar anuncios
                     </h4>
                     <p class="ox-premium-card__lead">Concéntrate en tus finanzas</p>
                     <p class="ox-premium-card__note">sin interrupciones</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🔗</span>
+                      Advanced sharing
+                    </h4>
+                    <p class="ox-premium-card__lead">AI insight cards, hidden branding,</p>
+                    <p class="ox-premium-card__note">and richer share options.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🎯</span>
+                      Goal-based analysis
+                    </h4>
+                    <p class="ox-premium-card__lead">Category goals and savings areas</p>
+                    <p class="ox-premium-card__note">across your full budget.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      Eliminar la publicidad
+                    </h4>
+                    <p class="ox-premium-card__lead">No post-entry full-screen ads—</p>
+                    <p class="ox-premium-card__note">focus on your ledger.</p>
                   </article>
                 </div>
               </section>
@@ -2859,7 +3126,7 @@
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
               Genial si...
             </h2>
-            <ul class="co-build-list" style="margin-top: 1rem">
+            <ul class="co-build-list">
               <li>Quiere reducir gastos innecesarios</li>
               <li>¿Te preguntas a dónde va tu dinero cada mes?</li>
               <li>Haga malabarismos con muchas suscripciones y necesite claridad</li>
@@ -2879,7 +3146,7 @@
           <div class="ox-container ox-premium-layout">
             <div class="ox-premium-highlight">
               <p class="ox-premium-highlight__kicker">
-                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                <span class="ox-premium-emoji" aria-hidden="true">💰</span>
                 En una línea
               </p>
               <p class="ox-premium-highlight__line" id="sv-closing-highlight-title">
@@ -2893,7 +3160,7 @@
         </section>
 
         <section class="ox-closing ox-reveal-on-scroll" aria-label="Mensaje de cierre">
-          <div class="ox-closing__stack"><p><strong>SAVY</strong> le ayuda a iniciar una administración más inteligente del dinero.</p></div>
+          <div class="ox-closing__stack"><p>Visible spending<br /><span class="ox-accent">Smarter choices</span></p><p>SAVY isn't a ledger app—<br />it's a platform to understand money flow.</p><p>The moment you understand spending,<br /><span class="ox-accent">managing money gets easier.</span></p></div>
         </section>
       </main>
       <footer class="ox-footer">
@@ -2903,6 +3170,9 @@
             <span class="footer-legal-sep" aria-hidden="true">·</span>
             <a class="footer-legal" href="terms/">Términos del servicio</a>
           </div>
+          <p class="ox-footer-delete-account">
+            <a class="footer-legal" href="savy/delete-account/">Delete account</a>
+          </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="Contacto y redes">
             <a
               class="footer-icon-btn footer-icon-btn--ox"
@@ -3303,12 +3573,11 @@
               <div class="ox-badge-row">
                 <p class="ox-badge">
                   <span class="ox-badge-dot" aria-hidden="true"></span>
-                  👶 Registros de crianza · crecimiento · intercambio familiar · conocimientos de IA
+                  👶 Childcare logs · Growth · Family sharing · AI analysis
                 </p>
-                <p class="ox-badge ox-badge--secondary">Del embarazo al crecimiento · servicio mundial</p>
               </div>
               <h1>BabyLog</h1>
-              <p class="ox-subtitle">Capture cada momento de su hijo en un solo lugar</p>
+              <p class="ox-subtitle"><span class="ox-accent">Turn every moment into one growth story</span></p>
               <p class="ox-hero-reach-summary">Desde el embarazo hasta la adolescencia: administre el crecimiento y la vida diaria de su hijo en una sola aplicación.</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">Disponible en App Store y Google Play</p>
@@ -3374,8 +3643,7 @@
                   class="ox-hero-logo-img"
                   src="/babylog-logo.png"
                   alt="Logotipo de la aplicación BabyLog: letra B 3D rosa pastel brillante sobre blanco"
-                  width="940"
-                  height="940"
+                  width="512" height="512"
                 />
               </div>
             </div>
@@ -3383,14 +3651,15 @@
         </section>
         <section id="bl-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="bl-intro-title">
           <div class="ox-container ox-app-intro__inner">
-            <div class="ox-app-intro__copy">
-              <p class="ox-section-label">Acerca de la aplicación</p>
+            <header class="ox-app-intro__head">
+              <p class="ox-section-label">Marca</p>
               <h2 id="bl-intro-title" class="ox-app-intro__title">
-                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
-                Acerca de la aplicación
+                <span class="ox-app-intro__title-icon" aria-hidden="true">👶</span>
+                ¿Por qué BabyLog?
               </h2>
-              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>BabyLog</strong> es</p><p>un diario para padres todo en uno para registrar el crecimiento y las rutinas de su hijo y compartirlos con la familia.</p><p>Desde la alimentación, el sueño y los pañales hasta el crecimiento, la salud y el aprendizaje, mantenga todos los puntos de datos organizados en uno. lugar.</p><p>Más allá de los simples registros, BabyLog analiza los cambios y apoya una crianza diaria más inteligente.</p><p>Las pequeñas entradas diarias se suman a la historia de crecimiento de su hijo.</p></div>
-              <p class="ox-app-intro__closing">Registre cada día y vea cómo se desarrolla el crecimiento con el tiempo.</p>
+            </header>
+            <div class="ox-app-intro__panel">
+              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>BabyLog</strong> es</p><p>un diario para padres todo en uno para registrar el crecimiento y las rutinas de su hijo y compartirlos con la familia.</p><p>Desde la alimentación, el sueño y los pañales hasta el crecimiento, la salud y el aprendizaje, mantenga todos los puntos de datos organizados en uno. lugar.</p><p>Más allá de los simples registros, BabyLog analiza los cambios y apoya una crianza diaria más inteligente.</p><p>Las pequeñas entradas diarias se suman a la historia de crecimiento de su hijo.</p><p class="ox-app-intro__closing">Registre cada día y vea cómo se desarrolla el crecimiento con el tiempo.</p></div>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">Política de privacidad</a>
               </p>
@@ -3480,7 +3749,49 @@
               </div>
             </div>
           </div>
+        </section><section id="bl-reviews" class="ox-section ox-reviews ox-reveal-on-scroll" aria-labelledby="bl-reviews-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">Reviews</p>
+              <h2 id="bl-reviews-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">💬</span>
+                User stories
+              </h2>
+            </header>
+            <div class="ox-reviews-grid">
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--a" aria-hidden="true">👩🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;I thought I'd only keep photos—but I remember how each day felt.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Mom · 31</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--b" aria-hidden="true">👨🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;I don't miss my child's first moments anymore.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Dad · 36</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--c" aria-hidden="true">👩🏼</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;Thinking about watching these with my kid years from now already excites me.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Mom · 29</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--d" aria-hidden="true">👨🏽</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;As logs pile up, it feels like our family album is building itself.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Dad · 38</footer>
+              </article>
+            </div>
+          </div>
         </section>
+
+        
 
         <section id="bl-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="bl-features-title">
           <div class="ox-container">
@@ -3532,13 +3843,13 @@
                 <span class="ox-feature-emoji" aria-hidden="true">💬</span>
                 <h3>Comunidad</h3>
                 <p class="ox-feature-lead">Compartir experiencias y aprender de otros padres.</p>
-                <p class="ox-feature-note"></p>
+                <p class="ox-feature-note">ask questions, and tell growth stories.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
                 <h3>Ideas para padres con IA</h3>
                 <p class="ox-feature-lead">De sus registros: patrones y próximos pasos prácticos.</p>
-                <p class="ox-feature-note"></p>
+                <p class="ox-feature-note">with AI-powered parenting insights.</p>
               </article>
             </div>
           </div>
@@ -3600,13 +3911,13 @@
             <div class="ox-premium-stack">
               <section class="ox-premium-block" aria-labelledby="bl-premium-features-heading">
                 <h3 id="bl-premium-features-heading" class="ox-premium-block__title">
-                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  <span class="ox-premium-emoji" aria-hidden="true">🔓</span>
                   Características premium
                 </h3>
                 <div class="ox-premium-grid">
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">📄</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">👶</span>
                       Informes PDF
                     </h4>
                     <p class="ox-premium-card__lead">Exportar notas para padres, crecimiento/salud y aprendizaje:</p>
@@ -3622,7 +3933,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">📸</span>
                       Estadísticas avanzadas.
                     </h4>
                     <p class="ox-premium-card__lead">Averías más ricas y</p>
@@ -3630,7 +3941,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">👨‍👩‍👧</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">📅</span>
                       Familia Premium
                     </h4>
                     <p class="ox-premium-card__lead">Una suscripción puede cubrir</p>
@@ -3638,7 +3949,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
                       Recordatorios más inteligentes
                     </h4>
                     <p class="ox-premium-card__lead">Nunca te pierdas los registros, horarios o</p>
@@ -3646,11 +3957,27 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
                       Eliminar la publicidad
                     </h4>
                     <p class="ox-premium-card__lead">Un espacio más tranquilo para concentrarse-</p>
                     <p class="ox-premium-card__note">Trabaje sin interrupciones.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">👨‍👩‍👧</span>
+                      Family premium sharing
+                    </h4>
+                    <p class="ox-premium-card__lead">One owner subscription covers</p>
+                    <p class="ox-premium-card__note">premium for the whole group.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      Eliminar la publicidad
+                    </h4>
+                    <p class="ox-premium-card__lead">No banners or full-screen ads—</p>
+                    <p class="ox-premium-card__note">focus on parenting logs.</p>
                   </article>
                 </div>
               </section>
@@ -3664,7 +3991,7 @@
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
               Genial si...
             </h2>
-            <ul class="co-build-list" style="margin-top: 1rem">
+            <ul class="co-build-list">
               <li>Quieres que todos los usuarios inicien sesión en un solo lugar organizado</li>
               <li>¿Quieres compartir las novedades con tu pareja o familia?</li>
               <li>Desea un seguimiento estructurado del crecimiento y la salud</li>
@@ -3684,7 +4011,7 @@
           <div class="ox-container ox-premium-layout">
             <div class="ox-premium-highlight">
               <p class="ox-premium-highlight__kicker">
-                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                <span class="ox-premium-emoji" aria-hidden="true">👶</span>
                 En una línea
               </p>
               <p class="ox-premium-highlight__line" id="bl-closing-highlight-title">
@@ -3698,7 +4025,7 @@
         </section>
 
         <section class="ox-closing ox-reveal-on-scroll" aria-label="Mensaje de cierre">
-          <div class="ox-closing__stack">0Iniciar una crianza más tranquila y clara1con 234.5</div>
+          <div class="ox-closing__stack"><p>Today's moments<br /><span class="ox-accent">Become lifelong memories</span></p><p>BabyLog isn't just for logging—<br />it's a space to keep your family's precious moments.</p><p>We'll help you remember<br /><span class="ox-accent">how quickly they grow.</span></p></div>
         </section>
       </main>
       <footer class="ox-footer">
@@ -3708,6 +4035,9 @@
             <span class="footer-legal-sep" aria-hidden="true">·</span>
             <a class="footer-legal" href="terms/">Términos del servicio</a>
           </div>
+          <p class="ox-footer-delete-account">
+            <a class="footer-legal" href="babylog/delete-account/">Delete account</a>
+          </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="Contacto y redes">
             <a
               class="footer-icon-btn footer-icon-btn--ox"
@@ -4107,13 +4437,12 @@
               <div class="ox-badge-row">
                 <p class="ox-badge">
                   <span class="ox-badge-dot" aria-hidden="true"></span>
-                  Registros de 🐾 mascotas · salud · intercambio familiar · análisis de IA
+                  🐾 Pet logs · Health · Family sharing · AI analysis
                 </p>
-                <p class="ox-badge ox-badge--secondary">Una app para el día a día con mascotas</p>
               </div>
               <h1>PetLog</h1>
-              <p class="ox-subtitle">Desde las rutinas diarias hasta la salud: mantenga todos los registros en un solo lugar.</p>
-              <p class="ox-hero-reach-summary">Comida, paseos, vacunas, recordatorios, calendarios y fotos: todos los momentos de tu mascota, organizados.</p>
+              <p class="ox-subtitle"><span class="ox-accent">Turn every pet moment into<br />one life story</span></p>
+              <p class="ox-hero-reach-summary">A digital lifebook for pets—daily life, health, and memories, built together as a family growth archive.</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">Disponible en App Store y Google Play</p>
                 <div class="ox-store-badges">
@@ -4178,8 +4507,7 @@
                   class="ox-hero-logo-img"
                   src="/petlog-logo.png"
                   alt="Ícono de PetLog"
-                  width="940"
-                  height="940"
+                  width="512" height="512"
                 />
               </div>
             </div>
@@ -4187,14 +4515,15 @@
         </section>
         <section id="pl-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pl-intro-title">
           <div class="ox-container ox-app-intro__inner">
-            <div class="ox-app-intro__copy">
-              <p class="ox-section-label">Acerca de la aplicación</p>
+            <header class="ox-app-intro__head">
+              <p class="ox-section-label">Marca</p>
               <h2 id="pl-intro-title" class="ox-app-intro__title">
-                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
-                Acerca de la aplicación
+                <span class="ox-app-intro__title-icon" aria-hidden="true">🐾</span>
+                ¿Por qué PetLog?
               </h2>
-              <div class="ox-app-intro__body">0123 is45un compañero de cuidado de mascotas todo en uno para organizar las rutinas diarias y la salud, y compartir con la familia.67Desde comidas, caminatas, peso, vacunas, clínicas, aseo, calendarios y fotos, mantenga todo en un solo archivo.89Más allá de los registros simples, 10 utiliza la IA para mostrar patrones y cambios para que note lo que importa antes.1112Las pequeñas entradas diarias se suman a un ritmo más saludable para su mascota.13</div>
-              <p class="ox-app-intro__closing">Capture cada día y mantenga las rutinas saludables en el buen camino.</p>
+            </header>
+            <div class="ox-app-intro__panel">
+              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>Turn every moment into one life story</strong></p><p><strong>PetLog</strong> is an all-in-one pet life platform—from daily routines and health to growth and memories—in one place.</p><p>Meals and walks, weight and health logs, vaccines and clinic schedules, photos and memories—keep every moment organized.</p><p>PetLog is not just a log. It is an AI life partner that builds data over time, helps you understand health changes, and supports better pet care.</p><p>Today's small entry shapes your pet's healthier tomorrow.</p><p class="ox-app-intro__closing">Log each day and build a lifetime of memories.</p></div>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">Política de privacidad</a>
               </p>
@@ -4284,7 +4613,49 @@
               </div>
             </div>
           </div>
+        </section><section id="pl-reviews" class="ox-section ox-reviews ox-reveal-on-scroll" aria-labelledby="pl-reviews-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">Reviews</p>
+              <h2 id="pl-reviews-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">💬</span>
+                User stories
+              </h2>
+            </header>
+            <div class="ox-reviews-grid">
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--a" aria-hidden="true">👩🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;Logging my pet's day feels like a little memory box.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Illustrator · 27</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--b" aria-hidden="true">👨🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;Vet visits to walks—everything in one place is so handy.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Pet parent · 34</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--c" aria-hidden="true">👩🏼</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;I can hold on to time with our fur baby longer.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Photographer · 30</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--d" aria-hidden="true">👨🏽</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;My pet's growth reads like a diary volume by volume.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Café owner · 41</footer>
+              </article>
+            </div>
+          </div>
         </section>
+
+        
 
         <section id="pl-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="pl-features-title">
           <div class="ox-container">
@@ -4298,51 +4669,51 @@
             <div class="ox-features">
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🍽️</span>
-                <h3>Comidas y paseos</h3>
-                <p class="ox-feature-lead">Haz un seguimiento de los alimentos, la hidratación, las caminatas y las rutinas diarias.</p>
-                <p class="ox-feature-note"></p>
+                <h3>Meal logs</h3>
+                <p class="ox-feature-lead">Food, treats, water intake,</p>
+                <p class="ox-feature-note">and nutrition notes.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🐾</span>
-                <h3>Perfiles de PET</h3>
-                <p class="ox-feature-lead">Raza, cumpleaños, peso, notas: organizadas por mascota.</p>
-                <p class="ox-feature-note"></p>
+                <h3>Walk logs</h3>
+                <p class="ox-feature-lead">Walk time, distance, activity,</p>
+                <p class="ox-feature-note">and exercise patterns.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">💉</span>
-                <h3>Línea de tiempo de salud</h3>
-                <p class="ox-feature-lead">Almacene vacunas, clínicas, medicamentos y chequeos.</p>
-                <p class="ox-feature-note"></p>
+                <h3>Health records</h3>
+                <p class="ox-feature-lead">Vaccines, clinic visits, medications,</p>
+                <p class="ox-feature-note">test results, and health history.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📅</span>
                 <h3>Programación</h3>
-                <p class="ox-feature-lead">Visitas a la clínica, vacunas, aseo personal en un solo planificador.</p>
-                <p class="ox-feature-note"></p>
+                <p class="ox-feature-lead">Clinic appointments, vaccination dates,</p>
+                <p class="ox-feature-note">grooming, and checkup schedules.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📊</span>
                 <h3>Estadística</h3>
-                <p class="ox-feature-lead">Visualice las rutinas y los datos de bienestar.</p>
-                <p class="ox-feature-note"></p>
+                <p class="ox-feature-lead">Daily patterns, weight trends, health flow,</p>
+                <p class="ox-feature-note">and activity data—visualized.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">👨‍👩‍👧</span>
                 <h3>Compartir en familia</h3>
-                <p class="ox-feature-lead">Colaborar con la familia en el mismo expediente.</p>
-                <p class="ox-feature-note"></p>
+                <p class="ox-feature-lead">Share records with family members</p>
+                <p class="ox-feature-note">and manage care together.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">💬</span>
                 <h3>Comunidad</h3>
-                <p class="ox-feature-lead">Intercambia experiencias y consejos de confianza con otros amantes de las mascotas.</p>
-                <p class="ox-feature-note"></p>
+                <p class="ox-feature-lead">Share tips, swap experiences,</p>
+                <p class="ox-feature-note">Q&amp;A, and pet life stories.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
                 <h3>Análisis de salud de IA</h3>
-                <p class="ox-feature-lead">Interprete los patrones de sus registros para una atención proactiva.</p>
-                <p class="ox-feature-note"></p>
+                <p class="ox-feature-lead">Routine and activity analysis,</p>
+                <p class="ox-feature-note">health change detection, and AI insights.</p>
               </article>
             </div>
           </div>
@@ -4360,27 +4731,27 @@
               </article>
               <article class="ox-feature-card">
                 <h3>️2. Registrar las rutinas diarias</h3>
-                <p class="ox-feature-lead">Registre comidas, paseos, notas de salud rápidas.</p>
+                <p class="ox-feature-lead">Record meals, walks, activity, and health notes.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>️3. Mantente al tanto del bienestar</h3>
-                <p class="ox-feature-lead">Hacer un seguimiento del peso, las visitas a la clínica y el historial de vacunación.</p>
+                <h3>3️⃣ Manage wellness</h3>
+                <p class="ox-feature-lead">Track vaccinations, clinic visits, and medications.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>Planifique con anticipación</h3>
-                <p class="ox-feature-lead">Programe visitas al veterinario y recordatorios clave.</p>
+                <h3>4️⃣ Plan schedules</h3>
+                <p class="ox-feature-lead">Add checkups, grooming, and vaccination dates.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>Revisión de Percepciones</h3>
-                <p class="ox-feature-lead">Vea los ritmos en la actividad y el bienestar.</p>
+                <h3>5️⃣ Review statistics</h3>
+                <p class="ox-feature-lead">Analyze daily patterns and health trends.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>6.️ Incluye a la familia</h3>
-                <p class="ox-feature-lead">Comparte el acceso para que todos contribuyan.</p>
+                <h3>6️. Compartir con la familia</h3>
+                <p class="ox-feature-lead">Manage records together with family.</p>
               </article>
               <article class="ox-feature-card">
                 <h3>Análisis de IA</h3>
-                <p class="ox-feature-lead">Abra información sobre patrones de salud a medida.</p>
+                <p class="ox-feature-lead">Open AI-powered health insights.</p>
               </article>
             </div>
           </div>
@@ -4398,63 +4769,79 @@
                 <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
                 Prémium
               </h2>
-              <p class="ox-premium-tagline">Análisis más profundos y un flujo de trabajo más fluido para el cuidado diario de las mascotas.</p>
+              <p class="ox-premium-tagline">Smarter pet life<br />with AI and data</p>
             </header>
 
             <div class="ox-premium-stack">
               <section class="ox-premium-block" aria-labelledby="pl-premium-features-heading">
                 <h3 id="pl-premium-features-heading" class="ox-premium-block__title">
-                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  <span class="ox-premium-emoji" aria-hidden="true">🔓</span>
                   Ventajas Premium
                 </h3>
                 <div class="ox-premium-grid">
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">📄</span>
-                      EN FORMATO PDF
+                      <span class="ox-premium-emoji" aria-hidden="true">🐾</span>
+                      AI health coach
                     </h4>
-                    <p class="ox-premium-card__lead">Agrupe las líneas de tiempo y rutinas de salud en archivos PDF que pueda</p>
-                    <p class="ox-premium-card__note">guardar o compartir de forma segura.</p>
+                    <p class="ox-premium-card__lead">Health pattern and behavior analysis—</p>
+                    <p class="ox-premium-card__note">with tailored insights.</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
-                      Informes de bienestar de IA
+                      AI pattern analysis
                     </h4>
-                    <p class="ox-premium-card__lead">Interpretar el estilo de vida + las señales vitales para servir</p>
-                    <p class="ox-premium-card__note">percepciones personales.</p>
+                    <p class="ox-premium-card__lead">Daily, activity, and health changes—</p>
+                    <p class="ox-premium-card__note">analyzed deeply with AI.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📸</span>
+                      Unlimited photos
+                    </h4>
+                    <p class="ox-premium-card__lead">Photo archives, albums,</p>
+                    <p class="ox-premium-card__note">and safe memory storage.</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">📊</span>
-                      Gráficos avanzados
+                      Estadísticas avanzadas.
                     </h4>
-                    <p class="ox-premium-card__lead">Segmentación y elementos visuales más ricos para</p>
-                    <p class="ox-premium-card__note">Tendencias a largo plazo</p>
+                    <p class="ox-premium-card__lead">7-, 30-, 90-day,</p>
+                    <p class="ox-premium-card__note">and yearly data views.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🏥</span>
+                      Backup &amp; sync
+                    </h4>
+                    <p class="ox-premium-card__lead">Cloud backup, multi-device sync,</p>
+                    <p class="ox-premium-card__note">and secure data storage.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📄</span>
+                      Informes PDF
+                    </h4>
+                    <p class="ox-premium-card__lead">Health reports, memory albums,</p>
+                    <p class="ox-premium-card__note">and growth archives.</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">👨‍👩‍👧</span>
-                      Familia Premium
+                      Family premium sharing
                     </h4>
-                    <p class="ox-premium-card__lead">Un miembro del hogar suscrito desbloquea Premium para</p>
-                    <p class="ox-premium-card__note">todos en el círculo.</p>
-                  </article>
-                  <article class="ox-premium-card">
-                    <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
-                      Recordatorios inteligentes
-                    </h4>
-                    <p class="ox-premium-card__lead">Medicamentos, vacunación, aseo y clínicas:</p>
-                    <p class="ox-premium-card__note">nunca se escabulle.</p>
+                    <p class="ox-premium-card__lead">Shared caregiver access, family accounts,</p>
+                    <p class="ox-premium-card__note">and one premium plan for all.</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
                       Eliminar la publicidad
                     </h4>
-                    <p class="ox-premium-card__lead">Un espacio más tranquilo para el cuidado de mascotas-</p>
-                    <p class="ox-premium-card__note">sin anuncios intrusivos.</p>
+                    <p class="ox-premium-card__lead">No ads—</p>
+                    <p class="ox-premium-card__note">focus on your pet's records.</p>
                   </article>
                 </div>
               </section>
@@ -4468,14 +4855,14 @@
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
               Genial si...
             </h2>
-            <ul class="co-build-list" style="margin-top: 1rem">
-              <li>Quiere registros ordenados y completos para cada mascota.</li>
-              <li>Necesita que los miembros de la familia colaboren en la atención.</li>
-              <li>Prefiere rutinas de salud + gestionadas juntas.</li>
-              <li>Nunca querrá perderse vacunas o clínicas.</li>
-              <li>Valora las galerías y los diarios a largo plazo.</li>
-              <li>Desea una detección temprana de patrones asistida por IA.</li>
-              <li>Planee administrar años de datos confiables.</li>
+            <ul class="co-build-list">
+              <li>🐶 Want every record in one organized place</li>
+              <li>👨‍👩‍👩‍👧 Want to share pet life with family</li>
+              <li>🩺 Want steady health data tracking</li>
+              <li>📅 Never want to miss vaccines or clinics</li>
+              <li>📸 Want to keep photos and memories for years</li>
+              <li>🤖 Want AI help to understand patterns</li>
+              <li>📄 Want PDF reports and growth albums</li>
             </ul>
           </div>
         </section>
@@ -4488,21 +4875,21 @@
           <div class="ox-container ox-premium-layout">
             <div class="ox-premium-highlight">
               <p class="ox-premium-highlight__kicker">
-                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
-                La nota de hoy, la tranquilidad de mañana.
+                <span class="ox-premium-emoji" aria-hidden="true">🐾</span>
+                Every moment with your pet
               </p>
               <p class="ox-premium-highlight__line" id="pl-closing-highlight-title">
-                Escribe los hábitos que nutren a tu mascota.
+                Log life—and build healthier pet care.
               </p>
               <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
-                Comiencen juntos rutinas más saludables.
+                PetLog enriches daily life<br />for you and your companion.
               </p>
             </div>
           </div>
         </section>
 
         <section class="ox-closing ox-reveal-on-scroll" aria-label="Mensaje de cierre">
-          <div class="ox-closing__stack">0Pase a un cuidado más claro de las mascotas1con 234,5</div>
+          <div class="ox-closing__stack"><p>Days together<br /><span class="ox-accent">Become precious memories</span></p><p>PetLog isn't just pet management—<br />it's a space to record moments together.</p><p>Hold on to time with<br /><span class="ox-accent">the family you love.</span></p></div>
         </section>
       </main>
       <footer class="ox-footer">
@@ -4512,6 +4899,9 @@
             <span class="footer-legal-sep" aria-hidden="true">·</span>
             <a class="footer-legal" href="terms/">Términos del servicio</a>
           </div>
+          <p class="ox-footer-delete-account">
+            <a class="footer-legal" href="petlog/delete-account/">Delete account</a>
+          </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="Contacto y redes">
             <a
               class="footer-icon-btn footer-icon-btn--ox"
@@ -4911,12 +5301,11 @@
               <div class="ox-badge-row">
                 <p class="ox-badge">
                   <span class="ox-badge-dot" aria-hidden="true"></span>
-                  💰 Hábitos de ahorro · análisis de gastos · coach IA
+                  💰 Saving habits · Spending analysis · AI savings coach
                 </p>
-                <p class="ox-badge ox-badge--secondary">173 países · 13 idiomas</p>
               </div>
               <h1>PiggyUp</h1>
-              <p class="ox-subtitle">Los pequeños ahorros suman un gran cambio</p>
+              <p class="ox-subtitle"><span class="ox-accent">Small savings add up to bigger change</span></p>
               <p class="ox-hero-reach-summary">Una app de ahorro simpática e inteligente: registra gastos, analiza hábitos y recibe insights con IA.</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">Disponible en App Store y Google Play</p>
@@ -4982,8 +5371,7 @@
                   class="ox-hero-logo-img"
                   src="/piggyup-logo.png"
                   alt="Logotipo de PiggyUp: alcancía rosa"
-                  width="940"
-                  height="940"
+                  width="512" height="512"
                 />
               </div>
             </div>
@@ -4991,14 +5379,15 @@
         </section>
         <section id="pu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pu-intro-title">
           <div class="ox-container ox-app-intro__inner">
-            <div class="ox-app-intro__copy">
-              <p class="ox-section-label">Sobre la app</p>
+            <header class="ox-app-intro__head">
+              <p class="ox-section-label">Marca</p>
               <h2 id="pu-intro-title" class="ox-app-intro__title">
-                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
-                Sobre la app
+                <span class="ox-app-intro__title-icon" aria-hidden="true">🐷</span>
+                ¿Por qué PiggyUp?
               </h2>
-              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>PiggyUp</strong> es</p><p>una app ligera para registrar gastos y crear hábitos de ahorro sin un libro de cuentas pesado.</p><p>Desde registros diarios hasta insights de IA, reduce el estrés del dinero y convierte pequeños logros en crecimiento.</p><p>Con un cerdito amigable, se siente más como compañero de estilo de vida que como banca rígida.</p><p>Pequeños registros suman un cambio real.</p></div>
-              <p class="ox-app-intro__closing">Pequeños ahorros crean mejores hábitos.</p>
+            </header>
+            <div class="ox-app-intro__panel">
+              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>PiggyUp</strong> es</p><p>una app ligera para registrar gastos y crear hábitos de ahorro sin un libro de cuentas pesado.</p><p>Desde registros diarios hasta insights de IA, reduce el estrés del dinero y convierte pequeños logros en crecimiento.</p><p>Con un cerdito amigable, se siente más como compañero de estilo de vida que como banca rígida.</p><p>Pequeños registros suman un cambio real.</p><p class="ox-app-intro__closing">Pequeños ahorros crean mejores hábitos.</p></div>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">Política de privacidad</a>
               </p>
@@ -5088,7 +5477,49 @@
               </div>
             </div>
           </div>
+        </section><section id="pu-reviews" class="ox-section ox-reviews ox-reveal-on-scroll" aria-labelledby="pu-reviews-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">Reviews</p>
+              <h2 id="pu-reviews-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">💬</span>
+                User stories
+              </h2>
+            </header>
+            <div class="ox-reviews-grid">
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--a" aria-hidden="true">👩🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;Turning saving into a game is genuinely fun.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; College student · 22</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--b" aria-hidden="true">👨🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;I'm not spending less—I'm spending smarter.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Office worker · 30</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--c" aria-hidden="true">👩🏼</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;Little spending habits started changing one by one.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Flight attendant · 29</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--d" aria-hidden="true">👨🏽</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;Saving feels like a win—not a strain.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Small business owner · 39</footer>
+              </article>
+            </div>
+          </div>
         </section>
+
+        
 
         <section id="pu-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="pu-features-title">
           <div class="ox-container">
@@ -5198,13 +5629,13 @@
             <div class="ox-premium-stack">
               <section class="ox-premium-block" aria-labelledby="pu-premium-features-heading">
                 <h3 id="pu-premium-features-heading" class="ox-premium-block__title">
-                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  <span class="ox-premium-emoji" aria-hidden="true">🔓</span>
                   Funciones premium
                 </h3>
                 <div class="ox-premium-grid">
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">🏆</span>
                       Análisis avanzado
                     </h4>
                     <p class="ox-premium-card__lead">Vistas por mes, categoría</p>
@@ -5212,7 +5643,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">👥</span>
                       Informes IA
                     </h4>
                     <p class="ox-premium-card__lead">Según tu flujo de gasto,</p>
@@ -5220,7 +5651,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
                       Notificaciones avanzadas
                     </h4>
                     <p class="ox-premium-card__lead">Control fino de presupuesto, repetidos</p>
@@ -5228,7 +5659,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">📈</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
                       Estadísticas detalladas
                     </h4>
                     <p class="ox-premium-card__lead">Más formas de ver gastos</p>
@@ -5236,11 +5667,35 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">🎯</span>
                       Sin anuncios
                     </h4>
                     <p class="ox-premium-card__lead">Enfócate en ahorrar</p>
                     <p class="ox-premium-card__note">sin interrupciones.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📄</span>
+                      PDF reports &amp; backup
+                    </h4>
+                    <p class="ox-premium-card__lead">Monthly savings reports and</p>
+                    <p class="ox-premium-card__note">cloud backup support.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📲</span>
+                      Home widgets
+                    </h4>
+                    <p class="ox-premium-card__lead">Check today's spend, savings status, and goal progress</p>
+                    <p class="ox-premium-card__note">without opening the app.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      Eliminar la publicidad
+                    </h4>
+                    <p class="ox-premium-card__lead">No ads—</p>
+                    <p class="ox-premium-card__note">focus on your savings records.</p>
                   </article>
                 </div>
               </section>
@@ -5254,7 +5709,7 @@
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
               Ideal si…
             </h2>
-            <ul class="co-build-list" style="margin-top: 1rem">
+            <ul class="co-build-list">
               <li>Quieres gastar menos de lo necesario</li>
               <li>Te preguntas adónde va el dinero</li>
               <li>Quieres hábitos de ahorro</li>
@@ -5274,7 +5729,7 @@
           <div class="ox-container ox-premium-layout">
             <div class="ox-premium-highlight">
               <p class="ox-premium-highlight__kicker">
-                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                <span class="ox-premium-emoji" aria-hidden="true">🐷</span>
                 En una línea
               </p>
               <p class="ox-premium-highlight__line" id="pu-closing-highlight-title">
@@ -5288,7 +5743,7 @@
         </section>
 
         <section class="ox-closing ox-reveal-on-scroll" aria-label="Mensaje final">
-          <div class="ox-closing__stack"><p>Empieza un hábito de ahorro más simpático e inteligente<br />con <strong>PiggyUp</strong>.</p></div>
+          <div class="ox-closing__stack"><p>Small savings<br /><span class="ox-accent">More freedom</span></p><p>PiggyUp isn't just about saving money—<br />it's a platform for smarter spending habits.</p><p>Saving isn't about deprivation—<br /><span class="ox-accent">it's choosing what matters most.</span></p></div>
         </section>
       </main>
       <footer class="ox-footer">
@@ -5298,6 +5753,9 @@
             <span class="footer-legal-sep" aria-hidden="true">·</span>
             <a class="footer-legal" href="terms/">Términos del servicio</a>
           </div>
+          <p class="ox-footer-delete-account">
+            <a class="footer-legal" href="piggyup/delete-account/">Delete account</a>
+          </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="Contacto y redes">
             <a
               class="footer-icon-btn footer-icon-btn--ox"
@@ -5700,12 +6158,11 @@
               <div class="ox-badge-row">
                 <p class="ox-badge">
                   <span class="ox-badge-dot" aria-hidden="true"></span>
-                  🎯 Metas · retos · coach IA de crecimiento
+                  🎯 Goal tracking · Challenges · AI growth coach
                 </p>
-                <p class="ox-badge ox-badge--secondary">173 países · 13 idiomas</p>
               </div>
               <h1>GoalUp</h1>
-              <p class="ox-subtitle">Pequeñas metas suman un gran crecimiento</p>
+              <p class="ox-subtitle"><span class="ox-accent">Small goals add up to bigger growth</span></p>
               <p class="ox-hero-reach-summary">App inteligente de metas: configuración, análisis de progreso e insights de crecimiento con IA.</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">Disponible en App Store y Google Play</p>
@@ -5771,8 +6228,7 @@
                   class="ox-hero-logo-img"
                   src="/goalup-logo.png"
                   alt="Logo de GoalUp: bandera morada"
-                  width="940"
-                  height="940"
+                  width="512" height="512"
                 />
               </div>
             </div>
@@ -5780,14 +6236,15 @@
         </section>
         <section id="gu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="gu-intro-title">
           <div class="ox-container ox-app-intro__inner">
-            <div class="ox-app-intro__copy">
-              <p class="ox-section-label">Sobre la app</p>
+            <header class="ox-app-intro__head">
+              <p class="ox-section-label">Marca</p>
               <h2 id="gu-intro-title" class="ox-app-intro__title">
-                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
-                Sobre la app
+                <span class="ox-app-intro__title-icon" aria-hidden="true">🎯</span>
+                ¿Por qué GoalUp?
               </h2>
-              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>GoalUp</strong> te ayuda a fijar metas,</p><p>mantener la constancia y crear hábitos de crecimiento.</p><p>Gestiona acciones diarias y metas a largo plazo con análisis IA para un progreso más eficiente.</p><p>Retos, seguimiento y estadísticas muestran tu crecimiento visualmente.</p><p>Pequeñas metas generan cambios grandes.</p></div>
-              <p class="ox-app-intro__closing">El pequeño paso de hoy construye el gran crecimiento de mañana.</p>
+            </header>
+            <div class="ox-app-intro__panel">
+              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>GoalUp</strong> te ayuda a fijar metas,</p><p>mantener la constancia y crear hábitos de crecimiento.</p><p>Gestiona acciones diarias y metas a largo plazo con análisis IA para un progreso más eficiente.</p><p>Retos, seguimiento y estadísticas muestran tu crecimiento visualmente.</p><p>Pequeñas metas generan cambios grandes.</p><p class="ox-app-intro__closing">El pequeño paso de hoy construye el gran crecimiento de mañana.</p></div>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">Política de privacidad</a>
               </p>
@@ -5877,7 +6334,49 @@
               </div>
             </div>
           </div>
+        </section><section id="gu-reviews" class="ox-section ox-reviews ox-reveal-on-scroll" aria-labelledby="gu-reviews-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">Reviews</p>
+              <h2 id="gu-reviews-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">💬</span>
+                User stories
+              </h2>
+            </header>
+            <div class="ox-reviews-grid">
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--a" aria-hidden="true">👨🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;I feel like someone who finishes goals—not just sets them.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Startup founder · 34</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--b" aria-hidden="true">👩🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;Small wins stacked up—and so did my confidence.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; College student · 22</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--c" aria-hidden="true">👩🏼</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;Goals I used to drop—I actually see through now.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Marketer · 28</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--d" aria-hidden="true">👨🏽</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;The best part is seeing my growth in plain sight.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Researcher · 38</footer>
+              </article>
+            </div>
+          </div>
         </section>
+
+        
 
         <section id="gu-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="gu-features-title">
           <div class="ox-container">
@@ -5987,13 +6486,13 @@
             <div class="ox-premium-stack">
               <section class="ox-premium-block" aria-labelledby="gu-premium-features-heading">
                 <h3 id="gu-premium-features-heading" class="ox-premium-block__title">
-                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  <span class="ox-premium-emoji" aria-hidden="true">🔓</span>
                   Funciones premium
                 </h3>
                 <div class="ox-premium-grid">
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">🎯</span>
                       Estadísticas avanzadas
                     </h4>
                     <p class="ox-premium-card__lead">Patrones semanales, mensuales</p>
@@ -6001,7 +6500,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">🏆</span>
                       Informe IA de crecimiento
                     </h4>
                     <p class="ox-premium-card__lead">Basado en tu historial,</p>
@@ -6009,7 +6508,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🎯
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
                       Coach IA de metas
                     </h4>
                     <p class="ox-premium-card__lead">Predice probabilidad de éxito</p>
@@ -6025,11 +6524,35 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
                       Sin anuncios
                     </h4>
                     <p class="ox-premium-card__lead">Usa GoalUp</p>
                     <p class="ox-premium-card__note">sin interrupciones.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">⭐</span>
+                      Focus goals
+                    </h4>
+                    <p class="ox-premium-card__lead">Home pinning, priority emphasis,</p>
+                    <p class="ox-premium-card__note">and focus mode.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📲</span>
+                      Home widgets
+                    </h4>
+                    <p class="ox-premium-card__lead">Today's goals, D-day, and streaks</p>
+                    <p class="ox-premium-card__note">on your home screen.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      Eliminar la publicidad
+                    </h4>
+                    <p class="ox-premium-card__lead">No ads—</p>
+                    <p class="ox-premium-card__note">focus on achieving your goals.</p>
                   </article>
                 </div>
               </section>
@@ -6043,7 +6566,7 @@
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
               Ideal si…
             </h2>
-            <ul class="co-build-list" style="margin-top: 1rem">
+            <ul class="co-build-list">
               <li>Quieres crear hábitos constantes</li>
               <li>Quieres gestionar metas con método</li>
               <li>Quieres análisis de crecimiento con IA</li>
@@ -6063,8 +6586,8 @@
           <div class="ox-container ox-premium-layout">
             <div class="ox-premium-highlight">
               <p class="ox-premium-highlight__kicker">
-                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
-                En una línea
+                <span class="ox-premium-emoji" aria-hidden="true">🎯</span>
+                With small goals
               </p>
               <p class="ox-premium-highlight__line" id="gu-closing-highlight-title">
                 Registra metas y crea hábitos de crecimiento.
@@ -6077,7 +6600,7 @@
         </section>
 
         <section class="ox-closing ox-reveal-on-scroll" aria-label="Mensaje de cierre">
-          <div class="ox-closing__stack"><p>Empieza un crecimiento más constante y significativo<br />con <strong>GoalUp</strong>.</p></div>
+          <div class="ox-closing__stack"><p>Small goals<br /><span class="ox-accent">Bigger growth</span></p><p>GoalUp isn't for writing goals—<br />it's a platform that turns consistency into growth.</p><p>Today's small steps<br /><span class="ox-accent">build tomorrow's big change.</span></p></div>
         </section>
       </main>
       <footer class="ox-footer">
@@ -6087,6 +6610,9 @@
             <span class="footer-legal-sep" aria-hidden="true">·</span>
             <a class="footer-legal" href="terms/">Términos del servicio</a>
           </div>
+          <p class="ox-footer-delete-account">
+            <a class="footer-legal" href="goalup/delete-account/">Delete account</a>
+          </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="Contacto y redes">
             <a
               class="footer-icon-btn footer-icon-btn--ox"
@@ -6489,12 +7015,11 @@
               <div class="ox-badge-row">
                 <p class="ox-badge">
                   <span class="ox-badge-dot" aria-hidden="true"></span>
-                  🔢 Conteo · metas · insights IA
+                  🔢 Count tracking · Goal progress · AI insights
                 </p>
-                <p class="ox-badge ox-badge--secondary">173 países · 13 idiomas admitidos</p>
               </div>
               <h1>CountUp</h1>
-              <p class="ox-subtitle">Pequeños registros suman un gran crecimiento</p>
+              <p class="ox-subtitle"><span class="ox-accent">Small logs add up to<br />bigger change</span></p>
               <p class="ox-hero-reach-summary">App inteligente para contar acciones diarias, progreso de metas, rachas y flujo de crecimiento.</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">Disponible en App Store y Google Play</p>
@@ -6560,8 +7085,7 @@
                   class="ox-hero-logo-img"
                   src="/countup-logo.png"
                   alt="0 logotipo de la aplicación: flecha amarilla hacia arriba"
-                  width="940"
-                  height="940"
+                  width="512" height="512"
                 />
               </div>
             </div>
@@ -6569,14 +7093,15 @@
         </section>
         <section id="cu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="cu-intro-title">
           <div class="ox-container ox-app-intro__inner">
-            <div class="ox-app-intro__copy">
-              <p class="ox-section-label">Acerca de la aplicación</p>
+            <header class="ox-app-intro__head">
+              <p class="ox-section-label">Marca</p>
               <h2 id="cu-intro-title" class="ox-app-intro__title">
-                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
-                Acerca de la aplicación
+                <span class="ox-app-intro__title-icon" aria-hidden="true">🔢</span>
+                ¿Por qué CountUp?
               </h2>
-              <div class="ox-app-intro__body">0123 hace que sea fácil registrar45acciones repetidas y desarrollar hábitos de crecimiento constante.67Contamos los entrenamientos, el agua, el estudio, la lectura, los ahorros, las rutinas, lo que sea que le importe.89Vea los registros diarios y el crecimiento a largo plazo de un vistazo.1011Los recuentos pequeños suman un cambio significativo.12</div>
-              <p class="ox-app-intro__closing">El pequeño registro de hoy construye el gran crecimiento de mañana.</p>
+            </header>
+            <div class="ox-app-intro__panel">
+              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>CountUp</strong> is</p><p>a smart counting platform to log repeated actions and goals as numbers—and see consistency visually.</p><p>Track workouts, reading, quitting smoking, study time, habit streaks, and every step of growth in one place.</p><p>Use AI analysis to spot patterns and build better routines.</p><p>Small numbers stack into bigger growth.</p><p class="ox-app-intro__closing">El pequeño registro de hoy construye el gran crecimiento de mañana.</p></div>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">Política de privacidad</a>
               </p>
@@ -6656,7 +7181,49 @@
               </div>
             </div>
           </div>
+        </section><section id="cu-reviews" class="ox-section ox-reviews ox-reveal-on-scroll" aria-labelledby="cu-reviews-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">Reviews</p>
+              <h2 id="cu-reviews-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">💬</span>
+                User stories
+              </h2>
+            </header>
+            <div class="ox-reviews-grid">
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--a" aria-hidden="true">👩🏼</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;Study hours, books read, workouts—I track it all.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Med student · 24</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--b" aria-hidden="true">👨🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;Memory fades, but the log stays.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Photographer · 32</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--c" aria-hidden="true">👩🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;It's fun comparing me from months ago to me today.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Content creator · 26</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--d" aria-hidden="true">👨🏽</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;Small numbers add up—and you feel the bigger shift.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Architect · 41</footer>
+              </article>
+            </div>
+          </div>
         </section>
+
+        
 
         <section id="cu-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="cu-features-title">
           <div class="ox-container">
@@ -6671,44 +7238,44 @@
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🔢</span>
                 <h3>Registro de recuento</h3>
-                <p class="ox-feature-lead">Cuenta cualquier acción de forma rápida y sencilla.</p>
-                <p class="ox-feature-note">Regístrate varias veces al día y acumula pequeñas ganancias.</p>
+                <p class="ox-feature-lead">Log today's actions and manage counts and cumulative data easily.</p>
+                <p class="ox-feature-note">Track workouts, reading, study, water intake, and more.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🎯</span>
                 <h3>Configuración de objetivos</h3>
-                <p class="ox-feature-lead">Establezca recuentos y períodos objetivo, luego realice un seguimiento del progreso.</p>
-                <p class="ox-feature-note">Vea intuitivamente lo cerca que está de su objetivo.</p>
+                <p class="ox-feature-lead">Set target counts and periods, then check progress in real time.</p>
+                <p class="ox-feature-note">Small goals lead to big results.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🔥</span>
                 <h3>Seguimiento de rayas</h3>
-                <p class="ox-feature-lead">Vea las rayas y el impulso a lo largo del tiempo.</p>
-                <p class="ox-feature-note">Mantente motivado para que los hábitos no se rompan.</p>
+                <p class="ox-feature-lead">See streak records and turn steady practice into habits.</p>
+                <p class="ox-feature-note">A growth system that boosts your sense of achievement.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🔔</span>
-                <h3>Recordatorios de registro</h3>
-                <p class="ox-feature-lead">Recibe recordatorios en el momento que elijas.</p>
-                <p class="ox-feature-note">Te ayuda a practicar a diario sin olvidarte.</p>
+                <h3>Milestones</h3>
+                <p class="ox-feature-lead">Save achievements at 100, 500, and 1,000 counts—</p>
+                <p class="ox-feature-note">and celebrate moments of growth.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📊</span>
-                <h3>ESTADÍSTICAS DE CRECIMIENTO</h3>
-                <p class="ox-feature-lead">Analizar el flujo de conteo diario, semanal y mensual.</p>
-                <p class="ox-feature-note">Vea su crecimiento como datos.</p>
+                <h3>Estadística</h3>
+                <p class="ox-feature-lead">Analyze daily, weekly, monthly, and yearly logs.</p>
+                <p class="ox-feature-note">See your growth journey visually through data.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">📈</span>
                 <h3>Gráfica para visualización:</h3>
-                <p class="ox-feature-lead">Graficar las tendencias y las tasas de cumplimiento de objetivos.</p>
-                <p class="ox-feature-note">Realice un seguimiento del crecimiento de forma intuitiva a lo largo del tiempo.</p>
+                <p class="ox-feature-lead">View cumulative logs and growth trends as graphs.</p>
+                <p class="ox-feature-note">Understand change at a glance.</p>
               </article>
               <article class="ox-feature-card">
                 <span class="ox-feature-emoji" aria-hidden="true">🤖</span>
                 <h3>AI Insights</h3>
-                <p class="ox-feature-lead">La IA analiza tus patrones</p>
-                <p class="ox-feature-note">y ofrece información sobre el crecimiento a medida.</p>
+                <p class="ox-feature-lead">AI analyzes your patterns and suggests improvements and goals.</p>
+                <p class="ox-feature-note">Helps you build more effective habits.</p>
               </article>
             </div>
           </div>
@@ -6721,28 +7288,28 @@
             </header>
             <div class="ox-features">
               <article class="ox-feature-card">
-                <h3>️1. Crea un recuento</h3>
-                <p class="ox-feature-lead">Añade la acción o el objetivo del que quieres hacer un seguimiento.</p>
+                <h3>1️⃣ Create a counter</h3>
+                <p class="ox-feature-lead">Add the activity you want to track.</p>
               </article>
               <article class="ox-feature-card">
                 <h3>️2. Establece tu objetivo</h3>
-                <p class="ox-feature-lead">Elige el recuento de objetivos, el periodo y las alertas.</p>
+                <p class="ox-feature-lead">Choose target count and period.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>Recuento de️ 3 a diario</h3>
-                <p class="ox-feature-lead">Toca para aumentar cada vez que actúes.</p>
+                <h3>3️⃣ Log consistently</h3>
+                <p class="ox-feature-lead">Count your actions every day.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>4️. Revisa tu flujo</h3>
-                <p class="ox-feature-lead">Usa el calendario y las estadísticas para ver el crecimiento.</p>
+                <h3>4️⃣ Check statistics</h3>
+                <p class="ox-feature-lead">Review your growth charts.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>5️. Compruebe los conocimientos de IA</h3>
-                <p class="ox-feature-lead">Revisar patrones y puntos de crecimiento.</p>
+                <h3>5️⃣ View AI analysis</h3>
+                <p class="ox-feature-lead">See patterns and insights.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>Sigan creciendo</h3>
-                <p class="ox-feature-lead">Los troncos pequeños conducen a un cambio mayor.</p>
+                <h3>6️⃣ Reach your goals</h3>
+                <p class="ox-feature-lead">Stack small logs and grow.</p>
               </article>
             </div>
           </div>
@@ -6760,63 +7327,79 @@
                 <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
                 Prémium
               </h2>
-              <p class="ox-premium-tagline">Análisis más profundo y0a experiencia de conteo más inteligente</p>
+              <p class="ox-premium-tagline">Count · analysis · AI<br />for smarter growth</p>
             </header>
 
             <div class="ox-premium-stack">
               <section class="ox-premium-block" aria-labelledby="cu-premium-features-heading">
                 <h3 id="cu-premium-features-heading" class="ox-premium-block__title">
-                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  <span class="ox-premium-emoji" aria-hidden="true">🔓</span>
                   Características premium
                 </h3>
                 <div class="ox-premium-grid">
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
-                      Estadísticas avanzadas
+                      <span class="ox-premium-emoji" aria-hidden="true">🔢</span>
+                      Unlimited counters
                     </h4>
-                    <p class="ox-premium-card__lead">Diarios, semanales, rnensuales.</p>
-                    <p class="ox-premium-card__note">registrar patrones en detalle.</p>
+                    <p class="ox-premium-card__lead">Create as many</p>
+                    <p class="ox-premium-card__note">counters as you need.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      Estadísticas avanzadas.
+                    </h4>
+                    <p class="ox-premium-card__lead">Detailed analysis by weekday,</p>
+                    <p class="ox-premium-card__note">time, and period.</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
-                      Informes de crecimiento de IA
+                      AI growth analysis
                     </h4>
-                    <p class="ox-premium-card__lead">De su historial de conteo,</p>
-                    <p class="ox-premium-card__note">obtener información de crecimiento personalizada.</p>
-                  </article>
-                  <article class="ox-premium-card">
-                    <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🎯</span>
-                      Coach de objetivos de IA
-                    </h4>
-                    <p class="ox-premium-card__lead">Analiza patrones y</p>
-                    <p class="ox-premium-card__note">sugiere estrategias para alcanzar los objetivos.</p>
+                    <p class="ox-premium-card__lead">Record patterns and</p>
+                    <p class="ox-premium-card__note">growth insights.</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">📈</span>
-                      Análisis detallado
+                      Milestone records
                     </h4>
-                    <p class="ox-premium-card__lead">Hora del día y día de la semana</p>
-                    <p class="ox-premium-card__note">patrones de flujo de éxito.</p>
+                    <p class="ox-premium-card__lead">Achievement history</p>
+                    <p class="ox-premium-card__note">saved automatically.</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🧩</span>
-                      Expansión del widget
+                      <span class="ox-premium-emoji" aria-hidden="true">💡</span>
+                      Informes PDF
                     </h4>
-                    <p class="ox-premium-card__lead">Registrar y comprobar recuentos</p>
-                    <p class="ox-premium-card__note">más fácilmente desde tu pantalla de inicio.</p>
+                    <p class="ox-premium-card__lead">Save count data</p>
+                    <p class="ox-premium-card__note">as reports.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📲</span>
+                      Home widgets
+                    </h4>
+                    <p class="ox-premium-card__lead">Today's logs and</p>
+                    <p class="ox-premium-card__note">streaks on your home screen.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📅</span>
+                      Respaldo en la nube
+                    </h4>
+                    <p class="ox-premium-card__lead">Keep your records</p>
+                    <p class="ox-premium-card__note">stored safely.</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
                       <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
                       Eliminar la publicidad
                     </h4>
-                    <p class="ox-premium-card__lead">Uso 0</p>
-                    <p class="ox-premium-card__note">Trabaje sin interrupciones.</p>
+                    <p class="ox-premium-card__lead">No ads—</p>
+                    <p class="ox-premium-card__note">focus on logging.</p>
                   </article>
                 </div>
               </section>
@@ -6830,14 +7413,14 @@
               <span class="ox-premium-heading__spark" aria-hidden="true">🔢</span>
               Ideal si…
             </h2>
-            <ul class="co-build-list" style="margin-top: 1rem">
-              <li>Quieres registrar pequeñas acciones diarias</li>
-              <li>Quieres contar los entrenamientos, el estudio, la lectura, el agua, etc.</li>
-              <li>Desea gestionar el recuento de objetivos y el progreso</li>
-              <li>Quieres desarrollar hábitos estables</li>
-              <li>¿Quieres ver el crecimiento como números?</li>
-              <li>¿Quieres un análisis de registros basado en IA?</li>
-              <li>¿Quieres una aplicación de conteo sencilla y bonita?</li>
+            <ul class="co-build-list">
+              <li>Want to log workouts consistently</li>
+              <li>Want to track quitting smoking or drinking</li>
+              <li>Want to record reading and study volume</li>
+              <li>Want to see habit building as data</li>
+              <li>Want to visualize small wins</li>
+              <li>Want AI analysis of your growth patterns</li>
+              <li>Want streak motivation to stay on track</li>
             </ul>
           </div>
         </section>
@@ -6850,21 +7433,21 @@
           <div class="ox-container ox-premium-layout">
             <div class="ox-premium-highlight">
               <p class="ox-premium-highlight__kicker">
-                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
-                En una línea
+                <span class="ox-premium-emoji" aria-hidden="true">🔢</span>
+                From small logs
               </p>
               <p class="ox-premium-highlight__line" id="cu-closing-highlight-title">
-                Contar acciones y desarrollar hábitos de crecimiento.
+                Consistency completes growth.
               </p>
               <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
-                Los troncos pequeños hacen grandes cambios.
+                CountUp makes your<br />daily practice visible.
               </p>
             </div>
           </div>
         </section>
 
         <section class="ox-closing ox-reveal-on-scroll" aria-label="Mensaje de cierre">
-          <div class="ox-closing__stack"><p>Empieza un registro más constante y significativo<br />con <strong>CountUp</strong>.</p></div>
+          <div class="ox-closing__stack"><p>Recorded moments<br /><span class="ox-accent">Traces of growth</span></p><p>CountUp isn't just counting—<br />it's a space to record change and achievement.</p><p>Small daily logs come together<br /><span class="ox-accent">into your growth story.</span></p></div>
         </section>
       </main>
       <footer class="ox-footer">
@@ -6874,6 +7457,9 @@
             <span class="footer-legal-sep" aria-hidden="true">·</span>
             <a class="footer-legal" href="terms/">Términos del servicio</a>
           </div>
+          <p class="ox-footer-delete-account">
+            <a class="footer-legal" href="countup/delete-account/">Delete account</a>
+          </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="Contacto y redes">
             <a
               class="footer-icon-btn footer-icon-btn--ox"
@@ -7275,13 +7861,12 @@
               <div class="ox-badge-row">
                 <p class="ox-badge">
                   <span class="ox-badge-dot" aria-hidden="true"></span>
-                  📦 Paquete de apps · Premium · Suscripción unificada
+                  📦 Newon Membership · Unified account · App hub
                 </p>
-                <p class="ox-badge ox-badge--secondary">177 países · 13 idiomas</p>
               </div>
               <h1>Newon</h1>
-              <p class="ox-subtitle">Más valor con una sola suscripción</p>
-              <p class="ox-hero-reach-summary">From productivity and health to goals, finance, and lifestyle—<br />access all of Newon's premium apps in one package.<br /><br />No separate subscriptions per app—<br />one membership unlocks more benefits.</p>
+              <p class="ox-subtitle"><span class="ox-accent">One account for<br />all Newon services</span></p>
+              <p class="ox-hero-reach-summary">From productivity and health to parenting, finance, and goals—<br />experience Newon's premium apps<br />with one membership.</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">Disponible en App Store y Google Play</p>
                 <div class="ox-store-badges">
@@ -7346,8 +7931,7 @@
                   class="ox-hero-logo-img"
                   src="/newon-plus-logo.png"
                   alt="Logotipo de Newon"
-                  width="940"
-                  height="940"
+                  width="512" height="512"
                 />
               </div>
             </div>
@@ -7355,14 +7939,15 @@
         </section>
         <section id="np-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="np-intro-title">
           <div class="ox-container ox-app-intro__inner">
-            <div class="ox-app-intro__copy">
-              <p class="ox-section-label">Sobre la app</p>
+            <header class="ox-app-intro__head">
+              <p class="ox-section-label">Marca</p>
               <h2 id="np-intro-title" class="ox-app-intro__title">
-                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
-                Sobre el paquete
+                <span class="ox-app-intro__title-icon" aria-hidden="true">📦</span>
+                ¿Por qué Newon?
               </h2>
+            </header>
+            <div class="ox-app-intro__panel">
               <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>Newon</strong> es un paquete de apps de estilo de vida que facilita el día a día.</p><p>Desde metas y registros de salud hasta análisis de gastos, crianza y cuidado de mascotas—cubrimos muchas áreas de la vida diaria.</p><p>Disfruta funciones premium en varias apps con una sola suscripción.</p><p>Registra tu vida, gestiona tu crecimiento y vive una rutina mejor.</p></div>
-              
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">Política de privacidad</a>
               </p>
@@ -7433,6 +8018,50 @@
             </div>
           </div>
         </section>
+
+        <section id="np-reviews" class="ox-section ox-reviews ox-reveal-on-scroll" aria-labelledby="np-reviews-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">Reviews</p>
+              <h2 id="np-reviews-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">💬</span>
+                User stories
+              </h2>
+            </header>
+            <div class="ox-reviews-grid">
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--a" aria-hidden="true">👨🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;I used to juggle apps—now Newon is the one stop.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; PM · 33</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--b" aria-hidden="true">👩🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;Habits, goals, spending—my daily life feels connected in one place.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; College student · 22</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--c" aria-hidden="true">👩🏼</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;One subscription for many apps is genuinely convenient.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Content editor · 29</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--d" aria-hidden="true">👨🏽</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;I didn't expect an Apple One–like feel from productivity apps.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Entrepreneur · 40</footer>
+              </article>
+            </div>
+          </div>
+        </section>
+
+
 
         <section id="np-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="np-features-title">
           <div class="ox-container">
@@ -7528,7 +8157,7 @@
               <p class="ox-section-label">Precios</p>
               <h2 id="np-premium-title" class="ox-premium-heading">
                 <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
-                Prémium
+                Premium
               </h2>
               <p class="ox-premium-tagline">Una suscripción para<br />todas las funciones premium de Newon.</p>
             </header>
@@ -7536,13 +8165,13 @@
             <div class="ox-premium-stack">
               <section class="ox-premium-block" aria-labelledby="np-premium-features-heading">
                 <h3 id="np-premium-features-heading" class="ox-premium-block__title">
-                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  <span class="ox-premium-emoji" aria-hidden="true">🔓</span>
                   Funciones premium
                 </h3>
                 <div class="ox-premium-grid">
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">🎯</span>
                       Análisis avanzados
                     </h4>
                     <p class="ox-premium-card__lead">Análisis de datos con IA</p>
@@ -7550,7 +8179,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">🏆</span>
                       Informes con IA
                     </h4>
                     <p class="ox-premium-card__lead">Informes de crecimiento personalizados</p>
@@ -7558,7 +8187,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🔓</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
                       Todas las apps incluidas
                     </h4>
                     <p class="ox-premium-card__lead">Cada app de Newon</p>
@@ -7570,15 +8199,39 @@
                       Copia en la nube
                     </h4>
                     <p class="ox-premium-card__lead">Copia y sincronización ilimitadas</p>
-                    <p class="ox-premium-card__note"></p>
+                    <p class="ox-premium-card__note">synced</p>
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
                       Sin anuncios
                     </h4>
                     <p class="ox-premium-card__lead">Sin publicidad</p>
                     <p class="ox-premium-card__note">Una experiencia más fluida.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">⭐</span>
+                      Membership perks
+                    </h4>
+                    <p class="ox-premium-card__lead">Early access to new apps,</p>
+                    <p class="ox-premium-card__note">plus discount offers</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📲</span>
+                      App library
+                    </h4>
+                    <p class="ox-premium-card__lead">See installed apps,</p>
+                    <p class="ox-premium-card__note">install new ones instantly</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      Eliminar la publicidad
+                    </h4>
+                    <p class="ox-premium-card__lead">Every app</p>
+                    <p class="ox-premium-card__note">ad-free</p>
                   </article>
                 </div>
               </section>
@@ -7592,7 +8245,7 @@
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
               Ideal si…
             </h2>
-            <ul class="co-build-list" style="margin-top: 1rem">
+            <ul class="co-build-list">
               <li>Quieres más productividad</li>
               <li>Quieres gestionar la salud con método</li>
               <li>Quieres analizar tus hábitos de gasto</li>
@@ -7626,7 +8279,7 @@
         </section>
 
         <section class="ox-closing ox-reveal-on-scroll" aria-label="Mensaje de cierre">
-          <div class="ox-closing__stack"><p>Con <strong>Newon</strong>,<br />alcanza tus metas,<br />cuida tu salud<br />y disfruta de un estilo de vida más cómodo.</p></div>
+          <div class="ox-closing__stack"><p>One membership<br /><span class="ox-accent">More value</span></p><p>Newon isn't a bundle of apps—<br />it's an integrated platform for everyday life.</p><p>From productivity to health, finance, and lifestyle—<br /><span class="ox-accent">discover more with one membership.</span></p></div>
         </section>
       </main>
       <footer class="ox-footer">
@@ -7636,6 +8289,9 @@
             <span class="footer-legal-sep" aria-hidden="true">·</span>
             <a class="footer-legal" href="terms/">Términos del servicio</a>
           </div>
+          <p class="ox-footer-delete-account">
+            <a class="footer-legal" href="newon/delete-account/">Delete account</a>
+          </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="Contacto y redes">
             <a
               class="footer-icon-btn footer-icon-btn--ox"
@@ -8000,12 +8656,11 @@
               <div class="ox-badge-row">
                 <p class="ox-badge">
                   <span class="ox-badge-dot" aria-hidden="true"></span>
-                  📚 Transcripción · notas de lectura · citas
+                  📚 Transcription · Reading notes · Quote saving
                 </p>
-                <p class="ox-badge ox-badge--secondary">173 países · 13 idiomas</p>
               </div>
               <h1>NOTING</h1>
-              <p class="ox-subtitle">Recuerda las buenas frases más tiempo</p>
+              <p class="ox-subtitle"><span class="ox-accent">Remember good sentences longer</span></p>
               <p class="ox-hero-reach-summary">Una plataforma de transcripción para capturar y organizar frases y pensamientos de tu lectura. Más allá de guardar líneas: revísalas, reflexiona y aplícalas a la vida. Registros, notas, libros y etiquetas en un solo lugar.</p>
                             <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">Disponible en la web</p>
@@ -8026,8 +8681,7 @@
                   class="ox-hero-logo-img"
                   src="/noting-logo.png"
                   alt="Logotipo de Noting: icono de lápiz"
-                  width="940"
-                  height="940"
+                  width="512" height="512"
                 />
               </div>
             </div>
@@ -8035,14 +8689,15 @@
         </section>
         <section id="nt-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="nt-intro-title">
           <div class="ox-container ox-app-intro__inner">
-            <div class="ox-app-intro__copy">
-              <p class="ox-section-label">Sobre la app</p>
+            <header class="ox-app-intro__head">
+              <p class="ox-section-label">Marca</p>
               <h2 id="nt-intro-title" class="ox-app-intro__title">
-                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
-                Sobre la app
+                <span class="ox-app-intro__title-icon" aria-hidden="true">📚</span>
+                ¿Por qué Noting?
               </h2>
-              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>Noting</strong> no es una app de notas simple.</p><p>Es una plataforma de lectura centrada en la transcripción para registrar y gestionar citas del libro junto con tus propios pensamientos.</p><p>Diseñada para una lectura que recuerdas y de la que creces, no que terminas y olvidas.</p><p>Guarda buenas frases, escribe tus ideas y revísalas con el tiempo para crear tu archivo personal de conocimiento.</p><p>Una pequeña frase puede cambiar tu vida.</p></div>
-              <p class="ox-app-intro__closing">Las buenas frases duran más cuando se escriben.</p>
+            </header>
+            <div class="ox-app-intro__panel">
+              <div class="ox-app-intro__body"><p class="ox-app-intro__lead"><strong>Noting</strong> no es una app de notas simple.</p><p>Es una plataforma de lectura centrada en la transcripción para registrar y gestionar citas del libro junto con tus propios pensamientos.</p><p>Diseñada para una lectura que recuerdas y de la que creces, no que terminas y olvidas.</p><p>Guarda buenas frases, escribe tus ideas y revísalas con el tiempo para crear tu archivo personal de conocimiento.</p><p>Una pequeña frase puede cambiar tu vida.</p><p class="ox-app-intro__closing">Las buenas frases duran más cuando se escriben.</p></div>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">Política de privacidad</a>
               </p>
@@ -8232,7 +8887,7 @@
             <div class="ox-premium-stack">
               <section class="ox-premium-block" aria-labelledby="nt-premium-features-heading">
                 <h3 id="nt-premium-features-heading" class="ox-premium-block__title">
-                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  <span class="ox-premium-emoji" aria-hidden="true">🔓</span>
                   🔒 Funciones premium
                 </h3>
                 <div class="ox-premium-grid">
@@ -8288,7 +8943,7 @@
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
               Ideal si…
             </h2>
-            <ul class="co-build-list" style="margin-top: 1rem">
+            <ul class="co-build-list">
               <li>Quieres llevar un registro constante de lectura</li>
               <li>Quieres recordar buenas frases más tiempo</li>
               <li>Disfrutas la transcripción</li>
@@ -8322,7 +8977,7 @@
         </section>
 
         <section class="ox-closing ox-reveal-on-scroll" aria-label="Mensaje final">
-          <div class="ox-closing__stack"><p>Con <strong>NOTING</strong>,<br />reúne buenas frases<br />y registra tus pensamientos.</p></div>
+          <div class="ox-closing__stack"><p>Good lines<br /><span class="ox-accent">Become lasting thoughts</span></p><p>Noting isn't just note-taking—<br />it's a space to connect reading and reflection.</p><p>One line today<br /><span class="ox-accent">can change you tomorrow.</span></p></div>
           <p class="ox-closing__cta">
             <a
               class="ox-web-cta btn btn-primary"
@@ -8340,6 +8995,9 @@
             <span class="footer-legal-sep" aria-hidden="true">·</span>
             <a class="footer-legal" href="terms/">Términos del servicio</a>
           </div>
+          <p class="ox-footer-delete-account">
+            <a class="footer-legal" href="noting/delete-account/">Delete account</a>
+          </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="Contacto y redes">
             <a
               class="footer-icon-btn footer-icon-btn--ox"
@@ -8742,11 +9400,11 @@
               <div class="ox-badge-row">
                 <p class="ox-badge">
                   <span class="ox-badge-dot" aria-hidden="true"></span>
-                  Suscripciones · pagos recurrentes · análisis del gasto
+                  🔔 Subscriptions · Recurring bills · Payment alerts · Spending insights
                 </p>
               </div>
               <h1>SubPing</h1>
-              <p class="ox-subtitle">Ve el dinero que sale cada mes de un vistazo</p>
+              <p class="ox-subtitle"><span class="ox-accent">Manage subscriptions—<br />keep more money</span></p>
               <p class="ox-hero-reach-summary">Organiza suscripciones y pagos recurrentes—desde streaming hasta el alquiler—y no pierdas de vista el gasto del mes ni las próximas fechas.</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">Disponible en App Store y Google Play</p>
@@ -8812,8 +9470,7 @@
                   class="ox-hero-logo-img"
                   src="/subping-hero-mark.png"
                   alt="Logotipo de SubPing"
-                  width="940"
-                  height="940"
+                  width="512" height="512"
                 />
               </div>
             </div>
@@ -8822,12 +9479,14 @@
 
         <section id="sp-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="sp-intro-title">
           <div class="ox-container ox-app-intro__inner">
-            <div class="ox-app-intro__copy">
-              <p class="ox-section-label">Entender la app</p>
+            <header class="ox-app-intro__head">
+              <p class="ox-section-label">Marca</p>
               <h2 id="sp-intro-title" class="ox-app-intro__title">
-                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
-                Presentación
+                <span class="ox-app-intro__title-icon" aria-hidden="true">🔔</span>
+                ¿Por qué SubPing?
               </h2>
+            </header>
+            <div class="ox-app-intro__panel">
               <div class="ox-app-intro__body sp-intro-html"><p class="ox-app-intro__lead"><strong>Todos los pagos recurrentes en un solo lugar</strong></p><p><strong>SubPing</strong> te ayuda a gestionar no solo suscripciones tipo streaming, sino también teléfono, seguro, alquiler, colegio y <strong>cualquier otro gasto recurrente</strong>, <strong>todo junto</strong>.</p><p><strong>Organiza automáticamente</strong> los cargos que se repiten y muestra el total del mes y lo próximo a pagar <strong>de un vistazo</strong>.</p><p>Detecta suscripciones inactivas y <strong>gastos innecesarios</strong> con facilidad, así <strong>ahorrar</strong> resulta natural.</p><p class="ox-app-intro__closing">SubPing no es solo un gestor: está hecha para <strong>cambiar el flujo de tu dinero</strong>.</p></div>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">Política de privacidad</a>
@@ -8920,39 +9579,101 @@
           </div>
         </section>
 
+        <section id="sp-reviews" class="ox-section ox-reviews ox-reveal-on-scroll" aria-labelledby="sp-reviews-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">Reviews</p>
+              <h2 id="sp-reviews-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">💬</span>
+                User stories
+              </h2>
+            </header>
+            <div class="ox-reviews-grid">
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--a" aria-hidden="true">👨🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;I was shocked how much was auto-charging every month.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Developer · 31</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--b" aria-hidden="true">👩🏻</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;I dropped unused subs and suddenly had coffee money.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; College student · 23</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--c" aria-hidden="true">👩🏼</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;Netflix to AI tools—managing everything in one place is easy.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Video editor · 27</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--d" aria-hidden="true">👨🏽</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;The more subscriptions I have, the more essential this app feels.&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; Freelancer · 37</footer>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        
+
         <section id="sp-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="sp-features-title">
           <div class="ox-container">
             <header class="ox-section-head">
-              <h2 id="sp-features-title" class="ox-section-title-inline">🚀 Funciones principales</h2>
+              <p class="ox-section-label">Características</p>
+              <h2 id="sp-features-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">🚀</span>
+                Características principales
+              </h2>
             </header>
             <div class="ox-features">
               <article class="ox-feature-card">
-                <h3>💳 Suscripciones y gastos fijos en un solo lugar</h3>
+                <span class="ox-feature-emoji" aria-hidden="true">solo</span>
+                <h3>lugar</h3>
                 <p class="ox-feature-lead">Suscripciones, tarjetas y vida diaria: todos los cargos recurrentes juntos</p>
+                <p class="ox-feature-note">Netflix, herramientas de inteligencia artificial, facturas telefónicas: todo en un solo centro.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>📊 Total mensual automático</h3>
+                <span class="ox-feature-emoji" aria-hidden="true">✨</span>
+                <h3>automático</h3>
                 <p class="ox-feature-lead">Suma tu mes a partir de lo que registras, automáticamente</p>
+                <p class="ox-feature-note">Totales de categorías y flujo de este mes, organizados para usted.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>⏰ Calendario y recordatorios</h3>
+                <span class="ox-feature-emoji" aria-hidden="true">✨</span>
+                <h3>recordatorios</h3>
                 <p class="ox-feature-lead">Ve lo que viene y recibe alertas para no olvidarte</p>
+                <p class="ox-feature-note">Fechas de finalización del ensayo y fechas de vencimiento, con antelación.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>🔍 Encuentra suscripciones sin usar</h3>
+                <span class="ox-feature-emoji" aria-hidden="true">✨</span>
+                <h3>usar</h3>
                 <p class="ox-feature-lead">Separa activas e inactivas y recorta lo que no necesitas</p>
+                <p class="ox-feature-note">Busque y elimine suscripciones que ya no utiliza.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>💰 Ahorro en caso de baja</h3>
+                <span class="ox-feature-emoji" aria-hidden="true">✨</span>
+                <h3>baja</h3>
                 <p class="ox-feature-lead">Muestra cuánto podrías ahorrar: gasto más claro</p>
+                <p class="ox-feature-note">Vea ahorros potenciales en el momento de cancelar.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>📈 Gasto por categoría</h3>
+                <span class="ox-feature-emoji" aria-hidden="true">✨</span>
+                <h3>categoría</h3>
                 <p class="ox-feature-lead">Salud, streaming, facturas: totales por categoría al instante</p>
+                <p class="ox-feature-note">Streaming, teléfono, vida: totales por categoría.</p>
               </article>
               <article class="ox-feature-card">
-                <h3>📱 Widgets en la pantalla de inicio</h3>
+                <span class="ox-feature-emoji" aria-hidden="true">✨</span>
+                <h3>inicio</h3>
                 <p class="ox-feature-lead">Pagos y totales sin abrir la app</p>
+                <p class="ox-feature-note">El gasto de este mes y el próximo pago en su pantalla de inicio.</p>
               </article>
             </div>
           </div>
@@ -9000,7 +9721,7 @@
                 <span class="ox-premium-heading__spark" aria-hidden="true">✨</span>
                 Prémium
               </h2>
-              <p class="ox-premium-tagline">Gestiona mejor.<br />Ahorra más.</p>
+              <p class="ox-premium-tagline">Manage smarter<br />and save more</p>
             </header>
 
             <div class="ox-premium-stack">
@@ -9011,24 +9732,68 @@
                 </h3>
                 <div class="ox-premium-grid">
                   <article class="ox-premium-card">
-                    <h4 class="ox-premium-card__title">📊 Análisis más profundo</h4>
-                    <p class="ox-premium-card__lead">Tendencias mensuales y cómo cambia tu gasto con el tiempo.</p>
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">∞</span>
+                      Unlimited subscriptions
+                    </h4>
+                    <p class="ox-premium-card__lead">No 7-item cap—track every</p>
+                    <p class="ox-premium-card__note">recurring bill in one place.</p>
                   </article>
                   <article class="ox-premium-card">
-                    <h4 class="ox-premium-card__title">🤖 Informe inteligente con IA</h4>
-                    <p class="ox-premium-card__lead">Ideas de ahorro e insights a partir de tus datos.</p>
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
+                      Smart payment alerts
+                    </h4>
+                    <p class="ox-premium-card__lead">Cancel/payment reminders 7·3·1·0 days ahead</p>
+                    <p class="ox-premium-card__note">at times you choose.</p>
                   </article>
                   <article class="ox-premium-card">
-                    <h4 class="ox-premium-card__title">📉 Alertas de cambio de precio</h4>
-                    <p class="ox-premium-card__lead">Detecta cambios de precio en suscripciones y avisa.</p>
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      AI smart savings
+                    </h4>
+                    <p class="ox-premium-card__lead">Real spending data for savings tips</p>
+                    <p class="ox-premium-card__note">and pattern insights.</p>
                   </article>
                   <article class="ox-premium-card">
-                    <h4 class="ox-premium-card__title">👥 Suscripciones compartidas</h4>
-                    <p class="ox-premium-card__lead">Divide y liquida planes compartidos automáticamente.</p>
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🔍</span>
+                      Auto subscription detection
+                    </h4>
+                    <p class="ox-premium-card__lead">Find candidates from bank/card history</p>
+                    <p class="ox-premium-card__note">and add them in bulk.</p>
                   </article>
                   <article class="ox-premium-card">
-                    <h4 class="ox-premium-card__title">🚫 Sin anuncios</h4>
-                    <p class="ox-premium-card__lead">Experiencia tranquila, sin distracciones.</p>
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">👥</span>
+                      Shared auto settlement
+                    </h4>
+                    <p class="ox-premium-card__lead">Auto-split shared subs and</p>
+                    <p class="ox-premium-card__note">manage outstanding balances.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📉</span>
+                      Price change alerts
+                    </h4>
+                    <p class="ox-premium-card__lead">Detect fee changes and</p>
+                    <p class="ox-premium-card__note">get notified when they happen.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      AI monthly report
+                    </h4>
+                    <p class="ox-premium-card__lead">Six months of history with</p>
+                    <p class="ox-premium-card__note">monthly spend analysis.</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      Remove ads
+                    </h4>
+                    <p class="ox-premium-card__lead">No banners or full-screen ads—</p>
+                    <p class="ox-premium-card__note">a calmer experience.</p>
                   </article>
                 </div>
               </section>
@@ -9042,11 +9807,13 @@
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
               Ideal si…
             </h2>
-            <ul class="co-build-list" style="margin-top: 1rem">
-              <li>Tienes muchas suscripciones y necesitas un solo centro</li>
-              <li>Quieres saber a dónde va el dinero cada mes</li>
-              <li>Quieres recortar gastos sin hojas de cálculo</li>
-              <li>Estás creando un hábito de dinero que dure</li>
+            <ul class="co-build-list">
+              <li>📺 Tienes muchas suscripciones que gestionar</li>
+              <li>💳 Te preguntas por qué tu tarjeta cobra tanto cada mes</li>
+              <li>✂️ Quieres cancelar suscripciones que olvidaste</li>
+              <li>📊 Prefieres datos antes que intuición para gastar</li>
+              <li>💼 Empiezas a gestionar sueldo y gastos fijos</li>
+              <li>✨ Quieres un sistema de dinero sostenible</li>
             </ul>
           </div>
         </section>
@@ -9059,17 +9826,20 @@
           <div class="ox-container ox-premium-layout">
             <div class="ox-premium-highlight">
               <p class="ox-premium-highlight__kicker">
-                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                <span class="ox-premium-emoji" aria-hidden="true">🔔</span>
                 En una línea
               </p>
               <p class="ox-premium-highlight__line" id="sp-closing-highlight-title">
                 Gestiona suscripciones y conserva más dinero.
               </p>
+              <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
+                SubPing hace que tu<br />flujo de gasto sea más claro.
+              </p>
             </div>
           </div>
         </section>
-        <section class="ox-closing ox-reveal-on-scroll" aria-label="Cuando el gasto es visible, cambia tu cartera.">
-          <p>Cuando el gasto es visible, cambia tu cartera.</p>
+        <section class="ox-closing ox-reveal-on-scroll" aria-label="When spending is visible, your wallet ch">
+          <div class="ox-closing__stack"><p>When spending is visible,<br /><span class="ox-accent">your wallet changes</span></p><p>SubPing isn't built to cut spending—<br />it helps you understand how money flows.</p><p>Manage recurring costs<br /><span class="ox-accent">more wisely every month.</span></p></div>
         </section>
       </main>
 
@@ -9081,7 +9851,7 @@
             <a class="footer-legal" href="terms/">Términos del servicio</a>
           </div>
           <p class="ox-footer-delete-account">
-            <a class="footer-legal" href="subping/delete-account/"></a>
+            <a class="footer-legal" href="subping/delete-account/">Delete account</a>
           </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="Contacto y redes">
             <a

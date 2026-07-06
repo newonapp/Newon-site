@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- App account deletion instructions (per-locale static page; __NS__ replaced at build) -->
+<html lang="{{HTML_LANG}}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{t:__NS__.deleteAccount.seoTitle}}</title>
+    <meta name="description" content="{{t:__NS__.deleteAccount.metaDescription}}" />
+    <link rel="canonical" href="{{CANONICAL}}" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/ox-month.css" />
+    <script src="/theme-shell.js"></script>
+    <style>
+      .legal-page { padding: calc(var(--header-h) + 2rem) 0 4rem; min-height: 70vh; }
+      .legal-inner { width: min(720px, calc(100% - var(--space) * 2)); margin: 0 auto; }
+      .legal-inner h1 { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 0.5rem; color: var(--text); }
+      .legal-meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+      .legal-inner h2 { font-size: 1.1rem; margin: 2rem 0 0.75rem; color: var(--text); }
+      .legal-inner p { margin: 0 0 1rem; color: var(--text-muted); line-height: 1.65; }
+      .legal-inner .legal-body ol.legal-steps {
+        margin: 0 0 1rem 1.25rem;
+        padding: 0;
+        color: var(--text-muted);
+        line-height: 1.65;
+      }
+      .legal-inner .legal-body ol.legal-steps li { margin-bottom: 0.4rem; }
+      .legal-inner .legal-body ul.legal-bullets {
+        margin: 0 0 1rem 1.15rem;
+        padding: 0;
+        color: var(--text-muted);
+        line-height: 1.65;
+      }
+      .legal-inner .legal-body ul.legal-bullets li { margin-bottom: 0.4rem; }
+      .legal-inner .legal-body a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+      .legal-back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); font-weight: 500; }
+      .legal-back:hover { color: var(--text); }
+    </style>
+    <script src="/lang-nav.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#legal-main">{{t:common.skipToContent}}</a>
+    <header class="site-header">
+      <div class="container header-inner header-inner--legal">
+        <a class="legal-back" href="../../">{{t:ui.backHome}}</a>
+        <div class="navbar-controls">
+          <button
+            type="button"
+            class="navbar-theme-toggle"
+            data-theme-toggle
+            data-label-light="{{t:common.themeToLight}}"
+            data-label-dark="{{t:common.themeToDark}}"
+            title="{{t:common.themeToggle}}"
+            aria-label="{{t:common.themeToDark}}"
+          >🌙</button>
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-app-del">{{t:ui.language}}</label>
+          <select id="lang-select-app-del" class="lang-select" data-lang-select aria-label="{{t:ui.language}}">
+            <option value="ko">{{t:ui.langKo}}</option>
+            <option value="en">{{t:ui.langEn}}</option>
+            <option value="ja">{{t:ui.langJa}}</option>
+            <option value="es">{{t:ui.langEs}}</option>
+            <option value="pt-br">{{t:ui.langPtBr}}</option>
+            <option value="fr">{{t:ui.langFr}}</option>
+            <option value="de">{{t:ui.langDe}}</option>
+            <option value="hi">{{t:ui.langHi}}</option>
+            <option value="id">{{t:ui.langId}}</option>
+          </select>
+        </div>
+        </div>
+      </div>
+    </header>
+    <main id="legal-main" class="legal-page">
+      <div class="legal-inner">
+        <h1>{{t:__NS__.deleteAccount.title}}</h1>
+        <p class="legal-meta">{{t:__NS__.deleteAccount.appMeta}}</p>
+        <div class="legal-body">{{html:__NS__.deleteAccount.bodyHtml}}</div>
+      </div>
+    </main>
+    <script>
+      (function () {
+        var cur = "{{LANG_DIR}}";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
+  </body>
+</html>

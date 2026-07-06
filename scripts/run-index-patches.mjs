@@ -17,6 +17,7 @@ const STEPS = [
   "patch-index-noting-app.mjs",
   "patch-index-newon-plus-nav.mjs",
   "patch-index-late-app-js.mjs",
+  "patch-app-footers.mjs",
 ];
 
 for (const name of STEPS) {

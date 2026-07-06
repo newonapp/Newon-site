@@ -11,14 +11,14 @@ const localesDir = path.join(ROOT, "locales");
 
 const NAV = {
   ko: {
-    metaTitleNewonPlus: "Newon — 패키지 구독 · 프리미엄 · Newon",
-    newonPlusDesc: "패키지 구독 · 프리미엄 혜택 · 통합 관리",
+    metaTitleNewonPlus: "Newon — Membership · 통합 계정 · Newon",
+    newonPlusDesc: "Newon Membership · 통합 계정 · 앱 허브",
     mobileNewonPlusHint: "Newon+ 소개 보기",
     np: npKo,
   },
   en: {
-    metaTitleNewonPlus: "Newon — Package subscription · Premium · Newon",
-    newonPlusDesc: "Package subscription · Premium benefits · Unified management",
+    metaTitleNewonPlus: "Newon — Membership · Unified account · Newon",
+    newonPlusDesc: "Newon Membership · Unified account · App hub",
     mobileNewonPlusHint: "View Newon+ intro",
     np: npEn,
   },

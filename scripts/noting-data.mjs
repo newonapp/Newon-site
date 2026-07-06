@@ -2,10 +2,10 @@
 
 export const ntKo = {
   brandAria: "Noting 상단으로",
-  globalReachBadge: "173개국 출시 · 13개 언어 지원",
+  globalReachBadge: "From reading logs · Worldwide service",
   badge: "📚 필사 기록 · 독서 노트 · 명언 저장",
   h1: "NOTING",
-  subtitleHtml: "좋은 문장을 오래 기억하세요",
+  subtitleHtml: `<span class="ox-accent">좋은 문장을 오래 기억하세요</span>`,
   heroReachSummary:
     "책을 읽으며 마음에 남은 문장과 생각을 기록하고 정리할 수 있는 필사 플랫폼입니다. 좋은 문장을 단순히 저장하는 것을 넘어 다시 읽고, 다시 생각하고, 삶에 적용할 수 있도록 도와줍니다. 필사 기록, 독서 노트, 책별 정리, 태그 관리까지 하나의 공간에서 경험해보세요.",
   heroLogoAlt: "Noting 앱 로고: 연필 아이콘",
@@ -13,8 +13,8 @@ export const ntKo = {
   webCtaBtn: "웹으로 시작하기",
   webCtaAria: "Noting 웹 서비스 시작 (새 탭)",
   webUrl: "https://noting.app",
-  introLabel: "앱 소개",
-  introTitle: "앱 소개",
+  introLabel: "브랜드",
+  introTitle: "왜 Noting인가",
   introHtml:
     '<p class="ox-app-intro__lead"><strong>Noting</strong>은 단순한 메모 앱이 아닙니다.</p><p>책 속 문장과 나의 생각을 함께 기록하고 관리할 수 있는 필사 중심 독서 플랫폼입니다.</p><p>읽고 끝나는 독서가 아닌, 기억하고 성장하는 독서를 만들 수 있도록 설계되었습니다.</p><p>좋은 문장을 저장하고, 생각을 기록하고, 시간이 지나 다시 꺼내보며 나만의 지식 아카이브를 만들어보세요.</p><p>작은 문장 하나가 인생을 바꿀 수 있습니다.</p>',
   introClosing: "좋은 문장은 기록될 때 더 오래 남습니다.",
@@ -90,10 +90,9 @@ export const ntKo = {
   reco7: "책을 읽고도 금방 잊어버리는 분",
   premHiKicker: "읽고 끝나는 독서가 아닌",
   premHiLine: "기록하고 성장하는 독서",
-  premHiSub: "좋은 문장이 삶의 자산이 됩니다.",
+  premHiSub: "Noting이 당신의<br />독서를 더 깊게 만듭니다.",
   closingHtml:
-    "<p><strong>NOTING</strong>과 함께<br />좋은 문장을 모으고<br />생각을 기록하세요.</p>",
-  closingCtaBtn: "지금 시작하기",
+    `<p>좋은 문장이<br /><span class="ox-accent">오래 남는 생각이 됩니다</span></p><p>Noting은 메모하는 앱이 아니라<br />독서와 사색을 이어가는 공간입니다.</p><p>오늘 읽은 한 줄이<br /><span class="ox-accent">내일의 나를 바꿉니다.</span></p>`,
   closingAria: "마무리 문구",
   footerRights: "© Noting ·",
   drawerOx: "OX MONTH 소개",
@@ -111,9 +110,9 @@ export const ntKo = {
 export const ntEn = {
   brandAria: "Back to top of Noting",
   globalReachBadge: "173 countries · 13 languages supported",
-  badge: "📚 Transcription · reading notes · quotes",
+  badge: "📚 Transcription · Reading notes · Quote saving",
   h1: "NOTING",
-  subtitleHtml: "Remember good sentences longer",
+  subtitleHtml: `<span class="ox-accent">Remember good sentences longer</span>`,
   heroReachSummary:
     "A transcription platform to capture and organize sentences and thoughts from your reading. Go beyond saving lines—revisit them, reflect, and apply them to life. Transcription logs, reading notes, books, and tags—all in one place.",
   heroLogoAlt: "Noting app logo: pencil icon",
@@ -121,8 +120,8 @@ export const ntEn = {
   webCtaBtn: "Start on the web",
   webCtaAria: "Start Noting on the web (opens in a new tab)",
   webUrl: "https://noting.app",
-  introLabel: "About the app",
-  introTitle: "About the app",
+  introLabel: "Brand",
+  introTitle: "Why Noting",
   introHtml:
     '<p class="ox-app-intro__lead"><strong>Noting</strong> is not a simple memo app.</p><p>It is a transcription-first reading platform to record and manage book quotes alongside your own thoughts.</p><p>Designed for reading you remember and grow from—not reading you finish and forget.</p><p>Save good lines, write your thoughts, and revisit them over time to build your personal knowledge archive.</p><p>One small sentence can change your life.</p>',
   introClosing: "Good sentences last longer when they are written down.",
@@ -198,10 +197,9 @@ export const ntEn = {
   reco7: "Forget books soon after finishing them",
   premHiKicker: "Not reading that ends on the last page",
   premHiLine: "Reading you record and grow from",
-  premHiSub: "Good sentences become life assets.",
+  premHiSub: "Noting makes your<br />reading deeper and more lasting.",
   closingHtml:
-    "<p>With <strong>NOTING</strong>,<br />collect good sentences<br />and record your thoughts.</p>",
-  closingCtaBtn: "Start now",
+    `<p>Good lines<br /><span class="ox-accent">Become lasting thoughts</span></p><p>Noting isn't just note-taking—<br />it's a space to connect reading and reflection.</p><p>One line today<br /><span class="ox-accent">can change you tomorrow.</span></p>`,
   closingAria: "Closing message",
   footerRights: "© Noting ·",
   drawerOx: "OX MONTH intro",

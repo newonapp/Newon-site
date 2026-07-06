@@ -294,7 +294,6 @@
                   <span class="ox-badge-dot" aria-hidden="true"></span>
                   {{t:cu.badge}}
                 </p>
-                <p class="ox-badge ox-badge--secondary">{{t:cu.globalReachBadge}}</p>
               </div>
               <h1>{{t:cu.h1}}</h1>
               <p class="ox-subtitle">{{html:cu.subtitleHtml}}</p>
@@ -363,8 +362,7 @@
                   class="ox-hero-logo-img"
                   src="/countup-logo.png"
                   alt="{{t:cu.heroLogoAlt}}"
-                  width="940"
-                  height="940"
+                  width="512" height="512"
                 />
               </div>
             </div>
@@ -372,14 +370,15 @@
         </section>
         <section id="cu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="cu-intro-title">
           <div class="ox-container ox-app-intro__inner">
-            <div class="ox-app-intro__copy">
+            <header class="ox-app-intro__head">
               <p class="ox-section-label">{{t:cu.introLabel}}</p>
               <h2 id="cu-intro-title" class="ox-app-intro__title">
-                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
+                <span class="ox-app-intro__title-icon" aria-hidden="true">🔢</span>
                 {{t:cu.introTitle}}
               </h2>
-              <div class="ox-app-intro__body">{{html:cu.introHtml}}</div>
-              <p class="ox-app-intro__closing">{{t:cu.introClosing}}</p>
+            </header>
+            <div class="ox-app-intro__panel">
+              <div class="ox-app-intro__body">{{html:cu.introHtml}}<p class="ox-app-intro__closing">{{t:cu.introClosing}}</p></div>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">{{t:ui.privacyPolicyLink}}</a>
               </p>
@@ -459,7 +458,49 @@
               </div>
             </div>
           </div>
+        </section><section id="cu-reviews" class="ox-section ox-reviews ox-reveal-on-scroll" aria-labelledby="cu-reviews-title">
+          <div class="ox-container">
+            <header class="ox-section-head">
+              <p class="ox-section-label">{{t:cu.reviewsLabel}}</p>
+              <h2 id="cu-reviews-title" class="ox-section-title-inline">
+                <span class="ox-section-title-inline__icon" aria-hidden="true">💬</span>
+                {{t:cu.reviewsTitle}}
+              </h2>
+            </header>
+            <div class="ox-reviews-grid">
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--a" aria-hidden="true">{{t:cu.review1Emoji}}</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;{{t:cu.review1Quote}}&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; {{t:cu.review1Meta}}</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--b" aria-hidden="true">{{t:cu.review2Emoji}}</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;{{t:cu.review2Quote}}&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; {{t:cu.review2Meta}}</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--c" aria-hidden="true">{{t:cu.review3Emoji}}</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;{{t:cu.review3Quote}}&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; {{t:cu.review3Meta}}</footer>
+              </article>
+              <article class="ox-review-card">
+                <div class="ox-review-avatar ox-review-avatar--d" aria-hidden="true">{{t:cu.review4Emoji}}</div>
+                <blockquote class="ox-review-quote">
+                  <p>&ldquo;{{t:cu.review4Quote}}&rdquo;</p>
+                </blockquote>
+                <footer class="ox-review-meta">&mdash; {{t:cu.review4Meta}}</footer>
+              </article>
+            </div>
+          </div>
         </section>
+
+        
 
         <section id="cu-features" class="ox-section ox-reveal-on-scroll" aria-labelledby="cu-features-title">
           <div class="ox-container">
@@ -569,13 +610,13 @@
             <div class="ox-premium-stack">
               <section class="ox-premium-block" aria-labelledby="cu-premium-features-heading">
                 <h3 id="cu-premium-features-heading" class="ox-premium-block__title">
-                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  <span class="ox-premium-emoji" aria-hidden="true">🔓</span>
                   {{t:cu.premFeatHeading}}
                 </h3>
                 <div class="ox-premium-grid">
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">🔢</span>
                       {{t:cu.prem1Title}}
                     </h4>
                     <p class="ox-premium-card__lead">{{t:cu.prem1Lead}}</p>
@@ -583,7 +624,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">📊</span>
                       {{t:cu.prem2Title}}
                     </h4>
                     <p class="ox-premium-card__lead">{{t:cu.prem2Lead}}</p>
@@ -591,7 +632,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🎯</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">🤖</span>
                       {{t:cu.prem3Title}}
                     </h4>
                     <p class="ox-premium-card__lead">{{t:cu.prem3Lead}}</p>
@@ -607,7 +648,7 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🧩</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">💡</span>
                       {{t:cu.prem5Title}}
                     </h4>
                     <p class="ox-premium-card__lead">{{t:cu.prem5Lead}}</p>
@@ -615,11 +656,27 @@
                   </article>
                   <article class="ox-premium-card">
                     <h4 class="ox-premium-card__title">
-                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      <span class="ox-premium-emoji" aria-hidden="true">📲</span>
                       {{t:cu.prem6Title}}
                     </h4>
                     <p class="ox-premium-card__lead">{{t:cu.prem6Lead}}</p>
                     <p class="ox-premium-card__note">{{t:cu.prem6Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">📅</span>
+                      {{t:cu.prem7Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:cu.prem7Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:cu.prem7Note}}</p>
+                  </article>
+                  <article class="ox-premium-card">
+                    <h4 class="ox-premium-card__title">
+                      <span class="ox-premium-emoji" aria-hidden="true">🚫</span>
+                      {{t:cu.prem8Title}}
+                    </h4>
+                    <p class="ox-premium-card__lead">{{t:cu.prem8Lead}}</p>
+                    <p class="ox-premium-card__note">{{t:cu.prem8Note}}</p>
                   </article>
                 </div>
               </section>
@@ -633,7 +690,7 @@
               <span class="ox-premium-heading__spark" aria-hidden="true">🔢</span>
               {{t:cu.recoTitle}}
             </h2>
-            <ul class="co-build-list" style="margin-top: 1rem">
+            <ul class="co-build-list">
               <li>{{t:cu.reco1}}</li>
               <li>{{t:cu.reco2}}</li>
               <li>{{t:cu.reco3}}</li>
@@ -653,14 +710,14 @@
           <div class="ox-container ox-premium-layout">
             <div class="ox-premium-highlight">
               <p class="ox-premium-highlight__kicker">
-                <span class="ox-premium-emoji" aria-hidden="true">🔥</span>
+                <span class="ox-premium-emoji" aria-hidden="true">🔢</span>
                 {{t:cu.premHiKicker}}
               </p>
               <p class="ox-premium-highlight__line" id="cu-closing-highlight-title">
                 {{t:cu.premHiLine}}
               </p>
               <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
-                {{t:cu.premHiSub}}
+                {{html:cu.premHiSub}}
               </p>
             </div>
           </div>
@@ -677,6 +734,9 @@
             <span class="footer-legal-sep" aria-hidden="true">·</span>
             <a class="footer-legal" href="terms/">{{t:footer.terms}}</a>
           </div>
+          <p class="ox-footer-delete-account">
+            <a class="footer-legal" href="countup/delete-account/">{{t:cu.deleteAccountLink}}</a>
+          </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="{{t:footer.socialAria}}">
             <a
               class="footer-icon-btn footer-icon-btn--ox"

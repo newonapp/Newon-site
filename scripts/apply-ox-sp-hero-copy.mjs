@@ -10,7 +10,7 @@ const LOCALES = path.join(__dirname, "..", "locales");
 const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
 
 const OX_GLOBAL_REACH_SUMMARY = {
-  ko: "O/X 한 번의 체크로 습관을 쌓고, 월간 기록과 통계로 변화를 확인하는 습관 관리 앱입니다.",
+  ko: "하루 한 번의 체크가 습관이 되고, 습관이 쌓이면 삶이 달라집니다. OX MONTH는 가장 단순한 방식으로 꾸준함을 이어가도록 돕는 습관 앱입니다.",
   en: "Build habits with a simple O/X check—track your month with logs and stats in one habit app.",
   ja: "O/Xのチェックで習慣を積み重ね、月間記録と統計で変化を確認できる習慣管理アプリです。",
   es: "Crea hábitos con un simple check O/X y ve tu mes de cambio con registros y estadísticas en una sola app.",
@@ -23,8 +23,8 @@ const OX_GLOBAL_REACH_SUMMARY = {
 };
 
 const SP_HERO_REACH_SUMMARY = {
-  ko: "넷플릭스·통신비·보험까지 모든 정기 지출을 한곳에서 정리하고, 결제 일정과 이번 달 지출을 놓치지 않게 알려주는 구독 관리 앱입니다.",
-  en: "Track every subscription and recurring bill in one place—see this month's spend and upcoming payments without missing a due date.",
+  ko: "넷플릭스부터 통신비, 보험료, 월세, 학원비까지. 반복되는 모든 정기 지출을 한 곳에서 정리하고, 놓치는 결제 없이 더 똑똑하게 소비하세요.",
+  en: "From Netflix to phone bills, insurance, rent, and tuition—organize every recurring charge in one place and spend smarter without missing a payment.",
   ja: "Netflixや通信費・保険まで、すべての定期支払いを一か所で整理。今月の支出と次の決済日程を見逃さないサブスク管理アプリです。",
   es: "Organiza suscripciones y pagos recurrentes—desde streaming hasta el alquiler—y no pierdas de vista el gasto del mes ni las próximas fechas.",
   "pt-br":

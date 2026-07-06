@@ -271,8 +271,8 @@ s = s.replace(
 
 // Closing highlight emoji + html subline
 s = s.replace(
-  /<section\s*\n\s*id="np-closing-highlight"[\s\S]*?<span class="ox-premium-emoji" aria-hidden="true">🔥<\/span>/,
-  (m) => m.replace("🔥", "📦")
+  /(<section\s*\n\s*id="np-closing-highlight"[\s\S]*?<span class="ox-premium-emoji" aria-hidden="true">)[^<]+(<\/span>)/,
+  "$1📦$2"
 );
 s = s.replace("{{t:np.premHiSub}}", "{{html:np.premHiSub}}");
 
@@ -287,6 +287,8 @@ s = s.replace(
   /<a href="#newon-plus-app" class="mobile-apps-drawer__item">[\s\S]*?\{\{t:nav\.mobileNewonPlusHint\}\}[\s\S]*?<\/a>\s*\n\s*(?=<a href="#np-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">)/g,
   ""
 );
+
+s = s.replace(/href="goalup\/delete-account\/"/g, 'href="newon/delete-account/"');
 
 fs.writeFileSync(path.join(ROOT, "templates", "newon-plus-app-inc.html"), s, "utf8");
 console.log("gen-newon-plus-app-inc: OK");

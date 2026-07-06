@@ -33,7 +33,7 @@ const SP_FILE_BY_LANG = {
 };
 
 const TITLE_SUBPING = {
-  ko: "SubPing — 구독과 정기 결제를 한눈에",
+  ko: "SubPing — 구독을 관리하면 돈이 남습니다",
   en: "SubPing — Subscriptions & recurring bills at a glance",
   ja: "SubPing — サブスクと定期支払いを一目で",
   es: "SubPing — Suscripciones y pagos recurrentes de un vistazo",

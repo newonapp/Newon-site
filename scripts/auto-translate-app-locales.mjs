@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Fills app locale blocks (ox, pm, sv, bl, pl) where copy still matches en.json.
- * Uses MyMemory free API with on-disk cache. Skips ko/en and SubPing (merge-subping-locales).
+ * Uses Google Translate + MyMemory fallback with on-disk cache. Skips ko/en.
+ * SubPing copy lives in locales/_sp.{lang}.json (merged by merge-subping-locales.mjs).
  * Run: node scripts/auto-translate-app-locales.mjs [--force] [--lang=ja]
  */
 import fs from "fs";
@@ -15,7 +16,7 @@ const LOCALES = path.join(ROOT, "locales");
 const CACHE_PATH = path.join(__dirname, ".translate-cache.json");
 
 const TARGET_LANGS = ["ja", "es", "pt-br", "fr", "de", "hi", "id"];
-const APP_KEYS = ["ox", "pm", "sv", "bl", "pl", "sp", "pu", "gu", "cu", "nt", "np"];
+const APP_KEYS = ["ox", "pm", "sv", "bl", "pl", "pu", "gu", "cu", "nt", "np"];
 const ROOT_KEYS = ["home", "nav", "footer", "ui", "meta", "common", "legal"];
 const META_KEYS = [
   "titleOx",
@@ -116,7 +117,14 @@ function saveJson(p, obj) {
   fs.writeFileSync(p, JSON.stringify(obj, null, 2) + "\n", "utf8");
 }
 
+const BRAND_ONLY = /^(OX MONTH|SubPing|Pillmate|BabyLog|PetLog|PiggyUp|SAVY|GoalUp|CountUp|Noting|NOTING|Newon)$/i;
+
+function isBrandOnly(text) {
+  return BRAND_ONLY.test(String(text).trim());
+}
+
 function shouldSkipTranslate(text) {
+  if (isBrandOnly(text)) return true;
   if (!text || typeof text !== "string") return true;
   const t = text.trim();
   if (!t) return true;
@@ -148,10 +156,30 @@ function unprotect(text, tokens) {
   return out;
 }
 
+async function translateGtx(safe, targetLang) {
+  const tl = GOOGLE_LANG[targetLang] || targetLang;
+  const url = new URL("https://translate.googleapis.com/translate_a/single");
+  url.searchParams.set("client", "gtx");
+  url.searchParams.set("sl", "en");
+  url.searchParams.set("tl", tl);
+  url.searchParams.set("dt", "t");
+  url.searchParams.set("q", safe.slice(0, 4500));
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`gtx HTTP ${res.status}`);
+  const data = await res.json();
+  const parts = (data[0] || []).map((chunk) => chunk?.[0]).filter(Boolean);
+  if (!parts.length) throw new Error("gtx empty");
+  return parts.join("");
+}
+
 async function translateGoogleFallback(safe, targetLang) {
-  const to = GOOGLE_LANG[targetLang] || targetLang;
-  const res = await googleTranslate(safe, { from: "en", to });
-  return res.text;
+  try {
+    return await translateGtx(safe, targetLang);
+  } catch {
+    const to = GOOGLE_LANG[targetLang] || targetLang;
+    const res = await googleTranslate(safe, { from: "en", to });
+    return res.text;
+  }
 }
 
 async function translateMyMemory(safe, targetLang) {
@@ -185,9 +213,17 @@ async function translateOne(text, targetLang, cache) {
   if (!force && cache[cacheKey]) return cache[cacheKey];
 
   const { safe, tokens } = protect(text);
+  const stripped = safe.replace(/\uE000\d+\uE001/g, "").trim();
+  if (
+    !stripped ||
+    !/[a-zA-Z\u00C0-\u024F\u3040-\u30FF\u4E00-\u9FFF\u0900-\u097F]/.test(stripped)
+  ) {
+    cache[cacheKey] = text;
+    return text;
+  }
   if (
     !safe.trim() ||
-    (safe.trim() === text.trim() && !/[a-zA-Z]{3,}/.test(safe.replace(/\uE000\d+\uE001/g, "")))
+    (safe.trim() === text.trim() && !/[a-zA-Z]{3,}/.test(stripped))
   ) {
     cache[cacheKey] = text;
     return text;
@@ -195,13 +231,25 @@ async function translateOne(text, targetLang, cache) {
 
   let translated;
   let lastErr;
-  for (let attempt = 0; attempt < 3; attempt++) {
+  for (let attempt = 0; attempt < 4; attempt++) {
     try {
-      translated = await translateGoogleFallback(safe, targetLang);
+      translated = await translateGtx(safe, targetLang);
       break;
     } catch (e) {
       lastErr = e;
-      await sleep(800 * (attempt + 1));
+      await sleep(600 * (attempt + 1));
+    }
+  }
+
+  if (!translated) {
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        translated = await translateGoogleFallback(safe, targetLang);
+        break;
+      } catch (e) {
+        lastErr = e;
+        await sleep(1200 * (attempt + 1));
+      }
     }
   }
 
@@ -209,11 +257,15 @@ async function translateOne(text, targetLang, cache) {
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
         translated = await translateMyMemory(safe, targetLang);
+        if (/MYMEMORY WARNING/i.test(translated)) {
+          translated = null;
+          break;
+        }
         break;
       } catch (e) {
         lastErr = e;
         if (e.quota) break;
-        await sleep(600 * (attempt + 1));
+        await sleep(800 * (attempt + 1));
       }
     }
   }
@@ -263,7 +315,7 @@ async function translateBlock(enBlock, locBlock, targetLang, cache, stats, block
         fs.writeFileSync(CACHE_PATH, JSON.stringify(cache, null, 0));
         process.stdout.write(`  …${stats.translated} strings\n`);
       }
-      await sleep(25);
+      await sleep(80);
     } catch (e) {
       console.error(`\n[${targetLang}] failed key ${k}: ${e.message}`);
       stats.failed++;
@@ -287,7 +339,7 @@ async function patchMetaNav(lang, en, loc, cache, stats) {
     try {
       loc.meta[key] = await translateOne(enVal, lang, cache);
       stats.translated++;
-      await sleep(25);
+      await sleep(80);
     } catch (e) {
       if (String(e.message).includes("quota")) throw e;
     }
@@ -302,7 +354,7 @@ async function patchMetaNav(lang, en, loc, cache, stats) {
     try {
       loc.nav[key] = await translateOne(enVal, lang, cache);
       stats.translated++;
-      await sleep(25);
+      await sleep(80);
     } catch (e) {
       if (String(e.message).includes("quota")) throw e;
     }
@@ -336,6 +388,16 @@ async function main() {
     await patchMetaNav(lang, en, loc, cache, stats);
 
     saveJson(file, loc);
+
+    const spEnPath = path.join(LOCALES, "_sp.en.json");
+    const spLocPath = path.join(LOCALES, `_sp.${lang}.json`);
+    if (fs.existsSync(spEnPath) && fs.existsSync(spLocPath)) {
+      const spEn = loadJson(spEnPath);
+      const spLoc = loadJson(spLocPath);
+      const spOut = await translateBlock(spEn, spLoc, lang, cache, stats, false);
+      saveJson(spLocPath, spOut);
+    }
+
     fs.writeFileSync(CACHE_PATH, JSON.stringify(cache, null, 0));
     console.log(`  done ${lang}: ${stats.translated} translated, ${stats.failed} failed`);
   }

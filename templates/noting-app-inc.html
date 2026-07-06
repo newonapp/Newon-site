@@ -256,7 +256,6 @@
                   <span class="ox-badge-dot" aria-hidden="true"></span>
                   {{t:nt.badge}}
                 </p>
-                <p class="ox-badge ox-badge--secondary">{{t:nt.globalReachBadge}}</p>
               </div>
               <h1>{{t:nt.h1}}</h1>
               <p class="ox-subtitle">{{html:nt.subtitleHtml}}</p>
@@ -280,8 +279,7 @@
                   class="ox-hero-logo-img"
                   src="/noting-logo.png"
                   alt="{{t:nt.heroLogoAlt}}"
-                  width="940"
-                  height="940"
+                  width="512" height="512"
                 />
               </div>
             </div>
@@ -289,14 +287,15 @@
         </section>
         <section id="nt-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="nt-intro-title">
           <div class="ox-container ox-app-intro__inner">
-            <div class="ox-app-intro__copy">
+            <header class="ox-app-intro__head">
               <p class="ox-section-label">{{t:nt.introLabel}}</p>
               <h2 id="nt-intro-title" class="ox-app-intro__title">
-                <span class="ox-app-intro__title-icon" aria-hidden="true">📱</span>
+                <span class="ox-app-intro__title-icon" aria-hidden="true">📚</span>
                 {{t:nt.introTitle}}
               </h2>
-              <div class="ox-app-intro__body">{{html:nt.introHtml}}</div>
-              <p class="ox-app-intro__closing">{{t:nt.introClosing}}</p>
+            </header>
+            <div class="ox-app-intro__panel">
+              <div class="ox-app-intro__body">{{html:nt.introHtml}}<p class="ox-app-intro__closing">{{t:nt.introClosing}}</p></div>
               <p class="ox-app-intro__legal">
                 <a class="ox-app-intro__legal-link" href="privacy/">{{t:ui.privacyPolicyLink}}</a>
               </p>
@@ -486,7 +485,7 @@
             <div class="ox-premium-stack">
               <section class="ox-premium-block" aria-labelledby="nt-premium-features-heading">
                 <h3 id="nt-premium-features-heading" class="ox-premium-block__title">
-                  <span class="ox-premium-emoji" aria-hidden="true">🔒</span>
+                  <span class="ox-premium-emoji" aria-hidden="true">🔓</span>
                   {{t:nt.premFeatHeading}}
                 </h3>
                 <div class="ox-premium-grid">
@@ -542,7 +541,7 @@
               <span class="ox-premium-heading__spark" aria-hidden="true">🎯</span>
               {{t:nt.recoTitle}}
             </h2>
-            <ul class="co-build-list" style="margin-top: 1rem">
+            <ul class="co-build-list">
               <li>{{t:nt.reco1}}</li>
               <li>{{t:nt.reco2}}</li>
               <li>{{t:nt.reco3}}</li>
@@ -569,7 +568,7 @@
                 {{t:nt.premHiLine}}
               </p>
               <p class="ox-premium-highlight__line ox-premium-highlight__line--sub">
-                {{t:nt.premHiSub}}
+                {{html:nt.premHiSub}}
               </p>
             </div>
           </div>
@@ -594,6 +593,9 @@
             <span class="footer-legal-sep" aria-hidden="true">·</span>
             <a class="footer-legal" href="terms/">{{t:footer.terms}}</a>
           </div>
+          <p class="ox-footer-delete-account">
+            <a class="footer-legal" href="noting/delete-account/">{{t:nt.deleteAccountLink}}</a>
+          </p>
           <div class="footer-icon-row footer-icon-row--ox" role="group" aria-label="{{t:footer.socialAria}}">
             <a
               class="footer-icon-btn footer-icon-btn--ox"

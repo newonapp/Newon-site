@@ -57,6 +57,17 @@ for (const lang of TARGET_LANGS) {
   }
   fs.writeFileSync(file, JSON.stringify(loc, null, 2) + "\n", "utf8");
   console.log(`apply-translate-cache: ${lang} applied ${stats.applied}, still missing ${stats.miss}`);
+
+  const spEnPath = path.join(LOCALES, "_sp.en.json");
+  const spLocPath = path.join(LOCALES, `_sp.${lang}.json`);
+  if (fs.existsSync(spEnPath) && fs.existsSync(spLocPath)) {
+    const spEn = loadJson(spEnPath);
+    const spLoc = loadJson(spLocPath);
+    const spStats = { applied: 0, miss: 0 };
+    const spOut = walkApply(spEn, spLoc, lang, cache, spStats, "_sp");
+    fs.writeFileSync(spLocPath, JSON.stringify(spOut, null, 2) + "\n", "utf8");
+    console.log(`apply-translate-cache: _sp.${lang} applied ${spStats.applied}, still missing ${spStats.miss}`);
+  }
 }
 
 console.log("apply-translate-cache: OK");
