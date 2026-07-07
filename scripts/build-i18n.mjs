@@ -236,8 +236,22 @@ function applyTemplate(template, flat, flatEn) {
   return out;
 }
 
+const SITE_ORIGIN = "https://www.newon.app";
+
+const OG_LOCALE = {
+  ko: "ko_KR",
+  en: "en_US",
+  ja: "ja_JP",
+  es: "es_ES",
+  "pt-br": "pt_BR",
+  fr: "fr_FR",
+  de: "de_DE",
+  hi: "hi_IN",
+  id: "id_ID",
+};
+
 function hreflangBlock() {
-  const base = "https://newon.app";
+  const base = SITE_ORIGIN;
   const lines = LANGS.map(
     ({ dir: d, hreflang: h }) =>
       `    <link rel="alternate" hreflang="${h}" href="${base}/${d}/" />`
@@ -247,7 +261,7 @@ function hreflangBlock() {
 }
 
 function hreflangBlockLegal(page) {
-  const base = "https://newon.app";
+  const base = SITE_ORIGIN;
   const lines = LANGS.map(
     ({ dir: d, hreflang: h }) =>
       `    <link rel="alternate" hreflang="${h}" href="${base}/${d}/${page}/" />`
@@ -258,7 +272,7 @@ function hreflangBlockLegal(page) {
 
 /** Public unified policy URL (Korean body); links from Play / app pages. */
 function hreflangBlockPrivacyRoot() {
-  const base = "https://newon.app";
+  const base = SITE_ORIGIN;
   const lines = LANGS.map(
     ({ dir: d, hreflang: h }) =>
       `    <link rel="alternate" hreflang="${h}" href="${base}/${d}/privacy/" />`
@@ -292,9 +306,10 @@ for (const { dir, file, htmlLang } of LANGS) {
   const flat = flatten(data);
 
   let tpl = fs.readFileSync(path.join(ROOT, "templates", "index.html"), "utf8");
-  const baseUrl = `https://newon.app/${dir}/`;
+  const baseUrl = `${SITE_ORIGIN}/${dir}/`;
   tpl = tpl.replace(/\{\{LANG_DIR\}\}/g, dir);
   tpl = tpl.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+  tpl = tpl.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
   tpl = tpl.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflangBlock());
   tpl = tpl.replace(/\{\{CANONICAL\}\}/g, baseUrl);
   tpl = applyTemplate(tpl, flat, flatEn);
@@ -305,12 +320,13 @@ for (const { dir, file, htmlLang } of LANGS) {
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, "index.html"), tpl);
 
-  for (const page of ["privacy", "terms"]) {
+  for (const page of ["privacy", "terms", "about"]) {
     let pt = fs.readFileSync(path.join(ROOT, "templates", `${page}.html`), "utf8");
     pt = pt.replace(/\{\{LANG_DIR\}\}/g, dir);
     pt = pt.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+    pt = pt.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
     pt = pt.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangBlockLegal(page));
-    pt = pt.replace(/\{\{CANONICAL\}\}/g, `https://newon.app/${dir}/${page}/`);
+    pt = pt.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/${page}/`);
     pt = applyTemplate(pt, flat, flatEn);
     pt = applyLocImgs(pt, dir);
     const pd = path.join(ROOT, dir, page);
@@ -331,7 +347,7 @@ for (const { dir, file, htmlLang } of LANGS) {
     }
     delHtml = delHtml.replace(/\{\{LANG_DIR\}\}/g, dir);
     delHtml = delHtml.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
-    delHtml = delHtml.replace(/\{\{CANONICAL\}\}/g, `https://newon.app/${dir}/${app.slug}/delete-account/`);
+    delHtml = delHtml.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/${app.slug}/delete-account/`);
     delHtml = applyTemplate(delHtml, flat, flatEn);
     delHtml = applyLocImgs(delHtml, dir);
     const delOut = path.join(ROOT, dir, app.slug, "delete-account");
@@ -365,5 +381,119 @@ function writeRootTermsRedirect() {
 }
 
 writeRootTermsRedirect();
+
+/** Root /about/ → localized about page (honors newon-lang-dir). */
+function writeRootAboutRedirect() {
+  const list = JSON.stringify(LANGS.map((l) => l.dir));
+  const html = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="canonical" href="${SITE_ORIGIN}/en/about/"/><title>Newon — About</title><script>(function(){var L=${list};var d="en";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/about/"+(location.hash||""));})();</script></head><body style="font-family:system-ui,sans-serif;padding:1.5rem"><p><a href="/en/about/">About Newon</a> · <a href="/ko/about/">회사 소개</a></p></body></html>`;
+  const dir = path.join(ROOT, "about");
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, "index.html"), html);
+}
+
+writeRootAboutRedirect();
+
+/** robots.txt at site root (allow all + sitemap pointer). */
+function writeRobotsTxt() {
+  const body = [
+    "User-agent: *",
+    "Allow: /",
+    "",
+    `Sitemap: ${SITE_ORIGIN}/sitemap.xml`,
+    "",
+  ].join("\n");
+  fs.writeFileSync(path.join(ROOT, "robots.txt"), body);
+}
+
+/**
+ * sitemap.xml covering real, crawlable URLs only.
+ * Apps live as hash sections (#pillmate-app) on the home page, so they are
+ * NOT separate URLs — including fake /apps/* paths would create 404s.
+ */
+function writeSitemap() {
+  const today = new Date().toISOString().slice(0, 10);
+  const urls = [];
+
+  const homeAlternates = [
+    ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/` })),
+    { hreflang: "x-default", href: `${SITE_ORIGIN}/en/` },
+  ];
+
+  // Root entry (points crawlers to the language selector / default).
+  urls.push({ loc: `${SITE_ORIGIN}/`, priority: "1.0", changefreq: "weekly", alternates: homeAlternates });
+
+  // Localized homepages (highest value for the "Newon" brand query).
+  for (const { dir: d } of LANGS) {
+    urls.push({
+      loc: `${SITE_ORIGIN}/${d}/`,
+      priority: "0.9",
+      changefreq: "weekly",
+      alternates: homeAlternates,
+    });
+  }
+
+  // About pages per language (additive SEO pages).
+  {
+    const aboutAlts = [
+      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/about/` })),
+      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/about/` },
+    ];
+    for (const { dir: d } of LANGS) {
+      urls.push({ loc: `${SITE_ORIGIN}/${d}/about/`, priority: "0.7", changefreq: "monthly", alternates: aboutAlts });
+    }
+  }
+
+  // Legal pages per language.
+  for (const page of ["privacy", "terms"]) {
+    const alts = [
+      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),
+      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${page}/` },
+    ];
+    for (const { dir: d } of LANGS) {
+      urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.3", changefreq: "yearly", alternates: alts });
+    }
+  }
+
+  // Per-app account deletion pages (real, localized URLs).
+  for (const app of DELETE_ACCOUNT_APPS) {
+    for (const { dir: d } of LANGS) {
+      urls.push({
+        loc: `${SITE_ORIGIN}/${d}/${app.slug}/delete-account/`,
+        priority: "0.2",
+        changefreq: "yearly",
+      });
+    }
+  }
+
+  const esc = (s) => s.replace(/&/g, "&amp;");
+  const body = urls
+    .map((u) => {
+      const alt = (u.alternates || [])
+        .map((a) => `    <xhtml:link rel="alternate" hreflang="${a.hreflang}" href="${esc(a.href)}" />`)
+        .join("\n");
+      return [
+        "  <url>",
+        `    <loc>${esc(u.loc)}</loc>`,
+        `    <lastmod>${today}</lastmod>`,
+        `    <changefreq>${u.changefreq}</changefreq>`,
+        `    <priority>${u.priority}</priority>`,
+        alt,
+        "  </url>",
+      ]
+        .filter(Boolean)
+        .join("\n");
+    })
+    .join("\n");
+
+  const xml =
+    `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n` +
+    `${body}\n` +
+    `</urlset>\n`;
+  fs.writeFileSync(path.join(ROOT, "sitemap.xml"), xml);
+}
+
+writeRobotsTxt();
+writeSitemap();
 
 console.log("i18n build OK:", LANGS.map((l) => l.dir).join(", "));

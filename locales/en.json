@@ -5,6 +5,7 @@
     "ogTitle": "Newon | App studio that turns ideas into reality",
     "ogDescription": "Newon is an app studio that turns ideas into reality. We build apps for productivity, journaling, finance, and lifestyle—including Noting, OX MONTH, SAVY, SubPing, Pillmate, BabyLog, PetLog, and PiggyUp.",
     "ogSiteName": "Newon",
+    "keywords": "Newon, newon.app, app studio, OX MONTH, SubPing, Pillmate, SAVY, BabyLog, PetLog, PiggyUp, GoalUp, CountUp, Noting, habit tracker app, subscription manager app, medication reminder app, budgeting app, baby log app, goal tracking app, productivity apps",
     "twitterTitle": "Newon | App studio that turns ideas into reality",
     "twitterDescription": "Newon is an app studio that turns ideas into reality. We build apps for productivity, journaling, finance, and lifestyle.",
     "orgDescription": "App studio that turns ideas into reality",
@@ -20,6 +21,17 @@
     "titleGoalup": "GoalUp — Goals & challenges · Newon",
     "titleCountup": "CountUp — Count tracking & goals · Newon",
     "titleNewonPlus": "Newon — Membership · Unified account · Newon"
+  },
+  "about": {
+    "seoTitle": "About | Newon App Studio",
+    "metaDescription": "Newon is an app studio building productivity, finance, health, and lifestyle apps. Launched in 173 countries with 13 languages, offering OX MONTH, SubPing, Pillmate, SAVY, BabyLog, PetLog, PiggyUp, GoalUp, CountUp and more.",
+    "title": "About Newon",
+    "lead": "Newon is an app studio that builds productivity, finance, health, and family services.",
+    "statCountries": "Launched in 173 countries",
+    "statLanguages": "13 languages supported",
+    "statApps": "10 app services",
+    "appsHeading": "Our apps",
+    "closing": "We turn ideas into apps and bring them to users around the world."
   },
   "ui": {
     "language": "Language",
@@ -190,6 +202,7 @@
     "youtubeAria": "Newon on YouTube · opens in a new tab",
     "youtubeUrl": "https://youtube.com/@newonglobal?si=pviB1hC7yMuD_tXw",
     "tiktokAria": "Newon on TikTok · opens in a new tab",
+    "blogAria": "Newon on Naver Blog · opens in a new tab",
     "rights": "All rights reserved.",
     "oxRights": "© OX MONTH ·"
   },

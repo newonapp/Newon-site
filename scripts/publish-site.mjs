@@ -24,9 +24,10 @@ const PUBLISH_ROOT_CORE = [
   "lang-nav.js",
   "lang-dropdown.js",
   "theme-shell.js",
-  "splash-intro.js",
   "styles.css",
   "ox-month.css",
+  "robots.txt",
+  "sitemap.xml",
 ];
 
 /**
@@ -35,6 +36,8 @@ const PUBLISH_ROOT_CORE = [
  */
 const PUBLISH_ROOT_IMAGES = [
   "logo.png",
+  "favicon.ico",
+  "apple-touch-icon.png",
   "ox-month-logo.png",
   "subping-logo.png",
   "pillmate-logo.png",
@@ -61,11 +64,16 @@ const PUBLISH_COPY_DIRS = [
   { from: "subping-img", to: "subping-img", required: false },
   { from: "privacy", to: "privacy", required: false },
   { from: "terms", to: "terms", required: true },
+  { from: "about", to: "about", required: true },
   { from: "oxmonth", to: "oxmonth", required: false },
   { from: "subping", to: "subping", required: false },
 ];
 
-const PUBLISH_ROOT_OPTIONAL = ["CNAME", ".nojekyll"];
+const PUBLISH_ROOT_OPTIONAL = [
+  "CNAME",
+  ".nojekyll",
+  "naver0a5bd04cafdfbdba9b8fa4d3c8daa648.html",
+];
 
 /** Legal redirects + AdMob (must be at site root for App Store / Google). */
 const PUBLISH_ROOT_LEGAL = ["terms.html", "privacy.html", "app-ads.txt"];
@@ -161,12 +169,16 @@ function verify() {
       path.join(OUT, lang, "index.html"),
       path.join(OUT, lang, "privacy", "index.html"),
       path.join(OUT, lang, "terms", "index.html"),
+      path.join(OUT, lang, "about", "index.html"),
       path.join(OUT, lang, "oxmonth", "delete-account", "index.html"),
       path.join(OUT, lang, "subping", "delete-account", "index.html")
     );
   }
   required.push(path.join(OUT, "privacy", "index.html"));
   required.push(path.join(OUT, "terms", "index.html"));
+  required.push(path.join(OUT, "about", "index.html"));
+  required.push(path.join(OUT, "robots.txt"));
+  required.push(path.join(OUT, "sitemap.xml"));
   for (const name of ["terms.html", "privacy.html"]) {
     required.push(path.join(OUT, name));
   }

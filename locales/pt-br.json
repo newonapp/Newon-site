@@ -19,7 +19,8 @@
     "titleNoting": "Noting — Transcrição e notas · Newon",
     "titleGoalup": "GoalUp — Metas e desafios · Newon",
     "titleCountup": "CountUp — Contagem e metas · Newon",
-    "titleNewonPlus": "Newon — Assinatura pacote · Premium · Newon"
+    "titleNewonPlus": "Newon — Assinatura pacote · Premium · Newon",
+    "keywords": "Newon, newon.app, app studio, OX MONTH, SubPing, Pillmate, SAVY, BabyLog, PetLog, PiggyUp, GoalUp, CountUp, Noting, habit tracker app, subscription manager app, medication reminder app, budgeting app, baby log app, goal tracking app, productivity apps"
   },
   "ui": {
     "language": "Idioma",
@@ -196,7 +197,8 @@
     "tagline": "Um estúdio de apps que conecta ideias à realidade",
     "statLine1": "Serviço em 177 países",
     "statLine2": "13 idiomas",
-    "statLine3": "10 apps lançados"
+    "statLine3": "10 apps lançados",
+    "blogAria": "Newon on Naver Blog · opens in a new tab"
   },
   "ox": {
     "skip": "Ir para o conteúdo",
@@ -1732,5 +1734,16 @@
       "appMeta": "App: Newon · Developer: Newon",
       "bodyHtml": "<p>You can delete your account directly in the app.</p><h2>How to delete your account</h2><ol class=\"legal-steps\"><li>Open the app</li><li>Go to Settings</li><li>Select Account</li><li>Tap <strong>Delete Account</strong></li></ol><h2>When you delete</h2><ul class=\"legal-bullets\"><li>All user data is deleted immediately.</li><li>Deleted data cannot be recovered.</li></ul><h2>Contact</h2><p><a href=\"mailto:newon@newon.app\">newon@newon.app</a></p>"
     }
+  },
+  "about": {
+    "seoTitle": "About | Newon App Studio",
+    "metaDescription": "Newon is an app studio building productivity, finance, health, and lifestyle apps. Launched in 173 countries with 13 languages, offering OX MONTH, SubPing, Pillmate, SAVY, BabyLog, PetLog, PiggyUp, GoalUp, CountUp and more.",
+    "title": "About Newon",
+    "lead": "Newon is an app studio that builds productivity, finance, health, and family services.",
+    "statCountries": "Launched in 173 countries",
+    "statLanguages": "13 languages supported",
+    "statApps": "10 app services",
+    "appsHeading": "Our apps",
+    "closing": "We turn ideas into apps and bring them to users around the world."
   }
 }
