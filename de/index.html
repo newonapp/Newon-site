@@ -49,6 +49,48 @@
     <script src="/lang-nav.js"></script>
   </head>
   <body>
+    <script>
+      (function () {
+        try {
+          var reduce =
+            window.matchMedia &&
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          var seen = sessionStorage.getItem("newon-splash-seen") === "1";
+          if (reduce || seen) {
+            document.documentElement.classList.add("splash-off");
+          } else {
+            document.documentElement.classList.add("splash-on");
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <div id="newon-splash" class="newon-splash" role="presentation" aria-hidden="true">
+      <div class="newon-splash__aura" aria-hidden="true"></div>
+      <div class="newon-splash__orbits">
+        <img class="newon-splash__orbit" src="/ox-month-logo.png" alt="" width="104" height="104" style="--x: 0vw; --y: -30vh; --d: 0.05s; --r: -10deg;" />
+        <img class="newon-splash__orbit" src="/subping-logo.png" alt="" width="104" height="104" style="--x: -25vw; --y: -24vh; --d: 0.13s; --r: 10deg;" />
+        <img class="newon-splash__orbit" src="/pillmate-logo.png" alt="" width="104" height="104" style="--x: -40vw; --y: -9vh; --d: 0.21s; --r: 8deg;" />
+        <img class="newon-splash__orbit" src="/savy-logo.png" alt="" width="104" height="104" style="--x: -40vw; --y: 9vh; --d: 0.29s; --r: -8deg;" />
+        <img class="newon-splash__orbit" src="/babylog-logo.png" alt="" width="104" height="104" style="--x: -25vw; --y: 24vh; --d: 0.37s; --r: 10deg;" />
+        <img class="newon-splash__orbit" src="/petlog-logo.png" alt="" width="104" height="104" style="--x: 0vw; --y: 30vh; --d: 0.45s; --r: -6deg;" />
+        <img class="newon-splash__orbit" src="/piggyup-logo.png" alt="" width="104" height="104" style="--x: 25vw; --y: 24vh; --d: 0.53s; --r: -10deg;" />
+        <img class="newon-splash__orbit" src="/goalup-logo.png" alt="" width="104" height="104" style="--x: 40vw; --y: 9vh; --d: 0.61s; --r: 12deg;" />
+        <img class="newon-splash__orbit" src="/countup-logo.png" alt="" width="104" height="104" style="--x: 40vw; --y: -9vh; --d: 0.69s; --r: 6deg;" />
+        <img class="newon-splash__orbit" src="/newon-plus-logo.png" alt="" width="104" height="104" style="--x: 25vw; --y: -24vh; --d: 0.77s; --r: -12deg;" />
+      </div>
+      <div class="newon-splash__brand">
+        <span class="newon-splash__logo-wrap">
+          <span class="newon-splash__ring" aria-hidden="true"></span>
+          <img class="newon-splash__logo" src="/logo.png" alt="Newon" width="160" height="160" decoding="async" />
+        </span>
+        <span class="newon-splash__wordmark" aria-hidden="true">
+          <span style="--i: 0">N</span><span style="--i: 1">e</span><span style="--i: 2">w</span><span style="--i: 3">o</span><span style="--i: 4">n</span>
+        </span>
+        <span class="newon-splash__tagline">App-Studio · Life-Plattform</span>
+      </div>
+      <div class="newon-splash__progress" aria-hidden="true"><span></span></div>
+    </div>
+
     <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
     <div id="home" class="site-shell">
@@ -11292,5 +11334,6 @@
       })();
     </script>
     <script src="/lang-dropdown.js"></script>
+    <script src="/splash-intro.js"></script>
   </body>
 </html>

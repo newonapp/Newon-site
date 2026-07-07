@@ -24,6 +24,7 @@ const PUBLISH_ROOT_CORE = [
   "lang-nav.js",
   "lang-dropdown.js",
   "theme-shell.js",
+  "splash-intro.js",
   "styles.css",
   "ox-month.css",
 ];

@@ -3231,3 +3231,267 @@ html[data-newon-shell-theme="dark"] .mobile-apps-drawer__item--current {
   }
 }
 
+/* ── Intro splash ─────────────────────────────────────────────── */
+.newon-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 120% at 50% 38%, #ffffff 0%, #fbfbfd 46%, #f2f3f7 100%);
+  opacity: 1;
+  transition:
+    opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Skip entirely (reduced motion or already seen this session). */
+html.splash-off .newon-splash {
+  display: none;
+}
+
+/* Lock scroll while the splash is on screen. */
+html.splash-on,
+html.splash-on body {
+  overflow: hidden;
+}
+
+html.splash-done .newon-splash {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(1.04);
+}
+
+/* Soft breathing aura behind everything. */
+.newon-splash__aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(80vw, 560px);
+  height: min(80vw, 560px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(120, 130, 255, 0.16) 0%, rgba(120, 130, 255, 0) 62%);
+  opacity: 0;
+  animation: splash-aura 2.8s ease-in-out 0.1s forwards;
+  pointer-events: none;
+}
+
+.newon-splash__brand {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.newon-splash__logo-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(120px, 30vw, 176px);
+  height: clamp(120px, 30vw, 176px);
+}
+
+/* Rotating conic ring halo around the logo. */
+.newon-splash__ring {
+  position: absolute;
+  inset: -14%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(10, 10, 10, 0) 0deg,
+    rgba(10, 10, 10, 0.9) 120deg,
+    rgba(10, 10, 10, 0.9) 180deg,
+    rgba(10, 10, 10, 0) 300deg
+  );
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 4px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 4px));
+  opacity: 0;
+  animation:
+    splash-ring-in 0.7s ease 0.35s forwards,
+    splash-ring-spin 3.4s linear 0.35s infinite;
+}
+
+.newon-splash__logo {
+  position: relative;
+  z-index: 1;
+  width: clamp(104px, 26vw, 160px);
+  height: clamp(104px, 26vw, 160px);
+  border-radius: 28%;
+  box-shadow:
+    0 22px 60px rgba(30, 34, 90, 0.18),
+    0 4px 14px rgba(30, 34, 90, 0.1);
+  opacity: 0;
+  transform: translateY(10px) scale(0.86);
+  animation: splash-logo-in 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.15s forwards;
+}
+
+.newon-splash__wordmark {
+  display: inline-flex;
+  font-family: "Noto Sans", system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.6rem, 5.4vw, 2.25rem);
+  letter-spacing: -0.015em;
+  color: #0a0a12;
+}
+
+.newon-splash__wordmark span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: splash-letter 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  animation-delay: calc(0.55s + var(--i) * 0.07s);
+}
+
+.newon-splash__tagline {
+  font-family: "Noto Sans", system-ui, -apple-system, sans-serif;
+  font-size: clamp(0.62rem, 2.4vw, 0.72rem);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #8a8fa3;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: splash-tagline 0.7s ease 1.05s forwards;
+}
+
+.newon-splash__orbits {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.newon-splash__orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(60px, 15vw, 104px);
+  height: clamp(60px, 15vw, 104px);
+  margin: calc(clamp(60px, 15vw, 104px) / -2) 0 0 calc(clamp(60px, 15vw, 104px) / -2);
+  border-radius: 27%;
+  box-shadow:
+    0 16px 38px rgba(30, 34, 90, 0.14),
+    0 3px 10px rgba(30, 34, 90, 0.08);
+  opacity: 0;
+  transform: translate(0, 0) scale(0.3) rotate(0deg);
+  animation:
+    splash-orbit-in 0.8s cubic-bezier(0.34, 1.32, 0.5, 1) var(--d, 0s) forwards,
+    splash-orbit-float 3.6s ease-in-out calc(var(--d, 0s) + 0.8s) infinite;
+}
+
+.newon-splash__progress {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(48px, 9vh, 88px);
+  transform: translateX(-50%);
+  width: clamp(120px, 26vw, 180px);
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(20, 24, 60, 0.08);
+  overflow: hidden;
+  z-index: 3;
+}
+
+.newon-splash__progress span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #6366f1, #ec4899);
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: splash-progress 2.5s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards;
+}
+
+@keyframes splash-aura {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  55% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+@keyframes splash-logo-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes splash-ring-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes splash-ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes splash-letter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splash-tagline {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splash-orbit-in {
+  from {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.3) rotate(0deg);
+  }
+  to {
+    opacity: 1;
+    transform: translate(var(--x, 0), var(--y, 0)) scale(1) rotate(var(--r, 0deg));
+  }
+}
+
+@keyframes splash-orbit-float {
+  0% {
+    transform: translate(var(--x, 0), var(--y, 0)) scale(1) rotate(var(--r, 0deg));
+  }
+  50% {
+    transform: translate(var(--x, 0), calc(var(--y, 0) - 16px)) scale(1.05)
+      rotate(calc(var(--r, 0deg) * -0.6));
+  }
+  100% {
+    transform: translate(var(--x, 0), var(--y, 0)) scale(1) rotate(var(--r, 0deg));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .newon-splash {
+    display: none;
+  }
+}
+
