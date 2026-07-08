@@ -356,6 +356,13 @@ for (const { dir, file, htmlLang } of LANGS) {
   }
 }
 
+/** Root / serves Korean homepage directly (no JS redirect — crawlers read robots/meta). */
+function writeRootHomepage() {
+  fs.copyFileSync(path.join(ROOT, "ko", "index.html"), path.join(ROOT, "index.html"));
+}
+
+writeRootHomepage();
+
 writeRootPrivacyPage();
 
 /** Root /{slug}/delete-account/ → localized page */
