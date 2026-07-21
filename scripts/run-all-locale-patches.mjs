@@ -26,6 +26,7 @@ const STEPS = [
   "apply-goalup-locales.mjs",
   "apply-countup-locales.mjs",
   "apply-noting-locales.mjs",
+  "apply-myworld-locales.mjs",
   "apply-app-intro-branding.mjs",
   "apply-app-hero-badges.mjs",
   "apply-app-closing-copy.mjs",
@@ -36,6 +37,7 @@ const STEPS = [
   "patch-app-premium-cards.mjs",
   "apply-translate-cache.mjs",
   "apply-home-locale-translations.mjs",
+  "apply-home-11-apps.mjs",
 ];
 
 if (withTranslate) {

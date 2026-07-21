@@ -125,7 +125,7 @@ export const guKo = {
   drawerGu: "GoalUp · 이 화면",
   drawerCu: "CountUp 소개",
   appStoreUrl: "https://apps.apple.com/kr/app/goalup-ai-%EB%AA%A9%ED%91%9C-%EA%B4%80%EB%A6%AC-%EC%B1%8C%EB%A6%B0%EC%A7%80/id6780510853",
-  googlePlayUrl: "https://newon.app",
+  googlePlayUrl: "https://play.google.com/store/apps/details?id=goalup.newon.app&pcampaignid=web_share",
   appStoreBadgeAria: "App Store에서 GoalUp(새 탭)",
   googlePlayBadgeAria: "Google Play에서 GoalUp(새 탭)",
 };
@@ -255,7 +255,7 @@ export const guEn = {
   drawerGu: "GoalUp · this screen",
   drawerCu: "Open CountUp intro",
   appStoreUrl: "https://apps.apple.com/kr/app/goalup-ai-%EB%AA%A9%ED%91%9C-%EA%B4%80%EB%A6%AC-%EC%B1%8C%EB%A6%B0%EC%A7%80/id6780510853",
-  googlePlayUrl: "https://newon.app",
+  googlePlayUrl: "https://play.google.com/store/apps/details?id=goalup.newon.app&pcampaignid=web_share",
   appStoreBadgeAria: "GoalUp on the App Store (opens in a new tab)",
   googlePlayBadgeAria: "GoalUp on Google Play (opens in a new tab)",
 };

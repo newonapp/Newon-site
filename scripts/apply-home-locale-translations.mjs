@@ -27,7 +27,7 @@ const PATCHES = {
       aboutP2:
         "複雑さを減らし、誰でも使いやすいサービスで、アイデアが実際の変化につながるようにします。",
       aboutP3Html:
-        "現在、Newonは<br /><br />• 10本のアプリをリリース<br />• 177か国でサービス<br />• 13言語をサポート<br /><br />し、世界中のユーザーがより良い日常を体験できるよう支援しています。",
+        "現在、Newonは<br /><br />• 11本のアプリをリリース<br />• 177か国でサービス<br />• 13言語をサポート<br /><br />し、世界中のユーザーがより良い日常を体験できるよう支援しています。",
       workLabel: "私たちの仕事",
       workTitle: "私たちがしていること",
       workP1: "Newonは一つのサービスにとどまらず、さまざまなアイデアから新しいアプリを生み続けます。",
@@ -47,11 +47,11 @@ const PATCHES = {
       visionP1Html: "機能が多いアプリではなく、<strong>長く使われるアプリ</strong>をつくること。",
       visionP2: "ユーザーの日常に自然に溶け込み、続く変化を生むことが目標です。",
       visionP3:
-        "10本のアプリから始め、より多くの人生をつなぐグローバルなライフプラットフォームへ成長していきます。",
+        "11本のアプリから始め、より多くの人生をつなぐグローバルなライフプラットフォームへ成長していきます。",
       statsLabel: "統計",
       statsTitle: "数字で見る Newon",
       statCard0Html:
-        "<span class=\"co-stats-card__value\">10+</span><span class=\"co-stats-card__label\">アプリ公開</span>",
+        "<span class=\"co-stats-card__value\">11+</span><span class=\"co-stats-card__label\">アプリ公開</span>",
       statCard1Html:
         "<span class=\"co-stats-card__value\">177</span><span class=\"co-stats-card__label\">サービス国</span>",
       statCard2Html:
@@ -64,7 +64,7 @@ const PATCHES = {
       tagline: "アイデアを現実につなぐアプリスタジオ",
       statLine1: "177か国でサービス",
       statLine2: "13言語対応",
-      statLine3: "10本のアプリ",
+      statLine3: "11本のアプリ",
     },
   },
   es: {
@@ -85,7 +85,7 @@ const PATCHES = {
         "Newon es un equipo que crea apps para ayudarte a gestionar metas, hábitos, salud, finanzas, registros familiares y más, haciendo la vida cotidiana más fácil e inteligente.",
       aboutP2: "Reducimos la complejidad y creamos servicios que cualquiera puede usar, para que las ideas se conviertan en cambio real.",
       aboutP3Html:
-        "Hoy, Newon ayuda a personas de todo el mundo a vivir mejor cada día gracias a:<br /><br />• 10 apps publicadas<br />• Servicio en 177 países<br />• Soporte en 13 idiomas",
+        "Hoy, Newon ayuda a personas de todo el mundo a vivir mejor cada día gracias a:<br /><br />• 11 apps publicadas<br />• Servicio en 177 países<br />• Soporte en 13 idiomas",
       workLabel: "Qué hacemos",
       workTitle: "Qué hacemos",
       workP1: "Newon no se queda en un solo producto: seguimos lanzando nuevas apps a partir de muchas ideas.",
@@ -104,11 +104,11 @@ const PATCHES = {
       visionTitle: "Nuestro objetivo",
       visionP1Html: "No apps con infinitas funciones, sino <strong>apps que se usan mucho tiempo</strong>.",
       visionP2: "Nuestro objetivo es integrarnos en la vida diaria y ayudar a que el cambio perdure.",
-      visionP3: "Partiendo de 10 apps, queremos crecer como plataforma de vida global que conecte más vidas.",
+      visionP3: "Partiendo de 11 apps, queremos crecer como plataforma de vida global que conecte más vidas.",
       statsLabel: "Estadísticas",
       statsTitle: "Newon en cifras",
       statCard0Html:
-        "<span class=\"co-stats-card__value\">10+</span><span class=\"co-stats-card__label\">Apps publicadas</span>",
+        "<span class=\"co-stats-card__value\">11+</span><span class=\"co-stats-card__label\">Apps publicadas</span>",
       statCard1Html:
         "<span class=\"co-stats-card__value\">177</span><span class=\"co-stats-card__label\">Países</span>",
       statCard2Html:
@@ -121,7 +121,7 @@ const PATCHES = {
       tagline: "Un estudio de apps que conecta ideas con la realidad",
       statLine1: "Servicio en 177 países",
       statLine2: "13 idiomas",
-      statLine3: "10 apps publicadas",
+      statLine3: "11 apps publicadas",
     },
   },
   "pt-br": {
@@ -142,7 +142,7 @@ const PATCHES = {
         "A Newon é uma equipe que cria apps para ajudar você a gerenciar metas, hábitos, saúde, finanças, registros familiares e muito mais — tornando o dia a dia mais fácil e inteligente.",
       aboutP2: "Reduzimos a complexidade e criamos serviços que qualquer pessoa pode usar, para que ideias virem mudança real.",
       aboutP3Html:
-        "Hoje, a Newon ajuda pessoas no mundo todo a viver melhor todos os dias com:<br /><br />• 10 apps lançados<br />• Serviço em 177 países<br />• Suporte a 13 idiomas",
+        "Hoje, a Newon ajuda pessoas no mundo todo a viver melhor todos os dias com:<br /><br />• 11 apps lançados<br />• Serviço em 177 países<br />• Suporte a 13 idiomas",
       workLabel: "O que fazemos",
       workTitle: "O que fazemos",
       workP1: "A Newon não fica em um único produto — continuamos lançando novos apps a partir de muitas ideias.",
@@ -161,11 +161,11 @@ const PATCHES = {
       visionTitle: "Nosso objetivo",
       visionP1Html: "Não apps com infinitos recursos — <strong>apps que você usa por muito tempo</strong>.",
       visionP2: "Queremos fazer parte da rotina e ajudar a mudança a permanecer.",
-      visionP3: "Começando com 10 apps, queremos crescer como plataforma de vida global que conecta mais vidas.",
+      visionP3: "Começando com 11 apps, queremos crescer como plataforma de vida global que conecta mais vidas.",
       statsLabel: "Estatísticas",
       statsTitle: "Newon em números",
       statCard0Html:
-        "<span class=\"co-stats-card__value\">10+</span><span class=\"co-stats-card__label\">Apps lançados</span>",
+        "<span class=\"co-stats-card__value\">11+</span><span class=\"co-stats-card__label\">Apps lançados</span>",
       statCard1Html:
         "<span class=\"co-stats-card__value\">177</span><span class=\"co-stats-card__label\">Países</span>",
       statCard2Html:
@@ -178,7 +178,7 @@ const PATCHES = {
       tagline: "Um estúdio de apps que conecta ideias à realidade",
       statLine1: "Serviço em 177 países",
       statLine2: "13 idiomas",
-      statLine3: "10 apps lançados",
+      statLine3: "11 apps lançados",
     },
   },
   fr: {
@@ -199,7 +199,7 @@ const PATCHES = {
         "Newon est une équipe qui crée des apps pour gérer objectifs, habitudes, santé, finances, souvenirs familiaux et plus — pour un quotidien plus simple et plus intelligent.",
       aboutP2: "Nous réduisons la complexité et rendons nos services accessibles à tous, pour que les idées deviennent un vrai changement.",
       aboutP3Html:
-        "Aujourd’hui, Newon aide des utilisateurs du monde entier grâce à :<br /><br />• 10 apps publiées<br />• Service dans 177 pays<br />• 13 langues prises en charge",
+        "Aujourd’hui, Newon aide des utilisateurs du monde entier grâce à :<br /><br />• 11 apps publiées<br />• Service dans 177 pays<br />• 13 langues prises en charge",
       workLabel: "Ce que nous faisons",
       workTitle: "Ce que nous faisons",
       workP1: "Newon ne reste pas sur un seul produit — nous lançons continuellement de nouvelles apps à partir de nombreuses idées.",
@@ -218,11 +218,11 @@ const PATCHES = {
       visionTitle: "Notre objectif",
       visionP1Html: "Pas des apps surchargées — des <strong>apps que l’on garde longtemps</strong>.",
       visionP2: "Notre objectif est de s’intégrer au quotidien et d’aider le changement à durer.",
-      visionP3: "À partir de 10 apps, nous voulons devenir une plateforme de vie globale qui connecte plus de vies.",
+      visionP3: "À partir de 11 apps, nous voulons devenir une plateforme de vie globale qui connecte plus de vies.",
       statsLabel: "Statistiques",
       statsTitle: "Newon en chiffres",
       statCard0Html:
-        "<span class=\"co-stats-card__value\">10+</span><span class=\"co-stats-card__label\">Apps publiées</span>",
+        "<span class=\"co-stats-card__value\">11+</span><span class=\"co-stats-card__label\">Apps publiées</span>",
       statCard1Html:
         "<span class=\"co-stats-card__value\">177</span><span class=\"co-stats-card__label\">Pays</span>",
       statCard2Html:
@@ -235,7 +235,7 @@ const PATCHES = {
       tagline: "Un studio d’apps qui relie les idées à la réalité",
       statLine1: "Service dans 177 pays",
       statLine2: "13 langues",
-      statLine3: "10 apps publiées",
+      statLine3: "11 apps publiées",
     },
   },
   de: {
@@ -256,7 +256,7 @@ const PATCHES = {
         "Newon ist ein Team, das Apps entwickelt, mit denen du Ziele, Gewohnheiten, Gesundheit, Finanzen, Familienaufzeichnungen und mehr leichter und smarter verwalten kannst.",
       aboutP2: "Wir reduzieren Komplexität und machen unsere Services für alle nutzbar — damit Ideen zu echtem Wandel werden.",
       aboutP3Html:
-        "Heute unterstützt Newon Menschen weltweit mit:<br /><br />• 10 veröffentlichten Apps<br />• Service in 177 Ländern<br />• 13 unterstützten Sprachen",
+        "Heute unterstützt Newon Menschen weltweit mit:<br /><br />• 11 veröffentlichten Apps<br />• Service in 177 Ländern<br />• 13 unterstützten Sprachen",
       workLabel: "Was wir tun",
       workTitle: "Was wir tun",
       workP1: "Newon bleibt nicht bei einem Produkt — wir entwickeln kontinuierlich neue Apps aus vielen Ideen.",
@@ -275,11 +275,11 @@ const PATCHES = {
       visionTitle: "Unser Ziel",
       visionP1Html: "Nicht Apps mit endlosen Funktionen — <strong>Apps, die man lange nutzt</strong>.",
       visionP2: "Unser Ziel ist es, im Alltag aufzugehen und dauerhaften Wandel zu ermöglichen.",
-      visionP3: "Mit 10 Apps als Start wollen wir zu einer globalen Life-Plattform wachsen, die mehr Leben verbindet.",
+      visionP3: "Mit 11 Apps als Start wollen wir zu einer globalen Life-Plattform wachsen, die mehr Leben verbindet.",
       statsLabel: "Statistiken",
       statsTitle: "Newon in Zahlen",
       statCard0Html:
-        "<span class=\"co-stats-card__value\">10+</span><span class=\"co-stats-card__label\">Apps veröffentlicht</span>",
+        "<span class=\"co-stats-card__value\">11+</span><span class=\"co-stats-card__label\">Apps veröffentlicht</span>",
       statCard1Html:
         "<span class=\"co-stats-card__value\">177</span><span class=\"co-stats-card__label\">Länder</span>",
       statCard2Html:
@@ -313,7 +313,7 @@ const PATCHES = {
         "Newon एक टीम है जो लक्ष्य, आदत, स्वास्थ्य, वित्त, परिवारिक रिकॉर्ड आदि को आसान और स्मार्ट तरीके से प्रबंधित करने वाले ऐप बनाती है।",
       aboutP2: "हम जटिलता घटाते हैं और ऐसी सेवाएँ बनाते हैं जिन्हें कोई भी उपयोग कर सके, ताकि विचार वास्तविक बदलाव बनें।",
       aboutP3Html:
-        "आज Newon दुनिया भर के उपयोगकर्ताओं की मदद करता है:<br /><br />• 10 ऐप जारी<br />• 177 देशों में सेवा<br />• 13 भाषाओं का समर्थन",
+        "आज Newon दुनिया भर के उपयोगकर्ताओं की मदद करता है:<br /><br />• 11 ऐप जारी<br />• 177 देशों में सेवा<br />• 13 भाषाओं का समर्थन",
       workLabel: "हम क्या करते हैं",
       workTitle: "हम क्या करते हैं",
       workP1: "Newon एक ही उत्पाद पर नहीं रुकता — हम कई विचारों से नए ऐप लगातार बनाते रहते हैं।",
@@ -332,11 +332,11 @@ const PATCHES = {
       visionTitle: "हमारा लक्ष्य",
       visionP1Html: "अनंत सुविधाओं वाले ऐप नहीं — <strong>ऐप जिन्हें लंबे समय तक उपयोग किया जाए</strong>।",
       visionP2: "हमारा लक्ष्य दैनिक जीवन में स्वाभाविक रूप से घुलना-मिलना और स्थायी बदलाव बनाना है।",
-      visionP3: "10 ऐप से शुरू कर, हम एक वैश्विक लाइफ प्लेटफ़ॉर्म बनना चाहते हैं जो और अधिक जीवन जोड़े।",
+      visionP3: "11 ऐप से शुरू कर, हम एक वैश्विक लाइफ प्लेटफ़ॉर्म बनना चाहते हैं जो और अधिक जीवन जोड़े।",
       statsLabel: "आँकड़े",
       statsTitle: "Newon संख्याओं में",
       statCard0Html:
-        "<span class=\"co-stats-card__value\">10+</span><span class=\"co-stats-card__label\">ऐप जारी</span>",
+        "<span class=\"co-stats-card__value\">11+</span><span class=\"co-stats-card__label\">ऐप जारी</span>",
       statCard1Html:
         "<span class=\"co-stats-card__value\">177</span><span class=\"co-stats-card__label\">देश</span>",
       statCard2Html:
@@ -349,7 +349,7 @@ const PATCHES = {
       tagline: "विचारों को हकीकत से जोड़ने वाला ऐप स्टूडियो",
       statLine1: "177 देशों में सेवा",
       statLine2: "13 भाषाएँ",
-      statLine3: "10 ऐप जारी",
+      statLine3: "11 ऐप जारी",
     },
   },
   id: {
@@ -370,7 +370,7 @@ const PATCHES = {
         "Newon adalah tim yang membuat aplikasi untuk membantu mengelola target, kebiasaan, kesehatan, keuangan, catatan keluarga, dan lainnya — membuat kehidupan sehari-hari lebih mudah dan cerdas.",
       aboutP2: "Kami mengurangi kompleksitas dan membuat layanan yang mudah dipakai siapa saja, agar ide menjadi perubahan nyata.",
       aboutP3Html:
-        "Saat ini, Newon membantu pengguna di seluruh dunia dengan:<br /><br />• 10 aplikasi dirilis<br />• Layanan di 177 negara<br />• Dukungan 13 bahasa",
+        "Saat ini, Newon membantu pengguna di seluruh dunia dengan:<br /><br />• 11 aplikasi dirilis<br />• Layanan di 177 negara<br />• Dukungan 13 bahasa",
       workLabel: "Apa yang kami lakukan",
       workTitle: "Apa yang kami lakukan",
       workP1: "Newon tidak berhenti pada satu produk — kami terus meluncurkan aplikasi baru dari banyak ide.",
@@ -389,11 +389,11 @@ const PATCHES = {
       visionTitle: "Tujuan kami",
       visionP1Html: "Bukan aplikasi dengan fitur tak terbatas — <strong>aplikasi yang dipakai lama</strong>.",
       visionP2: "Tujuan kami menyatu dengan kehidupan sehari-hari dan membantu perubahan yang berkelanjutan.",
-      visionP3: "Dari 10 aplikasi, kami ingin tumbuh menjadi platform kehidupan global yang menghubungkan lebih banyak kehidupan.",
+      visionP3: "Dari 11 aplikasi, kami ingin tumbuh menjadi platform kehidupan global yang menghubungkan lebih banyak kehidupan.",
       statsLabel: "Statistik",
       statsTitle: "Newon dalam angka",
       statCard0Html:
-        "<span class=\"co-stats-card__value\">10+</span><span class=\"co-stats-card__label\">Aplikasi dirilis</span>",
+        "<span class=\"co-stats-card__value\">11+</span><span class=\"co-stats-card__label\">Aplikasi dirilis</span>",
       statCard1Html:
         "<span class=\"co-stats-card__value\">177</span><span class=\"co-stats-card__label\">Negara</span>",
       statCard2Html:
@@ -406,7 +406,7 @@ const PATCHES = {
       tagline: "Studio aplikasi yang menghubungkan ide ke realitas",
       statLine1: "Layanan di 177 negara",
       statLine2: "13 bahasa",
-      statLine3: "10 aplikasi dirilis",
+      statLine3: "11 aplikasi dirilis",
     },
   },
 };

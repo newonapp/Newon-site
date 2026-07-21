@@ -16,8 +16,8 @@ const LOCALES = path.join(ROOT, "locales");
 const CACHE_PATH = path.join(__dirname, ".translate-cache.json");
 
 const TARGET_LANGS = ["ja", "es", "pt-br", "fr", "de", "hi", "id"];
-const APP_KEYS = ["ox", "pm", "sv", "bl", "pl", "pu", "gu", "cu", "nt", "np"];
-const ROOT_KEYS = ["home", "nav", "footer", "ui", "meta", "common", "legal"];
+const APP_KEYS = ["ox", "pm", "sv", "bl", "pl", "pu", "gu", "cu", "nt", "np", "mw"];
+const ROOT_KEYS = ["home", "nav", "footer", "ui", "meta", "common", "legal", "about"];
 const META_KEYS = [
   "titleOx",
   "titlePillmate",
@@ -29,6 +29,7 @@ const META_KEYS = [
   "titleCountup",
   "titleNoting",
   "titleNewonPlus",
+  "titleMyworld",
   "titleHome",
   "description",
   "ogTitle",
@@ -47,6 +48,7 @@ const NAV_KEYS = [
   "countupDesc",
   "notingDesc",
   "newonPlusDesc",
+  "myworldDesc",
   "mobileOxHint",
   "mobileSubpingHint",
   "mobilePillmateHint",
@@ -58,6 +60,7 @@ const NAV_KEYS = [
   "mobileCountupHint",
   "mobileNotingHint",
   "mobileNewonPlusHint",
+  "mobileMyworldHint",
   "headerHubTagline",
   "mobileSummary",
 ];
@@ -83,12 +86,6 @@ const GOOGLE_LANG = {
 };
 
 const SKIP_SUBSTRINGS = [
-  "newon.app",
-  "play.google.com",
-  "apps.apple.com",
-  "mailto:",
-  "http://",
-  "https://",
   "[[IMG:",
   "{{",
 ];
@@ -117,7 +114,7 @@ function saveJson(p, obj) {
   fs.writeFileSync(p, JSON.stringify(obj, null, 2) + "\n", "utf8");
 }
 
-const BRAND_ONLY = /^(OX MONTH|SubPing|Pillmate|BabyLog|PetLog|PiggyUp|SAVY|GoalUp|CountUp|Noting|NOTING|Newon)$/i;
+const BRAND_ONLY = /^(OX MONTH|SubPing|Pillmate|BabyLog|PetLog|PiggyUp|SAVY|GoalUp|CountUp|Noting|NOTING|Newon|My World)$/i;
 
 function isBrandOnly(text) {
   return BRAND_ONLY.test(String(text).trim());
@@ -128,30 +125,32 @@ function shouldSkipTranslate(text) {
   if (!text || typeof text !== "string") return true;
   const t = text.trim();
   if (!t) return true;
+  if (/^https?:\/\//i.test(t) || /^mailto:/i.test(t)) return true;
   if (!/[a-zA-Z\u00C0-\u024F\u3040-\u30FF\u4E00-\u9FFF]/.test(t)) return true;
   if (SKIP_SUBSTRINGS.some((s) => t.includes(s))) return true;
   return false;
 }
 
-/** Protect HTML, template tokens, and brand tokens from translation. */
+/** Protect HTML, template tokens, URLs, and brand tokens from translation.
+ * Use ASCII placeholders — private-use Unicode (U+E000) gets mangled by some MT APIs. */
 function protect(text) {
   const tokens = [];
   let safe = text.replace(
-    /(\[\[IMG:[^\]]+\]\]|\{\{[^}]+\}\}|<[^>]+>|OX MONTH|SubPing|Pillmate|BabyLog|PetLog|PiggyUp|SAVY|GoalUp|CountUp|Noting|Newon|Google Play|App Store)/gi,
+    /(\[\[IMG:[^\]]+\]\]|\{\{[^}]+\}\}|https?:\/\/[^\s"'<>]+|mailto:[^\s"'<>]+|<[^>]+>|OX MONTH|SubPing|Pillmate|BabyLog|PetLog|PiggyUp|SAVY|GoalUp|CountUp|Noting|Newon|My World|Google Play|App Store)/gi,
     (m) => {
       const id = tokens.length;
       tokens.push(m);
-      return `\uE000${id}\uE001`;
+      return `[[[T${id}]]]`;
     }
   );
   return { safe, tokens };
 }
 
 function unprotect(text, tokens) {
-  let out = text;
+  let out = String(text);
   for (let i = 0; i < tokens.length; i++) {
-    out = out.replace(`\uE000${i}\uE001`, tokens[i]);
-    out = out.replace(new RegExp(`\uE000${i}\uE001`, "g"), tokens[i]);
+    out = out.replace(new RegExp(`\\[\\[\\[T${i}\\]\\]\\]`, "gi"), tokens[i]);
+    out = out.replace(new RegExp(`\\[\\[T${i}\\]\\]`, "gi"), tokens[i]);
   }
   return out;
 }
@@ -213,7 +212,7 @@ async function translateOne(text, targetLang, cache) {
   if (!force && cache[cacheKey]) return cache[cacheKey];
 
   const { safe, tokens } = protect(text);
-  const stripped = safe.replace(/\uE000\d+\uE001/g, "").trim();
+  const stripped = safe.replace(/\[\[\[T\d+\]\]\]/g, "").trim();
   if (
     !stripped ||
     !/[a-zA-Z\u00C0-\u024F\u3040-\u30FF\u4E00-\u9FFF\u0900-\u097F]/.test(stripped)

@@ -16,3 +16,9 @@ http:/
 
 node_modules/
 scripts/.translate-cache.json
+promo/frames/
+
+# Local Cursor / preview scratch
+.cursor-*.png
+_preview-*.html
+app-icons.zip

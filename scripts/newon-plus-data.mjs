@@ -141,7 +141,7 @@ export const npKo = {
   drawerCu: "CountUp 소개",
   drawerNp: "Newon · 이 화면",
   appStoreUrl: "https://apps.apple.com/kr/developer/newon/id6748248800",
-  googlePlayUrl: "https://play.google.com/store/apps/developer?id=NEWON",
+  googlePlayUrl: "https://play.google.com/store/apps/details?id=com.newon.newon&pcampaignid=web_share",
   appStoreBadgeAria: "App Store에서 Newon(새 탭)",
   googlePlayBadgeAria: "Google Play에서 Newon(새 탭)",
 };
@@ -153,24 +153,24 @@ export const npEn = {
   h1: "Newon",
   subtitleHtml: `<span class="ox-accent">One account for<br />all Newon services</span>`,
   heroReachSummary:
-    "From productivity and health to parenting, finance, and goals—experience Newon's premium apps with one membership.",
+    "From productivity and health to parenting, finance, goals, and travel—experience Newon's premium apps with one membership.",
   heroReachSummaryHtml:
-    "From productivity and health to parenting, finance, and goals—<br />experience Newon's premium apps<br />with one membership.",
+    "From productivity and health to parenting, finance, goals, and travel—<br />experience Newon's premium apps<br />with one membership.",
   heroLogoAlt: "Newon logo",
   introLabel: "Brand",
   introTitle: "Why Newon",
   introHtml:
-    "<p class=\"ox-app-intro__lead\"><strong>Newon</strong> is</p><p>a unified membership platform that connects every Newon app with one account.</p><p>No separate subscriptions—one membership covers productivity, health, parenting, finance, pets, goals, and lifestyle apps.</p><p>Manage installs, subscription status, premium benefits, family sharing, and usage stats in one place.</p><p>Newon Membership delivers a more convenient, more affordable subscription experience.</p>",
+    "<p class=\"ox-app-intro__lead\"><strong>Newon</strong> is</p><p>a unified membership platform that connects every Newon app with one account.</p><p>No separate subscriptions—one membership covers productivity, health, parenting, finance, pets, goals, travel, and lifestyle apps.</p><p>Manage installs, subscription status, premium benefits, family sharing, and usage stats in one place.</p><p>Newon Membership delivers a more convenient, more affordable subscription experience.</p>",
   introClosingBlock:
     "<p class=\"ox-app-intro__closing\">One account creates more value.</p>",
   introClosing: "",
   introClosingBlock: "",
   showcaseCollageAria: "Five Newon app previews. Scroll horizontally to see all.",
-  imgShot1Alt: "Newon — Ideas into apps; a new life platform with 10+ apps and one account",
+  imgShot1Alt: "Newon — Ideas into apps; a new life platform with 11+ apps and one account",
   imgShot2Alt: "Newon — Connect all Newon apps with one account",
   imgShot3Alt: "Newon — Productivity, finance, health, and parenting services in one place",
   imgShot4Alt: "Newon — Choose the package that fits you",
-  imgShot5Alt: "Newon — 10+ apps, 177 countries, 13 languages",
+  imgShot5Alt: "Newon — 11+ apps, 177 countries, 13 languages",
   pack1Aria: "Newon package overview",
   pack1Html:
     "<p class=\"ox-package-card__brand\">Newon</p><p class=\"ox-package-card__line\">Goals · Health · Finance</p><p class=\"ox-package-card__line\">Records · Growth · Productivity</p><p class=\"ox-package-card__foot\">All lifestyle apps<br />in one subscription</p>",
@@ -287,7 +287,7 @@ export const npEn = {
   drawerCu: "CountUp intro",
   drawerNp: "Newon · this page",
   appStoreUrl: "https://apps.apple.com/kr/developer/newon/id6748248800",
-  googlePlayUrl: "https://play.google.com/store/apps/developer?id=NEWON",
+  googlePlayUrl: "https://play.google.com/store/apps/details?id=com.newon.newon&pcampaignid=web_share",
   appStoreBadgeAria: "Newon on App Store (new tab)",
   googlePlayBadgeAria: "Newon on Google Play (new tab)",
 };

@@ -66,7 +66,7 @@
   "closingHiKicker": "ひとつにまとめたメッセージ",
   "closingHiLine": "サブスクを管理すれば、お金が残る。",
   "closingFoot": "支出が表示されている場合、あなたの財布は",
-  "appStoreUrl": "https://newon.app",
+  "appStoreUrl": "https://apps.apple.com/kr/app/subping-%EA%B5%AC%EB%8F%85-%EA%B4%80%EB%A6%AC/id6768013033",
   "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.subping&pcampaignid=web_share",
   "appStoreBadgeAria": "App StoreでSubPing（新しいタブ）",
   "googlePlayBadgeAria": "Google PlayでSubPing（新しいタブ）",
@@ -98,7 +98,7 @@
     "metaDescription": "0アカウントを削除する方法とデータに何が起こるか。",
     "title": "アカウントを削除しますか?",
     "appMeta": "アプリ： 0・開発者： 1",
-    "bodyHtml": "<p>You can delete your account directly in the app.</p><h2>How to delete your account</h2><ol class=\"legal-steps\"><li>Open the app</li><li>Go to Settings</li><li>Select Account</li><li>Tap <strong>Delete Account</strong></li></ol><h2>When you delete</h2><ul class=\"legal-bullets\"><li>All user data is deleted immediately.</li><li>Deleted data cannot be recovered.</li></ul><h2>Contact</h2><p><a href=\"mailto:newon@newon.app\">newon@newon.app</a></p>"
+    "bodyHtml": "<p>アプリで直接アカウントを削除できます。</p><h2>アカウントの削除方法</h2><ol class=\"legal-steps\"><li>アプリを開く</li><li>設定に移動</li><li>アカウントを選択</li><li>をタップ<strong>アカウントの削除</strong></li></ol><h2>削除すると</h2><ul class=\"legal-bullets\"><li>すべてのユーザーデータは直ちに削除されます。</li><li>削除されたデータは削除できません回復しました。</li></ul><h2>連絡先</h2><p><a href=\"mailto:newon@newon.app\">newon@newon.app</a></p>"
   },
   "introTitle": "なぜSubPingなのか",
   "globalReachBadge": "経常経費から・ワールドワイドサービス",

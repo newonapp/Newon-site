@@ -118,7 +118,7 @@ function localizedImageUrl(langDir, filename) {
       return `/i18n-img/ko/${filename}`;
     }
   }
-  if (/^bl-showcase-\d+\.png$/.test(filename) || /^pl-showcase-\d+\.png$/.test(filename) || /^pu-showcase-\d+\.png$/.test(filename) || /^cu-showcase-\d+\.png$/.test(filename) || /^gu-showcase-\d+\.png$/.test(filename) || /^np-showcase-\d+\.png$/.test(filename)) {
+  if (/^bl-showcase-\d+\.png$/.test(filename) || /^pl-showcase-\d+\.png$/.test(filename) || /^pu-showcase-\d+\.png$/.test(filename) || /^cu-showcase-\d+\.png$/.test(filename) || /^gu-showcase-\d+\.png$/.test(filename) || /^np-showcase-\d+\.png$/.test(filename) || /^mw-showcase-\d+\.png$/.test(filename)) {
     const forLang = path.join(I18N_IMG, langDir, filename);
     if (fs.existsSync(forLang)) {
       return `/i18n-img/${langDir}/${filename}`;

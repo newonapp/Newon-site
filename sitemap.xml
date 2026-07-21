@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.newon.app/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -34,7 +34,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -66,7 +66,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -82,7 +82,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -98,7 +98,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -114,7 +114,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -130,7 +130,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -146,7 +146,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -162,7 +162,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/about/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -178,7 +178,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/about/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -194,7 +194,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/about/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -210,7 +210,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/about/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -226,7 +226,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/about/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -242,7 +242,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/about/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -258,7 +258,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/about/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -274,7 +274,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/about/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -290,7 +290,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/about/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -306,7 +306,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/privacy/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -322,7 +322,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/privacy/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -338,7 +338,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/privacy/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -354,7 +354,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/privacy/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -370,7 +370,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/privacy/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -386,7 +386,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/privacy/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -402,7 +402,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/privacy/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -418,7 +418,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/privacy/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -434,7 +434,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/privacy/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -450,7 +450,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/terms/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -466,7 +466,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/terms/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -482,7 +482,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/terms/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -498,7 +498,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/terms/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -514,7 +514,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/terms/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -530,7 +530,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/terms/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -546,7 +546,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/terms/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -562,7 +562,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/terms/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -578,7 +578,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/terms/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -594,595 +594,649 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/oxmonth/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/oxmonth/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/oxmonth/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/oxmonth/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/oxmonth/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/oxmonth/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/oxmonth/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/oxmonth/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/oxmonth/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/subping/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/subping/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/subping/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/subping/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/subping/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/subping/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/subping/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/subping/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/subping/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/pillmate/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/pillmate/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/pillmate/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/pillmate/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/pillmate/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/pillmate/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/pillmate/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/pillmate/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/pillmate/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/savy/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/savy/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/savy/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/savy/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/savy/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/savy/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/savy/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/savy/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/savy/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/babylog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/babylog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/babylog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/babylog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/babylog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/babylog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/babylog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/babylog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/babylog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/petlog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/petlog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/petlog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/petlog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/petlog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/petlog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/petlog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/petlog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/petlog/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/piggyup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/piggyup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/piggyup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/piggyup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/piggyup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/piggyup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/piggyup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/piggyup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/piggyup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/goalup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/goalup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/goalup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/goalup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/goalup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/goalup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/goalup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/goalup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/goalup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/countup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/countup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/countup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/countup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/countup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/countup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/countup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/countup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/countup/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/ko/myworld/delete-account/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/en/myworld/delete-account/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/ja/myworld/delete-account/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/es/myworld/delete-account/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/pt-br/myworld/delete-account/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/fr/myworld/delete-account/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/de/myworld/delete-account/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/hi/myworld/delete-account/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/id/myworld/delete-account/</loc>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/newon/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/newon/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/newon/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/newon/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/newon/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/newon/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/newon/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/newon/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/newon/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/noting/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/noting/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/noting/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/noting/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/noting/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/noting/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/noting/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/noting/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/noting/delete-account/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>

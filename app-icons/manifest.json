@@ -1,0 +1,145 @@
+{
+  "generatedAt": "2026-07-09T10:38:03.428Z",
+  "apps": [
+    {
+      "slug": "newon",
+      "name": "Newon",
+      "source": "logo.png",
+      "sizes": [
+        1024,
+        512,
+        256,
+        128
+      ]
+    },
+    {
+      "slug": "ox-month",
+      "name": "OX MONTH",
+      "source": "ox-month-logo.png",
+      "sizes": [
+        1024,
+        512,
+        256,
+        128
+      ]
+    },
+    {
+      "slug": "subping",
+      "name": "SubPing",
+      "source": "subping-logo.png",
+      "sizes": [
+        1024,
+        512,
+        256,
+        128
+      ]
+    },
+    {
+      "slug": "pillmate",
+      "name": "Pillmate",
+      "source": "pillmate-logo.png",
+      "sizes": [
+        1024,
+        512,
+        256,
+        128
+      ]
+    },
+    {
+      "slug": "savy",
+      "name": "SAVY",
+      "source": "savy-logo.png",
+      "sizes": [
+        1024,
+        512,
+        256,
+        128
+      ]
+    },
+    {
+      "slug": "babylog",
+      "name": "BabyLog",
+      "source": "babylog-logo.png",
+      "sizes": [
+        1024,
+        512,
+        256,
+        128
+      ]
+    },
+    {
+      "slug": "petlog",
+      "name": "PetLog",
+      "source": "petlog-logo.png",
+      "sizes": [
+        1024,
+        512,
+        256,
+        128
+      ]
+    },
+    {
+      "slug": "piggyup",
+      "name": "PiggyUp",
+      "source": "piggyup-logo.png",
+      "sizes": [
+        1024,
+        512,
+        256,
+        128
+      ]
+    },
+    {
+      "slug": "goalup",
+      "name": "GoalUp",
+      "source": "goalup-logo.png",
+      "sizes": [
+        1024,
+        512,
+        256,
+        128
+      ]
+    },
+    {
+      "slug": "countup",
+      "name": "CountUp",
+      "source": "countup-logo.png",
+      "sizes": [
+        1024,
+        512,
+        256,
+        128
+      ]
+    },
+    {
+      "slug": "newon-plus",
+      "name": "Newon+",
+      "source": "newon-plus-logo.png",
+      "sizes": [
+        1024,
+        512,
+        256,
+        128
+      ]
+    },
+    {
+      "slug": "noting",
+      "name": "Noting",
+      "source": "noting-logo.png",
+      "sizes": [
+        1024,
+        512,
+        256,
+        128
+      ]
+    },
+    {
+      "slug": "newon-brand",
+      "name": "Newon (Apple touch)",
+      "source": "apple-touch-icon.png",
+      "sizes": [
+        180
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- App account deletion instructions (per-locale static page; mw replaced at build) -->
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My World — Supprimez votre compte</title>
+    <meta name="description" content="Comment supprimer votre compte My World et qu'arrive-t-il à vos données." />
+    <link rel="canonical" href="https://www.newon.app/fr/myworld/delete-account/" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/ox-month.css" />
+    <script src="/theme-shell.js"></script>
+    <style>
+      .legal-page { padding: calc(var(--header-h) + 2rem) 0 4rem; min-height: 70vh; }
+      .legal-inner { width: min(720px, calc(100% - var(--space) * 2)); margin: 0 auto; }
+      .legal-inner h1 { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 0.5rem; color: var(--text); }
+      .legal-meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+      .legal-inner h2 { font-size: 1.1rem; margin: 2rem 0 0.75rem; color: var(--text); }
+      .legal-inner p { margin: 0 0 1rem; color: var(--text-muted); line-height: 1.65; }
+      .legal-inner .legal-body ol.legal-steps {
+        margin: 0 0 1rem 1.25rem;
+        padding: 0;
+        color: var(--text-muted);
+        line-height: 1.65;
+      }
+      .legal-inner .legal-body ol.legal-steps li { margin-bottom: 0.4rem; }
+      .legal-inner .legal-body ul.legal-bullets {
+        margin: 0 0 1rem 1.15rem;
+        padding: 0;
+        color: var(--text-muted);
+        line-height: 1.65;
+      }
+      .legal-inner .legal-body ul.legal-bullets li { margin-bottom: 0.4rem; }
+      .legal-inner .legal-body a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+      .legal-back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); font-weight: 500; }
+      .legal-back:hover { color: var(--text); }
+    </style>
+    <script src="/lang-nav.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#legal-main">Aller au contenu</a>
+    <header class="site-header">
+      <div class="container header-inner header-inner--legal">
+        <a class="legal-back" href="../../">Retour à l’accueil</a>
+        <div class="navbar-controls">
+          <button
+            type="button"
+            class="navbar-theme-toggle"
+            data-theme-toggle
+            data-label-light="Mode clair"
+            data-label-dark="Mode sombre"
+            title="Changer de thème"
+            aria-label="Mode sombre"
+          >🌙</button>
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-app-del">Langue</label>
+          <select id="lang-select-app-del" class="lang-select" data-lang-select aria-label="Langue">
+            <option value="ko">한국어</option>
+            <option value="en">Anglais</option>
+            <option value="ja">日本語</option>
+            <option value="es">espagnol</option>
+            <option value="pt-br">Portugais (Brésil)</option>
+            <option value="fr">Français</option>
+            <option value="de">Allemand</option>
+            <option value="hi">हिन्दी</option>
+            <option value="id">Bahasa Indonésie</option>
+          </select>
+        </div>
+        </div>
+      </div>
+    </header>
+    <main id="legal-main" class="legal-page">
+      <div class="legal-inner">
+        <h1>My World — Supprimez votre compte</h1>
+        <p class="legal-meta">Application : My World · Développeur : Newon</p>
+        <div class="legal-body"><p>Vous pouvez supprimer votre compte directement dans l'application.</p><h2>Comment supprimer votre compte</h2><ol class="legal-steps"><li>Ouvrez l'application</li><li>Allez dans Paramètres</li><li>Sélectionner un compte</li><li>Appuyez <strong>Supprimer le compte</strong></li></ol><h2>Lorsque vous supprimez</h2><ul class="legal-bullets"><li>Toutes les données utilisateur sont immédiatement supprimées.</li><li>Les données supprimées ne peuvent pas être récupéré.</li></ul><h2>Contact</h2><p><a href="mailto:newon@newon.app">newon@newon.app</a></p></div>
+      </div>
+    </main>
+    <script>
+      (function () {
+        var cur = "fr";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
+  </body>
+</html>

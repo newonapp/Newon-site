@@ -123,8 +123,8 @@ export const cuKo = {
   drawerPu: "PiggyUp 소개",
   drawerGu: "GoalUp 소개",
   drawerCu: "CountUp · 이 화면",
-  appStoreUrl: "https://newon.app",
-  googlePlayUrl: "https://newon.app",
+  appStoreUrl: "https://apps.apple.com/kr/app/countup-%EC%B9%B4%EC%9A%B4%ED%8A%B8-%EB%AA%A9%ED%91%9C-%EA%B4%80%EB%A6%AC/id6786910628",
+  googlePlayUrl: "https://play.google.com/store/apps/details?id=com.newon.countup&pcampaignid=web_share",
   appStoreBadgeAria: "App Store에서 CountUp(새 탭)",
   googlePlayBadgeAria: "Google Play에서 CountUp(새 탭)",
 };
@@ -252,8 +252,8 @@ export const cuEn = {
   drawerPu: "Open PiggyUp intro",
   drawerGu: "Open GoalUp intro",
   drawerCu: "CountUp · this screen",
-  appStoreUrl: "https://newon.app",
-  googlePlayUrl: "https://newon.app",
+  appStoreUrl: "https://apps.apple.com/kr/app/countup-%EC%B9%B4%EC%9A%B4%ED%8A%B8-%EB%AA%A9%ED%91%9C-%EA%B4%80%EB%A6%AC/id6786910628",
+  googlePlayUrl: "https://play.google.com/store/apps/details?id=com.newon.countup&pcampaignid=web_share",
   appStoreBadgeAria: "CountUp on the App Store (opens in a new tab)",
   googlePlayBadgeAria: "CountUp on Google Play (opens in a new tab)",
 };

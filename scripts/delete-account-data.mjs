@@ -37,6 +37,7 @@ export const DELETE_ACCOUNT_APPS = [
   { ns: "pu", slug: "piggyup", name: "PiggyUp" },
   { ns: "gu", slug: "goalup", name: "GoalUp" },
   { ns: "cu", slug: "countup", name: "CountUp" },
+  { ns: "mw", slug: "myworld", name: "My World" },
   { ns: "np", slug: "newon", name: "Newon" },
   { ns: "nt", slug: "noting", name: "Noting" },
 ];
