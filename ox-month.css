@@ -2144,14 +2144,14 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 
 /* 추천 제목만 살짝 위로 (OX MONTH · SubPing · Pillmate · SAVY · BabyLog 공통) */
 :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#noting-app,#newon-plus-app)
-  :is(#sp-reco-title, #ox-reco-title, #pm-reco-title, #sv-reco-title, #bl-reco-title, #pl-reco-title, #pu-reco-title, #gu-reco-title, #cu-reco-title, #np-reco-title, #nt-reco-title).ox-premium-heading {
+  :is(#sp-reco-title, #ox-reco-title, #pm-reco-title, #sv-reco-title, #bl-reco-title, #pl-reco-title, #pu-reco-title, #gu-reco-title, #cu-reco-title, #mw-reco-title, #np-reco-title, #nt-reco-title).ox-premium-heading {
   margin-top: -0.5rem;
   margin-bottom: 1rem;
 }
 
 /* 앱 페이지 “추천” 블록: 그리드 + 카드 (styles.css 다크 surface 덮어씀) */
 :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#noting-app,#newon-plus-app)
-  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #np-reco, #nt-reco)
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco, #nt-reco)
   .co-build-list {
   list-style: none;
   margin: 1rem 0 0;
@@ -2165,7 +2165,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 
 @media (min-width: 640px) {
   :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#noting-app,#newon-plus-app)
-    :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #np-reco, #nt-reco)
+    :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco, #nt-reco)
     .co-build-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
@@ -2182,7 +2182,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#noting-app,#newon-plus-app)
-  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #np-reco, #nt-reco)
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco, #nt-reco)
   .co-build-list
   li {
   margin: 0;
@@ -2210,7 +2210,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#noting-app,#newon-plus-app)
-  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #np-reco, #nt-reco)
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco, #nt-reco)
   .co-build-list
   li:hover {
   border-color: var(--ox-border-hover);
@@ -2219,7 +2219,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#noting-app,#newon-plus-app)[data-theme="dark"]
-  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #np-reco, #nt-reco)
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco, #nt-reco)
   .co-build-list
   li {
   background: #000000;
@@ -2227,7 +2227,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#noting-app,#newon-plus-app)[data-theme="light"]
-  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #np-reco, #nt-reco)
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco, #nt-reco)
   .co-build-list
   li {
   background: #fff;
@@ -2236,7 +2236,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#noting-app,#newon-plus-app)[data-theme="light"]
-  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #np-reco, #nt-reco)
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco, #nt-reco)
   .co-build-list
   li:hover {
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
@@ -2244,7 +2244,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 
 @media (prefers-reduced-motion: reduce) {
   :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#noting-app,#newon-plus-app)
-    :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #np-reco, #nt-reco)
+    :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco, #nt-reco)
     .co-build-list
     li:hover {
     transform: none;

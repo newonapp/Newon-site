@@ -202,6 +202,12 @@ s = s.replace(
   "$1/myworld-logo.png"
 );
 
+// Restore OX MONTH logo if a prior replace ever swapped it (must run last)
+s = s.replace(
+  /(<a href="#ox-month"[\s\S]*?<img src=")\/myworld-logo\.png/g,
+  "$1/ox-month-logo.png"
+);
+
 // CountUp has 6 shots; My World uses 7 store screenshots
 if (!s.includes("[[IMG:mw-showcase-07.png]]")) {
   s = s.replace(

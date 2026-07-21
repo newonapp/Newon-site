@@ -9,6 +9,9 @@
 | `newon-youtube-1280x720.png` | 유튜브 썸네일 | 1280×720 |
 | `newon-apps-1080.png` | 앱 라인업 소개 | 1080×1080 |
 | `newon-atmosphere-*.png` | 분위기용 아트 스틸 | 다양한 비율 |
+| `site-shots/*.png` | 배포 사이트 섹션 캡처 (흰 배경·무테) | 1080×1080 |
+| `site-shots-phone/*.png` | 위와 동일, 앱 쇼케이스 규격 | 576×1024 |
+| `site-shots-wide/*.png` | 위와 동일, 와이드 | 1200×가변 |
 
 ## 영상
 | 파일 | 설명 |
