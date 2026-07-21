@@ -184,28 +184,26 @@ s = s.replace(
 
 // Ensure countup logo restored on countup links (global logo replace may have hit them)
 s = s.replace(
-  /(<a href="#countup-app"[\s\S]*?<img src=")\/myworld-logo\.png/g,
+  /(<a href="#countup-app"[^>]*>\s*<span class="[^"]*__icon">\s*<img src=")\/myworld-logo\.png/g,
   "$1/countup-logo.png"
 );
 
-// Force My World logos on current nav items
+// Force My World logo only on the *current* My World nav rows (tight: same <a> block)
 s = s.replace(
-  /(href="#mw-top"[\s\S]*?<img src=")[^"]+/g,
+  /(<a[^>]*href="#mw-top"[^>]*apps-flyout__item--current[^>]*>\s*<span class="apps-flyout__icon">\s*<img src=")[^"]+/g,
   "$1/myworld-logo.png"
 );
 s = s.replace(
-  /(class="apps-flyout__item apps-flyout__item--current"[\s\S]*?<img src=")[^"]+/g,
+  /(<a[^>]*apps-flyout__item--current[^>]*href="#mw-top"[^>]*>\s*<span class="apps-flyout__icon">\s*<img src=")[^"]+/g,
   "$1/myworld-logo.png"
 );
 s = s.replace(
-  /(mobile-apps-drawer__item--current"[\s\S]*?<img src=")[^"]+/g,
+  /(<a href="#mw-top" class="mobile-apps-drawer__item mobile-apps-drawer__item--current">\s*<span class="mobile-apps-drawer__icon">\s*<img src=")[^"]+/g,
   "$1/myworld-logo.png"
 );
-
-// Restore OX MONTH logo if a prior replace ever swapped it (must run last)
 s = s.replace(
-  /(<a href="#ox-month"[\s\S]*?<img src=")\/myworld-logo\.png/g,
-  "$1/ox-month-logo.png"
+  /(<a href="#mw-top" class="navbar-app-showcase"[^>]*>\s*<span class="navbar-app-showcase__icon">\s*<img[^>]*src=")[^"]+/g,
+  "$1/myworld-logo.png"
 );
 
 // CountUp has 6 shots; My World uses 7 store screenshots
