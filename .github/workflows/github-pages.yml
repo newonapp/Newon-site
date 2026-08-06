@@ -1,5 +1,4 @@
-# GitHub Pages: serves the `gh-pages` branch (legacy).
-# On main push: build `_publish/` and force-push it to `gh-pages`.
+# GitHub Pages via Actions (avoids flaky legacy branch builder).
 
 name: Deploy static site to GitHub Pages
 
@@ -9,14 +8,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,12 +31,21 @@ jobs:
       - name: Build and assemble site
         run: node scripts/publish-site.mjs
 
-      - name: Publish to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_publish
-          publish_branch: gh-pages
-          force_orphan: true
-          enable_jekyll: false
-          cname: www.newon.app
+          path: ./_publish
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
