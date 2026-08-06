@@ -1,5 +1,5 @@
-# GitHub: Settings → Pages → Build: GitHub Actions
-# main 푸시 시 빌드 + 정적 자산을 한 번에 묶어 GitHub Pages에 배포합니다.
+# GitHub Pages: serves the `gh-pages` branch (legacy).
+# On main push: build `_publish/` and force-push it to `gh-pages`.
 
 name: Deploy static site to GitHub Pages
 
@@ -9,17 +9,14 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
-# Do not cancel an in-flight Pages deploy — that often leaves deploys half-done.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,18 +30,12 @@ jobs:
       - name: Build and assemble site
         run: node scripts/publish-site.mjs
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: _publish
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_publish
+          publish_branch: gh-pages
+          force_orphan: true
+          enable_jekyll: false
+          cname: www.newon.app
