@@ -6,6 +6,33 @@
 (function (g) {
   var LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
 
+  var APP_SHELLS = [
+    ["ox-month", "#ox-month"],
+    ["subping-app", "#subping-app"],
+    ["pillmate-app", "#pillmate-app"],
+    ["savy-app", "#savy-app"],
+    ["babylog-app", "#babylog-app"],
+    ["petlog-app", "#petlog-app"],
+    ["piggyup-app", "#piggyup-app"],
+    ["goalup-app", "#goalup-app"],
+    ["countup-app", "#countup-app"],
+    ["newon-plus-app", "#newon-plus-app"],
+    ["myworld-app", "#myworld-app"],
+    ["noting-app", "#noting-app"],
+  ];
+
+  var HOME_SECTIONS = [
+    "top",
+    "intro",
+    "meaning",
+    "about",
+    "work",
+    "build",
+    "goal",
+    "why",
+    "numbers",
+  ];
+
   function pathnameSegments() {
     return g.location.pathname
       .replace(/\/index\.html$/i, "")
@@ -33,9 +60,43 @@
     return out;
   }
 
+  /** Keep the screen the user is looking at when switching language. */
+  function captureViewHash() {
+    var doc = g.document;
+    if (!doc || !doc.body) return g.location.hash || "";
+
+    var i;
+    var el;
+    for (i = 0; i < APP_SHELLS.length; i++) {
+      el = doc.getElementById(APP_SHELLS[i][0]);
+      if (el && !el.hidden) return APP_SHELLS[i][1];
+    }
+
+    var home = doc.getElementById("home");
+    if (home && !home.hidden) {
+      var vh = g.innerHeight || doc.documentElement.clientHeight || 0;
+      var bestId = null;
+      var bestScore = -1;
+      for (i = 0; i < HOME_SECTIONS.length; i++) {
+        el = doc.getElementById(HOME_SECTIONS[i]);
+        if (!el) continue;
+        var r = el.getBoundingClientRect();
+        var visible = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+        if (visible > bestScore) {
+          bestScore = visible;
+          bestId = HOME_SECTIONS[i];
+        }
+      }
+      if (bestId && bestScore > 48) return "#" + bestId;
+    }
+
+    var h = g.location.hash || "";
+    return h === "#" ? "" : h;
+  }
+
   function build(nextDir) {
     if (LANGS.indexOf(nextDir) === -1) nextDir = "en";
-    var h = g.location.hash || "";
+    var h = captureViewHash();
     var q = g.location.search || "";
     var tail = q + h;
     var segs = pathnameSegments();

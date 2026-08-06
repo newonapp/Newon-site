@@ -376,8 +376,195 @@
       </header>
 
       <main id="main">
-        <section id="top" class="hero reveal-on-scroll is-visible">
+        <section id="top" class="hero hero--ecosystem reveal-on-scroll is-visible">
           <div class="hero-bg" aria-hidden="true"></div>
+          <div class="hero-bg-flow" aria-hidden="true">
+            <svg class="hero-flow" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <defs>
+                <linearGradient id="flowFade" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+                  <stop offset="12%" stop-color="#ffffff" stop-opacity="1" />
+                  <stop offset="88%" stop-color="#ffffff" stop-opacity="1" />
+                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient id="flowAccentPink" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#F2A8C0" stop-opacity="0" />
+                  <stop offset="22%" stop-color="#F2A8C0" stop-opacity="0.85" />
+                  <stop offset="55%" stop-color="#E4D4F5" stop-opacity="0.7" />
+                  <stop offset="100%" stop-color="#D4E4F8" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient id="flowAccentMint" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#9FE0C8" stop-opacity="0" />
+                  <stop offset="28%" stop-color="#9FE0C8" stop-opacity="0.8" />
+                  <stop offset="62%" stop-color="#9ED9E0" stop-opacity="0.65" />
+                  <stop offset="100%" stop-color="#A8C8F0" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient id="flowAccentPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#C4A6E8" stop-opacity="0" />
+                  <stop offset="30%" stop-color="#C4A6E8" stop-opacity="0.8" />
+                  <stop offset="65%" stop-color="#F2A8C0" stop-opacity="0.55" />
+                  <stop offset="100%" stop-color="#F8D9C8" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient id="flowAccentBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#8BB8F0" stop-opacity="0" />
+                  <stop offset="25%" stop-color="#8BB8F0" stop-opacity="0.75" />
+                  <stop offset="58%" stop-color="#9ED9E0" stop-opacity="0.6" />
+                  <stop offset="100%" stop-color="#D5EED9" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient id="flowAccentWarm" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#F0B090" stop-opacity="0" />
+                  <stop offset="32%" stop-color="#F0B090" stop-opacity="0.75" />
+                  <stop offset="68%" stop-color="#F0D080" stop-opacity="0.55" />
+                  <stop offset="100%" stop-color="#FAD4E0" stop-opacity="0" />
+                </linearGradient>
+                <mask id="flowMask">
+                  <rect width="1440" height="720" fill="url(#flowFade)" />
+                </mask>
+              </defs>
+
+              <g class="hero-flow__lines" fill="none" stroke-linecap="round" stroke-linejoin="round" mask="url(#flowMask)">
+                <!-- soft grey silk threads (KT-style stacked ribbons) -->
+                <path class="hero-flow__thread" stroke="#D8DCE3" stroke-width="14" stroke-opacity="0.22" d="M-80 250 C 180 180, 340 330, 560 250 S 920 150, 1180 230 S 1420 340, 1600 270" />
+                <path class="hero-flow__thread" stroke="#E4E7EC" stroke-width="11" stroke-opacity="0.28" d="M-60 268 C 200 198, 360 348, 580 268 S 940 168, 1200 248 S 1440 358, 1620 288" />
+                <path class="hero-flow__thread" stroke="#CDD2DB" stroke-width="9" stroke-opacity="0.2" d="M-100 286 C 160 216, 320 366, 540 286 S 900 186, 1160 266 S 1400 376, 1580 306" />
+                <path class="hero-flow__thread" stroke="#E8EBF0" stroke-width="12" stroke-opacity="0.32" d="M-40 304 C 220 234, 380 384, 600 304 S 960 204, 1220 284 S 1460 394, 1640 324" />
+                <path class="hero-flow__thread" stroke="#D0D5DE" stroke-width="8" stroke-opacity="0.24" d="M-90 322 C 170 252, 330 402, 550 322 S 910 222, 1170 302 S 1410 412, 1590 342" />
+                <path class="hero-flow__thread" stroke="#E2E5EB" stroke-width="13" stroke-opacity="0.26" d="M-50 340 C 210 270, 370 420, 590 340 S 950 240, 1210 320 S 1450 430, 1630 360" />
+                <path class="hero-flow__thread" stroke="#C8CED8" stroke-width="7" stroke-opacity="0.18" d="M-110 358 C 150 288, 310 438, 530 358 S 890 258, 1150 338 S 1390 448, 1570 378" />
+                <path class="hero-flow__thread" stroke="#ECEEF2" stroke-width="10" stroke-opacity="0.34" d="M-70 376 C 190 306, 350 456, 570 376 S 930 276, 1190 356 S 1430 466, 1610 396" />
+                <path class="hero-flow__thread" stroke="#D6DAE2" stroke-width="15" stroke-opacity="0.2" d="M-30 394 C 230 324, 390 474, 610 394 S 970 294, 1230 374 S 1470 484, 1650 414" />
+                <path class="hero-flow__thread" stroke="#E6E9EE" stroke-width="9" stroke-opacity="0.3" d="M-85 412 C 175 342, 335 492, 555 412 S 915 312, 1175 392 S 1415 502, 1595 432" />
+                <path class="hero-flow__thread" stroke="#CFD4DD" stroke-width="11" stroke-opacity="0.22" d="M-55 430 C 205 360, 365 510, 585 430 S 945 330, 1205 410 S 1445 520, 1625 450" />
+                <path class="hero-flow__thread" stroke="#E1E4EA" stroke-width="8" stroke-opacity="0.28" d="M-95 448 C 165 378, 325 528, 545 448 S 905 348, 1165 428 S 1405 538, 1585 468" />
+                <path class="hero-flow__thread" stroke="#D4D8E0" stroke-width="12" stroke-opacity="0.2" d="M-45 466 C 215 396, 375 546, 595 466 S 955 366, 1215 446 S 1455 556, 1635 486" />
+                <path class="hero-flow__thread" stroke="#EAECF0" stroke-width="7" stroke-opacity="0.3" d="M-75 484 C 185 414, 345 564, 565 484 S 925 384, 1185 464 S 1425 574, 1605 504" />
+                <path class="hero-flow__thread" stroke="#CCD1DA" stroke-width="10" stroke-opacity="0.18" d="M-35 502 C 225 432, 385 582, 605 502 S 965 402, 1225 482 S 1465 592, 1645 522" />
+
+                <!-- thin accent threads (app point colors) -->
+                <path class="hero-flow__accent" stroke="url(#flowAccentPink)" stroke-width="1.6" d="M-70 292 C 190 222, 350 372, 570 292 S 930 192, 1190 272 S 1430 382, 1610 312" />
+                <path class="hero-flow__accent" stroke="url(#flowAccentMint)" stroke-width="1.4" d="M-50 348 C 210 278, 370 428, 590 348 S 950 248, 1210 328 S 1450 438, 1630 368" />
+                <path class="hero-flow__accent" stroke="url(#flowAccentPurple)" stroke-width="1.5" d="M-90 386 C 170 316, 330 466, 550 386 S 910 286, 1170 366 S 1410 476, 1590 406" />
+                <path class="hero-flow__accent" stroke="url(#flowAccentBlue)" stroke-width="1.35" d="M-40 424 C 220 354, 380 504, 600 424 S 960 324, 1220 404 S 1460 514, 1640 444" />
+                <path class="hero-flow__accent" stroke="url(#flowAccentWarm)" stroke-width="1.45" d="M-80 462 C 180 392, 340 542, 560 462 S 920 362, 1180 442 S 1420 552, 1600 482" />
+                <path class="hero-flow__accent" stroke="#9FE0C8" stroke-opacity="0.45" stroke-width="1.2" d="M-60 330 C 200 260, 360 410, 580 330 S 940 230, 1200 310 S 1440 420, 1620 350" />
+                <path class="hero-flow__accent" stroke="#F0D080" stroke-opacity="0.4" stroke-width="1.15" d="M-100 440 C 160 370, 320 520, 540 440 S 900 340, 1160 420 S 1400 530, 1580 460" />
+              </g>
+            </svg>
+          </div>
+          <div class="container hero-inner hero-inner--centered">
+            <div class="hero-copy hero-copy--centered">
+              <h1 class="hero-brand-mark hero-eco-enter" style="--hero-enter-delay: 80ms">
+                <img
+                  class="hero-brand-mark__img hero-brand-mark__img--light"
+                  src="/newon-wordmark-chrome.png"
+                  alt="Newon ロゴ: 線で描かれた N と右上の白い点"
+                  width="948"
+                  height="361"
+                  decoding="async"
+                />
+                <img
+                  class="hero-brand-mark__img hero-brand-mark__img--dark"
+                  src="/newon-wordmark-chrome-dark.png"
+                  alt=""
+                  width="948"
+                  height="361"
+                  decoding="async"
+                  aria-hidden="true"
+                />
+              </h1>
+              <p class="hero-sub hero-eco-enter" style="--hero-enter-delay: 220ms">記録し、管理し、成長するすべての瞬間を。
+Newonのアプリが、より便利な日常をつなぎます。</p>
+              <p class="hero-desc hero-eco-enter" style="--hero-enter-delay: 300ms">育児、ペット、健康、目標、家計、サブスク管理まで。
+日常に必要なさまざまなサービスを、ひとつのブランドで。</p>
+              <div class="hero-actions hero-actions--eco hero-eco-enter" style="--hero-enter-delay: 380ms">
+                <a
+                  class="btn btn-primary hero-btn-primary"
+                  href="#build"
+                  aria-label="Newonアプリを見る"
+                >アプリを見る</a>
+                <a
+                  class="btn btn-ghost hero-btn-secondary"
+                  href="#intro"
+                  aria-label="Newonについて詳しく見る"
+                >Newonについて</a>
+              </div>
+              <div class="hero-actions hero-store-links hero-eco-enter" style="--hero-enter-delay: 460ms">
+                <a
+                  class="hero-store-link hero-store-link--apple"
+                  href="https://apps.apple.com/developer/nawon-kyung/id1896528749"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="App StoreでNawon Kyungのアプリを見る（新しいタブ）"
+                >
+                  <svg
+                    class="hero-store-link__icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  class="hero-store-link hero-store-link--google"
+                  href="https://play.google.com/store/apps/dev?id=8016507493063681249"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Google PlayでNEWONのアプリを見る（新しいタブ）"
+                >
+                  <svg
+                    class="hero-store-link__icon hero-store-link__icon--play"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 28 28"
+                    width="22"
+                    height="22"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path fill="#00D9FF" d="M3 4.5v19l11-9.7L3 4.5z" />
+                    <path fill="#00F076" d="M15.4 14.3 25 20.8c.6-.4 1-1 1-1.8V9c0-.7-.4-1.4-1-1.8l-9.6 6.1z" />
+                    <path fill="#FFCE00" d="M15.4 13.7 25 7.2c-.6-.4-1.3-.6-2-.4L3 4.5l12.4 9.2z" />
+                    <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="hero-marquee hero-eco-enter"
+            style="--hero-enter-delay: 520ms"
+            data-hero-marquee
+            aria-label="Newonアプリのロゴ。選択するとアプリ紹介へ移動します"
+          ></div>
+          <script type="application/json" id="newon-hero-apps-labels">
+{
+  "babylog": { "description": "育児記録 · 成長 · 家族共有 · AI", "category": "家族" },
+  "petlog": { "description": "ペット記録 · 健康 · 家族共有 · AI", "category": "ペット" },
+  "goalup": { "description": "目標管理 · チャレンジ · 成長記録", "category": "目標" },
+  "countup": { "description": "カウント記録 · 目標追跡 · 成長", "category": "記録" },
+  "savy": { "description": "支出 · 収入 · サブスク · AI 分析", "category": "金融" },
+  "subping": { "description": "サブスク · 通知 · まとめて管理", "category": "金融" },
+  "pillmate": { "description": "服薬リマインダー · お薬のスケジュール", "category": "健康" },
+  "piggyup": { "description": "節約習慣 · 消費分析 · AIコーチ", "category": "金融" },
+  "ox": { "description": "習慣 · O/X チェック · 月間記録", "category": "習慣" },
+  "newonPlus": { "description": "パッケージ加入 · プレミアム特典 · 統合管理", "category": "メンバーシップ" },
+  "myworld": { "description": "旅行記録 · 旅行地図 · AIレポート", "category": "旅行" }
+}
+          </script>
+          <div class="hero-scroll" aria-hidden="true">
+            <span class="dot-pulse"></span>
+            <span>スクロール</span>
+          </div>
+        </section>
+
+        <section id="intro" class="hero hero--classic reveal-on-scroll">
+          <div class="hero-bg hero-bg--classic" aria-hidden="true"></div>
           <div class="container hero-inner">
             <div class="hero-visual">
               <div class="hero-logo-wrap">
@@ -391,7 +578,7 @@
               </div>
             </div>
             <div class="hero-copy">
-              <p class="eyebrow">アプリスタジオ · ライフプラットフォーム</p>
+              <p class="eyebrow">GLOBAL LIFE PLATFORM</p>
               <h1 class="hero-title hero-title--co">
                 アイデアをオンに、<br />
                 <span class="hero-accent">変化を始めます</span>
@@ -12271,7 +12458,10 @@ elHome.hidden = false;
             if (options.scrollToId) {
               var sec = document.getElementById(options.scrollToId);
               if (sec) {
-                sec.scrollIntoView({ behavior: "smooth", block: "start" });
+                sec.scrollIntoView({
+                  behavior: options.smooth ? "smooth" : "auto",
+                  block: "start",
+                });
                 return;
               }
             }
@@ -12612,6 +12802,18 @@ elNp.hidden = false;
             showMyworld();
           } else if (h === "#noting-app" || h === "#noting") {
             showNoting();
+          } else if (
+            h === "#work" ||
+            h === "#about" ||
+            h === "#meaning" ||
+            h === "#goal" ||
+            h === "#why" ||
+            h === "#numbers" ||
+            h === "#build" ||
+            h === "#intro" ||
+            h === "#top"
+          ) {
+            showHome({ scrollToId: h.slice(1) });
           } else {
             showHome();
           }
@@ -13011,6 +13213,7 @@ elNp.hidden = false;
         }
       })();
     </script>
+    <script src="/hero-apps.js"></script>
     <script src="/lang-dropdown.js"></script>
   </body>
 </html>

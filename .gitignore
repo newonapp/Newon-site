@@ -20,5 +20,14 @@ promo/frames/
 
 # Local Cursor / preview scratch
 .cursor-*.png
+.hero-*.png
+.hero-*.jpg
+.wordmark-*.png
 _preview-*.html
 app-icons.zip
+newon-wordmark-chrome-white.png
+
+# Exported KO screenshot packs (derived from i18n-img / subping-img)
+screenshots-ko/
+screenshots-ko-zips/
+screenshots-ko.zip
