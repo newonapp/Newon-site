@@ -2535,7 +2535,7 @@ html[data-newon-shell-theme="dark"] .hero-desc {
     overflow: visible;
   }
 
-  /* Keep theme swap: only one wordmark visible (mobile display:block was showing both) */
+  /* Don't force both wordmarks visible — keep theme swap */
   .hero--ecosystem .hero-brand-mark__img--dark {
     display: none;
   }
