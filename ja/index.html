@@ -72,6 +72,18 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="preload" as="image" href="/newon-wordmark-chrome.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="/babylog-logo.png" />
+    <link rel="preload" as="image" href="/goalup-logo.png" />
+    <link rel="preload" as="image" href="/savy-logo.png" />
+    <link rel="preload" as="image" href="/pillmate-logo.png" />
+    <link rel="preload" as="image" href="/ox-month-logo.png" />
+    <link rel="preload" as="image" href="/petlog-logo.png" />
+    <link rel="preload" as="image" href="/countup-logo.png" />
+    <link rel="preload" as="image" href="/subping-logo.png" />
+    <link rel="preload" as="image" href="/piggyup-logo.png" />
+    <link rel="preload" as="image" href="/newon-plus-logo.png" />
+    <link rel="preload" as="image" href="/myworld-logo.png" />
     <link rel="stylesheet" href="/ox-month.css?v=20260704-dark-unified" />
     <script src="/theme-shell.js"></script>
     <script src="/lang-nav.js"></script>
@@ -269,8 +281,8 @@
           </div>
           </div>
         </div>
-        <div id="mobile-nav" class="mobile-nav mobile-nav--apps-only" hidden>
-          <details class="mobile-apps-drawer">
+        <div id="mobile-nav" class="mobile-nav mobile-nav--apps-only">
+          <details class="mobile-apps-drawer" id="mobile-apps-drawer">
             <summary class="mobile-apps-drawer__summary">Newon のアプリ</summary>
 <a href="#ox-month" class="mobile-apps-drawer__item">
               <span class="mobile-apps-drawer__icon">
@@ -376,7 +388,7 @@
       </header>
 
       <main id="main">
-        <section id="top" class="hero hero--ecosystem reveal-on-scroll is-visible">
+        <section id="top" class="hero hero--ecosystem hero--entered reveal-on-scroll is-visible">
           <div class="hero-bg" aria-hidden="true"></div>
           <div class="hero-bg-flow" aria-hidden="true">
             <svg class="hero-flow" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -460,7 +472,8 @@
                   alt="Newon ロゴ: 線で描かれた N と右上の白い点"
                   width="948"
                   height="361"
-                  decoding="async"
+                  decoding="sync"
+                  fetchpriority="high"
                 />
                 <img
                   class="hero-brand-mark__img hero-brand-mark__img--dark"
@@ -469,6 +482,7 @@
                   width="948"
                   height="361"
                   decoding="async"
+                  fetchpriority="low"
                   aria-hidden="true"
                 />
               </h1>
@@ -556,6 +570,7 @@ Newonのアプリが、より便利な日常をつなぎます。</p>
   "myworld": { "description": "旅行記録 · 旅行地図 · AIレポート", "category": "旅行" }
 }
           </script>
+          <script src="/hero-apps.js"></script>
           <div class="hero-scroll" aria-hidden="true">
             <span class="dot-pulse"></span>
             <span>スクロール</span>
@@ -12080,10 +12095,13 @@ Newonのアプリが、より便利な日常をつなぎます。</p>
         function closeMobileMenus() {
           var t = document.querySelector(".nav-toggle");
           var m = document.getElementById("mobile-nav");
+          var drawer = document.getElementById("mobile-apps-drawer");
           if (t && m) {
             t.setAttribute("aria-expanded", "false");
-            m.hidden = true;
             t.setAttribute("aria-label", LABEL_MENU_OPEN);
+            /* Keep the apps summary bar visible on phone; only collapse the list. */
+            if (drawer) drawer.open = false;
+            else m.hidden = true;
           }
           var ot = document.getElementById("ox-nav-toggle");
           var om = document.getElementById("ox-mobile");
@@ -12822,18 +12840,32 @@ elNp.hidden = false;
 
         var toggle = document.querySelector(".nav-toggle");
         var mobileNav = document.getElementById("mobile-nav");
+        var mobileAppsDrawer = document.getElementById("mobile-apps-drawer");
         if (toggle && mobileNav) {
           toggle.addEventListener("click", function () {
             var open = toggle.getAttribute("aria-expanded") === "true";
             toggle.setAttribute("aria-expanded", String(!open));
-            mobileNav.hidden = open;
             toggle.setAttribute("aria-label", open ? LABEL_MENU_OPEN : LABEL_MENU_CLOSE);
+            if (mobileAppsDrawer) {
+              mobileAppsDrawer.open = !open;
+              mobileNav.hidden = false;
+            } else {
+              mobileNav.hidden = open;
+            }
           });
+          if (mobileAppsDrawer) {
+            mobileAppsDrawer.addEventListener("toggle", function () {
+              var isOpen = mobileAppsDrawer.open;
+              toggle.setAttribute("aria-expanded", String(isOpen));
+              toggle.setAttribute("aria-label", isOpen ? LABEL_MENU_CLOSE : LABEL_MENU_OPEN);
+            });
+          }
           mobileNav.querySelectorAll("a").forEach(function (a) {
             a.addEventListener("click", function () {
               toggle.setAttribute("aria-expanded", "false");
-              mobileNav.hidden = true;
               toggle.setAttribute("aria-label", LABEL_MENU_OPEN);
+              if (mobileAppsDrawer) mobileAppsDrawer.open = false;
+              else mobileNav.hidden = true;
             });
           });
         }
@@ -13212,7 +13244,6 @@ elNp.hidden = false;
         }
       })();
     </script>
-    <script src="/hero-apps.js"></script>
     <script src="/lang-dropdown.js"></script>
   </body>
 </html>

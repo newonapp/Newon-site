@@ -26,6 +26,8 @@ promo/frames/
 _preview-*.html
 app-icons.zip
 newon-wordmark-chrome-white.png
+.chrome-shot/
+.chrome-tmp*/
 
 # Exported KO screenshot packs (derived from i18n-img / subping-img)
 screenshots-ko/

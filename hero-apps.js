@@ -156,11 +156,12 @@
       .replace(/>/g, "&gt;");
   }
 
-  function cardHtml(app, labels, index) {
+  function cardHtml(app, labels, index, priority) {
     var label = labels[app.descriptionKey] || {};
     var desc = label.description || app.category;
     var cat = label.category || app.category;
     var aria = app.name + (desc ? " — " + desc : "");
+    var prio = priority ? ' fetchpriority="high"' : ' fetchpriority="auto"';
     return (
       '<a class="hero-app-card" href="' +
       escapeAttr(app.href) +
@@ -180,7 +181,9 @@
       escapeAttr(app.icon) +
       '" alt="' +
       escapeAttr(app.name) +
-      '" width="96" height="96" loading="lazy" decoding="async" />' +
+      '" width="96" height="96" loading="eager" decoding="async"' +
+      prio +
+      " />" +
       '<span class="hero-app-card__meta">' +
       '<span class="hero-app-card__name">' +
       escapeAttr(app.name) +
@@ -196,12 +199,12 @@
     );
   }
 
-  function buildCards(slugs, labels, startIndex) {
+  function buildCards(slugs, labels, startIndex, prioritize) {
     var parts = [];
     var i;
     for (i = 0; i < slugs.length; i++) {
       var app = bySlug(slugs[i]);
-      if (app) parts.push(cardHtml(app, labels, startIndex + i));
+      if (app) parts.push(cardHtml(app, labels, startIndex + i, prioritize && i < slugs.length));
     }
     return parts.join("");
   }
@@ -214,42 +217,45 @@
     return global.matchMedia && global.matchMedia("(max-width: 720px)").matches;
   }
 
-  function fillGroup(group, minWidth) {
-    if (!group) return;
-    var base = group.innerHTML;
-    if (!base) return;
-    var cardCount = group.querySelectorAll(".hero-app-card").length || 1;
-    var sample = group.querySelector(".hero-app-card");
-    var cardWidth = sample ? sample.getBoundingClientRect().width : 110;
-    var gap = 18;
-    var unit = Math.max(cardWidth + gap, 72) * cardCount;
-    var copiesNeeded = Math.max(2, Math.ceil(minWidth / unit) + 1);
-    if (copiesNeeded > 8) copiesNeeded = 8;
-    var html = "";
-    var i;
-    for (i = 0; i < copiesNeeded; i++) html += base;
-    group.innerHTML = html;
+  function copiesForRow(cardCount) {
+    var mobile = isMobile();
+    var cardW = mobile ? 68 : 92;
+    var gap = mobile ? 12 : 18;
+    var viewport = Math.max(global.innerWidth || 0, mobile ? 390 : 1280);
+    var unit = Math.max(cardW + gap, 64) * Math.max(cardCount, 1);
+    /* Enough copies for continuous marquee without a second remount fill */
+    var copies = Math.ceil((viewport * 2.2) / unit) + 2;
+    if (copies < 3) copies = 3;
+    if (copies > 10) copies = 10;
+    return copies;
   }
 
-  function prepareSeamlessTracks(root) {
-    var rows = root.querySelectorAll(".hero-marquee__row");
-    var viewport = Math.max(global.innerWidth || 0, root.clientWidth || 0, 1280);
-    var minGroupWidth = Math.ceil(viewport * 1.25);
+  function repeatHtml(html, copies) {
+    var out = "";
     var i;
-    for (i = 0; i < rows.length; i++) {
-      var groups = rows[i].querySelectorAll(".hero-marquee__group");
-      if (!groups.length) continue;
-      fillGroup(groups[0], minGroupWidth);
-      var filled = groups[0].innerHTML;
-      var j;
-      for (j = 1; j < groups.length; j++) {
-        groups[j].innerHTML = filled;
-      }
+    for (i = 0; i < copies; i++) out += html;
+    return out;
+  }
+
+  function wireIconFallback(root) {
+    if (!root) return;
+    var imgs = root.querySelectorAll("img.hero-app-card__icon");
+    var i;
+    for (i = 0; i < imgs.length; i++) {
+      (function (img) {
+        if (img.getAttribute("data-fallback-bound") === "1") return;
+        img.setAttribute("data-fallback-bound", "1");
+        img.addEventListener("error", function () {
+          img.style.visibility = "hidden";
+          var card = img.closest(".hero-app-card");
+          if (card) card.classList.add("hero-app-card--icon-missing");
+        });
+      })(imgs[i]);
     }
   }
 
   function renderMarquee(root) {
-    if (!root) return;
+    if (!root || root.getAttribute("data-ready") === "1") return;
     var labels = readLabels();
     var layouts = ROW_LAYOUTS.map(function (row) {
       return {
@@ -263,7 +269,10 @@
     var r;
     for (r = 0; r < layouts.length; r++) {
       var row = layouts[r];
-      var cards = buildCards(row.apps, labels, r * 12);
+      /* Prioritize first row icons so first paint isn't empty pastel tiles */
+      var once = buildCards(row.apps, labels, r * 12, r === 0);
+      var copies = copiesForRow(row.apps.length);
+      var cards = repeatHtml(once, copies);
       var dur = prefersReducedMotion() ? row.duration * 4 : row.duration;
       html +=
         '<div class="hero-marquee__row hero-marquee__row--' +
@@ -283,35 +292,31 @@
     }
     html += "</div>";
     root.innerHTML = html;
-
-    function finish() {
-      prepareSeamlessTracks(root);
-      root.setAttribute("data-ready", "1");
-    }
-
-    if (global.requestAnimationFrame) {
-      global.requestAnimationFrame(function () {
-        global.requestAnimationFrame(finish);
-      });
-    } else {
-      finish();
-    }
+    root.setAttribute("data-ready", "1");
+    wireIconFallback(root);
   }
 
   function setupMarqueeResize(root) {
     if (!root || root.getAttribute("data-resize-bound") === "1") return;
     root.setAttribute("data-resize-bound", "1");
+    /* Never remount cards on resize — remounting remounts images and causes blank flicker */
     var resizeTimer;
     global.addEventListener("resize", function () {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function () {
-        renderMarquee(root);
+        var rows = root.querySelectorAll(".hero-marquee__row");
+        var i;
+        for (i = 0; i < rows.length; i++) {
+          var base = ROW_LAYOUTS[i] ? ROW_LAYOUTS[i].duration : 40;
+          var dur = prefersReducedMotion() ? base * 4 : isMobile() ? base + 10 : base;
+          rows[i].style.setProperty("--marquee-duration", dur + "s");
+        }
       }, 200);
     });
   }
 
   function setupParallax(hero) {
-    if (!hero || prefersReducedMotion()) return;
+    if (!hero || prefersReducedMotion() || isMobile()) return;
     var copy = hero.querySelector(".hero-copy--centered");
     var marquee = hero.querySelector(".hero-marquee");
     var ticking = false;
@@ -342,7 +347,20 @@
     update();
   }
 
+  function preloadIcons() {
+    if (!global.document || !document.head) return;
+    var i;
+    for (i = 0; i < HERO_APPS.length; i++) {
+      var link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
+      link.href = HERO_APPS[i].icon;
+      document.head.appendChild(link);
+    }
+  }
+
   function init() {
+    preloadIcons();
     var hero = document.querySelector("#home .hero--ecosystem");
     var root = document.querySelector("[data-hero-marquee]");
     if (root) {
