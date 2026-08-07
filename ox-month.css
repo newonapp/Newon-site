@@ -589,6 +589,10 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   background: var(--ox-bg);
 }
 
+.ox-mobile-menu[hidden] {
+  display: none !important;
+}
+
 .ox-mobile-menu a {
   padding: 0.875rem 0;
   border-top: 1px solid var(--ox-border);
