@@ -2530,10 +2530,22 @@ html[data-newon-shell-theme="dark"] .hero-desc {
   }
 
   .hero--ecosystem .hero-brand-mark__img {
-    display: block;
     width: 100%;
     height: auto;
     overflow: visible;
+  }
+
+  /* Keep theme swap: only one wordmark visible (mobile display:block was showing both) */
+  .hero--ecosystem .hero-brand-mark__img--dark {
+    display: none;
+  }
+
+  html[data-newon-shell-theme="dark"] .hero--ecosystem .hero-brand-mark__img--light {
+    display: none;
+  }
+
+  html[data-newon-shell-theme="dark"] .hero--ecosystem .hero-brand-mark__img--dark {
+    display: block;
   }
 
   .hero--ecosystem .hero-sub {
