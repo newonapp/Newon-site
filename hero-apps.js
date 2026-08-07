@@ -219,8 +219,8 @@
 
   function copiesForRow(cardCount) {
     var mobile = isMobile();
-    var cardW = mobile ? 68 : 92;
-    var gap = mobile ? 12 : 18;
+    var cardW = mobile ? 74 : 92;
+    var gap = mobile ? 11 : 18;
     var viewport = Math.max(global.innerWidth || 0, mobile ? 390 : 1280);
     var unit = Math.max(cardW + gap, 64) * Math.max(cardCount, 1);
     /* Enough copies for continuous marquee without a second remount fill */
