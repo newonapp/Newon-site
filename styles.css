@@ -1547,10 +1547,14 @@ html[data-newon-shell-theme="light"]
 /* Phone home: keep "Newon의 앱" summary visible on first paint */
 .mobile-nav.mobile-nav--apps-only {
   padding: 0 var(--space);
-  max-height: min(70vh, 28rem);
+  /* Enough room for every app after BabyLog — scroll only if viewport is shorter */
+  max-height: calc(
+    100svh - var(--brand-header-min-h, 58px) - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)
+  );
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 .mobile-nav--apps-only .mobile-apps-drawer {
