@@ -37,7 +37,7 @@
       "BEGIN:VCARD",
       "VERSION:3.0",
       "PRODID:-//Newon//Business Card//EN",
-      "N;CHARSET=UTF-8:" + vcardEscape(v.family) + ";" + vcardEscape(v.given) + ";;;",
+      "N;CHARSET=UTF-8:;" + vcardEscape(v.nameKo) + ";;;",
       "FN;CHARSET=UTF-8:" + vcardEscape(v.nameKo),
       "NICKNAME;CHARSET=UTF-8:" + vcardEscape(v.nameEn),
       "ORG;CHARSET=UTF-8:" + vcardEscape(v.company),
