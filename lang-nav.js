@@ -113,6 +113,11 @@
     if (segs.length === 1 && segs[0] === "terms") {
       return normalizeHref("/" + nextDir + "/terms/" + tail);
     }
+    if (segs[0] === "portfolio") {
+      var restPort = segs.slice(1);
+      var portSuffix = restPort.length ? restPort.join("/") + "/" : "";
+      return normalizeHref("/" + nextDir + "/portfolio/" + portSuffix + tail);
+    }
     if (segs.length >= 2 && segs[0] === "oxmonth" && segs[1] === "delete-account") {
       return normalizeHref("/" + nextDir + "/oxmonth/delete-account/" + tail);
     }

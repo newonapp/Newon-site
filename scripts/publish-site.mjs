@@ -67,9 +67,12 @@ const PUBLISH_COPY_DIRS = [
   { from: "i18n-img", to: "i18n-img", required: false },
   { from: "ox-img", to: "ox-img", required: false },
   { from: "subping-img", to: "subping-img", required: false },
+  { from: "myworld-img", to: "myworld-img", required: false },
   { from: "privacy", to: "privacy", required: false },
   { from: "terms", to: "terms", required: true },
   { from: "about", to: "about", required: true },
+  { from: "card-n7x4k9", to: "card-n7x4k9", required: true },
+  { from: "portfolio", to: "portfolio", required: true },
   { from: "oxmonth", to: "oxmonth", required: false },
   { from: "subping", to: "subping", required: false },
 ];
@@ -103,6 +106,14 @@ function copyFileIfExists(src, dest) {
 
 function runBuild() {
   const r = spawnSync(process.execPath, [path.join(ROOT, "scripts", "build-i18n.mjs")], {
+    cwd: ROOT,
+    stdio: "inherit",
+  });
+  if (r.status !== 0) process.exit(r.status ?? 1);
+}
+
+function runPortfolio() {
+  const r = spawnSync(process.execPath, [path.join(ROOT, "scripts", "gen-portfolio.mjs")], {
     cwd: ROOT,
     stdio: "inherit",
   });
@@ -182,8 +193,32 @@ function verify() {
   required.push(path.join(OUT, "privacy", "index.html"));
   required.push(path.join(OUT, "terms", "index.html"));
   required.push(path.join(OUT, "about", "index.html"));
+  required.push(path.join(OUT, "card-n7x4k9", "index.html"));
+  required.push(path.join(OUT, "card-n7x4k9", "card-config.js"));
+  required.push(path.join(OUT, "card-n7x4k9", "nawon-kyung.vcf"));
+  required.push(path.join(OUT, "portfolio", "index.html"));
+  required.push(path.join(OUT, "portfolio", "portfolio.css"));
+  required.push(path.join(OUT, "portfolio", "portfolio.js"));
+  required.push(path.join(OUT, "portfolio", "babylog", "index.html"));
+  required.push(path.join(OUT, "ko", "portfolio", "index.html"));
+  required.push(path.join(OUT, "en", "portfolio", "index.html"));
+  required.push(path.join(OUT, "ja", "portfolio", "index.html"));
   required.push(path.join(OUT, "robots.txt"));
   required.push(path.join(OUT, "sitemap.xml"));
+  const sitemap = fs.readFileSync(path.join(OUT, "sitemap.xml"), "utf8");
+  if (sitemap.includes("card-n7x4k9")) {
+    console.error("publish-site verify: card QR page must not appear in sitemap.xml");
+    process.exit(1);
+  }
+  if (!sitemap.includes("/portfolio/")) {
+    console.error("publish-site verify: sitemap.xml must include /portfolio/");
+    process.exit(1);
+  }
+  const robots = fs.readFileSync(path.join(OUT, "robots.txt"), "utf8");
+  if (!robots.includes("Disallow: /card-n7x4k9")) {
+    console.error("publish-site verify: robots.txt must disallow the card QR page");
+    process.exit(1);
+  }
   for (const name of ["terms.html", "privacy.html"]) {
     required.push(path.join(OUT, name));
   }
@@ -199,6 +234,7 @@ function verify() {
 }
 
 runBuild();
+runPortfolio();
 assemble();
 
 verify();

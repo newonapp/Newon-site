@@ -29,6 +29,7 @@ const APPS = [
   { slug: "goalup", name: "GoalUp", src: "goalup-logo.png" },
   { slug: "countup", name: "CountUp", src: "countup-logo.png" },
   { slug: "newon-plus", name: "Newon+", src: "newon-plus-logo.png" },
+  { slug: "myworld", name: "My World", src: "myworld-logo.png" },
   { slug: "noting", name: "Noting", src: "noting-logo.png" },
 ];
 

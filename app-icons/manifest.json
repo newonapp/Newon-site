@@ -123,6 +123,17 @@
       ]
     },
     {
+      "slug": "myworld",
+      "name": "My World",
+      "source": "myworld-logo.png",
+      "sizes": [
+        1024,
+        512,
+        256,
+        128
+      ]
+    },
+    {
       "slug": "noting",
       "name": "Noting",
       "source": "noting-logo.png",

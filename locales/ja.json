@@ -141,7 +141,7 @@
     "statCard0Html": "<span class=\"co-stats-card__value\">11+</span><span class=\"co-stats-card__label\">サービス運営</span>",
     "statCard1Html": "<span class=\"co-stats-card__value\">177</span><span class=\"co-stats-card__label\">サービス国</span>",
     "statCard2Html": "<span class=\"co-stats-card__value\">13</span><span class=\"co-stats-card__label\">対応言語</span>",
-    "statCard3Html": "<span class=\"co-stats-card__value\">100+</span><span class=\"co-stats-card__label\">累計インストール</span>",
+    "statCard3Html": "<span class=\"co-stats-card__value\">1000+</span><span class=\"co-stats-card__label\">累計インストール</span>",
     "statNewonPlusHtml": "<strong>Newon+</strong><br />ひとつのサブスクで<br />すべてのNewonアプリを。<br /><br /><span class=\"co-newon-plus-apps\"><span class=\"co-newon-plus-apps__line\">OX MONTH · GoalUp · CountUp · Savy · SubPing</span><span class=\"co-newon-plus-apps__line\">PiggyUp · Pillmate · BabyLog · PetLog · My World</span></span><br /><br />ひとつのアカウント。<br />ひとつのサブスク。<br />日常をつなぎます。",
     "heroLeadHtml": "Newonはアプリを作るだけの会社ではありません。<br /><br />日常の小さな課題を見つけ、長く使われる体験に変えるグローバルなライフプラットフォームです。<br /><br />習慣、目標、健康、金融、家族の記録、旅行の記録まで。<br /><br />人生をより簡単で持続可能にするサービスを設計します。",
     "heroStatsHtml": "11+ apps<br />177 countries<br />13 languages",

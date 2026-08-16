@@ -137,7 +137,7 @@
     "statCard0Html": "<span class=\"co-stats-card__value\">11+</span><span class=\"co-stats-card__label\">Dienste</span>",
     "statCard1Html": "<span class=\"co-stats-card__value\">177</span><span class=\"co-stats-card__label\">Länder</span>",
     "statCard2Html": "<span class=\"co-stats-card__value\">13</span><span class=\"co-stats-card__label\">Sprachen</span>",
-    "statCard3Html": "<span class=\"co-stats-card__value\">100+</span><span class=\"co-stats-card__label\">Installationen</span>",
+    "statCard3Html": "<span class=\"co-stats-card__value\">1000+</span><span class=\"co-stats-card__label\">Installationen</span>",
     "statNewonPlusHtml": "<strong>Newon+</strong><br />Ein Abo<br />für alle Newon-Apps.<br /><br /><span class=\"co-newon-plus-apps\"><span class=\"co-newon-plus-apps__line\">OX MONTH · GoalUp · CountUp · Savy · SubPing</span><span class=\"co-newon-plus-apps__line\">PiggyUp · Pillmate · BabyLog · PetLog · My World</span></span><br /><br />Ein Konto.<br />Ein Abo.<br />Der Alltag, verbunden.",
     "heroStat0": "11+ Dienste",
     "heroStat1": "Available in 177 countries",

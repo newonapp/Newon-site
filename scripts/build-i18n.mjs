@@ -10,6 +10,7 @@ import { fileURLToPath } from "url";
 import { spawnSync } from "child_process";
 
 import { DELETE_ACCOUNT_APPS } from "./delete-account-data.mjs";
+import { APP_CATALOG } from "./portfolio-data.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -400,11 +401,13 @@ function writeRootAboutRedirect() {
 
 writeRootAboutRedirect();
 
-/** robots.txt at site root (allow all + sitemap pointer). */
+/** robots.txt at site root (allow indexed pages; hide QR business-card slug). */
 function writeRobotsTxt() {
   const body = [
     "User-agent: *",
     "Allow: /",
+    "Disallow: /card-n7x4k9",
+    "Disallow: /card-n7x4k9/",
     "",
     `Sitemap: ${SITE_ORIGIN}/sitemap.xml`,
     "",
@@ -458,6 +461,46 @@ function writeSitemap() {
     ];
     for (const { dir: d } of LANGS) {
       urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.3", changefreq: "yearly", alternates: alts });
+    }
+  }
+
+  // Founder portfolio — language-prefixed URLs + /portfolio/ redirect.
+  {
+    const pfAlts = [
+      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/portfolio/` })),
+      { hreflang: "x-default", href: `${SITE_ORIGIN}/ko/portfolio/` },
+    ];
+    urls.push({ loc: `${SITE_ORIGIN}/portfolio/`, priority: "0.5", changefreq: "monthly", alternates: pfAlts });
+    for (const { dir: d } of LANGS) {
+      urls.push({
+        loc: `${SITE_ORIGIN}/${d}/portfolio/`,
+        priority: "0.6",
+        changefreq: "monthly",
+        alternates: pfAlts,
+      });
+    }
+    for (const app of APP_CATALOG) {
+      const appAlts = [
+        ...LANGS.map(({ dir: d, hreflang: h }) => ({
+          hreflang: h,
+          href: `${SITE_ORIGIN}/${d}/portfolio/${app.slug}/`,
+        })),
+        { hreflang: "x-default", href: `${SITE_ORIGIN}/ko/portfolio/${app.slug}/` },
+      ];
+      urls.push({
+        loc: `${SITE_ORIGIN}/portfolio/${app.slug}/`,
+        priority: "0.4",
+        changefreq: "monthly",
+        alternates: appAlts,
+      });
+      for (const { dir: d } of LANGS) {
+        urls.push({
+          loc: `${SITE_ORIGIN}/${d}/portfolio/${app.slug}/`,
+          priority: "0.5",
+          changefreq: "monthly",
+          alternates: appAlts,
+        });
+      }
     }
   }
 

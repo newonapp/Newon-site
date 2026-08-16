@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /card-n7x4k9
+Disallow: /card-n7x4k9/
 
 Sitemap: https://www.newon.app/sitemap.xml
