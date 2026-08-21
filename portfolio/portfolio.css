@@ -299,7 +299,7 @@ html[data-newon-shell-theme="dark"] .pf-hero::before {
 
 .pf-hero__aside {
   width: 100%;
-  max-width: 22rem;
+  max-width: 26rem;
   justify-self: start;
   padding: 0.15rem 0 0.15rem 1.25rem;
   border-left: 1px solid var(--border);
@@ -312,10 +312,10 @@ html[data-newon-shell-theme="dark"] .pf-hero::before {
 }
 
 .pf-hero__aside-title {
-  margin: 0 0 1.1rem;
-  font-size: 0.875rem;
+  margin: 0 0 1.25rem;
+  font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text);
 }
@@ -323,23 +323,25 @@ html[data-newon-shell-theme="dark"] .pf-hero::before {
 .pf-hero__meta {
   margin: 0;
   display: grid;
-  gap: 1.2rem;
+  gap: 1.35rem;
 }
 
 .pf-hero__meta dt {
-  margin: 0 0 0.3rem;
-  font-size: 0.875rem;
-  font-weight: 650;
-  letter-spacing: 0.1em;
+  margin: 0 0 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--text);
+  color: var(--text-muted);
 }
 
 .pf-hero__meta dd {
   margin: 0;
-  font-size: 1.0625rem;
-  line-height: 1.55;
-  color: var(--text-muted);
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+  color: var(--text);
   word-break: keep-all;
 }
 
@@ -878,23 +880,34 @@ html:has(.pf-page) {
   flex-direction: column;
 }
 
+.pf-founder__id .pf-label {
+  margin-bottom: 0.85rem;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+}
+
 .pf-founder__name {
   margin: 0;
-  font-size: 1.55rem;
+  font-size: clamp(2rem, 3.2vw, 2.45rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
 }
 
 .pf-founder__en {
-  margin: 0.3rem 0 0;
-  font-size: 1.05rem;
+  margin: 0.45rem 0 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   color: var(--text-muted);
 }
 
 .pf-founder__role {
-  margin: 0.4rem 0 0;
-  font-size: 0.95rem;
-  font-weight: 500;
+  margin: 0.55rem 0 0;
+  font-size: 1.125rem;
+  font-weight: 550;
+  letter-spacing: -0.01em;
   color: var(--text-muted);
 }
 
@@ -1546,15 +1559,18 @@ html[data-newon-shell-theme="dark"] .pf-explore__row:hover {
   }
 
   .pf-hero__aside-title {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
   }
 
   .pf-hero__meta dt {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
   }
 
   .pf-hero__meta dd {
-    font-size: 1.08rem;
+    font-size: 1.28rem;
+    line-height: 1.35;
+    font-weight: 650;
+    color: var(--text);
   }
 
   .pf-hero__btn {
@@ -1563,16 +1579,20 @@ html[data-newon-shell-theme="dark"] .pf-explore__row:hover {
     text-align: center;
   }
 
+  .pf-founder__id .pf-label {
+    font-size: 1rem;
+  }
+
   .pf-founder__name {
-    font-size: 1.6rem;
+    font-size: 2.15rem;
   }
 
   .pf-founder__en {
-    font-size: 1.05rem;
+    font-size: 1.2rem;
   }
 
   .pf-founder__role {
-    font-size: 0.98rem;
+    font-size: 1.125rem;
   }
 
   .pf-cx__open-label,
@@ -1805,21 +1825,21 @@ html[data-newon-shell-theme="dark"] .pf-explore__row:hover {
   }
 
   .pf-hero__aside-title {
-    font-size: 0.9375rem;
-    margin-bottom: 1.2rem;
+    font-size: 0.875rem;
+    margin-bottom: 1.35rem;
   }
 
   .pf-hero__meta {
-    gap: 1.35rem;
+    gap: 1.5rem;
   }
 
   .pf-hero__meta dt {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
   }
 
   .pf-hero__meta dd {
-    font-size: 1.125rem;
-    line-height: 1.5;
+    font-size: 1.3rem;
+    line-height: 1.35;
   }
 
   .pf-hero__actions {
@@ -1851,16 +1871,20 @@ html[data-newon-shell-theme="dark"] .pf-explore__row:hover {
     font-size: 1.02rem;
   }
 
+  .pf-founder__id .pf-label {
+    font-size: 1rem;
+  }
+
   .pf-founder__name {
-    font-size: 1.7rem;
+    font-size: 2.25rem;
   }
 
   .pf-founder__en {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
   }
 
   .pf-founder__role {
-    font-size: 1rem;
+    font-size: 1.15rem;
   }
 
   .pf-founder__title {
