@@ -50,7 +50,7 @@
   },
   "common": {
     "skipToContent": "Passer au contenu",
-    "scroll": "Rouleau",
+    "scroll": "Défiler",
     "menuOpen": "Ouvrir le menu",
     "menuClose": "Fermer le menu",
     "themeToLight": "Passer en mode lumière",
@@ -64,7 +64,7 @@
   "nav": {
     "brandHomeAria": "Newon domicile",
     "appsAria": "Newon applications",
-    "appsLabel": "Newon applications",
+    "appsLabel": "Apps Newon",
     "oxDesc": "Habitudes · Contrôle O/X · Journal mensuel",
     "subpingDesc": "Abonnements · rappels · en un seul endroit",
     "mobileSummary": "Newon applications",
@@ -78,7 +78,7 @@
     "mobilePetlogHint": "Ouvrir l'intro PetLog",
     "appsNavLabel": "Applications",
     "headerHubTagline": "newon@newon.app",
-    "brandKicker": "Applications par Newon",
+    "brandKicker": "Apps Newon",
     "savyDesc": "Dépenses · revenus · abonnements · IA",
     "mobileSavyHint": "Ouvrir l'intro SAVY",
     "piggyupDesc": "Habitudes d'épargne · analyse des dépenses · coach IA",
@@ -93,16 +93,16 @@
     "mobileNewonPlusHint": "Voir l’intro Newon+",
     "myworldDesc": "Carnet de voyage · Carte de voyage · Rapport IA",
     "mobileMyworldHint": "Voir l'introduction My World",
-    "business": "Entreprise",
-    "portfolio": "Portefeuille",
-    "home": "Maison",
+    "business": "Business",
+    "portfolio": "Portfolio",
+    "home": "Accueil",
     "about": "À propos",
     "intro": "À propos",
     "projects": "Projets",
     "newon": "Newon",
     "contact": "Contact",
     "ideas": "Idées",
-    "newsUpdates": "Nouvelles",
+    "newsUpdates": "Actualités",
     "human404Desc": "Survie de l'IA · Choix · Fins multiples",
     "mobileHuman404Hint": "Vue 404 : Intro HUMAIN"
   },
@@ -2699,16 +2699,16 @@
     "exploreLabel": "EXPLORER NEWON",
     "exploreTitle": "Découvrez davantage de Newon.",
     "exploreLead": "Des produits et actualités à vos idées et collaboration commerciale, découvrez les différentes facettes de Newon.",
-    "nav1Title": "Portefeuille",
+    "nav1Title": "Portfolio",
     "nav1Body": "Découvrez les applications et les produits numériques que Newon a créés.",
     "nav1Go": "Voir les projets →",
-    "nav2Title": "Nouvelles et mises à jour",
+    "nav2Title": "Actualités",
     "nav2Body": "Consultez les nouveaux produits, les mises à jour de fonctionnalités et les actualités récentes de Newon.",
     "nav2Go": "Lire les mises à jour →",
     "nav3Title": "Newon Idées",
     "nav3Body": "Parlez-nous d'une application que vous souhaitez, d'une fonctionnalité dont vous avez besoin ou d'une note pour Newon.",
     "nav3Go": "Envoyer une idée →",
-    "nav4Title": "Newon Entreprise",
+    "nav4Title": "Newon Business",
     "nav4Body": "Nous créons de nouveaux produits et opportunités commerciales avec des marques, des entreprises et des partenaires.",
     "nav4Go": "Explorer les affaires →",
     "ideasKicker": "VOTRE IDÉE × NEWON",
@@ -2719,9 +2719,9 @@
     "finalLabel": "NEWON",
     "finalTitle": "Nous continuons à construire une vie quotidienne meilleure.",
     "finalLead": "Découvrez un produit, partagez une idée ou démarrez quelque chose de nouveau avec Newon.",
-    "finalPortfolio": "Portefeuille →",
+    "finalPortfolio": "Portfolio →",
     "finalIdeas": "Proposer une idée →",
-    "finalBusiness": "Affaires →",
+    "finalBusiness": "Business →",
     "tocAbout": "À propos",
     "tocBuild": "Produits",
     "tocExplore": "Explorer"
@@ -3167,11 +3167,16 @@
     "ind4En": "PRODUCTIVITÉ",
     "ind5En": "FINANCE",
     "ind6En": "VOYAGE",
-    "ind7En": "AI"
+    "ind7En": "AI",
+    "navInquiry": "Demander",
+    "navAria": "Business",
+    "navWork": "Collaboration",
+    "navCapabilities": "Capacités",
+    "navIndustries": "Secteurs"
   },
   "businessPages": {
     "common": {
-      "breadcrumbBusiness": "Entreprise",
+      "breadcrumbBusiness": "Business",
       "ctaProcess": "Voir le processus ↓",
       "ctaInquire": "Démarrer une enquête",
       "ctaFinalTitle": "Créez de nouvelles possibilités avec Newon.",
@@ -3179,9 +3184,9 @@
       "ctaFinalBtn": "Demande d'affaires →",
       "aboutLabel": "APERÇU",
       "aboutTitle": "Qu'est-ce que cette collaboration",
-      "offerLabel": "PORTÉE",
+      "offerLabel": "PÉRIMÈTRE",
       "offerTitle": "Ce sur quoi nous pouvons travailler",
-      "fitLabel": "AJUSTER",
+      "fitLabel": "ADÉQUATION",
       "fitTitle": "Un bon ajustement si",
       "processLabel": "PROCESSUS",
       "processTitle": "Comment ça marche",
@@ -3235,7 +3240,8 @@
       "faq3Q": "Les marques étrangères peuvent-elles travailler avec Newon ?",
       "faq3A": "Oui. Ce qui compte le plus, c'est de savoir si l'œuvre peut se connecter à un service Newon.",
       "faq4Q": "Dans combien de temps aurai-je une réponse ?",
-      "faq4A": "Nous examinons la note, puis effectuons un suivi à l'e-mail que vous partagez."
+      "faq4A": "Nous examinons la note, puis effectuons un suivi à l'e-mail que vous partagez.",
+      "aboutLabel": "APERÇU"
     },
     "service": {
       "seoTitle": "Collaboration entre applications et services | Newon Entreprise",
@@ -3279,7 +3285,8 @@
       "faq3Q": "Est-ce que Newon réalise le développement ?",
       "faq3A": "Ça dépend. Si une intégration est nécessaire, nous divisons d'abord la portée et les rôles.",
       "faq4Q": "Un petit service peut-il se renseigner ?",
-      "faq4A": "Oui. La mesure consiste à savoir si la connexion semble naturelle pour les personnes utilisant l’application."
+      "faq4A": "Oui. La mesure consiste à savoir si la connexion semble naturelle pour les personnes utilisant l’application.",
+      "aboutLabel": "APERÇU"
     },
     "promotion": {
       "seoTitle": "Promotions | Newon Entreprise",
@@ -3332,7 +3339,8 @@
       "faq3Q": "Diffusez-vous des publicités qui interrompent l’application ?",
       "faq3A": "Non. Nous n’effectuons pas de placements forcés qui interrompent le flux.",
       "faq4Q": "Le contenu est-il la seule option ?",
-      "faq4A": "Non. Le contenu, les campagnes conjointes et les présentations dans l'application sont tous possibles lorsqu'ils correspondent au service."
+      "faq4A": "Non. Le contenu, les campagnes conjointes et les présentations dans l'application sont tous possibles lorsqu'ils correspondent au service.",
+      "aboutLabel": "APERÇU"
     },
     "development": {
       "seoTitle": "Développement de produits | Newon Entreprise",
@@ -3439,7 +3447,8 @@
       "budget3to5": "3 à 5 millions de KRW",
       "budget5to10": "5 à 10 millions de KRW",
       "budget10plus": "10 millions de KRW ou plus",
-      "mailSubject": "Newon demande de développement de produit"
+      "mailSubject": "Newon demande de développement de produit",
+      "aboutLabel": "APERÇU"
     }
   },
   "news": {
@@ -3714,6 +3723,9 @@
       "emptyLead": "Parlez-nous d'une application que vous souhaitez ou d'une fonctionnalité dont vous avez besoin.",
       "emptyCta": "Proposer une idée →"
     },
-    "heroCta": "Partager une idée →"
+    "heroCta": "Partager une idée →",
+    "navSuggest": "Proposer",
+    "navHow": "Comment ça marche",
+    "navAria": "Idées"
   }
 }

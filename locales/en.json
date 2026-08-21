@@ -305,7 +305,10 @@
       "emptyTitle": "Newon Ideas",
       "emptyLead": "Tell us about an app you want or a feature you need.",
       "emptyCta": "Suggest an idea →"
-    }
+    },
+    "navSuggest": "Suggest",
+    "navHow": "How it works",
+    "navAria": "Ideas"
   },
   "business": {
     "seoTitle": "Business | Newon",
@@ -520,7 +523,12 @@
       "emptyTitle": "Business inquiry",
       "emptyLead": "Tell us about a new project or collaboration.",
       "emptyCta": "Start an inquiry →"
-    }
+    },
+    "navInquiry": "Inquire",
+    "navAria": "Business",
+    "navWork": "How we work",
+    "navCapabilities": "Capabilities",
+    "navIndustries": "Industries"
   },
   "ui": {
     "language": "Language",

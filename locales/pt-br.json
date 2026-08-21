@@ -80,7 +80,7 @@
     "mobilePetlogHint": "Ver introdução ao PetLog",
     "appsNavLabel": "Aplicativos",
     "headerHubTagline": "newon@newon.app",
-    "brandKicker": "Aplicativos por Newon",
+    "brandKicker": "Apps da Newon",
     "piggyupDesc": "Hábitos de poupança · análise de gastos · coach IA",
     "mobilePiggyupHint": "Ver introdução ao PiggyUp",
     "notingDesc": "Transcrição · registro · notas",
@@ -93,9 +93,9 @@
     "mobileNewonPlusHint": "Ver intro do Newon+",
     "myworldDesc": "Diário de viagens · Mapa de viagens · Relatório IA",
     "mobileMyworldHint": "Ver a introdução do My World",
-    "business": "Negócios",
+    "business": "Business",
     "portfolio": "Portfólio",
-    "home": "Lar",
+    "home": "Início",
     "about": "Sobre",
     "intro": "Sobre",
     "projects": "Projetos",
@@ -2705,7 +2705,7 @@
     "nav3Title": "Newon Ideias",
     "nav3Body": "Conte-nos sobre um aplicativo que você deseja, um recurso que você precisa ou uma nota para Newon.",
     "nav3Go": "Envie uma ideia →",
-    "nav4Title": "Newon Negócios",
+    "nav4Title": "Newon Business",
     "nav4Body": "Criamos novos produtos e possibilidades de negócios com marcas, empresas e parceiros.",
     "nav4Go": "Explorar negócios →",
     "ideasKicker": "SUA IDEIA × NEWON",
@@ -2717,8 +2717,8 @@
     "finalTitle": "Seguimos construindo um dia a dia melhor.",
     "finalLead": "Descubra um produto, compartilhe uma ideia ou comece algo novo com Newon.",
     "finalPortfolio": "Portfólio →",
-    "finalIdeas": "Sugira uma ideia →",
-    "finalBusiness": "Negócios →",
+    "finalIdeas": "Sugerir uma ideia →",
+    "finalBusiness": "Business →",
     "tocAbout": "Sobre",
     "tocBuild": "Produtos",
     "tocExplore": "Explorar mais"
@@ -3164,11 +3164,16 @@
     "ind4En": "PRODUTIVIDADE",
     "ind5En": "FINANCIAR",
     "ind6En": "VIAGEM",
-    "ind7En": "AI"
+    "ind7En": "AI",
+    "navInquiry": "Consultar",
+    "navAria": "Business",
+    "navWork": "Colaboração",
+    "navCapabilities": "Capacidades",
+    "navIndustries": "Setores"
   },
   "businessPages": {
     "common": {
-      "breadcrumbBusiness": "Negócios",
+      "breadcrumbBusiness": "Business",
       "ctaProcess": "Veja o processo ↓",
       "ctaInquire": "Inicie uma consulta",
       "ctaFinalTitle": "Construa novas possibilidades com Newon.",
@@ -3178,7 +3183,7 @@
       "aboutTitle": "O que é essa colaboração",
       "offerLabel": "ESCOPO",
       "offerTitle": "No que podemos trabalhar",
-      "fitLabel": "AJUSTAR",
+      "fitLabel": "ENCAIXE",
       "fitTitle": "Um bom ajuste se",
       "processLabel": "PROCESSO",
       "processTitle": "Como funciona",
@@ -3232,7 +3237,8 @@
       "faq3Q": "Marcas estrangeiras podem trabalhar com Newon?",
       "faq3A": "Sim. O que mais importa é se a obra pode se conectar a um serviço Newon.",
       "faq4Q": "Em quanto tempo terei uma resposta?",
-      "faq4A": "Revisaremos a nota e, em seguida, faremos o acompanhamento no e-mail que você compartilha."
+      "faq4A": "Revisaremos a nota e, em seguida, faremos o acompanhamento no e-mail que você compartilha.",
+      "aboutLabel": "VISÃO GERAL"
     },
     "service": {
       "seoTitle": "Colaboração de aplicativos e serviços | Newon Negócios",
@@ -3276,7 +3282,8 @@
       "faq3Q": "O Newon faz o desenvolvimento?",
       "faq3A": "Depende. Se for necessária uma integração, primeiro dividimos o escopo e as funções.",
       "faq4Q": "Um pequeno serviço pode perguntar?",
-      "faq4A": "Sim. A medida é se a conexão parece natural para as pessoas que usam o aplicativo."
+      "faq4A": "Sim. A medida é se a conexão parece natural para as pessoas que usam o aplicativo.",
+      "aboutLabel": "VISÃO GERAL"
     },
     "promotion": {
       "seoTitle": "Promoção | Newon Negócios",
@@ -3329,7 +3336,8 @@
       "faq3Q": "Você veicula anúncios que interrompem o aplicativo?",
       "faq3A": "Não. Não realizamos canais forçados que interrompam o fluxo.",
       "faq4Q": "O conteúdo é a única opção?",
-      "faq4A": "Não. Conteúdo, campanhas conjuntas e apresentações no aplicativo são possíveis quando se adequam ao serviço."
+      "faq4A": "Não. Conteúdo, campanhas conjuntas e apresentações no aplicativo são possíveis quando se adequam ao serviço.",
+      "aboutLabel": "VISÃO GERAL"
     },
     "development": {
       "seoTitle": "Desenvolvimento de produto | Newon Negócios",
@@ -3436,7 +3444,8 @@
       "budget3to5": "KRW 3–5 milhões",
       "budget5to10": "KRW 5–10 milhões",
       "budget10plus": "KRW 10 milhões ou mais",
-      "mailSubject": "Newon inquérito de desenvolvimento de produto"
+      "mailSubject": "Newon inquérito de desenvolvimento de produto",
+      "aboutLabel": "VISÃO GERAL"
     }
   },
   "news": {
@@ -3711,6 +3720,9 @@
       "emptyLead": "Conte-nos sobre um aplicativo que você deseja ou um recurso de que precisa.",
       "emptyCta": "Sugira uma ideia →"
     },
-    "heroCta": "Compartilhe uma ideia →"
+    "heroCta": "Compartilhe uma ideia →",
+    "navSuggest": "Sugerir",
+    "navHow": "Como funciona",
+    "navAria": "Ideias"
   }
 }

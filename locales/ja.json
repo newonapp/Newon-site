@@ -64,7 +64,7 @@
   "nav": {
     "brandHomeAria": "Newon ホーム",
     "appsAria": "Newon アプリ",
-    "appsLabel": "Newon のアプリ",
+    "appsLabel": "Newonのアプリ",
     "oxDesc": "習慣 · O/X チェック · 月間記録",
     "subpingDesc": "サブスク · 通知 · まとめて管理",
     "mobileSummary": "Newon のアプリ",
@@ -80,7 +80,7 @@
     "mobilePetlogHint": "PetLog の紹介を見る",
     "appsNavLabel": "アプリ",
     "headerHubTagline": "newon@newon.app",
-    "brandKicker": "Newon のアプリ",
+    "brandKicker": "Newonのアプリ",
     "piggyupDesc": "節約習慣 · 消費分析 · AIコーチ",
     "mobilePiggyupHint": "PiggyUpの紹介を見る",
     "notingDesc": "写経 · 読書記録 · 読書ノート",
@@ -93,14 +93,14 @@
     "mobileNewonPlusHint": "Newon+ の紹介",
     "myworldDesc": "旅行記録 · 旅行地図 · AIレポート",
     "mobileMyworldHint": "My Worldの紹介を見る",
-    "business": "仕事",
+    "business": "ビジネス",
     "portfolio": "ポートフォリオ",
-    "home": "家",
+    "home": "ホーム",
     "about": "会社紹介",
-    "intro": "情報",
+    "intro": "紹介",
     "projects": "プロジェクト",
     "newon": "Newon",
-    "contact": "接触",
+    "contact": "お問い合わせ",
     "ideas": "アイデア",
     "newsUpdates": "ニュース",
     "human404Desc": "AI サバイバル · 選択肢 · マルチエンディング",
@@ -2717,7 +2717,7 @@
     "finalTitle": "私たちはより良い日常生活を構築し続けます。",
     "finalLead": "Newon で製品を見つけたり、アイデアを共有したり、何か新しいことを始めたりしてください。",
     "finalPortfolio": "ポートフォリオ →",
-    "finalIdeas": "アイデアを提案する→",
+    "finalIdeas": "アイデアを提案 →",
     "finalBusiness": "ビジネス →",
     "tocAbout": "紹介",
     "tocBuild": "プロダクト",
@@ -3164,11 +3164,16 @@
     "ind4En": "生産性",
     "ind5En": "ファイナンス",
     "ind6En": "旅行",
-    "ind7En": "AI"
+    "ind7En": "AI",
+    "navInquiry": "お問い合わせ",
+    "navAria": "ビジネス",
+    "navWork": "協業の形",
+    "navCapabilities": "できること",
+    "navIndustries": "業界"
   },
   "businessPages": {
     "common": {
-      "breadcrumbBusiness": "仕事",
+      "breadcrumbBusiness": "ビジネス",
       "ctaProcess": "工程はこちら↓",
       "ctaInquire": "問い合わせを開始する",
       "ctaFinalTitle": "Newon で新たな可能性を築きましょう。",
@@ -3178,11 +3183,11 @@
       "aboutTitle": "このコラボとは何なのか",
       "offerLabel": "範囲",
       "offerTitle": "私たちが取り組めること",
-      "fitLabel": "フィット",
+      "fitLabel": "おすすめ",
       "fitTitle": "ぴったりフィットする場合",
-      "processLabel": "プロセス",
+      "processLabel": "進め方",
       "processTitle": "仕組み",
-      "faqLabel": "よくある質問",
+      "faqLabel": "FAQ",
       "faqTitle": "質問",
       "otherTitle": "協力するその他の方法",
       "otherMore": "もっと詳しく知る",
@@ -3232,7 +3237,8 @@
       "faq3Q": "海外ブランドはNewonで使用できますか?",
       "faq3A": "はい。最も重要なのは、作品が Newon サービスに接続できるかどうかです。",
       "faq4Q": "どれくらいで返事が来ますか?",
-      "faq4A": "私たちはメモを確認し、共有した電子メールでフォローアップします。"
+      "faq4A": "私たちはメモを確認し、共有した電子メールでフォローアップします。",
+      "aboutLabel": "概要"
     },
     "service": {
       "seoTitle": "アプリとサービスの連携 | Newon ビジネス",
@@ -3276,7 +3282,8 @@
       "faq3Q": "Newon は開発を行いますか?",
       "faq3A": "場合によります。統合が必要な場合は、まずスコープと役割を分割します。",
       "faq4Q": "小規模なサービスでも問い合わせることはできますか?",
-      "faq4A": "はい。尺度は、アプリを使用する人々にとって接続が自然であると感じるかどうかです。"
+      "faq4A": "はい。尺度は、アプリを使用する人々にとって接続が自然であると感じるかどうかです。",
+      "aboutLabel": "概要"
     },
     "promotion": {
       "seoTitle": "プロモーション | Newon ビジネス",
@@ -3329,7 +3336,8 @@
       "faq3Q": "アプリを中断する広告を実行していますか?",
       "faq3A": "いいえ。流れを壊すような強制的な配置は行いません。",
       "faq4Q": "選択肢はコンテンツだけですか?",
-      "faq4A": "いいえ、サービスに合わせてコンテンツや共同キャンペーン、アプリ内紹介なども可能です。"
+      "faq4A": "いいえ、サービスに合わせてコンテンツや共同キャンペーン、アプリ内紹介なども可能です。",
+      "aboutLabel": "概要"
     },
     "development": {
       "seoTitle": "製品開発 | Newon ビジネス",
@@ -3436,7 +3444,8 @@
       "budget3to5": "300万～500万ウォン",
       "budget5to10": "500万～1,000万ウォン",
       "budget10plus": "1,000万ウォン以上",
-      "mailSubject": "Newon製品開発のお問い合わせ"
+      "mailSubject": "Newon製品開発のお問い合わせ",
+      "aboutLabel": "概要"
     }
   },
   "news": {
@@ -3711,6 +3720,9 @@
       "emptyLead": "ご希望のアプリや必要な機能についてお知らせください。",
       "emptyCta": "アイデアを提案する→"
     },
-    "heroCta": "アイデアを共有する →"
+    "heroCta": "アイデアを共有する →",
+    "navSuggest": "提案する",
+    "navHow": "進め方",
+    "navAria": "アイデア"
   }
 }

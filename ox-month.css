@@ -2395,3 +2395,39 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   .lang-menu__check {
   color: #f5f5f5;
 }
+
+
+/* Phone polish — store badges + hero rhythm */
+@media (max-width: 639px) {
+  .ox-hero {
+    padding: calc(var(--ox-header-h) + 1.35rem) 0 2.35rem;
+  }
+
+  .ox-hero-grid {
+    gap: 1.65rem;
+  }
+
+  .ox-store-badges {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    width: 100%;
+    max-width: 22rem;
+  }
+
+  .ox-store-badge {
+    width: 100%;
+    justify-content: flex-start;
+    min-height: 3rem;
+    padding-inline: 0.95rem;
+  }
+
+  .ox-hero-frame--logo {
+    max-width: min(15.5rem, 62vw);
+    margin-inline: auto;
+  }
+
+  .ox-section {
+    padding-block: clamp(2.25rem, 7vw, 3.25rem);
+  }
+}

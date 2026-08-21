@@ -93,16 +93,16 @@
     "mobileNewonPlusHint": "Newon+ Intro ansehen",
     "myworldDesc": "Reisetagebuch · Reisekarte · KI-Bericht",
     "mobileMyworldHint": "Sehen Sie sich das My World-Intro an",
-    "business": "Geschäft",
+    "business": "Business",
     "portfolio": "Portfolio",
-    "home": "Heim",
+    "home": "Startseite",
     "about": "Über uns",
-    "intro": "Um",
+    "intro": "Über uns",
     "projects": "Projekte",
     "newon": "Newon",
     "contact": "Kontakt",
     "ideas": "Ideen",
-    "newsUpdates": "Nachricht",
+    "newsUpdates": "News",
     "human404Desc": "KI-Überleben · Entscheidungen · Mehrere Enden",
     "mobileHuman404Hint": "404: HUMAN ansehen"
   },
@@ -2702,13 +2702,13 @@
     "nav1Title": "Portfolio",
     "nav1Body": "Sehen Sie sich die Apps und digitalen Produkte an, die Newon erstellt hat.",
     "nav1Go": "Projekte anzeigen →",
-    "nav2Title": "Neuigkeiten und Updates",
+    "nav2Title": "News & Updates",
     "nav2Body": "Sehen Sie sich neue Produkte, Funktionsaktualisierungen und aktuelle Nachrichten von Newon an.",
     "nav2Go": "Updates lesen →",
     "nav3Title": "Newon Ideen",
     "nav3Body": "Erzählen Sie uns von einer gewünschten App, einer Funktion, die Sie benötigen, oder einer Notiz für Newon.",
     "nav3Go": "Senden Sie eine Idee →",
-    "nav4Title": "Newon Geschäft",
+    "nav4Title": "Newon Business",
     "nav4Body": "Wir schaffen neue Produkte und Geschäftsmöglichkeiten mit Marken, Unternehmen und Partnern.",
     "nav4Go": "Wirtschaft erkunden →",
     "ideasKicker": "IHRE IDEE × NEWON",
@@ -2720,8 +2720,8 @@
     "finalTitle": "Wir bauen weiterhin einen besseren Alltag auf.",
     "finalLead": "Entdecken Sie ein Produkt, teilen Sie eine Idee oder starten Sie etwas Neues mit Newon.",
     "finalPortfolio": "Portfolio →",
-    "finalIdeas": "Schlagen Sie eine Idee vor →",
-    "finalBusiness": "Geschäft →",
+    "finalIdeas": "Idee vorschlagen →",
+    "finalBusiness": "Business →",
     "tocAbout": "Über uns",
     "tocBuild": "Produkte",
     "tocExplore": "Mehr entdecken"
@@ -3167,11 +3167,16 @@
     "ind4En": "PRODUKTIVITÄT",
     "ind5En": "FINANZEN",
     "ind6En": "REISEN",
-    "ind7En": "AI"
+    "ind7En": "AI",
+    "navInquiry": "Anfragen",
+    "navAria": "Business",
+    "navWork": "Zusammenarbeit",
+    "navCapabilities": "Leistungen",
+    "navIndustries": "Branchen"
   },
   "businessPages": {
     "common": {
-      "breadcrumbBusiness": "Geschäft",
+      "breadcrumbBusiness": "Business",
       "ctaProcess": "Sehen Sie sich den Prozess an ↓",
       "ctaInquire": "Starten Sie eine Anfrage",
       "ctaFinalTitle": "Bauen Sie neue Möglichkeiten mit Newon.",
@@ -3181,9 +3186,9 @@
       "aboutTitle": "Worum es bei dieser Zusammenarbeit geht",
       "offerLabel": "UMFANG",
       "offerTitle": "Woran wir arbeiten können",
-      "fitLabel": "FIT",
+      "fitLabel": "PASSUNG",
       "fitTitle": "Passt gut, wenn",
-      "processLabel": "VERFAHREN",
+      "processLabel": "ABLAUF",
       "processTitle": "Wie es funktioniert",
       "faqLabel": "FAQ",
       "faqTitle": "Fragen",
@@ -3235,7 +3240,8 @@
       "faq3Q": "Können ausländische Marken mit Newon zusammenarbeiten?",
       "faq3A": "Ja. Am wichtigsten ist, ob die Arbeit mit einem Newon-Dienst verbunden werden kann.",
       "faq4Q": "Wie schnell erhalte ich eine Antwort?",
-      "faq4A": "Wir überprüfen die Notiz und gehen dann auf die E-Mail zu, die Sie uns mitteilen."
+      "faq4A": "Wir überprüfen die Notiz und gehen dann auf die E-Mail zu, die Sie uns mitteilen.",
+      "aboutLabel": "ÜBERBLICK"
     },
     "service": {
       "seoTitle": "App- und Service-Zusammenarbeit | Newon Geschäft",
@@ -3279,7 +3285,8 @@
       "faq3Q": "Übernimmt Newon die Entwicklung?",
       "faq3A": "Es kommt darauf an. Wenn eine Integration erforderlich ist, teilen wir zunächst Umfang und Rollen auf.",
       "faq4Q": "Kann ein kleiner Dienst nachfragen?",
-      "faq4A": "Ja. Der Maßstab ist, ob sich die Verbindung für Menschen, die die App nutzen, natürlich anfühlt."
+      "faq4A": "Ja. Der Maßstab ist, ob sich die Verbindung für Menschen, die die App nutzen, natürlich anfühlt.",
+      "aboutLabel": "ÜBERBLICK"
     },
     "promotion": {
       "seoTitle": "Werbung | Newon Geschäft",
@@ -3332,7 +3339,8 @@
       "faq3Q": "Schalten Sie Anzeigen, die die App unterbrechen?",
       "faq3A": "Nein. Wir führen keine Zwangsplatzierungen durch, die den Fluss unterbrechen.",
       "faq4Q": "Ist Inhalt die einzige Option?",
-      "faq4A": "Nein. Inhalte, gemeinsame Kampagnen und In-App-Einführungen sind möglich, wenn sie zum Service passen."
+      "faq4A": "Nein. Inhalte, gemeinsame Kampagnen und In-App-Einführungen sind möglich, wenn sie zum Service passen.",
+      "aboutLabel": "ÜBERBLICK"
     },
     "development": {
       "seoTitle": "Produktentwicklung | Newon Geschäft",
@@ -3439,7 +3447,8 @@
       "budget3to5": "3–5 Mio. KRW",
       "budget5to10": "5–10 Mio. KRW",
       "budget10plus": "10 Millionen KRW oder mehr",
-      "mailSubject": "Newon Produktentwicklungsanfrage"
+      "mailSubject": "Newon Produktentwicklungsanfrage",
+      "aboutLabel": "ÜBERBLICK"
     }
   },
   "news": {
@@ -3714,6 +3723,9 @@
       "emptyLead": "Erzählen Sie uns von einer gewünschten App oder einer Funktion, die Sie benötigen.",
       "emptyCta": "Schlagen Sie eine Idee vor →"
     },
-    "heroCta": "Teilen Sie eine Idee →"
+    "heroCta": "Teilen Sie eine Idee →",
+    "navSuggest": "Vorschlagen",
+    "navHow": "So geht’s",
+    "navAria": "Ideen"
   }
 }

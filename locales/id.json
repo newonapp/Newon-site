@@ -78,7 +78,7 @@
     "mobilePetlogHint": "Buka PetLog intro",
     "appsNavLabel": "App",
     "headerHubTagline": "newon@newon.aplikasi",
-    "brandKicker": "Aplikasi oleh Newon",
+    "brandKicker": "Aplikasi Newon",
     "savyDesc": "Spending insight · AI reports",
     "mobileSavyHint": "Buka SAVY intro",
     "piggyupDesc": "Kebiasaan menabung · analisis belanja · coach AI",
@@ -95,7 +95,7 @@
     "mobileMyworldHint": "Lihat My World intro",
     "business": "Bisnis",
     "portfolio": "Portofolio",
-    "home": "Rumah",
+    "home": "Beranda",
     "about": "Tentang",
     "intro": "Tentang",
     "projects": "Proyek",
@@ -2702,7 +2702,7 @@
     "nav1Title": "Portofolio",
     "nav1Body": "Lihat aplikasi dan produk digital yang Newon buat.",
     "nav1Go": "Lihat proyek →",
-    "nav2Title": "Berita & Pembaruan",
+    "nav2Title": "Berita & pembaruan",
     "nav2Body": "Lihat produk baru, update fitur, dan berita terkini dari Newon.",
     "nav2Go": "Baca pembaruan →",
     "nav3Title": "Newon Ide",
@@ -2720,7 +2720,7 @@
     "finalTitle": "Kami terus membangun kehidupan sehari-hari yang lebih baik.",
     "finalLead": "Temukan produk, bagikan ide, atau mulai sesuatu yang baru dengan Newon.",
     "finalPortfolio": "Portofolio →",
-    "finalIdeas": "Sarankan ide →",
+    "finalIdeas": "Usulkan ide →",
     "finalBusiness": "Bisnis →",
     "tocAbout": "Tentang",
     "tocBuild": "Produk",
@@ -3167,7 +3167,12 @@
     "ind4En": "PRODUKTIVITAS",
     "ind5En": "KEUANGAN",
     "ind6En": "BEPERGIAN",
-    "ind7En": "AI"
+    "ind7En": "AI",
+    "navInquiry": "Tanya",
+    "navAria": "Bisnis",
+    "navWork": "Kolaborasi",
+    "navCapabilities": "Kapabilitas",
+    "navIndustries": "Industri"
   },
   "businessPages": {
     "common": {
@@ -3177,11 +3182,11 @@
       "ctaFinalTitle": "Bangun kemungkinan baru dengan Newon.",
       "ctaFinalLead": "Kirim catatan singkat tentang proyek atau kolaborasi dan kami akan menindaklanjutinya.",
       "ctaFinalBtn": "Pertanyaan bisnis →",
-      "aboutLabel": "RINGKASAN",
+      "aboutLabel": "IKHTISAR",
       "aboutTitle": "Apa kolaborasi ini",
       "offerLabel": "CAKUPAN",
       "offerTitle": "Apa yang bisa kami kerjakan",
-      "fitLabel": "BUGAR",
+      "fitLabel": "COCOK",
       "fitTitle": "Cocok jika",
       "processLabel": "PROSES",
       "processTitle": "Bagaimana cara kerjanya",
@@ -3235,7 +3240,8 @@
       "faq3Q": "Bisakah merek luar negeri bekerja sama dengan Newon?",
       "faq3A": "Ya. Yang paling penting adalah apakah karya tersebut dapat terhubung dengan layanan Newon atau tidak.",
       "faq4Q": "Seberapa cepat saya akan mendapat kabar?",
-      "faq4A": "Kami meninjau catatan tersebut, lalu menindaklanjuti email yang Anda bagikan."
+      "faq4A": "Kami meninjau catatan tersebut, lalu menindaklanjuti email yang Anda bagikan.",
+      "aboutLabel": "IKHTISAR"
     },
     "service": {
       "seoTitle": "Kolaborasi aplikasi & layanan | Newon Bisnis",
@@ -3279,7 +3285,8 @@
       "faq3Q": "Apakah Newon melakukan pengembangan?",
       "faq3A": "Itu tergantung. Jika integrasi diperlukan, kami membagi cakupan dan peran terlebih dahulu.",
       "faq4Q": "Bisakah layanan kecil menanyakannya?",
-      "faq4A": "Ya. Ukurannya adalah apakah koneksi tersebut terasa natural bagi pengguna aplikasi."
+      "faq4A": "Ya. Ukurannya adalah apakah koneksi tersebut terasa natural bagi pengguna aplikasi.",
+      "aboutLabel": "IKHTISAR"
     },
     "promotion": {
       "seoTitle": "Promosi | Newon Bisnis",
@@ -3332,7 +3339,8 @@
       "faq3Q": "Apakah Anda menjalankan iklan yang mengganggu aplikasi?",
       "faq3A": "Tidak. Kami tidak menjalankan penempatan paksa yang memutus arus.",
       "faq4Q": "Apakah konten satu-satunya pilihan?",
-      "faq4A": "Tidak. Konten, kampanye bersama, dan pengenalan dalam aplikasi semuanya dapat dilakukan jika sesuai dengan layanan."
+      "faq4A": "Tidak. Konten, kampanye bersama, dan pengenalan dalam aplikasi semuanya dapat dilakukan jika sesuai dengan layanan.",
+      "aboutLabel": "IKHTISAR"
     },
     "development": {
       "seoTitle": "Pengembangan produk | Newon Bisnis",
@@ -3439,7 +3447,8 @@
       "budget3to5": "KRW 3–5 juta",
       "budget5to10": "KRW 5–10 juta",
       "budget10plus": "KRW 10 juta atau lebih",
-      "mailSubject": "Newon pertanyaan pengembangan produk"
+      "mailSubject": "Newon pertanyaan pengembangan produk",
+      "aboutLabel": "IKHTISAR"
     }
   },
   "news": {
@@ -3714,6 +3723,9 @@
       "emptyLead": "Beri tahu kami tentang aplikasi yang Anda inginkan atau fitur yang Anda perlukan.",
       "emptyCta": "Sarankan ide →"
     },
-    "heroCta": "Bagikan ide →"
+    "heroCta": "Bagikan ide →",
+    "navSuggest": "Usulkan",
+    "navHow": "Cara kerja",
+    "navAria": "Ide"
   }
 }

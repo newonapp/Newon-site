@@ -38,6 +38,7 @@ const STEPS = [
   "apply-translate-cache.mjs",
   "apply-home-locale-translations.mjs",
   "apply-home-11-apps.mjs",
+  "apply-site-chrome-i18n.mjs",
 ];
 
 if (withTranslate) {

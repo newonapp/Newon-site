@@ -1461,3 +1461,49 @@ body[data-theme="dark"] .nw-tl-month__entries {
     transition: none;
   }
 }
+
+/* Phone polish */
+@media (max-width: 520px) {
+  .nw-inner {
+    width: min(100% - 1.5rem, 56rem);
+  }
+
+  .nw-hero {
+    padding: 2rem 0 1.75rem;
+  }
+
+  .nw-hero__title {
+    font-size: clamp(1.85rem, 8vw, 2.4rem);
+    line-height: 1.15;
+  }
+
+  .nw-featured__grid,
+  .nw-feed {
+    gap: 0.85rem;
+  }
+
+  .nw-card,
+  .nw-featured__card {
+    border-radius: 12px;
+  }
+
+  .nw-filters {
+    gap: 0.45rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.15rem;
+    scrollbar-width: none;
+  }
+
+  .nw-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nw-follow {
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .nw-article__inner {
+    width: min(100% - 1.5rem, 42rem);
+  }
+}

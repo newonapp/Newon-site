@@ -942,3 +942,51 @@ html[data-newon-shell-theme="dark"] .ni-ok {
     transition: none;
   }
 }
+
+/* Phone polish */
+@media (max-width: 520px) {
+  .ni-inner {
+    width: min(100% - 1.5rem, 42rem);
+  }
+
+  .ni-hero {
+    padding: 2rem 0 2.25rem;
+  }
+
+  .ni-hero__title {
+    font-size: clamp(1.85rem, 8vw, 2.35rem);
+    line-height: 1.15;
+  }
+
+  .ni-hero__lead,
+  .ni-hero__note {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .ni-hero__cta {
+    min-height: 2.95rem;
+    font-size: 0.92rem;
+  }
+
+  .ni-process__item {
+    gap: 0.75rem;
+  }
+
+  .ni-type {
+    padding: 1.2rem 0 1.25rem;
+  }
+
+  .ni-type__go {
+    min-height: 2.75rem;
+  }
+
+  .ni-section {
+    padding-top: 2.5rem;
+  }
+
+  .ni-philosophy,
+  .ni-news {
+    padding-block: 2.5rem;
+  }
+}

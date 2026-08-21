@@ -50,7 +50,7 @@
   },
   "common": {
     "skipToContent": "Ir al contenido",
-    "scroll": "Desplazar",
+    "scroll": "Desplazarse",
     "menuOpen": "Abrir menú",
     "menuClose": "Cerrar menú",
     "themeToLight": "Modo claro",
@@ -80,7 +80,7 @@
     "mobilePetlogHint": "Ver intro de PetLog",
     "appsNavLabel": "Aplicaciones",
     "headerHubTagline": "newon@newon.aplicación",
-    "brandKicker": "Aplicaciones por 0",
+    "brandKicker": "Apps de Newon",
     "piggyupDesc": "Hábitos de ahorro · análisis de gastos · coach IA",
     "mobilePiggyupHint": "Ver intro de PiggyUp",
     "notingDesc": "Transcripción · registro · notas",
@@ -93,11 +93,11 @@
     "mobileNewonPlusHint": "Ver intro de Newon+",
     "myworldDesc": "Diario de viajes · Mapa de viajes · Informe IA",
     "mobileMyworldHint": "Ver la introducción de My World",
-    "business": "Negocio",
-    "portfolio": "Cartera",
-    "home": "Hogar",
+    "business": "Business",
+    "portfolio": "Portafolio",
+    "home": "Inicio",
     "about": "Acerca de",
-    "intro": "Sobre nosotros",
+    "intro": "Acerca de",
     "projects": "Proyectos",
     "newon": "Newon",
     "contact": "Contacto",
@@ -2696,7 +2696,7 @@
     "exploreLabel": "EXPLORAR NEWON",
     "exploreTitle": "Explora más de Newon.",
     "exploreLead": "Desde productos y noticias hasta sus ideas y colaboración comercial: conozca los diferentes lados de Newon.",
-    "nav1Title": "Cartera",
+    "nav1Title": "Portafolio",
     "nav1Body": "Mira las apps y productos digitales que Newon ha creado.",
     "nav1Go": "Ver proyectos →",
     "nav2Title": "Noticias y actualizaciones",
@@ -2705,7 +2705,7 @@
     "nav3Title": "Newon Ideas",
     "nav3Body": "Cuéntenos sobre una aplicación que desee, una función que necesite o una nota para Newon.",
     "nav3Go": "Envía una idea →",
-    "nav4Title": "Newon Negocios",
+    "nav4Title": "Newon Business",
     "nav4Body": "Creamos nuevos productos y posibilidades de negocio con marcas, empresas y socios.",
     "nav4Go": "Explorar negocios →",
     "ideasKicker": "TU IDEA × NEWON",
@@ -2717,8 +2717,8 @@
     "finalTitle": "Seguimos construyendo una mejor vida cotidiana.",
     "finalLead": "Descubra un producto, comparta una idea o comience algo nuevo con Newon.",
     "finalPortfolio": "Portafolio →",
-    "finalIdeas": "Sugiere una idea →",
-    "finalBusiness": "Negocios →",
+    "finalIdeas": "Sugerir una idea →",
+    "finalBusiness": "Business →",
     "tocAbout": "Acerca de",
     "tocBuild": "Productos",
     "tocExplore": "Explorar más"
@@ -3164,21 +3164,26 @@
     "ind4En": "PRODUCTIVIDAD",
     "ind5En": "FINANZAS",
     "ind6En": "VIAJAR",
-    "ind7En": "AI"
+    "ind7En": "AI",
+    "navInquiry": "Consultar",
+    "navAria": "Business",
+    "navWork": "Colaboración",
+    "navCapabilities": "Capacidades",
+    "navIndustries": "Industrias"
   },
   "businessPages": {
     "common": {
-      "breadcrumbBusiness": "Negocio",
+      "breadcrumbBusiness": "Business",
       "ctaProcess": "Ver el proceso ↓",
       "ctaInquire": "Iniciar una consulta",
       "ctaFinalTitle": "Construya nuevas posibilidades con Newon.",
       "ctaFinalLead": "Envía una breve nota sobre el proyecto o colaboración y haremos un seguimiento.",
       "ctaFinalBtn": "Consulta comercial →",
-      "aboutLabel": "DESCRIPCIÓN GENERAL",
+      "aboutLabel": "RESUMEN",
       "aboutTitle": "¿Qué es esta colaboración?",
       "offerLabel": "ALCANCE",
       "offerTitle": "En qué podemos trabajar",
-      "fitLabel": "ADAPTAR",
+      "fitLabel": "ENCAJE",
       "fitTitle": "Un buen ajuste si",
       "processLabel": "PROCESO",
       "processTitle": "como funciona",
@@ -3232,7 +3237,8 @@
       "faq3Q": "¿Pueden las marcas extranjeras trabajar con Newon?",
       "faq3A": "Sí. Lo más importante es si el trabajo puede conectarse con un servicio Newon.",
       "faq4Q": "¿Qué tan pronto recibiré respuesta?",
-      "faq4A": "Revisamos la nota y luego hacemos un seguimiento en el correo electrónico que comparte."
+      "faq4A": "Revisamos la nota y luego hacemos un seguimiento en el correo electrónico que comparte.",
+      "aboutLabel": "RESUMEN"
     },
     "service": {
       "seoTitle": "Colaboración de aplicaciones y servicios | Newon Negocios",
@@ -3276,7 +3282,8 @@
       "faq3Q": "¿Newon hace el desarrollo?",
       "faq3A": "Eso depende. Si se necesita una integración, primero dividimos el alcance y los roles.",
       "faq4Q": "¿Puede un pequeño servicio consultar?",
-      "faq4A": "Sí. La medida es si la conexión se siente natural para las personas que usan la aplicación."
+      "faq4A": "Sí. La medida es si la conexión se siente natural para las personas que usan la aplicación.",
+      "aboutLabel": "RESUMEN"
     },
     "promotion": {
       "seoTitle": "Promoción | Newon Negocios",
@@ -3329,7 +3336,8 @@
       "faq3Q": "¿Publica anuncios que interrumpen la aplicación?",
       "faq3A": "No. No realizamos colocaciones forzadas que rompan el flujo.",
       "faq4Q": "¿Es el contenido la única opción?",
-      "faq4A": "No. El contenido, las campañas conjuntas y las presentaciones en la aplicación son posibles cuando se ajustan al servicio."
+      "faq4A": "No. El contenido, las campañas conjuntas y las presentaciones en la aplicación son posibles cuando se ajustan al servicio.",
+      "aboutLabel": "RESUMEN"
     },
     "development": {
       "seoTitle": "Desarrollo de productos | Newon Negocios",
@@ -3436,7 +3444,8 @@
       "budget3to5": "3 a 5 millones de wones",
       "budget5to10": "5 a 10 millones de wones",
       "budget10plus": "KRW 10 millones o más",
-      "mailSubject": "Newon consulta de desarrollo de producto"
+      "mailSubject": "Newon consulta de desarrollo de producto",
+      "aboutLabel": "RESUMEN"
     }
   },
   "news": {
@@ -3711,6 +3720,9 @@
       "emptyLead": "Cuéntenos sobre una aplicación que desee o una función que necesite.",
       "emptyCta": "Sugiere una idea →"
     },
-    "heroCta": "Comparte una idea →"
+    "heroCta": "Comparte una idea →",
+    "navSuggest": "Proponer",
+    "navHow": "Cómo funciona",
+    "navAria": "Ideas"
   }
 }

@@ -1041,3 +1041,73 @@
     transform: none;
   }
 }
+
+/* Phone polish — snapshot + related + final CTA */
+@media (max-width: 899px) {
+  .ox-hero-value {
+    font-size: clamp(0.98rem, 3.8vw, 1.1rem);
+    line-height: 1.42;
+    max-width: none;
+  }
+
+  .al-glance {
+    --al-snap-pad-x: 1.05rem;
+    --al-snap-pad-y: 1.15rem;
+  }
+
+  .al-snap {
+    border-radius: 14px;
+    box-shadow:
+      0 1px 0 color-mix(in srgb, var(--ox-text) 5%, transparent),
+      0 10px 22px -20px color-mix(in srgb, var(--ox-text) 20%, transparent);
+  }
+
+  .al-snap__eyebrow,
+  .al-snap__kicker {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+  }
+
+  .al-snap__meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .al-snap__meta-item {
+    min-height: 4.25rem;
+    padding: 0.85rem 0.9rem 0.9rem;
+  }
+
+  .al-snap__meta-item dt {
+    font-size: 0.62rem;
+  }
+
+  .al-snap__meta-item dd {
+    font-size: 0.9rem;
+  }
+
+  .al-snap__core-list {
+    gap: 0.45rem;
+  }
+
+  .al-related__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .al-final-cta__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .al-final-cta__btn {
+    width: 100%;
+    min-height: 2.95rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .al-related__grid {
+    grid-template-columns: 1fr;
+  }
+}

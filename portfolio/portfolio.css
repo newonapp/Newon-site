@@ -1733,3 +1733,42 @@ html[data-newon-shell-theme="dark"] .pf-explore__row:hover {
     animation: none;
   }
 }
+
+/* Phone polish */
+@media (max-width: 520px) {
+  .pf-wrap {
+    width: min(100% - 1.5rem, 68rem);
+  }
+
+  .pf-hero {
+    padding-top: 1.75rem;
+  }
+
+  .pf-hero__name {
+    font-size: clamp(2rem, 9vw, 2.6rem);
+  }
+
+  .pf-hero__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .pf-hero__btn {
+    width: 100%;
+    min-height: 2.85rem;
+  }
+
+  .pf-section {
+    padding-block: 2.5rem;
+  }
+
+  .pf-open__row,
+  .pf-explore__row {
+    padding-inline: 0;
+  }
+
+  .pf-stats {
+    gap: 0.65rem;
+  }
+}
