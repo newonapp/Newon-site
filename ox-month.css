@@ -1166,11 +1166,11 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 
 .ox-section-label {
   margin: 0 0 0.625rem;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: none;
-  color: var(--ox-muted);
+  color: var(--ox-faint);
 }
 
 .ox-section h2 {
