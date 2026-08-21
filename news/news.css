@@ -1507,3 +1507,41 @@ body[data-theme="dark"] .nw-tl-month__entries {
     width: min(100% - 1.5rem, 42rem);
   }
 }
+
+/* Phone type floor — Business-level readability */
+@media (max-width: 799px) {
+  .nw-kicker,
+  .nw-side__title,
+  .nw-side__en,
+  .nw-featured__product,
+  .nw-featured__cat,
+  .nw-card__top,
+  .nw-hist-filter,
+  .nw-tl-month__label,
+  .nw-tl-item__meta,
+  .nw-article__cat,
+  .nw-meta-strip dt,
+  .nw-more-row__cat {
+    font-size: 0.875rem;
+    color: var(--nw-muted);
+  }
+
+  .nw-featured__meta,
+  .nw-more-row__meta,
+  .nw-apps__sign-sub {
+    font-size: 0.95rem;
+  }
+
+  .nw-lead,
+  .nw-card__excerpt,
+  .nw-featured__excerpt,
+  .nw-article__body p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .nw-new,
+  .nw-badge {
+    font-size: 0.75rem;
+  }
+}

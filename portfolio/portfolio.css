@@ -312,10 +312,10 @@ html[data-newon-shell-theme="dark"] .pf-hero::before {
 }
 
 .pf-hero__aside-title {
-  margin: 0 0 1rem;
-  font-size: 0.7rem;
+  margin: 0 0 1.1rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text);
 }
@@ -323,23 +323,23 @@ html[data-newon-shell-theme="dark"] .pf-hero::before {
 .pf-hero__meta {
   margin: 0;
   display: grid;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .pf-hero__meta dt {
-  margin: 0 0 0.2rem;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  margin: 0 0 0.3rem;
+  font-size: 0.875rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text);
 }
 
 .pf-hero__meta dd {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 1.0625rem;
   line-height: 1.55;
-  color: var(--text-soft);
+  color: var(--text-muted);
   word-break: keep-all;
 }
 
@@ -385,11 +385,11 @@ html[data-newon-shell-theme="dark"] .pf-hero::before {
 
 .pf-label {
   margin: 0 0 0.65rem;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 650;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--text-soft);
+  color: var(--text-muted);
 }
 
 .pf-section h2 {
@@ -700,18 +700,18 @@ a.pf-stat:focus-visible {
 }
 
 .pf-feats li {
-  padding: 0.32rem 0.65rem;
+  padding: 0.4rem 0.75rem;
   border: 1px solid var(--border);
   border-radius: 999px;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-muted);
 }
 
 .pf-role {
   margin: 0.9rem 0 0;
-  font-size: 0.78rem;
-  color: var(--text-soft);
+  font-size: 0.9rem;
+  color: var(--text-muted);
   letter-spacing: -0.01em;
 }
 
@@ -880,27 +880,28 @@ html:has(.pf-page) {
 
 .pf-founder__name {
   margin: 0;
-  font-size: 1.35rem;
+  font-size: 1.55rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .pf-founder__en {
-  margin: 0.25rem 0 0;
-  font-size: 0.9rem;
+  margin: 0.3rem 0 0;
+  font-size: 1.05rem;
   color: var(--text-muted);
 }
 
 .pf-founder__role {
-  margin: 0.35rem 0 0;
-  font-size: 0.8125rem;
+  margin: 0.4rem 0 0;
+  font-size: 0.95rem;
   font-weight: 500;
-  color: var(--text-soft);
+  color: var(--text-muted);
 }
 
 .pf-founder__story {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .pf-founder__title {
@@ -909,14 +910,16 @@ html:has(.pf-page) {
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.25;
+  word-break: keep-all;
 }
 
 .pf-founder__intro {
   margin: 0 0 0.75rem;
   max-width: 38rem;
-  font-size: 1rem;
+  font-size: 1.0625rem;
   line-height: 1.75;
   color: var(--text-muted);
+  word-break: keep-all;
 }
 
 .pf-founder__expertise {
@@ -924,10 +927,11 @@ html:has(.pf-page) {
   flex-wrap: wrap;
   gap: 0;
   margin: 1rem 0 1.25rem;
-  font-size: 0.8125rem;
+  font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: var(--text-soft);
+  color: var(--text-muted);
+  line-height: 1.55;
 }
 
 .pf-founder__expertise span:not(:last-child)::after {
@@ -1038,11 +1042,11 @@ html:has(.pf-page) {
 }
 
 .pf-cx .pf-label {
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
   font-weight: 650;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-soft);
+  color: var(--text-muted);
 }
 
 .pf-cx .pf-cx__title {
@@ -1069,12 +1073,12 @@ html:has(.pf-page) {
 }
 
 .pf-cx__open-label {
-  margin: 0 0 1.1rem;
-  font-size: 0.6875rem;
+  margin: 0 0 1.15rem;
+  font-size: 0.875rem;
   font-weight: 650;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-soft);
+  color: var(--text-muted);
 }
 
 .pf-open {
@@ -1112,11 +1116,11 @@ html[data-newon-shell-theme="dark"] .pf-open__row:hover {
 
 .pf-open__n {
   font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--text-soft);
-  padding-top: 0.2rem;
+  color: var(--text-muted);
+  padding-top: 0.28rem;
 }
 
 .pf-open__body {
@@ -1125,16 +1129,17 @@ html[data-newon-shell-theme="dark"] .pf-open__row:hover {
 
 .pf-open__title {
   margin: 0;
-  font-size: 0.96875rem;
+  font-size: 1.1rem;
   font-weight: 650;
   letter-spacing: -0.018em;
-  line-height: 1.35;
+  line-height: 1.4;
   color: var(--text);
+  word-break: keep-all;
 }
 
 .pf-open__meta {
   font-weight: 500;
-  color: var(--text-soft);
+  color: var(--text-muted);
 }
 
 .pf-open__row:hover .pf-open__title {
@@ -1142,10 +1147,11 @@ html[data-newon-shell-theme="dark"] .pf-open__row:hover {
 }
 
 .pf-open__desc {
-  margin: 0.42rem 0 0;
-  font-size: 0.8125rem;
+  margin: 0.45rem 0 0;
+  font-size: 0.98rem;
   line-height: 1.65;
   color: var(--text-muted);
+  word-break: keep-all;
 }
 
 .pf-open__go {
@@ -1229,11 +1235,11 @@ html[data-newon-shell-theme="dark"] .pf-cx__card {
 }
 
 .pf-ci__k {
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--text-soft);
+  color: var(--text-muted);
 }
 
 .pf-ci__main {
@@ -1263,10 +1269,10 @@ html[data-newon-shell-theme="dark"] .pf-cx__card {
   background: transparent;
   padding: 0.2rem 0;
   font: inherit;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.06em;
-  color: var(--text-soft);
+  color: var(--text-muted);
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.2s ease, color 0.2s ease;
@@ -1475,14 +1481,14 @@ html[data-newon-shell-theme="dark"] .pf-explore__row:hover {
 
 .pf-explore__desc {
   margin: 0.35rem 0 0;
-  font-size: 0.8125rem;
+  font-size: 0.98rem;
   line-height: 1.65;
   color: var(--text-muted);
   max-width: 36rem;
 }
 
 .pf-explore__cta {
-  font-size: 0.8125rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--text);
   white-space: nowrap;
@@ -1539,10 +1545,51 @@ html[data-newon-shell-theme="dark"] .pf-explore__row:hover {
     border-top: 1px solid var(--border);
   }
 
+  .pf-hero__aside-title {
+    font-size: 0.9rem;
+  }
+
+  .pf-hero__meta dt {
+    font-size: 0.9rem;
+  }
+
+  .pf-hero__meta dd {
+    font-size: 1.08rem;
+  }
+
   .pf-hero__btn {
     flex: 1 1 auto;
     justify-content: center;
     text-align: center;
+  }
+
+  .pf-founder__name {
+    font-size: 1.6rem;
+  }
+
+  .pf-founder__en {
+    font-size: 1.05rem;
+  }
+
+  .pf-founder__role {
+    font-size: 0.98rem;
+  }
+
+  .pf-cx__open-label,
+  .pf-label {
+    font-size: 0.9rem;
+  }
+
+  .pf-open__n {
+    font-size: 0.9rem;
+  }
+
+  .pf-open__title {
+    font-size: 1.12rem;
+  }
+
+  .pf-open__desc {
+    font-size: 1rem;
   }
 
   .pf-cx__head {
@@ -1749,24 +1796,30 @@ html[data-newon-shell-theme="dark"] .pf-explore__row:hover {
   }
 
   .pf-hero__role {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .pf-hero__lead {
-    font-size: 1.05rem;
+    font-size: 1.0625rem;
     line-height: 1.65;
   }
 
   .pf-hero__aside-title {
-    font-size: 0.8125rem;
+    font-size: 0.9375rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .pf-hero__meta {
+    gap: 1.35rem;
   }
 
   .pf-hero__meta dt {
-    font-size: 0.8125rem;
+    font-size: 0.9375rem;
   }
 
   .pf-hero__meta dd {
-    font-size: 1.02rem;
+    font-size: 1.125rem;
+    line-height: 1.5;
   }
 
   .pf-hero__actions {
@@ -1782,24 +1835,48 @@ html[data-newon-shell-theme="dark"] .pf-explore__row:hover {
 
   .pf-label,
   .pf-cx__open-label {
-    font-size: 0.8125rem;
+    font-size: 0.9375rem;
     color: var(--text-muted);
   }
 
+  .pf-open__n {
+    font-size: 0.9375rem;
+  }
+
   .pf-open__title {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
   }
 
   .pf-open__desc {
-    font-size: 0.95rem;
+    font-size: 1.02rem;
+  }
+
+  .pf-founder__name {
+    font-size: 1.7rem;
+  }
+
+  .pf-founder__en {
+    font-size: 1.1rem;
+  }
+
+  .pf-founder__role {
+    font-size: 1rem;
+  }
+
+  .pf-founder__title {
+    font-size: clamp(1.55rem, 7vw, 1.9rem);
   }
 
   .pf-founder__intro {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
   }
 
   .pf-founder__expertise {
-    font-size: 0.95rem;
+    font-size: 1rem;
+  }
+
+  .pf-founder__biz {
+    font-size: 1rem;
   }
 
   .pf-section {

@@ -170,19 +170,19 @@ html[data-newon-shell-theme="dark"] .ni-hero__cta {
 
 .ni-process__title {
   margin: 0;
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.12em;
   line-height: 1.2;
   color: var(--text);
 }
 
 .ni-process__lead {
   display: block;
-  margin: 0.45rem 0 0;
-  font-size: 0.875rem;
+  margin: 0.5rem 0 0;
+  font-size: 1.02rem;
   line-height: 1.5;
-  color: var(--ni-label);
+  color: var(--ni-muted);
   word-break: keep-all;
 }
 
@@ -229,14 +229,14 @@ html[data-newon-shell-theme="dark"] .ni-hero__cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 2rem;
+  height: 2rem;
   margin-top: 0.1rem;
   font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--ni-label);
+  letter-spacing: 0.04em;
+  color: var(--ni-muted);
   background: #fff;
   border: 1px solid var(--ni-rule);
   border-radius: 999px;
@@ -249,17 +249,17 @@ html[data-newon-shell-theme="dark"] .ni-process__idx {
 
 .ni-process__en {
   display: block;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-size: 0.875rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ni-label);
+  color: var(--ni-muted);
 }
 
 .ni-process__ko {
-  margin: 0.35rem 0 0;
-  font-size: 1.02rem;
-  font-weight: 600;
+  margin: 0.4rem 0 0;
+  font-size: 1.125rem;
+  font-weight: 650;
   letter-spacing: -0.025em;
   line-height: 1.45;
   color: var(--text);
@@ -335,10 +335,10 @@ html[data-newon-shell-theme="dark"] .ni-type {
   display: block;
   margin-bottom: 0.55rem;
   font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  font-size: 0.72rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.08em;
-  color: #b8b8b8;
+  color: var(--ni-muted);
   transition: color 0.2s ease;
 }
 html[data-newon-shell-theme="dark"] .ni-type__num {
@@ -347,11 +347,11 @@ html[data-newon-shell-theme="dark"] .ni-type__num {
 .ni-type__en {
   display: block;
   margin-bottom: 0.7rem;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #8a8a8a;
+  color: var(--ni-muted);
 }
 html[data-newon-shell-theme="dark"] .ni-type__en {
   color: var(--ni-label);
@@ -689,26 +689,27 @@ html[data-newon-shell-theme="dark"] .ni-field textarea {
 }
 .ni-steps .n {
   display: block;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.75rem;
   font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  font-size: 0.6875rem;
-  letter-spacing: 0.08em;
-  color: #b8b8b8;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  color: var(--ni-muted);
 }
 html[data-newon-shell-theme="dark"] .ni-steps .n {
   color: var(--ni-label);
 }
 .ni-steps h3 {
-  margin: 0 0 0.55rem;
-  font-size: 0.72rem;
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
 }
 .ni-steps p {
   margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  line-height: 1.65;
   color: var(--ni-muted);
+  word-break: keep-all;
 }
 
 .ni-philosophy {
@@ -990,15 +991,16 @@ html[data-newon-shell-theme="dark"] .ni-ok {
   }
 
   .ni-steps .n {
-    font-size: 0.8125rem;
+    font-size: 0.9375rem;
   }
 
   .ni-steps h3 {
-    font-size: 0.95rem;
+    font-size: 1.0625rem;
   }
 
   .ni-steps p {
-    font-size: 1.02rem;
+    font-size: 1.1rem;
+    line-height: 1.65;
   }
 
   .ni-type {

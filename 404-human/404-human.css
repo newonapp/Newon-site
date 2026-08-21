@@ -664,3 +664,33 @@
     padding-block: 2.25rem;
   }
 }
+
+/* Phone type floor — Business-level readability */
+@media (max-width: 799px) {
+  .fh-mission-emph,
+  .fh-loop__desc,
+  .fh-ending-lock,
+  .fh-credit-row dt,
+  .fh-metric__code,
+  .fh-metric__scale,
+  .fh-final-cta__kicker,
+  .fh-loop__code,
+  .fh-preview__code,
+  .fh-choice__key,
+  .fh-preview__foot,
+  .fh-timeline__year,
+  .fh-showcase-card figcaption {
+    font-size: 0.9rem;
+  }
+
+  .fh-loop__desc,
+  .fh-mission p,
+  .fh-ending p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .fh-final-cta__btn-small {
+    font-size: 0.8125rem;
+  }
+}
