@@ -252,17 +252,17 @@ html[data-newon-shell-theme="dark"] .pf-hero::before {
 
 .pf-hero__role {
   margin: 1.1rem 0 0;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-soft);
+  color: var(--text-muted);
 }
 
 .pf-hero__lead {
   margin: clamp(1.15rem, 2.2vw, 1.55rem) 0 0;
   max-width: 34rem;
-  font-size: clamp(1.02rem, 0.95rem + 0.35vw, 1.125rem);
+  font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.1875rem);
   line-height: 1.72;
   color: var(--text-muted);
   word-break: keep-all;
@@ -313,9 +313,9 @@ html[data-newon-shell-theme="dark"] .pf-hero::before {
 
 .pf-hero__aside-title {
   margin: 0 0 1rem;
-  font-size: 0.7rem;
+  font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text);
 }
@@ -323,23 +323,23 @@ html[data-newon-shell-theme="dark"] .pf-hero::before {
 .pf-hero__meta {
   margin: 0;
   display: grid;
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
 .pf-hero__meta dt {
-  margin: 0 0 0.2rem;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  margin: 0 0 0.28rem;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text);
 }
 
 .pf-hero__meta dd {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.55;
-  color: var(--text-soft);
+  color: var(--text-muted);
   word-break: keep-all;
 }
 
@@ -385,11 +385,11 @@ html[data-newon-shell-theme="dark"] .pf-hero::before {
 
 .pf-label {
   margin: 0 0 0.65rem;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 650;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--text-soft);
+  color: var(--text-muted);
 }
 
 .pf-section h2 {
@@ -880,22 +880,22 @@ html:has(.pf-page) {
 
 .pf-founder__name {
   margin: 0;
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .pf-founder__en {
-  margin: 0.25rem 0 0;
-  font-size: 0.9rem;
+  margin: 0.3rem 0 0;
+  font-size: 1rem;
   color: var(--text-muted);
 }
 
 .pf-founder__role {
-  margin: 0.35rem 0 0;
-  font-size: 0.8125rem;
+  margin: 0.4rem 0 0;
+  font-size: 0.9375rem;
   font-weight: 500;
-  color: var(--text-soft);
+  color: var(--text-muted);
 }
 
 .pf-founder__story {
@@ -914,7 +914,7 @@ html:has(.pf-page) {
 .pf-founder__intro {
   margin: 0 0 0.75rem;
   max-width: 38rem;
-  font-size: 1rem;
+  font-size: 1.0625rem;
   line-height: 1.75;
   color: var(--text-muted);
 }
@@ -924,10 +924,10 @@ html:has(.pf-page) {
   flex-wrap: wrap;
   gap: 0;
   margin: 1rem 0 1.25rem;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: var(--text-soft);
+  color: var(--text-muted);
 }
 
 .pf-founder__expertise span:not(:last-child)::after {
@@ -1038,11 +1038,11 @@ html:has(.pf-page) {
 }
 
 .pf-cx .pf-label {
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 650;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-soft);
+  color: var(--text-muted);
 }
 
 .pf-cx .pf-cx__title {
@@ -1070,11 +1070,11 @@ html:has(.pf-page) {
 
 .pf-cx__open-label {
   margin: 0 0 1.1rem;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 650;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-soft);
+  color: var(--text-muted);
 }
 
 .pf-open {
@@ -1112,11 +1112,11 @@ html[data-newon-shell-theme="dark"] .pf-open__row:hover {
 
 .pf-open__n {
   font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--text-soft);
-  padding-top: 0.2rem;
+  color: var(--text-muted);
+  padding-top: 0.28rem;
 }
 
 .pf-open__body {
@@ -1125,16 +1125,16 @@ html[data-newon-shell-theme="dark"] .pf-open__row:hover {
 
 .pf-open__title {
   margin: 0;
-  font-size: 0.96875rem;
+  font-size: 1.0625rem;
   font-weight: 650;
   letter-spacing: -0.018em;
-  line-height: 1.35;
+  line-height: 1.4;
   color: var(--text);
 }
 
 .pf-open__meta {
   font-weight: 500;
-  color: var(--text-soft);
+  color: var(--text-muted);
 }
 
 .pf-open__row:hover .pf-open__title {
@@ -1142,8 +1142,8 @@ html[data-newon-shell-theme="dark"] .pf-open__row:hover {
 }
 
 .pf-open__desc {
-  margin: 0.42rem 0 0;
-  font-size: 0.8125rem;
+  margin: 0.45rem 0 0;
+  font-size: 0.9375rem;
   line-height: 1.65;
   color: var(--text-muted);
 }
@@ -1748,6 +1748,14 @@ html[data-newon-shell-theme="dark"] .pf-explore__row:hover {
     font-size: clamp(2rem, 9vw, 2.6rem);
   }
 
+  .pf-hero__role {
+    font-size: 0.9375rem;
+  }
+
+  .pf-hero__lead {
+    font-size: 1.0625rem;
+  }
+
   .pf-hero__actions {
     display: flex;
     flex-direction: column;
@@ -1759,8 +1767,72 @@ html[data-newon-shell-theme="dark"] .pf-explore__row:hover {
     min-height: 2.85rem;
   }
 
+  .pf-hero__aside-title {
+    font-size: 0.875rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .pf-hero__meta {
+    gap: 1.25rem;
+  }
+
+  .pf-hero__meta dt {
+    font-size: 0.875rem;
+  }
+
+  .pf-hero__meta dd {
+    font-size: 1.0625rem;
+    line-height: 1.5;
+  }
+
   .pf-section {
     padding-block: 2.5rem;
+  }
+
+  .pf-label {
+    font-size: 0.875rem;
+  }
+
+  .pf-founder__name {
+    font-size: 1.65rem;
+  }
+
+  .pf-founder__en {
+    font-size: 1.0625rem;
+  }
+
+  .pf-founder__role {
+    font-size: 1rem;
+  }
+
+  .pf-founder__intro {
+    font-size: 1.0625rem;
+  }
+
+  .pf-founder__expertise {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .pf-founder__biz {
+    font-size: 1rem;
+  }
+
+  .pf-cx__open-label,
+  .pf-cx .pf-label {
+    font-size: 0.875rem;
+  }
+
+  .pf-open__n {
+    font-size: 0.875rem;
+  }
+
+  .pf-open__title {
+    font-size: 1.125rem;
+  }
+
+  .pf-open__desc {
+    font-size: 1rem;
   }
 
   .pf-open__row,
