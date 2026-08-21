@@ -1096,16 +1096,6 @@ html[data-newon-shell-theme="dark"] .navbar-page-link--ghost:hover {
   }
 }
 
-.mobile-nav__page-link {
-  display: block;
-  padding: 0.9rem 0 1.15rem;
-  border-top: 1px solid var(--border);
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--text);
-}
-
 .legal-body h2 {
   font-size: 1.1rem;
   margin: 2rem 0 0.75rem;
@@ -1699,13 +1689,11 @@ html[data-newon-shell-theme="light"]
   display: none !important;
 }
 
-/* Phone home: compact apps + Business into one chrome row */
+/* Phone home: apps drawer chrome row */
 .mobile-nav.mobile-nav--apps-only {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0 0.15rem;
+  flex-direction: column;
+  align-items: stretch;
   padding: 0 var(--space);
   min-height: var(--mobile-apps-bar-h, 2.85rem);
   max-height: none;
@@ -1714,7 +1702,6 @@ html[data-newon-shell-theme="light"]
 }
 
 .mobile-nav--apps-only .mobile-apps-drawer {
-  flex: 1 1 auto;
   min-width: 0;
   border-top: 0;
   border-bottom: none;
@@ -1736,27 +1723,8 @@ html[data-newon-shell-theme="light"]
   opacity: 0.5;
 }
 
-.mobile-nav--apps-only > .mobile-nav__page-link {
-  flex: 0 0 auto;
-  margin: 0;
-  padding: 0.7rem 0 0.7rem 0.9rem;
-  border-top: 0;
-  border-left: 1px solid var(--border);
-  font-size: 0.92rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-  color: var(--text-muted);
-}
-
-.mobile-nav--apps-only > .mobile-nav__page-link:hover {
-  color: var(--text);
-}
-
 /* Expanded drawer: reclaim vertical scroll sheet under the chrome */
 .mobile-nav.mobile-nav--apps-only:has(.mobile-apps-drawer[open]) {
-  flex-direction: column;
-  align-items: stretch;
   max-height: calc(
     100svh - var(--brand-header-min-h, 58px) - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)
   );
@@ -1764,13 +1732,6 @@ html[data-newon-shell-theme="light"]
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
-}
-
-.mobile-nav.mobile-nav--apps-only:has(.mobile-apps-drawer[open]) > .mobile-nav__page-link {
-  border-left: 0;
-  border-top: 1px solid var(--border);
-  padding-left: 0;
-  order: 2;
 }
 
 .mobile-nav a {
@@ -1800,7 +1761,7 @@ html[data-newon-shell-theme="light"]
 
 @media (max-width: 879px) {
   :root {
-    /* Compact apps+Business chrome row — keep hero offset in sync */
+    /* Apps drawer chrome row — keep hero offset in sync */
     --mobile-apps-bar-h: 2.85rem;
   }
 }
