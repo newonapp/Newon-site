@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Apply homepage “11 apps + My World” updates across locales.
+ * Apply homepage “12 apps + My World” updates across locales.
  * Source of truth for counts, categories, travel copy, SEO keywords.
  */
 import fs from "fs";
@@ -11,7 +11,7 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const LOCALES = path.join(ROOT, "locales");
 
 const LOGO = (src) =>
-  `<img class="co-product-card__logo" src="${src}" alt="" width="40" height="40" decoding="async" />`;
+  `<img class="co-product-card__logo" src="${src}" alt="" width="40" height="40" loading="lazy" decoding="async" />`;
 
 const LOGOS = {
   ox: LOGO("/ox-month-logo.png"),
@@ -53,26 +53,26 @@ const LANG = {
   ko: {
     meta: {
       description:
-        "Newon — 아이디어를 현실로 만드는 앱 스튜디오. 습관·목표·건강·금융·가족·여행 기록까지 11개 앱을 운영합니다. OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+.",
+        "Newon — 아이디어를 현실로 만드는 앱 스튜디오. 습관·목표·건강·금융·가족·여행 기록까지 12개 앱을 운영합니다. OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+.",
       ogDescription:
-        "Newon — 아이디어를 현실로 만드는 앱 스튜디오. 습관·목표·건강·금융·가족·여행 기록까지 11개 앱을 운영합니다.",
+        "Newon — 아이디어를 현실로 만드는 앱 스튜디오. 습관·목표·건강·금융·가족·여행 기록까지 12개 앱을 운영합니다.",
       twitterDescription:
-        "Newon — 습관·목표·건강·금융·가족·여행 기록까지 11개 앱의 글로벌 라이프 플랫폼.",
+        "Newon — 습관·목표·건강·금융·가족·여행 기록까지 12개 앱의 글로벌 라이프 플랫폼.",
       keywords:
         "Newon, 뉴온, newon.app, 앱 스튜디오, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, 습관 기록 앱, 구독 관리 앱, 복약 관리 앱, 가계부 앱, 육아 기록 앱, 목표 관리 앱, 여행 기록, 방문 국가, 여행 지도, travel journal, travel tracker, visited countries, travel map, 생산성 앱",
-      orgDescription: "아이디어를 현실로 만드는 앱 스튜디오 · 11개 라이프 앱",
+      orgDescription: "아이디어를 현실로 만드는 앱 스튜디오 · 12개 라이프 앱",
     },
     about: {
       lead: "Newon은 생산성, 금융, 건강, 가족, 여행까지 일상을 돕는 앱 스튜디오입니다.",
       metaDescription:
-        "Newon은 생산성·금융·건강·라이프스타일 앱을 만듭니다. 177개국·13개 언어, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+ 등 11개 앱.",
-      statApps: "11개 앱 서비스 운영",
+        "Newon은 생산성·금융·건강·라이프스타일 앱을 만듭니다. 177개국·13개 언어, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+ 등 12개 앱.",
+      statApps: "12개 앱 서비스 운영",
     },
-    footer: { statLine3: "11개 앱 출시" },
+    footer: { statLine3: "12개 앱 출시" },
     home: {
       heroLeadHtml:
         "Newon은 앱을 만드는 회사가 아닙니다.<br /><br />사람들의 일상 속 작은 문제를 발견하고, 오랫동안 사용되는 경험으로 바꾸는 글로벌 라이프 플랫폼입니다.<br /><br />습관, 목표, 건강, 금융, 가족 기록, 여행 기록까지.<br /><br />우리는 삶을 더 쉽고 지속 가능하게 만드는 서비스를 설계합니다.",
-      heroStat0: "11+ 서비스",
+      heroStat0: "12+ 서비스",
       meaningCard0Html: '<span class="co-meaning-card__text">습관을 만들고</span>',
       meaningCard1Html: '<span class="co-meaning-card__text">목표를 이루고</span>',
       meaningCard2Html: '<span class="co-meaning-card__text">건강을 지키고</span>',
@@ -82,7 +82,7 @@ const LANG = {
       aboutLead:
         "Newon은 생산성, 건강, 금융, 목표 관리, 여행 기록, 가족 기록, 반려동물 관리까지 일상의 다양한 문제를 해결하는 글로벌 라이프 플랫폼입니다.",
       aboutCard0Html:
-        '<span class="co-about-card__value">11+</span><span class="co-about-card__label">서비스 운영</span>',
+        '<span class="co-about-card__value">12+</span><span class="co-about-card__label">서비스 운영</span>',
       workCard0Html: '<span class="co-work-card__text">습관을 기록하고</span>',
       workCard1Html: '<span class="co-work-card__text">목표를 달성하고</span>',
       workCard2Html: '<span class="co-work-card__text">지출을 관리하며</span>',
@@ -103,7 +103,7 @@ const LANG = {
       productLi5Html: PRODUCT_HTML.li5("통합 생태계"),
       productsExtraHtml: `현재 Newon은<br /><br />${APPS_LIST}<br /><br />그리고 Newon+로 모든 서비스를 연결하고 있습니다.`,
       visionP4Html:
-        "11개의 앱에서 시작해 수십 개의 서비스가 연결되는 글로벌 라이프 플랫폼으로 성장하고 있습니다.",
+        "12개의 앱에서 시작해 수십 개의 서비스가 연결되는 글로벌 라이프 플랫폼으로 성장하고 있습니다.",
       whyCard0Html:
         '<span class="co-stats-card__value">오래 사용하는 경험</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">유행하는 기능보다</span><span class="co-stats-card__label-line">습관·여행·가족 기록을 매일 열어보는 앱을 만듭니다.</span></span>',
       whyCard1Html:
@@ -111,24 +111,24 @@ const LANG = {
       whyCard2Html:
         '<span class="co-stats-card__value">연결되는 라이프 생태계</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">개별 앱을 넘어</span><span class="co-stats-card__label-line">습관부터 여행까지 하나의 플랫폼으로.</span></span>',
       statCard0Html:
-        '<span class="co-stats-card__value">11+</span><span class="co-stats-card__label">서비스 운영</span>',
+        '<span class="co-stats-card__value">12+</span><span class="co-stats-card__label">서비스 운영</span>',
       statNewonPlusHtml: `<strong>Newon+</strong><br />하나의 구독으로<br />모든 Newon 앱을 이용하세요.<br /><br />${NEWON_PLUS_APPS}<br /><br />하나의 계정.<br />하나의 구독.<br />모든 일상을 연결합니다.`,
     },
     np: {
       heroReachSummary:
         "From productivity and health to parenting, finance, goals, and travel—experience Newon's premium apps with one membership.",
-      imgShot1Alt: "Newon — Ideas into apps; a life platform with 11+ apps and one account",
-      imgShot5Alt: "Newon — 11+ apps, 177 countries, 13 languages",
+      imgShot1Alt: "Newon — Ideas into apps; a life platform with 12+ apps and one account",
+      imgShot5Alt: "Newon — 12+ apps, 177 countries, 13 languages",
     },
   },
   en: {
     meta: {
       description:
-        "Newon is an app studio that turns ideas into reality. 11 apps for productivity, health, finance, family, and travel—OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, and Newon+.",
+        "Newon is an app studio that turns ideas into reality. 12 apps for productivity, health, finance, family, and travel—OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, and Newon+.",
       ogDescription:
         "Newon builds 11 lifestyle apps—habits, goals, health, finance, family, and travel journals—across 177 countries and 13 languages.",
       twitterDescription:
-        "Newon — 11 apps for habits, health, finance, family, and travel tracking worldwide.",
+        "Newon — 12 apps for habits, health, finance, family, and travel tracking worldwide.",
       keywords:
         "Newon, newon.app, app studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, habit tracker, subscription manager, medication reminder, budgeting app, baby log, goal tracking, travel journal, travel tracker, visited countries, travel map, productivity apps",
       orgDescription: "App studio that turns ideas into reality · 11 life apps",
@@ -137,13 +137,13 @@ const LANG = {
       lead: "Newon builds apps for productivity, finance, health, family, and travel.",
       metaDescription:
         "Newon builds productivity, finance, health, and lifestyle apps. 177 countries, 13 languages—OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+.",
-      statApps: "11 app services",
+      statApps: "12 app services",
     },
-    footer: { statLine3: "11 apps released" },
+    footer: { statLine3: "12 apps released" },
     home: {
       heroLeadHtml:
         "Newon is not a company that makes apps.<br /><br />We discover small problems in everyday life and turn them into experiences people keep using—a global life platform.<br /><br />Habits, goals, health, finance, family records, travel journals.<br /><br />We design services that make life easier and more sustainable.",
-      heroStat0: "11+ services",
+      heroStat0: "12+ services",
       meaningCard0Html: '<span class="co-meaning-card__text">build habits</span>',
       meaningCard1Html: '<span class="co-meaning-card__text">reach goals</span>',
       meaningCard2Html: '<span class="co-meaning-card__text">protect health</span>',
@@ -153,7 +153,7 @@ const LANG = {
       aboutLead:
         "Newon is a global life platform solving everyday problems across productivity, health, finance, goals, travel journals, family records, and pet care.",
       aboutCard0Html:
-        '<span class="co-about-card__value">11+</span><span class="co-about-card__label">Services</span>',
+        '<span class="co-about-card__value">12+</span><span class="co-about-card__label">Services</span>',
       workCard0Html: '<span class="co-work-card__text">Record habits</span>',
       workCard1Html: '<span class="co-work-card__text">Reach goals</span>',
       workCard2Html: '<span class="co-work-card__text">Manage spending</span>',
@@ -174,7 +174,7 @@ const LANG = {
       productLi5Html: PRODUCT_HTML.li5("Unified ecosystem"),
       productsExtraHtml: `Today, Newon includes<br /><br />${APPS_LIST}<br /><br />and Newon+ connects every service.`,
       visionP4Html:
-        "Starting from 11 apps, we are growing into a global life platform where dozens of services connect.",
+        "Starting from 12 apps, we are growing into a global life platform where dozens of services connect.",
       whyCard0Html:
         '<span class="co-stats-card__value">Built to last</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">Not trendy features—</span><span class="co-stats-card__label-line">habits, travel, and family records people open every day.</span></span>',
       whyCard1Html:
@@ -182,7 +182,7 @@ const LANG = {
       whyCard2Html:
         '<span class="co-stats-card__value">Connected life ecosystem</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">Beyond single apps—</span><span class="co-stats-card__label-line">from habits to travel, one platform.</span></span>',
       statCard0Html:
-        '<span class="co-stats-card__value">11+</span><span class="co-stats-card__label">Services</span>',
+        '<span class="co-stats-card__value">12+</span><span class="co-stats-card__label">Services</span>',
       statNewonPlusHtml: `<strong>Newon+</strong><br />One subscription<br />for every Newon app.<br /><br />${NEWON_PLUS_APPS}<br /><br />One account.<br />One subscription.<br />Everyday life, connected.`,
     },
     np: {
@@ -192,8 +192,8 @@ const LANG = {
         "From productivity and health to parenting, finance, goals, and travel—<br />experience Newon's premium apps<br />with one membership.",
       introHtml:
         '<p class="ox-app-intro__lead"><strong>Newon</strong> is</p><p>a unified membership platform that connects every Newon app with one account.</p><p>No separate subscriptions—one membership covers productivity, health, parenting, finance, pets, goals, travel, and lifestyle apps.</p><p>Manage installs, subscription status, premium benefits, family sharing, and usage stats in one place.</p><p>Newon Membership delivers a more convenient, more affordable subscription experience.</p>',
-      imgShot1Alt: "Newon — Ideas into apps; a life platform with 11+ apps and one account",
-      imgShot5Alt: "Newon — 11+ apps, 177 countries, 13 languages",
+      imgShot1Alt: "Newon — Ideas into apps; a life platform with 12+ apps and one account",
+      imgShot5Alt: "Newon — 12+ apps, 177 countries, 13 languages",
     },
   },
 };
@@ -208,12 +208,12 @@ const I18N_EXTRA = {
         "Newon, newon.app, アプリスタジオ, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, 旅行記録, 訪問国, 旅行マップ, travel journal, travel tracker, visited countries",
       orgDescription: "アイデアを現実にするアプリスタジオ · 11のライフアプリ",
     },
-    about: { statApps: "11アプリを運営", lead: "Newonは生産性・金融・健康・家族・旅行を支えるアプリスタジオです。" },
-    footer: { statLine3: "11本のアプリ" },
+    about: { statApps: "12アプリを運営", lead: "Newonは生産性・金融・健康・家族・旅行を支えるアプリスタジオです。" },
+    footer: { statLine3: "12本のアプリ" },
     home: {
       heroLeadHtml:
         "Newonはアプリを作るだけの会社ではありません。<br /><br />日常の小さな課題を見つけ、長く使われる体験に変えるグローバルなライフプラットフォームです。<br /><br />習慣、目標、健康、金融、家族の記録、旅行の記録まで。<br /><br />人生をより簡単で持続可能にするサービスを設計します。",
-      heroStat0: "11+ サービス",
+      heroStat0: "12+ サービス",
       meaningCard0Html: '<span class="co-meaning-card__text">習慣をつくり</span>',
       meaningCard1Html: '<span class="co-meaning-card__text">目標を叶え</span>',
       meaningCard2Html: '<span class="co-meaning-card__text">健康を守り</span>',
@@ -223,7 +223,7 @@ const I18N_EXTRA = {
       aboutLead:
         "Newonは生産性、健康、金融、目標管理、旅行記録、家族の記録、ペットケアまで、日常の課題を解決するグローバルなライフプラットフォームです。",
       aboutCard0Html:
-        '<span class="co-about-card__value">11+</span><span class="co-about-card__label">サービス運営</span>',
+        '<span class="co-about-card__value">12+</span><span class="co-about-card__label">サービス運営</span>',
       workCard0Html: '<span class="co-work-card__text">習慣を記録し</span>',
       workCard1Html: '<span class="co-work-card__text">目標を達成し</span>',
       workCard2Html: '<span class="co-work-card__text">支出を管理し</span>',
@@ -243,7 +243,7 @@ const I18N_EXTRA = {
       productLi4Html: PRODUCT_HTML.li4("AIベースのライフサービス"),
       productLi5Html: PRODUCT_HTML.li5("統合エコシステム"),
       productsExtraHtml: `現在のNewonは<br /><br />${APPS_LIST}<br /><br />そしてNewon+ですべてのサービスをつなぎます。`,
-      visionP4Html: "11本のアプリから始め、数十のサービスがつながるグローバルなライフプラットフォームへ成長しています。",
+      visionP4Html: "12本のアプリから始め、数十のサービスがつながるグローバルなライフプラットフォームへ成長しています。",
       whyCard0Html:
         '<span class="co-stats-card__value">長く使う体験</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">流行の機能より</span><span class="co-stats-card__label-line">習慣・旅行・家族の記録を毎日開くアプリを。</span></span>',
       whyCard1Html:
@@ -251,28 +251,28 @@ const I18N_EXTRA = {
       whyCard2Html:
         '<span class="co-stats-card__value">つながるライフ生態系</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">単体アプリを超え</span><span class="co-stats-card__label-line">習慣から旅行まで一つのプラットフォーム。</span></span>',
       statCard0Html:
-        '<span class="co-stats-card__value">11+</span><span class="co-stats-card__label">サービス運営</span>',
+        '<span class="co-stats-card__value">12+</span><span class="co-stats-card__label">サービス運営</span>',
       statNewonPlusHtml: `<strong>Newon+</strong><br />ひとつのサブスクで<br />すべてのNewonアプリを。<br /><br />${NEWON_PLUS_APPS}<br /><br />ひとつのアカウント。<br />ひとつのサブスク。<br />日常をつなぎます。`,
     },
     np: {
-      imgShot1Alt: "Newon — アイデアをアプリに。11+アプリと1アカウントのライフプラットフォーム",
-      imgShot5Alt: "Newon — 11+アプリ、177か国、13言語",
+      imgShot1Alt: "Newon — アイデアをアプリに。12+アプリと1アカウントのライフプラットフォーム",
+      imgShot5Alt: "Newon — 12+アプリ、177か国、13言語",
     },
   },
   es: {
     meta: {
       description:
-        "Newon es un estudio de apps que convierte ideas en realidad. 11 apps de productividad, salud, finanzas, familia y viajes—OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World y Newon+.",
+        "Newon es un estudio de apps que convierte ideas en realidad. 12 apps de productividad, salud, finanzas, familia y viajes—OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World y Newon+.",
       keywords:
         "Newon, newon.app, estudio de apps, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, diario de viajes, rastreador de viajes, países visitados, mapa de viajes, travel journal, travel tracker",
-      orgDescription: "Estudio de apps que convierte ideas en realidad · 11 apps de vida",
+      orgDescription: "Estudio de apps que convierte ideas en realidad · 12 apps de vida",
     },
-    about: { statApps: "11 servicios de apps", lead: "Newon crea apps de productividad, finanzas, salud, familia y viajes." },
-    footer: { statLine3: "11 apps publicadas" },
+    about: { statApps: "12 servicios de apps", lead: "Newon crea apps de productividad, finanzas, salud, familia y viajes." },
+    footer: { statLine3: "12 apps publicadas" },
     home: {
       heroLeadHtml:
         "Newon no es una empresa que solo hace apps.<br /><br />Descubrimos pequeños problemas de la vida diaria y los convertimos en experiencias que la gente sigue usando: una plataforma de vida global.<br /><br />Hábitos, metas, salud, finanzas, registros familiares y diarios de viaje.<br /><br />Diseñamos servicios que hacen la vida más fácil y sostenible.",
-      heroStat0: "11+ servicios",
+      heroStat0: "12+ servicios",
       meaningCard0Html: '<span class="co-meaning-card__text">crear hábitos</span>',
       meaningCard1Html: '<span class="co-meaning-card__text">alcanzar metas</span>',
       meaningCard2Html: '<span class="co-meaning-card__text">cuidar la salud</span>',
@@ -282,7 +282,7 @@ const I18N_EXTRA = {
       aboutLead:
         "Newon es una plataforma de vida global que resuelve problemas cotidianos de productividad, salud, finanzas, metas, diarios de viaje, registros familiares y cuidado de mascotas.",
       aboutCard0Html:
-        '<span class="co-about-card__value">11+</span><span class="co-about-card__label">Servicios</span>',
+        '<span class="co-about-card__value">12+</span><span class="co-about-card__label">Servicios</span>',
       workCard0Html: '<span class="co-work-card__text">Registrar hábitos</span>',
       workCard1Html: '<span class="co-work-card__text">Alcanzar metas</span>',
       workCard2Html: '<span class="co-work-card__text">Gestionar gastos</span>',
@@ -303,7 +303,7 @@ const I18N_EXTRA = {
       productLi5Html: PRODUCT_HTML.li5("Ecosistema unificado"),
       productsExtraHtml: `Hoy Newon incluye<br /><br />${APPS_LIST}<br /><br />y Newon+ conecta todos los servicios.`,
       visionP4Html:
-        "Partiendo de 11 apps, crecemos como plataforma de vida global donde docenas de servicios se conectan.",
+        "Partiendo de 12 apps, crecemos como plataforma de vida global donde docenas de servicios se conectan.",
       whyCard0Html:
         '<span class="co-stats-card__value">Experiencia duradera</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">No funciones de moda—</span><span class="co-stats-card__label-line">hábitos, viajes y familia que se abren cada día.</span></span>',
       whyCard1Html:
@@ -311,28 +311,28 @@ const I18N_EXTRA = {
       whyCard2Html:
         '<span class="co-stats-card__value">Ecosistema de vida conectado</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">Más allá de una sola app—</span><span class="co-stats-card__label-line">de hábitos a viajes, una plataforma.</span></span>',
       statCard0Html:
-        '<span class="co-stats-card__value">11+</span><span class="co-stats-card__label">Servicios</span>',
+        '<span class="co-stats-card__value">12+</span><span class="co-stats-card__label">Servicios</span>',
       statNewonPlusHtml: `<strong>Newon+</strong><br />Una suscripción<br />para todas las apps Newon.<br /><br />${NEWON_PLUS_APPS}<br /><br />Una cuenta.<br />Una suscripción.<br />La vida diaria, conectada.`,
     },
     np: {
-      imgShot1Alt: "Newon — Ideas en apps; plataforma de vida con 11+ apps y una cuenta",
-      imgShot5Alt: "Newon — 11+ apps, 177 países, 13 idiomas",
+      imgShot1Alt: "Newon — Ideas en apps; plataforma de vida con 12+ apps y una cuenta",
+      imgShot5Alt: "Newon — 12+ apps, 177 países, 13 idiomas",
     },
   },
   "pt-br": {
     meta: {
       description:
-        "A Newon é um estúdio de apps que transforma ideias em realidade. 11 apps de produtividade, saúde, finanças, família e viagens—OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World e Newon+.",
+        "A Newon é um estúdio de apps que transforma ideias em realidade. 12 apps de produtividade, saúde, finanças, família e viagens—OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World e Newon+.",
       keywords:
         "Newon, newon.app, estúdio de apps, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, diário de viagem, rastreador de viagem, países visitados, mapa de viagem, travel journal, travel tracker",
-      orgDescription: "Estúdio de apps que transforma ideias em realidade · 11 apps de vida",
+      orgDescription: "Estúdio de apps que transforma ideias em realidade · 12 apps de vida",
     },
-    about: { statApps: "11 serviços de apps", lead: "A Newon cria apps de produtividade, finanças, saúde, família e viagens." },
-    footer: { statLine3: "11 apps lançados" },
+    about: { statApps: "12 serviços de apps", lead: "A Newon cria apps de produtividade, finanças, saúde, família e viagens." },
+    footer: { statLine3: "12 apps lançados" },
     home: {
       heroLeadHtml:
         "A Newon não é uma empresa que só faz apps.<br /><br />Descobrimos pequenos problemas do dia a dia e os transformamos em experiências que as pessoas continuam usando—uma plataforma de vida global.<br /><br />Hábitos, metas, saúde, finanças, registros familiares e diários de viagem.<br /><br />Projetamos serviços que tornam a vida mais fácil e sustentável.",
-      heroStat0: "11+ serviços",
+      heroStat0: "12+ serviços",
       meaningCard0Html: '<span class="co-meaning-card__text">criar hábitos</span>',
       meaningCard1Html: '<span class="co-meaning-card__text">alcançar metas</span>',
       meaningCard2Html: '<span class="co-meaning-card__text">proteger a saúde</span>',
@@ -342,7 +342,7 @@ const I18N_EXTRA = {
       aboutLead:
         "A Newon é uma plataforma de vida global que resolve problemas do dia a dia em produtividade, saúde, finanças, metas, diários de viagem, registros familiares e cuidados com pets.",
       aboutCard0Html:
-        '<span class="co-about-card__value">11+</span><span class="co-about-card__label">Serviços</span>',
+        '<span class="co-about-card__value">12+</span><span class="co-about-card__label">Serviços</span>',
       workCard0Html: '<span class="co-work-card__text">Registrar hábitos</span>',
       workCard1Html: '<span class="co-work-card__text">Alcançar metas</span>',
       workCard2Html: '<span class="co-work-card__text">Gerenciar gastos</span>',
@@ -363,7 +363,7 @@ const I18N_EXTRA = {
       productLi5Html: PRODUCT_HTML.li5("Ecossistema unificado"),
       productsExtraHtml: `Hoje a Newon inclui<br /><br />${APPS_LIST}<br /><br />e o Newon+ conecta todos os serviços.`,
       visionP4Html:
-        "Começando com 11 apps, crescemos como plataforma de vida global onde dezenas de serviços se conectam.",
+        "Começando com 12 apps, crescemos como plataforma de vida global onde dezenas de serviços se conectam.",
       whyCard0Html:
         '<span class="co-stats-card__value">Experiência duradoura</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">Não recursos da moda—</span><span class="co-stats-card__label-line">hábitos, viagens e família abertos todo dia.</span></span>',
       whyCard1Html:
@@ -371,20 +371,20 @@ const I18N_EXTRA = {
       whyCard2Html:
         '<span class="co-stats-card__value">Ecossistema de vida conectado</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">Além de um único app—</span><span class="co-stats-card__label-line">de hábitos a viagens, uma plataforma.</span></span>',
       statCard0Html:
-        '<span class="co-stats-card__value">11+</span><span class="co-stats-card__label">Serviços</span>',
+        '<span class="co-stats-card__value">12+</span><span class="co-stats-card__label">Serviços</span>',
       statNewonPlusHtml: `<strong>Newon+</strong><br />Uma assinatura<br />para todos os apps Newon.<br /><br />${NEWON_PLUS_APPS}<br /><br />Uma conta.<br />Uma assinatura.<br />O dia a dia, conectado.`,
     },
     np: {
-      imgShot1Alt: "Newon — Ideias em apps; plataforma de vida com 11+ apps e uma conta",
-      imgShot5Alt: "Newon — 11+ apps, 177 países, 13 idiomas",
+      imgShot1Alt: "Newon — Ideias em apps; plataforma de vida com 12+ apps e uma conta",
+      imgShot5Alt: "Newon — 12+ apps, 177 países, 13 idiomas",
     },
   },
 };
 
 // fr/de/hi/id: use English structure with localized numbers + product HTML + travel cards
 function buildFromEn(localeOverrides) {
-  const base = structuredClone(LANG.en);
-  return deepMerge(base, localeOverrides);
+  // Do not clone LANG.en — that stamped English about/meta/home onto fr/de/hi/id.
+  return deepMerge({}, localeOverrides);
 }
 
 function deepMerge(target, source) {
@@ -404,17 +404,17 @@ Object.assign(LANG, I18N_EXTRA);
 LANG.fr = buildFromEn({
   meta: {
     description:
-      "Newon est un studio d'apps qui transforme les idées en réalité. 11 apps pour la productivité, la santé, la finance, la famille et les voyages.",
+      "Newon est un studio d'apps qui transforme les idées en réalité. 12 apps pour la productivité, la santé, la finance, la famille et les voyages.",
     keywords:
       "Newon, journal de voyage, carte de voyage, pays visités, travel journal, travel tracker, My World, GoalUp, CountUp",
-    orgDescription: "Studio d'apps qui transforme les idées en réalité · 11 apps de vie",
+    orgDescription: "Studio d'apps qui transforme les idées en réalité · 12 apps de vie",
   },
-  about: { statApps: "11 services d'apps" },
-  footer: { statLine3: "11 apps publiées" },
+      about: { statApps: "12 services d'apps", lead: "Newon crée des apps pour la productivité, la finance, la santé, la famille et les voyages." },
+  footer: { statLine3: "12 apps publiées" },
   home: {
-    heroStat0: "11+ services",
+    heroStat0: "12+ services",
     aboutCard0Html:
-      '<span class="co-about-card__value">11+</span><span class="co-about-card__label">Services</span>',
+      '<span class="co-about-card__value">12+</span><span class="co-about-card__label">Services</span>',
     meaningCard0Html: '<span class="co-meaning-card__text">créer des habitudes</span>',
     meaningCard1Html: '<span class="co-meaning-card__text">atteindre des objectifs</span>',
     meaningCard2Html: '<span class="co-meaning-card__text">protéger la santé</span>',
@@ -436,7 +436,7 @@ LANG.fr = buildFromEn({
     productLi5: "Écosystème unifié",
     productsExtraHtml: `Aujourd'hui, Newon propose<br /><br />${APPS_LIST}<br /><br />et Newon+ relie tous les services.`,
     visionP4Html:
-      "À partir de 11 apps, nous grandissons en plateforme de vie mondiale où des dizaines de services se connectent.",
+      "À partir de 12 apps, nous grandissons en plateforme de vie mondiale où des dizaines de services se connectent.",
     whyCard0Html:
       '<span class="co-stats-card__value">Expérience durable</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">Pas des fonctions à la mode—</span><span class="co-stats-card__label-line">habitudes, voyages et famille ouverts chaque jour.</span></span>',
     whyCard1Html:
@@ -444,29 +444,29 @@ LANG.fr = buildFromEn({
     whyCard2Html:
       '<span class="co-stats-card__value">Écosystème de vie connecté</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">Au-delà d\'une seule app—</span><span class="co-stats-card__label-line">des habitudes aux voyages, une plateforme.</span></span>',
     statCard0Html:
-      '<span class="co-stats-card__value">11+</span><span class="co-stats-card__label">Services</span>',
+      '<span class="co-stats-card__value">12+</span><span class="co-stats-card__label">Services</span>',
     statNewonPlusHtml: `<strong>Newon+</strong><br />Un abonnement<br />pour toutes les apps Newon.<br /><br />${NEWON_PLUS_APPS}<br /><br />Un compte.<br />Un abonnement.<br />Le quotidien, connecté.`,
   },
   np: {
-    imgShot1Alt: "Newon — Des idées en apps ; plateforme de vie avec 11+ apps et un compte",
-    imgShot5Alt: "Newon — 11+ apps, 177 pays, 13 langues",
+    imgShot1Alt: "Newon — Des idées en apps ; plateforme de vie avec 12+ apps et un compte",
+    imgShot5Alt: "Newon — 12+ apps, 177 pays, 13 langues",
   },
 });
 
 LANG.de = buildFromEn({
   meta: {
     description:
-      "Newon ist ein App-Studio, das Ideen Wirklichkeit werden lässt. 11 Apps für Produktivität, Gesundheit, Finanzen, Familie und Reisen.",
+      "Newon ist ein App-Studio, das Ideen Wirklichkeit werden lässt. 12 Apps für Produktivität, Gesundheit, Finanzen, Familie und Reisen.",
     keywords:
       "Newon, Reisetagebuch, Reise-Tracker, besuchte Länder, travel journal, travel tracker, My World, GoalUp, CountUp",
     orgDescription: "App-Studio, das Ideen Wirklichkeit werden lässt · 11 Life-Apps",
   },
-  about: { statApps: "11 App-Dienste" },
-  footer: { statLine3: "11 Apps veröffentlicht" },
+      about: { statApps: "12 App-Dienste", lead: "Newon entwickelt Apps für Produktivität, Finanzen, Gesundheit, Familie und Reisen." },
+  footer: { statLine3: "12 Apps veröffentlicht" },
   home: {
-    heroStat0: "11+ Dienste",
+    heroStat0: "12+ Dienste",
     aboutCard0Html:
-      '<span class="co-about-card__value">11+</span><span class="co-about-card__label">Dienste</span>',
+      '<span class="co-about-card__value">12+</span><span class="co-about-card__label">Dienste</span>',
     meaningCard0Html: '<span class="co-meaning-card__text">Gewohnheiten aufbauen</span>',
     meaningCard1Html: '<span class="co-meaning-card__text">Ziele erreichen</span>',
     meaningCard2Html: '<span class="co-meaning-card__text">Gesundheit schützen</span>',
@@ -488,7 +488,7 @@ LANG.de = buildFromEn({
     productLi5: "Vereintes Ökosystem",
     productsExtraHtml: `Heute umfasst Newon<br /><br />${APPS_LIST}<br /><br />und Newon+ verbindet alle Dienste.`,
     visionP4Html:
-      "Ausgehend von 11 Apps wachsen wir zu einer globalen Life-Plattform, in der Dutzende Dienste verbunden sind.",
+      "Ausgehend von 12 Apps wachsen wir zu einer globalen Life-Plattform, in der Dutzende Dienste verbunden sind.",
     whyCard0Html:
       '<span class="co-stats-card__value">Langlebige Erfahrung</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">Keine Trend-Features—</span><span class="co-stats-card__label-line">Gewohnheiten, Reisen und Familie, die man täglich öffnet.</span></span>',
     whyCard1Html:
@@ -496,29 +496,29 @@ LANG.de = buildFromEn({
     whyCard2Html:
       '<span class="co-stats-card__value">Verbundenes Life-Ökosystem</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">Mehr als eine App—</span><span class="co-stats-card__label-line">von Gewohnheiten bis Reisen, eine Plattform.</span></span>',
     statCard0Html:
-      '<span class="co-stats-card__value">11+</span><span class="co-stats-card__label">Dienste</span>',
+      '<span class="co-stats-card__value">12+</span><span class="co-stats-card__label">Dienste</span>',
     statNewonPlusHtml: `<strong>Newon+</strong><br />Ein Abo<br />für alle Newon-Apps.<br /><br />${NEWON_PLUS_APPS}<br /><br />Ein Konto.<br />Ein Abo.<br />Der Alltag, verbunden.`,
   },
   np: {
-    imgShot1Alt: "Newon — Ideen zu Apps; Life-Plattform mit 11+ Apps und einem Konto",
-    imgShot5Alt: "Newon — 11+ Apps, 177 Länder, 13 Sprachen",
+    imgShot1Alt: "Newon — Ideen zu Apps; Life-Plattform mit 12+ Apps und einem Konto",
+    imgShot5Alt: "Newon — 12+ Apps, 177 Länder, 13 Sprachen",
   },
 });
 
 LANG.hi = buildFromEn({
   meta: {
     description:
-      "Newon एक ऐप स्टूडियो है जो विचारों को वास्तविकता बनाता है। उत्पादकता, स्वास्थ्य, वित्त, परिवार और यात्रा के लिए 11 ऐप्स।",
+      "Newon एक ऐप स्टूडियो है जो विचारों को वास्तविकता बनाता है। उत्पादकता, स्वास्थ्य, वित्त, परिवार और यात्रा के लिए 12 ऐप्स।",
     keywords:
       "Newon, यात्रा जर्नल, यात्रा ट्रैकर, देखे गए देश, travel journal, travel tracker, My World",
     orgDescription: "विचारों को वास्तविकता बनाने वाला ऐप स्टूडियो · 11 लाइफ ऐप्स",
   },
-  about: { statApps: "11 ऐप सेवाएँ" },
-  footer: { statLine3: "11 ऐप्स जारी" },
+      about: { statApps: "12 ऐप सेवाएँ", lead: "Newon उत्पादकता, वित्त, स्वास्थ्य, परिवार और यात्रा के लिए ऐप्स बनाता है।" },
+  footer: { statLine3: "12 ऐप्स जारी" },
   home: {
-    heroStat0: "11+ सेवाएँ",
+    heroStat0: "12+ सेवाएँ",
     aboutCard0Html:
-      '<span class="co-about-card__value">11+</span><span class="co-about-card__label">सेवाएँ</span>',
+      '<span class="co-about-card__value">12+</span><span class="co-about-card__label">सेवाएँ</span>',
     meaningCard0Html: '<span class="co-meaning-card__text">आदतें बनाना</span>',
     meaningCard1Html: '<span class="co-meaning-card__text">लक्ष्य पूरा करना</span>',
     meaningCard2Html: '<span class="co-meaning-card__text">स्वास्थ्य बचाना</span>',
@@ -540,7 +540,7 @@ LANG.hi = buildFromEn({
     productLi5: "एकीकृत पारिस्थितिकी",
     productsExtraHtml: `आज Newon में<br /><br />${APPS_LIST}<br /><br />और Newon+ सभी सेवाओं को जोड़ता है।`,
     visionP4Html:
-      "11 ऐप्स से शुरू करके हम एक वैश्विक लाइफ प्लेटफ़ॉर्म बन रहे हैं जहाँ दर्जनों सेवाएँ जुड़ती हैं।",
+      "12 ऐप्स से शुरू करके हम एक वैश्विक लाइफ प्लेटफ़ॉर्म बन रहे हैं जहाँ दर्जनों सेवाएँ जुड़ती हैं।",
     whyCard0Html:
       '<span class="co-stats-card__value">टिकाऊ अनुभव</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">ट्रेंडी फीचर नहीं—</span><span class="co-stats-card__label-line">आदत, यात्रा और परिवार जो रोज़ खुलते हैं।</span></span>',
     whyCard1Html:
@@ -548,29 +548,29 @@ LANG.hi = buildFromEn({
     whyCard2Html:
       '<span class="co-stats-card__value">जुड़ा लाइफ इकोसिस्टम</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">एक ऐप से आगे—</span><span class="co-stats-card__label-line">आदत से यात्रा तक, एक प्लेटफ़ॉर्म।</span></span>',
     statCard0Html:
-      '<span class="co-stats-card__value">11+</span><span class="co-stats-card__label">सेवाएँ</span>',
+      '<span class="co-stats-card__value">12+</span><span class="co-stats-card__label">सेवाएँ</span>',
     statNewonPlusHtml: `<strong>Newon+</strong><br />एक सब्सक्रिप्शन<br />सभी Newon ऐप्स के लिए।<br /><br />${NEWON_PLUS_APPS}<br /><br />एक खाता।<br />एक सब्सक्रिप्शन।<br />रोज़ की ज़िंदगी, जुड़ी हुई।`,
   },
   np: {
-    imgShot1Alt: "Newon — विचारों से ऐप; 11+ ऐप और एक खाते वाला लाइफ प्लेटफ़ॉर्म",
-    imgShot5Alt: "Newon — 11+ ऐप, 177 देश, 13 भाषाएँ",
+    imgShot1Alt: "Newon — विचारों से ऐप; 12+ ऐप और एक खाते वाला लाइफ प्लेटफ़ॉर्म",
+    imgShot5Alt: "Newon — 12+ ऐप, 177 देश, 13 भाषाएँ",
   },
 });
 
 LANG.id = buildFromEn({
   meta: {
     description:
-      "Newon adalah studio aplikasi yang mewujudkan ide. 11 aplikasi untuk produktivitas, kesehatan, keuangan, keluarga, dan perjalanan.",
+      "Newon adalah studio aplikasi yang mewujudkan ide. 12 aplikasi untuk produktivitas, kesehatan, keuangan, keluarga, dan perjalanan.",
     keywords:
       "Newon, jurnal perjalanan, pelacak perjalanan, negara dikunjungi, travel journal, travel tracker, My World",
-    orgDescription: "Studio aplikasi yang mewujudkan ide · 11 aplikasi kehidupan",
+    orgDescription: "Studio aplikasi yang mewujudkan ide · 12 aplikasi kehidupan",
   },
-  about: { statApps: "11 layanan aplikasi" },
-  footer: { statLine3: "11 aplikasi dirilis" },
+      about: { statApps: "12 layanan aplikasi", lead: "Newon membuat aplikasi untuk produktivitas, keuangan, kesehatan, keluarga, dan perjalanan." },
+  footer: { statLine3: "12 aplikasi dirilis" },
   home: {
-    heroStat0: "11+ layanan",
+    heroStat0: "12+ layanan",
     aboutCard0Html:
-      '<span class="co-about-card__value">11+</span><span class="co-about-card__label">Layanan</span>',
+      '<span class="co-about-card__value">12+</span><span class="co-about-card__label">Layanan</span>',
     meaningCard0Html: '<span class="co-meaning-card__text">membangun kebiasaan</span>',
     meaningCard1Html: '<span class="co-meaning-card__text">mencapai tujuan</span>',
     meaningCard2Html: '<span class="co-meaning-card__text">menjaga kesehatan</span>',
@@ -592,7 +592,7 @@ LANG.id = buildFromEn({
     productLi5: "Ekosistem terpadu",
     productsExtraHtml: `Hari ini Newon mencakup<br /><br />${APPS_LIST}<br /><br />dan Newon+ menghubungkan semua layanan.`,
     visionP4Html:
-      "Mulai dari 11 aplikasi, kami tumbuh menjadi platform kehidupan global di mana puluhan layanan saling terhubung.",
+      "Mulai dari 12 aplikasi, kami tumbuh menjadi platform kehidupan global di mana puluhan layanan saling terhubung.",
     whyCard0Html:
       '<span class="co-stats-card__value">Pengalaman yang bertahan</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">Bukan fitur tren—</span><span class="co-stats-card__label-line">kebiasaan, perjalanan, dan keluarga yang dibuka setiap hari.</span></span>',
     whyCard1Html:
@@ -600,12 +600,12 @@ LANG.id = buildFromEn({
     whyCard2Html:
       '<span class="co-stats-card__value">Ekosistem kehidupan terhubung</span><span class="co-stats-card__label"><span class="co-stats-card__label-line">Lebih dari satu aplikasi—</span><span class="co-stats-card__label-line">dari kebiasaan hingga perjalanan, satu platform.</span></span>',
     statCard0Html:
-      '<span class="co-stats-card__value">11+</span><span class="co-stats-card__label">Layanan</span>',
+      '<span class="co-stats-card__value">12+</span><span class="co-stats-card__label">Layanan</span>',
     statNewonPlusHtml: `<strong>Newon+</strong><br />Satu langganan<br />untuk semua aplikasi Newon.<br /><br />${NEWON_PLUS_APPS}<br /><br />Satu akun.<br />Satu langganan.<br />Kehidupan sehari-hari, terhubung.`,
   },
   np: {
-    imgShot1Alt: "Newon — Ide jadi app; platform kehidupan dengan 11+ app dan satu akun",
-    imgShot5Alt: "Newon — 11+ app, 177 negara, 13 bahasa",
+    imgShot1Alt: "Newon — Ide jadi app; platform kehidupan dengan 12+ app dan satu akun",
+    imgShot5Alt: "Newon — 12+ app, 177 negara, 13 bahasa",
   },
 });
 
@@ -640,19 +640,32 @@ for (const lang of Object.keys(LANG)) {
 
 // Residual 10→11 sweep for fields not explicitly patched
 const residual = [
-  [/10\+/g, "11+"],
-  [/Starting from 10 apps/g, "Starting from 11 apps"],
-  [/• 10 /g, "• 11 "],
-  [/Partiendo de 10 apps/g, "Partiendo de 11 apps"],
-  [/À partir de 10 apps/g, "À partir de 11 apps"],
-  [/Começando com 10 apps/g, "Começando com 11 apps"],
-  [/Mit 10 Apps/g, "Mit 11 Apps"],
-  [/Dari 10 aplikasi/g, "Dari 11 aplikasi"],
-  [/10 ऐप से/g, "11 ऐप से"],
-  [/10개의 앱/g, "11개의 앱"],
-  [/10개 앱/g, "11개 앱"],
-  [/10本/g, "11本"],
-  [/\b10 apps\b/g, "11 apps"],
+  [/10\+/g, "12+"],
+  [/11\+/g, "12+"],
+  [/Starting from 10 apps/g, "Starting from 12 apps"],
+  [/Starting from 11 apps/g, "Starting from 12 apps"],
+  [/• 10 /g, "• 12 "],
+  [/• 11 /g, "• 12 "],
+  [/Partiendo de 10 apps/g, "Partiendo de 12 apps"],
+  [/Partiendo de 11 apps/g, "Partiendo de 12 apps"],
+  [/À partir de 10 apps/g, "À partir de 12 apps"],
+  [/À partir de 11 apps/g, "À partir de 12 apps"],
+  [/Começando com 10 apps/g, "Começando com 12 apps"],
+  [/Começando com 11 apps/g, "Começando com 12 apps"],
+  [/Mit 10 Apps/g, "Mit 12 Apps"],
+  [/Mit 11 Apps/g, "Mit 12 Apps"],
+  [/Dari 10 aplikasi/g, "Dari 12 aplikasi"],
+  [/Dari 11 aplikasi/g, "Dari 12 aplikasi"],
+  [/10 ऐप से/g, "12 ऐप से"],
+  [/11 ऐप से/g, "12 ऐप से"],
+  [/10개의 앱/g, "12개의 앱"],
+  [/11개의 앱/g, "12개의 앱"],
+  [/10개 앱/g, "12개 앱"],
+  [/11개 앱/g, "12개 앱"],
+  [/10本/g, "12本"],
+  [/11本/g, "12本"],
+  [/10 apps/g, "12 apps"],
+  [/11 apps/g, "12 apps"],
 ];
 function fixStr(str) {
   let out = str;

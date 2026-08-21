@@ -46,7 +46,6 @@ export const INTRO_APPS = [
   { ns: "pu", name: "PiggyUp", emoji: "🐷" },
   { ns: "gu", name: "GoalUp", emoji: "🎯" },
   { ns: "cu", name: "CountUp", emoji: "🔢" },
-  { ns: "nt", name: "Noting", emoji: "📚" },
   { ns: "np", name: "Newon", emoji: "📦" },
 ];
 
@@ -58,6 +57,5 @@ export const DATA_FILE_BY_NS = {
   pu: "piggyup-data.mjs",
   gu: "goalup-data.mjs",
   cu: "countup-data.mjs",
-  nt: "noting-data.mjs",
   np: "newon-plus-data.mjs",
 };

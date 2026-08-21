@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * Normalize every apps flyout + mobile drawer to the canonical 11-app order
+ * Normalize every apps flyout + mobile drawer to the canonical order
  * (no duplicates, correct logos). Idempotent — safe to re-run on every build.
  *
  * Order: OX MONTH → SubPing → Pillmate → SAVY → BabyLog → PetLog →
- *        PiggyUp → GoalUp → CountUp → Newon → My World
+ *        PiggyUp → GoalUp → CountUp → Newon → My World → 404: HUMAN
  */
 import fs from "fs";
 import path from "path";
@@ -124,8 +124,20 @@ const APPS = [
     navHint: "{{t:nav.mobileMyworldHint}}",
     drawerKey: "drawerMw",
   },
+  {
+    id: "fh",
+    href: "/{{LANG_DIR}}/404-human/",
+    top: "/{{LANG_DIR}}/404-human/",
+    logo: "/404-human-logo.png",
+    name: "404: HUMAN",
+    desc: "{{t:nav.human404Desc}}",
+    navHint: "{{t:nav.mobileHuman404Hint}}",
+    drawerKey: "drawerFh",
+    badge: "GAME",
+  },
 ];
 
+const EXPECTED_COUNT = APPS.length;
 const PAGE_PREFIXES = ["ox", "sp", "pm", "sv", "bl", "pl", "pu", "gu", "cu", "np", "mw", "nt"];
 
 function detectCurrentId(block) {
@@ -143,8 +155,16 @@ function detectDrawerPrefix(block) {
   return m ? m[1] : null;
 }
 
+function nameWithBadge(app, nameClass) {
+  if (app.badge) {
+    return `<span class="${nameClass}">${app.name} <span class="${nameClass.replace("__name", "__badge")}">${app.badge}</span></span>`;
+  }
+  return `<span class="${nameClass}">${app.name}</span>`;
+}
+
 function flyoutItem(app, isCurrent) {
   const href = isCurrent ? app.top : app.href;
+  const nameEl = nameWithBadge(app, "apps-flyout__name");
   if (isCurrent) {
     return `<a
                   href="${href}"
@@ -156,7 +176,7 @@ function flyoutItem(app, isCurrent) {
                     <img src="${app.logo}" alt="" width="44" height="44" />
                   </span>
                   <span class="apps-flyout__meta">
-                    <span class="apps-flyout__name">${app.name}</span>
+                    ${nameEl}
                     <span class="apps-flyout__desc">${app.desc}</span>
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
@@ -167,7 +187,7 @@ function flyoutItem(app, isCurrent) {
                     <img src="${app.logo}" alt="" width="44" height="44" />
                   </span>
                   <span class="apps-flyout__meta">
-                    <span class="apps-flyout__name">${app.name}</span>
+                    ${nameEl}
                     <span class="apps-flyout__desc">${app.desc}</span>
                   </span>
                   <span class="apps-flyout__go" aria-hidden="true">→</span>
@@ -176,6 +196,8 @@ function flyoutItem(app, isCurrent) {
 
 function mobileHint(app, pagePrefix, isCurrent) {
   if (!pagePrefix) return app.navHint;
+  // External / non-page entries always use nav.* hints
+  if (app.id === "fh") return app.navHint;
   // My World page has full drawer* keys including drawerNp / drawerMw
   if (pagePrefix === "mw") return `{{t:mw.${app.drawerKey}}}`;
   if (pagePrefix === "np") {
@@ -196,12 +218,13 @@ function mobileItem(app, isCurrent, pagePrefix) {
     ? "mobile-apps-drawer__item mobile-apps-drawer__item--current"
     : "mobile-apps-drawer__item";
   const hint = mobileHint(app, pagePrefix, isCurrent);
+  const nameEl = nameWithBadge(app, "mobile-apps-drawer__name");
   return `<a href="${href}" class="${cls}">
               <span class="mobile-apps-drawer__icon">
                 <img src="${app.logo}" alt="" width="36" height="36" />
               </span>
               <span class="mobile-apps-drawer__text">
-                <span class="mobile-apps-drawer__name">${app.name}</span>
+                ${nameEl}
                 <span class="mobile-apps-drawer__hint">${hint}</span>
               </span>
             </a>`;
@@ -226,23 +249,17 @@ function normalizeFlyoutPanels(html) {
 }
 
 function normalizeMobileDrawers(html) {
-  // Home-style: details.mobile-apps-drawer
+  // Any details.mobile-apps-drawer (home id=, app --ox modifier, etc.)
   html = html.replace(
-    /(<details class="mobile-apps-drawer">\s*<summary[\s\S]*?<\/summary>)([\s\S]*?)(<\/details>)/g,
+    /(<details\b[^>]*\bclass="[^"]*\bmobile-apps-drawer\b[^"]*"[^>]*>\s*<summary[\s\S]*?<\/summary>)([\s\S]*?)(<\/details>)/g,
     (full, open, inner, close) => {
-      const currentId = detectCurrentId(inner);
-      const prefix = detectDrawerPrefix(inner);
-      return `${open}\n${buildMobileInner(currentId, prefix)}\n          ${close}`;
-    }
-  );
-  // App-page style: div.ox-mobile-menu > details
-  html = html.replace(
-    /(<div class="ox-mobile-menu"[\s\S]*?<details class="mobile-apps-drawer">\s*<summary[\s\S]*?<\/summary>)([\s\S]*?)(<\/details>)/g,
-    (full, open, inner, close) => {
-      // Already handled by previous if nested the same — skip if already 11 unique
-      const names = [...inner.matchAll(/mobile-apps-drawer__name">([^<]+)/g)].map((m) => m[1]);
+      const names = [...inner.matchAll(/mobile-apps-drawer__name">([^<]+)/g)].map((m) =>
+        m[1].trim()
+      );
       const unique = new Set(names);
-      if (names.length === 11 && unique.size === 11) return full;
+      if (names.length === EXPECTED_COUNT && unique.size === EXPECTED_COUNT) {
+        // Still rebuild so badge / new entries stay in sync
+      }
       const currentId = detectCurrentId(inner);
       const prefix = detectDrawerPrefix(inner);
       return `${open}\n${buildMobileInner(currentId, prefix)}\n          ${close}`;
@@ -290,7 +307,6 @@ const files = [
   path.join(ROOT, "templates", "pillmate-app-inc.html"),
   path.join(ROOT, "templates", "savy-app-inc.html"),
   path.join(ROOT, "templates", "babylog-app-inc.html"),
-  path.join(ROOT, "templates", "noting-app-inc.html"),
 ];
 
 for (const f of files) {

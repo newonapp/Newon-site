@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
  * Reads locale JSON from locales/*.json and templates/*.html,
- * emits: {lang}/index.html, {lang}/privacy/, {lang}/terms/,
- * per-app delete-account pages under each {lang}/, plus root redirects.
+ * emits: {lang}/index.html, {lang}/privacy/, {lang}/terms/, {lang}/about/,
+ * {lang}/business/, per-app delete-account pages under each {lang}/, plus root redirects.
  */
 import fs from "fs";
 import path from "path";
@@ -10,7 +10,13 @@ import { fileURLToPath } from "url";
 import { spawnSync } from "child_process";
 
 import { DELETE_ACCOUNT_APPS } from "./delete-account-data.mjs";
-import { APP_CATALOG } from "./portfolio-data.mjs";
+import {
+  APP_CATALOG,
+  BUSINESS_APP_EXTRAS,
+  BUSINESS_ECOSYSTEM,
+} from "./portfolio-data.mjs";
+import { generateBusinessDetails, BUSINESS_DETAIL_PAGES } from "./gen-business-details.mjs";
+import { publishedArticles } from "./news-data.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -220,6 +226,31 @@ function pick(flat, flatEn, key) {
   return val;
 }
 
+function businessEcosystemHtml(flat, flatEn) {
+  const bySlug = Object.fromEntries(
+    [...APP_CATALOG, ...BUSINESS_APP_EXTRAS].map((app) => [app.slug, app])
+  );
+  return BUSINESS_ECOSYSTEM.map((group) => {
+    const title = escapeHtml(pick(flat, flatEn, group.titleKey) || group.titleKey);
+    const apps = group.slugs
+      .map((slug) => bySlug[slug])
+      .filter(Boolean)
+      .map(
+        (app) => `<a class="bz-app" href="../${app.homeHash}">
+                  <img src="${escapeHtml(app.icon)}" alt="" width="36" height="36" decoding="async" />
+                  <span>${escapeHtml(app.name)}</span>
+                </a>`
+      )
+      .join("\n                ");
+    return `<div class="bz-eco-card">
+              <h3>${title}</h3>
+              <div class="bz-app-row">
+                ${apps}
+              </div>
+            </div>`;
+  }).join("\n            ");
+}
+
 function applyTemplate(template, flat, flatEn) {
   let out = template.replace(/\{\{html:([^}]+)\}\}/g, (_, key) => {
     const val = pick(flat, flatEn, key);
@@ -321,7 +352,7 @@ for (const { dir, file, htmlLang } of LANGS) {
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, "index.html"), tpl);
 
-  for (const page of ["privacy", "terms", "about"]) {
+  for (const page of ["privacy", "terms", "about", "business"]) {
     let pt = fs.readFileSync(path.join(ROOT, "templates", `${page}.html`), "utf8");
     pt = pt.replace(/\{\{LANG_DIR\}\}/g, dir);
     pt = pt.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
@@ -330,6 +361,9 @@ for (const { dir, file, htmlLang } of LANGS) {
     pt = pt.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/${page}/`);
     pt = applyTemplate(pt, flat, flatEn);
     pt = applyLocImgs(pt, dir);
+    if (page === "business") {
+      pt = pt.replace(/\{\{BUSINESS_ECOSYSTEM\}\}/g, businessEcosystemHtml(flat, flatEn));
+    }
     const pd = path.join(ROOT, dir, page);
     fs.mkdirSync(pd, { recursive: true });
     fs.writeFileSync(path.join(pd, "index.html"), pt);
@@ -401,6 +435,38 @@ function writeRootAboutRedirect() {
 
 writeRootAboutRedirect();
 
+function writeRootNewsRedirect() {
+  const list = JSON.stringify(LANGS.map((l) => l.dir));
+  const html = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="canonical" href="${SITE_ORIGIN}/en/news/"/><title>Newon — News</title><script>(function(){var L=${list};var d="en";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/news/"+(location.hash||""));})();</script></head><body style="font-family:system-ui,sans-serif;padding:1.5rem"><p><a href="/en/news/">News</a> · <a href="/ko/news/">새 소식</a></p></body></html>`;
+  const dir = path.join(ROOT, "news");
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, "index.html"), html);
+}
+
+writeRootNewsRedirect();
+
+function writeRootIdeasRedirect() {
+  const list = JSON.stringify(LANGS.map((l) => l.dir));
+  const html = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="canonical" href="${SITE_ORIGIN}/en/ideas/"/><title>Newon — Ideas</title><script>(function(){var L=${list};var d="en";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/ideas/"+(location.hash||""));})();</script></head><body style="font-family:system-ui,sans-serif;padding:1.5rem"><p><a href="/en/ideas/">Ideas</a> · <a href="/ko/ideas/">아이디어</a></p></body></html>`;
+  const dir = path.join(ROOT, "ideas");
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, "index.html"), html);
+}
+
+writeRootIdeasRedirect();
+
+/** Root /business/ → localized business page (honors newon-lang-dir). */
+function writeRootBusinessRedirect() {
+  const list = JSON.stringify(LANGS.map((l) => l.dir));
+  const html = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="canonical" href="${SITE_ORIGIN}/en/business/"/><title>Newon — Business</title><script>(function(){var L=${list};var d="en";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/business/"+(location.hash||""));})();</script></head><body style="font-family:system-ui,sans-serif;padding:1.5rem"><p><a href="/en/business/">Business</a> · <a href="/ko/business/">Newon 비즈니스</a></p></body></html>`;
+  const dir = path.join(ROOT, "business");
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, "index.html"), html);
+}
+
+writeRootBusinessRedirect();
+generateBusinessDetails();
+
 /** robots.txt at site root (allow indexed pages; hide QR business-card slug). */
 function writeRobotsTxt() {
   const body = [
@@ -450,6 +516,63 @@ function writeSitemap() {
     ];
     for (const { dir: d } of LANGS) {
       urls.push({ loc: `${SITE_ORIGIN}/${d}/about/`, priority: "0.7", changefreq: "monthly", alternates: aboutAlts });
+    }
+  }
+
+  for (const page of ["news", "ideas"]) {
+    const alts = [
+      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),
+      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${page}/` },
+    ];
+    for (const { dir: d } of LANGS) {
+      urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.6", changefreq: "monthly", alternates: alts });
+    }
+  }
+
+  for (const article of publishedArticles()) {
+    const alts = [
+      ...LANGS.map(({ dir: d, hreflang: h }) => ({
+        hreflang: h,
+        href: `${SITE_ORIGIN}/${d}/news/${article.slug}/`,
+      })),
+      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/news/${article.slug}/` },
+    ];
+    for (const { dir: d } of LANGS) {
+      urls.push({
+        loc: `${SITE_ORIGIN}/${d}/news/${article.slug}/`,
+        priority: "0.55",
+        changefreq: "monthly",
+        alternates: alts,
+      });
+    }
+  }
+
+  // Business pages per language.
+  {
+    const bizAlts = [
+      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/business/` })),
+      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/business/` },
+    ];
+    for (const { dir: d } of LANGS) {
+      urls.push({ loc: `${SITE_ORIGIN}/${d}/business/`, priority: "0.7", changefreq: "monthly", alternates: bizAlts });
+    }
+  }
+
+  for (const page of BUSINESS_DETAIL_PAGES) {
+    const alts = [
+      ...LANGS.map(({ dir: d, hreflang: h }) => ({
+        hreflang: h,
+        href: `${SITE_ORIGIN}/${d}/business/${page.slug}/`,
+      })),
+      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/business/${page.slug}/` },
+    ];
+    for (const { dir: d } of LANGS) {
+      urls.push({
+        loc: `${SITE_ORIGIN}/${d}/business/${page.slug}/`,
+        priority: "0.6",
+        changefreq: "monthly",
+        alternates: alts,
+      });
     }
   }
 
@@ -545,5 +668,7 @@ function writeSitemap() {
 
 writeRobotsTxt();
 writeSitemap();
+runScript("render-news.mjs");
+runScript("render-ideas.mjs");
 
 console.log("i18n build OK:", LANGS.map((l) => l.dir).join(", "));

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="{{HTML_LANG}}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ARTICLE_SEO_TITLE}}</title>
+    <meta name="description" content="{{ARTICLE_SEO_DESC}}" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="{{CANONICAL}}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{CANONICAL}}" />
+    <meta property="og:locale" content="{{OG_LOCALE}}" />
+    <meta property="og:title" content="{{ARTICLE_SEO_TITLE}}" />
+    <meta property="og:description" content="{{ARTICLE_SEO_DESC}}" />
+    <meta property="og:site_name" content="{{t:meta.ogSiteName}}" />
+    <meta property="og:image" content="{{ARTICLE_OG_IMAGE}}" />
+    <meta property="article:published_time" content="{{ARTICLE_ISO}}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ARTICLE_SEO_TITLE}}" />
+    <meta name="twitter:description" content="{{ARTICLE_SEO_DESC}}" />
+    <meta name="twitter:image" content="{{ARTICLE_OG_IMAGE}}" />
+{{HREFLANG_BLOCK}}
+{{JSON_LD}}
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/news/news.css?v=20260821y" />
+    <script src="/theme-shell.js"></script>
+    <script src="/lang-nav.js?v=20260821stay2"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#nw-article">{{t:common.skipToContent}}</a>
+    <header class="site-header snav-header">
+      <div class="container snav-header__inner">
+        <a class="snav-brand" href="../../">
+          <img src="/logo.png" alt="Newon" width="36" height="36" />
+          <span>Nawon Kyung</span>
+        </a>
+        <nav class="snav-nav" aria-label="News">
+          <a href="../../">{{t:nav.home}}</a>
+          <a href="../">{{t:news.hubName}}</a>
+          <a href="../../portfolio/">{{t:news.navApps}}</a>
+          <a href="../../ideas/">Ideas</a>
+        </nav>
+        <div class="snav-actions">
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-news-d">{{t:ui.language}}</label>
+            <select id="lang-select-news-d" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
+              <option value="ko">{{t:ui.langKo}}</option>
+              <option value="en">{{t:ui.langEn}}</option>
+              <option value="ja">{{t:ui.langJa}}</option>
+              <option value="es">{{t:ui.langEs}}</option>
+              <option value="pt-br">{{t:ui.langPtBr}}</option>
+              <option value="fr">{{t:ui.langFr}}</option>
+              <option value="de">{{t:ui.langDe}}</option>
+              <option value="hi">{{t:ui.langHi}}</option>
+              <option value="id">{{t:ui.langId}}</option>
+            </select>
+          </div>
+          <button
+            type="button"
+            class="navbar-theme-toggle"
+            data-theme-toggle
+            data-label-light="{{t:common.themeToLight}}"
+            data-label-dark="{{t:common.themeToDark}}"
+            title="{{t:common.themeToggle}}"
+            aria-label="{{t:common.themeToDark}}"
+          >🌙</button>
+          <button
+            class="nav-toggle nav-toggle--toolbar"
+            type="button"
+            data-snav-toggle
+            aria-expanded="false"
+            aria-controls="snav-mobile-nav"
+            aria-label="{{t:common.menuOpen}}"
+          >
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <nav id="snav-mobile-nav" class="snav-mobile-nav" hidden>
+        <a href="../../">{{t:nav.home}}</a>
+        <a href="../">{{t:news.hubName}}</a>
+        <a href="../../portfolio/">{{t:news.navApps}}</a>
+        <a href="../../ideas/">Ideas</a>
+      </nav>
+    </header>
+
+    <article id="nw-article" class="nw-article" data-category="{{ARTICLE_CATEGORY}}">
+      <div class="nw-article__inner">
+        <p class="nw-back"><a href="../">{{t:news.back}}</a></p>
+        {{ARTICLE_LAUNCH_BADGE}}
+        {{ARTICLE_LOGO}}
+        <p class="nw-article__cat">{{ARTICLE_CAT_EN}}</p>
+        <p class="nw-article__date"><time datetime="{{ARTICLE_ISO}}">{{ARTICLE_DATE}}</time></p>
+        {{ARTICLE_PRODUCT_LINE}}
+        <h1>{{ARTICLE_TITLE_HTML}}</h1>
+        <p class="nw-article__summary">{{ARTICLE_LEAD}}</p>
+        {{ARTICLE_META}}
+        {{ARTICLE_FIGURE}}
+        <div class="nw-body">
+          {{ARTICLE_BODY}}
+        </div>
+        {{ARTICLE_FEATURE}}
+        {{ARTICLE_WHATS}}
+        {{ARTICLE_VERSION}}
+        {{ARTICLE_RELATED}}
+        {{ARTICLE_PAGER}}
+        {{ARTICLE_MORE}}
+        <p class="nw-all-news"><a href="../">{{t:news.allNewsCta}}</a></p>
+      </div>
+    </article>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img class="footer-brand-img" src="/logo.png" alt="" width="32" height="32" />
+          <span>Newon</span>
+        </div>
+        <div class="footer-links">
+          <a class="footer-link" href="https://www.newon.app">https://www.newon.app</a>
+          <p class="footer-copy">{{t:footer.tagline}}</p>
+        </div>
+        <p class="footer-copy">© <span id="year"></span> Newon. {{t:footer.rights}}</p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var cur = "{{LANG_DIR}}";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+        var year = document.getElementById("year");
+        if (year) year.textContent = String(new Date().getFullYear());
+        var toggle = document.querySelector("[data-snav-toggle]");
+        var drawer = document.getElementById("snav-mobile-nav");
+        if (toggle && drawer) {
+          toggle.addEventListener("click", function () {
+            var open = !drawer.hasAttribute("hidden");
+            if (open) { drawer.setAttribute("hidden", ""); toggle.setAttribute("aria-expanded", "false"); }
+            else { drawer.removeAttribute("hidden"); toggle.setAttribute("aria-expanded", "true"); }
+          });
+        }
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
+  </body>
+</html>

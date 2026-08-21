@@ -27,7 +27,7 @@ window.NEWON_CARD = {
     email: "newon@newon.app",
     website: "https://www.newon.app",
   },
-  linkOrder: ["home", "appStore", "googlePlay", "portfolio", "contact", "saveContact"],
+  linkOrder: ["home", "appStore", "googlePlay", "portfolio", "pages", "contact", "saveContact"],
   links: {
     home: {
       type: "link",
@@ -59,6 +59,14 @@ window.NEWON_CARD = {
       href: "/portfolio/",
       label: "Portfolio",
       hint: "Selected works",
+      external: false,
+    },
+    pages: {
+      type: "link",
+      icon: "pages",
+      href: "/business/",
+      label: "Newon Business",
+      hint: "Business",
       external: false,
     },
     contact: {

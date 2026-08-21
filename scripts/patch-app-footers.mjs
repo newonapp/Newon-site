@@ -18,7 +18,6 @@ const INC_FILES = [
   { file: "goalup-app-inc.html", ns: "gu", slug: "goalup" },
   { file: "countup-app-inc.html", ns: "cu", slug: "countup" },
   { file: "newon-plus-app-inc.html", ns: "np", slug: "newon" },
-  { file: "noting-app-inc.html", ns: "nt", slug: "noting" },
 ];
 
 const INDEX_APP_IDS = [
@@ -30,7 +29,6 @@ const INDEX_APP_IDS = [
   { id: "goalup-app", ns: "gu", slug: "goalup" },
   { id: "countup-app", ns: "cu", slug: "countup" },
   { id: "newon-plus-app", ns: "np", slug: "newon" },
-  { id: "noting-app", ns: "nt", slug: "noting" },
 ];
 
 function deleteAccountBlock(ns, slug) {

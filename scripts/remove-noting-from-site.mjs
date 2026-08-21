@@ -101,8 +101,9 @@ function patchFile(relPath, { stripSection = false } = {}) {
 }
 
 patchFile("templates/index.html", { stripSection: true });
-for (const name of ["templates/petlog-app-inc.html", "templates/piggyup-app-inc.html"]) {
-  patchFile(name);
+for (const name of fs.readdirSync(path.join(ROOT, "templates"))) {
+  if (!name.endsWith(".html") || name === "index.html") continue;
+  patchFile(`templates/${name}`);
 }
 
 console.log("remove-noting-from-site: OK");

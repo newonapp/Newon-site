@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.newon.app/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -34,7 +34,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -66,7 +66,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -82,7 +82,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -98,7 +98,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -114,7 +114,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -130,7 +130,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -146,7 +146,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/" />
@@ -162,7 +162,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/about/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -178,7 +178,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/about/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -194,7 +194,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/about/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -210,7 +210,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/about/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -226,7 +226,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/about/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -242,7 +242,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/about/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -258,7 +258,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/about/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -274,7 +274,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/about/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -290,7 +290,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/about/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/about/" />
@@ -305,8 +305,1160 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/about/" />
   </url>
   <url>
+    <loc>https://www.newon.app/ko/news/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/en/news/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ja/news/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/es/news/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/pt-br/news/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/fr/news/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/de/news/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/hi/news/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/id/news/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ko/ideas/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/ideas/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/ideas/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/ideas/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/ideas/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/ideas/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/ideas/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/ideas/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/ideas/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/ideas/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/ideas/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/en/ideas/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/ideas/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/ideas/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/ideas/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/ideas/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/ideas/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/ideas/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/ideas/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/ideas/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/ideas/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/ideas/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ja/ideas/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/ideas/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/ideas/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/ideas/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/ideas/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/ideas/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/ideas/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/ideas/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/ideas/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/ideas/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/ideas/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/es/ideas/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/ideas/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/ideas/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/ideas/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/ideas/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/ideas/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/ideas/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/ideas/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/ideas/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/ideas/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/ideas/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/pt-br/ideas/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/ideas/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/ideas/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/ideas/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/ideas/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/ideas/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/ideas/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/ideas/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/ideas/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/ideas/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/ideas/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/fr/ideas/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/ideas/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/ideas/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/ideas/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/ideas/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/ideas/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/ideas/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/ideas/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/ideas/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/ideas/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/ideas/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/de/ideas/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/ideas/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/ideas/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/ideas/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/ideas/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/ideas/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/ideas/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/ideas/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/ideas/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/ideas/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/ideas/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/hi/ideas/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/ideas/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/ideas/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/ideas/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/ideas/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/ideas/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/ideas/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/ideas/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/ideas/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/ideas/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/ideas/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/id/ideas/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/ideas/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/ideas/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/ideas/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/ideas/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/ideas/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/ideas/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/ideas/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/ideas/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/ideas/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/ideas/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ko/news/petlog-community-update/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/petlog-community-update/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/en/news/petlog-community-update/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/petlog-community-update/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ja/news/petlog-community-update/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/petlog-community-update/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/es/news/petlog-community-update/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/petlog-community-update/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/pt-br/news/petlog-community-update/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/petlog-community-update/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/fr/news/petlog-community-update/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/petlog-community-update/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/de/news/petlog-community-update/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/petlog-community-update/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/hi/news/petlog-community-update/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/petlog-community-update/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/id/news/petlog-community-update/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/petlog-community-update/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/petlog-community-update/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ko/business/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/en/business/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ja/business/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/es/business/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/pt-br/business/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/fr/business/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/de/business/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/hi/business/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/id/business/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ko/business/partnership/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/partnership/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/en/business/partnership/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/partnership/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ja/business/partnership/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/partnership/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/es/business/partnership/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/partnership/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/pt-br/business/partnership/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/partnership/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/fr/business/partnership/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/partnership/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/de/business/partnership/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/partnership/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/hi/business/partnership/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/partnership/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/id/business/partnership/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/partnership/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/partnership/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ko/business/service/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/service/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/service/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/service/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/service/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/service/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/service/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/service/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/service/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/service/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/service/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/en/business/service/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/service/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/service/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/service/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/service/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/service/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/service/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/service/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/service/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/service/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/service/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ja/business/service/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/service/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/service/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/service/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/service/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/service/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/service/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/service/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/service/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/service/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/service/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/es/business/service/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/service/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/service/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/service/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/service/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/service/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/service/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/service/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/service/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/service/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/service/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/pt-br/business/service/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/service/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/service/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/service/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/service/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/service/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/service/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/service/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/service/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/service/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/service/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/fr/business/service/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/service/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/service/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/service/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/service/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/service/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/service/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/service/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/service/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/service/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/service/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/de/business/service/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/service/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/service/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/service/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/service/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/service/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/service/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/service/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/service/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/service/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/service/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/hi/business/service/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/service/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/service/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/service/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/service/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/service/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/service/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/service/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/service/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/service/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/service/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/id/business/service/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/service/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/service/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/service/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/service/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/service/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/service/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/service/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/service/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/service/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/service/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ko/business/promotion/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/promotion/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/en/business/promotion/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/promotion/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ja/business/promotion/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/promotion/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/es/business/promotion/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/promotion/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/pt-br/business/promotion/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/promotion/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/fr/business/promotion/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/promotion/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/de/business/promotion/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/promotion/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/hi/business/promotion/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/promotion/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/id/business/promotion/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/promotion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/promotion/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ko/business/development/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/development/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/development/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/development/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/development/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/development/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/development/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/development/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/development/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/development/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/development/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/en/business/development/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/development/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/development/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/development/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/development/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/development/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/development/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/development/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/development/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/development/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/development/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ja/business/development/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/development/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/development/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/development/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/development/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/development/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/development/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/development/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/development/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/development/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/development/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/es/business/development/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/development/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/development/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/development/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/development/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/development/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/development/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/development/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/development/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/development/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/development/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/pt-br/business/development/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/development/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/development/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/development/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/development/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/development/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/development/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/development/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/development/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/development/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/development/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/fr/business/development/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/development/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/development/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/development/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/development/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/development/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/development/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/development/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/development/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/development/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/development/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/de/business/development/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/development/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/development/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/development/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/development/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/development/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/development/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/development/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/development/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/development/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/development/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/hi/business/development/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/development/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/development/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/development/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/development/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/development/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/development/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/development/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/development/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/development/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/development/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/id/business/development/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/business/development/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/business/development/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/business/development/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/business/development/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/business/development/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/business/development/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/business/development/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/business/development/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/business/development/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/business/development/" />
+  </url>
+  <url>
     <loc>https://www.newon.app/ko/privacy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -322,7 +1474,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/privacy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -338,7 +1490,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/privacy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -354,7 +1506,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/privacy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -370,7 +1522,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/privacy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -386,7 +1538,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/privacy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -402,7 +1554,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/privacy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -418,7 +1570,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/privacy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -434,7 +1586,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/privacy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/privacy/" />
@@ -450,7 +1602,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/terms/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -466,7 +1618,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/terms/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -482,7 +1634,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/terms/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -498,7 +1650,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/terms/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -514,7 +1666,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/terms/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -530,7 +1682,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/terms/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -546,7 +1698,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/terms/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -562,7 +1714,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/terms/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -578,7 +1730,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/terms/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/terms/" />
@@ -594,7 +1746,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/portfolio/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/" />
@@ -610,7 +1762,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/portfolio/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/" />
@@ -626,7 +1778,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/portfolio/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/" />
@@ -642,7 +1794,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/portfolio/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/" />
@@ -658,7 +1810,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/portfolio/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/" />
@@ -674,7 +1826,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/portfolio/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/" />
@@ -690,7 +1842,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/portfolio/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/" />
@@ -706,7 +1858,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/portfolio/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/" />
@@ -722,7 +1874,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/portfolio/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/" />
@@ -738,7 +1890,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/portfolio/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/" />
@@ -754,7 +1906,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/portfolio/newon-plus/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/newon-plus/" />
@@ -770,7 +1922,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/portfolio/newon-plus/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/newon-plus/" />
@@ -786,7 +1938,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/portfolio/newon-plus/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/newon-plus/" />
@@ -802,7 +1954,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/portfolio/newon-plus/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/newon-plus/" />
@@ -818,7 +1970,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/portfolio/newon-plus/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/newon-plus/" />
@@ -834,7 +1986,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/portfolio/newon-plus/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/newon-plus/" />
@@ -850,7 +2002,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/portfolio/newon-plus/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/newon-plus/" />
@@ -866,7 +2018,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/portfolio/newon-plus/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/newon-plus/" />
@@ -882,7 +2034,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/portfolio/newon-plus/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/newon-plus/" />
@@ -898,7 +2050,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/portfolio/newon-plus/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/newon-plus/" />
@@ -914,7 +2066,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/portfolio/babylog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/babylog/" />
@@ -930,7 +2082,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/portfolio/babylog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/babylog/" />
@@ -946,7 +2098,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/portfolio/babylog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/babylog/" />
@@ -962,7 +2114,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/portfolio/babylog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/babylog/" />
@@ -978,7 +2130,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/portfolio/babylog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/babylog/" />
@@ -994,7 +2146,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/portfolio/babylog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/babylog/" />
@@ -1010,7 +2162,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/portfolio/babylog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/babylog/" />
@@ -1026,7 +2178,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/portfolio/babylog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/babylog/" />
@@ -1042,7 +2194,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/portfolio/babylog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/babylog/" />
@@ -1058,7 +2210,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/portfolio/babylog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/babylog/" />
@@ -1074,7 +2226,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/portfolio/petlog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/petlog/" />
@@ -1090,7 +2242,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/portfolio/petlog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/petlog/" />
@@ -1106,7 +2258,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/portfolio/petlog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/petlog/" />
@@ -1122,7 +2274,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/portfolio/petlog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/petlog/" />
@@ -1138,7 +2290,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/portfolio/petlog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/petlog/" />
@@ -1154,7 +2306,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/portfolio/petlog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/petlog/" />
@@ -1170,7 +2322,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/portfolio/petlog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/petlog/" />
@@ -1186,7 +2338,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/portfolio/petlog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/petlog/" />
@@ -1202,7 +2354,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/portfolio/petlog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/petlog/" />
@@ -1218,7 +2370,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/portfolio/petlog/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/petlog/" />
@@ -1234,7 +2386,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/portfolio/myworld/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/myworld/" />
@@ -1250,7 +2402,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/portfolio/myworld/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/myworld/" />
@@ -1266,7 +2418,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/portfolio/myworld/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/myworld/" />
@@ -1282,7 +2434,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/portfolio/myworld/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/myworld/" />
@@ -1298,7 +2450,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/portfolio/myworld/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/myworld/" />
@@ -1314,7 +2466,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/portfolio/myworld/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/myworld/" />
@@ -1330,7 +2482,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/portfolio/myworld/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/myworld/" />
@@ -1346,7 +2498,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/portfolio/myworld/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/myworld/" />
@@ -1362,7 +2514,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/portfolio/myworld/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/myworld/" />
@@ -1378,7 +2530,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/portfolio/myworld/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/myworld/" />
@@ -1394,7 +2546,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/portfolio/savy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/savy/" />
@@ -1410,7 +2562,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/portfolio/savy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/savy/" />
@@ -1426,7 +2578,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/portfolio/savy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/savy/" />
@@ -1442,7 +2594,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/portfolio/savy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/savy/" />
@@ -1458,7 +2610,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/portfolio/savy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/savy/" />
@@ -1474,7 +2626,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/portfolio/savy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/savy/" />
@@ -1490,7 +2642,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/portfolio/savy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/savy/" />
@@ -1506,7 +2658,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/portfolio/savy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/savy/" />
@@ -1522,7 +2674,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/portfolio/savy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/savy/" />
@@ -1538,7 +2690,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/portfolio/savy/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/savy/" />
@@ -1554,7 +2706,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/portfolio/ox-month/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/ox-month/" />
@@ -1570,7 +2722,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/portfolio/ox-month/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/ox-month/" />
@@ -1586,7 +2738,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/portfolio/ox-month/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/ox-month/" />
@@ -1602,7 +2754,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/portfolio/ox-month/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/ox-month/" />
@@ -1618,7 +2770,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/portfolio/ox-month/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/ox-month/" />
@@ -1634,7 +2786,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/portfolio/ox-month/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/ox-month/" />
@@ -1650,7 +2802,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/portfolio/ox-month/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/ox-month/" />
@@ -1666,7 +2818,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/portfolio/ox-month/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/ox-month/" />
@@ -1682,7 +2834,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/portfolio/ox-month/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/ox-month/" />
@@ -1698,7 +2850,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/portfolio/ox-month/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/ox-month/" />
@@ -1714,7 +2866,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/portfolio/pillmate/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/pillmate/" />
@@ -1730,7 +2882,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/portfolio/pillmate/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/pillmate/" />
@@ -1746,7 +2898,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/portfolio/pillmate/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/pillmate/" />
@@ -1762,7 +2914,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/portfolio/pillmate/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/pillmate/" />
@@ -1778,7 +2930,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/portfolio/pillmate/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/pillmate/" />
@@ -1794,7 +2946,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/portfolio/pillmate/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/pillmate/" />
@@ -1810,7 +2962,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/portfolio/pillmate/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/pillmate/" />
@@ -1826,7 +2978,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/portfolio/pillmate/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/pillmate/" />
@@ -1842,7 +2994,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/portfolio/pillmate/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/pillmate/" />
@@ -1858,7 +3010,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/portfolio/pillmate/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/pillmate/" />
@@ -1874,7 +3026,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/portfolio/goalup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/goalup/" />
@@ -1890,7 +3042,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/portfolio/goalup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/goalup/" />
@@ -1906,7 +3058,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/portfolio/goalup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/goalup/" />
@@ -1922,7 +3074,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/portfolio/goalup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/goalup/" />
@@ -1938,7 +3090,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/portfolio/goalup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/goalup/" />
@@ -1954,7 +3106,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/portfolio/goalup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/goalup/" />
@@ -1970,7 +3122,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/portfolio/goalup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/goalup/" />
@@ -1986,7 +3138,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/portfolio/goalup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/goalup/" />
@@ -2002,7 +3154,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/portfolio/goalup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/goalup/" />
@@ -2018,7 +3170,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/portfolio/goalup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/goalup/" />
@@ -2034,7 +3186,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/portfolio/countup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/countup/" />
@@ -2050,7 +3202,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/portfolio/countup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/countup/" />
@@ -2066,7 +3218,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/portfolio/countup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/countup/" />
@@ -2082,7 +3234,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/portfolio/countup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/countup/" />
@@ -2098,7 +3250,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/portfolio/countup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/countup/" />
@@ -2114,7 +3266,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/portfolio/countup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/countup/" />
@@ -2130,7 +3282,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/portfolio/countup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/countup/" />
@@ -2146,7 +3298,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/portfolio/countup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/countup/" />
@@ -2162,7 +3314,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/portfolio/countup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/countup/" />
@@ -2178,7 +3330,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/portfolio/countup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/countup/" />
@@ -2194,7 +3346,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/portfolio/subping/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/subping/" />
@@ -2210,7 +3362,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/portfolio/subping/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/subping/" />
@@ -2226,7 +3378,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/portfolio/subping/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/subping/" />
@@ -2242,7 +3394,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/portfolio/subping/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/subping/" />
@@ -2258,7 +3410,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/portfolio/subping/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/subping/" />
@@ -2274,7 +3426,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/portfolio/subping/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/subping/" />
@@ -2290,7 +3442,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/portfolio/subping/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/subping/" />
@@ -2306,7 +3458,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/portfolio/subping/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/subping/" />
@@ -2322,7 +3474,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/portfolio/subping/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/subping/" />
@@ -2338,7 +3490,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/portfolio/subping/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/subping/" />
@@ -2354,7 +3506,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/portfolio/piggyup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/piggyup/" />
@@ -2370,7 +3522,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/portfolio/piggyup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/piggyup/" />
@@ -2386,7 +3538,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/en/portfolio/piggyup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/piggyup/" />
@@ -2402,7 +3554,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/ja/portfolio/piggyup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/piggyup/" />
@@ -2418,7 +3570,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/es/portfolio/piggyup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/piggyup/" />
@@ -2434,7 +3586,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/portfolio/piggyup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/piggyup/" />
@@ -2450,7 +3602,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/fr/portfolio/piggyup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/piggyup/" />
@@ -2466,7 +3618,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/de/portfolio/piggyup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/piggyup/" />
@@ -2482,7 +3634,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/hi/portfolio/piggyup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/piggyup/" />
@@ -2498,7 +3650,7 @@
   </url>
   <url>
     <loc>https://www.newon.app/id/portfolio/piggyup/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/portfolio/piggyup/" />
@@ -2514,649 +3666,595 @@
   </url>
   <url>
     <loc>https://www.newon.app/ko/oxmonth/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/oxmonth/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/oxmonth/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/oxmonth/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/oxmonth/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/oxmonth/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/oxmonth/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/oxmonth/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/oxmonth/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/subping/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/subping/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/subping/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/subping/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/subping/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/subping/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/subping/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/subping/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/subping/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/pillmate/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/pillmate/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/pillmate/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/pillmate/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/pillmate/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/pillmate/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/pillmate/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/pillmate/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/pillmate/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/savy/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/savy/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/savy/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/savy/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/savy/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/savy/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/savy/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/savy/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/savy/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/babylog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/babylog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/babylog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/babylog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/babylog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/babylog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/babylog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/babylog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/babylog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/petlog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/petlog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/petlog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/petlog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/petlog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/petlog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/petlog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/petlog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/petlog/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/piggyup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/piggyup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/piggyup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/piggyup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/piggyup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/piggyup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/piggyup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/piggyup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/piggyup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/goalup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/goalup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/goalup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/goalup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/goalup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/goalup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/goalup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/goalup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/goalup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/countup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/countup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/countup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/countup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/countup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/countup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/countup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/countup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/countup/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/myworld/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/myworld/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/myworld/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/myworld/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/myworld/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/myworld/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/myworld/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/myworld/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/myworld/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ko/newon/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/en/newon/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/ja/newon/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/es/newon/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/pt-br/newon/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/fr/newon/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/de/newon/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/hi/newon/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://www.newon.app/id/newon/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ko/noting/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/noting/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/noting/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/noting/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/noting/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/noting/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/noting/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/noting/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/noting/delete-account/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>

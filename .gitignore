@@ -23,6 +23,8 @@ promo/frames/
 .hero-*.png
 .hero-*.jpg
 .wordmark-*.png
+.ncard-*.png
+.logo-opt-bak/
 _preview-*.html
 app-icons.zip
 newon-wordmark-chrome-white.png

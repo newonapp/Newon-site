@@ -145,19 +145,6 @@ export const CLOSING_COPY = [
       "From productivity to health, finance, and lifestyle—<br />discover more with one membership."
     ),
   },
-  {
-    ns: "nt",
-    ko: closing(
-      "좋은 문장이<br />오래 남는 생각이 됩니다",
-      "Noting은 메모하는 앱이 아니라<br />독서와 사색을 이어가는 공간입니다.",
-      "오늘 읽은 한 줄이<br />내일의 나를 바꿉니다."
-    ),
-    en: closing(
-      "Good lines<br />Become lasting thoughts",
-      "Noting isn't just note-taking—<br />it's a space to connect reading and reflection.",
-      "One line today<br />can change you tomorrow."
-    ),
-  },
 ];
 
 export const DATA_FILE_BY_NS = {
@@ -168,7 +155,6 @@ export const DATA_FILE_BY_NS = {
   pu: "piggyup-data.mjs",
   gu: "goalup-data.mjs",
   cu: "countup-data.mjs",
-  nt: "noting-data.mjs",
   np: "newon-plus-data.mjs",
 };
 

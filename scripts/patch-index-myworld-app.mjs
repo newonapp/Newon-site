@@ -8,12 +8,12 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const indexPath = path.join(ROOT, "templates", "index.html");
 let s = fs.readFileSync(indexPath, "utf8");
 
-const marker = '<div id="noting-app"';
+const marker = '<div id="subping-app"';
 
 if (!s.includes('id="myworld-app"')) {
   const inc = fs.readFileSync(path.join(ROOT, "templates", "myworld-app-inc.html"), "utf8");
   if (!s.includes(marker)) {
-    console.error("patch-index-myworld-app: noting-app marker not found");
+    console.error("patch-index-myworld-app: subping-app marker not found");
     process.exit(1);
   }
   s = s.replace(marker, inc + "\n\n    " + marker);
@@ -189,8 +189,6 @@ if (!s.includes('h === "#myworld-app"')) {
             h === "#np-top"
           ) {
             showNewonPlus();
-          } else if (h === "#noting-app" || h === "#noting") {
-            showNoting();
           } else {
             showHome();
           }
@@ -204,8 +202,6 @@ if (!s.includes('h === "#myworld-app"')) {
             showNewonPlus();
           } else if (h === "#myworld-app" || h === "#myworld" || h === "#mw-top") {
             showMyworld();
-          } else if (h === "#noting-app" || h === "#noting") {
-            showNoting();
           } else {
             showHome();
           }

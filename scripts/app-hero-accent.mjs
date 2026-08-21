@@ -47,11 +47,6 @@ export const HERO_SUBTITLE = [
     en: '<span class="ox-accent">Small logs add up to<br />bigger change</span>',
   },
   {
-    ns: "nt",
-    ko: '<span class="ox-accent">좋은 문장을 오래 기억하세요</span>',
-    en: '<span class="ox-accent">Remember good sentences longer</span>',
-  },
-  {
     ns: "np",
     ko: '<span class="ox-accent">하나의 계정으로<br />모든 Newon 서비스를 이용하세요</span>',
     en: '<span class="ox-accent">One account for<br />all Newon services</span>',
@@ -71,7 +66,6 @@ export const DATA_FILE_BY_NS = {
   pu: "piggyup-data.mjs",
   gu: "goalup-data.mjs",
   cu: "countup-data.mjs",
-  nt: "noting-data.mjs",
   np: "newon-plus-data.mjs",
 };
 

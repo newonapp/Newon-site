@@ -145,8 +145,7 @@ export const plKo = {
 export const plEn = {
   brandAria: "Back to top of PetLog",
   globalReachBadge: "One app for everyday life with pets",
-  badge:
-    "🐾 Pet logs · health · family sharing · AI analysis",
+  badge: "🐾 Pet logs · Health · Family sharing · AI analysis",
   h1: "PetLog",
   subtitleHtml:
     `<span class="ox-accent">Turn every pet moment into<br />one life story</span>`,

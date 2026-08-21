@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="{{HTML_LANG}}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{t:ideas.seoTitle}}</title>
+    <meta name="description" content="{{t:ideas.metaDescription}}" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="{{CANONICAL}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{CANONICAL}}" />
+    <meta property="og:locale" content="{{OG_LOCALE}}" />
+    <meta property="og:title" content="{{t:ideas.seoTitle}}" />
+    <meta property="og:description" content="{{t:ideas.metaDescription}}" />
+    <meta property="og:site_name" content="{{t:meta.ogSiteName}}" />
+    <meta property="og:image" content="https://www.newon.app/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{t:ideas.seoTitle}}" />
+    <meta name="twitter:description" content="{{t:ideas.metaDescription}}" />
+    <meta name="twitter:image" content="https://www.newon.app/logo.png" />
+{{HREFLANG_BLOCK_LEGAL}}
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/ideas/ideas.css?v=20260821a" />
+    <script src="/theme-shell.js"></script>
+    <script src="/lang-nav.js?v=20260821stay2"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#ni-main">{{t:common.skipToContent}}</a>
+    <header class="site-header snav-header">
+      <div class="container snav-header__inner">
+        <a class="snav-brand" href="../">
+          <img src="/logo.png" alt="Newon" width="36" height="36" />
+          <span>Nawon Kyung</span>
+        </a>
+        <nav class="snav-nav" aria-label="Ideas">
+          <a href="../">{{t:nav.home}}</a>
+          <a href="#ni-choose">제안하기</a>
+          <a href="#ni-help-title">진행 방법</a>
+          <a href="../news/">News</a>
+          <a href="../business/">Business</a>
+        </nav>
+        <div class="snav-actions">
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-ideas">{{t:ui.language}}</label>
+            <select id="lang-select-ideas" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
+              <option value="ko">{{t:ui.langKo}}</option>
+              <option value="en">{{t:ui.langEn}}</option>
+              <option value="ja">{{t:ui.langJa}}</option>
+              <option value="es">{{t:ui.langEs}}</option>
+              <option value="pt-br">{{t:ui.langPtBr}}</option>
+              <option value="fr">{{t:ui.langFr}}</option>
+              <option value="de">{{t:ui.langDe}}</option>
+              <option value="hi">{{t:ui.langHi}}</option>
+              <option value="id">{{t:ui.langId}}</option>
+            </select>
+          </div>
+          <button
+            type="button"
+            class="navbar-theme-toggle"
+            data-theme-toggle
+            data-label-light="{{t:common.themeToLight}}"
+            data-label-dark="{{t:common.themeToDark}}"
+            title="{{t:common.themeToggle}}"
+            aria-label="{{t:common.themeToDark}}"
+          >🌙</button>
+          <button
+            class="nav-toggle nav-toggle--toolbar"
+            type="button"
+            data-snav-toggle
+            aria-expanded="false"
+            aria-controls="snav-mobile-nav"
+            aria-label="{{t:common.menuOpen}}"
+          >
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <nav id="snav-mobile-nav" class="snav-mobile-nav" hidden>
+        <a href="../">{{t:nav.home}}</a>
+        <a href="#ni-choose">제안하기</a>
+        <a href="#ni-help-title">진행 방법</a>
+        <a href="../news/">News</a>
+        <a href="../business/">Business</a>
+      </nav>
+    </header>
+
+    <main id="ni-main" class="ni-page" data-lang="{{LANG_DIR}}">
+      <section class="ni-hero">
+        <div class="ni-inner ni-hero__grid">
+          <div class="ni-hero__copy">
+            <p class="ni-kicker ni-enter" style="--d:0">{{t:ideas.heroLabel}}</p>
+            <h1 class="ni-hero__title ni-enter" style="--d:1">{{html:ideas.heroTitleHtml}}</h1>
+            <div class="ni-hero__text ni-enter" style="--d:2">
+              <p class="ni-hero__lead">{{t:ideas.heroLead}}</p>
+              <p class="ni-hero__note">{{t:ideas.heroNote}}</p>
+            </div>
+            <a class="ni-hero__cta ni-enter" style="--d:3" href="#ni-choose">{{t:ideas.heroCta}}</a>
+          </div>
+          <aside class="ni-process ni-enter" style="--d:4" aria-label="{{t:ideas.processAria}}">
+            <div class="ni-process__head">
+              <p class="ni-process__title">{{t:ideas.processTitle}}</p>
+              <p class="ni-process__lead">{{t:ideas.processLead}}</p>
+            </div>
+            <ol class="ni-process__list">
+              <li class="ni-process__item">
+                <span class="ni-process__idx" aria-hidden="true">01</span>
+                <div class="ni-process__body">
+                  <span class="ni-process__en">{{t:ideas.process1Title}}</span>
+                  <p class="ni-process__ko">{{t:ideas.process1Body}}</p>
+                </div>
+              </li>
+              <li class="ni-process__item">
+                <span class="ni-process__idx" aria-hidden="true">02</span>
+                <div class="ni-process__body">
+                  <span class="ni-process__en">{{t:ideas.process2Title}}</span>
+                  <p class="ni-process__ko">{{t:ideas.process2Body}}</p>
+                </div>
+              </li>
+              <li class="ni-process__item">
+                <span class="ni-process__idx" aria-hidden="true">03</span>
+                <div class="ni-process__body">
+                  <span class="ni-process__en">{{t:ideas.process3Title}}</span>
+                  <p class="ni-process__ko">{{t:ideas.process3Body}}</p>
+                </div>
+              </li>
+            </ol>
+          </aside>
+        </div>
+      </section>
+
+      <section id="ni-choose" class="ni-section" aria-labelledby="ni-choose-title">
+        <div class="ni-inner">
+          <div class="ni-section__head">
+            <p class="ni-kicker">{{t:ideas.chooseLabel}}</p>
+            <h2 id="ni-choose-title">{{t:ideas.chooseTitle}}</h2>
+            <p>{{t:ideas.chooseLead}}</p>
+          </div>
+          <div class="ni-types" role="group" aria-label="{{t:ideas.chooseTitle}}">
+            <button type="button" class="ni-type" data-ni-type="app" aria-pressed="false">
+              <span class="ni-type__num">01</span>
+              <span class="ni-type__en">{{t:ideas.type1En}}</span>
+              <span class="ni-type__title">{{t:ideas.type1Title}}</span>
+              <span class="ni-type__body">{{t:ideas.type1Body}}</span>
+              <span class="ni-type__go">{{t:ideas.type1Go}}</span>
+            </button>
+            <button type="button" class="ni-type" data-ni-type="feature" aria-pressed="false">
+              <span class="ni-type__num">02</span>
+              <span class="ni-type__en">{{t:ideas.type2En}}</span>
+              <span class="ni-type__title">{{t:ideas.type2Title}}</span>
+              <span class="ni-type__body">{{t:ideas.type2Body}}</span>
+              <span class="ni-type__go">{{t:ideas.type2Go}}</span>
+            </button>
+            <button type="button" class="ni-type" data-ni-type="message" aria-pressed="false">
+              <span class="ni-type__num">03</span>
+              <span class="ni-type__en">{{t:ideas.type3En}}</span>
+              <span class="ni-type__title">{{t:ideas.type3Title}}</span>
+              <span class="ni-type__body">{{t:ideas.type3Body}}</span>
+              <span class="ni-type__go">{{t:ideas.type3Go}}</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="ni-form-wrap" class="ni-form-wrap" hidden aria-labelledby="ni-form-title">
+        <div class="ni-form-inner">
+          <div class="ni-form-head">
+            <p class="ni-kicker" id="ni-form-crumb">NEWON IDEAS</p>
+            <h2 id="ni-form-title"></h2>
+            <p class="ni-form-note">{{t:ideas.formRequiredNote}}</p>
+          </div>
+
+          <form class="ni-form" data-ni-form="app" id="ni-form-app" hidden novalidate>
+            <input type="text" name="_honey" class="ni-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <div class="ni-field">
+              <span class="ni-field__n" aria-hidden="true">01</span>
+              <label for="ni-app-idea">{{t:ideas.appFieldIdea}} <span class="req">*</span></label>
+              <input type="text" id="ni-app-idea" name="app_idea" data-required="1" placeholder="{{t:ideas.appFieldIdeaPh}}" autocomplete="off" />
+              <p class="ni-field-error" role="alert"></p>
+            </div>
+            <div class="ni-field">
+              <span class="ni-field__n" aria-hidden="true">02</span>
+              <label for="ni-app-why">{{t:ideas.appFieldWhy}} <span class="req">*</span></label>
+              <textarea id="ni-app-why" name="why_needed" data-required="1" placeholder="{{t:ideas.appFieldWhyPh}}"></textarea>
+              <p class="ni-field-error" role="alert"></p>
+            </div>
+            <div class="ni-field">
+              <span class="ni-field__n" aria-hidden="true">03</span>
+              <label for="ni-app-features">{{t:ideas.appFieldFeatures}}</label>
+              <textarea id="ni-app-features" name="features" placeholder="{{t:ideas.appFieldFeaturesPh}}"></textarea>
+            </div>
+            <div class="ni-field">
+              <span class="ni-field__n" aria-hidden="true">04</span>
+              <label for="ni-app-similar">{{t:ideas.appFieldSimilar}}</label>
+              <input type="text" id="ni-app-similar" name="similar" placeholder="{{t:ideas.appFieldSimilarPh}}" autocomplete="off" />
+            </div>
+            <div class="ni-field">
+              <span class="ni-field__n" aria-hidden="true">05</span>
+              <label for="ni-app-name">{{t:ideas.fieldNameOptional}}</label>
+              <input type="text" id="ni-app-name" name="name" autocomplete="name" />
+            </div>
+            <div class="ni-field">
+              <span class="ni-field__n" aria-hidden="true">06</span>
+              <label for="ni-app-email">{{t:ideas.fieldEmailOptional}}</label>
+              <input type="email" id="ni-app-email" name="email" autocomplete="email" placeholder="{{t:ideas.fieldEmailPh}}" />
+              <p class="ni-field-hint">{{t:ideas.emailNote}}</p>
+              <p class="ni-field-error" role="alert"></p>
+            </div>
+            <p class="ni-privacy">{{t:ideas.privacyBefore}} <a href="../privacy/">{{t:ideas.privacyLink}}</a>{{t:ideas.privacyAfter}}</p>
+            <div class="ni-actions">
+              <button class="btn btn-primary" type="submit">{{t:ideas.submitApp}}</button>
+              <button class="ni-back" type="button" id="ni-form-back">{{t:ideas.formBack}}</button>
+            </div>
+          </form>
+
+          <form class="ni-form" data-ni-form="feature" id="ni-form-feature" hidden novalidate>
+            <input type="text" name="_honey" class="ni-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <div class="ni-field">
+              <span class="ni-field__n" aria-hidden="true">01</span>
+              <label for="ni-feature-product">{{t:ideas.featureFieldProduct}} <span class="req">*</span></label>
+              <select id="ni-feature-product" name="product" data-required="1">
+                {{PRODUCT_OPTIONS}}
+              </select>
+              <p class="ni-field-error" role="alert"></p>
+            </div>
+            <div class="ni-field">
+              <span class="ni-field__n" aria-hidden="true">02</span>
+              <label for="ni-feature-what">{{t:ideas.featureFieldWhat}} <span class="req">*</span></label>
+              <input type="text" id="ni-feature-what" name="feature" data-required="1" placeholder="{{t:ideas.featureFieldWhatPh}}" autocomplete="off" />
+              <p class="ni-field-error" role="alert"></p>
+            </div>
+            <div class="ni-field">
+              <span class="ni-field__n" aria-hidden="true">03</span>
+              <label for="ni-feature-why">{{t:ideas.featureFieldWhy}} <span class="req">*</span></label>
+              <textarea id="ni-feature-why" name="why_needed" data-required="1" placeholder="{{t:ideas.featureFieldWhyPh}}"></textarea>
+              <p class="ni-field-error" role="alert"></p>
+            </div>
+            <div class="ni-field">
+              <span class="ni-field__n" aria-hidden="true">04</span>
+              <label for="ni-feature-extra">{{t:ideas.featureFieldExtra}}</label>
+              <textarea id="ni-feature-extra" name="extra" placeholder="{{t:ideas.featureFieldExtraPh}}"></textarea>
+            </div>
+            <div class="ni-field">
+              <span class="ni-field__n" aria-hidden="true">05</span>
+              <label for="ni-feature-name">{{t:ideas.fieldNameOptional}}</label>
+              <input type="text" id="ni-feature-name" name="name" autocomplete="name" />
+            </div>
+            <div class="ni-field">
+              <span class="ni-field__n" aria-hidden="true">06</span>
+              <label for="ni-feature-email">{{t:ideas.fieldEmailOptional}}</label>
+              <input type="email" id="ni-feature-email" name="email" autocomplete="email" placeholder="{{t:ideas.fieldEmailPh}}" />
+              <p class="ni-field-hint">{{t:ideas.emailNote}}</p>
+              <p class="ni-field-error" role="alert"></p>
+            </div>
+            <p class="ni-privacy">{{t:ideas.privacyBefore}} <a href="../privacy/">{{t:ideas.privacyLink}}</a>{{t:ideas.privacyAfter}}</p>
+            <div class="ni-actions">
+              <button class="btn btn-primary" type="submit">{{t:ideas.submitFeature}}</button>
+              <button class="ni-back" type="button">{{t:ideas.formBack}}</button>
+            </div>
+          </form>
+
+          <form class="ni-form" data-ni-form="message" id="ni-form-message" hidden novalidate>
+            <input type="text" name="_honey" class="ni-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <div class="ni-field">
+              <span class="ni-field__n" aria-hidden="true">01</span>
+              <label for="ni-msg-body">{{t:ideas.msgFieldBody}} <span class="req">*</span></label>
+              <textarea id="ni-msg-body" name="message" data-required="1" placeholder="{{t:ideas.msgFieldBodyPh}}"></textarea>
+              <p class="ni-field-error" role="alert"></p>
+            </div>
+            <label class="ni-toggle">
+              <input type="checkbox" id="ni-reply-toggle" name="want_reply" value="yes" />
+              <span>{{t:ideas.msgReplyToggle}}</span>
+            </label>
+            <div class="ni-field" id="ni-reply-email-wrap" hidden>
+              <span class="ni-field__n" aria-hidden="true">02</span>
+              <label for="ni-msg-email">{{t:ideas.msgFieldEmail}} <span class="req">*</span></label>
+              <input type="email" id="ni-msg-email" name="email" autocomplete="email" placeholder="{{t:ideas.fieldEmailPh}}" data-required="0" />
+              <p class="ni-field-error" role="alert"></p>
+            </div>
+            <div class="ni-field">
+              <span class="ni-field__n" aria-hidden="true">03</span>
+              <label for="ni-msg-name">{{t:ideas.fieldNameOptional}}</label>
+              <input type="text" id="ni-msg-name" name="name" autocomplete="name" />
+            </div>
+            <p class="ni-privacy">{{t:ideas.privacyBefore}} <a href="../privacy/">{{t:ideas.privacyLink}}</a>{{t:ideas.privacyAfter}}</p>
+            <div class="ni-actions">
+              <button class="btn btn-primary" type="submit">{{t:ideas.submitMessage}}</button>
+              <button class="ni-back" type="button">{{t:ideas.formBack}}</button>
+            </div>
+          </form>
+
+          <p class="ni-fail" id="ni-fail" tabindex="-1" hidden>{{t:ideas.fail}} <a href="mailto:newon@newon.app">{{t:ideas.failMailto}}</a></p>
+        </div>
+      </section>
+
+      <section class="ni-steps" aria-labelledby="ni-help-title">
+        <div class="ni-inner">
+          <div class="ni-steps__head">
+            <p class="ni-kicker">{{t:ideas.helpLabel}}</p>
+            <h2 id="ni-help-title">{{t:ideas.helpTitle}}</h2>
+            <p>{{t:ideas.helpLead}}</p>
+          </div>
+          <ol>
+            <li>
+              <span class="n">01</span>
+              <h3>{{t:ideas.help1Title}}</h3>
+              <p>{{t:ideas.help1Body}}</p>
+            </li>
+            <li>
+              <span class="n">02</span>
+              <h3>{{t:ideas.help2Title}}</h3>
+              <p>{{t:ideas.help2Body}}</p>
+            </li>
+            <li>
+              <span class="n">03</span>
+              <h3>{{t:ideas.help3Title}}</h3>
+              <p>{{t:ideas.help3Body}}</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="ni-philosophy" aria-labelledby="ni-philo-title">
+        <div class="ni-inner">
+          <p class="ni-kicker">{{t:ideas.philosophyLabel}}</p>
+          <h2 id="ni-philo-title">{{html:ideas.philosophyTitleHtml}}</h2>
+          <p>{{t:ideas.philosophyLead}}</p>
+        </div>
+      </section>
+
+      <section class="ni-news" aria-labelledby="ni-news-title">
+        <div class="ni-inner">
+          <p class="ni-kicker">{{t:ideas.newsLabel}}</p>
+          <h2 id="ni-news-title">{{t:ideas.newsTitle}}</h2>
+          <p>{{t:ideas.newsLead}}</p>
+          <a href="../news/">{{t:ideas.newsCta}}</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img class="footer-brand-img" src="/logo.png" alt="" width="32" height="32" />
+          <span>Newon</span>
+        </div>
+        <div class="footer-links">
+          <a class="footer-link" href="https://newon.app">https://newon.app</a>
+          <p class="footer-copy">{{t:footer.tagline}}</p>
+        </div>
+        <p class="footer-copy">© <span id="year"></span> Newon. {{t:footer.rights}}</p>
+      </div>
+    </footer>
+
+    <script type="application/json" id="ni-i18n">{{IDEAS_I18N}}</script>
+    <script>
+      (function () {
+        var cur = "{{LANG_DIR}}";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+        var year = document.getElementById("year");
+        if (year) year.textContent = String(new Date().getFullYear());
+        var toggle = document.querySelector("[data-snav-toggle]");
+        var drawer = document.getElementById("snav-mobile-nav");
+        if (toggle && drawer) {
+          toggle.addEventListener("click", function () {
+            var open = !drawer.hasAttribute("hidden");
+            if (open) { drawer.setAttribute("hidden", ""); toggle.setAttribute("aria-expanded", "false"); }
+            else { drawer.removeAttribute("hidden"); toggle.setAttribute("aria-expanded", "true"); }
+          });
+        }
+        document.querySelectorAll(".ni-form .ni-back").forEach(function (btn) {
+          if (btn.id === "ni-form-back") return;
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            var main = document.getElementById("ni-form-back");
+            if (main) main.click();
+          });
+        });
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
+    <script src="/ideas/ideas.js"></script>
+  </body>
+</html>

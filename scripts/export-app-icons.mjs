@@ -30,7 +30,6 @@ const APPS = [
   { slug: "countup", name: "CountUp", src: "countup-logo.png" },
   { slug: "newon-plus", name: "Newon+", src: "newon-plus-logo.png" },
   { slug: "myworld", name: "My World", src: "myworld-logo.png" },
-  { slug: "noting", name: "Noting", src: "noting-logo.png" },
 ];
 
 function resizePng(src, dest, size) {

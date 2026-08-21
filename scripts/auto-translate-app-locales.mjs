@@ -16,8 +16,21 @@ const LOCALES = path.join(ROOT, "locales");
 const CACHE_PATH = path.join(__dirname, ".translate-cache.json");
 
 const TARGET_LANGS = ["ja", "es", "pt-br", "fr", "de", "hi", "id"];
-const APP_KEYS = ["ox", "pm", "sv", "bl", "pl", "pu", "gu", "cu", "nt", "np", "mw"];
-const ROOT_KEYS = ["home", "nav", "footer", "ui", "meta", "common", "legal", "about"];
+const APP_KEYS = ["ox", "pm", "sv", "bl", "pl", "pu", "gu", "cu", "np", "mw"];
+const ROOT_KEYS = [
+  "home",
+  "nav",
+  "footer",
+  "ui",
+  "meta",
+  "common",
+  "legal",
+  "about",
+  "news",
+  "ideas",
+  "business",
+  "businessPages",
+];
 const META_KEYS = [
   "titleOx",
   "titlePillmate",
@@ -27,7 +40,6 @@ const META_KEYS = [
   "titlePiggyup",
   "titleGoalup",
   "titleCountup",
-  "titleNoting",
   "titleNewonPlus",
   "titleMyworld",
   "titleHome",
@@ -46,7 +58,6 @@ const NAV_KEYS = [
   "piggyupDesc",
   "goalupDesc",
   "countupDesc",
-  "notingDesc",
   "newonPlusDesc",
   "myworldDesc",
   "mobileOxHint",
@@ -58,7 +69,6 @@ const NAV_KEYS = [
   "mobilePiggyupHint",
   "mobileGoalupHint",
   "mobileCountupHint",
-  "mobileNotingHint",
   "mobileNewonPlusHint",
   "mobileMyworldHint",
   "headerHubTagline",

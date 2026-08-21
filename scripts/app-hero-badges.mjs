@@ -101,17 +101,6 @@ export const HERO_BADGE_APPS = [
     },
   },
   {
-    ns: "nt",
-    ko: {
-      badge: "📚 필사 기록 · 독서 노트 · 명언 저장",
-      globalReachBadge: "독서 기록부터 · 전 세계 서비스",
-    },
-    en: {
-      badge: "📚 Transcription · Reading notes · Quote saving",
-      globalReachBadge: "From reading logs · Worldwide service",
-    },
-  },
-  {
     ns: "np",
     ko: {
       badge: "📦 Newon Membership · 통합 계정 · 앱 허브",
@@ -120,6 +109,17 @@ export const HERO_BADGE_APPS = [
     en: {
       badge: "📦 Newon Membership · Unified account · App hub",
       globalReachBadge: "One membership · 177 countries",
+    },
+  },
+  {
+    ns: "mw",
+    ko: {
+      badge: "🗺️ 여행 기록 · 여행 지도 · AI 리포트",
+      globalReachBadge: "여행의 순간부터 · 전 세계 서비스",
+    },
+    en: {
+      badge: "🗺️ Travel journal · Travel map · AI report",
+      globalReachBadge: "From every trip · Worldwide service",
     },
   },
 ];
@@ -132,8 +132,8 @@ export const DATA_FILE_BY_NS = {
   pu: "piggyup-data.mjs",
   gu: "goalup-data.mjs",
   cu: "countup-data.mjs",
-  nt: "noting-data.mjs",
   np: "newon-plus-data.mjs",
+  mw: "myworld-data.mjs",
 };
 
 const SP_FILE_BY_LANG = {

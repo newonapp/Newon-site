@@ -22,7 +22,6 @@ if (!s.includes('id="goalup-app"')) {
   const start = s.indexOf('<div id="goalup-app"');
   let end = s.indexOf('<div id="countup-app"');
   if (end < 0 || end <= start) end = s.indexOf('<div id="newon-plus-app"');
-  if (end < 0 || end <= start) end = s.indexOf('<div id="noting-app"');
   if (end < 0 || end <= start) end = s.indexOf('<div id="subping-app"');
   if (start >= 0 && end > start) {
     s = s.slice(0, start) + inc + "\n\n    " + s.slice(end);

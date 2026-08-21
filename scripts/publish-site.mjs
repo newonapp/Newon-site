@@ -11,6 +11,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { spawnSync } from "child_process";
+import { publishedArticles } from "./news-data.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -27,6 +28,7 @@ const PUBLISH_ROOT_CORE = [
   "hero-apps.js",
   "styles.css",
   "ox-month.css",
+  "app-landing-extras.css",
   "robots.txt",
   "sitemap.xml",
 ];
@@ -37,6 +39,7 @@ const PUBLISH_ROOT_CORE = [
  */
 const PUBLISH_ROOT_IMAGES = [
   "logo.png",
+  "logo-n.png",
   "favicon.ico",
   "apple-touch-icon.png",
   "ox-month-logo.png",
@@ -52,7 +55,7 @@ const PUBLISH_ROOT_IMAGES = [
   "newon-wordmark-chrome.png",
   "newon-wordmark-chrome-dark.png",
   "myworld-logo.png",
-  "noting-logo.png",
+  "404-human-logo.png",
   "subping-hero-mark.png",
   "feature-grid.png",
   "hero-promo.png",
@@ -71,6 +74,10 @@ const PUBLISH_COPY_DIRS = [
   { from: "privacy", to: "privacy", required: false },
   { from: "terms", to: "terms", required: true },
   { from: "about", to: "about", required: true },
+  { from: "news", to: "news", required: true },
+  { from: "ideas", to: "ideas", required: true },
+  { from: "business", to: "business", required: true },
+  { from: "404-human", to: "404-human", required: true },
   { from: "card-n7x4k9", to: "card-n7x4k9", required: true },
   { from: "portfolio", to: "portfolio", required: true },
   { from: "oxmonth", to: "oxmonth", required: false },
@@ -186,13 +193,44 @@ function verify() {
       path.join(OUT, lang, "privacy", "index.html"),
       path.join(OUT, lang, "terms", "index.html"),
       path.join(OUT, lang, "about", "index.html"),
+      path.join(OUT, lang, "news", "index.html"),
+      path.join(OUT, lang, "ideas", "index.html"),
+      path.join(OUT, lang, "ideas", "success", "index.html"),
+      path.join(OUT, lang, "business", "index.html"),
+      path.join(OUT, lang, "business", "partnership", "index.html"),
+      path.join(OUT, lang, "business", "service", "index.html"),
+      path.join(OUT, lang, "business", "promotion", "index.html"),
+      path.join(OUT, lang, "business", "development", "index.html"),
+      path.join(OUT, lang, "business", "inquiry", "success", "index.html"),
+      path.join(OUT, lang, "404-human", "index.html"),
       path.join(OUT, lang, "oxmonth", "delete-account", "index.html"),
       path.join(OUT, lang, "subping", "delete-account", "index.html")
     );
   }
+  for (const article of publishedArticles()) {
+    required.push(path.join(OUT, "news", article.slug, "index.html"));
+    for (const lang of LANGS) {
+      required.push(path.join(OUT, lang, "news", article.slug, "index.html"));
+    }
+  }
   required.push(path.join(OUT, "privacy", "index.html"));
   required.push(path.join(OUT, "terms", "index.html"));
   required.push(path.join(OUT, "about", "index.html"));
+  required.push(path.join(OUT, "news", "index.html"));
+  required.push(path.join(OUT, "news", "news.css"));
+  required.push(path.join(OUT, "news", "news.js"));
+  required.push(path.join(OUT, "ideas", "index.html"));
+  required.push(path.join(OUT, "ideas", "ideas.css"));
+  required.push(path.join(OUT, "ideas", "ideas.js"));
+  required.push(path.join(OUT, "business", "inquiry.js"));
+  required.push(path.join(OUT, "business", "inquiry", "success", "index.html"));
+  required.push(path.join(OUT, "business", "partnership", "index.html"));
+  required.push(path.join(OUT, "business", "service", "index.html"));
+  required.push(path.join(OUT, "business", "promotion", "index.html"));
+  required.push(path.join(OUT, "business", "development", "index.html"));
+  required.push(path.join(OUT, "404-human", "index.html"));
+  required.push(path.join(OUT, "404-human", "404-human.css"));
+  required.push(path.join(OUT, "404-human", "404-human.js"));
   required.push(path.join(OUT, "card-n7x4k9", "index.html"));
   required.push(path.join(OUT, "card-n7x4k9", "card-config.js"));
   required.push(path.join(OUT, "card-n7x4k9", "nawon-kyung.vcf"));

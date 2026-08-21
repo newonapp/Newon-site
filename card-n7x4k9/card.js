@@ -11,6 +11,8 @@
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M6.5 5.2 18.2 12 6.5 18.8z"/></svg>',
     portfolio:
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><rect x="3.5" y="7.5" width="17" height="12" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M8 7.5V6.2A2.2 2.2 0 0 1 10.2 4h3.6A2.2 2.2 0 0 1 16 6.2v1.3"/></svg>',
+    pages:
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><rect x="3.5" y="4.5" width="7" height="7" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="13.5" y="4.5" width="7" height="7" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>',
     contact:
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M4 6.5h16v11H4z"/><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="m5 7.5 7 5.5 7-5.5"/></svg>',
     save:
@@ -139,6 +141,34 @@
     return details;
   }
 
+  function makeList(item, icon) {
+    var details = el('<details class="ncard-details"></details>');
+    var summary = el('<summary class="ncard__item"></summary>');
+    summary.setAttribute("aria-label", item.label || "Pages");
+    summary.innerHTML = rowMarkup(icon, item.label, item.hint);
+    details.appendChild(summary);
+
+    var panel = el('<div class="ncard-details__panel"></div>');
+    var items = item.items || [];
+    for (var i = 0; i < items.length; i++) {
+      var page = items[i];
+      if (!page || !page.href) continue;
+      panel.appendChild(
+        el(
+          '<a class="ncard-details__link" href="' +
+            page.href +
+            '"><span class="ncard-details__kicker">' +
+            (page.kicker || "") +
+            '</span><span class="ncard-details__value">' +
+            (page.label || page.href) +
+            "</span></a>"
+        )
+      );
+    }
+    details.appendChild(panel);
+    return details;
+  }
+
   function makeVcard(item, icon) {
     var v = cfg.vcard || {};
     var file = v.file || "nawon-kyung.vcf";
@@ -163,6 +193,8 @@
     var type = item.type || "link";
     if (type === "contact") {
       nav.appendChild(makeContact(item, icon));
+    } else if (type === "list") {
+      nav.appendChild(makeList(item, icon));
     } else if (type === "vcard") {
       nav.appendChild(makeVcard(item, icon));
     } else {

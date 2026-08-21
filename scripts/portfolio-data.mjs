@@ -145,6 +145,47 @@ export const APP_CATALOG = [
   },
 ];
 
+/** Home hub app menu order (matches site index). */
+export const NAV_FLYOUT_SLUGS = [
+  "ox-month",
+  "subping",
+  "pillmate",
+  "savy",
+  "babylog",
+  "petlog",
+  "piggyup",
+  "goalup",
+  "countup",
+  "newon-plus",
+  "myworld",
+];
+
+const NAV_FLYOUT_META = {
+  "ox-month": { descKey: "oxDesc", hintKey: "mobileOxHint" },
+  subping: { descKey: "subpingDesc", hintKey: "mobileSubpingHint" },
+  pillmate: { descKey: "pillmateDesc", hintKey: "mobilePillmateHint" },
+  savy: { descKey: "savyDesc", hintKey: "mobileSavyHint" },
+  babylog: { descKey: "babylogDesc", hintKey: "mobileBabylogHint" },
+  petlog: { descKey: "petlogDesc", hintKey: "mobilePetlogHint" },
+  piggyup: { descKey: "piggyupDesc", hintKey: "mobilePiggyupHint" },
+  goalup: { descKey: "goalupDesc", hintKey: "mobileGoalupHint" },
+  countup: { descKey: "countupDesc", hintKey: "mobileCountupHint" },
+  "newon-plus": { descKey: "newonPlusDesc", hintKey: "mobileNewonPlusHint", menuName: "Newon" },
+  myworld: { descKey: "myworldDesc", hintKey: "mobileMyworldHint" },
+};
+
+/** Extra apps shown on the Business ecosystem (not in the portfolio catalog). */
+export const BUSINESS_APP_EXTRAS = [];
+
+/** Business page product groups — reuses APP_CATALOG icons + hashes. */
+export const BUSINESS_ECOSYSTEM = [
+  { titleKey: "business.catProductivity", slugs: ["ox-month", "goalup", "countup"] },
+  { titleKey: "business.catFinance", slugs: ["savy", "subping", "piggyup"] },
+  { titleKey: "business.catHealth", slugs: ["pillmate"] },
+  { titleKey: "business.catFamily", slugs: ["babylog", "petlog", "myworld"] },
+  { titleKey: "business.catMembership", slugs: ["newon-plus"] },
+];
+
 export const FOUNDER_ROLES = [
   "제품 기획",
   "UI/UX",
@@ -208,7 +249,7 @@ export const PROCESS_STEPS = [
 export const PORTFOLIO_STATS = {
   label: "Newon in Numbers",
   title: "숫자로 보는 Newon",
-  headline: "6개월, 11개의 앱.",
+  headline: "6개월, 12개의 앱.",
   supporting:
     "아이디어부터 기획, UI/UX, 개발, 출시, 운영, 마케팅까지 직접 진행했습니다.",
   items: [
@@ -217,7 +258,7 @@ export const PORTFOLIO_STATS = {
       value: "11",
       valueKind: "number",
       title: "개발한 앱",
-      note: "6개월 동안 11개의 앱을 직접 기획하고 개발했습니다.",
+      note: "6개월 동안 12개의 앱을 직접 기획하고 개발했습니다.",
       noteShort: "6개월 동안 기획·개발",
       href: "#projects",
       visible: true,
@@ -401,4 +442,32 @@ export function featuredApps(apps) {
 
 export function moreApps(apps) {
   return apps.filter((a) => !a.featured);
+}
+
+export function loadNavFlyout(lang = "ko") {
+  const en = readLocale("en");
+  const locFile = lang === "en" ? en : { ...en, ...readLocale(lang) };
+  const nav = { ...(en.nav || {}), ...(locFile.nav || {}) };
+  const bySlug = Object.fromEntries(APP_CATALOG.map((e) => [e.slug, e]));
+
+  const apps = NAV_FLYOUT_SLUGS.map((slug) => {
+    const entry = bySlug[slug];
+    const meta = NAV_FLYOUT_META[slug];
+    if (!entry || !meta) return null;
+    const iconOk = fs.existsSync(path.join(ROOT, entry.icon.replace(/^\//, "")));
+    return {
+      name: meta.menuName || entry.name,
+      icon: iconOk ? entry.icon : "",
+      desc: nav[meta.descKey] || "",
+      hint: nav[meta.hintKey] || "",
+      href: `/${lang}/${entry.homeHash}`,
+    };
+  }).filter(Boolean);
+
+  return {
+    apps,
+    label: nav.appsLabel || nav.appsAria || "Newon apps",
+    appsAria: nav.appsAria || nav.appsLabel || "Newon apps",
+    mobileSummary: nav.mobileSummary || nav.appsLabel || "Newon apps",
+  };
 }

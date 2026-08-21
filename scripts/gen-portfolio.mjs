@@ -83,8 +83,8 @@ function head({ langMeta, copy, title, description, canonical, suffix }) {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="${FONTS}" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/portfolio/portfolio.css" />
-    <script src="/lang-nav.js"></script>
+    <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260821b" />
+    <script src="/lang-nav.js?v=20260821stay2"></script>
     <script src="/theme-shell.js"></script>
   </head>`;
 }
@@ -92,16 +92,14 @@ function head({ langMeta, copy, title, description, canonical, suffix }) {
 function chromeNav(lang, copy, activeHash) {
   const prefix = pfPrefix(lang);
   const items = [
+    { href: `/${lang}/`, label: copy.navHome },
     { href: `${prefix}/#about`, label: copy.navAbout, hash: "about" },
     { href: `${prefix}/#projects`, label: copy.navProjects, hash: "projects" },
     { href: `${prefix}/#newon`, label: copy.navNewon, hash: "newon" },
     { href: `${prefix}/#contact`, label: copy.navContact, hash: "contact" },
   ];
   const links = items
-    .map((it) => {
-      const cur = activeHash === it.hash ? ' aria-current="page"' : "";
-      return `<a href="${it.href}"${cur}>${esc(it.label)}</a>`;
-    })
+    .map((it) => `<a href="${it.href}">${esc(it.label)}</a>`)
     .join("\n            ");
   return `
     <a class="skip-link" href="#pf-main">${esc(copy.skip)}</a>
@@ -143,10 +141,17 @@ function chromeNav(lang, copy, activeHash) {
     </header>`;
 }
 
-function foot() {
-  return `
-    <footer class="pf-foot">
+function foot(hub) {
+  const inner = hub
+    ? `<div class="pf-wrap pf-foot__inner">
       <p>© Newon</p>
+      <p>Nawon Kyung · CEO &amp; App Developer</p>
+      <a href="https://www.newon.app">newon.app</a>
+    </div>`
+    : `<p>© Newon</p>`;
+  return `
+    <footer class="pf-foot${hub ? " pf-foot--hub" : ""}">
+      ${inner}
     </footer>
     <script src="/lang-dropdown.js"></script>
     <script src="/portfolio/portfolio.js"></script>
@@ -245,6 +250,36 @@ function processEn(lang, s) {
   return `<span class="pf-en">${esc(s.en)}</span>`;
 }
 
+function exploreHref(lang, href) {
+  return href.replace("{lang}", lang);
+}
+
+function openTopicHtml(topic) {
+  const meta = topic.meta
+    ? `<span class="pf-open__meta">/ ${esc(topic.meta)}</span>`
+    : "";
+  return `<li class="pf-open__row">
+              <span class="pf-open__n">${esc(topic.n)}</span>
+              <div class="pf-open__body">
+                <p class="pf-open__title">${esc(topic.title)}${meta}</p>
+                <p class="pf-open__desc">${esc(topic.desc)}</p>
+              </div>
+              <span class="pf-open__go" aria-hidden="true">→</span>
+            </li>`;
+}
+
+function exploreRowHtml(lang, item) {
+  const href = exploreHref(lang, item.href);
+  return `<a class="pf-explore__row" href="${esc(href)}">
+              <span class="pf-explore__n">${esc(item.n)}</span>
+              <div class="pf-explore__body">
+                <p class="pf-explore__title">${esc(item.title)}</p>
+                <p class="pf-explore__desc">${esc(item.desc)}</p>
+              </div>
+              <span class="pf-explore__cta">${esc(item.cta)}</span>
+            </a>`;
+}
+
 function indexPage(langMeta, copy, apps) {
   const lang = langMeta.dir;
   const featured = featuredApps(apps);
@@ -291,16 +326,36 @@ function indexPage(langMeta, copy, apps) {
     ${chromeNav(lang, copy, "")}
     <main id="pf-main">
       <section class="pf-hero">
-        <div class="pf-hero__inner">
-          <img class="pf-hero__eko" src="/logo.png" alt="Newon" width="56" height="56" />
-          <h1 class="pf-hero__name">경나원</h1>
-          <p class="pf-kicker-en">Nawon Kyung</p>
-          <p class="pf-hero__role">CEO &amp; App Developer</p>
-          <p class="pf-hero__lead">${copy.heroLeadHtml}</p>
-          <div class="pf-hero__actions">
-            <a class="btn btn-primary" href="#projects">${esc(copy.ctaProjects)}</a>
-            <a class="btn btn-ghost" href="#contact">${esc(copy.ctaContact)}</a>
+        <div class="pf-hero__grid">
+          <div class="pf-hero__copy">
+            <p class="pf-hero__eyebrow pf-enter" style="--d:0">${esc(copy.heroEyebrow)}</p>
+            <img class="pf-hero__eko pf-enter" style="--d:1" src="/logo.png" alt="Newon" width="64" height="64" />
+            <h1 class="pf-hero__name pf-enter" style="--d:2">경나원</h1>
+            <p class="pf-hero__en pf-enter" style="--d:3">Nawon Kyung</p>
+            <p class="pf-hero__role pf-enter" style="--d:4">CEO &amp; App Developer</p>
+            <p class="pf-hero__lead pf-enter" style="--d:5">${copy.heroLeadHtml}</p>
+            <div class="pf-hero__actions pf-enter" style="--d:6">
+              <a class="btn btn-primary pf-hero__btn" href="#projects">${esc(copy.ctaProjects)}</a>
+              <a class="btn btn-ghost pf-hero__btn" href="#contact">${esc(copy.ctaContact)}</a>
+            </div>
           </div>
+          <aside class="pf-hero__aside pf-enter" style="--d:5" aria-label="${esc(copy.heroMetaTitle)}">
+            <p class="pf-hero__aside-title">${esc(copy.heroMetaTitle)}</p>
+            <dl class="pf-hero__meta">
+              <div>
+                <dt>${esc(copy.heroMeta1En)}</dt>
+                <dd>${esc(copy.heroMeta1Body)}</dd>
+              </div>
+              <div>
+                <dt>${esc(copy.heroMeta2En)}</dt>
+                <dd>${esc(copy.heroMeta2Body)}</dd>
+              </div>
+              <div>
+                <dt>${esc(copy.heroMeta3En)}</dt>
+                <dd>${esc(copy.heroMeta3Body)}</dd>
+              </div>
+            </dl>
+          </aside>
         </div>
       </section>
 
@@ -378,25 +433,108 @@ function indexPage(langMeta, copy, apps) {
         </div>
       </section>
 
-      <section id="contact" class="pf-section">
-        <div class="pf-wrap pf-wrap--narrow pf-contact">
-          <h2>${esc(copy.contactTitle)}</h2>
-          <p class="pf-contact__name">경나원</p>
-          <p class="pf-contact__en">Nawon Kyung</p>
-          <p class="pf-contact__role">CEO &amp; App Developer</p>
-          <div class="pf-dl">
-            <a href="tel:01039238904"><small>${esc(copy.contactPhone)}</small><span>010-3923-8904</span></a>
-            <a href="mailto:newon@newon.app"><small>${esc(copy.contactEmail)}</small><span>newon@newon.app</span></a>
-            <a href="https://www.newon.app"><small>${esc(copy.contactWeb)}</small><span>https://www.newon.app</span></a>
+      <section id="founder" class="pf-section pf-founder">
+        <div class="pf-wrap pf-founder__grid">
+          <div class="pf-founder__id">
+            <p class="pf-label">${esc(copy.founderLabel)}</p>
+            <p class="pf-founder__name">경나원</p>
+            <p class="pf-founder__en">Nawon Kyung</p>
+            <p class="pf-founder__role">CEO &amp; App Developer</p>
           </div>
-          <div class="pf-hero__actions">
-            <a class="btn btn-primary" href="mailto:newon@newon.app">${esc(copy.contactMailCta)}</a>
-            <a class="btn btn-ghost" href="${VCARD}" data-save-vcard>${esc(copy.contactSave)}</a>
+          <div class="pf-founder__story">
+            <h2 class="pf-founder__title">${esc(copy.founderTitle)}</h2>
+            <p class="pf-founder__intro">${esc(copy.founderIntro)}</p>
+            <p class="pf-founder__intro">${esc(copy.founderIntro2)}</p>
+            <p class="pf-founder__expertise">${copy.founderExpertise.map((e) => `<span>${esc(e)}</span>`).join("")}</p>
+            <a class="pf-founder__biz" href="/${esc(lang)}/business/">${esc(copy.founderBusiness)}</a>
           </div>
         </div>
       </section>
+
+      <section id="contact" class="pf-section pf-cx">
+        <div class="pf-wrap">
+          <header class="pf-cx__head">
+            <p class="pf-label pf-cx-enter" style="--d: 0">${esc(copy.contactLabel)}</p>
+            <h2 class="pf-cx__title pf-cx-enter" style="--d: 1">${copy.contactHeroTitleHtml}</h2>
+            <p class="pf-cx__lead pf-cx-enter" style="--d: 2">${esc(copy.contactLead)}</p>
+          </header>
+
+          <div class="pf-cx__split">
+            <div class="pf-cx__open-col pf-cx-enter" style="--d: 3">
+              <p class="pf-cx__open-label">${esc(copy.contactOpenLabel)}</p>
+              <ul class="pf-open">
+                ${copy.contactOpenTopics.map(openTopicHtml).join("\n                ")}
+              </ul>
+            </div>
+
+            <aside class="pf-cx__card pf-cx-enter" style="--d: 4" aria-labelledby="pf-cx-info-title">
+              <div class="pf-cx__card-head">
+                <h3 id="pf-cx-info-title" class="pf-cx__info-title">${esc(copy.contactInfoTitle)}</h3>
+                <p class="pf-cx__info-sub">${esc(copy.contactInfoSub)}</p>
+              </div>
+              <div class="pf-ci">
+                <div class="pf-ci__item">
+                  <span class="pf-ci__k">${esc(copy.contactPhone)}</span>
+                  <div class="pf-ci__main">
+                    <a class="pf-ci__v" href="tel:01039238904">010-3923-8904</a>
+                    <button type="button" class="pf-ci__copy" data-copy="010-3923-8904" data-copied="${esc(copy.contactCopied)}" aria-live="polite">
+                      <span data-copy-label>${esc(copy.contactCopy)}</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="pf-ci__item">
+                  <span class="pf-ci__k">${esc(copy.contactEmail)}</span>
+                  <div class="pf-ci__main">
+                    <a class="pf-ci__v" href="mailto:newon@newon.app">newon@newon.app</a>
+                    <button type="button" class="pf-ci__copy" data-copy="newon@newon.app" data-copied="${esc(copy.contactCopied)}" aria-live="polite">
+                      <span data-copy-label>${esc(copy.contactCopy)}</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="pf-ci__item">
+                  <span class="pf-ci__k">${esc(copy.contactWeb)}</span>
+                  <div class="pf-ci__main">
+                    <a class="pf-ci__v" href="https://www.newon.app">newon.app</a>
+                  </div>
+                </div>
+              </div>
+              <div class="pf-cx__card-foot">
+                <p class="pf-cx__quick-label">${esc(copy.contactQuick)}</p>
+                <div class="pf-cx__actions">
+                  <a class="btn btn-primary pf-cx__btn-primary" href="mailto:newon@newon.app">${esc(copy.contactMailCta)}</a>
+                  <a class="btn btn-ghost pf-cx__btn-secondary" href="${VCARD}" data-save-vcard>${esc(copy.contactSave)}</a>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <div class="pf-wrap pf-cx-msg">
+          <div class="pf-cx-msg__grid pf-cx-enter" style="--d: 8">
+            <div class="pf-cx-msg__copy">
+              <p class="pf-label">${esc(copy.contactMsgLabel)}</p>
+              <h2 class="pf-cx-msg__title">${copy.contactMsgTitleHtml}</h2>
+              <p class="pf-cx-msg__lead">${esc(copy.contactMsgLead)}</p>
+            </div>
+            <a class="pf-cx-msg__mail" href="mailto:newon@newon.app">${esc(copy.contactMsgMail)}</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="pf-section pf-explore" aria-labelledby="pf-explore-title">
+        <div class="pf-wrap">
+          <div class="pf-explore__head pf-cx-enter" style="--d: 0">
+            <p class="pf-label">${esc(copy.exploreLabel)}</p>
+            <h2 id="pf-explore-title" class="pf-explore__title">${esc(copy.exploreTitle)}</h2>
+            <p class="pf-explore__lead">${esc(copy.exploreLead)}</p>
+          </div>
+          <nav class="pf-explore__nav" aria-label="${esc(copy.exploreLabel)}">
+            ${copy.exploreNav.map((item) => exploreRowHtml(lang, item)).join("\n            ")}
+          </nav>
+        </div>
+      </section>
     </main>
-${foot()}`;
+${foot(true)}`;
 }
 
 function projectPage(langMeta, copy, app, apps) {

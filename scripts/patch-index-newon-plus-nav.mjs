@@ -105,7 +105,6 @@ const files = [
   path.join(ROOT, "templates", "pillmate-app-inc.html"),
   path.join(ROOT, "templates", "savy-app-inc.html"),
   path.join(ROOT, "templates", "babylog-app-inc.html"),
-  path.join(ROOT, "templates", "noting-app-inc.html"),
 ];
 
 for (const f of files) {

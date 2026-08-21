@@ -8,12 +8,14 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const indexPath = path.join(ROOT, "templates", "index.html");
 let s = fs.readFileSync(indexPath, "utf8");
 
-const marker = '<div id="noting-app"';
+const marker = s.includes('<div id="myworld-app"')
+  ? '<div id="myworld-app"'
+  : '<div id="subping-app"';
 
 if (!s.includes('id="newon-plus-app"')) {
   const inc = fs.readFileSync(path.join(ROOT, "templates", "newon-plus-app-inc.html"), "utf8");
   if (!s.includes(marker)) {
-    console.error("patch-index-newon-plus-app: noting-app marker not found");
+    console.error("patch-index-newon-plus-app: next-app marker not found");
     process.exit(1);
   }
   s = s.replace(marker, inc + "\n\n    " + marker);
@@ -184,8 +186,6 @@ if (!s.includes("function showNewonPlus")) {
   s = s.replace(
     `          } else if (h === "#countup-app" || h === "#countup") {
             showCountup();
-          } else if (h === "#noting-app" || h === "#noting") {
-            showNoting();
           } else {
             showHome();
           }
@@ -199,8 +199,6 @@ if (!s.includes("function showNewonPlus")) {
             h === "#np-top"
           ) {
             showNewonPlus();
-          } else if (h === "#noting-app" || h === "#noting") {
-            showNoting();
           } else {
             showHome();
           }

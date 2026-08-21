@@ -164,6 +164,7 @@
               </div>
               <h1>{{t:sp.h1}}</h1>
               <p class="ox-subtitle">{{t:sp.subtitle}}</p>
+              <p class="ox-hero-value">{{t:sp.heroValueLine}}</p>
               <p class="ox-hero-reach-summary">{{t:sp.heroReachSummary}}</p>
               <div class="ox-store-release" role="status" aria-live="polite">
                 <p class="ox-store-release__label">{{t:ox.storeReleaseLine}}</p>
@@ -234,7 +235,156 @@
               </div>
             </div>
           </div>
-        </section>
+        </section><section id="sp-glance" class="ox-section al-glance ox-reveal-on-scroll" data-variant="app" data-accent="sp" aria-labelledby="sp-glance-title">
+      <div class="ox-container">
+        <header class="ox-section-head">
+          <p class="ox-section-label">{{t:sp.glanceLabel}}</p>
+          <h2 id="sp-glance-title" class="ox-section-title-inline"><span class="ox-section-title-inline__icon" aria-hidden="true">👀</span>
+          {{t:sp.glanceTitle}}</h2>
+        </header>
+        <div class="al-snap">
+          <div class="al-snap__main">
+            <div class="al-snap__brand">
+              <span class="al-snap__icon-wrap" aria-hidden="true">
+                <img class="al-snap__icon" src="/subping-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
+              </span>
+              <div class="al-snap__brand-text">
+                <p class="al-snap__eyebrow">{{t:sp.glanceSnapshotEyebrow}}</p>
+                <p class="al-snap__app-name">SubPing</p>
+              </div>
+            </div>
+            <p class="al-snap__line">{{t:sp.glanceSnapshot}}</p>
+            <div class="al-snap__best">
+              <p class="al-snap__kicker">{{t:sp.glanceBestForLabel}}</p>
+              <p class="al-snap__best-text">{{t:sp.glanceBestFor}}</p>
+            </div>
+          </div>
+          <dl class="al-snap__side">
+            <div class="al-snap__meta-item">
+            <dt>{{t:sp.glancePlatformLabel}}</dt>
+            <dd class="al-snap__platforms"><span class="al-snap__plat">iOS</span><span class="al-snap__plat-sep" aria-hidden="true">·</span><span class="al-snap__plat">Android</span></dd>
+          </div>
+            <div class="al-snap__meta-item al-snap__meta-item--metric">
+            <dt>{{t:sp.glanceLangLabel}}</dt>
+            <dd>
+              <span class="al-snap__figure">{{t:sp.glanceLang}}</span>
+              <span class="al-snap__figure-unit">{{t:sp.glanceLangUnit}}</span>
+            </dd>
+          </div>
+            <div class="al-snap__meta-item al-snap__meta-item--metric">
+            <dt>{{t:sp.glanceAvailLabel}}</dt>
+            <dd>
+              <span class="al-snap__figure">{{t:sp.glanceAvailNum}}</span>
+              <span class="al-snap__figure-unit">{{t:sp.glanceAvailUnit}}</span>
+            </dd>
+          </div>
+          </dl>
+          <div class="al-snap__core">
+            <p class="al-snap__kicker">{{t:sp.glanceCoreLabel}}</p>
+            <ul class="al-snap__core-list">
+              <li>{{t:sp.glanceCore1}}</li>
+              <li>{{t:sp.glanceCore2}}</li>
+              <li>{{t:sp.glanceCore3}}</li>
+              <li>{{t:sp.glanceCore4}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <section id="sp-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="sp-intro-title">
           <div class="ox-container ox-app-intro__inner">
@@ -257,6 +407,10 @@
           aria-label="{{t:sp.showcaseCollageAria}}"
         >
           <div class="ox-container">
+            <header class="al-showcase-head" aria-labelledby="sp-preview-title">
+      <h2 id="sp-preview-title"><span class="ox-section-title-inline__icon" aria-hidden="true">📱</span> {{t:sp.previewTitle}}</h2>
+      <p>{{t:sp.previewLede}}</p>
+    </header>
             <div class="sp-showcase-scroll" tabindex="0">
               <div class="sp-showcase-scroll__track">
                 <figure class="sp-showcase-scroll__item">
@@ -375,7 +529,128 @@
               </article>
             </div>
           </div>
-        </section>
+        </section><section id="sp-values" class="ox-section al-values ox-reveal-on-scroll" aria-labelledby="sp-values-title">
+      <div class="ox-container">
+        <header class="ox-section-head">
+          <p class="ox-section-label">{{t:sp.valuesLabel}}</p>
+          <h2 id="sp-values-title" class="ox-section-title-inline"><span class="ox-section-title-inline__icon" aria-hidden="true">💎</span>
+          {{t:sp.valuesTitle}}</h2>
+        </header>
+        <div class="ox-features al-values__grid">
+          <article class="ox-feature-card al-values__card"><h3>{{t:sp.value1Title}}</h3><p class="ox-feature-lead">{{t:sp.value1Body}}</p></article>
+          <article class="ox-feature-card al-values__card"><h3>{{t:sp.value2Title}}</h3><p class="ox-feature-lead">{{t:sp.value2Body}}</p></article>
+          <article class="ox-feature-card al-values__card"><h3>{{t:sp.value3Title}}</h3><p class="ox-feature-lead">{{t:sp.value3Body}}</p></article>
+        </div>
+      </div>
+    </section>
+
+<section id="sp-ba" class="ox-section al-ba ox-reveal-on-scroll" aria-labelledby="sp-ba-title">
+      <div class="ox-container">
+        <header class="ox-section-head">
+          <p class="ox-section-label">{{t:sp.baLabel}}</p>
+          <h2 id="sp-ba-title" class="ox-section-title-inline"><span class="ox-section-title-inline__icon" aria-hidden="true">🔄</span>
+          {{t:sp.baTitle}}</h2>
+        </header>
+        <div class="al-ba__grid">
+          <article class="al-ba__row"><div class="al-ba__before"><span>{{t:sp.baBefore}}</span><p>{{t:sp.ba1Before}}</p></div><div class="al-ba__after"><span>{{t:sp.baAfter}}</span><p>{{t:sp.ba1After}}</p></div></article>
+          <article class="al-ba__row"><div class="al-ba__before"><span>{{t:sp.baBefore}}</span><p>{{t:sp.ba2Before}}</p></div><div class="al-ba__after"><span>{{t:sp.baAfter}}</span><p>{{t:sp.ba2After}}</p></div></article>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         
 
@@ -438,7 +713,8 @@
         <section id="sp-how" class="ox-section ox-reveal-on-scroll" aria-labelledby="sp-how-title">
           <div class="ox-container">
             <header class="ox-section-head">
-              <h2 id="sp-how-title" class="ox-section-title-inline">{{t:sp.howTitle}}</h2>
+              <h2 id="sp-how-title" class="ox-section-title-inline"><span class="ox-section-title-inline__icon" aria-hidden="true">📖</span>
+                {{t:sp.howTitle}}</h2>
             </header>
             <div class="ox-features">
               <article class="ox-feature-card">
@@ -464,6 +740,24 @@
             </div>
           </div>
         </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <section
           id="sp-premium"
@@ -572,7 +866,134 @@
               <li>{{t:sp.reco6}}</li>
             </ul>
           </div>
-        </section>
+        </section><section id="sp-faq" class="ox-section al-faq ox-reveal-on-scroll" aria-labelledby="sp-faq-title">
+      <div class="ox-container">
+        <header class="ox-section-head">
+          <p class="ox-section-label">{{t:sp.faqLabel}}</p>
+          <h2 id="sp-faq-title" class="ox-section-title-inline"><span class="ox-section-title-inline__icon" aria-hidden="true">❓</span>
+          {{t:sp.faqTitle}}</h2>
+        </header>
+        <div class="al-faq__list">
+          <details class="al-faq__item"><summary><span class="al-faq__q">{{t:sp.faq1Q}}</span><span class="al-faq__chev" aria-hidden="true"></span></summary><div class="al-faq__answer"><p>{{t:sp.faq1A}}</p></div></details>
+          <details class="al-faq__item"><summary><span class="al-faq__q">{{t:sp.faq2Q}}</span><span class="al-faq__chev" aria-hidden="true"></span></summary><div class="al-faq__answer"><p>{{t:sp.faq2A}}</p></div></details>
+          <details class="al-faq__item"><summary><span class="al-faq__q">{{t:sp.faq3Q}}</span><span class="al-faq__chev" aria-hidden="true"></span></summary><div class="al-faq__answer"><p>{{t:sp.faq3A}}</p></div></details>
+          <details class="al-faq__item"><summary><span class="al-faq__q">{{t:sp.faq4Q}}</span><span class="al-faq__chev" aria-hidden="true"></span></summary><div class="al-faq__answer"><p>{{t:sp.faq4A}}</p></div></details>
+          <details class="al-faq__item"><summary><span class="al-faq__q">{{t:sp.faq5Q}}</span><span class="al-faq__chev" aria-hidden="true"></span></summary><div class="al-faq__answer"><p>{{t:sp.faq5A}}</p></div></details>
+          <details class="al-faq__item"><summary><span class="al-faq__q">{{t:sp.faq6Q}}</span><span class="al-faq__chev" aria-hidden="true"></span></summary><div class="al-faq__answer"><p>{{t:sp.faq6A}}</p></div></details>
+          <details class="al-faq__item"><summary><span class="al-faq__q">{{t:sp.faq7Q}}</span><span class="al-faq__chev" aria-hidden="true"></span></summary><div class="al-faq__answer"><p>{{t:sp.faq7A}}</p></div></details>
+        </div>
+      </div>
+    </section>
+
+<section id="sp-privacy" class="ox-section al-privacy ox-reveal-on-scroll" aria-labelledby="sp-privacy-title">
+      <div class="ox-container">
+        <header class="ox-section-head">
+          <p class="ox-section-label">{{t:sp.privacyLabel}}</p>
+          <h2 id="sp-privacy-title" class="ox-section-title-inline"><span class="ox-section-title-inline__icon" aria-hidden="true">🔒</span>
+          {{t:sp.privacyTitle}}</h2>
+        </header>
+        <nav class="al-privacy__links" aria-label="{{t:sp.privacyTitle}}">
+          <a href="privacy/">{{t:sp.privacyPrivacy}}</a>
+          <a href="terms/">{{t:sp.privacyTerms}}</a>
+          <a href="subping/delete-account/">{{t:sp.privacyDelete}}</a>
+          <a href="#sp-premium">{{t:sp.privacySubscribe}}</a>
+        </nav>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <section
           id="sp-closing"
@@ -594,6 +1015,33 @@
             </div>
           </div>
         </section>
+
+<section id="sp-final-cta" class="ox-section al-final-cta ox-reveal-on-scroll" aria-labelledby="sp-final-cta-title">
+      <div class="ox-container al-final-cta__inner">
+        <img class="al-final-cta__logo" src="/subping-logo.png" alt="" width="96" height="96" loading="lazy" decoding="async" />
+        <p class="al-final-cta__name">SubPing</p>
+        <h2 id="sp-final-cta-title" class="al-final-cta__headline">{{t:sp.heroValueLine}}</h2>
+        <div class="al-final-cta__actions" role="group" aria-label="{{t:sp.finalCtaAppStore}}">
+          <a class="al-final-cta__btn" href="{{html:sp.appStoreUrl}}" target="_blank" rel="noopener noreferrer">{{t:sp.finalCtaAppStore}}</a>
+          <a class="al-final-cta__btn" href="{{html:sp.googlePlayUrl}}" target="_blank" rel="noopener noreferrer">{{t:sp.finalCtaGooglePlay}}</a>
+        </div>
+      </div>
+    </section>
+
+<section id="sp-related" class="ox-section al-related ox-reveal-on-scroll" aria-labelledby="sp-related-title">
+      <div class="ox-container">
+        <header class="ox-section-head">
+          <p class="ox-section-label">{{t:sp.relatedLabel}}</p>
+          <h2 id="sp-related-title" class="ox-section-title-inline"><span class="ox-section-title-inline__icon" aria-hidden="true">📲</span>
+          {{t:sp.relatedTitle}}</h2>
+        </header>
+        <div class="al-related__grid">
+          <a class="al-related__card" href="#savy-app"><img src="/savy-logo.png" alt="" width="64" height="64" loading="lazy" decoding="async" /><span class="al-related__copy"><strong>SAVY</strong><span>{{t:sv.heroValueLine}}</span></span><span class="al-related__go" aria-hidden="true">→</span></a>
+          <a class="al-related__card" href="#piggyup-app"><img src="/piggyup-logo.png" alt="" width="64" height="64" loading="lazy" decoding="async" /><span class="al-related__copy"><strong>PiggyUp</strong><span>{{t:pu.heroValueLine}}</span></span><span class="al-related__go" aria-hidden="true">→</span></a>
+          <a class="al-related__card" href="#newon-plus-app"><img src="/newon-plus-logo.png" alt="" width="64" height="64" loading="lazy" decoding="async" /><span class="al-related__copy"><strong>Newon</strong><span>{{t:np.heroValueLine}}</span></span><span class="al-related__go" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
         <section class="ox-closing ox-reveal-on-scroll" aria-label="{{t:sp.closingFoot}}">
           <div class="ox-closing__stack">{{html:sp.closingHtml}}</div>
         </section>

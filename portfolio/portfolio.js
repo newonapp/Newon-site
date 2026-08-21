@@ -85,4 +85,70 @@
       a.remove();
     });
   }
+
+
+  var contact = document.getElementById("contact");
+  var explore = document.querySelector(".pf-explore");
+  function revealCxSection(el) {
+    el.classList.add("is-in");
+  }
+  function bindCxReveal(el) {
+    if (!el) return;
+    if (reduce) revealCxSection(el);
+    else if ("IntersectionObserver" in window) {
+      var cio = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) {
+              revealCxSection(en.target);
+              cio.unobserve(en.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      );
+      cio.observe(el);
+    } else revealCxSection(el);
+  }
+  bindCxReveal(contact);
+  bindCxReveal(explore);
+
+  if (contact && contact.classList.contains("pf-cx")) {
+    function fallbackCopy(text, done) {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        done();
+      } catch (err) {}
+      ta.remove();
+    }
+
+    contact.querySelectorAll("[data-copy]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var text = btn.getAttribute("data-copy") || "";
+        var label = btn.querySelector("[data-copy-label]");
+        var orig = label ? label.textContent : "";
+        var copied = btn.getAttribute("data-copied") || "Copied";
+        function done() {
+          btn.classList.add("is-copied");
+          if (label) label.textContent = copied;
+          window.setTimeout(function () {
+            btn.classList.remove("is-copied");
+            if (label) label.textContent = orig;
+          }, 1500);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done).catch(function () {
+            fallbackCopy(text, done);
+          });
+        } else fallbackCopy(text, done);
+      });
+    });
+  }
 })();

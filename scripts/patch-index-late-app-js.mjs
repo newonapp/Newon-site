@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Wire GoalUp / CountUp / Newon+ / Noting theme toggles + mobile menus (idempotent). */
+/** Wire GoalUp / CountUp / Newon+ theme toggles + mobile menus (idempotent). */
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -39,12 +39,6 @@ if (!s.includes('getElementById("gu-nav-toggle")')) {
           if (npt && npm) {
             npt.setAttribute("aria-expanded", "false");
             npm.hidden = true;
-          }
-          var ntt = document.getElementById("nt-nav-toggle");
-          var ntm = document.getElementById("nt-mobile");
-          if (ntt && ntm) {
-            ntt.setAttribute("aria-expanded", "false");
-            ntm.hidden = true;
           }
         }`
   );
@@ -122,31 +116,6 @@ const handlerBlock = `
             a.addEventListener("click", function () {
               npToggle.setAttribute("aria-expanded", "false");
               npMenu.hidden = true;
-            });
-          });
-        }
-
-        var themeBtnNt = document.getElementById("nt-theme");
-        if (themeBtnNt && elNt) {
-          syncNtThemeButton();
-          themeBtnNt.addEventListener("click", function () {
-            var next = elNt.getAttribute("data-theme") === "dark" ? "light" : "dark";
-            persistUnifiedTheme(next);
-          });
-        }
-
-        var ntToggle = document.getElementById("nt-nav-toggle");
-        var ntMenu = document.getElementById("nt-mobile");
-        if (ntToggle && ntMenu) {
-          ntToggle.addEventListener("click", function () {
-            var open = ntToggle.getAttribute("aria-expanded") === "true";
-            ntToggle.setAttribute("aria-expanded", String(!open));
-            ntMenu.hidden = open;
-          });
-          ntMenu.querySelectorAll("a").forEach(function (a) {
-            a.addEventListener("click", function () {
-              ntToggle.setAttribute("aria-expanded", "false");
-              ntMenu.hidden = true;
             });
           });
         }

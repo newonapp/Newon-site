@@ -1,0 +1,590 @@
+{
+  "articles": {
+    "petlog-community-update": {
+      "ja": {
+        "title": "PetLog コミュニティがリニューアルされました。",
+        "titleHtml": "PetLog コミュニティ、<br /> が更新されました。",
+        "latestTitle": "新しい PetLog コミュニティをご紹介します。",
+        "summary": "PetLog コミュニティを改善し、人々がより快適に共有し、必要なものを見つけられるようにしました。",
+        "lead": "コミュニティは読みやすく、投稿し、フォローしやすいため、ペットの飼い主はより快適に共有できます。",
+        "timelineLabel": "コミュニティエクスペリエンスの向上",
+        "featureName": "",
+        "paragraphs": [
+          "PetLog コミュニティを改良して、読み書きし、会話を継続しやすくしました。",
+          "毎日のペットの世話のメモや質問を他の飼い主と共有することはより簡単に感じられ、読み続けたい投稿を見つけることもより明確に感じられるはずです。"
+        ],
+        "whatsNew": [
+          {
+            "title": "より明確なコミュニティ",
+            "body": "人々がより自由に共有できるようにコミュニティを改善しました。"
+          },
+          {
+            "title": "より良い投稿",
+            "body": "投稿の読み取りと書き込みは、より単純なパスに従います。"
+          },
+          {
+            "title": "使いやすさ",
+            "body": "コミュニティ内の移動はより速く、より明白になります。"
+          }
+        ]
+      },
+      "es": {
+        "title": "Comunidad PetLog, renovada.",
+        "titleHtml": "Comunidad PetLog,<br />renovada.",
+        "latestTitle": "Conoce la nueva comunidad PetLog.",
+        "summary": "Mejoramos la comunidad PetLog para que las personas puedan compartir más cómodamente y descubrir lo que necesitan.",
+        "lead": "La comunidad es más fácil de leer, publicar y seguir, por lo que los dueños de mascotas pueden compartir más cómodamente.",
+        "timelineLabel": "Experiencia comunitaria mejorada",
+        "featureName": "",
+        "paragraphs": [
+          "Refinamos la comunidad PetLog para que sea más fácil leer, escribir y continuar una conversación.",
+          "Compartir notas y preguntas cotidianas sobre el cuidado de las mascotas con otros dueños debería resultar más sencillo, y encontrar una publicación para seguir leyendo también debería resultar más claro."
+        ],
+        "whatsNew": [
+          {
+            "title": "Una comunidad más clara",
+            "body": "Mejoramos la comunidad para que la gente pueda compartir más libremente."
+          },
+          {
+            "title": "Mejor publicación",
+            "body": "Leer y escribir publicaciones sigue un camino más sencillo."
+          },
+          {
+            "title": "Usabilidad",
+            "body": "Moverse por la comunidad es más rápido y más obvio."
+          }
+        ]
+      },
+      "pt-br": {
+        "title": "Comunidade PetLog, renovada.",
+        "titleHtml": "Comunidade PetLog,<br />renovada.",
+        "latestTitle": "Conheça a nova comunidade PetLog.",
+        "summary": "Melhoramos a comunidade PetLog para que as pessoas possam compartilhar com mais conforto e descobrir o que precisam.",
+        "lead": "A comunidade é mais fácil de ler, postar e seguir — para que os donos de animais de estimação possam compartilhar com mais conforto.",
+        "timelineLabel": "Experiência comunitária melhorada",
+        "featureName": "",
+        "paragraphs": [
+          "Refinamos a comunidade PetLog para que seja mais fácil ler, escrever e continuar uma conversa.",
+          "Compartilhar notas e perguntas diárias sobre cuidados com animais de estimação com outros proprietários deve parecer mais simples, e encontrar uma postagem para continuar lendo também deve ser mais claro."
+        ],
+        "whatsNew": [
+          {
+            "title": "Uma comunidade mais clara",
+            "body": "Melhoramos a comunidade para que as pessoas possam compartilhar mais livremente."
+          },
+          {
+            "title": "Melhor postagem",
+            "body": "Ler e escrever postagens segue um caminho mais simples."
+          },
+          {
+            "title": "Usabilidade",
+            "body": "Mover-se pela comunidade é mais rápido e óbvio."
+          }
+        ]
+      },
+      "fr": {
+        "title": "Communauté PetLog, renouvelée.",
+        "titleHtml": "Communauté PetLog,<br />renouvelée.",
+        "latestTitle": "Rencontrez la nouvelle communauté PetLog.",
+        "summary": "Nous avons amélioré la communauté PetLog afin que les gens puissent partager plus confortablement et découvrir ce dont ils ont besoin.",
+        "lead": "La communauté est plus facile à lire, à publier et à suivre, afin que les propriétaires d'animaux puissent partager plus confortablement.",
+        "timelineLabel": "Expérience communautaire améliorée",
+        "featureName": "",
+        "paragraphs": [
+          "Nous avons affiné la communauté PetLog afin qu'il soit plus facile de lire, d'écrire et de poursuivre une conversation.",
+          "Partager des notes et des questions quotidiennes sur les soins des animaux avec d'autres propriétaires devrait sembler plus simple, et trouver un article pour continuer à lire devrait également sembler plus clair."
+        ],
+        "whatsNew": [
+          {
+            "title": "Une communauté plus claire",
+            "body": "Nous avons amélioré la communauté afin que les gens puissent partager plus librement."
+          },
+          {
+            "title": "Meilleure publication",
+            "body": "La lecture et l'écriture d'articles suivent un chemin plus simple."
+          },
+          {
+            "title": "Convivialité",
+            "body": "Se déplacer dans la communauté est plus rapide et plus évident."
+          }
+        ]
+      },
+      "de": {
+        "title": "PetLog-Community, erneuert.",
+        "titleHtml": "PetLog-Community,<br />erneuert.",
+        "latestTitle": "Lernen Sie die neue PetLog-Community kennen.",
+        "summary": "Wir haben die PetLog-Community verbessert, damit die Leute bequemer teilen und herausfinden können, was sie brauchen.",
+        "lead": "Die Community ist einfacher zu lesen, zu posten und zu verfolgen – so können Tierbesitzer bequemer teilen.",
+        "timelineLabel": "Community-Erlebnis verbessert",
+        "featureName": "",
+        "paragraphs": [
+          "Wir haben die PetLog-Community verfeinert, damit es einfacher ist, zu lesen, zu schreiben und eine Konversation fortzusetzen.",
+          "Das Teilen alltäglicher Notizen und Fragen zur Haustierpflege mit anderen Besitzern sollte sich einfacher anfühlen, und auch die Suche nach einem Beitrag zum Weiterlesen sollte sich klarer anfühlen."
+        ],
+        "whatsNew": [
+          {
+            "title": "Eine klarere Gemeinschaft",
+            "body": "Wir haben die Community verbessert, damit die Leute freier teilen können."
+          },
+          {
+            "title": "Besserer Beitrag",
+            "body": "Das Lesen und Schreiben von Beiträgen erfolgt einfacher."
+          },
+          {
+            "title": "Benutzerfreundlichkeit",
+            "body": "Sich durch die Gemeinschaft zu bewegen ist schneller und offensichtlicher."
+          }
+        ]
+      },
+      "hi": {
+        "title": "पेटलॉग समुदाय, नवीनीकृत।",
+        "titleHtml": "पेटलॉग समुदाय,<br />नवीनीकृत।",
+        "latestTitle": "नए पेटलॉग समुदाय से मिलें।",
+        "summary": "हमने पेटलॉग समुदाय में सुधार किया है ताकि लोग अधिक आराम से साझा कर सकें और जान सकें कि उन्हें क्या चाहिए।",
+        "lead": "समुदाय को पढ़ना, पोस्ट करना और अनुसरण करना आसान है - इसलिए पालतू पशु मालिक अधिक आराम से साझा कर सकते हैं।",
+        "timelineLabel": "सामुदायिक अनुभव में सुधार हुआ",
+        "featureName": "",
+        "paragraphs": [
+          "हमने पेटलॉग समुदाय को परिष्कृत किया है ताकि पढ़ना, लिखना और बातचीत जारी रखना आसान हो जाए।",
+          "अन्य मालिकों के साथ रोजमर्रा के पालतू जानवरों की देखभाल संबंधी नोट्स और प्रश्न साझा करना आसान लगना चाहिए, और पढ़ने के लिए पोस्ट ढूंढना भी अधिक स्पष्ट लगना चाहिए।"
+        ],
+        "whatsNew": [
+          {
+            "title": "एक स्पष्ट समुदाय",
+            "body": "हमने समुदाय में सुधार किया ताकि लोग अधिक स्वतंत्र रूप से साझा कर सकें।"
+          },
+          {
+            "title": "बेहतर पोस्टिंग",
+            "body": "पोस्ट पढ़ना और लिखना एक सरल मार्ग का अनुसरण करता है।"
+          },
+          {
+            "title": "प्रयोज्य",
+            "body": "समुदाय के माध्यम से आगे बढ़ना तेज़ और अधिक स्पष्ट है।"
+          }
+        ]
+      },
+      "id": {
+        "title": "Komunitas PetLog, diperbarui.",
+        "titleHtml": "Komunitas PetLog,<br />diperbarui.",
+        "latestTitle": "Temui komunitas PetLog baru.",
+        "summary": "Kami meningkatkan komunitas PetLog sehingga orang dapat berbagi dengan lebih nyaman dan menemukan apa yang mereka butuhkan.",
+        "lead": "Komunitas lebih mudah dibaca, diposkan, dan diikuti — sehingga pemilik hewan peliharaan dapat berbagi dengan lebih nyaman.",
+        "timelineLabel": "Pengalaman komunitas meningkat",
+        "featureName": "",
+        "paragraphs": [
+          "Kami menyempurnakan komunitas PetLog sehingga lebih mudah membaca, menulis, dan melanjutkan percakapan.",
+          "Berbagi catatan dan pertanyaan perawatan hewan peliharaan sehari-hari dengan pemilik lain akan terasa lebih sederhana, dan menemukan postingan untuk terus dibaca juga akan terasa lebih jelas."
+        ],
+        "whatsNew": [
+          {
+            "title": "Komunitas yang lebih jelas",
+            "body": "Kami meningkatkan komunitas sehingga orang dapat berbagi dengan lebih bebas."
+          },
+          {
+            "title": "Postingan yang lebih baik",
+            "body": "Membaca dan menulis postingan mengikuti jalur yang lebih sederhana."
+          },
+          {
+            "title": "Kegunaan",
+            "body": "Bergerak melalui komunitas lebih cepat dan lebih jelas."
+          }
+        ]
+      }
+    }
+  },
+  "history": {
+    "hist-404-human-2026": {
+      "ja": {
+        "title": "ゲームプロジェクト",
+        "description": "AI 時代の最後の人類を描いたインタラクティブ ゲーム。"
+      },
+      "es": {
+        "title": "Proyecto de juego",
+        "description": "Un juego interactivo sobre el último ser humano en la era de la IA."
+      },
+      "pt-br": {
+        "title": "Projeto de jogo",
+        "description": "Um jogo interativo sobre o último humano na era da IA."
+      },
+      "fr": {
+        "title": "Projet de jeu",
+        "description": "Un jeu interactif sur le dernier humain à l'ère de l'IA."
+      },
+      "de": {
+        "title": "Spielprojekt",
+        "description": "Ein interaktives Spiel über den letzten Menschen im Zeitalter der KI."
+      },
+      "hi": {
+        "title": "गेम प्रोजेक्ट",
+        "description": "एआई के युग में अंतिम मानव के बारे में एक इंटरैक्टिव गेम।"
+      },
+      "id": {
+        "title": "Proyek Permainan",
+        "description": "Sebuah game interaktif tentang manusia terakhir di zaman AI."
+      }
+    },
+    "hist-myworld-2026": {
+      "ja": {
+        "title": "旅の記録と世界地図",
+        "description": "旅の記録と世界地図をつなぐ旅行サービス。"
+      },
+      "es": {
+        "title": "Registros de viajes y mapa mundial",
+        "description": "Un servicio de viajes que conecta registros de viajes con un mapa mundial."
+      },
+      "pt-br": {
+        "title": "Registros de viagem e mapa mundial",
+        "description": "Um serviço de viagens que conecta registros de viagens a um mapa mundial."
+      },
+      "fr": {
+        "title": "Dossiers de voyage et carte du monde",
+        "description": "Un service de voyage qui relie les enregistrements de voyage à une carte du monde."
+      },
+      "de": {
+        "title": "Reiseaufzeichnungen und Weltkarte",
+        "description": "Ein Reisedienst, der Reiseaufzeichnungen mit einer Weltkarte verknüpft."
+      },
+      "hi": {
+        "title": "यात्रा रिकॉर्ड और विश्व मानचित्र",
+        "description": "एक यात्रा सेवा जो यात्रा रिकॉर्ड को विश्व मानचित्र से जोड़ती है।"
+      },
+      "id": {
+        "title": "Catatan perjalanan & peta dunia",
+        "description": "Sebuah layanan perjalanan yang menghubungkan catatan perjalanan dengan peta dunia."
+      }
+    },
+    "hist-newon-plus-2026": {
+      "ja": {
+        "title": "Newon アプリハブ",
+        "description": "Newon のアプリとサービスを 1 か所で接続するハブ。"
+      },
+      "es": {
+        "title": "Centro de aplicaciones Newon",
+        "description": "Un centro que conecta las aplicaciones y servicios de Newon en un solo lugar."
+      },
+      "pt-br": {
+        "title": "Hub de aplicativos Newon",
+        "description": "Um hub que conecta aplicativos e serviços da Newon em um só lugar."
+      },
+      "fr": {
+        "title": "Hub d'applications Newon",
+        "description": "Un hub qui connecte les applications et services de Newon en un seul endroit."
+      },
+      "de": {
+        "title": "Newon-App-Hub",
+        "description": "Ein Hub, der die Apps und Dienste von Newon an einem Ort verbindet."
+      },
+      "hi": {
+        "title": "न्यूऑन ऐप हब",
+        "description": "एक हब जो न्यूऑन के ऐप्स और सेवाओं को एक ही स्थान पर जोड़ता है।"
+      },
+      "id": {
+        "title": "Hub aplikasi baru",
+        "description": "Hub yang menghubungkan aplikasi dan layanan Newon di satu tempat."
+      }
+    },
+    "hist-countup-2026": {
+      "ja": {
+        "title": "カウントベースの進捗状況",
+        "description": "カウントベースの目標と成長記録。"
+      },
+      "es": {
+        "title": "Progreso basado en recuento",
+        "description": "Metas basadas en recuentos y registros de crecimiento."
+      },
+      "pt-br": {
+        "title": "Progresso baseado em contagem",
+        "description": "Metas baseadas em contagem e registros de crescimento."
+      },
+      "fr": {
+        "title": "Progression basée sur le nombre",
+        "description": "Objectifs basés sur le nombre et records de croissance."
+      },
+      "de": {
+        "title": "Zählbasierter Fortschritt",
+        "description": "Zählbasierte Ziele und Wachstumsrekorde."
+      },
+      "hi": {
+        "title": "गिनती आधारित प्रगति",
+        "description": "गणना-आधारित लक्ष्य और विकास रिकॉर्ड।"
+      },
+      "id": {
+        "title": "Kemajuan berbasis hitungan",
+        "description": "Sasaran dan catatan pertumbuhan berdasarkan hitungan."
+      }
+    },
+    "hist-goalup-2026": {
+      "ja": {
+        "title": "目標、習慣、課題",
+        "description": "目標、習慣、課題を 1 つのフローにまとめます。"
+      },
+      "es": {
+        "title": "Metas, hábitos, desafíos.",
+        "description": "Metas, hábitos y desafíos en un solo flujo."
+      },
+      "pt-br": {
+        "title": "Metas, hábitos, desafios",
+        "description": "Metas, hábitos e desafios em um único fluxo."
+      },
+      "fr": {
+        "title": "Objectifs, habitudes, défis",
+        "description": "Objectifs, habitudes et défis en un seul flux."
+      },
+      "de": {
+        "title": "Ziele, Gewohnheiten, Herausforderungen",
+        "description": "Ziele, Gewohnheiten und Herausforderungen in einem Fluss."
+      },
+      "hi": {
+        "title": "लक्ष्य, आदतें, चुनौतियाँ",
+        "description": "लक्ष्य, आदतें और चुनौतियाँ एक ही प्रवाह में।"
+      },
+      "id": {
+        "title": "Tujuan, kebiasaan, tantangan",
+        "description": "Tujuan, kebiasaan, dan tantangan dalam satu aliran."
+      }
+    },
+    "hist-piggyup-2026": {
+      "ja": {
+        "title": "貯蓄記録",
+        "description": "支出パターンに関する洞察を備えた貯蓄ログ。"
+      },
+      "es": {
+        "title": "Registros de ahorro",
+        "description": "Registros de ahorro con información sobre los patrones de gasto."
+      },
+      "pt-br": {
+        "title": "Registros de poupança",
+        "description": "Registros de economia com informações sobre padrões de gastos."
+      },
+      "fr": {
+        "title": "Dossiers d'épargne",
+        "description": "Journaux d'épargne avec un aperçu des habitudes de dépenses."
+      },
+      "de": {
+        "title": "Sparaufzeichnungen",
+        "description": "Sparprotokolle mit Einblick in das Ausgabeverhalten."
+      },
+      "hi": {
+        "title": "बचत अभिलेख",
+        "description": "खर्च के पैटर्न की जानकारी के साथ बचत लॉग।"
+      },
+      "id": {
+        "title": "Catatan tabungan",
+        "description": "Catatan tabungan dengan wawasan tentang pola pengeluaran."
+      }
+    },
+    "hist-petlog-product-2026": {
+      "ja": {
+        "title": "ペットの生活記録",
+        "description": "ペットのログ、健康状態の追跡、家族の共有。"
+      },
+      "es": {
+        "title": "Registros de vida de mascotas",
+        "description": "Registros de mascotas, seguimiento de salud y uso compartido familiar."
+      },
+      "pt-br": {
+        "title": "Registros de vida de animais de estimação",
+        "description": "Registros de animais de estimação, rastreamento de saúde e compartilhamento familiar."
+      },
+      "fr": {
+        "title": "Registres de vie des animaux de compagnie",
+        "description": "Journaux d'animaux, suivi de la santé et partage familial."
+      },
+      "de": {
+        "title": "Aufzeichnungen über das Leben von Haustieren",
+        "description": "Haustierprotokolle, Gesundheitsüberwachung und Familienfreigabe."
+      },
+      "hi": {
+        "title": "पालतू पशु जीवन रिकॉर्ड",
+        "description": "पालतू लॉग, स्वास्थ्य ट्रैकिंग, और परिवार साझाकरण।"
+      },
+      "id": {
+        "title": "Catatan kehidupan hewan peliharaan",
+        "description": "Catatan hewan peliharaan, pelacakan kesehatan, dan berbagi keluarga."
+      }
+    },
+    "hist-pillmate-2026": {
+      "ja": {
+        "title": "薬の記録とリマインダー",
+        "description": "服薬記録とリマインダーサービス。"
+      },
+      "es": {
+        "title": "Registros y recordatorios de medicamentos",
+        "description": "Registros de medicación y servicio de recordatorio."
+      },
+      "pt-br": {
+        "title": "Registros e lembretes de medicamentos",
+        "description": "Registros de medicamentos e serviço de lembretes."
+      },
+      "fr": {
+        "title": "Dossiers de médicaments et rappels",
+        "description": "Journaux de médicaments et service de rappel."
+      },
+      "de": {
+        "title": "Medikamentenaufzeichnungen und Erinnerungen",
+        "description": "Medikamentenprotokolle und Erinnerungsservice."
+      },
+      "hi": {
+        "title": "दवा रिकॉर्ड और अनुस्मारक",
+        "description": "दवा लॉग और अनुस्मारक सेवा।"
+      },
+      "id": {
+        "title": "Catatan & pengingat pengobatan",
+        "description": "Log pengobatan dan layanan pengingat."
+      }
+    },
+    "hist-savy-2026": {
+      "ja": {
+        "title": "支出の記録と洞察",
+        "description": "支出のログと分析。"
+      },
+      "es": {
+        "title": "Registros de gastos y conocimientos",
+        "description": "Registros y análisis de gastos."
+      },
+      "pt-br": {
+        "title": "Registros de gastos e insights",
+        "description": "Registros e análises de gastos."
+      },
+      "fr": {
+        "title": "Dossiers de dépenses et informations",
+        "description": "Journaux et analyses des dépenses."
+      },
+      "de": {
+        "title": "Ausgabenaufzeichnungen und Einblicke",
+        "description": "Ausgabenprotokolle und -analysen."
+      },
+      "hi": {
+        "title": "व्यय रिकॉर्ड और अंतर्दृष्टि",
+        "description": "व्यय लॉग और विश्लेषण।"
+      },
+      "id": {
+        "title": "Catatan & wawasan pengeluaran",
+        "description": "Log pengeluaran dan analisis."
+      }
+    },
+    "hist-ox-month-2026": {
+      "ja": {
+        "title": "O/X 習慣の追跡",
+        "description": "O/X ベースの習慣追跡。"
+      },
+      "es": {
+        "title": "Seguimiento de hábitos O/X",
+        "description": "Seguimiento de hábitos basado en O/X."
+      },
+      "pt-br": {
+        "title": "Rastreamento de hábitos O/X",
+        "description": "Rastreamento de hábitos baseado em O/X."
+      },
+      "fr": {
+        "title": "Suivi des habitudes O/X",
+        "description": "Suivi des habitudes basé sur O/X."
+      },
+      "de": {
+        "title": "O/X-Gewohnheitsverfolgung",
+        "description": "O/X-basiertes Gewohnheitstracking."
+      },
+      "hi": {
+        "title": "ओ/एक्स आदत ट्रैकिंग",
+        "description": "ओ/एक्स-आधारित आदत ट्रैकिंग।"
+      },
+      "id": {
+        "title": "Pelacakan kebiasaan O/X",
+        "description": "Pelacakan kebiasaan berbasis O/X."
+      }
+    },
+    "hist-subping-2026": {
+      "ja": {
+        "title": "サブスクリプションと請求",
+        "description": "サブスクリプション、支払い日、コスト管理。"
+      },
+      "es": {
+        "title": "Suscripciones y facturación",
+        "description": "Suscripciones, fechas de pago y gestión de costes."
+      },
+      "pt-br": {
+        "title": "Assinaturas e cobrança",
+        "description": "Assinaturas, datas de pagamento e gerenciamento de custos."
+      },
+      "fr": {
+        "title": "Abonnements et facturation",
+        "description": "Abonnements, dates de paiement et gestion des coûts."
+      },
+      "de": {
+        "title": "Abonnements und Abrechnung",
+        "description": "Abonnements, Zahlungstermine und Kostenverwaltung."
+      },
+      "hi": {
+        "title": "सदस्यता एवं बिलिंग",
+        "description": "सदस्यताएँ, भुगतान तिथियाँ और लागत प्रबंधन।"
+      },
+      "id": {
+        "title": "Langganan & penagihan",
+        "description": "Langganan, tanggal pembayaran, dan manajemen biaya."
+      }
+    },
+    "hist-babylog-2026": {
+      "ja": {
+        "title": "子育てと成長の記録",
+        "description": "子育て、成長、家族の記録。"
+      },
+      "es": {
+        "title": "Registros de crianza y crecimiento",
+        "description": "Crianza, crecimiento y registros familiares."
+      },
+      "pt-br": {
+        "title": "Registros de parentalidade e crescimento",
+        "description": "Parentalidade, crescimento e registros familiares."
+      },
+      "fr": {
+        "title": "Journaux de parentalité et de croissance",
+        "description": "Parentalité, croissance et dossiers familiaux."
+      },
+      "de": {
+        "title": "Erziehungs- und Wachstumsprotokolle",
+        "description": "Aufzeichnungen über Erziehung, Wachstum und Familie."
+      },
+      "hi": {
+        "title": "पालन-पोषण एवं विकास लॉग",
+        "description": "पालन-पोषण, विकास और पारिवारिक रिकॉर्ड।"
+      },
+      "id": {
+        "title": "Log pengasuhan & pertumbuhan",
+        "description": "Catatan pengasuhan, pertumbuhan, dan keluarga."
+      }
+    }
+  },
+  "imageAlt": {
+    "petlog-community-update": {
+      "ja": "PetLogコミュニティ画面",
+      "es": "Pantalla de la comunidad PetLog",
+      "pt-br": "Tela da comunidade PetLog",
+      "fr": "Écran de la communauté PetLog",
+      "de": "PetLog-Community-Bildschirm",
+      "hi": "पेटलॉग समुदाय स्क्रीन",
+      "id": "Layar komunitas PetLog"
+    }
+  },
+  "activity": {
+    "petlog-community-update": {
+      "area": {
+        "ja": "コミュニティ",
+        "es": "Comunidad",
+        "pt-br": "Comunidade",
+        "fr": "Communauté",
+        "de": "Gemeinschaft",
+        "hi": "समुदाय",
+        "id": "Masyarakat"
+      },
+      "label": {
+        "ja": "コミュニティエクスペリエンスの向上",
+        "es": "Experiencia comunitaria mejorada",
+        "pt-br": "Experiência comunitária melhorada",
+        "fr": "Expérience communautaire améliorée",
+        "de": "Community-Erlebnis verbessert",
+        "hi": "सामुदायिक अनुभव में सुधार हुआ",
+        "id": "Pengalaman komunitas meningkat"
+      }
+    }
+  }
+}

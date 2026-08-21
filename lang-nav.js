@@ -1,11 +1,12 @@
 /**
- * Shared language URL builder for newon.app (root host, optional /repo/… prefix).
- * Loads early in <head>: exposes newonBuildLangHref(nextDir), applies newon-lang-dir from localStorage
- * when it differs from the URL locale (privacy root /privacy/ is treated as Korean content).
+ * Shared language URL builder for newon.app.
+ * Language switch always keeps the current screen: same path with locale swapped,
+ * same query, and the best-effort hash / scroll position.
  */
 (function (g) {
   var LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
 
+  /** App shells on the home page (id → hash to restore). */
   var APP_SHELLS = [
     ["ox-month", "#ox-month"],
     ["subping-app", "#subping-app"],
@@ -18,9 +19,9 @@
     ["countup-app", "#countup-app"],
     ["newon-plus-app", "#newon-plus-app"],
     ["myworld-app", "#myworld-app"],
-    ["noting-app", "#noting-app"],
   ];
 
+  /** Home section ids used for in-page restore when no app shell is open. */
   var HOME_SECTIONS = [
     "top",
     "intro",
@@ -31,7 +32,42 @@
     "goal",
     "why",
     "numbers",
+    "home-explore",
+    "explore",
+    "home-ideas",
+    "home-final",
   ];
+
+  /**
+   * Paths without /{lang}/ that still have localized twins under /{lang}/…
+   * First segment → keep full remainder after injecting nextDir.
+   */
+  var LOCALIZED_ROOT_SEGS = {
+    privacy: 1,
+    terms: 1,
+    about: 1,
+    news: 1,
+    ideas: 1,
+    business: 1,
+    portfolio: 1,
+    babylog: 1,
+    petlog: 1,
+    pillmate: 1,
+    savy: 1,
+    piggyup: 1,
+    goalup: 1,
+    countup: 1,
+    myworld: 1,
+    subping: 1,
+    oxmonth: 1,
+    newon: 1,
+    "404-human": 1,
+  };
+
+  /** Single-locale pages: never bounce to home on lang change. */
+  var STAY_PUT_ROOTS = {
+    "card-n7x4k9": 1,
+  };
 
   function pathnameSegments() {
     return g.location.pathname
@@ -53,11 +89,16 @@
 
   function normalizeHref(href) {
     if (!href) return "/";
-    var out = href.replace(/\/{2,}/g, "/");
+    var out = String(href).replace(/\/{2,}/g, "/");
     if (out.length > 1 && out.endsWith("/") && out.indexOf("#") === -1 && out.indexOf("?") === -1) {
       return out;
     }
     return out;
+  }
+
+  function joinPath(segs) {
+    if (!segs || !segs.length) return "/";
+    return normalizeHref("/" + segs.join("/") + "/");
   }
 
   /** Keep the screen the user is looking at when switching language. */
@@ -94,41 +135,92 @@
     return h === "#" ? "" : h;
   }
 
+  function withTail(path, q, h) {
+    var base = path || "/";
+    if (base.length > 1 && !base.endsWith("/") && q.indexOf("?") !== 0 && !h) {
+      base += "/";
+    }
+    if (!base.endsWith("/") && (q || h)) {
+      // "/en/news" + "?x" → "/en/news/?x" is nicer; ensure slash before query/hash
+      if (!/[?#]/.test(base)) base += "/";
+    }
+    return normalizeHref(base + (q || "") + (h || ""));
+  }
+
   function build(nextDir) {
     if (LANGS.indexOf(nextDir) === -1) nextDir = "en";
     var h = captureViewHash();
     var q = g.location.search || "";
-    var tail = q + h;
     var segs = pathnameSegments();
     var i;
+
+    // 1) Already under /{lang}/… → swap language only
     for (i = 0; i < segs.length; i++) {
       if (LANGS.indexOf(segs[i]) !== -1) {
         segs[i] = nextDir;
-        return normalizeHref("/" + segs.join("/") + "/" + tail);
+        return withTail(joinPath(segs), q, h);
       }
     }
-    if (segs.length === 1 && segs[0] === "privacy") {
-      return normalizeHref("/" + nextDir + "/privacy/" + tail);
+
+    // 2) Single-locale / special pages → stay on the same URL (do not jump home)
+    if (segs[0] && STAY_PUT_ROOTS[segs[0]]) {
+      try {
+        g.localStorage.setItem("newon-lang-dir", nextDir);
+      } catch (e) {}
+      return withTail(joinPath(segs), q, h);
     }
-    if (segs.length === 1 && segs[0] === "terms") {
-      return normalizeHref("/" + nextDir + "/terms/" + tail);
+
+    // 3) Unprefixed but localized sections: /news/x → /{lang}/news/x
+    if (segs[0] && LOCALIZED_ROOT_SEGS[segs[0]]) {
+      return withTail(joinPath([nextDir].concat(segs)), q, h);
     }
-    if (segs[0] === "portfolio") {
-      var restPort = segs.slice(1);
-      var portSuffix = restPort.length ? restPort.join("/") + "/" : "";
-      return normalizeHref("/" + nextDir + "/portfolio/" + portSuffix + tail);
-    }
-    if (segs.length >= 2 && segs[0] === "oxmonth" && segs[1] === "delete-account") {
-      return normalizeHref("/" + nextDir + "/oxmonth/delete-account/" + tail);
-    }
-    if (segs.length >= 2 && segs[0] === "subping" && segs[1] === "delete-account") {
-      return normalizeHref("/" + nextDir + "/subping/delete-account/" + tail);
-    }
-    return normalizeHref("/" + nextDir + "/" + tail);
+
+    // 4) Fallback: language home, still keep query/hash when possible
+    return withTail(joinPath([nextDir]), q, h);
   }
 
   function currentHref() {
     return g.location.pathname + (g.location.search || "") + (g.location.hash || "");
+  }
+
+  function rememberScroll() {
+    try {
+      g.sessionStorage.setItem("newon-lang-scroll", String(g.scrollY || g.pageYOffset || 0));
+      g.sessionStorage.setItem(
+        "newon-lang-scroll-key",
+        pathnameSegments()
+          .filter(function (s) {
+            return LANGS.indexOf(s) === -1;
+          })
+          .join("/")
+      );
+    } catch (e) {}
+  }
+
+  function restoreScrollIfNeeded() {
+    try {
+      var y = g.sessionStorage.getItem("newon-lang-scroll");
+      var key = g.sessionStorage.getItem("newon-lang-scroll-key");
+      g.sessionStorage.removeItem("newon-lang-scroll");
+      g.sessionStorage.removeItem("newon-lang-scroll-key");
+      if (y == null || y === "") return;
+      var here = pathnameSegments()
+        .filter(function (s) {
+          return LANGS.indexOf(s) === -1;
+        })
+        .join("/");
+      if (key != null && key !== here) return;
+      var n = parseInt(y, 10);
+      if (!isFinite(n) || n < 1) return;
+      // After hash scroll / layout
+      var run = function () {
+        g.scrollTo(0, n);
+      };
+      if (g.requestAnimationFrame) g.requestAnimationFrame(run);
+      else setTimeout(run, 0);
+      setTimeout(run, 50);
+      setTimeout(run, 200);
+    } catch (e) {}
   }
 
   function applyLangChoice(nextDir) {
@@ -138,7 +230,11 @@
     } catch (e) {}
     var next = build(nextDir);
     var cur = currentHref();
-    if (normalizeHref(cur) === normalizeHref(next)) return;
+    if (normalizeHref(cur) === normalizeHref(next)) {
+      // Same URL (e.g. 404-human stay-put): still sync any selects and stop
+      return;
+    }
+    rememberScroll();
     g.location.assign(next);
   }
 
@@ -150,10 +246,16 @@
       return;
     }
     if (!pref || LANGS.indexOf(pref) === -1) return;
+    var segs = pathnameSegments();
+    // Never auto-bounce off stay-put pages
+    if (segs[0] && STAY_PUT_ROOTS[segs[0]]) return;
+    // URL already has an explicit locale (/ko/…, /en/…) — respect it.
+    // Only auto-apply preference on unprefixed entry URLs (/news/, /business/, …).
     var cur = resolveCurrentLangDir();
-    if (!cur || cur === pref) return;
+    if (cur) return;
     var next = build(pref);
     if (normalizeHref(currentHref()) === normalizeHref(next)) return;
+    rememberScroll();
     g.location.replace(next);
   }
 
@@ -161,5 +263,12 @@
   g.newonApplyLangChoice = applyLangChoice;
   g.newonResolveCurrentLangDir = resolveCurrentLangDir;
   g.newonRedirectStoredLangPreferred = redirectStoredLangPreferred;
+
   redirectStoredLangPreferred();
+
+  if (g.document && g.document.readyState === "loading") {
+    g.document.addEventListener("DOMContentLoaded", restoreScrollIfNeeded);
+  } else {
+    restoreScrollIfNeeded();
+  }
 })(typeof globalThis !== "undefined" ? globalThis : this);

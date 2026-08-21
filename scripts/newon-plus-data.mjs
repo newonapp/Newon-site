@@ -166,11 +166,11 @@ export const npEn = {
   introClosing: "",
   introClosingBlock: "",
   showcaseCollageAria: "Five Newon app previews. Scroll horizontally to see all.",
-  imgShot1Alt: "Newon — Ideas into apps; a new life platform with 11+ apps and one account",
+  imgShot1Alt: "Newon — Ideas into apps; a new life platform with 12+ apps and one account",
   imgShot2Alt: "Newon — Connect all Newon apps with one account",
   imgShot3Alt: "Newon — Productivity, finance, health, and parenting services in one place",
   imgShot4Alt: "Newon — Choose the package that fits you",
-  imgShot5Alt: "Newon — 11+ apps, 177 countries, 13 languages",
+  imgShot5Alt: "Newon — 12+ apps, 177 countries, 13 languages",
   pack1Aria: "Newon package overview",
   pack1Html:
     "<p class=\"ox-package-card__brand\">Newon</p><p class=\"ox-package-card__line\">Goals · Health · Finance</p><p class=\"ox-package-card__line\">Records · Growth · Productivity</p><p class=\"ox-package-card__foot\">All lifestyle apps<br />in one subscription</p>",

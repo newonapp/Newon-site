@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="{{HTML_LANG}}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{t:news.seoTitle}}</title>
+    <meta name="description" content="{{t:news.metaDescription}}" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="{{CANONICAL}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{CANONICAL}}" />
+    <meta property="og:locale" content="{{OG_LOCALE}}" />
+    <meta property="og:title" content="{{t:news.seoTitle}}" />
+    <meta property="og:description" content="{{t:news.metaDescription}}" />
+    <meta property="og:site_name" content="{{t:meta.ogSiteName}}" />
+    <meta property="og:image" content="https://www.newon.app/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{t:news.seoTitle}}" />
+    <meta name="twitter:description" content="{{t:news.metaDescription}}" />
+    <meta name="twitter:image" content="https://www.newon.app/logo.png" />
+{{HREFLANG_BLOCK_LEGAL}}
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/news/news.css?v=20260821y" />
+    <script src="/theme-shell.js"></script>
+    <script src="/lang-nav.js?v=20260821stay2"></script>
+  </head>
+  <body class="nw-hub">
+    <a class="skip-link" href="#nw-main">{{t:common.skipToContent}}</a>
+    <header class="site-header snav-header">
+      <div class="container snav-header__inner">
+        <a class="snav-brand" href="../">
+          <img src="/logo.png" alt="Newon" width="36" height="36" />
+          <span>Nawon Kyung</span>
+        </a>
+        <nav class="snav-nav" aria-label="News">
+          <a href="../">{{t:nav.home}}</a>
+          <a href="#nw-featured" data-nw-nav="featured">{{t:news.navFeatured}}</a>
+          <a href="#nw-history" data-nw-nav="timeline">{{t:news.navHistory}}</a>
+          <a href="../portfolio/">{{t:news.navApps}}</a>
+        </nav>
+        <div class="snav-actions">
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-news">{{t:ui.language}}</label>
+            <select id="lang-select-news" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
+              <option value="ko">{{t:ui.langKo}}</option>
+              <option value="en">{{t:ui.langEn}}</option>
+              <option value="ja">{{t:ui.langJa}}</option>
+              <option value="es">{{t:ui.langEs}}</option>
+              <option value="pt-br">{{t:ui.langPtBr}}</option>
+              <option value="fr">{{t:ui.langFr}}</option>
+              <option value="de">{{t:ui.langDe}}</option>
+              <option value="hi">{{t:ui.langHi}}</option>
+              <option value="id">{{t:ui.langId}}</option>
+            </select>
+          </div>
+          <button
+            type="button"
+            class="navbar-theme-toggle"
+            data-theme-toggle
+            data-label-light="{{t:common.themeToLight}}"
+            data-label-dark="{{t:common.themeToDark}}"
+            title="{{t:common.themeToggle}}"
+            aria-label="{{t:common.themeToDark}}"
+          >🌙</button>
+          <button
+            class="nav-toggle nav-toggle--toolbar"
+            type="button"
+            data-snav-toggle
+            aria-expanded="false"
+            aria-controls="snav-mobile-nav"
+            aria-label="{{t:common.menuOpen}}"
+          >
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <nav id="snav-mobile-nav" class="snav-mobile-nav" hidden>
+        <a href="../">{{t:nav.home}}</a>
+        <a href="#nw-featured" data-nw-nav="featured">{{t:news.navFeatured}}</a>
+        <a href="#nw-history" data-nw-nav="timeline">{{t:news.navHistory}}</a>
+        <a href="../portfolio/">{{t:news.navApps}}</a>
+      </nav>
+    </header>
+
+    <main id="nw-main" class="nw-page" data-page-size="9" data-tl-preview="{{TL_PREVIEW}}">
+
+      <section class="nw-hero" aria-labelledby="nw-hero-title">
+        <div class="nw-inner nw-hero__grid">
+          <div class="nw-hero__copy">
+            <p class="nw-kicker nw-enter" style="--d:0">{{t:news.heroLabel}}</p>
+            <h1 id="nw-hero-title" class="nw-hero__title nw-enter" style="--d:1">{{html:news.heroTitleHtml}}</h1>
+            <div class="nw-hero__text nw-enter" style="--d:2">
+              <p class="nw-hero__lead">{{t:news.heroLead}}</p>
+              <p class="nw-hero__note">{{t:news.heroNote}}</p>
+            </div>
+            <a class="nw-hero__cta nw-enter" style="--d:3" href="#nw-featured">{{t:news.heroCta}}</a>
+          </div>
+          <aside class="nw-side nw-enter" style="--d:4" aria-label="{{t:news.heroMetaAria}}">
+            <div class="nw-side__head">
+              <p class="nw-side__title">{{t:news.sideTitle}}</p>
+              <p class="nw-side__lead">{{t:news.sideLead}}</p>
+            </div>
+            <ul class="nw-side__list">
+              <li class="nw-side__item">
+                <span class="nw-side__idx" aria-hidden="true">01</span>
+                <div class="nw-side__body">
+                  <span class="nw-side__en">{{t:news.heroMetaProducts}}</span>
+                  <p class="nw-side__ko">{{t:news.heroMetaProductsVal}}</p>
+                </div>
+              </li>
+              <li class="nw-side__item">
+                <span class="nw-side__idx" aria-hidden="true">02</span>
+                <div class="nw-side__body">
+                  <span class="nw-side__en">{{t:news.heroMetaGlobal}}</span>
+                  <p class="nw-side__ko">{{t:news.heroMetaGlobalVal}}</p>
+                </div>
+              </li>
+              <li class="nw-side__item">
+                <span class="nw-side__idx" aria-hidden="true">03</span>
+                <div class="nw-side__body">
+                  <span class="nw-side__en">{{t:news.heroMetaLangs}}</span>
+                  <p class="nw-side__ko">{{t:news.heroMetaLangsVal}}</p>
+                </div>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="nw-section nw-browse" aria-labelledby="nw-browse-title">
+        <div class="nw-inner">
+          <div class="nw-section__head">
+            <p class="nw-kicker">{{t:news.filterSectionLabel}}</p>
+            <h2 id="nw-browse-title">{{t:news.filterSectionTitle}}</h2>
+            <p>{{t:news.filterSectionLead}}</p>
+          </div>
+          <div class="nw-toolbar">
+            <nav class="nw-filters" aria-label="{{t:news.filtersAria}}">
+              <a href="./" data-nw-filter="all" class="is-active">{{t:news.catAll}}</a>
+              <a href="./?category=launch" data-nw-filter="launch">{{t:news.catLaunch}}</a>
+              <a href="./?category=update" data-nw-filter="update">{{t:news.catUpdate}}</a>
+              <a href="./?category=feature" data-nw-filter="feature">{{t:news.catFeature}}</a>
+              <a href="./?category=company" data-nw-filter="company">{{t:news.catCompany}}</a>
+              <a href="./?category=notice" data-nw-filter="notice">{{t:news.catNotice}}</a>
+            </nav>
+            <div class="nw-toolbar__tools">
+              <label class="nw-product-select">
+                <span class="visually-hidden">{{t:news.productFilterLabel}}</span>
+                <select id="nw-product" data-nw-product aria-label="{{t:news.productFilterLabel}}">
+                  <option value="all">{{t:news.productAll}}</option>
+                  {{PRODUCT_OPTIONS}}
+                </select>
+              </label>
+              <label class="nw-search">
+                <span class="visually-hidden">{{t:news.searchPlaceholder}}</span>
+                <input
+                  type="search"
+                  id="nw-search"
+                  data-nw-search
+                  placeholder="{{t:news.searchPlaceholder}}"
+                  autocomplete="off"
+                />
+              </label>
+            </div>
+          </div>
+          <div
+            class="nw-viewbar"
+            id="nw-viewbar"
+            hidden
+            data-label-all="{{t:news.viewbarAll}}"
+            data-hint-history="{{t:news.viewbarHistoryHint}}"
+            data-hint-both="{{t:news.viewbarBothHint}}"
+            data-hint-empty="{{t:news.viewbarEmptyHint}}"
+            data-empty-launch-title="{{t:news.emptyLaunchTitle}}"
+            data-empty-launch-body="{{t:news.emptyLaunchBody}}"
+            data-empty-update-title="{{t:news.emptyUpdateTitle}}"
+            data-empty-update-body="{{t:news.emptyUpdateBody}}"
+            data-empty-feature-title="{{t:news.emptyFeatureTitle}}"
+            data-empty-feature-body="{{t:news.emptyFeatureBody}}"
+            data-empty-company-title="{{t:news.emptyCompanyTitle}}"
+            data-empty-company-body="{{t:news.emptyCompanyBody}}"
+            data-empty-notice-title="{{t:news.emptyNoticeTitle}}"
+            data-empty-notice-body="{{t:news.emptyNoticeBody}}"
+            data-empty-default-title="{{t:news.emptyTitle}}"
+            data-empty-default-body="{{t:news.emptyBody}}"
+          >
+            <div class="nw-viewbar__main">
+              <p class="nw-viewbar__title" id="nw-viewbar-title"></p>
+              <p class="nw-viewbar__hint" id="nw-viewbar-hint"></p>
+            </div>
+            <a class="nw-viewbar__jump" id="nw-viewbar-jump" href="#nw-history" hidden>{{t:news.viewbarJumpHistory}}</a>
+          </div>
+        </div>
+      </section>
+
+      <div id="nw-feed" class="nw-feed">
+
+        {{NEWS_FEATURED}}
+
+        {{NEWS_LATEST}}
+
+        <section class="nw-history" id="nw-history" aria-labelledby="nw-history-title">
+          <div class="nw-inner">
+            <div class="nw-history__head">
+              <div class="nw-section__head">
+                <p class="nw-kicker">{{t:news.timelineLabel}}</p>
+                <h2 id="nw-history-title">{{t:news.timelineTitle}}</h2>
+                <p class="nw-section__lead">{{t:news.timelineLead}}</p>
+              </div>
+              <div class="nw-hist-filters" role="group" aria-label="{{t:news.histFiltersAria}}">
+                {{NEWS_HISTORY_FILTERS}}
+              </div>
+            </div>
+            <div id="nw-timeline" class="nw-timeline">
+              {{NEWS_TIMELINE}}
+            </div>
+            <div class="nw-timeline-empty" id="nw-timeline-empty" hidden>
+              <p>{{t:news.emptyBody}}</p>
+            </div>
+            <div class="nw-timeline-more-wrap">
+              <button class="nw-text-btn" type="button" id="nw-tl-more" hidden>{{t:news.timelineViewAll}}</button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <section class="nw-apps" aria-labelledby="nw-apps-title">
+        <div class="nw-inner nw-apps__grid">
+          <div class="nw-apps__copy">
+            <p class="nw-kicker">{{t:news.storesLabel}}</p>
+            <h2 id="nw-apps-title">{{html:news.storesTitle}}</h2>
+            <p class="nw-section__lead">{{t:news.storesLead}}</p>
+            <div class="nw-apps__actions">
+              <a
+                class="nw-btn nw-btn--primary"
+                href="{{NEWS_STORE_APP}}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >{{t:news.storesAppStore}}</a>
+              <a
+                class="nw-btn nw-btn--ghost"
+                href="{{NEWS_STORE_PLAY}}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >{{t:news.storesGooglePlay}}</a>
+              <a class="nw-btn nw-btn--ghost" href="../portfolio/">{{t:news.finalApps}}</a>
+            </div>
+            <p class="nw-apps__sign">
+              <span class="nw-apps__sign-brand">NEWON</span>
+              <span class="nw-apps__sign-line">{{t:news.finalTitle}}</span>
+              <span class="nw-apps__sign-sub">{{t:news.finalTagline}}</span>
+            </p>
+          </div>
+          <div class="nw-apps__logos" aria-hidden="true">
+            {{NEWS_APPS_LOGOS}}
+          </div>
+        </div>
+      </section>
+
+      <section class="nw-follow" aria-labelledby="nw-follow-title">
+        <div class="nw-inner nw-follow__inner">
+          <div class="nw-follow__copy">
+            <h2 id="nw-follow-title">{{t:news.followTitle}}</h2>
+            <p>{{t:news.followLead}}</p>
+          </div>
+          <div class="nw-follow__links">
+            {{NEWS_SOCIAL}}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img class="footer-brand-img" src="/logo.png" alt="" width="32" height="32" />
+          <span>Newon</span>
+        </div>
+        <div class="footer-links">
+          <a class="footer-link" href="https://www.newon.app">https://www.newon.app</a>
+          <p class="footer-copy">{{t:footer.tagline}}</p>
+        </div>
+        <p class="footer-copy">© <span id="year"></span> Newon. {{t:footer.rights}}</p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var cur = "{{LANG_DIR}}";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+        var year = document.getElementById("year");
+        if (year) year.textContent = String(new Date().getFullYear());
+        var toggle = document.querySelector("[data-snav-toggle]");
+        var drawer = document.getElementById("snav-mobile-nav");
+        if (toggle && drawer) {
+          toggle.addEventListener("click", function () {
+            var open = !drawer.hasAttribute("hidden");
+            if (open) { drawer.setAttribute("hidden", ""); toggle.setAttribute("aria-expanded", "false"); }
+            else { drawer.removeAttribute("hidden"); toggle.setAttribute("aria-expanded", "true"); }
+          });
+        }
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
+    <script src="/news/news.js?v=20260821y"></script>
+  </body>
+</html>

@@ -16,11 +16,11 @@ const STEPS = [
   "patch-index-countup-app.mjs",
   "patch-index-newon-plus-app.mjs",
   "patch-index-myworld-app.mjs",
-  "patch-index-noting-app.mjs",
   "patch-index-newon-plus-nav.mjs",
   "patch-index-myworld-nav.mjs",
   "patch-index-late-app-js.mjs",
   "patch-app-footers.mjs",
+  "remove-noting-from-site.mjs",
 ];
 
 for (const name of STEPS) {

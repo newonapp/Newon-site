@@ -37,7 +37,7 @@ const COPY_DIRS = [
 const COPY_FILES = [
   ".gitignore",
   "index.html",
-  "lang-nav.js",
+  "lang-nav.js?v=20260821stay2",
   "lang-dropdown.js",
   "styles.css",
   "ox-month.css",

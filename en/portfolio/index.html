@@ -33,8 +33,8 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/portfolio/portfolio.css" />
-    <script src="/lang-nav.js"></script>
+    <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260821b" />
+    <script src="/lang-nav.js?v=20260821stay2"></script>
     <script src="/theme-shell.js"></script>
   </head>
   <body class="pf-page">
@@ -48,6 +48,7 @@
           <span>Nawon Kyung</span>
         </a>
         <nav class="pf-nav" aria-label="Portfolio">
+            <a href="/en/">Home</a>
             <a href="/en/portfolio/#about">About</a>
             <a href="/en/portfolio/#projects">Projects</a>
             <a href="/en/portfolio/#newon">Newon</a>
@@ -90,7 +91,8 @@
         </div>
       </div>
       <nav id="pf-mobile-nav" class="pf-mobile-nav" hidden>
-        <a href="/en/portfolio/#about">About</a>
+        <a href="/en/">Home</a>
+            <a href="/en/portfolio/#about">About</a>
             <a href="/en/portfolio/#projects">Projects</a>
             <a href="/en/portfolio/#newon">Newon</a>
             <a href="/en/portfolio/#contact">Contact</a>
@@ -98,16 +100,36 @@
     </header>
     <main id="pf-main">
       <section class="pf-hero">
-        <div class="pf-hero__inner">
-          <img class="pf-hero__eko" src="/logo.png" alt="Newon" width="56" height="56" />
-          <h1 class="pf-hero__name">경나원</h1>
-          <p class="pf-kicker-en">Nawon Kyung</p>
-          <p class="pf-hero__role">CEO &amp; App Developer</p>
-          <p class="pf-hero__lead">From idea to planning, design, development, launch, operations, and marketing.<br />I build the full path of a digital product.</p>
-          <div class="pf-hero__actions">
-            <a class="btn btn-primary" href="#projects">View projects</a>
-            <a class="btn btn-ghost" href="#contact">Contact</a>
+        <div class="pf-hero__grid">
+          <div class="pf-hero__copy">
+            <p class="pf-hero__eyebrow pf-enter" style="--d:0">NEWON / PORTFOLIO</p>
+            <img class="pf-hero__eko pf-enter" style="--d:1" src="/logo.png" alt="Newon" width="64" height="64" />
+            <h1 class="pf-hero__name pf-enter" style="--d:2">경나원</h1>
+            <p class="pf-hero__en pf-enter" style="--d:3">Nawon Kyung</p>
+            <p class="pf-hero__role pf-enter" style="--d:4">CEO &amp; App Developer</p>
+            <p class="pf-hero__lead pf-enter" style="--d:5">From idea to planning, design, development, launch, operations, and marketing.<br />I build the full path of a digital product.</p>
+            <div class="pf-hero__actions pf-enter" style="--d:6">
+              <a class="btn btn-primary pf-hero__btn" href="#projects">View projects</a>
+              <a class="btn btn-ghost pf-hero__btn" href="#contact">Contact</a>
+            </div>
           </div>
+          <aside class="pf-hero__aside pf-enter" style="--d:5" aria-label="FOCUS">
+            <p class="pf-hero__aside-title">FOCUS</p>
+            <dl class="pf-hero__meta">
+              <div>
+                <dt>PRODUCT</dt>
+                <dd>Idea to launch</dd>
+              </div>
+              <div>
+                <dt>DESIGN</dt>
+                <dd>UI/UX and experience</dd>
+              </div>
+              <div>
+                <dt>BUILD</dt>
+                <dd>Ship, operate, grow</dd>
+              </div>
+            </dl>
+          </aside>
         </div>
       </section>
 
@@ -124,13 +146,13 @@
         <div class="pf-wrap">
           <p class="pf-label">Newon in Numbers</p>
           <h2>Newon in numbers</h2>
-          <p class="pf-stats__headline">6 months, 11 apps.</p>
+          <p class="pf-stats__headline">6 months, 12 apps.</p>
           <p class="pf-stats__support">I handled everything from idea to planning, UI/UX, development, launch, operations, and marketing.</p>
           <div class="pf-stats">
           <a class="pf-stat pf-reveal" href="#projects">
-            <p class="pf-stat__value">11</p>
+            <p class="pf-stat__value">12</p>
             <h3>Apps built</h3>
-            <p class="pf-stat__note"><span class="pf-stat__note-short">Planned and built in 6 months</span><span class="pf-stat__note-full">I planned and developed 11 apps in 6 months.</span></p>
+            <p class="pf-stat__note"><span class="pf-stat__note-short">Planned and built in 6 months</span><span class="pf-stat__note-full">I planned and developed 12 apps in 6 months.</span></p>
           </a>
           <article class="pf-stat pf-reveal">
             <p class="pf-stat__value">13</p>
@@ -201,7 +223,7 @@
               <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.newon.newon&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">Google Play</a>
             </div>
           </div>
-          <div class="pf-shots" tabindex="0" aria-label="Newon+ app screens"><figure><img src="/i18n-img/en/np-showcase-01.png" alt="Newon — Ideas into apps; a life platform with 11+ apps and one account" width="1242" height="2688" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-02.png" alt="Newon — Connect all Newon apps with one account" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-03.png" alt="Newon — Productivity, finance, health, and parenting services in one place" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-04.png" alt="Newon — Choose the package that fits you" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-05.png" alt="Newon — 11+ apps, 177 countries, 13 languages" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
+          <div class="pf-shots" tabindex="0" aria-label="Newon+ app screens"><figure><img src="/i18n-img/en/np-showcase-01.png" alt="Newon — Ideas into apps; a life platform with 12+ apps and one account" width="1242" height="2688" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-02.png" alt="Newon — Connect all Newon apps with one account" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-03.png" alt="Newon — Productivity, finance, health, and parenting services in one place" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-04.png" alt="Newon — Choose the package that fits you" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-05.png" alt="Newon — 12+ apps, 177 countries, 13 languages" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
         <article class="pf-case pf-reveal">
@@ -352,27 +374,184 @@
         </div>
       </section>
 
-      <section id="contact" class="pf-section">
-        <div class="pf-wrap pf-wrap--narrow pf-contact">
-          <h2>Contact</h2>
-          <p class="pf-contact__name">경나원</p>
-          <p class="pf-contact__en">Nawon Kyung</p>
-          <p class="pf-contact__role">CEO &amp; App Developer</p>
-          <div class="pf-dl">
-            <a href="tel:01039238904"><small>Phone</small><span>010-3923-8904</span></a>
-            <a href="mailto:newon@newon.app"><small>Email</small><span>newon@newon.app</span></a>
-            <a href="https://www.newon.app"><small>Website</small><span>https://www.newon.app</span></a>
+      <section id="founder" class="pf-section pf-founder">
+        <div class="pf-wrap pf-founder__grid">
+          <div class="pf-founder__id">
+            <p class="pf-label">FOUNDER</p>
+            <p class="pf-founder__name">경나원</p>
+            <p class="pf-founder__en">Nawon Kyung</p>
+            <p class="pf-founder__role">CEO &amp; App Developer</p>
           </div>
-          <div class="pf-hero__actions">
-            <a class="btn btn-primary" href="mailto:newon@newon.app">Send email</a>
-            <a class="btn btn-ghost" href="/card-n7x4k9/nawon-kyung.vcf" data-save-vcard>Save contact</a>
+          <div class="pf-founder__story">
+            <h2 class="pf-founder__title">Turning ideas into real products.</h2>
+            <p class="pf-founder__intro">I turn ideas into real digital products, and I plan and develop Newon’s products and services myself.</p>
+            <p class="pf-founder__intro">From product planning through UI/UX, development, launch, and operations — I build the entire journey from idea to live service.</p>
+            <p class="pf-founder__expertise"><span>Product Planning</span><span>UI·UX</span><span>App Development</span><span>Launch</span><span>Operations</span></p>
+            <a class="pf-founder__biz" href="/en/business/">Explore Newon Business →</a>
           </div>
+        </div>
+      </section>
+
+      <section id="contact" class="pf-section pf-cx">
+        <div class="pf-wrap">
+          <header class="pf-cx__head">
+            <p class="pf-label pf-cx-enter" style="--d: 0">CONTACT</p>
+            <h2 class="pf-cx__title pf-cx-enter" style="--d: 1">A new conversation<br />starts here.</h2>
+            <p class="pf-cx__lead pf-cx-enter" style="--d: 2">We welcome conversations about new products, services, development, and business collaboration.</p>
+          </header>
+
+          <div class="pf-cx__split">
+            <div class="pf-cx__open-col pf-cx-enter" style="--d: 3">
+              <p class="pf-cx__open-label">OPEN TO</p>
+              <ul class="pf-open">
+                <li class="pf-open__row">
+              <span class="pf-open__n">01</span>
+              <div class="pf-open__body">
+                <p class="pf-open__title">Product<span class="pf-open__meta">/ Product</span></p>
+                <p class="pf-open__desc">Proposals and collaboration for new products.</p>
+              </div>
+              <span class="pf-open__go" aria-hidden="true">→</span>
+            </li>
+                <li class="pf-open__row">
+              <span class="pf-open__n">02</span>
+              <div class="pf-open__body">
+                <p class="pf-open__title">Service<span class="pf-open__meta">/ Service</span></p>
+                <p class="pf-open__desc">Service partnerships and new ideas.</p>
+              </div>
+              <span class="pf-open__go" aria-hidden="true">→</span>
+            </li>
+                <li class="pf-open__row">
+              <span class="pf-open__n">03</span>
+              <div class="pf-open__body">
+                <p class="pf-open__title">Development<span class="pf-open__meta">/ Development</span></p>
+                <p class="pf-open__desc">App, web, and technical collaboration.</p>
+              </div>
+              <span class="pf-open__go" aria-hidden="true">→</span>
+            </li>
+                <li class="pf-open__row">
+              <span class="pf-open__n">04</span>
+              <div class="pf-open__body">
+                <p class="pf-open__title">Business<span class="pf-open__meta">/ Business</span></p>
+                <p class="pf-open__desc">Brand, company, and partner collaboration.</p>
+              </div>
+              <span class="pf-open__go" aria-hidden="true">→</span>
+            </li>
+                <li class="pf-open__row">
+              <span class="pf-open__n">05</span>
+              <div class="pf-open__body">
+                <p class="pf-open__title">Newon<span class="pf-open__meta">/ Newon</span></p>
+                <p class="pf-open__desc">Questions about Newon products and services.</p>
+              </div>
+              <span class="pf-open__go" aria-hidden="true">→</span>
+            </li>
+              </ul>
+            </div>
+
+            <aside class="pf-cx__card pf-cx-enter" style="--d: 4" aria-labelledby="pf-cx-info-title">
+              <div class="pf-cx__card-head">
+                <h3 id="pf-cx-info-title" class="pf-cx__info-title">Contact</h3>
+                <p class="pf-cx__info-sub">We review every message and respond as soon as we can.</p>
+              </div>
+              <div class="pf-ci">
+                <div class="pf-ci__item">
+                  <span class="pf-ci__k">Phone</span>
+                  <div class="pf-ci__main">
+                    <a class="pf-ci__v" href="tel:01039238904">010-3923-8904</a>
+                    <button type="button" class="pf-ci__copy" data-copy="010-3923-8904" data-copied="Copied" aria-live="polite">
+                      <span data-copy-label>Copy</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="pf-ci__item">
+                  <span class="pf-ci__k">Email</span>
+                  <div class="pf-ci__main">
+                    <a class="pf-ci__v" href="mailto:newon@newon.app">newon@newon.app</a>
+                    <button type="button" class="pf-ci__copy" data-copy="newon@newon.app" data-copied="Copied" aria-live="polite">
+                      <span data-copy-label>Copy</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="pf-ci__item">
+                  <span class="pf-ci__k">Website</span>
+                  <div class="pf-ci__main">
+                    <a class="pf-ci__v" href="https://www.newon.app">newon.app</a>
+                  </div>
+                </div>
+              </div>
+              <div class="pf-cx__card-foot">
+                <p class="pf-cx__quick-label">Quick Contact</p>
+                <div class="pf-cx__actions">
+                  <a class="btn btn-primary pf-cx__btn-primary" href="mailto:newon@newon.app">Send email ↗</a>
+                  <a class="btn btn-ghost pf-cx__btn-secondary" href="/card-n7x4k9/nawon-kyung.vcf" data-save-vcard>Save contact</a>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <div class="pf-wrap pf-cx-msg">
+          <div class="pf-cx-msg__grid pf-cx-enter" style="--d: 8">
+            <div class="pf-cx-msg__copy">
+              <p class="pf-label">Have an idea?</p>
+              <h2 class="pf-cx-msg__title">Great ideas<br />start with a conversation.</h2>
+              <p class="pf-cx-msg__lead">If you have a product, service, or collaboration in mind, feel free to reach out.</p>
+            </div>
+            <a class="pf-cx-msg__mail" href="mailto:newon@newon.app">newon@newon.app ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="pf-section pf-explore" aria-labelledby="pf-explore-title">
+        <div class="pf-wrap">
+          <div class="pf-explore__head pf-cx-enter" style="--d: 0">
+            <p class="pf-label">EXPLORE NEWON</p>
+            <h2 id="pf-explore-title" class="pf-explore__title">Discover more of Newon.</h2>
+            <p class="pf-explore__lead">From projects to news, ideas, and business — explore what Newon is building.</p>
+          </div>
+          <nav class="pf-explore__nav" aria-label="EXPLORE NEWON">
+            <a class="pf-explore__row" href="#projects">
+              <span class="pf-explore__n">01</span>
+              <div class="pf-explore__body">
+                <p class="pf-explore__title">Portfolio</p>
+                <p class="pf-explore__desc">Explore the apps and digital products Newon has built.</p>
+              </div>
+              <span class="pf-explore__cta">View projects →</span>
+            </a>
+            <a class="pf-explore__row" href="/en/news/">
+              <span class="pf-explore__n">02</span>
+              <div class="pf-explore__body">
+                <p class="pf-explore__title">News &amp; Updates</p>
+                <p class="pf-explore__desc">Product launches, feature updates, and the latest from Newon.</p>
+              </div>
+              <span class="pf-explore__cta">See what's new →</span>
+            </a>
+            <a class="pf-explore__row" href="/en/ideas/">
+              <span class="pf-explore__n">03</span>
+              <div class="pf-explore__body">
+                <p class="pf-explore__title">Newon Ideas</p>
+                <p class="pf-explore__desc">Share app ideas, feature requests, or feedback with Newon.</p>
+              </div>
+              <span class="pf-explore__cta">Send an idea →</span>
+            </a>
+            <a class="pf-explore__row" href="/en/business/">
+              <span class="pf-explore__n">04</span>
+              <div class="pf-explore__body">
+                <p class="pf-explore__title">Newon Business</p>
+                <p class="pf-explore__desc">Build new products and business opportunities with Newon.</p>
+              </div>
+              <span class="pf-explore__cta">Explore Business →</span>
+            </a>
+          </nav>
         </div>
       </section>
     </main>
 
-    <footer class="pf-foot">
+    <footer class="pf-foot pf-foot--hub">
+      <div class="pf-wrap pf-foot__inner">
       <p>© Newon</p>
+      <p>Nawon Kyung · CEO &amp; App Developer</p>
+      <a href="https://www.newon.app">newon.app</a>
+    </div>
     </footer>
     <script src="/lang-dropdown.js"></script>
     <script src="/portfolio/portfolio.js"></script>
