@@ -479,7 +479,9 @@ for (const lang of Object.keys(NAV)) {
 const spKoPath = path.join(LOCALES, "_sp.ko.json");
 if (fs.existsSync(spKoPath)) {
   const sp = JSON.parse(fs.readFileSync(spKoPath, "utf8"));
-  Object.assign(sp, GLANCE_KO);
+  for (const [k, v] of Object.entries(GLANCE_KO)) {
+    if (Object.prototype.hasOwnProperty.call(sp, k)) sp[k] = v;
+  }
   writeJson(spKoPath, sp);
   console.log("chrome i18n: _sp.ko");
 }
