@@ -950,31 +950,67 @@ html[data-newon-shell-theme="dark"] .ni-ok {
   }
 
   .ni-hero {
-    padding: 2rem 0 2.25rem;
+    padding: 2.15rem 0 2.4rem;
   }
 
   .ni-hero__title {
-    font-size: clamp(1.85rem, 8vw, 2.35rem);
+    font-size: clamp(1.95rem, 8.2vw, 2.45rem);
     line-height: 1.15;
   }
 
   .ni-hero__lead,
   .ni-hero__note {
-    font-size: 0.92rem;
-    line-height: 1.55;
+    font-size: 1.02rem;
+    line-height: 1.6;
   }
 
   .ni-hero__cta {
     min-height: 2.95rem;
-    font-size: 0.92rem;
+    font-size: 0.98rem;
+  }
+
+  .ni-process__title {
+    font-size: 0.8125rem;
+  }
+
+  .ni-process__lead {
+    font-size: 1rem;
+  }
+
+  .ni-process__en {
+    font-size: 0.8125rem;
+  }
+
+  .ni-process__ko {
+    font-size: 1.1rem;
   }
 
   .ni-process__item {
     gap: 0.75rem;
   }
 
+  .ni-steps .n {
+    font-size: 0.8125rem;
+  }
+
+  .ni-steps h3 {
+    font-size: 0.95rem;
+  }
+
+  .ni-steps p {
+    font-size: 1.02rem;
+  }
+
   .ni-type {
     padding: 1.2rem 0 1.25rem;
+  }
+
+  .ni-type__title {
+    font-size: 1.2rem;
+  }
+
+  .ni-type__body {
+    font-size: 1rem;
   }
 
   .ni-type__go {
@@ -983,6 +1019,7 @@ html[data-newon-shell-theme="dark"] .ni-ok {
 
   .ni-section {
     padding-top: 2.5rem;
+    scroll-margin-top: calc(var(--header-h, 72px) + 1rem);
   }
 
   .ni-philosophy,

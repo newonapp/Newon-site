@@ -189,11 +189,12 @@ html {
 
 @media (max-width: 639px) {
   :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app).ox-page {
-    --ox-header-h: clamp(80px, 18vw, 94px);
+    --ox-header-h: 84px;
   }
 
   .navbar-bar--ox.navbar-bar--brand-header {
     padding-block: 8px;
+    min-height: 60px;
   }
 
   .navbar-bar__controls--brand-toolbar .ox-theme-toggle,
@@ -2400,11 +2401,52 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 /* Phone polish — store badges + hero rhythm */
 @media (max-width: 639px) {
   .ox-hero {
-    padding: calc(var(--ox-header-h) + 1.35rem) 0 2.35rem;
+    padding: calc(var(--ox-header-h) + 2.25rem) 0 2.5rem;
   }
 
   .ox-hero-grid {
     gap: 1.65rem;
+  }
+
+  .ox-badge {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    padding: 0.42rem 0.8rem;
+    max-width: 100%;
+    white-space: normal;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+
+  .ox-hero h1 {
+    font-size: clamp(2.15rem, 9vw, 2.75rem);
+  }
+
+  .ox-subtitle {
+    font-size: clamp(1.08rem, 4.2vw, 1.22rem);
+    line-height: 1.4;
+  }
+
+  .ox-hero-value,
+  .ox-hero .ox-lead,
+  .ox-hero h2 {
+    font-size: clamp(1.05rem, 4.2vw, 1.2rem);
+    line-height: 1.4;
+  }
+
+  .ox-hero-reach-summary,
+  .ox-desc {
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .ox-section-label {
+    font-size: 0.875rem;
+    color: var(--ox-muted);
+  }
+
+  .ox-section-intro {
+    font-size: 1.02rem;
   }
 
   .ox-store-badges {
@@ -2429,5 +2471,15 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 
   .ox-section {
     padding-block: clamp(2.25rem, 7vw, 3.25rem);
+    scroll-margin-top: calc(var(--ox-header-h) + 0.85rem);
+  }
+
+  .ox-step h3 {
+    font-size: 1.05rem;
+  }
+
+  .ox-step p {
+    font-size: 1rem;
+    line-height: 1.6;
   }
 }

@@ -242,9 +242,9 @@ ${hreflangBlock()}
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css?v=20260822nobiz" />
+    <link rel="stylesheet" href="/styles.css?v=20260822phone" />
     <link rel="stylesheet" href="/ox-month.css" />
-    <link rel="stylesheet" href="/app-landing-extras.css?v=20260822m" />
+    <link rel="stylesheet" href="/app-landing-extras.css?v=20260822phone" />
     <link rel="stylesheet" href="/404-human/404-human.css?v=20260822m" />
     <script src="/lang-nav.js?v=20260821fh"></script>
     <script src="/theme-shell.js"></script>

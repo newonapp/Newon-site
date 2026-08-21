@@ -1741,11 +1741,32 @@ html[data-newon-shell-theme="dark"] .pf-explore__row:hover {
   }
 
   .pf-hero {
-    padding-top: 1.75rem;
+    padding-top: 2.1rem;
   }
 
   .pf-hero__name {
     font-size: clamp(2rem, 9vw, 2.6rem);
+  }
+
+  .pf-hero__role {
+    font-size: 0.9rem;
+  }
+
+  .pf-hero__lead {
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .pf-hero__aside-title {
+    font-size: 0.8125rem;
+  }
+
+  .pf-hero__meta dt {
+    font-size: 0.8125rem;
+  }
+
+  .pf-hero__meta dd {
+    font-size: 1.02rem;
   }
 
   .pf-hero__actions {
@@ -1759,8 +1780,31 @@ html[data-newon-shell-theme="dark"] .pf-explore__row:hover {
     min-height: 2.85rem;
   }
 
+  .pf-label,
+  .pf-cx__open-label {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  .pf-open__title {
+    font-size: 1.05rem;
+  }
+
+  .pf-open__desc {
+    font-size: 0.95rem;
+  }
+
+  .pf-founder__intro {
+    font-size: 1.05rem;
+  }
+
+  .pf-founder__expertise {
+    font-size: 0.95rem;
+  }
+
   .pf-section {
     padding-block: 2.5rem;
+    scroll-margin-top: calc(var(--header-h) + 1.1rem);
   }
 
   .pf-open__row,

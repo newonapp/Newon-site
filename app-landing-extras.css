@@ -1045,14 +1045,14 @@
 /* Phone polish — snapshot + related + final CTA */
 @media (max-width: 899px) {
   .ox-hero-value {
-    font-size: clamp(0.98rem, 3.8vw, 1.1rem);
-    line-height: 1.42;
+    font-size: clamp(1.05rem, 4vw, 1.2rem);
+    line-height: 1.45;
     max-width: none;
   }
 
   .al-glance {
-    --al-snap-pad-x: 1.05rem;
-    --al-snap-pad-y: 1.15rem;
+    --al-snap-pad-x: 1.1rem;
+    --al-snap-pad-y: 1.2rem;
   }
 
   .al-snap {
@@ -1064,8 +1064,21 @@
 
   .al-snap__eyebrow,
   .al-snap__kicker {
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
+    font-size: 0.8125rem;
+    letter-spacing: 0.06em;
+    color: var(--ox-muted);
+  }
+
+  .al-snap__app-name {
+    font-size: 1.125rem;
+  }
+
+  .al-snap__line {
+    font-size: clamp(1.15rem, 4.4vw, 1.35rem);
+  }
+
+  .al-snap__best-text {
+    font-size: 1.05rem;
   }
 
   .al-snap__meta {
@@ -1073,20 +1086,35 @@
   }
 
   .al-snap__meta-item {
-    min-height: 4.25rem;
-    padding: 0.85rem 0.9rem 0.9rem;
+    min-height: 4.5rem;
+    padding: 0.95rem 0.95rem 1rem;
   }
 
   .al-snap__meta-item dt {
-    font-size: 0.62rem;
+    font-size: 0.8125rem;
+    color: var(--ox-muted);
   }
 
   .al-snap__meta-item dd {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
+  }
+
+  .al-snap__plat {
+    font-size: 0.9375rem;
+    min-height: 1.7rem;
+  }
+
+  .al-snap__figure-unit {
+    font-size: 0.8125rem;
   }
 
   .al-snap__core-list {
-    gap: 0.45rem;
+    gap: 0.5rem;
+  }
+
+  .al-snap__core-list li {
+    font-size: 0.9375rem;
+    padding: 0.45rem 0.9rem 0.45rem 1rem;
   }
 
   .al-related__grid {
