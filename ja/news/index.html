@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ニュース | Newon</title>
+    <meta name="description" content="Newon 製品の発売、機能アップデート、最新の公式ノートを 1 か所で確認できます。" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://www.newon.app/ja/news/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.newon.app/ja/news/" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:title" content="ニュース | Newon" />
+    <meta property="og:description" content="Newon 製品の発売、機能アップデート、最新の公式ノートを 1 か所で確認できます。" />
+    <meta property="og:site_name" content="Newon" />
+    <meta property="og:image" content="https://www.newon.app/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ニュース | Newon" />
+    <meta name="twitter:description" content="Newon 製品の発売、機能アップデート、最新の公式ノートを 1 か所で確認できます。" />
+    <meta name="twitter:image" content="https://www.newon.app/logo.png" />
+    <link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/news/" />
+    <link rel="alternate" hreflang="en" href="https://www.newon.app/en/news/" />
+    <link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/news/" />
+    <link rel="alternate" hreflang="es" href="https://www.newon.app/es/news/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/news/" />
+    <link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/news/" />
+    <link rel="alternate" hreflang="de" href="https://www.newon.app/de/news/" />
+    <link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/news/" />
+    <link rel="alternate" hreflang="id" href="https://www.newon.app/id/news/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/news/" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css?v=20260822typeall" />
+    <link rel="stylesheet" href="/news/news.css?v=20260822typeall" />
+    <script src="/theme-shell.js"></script>
+    <script src="/lang-nav.js?v=20260821stay2"></script>
+  </head>
+  <body class="nw-hub">
+    <a class="skip-link" href="#nw-main">本文へスキップ</a>
+    <header class="site-header snav-header">
+      <div class="container snav-header__inner">
+        <a class="snav-brand" href="../">
+          <img src="/logo.png" alt="Newon" width="36" height="36" />
+          <span>Nawon Kyung</span>
+        </a>
+        <nav class="snav-nav" aria-label="ニュース">
+          <a href="../">ホーム</a>
+          <a href="#nw-featured" data-nw-nav="featured">注目の</a>
+          <a href="#nw-history" data-nw-nav="timeline">歴史</a>
+          <a href="../portfolio/">アプリ</a>
+        </nav>
+        <div class="snav-actions">
+          <div class="lang-switcher" data-lang-switcher>
+            <label class="visually-hidden" for="lang-select-news">言語</label>
+            <select id="lang-select-news" class="lang-select lang-select--toolbar" data-lang-select aria-label="言語">
+              <option value="ko">한국어</option>
+              <option value="en">英語</option>
+              <option value="ja">日本語</option>
+              <option value="es">スペイン語</option>
+              <option value="pt-br">ポルトガル語 (ブラジル)</option>
+              <option value="fr">フランセ</option>
+              <option value="de">ドイツ語</option>
+              <option value="hi">हिन्दी</option>
+              <option value="id">インドネシア語</option>
+            </select>
+          </div>
+          <button
+            type="button"
+            class="navbar-theme-toggle"
+            data-theme-toggle
+            data-label-light="ライトモードに切り替え"
+            data-label-dark="ダークモードに切り替え"
+            title="テーマを切り替え"
+            aria-label="ダークモードに切り替え"
+          >🌙</button>
+          <button
+            class="nav-toggle nav-toggle--toolbar"
+            type="button"
+            data-snav-toggle
+            aria-expanded="false"
+            aria-controls="snav-mobile-nav"
+            aria-label="メニューを開く"
+          >
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <nav id="snav-mobile-nav" class="snav-mobile-nav" hidden>
+        <a href="../">ホーム</a>
+        <a href="#nw-featured" data-nw-nav="featured">注目の</a>
+        <a href="#nw-history" data-nw-nav="timeline">歴史</a>
+        <a href="../portfolio/">アプリ</a>
+      </nav>
+    </header>
+
+    <main id="nw-main" class="nw-page" data-page-size="9" data-tl-preview="24">
+
+      <section class="nw-hero" aria-labelledby="nw-hero-title">
+        <div class="nw-inner nw-hero__grid">
+          <div class="nw-hero__copy">
+            <p class="nw-kicker nw-enter" style="--d:0">NEWON / ニュースルーム</p>
+            <h1 id="nw-hero-title" class="nw-hero__title nw-enter" style="--d:1">Newon が <br /> 構築しているものを 1 か所で確認できます。</h1>
+            <div class="nw-hero__text nw-enter" style="--d:2">
+              <p class="nw-hero__lead">新製品から機能アップデートまで。 Newon が行っている変更に従ってください。</p>
+              <p class="nw-hero__note">発売、最新情報、スタジオノートが 1 つのニュースルームにまとめられています。</p>
+            </div>
+            <a class="nw-hero__cta nw-enter" style="--d:3" href="#nw-featured">特集を見る→</a>
+          </div>
+          <aside class="nw-side nw-enter" style="--d:4" aria-label="Newon の概要">
+            <div class="nw-side__head">
+              <p class="nw-side__title">NEWON の概要</p>
+              <p class="nw-side__lead">製品・国・言語</p>
+            </div>
+            <ul class="nw-side__list">
+              <li class="nw-side__item">
+                <span class="nw-side__idx" aria-hidden="true">01</span>
+                <div class="nw-side__body">
+                  <span class="nw-side__en">製品</span>
+                  <p class="nw-side__ko">12+ Services</p>
+                </div>
+              </li>
+              <li class="nw-side__item">
+                <span class="nw-side__idx" aria-hidden="true">02</span>
+                <div class="nw-side__body">
+                  <span class="nw-side__en">国</span>
+                  <p class="nw-side__ko">177 Countries</p>
+                </div>
+              </li>
+              <li class="nw-side__item">
+                <span class="nw-side__idx" aria-hidden="true">03</span>
+                <div class="nw-side__body">
+                  <span class="nw-side__en">言語</span>
+                  <p class="nw-side__ko">13</p>
+                </div>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="nw-section nw-browse" aria-labelledby="nw-browse-title">
+        <div class="nw-inner">
+          <div class="nw-section__head">
+            <p class="nw-kicker">アップデートを参照</p>
+            <h2 id="nw-browse-title">何を閲覧したいですか?</h2>
+            <p>カテゴリまたは製品でフィルタリングして、関心のあるアップデートを見つけます。</p>
+          </div>
+          <div class="nw-toolbar">
+            <nav class="nw-filters" aria-label="ニュースカテゴリー">
+              <a href="./" data-nw-filter="all" class="is-active">全て</a>
+              <a href="./?category=launch" data-nw-filter="launch">打ち上げ</a>
+              <a href="./?category=update" data-nw-filter="update">アップデート</a>
+              <a href="./?category=feature" data-nw-filter="feature">特徴</a>
+              <a href="./?category=company" data-nw-filter="company">Newon</a>
+              <a href="./?category=notice" data-nw-filter="notice">知らせ</a>
+            </nav>
+            <div class="nw-toolbar__tools">
+              <label class="nw-product-select">
+                <span class="visually-hidden">製品でフィルタリングする</span>
+                <select id="nw-product" data-nw-product aria-label="製品でフィルタリングする">
+                  <option value="all">すべての製品</option>
+                  <option value="ox-month">OX MONTH</option>
+                <option value="subping">SubPing</option>
+                <option value="pillmate">Pillmate</option>
+                <option value="savy">SAVY</option>
+                <option value="babylog">BabyLog</option>
+                <option value="petlog">PetLog</option>
+                <option value="piggyup">PiggyUp</option>
+                <option value="goalup">GoalUp</option>
+                <option value="countup">CountUp</option>
+                <option value="newon-plus">Newon+</option>
+                <option value="myworld">My World</option>
+                <option value="404-human">404: HUMAN</option>
+                </select>
+              </label>
+              <label class="nw-search">
+                <span class="visually-hidden">更新情報を検索</span>
+                <input
+                  type="search"
+                  id="nw-search"
+                  data-nw-search
+                  placeholder="更新情報を検索"
+                  autocomplete="off"
+                />
+              </label>
+            </div>
+          </div>
+          <div
+            class="nw-viewbar"
+            id="nw-viewbar"
+            hidden
+            data-label-all="すべてのアップデート"
+            data-hint-history="以下の製品履歴で {n} 個の一致するアイテムをご覧ください。"
+            data-hint-both="{a} 個のストーリー · {h} 個の履歴アイテム"
+            data-hint-empty="この見解に一致するものはまだありません。"
+            data-empty-launch-title="ローンチストーリーはまだ公開されていません。"
+            data-empty-launch-body="現在の製品レコードは、以下の製品履歴にリストされています。"
+            data-empty-update-title="このビューには更新はありません。"
+            data-empty-update-body="別の製品を試すか、すべてのアップデートを表示してください。"
+            data-empty-feature-title="機能に関するメモはまだありません。"
+            data-empty-feature-body="特集記事が公開されると、ここに表示されます。"
+            data-empty-company-title="スタジオの話はまだありません。"
+            data-empty-company-body="スタジオとプロジェクトの記録は以下の製品履歴にあります。"
+            data-empty-notice-title="まだ通知はありません。"
+            data-empty-notice-body="公式通知が発行されると、ここに表示されます。"
+            data-empty-default-title="このビューにはまだ更新がありません。"
+            data-empty-default-body="別のカテゴリまたは製品を試すか、すべての更新を表示します。"
+          >
+            <div class="nw-viewbar__main">
+              <p class="nw-viewbar__title" id="nw-viewbar-title"></p>
+              <p class="nw-viewbar__hint" id="nw-viewbar-hint"></p>
+            </div>
+            <a class="nw-viewbar__jump" id="nw-viewbar-jump" href="#nw-history" hidden>履歴へジャンプ↓</a>
+          </div>
+        </div>
+      </section>
+
+      <div id="nw-feed" class="nw-feed">
+
+        <section class="nw-featured" id="nw-featured" data-nw-featured data-category="update" data-product="petlog" data-search="petlog コミュニティがリニューアルされました。 petlog コミュニティを改善し、人々がより快適に共有し、必要なものを見つけられるようにしました。 コミュニティは読みやすく、投稿し、フォローしやすいため、ペットの飼い主はより快適に共有できます。 コミュニティエクスペリエンスの向上 petlog update update petlog コミュニティを改良して、読み書きし、会話を継続しやすくしました。 毎日のペットの世話のメモや質問を他の飼い主と共有することはより簡単に感じられ、読み続けたい投稿を見つけることもより明確に感じられるはずです。 より明確なコミュニティ 人々がより自由に共有できるようにコミュニティを改善しました。 より良い投稿 投稿の読み取りと書き込みは、より単純なパスに従います。 使いやすさ コミュニティ内の移動はより速く、より明白になります。" aria-labelledby="nw-featured-title">
+        <div class="nw-inner">
+          <div class="nw-section__head nw-section__head--compact">
+            <p class="nw-kicker">注目の</p>
+            <h2 id="nw-featured-title">最新話</h2>
+          </div>
+          <a class="nw-featured__card" href="petlog-community-update/" data-accent="pl">
+            <div class="nw-featured__brand" aria-hidden="true">
+              <img class="nw-featured__logo" src="/petlog-logo.png" alt="PetLog" width="96" height="96" loading="lazy" decoding="async" />
+              <span class="nw-featured__product">PetLog</span>
+            </div>
+            <div class="nw-featured__copy">
+              <div class="nw-featured__meta">
+                
+                <span class="nw-featured__cat">アップデート</span>
+                <time datetime="2026-08-19">2026.08.19</time>
+                <span class="nw-new">NEW</span>
+              </div>
+              <h3 class="nw-featured__title">PetLog コミュニティ、<br /> が更新されました。</h3>
+              <p class="nw-featured__sum">PetLog コミュニティを改善し、人々がより快適に共有し、必要なものを見つけられるようにしました。</p>
+              <span class="nw-featured__go">続きを読む→</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+        <section class="nw-latest" id="nw-latest" data-nw-latest aria-labelledby="nw-latest-title" hidden>
+          <div class="nw-inner">
+            <div class="nw-section__head nw-section__head--row">
+              <div>
+                <p class="nw-kicker">最新のアップデート</p>
+                <h2 id="nw-latest-title">最新のアップデート</h2>
+              </div>
+            </div>
+            <div id="nw-list" class="nw-cards" hidden>
+              
+            </div>
+            <div class="nw-empty nw-empty--filter" id="nw-empty" hidden>
+              <p class="nw-empty__title" id="nw-empty-title">このビューにはまだ更新がありません。</p>
+              <p class="nw-empty__body" id="nw-empty-body">別のカテゴリまたは製品を試すか、すべての更新を表示します。</p>
+              <button type="button" class="nw-text-btn" id="nw-empty-reset">フィルターをリセットする</button>
+            </div>
+            <div class="nw-empty nw-empty--search" id="nw-search-empty" hidden>
+              <p class="nw-empty__title">結果が見つかりませんでした。</p>
+              <p class="nw-empty__body">別のキーワードまたはカテゴリを試してください。</p>
+            </div>
+            <div class="nw-more-wrap">
+              <button class="nw-text-btn" type="button" id="nw-more" hidden>その他の最新情報↓</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="nw-history" id="nw-history" aria-labelledby="nw-history-title">
+          <div class="nw-inner">
+            <div class="nw-history__head">
+              <div class="nw-section__head">
+                <p class="nw-kicker">製品の歴史</p>
+                <h2 id="nw-history-title">Newonの記録</h2>
+                <p class="nw-section__lead">アイデアが製品になります。製品は変化し続けます - 順番に記録されます。</p>
+              </div>
+              <div class="nw-hist-filters" role="group" aria-label="履歴タイプのフィルター">
+                <button type="button" class="nw-hist-filter is-active" data-nw-hist-filter="all" aria-current="true">全て</button>
+              <button type="button" class="nw-hist-filter" data-nw-hist-filter="launch">打ち上げ</button>
+              <button type="button" class="nw-hist-filter" data-nw-hist-filter="update">アップデート</button>
+              <button type="button" class="nw-hist-filter" data-nw-hist-filter="milestone">マイルストーン</button>
+              </div>
+            </div>
+            <div id="nw-timeline" class="nw-timeline">
+              <div class="nw-tl-group" data-nw-tl-group data-tl-year="2026">
+              <div class="nw-tl-group__year">2026</div>
+              <div class="nw-tl-group__months"><div class="nw-tl-month" data-nw-tl-month>
+                  <p class="nw-tl-month__label"><span>AUGUST</span></p>
+                  <div class="nw-tl-month__entries"><article class="nw-tl-item" data-nw-tl data-category="update" data-product="petlog" data-hist-type="update" data-search="petlog community experience improved we improved petlog community so people can share more comfortably and discover what they need. update アップデート">
+                    <span class="nw-tl-item__dot" aria-hidden="true"></span>
+                    <div class="nw-tl-item__body">
+                      <div class="nw-tl-item__meta">
+                        <time datetime="2026-08-19">AUG 19</time>
+                        <span class="nw-tl-item__type">アップデート</span>
+                      </div>
+                      <div class="nw-tl-item__brand">
+                        <a class="nw-tl-item__icon-link" href="../portfolio/petlog/">
+                          <img class="nw-tl-item__icon" src="/petlog-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+                        </a>
+                        <a class="nw-tl-item__product" href="../portfolio/petlog/">PetLog</a>
+                      </div>
+                      <h3 class="nw-tl-item__title"><a href="petlog-community-update/">Community experience improved</a></h3>
+                      <p class="nw-tl-item__desc">We improved PetLog community so people can share more comfortably and discover what they need.</p>
+                      <a class="nw-tl-item__go" href="petlog-community-update/">続きを読む→</a>
+                    </div>
+                  </article></div>
+                </div>
+                <div class="nw-tl-month" data-nw-tl-month>
+                  <p class="nw-tl-month__label"><span>以前</span></p>
+                  <div class="nw-tl-month__entries"><article class="nw-tl-item" data-nw-tl data-category="company" data-product="404-human" data-hist-type="milestone" data-search="404: human ゲームプロジェクト ai 時代の最後の人類を描いたインタラクティブ ゲーム。 project プロジェクト">
+                    <span class="nw-tl-item__dot" aria-hidden="true"></span>
+                    <div class="nw-tl-item__body">
+                      <div class="nw-tl-item__meta">
+                        <time datetime="2026">2026</time>
+                        <span class="nw-tl-item__type">プロジェクト</span>
+                      </div>
+                      <div class="nw-tl-item__brand">
+                        <a class="nw-tl-item__icon-link" href="/ja/404-human/">
+                          <img class="nw-tl-item__icon" src="/404-human-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+                        </a>
+                        <a class="nw-tl-item__product" href="/ja/404-human/">404: HUMAN</a>
+                      </div>
+                      <h3 class="nw-tl-item__title">ゲームプロジェクト</h3>
+                      <p class="nw-tl-item__desc">AI 時代の最後の人類を描いたインタラクティブ ゲーム。</p>
+                      
+                    </div>
+                  </article>
+                  <article class="nw-tl-item" data-nw-tl data-category="launch" data-product="myworld" data-hist-type="milestone" data-search="my world 旅の記録と世界地図 旅の記録と世界地図をつなぐ旅行サービス。 product 製品">
+                    <span class="nw-tl-item__dot" aria-hidden="true"></span>
+                    <div class="nw-tl-item__body">
+                      <div class="nw-tl-item__meta">
+                        <time datetime="2026">2026</time>
+                        <span class="nw-tl-item__type">製品</span>
+                      </div>
+                      <div class="nw-tl-item__brand">
+                        <a class="nw-tl-item__icon-link" href="../portfolio/myworld/">
+                          <img class="nw-tl-item__icon" src="/myworld-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+                        </a>
+                        <a class="nw-tl-item__product" href="../portfolio/myworld/">My World</a>
+                      </div>
+                      <h3 class="nw-tl-item__title">旅の記録と世界地図</h3>
+                      <p class="nw-tl-item__desc">旅の記録と世界地図をつなぐ旅行サービス。</p>
+                      
+                    </div>
+                  </article>
+                  <article class="nw-tl-item" data-nw-tl data-category="launch" data-product="newon-plus" data-hist-type="milestone" data-search="newon+ newon アプリハブ newon のアプリとサービスを 1 か所で接続するハブ。 product 製品">
+                    <span class="nw-tl-item__dot" aria-hidden="true"></span>
+                    <div class="nw-tl-item__body">
+                      <div class="nw-tl-item__meta">
+                        <time datetime="2026">2026</time>
+                        <span class="nw-tl-item__type">製品</span>
+                      </div>
+                      <div class="nw-tl-item__brand">
+                        <a class="nw-tl-item__icon-link" href="../portfolio/newon-plus/">
+                          <img class="nw-tl-item__icon" src="/newon-plus-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+                        </a>
+                        <a class="nw-tl-item__product" href="../portfolio/newon-plus/">Newon+</a>
+                      </div>
+                      <h3 class="nw-tl-item__title">Newon アプリハブ</h3>
+                      <p class="nw-tl-item__desc">Newon のアプリとサービスを 1 か所で接続するハブ。</p>
+                      
+                    </div>
+                  </article>
+                  <article class="nw-tl-item" data-nw-tl data-category="launch" data-product="countup" data-hist-type="milestone" data-search="countup カウントベースの進捗状況 カウントベースの目標と成長記録。 product 製品">
+                    <span class="nw-tl-item__dot" aria-hidden="true"></span>
+                    <div class="nw-tl-item__body">
+                      <div class="nw-tl-item__meta">
+                        <time datetime="2026">2026</time>
+                        <span class="nw-tl-item__type">製品</span>
+                      </div>
+                      <div class="nw-tl-item__brand">
+                        <a class="nw-tl-item__icon-link" href="../portfolio/countup/">
+                          <img class="nw-tl-item__icon" src="/countup-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+                        </a>
+                        <a class="nw-tl-item__product" href="../portfolio/countup/">CountUp</a>
+                      </div>
+                      <h3 class="nw-tl-item__title">カウントベースの進捗状況</h3>
+                      <p class="nw-tl-item__desc">カウントベースの目標と成長記録。</p>
+                      
+                    </div>
+                  </article>
+                  <article class="nw-tl-item" data-nw-tl data-category="launch" data-product="goalup" data-hist-type="milestone" data-search="goalup 目標、習慣、課題 目標、習慣、課題を 1 つのフローにまとめます。 product 製品">
+                    <span class="nw-tl-item__dot" aria-hidden="true"></span>
+                    <div class="nw-tl-item__body">
+                      <div class="nw-tl-item__meta">
+                        <time datetime="2026">2026</time>
+                        <span class="nw-tl-item__type">製品</span>
+                      </div>
+                      <div class="nw-tl-item__brand">
+                        <a class="nw-tl-item__icon-link" href="../portfolio/goalup/">
+                          <img class="nw-tl-item__icon" src="/goalup-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+                        </a>
+                        <a class="nw-tl-item__product" href="../portfolio/goalup/">GoalUp</a>
+                      </div>
+                      <h3 class="nw-tl-item__title">目標、習慣、課題</h3>
+                      <p class="nw-tl-item__desc">目標、習慣、課題を 1 つのフローにまとめます。</p>
+                      
+                    </div>
+                  </article>
+                  <article class="nw-tl-item" data-nw-tl data-category="launch" data-product="piggyup" data-hist-type="milestone" data-search="piggyup 貯蓄記録 支出パターンに関する洞察を備えた貯蓄ログ。 product 製品">
+                    <span class="nw-tl-item__dot" aria-hidden="true"></span>
+                    <div class="nw-tl-item__body">
+                      <div class="nw-tl-item__meta">
+                        <time datetime="2026">2026</time>
+                        <span class="nw-tl-item__type">製品</span>
+                      </div>
+                      <div class="nw-tl-item__brand">
+                        <a class="nw-tl-item__icon-link" href="../portfolio/piggyup/">
+                          <img class="nw-tl-item__icon" src="/piggyup-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+                        </a>
+                        <a class="nw-tl-item__product" href="../portfolio/piggyup/">PiggyUp</a>
+                      </div>
+                      <h3 class="nw-tl-item__title">貯蓄記録</h3>
+                      <p class="nw-tl-item__desc">支出パターンに関する洞察を備えた貯蓄ログ。</p>
+                      
+                    </div>
+                  </article>
+                  <article class="nw-tl-item" data-nw-tl data-category="launch" data-product="petlog" data-hist-type="milestone" data-search="petlog ペットの生活記録 ペットのログ、健康状態の追跡、家族の共有。 product 製品">
+                    <span class="nw-tl-item__dot" aria-hidden="true"></span>
+                    <div class="nw-tl-item__body">
+                      <div class="nw-tl-item__meta">
+                        <time datetime="2026">2026</time>
+                        <span class="nw-tl-item__type">製品</span>
+                      </div>
+                      <div class="nw-tl-item__brand">
+                        <a class="nw-tl-item__icon-link" href="../portfolio/petlog/">
+                          <img class="nw-tl-item__icon" src="/petlog-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+                        </a>
+                        <a class="nw-tl-item__product" href="../portfolio/petlog/">PetLog</a>
+                      </div>
+                      <h3 class="nw-tl-item__title">ペットの生活記録</h3>
+                      <p class="nw-tl-item__desc">ペットのログ、健康状態の追跡、家族の共有。</p>
+                      
+                    </div>
+                  </article>
+                  <article class="nw-tl-item" data-nw-tl data-category="launch" data-product="pillmate" data-hist-type="milestone" data-search="pillmate 薬の記録とリマインダー 服薬記録とリマインダーサービス。 product 製品">
+                    <span class="nw-tl-item__dot" aria-hidden="true"></span>
+                    <div class="nw-tl-item__body">
+                      <div class="nw-tl-item__meta">
+                        <time datetime="2026">2026</time>
+                        <span class="nw-tl-item__type">製品</span>
+                      </div>
+                      <div class="nw-tl-item__brand">
+                        <a class="nw-tl-item__icon-link" href="../portfolio/pillmate/">
+                          <img class="nw-tl-item__icon" src="/pillmate-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+                        </a>
+                        <a class="nw-tl-item__product" href="../portfolio/pillmate/">Pillmate</a>
+                      </div>
+                      <h3 class="nw-tl-item__title">薬の記録とリマインダー</h3>
+                      <p class="nw-tl-item__desc">服薬記録とリマインダーサービス。</p>
+                      
+                    </div>
+                  </article>
+                  <article class="nw-tl-item" data-nw-tl data-category="launch" data-product="savy" data-hist-type="milestone" data-search="savy 支出の記録と洞察 支出のログと分析。 product 製品">
+                    <span class="nw-tl-item__dot" aria-hidden="true"></span>
+                    <div class="nw-tl-item__body">
+                      <div class="nw-tl-item__meta">
+                        <time datetime="2026">2026</time>
+                        <span class="nw-tl-item__type">製品</span>
+                      </div>
+                      <div class="nw-tl-item__brand">
+                        <a class="nw-tl-item__icon-link" href="../portfolio/savy/">
+                          <img class="nw-tl-item__icon" src="/savy-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+                        </a>
+                        <a class="nw-tl-item__product" href="../portfolio/savy/">SAVY</a>
+                      </div>
+                      <h3 class="nw-tl-item__title">支出の記録と洞察</h3>
+                      <p class="nw-tl-item__desc">支出のログと分析。</p>
+                      
+                    </div>
+                  </article>
+                  <article class="nw-tl-item" data-nw-tl data-category="launch" data-product="ox-month" data-hist-type="milestone" data-search="ox month o/x 習慣の追跡 o/x ベースの習慣追跡。 product 製品">
+                    <span class="nw-tl-item__dot" aria-hidden="true"></span>
+                    <div class="nw-tl-item__body">
+                      <div class="nw-tl-item__meta">
+                        <time datetime="2026">2026</time>
+                        <span class="nw-tl-item__type">製品</span>
+                      </div>
+                      <div class="nw-tl-item__brand">
+                        <a class="nw-tl-item__icon-link" href="../portfolio/ox-month/">
+                          <img class="nw-tl-item__icon" src="/ox-month-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+                        </a>
+                        <a class="nw-tl-item__product" href="../portfolio/ox-month/">OX MONTH</a>
+                      </div>
+                      <h3 class="nw-tl-item__title">O/X 習慣の追跡</h3>
+                      <p class="nw-tl-item__desc">O/X ベースの習慣追跡。</p>
+                      
+                    </div>
+                  </article>
+                  <article class="nw-tl-item" data-nw-tl data-category="launch" data-product="subping" data-hist-type="milestone" data-search="subping サブスクリプションと請求 サブスクリプション、支払い日、コスト管理。 product 製品">
+                    <span class="nw-tl-item__dot" aria-hidden="true"></span>
+                    <div class="nw-tl-item__body">
+                      <div class="nw-tl-item__meta">
+                        <time datetime="2026">2026</time>
+                        <span class="nw-tl-item__type">製品</span>
+                      </div>
+                      <div class="nw-tl-item__brand">
+                        <a class="nw-tl-item__icon-link" href="../portfolio/subping/">
+                          <img class="nw-tl-item__icon" src="/subping-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+                        </a>
+                        <a class="nw-tl-item__product" href="../portfolio/subping/">SubPing</a>
+                      </div>
+                      <h3 class="nw-tl-item__title">サブスクリプションと請求</h3>
+                      <p class="nw-tl-item__desc">サブスクリプション、支払い日、コスト管理。</p>
+                      
+                    </div>
+                  </article>
+                  <article class="nw-tl-item" data-nw-tl data-category="launch" data-product="babylog" data-hist-type="milestone" data-search="babylog 子育てと成長の記録 子育て、成長、家族の記録。 product 製品">
+                    <span class="nw-tl-item__dot" aria-hidden="true"></span>
+                    <div class="nw-tl-item__body">
+                      <div class="nw-tl-item__meta">
+                        <time datetime="2026">2026</time>
+                        <span class="nw-tl-item__type">製品</span>
+                      </div>
+                      <div class="nw-tl-item__brand">
+                        <a class="nw-tl-item__icon-link" href="../portfolio/babylog/">
+                          <img class="nw-tl-item__icon" src="/babylog-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+                        </a>
+                        <a class="nw-tl-item__product" href="../portfolio/babylog/">BabyLog</a>
+                      </div>
+                      <h3 class="nw-tl-item__title">子育てと成長の記録</h3>
+                      <p class="nw-tl-item__desc">子育て、成長、家族の記録。</p>
+                      
+                    </div>
+                  </article></div>
+                </div></div>
+            </div>
+            </div>
+            <div class="nw-timeline-empty" id="nw-timeline-empty" hidden>
+              <p>別のカテゴリまたは製品を試すか、すべての更新を表示します。</p>
+            </div>
+            <div class="nw-timeline-more-wrap">
+              <button class="nw-text-btn" type="button" id="nw-tl-more" hidden>完全なタイムラインを表示 →</button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <section class="nw-apps" aria-labelledby="nw-apps-title">
+        <div class="nw-inner nw-apps__grid">
+          <div class="nw-apps__copy">
+            <p class="nw-kicker">NEWON / アプリ</p>
+            <h2 id="nw-apps-title">アイデア 12 件。<br />1 つ Newon。</h2>
+            <p class="nw-section__lead">習慣、目標、お金、健康、家族、旅行。 App Store と Google Play で Newon アプリを見つけます。</p>
+            <div class="nw-apps__actions">
+              <a
+                class="nw-btn nw-btn--primary"
+                href="https://apps.apple.com/developer/nawon-kyung/id1896528749"
+                target="_blank"
+                rel="noopener noreferrer"
+              >App Store</a>
+              <a
+                class="nw-btn nw-btn--ghost"
+                href="https://play.google.com/store/apps/dev?id=8016507493063681249"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Google Play</a>
+              <a class="nw-btn nw-btn--ghost" href="../portfolio/">すべてのアプリを表示</a>
+            </div>
+            <p class="nw-apps__sign">
+              <span class="nw-apps__sign-brand">NEWON</span>
+              <span class="nw-apps__sign-line">構築を続けてください。</span>
+              <span class="nw-apps__sign-sub">アイデア → 製品 → 日常生活</span>
+            </p>
+          </div>
+          <div class="nw-apps__logos" aria-hidden="true">
+            <img class="nw-apps__logo" src="/ox-month-logo.png" alt="OX MONTH" width="40" height="40" loading="lazy" decoding="async" />
+            <img class="nw-apps__logo" src="/subping-logo.png" alt="SubPing" width="40" height="40" loading="lazy" decoding="async" />
+            <img class="nw-apps__logo" src="/pillmate-logo.png" alt="Pillmate" width="40" height="40" loading="lazy" decoding="async" />
+            <img class="nw-apps__logo" src="/savy-logo.png" alt="SAVY" width="40" height="40" loading="lazy" decoding="async" />
+            <img class="nw-apps__logo" src="/babylog-logo.png" alt="BabyLog" width="40" height="40" loading="lazy" decoding="async" />
+            <img class="nw-apps__logo" src="/petlog-logo.png" alt="PetLog" width="40" height="40" loading="lazy" decoding="async" />
+            <img class="nw-apps__logo" src="/piggyup-logo.png" alt="PiggyUp" width="40" height="40" loading="lazy" decoding="async" />
+            <img class="nw-apps__logo" src="/goalup-logo.png" alt="GoalUp" width="40" height="40" loading="lazy" decoding="async" />
+            <img class="nw-apps__logo" src="/countup-logo.png" alt="CountUp" width="40" height="40" loading="lazy" decoding="async" />
+            <img class="nw-apps__logo" src="/newon-plus-logo.png" alt="Newon+" width="40" height="40" loading="lazy" decoding="async" />
+            <img class="nw-apps__logo" src="/myworld-logo.png" alt="My World" width="40" height="40" loading="lazy" decoding="async" />
+            <img class="nw-apps__logo" src="/404-human-logo.png" alt="404: HUMAN" width="40" height="40" loading="lazy" decoding="async" />
+          </div>
+        </div>
+      </section>
+
+      <section class="nw-follow" aria-labelledby="nw-follow-title">
+        <div class="nw-inner nw-follow__inner">
+          <div class="nw-follow__copy">
+            <h2 id="nw-follow-title">Newonをフォローしてください</h2>
+            <p>新製品や最新情報をいち早くご覧ください。</p>
+          </div>
+          <div class="nw-follow__links">
+            <a class="nw-follow__link" href="https://www.instagram.com/newon.app.global" target="_blank" rel="noopener noreferrer">Instagram</a><span class="nw-follow__sep" aria-hidden="true">·</span><a class="nw-follow__link" href="https://youtube.com/@newonglobal" target="_blank" rel="noopener noreferrer">YouTube</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img class="footer-brand-img" src="/logo.png" alt="" width="32" height="32" />
+          <span>Newon</span>
+        </div>
+        <div class="footer-links">
+          <a class="footer-link" href="https://www.newon.app">https://www.newon.app</a>
+          <p class="footer-copy">アイデアを現実につなぐアプリスタジオ</p>
+        </div>
+        <p class="footer-copy">© <span id="year"></span> Newon. 無断転載を禁じます。</p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var cur = "ja";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+        var year = document.getElementById("year");
+        if (year) year.textContent = String(new Date().getFullYear());
+        var toggle = document.querySelector("[data-snav-toggle]");
+        var drawer = document.getElementById("snav-mobile-nav");
+        if (toggle && drawer) {
+          toggle.addEventListener("click", function () {
+            var open = !drawer.hasAttribute("hidden");
+            if (open) { drawer.setAttribute("hidden", ""); toggle.setAttribute("aria-expanded", "false"); }
+            else { drawer.removeAttribute("hidden"); toggle.setAttribute("aria-expanded", "true"); }
+          });
+        }
+      })();
+    </script>
+    <script src="/lang-dropdown.js"></script>
+    <script src="/news/news.js?v=20260821y"></script>
+  </body>
+</html>

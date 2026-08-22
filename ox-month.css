@@ -1,0 +1,2485 @@
+/* OX MONTH — app landing (토큰은 메인 사이트와 동일 리듬) */
+:root {
+  --ox-font: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ox-radius: 12px;
+  --ox-radius-lg: 16px;
+  --ox-max: 1120px;
+  --ox-pad: clamp(1.25rem, 4vw, 2rem);
+  --ox-header-h: clamp(98px, 6.85vw, 116px);
+  --ox-section-y: clamp(3.75rem, 9vw, 6rem);
+  --ox-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] {
+  --ox-bg: #000000;
+  --ox-bg-soft: #000000;
+  --ox-surface: #000000;
+  --ox-border: rgba(255, 255, 255, 0.12);
+  --ox-border-hover: rgba(255, 255, 255, 0.2);
+  --ox-text: #f5f5f5;
+  --ox-muted: rgba(245, 245, 245, 0.72);
+  --ox-faint: rgba(245, 245, 245, 0.56);
+  --ox-accent: #ffffff;
+  --ox-hero-img-bg: rgba(255, 255, 255, 0.04);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] {
+  --ox-bg: #ffffff;
+  --ox-bg-soft: #ffffff;
+  --ox-surface: #ffffff;
+  --ox-border: rgba(0, 0, 0, 0.1);
+  --ox-border-hover: rgba(0, 0, 0, 0.16);
+  --ox-text: #0a0a0a;
+  --ox-muted: rgba(10, 10, 10, 0.65);
+  --ox-faint: rgba(10, 10, 10, 0.48);
+  --ox-accent: #0a0a0a;
+  --ox-hero-img-bg: rgba(0, 0, 0, 0.03);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app).ox-page {
+  font-family: var(--ox-font);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ox-text);
+  background: var(--ox-bg);
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background 0.35s var(--ox-ease),
+    color 0.35s var(--ox-ease);
+  min-height: 100vh;
+}
+
+.ox-page img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ox-page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ox-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: 0.65rem 1rem;
+  background: var(--ox-accent);
+  color: var(--ox-bg);
+  font-weight: 600;
+  z-index: 200;
+}
+
+.ox-skip:focus {
+  left: 0;
+}
+
+.ox-container {
+  width: min(var(--ox-max), calc(100% - var(--ox-pad) * 2));
+  margin-inline: auto;
+}
+
+/* Header */
+.ox-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--ox-bg) 82%, transparent);
+  backdrop-filter: blur(18px) saturate(1.06);
+  -webkit-backdrop-filter: blur(18px) saturate(1.06);
+  border-bottom: 1px solid var(--ox-border);
+  transition:
+    background 0.35s var(--ox-ease),
+    border-color 0.35s var(--ox-ease),
+    box-shadow 0.35s var(--ox-ease);
+}
+
+.ox-header.is-scrolled {
+  background: color-mix(in srgb, var(--ox-bg) 90%, transparent);
+  backdrop-filter: blur(22px) saturate(1.1);
+  -webkit-backdrop-filter: blur(22px) saturate(1.1);
+  border-bottom-color: var(--ox-border-hover);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, var(--ox-text) 5%, transparent) inset,
+    0 10px 36px rgba(0, 0, 0, 0.12);
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+  .ox-header.is-scrolled {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* 3-column toolbar (grid from styles.css `.navbar-bar`) */
+.navbar-bar--ox {
+  min-height: var(--ox-header-h);
+  padding-block: clamp(4px, 0.75vw, 8px);
+}
+
+.navbar-bar--ox.navbar-bar--brand-header {
+  min-height: var(--ox-header-h);
+  padding-block: clamp(10px, 1.65vw, 14px);
+}
+
+.navbar-bar--ox .navbar-hub__logo-img {
+  box-shadow:
+    0 0 0 1px var(--ox-border),
+    0 8px 26px rgba(0, 0, 0, 0.32);
+}
+
+.navbar-bar--ox .navbar-app-showcase__tagline {
+  color: var(--ox-muted);
+  opacity: 0.95;
+}
+
+.navbar-bar--ox .navbar-app-showcase__icon-img {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.07) inset,
+    0 14px 36px rgba(0, 0, 0, 0.45),
+    0 0 0 1px var(--ox-border);
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+  .navbar-bar--ox
+  .navbar-app-showcase__icon-img {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 12px 32px rgba(0, 0, 0, 0.1),
+    0 0 0 1px var(--ox-border);
+}
+
+.navbar-bar__controls--brand-toolbar .lang-select.lang-select--toolbar {
+  min-height: var(--navbar-toolbar-pill-h);
+  font-size: 0.84375rem;
+  border-radius: 999px;
+}
+
+.navbar-bar__controls--brand-toolbar .lang-menu.lang-menu--toolbar .lang-menu__btn {
+  min-height: var(--navbar-toolbar-pill-h);
+  height: var(--navbar-toolbar-pill-h);
+  padding: 0.35rem 1.75rem 0.35rem clamp(0.75rem, 1.6vw, 1rem);
+  font-size: 0.84375rem;
+  letter-spacing: -0.019em;
+  width: auto;
+  min-width: unset;
+  max-width: none;
+}
+
+.navbar-bar__controls--brand-toolbar .ox-theme-toggle,
+.navbar-bar__controls--brand-toolbar .ox-nav-toggle {
+  width: var(--navbar-hub-logo-size);
+  height: var(--navbar-hub-logo-size);
+  min-width: var(--navbar-hub-logo-size);
+  font-size: 1rem;
+}
+
+@media (max-width: 639px) {
+  :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app).ox-page {
+    --ox-header-h: 84px;
+  }
+
+  .navbar-bar--ox.navbar-bar--brand-header {
+    padding-block: 8px;
+    min-height: 60px;
+  }
+
+  .navbar-bar__controls--brand-toolbar .ox-theme-toggle,
+  .navbar-bar__controls--brand-toolbar .ox-nav-toggle {
+    width: var(--navbar-hub-logo-size);
+    height: var(--navbar-hub-logo-size);
+    min-width: var(--navbar-hub-logo-size);
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar-bar__controls--brand-toolbar .lang-select.lang-select--toolbar,
+  .navbar-bar__controls--brand-toolbar .lang-menu.lang-menu--toolbar .lang-menu__btn {
+    max-width: min(140px, 42vw);
+  }
+}
+
+.navbar-bar--ox .ox-header-actions {
+  gap: 0.6875rem;
+}
+
+.navbar-bar--ox .navbar-bar__controls--brand-toolbar .ox-header-actions {
+  gap: 0.42rem;
+}
+
+.navbar-bar--ox .navbar-bar__controls--brand-toolbar .lang-select.lang-select--toolbar {
+  width: auto;
+  min-width: unset;
+  max-width: none;
+  min-height: var(--navbar-toolbar-pill-h);
+  height: var(--navbar-toolbar-pill-h);
+  font-size: 0.84375rem;
+}
+
+.navbar-bar--ox .navbar-bar__controls--brand-toolbar .lang-menu.lang-menu--toolbar .lang-menu__btn {
+  width: auto;
+  min-width: unset;
+  max-width: none;
+  min-height: var(--navbar-toolbar-pill-h);
+  height: var(--navbar-toolbar-pill-h);
+  font-size: 0.84375rem;
+  letter-spacing: -0.019em;
+}
+
+.navbar-bar--ox .ox-brand {
+  gap: clamp(0.8125rem, 1.4vw, 1.0625rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.navbar-bar--ox .ox-brand img {
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+}
+
+.navbar-bar--ox .ox-brand span {
+  font-size: clamp(1.3125rem, 2vw, 1.625rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+}
+
+.navbar-bar--ox .apps-flyout__trigger.apps-flyout__trigger--toolbar {
+  color: var(--ox-muted);
+  background: color-mix(in srgb, var(--ox-surface) 82%, transparent);
+  border: 1px solid var(--ox-border);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset;
+}
+
+.navbar-bar--ox .apps-flyout__trigger.apps-flyout__trigger--toolbar:hover,
+.navbar-bar--ox .apps-flyout__trigger.apps-flyout__trigger--toolbar[aria-expanded="true"] {
+  color: var(--ox-text);
+  background: color-mix(in srgb, var(--ox-surface) 94%, transparent);
+  border-color: var(--ox-border-hover);
+}
+
+.navbar-bar--ox .lang-select.lang-select--toolbar {
+  background-color: color-mix(in srgb, var(--ox-surface) 88%, transparent);
+  border-color: var(--ox-border);
+  color: var(--ox-text);
+}
+
+.navbar-bar--ox .lang-select.lang-select--toolbar:hover {
+  border-color: var(--ox-border-hover);
+  background-color: color-mix(in srgb, var(--ox-surface) 96%, transparent);
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+  .lang-switcher--ox
+  .lang-menu.lang-menu--toolbar
+  .lang-menu__btn,
+html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolbar .lang-menu__btn {
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23707070' d='M6 8L1 3h10z'/%3E%3C/svg%3E") no-repeat right 0.55rem center;
+  border-color: rgba(0, 0, 0, 0.09);
+  color: #161616;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+  .lang-switcher--ox
+  .lang-menu.lang-menu--toolbar
+  .lang-menu__btn:hover,
+html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolbar .lang-menu__btn:hover {
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23707070' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  border-color: rgba(0, 0, 0, 0.14);
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+  .lang-switcher--ox
+  .lang-select.lang-select--toolbar {
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23707070' d='M6 8L1 3h10z'/%3E%3C/svg%3E") no-repeat right 0.55rem center;
+  border-color: rgba(0, 0, 0, 0.09);
+  color: #161616;
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+  .lang-switcher--ox
+  .lang-select.lang-select--toolbar {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23bdbdbd' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.55rem center;
+}
+
+.navbar-bar--ox .ox-theme-toggle,
+.navbar-bar--ox .ox-nav-toggle {
+  width: var(--navbar-hub-logo-size);
+  height: var(--navbar-hub-logo-size);
+  min-width: var(--navbar-hub-logo-size);
+}
+
+.navbar-bar--ox .ox-link-newon {
+  min-height: 44px;
+  padding-inline: 0.85rem;
+  font-size: 0.8125rem;
+}
+
+@media (max-width: 879px) {
+  .navbar-bar--ox .ox-brand img {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  .navbar-bar--ox .ox-brand span {
+    font-size: 1.2rem;
+  }
+
+  .navbar-bar--ox.navbar-bar--brand-header .ox-theme-toggle,
+  .navbar-bar--ox.navbar-bar--brand-header .ox-nav-toggle {
+    width: var(--navbar-hub-logo-size);
+    height: var(--navbar-hub-logo-size);
+    min-width: var(--navbar-hub-logo-size);
+  }
+
+  .navbar-bar--ox .lang-select.lang-select--toolbar,
+  .navbar-bar--ox .navbar-bar__controls--brand-toolbar .lang-menu.lang-menu--toolbar .lang-menu__btn {
+    width: min(112px, 32vw);
+    min-height: 40px;
+    height: 40px;
+  }
+
+  .navbar-bar--ox .ox-link-newon {
+    min-height: 40px;
+    padding-inline: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-bar--ox .ox-brand span {
+    max-width: 42vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .lang-switcher--ox .lang-select {
+  background-color: color-mix(in srgb, var(--ox-surface) 82%, transparent);
+  border-color: var(--ox-border);
+  color: var(--ox-text);
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+  .lang-switcher--ox
+  .lang-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23707070' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+  .lang-switcher--ox
+  .lang-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23bdbdbd' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
+  .lang-switcher--ox
+  .lang-select:hover {
+  border-color: var(--ox-border-hover);
+  background-color: color-mix(in srgb, var(--ox-surface) 94%, transparent);
+}
+
+.ox-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.54rem;
+  font-weight: 600;
+  letter-spacing: -0.038em;
+  font-size: 1.0625rem;
+  line-height: 1;
+  transition:
+    opacity 0.22s var(--ox-ease),
+    transform 0.22s var(--ox-ease);
+}
+
+.ox-brand:hover {
+  opacity: 0.9;
+}
+
+.ox-brand:active {
+  transform: scale(0.997);
+}
+
+.ox-brand img {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  object-fit: cover;
+  transition:
+    transform 0.22s var(--ox-ease),
+    box-shadow 0.22s var(--ox-ease);
+  box-shadow: 0 0 0 1px var(--ox-border);
+}
+
+.ox-brand:hover img {
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.1);
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+  .ox-brand:hover
+  img {
+  box-shadow:
+    0 0 0 1px var(--ox-border-hover),
+    0 8px 28px rgba(0, 0, 0, 0.42);
+}
+
+.ox-brand span {
+  white-space: nowrap;
+}
+
+.ox-nav {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.ox-nav--apps-only {
+  gap: 0;
+}
+
+.ox-nav a {
+  color: var(--ox-muted);
+  transition: color 0.2s;
+}
+
+.ox-nav a:hover {
+  color: var(--ox-text);
+}
+
+.ox-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.ox-link-newon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  min-height: 34px;
+  padding: 0 0.75rem;
+  color: var(--ox-muted);
+  border-radius: 999px;
+  border: 1px solid var(--ox-border);
+  background: color-mix(in srgb, var(--ox-surface) 70%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset;
+  transition:
+    border-color 0.22s var(--ox-ease),
+    color 0.22s var(--ox-ease),
+    background 0.22s var(--ox-ease),
+    transform 0.22s var(--ox-ease);
+}
+
+.ox-link-newon:hover {
+  color: var(--ox-text);
+  border-color: var(--ox-border-hover);
+  background: color-mix(in srgb, var(--ox-surface) 90%, transparent);
+}
+
+.ox-link-newon:active {
+  transform: scale(0.982);
+}
+
+.ox-theme-toggle {
+  width: var(--navbar-hub-logo-size);
+  height: var(--navbar-hub-logo-size);
+  border-radius: 999px;
+  border: 1px solid var(--ox-border);
+  background: color-mix(in srgb, var(--ox-surface) 78%, transparent);
+  color: var(--ox-text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  line-height: 1;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset;
+  transition:
+    border-color 0.22s var(--ox-ease),
+    background 0.22s var(--ox-ease),
+    box-shadow 0.22s var(--ox-ease),
+    transform 0.22s var(--ox-ease);
+}
+
+.ox-theme-toggle:hover {
+  border-color: var(--ox-border-hover);
+  background: color-mix(in srgb, var(--ox-surface) 93%, transparent);
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 5%, transparent) inset,
+    0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+  .ox-theme-toggle:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 6px 22px rgba(0, 0, 0, 0.4);
+}
+
+.ox-theme-toggle:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.ox-nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 37px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--ox-border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ox-surface) 78%, transparent);
+  color: var(--ox-text);
+  cursor: pointer;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset;
+  transition:
+    border-color 0.22s var(--ox-ease),
+    background 0.22s var(--ox-ease),
+    transform 0.22s var(--ox-ease);
+}
+
+.ox-nav-toggle:hover {
+  border-color: var(--ox-border-hover);
+  background: color-mix(in srgb, var(--ox-surface) 93%, transparent);
+}
+
+.ox-nav-toggle:active {
+  transform: scale(0.965);
+}
+
+.ox-nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  margin: 0 auto;
+  border-radius: 1px;
+}
+
+.ox-mobile-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--ox-pad) 1rem;
+  border-bottom: 1px solid var(--ox-border);
+  background: var(--ox-bg);
+}
+
+.ox-mobile-menu[hidden] {
+  display: none !important;
+}
+
+.ox-mobile-menu a {
+  padding: 0.875rem 0;
+  border-top: 1px solid var(--ox-border);
+  color: var(--ox-muted);
+  font-size: 0.90625rem;
+}
+
+.ox-mobile-menu a:hover {
+  color: var(--ox-text);
+}
+
+@media (min-width: 880px) {
+  .ox-nav {
+    display: flex;
+  }
+
+  .ox-nav-toggle {
+    display: none;
+  }
+
+  .ox-mobile-menu {
+    display: none !important;
+  }
+}
+
+
+@media (max-width: 360px) {
+  .navbar-bar__controls--ox {
+    gap: 0.42rem;
+  }
+
+  .navbar-bar--ox .ox-link-newon {
+    padding-inline: 0.58rem;
+    font-size: 0.7425rem;
+    min-height: 36px;
+  }
+}
+
+/* Hero */
+.ox-hero {
+  padding: calc(var(--ox-header-h) + clamp(2rem, 6vw, 3.5rem)) 0 clamp(3rem, 8vw, 4.25rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.ox-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 45% at 50% -10%, rgba(128, 128, 128, 0.12), transparent);
+  pointer-events: none;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-hero::before,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-hero::before {
+  background: none;
+}
+
+.ox-hero-grid {
+  position: relative;
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.25rem);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .ox-hero-grid {
+    grid-template-columns: 1fr 1.08fr;
+  }
+}
+
+.ox-hero-copy {
+  max-width: 34rem;
+}
+
+.ox-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.875rem;
+}
+
+.ox-badge-row .ox-badge {
+  margin-bottom: 0;
+}
+
+.ox-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--ox-border);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ox-muted);
+  margin-bottom: 0.875rem;
+  letter-spacing: 0.06em;
+}
+
+.ox-badge--secondary {
+  border-style: dashed;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ox-text);
+  opacity: 0.88;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-badge--secondary {
+  border-color: color-mix(in srgb, var(--ox-border) 85%, var(--ox-text) 15%);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-badge--secondary {
+  background: color-mix(in srgb, var(--ox-text) 4%, transparent);
+}
+
+.ox-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ox-accent);
+  opacity: 0.85;
+}
+
+.ox-hero h1 {
+  margin: 0 0 1.125rem;
+  font-size: clamp(2.35rem, 5.5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.11;
+  color: var(--ox-text);
+}
+
+.ox-subtitle {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.05rem, 2.3vw, 1.28rem);
+  font-weight: 500;
+  color: var(--ox-muted);
+  line-height: 1.55;
+  white-space: pre-line;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.ox-hero-reach-summary {
+  margin: 0 0 1rem;
+  font-size: clamp(1rem, 2.1vw, 1.08rem);
+  font-weight: 500;
+  color: var(--ox-muted);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.ox-desc {
+  margin: 0 0 1.75rem;
+  font-size: 0.96875rem;
+  color: var(--ox-faint);
+  line-height: 1.65;
+  white-space: pre-line;
+}
+
+.ox-btn-soon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8125rem 1.35rem;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.90625rem;
+  font-weight: 600;
+  border: 1px solid var(--ox-border-hover);
+  background: var(--ox-surface);
+  color: var(--ox-muted);
+  cursor: default;
+  user-select: none;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-btn-soon {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ox-store-release {
+  margin: 0;
+}
+
+.ox-store-release__label {
+  margin: 0 0 0.875rem;
+  font-size: clamp(0.95rem, 2.1vw, 1.05rem);
+  font-weight: 600;
+  color: var(--ox-text);
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+}
+
+.ox-store-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  align-items: stretch;
+}
+
+.ox-store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.9rem 0.5rem 0.65rem;
+  border-radius: 12px;
+  border: 1px solid var(--ox-border-hover);
+  background: var(--ox-surface);
+  color: var(--ox-text);
+  text-decoration: none;
+  min-height: 3.25rem;
+  box-sizing: border-box;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.12s ease;
+}
+
+.ox-store-badge:hover {
+  border-color: color-mix(in srgb, var(--ox-text) 28%, var(--ox-border-hover));
+  background: color-mix(in srgb, var(--ox-text) 7%, var(--ox-surface));
+}
+
+.ox-store-badge:active {
+  transform: scale(0.98);
+}
+
+.ox-store-badge:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--ox-text) 55%, transparent);
+  outline-offset: 2px;
+}
+
+.ox-store-badge__icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+.ox-store-badge__icon--play {
+  margin: -2px 0;
+}
+
+.ox-store-badge__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.0625rem;
+  line-height: 1.12;
+  text-align: left;
+}
+
+.ox-store-badge__small {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ox-muted);
+}
+
+.ox-store-badge__name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-store-badge {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-store-badge:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ox-hero-visual {
+  position: relative;
+}
+
+.ox-hero-frame {
+  border-radius: var(--ox-radius-lg);
+  border: 1px solid var(--ox-border);
+  background: var(--ox-hero-img-bg);
+  padding: clamp(1.25rem, 3vw, 1.5rem);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset, 0 24px 56px rgba(0, 0, 0, 0.35);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-hero-frame {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.ox-hero-frame img {
+  border-radius: var(--ox-radius);
+  width: 100%;
+}
+
+.ox-hero-frame--logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(200px, 38vw, 320px);
+  padding: clamp(2rem, 6vw, 3.25rem);
+}
+
+.ox-hero-frame--logo .ox-hero-logo-img {
+  width: auto;
+  max-width: min(220px, 52vw);
+  height: auto;
+  border-radius: clamp(20px, 4.5vw, 28px);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 6%, transparent),
+    0 18px 42px rgba(0, 0, 0, 0.35);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-hero-frame--logo .ox-hero-logo-img {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 8%, transparent),
+    0 16px 36px rgba(0, 0, 0, 0.12);
+}
+
+/* OX MONTH / SubPing — 앱 소개 아래 가로 스크롤 스크린샷 (각 썸네일 폭 = 히어로 로고와 동일 max-width) */
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .sp-showcase-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0.25rem;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  padding-bottom: 0.35rem;
+  outline: none;
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .sp-showcase-scroll:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--ox-text) 45%, transparent);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .sp-showcase-scroll__track {
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+  padding: 0.15rem 0.25rem 0.35rem;
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .sp-showcase-scroll__item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: min(220px, 52vw);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .sp-showcase-scroll__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+/* 앱 소개 — 텍스트 중심 */
+.ox-app-intro__inner {
+  max-width: 40rem;
+}
+
+.ox-app-intro__title {
+  margin: 0 0 1.125rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: clamp(1.5rem, 3.2vw, 1.875rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--ox-text);
+}
+
+.ox-app-intro__title-icon {
+  font-size: 1.1em;
+  line-height: 1;
+  opacity: 0.88;
+}
+
+.ox-app-intro__body p {
+  margin: 0 0 0.9375rem;
+  font-size: 0.96875rem;
+  color: var(--ox-muted);
+  line-height: 1.65;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.ox-app-intro__body p:last-child {
+  margin-bottom: 0;
+}
+
+.ox-app-intro__lead {
+  color: var(--ox-text) !important;
+  font-size: 0.96875rem !important;
+}
+
+.ox-app-intro__lead strong {
+  font-weight: 700;
+}
+
+.ox-app-intro__reach {
+  margin: 0;
+  padding: 0.875rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--ox-muted);
+}
+
+.ox-app-intro__closing {
+  margin-top: 1.375rem !important;
+  padding-top: 1.125rem;
+  border-top: 1px solid var(--ox-border);
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: var(--ox-text) !important;
+  letter-spacing: -0.02em;
+  line-height: 1.55 !important;
+}
+
+.ox-app-intro__legal {
+  margin: 1rem 0 0;
+  padding-top: 0.875rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.ox-app-intro__legal-link {
+  color: var(--ox-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+
+.ox-app-intro__legal-link:hover {
+  color: var(--ox-text);
+}
+
+/* 앱 소개 — 헤더는 박스 밖, 본문은 패널 박스 (OX MONTH 패턴 공통) */
+.ox-app-intro .ox-app-intro__inner {
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+.ox-app-intro .ox-app-intro__head {
+  text-align: center;
+  margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.ox-app-intro .ox-app-intro__head .ox-section-label {
+  margin-bottom: 0.75rem;
+}
+
+.ox-app-intro .ox-app-intro__head .ox-app-intro__title {
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.ox-app-intro .ox-app-intro__panel {
+  padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.25rem, 3.5vw, 2rem);
+  border-radius: var(--ox-radius-lg);
+  border: 1px solid var(--ox-border);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--ox-surface) 92%, transparent) 0%,
+    var(--ox-surface) 48%,
+    color-mix(in srgb, var(--ox-bg-soft) 40%, var(--ox-surface)) 100%
+  );
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset,
+    0 20px 44px rgba(0, 0, 0, 0.14);
+  text-align: center;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+  .ox-app-intro__panel {
+  background: #ffffff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+  .ox-app-intro__panel {
+  background: #000000;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 6%, transparent) inset;
+}
+
+.ox-app-intro .ox-app-intro__body {
+  max-width: 36rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.ox-app-intro .ox-app-intro__legal {
+  text-align: center;
+}
+
+.ox-app-intro .ox-app-intro__panel > .ox-app-intro__closing:empty {
+  display: none;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
+  .ox-premium-tagline {
+  max-width: 28rem;
+  margin-inline: auto;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  line-height: 1.55;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
+  .ox-section-head {
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.ox-br-desktop {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .ox-br-desktop {
+    display: inline;
+  }
+}
+
+.ox-section-title-inline {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: clamp(1.625rem, 3.5vw, 2.125rem);
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  line-height: 1.22;
+  color: var(--ox-text);
+}
+
+.ox-section-head .ox-section-title-inline {
+  margin: 0 auto 0.25rem;
+  justify-content: center;
+}
+
+.ox-section-title-inline__icon {
+  font-size: 0.82em;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+/* Sections */
+.ox-section {
+  padding: var(--ox-section-y) 0;
+  border-top: 1px solid var(--ox-border);
+}
+
+.ox-section-head {
+  margin-bottom: clamp(1.5rem, 4vw, 2.25rem);
+  max-width: 36rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.ox-section-label {
+  margin: 0 0 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: var(--ox-faint);
+}
+
+.ox-section h2 {
+  margin: 0 0 0.25rem;
+  font-size: clamp(1.625rem, 3.5vw, 2.125rem);
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  line-height: 1.22;
+  color: var(--ox-text);
+}
+
+.ox-section-intro {
+  margin: 0.75rem 0 0;
+  color: var(--ox-muted);
+  font-size: 0.96875rem;
+  line-height: 1.65;
+  max-width: 38em;
+}
+
+/* Feature grid */
+
+/* User review stories (above features) */
+.ox-reviews {
+  --ox-review-avatar-size: clamp(3.25rem, 8vw, 3.75rem);
+}
+
+.ox-reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 52rem;
+  margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .ox-reviews-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.125rem;
+  }
+}
+
+.ox-review-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 1.35rem 1.25rem 1.2rem;
+  border-radius: calc(var(--ox-radius) + 2px);
+  border: 1px solid var(--ox-border);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--ox-surface) 88%, #fff 12%) 0%,
+    var(--ox-surface) 55%,
+    color-mix(in srgb, var(--ox-bg) 70%, var(--ox-surface) 30%) 100%
+  );
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 5%, transparent) inset,
+    0 14px 32px rgba(0, 0, 0, 0.14);
+  transition:
+    border-color 0.3s var(--ox-ease),
+    transform 0.35s var(--ox-ease),
+    box-shadow 0.35s var(--ox-ease);
+}
+
+.ox-review-card:hover {
+  border-color: var(--ox-border-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 7%, transparent) inset,
+    0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+.ox-review-avatar {
+  flex-shrink: 0;
+  width: var(--ox-review-avatar-size);
+  height: var(--ox-review-avatar-size);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: calc(var(--ox-review-avatar-size) * 0.58);
+  line-height: 1;
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--ox-bg) 55%, transparent),
+    0 8px 20px rgba(0, 0, 0, 0.18),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.ox-review-avatar--a {
+  background: linear-gradient(145deg, #ffd6e8 0%, #ffb8d0 48%, #ff9ec4 100%);
+}
+
+.ox-review-avatar--b {
+  background: linear-gradient(145deg, #d6ebff 0%, #b8d8ff 48%, #9ec8ff 100%);
+}
+
+.ox-review-avatar--c {
+  background: linear-gradient(145deg, #fff0c9 0%, #ffe4a3 48%, #ffd67a 100%);
+}
+
+.ox-review-avatar--d {
+  background: linear-gradient(145deg, #d8f5e4 0%, #b8ebcf 48%, #98e0b8 100%);
+}
+
+.ox-review-quote {
+  margin: 0;
+  padding: 0;
+  border: none;
+  max-width: 22rem;
+}
+
+.ox-review-quote p {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.62;
+  letter-spacing: -0.015em;
+  color: var(--ox-text);
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.ox-review-meta {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ox-faint);
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app, #piggyup-app, #goalup-app, #countup-app,#myworld-app,#human404-app, #newon-plus-app, #human404-app)[data-theme="dark"]
+  .ox-review-card {
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--ox-surface) 92%, #fff 8%) 0%,
+    var(--ox-surface) 100%
+  );
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app, #piggyup-app, #goalup-app, #countup-app,#myworld-app,#human404-app, #newon-plus-app, #human404-app)[data-theme="light"]
+  .ox-review-card {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset,
+    0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+.ox-features {
+  display: grid;
+  gap: 0.875rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 520px) {
+  .ox-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 880px) {
+  .ox-features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ox-feature-card:last-child:nth-child(3n + 1) {
+    grid-column: 2;
+  }
+}
+
+.ox-feature-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.375rem 1.25rem;
+  border-radius: var(--ox-radius);
+  border: 1px solid var(--ox-border);
+  background: var(--ox-surface);
+  transition:
+    border-color 0.3s var(--ox-ease),
+    transform 0.35s var(--ox-ease),
+    box-shadow 0.35s var(--ox-ease);
+}
+
+.ox-feature-card:hover {
+  border-color: var(--ox-border-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.ox-feature-emoji {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 1;
+  margin-bottom: 0.625rem;
+  opacity: 0.88;
+}
+
+.ox-feature-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.96875rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ox-text);
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.ox-feature-lead {
+  margin: 0 0 0.35rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 500;
+  color: var(--ox-muted) !important;
+  line-height: 1.55 !important;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.ox-feature-note {
+  margin: 0 !important;
+  margin-top: auto !important;
+  font-size: 0.8125rem !important;
+  color: var(--ox-faint) !important;
+  line-height: 1.52 !important;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+/* Feature visual strip */
+.ox-visual-strip {
+  padding: clamp(2.5rem, 6vw, 3.75rem) 0;
+  border-top: 1px solid var(--ox-border);
+  background: var(--ox-bg-soft);
+}
+
+.ox-visual-strip-inner {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (min-width: 800px) {
+  .ox-visual-strip-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+.ox-visual-strip__text .ox-section-label {
+  margin-bottom: 0.5rem;
+}
+
+.ox-visual-strip h3 {
+  margin: 0 0 0.625rem;
+  font-size: clamp(1.125rem, 2.5vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--ox-text);
+}
+
+.ox-visual-strip p {
+  margin: 0;
+  color: var(--ox-muted);
+  font-size: 0.96875rem;
+  max-width: 30em;
+  line-height: 1.65;
+}
+
+.ox-visual-frame {
+  border-radius: var(--ox-radius);
+  border: 1px solid var(--ox-border);
+  overflow: hidden;
+  background: var(--ox-surface);
+}
+
+.ox-visual-frame img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+/* Promo stills (OX MONTH marketing art, black backdrop) */
+.ox-showcase {
+  padding: var(--ox-section-y) 0;
+  border-top: 1px solid var(--ox-border);
+}
+
+.ox-showcase--tight {
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0;
+}
+
+.ox-showcase-figure {
+  margin: 0 auto;
+  max-width: 22rem;
+  border-radius: var(--ox-radius-lg);
+  border: 1px solid var(--ox-border);
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.4);
+}
+
+.ox-showcase-figure--wide {
+  max-width: min(40rem, 100%);
+}
+
+.ox-showcase-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.ox-showcase-dual {
+  border-top: 1px solid var(--ox-border);
+}
+
+.ox-showcase-dual__grid {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+@media (min-width: 900px) {
+  .ox-showcase-dual__grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.ox-showcase-dual .ox-showcase-figure {
+  max-width: none;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-showcase-figure {
+  background: var(--ox-surface);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Steps */
+.ox-steps {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 6vw, 3.5rem);
+}
+
+.ox-step {
+  display: grid;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+@media (min-width: 800px) {
+  .ox-step {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .ox-step--reverse .ox-step-text {
+    order: 2;
+  }
+
+  .ox-step--reverse .ox-step-media {
+    order: 1;
+  }
+}
+
+.ox-step-index {
+  display: block;
+  width: fit-content;
+  margin-bottom: 0.75rem;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  font-weight: 400;
+  color: inherit;
+}
+
+.ox-step h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.ox-step p {
+  margin: 0;
+  color: var(--ox-muted);
+  font-size: 0.96875rem;
+  line-height: 1.62;
+}
+
+.ox-step-media {
+  border-radius: var(--ox-radius);
+  border: 1px solid var(--ox-border);
+  overflow: hidden;
+  background: var(--ox-surface);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-step-media {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.07);
+}
+
+.ox-step-media img {
+  width: 100%;
+}
+
+/* Premium — 정돈된 프리미엄 섹션 */
+.ox-premium {
+  border-top: 1px solid var(--ox-border);
+  background: var(--ox-bg-soft);
+}
+
+.ox-premium-layout {
+  max-width: 52rem;
+}
+
+.ox-premium-intro {
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vw, 2.75rem);
+}
+
+.ox-premium-intro .ox-section-label {
+  margin-bottom: 0.75rem;
+}
+
+.ox-premium-heading {
+  margin: 0 0 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  color: var(--ox-text);
+}
+
+.ox-premium-heading__spark {
+  font-size: 0.85em;
+  opacity: 0.88;
+  filter: saturate(0.95);
+}
+
+.ox-premium-tagline {
+  margin: 0 auto;
+  max-width: 24em;
+  font-size: 0.96875rem;
+  font-weight: 400;
+  color: var(--ox-muted);
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+}
+
+.ox-premium-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.ox-premium-block {
+  border-radius: var(--ox-radius-lg);
+  border: 1px solid var(--ox-border);
+  background: var(--ox-surface);
+  padding: clamp(1.35rem, 3.5vw, 1.85rem);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 3.5%, transparent) inset;
+}
+
+.ox-premium-block__title {
+  margin: 0 0 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ox-text);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--ox-border);
+}
+
+.ox-premium-emoji {
+  font-size: 1.05em;
+  line-height: 1;
+  opacity: 0.88;
+}
+
+.ox-premium-grid {
+  display: grid;
+  gap: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .ox-premium-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+.ox-premium-card {
+  margin: 0;
+  padding: 1.125rem 1.15rem;
+  border-radius: var(--ox-radius);
+  border: 1px solid var(--ox-border);
+  background: color-mix(in srgb, var(--ox-bg) 55%, var(--ox-surface));
+  transition:
+    border-color 0.3s var(--ox-ease),
+    box-shadow 0.3s var(--ox-ease);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-premium-card {
+  background: #ffffff;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-premium-card {
+  background: #000000;
+}
+
+.ox-premium-card:hover {
+  border-color: var(--ox-border-hover);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-premium-card:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+}
+
+.ox-premium-card__title {
+  margin: 0 0 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.90625rem;
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  color: var(--ox-text);
+  line-height: 1.35;
+}
+
+.ox-premium-card__lead {
+  margin: 0 0 0.4rem;
+  font-size: 0.875rem;
+  color: var(--ox-muted);
+  line-height: 1.58;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.ox-premium-card__note {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--ox-faint);
+  line-height: 1.55;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.ox-premium-highlight {
+  text-align: center;
+  padding: clamp(1.75rem, 4vw, 2.25rem) clamp(1rem, 3vw, 1.5rem);
+  border-radius: var(--ox-radius-lg);
+  border: 1px solid var(--ox-border);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--ox-surface) 92%, transparent) 0%,
+    var(--ox-surface) 48%,
+    color-mix(in srgb, var(--ox-bg-soft) 40%, var(--ox-surface)) 100%
+  );
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset,
+    0 24px 48px rgba(0, 0, 0, 0.18);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-premium-highlight {
+  background: #000000;
+  box-shadow: none;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-premium-highlight {
+  background: #ffffff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.ox-premium-highlight__kicker {
+  margin: 0 0 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ox-faint);
+}
+
+.ox-premium-highlight__line {
+  margin: 0;
+  font-size: clamp(1.125rem, 2.8vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.45;
+  color: var(--ox-text);
+  max-width: 28rem;
+  margin-inline: auto;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.ox-premium-highlight__line--sub {
+  margin-top: 0.5rem;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+  color: var(--ox-muted);
+}
+
+.ox-closing__stack p + p {
+  margin-top: 0.875rem;
+}
+
+.ox-closing__stack {
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.ox-closing__stack p {
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.ox-closing__stack p:first-child {
+  font-size: clamp(1.15rem, 2.7vw, 1.42rem);
+  font-weight: 700;
+  color: var(--ox-text);
+  line-height: 1.5;
+}
+
+.ox-closing__stack p:last-child {
+  color: var(--ox-muted);
+}
+
+/* Web point-color highlighter (matches home hero-accent) */
+.ox-accent {
+  position: relative;
+  display: inline;
+  color: inherit;
+  font-weight: inherit;
+}
+
+.ox-accent::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.08em;
+  width: 100%;
+  height: 0.32em;
+  z-index: -1;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-accent::after {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-accent::after {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.ox-subtitle .ox-accent {
+  color: var(--ox-text);
+  font-weight: 600;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0.06em 0.1em;
+}
+
+.ox-subtitle .ox-accent::after {
+  height: 0.38em;
+  bottom: 0.06em;
+}
+
+/* SubPing 마무리: OX MONTH와 동일 타이포 (하이라이트 라인) */
+
+/* Closing */
+.ox-closing {
+  text-align: center;
+  padding: clamp(3.25rem, 9vw, 5rem) var(--ox-pad);
+  border-top: 1px solid var(--ox-border);
+}
+
+.ox-closing p {
+  margin: 0 auto;
+  max-width: 36rem;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.62;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+/* Footer */
+.ox-footer {
+  padding: 2.25rem 0 2.5rem;
+  border-top: 1px solid var(--ox-border);
+  text-align: center;
+}
+
+.ox-footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.footer-icon-row--ox {
+  margin-bottom: 0.35rem;
+}
+
+.footer-icon-btn--ox {
+  color: var(--ox-muted);
+  background: var(--ox-surface);
+  border-color: var(--ox-border-hover);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 5%, transparent) inset;
+}
+
+.footer-icon-btn--ox:hover {
+  color: var(--ox-text);
+  border-color: var(--ox-border-hover);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 8%, transparent) inset,
+    0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.ox-footer-meta {
+  margin: 0.75rem 0 0;
+  font-size: 0.8rem;
+  color: var(--ox-faint);
+}
+
+.ox-footer-meta a {
+  color: var(--ox-muted);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+
+.ox-footer-meta a:hover {
+  color: var(--ox-text);
+}
+
+/* Newon의 앱 드롭다운 — OX 화면 테마 연동 */
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__trigger {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ox-muted);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__trigger:hover,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__trigger[aria-expanded="true"] {
+  color: var(--ox-text);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__panel {
+  background: color-mix(in srgb, var(--ox-surface) 92%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  backdrop-filter: blur(18px) saturate(1.15);
+  border: 1px solid var(--ox-border-hover);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 6%, transparent) inset,
+    0 28px 56px rgba(0, 0, 0, 0.4);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+  .apps-flyout__panel {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ox-text) 5%, transparent) inset,
+    0 20px 48px rgba(0, 0, 0, 0.1);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+  .ox-header.is-scrolled {
+  box-shadow:
+    0 1px 0 color-mix(in srgb, var(--ox-text) 4%, transparent) inset,
+    0 10px 36px rgba(0, 0, 0, 0.08);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__item:hover {
+  background: color-mix(in srgb, var(--ox-text) 8%, transparent);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__item--current {
+  background: color-mix(in srgb, var(--ox-text) 6%, transparent);
+  box-shadow: 0 0 0 1px var(--ox-border-hover) inset;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__icon {
+  border-color: var(--ox-border);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__desc {
+  color: var(--ox-faint);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer {
+  border-color: var(--ox-border);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer__summary {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ox-muted);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer[open] .mobile-apps-drawer__summary {
+  color: var(--ox-text);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer__item {
+  border-color: var(--ox-border);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer__hint {
+  color: var(--ox-faint);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer__item--current {
+  background: color-mix(in srgb, var(--ox-text) 5%, transparent);
+}
+
+/* OX 구간 스크롤 리빌 */
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-reveal-on-scroll:not(.is-visible) {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-reveal-on-scroll.is-visible {
+  animation: none;
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+@keyframes ox-reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-feature-card {
+  position: relative;
+  overflow: hidden;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-feature-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--ox-text) 14%, transparent), transparent 50%);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s var(--ox-ease);
+  pointer-events: none;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-feature-card:hover::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .ox-feature-card {
+    transition: none;
+  }
+
+  .ox-feature-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app).ox-page {
+    transition: none;
+  }
+
+  :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-reveal-on-scroll:not(.is-visible) {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-reveal-on-scroll.is-visible {
+    animation: none;
+  }
+
+  .site-shell:not([hidden]) {
+    animation: none;
+  }
+
+  .ox-premium-card:hover {
+    box-shadow: none;
+  }
+}
+
+/* SubPing detail */
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .sp-intro-html p {
+  margin: 0 0 1rem;
+  color: var(--ox-muted);
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .sp-intro-html p:last-child {
+  margin-bottom: 0;
+}
+
+/* SubPing 앱 소개 — lead / closing + 본문 포인트(strong) */
+:is(#subping-app) .sp-intro-html p.ox-app-intro__lead {
+  color: var(--ox-text) !important;
+  font-size: 0.96875rem !important;
+}
+
+:is(#subping-app) .sp-intro-html p.ox-app-intro__lead strong {
+  font-weight: 700;
+}
+
+:is(#subping-app) .sp-intro-html p:not(.ox-app-intro__lead):not(.ox-app-intro__closing) strong {
+  color: var(--ox-text);
+  font-weight: 700;
+}
+
+:is(#subping-app) .sp-intro-html p.ox-app-intro__closing {
+  margin-top: 1.375rem !important;
+  padding-top: 1.125rem;
+  border-top: 1px solid var(--ox-border);
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: var(--ox-text) !important;
+  letter-spacing: -0.02em;
+  line-height: 1.55 !important;
+}
+
+:is(#subping-app) .sp-intro-html p.ox-app-intro__closing strong {
+  font-weight: 700;
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-subtitle--sp {
+  font-size: 0.875rem;
+  opacity: 0.92;
+  margin: 0.2rem 0 0;
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-container.narrow {
+  max-width: 720px;
+}
+
+/* 추천 섹션 제목: 프리미엄(✨)과 동일 타이포 + 🎯, 가운데 정렬 */
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-reco-head {
+  text-align: center;
+}
+
+/* 추천 제목만 살짝 위로 (OX MONTH · SubPing · Pillmate · SAVY · BabyLog 공통) */
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
+  :is(#sp-reco-title, #ox-reco-title, #pm-reco-title, #sv-reco-title, #bl-reco-title, #pl-reco-title, #pu-reco-title, #gu-reco-title, #cu-reco-title, #mw-reco-title, #np-reco-title).ox-premium-heading {
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* 앱 페이지 “추천” 블록: 그리드 + 카드 (styles.css 다크 surface 덮어씀) */
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+  .co-build-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.875rem;
+  max-width: 28rem;
+  margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
+    :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+    .co-build-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    max-width: 48rem;
+  }
+
+  /* OX MONTH: 항목 3개 — 아래줄 한 칸 가운데(한 칸 너비와 동일) */
+  :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) #ox-reco .co-build-list li:nth-child(3):last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 100%;
+    max-width: calc((100% - 1rem) / 2);
+  }
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+  .co-build-list
+  li {
+  margin: 0;
+  padding: 1.25rem 1.1rem;
+  border-radius: var(--ox-radius);
+  border: 1px solid var(--ox-border);
+  background: color-mix(in srgb, var(--ox-bg) 55%, var(--ox-surface));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset;
+  font-size: 0.90625rem;
+  font-weight: 500;
+  color: var(--ox-muted);
+  line-height: 1.52;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  min-height: 5.5rem;
+  transition:
+    border-color 0.3s var(--ox-ease),
+    transform 0.3s var(--ox-ease),
+    box-shadow 0.3s var(--ox-ease);
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+  .co-build-list
+  li:hover {
+  border-color: var(--ox-border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+  .co-build-list
+  li {
+  background: #000000;
+  color: var(--ox-muted);
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+  .co-build-list
+  li {
+  background: #fff;
+  color: var(--ox-text);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 6%, transparent) inset;
+}
+
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+  .co-build-list
+  li:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
+    :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+    .co-build-list
+    li:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .apps-flyout__panel {
+  background: #000000;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .apps-flyout__panel {
+  background: #ffffff;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-header,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-header.is-scrolled {
+  background: rgba(0, 0, 0, 0.94);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-header,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.94);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-visual-strip,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-feature-card,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-closing,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-footer {
+  background: #000000;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-visual-strip,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-feature-card,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-closing,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-footer {
+  background: #ffffff;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-section,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-hero,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-mobile-menu {
+  background: #000000;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-section,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-hero,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-mobile-menu {
+  background: #ffffff;
+}
+
+#newon-plus-app .ox-premium-card__note:empty {
+  display: none;
+}
+
+#newon-plus-app .sp-showcase-scroll__item .ox-package-card {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  border-radius: 28px;
+  background: linear-gradient(165deg, #f3e8ff 0%, #e9d5ff 48%, #ddd6fe 100%);
+  color: #1e1b4b;
+  line-height: 1.55;
+}
+
+#newon-plus-app[data-theme="dark"] .sp-showcase-scroll__item .ox-package-card {
+  background: linear-gradient(165deg, #312e81 0%, #3730a3 52%, #4338ca 100%);
+  color: #eef2ff;
+}
+
+#newon-plus-app .ox-package-card__brand {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+}
+
+#newon-plus-app .ox-package-card__kicker {
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  font-weight: 700;
+  margin: 0 0 1.25rem;
+}
+
+#newon-plus-app .ox-package-card__line,
+#newon-plus-app .ox-package-card__apps {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 600;
+  margin: 0.35rem 0;
+}
+
+#newon-plus-app .ox-package-card__apps {
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+#newon-plus-app .ox-package-card__foot {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-weight: 600;
+  margin: 1rem 0 0;
+  opacity: 0.92;
+}
+
+#newon-plus-app .ox-app-intro__closing:empty {
+  display: none;
+}
+
+/* Dark mode — pure black surfaces + readable copy on all app pages */
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+  :is(.ox-showcase, .ox-premium, .ox-app-intro, .ox-steps, .ox-showcase-dual) {
+  background: #000000;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+  :is(.ox-desc, .ox-hero-reach-summary, .ox-section-label, .ox-step p, .ox-step h3) {
+  color: var(--ox-muted);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+  .lang-menu__panel {
+  background: #000000;
+  color: #f5f5f5;
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 22px 48px rgba(0, 0, 0, 0.65);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+  .lang-menu__option:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+  .lang-menu__check {
+  color: #f5f5f5;
+}
+
+
+/* Phone polish — store badges + hero rhythm */
+@media (max-width: 639px) {
+  .ox-hero {
+    padding: calc(var(--ox-header-h) + 2.25rem) 0 2.5rem;
+  }
+
+  .ox-hero-grid {
+    gap: 1.65rem;
+  }
+
+  .ox-badge {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    padding: 0.42rem 0.8rem;
+    max-width: 100%;
+    white-space: normal;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+
+  .ox-hero h1 {
+    font-size: clamp(2.15rem, 9vw, 2.75rem);
+  }
+
+  .ox-subtitle {
+    font-size: clamp(1.08rem, 4.2vw, 1.22rem);
+    line-height: 1.4;
+  }
+
+  .ox-hero-value,
+  .ox-hero .ox-lead,
+  .ox-hero h2 {
+    font-size: clamp(1.05rem, 4.2vw, 1.2rem);
+    line-height: 1.4;
+  }
+
+  .ox-hero-reach-summary,
+  .ox-desc {
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .ox-section-label {
+    font-size: 0.875rem;
+    color: var(--ox-muted);
+  }
+
+  .ox-section-intro {
+    font-size: 1.02rem;
+  }
+
+  .ox-store-badges {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    width: 100%;
+    max-width: 22rem;
+  }
+
+  .ox-store-badge {
+    width: 100%;
+    justify-content: flex-start;
+    min-height: 3rem;
+    padding-inline: 0.95rem;
+  }
+
+  .ox-hero-frame--logo {
+    max-width: min(15.5rem, 62vw);
+    margin-inline: auto;
+  }
+
+  .ox-section {
+    padding-block: clamp(2.25rem, 7vw, 3.25rem);
+    scroll-margin-top: calc(var(--ox-header-h) + 0.85rem);
+  }
+
+  .ox-step h3 {
+    font-size: 1.05rem;
+  }
+
+  .ox-step p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
