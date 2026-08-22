@@ -127,6 +127,15 @@ function runPortfolio() {
   if (r.status !== 0) process.exit(r.status ?? 1);
 }
 
+function validateHuman404Game() {
+  const r = spawnSync(
+    process.execPath,
+    [path.join(ROOT, "scripts", "validate-404-human-play.mjs")],
+    { cwd: ROOT, stdio: "inherit" },
+  );
+  if (r.status !== 0) process.exit(r.status ?? 1);
+}
+
 function assemble() {
   fs.rmSync(OUT, { recursive: true, force: true });
   fs.mkdirSync(OUT, { recursive: true });
@@ -231,6 +240,15 @@ function verify() {
   required.push(path.join(OUT, "404-human", "index.html"));
   required.push(path.join(OUT, "404-human", "404-human.css"));
   required.push(path.join(OUT, "404-human", "404-human.js"));
+  required.push(path.join(OUT, "404-human", "play-config.js"));
+  required.push(path.join(OUT, "404-human", "play", "index.html"));
+  required.push(path.join(OUT, "404-human", "play", "flutter.js"));
+  required.push(path.join(OUT, "404-human", "play", "flutter_bootstrap.js"));
+  required.push(path.join(OUT, "404-human", "play", "flutter_service_worker.js"));
+  required.push(path.join(OUT, "404-human", "play", "main.dart.js"));
+  required.push(path.join(OUT, "404-human", "play", "manifest.json"));
+  required.push(path.join(OUT, "404-human", "play", "assets", "AssetManifest.bin.json"));
+  required.push(path.join(OUT, "404-human", "play", "canvaskit", "canvaskit.wasm"));
   required.push(path.join(OUT, "card-n7x4k9", "index.html"));
   required.push(path.join(OUT, "card-n7x4k9", "card-config.js"));
   required.push(path.join(OUT, "card-n7x4k9", "nawon-kyung.vcf"));
@@ -273,6 +291,7 @@ function verify() {
 
 runBuild();
 runPortfolio();
+validateHuman404Game();
 assemble();
 
 verify();

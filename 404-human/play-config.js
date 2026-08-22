@@ -6,11 +6,11 @@
  * SHOWCASE: add image paths to reveal the GAMEPLAY PREVIEW section
  */
 window.NEWON_404_HUMAN_PLAY = {
-  /** @type {string} e.g. "https://play.newon.app/404-human/" */
-  PLAY_GAME_URL: "",
+  /** Same-origin production route; keeps the game inside the Newon domain. */
+  PLAY_GAME_URL: "/404-human/play/",
 
   /** @type {"IN DEVELOPMENT" | "RELEASED"} */
-  STATUS: "IN DEVELOPMENT",
+  STATUS: "RELEASED",
 
   /**
    * Gameplay preview shots — leave empty to keep the section hidden.
