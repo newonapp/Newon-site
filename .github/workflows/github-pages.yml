@@ -29,6 +29,9 @@ jobs:
 
       - name: Build and assemble site
         run: node scripts/publish-site.mjs
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
 
       - name: Publish to gh-pages
         uses: peaceiris/actions-gh-pages@v4

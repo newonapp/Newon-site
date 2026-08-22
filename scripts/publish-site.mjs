@@ -105,6 +105,25 @@ function copyDir(src, dest) {
   }
 }
 
+/** Re-sync Flutter Web output into the final Pages artifact (runs last). */
+function stageHuman404Play() {
+  const src = path.join(ROOT, "404-human", "play");
+  const dest = path.join(OUT, "404-human", "play");
+  if (!fs.existsSync(src)) {
+    console.error("publish-site: missing source 404-human/play/");
+    process.exit(1);
+  }
+  fs.rmSync(dest, { recursive: true, force: true });
+  copyDir(src, dest);
+  const marker = [
+    new Date().toISOString(),
+    process.env.GITHUB_SHA || "local",
+    process.env.GITHUB_RUN_ID || "",
+  ].join("\n");
+  fs.writeFileSync(path.join(dest, "deploy-marker.txt"), `${marker}\n`, "utf8");
+  console.log("publish-site: staged 404-human/play → _publish/404-human/play");
+}
+
 function copyFileIfExists(src, dest) {
   if (!fs.existsSync(src)) return false;
   fs.copyFileSync(src, dest);
@@ -188,6 +207,8 @@ function assemble() {
       console.warn(`publish-site: optional legal root file missing ${name}`);
     }
   }
+
+  stageHuman404Play();
 }
 
 function verify() {
@@ -292,11 +313,25 @@ function verify() {
   console.log("publish-site verify: OK");
 }
 
+function verifyArtifact() {
+  const r = spawnSync(
+    process.execPath,
+    [path.join(ROOT, "scripts", "validate-404-human-artifact.mjs")],
+    {
+      cwd: ROOT,
+      stdio: "inherit",
+      env: { ...process.env, PAGES_ARTIFACT_DIR: OUT },
+    },
+  );
+  if (r.status !== 0) process.exit(r.status ?? 1);
+}
+
 runBuild();
 runPortfolio();
 validateHuman404Game();
 assemble();
 
 verify();
+verifyArtifact();
 
 console.log("publish-site OK →", path.relative(process.cwd(), OUT));

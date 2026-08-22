@@ -36,8 +36,14 @@ async function checkOnce() {
     }
     if (p === PLAY || p === `${PLAY}index.html`) {
       const html = await res.text();
+      if (html.includes("Page not found") && html.includes("GitHub Pages")) {
+        failures.push(`github pages 404 page served at ${url}`);
+      }
       if (!html.includes('<base href="/404-human/play/">')) {
         failures.push(`bad base href ${url}`);
+      }
+      if (!html.includes("flutter_bootstrap.js")) {
+        failures.push(`missing flutter bootstrap at ${url}`);
       }
     }
   }
