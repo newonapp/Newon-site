@@ -249,6 +249,9 @@ function verify() {
   required.push(path.join(OUT, "404-human", "play", "manifest.json"));
   required.push(path.join(OUT, "404-human", "play", "assets", "AssetManifest.bin.json"));
   required.push(path.join(OUT, "404-human", "play", "canvaskit", "canvaskit.wasm"));
+  for (const lang of LANGS) {
+    required.push(path.join(OUT, lang, "404-human", "play", "index.html"));
+  }
   required.push(path.join(OUT, "card-n7x4k9", "index.html"));
   required.push(path.join(OUT, "card-n7x4k9", "card-config.js"));
   required.push(path.join(OUT, "card-n7x4k9", "nawon-kyung.vcf"));

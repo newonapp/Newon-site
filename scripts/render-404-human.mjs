@@ -10,6 +10,7 @@ import {
   fhEn,
   fhTimeline as fhTimelineKo,
   fhTimelineEn,
+  PLAY_GAME_URL,
 } from "./human404-data.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -142,7 +143,7 @@ function mobileItem(app) {
 
 function playBadge(t, name) {
   return `<div class="ox-store-badges">
-                  <a class="ox-store-badge fh-play-badge" data-fh-play href="#fh-cta">
+                  <a class="ox-store-badge fh-play-badge" data-fh-play href="${PLAY_GAME_URL}">
                     <span class="ox-store-badge__text">
                       <span class="ox-store-badge__name">${esc(name)}</span>
                     </span>
@@ -181,6 +182,11 @@ function buildApps(dir, flat, flatEn, t) {
 function redirectStub() {
   const list = JSON.stringify(LANGS.map((l) => l.dir));
   return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="canonical" href="${SITE_ORIGIN}/en/404-human/"/><title>404: HUMAN | Newon</title><script>(function(){var L=${list};var d="en";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/404-human/"+(location.hash||""));})();</script></head><body style="font-family:system-ui,sans-serif;padding:1.5rem"><p><a href="/en/404-human/">404: HUMAN</a> · <a href="/ko/404-human/">404: HUMAN (한국어)</a></p></body></html>\n`;
+}
+
+function playRedirectStub() {
+  const target = JSON.stringify(PLAY_GAME_URL);
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="canonical" href="${SITE_ORIGIN}${PLAY_GAME_URL}"/><title>404: HUMAN — Play</title><meta http-equiv="refresh" content="0;url=${PLAY_GAME_URL}"/><script>location.replace(${target}+(location.search||"")+(location.hash||""));</script></head><body style="font-family:system-ui,sans-serif;padding:1.5rem"><p><a href="${PLAY_GAME_URL}">404: HUMAN — Play</a></p></body></html>\n`;
 }
 
 function render(dir, t, flat, flatEn) {
@@ -573,7 +579,7 @@ ${mobile}
               <p class="fh-final-cta__line" id="fh-cta-title">${esc(t.ctaLine)}</p>
               <p class="fh-final-cta__ask">${esc(t.ctaAsk)}</p>
               <div class="fh-final-cta__actions">
-                <a class="fh-final-cta__btn" data-fh-play href="#fh-cta">
+                <a class="fh-final-cta__btn" data-fh-play href="${PLAY_GAME_URL}">
                   <span class="fh-final-cta__btn-name">${esc(t.playCtaFinal)}</span>
                 </a>
               </div>
@@ -644,6 +650,12 @@ for (const { dir, file, htmlLang } of LANGS) {
   const outFile = path.join(outDir, "index.html");
   fs.writeFileSync(outFile, render(dir, page, flat, flatEn), "utf8");
   console.log("wrote", path.relative(ROOT, outFile));
+
+  const playDir = path.join(outDir, "play");
+  fs.mkdirSync(playDir, { recursive: true });
+  const playFile = path.join(playDir, "index.html");
+  fs.writeFileSync(playFile, playRedirectStub(), "utf8");
+  console.log("wrote", path.relative(ROOT, playFile));
 }
 
 fs.mkdirSync(path.join(ROOT, "404-human"), { recursive: true });

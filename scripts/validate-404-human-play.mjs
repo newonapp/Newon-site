@@ -67,4 +67,15 @@ if (!config.includes('STATUS: "RELEASED"')) {
   throw new Error("404: HUMAN page status must be RELEASED");
 }
 
+for (const lang of ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"]) {
+  const redirect = path.join(root, lang, "404-human", "play", "index.html");
+  if (!fs.existsSync(redirect)) {
+    throw new Error(`Missing locale play redirect: ${lang}/404-human/play/index.html`);
+  }
+  const html = fs.readFileSync(redirect, "utf8");
+  if (!html.includes('location.replace("/404-human/play/"')) {
+    throw new Error(`Locale play redirect must target /404-human/play/: ${lang}`);
+  }
+}
+
 console.log("validate-404-human-play: OK");

@@ -1,6 +1,7 @@
 /** 404: HUMAN page copy + editable world data — scripts/render-404-human.mjs */
 
 export const PLAY_CONFIG_PATH = "/404-human/play-config.js";
+export const PLAY_GAME_URL = "/404-human/play/";
 
 /** Timeline years — edit here when lore dates are finalized */
 export const fhTimeline = [

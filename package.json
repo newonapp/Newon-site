@@ -5,6 +5,7 @@
     "validate:sp": "node scripts/validate-sp-locales.mjs",
     "validate:locales": "node scripts/check-locales.mjs",
     "validate:404-human-play": "node scripts/validate-404-human-play.mjs",
+    "verify:404-human-production": "node scripts/verify-production-404-human.mjs",
     "translate:locales": "node scripts/run-all-locale-patches.mjs --translate",
     "sync:locales-en": "node scripts/sync-locale-fallback-from-en.mjs",
     "merge:sp": "node scripts/merge-subping-locales.mjs",

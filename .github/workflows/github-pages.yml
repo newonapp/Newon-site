@@ -39,3 +39,6 @@ jobs:
           force_orphan: true
           enable_jekyll: false
           cname: www.newon.app
+
+      - name: Verify production 404 HUMAN route
+        run: node scripts/verify-production-404-human.mjs
