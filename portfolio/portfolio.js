@@ -28,6 +28,23 @@
     });
   }
 
+  var pfFilters = document.querySelector("[data-portfolio-filters]");
+  if (pfFilters) {
+    var pfItems = document.querySelectorAll("[data-pf-type]");
+    pfFilters.addEventListener("click", function (ev) {
+      var btn = ev.target.closest("[data-pf-filter]");
+      if (!btn) return;
+      var f = btn.getAttribute("data-pf-filter");
+      pfFilters.querySelectorAll(".hub-filter").forEach(function (b) {
+        b.classList.toggle("is-active", b === btn);
+      });
+      pfItems.forEach(function (el) {
+        var t = el.getAttribute("data-pf-type");
+        el.style.display = f === "all" || t === f ? "" : "none";
+      });
+    });
+  }
+
   var toggle = document.querySelector("[data-pf-nav-toggle]");
   var drawer = document.getElementById("pf-mobile-nav");
   if (toggle && drawer) {

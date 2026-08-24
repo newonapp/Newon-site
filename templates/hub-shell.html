@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{HTML_LANG}}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{TITLE}}</title>
+    <meta name="description" content="{{META_DESCRIPTION}}" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="{{CANONICAL}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{CANONICAL}}" />
+    <meta property="og:locale" content="{{OG_LOCALE}}" />
+    <meta property="og:title" content="{{TITLE}}" />
+    <meta property="og:description" content="{{META_DESCRIPTION}}" />
+    <meta property="og:site_name" content="Newon" />
+    <meta property="og:image" content="https://www.newon.app/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{TITLE}}" />
+    <meta name="twitter:description" content="{{META_DESCRIPTION}}" />
+    <meta name="twitter:image" content="https://www.newon.app/logo.png" />
+{{HREFLANG_BLOCK}}
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css?v=20260825studio" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
+    {{EXTRA_CSS}}
+    <script src="/theme-shell.js"></script>
+    <script src="/lang-nav.js?v=20260825studio"></script>
+    <script src="/analytics.js?v=20260825studio" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#hub-main">{{SKIP_LABEL}}</a>
+    {{CHROME_HEADER}}
+    <main id="hub-main" class="hub-page">
+      {{MAIN_CONTENT}}
+    </main>
+    {{CHROME_FOOTER}}
+    <div class="search-modal-host"></div>
+    <script src="/search.js?v=20260825studio" defer></script>
+    <script src="/waitlist.js?v=20260825studio" defer></script>
+    {{EXTRA_SCRIPTS}}
+    <script src="/site-chrome.js?v=20260825gnav" defer></script>
+  </body>
+</html>

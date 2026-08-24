@@ -16,7 +16,8 @@
   --space: clamp(1.25rem, 4vw, 2rem);
   --max: 1120px;
   --narrow: 680px;
-  --header-h: clamp(72px, 5.2vw, 78px);
+  --gnav-h: 72px;
+  --header-h: 72px;
   --brand-header-min-h: clamp(92px, 9vw, 110px);
   --navbar-hub-logo-size: clamp(40px, 3.85vw, 44px);
   --navbar-toolbar-pill-h: 44px;
@@ -1785,7 +1786,7 @@ html[data-newon-shell-theme="light"]
 }
 
 #home.site-shell .hero--ecosystem {
-  padding: calc(var(--brand-header-min-h) + clamp(0.5rem, 1.5vh, 1.1rem)) 0 clamp(0.5rem, 1.4vh, 1rem);
+  padding: calc(var(--gnav-h, var(--header-h)) + clamp(1.25rem, 3vh, 2rem)) 0 clamp(0.5rem, 1.4vh, 1rem);
 }
 
 /* Hero */
@@ -1803,7 +1804,7 @@ html[data-newon-shell-theme="light"]
 .hero--ecosystem {
   justify-content: flex-start;
   gap: 0;
-  padding-top: calc(var(--brand-header-min-h, var(--header-h)) + clamp(0.5rem, 1.5vh, 1.1rem));
+  padding-top: calc(var(--gnav-h, var(--header-h)) + clamp(1.25rem, 3vh, 2rem));
   padding-bottom: clamp(0.5rem, 1.4vh, 1rem);
   overflow-x: clip;
   overflow-y: hidden;

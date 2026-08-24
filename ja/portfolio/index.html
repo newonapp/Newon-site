@@ -33,6 +33,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
     <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260822founder" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
     <script src="/theme-shell.js"></script>
@@ -208,8 +209,17 @@
         <div class="pf-wrap">
           <p class="pf-label">Projects</p>
           <h2>主なプロジェクト</h2>
+          <div class="hub-filters" data-portfolio-filters>
+            <button type="button" class="hub-filter is-active" data-pf-filter="all">All</button>
+            <button type="button" class="hub-filter" data-pf-filter="apps">Apps</button>
+            <button type="button" class="hub-filter" data-pf-filter="games">Games</button>
+            <button type="button" class="hub-filter" data-pf-filter="web">Web</button>
+            <button type="button" class="hub-filter" data-pf-filter="design">Design</button>
+            <button type="button" class="hub-filter" data-pf-filter="experiments">Experiments</button>
+          </div>
+          <div data-pf-grid>
           
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/newon-plus-logo.png" alt="Newonロゴ" width="56" height="56" />
             <h3>Newon+</h3>
@@ -226,7 +236,7 @@
           <div class="pf-shots" tabindex="0" aria-label="Newon+ のアプリ画面"><figure><img src="/i18n-img/ja/np-showcase-01.png" alt="Newon — アイデアをアプリに。12+アプリと1アカウントのライフプラットフォーム" width="1242" height="2688" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/np-showcase-02.png" alt="Newon — 1つのアカウントですべてのNewonアプリをつなぐ" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/np-showcase-03.png" alt="Newon — 生産性から金融、健康、育児まで必要なサービスをひとつに" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/np-showcase-04.png" alt="Newon — あなたに合ったパッケージを選ぶ" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/np-showcase-05.png" alt="Newon — 12+アプリ、177か国、13言語" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/babylog-logo.png" alt="0 APPロゴ：光沢のあるパステルピンク3 D文字B、ホワイト" width="56" height="56" />
             <h3>BabyLog</h3>
@@ -243,7 +253,7 @@
           <div class="pf-shots" tabindex="0" aria-label="BabyLog のアプリ画面"><figure><img src="/i18n-img/ja/bl-showcase-01.png" alt="BabyLog — AIでもっとスマートな育児、子どものすべての瞬間をBabyLogに" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/bl-showcase-02.png" alt="BabyLog記録 — 子どもと家族の予定をひとつに管理できる記録ホーム・クイック記録の案内" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/bl-showcase-03.png" alt="BabyLogカレンダー — 毎日の育児記録をひとつに、月表示と家族・マイルストーン概要" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/bl-showcase-04.png" alt="BabyLogコミュニティ — リアルタイムでつながる育児、悩みや経験をみんなで共有" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/bl-showcase-05.png" alt="BabyLog子育てアーカイブ — 子どものすべての瞬間を成長ストーリーに、AIメモリー" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/bl-showcase-06.png" alt="BabyLog記録を追加 — 必要な記録をもっと素早く簡単に" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/bl-showcase-07.png" alt="BabyLogプレミアム — 記録を超えた成長分析まで、プレミアムAI機能の一覧" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/petlog-logo.png" alt="PetLog アプリのアイコン" width="56" height="56" />
             <h3>PetLog</h3>
@@ -260,7 +270,7 @@
           <div class="pf-shots" tabindex="0" aria-label="PetLog のアプリ画面"><figure><img src="/i18n-img/ja/pl-showcase-01.png" alt="PetLog — 食事・散歩・睡眠までひと目で管理、ペットの日常を簡単に記録" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/pl-showcase-02.png" alt="PetLog 記録 — よく使う記録をもっと素早く追加" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/pl-showcase-03.png" alt="PetLog カレンダー — ペットの予定をまとめて確認" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/pl-showcase-04.png" alt="PetLog コミュニティ — リアルタイムで情報共有" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/pl-showcase-05.png" alt="PetLog ペットノート — 写真とメモで大切な瞬間を記録" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/pl-showcase-06.png" alt="PetLog 記録を追加 — 数秒でペット記録を完了" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/pl-showcase-07.png" alt="PetLog プレミアム機能 — AI分析でペット生活をもっとスマートに" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/myworld-logo.png" alt="My World アプリのロゴ: 地球儀" width="56" height="56" />
             <h3>My World</h3>
@@ -277,7 +287,7 @@
           <div class="pf-shots" tabindex="0" aria-label="My World のアプリ画面"><figure><img src="/i18n-img/ja/mw-showcase-01.png" alt="My World — すべての旅を記録しよう" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/mw-showcase-02.png" alt="My World — 訪れた国と都市の地図" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/mw-showcase-03.png" alt="My World — 移動ルートマップ" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/mw-showcase-04.png" alt="My World — AI旅行レポート" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/mw-showcase-05.png" alt="My World — 都市・地域の訪問記録" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/mw-showcase-06.png" alt="My World — コミュニティ" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/mw-showcase-07.png" alt="My World — 旅行計画・コレクション" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/savy-logo.png" alt="0アプリのロゴ：ウォレット、カード、韓国ウォンコイン" width="56" height="56" />
             <h3>SAVY</h3>
@@ -293,6 +303,10 @@
           </div>
           <div class="pf-shots" tabindex="0" aria-label="SAVY のアプリ画面"><figure><img src="/i18n-img/ja/sv-showcase-01.png" alt="SAVY — 消費をひと目で、もっとスマートに。AIが分析するスマート家計管理" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/sv-showcase-02.png" alt="SAVY — 収入・支出・カテゴリーをまとめて管理" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/sv-showcase-03.png" alt="SAVY — AIによる高度な統計分析" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/sv-showcase-04.png" alt="SAVY — プレミアム機能で、もっと賢く消費管理" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/sv-showcase-05.png" alt="SAVY — すばやく簡単な支出記録（記録を追加）" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ja/sv-showcase-06.png" alt="SAVY — 記録を忘れないスマート通知" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
+          </div>
+          <a class="pf-case" data-pf-type="games" href="https://www.newon.app/ja/404-human/" style="display:block;margin-top:1rem;text-decoration:none;color:inherit">
+            <div class="pf-case__inner"><h3>404: HUMAN</h3><p class="pf-case__sum">Newon Games — Live</p></div>
+          </a>
         </div>
       </section>
 

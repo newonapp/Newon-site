@@ -43,10 +43,12 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles.css?v=20260822typeall" />
+    <link rel="stylesheet" href="/styles.css?v=20260825studio" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
     <link rel="stylesheet" href="/ox-month.css" />
     <link rel="stylesheet" href="/portfolio/portfolio.css" />
     <script src="/theme-shell.js"></script>
+    <script src="/analytics.js?v=20260825studio" defer></script>
     <style>
       .bz-page { padding-top: var(--header-h); overflow-x: clip; }
       .bz-page [id] { scroll-margin-top: calc(var(--header-h) + 18px); }
@@ -1283,68 +1285,29 @@
       @media (prefers-reduced-motion: reduce) {
         .bz-reveal { opacity: 1; transform: none; }
       }
+      .bz-services__grid { display: grid; gap: 1.25rem; margin-top: 2rem; }
+      .bz-svc { border: 1px solid var(--border); padding: 1.5rem; background: var(--bg); }
+      .bz-svc__num { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; color: var(--text-soft); }
+      .bz-svc__title { margin: 0.35rem 0 0.5rem; font-size: 1.25rem; font-weight: 700; }
+      .bz-svc__desc { margin: 0 0 1rem; color: var(--text-muted); line-height: 1.65; }
+      .bz-svc__list { margin: 0; padding-left: 1.1rem; color: var(--text-muted); line-height: 1.7; }
+      .bz-svc__list--inline { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+      .bz-svc__list--inline li { border: 1px solid var(--border); padding: 0.25rem 0.55rem; font-size: 0.8125rem; }
+      .bz-svc--split { display: grid; gap: 1rem; }
+      .bz-svc--row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+      .bz-svc--row .bz-svc__row-main { display: flex; gap: 1rem; flex: 1 1 16rem; }
+      .bz-svc__tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+      .bz-svc__tag { border: 1px solid var(--border); padding: 0.25rem 0.55rem; font-size: 0.8125rem; color: var(--text-muted); }
+      @media (min-width: 800px) {
+        .bz-svc--split { grid-template-columns: 1fr 1fr; align-items: start; }
+        .bz-svc--split .bz-svc__cta { grid-column: 1 / -1; justify-self: start; }
+      }
     </style>
     <script src="/lang-nav.js?v=20260821stay2"></script>
   </head>
   <body>
     <a class="skip-link" href="#business-main">{{t:common.skipToContent}}</a>
-    <header class="site-header snav-header">
-      <div class="container snav-header__inner">
-        <a class="snav-brand" href="../">
-          <img src="/logo.png" alt="Newon" width="36" height="36" />
-          <span>Nawon Kyung</span>
-        </a>
-        <nav class="snav-nav" aria-label="{{t:business.navAria}}">
-          <a href="../">{{t:nav.home}}</a>
-          <a href="#work">{{t:business.navWork}}</a>
-          <a href="#capabilities">{{t:business.navCapabilities}}</a>
-          <a href="#industries">{{t:business.navIndustries}}</a>
-          <a href="#inquiry">{{t:business.navInquiry}}</a>
-        </nav>
-        <div class="snav-actions">
-          <div class="lang-switcher" data-lang-switcher>
-            <label class="visually-hidden" for="lang-select-business">{{t:ui.language}}</label>
-            <select id="lang-select-business" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
-              <option value="ko">{{t:ui.langKo}}</option>
-              <option value="en">{{t:ui.langEn}}</option>
-              <option value="ja">{{t:ui.langJa}}</option>
-              <option value="es">{{t:ui.langEs}}</option>
-              <option value="pt-br">{{t:ui.langPtBr}}</option>
-              <option value="fr">{{t:ui.langFr}}</option>
-              <option value="de">{{t:ui.langDe}}</option>
-              <option value="hi">{{t:ui.langHi}}</option>
-              <option value="id">{{t:ui.langId}}</option>
-            </select>
-          </div>
-          <button
-            type="button"
-            class="navbar-theme-toggle"
-            data-theme-toggle
-            data-label-light="{{t:common.themeToLight}}"
-            data-label-dark="{{t:common.themeToDark}}"
-            title="{{t:common.themeToggle}}"
-            aria-label="{{t:common.themeToDark}}"
-          >🌙</button>
-          <button
-            class="nav-toggle nav-toggle--toolbar"
-            type="button"
-            data-snav-toggle
-            aria-expanded="false"
-            aria-controls="snav-mobile-nav"
-            aria-label="{{t:common.menuOpen}}"
-          >
-            <span></span><span></span>
-          </button>
-        </div>
-      </div>
-      <nav id="snav-mobile-nav" class="snav-mobile-nav" hidden>
-        <a href="../">{{t:nav.home}}</a>
-        <a href="#work">{{t:business.navWork}}</a>
-        <a href="#capabilities">{{t:business.navCapabilities}}</a>
-        <a href="#industries">{{t:business.navIndustries}}</a>
-        <a href="#inquiry">{{t:business.navInquiry}}</a>
-      </nav>
-    </header>
+    {{CHROME_HEADER}}
 
     <main id="business-main" class="bz-page">
       <section class="bz-hero bz-reveal is-visible" aria-labelledby="bz-hero-title">
@@ -1356,7 +1319,7 @@
               <p class="bz-hero__lead bz-hero-enter" style="--d: 2">{{html:business.heroLeadHtml}}</p>
               <div class="bz-hero-actions bz-hero-enter" style="--d: 3">
                 <a class="btn btn-primary" href="#inquiry">{{t:business.ctaInquiry}}<span class="bz-hero__cta-go" aria-hidden="true">→</span></a>
-                <a class="btn btn-ghost" href="#work">{{t:business.ctaPartnership}}</a>
+                <a class="btn btn-ghost" href="../portfolio/">{{t:business.ctaPortfolio}}</a>
               </div>
             </div>
             <div class="bz-hero__visual">
@@ -1410,10 +1373,12 @@
           <div class="bz-hero__bar-inner">
             <span class="bz-hero__bar-label">{{t:business.heroBarLabel}}</span>
             <span class="bz-hero__bar-meta">{{t:business.heroBarMeta}}</span>
-            <a class="bz-hero__bar-explore" href="#work">{{t:business.heroBarExplore}}</a>
+            <a class="bz-hero__bar-explore" href="#services">{{t:business.heroBarExplore}}</a>
           </div>
         </div>
       </section>
+
+      {{BUSINESS_SERVICES}}
 
       <section id="work" class="bz-section bz-reveal" aria-labelledby="bz-work-title">
         <div class="bz-inner">
@@ -1622,7 +1587,7 @@
         </div>
       </section>
 
-      <section class="bz-section bz-reveal" aria-labelledby="bz-process-title">
+      <section id="how-we-work" class="bz-section bz-reveal" aria-labelledby="bz-process-title">
         <div class="bz-inner">
           <p class="bz-label">{{t:business.processLabel}}</p>
           <h2 class="bz-title" id="bz-process-title">{{t:business.processTitle}}</h2>
@@ -1647,7 +1612,21 @@
               <h3>{{t:business.step4Title}}</h3>
               <p>{{t:business.step4Body}}</p>
             </li>
+            <li class="bz-step">
+              <span class="bz-step__n">05</span>
+              <h3>{{t:business.step5Title}}</h3>
+              <p>{{t:business.step5Body}}</p>
+            </li>
           </ol>
+        </div>
+      </section>
+
+      <section id="portfolio" class="bz-section bz-reveal" aria-labelledby="bz-portfolio-title">
+        <div class="bz-inner">
+          <p class="bz-label">{{t:business.portfolioLabel}}</p>
+          <h2 class="bz-title" id="bz-portfolio-title">{{t:business.portfolioTitle}}</h2>
+          <p class="bz-lead">{{t:business.portfolioLead}}</p>
+          <a class="btn btn-primary" href="../portfolio/">{{t:business.ctaPortfolio}}</a>
         </div>
       </section>
 
@@ -1727,6 +1706,19 @@
         </div>
       </section>
 
+      <section id="packages" class="bz-section bz-reveal" aria-labelledby="bz-packages-title">
+        <div class="bz-inner">
+          <h2 class="bz-title" id="bz-packages-title">{{t:studio.packagesTitle}}</h2>
+          <div class="hub-grid hub-grid--4" style="margin-top:1.5rem;border:1px solid var(--border);background:var(--border)">
+            <article class="hub-card"><span class="hub-card__num">{{t:studio.pkgStartName}}</span><span class="hub-card__title">{{t:studio.pkgStartDesc}}</span><span class="hub-card__body">₩500,000~</span></article>
+            <article class="hub-card"><span class="hub-card__num">{{t:studio.pkgBuildName}}</span><span class="hub-card__title">{{t:studio.pkgBuildDesc}}</span><span class="hub-card__body">₩1,000,000~</span></article>
+            <article class="hub-card"><span class="hub-card__num">{{t:studio.pkgMvpName}}</span><span class="hub-card__title">{{t:studio.pkgMvpDesc}}</span><span class="hub-card__body">₩1,500,000~</span></article>
+            <article class="hub-card"><span class="hub-card__num">{{t:studio.pkgCustomName}}</span><span class="hub-card__title">{{t:studio.pkgCustomDesc}}</span><span class="hub-card__body">{{t:studio.pkgCustomPrice}}</span></article>
+          </div>
+          <p class="bz-lead" style="margin-top:1rem;font-size:0.875rem">{{t:studio.pkgDisclaimer}}</p>
+        </div>
+      </section>
+
       <section id="inquiry" class="bz-section bz-reveal" aria-labelledby="bz-form-title">
         <div class="bz-inner bz-form-wrap">
           <h2 class="bz-title" id="bz-form-title">{{t:business.formTitle}}</h2>
@@ -1756,14 +1748,35 @@
               <input id="bz-website" name="website" type="url" inputmode="url" placeholder="{{t:business.phWebsite}}" />
             </div>
             <div class="bz-field">
+              <label for="bz-phone">{{t:studio.formPhone}}</label>
+              <input id="bz-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="{{t:studio.formPhone}}" />
+            </div>
+            <div class="bz-field">
               <label for="bz-type">{{t:business.labelType}}<span class="bz-req" aria-hidden="true">*</span></label>
               <select id="bz-type" name="type" required>
                 <option value="" disabled selected>{{t:business.selectPlaceholder}}</option>
+                <option value="App">{{t:studio.formTypeApp}}</option>
+                <option value="Website">{{t:studio.formTypeWeb}}</option>
+                <option value="MVP">{{t:studio.formTypeMvp}}</option>
+                <option value="AI">{{t:studio.formTypeAi}}</option>
+                <option value="Automation">{{t:studio.formTypeAuto}}</option>
+                <option value="White-label">{{t:studio.formTypeWhitelabel}}</option>
+                <option value="Design">{{t:studio.formTypeDesign}}</option>
+                <option value="Maintenance">{{t:studio.formTypeMaintain}}</option>
                 <option value="Partnership">{{t:business.typePartnership}}</option>
-                <option value="App Collaboration">{{t:business.typeCollab}}</option>
-                <option value="Advertising">{{t:business.typeAdvertising}}</option>
-                <option value="Development">{{t:business.typeDevelopment}}</option>
-                <option value="Other">{{t:business.typeOther}}</option>
+                <option value="Other">{{t:studio.formTypeOther}}</option>
+              </select>
+            </div>
+            <div class="bz-field">
+              <label for="bz-budget">{{t:studio.formBudget}}</label>
+              <select id="bz-budget" name="budget">
+                <option value="">{{t:business.selectPlaceholder}}</option>
+                <option value="{{t:studio.formBudget1}}">{{t:studio.formBudget1}}</option>
+                <option value="{{t:studio.formBudget2}}">{{t:studio.formBudget2}}</option>
+                <option value="{{t:studio.formBudget3}}">{{t:studio.formBudget3}}</option>
+                <option value="{{t:studio.formBudget4}}">{{t:studio.formBudget4}}</option>
+                <option value="{{t:studio.formBudget5}}">{{t:studio.formBudget5}}</option>
+                <option value="{{t:studio.formBudget6}}">{{t:studio.formBudget6}}</option>
               </select>
             </div>
             <div class="bz-field">
@@ -1793,6 +1806,9 @@
               <label for="bz-message">{{t:business.labelMessage}}<span class="bz-req" aria-hidden="true">*</span></label>
               <textarea id="bz-message" name="message" required placeholder="{{t:business.phMessage}}"></textarea>
             </div>
+            <div class="bz-field bz-field--check">
+              <label><input id="bz-consent" name="consent" type="checkbox" value="yes" required /> {{t:studio.formConsent}}</label>
+            </div>
             <div class="bz-hp" aria-hidden="true">
               <input name="_honey" tabindex="-1" autocomplete="off" />
             </div>
@@ -1806,27 +1822,10 @@
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <img class="footer-brand-img" src="/logo.png" alt="" width="32" height="32" />
-          <span>Newon</span>
-        </div>
-        <div class="footer-links">
-          <a class="footer-link" href="https://newon.app">https://newon.app</a>
-          <p class="footer-copy">{{t:footer.tagline}}</p>
-          <div class="footer-legal-links">
-            <a class="footer-legal" href="../privacy/">{{t:footer.privacy}}</a>
-            <span class="footer-legal-sep" aria-hidden="true">·</span>
-            <a class="footer-legal" href="../terms/">{{t:footer.terms}}</a>
-          </div>
-          <a class="footer-business" href="../portfolio/">{{t:footer.portfolio}}</a>
-          <a class="footer-business" href="./" aria-current="page">{{t:footer.business}}</a>
-        </div>
-        <p class="footer-copy">© <span id="year"></span> Newon. {{t:footer.rights}}</p>
-      </div>
-    </footer>
+    {{CHROME_FOOTER}}
 
+    <script src="/search.js?v=20260825studio" defer></script>
+    <script src="/site-chrome.js?v=20260825gnav" defer></script>
     <script>
       (function () {
         var cur = "{{LANG_DIR}}";

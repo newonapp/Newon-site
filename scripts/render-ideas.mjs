@@ -6,6 +6,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { ideaProducts } from "./ideas-data.mjs";
+import { replaceLegacyChrome } from "./inject-chrome.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_ORIGIN = "https://www.newon.app";
@@ -187,6 +188,7 @@ for (const { dir, file, htmlLang } of LANGS) {
   hub = hub.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangIdeas(""));
   hub = hub.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/ideas/`);
   hub = applyTemplate(hub, flat, flatEn);
+  hub = replaceLegacyChrome(hub, flat, flatEn, { activeNav: "about" });
   hub = hub.replace("{{PRODUCT_OPTIONS}}", productOptionsHtml(flat, flatEn));
   hub = hub.replace("{{IDEAS_I18N}}", ideasI18nJson(flat, flatEn));
   const hubDir = path.join(ROOT, dir, "ideas");

@@ -46,7 +46,7 @@ function loadNewsI18n() {
 
 const NEWS_I18N = loadNewsI18n();
 
-export const NEWS_CATEGORIES = ["all", "launch", "update", "feature", "company", "notice"];
+export const NEWS_CATEGORIES = ["all", "launch", "update", "feature", "ai", "games", "business", "company", "notice"];
 export const NEWS_PAGE_SIZE = 9;
 export const NEWS_TL_PREVIEW = 24;
 export const NEW_BADGE_DAYS = 14;

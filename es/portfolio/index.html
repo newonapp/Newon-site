@@ -33,6 +33,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
     <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260822founder" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
     <script src="/theme-shell.js"></script>
@@ -208,8 +209,17 @@
         <div class="pf-wrap">
           <p class="pf-label">Projects</p>
           <h2>Proyectos destacados</h2>
+          <div class="hub-filters" data-portfolio-filters>
+            <button type="button" class="hub-filter is-active" data-pf-filter="all">All</button>
+            <button type="button" class="hub-filter" data-pf-filter="apps">Apps</button>
+            <button type="button" class="hub-filter" data-pf-filter="games">Games</button>
+            <button type="button" class="hub-filter" data-pf-filter="web">Web</button>
+            <button type="button" class="hub-filter" data-pf-filter="design">Design</button>
+            <button type="button" class="hub-filter" data-pf-filter="experiments">Experiments</button>
+          </div>
+          <div data-pf-grid>
           
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/newon-plus-logo.png" alt="Logotipo de Newon" width="56" height="56" />
             <h3>Newon+</h3>
@@ -226,7 +236,7 @@
           <div class="pf-shots" tabindex="0" aria-label="Pantallas de Newon+"><figure><img src="/i18n-img/en/np-showcase-01.png" alt="Newon — Ideas en apps; plataforma de vida con 12+ apps y una cuenta" width="1242" height="2688" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-02.png" alt="Newon — Conecta todas las apps de Newon con una cuenta" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-03.png" alt="Newon — Productividad, finanzas, salud y crianza en un solo lugar" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-04.png" alt="Newon — Elige el paquete que te convenga" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-05.png" alt="Newon — 12+ apps, 177 países, 13 idiomas" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/babylog-logo.png" alt="Logotipo de la aplicación BabyLog: letra B 3D rosa pastel brillante sobre blanco" width="56" height="56" />
             <h3>BabyLog</h3>
@@ -243,7 +253,7 @@
           <div class="pf-shots" tabindex="0" aria-label="Pantallas de BabyLog"><figure><img src="/i18n-img/es/bl-showcase-01.png" alt="BabyLog — Una crianza más inteligente con IA; todos los momentos de tu bebé en BabyLog" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/bl-showcase-02.png" alt="BabyLog registros — Organiza horarios de tu bebé y familia en un solo lugar, IA Premium" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/bl-showcase-03.png" alt="BabyLog calendario — Todos los registros diarios del bebé en un solo lugar, mayo de 2026" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/bl-showcase-04.png" alt="BabyLog comunidad — Conecta con padres en tiempo real, comparte experiencias" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/bl-showcase-05.png" alt="BabyLog archivo de crianza — Convierte cada momento en una historia de crecimiento, archivo de memoria IA" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/bl-showcase-06.png" alt="BabyLog añadir registro — Registros importantes de forma rápida y sencilla" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/bl-showcase-07.png" alt="BabyLog Premium — Más que registros, análisis detallados del crecimiento con IA" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/petlog-logo.png" alt="Ícono de PetLog" width="56" height="56" />
             <h3>PetLog</h3>
@@ -260,7 +270,7 @@
           <div class="pf-shots" tabindex="0" aria-label="Pantallas de PetLog"><figure><img src="/i18n-img/es/pl-showcase-01.png" alt="PetLog — Gestiona comidas, paseos y sueño de un vistazo; registra el día de tu mascota con facilidad" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/pl-showcase-02.png" alt="PetLog Registros — Agrega registros frecuentes más rápido" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/pl-showcase-03.png" alt="PetLog Calendario — Consulta el calendario de tu mascota fácilmente" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/pl-showcase-04.png" alt="PetLog Comunidad — Comparte información en tiempo real" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/pl-showcase-05.png" alt="PetLog — Guarda momentos especiales con fotos y notas" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/pl-showcase-06.png" alt="PetLog — Completa registros de tu mascota en segundos" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/pl-showcase-07.png" alt="PetLog Premium — Haz más inteligente el cuidado con IA" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/myworld-logo.png" alt="My World logotipo de la aplicación: globo terráqueo" width="56" height="56" />
             <h3>My World</h3>
@@ -277,7 +287,7 @@
           <div class="pf-shots" tabindex="0" aria-label="Pantallas de My World"><figure><img src="/i18n-img/es/mw-showcase-01.png" alt="My World — Registra cada viaje" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/mw-showcase-02.png" alt="My World — Mapa de países y ciudades visitados" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/mw-showcase-03.png" alt="My World — Mapa de rutas de viaje" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/mw-showcase-04.png" alt="My World — Informe de viaje con IA" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/mw-showcase-05.png" alt="My World — Registros de visitas por ciudad y región" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/mw-showcase-06.png" alt="My World — Comunidad" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/mw-showcase-07.png" alt="My World — Planes de viaje y colecciones" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/savy-logo.png" alt="Logotipo de la aplicación 0: billetera, tarjetas y moneda de won coreano" width="56" height="56" />
             <h3>SAVY</h3>
@@ -293,6 +303,10 @@
           </div>
           <div class="pf-shots" tabindex="0" aria-label="Pantallas de SAVY"><figure><img src="/i18n-img/es/sv-showcase-01.png" alt="SAVY — Controla tus gastos de un vistazo. Gestión inteligente de gastos con IA" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/sv-showcase-02.png" alt="SAVY — Ingresos, gastos y categorías en un solo lugar" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/sv-showcase-03.png" alt="SAVY — Análisis avanzado impulsado por IA" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/sv-showcase-04.png" alt="SAVY — Funciones premium para una gestión más inteligente" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/sv-showcase-05.png" alt="SAVY — Registra tus gastos de forma rápida y sencilla (añadir movimiento)" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/es/sv-showcase-06.png" alt="SAVY — Notificaciones inteligentes para no olvidar tus registros" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
+          </div>
+          <a class="pf-case" data-pf-type="games" href="https://www.newon.app/es/404-human/" style="display:block;margin-top:1rem;text-decoration:none;color:inherit">
+            <div class="pf-case__inner"><h3>404: HUMAN</h3><p class="pf-case__sum">Newon Games — Live</p></div>
+          </a>
         </div>
       </section>
 

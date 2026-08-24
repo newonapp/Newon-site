@@ -43,7 +43,8 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles.css?v=20260822typeall" />
+    <link rel="stylesheet" href="/styles.css?v=20260825studio" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
     <link rel="stylesheet" href="/ox-month.css" />
     <script src="/theme-shell.js"></script>
     <style>
@@ -324,67 +325,12 @@
         }
       }
     </style>
+    <script src="/analytics.js?v=20260825studio" defer></script>
     <script src="/lang-nav.js?v=20260821stay2"></script>
   </head>
   <body>
     <a class="skip-link" href="#about-main">{{t:common.skipToContent}}</a>
-    <header class="site-header snav-header">
-      <div class="container snav-header__inner">
-        <a class="snav-brand" href="../">
-          <img src="/logo.png" alt="Newon" width="36" height="36" />
-          <span>Nawon Kyung</span>
-        </a>
-        <nav class="snav-nav" aria-label="About">
-          <a href="../">{{t:nav.home}}</a>
-          <a href="#about-hub-title">{{t:about.tocAbout}}</a>
-          <a href="#about-build-title">{{t:about.tocBuild}}</a>
-          <a href="#about-explore-title">{{t:about.tocExplore}}</a>
-          <a href="../business/">{{t:nav.business}}</a>
-        </nav>
-        <div class="snav-actions">
-          <div class="lang-switcher" data-lang-switcher>
-            <label class="visually-hidden" for="lang-select-about">{{t:ui.language}}</label>
-            <select id="lang-select-about" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
-              <option value="ko">{{t:ui.langKo}}</option>
-              <option value="en">{{t:ui.langEn}}</option>
-              <option value="ja">{{t:ui.langJa}}</option>
-              <option value="es">{{t:ui.langEs}}</option>
-              <option value="pt-br">{{t:ui.langPtBr}}</option>
-              <option value="fr">{{t:ui.langFr}}</option>
-              <option value="de">{{t:ui.langDe}}</option>
-              <option value="hi">{{t:ui.langHi}}</option>
-              <option value="id">{{t:ui.langId}}</option>
-            </select>
-          </div>
-          <button
-            type="button"
-            class="navbar-theme-toggle"
-            data-theme-toggle
-            data-label-light="{{t:common.themeToLight}}"
-            data-label-dark="{{t:common.themeToDark}}"
-            title="{{t:common.themeToggle}}"
-            aria-label="{{t:common.themeToDark}}"
-          >🌙</button>
-          <button
-            class="nav-toggle nav-toggle--toolbar"
-            type="button"
-            data-snav-toggle
-            aria-expanded="false"
-            aria-controls="snav-mobile-nav"
-            aria-label="{{t:common.menuOpen}}"
-          >
-            <span></span><span></span>
-          </button>
-        </div>
-      </div>
-      <nav id="snav-mobile-nav" class="snav-mobile-nav" hidden>
-        <a href="../">{{t:nav.home}}</a>
-        <a href="#about-hub-title">{{t:about.tocAbout}}</a>
-        <a href="#about-build-title">{{t:about.tocBuild}}</a>
-        <a href="#about-explore-title">{{t:about.tocExplore}}</a>
-        <a href="../business/">{{t:nav.business}}</a>
-      </nav>
-    </header>
+    {{CHROME_HEADER}}
     <main id="about-main" class="about-hub">
       <div class="about-hub-inner">
         <section class="about-hub-hero about-hub-reveal" aria-labelledby="about-hub-title">
@@ -401,6 +347,25 @@
             <a class="btn btn-primary" href="../portfolio/">{{t:about.ctaProducts}}</a>
             <a class="btn btn-ghost" href="../business/">{{t:about.ctaBusiness}}</a>
           </div>
+        </section>
+
+        <section class="about-hub-section about-hub-reveal" aria-labelledby="about-areas-title">
+          <p class="about-hub-kicker">{{t:about.areasLabel}}</p>
+          <h2 id="about-areas-title">{{t:about.areasTitle}}</h2>
+          <p class="about-hub-lead">{{t:about.lead}}</p>
+          <p>{{t:about.heroSub}}</p>
+        </section>
+
+        <section class="about-hub-section about-hub-reveal" aria-labelledby="about-principles-title">
+          <p class="about-hub-kicker">{{t:about.principlesLabel}}</p>
+          <h2 id="about-principles-title">{{t:about.principlesLabel}}</h2>
+          <ul class="about-hub-build-list">
+            <li><span class="n">01</span><span class="cat">{{t:about.principle1}}</span></li>
+            <li><span class="n">02</span><span class="cat">{{t:about.principle2}}</span></li>
+            <li><span class="n">03</span><span class="cat">{{t:about.principle3}}</span></li>
+            <li><span class="n">04</span><span class="cat">{{t:about.principle4}}</span></li>
+            <li><span class="n">05</span><span class="cat">{{t:about.principle5}}</span></li>
+          </ul>
         </section>
 
         <section class="about-hub-section about-hub-reveal" aria-labelledby="about-build-title">
@@ -509,23 +474,9 @@
         </div>
       </section>
     </main>
-    <script>
-      (function () {
-        var cur = "{{LANG_DIR}}";
-        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
-          sel.value = cur;
-        });
-        var toggle = document.querySelector("[data-snav-toggle]");
-        var drawer = document.getElementById("snav-mobile-nav");
-        if (toggle && drawer) {
-          toggle.addEventListener("click", function () {
-            var open = !drawer.hasAttribute("hidden");
-            if (open) { drawer.setAttribute("hidden", ""); toggle.setAttribute("aria-expanded", "false"); }
-            else { drawer.removeAttribute("hidden"); toggle.setAttribute("aria-expanded", "true"); }
-          });
-        }
-      })();
-    </script>
+    {{CHROME_FOOTER}}
+    <script src="/search.js?v=20260825studio" defer></script>
+    <script src="/site-chrome.js?v=20260825gnav" defer></script>
     <script src="/lang-dropdown.js"></script>
   </body>
 </html>

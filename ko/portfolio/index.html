@@ -33,6 +33,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
     <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260822founder" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
     <script src="/theme-shell.js"></script>
@@ -208,8 +209,17 @@
         <div class="pf-wrap">
           <p class="pf-label">프로젝트</p>
           <h2>주요 프로젝트</h2>
+          <div class="hub-filters" data-portfolio-filters>
+            <button type="button" class="hub-filter is-active" data-pf-filter="all">All</button>
+            <button type="button" class="hub-filter" data-pf-filter="apps">Apps</button>
+            <button type="button" class="hub-filter" data-pf-filter="games">Games</button>
+            <button type="button" class="hub-filter" data-pf-filter="web">Web</button>
+            <button type="button" class="hub-filter" data-pf-filter="design">Design</button>
+            <button type="button" class="hub-filter" data-pf-filter="experiments">Experiments</button>
+          </div>
+          <div data-pf-grid>
           
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/newon-plus-logo.png" alt="Newon 로고" width="56" height="56" />
             <h3>Newon+</h3>
@@ -226,7 +236,7 @@
           <div class="pf-shots" tabindex="0" aria-label="Newon+ 앱 화면"><figure><img src="/i18n-img/ko/np-showcase-01.png" alt="Newon — Ideas into apps; a life platform with 12+ apps and one account" width="1242" height="2688" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/np-showcase-02.png" alt="Newon — GoalUp, CountUp, OX MONTH로 목표와 습관을 체계적으로 관리" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/np-showcase-03.png" alt="Newon — Pillmate, BabyLog, PetLog로 건강을 관리하고 가족과 기록 공유" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/np-showcase-04.png" alt="Newon — Savy, SubPing, PiggyUp으로 스마트한 소비 생활 관리" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/np-showcase-05.png" alt="Newon — 12+ apps, 177 countries, 13 languages" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/babylog-logo.png" alt="BabyLog 앱 로고: 파스텔 핑크 3D B 문자" width="56" height="56" />
             <h3>BabyLog</h3>
@@ -243,7 +253,7 @@
           <div class="pf-shots" tabindex="0" aria-label="BabyLog 앱 화면"><figure><img src="/i18n-img/ko/bl-showcase-01.png" alt="BabyLog — AI와 함께 더 스마트한 육아, 우리 아이의 모든 순간을 BabyLog에" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/bl-showcase-02.png" alt="BabyLog — 하루의 모든 육아 기록을 한곳에, 기록 탭과 빠른 기록 안내" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/bl-showcase-03.png" alt="BabyLog 캘린더 — 우리 아이와 가족의 일정을 한곳에 관리" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/bl-showcase-04.png" alt="BabyLog 커뮤니티 — 부모들과 실시간 육아 이야기와 고민을 함께 나누기" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/bl-showcase-05.png" alt="BabyLog 육아 아카이브 — 아이의 모든 순간을 하나의 성장 스토리로, AI 추억" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/bl-showcase-06.png" alt="BabyLog 기록 추가 — 필요한 기록을 더 빠르고 간편하게 추가" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/bl-showcase-07.png" alt="BabyLog 프리미엄 — 기록을 넘어 자세한 성장 분석까지" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/petlog-logo.png" alt="PetLog 앱 로고 아이콘" width="56" height="56" />
             <h3>PetLog</h3>
@@ -260,7 +270,7 @@
           <div class="pf-shots" tabindex="0" aria-label="PetLog 앱 화면"><figure><img src="/i18n-img/ko/pl-showcase-01.png" alt="PetLog — AI와 함께 더 스마트한 반려 생활, 우리 아이의 모든 순간을 PetLog에" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/pl-showcase-02.png" alt="PetLog — 하루의 모든 반려 기록을 한곳에, 기록과 루틴 관리" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/pl-showcase-03.png" alt="PetLog 일정 및 건강 — 우리 아이의 건강과 일정을 한눈에" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/pl-showcase-04.png" alt="PetLog 커뮤니티 — 반려인들과 실시간 이야기와 정보 공유" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/pl-showcase-05.png" alt="PetLog 미디어·기록 보관 — 사진과 활동 로그 한곳에서" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/pl-showcase-06.png" alt="PetLog 빠른 기록 — 식사·산책·건강 기록 빠르게 입력" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/pl-showcase-07.png" alt="PetLog 프리미엄 — 건강 분석과 맞춤 인사이트" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/myworld-logo.png" alt="My World 앱 로고: 지구본" width="56" height="56" />
             <h3>My World</h3>
@@ -277,7 +287,7 @@
           <div class="pf-shots" tabindex="0" aria-label="My World 앱 화면"><figure><img src="/i18n-img/ko/mw-showcase-01.png" alt="My World — 세상 모든 여행을 기록하다" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/mw-showcase-02.png" alt="My World — 방문 국가와 도시 지도" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/mw-showcase-03.png" alt="My World — 이동 경로 지도" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/mw-showcase-04.png" alt="My World — AI 여행 리포트" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/mw-showcase-05.png" alt="My World — 도시·지역 방문 기록" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/mw-showcase-06.png" alt="My World — 커뮤니티" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/mw-showcase-07.png" alt="My World — 여행 계획·컬렉션" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/savy-logo.png" alt="SAVY 앱 로고" width="56" height="56" />
             <h3>SAVY</h3>
@@ -293,6 +303,10 @@
           </div>
           <div class="pf-shots" tabindex="0" aria-label="SAVY 앱 화면"><figure><img src="/i18n-img/ko/sv-showcase-01.png" alt="SAVY — 소비를 한눈에, AI가 분석하는 똑똑한 소비 관리" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/sv-showcase-02.png" alt="SAVY — 수입·지출·카테고리를 한 번에" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/sv-showcase-03.png" alt="SAVY — AI 기반 고급 통계 분석" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/sv-showcase-04.png" alt="SAVY — 프리미엄 기능으로 소비를 더 똑똑하게" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/sv-showcase-05.png" alt="SAVY — 빠르고 간편한 소비 기록(내역 추가)" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/ko/sv-showcase-06.png" alt="SAVY — 기록을 잊지 않도록 스마트 알림" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
+          </div>
+          <a class="pf-case" data-pf-type="games" href="https://www.newon.app/ko/404-human/" style="display:block;margin-top:1rem;text-decoration:none;color:inherit">
+            <div class="pf-case__inner"><h3>404: HUMAN</h3><p class="pf-case__sum">Newon Games — Live</p></div>
+          </a>
         </div>
       </section>
 

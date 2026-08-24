@@ -52,10 +52,12 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles.css?v=20260822typeall" />
+    <link rel="stylesheet" href="/styles.css?v=20260825studio" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
     <link rel="stylesheet" href="/ox-month.css" />
     <link rel="stylesheet" href="/portfolio/portfolio.css" />
     <script src="/theme-shell.js"></script>
+    <script src="/analytics.js?v=20260825studio" defer></script>
     <style>
       .bz-page { padding-top: var(--header-h); overflow-x: clip; }
       .bz-page [id] { scroll-margin-top: calc(var(--header-h) + 18px); }
@@ -1292,67 +1294,90 @@
       @media (prefers-reduced-motion: reduce) {
         .bz-reveal { opacity: 1; transform: none; }
       }
+      .bz-services__grid { display: grid; gap: 1.25rem; margin-top: 2rem; }
+      .bz-svc { border: 1px solid var(--border); padding: 1.5rem; background: var(--bg); }
+      .bz-svc__num { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; color: var(--text-soft); }
+      .bz-svc__title { margin: 0.35rem 0 0.5rem; font-size: 1.25rem; font-weight: 700; }
+      .bz-svc__desc { margin: 0 0 1rem; color: var(--text-muted); line-height: 1.65; }
+      .bz-svc__list { margin: 0; padding-left: 1.1rem; color: var(--text-muted); line-height: 1.7; }
+      .bz-svc__list--inline { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+      .bz-svc__list--inline li { border: 1px solid var(--border); padding: 0.25rem 0.55rem; font-size: 0.8125rem; }
+      .bz-svc--split { display: grid; gap: 1rem; }
+      .bz-svc--row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+      .bz-svc--row .bz-svc__row-main { display: flex; gap: 1rem; flex: 1 1 16rem; }
+      .bz-svc__tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+      .bz-svc__tag { border: 1px solid var(--border); padding: 0.25rem 0.55rem; font-size: 0.8125rem; color: var(--text-muted); }
+      @media (min-width: 800px) {
+        .bz-svc--split { grid-template-columns: 1fr 1fr; align-items: start; }
+        .bz-svc--split .bz-svc__cta { grid-column: 1 / -1; justify-self: start; }
+      }
     </style>
     <script src="/lang-nav.js?v=20260821stay2"></script>
   </head>
   <body>
     <a class="skip-link" href="#business-main">Passer au contenu</a>
-    <header class="site-header snav-header">
-      <div class="container snav-header__inner">
-        <a class="snav-brand" href="../">
-          <img src="/logo.png" alt="Newon" width="36" height="36" />
-          <span>Nawon Kyung</span>
-        </a>
-        <nav class="snav-nav" aria-label="Business">
-          <a href="../">Accueil</a>
-          <a href="#work">Collaboration</a>
-          <a href="#capabilities">Capacités</a>
-          <a href="#industries">Secteurs</a>
-          <a href="#inquiry">Demander</a>
-        </nav>
-        <div class="snav-actions">
-          <div class="lang-switcher" data-lang-switcher>
-            <label class="visually-hidden" for="lang-select-business">Langue</label>
-            <select id="lang-select-business" class="lang-select lang-select--toolbar" data-lang-select aria-label="Langue">
-              <option value="ko">한국어</option>
-              <option value="en">Anglais</option>
-              <option value="ja">日本語</option>
-              <option value="es">espagnol</option>
-              <option value="pt-br">Portugais (Brésil)</option>
-              <option value="fr">Français</option>
-              <option value="de">Allemand</option>
-              <option value="hi">हिन्दी</option>
-              <option value="id">Bahasa Indonésie</option>
-            </select>
+    <header class="gnav site-header" data-gnav>
+      <div class="gnav__bar">
+        <div class="gnav__inner">
+          <a class="gnav__brand" href="../">
+            <img class="gnav__logo" src="/logo.png" alt="Newon" width="36" height="36" decoding="async" />
+            <span class="gnav__wordmark">Newon</span>
+          </a>
+          <nav class="gnav__nav" aria-label="Main navigation">
+            <div class="gnav-dd" data-gnav-dd>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Products<span class="gnav-dd__chev" aria-hidden="true"></span>
+    </button>
+    <div class="gnav-dd__panel gnav-dd__panel--rich" role="menu" hidden>
+      <p class="gnav-dd__kicker">PRODUCTS</p>
+      <a class="gnav-dd__item" href="../products/?filter=apps" role="menuitem">
+        <span class="gnav-dd__item-title">Apps</span>
+        <span class="gnav-dd__item-desc">Mobile apps by Newon</span>
+      </a><a class="gnav-dd__item" href="../ai/" role="menuitem">
+        <span class="gnav-dd__item-title">AI</span>
+        <span class="gnav-dd__item-desc">AI-powered products</span>
+      </a><a class="gnav-dd__item" href="../saas/" role="menuitem">
+        <span class="gnav-dd__item-title">SaaS</span>
+        <span class="gnav-dd__item-desc">Web subscription services</span>
+      </a><a class="gnav-dd__item" href="#newon-plus-app" role="menuitem">
+        <span class="gnav-dd__item-title">Newon+</span>
+        <span class="gnav-dd__item-desc">Newon product ecosystem</span>
+      </a>
+    </div>
+  </div>
+          <a class="gnav__link" href="../business/" aria-current="page">Business</a>
+          <a class="gnav__link" href="../games/">Games</a>
+          <a class="gnav__link" href="../tools/">Tools</a>
+          <a class="gnav__link" href="../store/">Store</a>
+          <a class="gnav__link" href="../news/">Actualités</a>
+          </nav>
+          <div class="gnav__util">
+            <a class="gnav__cta" href="../business/#inquiry">Contact</a>
+            <div class="gnav__lang" data-lang-switcher>
+    <label class="visually-hidden" for="lang-select-gnav-hub">Langue</label>
+    <select id="lang-select-gnav-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Langue">
+      <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Anglais</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">espagnol</option><option value="pt-br" data-short="PT">Portugais (Brésil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Allemand</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonésie</option>
+    </select>
+  </div>
+            <button type="button" class="gnav__theme" data-theme-toggle data-label-light="Passer en mode lumière" data-label-dark="Passer en mode sombre" title="Changer de thème" aria-label="Passer en mode sombre">◐</button>
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-hub" aria-label="Menu">
+              <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
+            </button>
           </div>
-          <button
-            type="button"
-            class="navbar-theme-toggle"
-            data-theme-toggle
-            data-label-light="Passer en mode lumière"
-            data-label-dark="Passer en mode sombre"
-            title="Changer de thème"
-            aria-label="Passer en mode sombre"
-          >🌙</button>
-          <button
-            class="nav-toggle nav-toggle--toolbar"
-            type="button"
-            data-snav-toggle
-            aria-expanded="false"
-            aria-controls="snav-mobile-nav"
-            aria-label="Ouvrir le menu"
-          >
-            <span></span><span></span>
-          </button>
         </div>
       </div>
-      <nav id="snav-mobile-nav" class="snav-mobile-nav" hidden>
-        <a href="../">Accueil</a>
-        <a href="#work">Collaboration</a>
-        <a href="#capabilities">Capacités</a>
-        <a href="#industries">Secteurs</a>
-        <a href="#inquiry">Demander</a>
-      </nav>
+      <div id="gnav-mobile-hub" class="gnav-mobile" hidden aria-hidden="true">
+      <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menu">
+        <div class="gnav-mobile__scroll">
+          <a class="gnav-mobile__link gnav-mobile__link--home" href="../">Accueil</a>
+          <p class="gnav-mobile__label">Products</p><a class="gnav-mobile__link" href="../products/?filter=apps"><span>Apps</span><span class="gnav-mobile__desc">Mobile apps by Newon</span></a><a class="gnav-mobile__link" href="../ai/"><span>AI</span><span class="gnav-mobile__desc">AI-powered products</span></a><a class="gnav-mobile__link" href="../saas/"><span>SaaS</span><span class="gnav-mobile__desc">Web subscription services</span></a><a class="gnav-mobile__link" href="#newon-plus-app"><span>Newon+</span><span class="gnav-mobile__desc">Newon product ecosystem</span></a>
+        <a class="gnav-mobile__link" href="../business/"><span>Business</span></a><a class="gnav-mobile__link" href="../games/"><span>Games</span></a><a class="gnav-mobile__link" href="../tools/"><span>Tools</span></a><a class="gnav-mobile__link" href="../store/"><span>Store</span></a><a class="gnav-mobile__link" href="../news/"><span>Actualités</span></a>
+        <p class="gnav-mobile__label">À propos</p><a class="gnav-mobile__link" href="../about/"><span>About Newon</span></a><a class="gnav-mobile__link" href="../portfolio/"><span>Portfolio</span></a><a class="gnav-mobile__link" href="../contact/"><span>Contact</span></a>
+          <a class="gnav-mobile__cta btn btn-primary" href="../business/#inquiry">Contact</a>
+        </div>
+      </div>
+      <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
+    </div>
     </header>
 
     <main id="business-main" class="bz-page">
@@ -1360,12 +1385,12 @@
         <div class="bz-hero__stage">
           <div class="bz-inner bz-hero__grid">
             <div class="bz-hero__copy">
-              <p class="bz-hero__kicker bz-hero-enter" style="--d: 0">NEWON / ENTREPRISE</p>
-              <h1 class="bz-hero__title bz-hero-enter" id="bz-hero-title" style="--d: 1">La technologie pour un<br />meilleur quotidien.</h1>
-              <p class="bz-hero__lead bz-hero-enter" style="--d: 2">Newon crée de nouvelles possibilités avec les marques, les entreprises et les partenaires, <br />sur les produits et technologies numériques que nous fabriquons nous-mêmes.</p>
+              <p class="bz-hero__kicker bz-hero-enter" style="--d: 0">NEWON FOR BUSINESS</p>
+              <h1 class="bz-hero__title bz-hero-enter" id="bz-hero-title" style="--d: 1">From idea<br />to product.</h1>
+              <p class="bz-hero__lead bz-hero-enter" style="--d: 2">Apps, web, MVP, AI, and automation<br />built with Newon.</p>
               <div class="bz-hero-actions bz-hero-enter" style="--d: 3">
-                <a class="btn btn-primary" href="#inquiry">Demande d'affaires<span class="bz-hero__cta-go" aria-hidden="true">→</span></a>
-                <a class="btn btn-ghost" href="#work">Découvrez comment nous collaborons</a>
+                <a class="btn btn-primary" href="#inquiry">Start a project<span class="bz-hero__cta-go" aria-hidden="true">→</span></a>
+                <a class="btn btn-ghost" href="../portfolio/">View portfolio</a>
               </div>
             </div>
             <div class="bz-hero__visual">
@@ -1419,10 +1444,81 @@
           <div class="bz-hero__bar-inner">
             <span class="bz-hero__bar-label">NEWON ENTREPRISE</span>
             <span class="bz-hero__bar-meta">Produit · Technologie · Partenariat</span>
-            <a class="bz-hero__bar-explore" href="#work">DÉFILEZ POUR EXPLORER ↓</a>
+            <a class="bz-hero__bar-explore" href="#services">DÉFILEZ POUR EXPLORER ↓</a>
           </div>
         </div>
       </section>
+
+      <section id="services" class="bz-section bz-services bz-reveal" aria-labelledby="bz-services-title">
+    <div class="bz-inner">
+      <p class="bz-label">SERVICES</p>
+      <h2 class="bz-title" id="bz-services-title">What we build with partners</h2>
+      <p class="bz-lead">From MVP to AI automation and design — each section links to the inquiry form.</p>
+      <div class="bz-services__grid"><article class="bz-svc bz-svc--split" id="svc-mvp">
+      <div class="bz-svc__head">
+        <span class="bz-svc__num">01</span>
+        <h3 class="bz-svc__title">MVP Development</h3>
+        <p class="bz-svc__desc">아이디어를 빠르게 검증할 수 있는 실제 제품으로 구현합니다.</p>
+      </div>
+      <ul class="bz-svc__list"><li>서비스 기획</li><li>UX 구조</li><li>Web MVP</li><li>Mobile App</li><li>Backend</li><li>배포</li></ul>
+      <a class="btn btn-ghost bz-svc__cta" href="#inquiry" data-inquiry-type="MVP" data-analytics="business_cta_click">Inquire about MVP</a>
+    </article>
+<article class="bz-svc bz-svc--row" id="svc-website">
+    <div class="bz-svc__row-main">
+      <span class="bz-svc__num">02</span>
+      <div>
+        <h3 class="bz-svc__title">Website</h3>
+        <p class="bz-svc__desc">브랜드와 서비스를 설명하는 웹 경험.</p>
+        <ul class="bz-svc__list bz-svc__list--inline"><li>회사 홈페이지</li><li>브랜드 사이트</li><li>랜딩</li><li>SEO 기본 설정</li></ul>
+      </div>
+    </div>
+    <a class="btn btn-ghost bz-svc__cta" href="#inquiry" data-inquiry-type="Website" data-analytics="business_cta_click">Website project inquiry</a>
+  </article>
+<article class="bz-svc bz-svc--stack" id="svc-ai">
+      <span class="bz-svc__num">03</span>
+      <h3 class="bz-svc__title">AI Automation</h3>
+      <p class="bz-svc__desc">반복 업무와 고객 응대를 AI로 자동화.</p>
+      <ul class="bz-svc__tags"><span class="bz-svc__tag">고객문의</span><span class="bz-svc__tag">리뷰 분석</span><span class="bz-svc__tag">콘텐츠 생성</span><span class="bz-svc__tag">문서 요약</span><span class="bz-svc__tag">사내 AI</span></ul>
+      <a class="btn btn-primary bz-svc__cta" href="#inquiry" data-inquiry-type="AI" data-analytics="business_cta_click">AI automation inquiry</a>
+    </article>
+<article class="bz-svc bz-svc--split" id="svc-app">
+      <div class="bz-svc__head">
+        <span class="bz-svc__num">04</span>
+        <h3 class="bz-svc__title">App Development</h3>
+        <p class="bz-svc__desc">iOS, Android, Flutter 앱 개발과 출시.</p>
+      </div>
+      <ul class="bz-svc__list"><li>iOS</li><li>Android</li><li>Flutter</li><li>API</li><li>기존 앱 개선</li><li>출시</li></ul>
+      <a class="btn btn-ghost bz-svc__cta" href="#inquiry" data-inquiry-type="App" data-analytics="business_cta_click">App development inquiry</a>
+    </article>
+<article class="bz-svc bz-svc--row" id="svc-whitelabel">
+    <div class="bz-svc__row-main">
+      <span class="bz-svc__num">05</span>
+      <div>
+        <h3 class="bz-svc__title">White-label Software</h3>
+        <p class="bz-svc__desc">하나의 시스템을 고객사 브랜드에 맞게.</p>
+        <ul class="bz-svc__list bz-svc__list--inline"><li>예약</li><li>CRM</li><li>문의</li><li>대시보드</li><li>AI 상담</li><li>운영 도구</li></ul>
+      </div>
+    </div>
+    <a class="btn btn-ghost bz-svc__cta" href="#inquiry" data-inquiry-type="White-label" data-analytics="business_cta_click">White-label inquiry</a>
+  </article>
+<article class="bz-svc bz-svc--stack" id="svc-improve">
+      <span class="bz-svc__num">06</span>
+      <h3 class="bz-svc__title">Product Improvement</h3>
+      <p class="bz-svc__desc">기존 앱/웹의 전환과 경험 개선.</p>
+      <ul class="bz-svc__tags"><span class="bz-svc__tag">UI/UX</span><span class="bz-svc__tag">온보딩</span><span class="bz-svc__tag">결제</span><span class="bz-svc__tag">성능</span><span class="bz-svc__tag">리디자인</span></ul>
+      <a class="btn btn-primary bz-svc__cta" href="#inquiry" data-inquiry-type="Maintenance" data-analytics="business_cta_click">Improvement inquiry</a>
+    </article>
+<article class="bz-svc bz-svc--split" id="svc-design">
+      <div class="bz-svc__head">
+        <span class="bz-svc__num">07</span>
+        <h3 class="bz-svc__title">Design &amp; Branding</h3>
+        <p class="bz-svc__desc">브랜드부터 UI까지 일관된 디자인.</p>
+      </div>
+      <ul class="bz-svc__list"><li>브랜드</li><li>웹</li><li>앱 UI/UX</li><li>랜딩</li><li>디자인 시스템</li></ul>
+      <a class="btn btn-ghost bz-svc__cta" href="#inquiry" data-inquiry-type="Design" data-analytics="business_cta_click">Design inquiry</a>
+    </article></div>
+    </div>
+  </section>
 
       <section id="work" class="bz-section bz-reveal" aria-labelledby="bz-work-title">
         <div class="bz-inner">
@@ -1699,32 +1795,46 @@
         </div>
       </section>
 
-      <section class="bz-section bz-reveal" aria-labelledby="bz-process-title">
+      <section id="how-we-work" class="bz-section bz-reveal" aria-labelledby="bz-process-title">
         <div class="bz-inner">
-          <p class="bz-label">PROCESSUS</p>
-          <h2 class="bz-title" id="bz-process-title">Comment fonctionne la collaboration</h2>
+          <p class="bz-label">HOW WE WORK</p>
+          <h2 class="bz-title" id="bz-process-title">From understanding to improvement</h2>
           <ol class="bz-steps">
             <li class="bz-step">
               <span class="bz-step__n">01</span>
-              <h3>Enquête</h3>
-              <p>Contactez-nous à propos d’un projet ou d’une collaboration commerciale.</p>
+              <h3>Understand</h3>
+              <p>We align on problems, goals, and constraints.</p>
             </li>
             <li class="bz-step">
               <span class="bz-step__n">02</span>
-              <h3>Discussion</h3>
-              <p>Nous discutons des objectifs et du type de collaboration dont vous avez besoin.</p>
+              <h3>Define</h3>
+              <p>We define scope, core features, and priorities.</p>
             </li>
             <li class="bz-step">
               <span class="bz-step__n">03</span>
-              <h3>Planification</h3>
-              <p>Nous définissons la portée et l'orientation des travaux.</p>
+              <h3>Build</h3>
+              <p>Design and development.</p>
             </li>
             <li class="bz-step">
               <span class="bz-step__n">04</span>
-              <h3>Livraison</h3>
-              <p>Nous faisons avancer le projet et la collaboration sur la base du plan convenu.</p>
+              <h3>Launch</h3>
+              <p>Test, deploy, and support release.</p>
+            </li>
+            <li class="bz-step">
+              <span class="bz-step__n">05</span>
+              <h3>Improve</h3>
+              <p>Iterate with data and feedback.</p>
             </li>
           </ol>
+        </div>
+      </section>
+
+      <section id="portfolio" class="bz-section bz-reveal" aria-labelledby="bz-portfolio-title">
+        <div class="bz-inner">
+          <p class="bz-label">PORTFOLIO</p>
+          <h2 class="bz-title" id="bz-portfolio-title">Products we have built</h2>
+          <p class="bz-lead">See shipped apps and experiments in our portfolio.</p>
+          <a class="btn btn-primary" href="../portfolio/">View portfolio</a>
         </div>
       </section>
 
@@ -1804,6 +1914,19 @@
         </div>
       </section>
 
+      <section id="packages" class="bz-section bz-reveal" aria-labelledby="bz-packages-title">
+        <div class="bz-inner">
+          <h2 class="bz-title" id="bz-packages-title">Project packages</h2>
+          <div class="hub-grid hub-grid--4" style="margin-top:1.5rem;border:1px solid var(--border);background:var(--border)">
+            <article class="hub-card"><span class="hub-card__num">START</span><span class="hub-card__title">Landing Page</span><span class="hub-card__body">₩500,000~</span></article>
+            <article class="hub-card"><span class="hub-card__num">BUILD</span><span class="hub-card__title">Website / Web Product</span><span class="hub-card__body">₩1,000,000~</span></article>
+            <article class="hub-card"><span class="hub-card__num">MVP</span><span class="hub-card__title">Product MVP</span><span class="hub-card__body">₩1,500,000~</span></article>
+            <article class="hub-card"><span class="hub-card__num">CUSTOM</span><span class="hub-card__title">App / AI / Platform</span><span class="hub-card__body">Custom quote</span></article>
+          </div>
+          <p class="bz-lead" style="margin-top:1rem;font-size:0.875rem">Final quotes depend on project scope and requirements.</p>
+        </div>
+      </section>
+
       <section id="inquiry" class="bz-section bz-reveal" aria-labelledby="bz-form-title">
         <div class="bz-inner bz-form-wrap">
           <h2 class="bz-title" id="bz-form-title">Demande d'affaires</h2>
@@ -1833,14 +1956,35 @@
               <input id="bz-website" name="website" type="url" inputmode="url" placeholder="https://" />
             </div>
             <div class="bz-field">
+              <label for="bz-phone">Phone (optional)</label>
+              <input id="bz-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Phone (optional)" />
+            </div>
+            <div class="bz-field">
               <label for="bz-type">Type de demande<span class="bz-req" aria-hidden="true">*</span></label>
               <select id="bz-type" name="type" required>
                 <option value="" disabled selected>Veuillez sélectionner</option>
+                <option value="App">App</option>
+                <option value="Website">Website</option>
+                <option value="MVP">MVP</option>
+                <option value="AI">AI</option>
+                <option value="Automation">Automation</option>
+                <option value="White-label">White-label</option>
+                <option value="Design">Design</option>
+                <option value="Maintenance">Maintenance</option>
                 <option value="Partnership">Partenariat</option>
-                <option value="App Collaboration">Collaboration avec des applications</option>
-                <option value="Advertising">Publicité</option>
-                <option value="Development">Développement</option>
-                <option value="Other">Autre</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="bz-field">
+              <label for="bz-budget">Budget</label>
+              <select id="bz-budget" name="budget">
+                <option value="">Veuillez sélectionner</option>
+                <option value="Under ₩500K">Under ₩500K</option>
+                <option value="₩500K–1M">₩500K–1M</option>
+                <option value="₩1M–3M">₩1M–3M</option>
+                <option value="₩3M–5M">₩3M–5M</option>
+                <option value="Over ₩5M">Over ₩5M</option>
+                <option value="To be discussed">To be discussed</option>
               </select>
             </div>
             <div class="bz-field">
@@ -1870,6 +2014,9 @@
               <label for="bz-message">Message<span class="bz-req" aria-hidden="true">*</span></label>
               <textarea id="bz-message" name="message" required placeholder="Parlez-nous brièvement du projet ou de la collaboration."></textarea>
             </div>
+            <div class="bz-field bz-field--check">
+              <label><input id="bz-consent" name="consent" type="checkbox" value="yes" required /> I agree to the privacy policy.</label>
+            </div>
             <div class="bz-hp" aria-hidden="true">
               <input name="_honey" tabindex="-1" autocomplete="off" />
             </div>
@@ -1883,27 +2030,41 @@
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <img class="footer-brand-img" src="/logo.png" alt="" width="32" height="32" />
-          <span>Newon</span>
+    <footer class="site-footer studio-footer">
+      <div class="container studio-footer__grid">
+        <div class="studio-footer__col">
+      <p class="studio-footer__title">Products</p>
+      <ul class="studio-footer__list"><li><a href="../products/?filter=apps">Apps</a></li><li><a href="../ai/">AI</a></li><li><a href="../saas/">SaaS</a></li><li><a href="../games/">Games</a></li><li><a href="../#newon-plus-app">Newon+</a></li></ul>
+    </div>
+        <div class="studio-footer__col">
+      <p class="studio-footer__title">Business</p>
+      <ul class="studio-footer__list"><li><a href="../business/#svc-mvp">MVP</a></li><li><a href="../business/#svc-website">Website</a></li><li><a href="../business/#svc-ai">AI Automation</a></li><li><a href="../business/#svc-whitelabel">White-label</a></li><li><a href="../business/#svc-design">Design</a></li></ul>
+    </div>
+        <div class="studio-footer__col">
+      <p class="studio-footer__title">Resources</p>
+      <ul class="studio-footer__list"><li><a href="../tools/">Tools</a></li><li><a href="../store/">Store</a></li><li><a href="../blog/">Blog</a></li><li><a href="../media/">Media</a></li></ul>
+    </div>
+        <div class="studio-footer__col">
+      <p class="studio-footer__title">Company</p>
+      <ul class="studio-footer__list"><li><a href="../about/">Environ Newon</a></li><li><a href="../portfolio/">Newon Portefeuille</a></li><li><a href="../news/">Actualités</a></li><li><a href="../ideas/">Idées</a></li><li><a href="../contact/">Contact</a></li></ul>
+    </div>
+        <div class="studio-footer__col">
+      <p class="studio-footer__title">Legal</p>
+      <ul class="studio-footer__list"><li><a href="../privacy/">politique de confidentialité</a></li><li><a href="../terms/">Conditions d'utilisation</a></li><li><a href="../oxmonth/delete-account/">Account Delete</a></li><li><a href="../#newon-plus-app">Subscription</a></li></ul>
+    </div>
+        <div class="studio-footer__col studio-footer__col--contact">
+          <p class="studio-footer__title">Contact</p>
+          <a class="studio-footer__email" href="mailto:newon@newon.app">newon@newon.app</a>
+          <p class="studio-footer__tagline">A Product Studio turning ideas into digital products.</p>
         </div>
-        <div class="footer-links">
-          <a class="footer-link" href="https://newon.app">https://newon.app</a>
-          <p class="footer-copy">Un studio d’apps qui relie les idées à la réalité</p>
-          <div class="footer-legal-links">
-            <a class="footer-legal" href="../privacy/">politique de confidentialité</a>
-            <span class="footer-legal-sep" aria-hidden="true">·</span>
-            <a class="footer-legal" href="../terms/">Conditions d'utilisation</a>
-          </div>
-          <a class="footer-business" href="../portfolio/">Newon Portefeuille</a>
-          <a class="footer-business" href="./" aria-current="page">Newon Entreprise</a>
-        </div>
-        <p class="footer-copy">© <span id="year"></span> Newon. Tous droits réservés.</p>
+      </div>
+      <div class="container studio-footer__bottom">
+        <p>© Newon · Tous droits réservés.</p>
       </div>
     </footer>
 
+    <script src="/search.js?v=20260825studio" defer></script>
+    <script src="/site-chrome.js?v=20260825gnav" defer></script>
     <script>
       (function () {
         var cur = "fr";

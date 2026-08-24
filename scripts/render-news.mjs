@@ -29,6 +29,7 @@ import {
   historyFilterBucket,
   HISTORY_TYPE_FILTERS,
 } from "./news-data.mjs";
+import { replaceLegacyChrome } from "./inject-chrome.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_ORIGIN = "https://www.newon.app";
@@ -725,6 +726,7 @@ for (const { dir, file, htmlLang } of LANGS) {
   hub = hub.replace("{{NEWS_SOCIAL}}", socialHtml(flat, flatEn));
   hub = hub.replace("{{NEWS_STORE_APP}}", NEWS_STORE_DEV.appStore);
   hub = hub.replace("{{NEWS_STORE_PLAY}}", NEWS_STORE_DEV.googlePlay);
+  hub = replaceLegacyChrome(hub, flat, flatEn, { activeNav: "news" });
   const hubDir = path.join(ROOT, dir, "news");
   fs.mkdirSync(hubDir, { recursive: true });
   fs.writeFileSync(path.join(hubDir, "index.html"), hub);
@@ -778,6 +780,7 @@ for (const { dir, file, htmlLang } of LANGS) {
     page = page.replace("{{ARTICLE_RELATED}}", relatedHtml(article, merged, flat, flatEn, dir));
     page = page.replace("{{ARTICLE_PAGER}}", pagerHtml(articles, index, dir, flat, flatEn));
     page = page.replace("{{ARTICLE_MORE}}", moreNewsHtml(articles, article, dir, flat, flatEn));
+    page = replaceLegacyChrome(page, flat, flatEn, { activeNav: "news" });
     const ad = path.join(hubDir, article.slug);
     fs.mkdirSync(ad, { recursive: true });
     fs.writeFileSync(path.join(ad, "index.html"), page);

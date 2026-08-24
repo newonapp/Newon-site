@@ -46,7 +46,7 @@
   }
 
   function mailtoHref(payload) {
-    var order = ["company", "name", "email", "website", "type", "type_label", "stage", "timeline", "message"];
+    var order = ["company", "name", "email", "phone", "website", "type", "type_label", "budget", "stage", "timeline", "message"];
     var lines = [];
     var i;
     for (i = 0; i < order.length; i++) {
@@ -152,6 +152,15 @@
     } catch (e) {}
   }
 
+  function utmParams() {
+    var p = new URLSearchParams(location.search);
+    return {
+      utm_source: p.get("utm_source") || "",
+      utm_medium: p.get("utm_medium") || "",
+      utm_campaign: p.get("utm_campaign") || "",
+    };
+  }
+
   function collectPayload(form) {
     var websiteEl = form.querySelector("[name='website']") || document.getElementById("bz-website");
     if (websiteEl && emptyWebsite(websiteEl.value)) websiteEl.value = "";
@@ -172,6 +181,18 @@
     var type = typeLabel(form);
     if (type && !payload.type_label) payload.type_label = type;
     if (type) payload._subject = payload._subject + " — " + type;
+    var utm = utmParams();
+    payload.utm_source = utm.utm_source;
+    payload.utm_medium = utm.utm_medium;
+    payload.utm_campaign = utm.utm_campaign;
+    payload.referrer = document.referrer || "";
+    payload.landingPage = String(location.href || "").split("#")[0];
+    payload.submittedAt = new Date().toISOString();
+    payload.locale = langDir();
+    payload.formType = "business_inquiry";
+    if (payload.consent) {
+      payload.privacyConsent = payload.consent;
+    }
     return payload;
   }
 
@@ -229,6 +250,13 @@
       fail.classList.remove("is-visible");
     }
 
+    form.addEventListener("focusin", function () {
+      if (window.newonTrack && !form.dataset.started) {
+        form.dataset.started = "1";
+        window.newonTrack(window.newonAnalyticsEvents.BUSINESS_FORM_START, {});
+      }
+    });
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (sending || form.getAttribute("data-busy") === "1") return;
@@ -259,12 +287,25 @@
       }
       if (emailEl) emailEl.setCustomValidity("");
 
+      var consent = form.querySelector("[name='consent']");
+      if (consent && !consent.checked) {
+        consent.setCustomValidity(" ");
+        form.reportValidity();
+        consent.setCustomValidity("");
+        return;
+      }
+
+      if (window.newonTrack) window.newonTrack(window.newonAnalyticsEvents.BUSINESS_FORM_SUBMIT, {});
+
       sending = true;
       setBusy(form, submitBtn, true);
 
       var payload = collectPayload(form);
       sendInquiry(payload)
         .then(function () {
+          if (window.newonTrack) {
+            window.newonTrack(window.newonAnalyticsEvents.BUSINESS_FORM_SUCCESS, { locale: langDir() });
+          }
           writeRecord({
             type: typeLabel(form),
             name: name,
@@ -273,6 +314,9 @@
           location.replace(successHref());
         })
         .catch(function () {
+          if (window.newonTrack) {
+            window.newonTrack(window.newonAnalyticsEvents.BUSINESS_FORM_ERROR, { locale: langDir() });
+          }
           sending = false;
           setBusy(form, submitBtn, false);
           showFail(fail, mailtoHref(payload));

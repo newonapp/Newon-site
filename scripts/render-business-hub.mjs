@@ -12,6 +12,8 @@ import {
   BUSINESS_ECOSYSTEM,
 } from "./portfolio-data.mjs";
 import { writeInquirySuccessPages } from "./gen-business-details.mjs";
+import { injectSiteChrome } from "./inject-chrome.mjs";
+import { businessServicesHtml } from "./business-services-html.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_ORIGIN = "https://www.newon.app";
@@ -160,6 +162,8 @@ for (const { dir, file, htmlLang } of LANGS) {
   pt = pt.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/business/`);
   pt = applyTemplate(pt, flat, flatEn);
   pt = pt.replace(/\{\{BUSINESS_ECOSYSTEM\}\}/g, businessEcosystemHtml(flat, flatEn));
+  pt = pt.replace(/\{\{BUSINESS_SERVICES\}\}/g, businessServicesHtml(flat, flatEn));
+  pt = injectSiteChrome(pt, flat, flatEn, { activeNav: "business" });
   const pd = path.join(ROOT, dir, "business");
   fs.mkdirSync(pd, { recursive: true });
   fs.writeFileSync(path.join(pd, "index.html"), pt);

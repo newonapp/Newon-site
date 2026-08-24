@@ -1,0 +1,4196 @@
+[
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#newon-plus-app",
+    "lang": "ko",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "BabyLog",
+    "desc": "BabyLog",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#babylog-app",
+    "lang": "ko",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#petlog-app",
+    "lang": "ko",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "My World",
+    "desc": "My World",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#myworld-app",
+    "lang": "ko",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SAVY",
+    "desc": "SAVY",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#savy-app",
+    "lang": "ko",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#ox-month",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Pillmate",
+    "desc": "Pillmate",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#pillmate-app",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "GoalUp",
+    "desc": "GoalUp",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#goalup-app",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "CountUp",
+    "desc": "CountUp",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#countup-app",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SubPing",
+    "desc": "SubPing",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#subping-app",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PiggyUp",
+    "desc": "PiggyUp",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#piggyup-app",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "404: HUMAN",
+    "desc": "",
+    "type": "games",
+    "url": "https://www.newon.app/ko/404-human/",
+    "lang": "ko",
+    "featured": true,
+    "tags": [
+      "games",
+      "live"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/ko/ai/products/",
+    "lang": "ko",
+    "featured": true,
+    "tags": [
+      "ai",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/ko/ai/products/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/ko/ai/products/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/ko/ai/products/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/ko/saas/products/",
+    "lang": "ko",
+    "featured": true,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/ko/saas/products/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/ko/saas/products/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/ko/saas/products/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "title": "QR Code Generator",
+    "desc": "텍스트·URL을 QR 코드로 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/qr/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "Random Picker",
+    "desc": "목록에서 무작위 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/random-picker/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "Wheel Spinner",
+    "desc": "룰렛으로 항목 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/wheel/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "D-Day Calculator",
+    "desc": "목표일까지 남은 일수",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/dday/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "Text / Character Counter",
+    "desc": "글자·단어·줄 수 세기",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/counter/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "text"
+    ]
+  },
+  {
+    "title": "Password Generator",
+    "desc": "안전한 비밀번호 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/password/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "UUID Generator",
+    "desc": "UUID v4 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/uuid/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "JSON Formatter",
+    "desc": "JSON 포맷·검증",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/json/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "Color Converter",
+    "desc": "HEX · RGB 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/color/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "design"
+    ]
+  },
+  {
+    "title": "Percentage Calculator",
+    "desc": "퍼센트 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/percent/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Subscription Cost Calculator",
+    "desc": "구독 비용 합산",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/subscription/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Date Calculator",
+    "desc": "날짜 차이 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/date/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "products",
+    "type": "page",
+    "url": "https://www.newon.app/ko/products/",
+    "lang": "ko",
+    "featured": true,
+    "tags": [
+      "products"
+    ]
+  },
+  {
+    "title": "ai",
+    "type": "page",
+    "url": "https://www.newon.app/ko/ai/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "title": "saas",
+    "type": "page",
+    "url": "https://www.newon.app/ko/saas/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "saas"
+    ]
+  },
+  {
+    "title": "games",
+    "type": "page",
+    "url": "https://www.newon.app/ko/games/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "games"
+    ]
+  },
+  {
+    "title": "business",
+    "type": "page",
+    "url": "https://www.newon.app/ko/business/",
+    "lang": "ko",
+    "featured": true,
+    "tags": [
+      "business"
+    ]
+  },
+  {
+    "title": "tools",
+    "type": "page",
+    "url": "https://www.newon.app/ko/tools/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "title": "store",
+    "type": "page",
+    "url": "https://www.newon.app/ko/store/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "store"
+    ]
+  },
+  {
+    "title": "blog",
+    "type": "page",
+    "url": "https://www.newon.app/ko/blog/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "blog"
+    ]
+  },
+  {
+    "title": "labs",
+    "type": "page",
+    "url": "https://www.newon.app/ko/labs/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#newon-plus-app",
+    "lang": "en",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "BabyLog",
+    "desc": "BabyLog",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#babylog-app",
+    "lang": "en",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#petlog-app",
+    "lang": "en",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "My World",
+    "desc": "My World",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#myworld-app",
+    "lang": "en",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SAVY",
+    "desc": "SAVY",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#savy-app",
+    "lang": "en",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#ox-month",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Pillmate",
+    "desc": "Pillmate",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#pillmate-app",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "GoalUp",
+    "desc": "GoalUp",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#goalup-app",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "CountUp",
+    "desc": "CountUp",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#countup-app",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SubPing",
+    "desc": "SubPing",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#subping-app",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PiggyUp",
+    "desc": "PiggyUp",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#piggyup-app",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "404: HUMAN",
+    "desc": "",
+    "type": "games",
+    "url": "https://www.newon.app/en/404-human/",
+    "lang": "en",
+    "featured": true,
+    "tags": [
+      "games",
+      "live"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/en/ai/products/",
+    "lang": "en",
+    "featured": true,
+    "tags": [
+      "ai",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/en/ai/products/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/en/ai/products/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/en/ai/products/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/en/saas/products/",
+    "lang": "en",
+    "featured": true,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/en/saas/products/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/en/saas/products/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/en/saas/products/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "title": "QR Code Generator",
+    "desc": "텍스트·URL을 QR 코드로 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/qr/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "Random Picker",
+    "desc": "목록에서 무작위 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/random-picker/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "Wheel Spinner",
+    "desc": "룰렛으로 항목 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/wheel/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "D-Day Calculator",
+    "desc": "목표일까지 남은 일수",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/dday/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "Text / Character Counter",
+    "desc": "글자·단어·줄 수 세기",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/counter/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "text"
+    ]
+  },
+  {
+    "title": "Password Generator",
+    "desc": "안전한 비밀번호 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/password/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "UUID Generator",
+    "desc": "UUID v4 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/uuid/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "JSON Formatter",
+    "desc": "JSON 포맷·검증",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/json/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "Color Converter",
+    "desc": "HEX · RGB 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/color/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "design"
+    ]
+  },
+  {
+    "title": "Percentage Calculator",
+    "desc": "퍼센트 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/percent/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Subscription Cost Calculator",
+    "desc": "구독 비용 합산",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/subscription/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Date Calculator",
+    "desc": "날짜 차이 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/date/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "products",
+    "type": "page",
+    "url": "https://www.newon.app/en/products/",
+    "lang": "en",
+    "featured": true,
+    "tags": [
+      "products"
+    ]
+  },
+  {
+    "title": "ai",
+    "type": "page",
+    "url": "https://www.newon.app/en/ai/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "title": "saas",
+    "type": "page",
+    "url": "https://www.newon.app/en/saas/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "saas"
+    ]
+  },
+  {
+    "title": "games",
+    "type": "page",
+    "url": "https://www.newon.app/en/games/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "games"
+    ]
+  },
+  {
+    "title": "business",
+    "type": "page",
+    "url": "https://www.newon.app/en/business/",
+    "lang": "en",
+    "featured": true,
+    "tags": [
+      "business"
+    ]
+  },
+  {
+    "title": "tools",
+    "type": "page",
+    "url": "https://www.newon.app/en/tools/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "title": "store",
+    "type": "page",
+    "url": "https://www.newon.app/en/store/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "store"
+    ]
+  },
+  {
+    "title": "blog",
+    "type": "page",
+    "url": "https://www.newon.app/en/blog/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "blog"
+    ]
+  },
+  {
+    "title": "labs",
+    "type": "page",
+    "url": "https://www.newon.app/en/labs/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#newon-plus-app",
+    "lang": "ja",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "BabyLog",
+    "desc": "BabyLog",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#babylog-app",
+    "lang": "ja",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#petlog-app",
+    "lang": "ja",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "My World",
+    "desc": "My World",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#myworld-app",
+    "lang": "ja",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SAVY",
+    "desc": "SAVY",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#savy-app",
+    "lang": "ja",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#ox-month",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Pillmate",
+    "desc": "Pillmate",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#pillmate-app",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "GoalUp",
+    "desc": "GoalUp",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#goalup-app",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "CountUp",
+    "desc": "CountUp",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#countup-app",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SubPing",
+    "desc": "SubPing",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#subping-app",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PiggyUp",
+    "desc": "PiggyUp",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#piggyup-app",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "404: HUMAN",
+    "desc": "",
+    "type": "games",
+    "url": "https://www.newon.app/ja/404-human/",
+    "lang": "ja",
+    "featured": true,
+    "tags": [
+      "games",
+      "live"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/ja/ai/products/",
+    "lang": "ja",
+    "featured": true,
+    "tags": [
+      "ai",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/ja/ai/products/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/ja/ai/products/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/ja/ai/products/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/ja/saas/products/",
+    "lang": "ja",
+    "featured": true,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/ja/saas/products/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/ja/saas/products/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/ja/saas/products/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "title": "QR Code Generator",
+    "desc": "텍스트·URL을 QR 코드로 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/qr/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "Random Picker",
+    "desc": "목록에서 무작위 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/random-picker/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "Wheel Spinner",
+    "desc": "룰렛으로 항목 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/wheel/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "D-Day Calculator",
+    "desc": "목표일까지 남은 일수",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/dday/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "Text / Character Counter",
+    "desc": "글자·단어·줄 수 세기",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/counter/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "text"
+    ]
+  },
+  {
+    "title": "Password Generator",
+    "desc": "안전한 비밀번호 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/password/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "UUID Generator",
+    "desc": "UUID v4 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/uuid/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "JSON Formatter",
+    "desc": "JSON 포맷·검증",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/json/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "Color Converter",
+    "desc": "HEX · RGB 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/color/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "design"
+    ]
+  },
+  {
+    "title": "Percentage Calculator",
+    "desc": "퍼센트 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/percent/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Subscription Cost Calculator",
+    "desc": "구독 비용 합산",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/subscription/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Date Calculator",
+    "desc": "날짜 차이 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/date/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "products",
+    "type": "page",
+    "url": "https://www.newon.app/ja/products/",
+    "lang": "ja",
+    "featured": true,
+    "tags": [
+      "products"
+    ]
+  },
+  {
+    "title": "ai",
+    "type": "page",
+    "url": "https://www.newon.app/ja/ai/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "title": "saas",
+    "type": "page",
+    "url": "https://www.newon.app/ja/saas/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "saas"
+    ]
+  },
+  {
+    "title": "games",
+    "type": "page",
+    "url": "https://www.newon.app/ja/games/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "games"
+    ]
+  },
+  {
+    "title": "business",
+    "type": "page",
+    "url": "https://www.newon.app/ja/business/",
+    "lang": "ja",
+    "featured": true,
+    "tags": [
+      "business"
+    ]
+  },
+  {
+    "title": "tools",
+    "type": "page",
+    "url": "https://www.newon.app/ja/tools/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "title": "store",
+    "type": "page",
+    "url": "https://www.newon.app/ja/store/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "store"
+    ]
+  },
+  {
+    "title": "blog",
+    "type": "page",
+    "url": "https://www.newon.app/ja/blog/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "blog"
+    ]
+  },
+  {
+    "title": "labs",
+    "type": "page",
+    "url": "https://www.newon.app/ja/labs/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#newon-plus-app",
+    "lang": "es",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "BabyLog",
+    "desc": "BabyLog",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#babylog-app",
+    "lang": "es",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#petlog-app",
+    "lang": "es",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "My World",
+    "desc": "My World",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#myworld-app",
+    "lang": "es",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SAVY",
+    "desc": "SAVY",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#savy-app",
+    "lang": "es",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#ox-month",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Pillmate",
+    "desc": "Pillmate",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#pillmate-app",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "GoalUp",
+    "desc": "GoalUp",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#goalup-app",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "CountUp",
+    "desc": "CountUp",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#countup-app",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SubPing",
+    "desc": "SubPing",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#subping-app",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PiggyUp",
+    "desc": "PiggyUp",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#piggyup-app",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "404: HUMAN",
+    "desc": "",
+    "type": "games",
+    "url": "https://www.newon.app/es/404-human/",
+    "lang": "es",
+    "featured": true,
+    "tags": [
+      "games",
+      "live"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/es/ai/products/",
+    "lang": "es",
+    "featured": true,
+    "tags": [
+      "ai",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/es/ai/products/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/es/ai/products/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/es/ai/products/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/es/saas/products/",
+    "lang": "es",
+    "featured": true,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/es/saas/products/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/es/saas/products/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/es/saas/products/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "title": "QR Code Generator",
+    "desc": "텍스트·URL을 QR 코드로 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/qr/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "Random Picker",
+    "desc": "목록에서 무작위 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/random-picker/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "Wheel Spinner",
+    "desc": "룰렛으로 항목 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/wheel/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "D-Day Calculator",
+    "desc": "목표일까지 남은 일수",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/dday/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "Text / Character Counter",
+    "desc": "글자·단어·줄 수 세기",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/counter/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "text"
+    ]
+  },
+  {
+    "title": "Password Generator",
+    "desc": "안전한 비밀번호 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/password/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "UUID Generator",
+    "desc": "UUID v4 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/uuid/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "JSON Formatter",
+    "desc": "JSON 포맷·검증",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/json/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "Color Converter",
+    "desc": "HEX · RGB 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/color/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "design"
+    ]
+  },
+  {
+    "title": "Percentage Calculator",
+    "desc": "퍼센트 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/percent/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Subscription Cost Calculator",
+    "desc": "구독 비용 합산",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/subscription/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Date Calculator",
+    "desc": "날짜 차이 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/date/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "products",
+    "type": "page",
+    "url": "https://www.newon.app/es/products/",
+    "lang": "es",
+    "featured": true,
+    "tags": [
+      "products"
+    ]
+  },
+  {
+    "title": "ai",
+    "type": "page",
+    "url": "https://www.newon.app/es/ai/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "title": "saas",
+    "type": "page",
+    "url": "https://www.newon.app/es/saas/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "saas"
+    ]
+  },
+  {
+    "title": "games",
+    "type": "page",
+    "url": "https://www.newon.app/es/games/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "games"
+    ]
+  },
+  {
+    "title": "business",
+    "type": "page",
+    "url": "https://www.newon.app/es/business/",
+    "lang": "es",
+    "featured": true,
+    "tags": [
+      "business"
+    ]
+  },
+  {
+    "title": "tools",
+    "type": "page",
+    "url": "https://www.newon.app/es/tools/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "title": "store",
+    "type": "page",
+    "url": "https://www.newon.app/es/store/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "store"
+    ]
+  },
+  {
+    "title": "blog",
+    "type": "page",
+    "url": "https://www.newon.app/es/blog/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "blog"
+    ]
+  },
+  {
+    "title": "labs",
+    "type": "page",
+    "url": "https://www.newon.app/es/labs/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#newon-plus-app",
+    "lang": "pt-br",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "BabyLog",
+    "desc": "BabyLog",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#babylog-app",
+    "lang": "pt-br",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#petlog-app",
+    "lang": "pt-br",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "My World",
+    "desc": "My World",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#myworld-app",
+    "lang": "pt-br",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SAVY",
+    "desc": "SAVY",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#savy-app",
+    "lang": "pt-br",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#ox-month",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Pillmate",
+    "desc": "Pillmate",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#pillmate-app",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "GoalUp",
+    "desc": "GoalUp",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#goalup-app",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "CountUp",
+    "desc": "CountUp",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#countup-app",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SubPing",
+    "desc": "SubPing",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#subping-app",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PiggyUp",
+    "desc": "PiggyUp",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#piggyup-app",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "404: HUMAN",
+    "desc": "",
+    "type": "games",
+    "url": "https://www.newon.app/pt-br/404-human/",
+    "lang": "pt-br",
+    "featured": true,
+    "tags": [
+      "games",
+      "live"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/pt-br/ai/products/",
+    "lang": "pt-br",
+    "featured": true,
+    "tags": [
+      "ai",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/pt-br/ai/products/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/pt-br/ai/products/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/pt-br/ai/products/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/pt-br/saas/products/",
+    "lang": "pt-br",
+    "featured": true,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/pt-br/saas/products/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/pt-br/saas/products/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/pt-br/saas/products/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "title": "QR Code Generator",
+    "desc": "텍스트·URL을 QR 코드로 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/qr/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "Random Picker",
+    "desc": "목록에서 무작위 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/random-picker/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "Wheel Spinner",
+    "desc": "룰렛으로 항목 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/wheel/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "D-Day Calculator",
+    "desc": "목표일까지 남은 일수",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/dday/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "Text / Character Counter",
+    "desc": "글자·단어·줄 수 세기",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/counter/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "text"
+    ]
+  },
+  {
+    "title": "Password Generator",
+    "desc": "안전한 비밀번호 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/password/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "UUID Generator",
+    "desc": "UUID v4 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/uuid/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "JSON Formatter",
+    "desc": "JSON 포맷·검증",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/json/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "Color Converter",
+    "desc": "HEX · RGB 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/color/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "design"
+    ]
+  },
+  {
+    "title": "Percentage Calculator",
+    "desc": "퍼센트 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/percent/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Subscription Cost Calculator",
+    "desc": "구독 비용 합산",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/subscription/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Date Calculator",
+    "desc": "날짜 차이 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/date/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "products",
+    "type": "page",
+    "url": "https://www.newon.app/pt-br/products/",
+    "lang": "pt-br",
+    "featured": true,
+    "tags": [
+      "products"
+    ]
+  },
+  {
+    "title": "ai",
+    "type": "page",
+    "url": "https://www.newon.app/pt-br/ai/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "title": "saas",
+    "type": "page",
+    "url": "https://www.newon.app/pt-br/saas/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "saas"
+    ]
+  },
+  {
+    "title": "games",
+    "type": "page",
+    "url": "https://www.newon.app/pt-br/games/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "games"
+    ]
+  },
+  {
+    "title": "business",
+    "type": "page",
+    "url": "https://www.newon.app/pt-br/business/",
+    "lang": "pt-br",
+    "featured": true,
+    "tags": [
+      "business"
+    ]
+  },
+  {
+    "title": "tools",
+    "type": "page",
+    "url": "https://www.newon.app/pt-br/tools/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "title": "store",
+    "type": "page",
+    "url": "https://www.newon.app/pt-br/store/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "store"
+    ]
+  },
+  {
+    "title": "blog",
+    "type": "page",
+    "url": "https://www.newon.app/pt-br/blog/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "blog"
+    ]
+  },
+  {
+    "title": "labs",
+    "type": "page",
+    "url": "https://www.newon.app/pt-br/labs/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#newon-plus-app",
+    "lang": "fr",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "BabyLog",
+    "desc": "BabyLog",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#babylog-app",
+    "lang": "fr",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#petlog-app",
+    "lang": "fr",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "My World",
+    "desc": "My World",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#myworld-app",
+    "lang": "fr",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SAVY",
+    "desc": "SAVY",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#savy-app",
+    "lang": "fr",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#ox-month",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Pillmate",
+    "desc": "Pillmate",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#pillmate-app",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "GoalUp",
+    "desc": "GoalUp",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#goalup-app",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "CountUp",
+    "desc": "CountUp",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#countup-app",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SubPing",
+    "desc": "SubPing",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#subping-app",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PiggyUp",
+    "desc": "PiggyUp",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#piggyup-app",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "404: HUMAN",
+    "desc": "",
+    "type": "games",
+    "url": "https://www.newon.app/fr/404-human/",
+    "lang": "fr",
+    "featured": true,
+    "tags": [
+      "games",
+      "live"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/fr/ai/products/",
+    "lang": "fr",
+    "featured": true,
+    "tags": [
+      "ai",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/fr/ai/products/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/fr/ai/products/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/fr/ai/products/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/fr/saas/products/",
+    "lang": "fr",
+    "featured": true,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/fr/saas/products/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/fr/saas/products/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/fr/saas/products/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "title": "QR Code Generator",
+    "desc": "텍스트·URL을 QR 코드로 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/qr/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "Random Picker",
+    "desc": "목록에서 무작위 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/random-picker/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "Wheel Spinner",
+    "desc": "룰렛으로 항목 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/wheel/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "D-Day Calculator",
+    "desc": "목표일까지 남은 일수",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/dday/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "Text / Character Counter",
+    "desc": "글자·단어·줄 수 세기",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/counter/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "text"
+    ]
+  },
+  {
+    "title": "Password Generator",
+    "desc": "안전한 비밀번호 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/password/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "UUID Generator",
+    "desc": "UUID v4 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/uuid/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "JSON Formatter",
+    "desc": "JSON 포맷·검증",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/json/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "Color Converter",
+    "desc": "HEX · RGB 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/color/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "design"
+    ]
+  },
+  {
+    "title": "Percentage Calculator",
+    "desc": "퍼센트 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/percent/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Subscription Cost Calculator",
+    "desc": "구독 비용 합산",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/subscription/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Date Calculator",
+    "desc": "날짜 차이 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/date/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "products",
+    "type": "page",
+    "url": "https://www.newon.app/fr/products/",
+    "lang": "fr",
+    "featured": true,
+    "tags": [
+      "products"
+    ]
+  },
+  {
+    "title": "ai",
+    "type": "page",
+    "url": "https://www.newon.app/fr/ai/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "title": "saas",
+    "type": "page",
+    "url": "https://www.newon.app/fr/saas/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "saas"
+    ]
+  },
+  {
+    "title": "games",
+    "type": "page",
+    "url": "https://www.newon.app/fr/games/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "games"
+    ]
+  },
+  {
+    "title": "business",
+    "type": "page",
+    "url": "https://www.newon.app/fr/business/",
+    "lang": "fr",
+    "featured": true,
+    "tags": [
+      "business"
+    ]
+  },
+  {
+    "title": "tools",
+    "type": "page",
+    "url": "https://www.newon.app/fr/tools/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "title": "store",
+    "type": "page",
+    "url": "https://www.newon.app/fr/store/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "store"
+    ]
+  },
+  {
+    "title": "blog",
+    "type": "page",
+    "url": "https://www.newon.app/fr/blog/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "blog"
+    ]
+  },
+  {
+    "title": "labs",
+    "type": "page",
+    "url": "https://www.newon.app/fr/labs/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#newon-plus-app",
+    "lang": "de",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "BabyLog",
+    "desc": "BabyLog",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#babylog-app",
+    "lang": "de",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#petlog-app",
+    "lang": "de",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "My World",
+    "desc": "My World",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#myworld-app",
+    "lang": "de",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SAVY",
+    "desc": "SAVY",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#savy-app",
+    "lang": "de",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#ox-month",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Pillmate",
+    "desc": "Pillmate",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#pillmate-app",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "GoalUp",
+    "desc": "GoalUp",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#goalup-app",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "CountUp",
+    "desc": "CountUp",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#countup-app",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SubPing",
+    "desc": "SubPing",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#subping-app",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PiggyUp",
+    "desc": "PiggyUp",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#piggyup-app",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "404: HUMAN",
+    "desc": "",
+    "type": "games",
+    "url": "https://www.newon.app/de/404-human/",
+    "lang": "de",
+    "featured": true,
+    "tags": [
+      "games",
+      "live"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/de/ai/products/",
+    "lang": "de",
+    "featured": true,
+    "tags": [
+      "ai",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/de/ai/products/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/de/ai/products/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/de/ai/products/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/de/saas/products/",
+    "lang": "de",
+    "featured": true,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/de/saas/products/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/de/saas/products/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/de/saas/products/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "title": "QR Code Generator",
+    "desc": "텍스트·URL을 QR 코드로 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/qr/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "Random Picker",
+    "desc": "목록에서 무작위 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/random-picker/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "Wheel Spinner",
+    "desc": "룰렛으로 항목 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/wheel/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "D-Day Calculator",
+    "desc": "목표일까지 남은 일수",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/dday/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "Text / Character Counter",
+    "desc": "글자·단어·줄 수 세기",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/counter/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "text"
+    ]
+  },
+  {
+    "title": "Password Generator",
+    "desc": "안전한 비밀번호 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/password/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "UUID Generator",
+    "desc": "UUID v4 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/uuid/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "JSON Formatter",
+    "desc": "JSON 포맷·검증",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/json/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "Color Converter",
+    "desc": "HEX · RGB 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/color/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "design"
+    ]
+  },
+  {
+    "title": "Percentage Calculator",
+    "desc": "퍼센트 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/percent/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Subscription Cost Calculator",
+    "desc": "구독 비용 합산",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/subscription/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Date Calculator",
+    "desc": "날짜 차이 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/date/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "products",
+    "type": "page",
+    "url": "https://www.newon.app/de/products/",
+    "lang": "de",
+    "featured": true,
+    "tags": [
+      "products"
+    ]
+  },
+  {
+    "title": "ai",
+    "type": "page",
+    "url": "https://www.newon.app/de/ai/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "title": "saas",
+    "type": "page",
+    "url": "https://www.newon.app/de/saas/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "saas"
+    ]
+  },
+  {
+    "title": "games",
+    "type": "page",
+    "url": "https://www.newon.app/de/games/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "games"
+    ]
+  },
+  {
+    "title": "business",
+    "type": "page",
+    "url": "https://www.newon.app/de/business/",
+    "lang": "de",
+    "featured": true,
+    "tags": [
+      "business"
+    ]
+  },
+  {
+    "title": "tools",
+    "type": "page",
+    "url": "https://www.newon.app/de/tools/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "title": "store",
+    "type": "page",
+    "url": "https://www.newon.app/de/store/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "store"
+    ]
+  },
+  {
+    "title": "blog",
+    "type": "page",
+    "url": "https://www.newon.app/de/blog/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "blog"
+    ]
+  },
+  {
+    "title": "labs",
+    "type": "page",
+    "url": "https://www.newon.app/de/labs/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#newon-plus-app",
+    "lang": "hi",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "BabyLog",
+    "desc": "BabyLog",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#babylog-app",
+    "lang": "hi",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#petlog-app",
+    "lang": "hi",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "My World",
+    "desc": "My World",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#myworld-app",
+    "lang": "hi",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SAVY",
+    "desc": "SAVY",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#savy-app",
+    "lang": "hi",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#ox-month",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Pillmate",
+    "desc": "Pillmate",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#pillmate-app",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "GoalUp",
+    "desc": "GoalUp",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#goalup-app",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "CountUp",
+    "desc": "CountUp",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#countup-app",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SubPing",
+    "desc": "SubPing",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#subping-app",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PiggyUp",
+    "desc": "PiggyUp",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#piggyup-app",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "404: HUMAN",
+    "desc": "",
+    "type": "games",
+    "url": "https://www.newon.app/hi/404-human/",
+    "lang": "hi",
+    "featured": true,
+    "tags": [
+      "games",
+      "live"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/hi/ai/products/",
+    "lang": "hi",
+    "featured": true,
+    "tags": [
+      "ai",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/hi/ai/products/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/hi/ai/products/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/hi/ai/products/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/hi/saas/products/",
+    "lang": "hi",
+    "featured": true,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/hi/saas/products/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/hi/saas/products/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/hi/saas/products/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "title": "QR Code Generator",
+    "desc": "텍스트·URL을 QR 코드로 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/qr/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "Random Picker",
+    "desc": "목록에서 무작위 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/random-picker/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "Wheel Spinner",
+    "desc": "룰렛으로 항목 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/wheel/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "D-Day Calculator",
+    "desc": "목표일까지 남은 일수",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/dday/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "Text / Character Counter",
+    "desc": "글자·단어·줄 수 세기",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/counter/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "text"
+    ]
+  },
+  {
+    "title": "Password Generator",
+    "desc": "안전한 비밀번호 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/password/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "UUID Generator",
+    "desc": "UUID v4 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/uuid/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "JSON Formatter",
+    "desc": "JSON 포맷·검증",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/json/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "Color Converter",
+    "desc": "HEX · RGB 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/color/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "design"
+    ]
+  },
+  {
+    "title": "Percentage Calculator",
+    "desc": "퍼센트 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/percent/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Subscription Cost Calculator",
+    "desc": "구독 비용 합산",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/subscription/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Date Calculator",
+    "desc": "날짜 차이 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/date/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "products",
+    "type": "page",
+    "url": "https://www.newon.app/hi/products/",
+    "lang": "hi",
+    "featured": true,
+    "tags": [
+      "products"
+    ]
+  },
+  {
+    "title": "ai",
+    "type": "page",
+    "url": "https://www.newon.app/hi/ai/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "title": "saas",
+    "type": "page",
+    "url": "https://www.newon.app/hi/saas/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "saas"
+    ]
+  },
+  {
+    "title": "games",
+    "type": "page",
+    "url": "https://www.newon.app/hi/games/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "games"
+    ]
+  },
+  {
+    "title": "business",
+    "type": "page",
+    "url": "https://www.newon.app/hi/business/",
+    "lang": "hi",
+    "featured": true,
+    "tags": [
+      "business"
+    ]
+  },
+  {
+    "title": "tools",
+    "type": "page",
+    "url": "https://www.newon.app/hi/tools/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "title": "store",
+    "type": "page",
+    "url": "https://www.newon.app/hi/store/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "store"
+    ]
+  },
+  {
+    "title": "blog",
+    "type": "page",
+    "url": "https://www.newon.app/hi/blog/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "blog"
+    ]
+  },
+  {
+    "title": "labs",
+    "type": "page",
+    "url": "https://www.newon.app/hi/labs/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#newon-plus-app",
+    "lang": "id",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "BabyLog",
+    "desc": "BabyLog",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#babylog-app",
+    "lang": "id",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#petlog-app",
+    "lang": "id",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "My World",
+    "desc": "My World",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#myworld-app",
+    "lang": "id",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SAVY",
+    "desc": "SAVY",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#savy-app",
+    "lang": "id",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#ox-month",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Pillmate",
+    "desc": "Pillmate",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#pillmate-app",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "GoalUp",
+    "desc": "GoalUp",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#goalup-app",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "CountUp",
+    "desc": "CountUp",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#countup-app",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "SubPing",
+    "desc": "SubPing",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#subping-app",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PiggyUp",
+    "desc": "PiggyUp",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#piggyup-app",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "404: HUMAN",
+    "desc": "",
+    "type": "games",
+    "url": "https://www.newon.app/id/404-human/",
+    "lang": "id",
+    "featured": true,
+    "tags": [
+      "games",
+      "live"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/id/ai/products/",
+    "lang": "id",
+    "featured": true,
+    "tags": [
+      "ai",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/id/ai/products/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/id/ai/products/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "ai",
+    "url": "https://www.newon.app/id/ai/products/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "ai",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/id/saas/products/",
+    "lang": "id",
+    "featured": true,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/id/saas/products/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "saas",
+      "building"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/id/saas/products/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "desc": "",
+    "type": "saas",
+    "url": "https://www.newon.app/id/saas/products/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "saas",
+      "concept"
+    ]
+  },
+  {
+    "title": "QR Code Generator",
+    "desc": "텍스트·URL을 QR 코드로 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/qr/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "Random Picker",
+    "desc": "목록에서 무작위 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/random-picker/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "Wheel Spinner",
+    "desc": "룰렛으로 항목 선택",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/wheel/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "random"
+    ]
+  },
+  {
+    "title": "D-Day Calculator",
+    "desc": "목표일까지 남은 일수",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/dday/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "Text / Character Counter",
+    "desc": "글자·단어·줄 수 세기",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/counter/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "text"
+    ]
+  },
+  {
+    "title": "Password Generator",
+    "desc": "안전한 비밀번호 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/password/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "UUID Generator",
+    "desc": "UUID v4 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/uuid/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "JSON Formatter",
+    "desc": "JSON 포맷·검증",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/json/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "developer"
+    ]
+  },
+  {
+    "title": "Color Converter",
+    "desc": "HEX · RGB 변환",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/color/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "design"
+    ]
+  },
+  {
+    "title": "Percentage Calculator",
+    "desc": "퍼센트 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/percent/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Subscription Cost Calculator",
+    "desc": "구독 비용 합산",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/subscription/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
+    "title": "Date Calculator",
+    "desc": "날짜 차이 계산",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/date/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "products",
+    "type": "page",
+    "url": "https://www.newon.app/id/products/",
+    "lang": "id",
+    "featured": true,
+    "tags": [
+      "products"
+    ]
+  },
+  {
+    "title": "ai",
+    "type": "page",
+    "url": "https://www.newon.app/id/ai/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "ai"
+    ]
+  },
+  {
+    "title": "saas",
+    "type": "page",
+    "url": "https://www.newon.app/id/saas/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "saas"
+    ]
+  },
+  {
+    "title": "games",
+    "type": "page",
+    "url": "https://www.newon.app/id/games/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "games"
+    ]
+  },
+  {
+    "title": "business",
+    "type": "page",
+    "url": "https://www.newon.app/id/business/",
+    "lang": "id",
+    "featured": true,
+    "tags": [
+      "business"
+    ]
+  },
+  {
+    "title": "tools",
+    "type": "page",
+    "url": "https://www.newon.app/id/tools/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "title": "store",
+    "type": "page",
+    "url": "https://www.newon.app/id/store/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "store"
+    ]
+  },
+  {
+    "title": "blog",
+    "type": "page",
+    "url": "https://www.newon.app/id/blog/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "blog"
+    ]
+  },
+  {
+    "title": "labs",
+    "type": "page",
+    "url": "https://www.newon.app/id/labs/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  }
+]

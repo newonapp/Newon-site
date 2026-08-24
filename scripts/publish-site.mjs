@@ -26,7 +26,13 @@ const PUBLISH_ROOT_CORE = [
   "lang-dropdown.js",
   "theme-shell.js",
   "hero-apps.js",
+  "analytics.js",
+  "search.js",
+  "waitlist.js",
+  "site-chrome.js",
+  "search-index.json",
   "styles.css",
+  "hub-pages.css",
   "ox-month.css",
   "app-landing-extras.css",
   "robots.txt",
@@ -80,6 +86,19 @@ const PUBLISH_COPY_DIRS = [
   { from: "404-human", to: "404-human", required: true },
   { from: "card-n7x4k9", to: "card-n7x4k9", required: true },
   { from: "portfolio", to: "portfolio", required: true },
+  { from: "tools", to: "tools", required: true },
+  { from: "products", to: "products", required: false },
+  { from: "ai", to: "ai", required: false },
+  { from: "saas", to: "saas", required: false },
+  { from: "games", to: "games", required: false },
+  { from: "studio", to: "studio", required: false },
+  { from: "store", to: "store", required: false },
+  { from: "media", to: "media", required: false },
+  { from: "blog", to: "blog", required: false },
+  { from: "labs", to: "labs", required: false },
+  { from: "market", to: "market", required: false },
+  { from: "contact", to: "contact", required: false },
+  { from: "admin", to: "admin", required: false },
   { from: "oxmonth", to: "oxmonth", required: false },
   { from: "subping", to: "subping", required: false },
 ];
@@ -233,6 +252,12 @@ function verify() {
       path.join(OUT, lang, "business", "development", "index.html"),
       path.join(OUT, lang, "business", "inquiry", "success", "index.html"),
       path.join(OUT, lang, "404-human", "index.html"),
+      path.join(OUT, lang, "products", "index.html"),
+      path.join(OUT, lang, "tools", "index.html"),
+      path.join(OUT, lang, "tools", "qr", "index.html"),
+      path.join(OUT, lang, "ai", "index.html"),
+      path.join(OUT, lang, "games", "index.html"),
+      path.join(OUT, lang, "contact", "index.html"),
       path.join(OUT, lang, "oxmonth", "delete-account", "index.html"),
       path.join(OUT, lang, "subping", "delete-account", "index.html")
     );
@@ -283,7 +308,9 @@ function verify() {
   required.push(path.join(OUT, "ko", "portfolio", "index.html"));
   required.push(path.join(OUT, "en", "portfolio", "index.html"));
   required.push(path.join(OUT, "ja", "portfolio", "index.html"));
-  required.push(path.join(OUT, "robots.txt"));
+  required.push(path.join(OUT, "search-index.json"));
+  required.push(path.join(OUT, "hub-pages.css"));
+  required.push(path.join(OUT, "analytics.js"));
   required.push(path.join(OUT, "sitemap.xml"));
   const sitemap = fs.readFileSync(path.join(OUT, "sitemap.xml"), "utf8");
   if (sitemap.includes("card-n7x4k9")) {

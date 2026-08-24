@@ -83,6 +83,7 @@ function head({ langMeta, copy, title, description, canonical, suffix }) {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="${FONTS}" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
     <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260822founder" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
     <script src="/theme-shell.js"></script>
@@ -212,7 +213,7 @@ function featuredCase(app, i, copy) {
     .join("");
   const aria = copy.shotsAria.replace("{name}", app.displayName);
   return `
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             ${iconImg(app, "pf-case__icon", 56)}
             <h3>${esc(app.displayName)}</h3>
@@ -404,7 +405,20 @@ function indexPage(langMeta, copy, apps) {
         <div class="pf-wrap">
           <p class="pf-label">${esc(copy.projectsLabel)}</p>
           <h2>${esc(copy.projectsTitle)}</h2>
+          <div class="hub-filters" data-portfolio-filters>
+            <button type="button" class="hub-filter is-active" data-pf-filter="all">All</button>
+            <button type="button" class="hub-filter" data-pf-filter="apps">Apps</button>
+            <button type="button" class="hub-filter" data-pf-filter="games">Games</button>
+            <button type="button" class="hub-filter" data-pf-filter="web">Web</button>
+            <button type="button" class="hub-filter" data-pf-filter="design">Design</button>
+            <button type="button" class="hub-filter" data-pf-filter="experiments">Experiments</button>
+          </div>
+          <div data-pf-grid>
           ${featured.map((a, i) => featuredCase(a, i, copy)).join("\n")}
+          </div>
+          <a class="pf-case" data-pf-type="games" href="${SITE}/${lang}/404-human/" style="display:block;margin-top:1rem;text-decoration:none;color:inherit">
+            <div class="pf-case__inner"><h3>404: HUMAN</h3><p class="pf-case__sum">Newon Games — Live</p></div>
+          </a>
         </div>
       </section>
 

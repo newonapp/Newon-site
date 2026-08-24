@@ -5,6 +5,7 @@
  * Does not regenerate home, portfolio, or business pages.
  */
 import fs from "fs";
+import { injectSiteChrome } from "./inject-chrome.mjs";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -185,6 +186,7 @@ for (const { dir, file, htmlLang } of LANGS) {
     pt = pt.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangBlockLegal(page));
     pt = pt.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/${page}/`);
     pt = applyTemplate(pt, flat, flatEn);
+    pt = injectSiteChrome(pt, flat, flatEn, { activeNav: "about" });
     const pd = path.join(ROOT, dir, page);
     fs.mkdirSync(pd, { recursive: true });
     fs.writeFileSync(path.join(pd, "index.html"), pt);

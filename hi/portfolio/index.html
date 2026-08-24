@@ -33,6 +33,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
     <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260822founder" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
     <script src="/theme-shell.js"></script>
@@ -208,8 +209,17 @@
         <div class="pf-wrap">
           <p class="pf-label">Projects</p>
           <h2>मुख्य प्रोजेक्ट</h2>
+          <div class="hub-filters" data-portfolio-filters>
+            <button type="button" class="hub-filter is-active" data-pf-filter="all">All</button>
+            <button type="button" class="hub-filter" data-pf-filter="apps">Apps</button>
+            <button type="button" class="hub-filter" data-pf-filter="games">Games</button>
+            <button type="button" class="hub-filter" data-pf-filter="web">Web</button>
+            <button type="button" class="hub-filter" data-pf-filter="design">Design</button>
+            <button type="button" class="hub-filter" data-pf-filter="experiments">Experiments</button>
+          </div>
+          <div data-pf-grid>
           
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/newon-plus-logo.png" alt="Newon लोगो" width="56" height="56" />
             <h3>Newon+</h3>
@@ -226,7 +236,7 @@
           <div class="pf-shots" tabindex="0" aria-label="Newon+ ऐप स्क्रीन"><figure><img src="/i18n-img/en/np-showcase-01.png" alt="Newon — विचारों से ऐप; 12+ ऐप और एक खाते वाला लाइफ प्लेटफ़ॉर्म" width="1242" height="2688" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-02.png" alt="Newon — एक खाते से सभी Newon ऐप्स जोड़ें" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-03.png" alt="Newon — उत्पादकता, वित्त, स्वास्थ्य और पेरेंटिंग सेवाएँ एक जगह" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-04.png" alt="Newon — अपने लिए सही पैकेज चुनें" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-05.png" alt="Newon — 12+ ऐप, 177 देश, 13 भाषाएँ" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/babylog-logo.png" alt="BabyLog ऐप लोगो: सफ़ेद पर चमकदार पेस्टल गुलाबी 3डी अक्षर बी" width="56" height="56" />
             <h3>BabyLog</h3>
@@ -243,7 +253,7 @@
           <div class="pf-shots" tabindex="0" aria-label="BabyLog ऐप स्क्रीन"><figure><img src="/i18n-img/en/bl-showcase-01.png" alt="BabyLog परिचय - एआई-संचालित स्मार्ट पेरेंटिंग; BabyLog के साथ अपने बच्चे के हर पल को कैद करें" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/bl-showcase-02.png" alt="BabyLog रिकॉर्ड्स - अपने बच्चे और परिवार के शेड्यूल को एक ही स्थान पर प्रबंधित करें; प्रीमियम एआई" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/bl-showcase-03.png" alt="BabyLog कैलेंडर - आपके सभी दैनिक पेरेंटिंग रिकॉर्ड एक ही स्थान पर, मई योजनाएं और सारांश" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/bl-showcase-04.png" alt="BabyLog समुदाय - वास्तविक समय में माता-पिता से जुड़ें; कहानियाँ और चिंताएँ साझा करें" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/bl-showcase-05.png" alt="BabyLog पेरेंटिंग संग्रह - हर पल को एक सुंदर विकास कहानी में बदलें; एआई मेमोरी" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/bl-showcase-06.png" alt="BabyLog रिकॉर्ड जोड़ें - महत्वपूर्ण रिकॉर्ड तेजी से और आसानी से जोड़ें" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/bl-showcase-07.png" alt="BabyLog प्रीमियम - रिकॉर्ड से परे, विस्तृत विकास अंतर्दृष्टि और एआई उपकरण" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/petlog-logo.png" alt="PetLog ऐप लोगो आइकन" width="56" height="56" />
             <h3>PetLog</h3>
@@ -260,7 +270,7 @@
           <div class="pf-shots" tabindex="0" aria-label="PetLog ऐप स्क्रीन"><figure><img src="/i18n-img/en/pl-showcase-01.png" alt="PetLog - एआई के साथ स्मार्ट पालतू जीवन; PetLog में अपने पालतू जानवर के साथ हर पल" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/pl-showcase-02.png" alt="PetLog - सभी एक साथ भोजन करते हैं, टहलते हैं, और दैनिक लॉग इन करते हैं" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/pl-showcase-03.png" alt="PetLog कार्यक्रम और स्वास्थ्य अवलोकन एक नज़र में" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/pl-showcase-04.png" alt="PetLog समुदाय - अन्य पालतू जानवरों के माता-पिता के साथ युक्तियाँ और कहानियाँ साझा करें" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/pl-showcase-05.png" alt="PetLog मीडिया वॉल्ट - फ़ोटो और गतिविधि इतिहास एक ही स्थान पर" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/pl-showcase-06.png" alt="PetLog त्वरित लॉग - भोजन, सैर, और स्वास्थ्य तेजी से कैप्चर किया गया" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/pl-showcase-07.png" alt="PetLog प्रीमियम - स्वास्थ्य अंतर्दृष्टि और वैयक्तिकृत रिपोर्ट" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/myworld-logo.png" alt="My World ऐप लोगो: ग्लोब" width="56" height="56" />
             <h3>My World</h3>
@@ -277,7 +287,7 @@
           <div class="pf-shots" tabindex="0" aria-label="My World ऐप स्क्रीन"><figure><img src="/i18n-img/en/mw-showcase-01.png" alt="My World - हर यात्रा को कैप्चर करें" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/mw-showcase-02.png" alt="My World — भ्रमण किए गए देशों और शहरों का मानचित्र" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/mw-showcase-03.png" alt="My World — यात्रा मार्ग मानचित्र" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/mw-showcase-04.png" alt="My World - एआई यात्रा रिपोर्ट" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/mw-showcase-05.png" alt="My World - शहर और क्षेत्र का दौरा रिकॉर्ड" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/mw-showcase-06.png" alt="My World - समुदाय" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/mw-showcase-07.png" alt="My World — यात्रा योजनाएँ और संग्रह" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/savy-logo.png" alt="SAVY ऐप लोगो: वॉलेट, कार्ड और कोरियाई वोन सिक्का" width="56" height="56" />
             <h3>SAVY</h3>
@@ -293,6 +303,10 @@
           </div>
           <div class="pf-shots" tabindex="0" aria-label="SAVY ऐप स्क्रीन"><figure><img src="/i18n-img/en/sv-showcase-01.png" alt="SAVY — एक नज़र में अपना खर्च देखें। एआई द्वारा संचालित स्मार्ट व्यय ट्रैकिंग" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/sv-showcase-02.png" alt="SAVY - आय, व्यय और श्रेणियों को एक ही स्थान पर प्रबंधित करें" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/sv-showcase-03.png" alt="SAVY - एआई द्वारा संचालित उन्नत विश्लेषण" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/sv-showcase-04.png" alt="SAVY — प्रीमियम सुविधाओं के साथ बेहतर खर्च" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/sv-showcase-05.png" alt="SAVY - त्वरित और सरल व्यय ट्रैकिंग (प्रविष्टि जोड़ें)" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/sv-showcase-06.png" alt="SAVY — स्मार्ट सूचनाएं ताकि आप कभी भी कोई रिकॉर्ड न चूकें" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
+          </div>
+          <a class="pf-case" data-pf-type="games" href="https://www.newon.app/hi/404-human/" style="display:block;margin-top:1rem;text-decoration:none;color:inherit">
+            <div class="pf-case__inner"><h3>404: HUMAN</h3><p class="pf-case__sum">Newon Games — Live</p></div>
+          </a>
         </div>
       </section>
 

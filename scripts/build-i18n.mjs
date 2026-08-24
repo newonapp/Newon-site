@@ -17,6 +17,9 @@ import {
 } from "./portfolio-data.mjs";
 import { generateBusinessDetails, BUSINESS_DETAIL_PAGES } from "./gen-business-details.mjs";
 import { publishedArticles } from "./news-data.mjs";
+import { injectSiteChrome } from "./inject-chrome.mjs";
+import { businessServicesHtml } from "./business-services-html.mjs";
+import { renderGlobalHeader } from "./site-chrome.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -348,6 +351,8 @@ for (const { dir, file, htmlLang } of LANGS) {
   tpl = applyLocImgs(tpl, dir);
   tpl = stripOxMonthShowcaseVariants(tpl, dir);
 
+  tpl = tpl.replace(/\{\{GLOBAL_HEADER\}\}/g, renderGlobalHeader(flat, flatEn, { activeNav: "", base: "", idSuffix: "home" }));
+
   const outDir = path.join(ROOT, dir);
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, "index.html"), tpl);
@@ -363,6 +368,13 @@ for (const { dir, file, htmlLang } of LANGS) {
     pt = applyLocImgs(pt, dir);
     if (page === "business") {
       pt = pt.replace(/\{\{BUSINESS_ECOSYSTEM\}\}/g, businessEcosystemHtml(flat, flatEn));
+      pt = pt.replace(/\{\{BUSINESS_SERVICES\}\}/g, businessServicesHtml(flat, flatEn));
+    }
+    if (page === "about") {
+      pt = injectSiteChrome(pt, flat, flatEn, { activeNav: "about" });
+    }
+    if (page === "business") {
+      pt = injectSiteChrome(pt, flat, flatEn, { activeNav: "business" });
     }
     const pd = path.join(ROOT, dir, page);
     fs.mkdirSync(pd, { recursive: true });
@@ -627,6 +639,30 @@ function writeSitemap() {
     }
   }
 
+  // Product Studio hubs
+  for (const page of [
+    "products",
+    "ai",
+    "saas",
+    "games",
+    "studio",
+    "tools",
+    "store",
+    "media",
+    "blog",
+    "labs",
+    "market",
+    "contact",
+  ]) {
+    const alts = [
+      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),
+      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${page}/` },
+    ];
+    for (const { dir: d } of LANGS) {
+      urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.65", changefreq: "monthly", alternates: alts });
+    }
+  }
+
   // Per-app account deletion pages (real, localized URLs).
   for (const app of DELETE_ACCOUNT_APPS) {
     for (const { dir: d } of LANGS) {
@@ -670,5 +706,9 @@ writeRobotsTxt();
 writeSitemap();
 runScript("render-news.mjs");
 runScript("render-ideas.mjs");
+runScript("render-studio-hubs.mjs");
+runScript("render-blog.mjs");
+runScript("generate-search-index.mjs");
+runScript("generate-admin-data.mjs");
 
 console.log("i18n build OK:", LANGS.map((l) => l.dir).join(", "));

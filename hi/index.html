@@ -86,329 +86,81 @@
     <link rel="preload" as="image" href="/myworld-logo.png" />
     <link rel="stylesheet" href="/ox-month.css?v=20260822typeall" />
     <link rel="stylesheet" href="/app-landing-extras.css?v=20260822typeall" />
+    <link rel="stylesheet" href="/styles.css?v=20260825studio" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
     <script src="/theme-shell.js"></script>
-    <script src="/lang-nav.js?v=20260821stay2"></script>
+    <script src="/lang-nav.js?v=20260825studio"></script>
+    <script src="/analytics.js?v=20260825studio" defer></script>
+    <script src="/search.js?v=20260825studio" defer></script>
+    <script src="/site-chrome.js?v=20260825gnav" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">सामग्री पर जाएँ</a>
 
     <div id="home" class="site-shell">
-      <header class="site-header">
-        <div class="container navbar-bar navbar-bar--home navbar-bar--brand-header">
-          <div class="navbar-bar__cell navbar-bar__cell--left">
-            <div class="navbar-hub">
-              <a class="navbar-hub__logo js-go-home" href="#" aria-label="Newon होम">
-                <img class="navbar-hub__logo-img" src="/logo.png" alt="" width="44" height="44" decoding="async" />
-              </a>
-              <nav class="nav nav--apps-only" aria-label="Newon ऐप्स">
-            <div class="apps-flyout apps-flyout--in-ox apps-flyout--align-start" data-apps-flyout>
-              <button
-                type="button"
-                class="apps-flyout__trigger apps-flyout__trigger--toolbar ox-apps-toolbar-trigger"
-                id="apps-trigger-home"
-                aria-expanded="false"
-                aria-haspopup="true"
-                aria-controls="apps-panel-home"
-                aria-label="Newon ऐप्स"
-              >
-                <span>Newon के ऐप्स</span>
-                <span class="apps-flyout__chev" aria-hidden="true"></span>
-              </button>
-              <div
-                id="apps-panel-home"
-                class="apps-flyout__panel"
-                role="menu"
-                aria-labelledby="apps-trigger-home"
-                hidden
-              >
-<a href="#ox-month" role="menuitem" class="apps-flyout__item">
-                  <span class="apps-flyout__icon">
-                    <img src="/ox-month-logo.png" alt="" width="44" height="44" />
-                  </span>
-                  <span class="apps-flyout__meta">
-                    <span class="apps-flyout__name">OX MONTH</span>
-                    <span class="apps-flyout__desc">आदतें · O/X · मासिक लॉग</span>
-                  </span>
-                  <span class="apps-flyout__go" aria-hidden="true">→</span>
-                </a>
-<a href="#subping-app" role="menuitem" class="apps-flyout__item">
-                  <span class="apps-flyout__icon">
-                    <img src="/subping-logo.png" alt="" width="44" height="44" />
-                  </span>
-                  <span class="apps-flyout__meta">
-                    <span class="apps-flyout__name">SubPing</span>
-                    <span class="apps-flyout__desc">सब्सक्रिप्शन · रिमाइंडर · एक जगह</span>
-                  </span>
-                  <span class="apps-flyout__go" aria-hidden="true">→</span>
-                </a>
-<a href="#pillmate-app" role="menuitem" class="apps-flyout__item">
-                  <span class="apps-flyout__icon">
-                    <img src="/pillmate-logo.png" alt="" width="44" height="44" />
-                  </span>
-                  <span class="apps-flyout__meta">
-                    <span class="apps-flyout__name">Pillmate</span>
-                    <span class="apps-flyout__desc">दवा की याद · गोलियों का समय</span>
-                  </span>
-                  <span class="apps-flyout__go" aria-hidden="true">→</span>
-                </a>
-<a href="#savy-app" role="menuitem" class="apps-flyout__item">
-                  <span class="apps-flyout__icon">
-                    <img src="/savy-logo.png" alt="" width="44" height="44" />
-                  </span>
-                  <span class="apps-flyout__meta">
-                    <span class="apps-flyout__name">SAVY</span>
-                    <span class="apps-flyout__desc">Spending insight · AI reports</span>
-                  </span>
-                  <span class="apps-flyout__go" aria-hidden="true">→</span>
-                </a>
-<a href="#babylog-app" role="menuitem" class="apps-flyout__item">
-                  <span class="apps-flyout__icon">
-                    <img src="/babylog-logo.png" alt="" width="44" height="44" />
-                  </span>
-                  <span class="apps-flyout__meta">
-                    <span class="apps-flyout__name">BabyLog</span>
-                    <span class="apps-flyout__desc">पालन-पोषण · विकास · परिवार · एआई</span>
-                  </span>
-                  <span class="apps-flyout__go" aria-hidden="true">→</span>
-                </a>
-<a href="#petlog-app" role="menuitem" class="apps-flyout__item">
-                  <span class="apps-flyout__icon">
-                    <img src="/petlog-logo.png" alt="" width="44" height="44" />
-                  </span>
-                  <span class="apps-flyout__meta">
-                    <span class="apps-flyout__name">PetLog</span>
-                    <span class="apps-flyout__desc">पालतू लॉग · स्वास्थ्य · परिवार · एआई</span>
-                  </span>
-                  <span class="apps-flyout__go" aria-hidden="true">→</span>
-                </a>
-<a href="#piggyup-app" role="menuitem" class="apps-flyout__item">
-                  <span class="apps-flyout__icon">
-                    <img src="/piggyup-logo.png" alt="" width="44" height="44" />
-                  </span>
-                  <span class="apps-flyout__meta">
-                    <span class="apps-flyout__name">PiggyUp</span>
-                    <span class="apps-flyout__desc">बचत की आदत · खर्च विश्लेषण · AI कोच</span>
-                  </span>
-                  <span class="apps-flyout__go" aria-hidden="true">→</span>
-                </a>
-<a href="#goalup-app" role="menuitem" class="apps-flyout__item">
-                  <span class="apps-flyout__icon">
-                    <img src="/goalup-logo.png" alt="" width="44" height="44" />
-                  </span>
-                  <span class="apps-flyout__meta">
-                    <span class="apps-flyout__name">GoalUp</span>
-                    <span class="apps-flyout__desc">लक्ष्य प्रबंधन · चैलेंज · विकास रिकॉर्ड</span>
-                  </span>
-                  <span class="apps-flyout__go" aria-hidden="true">→</span>
-                </a>
-<a href="#countup-app" role="menuitem" class="apps-flyout__item">
-                  <span class="apps-flyout__icon">
-                    <img src="/countup-logo.png" alt="" width="44" height="44" />
-                  </span>
-                  <span class="apps-flyout__meta">
-                    <span class="apps-flyout__name">CountUp</span>
-                    <span class="apps-flyout__desc">काउंट रिकॉर्ड · लक्ष्य ट्रैकिंग · विकास</span>
-                  </span>
-                  <span class="apps-flyout__go" aria-hidden="true">→</span>
-                </a>
-<a href="#newon-plus-app" role="menuitem" class="apps-flyout__item">
-                  <span class="apps-flyout__icon">
-                    <img src="/newon-plus-logo.png" alt="" width="44" height="44" />
-                  </span>
-                  <span class="apps-flyout__meta">
-                    <span class="apps-flyout__name">Newon</span>
-                    <span class="apps-flyout__desc">पैकेज सब्सक्रिप्शन · प्रीमियम लाभ · एकीकृत प्रबंधन</span>
-                  </span>
-                  <span class="apps-flyout__go" aria-hidden="true">→</span>
-                </a>
-<a href="#myworld-app" role="menuitem" class="apps-flyout__item">
-                  <span class="apps-flyout__icon">
-                    <img src="/myworld-logo.png" alt="" width="44" height="44" />
-                  </span>
-                  <span class="apps-flyout__meta">
-                    <span class="apps-flyout__name">My World</span>
-                    <span class="apps-flyout__desc">यात्रा जर्नल · यात्रा मानचित्र · एआई रिपोर्ट</span>
-                  </span>
-                  <span class="apps-flyout__go" aria-hidden="true">→</span>
-                </a>
-<a href="/hi/404-human/" role="menuitem" class="apps-flyout__item">
-                  <span class="apps-flyout__icon">
-                    <img src="/404-human-logo.png" alt="" width="44" height="44" />
-                  </span>
-                  <span class="apps-flyout__meta">
-                    <span class="apps-flyout__name">404: HUMAN <span class="apps-flyout__badge">GAME</span></span>
-                    <span class="apps-flyout__desc">एआई सर्वाइवल · विकल्प · एकाधिक अंत</span>
-                  </span>
-                  <span class="apps-flyout__go" aria-hidden="true">→</span>
-                </a>
-              </div>
-            </div>
-              </nav>
-            </div>
-          </div>
-          <div class="navbar-bar__cell navbar-bar__cell--center">
-            <a class="navbar-app-showcase navbar-app-showcase--hub" href="#top" aria-label="Newon होम">
-              <span class="navbar-app-showcase__icon">
-                <img class="navbar-app-showcase__icon-img" src="/logo.png" alt="" width="56" height="56" decoding="async" />
-              </span>
-              <span class="navbar-app-showcase__title">Newon</span>
-              <span class="navbar-app-showcase__tagline">newon@newon.ऐप</span>
-            </a>
-          </div>
-          <div class="navbar-bar__cell navbar-bar__cell--controls">
-          <div class="navbar-bar__controls navbar-bar__controls--brand-toolbar">
-          <div class="navbar-page-links">
-          <a class="navbar-page-link" href="business/">बिज़नेस</a>
-          </div>
-          <div class="lang-switcher" data-lang-switcher>
-            <label class="visually-hidden" for="lang-select-home">भाषा</label>
-            <select id="lang-select-home" class="lang-select lang-select--toolbar" data-lang-select aria-label="भाषा">
-              <option value="ko">한국어</option>
-              <option value="en">अंग्रेज़ी</option>
-              <option value="ja">日本語</option>
-              <option value="es">Español</option>
-              <option value="pt-br">पोर्टुगुएस (ब्राजील)</option>
-              <option value="fr">फ़्रांसीसी</option>
-              <option value="de">deutsch</option>
-              <option value="hi">हिन्दी</option>
-              <option value="id">बहासा इंडोनेशिया</option>
-            </select>
-          </div>
-          <button
-            type="button"
-            class="navbar-theme-toggle"
-            id="home-theme"
-            aria-label="डार्क मोड"
-            title="थीम बदलें"
-          >
-            🌙
-          </button>
-          <button
-            class="nav-toggle nav-toggle--toolbar"
-            type="button"
-            aria-expanded="false"
-            aria-controls="mobile-nav"
-            aria-label="मेनू खोलें"
-          >
-            <span></span><span></span>
-          </button>
-          </div>
+      <header class="gnav site-header" data-gnav>
+      <div class="gnav__bar">
+        <div class="gnav__inner">
+          <a class="gnav__brand" href="./">
+            <img class="gnav__logo" src="/logo.png" alt="Newon" width="36" height="36" decoding="async" />
+            <span class="gnav__wordmark">Newon</span>
+          </a>
+          <nav class="gnav__nav" aria-label="Main navigation">
+            <div class="gnav-dd" data-gnav-dd>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Products<span class="gnav-dd__chev" aria-hidden="true"></span>
+    </button>
+    <div class="gnav-dd__panel gnav-dd__panel--rich" role="menu" hidden>
+      <p class="gnav-dd__kicker">PRODUCTS</p>
+      <a class="gnav-dd__item" href="products/?filter=apps" role="menuitem">
+        <span class="gnav-dd__item-title">Apps</span>
+        <span class="gnav-dd__item-desc">Mobile apps by Newon</span>
+      </a><a class="gnav-dd__item" href="ai/" role="menuitem">
+        <span class="gnav-dd__item-title">AI</span>
+        <span class="gnav-dd__item-desc">AI-powered products</span>
+      </a><a class="gnav-dd__item" href="saas/" role="menuitem">
+        <span class="gnav-dd__item-title">SaaS</span>
+        <span class="gnav-dd__item-desc">Web subscription services</span>
+      </a><a class="gnav-dd__item" href="#newon-plus-app" role="menuitem">
+        <span class="gnav-dd__item-title">Newon+</span>
+        <span class="gnav-dd__item-desc">Newon product ecosystem</span>
+      </a>
+    </div>
+  </div>
+          <a class="gnav__link" href="business/">बिज़नेस</a>
+          <a class="gnav__link" href="games/">Games</a>
+          <a class="gnav__link" href="tools/">Tools</a>
+          <a class="gnav__link" href="store/">Store</a>
+          <a class="gnav__link" href="news/">न्यूज़</a>
+          </nav>
+          <div class="gnav__util">
+            <a class="gnav__cta" href="business/#inquiry">Contact</a>
+            <div class="gnav__lang" data-lang-switcher>
+    <label class="visually-hidden" for="lang-select-gnav-home">भाषा</label>
+    <select id="lang-select-gnav-home" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="भाषा">
+      <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">अंग्रेज़ी</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">पोर्टुगुएस (ब्राजील)</option><option value="fr" data-short="FR">फ़्रांसीसी</option><option value="de" data-short="DE">deutsch</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">बहासा इंडोनेशिया</option>
+    </select>
+  </div>
+            <button type="button" class="gnav__theme" data-theme-toggle data-label-light="लाइट मोड" data-label-dark="डार्क मोड" title="थीम बदलें" aria-label="डार्क मोड">◐</button>
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-home" aria-label="Menu">
+              <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
+            </button>
           </div>
         </div>
-        <div id="mobile-nav" class="mobile-nav mobile-nav--apps-only">
-          <details class="mobile-apps-drawer" id="mobile-apps-drawer">
-            <summary class="mobile-apps-drawer__summary">Newon के ऐप्स</summary>
-<a href="#ox-month" class="mobile-apps-drawer__item">
-              <span class="mobile-apps-drawer__icon">
-                <img src="/ox-month-logo.png" alt="" width="36" height="36" />
-              </span>
-              <span class="mobile-apps-drawer__text">
-                <span class="mobile-apps-drawer__name">OX MONTH</span>
-                <span class="mobile-apps-drawer__hint">ऐप परिचय देखें</span>
-              </span>
-            </a>
-<a href="#subping-app" class="mobile-apps-drawer__item">
-              <span class="mobile-apps-drawer__icon">
-                <img src="/subping-logo.png" alt="" width="36" height="36" />
-              </span>
-              <span class="mobile-apps-drawer__text">
-                <span class="mobile-apps-drawer__name">SubPing</span>
-                <span class="mobile-apps-drawer__hint">SubPing देखें</span>
-              </span>
-            </a>
-<a href="#pillmate-app" class="mobile-apps-drawer__item">
-              <span class="mobile-apps-drawer__icon">
-                <img src="/pillmate-logo.png" alt="" width="36" height="36" />
-              </span>
-              <span class="mobile-apps-drawer__text">
-                <span class="mobile-apps-drawer__name">Pillmate</span>
-                <span class="mobile-apps-drawer__hint">Pillmate देखें</span>
-              </span>
-            </a>
-<a href="#savy-app" class="mobile-apps-drawer__item">
-              <span class="mobile-apps-drawer__icon">
-                <img src="/savy-logo.png" alt="" width="36" height="36" />
-              </span>
-              <span class="mobile-apps-drawer__text">
-                <span class="mobile-apps-drawer__name">SAVY</span>
-                <span class="mobile-apps-drawer__hint">SAVY परिचय खोलें</span>
-              </span>
-            </a>
-<a href="#babylog-app" class="mobile-apps-drawer__item">
-              <span class="mobile-apps-drawer__icon">
-                <img src="/babylog-logo.png" alt="" width="36" height="36" />
-              </span>
-              <span class="mobile-apps-drawer__text">
-                <span class="mobile-apps-drawer__name">BabyLog</span>
-                <span class="mobile-apps-drawer__hint">BabyLog परिचय खोलें</span>
-              </span>
-            </a>
-<a href="#petlog-app" class="mobile-apps-drawer__item">
-              <span class="mobile-apps-drawer__icon">
-                <img src="/petlog-logo.png" alt="" width="36" height="36" />
-              </span>
-              <span class="mobile-apps-drawer__text">
-                <span class="mobile-apps-drawer__name">PetLog</span>
-                <span class="mobile-apps-drawer__hint">PetLog परिचय खोलें</span>
-              </span>
-            </a>
-<a href="#piggyup-app" class="mobile-apps-drawer__item">
-              <span class="mobile-apps-drawer__icon">
-                <img src="/piggyup-logo.png" alt="" width="36" height="36" />
-              </span>
-              <span class="mobile-apps-drawer__text">
-                <span class="mobile-apps-drawer__name">PiggyUp</span>
-                <span class="mobile-apps-drawer__hint">PiggyUp परिचय देखें</span>
-              </span>
-            </a>
-<a href="#goalup-app" class="mobile-apps-drawer__item">
-              <span class="mobile-apps-drawer__icon">
-                <img src="/goalup-logo.png" alt="" width="36" height="36" />
-              </span>
-              <span class="mobile-apps-drawer__text">
-                <span class="mobile-apps-drawer__name">GoalUp</span>
-                <span class="mobile-apps-drawer__hint">GoalUp परिचय देखें</span>
-              </span>
-            </a>
-<a href="#countup-app" class="mobile-apps-drawer__item">
-              <span class="mobile-apps-drawer__icon">
-                <img src="/countup-logo.png" alt="" width="36" height="36" />
-              </span>
-              <span class="mobile-apps-drawer__text">
-                <span class="mobile-apps-drawer__name">CountUp</span>
-                <span class="mobile-apps-drawer__hint">CountUp परिचय देखें</span>
-              </span>
-            </a>
-<a href="#newon-plus-app" class="mobile-apps-drawer__item">
-              <span class="mobile-apps-drawer__icon">
-                <img src="/newon-plus-logo.png" alt="" width="36" height="36" />
-              </span>
-              <span class="mobile-apps-drawer__text">
-                <span class="mobile-apps-drawer__name">Newon</span>
-                <span class="mobile-apps-drawer__hint">Newon+ परिचय देखें</span>
-              </span>
-            </a>
-<a href="#myworld-app" class="mobile-apps-drawer__item">
-              <span class="mobile-apps-drawer__icon">
-                <img src="/myworld-logo.png" alt="" width="36" height="36" />
-              </span>
-              <span class="mobile-apps-drawer__text">
-                <span class="mobile-apps-drawer__name">My World</span>
-                <span class="mobile-apps-drawer__hint">देखें My World परिचय</span>
-              </span>
-            </a>
-<a href="/hi/404-human/" class="mobile-apps-drawer__item">
-              <span class="mobile-apps-drawer__icon">
-                <img src="/404-human-logo.png" alt="" width="36" height="36" />
-              </span>
-              <span class="mobile-apps-drawer__text">
-                <span class="mobile-apps-drawer__name">404: HUMAN <span class="mobile-apps-drawer__badge">GAME</span></span>
-                <span class="mobile-apps-drawer__hint">404: HUMAN देखें</span>
-              </span>
-            </a>
-          </details>
+      </div>
+      <div id="gnav-mobile-home" class="gnav-mobile" hidden aria-hidden="true">
+      <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menu">
+        <div class="gnav-mobile__scroll">
+          <a class="gnav-mobile__link gnav-mobile__link--home" href="./">होम</a>
+          <p class="gnav-mobile__label">Products</p><a class="gnav-mobile__link" href="products/?filter=apps"><span>Apps</span><span class="gnav-mobile__desc">Mobile apps by Newon</span></a><a class="gnav-mobile__link" href="ai/"><span>AI</span><span class="gnav-mobile__desc">AI-powered products</span></a><a class="gnav-mobile__link" href="saas/"><span>SaaS</span><span class="gnav-mobile__desc">Web subscription services</span></a><a class="gnav-mobile__link" href="#newon-plus-app"><span>Newon+</span><span class="gnav-mobile__desc">Newon product ecosystem</span></a>
+        <a class="gnav-mobile__link" href="business/"><span>बिज़नेस</span></a><a class="gnav-mobile__link" href="games/"><span>Games</span></a><a class="gnav-mobile__link" href="tools/"><span>Tools</span></a><a class="gnav-mobile__link" href="store/"><span>Store</span></a><a class="gnav-mobile__link" href="news/"><span>न्यूज़</span></a>
+        <p class="gnav-mobile__label">परिचय</p><a class="gnav-mobile__link" href="about/"><span>About Newon</span></a><a class="gnav-mobile__link" href="portfolio/"><span>पोर्टफोलियो</span></a><a class="gnav-mobile__link" href="contact/"><span>संपर्क</span></a>
+          <a class="gnav-mobile__cta btn btn-primary" href="business/#inquiry">Contact</a>
         </div>
-      </header>
+      </div>
+      <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
+    </div>
+    </header>
 
       <main id="main">
         <section id="top" class="hero hero--ecosystem hero--entered reveal-on-scroll is-visible">
@@ -443,15 +195,23 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
               <div class="hero-actions hero-actions--eco hero-eco-enter" style="--hero-enter-delay: 380ms">
                 <a
                   class="btn btn-primary hero-btn-primary"
-                  href="#build"
+                  href="products/"
                   aria-label="Newon ऐप्स देखें"
                 >ऐप्स देखें</a>
                 <a
                   class="btn btn-ghost hero-btn-secondary"
-                  href="#home-explore"
+                  href="business/#inquiry"
                   aria-label="पोर्टफोलियो, समाचार, विचार और व्यवसाय का अन्वेषण करें"
                 >Newon का अन्वेषण करें</a>
               </div>
+              <nav class="hub-strip hero-eco-enter" style="--hero-enter-delay: 420ms" aria-label="Newon areas">
+                <a href="products/?filter=apps">ऐप्स</a>
+                <a href="ai/">AI</a>
+                <a href="games/">Games</a>
+                <a href="saas/">SaaS</a>
+                <a href="business/">व्यापार</a>
+                <a href="tools/">Tools</a>
+              </nav>
               <div class="hero-actions hero-store-links hero-eco-enter" style="--hero-enter-delay: 460ms">
                 <a
                   class="hero-store-link hero-store-link--apple"
@@ -763,6 +523,23 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
           </div>
         </section>
 
+        <section id="what-we-do" class="home-what-we-do reveal-on-scroll">
+          <div class="container">
+            <p class="section-label">WHAT WE DO</p>
+            <h2 class="section-title">From idea to launch and growth.</h2>
+            <div class="home-what-grid">
+              <a class="home-what-card" href="products/?filter=apps"><span class="home-what-card__n">01</span><span class="home-what-card__title">ऐप्स</span><p class="home-what-card__body">Mobile services that solve everyday problems.</p></a>
+              <a class="home-what-card" href="ai/"><span class="home-what-card__n">02</span><span class="home-what-card__title">AI</span><p class="home-what-card__body">AI products you can actually use at work and home.</p></a>
+              <a class="home-what-card" href="games/"><span class="home-what-card__n">03</span><span class="home-what-card__title">Games</span><p class="home-what-card__body">Games and worlds built for play.</p></a>
+              <a class="home-what-card" href="saas/"><span class="home-what-card__n">04</span><span class="home-what-card__title">SaaS</span><p class="home-what-card__body">Subscription web services ready in the browser.</p></a>
+              <a class="home-what-card" href="business/"><span class="home-what-card__n">05</span><span class="home-what-card__title">व्यापार</span><p class="home-what-card__body">Web, app, MVP, and AI products with partners.</p></a>
+              <a class="home-what-card" href="studio/"><span class="home-what-card__n">06</span><span class="home-what-card__title">Studio</span><p class="home-what-card__body">Brand, UI/UX, and web experience design.</p></a>
+              <a class="home-what-card" href="tools/"><span class="home-what-card__n">07</span><span class="home-what-card__title">Tools</span><p class="home-what-card__body">Free digital tools anyone can use.</p></a>
+              <a class="home-what-card" href="media/"><span class="home-what-card__n">08</span><span class="home-what-card__title">Media</span><p class="home-what-card__body">How we build and what we learn along the way.</p></a>
+            </div>
+          </div>
+        </section>
+
         <!-- HOME_MORE_START -->
         <div class="home-more" id="explore">
           <div class="about-hub-inner">
@@ -812,8 +589,8 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
               <p class="about-hub-kicker">एक्सप्लोर करें NEWON</p>
               <h2 id="home-explore-title">Newon का और अधिक अन्वेषण करें।</h2>
               <p>उत्पादों और समाचारों से लेकर आपके विचारों और व्यावसायिक सहयोग तक - Newon के विभिन्न पक्षों से मिलें।</p>
-              <div class="about-hub-navs">
-                <a class="about-hub-nav" href="portfolio/">
+              <div class="about-hub-navs about-hub-navs--6">
+                <a class="about-hub-nav" href="products/">
                   <span class="about-hub-nav__num">01</span>
                   <span>
                     <span class="about-hub-nav__title">पोर्टफोलियो</span>
@@ -821,7 +598,7 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
                   </span>
                   <span class="about-hub-nav__go">प्रोजेक्ट देखें →</span>
                 </a>
-                <a class="about-hub-nav" href="news/">
+                <a class="about-hub-nav" href="business/">
                   <span class="about-hub-nav__num">02</span>
                   <span>
                     <span class="about-hub-nav__title">न्यूज़ और अपडेट</span>
@@ -829,7 +606,7 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
                   </span>
                   <span class="about-hub-nav__go">अपडेट पढ़ें →</span>
                 </a>
-                <a class="about-hub-nav" href="ideas/">
+                <a class="about-hub-nav" href="games/">
                   <span class="about-hub-nav__num">03</span>
                   <span>
                     <span class="about-hub-nav__title">Newon आइडियाज़</span>
@@ -837,7 +614,7 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
                   </span>
                   <span class="about-hub-nav__go">एक विचार भेजें →</span>
                 </a>
-                <a class="about-hub-nav" href="business/">
+                <a class="about-hub-nav" href="tools/">
                   <span class="about-hub-nav__num">04</span>
                   <span>
                     <span class="about-hub-nav__title">Newon बिज़नेस</span>
@@ -845,6 +622,27 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
                   </span>
                   <span class="about-hub-nav__go">व्यवसाय का अन्वेषण करें →</span>
                 </a>
+                <a class="about-hub-nav" href="store/">
+                  <span class="about-hub-nav__num">05</span>
+                  <span>
+                    <span class="about-hub-nav__title">Store</span>
+                    <span class="about-hub-nav__desc">Templates, prompts, guides.</span>
+                  </span>
+                  <span class="about-hub-nav__go">View →</span>
+                </a>
+                <a class="about-hub-nav" href="news/">
+                  <span class="about-hub-nav__num">06</span>
+                  <span>
+                    <span class="about-hub-nav__title">समाचार</span>
+                    <span class="about-hub-nav__desc">Official product updates.</span>
+                  </span>
+                  <span class="about-hub-nav__go">Read →</span>
+                </a>
+              </div>
+              <div class="about-hub-navs-secondary">
+                <a href="portfolio/">पोर्टफोलियो</a>
+                <a href="ideas/">Newon Idea</a>
+                <a href="media/">Media</a>
               </div>
             </section>
           </div>
@@ -876,6 +674,29 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
 
       </main>
 
+      <script>
+      (function(){
+        document.querySelectorAll('[data-snav-dd]').forEach(function(dd){
+          var trigger=dd.querySelector('.snav-dd__trigger');
+          var panel=dd.querySelector('.snav-dd__panel');
+          if(!trigger||!panel)return;
+          trigger.addEventListener('click',function(e){
+            e.stopPropagation();
+            var open=trigger.getAttribute('aria-expanded')==='true';
+            trigger.setAttribute('aria-expanded',open?'false':'true');
+            panel.hidden=open;
+          });
+        });
+        document.addEventListener('click',function(){
+          document.querySelectorAll('[data-snav-dd] .snav-dd__panel:not([hidden])').forEach(function(p){
+            p.hidden=true;
+            var t=p.closest('[data-snav-dd]').querySelector('.snav-dd__trigger');
+            if(t)t.setAttribute('aria-expanded','false');
+          });
+        });
+      })();
+      </script>
+
       <footer class="site-footer">
         <div class="container footer-inner">
           <div class="footer-brand">
@@ -892,6 +713,14 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
             <a class="footer-link" href="https://newon.app">https://newon.app</a>
             <p class="footer-copy">विचारों को हकीकत से जोड़ने वाला ऐप स्टूडियो</p>
             <div class="footer-legal-links">
+              <a class="footer-legal" href="products/">Products</a>
+              <span class="footer-legal-sep" aria-hidden="true">·</span>
+              <a class="footer-legal" href="tools/">Tools</a>
+              <span class="footer-legal-sep" aria-hidden="true">·</span>
+              <a class="footer-legal" href="business/">Business</a>
+              <span class="footer-legal-sep" aria-hidden="true">·</span>
+              <a class="footer-legal" href="portfolio/">Portfolio</a>
+              <span class="footer-legal-sep" aria-hidden="true">·</span>
               <a class="footer-legal" href="privacy/">गोपनीयता नीति</a>
               <span class="footer-legal-sep" aria-hidden="true">·</span>
               <a class="footer-legal" href="terms/">सेवा की शर्तें</a>
@@ -1591,6 +1420,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="ox-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="ox-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -1798,6 +1645,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2155,6 +2020,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3009,6 +2892,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="pm-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pm-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -3181,6 +3082,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3530,6 +3449,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4387,6 +4324,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="sv-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="sv-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -4549,6 +4504,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4903,6 +4876,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5757,6 +5748,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="bl-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="bl-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -5929,6 +5938,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6293,6 +6320,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7146,6 +7191,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="pl-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pl-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -7318,6 +7381,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7682,6 +7763,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8538,6 +8637,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="pu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pu-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -8710,6 +8827,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9064,6 +9199,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9923,6 +10076,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="gu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="gu-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -10095,6 +10266,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10449,6 +10638,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11308,6 +11515,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="cu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="cu-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -11470,6 +11695,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11824,6 +12067,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12680,6 +12941,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="np-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="np-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -13084,6 +13363,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13940,6 +14237,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="mw-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="mw-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -14112,6 +14427,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14466,6 +14799,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -15326,6 +15677,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="sp-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="sp-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -15500,6 +15869,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -15849,6 +16236,24 @@ Newon के ऐप्स रोज़मर्रा की ज़िंदग�
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

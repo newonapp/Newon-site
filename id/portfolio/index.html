@@ -33,6 +33,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
     <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260822founder" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
     <script src="/theme-shell.js"></script>
@@ -208,8 +209,17 @@
         <div class="pf-wrap">
           <p class="pf-label">Projects</p>
           <h2>Proyek unggulan</h2>
+          <div class="hub-filters" data-portfolio-filters>
+            <button type="button" class="hub-filter is-active" data-pf-filter="all">All</button>
+            <button type="button" class="hub-filter" data-pf-filter="apps">Apps</button>
+            <button type="button" class="hub-filter" data-pf-filter="games">Games</button>
+            <button type="button" class="hub-filter" data-pf-filter="web">Web</button>
+            <button type="button" class="hub-filter" data-pf-filter="design">Design</button>
+            <button type="button" class="hub-filter" data-pf-filter="experiments">Experiments</button>
+          </div>
+          <div data-pf-grid>
           
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/newon-plus-logo.png" alt="Logo Newon" width="56" height="56" />
             <h3>Newon+</h3>
@@ -226,7 +236,7 @@
           <div class="pf-shots" tabindex="0" aria-label="Layar aplikasi Newon+"><figure><img src="/i18n-img/en/np-showcase-01.png" alt="Newon — Ide jadi app; platform kehidupan dengan 12+ app dan satu akun" width="1242" height="2688" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-02.png" alt="Newon — Hubungkan semua app Newon dengan satu akun" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-03.png" alt="Newon — Produktivitas, keuangan, kesehatan, dan parenting dalam satu tempat" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-04.png" alt="Newon — Pilih paket yang cocok untuk Anda" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/np-showcase-05.png" alt="Newon — 12+ app, 177 negara, 13 bahasa" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/babylog-logo.png" alt="BabyLog logo aplikasi: huruf 3D merah muda pastel mengkilap B dengan warna putih" width="56" height="56" />
             <h3>BabyLog</h3>
@@ -243,7 +253,7 @@
           <div class="pf-shots" tabindex="0" aria-label="Layar aplikasi BabyLog"><figure><img src="/i18n-img/en/bl-showcase-01.png" alt="BabyLog intro — pengasuhan anak yang lebih cerdas dan didukung AI; abadikan setiap momen anak Anda dengan BabyLog" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/bl-showcase-02.png" alt="BabyLog Catatan — kelola jadwal anak dan keluarga Anda di satu tempat; AI premium" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/bl-showcase-03.png" alt="BabyLog Kalender — semua catatan pengasuhan harian Anda di satu tempat, rencana dan ringkasan bulan Mei" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/bl-showcase-04.png" alt="BabyLog Komunitas — terhubung dengan orang tua secara real time; berbagi cerita dan kekhawatiran" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/bl-showcase-05.png" alt="BabyLog Arsip pengasuhan anak — ubah setiap momen menjadi kisah pertumbuhan yang indah; memori AI" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/bl-showcase-06.png" alt="BabyLog Tambah catatan — menambahkan catatan penting dengan lebih cepat dan mudah" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/bl-showcase-07.png" alt="BabyLog Premium — melampaui rekor, wawasan pertumbuhan terperinci, dan alat AI" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/petlog-logo.png" alt="ikon logo aplikasi" width="56" height="56" />
             <h3>PetLog</h3>
@@ -260,7 +270,7 @@
           <div class="pf-shots" tabindex="0" aria-label="Layar aplikasi PetLog"><figure><img src="/i18n-img/en/pl-showcase-01.png" alt="PetLog — kehidupan hewan peliharaan yang lebih cerdas dengan AI; setiap momen bersama hewan peliharaanmu di PetLog" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/pl-showcase-02.png" alt="PetLog — semua pemberian makan, jalan-jalan, dan pencatatan harian secara bersamaan" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/pl-showcase-03.png" alt="Sekilas jadwal &amp; kesehatan" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/pl-showcase-04.png" alt="komunitas — berbagi tips dan cerita dengan orang tua hewan peliharaan lainnya" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/pl-showcase-05.png" alt="PetLog brankas media — foto dan riwayat aktivitas di satu tempat" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/pl-showcase-06.png" alt="PetLog catatan cepat — makanan, jalan-jalan, dan kesehatan dicatat dengan cepat" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/pl-showcase-07.png" alt="PetLog Premium — wawasan kesehatan &amp; laporan yang dipersonalisasi" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/myworld-logo.png" alt="My World logo aplikasi: globe" width="56" height="56" />
             <h3>My World</h3>
@@ -277,7 +287,7 @@
           <div class="pf-shots" tabindex="0" aria-label="Layar aplikasi My World"><figure><img src="/i18n-img/en/mw-showcase-01.png" alt="My World — Abadikan setiap perjalanan" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/mw-showcase-02.png" alt="My World — Peta negara dan kota yang dikunjungi" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/mw-showcase-03.png" alt="My World — Peta rute perjalanan" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/mw-showcase-04.png" alt="My World — Laporan perjalanan AI" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/mw-showcase-05.png" alt="My World — Catatan kunjungan kota dan wilayah" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/mw-showcase-06.png" alt="My World — Komunitas" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/mw-showcase-07.png" alt="My World — Rencana dan koleksi perjalanan" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
 
-        <article class="pf-case pf-reveal">
+        <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
             <img class="pf-case__icon" src="/savy-logo.png" alt="logo aplikasi: dompet, kartu, dan koin won Korea" width="56" height="56" />
             <h3>SAVY</h3>
@@ -293,6 +303,10 @@
           </div>
           <div class="pf-shots" tabindex="0" aria-label="Layar aplikasi SAVY"><figure><img src="/i18n-img/en/sv-showcase-01.png" alt="SAVY — Lihat pengeluaran Anda secara sekilas. Pelacakan pengeluaran cerdas didukung oleh AI" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/sv-showcase-02.png" alt="SAVY — Kelola pendapatan, pengeluaran, dan kategori di satu tempat" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/sv-showcase-03.png" alt="SAVY — Analisis tingkat lanjut yang didukung oleh AI" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/sv-showcase-04.png" alt="SAVY — Belanja lebih cerdas dengan fitur premium" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/sv-showcase-05.png" alt="SAVY — Pelacakan pengeluaran yang cepat dan sederhana (tambahkan entri)" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure><figure><img src="/i18n-img/en/sv-showcase-06.png" alt="SAVY — Notifikasi cerdas sehingga Anda tidak akan melewatkan rekaman apa pun" width="1242" height="2688" loading="lazy" decoding="async" sizes="(max-width: 900px) 52vw, 176px" /></figure></div>
         </article>
+          </div>
+          <a class="pf-case" data-pf-type="games" href="https://www.newon.app/id/404-human/" style="display:block;margin-top:1rem;text-decoration:none;color:inherit">
+            <div class="pf-case__inner"><h3>404: HUMAN</h3><p class="pf-case__sum">Newon Games — Live</p></div>
+          </a>
         </div>
       </section>
 
