@@ -107,7 +107,7 @@ function renderPost(langDir, post) {
   const htmlBody = mdToHtml(post.body);
   const mins = readingTime(post.body);
   const title = escapeHtml(post.title || post.slug);
-  const canonical = `${SITE_ORIGIN}/${langDir}/blog/${post.slug}/`;
+  const canonical = `${SITE_ORIGIN}/${langDir}/resources/blog/${post.slug}/`;
   const main = `<article class="hub-inner hub-section blog-post">
     <header class="blog-post__head">
       <p class="hub-eyebrow">${escapeHtml(post.category || "Blog")}</p>
@@ -117,7 +117,7 @@ function renderPost(langDir, post) {
     </header>
     <div class="blog-post__body">${htmlBody}</div>
   </article>`;
-  const header = renderStudioHeader(flat, flatEn, { activeNav: "about" });
+  const header = renderStudioHeader(flat, flatEn, { activeNav: "resources", base: "../../../" });
   const footer = renderStudioFooter(flat, flatEn);
   const html = applyTemplate(SHELL, flat, flatEn, {
     HTML_LANG: lang.htmlLang,
@@ -125,7 +125,7 @@ function renderPost(langDir, post) {
     META_DESCRIPTION: escapeHtml(post.description || ""),
     CANONICAL: canonical,
     OG_LOCALE: OG_LOCALE[langDir] || "en_US",
-    HREFLANG_BLOCK: hreflangBlock(`blog/${post.slug}`),
+    HREFLANG_BLOCK: hreflangBlock(`resources/blog/${post.slug}`),
     SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
     CHROME_HEADER: header,
     MAIN_CONTENT: main,
@@ -133,9 +133,16 @@ function renderPost(langDir, post) {
     EXTRA_CSS: '<link rel="stylesheet" href="/blog/blog.css?v=20260825studio" />',
     EXTRA_SCRIPTS: "",
   });
-  const out = path.join(ROOT, langDir, "blog", post.slug, "index.html");
+  const out = path.join(ROOT, langDir, "resources", "blog", post.slug, "index.html");
   ensureDir(out);
   fs.writeFileSync(out, html);
+  // Legacy alias
+  const legacy = path.join(ROOT, langDir, "blog", post.slug, "index.html");
+  ensureDir(legacy);
+  fs.writeFileSync(
+    legacy,
+    `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta http-equiv="refresh" content="0;url=/${langDir}/resources/blog/${post.slug}/"/><link rel="canonical" href="${SITE_ORIGIN}/${langDir}/resources/blog/${post.slug}/"/><title>Redirect</title></head><body><p><a href="/${langDir}/resources/blog/${post.slug}/">Continue</a></p></body></html>\n`
+  );
 }
 
 function blogIndexBody(posts, flat, flatEn) {
@@ -162,34 +169,17 @@ export function getPublishedPosts(lang) {
   return loadPosts(lang).filter((p) => p.status === "published");
 }
 
-/** Overwrite blog hub index with published posts list (other langs keep studio renderer if no posts). */
+/** Publish markdown posts under resources/blog/; keep /blog/ as redirect alias. */
 export function renderBlogPages() {
   for (const langDir of POST_LANGS) {
     const published = getPublishedPosts(langDir);
     published.forEach((post) => renderPost(langDir, post));
-    if (!published.length) continue;
-    const { flat, flatEn, lang } = localeFlat(langDir);
-    const header = renderStudioHeader(flat, flatEn, { activeNav: "about" });
-    const footer = renderStudioFooter(flat, flatEn);
-    const body = blogIndexBody(published, flat, flatEn);
-    const html = applyTemplate(SHELL, flat, flatEn, {
-      HTML_LANG: lang.htmlLang,
-      TITLE: escapeHtml(pick(flat, flatEn, "studio.blogSeoTitle") || "Blog — Newon"),
-      META_DESCRIPTION: escapeHtml(pick(flat, flatEn, "studio.blogMetaDescription") || ""),
-      CANONICAL: `${SITE_ORIGIN}/${langDir}/blog/`,
-      OG_LOCALE: OG_LOCALE[langDir] || "en_US",
-      HREFLANG_BLOCK: hreflangBlock("blog"),
-      SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
-      CHROME_HEADER: header,
-      MAIN_CONTENT: body,
-      CHROME_FOOTER: footer,
-      EXTRA_CSS: "",
-      EXTRA_SCRIPTS: "",
-    });
+    // Always keep flat /blog/ as redirect to resources hub (resources renderer owns the hub UI)
+    const redirect = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta http-equiv="refresh" content="0;url=/${langDir}/resources/blog/"/><link rel="canonical" href="${SITE_ORIGIN}/${langDir}/resources/blog/"/><title>Redirect</title></head><body><p><a href="/${langDir}/resources/blog/">Continue</a></p></body></html>\n`;
     ensureDir(path.join(ROOT, langDir, "blog", "index.html"));
-    fs.writeFileSync(path.join(ROOT, langDir, "blog", "index.html"), html);
+    fs.writeFileSync(path.join(ROOT, langDir, "blog", "index.html"), redirect);
   }
-  console.log("render-blog: pipeline OK (draft posts excluded)");
+  console.log("render-blog: pipeline OK (draft posts excluded; hub via resources)");
 }
 
 if (process.argv[1] && process.argv[1].endsWith("render-blog.mjs")) {

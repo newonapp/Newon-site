@@ -32,9 +32,9 @@
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css?v=20260825studio" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
-    
+    <link rel="stylesheet" href="/styles.css?v=20260825premium" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
+    <link rel="stylesheet" href="/ai-hub.css?v=20260825ai7" />
     <script src="/theme-shell.js"></script>
     <script src="/lang-nav.js?v=20260825studio"></script>
     <script src="/analytics.js?v=20260825studio" defer></script>
@@ -45,36 +45,185 @@
       <div class="gnav__bar">
         <div class="gnav__inner">
           <a class="gnav__brand" href="../">
-            <img class="gnav__logo" src="/logo.png" alt="Newon" width="36" height="36" decoding="async" />
+            <img class="gnav__logo" src="/logo.png" alt="Newon" width="40" height="40" decoding="async" />
             <span class="gnav__wordmark">Newon</span>
           </a>
           <nav class="gnav__nav" aria-label="주요 메뉴">
-            <div class="gnav-dd gnav-dd--active" data-gnav-dd>
+            <div class="gnav-dd gnav-dd--active" data-gnav-dd data-gnav-menu="products">
     <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-current="page">
-      Products<span class="gnav-dd__chev" aria-hidden="true"></span>
+      Products<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-    <div class="gnav-dd__panel gnav-dd__panel--rich" role="menu" hidden>
-      <p class="gnav-dd__kicker">PRODUCTS</p>
-      <a class="gnav-dd__item" href="../products/?filter=apps" role="menuitem">
-        <span class="gnav-dd__item-title">Apps</span>
-        <span class="gnav-dd__item-desc">Newon의 모바일 제품</span>
-      </a><a class="gnav-dd__item" href="../ai/" role="menuitem">
-        <span class="gnav-dd__item-title">AI</span>
-        <span class="gnav-dd__item-desc">AI 기반 제품</span>
-      </a><a class="gnav-dd__item" href="../saas/" role="menuitem">
-        <span class="gnav-dd__item-title">SaaS</span>
-        <span class="gnav-dd__item-desc">웹 기반 구독 서비스</span>
-      </a><a class="gnav-dd__item" href="#newon-plus-app" role="menuitem">
-        <span class="gnav-dd__item-title">Newon+</span>
-        <span class="gnav-dd__item-desc">Newon 제품 생태계</span>
-      </a>
+    <div class="gnav-mega" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">PRODUCTS</p>
+      <p class="gnav-mega__lead">Newon이 직접 만드는 제품</p>
+    </div>
+    <div class="gnav-mega__list" role="none">
+      <a class="gnav-mega__row" href="../apps/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Apps</span>
+        <span class="gnav-mega__row-desc">Newon의 모바일 제품</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../ai/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">AI</span>
+        <span class="gnav-mega__row-desc">AI 기반 제품</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../saas/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">SaaS</span>
+        <span class="gnav-mega__row-desc">웹 기반 구독 서비스</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../games/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Games</span>
+        <span class="gnav-mega__row-desc">Newon이 만드는 게임과 인터랙티브 경험</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../tools/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Tools</span>
+        <span class="gnav-mega__row-desc">무료로 바로 사용할 수 있는 웹 도구</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../products/">View all products →</a></p></div>
+      </div>
     </div>
   </div>
-          <a class="gnav__link" href="../business/">비즈니스</a>
-          <a class="gnav__link" href="../games/">Games</a>
-          <a class="gnav__link" href="../tools/">Tools</a>
-          <a class="gnav__link" href="../store/">Store</a>
-          <a class="gnav__link" href="../news/">뉴스</a>
+          <div class="gnav-dd" data-gnav-dd data-gnav-menu="business">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Business<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="gnav-mega" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">BUSINESS</p>
+      <p class="gnav-mega__lead">아이디어를 실제 디지털 제품으로</p>
+      <p class="gnav-mega__subkicker">Services</p>
+    </div>
+    <div class="gnav-mega__grid gnav-mega__grid--business">
+      <a class="gnav-mega__cell" href="../business/mvp/" role="menuitem">
+    <span class="gnav-mega__cell-title">MVP Development</span>
+    <span class="gnav-mega__cell-desc">아이디어를 빠르게 실제 제품으로</span>
+  </a>
+      <a class="gnav-mega__cell" href="../business/web/" role="menuitem">
+    <span class="gnav-mega__cell-title">Web Development</span>
+    <span class="gnav-mega__cell-desc">브랜드와 서비스를 위한 웹 구축</span>
+  </a>
+      <a class="gnav-mega__cell" href="../business/app/" role="menuitem">
+    <span class="gnav-mega__cell-title">App Development</span>
+    <span class="gnav-mega__cell-desc">iOS · Android 제품 개발</span>
+  </a>
+      <a class="gnav-mega__cell" href="../business/ai-automation/" role="menuitem">
+    <span class="gnav-mega__cell-title">AI Automation</span>
+    <span class="gnav-mega__cell-desc">AI 기능과 업무 자동화</span>
+  </a>
+      <a class="gnav-mega__cell" href="../business/white-label/" role="menuitem">
+    <span class="gnav-mega__cell-title">White-label</span>
+    <span class="gnav-mega__cell-desc">기존 기술을 활용한 맞춤형 제품</span>
+  </a>
+      <a class="gnav-mega__cell" href="../business/design/" role="menuitem">
+    <span class="gnav-mega__cell-title">Design &amp; Branding</span>
+    <span class="gnav-mega__cell-desc">UI/UX · Product · Brand Design</span>
+  </a>
+    </div>
+    <div class="gnav-mega__foot gnav-mega__foot--split">
+      <a class="gnav-mega__foot-link" href="../business/">Business 알아보기 →</a>
+      <a class="gnav-mega__foot-link gnav-mega__foot-link--strong" href="../business/#inquiry">프로젝트 문의 →</a>
+    </div></div>
+      </div>
+    </div>
+  </div>
+          <div class="gnav-dd" data-gnav-dd data-gnav-menu="resources">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="gnav-mega" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">RESOURCES</p>
+      <p class="gnav-mega__lead">Newon이 만드는 지식과 디지털 자료</p>
+    </div>
+    <div class="gnav-mega__grid gnav-mega__grid--resources">
+      <a class="gnav-mega__cell" href="../resources/store/" role="menuitem">
+    <span class="gnav-mega__cell-title">Store</span>
+    <span class="gnav-mega__cell-desc">템플릿 · 프롬프트 · 디지털 상품</span>
+  </a>
+      <a class="gnav-mega__cell" href="../resources/blog/" role="menuitem">
+    <span class="gnav-mega__cell-title">Blog</span>
+    <span class="gnav-mega__cell-desc">제품 · AI · 개발 · 비즈니스 기록</span>
+  </a>
+      <a class="gnav-mega__cell" href="../resources/media/" role="menuitem">
+    <span class="gnav-mega__cell-title">Media</span>
+    <span class="gnav-mega__cell-desc">Newon의 콘텐츠</span>
+  </a>
+      <a class="gnav-mega__cell" href="../resources/labs/" role="menuitem">
+    <span class="gnav-mega__cell-title">Labs</span>
+    <span class="gnav-mega__cell-desc">새로운 제품과 비즈니스 실험</span>
+  </a>
+      <a class="gnav-mega__cell" href="../resources/newsletter/" role="menuitem">
+    <span class="gnav-mega__cell-title">Newsletter</span>
+    <span class="gnav-mega__cell-desc">Newon 업데이트</span>
+  </a>
+      <a class="gnav-mega__cell" href="../resources/education/" role="menuitem">
+    <span class="gnav-mega__cell-title">Education</span>
+    <span class="gnav-mega__cell-desc">가이드와 교육 콘텐츠</span>
+  </a>
+    </div></div>
+      </div>
+    </div>
+  </div>
+          <div class="gnav-dd" data-gnav-dd data-gnav-menu="company">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="gnav-mega" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">COMPANY</p>
+      <p class="gnav-mega__lead">Newon에 대해 알아보기</p>
+    </div>
+    <div class="gnav-mega__grid gnav-mega__grid--company">
+      <a class="gnav-mega__cell gnav-mega__cell--arrow" href="../about/" role="menuitem">
+    <span class="gnav-mega__cell-title">About Newon<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span></span>
+    <span class="gnav-mega__cell-desc">Newon 소개</span>
+  </a>
+      <a class="gnav-mega__cell gnav-mega__cell--arrow" href="../portfolio/" role="menuitem">
+    <span class="gnav-mega__cell-title">Portfolio<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span></span>
+    <span class="gnav-mega__cell-desc">제품과 프로젝트</span>
+  </a>
+      <a class="gnav-mega__cell gnav-mega__cell--arrow" href="../news/" role="menuitem">
+    <span class="gnav-mega__cell-title">News<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span></span>
+    <span class="gnav-mega__cell-desc">공식 업데이트</span>
+  </a>
+      <a class="gnav-mega__cell gnav-mega__cell--arrow" href="../ideas/" role="menuitem">
+    <span class="gnav-mega__cell-title">Newon Idea<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span></span>
+    <span class="gnav-mega__cell-desc">아이디어 제안</span>
+  </a>
+      <a class="gnav-mega__cell gnav-mega__cell--arrow" href="../contact/" role="menuitem">
+    <span class="gnav-mega__cell-title">Contact<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span></span>
+    <span class="gnav-mega__cell-desc">문의</span>
+  </a>
+    </div>
+    <div class="gnav-mega__brand">
+      <p class="gnav-mega__brand-name">NEWON</p>
+      <p class="gnav-mega__brand-line">Digital Product Studio</p>
+      <a class="gnav-mega__brand-email" href="mailto:newon@newon.app">newon@newon.app</a>
+    </div></div>
+      </div>
+    </div>
+  </div>
           </nav>
           <div class="gnav__util">
             <a class="gnav__cta" href="../business/#inquiry">문의하기</a>
@@ -84,7 +233,7 @@
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">English</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Deutsch</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonesia</option>
     </select>
   </div>
-            <button type="button" class="gnav__theme" data-theme-toggle data-label-light="라이트 모드로 전환" data-label-dark="다크 모드로 전환" title="테마 전환" aria-label="다크 모드로 전환">◐</button>
+            <button type="button" class="gnav__theme" data-theme-toggle data-label-light="라이트 모드로 전환" data-label-dark="다크 모드로 전환" title="테마 전환" aria-label="다크 모드로 전환"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
             <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-hub" aria-label="메뉴">
               <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
             </button>
@@ -94,100 +243,522 @@
       <div id="gnav-mobile-hub" class="gnav-mobile" hidden aria-hidden="true">
       <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="메뉴">
         <div class="gnav-mobile__scroll">
-          <a class="gnav-mobile__link gnav-mobile__link--home" href="../">홈</a>
-          <p class="gnav-mobile__label">Products</p><a class="gnav-mobile__link" href="../products/?filter=apps"><span>Apps</span><span class="gnav-mobile__desc">Newon의 모바일 제품</span></a><a class="gnav-mobile__link" href="../ai/"><span>AI</span><span class="gnav-mobile__desc">AI 기반 제품</span></a><a class="gnav-mobile__link" href="../saas/"><span>SaaS</span><span class="gnav-mobile__desc">웹 기반 구독 서비스</span></a><a class="gnav-mobile__link" href="#newon-plus-app"><span>Newon+</span><span class="gnav-mobile__desc">Newon 제품 생태계</span></a>
-        <a class="gnav-mobile__link" href="../business/"><span>비즈니스</span></a><a class="gnav-mobile__link" href="../games/"><span>Games</span></a><a class="gnav-mobile__link" href="../tools/"><span>Tools</span></a><a class="gnav-mobile__link" href="../store/"><span>Store</span></a><a class="gnav-mobile__link" href="../news/"><span>뉴스</span></a>
-        <p class="gnav-mobile__label">회사 소개</p><a class="gnav-mobile__link" href="../about/"><span>About Newon</span></a><a class="gnav-mobile__link" href="../portfolio/"><span>포트폴리오</span></a><a class="gnav-mobile__link" href="../contact/"><span>연락처</span></a>
-          <a class="gnav-mobile__cta btn btn-primary" href="../business/#inquiry">문의하기</a>
+          <div class="gnav-mobile__acc" data-gnav-acc>
+        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Products<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../apps/">Apps</a><a class="gnav-mobile__sublink" href="../ai/">AI</a><a class="gnav-mobile__sublink" href="../saas/">SaaS</a><a class="gnav-mobile__sublink" href="../games/">Games</a><a class="gnav-mobile__sublink" href="../tools/">Tools</a><a class="gnav-mobile__sublink" href="../products/">전체 제품</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Business<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../business/mvp/">MVP Development</a><a class="gnav-mobile__sublink" href="../business/web/">Web Development</a><a class="gnav-mobile__sublink" href="../business/app/">App Development</a><a class="gnav-mobile__sublink" href="../business/ai-automation/">AI Automation</a><a class="gnav-mobile__sublink" href="../business/white-label/">White-label</a><a class="gnav-mobile__sublink" href="../business/design/">Design &amp; Branding</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../resources/media/">Media</a><a class="gnav-mobile__sublink" href="../resources/labs/">Labs</a><a class="gnav-mobile__sublink" href="../resources/newsletter/">Newsletter</a><a class="gnav-mobile__sublink" href="../resources/education/">Education</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../about/">About Newon</a><a class="gnav-mobile__sublink" href="../portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="../news/">News</a><a class="gnav-mobile__sublink" href="../ideas/">Newon Idea</a><a class="gnav-mobile__sublink" href="../contact/">Contact</a></div>
+      </div>
+          <div class="gnav-mobile__divider" aria-hidden="true"></div>
+          <a class="gnav-mobile__cta btn btn-primary" href="../business/#inquiry">프로젝트 문의</a>
+          <div class="gnav-mobile__util-row">
+            <div class="gnav__lang" data-lang-switcher>
+    <label class="visually-hidden" for="lang-select-mobile-hub">언어</label>
+    <select id="lang-select-mobile-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="언어">
+      <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">English</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Deutsch</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonesia</option>
+    </select>
+  </div>
+            <button type="button" class="gnav__theme gnav__theme--mobile" data-theme-toggle data-label-light="라이트 모드로 전환" data-label-dark="다크 모드로 전환" title="테마 전환" aria-label="테마 전환"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
         </div>
       </div>
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
     </div>
     </header>
     <main id="hub-main" class="hub-page">
-      <section class="hub-hero hub-inner">
-    <p class="hub-eyebrow">NEWON AI</p>
-    <h1 class="hub-title">AI as products you can
-actually use.</h1>
-    <div class="hub-hero__actions"><a class="btn btn-primary" href="../business/#inquiry" data-analytics="business_cta_click">AI 프로젝트 문의하기</a></div>
+      <div class="ai-page" data-ai-page>
+  <section class="ai-hero" data-ai-reveal>
+    <div class="ai-hero__inner hub-inner">
+      <div class="ai-hero__copy">
+        <p class="ai-hero__eyebrow">NEWON AI</p>
+        <h1 class="ai-hero__title">AI를 기능이 아니라
+실제 사용할 수 있는 제품으로 만듭니다.</h1>
+        <p class="ai-hero__lead">분석, 콘텐츠, 제품 기획, 고객 지원까지. Newon은 AI를 실제 업무와 제품에 연결합니다.</p>
+        <div class="ai-hero__actions">
+          <a class="btn btn-primary" href="#ai-products">AI Products ↓</a>
+          <a class="btn btn-ghost" href="../business/#inquiry" data-analytics="business_cta_click">AI 프로젝트 문의하기 →</a>
+        </div>
+        <ul class="ai-hero__trust">
+          <li><i aria-hidden="true"></i>AI-FIRST</li>
+          <li><i aria-hidden="true"></i>REAL USE</li>
+          <li><i aria-hidden="true"></i>BUILT BY NEWON</li>
+        </ul>
+      </div>
+      <aside class="ai-process" data-ai-process aria-label="AI process">
+    <div class="ai-process__step" data-process-step>
+      <span>INPUT</span>
+      <strong>Customer Reviews</strong>
+      <em>2,481 inputs</em>
+    </div>
+    <div class="ai-process__arrow" aria-hidden="true">↓</div>
+    <div class="ai-process__step" data-process-step>
+      <span>UNDERSTAND</span>
+      <strong>Product · Market · Users</strong>
+    </div>
+    <div class="ai-process__arrow" aria-hidden="true">↓</div>
+    <div class="ai-process__step" data-process-step>
+      <span>ANALYZE</span>
+      <div class="ai-process__metrics">
+        <p><em>Sentiment</em><b>78%</b></p>
+        <p><em>Requests</em><b>342</b></p>
+      </div>
+    </div>
+    <div class="ai-process__arrow" aria-hidden="true">↓</div>
+    <div class="ai-process__step ai-process__step--out" data-process-step>
+      <span>OUTPUT</span>
+      <strong>Priority Insight</strong>
+    </div>
+  </aside>
+    </div>
   </section>
-  <section class="hub-inner hub-section"><h2 class="hub-eyebrow">AI Products</h2><p class="hub-lead">Newon이 직접 만드는 AI 서비스.</p><div class="hub-grid hub-grid--2" style="margin-top:1.5rem"><article class="hub-card">
-      <span class="hub-card__title">Newon Review AI</span>
-      <span class="hub-card__body">리뷰에서 불만, 기능 요청, 긍정 요인을 분석.</span>
-      <span class="hub-card__meta"><span class="hub-badge hub-badge--building">준비 중</span></span>
-      <form class="waitlist-form" data-waitlist-form data-product-id="newon-review-ai" data-form-type="waitlist" style="margin-top:0.75rem">
-        <input type="hidden" name="productId" value="newon-review-ai" />
-        <input type="email" name="email" placeholder="email@example.com" required aria-label="Email" />
+
+  <section class="ai-proof" data-ai-reveal aria-label="AI 요약">
+    <div class="hub-inner">
+      <ul class="ai-proof__list">
+        <li><strong>04</strong> AI Products</li>
+        <li><strong>6</strong> AI-enabled Apps</li>
+        <li>Product First</li>
+        <li>Built for Real Use</li>
+      </ul>
+    </div>
+  </section>
+
+  <div id="ai-products" class="ai-pnav-wrap">
+    <nav class="ai-pnav hub-inner" aria-label="AI Products">
+      <p class="ai-pnav__label">AI Products</p>
+      <div class="ai-pnav__track" role="list">
+        <a class="ai-pnav__item" role="listitem" href="#ai-review" data-ai-nav="ai-review"><span>01</span><strong>Review</strong></a>
+        <a class="ai-pnav__item" role="listitem" href="#ai-content" data-ai-nav="ai-content"><span>02</span><strong>Content</strong></a>
+        <a class="ai-pnav__item" role="listitem" href="#ai-launch" data-ai-nav="ai-launch"><span>03</span><strong>Launch</strong></a>
+        <a class="ai-pnav__item" role="listitem" href="#ai-cs" data-ai-nav="ai-cs"><span>04</span><strong>CS AI</strong></a>
+      </div>
+      <a class="ai-pnav__all" href="#ai-products">View all →</a>
+    </nav>
+  </div>
+
+  <section id="ai-review" class="ai-product" data-ai-reveal data-ai-section="ai-review">
+    <div class="ai-product__inner hub-inner">
+      <div class="ai-product__copy">
+        <p class="ai-product__eyebrow"><span>01</span> / REVIEW INTELLIGENCE</p>
+        <h2 class="ai-product__name">Newon Review AI</h2>
+        <h3 class="ai-product__title">수천 개의 리뷰에서 다음 제품 결정을 찾습니다.</h3>
+        <p class="ai-product__body">고객 리뷰를 분석해 반복되는 불만, 기능 요청, 긍정 요인과 개선 우선순위를 정리합니다.</p>
+        <div class="ai-product__meta">
+          <span class="ai-status is-dev">IN DEVELOPMENT</span>
+        </div>
+      </div>
+      <div class="ai-product__visual"><div class="ai-mock ai-mock--review" aria-hidden="true">
+    <div class="ai-mock__chrome"><i></i><i></i><i></i><em>DEMO</em></div>
+    <div class="ai-mock__stat">
+      <strong>2,481</strong>
+      <span>REVIEWS ANALYZED</span>
+    </div>
+    <div class="ai-mock__sentiment">
+      <p class="ai-mock__label">Sentiment</p>
+      <div class="ai-mock__row"><span>Positive</span><i style="--w:68%"></i><b>68%</b></div>
+      <div class="ai-mock__row"><span>Neutral</span><i style="--w:19%"></i><b>19%</b></div>
+      <div class="ai-mock__row"><span>Negative</span><i style="--w:13%"></i><b>13%</b></div>
+    </div>
+    <div class="ai-mock__split">
+      <div>
+        <p class="ai-mock__label">Top requests</p>
+        <ul>
+          <li><span>01</span> Dark mode <em>342</em></li>
+          <li><span>02</span> Widget <em>218</em></li>
+          <li><span>03</span> CSV Export <em>164</em></li>
+        </ul>
+      </div>
+      <div>
+        <p class="ai-mock__label">AI Insight</p>
+        <p class="ai-mock__quote">“Users frequently request faster access to daily statistics.”</p>
+        <p class="ai-mock__trend"><span>Trend</span><strong>+18.4%</strong></p>
+      </div>
+    </div>
+  </div></div>
+    </div>
+  </section>
+
+  <section id="ai-content" class="ai-product is-reverse" data-ai-reveal data-ai-section="ai-content">
+    <div class="ai-product__inner hub-inner">
+      <div class="ai-product__copy">
+        <p class="ai-product__eyebrow"><span>02</span> / GENERATIVE CONTENT</p>
+        <h2 class="ai-product__name">Newon Content AI</h2>
+        <h3 class="ai-product__title">하나의 제품 정보에서 여러 채널의 콘텐츠를.</h3>
+        <p class="ai-product__body">제품 정보를 한 번 입력하면 스토어 설명, SNS 콘텐츠, 광고 카피, 출시 콘텐츠를 생성합니다.</p>
+        <div class="ai-product__meta">
+          <span class="ai-status is-soon">COMING SOON</span>
+        </div>
+      </div>
+      <div class="ai-product__visual"><div class="ai-mock ai-mock--content" aria-hidden="true">
+    <div class="ai-mock__chrome"><i></i><i></i><i></i><em>DEMO</em></div>
+    <div class="ai-mock__cols">
+      <div>
+        <p class="ai-mock__label">INPUT</p>
+        <div class="ai-mock__field"><em>Product</em><strong>BabyLog</strong></div>
+        <div class="ai-mock__field"><em>Audience</em><strong>Parents</strong></div>
+        <div class="ai-mock__field"><em>Tone</em><strong>Clear / Friendly</strong></div>
+        <div class="ai-mock__btn">GENERATE →</div>
+      </div>
+      <div>
+        <p class="ai-mock__label">OUTPUT</p>
+        <ul class="ai-mock__out">
+          <li>App Store</li>
+          <li>Instagram</li>
+          <li>Launch Copy</li>
+          <li>Short-form</li>
+        </ul>
+      </div>
+    </div>
+  </div></div>
+    </div>
+  </section>
+
+  <section id="ai-launch" class="ai-product ai-product--dark" data-ai-reveal data-ai-section="ai-launch">
+    <div class="ai-product__inner hub-inner">
+      <div class="ai-product__copy">
+        <p class="ai-product__eyebrow"><span>03</span> / PRODUCT STRATEGY</p>
+        <h2 class="ai-product__name">Newon Launch AI</h2>
+        <h3 class="ai-product__title">아이디어에서 출시 계획까지.</h3>
+        <p class="ai-product__body">아이디어를 입력하면 MVP 범위, 핵심 기능, 출시 체크리스트와 초기 로드맵을 정리합니다.</p>
+        <div class="ai-product__meta">
+          <span class="ai-status is-soon">COMING SOON</span>
+        </div>
+      </div>
+      <div class="ai-product__visual"><div class="ai-launch-flow" aria-hidden="true">
+    <div class="ai-launch-flow__stage">
+      <strong>IDEA</strong>
+      <span>문제 정의 완료 ✓</span>
+    </div>
+    <span class="ai-launch-flow__arrow" aria-hidden="true">→</span>
+    <div class="ai-launch-flow__stage">
+      <strong>MVP</strong>
+      <span>6 Core Features</span>
+    </div>
+    <span class="ai-launch-flow__arrow" aria-hidden="true">→</span>
+    <div class="ai-launch-flow__stage">
+      <strong>BUILD</strong>
+      <span>14 Tasks</span>
+    </div>
+    <span class="ai-launch-flow__arrow" aria-hidden="true">→</span>
+    <div class="ai-launch-flow__stage">
+      <strong>LAUNCH</strong>
+      <span>Ready</span>
+    </div>
+  </div></div>
+    </div>
+  </section>
+
+  <section id="ai-cs" class="ai-product is-reverse" data-ai-reveal data-ai-section="ai-cs">
+    <div class="ai-product__inner hub-inner">
+      <div class="ai-product__copy">
+        <p class="ai-product__eyebrow"><span>04</span> / AI SUPPORT</p>
+        <h2 class="ai-product__name">Newon CS AI</h2>
+        <h3 class="ai-product__title">문의는 빠르게, 답변은 일관되게.</h3>
+        <p class="ai-product__body">기업/제품의 knowledge base를 기반으로 문의 분류, 답변 초안, 반복 질문 처리를 지원합니다.</p>
+        <div class="ai-product__meta">
+          <span class="ai-status is-soon">COMING SOON</span>
+        </div>
+      </div>
+      <div class="ai-product__visual"><div class="ai-mock ai-mock--cs" aria-hidden="true">
+    <div class="ai-mock__chrome"><i></i><i></i><i></i><em>DEMO</em></div>
+    <div class="ai-mock__cs">
+      <div class="ai-mock__inbox">
+        <p class="ai-mock__label">INBOX</p>
+        <span class="is-on">Payment issue</span>
+        <span>Bug report</span>
+        <span>Feature request</span>
+      </div>
+      <div class="ai-mock__ticket">
+        <p class="ai-mock__label">CUSTOMER</p>
+        <p class="ai-mock__quote">“Subscription isn't showing...”</p>
+        <p class="ai-mock__label">AI SUGGESTED RESPONSE</p>
+        <p class="ai-mock__reply">Billing → Subscriptions에서 구독을 확인해 주세요. 그래도 보이지 않으면 이 메시지로 답장해 주시면 복구해 드리겠습니다.</p>
+        <div class="ai-mock__meta">
+          <p><em>Knowledge sources</em><strong>03 matched</strong></p>
+          <p><em>Confidence</em><strong>94%</strong></p>
+        </div>
+      </div>
+    </div>
+  </div></div>
+    </div>
+  </section>
+
+  <section class="ai-early" id="ai-early-access" data-ai-reveal>
+    <div class="ai-early__inner hub-inner">
+      <div class="ai-early__copy">
+        <p class="ai-early__eyebrow">NEWON AI / EARLY ACCESS</p>
+        <h2 class="ai-early__title">Newon AI 제품 출시 소식을 가장 먼저 받아보세요.</h2>
+      </div>
+      <form class="ai-early__form waitlist-form" data-waitlist-form data-product-id="newon-ai" data-form-type="waitlist">
+        <input type="hidden" name="productId" value="newon-ai" />
+        <label class="ai-early__field">
+          <span class="visually-hidden">Email</span>
+          <input type="email" name="email" placeholder="email@example.com" required autocomplete="email" aria-label="Email" />
+        </label>
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-        <button type="submit" class="btn btn-ghost">출시 알림 받기</button>
+        <button type="submit" class="btn btn-primary">Join waitlist</button>
       </form>
       <p class="waitlist-success" data-waitlist-success hidden>알림 신청이 완료되었습니다.</p>
-      <p class="waitlist-success" data-waitlist-duplicate hidden>This email is already registered.</p>
-      <p class="waitlist-error" data-waitlist-error hidden role="alert">Something went wrong. Please try again.</p>
-    </article><article class="hub-card">
-      <span class="hub-card__title">Newon Content AI</span>
-      <span class="hub-card__body">하나의 제품 정보에서 다양한 콘텐츠 생성.</span>
-      <span class="hub-card__meta"><span class="hub-badge hub-badge--concept">Coming Soon</span></span>
-      <form class="waitlist-form" data-waitlist-form data-product-id="newon-content-ai" data-form-type="waitlist" style="margin-top:0.75rem">
-        <input type="hidden" name="productId" value="newon-content-ai" />
-        <input type="email" name="email" placeholder="email@example.com" required aria-label="Email" />
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-        <button type="submit" class="btn btn-ghost">출시 알림 받기</button>
-      </form>
-      <p class="waitlist-success" data-waitlist-success hidden>알림 신청이 완료되었습니다.</p>
-      <p class="waitlist-success" data-waitlist-duplicate hidden>This email is already registered.</p>
-      <p class="waitlist-error" data-waitlist-error hidden role="alert">Something went wrong. Please try again.</p>
-    </article><article class="hub-card">
-      <span class="hub-card__title">Newon Launch AI</span>
-      <span class="hub-card__body">아이디어에서 MVP와 출시 계획 생성.</span>
-      <span class="hub-card__meta"><span class="hub-badge hub-badge--concept">Coming Soon</span></span>
-      <form class="waitlist-form" data-waitlist-form data-product-id="newon-launch-ai" data-form-type="waitlist" style="margin-top:0.75rem">
-        <input type="hidden" name="productId" value="newon-launch-ai" />
-        <input type="email" name="email" placeholder="email@example.com" required aria-label="Email" />
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-        <button type="submit" class="btn btn-ghost">출시 알림 받기</button>
-      </form>
-      <p class="waitlist-success" data-waitlist-success hidden>알림 신청이 완료되었습니다.</p>
-      <p class="waitlist-success" data-waitlist-duplicate hidden>This email is already registered.</p>
-      <p class="waitlist-error" data-waitlist-error hidden role="alert">Something went wrong. Please try again.</p>
-    </article><article class="hub-card">
-      <span class="hub-card__title">Newon CS AI</span>
-      <span class="hub-card__body">기업 지식을 기반으로 고객 문의 지원.</span>
-      <span class="hub-card__meta"><span class="hub-badge hub-badge--concept">Coming Soon</span></span>
-      <form class="waitlist-form" data-waitlist-form data-product-id="newon-cs-ai" data-form-type="waitlist" style="margin-top:0.75rem">
-        <input type="hidden" name="productId" value="newon-cs-ai" />
-        <input type="email" name="email" placeholder="email@example.com" required aria-label="Email" />
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-        <button type="submit" class="btn btn-ghost">출시 알림 받기</button>
-      </form>
-      <p class="waitlist-success" data-waitlist-success hidden>알림 신청이 완료되었습니다.</p>
-      <p class="waitlist-success" data-waitlist-duplicate hidden>This email is already registered.</p>
-      <p class="waitlist-error" data-waitlist-error hidden role="alert">Something went wrong. Please try again.</p>
-    </article></div></section>
-  <section class="hub-inner hub-section"><h2 class="hub-eyebrow">AI for Business</h2><p class="hub-lead">기업을 위한 AI 도입 및 자동화.</p><p class="hub-lead" style="margin-top:1rem"><a href="../business/#inquiry">AI 프로젝트 문의하기 →</a></p></section>
-  <section class="hub-inner hub-section"><h2 class="hub-eyebrow">AI Features</h2><p class="hub-lead">Newon 앱에 들어가는 AI 기능.</p><p class="hub-lead" style="margin-top:1rem"><a href="../products/?filter=apps">자세히 보기 →</a></p></section>
+      <p class="waitlist-success" data-waitlist-duplicate hidden>이미 등록된 이메일입니다.</p>
+      <p class="waitlist-error" data-waitlist-error hidden role="alert">전송에 실패했습니다. 잠시 후 다시 시도해 주세요.</p>
+    </div>
+  </section>
+
+  <section class="ai-biz" data-ai-reveal>
+    <div class="ai-biz__inner hub-inner">
+      <div class="ai-biz__copy">
+        <p class="ai-biz__eyebrow">AI for Business</p>
+        <h2 class="ai-biz__title">반복 업무를 AI workflow로.</h2>
+        <p class="ai-biz__lead">기업을 위한 AI 도입 및 자동화.</p>
+        <a class="btn btn-primary" href="../business/#inquiry" data-analytics="business_cta_click">AI 프로젝트 문의하기 →</a>
+      </div>
+      <ol class="ai-biz__pipe" data-ai-biz-pipe>
+        <li data-biz-step data-case="automation" class="is-active">
+          <span>01</span>
+          <strong>AUTOMATION</strong>
+          <p>반복 작업 자동화</p>
+        </li>
+        <li data-biz-step data-case="workflow">
+          <span>02</span>
+          <strong>WORKFLOW</strong>
+          <p>기존 서비스와 AI 연결</p>
+        </li>
+        <li data-biz-step data-case="knowledge">
+          <span>03</span>
+          <strong>KNOWLEDGE</strong>
+          <p>내부 자료 기반 AI</p>
+        </li>
+        <li data-biz-step data-case="action">
+          <span>04</span>
+          <strong>ACTION</strong>
+          <p>분석 결과를 실제 업무로 연결</p>
+        </li>
+      </ol>
+      <aside class="ai-biz__case" data-biz-case aria-live="polite">
+        <p class="ai-biz__case-label">USE CASE</p>
+        <div data-case-body>
+          <div><span>Input</span><strong>Customer inquiry</strong></div>
+          <div><span>AI</span><strong>Classify + Analyze</strong></div>
+          <div><span>Action</span><strong>Generate response</strong></div>
+          <div><span>Result</span><strong>Support workflow</strong></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="ai-how" data-ai-reveal>
+    <div class="hub-inner">
+      <header class="ai-section-head">
+        <p class="ai-section-head__eyebrow">HOW WE BUILD</p>
+        <h2 class="ai-section-head__title">모델보다 중요한 건, 어디에 쓰이느냐입니다.</h2>
+      </header>
+      <ol class="ai-how__track">
+        <li>
+          <span>01</span>
+          <strong>DISCOVER</strong>
+          <p>문제와 현재 업무 흐름 파악</p>
+        </li>
+        <li>
+          <span>02</span>
+          <strong>DESIGN</strong>
+          <p>AI 적용 영역 및 데이터 구조 설계</p>
+        </li>
+        <li>
+          <span>03</span>
+          <strong>PROTOTYPE</strong>
+          <p>작은 AI prototype 제작</p>
+        </li>
+        <li>
+          <span>04</span>
+          <strong>BUILD</strong>
+          <p>실제 제품/업무 시스템에 연결</p>
+        </li>
+        <li>
+          <span>05</span>
+          <strong>IMPROVE</strong>
+          <p>사용 데이터를 기반으로 개선</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="ai-inside" data-ai-reveal>
+    <div class="hub-inner">
+      <header class="ai-section-head">
+        <p class="ai-section-head__eyebrow">AI INSIDE NEWON</p>
+        <h2 class="ai-section-head__title">AI는 별도의 기능이 아니라 제품 안에서 작동합니다.</h2>
+        <p class="ai-section-head__lead">습관, 금융, 가족, 여행 앱 안에서 이미 AI가 동작합니다.</p>
+      </header>
+      <div class="ai-chips" aria-label="AI가 탑재된 Newon 앱"><a class="ai-chip" href="../#savy-app">
+      <img src="/savy-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+      <span>
+        <strong>Savy</strong>
+        <em>AI 소비 인사이트</em>
+      </span>
+    </a>
+<a class="ai-chip" href="../#babylog-app">
+      <img src="/babylog-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+      <span>
+        <strong>BabyLog</strong>
+        <em>AI 육아 인사이트</em>
+      </span>
+    </a>
+<a class="ai-chip" href="../#petlog-app">
+      <img src="/petlog-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+      <span>
+        <strong>PetLog</strong>
+        <em>AI 케어 인사이트</em>
+      </span>
+    </a>
+<a class="ai-chip" href="../#piggyup-app">
+      <img src="/piggyup-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+      <span>
+        <strong>PiggyUp</strong>
+        <em>AI 코치</em>
+      </span>
+    </a>
+<a class="ai-chip" href="../#myworld-app">
+      <img src="/myworld-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+      <span>
+        <strong>My World</strong>
+        <em>AI 여행 리포트</em>
+      </span>
+    </a>
+<a class="ai-chip" href="../#ox-month">
+      <img src="/ox-month-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+      <span>
+        <strong>OX MONTH</strong>
+        <em>AI 패턴 분석</em>
+      </span>
+    </a></div>
+      <p class="ai-inside__cta"><a class="btn btn-ghost" href="../apps/">앱 둘러보기 →</a></p>
+    </div>
+  </section>
+
+  <section class="ai-caps" data-ai-reveal data-ai-caps>
+    <div class="hub-inner ai-caps__inner">
+      <header class="ai-caps__head">
+        <p class="ai-caps__eyebrow">CAPABILITIES</p>
+        <h2 class="ai-caps__title">What we build with AI.</h2>
+        <p class="ai-caps__lead">모델을 나열하지 않습니다. 제품과 업무에 실제로 붙는 능력만 만듭니다.</p>
+      </header>
+      <ol class="ai-caps__index">
+        <li class="ai-caps__row is-active" data-cap-row>
+          <button type="button" class="ai-caps__trigger" data-cap-trigger aria-expanded="true">
+            <span class="ai-caps__n">01</span>
+            <span class="ai-caps__name">ANALYSIS</span>
+            <span class="ai-caps__tag">Review AI</span>
+          </button>
+          <div class="ai-caps__panel">
+            <p>데이터와 사용자 반응에서 패턴을 찾습니다.</p>
+            <a href="#ai-review">관련 제품 보기 →</a>
+          </div>
+        </li>
+        <li class="ai-caps__row" data-cap-row>
+          <button type="button" class="ai-caps__trigger" data-cap-trigger aria-expanded="false">
+            <span class="ai-caps__n">02</span>
+            <span class="ai-caps__name">GENERATION</span>
+            <span class="ai-caps__tag">Content AI</span>
+          </button>
+          <div class="ai-caps__panel">
+            <p>텍스트와 콘텐츠를 생성합니다.</p>
+            <a href="#ai-content">관련 제품 보기 →</a>
+          </div>
+        </li>
+        <li class="ai-caps__row" data-cap-row>
+          <button type="button" class="ai-caps__trigger" data-cap-trigger aria-expanded="false">
+            <span class="ai-caps__n">03</span>
+            <span class="ai-caps__name">RECOMMENDATION</span>
+            <span class="ai-caps__tag">Launch AI</span>
+          </button>
+          <div class="ai-caps__panel">
+            <p>상황에 맞는 다음 행동을 제안합니다.</p>
+            <a href="#ai-launch">관련 제품 보기 →</a>
+          </div>
+        </li>
+        <li class="ai-caps__row" data-cap-row>
+          <button type="button" class="ai-caps__trigger" data-cap-trigger aria-expanded="false">
+            <span class="ai-caps__n">04</span>
+            <span class="ai-caps__name">AUTOMATION</span>
+            <span class="ai-caps__tag">Business</span>
+          </button>
+          <div class="ai-caps__panel">
+            <p>반복 업무를 자동화합니다.</p>
+            <a href="../business/#inquiry">비즈니스 문의 →</a>
+          </div>
+        </li>
+        <li class="ai-caps__row" data-cap-row>
+          <button type="button" class="ai-caps__trigger" data-cap-trigger aria-expanded="false">
+            <span class="ai-caps__n">05</span>
+            <span class="ai-caps__name">KNOWLEDGE</span>
+            <span class="ai-caps__tag">CS AI</span>
+          </button>
+          <div class="ai-caps__panel">
+            <p>기업과 제품의 정보를 AI에 연결합니다.</p>
+            <a href="#ai-cs">관련 제품 보기 →</a>
+          </div>
+        </li>
+        <li class="ai-caps__row" data-cap-row>
+          <button type="button" class="ai-caps__trigger" data-cap-trigger aria-expanded="false">
+            <span class="ai-caps__n">06</span>
+            <span class="ai-caps__name">PERSONALIZATION</span>
+            <span class="ai-caps__tag">Apps</span>
+          </button>
+          <div class="ai-caps__panel">
+            <p>사용자 맥락에 맞춰 경험을 조정합니다.</p>
+            <a href="../apps/">앱 둘러보기 →</a>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="ai-cta" data-ai-reveal>
+    <div class="ai-cta__bg" aria-hidden="true"></div>
+    <div class="ai-cta__inner hub-inner">
+      <p class="ai-cta__eyebrow">BUILD WITH NEWON</p>
+      <h2 class="ai-cta__title">AI가 필요한 곳을 제품으로 만듭니다.</h2>
+      <p class="ai-cta__lead">아이디어 검증부터 AI 기능 설계, 제품 개발과 자동화까지 함께 설계합니다.</p>
+      <div class="ai-cta__actions">
+        <a class="btn btn-primary ai-cta__btn" href="../business/#inquiry" data-analytics="business_cta_click">AI 프로젝트 문의하기 →</a>
+        <a class="btn btn-ghost ai-cta__btn ai-cta__btn--ghost" href="../business/">Newon Business 보기 →</a>
+      </div>
+      <p class="ai-cta__foot">NEWON AI · PRODUCT STUDIO</p>
+    </div>
+  </section>
+</div>
     </main>
     <footer class="site-footer studio-footer">
       <div class="container studio-footer__grid">
         <div class="studio-footer__col">
       <p class="studio-footer__title">Products</p>
-      <ul class="studio-footer__list"><li><a href="../products/?filter=apps">Apps</a></li><li><a href="../ai/">AI</a></li><li><a href="../saas/">SaaS</a></li><li><a href="../games/">Games</a></li><li><a href="../#newon-plus-app">Newon+</a></li></ul>
+      <ul class="studio-footer__list"><li><a href="../apps/">Apps</a></li><li><a href="../ai/">AI</a></li><li><a href="../saas/">SaaS</a></li><li><a href="../games/">Games</a></li><li><a href="../tools/">Tools</a></li></ul>
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Business</p>
-      <ul class="studio-footer__list"><li><a href="../business/#svc-mvp">MVP</a></li><li><a href="../business/#svc-website">Website</a></li><li><a href="../business/#svc-ai">AI Automation</a></li><li><a href="../business/#svc-whitelabel">White-label</a></li><li><a href="../business/#svc-design">Design</a></li></ul>
+      <ul class="studio-footer__list"><li><a href="../business/mvp/">MVP</a></li><li><a href="../business/web/">Website</a></li><li><a href="../business/app/">App</a></li><li><a href="../business/ai-automation/">AI Automation</a></li><li><a href="../business/white-label/">White-label</a></li><li><a href="../business/design/">Design</a></li></ul>
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Resources</p>
-      <ul class="studio-footer__list"><li><a href="../tools/">Tools</a></li><li><a href="../store/">Store</a></li><li><a href="../blog/">Blog</a></li><li><a href="../media/">Media</a></li></ul>
+      <ul class="studio-footer__list"><li><a href="../resources/store/">Store</a></li><li><a href="../resources/blog/">Blog</a></li><li><a href="../resources/media/">Media</a></li><li><a href="../resources/labs/">Labs</a></li><li><a href="../resources/newsletter/">Newsletter</a></li><li><a href="../resources/education/">Education</a></li></ul>
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Company</p>
-      <ul class="studio-footer__list"><li><a href="../about/">Newon 회사 소개</a></li><li><a href="../portfolio/">Newon 포트폴리오</a></li><li><a href="../news/">뉴스</a></li><li><a href="../ideas/">아이디어</a></li><li><a href="../contact/">연락처</a></li></ul>
+      <ul class="studio-footer__list"><li><a href="../about/">Newon 회사 소개</a></li><li><a href="../portfolio/">Newon 포트폴리오</a></li><li><a href="../news/">News</a></li><li><a href="../ideas/">Newon Idea</a></li><li><a href="../contact/">Contact</a></li></ul>
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Legal</p>
-      <ul class="studio-footer__list"><li><a href="../privacy/">개인정보 처리방침</a></li><li><a href="../terms/">이용약관</a></li><li><a href="../oxmonth/delete-account/">Account Delete</a></li><li><a href="../#newon-plus-app">Subscription</a></li></ul>
+      <ul class="studio-footer__list"><li><a href="../privacy/">개인정보 처리방침</a></li><li><a href="../terms/">이용약관</a></li><li><a href="../oxmonth/delete-account/">Account Delete</a></li></ul>
     </div>
         <div class="studio-footer__col studio-footer__col--contact">
           <p class="studio-footer__title">Contact</p>
@@ -196,13 +767,13 @@ actually use.</h1>
         </div>
       </div>
       <div class="container studio-footer__bottom">
-        <p>© Newon · All rights reserved.</p>
+        <p>© 2026 Newon · All rights reserved.</p>
       </div>
     </footer>
     <div class="search-modal-host"></div>
     <script src="/search.js?v=20260825studio" defer></script>
     <script src="/waitlist.js?v=20260825studio" defer></script>
-    
-    <script src="/site-chrome.js?v=20260825gnav" defer></script>
+    <script src="/ai-hub.js?v=20260825ai5" defer></script>
+    <script src="/site-chrome.js?v=20260826gnav4" defer></script>
   </body>
 </html>

@@ -1285,24 +1285,76 @@
       @media (prefers-reduced-motion: reduce) {
         .bz-reveal { opacity: 1; transform: none; }
       }
-      .bz-services__grid { display: grid; gap: 1.25rem; margin-top: 2rem; }
-      .bz-svc { border: 1px solid var(--border); padding: 1.5rem; background: var(--bg); }
-      .bz-svc__num { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; color: var(--text-soft); }
-      .bz-svc__title { margin: 0.35rem 0 0.5rem; font-size: 1.25rem; font-weight: 700; }
-      .bz-svc__desc { margin: 0 0 1rem; color: var(--text-muted); line-height: 1.65; }
-      .bz-svc__list { margin: 0; padding-left: 1.1rem; color: var(--text-muted); line-height: 1.7; }
-      .bz-svc__list--inline { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-      .bz-svc__list--inline li { border: 1px solid var(--border); padding: 0.25rem 0.55rem; font-size: 0.8125rem; }
-      .bz-svc--split { display: grid; gap: 1rem; }
-      .bz-svc--row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; }
-      .bz-svc--row .bz-svc__row-main { display: flex; gap: 1rem; flex: 1 1 16rem; }
-      .bz-svc__tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0 0 1rem; padding: 0; list-style: none; }
-      .bz-svc__tag { border: 1px solid var(--border); padding: 0.25rem 0.55rem; font-size: 0.8125rem; color: var(--text-muted); }
-      @media (min-width: 800px) {
-        .bz-svc--split { grid-template-columns: 1fr 1fr; align-items: start; }
-        .bz-svc--split .bz-svc__cta { grid-column: 1 / -1; justify-self: start; }
+      .bz-services__grid { display: grid; gap: 0; margin-top: 2.25rem; border-top: 1px solid #e8e8e8; }
+      .bz-svc {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 0.85rem 1.35rem;
+        align-items: center;
+        padding: 1.15rem 0.1rem 1.2rem;
+        border: 0;
+        border-bottom: 1px solid #e8e8e8;
+        background: transparent;
+      }
+      html[data-newon-shell-theme="dark"] .bz-svc,
+      html[data-newon-shell-theme="dark"] .bz-services__grid { border-color: var(--border); }
+      .bz-svc__num {
+        margin: 0;
+        padding-top: 0.35rem;
+        align-self: start;
+        min-width: 1.6rem;
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: var(--text-soft);
+      }
+      .bz-svc__body { min-width: 0; }
+      .bz-svc__title {
+        margin: 0;
+        font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.25;
+      }
+      .bz-svc__desc {
+        margin: 0.3rem 0 0;
+        max-width: 38rem;
+        font-size: 0.875rem;
+        line-height: 1.55;
+        color: var(--text-muted);
+        word-break: keep-all;
+      }
+      .bz-svc__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin: 0.7rem 0 0;
+        padding: 0;
+      }
+      .bz-svc__tag {
+        display: inline-block;
+        padding: 0.2rem 0.5rem;
+        border: 1px solid #e8e8e8;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        word-break: keep-all;
+      }
+      html[data-newon-shell-theme="dark"] .bz-svc__tag { border-color: var(--border); }
+      .bz-svc__cta {
+        justify-self: end;
+        align-self: center;
+        min-height: 40px;
+        padding: 0.55rem 0.95rem;
+        font-size: 0.8125rem;
+        white-space: nowrap;
+        border-radius: 999px;
+      }
+      @media (max-width: 799px) {
+        .bz-svc { grid-template-columns: auto minmax(0, 1fr); }
+        .bz-svc__cta { grid-column: 1 / -1; justify-self: start; }
       }
     </style>
+    <link rel="stylesheet" href="/business-page.css?v=20260826bz10" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
   </head>
   <body>
@@ -1412,9 +1464,13 @@
 
       <section id="capabilities" class="bz-section bz-reveal" aria-labelledby="bz-cap-title">
         <div class="bz-inner">
-          <p class="bz-label">{{t:business.capLabel}}</p>
-          <h2 class="bz-title" id="bz-cap-title">{{t:business.capTitle}}</h2>
-          <p class="bz-lead">{{t:business.capLead}}</p>
+          <header class="bz-sec-head">
+            <div class="bz-sec-head__copy">
+              <p class="bz-label">{{t:business.capLabel}}</p>
+              <h2 class="bz-title" id="bz-cap-title">{{t:business.capTitle}}</h2>
+            </div>
+            <p class="bz-lead bz-sec-head__lead">{{t:business.capLead}}</p>
+          </header>
           <ul class="bz-cap-grid">
             <li class="bz-cap-item">
               <span class="bz-cap-item__n">01</span>
@@ -1587,46 +1643,55 @@
         </div>
       </section>
 
-      <section id="how-we-work" class="bz-section bz-reveal" aria-labelledby="bz-process-title">
+      <section id="how-we-work" class="bz-section bz-process bz-reveal" aria-labelledby="bz-process-title">
         <div class="bz-inner">
-          <p class="bz-label">{{t:business.processLabel}}</p>
-          <h2 class="bz-title" id="bz-process-title">{{t:business.processTitle}}</h2>
-          <ol class="bz-steps">
-            <li class="bz-step">
-              <span class="bz-step__n">01</span>
-              <h3>{{t:business.step1Title}}</h3>
-              <p>{{t:business.step1Body}}</p>
+          <header class="bz-process__head">
+            <p class="bz-label">{{t:business.processLabel}}</p>
+            <h2 class="bz-title" id="bz-process-title">{{t:business.processTitle}}</h2>
+          </header>
+          <ol class="bz-process__track">
+            <li>
+              <span class="bz-process__dot" aria-hidden="true"></span>
+              <span class="bz-process__n">01</span>
+              <h3 class="bz-process__en">{{t:business.step1Title}}</h3>
+              <p class="bz-process__ko">{{t:business.step1Body}}</p>
             </li>
-            <li class="bz-step">
-              <span class="bz-step__n">02</span>
-              <h3>{{t:business.step2Title}}</h3>
-              <p>{{t:business.step2Body}}</p>
+            <li>
+              <span class="bz-process__dot" aria-hidden="true"></span>
+              <span class="bz-process__n">02</span>
+              <h3 class="bz-process__en">{{t:business.step2Title}}</h3>
+              <p class="bz-process__ko">{{t:business.step2Body}}</p>
             </li>
-            <li class="bz-step">
-              <span class="bz-step__n">03</span>
-              <h3>{{t:business.step3Title}}</h3>
-              <p>{{t:business.step3Body}}</p>
+            <li>
+              <span class="bz-process__dot" aria-hidden="true"></span>
+              <span class="bz-process__n">03</span>
+              <h3 class="bz-process__en">{{t:business.step3Title}}</h3>
+              <p class="bz-process__ko">{{t:business.step3Body}}</p>
             </li>
-            <li class="bz-step">
-              <span class="bz-step__n">04</span>
-              <h3>{{t:business.step4Title}}</h3>
-              <p>{{t:business.step4Body}}</p>
+            <li>
+              <span class="bz-process__dot" aria-hidden="true"></span>
+              <span class="bz-process__n">04</span>
+              <h3 class="bz-process__en">{{t:business.step4Title}}</h3>
+              <p class="bz-process__ko">{{t:business.step4Body}}</p>
             </li>
-            <li class="bz-step">
-              <span class="bz-step__n">05</span>
-              <h3>{{t:business.step5Title}}</h3>
-              <p>{{t:business.step5Body}}</p>
+            <li>
+              <span class="bz-process__dot" aria-hidden="true"></span>
+              <span class="bz-process__n">05</span>
+              <h3 class="bz-process__en">{{t:business.step5Title}}</h3>
+              <p class="bz-process__ko">{{t:business.step5Body}}</p>
             </li>
           </ol>
         </div>
       </section>
 
-      <section id="portfolio" class="bz-section bz-reveal" aria-labelledby="bz-portfolio-title">
-        <div class="bz-inner">
-          <p class="bz-label">{{t:business.portfolioLabel}}</p>
-          <h2 class="bz-title" id="bz-portfolio-title">{{t:business.portfolioTitle}}</h2>
-          <p class="bz-lead">{{t:business.portfolioLead}}</p>
-          <a class="btn btn-primary" href="../portfolio/">{{t:business.ctaPortfolio}}</a>
+      <section id="portfolio" class="bz-section bz-port bz-reveal" aria-labelledby="bz-portfolio-title">
+        <div class="bz-inner bz-port__grid">
+          <div class="bz-port__copy">
+            <p class="bz-label">{{t:business.portfolioLabel}}</p>
+            <h2 class="bz-title" id="bz-portfolio-title">{{t:business.portfolioTitle}}</h2>
+            <p class="bz-lead">{{t:business.portfolioLead}}</p>
+          </div>
+          <a class="bz-port__cta" href="../portfolio/">{{t:business.ctaPortfolio}}<span aria-hidden="true"> →</span></a>
         </div>
       </section>
 
@@ -1698,24 +1763,47 @@
       </section>
 
       <section class="bz-section bz-band bz-reveal" aria-labelledby="bz-band-title">
-        <div class="bz-inner">
-          <p class="bz-label">{{t:business.ctaBandLabel}}</p>
-          <h2 class="bz-title" id="bz-band-title">{{html:business.ctaBandTitleHtml}}</h2>
-          <p class="bz-lead">{{t:business.ctaBandLead}}</p>
-          <a class="btn btn-primary" href="#inquiry">{{t:business.ctaBandBtn}}</a>
+        <div class="bz-inner bz-band__grid">
+          <div class="bz-band__copy">
+            <p class="bz-label">{{t:business.ctaBandLabel}}</p>
+            <h2 class="bz-title" id="bz-band-title">{{html:business.ctaBandTitleHtml}}</h2>
+            <p class="bz-lead">{{t:business.ctaBandLead}}</p>
+          </div>
+          <a class="bz-band__cta" href="#inquiry">{{t:business.ctaBandBtn}}</a>
         </div>
       </section>
 
       <section id="packages" class="bz-section bz-reveal" aria-labelledby="bz-packages-title">
         <div class="bz-inner">
-          <h2 class="bz-title" id="bz-packages-title">{{t:studio.packagesTitle}}</h2>
-          <div class="hub-grid hub-grid--4" style="margin-top:1.5rem;border:1px solid var(--border);background:var(--border)">
-            <article class="hub-card"><span class="hub-card__num">{{t:studio.pkgStartName}}</span><span class="hub-card__title">{{t:studio.pkgStartDesc}}</span><span class="hub-card__body">₩500,000~</span></article>
-            <article class="hub-card"><span class="hub-card__num">{{t:studio.pkgBuildName}}</span><span class="hub-card__title">{{t:studio.pkgBuildDesc}}</span><span class="hub-card__body">₩1,000,000~</span></article>
-            <article class="hub-card"><span class="hub-card__num">{{t:studio.pkgMvpName}}</span><span class="hub-card__title">{{t:studio.pkgMvpDesc}}</span><span class="hub-card__body">₩1,500,000~</span></article>
-            <article class="hub-card"><span class="hub-card__num">{{t:studio.pkgCustomName}}</span><span class="hub-card__title">{{t:studio.pkgCustomDesc}}</span><span class="hub-card__body">{{t:studio.pkgCustomPrice}}</span></article>
+          <header class="bz-sec-head">
+            <div class="bz-sec-head__copy">
+              <p class="bz-label">PACKAGES</p>
+              <h2 class="bz-title" id="bz-packages-title">{{t:studio.packagesTitle}}</h2>
+            </div>
+            <p class="bz-lead bz-sec-head__lead">{{t:studio.pkgDisclaimer}}</p>
+          </header>
+          <div class="bz-pkg-grid">
+            <article class="bz-pkg">
+              <span class="bz-pkg__tag">{{t:studio.pkgStartName}}</span>
+              <h3 class="bz-pkg__title">{{t:studio.pkgStartDesc}}</h3>
+              <p class="bz-pkg__price"><span class="bz-pkg__amount">₩500,000</span><span class="bz-pkg__tilde">~</span></p>
+            </article>
+            <article class="bz-pkg">
+              <span class="bz-pkg__tag">{{t:studio.pkgBuildName}}</span>
+              <h3 class="bz-pkg__title">{{t:studio.pkgBuildDesc}}</h3>
+              <p class="bz-pkg__price"><span class="bz-pkg__amount">₩1,000,000</span><span class="bz-pkg__tilde">~</span></p>
+            </article>
+            <article class="bz-pkg bz-pkg--featured">
+              <span class="bz-pkg__tag">{{t:studio.pkgMvpName}}</span>
+              <h3 class="bz-pkg__title">{{t:studio.pkgMvpDesc}}</h3>
+              <p class="bz-pkg__price"><span class="bz-pkg__amount">₩1,500,000</span><span class="bz-pkg__tilde">~</span></p>
+            </article>
+            <article class="bz-pkg">
+              <span class="bz-pkg__tag">{{t:studio.pkgCustomName}}</span>
+              <h3 class="bz-pkg__title">{{t:studio.pkgCustomDesc}}</h3>
+              <p class="bz-pkg__price"><span class="bz-pkg__amount">{{t:studio.pkgCustomPrice}}</span></p>
+            </article>
           </div>
-          <p class="bz-lead" style="margin-top:1rem;font-size:0.875rem">{{t:studio.pkgDisclaimer}}</p>
         </div>
       </section>
 
@@ -1807,7 +1895,14 @@
               <textarea id="bz-message" name="message" required placeholder="{{t:business.phMessage}}"></textarea>
             </div>
             <div class="bz-field bz-field--check">
-              <label><input id="bz-consent" name="consent" type="checkbox" value="yes" required /> {{t:studio.formConsent}}</label>
+              <div class="bz-consent">
+                <label class="bz-consent__label" for="bz-consent">
+                  <input id="bz-consent" name="consent" type="checkbox" value="yes" required />
+                  <span class="bz-consent__box" aria-hidden="true"></span>
+                  <span class="bz-consent__text">{{t:studio.formConsent}}</span>
+                </label>
+                <a class="bz-consent__link" href="../privacy/" target="_blank" rel="noopener noreferrer">{{t:footer.privacy}}<span aria-hidden="true"> ↗</span></a>
+              </div>
             </div>
             <div class="bz-hp" aria-hidden="true">
               <input name="_honey" tabindex="-1" autocomplete="off" />

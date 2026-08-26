@@ -16,10 +16,13 @@ import {
   BUSINESS_ECOSYSTEM,
 } from "./portfolio-data.mjs";
 import { generateBusinessDetails, BUSINESS_DETAIL_PAGES } from "./gen-business-details.mjs";
+import { renderBusinessServices } from "./render-business-services.mjs";
+import { BUSINESS_SERVICE_PAGES } from "./business-service-catalog.mjs";
 import { publishedArticles } from "./news-data.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { businessServicesHtml } from "./business-services-html.mjs";
 import { renderGlobalHeader } from "./site-chrome.mjs";
+import { STORE_PRODUCTS, LABS_EXPERIMENTS } from "./resources-data.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -357,7 +360,7 @@ for (const { dir, file, htmlLang } of LANGS) {
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, "index.html"), tpl);
 
-  for (const page of ["privacy", "terms", "about", "business"]) {
+  for (const page of ["privacy", "terms", "business"]) {
     let pt = fs.readFileSync(path.join(ROOT, "templates", `${page}.html`), "utf8");
     pt = pt.replace(/\{\{LANG_DIR\}\}/g, dir);
     pt = pt.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
@@ -369,9 +372,6 @@ for (const { dir, file, htmlLang } of LANGS) {
     if (page === "business") {
       pt = pt.replace(/\{\{BUSINESS_ECOSYSTEM\}\}/g, businessEcosystemHtml(flat, flatEn));
       pt = pt.replace(/\{\{BUSINESS_SERVICES\}\}/g, businessServicesHtml(flat, flatEn));
-    }
-    if (page === "about") {
-      pt = injectSiteChrome(pt, flat, flatEn, { activeNav: "about" });
     }
     if (page === "business") {
       pt = injectSiteChrome(pt, flat, flatEn, { activeNav: "business" });
@@ -478,6 +478,7 @@ function writeRootBusinessRedirect() {
 
 writeRootBusinessRedirect();
 generateBusinessDetails();
+renderBusinessServices();
 
 /** robots.txt at site root (allow indexed pages; hide QR business-card slug). */
 function writeRobotsTxt() {
@@ -588,6 +589,24 @@ function writeSitemap() {
     }
   }
 
+  for (const page of BUSINESS_SERVICE_PAGES) {
+    const alts = [
+      ...LANGS.map(({ dir: d, hreflang: h }) => ({
+        hreflang: h,
+        href: `${SITE_ORIGIN}/${d}/business/${page.slug}/`,
+      })),
+      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/business/${page.slug}/` },
+    ];
+    for (const { dir: d } of LANGS) {
+      urls.push({
+        loc: `${SITE_ORIGIN}/${d}/business/${page.slug}/`,
+        priority: "0.65",
+        changefreq: "monthly",
+        alternates: alts,
+      });
+    }
+  }
+
   // Legal pages per language.
   for (const page of ["privacy", "terms"]) {
     const alts = [
@@ -642,15 +661,12 @@ function writeSitemap() {
   // Product Studio hubs
   for (const page of [
     "products",
+    "apps",
     "ai",
     "saas",
     "games",
     "studio",
     "tools",
-    "store",
-    "media",
-    "blog",
-    "labs",
     "market",
     "contact",
   ]) {
@@ -661,6 +677,51 @@ function writeSitemap() {
     for (const { dir: d } of LANGS) {
       urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.65", changefreq: "monthly", alternates: alts });
     }
+  }
+
+  // Resources platform
+  const resourcePages = [
+    "resources",
+    "resources/store",
+    "resources/blog",
+    "resources/media",
+    "resources/labs",
+    "resources/newsletter",
+    "resources/education",
+  ];
+  for (const page of resourcePages) {
+    const alts = [
+      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),
+      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${page}/` },
+    ];
+    for (const { dir: d } of LANGS) {
+      urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.65", changefreq: "weekly", alternates: alts });
+    }
+  }
+
+  try {
+    for (const product of STORE_PRODUCTS) {
+      const page = `resources/store/${product.slug}`;
+      const alts = [
+        ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),
+        { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${page}/` },
+      ];
+      for (const { dir: d } of LANGS) {
+        urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.55", changefreq: "monthly", alternates: alts });
+      }
+    }
+    for (const exp of LABS_EXPERIMENTS) {
+      const page = `resources/labs/${exp.slug}`;
+      const alts = [
+        ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),
+        { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${page}/` },
+      ];
+      for (const { dir: d } of LANGS) {
+        urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.5", changefreq: "monthly", alternates: alts });
+      }
+    }
+  } catch {
+    /* resources-data optional during partial builds */
   }
 
   // Per-app account deletion pages (real, localized URLs).
@@ -704,6 +765,7 @@ function writeSitemap() {
 
 writeRobotsTxt();
 writeSitemap();
+runScript("render-about-hub.mjs");
 runScript("render-news.mjs");
 runScript("render-ideas.mjs");
 runScript("render-studio-hubs.mjs");

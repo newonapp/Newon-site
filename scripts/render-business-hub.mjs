@@ -14,6 +14,7 @@ import {
 import { writeInquirySuccessPages } from "./gen-business-details.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { businessServicesHtml } from "./business-services-html.mjs";
+import { renderBusinessServices } from "./render-business-services.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_ORIGIN = "https://www.newon.app";
@@ -170,6 +171,7 @@ for (const { dir, file, htmlLang } of LANGS) {
 }
 
 writeInquirySuccessPages();
+renderBusinessServices();
 
 const pub = path.join(ROOT, "_publish");
 if (fs.existsSync(pub)) {

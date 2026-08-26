@@ -103,7 +103,8 @@ export const GAMES_PRODUCTS = [
     taglineKey: "studio.game404Tagline",
     icon: "/404-human-logo.png",
     url: "/404-human/",
-    platforms: ["Web", "iOS", "Android"],
+    playUrl: "/404-human/play/",
+    platforms: ["Web"],
     featured: true,
   },
 ];

@@ -1,17 +1,16 @@
 #!/usr/bin/env node
 /**
- * Render templates/about.html into {lang}/… only.
- * News and Ideas are rendered by dedicated scripts.
- * Does not regenerate home, portfolio, or business pages.
+ * Render templates/about.html into {lang}/about/ for all locales.
+ * Body HTML comes from about-page-body.mjs (live catalog / news / labs).
  */
 import fs from "fs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { buildAboutPageBody, getAboutSeo } from "./about-page-body.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_ORIGIN = "https://www.newon.app";
-const PAGES = ["about"];
 const LANGS = [
   { dir: "ko", file: "ko.json", htmlLang: "ko", hreflang: "ko" },
   { dir: "en", file: "en.json", htmlLang: "en", hreflang: "en" },
@@ -118,82 +117,59 @@ function writeRootRedirect(page, titleEn, titleKo) {
   fs.writeFileSync(path.join(dir, "index.html"), html);
 }
 
-function sitemapBlock(page, priority) {
-  const alts = LANGS.map(
-    ({ dir: d, hreflang: h }) =>
-      `    <xhtml:link rel="alternate" hreflang="${h}" href="${SITE_ORIGIN}/${d}/${page}/" />`
-  );
-  alts.push(
-    `    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}/en/${page}/" />`
-  );
-  const today = new Date().toISOString().slice(0, 10);
-  return LANGS.map(
-    ({ dir: d }) => `  <url>
-    <loc>${SITE_ORIGIN}/${d}/${page}/</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>${priority}</priority>
-${alts.join("\n")}
-  </url>`
-  ).join("\n");
-}
-
-function patchSitemap() {
-  const smPath = path.join(ROOT, "sitemap.xml");
-  if (!fs.existsSync(smPath)) return;
-  let xml = fs.readFileSync(smPath, "utf8");
-  for (const page of []) {
-    if (xml.includes(`/${page}/</loc>`)) continue;
-    xml = xml.replace("</urlset>", `${sitemapBlock(page, "0.6")}\n</urlset>`);
-  }
-  fs.writeFileSync(smPath, xml);
-}
-
 function copyToPublish() {
   const pub = path.join(ROOT, "_publish");
   if (!fs.existsSync(pub)) return;
   for (const { dir } of LANGS) {
-    for (const page of PAGES) {
-      const src = path.join(ROOT, dir, page, "index.html");
-      const destDir = path.join(pub, dir, page);
-      if (!fs.existsSync(src)) continue;
-      fs.mkdirSync(destDir, { recursive: true });
-      fs.copyFileSync(src, path.join(destDir, "index.html"));
-    }
-  }
-  for (const page of PAGES) {
-    const src = path.join(ROOT, page, "index.html");
+    const src = path.join(ROOT, dir, "about", "index.html");
+    const destDir = path.join(pub, dir, "about");
     if (!fs.existsSync(src)) continue;
-    const destDir = path.join(pub, page);
     fs.mkdirSync(destDir, { recursive: true });
     fs.copyFileSync(src, path.join(destDir, "index.html"));
   }
-  const smSrc = path.join(ROOT, "sitemap.xml");
-  if (fs.existsSync(smSrc)) fs.copyFileSync(smSrc, path.join(pub, "sitemap.xml"));
+  const rootAbout = path.join(ROOT, "about", "index.html");
+  if (fs.existsSync(rootAbout)) {
+    const destDir = path.join(pub, "about");
+    fs.mkdirSync(destDir, { recursive: true });
+    fs.copyFileSync(rootAbout, path.join(destDir, "index.html"));
+  }
+  for (const name of ["about-page.css", "about-page.js", "hub-pages.css"]) {
+    const src = path.join(ROOT, name);
+    if (fs.existsSync(src)) fs.copyFileSync(src, path.join(pub, name));
+  }
 }
 
 const enData = loadJson("en.json");
 const flatEn = flatten(enData);
+const template = fs.readFileSync(path.join(ROOT, "templates", "about.html"), "utf8");
 
 for (const { dir, file, htmlLang } of LANGS) {
   const merged = fillMissing(loadJson(file), enData);
   const flat = flatten(merged);
-  for (const page of PAGES) {
-    let pt = fs.readFileSync(path.join(ROOT, "templates", `${page}.html`), "utf8");
-    pt = pt.replace(/\{\{LANG_DIR\}\}/g, dir);
-    pt = pt.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
-    pt = pt.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
-    pt = pt.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangBlockLegal(page));
-    pt = pt.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/${page}/`);
-    pt = applyTemplate(pt, flat, flatEn);
-    pt = injectSiteChrome(pt, flat, flatEn, { activeNav: "about" });
-    const pd = path.join(ROOT, dir, page);
-    fs.mkdirSync(pd, { recursive: true });
-    fs.writeFileSync(path.join(pd, "index.html"), pt);
-  }
+  const copyLang = dir === "ko" ? "ko" : "en";
+  const seo = getAboutSeo(copyLang);
+  const body = buildAboutPageBody(copyLang, dir);
+
+  let pt = template;
+  pt = pt.replace(/\{\{LANG_DIR\}\}/g, dir);
+  pt = pt.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+  pt = pt.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
+  pt = pt.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangBlockLegal("about"));
+  pt = pt.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/about/`);
+  pt = pt.replace(/\{\{SEO_TITLE\}\}/g, escapeHtml(seo.seoTitle));
+  pt = pt.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(seo.metaDescription));
+  pt = pt.replace(/\{\{JS_SEO_TITLE\}\}/g, JSON.stringify(seo.seoTitle));
+  pt = pt.replace(/\{\{JS_META_DESCRIPTION\}\}/g, JSON.stringify(seo.metaDescription));
+  pt = pt.replace(/\{\{ABOUT_BODY\}\}/g, body);
+  pt = applyTemplate(pt, flat, flatEn);
+  pt = injectSiteChrome(pt, flat, flatEn, { activeNav: "company", companySwitch: "about" });
+
+  const pd = path.join(ROOT, dir, "about");
+  fs.mkdirSync(pd, { recursive: true });
+  fs.writeFileSync(path.join(pd, "index.html"), pt);
 }
 
-patchSitemap();
+writeRootRedirect("about", "About Newon", "회사 소개");
 copyToPublish();
 
-console.log("render-about-hub: wrote about for 9 languages");
+console.log("render-about-hub: wrote redesigned about for 9 languages");

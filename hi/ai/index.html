@@ -32,9 +32,9 @@
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css?v=20260825studio" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
-    
+    <link rel="stylesheet" href="/styles.css?v=20260825premium" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
+    <link rel="stylesheet" href="/ai-hub.css?v=20260825ai7" />
     <script src="/theme-shell.js"></script>
     <script src="/lang-nav.js?v=20260825studio"></script>
     <script src="/analytics.js?v=20260825studio" defer></script>
@@ -45,36 +45,185 @@
       <div class="gnav__bar">
         <div class="gnav__inner">
           <a class="gnav__brand" href="../">
-            <img class="gnav__logo" src="/logo.png" alt="Newon" width="36" height="36" decoding="async" />
+            <img class="gnav__logo" src="/logo.png" alt="Newon" width="40" height="40" decoding="async" />
             <span class="gnav__wordmark">Newon</span>
           </a>
           <nav class="gnav__nav" aria-label="Main navigation">
-            <div class="gnav-dd gnav-dd--active" data-gnav-dd>
+            <div class="gnav-dd gnav-dd--active" data-gnav-dd data-gnav-menu="products">
     <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-current="page">
-      Products<span class="gnav-dd__chev" aria-hidden="true"></span>
+      Products<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-    <div class="gnav-dd__panel gnav-dd__panel--rich" role="menu" hidden>
-      <p class="gnav-dd__kicker">PRODUCTS</p>
-      <a class="gnav-dd__item" href="../products/?filter=apps" role="menuitem">
-        <span class="gnav-dd__item-title">Apps</span>
-        <span class="gnav-dd__item-desc">Mobile apps by Newon</span>
-      </a><a class="gnav-dd__item" href="../ai/" role="menuitem">
-        <span class="gnav-dd__item-title">AI</span>
-        <span class="gnav-dd__item-desc">AI-powered products</span>
-      </a><a class="gnav-dd__item" href="../saas/" role="menuitem">
-        <span class="gnav-dd__item-title">SaaS</span>
-        <span class="gnav-dd__item-desc">Web subscription services</span>
-      </a><a class="gnav-dd__item" href="#newon-plus-app" role="menuitem">
-        <span class="gnav-dd__item-title">Newon+</span>
-        <span class="gnav-dd__item-desc">Newon product ecosystem</span>
-      </a>
+    <div class="gnav-mega" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">PRODUCTS</p>
+      <p class="gnav-mega__lead">Products Newon builds and operates</p>
+    </div>
+    <div class="gnav-mega__list" role="none">
+      <a class="gnav-mega__row" href="../apps/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Apps</span>
+        <span class="gnav-mega__row-desc">Mobile apps by Newon</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../ai/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">AI</span>
+        <span class="gnav-mega__row-desc">AI-powered products</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../saas/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">SaaS</span>
+        <span class="gnav-mega__row-desc">Web subscription services</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../games/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Games</span>
+        <span class="gnav-mega__row-desc">Games and interactive experiences</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../tools/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Tools</span>
+        <span class="gnav-mega__row-desc">Free web tools, ready to use</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../products/">View all products →</a></p></div>
+      </div>
     </div>
   </div>
-          <a class="gnav__link" href="../business/">बिज़नेस</a>
-          <a class="gnav__link" href="../games/">Games</a>
-          <a class="gnav__link" href="../tools/">Tools</a>
-          <a class="gnav__link" href="../store/">Store</a>
-          <a class="gnav__link" href="../news/">न्यूज़</a>
+          <div class="gnav-dd" data-gnav-dd data-gnav-menu="business">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Business<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="gnav-mega" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">BUSINESS</p>
+      <p class="gnav-mega__lead">Turn ideas into digital products</p>
+      <p class="gnav-mega__subkicker">Services</p>
+    </div>
+    <div class="gnav-mega__grid gnav-mega__grid--business">
+      <a class="gnav-mega__cell" href="../business/mvp/" role="menuitem">
+    <span class="gnav-mega__cell-title">MVP Development</span>
+    <span class="gnav-mega__cell-desc">From idea to a real product, fast</span>
+  </a>
+      <a class="gnav-mega__cell" href="../business/web/" role="menuitem">
+    <span class="gnav-mega__cell-title">Web Development</span>
+    <span class="gnav-mega__cell-desc">Websites for brands and services</span>
+  </a>
+      <a class="gnav-mega__cell" href="../business/app/" role="menuitem">
+    <span class="gnav-mega__cell-title">App Development</span>
+    <span class="gnav-mega__cell-desc">iOS · Android product development</span>
+  </a>
+      <a class="gnav-mega__cell" href="../business/ai-automation/" role="menuitem">
+    <span class="gnav-mega__cell-title">AI Automation</span>
+    <span class="gnav-mega__cell-desc">AI features and workflow automation</span>
+  </a>
+      <a class="gnav-mega__cell" href="../business/white-label/" role="menuitem">
+    <span class="gnav-mega__cell-title">White-label</span>
+    <span class="gnav-mega__cell-desc">Custom products on proven tech</span>
+  </a>
+      <a class="gnav-mega__cell" href="../business/design/" role="menuitem">
+    <span class="gnav-mega__cell-title">Design &amp; Branding</span>
+    <span class="gnav-mega__cell-desc">UI/UX · Product · Brand Design</span>
+  </a>
+    </div>
+    <div class="gnav-mega__foot gnav-mega__foot--split">
+      <a class="gnav-mega__foot-link" href="../business/">Learn about Business →</a>
+      <a class="gnav-mega__foot-link gnav-mega__foot-link--strong" href="../business/#inquiry">Project inquiry →</a>
+    </div></div>
+      </div>
+    </div>
+  </div>
+          <div class="gnav-dd" data-gnav-dd data-gnav-menu="resources">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="gnav-mega" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">RESOURCES</p>
+      <p class="gnav-mega__lead">Knowledge and digital resources from Newon</p>
+    </div>
+    <div class="gnav-mega__grid gnav-mega__grid--resources">
+      <a class="gnav-mega__cell" href="../resources/store/" role="menuitem">
+    <span class="gnav-mega__cell-title">Store</span>
+    <span class="gnav-mega__cell-desc">Templates · prompts · digital goods</span>
+  </a>
+      <a class="gnav-mega__cell" href="../resources/blog/" role="menuitem">
+    <span class="gnav-mega__cell-title">Blog</span>
+    <span class="gnav-mega__cell-desc">Product · AI · dev · business notes</span>
+  </a>
+      <a class="gnav-mega__cell" href="../resources/media/" role="menuitem">
+    <span class="gnav-mega__cell-title">Media</span>
+    <span class="gnav-mega__cell-desc">Content from Newon</span>
+  </a>
+      <a class="gnav-mega__cell" href="../resources/labs/" role="menuitem">
+    <span class="gnav-mega__cell-title">Labs</span>
+    <span class="gnav-mega__cell-desc">New products and business experiments</span>
+  </a>
+      <a class="gnav-mega__cell" href="../resources/newsletter/" role="menuitem">
+    <span class="gnav-mega__cell-title">Newsletter</span>
+    <span class="gnav-mega__cell-desc">Updates from Newon</span>
+  </a>
+      <a class="gnav-mega__cell" href="../resources/education/" role="menuitem">
+    <span class="gnav-mega__cell-title">Education</span>
+    <span class="gnav-mega__cell-desc">Guides and learning content</span>
+  </a>
+    </div></div>
+      </div>
+    </div>
+  </div>
+          <div class="gnav-dd" data-gnav-dd data-gnav-menu="company">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="gnav-mega" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">COMPANY</p>
+      <p class="gnav-mega__lead">Learn about Newon</p>
+    </div>
+    <div class="gnav-mega__grid gnav-mega__grid--company">
+      <a class="gnav-mega__cell gnav-mega__cell--arrow" href="../about/" role="menuitem">
+    <span class="gnav-mega__cell-title">About Newon<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span></span>
+    <span class="gnav-mega__cell-desc">Newon के बारे में</span>
+  </a>
+      <a class="gnav-mega__cell gnav-mega__cell--arrow" href="../portfolio/" role="menuitem">
+    <span class="gnav-mega__cell-title">Portfolio<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span></span>
+    <span class="gnav-mega__cell-desc">Products and projects</span>
+  </a>
+      <a class="gnav-mega__cell gnav-mega__cell--arrow" href="../news/" role="menuitem">
+    <span class="gnav-mega__cell-title">News<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span></span>
+    <span class="gnav-mega__cell-desc">Launches · updates · announcements</span>
+  </a>
+      <a class="gnav-mega__cell gnav-mega__cell--arrow" href="../ideas/" role="menuitem">
+    <span class="gnav-mega__cell-title">Newon Idea<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span></span>
+    <span class="gnav-mega__cell-desc">Suggest a product or feature</span>
+  </a>
+      <a class="gnav-mega__cell gnav-mega__cell--arrow" href="../contact/" role="menuitem">
+    <span class="gnav-mega__cell-title">संपर्क<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span></span>
+    <span class="gnav-mega__cell-desc">Get in touch</span>
+  </a>
+    </div>
+    <div class="gnav-mega__brand">
+      <p class="gnav-mega__brand-name">NEWON</p>
+      <p class="gnav-mega__brand-line">Digital Product Studio</p>
+      <a class="gnav-mega__brand-email" href="mailto:newon@newon.app">newon@newon.app</a>
+    </div></div>
+      </div>
+    </div>
+  </div>
           </nav>
           <div class="gnav__util">
             <a class="gnav__cta" href="../business/#inquiry">Contact</a>
@@ -84,7 +233,7 @@
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">अंग्रेज़ी</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">पोर्टुगुएस (ब्राजील)</option><option value="fr" data-short="FR">फ़्रांसीसी</option><option value="de" data-short="DE">deutsch</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">बहासा इंडोनेशिया</option>
     </select>
   </div>
-            <button type="button" class="gnav__theme" data-theme-toggle data-label-light="लाइट मोड" data-label-dark="डार्क मोड" title="थीम बदलें" aria-label="डार्क मोड">◐</button>
+            <button type="button" class="gnav__theme" data-theme-toggle data-label-light="लाइट मोड" data-label-dark="डार्क मोड" title="थीम बदलें" aria-label="डार्क मोड"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
             <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-hub" aria-label="Menu">
               <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
             </button>
@@ -94,100 +243,533 @@
       <div id="gnav-mobile-hub" class="gnav-mobile" hidden aria-hidden="true">
       <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menu">
         <div class="gnav-mobile__scroll">
-          <a class="gnav-mobile__link gnav-mobile__link--home" href="../">होम</a>
-          <p class="gnav-mobile__label">Products</p><a class="gnav-mobile__link" href="../products/?filter=apps"><span>Apps</span><span class="gnav-mobile__desc">Mobile apps by Newon</span></a><a class="gnav-mobile__link" href="../ai/"><span>AI</span><span class="gnav-mobile__desc">AI-powered products</span></a><a class="gnav-mobile__link" href="../saas/"><span>SaaS</span><span class="gnav-mobile__desc">Web subscription services</span></a><a class="gnav-mobile__link" href="#newon-plus-app"><span>Newon+</span><span class="gnav-mobile__desc">Newon product ecosystem</span></a>
-        <a class="gnav-mobile__link" href="../business/"><span>बिज़नेस</span></a><a class="gnav-mobile__link" href="../games/"><span>Games</span></a><a class="gnav-mobile__link" href="../tools/"><span>Tools</span></a><a class="gnav-mobile__link" href="../store/"><span>Store</span></a><a class="gnav-mobile__link" href="../news/"><span>न्यूज़</span></a>
-        <p class="gnav-mobile__label">परिचय</p><a class="gnav-mobile__link" href="../about/"><span>About Newon</span></a><a class="gnav-mobile__link" href="../portfolio/"><span>पोर्टफोलियो</span></a><a class="gnav-mobile__link" href="../contact/"><span>संपर्क</span></a>
-          <a class="gnav-mobile__cta btn btn-primary" href="../business/#inquiry">Contact</a>
+          <div class="gnav-mobile__acc" data-gnav-acc>
+        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Products<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../apps/">Apps</a><a class="gnav-mobile__sublink" href="../ai/">AI</a><a class="gnav-mobile__sublink" href="../saas/">SaaS</a><a class="gnav-mobile__sublink" href="../games/">Games</a><a class="gnav-mobile__sublink" href="../tools/">Tools</a><a class="gnav-mobile__sublink" href="../products/">All products</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Business<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../business/mvp/">MVP Development</a><a class="gnav-mobile__sublink" href="../business/web/">Web Development</a><a class="gnav-mobile__sublink" href="../business/app/">App Development</a><a class="gnav-mobile__sublink" href="../business/ai-automation/">AI Automation</a><a class="gnav-mobile__sublink" href="../business/white-label/">White-label</a><a class="gnav-mobile__sublink" href="../business/design/">Design &amp; Branding</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../resources/media/">Media</a><a class="gnav-mobile__sublink" href="../resources/labs/">Labs</a><a class="gnav-mobile__sublink" href="../resources/newsletter/">Newsletter</a><a class="gnav-mobile__sublink" href="../resources/education/">Education</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../about/">About Newon</a><a class="gnav-mobile__sublink" href="../portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="../news/">News</a><a class="gnav-mobile__sublink" href="../ideas/">Newon Idea</a><a class="gnav-mobile__sublink" href="../contact/">संपर्क</a></div>
+      </div>
+          <div class="gnav-mobile__divider" aria-hidden="true"></div>
+          <a class="gnav-mobile__cta btn btn-primary" href="../business/#inquiry">परियोजना पूछताछ</a>
+          <div class="gnav-mobile__util-row">
+            <div class="gnav__lang" data-lang-switcher>
+    <label class="visually-hidden" for="lang-select-mobile-hub">भाषा</label>
+    <select id="lang-select-mobile-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="भाषा">
+      <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">अंग्रेज़ी</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">पोर्टुगुएस (ब्राजील)</option><option value="fr" data-short="FR">फ़्रांसीसी</option><option value="de" data-short="DE">deutsch</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">बहासा इंडोनेशिया</option>
+    </select>
+  </div>
+            <button type="button" class="gnav__theme gnav__theme--mobile" data-theme-toggle data-label-light="लाइट मोड" data-label-dark="डार्क मोड" title="थीम बदलें" aria-label="थीम बदलें"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
         </div>
       </div>
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
     </div>
     </header>
     <main id="hub-main" class="hub-page">
-      <section class="hub-hero hub-inner">
-    <p class="hub-eyebrow">NEWON AI</p>
-    <h1 class="hub-title">AI as products you can
+      <div class="ai-page" data-ai-page>
+  <section class="ai-hero" data-ai-reveal>
+    <div class="ai-hero__inner hub-inner">
+      <div class="ai-hero__copy">
+        <p class="ai-hero__eyebrow">NEWON AI</p>
+        <h1 class="ai-hero__title">AI as products you can
 actually use.</h1>
-    <div class="hub-hero__actions"><a class="btn btn-primary" href="../business/#inquiry" data-analytics="business_cta_click">AI 프로젝트 문의하기</a></div>
+        <p class="ai-hero__lead">Analysis, content, product planning, and support.
+Newon connects AI to real work and products.</p>
+        <div class="ai-hero__actions">
+          <a class="btn btn-primary" href="#ai-products">AI Products ↓</a>
+          <a class="btn btn-ghost" href="../business/#inquiry" data-analytics="business_cta_click">AI 프로젝트 문의하기 →</a>
+        </div>
+        <ul class="ai-hero__trust">
+          <li><i aria-hidden="true"></i>AI-FIRST</li>
+          <li><i aria-hidden="true"></i>REAL USE</li>
+          <li><i aria-hidden="true"></i>BUILT BY NEWON</li>
+        </ul>
+      </div>
+      <aside class="ai-process" data-ai-process aria-label="AI process">
+    <div class="ai-process__step" data-process-step>
+      <span>INPUT</span>
+      <strong>Customer Reviews</strong>
+      <em>2,481 inputs</em>
+    </div>
+    <div class="ai-process__arrow" aria-hidden="true">↓</div>
+    <div class="ai-process__step" data-process-step>
+      <span>UNDERSTAND</span>
+      <strong>Product · Market · Users</strong>
+    </div>
+    <div class="ai-process__arrow" aria-hidden="true">↓</div>
+    <div class="ai-process__step" data-process-step>
+      <span>ANALYZE</span>
+      <div class="ai-process__metrics">
+        <p><em>Sentiment</em><b>78%</b></p>
+        <p><em>Requests</em><b>342</b></p>
+      </div>
+    </div>
+    <div class="ai-process__arrow" aria-hidden="true">↓</div>
+    <div class="ai-process__step ai-process__step--out" data-process-step>
+      <span>OUTPUT</span>
+      <strong>Priority insights</strong>
+    </div>
+  </aside>
+    </div>
   </section>
-  <section class="hub-inner hub-section"><h2 class="hub-eyebrow">AI Products</h2><p class="hub-lead">Newon이 직접 만드는 AI 서비스.</p><div class="hub-grid hub-grid--2" style="margin-top:1.5rem"><article class="hub-card">
-      <span class="hub-card__title">Newon Review AI</span>
-      <span class="hub-card__body">리뷰에서 불만, 기능 요청, 긍정 요인을 분석.</span>
-      <span class="hub-card__meta"><span class="hub-badge hub-badge--building">Building</span></span>
-      <form class="waitlist-form" data-waitlist-form data-product-id="newon-review-ai" data-form-type="waitlist" style="margin-top:0.75rem">
-        <input type="hidden" name="productId" value="newon-review-ai" />
-        <input type="email" name="email" placeholder="email@example.com" required aria-label="Email" />
+
+  <section class="ai-proof" data-ai-reveal aria-label="AI overview">
+    <div class="hub-inner">
+      <ul class="ai-proof__list">
+        <li><strong>04</strong> AI PRODUCTS</li>
+        <li><strong>6</strong> AI-ENABLED APPS</li>
+        <li>उत्पाद</li>
+        <li>FOR REAL USE</li>
+      </ul>
+    </div>
+  </section>
+
+  <div id="ai-products" class="ai-pnav-wrap">
+    <nav class="ai-pnav hub-inner" aria-label="AI Products">
+      <p class="ai-pnav__label">AI Products</p>
+      <div class="ai-pnav__track" role="list">
+        <a class="ai-pnav__item" role="listitem" href="#ai-review" data-ai-nav="ai-review"><span>01</span><strong>Review</strong></a>
+        <a class="ai-pnav__item" role="listitem" href="#ai-content" data-ai-nav="ai-content"><span>02</span><strong>Content</strong></a>
+        <a class="ai-pnav__item" role="listitem" href="#ai-launch" data-ai-nav="ai-launch"><span>03</span><strong>Launch</strong></a>
+        <a class="ai-pnav__item" role="listitem" href="#ai-cs" data-ai-nav="ai-cs"><span>04</span><strong>CS AI</strong></a>
+      </div>
+      <a class="ai-pnav__all" href="#ai-products">View all →</a>
+    </nav>
+  </div>
+
+  <section id="ai-review" class="ai-product" data-ai-reveal data-ai-section="ai-review">
+    <div class="ai-product__inner hub-inner">
+      <div class="ai-product__copy">
+        <p class="ai-product__eyebrow"><span>01</span> / REVIEW INTELLIGENCE</p>
+        <h2 class="ai-product__name">Newon Review AI</h2>
+        <h3 class="ai-product__title">Find the next product decision
+in thousands of reviews.</h3>
+        <p class="ai-product__body">Analyze customer reviews to surface recurring complaints, feature requests, praise, and improvement priorities.</p>
+        <div class="ai-product__meta">
+          <span class="ai-status is-dev">IN DEVELOPMENT</span>
+        </div>
+      </div>
+      <div class="ai-product__visual"><div class="ai-mock ai-mock--review" aria-hidden="true">
+    <div class="ai-mock__chrome"><i></i><i></i><i></i><em>DEMO</em></div>
+    <div class="ai-mock__stat">
+      <strong>2,481</strong>
+      <span>REVIEWS ANALYZED</span>
+    </div>
+    <div class="ai-mock__sentiment">
+      <p class="ai-mock__label">Sentiment</p>
+      <div class="ai-mock__row"><span>Positive</span><i style="--w:68%"></i><b>68%</b></div>
+      <div class="ai-mock__row"><span>Neutral</span><i style="--w:19%"></i><b>19%</b></div>
+      <div class="ai-mock__row"><span>Negative</span><i style="--w:13%"></i><b>13%</b></div>
+    </div>
+    <div class="ai-mock__split">
+      <div>
+        <p class="ai-mock__label">Top requests</p>
+        <ul>
+          <li><span>01</span> Dark mode <em>342</em></li>
+          <li><span>02</span> Widget <em>218</em></li>
+          <li><span>03</span> CSV Export <em>164</em></li>
+        </ul>
+      </div>
+      <div>
+        <p class="ai-mock__label">AI Insight</p>
+        <p class="ai-mock__quote">“Users frequently request faster access to daily statistics.”</p>
+        <p class="ai-mock__trend"><span>Trend</span><strong>+18.4%</strong></p>
+      </div>
+    </div>
+  </div></div>
+    </div>
+  </section>
+
+  <section id="ai-content" class="ai-product is-reverse" data-ai-reveal data-ai-section="ai-content">
+    <div class="ai-product__inner hub-inner">
+      <div class="ai-product__copy">
+        <p class="ai-product__eyebrow"><span>02</span> / GENERATIVE CONTENT</p>
+        <h2 class="ai-product__name">Newon Content AI</h2>
+        <h3 class="ai-product__title">One product brief.
+Many channel-ready assets.</h3>
+        <p class="ai-product__body">Enter product details once to generate store copy, social posts, ads, and launch content.</p>
+        <div class="ai-product__meta">
+          <span class="ai-status is-soon">COMING SOON</span>
+        </div>
+      </div>
+      <div class="ai-product__visual"><div class="ai-mock ai-mock--content" aria-hidden="true">
+    <div class="ai-mock__chrome"><i></i><i></i><i></i><em>DEMO</em></div>
+    <div class="ai-mock__cols">
+      <div>
+        <p class="ai-mock__label">INPUT</p>
+        <div class="ai-mock__field"><em>Product</em><strong>BabyLog</strong></div>
+        <div class="ai-mock__field"><em>Audience</em><strong>Parents</strong></div>
+        <div class="ai-mock__field"><em>Tone</em><strong>Clear / Friendly</strong></div>
+        <div class="ai-mock__btn">GENERATE →</div>
+      </div>
+      <div>
+        <p class="ai-mock__label">OUTPUT</p>
+        <ul class="ai-mock__out">
+          <li>App Store</li>
+          <li>Instagram</li>
+          <li>Launch Copy</li>
+          <li>Short-form</li>
+        </ul>
+      </div>
+    </div>
+  </div></div>
+    </div>
+  </section>
+
+  <section id="ai-launch" class="ai-product ai-product--dark" data-ai-reveal data-ai-section="ai-launch">
+    <div class="ai-product__inner hub-inner">
+      <div class="ai-product__copy">
+        <p class="ai-product__eyebrow"><span>03</span> / PRODUCT STRATEGY</p>
+        <h2 class="ai-product__name">Newon Launch AI</h2>
+        <h3 class="ai-product__title">From idea
+to launch plan.</h3>
+        <p class="ai-product__body">Turn an idea into MVP scope, core features, a launch checklist, and an early roadmap.</p>
+        <div class="ai-product__meta">
+          <span class="ai-status is-soon">COMING SOON</span>
+        </div>
+      </div>
+      <div class="ai-product__visual"><div class="ai-launch-flow" aria-hidden="true">
+    <div class="ai-launch-flow__stage">
+      <strong>IDEA</strong>
+      <span>Problem defined ✓</span>
+    </div>
+    <span class="ai-launch-flow__arrow" aria-hidden="true">→</span>
+    <div class="ai-launch-flow__stage">
+      <strong>MVP</strong>
+      <span>6 Core Features</span>
+    </div>
+    <span class="ai-launch-flow__arrow" aria-hidden="true">→</span>
+    <div class="ai-launch-flow__stage">
+      <strong>BUILD</strong>
+      <span>14 Tasks</span>
+    </div>
+    <span class="ai-launch-flow__arrow" aria-hidden="true">→</span>
+    <div class="ai-launch-flow__stage">
+      <strong>LAUNCH</strong>
+      <span>Checklist ready</span>
+    </div>
+  </div></div>
+    </div>
+  </section>
+
+  <section id="ai-cs" class="ai-product is-reverse" data-ai-reveal data-ai-section="ai-cs">
+    <div class="ai-product__inner hub-inner">
+      <div class="ai-product__copy">
+        <p class="ai-product__eyebrow"><span>04</span> / AI SUPPORT</p>
+        <h2 class="ai-product__name">Newon CS AI</h2>
+        <h3 class="ai-product__title">Faster inquiries.
+Consistent answers.</h3>
+        <p class="ai-product__body">Use your knowledge base to triage tickets, draft replies, and handle repetitive questions.</p>
+        <div class="ai-product__meta">
+          <span class="ai-status is-soon">COMING SOON</span>
+        </div>
+      </div>
+      <div class="ai-product__visual"><div class="ai-mock ai-mock--cs" aria-hidden="true">
+    <div class="ai-mock__chrome"><i></i><i></i><i></i><em>DEMO</em></div>
+    <div class="ai-mock__cs">
+      <div class="ai-mock__inbox">
+        <p class="ai-mock__label">INBOX</p>
+        <span class="is-on">Payment issue</span>
+        <span>Bug report</span>
+        <span>Feature request</span>
+      </div>
+      <div class="ai-mock__ticket">
+        <p class="ai-mock__label">CUSTOMER</p>
+        <p class="ai-mock__quote">“Subscription isn't showing...”</p>
+        <p class="ai-mock__label">AI SUGGESTED RESPONSE</p>
+        <p class="ai-mock__reply">Please check Billing → Subscriptions. If the plan still doesn’t appear, reply here and we’ll restore access.</p>
+        <div class="ai-mock__meta">
+          <p><em>Knowledge sources</em><strong>03 matched</strong></p>
+          <p><em>Confidence</em><strong>94%</strong></p>
+        </div>
+      </div>
+    </div>
+  </div></div>
+    </div>
+  </section>
+
+  <section class="ai-early" id="ai-early-access" data-ai-reveal>
+    <div class="ai-early__inner hub-inner">
+      <div class="ai-early__copy">
+        <p class="ai-early__eyebrow">NEWON AI / EARLY ACCESS</p>
+        <h2 class="ai-early__title">Be first to hear when
+Newon AI products launch.</h2>
+      </div>
+      <form class="ai-early__form waitlist-form" data-waitlist-form data-product-id="newon-ai" data-form-type="waitlist">
+        <input type="hidden" name="productId" value="newon-ai" />
+        <label class="ai-early__field">
+          <span class="visually-hidden">Email</span>
+          <input type="email" name="email" placeholder="email@example.com" required autocomplete="email" aria-label="Email" />
+        </label>
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-        <button type="submit" class="btn btn-ghost">출시 알림 받기</button>
+        <button type="submit" class="btn btn-primary">Join waitlist</button>
       </form>
       <p class="waitlist-success" data-waitlist-success hidden>알림 신청이 완료되었습니다.</p>
       <p class="waitlist-success" data-waitlist-duplicate hidden>This email is already registered.</p>
       <p class="waitlist-error" data-waitlist-error hidden role="alert">Something went wrong. Please try again.</p>
-    </article><article class="hub-card">
-      <span class="hub-card__title">Newon Content AI</span>
-      <span class="hub-card__body">하나의 제품 정보에서 다양한 콘텐츠 생성.</span>
-      <span class="hub-card__meta"><span class="hub-badge hub-badge--concept">Coming Soon</span></span>
-      <form class="waitlist-form" data-waitlist-form data-product-id="newon-content-ai" data-form-type="waitlist" style="margin-top:0.75rem">
-        <input type="hidden" name="productId" value="newon-content-ai" />
-        <input type="email" name="email" placeholder="email@example.com" required aria-label="Email" />
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-        <button type="submit" class="btn btn-ghost">출시 알림 받기</button>
-      </form>
-      <p class="waitlist-success" data-waitlist-success hidden>알림 신청이 완료되었습니다.</p>
-      <p class="waitlist-success" data-waitlist-duplicate hidden>This email is already registered.</p>
-      <p class="waitlist-error" data-waitlist-error hidden role="alert">Something went wrong. Please try again.</p>
-    </article><article class="hub-card">
-      <span class="hub-card__title">Newon Launch AI</span>
-      <span class="hub-card__body">아이디어에서 MVP와 출시 계획 생성.</span>
-      <span class="hub-card__meta"><span class="hub-badge hub-badge--concept">Coming Soon</span></span>
-      <form class="waitlist-form" data-waitlist-form data-product-id="newon-launch-ai" data-form-type="waitlist" style="margin-top:0.75rem">
-        <input type="hidden" name="productId" value="newon-launch-ai" />
-        <input type="email" name="email" placeholder="email@example.com" required aria-label="Email" />
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-        <button type="submit" class="btn btn-ghost">출시 알림 받기</button>
-      </form>
-      <p class="waitlist-success" data-waitlist-success hidden>알림 신청이 완료되었습니다.</p>
-      <p class="waitlist-success" data-waitlist-duplicate hidden>This email is already registered.</p>
-      <p class="waitlist-error" data-waitlist-error hidden role="alert">Something went wrong. Please try again.</p>
-    </article><article class="hub-card">
-      <span class="hub-card__title">Newon CS AI</span>
-      <span class="hub-card__body">기업 지식을 기반으로 고객 문의 지원.</span>
-      <span class="hub-card__meta"><span class="hub-badge hub-badge--concept">Coming Soon</span></span>
-      <form class="waitlist-form" data-waitlist-form data-product-id="newon-cs-ai" data-form-type="waitlist" style="margin-top:0.75rem">
-        <input type="hidden" name="productId" value="newon-cs-ai" />
-        <input type="email" name="email" placeholder="email@example.com" required aria-label="Email" />
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-        <button type="submit" class="btn btn-ghost">출시 알림 받기</button>
-      </form>
-      <p class="waitlist-success" data-waitlist-success hidden>알림 신청이 완료되었습니다.</p>
-      <p class="waitlist-success" data-waitlist-duplicate hidden>This email is already registered.</p>
-      <p class="waitlist-error" data-waitlist-error hidden role="alert">Something went wrong. Please try again.</p>
-    </article></div></section>
-  <section class="hub-inner hub-section"><h2 class="hub-eyebrow">AI for Business</h2><p class="hub-lead">기업을 위한 AI 도입 및 자동화.</p><p class="hub-lead" style="margin-top:1rem"><a href="../business/#inquiry">AI 프로젝트 문의하기 →</a></p></section>
-  <section class="hub-inner hub-section"><h2 class="hub-eyebrow">AI Features</h2><p class="hub-lead">Newon 앱에 들어가는 AI 기능.</p><p class="hub-lead" style="margin-top:1rem"><a href="../products/?filter=apps">자세히 보기 →</a></p></section>
+    </div>
+  </section>
+
+  <section class="ai-biz" data-ai-reveal>
+    <div class="ai-biz__inner hub-inner">
+      <div class="ai-biz__copy">
+        <p class="ai-biz__eyebrow">AI for Business</p>
+        <h2 class="ai-biz__title">Turn repeat work
+into AI workflow.</h2>
+        <p class="ai-biz__lead">기업을 위한 AI 도입 및 자동화.</p>
+        <a class="btn btn-primary" href="../business/#inquiry" data-analytics="business_cta_click">AI 프로젝트 문의하기 →</a>
+      </div>
+      <ol class="ai-biz__pipe" data-ai-biz-pipe>
+        <li data-biz-step data-case="automation" class="is-active">
+          <span>01</span>
+          <strong>AUTOMATION</strong>
+          <p>Automate repetitive tasks</p>
+        </li>
+        <li data-biz-step data-case="workflow">
+          <span>02</span>
+          <strong>WORKFLOW</strong>
+          <p>Connect AI to existing tools</p>
+        </li>
+        <li data-biz-step data-case="knowledge">
+          <span>03</span>
+          <strong>KNOWLEDGE</strong>
+          <p>Ground AI in internal knowledge</p>
+        </li>
+        <li data-biz-step data-case="action">
+          <span>04</span>
+          <strong>ACTION</strong>
+          <p>Support customers and operations</p>
+        </li>
+      </ol>
+      <aside class="ai-biz__case" data-biz-case aria-live="polite">
+        <p class="ai-biz__case-label">USE CASE</p>
+        <div data-case-body>
+          <div><span>Input</span><strong>Customer inquiry</strong></div>
+          <div><span>AI</span><strong>Classify + Analyze</strong></div>
+          <div><span>Action</span><strong>Generate response</strong></div>
+          <div><span>Result</span><strong>Support workflow</strong></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="ai-how" data-ai-reveal>
+    <div class="hub-inner">
+      <header class="ai-section-head">
+        <p class="ai-section-head__eyebrow">HOW WE BUILD</p>
+        <h2 class="ai-section-head__title">What matters more than the model
+is where it gets used.</h2>
+      </header>
+      <ol class="ai-how__track">
+        <li>
+          <span>01</span>
+          <strong>DISCOVER</strong>
+          <p>Map the problem and current workflow</p>
+        </li>
+        <li>
+          <span>02</span>
+          <strong>DESIGN</strong>
+          <p>Design where AI fits and how data is structured</p>
+        </li>
+        <li>
+          <span>03</span>
+          <strong>PROTOTYPE</strong>
+          <p>Build a small AI prototype</p>
+        </li>
+        <li>
+          <span>04</span>
+          <strong>BUILD</strong>
+          <p>Connect it to the real product or ops system</p>
+        </li>
+        <li>
+          <span>05</span>
+          <strong>IMPROVE</strong>
+          <p>Improve from real usage data</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="ai-inside" data-ai-reveal>
+    <div class="hub-inner">
+      <header class="ai-section-head">
+        <p class="ai-section-head__eyebrow">AI INSIDE NEWON</p>
+        <h2 class="ai-section-head__title">AI isn’t a bolt-on feature.
+It runs inside the product.</h2>
+        <p class="ai-section-head__lead">AI already runs inside Newon’s habit, finance, health, family, and travel apps.</p>
+      </header>
+      <div class="ai-chips" aria-label="Newon apps with AI"><a class="ai-chip" href="../#savy-app">
+      <img src="/savy-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+      <span>
+        <strong>Savy</strong>
+        <em>AI Spending Insight</em>
+      </span>
+    </a>
+<a class="ai-chip" href="../#babylog-app">
+      <img src="/babylog-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+      <span>
+        <strong>BabyLog</strong>
+        <em>AI Parenting Insight</em>
+      </span>
+    </a>
+<a class="ai-chip" href="../#petlog-app">
+      <img src="/petlog-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+      <span>
+        <strong>PetLog</strong>
+        <em>AI Care Insight</em>
+      </span>
+    </a>
+<a class="ai-chip" href="../#piggyup-app">
+      <img src="/piggyup-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+      <span>
+        <strong>PiggyUp</strong>
+        <em>AI Coach</em>
+      </span>
+    </a>
+<a class="ai-chip" href="../#myworld-app">
+      <img src="/myworld-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+      <span>
+        <strong>My World</strong>
+        <em>AI Travel Report</em>
+      </span>
+    </a>
+<a class="ai-chip" href="../#ox-month">
+      <img src="/ox-month-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
+      <span>
+        <strong>OX MONTH</strong>
+        <em>AI Pattern Analysis</em>
+      </span>
+    </a></div>
+      <p class="ai-inside__cta"><a class="btn btn-ghost" href="../apps/">Browse apps →</a></p>
+    </div>
+  </section>
+
+  <section class="ai-caps" data-ai-reveal data-ai-caps>
+    <div class="hub-inner ai-caps__inner">
+      <header class="ai-caps__head">
+        <p class="ai-caps__eyebrow">क्षमताओं</p>
+        <h2 class="ai-caps__title">What we build with AI.</h2>
+        <p class="ai-caps__lead">We don’t list models. We build capabilities that attach to real products and work.</p>
+      </header>
+      <ol class="ai-caps__index">
+        <li class="ai-caps__row is-active" data-cap-row>
+          <button type="button" class="ai-caps__trigger" data-cap-trigger aria-expanded="true">
+            <span class="ai-caps__n">01</span>
+            <span class="ai-caps__name">ANALYSIS</span>
+            <span class="ai-caps__tag">Review AI</span>
+          </button>
+          <div class="ai-caps__panel">
+            <p>Find patterns in data and user feedback.</p>
+            <a href="#ai-review">See related product →</a>
+          </div>
+        </li>
+        <li class="ai-caps__row" data-cap-row>
+          <button type="button" class="ai-caps__trigger" data-cap-trigger aria-expanded="false">
+            <span class="ai-caps__n">02</span>
+            <span class="ai-caps__name">GENERATION</span>
+            <span class="ai-caps__tag">Content AI</span>
+          </button>
+          <div class="ai-caps__panel">
+            <p>Generate text and content.</p>
+            <a href="#ai-content">See related product →</a>
+          </div>
+        </li>
+        <li class="ai-caps__row" data-cap-row>
+          <button type="button" class="ai-caps__trigger" data-cap-trigger aria-expanded="false">
+            <span class="ai-caps__n">03</span>
+            <span class="ai-caps__name">RECOMMENDATION</span>
+            <span class="ai-caps__tag">Launch AI</span>
+          </button>
+          <div class="ai-caps__panel">
+            <p>Suggest the next useful action.</p>
+            <a href="#ai-launch">See related product →</a>
+          </div>
+        </li>
+        <li class="ai-caps__row" data-cap-row>
+          <button type="button" class="ai-caps__trigger" data-cap-trigger aria-expanded="false">
+            <span class="ai-caps__n">04</span>
+            <span class="ai-caps__name">AUTOMATION</span>
+            <span class="ai-caps__tag">Business</span>
+          </button>
+          <div class="ai-caps__panel">
+            <p>Automate repetitive work.</p>
+            <a href="../business/#inquiry">व्यापार जांच →</a>
+          </div>
+        </li>
+        <li class="ai-caps__row" data-cap-row>
+          <button type="button" class="ai-caps__trigger" data-cap-trigger aria-expanded="false">
+            <span class="ai-caps__n">05</span>
+            <span class="ai-caps__name">KNOWLEDGE</span>
+            <span class="ai-caps__tag">CS AI</span>
+          </button>
+          <div class="ai-caps__panel">
+            <p>Connect company and product knowledge to AI.</p>
+            <a href="#ai-cs">See related product →</a>
+          </div>
+        </li>
+        <li class="ai-caps__row" data-cap-row>
+          <button type="button" class="ai-caps__trigger" data-cap-trigger aria-expanded="false">
+            <span class="ai-caps__n">06</span>
+            <span class="ai-caps__name">PERSONALIZATION</span>
+            <span class="ai-caps__tag">Apps</span>
+          </button>
+          <div class="ai-caps__panel">
+            <p>Adapt experiences to user context.</p>
+            <a href="../apps/">Browse apps →</a>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="ai-cta" data-ai-reveal>
+    <div class="ai-cta__bg" aria-hidden="true"></div>
+    <div class="ai-cta__inner hub-inner">
+      <p class="ai-cta__eyebrow">BUILD WITH NEWON</p>
+      <h2 class="ai-cta__title">Where AI is needed,
+we ship a product.</h2>
+      <p class="ai-cta__lead">From validating an idea to designing AI features,
+product development, and automation — we design it together.</p>
+      <div class="ai-cta__actions">
+        <a class="btn btn-primary ai-cta__btn" href="../business/#inquiry" data-analytics="business_cta_click">AI 프로젝트 문의하기 →</a>
+        <a class="btn btn-ghost ai-cta__btn ai-cta__btn--ghost" href="../business/">View Newon Business →</a>
+      </div>
+      <p class="ai-cta__foot">NEWON AI · PRODUCT STUDIO</p>
+    </div>
+  </section>
+</div>
     </main>
     <footer class="site-footer studio-footer">
       <div class="container studio-footer__grid">
         <div class="studio-footer__col">
       <p class="studio-footer__title">Products</p>
-      <ul class="studio-footer__list"><li><a href="../products/?filter=apps">Apps</a></li><li><a href="../ai/">AI</a></li><li><a href="../saas/">SaaS</a></li><li><a href="../games/">Games</a></li><li><a href="../#newon-plus-app">Newon+</a></li></ul>
+      <ul class="studio-footer__list"><li><a href="../apps/">Apps</a></li><li><a href="../ai/">AI</a></li><li><a href="../saas/">SaaS</a></li><li><a href="../games/">Games</a></li><li><a href="../tools/">Tools</a></li></ul>
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Business</p>
-      <ul class="studio-footer__list"><li><a href="../business/#svc-mvp">MVP</a></li><li><a href="../business/#svc-website">Website</a></li><li><a href="../business/#svc-ai">AI Automation</a></li><li><a href="../business/#svc-whitelabel">White-label</a></li><li><a href="../business/#svc-design">Design</a></li></ul>
+      <ul class="studio-footer__list"><li><a href="../business/mvp/">MVP</a></li><li><a href="../business/web/">Website</a></li><li><a href="../business/app/">अनुप्रयोग</a></li><li><a href="../business/ai-automation/">AI Automation</a></li><li><a href="../business/white-label/">White-label</a></li><li><a href="../business/design/">Design</a></li></ul>
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Resources</p>
-      <ul class="studio-footer__list"><li><a href="../tools/">Tools</a></li><li><a href="../store/">Store</a></li><li><a href="../blog/">Blog</a></li><li><a href="../media/">Media</a></li></ul>
+      <ul class="studio-footer__list"><li><a href="../resources/store/">Store</a></li><li><a href="../resources/blog/">Blog</a></li><li><a href="../resources/media/">Media</a></li><li><a href="../resources/labs/">Labs</a></li><li><a href="../resources/newsletter/">Newsletter</a></li><li><a href="../resources/education/">Education</a></li></ul>
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Company</p>
-      <ul class="studio-footer__list"><li><a href="../about/">Newon परिचय</a></li><li><a href="../portfolio/">[[[टी0]]] पोर्टफोलियो</a></li><li><a href="../news/">न्यूज़</a></li><li><a href="../ideas/">आइडियाज़</a></li><li><a href="../contact/">संपर्क</a></li></ul>
+      <ul class="studio-footer__list"><li><a href="../about/">Newon परिचय</a></li><li><a href="../portfolio/">[[[टी0]]] पोर्टफोलियो</a></li><li><a href="../news/">News</a></li><li><a href="../ideas/">Newon Idea</a></li><li><a href="../contact/">संपर्क</a></li></ul>
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Legal</p>
-      <ul class="studio-footer__list"><li><a href="../privacy/">गोपनीयता नीति</a></li><li><a href="../terms/">सेवा की शर्तें</a></li><li><a href="../oxmonth/delete-account/">Account Delete</a></li><li><a href="../#newon-plus-app">Subscription</a></li></ul>
+      <ul class="studio-footer__list"><li><a href="../privacy/">गोपनीयता नीति</a></li><li><a href="../terms/">सेवा की शर्तें</a></li><li><a href="../oxmonth/delete-account/">Account Delete</a></li></ul>
     </div>
         <div class="studio-footer__col studio-footer__col--contact">
           <p class="studio-footer__title">Contact</p>
@@ -196,13 +778,13 @@ actually use.</h1>
         </div>
       </div>
       <div class="container studio-footer__bottom">
-        <p>© Newon · सर्वाधिकार सुरक्षित।</p>
+        <p>© 2026 Newon · सर्वाधिकार सुरक्षित।</p>
       </div>
     </footer>
     <div class="search-modal-host"></div>
     <script src="/search.js?v=20260825studio" defer></script>
     <script src="/waitlist.js?v=20260825studio" defer></script>
-    
-    <script src="/site-chrome.js?v=20260825gnav" defer></script>
+    <script src="/ai-hub.js?v=20260825ai5" defer></script>
+    <script src="/site-chrome.js?v=20260826gnav4" defer></script>
   </body>
 </html>

@@ -15,7 +15,7 @@
   --nw-faint: var(--nw-label);
   color: var(--nw-text);
   background: var(--nw-bg);
-  padding-top: var(--header-h, 4.25rem);
+  padding-top: 0;
   overflow-x: clip;
 }
 

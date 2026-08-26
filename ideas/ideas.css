@@ -10,7 +10,7 @@
   --ni-active: #111;
 }
 .ni-page {
-  padding-top: var(--header-h);
+  padding-top: 0;
   background: #fff;
   color: var(--text);
 }
@@ -716,7 +716,7 @@ html[data-newon-shell-theme="dark"] .ni-steps .n {
   margin-top: clamp(4.25rem, 7vw, 6.5rem);
   padding: clamp(4.5rem, 8vw, 7.5rem) 0;
   border-top: 1px solid var(--ni-rule);
-  background: #fafafa;
+  background: #ffffff;
 }
 html[data-newon-shell-theme="dark"] .ni-philosophy {
   background: rgba(255, 255, 255, 0.03);

@@ -1,5 +1,6 @@
 /**
- * Newon Labs — experiments registry. Status from data only; no auto-generated fake projects.
+ * Newon Labs — experiments registry (admin / legacy).
+ * Public detail data lives in lab-experiments.mjs.
  */
 export const LABS_STATUS = ["exploring", "building", "beta", "live", "paused"];
 
@@ -29,8 +30,8 @@ export const LABS_EXPERIMENTS = [
     type: "saas",
   },
   {
-    id: "ai-service",
-    slug: "ai-service",
+    id: "ai-experiment",
+    slug: "ai-experiment",
     status: "exploring",
     nameKey: "studio.lab4Name",
     descKey: "studio.lab4Desc",

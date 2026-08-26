@@ -1,5 +1,5 @@
 /**
- * Business services 01–07 — varied layouts for conversion page.
+ * Business services — editorial catalog rows.
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
 import { BUSINESS_SERVICES } from "./business-pricing.mjs";
@@ -24,71 +24,49 @@ const CTA_TYPES = {
   design: "Design",
 };
 
-function itemsList(itemsStr) {
+function metaLine(itemsStr) {
   return String(itemsStr || "")
     .split("·")
     .map((s) => s.trim())
     .filter(Boolean)
-    .map((s) => `<li>${escapeHtml(s)}</li>`)
-    .join("");
+    .map((s) => escapeHtml(s))
+    .join('<span class="bz-cat__dot" aria-hidden="true">·</span>');
 }
 
-function serviceBlock(svc, flat, flatEn, layout) {
+function serviceBlock(svc, flat, flatEn) {
   const title = pick(flat, flatEn, svc.titleKey) || svc.id;
   const desc = pick(flat, flatEn, svc.descKey) || "";
   const items = pick(flat, flatEn, svc.itemsKey) || "";
   const cta = pick(flat, flatEn, CTA_KEYS[svc.id]) || pick(flat, flatEn, "business.ctaInquiry") || "Inquire";
   const type = CTA_TYPES[svc.id] || "Other";
 
-  if (layout === "split") {
-    return `<article class="bz-svc bz-svc--split" id="svc-${svc.id}">
-      <div class="bz-svc__head">
-        <span class="bz-svc__num">${svc.num}</span>
-        <h3 class="bz-svc__title">${escapeHtml(title)}</h3>
-        <p class="bz-svc__desc">${escapeHtml(desc)}</p>
-      </div>
-      <ul class="bz-svc__list">${itemsList(items)}</ul>
-      <a class="btn btn-ghost bz-svc__cta" href="#inquiry" data-inquiry-type="${type}" data-analytics="business_cta_click">${escapeHtml(cta)}</a>
-    </article>`;
-  }
-
-  if (layout === "stack") {
-    return `<article class="bz-svc bz-svc--stack" id="svc-${svc.id}">
-      <span class="bz-svc__num">${svc.num}</span>
-      <h3 class="bz-svc__title">${escapeHtml(title)}</h3>
-      <p class="bz-svc__desc">${escapeHtml(desc)}</p>
-      <ul class="bz-svc__tags">${itemsList(items).replace(/<\/?li>/g, (m) => (m === "<li>" ? '<span class="bz-svc__tag">' : "</span>"))}</ul>
-      <a class="btn btn-primary bz-svc__cta" href="#inquiry" data-inquiry-type="${type}" data-analytics="business_cta_click">${escapeHtml(cta)}</a>
-    </article>`;
-  }
-
-  return `<article class="bz-svc bz-svc--row" id="svc-${svc.id}">
-    <div class="bz-svc__row-main">
-      <span class="bz-svc__num">${svc.num}</span>
-      <div>
-        <h3 class="bz-svc__title">${escapeHtml(title)}</h3>
-        <p class="bz-svc__desc">${escapeHtml(desc)}</p>
-        <ul class="bz-svc__list bz-svc__list--inline">${itemsList(items)}</ul>
-      </div>
-    </div>
-    <a class="btn btn-ghost bz-svc__cta" href="#inquiry" data-inquiry-type="${type}" data-analytics="business_cta_click">${escapeHtml(cta)}</a>
-  </article>`;
+  return `<a class="bz-cat" id="svc-${svc.id}" href="#inquiry" data-inquiry-type="${type}" data-analytics="business_cta_click">
+  <span class="bz-cat__n">${svc.num}</span>
+  <div class="bz-cat__main">
+    <h3 class="bz-cat__title">${escapeHtml(title)}</h3>
+    <p class="bz-cat__desc">${escapeHtml(desc)}</p>
+    <p class="bz-cat__meta">${metaLine(items)}</p>
+  </div>
+  <span class="bz-cat__go"><span class="bz-cat__go-label">${escapeHtml(cta)}</span><span class="bz-cat__arrow" aria-hidden="true">→</span></span>
+</a>`;
 }
-
-const LAYOUTS = ["split", "row", "stack", "split", "row", "stack", "split"];
 
 export function businessServicesHtml(flat, flatEn) {
   const label = escapeHtml(pick(flat, flatEn, "studio.servicesLabel") || "SERVICES");
   const title = escapeHtml(pick(flat, flatEn, "studio.servicesTitle") || "What we build");
   const lead = escapeHtml(pick(flat, flatEn, "studio.servicesLead") || "");
-  const blocks = BUSINESS_SERVICES.map((svc, i) => serviceBlock(svc, flat, flatEn, LAYOUTS[i] || "row")).join("\n");
+  const blocks = BUSINESS_SERVICES.map((svc) => serviceBlock(svc, flat, flatEn)).join("\n");
 
   return `<section id="services" class="bz-section bz-services bz-reveal" aria-labelledby="bz-services-title">
     <div class="bz-inner">
-      <p class="bz-label">${label}</p>
-      <h2 class="bz-title" id="bz-services-title">${title}</h2>
-      <p class="bz-lead">${lead}</p>
-      <div class="bz-services__grid">${blocks}</div>
+      <header class="bz-sec-head">
+        <div class="bz-sec-head__copy">
+          <p class="bz-label">${label}</p>
+          <h2 class="bz-title" id="bz-services-title">${title}</h2>
+        </div>
+        <p class="bz-lead bz-sec-head__lead">${lead}</p>
+      </header>
+      <div class="bz-catalog" role="list">${blocks}</div>
     </div>
   </section>`;
 }

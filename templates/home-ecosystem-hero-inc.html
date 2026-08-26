@@ -1,0 +1,121 @@
+        <section id="top" class="hero hero--ecosystem hero--entered reveal-on-scroll is-visible">
+          <div class="hero-bg" aria-hidden="true"></div>
+          <div class="container hero-inner hero-inner--centered">
+            <div class="hero-copy hero-copy--centered">
+              <h1 class="hero-brand-mark hero-eco-enter" style="--hero-enter-delay: 80ms">
+                <img
+                  class="hero-brand-mark__img hero-brand-mark__img--light"
+                  src="/newon-wordmark-chrome.png"
+                  alt="{{t:home.heroLogoAlt}}"
+                  width="948"
+                  height="361"
+                  decoding="sync"
+                  fetchpriority="high"
+                />
+                <img
+                  class="hero-brand-mark__img hero-brand-mark__img--dark"
+                  src="/newon-wordmark-chrome-dark.png"
+                  alt=""
+                  width="948"
+                  height="361"
+                  decoding="async"
+                  fetchpriority="low"
+                  aria-hidden="true"
+                />
+              </h1>
+              <p class="hero-sub hero-eco-enter" style="--hero-enter-delay: 220ms">{{t:home.heroSub}}</p>
+              <p class="hero-desc hero-eco-enter" style="--hero-enter-delay: 300ms">{{t:home.heroDesc}}</p>
+              <div class="hero-actions hero-actions--eco hero-eco-enter" style="--hero-enter-delay: 380ms">
+                <a
+                  class="btn btn-primary hero-btn-primary"
+                  href="products/"
+                  aria-label="{{t:home.btnExploreAppsAria}}"
+                >{{t:home.btnExploreApps}}</a>
+                <a
+                  class="btn btn-ghost hero-btn-secondary"
+                  href="business/#inquiry"
+                  aria-label="{{t:home.btnExploreNewonAria}}"
+                >{{t:home.btnExploreNewon}}</a>
+              </div>
+              <nav class="hub-strip hero-eco-enter" style="--hero-enter-delay: 420ms" aria-label="Newon areas">
+                <a href="products/?filter=apps">{{t:home.heroStripApps}}</a>
+                <a href="ai/">{{t:home.heroStripAi}}</a>
+                <a href="games/">{{t:home.heroStripGames}}</a>
+                <a href="saas/">{{t:home.heroStripSaas}}</a>
+                <a href="business/">{{t:home.heroStripBusiness}}</a>
+                <a href="tools/">{{t:home.heroStripTools}}</a>
+              </nav>
+              <div class="hero-actions hero-store-links hero-eco-enter" style="--hero-enter-delay: 460ms">
+                <a
+                  class="hero-store-link hero-store-link--apple"
+                  href="https://apps.apple.com/developer/nawon-kyung/id1896528749"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="{{t:home.appStoreIconAria}}"
+                >
+                  <svg
+                    class="hero-store-link__icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  class="hero-store-link hero-store-link--google"
+                  href="https://play.google.com/store/apps/dev?id=8016507493063681249"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="{{t:home.googlePlayIconAria}}"
+                >
+                  <svg
+                    class="hero-store-link__icon hero-store-link__icon--play"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 28 28"
+                    width="22"
+                    height="22"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path fill="#00D9FF" d="M3 4.5v19l11-9.7L3 4.5z" />
+                    <path fill="#00F076" d="M15.4 14.3 25 20.8c.6-.4 1-1 1-1.8V9c0-.7-.4-1.4-1-1.8l-9.6 6.1z" />
+                    <path fill="#FFCE00" d="M15.4 13.7 25 7.2c-.6-.4-1.3-.6-2-.4L3 4.5l12.4 9.2z" />
+                    <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div
+              class="hero-marquee"
+              data-hero-marquee
+              aria-label="{{t:home.heroMarqueeAria}}"
+            ></div>
+          </div>
+          <script type="application/json" id="newon-hero-apps-labels">
+{
+  "babylog": { "description": {{js:nav.babylogDesc}}, "category": {{js:home.heroCatFamily}} },
+  "petlog": { "description": {{js:nav.petlogDesc}}, "category": {{js:home.heroCatPets}} },
+  "goalup": { "description": {{js:nav.goalupDesc}}, "category": {{js:home.heroCatGoals}} },
+  "countup": { "description": {{js:nav.countupDesc}}, "category": {{js:home.heroCatTracking}} },
+  "savy": { "description": {{js:nav.savyDesc}}, "category": {{js:home.heroCatFinance}} },
+  "subping": { "description": {{js:nav.subpingDesc}}, "category": {{js:home.heroCatFinance}} },
+  "pillmate": { "description": {{js:nav.pillmateDesc}}, "category": {{js:home.heroCatHealth}} },
+  "piggyup": { "description": {{js:nav.piggyupDesc}}, "category": {{js:home.heroCatFinance}} },
+  "ox": { "description": {{js:nav.oxDesc}}, "category": {{js:home.heroCatHabits}} },
+  "newonPlus": { "description": {{js:nav.newonPlusDesc}}, "category": {{js:home.heroCatMembership}} },
+  "myworld": { "description": {{js:nav.myworldDesc}}, "category": {{js:home.heroCatTravel}} }
+}
+          </script>
+          <script src="/hero-apps.js"></script>
+          <div class="hero-scroll" aria-hidden="true">
+            <span class="dot-pulse"></span>
+            <span>{{t:common.scroll}}</span>
+          </div>
+        </section>

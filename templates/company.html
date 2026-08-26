@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="{{HTML_LANG}}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{SEO_TITLE}}</title>
+    <meta name="description" content="{{META_DESCRIPTION}}" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="{{CANONICAL}}" />
+    <meta property="og:type" content="{{OG_TYPE}}" />
+    <meta property="og:url" content="{{CANONICAL}}" />
+    <meta property="og:locale" content="{{OG_LOCALE}}" />
+    <meta property="og:title" content="{{SEO_TITLE}}" />
+    <meta property="og:description" content="{{META_DESCRIPTION}}" />
+    <meta property="og:site_name" content="Newon" />
+    <meta property="og:image" content="https://www.newon.app/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{SEO_TITLE}}" />
+    <meta name="twitter:description" content="{{META_DESCRIPTION}}" />
+    <meta name="twitter:image" content="https://www.newon.app/logo.png" />
+{{HREFLANG_BLOCK}}
+{{STRUCTURED_DATA}}
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css?v=20260822typeall" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20260826g13" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
+    <link rel="stylesheet" href="/site-premium.css?v=20260826bw1" />
+    <link rel="stylesheet" href="/company.css?v=20260826nav1" />
+    <script src="/theme-shell.js"></script>
+    <script src="/analytics.js?v=20260825studio" defer></script>
+    <script src="/lang-nav.js?v=20260821stay2"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#co-main">Skip to content</a>
+    {{CHROME_HEADER}}
+    <main id="co-main" class="co-page" data-co-page="{{PAGE_SLUG}}" data-co-analytics="{{ANALYTICS_ID}}" data-lang="{{HTML_LANG}}">
+{{PAGE_BODY}}
+    </main>
+    {{CHROME_FOOTER}}
+    <script type="application/json" id="co-i18n">{{I18N_JSON}}</script>
+    <script src="/company.js?v=20260826c1" defer></script>
+    <script src="/site-chrome.js?v=20260826gnav4" defer></script>
+    <script src="/lang-dropdown.js"></script>
+  </body>
+</html>

@@ -1196,7 +1196,7 @@ html[data-newon-shell-theme="dark"] .pf-open__row:hover {
 }
 
 html[data-newon-shell-theme="light"] .pf-cx__card {
-  background: #fafafa;
+  background: #ffffff;
   border-color: #e8e8e8;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.85) inset,
@@ -1458,7 +1458,7 @@ html[data-newon-shell-theme="dark"] .pf-explore__row {
 }
 
 .pf-explore__row:hover {
-  background: #fafafa;
+  background: #ffffff;
   border-bottom-color: #d8d8d8;
 }
 

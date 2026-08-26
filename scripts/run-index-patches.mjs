@@ -21,6 +21,7 @@ const STEPS = [
   "patch-index-late-app-js.mjs",
   "patch-app-footers.mjs",
   "remove-noting-from-site.mjs",
+  "patch-index-home-studio.mjs",
 ];
 
 for (const name of STEPS) {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T17:03:23.024Z",
+  "generatedAt": "2026-08-26T09:38:45.360Z",
   "note": "Business leads, waitlist, and newsletter submissions are collected via FormSubmit to newon@newon.app. Activate the inbox at formsubmit.co if not done yet.",
   "products": [
     {
@@ -220,10 +220,9 @@
       "taglineKey": "studio.game404Tagline",
       "icon": "/404-human-logo.png",
       "url": "/404-human/",
+      "playUrl": "/404-human/play/",
       "platforms": [
-        "Web",
-        "iOS",
-        "Android"
+        "Web"
       ],
       "featured": true
     },
@@ -330,8 +329,8 @@
       "type": "saas"
     },
     {
-      "id": "ai-service",
-      "slug": "ai-service",
+      "id": "ai-experiment",
+      "slug": "ai-experiment",
       "status": "exploring",
       "nameKey": "studio.lab4Name",
       "descKey": "studio.lab4Desc",

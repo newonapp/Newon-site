@@ -188,7 +188,7 @@ for (const { dir, file, htmlLang } of LANGS) {
   hub = hub.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangIdeas(""));
   hub = hub.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/ideas/`);
   hub = applyTemplate(hub, flat, flatEn);
-  hub = replaceLegacyChrome(hub, flat, flatEn, { activeNav: "about" });
+  hub = replaceLegacyChrome(hub, flat, flatEn, { activeNav: "company", companySwitch: "ideas" });
   hub = hub.replace("{{PRODUCT_OPTIONS}}", productOptionsHtml(flat, flatEn));
   hub = hub.replace("{{IDEAS_I18N}}", ideasI18nJson(flat, flatEn));
   const hubDir = path.join(ROOT, dir, "ideas");

@@ -83,7 +83,7 @@ function head({ langMeta, copy, title, description, canonical, suffix }) {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="${FONTS}" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825premium" />
     <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260822founder" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
     <script src="/theme-shell.js"></script>
