@@ -172,9 +172,16 @@
     };
     Array.prototype.forEach.call(form.querySelectorAll("input, select, textarea"), function (field) {
       if (!field.name || field.type === "submit" || field.name === "_honey") return;
+      if (field.type === "checkbox" || field.type === "radio") {
+        if (!field.checked) return;
+      }
       var v = String(field.value || "").trim();
       if (!v) return;
-      payload[field.name] = v;
+      if (payload[field.name]) {
+        payload[field.name] = payload[field.name] + ", " + v;
+      } else {
+        payload[field.name] = v;
+      }
     });
     var email = fieldValue(form, "email", "bz-email");
     if (email) payload._replyto = email;

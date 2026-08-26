@@ -768,6 +768,7 @@ writeSitemap();
 runScript("render-about-hub.mjs");
 runScript("render-news.mjs");
 runScript("render-ideas.mjs");
+runScript("render-business-hub.mjs");
 runScript("render-studio-hubs.mjs");
 runScript("render-blog.mjs");
 runScript("generate-search-index.mjs");

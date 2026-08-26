@@ -62,7 +62,7 @@ const STUDIO_KO = {
     taglineStudio: "아이디어를 디지털 제품으로 만드는 Product Studio.",
   },
   home: {
-    heroEyebrow: "NEWON · DIGITAL PRODUCT STUDIO",
+    heroEyebrow: "NEWON · PRODUCT & VENTURE STUDIO",
     heroTitleLine1: "아이디어를 켜고,",
     heroTitleAccent: "새로운 제품을 만듭니다.",
     heroSub: "Newon은 앱, AI 서비스, 게임, 웹 제품을 직접 만들고 기업과 함께 새로운 디지털 경험을 설계하는 Product Studio입니다.",
@@ -469,7 +469,7 @@ const STUDIO_EN = {
     taglineStudio: "A Product Studio turning ideas into digital products.",
   },
   home: {
-    heroEyebrow: "NEWON · DIGITAL PRODUCT STUDIO",
+    heroEyebrow: "NEWON · PRODUCT & VENTURE STUDIO",
     heroTitleLine1: "Turn ideas on.",
     heroTitleAccent: "Build new products.",
     heroSub: "Newon builds apps, AI services, games, and web products — and partners with teams to design new digital experiences.",

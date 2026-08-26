@@ -22,7 +22,9 @@ import {
   MEDIA_SERIES,
   buildSearchIndex,
   STORE_CATEGORIES,
+  normalizeStoreCategory,
 } from "./resources-data.mjs";
+import { getPublishedInsights, INSIGHT_CATEGORIES } from "./insights-data.mjs";
 import { labDetailBody as buildLabDetailBody } from "./lab-detail-bodies.mjs";
 import { buildLabsHubBody } from "./labs-hub.mjs";
 import { buildResourcesIndexBody } from "./resources-index.mjs";
@@ -303,6 +305,18 @@ function visualTopics() {
   </div>`;
 }
 
+function visualInsights() {
+  return `<div class="rs-visual rs-visual--pub" aria-hidden="true">
+    <div class="rs-pub">
+      <span class="rs-pub__rule"></span>
+      <span class="rs-pub__line"></span>
+      <span class="rs-pub__line rs-pub__line--short"></span>
+      <span class="rs-pub__line"></span>
+      <span class="rs-pub__meta">INSIGHTS · TECH · AI · MARKET</span>
+    </div>
+  </div>`;
+}
+
 /* ——— Hub bodies ——— */
 function indexBody(copies, lang) {
   return buildResourcesIndexBody(copies, lang, {
@@ -329,9 +343,11 @@ function storeHubBody(copies, lang) {
       const title = escapeHtml(tField(p, lang, "titleKo", "titleEn"));
       const desc = escapeHtml(tField(p, lang, "descKo", "descEn"));
       const price = escapeHtml(priceLabel(p, copy));
-      const cat = escapeHtml(p.category || "");
-      return `<a class="rs-product" href="${p.slug}/" data-category="${cat}" data-rs-reveal>
-        <span class="rs-product__cat">${cat.toUpperCase()}</span>
+      const cat = normalizeStoreCategory(p.category || "");
+      const collection = p.collection ? String(p.collection).toLowerCase() : "";
+      const cats = [cat, collection, p.free ? "free" : ""].filter(Boolean).join(" ");
+      return `<a class="rs-product" href="${p.slug}/" data-category="${escapeHtml(cats)}" data-collection="${escapeHtml(collection)}" data-analytics="store_product_view" data-item-id="${escapeHtml(p.slug)}" data-category-prop="${escapeHtml(cat)}" data-rs-reveal>
+        <span class="rs-product__cat">${escapeHtml((cat || "").toUpperCase())}${collection ? ` · ${escapeHtml(collection.toUpperCase())}` : ""}</span>
         <span class="rs-product__title">${title}</span>
         <span class="rs-product__desc">${desc}</span>
         <span class="rs-product__price">${price}</span>
@@ -633,10 +649,72 @@ ${resourceSwitcher("education", copies)}
 ${exploreGrid(copies, "../", "education")}`;
 }
 
+function insightsHubBody(copies, lang) {
+  const copy = copies.insights;
+  const published = getPublishedInsights();
+  const filters = ["all", ...INSIGHT_CATEGORIES]
+    .map((cat) => {
+      const label = escapeHtml(copy.filterLabels?.[cat] || cat);
+      return `<button type="button" class="rs-chip${cat === "all" ? " is-active" : ""}" data-rs-filter="${escapeHtml(cat)}">${label}</button>`;
+    })
+    .join("");
+
+  let content = emptyState(copy.emptyTitle, copy.emptyLead);
+  if (published.length) {
+    content = published
+      .map((a) => {
+        const title = escapeHtml(tField(a, lang, "titleKo", "titleEn"));
+        const desc = escapeHtml(tField(a, lang, "descKo", "descEn"));
+        const cat = escapeHtml(a.category || "");
+        const type = escapeHtml(copy.typeLabels?.[a.type] || a.type || "");
+        return `<a class="rs-pub-row" href="${escapeHtml(a.slug)}/" data-category="${cat}" data-analytics="insight_view" data-item-id="${escapeHtml(a.slug)}" data-rs-reveal>
+          <span class="rs-pub-row__cat">${cat} · ${type}</span>
+          <span class="rs-pub-row__title">${title}</span>
+          <span class="rs-pub-row__arrow" aria-hidden="true">→</span>
+        </a>
+        ${desc ? `<p class="rs-pub-row__desc">${desc}</p>` : ""}`;
+      })
+      .join("");
+  }
+
+  const researchItems = (copy.researchItems || [])
+    .map(
+      (it) =>
+        `<a class="rs-get__col" href="${escapeHtml(it.href || copy.researchHref || "../../business/research/")}" data-analytics="business_cta_click" data-item-id="${escapeHtml(it.title)}" data-rs-reveal>
+      <p class="rs-get__title">${escapeHtml(it.title)}</p>
+    </a>`
+    )
+    .join("");
+
+  return `${breadcrumb(copy, copy.navLabel || "INSIGHTS")}
+${heroBlock(copy, visualInsights())}
+${resourceSwitcher("insights", copies)}
+<section class="rs-section" id="rs-content">
+  <div class="rs-inner">
+    <p class="rs-eyebrow">${escapeHtml(copy.catalogTitle || "INSIGHT CATALOG")}</p>
+    <div class="rs-filters" data-rs-filters>${filters}</div>
+    <div data-rs-filter-grid>${content}</div>
+    <p class="rs-filter-empty" data-rs-filter-empty hidden>${escapeHtml(copy.emptyTitle || "")}</p>
+  </div>
+</section>
+<section class="rs-section" data-rs-reveal aria-labelledby="rs-insights-research">
+  <div class="rs-inner">
+    <p class="rs-eyebrow">${escapeHtml(copy.researchEyebrow || "BUSINESS RESEARCH")}</p>
+    <h2 class="rs-title" id="rs-insights-research">${escapeHtml(copy.researchTitle || "")}</h2>
+    ${copy.researchLead ? `<p class="rs-lead">${escapeHtml(copy.researchLead)}</p>` : ""}
+    <div class="rs-get">${researchItems}</div>
+    <p style="margin-top:1.5rem"><a class="rs-btn rs-btn--primary" href="${escapeHtml(copy.researchHref || "../../business/research/")}">${escapeHtml(copy.researchCta || "Inquire →")}</a></p>
+  </div>
+</section>
+${exploreGrid(copies, "../", "insights")}`;
+}
+
 function hubBody(slug, copies, lang) {
   switch (slug) {
     case "store":
       return storeHubBody(copies, lang);
+    case "insights":
+      return insightsHubBody(copies, lang);
     case "blog":
       return blogHubBody(copies, lang);
     case "media":

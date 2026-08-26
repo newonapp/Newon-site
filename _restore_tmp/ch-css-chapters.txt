@@ -1,0 +1,138 @@
+/* Service chapters — full screens below hero */
+.bp-chapters__intro {
+  padding: 3rem 0 0.5rem;
+}
+
+.bp-chapter {
+  padding: 3.25rem 0;
+  border-bottom: 1px solid var(--bp-line);
+  scroll-margin-top: 5rem;
+}
+
+.bp-chapter:nth-child(even) {
+  background: #fafafa;
+}
+
+.bp-chapter__grid {
+  display: grid;
+  gap: 1.5rem 3rem;
+}
+
+@media (min-width: 880px) {
+  .bp-chapter__grid {
+    grid-template-columns: minmax(7rem, 11rem) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.bp-chapter__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.bp-chapter__n {
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  font-weight: 650;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  color: var(--bp-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.bp-chapter__cat {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  color: var(--bp-ink);
+}
+
+.bp-chapter__title {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.bp-chapter__summary {
+  margin: 0 0 1.75rem;
+  max-width: 38rem;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--bp-muted);
+}
+
+.bp-chapter__detail {
+  display: grid;
+  gap: 1.15rem 1.75rem;
+  margin: 0 0 1.85rem;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid var(--bp-line);
+  max-width: 44rem;
+}
+
+@media (min-width: 640px) {
+  .bp-chapter__detail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.bp-chapter__detail dt {
+  margin: 0 0 0.3rem;
+  font-size: 0.6875rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bp-faint);
+}
+
+.bp-chapter__detail dd {
+  margin: 0;
+  font-size: 0.975rem;
+  line-height: 1.55;
+}
+
+.bp-chapter__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--bp-line);
+  max-width: 44rem;
+}
+
+.bp-chapter__price {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.bp-chapter__price span {
+  font-size: 0.6875rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bp-faint);
+}
+
+.bp-chapter__price strong {
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.bp-chapter__note {
+  margin: 0;
+  padding: 1.5rem 0 3rem;
+  max-width: 40rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--bp-muted);
+}
+

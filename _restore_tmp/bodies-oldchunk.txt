@@ -1,0 +1,57 @@
+/**
+ * Newon Labs — per-experiment detail HTML bodies.
+ */
+import { escapeHtml } from "./hub-utils.mjs";
+import { LAB_PIPELINE, pipelineIndex } from "./lab-experiments.mjs";
+import { labVisual } from "./labs-hub.mjs";
+
+function t(obj, lang, koKey, enKey) {
+  if (!obj) return "";
+  return lang === "ko" ? obj[koKey] || obj[enKey] || "" : obj[enKey] || obj[koKey] || "";
+}
+
+function br(s) {
+  return escapeHtml(String(s || "")).replace(/\n/g, "<br />");
+}
+
+function padLab(n) {
+  return String(n).padStart(2, "0");
+}
+
+function ui(lang) {
+  const ko = lang === "ko";
+  return {
+    status: "STATUS",
+    stage: "STAGE",
+    category: "CATEGORY",
+    lastUpdated: ko ? "LAST UPDATED" : "LAST UPDATED",
+    theQuestion: "THE QUESTION",
+    labNote: "LAB NOTE",
+    findings: ko ? "현재 발견한 것" : "What we found",
+    nextVerify: ko ? "다음 검증할 것" : "Next to verify",
+    backLabs: ko ? "BACK TO LABS ←" : "BACK TO LABS ←",
+    follow: ko ? "FOLLOW THIS EXPERIMENT →" : "FOLLOW THIS EXPERIMENT →",
+    demo: "DEMO / PROTOTYPE",
+    demoData: "DEMO DATA",
+    demoAnalytics: "DEMO ANALYTICS",
+    demoResponse: "DEMO RESPONSE DATA",
+    researchConcept: "RESEARCH CONCEPT",
+    prototypeHeuristic: ko ? "PROTOTYPE HEURISTIC — 실제 AI API 아님" : "PROTOTYPE HEURISTIC — not a live AI API",
+    becameProduct: "THIS EXPERIMENT BECAME A PRODUCT",
+    viewProduct: ko ? "VIEW PRODUCT →" : "VIEW PRODUCT →",
+    pipelineLabel: ko ? "LABS → PRODUCT" : "LABS → PRODUCT",
+    metrics: "EXPERIMENT METRICS",
+    howItWorks: "HOW IT WORKS",
+    liveExperiment: "LIVE EXPERIMENT",
+    why: "WHY THIS EXPERIMENT",
+    roadmap: "ROADMAP",
+    corePrinciple: "CORE PRINCIPLE",
+    discoveryPipeline: "DISCOVERY PIPELINE",
+    experimentBoard: "EXPERIMENT BOARD",
+    ideaTest: "IDEA TEST",
+    theExperiment: "THE EXPERIMENT",
+    researchSystem: "RESEARCH SYSTEM",
+    whatTesting: "WHAT WE ARE TESTING",
+    related: "RELATED PROJECT",
+  };
+}

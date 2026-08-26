@@ -7,6 +7,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { BUSINESS_PAGES_I18N } from "./business-pages-i18n.mjs";
+import { injectSiteChrome } from "./inject-chrome.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -434,6 +435,11 @@ export function writeInquirySuccessPages() {
       .replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/business/inquiry/success/`)
       .replace("{{HREFLANG_BLOCK}}", hreflangSuccess());
     html = applyTemplate(html, flat, flatEn);
+    html = injectSiteChrome(html, flat, flatEn, {
+      activeNav: "business",
+      base: "../../../",
+      idSuffix: "biz-ok",
+    });
     if (html.includes("{{")) {
       const leftover = html.match(/\{\{[^}]+\}\}/g);
       throw new Error(`Unreplaced tokens in ${dir}/business/inquiry/success: ${leftover && leftover.join(", ")}`);
@@ -498,6 +504,11 @@ export function generateBusinessDetails() {
         .replace("{{BP_FORM}}", page.slug === "development" ? devForm(bp, bpEn) : simpleForm(bp, bpEn, page.type))
         .replace("{{BP_OTHER}}", otherHtml(page.slug, bp, bpEn));
       html = applyTemplate(html, bp, bpEn);
+      html = injectSiteChrome(html, flat, flatEn, {
+        activeNav: "business",
+        base: "../../",
+        idSuffix: `bd-${page.slug}`,
+      });
       if (html.includes("{{")) {
         const leftover = html.match(/\{\{[^}]+\}\}/g);
         throw new Error(`Unreplaced tokens in ${dir}/business/${page.slug}: ${leftover && leftover.join(", ")}`);

@@ -175,7 +175,14 @@ const NAV_FLYOUT_META = {
 };
 
 /** Extra apps shown on the Business ecosystem (not in the portfolio catalog). */
-export const BUSINESS_APP_EXTRAS = [];
+export const BUSINESS_APP_EXTRAS = [
+  {
+    slug: "404-human",
+    name: "404: HUMAN",
+    icon: "/404-human-logo.png",
+    homeHash: "404-human/",
+  },
+];
 
 /** Business page product groups — reuses APP_CATALOG icons + hashes. */
 export const BUSINESS_ECOSYSTEM = [
@@ -183,6 +190,7 @@ export const BUSINESS_ECOSYSTEM = [
   { titleKey: "business.catFinance", slugs: ["savy", "subping", "piggyup"] },
   { titleKey: "business.catHealth", slugs: ["pillmate"] },
   { titleKey: "business.catFamily", slugs: ["babylog", "petlog", "myworld"] },
+  { titleKey: "business.catGames", slugs: ["404-human"] },
   { titleKey: "business.catMembership", slugs: ["newon-plus"] },
 ];
 

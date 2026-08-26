@@ -1,0 +1,52 @@
+function heroVisual(copy) {
+  if (copy.heroIndex || (copy.services && copy.services.length && !copy.heroFlow && !copy.heroStack)) {
+    const lines =
+      copy.heroIndex ||
+      copy.services.map((s, i) => `${pad2(i + 1)} ${shortTitle(s.title)}`);
+    return `<aside class="bp-hero__visual bp-hero__visual--index">
+      <nav class="bp-index" aria-label="${escapeHtml(copy.servicesLabel || "Services")}">
+        ${lines
+          .map((line, i) => {
+            const parts = String(line).trim().split(/\s+/);
+            const n = parts[0] && /^\d/.test(parts[0]) ? parts[0] : pad2(i + 1);
+            const t = parts[0] && /^\d/.test(parts[0]) ? parts.slice(1).join(" ") : line;
+            return `<a class="bp-index__btn" href="#svc-${i}">
+          <span class="bp-index__n">${escapeHtml(n)}</span>
+          <span class="bp-index__t">${escapeHtml(t)}</span>
+          <span class="bp-index__arrow" aria-hidden="true">→</span>
+        </a>`;
+          })
+          .join("")}
+      </nav>
+    </aside>`;
+  }
+  if (copy.heroFlow) {
+    return `<aside class="bp-hero__visual bp-hero__visual--flow" aria-hidden="true">
+      <div class="bp-flow" data-bp-flow>
+        ${copy.heroFlow
+          .map(
+            (step, i) =>
+              `<span class="bp-flow__step">${escapeHtml(step)}</span>${
+                i < copy.heroFlow.length - 1 ? `<span class="bp-flow__arrow">↓</span>` : ""
+              }`
+          )
+          .join("")}
+      </div>
+    </aside>`;
+  }
+  if (copy.heroStack) {
+    const last = copy.heroStack[copy.heroStack.length - 1];
+    const rest = copy.heroStack.slice(0, -1);
+    return `<aside class="bp-hero__visual bp-hero__visual--stack" aria-hidden="true">
+      <div class="bp-stack">
+        ${rest.map((s) => `<span class="bp-stack__item">${escapeHtml(s)}</span>`).join("")}
+        <span class="bp-stack__arrow">↓</span>
+        <span class="bp-stack__result">${escapeHtml(last)}</span>
+      </div>
+    </aside>`;
+  }
+  const mark = (copy.eyebrow || "NEWON").replace(/^NEWON\s+/i, "") || "NEWON";
+  return `<aside class="bp-hero__visual bp-hero__visual--mark" aria-hidden="true">
+    <p class="bp-mark">${escapeHtml(mark)}</p>
+  </aside>`;
+}

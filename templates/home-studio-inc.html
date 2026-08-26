@@ -23,7 +23,7 @@
                   <h2 class="hs-h2">{{t:home.doesTitle}}</h2>
                 </div>
               </header>
-              <div class="hs-pillars">
+              <div class="hs-pillars hs-pillars--five">
                 <a class="hs-pillar" href="products/">
                   <span class="hs-pillar__tag">01</span>
                   <h3 class="hs-pillar__title">{{t:home.doesProductsTitle}}</h3>
@@ -38,25 +38,76 @@
                   <p class="hs-pillar__items">{{t:home.doesBusinessItems}}</p>
                   <span class="hs-pillar__go">{{t:home.doesBusinessCta}}</span>
                 </a>
-                <a class="hs-pillar" href="store/">
+                <a class="hs-pillar" href="studio/">
                   <span class="hs-pillar__tag">03</span>
+                  <h3 class="hs-pillar__title">{{t:home.doesStudioTitle}}</h3>
+                  <p class="hs-pillar__body">{{t:home.doesStudioBody}}</p>
+                  <p class="hs-pillar__items">{{t:home.doesStudioItems}}</p>
+                  <span class="hs-pillar__go">{{t:home.doesStudioCta}}</span>
+                </a>
+                <a class="hs-pillar" href="resources/">
+                  <span class="hs-pillar__tag">04</span>
                   <h3 class="hs-pillar__title">{{t:home.doesResourcesTitle}}</h3>
                   <p class="hs-pillar__body">{{t:home.doesResourcesBody}}</p>
                   <p class="hs-pillar__items">{{t:home.doesResourcesItems}}</p>
                   <span class="hs-pillar__go">{{t:home.doesResourcesCta}}</span>
                 </a>
-                <a class="hs-pillar" href="labs/">
-                  <span class="hs-pillar__tag">04</span>
-                  <h3 class="hs-pillar__title">{{t:home.doesLabsTitle}}</h3>
-                  <p class="hs-pillar__body">{{t:home.doesLabsBody}}</p>
-                  <p class="hs-pillar__items">{{t:home.doesLabsItems}}</p>
-                  <span class="hs-pillar__go">{{t:home.doesLabsCta}}</span>
+                <a class="hs-pillar" href="about/">
+                  <span class="hs-pillar__tag">05</span>
+                  <h3 class="hs-pillar__title">{{t:home.doesCompanyTitle}}</h3>
+                  <p class="hs-pillar__body">{{t:home.doesCompanyBody}}</p>
+                  <p class="hs-pillar__items">{{t:home.doesCompanyItems}}</p>
+                  <span class="hs-pillar__go">{{t:home.doesCompanyCta}}</span>
                 </a>
               </div>
             </div>
           </section>
 
-          <section id="hs-products" class="hs-section hs-section--alt" data-hs-section>
+          <section id="hs-now" class="hs-section hs-section--alt" data-hs-section>
+            <div class="hs-wrap">
+              <header class="hs-section__head">
+                <p class="hs-kicker">{{t:home.nowLabel}}</p>
+                <h2 class="hs-h2">{{t:home.nowTitle}}</h2>
+                <p class="hs-lead">{{t:home.nowLead}}</p>
+              </header>
+              <div class="hs-now-cols">
+                <div class="hs-now-col">
+                  <p class="hs-now-col__label">{{t:home.nowBuilding}}</p>
+                  <p class="hs-now-col__hint">{{t:home.nowBuildingHint}}</p>
+                  <ul>
+                    <li><a href="resources/labs/review-ai/">{{t:home.nowItemReviewAi}}</a></li>
+                    <li><a href="resources/labs/newon-qr/">{{t:home.nowItemQr}}</a></li>
+                  </ul>
+                </div>
+                <div class="hs-now-col">
+                  <p class="hs-now-col__label">{{t:home.nowTesting}}</p>
+                  <p class="hs-now-col__hint">{{t:home.nowTestingHint}}</p>
+                  <ul>
+                    <li><a href="resources/labs/">{{t:home.nowItemContentAi}}</a></li>
+                  </ul>
+                </div>
+                <div class="hs-now-col">
+                  <p class="hs-now-col__label">{{t:home.nowShipped}}</p>
+                  <p class="hs-now-col__hint">{{t:home.nowShippedHint}}</p>
+                  <ul>
+                    <li><a href="portfolio/babylog/">{{t:home.nowItemBabylog}}</a></li>
+                    <li><a href="portfolio/savy/">{{t:home.nowItemSavy}}</a></li>
+                    <li><a href="portfolio/404-human/">{{t:home.nowItem404}}</a></li>
+                  </ul>
+                </div>
+                <div class="hs-now-col">
+                  <p class="hs-now-col__label">{{t:home.nowExploring}}</p>
+                  <p class="hs-now-col__hint">{{t:home.nowExploringHint}}</p>
+                  <ul>
+                    <li><a href="resources/labs/character-lab/">{{t:home.nowItemCharacter}}</a></li>
+                    <li><a href="business/creative/">{{t:home.nowItemCreative}}</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="hs-products" class="hs-section" data-hs-section>
             <div class="hs-wrap">
               <header class="hs-section__head">
                 <p class="hs-kicker">{{t:home.productsLabel}}</p>
@@ -117,15 +168,30 @@
           <section id="hs-works" class="hs-section" data-hs-section>
             <div class="hs-wrap">
               <header class="hs-section__head">
-                <p class="hs-kicker">{{t:home.worksLabel}}</p>
-                <h2 class="hs-h2">{{t:home.worksTitle}}</h2>
+                <p class="hs-kicker">{{t:home.ecoLabel}}</p>
+                <h2 class="hs-h2">{{t:home.ecoTitle}}</h2>
+                <p class="hs-lead">{{t:home.ecoLead}}</p>
               </header>
+              <ol class="hs-eco-flow" aria-label="{{t:home.ecoLabel}}">
+                <li><span class="hs-eco-flow__n">01</span><strong>{{t:home.eco1}}</strong></li>
+                <li aria-hidden="true" class="hs-eco-flow__arrow">→</li>
+                <li><span class="hs-eco-flow__n">02</span><strong>{{t:home.eco2}}</strong></li>
+                <li aria-hidden="true" class="hs-eco-flow__arrow">→</li>
+                <li><span class="hs-eco-flow__n">03</span><strong>{{t:home.eco3}}</strong></li>
+                <li aria-hidden="true" class="hs-eco-flow__arrow">→</li>
+                <li><span class="hs-eco-flow__n">04</span><strong>{{t:home.eco4}}</strong></li>
+                <li aria-hidden="true" class="hs-eco-flow__arrow">→</li>
+                <li><span class="hs-eco-flow__n">05</span><strong>{{t:home.eco5}}</strong></li>
+                <li aria-hidden="true" class="hs-eco-flow__arrow">→</li>
+                <li><span class="hs-eco-flow__n">06</span><strong>{{t:home.eco6}}</strong></li>
+              </ol>
               <ol class="hs-process">
                 <li><span class="hs-process__n">01</span><div class="hs-process__body"><strong>{{t:home.works1Title}}</strong><p>{{t:home.works1Body}}</p></div></li>
                 <li><span class="hs-process__n">02</span><div class="hs-process__body"><strong>{{t:home.works2Title}}</strong><p>{{t:home.works2Body}}</p></div></li>
                 <li><span class="hs-process__n">03</span><div class="hs-process__body"><strong>{{t:home.works3Title}}</strong><p>{{t:home.works3Body}}</p></div></li>
                 <li><span class="hs-process__n">04</span><div class="hs-process__body"><strong>{{t:home.works4Title}}</strong><p>{{t:home.works4Body}}</p></div></li>
                 <li><span class="hs-process__n">05</span><div class="hs-process__body"><strong>{{t:home.works5Title}}</strong><p>{{t:home.works5Body}}</p></div></li>
+                <li><span class="hs-process__n">06</span><div class="hs-process__body"><strong>{{t:home.works6Title}}</strong><p>{{t:home.works6Body}}</p></div></li>
               </ol>
               <div class="hs-expand">
                 <article><span class="hs-expand__tag">{{t:home.expand1Title}}</span><p>{{t:home.expand1Body}}</p></article>
@@ -146,13 +212,16 @@
                 <p class="hs-lead">{{t:home.resourcesLead}}</p>
               </header>
               <div class="hs-resource-list">
-                <a class="hs-resource" href="store/"><span class="hs-resource__idx">01</span><span class="hs-resource__body"><span class="hs-resource__title">Store</span><span class="hs-resource__desc">{{t:home.resourceStore}}</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
-                <a class="hs-resource" href="blog/"><span class="hs-resource__idx">02</span><span class="hs-resource__body"><span class="hs-resource__title">Blog</span><span class="hs-resource__desc">{{t:home.resourceBlog}}</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
-                <a class="hs-resource" href="media/"><span class="hs-resource__idx">03</span><span class="hs-resource__body"><span class="hs-resource__title">Media</span><span class="hs-resource__desc">{{t:home.resourceMedia}}</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
-                <a class="hs-resource" href="news/"><span class="hs-resource__idx">04</span><span class="hs-resource__body"><span class="hs-resource__title">Newsletter</span><span class="hs-resource__desc">{{t:home.resourceNewsletter}}</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
-                <div class="hs-resource hs-resource--soon"><span class="hs-resource__idx">05</span><span class="hs-resource__body"><span class="hs-resource__title">Education</span><span class="hs-resource__desc">{{t:home.resourceEducation}}</span></span><span class="hs-badge">{{t:home.statusSoon}}</span></div>
+                <a class="hs-resource" href="resources/store/"><span class="hs-resource__idx">01</span><span class="hs-resource__body"><span class="hs-resource__title">Store</span><span class="hs-resource__desc">{{t:home.resourceStore}}</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
+                <a class="hs-resource" href="resources/store/?cat=publishing"><span class="hs-resource__idx">02</span><span class="hs-resource__body"><span class="hs-resource__title">Publishing</span><span class="hs-resource__desc">{{t:home.resourcePublishing}}</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
+                <a class="hs-resource" href="resources/insights/"><span class="hs-resource__idx">03</span><span class="hs-resource__body"><span class="hs-resource__title">Insights</span><span class="hs-resource__desc">{{t:home.resourceInsights}}</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
+                <a class="hs-resource" href="tools/"><span class="hs-resource__idx">04</span><span class="hs-resource__body"><span class="hs-resource__title">Tools</span><span class="hs-resource__desc">{{t:home.resourceTools}}</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
+                <a class="hs-resource" href="resources/blog/"><span class="hs-resource__idx">05</span><span class="hs-resource__body"><span class="hs-resource__title">Blog</span><span class="hs-resource__desc">{{t:home.resourceBlog}}</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
+                <a class="hs-resource" href="resources/media/"><span class="hs-resource__idx">06</span><span class="hs-resource__body"><span class="hs-resource__title">Media</span><span class="hs-resource__desc">{{t:home.resourceMedia}}</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
+                <a class="hs-resource" href="resources/newsletter/"><span class="hs-resource__idx">07</span><span class="hs-resource__body"><span class="hs-resource__title">Newon Notes</span><span class="hs-resource__desc">{{t:home.resourceNotes}}</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
+                <div class="hs-resource hs-resource--soon"><span class="hs-resource__idx">08</span><span class="hs-resource__body"><span class="hs-resource__title">Education</span><span class="hs-resource__desc">{{t:home.resourceEducation}}</span></span><span class="hs-badge">{{t:home.statusSoon}}</span></div>
               </div>
-              <p class="hs-section__cta"><a class="hs-link" href="store/">{{t:home.resourcesCta}}</a></p>
+              <p class="hs-section__cta"><a class="hs-link" href="resources/">{{t:home.resourcesCta}}</a></p>
             </div>
           </section>
 

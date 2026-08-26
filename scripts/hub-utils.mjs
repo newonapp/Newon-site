@@ -156,3 +156,22 @@ export function statusBadge(status, lang = "ko") {
   const cls = `hub-badge hub-badge--${status}`;
   return `<span class="${cls}">${escapeHtml(label)}</span>`;
 }
+
+/** Product & Venture Studio status pill (shared across hubs) */
+export function studioStatusBadge(status, lang = "en") {
+  const key = String(status || "COMING_SOON")
+    .toUpperCase()
+    .replace(/[\s-]+/g, "_");
+  const map = {
+    LIVE: { ko: "Live", en: "Live", cls: "live" },
+    OPERATING: { ko: "Operating", en: "Operating", cls: "operating" },
+    BUILDING: { ko: "Building", en: "Building", cls: "building" },
+    TESTING: { ko: "Testing", en: "Testing", cls: "testing" },
+    EXPLORING: { ko: "Exploring", en: "Exploring", cls: "exploring" },
+    COMING_SOON: { ko: "Coming Soon", en: "Coming Soon", cls: "coming-soon" },
+    ARCHIVED: { ko: "Archived", en: "Archived", cls: "archived" },
+  };
+  const row = map[key] || map.COMING_SOON;
+  const label = lang === "ko" ? row.ko : row.en;
+  return `<span class="studio-status studio-status--${row.cls}">${escapeHtml(label)}</span>`;
+}

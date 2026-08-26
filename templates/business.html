@@ -968,6 +968,7 @@
       .bz-faq-item.is-open .bz-faq-a { grid-template-rows: 1fr; }
       .bz-faq-a > p {
         overflow: hidden;
+        min-height: 0;
         margin: 0;
         padding-bottom: 0;
         max-width: 40rem;
@@ -1207,25 +1208,26 @@
         color: var(--text-muted);
       }
       .bz-band {
-        background: #111;
+        background: #0a0a0a;
         color: #fff;
+        border: 0;
       }
-      .bz-band .bz-label { color: rgba(255, 255, 255, 0.55); }
-      .bz-band .bz-title { color: #fff; max-width: 16ch; }
-      .bz-band .bz-lead { color: rgba(255, 255, 255, 0.72); }
+      .bz-band .bz-label { color: rgba(255, 255, 255, 0.42); }
+      .bz-band .bz-title { color: #fff; max-width: 18ch; }
+      .bz-band .bz-lead { color: rgba(255, 255, 255, 0.62); }
       .bz-band .btn-primary {
         margin-top: 1.75rem;
         background: #fff;
-        color: #111;
+        color: #0a0a0a;
       }
-      .bz-band .btn-primary:hover { background: #ececec; }
+      .bz-band .btn-primary:hover { background: #f0f0f0; }
       .bz-form-wrap { max-width: 40rem; position: relative; }
       .bz-form { display: grid; gap: 1rem; margin-top: 1.75rem; }
       .bz-field { display: flex; flex-direction: column; gap: 0.4rem; }
       .bz-field label { font-size: 0.8125rem; font-weight: 600; color: var(--text); }
       .bz-field .bz-opt { font-weight: 500; color: var(--text-muted); }
       .bz-req { margin-left: 0.12em; }
-      .bz-field input,
+      .bz-field input:not([type="checkbox"]):not([type="radio"]),
       .bz-field select,
       .bz-field textarea {
         width: 100%;
@@ -1238,14 +1240,19 @@
         font: inherit;
         font-size: 0.9375rem;
       }
-      html[data-newon-shell-theme="dark"] .bz-field input,
+      html[data-newon-shell-theme="dark"] .bz-field input:not([type="checkbox"]):not([type="radio"]),
       html[data-newon-shell-theme="dark"] .bz-field select,
       html[data-newon-shell-theme="dark"] .bz-field textarea {
         border-color: var(--border);
       }
       .bz-field textarea { min-height: 8.5rem; resize: vertical; }
-      .bz-form .btn { justify-self: start; min-height: 48px; }
-      .bz-form .btn[disabled] { opacity: 0.7; cursor: wait; }
+      .bz-form .btn,
+      .bz-form .bz-submit {
+        justify-self: stretch;
+        min-height: 52px;
+      }
+      .bz-form .btn[disabled],
+      .bz-form .bz-submit[disabled] { opacity: 0.7; cursor: wait; }
       .bz-hp {
         position: absolute;
         width: 1px;
@@ -1266,13 +1273,15 @@
         border-right-color: transparent;
         border-radius: 50%;
       }
-      .btn.is-busy .bz-submit-spin {
+      .btn.is-busy .bz-submit-spin,
+      .bz-submit.is-busy .bz-submit-spin {
         display: inline-block;
         animation: bz-spin 0.7s linear infinite;
       }
       @keyframes bz-spin { to { transform: rotate(360deg); } }
       @media (prefers-reduced-motion: reduce) {
-        .btn.is-busy .bz-submit-spin { animation: none; opacity: 0.55; }
+        .btn.is-busy .bz-submit-spin,
+        .bz-submit.is-busy .bz-submit-spin { animation: none; opacity: 0.55; }
       }
       .bz-fail { display: none; margin-top: 1.1rem; color: var(--text); }
       .bz-fail.is-visible { display: block; }
@@ -1354,7 +1363,7 @@
         .bz-svc__cta { grid-column: 1 / -1; justify-self: start; }
       }
     </style>
-    <link rel="stylesheet" href="/business-page.css?v=20260826bz10" />
+    <link rel="stylesheet" href="/business-page.css?v=20260826bz18" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
   </head>
   <body>
@@ -1644,54 +1653,50 @@
       </section>
 
       <section id="how-we-work" class="bz-section bz-process bz-reveal" aria-labelledby="bz-process-title">
-        <div class="bz-inner">
-          <header class="bz-process__head">
+        <div class="bz-inner bz-process__layout">
+          <aside class="bz-process__aside">
             <p class="bz-label">{{t:business.processLabel}}</p>
             <h2 class="bz-title" id="bz-process-title">{{t:business.processTitle}}</h2>
-          </header>
+            <p class="bz-process__lead">{{t:business.processLead}}</p>
+            <p class="bz-process__meta" aria-hidden="true"><span>05</span>STEPS</p>
+          </aside>
           <ol class="bz-process__track">
             <li>
-              <span class="bz-process__dot" aria-hidden="true"></span>
-              <span class="bz-process__n">01</span>
-              <h3 class="bz-process__en">{{t:business.step1Title}}</h3>
-              <p class="bz-process__ko">{{t:business.step1Body}}</p>
+              <span class="bz-process__n" aria-hidden="true">01</span>
+              <div class="bz-process__body">
+                <h3 class="bz-process__en">{{t:business.step1Title}}</h3>
+                <p class="bz-process__ko">{{t:business.step1Body}}</p>
+              </div>
             </li>
             <li>
-              <span class="bz-process__dot" aria-hidden="true"></span>
-              <span class="bz-process__n">02</span>
-              <h3 class="bz-process__en">{{t:business.step2Title}}</h3>
-              <p class="bz-process__ko">{{t:business.step2Body}}</p>
+              <span class="bz-process__n" aria-hidden="true">02</span>
+              <div class="bz-process__body">
+                <h3 class="bz-process__en">{{t:business.step2Title}}</h3>
+                <p class="bz-process__ko">{{t:business.step2Body}}</p>
+              </div>
             </li>
             <li>
-              <span class="bz-process__dot" aria-hidden="true"></span>
-              <span class="bz-process__n">03</span>
-              <h3 class="bz-process__en">{{t:business.step3Title}}</h3>
-              <p class="bz-process__ko">{{t:business.step3Body}}</p>
+              <span class="bz-process__n" aria-hidden="true">03</span>
+              <div class="bz-process__body">
+                <h3 class="bz-process__en">{{t:business.step3Title}}</h3>
+                <p class="bz-process__ko">{{t:business.step3Body}}</p>
+              </div>
             </li>
             <li>
-              <span class="bz-process__dot" aria-hidden="true"></span>
-              <span class="bz-process__n">04</span>
-              <h3 class="bz-process__en">{{t:business.step4Title}}</h3>
-              <p class="bz-process__ko">{{t:business.step4Body}}</p>
+              <span class="bz-process__n" aria-hidden="true">04</span>
+              <div class="bz-process__body">
+                <h3 class="bz-process__en">{{t:business.step4Title}}</h3>
+                <p class="bz-process__ko">{{t:business.step4Body}}</p>
+              </div>
             </li>
             <li>
-              <span class="bz-process__dot" aria-hidden="true"></span>
-              <span class="bz-process__n">05</span>
-              <h3 class="bz-process__en">{{t:business.step5Title}}</h3>
-              <p class="bz-process__ko">{{t:business.step5Body}}</p>
+              <span class="bz-process__n" aria-hidden="true">05</span>
+              <div class="bz-process__body">
+                <h3 class="bz-process__en">{{t:business.step5Title}}</h3>
+                <p class="bz-process__ko">{{t:business.step5Body}}</p>
+              </div>
             </li>
           </ol>
-        </div>
-      </section>
-
-      <section id="portfolio" class="bz-section bz-port bz-reveal" aria-labelledby="bz-portfolio-title">
-        <div class="bz-inner bz-port__grid">
-          <div class="bz-port__copy">
-            <p class="bz-label">{{t:business.portfolioLabel}}</p>
-            <h2 class="bz-title" id="bz-portfolio-title">{{t:business.portfolioTitle}}</h2>
-            <p class="bz-lead">{{t:business.portfolioLead}}</p>
-          </div>
-          <a class="bz-port__cta" href="../portfolio/">{{t:business.ctaPortfolio}}<span aria-hidden="true"> →</span></a>
         </div>
       </section>
 
@@ -1773,7 +1778,7 @@
         </div>
       </section>
 
-      <section id="packages" class="bz-section bz-reveal" aria-labelledby="bz-packages-title">
+      <section id="packages" class="bz-section bz-pkgs bz-reveal" aria-labelledby="bz-packages-title">
         <div class="bz-inner">
           <header class="bz-sec-head">
             <div class="bz-sec-head__copy">
@@ -1784,24 +1789,32 @@
           </header>
           <div class="bz-pkg-grid">
             <article class="bz-pkg">
+              <span class="bz-pkg__idx" aria-hidden="true">01</span>
               <span class="bz-pkg__tag">{{t:studio.pkgStartName}}</span>
               <h3 class="bz-pkg__title">{{t:studio.pkgStartDesc}}</h3>
               <p class="bz-pkg__price"><span class="bz-pkg__amount">₩500,000</span><span class="bz-pkg__tilde">~</span></p>
+              <a class="bz-pkg__cta" href="#inquiry">{{t:business.ctaInquireShort}}</a>
             </article>
             <article class="bz-pkg">
+              <span class="bz-pkg__idx" aria-hidden="true">02</span>
               <span class="bz-pkg__tag">{{t:studio.pkgBuildName}}</span>
               <h3 class="bz-pkg__title">{{t:studio.pkgBuildDesc}}</h3>
               <p class="bz-pkg__price"><span class="bz-pkg__amount">₩1,000,000</span><span class="bz-pkg__tilde">~</span></p>
+              <a class="bz-pkg__cta" href="#inquiry">{{t:business.ctaInquireShort}}</a>
             </article>
             <article class="bz-pkg bz-pkg--featured">
+              <span class="bz-pkg__idx" aria-hidden="true">03</span>
               <span class="bz-pkg__tag">{{t:studio.pkgMvpName}}</span>
               <h3 class="bz-pkg__title">{{t:studio.pkgMvpDesc}}</h3>
               <p class="bz-pkg__price"><span class="bz-pkg__amount">₩1,500,000</span><span class="bz-pkg__tilde">~</span></p>
+              <a class="bz-pkg__cta" href="#inquiry">{{t:business.ctaInquireShort}}</a>
             </article>
             <article class="bz-pkg">
+              <span class="bz-pkg__idx" aria-hidden="true">04</span>
               <span class="bz-pkg__tag">{{t:studio.pkgCustomName}}</span>
               <h3 class="bz-pkg__title">{{t:studio.pkgCustomDesc}}</h3>
               <p class="bz-pkg__price"><span class="bz-pkg__amount">{{t:studio.pkgCustomPrice}}</span></p>
+              <a class="bz-pkg__cta" href="#inquiry">{{t:business.ctaInquireShort}}</a>
             </article>
           </div>
         </div>
@@ -1843,6 +1856,13 @@
               <label for="bz-type">{{t:business.labelType}}<span class="bz-req" aria-hidden="true">*</span></label>
               <select id="bz-type" name="type" required>
                 <option value="" disabled selected>{{t:business.selectPlaceholder}}</option>
+                <option value="BUILD / MVP">BUILD / MVP</option>
+                <option value="BUILD / WEBSITE">BUILD / WEBSITE</option>
+                <option value="BUILD / LANDING">BUILD / LANDING</option>
+                <option value="BUILD / APP">BUILD / APP</option>
+                <option value="AUTOMATION / DATA & REPORTING">AUTOMATION / DATA &amp; REPORTING</option>
+                <option value="AUTOMATION / INTERNAL TOOLS">AUTOMATION / INTERNAL TOOLS</option>
+                <option value="AUTOMATION / WORKFLOW AUTOMATION">AUTOMATION / WORKFLOW AUTOMATION</option>
                 <option value="App">{{t:studio.formTypeApp}}</option>
                 <option value="Website">{{t:studio.formTypeWeb}}</option>
                 <option value="MVP">{{t:studio.formTypeMvp}}</option>
@@ -1907,7 +1927,7 @@
             <div class="bz-hp" aria-hidden="true">
               <input name="_honey" tabindex="-1" autocomplete="off" />
             </div>
-            <button class="btn btn-primary" type="submit" id="bz-submit">
+            <button class="bz-submit" type="submit" id="bz-submit">
               <span class="bz-submit-spin" aria-hidden="true"></span>
               <span class="bz-submit-label">{{t:business.submit}}</span>
             </button>
@@ -1920,7 +1940,7 @@
     {{CHROME_FOOTER}}
 
     <script src="/search.js?v=20260825studio" defer></script>
-    <script src="/site-chrome.js?v=20260825gnav" defer></script>
+    <script src="/site-chrome.js?v=20260826gnav5" defer></script>
     <script>
       (function () {
         var cur = "{{LANG_DIR}}";
@@ -1976,9 +1996,53 @@
 
         var typeEl = document.getElementById("bz-type");
         var params = new URLSearchParams(window.location.search);
-        var qType = params.get("type");
+        var serviceMap = {
+          mvp: "MVP",
+          web: "Website",
+          website: "Website",
+          app: "App",
+          landing: "BUILD / LANDING",
+          "data-reporting": "AUTOMATION / DATA & REPORTING",
+          "automation-data-reporting": "AUTOMATION / DATA & REPORTING",
+          "internal-tools": "AUTOMATION / INTERNAL TOOLS",
+          "automation-internal-tools": "AUTOMATION / INTERNAL TOOLS",
+          "workflow-automation": "AUTOMATION / WORKFLOW AUTOMATION",
+          "automation-workflow": "AUTOMATION / WORKFLOW AUTOMATION",
+          "build-mvp": "BUILD / MVP",
+          "build-website": "BUILD / WEBSITE",
+          "build-landing": "BUILD / LANDING",
+          "build-app": "BUILD / APP",
+          "ai-automation": "AI",
+          ai: "AI",
+          "white-label": "White-label",
+          design: "Design"
+        };
+        var qType = params.get("type") || params.get("service");
+        var messageHints = {
+          ko: {
+            "AUTOMATION / WORKFLOW AUTOMATION":
+              "1. 현재 사용하는 서비스\n2. 현재 반복하고 있는 업무\n3. Workflow가 시작되는 조건\n4. 현재 업무 처리 과정\n5. 자동화하고 싶은 단계\n6. 연결해야 할 서비스\n7. 예상 사용자 수\n8. AI 기능 필요 여부\n9. Dashboard 필요 여부\n10. 희망 일정\n11. 예산 범위\n12. 기타 요구사항"
+          },
+          en: {
+            "AUTOMATION / WORKFLOW AUTOMATION":
+              "1. Services you use today\n2. Repetitive work you do now\n3. What triggers the workflow\n4. Current handling process\n5. Steps you want automated\n6. Services to connect\n7. Expected number of users\n8. Whether AI is needed\n9. Whether a dashboard is needed\n10. Preferred timeline\n11. Budget range\n12. Other requirements"
+          }
+        };
+        var msgEl = document.getElementById("bz-message");
+        var pageLang = (document.documentElement.lang || "en").slice(0, 2);
+        var hintPack = messageHints[pageLang] || messageHints.en;
+        function applyMessageHint() {
+          if (!msgEl || !typeEl) return;
+          var hint = hintPack[typeEl.value];
+          if (hint) msgEl.placeholder = hint;
+        }
         if (qType && typeEl) {
-          typeEl.value = qType;
+          var mapped = serviceMap[qType] || qType;
+          typeEl.value = mapped;
+          applyMessageHint();
+        }
+        if (typeEl) {
+          typeEl.addEventListener("change", applyMessageHint);
         }
         document.querySelectorAll("[data-inquiry-type]").forEach(function (link) {
           link.addEventListener("click", function () {

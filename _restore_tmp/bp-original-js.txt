@@ -1,0 +1,59 @@
+(() => {
+  const root = document.querySelector(".bp-page");
+  if (!root) return;
+
+  /* Accordion */
+  root.querySelectorAll("[data-bp-acc]").forEach((acc) => {
+    const btn = acc.querySelector(".bp-svc__trigger");
+    const panel = acc.querySelector(".bp-svc__panel");
+    if (!btn || !panel) return;
+    btn.addEventListener("click", () => {
+      const open = btn.getAttribute("aria-expanded") === "true";
+      root.querySelectorAll("[data-bp-acc]").forEach((other) => {
+        if (other === acc) return;
+        const ob = other.querySelector(".bp-svc__trigger");
+        const op = other.querySelector(".bp-svc__panel");
+        if (ob && op) {
+          ob.setAttribute("aria-expanded", "false");
+          op.hidden = true;
+          other.classList.remove("is-open");
+        }
+      });
+      btn.setAttribute("aria-expanded", open ? "false" : "true");
+      panel.hidden = open;
+      acc.classList.toggle("is-open", !open);
+    });
+  });
+
+  /* Subtle flow highlight (automation hero) */
+  const flow = root.querySelector("[data-bp-flow]");
+  if (flow && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const steps = [...flow.querySelectorAll(".bp-flow__step")];
+    let i = 0;
+    const tick = () => {
+      steps.forEach((s, idx) => s.classList.toggle("is-on", idx === i));
+      i = (i + 1) % steps.length;
+    };
+    tick();
+    setInterval(tick, 1100);
+  }
+
+  /* Reveal on scroll */
+  const reveals = root.querySelectorAll("[data-bp-reveal]");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-in");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add("is-in"));
+  }
+})();

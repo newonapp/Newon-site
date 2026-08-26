@@ -62,6 +62,20 @@ function cardVisual(slug) {
         <span class="rh-viz__doc"></span><span class="rh-viz__doc"></span>
         <span class="rh-viz__doc"></span><span class="rh-viz__doc"></span>
       </div>`;
+    case "insights":
+      return `<div class="rh-viz rh-viz--blog" aria-hidden="true">
+        <span><i>IN</i><b></b></span>
+        <span><i>AI</i><b></b></span>
+        <span><i>MK</i><b></b></span>
+      </div>`;
+    case "publishing":
+      return `<div class="rh-viz rh-viz--store" aria-hidden="true">
+        <span class="rh-viz__doc"></span><span class="rh-viz__doc"></span>
+      </div>`;
+    case "tools":
+      return `<div class="rh-viz rh-viz--labs" aria-hidden="true">
+        <span>CALC</span><span>GEN</span><span>CONV</span><span>DEV</span>
+      </div>`;
     case "blog":
       return `<div class="rh-viz rh-viz--blog" aria-hidden="true">
         <span><i>01</i><b></b></span>
@@ -78,7 +92,7 @@ function cardVisual(slug) {
       </div>`;
     case "newsletter":
       return `<div class="rh-viz rh-viz--news" aria-hidden="true">
-        <p>ISSUE</p>
+        <p>NOTES</p>
         <span>001</span><span>002</span><span>003</span>
       </div>`;
     case "education":
@@ -89,6 +103,22 @@ function cardVisual(slug) {
     default:
       return `<div class="rh-viz" aria-hidden="true"></div>`;
   }
+}
+
+/** Ordered surface for index: Store, Publishing, Insights, Tools, Blog, Media, Notes, Education */
+function indexSurfaces(copy) {
+  const extra = copy.surfaceExtra || {};
+  const items = copy.indexItems || {};
+  return [
+    { slug: "store", href: "store/", item: items.store },
+    { slug: "publishing", href: extra.publishing?.href || "store/?cat=publishing", item: extra.publishing },
+    { slug: "insights", href: "insights/", item: items.insights },
+    { slug: "tools", href: extra.tools?.href || "../tools/", item: extra.tools },
+    { slug: "blog", href: "blog/", item: items.blog },
+    { slug: "media", href: "media/", item: items.media },
+    { slug: "newsletter", href: "newsletter/", item: items.newsletter },
+    { slug: "education", href: "education/", item: items.education },
+  ].filter((s) => s.item);
 }
 
 /**
@@ -123,17 +153,18 @@ export function buildResourcesIndexBody(copies, lang, ctx) {
   const featured = collectFeatured(lang, tField, escapeHtml, copy);
   const latest = collectLatest(lang, tField, escapeHtml, copy);
 
-  /* Original black-grid explore cards (categories only) */
-  const exploreCards = RESOURCE_PAGES.map((p, i) => {
-    const item = copy.indexItems?.[p.slug] || {};
+  /* Original black-grid explore cards — Store, Publishing, Insights, Tools, Blog, Media, Notes, Education */
+  const surfaces = indexSurfaces(copy);
+  const exploreCards = surfaces.map((s, i) => {
+    const item = s.item || {};
     const n = pad2(i + 1);
-    const featured = p.slug === "labs";
-    const cls = `rh-card rh-card--${escapeHtml(p.slug)}${featured ? " is-featured" : ""}`;
+    const featured = s.slug === "insights" || s.slug === "labs";
+    const cls = `rh-card rh-card--${escapeHtml(s.slug)}${featured ? " is-featured" : ""}`;
     const head = `<div class="rh-card__head">
         <span class="rh-card__num" aria-hidden="true">${n}</span>
         <span class="rh-card__cat">${escapeHtml(item.category || "")}</span>
       </div>
-      <h3 class="rh-card__title">${escapeHtml(item.title || p.slug.toUpperCase())}</h3>
+      <h3 class="rh-card__title">${escapeHtml(item.title || s.slug.toUpperCase())}</h3>
       <p class="rh-card__lead">${brHeadline(item.lead || item.desc || "")}</p>
       ${item.desc && item.lead && item.desc !== item.lead ? `<p class="rh-card__desc">${escapeHtml(item.desc)}</p>` : ""}
       ${
@@ -145,7 +176,7 @@ export function buildResourcesIndexBody(copies, lang, ctx) {
           : ""
       }`;
 
-    if (p.slug === "newsletter") {
+    if (s.slug === "newsletter") {
       return `<article class="${cls}" data-rs-reveal>
       ${head}
       <div class="rh-card__foot">
@@ -159,16 +190,16 @@ export function buildResourcesIndexBody(copies, lang, ctx) {
         <p class="rs-form__msg" data-waitlist-success hidden>${escapeHtml(nlCopy.success || "")}</p>
         <p class="rs-form__msg" data-waitlist-duplicate hidden>${escapeHtml(nlCopy.duplicate || "")}</p>
         <p class="rs-form__msg rs-form__msg--error" data-waitlist-error hidden role="alert">${escapeHtml(nlCopy.error || "")}</p>
-        <a class="rh-card__cta" href="${escapeHtml(p.slug)}/">${escapeHtml(item.cta || (ko ? "뉴스레터 보기 ↗" : "EXPLORE NEWSLETTER ↗"))}</a>
+        <a class="rh-card__cta" href="${escapeHtml(s.href)}">${escapeHtml(item.cta || (ko ? "Notes 보기 ↗" : "EXPLORE NOTES ↗"))}</a>
       </div>
-      ${cardVisual(p.slug)}
+      ${cardVisual(s.slug)}
     </article>`;
     }
 
-    return `<a class="${cls}" href="${escapeHtml(p.slug)}/" data-rs-reveal>
+    return `<a class="${cls}" href="${escapeHtml(s.href)}" data-rs-reveal>
       ${head}
       <span class="rh-card__cta">${escapeHtml(item.cta || (ko ? "둘러보기 ↗" : "EXPLORE ↗"))}</span>
-      ${cardVisual(p.slug)}
+      ${cardVisual(s.slug)}
     </a>`;
   }).join("\n");
 
@@ -271,7 +302,7 @@ ${
       </div>
       <p class="rh-explore__count">
         <span class="rh-explore__count-k">${escapeHtml(copy.indexCountLabel || (ko ? "목록" : "INDEX"))}</span>
-        <span class="rh-explore__count-n">${escapeHtml(copy.sectionIndexRange || "01—06")}</span>
+        <span class="rh-explore__count-n">${escapeHtml(copy.sectionIndexRange || `01—${pad2(surfaces.length)}`)}</span>
       </p>
     </header>
     <div class="rh-grid">${exploreCards}</div>

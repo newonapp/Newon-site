@@ -1,0 +1,51 @@
+function servicesSection(copy) {
+  const services = copy.services || [];
+  if (!services.length) return "";
+
+  const chapters = services
+    .map((s, i) => {
+      const n = pad2(i + 1);
+      const short = shortTitle(s.title);
+      const price = priceForIndex(copy, i);
+      return `<article class="bp-chapter" id="svc-${i}" data-bp-chapter>
+  <div class="bp-inner bp-chapter__grid">
+    <header class="bp-chapter__head">
+      <p class="bp-chapter__n">${n}</p>
+      <p class="bp-chapter__cat">${escapeHtml(short)}</p>
+    </header>
+    <div class="bp-chapter__body">
+      <h2 class="bp-chapter__title">${escapeHtml(s.title)}</h2>
+      <p class="bp-chapter__summary">${escapeHtml(s.summary)}</p>
+      <dl class="bp-chapter__detail">
+        <div><dt>${escapeHtml(copy.whatWeBuild)}</dt><dd>${escapeHtml(s.what)}</dd></div>
+        <div><dt>${escapeHtml(copy.recommendedFor)}</dt><dd>${escapeHtml(s.for)}</dd></div>
+        <div><dt>${escapeHtml(copy.included)}</dt><dd>${escapeHtml(s.included)}</dd></div>
+        <div><dt>${escapeHtml(copy.deliverables)}</dt><dd>${escapeHtml(s.deliverables)}</dd></div>
+        <div><dt>${escapeHtml(copy.timeline)}</dt><dd>${escapeHtml(s.timeline)}</dd></div>
+      </dl>
+      <footer class="bp-chapter__foot">
+        ${
+          price
+            ? `<div class="bp-chapter__price">${
+                copy.startingAt ? `<span>${escapeHtml(copy.startingAt)}</span>` : ""
+              }<strong>${escapeHtml(price)}</strong></div>`
+            : ""
+        }
+        <a class="bp-btn bp-btn--primary" href="../#inquiry" data-analytics="business_pillar_cta">${escapeHtml(copy.quoteCta || "")}</a>
+      </footer>
+    </div>
+  </div>
+</article>`;
+    })
+    .join("\n");
+
+  const note = copy.pricingNote || copy.pricingNoteDefault || "";
+
+  return `<section id="services" class="bp-chapters" aria-label="${escapeHtml(copy.servicesLabel || "Services")}">
+  <div class="bp-inner bp-chapters__intro" data-bp-reveal>
+    <p class="bp-label">${escapeHtml(copy.servicesLabel || "SERVICES")}</p>
+  </div>
+  ${chapters}
+  ${note ? `<div class="bp-inner"><p class="bp-chapter__note" data-bp-reveal>${escapeHtml(note)}</p></div>` : ""}
+</section>`;
+}

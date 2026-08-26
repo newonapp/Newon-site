@@ -344,7 +344,69 @@ export const LABS_EXPERIMENTS = [
       noteEn: "Not the same as this lab — a related Newon game for context.",
     },
   },
+  {
+    experimentId: "lab-06",
+    id: "character-lab",
+    slug: "character-lab",
+    labNumber: 6,
+    category: "character",
+    categoryLabel: "CHARACTER · IP",
+    status: "RESEARCH",
+    stage: "RESEARCH",
+    stageLabelKo: "01 / RESEARCH",
+    stageLabelEn: "01 / RESEARCH",
+    ventureStatus: "BUILDING",
+    updatedAt: "2026-08-26",
+    titleKo: "Character Lab",
+    titleEn: "Character Lab",
+    displayTitleKo: "CHARACTER LAB",
+    displayTitleEn: "CHARACTER LAB",
+    heroLeadKo: "Newon 캐릭터 IP를\n실험하는 공간입니다.",
+    heroLeadEn: "A space to experiment\nwith Newon character IP.",
+    listDescKo: "캐릭터 IP 실험 · Building",
+    listDescEn: "Character IP experiment · Building",
+    hubLeadKo: "캐릭터를\n만들고 검증합니다.",
+    hubLeadEn: "Build and validate\ncharacters carefully.",
+    hubTitleBreakKo: "CHARACTER\nLAB",
+    hubTitleBreakEn: "CHARACTER\nLAB",
+    descKo:
+      "Newon 브랜드와 제품에 연결될 캐릭터 IP를 탐색합니다. 공개 가능한 캐릭터는 아직 없습니다 — Building 상태입니다.",
+    descEn:
+      "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    questionKo: "제품과 자연스럽게 이어지는\n캐릭터 IP의 형태는?",
+    questionEn: "What form of character IP\nfits Newon products naturally?",
+    questionListKo: "가짜 캐릭터를 올리지 않고, 검증된 IP만 공개할 수 있는가?",
+    questionListEn: "Can we publish only validated IP — never fake characters?",
+    hypothesisKo: "작은 캐릭터 시스템부터 검증하면 브랜드 일관성을 지킬 수 있다.",
+    hypothesisEn: "Validating a small character system first keeps brand consistency.",
+    buildKo: "캐릭터 가이드라인·톤·사용 규칙 초안을 정리 중. 다운로드 가능한 에셋은 아직 없음.",
+    buildEn: "Drafting character guidelines, tone, and usage rules. No downloadable assets yet.",
+    resultKo: null,
+    resultEn: null,
+    findingsKo: null,
+    findingsEn: null,
+    nextKo: "내부 캐릭터 컨셉 1종 검증 후 공개 여부 결정.",
+    nextEn: "Validate one internal character concept, then decide on a public release.",
+    nextStepKo: "가이드라인 초안 → 내부 리뷰.",
+    nextStepEn: "Guideline draft → internal review.",
+    metrics: { charactersPublished: null },
+    relatedProduct: null,
+  },
 ];
+
+/** Map public lab status → ventures strip label */
+export const VENTURE_STATUS_MAP = {
+  RESEARCH: "IDEA",
+  PROTOTYPE: "BUILDING",
+  TESTING: "TESTING",
+  VALIDATED: "VALIDATED",
+  ARCHIVED: "ARCHIVED",
+};
+
+export function ventureStatusFor(exp) {
+  if (exp && exp.ventureStatus) return exp.ventureStatus;
+  return VENTURE_STATUS_MAP[exp?.status] || "IDEA";
+}
 
 export function getLabsExperiments() {
   return LABS_EXPERIMENTS.slice();

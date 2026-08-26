@@ -18,6 +18,18 @@ export function injectSiteChrome(
       : "";
     out = out.replace(/\{\{COMPANY_SWITCHER\}\}/g, switcher);
   }
+  if (!out.includes("gnav-mega.css")) {
+    out = out.replace(
+      /(<link rel="stylesheet" href="\/styles\.css[^"]*" \/>)/,
+      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260826gnav5" />'
+    );
+  }
+  if (!out.includes("site-chrome.js")) {
+    out = out.replace(
+      /<\/body>/,
+      '    <script src="/site-chrome.js?v=20260826gnav5" defer></script>\n  </body>'
+    );
+  }
   return out;
 }
 
@@ -33,7 +45,9 @@ export function replaceLegacyChrome(
   let out = html.replace(/<header class="site-header snav-header[\s\S]*?<\/header>/, header);
   out = out.replace(/<header class="site-header gnav[\s\S]*?<\/header>/, header);
   out = out.replace(/<header class="gnav site-header[\s\S]*?<\/header>/, header);
+  out = out.replace(/<header class="site-header pf-header[\s\S]*?<\/header>/, header);
   out = out.replace(/<footer class="site-footer[\s\S]*?<\/footer>/, footer);
+  out = out.replace(/<footer class="pf-foot[\s\S]*?<\/footer>/, footer);
   if (companySwitch) {
     const switcher = renderCompanySwitcher(flat, flatEn, { active: companySwitch, base });
     // Remove prior switcher then insert after header
@@ -48,18 +62,28 @@ export function replaceLegacyChrome(
   } else {
     out = out.replace(/hub-pages\.css\?v=[^"]+/g, "hub-pages.css?v=20260826co1");
   }
+  if (!out.includes("gnav-mega.css")) {
+    out = out.replace(
+      /(<link rel="stylesheet" href="\/styles\.css[^"]*" \/>)/,
+      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260826gnav5" />'
+    );
+  } else {
+    out = out.replace(/gnav-mega\.css\?v=[^"]+/g, "gnav-mega.css?v=20260826gnav5");
+  }
   if (!out.includes("analytics.js")) {
     out = out.replace(/<\/head>/, '    <script src="/analytics.js?v=20260825studio" defer></script>\n  </head>');
   }
   if (!out.includes("site-chrome.js")) {
     out = out.replace(
       /<\/body>/,
-      '    <script src="/site-chrome.js?v=20260826gnav4" defer></script>\n  </body>'
+      '    <script src="/site-chrome.js?v=20260826gnav5" defer></script>\n  </body>'
     );
+  } else {
+    out = out.replace(/site-chrome\.js\?v=[^"]+/g, "site-chrome.js?v=20260826gnav5");
   }
   return out;
 }
 
 export const CHROME_SCRIPTS = `<script src="/analytics.js?v=20260825studio" defer></script>
     <script src="/search.js?v=20260825studio" defer></script>
-    <script src="/site-chrome.js?v=20260826gnav3" defer></script>`;
+    <script src="/site-chrome.js?v=20260826gnav5" defer></script>`;

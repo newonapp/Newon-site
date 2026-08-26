@@ -1,0 +1,27 @@
+# What was the CSS before ANY of my session changes? Check file size of first.css vs original
+wc -c /Users/kyungnawon/Newon/_restore_tmp/labs-detail.*.css
+# The "original" from Write might be wrong version. Look for Write with ld-hero.lx-feat
+python3 <<'PY'
+import json
+from pathlib import Path
+p=Path('/Users/kyungnawon/.cursor/projects/Users-kyungnawon-Newon/agent-transcripts/cb056501-3630-4eaf-9b56-fc7800320b52/cb056501-3630-4eaf-9b56-fc7800320b52.jsonl')
+for i,line in enumerate(p.open()):
+    if 'ld-hero.lx-feat' in line and 'labs-detail.css' in line and 'contents' in line:
+        try: o=json.loads(line)
+        except: continue
+        stack=[o]
+        while stack:
+            cur=stack.pop()
+            if isinstance(cur,dict):
+                args=cur.get('arguments') or cur.get('input') or cur
+                if isinstance(args,dict) and str(args.get('path','')).endswith('labs-detail.css'):
+                    c=args.get('contents')
+                    if isinstance(c,str) and 'ld-hero.lx-feat' in c:
+                        print('found lx-feat css', len(c), 'at', i)
+                        Path('/Users/kyungnawon/Newon/_restore_tmp/labs-detail.lxfeat.css').write_text(c)
+                for v in cur.values():
+                    if isinstance(v,(dict,list)): stack.append(v)
+            elif isinstance(cur,list): stack.extend(cur)
+print('done')
+PY
+ls -la /Users/kyungnawon/Newon/_restore_tmp/labs-detail*.css

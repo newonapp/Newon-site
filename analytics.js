@@ -17,10 +17,18 @@
     BUSINESS_FORM_SUBMIT: "business_form_submit",
     BUSINESS_FORM_SUCCESS: "business_form_success",
     BUSINESS_FORM_ERROR: "business_form_error",
+    CREATIVE_INQUIRY: "creative_inquiry",
+    INSIGHT_VIEW: "insight_view",
+    REPORT_BUY_CLICK: "report_buy_click",
+    AFFILIATE_CLICK: "affiliate_click",
+    EXPERIMENT_VIEW: "experiment_view",
+    CHARACTER_DOWNLOAD: "character_download",
+    TOOL_START: "tool_start",
     TOOL_OPEN: "tool_open",
     TOOL_USE: "tool_use",
     TOOL_COMPLETE: "tool_complete",
     TOOL_SHARE: "tool_share",
+    RESOURCE_DOWNLOAD: "resource_download",
     STORE_PRODUCT_VIEW: "store_product_view",
     STORE_BUY_CLICK: "store_buy_click",
     NEWSLETTER_SIGNUP: "newsletter_signup",
@@ -59,6 +67,23 @@
     }
   }
 
+  function propsFromEl(el) {
+    var props = {};
+    if (el.dataset.analyticsProduct) props.productId = el.dataset.analyticsProduct;
+    if (el.dataset.analyticsTool) props.toolId = el.dataset.analyticsTool;
+    if (el.dataset.analyticsStore) props.storeId = el.dataset.analyticsStore;
+    if (el.dataset.itemId) props.itemId = el.dataset.itemId;
+    if (el.dataset.category) props.category = el.dataset.category;
+    if (el.dataset.categoryProp) props.category = el.dataset.categoryProp;
+    if (el.dataset.source) props.source = el.dataset.source;
+    if (el.dataset.page) props.page = el.dataset.page;
+    if (el.dataset.analyticsPage) props.page = el.dataset.analyticsPage;
+    if (!props.page && document.documentElement) {
+      props.page = (global.location && global.location.pathname) || "";
+    }
+    return props;
+  }
+
   global.newonAnalyticsEvents = EVENTS;
   global.newonTrack = track;
 
@@ -74,10 +99,6 @@
     if (!el) return;
     var name = el.getAttribute("data-analytics");
     if (!name) return;
-    var props = {};
-    if (el.dataset.analyticsProduct) props.productId = el.dataset.analyticsProduct;
-    if (el.dataset.analyticsTool) props.toolId = el.dataset.analyticsTool;
-    if (el.dataset.analyticsStore) props.storeId = el.dataset.analyticsStore;
-    track(name, props);
+    track(name, propsFromEl(el));
   });
 })(typeof window !== "undefined" ? window : globalThis);

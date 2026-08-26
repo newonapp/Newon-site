@@ -1,0 +1,44 @@
+function pricingSection(copy) {
+  /* List pricing is folded into the services explorer — keep only custom quotes */
+  if (!copy.pricingCustom) return "";
+  return `<section id="pricing" class="bp-sec bp-pricing" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.pricingLabel || "PRICING")}</p>
+    </header>
+    <div class="bp-pricing__custom">
+      <p class="bp-pricing__name">${escapeHtml(copy.pricingTitle || "CUSTOM PROJECT")}</p>
+      <p class="bp-pricing__lead">${escapeHtml(copy.pricingLead || "")}</p>
+      <p class="bp-pricing__body">${escapeHtml(copy.pricingBody || "")}</p>
+      <a class="bp-btn bp-btn--primary" href="../#inquiry" data-analytics="business_pillar_cta">${escapeHtml(copy.quoteCta || "")}</a>
+    </div>
+  </div>
+</section>`;
+}
+
+function otherServices(copy, slug, lang) {
+  const labels = { build: "BUILD", automation: "AUTOMATION", research: "RESEARCH", solutions: "SOLUTIONS" };
+  const peers = PILLAR_SLUGS.filter((s) => s !== slug);
+  if (!peers.length) return "";
+
+  const items = peers
+    .map((s, i) => {
+      const peer = getPillarCopy(s, lang);
+      return `<a class="bp-other__row" href="../${s}/">
+      <span class="bp-other__n">${pad2(i + 1)}</span>
+      <span class="bp-other__t">${labels[s]}</span>
+      <span class="bp-other__lead">${escapeHtml(peer?.headline || "")}</span>
+      <span class="bp-other__arrow" aria-hidden="true">→</span>
+    </a>`;
+    })
+    .join("");
+
+  return `<section class="bp-sec bp-other" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.otherTitle || "MORE FROM BUSINESS")}</p>
+    </header>
+    <nav class="bp-other__list" aria-label="${escapeHtml(copy.otherTitle || "Other services")}">${items}</nav>
+  </div>
+</section>`;
+}

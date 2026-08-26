@@ -376,6 +376,54 @@
     ]
   },
   {
+    "title": "UTM Builder",
+    "desc": "캠페인 URL용 UTM 파라미터 생성",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/utm/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "App Launch Checklist",
+    "desc": "앱 출시 전 체크리스트 (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/app-launch-checklist/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "MVP Planner",
+    "desc": "MVP 범위와 우선순위 정리 (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/mvp-planner/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "App Pricing Calculator",
+    "desc": "앱·구독 가격 시나리오 계산 (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/ko/tools/app-pricing-calculator/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
     "title": "products",
     "type": "page",
     "url": "https://www.newon.app/ko/products/",
@@ -839,6 +887,54 @@
     "tags": [
       "tools",
       "productivity"
+    ]
+  },
+  {
+    "title": "UTM Builder",
+    "desc": "Build UTM parameters for campaign URLs",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/utm/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "App Launch Checklist",
+    "desc": "Pre-launch app checklist (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/app-launch-checklist/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "MVP Planner",
+    "desc": "Scope and prioritize an MVP (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/mvp-planner/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "App Pricing Calculator",
+    "desc": "Model app and subscription pricing (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/en/tools/app-pricing-calculator/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
     ]
   },
   {
@@ -1308,6 +1404,54 @@
     ]
   },
   {
+    "title": "UTM Builder",
+    "desc": "Build UTM parameters for campaign URLs",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/utm/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "App Launch Checklist",
+    "desc": "Pre-launch app checklist (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/app-launch-checklist/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "MVP Planner",
+    "desc": "Scope and prioritize an MVP (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/mvp-planner/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "App Pricing Calculator",
+    "desc": "Model app and subscription pricing (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/ja/tools/app-pricing-calculator/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
     "title": "products",
     "type": "page",
     "url": "https://www.newon.app/ja/products/",
@@ -1771,6 +1915,54 @@
     "tags": [
       "tools",
       "productivity"
+    ]
+  },
+  {
+    "title": "UTM Builder",
+    "desc": "Build UTM parameters for campaign URLs",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/utm/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "App Launch Checklist",
+    "desc": "Pre-launch app checklist (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/app-launch-checklist/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "MVP Planner",
+    "desc": "Scope and prioritize an MVP (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/mvp-planner/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "App Pricing Calculator",
+    "desc": "Model app and subscription pricing (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/es/tools/app-pricing-calculator/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
     ]
   },
   {
@@ -2240,6 +2432,54 @@
     ]
   },
   {
+    "title": "UTM Builder",
+    "desc": "Build UTM parameters for campaign URLs",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/utm/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "App Launch Checklist",
+    "desc": "Pre-launch app checklist (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/app-launch-checklist/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "MVP Planner",
+    "desc": "Scope and prioritize an MVP (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/mvp-planner/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "App Pricing Calculator",
+    "desc": "Model app and subscription pricing (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/pt-br/tools/app-pricing-calculator/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
     "title": "products",
     "type": "page",
     "url": "https://www.newon.app/pt-br/products/",
@@ -2703,6 +2943,54 @@
     "tags": [
       "tools",
       "productivity"
+    ]
+  },
+  {
+    "title": "UTM Builder",
+    "desc": "Build UTM parameters for campaign URLs",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/utm/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "App Launch Checklist",
+    "desc": "Pre-launch app checklist (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/app-launch-checklist/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "MVP Planner",
+    "desc": "Scope and prioritize an MVP (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/mvp-planner/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "App Pricing Calculator",
+    "desc": "Model app and subscription pricing (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/fr/tools/app-pricing-calculator/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
     ]
   },
   {
@@ -3172,6 +3460,54 @@
     ]
   },
   {
+    "title": "UTM Builder",
+    "desc": "Build UTM parameters for campaign URLs",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/utm/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "App Launch Checklist",
+    "desc": "Pre-launch app checklist (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/app-launch-checklist/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "MVP Planner",
+    "desc": "Scope and prioritize an MVP (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/mvp-planner/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "App Pricing Calculator",
+    "desc": "Model app and subscription pricing (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/de/tools/app-pricing-calculator/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
     "title": "products",
     "type": "page",
     "url": "https://www.newon.app/de/products/",
@@ -3638,6 +3974,54 @@
     ]
   },
   {
+    "title": "UTM Builder",
+    "desc": "Build UTM parameters for campaign URLs",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/utm/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "App Launch Checklist",
+    "desc": "Pre-launch app checklist (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/app-launch-checklist/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "MVP Planner",
+    "desc": "Scope and prioritize an MVP (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/mvp-planner/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "App Pricing Calculator",
+    "desc": "Model app and subscription pricing (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/hi/tools/app-pricing-calculator/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
+    ]
+  },
+  {
     "title": "products",
     "type": "page",
     "url": "https://www.newon.app/hi/products/",
@@ -4101,6 +4485,54 @@
     "tags": [
       "tools",
       "productivity"
+    ]
+  },
+  {
+    "title": "UTM Builder",
+    "desc": "Build UTM parameters for campaign URLs",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/utm/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "utility"
+    ]
+  },
+  {
+    "title": "App Launch Checklist",
+    "desc": "Pre-launch app checklist (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/app-launch-checklist/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "MVP Planner",
+    "desc": "Scope and prioritize an MVP (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/mvp-planner/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "productivity"
+    ]
+  },
+  {
+    "title": "App Pricing Calculator",
+    "desc": "Model app and subscription pricing (Coming Soon)",
+    "type": "tools",
+    "url": "https://www.newon.app/id/tools/app-pricing-calculator/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "tools",
+      "finance"
     ]
   },
   {

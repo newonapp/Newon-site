@@ -19,6 +19,7 @@ import {
   escapeHtml,
   pick,
   statusBadge,
+  studioStatusBadge,
 } from "./hub-utils.mjs";
 import { renderStudioHeader, renderStudioFooter, renderCompanySwitcher } from "./site-chrome.mjs";
 import { allProducts, productsByType, AI_PRODUCTS, SAAS_PRODUCTS, GAMES_PRODUCTS, productCta } from "./products-data.mjs";
@@ -31,6 +32,7 @@ import { BUSINESS_PACKAGES, BUSINESS_SERVICES } from "./business-pricing.mjs";
 import { TOOLS } from "./tools-data.mjs";
 import { STORE_PRODUCTS } from "./store-data.mjs";
 import { renderResources } from "./render-resources.mjs";
+import { STUDIO_IA } from "./venture-studio-data.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const HUB_PAGES = [
@@ -162,13 +164,65 @@ function gamesBody(flat, flatEn, lang) {
   return renderGamesShowcaseBody(flat, flatEn, lang);
 }
 
-function studioBody(flat, flatEn) {
-  const t = (k) => escapeHtml(pick(flat, flatEn, k) || "");
-  const areas = [1, 2, 3, 4, 5, 6].map((n) => `<li class="hub-card"><span class="hub-card__title">${t(`studio.studioArea${n}`)}</span></li>`).join("");
-  return `<section class="hub-hero hub-inner"><h1 class="hub-title">${t("studio.studioHeroTitle")}</h1>
-    <div class="hub-hero__actions"><a class="btn btn-primary" href="../portfolio/">Portfolio</a><a class="btn btn-ghost" href="../business/#inquiry">Business</a></div>
-  </section>
-  <section class="hub-inner hub-section"><div class="hub-grid hub-grid--3">${areas}</div></section>`;
+function studioBody(flat, flatEn, lang = "en") {
+  const t = (k, fb = "") => {
+    const v = pick(flat, flatEn, k);
+    return escapeHtml(v != null && v !== "" ? String(v) : fb);
+  };
+  const pillars = STUDIO_IA.map((col, idx) => {
+    const n = String(idx + 1).padStart(2, "0");
+    const title = t(col.labelKey, col.labelFb);
+    const lead = t(col.leadKey, col.leadFb);
+    const items = (col.items || [])
+      .map((it) => {
+        const status =
+          it.status && it.status !== "OPERATING" && it.status !== "LIVE"
+            ? studioStatusBadge(it.status, lang === "ko" ? "ko" : "en")
+            : "";
+        if (!it.href) {
+          return `<div class="ns-pillar__item ns-pillar__item--soon"><span>${escapeHtml(it.title)}</span>${status}</div>`;
+        }
+        return `<a class="ns-pillar__item" href="../${escapeHtml(it.href)}"><span>${escapeHtml(it.title)}</span><span class="ns-pillar__meta">${status}<span aria-hidden="true">→</span></span></a>`;
+      })
+      .join("");
+    return `<article class="ns-pillar" id="${escapeHtml(col.id)}">
+      <header class="ns-pillar__head">
+        <span class="ns-pillar__n" aria-hidden="true">${n}</span>
+        <div>
+          <h2 class="ns-pillar__title">${title}</h2>
+          <p class="ns-pillar__lead">${lead}</p>
+        </div>
+      </header>
+      <div class="ns-pillar__list">${items}</div>
+    </article>`;
+  }).join("");
+
+  return `<link rel="stylesheet" href="/newon-studio.css?v=20260826ns1" />
+<section class="ns-hero">
+  <div class="ns-inner">
+    <p class="ns-kicker">${t("studioHub.eyebrow", "NEWON STUDIO")}</p>
+    <h1 class="ns-title">${t("studioHub.heroTitle", "브랜드와 제품이 세상에 보이는 방식을 만듭니다.")}</h1>
+    <p class="ns-lead">${t("studioHub.heroLead", "브랜드의 이름과 정체성부터 디지털 경험, 콘텐츠와 새로운 IP까지 하나의 방향으로 설계합니다.")}</p>
+    <div class="ns-actions">
+      <a class="btn btn-ghost" href="#brand">${t("studioHub.ctaExplore", "Explore Studio ↓")}</a>
+      <a class="btn btn-primary" href="../business/creative/#inquiry">${t("studioHub.ctaProject", "Start a Project ↗")}</a>
+    </div>
+    <p class="ns-note">${t("studioHub.positioning", "Creative Studio · Product Studio · Experimental Lab")}</p>
+  </div>
+</section>
+<section class="ns-pillars" aria-label="Studio areas">
+  <div class="ns-inner ns-pillars__grid">${pillars}</div>
+</section>
+<section class="ns-close">
+  <div class="ns-inner">
+    <p class="ns-kicker">${t("studioHub.closeKicker", "NEXT")}</p>
+    <h2 class="ns-close__title">${t("studioHub.closeTitle", "프로젝트를 시작해 보세요.")}</h2>
+    <div class="ns-actions">
+      <a class="btn btn-primary" href="../business/creative/#inquiry">${t("studioHub.ctaProject", "Start a Project ↗")}</a>
+      <a class="btn btn-ghost" href="../resources/labs/character-lab/">${t("studioHub.ctaIp", "Character Lab →")}</a>
+    </div>
+  </div>
+</section>`;
 }
 
 function toolsHubBody(flat, flatEn) {
@@ -256,7 +310,12 @@ const HUB_RENDERERS = {
     extraCss: '<link rel="stylesheet" href="/games-hub.css?v=20260825games5" />',
     extraScripts: '<script src="/games-hub.js?v=20260825games4" defer></script>',
   }),
-  studio: (f, fe) => ({ activeNav: "company", title: pick(f, fe, "studio.studioSeoTitle"), description: pick(f, fe, "studio.studioMetaDescription"), body: studioBody(f, fe) }),
+  studio: (f, fe, l) => ({
+    activeNav: "studio",
+    title: pick(f, fe, "studioHub.seoTitle") || pick(f, fe, "studio.studioSeoTitle"),
+    description: pick(f, fe, "studioHub.metaDescription") || pick(f, fe, "studio.studioMetaDescription"),
+    body: studioBody(f, fe, l?.dir || "en"),
+  }),
   tools: (f, fe) => ({
     activeNav: "products",
     title: pick(f, fe, "studio.toolsSeoTitle"),

@@ -1,0 +1,112 @@
+function heroVisual(copy) {
+  if (copy.heroIndex || (copy.layout === "build" && copy.services?.length)) {
+    const lines =
+      copy.heroIndex ||
+      copy.services.map((s, i) => `${pad2(i + 1)} ${s.title.split(" ")[0]}`);
+    return `<aside class="bp-hero__visual bp-hero__visual--index">
+      <nav class="bp-index" aria-label="${escapeHtml(copy.heroIndexLabel || "Services")}">
+        ${lines
+          .map((line, i) => {
+            const parts = String(line).trim().split(/\s+/);
+            const n = parts[0] && /^\d/.test(parts[0]) ? parts[0] : pad2(i + 1);
+            const t = parts[0] && /^\d/.test(parts[0]) ? parts.slice(1).join(" ") : line;
+            return `<button type="button" class="bp-index__btn" data-bp-open="${i}">
+          <span class="bp-index__n">${escapeHtml(n)}</span>
+          <span class="bp-index__t">${escapeHtml(t)}</span>
+          <span class="bp-index__arrow" aria-hidden="true">→</span>
+        </button>`;
+          })
+          .join("")}
+      </nav>
+    </aside>`;
+  }
+  if (copy.heroFlow) {
+    return `<aside class="bp-hero__visual bp-hero__visual--flow" aria-hidden="true">
+      <div class="bp-flow" data-bp-flow>
+        ${copy.heroFlow
+          .map(
+            (step, i) =>
+              `<span class="bp-flow__step">${escapeHtml(step)}</span>${
+                i < copy.heroFlow.length - 1 ? `<span class="bp-flow__arrow">↓</span>` : ""
+              }`
+          )
+          .join("")}
+      </div>
+    </aside>`;
+  }
+  if (copy.heroStack) {
+    const last = copy.heroStack[copy.heroStack.length - 1];
+    const rest = copy.heroStack.slice(0, -1);
+    return `<aside class="bp-hero__visual bp-hero__visual--stack" aria-hidden="true">
+      <div class="bp-stack">
+        ${rest.map((s) => `<span class="bp-stack__item">${escapeHtml(s)}</span>`).join("")}
+        <span class="bp-stack__arrow">↓</span>
+        <span class="bp-stack__result">${escapeHtml(last)}</span>
+      </div>
+    </aside>`;
+  }
+  return `<aside class="bp-hero__visual bp-hero__visual--mark" aria-hidden="true">
+    <p class="bp-mark">${escapeHtml((copy.eyebrow || "NEWON").replace("NEWON ", ""))}</p>
+  </aside>`;
+}
+
+function servicesSection(copy) {
+  const rows = (copy.services || [])
+    .map((s, i) => {
+      const n = pad2(i + 1);
+      const id = `bp-svc-${i}`;
+      return `<article class="bp-svc" data-bp-acc id="svc-${i}">
+  <button type="button" class="bp-svc__trigger" aria-expanded="false" aria-controls="${id}" id="${id}-btn">
+    <span class="bp-svc__n">${n}</span>
+    <span class="bp-svc__main">
+      <span class="bp-svc__title">${escapeHtml(s.title)}</span>
+      <span class="bp-svc__summary">${escapeHtml(s.summary)}</span>
+    </span>
+    <span class="bp-svc__icon" aria-hidden="true"></span>
+  </button>
+  <div class="bp-svc__panel" id="${id}" role="region" aria-labelledby="${id}-btn" hidden>
+    <dl class="bp-svc__detail">
+      <div><dt>${escapeHtml(copy.whatWeBuild)}</dt><dd>${escapeHtml(s.what)}</dd></div>
+      <div><dt>${escapeHtml(copy.recommendedFor)}</dt><dd>${escapeHtml(s.for)}</dd></div>
+      <div><dt>${escapeHtml(copy.included)}</dt><dd>${escapeHtml(s.included)}</dd></div>
+      <div><dt>${escapeHtml(copy.deliverables)}</dt><dd>${escapeHtml(s.deliverables)}</dd></div>
+      <div><dt>${escapeHtml(copy.timeline)}</dt><dd>${escapeHtml(s.timeline)}</dd></div>
+    </dl>
+  </div>
+</article>`;
+    })
+    .join("\n");
+
+  return `<section id="services" class="bp-sec bp-services" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.servicesLabel || "SERVICES")}</p>
+    </header>
+    <div class="bp-svc-list">${rows}</div>
+  </div>
+</section>`;
+}
+
+function processSection(copy) {
+  if (!copy.process || !copy.process.length) return "";
+  const steps = copy.process
+    .map(
+      (p, i) => `<li class="bp-proc__row">
+      <span class="bp-proc__n">${escapeHtml(p.n || pad2(i + 1))}</span>
+      <span class="bp-proc__body">
+        <span class="bp-proc__t">${escapeHtml(p.t)}</span>
+        <span class="bp-proc__d">${escapeHtml(p.d)}</span>
+      </span>
+    </li>`
+    )
+    .join("");
+
+  return `<section id="process" class="bp-sec bp-process" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.processLabel || "PROCESS")}</p>
+    </header>
+    <ol class="bp-proc">${steps}</ol>
+  </div>
+</section>`;
+}

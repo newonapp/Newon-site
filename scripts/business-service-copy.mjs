@@ -1,7 +1,25 @@
 /**
  * KO/EN copy for Newon Business service detail pages.
- * Slugs: mvp | web | app | ai-automation | white-label | design
+ * Slugs: mvp | web | landing | app | ai-automation | data-reporting | internal-tools | white-label | design
  */
+import { getLandingCopy } from "./business-service-landing-copy.mjs";
+import { getDataReportingCopy } from "./data-reporting-copy.mjs";
+import { getInternalToolsCopy } from "./internal-tools-copy.mjs";
+import { getWorkflowAutomationCopy } from "./workflow-automation-copy.mjs";
+import { getMarketResearchCopy } from "./market-research-copy.mjs";
+import { getCompetitorAnalysisCopy } from "./competitor-analysis-copy.mjs";
+import { getConsumerResearchCopy } from "./consumer-research-copy.mjs";
+import { getUxAuditCopy } from "./ux-audit-copy.mjs";
+import { getTrendResearchCopy } from "./trend-research-copy.mjs";
+import { getCustomProductCopy } from "./custom-product-copy.mjs";
+import { getProductLaunchCopy } from "./product-launch-copy.mjs";
+import { getInternalSystemCopy } from "./internal-system-copy.mjs";
+import { getMvpCopy } from "./mvp-copy.mjs";
+import { getWebCopy } from "./web-copy.mjs";
+import { getAppCopy } from "./app-copy.mjs";
+import { getAiAutomationCopy } from "./ai-automation-copy.mjs";
+import { getWhiteLabelCopy } from "./white-label-copy.mjs";
+
 const COPY = {
   ko: {
     mvp: {
@@ -1146,6 +1164,29 @@ const COPY = {
       ],
       relatedTitle: "관련 서비스",
       exploreAll: "모든 서비스 보기 →",
+      priceLabel: "PROJECT COST",
+      priceTitle: "프로젝트별 맞춤 견적입니다.",
+      timeLead: "브랜드 범위, 화면 수, 플랫폼, 시스템 깊이, 피드백 속도에 따라 기간이 달라질 수 있습니다.",
+      timelines: [
+        { t: "Focused Design", d: "약 2–3주 · 범위별 상이" },
+        { t: "Product Design", d: "약 3–6주 · 범위별 상이" },
+        { t: "Full System", d: "별도 협의" },
+      ],
+      priceName: "DESIGN & BRANDING",
+      priceValue: "별도 견적",
+      priceFactorsLabel: "가격 결정 요소",
+      priceFactors: [
+        "Scope — 브랜드·UI·시스템 범위",
+        "Platform — Web / App / Both",
+        "Screen count — 화면·플로우 수",
+        "System depth — 컴포넌트·토큰 범위",
+        "Timeline — 일정·리소스",
+        "Research — 리서치·테스트 포함",
+        "Revision — 피드백·수정 라운드",
+        "Handoff — 개발 전달 깊이",
+      ],
+      priceNote:
+        "Scope / Platform / Timeline을 검토한 뒤 견적을 제공합니다. 정찰제 가격은 표시하지 않습니다.",
       ctaFinalTitle: "브랜드와 제품이 같은 언어를 쓰게 만드세요.",
       ctaFinalLead: "개선하고 싶은 화면이나 브랜드 현황만 알려주셔도 됩니다.",
       ctaFinalBtn: "디자인 문의 →",
@@ -2312,6 +2353,29 @@ const COPY = {
       ],
       relatedTitle: "RELATED SERVICES",
       exploreAll: "Explore all services →",
+      priceLabel: "PROJECT COST",
+      priceTitle: "Custom quote per project.",
+      timeLead: "Timeline varies with brand scope, screen count, platforms, system depth, and feedback speed.",
+      timelines: [
+        { t: "Focused Design", d: "About 2–3 weeks · varies by scope" },
+        { t: "Product Design", d: "About 3–6 weeks · varies by scope" },
+        { t: "Full System", d: "Scoped separately" },
+      ],
+      priceName: "DESIGN & BRANDING",
+      priceValue: "Custom quote",
+      priceFactorsLabel: "Pricing factors",
+      priceFactors: [
+        "Scope — Brand, UI, and system range",
+        "Platform — Web / App / Both",
+        "Screen count — Screens and flows",
+        "System depth — Components and tokens",
+        "Timeline — Schedule and resourcing",
+        "Research — Research and testing",
+        "Revision — Feedback rounds",
+        "Handoff — Dev delivery depth",
+      ],
+      priceNote:
+        "Quotes follow review of scope, platform, and timeline. We do not publish fixed list prices.",
       ctaFinalTitle: "Make brand and product speak the same language.",
       ctaFinalLead: "Share the screens or brand state you want to improve.",
       ctaFinalBtn: "Design inquiry →",
@@ -2321,10 +2385,895 @@ const COPY = {
   },
 };
 
+const PRICE_FACTOR_DESC = {
+  "data-reporting": {
+    ko: {
+      "데이터 소스 개수": "연결·수집 대상",
+      "데이터 양 및 구조": "볼륨·스키마·정합성",
+      "API Integration": "외부·내부 API 연동",
+      "데이터 정리 복잡도": "ETL·클린업 깊이",
+      "계산 지표 개수": "KPI·파생 지표",
+      "자동화 Workflow": "수집·갱신 자동화",
+      "Dashboard 필요 여부": "화면·차트 범위",
+      "AI 기능": "요약·분류·인사이트",
+    },
+    en: {
+      "Number of data sources": "Connectors and inputs",
+      "Data volume and structure": "Volume, schema, quality",
+      "API integration": "External and internal APIs",
+      "Cleanup complexity": "ETL and normalization depth",
+      "Number of metrics": "KPIs and derived fields",
+      "Automation workflow": "Collection and refresh jobs",
+      "Dashboard need": "Views and chart scope",
+      "AI features": "Summaries, classification, insight",
+    },
+  },
+  "internal-tools": {
+    ko: {
+      "업무 흐름 복잡도": "승인·예외·분기",
+      "화면·모듈 수": "기능 단위 범위",
+      "역할/권한 구조": "RBAC·접근 제어",
+      "데이터 모델": "엔티티·관계 설계",
+      "연동 서비스 수": "API·SaaS 연결",
+      "자동화 범위": "트리거·액션",
+      "AI 기능": "분류·추천·생성",
+      "대시보드 필요 여부": "지표·리포트 화면",
+    },
+    en: {
+      "Work-flow complexity": "Approvals, branches, exceptions",
+      "Number of screens/modules": "Functional surface area",
+      "Role/permission structure": "RBAC and access control",
+      "Data model": "Entities and relationships",
+      "Number of integrations": "API and SaaS connections",
+      "Automation scope": "Triggers and actions",
+      "AI features": "Classification and generation",
+      "Dashboard needs": "Metrics and report views",
+    },
+  },
+  "workflow-automation": {
+    ko: {
+      "Workflow 수": "자동화 흐름 개수",
+      "Step 수": "단계·액션 수",
+      "연결 서비스 수": "SaaS·도구 연동",
+      "Trigger 수": "시작 조건",
+      "Condition / Branch 수": "분기·조건 로직",
+      "API Integration": "커스텀 API",
+      "데이터 구조": "필드·매핑",
+      "AI 기능": "분류·생성·요약",
+    },
+    en: {
+      "Number of workflows": "Automation flows to build",
+      "Number of steps": "Actions per workflow",
+      "Connected services": "SaaS and tool links",
+      "Number of triggers": "Start conditions",
+      "Conditions / branches": "Branching logic",
+      "API integration": "Custom API work",
+      "Data structure": "Fields and mapping",
+      "AI features": "Classification and drafting",
+    },
+  },
+  "market-research": {
+    ko: {
+      "조사 질문 수": "핵심·부가 질문",
+      "시장·카테고리 범위": "지역·세그먼트",
+      "경쟁사·플레이어 수": "비교 대상 규모",
+      "조사 깊이": "데스크·심층 수준",
+      "1차 조사 포함 여부": "인터뷰·설문",
+      "자료 접근성·유료 리포트": "소스·구매",
+      "산출물 형태·페이지 수": "브리프·맵",
+      "긴급 일정": "납기·리소스",
+    },
+    en: {
+      "Number of research questions": "Core and supporting questions",
+      "Market or category scope": "Regions and segments",
+      "Number of competitors / players": "Comparison set size",
+      "Research depth": "Desk vs deep dive",
+      "Primary research inclusion": "Interviews and surveys",
+      "Source access and paid reports": "Sources and purchases",
+      "Deliverable format and length": "Briefs and maps",
+      "Urgent timeline": "Deadline and resourcing",
+    },
+  },
+  "competitor-analysis": {
+    ko: {
+      "경쟁사·대체재 수": "비교 대상",
+      "비교 축 수": "기능·가격·메시지",
+      "분석 깊이": "표면·심층",
+      "기능·UX 비교 포함": "화면·플로우",
+      "메시지·콘텐츠 분석": "카피·포지션",
+      "산출물 형태": "매트릭스·브리프",
+      "긴급 일정": "납기",
+    },
+    en: {
+      "Number of competitors / substitutes": "Comparison set",
+      "Number of comparison axes": "Feature, price, message",
+      "Analysis depth": "Surface vs deep",
+      "Feature / UX compare inclusion": "Screens and flows",
+      "Messaging / content analysis": "Copy and positioning",
+      "Deliverable format": "Matrix and brief",
+      "Urgent timeline": "Deadline",
+    },
+  },
+  "consumer-research": {
+    ko: {
+      "조사 질문 수": "핵심·부가 질문",
+      "대상 사용자·세그먼트 범위": "타깃·페르소나",
+      "1차 조사(인터뷰·설문) 포함": "질적·양적",
+      "인터뷰·응답 수": "샘플 규모",
+      "조사 깊이": "탐색·검증 수준",
+      "자료 접근성": "내부·공개 데이터",
+      "산출물 형태": "브리프·맵",
+      "긴급 일정": "납기",
+    },
+    en: {
+      "Number of research questions": "Core and supporting questions",
+      "Target user or segment scope": "Targets and personas",
+      "Primary research inclusion": "Qual and quant methods",
+      "Interview or response count": "Sample size",
+      "Research depth": "Exploratory vs validation",
+      "Data accessibility": "Internal and public data",
+      "Deliverable format": "Briefs and maps",
+      "Urgent timeline": "Deadline",
+    },
+  },
+  "ux-audit": {
+    ko: {
+      "점검 플로우 수": "핵심·보조 여정",
+      "화면·기능 범위": "페이지·모듈",
+      "데스크톱·모바일 포함": "반응형 범위",
+      "접근 환경(스테이징·계정)": "실제·데모 환경",
+      "데이터·CS 연계": "정성·정량",
+      "산출물 형태": "리포트·매트릭스",
+      "발표·워크숍 포함": "공유·합의",
+      "긴급 일정": "납기",
+    },
+    en: {
+      "Number of flows audited": "Core and secondary journeys",
+      "Screen and feature range": "Pages and modules",
+      "Desktop and mobile inclusion": "Responsive coverage",
+      "Environment access (staging, accounts)": "Staging and accounts",
+      "Data and support linkage": "Qualitative and quantitative",
+      "Deliverable format": "Report and matrix",
+      "Presentation or workshop": "Share and alignment",
+      "Rush timeline": "Deadline",
+    },
+  },
+  "trend-research": {
+    ko: {
+      "조사 주제·범위": "테마·시간축",
+      "산업·카테고리 수": "적용 영역",
+      "시간 범위·깊이": "단기·중장기",
+      "경쟁·출시 맥락 포함": "신호 연결",
+      "인터뷰·전문가 포함": "1차 소스",
+      "산출물 형태": "브리프·맵",
+      "모니터링 가이드": "후속 추적",
+      "긴급 일정": "납기",
+    },
+    en: {
+      "Research topic and range": "Themes and time horizon",
+      "Number of industries or categories": "Coverage areas",
+      "Time horizon and depth": "Near vs long term",
+      "Competitive and launch context": "Signal linkage",
+      "Interviews and experts": "Primary sources",
+      "Deliverable format": "Briefs and maps",
+      "Monitoring guide": "Follow-up tracking",
+      "Rush timeline": "Deadline",
+    },
+  },
+};
+
+function enrichPriceFactors(factors, descMap = {}) {
+  return (factors || []).slice(0, 8).map((f) => {
+    if (/\s+—\s+/.test(f)) return f;
+    const desc = descMap[f];
+    return desc ? `${f} — ${desc}` : f;
+  });
+}
+
+function enrichTimelines(timelines, lang) {
+  const suffix = lang === "ko" ? " · 범위별 상이" : " · varies by scope";
+  return (timelines || []).map((t, i) => {
+    const d = t.d || t.body || "";
+    if (i >= 2 || !d) return t;
+    if (/별도|custom|Consult|협의|Scoped| · /.test(d)) return t;
+    return { ...t, d: `${d}${suffix}` };
+  });
+}
+
+function normalizeEngagementCopy(c, lang, slug) {
+  if (!c) return c;
+  const isKo = lang === "ko";
+  const defaultTitle = isKo ? "프로젝트별 맞춤 견적입니다." : "Custom quote per project.";
+  const priceTitle = c.priceValue ? defaultTitle : c.priceTitle || defaultTitle;
+  const descMap = PRICE_FACTOR_DESC[slug]?.[isKo ? "ko" : "en"] || {};
+  return {
+    ...c,
+    priceTitle,
+    priceFactors: enrichPriceFactors(c.priceFactors, descMap),
+    timelines: enrichTimelines(c.timelines, lang),
+    priceFactorsLabel: c.priceFactorsLabel || (isKo ? "가격 결정 요소" : "Pricing factors"),
+    timeLead: c.timeLead || c.priceLead || "",
+  };
+}
+
+function normalizeDataReportingCopy(c, lang) {
+  const isKo = lang === "ko";
+  return {
+    ...c,
+    seoTitle: isKo ? "DATA & REPORTING | Newon Business" : "DATA & REPORTING | Newon Business",
+    navLabel: "DATA",
+    eyebrow: "DATA & REPORTING",
+    crumbBusiness: "BUSINESS",
+    crumbServices: "SERVICES",
+    solveTitle: lang === "ko" ? "이런 문제를 해결합니다" : "Problems we solve",
+    solveItems: (c.problems || []).slice(0, 3).map((p) => ({ n: p.n, title: p.t, body: p.d })),
+    getTitle: lang === "ko" ? "무엇을 받게 되나요" : "What you get",
+    getItems: (c.caps || []).slice(0, 6).map((cap, i) => ({
+      n: String(i + 1).padStart(2, "0"),
+      title: cap.t,
+      body: cap.d,
+    })),
+    processTitle: c.processTitle,
+    processItems: (c.process || []).map((p) => ({ n: p.n, title: p.t, body: p.d })),
+    deliverTitle: c.delTitle,
+    deliverLead: c.delLead,
+    deliverItems: c.deliverables,
+    deliverExtras: c.deliverExtras,
+    whoTitle: isKo ? "이런 팀에 적합합니다" : "Who it's for",
+    whoItems: isKo
+      ? [
+          "매주·매월 반복 보고서를 만드는 팀",
+          "여러 서비스에 데이터가 흩어져 있는 경우",
+          "Spreadsheet 수작업 취합을 줄이고 싶은 경우",
+          "핵심 지표를 한곳에서 확인하고 싶은 경우",
+        ]
+      : [
+          "Teams rebuilding weekly or monthly reports",
+          "Data scattered across multiple services",
+          "Manual spreadsheet collection to cut down",
+          "Teams that want key metrics in one place",
+        ],
+    ctaFinalTitle: c.finalTitle,
+    ctaFinalLead: c.finalLead,
+    ctaFinalBtn: c.ctaPrimary,
+    ctaSecondaryHref: "#workflow",
+    relatedTitle: isKo ? "관련 서비스" : "Related services",
+    exploreAll: isKo ? "모든 서비스 보기 →" : "Explore all services →",
+    prevLabel: isKo ? "이전 서비스" : "Previous service",
+    nextLabel: isKo ? "다음 서비스" : "Next service",
+  };
+}
+
+function normalizeInternalToolsCopy(c, lang) {
+  const isKo = lang === "ko";
+  return {
+    ...c,
+    seoTitle: "INTERNAL TOOLS | Newon Business",
+    navLabel: "TOOLS",
+    eyebrow: "INTERNAL TOOLS",
+    crumbBusiness: "BUSINESS",
+    crumbServices: "SERVICES",
+    solveTitle: isKo ? "이런 문제를 해결합니다" : "Problems we solve",
+    solveItems: (c.problems || []).slice(0, 3).map((p) => ({ n: p.n, title: p.t, body: p.d })),
+    getTitle: isKo ? "무엇을 받게 되나요" : "What you get",
+    getItems: (c.caps || []).slice(0, 6).map((cap, i) => ({
+      n: String(i + 1).padStart(2, "0"),
+      title: cap.t,
+      body: cap.d,
+    })),
+    processTitle: c.processTitle,
+    processItems: (c.process || []).map((p) => ({ n: p.n, title: p.t, body: p.d })),
+    deliverTitle: c.delTitle,
+    deliverLead: c.delLead,
+    deliverItems: c.deliverables,
+    deliverExtras: c.deliverExtras,
+    whoTitle: isKo ? "이런 팀에 적합합니다" : "Who it's for",
+    whoItems: isKo
+      ? [
+          "시트·채팅·메일로 운영 업무가 흩어진 팀",
+          "승인·상태 관리가 반복되는 경우",
+          "기성 SaaS가 프로세스와 맞지 않는 경우",
+          "역할별 권한과 이력이 필요한 경우",
+        ]
+      : [
+          "Ops work scattered across sheets, chat, and email",
+          "Recurring approvals and status handoffs",
+          "Off-the-shelf SaaS that doesn't fit the process",
+          "Teams that need roles, permissions, and history",
+        ],
+    ctaFinalTitle: c.finalTitle,
+    ctaFinalLead: c.finalLead,
+    ctaFinalBtn: c.ctaPrimary,
+    ctaSecondaryHref: "#workflow",
+    relatedTitle: isKo ? "관련 서비스" : "Related services",
+    exploreAll: isKo ? "모든 서비스 보기 →" : "Explore all services →",
+    prevLabel: isKo ? "이전 서비스" : "Previous service",
+    nextLabel: isKo ? "다음 서비스" : "Next service",
+  };
+}
+
+function normalizeWorkflowAutomationCopy(c, lang) {
+  const isKo = lang === "ko";
+  return {
+    ...c,
+    seoTitle: c.seoTitle || "Workflow Automation | Newon Business",
+    navLabel: "WORKFLOW",
+    eyebrow: "02 · WORKFLOW AUTOMATION",
+    crumbServices: "SERVICES",
+    solveEyebrow: c.whyLabel,
+    solveTitle: c.whyTitle,
+    solveLead: c.whyLead,
+    solveItems: (c.problems || []).map((p) => ({ n: p.n, title: p.t, body: p.d })),
+    getEyebrow: "CAPABILITIES",
+    getTitle: c.capsTitle || (isKo ? "이런 업무를 자동화할 수 있습니다." : "What we automate"),
+    getItems: (c.caps || []).map((cap, i) => ({
+      n: String(i + 1).padStart(2, "0"),
+      title: cap.t,
+      body: cap.d,
+    })),
+    processTitle: c.processTitle,
+    processItems: (c.process || []).map((p) => ({ n: p.n, title: p.t, body: p.d })),
+    deliverTitle: c.delTitle,
+    deliverLead: c.delLead,
+    deliverItems: c.deliverables,
+    deliverExtras: c.deliverExtras,
+    finalLabel: "START A PROJECT",
+    whoTitle: isKo ? "이런 팀에 적합합니다" : "Who it's for",
+    whoItems: isKo
+      ? [
+          "여러 SaaS·시트를 수동으로 연결하는 팀",
+          "반복 알림·데이터 입력 업무가 많은 팀",
+          "누락과 지연이 잦은 운영 프로세스가 있는 경우",
+          "기존 도구를 유지하면서 자동화를 확장하고 싶은 경우",
+        ]
+      : [
+          "Teams manually connecting SaaS and spreadsheets",
+          "Teams with repetitive alerts and data entry",
+          "Ops processes with missed steps or delays",
+          "Teams that want automation without replacing tools",
+        ],
+    ctaFinalTitle: c.finalTitle,
+    ctaFinalLead: c.finalLead,
+    ctaFinalBtn: c.ctaFinalBtn || c.ctaPrimary,
+    ctaFinalSecondary: c.ctaFinalSecondary,
+    ctaFinalSecondaryHref: c.automationHubHref || "../",
+    ctaSecondaryHref: c.ctaSecondaryHref || "#scope",
+    faqTitle: c.faqTitle,
+    relatedTitle: isKo ? "관련 서비스" : "Related services",
+    exploreAll: isKo ? "모든 서비스 보기 →" : "Explore all services →",
+    prevLabel: isKo ? "이전 서비스" : "Previous service",
+    nextLabel: isKo ? "다음 서비스" : "Next service",
+  };
+}
+
+function normalizeMarketResearchCopy(c, lang) {
+  const isKo = lang === "ko";
+  return {
+    ...c,
+    seoTitle: isKo ? "MARKET RESEARCH | Newon Business" : "MARKET RESEARCH | Newon Business",
+    navLabel: "MARKET",
+    eyebrow: "MARKET RESEARCH",
+    crumbBusiness: "BUSINESS",
+    crumbServices: "SERVICES",
+    processTitle: c.processTitle,
+    processItems: (c.process || []).map((p) => ({
+      n: p.n,
+      title: p.t,
+      body: p.d,
+      examples: p.examples,
+    })),
+    deliverTitle: c.delTitle,
+    deliverLead: c.delLead,
+    deliverItems: c.deliverables,
+    whoTitle: isKo ? "이런 팀에 적합합니다" : "Who it's for",
+    whoItems: isKo
+      ? [
+          "신규 시장·카테고리 진입을 검토하는 팀",
+          "포지셔닝과 차별화 근거가 필요한 제품 팀",
+          "투자·파트너 미팅용 시장 요약이 필요한 경우",
+          "MVP·로드맵 정의 전 시장 맥락이 필요한 경우",
+        ]
+      : [
+          "Teams evaluating a new market or category",
+          "Product teams needing positioning evidence",
+          "Founders preparing investor or partner conversations",
+          "Teams defining MVP or roadmap scope",
+        ],
+    ctaFinalTitle: c.finalTitle,
+    ctaFinalLead: c.finalLead,
+    ctaFinalBtn: c.ctaPrimary,
+    ctaFinalSecondary: c.ctaFinalSecondary,
+    ctaFinalSecondaryHref: c.ctaFinalSecondaryHref || "../research/",
+    ctaSecondaryHref: "#workflow",
+    relatedTitle: isKo ? "관련 서비스" : "Related services",
+    exploreAll: isKo ? "모든 서비스 보기 →" : "Explore all services →",
+    prevLabel: isKo ? "이전 서비스" : "Previous service",
+    nextLabel: isKo ? "다음 서비스" : "Next service",
+  };
+}
+
+function normalizeCompetitorAnalysisCopy(c, lang) {
+  const isKo = lang === "ko";
+  return {
+    ...c,
+    seoTitle: isKo ? "COMPETITOR ANALYSIS | Newon Business" : "COMPETITOR ANALYSIS | Newon Business",
+    navLabel: "COMPARE",
+    eyebrow: "COMPETITOR ANALYSIS",
+    crumbBusiness: "BUSINESS",
+    crumbServices: "SERVICES",
+    processTitle: c.processTitle,
+    processItems: (c.process || []).map((p) => ({
+      n: p.n,
+      title: p.t,
+      body: p.d,
+      examples: p.examples,
+    })),
+    deliverTitle: c.delTitle,
+    deliverLead: c.delLead,
+    deliverItems: c.deliverables,
+    whoTitle: isKo ? "이런 팀에 적합합니다" : "Who it's for",
+    whoItems: isKo
+      ? [
+          "포지셔닝·차별화 근거가 필요한 제품 팀",
+          "출시·확장 전 경쟁 환경을 파악하려는 팀",
+          "로드맵·MVP 우선순위를 정하려는 팀",
+          "투자·파트너 미팅용 경쟁 비교가 필요한 경우",
+        ]
+      : [
+          "Product teams needing positioning evidence",
+          "Teams preparing launch or expansion",
+          "Teams defining MVP or roadmap priority",
+          "Founders needing competitive summary for investors",
+        ],
+    ctaFinalTitle: c.finalTitle,
+    ctaFinalLead: c.finalLead,
+    ctaFinalBtn: c.ctaPrimary,
+    ctaFinalSecondary: c.ctaFinalSecondary,
+    ctaFinalSecondaryHref: c.ctaFinalSecondaryHref || "../research/",
+    ctaSecondaryHref: "#workflow",
+    relatedTitle: isKo ? "관련 서비스" : "Related services",
+    exploreAll: isKo ? "모든 서비스 보기 →" : "Explore all services →",
+    prevLabel: isKo ? "이전 서비스" : "Previous service",
+    nextLabel: isKo ? "다음 서비스" : "Next service",
+  };
+}
+
+function normalizeConsumerResearchCopy(c, lang) {
+  const isKo = lang === "ko";
+  return {
+    ...c,
+    seoTitle: isKo ? "CONSUMER RESEARCH | Newon Business" : "CONSUMER RESEARCH | Newon Business",
+    navLabel: "CONSUMER",
+    eyebrow: "CONSUMER RESEARCH",
+    crumbBusiness: "BUSINESS",
+    crumbServices: "SERVICES",
+    processTitle: c.processTitle,
+    processItems: (c.process || []).map((p) => ({
+      n: p.n,
+      title: p.t,
+      body: p.d,
+      examples: p.examples,
+    })),
+    deliverTitle: c.delTitle,
+    deliverLead: c.delLead,
+    deliverItems: c.deliverables,
+    whoTitle: isKo ? "이런 팀에 적합합니다" : "Who it's for",
+    whoItems: isKo
+      ? [
+          "타깃·세그먼트를 검증하려는 제품·마케팅 팀",
+          "메시지·포지셔닝 근거가 필요한 팀",
+          "기능·서비스 우선순위를 정하려는 팀",
+          "출시·리브랜딩 전 사용자 반응을 확인하려는 경우",
+        ]
+      : [
+          "Product and marketing teams validating target segments",
+          "Teams needing evidence for messaging and positioning",
+          "Teams prioritizing features or service improvements",
+          "Teams checking user response before launch or rebrand",
+        ],
+    ctaFinalTitle: c.finalTitle,
+    ctaFinalLead: c.finalLead,
+    ctaFinalBtn: c.ctaPrimary,
+    ctaFinalSecondary: c.ctaFinalSecondary,
+    ctaFinalSecondaryHref: c.ctaFinalSecondaryHref || "../research/",
+    ctaSecondaryHref: "#workflow",
+    relatedTitle: isKo ? "관련 서비스" : "Related services",
+    exploreAll: isKo ? "모든 서비스 보기 →" : "Explore all services →",
+    prevLabel: isKo ? "이전 서비스" : "Previous service",
+    nextLabel: isKo ? "다음 서비스" : "Next service",
+  };
+}
+
+function normalizeUxAuditCopy(c, lang) {
+  const isKo = lang === "ko";
+  return {
+    ...c,
+    seoTitle: isKo ? "UX AUDIT | Newon Business" : "UX AUDIT | Newon Business",
+    navLabel: "UX",
+    eyebrow: "UX AUDIT",
+    crumbBusiness: "BUSINESS",
+    crumbServices: "SERVICES",
+    processTitle: c.processTitle,
+    processItems: (c.process || []).map((p) => ({
+      n: p.n,
+      title: p.t,
+      body: p.d,
+      examples: p.examples,
+    })),
+    deliverTitle: c.delTitle,
+    deliverLead: c.delLead,
+    deliverItems: c.deliverables,
+    whoTitle: isKo ? "이런 팀에 적합합니다" : "Who it's for",
+    whoItems: isKo
+      ? [
+          "전환·이탈·사용성 개선이 필요한 제품 팀",
+          "리디자인·리뉴얼 전 진단이 필요한 팀",
+          "CS·리뷰 피드백을 실행 목록으로 정리하려는 팀",
+          "BUILD·DESIGN 우선순위 근거가 필요한 경우",
+        ]
+      : [
+          "Product teams improving conversion, churn, or usability",
+          "Teams needing diagnosis before redesign or renewal",
+          "Teams turning support and review feedback into a fix list",
+          "Teams needing evidence for BUILD or DESIGN priority",
+        ],
+    ctaFinalTitle: c.finalTitle,
+    ctaFinalLead: c.finalLead,
+    ctaFinalBtn: c.ctaPrimary,
+    ctaFinalSecondary: c.ctaFinalSecondary,
+    ctaFinalSecondaryHref: c.ctaFinalSecondaryHref || "../research/",
+    ctaSecondaryHref: "#workflow",
+    relatedTitle: isKo ? "관련 서비스" : "Related services",
+    exploreAll: isKo ? "모든 서비스 보기 →" : "Explore all services →",
+    prevLabel: isKo ? "이전 서비스" : "Previous service",
+    nextLabel: isKo ? "다음 서비스" : "Next service",
+  };
+}
+
+function normalizeTrendResearchCopy(c, lang) {
+  const isKo = lang === "ko";
+  return {
+    ...c,
+    seoTitle: isKo ? "TREND RESEARCH | Newon Business" : "TREND RESEARCH | Newon Business",
+    navLabel: "TREND",
+    eyebrow: "TREND RESEARCH",
+    crumbBusiness: "BUSINESS",
+    crumbServices: "SERVICES",
+    processTitle: c.processTitle,
+    processItems: (c.process || []).map((p) => ({
+      n: p.n,
+      title: p.t,
+      body: p.d,
+      examples: p.examples,
+    })),
+    deliverTitle: c.delTitle,
+    deliverLead: c.delLead,
+    deliverItems: c.deliverables,
+    whoTitle: isKo ? "이런 팀에 적합합니다" : "Who it's for",
+    whoItems: isKo
+      ? [
+          "로드맵·콘텐츠·전략 방향을 잡으려는 제품·마케팅 팀",
+          "트렌드 정보는 많지만 우선순위가 필요한 팀",
+          "신규 사업·분기 계획 전 맥락 정리가 필요한 팀",
+          "BUILD·MVP 우선순위 근거가 필요한 경우",
+        ]
+      : [
+          "Product and marketing teams setting roadmap or content direction",
+          "Teams with plenty of trend info but no priority",
+          "Teams needing context before planning or new business review",
+          "Teams needing evidence for BUILD or MVP priority",
+        ],
+    ctaFinalTitle: c.finalTitle,
+    ctaFinalLead: c.finalLead,
+    ctaFinalBtn: c.ctaPrimary,
+    ctaFinalSecondary: c.ctaFinalSecondary,
+    ctaFinalSecondaryHref: c.ctaFinalSecondaryHref || "../research/",
+    ctaSecondaryHref: "#workflow",
+    relatedTitle: isKo ? "관련 서비스" : "Related services",
+    exploreAll: isKo ? "모든 서비스 보기 →" : "Explore all services →",
+    prevLabel: isKo ? "이전 서비스" : "Previous service",
+    nextLabel: isKo ? "다음 서비스" : "Next service",
+  };
+}
+
+function normalizeCustomProductCopy(c, lang) {
+  const isKo = lang === "ko";
+  return {
+    ...c,
+    seoTitle: isKo ? "CUSTOM PRODUCT | Newon Business" : "CUSTOM PRODUCT | Newon Business",
+    navLabel: "CUSTOM",
+    eyebrow: "CUSTOM PRODUCT",
+    crumbBusiness: "BUSINESS",
+    crumbServices: "SERVICES",
+    processTitle: c.processTitle,
+    processItems: (c.process || []).map((p) => ({
+      n: p.n,
+      title: p.t,
+      body: p.d,
+      examples: p.examples,
+    })),
+    deliverTitle: c.delTitle,
+    deliverLead: c.delLead,
+    deliverItems: c.deliverables,
+    whoTitle: isKo ? "이런 팀에 적합합니다" : "Who it's for",
+    whoItems: isKo
+      ? [
+          "표준 패키지로 해결되지 않는 요구가 있는 팀",
+          "내부 운영·관리용 맞춤 시스템이 필요한 조직",
+          "연동·권한·워크플로가 복잡한 제품 구축이 필요한 팀",
+          "장기 운영·확장을 전제로 제품을 만들려는 경우",
+        ]
+      : [
+          "Teams whose needs do not fit standard packages",
+          "Organizations needing custom internal ops systems",
+          "Teams building products with complex integrations and permissions",
+          "Teams planning for long-term operation and expansion",
+        ],
+    ctaFinalTitle: c.finalTitle,
+    ctaFinalLead: c.finalLead,
+    ctaFinalBtn: c.ctaPrimary,
+    ctaFinalSecondary: c.ctaFinalSecondary,
+    ctaFinalSecondaryHref: c.ctaFinalSecondaryHref || "../solutions/",
+    ctaSecondaryHref: "#workflow",
+    relatedTitle: isKo ? "관련 서비스" : "Related services",
+    exploreAll: isKo ? "모든 서비스 보기 →" : "Explore all services →",
+    prevLabel: isKo ? "이전 서비스" : "Previous service",
+    nextLabel: isKo ? "다음 서비스" : "Next service",
+  };
+}
+
+function normalizeProductLaunchCopy(c, lang) {
+  const isKo = lang === "ko";
+  return {
+    ...c,
+    seoTitle: isKo ? "PRODUCT LAUNCH | Newon Business" : "PRODUCT LAUNCH | Newon Business",
+    navLabel: "LAUNCH",
+    eyebrow: "PRODUCT LAUNCH",
+    crumbBusiness: "BUSINESS",
+    crumbServices: "SERVICES",
+    processTitle: c.processTitle,
+    processItems: (c.process || []).map((p) => ({
+      n: p.n,
+      title: p.t,
+      body: p.d,
+      examples: p.examples,
+    })),
+    deliverTitle: c.delTitle,
+    deliverLead: c.delLead,
+    deliverItems: c.deliverables,
+    whoTitle: isKo ? "이런 팀에 적합합니다" : "Who it's for",
+    whoItems: isKo
+      ? [
+          "아이디어에서 출시까지 한 번에 진행하려는 팀",
+          "MVP·랜딩·런치 준비가 분산된 팀",
+          "첫 제품·신규 기능·리브랜드 출시를 준비하는 경우",
+          "데모·투자·마케팅 일정에 맞춰 출시해야 하는 팀",
+        ]
+      : [
+          "Teams that want idea-to-launch in one engagement",
+          "Teams with scattered MVP, landing, and launch prep",
+          "Teams preparing first product, feature, or rebrand release",
+          "Teams launching on demo, investor, or marketing deadlines",
+        ],
+    ctaFinalTitle: c.finalTitle,
+    ctaFinalLead: c.finalLead,
+    ctaFinalBtn: c.ctaPrimary,
+    ctaFinalSecondary: c.ctaFinalSecondary,
+    ctaFinalSecondaryHref: c.ctaFinalSecondaryHref || "../solutions/",
+    ctaSecondaryHref: "#workflow",
+    relatedTitle: isKo ? "관련 서비스" : "Related services",
+    exploreAll: isKo ? "모든 서비스 보기 →" : "Explore all services →",
+    prevLabel: isKo ? "이전 서비스" : "Previous service",
+    nextLabel: isKo ? "다음 서비스" : "Next service",
+  };
+}
+
+function normalizeInternalSystemCopy(c, lang) {
+  const isKo = lang === "ko";
+  return normalizeServiceDetailCopy(c, lang, {
+    navLabel: "INTERNAL",
+    pillarHref: "../solutions/",
+    whoItemsKo: [
+      "내부 운영·승인·요청이 엑셀·메신저에 흩어진 조직",
+      "부서별로 다른 툴로 운영되는 내부 프로세스가 있는 경우",
+      "권한·감사·이력 관리가 필요한 내부 시스템 구축",
+      "ERP·CRM·HR 등 기존 시스템과 연동이 필요한 경우",
+    ],
+    whoItemsEn: [
+      "Organizations with internal ops scattered across spreadsheets and chat",
+      "Teams running internal processes on different tools by department",
+      "Organizations needing role-based access, audit, and history",
+      "Teams requiring integration with ERP, CRM, HR, or legacy systems",
+    ],
+  });
+}
+
+function normalizeServiceDetailCopy(c, lang, { navLabel, pillarHref, whoItemsKo, whoItemsEn }) {
+  const isKo = lang === "ko";
+  return {
+    ...c,
+    navLabel: navLabel || c.navLabel,
+    processTitle: c.processTitle,
+    processItems: (c.process || []).map((p) => ({
+      n: p.n,
+      title: p.t,
+      body: p.d,
+      examples: p.examples,
+    })),
+    deliverTitle: c.delTitle,
+    deliverLead: c.delLead,
+    deliverItems: c.deliverables,
+    whoTitle: isKo ? "이런 팀에 적합합니다" : "Who it's for",
+    whoItems: isKo ? whoItemsKo || c.whoItems : whoItemsEn || c.whoItems,
+    ctaFinalTitle: c.finalTitle,
+    ctaFinalLead: c.finalLead,
+    ctaFinalBtn: c.ctaPrimary,
+    ctaFinalSecondary: c.ctaFinalSecondary,
+    ctaFinalSecondaryHref: c.ctaFinalSecondaryHref || pillarHref || "../",
+    ctaSecondaryHref: "#workflow",
+    relatedTitle: isKo ? "관련 서비스" : "Related services",
+    exploreAll: isKo ? "모든 서비스 보기 →" : "Explore all services →",
+    prevLabel: isKo ? "이전 서비스" : "Previous service",
+    nextLabel: isKo ? "다음 서비스" : "Next service",
+  };
+}
+
+function normalizeMvpCopy(c, lang) {
+  return normalizeServiceDetailCopy(c, lang, {
+    navLabel: "MVP",
+    pillarHref: "../build/",
+    whoItemsKo: [
+      "아이디어는 있지만 무엇부터 만들지 정하지 못한 팀",
+      "빠르게 시장·사용자 반응을 확인하고 싶은 스타트업·사내 신사업",
+      "과도한 기능 없이 핵심만 출시하고 싶은 경우",
+      "기획부터 배포까지 한 파트너와 진행하고 싶은 경우",
+    ],
+    whoItemsEn: [
+      "Teams with an idea but no clear first build scope",
+      "Startups or new ventures that need fast market validation",
+      "Teams that want to ship core value without feature creep",
+      "Teams that want one partner from planning through deploy",
+    ],
+  });
+}
+
+function normalizeWebCopy(c, lang) {
+  return normalizeServiceDetailCopy(c, lang, {
+    navLabel: "WEB",
+    pillarHref: "../build/",
+    whoItemsKo: [
+      "브랜드를 제대로 보여주는 공식 웹이 필요한 기업·스튜디오",
+      "모바일 경험이 부족한 기존 사이트를 개선하려는 경우",
+      "서비스·비즈니스 문의까지 한 사이트에서 받고 싶은 경우",
+      "템플릿이 아닌 브랜드에 맞는 웹이 필요한 팀",
+    ],
+    whoItemsEn: [
+      "Companies and studios that need a credible brand website",
+      "Teams improving weak mobile experience on an existing site",
+      "Teams that want inquiries and conversion on one site",
+      "Teams that need a custom site—not a generic template",
+    ],
+  });
+}
+
+function normalizeLandingDetailCopy(c, lang) {
+  return normalizeServiceDetailCopy(c, lang, {
+    navLabel: "LANDING",
+    pillarHref: "../build/",
+    whoItemsKo: [
+      "제품·서비스를 곧 출시하는 팀",
+      "사전등록·대기열 페이지가 필요한 경우",
+      "캠페인·프로모션용 랜딩이 필요한 경우",
+      "기존 랜딩의 전환을 개선하고 싶은 경우",
+    ],
+    whoItemsEn: [
+      "Teams launching a product or service soon",
+      "Teams needing pre-registration or waitlist pages",
+      "Teams running campaign or promo landings",
+      "Teams improving conversion on an existing landing",
+    ],
+  });
+}
+
+function normalizeAppCopy(c, lang) {
+  return normalizeServiceDetailCopy(c, lang, {
+    navLabel: "APP",
+    pillarHref: "../build/",
+    whoItemsKo: [
+      "투자·내부 공유 전에 앱 흐름을 검증하려는 팀",
+      "개발 착수 전 화면·인터랙션을 확인하고 싶은 경우",
+      "iOS·Android 핵심 플로우 프로토타입이 필요한 경우",
+      "MVP 앱 또는 스토어 출시 준비가 필요한 팀",
+    ],
+    whoItemsEn: [
+      "Teams validating app flows before investor or internal review",
+      "Teams confirming screens and interaction before full build",
+      "Teams needing iOS/Android core-flow prototypes",
+      "Teams preparing MVP apps or store release",
+    ],
+  });
+}
+
+function normalizeAiAutomationCopy(c, lang) {
+  return normalizeServiceDetailCopy(c, lang, {
+    navLabel: "AI",
+    pillarHref: "../automation/",
+    whoItemsKo: [
+      "같은 문의·분류·초안 작업을 반복하는 팀",
+      "AI를 쓰고 싶지만 어디에 붙일지 모르는 경우",
+      "도구만 늘고 워크플로가 바뀌지 않은 조직",
+      "Human-in-the-loop 자동화가 필요한 경우",
+    ],
+    whoItemsEn: [
+      "Teams repeating inquiry, classification, and drafting work",
+      "Teams that want AI but don't know where to apply it",
+      "Organizations with more tools but unchanged workflows",
+      "Teams needing human-in-the-loop automation",
+    ],
+  });
+}
+
+function normalizeWhiteLabelCopy(c, lang) {
+  return normalizeServiceDetailCopy(c, lang, {
+    navLabel: "WHITE-LABEL",
+    pillarHref: "../solutions/",
+    whoItemsKo: [
+      "검증된 제품 기반으로 빠르게 브랜드 제품을 출시하려는 팀",
+      "처음부터 전부 새로 만들기엔 시간·비용이 부담되는 경우",
+      "브랜드·모듈·도메인을 맞춤 구성해야 하는 경우",
+      "운영·관리자 기능까지 포함한 제품이 필요한 경우",
+    ],
+    whoItemsEn: [
+      "Teams launching branded products on a proven foundation",
+      "Teams where full custom build is too slow or costly",
+      "Teams needing custom brand, modules, and domain setup",
+      "Teams that need admin and ops capabilities included",
+    ],
+  });
+}
+
 export function getServiceCopy(slug, lang) {
-  // lang is "ko" | "en" | other — fall back to en for non-ko
-  const pack = lang === "ko" ? COPY.ko : COPY.en;
-  return pack[slug] || COPY.en[slug];
+  const l = lang === "ko" ? "ko" : "en";
+  let copy;
+  if (slug === "landing") {
+    copy = normalizeLandingDetailCopy(getLandingCopy(l), lang);
+  } else if (slug === "mvp") {
+    copy = normalizeMvpCopy(getMvpCopy(l), lang);
+  } else if (slug === "web") {
+    copy = normalizeWebCopy(getWebCopy(l), lang);
+  } else if (slug === "app") {
+    copy = normalizeAppCopy(getAppCopy(l), lang);
+  } else if (slug === "ai-automation") {
+    copy = normalizeAiAutomationCopy(getAiAutomationCopy(l), lang);
+  } else if (slug === "white-label") {
+    copy = normalizeWhiteLabelCopy(getWhiteLabelCopy(l), lang);
+  } else if (slug === "data-reporting") {
+    copy = normalizeDataReportingCopy(getDataReportingCopy(l), lang);
+  } else if (slug === "internal-tools") {
+    copy = normalizeInternalToolsCopy(getInternalToolsCopy(l), lang);
+  } else if (slug === "workflow-automation") {
+    copy = normalizeWorkflowAutomationCopy(getWorkflowAutomationCopy(l), lang);
+  } else if (slug === "market-research") {
+    copy = normalizeMarketResearchCopy(getMarketResearchCopy(l), lang);
+  } else if (slug === "competitor-analysis") {
+    copy = normalizeCompetitorAnalysisCopy(getCompetitorAnalysisCopy(l), lang);
+  } else if (slug === "consumer-research") {
+    copy = normalizeConsumerResearchCopy(getConsumerResearchCopy(l), lang);
+  } else if (slug === "ux-audit") {
+    copy = normalizeUxAuditCopy(getUxAuditCopy(l), lang);
+  } else if (slug === "trend-research") {
+    copy = normalizeTrendResearchCopy(getTrendResearchCopy(l), lang);
+  } else if (slug === "custom-product") {
+    copy = normalizeCustomProductCopy(getCustomProductCopy(l), lang);
+  } else if (slug === "product-launch") {
+    copy = normalizeProductLaunchCopy(getProductLaunchCopy(l), lang);
+  } else if (slug === "internal-system") {
+    copy = normalizeInternalSystemCopy(getInternalSystemCopy(l), lang);
+  } else {
+    const pack = lang === "ko" ? COPY.ko : COPY.en;
+    copy = pack[slug] || COPY.en[slug];
+  }
+  return normalizeEngagementCopy(copy, lang, slug);
 }
 
 export { COPY };

@@ -9,6 +9,12 @@ export const RESOURCE_PAGES = [
     path: "resources/store/",
   },
   {
+    slug: "insights",
+    navLabelKey: "nav.insights",
+    visual: "insights",
+    path: "resources/insights/",
+  },
+  {
     slug: "blog",
     navLabelKey: "nav.blog",
     visual: "publication",

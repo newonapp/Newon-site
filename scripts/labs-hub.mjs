@@ -2,6 +2,7 @@
  * Newon Labs hub — editorial R&D archive body HTML.
  */
 import { escapeHtml } from "./hub-utils.mjs";
+import { ventureStatusFor } from "./lab-experiments.mjs";
 
 function t(obj, lang, koKey, enKey) {
   if (!obj) return "";
@@ -59,6 +60,13 @@ export function labVisual(slug) {
       <pre>&gt; CHOICE RECORDED
 &gt; MEMORY UPDATED
 &gt; CONSEQUENCE PENDING_</pre>
+    </div>`;
+  }
+  if (slug === "character-lab") {
+    return `<div class="lx-viz lx-viz--term" aria-hidden="true">
+      <pre>&gt; CHARACTER LAB
+&gt; STATUS: BUILDING
+&gt; PUBLIC ASSETS: NONE_</pre>
     </div>`;
   }
   return "";
@@ -148,6 +156,18 @@ export function buildLabsHubBody(copies, lang, ctx) {
     .map((s, i, arr) => `<li><span>${escapeHtml(s)}</span>${i < arr.length - 1 ? '<i aria-hidden="true">→</i>' : ""}</li>`)
     .join("");
 
+  const ventureRows = experiments
+    .map((e) => {
+      const vs = ventureStatusFor(e);
+      const title = escapeHtml(t(e, lang, "titleKo", "titleEn"));
+      return `<a class="lx-venture" href="${escapeHtml(e.slug)}/" data-analytics="experiment_view" data-item-id="${escapeHtml(e.slug)}" data-category="${escapeHtml(vs)}">
+        <span class="lx-venture__status">${escapeHtml(vs)}</span>
+        <span class="lx-venture__title">${title}</span>
+        <span class="lx-venture__go" aria-hidden="true">↗</span>
+      </a>`;
+    })
+    .join("");
+
   return `${ctx.breadcrumb(copy, copy.navLabel || "LABS")}
 ${ctx.heroBlock(copy, "")}
 ${ctx.resourceSwitcher("labs", copies)}
@@ -168,6 +188,26 @@ ${ctx.resourceSwitcher("labs", copies)}
     <div class="lx-stack" data-rs-lab-grid>
       ${stack}
     </div>
+  </div>
+</section>
+
+<section class="rs-section lx-ventures" data-rs-reveal aria-labelledby="lx-ventures-title">
+  <div class="rs-inner">
+    <p class="lx-k">${escapeHtml(copy.venturesEyebrow || "VENTURES")}</p>
+    <h2 class="lx-life__title" id="lx-ventures-title">${br(copy.venturesTitle || (lang === "ko" ? "실험 상태 · IDEA → ARCHIVED" : "Experiment status · IDEA → ARCHIVED"))}</h2>
+    ${copy.venturesLead ? `<p class="lx-life__lead">${escapeHtml(copy.venturesLead)}</p>` : `<p class="lx-life__lead">${escapeHtml(lang === "ko" ? "실제 Lab 실험만 표시합니다. 가짜 벤처는 올리지 않습니다." : "Only real Lab experiments. No fake ventures.")}</p>`}
+    <div class="lx-venture-list">${ventureRows}</div>
+  </div>
+</section>
+
+<section class="rs-section lx-select" data-rs-reveal aria-labelledby="lx-select-title">
+  <div class="rs-inner">
+    <p class="lx-k">${escapeHtml(copy.selectEyebrow || "NEWON SELECT")}</p>
+    <h2 class="lx-life__title" id="lx-select-title">${br(copy.selectTitle || (lang === "ko" ? "일과 생활에 실제로 도움이 되는 제품과 도구를 고릅니다." : "Picks that actually help work and life."))}</h2>
+    <p class="lx-life__lead">${escapeHtml(copy.selectLead || (lang === "ko" ? "Commerce 실험 섹션입니다. 제휴 링크가 포함될 수 있습니다. 아직 공개 추천 상품은 Building 상태입니다." : "A commerce experiment. Affiliate links may appear. No public picks yet — Building."))}</p>
+    <p class="lx-select__cats" aria-label="Categories">Work · Productivity · Tech · Lifestyle · Creator</p>
+    <p class="lx-select__empty studio-status studio-status--building">${escapeHtml(copy.selectEmpty || "Building")}</p>
+    <p class="lx-select__disc">${escapeHtml(copy.selectDisclaimer || (lang === "ko" ? "이 페이지에는 제휴 링크가 포함될 수 있습니다." : "This page may include affiliate links."))}</p>
   </div>
 </section>
 

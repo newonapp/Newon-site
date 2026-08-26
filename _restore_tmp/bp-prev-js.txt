@@ -1,0 +1,90 @@
+(() => {
+  const root = document.querySelector(".bp-page");
+  if (!root) return;
+
+  const chapters = [...root.querySelectorAll("[data-bp-chapter]")];
+  const indexLinks = [...root.querySelectorAll(".bp-index__btn[href^='#svc-']")];
+
+  const setActive = (index) => {
+    indexLinks.forEach((link, i) => {
+      link.classList.toggle("is-active", i === index);
+    });
+  };
+
+  const scrollToChapter = (index) => {
+    const el = chapters[index] || document.getElementById(`svc-${index}`);
+    if (!el) return;
+    const y = el.getBoundingClientRect().top + window.scrollY - 72;
+    window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+    setActive(index);
+  };
+
+  indexLinks.forEach((link, i) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      scrollToChapter(i);
+      try {
+        history.replaceState(null, "", `#svc-${i}`);
+      } catch (_) {
+        /* ignore */
+      }
+    });
+  });
+
+  if (chapters.length && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        const idx = chapters.indexOf(visible.target);
+        if (idx >= 0) setActive(idx);
+      },
+      { rootMargin: "-30% 0px -45% 0px", threshold: [0.15, 0.4, 0.6] }
+    );
+    chapters.forEach((c) => io.observe(c));
+  }
+
+  const fromHash = () => {
+    const m = location.hash.match(/^#svc-(\d+)$/);
+    if (!m) return;
+    scrollToChapter(Number(m[1]));
+  };
+  if (location.hash.startsWith("#svc-")) {
+    requestAnimationFrame(fromHash);
+  }
+  window.addEventListener("hashchange", fromHash);
+
+  /* Subtle flow highlight (automation hero) */
+  const flow = root.querySelector("[data-bp-flow]");
+  if (flow && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const steps = [...flow.querySelectorAll(".bp-flow__step")];
+    let i = 0;
+    const tick = () => {
+      steps.forEach((s, idx) => s.classList.toggle("is-on", idx === i));
+      i = (i + 1) % steps.length;
+    };
+    tick();
+    setInterval(tick, 1100);
+  }
+
+  /* Reveal on scroll */
+  const reveals = root.querySelectorAll("[data-bp-reveal]");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-in");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add("is-in"));
+  }
+})();

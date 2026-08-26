@@ -1,0 +1,138 @@
+function heroVisual(copy) {
+  /* heroIndex removed — duplicated the services switcher */
+  if (copy.heroFlow) {
+    return `<aside class="bp-hero__visual bp-hero__visual--flow" aria-hidden="true">
+      <div class="bp-flow" data-bp-flow>
+        ${copy.heroFlow
+          .map(
+            (step, i) =>
+              `<span class="bp-flow__step">${escapeHtml(step)}</span>${
+                i < copy.heroFlow.length - 1 ? `<span class="bp-flow__arrow">↓</span>` : ""
+              }`
+          )
+          .join("")}
+      </div>
+    </aside>`;
+  }
+  if (copy.heroStack) {
+    const last = copy.heroStack[copy.heroStack.length - 1];
+    const rest = copy.heroStack.slice(0, -1);
+    return `<aside class="bp-hero__visual bp-hero__visual--stack" aria-hidden="true">
+      <div class="bp-stack">
+        ${rest.map((s) => `<span class="bp-stack__item">${escapeHtml(s)}</span>`).join("")}
+        <span class="bp-stack__arrow">↓</span>
+        <span class="bp-stack__result">${escapeHtml(last)}</span>
+      </div>
+    </aside>`;
+  }
+  const mark = (copy.eyebrow || "NEWON").replace(/^NEWON\s+/i, "") || "NEWON";
+  return `<aside class="bp-hero__visual bp-hero__visual--mark" aria-hidden="true">
+    <p class="bp-mark">${escapeHtml(mark)}</p>
+  </aside>`;
+}
+
+function priceForIndex(copy, index) {
+  const list = copy.pricing || [];
+  const bySvc = list.find((p) => p.svc === index);
+  if (bySvc) return bySvc.price;
+  return "";
+}
+
+function shortTitle(title) {
+  const t = String(title || "");
+  if (t.includes("LANDING")) return "LANDING";
+  if (t.includes("MVP")) return "MVP";
+  if (t.includes("WEBSITE")) return "WEBSITE";
+  if (t.includes("APP")) return "APP";
+  if (t.includes("WORKFLOW")) return "WORKFLOW";
+  if (t.includes("INTERNAL")) return "TOOLS";
+  if (t.includes("DATA")) return "DATA";
+  if (t.includes("AI")) return "AI";
+  if (t.includes("UX")) return "UX AUDIT";
+  if (t.includes("COMPETITOR")) return "COMPETITOR";
+  if (t.includes("MARKET")) return "MARKET";
+  if (t.includes("CUSTOM")) return "CUSTOM";
+  return t.split(/\s+/)[0] || t;
+}
+
+function servicesSection(copy) {
+  const services = copy.services || [];
+  if (!services.length) return "";
+
+  const tabs = services
+    .map((s, i) => {
+      const n = pad2(i + 1);
+      const selected = i === 0 ? "true" : "false";
+      return `<button type="button" class="bp-explore__tab${i === 0 ? " is-active" : ""}" role="tab" id="bp-tab-${i}" aria-selected="${selected}" aria-controls="bp-panel-${i}" data-bp-tab="${i}">
+      <span class="bp-explore__tab-n">${n}</span>
+      <span class="bp-explore__tab-t">${escapeHtml(shortTitle(s.title))}</span>
+    </button>`;
+    })
+    .join("");
+
+  const panels = services
+    .map((s, i) => {
+      const price = priceForIndex(copy, i);
+      const hidden = i === 0 ? "" : " hidden";
+      return `<article class="bp-explore__panel${i === 0 ? " is-active" : ""}" role="tabpanel" id="bp-panel-${i}" aria-labelledby="bp-tab-${i}" data-bp-panel="${i}"${hidden}>
+      <p class="bp-explore__kicker">${pad2(i + 1)} · ${escapeHtml(shortTitle(s.title))}</p>
+      <h2 class="bp-explore__title">${escapeHtml(s.title)}</h2>
+      <p class="bp-explore__summary">${escapeHtml(s.summary)}</p>
+      <dl class="bp-explore__detail">
+        <div><dt>${escapeHtml(copy.whatWeBuild)}</dt><dd>${escapeHtml(s.what)}</dd></div>
+        <div><dt>${escapeHtml(copy.recommendedFor)}</dt><dd>${escapeHtml(s.for)}</dd></div>
+        <div><dt>${escapeHtml(copy.included)}</dt><dd>${escapeHtml(s.included)}</dd></div>
+        <div><dt>${escapeHtml(copy.deliverables)}</dt><dd>${escapeHtml(s.deliverables)}</dd></div>
+        <div><dt>${escapeHtml(copy.timeline)}</dt><dd>${escapeHtml(s.timeline)}</dd></div>
+      </dl>
+      <footer class="bp-explore__foot">
+        ${
+          price
+            ? `<div class="bp-explore__price"><span>${escapeHtml(copy.startingAt || "")}</span><strong>${escapeHtml(price)}</strong></div>`
+            : `<div class="bp-explore__price bp-explore__price--empty"></div>`
+        }
+        <a class="bp-btn bp-btn--primary" href="../#inquiry" data-analytics="business_pillar_cta">${escapeHtml(copy.quoteCta || "")}</a>
+      </footer>
+    </article>`;
+    })
+    .join("");
+
+  const note = copy.pricingNote || copy.pricingNoteDefault || "";
+
+  return `<section id="services" class="bp-sec bp-explore-sec" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.servicesLabel || "SERVICES")}</p>
+    </header>
+    <div class="bp-explore" data-bp-explore>
+      <div class="bp-explore__tabs" role="tablist" aria-label="${escapeHtml(copy.servicesLabel || "Services")}">${tabs}</div>
+      <div class="bp-explore__stage">${panels}</div>
+    </div>
+    ${note ? `<p class="bp-explore__note">${escapeHtml(note)}</p>` : ""}
+  </div>
+</section>`;
+}
+
+function processSection(copy) {
+  if (!copy.process || !copy.process.length) return "";
+  const steps = copy.process
+    .map(
+      (p, i) => `<li class="bp-proc__row">
+      <span class="bp-proc__n">${escapeHtml(p.n || pad2(i + 1))}</span>
+      <span class="bp-proc__body">
+        <span class="bp-proc__t">${escapeHtml(p.t)}</span>
+        <span class="bp-proc__d">${escapeHtml(p.d)}</span>
+      </span>
+    </li>`
+    )
+    .join("");
+
+  return `<section id="process" class="bp-sec bp-process" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.processLabel || "PROCESS")}</p>
+    </header>
+    <ol class="bp-proc">${steps}</ol>
+  </div>
+</section>`;
+}

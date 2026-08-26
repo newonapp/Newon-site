@@ -4890,3 +4890,12 @@ html[data-newon-shell-theme="light"] .home-more .about-hub-ideas {
     font-size: 0.92rem;
   }
 }
+
+.hero--ecosystem .hero-eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted, rgba(10, 10, 10, 0.55));
+}

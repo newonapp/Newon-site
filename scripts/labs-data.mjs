@@ -45,4 +45,12 @@ export const LABS_EXPERIMENTS = [
     descKey: "studio.lab5Desc",
     type: "games",
   },
+  {
+    id: "character-lab",
+    slug: "character-lab",
+    status: "building",
+    nameKey: "studio.lab6Name",
+    descKey: "studio.lab6Desc",
+    type: "character",
+  },
 ];

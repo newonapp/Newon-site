@@ -8,6 +8,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { APP_CATALOG, featuredApps, loadPortfolioApps, moreApps } from "./portfolio-data.mjs";
 import { LANG_OPTIONS, SITE_LANGS, portfolioCopy, visibleCopyStats } from "./portfolio-i18n.mjs";
+import { flatten, loadJson, fillMissing } from "./hub-utils.mjs";
+import { renderGlobalHeader, renderStudioFooter, renderCompanySwitcher } from "./site-chrome.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "portfolio");
@@ -83,79 +85,40 @@ function head({ langMeta, copy, title, description, canonical, suffix }) {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="${FONTS}" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260825premium" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20260826gnav5" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
     <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260822founder" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
     <script src="/theme-shell.js"></script>
   </head>`;
 }
 
-function chromeNav(lang, copy, activeHash) {
-  const prefix = pfPrefix(lang);
-  const items = [
-    { href: `/${lang}/`, label: copy.navHome },
-    { href: `${prefix}/#about`, label: copy.navAbout, hash: "about" },
-    { href: `${prefix}/#projects`, label: copy.navProjects, hash: "projects" },
-    { href: `${prefix}/#newon`, label: copy.navNewon, hash: "newon" },
-    { href: `${prefix}/#contact`, label: copy.navContact, hash: "contact" },
-  ];
-  const links = items
-    .map((it) => `<a href="${it.href}">${esc(it.label)}</a>`)
-    .join("\n            ");
-  return `
-    <a class="skip-link" href="#pf-main">${esc(copy.skip)}</a>
-    <header class="site-header pf-header">
-      <div class="container pf-header__inner">
-        <a class="pf-brand" href="${prefix}/">
-          <img src="/logo.png" alt="Newon" width="36" height="36" />
-          <span>Nawon Kyung</span>
-        </a>
-        <nav class="pf-nav" aria-label="${esc(copy.navAria)}">
-            ${links}
-        </nav>
-        <div class="pf-header__actions">
-          ${langSelect(lang, copy)}
-          <button
-            type="button"
-            class="navbar-theme-toggle"
-            data-theme-toggle
-            data-label-light="${esc(copy.themeToLight)}"
-            data-label-dark="${esc(copy.themeToDark)}"
-            title="${esc(copy.themeToggle)}"
-            aria-label="${esc(copy.themeToDark)}"
-          >🌙</button>
-          <button
-            class="nav-toggle nav-toggle--toolbar"
-            type="button"
-            data-pf-nav-toggle
-            aria-expanded="false"
-            aria-controls="pf-mobile-nav"
-            aria-label="${esc(copy.menuOpen)}"
-          >
-            <span></span><span></span>
-          </button>
-        </div>
-      </div>
-      <nav id="pf-mobile-nav" class="pf-mobile-nav" hidden>
-        ${links}
-      </nav>
-    </header>`;
+function localeFlats(lang) {
+  const en = loadJson("en.json");
+  const data = fillMissing(loadJson(`${lang}.json`), en);
+  return { flat: flatten(data), flatEn: flatten(en) };
 }
 
-function foot(hub) {
-  const inner = hub
-    ? `<div class="pf-wrap pf-foot__inner">
-      <p>© Newon</p>
-      <p>Nawon Kyung · CEO &amp; App Developer</p>
-      <a href="https://www.newon.app">newon.app</a>
-    </div>`
-    : `<p>© Newon</p>`;
+function chromeNav(lang, { base = "../", idSuffix = "portfolio" } = {}) {
+  const { flat, flatEn } = localeFlats(lang);
+  const header = renderGlobalHeader(flat, flatEn, { activeNav: "company", base, idSuffix });
+  const switcher = renderCompanySwitcher(flat, flatEn, { active: "portfolio", base });
   return `
-    <footer class="pf-foot${hub ? " pf-foot--hub" : ""}">
-      ${inner}
-    </footer>
+    <a class="skip-link" href="#pf-main">${esc(portfolioCopy(lang).skip)}</a>
+    ${header}
+    ${switcher}`;
+}
+
+function foot(lang, { base = "../", hub = false } = {}) {
+  const { flat, flatEn } = localeFlats(lang);
+  const siteFoot = renderStudioFooter(flat, flatEn, { base });
+  return `
+    ${siteFoot}
     <script src="/lang-dropdown.js"></script>
     <script src="/portfolio/portfolio.js"></script>
+    <script src="/analytics.js?v=20260825studio" defer></script>
+    <script src="/search.js?v=20260825studio" defer></script>
+    <script src="/site-chrome.js?v=20260826gnav5" defer></script>
   </body>
 </html>
 `;
@@ -324,7 +287,7 @@ function indexPage(langMeta, copy, apps) {
   })}
   <body class="pf-page">
     <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
-    ${chromeNav(lang, copy, "")}
+    ${chromeNav(lang, { base: "../", idSuffix: "pf-hub" })}
     <main id="pf-main">
       <section class="pf-hero">
         <div class="pf-hero__grid">
@@ -548,7 +511,7 @@ function indexPage(langMeta, copy, apps) {
         </div>
       </section>
     </main>
-${foot(true)}`;
+${foot(lang, { base: "../", hub: true })}`;
 }
 
 function projectPage(langMeta, copy, app, apps) {
@@ -609,7 +572,7 @@ function projectPage(langMeta, copy, app, apps) {
     suffix: `${app.slug}/`,
   })}
   <body class="pf-page">
-    ${chromeNav(lang, copy, "projects")}
+    ${chromeNav(lang, { base: "../../", idSuffix: `pf-${app.slug}` })}
     <main id="pf-main">
       <section class="pf-project-hero">
         <div class="pf-wrap pf-wrap--narrow">
@@ -651,7 +614,7 @@ function projectPage(langMeta, copy, app, apps) {
       }
       ${more}
     </main>
-${foot()}`;
+${foot(lang, { base: "../../", hub: false })}`;
 }
 
 function redirectPage(slug = "") {

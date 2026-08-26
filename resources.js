@@ -69,7 +69,15 @@
       var visible = 0;
       grid.querySelectorAll("[data-category]").forEach(function (item) {
         var itemCat = String(item.getAttribute("data-category") || "").toLowerCase();
-        var match = key === "all" || itemCat === key;
+        var collection = String(item.getAttribute("data-collection") || "").toLowerCase();
+        var tokens = itemCat.split(/[\s,]+/).filter(Boolean);
+        if (collection) tokens.push(collection);
+        var match =
+          key === "all" ||
+          tokens.indexOf(key) !== -1 ||
+          itemCat === key ||
+          (key === "publishing" && collection === "publishing") ||
+          (key === "free" && tokens.indexOf("free") !== -1);
         item.hidden = !match;
         item.classList.toggle("is-filtered-out", !match);
         if (match) {
@@ -86,8 +94,13 @@
       if (pushUrl && window.history && window.history.replaceState) {
         try {
           var url = new URL(window.location.href);
-          if (key === "all") url.searchParams.delete("filter");
-          else url.searchParams.set("filter", key);
+          if (key === "all") {
+            url.searchParams.delete("filter");
+            url.searchParams.delete("cat");
+          } else {
+            url.searchParams.set("filter", key);
+            url.searchParams.set("cat", key);
+          }
           window.history.replaceState({}, "", url.pathname + url.search + url.hash);
         } catch (e) {}
       }
@@ -101,7 +114,8 @@
 
     var initial = "all";
     try {
-      initial = new URL(window.location.href).searchParams.get("filter") || "all";
+      var params = new URL(window.location.href).searchParams;
+      initial = params.get("cat") || params.get("filter") || "all";
     } catch (e) {}
     var valid = false;
     bar.querySelectorAll("[data-rs-filter]").forEach(function (b) {

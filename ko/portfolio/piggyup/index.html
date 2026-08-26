@@ -33,7 +33,8 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260825premium" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20260826gnav5" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
     <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260822founder" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
     <script src="/theme-shell.js"></script>
@@ -41,63 +42,299 @@
   <body class="pf-page">
     
     <a class="skip-link" href="#pf-main">본문으로 건너뛰기</a>
-    <header class="site-header pf-header">
-      <div class="container pf-header__inner">
-        <a class="pf-brand" href="/ko/portfolio/">
-          <img src="/logo.png" alt="Newon" width="36" height="36" />
-          <span>Nawon Kyung</span>
-        </a>
-        <nav class="pf-nav" aria-label="포트폴리오">
-            <a href="/ko/">홈</a>
-            <a href="/ko/portfolio/#about">소개</a>
-            <a href="/ko/portfolio/#projects">프로젝트</a>
-            <a href="/ko/portfolio/#newon">Newon</a>
-            <a href="/ko/portfolio/#contact">연락처</a>
-        </nav>
-        <div class="pf-header__actions">
-          <div class="lang-switcher" data-lang-switcher>
-            <label class="visually-hidden" for="lang-select-pf">언어</label>
-            <select id="lang-select-pf" class="lang-select lang-select--toolbar" data-lang-select aria-label="언어">
-              <option value="ko" selected>한국어</option>
-              <option value="en">English</option>
-              <option value="ja">日本語</option>
-              <option value="es">Español</option>
-              <option value="pt-br">Português (Brasil)</option>
-              <option value="fr">Français</option>
-              <option value="de">Deutsch</option>
-              <option value="hi">हिन्दी</option>
-              <option value="id">Bahasa Indonesia</option>
-            </select>
+    <header class="gnav site-header gnav--five" data-gnav>
+      <div class="gnav__bar">
+        <div class="gnav__inner">
+          <a class="gnav__brand" href="../../">
+            <img class="gnav__logo" src="/logo.png" alt="Newon" width="40" height="40" decoding="async" />
+            <span class="gnav__wordmark">Newon</span>
+          </a>
+          <nav class="gnav__nav" aria-label="주요 메뉴">
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="products">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Products<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="gnav-mega" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">PRODUCTS</p>
+      <p class="gnav-mega__lead">Newon이 직접 만들고 운영하는 제품</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
+      <a class="gnav-mega__row" href="../../apps/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Apps</span>
+        <span class="gnav-mega__row-desc">Newon이 직접 운영하는 앱</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../ai/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">AI</span>
+        <span class="gnav-mega__row-desc">AI 기반 제품</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../games/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Games</span>
+        <span class="gnav-mega__row-desc">게임과 인터랙티브</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../tools/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Tools</span>
+        <span class="gnav-mega__row-desc">바로 쓰는 웹 도구</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../products/">View all products →</a></p></div>
+      </div>
+    </div>
+  </div>
+          <div class="gnav-dd" data-gnav-dd data-gnav-menu="business">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Business<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="gnav-mega" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">BUSINESS</p>
+      <p class="gnav-mega__lead">기업과 창업자를 위해 구축하고 해결</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
+      <a class="gnav-mega__row" href="../../business/build/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">BUILD</span>
+        <span class="gnav-mega__row-desc">아이디어를 실제 제품으로</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../business/automation/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">AUTOMATION</span>
+        <span class="gnav-mega__row-desc">업무를 시스템으로</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../business/research/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">RESEARCH</span>
+        <span class="gnav-mega__row-desc">근거를 찾는 리서치</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../business/solutions/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">SOLUTIONS</span>
+        <span class="gnav-mega__row-desc">기술을 기업에 맞게</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../business/">Business 알아보기 →</a></p></div>
+      </div>
+    </div>
+  </div>
+          <div class="gnav-dd" data-gnav-dd data-gnav-menu="studio">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Studio<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="gnav-mega" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">STUDIO</p>
+      <p class="gnav-mega__lead">브랜드 · 디지털 · 콘텐츠 · IP</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
+      <a class="gnav-mega__row" href="../../studio/#brand" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">BRAND</span>
+        <span class="gnav-mega__row-desc">브랜드의 방향과 정체성</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../studio/#digital" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">DIGITAL</span>
+        <span class="gnav-mega__row-desc">웹과 제품 경험</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../studio/#content" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">CONTENT</span>
+        <span class="gnav-mega__row-desc">브랜드 콘텐츠와 비주얼</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../studio/#ip" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">IP</span>
+        <span class="gnav-mega__row-desc">캐릭터와 새로운 IP 실험</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../studio/">Explore Studio →</a></p></div>
+      </div>
+    </div>
+  </div>
+          <div class="gnav-dd" data-gnav-dd data-gnav-menu="resources">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="gnav-mega" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">RESOURCES</p>
+      <p class="gnav-mega__lead">지식 · 자료 · 상품 · 실험</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
+      <a class="gnav-mega__row" href="../../resources/store/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Store</span>
+        <span class="gnav-mega__row-desc">템플릿 · 가이드 · 디지털 상품</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../resources/insights/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Insights</span>
+        <span class="gnav-mega__row-desc">제품 · 소비자 · 시장 관찰</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../resources/blog/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Blog</span>
+        <span class="gnav-mega__row-desc">빌드 로그와 스토리</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../resources/labs/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Labs</span>
+        <span class="gnav-mega__row-desc">실험 · Ventures · 새 아이디어</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../resources/">Explore Resources →</a></p></div>
+      </div>
+    </div>
+  </div>
+          <div class="gnav-dd gnav-dd--active" data-gnav-dd data-gnav-menu="company">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-current="page">
+      Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="gnav-mega" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">COMPANY</p>
+      <p class="gnav-mega__lead">Newon 자체에 대해</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
+      <a class="gnav-mega__row" href="../../about/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">About Newon</span>
+        <span class="gnav-mega__row-desc">Newon 소개</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../portfolio/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Portfolio</span>
+        <span class="gnav-mega__row-desc">제품과 프로젝트</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../news/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">News</span>
+        <span class="gnav-mega__row-desc">공식 업데이트</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../contact/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Contact</span>
+        <span class="gnav-mega__row-desc">문의</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../about/">About Newon →</a></p></div>
+      </div>
+    </div>
+  </div>
+          </nav>
+          <div class="gnav__util">
+            <a class="gnav__cta" href="../../business/#inquiry">문의하기</a>
+            <div class="gnav__lang" data-lang-switcher>
+    <label class="visually-hidden" for="lang-select-gnav-pf-piggyup">언어</label>
+    <select id="lang-select-gnav-pf-piggyup" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="언어">
+      <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">English</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Deutsch</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonesia</option>
+    </select>
+  </div>
+            <button type="button" class="gnav__theme" data-theme-toggle data-label-light="라이트 모드로 전환" data-label-dark="다크 모드로 전환" title="테마 전환" aria-label="다크 모드로 전환"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-pf-piggyup" aria-label="메뉴">
+              <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
+            </button>
           </div>
-          <button
-            type="button"
-            class="navbar-theme-toggle"
-            data-theme-toggle
-            data-label-light="라이트 모드로 전환"
-            data-label-dark="다크 모드로 전환"
-            title="테마 전환"
-            aria-label="다크 모드로 전환"
-          >🌙</button>
-          <button
-            class="nav-toggle nav-toggle--toolbar"
-            type="button"
-            data-pf-nav-toggle
-            aria-expanded="false"
-            aria-controls="pf-mobile-nav"
-            aria-label="메뉴 열기"
-          >
-            <span></span><span></span>
-          </button>
         </div>
       </div>
-      <nav id="pf-mobile-nav" class="pf-mobile-nav" hidden>
-        <a href="/ko/">홈</a>
-            <a href="/ko/portfolio/#about">소개</a>
-            <a href="/ko/portfolio/#projects">프로젝트</a>
-            <a href="/ko/portfolio/#newon">Newon</a>
-            <a href="/ko/portfolio/#contact">연락처</a>
-      </nav>
+      <div id="gnav-mobile-pf-piggyup" class="gnav-mobile" hidden aria-hidden="true">
+      <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="메뉴">
+        <div class="gnav-mobile__scroll">
+          <div class="gnav-mobile__acc" data-gnav-acc>
+        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Products<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../apps/">Apps</a><a class="gnav-mobile__sublink" href="../../ai/">AI</a><a class="gnav-mobile__sublink" href="../../games/">Games</a><a class="gnav-mobile__sublink" href="../../tools/">Tools</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Business<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../business/build/">BUILD</a><a class="gnav-mobile__sublink" href="../../business/automation/">AUTOMATION</a><a class="gnav-mobile__sublink" href="../../business/research/">RESEARCH</a><a class="gnav-mobile__sublink" href="../../business/solutions/">SOLUTIONS</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Studio<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../studio/#brand">BRAND</a><a class="gnav-mobile__sublink" href="../../studio/#digital">DIGITAL</a><a class="gnav-mobile__sublink" href="../../studio/#content">CONTENT</a><a class="gnav-mobile__sublink" href="../../studio/#ip">IP</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../../resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="../../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../../resources/labs/">Labs</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../about/">About Newon</a><a class="gnav-mobile__sublink" href="../../portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="../../news/">News</a><a class="gnav-mobile__sublink" href="../../contact/">Contact</a></div>
+      </div>
+          <div class="gnav-mobile__divider" aria-hidden="true"></div>
+          <a class="gnav-mobile__cta btn btn-primary" href="../../business/#inquiry">프로젝트 문의</a>
+          <div class="gnav-mobile__util-row">
+            <div class="gnav__lang" data-lang-switcher>
+    <label class="visually-hidden" for="lang-select-mobile-pf-piggyup">언어</label>
+    <select id="lang-select-mobile-pf-piggyup" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="언어">
+      <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">English</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Deutsch</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonesia</option>
+    </select>
+  </div>
+            <button type="button" class="gnav__theme gnav__theme--mobile" data-theme-toggle data-label-light="라이트 모드로 전환" data-label-dark="다크 모드로 전환" title="테마 전환" aria-label="테마 전환"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
+    </div>
     </header>
+    <nav class="co-switch" aria-label="Company">
+    <div class="co-switch__inner">
+      <div class="co-switch__track"><a class="co-switch__link" href="../../about/">ABOUT</a><a class="co-switch__link is-active" href="#" aria-current="page">PORTFOLIO</a><a class="co-switch__link" href="../../news/">NEWS</a><a class="co-switch__link" href="../../contact/">CONTACT</a></div>
+    </div>
+  </nav>
     <main id="pf-main">
       <section class="pf-project-hero">
         <div class="pf-wrap pf-wrap--narrow">
@@ -266,10 +503,49 @@
       </section>
     </main>
 
-    <footer class="pf-foot">
-      <p>© Newon</p>
+    <footer class="site-footer studio-footer">
+      <div class="container studio-footer__grid studio-footer__grid--five">
+        <div class="studio-footer__col">
+      <p class="studio-footer__title">Products</p>
+      <ul class="studio-footer__list"><li><a href="../../apps/">Apps</a></li><li><a href="../../ai/">AI</a></li><li><a href="../../games/">Games</a></li><li><a href="../../tools/">Tools</a></li></ul>
+    </div>
+        <div class="studio-footer__col">
+      <p class="studio-footer__title">Business</p>
+      <ul class="studio-footer__list"><li><a href="../../business/build/">Build</a></li><li><a href="../../business/automation/">Automation</a></li><li><a href="../../business/research/">Research</a></li><li><a href="../../business/solutions/">Solutions</a></li></ul>
+    </div>
+        <div class="studio-footer__col">
+      <p class="studio-footer__title">STUDIO</p>
+      <ul class="studio-footer__list"><li><a href="../../studio/#brand">Brand</a></li><li><a href="../../studio/#digital">Digital</a></li><li><a href="../../studio/#content">Content</a></li><li><a href="../../studio/#ip">IP</a></li></ul>
+    </div>
+        <div class="studio-footer__col">
+      <p class="studio-footer__title">Resources</p>
+      <ul class="studio-footer__list"><li><a href="../../resources/store/">Store</a></li><li><a href="../../resources/insights/">Insights</a></li><li><a href="../../resources/blog/">Blog</a></li><li><a href="../../resources/labs/">Labs</a></li></ul>
+    </div>
+        <div class="studio-footer__col">
+      <p class="studio-footer__title">Company</p>
+      <ul class="studio-footer__list"><li><a href="../../about/">Newon 회사 소개</a></li><li><a href="../../portfolio/">Newon 포트폴리오</a></li><li><a href="../../news/">News</a></li><li><a href="../../contact/">Contact</a></li></ul>
+    </div>
+      </div>
+      <div class="container studio-footer__bottom studio-footer__bottom--brand">
+        <div class="studio-footer__brand-row">
+          <img class="studio-footer__logo" src="/logo.png" alt="" width="28" height="28" decoding="async" />
+          <div>
+            <p class="studio-footer__brand-name">Newon</p>
+            <p class="studio-footer__tagline">아이디어를 디지털 제품으로 만드는 Product Studio.</p>
+          </div>
+          <div class="studio-footer__legal-inline">
+            <a href="../../privacy/">개인정보 처리방침</a>
+            <a href="../../terms/">이용약관</a>
+            <a class="studio-footer__email" href="mailto:newon@newon.app">newon@newon.app</a>
+          </div>
+        </div>
+        <p>© 2026 Newon · All rights reserved.</p>
+      </div>
     </footer>
     <script src="/lang-dropdown.js"></script>
     <script src="/portfolio/portfolio.js"></script>
+    <script src="/analytics.js?v=20260825studio" defer></script>
+    <script src="/search.js?v=20260825studio" defer></script>
+    <script src="/site-chrome.js?v=20260826gnav5" defer></script>
   </body>
 </html>

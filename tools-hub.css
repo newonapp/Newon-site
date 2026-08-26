@@ -1140,3 +1140,23 @@ html[data-newon-shell-theme="dark"] .tools-toast {
     transform: none;
   }
 }
+
+.tools-workspace--soon {
+  padding: 2rem 1.25rem;
+  border: 1px dashed rgba(0, 0, 0, 0.18);
+  text-align: left;
+}
+.tools-soon__badge {
+  margin: 0 0 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.45);
+}
+.tools-soon__lead {
+  margin: 0;
+  max-width: 36rem;
+  color: rgba(0, 0, 0, 0.62);
+  line-height: 1.55;
+}
+.tools-card.is-building .tools-card__foot { color: rgba(0, 0, 0, 0.45); }

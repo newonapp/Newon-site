@@ -118,9 +118,12 @@
         scheduleClose();
       });
 
-      /* Ensure company / mega cells always navigate even if the panel is closing */
-      panel.querySelectorAll("a.gnav-mega__cell[href], a.gnav-mega__row[href], a.gnav-mega__cta[href]").forEach(function (link) {
+      /* Keep mega open while clicking any destination (rows, foot, CTAs) */
+      panel.querySelectorAll("a[href]").forEach(function (link) {
         link.addEventListener("mousedown", function () {
+          cancelClose();
+        });
+        link.addEventListener("pointerdown", function () {
           cancelClose();
         });
         link.addEventListener("click", function () {
@@ -129,6 +132,7 @@
       });
 
       trigger.addEventListener("click", function (e) {
+        e.preventDefault();
         e.stopPropagation();
         if (!isDesktop()) return;
         var open = trigger.getAttribute("aria-expanded") === "true";

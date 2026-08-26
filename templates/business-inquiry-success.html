@@ -26,6 +26,8 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20260826gnav5" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
     <link rel="stylesheet" href="/styles.css?v=20260822typeall" />
     <link rel="stylesheet" href="/ox-month.css" />
     <link rel="stylesheet" href="/portfolio/portfolio.css" />
@@ -277,60 +279,7 @@
   </head>
   <body>
     <a class="skip-link" href="#bz-inquiry-success">{{t:common.skipToContent}}</a>
-    <header class="site-header pf-header">
-      <div class="container pf-header__inner">
-        <a class="pf-brand" href="../../../">
-          <img src="/logo.png" alt="Newon" width="36" height="36" />
-          <span>Newon</span>
-        </a>
-        <nav class="pf-nav" aria-label="Newon">
-          <a href="../../../">{{t:nav.home}}</a>
-          <a href="../../../portfolio/">{{t:nav.portfolio}}</a>
-          <a href="../../">{{t:nav.business}}</a>
-        </nav>
-        <div class="pf-header__actions">
-          <div class="lang-switcher" data-lang-switcher>
-            <label class="visually-hidden" for="lang-select-bz-ok">{{t:ui.language}}</label>
-            <select id="lang-select-bz-ok" class="lang-select lang-select--toolbar" data-lang-select aria-label="{{t:ui.language}}">
-              <option value="ko">{{t:ui.langKo}}</option>
-              <option value="en">{{t:ui.langEn}}</option>
-              <option value="ja">{{t:ui.langJa}}</option>
-              <option value="es">{{t:ui.langEs}}</option>
-              <option value="pt-br">{{t:ui.langPtBr}}</option>
-              <option value="fr">{{t:ui.langFr}}</option>
-              <option value="de">{{t:ui.langDe}}</option>
-              <option value="hi">{{t:ui.langHi}}</option>
-              <option value="id">{{t:ui.langId}}</option>
-            </select>
-          </div>
-          <button
-            type="button"
-            class="navbar-theme-toggle"
-            data-theme-toggle
-            data-label-light="{{t:common.themeToLight}}"
-            data-label-dark="{{t:common.themeToDark}}"
-            title="{{t:common.themeToggle}}"
-            aria-label="{{t:common.themeToDark}}"
-          >🌙</button>
-          <button
-            class="nav-toggle nav-toggle--toolbar"
-            type="button"
-            data-pf-nav-toggle
-            aria-expanded="false"
-            aria-controls="pf-mobile-nav"
-            aria-label="{{t:common.menuOpen}}"
-          >
-            <span></span><span></span>
-          </button>
-        </div>
-      </div>
-      <nav id="pf-mobile-nav" class="pf-mobile-nav" hidden>
-        <a href="../../../">{{t:nav.home}}</a>
-        <a href="../../../portfolio/">{{t:nav.portfolio}}</a>
-        <a href="../../">{{t:nav.business}}</a>
-      </nav>
-    </header>
-
+    {{CHROME_HEADER}}
     <main id="bz-inquiry-success" class="bz-ok-page">
       <div class="bz-ok-inner">
         <section id="bz-ok" hidden>
@@ -431,26 +380,7 @@
       </div>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <img class="footer-brand-img" src="/logo.png" alt="" width="32" height="32" />
-          <span>Newon</span>
-        </div>
-        <div class="footer-links">
-          <a class="footer-link" href="https://newon.app">https://newon.app</a>
-          <p class="footer-copy">{{t:footer.tagline}}</p>
-          <div class="footer-legal-links">
-            <a class="footer-legal" href="../../../privacy/">{{t:footer.privacy}}</a>
-            <span class="footer-legal-sep" aria-hidden="true">·</span>
-            <a class="footer-legal" href="../../../terms/">{{t:footer.terms}}</a>
-          </div>
-          <a class="footer-business" href="../../../portfolio/">{{t:footer.portfolio}}</a>
-          <a class="footer-business" href="../../">{{t:footer.business}}</a>
-        </div>
-        <p class="footer-copy">© <span id="year"></span> Newon. {{t:footer.rights}}</p>
-      </div>
-    </footer>
+    {{CHROME_FOOTER}}
 
     <script>
       (function () {
@@ -465,5 +395,6 @@
     <script src="/business/inquiry.js"></script>
     <script src="/portfolio/portfolio.js"></script>
     <script src="/lang-dropdown.js"></script>
+      <script src="/site-chrome.js?v=20260826gnav5" defer></script>
   </body>
 </html>

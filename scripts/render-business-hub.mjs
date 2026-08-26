@@ -15,6 +15,9 @@ import { writeInquirySuccessPages } from "./gen-business-details.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { businessServicesHtml } from "./business-services-html.mjs";
 import { renderBusinessServices } from "./render-business-services.mjs";
+import { renderBusinessPillars } from "./render-business-pillars.mjs";
+import { renderPillarServices } from "./render-pillar-services.mjs";
+import { renderCreative } from "./render-creative.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_ORIGIN = "https://www.newon.app";
@@ -163,7 +166,7 @@ for (const { dir, file, htmlLang } of LANGS) {
   pt = pt.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/business/`);
   pt = applyTemplate(pt, flat, flatEn);
   pt = pt.replace(/\{\{BUSINESS_ECOSYSTEM\}\}/g, businessEcosystemHtml(flat, flatEn));
-  pt = pt.replace(/\{\{BUSINESS_SERVICES\}\}/g, businessServicesHtml(flat, flatEn));
+  pt = pt.replace(/\{\{BUSINESS_SERVICES\}\}/g, businessServicesHtml(flat, flatEn, dir));
   pt = injectSiteChrome(pt, flat, flatEn, { activeNav: "business" });
   const pd = path.join(ROOT, dir, "business");
   fs.mkdirSync(pd, { recursive: true });
@@ -172,6 +175,9 @@ for (const { dir, file, htmlLang } of LANGS) {
 
 writeInquirySuccessPages();
 renderBusinessServices();
+renderBusinessPillars();
+renderPillarServices();
+renderCreative();
 
 const pub = path.join(ROOT, "_publish");
 if (fs.existsSync(pub)) {

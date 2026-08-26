@@ -3,19 +3,42 @@
  * Store/labs adapted from store-data.mjs & labs-data.mjs.
  */
 
-/** @typedef {'templates'|'prompts'|'business'|'development'|'design'|'free'} StoreCategory */
-/** @typedef {'ACTIVE'|'TESTING'|'RESEARCH'|'ARCHIVED'} LabStatus */
+/**
+ * Public filter keys (UI). `all` is implied in the renderer.
+ * @typedef {'templates'|'ai-code'|'business'|'design'|'publishing'|'reports'} StoreCategory
+ */
 
+/** Canonical store filter categories (excluding "all"). */
 export const STORE_CATEGORIES = [
   "templates",
-  "prompts",
+  "ai-code",
   "business",
-  "development",
   "design",
-  "free",
+  "publishing",
+  "reports",
 ];
 
-/** @type {Array<object>} */
+/** Map legacy category ids → canonical category. */
+export const STORE_CATEGORY_ALIASES = {
+  prompts: "ai-code",
+  development: "ai-code",
+  developer: "ai-code",
+  guides: "templates",
+  free: "templates",
+};
+
+export function normalizeStoreCategory(cat) {
+  const key = String(cat || "").toLowerCase();
+  if (!key || key === "all") return key || "all";
+  if (STORE_CATEGORIES.includes(key)) return key;
+  return STORE_CATEGORY_ALIASES[key] || key;
+}
+
+/**
+ * @type {Array<object>}
+ * buyable:false until payment wired. free:true only when downloadable without charge.
+ * collection: "publishing" | null — surfaces under Store ?cat=publishing
+ */
 export const STORE_PRODUCTS = [
   {
     id: "app-launch-kit",
@@ -25,9 +48,12 @@ export const STORE_PRODUCTS = [
     descKo: "앱 출시 전 체크리스트, 스토어 메타, 런칭 일정 템플릿.",
     descEn: "Pre-launch checklist, store metadata, and launch schedule templates.",
     category: "templates",
+    collection: null,
     type: "kit",
     price: "COMING SOON",
     status: "building",
+    buyable: false,
+    free: false,
     featured: true,
     version: "0.1",
     updated: "2026-08",
@@ -45,9 +71,12 @@ export const STORE_PRODUCTS = [
     descKo: "문제 정의부터 범위 결정까지 MVP 기획 워크시트.",
     descEn: "Worksheets from problem definition through MVP scope.",
     category: "templates",
+    collection: null,
     type: "kit",
     price: "COMING SOON",
     status: "building",
+    buyable: false,
+    free: false,
     featured: true,
     version: "0.1",
     updated: "2026-08",
@@ -60,14 +89,17 @@ export const STORE_PRODUCTS = [
   {
     id: "cursor-prompt-pack",
     slug: "cursor-prompt-pack",
-    titleKo: "Cursor Prompt Pack",
-    titleEn: "Cursor Prompt Pack",
-    descKo: "제품 개발용 Cursor 프롬프트 모음.",
-    descEn: "Cursor prompts for product development workflows.",
-    category: "prompts",
+    titleKo: "Cursor Product Builder Pack",
+    titleEn: "Cursor Product Builder Pack",
+    descKo: "제품 기획부터 구현·QA까지 Cursor 워크플로 프롬프트 모음.",
+    descEn: "Cursor workflow prompts from product planning through build and QA.",
+    category: "ai-code",
+    collection: null,
     type: "pack",
     price: "COMING SOON",
     status: "building",
+    buyable: false,
+    free: false,
     featured: true,
     version: "0.1",
     updated: "2026-08",
@@ -78,6 +110,98 @@ export const STORE_PRODUCTS = [
     locale: "all",
   },
   {
+    id: "codex-builder-pack",
+    slug: "codex-builder-pack",
+    titleKo: "Codex Builder Pack",
+    titleEn: "Codex Builder Pack",
+    descKo: "Codex/에이전트 워크플로로 제품을 만드는 프롬프트·체크리스트 팩.",
+    descEn: "Prompt and checklist pack for building products with Codex-style agent workflows.",
+    category: "ai-code",
+    collection: null,
+    type: "pack",
+    price: "COMING SOON",
+    status: "building",
+    buyable: false,
+    free: false,
+    featured: false,
+    version: "0.1",
+    updated: "2026-08",
+    includesKo: ["에이전트 작업 분해", "스펙→코드 프롬프트", "리뷰 체크리스트", "릴리스 노트 골격"],
+    includesEn: ["Agent task breakdown", "Spec→code prompts", "Review checklist", "Release-note outline"],
+    audienceKo: "AI 코딩 에이전트로 제품을 만드는 팀",
+    audienceEn: "Teams building products with AI coding agents",
+    locale: "all",
+  },
+  {
+    id: "website-launch-checklist",
+    slug: "website-launch-checklist",
+    titleKo: "Website Launch Checklist",
+    titleEn: "Website Launch Checklist",
+    descKo: "웹사이트 런칭 전 SEO·성능·콘텐츠·법적 고지 체크리스트.",
+    descEn: "Pre-launch checklist for SEO, performance, content, and legal notices.",
+    category: "templates",
+    collection: "publishing",
+    type: "checklist",
+    price: "COMING SOON",
+    status: "building",
+    buyable: false,
+    free: false,
+    featured: false,
+    version: "0.1",
+    updated: "2026-08",
+    includesKo: ["런칭 체크리스트", "SEO 기본", "성능·접근성", "고지·문의 페이지"],
+    includesEn: ["Launch checklist", "SEO basics", "Performance & a11y", "Legal & contact pages"],
+    audienceKo: "웹사이트를 처음 출시하는 팀",
+    audienceEn: "Teams launching a first website",
+    locale: "all",
+  },
+  {
+    id: "business-planning-workbook",
+    slug: "business-planning-workbook",
+    titleKo: "Business Planning Workbook",
+    titleEn: "Business Planning Workbook",
+    descKo: "문제·시장·모델·실행 계획을 한 권으로 정리하는 워크북.",
+    descEn: "A workbook to structure problem, market, model, and execution plans.",
+    category: "business",
+    collection: "publishing",
+    type: "workbook",
+    price: "COMING SOON",
+    status: "building",
+    buyable: false,
+    free: false,
+    featured: false,
+    version: "0.1",
+    updated: "2026-08",
+    includesKo: ["문제·고객 정의", "가치제안 시트", "모델 캔버스", "90일 실행 플랜"],
+    includesEn: ["Problem & customer brief", "Value proposition sheet", "Model canvas", "90-day plan"],
+    audienceKo: "초기 사업 계획을 정리하는 창업자",
+    audienceEn: "Founders clarifying an early business plan",
+    locale: "all",
+  },
+  {
+    id: "product-research-template",
+    slug: "product-research-template",
+    titleKo: "Product Research Template",
+    titleEn: "Product Research Template",
+    descKo: "인터뷰·가설·경쟁 관찰을 정리하는 제품 리서치 템플릿.",
+    descEn: "A product research template for interviews, hypotheses, and competitor notes.",
+    category: "reports",
+    collection: "publishing",
+    type: "template",
+    price: "COMING SOON",
+    status: "building",
+    buyable: false,
+    free: false,
+    featured: false,
+    version: "0.1",
+    updated: "2026-08",
+    includesKo: ["가설 보드", "인터뷰 가이드", "경쟁 관찰 시트", "인사이트 요약"],
+    includesEn: ["Hypothesis board", "Interview guide", "Competitor notes", "Insight summary"],
+    audienceKo: "제품·리서치 담당자",
+    audienceEn: "Product and research leads",
+    locale: "all",
+  },
+  {
     id: "founder-dashboard",
     slug: "founder-dashboard",
     titleKo: "Founder Dashboard",
@@ -85,9 +209,12 @@ export const STORE_PRODUCTS = [
     descKo: "지표·할 일·실험을 한곳에 모은 창업자용 대시보드 템플릿.",
     descEn: "A founder dashboard template for metrics, tasks, and experiments.",
     category: "business",
+    collection: null,
     type: "template",
     price: "COMING SOON",
     status: "concept",
+    buyable: false,
+    free: false,
     featured: false,
     version: "0.1",
     updated: "2026-08",
@@ -105,9 +232,12 @@ export const STORE_PRODUCTS = [
     descKo: "분기·테마 중심으로 로드맵을 정리하는 템플릿.",
     descEn: "A roadmap template organized by quarter and theme.",
     category: "templates",
+    collection: null,
     type: "template",
     price: "COMING SOON",
     status: "concept",
+    buyable: false,
+    free: false,
     featured: false,
     version: "0.1",
     updated: "2026-08",
@@ -136,6 +266,8 @@ export {
   LAB_STATUSES,
   LAB_PIPELINE,
   LAB_STATUS_MAP,
+  VENTURE_STATUS_MAP,
+  ventureStatusFor,
   getLabsExperiments,
   getLabExperiment,
   getLabStatusCounts,
@@ -143,6 +275,7 @@ export {
 } from "./lab-experiments.mjs";
 
 import { LABS_EXPERIMENTS } from "./lab-experiments.mjs";
+import { getPublishedInsights } from "./insights-data.mjs";
 
 /** Empty archive until issues ship. */
 export const NEWSLETTER_ISSUES = [];
@@ -243,6 +376,14 @@ export function buildSearchIndex(lang = "en") {
       title: isKo ? p.titleKo : p.titleEn,
       description: isKo ? p.descKo : p.descEn,
       url: `store/${p.slug}/`,
+    });
+  }
+  for (const a of getPublishedInsights()) {
+    items.push({
+      type: "insights",
+      title: isKo ? a.titleKo : a.titleEn,
+      description: isKo ? a.descKo || "" : a.descEn || "",
+      url: `insights/${a.slug}/`,
     });
   }
   for (const post of getPublishedBlogPosts()) {

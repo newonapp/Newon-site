@@ -354,21 +354,40 @@ export function renderGamesShowcaseBody(flat, flatEn) {
     </div>
   </section>
 
-  <section class="games-next" data-games-reveal>
-    <div class="hub-inner">
-      <p class="games-kicker">${t(flat, flatEn, "studio.gamesNextLabel", "MORE FROM NEWON GAMES")}</p>
-      <div class="games-next__panel">
-        ${hudCorners()}
+  <section class="games-next" data-games-reveal aria-labelledby="games-next-title">
+    <div class="hub-inner games-next__inner">
+      <header class="games-next__head">
+        <p class="games-kicker games-next__kicker">${t(flat, flatEn, "studio.gamesNextLabel", "MORE FROM NEWON GAMES")}</p>
         <p class="games-next__eyebrow">NEXT EXPERIMENT</p>
-        <h2 class="games-next__title">GAME / 002</h2>
-        <p class="games-next__redact">██████████████</p>
+      </header>
+
+      <div class="games-next__stage">
+        <div class="games-next__main">
+          <p class="games-next__code" aria-hidden="true">002</p>
+          <h2 class="games-next__title" id="games-next-title">GAME / 002</h2>
+          <div class="games-next__redact" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <p class="games-next__lead">${t(flat, flatEn, "studio.gamesNextLead", "다음 세계는 아직 공개되지 않았습니다.")}</p>
+          <a class="games-next__link" href="./">${t(flat, flatEn, "studio.gamesNextCta", "Newon Games 업데이트 보기")}<span aria-hidden="true">→</span></a>
+        </div>
+
         <dl class="games-next__meta">
-          <div><dt>STATUS</dt><dd>CLASSIFIED</dd></div>
-          <div><dt>WORLD</dt><dd>UNKNOWN</dd></div>
-          <div><dt>RELEASE</dt><dd>TBA</dd></div>
+          <div>
+            <dt>STATUS</dt>
+            <dd>CLASSIFIED</dd>
+          </div>
+          <div>
+            <dt>WORLD</dt>
+            <dd>UNKNOWN</dd>
+          </div>
+          <div>
+            <dt>RELEASE</dt>
+            <dd>TBA</dd>
+          </div>
         </dl>
-        <p class="games-next__lead">${t(flat, flatEn, "studio.gamesNextLead", "다음 세계는 아직 공개되지 않았습니다.")}</p>
-        <a class="games-next__link" href="./">${t(flat, flatEn, "studio.gamesNextCta", "Newon Games 업데이트 보기")} →</a>
       </div>
     </div>
   </section>

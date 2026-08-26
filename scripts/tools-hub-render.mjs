@@ -22,6 +22,9 @@ const ICONS = {
   percent: '<path d="M19 5 5 19M7.5 8.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM16.5 18.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>',
   receipt: '<path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1zM8 8h8M8 12h8M8 16h5"/>',
   "calendar-range": '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18M10 16h4"/>',
+  link: '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
+  checklist: '<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
+  map: '<polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/>',
 };
 
 function iconSvg(name, size = 22) {
@@ -78,8 +81,11 @@ function toolCard(tool, flat, flatEn) {
   const keywords = (tool.keywords || []).join(" ");
   const search = `${name} ${desc} ${keywords} ${tool.slug} ${tool.tag || ""}`.toLowerCase();
   const group = t(flat, flatEn, tool.groupKey || "studio.toolsGroupFree", "무료");
-  const free = t(flat, flatEn, "studio.toolsFree", "무료");
-  return `<a class="tools-card" href="${escapeHtml(tool.slug)}/" data-tool-item data-tool-slug="${escapeHtml(tool.slug)}" data-tool-filters="${escapeHtml(filters)}" data-tool-search="${escapeHtml(search)}">
+  const statusLabel =
+    tool.status === "building" || tool.status === "coming_soon"
+      ? t(flat, flatEn, "studio.toolsComingSoon", "Coming Soon")
+      : t(flat, flatEn, "studio.toolsFree", "무료");
+  return `<a class="tools-card${tool.status === "building" ? " is-building" : ""}" href="${escapeHtml(tool.slug)}/" data-tool-item data-tool-slug="${escapeHtml(tool.slug)}" data-tool-filters="${escapeHtml(filters)}" data-tool-search="${escapeHtml(search)}" data-analytics="tool_start" data-item-id="${escapeHtml(tool.slug)}">
     <span class="tools-card__top">
       <span class="tools-card__icon" aria-hidden="true">${iconSvg(tool.icon, 22)}</span>
       <span class="tools-card__go" aria-hidden="true">↗</span>
@@ -88,7 +94,7 @@ function toolCard(tool, flat, flatEn) {
       <span class="tools-card__name">${name}</span>
       <span class="tools-card__desc">${desc}</span>
     </span>
-    <span class="tools-card__foot">${group} · ${free}</span>
+    <span class="tools-card__foot">${group} · ${statusLabel}</span>
   </a>`;
 }
 
@@ -187,6 +193,7 @@ export function renderToolsShowcaseBody(flat, flatEn) {
 export function renderToolDetailBody(tool, flat, flatEn) {
   const name = t(flat, flatEn, tool.nameKey);
   const desc = t(flat, flatEn, tool.descKey);
+  const building = tool.status === "building" || tool.status === "coming_soon";
   const how = (tool.howKeys || [])
     .map((key, i) => {
       const n = String(i + 1).padStart(2, "0");
@@ -207,11 +214,22 @@ export function renderToolDetailBody(tool, flat, flatEn) {
     )
     .join("");
 
-  const privacy = tool.clientSide
-    ? `<p class="tools-detail__privacy">${t(flat, flatEn, "studio.toolsRunsLocal", "입력한 데이터는 브라우저에서 처리됩니다.")}</p>`
-    : `<p class="tools-detail__privacy">${t(flat, flatEn, "studio.toolsQrNote", "QR 이미지는 생성 API를 통해 만들어집니다.")}</p>`;
+  const privacy = building
+    ? ""
+    : tool.clientSide
+      ? `<p class="tools-detail__privacy">${t(flat, flatEn, "studio.toolsRunsLocal", "입력한 데이터는 브라우저에서 처리됩니다.")}</p>`
+      : `<p class="tools-detail__privacy">${t(flat, flatEn, "studio.toolsQrNote", "QR 이미지는 생성 API를 통해 만들어집니다.")}</p>`;
 
-  return `<div class="tools-detail" data-tools-detail data-tool-slug="${escapeHtml(tool.slug)}">
+  const workspace = building
+    ? `<div class="tool-panel tools-workspace tools-workspace--soon">
+        <p class="tools-soon__badge">${t(flat, flatEn, "studio.toolsComingSoon", "Coming Soon")}</p>
+        <p class="tools-soon__lead">${t(flat, flatEn, "studio.toolsBuildingLead", "이 도구는 준비 중입니다. UI가 열리면 여기서 바로 사용할 수 있습니다.")}</p>
+      </div>`
+    : `<div class="tool-panel tools-workspace" data-tool-id="${escapeHtml(tool.id)}">
+        <div data-tool-mount="${escapeHtml(tool.slug)}"></div>
+      </div>`;
+
+  return `<div class="tools-detail" data-tools-detail data-tool-slug="${escapeHtml(tool.slug)}" data-analytics-page="tool" data-item-id="${escapeHtml(tool.slug)}">
   <div class="hub-inner">
     <nav class="tools-crumb" aria-label="Breadcrumb">
       <a href="../">${t(flat, flatEn, "studio.toolsCrumbRoot", "Newon Tools")}</a>
@@ -224,7 +242,7 @@ export function renderToolDetailBody(tool, flat, flatEn) {
     <header class="tools-detail__head">
       <span class="tools-detail__icon">${iconSvg(tool.icon, 28)}</span>
       <div>
-        <p class="tools-detail__tag">${escapeHtml(tool.tag || "")}</p>
+        <p class="tools-detail__tag">${escapeHtml(tool.tag || "")}${building ? ` · ${t(flat, flatEn, "studio.toolsComingSoon", "Coming Soon")}` : ""}</p>
         <h1 class="tools-detail__title">${name}</h1>
         <p class="tools-detail__lead">${desc}</p>
         ${privacy}
@@ -232,15 +250,17 @@ export function renderToolDetailBody(tool, flat, flatEn) {
     </header>
 
     <section class="tools-detail__workspace">
-      <div class="tool-panel tools-workspace" data-tool-id="${escapeHtml(tool.id)}">
-        <div data-tool-mount="${escapeHtml(tool.slug)}"></div>
-      </div>
+      ${workspace}
     </section>
 
-    <section class="tools-detail__how">
+    ${
+      how
+        ? `<section class="tools-detail__how">
       <h2 class="tools-detail__h">${t(flat, flatEn, "studio.toolsHowLabel", "사용 방법")}</h2>
       <ol class="tools-detail__steps">${how}</ol>
-    </section>
+    </section>`
+        : ""
+    }
 
     <section class="tools-detail__related">
       <h2 class="tools-detail__h">${t(flat, flatEn, "studio.toolsRelatedLabel", "RELATED TOOLS")}</h2>

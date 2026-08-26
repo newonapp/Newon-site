@@ -92,14 +92,13 @@
     <script src="/lang-nav.js?v=20260825studio"></script>
     <script src="/analytics.js?v=20260825studio" defer></script>
     <script src="/search.js?v=20260825studio" defer></script>
-    <script src="/site-chrome.js?v=20260826gnav4" defer></script>
+    <script src="/site-chrome.js?v=20260826gnav5" defer></script>
     <script src="/home-studio.js?v=20260826ps3" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 
-    <div id="home" class="site-shell">
-      <header class="gnav site-header" data-gnav>
+    <header class="gnav site-header gnav--five" data-gnav>
       <div class="gnav__bar">
         <div class="gnav__inner">
           <a class="gnav__brand" href="./">
@@ -115,14 +114,14 @@
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
       <p class="gnav-mega__kicker">PRODUCTS</p>
-      <p class="gnav-mega__lead">Newon이 직접 만드는 제품</p>
+      <p class="gnav-mega__lead">Newon이 직접 만들고 운영하는 제품</p>
     </div>
-    <div class="gnav-mega__list" role="none">
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
       <a class="gnav-mega__row" href="apps/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Apps</span>
-        <span class="gnav-mega__row-desc">Newon의 모바일 제품</span>
+        <span class="gnav-mega__row-desc">Newon이 직접 운영하는 앱</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="ai/" role="menuitem">
@@ -132,25 +131,18 @@
         <span class="gnav-mega__row-desc">AI 기반 제품</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="saas/" role="menuitem">
+    </a><a class="gnav-mega__row" href="games/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">03</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">SaaS</span>
-        <span class="gnav-mega__row-desc">웹 기반 구독 서비스</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="games/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
-      <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Games</span>
-        <span class="gnav-mega__row-desc">Newon이 만드는 게임과 인터랙티브 경험</span>
+        <span class="gnav-mega__row-desc">게임과 인터랙티브</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="tools/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Tools</span>
-        <span class="gnav-mega__row-desc">무료로 바로 사용할 수 있는 웹 도구</span>
+        <span class="gnav-mega__row-desc">바로 쓰는 웹 도구</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a>
@@ -167,39 +159,85 @@
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
       <p class="gnav-mega__kicker">BUSINESS</p>
-      <p class="gnav-mega__lead">아이디어를 실제 디지털 제품으로</p>
-      <p class="gnav-mega__subkicker">Services</p>
+      <p class="gnav-mega__lead">기업과 창업자를 위해 구축하고 해결</p>
     </div>
-    <div class="gnav-mega__grid gnav-mega__grid--business">
-      <a class="gnav-mega__cell" href="business/mvp/" role="menuitem">
-    <span class="gnav-mega__cell-title">MVP Development</span>
-    <span class="gnav-mega__cell-desc">아이디어를 빠르게 실제 제품으로</span>
-  </a>
-      <a class="gnav-mega__cell" href="business/web/" role="menuitem">
-    <span class="gnav-mega__cell-title">Web Development</span>
-    <span class="gnav-mega__cell-desc">브랜드와 서비스를 위한 웹 구축</span>
-  </a>
-      <a class="gnav-mega__cell" href="business/app/" role="menuitem">
-    <span class="gnav-mega__cell-title">App Development</span>
-    <span class="gnav-mega__cell-desc">iOS · Android 제품 개발</span>
-  </a>
-      <a class="gnav-mega__cell" href="business/ai-automation/" role="menuitem">
-    <span class="gnav-mega__cell-title">AI Automation</span>
-    <span class="gnav-mega__cell-desc">AI 기능과 업무 자동화</span>
-  </a>
-      <a class="gnav-mega__cell" href="business/white-label/" role="menuitem">
-    <span class="gnav-mega__cell-title">White-label</span>
-    <span class="gnav-mega__cell-desc">기존 기술을 활용한 맞춤형 제품</span>
-  </a>
-      <a class="gnav-mega__cell" href="business/design/" role="menuitem">
-    <span class="gnav-mega__cell-title">Design &amp; Branding</span>
-    <span class="gnav-mega__cell-desc">UI/UX · Product · Brand Design</span>
-  </a>
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
+      <a class="gnav-mega__row" href="business/build/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">BUILD</span>
+        <span class="gnav-mega__row-desc">아이디어를 실제 제품으로</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="business/automation/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">AUTOMATION</span>
+        <span class="gnav-mega__row-desc">업무를 시스템으로</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="business/research/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">RESEARCH</span>
+        <span class="gnav-mega__row-desc">근거를 찾는 리서치</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="business/solutions/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">SOLUTIONS</span>
+        <span class="gnav-mega__row-desc">기술을 기업에 맞게</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
     </div>
-    <div class="gnav-mega__foot gnav-mega__foot--split">
-      <a class="gnav-mega__foot-link" href="business/">Business 알아보기 →</a>
-      <a class="gnav-mega__foot-link gnav-mega__foot-link--strong" href="business/#inquiry">프로젝트 문의 →</a>
-    </div></div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="business/">Business 알아보기 →</a></p></div>
+      </div>
+    </div>
+  </div>
+          <div class="gnav-dd" data-gnav-dd data-gnav-menu="studio">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+      Studio<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="gnav-mega" role="menu" hidden>
+      <div class="gnav-mega__panel">
+        <div class="gnav-mega__inner"><div class="gnav-mega__head">
+      <p class="gnav-mega__kicker">STUDIO</p>
+      <p class="gnav-mega__lead">브랜드 · 디지털 · 콘텐츠 · IP</p>
+    </div>
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
+      <a class="gnav-mega__row" href="studio/#brand" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">BRAND</span>
+        <span class="gnav-mega__row-desc">브랜드의 방향과 정체성</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="studio/#digital" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">DIGITAL</span>
+        <span class="gnav-mega__row-desc">웹과 제품 경험</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="studio/#content" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">CONTENT</span>
+        <span class="gnav-mega__row-desc">브랜드 콘텐츠와 비주얼</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="studio/#ip" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">IP</span>
+        <span class="gnav-mega__row-desc">캐릭터와 새로운 IP 실험</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="studio/">Explore Studio →</a></p></div>
       </div>
     </div>
   </div>
@@ -211,34 +249,40 @@
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
       <p class="gnav-mega__kicker">RESOURCES</p>
-      <p class="gnav-mega__lead">Newon이 만드는 지식과 디지털 자료</p>
+      <p class="gnav-mega__lead">지식 · 자료 · 상품 · 실험</p>
     </div>
-    <div class="gnav-mega__grid gnav-mega__grid--resources">
-      <a class="gnav-mega__cell" href="resources/store/" role="menuitem">
-    <span class="gnav-mega__cell-title">Store</span>
-    <span class="gnav-mega__cell-desc">템플릿 · 프롬프트 · 디지털 상품</span>
-  </a>
-      <a class="gnav-mega__cell" href="resources/blog/" role="menuitem">
-    <span class="gnav-mega__cell-title">Blog</span>
-    <span class="gnav-mega__cell-desc">제품 · AI · 개발 · 비즈니스 기록</span>
-  </a>
-      <a class="gnav-mega__cell" href="resources/media/" role="menuitem">
-    <span class="gnav-mega__cell-title">Media</span>
-    <span class="gnav-mega__cell-desc">Newon의 콘텐츠</span>
-  </a>
-      <a class="gnav-mega__cell" href="resources/labs/" role="menuitem">
-    <span class="gnav-mega__cell-title">Labs</span>
-    <span class="gnav-mega__cell-desc">새로운 제품과 비즈니스 실험</span>
-  </a>
-      <a class="gnav-mega__cell" href="resources/newsletter/" role="menuitem">
-    <span class="gnav-mega__cell-title">Newsletter</span>
-    <span class="gnav-mega__cell-desc">Newon 업데이트</span>
-  </a>
-      <a class="gnav-mega__cell" href="resources/education/" role="menuitem">
-    <span class="gnav-mega__cell-title">Education</span>
-    <span class="gnav-mega__cell-desc">가이드와 교육 콘텐츠</span>
-  </a>
-    </div></div>
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
+      <a class="gnav-mega__row" href="resources/store/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Store</span>
+        <span class="gnav-mega__row-desc">템플릿 · 가이드 · 디지털 상품</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="resources/insights/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Insights</span>
+        <span class="gnav-mega__row-desc">제품 · 소비자 · 시장 관찰</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="resources/blog/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Blog</span>
+        <span class="gnav-mega__row-desc">빌드 로그와 스토리</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="resources/labs/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Labs</span>
+        <span class="gnav-mega__row-desc">실험 · Ventures · 새 아이디어</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="resources/">Explore Resources →</a></p></div>
       </div>
     </div>
   </div>
@@ -250,35 +294,40 @@
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
       <p class="gnav-mega__kicker">COMPANY</p>
-      <p class="gnav-mega__lead">Newon에 대해 알아보기</p>
+      <p class="gnav-mega__lead">Newon 자체에 대해</p>
     </div>
-    <div class="gnav-mega__grid gnav-mega__grid--company">
-      <a class="gnav-mega__cell gnav-mega__cell--arrow" href="about/" role="menuitem">
-    <span class="gnav-mega__cell-title">About Newon<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span></span>
-    <span class="gnav-mega__cell-desc">Newon 소개</span>
-  </a>
-      <a class="gnav-mega__cell gnav-mega__cell--arrow" href="portfolio/" role="menuitem">
-    <span class="gnav-mega__cell-title">Portfolio<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span></span>
-    <span class="gnav-mega__cell-desc">제품과 프로젝트</span>
-  </a>
-      <a class="gnav-mega__cell gnav-mega__cell--arrow" href="news/" role="menuitem">
-    <span class="gnav-mega__cell-title">News<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span></span>
-    <span class="gnav-mega__cell-desc">공식 업데이트</span>
-  </a>
-      <a class="gnav-mega__cell gnav-mega__cell--arrow" href="ideas/" role="menuitem">
-    <span class="gnav-mega__cell-title">Newon Idea<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span></span>
-    <span class="gnav-mega__cell-desc">아이디어 제안</span>
-  </a>
-      <a class="gnav-mega__cell gnav-mega__cell--arrow" href="contact/" role="menuitem">
-    <span class="gnav-mega__cell-title">Contact<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span></span>
-    <span class="gnav-mega__cell-desc">문의</span>
-  </a>
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
+      <a class="gnav-mega__row" href="about/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">01</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">About Newon</span>
+        <span class="gnav-mega__row-desc">Newon 소개</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="portfolio/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">02</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Portfolio</span>
+        <span class="gnav-mega__row-desc">제품과 프로젝트</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="news/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">News</span>
+        <span class="gnav-mega__row-desc">공식 업데이트</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="contact/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Contact</span>
+        <span class="gnav-mega__row-desc">문의</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a>
     </div>
-    <div class="gnav-mega__brand">
-      <p class="gnav-mega__brand-name">NEWON</p>
-      <p class="gnav-mega__brand-line">Digital Product Studio</p>
-      <a class="gnav-mega__brand-email" href="mailto:newon@newon.app">newon@newon.app</a>
-    </div></div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="about/">About Newon →</a></p></div>
       </div>
     </div>
   </div>
@@ -303,19 +352,23 @@
         <div class="gnav-mobile__scroll">
           <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Products<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="apps/">Apps</a><a class="gnav-mobile__sublink" href="ai/">AI</a><a class="gnav-mobile__sublink" href="saas/">SaaS</a><a class="gnav-mobile__sublink" href="games/">Games</a><a class="gnav-mobile__sublink" href="tools/">Tools</a><a class="gnav-mobile__sublink" href="products/">전체 제품</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="apps/">Apps</a><a class="gnav-mobile__sublink" href="ai/">AI</a><a class="gnav-mobile__sublink" href="games/">Games</a><a class="gnav-mobile__sublink" href="tools/">Tools</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Business<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="business/mvp/">MVP Development</a><a class="gnav-mobile__sublink" href="business/web/">Web Development</a><a class="gnav-mobile__sublink" href="business/app/">App Development</a><a class="gnav-mobile__sublink" href="business/ai-automation/">AI Automation</a><a class="gnav-mobile__sublink" href="business/white-label/">White-label</a><a class="gnav-mobile__sublink" href="business/design/">Design &amp; Branding</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="business/build/">BUILD</a><a class="gnav-mobile__sublink" href="business/automation/">AUTOMATION</a><a class="gnav-mobile__sublink" href="business/research/">RESEARCH</a><a class="gnav-mobile__sublink" href="business/solutions/">SOLUTIONS</a></div>
+      </div>
+        <div class="gnav-mobile__acc" data-gnav-acc>
+        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Studio<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="studio/#brand">BRAND</a><a class="gnav-mobile__sublink" href="studio/#digital">DIGITAL</a><a class="gnav-mobile__sublink" href="studio/#content">CONTENT</a><a class="gnav-mobile__sublink" href="studio/#ip">IP</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="resources/store/">Store</a><a class="gnav-mobile__sublink" href="resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="resources/media/">Media</a><a class="gnav-mobile__sublink" href="resources/labs/">Labs</a><a class="gnav-mobile__sublink" href="resources/newsletter/">Newsletter</a><a class="gnav-mobile__sublink" href="resources/education/">Education</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="resources/store/">Store</a><a class="gnav-mobile__sublink" href="resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="resources/labs/">Labs</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="about/">About Newon</a><a class="gnav-mobile__sublink" href="portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="news/">News</a><a class="gnav-mobile__sublink" href="ideas/">Newon Idea</a><a class="gnav-mobile__sublink" href="contact/">Contact</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="about/">About Newon</a><a class="gnav-mobile__sublink" href="portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="news/">News</a><a class="gnav-mobile__sublink" href="contact/">Contact</a></div>
       </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <a class="gnav-mobile__cta btn btn-primary" href="business/#inquiry">프로젝트 문의</a>
@@ -333,12 +386,14 @@
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
     </div>
     </header>
+    <div id="home" class="site-shell">
 
       <main id="main">
 <section id="top" class="hero hero--ecosystem hero--entered reveal-on-scroll is-visible">
           <div class="hero-bg" aria-hidden="true"></div>
           <div class="container hero-inner hero-inner--centered">
             <div class="hero-copy hero-copy--centered">
+              <p class="hero-eyebrow hero-eco-enter" style="--hero-enter-delay: 40ms">NEWON · PRODUCT &amp; VENTURE STUDIO</p>
               <h1 class="hero-brand-mark hero-eco-enter" style="--hero-enter-delay: 80ms">
                 <img
                   class="hero-brand-mark__img hero-brand-mark__img--light"
@@ -376,12 +431,11 @@
                 >Business 문의</a>
               </div>
               <nav class="hub-strip hero-eco-enter" style="--hero-enter-delay: 420ms" aria-label="Newon areas">
-                <a href="products/?filter=apps">Apps</a>
-                <a href="ai/">AI</a>
-                <a href="games/">Games</a>
-                <a href="saas/">SaaS</a>
+                <a href="products/">Products</a>
                 <a href="business/">Business</a>
-                <a href="tools/">Tools</a>
+                <a href="studio/">Studio</a>
+                <a href="resources/">Resources</a>
+                <a href="resources/labs/">Labs</a>
               </nav>
               <div class="hero-actions hero-store-links hero-eco-enter" style="--hero-enter-delay: 460ms">
                 <a
@@ -465,11 +519,11 @@
               <div class="hs-bridge__panel">
                 <div class="hs-bridge__brand">
                   <img class="hs-bridge__logo" src="/logo.png" alt="" width="48" height="48" decoding="async" />
-                  <p class="hs-bridge__eyebrow">NEWON · DIGITAL PRODUCT STUDIO</p>
+                  <p class="hs-bridge__eyebrow">NEWON · PRODUCT &amp; VENTURE STUDIO</p>
                 </div>
                 <div class="hs-bridge__copy">
                   <p class="hs-bridge__title">아이디어를 켜고, <span>새로운 제품을 만듭니다.</span></p>
-                  <p class="hs-bridge__lead">Newon은 앱, AI, SaaS, 게임과 웹 제품을 직접 만들고, 기업과 함께 디지털 프로젝트를 구축하며, 새로운 비즈니스를 빠르게 실험하는 Product Studio입니다.</p>
+                  <p class="hs-bridge__lead">Newon은 앱, AI, SaaS와 게임을 직접 만들고, 기업의 디지털 프로젝트와 브랜드를 설계하며, 콘텐츠와 새로운 사업 모델을 빠르게 실험하는 Product &amp; Venture Studio입니다.</p>
                 </div>
               </div>
             </div>
@@ -483,40 +537,91 @@
                   <h2 class="hs-h2">하나의 제품이 아니라, 여러 가능성을 만듭니다.</h2>
                 </div>
               </header>
-              <div class="hs-pillars">
+              <div class="hs-pillars hs-pillars--five">
                 <a class="hs-pillar" href="products/">
                   <span class="hs-pillar__tag">01</span>
                   <h3 class="hs-pillar__title">Products</h3>
                   <p class="hs-pillar__body">직접 만들고 운영하는 디지털 제품.</p>
-                  <p class="hs-pillar__items">Apps · AI · SaaS · Games · Tools</p>
+                  <p class="hs-pillar__items">Apps · AI · Games · Tools</p>
                   <span class="hs-pillar__go">제품 보기 →</span>
                 </a>
                 <a class="hs-pillar" href="business/">
                   <span class="hs-pillar__tag">02</span>
                   <h3 class="hs-pillar__title">Business</h3>
-                  <p class="hs-pillar__body">기업과 브랜드의 아이디어를 실제 제품으로 구현.</p>
-                  <p class="hs-pillar__items">MVP · Website · App · AI Automation · White-label · Design</p>
+                  <p class="hs-pillar__body">기업과 창업자를 위해 구축하고 해결합니다.</p>
+                  <p class="hs-pillar__items">Build · Automation · Research · Solutions</p>
                   <span class="hs-pillar__go">Business 보기 →</span>
                 </a>
-                <a class="hs-pillar" href="store/">
+                <a class="hs-pillar" href="studio/">
                   <span class="hs-pillar__tag">03</span>
+                  <h3 class="hs-pillar__title">Studio</h3>
+                  <p class="hs-pillar__body">브랜드와 창작 — 디지털 경험과 IP.</p>
+                  <p class="hs-pillar__items">Brand · Digital · Content · IP</p>
+                  <span class="hs-pillar__go">Studio 보기 →</span>
+                </a>
+                <a class="hs-pillar" href="resources/">
+                  <span class="hs-pillar__tag">04</span>
                   <h3 class="hs-pillar__title">Resources</h3>
-                  <p class="hs-pillar__body">제품을 만드는 과정에서 나온 지식과 자료.</p>
-                  <p class="hs-pillar__items">Store · Blog · Media · Newsletter · Education</p>
+                  <p class="hs-pillar__body">지식·자료·상품과 실험.</p>
+                  <p class="hs-pillar__items">Store · Insights · Blog · Labs</p>
                   <span class="hs-pillar__go">Resources 보기 →</span>
                 </a>
-                <a class="hs-pillar" href="labs/">
-                  <span class="hs-pillar__tag">04</span>
-                  <h3 class="hs-pillar__title">Labs</h3>
-                  <p class="hs-pillar__body">새로운 기술과 사업 모델을 빠르게 실험.</p>
-                  <p class="hs-pillar__items">New Products · AI · SaaS · Platform · Experiments</p>
-                  <span class="hs-pillar__go">Labs 보기 →</span>
+                <a class="hs-pillar" href="about/">
+                  <span class="hs-pillar__tag">05</span>
+                  <h3 class="hs-pillar__title">Company</h3>
+                  <p class="hs-pillar__body">Newon 자체에 대해.</p>
+                  <p class="hs-pillar__items">About · Portfolio · News · Contact</p>
+                  <span class="hs-pillar__go">About →</span>
                 </a>
               </div>
             </div>
           </section>
 
-          <section id="hs-products" class="hs-section hs-section--alt" data-hs-section>
+          <section id="hs-now" class="hs-section hs-section--alt" data-hs-section>
+            <div class="hs-wrap">
+              <header class="hs-section__head">
+                <p class="hs-kicker">NEWON NOW</p>
+                <h2 class="hs-h2">지금도 만들고 있습니다.</h2>
+                <p class="hs-lead">실제 제품과 Lab 실험만 표시합니다.</p>
+              </header>
+              <div class="hs-now-cols">
+                <div class="hs-now-col">
+                  <p class="hs-now-col__label">BUILDING</p>
+                  <p class="hs-now-col__hint">현재 제작 중</p>
+                  <ul>
+                    <li><a href="resources/labs/review-ai/">Newon Review AI</a></li>
+                    <li><a href="resources/labs/newon-qr/">Newon QR</a></li>
+                  </ul>
+                </div>
+                <div class="hs-now-col">
+                  <p class="hs-now-col__label">TESTING</p>
+                  <p class="hs-now-col__hint">현재 사용자 검증 중</p>
+                  <ul>
+                    <li><a href="resources/labs/">Newon Content AI</a></li>
+                  </ul>
+                </div>
+                <div class="hs-now-col">
+                  <p class="hs-now-col__label">SHIPPED</p>
+                  <p class="hs-now-col__hint">최근 출시</p>
+                  <ul>
+                    <li><a href="portfolio/babylog/">BabyLog</a></li>
+                    <li><a href="portfolio/savy/">Savy</a></li>
+                    <li><a href="portfolio/404-human/">404: HUMAN</a></li>
+                  </ul>
+                </div>
+                <div class="hs-now-col">
+                  <p class="hs-now-col__label">EXPLORING</p>
+                  <p class="hs-now-col__hint">새로운 사업 실험</p>
+                  <ul>
+                    <li><a href="resources/labs/character-lab/">Character Lab</a></li>
+                    <li><a href="business/creative/">Newon Studio</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="hs-products" class="hs-section" data-hs-section>
             <div class="hs-wrap">
               <header class="hs-section__head">
                 <p class="hs-kicker">PRODUCTS</p>
@@ -577,15 +682,30 @@
           <section id="hs-works" class="hs-section" data-hs-section>
             <div class="hs-wrap">
               <header class="hs-section__head">
-                <p class="hs-kicker">HOW NEWON WORKS</p>
-                <h2 class="hs-h2">발견에서 확장까지, 하나의 Studio 흐름.</h2>
+                <p class="hs-kicker">BUSINESS ECOSYSTEM</p>
+                <h2 class="hs-h2">하나의 아이디어가 여러 사업으로 확장됩니다.</h2>
+                <p class="hs-lead">Newon Business는 Discover → Build → Operate → Share → Monetize → Expand로 이어집니다.</p>
               </header>
+              <ol class="hs-eco-flow" aria-label="BUSINESS ECOSYSTEM">
+                <li><span class="hs-eco-flow__n">01</span><strong>DISCOVER</strong></li>
+                <li aria-hidden="true" class="hs-eco-flow__arrow">→</li>
+                <li><span class="hs-eco-flow__n">02</span><strong>BUILD</strong></li>
+                <li aria-hidden="true" class="hs-eco-flow__arrow">→</li>
+                <li><span class="hs-eco-flow__n">03</span><strong>OPERATE</strong></li>
+                <li aria-hidden="true" class="hs-eco-flow__arrow">→</li>
+                <li><span class="hs-eco-flow__n">04</span><strong>SHARE</strong></li>
+                <li aria-hidden="true" class="hs-eco-flow__arrow">→</li>
+                <li><span class="hs-eco-flow__n">05</span><strong>MONETIZE</strong></li>
+                <li aria-hidden="true" class="hs-eco-flow__arrow">→</li>
+                <li><span class="hs-eco-flow__n">06</span><strong>EXPAND</strong></li>
+              </ol>
               <ol class="hs-process">
-                <li><span class="hs-process__n">01</span><div class="hs-process__body"><strong>Discover</strong><p>작은 문제와 새로운 기회를 발견합니다.</p></div></li>
+                <li><span class="hs-process__n">01</span><div class="hs-process__body"><strong>Discover</strong><p>문제와 기회를 발견합니다.</p></div></li>
                 <li><span class="hs-process__n">02</span><div class="hs-process__body"><strong>Build</strong><p>빠르게 실제 제품으로 구현합니다.</p></div></li>
-                <li><span class="hs-process__n">03</span><div class="hs-process__body"><strong>Launch</strong><p>시장에 출시하고 직접 운영합니다.</p></div></li>
-                <li><span class="hs-process__n">04</span><div class="hs-process__body"><strong>Learn</strong><p>사용자와 데이터를 통해 배웁니다.</p></div></li>
-                <li><span class="hs-process__n">05</span><div class="hs-process__body"><strong>Expand</strong><p>가능성이 확인되면 더 큰 사업으로 확장합니다.</p></div></li>
+                <li><span class="hs-process__n">03</span><div class="hs-process__body"><strong>Operate</strong><p>직접 운영하며 데이터를 배웁니다.</p></div></li>
+                <li><span class="hs-process__n">04</span><div class="hs-process__body"><strong>Share</strong><p>콘텐츠와 지식으로 공유합니다.</p></div></li>
+                <li><span class="hs-process__n">05</span><div class="hs-process__body"><strong>Monetize</strong><p>스토어·서비스로 가치를 연결합니다.</p></div></li>
+                <li><span class="hs-process__n">06</span><div class="hs-process__body"><strong>Expand</strong><p>검증되면 더 큰 사업으로 확장합니다.</p></div></li>
               </ol>
               <div class="hs-expand">
                 <article><span class="hs-expand__tag">Build</span><p>제품을 만듭니다.</p></article>
@@ -606,13 +726,16 @@
                 <p class="hs-lead">Store, Blog, Media와 Newsletter로 제품을 만드는 과정과 인사이트를 공유합니다.</p>
               </header>
               <div class="hs-resource-list">
-                <a class="hs-resource" href="store/"><span class="hs-resource__idx">01</span><span class="hs-resource__body"><span class="hs-resource__title">Store</span><span class="hs-resource__desc">템플릿, 프롬프트, 가이드와 디지털 상품.</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
-                <a class="hs-resource" href="blog/"><span class="hs-resource__idx">02</span><span class="hs-resource__body"><span class="hs-resource__title">Blog</span><span class="hs-resource__desc">제품, 개발, AI와 사업에 대한 기록.</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
-                <a class="hs-resource" href="media/"><span class="hs-resource__idx">03</span><span class="hs-resource__body"><span class="hs-resource__title">Media</span><span class="hs-resource__desc">Newon이 만드는 과정을 콘텐츠로 공유.</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
-                <a class="hs-resource" href="news/"><span class="hs-resource__idx">04</span><span class="hs-resource__body"><span class="hs-resource__title">Newsletter</span><span class="hs-resource__desc">제품과 새로운 실험 업데이트.</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
-                <div class="hs-resource hs-resource--soon"><span class="hs-resource__idx">05</span><span class="hs-resource__body"><span class="hs-resource__title">Education</span><span class="hs-resource__desc">강의, 가이드와 실전 자료.</span></span><span class="hs-badge">준비 중</span></div>
+                <a class="hs-resource" href="resources/store/"><span class="hs-resource__idx">01</span><span class="hs-resource__body"><span class="hs-resource__title">Store</span><span class="hs-resource__desc">템플릿, 프롬프트, 가이드와 디지털 상품.</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
+                <a class="hs-resource" href="resources/store/?cat=publishing"><span class="hs-resource__idx">02</span><span class="hs-resource__body"><span class="hs-resource__title">Publishing</span><span class="hs-resource__desc">가이드 · 워크북 · 리포트 컬렉션.</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
+                <a class="hs-resource" href="resources/insights/"><span class="hs-resource__idx">03</span><span class="hs-resource__body"><span class="hs-resource__title">Insights</span><span class="hs-resource__desc">제품·소비자·시장 관찰.</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
+                <a class="hs-resource" href="tools/"><span class="hs-resource__idx">04</span><span class="hs-resource__body"><span class="hs-resource__title">Tools</span><span class="hs-resource__desc">브라우저에서 바로 쓰는 무료 도구.</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
+                <a class="hs-resource" href="resources/blog/"><span class="hs-resource__idx">05</span><span class="hs-resource__body"><span class="hs-resource__title">Blog</span><span class="hs-resource__desc">제품, 개발, AI와 사업에 대한 기록.</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
+                <a class="hs-resource" href="resources/media/"><span class="hs-resource__idx">06</span><span class="hs-resource__body"><span class="hs-resource__title">Media</span><span class="hs-resource__desc">Newon이 만드는 과정을 콘텐츠로 공유.</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
+                <a class="hs-resource" href="resources/newsletter/"><span class="hs-resource__idx">07</span><span class="hs-resource__body"><span class="hs-resource__title">Newon Notes</span><span class="hs-resource__desc">Newon Notes — 제품과 실험 이야기.</span></span><span class="hs-resource__go" aria-hidden="true">→</span></a>
+                <div class="hs-resource hs-resource--soon"><span class="hs-resource__idx">08</span><span class="hs-resource__body"><span class="hs-resource__title">Education</span><span class="hs-resource__desc">강의, 가이드와 실전 자료.</span></span><span class="hs-badge">준비 중</span></div>
               </div>
-              <p class="hs-section__cta"><a class="hs-link" href="store/">Resources 둘러보기 →</a></p>
+              <p class="hs-section__cta"><a class="hs-link" href="resources/">Resources 둘러보기 →</a></p>
             </div>
           </section>
 
@@ -681,6 +804,44 @@
           </section>
         </div>
         <!-- HOME_STUDIO_END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1676,6 +1837,32 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="ox-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="ox-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -1883,6 +2070,32 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2362,6 +2575,32 @@
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3460,6 +3699,32 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="pm-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pm-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -3632,6 +3897,32 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4103,6 +4394,32 @@
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5204,6 +5521,32 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="sv-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="sv-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -5366,6 +5709,32 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5842,6 +6211,32 @@
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6940,6 +7335,32 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="bl-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="bl-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -7112,6 +7533,32 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7598,6 +8045,32 @@
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8695,6 +9168,32 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="pl-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pl-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -8867,6 +9366,32 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9353,6 +9878,32 @@
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10453,6 +11004,32 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="pu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pu-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -10625,6 +11202,32 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11101,6 +11704,32 @@
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12204,6 +12833,32 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="gu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="gu-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -12376,6 +13031,32 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12852,6 +13533,32 @@
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13955,6 +14662,32 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="cu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="cu-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -14117,6 +14850,32 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14593,6 +15352,32 @@
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -15693,6 +16478,32 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="np-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="np-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -16097,6 +16908,32 @@
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -17197,6 +18034,32 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="mw-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="mw-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -17369,6 +18232,32 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -17845,6 +18734,32 @@
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -18949,6 +19864,32 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <section id="sp-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="sp-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -19123,6 +20064,32 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -19594,6 +20561,32 @@
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

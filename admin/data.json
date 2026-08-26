@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T09:38:45.360Z",
+  "generatedAt": "2026-08-26T21:05:42.749Z",
   "note": "Business leads, waitlist, and newsletter submissions are collected via FormSubmit to newon@newon.app. Activate the inbox at formsubmit.co if not done yet.",
   "products": [
     {
@@ -343,6 +343,14 @@
       "nameKey": "studio.lab5Name",
       "descKey": "studio.lab5Desc",
       "type": "games"
+    },
+    {
+      "id": "character-lab",
+      "slug": "character-lab",
+      "status": "building",
+      "nameKey": "studio.lab6Name",
+      "descKey": "studio.lab6Desc",
+      "type": "character"
     }
   ],
   "store": [
@@ -350,6 +358,7 @@
       "slug": "app-launch-kit",
       "category": "templates",
       "status": "building",
+      "buyable": false,
       "nameKey": "studio.store1Name",
       "descKey": "studio.store1Desc",
       "priceKo": "Coming Soon",
@@ -359,6 +368,7 @@
       "slug": "mvp-planning-kit",
       "category": "templates",
       "status": "building",
+      "buyable": false,
       "nameKey": "studio.store2Name",
       "descKey": "studio.store2Desc",
       "priceKo": "Coming Soon",
@@ -366,17 +376,62 @@
     },
     {
       "slug": "cursor-prompt-pack",
-      "category": "prompts",
+      "category": "ai-code",
       "status": "building",
+      "buyable": false,
       "nameKey": "studio.store3Name",
       "descKey": "studio.store3Desc",
       "priceKo": "Coming Soon",
       "priceEn": "Coming Soon"
     },
     {
-      "slug": "founder-dashboard",
+      "slug": "codex-builder-pack",
+      "category": "ai-code",
+      "status": "building",
+      "buyable": false,
+      "nameKey": "studio.storeCodexName",
+      "descKey": "studio.storeCodexDesc",
+      "priceKo": "Coming Soon",
+      "priceEn": "Coming Soon"
+    },
+    {
+      "slug": "website-launch-checklist",
       "category": "templates",
+      "collection": "publishing",
+      "status": "building",
+      "buyable": false,
+      "nameKey": "studio.storeWebLaunchName",
+      "descKey": "studio.storeWebLaunchDesc",
+      "priceKo": "Coming Soon",
+      "priceEn": "Coming Soon"
+    },
+    {
+      "slug": "business-planning-workbook",
+      "category": "business",
+      "collection": "publishing",
+      "status": "building",
+      "buyable": false,
+      "nameKey": "studio.storeBizPlanName",
+      "descKey": "studio.storeBizPlanDesc",
+      "priceKo": "Coming Soon",
+      "priceEn": "Coming Soon"
+    },
+    {
+      "slug": "product-research-template",
+      "category": "reports",
+      "collection": "publishing",
+      "status": "building",
+      "buyable": false,
+      "nameKey": "studio.storeResearchName",
+      "descKey": "studio.storeResearchDesc",
+      "priceKo": "Coming Soon",
+      "priceEn": "Coming Soon"
+    },
+    {
+      "slug": "founder-dashboard",
+      "category": "business",
       "status": "concept",
+      "buyable": false,
       "nameKey": "studio.store4Name",
       "descKey": "studio.store4Desc",
       "priceKo": "Coming Soon",
@@ -386,6 +441,7 @@
       "slug": "product-roadmap",
       "category": "templates",
       "status": "concept",
+      "buyable": false,
       "nameKey": "studio.store5Name",
       "descKey": "studio.store5Desc",
       "priceKo": "Coming Soon",
@@ -395,51 +451,135 @@
   "tools": [
     {
       "id": "qr-generator",
-      "slug": "qr"
+      "slug": "qr",
+      "status": "live"
     },
     {
       "id": "random-picker",
-      "slug": "random-picker"
+      "slug": "random-picker",
+      "status": "live"
     },
     {
       "id": "wheel-spinner",
-      "slug": "wheel"
+      "slug": "wheel",
+      "status": "live"
     },
     {
       "id": "dday-calculator",
-      "slug": "dday"
+      "slug": "dday",
+      "status": "live"
     },
     {
       "id": "text-counter",
-      "slug": "counter"
+      "slug": "counter",
+      "status": "live"
     },
     {
       "id": "password-generator",
-      "slug": "password"
+      "slug": "password",
+      "status": "live"
     },
     {
       "id": "uuid-generator",
-      "slug": "uuid"
+      "slug": "uuid",
+      "status": "live"
     },
     {
       "id": "json-formatter",
-      "slug": "json"
+      "slug": "json",
+      "status": "live"
     },
     {
       "id": "color-converter",
-      "slug": "color"
+      "slug": "color",
+      "status": "live"
     },
     {
       "id": "percent-calculator",
-      "slug": "percent"
+      "slug": "percent",
+      "status": "live"
     },
     {
       "id": "subscription-calculator",
-      "slug": "subscription"
+      "slug": "subscription",
+      "status": "live"
     },
     {
       "id": "date-calculator",
-      "slug": "date"
+      "slug": "date",
+      "status": "live"
+    },
+    {
+      "id": "utm-builder",
+      "slug": "utm",
+      "status": "building"
+    },
+    {
+      "id": "app-launch-checklist",
+      "slug": "app-launch-checklist",
+      "status": "building"
+    },
+    {
+      "id": "mvp-planner",
+      "slug": "mvp-planner",
+      "status": "building"
+    },
+    {
+      "id": "app-pricing-calculator",
+      "slug": "app-pricing-calculator",
+      "status": "building"
     }
-  ]
+  ],
+  "growth": {
+    "metrics": [
+      {
+        "id": "page_views",
+        "label": "Page views",
+        "value": null,
+        "source": null
+      },
+      {
+        "id": "store_views",
+        "label": "Store product views",
+        "value": null,
+        "source": null
+      },
+      {
+        "id": "insight_views",
+        "label": "Insight views",
+        "value": null,
+        "source": null
+      },
+      {
+        "id": "tool_starts",
+        "label": "Tool starts",
+        "value": null,
+        "source": null
+      },
+      {
+        "id": "creative_inquiries",
+        "label": "Creative inquiries",
+        "value": null,
+        "source": null
+      },
+      {
+        "id": "newsletter_signups",
+        "label": "Newsletter signups",
+        "value": null,
+        "source": null
+      },
+      {
+        "id": "experiment_views",
+        "label": "Experiment views",
+        "value": null,
+        "source": null
+      },
+      {
+        "id": "affiliate_clicks",
+        "label": "Affiliate clicks",
+        "value": null,
+        "source": null
+      }
+    ]
+  }
 }

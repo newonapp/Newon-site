@@ -1,0 +1,477 @@
+#!/usr/bin/env node
+/**
+ * Render /{lang}/business/{build|automation|research|solutions}/ pillar detail pages.
+ */
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml } from "./hub-utils.mjs";
+import { injectSiteChrome } from "./inject-chrome.mjs";
+import { PILLAR_SLUGS, getPillarCopy } from "./business-pillar-copy.mjs";
+
+const template = fs.readFileSync(path.join(ROOT, "templates", "business-pillar.html"), "utf8");
+
+function loadJson(file) {
+  return JSON.parse(fs.readFileSync(path.join(ROOT, "locales", file), "utf8"));
+}
+
+function flatten(obj, prefix = "") {
+  const out = {};
+  if (obj == null) return out;
+  if (typeof obj !== "object") {
+    out[prefix] = obj;
+    return out;
+  }
+  if (Array.isArray(obj)) {
+    obj.forEach((v, i) => Object.assign(out, flatten(v, `${prefix}[${i}]`)));
+    return out;
+  }
+  for (const [k, v] of Object.entries(obj)) {
+    Object.assign(out, flatten(v, prefix ? `${prefix}.${k}` : k));
+  }
+  return out;
+}
+
+function hreflangBlock(slug) {
+  const lines = LANGS.map(
+    ({ dir, hreflang }) =>
+      `    <link rel="alternate" hreflang="${hreflang}" href="${SITE_ORIGIN}/${dir}/business/${slug}/" />`
+  );
+  lines.push(`    <link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}/en/business/${slug}/" />`);
+  return lines.join("\n");
+}
+
+function pad2(n) {
+  return String(n).padStart(2, "0");
+}
+
+function jsonLd(slug, copy, langDir) {
+  const url = `${SITE_ORIGIN}/${langDir}/business/${slug}/`;
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: copy.seoTitle || `Newon ${slug}`,
+    description: copy.metaDescription || copy.lead || "",
+    provider: { "@type": "Organization", name: "Newon", url: SITE_ORIGIN },
+    url,
+    areaServed: "Worldwide",
+  };
+  const crumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Newon", item: `${SITE_ORIGIN}/${langDir}/` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: copy.crumbBusiness || "Business",
+        item: `${SITE_ORIGIN}/${langDir}/business/`,
+      },
+      { "@type": "ListItem", position: 3, name: slug.toUpperCase(), item: url },
+    ],
+  };
+  return `    <script type="application/ld+json">${JSON.stringify(data)}</script>
+    <script type="application/ld+json">${JSON.stringify(crumb)}</script>`;
+}
+
+function breadcrumb(copy, slug) {
+  return `<nav class="bp-crumb" aria-label="Breadcrumb">
+  <div class="bp-inner">
+    <ol class="bp-crumb__list">
+      <li><a href="../">${escapeHtml(copy.crumbBusiness || "Business")}</a></li>
+      <li aria-current="page">${escapeHtml(slug.toUpperCase())}</li>
+    </ol>
+  </div>
+</nav>`;
+}
+
+function heroVisual(copy) {
+  if (copy.heroIndex) {
+    return `<aside class="bp-hero__visual bp-hero__visual--index" aria-hidden="true">
+      <ul class="bp-index">
+        ${copy.heroIndex.map((line) => `<li>${escapeHtml(line)}</li>`).join("")}
+      </ul>
+    </aside>`;
+  }
+  if (copy.heroFlow) {
+    return `<aside class="bp-hero__visual bp-hero__visual--flow" aria-hidden="true">
+      <div class="bp-flow" data-bp-flow>
+        ${copy.heroFlow
+          .map(
+            (step, i) =>
+              `<span class="bp-flow__step">${escapeHtml(step)}</span>${
+                i < copy.heroFlow.length - 1 ? `<span class="bp-flow__arrow">↓</span>` : ""
+              }`
+          )
+          .join("")}
+      </div>
+    </aside>`;
+  }
+  if (copy.heroStack) {
+    const last = copy.heroStack[copy.heroStack.length - 1];
+    const rest = copy.heroStack.slice(0, -1);
+    return `<aside class="bp-hero__visual bp-hero__visual--stack" aria-hidden="true">
+      <div class="bp-stack">
+        ${rest.map((s) => `<span class="bp-stack__item">${escapeHtml(s)}</span>`).join("")}
+        <span class="bp-stack__arrow">↓</span>
+        <span class="bp-stack__result">${escapeHtml(last)}</span>
+      </div>
+    </aside>`;
+  }
+  return `<aside class="bp-hero__visual bp-hero__visual--mark" aria-hidden="true">
+    <p class="bp-mark">${escapeHtml((copy.eyebrow || "NEWON").replace("NEWON ", ""))}</p>
+  </aside>`;
+}
+
+function servicesSection(copy) {
+  const rows = (copy.services || [])
+    .map((s, i) => {
+      const n = pad2(i + 1);
+      const id = `bp-svc-${i}`;
+      return `<div class="bp-svc" data-bp-acc>
+  <button type="button" class="bp-svc__trigger" aria-expanded="false" aria-controls="${id}" id="${id}-btn">
+    <span class="bp-svc__n">${n}</span>
+    <span class="bp-svc__main">
+      <span class="bp-svc__title">${escapeHtml(s.title)}</span>
+      <span class="bp-svc__summary">${escapeHtml(s.summary)}</span>
+    </span>
+    <span class="bp-svc__icon" aria-hidden="true"></span>
+  </button>
+  <div class="bp-svc__panel" id="${id}" role="region" aria-labelledby="${id}-btn" hidden>
+    <dl class="bp-svc__detail">
+      <div><dt>${escapeHtml(copy.whatWeBuild)}</dt><dd>${escapeHtml(s.what)}</dd></div>
+      <div><dt>${escapeHtml(copy.recommendedFor)}</dt><dd>${escapeHtml(s.for)}</dd></div>
+      <div><dt>${escapeHtml(copy.included)}</dt><dd>${escapeHtml(s.included)}</dd></div>
+      <div><dt>${escapeHtml(copy.deliverables)}</dt><dd>${escapeHtml(s.deliverables)}</dd></div>
+      <div><dt>${escapeHtml(copy.timeline)}</dt><dd>${escapeHtml(s.timeline)}</dd></div>
+    </dl>
+  </div>
+</div>`;
+    })
+    .join("\n");
+
+  return `<section id="services" class="bp-sec bp-services" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.servicesLabel || "SERVICES")}</p>
+    </header>
+    <div class="bp-svc-list">${rows}</div>
+  </div>
+</section>`;
+}
+
+function processSection(copy) {
+  if (!copy.process || !copy.process.length) return "";
+  const horizontal = copy.layout === "build" || copy.layout === "automation";
+  const steps = copy.process
+    .map((p, i) => {
+      const arrow =
+        i < copy.process.length - 1
+          ? horizontal
+            ? `<span class="bp-proc__conn" aria-hidden="true">→</span>`
+            : `<span class="bp-proc__conn bp-proc__conn--down" aria-hidden="true">↓</span>`
+          : "";
+      return `<div class="bp-proc__step">
+      <span class="bp-proc__n">${escapeHtml(p.n)}</span>
+      <span class="bp-proc__t">${escapeHtml(p.t)}</span>
+      <span class="bp-proc__d">${escapeHtml(p.d)}</span>
+    </div>${arrow}`;
+    })
+    .join("");
+
+  return `<section id="process" class="bp-sec bp-process" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.processLabel || "PROCESS")}</p>
+    </header>
+    <div class="bp-proc${horizontal ? " bp-proc--h" : " bp-proc--v"}">${steps}</div>
+  </div>
+</section>`;
+}
+
+function useCasesSection(copy) {
+  if (!copy.useCases || !copy.useCases.length) return "";
+  return `<section id="use-cases" class="bp-sec bp-usecases" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head bp-sec__head--row">
+      <p class="bp-label">${escapeHtml(copy.useCasesLabel || "USE CASES")}</p>
+      <p class="bp-note">${escapeHtml(copy.useCasesNote || "")}</p>
+    </header>
+    <ul class="bp-usecases__grid">
+      ${copy.useCases.map((u) => `<li>${escapeHtml(u)}</li>`).join("")}
+    </ul>
+  </div>
+</section>`;
+}
+
+function beforeAfterSection(copy) {
+  if (!copy.before || !copy.after) return "";
+  return `<section id="before-after" class="bp-sec bp-ba" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.beforeAfterLabel || "BEFORE / AFTER")}</p>
+    </header>
+    <div class="bp-ba__grid">
+      <div class="bp-ba__col">
+        <p class="bp-ba__k">BEFORE</p>
+        <ul>${copy.before.map((x) => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
+      </div>
+      <span class="bp-ba__arrow" aria-hidden="true">→</span>
+      <div class="bp-ba__col bp-ba__col--after">
+        <p class="bp-ba__k">AFTER</p>
+        <ul>${copy.after.map((x) => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
+      </div>
+    </div>
+  </div>
+</section>`;
+}
+
+function researchOutputSection(copy) {
+  if (!copy.outputs || !copy.outputs.length) return "";
+  return `<section id="output" class="bp-sec bp-output" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.outputLabel || "RESEARCH OUTPUT")}</p>
+    </header>
+    <div class="bp-doc" aria-hidden="true">
+      <div class="bp-doc__bar">
+        <span></span><span></span><span></span>
+        <em>RESEARCH BRIEF · SAMPLE STRUCTURE</em>
+      </div>
+      <div class="bp-doc__body">
+        <p class="bp-doc__title">Project Research Summary</p>
+        <ol class="bp-doc__toc">
+          ${copy.outputs.map((o, i) => `<li><span>${pad2(i + 1)}</span>${escapeHtml(o)}</li>`).join("")}
+        </ol>
+        <div class="bp-doc__lines">
+          <span></span><span></span><span></span><span class="is-short"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>`;
+}
+
+function launchFlowSection(copy) {
+  if (!copy.launchFlow || !copy.launchFlow.length) return "";
+  return `<section id="launch-flow" class="bp-sec bp-launch" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.launchLabel || "PRODUCT LAUNCH FLOW")}</p>
+    </header>
+    <ol class="bp-launch__flow">
+      ${copy.launchFlow
+        .map(
+          (s, i) => `<li class="bp-launch__step" tabindex="0">
+        <span class="bp-launch__t">${escapeHtml(s.t)}</span>
+        <span class="bp-launch__tip">${escapeHtml(s.d)}</span>
+        ${i < copy.launchFlow.length - 1 ? `<span class="bp-launch__conn" aria-hidden="true">↓</span>` : ""}
+      </li>`
+        )
+        .join("")}
+    </ol>
+  </div>
+</section>`;
+}
+
+function whenSection(copy) {
+  if (!copy.whenItems || !copy.whenItems.length) return "";
+  return `<section id="when" class="bp-sec bp-when" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.whenLabel || "WHEN TO USE")}</p>
+    </header>
+    <ul class="bp-when__list">
+      ${copy.whenItems.map((w, i) => `<li><span>${pad2(i + 1)}</span>${escapeHtml(w)}</li>`).join("")}
+    </ul>
+  </div>
+</section>`;
+}
+
+function pricingSection(copy) {
+  if (copy.pricingCustom) {
+    return `<section id="pricing" class="bp-sec bp-pricing" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.pricingLabel || "PRICING")}</p>
+    </header>
+    <div class="bp-pricing__custom">
+      <p class="bp-pricing__name">${escapeHtml(copy.pricingTitle || "CUSTOM PROJECT")}</p>
+      <p class="bp-pricing__lead">${escapeHtml(copy.pricingLead || "")}</p>
+      <p class="bp-pricing__body">${escapeHtml(copy.pricingBody || "")}</p>
+      <a class="bp-btn bp-btn--primary" href="../#inquiry" data-analytics="business_pillar_cta">${escapeHtml(copy.quoteCta || "")}</a>
+    </div>
+  </div>
+</section>`;
+  }
+  if (!copy.pricing || !copy.pricing.length) return "";
+  return `<section id="pricing" class="bp-sec bp-pricing" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.pricingLabel || "PRICING")}</p>
+    </header>
+    <ul class="bp-pricing__list">
+      ${copy.pricing
+        .map(
+          (p) => `<li>
+        <span class="bp-pricing__name">${escapeHtml(p.name)}</span>
+        <span class="bp-pricing__price">${escapeHtml(p.price)}</span>
+      </li>`
+        )
+        .join("")}
+    </ul>
+    <p class="bp-pricing__note">${escapeHtml(copy.pricingNote || copy.pricingNoteDefault || "")}</p>
+    <a class="bp-btn bp-btn--primary" href="../#inquiry" data-analytics="business_pillar_cta">${escapeHtml(copy.quoteCta || "")}</a>
+  </div>
+</section>`;
+}
+
+function otherServices(copy, slug) {
+  const labels = { build: "BUILD", automation: "AUTOMATION", research: "RESEARCH", solutions: "SOLUTIONS" };
+  const items = PILLAR_SLUGS.map((s, i) => {
+    const active = s === slug ? " is-active" : "";
+    const href = s === slug ? "#" : `../${s}/`;
+    return `<a class="bp-other__item${active}" href="${href}"${s === slug ? ' aria-current="page"' : ""}>
+      <span class="bp-other__n">${pad2(i + 1)}</span>
+      <span class="bp-other__t">${labels[s]}</span>
+      <span class="bp-other__arrow" aria-hidden="true">→</span>
+    </a>`;
+  }).join("");
+  return `<section class="bp-sec bp-other" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.otherTitle || "OTHER BUSINESS SERVICES")}</p>
+    </header>
+    <div class="bp-other__list">${items}</div>
+  </div>
+</section>`;
+}
+
+function faqSection(copy) {
+  if (!copy.faq || !copy.faq.length) return "";
+  return `<section id="faq" class="bp-sec bp-faq" data-bp-reveal>
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label">${escapeHtml(copy.faqLabel || "FAQ")}</p>
+    </header>
+    <div class="bp-faq__list">
+      ${copy.faq
+        .map(
+          (f, i) => `<details class="bp-faq__item"${i === 0 ? " open" : ""}>
+        <summary>${escapeHtml(f.q)}</summary>
+        <p>${escapeHtml(f.a)}</p>
+      </details>`
+        )
+        .join("")}
+    </div>
+  </div>
+</section>`;
+}
+
+function finalCta(copy) {
+  return `<section class="bp-cta" data-bp-reveal>
+  <div class="bp-inner bp-cta__inner">
+    <p class="bp-label">${escapeHtml(copy.ctaEyebrow || "HAVE A PROJECT?")}</p>
+    <h2 class="bp-cta__title">${escapeHtml(copy.ctaTitle || "")}</h2>
+    <p class="bp-cta__lead">${escapeHtml(copy.ctaLead || "")}</p>
+    <a class="bp-btn bp-btn--primary" href="../#inquiry" data-analytics="business_pillar_cta">${escapeHtml(copy.ctaBtn || "")}</a>
+  </div>
+</section>`;
+}
+
+function buildBody(slug, copy) {
+  return `${breadcrumb(copy, slug)}
+<section class="bp-hero" data-bp-reveal aria-labelledby="bp-hero-title">
+  <div class="bp-inner bp-hero__grid">
+    <div class="bp-hero__copy">
+      <p class="bp-eyebrow">${escapeHtml(copy.eyebrow || "")}</p>
+      <h1 class="bp-hero__title" id="bp-hero-title">${escapeHtml(copy.headline || "")}</h1>
+      <p class="bp-hero__lead">${escapeHtml(copy.lead || "")}</p>
+      <div class="bp-hero__actions">
+        <a class="bp-btn bp-btn--primary" href="../#inquiry" data-analytics="business_pillar_cta">${escapeHtml(copy.ctaPrimary || "")}</a>
+        <a class="bp-btn bp-btn--ghost" href="#services">${escapeHtml(copy.ctaSecondary || "")}</a>
+      </div>
+    </div>
+    ${heroVisual(copy)}
+  </div>
+</section>
+${servicesSection(copy)}
+${useCasesSection(copy)}
+${beforeAfterSection(copy)}
+${researchOutputSection(copy)}
+${launchFlowSection(copy)}
+${whenSection(copy)}
+${processSection(copy)}
+${pricingSection(copy)}
+${otherServices(copy, slug)}
+${faqSection(copy)}
+${finalCta(copy)}`;
+}
+
+function writeRedirect(slug) {
+  const dir = path.join(ROOT, "business", slug);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(
+    path.join(dir, "index.html"),
+    `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta http-equiv="refresh" content="0;url=/en/business/${slug}/"/><link rel="canonical" href="${SITE_ORIGIN}/en/business/${slug}/"/><title>Redirect</title></head><body><p><a href="/en/business/${slug}/">Continue</a></p></body></html>\n`
+  );
+}
+
+export function renderBusinessPillars() {
+  const flatEn = flatten(loadJson("en.json"));
+
+  for (const { dir, file, htmlLang } of LANGS) {
+    const flat = flatten(loadJson(file));
+    const lang = dir === "ko" ? "ko" : "en";
+
+    for (const slug of PILLAR_SLUGS) {
+      const copy = getPillarCopy(slug, lang);
+      let html = template;
+      html = html.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+      html = html.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
+      html = html.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/business/${slug}/`);
+      html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflangBlock(slug));
+      html = html.replace(/\{\{JSON_LD\}\}/g, jsonLd(slug, copy, dir));
+      html = html.replace(/\{\{SEO_TITLE\}\}/g, escapeHtml(copy.seoTitle || ""));
+      html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(copy.metaDescription || ""));
+      html = html.replace(/\{\{PILLAR_SLUG\}\}/g, slug);
+      html = html.replace(/\{\{PAGE_BODY\}\}/g, buildBody(slug, copy));
+      html = injectSiteChrome(html, flat, flatEn, { activeNav: "business", base: "../../" });
+
+      const outDir = path.join(ROOT, dir, "business", slug);
+      fs.mkdirSync(outDir, { recursive: true });
+      fs.writeFileSync(path.join(outDir, "index.html"), html);
+    }
+  }
+
+  for (const slug of PILLAR_SLUGS) writeRedirect(slug);
+
+  const pub = path.join(ROOT, "_publish");
+  if (fs.existsSync(pub)) {
+    for (const { dir } of LANGS) {
+      for (const slug of PILLAR_SLUGS) {
+        const src = path.join(ROOT, dir, "business", slug, "index.html");
+        const destDir = path.join(pub, dir, "business", slug);
+        if (!fs.existsSync(src)) continue;
+        fs.mkdirSync(destDir, { recursive: true });
+        fs.copyFileSync(src, path.join(destDir, "index.html"));
+      }
+    }
+    for (const slug of PILLAR_SLUGS) {
+      const src = path.join(ROOT, "business", slug, "index.html");
+      const destDir = path.join(pub, "business", slug);
+      if (!fs.existsSync(src)) continue;
+      fs.mkdirSync(destDir, { recursive: true });
+      fs.copyFileSync(src, path.join(destDir, "index.html"));
+    }
+    for (const f of ["business-pillar.css", "business-pillar.js"]) {
+      const src = path.join(ROOT, f);
+      if (fs.existsSync(src)) fs.copyFileSync(src, path.join(pub, f));
+    }
+  }
+
+  console.log(`render-business-pillars: wrote ${LANGS.length * PILLAR_SLUGS.length} pages`);
+}
+
+const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (isMain) renderBusinessPillars();

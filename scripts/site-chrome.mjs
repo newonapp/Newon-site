@@ -1,8 +1,9 @@
 /**
- * Shared site chrome — Global Navigation with premium mega menus.
- * Top-level: Products · Business · Resources · Company (English labels always)
+ * Shared site chrome — Global Navigation with editorial mega menus.
+ * Top-level: Products · Business · Studio · Resources · Company
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
+import { MEGA_DESTINATIONS, TOP_NAV } from "./venture-studio-data.mjs";
 
 const LANG_OPTIONS = [
   { dir: "ko", labelKey: "ui.langKo", short: "KO" },
@@ -19,8 +20,17 @@ const LANG_OPTIONS = [
 const NAV_LABELS = {
   products: "Products",
   business: "Business",
+  studio: "Studio",
   resources: "Resources",
   company: "Company",
+};
+
+const MENU_META = {
+  products: { kicker: "nav.productsMenuLabel", lead: "nav.productsMenuLead", footHref: "products/", footKey: "nav.viewAllProducts", footFb: "View all products →" },
+  business: { kicker: "nav.businessMenuLabel", lead: "nav.businessMenuLead", footHref: "business/", footKey: "nav.businessExploreCta", footFb: "Explore Business →" },
+  studio: { kicker: "nav.studioMenuLabel", lead: "nav.studioMenuLead", footHref: "studio/", footKey: "nav.studioExploreCta", footFb: "Explore Studio →" },
+  resources: { kicker: "nav.resourcesMenuLabel", lead: "nav.resourcesMenuLead", footHref: "resources/", footKey: "nav.resourcesExploreCta", footFb: "Explore Resources →" },
+  company: { kicker: "nav.companyMenuLabel", lead: "nav.companyMenuLead", footHref: "about/", footKey: "nav.companyExploreCta", footFb: "About Newon →" },
 };
 
 function t(flat, flatEn, key, fb = "") {
@@ -44,12 +54,17 @@ export function resolveActiveNav(pathname = "") {
     .replace(/^\/(ko|en|ja|es|pt-br|fr|de|hi|id)(?=\/|$)/, "")
     .replace(/^\//, "")
     .toLowerCase();
-  const seg = p.split("/")[0] || "";
+  const parts = p.split("/").filter(Boolean);
+  const seg = parts[0] || "";
   if (["products", "apps", "ai", "saas", "games", "tools"].includes(seg)) return "products";
-  if (seg === "business") return "business";
+  if (seg === "business") {
+    // creative stays under Studio in nav, but URL preserved
+    if (parts[1] === "creative" || parts[1] === "design") return "studio";
+    return "business";
+  }
+  if (seg === "studio") return "studio";
   if (seg === "resources" || ["store", "blog", "media", "labs", "market"].includes(seg)) return "resources";
-  if (seg === "company" || ["about", "portfolio", "news", "ideas", "contact", "studio"].includes(seg))
-    return "company";
+  if (seg === "company" || ["about", "portfolio", "news", "ideas", "contact"].includes(seg)) return "company";
   return "";
 }
 
@@ -57,46 +72,19 @@ const CHEVRON_SVG = `<svg class="gnav-dd__chev-svg" width="12" height="12" viewB
 
 const MOON_SVG = `<svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
-const SUN_SVG = `<svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.75"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>`;
-
-function megaCell(flat, flatEn, base, { titleKey, descKey, hrefPath, titleFb = "", withArrow = false }) {
-  const title = escapeHtml(t(flat, flatEn, titleKey, titleFb));
-  const desc = escapeHtml(t(flat, flatEn, descKey));
-  const arrow = withArrow
-    ? `<span class="gnav-mega__cell-arrow" aria-hidden="true">→</span>`
-    : "";
-  return `<a class="gnav-mega__cell${withArrow ? " gnav-mega__cell--arrow" : ""}" href="${href(base, hrefPath)}" role="menuitem">
-    <span class="gnav-mega__cell-title">${title}${arrow}</span>
-    <span class="gnav-mega__cell-desc">${desc}</span>
-  </a>`;
-}
-
-function megaSoon(flat, flatEn, { titleKey, descKey, titleFb = "" }) {
-  const title = escapeHtml(t(flat, flatEn, titleKey, titleFb));
-  const desc = escapeHtml(t(flat, flatEn, descKey));
-  const badge = escapeHtml(t(flat, flatEn, "nav.comingSoon", "Coming Soon"));
-  return `<div class="gnav-mega__cell gnav-mega__cell--soon" role="presentation">
-    <span class="gnav-mega__cell-title">${title}<span class="gnav-mega__badge">${badge}</span></span>
-    <span class="gnav-mega__cell-desc">${desc}</span>
-  </div>`;
-}
-
-function productsMega(flat, flatEn, base) {
-  const kicker = escapeHtml(t(flat, flatEn, "nav.productsMenuLabel", "PRODUCTS"));
-  const lead = escapeHtml(t(flat, flatEn, "nav.productsMenuLead"));
-  const viewAll = escapeHtml(t(flat, flatEn, "nav.viewAllProducts", "View all products →"));
-  const items = [
-    { titleKey: "nav.apps", descKey: "nav.appsMenuDesc", hrefPath: "apps/" },
-    { titleKey: "nav.ai", descKey: "nav.aiMenuDesc", hrefPath: "ai/" },
-    { titleKey: "nav.saas", descKey: "nav.saasMenuDesc", hrefPath: "saas/" },
-    { titleKey: "nav.games", descKey: "nav.gamesMenuDesc", hrefPath: "games/" },
-    { titleKey: "nav.tools", descKey: "nav.toolsMenuDesc", hrefPath: "tools/" },
-  ]
+/** Editorial mega: max 4 numbered destinations */
+function editorialMega(flat, flatEn, base, menuId) {
+  const meta = MENU_META[menuId];
+  const kicker = escapeHtml(t(flat, flatEn, meta.kicker, menuId.toUpperCase()));
+  const lead = escapeHtml(t(flat, flatEn, meta.lead));
+  const foot = escapeHtml(t(flat, flatEn, meta.footKey, meta.footFb));
+  const items = (MEGA_DESTINATIONS[menuId] || []).slice(0, 4);
+  const rows = items
     .map((item, i) => {
-      const title = escapeHtml(t(flat, flatEn, item.titleKey));
+      const title = escapeHtml(t(flat, flatEn, item.titleKey, item.titleFb));
       const desc = escapeHtml(t(flat, flatEn, item.descKey));
       const n = String(i + 1).padStart(2, "0");
-      return `<a class="gnav-mega__row" href="${href(base, item.hrefPath)}" role="menuitem">
+      return `<a class="gnav-mega__row" href="${href(base, item.href)}" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">${n}</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">${title}</span>
@@ -110,82 +98,13 @@ function productsMega(flat, flatEn, base) {
       <p class="gnav-mega__kicker">${kicker}</p>
       <p class="gnav-mega__lead">${lead}</p>
     </div>
-    <div class="gnav-mega__list" role="none">
-      ${items}
+    <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
+      ${rows}
     </div>
-    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="${href(base, "products/")}">${viewAll}</a></p>`;
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="${href(base, meta.footHref)}">${foot}</a></p>`;
 }
 
-function businessMega(flat, flatEn, base) {
-  const kicker = escapeHtml(t(flat, flatEn, "nav.businessMenuLabel", "BUSINESS"));
-  const lead = escapeHtml(t(flat, flatEn, "nav.businessMenuLead"));
-  const explore = escapeHtml(t(flat, flatEn, "nav.businessExploreCta", "Learn about Business →"));
-  const inquiry = escapeHtml(t(flat, flatEn, "nav.businessInquiryCta", "Project inquiry →"));
-  return `<div class="gnav-mega__head">
-      <p class="gnav-mega__kicker">${kicker}</p>
-      <p class="gnav-mega__lead">${lead}</p>
-      <p class="gnav-mega__subkicker">${escapeHtml(t(flat, flatEn, "nav.servicesLabel", "Services"))}</p>
-    </div>
-    <div class="gnav-mega__grid gnav-mega__grid--business">
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.bizMvp", descKey: "nav.bizMvpDesc", hrefPath: "business/mvp/" })}
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.bizWeb", descKey: "nav.bizWebDesc", hrefPath: "business/web/" })}
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.bizApp", descKey: "nav.bizAppDesc", hrefPath: "business/app/" })}
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.bizAi", descKey: "nav.bizAiDesc", hrefPath: "business/ai-automation/" })}
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.bizWhitelabel", descKey: "nav.bizWhitelabelDesc", hrefPath: "business/white-label/" })}
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.bizDesign", descKey: "nav.bizDesignDesc", hrefPath: "business/design/" })}
-    </div>
-    <div class="gnav-mega__foot gnav-mega__foot--split">
-      <a class="gnav-mega__foot-link" href="${href(base, "business/")}">${explore}</a>
-      <a class="gnav-mega__foot-link gnav-mega__foot-link--strong" href="${href(base, "business/#inquiry")}">${inquiry}</a>
-    </div>`;
-}
-
-function resourcesMega(flat, flatEn, base) {
-  const kicker = escapeHtml(t(flat, flatEn, "nav.resourcesMenuLabel", "RESOURCES"));
-  const lead = escapeHtml(t(flat, flatEn, "nav.resourcesMenuLead"));
-  return `<div class="gnav-mega__head">
-      <p class="gnav-mega__kicker">${kicker}</p>
-      <p class="gnav-mega__lead">${lead}</p>
-    </div>
-    <div class="gnav-mega__grid gnav-mega__grid--resources">
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.store", descKey: "nav.storeMenuDesc", hrefPath: "resources/store/" })}
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.blog", descKey: "nav.blogMenuDesc", hrefPath: "resources/blog/" })}
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.media", descKey: "nav.mediaMenuDesc", hrefPath: "resources/media/" })}
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.labs", descKey: "nav.labsMenuDesc", hrefPath: "resources/labs/" })}
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.newsletter", descKey: "nav.newsletterMenuDesc", hrefPath: "resources/newsletter/" })}
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.education", descKey: "nav.educationMenuDesc", hrefPath: "resources/education/" })}
-    </div>`;
-}
-
-function companyMega(flat, flatEn, base) {
-  const kicker = escapeHtml(t(flat, flatEn, "nav.companyMenuLabel", "COMPANY"));
-  const lead = escapeHtml(t(flat, flatEn, "nav.companyMenuLead"));
-  const tag = escapeHtml(t(flat, flatEn, "nav.companyFooterTag", "NEWON"));
-  const tagline = escapeHtml(t(flat, flatEn, "nav.companyFooterLine", "Digital Product Studio"));
-  return `<div class="gnav-mega__head">
-      <p class="gnav-mega__kicker">${kicker}</p>
-      <p class="gnav-mega__lead">${lead}</p>
-    </div>
-    <div class="gnav-mega__grid gnav-mega__grid--company">
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.aboutNewon", descKey: "nav.aboutMenuDesc", hrefPath: "about/", withArrow: true })}
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.portfolio", descKey: "nav.portfolioMenuDesc", hrefPath: "portfolio/", withArrow: true })}
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.newsUpdates", descKey: "nav.newsMenuDesc", hrefPath: "news/", withArrow: true })}
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.ideas", descKey: "nav.ideasMenuDesc", hrefPath: "ideas/", withArrow: true })}
-      ${megaCell(flat, flatEn, base, { titleKey: "nav.contact", descKey: "nav.contactMenuDesc", hrefPath: "contact/", withArrow: true })}
-    </div>
-    <div class="gnav-mega__brand">
-      <p class="gnav-mega__brand-name">${tag}</p>
-      <p class="gnav-mega__brand-line">${tagline}</p>
-      <a class="gnav-mega__brand-email" href="mailto:newon@newon.app">newon@newon.app</a>
-    </div>`;
-}
-
-const MEGA_RENDERERS = {
-  products: productsMega,
-  business: businessMega,
-  resources: resourcesMega,
-  company: companyMega,
-};
+const MEGA_RENDERERS = Object.fromEntries(TOP_NAV.map((id) => [id, (f, fe, b) => editorialMega(f, fe, b, id)]));
 
 function navMegaItem(flat, flatEn, base, activeNav, id) {
   const label = NAV_LABELS[id];
@@ -205,9 +124,7 @@ function navMegaItem(flat, flatEn, base, activeNav, id) {
 }
 
 function desktopNav(flat, flatEn, base, activeNav) {
-  return ["products", "business", "resources", "company"]
-    .map((id) => navMegaItem(flat, flatEn, base, activeNav, id))
-    .join("\n          ");
+  return TOP_NAV.map((id) => navMegaItem(flat, flatEn, base, activeNav, id)).join("\n          ");
 }
 
 function langSelect(flat, flatEn, id) {
@@ -223,64 +140,36 @@ function langSelect(flat, flatEn, id) {
   </div>`;
 }
 
-const MOBILE_MENUS = {
-  products: [
-    { labelKey: "nav.apps", href: "apps/" },
-    { labelKey: "nav.ai", href: "ai/" },
-    { labelKey: "nav.saas", href: "saas/" },
-    { labelKey: "nav.games", href: "games/" },
-    { labelKey: "nav.tools", href: "tools/" },
-    { labelKey: "nav.allProducts", href: "products/" },
-  ],
-  business: [
-    { labelKey: "nav.bizMvp", href: "business/mvp/" },
-    { labelKey: "nav.bizWeb", href: "business/web/" },
-    { labelKey: "nav.bizApp", href: "business/app/" },
-    { labelKey: "nav.bizAi", href: "business/ai-automation/" },
-    { labelKey: "nav.bizWhitelabel", href: "business/white-label/" },
-    { labelKey: "nav.bizDesign", href: "business/design/" },
-  ],
-  resources: [
-    { labelKey: "nav.store", href: "resources/store/" },
-    { labelKey: "nav.blog", href: "resources/blog/" },
-    { labelKey: "nav.media", href: "resources/media/" },
-    { labelKey: "nav.labs", href: "resources/labs/" },
-    { labelKey: "nav.newsletter", href: "resources/newsletter/" },
-    { labelKey: "nav.education", href: "resources/education/" },
-  ],
-  company: [
-    { labelKey: "nav.aboutNewon", href: "about/" },
-    { labelKey: "nav.portfolio", href: "portfolio/" },
-    { labelKey: "nav.newsUpdates", href: "news/" },
-    { labelKey: "nav.ideas", href: "ideas/" },
-    { labelKey: "nav.contact", href: "contact/" },
-  ],
-};
+/** Mobile: 5 accordions × max 4 destinations */
+const MOBILE_MENUS = Object.fromEntries(
+  TOP_NAV.map((id) => [
+    id,
+    (MEGA_DESTINATIONS[id] || []).slice(0, 4).map((d) => ({
+      labelKey: d.titleKey,
+      href: d.href,
+      titleFb: d.titleFb,
+    })),
+  ])
+);
 
 function mobileNav(flat, flatEn, base, suffix) {
-  const inquiry = escapeHtml(t(flat, flatEn, "nav.inquiryCta", "Contact"));
   const projectInquiry = escapeHtml(t(flat, flatEn, "nav.businessInquiryCtaMobile", "Project inquiry"));
-  const soon = escapeHtml(t(flat, flatEn, "nav.comingSoon", "Coming Soon"));
   const themeLabel = escapeHtml(t(flat, flatEn, "common.themeToggle", "Theme"));
 
-  const sections = Object.entries(MOBILE_MENUS)
-    .map(([id, items]) => {
-      const label = NAV_LABELS[id];
-      const links = items
-        .map((item) => {
-          const labelText = escapeHtml(t(flat, flatEn, item.labelKey));
-          if (item.soon) {
-            return `<span class="gnav-mobile__sublink gnav-mobile__sublink--soon">${labelText}<span class="gnav-mega__badge">${soon}</span></span>`;
-          }
-          return `<a class="gnav-mobile__sublink" href="${href(base, item.href)}">${labelText}</a>`;
-        })
-        .join("");
-      return `<div class="gnav-mobile__acc" data-gnav-acc>
+  const sections = TOP_NAV.map((id) => {
+    const label = NAV_LABELS[id];
+    const items = MOBILE_MENUS[id] || [];
+    const links = items
+      .map((item) => {
+        const labelText = escapeHtml(t(flat, flatEn, item.labelKey, item.titleFb || ""));
+        return `<a class="gnav-mobile__sublink" href="${href(base, item.href)}">${labelText}</a>`;
+      })
+      .join("");
+    return `<div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">${label}${CHEVRON_SVG}</button>
         <div class="gnav-mobile__acc-panel" hidden>${links}</div>
       </div>`;
-    })
-    .join("\n        ");
+  }).join("\n        ");
 
   return `<div id="gnav-mobile-${suffix}" class="gnav-mobile" hidden aria-hidden="true">
       <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="${escapeHtml(t(flat, flatEn, "nav.menuLabel", "Menu"))}">
@@ -307,7 +196,7 @@ export function renderGlobalHeader(flat, flatEn, { activeNav = "", base = "../",
   const themeLabel = escapeHtml(t(flat, flatEn, "common.themeToDark", "Toggle theme"));
   const themeTitle = escapeHtml(t(flat, flatEn, "common.themeToggle", "Theme"));
 
-  return `<header class="gnav site-header" data-gnav>
+  return `<header class="gnav site-header gnav--five" data-gnav>
       <div class="gnav__bar">
         <div class="gnav__inner">
           <a class="gnav__brand" href="${brandHref}">
@@ -339,13 +228,12 @@ export function renderStudioHeader(flat, flatEn, opts = {}) {
   });
 }
 
-/** Sticky company sub-nav (ABOUT · PORTFOLIO · NEWS · IDEAS · CONTACT), same pattern as Resources. */
+/** Sticky company sub-nav — company info only */
 export function renderCompanySwitcher(flat, flatEn, { active = "about", base = "../" } = {}) {
   const items = [
     { id: "about", path: "about/", label: "ABOUT" },
     { id: "portfolio", path: "portfolio/", label: "PORTFOLIO" },
     { id: "news", path: "news/", label: "NEWS" },
-    { id: "ideas", path: "ideas/", label: "IDEAS" },
     { id: "contact", path: "contact/", label: "CONTACT" },
   ];
   const links = items
@@ -369,55 +257,57 @@ export function renderStudioFooter(flat, flatEn, { base = "../" } = {}) {
   const tf = (k, fb) => escapeHtml(pick(flat, flatEn, k) || fb);
   const b = base || "../";
   const resolve = (h) => (h.startsWith("../") ? b + h.slice(3) : h);
-  const col = (titleKey, links) => `<div class="studio-footer__col">
-      <p class="studio-footer__title">${tf(titleKey, titleKey)}</p>
-      <ul class="studio-footer__list">${links.map(([k, h]) => `<li><a href="${resolve(h)}">${tf(k, k)}</a></li>`).join("")}</ul>
+  const col = (titleKey, links, titleFb) => `<div class="studio-footer__col">
+      <p class="studio-footer__title">${tf(titleKey, titleFb || titleKey)}</p>
+      <ul class="studio-footer__list">${links.map(([k, h, fb]) => `<li><a href="${resolve(h)}">${tf(k, fb || k)}</a></li>`).join("")}</ul>
     </div>`;
 
   return `<footer class="site-footer studio-footer">
-      <div class="container studio-footer__grid">
+      <div class="container studio-footer__grid studio-footer__grid--five">
         ${col("footer.colProducts", [
-          ["footer.linkApps", "../apps/"],
-          ["footer.linkAi", "../ai/"],
-          ["footer.linkSaas", "../saas/"],
-          ["footer.linkGames", "../games/"],
-          ["footer.linkTools", "../tools/"],
-        ])}
+          ["footer.linkApps", "../apps/", "Apps"],
+          ["footer.linkAi", "../ai/", "AI"],
+          ["footer.linkGames", "../games/", "Games"],
+          ["footer.linkTools", "../tools/", "Tools"],
+        ], "PRODUCTS")}
         ${col("footer.colBusiness", [
-          ["footer.linkMvp", "../business/mvp/"],
-          ["footer.linkWebsite", "../business/web/"],
-          ["footer.linkAppDev", "../business/app/"],
-          ["footer.linkAiAuto", "../business/ai-automation/"],
-          ["footer.linkWhitelabel", "../business/white-label/"],
-          ["footer.linkDesign", "../business/design/"],
-        ])}
+          ["footer.linkBuild", "../business/build/", "Build"],
+          ["footer.linkAutomation", "../business/automation/", "Automation"],
+          ["footer.linkResearch", "../business/research/", "Research"],
+          ["footer.linkSolutions", "../business/solutions/", "Solutions"],
+        ], "BUSINESS")}
+        ${col("footer.colStudio", [
+          ["footer.linkBrand", "../studio/#brand", "Brand"],
+          ["footer.linkDigital", "../studio/#digital", "Digital"],
+          ["footer.linkContent", "../studio/#content", "Content"],
+          ["footer.linkIp", "../studio/#ip", "IP"],
+        ], "STUDIO")}
         ${col("footer.colResources", [
-          ["footer.linkStore", "../resources/store/"],
-          ["footer.linkBlog", "../resources/blog/"],
-          ["footer.linkMedia", "../resources/media/"],
-          ["footer.linkLabs", "../resources/labs/"],
-          ["nav.newsletter", "../resources/newsletter/"],
-          ["nav.education", "../resources/education/"],
-        ])}
+          ["footer.linkStore", "../resources/store/", "Store"],
+          ["footer.linkInsights", "../resources/insights/", "Insights"],
+          ["footer.linkBlog", "../resources/blog/", "Blog"],
+          ["footer.linkLabs", "../resources/labs/", "Labs"],
+        ], "RESOURCES")}
         ${col("footer.colCompany", [
-          ["footer.about", "../about/"],
-          ["footer.portfolio", "../portfolio/"],
-          ["nav.newsUpdates", "../news/"],
-          ["nav.ideas", "../ideas/"],
-          ["nav.contact", "../contact/"],
-        ])}
-        ${col("footer.colLegal", [
-          ["footer.privacy", "../privacy/"],
-          ["footer.terms", "../terms/"],
-          ["footer.linkDelete", "../oxmonth/delete-account/"],
-        ])}
-        <div class="studio-footer__col studio-footer__col--contact">
-          <p class="studio-footer__title">${tf("footer.colContact", "Contact")}</p>
-          <a class="studio-footer__email" href="mailto:newon@newon.app">newon@newon.app</a>
-          <p class="studio-footer__tagline">${tf("footer.taglineStudio", tf("footer.tagline", ""))}</p>
-        </div>
+          ["footer.about", "../about/", "About"],
+          ["footer.portfolio", "../portfolio/", "Portfolio"],
+          ["nav.newsUpdates", "../news/", "News"],
+          ["nav.contact", "../contact/", "Contact"],
+        ], "COMPANY")}
       </div>
-      <div class="container studio-footer__bottom">
+      <div class="container studio-footer__bottom studio-footer__bottom--brand">
+        <div class="studio-footer__brand-row">
+          <img class="studio-footer__logo" src="/logo.png" alt="" width="28" height="28" decoding="async" />
+          <div>
+            <p class="studio-footer__brand-name">Newon</p>
+            <p class="studio-footer__tagline">${tf("footer.taglineStudio", "Product & Venture Studio")}</p>
+          </div>
+          <div class="studio-footer__legal-inline">
+            <a href="${resolve("../privacy/")}">${tf("footer.privacy", "Privacy")}</a>
+            <a href="${resolve("../terms/")}">${tf("footer.terms", "Terms")}</a>
+            <a class="studio-footer__email" href="mailto:newon@newon.app">newon@newon.app</a>
+          </div>
+        </div>
         <p>© ${new Date().getFullYear()} Newon · ${tf("footer.rights", "All rights reserved.")}</p>
       </div>
     </footer>`;
