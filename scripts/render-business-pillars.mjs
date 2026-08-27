@@ -74,12 +74,14 @@ function jsonLd(slug, copy, langDir) {
     <script type="application/ld+json">${JSON.stringify(crumb)}</script>`;
 }
 
-function breadcrumb(copy, slug) {
+function breadcrumb(copy, slug, { hubLabel, hubHref = "../", slugLabel } = {}) {
+  const label = hubLabel || copy.crumbBusiness || "Business";
+  const current = slugLabel || slug.toUpperCase();
   return `<nav class="bp-crumb" aria-label="Breadcrumb">
   <div class="bp-inner">
     <ol class="bp-crumb__list">
-      <li><a href="../">${escapeHtml(copy.crumbBusiness || "Business")}</a></li>
-      <li aria-current="page">${escapeHtml(slug.toUpperCase())}</li>
+      <li><a href="${escapeHtml(hubHref)}">${escapeHtml(label)}</a></li>
+      <li aria-current="page">${escapeHtml(current)}</li>
     </ol>
   </div>
 </nav>`;
@@ -125,7 +127,7 @@ function detailAction(copy, s) {
   return `<span class="bp-btn bp-btn--soon" aria-disabled="true">${escapeHtml(copy.soonBtn || "준비 중")}</span>`;
 }
 
-function servicesSection(copy) {
+function servicesSection(copy, inquiryHref = "../inquiry/#inquiry") {
   const services = copy.services || [];
   if (!services.length) return "";
 
@@ -147,7 +149,7 @@ function servicesSection(copy) {
       const active = i === 0 ? " is-active" : "";
       const label = escapeHtml(s.tab || shortTitle(s.title));
       const isReady = s.ready !== false && !!(s.summary || s.what);
-      const actions = `<div class="bp-explore__actions">${detailAction(copy, s)}<a class="bp-btn bp-btn--primary" href="../#inquiry" data-analytics="business_pillar_cta">${escapeHtml(copy.quoteCta || "")}</a></div>`;
+      const actions = `<div class="bp-explore__actions">${detailAction(copy, s)}<a class="bp-btn bp-btn--primary" href="${escapeHtml(inquiryHref)}" data-analytics="business_pillar_cta">${escapeHtml(copy.quoteCta || "")}</a></div>`;
 
       if (!isReady) {
         return `<article class="bp-explore__panel bp-explore__panel--soon${active}" role="tabpanel" id="bp-panel-${i}" aria-labelledby="bp-tab-${i}" data-bp-panel="${i}"${hidden}>
@@ -371,7 +373,7 @@ function whenSection(copy) {
 </section>`;
 }
 
-function pricingSection(copy) {
+function pricingSection(copy, inquiryHref = "../inquiry/#inquiry") {
   /* List pricing is folded into the services explorer — keep only custom quotes */
   if (!copy.pricingCustom) return "";
   const axes = (copy.pricingAxes || ["Scope", "Complexity", "Timeline", "Integration"])
@@ -391,17 +393,19 @@ function pricingSection(copy) {
         <ul class="bp-quote__axes" aria-label="Quote factors">${axes}</ul>
       </div>
       <div class="bp-quote__aside">
-        <a class="bp-btn bp-btn--primary bp-quote__cta" href="../#inquiry" data-analytics="business_pillar_cta">${escapeHtml(copy.quoteCta || "")}</a>
+        <a class="bp-btn bp-btn--primary bp-quote__cta" href="${escapeHtml(inquiryHref)}" data-analytics="business_pillar_cta">${escapeHtml(copy.quoteCta || "")}</a>
       </div>
     </div>
   </div>
 </section>`;
 }
 
-function otherServices(copy, slug, lang) {
-  const labels = { build: "BUILD", automation: "AUTOMATION", research: "RESEARCH", solutions: "SOLUTIONS" };
-  const items = PILLAR_SLUGS.map((s, i) => {
-    const peer = getPillarCopy(s, lang);
+function otherServices(copy, slug, lang, { slugs, labels, getCopy, titleKey = "otherTitle" } = {}) {
+  const list = slugs || PILLAR_SLUGS;
+  const labelMap = labels || { build: "BUILD", automation: "AUTOMATION", research: "RESEARCH", solutions: "SOLUTIONS" };
+  const resolveCopy = getCopy || getPillarCopy;
+  const items = list.map((s, i) => {
+    const peer = resolveCopy(s, lang);
     const active = s === slug;
     return `<a class="bp-other__card${active ? " is-active" : ""}" href="../${s}/"${
       active ? ' aria-current="page"' : ""
@@ -410,17 +414,18 @@ function otherServices(copy, slug, lang) {
         <span class="bp-other__n">${pad2(i + 1)}</span>
         <span class="bp-other__arrow" aria-hidden="true">${active ? "·" : "→"}</span>
       </span>
-      <span class="bp-other__t">${labels[s]}</span>
+      <span class="bp-other__t">${labelMap[s] || s.toUpperCase()}</span>
       <span class="bp-other__lead">${escapeHtml(peer?.headline || "")}</span>
     </a>`;
   }).join("");
 
+  const title = copy[titleKey] || copy.otherTitle || "MORE FROM BUSINESS";
   return `<section class="bp-sec bp-other" data-bp-reveal>
   <div class="bp-inner">
     <header class="bp-sec__head">
-      <p class="bp-label">${escapeHtml(copy.otherTitle || "MORE FROM BUSINESS")}</p>
+      <p class="bp-label">${escapeHtml(title)}</p>
     </header>
-    <nav class="bp-other__grid" aria-label="${escapeHtml(copy.otherTitle || "Other services")}">${items}</nav>
+    <nav class="bp-other__grid" aria-label="${escapeHtml(title)}">${items}</nav>
   </div>
 </section>`;
 }
@@ -450,19 +455,22 @@ function faqSection(copy) {
 </section>`;
 }
 
-function finalCta(copy) {
+function finalCta(copy, inquiryHref = "../inquiry/#inquiry") {
   return `<section class="bp-cta" data-bp-reveal>
   <div class="bp-inner bp-cta__inner">
     <p class="bp-label">${escapeHtml(copy.ctaEyebrow || "HAVE A PROJECT?")}</p>
     <h2 class="bp-cta__title">${escapeHtml(copy.ctaTitle || "")}</h2>
     <p class="bp-cta__lead">${escapeHtml(copy.ctaLead || "")}</p>
-    <a class="bp-btn bp-btn--primary" href="../#inquiry" data-analytics="business_pillar_cta">${escapeHtml(copy.ctaBtn || "")}</a>
+    <a class="bp-btn bp-btn--primary" href="${escapeHtml(inquiryHref)}" data-analytics="business_pillar_cta">${escapeHtml(copy.ctaBtn || "")}</a>
   </div>
 </section>`;
 }
 
-function buildBody(slug, copy, lang) {
-  return `${breadcrumb(copy, slug)}
+export function buildPillarPageBody(slug, copy, lang, opts = {}) {
+  const inquiryHref = opts.inquiryHref || "../inquiry/#inquiry";
+  const crumbOpts = opts.crumb || {};
+  const otherOpts = opts.other || {};
+  return `${breadcrumb(copy, slug, crumbOpts)}
 <section class="bp-hero" data-bp-reveal aria-labelledby="bp-hero-title">
   <div class="bp-inner bp-hero__grid">
     <div class="bp-hero__copy">
@@ -470,24 +478,28 @@ function buildBody(slug, copy, lang) {
       <h1 class="bp-hero__title" id="bp-hero-title">${escapeHtml(copy.headline || "")}</h1>
       <p class="bp-hero__lead">${escapeHtml(copy.lead || "")}</p>
       <div class="bp-hero__actions">
-        <a class="bp-btn bp-btn--primary" href="../#inquiry" data-analytics="business_pillar_cta">${escapeHtml(copy.ctaPrimary || "")}</a>
+        <a class="bp-btn bp-btn--primary" href="${escapeHtml(inquiryHref)}" data-analytics="business_pillar_cta">${escapeHtml(copy.ctaPrimary || "")}</a>
         <a class="bp-btn bp-btn--ghost" href="#services">${escapeHtml(copy.ctaSecondary || "")}</a>
       </div>
     </div>
     ${heroVisual(copy)}
   </div>
 </section>
-${servicesSection(copy)}
+${servicesSection(copy, inquiryHref)}
 ${useCasesSection(copy)}
 ${beforeAfterSection(copy)}
 ${researchOutputSection(copy)}
 ${launchFlowSection(copy)}
 ${whenSection(copy)}
 ${processSection(copy)}
-${pricingSection(copy)}
-${otherServices(copy, slug, lang)}
+${pricingSection(copy, inquiryHref)}
+${otherServices(copy, slug, lang, otherOpts)}
 ${faqSection(copy)}
-${finalCta(copy)}`;
+${finalCta(copy, inquiryHref)}`;
+}
+
+function buildBody(slug, copy, lang) {
+  return buildPillarPageBody(slug, copy, lang);
 }
 
 function writeRedirect(slug) {

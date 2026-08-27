@@ -333,6 +333,17 @@
   "business": {
     "seoTitle": "Business | Newon Digital Product Studio",
     "metaDescription": "Newon Business — MVP, web, app, AI automation, design, research, and custom solutions for brands and companies. Built by a Digital Product Studio that ships its own products.",
+    "exploreSeoTitle": "Newon Business | Build · Automation · Research · Solutions",
+    "exploreMetaDescription": "Explore how Newon works with companies — Build, Automation, Research, and Solutions in one view.",
+    "inquirySeoTitle": "Project Inquiry | Newon Business",
+    "inquiryMetaDescription": "Contact Newon Business — MVP, web, app, AI automation, design, research, and custom solutions. Tell us about your project.",
+    "ctaExploreBack": "Explore Business →",
+    "exploreNavTitle": "OTHER BUSINESS SERVICES",
+    "exploreFaqLabel": "FAQ",
+    "exploreCtaEyebrow": "HAVE A PROJECT?",
+    "exploreCtaTitle": "If you have something to build, tell us.",
+    "exploreCtaLead": "Even at the idea stage. We start by clarifying the scope you need.",
+    "exploreCtaBtn": "Project inquiry →",
     "heroLabel": "NEWON FOR BUSINESS",
     "heroTitle": "Technology for a better everyday life.",
     "heroTitleHtml": "From idea<br />to product.",
@@ -4917,6 +4928,12 @@
     "contentLead": "Brand content and visuals.",
     "ipLead": "Characters and experimental IP.",
     "closeKicker": "NEXT",
-    "closeTitle": "Start a project with Studio."
+    "closeTitle": "Start a project with Studio.",
+    "exploreNavTitle": "OTHER STUDIO AREAS",
+    "exploreFaqLabel": "FAQ",
+    "exploreCtaEyebrow": "HAVE A PROJECT?",
+    "exploreCtaTitle": "Let's shape how your brand and product show up in the world.",
+    "exploreCtaLead": "Even at the idea stage. We start by clarifying the scope you need.",
+    "exploreCtaBtn": "Project inquiry →"
   }
 }

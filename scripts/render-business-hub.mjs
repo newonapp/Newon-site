@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
- * Render templates/business.html into {lang}/business/index.html only.
- * Does not touch home, portfolio, or other pages.
+ * Render business explore hub + inquiry hub for all locales.
+ *   /business/         — Studio-style service overview (explore)
+ *   /business/inquiry/ — Full collaboration page + inquiry form
  */
 import fs from "fs";
 import path from "path";
@@ -14,6 +15,8 @@ import {
 import { writeInquirySuccessPages } from "./gen-business-details.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { businessServicesHtml } from "./business-services-html.mjs";
+import { businessExploreHtml } from "./business-explore-html.mjs";
+import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { renderBusinessServices } from "./render-business-services.mjs";
 import { renderBusinessPillars } from "./render-business-pillars.mjs";
 import { renderPillarServices } from "./render-pillar-services.mjs";
@@ -110,16 +113,16 @@ function applyTemplate(template, flat, flatEn) {
   return out;
 }
 
-function hreflangBlockLegal(page) {
+function hreflangBlock(pagePath) {
   const lines = LANGS.map(
     ({ dir: d, hreflang: h }) =>
-      `    <link rel="alternate" hreflang="${h}" href="${SITE_ORIGIN}/${d}/${page}/" />`
+      `    <link rel="alternate" hreflang="${h}" href="${SITE_ORIGIN}/${d}/${pagePath}/" />`
   );
-  lines.push(`    <link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}/en/${page}/" />`);
+  lines.push(`    <link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}/en/${pagePath}/" />`);
   return lines.join("\n");
 }
 
-function businessEcosystemHtml(flat, flatEn) {
+function businessEcosystemHtml(flat, flatEn, appPrefix = "../") {
   const bySlug = Object.fromEntries(
     [...APP_CATALOG, ...BUSINESS_APP_EXTRAS].map((app) => [app.slug, app])
   );
@@ -129,7 +132,7 @@ function businessEcosystemHtml(flat, flatEn) {
       .map((slug) => bySlug[slug])
       .filter(Boolean)
       .map(
-        (app) => `<a class="bz-app" href="../${app.homeHash}">
+        (app) => `<a class="bz-app" href="${appPrefix}${app.homeHash.replace(/^\.\.\//, "")}">
                   <img src="${escapeHtml(app.icon)}" alt="" width="36" height="36" decoding="async" />
                   <span>${escapeHtml(app.name)}</span>
                 </a>`
@@ -144,7 +147,10 @@ function businessEcosystemHtml(flat, flatEn) {
   }).join("\n            ");
 }
 
+const hubShell = fs.readFileSync(path.join(ROOT, "templates", "hub-shell.html"), "utf8");
+const inquiryTemplate = fs.readFileSync(path.join(ROOT, "templates", "business-inquiry.html"), "utf8");
 const enData = loadJson("en.json");
+
 for (const { file } of LANGS) {
   if (file === "en.json") continue;
   const locPath = path.join(ROOT, "locales", file);
@@ -153,24 +159,60 @@ for (const { file } of LANGS) {
   fs.writeFileSync(locPath, JSON.stringify(loc, null, 2) + "\n");
 }
 
-const template = fs.readFileSync(path.join(ROOT, "templates", "business.html"), "utf8");
 const flatEn = flatten(loadJson("en.json"));
 
 for (const { dir, file, htmlLang } of LANGS) {
   const flat = flatten(loadJson(file));
-  let pt = template;
-  pt = pt.replace(/\{\{LANG_DIR\}\}/g, dir);
-  pt = pt.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
-  pt = pt.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
-  pt = pt.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangBlockLegal("business"));
-  pt = pt.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/business/`);
-  pt = applyTemplate(pt, flat, flatEn);
-  pt = pt.replace(/\{\{BUSINESS_ECOSYSTEM\}\}/g, businessEcosystemHtml(flat, flatEn));
-  pt = pt.replace(/\{\{BUSINESS_SERVICES\}\}/g, businessServicesHtml(flat, flatEn, dir));
-  pt = injectSiteChrome(pt, flat, flatEn, { activeNav: "business" });
-  const pd = path.join(ROOT, dir, "business");
-  fs.mkdirSync(pd, { recursive: true });
-  fs.writeFileSync(path.join(pd, "index.html"), pt);
+
+  // Explore hub — /business/
+  const exploreTitle =
+    pick(flat, flatEn, "business.exploreSeoTitle") || pick(flat, flatEn, "business.seoTitle");
+  const exploreDesc =
+    pick(flat, flatEn, "business.exploreMetaDescription") || pick(flat, flatEn, "business.metaDescription");
+  const exploreCanonical = `${SITE_ORIGIN}/${dir}/business/`;
+  let explore = hubShell;
+  explore = explore.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+  explore = explore.replace(/\{\{TITLE\}\}/g, escapeHtml(exploreTitle));
+  explore = explore.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(exploreDesc));
+  explore = explore.replace(/\{\{CANONICAL\}\}/g, exploreCanonical);
+  explore = explore.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
+  explore = explore.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflangBlock("business"));
+  explore = explore.replace(
+    /\{\{SKIP_LABEL\}\}/g,
+    escapeHtml(pick(flat, flatEn, "common.skipToContent") || "Skip to content")
+  );
+  explore = explore.replace(/\{\{MAIN_CONTENT\}\}/g, businessExploreHtml(flat, flatEn, dir));
+  explore = explore.replace(/\{\{EXTRA_CSS\}\}/g, "");
+  explore = explore.replace(/\{\{EXTRA_SCRIPTS\}\}/g, "");
+  explore = explore.replace(
+    /\{\{CHROME_HEADER\}\}/g,
+    renderStudioHeader(flat, flatEn, { activeNav: "business", base: "../" })
+  );
+  explore = explore.replace(
+    /\{\{CHROME_FOOTER\}\}/g,
+    renderStudioFooter(flat, flatEn, { base: "../" })
+  );
+  const exploreDir = path.join(ROOT, dir, "business");
+  fs.mkdirSync(exploreDir, { recursive: true });
+  fs.writeFileSync(path.join(exploreDir, "index.html"), explore);
+
+  // Inquiry hub — /business/inquiry/
+  let inquiry = inquiryTemplate;
+  inquiry = inquiry.replace(/\{\{LANG_DIR\}\}/g, dir);
+  inquiry = inquiry.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+  inquiry = inquiry.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
+  inquiry = inquiry.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangBlock("business/inquiry"));
+  inquiry = inquiry.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/business/inquiry/`);
+  inquiry = applyTemplate(inquiry, flat, flatEn);
+  inquiry = inquiry.replace(/\{\{BUSINESS_ECOSYSTEM\}\}/g, businessEcosystemHtml(flat, flatEn, "../../"));
+  inquiry = inquiry.replace(
+    /\{\{BUSINESS_SERVICES\}\}/g,
+    businessServicesHtml(flat, flatEn, dir, { prefix: "../" })
+  );
+  inquiry = injectSiteChrome(inquiry, flat, flatEn, { activeNav: "business", base: "../../" });
+  const inquiryDir = path.join(ROOT, dir, "business", "inquiry");
+  fs.mkdirSync(inquiryDir, { recursive: true });
+  fs.writeFileSync(path.join(inquiryDir, "index.html"), inquiry);
 }
 
 writeInquirySuccessPages();
@@ -182,12 +224,14 @@ renderCreative();
 const pub = path.join(ROOT, "_publish");
 if (fs.existsSync(pub)) {
   for (const { dir } of LANGS) {
-    const src = path.join(ROOT, dir, "business", "index.html");
-    const destDir = path.join(pub, dir, "business");
-    if (!fs.existsSync(src)) continue;
-    fs.mkdirSync(destDir, { recursive: true });
-    fs.copyFileSync(src, path.join(destDir, "index.html"));
+    for (const sub of ["", "inquiry"]) {
+      const src = path.join(ROOT, dir, "business", sub, "index.html");
+      if (!fs.existsSync(src)) continue;
+      const destDir = path.join(pub, dir, "business", sub);
+      fs.mkdirSync(destDir, { recursive: true });
+      fs.copyFileSync(src, path.join(destDir, "index.html"));
+    }
   }
 }
 
-console.log("render-business-hub: wrote 9 language hub pages");
+console.log("render-business-hub: wrote explore + inquiry hub pages (9 langs)");

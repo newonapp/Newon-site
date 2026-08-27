@@ -176,7 +176,7 @@ function mobileNav(flat, flatEn, base, suffix) {
         <div class="gnav-mobile__scroll">
           ${sections}
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
-          <a class="gnav-mobile__cta btn btn-primary" href="${href(base, "business/#inquiry")}">${projectInquiry}</a>
+          <a class="gnav-mobile__cta btn btn-primary" href="${href(base, "business/inquiry/")}">${projectInquiry}</a>
           <div class="gnav-mobile__util-row">
             ${langSelect(flat, flatEn, `lang-select-mobile-${suffix}`)}
             <button type="button" class="gnav__theme gnav__theme--mobile" data-theme-toggle data-label-light="${escapeHtml(t(flat, flatEn, "common.themeToLight", ""))}" data-label-dark="${escapeHtml(t(flat, flatEn, "common.themeToDark", ""))}" title="${themeLabel}" aria-label="${themeLabel}">${MOON_SVG}</button>
@@ -207,7 +207,7 @@ export function renderGlobalHeader(flat, flatEn, { activeNav = "", base = "../",
             ${desktopNav(flat, flatEn, base, activeNav)}
           </nav>
           <div class="gnav__util">
-            <a class="gnav__cta" href="${href(base, "business/#inquiry")}">${inquiry}</a>
+            <a class="gnav__cta" href="${href(base, "business/inquiry/")}">${inquiry}</a>
             ${langSelect(flat, flatEn, langId)}
             <button type="button" class="gnav__theme" data-theme-toggle data-label-light="${escapeHtml(t(flat, flatEn, "common.themeToLight", ""))}" data-label-dark="${escapeHtml(t(flat, flatEn, "common.themeToDark", ""))}" title="${themeTitle}" aria-label="${themeLabel}">${MOON_SVG}</button>
             <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-${idSuffix}" aria-label="${menuLabel}">
@@ -277,10 +277,10 @@ export function renderStudioFooter(flat, flatEn, { base = "../" } = {}) {
           ["footer.linkSolutions", "../business/solutions/", "Solutions"],
         ], "BUSINESS")}
         ${col("footer.colStudio", [
-          ["footer.linkBrand", "../studio/#brand", "Brand"],
-          ["footer.linkDigital", "../studio/#digital", "Digital"],
-          ["footer.linkContent", "../studio/#content", "Content"],
-          ["footer.linkIp", "../studio/#ip", "IP"],
+          ["footer.linkBrand", "../studio/brand/", "Brand"],
+          ["footer.linkDigital", "../studio/digital/", "Digital"],
+          ["footer.linkContent", "../studio/content/", "Content"],
+          ["footer.linkIp", "../studio/ip/", "IP"],
         ], "STUDIO")}
         ${col("footer.colResources", [
           ["footer.linkStore", "../resources/store/", "Store"],

@@ -408,7 +408,7 @@ export function renderAiShowcaseBody(flat, flatEn, lang) {
         <p class="ai-biz__eyebrow">${t(flat, flatEn, "studio.aiSection2Title", "AI FOR BUSINESS")}</p>
         <h2 class="ai-biz__title">${t(flat, flatEn, "studio.aiBizTitle", "반복 업무를\nAI Workflow로.")}</h2>
         <p class="ai-biz__lead">${t(flat, flatEn, "studio.aiSection2Lead", "기업의 기존 업무와 데이터를 AI에 연결해 반복 작업을 자동화합니다.")}</p>
-        <a class="btn btn-primary" href="../business/#inquiry" data-analytics="business_cta_click">${t(flat, flatEn, "studio.aiCta", "AI 프로젝트 문의하기")} →</a>
+        <a class="btn btn-primary" href="../business/inquiry/" data-analytics="business_cta_click">${t(flat, flatEn, "studio.aiCta", "AI 프로젝트 문의하기")} →</a>
       </div>
       <ol class="ai-biz__pipe" data-ai-biz-pipe>
         <li data-biz-step data-case="automation" class="is-active">
@@ -540,7 +540,7 @@ export function renderAiShowcaseBody(flat, flatEn, lang) {
           </button>
           <div class="ai-caps__panel">
             <p>${t(flat, flatEn, "studio.aiCap4", "반복 업무를 자동화합니다.")}</p>
-            <a href="../business/#inquiry">${t(flat, flatEn, "studio.aiCapBizLink", "비즈니스 문의")} →</a>
+            <a href="../business/inquiry/">${t(flat, flatEn, "studio.aiCapBizLink", "비즈니스 문의")} →</a>
           </div>
         </li>
         <li class="ai-caps__row" data-cap-row>
@@ -576,7 +576,7 @@ export function renderAiShowcaseBody(flat, flatEn, lang) {
       <h2 class="ai-cta__title">${t(flat, flatEn, "studio.aiDiscoverTitle", "AI가 필요한 곳을\n제품으로 만듭니다.")}</h2>
       <p class="ai-cta__lead">${t(flat, flatEn, "studio.aiDiscoverLead", "아이디어 검증부터 AI 기능 설계, 제품 개발과 자동화까지 함께 설계합니다.")}</p>
       <div class="ai-cta__actions">
-        <a class="btn btn-primary ai-cta__btn" href="../business/#inquiry" data-analytics="business_cta_click">${t(flat, flatEn, "studio.aiCta", "AI 프로젝트 문의하기")} →</a>
+        <a class="btn btn-primary ai-cta__btn" href="../business/inquiry/" data-analytics="business_cta_click">${t(flat, flatEn, "studio.aiCta", "AI 프로젝트 문의하기")} →</a>
         <a class="btn btn-ghost ai-cta__btn ai-cta__btn--ghost" href="../business/">${t(flat, flatEn, "studio.aiCtaBusiness", "Newon Business 보기")} →</a>
       </div>
       <p class="ai-cta__foot">NEWON AI · PRODUCT STUDIO</p>

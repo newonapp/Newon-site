@@ -70,10 +70,10 @@ export const MEGA_DESTINATIONS = {
     },
   ],
   studio: [
-    { titleKey: "nav.studioBrand", descKey: "nav.megaBrandDesc", href: "studio/#brand", titleFb: "BRAND" },
-    { titleKey: "nav.studioDigital", descKey: "nav.megaDigitalDesc", href: "studio/#digital", titleFb: "DIGITAL" },
-    { titleKey: "nav.studioContent", descKey: "nav.megaContentDesc", href: "studio/#content", titleFb: "CONTENT" },
-    { titleKey: "nav.studioIp", descKey: "nav.megaIpDesc", href: "studio/#ip", titleFb: "IP" },
+    { titleKey: "nav.studioBrand", descKey: "nav.megaBrandDesc", href: "studio/brand/", titleFb: "BRAND" },
+    { titleKey: "nav.studioDigital", descKey: "nav.megaDigitalDesc", href: "studio/digital/", titleFb: "DIGITAL" },
+    { titleKey: "nav.studioContent", descKey: "nav.megaContentDesc", href: "studio/content/", titleFb: "CONTENT" },
+    { titleKey: "nav.studioIp", descKey: "nav.megaIpDesc", href: "studio/ip/", titleFb: "IP" },
   ],
   resources: [
     { titleKey: "nav.store", descKey: "nav.megaStoreDesc", href: "resources/store/", titleFb: "STORE" },
@@ -161,7 +161,7 @@ export const STUDIO_IA = [
     leadKey: "studioHub.brandLead",
     leadFb: "브랜드의 방향과 정체성.",
     leadFbEn: "Brand direction and identity.",
-    moreHref: "studio/#brand",
+    moreHref: "studio/brand/",
     items: [
       {
         title: "Brand Strategy",
@@ -200,7 +200,7 @@ export const STUDIO_IA = [
     leadKey: "studioHub.digitalLead",
     leadFb: "웹과 제품 경험.",
     leadFbEn: "Web and product experience.",
-    moreHref: "studio/#digital",
+    moreHref: "studio/digital/",
     items: [
       {
         title: "Web Design",
@@ -239,7 +239,7 @@ export const STUDIO_IA = [
     leadKey: "studioHub.contentLead",
     leadFb: "브랜드 콘텐츠와 비주얼.",
     leadFbEn: "Brand content and visuals.",
-    moreHref: "studio/#content",
+    moreHref: "studio/content/",
     items: [
       {
         title: "Social Content",
@@ -271,7 +271,7 @@ export const STUDIO_IA = [
     leadKey: "studioHub.ipLead",
     leadFb: "캐릭터와 새로운 IP 실험.",
     leadFbEn: "Characters and new IP experiments.",
-    moreHref: "studio/#ip",
+    moreHref: "studio/ip/",
     items: [
       {
         title: "Character Lab",

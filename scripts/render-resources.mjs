@@ -388,7 +388,7 @@ function storeDetailBody(product, copies, lang) {
   <p class="rs-form__msg" data-waitlist-duplicate hidden>${escapeHtml(copy.waitlistDuplicate)}</p>
   <p class="rs-form__msg rs-form__msg--error" data-waitlist-error hidden role="alert">${escapeHtml(copy.waitlistError)}</p>
   <p class="rs-form__note">${escapeHtml(copy.waitlistNote)}</p>
-  <p class="rs-form__alt"><a href="../../business/#inquiry">${escapeHtml(copy.inquiryCta)}</a></p>`;
+  <p class="rs-form__alt"><a href="../../business/inquiry/">${escapeHtml(copy.inquiryCta)}</a></p>`;
 
   return `${breadcrumb(copy, title, { resourcesHref: "../../", mid: copy.navLabel || "STORE", midHref: "../" })}
 <article class="rs-detail" data-rs-reveal>

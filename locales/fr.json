@@ -3571,7 +3571,16 @@
     "aboutSubnavInquiry": "Inquiry",
     "inquirySeoTitle": "Project inquiry | Newon Business",
     "inquiryMetaDescription": "Inquire about MVP, web, app, AI automation, and custom work with Newon Business. Packages, starting prices, and email follow-up.",
-    "inquiryHeroLabel": "PROJECT INQUIRY"
+    "inquiryHeroLabel": "PROJECT INQUIRY",
+    "exploreSeoTitle": "Newon Business | Build · Automation · Research · Solutions",
+    "exploreMetaDescription": "Explore how Newon works with companies — Build, Automation, Research, and Solutions in one view.",
+    "ctaExploreBack": "Explore Business →",
+    "exploreNavTitle": "OTHER BUSINESS SERVICES",
+    "exploreFaqLabel": "FAQ",
+    "exploreCtaEyebrow": "HAVE A PROJECT?",
+    "exploreCtaTitle": "If you have something to build, tell us.",
+    "exploreCtaLead": "Even at the idea stage. We start by clarifying the scope you need.",
+    "exploreCtaBtn": "Project inquiry →"
   },
   "businessPages": {
     "common": {

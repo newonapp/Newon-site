@@ -19,7 +19,6 @@ import {
   escapeHtml,
   pick,
   statusBadge,
-  studioStatusBadge,
 } from "./hub-utils.mjs";
 import { renderStudioHeader, renderStudioFooter, renderCompanySwitcher } from "./site-chrome.mjs";
 import { allProducts, productsByType, AI_PRODUCTS, SAAS_PRODUCTS, GAMES_PRODUCTS, productCta } from "./products-data.mjs";
@@ -32,7 +31,9 @@ import { BUSINESS_PACKAGES, BUSINESS_SERVICES } from "./business-pricing.mjs";
 import { TOOLS } from "./tools-data.mjs";
 import { STORE_PRODUCTS } from "./store-data.mjs";
 import { renderResources } from "./render-resources.mjs";
-import { STUDIO_IA } from "./venture-studio-data.mjs";
+import { studioServicesHtml } from "./studio-services-html.mjs";
+import { studioExploreCloseHtml } from "./studio-explore-close.mjs";
+import { renderStudioPillars } from "./render-studio-pillars.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
 const HUB_PAGES = [
@@ -169,35 +170,12 @@ function studioBody(flat, flatEn, lang = "en") {
     const v = pick(flat, flatEn, k);
     return escapeHtml(v != null && v !== "" ? String(v) : fb);
   };
-  const pillars = STUDIO_IA.map((col, idx) => {
-    const n = String(idx + 1).padStart(2, "0");
-    const title = t(col.labelKey, col.labelFb);
-    const lead = t(col.leadKey, col.leadFb);
-    const items = (col.items || [])
-      .map((it) => {
-        const status =
-          it.status && it.status !== "OPERATING" && it.status !== "LIVE"
-            ? studioStatusBadge(it.status, lang === "ko" ? "ko" : "en")
-            : "";
-        if (!it.href) {
-          return `<div class="ns-pillar__item ns-pillar__item--soon"><span>${escapeHtml(it.title)}</span>${status}</div>`;
-        }
-        return `<a class="ns-pillar__item" href="../${escapeHtml(it.href)}"><span>${escapeHtml(it.title)}</span><span class="ns-pillar__meta">${status}<span aria-hidden="true">→</span></span></a>`;
-      })
-      .join("");
-    return `<article class="ns-pillar" id="${escapeHtml(col.id)}">
-      <header class="ns-pillar__head">
-        <span class="ns-pillar__n" aria-hidden="true">${n}</span>
-        <div>
-          <h2 class="ns-pillar__title">${title}</h2>
-          <p class="ns-pillar__lead">${lead}</p>
-        </div>
-      </header>
-      <div class="ns-pillar__list">${items}</div>
-    </article>`;
-  }).join("");
 
-  return `<link rel="stylesheet" href="/newon-studio.css?v=20260826ns1" />
+  const close = studioExploreCloseHtml(flat, flatEn, lang);
+
+  return `<link rel="stylesheet" href="/newon-studio.css?v=20260827ns4" />
+<link rel="stylesheet" href="/business-page.css?v=20260827ns4" />
+<link rel="stylesheet" href="/business-pillar.css?v=20260827ns4" />
 <section class="ns-hero">
   <div class="ns-inner">
     <p class="ns-kicker">${t("studioHub.eyebrow", "NEWON STUDIO")}</p>
@@ -205,24 +183,14 @@ function studioBody(flat, flatEn, lang = "en") {
     <p class="ns-lead">${t("studioHub.heroLead", "브랜드의 이름과 정체성부터 디지털 경험, 콘텐츠와 새로운 IP까지 하나의 방향으로 설계합니다.")}</p>
     <div class="ns-actions">
       <a class="btn btn-ghost" href="#brand">${t("studioHub.ctaExplore", "Explore Studio ↓")}</a>
-      <a class="btn btn-primary" href="../business/creative/#inquiry">${t("studioHub.ctaProject", "Start a Project ↗")}</a>
+      <a class="btn btn-primary" href="../business/inquiry/">${t("studioHub.ctaProject", "Start a Project ↗")}</a>
     </div>
     <p class="ns-note">${t("studioHub.positioning", "Creative Studio · Product Studio · Experimental Lab")}</p>
   </div>
 </section>
-<section class="ns-pillars" aria-label="Studio areas">
-  <div class="ns-inner ns-pillars__grid">${pillars}</div>
-</section>
-<section class="ns-close">
-  <div class="ns-inner">
-    <p class="ns-kicker">${t("studioHub.closeKicker", "NEXT")}</p>
-    <h2 class="ns-close__title">${t("studioHub.closeTitle", "프로젝트를 시작해 보세요.")}</h2>
-    <div class="ns-actions">
-      <a class="btn btn-primary" href="../business/creative/#inquiry">${t("studioHub.ctaProject", "Start a Project ↗")}</a>
-      <a class="btn btn-ghost" href="../resources/labs/character-lab/">${t("studioHub.ctaIp", "Character Lab →")}</a>
-    </div>
-  </div>
-</section>`;
+${studioServicesHtml(flat, flatEn, lang)}
+${close}
+<script src="/business-pillar.js?v=20260827ns4" defer></script>`;
 }
 
 function toolsHubBody(flat, flatEn) {
@@ -267,7 +235,7 @@ function contactBody(flat, flatEn) {
   return `<section class="hub-hero hub-inner"><h1 class="hub-title">${t("studio.contactHeroTitle")}</h1><p class="hub-lead">${t("studio.contactHeroLead")}</p></section>
   <section class="hub-inner hub-section"><div class="hub-grid hub-grid--2">
     <a class="hub-card" href="mailto:newon@newon.app"><span class="hub-card__title">${t("studio.contactGeneral")}</span><span class="hub-card__body">newon@newon.app</span></a>
-    <a class="hub-card" href="../business/#inquiry"><span class="hub-card__title">${t("studio.contactBusiness")}</span><span class="hub-card__body">Business form →</span></a>
+    <a class="hub-card" href="../business/inquiry/"><span class="hub-card__title">${t("studio.contactBusiness")}</span><span class="hub-card__body">Business form →</span></a>
     <a class="hub-card" href="mailto:newon@newon.app?subject=Partnership"><span class="hub-card__title">${t("studio.contactPartnership")}</span></a>
     <a class="hub-card" href="mailto:newon@newon.app?subject=Press"><span class="hub-card__title">${t("studio.contactPress")}</span></a>
     <a class="hub-card" href="../products/?filter=apps"><span class="hub-card__title">${t("studio.contactSupport")}</span><span class="hub-card__body">App support flows</span></a>
@@ -383,5 +351,6 @@ const toolsDir = path.join(ROOT, "tools");
 fs.mkdirSync(toolsDir, { recursive: true });
 
 renderResources();
+renderStudioPillars();
 
 console.log("render-studio-hubs OK:", HUB_PAGES.join(", "));

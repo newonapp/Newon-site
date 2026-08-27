@@ -41,20 +41,20 @@ function t(flat, flatEn, key, fb = "") {
   return v != null && v !== "" ? String(v) : fb;
 }
 
-function hubHref(href) {
+function hubHref(href, prefix = "") {
   if (!href) return null;
-  if (href.startsWith("business/")) return href.slice("business/".length);
-  return href;
+  if (href.startsWith("business/")) return `${prefix}${href.slice("business/".length)}`;
+  return `${prefix}${href}`;
 }
 
-function itemRow(flat, flatEn, lang, item) {
+function itemRow(flat, flatEn, lang, item, prefix = "") {
   const title = escapeHtml(t(flat, flatEn, item.titleKey));
   const desc = escapeHtml(t(flat, flatEn, item.descKey));
   const status =
     item.status && item.status !== "OPERATING" && item.status !== "LIVE"
       ? studioStatusBadge(item.status, lang)
       : "";
-  const href = hubHref(item.href);
+  const href = hubHref(item.href, prefix);
   if (!href) {
     return `<div class="bz-pillar__item bz-pillar__item--soon" role="listitem">
       <div class="bz-pillar__item-copy">
@@ -73,7 +73,7 @@ function itemRow(flat, flatEn, lang, item) {
   </a>`;
 }
 
-function pillarBlock(col, flat, flatEn, lang) {
+function pillarBlock(col, flat, flatEn, lang, prefix = "") {
   const meta = PILLAR_COPY[col.id] || {
     num: "00",
     titleKey: col.labelKey,
@@ -83,8 +83,8 @@ function pillarBlock(col, flat, flatEn, lang) {
   };
   const title = escapeHtml(t(flat, flatEn, meta.titleKey, meta.titleFb));
   const lead = escapeHtml(t(flat, flatEn, meta.leadKey, meta.leadFb));
-  const items = col.items.map((it) => itemRow(flat, flatEn, lang, it)).join("\n");
-  const detailHref = hubHref(col.detailHref || `business/${col.id}/`);
+  const items = col.items.map((it) => itemRow(flat, flatEn, lang, it, prefix)).join("\n");
+  const detailHref = hubHref(col.detailHref || `business/${col.id}/`, prefix);
   const moreLabel = escapeHtml(
     t(flat, flatEn, "business.pillarMore", lang === "ko" ? "자세히 보기 →" : "Learn more →")
   );
@@ -101,13 +101,13 @@ function pillarBlock(col, flat, flatEn, lang) {
 </article>`;
 }
 
-export function businessServicesHtml(flat, flatEn, lang = "en") {
+export function businessServicesHtml(flat, flatEn, lang = "en", { prefix = "" } = {}) {
   const label = escapeHtml(t(flat, flatEn, "studio.servicesLabel", "BUSINESS"));
   const title = escapeHtml(t(flat, flatEn, "business.pillarsTitle", "How we work with you"));
   const lead = escapeHtml(
     t(flat, flatEn, "business.pillarsLead", "Build · Automation · Research · Solutions")
   );
-  const blocks = BUSINESS_IA.map((col) => pillarBlock(col, flat, flatEn, lang)).join("\n");
+  const blocks = BUSINESS_IA.map((col) => pillarBlock(col, flat, flatEn, lang, prefix)).join("\n");
 
   return `<section id="services" class="bz-section bz-services bz-pillars-sec bz-reveal" aria-labelledby="bz-services-title">
     <div class="bz-inner">

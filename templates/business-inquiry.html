@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+<html lang="{{HTML_LANG}}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{t:business.inquirySeoTitle}}</title>
+    <meta name="description" content="{{t:business.inquiryMetaDescription}}" />
+    <meta name="keywords" content="{{t:meta.keywords}}" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="{{CANONICAL}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{CANONICAL}}" />
+    <meta property="og:locale" content="{{OG_LOCALE}}" />
+    <meta property="og:title" content="{{t:business.inquirySeoTitle}}" />
+    <meta property="og:description" content="{{t:business.inquiryMetaDescription}}" />
+    <meta property="og:site_name" content="{{t:meta.ogSiteName}}" />
+    <meta property="og:image" content="https://www.newon.app/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{t:business.inquirySeoTitle}}" />
+    <meta name="twitter:description" content="{{t:business.inquiryMetaDescription}}" />
+    <meta name="twitter:image" content="https://www.newon.app/logo.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": {{js:business.inquirySeoTitle}},
+  "url": "{{CANONICAL}}",
+  "description": {{js:business.inquiryMetaDescription}},
+  "publisher": {
+    "@type": "Organization",
+    "name": "Newon",
+    "url": "https://www.newon.app",
+    "logo": "https://www.newon.app/logo.png",
+    "email": "newon@newon.app"
+  }
+}
+    </script>
+{{HREFLANG_BLOCK_LEGAL}}
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css?v=20260825studio" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
+    <link rel="stylesheet" href="/ox-month.css" />
+    <link rel="stylesheet" href="/portfolio/portfolio.css" />
+    <script src="/theme-shell.js"></script>
+    <script src="/analytics.js?v=20260825studio" defer></script>
+    <style>
+      .bz-page { padding-top: var(--header-h); overflow-x: clip; }
+      .bz-page [id] { scroll-margin-top: calc(var(--header-h) + 18px); }
+      .bz-inner { width: min(1200px, calc(100% - var(--space) * 2)); margin: 0 auto; }
+      .bz-section { padding: 100px 0; }
+      .bz-section--tight { padding-top: 72px; }
+      @media (max-width: 799px) {
+        .bz-inner { width: min(1200px, calc(100% - 2rem)); }
+        .bz-section { padding: 72px 0; }
+        .bz-section--tight { padding-top: 56px; }
+      }
+      .bz-label {
+        margin: 0 0 0.85rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        color: var(--text-soft);
+      }
+      .bz-title {
+        margin: 0 0 1rem;
+        font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+        font-weight: 700;
+        letter-spacing: -0.035em;
+        line-height: 1.2;
+        color: var(--text);
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      .bz-lead {
+        margin: 0;
+        max-width: 40rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: var(--text-muted);
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      .bz-hero-actions .btn,
+      .bz-band .btn,
+      .bz-form .btn {
+        min-height: 44px;
+      }
+
+      /* Business hub hero — scoped to .bz-hero only */
+      .bz-hero {
+        --bz-hero-rule: #ececec;
+        --bz-hero-rule-hover: #d4d4d4;
+        --bz-index-rule: #e8e8e8;
+        --bz-index-rule-hover: #cfcfcf;
+        --bz-index-hover-bg: #fafafa;
+        display: flex;
+        flex-direction: column;
+        height: calc(100svh - var(--header-h));
+        min-height: 38rem;
+        max-height: 52rem;
+        padding: 0;
+        background: #fff;
+        overflow: clip;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero {
+        --bz-hero-rule: rgba(255, 255, 255, 0.12);
+        --bz-hero-rule-hover: rgba(255, 255, 255, 0.28);
+        --bz-index-rule: rgba(255, 255, 255, 0.14);
+        --bz-index-rule-hover: rgba(255, 255, 255, 0.32);
+        --bz-index-hover-bg: rgba(255, 255, 255, 0.045);
+        background: var(--bg);
+      }
+      .bz-hero__stage {
+        position: relative;
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        min-height: 0;
+        padding: clamp(1.35rem, 3.6vh, 2.6rem) 0 0.85rem;
+      }
+      .bz-hero__grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.52fr) minmax(0, 0.48fr);
+        gap: clamp(2.25rem, 4.8vw, 4rem);
+        align-items: start;
+        width: min(1180px, calc(100% - var(--space) * 2));
+        height: auto;
+      }
+      .bz-hero__copy {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        padding-top: 0.08rem;
+      }
+      .bz-hero__kicker {
+        margin: 0 0 1.7rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        line-height: 1.2;
+        text-transform: uppercase;
+        color: #6a6a6a;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero__kicker {
+        color: var(--text-soft);
+      }
+      .bz-hero__title {
+        margin: 0;
+        max-width: none;
+        font-size: clamp(3.25rem, 1.35rem + 3.15vw, 4.25rem);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        line-height: 1.05;
+        color: var(--text);
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      .bz-hero__lead {
+        margin: 1.65rem 0 0;
+        max-width: 560px;
+        font-size: 1.125rem;
+        font-weight: 400;
+        line-height: 1.7;
+        color: #5c5c5c;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero__lead {
+        color: var(--text-muted);
+      }
+      .bz-hero .bz-hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.7rem;
+        margin-top: 2.15rem;
+        padding-top: 0;
+      }
+      .bz-hero .bz-hero-actions .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        height: 50px;
+        padding: 0 1.45rem;
+        border-radius: 999px;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        box-shadow: none;
+        transform: none;
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease,
+          color 0.2s ease;
+      }
+      .bz-hero .bz-hero-actions .btn:hover {
+        transform: none;
+        box-shadow: none;
+      }
+      .bz-hero .bz-hero-actions .btn-primary {
+        background: #111;
+        color: #fff;
+        border-color: #111;
+      }
+      .bz-hero .bz-hero-actions .btn-primary:hover {
+        background: #2a2a2a;
+        color: #fff;
+        border-color: #2a2a2a;
+      }
+      .bz-hero .bz-hero-actions .btn-ghost {
+        background: #fff;
+        color: #111;
+        border: 1px solid #d8d8d8;
+      }
+      .bz-hero .bz-hero-actions .btn-ghost:hover {
+        background: #fff;
+        border-color: #9a9a9a;
+        color: #111;
+      }
+      .bz-hero__cta-go {
+        display: inline-block;
+        margin-left: 0.4em;
+        transition: transform 0.2s ease;
+      }
+      .bz-hero .bz-hero-actions .btn-primary:hover .bz-hero__cta-go,
+      .bz-hero .bz-hero-actions .btn-primary:focus-visible .bz-hero__cta-go {
+        transform: translateX(3px);
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero .bz-hero-actions .btn-primary {
+        background: #fff;
+        color: #111;
+        border-color: #fff;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero .bz-hero-actions .btn-primary:hover {
+        background: #ececec;
+        color: #111;
+        border-color: #ececec;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero .bz-hero-actions .btn-ghost {
+        background: transparent;
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.28);
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero .bz-hero-actions .btn-ghost:hover {
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.55);
+        color: #fff;
+      }
+      .bz-hero__visual {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: min(31.25rem, 100%);
+        min-height: 0;
+        padding-top: 0.08rem;
+        justify-self: end;
+      }
+      .bz-hero__head {
+        position: relative;
+        flex: none;
+        min-height: 4.75rem;
+        padding: 0.12rem 0 1rem;
+        border-bottom: 1px solid var(--bz-index-rule);
+      }
+      .bz-hero__sig {
+        position: relative;
+        z-index: 1;
+        min-width: 0;
+        max-width: none;
+        padding: 0;
+      }
+      .bz-hero__sig-name {
+        margin: 0;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        line-height: 1.2;
+        color: #111;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero__sig-name {
+        color: var(--text);
+      }
+      .bz-hero__sig-line {
+        margin: 0.5rem 0 0;
+        font-size: 0.6875rem;
+        font-weight: 400;
+        letter-spacing: 0.06em;
+        color: #8a8a8a;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero__sig-line {
+        color: var(--text-soft);
+      }
+      .bz-hero__mark {
+        display: none;
+      }
+      .bz-hero__mark img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 118px;
+        object-fit: contain;
+        object-position: top right;
+      }
+      .bz-hero-index {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        min-height: 0;
+      }
+      .bz-hero-index__row {
+        display: grid;
+        grid-template-columns: 2.5rem minmax(0, 1fr) 1.1rem;
+        column-gap: 0.9rem;
+        align-items: start;
+        flex: 0 0 auto;
+        min-height: 4.55rem;
+        padding: 1.15rem 0.15rem 1.2rem 0;
+        border-bottom: 1px solid var(--bz-index-rule);
+        border-radius: 0;
+        background: transparent;
+        color: inherit;
+        text-decoration: none;
+        box-shadow: none;
+        transform: none;
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease;
+      }
+      .bz-hero-index__body {
+        display: block;
+        min-width: 0;
+      }
+      .bz-hero-index__n {
+        padding-top: 0.14rem;
+        font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 0.6875rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        color: #b8b8b8;
+        transition: color 0.2s ease;
+      }
+      .bz-hero-index__en {
+        display: block;
+        font-size: 0.6875rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #8a8a8a;
+        transition: color 0.2s ease;
+      }
+      .bz-hero-index__ko {
+        display: block;
+        margin-top: 0.36rem;
+        font-size: 1.25rem;
+        font-weight: 650;
+        letter-spacing: -0.03em;
+        line-height: 1.28;
+        color: #111;
+        word-break: keep-all;
+        transition: color 0.2s ease;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero-index__ko {
+        color: var(--text);
+      }
+      .bz-hero-index__go {
+        padding-top: 0.02rem;
+        font-size: 0.92rem;
+        line-height: 1;
+        color: #c2c2c2;
+        transform: translate(0, 0);
+        transition: color 0.2s ease, transform 0.2s ease;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero-index__go {
+        color: rgba(255, 255, 255, 0.38);
+      }
+      .bz-hero-index__row:hover,
+      .bz-hero-index__row:focus-visible {
+        background: var(--bz-index-hover-bg);
+        border-bottom-color: var(--bz-index-rule-hover);
+        transform: none;
+        box-shadow: none;
+      }
+      .bz-hero-index__row:hover .bz-hero-index__n,
+      .bz-hero-index__row:focus-visible .bz-hero-index__n {
+        color: #7a7a7a;
+      }
+      .bz-hero-index__row:hover .bz-hero-index__ko,
+      .bz-hero-index__row:focus-visible .bz-hero-index__ko {
+        color: #000;
+        font-weight: 700;
+      }
+      .bz-hero-index__row:hover .bz-hero-index__go,
+      .bz-hero-index__row:focus-visible .bz-hero-index__go {
+        color: #111;
+        transform: translate(2px, -2px);
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero-index__row:hover .bz-hero-index__n,
+      html[data-newon-shell-theme="dark"] .bz-hero-index__row:focus-visible .bz-hero-index__n {
+        color: rgba(255, 255, 255, 0.62);
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero-index__row:hover .bz-hero-index__ko,
+      html[data-newon-shell-theme="dark"] .bz-hero-index__row:focus-visible .bz-hero-index__ko {
+        color: #fff;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero-index__row:hover .bz-hero-index__go,
+      html[data-newon-shell-theme="dark"] .bz-hero-index__row:focus-visible .bz-hero-index__go {
+        color: #fff;
+      }
+      .bz-hero__bar {
+        flex: 0 0 auto;
+        height: 56px;
+        border-top: 1px solid var(--bz-hero-rule);
+      }
+      .bz-hero__bar-inner {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem 1.15rem;
+        width: min(1180px, calc(100% - var(--space) * 2));
+        height: 100%;
+        margin: 0 auto;
+        font-size: 0.6875rem;
+        letter-spacing: 0.1em;
+        color: var(--text-soft);
+      }
+      .bz-hero__bar-label {
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        color: var(--text);
+      }
+      .bz-hero__bar-meta {
+        color: #b0b0b0;
+        letter-spacing: 0.08em;
+      }
+      html[data-newon-shell-theme="dark"] .bz-hero__bar-meta {
+        color: var(--text-soft);
+      }
+      .bz-hero__bar-explore {
+        margin-left: auto;
+        color: #8a8a8a;
+        text-decoration: none;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        transition: color 0.2s ease;
+      }
+      .bz-hero__bar-explore:hover {
+        color: var(--text);
+      }
+      .bz-hero-enter {
+        opacity: 0;
+        transform: translateY(10px);
+        animation: bz-hero-up 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+        animation-delay: calc(var(--d, 0) * 55ms);
+      }
+      .bz-hero-mark-enter {
+        animation: bz-hero-mark-in 0.65s ease backwards;
+        animation-delay: 0.18s;
+      }
+      @keyframes bz-hero-up {
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes bz-hero-mark-in {
+        from { opacity: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bz-hero-enter,
+        .bz-hero-mark-enter {
+          opacity: 1;
+          transform: none;
+          animation: none;
+        }
+        .bz-hero .bz-hero-actions .btn-primary:hover .bz-hero__cta-go,
+        .bz-hero-index__row:hover .bz-hero-index__go,
+        .bz-hero-index__row:focus-visible .bz-hero-index__go {
+          transform: none;
+        }
+      }
+      @media (min-width: 900px) and (max-width: 1100px) {
+        .bz-hero__title {
+          font-size: clamp(2.85rem, 4.2vw, 3.45rem);
+        }
+      }
+      @media (max-width: 899px) {
+        .bz-hero {
+          height: auto;
+          min-height: 0;
+          max-height: none;
+        }
+        .bz-hero__stage {
+          padding: 1.75rem 0 1.15rem;
+        }
+        .bz-hero__grid {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+          height: auto;
+        }
+        .bz-hero__copy {
+          padding-top: 0;
+        }
+        .bz-hero__kicker {
+          margin-bottom: 1.2rem;
+        }
+        .bz-hero__title {
+          max-width: none;
+          font-size: clamp(2.15rem, 8.4vw, 2.7rem);
+          line-height: 1.08;
+        }
+        .bz-hero__lead {
+          margin-top: 1.2rem;
+          font-size: 1.0625rem;
+        }
+        .bz-hero .bz-hero-actions {
+          margin-top: 1.65rem;
+          padding-top: 0;
+        }
+        .bz-hero__visual {
+          max-width: none;
+          justify-self: stretch;
+          padding-top: 0;
+        }
+        .bz-hero__head {
+          min-height: 4.25rem;
+          padding-bottom: 0.95rem;
+        }
+        .bz-hero__sig {
+          max-width: calc(100% - 6.5rem);
+        }
+        .bz-hero__mark {
+          width: 96px;
+          max-width: 28%;
+        }
+        .bz-hero__mark img {
+          max-height: 96px;
+        }
+        .bz-hero-index__row {
+          min-height: 4.2rem;
+          padding: 1.05rem 0.1rem 1.1rem 0;
+        }
+        .bz-hero-index__ko {
+          font-size: 1.125rem;
+        }
+        .bz-hero__bar {
+          height: auto;
+          min-height: 52px;
+        }
+        .bz-hero__bar-inner {
+          flex-wrap: wrap;
+          gap: 0.3rem 0.9rem;
+          padding: 0.85rem 0;
+        }
+        .bz-hero__bar-explore {
+          margin-left: 0;
+          flex: 1 0 100%;
+        }
+      }
+      .bz-grid {
+        display: grid;
+        gap: 1rem;
+        margin: 2rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .bz-grid--4 { grid-template-columns: 1fr; }
+      .bz-grid--2 { grid-template-columns: 1fr; }
+      .bz-grid--3 { grid-template-columns: 1fr; }
+      @media (min-width: 640px) {
+        .bz-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .bz-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .bz-grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (min-width: 1024px) {
+        .bz-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .bz-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      }
+      .bz-card {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        padding: 1.5rem 1.35rem 1.35rem;
+        border: 1px solid #eaeaea;
+        border-radius: 12px;
+        background: #fff;
+        color: inherit;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+      html[data-newon-shell-theme="dark"] .bz-card {
+        background: var(--surface);
+        border-color: var(--border);
+      }
+      .bz-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+        border-color: #ddd;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bz-card:hover { transform: none; }
+      }
+      .bz-card h3 {
+        margin: 0 0 0.65rem;
+        font-size: 1.05rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+      .bz-card p {
+        margin: 0;
+        flex: 1;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: var(--text-muted);
+      }
+      .bz-card__more {
+        margin-top: 1.25rem;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--text);
+        display: inline-block;
+        transition: transform 0.25s ease;
+      }
+      a.bz-card:hover .bz-card__more { transform: translateX(3px); }
+      @media (prefers-reduced-motion: reduce) {
+        a.bz-card:hover .bz-card__more { transform: none; }
+      }
+      @media (max-width: 799px) {
+        .bz-card,
+        .bz-eco-card,
+        .bz-why-card,
+        .bz-step {
+          padding: 1.4rem 1.2rem;
+        }
+      }
+      .bz-cap-grid {
+        display: grid;
+        gap: 0;
+        margin-top: 3rem;
+        padding: 0;
+        list-style: none;
+        border-top: 1px solid #ececec;
+      }
+      @media (min-width: 860px) {
+        .bz-cap-grid { grid-template-columns: 1fr 1fr; }
+      }
+      .bz-cap-item {
+        padding: 2rem 0 2.15rem;
+        border-bottom: 1px solid #ececec;
+      }
+      @media (min-width: 860px) {
+        .bz-cap-item:nth-child(odd) {
+          padding-right: 2.5rem;
+          border-right: 1px solid #ececec;
+        }
+        .bz-cap-item:nth-child(even) { padding-left: 2.5rem; }
+      }
+      html[data-newon-shell-theme="dark"] .bz-cap-grid,
+      html[data-newon-shell-theme="dark"] .bz-cap-item {
+        border-color: var(--border);
+      }
+      .bz-cap-item__n {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: var(--text-soft);
+      }
+      .bz-cap-item h3 {
+        margin: 0.7rem 0 0.8rem;
+        font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+        font-weight: 700;
+        letter-spacing: -0.035em;
+        word-break: keep-all;
+        color: var(--text);
+      }
+      .bz-cap-item p {
+        margin: 0;
+        max-width: 32rem;
+        font-size: 0.975rem;
+        line-height: 1.65;
+        color: var(--text-muted);
+        word-break: keep-all;
+      }
+      .bz-cap-item__keys {
+        margin-top: 1.35rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+        color: var(--text-soft);
+      }
+      .bz-proof {
+        padding: 108px 0 96px;
+        background: #0a0a0a;
+        color: #fff;
+      }
+      html[data-newon-shell-theme="dark"] .bz-proof { background: #0a0a0a; }
+      .bz-proof .bz-label { color: rgba(255, 255, 255, 0.42); }
+      .bz-proof .bz-title {
+        max-width: 12ch;
+        color: #fff;
+        font-size: clamp(2.05rem, 4.8vw, 3.2rem);
+        line-height: 1.15;
+      }
+      .bz-proof .bz-lead {
+        margin: 1.1rem 0 0;
+        max-width: 34rem;
+        color: rgba(255, 255, 255, 0.68);
+      }
+      .bz-flow-track {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin: 3.25rem 0 0;
+        padding: 0;
+        list-style: none;
+        position: relative;
+      }
+      .bz-flow-track::before {
+        content: "";
+        position: absolute;
+        left: 11px;
+        top: 6px;
+        bottom: 18px;
+        width: 1px;
+        background: rgba(255, 255, 255, 0.16);
+      }
+      .bz-flow-track li {
+        position: relative;
+        padding: 0 0 1.65rem 2.35rem;
+      }
+      .bz-flow-track li:last-child { padding-bottom: 0; }
+      .bz-flow-track__dot {
+        position: absolute;
+        left: 4px;
+        top: 6px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.38);
+        background: #0a0a0a;
+        box-shadow: 0 0 0 4px #0a0a0a;
+      }
+      .bz-flow-track__n {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: rgba(255, 255, 255, 0.42);
+      }
+      .bz-flow-track__en {
+        display: block;
+        font-size: clamp(1.15rem, 2vw, 1.35rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: #fff;
+      }
+      .bz-flow-track__ko {
+        display: block;
+        margin-top: 0.2rem;
+        font-size: 0.8125rem;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .bz-flow-track__ko:empty { display: none; }
+      @media (min-width: 860px) {
+        .bz-flow-track {
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          gap: 0;
+          margin-top: 3.75rem;
+        }
+        .bz-flow-track::before {
+          left: 0;
+          right: 0;
+          top: 11px;
+          bottom: auto;
+          width: auto;
+          height: 1px;
+        }
+        .bz-flow-track li {
+          padding: 2.35rem 1.25rem 0 0;
+        }
+        .bz-flow-track__dot {
+          left: 0;
+          top: 4px;
+        }
+      }
+      .bz-ind-head {
+        display: grid;
+        gap: 1.25rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #ececec;
+      }
+      html[data-newon-shell-theme="dark"] .bz-ind-head {
+        border-bottom-color: var(--border);
+      }
+      @media (min-width: 900px) {
+        .bz-ind-head {
+          grid-template-columns: minmax(0, 0.52fr) minmax(0, 0.48fr);
+          gap: 4rem;
+          align-items: end;
+        }
+        .bz-ind-head .bz-title {
+          margin-bottom: 0;
+          max-width: 11.5ch;
+        }
+        .bz-ind-head .bz-lead {
+          margin: 0;
+          max-width: 28rem;
+          justify-self: end;
+        }
+      }
+      .bz-ind-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      @media (min-width: 900px) {
+        .bz-ind-list {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+      .bz-ind-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.95rem;
+        min-height: 6.25rem;
+        padding: 1.55rem 0 1.5rem;
+        border-bottom: 1px solid #ececec;
+        transition: border-color 0.2s ease;
+      }
+      html[data-newon-shell-theme="dark"] .bz-ind-list li {
+        border-bottom-color: var(--border);
+      }
+      @media (min-width: 900px) {
+        .bz-ind-list li:nth-child(3n + 2),
+        .bz-ind-list li:nth-child(3n) {
+          padding-left: 1.85rem;
+        }
+        .bz-ind-list li:nth-child(3n + 1),
+        .bz-ind-list li:nth-child(3n + 2) {
+          padding-right: 1.35rem;
+        }
+      }
+      .bz-ind-list li:hover {
+        border-bottom-color: #cfcfcf;
+      }
+      html[data-newon-shell-theme="dark"] .bz-ind-list li:hover {
+        border-bottom-color: rgba(255, 255, 255, 0.28);
+      }
+      .bz-ind-n {
+        flex: 0 0 auto;
+        min-width: 1.65rem;
+        padding-top: 0.28rem;
+        font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 0.6875rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        color: #b3b3b3;
+        transition: color 0.2s ease;
+      }
+      .bz-ind-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 0.32rem;
+        min-width: 0;
+      }
+      .bz-ind-en {
+        font-size: 0.65625rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #8a8a8a;
+        transition: color 0.2s ease;
+      }
+      .bz-ind-name {
+        font-size: clamp(1.2rem, 2.1vw, 1.55rem);
+        font-weight: 700;
+        letter-spacing: -0.035em;
+        line-height: 1.25;
+        color: var(--text);
+        word-break: keep-all;
+        transition: color 0.2s ease;
+      }
+      .bz-ind-list li:hover .bz-ind-n,
+      .bz-ind-list li:hover .bz-ind-en {
+        color: #6a6a6a;
+      }
+      .bz-ind-list li:hover .bz-ind-name {
+        color: #000;
+      }
+      html[data-newon-shell-theme="dark"] .bz-ind-list li:hover .bz-ind-n,
+      html[data-newon-shell-theme="dark"] .bz-ind-list li:hover .bz-ind-en {
+        color: rgba(255, 255, 255, 0.62);
+      }
+      html[data-newon-shell-theme="dark"] .bz-ind-list li:hover .bz-ind-name {
+        color: #fff;
+      }
+      @media (max-width: 899px) {
+        .bz-ind-list li {
+          min-height: 0;
+          padding: 1.2rem 0 1.25rem;
+        }
+        .bz-ind-name {
+          font-size: 1.2rem;
+        }
+      }
+      .bz-faq {
+        margin-top: 2.5rem;
+        border-top: 1px solid #ececec;
+      }
+      html[data-newon-shell-theme="dark"] .bz-faq { border-color: var(--border); }
+      .bz-faq-item { border-bottom: 1px solid #ececec; }
+      html[data-newon-shell-theme="dark"] .bz-faq-item { border-color: var(--border); }
+      .bz-faq-q {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 100%;
+        min-height: 56px;
+        padding: 1rem 0;
+        border: 0;
+        background: transparent;
+        color: var(--text);
+        font: inherit;
+        font-size: 1.02rem;
+        font-weight: 600;
+        text-align: left;
+        cursor: pointer;
+        word-break: keep-all;
+      }
+      .bz-faq-icon {
+        position: relative;
+        flex: 0 0 14px;
+        width: 14px;
+        height: 14px;
+      }
+      .bz-faq-icon::before,
+      .bz-faq-icon::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 6px;
+        width: 14px;
+        height: 1.5px;
+        background: currentColor;
+        transition: transform 0.26s ease, opacity 0.26s ease;
+      }
+      .bz-faq-icon::after { transform: rotate(90deg); }
+      .bz-faq-item.is-open .bz-faq-icon::after { opacity: 0; }
+      .bz-faq-a {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.26s ease;
+      }
+      .bz-faq-item.is-open .bz-faq-a { grid-template-rows: 1fr; }
+      .bz-faq-a > p {
+        overflow: hidden;
+        min-height: 0;
+        margin: 0;
+        padding-bottom: 0;
+        max-width: 40rem;
+        font-size: 0.975rem;
+        line-height: 1.7;
+        color: var(--text-muted);
+        word-break: keep-all;
+      }
+      .bz-faq-item.is-open .bz-faq-a > p { padding-bottom: 1.15rem; }
+      @media (prefers-reduced-motion: reduce) {
+        .bz-faq-a,
+        .bz-faq-icon::before,
+        .bz-faq-icon::after { transition: none; }
+      }
+      .bz-rep {
+        background: #fff;
+        border-top: 1px solid #eaeaea;
+        border-bottom: 1px solid #eaeaea;
+      }
+      html[data-newon-shell-theme="dark"] .bz-rep {
+        background: var(--bg);
+        border-color: var(--border);
+      }
+      .bz-rep-grid {
+        display: grid;
+        gap: 2.75rem;
+        align-items: center;
+      }
+      @media (min-width: 900px) {
+        .bz-rep-grid {
+          grid-template-columns: 0.45fr 0.55fr;
+          gap: 4rem;
+        }
+      }
+      .bz-rep-copy .bz-title { max-width: 16ch; }
+      .bz-rep-name {
+        margin: 1.75rem 0 0;
+        font-size: 1.35rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+      }
+      .bz-rep-role {
+        margin: 0.35rem 0 0;
+        font-size: 0.9375rem;
+        color: var(--text-muted);
+      }
+      .bz-rep-mail {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        margin-top: 1.35rem;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--text);
+        text-decoration: none;
+        border-bottom: 1px solid currentColor;
+      }
+      .bz-ncards {
+        position: relative;
+        width: min(100%, 26rem);
+        margin: 0 auto;
+        padding: 1.75rem 1.65rem 2.1rem 0.85rem;
+        overflow: visible;
+      }
+      @media (max-width: 899px) {
+        .bz-ncards {
+          width: min(100%, 22.5rem);
+          padding: 1.35rem 1.7rem 1.85rem;
+        }
+      }
+      html[data-newon-shell-theme="dark"] .bz-ncards {
+        background: #f2f2f2;
+        border-radius: 16px;
+      }
+      .bz-ncards__stage {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1024 / 588;
+      }
+      .bz-ncard {
+        position: absolute;
+        inset: 0;
+        display: block;
+        overflow: hidden;
+        border-radius: 3px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
+      .bz-ncard img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .bz-ncard--back {
+        transform: translate(14px, 6px) rotate(5deg);
+        z-index: 0;
+      }
+      .bz-ncard--front {
+        transform: rotate(-1.5deg);
+        z-index: 1;
+      }
+      .bz-ncard--front:focus-visible {
+        outline: 2px solid var(--text);
+        outline-offset: 4px;
+      }
+      .bz-ncards:hover .bz-ncard--front,
+      .bz-ncards:focus-within .bz-ncard--front {
+        transform: translateY(-5px) rotate(-1.5deg);
+      }
+      .bz-ncards:hover .bz-ncard--back,
+      .bz-ncards:focus-within .bz-ncard--back {
+        transform: translate(18px, 2px) rotate(6.5deg);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bz-ncard {
+          transition: none;
+        }
+        .bz-ncards:hover .bz-ncard--front,
+        .bz-ncards:focus-within .bz-ncard--front {
+          transform: rotate(-1.5deg);
+        }
+        .bz-ncards:hover .bz-ncard--back,
+        .bz-ncards:focus-within .bz-ncard--back {
+          transform: translate(14px, 6px) rotate(5deg);
+        }
+      }
+      .bz-eco { background: #fff; }
+      html[data-newon-shell-theme="dark"] .bz-eco { background: var(--bg); }
+      .bz-eco-card {
+        padding: 1.5rem 1.35rem;
+        border: 1px solid #eaeaea;
+        border-radius: 12px;
+        background: #fff;
+      }
+      html[data-newon-shell-theme="dark"] .bz-eco-card {
+        background: var(--surface);
+        border-color: var(--border);
+      }
+      .bz-eco-card h3 {
+        margin: 0 0 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+      .bz-app-row { display: flex; flex-direction: column; gap: 0.35rem; }
+      .bz-app {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.55rem 0.35rem;
+        border-radius: 10px;
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9375rem;
+        transition: background 0.2s ease;
+      }
+      .bz-app:hover { background: rgba(0, 0, 0, 0.035); }
+      html[data-newon-shell-theme="dark"] .bz-app:hover { background: rgba(255, 255, 255, 0.05); }
+      .bz-app img {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        object-fit: contain;
+        background: var(--bg);
+      }
+      .bz-why-card {
+        padding: 1.5rem 1.35rem;
+        border: 1px solid #eaeaea;
+        border-radius: 12px;
+        background: #fff;
+      }
+      html[data-newon-shell-theme="dark"] .bz-why-card {
+        background: var(--surface);
+        border-color: var(--border);
+      }
+      .bz-num {
+        display: block;
+        margin-bottom: 0.85rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: var(--text-soft);
+      }
+      .bz-why-card h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+      .bz-why-card p {
+        margin: 0;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: var(--text-muted);
+      }
+      .bz-steps {
+        display: grid;
+        gap: 1.25rem;
+        margin: 2rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      @media (min-width: 900px) {
+        .bz-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
+      }
+      .bz-step {
+        position: relative;
+        padding: 1.5rem 1.35rem;
+        border: 1px solid #eaeaea;
+        border-radius: 12px;
+        background: #fff;
+      }
+      html[data-newon-shell-theme="dark"] .bz-step {
+        background: var(--surface);
+        border-color: var(--border);
+      }
+      .bz-step__n {
+        display: block;
+        margin-bottom: 0.85rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: var(--text-soft);
+      }
+      .bz-step h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+      .bz-step p {
+        margin: 0;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: var(--text-muted);
+      }
+      .bz-band {
+        background: #0a0a0a;
+        color: #fff;
+        border: 0;
+      }
+      .bz-band .bz-label { color: rgba(255, 255, 255, 0.42); }
+      .bz-band .bz-title { color: #fff; max-width: 18ch; }
+      .bz-band .bz-lead { color: rgba(255, 255, 255, 0.62); }
+      .bz-band .btn-primary {
+        margin-top: 1.75rem;
+        background: #fff;
+        color: #0a0a0a;
+      }
+      .bz-band .btn-primary:hover { background: #f0f0f0; }
+      .bz-form-wrap { max-width: 40rem; position: relative; }
+      .bz-form { display: grid; gap: 1rem; margin-top: 1.75rem; }
+      .bz-field { display: flex; flex-direction: column; gap: 0.4rem; }
+      .bz-field label { font-size: 0.8125rem; font-weight: 600; color: var(--text); }
+      .bz-field .bz-opt { font-weight: 500; color: var(--text-muted); }
+      .bz-req { margin-left: 0.12em; }
+      .bz-field input:not([type="checkbox"]):not([type="radio"]),
+      .bz-field select,
+      .bz-field textarea {
+        width: 100%;
+        min-height: 44px;
+        padding: 0.75rem 0.85rem;
+        border: 1px solid #eaeaea;
+        border-radius: 10px;
+        background: var(--bg);
+        color: var(--text);
+        font: inherit;
+        font-size: 0.9375rem;
+      }
+      html[data-newon-shell-theme="dark"] .bz-field input:not([type="checkbox"]):not([type="radio"]),
+      html[data-newon-shell-theme="dark"] .bz-field select,
+      html[data-newon-shell-theme="dark"] .bz-field textarea {
+        border-color: var(--border);
+      }
+      .bz-field textarea { min-height: 8.5rem; resize: vertical; }
+      .bz-form .btn,
+      .bz-form .bz-submit {
+        justify-self: stretch;
+        min-height: 52px;
+      }
+      .bz-form .btn[disabled],
+      .bz-form .bz-submit[disabled] { opacity: 0.7; cursor: wait; }
+      .bz-hp {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+        border: 0;
+        padding: 0;
+      }
+      .bz-submit-spin {
+        display: none;
+        width: 0.7rem;
+        height: 0.7rem;
+        margin-right: 0.5rem;
+        border: 1.5px solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+      }
+      .btn.is-busy .bz-submit-spin,
+      .bz-submit.is-busy .bz-submit-spin {
+        display: inline-block;
+        animation: bz-spin 0.7s linear infinite;
+      }
+      @keyframes bz-spin { to { transform: rotate(360deg); } }
+      @media (prefers-reduced-motion: reduce) {
+        .btn.is-busy .bz-submit-spin,
+        .bz-submit.is-busy .bz-submit-spin { animation: none; opacity: 0.55; }
+      }
+      .bz-fail { display: none; margin-top: 1.1rem; color: var(--text); }
+      .bz-fail.is-visible { display: block; }
+      .bz-reveal {
+        opacity: 1;
+        transform: none;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .bz-reveal.is-visible { opacity: 1; transform: none; }
+      @media (prefers-reduced-motion: reduce) {
+        .bz-reveal { opacity: 1; transform: none; }
+      }
+      .bz-services__grid { display: grid; gap: 0; margin-top: 2.25rem; border-top: 1px solid #e8e8e8; }
+      .bz-svc {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 0.85rem 1.35rem;
+        align-items: center;
+        padding: 1.15rem 0.1rem 1.2rem;
+        border: 0;
+        border-bottom: 1px solid #e8e8e8;
+        background: transparent;
+      }
+      html[data-newon-shell-theme="dark"] .bz-svc,
+      html[data-newon-shell-theme="dark"] .bz-services__grid { border-color: var(--border); }
+      .bz-svc__num {
+        margin: 0;
+        padding-top: 0.35rem;
+        align-self: start;
+        min-width: 1.6rem;
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: var(--text-soft);
+      }
+      .bz-svc__body { min-width: 0; }
+      .bz-svc__title {
+        margin: 0;
+        font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.25;
+      }
+      .bz-svc__desc {
+        margin: 0.3rem 0 0;
+        max-width: 38rem;
+        font-size: 0.875rem;
+        line-height: 1.55;
+        color: var(--text-muted);
+        word-break: keep-all;
+      }
+      .bz-svc__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin: 0.7rem 0 0;
+        padding: 0;
+      }
+      .bz-svc__tag {
+        display: inline-block;
+        padding: 0.2rem 0.5rem;
+        border: 1px solid #e8e8e8;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        word-break: keep-all;
+      }
+      html[data-newon-shell-theme="dark"] .bz-svc__tag { border-color: var(--border); }
+      .bz-svc__cta {
+        justify-self: end;
+        align-self: center;
+        min-height: 40px;
+        padding: 0.55rem 0.95rem;
+        font-size: 0.8125rem;
+        white-space: nowrap;
+        border-radius: 999px;
+      }
+      @media (max-width: 799px) {
+        .bz-svc { grid-template-columns: auto minmax(0, 1fr); }
+        .bz-svc__cta { grid-column: 1 / -1; justify-self: start; }
+      }
+    </style>
+    <link rel="stylesheet" href="/business-page.css?v=20260826bz18" />
+    <script src="/lang-nav.js?v=20260821stay2"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#business-main">{{t:common.skipToContent}}</a>
+    {{CHROME_HEADER}}
+
+    <main id="business-main" class="bz-page">
+      <section class="bz-hero bz-reveal is-visible" aria-labelledby="bz-hero-title">
+        <div class="bz-hero__stage">
+          <div class="bz-inner bz-hero__grid">
+            <div class="bz-hero__copy">
+              <p class="bz-hero__kicker bz-hero-enter" style="--d: 0">{{t:business.heroLabel}}</p>
+              <h1 class="bz-hero__title bz-hero-enter" id="bz-hero-title" style="--d: 1">{{html:business.heroTitleHtml}}</h1>
+              <p class="bz-hero__lead bz-hero-enter" style="--d: 2">{{html:business.heroLeadHtml}}</p>
+              <div class="bz-hero-actions bz-hero-enter" style="--d: 3">
+                <a class="btn btn-primary" href="#inquiry">{{t:business.ctaInquiry}}<span class="bz-hero__cta-go" aria-hidden="true">→</span></a>
+                <a class="btn btn-ghost" href="../">{{t:business.ctaExploreBack}}</a>
+              </div>
+            </div>
+            <div class="bz-hero__visual">
+              <div class="bz-hero__head bz-hero-enter" style="--d: 4">
+                <div class="bz-hero__sig">
+                  <p class="bz-hero__sig-name">{{t:business.heroSigName}}</p>
+                  <p class="bz-hero__sig-line">{{t:business.heroSigLine}}</p>
+                </div>
+                <div class="bz-hero__mark bz-hero-mark-enter" aria-hidden="true">
+                  <img src="/logo-n.png" alt="" width="1024" height="1024" decoding="async" />
+                </div>
+              </div>
+              <nav class="bz-hero-index bz-hero-enter" style="--d: 5" aria-label="{{t:business.heroIndexAria}}">
+                <a class="bz-hero-index__row" href="../partnership/">
+                  <span class="bz-hero-index__n">01</span>
+                  <span class="bz-hero-index__body">
+                    <span class="bz-hero-index__en">{{t:business.heroIndex1En}}</span>
+                    <span class="bz-hero-index__ko">{{t:business.cardPartnershipTitle}}</span>
+                  </span>
+                  <span class="bz-hero-index__go" aria-hidden="true">↗</span>
+                </a>
+                <a class="bz-hero-index__row" href="../service/">
+                  <span class="bz-hero-index__n">02</span>
+                  <span class="bz-hero-index__body">
+                    <span class="bz-hero-index__en">{{t:business.heroIndex2En}}</span>
+                    <span class="bz-hero-index__ko">{{t:business.cardCollabTitle}}</span>
+                  </span>
+                  <span class="bz-hero-index__go" aria-hidden="true">↗</span>
+                </a>
+                <a class="bz-hero-index__row" href="../promotion/">
+                  <span class="bz-hero-index__n">03</span>
+                  <span class="bz-hero-index__body">
+                    <span class="bz-hero-index__en">{{t:business.heroIndex3En}}</span>
+                    <span class="bz-hero-index__ko">{{t:business.cardAdsTitle}}</span>
+                  </span>
+                  <span class="bz-hero-index__go" aria-hidden="true">↗</span>
+                </a>
+                <a class="bz-hero-index__row" href="../development/">
+                  <span class="bz-hero-index__n">04</span>
+                  <span class="bz-hero-index__body">
+                    <span class="bz-hero-index__en">{{t:business.heroIndex4En}}</span>
+                    <span class="bz-hero-index__ko">{{t:business.cardDevTitle}}</span>
+                  </span>
+                  <span class="bz-hero-index__go" aria-hidden="true">↗</span>
+                </a>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="bz-hero__bar">
+          <div class="bz-hero__bar-inner">
+            <span class="bz-hero__bar-label">{{t:business.heroBarLabel}}</span>
+            <span class="bz-hero__bar-meta">{{t:business.heroBarMeta}}</span>
+            <a class="bz-hero__bar-explore" href="#services">{{t:business.heroBarExplore}}</a>
+          </div>
+        </div>
+      </section>
+
+      {{BUSINESS_SERVICES}}
+
+      <section id="work" class="bz-section bz-reveal" aria-labelledby="bz-work-title">
+        <div class="bz-inner">
+          <p class="bz-label">{{t:business.workLabel}}</p>
+          <h2 class="bz-title" id="bz-work-title">{{t:business.workTitle}}</h2>
+          <p class="bz-lead">{{t:business.workLead}}</p>
+          <div class="bz-grid bz-grid--4">
+            <a class="bz-card" href="../partnership/">
+              <h3>{{t:business.cardPartnershipTitle}}</h3>
+              <p>{{t:business.cardPartnershipBody}}</p>
+              <span class="bz-card__more">{{t:business.learnMore}}</span>
+            </a>
+            <a class="bz-card" href="../service/">
+              <h3>{{t:business.cardCollabTitle}}</h3>
+              <p>{{t:business.cardCollabBody}}</p>
+              <span class="bz-card__more">{{t:business.learnMore}}</span>
+            </a>
+            <a class="bz-card" href="../promotion/">
+              <h3>{{t:business.cardAdsTitle}}</h3>
+              <p>{{t:business.cardAdsBody}}</p>
+              <span class="bz-card__more">{{t:business.learnMore}}</span>
+            </a>
+            <a class="bz-card" href="../development/">
+              <h3>{{t:business.cardDevTitle}}</h3>
+              <p>{{t:business.cardDevBody}}</p>
+              <span class="bz-card__more">{{t:business.learnMore}}</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="capabilities" class="bz-section bz-reveal" aria-labelledby="bz-cap-title">
+        <div class="bz-inner">
+          <header class="bz-sec-head">
+            <div class="bz-sec-head__copy">
+              <p class="bz-label">{{t:business.capLabel}}</p>
+              <h2 class="bz-title" id="bz-cap-title">{{t:business.capTitle}}</h2>
+            </div>
+            <p class="bz-lead bz-sec-head__lead">{{t:business.capLead}}</p>
+          </header>
+          <ul class="bz-cap-grid">
+            <li class="bz-cap-item">
+              <span class="bz-cap-item__n">01</span>
+              <h3>{{t:business.cap1Title}}</h3>
+              <p>{{t:business.cap1Body}}</p>
+              <p class="bz-cap-item__keys">{{t:business.cap1Keys}}</p>
+            </li>
+            <li class="bz-cap-item">
+              <span class="bz-cap-item__n">02</span>
+              <h3>{{t:business.cap2Title}}</h3>
+              <p>{{t:business.cap2Body}}</p>
+              <p class="bz-cap-item__keys">{{t:business.cap2Keys}}</p>
+            </li>
+            <li class="bz-cap-item">
+              <span class="bz-cap-item__n">03</span>
+              <h3>{{t:business.cap3Title}}</h3>
+              <p>{{t:business.cap3Body}}</p>
+              <p class="bz-cap-item__keys">{{t:business.cap3Keys}}</p>
+            </li>
+            <li class="bz-cap-item">
+              <span class="bz-cap-item__n">04</span>
+              <h3>{{t:business.cap4Title}}</h3>
+              <p>{{t:business.cap4Body}}</p>
+              <p class="bz-cap-item__keys">{{t:business.cap4Keys}}</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="bz-section bz-eco bz-reveal" aria-labelledby="bz-eco-title">
+        <div class="bz-inner">
+          <p class="bz-label">{{t:business.ecoLabel}}</p>
+          <h2 class="bz-title" id="bz-eco-title">{{t:business.ecoTitle}}</h2>
+          <p class="bz-lead">{{t:business.ecoLead}}</p>
+          <div class="bz-grid bz-grid--3">
+            {{BUSINESS_ECOSYSTEM}}
+          </div>
+        </div>
+      </section>
+
+      <section class="bz-proof bz-reveal" aria-labelledby="bz-proof-title">
+        <div class="bz-inner">
+          <p class="bz-label">{{t:business.proofLabel}}</p>
+          <h2 class="bz-title" id="bz-proof-title">{{t:business.proofTitle}}</h2>
+          <p class="bz-lead">{{t:business.proofLead}}</p>
+          <ol class="bz-flow-track">
+            <li>
+              <span class="bz-flow-track__dot" aria-hidden="true"></span>
+              <span class="bz-flow-track__n">01</span>
+              <span class="bz-flow-track__en">{{t:business.proof1}}</span>
+              <span class="bz-flow-track__ko">{{t:business.proof1Sub}}</span>
+            </li>
+            <li>
+              <span class="bz-flow-track__dot" aria-hidden="true"></span>
+              <span class="bz-flow-track__n">02</span>
+              <span class="bz-flow-track__en">{{t:business.proof2}}</span>
+              <span class="bz-flow-track__ko">{{t:business.proof2Sub}}</span>
+            </li>
+            <li>
+              <span class="bz-flow-track__dot" aria-hidden="true"></span>
+              <span class="bz-flow-track__n">03</span>
+              <span class="bz-flow-track__en">{{t:business.proof3}}</span>
+              <span class="bz-flow-track__ko">{{t:business.proof3Sub}}</span>
+            </li>
+            <li>
+              <span class="bz-flow-track__dot" aria-hidden="true"></span>
+              <span class="bz-flow-track__n">04</span>
+              <span class="bz-flow-track__en">{{t:business.proof4}}</span>
+              <span class="bz-flow-track__ko">{{t:business.proof4Sub}}</span>
+            </li>
+            <li>
+              <span class="bz-flow-track__dot" aria-hidden="true"></span>
+              <span class="bz-flow-track__n">05</span>
+              <span class="bz-flow-track__en">{{t:business.proof5}}</span>
+              <span class="bz-flow-track__ko">{{t:business.proof5Sub}}</span>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="industries" class="bz-section bz-reveal" aria-labelledby="bz-ind-title">
+        <div class="bz-inner">
+          <div class="bz-ind-head">
+            <div>
+              <p class="bz-label">{{t:business.indLabel}}</p>
+              <h2 class="bz-title" id="bz-ind-title">{{t:business.indTitle}}</h2>
+            </div>
+            <p class="bz-lead">{{t:business.indLead}}</p>
+          </div>
+          <ol class="bz-ind-list">
+            <li>
+              <span class="bz-ind-n">01</span>
+              <span class="bz-ind-copy">
+                <span class="bz-ind-en">{{t:business.ind1En}}</span>
+                <span class="bz-ind-name">{{t:business.ind1}}</span>
+              </span>
+            </li>
+            <li>
+              <span class="bz-ind-n">02</span>
+              <span class="bz-ind-copy">
+                <span class="bz-ind-en">{{t:business.ind2En}}</span>
+                <span class="bz-ind-name">{{t:business.ind2}}</span>
+              </span>
+            </li>
+            <li>
+              <span class="bz-ind-n">03</span>
+              <span class="bz-ind-copy">
+                <span class="bz-ind-en">{{t:business.ind3En}}</span>
+                <span class="bz-ind-name">{{t:business.ind3}}</span>
+              </span>
+            </li>
+            <li>
+              <span class="bz-ind-n">04</span>
+              <span class="bz-ind-copy">
+                <span class="bz-ind-en">{{t:business.ind4En}}</span>
+                <span class="bz-ind-name">{{t:business.ind4}}</span>
+              </span>
+            </li>
+            <li>
+              <span class="bz-ind-n">05</span>
+              <span class="bz-ind-copy">
+                <span class="bz-ind-en">{{t:business.ind5En}}</span>
+                <span class="bz-ind-name">{{t:business.ind5}}</span>
+              </span>
+            </li>
+            <li>
+              <span class="bz-ind-n">06</span>
+              <span class="bz-ind-copy">
+                <span class="bz-ind-en">{{t:business.ind6En}}</span>
+                <span class="bz-ind-name">{{t:business.ind6}}</span>
+              </span>
+            </li>
+            <li>
+              <span class="bz-ind-n">07</span>
+              <span class="bz-ind-copy">
+                <span class="bz-ind-en">{{t:business.ind7En}}</span>
+                <span class="bz-ind-name">{{t:business.ind7}}</span>
+              </span>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="bz-section bz-reveal" aria-labelledby="bz-why-title">
+        <div class="bz-inner">
+          <p class="bz-label">{{t:business.whyLabel}}</p>
+          <h2 class="bz-title" id="bz-why-title">{{t:business.whyTitle}}</h2>
+          <ul class="bz-grid bz-grid--4">
+            <li class="bz-why-card">
+              <span class="bz-num">01</span>
+              <h3>{{t:business.why1Title}}</h3>
+              <p>{{t:business.why1Body}}</p>
+            </li>
+            <li class="bz-why-card">
+              <span class="bz-num">02</span>
+              <h3>{{t:business.why2Title}}</h3>
+              <p>{{t:business.why2Body}}</p>
+            </li>
+            <li class="bz-why-card">
+              <span class="bz-num">03</span>
+              <h3>{{t:business.why3Title}}</h3>
+              <p>{{t:business.why3Body}}</p>
+            </li>
+            <li class="bz-why-card">
+              <span class="bz-num">04</span>
+              <h3>{{t:business.why4Title}}</h3>
+              <p>{{t:business.why4Body}}</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="how-we-work" class="bz-section bz-process bz-reveal" aria-labelledby="bz-process-title">
+        <div class="bz-inner bz-process__layout">
+          <aside class="bz-process__aside">
+            <p class="bz-label">{{t:business.processLabel}}</p>
+            <h2 class="bz-title" id="bz-process-title">{{t:business.processTitle}}</h2>
+            <p class="bz-process__lead">{{t:business.processLead}}</p>
+            <p class="bz-process__meta" aria-hidden="true"><span>05</span>STEPS</p>
+          </aside>
+          <ol class="bz-process__track">
+            <li>
+              <span class="bz-process__n" aria-hidden="true">01</span>
+              <div class="bz-process__body">
+                <h3 class="bz-process__en">{{t:business.step1Title}}</h3>
+                <p class="bz-process__ko">{{t:business.step1Body}}</p>
+              </div>
+            </li>
+            <li>
+              <span class="bz-process__n" aria-hidden="true">02</span>
+              <div class="bz-process__body">
+                <h3 class="bz-process__en">{{t:business.step2Title}}</h3>
+                <p class="bz-process__ko">{{t:business.step2Body}}</p>
+              </div>
+            </li>
+            <li>
+              <span class="bz-process__n" aria-hidden="true">03</span>
+              <div class="bz-process__body">
+                <h3 class="bz-process__en">{{t:business.step3Title}}</h3>
+                <p class="bz-process__ko">{{t:business.step3Body}}</p>
+              </div>
+            </li>
+            <li>
+              <span class="bz-process__n" aria-hidden="true">04</span>
+              <div class="bz-process__body">
+                <h3 class="bz-process__en">{{t:business.step4Title}}</h3>
+                <p class="bz-process__ko">{{t:business.step4Body}}</p>
+              </div>
+            </li>
+            <li>
+              <span class="bz-process__n" aria-hidden="true">05</span>
+              <div class="bz-process__body">
+                <h3 class="bz-process__en">{{t:business.step5Title}}</h3>
+                <p class="bz-process__ko">{{t:business.step5Body}}</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="faq" class="bz-section bz-reveal" aria-labelledby="bz-faq-title">
+        <div class="bz-inner">
+          <p class="bz-label">{{t:business.faqLabel}}</p>
+          <h2 class="bz-title" id="bz-faq-title">{{t:business.faqTitle}}</h2>
+          <div class="bz-faq">
+            <div class="bz-faq-item">
+              <button type="button" class="bz-faq-q" aria-expanded="false">
+                <span>{{t:business.faq1Q}}</span>
+                <span class="bz-faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="bz-faq-a"><p>{{t:business.faq1A}}</p></div>
+            </div>
+            <div class="bz-faq-item">
+              <button type="button" class="bz-faq-q" aria-expanded="false">
+                <span>{{t:business.faq2Q}}</span>
+                <span class="bz-faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="bz-faq-a"><p>{{t:business.faq2A}}</p></div>
+            </div>
+            <div class="bz-faq-item">
+              <button type="button" class="bz-faq-q" aria-expanded="false">
+                <span>{{t:business.faq3Q}}</span>
+                <span class="bz-faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="bz-faq-a"><p>{{t:business.faq3A}}</p></div>
+            </div>
+            <div class="bz-faq-item">
+              <button type="button" class="bz-faq-q" aria-expanded="false">
+                <span>{{t:business.faq4Q}}</span>
+                <span class="bz-faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="bz-faq-a"><p>{{t:business.faq4A}}</p></div>
+            </div>
+            <div class="bz-faq-item">
+              <button type="button" class="bz-faq-q" aria-expanded="false">
+                <span>{{t:business.faq5Q}}</span>
+                <span class="bz-faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="bz-faq-a"><p>{{t:business.faq5A}}</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="bz-section bz-rep bz-reveal" aria-labelledby="bz-rep-title">
+        <div class="bz-inner bz-rep-grid">
+          <div class="bz-rep-copy">
+            <p class="bz-label">{{t:business.contactLabel}}</p>
+            <h2 class="bz-title" id="bz-rep-title">{{t:business.contactTitle}}</h2>
+            <p class="bz-lead">{{t:business.contactLead}}</p>
+            <p class="bz-rep-name">{{t:business.contactName}}</p>
+            <p class="bz-rep-role">{{t:business.contactRole}}</p>
+            <a class="bz-rep-mail" href="mailto:newon@newon.app">{{t:business.contactEmailCta}}</a>
+          </div>
+          <div class="bz-ncards">
+            <div class="bz-ncards__stage">
+              <div class="bz-ncard bz-ncard--back" aria-hidden="true">
+                <img src="/card-n7x4k9/newon-card-back.jpg" alt="" width="1024" height="588" decoding="async" />
+              </div>
+              <a class="bz-ncard bz-ncard--front" href="/card-n7x4k9/" aria-label="{{t:business.contactQrAria}}">
+                <img src="/card-n7x4k9/newon-card-back.jpg" alt="{{t:business.contactCardAlt}}" width="1024" height="588" decoding="async" fetchpriority="high" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bz-section bz-band bz-reveal" aria-labelledby="bz-band-title">
+        <div class="bz-inner bz-band__grid">
+          <div class="bz-band__copy">
+            <p class="bz-label">{{t:business.ctaBandLabel}}</p>
+            <h2 class="bz-title" id="bz-band-title">{{html:business.ctaBandTitleHtml}}</h2>
+            <p class="bz-lead">{{t:business.ctaBandLead}}</p>
+          </div>
+          <a class="bz-band__cta" href="#inquiry">{{t:business.ctaBandBtn}}</a>
+        </div>
+      </section>
+
+      <section id="packages" class="bz-section bz-pkgs bz-reveal" aria-labelledby="bz-packages-title">
+        <div class="bz-inner">
+          <header class="bz-sec-head">
+            <div class="bz-sec-head__copy">
+              <p class="bz-label">PACKAGES</p>
+              <h2 class="bz-title" id="bz-packages-title">{{t:studio.packagesTitle}}</h2>
+            </div>
+            <p class="bz-lead bz-sec-head__lead">{{t:studio.pkgDisclaimer}}</p>
+          </header>
+          <div class="bz-pkg-grid">
+            <article class="bz-pkg">
+              <span class="bz-pkg__idx" aria-hidden="true">01</span>
+              <span class="bz-pkg__tag">{{t:studio.pkgStartName}}</span>
+              <h3 class="bz-pkg__title">{{t:studio.pkgStartDesc}}</h3>
+              <p class="bz-pkg__price"><span class="bz-pkg__amount">₩500,000</span><span class="bz-pkg__tilde">~</span></p>
+              <a class="bz-pkg__cta" href="#inquiry">{{t:business.ctaInquireShort}}</a>
+            </article>
+            <article class="bz-pkg">
+              <span class="bz-pkg__idx" aria-hidden="true">02</span>
+              <span class="bz-pkg__tag">{{t:studio.pkgBuildName}}</span>
+              <h3 class="bz-pkg__title">{{t:studio.pkgBuildDesc}}</h3>
+              <p class="bz-pkg__price"><span class="bz-pkg__amount">₩1,000,000</span><span class="bz-pkg__tilde">~</span></p>
+              <a class="bz-pkg__cta" href="#inquiry">{{t:business.ctaInquireShort}}</a>
+            </article>
+            <article class="bz-pkg bz-pkg--featured">
+              <span class="bz-pkg__idx" aria-hidden="true">03</span>
+              <span class="bz-pkg__tag">{{t:studio.pkgMvpName}}</span>
+              <h3 class="bz-pkg__title">{{t:studio.pkgMvpDesc}}</h3>
+              <p class="bz-pkg__price"><span class="bz-pkg__amount">₩1,500,000</span><span class="bz-pkg__tilde">~</span></p>
+              <a class="bz-pkg__cta" href="#inquiry">{{t:business.ctaInquireShort}}</a>
+            </article>
+            <article class="bz-pkg">
+              <span class="bz-pkg__idx" aria-hidden="true">04</span>
+              <span class="bz-pkg__tag">{{t:studio.pkgCustomName}}</span>
+              <h3 class="bz-pkg__title">{{t:studio.pkgCustomDesc}}</h3>
+              <p class="bz-pkg__price"><span class="bz-pkg__amount">{{t:studio.pkgCustomPrice}}</span></p>
+              <a class="bz-pkg__cta" href="#inquiry">{{t:business.ctaInquireShort}}</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="inquiry" class="bz-section bz-reveal" aria-labelledby="bz-form-title">
+        <div class="bz-inner bz-form-wrap">
+          <h2 class="bz-title" id="bz-form-title">{{t:business.formTitle}}</h2>
+          <p class="bz-lead">{{t:business.formLead}}</p>
+          <form
+            class="bz-form"
+            id="bz-inquiry-form"
+            novalidate
+            data-submit="{{t:business.submit}}"
+            data-submitting="{{t:business.submitting}}"
+            data-subject="{{t:business.mailSubject}}"
+          >
+            <div class="bz-field">
+              <label for="bz-company">{{t:business.labelCompany}}<span class="bz-req" aria-hidden="true">*</span></label>
+              <input id="bz-company" name="company" type="text" required autocomplete="organization" placeholder="{{t:business.phCompany}}" />
+            </div>
+            <div class="bz-field">
+              <label for="bz-name">{{t:business.labelName}}<span class="bz-req" aria-hidden="true">*</span></label>
+              <input id="bz-name" name="name" type="text" required autocomplete="name" placeholder="{{t:business.phName}}" />
+            </div>
+            <div class="bz-field">
+              <label for="bz-email">{{t:business.labelEmail}}<span class="bz-req" aria-hidden="true">*</span></label>
+              <input id="bz-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="{{t:business.phEmail}}" />
+            </div>
+            <div class="bz-field">
+              <label for="bz-website">{{t:business.labelWebsite}} <span class="bz-opt">({{t:business.optional}})</span></label>
+              <input id="bz-website" name="website" type="url" inputmode="url" placeholder="{{t:business.phWebsite}}" />
+            </div>
+            <div class="bz-field">
+              <label for="bz-phone">{{t:studio.formPhone}}</label>
+              <input id="bz-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="{{t:studio.formPhone}}" />
+            </div>
+            <div class="bz-field">
+              <label for="bz-type">{{t:business.labelType}}<span class="bz-req" aria-hidden="true">*</span></label>
+              <select id="bz-type" name="type" required>
+                <option value="" disabled selected>{{t:business.selectPlaceholder}}</option>
+                <option value="BUILD / MVP">BUILD / MVP</option>
+                <option value="BUILD / WEBSITE">BUILD / WEBSITE</option>
+                <option value="BUILD / LANDING">BUILD / LANDING</option>
+                <option value="BUILD / APP">BUILD / APP</option>
+                <option value="AUTOMATION / DATA & REPORTING">AUTOMATION / DATA &amp; REPORTING</option>
+                <option value="AUTOMATION / INTERNAL TOOLS">AUTOMATION / INTERNAL TOOLS</option>
+                <option value="AUTOMATION / WORKFLOW AUTOMATION">AUTOMATION / WORKFLOW AUTOMATION</option>
+                <option value="App">{{t:studio.formTypeApp}}</option>
+                <option value="Website">{{t:studio.formTypeWeb}}</option>
+                <option value="MVP">{{t:studio.formTypeMvp}}</option>
+                <option value="AI">{{t:studio.formTypeAi}}</option>
+                <option value="Automation">{{t:studio.formTypeAuto}}</option>
+                <option value="White-label">{{t:studio.formTypeWhitelabel}}</option>
+                <option value="Design">{{t:studio.formTypeDesign}}</option>
+                <option value="Maintenance">{{t:studio.formTypeMaintain}}</option>
+                <option value="Partnership">{{t:business.typePartnership}}</option>
+                <option value="Other">{{t:studio.formTypeOther}}</option>
+              </select>
+            </div>
+            <div class="bz-field">
+              <label for="bz-budget">{{t:studio.formBudget}}</label>
+              <select id="bz-budget" name="budget">
+                <option value="">{{t:business.selectPlaceholder}}</option>
+                <option value="{{t:studio.formBudget1}}">{{t:studio.formBudget1}}</option>
+                <option value="{{t:studio.formBudget2}}">{{t:studio.formBudget2}}</option>
+                <option value="{{t:studio.formBudget3}}">{{t:studio.formBudget3}}</option>
+                <option value="{{t:studio.formBudget4}}">{{t:studio.formBudget4}}</option>
+                <option value="{{t:studio.formBudget5}}">{{t:studio.formBudget5}}</option>
+                <option value="{{t:studio.formBudget6}}">{{t:studio.formBudget6}}</option>
+              </select>
+            </div>
+            <div class="bz-field">
+              <label for="bz-stage">{{t:business.labelStage}} <span class="bz-opt">({{t:business.optional}})</span></label>
+              <select id="bz-stage" name="stage">
+                <option value="">{{t:business.selectPlaceholder}}</option>
+                <option value="{{t:business.stageIdea}}">{{t:business.stageIdea}}</option>
+                <option value="{{t:business.stagePlanning}}">{{t:business.stagePlanning}}</option>
+                <option value="{{t:business.stageDesign}}">{{t:business.stageDesign}}</option>
+                <option value="{{t:business.stageDev}}">{{t:business.stageDev}}</option>
+                <option value="{{t:business.stageLive}}">{{t:business.stageLive}}</option>
+                <option value="{{t:business.stageOther}}">{{t:business.stageOther}}</option>
+              </select>
+            </div>
+            <div class="bz-field">
+              <label for="bz-timeline">{{t:business.labelTimeline}} <span class="bz-opt">({{t:business.optional}})</span></label>
+              <select id="bz-timeline" name="timeline">
+                <option value="">{{t:business.selectPlaceholder}}</option>
+                <option value="{{t:business.timeAsap}}">{{t:business.timeAsap}}</option>
+                <option value="{{t:business.time1to3}}">{{t:business.time1to3}}</option>
+                <option value="{{t:business.time3to6}}">{{t:business.time3to6}}</option>
+                <option value="{{t:business.time6plus}}">{{t:business.time6plus}}</option>
+                <option value="{{t:business.timeUnset}}">{{t:business.timeUnset}}</option>
+              </select>
+            </div>
+            <div class="bz-field">
+              <label for="bz-message">{{t:business.labelMessage}}<span class="bz-req" aria-hidden="true">*</span></label>
+              <textarea id="bz-message" name="message" required placeholder="{{t:business.phMessage}}"></textarea>
+            </div>
+            <div class="bz-field bz-field--check">
+              <div class="bz-consent">
+                <label class="bz-consent__label" for="bz-consent">
+                  <input id="bz-consent" name="consent" type="checkbox" value="yes" required />
+                  <span class="bz-consent__box" aria-hidden="true"></span>
+                  <span class="bz-consent__text">{{t:studio.formConsent}}</span>
+                </label>
+                <a class="bz-consent__link" href="../privacy/" target="_blank" rel="noopener noreferrer">{{t:footer.privacy}}<span aria-hidden="true"> ↗</span></a>
+              </div>
+            </div>
+            <div class="bz-hp" aria-hidden="true">
+              <input name="_honey" tabindex="-1" autocomplete="off" />
+            </div>
+            <button class="bz-submit" type="submit" id="bz-submit">
+              <span class="bz-submit-spin" aria-hidden="true"></span>
+              <span class="bz-submit-label">{{t:business.submit}}</span>
+            </button>
+          </form>
+          <p class="bz-fail" id="bz-fail" role="alert" hidden>{{t:business.fail}}</p>
+        </div>
+      </section>
+    </main>
+
+    {{CHROME_FOOTER}}
+
+    <script src="/search.js?v=20260825studio" defer></script>
+    <script src="/site-chrome.js?v=20260826gnav5" defer></script>
+    <script>
+      (function () {
+        var cur = "{{LANG_DIR}}";
+        document.querySelectorAll("[data-lang-select]").forEach(function (sel) {
+          sel.value = cur;
+        });
+        var year = document.getElementById("year");
+        if (year) year.textContent = new Date().getFullYear();
+        var toggle = document.querySelector("[data-snav-toggle]");
+        var drawer = document.getElementById("snav-mobile-nav");
+        if (toggle && drawer) {
+          toggle.addEventListener("click", function () {
+            var open = !drawer.hasAttribute("hidden");
+            if (open) { drawer.setAttribute("hidden", ""); toggle.setAttribute("aria-expanded", "false"); }
+            else { drawer.removeAttribute("hidden"); toggle.setAttribute("aria-expanded", "true"); }
+          });
+        }
+
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+          );
+          document.querySelectorAll(".bz-reveal").forEach(function (el) {
+            var r = el.getBoundingClientRect();
+            if (r.top < (window.innerHeight || 800) * 0.92) {
+              el.classList.add("is-visible");
+            } else {
+              io.observe(el);
+            }
+          });
+        } else {
+          document.querySelectorAll(".bz-reveal").forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+        }
+
+        document.querySelectorAll(".bz-faq-q").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var item = btn.closest(".bz-faq-item");
+            var open = !item.classList.contains("is-open");
+            item.classList.toggle("is-open", open);
+            btn.setAttribute("aria-expanded", open ? "true" : "false");
+          });
+        });
+
+        var typeEl = document.getElementById("bz-type");
+        var params = new URLSearchParams(window.location.search);
+        var serviceMap = {
+          mvp: "MVP",
+          web: "Website",
+          website: "Website",
+          app: "App",
+          landing: "BUILD / LANDING",
+          "data-reporting": "AUTOMATION / DATA & REPORTING",
+          "automation-data-reporting": "AUTOMATION / DATA & REPORTING",
+          "internal-tools": "AUTOMATION / INTERNAL TOOLS",
+          "automation-internal-tools": "AUTOMATION / INTERNAL TOOLS",
+          "workflow-automation": "AUTOMATION / WORKFLOW AUTOMATION",
+          "automation-workflow": "AUTOMATION / WORKFLOW AUTOMATION",
+          "build-mvp": "BUILD / MVP",
+          "build-website": "BUILD / WEBSITE",
+          "build-landing": "BUILD / LANDING",
+          "build-app": "BUILD / APP",
+          "ai-automation": "AI",
+          ai: "AI",
+          "white-label": "White-label",
+          design: "Design"
+        };
+        var qType = params.get("type") || params.get("service");
+        var messageHints = {
+          ko: {
+            "AUTOMATION / WORKFLOW AUTOMATION":
+              "1. 현재 사용하는 서비스\n2. 현재 반복하고 있는 업무\n3. Workflow가 시작되는 조건\n4. 현재 업무 처리 과정\n5. 자동화하고 싶은 단계\n6. 연결해야 할 서비스\n7. 예상 사용자 수\n8. AI 기능 필요 여부\n9. Dashboard 필요 여부\n10. 희망 일정\n11. 예산 범위\n12. 기타 요구사항"
+          },
+          en: {
+            "AUTOMATION / WORKFLOW AUTOMATION":
+              "1. Services you use today\n2. Repetitive work you do now\n3. What triggers the workflow\n4. Current handling process\n5. Steps you want automated\n6. Services to connect\n7. Expected number of users\n8. Whether AI is needed\n9. Whether a dashboard is needed\n10. Preferred timeline\n11. Budget range\n12. Other requirements"
+          }
+        };
+        var msgEl = document.getElementById("bz-message");
+        var pageLang = (document.documentElement.lang || "en").slice(0, 2);
+        var hintPack = messageHints[pageLang] || messageHints.en;
+        function applyMessageHint() {
+          if (!msgEl || !typeEl) return;
+          var hint = hintPack[typeEl.value];
+          if (hint) msgEl.placeholder = hint;
+        }
+        if (qType && typeEl) {
+          var mapped = serviceMap[qType] || qType;
+          typeEl.value = mapped;
+          applyMessageHint();
+        }
+        if (typeEl) {
+          typeEl.addEventListener("change", applyMessageHint);
+        }
+        document.querySelectorAll("[data-inquiry-type]").forEach(function (link) {
+          link.addEventListener("click", function () {
+            if (typeEl) typeEl.value = link.getAttribute("data-inquiry-type");
+          });
+        });
+      })();
+    </script>
+    <script src="/business/inquiry.js"></script>
+    <script src="/portfolio/portfolio.js"></script>
+    <script src="/lang-dropdown.js"></script>
+  </body>
+</html>

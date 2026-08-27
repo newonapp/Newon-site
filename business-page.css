@@ -1375,3 +1375,44 @@ html[data-newon-shell-theme="dark"] .bz-form .bz-submit:hover {
 .bz-page [style*="background: var(--border)"] {
   background: transparent !important;
 }
+
+/* Explore hub — footer (pillar nav + FAQ + black CTA) */
+.bz-explore-foot {
+  --bp-ink: #111;
+  --bp-muted: #6e6e73;
+  --bp-faint: #a1a1a6;
+  --bp-line: #e8e8ea;
+  --bp-hover: #f6f6f7;
+  --bp-bg: #fff;
+  border-top: 1px solid var(--bz-line, #e6e6e6);
+  background: #fff;
+}
+
+html[data-newon-shell-theme="dark"] .bz-explore-foot {
+  --bp-ink: #f4f4f4;
+  --bp-muted: #b0b0b0;
+  --bp-faint: #888;
+  --bp-line: rgba(255, 255, 255, 0.14);
+  --bp-hover: rgba(255, 255, 255, 0.06);
+  --bp-bg: var(--bg, #0a0a0a);
+  border-top-color: var(--bp-line);
+  background: var(--bp-bg);
+}
+
+.bz-explore-foot .bz-explore-nav {
+  padding-top: clamp(3.25rem, 6.5vw, 4.75rem);
+}
+
+.bz-explore-foot .bz-explore-faq {
+  padding-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.bz-explore-foot .bz-explore-cta {
+  margin-top: 0;
+}
+
+.hub-page .bp-page.bz-explore-foot .bp-cta {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}

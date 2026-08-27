@@ -333,6 +333,17 @@
   "business": {
     "seoTitle": "Business | Newon Digital Product Studio",
     "metaDescription": "Newon Business — MVP·웹·앱 구축, AI 자동화, 디자인, 리서치, 맞춤 솔루션. 자체 제품을 직접 만들고 운영하는 Digital Product Studio가 기업·브랜드 프로젝트를 함께합니다.",
+    "exploreSeoTitle": "Newon Business | Build · Automation · Research · Solutions",
+    "exploreMetaDescription": "Newon Business — Build, Automation, Research, Solutions 네 가지 협업 방식을 한눈에 살펴보세요.",
+    "inquirySeoTitle": "프로젝트 문의 | Newon Business",
+    "inquiryMetaDescription": "Newon Business 프로젝트 문의 — MVP·웹·앱·AI 자동화·디자인·리서치·맞춤 솔루션. 프로젝트를 알려주세요.",
+    "ctaExploreBack": "Business 알아보기 →",
+    "exploreNavTitle": "OTHER BUSINESS SERVICES",
+    "exploreFaqLabel": "FAQ",
+    "exploreCtaEyebrow": "HAVE A PROJECT?",
+    "exploreCtaTitle": "만들고 싶은 것이 있다면 이야기해주세요.",
+    "exploreCtaLead": "아이디어 단계여도 괜찮습니다. 필요한 범위부터 함께 정리합니다.",
+    "exploreCtaBtn": "프로젝트 문의 →",
     "heroLabel": "NEWON FOR BUSINESS",
     "heroTitle": "기술로 더 나은 일상을 만듭니다.",
     "heroTitleHtml": "아이디어에서<br />실제 제품까지.",
@@ -4917,6 +4928,12 @@
     "contentLead": "브랜드 콘텐츠와 비주얼.",
     "ipLead": "캐릭터와 새로운 IP 실험.",
     "closeKicker": "NEXT",
-    "closeTitle": "프로젝트를 시작해 보세요."
+    "closeTitle": "프로젝트를 시작해 보세요.",
+    "exploreNavTitle": "OTHER STUDIO AREAS",
+    "exploreFaqLabel": "FAQ",
+    "exploreCtaEyebrow": "HAVE A PROJECT?",
+    "exploreCtaTitle": "브랜드와 제품이 세상에 보이는 방식을 함께 만듭니다.",
+    "exploreCtaLead": "아이디어 단계여도 괜찮습니다. 필요한 범위부터 함께 정리합니다.",
+    "exploreCtaBtn": "프로젝트 문의 →"
   }
 }
