@@ -1,5 +1,6 @@
 /**
  * Render Studio service detail body — Business service design system (bs-*).
+ * Content-driven only; do not invent new visual components.
  */
 import { escapeHtml } from "./hub-utils.mjs";
 import {
@@ -8,6 +9,8 @@ import {
   studioInquiryHref,
   studioServiceDetailHrefFromPillar,
   studioPillarPricingNote,
+  STUDIO_PILLAR_SERVICE_SLUGS,
+  STUDIO_SERVICE_PRICING,
 } from "./studio-pricing.mjs";
 import { getStudioServiceDetail, listStudioDetailSlugs } from "./studio-service-detail-data.mjs";
 import { studioHeroVisual } from "./studio-bs-visuals.mjs";
@@ -29,6 +32,24 @@ const NAV_LABELS = {
   "newon-character": "NEWON",
   "experimental-ip": "EXP IP",
 };
+
+/** All Studio services in menu order (Brand → Digital → Content → IP). */
+const STUDIO_NAV_SLUGS = [
+  ...(STUDIO_PILLAR_SERVICE_SLUGS.brand || []),
+  ...(STUDIO_PILLAR_SERVICE_SLUGS.digital || []),
+  ...(STUDIO_PILLAR_SERVICE_SLUGS.content || []),
+  ...(STUDIO_PILLAR_SERVICE_SLUGS.ip || []),
+];
+
+/** Relative href from one Studio detail page to another (same or cross-pillar). */
+function studioNavHref(fromSlug, toSlug) {
+  if (fromSlug === toSlug) return "#";
+  const from = STUDIO_SERVICE_PRICING[fromSlug];
+  const to = STUDIO_SERVICE_PRICING[toSlug];
+  if (!from?.detailSegment || !to?.detailSegment) return "#";
+  if (from.category === to.category) return `../${to.detailSegment}/`;
+  return `../../${to.category}/${to.detailSegment}/`;
+}
 
 const DEFAULT_PRICE_FACTORS = {
   brand: {
@@ -57,8 +78,31 @@ function brHeadline(s) {
   return escapeHtml(String(s || "")).replace(/\n/g, "<br />");
 }
 
+function proseParas(textOrArr, leadClass = "bs-lead") {
+  const parts = Array.isArray(textOrArr) ? textOrArr : textOrArr ? [textOrArr] : [];
+  return parts
+    .map((p, i) => {
+      const cls = i === 0 ? leadClass : "";
+      return `<p class="${cls}">${escapeHtml(String(p)).replace(/\n/g, "<br />")}</p>`;
+    })
+    .join("");
+}
+
 function processLayoutCols(count) {
-  return Math.max(2, Math.ceil(count / 2));
+  const n = Number(count) || 0;
+  if (n <= 1) return 1;
+  // Prefer a column count that fills the last row (no empty gray cells).
+  const candidates = [5, 4, 3, 2].filter((c) => c <= n);
+  let best = 3;
+  let bestEmpty = n;
+  for (const c of candidates) {
+    const empty = (c - (n % c)) % c;
+    if (empty < bestEmpty || (empty === bestEmpty && c === n)) {
+      best = c;
+      bestEmpty = empty;
+    }
+  }
+  return best;
 }
 
 function hasInquiry(detail) {
@@ -81,19 +125,15 @@ function breadcrumb(detail) {
 }
 
 function serviceNav(detail) {
-  const siblings = detail.siblingSlugs || [];
-  if (siblings.length < 2) return "";
-  const links = siblings
-    .map((slug) => {
-      const peer = getStudioServiceDetail(slug, detail._pageLang);
-      if (!peer) return "";
-      const label = escapeHtml(NAV_LABELS[slug] || peer.displayName);
-      const isActive = slug === detail.slug;
-      const cls = isActive ? "bs-nav__link is-active" : "bs-nav__link";
-      const href = isActive ? "#" : `../${studioServiceDetailHrefFromPillar(slug)}`;
-      return `<a class="${cls}" href="${href}"${isActive ? ' aria-current="page"' : ""}>${label}</a>`;
-    })
-    .join("");
+  const links = STUDIO_NAV_SLUGS.map((slug) => {
+    const peer = getStudioServiceDetail(slug, detail._pageLang);
+    if (!peer) return "";
+    const label = escapeHtml(NAV_LABELS[slug] || peer.displayName);
+    const isActive = slug === detail.slug;
+    const cls = isActive ? "bs-nav__link is-active" : "bs-nav__link";
+    const href = studioNavHref(detail.slug, slug);
+    return `<a class="${cls}" href="${href}"${isActive ? ' aria-current="page"' : ""}>${label}</a>`;
+  }).join("");
   return `<nav class="bs-nav" aria-label="Studio services"><div class="bs-inner bs-nav__inner"><p class="bs-nav__label">SERVICES</p><div class="bs-nav__track">${links}</div></div></nav>`;
 }
 
@@ -103,14 +143,14 @@ function metaRows(detail) {
   const timeline = formatStudioTimelineDisplay(detail.slug, lang);
   const rows = [];
 
-  rows.push({ k: "SERVICE", v: detail.displayName.replace(/^NEWON STUDIO · /, "") });
+  rows.push({ k: "SERVICE", v: detail.displayName });
+  rows.push({ k: "CATEGORY", v: detail.categoryLabel });
 
   if (detail.typeLabel) rows.push({ k: "TYPE", v: detail.typeLabel });
   if (detail.statusLabel && detail.pageKind !== "service") rows.push({ k: "STATUS", v: detail.statusLabel });
-  if (timeline) rows.push({ k: detail.ui.timeline.toUpperCase(), v: timeline });
-  if (price) {
-    rows.push({ k: detail.ui.startingAt.toUpperCase(), v: price });
-  } else if (detail.pageKind === "exploring") {
+  if (price) rows.push({ k: "STARTING AT", v: price });
+  if (timeline) rows.push({ k: "TIMELINE", v: timeline });
+  if (!price && detail.pageKind === "exploring") {
     rows.push({ k: lang === "ko" ? "견적" : "QUOTE", v: lang === "ko" ? "별도 견적" : "Custom Quote" });
   }
 
@@ -126,7 +166,7 @@ function overviewBodyHtml(body) {
   if (!body) return "";
   if (Array.isArray(body)) {
     return `<div class="bs-overview">${body
-      .map((p, i) => `<p class="${i === 0 ? "bs-lead" : ""}">${escapeHtml(p)}</p>`)
+      .map((p, i) => `<p class="${i === 0 ? "bs-lead" : ""}">${escapeHtml(p).replace(/\n/g, "<br />")}</p>`)
       .join("")}</div>`;
   }
   return `<div class="bs-overview"><p class="bs-lead">${escapeHtml(String(body)).replace(/\n/g, "<br />")}</p></div>`;
@@ -135,14 +175,23 @@ function overviewBodyHtml(body) {
 function overviewSection(detail) {
   if (!detail.overview) return "";
   const title = detail.overview.title || detail.ui.overviewTitle;
+  const criteriaLead = detail.overview.criteriaLead
+    ? `<p class="bs-lead">${escapeHtml(detail.overview.criteriaLead)}</p>`
+    : "";
+  const criteria = tagChips(detail.overview.criteria);
+  const summary = detail.summaryNote
+    ? `<p class="bs-note">${escapeHtml(detail.summaryNote)}</p>`
+    : "";
   return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-overview-title"><div class="bs-inner">
       <div class="bs-dr-split">
         <div class="bs-dr-split__copy">
           <p class="bs-eyebrow">${escapeHtml(detail.ui.overview)}</p>
           <h2 class="bs-title" id="bs-ss-overview-title">${brHeadline(title)}</h2>
           ${overviewBodyHtml(detail.overview.body)}
+          ${criteriaLead}
+          ${criteria}
         </div>
-        <aside class="bs-dr-meta" aria-label="Service summary">${metaRows(detail)}</aside>
+        <aside class="bs-dr-meta" aria-label="Service summary">${metaRows(detail)}${summary}</aside>
       </div>
     </div></section>`;
 }
@@ -162,9 +211,50 @@ function areasHtml(items, modifier = "") {
 function problemsSection(detail) {
   if (!detail.problems?.length) return "";
   return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-problems-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(detail.ui.problems)}</p>
-      <h2 class="bs-title" id="bs-ss-problems-title">${brHeadline(detail.ui.problemsTitle)}</h2>
+      <p class="bs-eyebrow">${escapeHtml(detail.problemsLabel || detail.ui.problems)}</p>
+      <h2 class="bs-title" id="bs-ss-problems-title">${brHeadline(detail.problemsTitle || detail.ui.problemsTitle)}</h2>
       ${areasHtml(detail.problems)}
+    </div></section>`;
+}
+
+function principlesSection(detail) {
+  if (!detail.principles?.length) return "";
+  return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-principles-title"><div class="bs-inner">
+      <p class="bs-eyebrow">${escapeHtml(detail.principlesLabel || "PRINCIPLES")}</p>
+      <h2 class="bs-title" id="bs-ss-principles-title">${brHeadline(detail.principlesTitle || "")}</h2>
+      ${detail.principlesLead ? `<p class="bs-lead">${escapeHtml(detail.principlesLead)}</p>` : ""}
+      ${areasHtml(detail.principles)}
+    </div></section>`;
+}
+
+function directionsSection(detail) {
+  if (!detail.directions?.length) return "";
+  return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-directions-title"><div class="bs-inner">
+      <p class="bs-eyebrow">${escapeHtml(detail.directionsLabel || "NAMING DIRECTIONS")}</p>
+      <h2 class="bs-title" id="bs-ss-directions-title">${brHeadline(detail.directionsTitle || "")}</h2>
+      ${detail.directionsLead ? `<p class="bs-lead">${escapeHtml(detail.directionsLead).replace(/\n/g, "<br />")}</p>` : ""}
+      ${areasHtml(detail.directions)}
+      ${detail.directionsNote ? `<p class="bs-note">${escapeHtml(detail.directionsNote)}</p>` : ""}
+    </div></section>`;
+}
+
+function whoSection(detail) {
+  if (!detail.bestFor?.length) return "";
+  const first = detail.bestFor[0];
+  const asAreas = typeof first === "object" && first && (first.t || first.d);
+  return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-who-title"><div class="bs-inner">
+      <p class="bs-eyebrow">${escapeHtml(detail.ui.who)}</p>
+      <h2 class="bs-title" id="bs-ss-who-title">${brHeadline(detail.whoTitle || detail.ui.whoTitle)}</h2>
+      ${
+        asAreas
+          ? areasHtml(detail.bestFor)
+          : `<ol class="bs-who">${detail.bestFor
+              .map(
+                (t, i) =>
+                  `<li class="bs-who__item"><span class="bs-who__n">${pad2(i + 1)}</span><p class="bs-who__t">${escapeHtml(t)}</p></li>`
+              )
+              .join("")}</ol>`
+      }
     </div></section>`;
 }
 
@@ -172,7 +262,7 @@ function whatWeDoSection(detail) {
   if (!detail.whatWeDo?.length) return "";
   return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-what-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.ui.whatWeDo)}</p>
-      <h2 class="bs-title" id="bs-ss-what-title">${brHeadline(detail.ui.whatWeDoTitle)}</h2>
+      <h2 class="bs-title" id="bs-ss-what-title">${brHeadline(detail.whatWeDoTitle || detail.ui.whatWeDoTitle)}</h2>
       ${areasHtml(detail.whatWeDo)}
     </div></section>`;
 }
@@ -180,22 +270,67 @@ function whatWeDoSection(detail) {
 function useCasesSection(detail) {
   if (!detail.useCases?.length) return "";
   return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-use-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(detail.ui.useCases)}</p>
-      <h2 class="bs-title" id="bs-ss-use-title">${brHeadline(detail.ui.useCasesTitle)}</h2>
-      ${areasHtml(detail.useCases, "quad")}
+      <p class="bs-eyebrow">${escapeHtml(detail.useCasesLabel || detail.ui.useCases)}</p>
+      <h2 class="bs-title" id="bs-ss-use-title">${brHeadline(detail.useCasesTitle || detail.ui.useCasesTitle)}</h2>
+      ${detail.useCasesLead ? `<p class="bs-lead">${escapeHtml(detail.useCasesLead).replace(/\n/g, "<br />")}</p>` : ""}
+      ${areasHtml(detail.useCases)}
+      ${detail.useCasesNote ? `<p class="bs-note">${escapeHtml(detail.useCasesNote)}</p>` : ""}
+    </div></section>`;
+}
+
+function compareSection(detail) {
+  if (!detail.compare?.length) return "";
+  return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-compare-title"><div class="bs-inner">
+      <p class="bs-eyebrow">${escapeHtml(detail.compareLabel || "BEFORE → AFTER")}</p>
+      <h2 class="bs-title" id="bs-ss-compare-title">${brHeadline(detail.compareTitle || "")}</h2>
+      ${detail.compareLead ? `<p class="bs-lead">${escapeHtml(detail.compareLead)}</p>` : ""}
+      ${areasHtml(detail.compare)}
+    </div></section>`;
+}
+
+function checksSection(detail) {
+  if (!detail.checks?.length) return "";
+  return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-checks-title"><div class="bs-inner">
+      <p class="bs-eyebrow">${escapeHtml(detail.checksLabel || "DIGITAL CHECK")}</p>
+      <h2 class="bs-title" id="bs-ss-checks-title">${brHeadline(detail.checksTitle || "")}</h2>
+      ${detail.checksLead ? `<p class="bs-lead">${escapeHtml(detail.checksLead).replace(/\n/g, "<br />")}</p>` : ""}
+      ${areasHtml(detail.checks)}
+      ${detail.checksNote ? `<p class="bs-note">${escapeHtml(detail.checksNote)}</p>` : ""}
+    </div></section>`;
+}
+
+function versusSection(detail) {
+  if (!detail.versus?.length) return "";
+  return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-versus-title"><div class="bs-inner">
+      <p class="bs-eyebrow">${escapeHtml(detail.versusLabel || "LOGO vs IDENTITY")}</p>
+      <h2 class="bs-title" id="bs-ss-versus-title">${brHeadline(detail.versusTitle || "")}</h2>
+      ${detail.versusLead ? `<p class="bs-lead">${escapeHtml(detail.versusLead).replace(/\n/g, "<br />")}</p>` : ""}
+      ${areasHtml(detail.versus)}
+      ${detail.versusNote ? `<p class="bs-note">${escapeHtml(detail.versusNote)}</p>` : ""}
+    </div></section>`;
+}
+
+function conceptFlowSection(detail) {
+  if (!detail.conceptFlow?.length) return "";
+  return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-concept-title"><div class="bs-inner">
+      <p class="bs-eyebrow">${escapeHtml(detail.conceptFlowLabel || "CONCEPT → SYSTEM")}</p>
+      <h2 class="bs-title" id="bs-ss-concept-title">${brHeadline(detail.conceptFlowTitle || "")}</h2>
+      ${detail.conceptFlowLead ? `<p class="bs-lead">${escapeHtml(detail.conceptFlowLead).replace(/\n/g, "<br />")}</p>` : ""}
+      ${areasHtml(detail.conceptFlow)}
     </div></section>`;
 }
 
 function tagChips(items) {
   if (!items?.length) return "";
-  return `<div class="bs-chips">${items.map((t) => `<span class="bs-chips__item">${escapeHtml(t)}</span>`).join("")}</div>`;
+  return `<ul class="bs-chips">${items.map((t) => `<li>${escapeHtml(t)}</li>`).join("")}</ul>`;
 }
 
 function includedSection(detail) {
   if (!detail.included?.length) return "";
   return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-included-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.ui.included)}</p>
-      <h2 class="bs-title" id="bs-ss-included-title">${brHeadline(detail.ui.includedTitle)}</h2>
+      <h2 class="bs-title" id="bs-ss-included-title">${brHeadline(detail.includedTitle || detail.ui.includedTitle)}</h2>
+      ${detail.includedNote ? `<p class="bs-lead">${escapeHtml(detail.includedNote)}</p>` : ""}
       ${tagChips(detail.included)}
     </div></section>`;
 }
@@ -215,20 +350,27 @@ function deliverablesSection(detail) {
   if (!detail.deliverables?.length) return "";
   return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-deliver-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.ui.deliverables)}</p>
-      <h2 class="bs-title" id="bs-ss-deliver-title">${brHeadline(detail.ui.deliverablesTitle)}</h2>
-      <p class="bs-lead">${escapeHtml(detail.ui.deliverablesLead)}</p>
+      <h2 class="bs-title" id="bs-ss-deliver-title">${brHeadline(detail.deliverablesTitle || detail.ui.deliverablesTitle)}</h2>
+      <p class="bs-lead">${escapeHtml(detail.deliverablesLead || detail.ui.deliverablesLead)}</p>
       ${deliverGridHtml(detail.deliverables)}
     </div></section>`;
 }
 
-function flowStageGridHtml(steps) {
+function flowStageGridHtml(steps, opts = {}) {
   if (!steps?.length) return "";
-  const cols = processLayoutCols(steps.length);
+  const cols = opts.cols || processLayoutCols(steps.length);
   const cards = steps
-    .map(
-      (s, i) =>
-        `<article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n">${pad2(i + 1)}</span><h3>${escapeHtml(s.t)}</h3><p>${escapeHtml(s.d || "")}</p></article>`
-    )
+    .map((s, i) => {
+      const n = pad2(i + 1);
+      const title = escapeHtml(s.t);
+      const body = escapeHtml(s.d || "").replace(/\n/g, "<br />");
+      const on = s.current ? " is-on" : "";
+      const inner = `<span class="bs-flow-stage-grid__n">${n}</span><h3>${title}</h3><p>${body}</p>`;
+      if (s.href && !s.current) {
+        return `<a class="bs-flow-stage-grid__item${on}" href="${escapeHtml(s.href)}">${inner}</a>`;
+      }
+      return `<article class="bs-flow-stage-grid__item${on}">${inner}</article>`;
+    })
     .join("");
   return `<div class="bs-flow-stage-grid" data-cols="${cols}">${cards}</div>`;
 }
@@ -237,39 +379,53 @@ function processSection(detail) {
   if (!detail.process?.length) return "";
   return `<section class="bs-section" data-bs-reveal id="process" aria-labelledby="bs-ss-process-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.ui.process)}</p>
-      <h2 class="bs-title" id="bs-ss-process-title">${brHeadline(detail.ui.processTitle)}</h2>
+      <h2 class="bs-title" id="bs-ss-process-title">${brHeadline(detail.processTitle || detail.ui.processTitle)}</h2>
       ${flowStageGridHtml(detail.process)}
     </div></section>`;
 }
 
-function whoList(items) {
-  return `<ol class="bs-who">${items
-    .map(
-      (t, i) =>
-        `<li class="bs-who__item"><span class="bs-who__n">${pad2(i + 1)}</span><p class="bs-who__t">${escapeHtml(t)}</p></li>`
-    )
-    .join("")}</ol>`;
-}
+function timelineSection(detail) {
+  const body = detail.timelineBody;
+  const steps = detail.timelineSteps;
+  if ((!body || !body.length) && !steps?.length) return "";
+  const timeline = formatStudioTimelineDisplay(detail.slug, detail._pageLang);
+  const meta =
+    timeline
+      ? `<aside class="bs-dr-meta" aria-label="Timeline">
+        <div class="bs-dr-meta__row"><p class="bs-dr-meta__k">TIMELINE</p><p class="bs-dr-meta__v">${escapeHtml(timeline)}</p></div>
+        <div class="bs-dr-meta__row"><p class="bs-dr-meta__k">${escapeHtml(detail._pageLang === "ko" ? "기준" : "BASE")}</p><p class="bs-dr-meta__v">${escapeHtml(detail._pageLang === "ko" ? "기본 범위 프로젝트" : "Basic-scope project")}</p></div>
+      </aside>`
+      : "";
 
-function whoSection(detail) {
-  if (!detail.bestFor?.length) return "";
-  return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-who-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(detail.ui.who)}</p>
-      <h2 class="bs-title" id="bs-ss-who-title">${brHeadline(detail.ui.whoTitle)}</h2>
-      ${whoList(detail.bestFor)}
+  return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-timeline-title"><div class="bs-inner">
+      <div class="bs-dr-split">
+        <div class="bs-dr-split__copy">
+          <p class="bs-eyebrow">${escapeHtml(detail.timelineLabel || "TIMELINE")}</p>
+          <h2 class="bs-title" id="bs-ss-timeline-title">${brHeadline(detail.timelineTitle || detail.ui.timeline)}</h2>
+          ${proseParas(body)}
+        </div>
+        ${meta}
+      </div>
+      ${steps?.length ? flowStageGridHtml(steps) : ""}
     </div></section>`;
 }
 
 function optionalSection(detail) {
   if (!detail.optionalScope?.length) return "";
   return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-optional-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(detail.ui.optional)}</p>
-      <h2 class="bs-title" id="bs-ss-optional-title">${brHeadline(detail.ui.optionalTitle)}</h2>
+      <p class="bs-eyebrow">${escapeHtml(detail.optionalLabel || detail.ui.optional)}</p>
+      <h2 class="bs-title" id="bs-ss-optional-title">${brHeadline(detail.optionalTitle || detail.ui.optionalTitle)}</h2>
+      <p class="bs-lead">${escapeHtml(
+        detail._pageLang === "ko"
+          ? "아래 항목은 기본 범위에 포함되지 않습니다. 필요하면 별도 범위로 협의합니다."
+          : "These items are outside the base scope. Add them only when needed."
+      )}</p>
       ${tagChips(detail.optionalScope)}
     </div></section>`;
 }
 
 function priceFactorsFor(detail) {
+  if (detail.baseScope?.length) return detail.baseScope;
   if (detail.priceFactors?.length) return detail.priceFactors;
   const defaults = DEFAULT_PRICE_FACTORS[detail.category];
   return defaults?.[detail._pageLang] || defaults?.en || [];
@@ -279,27 +435,23 @@ function priceSection(detail) {
   if (detail.pageKind === "comingSoon" || detail.pageKind === "internal") return "";
   const lang = detail._pageLang;
   const price = formatStudioPriceDisplay(detail.slug, lang);
-  const timeline = formatStudioTimelineDisplay(detail.slug, lang);
-  if (!price && !timeline) return "";
+  if (!price && !detail.priceNote) return "";
 
-  const note = studioPillarPricingNote(detail.category, lang);
+  const note = detail.priceNote || studioPillarPricingNote(detail.category, lang);
   const factors = priceFactorsFor(detail);
-
-  const timelineHtml = timeline
-    ? `<div class="bs-price-tiers"><article class="bs-price-tiers__item"><span class="bs-price-tiers__n">01</span><h3 class="bs-price-tiers__title">${escapeHtml(detail.ui.timeline)}</h3><p class="bs-price-tiers__meta">${escapeHtml(timeline)}</p></article></div>`
-    : "";
+  const factorsLabel = detail.baseScopeLabel || detail.ui.priceFactorsLabel;
 
   const priceHtml = price
     ? `<div class="bs-price">
       <div class="bs-price__panel">
         <p class="bs-price__name">${escapeHtml(detail.displayName)}</p>
         <p class="bs-price__value">${escapeHtml(price)}</p>
-        <p class="bs-price__note">${escapeHtml(note)}</p>
+        <p class="bs-price__note">${escapeHtml(note).replace(/\n/g, "<br />")}</p>
       </div>
       ${
         factors.length
           ? `<div class="bs-price__detail">
-        <p class="bs-eyebrow">${escapeHtml(detail.ui.priceFactorsLabel)}</p>
+        <p class="bs-eyebrow">${escapeHtml(factorsLabel)}</p>
         <ul class="bs-price__factors">${factors.map((f) => `<li class="bs-price__factor"><span class="bs-price__factor-k">${escapeHtml(f)}</span></li>`).join("")}</ul>
       </div>`
           : ""
@@ -308,9 +460,8 @@ function priceSection(detail) {
     : "";
 
   return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-price-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(detail.ui.timelinePrice)}</p>
-      <h2 class="bs-title" id="bs-ss-price-title">${brHeadline(detail.ui.priceTitle)}</h2>
-      ${timelineHtml}
+      <p class="bs-eyebrow">${escapeHtml(detail.priceLabel || detail.ui.timelinePrice)}</p>
+      <h2 class="bs-title" id="bs-ss-price-title">${brHeadline(detail.priceTitle || detail.ui.priceTitle)}</h2>
       ${priceHtml}
     </div></section>`;
 }
@@ -318,24 +469,51 @@ function priceSection(detail) {
 function developmentSection(detail) {
   const cta = detail.developmentCta;
   if (!cta) return "";
-  return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-dev-title"><div class="bs-inner">
+  const lang = detail._pageLang;
+  const isStrategyResearch = detail.slug === "brand-strategy";
+  const meta = isStrategyResearch
+    ? `<aside class="bs-dr-meta" aria-label="Research vs Strategy">
+          <div class="bs-dr-meta__row"><p class="bs-dr-meta__k">STUDIO</p><p class="bs-dr-meta__v">${escapeHtml(lang === "ko" ? "Brand Strategy — 기본 검토" : "Brand Strategy — basic review")}</p></div>
+          <div class="bs-dr-meta__row"><p class="bs-dr-meta__k">BUSINESS</p><p class="bs-dr-meta__v">${escapeHtml(lang === "ko" ? "Research — 심층 조사" : "Research — deeper study")}</p></div>
+        </aside>`
+    : `<aside class="bs-dr-meta" aria-label="Studio to Business">
+          <div class="bs-dr-meta__row"><p class="bs-dr-meta__k">STUDIO</p><p class="bs-dr-meta__v">${escapeHtml(detail.displayName)}</p></div>
+          <div class="bs-dr-meta__row"><p class="bs-dr-meta__k">NEXT</p><p class="bs-dr-meta__v">${escapeHtml(cta.eyebrow || (lang === "ko" ? "Business 연계" : "Business link"))}</p></div>
+        </aside>`;
+  return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-dev-title"><div class="bs-inner">
       <div class="bs-dr-split">
         <div class="bs-dr-split__copy">
-          <p class="bs-eyebrow">${escapeHtml(detail.ui.developmentNeeded)}</p>
-          <h2 class="bs-title" id="bs-ss-dev-title">${escapeHtml(cta.title)}</h2>
-          <p class="bs-lead">${escapeHtml(cta.body)}</p>
+          <p class="bs-eyebrow">${escapeHtml(cta.eyebrow || detail.ui.developmentNeeded)}</p>
+          <h2 class="bs-title" id="bs-ss-dev-title">${brHeadline(cta.title)}</h2>
+          ${proseParas(cta.body)}
           <div class="bs-hero__actions">
-            <a class="bs-btn bs-btn--ghost" href="${escapeHtml(cta.href)}">${escapeHtml(cta.label)}</a>
+            <a class="bs-btn bs-btn--primary" href="${escapeHtml(cta.href)}">${escapeHtml(cta.label)}</a>
           </div>
         </div>
+        ${meta}
       </div>
+    </div></section>`;
+}
+
+function nextStepsSection(detail) {
+  if (!detail.nextSteps?.length) return "";
+  return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-next-title"><div class="bs-inner">
+      <p class="bs-eyebrow">${escapeHtml(detail.nextStepsLabel || "NEXT STEP")}</p>
+      <h2 class="bs-title" id="bs-ss-next-title">${brHeadline(detail.nextStepsTitle)}</h2>
+      ${detail.nextStepsLead ? `<p class="bs-lead">${escapeHtml(detail.nextStepsLead).replace(/\n/g, "<br />")}</p>` : ""}
+      ${flowStageGridHtml(detail.nextSteps)}
     </div></section>`;
 }
 
 function noticesSection(detail) {
   if (!detail.notices?.length) return "";
+  const head = detail.noticesTitle
+    ? `<p class="bs-eyebrow">${escapeHtml(detail.noticesLabel || (detail._pageLang === "ko" ? "안내" : "NOTICE"))}</p>
+      <h2 class="bs-title" id="bs-ss-notices-title">${brHeadline(detail.noticesTitle)}</h2>`
+    : `<h2 class="bs-title" id="bs-ss-notices-title" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Notice</h2>`;
   return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-notices-title"><div class="bs-inner">
-      ${detail.notices.map((n) => `<p class="bs-note">${escapeHtml(n)}</p>`).join("")}
+      ${head}
+      ${detail.notices.map((n) => `<p class="bs-note">${escapeHtml(n).replace(/\n/g, "<br />")}</p>`).join("")}
     </div></section>`;
 }
 
@@ -361,6 +539,13 @@ function faqSection(detail) {
     </div></section>`;
 }
 
+function relatedBlurb(detail, slug, peer) {
+  const pack = detail.relatedBlurbs?.[slug];
+  if (!pack) return "";
+  const text = typeof pack === "string" ? pack : pack[detail._pageLang] || pack.ko || pack.en || "";
+  return text;
+}
+
 function exploreSection(detail) {
   const siblings = (detail.siblingSlugs || []).filter((s) => s !== detail.slug);
   if (siblings.length < 1) return "";
@@ -369,8 +554,9 @@ function exploreSection(detail) {
       const peer = getStudioServiceDetail(slug, detail._pageLang);
       if (!peer) return "";
       const href = `../${studioServiceDetailHrefFromPillar(slug)}`;
+      const blurb = relatedBlurb(detail, slug, peer);
       const price = formatStudioPriceDisplay(slug, detail._pageLang);
-      const tag = peer.statusLabel && peer.pageKind !== "service" ? peer.statusLabel : price || peer.categoryLabel;
+      const tag = blurb || (peer.statusLabel && peer.pageKind !== "service" ? peer.statusLabel : price || peer.categoryLabel);
       return `<a class="bs-related__link" href="${escapeHtml(href)}">
         <span><span class="bs-related__kicker">${escapeHtml(peer.categoryLabel)}</span><span class="bs-related__name">${escapeHtml(peer.displayName)}</span></span>
         <span class="bs-related__go" aria-hidden="true">${escapeHtml(tag)} →</span>
@@ -378,9 +564,9 @@ function exploreSection(detail) {
     })
     .join("");
   return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-explore-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(detail.ui.explore)}</p>
-      <h2 class="bs-title" id="bs-ss-explore-title">${brHeadline(detail.ui.exploreTitle)}</h2>
-      <p class="bs-lead">${escapeHtml(detail.ui.exploreLead)}</p>
+      <p class="bs-eyebrow">${escapeHtml(detail.exploreLabel || detail.ui.explore)}</p>
+      <h2 class="bs-title" id="bs-ss-explore-title">${brHeadline(detail.exploreTitle || detail.ui.exploreTitle)}</h2>
+      <p class="bs-lead">${escapeHtml(detail.exploreLead || detail.ui.exploreLead)}</p>
       <div class="bs-related">${cards}</div>
     </div></section>`;
 }
@@ -388,22 +574,34 @@ function exploreSection(detail) {
 function adjacentSection(detail) {
   const siblings = detail.siblingSlugs || [];
   const idx = siblings.indexOf(detail.slug);
-  if (idx < 0 || siblings.length < 2) return "";
+  if (idx < 0 || siblings.length < 2) {
+    if (!detail.adjacentPrev && !detail.adjacentNext) return "";
+  }
 
   const prevSlug = idx > 0 ? siblings[idx - 1] : null;
-  const nextSlug = idx < siblings.length - 1 ? siblings[idx + 1] : null;
+  const nextSlug = idx >= 0 && idx < siblings.length - 1 ? siblings[idx + 1] : null;
 
   let prevBlock = `<span class="bs-adjacent__link bs-adjacent__link--prev is-empty"></span>`;
   let nextBlock = `<span class="bs-adjacent__link bs-adjacent__link--next is-empty"></span>`;
 
-  if (prevSlug) {
+  if (detail.adjacentPrev) {
+    prevBlock = `<a class="bs-adjacent__link bs-adjacent__link--prev" href="${escapeHtml(detail.adjacentPrev.href)}">
+      <span class="bs-adjacent__label">${escapeHtml(detail.ui.prevService)}</span>
+      <span class="bs-adjacent__name">${escapeHtml(detail.adjacentPrev.name)}</span>
+    </a>`;
+  } else if (prevSlug) {
     const peer = getStudioServiceDetail(prevSlug, detail._pageLang);
     prevBlock = `<a class="bs-adjacent__link bs-adjacent__link--prev" href="../${studioServiceDetailHrefFromPillar(prevSlug)}">
       <span class="bs-adjacent__label">${escapeHtml(detail.ui.prevService)}</span>
       <span class="bs-adjacent__name">${escapeHtml(peer?.displayName || prevSlug)}</span>
     </a>`;
   }
-  if (nextSlug) {
+  if (detail.adjacentNext) {
+    nextBlock = `<a class="bs-adjacent__link bs-adjacent__link--next" href="${escapeHtml(detail.adjacentNext.href)}">
+      <span class="bs-adjacent__label">${escapeHtml(detail.ui.nextService)}</span>
+      <span class="bs-adjacent__name">${escapeHtml(detail.adjacentNext.name)}</span>
+    </a>`;
+  } else if (nextSlug) {
     const peer = getStudioServiceDetail(nextSlug, detail._pageLang);
     nextBlock = `<a class="bs-adjacent__link bs-adjacent__link--next" href="../${studioServiceDetailHrefFromPillar(nextSlug)}">
       <span class="bs-adjacent__label">${escapeHtml(detail.ui.nextService)}</span>
@@ -417,9 +615,20 @@ function adjacentSection(detail) {
 }
 
 function heroSubEyebrow(detail) {
+  if (detail.hideHeroSub) return "";
+  if (detail.eyebrowSub) return detail.eyebrowSub;
   if (detail.typeLabel) return detail.typeLabel;
   if (detail.statusLabel && detail.pageKind !== "service") return detail.statusLabel;
   return NAV_LABELS[detail.slug] || "";
+}
+
+function heroLeadHtml(description) {
+  if (Array.isArray(description)) {
+    return description
+      .map((p) => `<p class="bs-hero__lead">${escapeHtml(String(p)).replace(/\n/g, "<br />")}</p>`)
+      .join("");
+  }
+  return `<p class="bs-hero__lead">${escapeHtml(description || "").replace(/\n/g, "<br />")}</p>`;
 }
 
 function heroSection(detail, inquiryHref) {
@@ -431,11 +640,13 @@ function heroSection(detail, inquiryHref) {
   let actions = "";
   if (hasInquiry(detail)) {
     const primaryLabel =
-      detail.pageKind === "exploring"
+      detail.heroCtaBtn ||
+      detail.ctaBtn ||
+      (detail.pageKind === "exploring"
         ? detail._pageLang === "ko"
           ? "IP 프로젝트 문의 →"
           : "IP project inquiry →"
-        : detail.ui.ctaBtn;
+        : detail.ui.ctaBtn);
     const secondaryHref = detail.process?.length ? "#process" : detail.overview ? "#bs-ss-overview-title" : "#";
     const secondaryLabel = detail.process?.length
       ? detail._pageLang === "ko"
@@ -462,7 +673,7 @@ function heroSection(detail, inquiryHref) {
     <div>
       <p class="bs-eyebrow">${eyebrow}</p>
       <h1 class="bs-hero__title" id="bs-hero-title">${brHeadline(detail.headline)}</h1>
-      <p class="bs-hero__lead">${escapeHtml(detail.description)}</p>
+      ${heroLeadHtml(detail.description)}
       ${actions}
     </div>
     ${studioHeroVisual(detail.slug)}
@@ -484,19 +695,20 @@ function finalSection(detail, inquiryHref) {
   }
 
   const primaryLabel =
-    detail.pageKind === "exploring"
+    detail.ctaBtn ||
+    (detail.pageKind === "exploring"
       ? detail._pageLang === "ko"
         ? "IP 프로젝트 문의 →"
         : "IP project inquiry →"
-      : detail.ui.ctaBtn;
+      : detail.ui.ctaBtn);
 
   return `<section class="bs-section bs-section--dark bs-final" data-bs-reveal aria-labelledby="bs-final-title"><div class="bs-inner">
-    <p class="bs-eyebrow">${escapeHtml(detail.ui.ctaEyebrow)}</p>
-    <h2 class="bs-final__title" id="bs-final-title">${brHeadline(detail.ui.ctaTitle)}</h2>
-    <p class="bs-lead">${escapeHtml(detail.ui.ctaLead)}</p>
+    <p class="bs-eyebrow">${escapeHtml(detail.ctaEyebrow || detail.ui.ctaEyebrow)}</p>
+    <h2 class="bs-final__title" id="bs-final-title">${brHeadline(detail.ctaTitle || detail.ui.ctaTitle)}</h2>
+    ${proseParas(detail.ctaLead || detail.ui.ctaLead)}
     <div class="bs-hero__actions">
       <a class="bs-btn bs-btn--primary" href="${escapeHtml(inquiryHref)}" data-bs-cta="final" data-analytics="studio_service_cta_click">${escapeHtml(primaryLabel)}</a>
-      <a class="bs-btn bs-btn--ghost" href="../../">${detail._pageLang === "ko" ? "Studio 둘러보기 →" : "Explore Studio →"}</a>
+      <a class="bs-btn bs-btn--ghost" href="../../">${escapeHtml(detail.ctaSecondary || (detail._pageLang === "ko" ? "Studio 보기 →" : "View Studio →"))}</a>
     </div>
   </div></section>`;
 }
@@ -509,22 +721,33 @@ export function renderStudioServiceDetailBody(slug, lang = "ko") {
   const detail = getStudioServiceDetail(slug, lang);
   if (!detail) return "";
 
-  const inquiryHref = hasInquiry(detail) ? studioInquiryHref(slug, "../../../business/inquiry/") : "";
+  const sourcePath = `/${lang === "ko" ? "ko" : lang}/${detail.pagePath}/`;
+  const inquiryHref = hasInquiry(detail)
+    ? studioInquiryHref(slug, "../../../business/inquiry/", { source: sourcePath })
+    : "";
 
   return `${breadcrumb(detail)}
 ${heroSection(detail, inquiryHref)}
 ${serviceNav(detail)}
 ${overviewSection(detail)}
 ${problemsSection(detail)}
+${principlesSection(detail)}
+${whoSection(detail)}
 ${whatWeDoSection(detail)}
+${directionsSection(detail)}
 ${useCasesSection(detail)}
+${checksSection(detail)}
 ${includedSection(detail)}
 ${deliverablesSection(detail)}
 ${processSection(detail)}
-${whoSection(detail)}
-${optionalSection(detail)}
+${conceptFlowSection(detail)}
+${compareSection(detail)}
+${versusSection(detail)}
+${timelineSection(detail)}
 ${priceSection(detail)}
+${optionalSection(detail)}
 ${developmentSection(detail)}
+${nextStepsSection(detail)}
 ${noticesSection(detail)}
 ${faqSection(detail)}
 ${exploreSection(detail)}

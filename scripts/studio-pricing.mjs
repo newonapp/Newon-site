@@ -278,13 +278,18 @@ export function studioPillarPricingNote(pillarSlug, lang = "ko") {
   return studioScopeDisclaimer(lang);
 }
 
-export function studioInquiryHref(slug, relativeBase = "../../business/inquiry/") {
+export function studioInquiryHref(slug, relativeBase = "../../business/inquiry/", opts = {}) {
   const cfg = STUDIO_SERVICE_PRICING[slug];
   if (!cfg) return `${relativeBase}#inquiry`;
   const params = new URLSearchParams({
     category: "Studio",
     service: cfg.inquiryService,
   });
+  if (cfg.category === "brand") params.set("area", "Brand");
+  else if (cfg.category === "digital") params.set("area", "Digital");
+  else if (cfg.category === "content") params.set("area", "Content");
+  else if (cfg.category === "ip") params.set("area", "IP");
+  if (opts.source) params.set("source", opts.source);
   return `${relativeBase}?${params.toString()}#inquiry`;
 }
 

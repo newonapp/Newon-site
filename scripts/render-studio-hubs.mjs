@@ -166,31 +166,49 @@ function gamesBody(flat, flatEn, lang) {
 }
 
 function studioBody(flat, flatEn, lang = "en") {
+  const ko = lang === "ko";
   const t = (k, fb = "") => {
     const v = pick(flat, flatEn, k);
     return escapeHtml(v != null && v !== "" ? String(v) : fb);
   };
+  const titleHtml = (k, fb = "") => t(k, fb).replace(/\n/g, "<br />");
 
   const close = studioExploreCloseHtml(flat, flatEn, lang);
+  const cssV = "20260827ns5";
+  const pillars = [
+    { href: "#brand", label: "Brand" },
+    { href: "#digital", label: "Digital" },
+    { href: "#content", label: "Content" },
+    { href: "#ip", label: "IP" },
+  ];
+  const rail = pillars
+    .map((item, i) => {
+      const link = `<a class="ns-rail__link" href="${item.href}">${item.label}</a>`;
+      if (i === 0) return link;
+      return `<span class="ns-rail__sep" aria-hidden="true">·</span>${link}`;
+    })
+    .join("");
 
-  return `<link rel="stylesheet" href="/newon-studio.css?v=20260827ns4" />
-<link rel="stylesheet" href="/business-page.css?v=20260827ns4" />
-<link rel="stylesheet" href="/business-pillar.css?v=20260827ns4" />
+  return `<link rel="stylesheet" href="/newon-studio.css?v=${cssV}" />
+<link rel="stylesheet" href="/business-page.css?v=${cssV}" />
+<link rel="stylesheet" href="/business-pillar.css?v=${cssV}" />
 <section class="ns-hero">
-  <div class="ns-inner">
-    <p class="ns-kicker">${t("studioHub.eyebrow", "NEWON STUDIO")}</p>
-    <h1 class="ns-title">${t("studioHub.heroTitle", "브랜드와 제품이 세상에 보이는 방식을 만듭니다.")}</h1>
+  <div class="ns-hero__bg" aria-hidden="true"></div>
+  <div class="ns-inner ns-hero__stage">
+    <p class="ns-kicker"><span class="ns-kicker__mark" aria-hidden="true">N</span>${t("studioHub.eyebrow", "NEWON STUDIO")}</p>
+    <h1 class="ns-title">${titleHtml("studioHub.heroTitle", ko ? "브랜드와 제품이\n세상에 보이는 방식을 만듭니다." : "We shape how brands and\nproducts appear in the world.")}</h1>
     <p class="ns-lead">${t("studioHub.heroLead", "브랜드의 이름과 정체성부터 디지털 경험, 콘텐츠와 새로운 IP까지 하나의 방향으로 설계합니다.")}</p>
     <div class="ns-actions">
-      <a class="btn btn-ghost" href="#brand">${t("studioHub.ctaExplore", "Explore Studio ↓")}</a>
-      <a class="btn btn-primary" href="../business/inquiry/?category=Studio#inquiry">${t("studioHub.ctaProject", "Start a Project ↗")}</a>
+      <a class="btn btn-ghost" href="#areas">${t("studioHub.ctaExplore", "Explore Studio ↓")}</a>
+      <a class="btn btn-primary" href="../business/inquiry/?category=Studio#inquiry">${t("studioHub.ctaProject", ko ? "프로젝트 문의하기 ↗" : "Start a Project ↗")}</a>
     </div>
-    <p class="ns-note">${t("studioHub.positioning", "Creative Studio · Product Studio · Experimental Lab")}</p>
+    <nav class="ns-rail" aria-label="${ko ? "Studio 영역" : "Studio areas"}">${rail}</nav>
   </div>
+  <div class="ns-hero__rule" aria-hidden="true"></div>
 </section>
 ${studioServicesHtml(flat, flatEn, lang)}
 ${close}
-<script src="/business-pillar.js?v=20260827ns4" defer></script>`;
+<script src="/business-pillar.js?v=${cssV}" defer></script>`;
 }
 
 function toolsHubBody(flat, flatEn) {

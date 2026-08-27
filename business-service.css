@@ -10546,6 +10546,32 @@ html[data-newon-shell-theme="dark"] .bs-it-flow-grid__item:hover p {
   background: var(--bs-bg);
   transition: background 0.2s var(--bs-ease), color 0.2s var(--bs-ease);
 }
+a.bs-flow-stage-grid__item {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.bs-flow-stage-grid__item.is-on {
+  background: #111;
+  color: #fff;
+}
+.bs-flow-stage-grid__item.is-on .bs-flow-stage-grid__n {
+  color: rgba(255, 255, 255, 0.55);
+}
+.bs-flow-stage-grid__item.is-on p {
+  color: rgba(255, 255, 255, 0.72);
+}
+html[data-newon-shell-theme="dark"] .bs-flow-stage-grid__item.is-on {
+  background: #fff;
+  color: #111;
+}
+html[data-newon-shell-theme="dark"] .bs-flow-stage-grid__item.is-on .bs-flow-stage-grid__n {
+  color: rgba(17, 17, 17, 0.55);
+}
+html[data-newon-shell-theme="dark"] .bs-flow-stage-grid__item.is-on p {
+  color: rgba(17, 17, 17, 0.72);
+}
 .bs-flow-stage-grid__item:hover {
   background: #111;
   color: #fff;
