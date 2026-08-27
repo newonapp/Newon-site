@@ -1,7 +1,9 @@
 /**
  * Studio pillar detail copy — short BUILD-style service cards.
- * Layout/CSS unchanged.
+ * Layout/CSS unchanged. Pricing from studio-pricing.mjs.
  */
+import { applyStudioPillarPricing } from "./studio-pricing.mjs";
+
 export const STUDIO_PILLAR_SLUGS = ["brand", "digital", "content", "ip"];
 
 const SHARED = {
@@ -27,6 +29,7 @@ const SHARED = {
     comingSoonLead: "이 영역은 아직 준비 중입니다. 완성된 상용 서비스처럼 제공하지 않습니다.",
     ctaPrimary: "프로젝트 시작하기 →",
     ctaSecondary: "작업 범위 보기 ↓",
+    startingAt: "시작가",
   },
   en: {
     crumbStudio: "Studio",
@@ -50,6 +53,7 @@ const SHARED = {
     comingSoonLead: "This area is still in progress — not offered as a finished commercial service yet.",
     ctaPrimary: "Start a project →",
     ctaSecondary: "View scope ↓",
+    startingAt: "STARTING AT",
   },
 };
 
@@ -72,6 +76,7 @@ const PILLAR_COPY = {
         { q: "브랜딩만 따로 의뢰할 수 있나요?", a: "가능합니다. 전략, 네이밍, 아이덴티티, 로고 중 필요한 범위만 진행할 수 있습니다." },
         { q: "기존 브랜드를 개선할 수도 있나요?", a: "가능합니다. 현재 자산과 목표를 확인한 뒤 개선 범위를 제안합니다." },
         { q: "네이밍의 상표권까지 보장하나요?", a: "아니요. 의미·발음·확장성은 검토하지만 상표 등록은 보장하지 않습니다. 최종 검토는 전문 변리사 확인이 필요합니다." },
+        { q: "표시된 시작가는 고정 가격인가요?", a: "아니요. 기본 범위 기준 시작가이며, 프로젝트 규모·제작 범위·결과물 수에 따라 최종 견적이 달라질 수 있습니다." },
         { q: "웹·앱 개발까지 함께할 수 있나요?", a: "브랜드·UI 설계는 Studio에서, 개발·구축은 Newon Business BUILD로 연결합니다." },
       ],
       services: [
@@ -137,6 +142,7 @@ const PILLAR_COPY = {
         { q: "Can we hire branding only?", a: "Yes — strategy, naming, identity, or logo, scoped to what you need." },
         { q: "Can you refresh an existing brand?", a: "Yes. We review current assets and goals, then propose scope." },
         { q: "Do you guarantee trademark clearance?", a: "No. We review meaning and expandability, but final trademark review needs an IP attorney." },
+        { q: "Is the starting price fixed?", a: "No. It is a starting price for a basic scope; final quotes vary with scale, production scope, and deliverables." },
         { q: "Can this connect to build work?", a: "Design stays in Studio; implementation continues through Newon Business BUILD." },
       ],
       services: [
@@ -203,8 +209,8 @@ const PILLAR_COPY = {
         { n: "05", t: "HANDOFF", d: "개발 전달" },
       ],
       faq: [
-        { q: "디자인만 의뢰할 수 있나요?", a: "가능합니다. UI/UX와 프로토타입까지 범위를 맞춰 진행합니다." },
-        { q: "개발도 함께 하나요?", a: "Studio는 설계·핸드오프까지입니다. 구현은 Newon Business BUILD로 연결합니다." },
+        { q: "디자인만 의뢰할 수 있나요?", a: "가능합니다. DIGITAL 시작가는 디자인(Design Only) 비용이며, UI/UX·프로토타입·핸드오프까지 범위를 맞춰 진행합니다." },
+        { q: "개발도 함께 하나요?", a: "아니요. Studio DIGITAL은 개발을 포함하지 않습니다. 구현이 필요하면 Newon Business BUILD와 연계해 별도 견적을 제공합니다." },
         { q: "기존 제품 개선도 가능한가요?", a: "가능합니다. 흐름과 화면 구조를 점검한 뒤 개선 범위를 제안합니다." },
         { q: "반응형·모바일도 포함되나요?", a: "포함됩니다. Desktop/Mobile UI를 함께 설계합니다." },
       ],
@@ -212,8 +218,8 @@ const PILLAR_COPY = {
         {
           title: "WEB DESIGN",
           tab: "WEB",
-          summary: "브랜드와 서비스를 명확히 전달하는 웹 경험 설계.",
-          what: "사이트 구조부터 와이어프레임, UI, 반응형까지 설계합니다.",
+          summary: "브랜드와 서비스를 명확히 전달하는 웹 UX/UI 디자인. (Design Only)",
+          what: "사이트 구조부터 와이어프레임, UI, 반응형까지 설계합니다. 개발·구축은 포함되지 않습니다.",
           for: "회사·브랜드 사이트가 필요하거나 기존 웹 UX를 개선하고 싶은 팀.",
           included: "IA · 사용자 흐름 · Wireframe · UI · Responsive · Component",
           deliverables: "Sitemap, Wireframes, Desktop/Mobile UI, Handoff",
@@ -223,8 +229,8 @@ const PILLAR_COPY = {
         {
           title: "APP UI/UX",
           tab: "APP",
-          summary: "앱의 핵심 흐름과 화면 구조를 설계합니다.",
-          what: "User Flow부터 하이파이 UI, 프로토타입, 핸드오프까지 설계합니다.",
+          summary: "앱의 핵심 흐름과 화면 구조를 설계합니다. (Design Only)",
+          what: "User Flow부터 하이파이 UI, 프로토타입, 핸드오프까지 설계합니다. 앱 개발은 포함되지 않습니다.",
           for: "앱 아이디어를 구체화하거나 MVP·UX 개선이 필요한 팀.",
           included: "User Flow · IA · Wireframe · UI · Component · Prototype",
           deliverables: "User Flow, High-fidelity UI, Prototype, Handoff Files",
@@ -234,8 +240,8 @@ const PILLAR_COPY = {
         {
           title: "LANDING PAGE",
           tab: "LANDING",
-          summary: "전환을 위한 랜딩페이지 경험 설계.",
-          what: "메시지 구조와 CTA, 섹션·모바일 UI를 설계합니다.",
+          summary: "전환을 위한 랜딩페이지 UX/UI 디자인. (Design Only)",
+          what: "메시지 구조와 CTA, 섹션·모바일 UI를 설계합니다. 실제 웹 제작·개발은 포함되지 않습니다.",
           for: "제품 출시, 사전예약, 광고, MVP 수요 검증이 필요한 경우.",
           included: "메시지 구조 · Conversion Flow · Wireframe · UI · Mobile",
           deliverables: "Landing Structure, Final UI, CTA System, Handoff",
@@ -245,8 +251,8 @@ const PILLAR_COPY = {
         {
           title: "PRODUCT DESIGN",
           tab: "PRODUCT",
-          summary: "제품 전체가 일관된 경험으로 작동하도록 설계.",
-          what: "제품 구조와 UX Flow, UI System, Design System을 맞춥니다.",
+          summary: "제품 전체가 일관된 경험으로 작동하도록 설계. (Design Only)",
+          what: "제품 구조와 UX Flow, UI System, Design System을 맞춥니다. 개발·구축은 포함되지 않습니다.",
           for: "제품 전체 UX를 정리하거나 디자인 시스템이 필요한 팀.",
           included: "Product Structure · UX Flow · UI System · Design System · Prototype",
           deliverables: "Product UX Architecture, UI Design, Design System, Handoff",
@@ -269,8 +275,8 @@ const PILLAR_COPY = {
         { n: "05", t: "HANDOFF", d: "Development handoff" },
       ],
       faq: [
-        { q: "Design only?", a: "Yes — UI/UX and prototype scoped to your needs." },
-        { q: "Do you also build?", a: "Studio covers design through handoff. Implementation continues through Business BUILD." },
+        { q: "Design only?", a: "Yes. DIGITAL starting prices are design-only — UI/UX, prototype, and handoff scoped to your needs." },
+        { q: "Do you also build?", a: "No. Studio DIGITAL does not include development. Implementation is quoted separately through Newon Business BUILD." },
         { q: "Can you improve an existing product?", a: "Yes — we review flows and structure, then propose scope." },
         { q: "Is responsive/mobile included?", a: "Yes — desktop and mobile UI together." },
       ],
@@ -278,8 +284,8 @@ const PILLAR_COPY = {
         {
           title: "WEB DESIGN",
           tab: "WEB",
-          summary: "Web experiences that present brand and service clearly.",
-          what: "From site structure to wireframes, UI, and responsive design.",
+          summary: "Web UX/UI design that presents brand and service clearly. (Design Only)",
+          what: "From site structure to wireframes, UI, and responsive design. Build/development is not included.",
           for: "Teams needing a company/brand site, or improving existing web UX.",
           included: "IA · flows · wireframe · UI · responsive · components",
           deliverables: "Sitemap, Wireframes, Desktop/Mobile UI, Handoff",
@@ -289,8 +295,8 @@ const PILLAR_COPY = {
         {
           title: "APP UI/UX",
           tab: "APP",
-          summary: "Flows and screen structure for core app features.",
-          what: "From user flows to high-fidelity UI, prototype, and handoff.",
+          summary: "Flows and screen structure for core app features. (Design Only)",
+          what: "From user flows to high-fidelity UI, prototype, and handoff. App development is not included.",
           for: "Teams clarifying an app idea, MVP design, or UX improvement.",
           included: "User flow · IA · wireframe · UI · components · prototype",
           deliverables: "User Flow, High-fidelity UI, Prototype, Handoff Files",
@@ -300,8 +306,8 @@ const PILLAR_COPY = {
         {
           title: "LANDING PAGE",
           tab: "LANDING",
-          summary: "Landing experiences built for conversion.",
-          what: "Message structure, CTAs, sections, and mobile UI.",
+          summary: "Landing page UX/UI design built for conversion. (Design Only)",
+          what: "Message structure, CTAs, sections, and mobile UI. Live web build is not included.",
           for: "Launches, waitlists, ads, or MVP demand validation.",
           included: "Message structure · conversion flow · wireframe · UI · mobile",
           deliverables: "Landing Structure, Final UI, CTA System, Handoff",
@@ -311,8 +317,8 @@ const PILLAR_COPY = {
         {
           title: "PRODUCT DESIGN",
           tab: "PRODUCT",
-          summary: "Whole-product experience design — not only screens.",
-          what: "Align product structure, UX flow, UI system, and design system.",
+          summary: "Whole-product experience design — not only screens. (Design Only)",
+          what: "Align product structure, UX flow, UI system, and design system. Build/development is not included.",
           for: "Teams organizing full-product UX or needing a design system.",
           included: "Product structure · UX flow · UI system · design system · prototype",
           deliverables: "Product UX Architecture, UI Design, Design System, Handoff",
@@ -339,6 +345,7 @@ const PILLAR_COPY = {
       faq: [
         { q: "콘텐츠만 따로 의뢰할 수 있나요?", a: "가능합니다. 소셜, 캠페인, 비주얼 중 필요한 범위로 진행합니다." },
         { q: "브랜드 작업과 함께해야 하나요?", a: "기존 브랜드가 있으면 맞추고, 없으면 Brand와 함께 진행할 수 있습니다." },
+        { q: "소셜 콘텐츠 시작가에 월간 운영이 포함되나요?", a: "아니요. 시작가는 기본 콘텐츠 방향과 제한된 범위의 디자인 제작 기준입니다. 월간 SNS 운영대행은 별도 견적입니다." },
         { q: "모션·영상도 포함되나요?", a: "Simple Motion은 협의 후 가능합니다. 장편 영상은 기본 범위에 없습니다." },
         { q: "채널별 사이즈도 맞춰주나요?", a: "각 채널 규격에 맞춰 전달합니다." },
       ],
@@ -346,9 +353,9 @@ const PILLAR_COPY = {
         {
           title: "SOCIAL CONTENT",
           tab: "SOCIAL",
-          summary: "SNS에서 꾸준히 쓸 수 있는 브랜드 콘텐츠 체계.",
-          what: "콘텐츠 방향, 포맷, 카피·템플릿, 채널 가이드를 만듭니다.",
-          for: "Instagram · TikTok · Shorts 등 브랜드 채널을 운영하려는 팀.",
+          summary: "SNS용 콘텐츠 방향과 제한된 범위의 디자인 제작 기준.",
+          what: "콘텐츠 방향, 포맷, 카피·템플릿, 채널 가이드를 만듭니다. 월간 운영대행 전체는 포함되지 않습니다.",
+          for: "Instagram · TikTok · Shorts 등 브랜드 채널 방향을 잡고 싶은 팀.",
           included: "콘텐츠 방향 · Pillar · 포맷 · 카피 방향 · 템플릿 · 채널 가이드",
           deliverables: "Content Strategy, Social Templates, Channel Guide",
           timeline: "보통 1–3주",
@@ -393,6 +400,7 @@ const PILLAR_COPY = {
       faq: [
         { q: "Content only?", a: "Yes — social, campaign, or visual scope as needed." },
         { q: "Must we do brand first?", a: "We can align to an existing brand or run Brand in parallel." },
+        { q: "Does Social Content include monthly ops?", a: "No. The starting price covers content direction plus a limited design set — not full monthly social management, which is quoted separately." },
         { q: "Is motion included?", a: "Simple motion by agreement. Long-form video is not default scope." },
         { q: "Channel-specific sizes?", a: "Yes — delivered sized for each channel." },
       ],
@@ -400,9 +408,9 @@ const PILLAR_COPY = {
         {
           title: "SOCIAL CONTENT",
           tab: "SOCIAL",
-          summary: "A content system for ongoing social brand presence.",
-          what: "Content direction, formats, copy/templates, and channel guides.",
-          for: "Teams running Instagram, TikTok, Shorts, and similar brand channels.",
+          summary: "Content direction and a limited design set for social — not full monthly ops.",
+          what: "Content direction, formats, copy/templates, and channel guides. Full monthly social management is not included.",
+          for: "Teams setting direction for Instagram, TikTok, Shorts, and similar brand channels.",
           included: "Direction · pillars · formats · copy direction · templates · channel guide",
           deliverables: "Content Strategy, Social Templates, Channel Guide",
           timeline: "Typically 1–3 weeks",
@@ -465,7 +473,6 @@ const PILLAR_COPY = {
           deliverables: "Concept Sheet, Visual Direction, Expression Set, Basic IP Guide",
           timeline: "보통 2–4주",
           ready: true,
-          href: "../../resources/labs/character-lab/",
         },
         {
           title: "DIGITAL STICKERS",
@@ -532,7 +539,6 @@ const PILLAR_COPY = {
           deliverables: "Concept Sheet, Visual Direction, Expression Set, Basic IP Guide",
           timeline: "Typically 2–4 weeks",
           ready: true,
-          href: "../../resources/labs/character-lab/",
         },
         {
           title: "DIGITAL STICKERS",
@@ -578,7 +584,7 @@ export function getStudioPillarCopy(slug, lang) {
   const pageLang = lang === "ko" ? "ko" : "en";
   const shared = SHARED[pageLang];
   const local = pack[pageLang] || pack.en;
-  return {
+  const base = {
     ...shared,
     ...local,
     slug,
@@ -587,4 +593,5 @@ export function getStudioPillarCopy(slug, lang) {
     services: (local.services || []).map((s) => ({ ...s })),
     headline: local.headline,
   };
+  return applyStudioPillarPricing(base, slug, pageLang);
 }

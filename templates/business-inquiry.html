@@ -1870,6 +1870,20 @@
                 <option value="Automation">{{t:studio.formTypeAuto}}</option>
                 <option value="White-label">{{t:studio.formTypeWhitelabel}}</option>
                 <option value="Design">{{t:studio.formTypeDesign}}</option>
+                <option value="Studio / Brand Strategy">Studio / Brand Strategy</option>
+                <option value="Studio / Naming">Studio / Naming</option>
+                <option value="Studio / Identity">Studio / Identity</option>
+                <option value="Studio / Logo Design">Studio / Logo Design</option>
+                <option value="Studio / Web Design">Studio / Web Design</option>
+                <option value="Studio / App UI/UX">Studio / App UI/UX</option>
+                <option value="Studio / Landing Page Design">Studio / Landing Page Design</option>
+                <option value="Studio / Product Design">Studio / Product Design</option>
+                <option value="Studio / Social Content">Studio / Social Content</option>
+                <option value="Studio / Campaign">Studio / Campaign</option>
+                <option value="Studio / Visual Content">Studio / Visual Content</option>
+                <option value="Studio / Character Lab">Studio / Character Lab</option>
+                <option value="Studio / Digital Stickers">Studio / Digital Stickers</option>
+                <option value="Studio / Experimental IP">Studio / Experimental IP</option>
                 <option value="Maintenance">{{t:studio.formTypeMaintain}}</option>
                 <option value="Partnership">{{t:business.typePartnership}}</option>
                 <option value="Other">{{t:studio.formTypeOther}}</option>
@@ -2015,9 +2029,39 @@
           "ai-automation": "AI",
           ai: "AI",
           "white-label": "White-label",
-          design: "Design"
+          design: "Design",
+          "Brand Strategy": "Studio / Brand Strategy",
+          "brand-strategy": "Studio / Brand Strategy",
+          Naming: "Studio / Naming",
+          naming: "Studio / Naming",
+          Identity: "Studio / Identity",
+          identity: "Studio / Identity",
+          "Logo Design": "Studio / Logo Design",
+          "logo-design": "Studio / Logo Design",
+          Logo: "Studio / Logo Design",
+          "Web Design": "Studio / Web Design",
+          "web-design": "Studio / Web Design",
+          "App UI/UX": "Studio / App UI/UX",
+          "app-ui-ux": "Studio / App UI/UX",
+          "Landing Page Design": "Studio / Landing Page Design",
+          "landing-page-design": "Studio / Landing Page Design",
+          "Product Design": "Studio / Product Design",
+          "product-design": "Studio / Product Design",
+          "Social Content": "Studio / Social Content",
+          "social-content": "Studio / Social Content",
+          Campaign: "Studio / Campaign",
+          campaign: "Studio / Campaign",
+          "Visual Content": "Studio / Visual Content",
+          "visual-content": "Studio / Visual Content",
+          "Character Lab": "Studio / Character Lab",
+          "character-lab": "Studio / Character Lab",
+          "Digital Stickers": "Studio / Digital Stickers",
+          "digital-stickers": "Studio / Digital Stickers",
+          "Experimental IP": "Studio / Experimental IP",
+          "experimental-ip": "Studio / Experimental IP"
         };
         var qType = params.get("type") || params.get("service");
+        var qCategory = (params.get("category") || "").trim();
         var messageHints = {
           ko: {
             "AUTOMATION / WORKFLOW AUTOMATION":
@@ -2036,10 +2080,22 @@
           var hint = hintPack[typeEl.value];
           if (hint) msgEl.placeholder = hint;
         }
-        if (qType && typeEl) {
-          var mapped = serviceMap[qType] || qType;
-          typeEl.value = mapped;
-          applyMessageHint();
+        function resolveInquiryType() {
+          if (!qType) {
+            if (/^studio$/i.test(qCategory)) return "Studio / Brand Strategy";
+            return "";
+          }
+          if (/^studio$/i.test(qCategory) && serviceMap[qType]) return serviceMap[qType];
+          if (/^Studio\s*\//.test(qType)) return qType;
+          return serviceMap[qType] || qType;
+        }
+        if (typeEl) {
+          var mapped = resolveInquiryType();
+          if (mapped) {
+            typeEl.value = mapped;
+            if (!typeEl.value) typeEl.value = mapped;
+            applyMessageHint();
+          }
         }
         if (typeEl) {
           typeEl.addEventListener("change", applyMessageHint);

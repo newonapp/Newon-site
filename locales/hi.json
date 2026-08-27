@@ -3574,9 +3574,9 @@
     "inquiryHeroLabel": "PROJECT INQUIRY",
     "exploreSeoTitle": "Newon Business | Build · Automation · Research · Solutions",
     "exploreMetaDescription": "Explore how Newon works with companies — Build, Automation, Research, and Solutions in one view.",
-    "ctaExploreBack": "Explore Business →",
+    "ctaExploreBack": "व्यवसाय का अन्वेषण करें →",
     "exploreNavTitle": "OTHER BUSINESS SERVICES",
-    "exploreFaqLabel": "FAQ",
+    "exploreFaqLabel": "अक्सर पूछे जाने वाले प्रश्न",
     "exploreCtaEyebrow": "HAVE A PROJECT?",
     "exploreCtaTitle": "If you have something to build, tell us.",
     "exploreCtaLead": "Even at the idea stage. We start by clarifying the scope you need.",
@@ -4943,6 +4943,12 @@
     "contentLead": "Brand content and visuals.",
     "ipLead": "Characters and experimental IP.",
     "closeKicker": "NEXT",
-    "closeTitle": "Start a project with Studio."
+    "closeTitle": "Start a project with Studio.",
+    "exploreNavTitle": "OTHER STUDIO AREAS",
+    "exploreFaqLabel": "अक्सर पूछे जाने वाले प्रश्न",
+    "exploreCtaEyebrow": "HAVE A PROJECT?",
+    "exploreCtaTitle": "Let's shape how your brand and product show up in the world.",
+    "exploreCtaLead": "Even at the idea stage. We start by clarifying the scope you need.",
+    "exploreCtaBtn": "Project inquiry →"
   }
 }

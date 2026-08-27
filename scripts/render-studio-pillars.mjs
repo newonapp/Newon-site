@@ -9,6 +9,7 @@ import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml } from "./hub-utils.mjs
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { buildPillarPageBody } from "./render-business-pillars.mjs";
 import { STUDIO_PILLAR_SLUGS, getStudioPillarCopy } from "./studio-pillar-copy.mjs";
+import { renderStudioServiceDetails } from "./render-studio-service-details.mjs";
 
 const template = fs.readFileSync(path.join(ROOT, "templates", "business-pillar.html"), "utf8");
 
@@ -84,7 +85,7 @@ function writeRedirect(slug) {
 
 export function renderStudioPillars() {
   const flatEn = flatten(loadJson("en.json"));
-  const inquiryHref = "../../business/inquiry/#inquiry";
+  const inquiryHref = "../../business/inquiry/?category=Studio#inquiry";
 
   for (const { dir, file, htmlLang } of LANGS) {
     const flat = flatten(loadJson(file));
@@ -148,6 +149,7 @@ export function renderStudioPillars() {
   }
 
   console.log(`render-studio-pillars: wrote ${LANGS.length * STUDIO_PILLAR_SLUGS.length} pages`);
+  renderStudioServiceDetails();
 }
 
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);

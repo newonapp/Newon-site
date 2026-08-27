@@ -144,7 +144,7 @@ function finalCta(flat, flatEn, lang) {
     <p class="bp-label">${eyebrow}</p>
     <h2 class="bp-cta__title">${title}</h2>
     <p class="bp-cta__lead">${lead}</p>
-    <a class="bp-btn bp-btn--primary" href="../business/inquiry/#inquiry" data-analytics="studio_explore_cta">${btn}</a>
+    <a class="bp-btn bp-btn--primary" href="../business/inquiry/?category=Studio#inquiry" data-analytics="studio_explore_cta">${btn}</a>
   </div>
 </section>`;
 }

@@ -183,7 +183,7 @@ function studioBody(flat, flatEn, lang = "en") {
     <p class="ns-lead">${t("studioHub.heroLead", "브랜드의 이름과 정체성부터 디지털 경험, 콘텐츠와 새로운 IP까지 하나의 방향으로 설계합니다.")}</p>
     <div class="ns-actions">
       <a class="btn btn-ghost" href="#brand">${t("studioHub.ctaExplore", "Explore Studio ↓")}</a>
-      <a class="btn btn-primary" href="../business/inquiry/">${t("studioHub.ctaProject", "Start a Project ↗")}</a>
+      <a class="btn btn-primary" href="../business/inquiry/?category=Studio#inquiry">${t("studioHub.ctaProject", "Start a Project ↗")}</a>
     </div>
     <p class="ns-note">${t("studioHub.positioning", "Creative Studio · Product Studio · Experimental Lab")}</p>
   </div>

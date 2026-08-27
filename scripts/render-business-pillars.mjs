@@ -122,12 +122,19 @@ function shortTitle(title) {
 function detailAction(copy, s) {
   const href = s.href || "";
   if (href) {
-    return `<a class="bp-btn bp-btn--ghost" href="${escapeHtml(href)}" data-analytics="business_pillar_detail">${escapeHtml(copy.detailCta || "자세히 보기 →")}</a>`;
+    return `<a class="bp-btn bp-btn--ghost" href="${escapeHtml(href)}" data-analytics="business_pillar_detail">${escapeHtml(s.detailCta || copy.detailCta || "자세히 보기 →")}</a>`;
   }
   if (s.ready === false) {
     return `<span class="bp-btn bp-btn--soon" aria-disabled="true">${escapeHtml(copy.soonBtn || "준비 중")}</span>`;
   }
   return "";
+}
+
+function priceBlock(copy, price) {
+  if (!price) return `<div class="bp-explore__price bp-explore__price--empty"></div>`;
+  return `<div class="bp-explore__price">${
+    copy.startingAt ? `<span>${escapeHtml(copy.startingAt)}</span>` : ""
+  }<strong>${escapeHtml(price)}</strong></div>`;
 }
 
 function servicesSection(copy, inquiryHref = "../inquiry/#inquiry") {
@@ -148,11 +155,15 @@ function servicesSection(copy, inquiryHref = "../inquiry/#inquiry") {
   const panels = services
     .map((s, i) => {
       const price = priceForIndex(copy, i);
+      const panelInquiry = s.inquiryHref !== undefined ? s.inquiryHref : inquiryHref;
       const hidden = i === 0 ? "" : " hidden";
       const active = i === 0 ? " is-active" : "";
       const label = escapeHtml(s.tab || shortTitle(s.title));
       const isReady = s.ready !== false && !!(s.summary || s.what);
-      const actions = `<div class="bp-explore__actions">${detailAction(copy, s)}<a class="bp-btn bp-btn--primary" href="${escapeHtml(inquiryHref)}" data-analytics="business_pillar_cta">${escapeHtml(copy.quoteCta || "")}</a></div>`;
+      const quoteBtn = panelInquiry
+        ? `<a class="bp-btn bp-btn--primary" href="${escapeHtml(panelInquiry)}" data-analytics="business_pillar_cta">${escapeHtml(copy.quoteCta || "")}</a>`
+        : "";
+      const actions = `<div class="bp-explore__actions">${detailAction(copy, s)}${quoteBtn}</div>`;
 
       if (!isReady) {
         return `<article class="bp-explore__panel bp-explore__panel--soon${active}" role="tabpanel" id="bp-panel-${i}" aria-labelledby="bp-tab-${i}" data-bp-panel="${i}"${hidden}>
@@ -160,7 +171,7 @@ function servicesSection(copy, inquiryHref = "../inquiry/#inquiry") {
       <h2 class="bp-explore__title">${escapeHtml(s.title || copy.comingSoon || "준비중")}</h2>
       <p class="bp-explore__summary">${escapeHtml(s.summary || copy.comingSoonLead || "")}</p>
       <footer class="bp-explore__foot">
-        <div class="bp-explore__price bp-explore__price--empty"></div>
+        ${priceBlock(copy, price)}
         ${actions}
       </footer>
     </article>`;
@@ -178,13 +189,7 @@ function servicesSection(copy, inquiryHref = "../inquiry/#inquiry") {
         <div><dt>${escapeHtml(copy.timeline)}</dt><dd>${escapeHtml(s.timeline)}</dd></div>
       </dl>
       <footer class="bp-explore__foot">
-        ${
-          price
-            ? `<div class="bp-explore__price">${
-                copy.startingAt ? `<span>${escapeHtml(copy.startingAt)}</span>` : ""
-              }<strong>${escapeHtml(price)}</strong></div>`
-            : `<div class="bp-explore__price bp-explore__price--empty"></div>`
-        }
+        ${priceBlock(copy, price)}
         ${actions}
       </footer>
     </article>`;
