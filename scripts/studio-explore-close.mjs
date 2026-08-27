@@ -9,46 +9,46 @@ const LABELS = { brand: "BRAND", digital: "DIGITAL", content: "CONTENT", ip: "IP
 const FAQ = {
   ko: [
     {
-      q: "브랜딩만 따로 의뢰할 수 있나요?",
-      a: "가능합니다. 전략만, 네이밍만, 로고만 등 필요한 범위로 진행할 수 있습니다.",
+      q: "Studio와 Business의 차이는 무엇인가요?",
+      a: "Studio는 Brand · UI/UX · Content · IP 등 전략·디자인·크리에이티브를 담당합니다. Business는 Build · Automation · Research · Solutions로 개발·구축·자동화·리서치를 담당합니다.",
     },
     {
-      q: "디자인만 의뢰할 수 있나요?",
-      a: "가능합니다. UI/UX 설계와 프로토타입까지 범위를 맞춰 진행할 수 있습니다. 개발은 Business BUILD와 연결할 수 있습니다.",
+      q: "웹 디자인을 한 뒤 개발도 맡길 수 있나요?",
+      a: "가능합니다. Studio DIGITAL에서 UI/UX를 설계한 뒤, 실제 구현은 Newon Business BUILD로 연결할 수 있습니다.",
     },
     {
-      q: "콘텐츠·캠페인만 따로 가능한가요?",
-      a: "가능합니다. 소셜, 캠페인, 비주얼 중 필요한 범위로 진행합니다. 기존 브랜드가 있으면 그에 맞춥니다.",
+      q: "브랜딩·콘텐츠만 따로 의뢰할 수 있나요?",
+      a: "가능합니다. 전략, 네이밍, 아이덴티티, 소셜, 캠페인 등 필요한 범위만 진행할 수 있습니다.",
     },
     {
-      q: "IP·캐릭터 프로젝트는 어떻게 시작하나요?",
-      a: "캐릭터 랩 또는 짧은 브리핑으로 방향을 정한 뒤 실험 범위를 설정합니다.",
+      q: "IP·캐릭터도 지금 의뢰할 수 있나요?",
+      a: "Character Lab은 실험적으로 진행할 수 있습니다. Digital Stickers 등은 Coming Soon이며, Newon Character는 내부 프로젝트입니다.",
     },
     {
       q: "결과물은 어떤 형태로 받나요?",
-      a: "브랜드 가이드, 디자인 파일, 채널별 에셋 등 실무에 바로 쓸 수 있는 형태로 전달합니다.",
+      a: "서비스별로 Brand Strategy Document, UI Handoff, Campaign Assets처럼 실제 산출물 이름으로 전달합니다.",
     },
   ],
   en: [
     {
-      q: "Can we hire for branding only?",
-      a: "Yes — strategy, naming, logo, or identity only, scoped to what you need.",
+      q: "How is Studio different from Business?",
+      a: "Studio covers Brand, UI/UX, Content, and IP — strategy, design, and creative. Business covers Build, Automation, Research, and Solutions — development, systems, and research.",
     },
     {
-      q: "Design only?",
-      a: "Yes — UI/UX and prototype scoped to your needs. Build can connect via Business BUILD.",
+      q: "Can design continue into development?",
+      a: "Yes. Studio DIGITAL designs UI/UX; implementation can continue through Newon Business BUILD.",
     },
     {
-      q: "Content or campaigns only?",
-      a: "Yes — social, campaign, or visual scope as needed. We can align to an existing brand.",
+      q: "Can we hire branding or content only?",
+      a: "Yes — strategy, naming, identity, social, campaign, and more, scoped to what you need.",
     },
     {
-      q: "How do IP or character projects start?",
-      a: "Character Lab or a short brief to set direction and experiment scope.",
+      q: "Can we start IP or character work now?",
+      a: "Character Lab can run experimentally. Digital Stickers are Coming Soon, and Newon Character is an internal project.",
     },
     {
       q: "What do we receive?",
-      a: "Brand guides, design files, and channel-ready assets — ready for production use.",
+      a: "Concrete deliverables by service — for example Brand Strategy Document, UI Handoff, or Campaign Assets.",
     },
   ],
 };

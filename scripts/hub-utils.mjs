@@ -168,6 +168,7 @@ export function studioStatusBadge(status, lang = "en") {
     BUILDING: { ko: "Building", en: "Building", cls: "building" },
     TESTING: { ko: "Testing", en: "Testing", cls: "testing" },
     EXPLORING: { ko: "Exploring", en: "Exploring", cls: "exploring" },
+    EXPERIMENTAL: { ko: "Experimental", en: "Experimental", cls: "exploring" },
     COMING_SOON: { ko: "Coming Soon", en: "Coming Soon", cls: "coming-soon" },
     ARCHIVED: { ko: "Archived", en: "Archived", cls: "archived" },
   };

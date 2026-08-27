@@ -124,7 +124,10 @@ function detailAction(copy, s) {
   if (href) {
     return `<a class="bp-btn bp-btn--ghost" href="${escapeHtml(href)}" data-analytics="business_pillar_detail">${escapeHtml(copy.detailCta || "자세히 보기 →")}</a>`;
   }
-  return `<span class="bp-btn bp-btn--soon" aria-disabled="true">${escapeHtml(copy.soonBtn || "준비 중")}</span>`;
+  if (s.ready === false) {
+    return `<span class="bp-btn bp-btn--soon" aria-disabled="true">${escapeHtml(copy.soonBtn || "준비 중")}</span>`;
+  }
+  return "";
 }
 
 function servicesSection(copy, inquiryHref = "../inquiry/#inquiry") {
@@ -154,8 +157,8 @@ function servicesSection(copy, inquiryHref = "../inquiry/#inquiry") {
       if (!isReady) {
         return `<article class="bp-explore__panel bp-explore__panel--soon${active}" role="tabpanel" id="bp-panel-${i}" aria-labelledby="bp-tab-${i}" data-bp-panel="${i}"${hidden}>
       <p class="bp-explore__kicker">${pad2(i + 1)} · ${label}</p>
-      <h2 class="bp-explore__title">${escapeHtml(copy.comingSoon || "준비중")}</h2>
-      <p class="bp-explore__summary">${escapeHtml(copy.comingSoonLead || "")}</p>
+      <h2 class="bp-explore__title">${escapeHtml(s.title || copy.comingSoon || "준비중")}</h2>
+      <p class="bp-explore__summary">${escapeHtml(s.summary || copy.comingSoonLead || "")}</p>
       <footer class="bp-explore__foot">
         <div class="bp-explore__price bp-explore__price--empty"></div>
         ${actions}

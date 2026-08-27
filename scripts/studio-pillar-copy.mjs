@@ -1,8 +1,7 @@
 /**
- * Copy for Studio pillar detail pages: brand / digital / content / ip.
+ * Studio pillar detail copy — short BUILD-style service cards.
+ * Layout/CSS unchanged.
  */
-import { STUDIO_IA } from "./venture-studio-data.mjs";
-
 export const STUDIO_PILLAR_SLUGS = ["brand", "digital", "content", "ip"];
 
 const SHARED = {
@@ -25,7 +24,7 @@ const SHARED = {
     detailCta: "자세히 보기 →",
     soonBtn: "준비 중",
     comingSoon: "준비중",
-    comingSoonLead: "이 서비스 상세는 곧 공개됩니다.",
+    comingSoonLead: "이 영역은 아직 준비 중입니다. 완성된 상용 서비스처럼 제공하지 않습니다.",
     ctaPrimary: "프로젝트 시작하기 →",
     ctaSecondary: "작업 범위 보기 ↓",
   },
@@ -48,246 +47,544 @@ const SHARED = {
     detailCta: "View details →",
     soonBtn: "Coming soon",
     comingSoon: "Coming soon",
-    comingSoonLead: "This service detail will be available shortly.",
+    comingSoonLead: "This area is still in progress — not offered as a finished commercial service yet.",
     ctaPrimary: "Start a project →",
     ctaSecondary: "View scope ↓",
   },
 };
 
-const PILLAR_META = {
+const PILLAR_COPY = {
   brand: {
     ko: {
       seoTitle: "BRAND | Newon Studio",
       metaDescription:
-        "Newon Studio BRAND — 브랜드 전략, 네이밍, 아이덴티티, 로고. 브랜드의 방향과 정체성을 하나의 시스템으로 설계합니다.",
+        "Newon Studio BRAND — 브랜드 전략, 네이밍, 아이덴티티, 로고. 전략부터 하나의 브랜드 시스템으로 연결합니다.",
       eyebrow: "NEWON STUDIO · BRAND",
       headline: "브랜드의 방향과 정체성을 만듭니다.",
-      lead: "브랜드가 어디로 가야 하는지부터 이름, 색, 타이포, 로고까지 — 세상에 보이는 방식을 하나의 방향으로 설계합니다.",
+      lead: "좋은 브랜드는 로고에서 시작하지 않습니다. 전략부터 네이밍, 아이덴티티와 로고까지 하나의 브랜드 시스템으로 연결합니다.",
       process: [
-        { n: "01", t: "DISCOVER", d: "브랜드와 문제 이해" },
-        { n: "02", t: "DEFINE", d: "방향과 핵심 메시지 정의" },
-        { n: "03", t: "DESIGN", d: "정체성과 시각 언어 설계" },
-        { n: "04", t: "DELIVER", d: "실제 사용 가능한 결과물 전달" },
+        { n: "01", t: "DISCOVER", d: "브랜드와 시장 이해" },
+        { n: "02", t: "DEFINE", d: "포지셔닝과 방향 정의" },
+        { n: "03", t: "DESIGN", d: "브랜드 정체성 설계" },
+        { n: "04", t: "DELIVER", d: "브랜드 자산 전달" },
       ],
       faq: [
-        { q: "브랜딩만 따로 의뢰할 수 있나요?", a: "가능합니다. 전략만, 네이밍만, 로고만 등 필요한 범위로 진행할 수 있습니다." },
-        { q: "기존 브랜드를 개선할 수도 있나요?", a: "가능합니다. 현재 브랜드 자산과 목표를 확인한 뒤 개선 범위를 제안합니다." },
-        { q: "결과물은 어떤 형태인가요?", a: "브랜드 가이드, 로고 파일, 컬러·타이포 시스템 등 실무에 바로 쓸 수 있는 형태로 전달합니다." },
-        { q: "제품 개발과 함께할 수 있나요?", a: "가능합니다. 브랜드 설계 후 웹·앱·콘텐츠로 자연스럽게 이어갈 수 있습니다." },
+        { q: "브랜딩만 따로 의뢰할 수 있나요?", a: "가능합니다. 전략, 네이밍, 아이덴티티, 로고 중 필요한 범위만 진행할 수 있습니다." },
+        { q: "기존 브랜드를 개선할 수도 있나요?", a: "가능합니다. 현재 자산과 목표를 확인한 뒤 개선 범위를 제안합니다." },
+        { q: "네이밍의 상표권까지 보장하나요?", a: "아니요. 의미·발음·확장성은 검토하지만 상표 등록은 보장하지 않습니다. 최종 검토는 전문 변리사 확인이 필요합니다." },
+        { q: "웹·앱 개발까지 함께할 수 있나요?", a: "브랜드·UI 설계는 Studio에서, 개발·구축은 Newon Business BUILD로 연결합니다." },
+      ],
+      services: [
+        {
+          title: "BRAND STRATEGY",
+          tab: "STRATEGY",
+          summary: "브랜드의 포지셔닝과 핵심 메시지를 정의합니다.",
+          what: "시장·고객·경쟁을 바탕으로 방향과 메시지를 정리합니다.",
+          for: "브랜드 방향이 필요하거나 기존 브랜드를 정비하고 싶은 팀.",
+          included: "현황 분석 · 타깃 정의 · 포지셔닝 · 핵심 메시지 · 톤앤매너",
+          deliverables: "Brand Strategy Document, Positioning, Tone & Manner Guide",
+          timeline: "보통 1–3주",
+          ready: true,
+        },
+        {
+          title: "NAMING",
+          tab: "NAMING",
+          summary: "기억하기 쉽고 확장 가능한 이름과 네이밍 방향 제작.",
+          what: "브랜드 성격에 맞는 이름 후보와 사용 방향을 만듭니다.",
+          for: "회사·앱·서비스 이름이 필요하거나 이름을 바꾸고 싶은 경우.",
+          included: "네이밍 방향 · 키워드 · 후보 개발 · 의미/발음 검토",
+          deliverables: "Naming Candidates, Rationale, Naming Usage Guide",
+          timeline: "보통 1–2주",
+          ready: true,
+        },
+        {
+          title: "IDENTITY",
+          tab: "IDENTITY",
+          summary: "어디서 보여도 같은 브랜드로 느껴지는 시각 언어 설계.",
+          what: "컬러, 타이포, 그래픽 스타일을 하나의 시스템으로 정리합니다.",
+          for: "브랜드 디자인 기준이 없거나 채널마다 디자인이 달라지는 팀.",
+          included: "Visual Direction · Color · Typography · Graphic Style · 사용 규칙",
+          deliverables: "Visual Identity System, Color & Typography Guide",
+          timeline: "보통 2–4주",
+          ready: true,
+        },
+        {
+          title: "LOGO",
+          tab: "LOGO",
+          summary: "브랜드 성격을 담은 로고와 기본 사용 시스템 제작.",
+          what: "로고 콘셉트를 개발하고 실제 사용 가능한 파일로 정리합니다.",
+          for: "신규 로고가 필요하거나 기존 로고를 개선하고 싶은 경우.",
+          included: "방향 정의 · 콘셉트 · Primary/Secondary · 컬러 버전 · 기본 가이드",
+          deliverables: "Logo Files, Variations, Basic Logo Guide",
+          timeline: "보통 2–3주",
+          ready: true,
+        },
       ],
     },
     en: {
       seoTitle: "BRAND | Newon Studio",
-      metaDescription:
-        "Newon Studio BRAND — strategy, naming, identity, and logo systems that define how your brand shows up.",
+      metaDescription: "Newon Studio BRAND — strategy, naming, identity, and logo as one brand system.",
       eyebrow: "NEWON STUDIO · BRAND",
       headline: "Shape brand direction and identity.",
-      lead: "From where the brand should go to name, color, type, and logo — one coherent system for how you show up.",
+      lead: "A strong brand does not start with a logo. We connect strategy, naming, identity, and logo into one brand system.",
       process: [
-        { n: "01", t: "DISCOVER", d: "Understand brand and problem" },
-        { n: "02", t: "DEFINE", d: "Set direction and core messages" },
-        { n: "03", t: "DESIGN", d: "Design identity and visual language" },
-        { n: "04", t: "DELIVER", d: "Hand over usable deliverables" },
+        { n: "01", t: "DISCOVER", d: "Understand brand and market" },
+        { n: "02", t: "DEFINE", d: "Positioning and direction" },
+        { n: "03", t: "DESIGN", d: "Design brand identity" },
+        { n: "04", t: "DELIVER", d: "Hand over brand assets" },
       ],
       faq: [
-        { q: "Can we hire for branding only?", a: "Yes — strategy, naming, logo, or identity only, scoped to what you need." },
-        { q: "Can you refresh an existing brand?", a: "Yes. We review current assets and goals, then propose an improvement scope." },
-        { q: "What do we receive?", a: "Brand guides, logo files, color and type systems — ready for production use." },
-        { q: "Can this connect to product work?", a: "Yes. Brand can flow into web, app, and content as one direction." },
+        { q: "Can we hire branding only?", a: "Yes — strategy, naming, identity, or logo, scoped to what you need." },
+        { q: "Can you refresh an existing brand?", a: "Yes. We review current assets and goals, then propose scope." },
+        { q: "Do you guarantee trademark clearance?", a: "No. We review meaning and expandability, but final trademark review needs an IP attorney." },
+        { q: "Can this connect to build work?", a: "Design stays in Studio; implementation continues through Newon Business BUILD." },
+      ],
+      services: [
+        {
+          title: "BRAND STRATEGY",
+          tab: "STRATEGY",
+          summary: "Define positioning and core brand messages.",
+          what: "Clarify direction and messaging from market, customer, and competitive context.",
+          for: "Teams that need brand direction or want to refresh an existing brand.",
+          included: "Audit · target · positioning · core message · tone & manner",
+          deliverables: "Brand Strategy Document, Positioning, Tone & Manner Guide",
+          timeline: "Typically 1–3 weeks",
+          ready: true,
+        },
+        {
+          title: "NAMING",
+          tab: "NAMING",
+          summary: "Memorable names and naming direction that can grow with the brand.",
+          what: "Develop name candidates and usage direction that fit brand character.",
+          for: "Teams naming a company, app, or service — or renaming.",
+          included: "Naming direction · keywords · candidates · meaning/pronunciation review",
+          deliverables: "Naming Candidates, Rationale, Naming Usage Guide",
+          timeline: "Typically 1–2 weeks",
+          ready: true,
+        },
+        {
+          title: "IDENTITY",
+          tab: "IDENTITY",
+          summary: "A visual language that feels consistent wherever the brand appears.",
+          what: "Organize color, type, and graphic style into one system.",
+          for: "Teams without brand standards, or brands that look different on every channel.",
+          included: "Visual direction · color · typography · graphic style · usage rules",
+          deliverables: "Visual Identity System, Color & Typography Guide",
+          timeline: "Typically 2–4 weeks",
+          ready: true,
+        },
+        {
+          title: "LOGO",
+          tab: "LOGO",
+          summary: "A logo and basic usage system that express the brand simply.",
+          what: "Develop logo concepts and deliver production-ready files.",
+          for: "New logos, or teams improving an existing mark.",
+          included: "Direction · concepts · primary/secondary · color versions · basic guide",
+          deliverables: "Logo Files, Variations, Basic Logo Guide",
+          timeline: "Typically 2–3 weeks",
+          ready: true,
+        },
       ],
     },
   },
+
   digital: {
     ko: {
       seoTitle: "DIGITAL | Newon Studio",
-      metaDescription:
-        "Newon Studio DIGITAL — 웹 디자인, 앱 UI/UX, 랜딩, 제품 디자인. 브랜드와 서비스를 연결하는 디지털 경험을 설계합니다.",
+      metaDescription: "Newon Studio DIGITAL — 웹, 앱 UI/UX, 랜딩, 제품 디자인. 구조부터 인터페이스까지 설계합니다.",
       eyebrow: "NEWON STUDIO · DIGITAL",
       headline: "웹과 제품 경험을 설계합니다.",
-      lead: "웹사이트, 앱, 랜딩페이지, 제품 인터페이스까지 — 사용자가 실제로 경험하는 디지털 화면을 하나의 흐름으로 만듭니다.",
+      lead: "좋은 디지털 제품은 예쁜 화면만으로 완성되지 않습니다. 정보 구조와 사용자 흐름부터 UI/UX까지 하나의 경험으로 설계합니다.",
       process: [
-        { n: "01", t: "DISCOVER", d: "목표와 사용자 흐름 파악" },
-        { n: "02", t: "DEFINE", d: "정보 구조와 핵심 화면 정의" },
-        { n: "03", t: "DESIGN", d: "UI/UX 및 인터랙션 설계" },
-        { n: "04", t: "HANDOFF", d: "개발·구현을 위한 전달" },
+        { n: "01", t: "DISCOVER", d: "목표와 사용자 이해" },
+        { n: "02", t: "DEFINE", d: "구조와 핵심 흐름 정의" },
+        { n: "03", t: "DESIGN", d: "UI/UX 설계" },
+        { n: "04", t: "PROTOTYPE", d: "프로토타입 검증" },
+        { n: "05", t: "HANDOFF", d: "개발 전달" },
       ],
       faq: [
-        { q: "디자인만 의뢰할 수 있나요?", a: "가능합니다. UI/UX 설계와 프로토타입까지 범위를 맞춰 진행할 수 있습니다." },
-        { q: "개발도 함께 하나요?", a: "Newon Business BUILD와 연결해 설계부터 구현까지 이어갈 수 있습니다." },
-        { q: "기존 제품 개선도 가능한가요?", a: "가능합니다. UX 감사와 화면 개선 범위를 함께 정리합니다." },
-        { q: "반응형·모바일도 포함되나요?", a: "포함됩니다. 사용 환경에 맞는 레이아웃과 컴포넌트를 설계합니다." },
+        { q: "디자인만 의뢰할 수 있나요?", a: "가능합니다. UI/UX와 프로토타입까지 범위를 맞춰 진행합니다." },
+        { q: "개발도 함께 하나요?", a: "Studio는 설계·핸드오프까지입니다. 구현은 Newon Business BUILD로 연결합니다." },
+        { q: "기존 제품 개선도 가능한가요?", a: "가능합니다. 흐름과 화면 구조를 점검한 뒤 개선 범위를 제안합니다." },
+        { q: "반응형·모바일도 포함되나요?", a: "포함됩니다. Desktop/Mobile UI를 함께 설계합니다." },
+      ],
+      services: [
+        {
+          title: "WEB DESIGN",
+          tab: "WEB",
+          summary: "브랜드와 서비스를 명확히 전달하는 웹 경험 설계.",
+          what: "사이트 구조부터 와이어프레임, UI, 반응형까지 설계합니다.",
+          for: "회사·브랜드 사이트가 필요하거나 기존 웹 UX를 개선하고 싶은 팀.",
+          included: "IA · 사용자 흐름 · Wireframe · UI · Responsive · Component",
+          deliverables: "Sitemap, Wireframes, Desktop/Mobile UI, Handoff",
+          timeline: "보통 2–5주",
+          ready: true,
+        },
+        {
+          title: "APP UI/UX",
+          tab: "APP",
+          summary: "앱의 핵심 흐름과 화면 구조를 설계합니다.",
+          what: "User Flow부터 하이파이 UI, 프로토타입, 핸드오프까지 설계합니다.",
+          for: "앱 아이디어를 구체화하거나 MVP·UX 개선이 필요한 팀.",
+          included: "User Flow · IA · Wireframe · UI · Component · Prototype",
+          deliverables: "User Flow, High-fidelity UI, Prototype, Handoff Files",
+          timeline: "보통 3–6주",
+          ready: true,
+        },
+        {
+          title: "LANDING PAGE",
+          tab: "LANDING",
+          summary: "전환을 위한 랜딩페이지 경험 설계.",
+          what: "메시지 구조와 CTA, 섹션·모바일 UI를 설계합니다.",
+          for: "제품 출시, 사전예약, 광고, MVP 수요 검증이 필요한 경우.",
+          included: "메시지 구조 · Conversion Flow · Wireframe · UI · Mobile",
+          deliverables: "Landing Structure, Final UI, CTA System, Handoff",
+          timeline: "보통 1–3주",
+          ready: true,
+        },
+        {
+          title: "PRODUCT DESIGN",
+          tab: "PRODUCT",
+          summary: "제품 전체가 일관된 경험으로 작동하도록 설계.",
+          what: "제품 구조와 UX Flow, UI System, Design System을 맞춥니다.",
+          for: "제품 전체 UX를 정리하거나 디자인 시스템이 필요한 팀.",
+          included: "Product Structure · UX Flow · UI System · Design System · Prototype",
+          deliverables: "Product UX Architecture, UI Design, Design System, Handoff",
+          timeline: "보통 4–8주",
+          ready: true,
+        },
       ],
     },
     en: {
       seoTitle: "DIGITAL | Newon Studio",
-      metaDescription:
-        "Newon Studio DIGITAL — web design, app UI/UX, landing pages, and product design for connected digital experiences.",
+      metaDescription: "Newon Studio DIGITAL — web, app UI/UX, landing, and product design from structure to interface.",
       eyebrow: "NEWON STUDIO · DIGITAL",
       headline: "Design web and product experience.",
-      lead: "Websites, apps, landing pages, and product UI — digital surfaces users actually experience, as one flow.",
+      lead: "A strong digital product is not only beautiful screens. We design from information architecture and flows through UI/UX as one experience.",
       process: [
-        { n: "01", t: "DISCOVER", d: "Goals and user flows" },
-        { n: "02", t: "DEFINE", d: "Structure and key screens" },
-        { n: "03", t: "DESIGN", d: "UI/UX and interaction" },
-        { n: "04", t: "HANDOFF", d: "Ready for build" },
+        { n: "01", t: "DISCOVER", d: "Goals and users" },
+        { n: "02", t: "DEFINE", d: "Structure and key flows" },
+        { n: "03", t: "DESIGN", d: "UI/UX design" },
+        { n: "04", t: "PROTOTYPE", d: "Prototype validation" },
+        { n: "05", t: "HANDOFF", d: "Development handoff" },
       ],
       faq: [
         { q: "Design only?", a: "Yes — UI/UX and prototype scoped to your needs." },
-        { q: "Do you also build?", a: "We can connect to Newon Business BUILD from design through implementation." },
-        { q: "Can you improve an existing product?", a: "Yes — UX review and screen improvements with a clear scope." },
-        { q: "Is responsive/mobile included?", a: "Yes — layouts and components for each environment." },
+        { q: "Do you also build?", a: "Studio covers design through handoff. Implementation continues through Business BUILD." },
+        { q: "Can you improve an existing product?", a: "Yes — we review flows and structure, then propose scope." },
+        { q: "Is responsive/mobile included?", a: "Yes — desktop and mobile UI together." },
+      ],
+      services: [
+        {
+          title: "WEB DESIGN",
+          tab: "WEB",
+          summary: "Web experiences that present brand and service clearly.",
+          what: "From site structure to wireframes, UI, and responsive design.",
+          for: "Teams needing a company/brand site, or improving existing web UX.",
+          included: "IA · flows · wireframe · UI · responsive · components",
+          deliverables: "Sitemap, Wireframes, Desktop/Mobile UI, Handoff",
+          timeline: "Typically 2–5 weeks",
+          ready: true,
+        },
+        {
+          title: "APP UI/UX",
+          tab: "APP",
+          summary: "Flows and screen structure for core app features.",
+          what: "From user flows to high-fidelity UI, prototype, and handoff.",
+          for: "Teams clarifying an app idea, MVP design, or UX improvement.",
+          included: "User flow · IA · wireframe · UI · components · prototype",
+          deliverables: "User Flow, High-fidelity UI, Prototype, Handoff Files",
+          timeline: "Typically 3–6 weeks",
+          ready: true,
+        },
+        {
+          title: "LANDING PAGE",
+          tab: "LANDING",
+          summary: "Landing experiences built for conversion.",
+          what: "Message structure, CTAs, sections, and mobile UI.",
+          for: "Launches, waitlists, ads, or MVP demand validation.",
+          included: "Message structure · conversion flow · wireframe · UI · mobile",
+          deliverables: "Landing Structure, Final UI, CTA System, Handoff",
+          timeline: "Typically 1–3 weeks",
+          ready: true,
+        },
+        {
+          title: "PRODUCT DESIGN",
+          tab: "PRODUCT",
+          summary: "Whole-product experience design — not only screens.",
+          what: "Align product structure, UX flow, UI system, and design system.",
+          for: "Teams organizing full-product UX or needing a design system.",
+          included: "Product structure · UX flow · UI system · design system · prototype",
+          deliverables: "Product UX Architecture, UI Design, Design System, Handoff",
+          timeline: "Typically 4–8 weeks",
+          ready: true,
+        },
       ],
     },
   },
+
   content: {
     ko: {
       seoTitle: "CONTENT | Newon Studio",
-      metaDescription:
-        "Newon Studio CONTENT — 소셜 콘텐츠, 캠페인, 비주얼 에셋. 브랜드를 보여주는 콘텐츠와 비주얼을 기획·제작합니다.",
+      metaDescription: "Newon Studio CONTENT — 소셜 콘텐츠, 캠페인, 비주얼 에셋.",
       eyebrow: "NEWON STUDIO · CONTENT",
-      headline: "브랜드 콘텐츠와 비주얼을 만듭니다.",
-      lead: "소셜 채널, 캠페인, 출시 프로모션에 맞는 메시지와 비주얼을 기획하고 브랜드가 실제로 보이는 형태로 제작합니다.",
+      headline: "브랜드가 실제로 보이고 기억되는 콘텐츠를 만듭니다.",
+      lead: "브랜드 메시지를 SNS, 캠페인, 제품 출시와 디지털 채널에 맞는 콘텐츠로 변환합니다.",
       process: [
-        { n: "01", t: "DISCOVER", d: "채널과 목표 파악" },
+        { n: "01", t: "DISCOVER", d: "브랜드와 채널 이해" },
         { n: "02", t: "DEFINE", d: "메시지와 포맷 정의" },
-        { n: "03", t: "CREATE", d: "비주얼·콘텐츠 제작" },
-        { n: "04", t: "DELIVER", d: "채널별 에셋 전달" },
+        { n: "03", t: "CREATE", d: "콘텐츠와 비주얼 제작" },
+        { n: "04", t: "DELIVER", d: "채널별 파일 전달" },
       ],
       faq: [
         { q: "콘텐츠만 따로 의뢰할 수 있나요?", a: "가능합니다. 소셜, 캠페인, 비주얼 중 필요한 범위로 진행합니다." },
-        { q: "브랜드 작업과 함께해야 하나요?", a: "기존 브랜드가 있으면 그에 맞추고, 없으면 Brand 영역과 함께 진행할 수 있습니다." },
-        { q: "영상·모션도 포함되나요?", a: "범위에 따라 가능합니다. 필요 시 모션·짧은 영상 에셋을 포함할 수 있습니다." },
-        { q: "채널별 포맷도 맞춰주나요?", a: "각 채널 규격에 맞는 크기와 포맷으로 전달합니다." },
+        { q: "브랜드 작업과 함께해야 하나요?", a: "기존 브랜드가 있으면 맞추고, 없으면 Brand와 함께 진행할 수 있습니다." },
+        { q: "모션·영상도 포함되나요?", a: "Simple Motion은 협의 후 가능합니다. 장편 영상은 기본 범위에 없습니다." },
+        { q: "채널별 사이즈도 맞춰주나요?", a: "각 채널 규격에 맞춰 전달합니다." },
+      ],
+      services: [
+        {
+          title: "SOCIAL CONTENT",
+          tab: "SOCIAL",
+          summary: "SNS에서 꾸준히 쓸 수 있는 브랜드 콘텐츠 체계.",
+          what: "콘텐츠 방향, 포맷, 카피·템플릿, 채널 가이드를 만듭니다.",
+          for: "Instagram · TikTok · Shorts 등 브랜드 채널을 운영하려는 팀.",
+          included: "콘텐츠 방향 · Pillar · 포맷 · 카피 방향 · 템플릿 · 채널 가이드",
+          deliverables: "Content Strategy, Social Templates, Channel Guide",
+          timeline: "보통 1–3주",
+          ready: true,
+        },
+        {
+          title: "CAMPAIGN",
+          tab: "CAMPAIGN",
+          summary: "출시·프로모션을 하나의 메시지와 비주얼로 연결.",
+          what: "캠페인 콘셉트, 키 메시지, 키 비주얼, 채널 에셋을 구성합니다.",
+          for: "제품 출시나 프로모션·이벤트 캠페인이 필요한 팀.",
+          included: "Concept · Key Message · Copy · Key Visual · Social Assets",
+          deliverables: "Campaign Concept, Key Visual, Channel Assets, Campaign Guide",
+          timeline: "보통 2–4주",
+          ready: true,
+        },
+        {
+          title: "VISUAL CONTENT",
+          tab: "VISUAL",
+          summary: "웹·SNS·프로모션용 브랜드 비주얼 에셋 제작.",
+          what: "Visual Direction부터 채널별 사이즈 변환까지 제작합니다.",
+          for: "브랜드 비주얼 에셋이 필요하거나 채널용 이미지가 부족한 팀.",
+          included: "Visual Direction · Product/Social Visual · Promo Asset · 사이즈 변환",
+          deliverables: "Digital Visual Assets, Social/Campaign/Web Assets",
+          timeline: "보통 1–3주",
+          ready: true,
+        },
       ],
     },
     en: {
       seoTitle: "CONTENT | Newon Studio",
-      metaDescription:
-        "Newon Studio CONTENT — social content, campaigns, and visual assets that show your brand in the world.",
+      metaDescription: "Newon Studio CONTENT — social content, campaigns, and visual assets.",
       eyebrow: "NEWON STUDIO · CONTENT",
-      headline: "Create brand content and visuals.",
-      lead: "Message and visuals for social, campaigns, and launches — planned and produced so the brand actually shows up.",
+      headline: "Create content that makes the brand visible and memorable.",
+      lead: "We turn brand messages into content for social, campaigns, launches, and digital channels.",
       process: [
-        { n: "01", t: "DISCOVER", d: "Channels and goals" },
-        { n: "02", t: "DEFINE", d: "Message and formats" },
-        { n: "03", t: "CREATE", d: "Visual and content production" },
-        { n: "04", t: "DELIVER", d: "Channel-ready assets" },
+        { n: "01", t: "DISCOVER", d: "Understand brand and channels" },
+        { n: "02", t: "DEFINE", d: "Define message and formats" },
+        { n: "03", t: "CREATE", d: "Produce content and visuals" },
+        { n: "04", t: "DELIVER", d: "Hand over channel-ready files" },
       ],
       faq: [
         { q: "Content only?", a: "Yes — social, campaign, or visual scope as needed." },
         { q: "Must we do brand first?", a: "We can align to an existing brand or run Brand in parallel." },
-        { q: "Motion or video?", a: "Possible by scope — short motion or video assets when needed." },
-        { q: "Channel-specific formats?", a: "Delivered sized and formatted for each channel." },
+        { q: "Is motion included?", a: "Simple motion by agreement. Long-form video is not default scope." },
+        { q: "Channel-specific sizes?", a: "Yes — delivered sized for each channel." },
+      ],
+      services: [
+        {
+          title: "SOCIAL CONTENT",
+          tab: "SOCIAL",
+          summary: "A content system for ongoing social brand presence.",
+          what: "Content direction, formats, copy/templates, and channel guides.",
+          for: "Teams running Instagram, TikTok, Shorts, and similar brand channels.",
+          included: "Direction · pillars · formats · copy direction · templates · channel guide",
+          deliverables: "Content Strategy, Social Templates, Channel Guide",
+          timeline: "Typically 1–3 weeks",
+          ready: true,
+        },
+        {
+          title: "CAMPAIGN",
+          tab: "CAMPAIGN",
+          summary: "Launches and promotions connected by one message and visual.",
+          what: "Campaign concept, key message, key visual, and channel assets.",
+          for: "Teams running product launches, promos, or event campaigns.",
+          included: "Concept · key message · copy · key visual · social assets",
+          deliverables: "Campaign Concept, Key Visual, Channel Assets, Campaign Guide",
+          timeline: "Typically 2–4 weeks",
+          ready: true,
+        },
+        {
+          title: "VISUAL CONTENT",
+          tab: "VISUAL",
+          summary: "Brand visual assets for web, social, and promotions.",
+          what: "From visual direction to channel size variants.",
+          for: "Teams needing brand visuals or more channel-ready imagery.",
+          included: "Visual direction · product/social visual · promo asset · size variants",
+          deliverables: "Digital Visual Assets, Social/Campaign/Web Assets",
+          timeline: "Typically 1–3 weeks",
+          ready: true,
+        },
       ],
     },
   },
+
   ip: {
     ko: {
       seoTitle: "IP | Newon Studio",
-      metaDescription:
-        "Newon Studio IP — 캐릭터 랩, 디지털 스티커, Newon 캐릭터, 실험 IP. 새로운 IP와 캐릭터 가능성을 탐색합니다.",
+      metaDescription: "Newon Studio IP — Character Lab과 실험적 IP. 과장 없이 가능성을 탐색합니다.",
       eyebrow: "NEWON STUDIO · IP",
-      headline: "캐릭터와 새로운 IP를 실험합니다.",
-      lead: "캐릭터 콘셉트부터 디지털 표현, 스티커, 실험적 IP까지 — 아직 정의되지 않은 가능성을 빠르게 형태로 만들어 봅니다.",
+      headline: "캐릭터와 새로운 IP의 가능성을 실험합니다.",
+      lead: "작은 캐릭터 콘셉트에서 시작해 디지털 표현으로 확장될 수 있는 브랜드 자산을 탐색합니다. 아직 본격화되지 않은 항목은 상용 서비스처럼 과장하지 않습니다.",
       process: [
-        { n: "01", t: "EXPLORE", d: "콘셉트와 방향 탐색" },
-        { n: "02", t: "SKETCH", d: "캐릭터·IP 초안 제작" },
-        { n: "03", t: "TEST", d: "표현·포맷 실험" },
-        { n: "04", t: "EXPAND", d: "확장 가능한 IP 형태 정리" },
+        { n: "01", t: "EXPLORE", d: "가능성 탐색" },
+        { n: "02", t: "CONCEPT", d: "콘셉트 정의" },
+        { n: "03", t: "CREATE", d: "형태 제작" },
+        { n: "04", t: "TEST", d: "표현·포맷 실험" },
+        { n: "05", t: "EXPAND", d: "확장 가능성 정리" },
       ],
       faq: [
-        { q: "IP 프로젝트는 어떻게 시작하나요?", a: "캐릭터 랩 또는 짧은 브리핑으로 방향을 정한 뒤 실험 범위를 설정합니다." },
-        { q: "상업적 이용이 가능한가요?", a: "범위와 라이선스는 프로젝트별로 협의합니다." },
-        { q: "스티커·굿즈까지 가능한가요?", a: "디지털 스티커 등은 준비 중이며, 범위에 따라 확장 가능합니다." },
-        { q: "Character Lab과의 관계는?", a: "Character Lab은 Newon IP 실험 공간입니다. 랩 페이지에서 진행 중인 실험을 볼 수 있습니다." },
+        { q: "IP 프로젝트는 어떻게 시작하나요?", a: "Character Lab 또는 짧은 브리핑으로 실험 범위를 정합니다." },
+        { q: "Digital Stickers는 지금 의뢰할 수 있나요?", a: "Coming Soon입니다. 판매·운영 중인 서비스가 아닙니다." },
+        { q: "Newon Character는 외주 서비스인가요?", a: "아니요. Newon 자체 브랜드를 위한 내부 프로젝트입니다." },
+        { q: "Experimental IP도 구매할 수 있나요?", a: "아니요. 탐색 영역이며 완성된 상용 서비스로 판매하지 않습니다." },
+      ],
+      services: [
+        {
+          title: "CHARACTER LAB",
+          tab: "CHAR LAB",
+          summary: "캐릭터 콘셉트와 비주얼 방향을 빠르게 실험합니다.",
+          what: "성격·세계관·비주얼 방향을 만들고 IP 가능성을 테스트합니다.",
+          for: "캐릭터 IP의 첫 형태를 빠르게 보고 싶은 팀.",
+          included: "Character Concept · Personality · Visual Direction · Expression Study",
+          deliverables: "Concept Sheet, Visual Direction, Expression Set, Basic IP Guide",
+          timeline: "보통 2–4주",
+          ready: true,
+          href: "../../resources/labs/character-lab/",
+        },
+        {
+          title: "DIGITAL STICKERS",
+          tab: "STICKERS",
+          summary: "캐릭터 감정을 디지털 표현으로 확장하는 영역. 현재 준비 중.",
+          what: "",
+          for: "",
+          included: "",
+          deliverables: "",
+          timeline: "",
+          ready: false,
+        },
+        {
+          title: "NEWON CHARACTER",
+          tab: "NEWON",
+          summary: "Newon 자체 브랜드용 캐릭터 IP 내부 프로젝트. 외부 의뢰 서비스가 아닙니다.",
+          what: "",
+          for: "",
+          included: "",
+          deliverables: "",
+          timeline: "",
+          ready: false,
+        },
+        {
+          title: "EXPERIMENTAL IP",
+          tab: "EXPLORE",
+          summary: "새로운 IP 형태를 실험하는 탐색 영역. 상용 서비스로 판매하지 않습니다.",
+          what: "",
+          for: "",
+          included: "",
+          deliverables: "",
+          timeline: "",
+          ready: false,
+        },
       ],
     },
     en: {
       seoTitle: "IP | Newon Studio",
-      metaDescription:
-        "Newon Studio IP — character lab, digital stickers, Newon characters, and experimental IP explorations.",
+      metaDescription: "Newon Studio IP — Character Lab and experimental IP without overselling unfinished areas.",
       eyebrow: "NEWON STUDIO · IP",
-      headline: "Experiment with characters and new IP.",
-      lead: "From character concepts to digital expression, stickers, and experimental IP — we shape possibilities still being defined.",
+      headline: "Experiment with characters and new IP possibilities.",
+      lead: "We explore brand assets that can grow from small character concepts into digital expression. Unfinished areas are not presented as commercial services.",
       process: [
-        { n: "01", t: "EXPLORE", d: "Concept and direction" },
-        { n: "02", t: "SKETCH", d: "Character and IP drafts" },
-        { n: "03", t: "TEST", d: "Format experiments" },
-        { n: "04", t: "EXPAND", d: "Expandable IP form" },
+        { n: "01", t: "EXPLORE", d: "Explore possibilities" },
+        { n: "02", t: "CONCEPT", d: "Define the concept" },
+        { n: "03", t: "CREATE", d: "Create early forms" },
+        { n: "04", t: "TEST", d: "Test expression and formats" },
+        { n: "05", t: "EXPAND", d: "Map expansion paths" },
       ],
       faq: [
-        { q: "How do IP projects start?", a: "Character Lab or a short brief to set direction and experiment scope." },
-        { q: "Commercial use?", a: "Scope and licensing are agreed per project." },
-        { q: "Stickers or goods?", a: "Digital stickers are in progress; expansion by scope." },
-        { q: "What is Character Lab?", a: "Newon's IP experiment space — see ongoing work on the lab page." },
+        { q: "How do IP projects start?", a: "Character Lab or a short brief to set experiment scope." },
+        { q: "Can we order Digital Stickers now?", a: "Coming Soon — not sold or operated as a live service." },
+        { q: "Is Newon Character a client service?", a: "No. It is an internal Newon brand IP project." },
+        { q: "Can we buy Experimental IP?", a: "No. It is an exploration area, not a finished commercial service." },
+      ],
+      services: [
+        {
+          title: "CHARACTER LAB",
+          tab: "CHAR LAB",
+          summary: "Quick experiments in character concept and visual direction.",
+          what: "Shape personality, world, and visuals — then test IP potential.",
+          for: "Teams that want an early character IP form quickly.",
+          included: "Character concept · personality · visual direction · expression study",
+          deliverables: "Concept Sheet, Visual Direction, Expression Set, Basic IP Guide",
+          timeline: "Typically 2–4 weeks",
+          ready: true,
+          href: "../../resources/labs/character-lab/",
+        },
+        {
+          title: "DIGITAL STICKERS",
+          tab: "STICKERS",
+          summary: "Extending character emotion into digital expressions. Coming soon.",
+          what: "",
+          for: "",
+          included: "",
+          deliverables: "",
+          timeline: "",
+          ready: false,
+        },
+        {
+          title: "NEWON CHARACTER",
+          tab: "NEWON",
+          summary: "Internal Newon brand character IP project — not a client service.",
+          what: "",
+          for: "",
+          included: "",
+          deliverables: "",
+          timeline: "",
+          ready: false,
+        },
+        {
+          title: "EXPERIMENTAL IP",
+          tab: "EXPLORE",
+          summary: "An exploration area for new IP forms — not sold as a commercial service.",
+          what: "",
+          for: "",
+          included: "",
+          deliverables: "",
+          timeline: "",
+          ready: false,
+        },
       ],
     },
   },
 };
 
-function shortTab(title) {
-  const t = String(title || "");
-  if (t.length <= 12) return t.toUpperCase();
-  return t.split(/\s+/)[0].toUpperCase();
-}
-
-function hrefFromStudioPillar(href) {
-  if (!href) return "";
-  if (href.startsWith("#")) return href;
-  if (href.startsWith("resources/")) return `../../${href}`;
-  if (href.startsWith("business/")) return `../../${href}`;
-  if (href.startsWith("studio/")) return `../${href.slice("studio/".length)}`;
-  return `../../${href}`;
-}
-
-function servicesFromIA(col, lang) {
-  return (col.items || []).map((it) => {
-    const title = lang === "ko" && it.titleKo ? it.titleKo : it.title;
-    const desc = lang === "ko" ? it.desc || it.descEn : it.descEn || it.desc || "";
-    const ready = !it.status || it.status === "OPERATING" || it.status === "LIVE";
-    const genericFor =
-      lang === "ko"
-        ? "브랜드·제품·콘텐츠가 하나의 방향으로 보이길 원하는 팀."
-        : "Teams that want brand, product, and content aligned in one direction.";
-    return {
-      title: title.toUpperCase(),
-      tab: shortTab(title),
-      href: hrefFromStudioPillar(it.href),
-      summary: desc,
-      what: desc,
-      for: genericFor,
-      included:
-        lang === "ko"
-          ? "방향 정리 · 핵심 산출물 · 실무 활용 가이드"
-          : "Direction · core deliverables · practical usage guide",
-      deliverables:
-        lang === "ko" ? "설계 문서, 시각 에셋, 전달 파일" : "Briefs, visual assets, delivery files",
-      timeline: lang === "ko" ? "범위에 따라 1–4주" : "Typically 1–4 weeks by scope",
-      ready,
-    };
-  });
-}
-
-function headlineFromIA(col, lang) {
-  const meta = PILLAR_META[col.id];
-  if (meta?.[lang]?.headline) return meta[lang].headline;
-  return col.labelFb || col.id.toUpperCase();
-}
-
 export function getStudioPillarCopy(slug, lang) {
-  const col = STUDIO_IA.find((c) => c.id === slug);
-  const meta = PILLAR_META[slug];
-  if (!col || !meta) return null;
+  const pack = PILLAR_COPY[slug];
+  if (!pack) return null;
   const pageLang = lang === "ko" ? "ko" : "en";
   const shared = SHARED[pageLang];
-  const local = meta[pageLang] || meta.en;
+  const local = pack[pageLang] || pack.en;
   return {
     ...shared,
     ...local,
     slug,
     _pageLang: pageLang,
     crumbBusiness: shared.crumbStudio,
-    services: servicesFromIA(col, pageLang),
-    headline: local.headline || headlineFromIA(col, pageLang),
+    services: (local.services || []).map((s) => ({ ...s })),
+    headline: local.headline,
   };
 }
