@@ -3,6 +3,7 @@
  * White canvas, editorial product sections, no duplicate process blocks.
  */
 import { APP_CATALOG } from "./portfolio-data.mjs";
+import { APPS_SHOWCASE_META } from "./apps-showcase-data.mjs";
 import { escapeHtml, pick } from "./hub-utils.mjs";
 
 function t(flat, flatEn, key, fb = "") {
@@ -30,31 +31,79 @@ function statusBadge(flat, flatEn, kind) {
   return `<span class="ai-status is-soon">${t(flat, flatEn, "studio.aiStatusSoon", "COMING SOON")}</span>`;
 }
 
-function processVisual(flat, flatEn) {
-  return `<aside class="ai-process" data-ai-process aria-label="${t(flat, flatEn, "studio.aiProcessAria", "AI process")}">
-    <div class="ai-process__step" data-process-step>
-      <span>INPUT</span>
-      <strong>Customer Reviews</strong>
-      <em>2,481 inputs</em>
-    </div>
-    <div class="ai-process__arrow" aria-hidden="true">↓</div>
-    <div class="ai-process__step" data-process-step>
-      <span>UNDERSTAND</span>
-      <strong>Product · Market · Users</strong>
-    </div>
-    <div class="ai-process__arrow" aria-hidden="true">↓</div>
-    <div class="ai-process__step" data-process-step>
-      <span>ANALYZE</span>
-      <div class="ai-process__metrics">
-        <p><em>Sentiment</em><b>78%</b></p>
-        <p><em>Requests</em><b>342</b></p>
+function pad2(n) {
+  return String(n).padStart(2, "0");
+}
+
+function demoBadge(flat, flatEn) {
+  return `<span class="ai-demo-badge">${t(flat, flatEn, "studio.aiDemoData", "SAMPLE DATA")}</span>`;
+}
+
+function heroProcessVisual(flat, flatEn) {
+  const flowSteps = [
+    { k: "INPUT", t: "Customer Reviews" },
+    { k: "UNDERSTAND", t: "Product · Market · Users" },
+    { k: "ANALYZE", t: "Sentiment · Requests" },
+    { k: "OUTPUT", t: t(flat, flatEn, "studio.aiProcessAction", "Priority Insight"), out: true },
+  ];
+  const flow = flowSteps
+    .map((step, i) => {
+      const conn = i < flowSteps.length - 1 ? `<li class="ai-hero-panel__conn" aria-hidden="true"></li>` : "";
+      return `<li class="ai-hero-panel__flow-step${step.out ? " ai-hero-panel__flow-step--out" : ""}" data-process-step>
+        <span class="ai-hero-panel__flow-n">${pad2(i + 1)}</span>
+        <span class="ai-hero-panel__flow-k">${step.k}</span>
+        <strong>${escapeHtml(step.t)}</strong>
+      </li>${conn}`;
+    })
+    .join("");
+
+  return `<aside class="ai-hero-panel" data-ai-process aria-label="${t(flat, flatEn, "studio.aiProcessAria", "AI process")}">
+    <div class="ai-hero-panel__head">
+      <div class="ai-hero-panel__head-copy">
+        <p class="ai-hero-panel__title">${t(flat, flatEn, "studio.aiProcessTitle", "AI Pipeline")}</p>
+        <p class="ai-hero-panel__sub">${t(flat, flatEn, "studio.aiHeroPanelLabel", "AI you can actually use")}</p>
+      </div>
+      <div class="ai-hero-panel__head-meta">
+        <span class="ai-hero-panel__live" aria-hidden="true"><i></i>DEMO</span>
+        ${demoBadge(flat, flatEn)}
       </div>
     </div>
-    <div class="ai-process__arrow" aria-hidden="true">↓</div>
-    <div class="ai-process__step ai-process__step--out" data-process-step>
-      <span>OUTPUT</span>
-      <strong>${t(flat, flatEn, "studio.aiProcessAction", "Priority Insight")}</strong>
+    <ol class="ai-hero-panel__flow">${flow}</ol>
+    <div class="ai-hero-panel__body">
+      <div class="ai-hero-panel__stat">
+        <strong>2,481</strong>
+        <span>REVIEWS · ${t(flat, flatEn, "studio.aiDemoData", "SAMPLE")}</span>
+        <div class="ai-hero-panel__sources" aria-hidden="true">
+          <em>App Store</em><em>Play Store</em><em>Support</em>
+        </div>
+      </div>
+      <div class="ai-hero-panel__feed" aria-hidden="true">
+        <p class="ai-hero-panel__feed-item"><i>★★★★★</i> “Love the daily stats — just wish dark mode was default.”</p>
+        <p class="ai-hero-panel__feed-item"><i>★★★☆☆</i> “Widget would save me opening the app every morning.”</p>
+      </div>
+      <div class="ai-hero-panel__grid">
+        <div class="ai-hero-panel__chart">
+          <p class="ai-hero-panel__label">Sentiment</p>
+          <div class="ai-hero-panel__bar"><span>Positive</span><i style="--w:68%"></i><b>68%</b></div>
+          <div class="ai-hero-panel__bar"><span>Neutral</span><i style="--w:19%"></i><b>19%</b></div>
+          <div class="ai-hero-panel__bar"><span>Negative</span><i style="--w:13%"></i><b>13%</b></div>
+        </div>
+        <div class="ai-hero-panel__requests">
+          <p class="ai-hero-panel__label">Top requests</p>
+          <ul>
+            <li><span>01</span> Dark mode <em>342</em></li>
+            <li><span>02</span> Widget <em>218</em></li>
+            <li><span>03</span> CSV Export <em>164</em></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ai-hero-panel__insight">
+        <p class="ai-hero-panel__label">AI Insight</p>
+        <p class="ai-hero-panel__quote">“Users frequently request faster access to daily statistics.”</p>
+        <p class="ai-hero-panel__trend"><span>Trend · 7d</span><strong>+18.4%</strong></p>
+      </div>
     </div>
+    <p class="ai-hero-panel__note">${t(flat, flatEn, "studio.aiDemoNote", "Interactive product concept — not live data.")}</p>
   </aside>`;
 }
 
@@ -216,56 +265,65 @@ function earlyAccessForm(flat, flatEn) {
   </section>`;
 }
 
-function appsCapabilityMap(flat, flatEn, lang) {
+function appsInsideGrid(flat, flatEn, lang) {
   const isKo = (lang?.dir || lang) === "ko";
-  const items = AI_IN_APPS.map((row) => {
+  const viewLabel = t(flat, flatEn, "studio.aiInsideViewProduct", "VIEW PRODUCT");
+  const cards = AI_IN_APPS.map((row) => {
     const app = appBySlug(row.slug);
     if (!app) return "";
+    const meta = APPS_SHOWCASE_META[row.slug] || {};
     const cap = isKo ? row.capabilityKo : row.capabilityEn;
-    return `<a class="ai-chip" href="../${escapeHtml(app.homeHash)}">
-      <img src="${escapeHtml(app.icon)}" alt="" width="36" height="36" loading="lazy" decoding="async" />
-      <span>
-        <strong>${escapeHtml(row.name)}</strong>
-        <em>${escapeHtml(cap)}</em>
-      </span>
+    const desc = isKo ? meta.taglineKo || cap : meta.taglineEn || cap;
+    const name = row.name || app.name;
+    const href = `../portfolio/${row.slug}/`;
+    return `<a class="ai-app-card" href="${escapeHtml(href)}" aria-label="${escapeHtml(name)} — ${escapeHtml(viewLabel)}">
+      <img class="ai-app-card__icon" src="${escapeHtml(app.icon)}" alt="" width="48" height="48" loading="lazy" decoding="async" />
+      <div class="ai-app-card__body">
+        <h3 class="ai-app-card__name">${escapeHtml(name)}</h3>
+        <p class="ai-app-card__feat">${escapeHtml(cap)}</p>
+        <p class="ai-app-card__desc">${escapeHtml(desc)}</p>
+        <span class="ai-app-card__cta">${viewLabel} →</span>
+      </div>
     </a>`;
   }).join("\n");
 
-  return `<div class="ai-chips" aria-label="${t(flat, flatEn, "studio.aiInsideAria", "AI inside Newon apps")}">${items}</div>`;
+  return `<div class="ai-app-grid" aria-label="${t(flat, flatEn, "studio.aiInsideAria", "AI inside Newon apps")}">${cards}</div>`;
 }
 
 export function renderAiShowcaseBody(flat, flatEn, lang) {
-  const appsCount = String(AI_IN_APPS.length);
+  const appsCount = "11+";
 
   return `<div class="ai-page" data-ai-page>
-  <section class="ai-hero" data-ai-reveal>
-    <div class="ai-hero__inner hub-inner">
-      <div class="ai-hero__copy">
-        <p class="ai-hero__eyebrow">${t(flat, flatEn, "studio.aiHeroLabel", "NEWON AI")}</p>
-        <h1 class="ai-hero__title">${t(flat, flatEn, "studio.aiHeroTitle", "AI를 기능이 아니라\n실제 사용할 수 있는\n제품으로 만듭니다.")}</h1>
-        <p class="ai-hero__lead">${t(flat, flatEn, "studio.aiHeroLead", "분석, 콘텐츠, 제품 기획, 고객 지원까지.\nNewon은 AI를 실제 업무와 제품에 연결합니다.")}</p>
-        <div class="ai-hero__actions">
-          <a class="btn btn-primary" href="#ai-products">${t(flat, flatEn, "studio.aiCtaBrowse", "AI Products")} ↓</a>
-          <a class="btn btn-ghost" href="../business/#inquiry" data-analytics="business_cta_click">${t(flat, flatEn, "studio.aiCta", "AI 프로젝트 문의하기")} →</a>
+  <section class="ai-hero ai-hero--fold" data-ai-reveal>
+    <div class="ai-hero__bg" aria-hidden="true"></div>
+    <div class="ai-hero__stage hub-inner">
+      <div class="ai-hero__main">
+        <div class="ai-hero__copy">
+          <p class="ai-hero__eyebrow">${t(flat, flatEn, "studio.aiHeroLabel", "NEWON AI")}</p>
+          <h1 class="ai-hero__title">${t(flat, flatEn, "studio.aiHeroTitle", "AI를 기능이 아니라\n실제 사용할 수 있는\n제품으로 만듭니다.")}</h1>
+          <p class="ai-hero__lead">${t(flat, flatEn, "studio.aiHeroLead", "분석, 콘텐츠, 제품 기획, 고객 지원까지.\nNewon은 AI를 실제 업무와 제품에 연결합니다.")}</p>
+          <div class="ai-hero__actions">
+            <a class="btn btn-primary ai-hero__btn-primary" href="#ai-products">${t(flat, flatEn, "studio.aiCtaBrowse", "AI Products")} ↓</a>
+            <a class="btn btn-ghost ai-hero__btn-ghost" href="#ai-early-access">${t(flat, flatEn, "studio.aiHeroEaCta", "Early Access 신청")} →</a>
+          </div>
+          <ul class="ai-hero__trust">
+            <li><i aria-hidden="true"></i>${t(flat, flatEn, "studio.aiTrust1", "AI-FIRST")}</li>
+            <li><i aria-hidden="true"></i>${t(flat, flatEn, "studio.aiTrust2", "REAL USE")}</li>
+            <li><i aria-hidden="true"></i>${t(flat, flatEn, "studio.aiTrust3", "BUILT BY NEWON")}</li>
+          </ul>
         </div>
-        <ul class="ai-hero__trust">
-          <li><i aria-hidden="true"></i>${t(flat, flatEn, "studio.aiTrust1", "AI-FIRST")}</li>
-          <li><i aria-hidden="true"></i>${t(flat, flatEn, "studio.aiTrust2", "REAL USE")}</li>
-          <li><i aria-hidden="true"></i>${t(flat, flatEn, "studio.aiTrust3", "BUILT BY NEWON")}</li>
-        </ul>
+        ${heroProcessVisual(flat, flatEn)}
       </div>
-      ${processVisual(flat, flatEn)}
-    </div>
-  </section>
-
-  <section class="ai-proof" data-ai-reveal aria-label="${t(flat, flatEn, "studio.aiStatsAria", "AI overview")}">
-    <div class="hub-inner">
-      <ul class="ai-proof__list">
-        <li><strong>04</strong> ${t(flat, flatEn, "studio.aiStatProducts", "AI Products")}</li>
-        <li><strong>${escapeHtml(appsCount)}</strong> ${t(flat, flatEn, "studio.aiStatApps", "AI-enabled Apps")}</li>
-        <li>${t(flat, flatEn, "studio.aiStatFocusValue", "Product First")}</li>
-        <li>${t(flat, flatEn, "studio.aiStatBiz", "Built for Real Use")}</li>
+      <ul class="ai-hero__stats" aria-label="${t(flat, flatEn, "studio.aiStatsAria", "AI overview")}">
+        <li class="ai-hero__stat">
+          <strong>04</strong>
+          <span>${t(flat, flatEn, "studio.aiStatProducts", "AI Products")}<em>${t(flat, flatEn, "studio.aiStatProductsSub", "IN DEVELOPMENT")}</em></span>
+        </li>
+        <li class="ai-hero__stat"><strong>${escapeHtml(appsCount)}</strong> <span>${t(flat, flatEn, "studio.aiStatApps", "AI-enabled Apps")}</span></li>
+        <li class="ai-hero__stat ai-hero__stat--text"><span>${t(flat, flatEn, "studio.aiStatFocusValue", "Product First")}</span></li>
+        <li class="ai-hero__stat ai-hero__stat--text"><span>${t(flat, flatEn, "studio.aiStatBiz", "Built for Real Use")}</span></li>
       </ul>
+      <a class="ai-hero__scroll" href="#ai-products"><span>${t(flat, flatEn, "studio.aiCtaBrowse", "AI Products")}</span><i aria-hidden="true">↓</i></a>
     </div>
   </section>
 
@@ -427,10 +485,9 @@ export function renderAiShowcaseBody(flat, flatEn, lang) {
       <header class="ai-section-head">
         <p class="ai-section-head__eyebrow">${t(flat, flatEn, "studio.aiInsideLabel", "AI INSIDE NEWON")}</p>
         <h2 class="ai-section-head__title">${t(flat, flatEn, "studio.aiInsideTitle", "AI는 별도의 기능이 아니라\n제품 안에서 작동합니다.")}</h2>
-        <p class="ai-section-head__lead">${t(flat, flatEn, "studio.aiFeaturesLead", "습관, 금융, 가족, 여행 앱 안에서 이미 AI가 동작합니다.")}</p>
+        <p class="ai-section-head__lead">${t(flat, flatEn, "studio.aiInsideLead", "Newon 자체 앱에 적용된 AI 경험입니다.")}</p>
       </header>
-      ${appsCapabilityMap(flat, flatEn, lang)}
-      <p class="ai-inside__cta"><a class="btn btn-ghost" href="../apps/">${t(flat, flatEn, "studio.aiFeaturesCta", "앱 둘러보기")} →</a></p>
+      ${appsInsideGrid(flat, flatEn, lang)}
     </div>
   </section>
 

@@ -41,7 +41,7 @@ html[data-newon-shell-theme="dark"] .bz-page--ed {
 .bz-page--ed .bz-lead {
   margin: 1rem 0 0;
   max-width: 36rem;
-  font-size: 1.05rem;
+  font-size: 1.125rem;
   line-height: 1.65;
   color: var(--bz-muted);
   word-break: keep-all;
@@ -49,7 +49,7 @@ html[data-newon-shell-theme="dark"] .bz-page--ed {
 
 .bz-ed__k {
   margin: 0 0 1rem;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -66,7 +66,7 @@ html[data-newon-shell-theme="dark"] .bz-page--ed {
   align-items: center;
   min-height: 44px;
   margin-top: 1.5rem;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -129,7 +129,7 @@ html[data-newon-shell-theme="dark"] .bz-page--ed {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem 0.85rem;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -145,7 +145,7 @@ html[data-newon-shell-theme="dark"] .bz-page--ed {
 .bz-hero--ed .bz-hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.875rem;
   margin-top: 2rem;
 }
 
@@ -155,7 +155,7 @@ html[data-newon-shell-theme="dark"] .bz-page--ed {
   justify-content: center;
   min-height: 48px;
   padding: 0 1.25rem;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
@@ -215,7 +215,7 @@ html[data-newon-shell-theme="dark"] .bz-hero__btn--primary:hover {
 .bz-sidx__count {
   margin: 0;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
@@ -242,7 +242,7 @@ html[data-newon-shell-theme="dark"] .bz-hero__btn--primary:hover {
 .bz-sidx__item {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 0.75rem;
+  gap: 0.875rem;
   align-items: center;
   padding: 0.95rem 0;
   border-top: 1px solid var(--bz-line);
@@ -254,7 +254,7 @@ html[data-newon-shell-theme="dark"] .bz-hero__btn--primary:hover {
 
 .bz-sidx__n {
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: var(--bz-soft);
 }
@@ -300,20 +300,20 @@ html[data-newon-shell-theme="dark"] .bz-hero__btn--primary:hover {
 .bz-ed__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem 1.25rem;
+  gap: 0.875rem 1.25rem;
   align-items: baseline;
   margin-bottom: 1.5rem;
 }
 
 .bz-ed__num {
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
 
 .bz-ed__cat {
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--bz-soft);
@@ -374,7 +374,7 @@ html[data-newon-shell-theme="dark"] .bz-hero__btn--primary:hover {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.45rem 1rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 550;
 }
 
@@ -436,7 +436,7 @@ html[data-newon-shell-theme="dark"] .bz-ed.is-ink .bz-ed__cta {
   margin: 0;
   padding: 0;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.1em;
 }
@@ -459,7 +459,7 @@ html[data-newon-shell-theme="dark"] .bz-ed.is-ink .bz-ed__cta {
 .bz-pipe--h {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 0.75rem;
+  gap: 0.5rem 0.875rem;
   align-items: center;
 }
 
@@ -530,7 +530,7 @@ html[data-newon-shell-theme="dark"] .bz-ed.is-ink .bz-ed__cta {
 
 .bz-ba__label {
   margin: 0 0 0.65rem;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -543,7 +543,7 @@ html[data-newon-shell-theme="dark"] .bz-ed.is-ink .bz-ed__cta {
   padding: 0;
   display: grid;
   gap: 0.35rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .bz-ba__arrow {
@@ -575,7 +575,7 @@ html[data-newon-shell-theme="dark"] .bz-ed.is-ink .bz-ed__cta {
   display: grid;
   gap: 0.45rem;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.1em;
 }
@@ -604,7 +604,7 @@ html[data-newon-shell-theme="dark"] .bz-ed.is-ink .bz-ed__cta {
 .bz-ind__item {
   display: grid;
   grid-template-columns: auto auto 1fr;
-  gap: 0.75rem 1.25rem;
+  gap: 0.875rem 1.25rem;
   align-items: baseline;
   padding: 1.15rem 0;
   border-bottom: 1px solid var(--bz-line);
@@ -620,21 +620,21 @@ html[data-newon-shell-theme="dark"] .bz-ed.is-ink .bz-ed__cta {
 .bz-ind__n,
 .bz-ind__en {
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--bz-soft);
 }
 
 .bz-ind__ko {
-  font-size: 1.05rem;
+  font-size: 1.125rem;
   font-weight: 650;
   letter-spacing: -0.02em;
 }
 
 .bz-ind__tip {
   grid-column: 1 / -1;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--bz-muted);
   opacity: 0;
   max-height: 0;
@@ -691,13 +691,13 @@ html[data-newon-shell-theme="dark"] .bz-ed.is-ink .bz-ed__cta {
   display: block;
   margin-bottom: 1rem;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: var(--bz-soft);
 }
 
 .bz-why__grid h3 {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.875rem;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -706,7 +706,7 @@ html[data-newon-shell-theme="dark"] .bz-ed.is-ink .bz-ed__cta {
 
 .bz-why__grid p {
   margin: 0;
-  font-size: 0.975rem;
+  font-size: 1.0625rem;
   line-height: 1.6;
   color: var(--bz-muted);
   word-break: keep-all;
@@ -724,7 +724,7 @@ html[data-newon-shell-theme="dark"] .bz-ed.is-ink .bz-ed__cta {
 @media (min-width: 960px) {
   .bz-how__track {
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 0.75rem;
+    gap: 0.875rem;
   }
 }
 
@@ -736,9 +736,9 @@ html[data-newon-shell-theme="dark"] .bz-ed.is-ink .bz-ed__cta {
 
 .bz-how__n {
   display: block;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.875rem;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: var(--bz-soft);
 }
@@ -804,7 +804,7 @@ html[data-newon-shell-theme="dark"] .bz-port__panel {
 
 .bz-port__panel-k {
   margin: 0;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   opacity: 0.55;
@@ -830,7 +830,7 @@ html[data-newon-shell-theme="dark"] .bz-port__panel {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 0.85rem;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   opacity: 0.55;
@@ -838,7 +838,7 @@ html[data-newon-shell-theme="dark"] .bz-port__panel {
 }
 
 .bz-port__go {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -883,7 +883,7 @@ html[data-newon-shell-theme="dark"] .bz-port__panel {
 
 .bz-start__n {
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: var(--bz-soft);
 }
@@ -902,7 +902,7 @@ html[data-newon-shell-theme="dark"] .bz-port__panel {
   list-style: none;
   cursor: pointer;
   padding: 1.15rem 2rem 1.15rem 0;
-  font-size: 1.05rem;
+  font-size: 1.125rem;
   font-weight: 650;
   letter-spacing: -0.02em;
   position: relative;
@@ -930,7 +930,7 @@ html[data-newon-shell-theme="dark"] .bz-port__panel {
 .bz-faq__item p {
   margin: 0 0 1.35rem;
   max-width: 40rem;
-  font-size: 0.975rem;
+  font-size: 1.0625rem;
   line-height: 1.65;
   color: var(--bz-muted);
   word-break: keep-all;
@@ -961,7 +961,7 @@ html[data-newon-shell-theme="dark"] .bz-close {
 .bz-close__lead {
   margin: 1.25rem 0 0;
   max-width: 34rem;
-  font-size: 1.05rem;
+  font-size: 1.125rem;
   line-height: 1.65;
   opacity: 0.7;
   word-break: keep-all;
@@ -983,7 +983,7 @@ html[data-newon-shell-theme="dark"] .bz-close {
   background: #ffffff;
   color: #0a0a0a;
   text-decoration: none;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;

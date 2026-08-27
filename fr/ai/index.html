@@ -34,7 +34,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css?v=20260825premium" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
-    <link rel="stylesheet" href="/ai-hub.css?v=20260825ai7" />
+    <link rel="stylesheet" href="/ai-hub.css?v=20260827ai7" />
     <script src="/theme-shell.js"></script>
     <script src="/lang-nav.js?v=20260825studio"></script>
     <script src="/analytics.js?v=20260825studio" defer></script>
@@ -331,60 +331,101 @@
     </header>
     <main id="hub-main" class="hub-page">
       <div class="ai-page" data-ai-page>
-  <section class="ai-hero" data-ai-reveal>
-    <div class="ai-hero__inner hub-inner">
-      <div class="ai-hero__copy">
-        <p class="ai-hero__eyebrow">NEWON AI</p>
-        <h1 class="ai-hero__title">AI as products you can
+  <section class="ai-hero ai-hero--fold" data-ai-reveal>
+    <div class="ai-hero__bg" aria-hidden="true"></div>
+    <div class="ai-hero__stage hub-inner">
+      <div class="ai-hero__main">
+        <div class="ai-hero__copy">
+          <p class="ai-hero__eyebrow">NEWON AI</p>
+          <h1 class="ai-hero__title">AI as products you can
 actually use.</h1>
-        <p class="ai-hero__lead">Analysis, content, product planning, and support.
+          <p class="ai-hero__lead">Analysis, content, product planning, and support.
 Newon connects AI to real work and products.</p>
-        <div class="ai-hero__actions">
-          <a class="btn btn-primary" href="#ai-products">AI Products ↓</a>
-          <a class="btn btn-ghost" href="../business/#inquiry" data-analytics="business_cta_click">AI 프로젝트 문의하기 →</a>
+          <div class="ai-hero__actions">
+            <a class="btn btn-primary ai-hero__btn-primary" href="#ai-products">AI Products ↓</a>
+            <a class="btn btn-ghost ai-hero__btn-ghost" href="#ai-early-access">Join Early Access →</a>
+          </div>
+          <ul class="ai-hero__trust">
+            <li><i aria-hidden="true"></i>AI-FIRST</li>
+            <li><i aria-hidden="true"></i>REAL USE</li>
+            <li><i aria-hidden="true"></i>BUILT BY NEWON</li>
+          </ul>
         </div>
-        <ul class="ai-hero__trust">
-          <li><i aria-hidden="true"></i>AI-FIRST</li>
-          <li><i aria-hidden="true"></i>REAL USE</li>
-          <li><i aria-hidden="true"></i>BUILT BY NEWON</li>
-        </ul>
+        <aside class="ai-hero-panel" data-ai-process aria-label="AI process">
+    <div class="ai-hero-panel__head">
+      <div class="ai-hero-panel__head-copy">
+        <p class="ai-hero-panel__title">AI Pipeline</p>
+        <p class="ai-hero-panel__sub">Product-shaped AI</p>
       </div>
-      <aside class="ai-process" data-ai-process aria-label="AI process">
-    <div class="ai-process__step" data-process-step>
-      <span>INPUT</span>
-      <strong>Customer Reviews</strong>
-      <em>2,481 inputs</em>
-    </div>
-    <div class="ai-process__arrow" aria-hidden="true">↓</div>
-    <div class="ai-process__step" data-process-step>
-      <span>UNDERSTAND</span>
-      <strong>Product · Market · Users</strong>
-    </div>
-    <div class="ai-process__arrow" aria-hidden="true">↓</div>
-    <div class="ai-process__step" data-process-step>
-      <span>ANALYZE</span>
-      <div class="ai-process__metrics">
-        <p><em>Sentiment</em><b>78%</b></p>
-        <p><em>Requests</em><b>342</b></p>
+      <div class="ai-hero-panel__head-meta">
+        <span class="ai-hero-panel__live" aria-hidden="true"><i></i>DEMO</span>
+        <span class="ai-demo-badge">SAMPLE DATA</span>
       </div>
     </div>
-    <div class="ai-process__arrow" aria-hidden="true">↓</div>
-    <div class="ai-process__step ai-process__step--out" data-process-step>
-      <span>OUTPUT</span>
-      <strong>Priority insights</strong>
+    <ol class="ai-hero-panel__flow"><li class="ai-hero-panel__flow-step" data-process-step>
+        <span class="ai-hero-panel__flow-n">01</span>
+        <span class="ai-hero-panel__flow-k">INPUT</span>
+        <strong>Customer Reviews</strong>
+      </li><li class="ai-hero-panel__conn" aria-hidden="true"></li><li class="ai-hero-panel__flow-step" data-process-step>
+        <span class="ai-hero-panel__flow-n">02</span>
+        <span class="ai-hero-panel__flow-k">UNDERSTAND</span>
+        <strong>Product · Market · Users</strong>
+      </li><li class="ai-hero-panel__conn" aria-hidden="true"></li><li class="ai-hero-panel__flow-step" data-process-step>
+        <span class="ai-hero-panel__flow-n">03</span>
+        <span class="ai-hero-panel__flow-k">ANALYZE</span>
+        <strong>Sentiment · Requests</strong>
+      </li><li class="ai-hero-panel__conn" aria-hidden="true"></li><li class="ai-hero-panel__flow-step ai-hero-panel__flow-step--out" data-process-step>
+        <span class="ai-hero-panel__flow-n">04</span>
+        <span class="ai-hero-panel__flow-k">OUTPUT</span>
+        <strong>Priority insights</strong>
+      </li></ol>
+    <div class="ai-hero-panel__body">
+      <div class="ai-hero-panel__stat">
+        <strong>2,481</strong>
+        <span>REVIEWS · SAMPLE DATA</span>
+        <div class="ai-hero-panel__sources" aria-hidden="true">
+          <em>App Store</em><em>Play Store</em><em>Support</em>
+        </div>
+      </div>
+      <div class="ai-hero-panel__feed" aria-hidden="true">
+        <p class="ai-hero-panel__feed-item"><i>★★★★★</i> “Love the daily stats — just wish dark mode was default.”</p>
+        <p class="ai-hero-panel__feed-item"><i>★★★☆☆</i> “Widget would save me opening the app every morning.”</p>
+      </div>
+      <div class="ai-hero-panel__grid">
+        <div class="ai-hero-panel__chart">
+          <p class="ai-hero-panel__label">Sentiment</p>
+          <div class="ai-hero-panel__bar"><span>Positive</span><i style="--w:68%"></i><b>68%</b></div>
+          <div class="ai-hero-panel__bar"><span>Neutral</span><i style="--w:19%"></i><b>19%</b></div>
+          <div class="ai-hero-panel__bar"><span>Negative</span><i style="--w:13%"></i><b>13%</b></div>
+        </div>
+        <div class="ai-hero-panel__requests">
+          <p class="ai-hero-panel__label">Top requests</p>
+          <ul>
+            <li><span>01</span> Dark mode <em>342</em></li>
+            <li><span>02</span> Widget <em>218</em></li>
+            <li><span>03</span> CSV Export <em>164</em></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ai-hero-panel__insight">
+        <p class="ai-hero-panel__label">AI Insight</p>
+        <p class="ai-hero-panel__quote">“Users frequently request faster access to daily statistics.”</p>
+        <p class="ai-hero-panel__trend"><span>Trend · 7d</span><strong>+18.4%</strong></p>
+      </div>
     </div>
+    <p class="ai-hero-panel__note">Interactive product concept — not live data.</p>
   </aside>
-    </div>
-  </section>
-
-  <section class="ai-proof" data-ai-reveal aria-label="AI overview">
-    <div class="hub-inner">
-      <ul class="ai-proof__list">
-        <li><strong>04</strong> AI PRODUCTS</li>
-        <li><strong>6</strong> AI-ENABLED APPS</li>
-        <li>PRODUIT</li>
-        <li>FOR REAL USE</li>
+      </div>
+      <ul class="ai-hero__stats" aria-label="AI overview">
+        <li class="ai-hero__stat">
+          <strong>04</strong>
+          <span>AI PRODUCTS<em>IN DEVELOPMENT</em></span>
+        </li>
+        <li class="ai-hero__stat"><strong>11+</strong> <span>AI-ENABLED APPS</span></li>
+        <li class="ai-hero__stat ai-hero__stat--text"><span>PRODUIT</span></li>
+        <li class="ai-hero__stat ai-hero__stat--text"><span>FOR REAL USE</span></li>
       </ul>
+      <a class="ai-hero__scroll" href="#ai-products"><span>AI Products</span><i aria-hidden="true">↓</i></a>
     </div>
   </section>
 
@@ -660,51 +701,62 @@ is where it gets used.</h2>
         <p class="ai-section-head__eyebrow">AI INSIDE NEWON</p>
         <h2 class="ai-section-head__title">AI isn’t a bolt-on feature.
 It runs inside the product.</h2>
-        <p class="ai-section-head__lead">AI already runs inside Newon’s habit, finance, health, family, and travel apps.</p>
+        <p class="ai-section-head__lead">AI experiences already inside Newon apps.</p>
       </header>
-      <div class="ai-chips" aria-label="Newon apps with AI"><a class="ai-chip" href="../#savy-app">
-      <img src="/savy-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
-      <span>
-        <strong>Savy</strong>
-        <em>AI Spending Insight</em>
-      </span>
+      <div class="ai-app-grid" aria-label="Newon apps with AI"><a class="ai-app-card" href="../portfolio/savy/" aria-label="Savy — VIEW PRODUCT">
+      <img class="ai-app-card__icon" src="/savy-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
+      <div class="ai-app-card__body">
+        <h3 class="ai-app-card__name">Savy</h3>
+        <p class="ai-app-card__feat">AI Spending Insight</p>
+        <p class="ai-app-card__desc">Log spending and income, then understand your money with clear insights.</p>
+        <span class="ai-app-card__cta">VIEW PRODUCT →</span>
+      </div>
     </a>
-<a class="ai-chip" href="../#babylog-app">
-      <img src="/babylog-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
-      <span>
-        <strong>BabyLog</strong>
-        <em>AI Parenting Insight</em>
-      </span>
+<a class="ai-app-card" href="../portfolio/babylog/" aria-label="BabyLog — VIEW PRODUCT">
+      <img class="ai-app-card__icon" src="/babylog-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
+      <div class="ai-app-card__body">
+        <h3 class="ai-app-card__name">BabyLog</h3>
+        <p class="ai-app-card__feat">AI Parenting Insight</p>
+        <p class="ai-app-card__desc">Capture growth and family moments in one shared baby journal.</p>
+        <span class="ai-app-card__cta">VIEW PRODUCT →</span>
+      </div>
     </a>
-<a class="ai-chip" href="../#petlog-app">
-      <img src="/petlog-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
-      <span>
-        <strong>PetLog</strong>
-        <em>AI Care Insight</em>
-      </span>
+<a class="ai-app-card" href="../portfolio/petlog/" aria-label="PetLog — VIEW PRODUCT">
+      <img class="ai-app-card__icon" src="/petlog-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
+      <div class="ai-app-card__body">
+        <h3 class="ai-app-card__name">PetLog</h3>
+        <p class="ai-app-card__feat">AI Care Insight</p>
+        <p class="ai-app-card__desc">Daily care, health notes, and memories for the pets you love.</p>
+        <span class="ai-app-card__cta">VIEW PRODUCT →</span>
+      </div>
     </a>
-<a class="ai-chip" href="../#piggyup-app">
-      <img src="/piggyup-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
-      <span>
-        <strong>PiggyUp</strong>
-        <em>AI Coach</em>
-      </span>
+<a class="ai-app-card" href="../portfolio/piggyup/" aria-label="PiggyUp — VIEW PRODUCT">
+      <img class="ai-app-card__icon" src="/piggyup-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
+      <div class="ai-app-card__body">
+        <h3 class="ai-app-card__name">PiggyUp</h3>
+        <p class="ai-app-card__feat">AI Coach</p>
+        <p class="ai-app-card__desc">Build saving habits with challenges, logs, and gentle coaching.</p>
+        <span class="ai-app-card__cta">VIEW PRODUCT →</span>
+      </div>
     </a>
-<a class="ai-chip" href="../#myworld-app">
-      <img src="/myworld-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
-      <span>
-        <strong>My World</strong>
-        <em>AI Travel Report</em>
-      </span>
+<a class="ai-app-card" href="../portfolio/myworld/" aria-label="My World — VIEW PRODUCT">
+      <img class="ai-app-card__icon" src="/myworld-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
+      <div class="ai-app-card__body">
+        <h3 class="ai-app-card__name">My World</h3>
+        <p class="ai-app-card__feat">AI Travel Report</p>
+        <p class="ai-app-card__desc">Map countries, cities, and travel memories on your personal world map.</p>
+        <span class="ai-app-card__cta">VIEW PRODUCT →</span>
+      </div>
     </a>
-<a class="ai-chip" href="../#ox-month">
-      <img src="/ox-month-logo.png" alt="" width="36" height="36" loading="lazy" decoding="async" />
-      <span>
-        <strong>OX MONTH</strong>
-        <em>AI Pattern Analysis</em>
-      </span>
+<a class="ai-app-card" href="../portfolio/ox-month/" aria-label="OX MONTH — VIEW PRODUCT">
+      <img class="ai-app-card__icon" src="/ox-month-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
+      <div class="ai-app-card__body">
+        <h3 class="ai-app-card__name">OX MONTH</h3>
+        <p class="ai-app-card__feat">AI Pattern Analysis</p>
+        <p class="ai-app-card__desc">Track daily actions with O/X and see a month of change at a glance.</p>
+        <span class="ai-app-card__cta">VIEW PRODUCT →</span>
+      </div>
     </a></div>
-      <p class="ai-inside__cta"><a class="btn btn-ghost" href="../apps/">Browse apps →</a></p>
     </div>
   </section>
 
@@ -845,7 +897,7 @@ product development, and automation — we design it together.</p>
     <div class="search-modal-host"></div>
     <script src="/search.js?v=20260825studio" defer></script>
     <script src="/waitlist.js?v=20260825studio" defer></script>
-    <script src="/ai-hub.js?v=20260825ai5" defer></script>
+    <script src="/ai-hub.js?v=20260827ai7" defer></script>
     <script src="/site-chrome.js?v=20260826gnav5" defer></script>
   </body>
 </html>

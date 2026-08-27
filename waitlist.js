@@ -1,5 +1,5 @@
 /**
- * Waitlist + newsletter — FormSubmit with locale/source tracking, no PII in analytics.
+ * Waitlist + newsletter — FormSubmit with locale/source tracking, product interest.
  */
 (function () {
   "use strict";
@@ -32,21 +32,82 @@
 
   function setState(form, state) {
     form.dataset.state = state;
-    form.classList.remove("is-loading", "is-success", "is-error", "is-invalid", "is-duplicate");
+    form.classList.remove("is-loading", "is-success", "is-error", "is-invalid", "is-duplicate", "is-updated");
     if (state === "loading") form.classList.add("is-loading");
     if (state === "success") form.classList.add("is-success");
     if (state === "error") form.classList.add("is-error");
     if (state === "invalid") form.classList.add("is-invalid");
     if (state === "duplicate") form.classList.add("is-duplicate");
+    if (state === "updated") form.classList.add("is-updated");
   }
 
   function showMessage(form, selector, visible) {
-    var el = form.parentElement && form.parentElement.querySelector(selector);
+    var root = form.closest(".ai-early") || form.parentElement;
+    var el = root && root.querySelector(selector);
     if (el) el.hidden = !visible;
+  }
+
+  function hideAllMessages(form) {
+    showMessage(form, "[data-waitlist-success]", false);
+    showMessage(form, "[data-waitlist-duplicate]", false);
+    showMessage(form, "[data-waitlist-updated]", false);
+    showMessage(form, "[data-waitlist-error]", false);
+    var invalid = form.querySelector("[data-waitlist-invalid]");
+    if (invalid) invalid.hidden = true;
   }
 
   function storageKey(formType, productId, email) {
     return STORAGE_PREFIX + formType + ":" + (productId || "general") + ":" + email.toLowerCase();
+  }
+
+  function readRecord(formType, productId, email) {
+    try {
+      var raw = localStorage.getItem(storageKey(formType, productId, email));
+      if (!raw) return null;
+      var data = JSON.parse(raw);
+      if (data && data.v === 2) return data;
+      if (data && data.ts) return { v: 2, ts: data.ts, products: [] };
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function writeRecord(formType, productId, email, products) {
+    try {
+      localStorage.setItem(
+        storageKey(formType, productId, email),
+        JSON.stringify({
+          v: 2,
+          ts: Date.now(),
+          products: products || [],
+        })
+      );
+    } catch (e) {}
+  }
+
+  function selectedProducts(form) {
+    var out = [];
+    form.querySelectorAll('[name="interestedProducts"]:checked').forEach(function (el) {
+      var v = String(el.value || "").trim();
+      if (v) out.push(v);
+    });
+    return out;
+  }
+
+  function sameProducts(a, b) {
+    if (!a || !b || a.length !== b.length) return false;
+    var sa = a.slice().sort().join("|");
+    var sb = b.slice().sort().join("|");
+    return sa === sb;
+  }
+
+  function mergeProducts(existing, next) {
+    var map = {};
+    (existing || []).concat(next || []).forEach(function (p) {
+      if (p) map[p] = 1;
+    });
+    return Object.keys(map);
   }
 
   function bindForm(form) {
@@ -74,10 +135,14 @@
       ev.preventDefault();
       if (form.dataset.state === "loading") return;
 
+      hideAllMessages(form);
+
       var emailEl = form.querySelector('[name="email"]');
       var email = emailEl ? String(emailEl.value || "").trim() : "";
       if (!isEmail(email)) {
         setState(form, "invalid");
+        var invalid = form.querySelector("[data-waitlist-invalid]");
+        if (invalid) invalid.hidden = false;
         return;
       }
 
@@ -86,21 +151,21 @@
 
       var productIdEl = form.querySelector('[name="productId"]');
       var productId =
-        (productIdEl && productIdEl.value) ||
-        form.getAttribute("data-product-id") ||
-        "";
+        (productIdEl && productIdEl.value) || form.getAttribute("data-product-id") || "";
       var formType = form.getAttribute("data-form-type") || "waitlist";
       var source = form.getAttribute("data-source") || location.pathname || "";
+      var products = selectedProducts(form);
+      var existing = readRecord(formType, productId, email);
 
-      try {
-        if (localStorage.getItem(storageKey(formType, productId, email))) {
-          setState(form, "duplicate");
-          form.hidden = true;
-          showMessage(form, "[data-waitlist-duplicate]", true);
-          showMessage(form, "[data-waitlist-success]", false);
-          return;
-        }
-      } catch (e) {}
+      if (existing && sameProducts(existing.products, products)) {
+        setState(form, "duplicate");
+        form.hidden = true;
+        showMessage(form, "[data-waitlist-duplicate]", true);
+        return;
+      }
+
+      var isUpdate = !!(existing && products.length);
+      var merged = mergeProducts(existing && existing.products, products);
 
       var utm = utmParams();
       var payload = {
@@ -109,6 +174,7 @@
         formType: formType,
         email: email,
         productId: productId,
+        interestedProducts: merged.join(", "),
         locale: langDir(),
         source: source,
         landingPage: String(location.href || "").split("#")[0],
@@ -130,7 +196,12 @@
           ? window.newonAnalyticsEvents.NEWSLETTER_SIGNUP
           : window.newonAnalyticsEvents.WAITLIST_SIGNUP;
       if (window.newonTrack) {
-        window.newonTrack(eventName, { productId: productId, locale: payload.locale, source: source });
+        window.newonTrack(eventName, {
+          productId: productId,
+          locale: payload.locale,
+          source: source,
+          interestedProducts: merged.length,
+        });
       }
 
       fetch(ENDPOINT, {
@@ -139,22 +210,22 @@
         body: JSON.stringify(payload),
       })
         .then(function (r) {
-          return r.json().then(function (d) {
-            return { ok: r.ok, data: d };
-          }, function () {
-            return { ok: r.ok, data: null };
-          });
+          return r.json().then(
+            function (d) {
+              return { ok: r.ok, data: d };
+            },
+            function () {
+              return { ok: r.ok, data: null };
+            }
+          );
         })
         .then(function (out) {
           var flag = out.data && out.data.success;
           if (!out.ok && flag !== true && flag !== "true") throw new Error("submit-failed");
-          try {
-            localStorage.setItem(storageKey(formType, productId, email), payload.createdAt);
-          } catch (e) {}
-          setState(form, "success");
+          writeRecord(formType, productId, email, merged);
+          setState(form, isUpdate ? "updated" : "success");
           form.hidden = true;
-          showMessage(form, "[data-waitlist-success]", true);
-          showMessage(form, "[data-waitlist-duplicate]", false);
+          showMessage(form, isUpdate ? "[data-waitlist-updated]" : "[data-waitlist-success]", true);
         })
         .catch(function () {
           setState(form, "error");

@@ -2,6 +2,7 @@
  * Copy for Business pillar detail pages: build / automation / research / solutions.
  * ko + en; other langs fall back to en via fillMissing.
  */
+import { applyPillarPricing } from "./business-pricing.mjs";
 
 export const PILLAR_SLUGS = ["build", "automation", "research", "solutions"];
 
@@ -926,5 +927,7 @@ export function getPillarCopy(slug, lang) {
   if (!pack) return null;
   const en = pack.en;
   const local = pack[lang] || en;
-  return { ...en, ...local, slug };
+  const pageLang = lang === "ko" ? "ko" : "en";
+  const merged = { ...en, ...local, slug, _pageLang: pageLang };
+  return applyPillarPricing(merged, slug, pageLang);
 }

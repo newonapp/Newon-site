@@ -6,6 +6,7 @@ import { getLandingCopy } from "./business-service-landing-copy.mjs";
 import { getDataReportingCopy } from "./data-reporting-copy.mjs";
 import { getInternalToolsCopy } from "./internal-tools-copy.mjs";
 import { getWorkflowAutomationCopy } from "./workflow-automation-copy.mjs";
+import { USE_CASE_FLOWS } from "./business-use-case-flows.mjs";
 import { getMarketResearchCopy } from "./market-research-copy.mjs";
 import { getCompetitorAnalysisCopy } from "./competitor-analysis-copy.mjs";
 import { getConsumerResearchCopy } from "./consumer-research-copy.mjs";
@@ -19,6 +20,12 @@ import { getWebCopy } from "./web-copy.mjs";
 import { getAppCopy } from "./app-copy.mjs";
 import { getAiAutomationCopy } from "./ai-automation-copy.mjs";
 import { getWhiteLabelCopy } from "./white-label-copy.mjs";
+import {
+  applyServicePricing,
+  externalCostDisclaimer,
+  hasExternalCost,
+  scopeDisclaimer,
+} from "./business-pricing.mjs";
 
 const COPY = {
   ko: {
@@ -1187,6 +1194,16 @@ const COPY = {
       ],
       priceNote:
         "Scope / Platform / Timeline을 검토한 뒤 견적을 제공합니다. 정찰제 가격은 표시하지 않습니다.",
+      useLabel: "USE CASES",
+      useTitle: "이런 디자인 프로젝트에 적용됩니다.",
+      useBadge: "적용 예시",
+      useCases: [
+        { t: "PRODUCT LAUNCH", d: "브랜드 방향 → UI 키 화면 → 랜딩 → 개발 핸드오프" },
+        { t: "WEB / APP REDESIGN", d: "현 UI 감사 → IA·플로우 → 화면 리디자인 → Design System" },
+        { t: "BRAND + PRODUCT", d: "로고·톤 → 제품 UI 언어 → 컴포넌트 라이브러리" },
+        { t: "LANDING & CAMPAIGN", d: "메시지 구조 → 전환 UI → 마케팅 화면 세트" },
+        { t: "DESIGN SYSTEM", d: "토큰·타입 → 컴포넌트 → 문서화 → 팀 핸드오프" },
+      ],
       ctaFinalTitle: "브랜드와 제품이 같은 언어를 쓰게 만드세요.",
       ctaFinalLead: "개선하고 싶은 화면이나 브랜드 현황만 알려주셔도 됩니다.",
       ctaFinalBtn: "디자인 문의 →",
@@ -2376,6 +2393,16 @@ const COPY = {
       ],
       priceNote:
         "Quotes follow review of scope, platform, and timeline. We do not publish fixed list prices.",
+      useLabel: "USE CASES",
+      useTitle: "Design projects we often take on",
+      useBadge: "Examples",
+      useCases: [
+        { t: "PRODUCT LAUNCH", d: "Brand direction → key UI screens → landing → dev handoff" },
+        { t: "WEB / APP REDESIGN", d: "UI audit → IA & flows → screen redesign → design system" },
+        { t: "BRAND + PRODUCT", d: "Logo & tone → product UI language → component library" },
+        { t: "LANDING & CAMPAIGN", d: "Message structure → conversion UI → marketing surfaces" },
+        { t: "DESIGN SYSTEM", d: "Tokens & type → components → docs → team handoff" },
+      ],
       ctaFinalTitle: "Make brand and product speak the same language.",
       ctaFinalLead: "Share the screens or brand state you want to improve.",
       ctaFinalBtn: "Design inquiry →",
@@ -2586,14 +2613,21 @@ function normalizeEngagementCopy(c, lang, slug) {
   const defaultTitle = isKo ? "프로젝트별 맞춤 견적입니다." : "Custom quote per project.";
   const priceTitle = c.priceValue ? defaultTitle : c.priceTitle || defaultTitle;
   const descMap = PRICE_FACTOR_DESC[slug]?.[isKo ? "ko" : "en"] || {};
-  return {
-    ...c,
-    priceTitle,
-    priceFactors: enrichPriceFactors(c.priceFactors, descMap),
-    timelines: enrichTimelines(c.timelines, lang),
-    priceFactorsLabel: c.priceFactorsLabel || (isKo ? "가격 결정 요소" : "Pricing factors"),
-    timeLead: c.timeLead || c.priceLead || "",
-  };
+  const flows = USE_CASE_FLOWS[slug]?.[isKo ? "ko" : "en"] || c.useCaseFlows || [];
+  return applyServicePricing(
+    {
+      ...c,
+      _pageLang: lang,
+      _pageSlug: slug,
+      priceTitle,
+      priceFactors: enrichPriceFactors(c.priceFactors, descMap),
+      priceFactorsLabel: c.priceFactorsLabel || (isKo ? "가격 결정 요소" : "Pricing factors"),
+      timeLead: c.timeLead || c.priceLead || "",
+      useCaseFlows: flows,
+    },
+    slug,
+    lang
+  );
 }
 
 function normalizeDataReportingCopy(c, lang) {

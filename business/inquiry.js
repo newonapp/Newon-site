@@ -46,7 +46,26 @@
   }
 
   function mailtoHref(payload) {
-    var order = ["company", "name", "email", "phone", "website", "type", "type_label", "budget", "stage", "timeline", "message"];
+    var order = [
+      "company",
+      "name",
+      "email",
+      "phone",
+      "website",
+      "type",
+      "type_label",
+      "category",
+      "service",
+      "starting_price",
+      "estimated_timeline",
+      "message",
+      "features",
+      "budget",
+      "stage",
+      "timeline",
+      "reference",
+      "notes",
+    ];
     var lines = [];
     var i;
     for (i = 0; i < order.length; i++) {

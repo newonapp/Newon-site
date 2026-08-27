@@ -23,8 +23,8 @@ html[data-newon-shell-theme="dark"] .bz-page {
 }
 
 .bz-page .bz-label {
-  margin: 0 0 0.7rem;
-  font-size: 0.6875rem;
+  margin: 0 0 0.8125rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -45,7 +45,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
 .bz-page .bz-lead {
   margin: 0;
   max-width: 34rem;
-  font-size: 0.975rem;
+  font-size: 1.0625rem;
   line-height: 1.65;
   color: var(--bz-mute);
   word-break: keep-all;
@@ -91,7 +91,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
     justify-self: end;
     text-align: right;
     max-width: 28rem;
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 }
 
@@ -124,7 +124,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
 
 .bz-cat__n {
   margin-top: 0.28rem;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   font-variant-numeric: tabular-nums;
@@ -167,7 +167,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
 
 .bz-cat__meta {
   margin: 0.65rem 0 0;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 1.45;
   color: var(--bz-soft);
   word-break: keep-all;
@@ -188,7 +188,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
   align-items: center;
   gap: 0.4rem;
   margin-top: 0.2rem;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 650;
   white-space: nowrap;
   color: var(--bz-ink);
@@ -264,7 +264,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
 
 .bz-cap-item__keys {
   margin-top: 0.85rem;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -274,7 +274,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
 .bz-card,
 .bz-why-card,
 .bz-eco-card {
-  padding: 1.1rem 1.05rem 1.15rem;
+  padding: 1.1rem 1.125rem 1.15rem;
   border: 1px solid var(--bz-line);
   border-radius: 0;
   background: var(--bz-paper);
@@ -355,7 +355,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
   margin: 1.75rem 0 0;
   padding-top: 1.15rem;
   border-top: 1px solid var(--bz-line);
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 650;
   letter-spacing: 0.16em;
   color: var(--bz-soft);
@@ -508,7 +508,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
 .bz-port__item {
   display: grid;
   grid-template-columns: 2.75rem minmax(4.5rem, 7rem) minmax(0, 1fr) auto;
-  gap: 0.75rem 1.25rem;
+  gap: 0.875rem 1.25rem;
   align-items: baseline;
   padding: 1.55rem 0.15rem;
   border-bottom: 1px solid var(--bz-line);
@@ -526,7 +526,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
 }
 
 .bz-port__item-n {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 650;
   letter-spacing: 0.08em;
   color: var(--bz-soft);
@@ -535,7 +535,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
 }
 
 .bz-port__item-tag {
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 650;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -581,7 +581,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
   padding: 0 1.45rem;
   background: #0a0a0a;
   color: #fff;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 650;
   letter-spacing: -0.02em;
   text-decoration: none;
@@ -594,7 +594,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
 }
 
 .bz-port__all {
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 650;
   letter-spacing: -0.015em;
   color: var(--bz-ink);
@@ -645,7 +645,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
 
 .bz-ind-list li {
   min-height: 0 !important;
-  padding: 1rem 0.85rem 1.05rem 0.1rem !important;
+  padding: 1rem 0.85rem 1.125rem 0.1rem !important;
   border-bottom-color: var(--bz-line) !important;
   transition: background 0.2s ease, color 0.2s ease, padding 0.2s ease !important;
 }
@@ -729,7 +729,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
 .bz-pkg__idx {
   display: block;
   margin: 1rem 0 0.85rem;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -739,7 +739,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
 .bz-pkg__tag {
   display: block;
   margin-bottom: 0.45rem;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -756,7 +756,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
 
 .bz-pkg__title {
   margin: 0;
-  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  font-size: clamp(1.125rem, 1.8vw, 1.2rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.3;
@@ -805,7 +805,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
 .bz-pkg__cta {
   margin-top: auto;
   padding-top: 1.1rem;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 650;
   letter-spacing: -0.01em;
   color: var(--bz-ink);
@@ -871,7 +871,7 @@ html[data-newon-shell-theme="dark"] .bz-page {
   padding: 0 1.45rem;
   background: #fff;
   color: #0a0a0a !important;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 650;
   letter-spacing: -0.02em;
   text-decoration: none;
@@ -971,7 +971,7 @@ html[data-newon-shell-theme="dark"] .bz-band {
 }
 
 .bz-pillars-sec .bz-pillar__n {
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--bz-soft);
@@ -1013,7 +1013,7 @@ html[data-newon-shell-theme="dark"] .bz-band {
 
 .bz-pillars-sec .bz-pillar__more {
   margin: 0.85rem 0 0;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 650;
   letter-spacing: -0.015em;
   grid-column: 2;
@@ -1102,7 +1102,7 @@ html[data-newon-shell-theme="dark"] .bz-band {
 .bz-pillars-sec .bz-pillar__item-desc {
   display: block;
   margin-top: 0.3rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.5;
   color: var(--bz-mute);
   word-break: keep-all;
@@ -1138,7 +1138,7 @@ html[data-newon-shell-theme="dark"] .bz-band {
 
 .bz-faq-q {
   padding: 1rem 0;
-  font-size: 0.975rem;
+  font-size: 1.0625rem;
   font-weight: 650;
 }
 
@@ -1158,9 +1158,9 @@ html[data-newon-shell-theme="dark"] .bz-band {
 .bz-consent {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 0.75rem 1.25rem;
+  gap: 0.875rem 1.25rem;
   align-items: center;
-  padding: 1.05rem 1.15rem;
+  padding: 1.125rem 1.15rem;
   border: 1px solid var(--bz-ink, #0a0a0a);
   background: #fff;
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
@@ -1266,7 +1266,7 @@ html[data-newon-shell-theme="dark"] .bz-consent__label input:checked + .bz-conse
 }
 
 .bz-consent__text {
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 550;
   line-height: 1.5;
   letter-spacing: -0.015em;
@@ -1284,7 +1284,7 @@ html[data-newon-shell-theme="dark"] .bz-consent:has(input:checked) .bz-consent__
 
 .bz-consent__link {
   justify-self: end;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 650;
   letter-spacing: -0.01em;
   color: var(--bz-mute, #5a5a5a);
