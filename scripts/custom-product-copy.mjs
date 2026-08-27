@@ -300,7 +300,7 @@ export const CUSTOM_PRODUCT_COPY = {
         examples: ["Docs", "Training", "Support", "Phase 2"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "프로젝트 복잡도를 이해하기 위한 구분입니다.",
     scopeLead: "고정 패키지가 아닙니다. 문제 규모, 연동, 사용자·권한 복잡도에 맞춰 범위를 정합니다.",
     scopes: [
@@ -695,7 +695,7 @@ export const CUSTOM_PRODUCT_COPY = {
         examples: ["Docs", "Training", "Support", "Phase 2"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "How to think about project complexity.",
     scopeLead: "Not a fixed package. Scope is set by problem size, integrations, and permission complexity.",
     scopes: [

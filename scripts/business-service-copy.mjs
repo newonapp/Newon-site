@@ -2610,7 +2610,7 @@ function enrichTimelines(timelines, lang) {
 function normalizeEngagementCopy(c, lang, slug) {
   if (!c) return c;
   const isKo = lang === "ko";
-  const defaultTitle = isKo ? "프로젝트별 맞춤 견적입니다." : "Custom quote per project.";
+  const defaultTitle = isKo ? "시작가와 기본 범위" : "Starting price and basic scope";
   const priceTitle = c.priceValue ? defaultTitle : c.priceTitle || defaultTitle;
   const descMap = PRICE_FACTOR_DESC[slug]?.[isKo ? "ko" : "en"] || {};
   const flows = USE_CASE_FLOWS[slug]?.[isKo ? "ko" : "en"] || c.useCaseFlows || [];
@@ -2620,8 +2620,9 @@ function normalizeEngagementCopy(c, lang, slug) {
       _pageLang: lang,
       _pageSlug: slug,
       priceTitle,
+      priceLabel: c.priceLabel || "PROJECT SCOPE",
       priceFactors: enrichPriceFactors(c.priceFactors, descMap),
-      priceFactorsLabel: c.priceFactorsLabel || (isKo ? "가격 결정 요소" : "Pricing factors"),
+      priceFactorsLabel: c.priceFactorsLabel || (isKo ? "기본 범위" : "Basic scope"),
       timeLead: c.timeLead || c.priceLead || "",
       useCaseFlows: flows,
     },

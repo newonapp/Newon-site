@@ -301,7 +301,7 @@ export const UX_AUDIT_COPY = {
         examples: ["Final Report", "Actions", "Next Steps"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "프로젝트 복잡도를 이해하기 위한 구분입니다.",
     scopeLead: "고정 패키지가 아닙니다. 점검 목적, 플로우 수, 디바이스 범위에 맞춰 범위를 정합니다.",
     scopes: [
@@ -696,7 +696,7 @@ export const UX_AUDIT_COPY = {
         examples: ["Final Report", "Actions", "Next Steps"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "How to think about project complexity.",
     scopeLead: "Not a fixed package. Scope is set by audit goal, flow count, and device coverage.",
     scopes: [

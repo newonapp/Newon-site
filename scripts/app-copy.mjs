@@ -300,7 +300,7 @@ export const APP_COPY = {
         examples: ["MVP", "Scope", "Quote", "Phase 2"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "프로젝트 복잡도를 이해하기 위한 구분입니다.",
     scopeLead: "고정 패키지가 아닙니다. 화면 수, 플랫폼, 인터랙션 깊이, 연동 범위에 맞춰 범위를 정합니다.",
     scopes: [
@@ -695,7 +695,7 @@ export const APP_COPY = {
         examples: ["MVP", "Scope", "Quote", "Phase 2"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "How to think about project complexity.",
     scopeLead: "Not a fixed package. Scope is set by screen count, platform, interaction depth, and integrations.",
     scopes: [

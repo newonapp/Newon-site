@@ -302,7 +302,7 @@ export const COMPETITOR_ANALYSIS_COPY = {
         examples: ["Final Matrix", "Summary", "Next Steps"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "프로젝트 복잡도를 이해하기 위한 구분입니다.",
     scopeLead: "고정 패키지가 아닙니다. 비교 목적과 경쟁사 수에 맞춰 범위를 정하고 견적을 산정합니다.",
     scopes: [
@@ -696,7 +696,7 @@ export const COMPETITOR_ANALYSIS_COPY = {
         examples: ["Final Matrix", "Summary", "Next Steps"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "A guide to project complexity.",
     scopeLead: "Not fixed packages — we scope and quote based on comparison goal and competitor count.",
     scopes: [

@@ -310,7 +310,7 @@ export const MARKET_RESEARCH_COPY = {
         examples: ["Final Brief", "Map", "Next Steps"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "프로젝트 복잡도를 이해하기 위한 구분입니다.",
     scopeLead: "고정 패키지가 아닙니다. 조사 목적과 필요한 깊이에 맞춰 범위를 정하고 견적을 산정합니다.",
     scopes: [
@@ -719,7 +719,7 @@ export const MARKET_RESEARCH_COPY = {
         examples: ["Final Brief", "Map", "Next Steps"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "A guide to project complexity.",
     scopeLead: "Not fixed packages — we scope and quote based on your goal and the depth you need.",
     scopes: [

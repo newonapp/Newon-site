@@ -216,7 +216,7 @@ export const INTERNAL_TOOLS_COPY = {
       { n: "08", t: "TEST", d: "실제 시나리오로 권한·흐름·데이터를 검수합니다.\n예외 상황까지 확인합니다." },
       { n: "09", t: "HANDOFF", d: "운영 방법과 관리 포인트를 전달합니다.\n팀이 스스로 운영할 수 있게 안내합니다." },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "프로젝트 복잡도를 이해하기 위한 구분입니다.",
     scopeLead: "고정 패키지가 아니라, 필요한 범위에 맞춰 견적을 산정하기 위한 참고입니다.",
     scopes: [
@@ -593,7 +593,7 @@ export const INTERNAL_TOOLS_COPY = {
       { n: "08", t: "TEST", d: "Review permissions, flows, and data with real scenarios.\nInclude edge cases, not just happy paths." },
       { n: "09", t: "HANDOFF", d: "Hand over operations and admin guidance.\nSo your team can run it independently." },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "A guide to understanding project complexity.",
     scopeLead: "Not fixed packages — a reference for scoping and quoting what you need.",
     scopes: [

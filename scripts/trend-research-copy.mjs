@@ -301,7 +301,7 @@ export const TREND_RESEARCH_COPY = {
         examples: ["Final Brief", "Map", "Next Steps"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "프로젝트 복잡도를 이해하기 위한 구분입니다.",
     scopeLead: "고정 패키지가 아닙니다. 조사 주제, 산업 범위, 깊이에 맞춰 범위를 정합니다.",
     scopes: [
@@ -696,7 +696,7 @@ export const TREND_RESEARCH_COPY = {
         examples: ["Final Brief", "Map", "Next Steps"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "How to think about project complexity.",
     scopeLead: "Not a fixed package. Scope is set by topic, industry range, and depth.",
     scopes: [

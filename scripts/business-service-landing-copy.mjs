@@ -300,7 +300,7 @@ export const LANDING_COPY = {
         examples: ["Docs", "CMS", "Support", "Variant"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "프로젝트 복잡도를 이해하기 위한 구분입니다.",
     scopeLead: "고정 패키지가 아닙니다. 섹션 수, CTA·연동, 변형·콘텐츠 범위에 맞춰 범위를 정합니다.",
     scopes: [
@@ -695,7 +695,7 @@ export const LANDING_COPY = {
         examples: ["Docs", "CMS", "Support", "Variant"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "How to think about project complexity.",
     scopeLead: "Not a fixed package. Scope is set by section count, CTA and integrations, variants, and content range.",
     scopes: [

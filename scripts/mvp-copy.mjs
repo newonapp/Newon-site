@@ -300,7 +300,7 @@ export const MVP_COPY = {
         examples: ["Feedback", "Roadmap", "Expand", "Pivot"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "MVP 복잡도를 이해하기 위한 구분입니다.",
     scopeLead: "고정 패키지가 아닙니다. 검증 목표, 플랫폼, 기능·연동 범위에 맞춰 범위를 정합니다.",
     scopes: [
@@ -695,7 +695,7 @@ export const MVP_COPY = {
         examples: ["Feedback", "Roadmap", "Expand", "Pivot"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "How to think about MVP complexity.",
     scopeLead: "Not a fixed package. Scope is set by validation goal, platform, and feature/integration range.",
     scopes: [

@@ -189,7 +189,7 @@ export const DATA_REPORTING_COPY = {
       { n: "07", t: "LAUNCH", d: "자동 실행 및 전달 환경을 설정합니다." },
       { n: "08", t: "HANDOFF", d: "운영 방법과 기본 관리 방법을 안내합니다." },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "프로젝트 복잡도를 이해하기 위한 구분입니다.",
     scopeLead: "고정 패키지가 아니라, 필요한 범위에 맞춰 견적을 산정하기 위한 참고입니다.",
     scopes: [
@@ -527,7 +527,7 @@ export const DATA_REPORTING_COPY = {
       { n: "07", t: "LAUNCH", d: "Set up scheduled runs and delivery." },
       { n: "08", t: "HANDOFF", d: "Hand off ops guidance and basic management notes." },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "A way to understand project complexity.",
     scopeLead: "These are reference levels for quoting — not fixed packages.",
     scopes: [

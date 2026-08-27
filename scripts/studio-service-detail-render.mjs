@@ -196,44 +196,52 @@ function overviewSection(detail) {
     </div></section>`;
 }
 
-function areasHtml(items, modifier = "") {
+/** Seam grid used across Studio detail body (who / what / deliverables / etc.). */
+function getGridHtml(items, variant = "board") {
   if (!items?.length) return "";
-  const mod = modifier ? ` bs-areas--${modifier}` : "";
-  return `<div class="bs-areas${mod}">${items
+  const mod = variant ? ` bs-get--${variant}` : "";
+  return `<div class="bs-get${mod}" data-count="${items.length}" data-variant="${escapeHtml(variant)}">${items
     .map((item, i) => {
-      const title = typeof item === "string" ? item : item.t;
-      const body = typeof item === "string" ? "" : item.d || "";
-      return `<article class="bs-areas__item"><span class="bs-areas__n">${pad2(i + 1)}</span><h3>${escapeHtml(title)}</h3>${body ? `<p>${escapeHtml(body).replace(/\n/g, "<br />")}</p>` : ""}</article>`;
+      const title = typeof item === "string" ? item : item.t || item.title || "";
+      const body = typeof item === "string" ? "" : item.d || item.body || "";
+      const prose = body
+        ? `<p>${escapeHtml(body).replace(/\n{2,}/g, "\n").replace(/\n/g, "<br />")}</p>`
+        : "";
+      return `<article class="bs-get__item"><span class="bs-get__n" aria-hidden="true">${pad2(i + 1)}</span><div class="bs-get__copy"><h3>${escapeHtml(title)}</h3>${prose}</div></article>`;
     })
     .join("")}</div>`;
 }
 
+function areasHtml(items, variant = "board") {
+  return getGridHtml(items, variant);
+}
+
 function problemsSection(detail) {
   if (!detail.problems?.length) return "";
-  return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-problems-title"><div class="bs-inner">
+  return `<section class="bs-section bs-section--surface" data-bs-part="problems" data-bs-reveal aria-labelledby="bs-ss-problems-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.problemsLabel || detail.ui.problems)}</p>
       <h2 class="bs-title" id="bs-ss-problems-title">${brHeadline(detail.problemsTitle || detail.ui.problemsTitle)}</h2>
-      ${areasHtml(detail.problems)}
+      ${areasHtml(detail.problems, "signal")}
     </div></section>`;
 }
 
 function principlesSection(detail) {
   if (!detail.principles?.length) return "";
-  return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-principles-title"><div class="bs-inner">
+  return `<section class="bs-section" data-bs-part="principles" data-bs-reveal aria-labelledby="bs-ss-principles-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.principlesLabel || "PRINCIPLES")}</p>
       <h2 class="bs-title" id="bs-ss-principles-title">${brHeadline(detail.principlesTitle || "")}</h2>
       ${detail.principlesLead ? `<p class="bs-lead">${escapeHtml(detail.principlesLead)}</p>` : ""}
-      ${areasHtml(detail.principles)}
+      ${areasHtml(detail.principles, "axiom")}
     </div></section>`;
 }
 
 function directionsSection(detail) {
   if (!detail.directions?.length) return "";
-  return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-directions-title"><div class="bs-inner">
+  return `<section class="bs-section" data-bs-part="directions" data-bs-reveal aria-labelledby="bs-ss-directions-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.directionsLabel || "NAMING DIRECTIONS")}</p>
       <h2 class="bs-title" id="bs-ss-directions-title">${brHeadline(detail.directionsTitle || "")}</h2>
       ${detail.directionsLead ? `<p class="bs-lead">${escapeHtml(detail.directionsLead).replace(/\n/g, "<br />")}</p>` : ""}
-      ${areasHtml(detail.directions)}
+      ${areasHtml(detail.directions, "board")}
       ${detail.directionsNote ? `<p class="bs-note">${escapeHtml(detail.directionsNote)}</p>` : ""}
     </div></section>`;
 }
@@ -241,13 +249,13 @@ function directionsSection(detail) {
 function whoSection(detail) {
   if (!detail.bestFor?.length) return "";
   const first = detail.bestFor[0];
-  const asAreas = typeof first === "object" && first && (first.t || first.d);
-  return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-who-title"><div class="bs-inner">
+  const asCards = typeof first === "object" && first && (first.t || first.d);
+  return `<section class="bs-section bs-section--surface" data-bs-part="who" data-bs-reveal aria-labelledby="bs-ss-who-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.ui.who)}</p>
       <h2 class="bs-title" id="bs-ss-who-title">${brHeadline(detail.whoTitle || detail.ui.whoTitle)}</h2>
       ${
-        asAreas
-          ? areasHtml(detail.bestFor)
+        asCards
+          ? getGridHtml(detail.bestFor, "who")
           : `<ol class="bs-who">${detail.bestFor
               .map(
                 (t, i) =>
@@ -260,63 +268,63 @@ function whoSection(detail) {
 
 function whatWeDoSection(detail) {
   if (!detail.whatWeDo?.length) return "";
-  return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-what-title"><div class="bs-inner">
+  return `<section class="bs-section bs-section--surface" data-bs-part="what" data-bs-reveal aria-labelledby="bs-ss-what-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.ui.whatWeDo)}</p>
       <h2 class="bs-title" id="bs-ss-what-title">${brHeadline(detail.whatWeDoTitle || detail.ui.whatWeDoTitle)}</h2>
-      ${areasHtml(detail.whatWeDo)}
+      ${areasHtml(detail.whatWeDo, "what")}
     </div></section>`;
 }
 
 function useCasesSection(detail) {
   if (!detail.useCases?.length) return "";
-  return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-use-title"><div class="bs-inner">
+  return `<section class="bs-section" data-bs-part="usecases" data-bs-reveal aria-labelledby="bs-ss-use-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.useCasesLabel || detail.ui.useCases)}</p>
       <h2 class="bs-title" id="bs-ss-use-title">${brHeadline(detail.useCasesTitle || detail.ui.useCasesTitle)}</h2>
       ${detail.useCasesLead ? `<p class="bs-lead">${escapeHtml(detail.useCasesLead).replace(/\n/g, "<br />")}</p>` : ""}
-      ${areasHtml(detail.useCases)}
+      ${areasHtml(detail.useCases, "board")}
       ${detail.useCasesNote ? `<p class="bs-note">${escapeHtml(detail.useCasesNote)}</p>` : ""}
     </div></section>`;
 }
 
 function compareSection(detail) {
   if (!detail.compare?.length) return "";
-  return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-compare-title"><div class="bs-inner">
+  return `<section class="bs-section bs-section--surface" data-bs-part="compare" data-bs-reveal aria-labelledby="bs-ss-compare-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.compareLabel || "BEFORE → AFTER")}</p>
       <h2 class="bs-title" id="bs-ss-compare-title">${brHeadline(detail.compareTitle || "")}</h2>
       ${detail.compareLead ? `<p class="bs-lead">${escapeHtml(detail.compareLead)}</p>` : ""}
-      ${areasHtml(detail.compare)}
+      ${areasHtml(detail.compare, "compare")}
     </div></section>`;
 }
 
 function checksSection(detail) {
   if (!detail.checks?.length) return "";
-  return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-checks-title"><div class="bs-inner">
+  return `<section class="bs-section" data-bs-part="checks" data-bs-reveal aria-labelledby="bs-ss-checks-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.checksLabel || "DIGITAL CHECK")}</p>
       <h2 class="bs-title" id="bs-ss-checks-title">${brHeadline(detail.checksTitle || "")}</h2>
       ${detail.checksLead ? `<p class="bs-lead">${escapeHtml(detail.checksLead).replace(/\n/g, "<br />")}</p>` : ""}
-      ${areasHtml(detail.checks)}
+      ${areasHtml(detail.checks, "axiom")}
       ${detail.checksNote ? `<p class="bs-note">${escapeHtml(detail.checksNote)}</p>` : ""}
     </div></section>`;
 }
 
 function versusSection(detail) {
   if (!detail.versus?.length) return "";
-  return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-versus-title"><div class="bs-inner">
+  return `<section class="bs-section" data-bs-part="versus" data-bs-reveal aria-labelledby="bs-ss-versus-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.versusLabel || "LOGO vs IDENTITY")}</p>
       <h2 class="bs-title" id="bs-ss-versus-title">${brHeadline(detail.versusTitle || "")}</h2>
       ${detail.versusLead ? `<p class="bs-lead">${escapeHtml(detail.versusLead).replace(/\n/g, "<br />")}</p>` : ""}
-      ${areasHtml(detail.versus)}
+      ${areasHtml(detail.versus, "compare")}
       ${detail.versusNote ? `<p class="bs-note">${escapeHtml(detail.versusNote)}</p>` : ""}
     </div></section>`;
 }
 
 function conceptFlowSection(detail) {
   if (!detail.conceptFlow?.length) return "";
-  return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-concept-title"><div class="bs-inner">
+  return `<section class="bs-section bs-section--surface" data-bs-part="concept" data-bs-reveal aria-labelledby="bs-ss-concept-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.conceptFlowLabel || "CONCEPT → SYSTEM")}</p>
       <h2 class="bs-title" id="bs-ss-concept-title">${brHeadline(detail.conceptFlowTitle || "")}</h2>
       ${detail.conceptFlowLead ? `<p class="bs-lead">${escapeHtml(detail.conceptFlowLead).replace(/\n/g, "<br />")}</p>` : ""}
-      ${areasHtml(detail.conceptFlow)}
+      ${areasHtml(detail.conceptFlow, "what")}
     </div></section>`;
 }
 
@@ -325,34 +333,33 @@ function tagChips(items) {
   return `<ul class="bs-chips">${items.map((t) => `<li>${escapeHtml(t)}</li>`).join("")}</ul>`;
 }
 
+function includedListHtml(items, variant = "included") {
+  if (!items?.length) return "";
+  return `<ul class="bs-deliver bs-deliver--${variant}" data-count="${items.length}" data-variant="${escapeHtml(variant)}">${items
+    .map(
+      (t, i) =>
+        `<li class="bs-deliver__item"><span class="bs-deliver__n" aria-hidden="true">${pad2(i + 1)}</span><span class="bs-deliver__t">${escapeHtml(t)}</span></li>`
+    )
+    .join("")}</ul>`;
+}
+
 function includedSection(detail) {
   if (!detail.included?.length) return "";
-  return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-included-title"><div class="bs-inner">
+  return `<section class="bs-section" data-bs-part="included" data-bs-reveal aria-labelledby="bs-ss-included-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.ui.included)}</p>
       <h2 class="bs-title" id="bs-ss-included-title">${brHeadline(detail.includedTitle || detail.ui.includedTitle)}</h2>
       ${detail.includedNote ? `<p class="bs-lead">${escapeHtml(detail.includedNote)}</p>` : ""}
-      ${tagChips(detail.included)}
+      ${includedListHtml(detail.included, "included")}
     </div></section>`;
-}
-
-function deliverGridHtml(items) {
-  if (!items?.length) return "";
-  return `<div class="bs-deliver-grid">${items
-    .map((t, i) => {
-      const title = typeof t === "string" ? t : t.title || t.t || "";
-      const body = typeof t === "object" ? t.body || t.d || "" : "";
-      return `<article class="bs-deliver-grid__item"><span class="bs-deliver-grid__n">${pad2(i + 1)}</span><h3>${escapeHtml(title)}</h3>${body ? `<p>${escapeHtml(body)}</p>` : ""}</article>`;
-    })
-    .join("")}</div>`;
 }
 
 function deliverablesSection(detail) {
   if (!detail.deliverables?.length) return "";
-  return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-deliver-title"><div class="bs-inner">
+  return `<section class="bs-section bs-section--surface" data-bs-part="deliver" data-bs-reveal aria-labelledby="bs-ss-deliver-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.ui.deliverables)}</p>
       <h2 class="bs-title" id="bs-ss-deliver-title">${brHeadline(detail.deliverablesTitle || detail.ui.deliverablesTitle)}</h2>
       <p class="bs-lead">${escapeHtml(detail.deliverablesLead || detail.ui.deliverablesLead)}</p>
-      ${deliverGridHtml(detail.deliverables)}
+      ${getGridHtml(detail.deliverables, "deliver")}
     </div></section>`;
 }
 
@@ -363,7 +370,9 @@ function flowStageGridHtml(steps, opts = {}) {
     .map((s, i) => {
       const n = pad2(i + 1);
       const title = escapeHtml(s.t);
-      const body = escapeHtml(s.d || "").replace(/\n/g, "<br />");
+      const body = escapeHtml(s.d || "")
+        .replace(/\n{2,}/g, "\n")
+        .replace(/\n/g, "<br />");
       const on = s.current ? " is-on" : "";
       const inner = `<span class="bs-flow-stage-grid__n">${n}</span><h3>${title}</h3><p>${body}</p>`;
       if (s.href && !s.current) {
@@ -375,12 +384,24 @@ function flowStageGridHtml(steps, opts = {}) {
   return `<div class="bs-flow-stage-grid" data-cols="${cols}">${cards}</div>`;
 }
 
+function processListHtml(steps) {
+  if (!steps?.length) return "";
+  return `<ol class="bs-process bs-process--steps" data-count="${steps.length}">${steps
+    .map((s, i) => {
+      const body = escapeHtml(s.d || "")
+        .replace(/\n{2,}/g, "\n")
+        .replace(/\n/g, "<br />");
+      return `<li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">${pad2(i + 1)}</span><div class="bs-process__copy"><h3>${escapeHtml(s.t)}</h3><p>${body}</p></div></li>`;
+    })
+    .join("")}</ol>`;
+}
+
 function processSection(detail) {
   if (!detail.process?.length) return "";
-  return `<section class="bs-section" data-bs-reveal id="process" aria-labelledby="bs-ss-process-title"><div class="bs-inner">
+  return `<section class="bs-section" data-bs-part="process" data-bs-reveal id="process" aria-labelledby="bs-ss-process-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.ui.process)}</p>
       <h2 class="bs-title" id="bs-ss-process-title">${brHeadline(detail.processTitle || detail.ui.processTitle)}</h2>
-      ${flowStageGridHtml(detail.process)}
+      ${processListHtml(detail.process)}
     </div></section>`;
 }
 
@@ -412,7 +433,7 @@ function timelineSection(detail) {
 
 function optionalSection(detail) {
   if (!detail.optionalScope?.length) return "";
-  return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-optional-title"><div class="bs-inner">
+  return `<section class="bs-section" data-bs-part="optional" data-bs-reveal aria-labelledby="bs-ss-optional-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(detail.optionalLabel || detail.ui.optional)}</p>
       <h2 class="bs-title" id="bs-ss-optional-title">${brHeadline(detail.optionalTitle || detail.ui.optionalTitle)}</h2>
       <p class="bs-lead">${escapeHtml(
@@ -420,7 +441,7 @@ function optionalSection(detail) {
           ? "아래 항목은 기본 범위에 포함되지 않습니다. 필요하면 별도 범위로 협의합니다."
           : "These items are outside the base scope. Add them only when needed."
       )}</p>
-      ${tagChips(detail.optionalScope)}
+      ${includedListHtml(detail.optionalScope, "optional")}
     </div></section>`;
 }
 
@@ -750,7 +771,6 @@ ${developmentSection(detail)}
 ${nextStepsSection(detail)}
 ${noticesSection(detail)}
 ${faqSection(detail)}
-${exploreSection(detail)}
 ${adjacentSection(detail)}
 ${finalSection(detail, inquiryHref)}`;
 }

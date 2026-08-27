@@ -89,7 +89,19 @@ function breadcrumb(copy, slug, { hubLabel, hubHref = "../", slugLabel } = {}) {
 
 
 function heroVisual(copy) {
-  const mark = (copy.eyebrow || "NEWON").replace(/^NEWON\s+/i, "") || "NEWON";
+  const mark = (copy.eyebrow || "NEWON").replace(/^NEWON\s+/i, "").trim() || "NEWON";
+  const parts = mark.split(/\s*·\s*/).map((s) => s.trim()).filter(Boolean);
+  if (parts.length >= 2) {
+    const top = parts[0];
+    const bot = parts.slice(1).join(" · ");
+    return `<aside class="bp-hero__visual bp-hero__visual--mark" aria-hidden="true">
+    <p class="bp-mark bp-mark--stack">
+      <span class="bp-mark__line">${escapeHtml(top)}</span>
+      <span class="bp-mark__dot"></span>
+      <span class="bp-mark__line">${escapeHtml(bot)}</span>
+    </p>
+  </aside>`;
+  }
   return `<aside class="bp-hero__visual bp-hero__visual--mark" aria-hidden="true">
     <p class="bp-mark">${escapeHtml(mark)}</p>
   </aside>`;

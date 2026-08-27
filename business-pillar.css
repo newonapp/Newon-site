@@ -298,6 +298,38 @@
   user-select: none;
 }
 
+.bp-mark--stack {
+  display: grid;
+  justify-items: start;
+  gap: 0.35rem;
+  font-size: clamp(2.65rem, 6.8vw, 5.35rem);
+  max-width: 100%;
+}
+
+.bp-mark__line {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--bp-line);
+  line-height: 0.88;
+}
+
+.bp-mark__dot {
+  width: 0.55em;
+  height: 0.55em;
+  margin: 0.15rem 0 0.2rem;
+  border: 1.5px solid var(--bp-line);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+html[data-newon-shell-theme="dark"] .bp-mark,
+html[data-newon-shell-theme="dark"] .bp-mark__line {
+  -webkit-text-stroke-color: rgba(255, 255, 255, 0.18);
+}
+html[data-newon-shell-theme="dark"] .bp-mark__dot {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
 .bp-hero__visual--mark {
   align-self: end;
 }

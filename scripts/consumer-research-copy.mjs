@@ -302,7 +302,7 @@ export const CONSUMER_RESEARCH_COPY = {
         examples: ["Final Brief", "Map", "Next Steps"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "프로젝트 복잡도를 이해하기 위한 구분입니다.",
     scopeLead: "고정 패키지가 아닙니다. 조사 목적, 대상, 1차 조사 포함 여부에 맞춰 범위를 정합니다.",
     scopes: [
@@ -697,7 +697,7 @@ export const CONSUMER_RESEARCH_COPY = {
         examples: ["Final Brief", "Map", "Next Steps"],
       },
     ],
-    scopeLabel: "PROJECT SCOPE",
+    scopeLabel: "SCOPE LEVELS",
     scopeTitle: "A guide to project complexity.",
     scopeLead: "Not fixed packages — we scope based on goal, audience, and primary research inclusion.",
     scopes: [

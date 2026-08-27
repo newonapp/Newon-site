@@ -1854,25 +1854,66 @@ function engagementSectionHtml(copy, timelines = [], opts = {}) {
   const factorLimit = opts.factorLimit || 8;
   const lead = opts.lead ?? copy.timeLead ?? copy.priceLead ?? "";
   const footnote = opts.footnote ?? "";
+  const lang = copy._pageLang === "ko" || /[가-힣]/.test(String(copy.priceTitle || "")) ? "ko" : copy._pageLang || "en";
+  const isKo = lang === "ko";
 
-  const timelineHtml = timelines.length
-    ? `<div class="bs-price-tiers">${timelines
+  const timelineValue =
+    copy._timelineValue ||
+    (timelines.length === 1 ? timelines[0].body || timelines[0].d || "" : "");
+
+  // Studio-style TIMELINE (single estimate) or process rail (multiple packages)
+  let timelineHtml = "";
+  if (timelines.length === 1 || (timelineValue && timelines.length <= 1)) {
+    const value = timelineValue || timelines[0]?.body || timelines[0]?.d || "";
+    const timeTitle =
+      copy.timeTitle || (isKo ? "예상 진행 기간" : "Estimated timeline");
+    const timeLead =
+      lead ||
+      (isKo
+        ? "표시된 기간은 기본 프로젝트 범위 기준입니다. 실제 일정은 범위와 요구사항에 따라 달라질 수 있습니다."
+        : "The range shown is for a basic project scope. The actual schedule may vary with scope and requirements.");
+    timelineHtml = `<section class="${sectionClass}" data-bs-reveal aria-labelledby="${id}-time"><div class="bs-inner">
+      <div class="bs-dr-split">
+        <div class="bs-dr-split__copy">
+          <p class="bs-eyebrow">TIMELINE</p>
+          <h2 class="bs-title" id="${id}-time">${escapeHtml(timeTitle)}</h2>
+          <p class="bs-lead">${escapeHtml(timeLead)}</p>
+        </div>
+        <aside class="bs-dr-meta" aria-label="Timeline">
+          <div class="bs-dr-meta__row"><p class="bs-dr-meta__k">TIMELINE</p><p class="bs-dr-meta__v">${escapeHtml(value)}</p></div>
+          <div class="bs-dr-meta__row"><p class="bs-dr-meta__k">${isKo ? "기준" : "BASE"}</p><p class="bs-dr-meta__v">${isKo ? "기본 범위 프로젝트" : "Basic-scope project"}</p></div>
+        </aside>
+      </div>
+    </div></section>`;
+  } else if (timelines.length > 1) {
+    timelineHtml = `<section class="${sectionClass}" data-bs-reveal aria-labelledby="${id}-time"><div class="bs-inner">
+      <p class="bs-eyebrow">TIMELINE</p>
+      <h2 class="bs-title" id="${id}-time">${escapeHtml(copy.timeTitle || (isKo ? "범위별 예상 기간" : "Timeline by scope"))}</h2>
+      ${lead ? `<p class="bs-lead">${escapeHtml(lead)}</p>` : ""}
+      <ol class="bs-process">${timelines
         .map(
           (t, i) =>
-            `<article class="bs-price-tiers__item"><span class="bs-price-tiers__n">${escapeHtml(t.n || pad2(i + 1))}</span><h3 class="bs-price-tiers__title">${escapeHtml(t.title || t.t || "")}</h3><p class="bs-price-tiers__meta">${escapeHtml(t.body || t.d || "")}</p></article>`
+            `<li class="bs-process__item"><span class="bs-process__n">${escapeHtml(t.n || pad2(i + 1))}</span><h3>${escapeHtml(t.title || t.t || "")}</h3><p>${escapeHtml(t.body || t.d || "")}</p></li>`
         )
-        .join("")}</div>`
-    : "";
+        .join("")}</ol>
+    </div></section>`;
+  }
 
+  const factorsLabel =
+    copy.priceFactorsLabel || (isKo ? "기본 범위" : "Basic scope");
   const priceHtml = copy.priceValue
-    ? `<div class="bs-price">
+    ? `<div class="bs-price bs-price--scope">
       <div class="bs-price__panel">
         <p class="bs-price__name">${escapeHtml(copy.priceName || priceNameDefault)}</p>
         <p class="bs-price__value">${escapeHtml(copy.priceValue)}</p>
-        ${copy.priceNote ? `<p class="bs-price__note">${escapeHtml(copy.priceNote)}</p>` : ""}
+        ${
+          copy.priceNote
+            ? `<p class="bs-price__note">${escapeHtml(copy.priceNote).replace(/\n/g, "<br />")}</p>`
+            : ""
+        }
       </div>
       <div class="bs-price__detail">
-        <p class="bs-eyebrow">${escapeHtml(copy.priceFactorsLabel || "PRICING FACTORS")}</p>
+        <p class="bs-eyebrow">${escapeHtml(factorsLabel)}</p>
         <ul class="bs-price__factors">${(copy.priceFactors || [])
           .slice(0, factorLimit)
           .map((f) => priceFactorItemHtml(f))
@@ -1881,14 +1922,16 @@ function engagementSectionHtml(copy, timelines = [], opts = {}) {
     </div>`
     : "";
 
-  return `<section class="${sectionClass}" data-bs-reveal aria-labelledby="${id}"><div class="bs-inner">
-    <p class="bs-eyebrow">${escapeHtml(copy.priceLabel || "PROJECT COST")}</p>
+  const priceSection = copy.priceValue
+    ? `<section class="${sectionClass}" data-bs-reveal aria-labelledby="${id}"><div class="bs-inner">
+    <p class="bs-eyebrow">${escapeHtml(copy.priceLabel || "PROJECT SCOPE")}</p>
     <h2 class="bs-title" id="${id}">${escapeHtml(copy.priceTitle || copy.timeTitle || "")}</h2>
-    ${lead ? `<p class="bs-lead">${escapeHtml(lead)}</p>` : ""}
-    ${timelineHtml}
     ${priceHtml}
     ${footnote ? `<p class="bs-note">${escapeHtml(footnote)}</p>` : ""}
-  </div></section>`;
+  </div></section>`
+    : "";
+
+  return `${timelineHtml}${priceSection}`;
 }
 
 function faqHtml(faqs) {
@@ -2762,7 +2805,7 @@ function dataReportingExtras(copy) {
   /* SCOPE */
   if (copy.scopes?.length) {
     html += `<section class="bs-section" data-bs-reveal aria-labelledby="bs-dr-scope-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(copy.scopeLabel || "PROJECT SCOPE")}</p>
+      <p class="bs-eyebrow">${escapeHtml(copy.scopeLabel || "SCOPE LEVELS")}</p>
       <h2 class="bs-title" id="bs-dr-scope-title">${escapeHtml(copy.scopeTitle || "")}</h2>
       ${copy.scopeLead ? `<p class="bs-lead">${escapeHtml(copy.scopeLead)}</p>` : ""}
       <div class="bs-scope bs-scope--levels bs-scope--cards">${copy.scopes
@@ -3054,7 +3097,7 @@ function researchDetailExtras(copy, cfg = {}) {
   /* SCOPE */
   if (copy.scopes?.length) {
     html += `<section class="bs-section" data-bs-reveal aria-labelledby="bs-dr-scope-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(copy.scopeLabel || "PROJECT SCOPE")}</p>
+      <p class="bs-eyebrow">${escapeHtml(copy.scopeLabel || "SCOPE LEVELS")}</p>
       <h2 class="bs-title" id="bs-dr-scope-title">${escapeHtml(copy.scopeTitle || "")}</h2>
       ${copy.scopeLead ? `<p class="bs-lead">${escapeHtml(copy.scopeLead)}</p>` : ""}
       <div class="bs-scope bs-scope--levels bs-scope--cards">${copy.scopes
@@ -3723,7 +3766,7 @@ function internalToolsExtras(copy) {
 
   if (copy.scopes?.length) {
     html += `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-it-scope-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(copy.scopeLabel || "PROJECT SCOPE")}</p>
+      <p class="bs-eyebrow">${escapeHtml(copy.scopeLabel || "SCOPE LEVELS")}</p>
       <h2 class="bs-title" id="bs-it-scope-title">${escapeHtml(copy.scopeTitle || "")}</h2>
       ${copy.scopeLead ? `<p class="bs-lead">${escapeHtml(copy.scopeLead)}</p>` : ""}
       <div class="bs-scope bs-scope--levels bs-scope--cards">${copy.scopes
