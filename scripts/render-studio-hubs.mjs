@@ -287,7 +287,7 @@ function contactBody(flat, flatEn) {
   </div></section>`;
 }
 
-const RESOURCE_REDIRECT_HUBS = new Set(["store", "blog", "media", "labs"]);
+const RESOURCE_REDIRECT_HUBS = new Set(["store", "blog", "labs"]);
 
 const HUB_RENDERERS = {
   products: (f, fe, l) => ({ activeNav: "products", title: pick(f, fe, "studio.productsSeoTitle"), description: pick(f, fe, "studio.productsMetaDescription"), body: productsBody(f, fe, l) }),
@@ -355,6 +355,8 @@ for (const hub of HUB_PAGES) {
   writeRootRedirect(hub);
   const fn = HUB_RENDERERS[hub];
   for (const lang of LANGS) {
+    // Media canonical hub is owned by renderResources → /{lang}/media/
+    if (hub === "media") continue;
     if (RESOURCE_REDIRECT_HUBS.has(hub)) {
       const out = path.join(ROOT, lang.dir, hub, "index.html");
       ensureDir(out);

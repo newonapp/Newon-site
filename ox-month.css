@@ -764,11 +764,13 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8125rem 1.35rem;
-  border-radius: 999px;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
+  border-radius: 2px;
   font-family: inherit;
-  font-size: 0.90625rem;
+  font-size: 0.9375rem;
   font-weight: 600;
+  letter-spacing: -0.01em;
   border: 1px solid var(--ox-border-hover);
   background: var(--ox-surface);
   color: var(--ox-muted);

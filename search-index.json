@@ -527,17 +527,6 @@
     ]
   },
   {
-    "title": "media",
-    "type": "page",
-    "url": "https://www.newon.app/ko/resources/media/",
-    "lang": "ko",
-    "featured": false,
-    "tags": [
-      "resources",
-      "media"
-    ]
-  },
-  {
     "title": "labs",
     "type": "page",
     "url": "https://www.newon.app/ko/resources/labs/",
@@ -744,7 +733,7 @@
   },
   {
     "title": "Character Lab",
-    "desc": "Newon 브랜드와 제품에 연결될 캐릭터 IP를 탐색합니다. 공개 가능한 캐릭터는 아직 없습니다 — Building 상태입니다.",
+    "desc": "Newon 브랜드와 제품에 연결될 캐릭터 IP를 탐색합니다. 공개 가능한 캐릭터는 아직 없습니다.",
     "type": "labs",
     "url": "https://www.newon.app/ko/resources/labs/character-lab/",
     "lang": "ko",
@@ -1336,17 +1325,6 @@
     ]
   },
   {
-    "title": "media",
-    "type": "page",
-    "url": "https://www.newon.app/en/resources/media/",
-    "lang": "en",
-    "featured": false,
-    "tags": [
-      "resources",
-      "media"
-    ]
-  },
-  {
     "title": "labs",
     "type": "page",
     "url": "https://www.newon.app/en/resources/labs/",
@@ -1553,7 +1531,7 @@
   },
   {
     "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
     "type": "labs",
     "url": "https://www.newon.app/en/resources/labs/character-lab/",
     "lang": "en",
@@ -2145,17 +2123,6 @@
     ]
   },
   {
-    "title": "media",
-    "type": "page",
-    "url": "https://www.newon.app/ja/resources/media/",
-    "lang": "ja",
-    "featured": false,
-    "tags": [
-      "resources",
-      "media"
-    ]
-  },
-  {
     "title": "labs",
     "type": "page",
     "url": "https://www.newon.app/ja/resources/labs/",
@@ -2362,7 +2329,7 @@
   },
   {
     "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
     "type": "labs",
     "url": "https://www.newon.app/ja/resources/labs/character-lab/",
     "lang": "ja",
@@ -2954,17 +2921,6 @@
     ]
   },
   {
-    "title": "media",
-    "type": "page",
-    "url": "https://www.newon.app/es/resources/media/",
-    "lang": "es",
-    "featured": false,
-    "tags": [
-      "resources",
-      "media"
-    ]
-  },
-  {
     "title": "labs",
     "type": "page",
     "url": "https://www.newon.app/es/resources/labs/",
@@ -3171,7 +3127,7 @@
   },
   {
     "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
     "type": "labs",
     "url": "https://www.newon.app/es/resources/labs/character-lab/",
     "lang": "es",
@@ -3763,17 +3719,6 @@
     ]
   },
   {
-    "title": "media",
-    "type": "page",
-    "url": "https://www.newon.app/pt-br/resources/media/",
-    "lang": "pt-br",
-    "featured": false,
-    "tags": [
-      "resources",
-      "media"
-    ]
-  },
-  {
     "title": "labs",
     "type": "page",
     "url": "https://www.newon.app/pt-br/resources/labs/",
@@ -3980,7 +3925,7 @@
   },
   {
     "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
     "type": "labs",
     "url": "https://www.newon.app/pt-br/resources/labs/character-lab/",
     "lang": "pt-br",
@@ -4572,17 +4517,6 @@
     ]
   },
   {
-    "title": "media",
-    "type": "page",
-    "url": "https://www.newon.app/fr/resources/media/",
-    "lang": "fr",
-    "featured": false,
-    "tags": [
-      "resources",
-      "media"
-    ]
-  },
-  {
     "title": "labs",
     "type": "page",
     "url": "https://www.newon.app/fr/resources/labs/",
@@ -4789,7 +4723,7 @@
   },
   {
     "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
     "type": "labs",
     "url": "https://www.newon.app/fr/resources/labs/character-lab/",
     "lang": "fr",
@@ -5381,17 +5315,6 @@
     ]
   },
   {
-    "title": "media",
-    "type": "page",
-    "url": "https://www.newon.app/de/resources/media/",
-    "lang": "de",
-    "featured": false,
-    "tags": [
-      "resources",
-      "media"
-    ]
-  },
-  {
     "title": "labs",
     "type": "page",
     "url": "https://www.newon.app/de/resources/labs/",
@@ -5598,7 +5521,7 @@
   },
   {
     "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
     "type": "labs",
     "url": "https://www.newon.app/de/resources/labs/character-lab/",
     "lang": "de",
@@ -6190,17 +6113,6 @@
     ]
   },
   {
-    "title": "media",
-    "type": "page",
-    "url": "https://www.newon.app/hi/resources/media/",
-    "lang": "hi",
-    "featured": false,
-    "tags": [
-      "resources",
-      "media"
-    ]
-  },
-  {
     "title": "labs",
     "type": "page",
     "url": "https://www.newon.app/hi/resources/labs/",
@@ -6407,7 +6319,7 @@
   },
   {
     "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
     "type": "labs",
     "url": "https://www.newon.app/hi/resources/labs/character-lab/",
     "lang": "hi",
@@ -6999,17 +6911,6 @@
     ]
   },
   {
-    "title": "media",
-    "type": "page",
-    "url": "https://www.newon.app/id/resources/media/",
-    "lang": "id",
-    "featured": false,
-    "tags": [
-      "resources",
-      "media"
-    ]
-  },
-  {
     "title": "labs",
     "type": "page",
     "url": "https://www.newon.app/id/resources/labs/",
@@ -7216,7 +7117,7 @@
   },
   {
     "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
     "type": "labs",
     "url": "https://www.newon.app/id/resources/labs/character-lab/",
     "lang": "id",

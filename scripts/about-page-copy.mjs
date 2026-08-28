@@ -43,7 +43,7 @@ const KO = {
     { head: "ON", items: ["Build", "Launch", "Operate"] },
   ],
   metricLabels: {
-    products: "PRODUCTS",
+    products: "APPS",
     languages: "LANGUAGES",
     countries: "COUNTRIES",
     experiments: "EXPERIMENTS",
@@ -399,7 +399,7 @@ const EN = {
     { head: "ON", items: ["Build", "Launch", "Operate"] },
   ],
   metricLabels: {
-    products: "PRODUCTS",
+    products: "APPS",
     languages: "LANGUAGES",
     countries: "COUNTRIES",
     experiments: "EXPERIMENTS",

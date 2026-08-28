@@ -227,7 +227,7 @@ const KO = {
     heroKeywords: ["Campaign", "Brand Integration", "Content", "Promotion"],
     ctaPrimary: "프로모션 문의 →",
     ctaSecondary: "Media 보기 →",
-    ctaSecondaryHref: "../../../resources/media/",
+    ctaSecondaryHref: "../../../media/",
     whoTitle: "이런 브랜드·서비스에 적합합니다",
     whoItems: [
       { title: "소비자 브랜드", body: "Newon 사용자 맥락과 관련 있는 생활·소비 브랜드" },
@@ -302,7 +302,7 @@ const KO = {
     finalLead: "브랜드와 목표를 알려주시면, 서비스에 맞는 방식을 함께 검토합니다.",
     finalBtn: "광고·프로모션 문의 →",
     related: [
-      { label: "Media", href: "../../../resources/media/" },
+      { label: "Media", href: "../../../media/" },
       { label: "Studio / Campaign", href: "../../../studio/content/campaign/" },
       { label: "Products", href: "../../../products/" },
     ],
@@ -637,7 +637,7 @@ const EN = {
     heroKeywords: ["Campaign", "Brand Integration", "Content", "Promotion"],
     ctaPrimary: "Inquire about promotion →",
     ctaSecondary: "View Media →",
-    ctaSecondaryHref: "../../../resources/media/",
+    ctaSecondaryHref: "../../../media/",
     whoTitle: "Who this is for",
     whoItems: [
       { title: "Consumer brands", body: "Lifestyle and consumer brands relevant to Newon users" },
@@ -712,7 +712,7 @@ const EN = {
     finalLead: "Share your brand and goals. We will review a format that fits the service.",
     finalBtn: "Inquire about advertising & promotion →",
     related: [
-      { label: "Media", href: "../../../resources/media/" },
+      { label: "Media", href: "../../../media/" },
       { label: "Studio / Campaign", href: "../../../studio/content/campaign/" },
       { label: "Products", href: "../../../products/" },
     ],

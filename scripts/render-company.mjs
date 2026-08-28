@@ -124,20 +124,8 @@ function breadcrumb(copy, currentLabel, opts = {}) {
   </nav>`;
 }
 
-function companySwitcher(activeSlug, lang, base = "../") {
-  const labels = COMPANY_NAV_LABELS;
-  const links = COMPANY_PAGES.map((p) => {
-    const label = escapeHtml(labels[p.navKey]?.[lang === "ko" ? "ko" : "en"] || p.slug.toUpperCase());
-    const cls = p.slug === activeSlug ? "co-nav__link is-active" : "co-nav__link";
-    const pub = p.path || p.slug;
-    const href = p.slug === activeSlug ? "#" : `${base}${pub}/`;
-    return `<a class="${cls}" href="${href}"${p.slug === activeSlug ? ' aria-current="page"' : ""}>${label}</a>`;
-  }).join("");
-  return `<nav class="co-nav" aria-label="Company">
-    <div class="co-inner co-nav__inner">
-      <div class="co-nav__track">${links}</div>
-    </div>
-  </nav>`;
+function companySwitcher(_activeSlug, _lang, _base = "../") {
+  return "";
 }
 
 function exploreFooter(copy, base = "../") {

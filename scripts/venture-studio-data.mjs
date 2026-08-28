@@ -82,15 +82,13 @@ export const MEGA_DESTINATIONS = {
     { titleKey: "nav.store", descKey: "nav.megaStoreDesc", href: "resources/store/", titleFb: "STORE" },
     { titleKey: "nav.insights", descKey: "nav.megaInsightsDesc", href: "resources/insights/", titleFb: "INSIGHTS" },
     { titleKey: "nav.blog", descKey: "nav.megaBlogDesc", href: "resources/blog/", titleFb: "BLOG" },
-    { titleKey: "nav.media", descKey: "nav.megaMediaDesc", href: "resources/media/", titleFb: "MEDIA" },
     { titleKey: "nav.labs", descKey: "nav.megaLabsDesc", href: "resources/labs/", titleFb: "LABS" },
-    { titleKey: "nav.newsletter", descKey: "nav.megaNotesDesc", href: "resources/newsletter/", titleFb: "NOTES" },
-    { titleKey: "nav.education", descKey: "nav.megaEducationDesc", href: "resources/education/", titleFb: "EDUCATION" },
   ],
   company: [
     { titleKey: "nav.aboutNewon", descKey: "nav.megaAboutDesc", href: "about/", titleFb: "About" },
     { titleKey: "nav.portfolio", descKey: "nav.megaPortfolioDesc", href: "portfolio/", titleFb: "Portfolio" },
     { titleKey: "nav.newsUpdates", descKey: "nav.megaNewsDesc", href: "news/", titleFb: "News" },
+    { titleKey: "nav.media", descKey: "nav.megaMediaDesc", href: "media/", titleFb: "Media" },
     { titleKey: "nav.contact", descKey: "nav.megaContactDesc", href: "contact/", titleFb: "Contact" },
   ],
 };

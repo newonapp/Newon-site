@@ -2,7 +2,7 @@
  * Resources > Blog hub body — Naver blog archive (editorial list).
  */
 import { escapeHtml } from "./hub-utils.mjs";
-import { getNaverBlogPosts, getFeaturedNaverBlogPost, NAVER_BLOG_HOME } from "./naver-blog-posts.mjs";
+import { getNaverBlogPosts, NAVER_BLOG_HOME } from "./naver-blog-posts.mjs";
 
 function t(post, lang, koKey, enKey) {
   return lang === "ko" ? post[koKey] || post[enKey] || "" : post[enKey] || post[koKey] || "";
@@ -11,36 +11,6 @@ function t(post, lang, koKey, enKey) {
 function catLabel(copy, cat) {
   const labels = copy.filterLabels || {};
   return labels[cat] || String(cat || "").toUpperCase();
-}
-
-function postMeta(post, copy) {
-  return `<span class="nb-meta__cat">${escapeHtml(catLabel(copy, post.category))}</span>
-    <span class="nb-meta__sep" aria-hidden="true">·</span>
-    <time class="nb-meta__date" datetime="${escapeHtml(post.date.replace(/\./g, "-"))}">${escapeHtml(post.date)}</time>
-    <span class="nb-meta__sep" aria-hidden="true">·</span>
-    <span class="nb-meta__src">${escapeHtml(copy.sourceLabel || "NAVER BLOG")}</span>`;
-}
-
-function featuredHtml(post, copy, lang) {
-  if (!post) return "";
-  const title = escapeHtml(t(post, lang, "titleKo", "titleEn"));
-  const summary = escapeHtml(t(post, lang, "summaryKo", "summaryEn"));
-  const hasImg = Boolean(post.thumbnail);
-  const cat = escapeHtml(String(post.category || "").toLowerCase());
-  return `<a class="nb-featured__card${hasImg ? " nb-featured__card--media" : ""}" href="${escapeHtml(post.url)}" target="_blank" rel="noopener noreferrer" data-category="${cat}" data-rs-reveal>
-      <div class="nb-featured__main">
-        <p class="nb-eyebrow nb-eyebrow--inline">${escapeHtml(copy.featuredTitle || "FEATURED")}</p>
-        <p class="nb-meta">${postMeta(post, copy)}</p>
-        <h2 class="nb-featured__title">${title}</h2>
-        <p class="nb-featured__summary">${summary}</p>
-        <span class="nb-link">${escapeHtml(copy.readFeatured || "Read on Naver →")}</span>
-      </div>
-      ${
-        hasImg
-          ? `<div class="nb-featured__media"><img src="${escapeHtml(post.thumbnail)}" alt="" loading="lazy" decoding="async" width="640" height="480" /></div>`
-          : ""
-      }
-    </a>`;
 }
 
 function postRowHtml(post, copy, lang) {
@@ -69,20 +39,18 @@ function postRowHtml(post, copy, lang) {
 /**
  * @param {object} copies
  * @param {'ko'|'en'} lang
- * @param {{ breadcrumb: Function, resourceSwitcher: Function, exploreGrid: Function }} helpers
+ * @param {{ breadcrumb: Function, resourceSwitcher: Function, exploreGrid: Function, heroBlock: Function }} helpers
  */
 export function buildBlogHubBody(copies, lang, helpers) {
   const copy = copies.blog;
   const posts = getNaverBlogPosts();
-  const featured = getFeaturedNaverBlogPost();
-  const listPosts = featured ? posts.filter((p) => p.id !== featured.id) : posts;
   const filters = Object.entries(copy.filterLabels || { all: "ALL" })
     .map(
       ([k, v]) =>
         `<button type="button" class="nb-filter${k === "all" ? " is-active" : ""}" data-rs-filter="${escapeHtml(k)}">${escapeHtml(v)}</button>`
     )
     .join("");
-  const rows = listPosts.map((p) => postRowHtml(p, copy, lang)).join("");
+  const rows = posts.map((p) => postRowHtml(p, copy, lang)).join("");
   const emptyMsg = escapeHtml(copy.filterEmpty || copy.emptyTitle || "");
 
   let archive = "";
@@ -99,7 +67,6 @@ export function buildBlogHubBody(copies, lang, helpers) {
       <div class="nb-filters" data-rs-filters role="tablist" aria-label="${escapeHtml(copy.filterAria || "Categories")}">${filters}</div>
       <section class="nb-latest" aria-labelledby="nb-latest-title">
         <div class="nb-list" data-rs-filter-grid>
-          ${featured ? featuredHtml(featured, copy, lang) : ""}
           <h2 class="nb-eyebrow nb-latest__label" id="nb-latest-title">${escapeHtml(copy.latestTitle || "LATEST POSTS")}</h2>
           ${rows}
         </div>
@@ -107,18 +74,11 @@ export function buildBlogHubBody(copies, lang, helpers) {
       </section>`;
   }
 
-  const hero = `<header class="nb-hero">
-    <div class="rs-inner nb-hero__inner">
-      <div class="nb-hero__copy">
-        <p class="nb-eyebrow">${escapeHtml(copy.eyebrow || "NEWON BLOG")}</p>
-        <h1 class="nb-hero__title">${escapeHtml(copy.headline || "Blog")}</h1>
-        <p class="nb-hero__lead">${escapeHtml(copy.lead || "")}</p>
-      </div>
-      <a class="nb-ext nb-hero__ext" href="${escapeHtml(NAVER_BLOG_HOME)}" target="_blank" rel="noopener noreferrer">${escapeHtml(
-        copy.naverLink || "Naver Blog ↗"
-      )}</a>
-    </div>
-  </header>`;
+  const hero = helpers.heroBlock(copy, {
+    secondaryLabel: copy.naverLink,
+    secondaryHref: NAVER_BLOG_HOME,
+    secondaryExternal: true,
+  });
 
   const cta = `<section class="nb-cta" data-rs-reveal>
     <div class="rs-inner">
@@ -132,9 +92,9 @@ export function buildBlogHubBody(copies, lang, helpers) {
   </section>`;
 
   return `${helpers.breadcrumb(copy, copy.navLabel || "BLOG")}
+${hero}
 ${helpers.resourceSwitcher("blog", copies)}
 <div class="nb-page">
-${hero}
 <section class="nb-section" id="rs-content">
   <div class="rs-inner">${archive}</div>
 </section>

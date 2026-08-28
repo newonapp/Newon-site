@@ -2242,23 +2242,24 @@ html[data-newon-shell-theme="dark"] .hero-desc {
 
 .hero-btn-primary,
 .hero-btn-secondary {
-  min-height: 44px;
-  padding: 0.7rem 1.35rem;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
   font-size: 0.9375rem;
   font-weight: 600;
-  border-radius: 999px;
+  letter-spacing: -0.01em;
+  border-radius: 2px;
   transition:
+    opacity 0.2s ease,
     background 0.2s ease,
     border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.2s ease;
+    color 0.2s ease;
 }
 
 .hero-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
-  filter: brightness(1.06);
+  opacity: 0.88;
+  transform: none;
+  box-shadow: none;
+  filter: none;
 }
 
 .hero-btn-secondary {
@@ -2268,9 +2269,9 @@ html[data-newon-shell-theme="dark"] .hero-desc {
 }
 
 .hero-btn-secondary:hover {
-  transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--text) 28%, var(--border));
   background: color-mix(in srgb, var(--text) 4%, var(--surface));
+  transform: none;
 }
 
 .hero-btn-primary:focus-visible,
@@ -2332,22 +2333,24 @@ html[data-newon-shell-theme="dark"] .hero-desc {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8125rem 1.25rem;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
   font-family: inherit;
-  font-size: 0.90625rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  border-radius: 999px;
+  letter-spacing: -0.01em;
+  border-radius: 2px;
   border: 1px solid transparent;
   cursor: pointer;
   transition:
+    opacity 0.2s ease,
     background 0.2s ease,
     border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.15s ease;
+    color 0.2s ease;
 }
 
 .btn:active {
-  transform: scale(0.98);
+  transform: none;
 }
 
 .btn:focus-visible {
@@ -2361,7 +2364,7 @@ html[data-newon-shell-theme="dark"] .hero-desc {
 }
 
 .btn-primary:hover {
-  background: #ffffff;
+  opacity: 0.88;
 }
 
 .btn-ghost {
@@ -4337,7 +4340,8 @@ html[data-newon-shell-theme="light"] .hero-accent::after {
 }
 
 html[data-newon-shell-theme="light"] .btn-primary:hover {
-  background: #2a2a2a;
+  opacity: 0.88;
+  background: var(--accent);
   color: #ffffff;
 }
 

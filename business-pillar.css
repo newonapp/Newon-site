@@ -44,14 +44,15 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  min-height: 2.75rem;
-  padding: 0.65rem 1.15rem;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
   font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   text-decoration: none;
   border: 1px solid transparent;
-  transition: background 0.2s var(--bp-ease), color 0.2s ease, border-color 0.2s ease;
+  border-radius: 2px;
+  transition: opacity 0.2s var(--bp-ease), background 0.2s var(--bp-ease), color 0.2s ease, border-color 0.2s ease;
 }
 
 .bp-btn--primary {
@@ -60,7 +61,7 @@
 }
 
 .bp-btn--primary:hover {
-  background: #000;
+  opacity: 0.88;
 }
 
 .bp-btn--ghost {

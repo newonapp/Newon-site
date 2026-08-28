@@ -48,11 +48,13 @@ export function replaceLegacyChrome(
   out = out.replace(/<header class="site-header pf-header[\s\S]*?<\/header>/, header);
   out = out.replace(/<footer class="site-footer[\s\S]*?<\/footer>/, footer);
   out = out.replace(/<footer class="pf-foot[\s\S]*?<\/footer>/, footer);
+  out = out.replace(/<nav class="co-switch"[\s\S]*?<\/nav>\s*/g, "");
+  out = out.replace(/<nav class="co-nav"[\s\S]*?<\/nav>\s*/g, "");
   if (companySwitch) {
     const switcher = renderCompanySwitcher(flat, flatEn, { active: companySwitch, base });
-    // Remove prior switcher then insert after header
-    out = out.replace(/<nav class="co-switch"[\s\S]*?<\/nav>\s*/g, "");
-    out = out.replace(/(<\/header>)/, `$1\n${switcher}`);
+    if (switcher) {
+      out = out.replace(/(<\/header>)/, `$1\n${switcher}`);
+    }
   }
   if (!out.includes("hub-pages.css")) {
     out = out.replace(

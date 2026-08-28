@@ -689,12 +689,23 @@ function writeSitemap() {
     "resources/store",
     "resources/insights",
     "resources/blog",
-    "resources/media",
     "resources/labs",
     "resources/newsletter",
     "resources/education",
   ];
   for (const page of resourcePages) {
+    const alts = [
+      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),
+      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${page}/` },
+    ];
+    for (const { dir: d } of LANGS) {
+      urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.65", changefreq: "weekly", alternates: alts });
+    }
+  }
+
+  // Company Media
+  {
+    const page = "media";
     const alts = [
       ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),
       { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${page}/` },

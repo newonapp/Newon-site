@@ -1,15 +1,17 @@
 /**
- * Resources > Media hub body — Instagram / YouTube Media Library.
+ * Company > Media hub — Instagram / YouTube Media Library.
+ * Canonical: /{lang}/media/
  */
 import { escapeHtml } from "./hub-utils.mjs";
 import {
   getSocialLinks,
   getMediaHubItems,
-  getFeaturedMediaItem,
   getMediaByPlatform,
-  getActiveMediaSeries,
   iso8601Duration,
 } from "./media-data.mjs";
+
+const LATEST_LIMIT = 8;
+const PLATFORM_LIMIT = 4;
 
 function t(item, lang, koKey, enKey) {
   return lang === "ko" ? item[koKey] || item[enKey] || "" : item[enKey] || item[koKey] || "";
@@ -59,7 +61,7 @@ function watchLabel(item, copy) {
   return escapeHtml(copy.watchYoutube || "Watch on YouTube ↗");
 }
 
-function cardHtml(item, copy, lang, opts = {}) {
+function cardHtml(item, copy, lang) {
   const title = escapeHtml(t(item, lang, "titleKo", "titleEn"));
   const desc = escapeHtml(t(item, lang, "descriptionKo", "descriptionEn"));
   const cat = escapeHtml(item.category || "");
@@ -99,92 +101,9 @@ function cardHtml(item, copy, lang, opts = {}) {
   </${tag}>`;
 }
 
-function featuredHtml(item, copy, lang, social) {
-  if (!item) return "";
-  const title = escapeHtml(t(item, lang, "titleKo", "titleEn"));
-  const desc = escapeHtml(t(item, lang, "descriptionKo", "descriptionEn"));
-  const cat = escapeHtml(item.category || "");
-  const plat = escapeHtml(platformLabel(item.platform));
-  const date = displayDate(item.date);
-  const canPlay = item.platform === "youtube" && item.embedUrl;
-  const watch =
-    item.platform === "instagram"
-      ? escapeHtml(copy.viewInstagram || "View on Instagram ↗")
-      : escapeHtml(copy.watchYoutube || "Watch on YouTube ↗");
-
-  const player = canPlay
-    ? `<div class="mh-featured__player" data-mh-inline data-mh-embed="${escapeHtml(
-        item.embedUrl
-      )}" data-mh-title="${title}" tabindex="0">
-      ${thumbHtml(item, "mh-thumb mh-thumb--featured")}
-      ${playButton(item, copy)}
-    </div>`
-    : `<a class="mh-featured__player mh-featured__player--link" href="${escapeHtml(item.url)}" ${extAttrs()}>
-      ${thumbHtml(item, "mh-thumb mh-thumb--featured")}
-      ${playButton(item, copy)}
-    </a>`;
-
-  return `<section class="mh-featured" aria-labelledby="mh-featured-title" data-rs-reveal>
-    <div class="mh-featured__grid">
-      ${player}
-      <div class="mh-featured__copy">
-        <p class="mh-eyebrow mh-eyebrow--inline">${escapeHtml(copy.featuredTitle || "FEATURED")}</p>
-        <h2 class="mh-featured__title" id="mh-featured-title">${title}</h2>
-        <p class="mh-featured__desc">${desc}</p>
-        <p class="mh-featured__meta">
-          <span>${plat}</span><span aria-hidden="true"> · </span><span>${cat}</span>
-          ${date ? `<span aria-hidden="true"> · </span><time datetime="${escapeHtml(item.date)}">${escapeHtml(date)}</time>` : ""}
-          ${item.duration ? `<span aria-hidden="true"> · </span><span>${escapeHtml(item.duration)}</span>` : ""}
-        </p>
-        <a class="mh-link" href="${escapeHtml(item.url)}" ${extAttrs()}>${watch}</a>
-      </div>
-    </div>
-  </section>`;
-}
-
-function socialDirHtml(copy, social) {
-  return `<section class="mh-social" aria-label="${escapeHtml(copy.socialAria || "Social")}">
-    <a class="mh-social__row" href="${escapeHtml(social.instagram)}" ${extAttrs()}>
-      <span class="mh-social__brand">
-        <svg class="mh-social__icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689-.073-4.948 0-3.259-.014-3.668-.072-4.948-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        INSTAGRAM
-      </span>
-      <span class="mh-social__desc">${escapeHtml(copy.igDirDesc || "Short videos, product moments and updates")}</span>
-      <span class="mh-social__go">${escapeHtml(copy.viewIgDir || "View Instagram ↗")}</span>
-    </a>
-    <a class="mh-social__row" href="${escapeHtml(social.youtube)}" ${extAttrs()}>
-      <span class="mh-social__brand">
-        <svg class="mh-social__icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        YOUTUBE
-      </span>
-      <span class="mh-social__desc">${escapeHtml(copy.ytDirDesc || "Product demos, builds and longer stories")}</span>
-      <span class="mh-social__go">${escapeHtml(copy.viewYtDir || "View YouTube ↗")}</span>
-    </a>
-  </section>`;
-}
-
-function seriesHtml(copy, lang) {
-  const series = getActiveMediaSeries();
-  if (!series.length) return "";
-  const items = series
-    .map((s) => {
-      const title = escapeHtml(lang === "ko" ? s.titleKo : s.titleEn);
-      const desc = escapeHtml(lang === "ko" ? s.descKo : s.descEn);
-      const cat = escapeHtml(String(s.category || "").toLowerCase());
-      return `<button type="button" class="mh-series__item" data-mh-series-filter="${cat}">
-        <span class="mh-series__title">${title}</span>
-        <span class="mh-series__desc">${desc}</span>
-      </button>`;
-    })
-    .join("");
-  return `<section class="mh-series" aria-labelledby="mh-series-title">
-    <h2 class="mh-eyebrow" id="mh-series-title">${escapeHtml(copy.seriesTitle || "SERIES")}</h2>
-    <div class="mh-series__list">${items}</div>
-  </section>`;
-}
-
 function platformSection(platform, items, copy, lang, social) {
-  if (!items.length) return "";
+  const slice = items.slice(0, PLATFORM_LIMIT);
+  if (!slice.length) return "";
   const isIg = platform === "instagram";
   const title = escapeHtml(isIg ? copy.fromInstagram || "FROM INSTAGRAM" : copy.fromYoutube || "FROM YOUTUBE");
   const viewAll = isIg
@@ -195,13 +114,14 @@ function platformSection(platform, items, copy, lang, social) {
         copy.viewAllYt || "View all on YouTube ↗"
       )}</a>`;
 
-  const cards = items
-    .slice(0, isIg ? 6 : 6)
+  const cards = slice
     .map((item) => {
       if (isIg) {
         const titleT = escapeHtml(t(item, lang, "titleKo", "titleEn"));
         const date = displayDate(item.date);
-        return `<a class="mh-ig-card" href="${escapeHtml(item.url)}" ${extAttrs()} data-rs-reveal>
+        return `<a class="mh-ig-card" href="${escapeHtml(item.url)}" ${extAttrs()} data-rs-reveal data-category="${escapeHtml(
+          String(item.category || "").toLowerCase()
+        )}" data-collection="instagram">
           ${thumbHtml(item, "mh-thumb mh-thumb--square")}
           <span class="mh-ig-card__type">${escapeHtml(item.igType || "REEL")}</span>
           <span class="mh-ig-card__title">${titleT}</span>
@@ -239,26 +159,41 @@ function videoJsonLd(items) {
     if (dur) obj.duration = dur;
     return obj;
   });
-  const payload = {
+  return `<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",
     "@graph": nodes,
-  };
-  return `<script type="application/ld+json">${JSON.stringify(payload).replace(/</g, "\\u003c")}</script>`;
+  }).replace(/</g, "\\u003c")}</script>`;
+}
+
+function companyCrumb(copy, lang) {
+  const company = escapeHtml(lang === "ko" ? "회사" : "COMPANY");
+  const media = escapeHtml(copy.navLabel || "MEDIA");
+  return `<nav class="rs-crumb" aria-label="Breadcrumb">
+    <div class="rs-inner">
+      <a href="../about/">${company}</a>
+      <span class="rs-crumb__sep" aria-hidden="true">/</span>
+      <span>${media}</span>
+    </div>
+  </nav>`;
 }
 
 /**
  * @param {object} copies
  * @param {'ko'|'en'} lang
- * @param {{ breadcrumb: Function, resourceSwitcher: Function, exploreGrid: Function }} helpers
+ * @param {{ companySwitcher?: string }} [opts]
  */
-export function buildMediaHubBody(copies, lang, helpers) {
+export function buildMediaHubBody(copies, lang, opts = {}) {
   const copy = copies.media;
   const social = getSocialLinks(lang);
   const all = getMediaHubItems();
-  const featured = getFeaturedMediaItem();
-  const listItems = featured ? all.filter((m) => m.id !== featured.id) : all;
+  const listItems = all.slice(0, LATEST_LIMIT);
   const ig = getMediaByPlatform("instagram");
   const yt = getMediaByPlatform("youtube");
+  const emptyMsg = escapeHtml(
+    lang === "ko"
+      ? copy.filterEmptyKo || "이 카테고리에 해당하는 콘텐츠가 없습니다."
+      : copy.filterEmpty || "No media in this category."
+  );
 
   const filters = Object.entries(
     copy.filterLabels || {
@@ -280,7 +215,6 @@ export function buildMediaHubBody(copies, lang, helpers) {
     .join("");
 
   const cards = listItems.map((m) => cardHtml(m, copy, lang)).join("");
-  const emptyMsg = escapeHtml(copy.filterEmpty || "No media yet.");
 
   const hero = `<header class="mh-hero">
     <div class="rs-inner mh-hero__inner">
@@ -308,18 +242,14 @@ export function buildMediaHubBody(copies, lang, helpers) {
       <p class="mh-empty__lead">${escapeHtml(copy.emptyLead || "")}</p>
     </div>`
       : `
-    ${featuredHtml(featured, copy, lang, social)}
-    <div class="mh-filters" data-rs-filters role="tablist" aria-label="${escapeHtml(
-      copy.filterAria || "Filter media"
-    )}">${filters}</div>
+    <div data-rs-filters data-rs-filter-scope>
+    <div class="mh-filters" role="tablist" aria-label="${escapeHtml(copy.filterAria || "Filter media")}">${filters}</div>
     <section class="mh-latest" aria-labelledby="mh-latest-title">
       <h2 class="mh-eyebrow" id="mh-latest-title">${escapeHtml(copy.latestTitle || "LATEST MEDIA")}</h2>
       <div class="mh-grid" data-rs-filter-grid>${cards}</div>
-      <p class="mh-filter-empty" data-rs-filter-empty hidden>${emptyMsg}<br /><span class="mh-filter-empty__sub">${escapeHtml(
-          copy.filterEmptySub || "현재 등록된 콘텐츠가 없습니다."
-        )}</span></p>
+      <p class="mh-filter-empty" data-rs-filter-empty hidden>${emptyMsg}</p>
     </section>
-    ${seriesHtml(copy, lang)}
+    </div>
     ${platformSection("instagram", ig, copy, lang, social)}
     ${platformSection("youtube", yt, copy, lang, social)}`;
 
@@ -339,18 +269,16 @@ export function buildMediaHubBody(copies, lang, helpers) {
     </div>
   </section>`;
 
-  return `${helpers.breadcrumb(copy, copy.navLabel || "MEDIA")}
-${helpers.resourceSwitcher("media", copies)}
+  return `${companyCrumb(copy, lang)}
+${opts.companySwitcher || ""}
 <div class="mh-page">
 ${hero}
 <section class="mh-section" id="rs-content">
   <div class="rs-inner">
-    ${socialDirHtml(copy, social)}
     ${latest}
   </div>
 </section>
 ${cta}
 </div>
-${helpers.exploreGrid(copies, "../", "media")}
 ${videoJsonLd(yt)}`;
 }

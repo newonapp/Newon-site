@@ -587,14 +587,15 @@ html[data-newon-shell-theme="dark"] .ni-field textarea {
   padding-top: 1.15rem;
 }
 .ni-page .ni-actions .btn-primary {
-  min-height: 50px;
-  height: 50px;
-  padding: 0 1.45rem;
-  border-radius: 999px;
+  min-height: 3.1rem;
+  height: auto;
+  padding: 0.75rem 1.35rem;
+  border-radius: 2px;
   box-shadow: none;
   transform: none;
 }
 .ni-page .ni-actions .btn-primary:hover {
+  opacity: 0.88;
   transform: none;
   box-shadow: none;
 }

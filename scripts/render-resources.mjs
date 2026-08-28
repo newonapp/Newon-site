@@ -12,7 +12,6 @@ import { RESOURCE_PAGES } from "./resources-catalog.mjs";
 import { getResourceCopy, getAllResourceCopies } from "./resources-copy.mjs";
 import {
   getStoreProducts,
-  getFeaturedStoreProducts,
   getPublishedBlogPosts,
   getLabsExperiments,
   getLabStatusCounts,
@@ -25,7 +24,8 @@ import {
   normalizeStoreCategory,
 } from "./resources-data.mjs";
 import { getPublishedInsights, INSIGHT_CATEGORIES, getInsight } from "./insights-data.mjs";
-import { labDetailBody as buildLabDetailBody } from "./lab-detail-bodies.mjs";
+import { labDetailSeoDescription } from "./lab-detail-bodies.mjs";
+import { renderLabDetailBody } from "./labs-bs-detail-render.mjs";
 import { buildLabsHubBody } from "./labs-hub.mjs";
 import { buildResourcesIndexBody } from "./resources-index.mjs";
 import { getRelatedResources } from "./resources-registry.mjs";
@@ -33,9 +33,13 @@ import { resourceRelatedList, resourceMetaRow, resourceShare, resourceRelatedPro
 import { buildStoreDetailBody, storeDetailSeo } from "./store-detail-body.mjs";
 import { buildBlogHubBody } from "./blog-hub-body.mjs";
 import { buildMediaHubBody } from "./media-hub-body.mjs";
+import { resourcesBreadcrumb, resourcesHeroBlock } from "./resources-hub-hero.mjs";
+import { buildRhExploreSection } from "./resources-explore-grid.mjs";
+import { insightsResearchSection } from "./insights-research-section.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const template = fs.readFileSync(path.join(ROOT, "templates", "resource.html"), "utf8");
+const bsTemplate = fs.readFileSync(path.join(ROOT, "templates", "business-service.html"), "utf8");
 
 function loadJson(file) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, "locales", file), "utf8"));
@@ -112,18 +116,7 @@ function shelfPrice(product, copy) {
 
 /* ——— Shared chrome ——— */
 function breadcrumb(copy, currentLabel, opts = {}) {
-  const resourcesHref = opts.resourcesHref || "../";
-  const mid = opts.mid
-    ? `<span class="rs-crumb__sep" aria-hidden="true">/</span><a href="${opts.midHref}">${escapeHtml(opts.mid)}</a>`
-    : "";
-  return `<nav class="rs-crumb" aria-label="Breadcrumb">
-    <div class="rs-inner">
-      <a href="${resourcesHref}">${escapeHtml(copy.crumbResources || "RESOURCES")}</a>
-      ${mid}
-      <span class="rs-crumb__sep" aria-hidden="true">/</span>
-      <span>${escapeHtml(currentLabel)}</span>
-    </div>
-  </nav>`;
+  return resourcesBreadcrumb(copy, currentLabel, opts, escapeHtml);
 }
 
 function resourceSwitcher(activeSlug, copies, base = "../") {
@@ -133,13 +126,16 @@ function resourceSwitcher(activeSlug, copies, base = "../") {
   const home = `<a class="rs-switch__link${homeActive ? " is-active" : ""}" href="${homeHref}"${
     homeActive ? ' aria-current="page"' : ""
   }>${homeLabel}</a>`;
-  const links = RESOURCE_PAGES.map((p) => {
-    const c = copies[p.slug];
-    const label = escapeHtml(c?.navLabel || p.slug.toUpperCase());
-    const cls = p.slug === activeSlug ? "rs-switch__link is-active" : "rs-switch__link";
-    const href = p.slug === activeSlug ? "#" : `${base}${p.slug}/`;
-    return `<a class="${cls}" href="${href}"${p.slug === activeSlug ? ' aria-current="page"' : ""}>${label}</a>`;
-  }).join("");
+  const pages = RESOURCE_PAGES.filter((p) => p.primary !== false);
+  const links = pages
+    .map((p) => {
+      const c = copies[p.slug];
+      const label = escapeHtml(c?.navLabel || p.slug.toUpperCase());
+      const cls = p.slug === activeSlug ? "rs-switch__link is-active" : "rs-switch__link";
+      const href = p.slug === activeSlug ? "#" : `${base}${p.slug}/`;
+      return `<a class="${cls}" href="${href}"${p.slug === activeSlug ? ' aria-current="page"' : ""}>${label}</a>`;
+    })
+    .join("");
   return `<nav class="rs-switch" aria-label="Resources">
     <div class="rs-inner rs-switch__inner">
       <div class="rs-switch__track">${home}${links}</div>
@@ -147,61 +143,18 @@ function resourceSwitcher(activeSlug, copies, base = "../") {
   </nav>`;
 }
 
-function exploreGrid(copies, base = "../", activeSlug = "") {
-  const title = escapeHtml(copies.index?.exploreTitle || copies.store?.exploreTitle || "EXPLORE RESOURCES");
-  const indexLabel = escapeHtml(copies.index?.exploreIndexLabel || "INDEX");
-  const total = String(RESOURCE_PAGES.length).padStart(2, "0");
-  const items = RESOURCE_PAGES.map((p, i) => {
-    const c = copies[p.slug];
-    const item = copies.index?.indexItems?.[p.slug];
-    const name = escapeHtml(item?.title || c?.navLabel || p.slug.toUpperCase());
-    const desc = escapeHtml(item?.desc || c?.lead || "");
-    const idx = String(i + 1).padStart(2, "0");
-    const current = activeSlug && activeSlug === p.slug;
-    const cls = current ? "rs-explore__item is-current" : "rs-explore__item";
-    const href = current ? "#" : `${base}${p.slug}/`;
-    const aria = current ? ' aria-current="page"' : "";
-    return `<a class="${cls}" href="${href}" data-rs-explore="${escapeHtml(p.slug)}"${aria}>
-      <span class="rs-explore__top">
-        <span class="rs-explore__idx" aria-hidden="true">${idx}</span>
-        <span class="rs-explore__arrow" aria-hidden="true">→</span>
-      </span>
-      <span class="rs-explore__name">${name}</span>
-      <span class="rs-explore__desc">${desc}</span>
-      <span class="rs-explore__motif" aria-hidden="true"></span>
-    </a>`;
-  }).join("");
-  return `<section class="rs-section rs-explore" data-rs-reveal aria-labelledby="rs-explore-title">
-    <div class="rs-inner">
-      <header class="rs-explore__head">
-        <p class="rs-eyebrow" id="rs-explore-title">${title}</p>
-        <p class="rs-explore__count"><span class="rs-explore__count-label">${indexLabel}</span><span class="rs-explore__count-n">${total}</span></p>
-      </header>
-      <div class="rs-explore__grid">${items}</div>
-    </div>
-  </section>`;
+function exploreGrid(copies, base = "../", activeSlug = "", lang = "ko") {
+  return buildRhExploreSection(copies, {
+    base,
+    activeSlug,
+    escapeHtml,
+    brHeadline,
+    lang,
+  });
 }
 
-function heroBlock(copy, visualHtml = "") {
-  return `<section class="rs-hero" data-rs-reveal aria-labelledby="rs-hero-title">
-    <div class="rs-inner rs-hero__grid${visualHtml ? "" : " rs-hero__grid--solo"}">
-      <div class="rs-hero__copy">
-        <p class="rs-eyebrow">${escapeHtml(copy.eyebrow || "")}${
-    copy.subEyebrow
-      ? `<span class="rs-eyebrow__sep" aria-hidden="true">·</span><span class="rs-eyebrow__sub">${escapeHtml(copy.subEyebrow)}</span>`
-      : ""
-  }</p>
-        <h1 class="rs-hero__title" id="rs-hero-title">${brHeadline(copy.headline)}</h1>
-        <p class="rs-hero__lead">${escapeHtml(copy.lead || "")}</p>
-        ${
-          copy.ctaPrimary
-            ? `<div class="rs-hero__actions"><a class="rs-btn rs-btn--primary" href="#rs-content">${escapeHtml(copy.ctaPrimary)}</a></div>`
-            : ""
-        }
-      </div>
-      ${visualHtml ? `<div class="rs-hero__visual">${visualHtml}</div>` : ""}
-    </div>
-  </section>`;
+function heroBlock(copy, opts = {}) {
+  return resourcesHeroBlock(copy, { escapeHtml, brHeadline, ...opts });
 }
 
 function emptyState(title, lead) {
@@ -327,15 +280,12 @@ function indexBody(copies, lang) {
   return buildResourcesIndexBody(copies, lang, {
     escapeHtml,
     brHeadline,
-    resourceSwitcher,
-    tField,
   });
 }
 
 function storeHubBody(copies, lang) {
   const copy = copies.store;
   const products = getStoreProducts();
-  const shelf = getFeaturedStoreProducts(3);
   const filters = ["all", ...STORE_CATEGORIES]
     .map((cat) => {
       const label = escapeHtml(copy.filterLabels?.[cat] || cat.toUpperCase());
@@ -361,7 +311,7 @@ function storeHubBody(copies, lang) {
     .join("");
 
   return `${breadcrumb(copy, copy.navLabel || "STORE")}
-${heroBlock(copy, visualShelf(shelf, copy, lang))}
+${heroBlock(copy)}
 ${resourceSwitcher("store", copies)}
 <section class="rs-section" id="rs-content" data-rs-reveal>
   <div class="rs-inner">
@@ -371,30 +321,93 @@ ${resourceSwitcher("store", copies)}
     <p class="rs-filter-empty" data-rs-filter-empty hidden>${escapeHtml(copy.emptyTitle || "")}</p>
   </div>
 </section>
-${exploreGrid(copies, "../", "store")}`;
+${exploreGrid(copies, "../", "store", lang)}`;
 }
 
 function storeDetailBody(product, copies, lang) {
-  return buildStoreDetailBody(product, copies, lang, {
-    breadcrumb,
-    resourceSwitcher,
+  return buildStoreDetailBody(product, copies, lang);
+}
+
+function renderStoreDetailHtml({
+  htmlLang,
+  ogLocale,
+  canonical,
+  hreflang,
+  seoTitle,
+  metaDescription,
+  serviceSlug,
+  analyticsId,
+  body,
+  flat,
+  flatEn,
+  chromeBase,
+}) {
+  let html = bsTemplate;
+  html = html.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+  html = html.replace(/\{\{OG_LOCALE\}\}/g, ogLocale);
+  html = html.replace(/\{\{CANONICAL\}\}/g, canonical);
+  html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflang);
+  html = html.replace(/\{\{SEO_TITLE\}\}/g, escapeHtml(seoTitle || ""));
+  html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(metaDescription || ""));
+  html = html.replace(/\{\{SERVICE_SLUG\}\}/g, escapeHtml(serviceSlug || ""));
+  html = html.replace(/\{\{ANALYTICS_ID\}\}/g, escapeHtml(analyticsId || serviceSlug || ""));
+  html = html.replace(/\{\{PAGE_BODY\}\}/g, body);
+  html = injectSiteChrome(html, flat, flatEn, {
+    activeNav: "resources",
+    base: chromeBase,
   });
+  html = html.replace(
+    '<script src="/business-service.js',
+    '<script src="/waitlist.js" defer></script>\n    <script src="/business-service.js'
+  );
+  return html;
 }
 
 function blogHubBody(copies, lang) {
   return buildBlogHubBody(copies, lang, {
     breadcrumb,
     resourceSwitcher,
-    exploreGrid,
+    exploreGrid: (c, b, a) => exploreGrid(c, b, a, lang),
+    heroBlock,
   });
 }
 
 function mediaHubBody(copies, lang) {
-  return buildMediaHubBody(copies, lang, {
-    breadcrumb,
-    resourceSwitcher,
-    exploreGrid: (c, b = "../") => exploreGrid(c, b, "media"),
+  return buildMediaHubBody(copies, lang, {});
+}
+
+function renderHtml({
+  htmlLang,
+  ogLocale,
+  canonical,
+  hreflang,
+  seoTitle,
+  metaDescription,
+  hubSlug,
+  analyticsId,
+  body,
+  flat,
+  flatEn,
+  chromeBase,
+  activeNav = "resources",
+  companySwitch = "",
+}) {
+  let html = template;
+  html = html.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+  html = html.replace(/\{\{OG_LOCALE\}\}/g, ogLocale);
+  html = html.replace(/\{\{CANONICAL\}\}/g, canonical);
+  html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflang);
+  html = html.replace(/\{\{SEO_TITLE\}\}/g, escapeHtml(seoTitle || ""));
+  html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(metaDescription || ""));
+  html = html.replace(/\{\{HUB_SLUG\}\}/g, hubSlug || "");
+  html = html.replace(/\{\{ANALYTICS_ID\}\}/g, analyticsId || hubSlug || "");
+  html = html.replace(/\{\{PAGE_BODY\}\}/g, body);
+  html = injectSiteChrome(html, flat, flatEn, {
+    activeNav,
+    base: chromeBase,
+    companySwitch,
   });
+  return html;
 }
 
 function labsHubBody(copies, lang) {
@@ -404,17 +417,56 @@ function labsHubBody(copies, lang) {
     breadcrumb,
     heroBlock,
     resourceSwitcher,
-    exploreGrid: (c, b = "../") => exploreGrid(c, b, "labs"),
     brHeadline,
   });
 }
 
-function labDetailBody(exp, copies, lang) {
-  return buildLabDetailBody(exp, copies, lang, {
-    breadcrumb,
-    exploreGrid: (c, b = "../../") => exploreGrid(c, b, "labs"),
-    resourceSwitcher,
+function renderLabDetailHtml({
+  htmlLang,
+  ogLocale,
+  canonical,
+  hreflang,
+  seoTitle,
+  metaDescription,
+  serviceSlug,
+  analyticsId,
+  body,
+  flat,
+  flatEn,
+  chromeBase,
+}) {
+  let html = bsTemplate;
+  html = html.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+  html = html.replace(/\{\{OG_LOCALE\}\}/g, ogLocale);
+  html = html.replace(/\{\{CANONICAL\}\}/g, canonical);
+  html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflang);
+  html = html.replace(/\{\{SEO_TITLE\}\}/g, escapeHtml(seoTitle || ""));
+  html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(metaDescription || ""));
+  html = html.replace(/\{\{SERVICE_SLUG\}\}/g, escapeHtml(serviceSlug || ""));
+  html = html.replace(/\{\{ANALYTICS_ID\}\}/g, escapeHtml(analyticsId || serviceSlug || ""));
+  html = html.replace(/\{\{PAGE_BODY\}\}/g, body);
+  html = html.replace(
+    '<main id="bs-main" class="bs-page"',
+    '<main id="bs-main" class="bs-page bs-page--lab" data-bs-lab="1"'
+  );
+  html = html.replace(
+    '<link rel="stylesheet" href="/business-service.css',
+    '<link rel="stylesheet" href="/labs-detail.css?v=20260828lx2" />\n    <link rel="stylesheet" href="/business-service.css'
+  );
+  html = injectSiteChrome(html, flat, flatEn, {
+    activeNav: "resources",
+    base: chromeBase,
   });
+  html = html.replace(
+    '<script src="/business-service.js',
+    '<script src="/labs-detail.js?v=20260828lx2" defer></script>\n    <script src="/business-service.js'
+  );
+  return html;
+}
+
+function labDetailBody(exp, copies, lang) {
+  void copies;
+  return renderLabDetailBody(exp, lang);
 }
 
 function newsletterHubBody(copies, lang) {
@@ -452,7 +504,7 @@ function newsletterHubBody(copies, lang) {
           .join("")}</ol>`;
 
   return `${breadcrumb(copy, copy.navLabel || "NEWSLETTER")}
-${heroBlock(copy, visualSubscribe())}
+${heroBlock(copy)}
 ${resourceSwitcher("newsletter", copies)}
 <section class="rs-section" id="rs-content">
   <div class="rs-inner rs-newsletter">
@@ -477,7 +529,7 @@ ${resourceSwitcher("newsletter", copies)}
     ${archive}
   </div>
 </section>
-${exploreGrid(copies, "../", "newsletter")}`;
+${exploreGrid(copies, "../", "newsletter", lang)}`;
 }
 
 function educationHubBody(copies, lang) {
@@ -511,13 +563,7 @@ function educationHubBody(copies, lang) {
     .join("");
 
   return `${breadcrumb(copy, copy.navLabel || "EDUCATION")}
-${heroBlock(
-  {
-    ...copy,
-    ctaPrimary: copy.ctaPrimary,
-  },
-  visualTopics()
-)}
+${heroBlock(copy)}
 ${resourceSwitcher("education", copies)}
 <section class="rs-section" id="rs-content">
   <div class="rs-inner">
@@ -546,7 +592,7 @@ ${resourceSwitcher("education", copies)}
     </div>
   </div>
 </section>
-${exploreGrid(copies, "../", "education")}`;
+${exploreGrid(copies, "../", "education", lang)}`;
 }
 
 function insightsHubBody(copies, lang) {
@@ -577,17 +623,8 @@ function insightsHubBody(copies, lang) {
       .join("");
   }
 
-  const researchItems = (copy.researchItems || [])
-    .map(
-      (it) =>
-        `<a class="rs-get__col" href="${escapeHtml(it.href || copy.researchHref || "../../business/research/")}" data-analytics="business_cta_click" data-item-id="${escapeHtml(it.title)}" data-rs-reveal>
-      <p class="rs-get__title">${escapeHtml(it.title)}</p>
-    </a>`
-    )
-    .join("");
-
   return `${breadcrumb(copy, copy.navLabel || "INSIGHTS")}
-${heroBlock(copy, visualInsights())}
+${heroBlock(copy)}
 ${resourceSwitcher("insights", copies)}
 <section class="rs-section" id="rs-content">
   <div class="rs-inner">
@@ -597,16 +634,8 @@ ${resourceSwitcher("insights", copies)}
     <p class="rs-filter-empty" data-rs-filter-empty hidden>${escapeHtml(copy.emptyTitle || "")}</p>
   </div>
 </section>
-<section class="rs-section" data-rs-reveal aria-labelledby="rs-insights-research">
-  <div class="rs-inner">
-    <p class="rs-eyebrow">${escapeHtml(copy.researchEyebrow || "BUSINESS RESEARCH")}</p>
-    <h2 class="rs-title" id="rs-insights-research">${escapeHtml(copy.researchTitle || "")}</h2>
-    ${copy.researchLead ? `<p class="rs-lead">${escapeHtml(copy.researchLead)}</p>` : ""}
-    <div class="rs-get">${researchItems}</div>
-    <p style="margin-top:1.5rem"><a class="rs-btn rs-btn--primary" href="${escapeHtml(copy.researchHref || "../../business/research/")}">${escapeHtml(copy.researchCta || "Inquire →")}</a></p>
-  </div>
-</section>
-${exploreGrid(copies, "../", "insights")}`;
+${insightsResearchSection(copy, lang, { escapeHtml })}
+${exploreGrid(copies, "../", "insights", lang)}`;
 }
 
 function insightSection(title, bodyHtml) {
@@ -657,14 +686,7 @@ function insightDetailBody(article, copies, lang) {
   </div>
 </article>
 ${resourceRelatedList({ escapeHtml, title: copy.relatedTitle || (lang === "ko" ? "관련 리소스" : "Related Resources"), items: related })}
-<section class="rs-section" data-rs-reveal>
-  <div class="rs-inner">
-    <p class="rs-eyebrow">${escapeHtml(copy.researchEyebrow || "BUSINESS RESEARCH")}</p>
-    <h2 class="rs-title">${escapeHtml(copy.researchTitle || "")}</h2>
-    ${copy.researchLead ? `<p class="rs-lead">${escapeHtml(copy.researchLead)}</p>` : ""}
-    <a class="rs-btn rs-btn--primary" href="${escapeHtml(copy.researchHref || "../../business/research/")}">${escapeHtml(copy.researchCta || "Inquire →")}</a>
-  </div>
-</section>
+${insightsResearchSection(copy, lang, { escapeHtml, pathPrefix: "../../../" })}
 ${jsonLdScript({
   "@context": "https://schema.org",
   "@type": "Article",
@@ -673,7 +695,7 @@ ${jsonLdScript({
   datePublished: article.publishedAt || undefined,
   author: { "@type": "Organization", name: "Newon" },
 })}
-${exploreGrid(copies, "../../", "insights")}
+${exploreGrid(copies, "../../", "insights", lang)}
 ${resourceSwitcher("insights", copies, "../")}`;
 }
 
@@ -725,7 +747,7 @@ ${jsonLdScript({
   description: desc,
   uploadDate: item.publishedAt || item.date || undefined,
 })}
-${exploreGrid(copies, "../../", "media")}
+${exploreGrid(copies, "../../", "media", lang)}
 ${resourceSwitcher("media", copies, "../")}`;
 }
 
@@ -750,19 +772,13 @@ function hubBody(slug, copies, lang) {
   }
 }
 
-function renderHtml({ htmlLang, ogLocale, canonical, hreflang, seoTitle, metaDescription, hubSlug, analyticsId, body, flat, flatEn, chromeBase }) {
-  let html = template;
-  html = html.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
-  html = html.replace(/\{\{OG_LOCALE\}\}/g, ogLocale);
-  html = html.replace(/\{\{CANONICAL\}\}/g, canonical);
-  html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflang);
-  html = html.replace(/\{\{SEO_TITLE\}\}/g, escapeHtml(seoTitle || ""));
-  html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(metaDescription || ""));
-  html = html.replace(/\{\{HUB_SLUG\}\}/g, hubSlug || "");
-  html = html.replace(/\{\{ANALYTICS_ID\}\}/g, analyticsId || hubSlug || "");
-  html = html.replace(/\{\{PAGE_BODY\}\}/g, body);
-  html = injectSiteChrome(html, flat, flatEn, { activeNav: "resources", base: chromeBase });
-  return html;
+function hreflangMedia() {
+  const lines = LANGS.map(
+    ({ dir, hreflang }) =>
+      `    <link rel="alternate" hreflang="${hreflang}" href="${SITE_ORIGIN}/${dir}/media/" />`
+  );
+  lines.push(`    <link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}/en/media/" />`);
+  return lines.join("\n");
 }
 
 function publishCopy(relPath) {
@@ -803,8 +819,9 @@ export function renderResources() {
       writeFile(path.join(ROOT, dir, "resources", "index.html"), html);
     }
 
-    // Hubs
+    // Hubs (Resources — Media lives under Company)
     for (const page of RESOURCE_PAGES) {
+      if (page.slug === "media") continue;
       const copy = copies[page.slug];
       const html = renderHtml({
         htmlLang,
@@ -823,17 +840,45 @@ export function renderResources() {
       writeFile(path.join(ROOT, dir, "resources", page.slug, "index.html"), html);
     }
 
+    // Company Media hub — /{lang}/media/
+    {
+      const copy = copies.media;
+      const html = renderHtml({
+        htmlLang,
+        ogLocale: OG_LOCALE[dir] || "en_US",
+        canonical: `${SITE_ORIGIN}/${dir}/media/`,
+        hreflang: hreflangMedia(),
+        seoTitle: copy.seoTitle,
+        metaDescription: copy.metaDescription,
+        hubSlug: "media",
+        analyticsId: "media",
+        body: mediaHubBody(copies, lang),
+        flat,
+        flatEn,
+        chromeBase: "../",
+        activeNav: "company",
+        companySwitch: "media",
+      });
+      writeFile(path.join(ROOT, dir, "media", "index.html"), html);
+
+      // Legacy Resources Media → Company Media
+      writeFile(
+        path.join(ROOT, dir, "resources", "media", "index.html"),
+        metaRefreshHtml(`/${dir}/media/`, "Redirect · Media")
+      );
+    }
+
     // Store details
     for (const product of getStoreProducts()) {
       const seo = storeDetailSeo(product, lang);
-      const html = renderHtml({
+      const html = renderStoreDetailHtml({
         htmlLang,
         ogLocale: OG_LOCALE[dir] || "en_US",
         canonical: `${SITE_ORIGIN}/${dir}/resources/store/${product.slug}/`,
         hreflang: hreflangBlock(`store/${product.slug}`),
         seoTitle: seo.seoTitle,
         metaDescription: seo.metaDescription,
-        hubSlug: "store",
+        serviceSlug: product.slug,
         analyticsId: `store_${product.slug}`,
         body: storeDetailBody(product, copies, lang),
         flat,
@@ -846,15 +891,15 @@ export function renderResources() {
     // Lab details
     for (const exp of getLabsExperiments()) {
       const title = tField(exp, lang, "titleKo", "titleEn");
-      const desc = tField(exp, lang, "descKo", "descEn");
-      const html = renderHtml({
+      const desc = labDetailSeoDescription(exp, lang);
+      const html = renderLabDetailHtml({
         htmlLang,
         ogLocale: OG_LOCALE[dir] || "en_US",
         canonical: `${SITE_ORIGIN}/${dir}/resources/labs/${exp.slug}/`,
         hreflang: hreflangBlock(`labs/${exp.slug}`),
-        seoTitle: `${title} | Newon Labs`,
+        seoTitle: `${title} — Newon Labs | Newon`,
         metaDescription: desc,
-        hubSlug: "labs",
+        serviceSlug: exp.slug,
         analyticsId: `labs_${exp.slug}`,
         body: labDetailBody(exp, copies, lang),
         flat,
@@ -919,8 +964,8 @@ export function renderResources() {
       void post;
     }
 
-    // Old flat hub redirects (keep news alone)
-    for (const slug of ["store", "blog", "media", "labs"]) {
+    // Old flat hub redirects (media canonical is /{lang}/media/ — already written above)
+    for (const slug of ["store", "blog", "labs"]) {
       writeFile(
         path.join(ROOT, dir, slug, "index.html"),
         metaRefreshHtml(`/${dir}/resources/${slug}/`, `Redirect · ${slug}`)
@@ -944,9 +989,11 @@ export function renderResources() {
       metaRefreshHtml(`/en/resources/${page.slug}/`, page.slug)
     );
   }
-  for (const slug of ["store", "blog", "media", "labs"]) {
+  for (const slug of ["store", "blog", "labs"]) {
     writeFile(path.join(ROOT, slug, "index.html"), metaRefreshHtml(`/en/resources/${slug}/`, slug));
   }
+  writeFile(path.join(ROOT, "media", "index.html"), metaRefreshHtml("/en/media/", "media"));
+  writeFile(path.join(ROOT, "resources", "media", "index.html"), metaRefreshHtml("/en/media/", "media"));
 
   // Publish mirror
   const pub = path.join(ROOT, "_publish");
@@ -966,7 +1013,13 @@ export function renderResources() {
       };
       walk(srcRoot, path.join(pub, dir, "resources"));
 
-      for (const slug of ["store", "blog", "media", "labs"]) {
+      // Company Media hub
+      const mediaSrc = path.join(ROOT, dir, "media", "index.html");
+      if (fs.existsSync(mediaSrc)) {
+        writeFile(path.join(pub, dir, "media", "index.html"), fs.readFileSync(mediaSrc, "utf8"));
+      }
+
+      for (const slug of ["store", "blog", "labs"]) {
         const src = path.join(ROOT, dir, slug, "index.html");
         if (fs.existsSync(src)) {
           writeFile(path.join(pub, dir, slug, "index.html"), fs.readFileSync(src, "utf8"));
@@ -988,6 +1041,10 @@ export function renderResources() {
       "blog-hub.css",
       "media-hub.css",
       "media-hub.js",
+      "business-service.css",
+      "business-service.js",
+      "business-type.css",
+      "waitlist.js",
     ]) {
       const src = path.join(ROOT, f);
       if (fs.existsSync(src)) fs.copyFileSync(src, path.join(pub, f));

@@ -47,16 +47,31 @@
 
   /* Category filters — store / blog / media / etc. */
   document.querySelectorAll("[data-rs-filters]").forEach(function (bar) {
-    var section = bar.closest(".rs-section, .rs-inner, section") || root;
+    var scope =
+      bar.closest("[data-rs-filter-scope]") ||
+      bar.closest(".rs-section, .rs-inner, section, .mh-page, .nb-page") ||
+      root;
     var grid =
-      (section && section.querySelector("[data-rs-filter-grid]")) ||
+      (scope && scope.querySelector("[data-rs-filter-grid]")) ||
       bar.parentElement.querySelector("[data-rs-filter-grid]") ||
       root.querySelector("[data-rs-filter-grid]");
     var empty =
-      (section && section.querySelector("[data-rs-filter-empty]")) ||
+      (scope && scope.querySelector("[data-rs-filter-empty]")) ||
       (bar.parentElement && bar.parentElement.querySelector("[data-rs-filter-empty]")) ||
       root.querySelector("[data-rs-filter-empty]");
     if (!grid) return;
+
+    function setEmptyVisible(show) {
+      if (!empty) return;
+      empty.hidden = !show;
+      if (show) {
+        empty.removeAttribute("hidden");
+        empty.setAttribute("aria-hidden", "false");
+      } else {
+        empty.setAttribute("hidden", "");
+        empty.setAttribute("aria-hidden", "true");
+      }
+    }
 
     function applyFilter(cat, pushUrl) {
       var key = String(cat || "all").toLowerCase();
@@ -86,10 +101,25 @@
         }
       });
 
-      if (empty) {
-        empty.hidden = visible > 0;
-        if (visible === 0) empty.classList.add("is-in");
+      /* Featured (and other items) outside the grid but inside filter scope */
+      if (scope) {
+        scope.querySelectorAll("[data-category]").forEach(function (item) {
+          if (grid.contains(item)) return;
+          var itemCat = String(item.getAttribute("data-category") || "").toLowerCase();
+          var collection = String(item.getAttribute("data-collection") || "").toLowerCase();
+          var tokens = itemCat.split(/[\s,]+/).filter(Boolean);
+          if (collection) tokens.push(collection);
+          var match =
+            key === "all" ||
+            tokens.indexOf(key) !== -1 ||
+            itemCat === key;
+          item.hidden = !match;
+          item.classList.toggle("is-filtered-out", !match);
+          if (match) visible += 1;
+        });
       }
+
+      setEmptyVisible(visible === 0);
 
       if (pushUrl && window.history && window.history.replaceState) {
         try {
@@ -134,6 +164,18 @@
     var empty = archive.querySelector("[data-rs-lab-empty]");
     if (!bar || !grid) return;
 
+    function setLabEmptyVisible(show) {
+      if (!empty) return;
+      empty.hidden = !show;
+      if (show) {
+        empty.removeAttribute("hidden");
+        empty.setAttribute("aria-hidden", "false");
+      } else {
+        empty.setAttribute("hidden", "");
+        empty.setAttribute("aria-hidden", "true");
+      }
+    }
+
     function applyFilter(status, push) {
       var key = status || "all";
       bar.querySelectorAll("[data-rs-lab-filter]").forEach(function (b) {
@@ -144,14 +186,11 @@
       var visible = 0;
       grid.querySelectorAll("[data-rs-lab-item]").forEach(function (item) {
         var st = item.getAttribute("data-rs-lab-status") || "";
-        var match =
-          key === "all" ||
-          st === key ||
-          (key === "TESTING" && (st === "TESTING" || st === "ACTIVE" || st === "PROTOTYPE"));
+        var match = key === "all" || st === key;
         item.hidden = !match;
         if (match) visible += 1;
       });
-      if (empty) empty.hidden = visible > 0;
+      setLabEmptyVisible(visible === 0);
       if (push && window.history && window.history.replaceState) {
         try {
           var url = new URL(window.location.href);

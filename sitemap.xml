@@ -8129,150 +8129,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/resources/blog/" />
   </url>
   <url>
-    <loc>https://www.newon.app/ko/resources/media/</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.65</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/resources/media/" />
-  </url>
-  <url>
-    <loc>https://www.newon.app/en/resources/media/</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.65</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/resources/media/" />
-  </url>
-  <url>
-    <loc>https://www.newon.app/ja/resources/media/</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.65</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/resources/media/" />
-  </url>
-  <url>
-    <loc>https://www.newon.app/es/resources/media/</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.65</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/resources/media/" />
-  </url>
-  <url>
-    <loc>https://www.newon.app/pt-br/resources/media/</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.65</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/resources/media/" />
-  </url>
-  <url>
-    <loc>https://www.newon.app/fr/resources/media/</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.65</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/resources/media/" />
-  </url>
-  <url>
-    <loc>https://www.newon.app/de/resources/media/</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.65</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/resources/media/" />
-  </url>
-  <url>
-    <loc>https://www.newon.app/hi/resources/media/</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.65</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/resources/media/" />
-  </url>
-  <url>
-    <loc>https://www.newon.app/id/resources/media/</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.65</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/resources/media/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/resources/media/" />
-  </url>
-  <url>
     <loc>https://www.newon.app/ko/resources/labs/</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -8703,6 +8559,150 @@
     <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/resources/education/" />
     <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/resources/education/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/resources/education/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ko/media/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/media/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/media/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/media/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/media/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/media/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/media/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/media/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/media/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/media/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/media/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/en/media/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/media/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/media/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/media/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/media/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/media/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/media/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/media/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/media/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/media/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/media/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/ja/media/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/media/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/media/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/media/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/media/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/media/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/media/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/media/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/media/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/media/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/media/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/es/media/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/media/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/media/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/media/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/media/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/media/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/media/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/media/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/media/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/media/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/media/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/pt-br/media/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/media/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/media/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/media/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/media/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/media/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/media/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/media/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/media/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/media/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/media/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/fr/media/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/media/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/media/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/media/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/media/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/media/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/media/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/media/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/media/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/media/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/media/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/de/media/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/media/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/media/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/media/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/media/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/media/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/media/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/media/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/media/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/media/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/media/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/hi/media/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/media/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/media/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/media/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/media/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/media/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/media/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/media/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/media/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/media/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/media/" />
+  </url>
+  <url>
+    <loc>https://www.newon.app/id/media/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/media/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newon.app/en/media/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/media/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newon.app/es/media/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/media/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/media/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.newon.app/de/media/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/media/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.newon.app/id/media/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/media/" />
   </url>
   <url>
     <loc>https://www.newon.app/ko/resources/store/app-launch-kit/</loc>

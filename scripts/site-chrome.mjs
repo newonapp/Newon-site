@@ -75,7 +75,9 @@ export function resolveActiveNav(pathname = "") {
     return "business";
   }
   if (seg === "studio") return "studio";
-  if (seg === "resources" || ["store", "blog", "media", "labs", "market"].includes(seg)) return "resources";
+  // Media is Company (canonical /media/); old /resources/media also highlights Company
+  if (seg === "media" || (seg === "resources" && parts[1] === "media")) return "company";
+  if (seg === "resources" || ["store", "blog", "labs", "market"].includes(seg)) return "resources";
   if (seg === "company" || ["about", "portfolio", "news", "ideas", "contact"].includes(seg)) return "company";
   return "";
 }
@@ -84,9 +86,10 @@ const CHEVRON_SVG = `<svg class="gnav-dd__chev-svg" width="12" height="12" viewB
 
 const MOON_SVG = `<svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
-/** Editorial mega: max 4 numbered destinations (Resources shows all hubs) */
+/** Editorial mega: Company allows 5 (About · Portfolio · News · Media · Contact) */
 function megaItemLimit(menuId) {
-  return menuId === "resources" ? Infinity : 4;
+  if (menuId === "company") return 5;
+  return 4;
 }
 
 function editorialMega(flat, flatEn, base, menuId) {
@@ -244,29 +247,9 @@ export function renderStudioHeader(flat, flatEn, opts = {}) {
   });
 }
 
-/** Sticky company sub-nav — company info only */
-export function renderCompanySwitcher(flat, flatEn, { active = "about", base = "../" } = {}) {
-  const items = [
-    { id: "about", path: "about/", label: "ABOUT" },
-    { id: "portfolio", path: "portfolio/", label: "PORTFOLIO" },
-    { id: "news", path: "news/", label: "NEWS" },
-    { id: "contact", path: "contact/", label: "CONTACT" },
-  ];
-  const links = items
-    .map((it) => {
-      const isActive = it.id === active;
-      const url = isActive ? "#" : href(base, it.path);
-      return `<a class="co-switch__link${isActive ? " is-active" : ""}" href="${url}"${
-        isActive ? ' aria-current="page"' : ""
-      }>${it.label}</a>`;
-    })
-    .join("");
-  const aria = escapeHtml(t(flat, flatEn, "nav.company", "Company"));
-  return `<nav class="co-switch" aria-label="${aria}">
-    <div class="co-switch__inner">
-      <div class="co-switch__track">${links}</div>
-    </div>
-  </nav>`;
+/** Sticky company sub-nav — disabled (global header only). */
+export function renderCompanySwitcher(_flat, _flatEn, _opts = {}) {
+  return "";
 }
 
 export function renderStudioFooter(flat, flatEn, { base = "../" } = {}) {
@@ -302,15 +285,13 @@ export function renderStudioFooter(flat, flatEn, { base = "../" } = {}) {
           ["footer.linkStore", "../resources/store/", "Store"],
           ["footer.linkInsights", "../resources/insights/", "Insights"],
           ["footer.linkBlog", "../resources/blog/", "Blog"],
-          ["footer.linkMedia", "../resources/media/", "Media"],
           ["footer.linkLabs", "../resources/labs/", "Labs"],
-          ["footer.linkNotes", "../resources/newsletter/", "Notes"],
-          ["footer.linkEducation", "../resources/education/", "Education"],
         ], "RESOURCES")}
         ${col("footer.colCompany", [
           ["footer.about", "../about/", "About"],
           ["footer.portfolio", "../portfolio/", "Portfolio"],
           ["nav.newsUpdates", "../news/", "News"],
+          ["footer.linkMedia", "../media/", "Media"],
           ["nav.contact", "../contact/", "Contact"],
         ], "COMPANY")}
       </div>

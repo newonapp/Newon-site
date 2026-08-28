@@ -390,6 +390,16 @@ html[data-newon-shell-theme="dark"] .nb-page {
   color: var(--nb-muted);
 }
 
+.nb-filter-empty[hidden],
+[data-rs-filter-empty][hidden] {
+  display: none !important;
+}
+
+.nb-list > .nb-row[hidden],
+.nb-list > .nb-row.is-filtered-out {
+  display: none !important;
+}
+
 .nb-empty {
   padding: 2rem 0 1rem;
   border-top: 1px solid var(--nb-line);

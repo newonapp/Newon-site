@@ -4,21 +4,24 @@
  * Pipeline: RESEARCH → PROTOTYPE → TESTING → VALIDATED → PRODUCT
  */
 
-export const LAB_STATUSES = ["IDEA", "RESEARCH", "BUILDING", "TESTING", "VALIDATED", "ARCHIVED"];
+export const LAB_STATUSES = ["RESEARCH", "PROTOTYPE", "TESTING", "VALIDATED", "ARCHIVED"];
 
-export const LAB_PIPELINE = ["IDEA", "RESEARCH", "BUILDING", "TESTING", "VALIDATED", "PRODUCT"];
+export const LAB_PIPELINE = ["RESEARCH", "PROTOTYPE", "TESTING", "VALIDATED", "PRODUCT"];
 
 /** Map legacy admin statuses → public status */
 export const LAB_STATUS_MAP = {
-  building: "BUILDING",
-  exploring: "IDEA",
-  concept: "IDEA",
-  beta: "BUILDING",
-  prototype: "BUILDING",
-  PROTOTYPE: "BUILDING",
+  building: "PROTOTYPE",
+  exploring: "RESEARCH",
+  concept: "RESEARCH",
+  beta: "TESTING",
+  prototype: "PROTOTYPE",
+  PROTOTYPE: "PROTOTYPE",
   live: "VALIDATED",
   paused: "ARCHIVED",
   research: "RESEARCH",
+  idea: "RESEARCH",
+  IDEA: "RESEARCH",
+  BUILDING: "PROTOTYPE",
 };
 
 /**
@@ -363,7 +366,6 @@ export const LABS_EXPERIMENTS = [
     stage: "RESEARCH",
     stageLabelKo: "01 / RESEARCH",
     stageLabelEn: "01 / RESEARCH",
-    ventureStatus: "BUILDING",
     updatedAt: "2026-08-26",
     titleKo: "Character Lab",
     titleEn: "Character Lab",
@@ -371,16 +373,16 @@ export const LABS_EXPERIMENTS = [
     displayTitleEn: "CHARACTER LAB",
     heroLeadKo: "Newon 캐릭터 IP를\n실험하는 공간입니다.",
     heroLeadEn: "A space to experiment\nwith Newon character IP.",
-    listDescKo: "캐릭터 IP 실험 · Building",
-    listDescEn: "Character IP experiment · Building",
+    listDescKo: "캐릭터 IP 실험",
+    listDescEn: "Character IP experiment",
     hubLeadKo: "캐릭터를\n만들고 검증합니다.",
     hubLeadEn: "Build and validate\ncharacters carefully.",
     hubTitleBreakKo: "CHARACTER\nLAB",
     hubTitleBreakEn: "CHARACTER\nLAB",
     descKo:
-      "Newon 브랜드와 제품에 연결될 캐릭터 IP를 탐색합니다. 공개 가능한 캐릭터는 아직 없습니다 — Building 상태입니다.",
+      "Newon 브랜드와 제품에 연결될 캐릭터 IP를 탐색합니다. 공개 가능한 캐릭터는 아직 없습니다.",
     descEn:
-      "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+      "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
     questionKo: "제품과 자연스럽게 이어지는\n캐릭터 IP의 형태는?",
     questionEn: "What form of character IP\nfits Newon products naturally?",
     questionListKo: "가짜 캐릭터를 올리지 않고, 검증된 IP만 공개할 수 있는가?",
@@ -402,10 +404,10 @@ export const LABS_EXPERIMENTS = [
   },
 ];
 
-/** Map public lab status → ventures strip label */
+/** Map public lab status → legacy ventures strip label (unused on Labs hub) */
 export const VENTURE_STATUS_MAP = {
-  RESEARCH: "IDEA",
-  PROTOTYPE: "BUILDING",
+  RESEARCH: "RESEARCH",
+  PROTOTYPE: "PROTOTYPE",
   TESTING: "TESTING",
   VALIDATED: "VALIDATED",
   ARCHIVED: "ARCHIVED",
@@ -429,7 +431,7 @@ export function getLabExperiment(slug) {
 }
 
 export function getLabStatusCounts() {
-  const counts = { RESEARCH: 0, PROTOTYPE: 0, TESTING: 0, VALIDATED: 0, ARCHIVED: 0, ACTIVE: 0 };
+  const counts = { RESEARCH: 0, PROTOTYPE: 0, TESTING: 0, VALIDATED: 0, ARCHIVED: 0 };
   for (const e of LABS_EXPERIMENTS) {
     if (counts[e.status] != null) counts[e.status] += 1;
   }

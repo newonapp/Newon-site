@@ -2,7 +2,6 @@
  * Newon Labs hub — editorial R&D archive body HTML.
  */
 import { escapeHtml } from "./hub-utils.mjs";
-import { ventureStatusFor } from "./lab-experiments.mjs";
 
 function t(obj, lang, koKey, enKey) {
   if (!obj) return "";
@@ -15,11 +14,6 @@ function br(s) {
 
 function pad2(n) {
   return String(n).padStart(2, "0");
-}
-
-function fmtUpdated(iso) {
-  if (!iso) return "—";
-  return String(iso).replace(/-/g, ".").slice(0, 7);
 }
 
 export function labVisual(slug) {
@@ -56,10 +50,8 @@ export function labVisual(slug) {
     </div>`;
   }
   if (slug === "game-experiment") {
-    return `<div class="lx-viz lx-viz--term" aria-hidden="true">
-      <pre>&gt; CHOICE RECORDED
-&gt; MEMORY UPDATED
-&gt; CONSEQUENCE PENDING_</pre>
+    return `<div class="lx-viz lx-viz--pipeline" aria-hidden="true">
+      <span>CHOICE</span><i></i><span>MEMORY</span><i></i><span>CONSEQUENCE</span>
     </div>`;
   }
   if (slug === "character-lab") {
@@ -72,28 +64,65 @@ export function labVisual(slug) {
   return "";
 }
 
-function ctaLabel(copy, n) {
+function ctaLabel(copy) {
   const base = (copy.viewExperiment || "VIEW EXPERIMENT").replace(/\s*[→↗]\s*$/, "").trim();
   return escapeHtml(base);
+}
+
+/** Minimal footer nav for Labs — back link + compact Resources links. */
+export function labsBackNav(copies, lang, base = "../") {
+  const copy = copies.labs || {};
+  const idx = copies.index || {};
+  const backLabel = escapeHtml(
+    copy.backToResources || (lang === "ko" ? "← Resources로 돌아가기" : "← Back to Resources")
+  );
+  const items = [
+    { slug: "store", href: `${base}store/` },
+    { slug: "insights", href: `${base}insights/` },
+    { slug: "blog", href: `${base}blog/` },
+    { slug: "labs", href: `${base}labs/`, current: true },
+  ];
+  const labels = {
+    store: idx.indexItems?.store?.title || "Store",
+    insights: idx.indexItems?.insights?.title || "Insights",
+    blog: idx.indexItems?.blog?.title || "Blog",
+    labs: copy.navLabel || "Labs",
+  };
+  const links = items
+    .map((it, i) => {
+      const label = escapeHtml(labels[it.slug] || it.slug);
+      const sep = i > 0 ? '<span class="lx-back__sep" aria-hidden="true"> · </span>' : "";
+      if (it.current) {
+        return `${sep}<span class="lx-back__here" aria-current="page">${label}</span>`;
+      }
+      return `${sep}<a class="lx-back__link" href="${escapeHtml(it.href)}">${label}</a>`;
+    })
+    .join("");
+
+  return `<nav class="rs-section lx-back" aria-label="Resources navigation">
+  <div class="rs-inner lx-back__inner">
+    <a class="lx-back__return" href="${escapeHtml(base)}">${backLabel}</a>
+    <p class="lx-back__links">${links}</p>
+  </div>
+</nav>`;
 }
 
 /**
  * @param {object} copies
  * @param {string} lang
- * @param {{ getLabsExperiments: Function, getLabStatusCounts: Function, breadcrumb: Function, heroBlock: Function, resourceSwitcher: Function, exploreGrid: Function, brHeadline: Function, visualLabStatus?: Function }} ctx
+ * @param {{ getLabsExperiments: Function, getLabStatusCounts: Function, breadcrumb: Function, heroBlock: Function, resourceSwitcher: Function, brHeadline: Function }} ctx
  */
 export function buildLabsHubBody(copies, lang, ctx) {
   const copy = copies.labs;
   const experiments = ctx.getLabsExperiments().slice().sort((a, b) => (a.labNumber || 0) - (b.labNumber || 0));
   const counts = ctx.getLabStatusCounts();
   const total = experiments.length;
-  // Spec counts: TESTING (+ ACTIVE), RESEARCH
-  const testingOnly = (counts.TESTING || 0) + (counts.ACTIVE || 0);
+  const testingN = counts.TESTING || 0;
   const researchN = counts.RESEARCH || 0;
 
   const filterDefs = [
     { key: "all", label: copy.filterAll || "ALL", count: total },
-    { key: "TESTING", label: copy.activeLabel || "TESTING", count: testingOnly },
+    { key: "TESTING", label: copy.activeLabel || "TESTING", count: testingN },
     { key: "RESEARCH", label: copy.researchLabel || "RESEARCH", count: researchN },
   ];
 
@@ -103,17 +132,6 @@ export function buildLabsHubBody(copies, lang, ctx) {
         `<button type="button" class="lx-filter__btn${i === 0 ? " is-active" : ""}" data-rs-lab-filter="${escapeHtml(f.key)}" aria-pressed="${i === 0 ? "true" : "false"}">${escapeHtml(f.label)} <span class="lx-filter__n">${pad2(f.count)}</span></button>`
     )
     .join("");
-
-  const metaPanel = `<aside class="lx-meta" aria-label="Lab status">
-    <p class="lx-meta__brand">${escapeHtml(copy.statusTitle || "NEWON LABS")}</p>
-    <p class="lx-meta__cycle"><span>${escapeHtml(copy.cycleLabel || "CURRENT CYCLE")}</span><strong>${escapeHtml(copy.cycleValue || "2026.08")}</strong></p>
-    <dl class="lx-meta__stats">
-      <div><dt>${escapeHtml(copy.statsExperiments || "EXPERIMENTS")}</dt><dd>${pad2(total)}</dd></div>
-      <div><dt>${escapeHtml(copy.activeLabel || "TESTING")}</dt><dd>${pad2(testingOnly)}</dd></div>
-      <div><dt>${escapeHtml(copy.researchLabel || "RESEARCH")}</dt><dd>${pad2(researchN)}</dd></div>
-    </dl>
-    <p class="lx-meta__next"><span>${escapeHtml(copy.nextReleaseLabel || "NEXT RELEASE")}</span><strong>${escapeHtml(copy.nextReleaseValue || "TBA")}</strong></p>
-  </aside>`;
 
   function card(e, variant) {
     const n = pad2(e.labNumber || 0);
@@ -145,45 +163,54 @@ export function buildLabsHubBody(copies, lang, ctx) {
         </div>
         <div class="lx-card__viz">${viz}</div>
       </div>
-      <span class="lx-cta lx-cta--bar">${ctaLabel(copy, n)} <i aria-hidden="true">↗</i></span>
+      <span class="lx-cta lx-cta--bar">${ctaLabel(copy)} <i aria-hidden="true">↗</i></span>
     </a>`;
   }
 
-  // Same card size for all — #01 matches #02–05 (no featured mega block)
   const stack = experiments.map((e, i) => card(e, i % 2 === 1 ? "flip" : "plain")).join("\n");
 
-  const lifeStages = (copy.lifeStages || ["RESEARCH", "PROTOTYPE", "TESTING", "VALIDATED", "PRODUCT"])
-    .map((s, i, arr) => `<li><span>${escapeHtml(s)}</span>${i < arr.length - 1 ? '<i aria-hidden="true">→</i>' : ""}</li>`)
-    .join("");
-
-  const ventureRows = experiments
-    .map((e) => {
-      const vs = ventureStatusFor(e);
-      const title = escapeHtml(t(e, lang, "titleKo", "titleEn"));
-      return `<a class="lx-venture" href="${escapeHtml(e.slug)}/" data-analytics="experiment_view" data-item-id="${escapeHtml(e.slug)}" data-category="${escapeHtml(vs)}">
-        <span class="lx-venture__status">${escapeHtml(vs)}</span>
-        <span class="lx-venture__title">${title}</span>
-        <span class="lx-venture__go" aria-hidden="true">↗</span>
-      </a>`;
-    })
+  const defaultStages =
+    lang === "ko"
+      ? [
+          { stage: "RESEARCH", desc: "문제를 찾고 가설을 세웁니다." },
+          { stage: "PROTOTYPE", desc: "가장 작은 형태로 만듭니다." },
+          { stage: "TESTING", desc: "실제 반응을 확인합니다." },
+          { stage: "VALIDATED", desc: "계속 만들 가치가 있는지 판단합니다." },
+          { stage: "PRODUCT", desc: "검증된 실험을 제품으로 발전시킵니다." },
+        ]
+      : [
+          { stage: "RESEARCH", desc: "Find problems and form hypotheses." },
+          { stage: "PROTOTYPE", desc: "Build the smallest useful version." },
+          { stage: "TESTING", desc: "Check real-world response." },
+          { stage: "VALIDATED", desc: "Decide if it's worth continuing." },
+          { stage: "PRODUCT", desc: "Graduate validated work into product." },
+        ];
+  const stageDetails = copy.lifeStageDetails || defaultStages;
+  const stageCount = stageDetails.length;
+  const lifeStages = stageDetails
+    .map(
+      (s, i) =>
+        `<li class="bp-proc__step" style="--i:${i}">
+      <span class="bp-proc__n" aria-hidden="true">${pad2(i + 1)}</span>
+      <span class="bp-proc__label">${pad2(i + 1)}</span>
+      <span class="bp-proc__t">${escapeHtml(s.stage)}</span>
+      <span class="bp-proc__d">${escapeHtml(s.desc)}</span>
+    </li>`
+    )
     .join("");
 
   return `${ctx.breadcrumb(copy, copy.navLabel || "LABS")}
-${ctx.heroBlock(copy, "")}
+${ctx.heroBlock(copy)}
 ${ctx.resourceSwitcher("labs", copies)}
+
 <section class="rs-section lx-archive" id="rs-content" data-rs-lab-archive>
   <div class="rs-inner">
-    <header class="lx-index">
-      <div class="lx-index__copy">
-        <p class="lx-k">${escapeHtml(copy.indexTitle || "EXPERIMENT INDEX")} <span class="lx-k__sep" aria-hidden="true">/</span> <span class="lx-mono">${escapeHtml(copy.indexYear || "2026")}</span></p>
-        <h2 class="lx-index__title" id="rs-labs-index-title">${br(copy.indexHeading || copy.indexTitle)}</h2>
-        ${copy.indexLead ? `<p class="lx-index__lead">${escapeHtml(copy.indexLead)}</p>` : ""}
-      </div>
-      ${metaPanel}
+    <header class="lx-experiments-head">
+      <p class="lx-k">${escapeHtml(copy.experimentsTitle || "EXPERIMENTS")}</p>
     </header>
 
     <div class="lx-filter" role="tablist" aria-label="Status filter">${filters}</div>
-    <p class="lx-empty" data-rs-lab-empty hidden>${escapeHtml(copy.emptyTitle || "")}</p>
+    <p class="lx-empty" data-rs-lab-empty hidden aria-hidden="true">${escapeHtml(copy.emptyTitle || "")}</p>
 
     <div class="lx-stack" data-rs-lab-grid>
       ${stack}
@@ -191,45 +218,33 @@ ${ctx.resourceSwitcher("labs", copies)}
   </div>
 </section>
 
-<section class="rs-section lx-ventures" data-rs-reveal aria-labelledby="lx-ventures-title">
-  <div class="rs-inner">
-    <p class="lx-k">${escapeHtml(copy.venturesEyebrow || "VENTURES")}</p>
-    <h2 class="lx-life__title" id="lx-ventures-title">${br(copy.venturesTitle || (lang === "ko" ? "실험 상태 · IDEA → ARCHIVED" : "Experiment status · IDEA → ARCHIVED"))}</h2>
-    ${copy.venturesLead ? `<p class="lx-life__lead">${escapeHtml(copy.venturesLead)}</p>` : `<p class="lx-life__lead">${escapeHtml(lang === "ko" ? "실제 Lab 실험만 표시합니다. 가짜 벤처는 올리지 않습니다." : "Only real Lab experiments. No fake ventures.")}</p>`}
-    <div class="lx-venture-list">${ventureRows}</div>
-  </div>
-</section>
-
-<section class="rs-section lx-select" data-rs-reveal aria-labelledby="lx-select-title">
-  <div class="rs-inner">
-    <p class="lx-k">${escapeHtml(copy.selectEyebrow || "NEWON SELECT")}</p>
-    <h2 class="lx-life__title" id="lx-select-title">${br(copy.selectTitle || (lang === "ko" ? "일과 생활에 실제로 도움이 되는 제품과 도구를 고릅니다." : "Picks that actually help work and life."))}</h2>
-    <p class="lx-life__lead">${escapeHtml(copy.selectLead || (lang === "ko" ? "Commerce 실험 섹션입니다. 제휴 링크가 포함될 수 있습니다. 아직 공개 추천 상품은 Building 상태입니다." : "A commerce experiment. Affiliate links may appear. No public picks yet — Building."))}</p>
-    <p class="lx-select__cats" aria-label="Categories">Work · Productivity · Tech · Lifestyle · Creator</p>
-    <p class="lx-select__empty studio-status studio-status--building">${escapeHtml(copy.selectEmpty || "Building")}</p>
-    <p class="lx-select__disc">${escapeHtml(copy.selectDisclaimer || (lang === "ko" ? "이 페이지에는 제휴 링크가 포함될 수 있습니다." : "This page may include affiliate links."))}</p>
-  </div>
-</section>
-
-<section class="rs-section lx-life" data-rs-reveal aria-labelledby="lx-life-title">
-  <div class="rs-inner">
-    <p class="lx-k">${escapeHtml(copy.lifeEyebrow || "FROM QUESTION TO PRODUCT")}</p>
-    <h2 class="lx-life__title" id="lx-life-title">${br(copy.lifeTitle)}</h2>
-    ${copy.lifeLead ? `<p class="lx-life__lead">${escapeHtml(copy.lifeLead)}</p>` : ""}
-    <ol class="lx-life__pipe">${lifeStages}</ol>
+<section class="lx-life" data-rs-reveal aria-labelledby="lx-life-title">
+  <div class="rs-inner lx-life__shell">
+    <div class="lx-life__hero">
+      <div class="lx-life__copy">
+        <p class="lx-life__eyebrow">${escapeHtml(copy.lifeEyebrow || "FROM QUESTION TO PRODUCT")}</p>
+        <h2 class="lx-life__title" id="lx-life-title">${br(copy.lifeTitle)}</h2>
+        ${copy.lifeLead ? `<p class="lx-life__lead">${escapeHtml(copy.lifeLead)}</p>` : ""}
+      </div>
+    </div>
+    <ol class="bp-proc lx-life__proc" style="--bp-proc-n:${stageCount}">${lifeStages}</ol>
   </div>
 </section>
 
 <section class="lx-close" data-rs-reveal aria-labelledby="lx-close-title">
-  <div class="rs-inner lx-close__inner">
-    <p class="lx-k lx-k--on-dark">${escapeHtml(copy.closeEyebrow || "NEWON LABS")}</p>
-    <h2 class="lx-close__title" id="lx-close-title">${br(copy.closeTitle)}</h2>
-    ${copy.closeLead ? `<p class="lx-close__lead">${escapeHtml(copy.closeLead)}</p>` : ""}
-    <div class="lx-close__actions">
-      <a class="lx-close__link" href="${escapeHtml(copy.productsHref || "../../products/")}">${escapeHtml(copy.closeProducts || "EXPLORE NEWON PRODUCTS ↗")}</a>
-      <a class="lx-close__link lx-close__link--ghost" href="${escapeHtml(copy.ideasHref || "../../ideas/")}">${escapeHtml(copy.closeIdea || "SUBMIT AN IDEA ↗")}</a>
+  <div class="rs-inner lx-close__shell">
+    <div class="lx-close__grid">
+      <div class="lx-close__copy">
+        <p class="lx-close__eyebrow">${escapeHtml(copy.closeEyebrow || "NEWON LABS")}</p>
+        <h2 class="lx-close__title" id="lx-close-title">${br(copy.closeTitle)}</h2>
+        ${copy.closeLead ? `<p class="lx-close__lead">${escapeHtml(copy.closeLead)}</p>` : ""}
+        <div class="lx-close__actions">
+          <a class="lx-close__btn lx-close__btn--primary" href="${escapeHtml(copy.productsHref || "../../products/")}">${escapeHtml(copy.closeProducts || "EXPLORE PRODUCTS ↗")}</a>
+          <a class="lx-close__btn lx-close__btn--ghost" href="${escapeHtml(copy.ideasHref || "../../ideas/")}">${escapeHtml(copy.closeIdea || "SUBMIT AN IDEA ↗")}</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-${ctx.exploreGrid(copies)}`;
+${labsBackNav(copies, lang)}`;
 }

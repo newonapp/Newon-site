@@ -1325,12 +1325,13 @@ html[data-newon-shell-theme="dark"] .pf-cx__card {
 
 .pf-cx__btn-primary,
 .pf-cx__btn-secondary {
-  min-height: 46px;
-  padding: 0.72rem 1.35rem;
-  font-size: 0.875rem;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  border-radius: 999px;
-  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+  letter-spacing: -0.01em;
+  border-radius: 2px;
+  transition: opacity 0.2s ease, background 0.18s ease, border-color 0.18s ease;
 }
 
 .pf-cx__btn-primary {

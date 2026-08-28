@@ -536,7 +536,10 @@
     "doesCompanyCta": "About →",
     "resourceHub": "Store · Insights · Blog · Media · Labs · Notes · Education",
     "resourceLabs": "Small experiments built and tested quickly.",
-    "statExperiments": "Experiments"
+    "statExperiments": "Experiments",
+    "statApps": "アプリ",
+    "explore7Title": "Media",
+    "explore7Body": "Product, process, and stories — recorded on video."
   },
   "footer": {
     "privacy": "プライバシーポリシー",

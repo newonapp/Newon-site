@@ -153,14 +153,15 @@ html[data-newon-shell-theme="dark"] .bz-page--ed {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
-  padding: 0 1.25rem;
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   text-decoration: none;
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  border-radius: 2px;
+  font-family: inherit;
+  transition: opacity 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .bz-hero__btn--primary {
@@ -170,8 +171,9 @@ html[data-newon-shell-theme="dark"] .bz-page--ed {
 }
 
 .bz-hero__btn--primary:hover {
-  background: transparent;
-  color: var(--bz-ink);
+  opacity: 0.88;
+  background: var(--bz-ink);
+  color: var(--bz-paper);
 }
 
 .bz-hero__btn--ghost {
@@ -191,8 +193,9 @@ html[data-newon-shell-theme="dark"] .bz-hero__btn--primary {
 }
 
 html[data-newon-shell-theme="dark"] .bz-hero__btn--primary:hover {
-  background: transparent;
-  color: #ffffff;
+  opacity: 0.88;
+  background: #ffffff;
+  color: #0a0a0a;
 }
 
 /* ——— Service index ——— */
@@ -978,15 +981,21 @@ html[data-newon-shell-theme="dark"] .bz-close {
 .bz-close__btn {
   display: inline-flex;
   align-items: center;
-  min-height: 48px;
-  padding: 0 1.35rem;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
   background: #ffffff;
   color: #0a0a0a;
   text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border-radius: 2px;
+  font-family: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.bz-close__btn:hover {
+  opacity: 0.88;
 }
 
 html[data-newon-shell-theme="dark"] .bz-close__btn {

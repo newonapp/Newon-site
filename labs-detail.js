@@ -707,7 +707,7 @@
   }
 
   function boot() {
-    var page = $(".ld-page");
+    var page = $(".bs-lab-live[data-ld-slug]") || $(".ld-page[data-ld-slug]");
     if (!page) return;
     var slug = page.getAttribute("data-ld-slug");
     safe(function () {

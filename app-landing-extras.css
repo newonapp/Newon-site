@@ -1009,28 +1009,29 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.85rem;
-  padding: 0.7rem 1.25rem;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
   border: 1.5px solid var(--ox-text);
-  border-radius: 999px;
+  border-radius: 2px;
   background: var(--ox-surface);
   color: var(--ox-text);
-  font-size: 0.9rem;
-  font-weight: 650;
+  font-size: 0.9375rem;
+  font-weight: 600;
   letter-spacing: -0.01em;
   text-decoration: none;
   transition:
+    opacity 0.2s ease,
     background 0.15s ease,
-    color 0.15s ease,
-    transform 0.15s ease;
+    color 0.15s ease;
 }
 
 .al-final-cta__btn:hover,
 .al-final-cta__btn:focus-visible {
   background: var(--ox-text);
   color: var(--ox-bg);
+  opacity: 0.88;
   outline: none;
-  transform: translateY(-1px);
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

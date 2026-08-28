@@ -5,7 +5,12 @@
   --page-y: clamp(3.75rem, 8vw, 6rem);
   --ui-radius: 12px;
   --ui-radius-sm: 10px;
+  --ui-radius-btn: 2px;
   --ui-radius-lg: 16px;
+  --ui-btn-min-h: 3.1rem;
+  --ui-btn-pad-y: 0.75rem;
+  --ui-btn-pad-x: 1.35rem;
+  --ui-btn-fs: 0.9375rem;
   --ui-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 28px rgba(0, 0, 0, 0.05);
   --ui-shadow-hover: 0 2px 6px rgba(0, 0, 0, 0.06), 0 18px 40px rgba(0, 0, 0, 0.08);
   --ui-border: rgba(0, 0, 0, 0.08);
@@ -34,34 +39,34 @@ body {
   width: min(var(--page-max), calc(100% - var(--page-pad) * 2));
 }
 
-/* ── Unified buttons ── */
+/* ── Unified buttons (News hero CTA reference) ── */
 .btn {
-  min-height: 44px;
-  padding: 0 1.25rem;
-  font-size: 0.875rem;
+  min-height: var(--ui-btn-min-h);
+  padding: var(--ui-btn-pad-y) var(--ui-btn-pad-x);
+  font-size: var(--ui-btn-fs);
   font-weight: 600;
   letter-spacing: -0.01em;
-  border-radius: var(--ui-radius-sm);
+  border-radius: var(--ui-radius-btn);
   transition:
+    opacity 0.2s ease,
     background 0.2s var(--ease-premium, cubic-bezier(0.16, 1, 0.3, 1)),
     border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s var(--ease-premium, cubic-bezier(0.16, 1, 0.3, 1)),
-    box-shadow 0.2s ease;
+    color 0.2s ease;
 }
 
 .btn-primary {
   background: #0a0a0a;
   color: #fff;
   border-color: #0a0a0a;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  box-shadow: none;
 }
 
 .btn-primary:hover {
+  opacity: 0.88;
   background: #0a0a0a;
   color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transform: none;
+  box-shadow: none;
 }
 
 html[data-newon-shell-theme="dark"] .btn-primary {
@@ -71,6 +76,7 @@ html[data-newon-shell-theme="dark"] .btn-primary {
 }
 
 html[data-newon-shell-theme="dark"] .btn-primary:hover {
+  opacity: 0.88;
   background: #fff;
   color: #0a0a0a;
 }
@@ -93,10 +99,10 @@ html[data-newon-shell-theme="dark"] .btn-ghost:hover {
 /* Hero CTAs on white ecosystem hero */
 .hero--ecosystem .hero-btn-primary,
 .hero--ecosystem .hero-btn-secondary {
-  border-radius: var(--ui-radius-sm);
-  min-height: 44px;
-  padding: 0 1.2rem;
-  font-size: 0.875rem;
+  border-radius: var(--ui-radius-btn);
+  min-height: var(--ui-btn-min-h);
+  padding: var(--ui-btn-pad-y) var(--ui-btn-pad-x);
+  font-size: var(--ui-btn-fs);
 }
 
 .hero--ecosystem .hero-btn-primary {
@@ -106,8 +112,9 @@ html[data-newon-shell-theme="dark"] .btn-ghost:hover {
 }
 
 .hero--ecosystem .hero-btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+  opacity: 0.88;
+  transform: none;
+  box-shadow: none;
   filter: none;
 }
 
@@ -119,7 +126,7 @@ html[data-newon-shell-theme="dark"] .btn-ghost:hover {
 
 .hero--ecosystem .hero-btn-secondary:hover {
   background: #ffffff;
-  transform: translateY(-1px);
+  transform: none;
 }
 
 /* Keep home hero + studio on white canvas in all themes */
@@ -460,4 +467,44 @@ html[data-newon-shell-theme="dark"] .tool-panel select:focus {
     transition: none;
     transform: none;
   }
+}
+
+/* ── App-wide CTA button shape ── */
+.bp-btn,
+.bs-btn,
+.co-btn,
+.gnav__cta,
+.lx-close__btn,
+.ri-research__btn,
+.rx-btn,
+.rs-btn,
+.ab-btn,
+.bz-hero__btn,
+.bz-close__btn,
+.bz-port__cta,
+.bz-band__cta,
+.pf-hero__btn,
+.pf-cx__btn-primary,
+.pf-cx__btn-secondary,
+.al-final-cta__btn,
+.ox-btn-soon,
+.ssd-btn,
+.saas-mock__btn {
+  border-radius: var(--ui-radius-btn);
+}
+
+.bp-btn--primary:hover,
+.bs-btn--primary:hover,
+.co-btn--primary:hover,
+.lx-close__btn--primary:hover,
+.ri-research__btn--primary:hover,
+.rx-btn--fill:hover,
+.rs-btn--primary:hover,
+.ab-btn--primary:hover,
+.bz-hero__btn--primary:hover,
+.bz-port__cta:hover,
+.bz-band__cta:hover,
+.pf-cx__btn-primary:hover,
+.ssd-btn--primary:hover {
+  opacity: 0.88;
 }

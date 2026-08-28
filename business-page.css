@@ -577,20 +577,22 @@ html[data-newon-shell-theme="dark"] .bz-page {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
-  padding: 0 1.45rem;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
   background: #0a0a0a;
   color: #fff;
-  font-size: 1rem;
-  font-weight: 650;
-  letter-spacing: -0.02em;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   text-decoration: none;
-  transition: background 0.2s ease;
+  border-radius: 2px;
+  transition: opacity 0.2s ease;
   white-space: nowrap;
 }
 
 .bz-port__cta:hover {
-  background: #222;
+  opacity: 0.88;
+  background: #0a0a0a;
 }
 
 .bz-port__all {
@@ -867,22 +869,24 @@ html[data-newon-shell-theme="dark"] .bz-page {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
-  padding: 0 1.45rem;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
   background: #fff;
   color: #0a0a0a !important;
-  font-size: 1rem;
-  font-weight: 650;
-  letter-spacing: -0.02em;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  border-radius: 2px;
+  transition: opacity 0.2s ease;
   justify-self: start;
   white-space: nowrap;
 }
 
 .bz-band__cta:hover {
-  background: #f0f0f0;
-  color: #000 !important;
+  opacity: 0.88;
+  background: #fff;
+  color: #0a0a0a !important;
 }
 
 html[data-newon-shell-theme="dark"] .bz-band {

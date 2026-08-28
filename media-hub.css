@@ -472,6 +472,18 @@ a.mh-ig-card:hover .mh-link,
   border-top: 1px solid var(--mh-line);
 }
 
+.mh-filter-empty[hidden],
+[data-rs-filter-empty][hidden] {
+  display: none !important;
+}
+
+.mh-grid > .mh-card[hidden],
+.mh-grid > .mh-card.is-filtered-out,
+.mh-featured[hidden],
+.mh-featured.is-filtered-out {
+  display: none !important;
+}
+
 .mh-filter-empty__sub {
   display: inline-block;
   margin-top: 0.35rem;
