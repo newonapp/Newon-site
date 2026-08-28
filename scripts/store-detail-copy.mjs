@@ -14,9 +14,9 @@ export const STORE_DETAIL_UI = {
     previewEyebrow: "03 · PREVIEW",
     previewTitle: "Preview",
     previewNote: "미리보기 · 실제 데이터 아님",
-    whoEyebrow: "04 · WHO IT'S FOR",
+    whoEyebrow: "05 · WHO IT'S FOR",
     whoTitle: "Who It's For",
-    formatEyebrow: "05 · FORMAT",
+    formatEyebrow: "06 · FORMAT",
     formatTitle: "Format",
     statusEyebrow: "06 · STATUS",
     statusTitle: "Status",
@@ -24,12 +24,25 @@ export const STORE_DETAIL_UI = {
     statusInDevelopment: "IN DEVELOPMENT",
     statusBody:
       "현재 Newon에서 제작 중인 리소스입니다.\n완성된 제품만 공개할 예정입니다.",
-    relatedEyebrow: "07 · RELATED",
-    relatedTitle: "Related / Navigation",
+    snapshotEyebrow: "PRODUCT SNAPSHOT",
+    snapshotTitle: "Product Snapshot",
+    howToEyebrow: "04 · HOW TO USE",
+    howToTitle: "How to Use",
+    releaseEyebrow: "07 · RELEASE STATUS",
+    releaseTitle: "Release Status",
+    relatedEyebrow: "08 · RELATED RESOURCES",
+    relatedTitle: "Related Resources",
     backStore: "← Back to Store",
-    nextResource: "Next Resource →",
+    prevResource: "Previous Resource",
+    nextResource: "Next Resource",
+    heroPreviewCta: "Preview 보기 ↓",
+    heroIncludesCta: "포함 내용 보기 ↓",
     comingSoonBadge: "COMING SOON",
     inDevBadge: "IN DEVELOPMENT",
+    includesLabel: "Includes",
+    formatLabel: "Format",
+    forLabel: "For",
+    statusLabel: "Status",
   },
   en: {
     crumbResources: "RESOURCES",
@@ -41,9 +54,9 @@ export const STORE_DETAIL_UI = {
     previewEyebrow: "03 · PREVIEW",
     previewTitle: "Preview",
     previewNote: "Preview · sample data only",
-    whoEyebrow: "04 · WHO IT'S FOR",
+    whoEyebrow: "05 · WHO IT'S FOR",
     whoTitle: "Who It's For",
-    formatEyebrow: "05 · FORMAT",
+    formatEyebrow: "06 · FORMAT",
     formatTitle: "Format",
     statusEyebrow: "06 · STATUS",
     statusTitle: "Status",
@@ -51,12 +64,25 @@ export const STORE_DETAIL_UI = {
     statusInDevelopment: "IN DEVELOPMENT",
     statusBody:
       "This resource is currently being built at Newon.\nWe only publish finished products.",
-    relatedEyebrow: "07 · RELATED",
-    relatedTitle: "Related / Navigation",
+    snapshotEyebrow: "PRODUCT SNAPSHOT",
+    snapshotTitle: "Product Snapshot",
+    howToEyebrow: "04 · HOW TO USE",
+    howToTitle: "How to Use",
+    releaseEyebrow: "07 · RELEASE STATUS",
+    releaseTitle: "Release Status",
+    relatedEyebrow: "08 · RELATED RESOURCES",
+    relatedTitle: "Related Resources",
     backStore: "← Back to Store",
-    nextResource: "Next Resource →",
+    prevResource: "Previous Resource",
+    nextResource: "Next Resource",
+    heroPreviewCta: "View preview ↓",
+    heroIncludesCta: "What's included ↓",
     comingSoonBadge: "COMING SOON",
     inDevBadge: "IN DEVELOPMENT",
+    includesLabel: "Includes",
+    formatLabel: "Format",
+    forLabel: "For",
+    statusLabel: "Status",
   },
 };
 
@@ -449,8 +475,29 @@ export const STORE_DETAILS = {
   },
 };
 
+const DEFAULT_HOW_TO = {
+  ko: [
+    { n: "01", title: "템플릿 열기", body: "Newon Store에서 제공하는 워크스페이스 또는 문서 템플릿을 엽니다." },
+    { n: "02", title: "맥락 입력", body: "제품, 사용자, 제약 조건을 각 모듈에 맞게 채웁니다." },
+    { n: "03", title: "순서대로 실행", body: "포함된 모듈을 단계별로 따라 작업합니다." },
+    { n: "04", title: "출시 전 점검", body: "체크리스트와 완료 기준을 확인한 뒤 배포합니다." },
+  ],
+  en: [
+    { n: "01", title: "Open the template", body: "Open the workspace or document template from Newon Store." },
+    { n: "02", title: "Fill context", body: "Add your product, user, and constraint details in each module." },
+    { n: "03", title: "Run in order", body: "Follow the included modules step by step." },
+    { n: "04", title: "Pre-ship check", body: "Verify checklists and acceptance criteria before release." },
+  ],
+};
+
 export function getStoreDetail(slug) {
-  return STORE_DETAILS[slug] || null;
+  const detail = STORE_DETAILS[slug];
+  if (!detail) return null;
+  return {
+    ...detail,
+    howToKo: detail.howToKo || DEFAULT_HOW_TO.ko,
+    howToEn: detail.howToEn || DEFAULT_HOW_TO.en,
+  };
 }
 
 export function getStoreDetailUi(lang) {

@@ -4,7 +4,7 @@
 import { escapeHtml } from "./hub-utils.mjs";
 import { getStoreProducts } from "./resources-data.mjs";
 import { getStoreDetail, getStoreDetailUi } from "./store-detail-copy.mjs";
-import { storeHeroVisual } from "./store-bs-visuals.mjs";
+import { storeHeroVisual, storeLargePreview } from "./store-bs-visuals.mjs";
 
 const STORE_NAV_LABELS = {
   "app-launch-kit": "LAUNCH",
@@ -16,6 +16,18 @@ const STORE_NAV_LABELS = {
   "product-research-template": "RESEARCH",
   "founder-dashboard": "DASHBOARD",
   "product-roadmap": "ROADMAP",
+};
+
+const PREVIEW_NAMES = {
+  "app-launch-kit": { ko: "Launch Command Center", en: "Launch Command Center" },
+  "mvp-planning-kit": { ko: "Product Planning Canvas", en: "Product Planning Canvas" },
+  "cursor-prompt-pack": { ko: "Prompt Workspace", en: "Prompt Workspace" },
+  "codex-builder-pack": { ko: "Agent Execution Console", en: "Agent Execution Console" },
+  "website-launch-checklist": { ko: "QA Checklist", en: "QA Checklist" },
+  "business-planning-workbook": { ko: "Business Workbook", en: "Business Workbook" },
+  "product-research-template": { ko: "Research Evidence Board", en: "Research Evidence Board" },
+  "founder-dashboard": { ko: "Founder Operating Dashboard", en: "Founder Operating Dashboard" },
+  "product-roadmap": { ko: "Strategy Roadmap", en: "Strategy Roadmap" },
 };
 
 function pad2(n) {
@@ -36,6 +48,17 @@ function productTitle(product, lang) {
 
 function statusLabel(product, ui) {
   return product.status === "concept" ? ui.inDevBadge : ui.comingSoonBadge;
+}
+
+function previewName(slug, lang) {
+  const names = PREVIEW_NAMES[slug];
+  if (!names) return lang === "ko" ? "Product Preview" : "Product Preview";
+  return lang === "ko" ? names.ko : names.en;
+}
+
+function howToSteps(detail, lang) {
+  const steps = (lang === "ko" ? detail.howToKo : detail.howToEn) || detail.howToEn || detail.howToKo || [];
+  return steps;
 }
 
 function breadcrumb(ui, title) {
@@ -74,19 +97,19 @@ function heroSection(product, detail, lang, ui) {
     : "NEWON STORE";
   const subtitle = pick(detail, lang, "subtitleKo", "subtitleEn");
   const description = pick(detail, lang, "descriptionKo", "descriptionEn");
-  const primaryCta = lang === "ko" ? "출시 알림 받기 →" : "Notify me at launch →";
-  const secondaryCta = lang === "ko" ? "포함 내용 보기 ↓" : "What's included ↓";
+  const badge = escapeHtml(statusLabel(product, ui));
 
   return `<section class="bs-hero" data-bs-reveal aria-labelledby="bs-hero-title">
   <div class="bs-inner bs-hero__grid">
     <div>
       <p class="bs-eyebrow">${eyebrow}</p>
+      <p class="bs-store-badge">${badge}</p>
       <h1 class="bs-hero__title" id="bs-hero-title">${escapeHtml(detail.title)}</h1>
       ${subtitle ? `<p class="bs-hero__lead">${escapeHtml(subtitle)}</p>` : ""}
       <p class="bs-hero__lead">${escapeHtml(description)}</p>
       <div class="bs-hero__actions">
-        <a class="bs-btn bs-btn--primary" href="#bs-store-status" data-bs-cta="hero_primary">${escapeHtml(primaryCta)}</a>
-        <a class="bs-btn bs-btn--ghost" href="#bs-ss-included-title" data-bs-cta="hero_secondary">${escapeHtml(secondaryCta)}</a>
+        <a class="bs-btn bs-btn--primary" href="#bs-ss-preview-title" data-bs-cta="hero_primary">${escapeHtml(ui.heroPreviewCta)}</a>
+        <a class="bs-btn bs-btn--ghost" href="#bs-ss-included-title" data-bs-cta="hero_secondary">${escapeHtml(ui.heroIncludesCta)}</a>
       </div>
     </div>
     ${storeHeroVisual(product.slug, detail.preview, lang)}
@@ -94,46 +117,43 @@ function heroSection(product, detail, lang, ui) {
 </section>`;
 }
 
-function metaRows(product, detail, ui) {
-  const rows = [
-    { k: "PRODUCT", v: detail.title },
-    { k: "CATEGORY", v: String(product.category || "").toUpperCase() },
-    { k: "TYPE", v: String(product.type || "KIT").toUpperCase() },
-    { k: "STATUS", v: statusLabel(product, ui) },
+function snapshotSection(product, detail, lang, ui) {
+  const includes = (lang === "ko" ? detail.includesKo : detail.includesEn) || [];
+  const format = (lang === "ko" ? detail.formatKo : detail.formatEn) || [];
+  const who = (lang === "ko" ? detail.whoKo : detail.whoEn) || [];
+  const cells = [
+    { k: ui.includesLabel, v: includes.length ? `${includes.length} modules` : "—" },
+    { k: ui.formatLabel, v: format.slice(0, 3).join(" · ") || "—" },
+    { k: ui.forLabel, v: who.slice(0, 2).join(" · ") || "—" },
+    { k: ui.statusLabel, v: statusLabel(product, ui) },
   ];
-  if (product.version) rows.push({ k: "VERSION", v: String(product.version) });
-  if (product.updated) rows.push({ k: "UPDATED", v: String(product.updated) });
-  return rows
+  const grid = cells
     .map(
-      (m) =>
-        `<div class="bs-dr-meta__row"><p class="bs-dr-meta__k">${escapeHtml(m.k)}</p><p class="bs-dr-meta__v">${escapeHtml(m.v)}</p></div>`
+      (c) =>
+        `<article class="bs-store-snap__cell"><p class="bs-store-snap__k">${escapeHtml(c.k)}</p><p class="bs-store-snap__v">${escapeHtml(c.v)}</p></article>`
     )
     .join("");
+  return `<section class="bs-section bs-section--surface bs-store-snap" data-bs-reveal aria-labelledby="bs-ss-snap-title"><div class="bs-inner">
+      <p class="bs-eyebrow">${escapeHtml(ui.snapshotEyebrow)}</p>
+      <h2 class="bs-title" id="bs-ss-snap-title">${escapeHtml(ui.snapshotTitle)}</h2>
+      <div class="bs-store-snap__grid">${grid}</div>
+    </div></section>`;
 }
 
 function overviewSection(product, detail, lang, ui) {
   const description = pick(detail, lang, "descriptionKo", "descriptionEn");
   const kicker = pick(detail, lang, "heroKickerKo", "heroKickerEn");
   const overviewTitle = kicker || ui.overviewTitle;
-  const overviewLabel = lang === "ko" ? "개요" : "Overview";
   return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-overview-title"><div class="bs-inner">
-      <div class="bs-dr-split">
-        <div class="bs-dr-split__copy">
-          <p class="bs-eyebrow">${escapeHtml(overviewLabel)}</p>
-          <h2 class="bs-title" id="bs-ss-overview-title">${brHeadline(overviewTitle)}</h2>
-          <div class="bs-overview"><p class="bs-lead">${escapeHtml(description)}</p></div>
-        </div>
-        <aside class="bs-dr-meta" aria-label="Product summary">${metaRows(product, detail, ui)}<p class="bs-note">${escapeHtml(
-    ui.previewNote
-  )}</p></aside>
-      </div>
+      <p class="bs-eyebrow">${escapeHtml(ui.overviewEyebrow)}</p>
+      <h2 class="bs-title" id="bs-ss-overview-title">${brHeadline(overviewTitle)}</h2>
+      <div class="bs-overview"><p class="bs-lead">${escapeHtml(description)}</p></div>
     </div></section>`;
 }
 
 function includesSection(detail, lang, ui) {
   const includes = (lang === "ko" ? detail.includesKo : detail.includesEn) || [];
   if (!includes.length) return "";
-  const label = lang === "ko" ? "포함 내용" : "What's included";
   const grid = `<div class="bs-get bs-get--deliver" data-count="${includes.length}" data-variant="deliver">${includes
     .map((it, i) => {
       const n = it.n || pad2(i + 1);
@@ -143,9 +163,35 @@ function includesSection(detail, lang, ui) {
     })
     .join("")}</div>`;
   return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-included-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(label)}</p>
+      <p class="bs-eyebrow">${escapeHtml(ui.includesEyebrow)}</p>
       <h2 class="bs-title" id="bs-ss-included-title">${escapeHtml(ui.includesTitle)}</h2>
       ${grid}
+    </div></section>`;
+}
+
+function previewSection(product, detail, lang, ui) {
+  const name = previewName(product.slug, lang);
+  return `<section class="bs-section bs-store-preview-sec" data-bs-reveal aria-labelledby="bs-ss-preview-title"><div class="bs-inner">
+      <p class="bs-eyebrow">${escapeHtml(ui.previewEyebrow)}</p>
+      <h2 class="bs-title" id="bs-ss-preview-title">${escapeHtml(name)}</h2>
+      <p class="bs-note bs-store-preview-sec__note">${escapeHtml(ui.previewNote)}</p>
+      ${storeLargePreview(product.slug, detail.preview, lang, name)}
+    </div></section>`;
+}
+
+function howToSection(detail, lang, ui) {
+  const steps = howToSteps(detail, lang);
+  if (!steps.length) return "";
+  const list = `<ol class="bs-process bs-process--steps" data-count="${steps.length}">${steps
+    .map(
+      (s, i) =>
+        `<li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">${escapeHtml(s.n || pad2(i + 1))}</span><div class="bs-process__copy"><h3>${escapeHtml(s.title)}</h3><p>${escapeHtml(s.body)}</p></div></li>`
+    )
+    .join("")}</ol>`;
+  return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-how-title"><div class="bs-inner">
+      <p class="bs-eyebrow">${escapeHtml(ui.howToEyebrow)}</p>
+      <h2 class="bs-title" id="bs-ss-how-title">${escapeHtml(ui.howToTitle)}</h2>
+      ${list}
     </div></section>`;
 }
 
@@ -157,9 +203,8 @@ function tagChips(items) {
 function whoSection(detail, lang, ui) {
   const who = (lang === "ko" ? detail.whoKo : detail.whoEn) || [];
   if (!who.length) return "";
-  const label = lang === "ko" ? "대상" : "Who it's for";
   return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-who-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(label)}</p>
+      <p class="bs-eyebrow">${escapeHtml(ui.whoEyebrow)}</p>
       <h2 class="bs-title" id="bs-ss-who-title">${escapeHtml(ui.whoTitle)}</h2>
       <ol class="bs-who">${who
         .map(
@@ -173,9 +218,8 @@ function whoSection(detail, lang, ui) {
 function formatSection(detail, lang, ui) {
   const format = (lang === "ko" ? detail.formatKo : detail.formatEn) || [];
   if (!format.length) return "";
-  const label = lang === "ko" ? "포맷" : "Format";
   return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-format-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(label)}</p>
+      <p class="bs-eyebrow">${escapeHtml(ui.formatEyebrow)}</p>
       <h2 class="bs-title" id="bs-ss-format-title">${escapeHtml(ui.formatTitle)}</h2>
       ${tagChips(format)}
     </div></section>`;
@@ -183,17 +227,16 @@ function formatSection(detail, lang, ui) {
 
 function finalSection(product, lang, ui) {
   const statusText = product.status === "concept" ? ui.statusInDevelopment : ui.statusComingSoon;
-  const eyebrow = lang === "ko" ? "상태" : "Status";
-  const ctaTitle = lang === "ko" ? "출시되면 알려드립니다" : "Get notified at launch";
   const placeholder = "your@email.com";
   const submit = lang === "ko" ? "출시 알림 받기 →" : "Notify me →";
+  const ctaTitle = lang === "ko" ? "출시되면 알려드립니다" : "Get notified at launch";
   const body = escapeHtml(ui.statusBody)
     .split("\n")
     .map((p) => `<p class="bs-lead">${p}</p>`)
     .join("");
 
   return `<section class="bs-section bs-section--dark bs-final" id="bs-store-status" data-bs-reveal aria-labelledby="bs-final-title"><div class="bs-inner">
-    <p class="bs-eyebrow">${escapeHtml(eyebrow)}</p>
+    <p class="bs-eyebrow">${escapeHtml(ui.releaseEyebrow)}</p>
     <h2 class="bs-final__title" id="bs-final-title">${escapeHtml(statusText)}</h2>
     ${body}
     <p class="bs-lead">${escapeHtml(ctaTitle)}</p>
@@ -214,9 +257,8 @@ function finalSection(product, lang, ui) {
 function relatedSection(product, lang, ui) {
   const peers = getStoreProducts()
     .filter((p) => p.slug !== product.slug)
-    .slice(0, 4);
+    .slice(0, 3);
   if (!peers.length) return "";
-  const label = lang === "ko" ? "관련 리소스" : "Related resources";
   const cards = peers
     .map((p) => {
       const title = productTitle(p, lang);
@@ -228,14 +270,14 @@ function relatedSection(product, lang, ui) {
     })
     .join("");
   return `<section class="bs-section" data-bs-reveal aria-labelledby="bs-ss-related-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(label)}</p>
+      <p class="bs-eyebrow">${escapeHtml(ui.relatedEyebrow)}</p>
       <h2 class="bs-title" id="bs-ss-related-title">${escapeHtml(ui.relatedTitle)}</h2>
       <div class="bs-related">${cards}</div>
       <p class="bs-related__all"><a href="../">${escapeHtml(ui.backStore)}</a></p>
     </div></section>`;
 }
 
-function adjacentSection(product, lang) {
+function adjacentSection(product, lang, ui) {
   const products = getStoreProducts();
   const idx = products.findIndex((p) => p.slug === product.slug);
   if (idx < 0) return "";
@@ -245,14 +287,14 @@ function adjacentSection(product, lang) {
 
   const prevBlock = prev
     ? `<a class="bs-adjacent__link bs-adjacent__link--prev" href="../${escapeHtml(prev.slug)}/">
-      <span class="bs-adjacent__label">${escapeHtml(lang === "ko" ? "이전" : "Previous")}</span>
+      <span class="bs-adjacent__label">${escapeHtml(ui.prevResource)}</span>
       <span class="bs-adjacent__name">${escapeHtml(productTitle(prev, lang))}</span>
     </a>`
     : `<span class="bs-adjacent__link bs-adjacent__link--prev is-empty"></span>`;
 
   const nextBlock = next
     ? `<a class="bs-adjacent__link bs-adjacent__link--next" href="../${escapeHtml(next.slug)}/">
-      <span class="bs-adjacent__label">${escapeHtml(lang === "ko" ? "다음" : "Next")}</span>
+      <span class="bs-adjacent__label">${escapeHtml(ui.nextResource)}</span>
       <span class="bs-adjacent__name">${escapeHtml(productTitle(next, lang))}</span>
     </a>`
     : `<span class="bs-adjacent__link bs-adjacent__link--next is-empty"></span>`;
@@ -287,12 +329,15 @@ export function renderStoreDetailBody(product, lang = "ko") {
   return `${breadcrumb(ui, detail.title)}
 ${heroSection(product, detail, lang, ui)}
 ${productNav(product.slug)}
+${snapshotSection(product, detail, lang, ui)}
 ${overviewSection(product, detail, lang, ui)}
 ${includesSection(detail, lang, ui)}
+${previewSection(product, detail, lang, ui)}
+${howToSection(detail, lang, ui)}
 ${whoSection(detail, lang, ui)}
 ${formatSection(detail, lang, ui)}
 ${finalSection(product, lang, ui)}
 ${relatedSection(product, lang, ui)}
 ${noticesSection(detail, lang)}
-${adjacentSection(product, lang)}`;
+${adjacentSection(product, lang, ui)}`;
 }
