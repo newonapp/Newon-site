@@ -307,7 +307,13 @@
             .indexOf(q) !== -1 ||
           String(it.type || "")
             .toLowerCase()
-            .indexOf(q) !== -1
+            .indexOf(q) !== -1 ||
+          String(it.category || "")
+            .toLowerCase()
+            .indexOf(q) !== -1 ||
+          (Array.isArray(it.tags) && it.tags.some(function (t) {
+            return String(t).toLowerCase().indexOf(q) !== -1;
+          }))
         );
       });
       renderHits(hits.slice(0, 10), q);

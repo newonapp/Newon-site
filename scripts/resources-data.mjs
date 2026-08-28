@@ -275,16 +275,19 @@ export {
 } from "./lab-experiments.mjs";
 
 import { LABS_EXPERIMENTS } from "./lab-experiments.mjs";
+import { loadPublishedBlogRegistry } from "./blog-data.mjs";
 import { getPublishedInsights } from "./insights-data.mjs";
 
 /** Empty archive until issues ship. */
 export const NEWSLETTER_ISSUES = [];
 
-/** Exploring topics — not confirmed courses. */
+/** Free guide topics — track: guides | courses | workshops */
 export const EDUCATION_TOPICS = [
   {
     id: "idea-to-mvp",
     slug: "idea-to-mvp",
+    track: "guides",
+    status: "coming_soon",
     titleKo: "FROM IDEA TO MVP",
     titleEn: "FROM IDEA TO MVP",
     bodyKo: "아이디어를 검증 가능한 최소 제품으로 좁히는 방법.",
@@ -293,6 +296,8 @@ export const EDUCATION_TOPICS = [
   {
     id: "product-thinking",
     slug: "product-thinking",
+    track: "guides",
+    status: "coming_soon",
     titleKo: "PRODUCT THINKING",
     titleEn: "PRODUCT THINKING",
     bodyKo: "기능이 아니라 문제와 사용자 흐름으로 제품을 보는 관점.",
@@ -301,6 +306,8 @@ export const EDUCATION_TOPICS = [
   {
     id: "building-with-ai",
     slug: "building-with-ai",
+    track: "guides",
+    status: "coming_soon",
     titleKo: "BUILDING WITH AI",
     titleEn: "BUILDING WITH AI",
     bodyKo: "AI를 보조로 쓰며 실제 제품을 만드는 실무 패턴.",
@@ -309,6 +316,8 @@ export const EDUCATION_TOPICS = [
   {
     id: "app-launch-basics",
     slug: "app-launch-basics",
+    track: "courses",
+    status: "coming_soon",
     titleKo: "APP LAUNCH BASICS",
     titleEn: "APP LAUNCH BASICS",
     bodyKo: "스토어 출시, 메타, 초기 피드백까지 런칭의 기본기.",
@@ -317,6 +326,8 @@ export const EDUCATION_TOPICS = [
   {
     id: "validating-ideas",
     slug: "validating-ideas",
+    track: "workshops",
+    status: "coming_soon",
     titleKo: "VALIDATING IDEAS",
     titleEn: "VALIDATING IDEAS",
     bodyKo: "크게 만들기 전에 가설을 빠르게 확인하는 방법.",
@@ -339,11 +350,11 @@ export function getFeaturedStoreProducts(limit = 3) {
 }
 
 export function getPublishedBlogPosts() {
-  return BLOG_POSTS.filter((p) => p && p.status === "published");
+  return loadPublishedBlogRegistry();
 }
 
 export function getBlogPost(slug) {
-  return BLOG_POSTS.find((p) => p.slug === slug) || null;
+  return loadPublishedBlogRegistry().find((p) => p.slug === slug) || null;
 }
 
 export function getMediaItems() {
@@ -352,6 +363,10 @@ export function getMediaItems() {
 
 export function getPublishedMediaItems() {
   return MEDIA_ITEMS.filter((m) => m && m.status === "published");
+}
+
+export function getMediaItem(slug) {
+  return MEDIA_ITEMS.find((m) => m.slug === slug) || null;
 }
 
 export function getNewsletterIssues() {
@@ -376,6 +391,8 @@ export function buildSearchIndex(lang = "en") {
       title: isKo ? p.titleKo : p.titleEn,
       description: isKo ? p.descKo : p.descEn,
       url: `store/${p.slug}/`,
+      tags: [p.category, p.type, "store"],
+      category: p.category || "",
     });
   }
   for (const a of getPublishedInsights()) {

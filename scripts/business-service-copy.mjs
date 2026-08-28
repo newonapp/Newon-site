@@ -26,6 +26,7 @@ import {
   hasExternalCost,
   scopeDisclaimer,
 } from "./business-pricing.mjs";
+import { applyKoSectionLabels } from "./business-section-labels.mjs";
 
 const COPY = {
   ko: {
@@ -148,8 +149,8 @@ const COPY = {
       demo: {
         project: { label: "PROJECT", value: "Demo MVP" },
         status: { label: "PROJECT STATUS", value: "BUILDING" },
-        progress: { label: "PROGRESS", value: "68%" },
-        features: { label: "CORE FEATURES", value: "8 / 12" },
+        progress: { label: "CURRENT STAGE", value: "BUILD" },
+        features: { label: "SCOPE", value: "CORE ONLY" },
         next: { label: "NEXT", value: "QA TEST" },
       },
       deliverTitle: "전달물",
@@ -3308,7 +3309,7 @@ export function getServiceCopy(slug, lang) {
     const pack = lang === "ko" ? COPY.ko : COPY.en;
     copy = pack[slug] || COPY.en[slug];
   }
-  return normalizeEngagementCopy(copy, lang, slug);
+  return applyKoSectionLabels(normalizeEngagementCopy(copy, lang, slug), lang);
 }
 
 export { COPY };

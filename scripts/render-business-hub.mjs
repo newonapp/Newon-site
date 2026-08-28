@@ -14,7 +14,7 @@ import {
 } from "./portfolio-data.mjs";
 import { writeInquirySuccessPages } from "./gen-business-details.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
-import { businessServicesHtml } from "./business-services-html.mjs";
+import { businessInquiryExploreHtml } from "./business-inquiry-explore-html.mjs";
 import { businessExploreHtml } from "./business-explore-html.mjs";
 import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { renderBusinessServices } from "./render-business-services.mjs";
@@ -207,7 +207,7 @@ for (const { dir, file, htmlLang } of LANGS) {
   inquiry = inquiry.replace(/\{\{BUSINESS_ECOSYSTEM\}\}/g, businessEcosystemHtml(flat, flatEn, "../../"));
   inquiry = inquiry.replace(
     /\{\{BUSINESS_SERVICES\}\}/g,
-    businessServicesHtml(flat, flatEn, dir, { prefix: "../" })
+    businessInquiryExploreHtml(flat, flatEn, dir)
   );
   inquiry = injectSiteChrome(inquiry, flat, flatEn, { activeNav: "business", base: "../../" });
   const inquiryDir = path.join(ROOT, dir, "business", "inquiry");

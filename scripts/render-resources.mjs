@@ -19,15 +19,20 @@ import {
   getNewsletterIssues,
   getEducationTopics,
   getPublishedMediaItems,
-  MEDIA_SERIES,
+  getMediaItem,
   buildSearchIndex,
   STORE_CATEGORIES,
   normalizeStoreCategory,
 } from "./resources-data.mjs";
-import { getPublishedInsights, INSIGHT_CATEGORIES } from "./insights-data.mjs";
+import { getPublishedInsights, INSIGHT_CATEGORIES, getInsight } from "./insights-data.mjs";
 import { labDetailBody as buildLabDetailBody } from "./lab-detail-bodies.mjs";
 import { buildLabsHubBody } from "./labs-hub.mjs";
 import { buildResourcesIndexBody } from "./resources-index.mjs";
+import { getRelatedResources } from "./resources-registry.mjs";
+import { resourceRelatedList, resourceMetaRow, resourceShare, resourceRelatedProducts, resourcePrevNext, jsonLdScript } from "./resources-components.mjs";
+import { buildStoreDetailBody, storeDetailSeo } from "./store-detail-body.mjs";
+import { buildBlogHubBody } from "./blog-hub-body.mjs";
+import { buildMediaHubBody } from "./media-hub-body.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const template = fs.readFileSync(path.join(ROOT, "templates", "resource.html"), "utf8");
@@ -370,160 +375,26 @@ ${exploreGrid(copies, "../", "store")}`;
 }
 
 function storeDetailBody(product, copies, lang) {
-  const copy = copies.store;
-  const title = tField(product, lang, "titleKo", "titleEn");
-  const desc = tField(product, lang, "descKo", "descEn");
-  const audience = tField(product, lang, "audienceKo", "audienceEn");
-  const includes = (lang === "ko" ? product.includesKo : product.includesEn) || [];
-  const price = priceLabel(product, copy);
-  const includesHtml = includes.map((x) => `<li>${escapeHtml(x)}</li>`).join("");
-
-  const waitlist = `<form class="rs-form waitlist-form" data-waitlist-form data-form-type="waitlist" data-product-id="${escapeHtml(product.slug)}">
-    <input type="hidden" name="productId" value="${escapeHtml(product.slug)}" />
-    <input type="email" name="email" placeholder="email@example.com" required autocomplete="email" />
-    <input type="text" name="_honey" class="rs-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-    <button type="submit" class="rs-btn rs-btn--primary">${escapeHtml(copy.waitlistCta)}</button>
-  </form>
-  <p class="rs-form__msg" data-waitlist-success hidden>${escapeHtml(copy.waitlistSuccess)}</p>
-  <p class="rs-form__msg" data-waitlist-duplicate hidden>${escapeHtml(copy.waitlistDuplicate)}</p>
-  <p class="rs-form__msg rs-form__msg--error" data-waitlist-error hidden role="alert">${escapeHtml(copy.waitlistError)}</p>
-  <p class="rs-form__note">${escapeHtml(copy.waitlistNote)}</p>
-  <p class="rs-form__alt"><a href="../../business/inquiry/">${escapeHtml(copy.inquiryCta)}</a></p>`;
-
-  return `${breadcrumb(copy, title, { resourcesHref: "../../", mid: copy.navLabel || "STORE", midHref: "../" })}
-<article class="rs-detail" data-rs-reveal>
-  <div class="rs-inner rs-detail__grid">
-    <div>
-      <p class="rs-eyebrow">${escapeHtml((product.category || "").toUpperCase())}</p>
-      <h1 class="rs-hero__title">${escapeHtml(title)}</h1>
-      <p class="rs-price">${escapeHtml(price)}</p>
-      <p class="rs-hero__lead">${escapeHtml(desc)}</p>
-      <div class="rs-detail__meta">
-        <div><span class="rs-k">${escapeHtml(copy.versionLabel)}</span><strong>${escapeHtml(product.version || "—")}</strong></div>
-        <div><span class="rs-k">${escapeHtml(copy.updatedLabel)}</span><strong>${escapeHtml(product.updated || "—")}</strong></div>
-      </div>
-      ${waitlist}
-    </div>
-    <aside class="rs-detail__aside">
-      <div class="rs-preview">
-        <p class="rs-k">${escapeHtml(copy.previewLabel)}</p>
-        <div class="rs-preview__frame"><span>${escapeHtml(title)}</span></div>
-      </div>
-      <div class="rs-detail__block">
-        <p class="rs-k">${escapeHtml(copy.audienceLabel)}</p>
-        <p>${escapeHtml(audience)}</p>
-      </div>
-      <div class="rs-detail__block">
-        <p class="rs-k">${escapeHtml(copy.includesLabel)}</p>
-        <ul class="rs-includes">${includesHtml}</ul>
-      </div>
-    </aside>
-  </div>
-</article>
-${exploreGrid(copies, "../../", "store")}
-${resourceSwitcher("store", copies, "../")}`;
+  return buildStoreDetailBody(product, copies, lang, {
+    breadcrumb,
+    resourceSwitcher,
+  });
 }
 
 function blogHubBody(copies, lang) {
-  const copy = copies.blog;
-  const posts = getPublishedBlogPosts();
-  const filters = Object.entries(copy.filterLabels || { all: "ALL" })
-    .map(
-      ([k, v]) =>
-        `<button type="button" class="rs-chip${k === "all" ? " is-active" : ""}" data-rs-filter="${escapeHtml(k)}">${escapeHtml(v)}</button>`
-    )
-    .join("");
-
-  let content = emptyState(copy.emptyTitle, copy.emptyLead);
-  if (posts.length) {
-    const featured = posts.find((p) => p.featured) || posts[0];
-    const latest = posts[0];
-    const index = posts
-      .map((p) => {
-        const title = escapeHtml(tField(p, lang, "titleKo", "titleEn"));
-        const cat = escapeHtml(p.category || "");
-        return `<a class="rs-pub-row" href="${p.slug}/" data-category="${cat}" data-rs-reveal>
-          <span class="rs-pub-row__cat">${cat}</span>
-          <span class="rs-pub-row__title">${title}</span>
-          <span class="rs-pub-row__arrow" aria-hidden="true">→</span>
-        </a>`;
-      })
-      .join("");
-    content = `
-      ${
-        featured
-          ? `<div class="rs-featured" data-rs-reveal><p class="rs-eyebrow">${escapeHtml(copy.featuredTitle)}</p>
-        <a class="rs-featured__link" href="${featured.slug}/"><h2 class="rs-featured__title">${escapeHtml(tField(featured, lang, "titleKo", "titleEn"))}</h2>
-        <p>${escapeHtml(tField(featured, lang, "descKo", "descEn"))}</p></a></div>`
-          : ""
-      }
-      ${
-        latest
-          ? `<div class="rs-latest" data-rs-reveal><p class="rs-eyebrow">${escapeHtml(copy.latestTitle)}</p>
-        <a href="${latest.slug}/">${escapeHtml(tField(latest, lang, "titleKo", "titleEn"))} →</a></div>`
-          : ""
-      }
-      <p class="rs-eyebrow">${escapeHtml(copy.indexTitle)}</p>
-      <div class="rs-filters" data-rs-filters>${filters}</div>
-      <div class="rs-pub-index" data-rs-filter-grid>${index}</div>`;
-  }
-
-  return `${breadcrumb(copy, copy.navLabel || "BLOG")}
-${heroBlock(copy, visualPublication())}
-${resourceSwitcher("blog", copies)}
-<section class="rs-section" id="rs-content">
-  <div class="rs-inner">${content}</div>
-</section>
-${exploreGrid(copies, "../", "blog")}`;
+  return buildBlogHubBody(copies, lang, {
+    breadcrumb,
+    resourceSwitcher,
+    exploreGrid,
+  });
 }
 
 function mediaHubBody(copies, lang) {
-  const copy = copies.media;
-  const items = getPublishedMediaItems();
-  const filters = Object.entries(copy.filterLabels || { all: "ALL" })
-    .map(
-      ([k, v]) =>
-        `<button type="button" class="rs-chip${k === "all" ? " is-active" : ""}" data-rs-filter="${escapeHtml(k)}">${escapeHtml(v)}</button>`
-    )
-    .join("");
-
-  const series = MEDIA_SERIES.map(
-    (s) => `<div class="rs-series__item"><span class="rs-series__label">${escapeHtml(s.label)}</span><span class="rs-series__state">${escapeHtml(copy.comingSoon)}</span></div>`
-  ).join("");
-
-  let indexHtml = emptyState(copy.emptyTitle, copy.emptyLead);
-  if (items.length) {
-    indexHtml = items
-      .map((m) => {
-        const title = escapeHtml(tField(m, lang, "titleKo", "titleEn"));
-        return `<a class="rs-media-row" href="${m.slug}/" data-category="${escapeHtml(m.category || "")}" data-rs-reveal>
-          <span class="rs-media-row__title">${title}</span>
-          <span class="rs-media-row__arrow">→</span>
-        </a>`;
-      })
-      .join("");
-  }
-
-  return `${breadcrumb(copy, copy.navLabel || "MEDIA")}
-${heroBlock(copy, visualFilm(copy))}
-${resourceSwitcher("media", copies)}
-<section class="rs-section" id="rs-content">
-  <div class="rs-inner">
-    <p class="rs-eyebrow">${escapeHtml(copy.featuredTitle)}</p>
-    <div class="rs-film rs-film--wide" data-rs-reveal aria-hidden="true">
-      <div class="rs-film__frame rs-film__frame--lg">
-        <span class="rs-film__label">${escapeHtml(copy.featuredFrame)}</span>
-        <span class="rs-film__play"></span>
-      </div>
-    </div>
-    <div class="rs-filters" data-rs-filters>${filters}</div>
-    <p class="rs-eyebrow" style="margin-top:2.5rem">${escapeHtml(copy.indexTitle)}</p>
-    <div data-rs-filter-grid>${indexHtml}</div>
-    <p class="rs-eyebrow" style="margin-top:2.5rem">${escapeHtml(copy.seriesTitle)}</p>
-    <div class="rs-series">${series}</div>
-  </div>
-</section>
-${exploreGrid(copies, "../", "media")}`;
+  return buildMediaHubBody(copies, lang, {
+    breadcrumb,
+    resourceSwitcher,
+    exploreGrid: (c, b = "../") => exploreGrid(c, b, "media"),
+  });
 }
 
 function labsHubBody(copies, lang) {
@@ -546,7 +417,7 @@ function labDetailBody(exp, copies, lang) {
   });
 }
 
-function newsletterHubBody(copies) {
+function newsletterHubBody(copies, lang) {
   const copy = copies.newsletter;
   const issues = getNewsletterIssues();
   const getItems = (copy.getItems || [])
@@ -561,9 +432,24 @@ function newsletterHubBody(copies) {
   const archive =
     issues.length === 0
       ? emptyState(copy.emptyTitle || copy.archiveTitle, copy.emptyLead)
-      : issues
-          .map((iss) => `<div class="rs-archive-row"><span>${escapeHtml(iss.title || iss.id)}</span></div>`)
-          .join("");
+      : `<ol class="rs-build-log">${issues
+          .map((iss) => {
+            const date = iss.publishedAt || iss.date || "";
+            const title = escapeHtml(lang === "ko" ? iss.titleKo || iss.title : iss.titleEn || iss.title);
+            const cat = escapeHtml(String(iss.category || "build-log").toUpperCase());
+            const excerpt = escapeHtml(lang === "ko" ? iss.excerptKo || iss.bodyKo || "" : iss.excerptEn || iss.bodyEn || "");
+            const links = (iss.links || [])
+              .map((l) => `<a href="${escapeHtml(l.href)}">${escapeHtml(l.label)}</a>`)
+              .join("");
+            return `<li class="rs-build-log__item" id="${escapeHtml(iss.slug || iss.id)}">
+              <time class="rs-build-log__date" datetime="${escapeHtml(date)}">${escapeHtml(date.replace(/-/g, "."))}</time>
+              <span class="rs-build-log__cat">${cat}</span>
+              <h3 class="rs-build-log__title">${title}</h3>
+              ${excerpt ? `<div class="rs-build-log__body">${excerpt.split("\n\n").map((p) => `<p>${p}</p>`).join("")}</div>` : ""}
+              ${links ? `<div class="rs-build-log__links">${links}</div>` : ""}
+            </li>`;
+          })
+          .join("")}</ol>`;
 
   return `${breadcrumb(copy, copy.navLabel || "NEWSLETTER")}
 ${heroBlock(copy, visualSubscribe())}
@@ -596,18 +482,32 @@ ${exploreGrid(copies, "../", "newsletter")}`;
 
 function educationHubBody(copies, lang) {
   const copy = copies.education;
-  const topics = getEducationTopics()
-    .map((t, i) => {
-      const title = escapeHtml(tField(t, lang, "titleKo", "titleEn"));
-      const body = escapeHtml(tField(t, lang, "bodyKo", "bodyEn"));
-      return `<article class="rs-topic" id="${escapeHtml(t.slug)}" data-rs-reveal>
+  const tracks = [
+    { id: "guides", title: copy.trackGuides || "FREE GUIDES" },
+    { id: "courses", title: copy.trackCourses || "COURSES" },
+    { id: "workshops", title: copy.trackWorkshops || "WORKSHOPS" },
+  ];
+  const topicsByTrack = tracks
+    .map((track) => {
+      const items = getEducationTopics().filter((t) => (t.track || "guides") === track.id);
+      if (!items.length) return "";
+      const rows = items
+        .map((t, i) => {
+          const title = escapeHtml(tField(t, lang, "titleKo", "titleEn"));
+          const body = escapeHtml(tField(t, lang, "bodyKo", "bodyEn"));
+          const soon = t.status === "coming_soon" ? `<span class="rs-badge rs-badge--inline">${escapeHtml(copy.badge || "COMING SOON")}</span>` : "";
+          return `<article class="rs-topic" id="${escapeHtml(t.slug)}" data-rs-reveal>
         <span class="rs-topic__n">${pad3(i + 1)}</span>
         <div>
-          <h3 class="rs-topic__title">${title}</h3>
+          <h3 class="rs-topic__title">${title} ${soon}</h3>
           <p class="rs-topic__body">${body}</p>
         </div>
       </article>`;
+        })
+        .join("");
+      return `<section class="rs-edu-track" aria-labelledby="rs-edu-${track.id}"><h2 class="rs-title" id="rs-edu-${track.id}">${escapeHtml(track.title)}</h2><div class="rs-topics">${rows}</div></section>`;
     })
+    .filter(Boolean)
     .join("");
 
   return `${breadcrumb(copy, copy.navLabel || "EDUCATION")}
@@ -627,7 +527,7 @@ ${resourceSwitcher("education", copies)}
       <p class="rs-lead">${escapeHtml(copy.notCourseLead)}</p>
     </div>
     <p class="rs-eyebrow" style="margin-top:3rem">${escapeHtml(copy.topicsTitle)}</p>
-    <div class="rs-topics">${topics}</div>
+    ${topicsByTrack}
     <div class="rs-notify" data-rs-reveal>
       <p class="rs-eyebrow">${escapeHtml(copy.notifyTitle)}</p>
       <p class="rs-lead">${escapeHtml(copy.notifyLead)}</p>
@@ -707,6 +607,126 @@ ${resourceSwitcher("insights", copies)}
   </div>
 </section>
 ${exploreGrid(copies, "../", "insights")}`;
+}
+
+function insightSection(title, bodyHtml) {
+  if (!bodyHtml) return "";
+  return `<section class="rs-detail__block" data-rs-reveal>
+    <h2 class="rs-title rs-title--sm">${escapeHtml(title)}</h2>
+    <div class="rs-prose">${bodyHtml}</div>
+  </section>`;
+}
+
+function insightDetailBody(article, copies, lang) {
+  const copy = copies.insights;
+  const title = tField(article, lang, "titleKo", "titleEn");
+  const summary = tField(article, lang, "summaryKo", "summaryEn") || tField(article, lang, "descKo", "descEn");
+  const findings = (lang === "ko" ? article.keyFindingsKo : article.keyFindingsEn) || [];
+  const evidence = tField(article, lang, "evidenceKo", "evidenceEn");
+  const meaning = tField(article, lang, "meaningKo", "meaningEn");
+  const take = tField(article, lang, "newonTakeKo", "newonTakeEn");
+  const findingsHtml = findings.length
+    ? `<ul class="rs-includes">${findings.map((x) => `<li>${escapeHtml(x)}</li>`).join("")}</ul>`
+    : "";
+  const related = getRelatedResources(
+    { id: article.id, type: "insights", category: article.category, tags: [article.category, article.type] },
+    lang,
+    4
+  );
+  const published = article.publishedAt ? String(article.publishedAt).replace(/-/g, ".") : "—";
+
+  return `${breadcrumb(copy, title, { resourcesHref: "../../", mid: copy.navLabel || "INSIGHTS", midHref: "../" })}
+<article class="rs-detail" data-rs-reveal itemscope itemtype="https://schema.org/Article">
+  <div class="rs-inner">
+    <p class="rs-eyebrow">${escapeHtml(String(article.category || "").toUpperCase())} · ${escapeHtml(copy.typeLabels?.[article.type] || article.type || "")}</p>
+    <h1 class="rs-hero__title" itemprop="headline">${escapeHtml(title)}</h1>
+    ${resourceMetaRow({
+      escapeHtml,
+      items: [
+        { label: lang === "ko" ? "발행일" : "PUBLISHED", value: published },
+        { label: lang === "ko" ? "카테고리" : "CATEGORY", value: String(article.category || "").toUpperCase() },
+        { label: lang === "ko" ? "유형" : "TYPE", value: copy.typeLabels?.[article.type] || article.type || "—" },
+      ],
+    })}
+    ${insightSection(copy.detailSummary || (lang === "ko" ? "요약" : "SUMMARY"), summary ? `<p>${escapeHtml(summary)}</p>` : "")}
+    ${insightSection(copy.detailFindings || (lang === "ko" ? "핵심 발견" : "KEY FINDINGS"), findingsHtml)}
+    ${insightSection(copy.detailEvidence || (lang === "ko" ? "근거 · 관찰" : "EVIDENCE / OBSERVATIONS"), evidence ? `<p>${escapeHtml(evidence)}</p>` : "")}
+    ${insightSection(copy.detailMeaning || (lang === "ko" ? "의미" : "WHAT IT MEANS"), meaning ? `<p>${escapeHtml(meaning)}</p>` : "")}
+    ${insightSection(copy.detailTake || (lang === "ko" ? "Newon 관점" : "NEWON TAKE"), take ? `<p>${escapeHtml(take)}</p>` : "")}
+    ${resourceShare({ escapeHtml, url: `${SITE_ORIGIN}/${lang === "ko" ? "ko" : "en"}/resources/insights/${article.slug}/`, title, copy: { shareLabel: lang === "ko" ? "공유" : "SHARE" } })}
+  </div>
+</article>
+${resourceRelatedList({ escapeHtml, title: copy.relatedTitle || (lang === "ko" ? "관련 리소스" : "Related Resources"), items: related })}
+<section class="rs-section" data-rs-reveal>
+  <div class="rs-inner">
+    <p class="rs-eyebrow">${escapeHtml(copy.researchEyebrow || "BUSINESS RESEARCH")}</p>
+    <h2 class="rs-title">${escapeHtml(copy.researchTitle || "")}</h2>
+    ${copy.researchLead ? `<p class="rs-lead">${escapeHtml(copy.researchLead)}</p>` : ""}
+    <a class="rs-btn rs-btn--primary" href="${escapeHtml(copy.researchHref || "../../business/research/")}">${escapeHtml(copy.researchCta || "Inquire →")}</a>
+  </div>
+</section>
+${jsonLdScript({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description: summary,
+  datePublished: article.publishedAt || undefined,
+  author: { "@type": "Organization", name: "Newon" },
+})}
+${exploreGrid(copies, "../../", "insights")}
+${resourceSwitcher("insights", copies, "../")}`;
+}
+
+function mediaDetailBody(item, copies, lang) {
+  const copy = copies.media;
+  const title = tField(item, lang, "titleKo", "titleEn");
+  const desc = tField(item, lang, "descKo", "descEn");
+  const body = tField(item, lang, "bodyKo", "bodyEn");
+  const published = item.publishedAt || item.date ? String(item.publishedAt || item.date).replace(/-/g, ".") : "—";
+  const related = getRelatedResources(
+    { id: item.id, type: "media", category: item.category, tags: [item.category, "media"] },
+    lang,
+    4
+  );
+  const products = item.relatedProducts || [];
+
+  return `${breadcrumb(copy, title, { resourcesHref: "../../", mid: copy.navLabel || "MEDIA", midHref: "../" })}
+<article class="rs-detail" data-rs-reveal itemscope itemtype="https://schema.org/VideoObject">
+  <div class="rs-inner rs-detail__grid">
+    <div>
+      <p class="rs-eyebrow">${escapeHtml(String(item.category || "").toUpperCase())}</p>
+      <h1 class="rs-hero__title" itemprop="name">${escapeHtml(title)}</h1>
+      ${resourceMetaRow({
+        escapeHtml,
+        items: [
+          { label: lang === "ko" ? "발행일" : "PUBLISHED", value: published },
+          { label: lang === "ko" ? "카테고리" : "CATEGORY", value: String(item.category || "").toUpperCase() },
+          { label: lang === "ko" ? "형식" : "FORMAT", value: String(item.format || "video").toUpperCase() },
+        ],
+      })}
+      <p class="rs-hero__lead" itemprop="description">${escapeHtml(desc)}</p>
+      ${body ? `<div class="rs-prose">${body.split("\n\n").map((p) => `<p>${escapeHtml(p)}</p>`).join("")}</div>` : ""}
+      ${resourceShare({ escapeHtml, url: `${SITE_ORIGIN}/${lang === "ko" ? "ko" : "en"}/resources/media/${item.slug}/`, title, copy: { shareLabel: lang === "ko" ? "공유" : "SHARE" } })}
+    </div>
+    <aside class="rs-detail__aside">
+      <div class="rs-preview">
+        <p class="rs-k">${escapeHtml(copy.featuredTitle || "PREVIEW")}</p>
+        <div class="rs-preview__frame rs-preview__frame--media"><span>${escapeHtml(title)}</span></div>
+      </div>
+    </aside>
+  </div>
+</article>
+${resourceRelatedProducts({ escapeHtml, title: copy.relatedProductsTitle || (lang === "ko" ? "관련 제품" : "Related Products"), products })}
+${resourceRelatedList({ escapeHtml, title: copy.relatedTitle || (lang === "ko" ? "관련 리소스" : "Related Resources"), items: related })}
+${jsonLdScript({
+  "@context": "https://schema.org",
+  "@type": item.format === "article" ? "Article" : "VideoObject",
+  name: title,
+  description: desc,
+  uploadDate: item.publishedAt || item.date || undefined,
+})}
+${exploreGrid(copies, "../../", "media")}
+${resourceSwitcher("media", copies, "../")}`;
 }
 
 function hubBody(slug, copies, lang) {
@@ -805,16 +825,14 @@ export function renderResources() {
 
     // Store details
     for (const product of getStoreProducts()) {
-      const copy = copies.store;
-      const title = tField(product, lang, "titleKo", "titleEn");
-      const desc = tField(product, lang, "descKo", "descEn");
+      const seo = storeDetailSeo(product, lang);
       const html = renderHtml({
         htmlLang,
         ogLocale: OG_LOCALE[dir] || "en_US",
         canonical: `${SITE_ORIGIN}/${dir}/resources/store/${product.slug}/`,
         hreflang: hreflangBlock(`store/${product.slug}`),
-        seoTitle: `${title} | Newon Store`,
-        metaDescription: desc,
+        seoTitle: seo.seoTitle,
+        metaDescription: seo.metaDescription,
         hubSlug: "store",
         analyticsId: `store_${product.slug}`,
         body: storeDetailBody(product, copies, lang),
@@ -851,6 +869,49 @@ export function renderResources() {
       path.join(ROOT, dir, "resources", "labs", "ai-service", "index.html"),
       metaRefreshHtml(`/${dir}/resources/labs/ai-experiment/`, "Redirect · AI Product Discovery")
     );
+
+    // Insight details — published only
+    for (const article of getPublishedInsights()) {
+      const copy = copies.insights;
+      const title = tField(article, lang, "titleKo", "titleEn");
+      const desc = tField(article, lang, "descKo", "descEn");
+      const html = renderHtml({
+        htmlLang,
+        ogLocale: OG_LOCALE[dir] || "en_US",
+        canonical: `${SITE_ORIGIN}/${dir}/resources/insights/${article.slug}/`,
+        hreflang: hreflangBlock(`insights/${article.slug}`),
+        seoTitle: `${title} | Newon Insights`,
+        metaDescription: desc,
+        hubSlug: "insights",
+        analyticsId: `insights_${article.slug}`,
+        body: insightDetailBody(article, copies, lang),
+        flat,
+        flatEn,
+        chromeBase: "../../../",
+      });
+      writeFile(path.join(ROOT, dir, "resources", "insights", article.slug, "index.html"), html);
+    }
+
+    // Media details — published only
+    for (const item of getPublishedMediaItems()) {
+      const title = tField(item, lang, "titleKo", "titleEn");
+      const desc = tField(item, lang, "descKo", "descEn");
+      const html = renderHtml({
+        htmlLang,
+        ogLocale: OG_LOCALE[dir] || "en_US",
+        canonical: `${SITE_ORIGIN}/${dir}/resources/media/${item.slug}/`,
+        hreflang: hreflangBlock(`media/${item.slug}`),
+        seoTitle: `${title} | Newon Media`,
+        metaDescription: desc,
+        hubSlug: "media",
+        analyticsId: `media_${item.slug}`,
+        body: mediaDetailBody(item, copies, lang),
+        flat,
+        flatEn,
+        chromeBase: "../../../",
+      });
+      writeFile(path.join(ROOT, dir, "resources", "media", item.slug, "index.html"), html);
+    }
 
     // Blog details — only if posts exist
     for (const post of getPublishedBlogPosts()) {
@@ -918,9 +979,32 @@ export function renderResources() {
         }
       }
     }
-    for (const f of ["resources.css", "resources.js", "labs-detail.css", "labs-detail.js"]) {
+    for (const f of [
+      "resources.css",
+      "resources.js",
+      "labs-detail.css",
+      "labs-detail.js",
+      "store-detail.css",
+      "blog-hub.css",
+      "media-hub.css",
+      "media-hub.js",
+    ]) {
       const src = path.join(ROOT, f);
       if (fs.existsSync(src)) fs.copyFileSync(src, path.join(pub, f));
+    }
+    const walkAssets = (from, to) => {
+      fs.mkdirSync(to, { recursive: true });
+      for (const ent of fs.readdirSync(from, { withFileTypes: true })) {
+        if (ent.name.startsWith("_")) continue;
+        const a = path.join(from, ent.name);
+        const b = path.join(to, ent.name);
+        if (ent.isDirectory()) walkAssets(a, b);
+        else fs.copyFileSync(a, b);
+      }
+    };
+    for (const dir of ["media-thumbs", "blog-thumbs"]) {
+      const srcDir = path.join(ROOT, dir);
+      if (fs.existsSync(srcDir)) walkAssets(srcDir, path.join(pub, dir));
     }
     const rootRes = path.join(ROOT, "resources");
     if (fs.existsSync(rootRes)) {

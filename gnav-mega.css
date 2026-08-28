@@ -91,13 +91,10 @@ html[data-newon-shell-theme="dark"] .gnav--scrolled {
 .gnav__brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.7rem;
   justify-self: start;
   min-width: 0;
   color: var(--gnav-text-strong);
-  font-size: 1.0625rem;
-  font-weight: 650;
-  letter-spacing: -0.035em;
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
@@ -110,9 +107,15 @@ html[data-newon-shell-theme="dark"] .gnav--scrolled {
   border-radius: 10px;
   flex-shrink: 0;
   object-fit: cover;
+  background: #0a0a0a;
 }
 
 .gnav__wordmark {
+  font-family: "Noto Sans", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

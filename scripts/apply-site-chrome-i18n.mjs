@@ -13,13 +13,13 @@ const LOCALES = path.join(ROOT, "locales");
 const NAV = {
   ko: {
     home: "홈",
-    business: "Business",
-    portfolio: "Portfolio",
-    about: "About",
-    ideas: "Newon Idea",
-    newsUpdates: "News",
+    business: "비즈니스",
+    portfolio: "포트폴리오",
+    about: "소개",
+    ideas: "아이디어",
+    newsUpdates: "뉴스",
     projects: "프로젝트",
-    contact: "Contact",
+    contact: "문의",
     intro: "소개",
     brandKicker: "Newon의 앱",
     appsLabel: "Newon의 앱",
@@ -375,6 +375,52 @@ const BIZ_PAGES_COMMON = {
   },
 };
 
+/** Korean top nav + mega menu labels still English in ko.json */
+const KO_NAV_PATCH = {
+  topProducts: "제품",
+  topBusiness: "비즈니스",
+  topStudio: "스튜디오",
+  topResources: "리소스",
+  topCompany: "회사",
+  products: "제품",
+  resources: "리소스",
+  company: "회사",
+  apps: "앱",
+  games: "게임",
+  tools: "도구",
+  store: "스토어",
+  blog: "블로그",
+  media: "미디어",
+  labs: "랩스",
+  newsletter: "뉴스레터",
+  education: "교육",
+  insights: "인사이트",
+  publishing: "퍼블리싱",
+  productsMenuLabel: "제품",
+  businessMenuLabel: "비즈니스",
+  resourcesMenuLabel: "리소스",
+  companyMenuLabel: "회사",
+  studioMenuLabel: "스튜디오",
+  servicesLabel: "서비스",
+  featuredLabel: "추천",
+  comingSoon: "곧 공개",
+  viewAllProducts: "전체 제품 보기 →",
+  businessExploreCta: "비즈니스 알아보기 →",
+  studioExploreCta: "스튜디오 둘러보기 →",
+  resourcesExploreCta: "리소스 둘러보기 →",
+  companyExploreCta: "Newon 소개 →",
+  companyFooterLine: "디지털 제품 스튜디오",
+  bizColBuild: "구축",
+  bizColAutomation: "자동화",
+  bizColCreative: "크리에이티브",
+  bizColResearch: "리서치",
+  bizColSolutions: "솔루션",
+  studioBrand: "브랜드",
+  studioDigital: "디지털",
+  studioContent: "콘텐츠",
+  studioIp: "IP",
+};
+
 const GLANCE_KO = {
   glanceLabel: "개요",
   glanceSnapshotEyebrow: "✨ 제품 요약",
@@ -439,6 +485,7 @@ for (const lang of Object.keys(NAV)) {
   data.about = { ...(data.about || {}), ...ABOUT_HUB[lang] };
 
   if (lang === "ko") {
+    data.nav = { ...(data.nav || {}), ...KO_NAV_PATCH };
     data.home = {
       ...(data.home || {}),
       btnExploreNewonAria: "포트폴리오, 뉴스, 아이디어, 비즈니스 살펴보기",
@@ -451,6 +498,9 @@ for (const lang of Object.keys(NAV)) {
         ctaPortfolio: "포트폴리오 둘러보기 →",
         emptyTitle: "비즈니스 문의",
       });
+    }
+    if (data.meta) {
+      data.meta.titleHome = "Newon | 제품 스튜디오";
     }
   }
 

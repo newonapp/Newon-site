@@ -3,6 +3,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { getCompanyMetrics } from "./company-metrics.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const TPL = path.join(ROOT, "templates", "index.html");
@@ -72,7 +73,13 @@ function ensureAssets(html) {
 }
 
 const hero = fs.readFileSync(HERO, "utf8");
-const studio = fs.readFileSync(INC, "utf8").trim();
+const metrics = getCompanyMetrics();
+let studio = fs.readFileSync(INC, "utf8")
+  .replace(/\{\{METRICS_PRODUCTS\}\}/g, metrics.products)
+  .replace(/\{\{METRICS_COUNTRIES\}\}/g, metrics.countries)
+  .replace(/\{\{METRICS_LANGUAGES\}\}/g, metrics.languages)
+  .replace(/\{\{METRICS_EXPERIMENTS\}\}/g, metrics.experiments)
+  .trim();
 const block = hero + "\n" + studio;
 
 let html = fs.readFileSync(TPL, "utf8");

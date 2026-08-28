@@ -2,10 +2,11 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { LANGS, SITE_ORIGIN, ROOT } from "./hub-utils.mjs";
+import { LANGS, SITE_ORIGIN, ROOT, loadJson, flatten, fillMissing, pick } from "./hub-utils.mjs";
 import { TOOLS } from "./tools-data.mjs";
 import { allProducts } from "./products-data.mjs";
-import { loadJson, flatten, fillMissing, pick } from "./hub-utils.mjs";
+import { buildSearchIndex } from "./resources-data.mjs";
+import { RESOURCE_PAGES } from "./resources-catalog.mjs";
 
 const items = [];
 
@@ -41,7 +42,7 @@ for (const lang of LANGS) {
     });
   }
 
-  for (const hub of ["products", "ai", "saas", "games", "business", "tools", "store", "blog", "labs"]) {
+  for (const hub of ["products", "ai", "saas", "games", "business", "tools"]) {
     items.push({
       title: hub,
       type: "page",
@@ -49,6 +50,38 @@ for (const lang of LANGS) {
       lang: lang.dir,
       featured: hub === "products" || hub === "business",
       tags: [hub],
+    });
+  }
+
+  items.push({
+    title: pick(flat, flatEn, "nav.resources", "Resources"),
+    type: "page",
+    url: `${SITE_ORIGIN}/${lang.dir}/resources/`,
+    lang: lang.dir,
+    featured: true,
+    tags: ["resources"],
+  });
+
+  for (const page of RESOURCE_PAGES) {
+    items.push({
+      title: page.slug,
+      type: "page",
+      url: `${SITE_ORIGIN}/${lang.dir}/resources/${page.slug}/`,
+      lang: lang.dir,
+      featured: page.slug === "store" || page.slug === "labs",
+      tags: ["resources", page.slug],
+    });
+  }
+
+  for (const entry of buildSearchIndex(lang.dir === "ko" ? "ko" : "en")) {
+    items.push({
+      title: entry.title,
+      desc: entry.description || "",
+      type: entry.type || "resources",
+      url: `${SITE_ORIGIN}/${lang.dir}/resources/${entry.url}`,
+      lang: lang.dir,
+      featured: false,
+      tags: entry.tags || [entry.type, entry.category].filter(Boolean),
     });
   }
 }

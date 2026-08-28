@@ -484,33 +484,328 @@
     ]
   },
   {
+    "title": "리소스",
+    "type": "page",
+    "url": "https://www.newon.app/ko/resources/",
+    "lang": "ko",
+    "featured": true,
+    "tags": [
+      "resources"
+    ]
+  },
+  {
     "title": "store",
     "type": "page",
-    "url": "https://www.newon.app/ko/store/",
+    "url": "https://www.newon.app/ko/resources/store/",
+    "lang": "ko",
+    "featured": true,
+    "tags": [
+      "resources",
+      "store"
+    ]
+  },
+  {
+    "title": "insights",
+    "type": "page",
+    "url": "https://www.newon.app/ko/resources/insights/",
     "lang": "ko",
     "featured": false,
     "tags": [
-      "store"
+      "resources",
+      "insights"
     ]
   },
   {
     "title": "blog",
     "type": "page",
-    "url": "https://www.newon.app/ko/blog/",
+    "url": "https://www.newon.app/ko/resources/blog/",
     "lang": "ko",
     "featured": false,
     "tags": [
+      "resources",
       "blog"
+    ]
+  },
+  {
+    "title": "media",
+    "type": "page",
+    "url": "https://www.newon.app/ko/resources/media/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "resources",
+      "media"
     ]
   },
   {
     "title": "labs",
     "type": "page",
-    "url": "https://www.newon.app/ko/labs/",
+    "url": "https://www.newon.app/ko/resources/labs/",
+    "lang": "ko",
+    "featured": true,
+    "tags": [
+      "resources",
+      "labs"
+    ]
+  },
+  {
+    "title": "newsletter",
+    "type": "page",
+    "url": "https://www.newon.app/ko/resources/newsletter/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "resources",
+      "newsletter"
+    ]
+  },
+  {
+    "title": "education",
+    "type": "page",
+    "url": "https://www.newon.app/ko/resources/education/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "resources",
+      "education"
+    ]
+  },
+  {
+    "title": "App Launch Kit",
+    "desc": "앱 출시 전 체크리스트, 스토어 메타, 런칭 일정 템플릿.",
+    "type": "store",
+    "url": "https://www.newon.app/ko/resources/store/app-launch-kit/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "MVP Planning Kit",
+    "desc": "문제 정의부터 범위 결정까지 MVP 기획 워크시트.",
+    "type": "store",
+    "url": "https://www.newon.app/ko/resources/store/mvp-planning-kit/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "Cursor Product Builder Pack",
+    "desc": "제품 기획부터 구현·QA까지 Cursor 워크플로 프롬프트 모음.",
+    "type": "store",
+    "url": "https://www.newon.app/ko/resources/store/cursor-prompt-pack/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Codex Builder Pack",
+    "desc": "Codex/에이전트 워크플로로 제품을 만드는 프롬프트·체크리스트 팩.",
+    "type": "store",
+    "url": "https://www.newon.app/ko/resources/store/codex-builder-pack/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Website Launch Checklist",
+    "desc": "웹사이트 런칭 전 SEO·성능·콘텐츠·법적 고지 체크리스트.",
+    "type": "store",
+    "url": "https://www.newon.app/ko/resources/store/website-launch-checklist/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "templates",
+      "checklist",
+      "store"
+    ]
+  },
+  {
+    "title": "Business Planning Workbook",
+    "desc": "문제·시장·모델·실행 계획을 한 권으로 정리하는 워크북.",
+    "type": "store",
+    "url": "https://www.newon.app/ko/resources/store/business-planning-workbook/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "business",
+      "workbook",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Research Template",
+    "desc": "인터뷰·가설·경쟁 관찰을 정리하는 제품 리서치 템플릿.",
+    "type": "store",
+    "url": "https://www.newon.app/ko/resources/store/product-research-template/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "reports",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Founder Dashboard",
+    "desc": "지표·할 일·실험을 한곳에 모은 창업자용 대시보드 템플릿.",
+    "type": "store",
+    "url": "https://www.newon.app/ko/resources/store/founder-dashboard/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "business",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Roadmap Template",
+    "desc": "분기·테마 중심으로 로드맵을 정리하는 템플릿.",
+    "type": "store",
+    "url": "https://www.newon.app/ko/resources/store/product-roadmap/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "templates",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Review AI",
+    "desc": "사용자 리뷰를 분석해 감정, 반복 문제, 기능 요청, 긍정 신호와 제품 개선 우선순위를 추출하는 AI 실험입니다.",
+    "type": "labs",
+    "url": "https://www.newon.app/ko/resources/labs/review-ai/",
     "lang": "ko",
     "featured": false,
     "tags": [
       "labs"
+    ]
+  },
+  {
+    "title": "Newon QR",
+    "desc": "브랜드 QR 생성부터 링크 관리, 스캔 분석까지 하나의 흐름으로 연결하는 QR SaaS 실험입니다.",
+    "type": "labs",
+    "url": "https://www.newon.app/ko/resources/labs/newon-qr/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon Form",
+    "desc": "문의·대기자·피드백을 하나의 흐름으로 수집하고 관리하기 위한 lightweight form experiment.",
+    "type": "labs",
+    "url": "https://www.newon.app/ko/resources/labs/newon-form/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "AI Product Discovery",
+    "desc": "반복되는 문제를 발견하고 AI가 실제로 더 나은 해결책인지 검증하는 연구입니다.",
+    "type": "labs",
+    "url": "https://www.newon.app/ko/resources/labs/ai-experiment/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Game Experiment",
+    "desc": "선택, 기억, 모순과 결과가 플레이어 경험을 어떻게 바꾸는지 연구합니다.",
+    "type": "labs",
+    "url": "https://www.newon.app/ko/resources/labs/game-experiment/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Character Lab",
+    "desc": "Newon 브랜드와 제품에 연결될 캐릭터 IP를 탐색합니다. 공개 가능한 캐릭터는 아직 없습니다 — Building 상태입니다.",
+    "type": "labs",
+    "url": "https://www.newon.app/ko/resources/labs/character-lab/",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "FROM IDEA TO MVP",
+    "desc": "아이디어를 검증 가능한 최소 제품으로 좁히는 방법.",
+    "type": "education",
+    "url": "https://www.newon.app/ko/resources/education/#idea-to-mvp",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "PRODUCT THINKING",
+    "desc": "기능이 아니라 문제와 사용자 흐름으로 제품을 보는 관점.",
+    "type": "education",
+    "url": "https://www.newon.app/ko/resources/education/#product-thinking",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "BUILDING WITH AI",
+    "desc": "AI를 보조로 쓰며 실제 제품을 만드는 실무 패턴.",
+    "type": "education",
+    "url": "https://www.newon.app/ko/resources/education/#building-with-ai",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "APP LAUNCH BASICS",
+    "desc": "스토어 출시, 메타, 초기 피드백까지 런칭의 기본기.",
+    "type": "education",
+    "url": "https://www.newon.app/ko/resources/education/#app-launch-basics",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "VALIDATING IDEAS",
+    "desc": "크게 만들기 전에 가설을 빠르게 확인하는 방법.",
+    "type": "education",
+    "url": "https://www.newon.app/ko/resources/education/#validating-ideas",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "education"
     ]
   },
   {
@@ -998,33 +1293,328 @@
     ]
   },
   {
+    "title": "Resources",
+    "type": "page",
+    "url": "https://www.newon.app/en/resources/",
+    "lang": "en",
+    "featured": true,
+    "tags": [
+      "resources"
+    ]
+  },
+  {
     "title": "store",
     "type": "page",
-    "url": "https://www.newon.app/en/store/",
+    "url": "https://www.newon.app/en/resources/store/",
+    "lang": "en",
+    "featured": true,
+    "tags": [
+      "resources",
+      "store"
+    ]
+  },
+  {
+    "title": "insights",
+    "type": "page",
+    "url": "https://www.newon.app/en/resources/insights/",
     "lang": "en",
     "featured": false,
     "tags": [
-      "store"
+      "resources",
+      "insights"
     ]
   },
   {
     "title": "blog",
     "type": "page",
-    "url": "https://www.newon.app/en/blog/",
+    "url": "https://www.newon.app/en/resources/blog/",
     "lang": "en",
     "featured": false,
     "tags": [
+      "resources",
       "blog"
+    ]
+  },
+  {
+    "title": "media",
+    "type": "page",
+    "url": "https://www.newon.app/en/resources/media/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "resources",
+      "media"
     ]
   },
   {
     "title": "labs",
     "type": "page",
-    "url": "https://www.newon.app/en/labs/",
+    "url": "https://www.newon.app/en/resources/labs/",
+    "lang": "en",
+    "featured": true,
+    "tags": [
+      "resources",
+      "labs"
+    ]
+  },
+  {
+    "title": "newsletter",
+    "type": "page",
+    "url": "https://www.newon.app/en/resources/newsletter/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "resources",
+      "newsletter"
+    ]
+  },
+  {
+    "title": "education",
+    "type": "page",
+    "url": "https://www.newon.app/en/resources/education/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "resources",
+      "education"
+    ]
+  },
+  {
+    "title": "App Launch Kit",
+    "desc": "Pre-launch checklist, store metadata, and launch schedule templates.",
+    "type": "store",
+    "url": "https://www.newon.app/en/resources/store/app-launch-kit/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "MVP Planning Kit",
+    "desc": "Worksheets from problem definition through MVP scope.",
+    "type": "store",
+    "url": "https://www.newon.app/en/resources/store/mvp-planning-kit/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "Cursor Product Builder Pack",
+    "desc": "Cursor workflow prompts from product planning through build and QA.",
+    "type": "store",
+    "url": "https://www.newon.app/en/resources/store/cursor-prompt-pack/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Codex Builder Pack",
+    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
+    "type": "store",
+    "url": "https://www.newon.app/en/resources/store/codex-builder-pack/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Website Launch Checklist",
+    "desc": "Pre-launch checklist for SEO, performance, content, and legal notices.",
+    "type": "store",
+    "url": "https://www.newon.app/en/resources/store/website-launch-checklist/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "templates",
+      "checklist",
+      "store"
+    ]
+  },
+  {
+    "title": "Business Planning Workbook",
+    "desc": "A workbook to structure problem, market, model, and execution plans.",
+    "type": "store",
+    "url": "https://www.newon.app/en/resources/store/business-planning-workbook/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "business",
+      "workbook",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Research Template",
+    "desc": "A product research template for interviews, hypotheses, and competitor notes.",
+    "type": "store",
+    "url": "https://www.newon.app/en/resources/store/product-research-template/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "reports",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Founder Dashboard",
+    "desc": "A founder dashboard template for metrics, tasks, and experiments.",
+    "type": "store",
+    "url": "https://www.newon.app/en/resources/store/founder-dashboard/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "business",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Roadmap Template",
+    "desc": "A roadmap template organized by quarter and theme.",
+    "type": "store",
+    "url": "https://www.newon.app/en/resources/store/product-roadmap/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "templates",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Review AI",
+    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
+    "type": "labs",
+    "url": "https://www.newon.app/en/resources/labs/review-ai/",
     "lang": "en",
     "featured": false,
     "tags": [
       "labs"
+    ]
+  },
+  {
+    "title": "Newon QR",
+    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/en/resources/labs/newon-qr/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon Form",
+    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/en/resources/labs/newon-form/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "AI Product Discovery",
+    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
+    "type": "labs",
+    "url": "https://www.newon.app/en/resources/labs/ai-experiment/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Game Experiment",
+    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
+    "type": "labs",
+    "url": "https://www.newon.app/en/resources/labs/game-experiment/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Character Lab",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "type": "labs",
+    "url": "https://www.newon.app/en/resources/labs/character-lab/",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "FROM IDEA TO MVP",
+    "desc": "How to narrow an idea into a testable minimum product.",
+    "type": "education",
+    "url": "https://www.newon.app/en/resources/education/#idea-to-mvp",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "PRODUCT THINKING",
+    "desc": "Seeing products through problems and user flows—not feature lists.",
+    "type": "education",
+    "url": "https://www.newon.app/en/resources/education/#product-thinking",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "BUILDING WITH AI",
+    "desc": "Practical patterns for shipping real products with AI as a partner.",
+    "type": "education",
+    "url": "https://www.newon.app/en/resources/education/#building-with-ai",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "APP LAUNCH BASICS",
+    "desc": "Launch fundamentals: store listing, metadata, and early feedback.",
+    "type": "education",
+    "url": "https://www.newon.app/en/resources/education/#app-launch-basics",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "VALIDATING IDEAS",
+    "desc": "Ways to test a hypothesis quickly before building big.",
+    "type": "education",
+    "url": "https://www.newon.app/en/resources/education/#validating-ideas",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "education"
     ]
   },
   {
@@ -1512,33 +2102,328 @@
     ]
   },
   {
+    "title": "Resources",
+    "type": "page",
+    "url": "https://www.newon.app/ja/resources/",
+    "lang": "ja",
+    "featured": true,
+    "tags": [
+      "resources"
+    ]
+  },
+  {
     "title": "store",
     "type": "page",
-    "url": "https://www.newon.app/ja/store/",
+    "url": "https://www.newon.app/ja/resources/store/",
+    "lang": "ja",
+    "featured": true,
+    "tags": [
+      "resources",
+      "store"
+    ]
+  },
+  {
+    "title": "insights",
+    "type": "page",
+    "url": "https://www.newon.app/ja/resources/insights/",
     "lang": "ja",
     "featured": false,
     "tags": [
-      "store"
+      "resources",
+      "insights"
     ]
   },
   {
     "title": "blog",
     "type": "page",
-    "url": "https://www.newon.app/ja/blog/",
+    "url": "https://www.newon.app/ja/resources/blog/",
     "lang": "ja",
     "featured": false,
     "tags": [
+      "resources",
       "blog"
+    ]
+  },
+  {
+    "title": "media",
+    "type": "page",
+    "url": "https://www.newon.app/ja/resources/media/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "resources",
+      "media"
     ]
   },
   {
     "title": "labs",
     "type": "page",
-    "url": "https://www.newon.app/ja/labs/",
+    "url": "https://www.newon.app/ja/resources/labs/",
+    "lang": "ja",
+    "featured": true,
+    "tags": [
+      "resources",
+      "labs"
+    ]
+  },
+  {
+    "title": "newsletter",
+    "type": "page",
+    "url": "https://www.newon.app/ja/resources/newsletter/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "resources",
+      "newsletter"
+    ]
+  },
+  {
+    "title": "education",
+    "type": "page",
+    "url": "https://www.newon.app/ja/resources/education/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "resources",
+      "education"
+    ]
+  },
+  {
+    "title": "App Launch Kit",
+    "desc": "Pre-launch checklist, store metadata, and launch schedule templates.",
+    "type": "store",
+    "url": "https://www.newon.app/ja/resources/store/app-launch-kit/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "MVP Planning Kit",
+    "desc": "Worksheets from problem definition through MVP scope.",
+    "type": "store",
+    "url": "https://www.newon.app/ja/resources/store/mvp-planning-kit/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "Cursor Product Builder Pack",
+    "desc": "Cursor workflow prompts from product planning through build and QA.",
+    "type": "store",
+    "url": "https://www.newon.app/ja/resources/store/cursor-prompt-pack/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Codex Builder Pack",
+    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
+    "type": "store",
+    "url": "https://www.newon.app/ja/resources/store/codex-builder-pack/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Website Launch Checklist",
+    "desc": "Pre-launch checklist for SEO, performance, content, and legal notices.",
+    "type": "store",
+    "url": "https://www.newon.app/ja/resources/store/website-launch-checklist/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "templates",
+      "checklist",
+      "store"
+    ]
+  },
+  {
+    "title": "Business Planning Workbook",
+    "desc": "A workbook to structure problem, market, model, and execution plans.",
+    "type": "store",
+    "url": "https://www.newon.app/ja/resources/store/business-planning-workbook/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "business",
+      "workbook",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Research Template",
+    "desc": "A product research template for interviews, hypotheses, and competitor notes.",
+    "type": "store",
+    "url": "https://www.newon.app/ja/resources/store/product-research-template/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "reports",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Founder Dashboard",
+    "desc": "A founder dashboard template for metrics, tasks, and experiments.",
+    "type": "store",
+    "url": "https://www.newon.app/ja/resources/store/founder-dashboard/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "business",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Roadmap Template",
+    "desc": "A roadmap template organized by quarter and theme.",
+    "type": "store",
+    "url": "https://www.newon.app/ja/resources/store/product-roadmap/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "templates",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Review AI",
+    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
+    "type": "labs",
+    "url": "https://www.newon.app/ja/resources/labs/review-ai/",
     "lang": "ja",
     "featured": false,
     "tags": [
       "labs"
+    ]
+  },
+  {
+    "title": "Newon QR",
+    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/ja/resources/labs/newon-qr/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon Form",
+    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/ja/resources/labs/newon-form/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "AI Product Discovery",
+    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
+    "type": "labs",
+    "url": "https://www.newon.app/ja/resources/labs/ai-experiment/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Game Experiment",
+    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
+    "type": "labs",
+    "url": "https://www.newon.app/ja/resources/labs/game-experiment/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Character Lab",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "type": "labs",
+    "url": "https://www.newon.app/ja/resources/labs/character-lab/",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "FROM IDEA TO MVP",
+    "desc": "How to narrow an idea into a testable minimum product.",
+    "type": "education",
+    "url": "https://www.newon.app/ja/resources/education/#idea-to-mvp",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "PRODUCT THINKING",
+    "desc": "Seeing products through problems and user flows—not feature lists.",
+    "type": "education",
+    "url": "https://www.newon.app/ja/resources/education/#product-thinking",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "BUILDING WITH AI",
+    "desc": "Practical patterns for shipping real products with AI as a partner.",
+    "type": "education",
+    "url": "https://www.newon.app/ja/resources/education/#building-with-ai",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "APP LAUNCH BASICS",
+    "desc": "Launch fundamentals: store listing, metadata, and early feedback.",
+    "type": "education",
+    "url": "https://www.newon.app/ja/resources/education/#app-launch-basics",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "VALIDATING IDEAS",
+    "desc": "Ways to test a hypothesis quickly before building big.",
+    "type": "education",
+    "url": "https://www.newon.app/ja/resources/education/#validating-ideas",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "education"
     ]
   },
   {
@@ -2026,33 +2911,328 @@
     ]
   },
   {
+    "title": "Resources",
+    "type": "page",
+    "url": "https://www.newon.app/es/resources/",
+    "lang": "es",
+    "featured": true,
+    "tags": [
+      "resources"
+    ]
+  },
+  {
     "title": "store",
     "type": "page",
-    "url": "https://www.newon.app/es/store/",
+    "url": "https://www.newon.app/es/resources/store/",
+    "lang": "es",
+    "featured": true,
+    "tags": [
+      "resources",
+      "store"
+    ]
+  },
+  {
+    "title": "insights",
+    "type": "page",
+    "url": "https://www.newon.app/es/resources/insights/",
     "lang": "es",
     "featured": false,
     "tags": [
-      "store"
+      "resources",
+      "insights"
     ]
   },
   {
     "title": "blog",
     "type": "page",
-    "url": "https://www.newon.app/es/blog/",
+    "url": "https://www.newon.app/es/resources/blog/",
     "lang": "es",
     "featured": false,
     "tags": [
+      "resources",
       "blog"
+    ]
+  },
+  {
+    "title": "media",
+    "type": "page",
+    "url": "https://www.newon.app/es/resources/media/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "resources",
+      "media"
     ]
   },
   {
     "title": "labs",
     "type": "page",
-    "url": "https://www.newon.app/es/labs/",
+    "url": "https://www.newon.app/es/resources/labs/",
+    "lang": "es",
+    "featured": true,
+    "tags": [
+      "resources",
+      "labs"
+    ]
+  },
+  {
+    "title": "newsletter",
+    "type": "page",
+    "url": "https://www.newon.app/es/resources/newsletter/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "resources",
+      "newsletter"
+    ]
+  },
+  {
+    "title": "education",
+    "type": "page",
+    "url": "https://www.newon.app/es/resources/education/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "resources",
+      "education"
+    ]
+  },
+  {
+    "title": "App Launch Kit",
+    "desc": "Pre-launch checklist, store metadata, and launch schedule templates.",
+    "type": "store",
+    "url": "https://www.newon.app/es/resources/store/app-launch-kit/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "MVP Planning Kit",
+    "desc": "Worksheets from problem definition through MVP scope.",
+    "type": "store",
+    "url": "https://www.newon.app/es/resources/store/mvp-planning-kit/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "Cursor Product Builder Pack",
+    "desc": "Cursor workflow prompts from product planning through build and QA.",
+    "type": "store",
+    "url": "https://www.newon.app/es/resources/store/cursor-prompt-pack/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Codex Builder Pack",
+    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
+    "type": "store",
+    "url": "https://www.newon.app/es/resources/store/codex-builder-pack/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Website Launch Checklist",
+    "desc": "Pre-launch checklist for SEO, performance, content, and legal notices.",
+    "type": "store",
+    "url": "https://www.newon.app/es/resources/store/website-launch-checklist/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "templates",
+      "checklist",
+      "store"
+    ]
+  },
+  {
+    "title": "Business Planning Workbook",
+    "desc": "A workbook to structure problem, market, model, and execution plans.",
+    "type": "store",
+    "url": "https://www.newon.app/es/resources/store/business-planning-workbook/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "business",
+      "workbook",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Research Template",
+    "desc": "A product research template for interviews, hypotheses, and competitor notes.",
+    "type": "store",
+    "url": "https://www.newon.app/es/resources/store/product-research-template/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "reports",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Founder Dashboard",
+    "desc": "A founder dashboard template for metrics, tasks, and experiments.",
+    "type": "store",
+    "url": "https://www.newon.app/es/resources/store/founder-dashboard/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "business",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Roadmap Template",
+    "desc": "A roadmap template organized by quarter and theme.",
+    "type": "store",
+    "url": "https://www.newon.app/es/resources/store/product-roadmap/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "templates",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Review AI",
+    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
+    "type": "labs",
+    "url": "https://www.newon.app/es/resources/labs/review-ai/",
     "lang": "es",
     "featured": false,
     "tags": [
       "labs"
+    ]
+  },
+  {
+    "title": "Newon QR",
+    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/es/resources/labs/newon-qr/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon Form",
+    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/es/resources/labs/newon-form/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "AI Product Discovery",
+    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
+    "type": "labs",
+    "url": "https://www.newon.app/es/resources/labs/ai-experiment/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Game Experiment",
+    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
+    "type": "labs",
+    "url": "https://www.newon.app/es/resources/labs/game-experiment/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Character Lab",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "type": "labs",
+    "url": "https://www.newon.app/es/resources/labs/character-lab/",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "FROM IDEA TO MVP",
+    "desc": "How to narrow an idea into a testable minimum product.",
+    "type": "education",
+    "url": "https://www.newon.app/es/resources/education/#idea-to-mvp",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "PRODUCT THINKING",
+    "desc": "Seeing products through problems and user flows—not feature lists.",
+    "type": "education",
+    "url": "https://www.newon.app/es/resources/education/#product-thinking",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "BUILDING WITH AI",
+    "desc": "Practical patterns for shipping real products with AI as a partner.",
+    "type": "education",
+    "url": "https://www.newon.app/es/resources/education/#building-with-ai",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "APP LAUNCH BASICS",
+    "desc": "Launch fundamentals: store listing, metadata, and early feedback.",
+    "type": "education",
+    "url": "https://www.newon.app/es/resources/education/#app-launch-basics",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "VALIDATING IDEAS",
+    "desc": "Ways to test a hypothesis quickly before building big.",
+    "type": "education",
+    "url": "https://www.newon.app/es/resources/education/#validating-ideas",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "education"
     ]
   },
   {
@@ -2540,33 +3720,328 @@
     ]
   },
   {
+    "title": "Resources",
+    "type": "page",
+    "url": "https://www.newon.app/pt-br/resources/",
+    "lang": "pt-br",
+    "featured": true,
+    "tags": [
+      "resources"
+    ]
+  },
+  {
     "title": "store",
     "type": "page",
-    "url": "https://www.newon.app/pt-br/store/",
+    "url": "https://www.newon.app/pt-br/resources/store/",
+    "lang": "pt-br",
+    "featured": true,
+    "tags": [
+      "resources",
+      "store"
+    ]
+  },
+  {
+    "title": "insights",
+    "type": "page",
+    "url": "https://www.newon.app/pt-br/resources/insights/",
     "lang": "pt-br",
     "featured": false,
     "tags": [
-      "store"
+      "resources",
+      "insights"
     ]
   },
   {
     "title": "blog",
     "type": "page",
-    "url": "https://www.newon.app/pt-br/blog/",
+    "url": "https://www.newon.app/pt-br/resources/blog/",
     "lang": "pt-br",
     "featured": false,
     "tags": [
+      "resources",
       "blog"
+    ]
+  },
+  {
+    "title": "media",
+    "type": "page",
+    "url": "https://www.newon.app/pt-br/resources/media/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "resources",
+      "media"
     ]
   },
   {
     "title": "labs",
     "type": "page",
-    "url": "https://www.newon.app/pt-br/labs/",
+    "url": "https://www.newon.app/pt-br/resources/labs/",
+    "lang": "pt-br",
+    "featured": true,
+    "tags": [
+      "resources",
+      "labs"
+    ]
+  },
+  {
+    "title": "newsletter",
+    "type": "page",
+    "url": "https://www.newon.app/pt-br/resources/newsletter/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "resources",
+      "newsletter"
+    ]
+  },
+  {
+    "title": "education",
+    "type": "page",
+    "url": "https://www.newon.app/pt-br/resources/education/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "resources",
+      "education"
+    ]
+  },
+  {
+    "title": "App Launch Kit",
+    "desc": "Pre-launch checklist, store metadata, and launch schedule templates.",
+    "type": "store",
+    "url": "https://www.newon.app/pt-br/resources/store/app-launch-kit/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "MVP Planning Kit",
+    "desc": "Worksheets from problem definition through MVP scope.",
+    "type": "store",
+    "url": "https://www.newon.app/pt-br/resources/store/mvp-planning-kit/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "Cursor Product Builder Pack",
+    "desc": "Cursor workflow prompts from product planning through build and QA.",
+    "type": "store",
+    "url": "https://www.newon.app/pt-br/resources/store/cursor-prompt-pack/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Codex Builder Pack",
+    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
+    "type": "store",
+    "url": "https://www.newon.app/pt-br/resources/store/codex-builder-pack/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Website Launch Checklist",
+    "desc": "Pre-launch checklist for SEO, performance, content, and legal notices.",
+    "type": "store",
+    "url": "https://www.newon.app/pt-br/resources/store/website-launch-checklist/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "templates",
+      "checklist",
+      "store"
+    ]
+  },
+  {
+    "title": "Business Planning Workbook",
+    "desc": "A workbook to structure problem, market, model, and execution plans.",
+    "type": "store",
+    "url": "https://www.newon.app/pt-br/resources/store/business-planning-workbook/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "business",
+      "workbook",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Research Template",
+    "desc": "A product research template for interviews, hypotheses, and competitor notes.",
+    "type": "store",
+    "url": "https://www.newon.app/pt-br/resources/store/product-research-template/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "reports",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Founder Dashboard",
+    "desc": "A founder dashboard template for metrics, tasks, and experiments.",
+    "type": "store",
+    "url": "https://www.newon.app/pt-br/resources/store/founder-dashboard/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "business",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Roadmap Template",
+    "desc": "A roadmap template organized by quarter and theme.",
+    "type": "store",
+    "url": "https://www.newon.app/pt-br/resources/store/product-roadmap/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "templates",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Review AI",
+    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
+    "type": "labs",
+    "url": "https://www.newon.app/pt-br/resources/labs/review-ai/",
     "lang": "pt-br",
     "featured": false,
     "tags": [
       "labs"
+    ]
+  },
+  {
+    "title": "Newon QR",
+    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/pt-br/resources/labs/newon-qr/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon Form",
+    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/pt-br/resources/labs/newon-form/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "AI Product Discovery",
+    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
+    "type": "labs",
+    "url": "https://www.newon.app/pt-br/resources/labs/ai-experiment/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Game Experiment",
+    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
+    "type": "labs",
+    "url": "https://www.newon.app/pt-br/resources/labs/game-experiment/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Character Lab",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "type": "labs",
+    "url": "https://www.newon.app/pt-br/resources/labs/character-lab/",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "FROM IDEA TO MVP",
+    "desc": "How to narrow an idea into a testable minimum product.",
+    "type": "education",
+    "url": "https://www.newon.app/pt-br/resources/education/#idea-to-mvp",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "PRODUCT THINKING",
+    "desc": "Seeing products through problems and user flows—not feature lists.",
+    "type": "education",
+    "url": "https://www.newon.app/pt-br/resources/education/#product-thinking",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "BUILDING WITH AI",
+    "desc": "Practical patterns for shipping real products with AI as a partner.",
+    "type": "education",
+    "url": "https://www.newon.app/pt-br/resources/education/#building-with-ai",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "APP LAUNCH BASICS",
+    "desc": "Launch fundamentals: store listing, metadata, and early feedback.",
+    "type": "education",
+    "url": "https://www.newon.app/pt-br/resources/education/#app-launch-basics",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "VALIDATING IDEAS",
+    "desc": "Ways to test a hypothesis quickly before building big.",
+    "type": "education",
+    "url": "https://www.newon.app/pt-br/resources/education/#validating-ideas",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "education"
     ]
   },
   {
@@ -3054,33 +4529,328 @@
     ]
   },
   {
+    "title": "Resources",
+    "type": "page",
+    "url": "https://www.newon.app/fr/resources/",
+    "lang": "fr",
+    "featured": true,
+    "tags": [
+      "resources"
+    ]
+  },
+  {
     "title": "store",
     "type": "page",
-    "url": "https://www.newon.app/fr/store/",
+    "url": "https://www.newon.app/fr/resources/store/",
+    "lang": "fr",
+    "featured": true,
+    "tags": [
+      "resources",
+      "store"
+    ]
+  },
+  {
+    "title": "insights",
+    "type": "page",
+    "url": "https://www.newon.app/fr/resources/insights/",
     "lang": "fr",
     "featured": false,
     "tags": [
-      "store"
+      "resources",
+      "insights"
     ]
   },
   {
     "title": "blog",
     "type": "page",
-    "url": "https://www.newon.app/fr/blog/",
+    "url": "https://www.newon.app/fr/resources/blog/",
     "lang": "fr",
     "featured": false,
     "tags": [
+      "resources",
       "blog"
+    ]
+  },
+  {
+    "title": "media",
+    "type": "page",
+    "url": "https://www.newon.app/fr/resources/media/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "resources",
+      "media"
     ]
   },
   {
     "title": "labs",
     "type": "page",
-    "url": "https://www.newon.app/fr/labs/",
+    "url": "https://www.newon.app/fr/resources/labs/",
+    "lang": "fr",
+    "featured": true,
+    "tags": [
+      "resources",
+      "labs"
+    ]
+  },
+  {
+    "title": "newsletter",
+    "type": "page",
+    "url": "https://www.newon.app/fr/resources/newsletter/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "resources",
+      "newsletter"
+    ]
+  },
+  {
+    "title": "education",
+    "type": "page",
+    "url": "https://www.newon.app/fr/resources/education/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "resources",
+      "education"
+    ]
+  },
+  {
+    "title": "App Launch Kit",
+    "desc": "Pre-launch checklist, store metadata, and launch schedule templates.",
+    "type": "store",
+    "url": "https://www.newon.app/fr/resources/store/app-launch-kit/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "MVP Planning Kit",
+    "desc": "Worksheets from problem definition through MVP scope.",
+    "type": "store",
+    "url": "https://www.newon.app/fr/resources/store/mvp-planning-kit/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "Cursor Product Builder Pack",
+    "desc": "Cursor workflow prompts from product planning through build and QA.",
+    "type": "store",
+    "url": "https://www.newon.app/fr/resources/store/cursor-prompt-pack/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Codex Builder Pack",
+    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
+    "type": "store",
+    "url": "https://www.newon.app/fr/resources/store/codex-builder-pack/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Website Launch Checklist",
+    "desc": "Pre-launch checklist for SEO, performance, content, and legal notices.",
+    "type": "store",
+    "url": "https://www.newon.app/fr/resources/store/website-launch-checklist/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "templates",
+      "checklist",
+      "store"
+    ]
+  },
+  {
+    "title": "Business Planning Workbook",
+    "desc": "A workbook to structure problem, market, model, and execution plans.",
+    "type": "store",
+    "url": "https://www.newon.app/fr/resources/store/business-planning-workbook/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "business",
+      "workbook",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Research Template",
+    "desc": "A product research template for interviews, hypotheses, and competitor notes.",
+    "type": "store",
+    "url": "https://www.newon.app/fr/resources/store/product-research-template/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "reports",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Founder Dashboard",
+    "desc": "A founder dashboard template for metrics, tasks, and experiments.",
+    "type": "store",
+    "url": "https://www.newon.app/fr/resources/store/founder-dashboard/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "business",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Roadmap Template",
+    "desc": "A roadmap template organized by quarter and theme.",
+    "type": "store",
+    "url": "https://www.newon.app/fr/resources/store/product-roadmap/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "templates",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Review AI",
+    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
+    "type": "labs",
+    "url": "https://www.newon.app/fr/resources/labs/review-ai/",
     "lang": "fr",
     "featured": false,
     "tags": [
       "labs"
+    ]
+  },
+  {
+    "title": "Newon QR",
+    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/fr/resources/labs/newon-qr/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon Form",
+    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/fr/resources/labs/newon-form/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "AI Product Discovery",
+    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
+    "type": "labs",
+    "url": "https://www.newon.app/fr/resources/labs/ai-experiment/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Game Experiment",
+    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
+    "type": "labs",
+    "url": "https://www.newon.app/fr/resources/labs/game-experiment/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Character Lab",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "type": "labs",
+    "url": "https://www.newon.app/fr/resources/labs/character-lab/",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "FROM IDEA TO MVP",
+    "desc": "How to narrow an idea into a testable minimum product.",
+    "type": "education",
+    "url": "https://www.newon.app/fr/resources/education/#idea-to-mvp",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "PRODUCT THINKING",
+    "desc": "Seeing products through problems and user flows—not feature lists.",
+    "type": "education",
+    "url": "https://www.newon.app/fr/resources/education/#product-thinking",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "BUILDING WITH AI",
+    "desc": "Practical patterns for shipping real products with AI as a partner.",
+    "type": "education",
+    "url": "https://www.newon.app/fr/resources/education/#building-with-ai",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "APP LAUNCH BASICS",
+    "desc": "Launch fundamentals: store listing, metadata, and early feedback.",
+    "type": "education",
+    "url": "https://www.newon.app/fr/resources/education/#app-launch-basics",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "VALIDATING IDEAS",
+    "desc": "Ways to test a hypothesis quickly before building big.",
+    "type": "education",
+    "url": "https://www.newon.app/fr/resources/education/#validating-ideas",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "education"
     ]
   },
   {
@@ -3568,33 +5338,328 @@
     ]
   },
   {
+    "title": "Resources",
+    "type": "page",
+    "url": "https://www.newon.app/de/resources/",
+    "lang": "de",
+    "featured": true,
+    "tags": [
+      "resources"
+    ]
+  },
+  {
     "title": "store",
     "type": "page",
-    "url": "https://www.newon.app/de/store/",
+    "url": "https://www.newon.app/de/resources/store/",
+    "lang": "de",
+    "featured": true,
+    "tags": [
+      "resources",
+      "store"
+    ]
+  },
+  {
+    "title": "insights",
+    "type": "page",
+    "url": "https://www.newon.app/de/resources/insights/",
     "lang": "de",
     "featured": false,
     "tags": [
-      "store"
+      "resources",
+      "insights"
     ]
   },
   {
     "title": "blog",
     "type": "page",
-    "url": "https://www.newon.app/de/blog/",
+    "url": "https://www.newon.app/de/resources/blog/",
     "lang": "de",
     "featured": false,
     "tags": [
+      "resources",
       "blog"
+    ]
+  },
+  {
+    "title": "media",
+    "type": "page",
+    "url": "https://www.newon.app/de/resources/media/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "resources",
+      "media"
     ]
   },
   {
     "title": "labs",
     "type": "page",
-    "url": "https://www.newon.app/de/labs/",
+    "url": "https://www.newon.app/de/resources/labs/",
+    "lang": "de",
+    "featured": true,
+    "tags": [
+      "resources",
+      "labs"
+    ]
+  },
+  {
+    "title": "newsletter",
+    "type": "page",
+    "url": "https://www.newon.app/de/resources/newsletter/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "resources",
+      "newsletter"
+    ]
+  },
+  {
+    "title": "education",
+    "type": "page",
+    "url": "https://www.newon.app/de/resources/education/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "resources",
+      "education"
+    ]
+  },
+  {
+    "title": "App Launch Kit",
+    "desc": "Pre-launch checklist, store metadata, and launch schedule templates.",
+    "type": "store",
+    "url": "https://www.newon.app/de/resources/store/app-launch-kit/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "MVP Planning Kit",
+    "desc": "Worksheets from problem definition through MVP scope.",
+    "type": "store",
+    "url": "https://www.newon.app/de/resources/store/mvp-planning-kit/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "Cursor Product Builder Pack",
+    "desc": "Cursor workflow prompts from product planning through build and QA.",
+    "type": "store",
+    "url": "https://www.newon.app/de/resources/store/cursor-prompt-pack/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Codex Builder Pack",
+    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
+    "type": "store",
+    "url": "https://www.newon.app/de/resources/store/codex-builder-pack/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Website Launch Checklist",
+    "desc": "Pre-launch checklist for SEO, performance, content, and legal notices.",
+    "type": "store",
+    "url": "https://www.newon.app/de/resources/store/website-launch-checklist/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "templates",
+      "checklist",
+      "store"
+    ]
+  },
+  {
+    "title": "Business Planning Workbook",
+    "desc": "A workbook to structure problem, market, model, and execution plans.",
+    "type": "store",
+    "url": "https://www.newon.app/de/resources/store/business-planning-workbook/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "business",
+      "workbook",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Research Template",
+    "desc": "A product research template for interviews, hypotheses, and competitor notes.",
+    "type": "store",
+    "url": "https://www.newon.app/de/resources/store/product-research-template/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "reports",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Founder Dashboard",
+    "desc": "A founder dashboard template for metrics, tasks, and experiments.",
+    "type": "store",
+    "url": "https://www.newon.app/de/resources/store/founder-dashboard/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "business",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Roadmap Template",
+    "desc": "A roadmap template organized by quarter and theme.",
+    "type": "store",
+    "url": "https://www.newon.app/de/resources/store/product-roadmap/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "templates",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Review AI",
+    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
+    "type": "labs",
+    "url": "https://www.newon.app/de/resources/labs/review-ai/",
     "lang": "de",
     "featured": false,
     "tags": [
       "labs"
+    ]
+  },
+  {
+    "title": "Newon QR",
+    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/de/resources/labs/newon-qr/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon Form",
+    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/de/resources/labs/newon-form/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "AI Product Discovery",
+    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
+    "type": "labs",
+    "url": "https://www.newon.app/de/resources/labs/ai-experiment/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Game Experiment",
+    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
+    "type": "labs",
+    "url": "https://www.newon.app/de/resources/labs/game-experiment/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Character Lab",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "type": "labs",
+    "url": "https://www.newon.app/de/resources/labs/character-lab/",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "FROM IDEA TO MVP",
+    "desc": "How to narrow an idea into a testable minimum product.",
+    "type": "education",
+    "url": "https://www.newon.app/de/resources/education/#idea-to-mvp",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "PRODUCT THINKING",
+    "desc": "Seeing products through problems and user flows—not feature lists.",
+    "type": "education",
+    "url": "https://www.newon.app/de/resources/education/#product-thinking",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "BUILDING WITH AI",
+    "desc": "Practical patterns for shipping real products with AI as a partner.",
+    "type": "education",
+    "url": "https://www.newon.app/de/resources/education/#building-with-ai",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "APP LAUNCH BASICS",
+    "desc": "Launch fundamentals: store listing, metadata, and early feedback.",
+    "type": "education",
+    "url": "https://www.newon.app/de/resources/education/#app-launch-basics",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "VALIDATING IDEAS",
+    "desc": "Ways to test a hypothesis quickly before building big.",
+    "type": "education",
+    "url": "https://www.newon.app/de/resources/education/#validating-ideas",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "education"
     ]
   },
   {
@@ -4082,33 +6147,328 @@
     ]
   },
   {
+    "title": "Resources",
+    "type": "page",
+    "url": "https://www.newon.app/hi/resources/",
+    "lang": "hi",
+    "featured": true,
+    "tags": [
+      "resources"
+    ]
+  },
+  {
     "title": "store",
     "type": "page",
-    "url": "https://www.newon.app/hi/store/",
+    "url": "https://www.newon.app/hi/resources/store/",
+    "lang": "hi",
+    "featured": true,
+    "tags": [
+      "resources",
+      "store"
+    ]
+  },
+  {
+    "title": "insights",
+    "type": "page",
+    "url": "https://www.newon.app/hi/resources/insights/",
     "lang": "hi",
     "featured": false,
     "tags": [
-      "store"
+      "resources",
+      "insights"
     ]
   },
   {
     "title": "blog",
     "type": "page",
-    "url": "https://www.newon.app/hi/blog/",
+    "url": "https://www.newon.app/hi/resources/blog/",
     "lang": "hi",
     "featured": false,
     "tags": [
+      "resources",
       "blog"
+    ]
+  },
+  {
+    "title": "media",
+    "type": "page",
+    "url": "https://www.newon.app/hi/resources/media/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "resources",
+      "media"
     ]
   },
   {
     "title": "labs",
     "type": "page",
-    "url": "https://www.newon.app/hi/labs/",
+    "url": "https://www.newon.app/hi/resources/labs/",
+    "lang": "hi",
+    "featured": true,
+    "tags": [
+      "resources",
+      "labs"
+    ]
+  },
+  {
+    "title": "newsletter",
+    "type": "page",
+    "url": "https://www.newon.app/hi/resources/newsletter/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "resources",
+      "newsletter"
+    ]
+  },
+  {
+    "title": "education",
+    "type": "page",
+    "url": "https://www.newon.app/hi/resources/education/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "resources",
+      "education"
+    ]
+  },
+  {
+    "title": "App Launch Kit",
+    "desc": "Pre-launch checklist, store metadata, and launch schedule templates.",
+    "type": "store",
+    "url": "https://www.newon.app/hi/resources/store/app-launch-kit/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "MVP Planning Kit",
+    "desc": "Worksheets from problem definition through MVP scope.",
+    "type": "store",
+    "url": "https://www.newon.app/hi/resources/store/mvp-planning-kit/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "Cursor Product Builder Pack",
+    "desc": "Cursor workflow prompts from product planning through build and QA.",
+    "type": "store",
+    "url": "https://www.newon.app/hi/resources/store/cursor-prompt-pack/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Codex Builder Pack",
+    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
+    "type": "store",
+    "url": "https://www.newon.app/hi/resources/store/codex-builder-pack/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Website Launch Checklist",
+    "desc": "Pre-launch checklist for SEO, performance, content, and legal notices.",
+    "type": "store",
+    "url": "https://www.newon.app/hi/resources/store/website-launch-checklist/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "templates",
+      "checklist",
+      "store"
+    ]
+  },
+  {
+    "title": "Business Planning Workbook",
+    "desc": "A workbook to structure problem, market, model, and execution plans.",
+    "type": "store",
+    "url": "https://www.newon.app/hi/resources/store/business-planning-workbook/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "business",
+      "workbook",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Research Template",
+    "desc": "A product research template for interviews, hypotheses, and competitor notes.",
+    "type": "store",
+    "url": "https://www.newon.app/hi/resources/store/product-research-template/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "reports",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Founder Dashboard",
+    "desc": "A founder dashboard template for metrics, tasks, and experiments.",
+    "type": "store",
+    "url": "https://www.newon.app/hi/resources/store/founder-dashboard/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "business",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Roadmap Template",
+    "desc": "A roadmap template organized by quarter and theme.",
+    "type": "store",
+    "url": "https://www.newon.app/hi/resources/store/product-roadmap/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "templates",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Review AI",
+    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
+    "type": "labs",
+    "url": "https://www.newon.app/hi/resources/labs/review-ai/",
     "lang": "hi",
     "featured": false,
     "tags": [
       "labs"
+    ]
+  },
+  {
+    "title": "Newon QR",
+    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/hi/resources/labs/newon-qr/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon Form",
+    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/hi/resources/labs/newon-form/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "AI Product Discovery",
+    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
+    "type": "labs",
+    "url": "https://www.newon.app/hi/resources/labs/ai-experiment/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Game Experiment",
+    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
+    "type": "labs",
+    "url": "https://www.newon.app/hi/resources/labs/game-experiment/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Character Lab",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "type": "labs",
+    "url": "https://www.newon.app/hi/resources/labs/character-lab/",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "FROM IDEA TO MVP",
+    "desc": "How to narrow an idea into a testable minimum product.",
+    "type": "education",
+    "url": "https://www.newon.app/hi/resources/education/#idea-to-mvp",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "PRODUCT THINKING",
+    "desc": "Seeing products through problems and user flows—not feature lists.",
+    "type": "education",
+    "url": "https://www.newon.app/hi/resources/education/#product-thinking",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "BUILDING WITH AI",
+    "desc": "Practical patterns for shipping real products with AI as a partner.",
+    "type": "education",
+    "url": "https://www.newon.app/hi/resources/education/#building-with-ai",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "APP LAUNCH BASICS",
+    "desc": "Launch fundamentals: store listing, metadata, and early feedback.",
+    "type": "education",
+    "url": "https://www.newon.app/hi/resources/education/#app-launch-basics",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "VALIDATING IDEAS",
+    "desc": "Ways to test a hypothesis quickly before building big.",
+    "type": "education",
+    "url": "https://www.newon.app/hi/resources/education/#validating-ideas",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "education"
     ]
   },
   {
@@ -4596,33 +6956,328 @@
     ]
   },
   {
+    "title": "Resources",
+    "type": "page",
+    "url": "https://www.newon.app/id/resources/",
+    "lang": "id",
+    "featured": true,
+    "tags": [
+      "resources"
+    ]
+  },
+  {
     "title": "store",
     "type": "page",
-    "url": "https://www.newon.app/id/store/",
+    "url": "https://www.newon.app/id/resources/store/",
+    "lang": "id",
+    "featured": true,
+    "tags": [
+      "resources",
+      "store"
+    ]
+  },
+  {
+    "title": "insights",
+    "type": "page",
+    "url": "https://www.newon.app/id/resources/insights/",
     "lang": "id",
     "featured": false,
     "tags": [
-      "store"
+      "resources",
+      "insights"
     ]
   },
   {
     "title": "blog",
     "type": "page",
-    "url": "https://www.newon.app/id/blog/",
+    "url": "https://www.newon.app/id/resources/blog/",
     "lang": "id",
     "featured": false,
     "tags": [
+      "resources",
       "blog"
+    ]
+  },
+  {
+    "title": "media",
+    "type": "page",
+    "url": "https://www.newon.app/id/resources/media/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "resources",
+      "media"
     ]
   },
   {
     "title": "labs",
     "type": "page",
-    "url": "https://www.newon.app/id/labs/",
+    "url": "https://www.newon.app/id/resources/labs/",
+    "lang": "id",
+    "featured": true,
+    "tags": [
+      "resources",
+      "labs"
+    ]
+  },
+  {
+    "title": "newsletter",
+    "type": "page",
+    "url": "https://www.newon.app/id/resources/newsletter/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "resources",
+      "newsletter"
+    ]
+  },
+  {
+    "title": "education",
+    "type": "page",
+    "url": "https://www.newon.app/id/resources/education/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "resources",
+      "education"
+    ]
+  },
+  {
+    "title": "App Launch Kit",
+    "desc": "Pre-launch checklist, store metadata, and launch schedule templates.",
+    "type": "store",
+    "url": "https://www.newon.app/id/resources/store/app-launch-kit/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "MVP Planning Kit",
+    "desc": "Worksheets from problem definition through MVP scope.",
+    "type": "store",
+    "url": "https://www.newon.app/id/resources/store/mvp-planning-kit/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "templates",
+      "kit",
+      "store"
+    ]
+  },
+  {
+    "title": "Cursor Product Builder Pack",
+    "desc": "Cursor workflow prompts from product planning through build and QA.",
+    "type": "store",
+    "url": "https://www.newon.app/id/resources/store/cursor-prompt-pack/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Codex Builder Pack",
+    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
+    "type": "store",
+    "url": "https://www.newon.app/id/resources/store/codex-builder-pack/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "ai-code",
+      "pack",
+      "store"
+    ]
+  },
+  {
+    "title": "Website Launch Checklist",
+    "desc": "Pre-launch checklist for SEO, performance, content, and legal notices.",
+    "type": "store",
+    "url": "https://www.newon.app/id/resources/store/website-launch-checklist/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "templates",
+      "checklist",
+      "store"
+    ]
+  },
+  {
+    "title": "Business Planning Workbook",
+    "desc": "A workbook to structure problem, market, model, and execution plans.",
+    "type": "store",
+    "url": "https://www.newon.app/id/resources/store/business-planning-workbook/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "business",
+      "workbook",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Research Template",
+    "desc": "A product research template for interviews, hypotheses, and competitor notes.",
+    "type": "store",
+    "url": "https://www.newon.app/id/resources/store/product-research-template/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "reports",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Founder Dashboard",
+    "desc": "A founder dashboard template for metrics, tasks, and experiments.",
+    "type": "store",
+    "url": "https://www.newon.app/id/resources/store/founder-dashboard/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "business",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Product Roadmap Template",
+    "desc": "A roadmap template organized by quarter and theme.",
+    "type": "store",
+    "url": "https://www.newon.app/id/resources/store/product-roadmap/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "templates",
+      "template",
+      "store"
+    ]
+  },
+  {
+    "title": "Review AI",
+    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
+    "type": "labs",
+    "url": "https://www.newon.app/id/resources/labs/review-ai/",
     "lang": "id",
     "featured": false,
     "tags": [
       "labs"
+    ]
+  },
+  {
+    "title": "Newon QR",
+    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/id/resources/labs/newon-qr/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Newon Form",
+    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
+    "type": "labs",
+    "url": "https://www.newon.app/id/resources/labs/newon-form/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "AI Product Discovery",
+    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
+    "type": "labs",
+    "url": "https://www.newon.app/id/resources/labs/ai-experiment/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Game Experiment",
+    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
+    "type": "labs",
+    "url": "https://www.newon.app/id/resources/labs/game-experiment/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "Character Lab",
+    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.",
+    "type": "labs",
+    "url": "https://www.newon.app/id/resources/labs/character-lab/",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "labs"
+    ]
+  },
+  {
+    "title": "FROM IDEA TO MVP",
+    "desc": "How to narrow an idea into a testable minimum product.",
+    "type": "education",
+    "url": "https://www.newon.app/id/resources/education/#idea-to-mvp",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "PRODUCT THINKING",
+    "desc": "Seeing products through problems and user flows—not feature lists.",
+    "type": "education",
+    "url": "https://www.newon.app/id/resources/education/#product-thinking",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "BUILDING WITH AI",
+    "desc": "Practical patterns for shipping real products with AI as a partner.",
+    "type": "education",
+    "url": "https://www.newon.app/id/resources/education/#building-with-ai",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "APP LAUNCH BASICS",
+    "desc": "Launch fundamentals: store listing, metadata, and early feedback.",
+    "type": "education",
+    "url": "https://www.newon.app/id/resources/education/#app-launch-basics",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "VALIDATING IDEAS",
+    "desc": "Ways to test a hypothesis quickly before building big.",
+    "type": "education",
+    "url": "https://www.newon.app/id/resources/education/#validating-ideas",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "education"
     ]
   }
 ]

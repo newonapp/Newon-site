@@ -262,6 +262,15 @@ export const PORTFOLIO_STATS = {
     "아이디어부터 기획, UI/UX, 개발, 출시, 운영, 마케팅까지 직접 진행했습니다.",
   items: [
     {
+      id: "months",
+      value: "06",
+      valueKind: "number",
+      title: "개월",
+      note: "아이디어에서 출시까지의 기간",
+      noteShort: "아이디어 → 출시",
+      visible: true,
+    },
+    {
       id: "apps",
       value: "11",
       valueKind: "number",
@@ -295,7 +304,7 @@ export const PORTFOLIO_STATS = {
       title: "통합 앱 관리",
       note: "여러 Newon 앱과 서비스를 하나의 앱에서 통합 관리합니다.",
       noteShort: "여러 앱을 하나의 앱에서 통합 관리",
-      visible: true,
+      visible: false,
     },
     {
       id: "downloads",

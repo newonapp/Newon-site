@@ -4,18 +4,21 @@
  * Pipeline: RESEARCH → PROTOTYPE → TESTING → VALIDATED → PRODUCT
  */
 
-export const LAB_STATUSES = ["RESEARCH", "PROTOTYPE", "TESTING", "VALIDATED", "ARCHIVED"];
+export const LAB_STATUSES = ["IDEA", "RESEARCH", "BUILDING", "TESTING", "VALIDATED", "ARCHIVED"];
 
-export const LAB_PIPELINE = ["RESEARCH", "PROTOTYPE", "TESTING", "VALIDATED", "PRODUCT"];
+export const LAB_PIPELINE = ["IDEA", "RESEARCH", "BUILDING", "TESTING", "VALIDATED", "PRODUCT"];
 
 /** Map legacy admin statuses → public status */
 export const LAB_STATUS_MAP = {
-  building: "TESTING",
-  exploring: "RESEARCH",
-  concept: "RESEARCH",
-  beta: "PROTOTYPE",
+  building: "BUILDING",
+  exploring: "IDEA",
+  concept: "IDEA",
+  beta: "BUILDING",
+  prototype: "BUILDING",
+  PROTOTYPE: "BUILDING",
   live: "VALIDATED",
   paused: "ARCHIVED",
+  research: "RESEARCH",
 };
 
 /**
@@ -39,6 +42,7 @@ export const LABS_EXPERIMENTS = [
     experimentId: "lab-01",
     id: "review-ai",
     slug: "review-ai",
+    runnable: true,
     labNumber: 1,
     category: "ai",
     categoryLabel: "AI · PRODUCT INTELLIGENCE",
@@ -94,6 +98,7 @@ export const LABS_EXPERIMENTS = [
     experimentId: "lab-02",
     id: "newon-qr",
     slug: "newon-qr",
+    runnable: true,
     labNumber: 2,
     category: "saas",
     categoryLabel: "SAAS · QR",
@@ -158,6 +163,7 @@ export const LABS_EXPERIMENTS = [
     experimentId: "lab-03",
     id: "newon-form",
     slug: "newon-form",
+    runnable: true,
     labNumber: 3,
     category: "saas",
     categoryLabel: "SAAS · FORMS",
@@ -209,6 +215,7 @@ export const LABS_EXPERIMENTS = [
     experimentId: "lab-04",
     id: "ai-experiment",
     slug: "ai-experiment",
+    runnable: true,
     legacySlugs: ["ai-service"],
     labNumber: 4,
     category: "ai",
@@ -289,6 +296,7 @@ export const LABS_EXPERIMENTS = [
     experimentId: "lab-05",
     id: "game-experiment",
     slug: "game-experiment",
+    runnable: true,
     labNumber: 5,
     category: "games",
     categoryLabel: "GAMES · SYSTEMS",

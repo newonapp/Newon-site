@@ -8,11 +8,12 @@ import {
   studioServicePagePath,
 } from "./studio-pricing.mjs";
 import { STUDIO_DETAIL_ENRICHMENTS, mergeStudioDetail } from "./studio-service-detail-enrichments.mjs";
+import { applyStudioKoLabels } from "./studio-section-labels.mjs";
 
 const CAT = {
-  brand: { ko: "BRAND", en: "BRAND" },
-  digital: { ko: "DIGITAL", en: "DIGITAL" },
-  content: { ko: "CONTENT", en: "CONTENT" },
+  brand: { ko: "브랜드", en: "BRAND" },
+  digital: { ko: "디지털", en: "DIGITAL" },
+  content: { ko: "콘텐츠", en: "CONTENT" },
   ip: { ko: "IP", en: "IP" },
 };
 
@@ -28,42 +29,42 @@ function L(lang, ko, en) {
 export function studioDetailUi(lang = "ko") {
   const ko = lang === "ko";
   return {
-    crumbStudio: "STUDIO",
+    crumbStudio: ko ? "스튜디오" : "STUDIO",
     back: ko ? "← Studio로 돌아가기" : "← Back to Studio",
     backCategory: ko ? "← 카테고리로" : "← Back to category",
-    overview: "OVERVIEW",
+    overview: ko ? "개요" : "OVERVIEW",
     overviewTitle: ko ? "프로젝트를 시작하기 전에\n먼저 정리하는 것들." : "What we clarify\nbefore the work begins.",
-    problems: "PROBLEMS",
+    problems: ko ? "문제" : "PROBLEMS",
     problemsTitle: ko ? "이런 상황에서 도움이 됩니다." : "Situations where this helps.",
-    who: "WHO IT'S FOR",
+    who: ko ? "대상" : "WHO IT'S FOR",
     whoTitle: ko ? "이런 팀·브랜드에 적합합니다." : "Teams and brands this fits.",
-    whatWeDo: "WHAT WE DO",
+    whatWeDo: ko ? "진행 작업" : "WHAT WE DO",
     whatWeDoTitle: ko ? "프로젝트에서 진행하는 작업." : "Work we run on this project.",
-    useCases: "USE CASES",
+    useCases: ko ? "활용 예시" : "USE CASES",
     useCasesTitle: ko ? "이런 결과물·적용 예시." : "Examples of what we can shape.",
-    included: "WHAT'S INCLUDED",
+    included: ko ? "포함 내용" : "WHAT'S INCLUDED",
     includedTitle: ko ? "기본 범위에 포함됩니다." : "Included in the base scope.",
-    deliverables: "DELIVERABLES",
+    deliverables: ko ? "결과물" : "DELIVERABLES",
     deliverablesTitle: ko ? "프로젝트 종료 시 받게 되는 결과물." : "What you receive at delivery.",
     deliverablesLead: ko
       ? "협의된 범위 기준이며, 프로젝트 규모에 따라 세부 항목은 조정될 수 있습니다."
       : "Based on agreed scope — details may adjust with project scale.",
-    process: "PROCESS",
+    process: ko ? "진행 방식" : "PROCESS",
     processTitle: ko ? "프로젝트는 이렇게 진행됩니다." : "How the project runs.",
-    timelinePrice: ko ? "TIMELINE & PRICE" : "TIMELINE & PRICE",
+    timelinePrice: ko ? "기간 · 가격" : "TIMELINE & PRICE",
     priceTitle: ko ? "예상 기간과 시작가." : "Timeline and starting price.",
     priceFactorsLabel: ko ? "견적에 영향을 주는 요소" : "PRICING FACTORS",
     startingAt: ko ? "시작가" : "STARTING AT",
     timeline: ko ? "예상 기간" : "TIMELINE",
-    optional: ko ? "OPTIONAL / ADDITIONAL SCOPE" : "OPTIONAL / ADDITIONAL SCOPE",
+    optional: ko ? "선택 범위" : "OPTIONAL / ADDITIONAL SCOPE",
     optionalTitle: ko ? "필요 시 추가할 수 있는 범위." : "Optional add-ons when needed.",
     faq: "FAQ",
-    faqTitle: "FAQ",
-    explore: "EXPLORE STUDIO",
+    faqTitle: ko ? "자주 묻는 질문" : "FAQ",
+    explore: ko ? "스튜디오 탐색" : "EXPLORE STUDIO",
     exploreLead: ko ? "같은 영역의 다른 Studio 서비스" : "Other services in this Studio area",
     exploreTitle: ko ? "같은 영역의 다른 서비스" : "More in this Studio area",
-    current: ko ? "CURRENT" : "CURRENT",
-    ctaEyebrow: "START A PROJECT",
+    current: ko ? "현재" : "CURRENT",
+    ctaEyebrow: ko ? "프로젝트 시작" : "START A PROJECT",
     ctaTitle: ko
       ? "브랜드와 제품에 필요한 것을 이야기해주세요."
       : "Tell us what your brand and product need.",
@@ -74,7 +75,7 @@ export function studioDetailUi(lang = "ko") {
     priceNote: ko
       ? "표시된 금액은 기본 범위 기준 시작가입니다. 프로젝트 규모, 제작 범위, 결과물 수 및 요구사항에 따라 최종 견적이 달라질 수 있습니다."
       : "Listed amounts are starting prices for a basic scope. Final quotes may vary with project scale, production scope, deliverable count, and requirements.",
-    developmentNeeded: "DEVELOPMENT NEEDED?",
+    developmentNeeded: ko ? "개발이 필요한가요?" : "DEVELOPMENT NEEDED?",
     exploreBusiness: ko ? "Newon Business 살펴보기 →" : "Explore Newon Business →",
     prevService: ko ? "이전 서비스" : "PREVIOUS SERVICE",
     nextService: ko ? "다음 서비스" : "NEXT SERVICE",
@@ -86,7 +87,8 @@ const DETAIL = {
   "brand-strategy": {
     pageKind: "service",
     displayName: "Brand Strategy",
-    hideHeroSub: true,
+    hideHeroSub: false,
+    eyebrowSub: { ko: "BRAND STRATEGY", en: "BRAND STRATEGY" },
     seoTitle: { ko: "Brand Strategy | Newon Studio", en: "Brand Strategy | Newon Studio" },
     meta: {
       ko: "Brand Strategy — 브랜드 방향, 포지셔닝, 고객, 메시지와 톤을 정의해 Naming·Identity·Digital로 이어지는 기준을 만듭니다. 시작가 ₩400,000부터 · 1–3주.",
@@ -6897,26 +6899,29 @@ const DETAIL = {
   "character-lab": {
     pageKind: "service",
     displayName: "CHARACTER LAB",
-    statusLabel: { ko: "EXPERIMENTAL", en: "EXPERIMENTAL" },
+    eyebrowSub: { ko: "CHARACTER LAB", en: "CHARACTER LAB" },
+    statusLabel: { ko: "EXPERIMENTAL · AVAILABLE", en: "EXPERIMENTAL · AVAILABLE" },
     seoTitle: { ko: "Character Lab | Newon Studio", en: "Character Lab | Newon Studio" },
     meta: {
-      ko: "Character Lab — 캐릭터 콘셉트와 비주얼 방향을 실험하는 Experimental IP 서비스.",
-      en: "Character Lab — experimental character concept and visual direction.",
+      ko: "Character Lab — 초기 Character Concept과 IP 가능성을 탐색하는 Experimental Client Service. ₩500,000부터 · 2–4주.",
+      en: "Character Lab — experimental client service for early character concept and IP potential. From ₩500,000 · 2–4 weeks.",
     },
     headline: {
       ko: "작은 캐릭터 아이디어에서 새로운 IP의 가능성을 찾습니다.",
       en: "Find IP potential in a small character idea.",
     },
     description: {
-      ko: "캐릭터의 성격, 역할, 비주얼과 기본 세계관을 설계하고 디지털 콘텐츠와 브랜드 자산으로 발전할 수 있는 가능성을 실험합니다.",
-      en: "We design personality, role, visuals, and a basic world — then experiment how it can grow into digital content and brand assets.",
+      ko: "캐릭터의 성격, 역할, 비주얼과 기본 세계관을 설계하고 디지털 콘텐츠와 브랜드 자산으로 발전할 수 있는 가능성을 실험합니다. Experimental 서비스이지만 실제 프로젝트 문의와 진행이 가능합니다.",
+      en: "We design personality, role, visuals, and a basic world — then experiment how it can grow into digital content and brand assets. Experimental scope — inquiry and project work are available.",
     },
     notices: {
       ko: [
-        "Character Lab은 현재 Experimental 서비스입니다. 대형 캐릭터 라이선싱 사업이나 완성된 IP 에이전시처럼 제공하지 않습니다.",
+        "Character Lab은 Experimental · Available 서비스입니다. 초기 Character Concept과 IP 가능성을 탐색하며, 대형 캐릭터 라이선싱 사업이나 완성된 IP 에이전시처럼 제공하지 않습니다.",
+        "저작권·사용권·Merchandise·Modification·Commercial Usage 등은 프로젝트 계약 범위에 따라 결정합니다. 무조건 양도한다고 단정하지 않습니다.",
       ],
       en: [
-        "Character Lab is an Experimental service — not a full licensing agency or finished IP business offering.",
+        "Character Lab is Experimental · Available — early character concept and IP exploration, not a full licensing agency or finished IP business offering.",
+        "Copyright, usage, merchandise, modification, and commercial rights are set by contract. We do not assert blanket assignment.",
       ],
     },
     whatWeDo: {
@@ -6965,14 +6970,18 @@ const DETAIL = {
     },
     faqs: {
       ko: [
-        { q: "완성된 IP를 판매하나요?", a: "아니요. 실험·콘셉트 개발 중심이며 완성된 상용 IP 에이전시 서비스가 아닙니다." },
+        { q: "의뢰할 수 있나요?", a: "가능합니다. Experimental · Available 서비스로 실제 프로젝트 문의와 진행이 가능합니다." },
+        { q: "완성된 대형 IP Agency인가요?", a: "아니요. 초기 Character Concept과 IP 가능성을 탐색하는 Experimental Client Service입니다." },
         { q: "스티커까지 이어지나요?", a: "Digital Stickers는 Coming Soon입니다. Character Lab에서 가능성을 먼저 실험합니다." },
         { q: "예상 기간은?", a: "기본 범위 기준 2–4주입니다." },
+        { q: "권리는 어떻게 되나요?", a: "저작권·사용권·상품화 등은 계약 범위에 따라 결정합니다. 무조건 양도한다고 단정하지 않습니다." },
       ],
       en: [
-        { q: "Do you sell finished IP?", a: "No — this is experimental concept work, not a commercial IP agency product." },
+        { q: "Can we commission it?", a: "Yes — Experimental · Available. Inquiry and project work are open." },
+        { q: "Is this a full IP agency?", a: "No — an experimental client service for early character concept and IP potential." },
         { q: "Does it include stickers?", a: "Digital Stickers is Coming Soon. Character Lab explores potential first." },
         { q: "Timeline?", a: "About 2–4 weeks for a basic scope." },
+        { q: "What about rights?", a: "Copyright, usage, and merchandising are set by contract — not assumed as blanket assignment." },
       ],
     },
   },
@@ -6981,7 +6990,7 @@ const DETAIL = {
     pageKind: "comingSoon",
     displayName: "DIGITAL STICKERS",
     statusLabel: { ko: "COMING SOON", en: "COMING SOON" },
-    seoTitle: { ko: "Digital Stickers | Newon Studio", en: "Digital Stickers | Newon Studio" },
+    eyebrowSub: { ko: "DIGITAL STICKERS", en: "DIGITAL STICKERS" },
     meta: {
       ko: "Digital Stickers — Coming Soon. 캐릭터 감정을 디지털 표현으로 확장하는 영역.",
       en: "Digital Stickers — Coming Soon. Extending character emotion into digital expressions.",
@@ -7009,7 +7018,8 @@ const DETAIL = {
   "newon-character": {
     pageKind: "internal",
     displayName: "NEWON CHARACTER",
-    statusLabel: { ko: "INTERNAL PROJECT", en: "INTERNAL PROJECT" },
+    statusLabel: { ko: "INTERNAL · BUILDING", en: "INTERNAL · BUILDING" },
+    eyebrowSub: { ko: "NEWON CHARACTER", en: "NEWON CHARACTER" },
     seoTitle: { ko: "Newon Character | Newon Studio", en: "Newon Character | Newon Studio" },
     meta: {
       ko: "Newon Character — Newon 자체 브랜드용 내부 IP 프로젝트. 외부 의뢰 서비스 아님.",
@@ -7039,12 +7049,12 @@ const DETAIL = {
     pageKind: "exploring",
     displayName: "EXPERIMENTAL IP",
     eyebrowSub: { ko: "EXPERIMENTAL IP", en: "EXPERIMENTAL IP" },
-    statusLabel: { ko: "EXPLORING", en: "EXPLORING" },
-    typeLabel: { ko: "EXPERIMENTAL / CUSTOM", en: "EXPERIMENTAL / CUSTOM" },
+    typeLabel: { ko: "EXPLORING / CUSTOM", en: "EXPLORING / CUSTOM" },
+    statusLabel: { ko: "EXPLORING · CUSTOM", en: "EXPLORING · CUSTOM" },
     seoTitle: { ko: "Experimental IP | Newon Studio", en: "Experimental IP | Newon Studio" },
     meta: {
-      ko: "Experimental IP — Idea → Hypothesis → Prototype → Test → Learn. 고정 가격 없음 · 별도 견적.",
-      en: "Experimental IP — Idea → Hypothesis → Prototype → Test → Learn. No fixed price · custom quote.",
+      ko: "Experimental IP — 고정 패키지가 아닌 Custom Experimental Project. Idea → Hypothesis → Prototype → Test → Learn. 별도 견적.",
+      en: "Experimental IP — custom experimental project, not a fixed package. Idea → Hypothesis → Prototype → Test → Learn. Custom quote.",
     },
     headline: {
       ko: "아직 없는 것을\n작게 만들고 빠르게 확인합니다.",
@@ -7700,7 +7710,7 @@ const DETAIL = {
         { q: "성공 가능성을 판단해주나요?", a: "실험 결과와 관찰된 반응을 기반으로 다음 방향을 검토할 수 있지만 실제 시장 성공이나 흥행을 보장하지 않습니다." },
         { q: "굿즈까지 만들 수 있나요?", a: "Concept 또는 Goods Direction은 확장할 수 있지만 실제 제조와 생산은 별도 범위입니다." },
         { q: "저작권은 어떻게 되나요?", a: "Concept, Character, Prototype과 기타 창작 결과물의 권리 범위는 프로젝트 계약 조건에 따라 결정합니다." },
-        { q: "바로 구매할 수 있나요?", a: "아니요. 탐색·맞춤 프로젝트 영역이며 표준 패키지로 판매하지 않습니다. 짧은 브리핑 후 별도 견적으로 진행합니다." },
+        { q: "Experimental IP도 의뢰할 수 있나요?", a: "가능합니다. 정형화된 패키지가 아니라 아이디어와 실험 범위에 따라 Custom Project로 구성하며 별도 견적합니다." },
         { q: "가격과 기간은 어떻게 정해지나요?", a: "고정 시작가가 없습니다. 실험 범위·Prototype 수준·기간에 따라 프로젝트별 견적과 일정을 확정합니다." },
         { q: "얼마나 크게 확장할 수 있나요?", a: "실험에서 가능성이 확인되면 Character Lab, Social Content, Product Design, Game / Interactive, Campaign, Merchandise 등 다음 프로젝트로 단계적으로 확장할 수 있습니다." },
       ],
@@ -7716,7 +7726,7 @@ const DETAIL = {
         { q: "Will you judge success potential?", a: "We can review next directions from experiment results and observed response, but we do not guarantee market success or hits." },
         { q: "Can you make merch?", a: "Concept or goods direction can expand, but manufacturing and production are separate scope." },
         { q: "What about copyright?", a: "Rights for concepts, characters, prototypes, and other creative outputs are decided by project contract." },
-        { q: "Can we buy this as a package?", a: "No. It is an exploration / custom area, not a standard product. After a short brief, we quote custom." },
+        { q: "Can we commission Experimental IP?", a: "Yes. It is not a fixed package — we shape a custom project from the idea and experiment scope, then quote separately." },
         { q: "How are price and timeline set?", a: "There is no fixed starting price. Quote and schedule are confirmed by experiment scope, prototype level, and duration." },
         { q: "How far can it expand?", a: "If potential is confirmed, it can step into Character Lab, Social Content, Product Design, Game / Interactive, Campaign, Merchandise, and related next projects." },
       ],
@@ -7730,7 +7740,7 @@ const DETAIL = {
       ko: "Character, World, Content, Game, AI 또는 Interactive Experience의 가능성을 작은 Prototype으로 구현하고, 실제로 확인하면서 다음 방향을 결정합니다.",
       en: "We prototype character, world, content, game, AI, or interactive experience potential in small form — then decide next steps from what you can actually review.",
     },
-    ctaBtn: { ko: "Experimental IP 프로젝트 문의 →", en: "Experimental IP project inquiry →" },
+    ctaBtn: { ko: "Experimental Project 문의 →", en: "Experimental project inquiry →" },
     ctaSecondary: { ko: "Studio 둘러보기 →", en: "Explore Studio →" },
   },
 
@@ -7756,7 +7766,8 @@ export function getStudioServiceDetail(slug, lang = "ko") {
   const ui = studioDetailUi(pageLang);
   const categoryLabel = CAT[pricing.category]?.[pageLang] || pricing.category.toUpperCase();
 
-  return {
+  return applyStudioKoLabels(
+    {
     slug,
     pagePath: studioServicePagePath(slug),
     category: pricing.category,
@@ -7886,6 +7897,8 @@ export function getStudioServiceDetail(slug, lang = "ko") {
     ui,
     pricing,
     _pageLang: pageLang,
-  };
+  },
+    pageLang,
+  );
 }
 

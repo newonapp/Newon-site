@@ -4,19 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resources | Newon</title>
-    <meta name="description" content="Store, Publishing, Insights, Tools, Blog, Media, Newon Notes, and Education — Newon's resource hub." />
+    <meta name="description" content="Store · Insights · Blog · Media · Labs · Notes · Education — Newon's resource hub." />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://www.newon.app/de/resources/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.newon.app/de/resources/" />
     <meta property="og:locale" content="de_DE" />
     <meta property="og:title" content="Resources | Newon" />
-    <meta property="og:description" content="Store, Publishing, Insights, Tools, Blog, Media, Newon Notes, and Education — Newon's resource hub." />
+    <meta property="og:description" content="Store · Insights · Blog · Media · Labs · Notes · Education — Newon's resource hub." />
     <meta property="og:site_name" content="Newon" />
     <meta property="og:image" content="https://www.newon.app/logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Resources | Newon" />
-    <meta name="twitter:description" content="Store, Publishing, Insights, Tools, Blog, Media, Newon Notes, and Education — Newon's resource hub." />
+    <meta name="twitter:description" content="Store · Insights · Blog · Media · Labs · Notes · Education — Newon's resource hub." />
     <meta name="twitter:image" content="https://www.newon.app/logo.png" />
     <link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/resources/" />
     <link rel="alternate" hreflang="en" href="https://www.newon.app/en/resources/" />
@@ -39,7 +39,10 @@
     <link rel="stylesheet" href="/gnav-mega.css?v=20260826gnav5" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
     <link rel="stylesheet" href="/site-premium.css?v=20260826bw1" />
-    <link rel="stylesheet" href="/resources.css?v=20260826nl0" />
+    <link rel="stylesheet" href="/resources.css?v=20260828sdfocus" />
+    <link rel="stylesheet" href="/store-detail.css?v=20260828sd2" />
+    <link rel="stylesheet" href="/blog-hub.css?v=20260828nb2" />
+    <link rel="stylesheet" href="/media-hub.css?v=20260828mh1" />
     <link rel="stylesheet" href="/labs-detail.css?v=20260826ld9" />
     <script src="/theme-shell.js"></script>
     <script src="/analytics.js?v=20260825studio" defer></script>
@@ -50,8 +53,8 @@
     <header class="gnav site-header gnav--five" data-gnav>
       <div class="gnav__bar">
         <div class="gnav__inner">
-          <a class="gnav__brand" href="../">
-            <img class="gnav__logo" src="/logo.png" alt="Newon" width="40" height="40" decoding="async" />
+          <a class="gnav__brand" href="../" aria-label="Newon">
+            <img class="gnav__logo" src="/logo.png" alt="" width="40" height="40" decoding="async" />
             <span class="gnav__wordmark">Newon</span>
           </a>
           <nav class="gnav__nav" aria-label="Main navigation">
@@ -222,11 +225,32 @@
         <span class="gnav-mega__row-desc">Build logs and stories</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../resources/labs/" role="menuitem">
+    </a><a class="gnav-mega__row" href="../resources/media/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Media</span>
+        <span class="gnav-mega__row-desc">Video · product stories · visual</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../resources/labs/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Labs</span>
         <span class="gnav-mega__row-desc">Experiments · ventures · ideas</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../resources/newsletter/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">06</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Newsletter</span>
+        <span class="gnav-mega__row-desc">Short build log · updates</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../resources/education/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">07</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Education</span>
+        <span class="gnav-mega__row-desc">Guides · courses · workshops</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a>
@@ -313,7 +337,7 @@
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../resources/labs/">Labs</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../resources/media/">Media</a><a class="gnav-mobile__sublink" href="../resources/labs/">Labs</a><a class="gnav-mobile__sublink" href="../resources/newsletter/">Newsletter</a><a class="gnav-mobile__sublink" href="../resources/education/">Education</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -629,95 +653,187 @@
       </div>
       <a class="rx-link" href="#rx-cats">View all resources →</a>
     </header>
-    <ol class="rx-list" data-rx-latest><li data-rx-row data-rx-topics="experiment character-lab character experiment labs">
-      <a class="rx-row" href="labs/character-lab/">
-        <span class="rx-row__n" aria-hidden="true">01</span>
-        <span class="rx-row__type">LABS</span>
-        <span class="rx-row__main">
-          <span class="rx-row__title">Character Lab</span>
-          <span class="rx-row__desc">Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.</span>
-        </span>
-        <span class="rx-row__date">2026.08.26</span>
-        <span class="rx-row__go" aria-hidden="true">↗</span>
-      </a>
-    </li><li data-rx-row data-rx-topics="ai experiment review-ai ai experiment labs">
-      <a class="rx-row" href="labs/review-ai/">
-        <span class="rx-row__n" aria-hidden="true">02</span>
-        <span class="rx-row__type">LABS</span>
-        <span class="rx-row__main">
-          <span class="rx-row__title">Review AI</span>
-          <span class="rx-row__desc">An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.</span>
-        </span>
-        <span class="rx-row__date">2026.08.20</span>
-        <span class="rx-row__go" aria-hidden="true">↗</span>
-      </a>
-    </li><li data-rx-row data-rx-topics="experiment product newon-qr saas experiment labs">
-      <a class="rx-row" href="labs/newon-qr/">
-        <span class="rx-row__n" aria-hidden="true">03</span>
-        <span class="rx-row__type">LABS</span>
-        <span class="rx-row__main">
-          <span class="rx-row__title">Newon QR</span>
-          <span class="rx-row__desc">A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.</span>
-        </span>
-        <span class="rx-row__date">2026.08.18</span>
-        <span class="rx-row__go" aria-hidden="true">↗</span>
-      </a>
-    </li><li data-rx-row data-rx-topics="experiment product newon-form saas experiment labs">
-      <a class="rx-row" href="labs/newon-form/">
-        <span class="rx-row__n" aria-hidden="true">04</span>
-        <span class="rx-row__type">LABS</span>
-        <span class="rx-row__main">
-          <span class="rx-row__title">Newon Form</span>
-          <span class="rx-row__desc">A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.</span>
-        </span>
-        <span class="rx-row__date">2026.08.12</span>
-        <span class="rx-row__go" aria-hidden="true">↗</span>
-      </a>
-    </li><li data-rx-row data-rx-topics="ai experiment ai-experiment ai experiment labs">
-      <a class="rx-row" href="labs/ai-experiment/">
-        <span class="rx-row__n" aria-hidden="true">05</span>
-        <span class="rx-row__type">LABS</span>
-        <span class="rx-row__main">
-          <span class="rx-row__title">AI Product Discovery</span>
-          <span class="rx-row__desc">Research that finds recurring problems and tests whether AI is actually a better solution.</span>
-        </span>
-        <span class="rx-row__date">2026.08.10</span>
-        <span class="rx-row__go" aria-hidden="true">↗</span>
-      </a>
-    </li><li data-rx-row data-rx-topics="experiment game game-experiment games experiment labs">
-      <a class="rx-row" href="labs/game-experiment/">
-        <span class="rx-row__n" aria-hidden="true">06</span>
-        <span class="rx-row__type">LABS</span>
-        <span class="rx-row__main">
-          <span class="rx-row__title">Game Experiment</span>
-          <span class="rx-row__desc">Research into how choice, memory, contradiction, and consequence reshape player experience.</span>
-        </span>
-        <span class="rx-row__date">2026.08.08</span>
-        <span class="rx-row__go" aria-hidden="true">↗</span>
-      </a>
-    </li><li data-rx-row data-rx-topics="templates store app-launch-kit store product startup">
-      <a class="rx-row" href="store/app-launch-kit/">
-        <span class="rx-row__n" aria-hidden="true">07</span>
-        <span class="rx-row__type">STORE</span>
-        <span class="rx-row__main">
-          <span class="rx-row__title">App Launch Kit</span>
-          <span class="rx-row__desc">Pre-launch checklist, store metadata, and launch schedule templates.</span>
-        </span>
-        <span class="rx-row__date">2026.08</span>
-        <span class="rx-row__go" aria-hidden="true">↗</span>
-      </a>
-    </li><li data-rx-row data-rx-topics="templates store mvp-planning-kit store product startup">
-      <a class="rx-row" href="store/mvp-planning-kit/">
-        <span class="rx-row__n" aria-hidden="true">08</span>
-        <span class="rx-row__type">STORE</span>
-        <span class="rx-row__main">
-          <span class="rx-row__title">MVP Planning Kit</span>
-          <span class="rx-row__desc">Worksheets from problem definition through MVP scope.</span>
-        </span>
-        <span class="rx-row__date">2026.08</span>
-        <span class="rx-row__go" aria-hidden="true">↗</span>
-      </a>
-    </li></ol>
+    <ol class="rx-list" data-rx-latest><li data-rx-row data-rx-topics="experiment character labs labs character character-lab">
+    <a class="rx-row" href="labs/character-lab/" aria-label="labs: Character Lab">
+      <span class="rx-row__n" aria-hidden="true">01</span>
+      <span class="rx-row__type">LABS</span>
+      <span class="rx-row__main">
+        <span class="rx-row__title">Character Lab</span>
+        <span class="rx-row__desc">Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.</span>
+      </span>
+      <span class="rx-row__date">2026.08.26</span>
+      <span class="rx-row__go" aria-hidden="true">↗</span>
+    </a>
+  </li><li data-rx-row data-rx-topics="experiment ai labs labs ai review-ai">
+    <a class="rx-row" href="labs/review-ai/" aria-label="labs: Review AI">
+      <span class="rx-row__n" aria-hidden="true">02</span>
+      <span class="rx-row__type">LABS</span>
+      <span class="rx-row__main">
+        <span class="rx-row__title">Review AI</span>
+        <span class="rx-row__desc">An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.</span>
+      </span>
+      <span class="rx-row__date">2026.08.20</span>
+      <span class="rx-row__go" aria-hidden="true">↗</span>
+    </a>
+  </li><li data-rx-row data-rx-topics="experiment saas labs labs saas newon-qr">
+    <a class="rx-row" href="labs/newon-qr/" aria-label="labs: Newon QR">
+      <span class="rx-row__n" aria-hidden="true">03</span>
+      <span class="rx-row__type">LABS</span>
+      <span class="rx-row__main">
+        <span class="rx-row__title">Newon QR</span>
+        <span class="rx-row__desc">A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.</span>
+      </span>
+      <span class="rx-row__date">2026.08.18</span>
+      <span class="rx-row__go" aria-hidden="true">↗</span>
+    </a>
+  </li><li data-rx-row data-rx-topics="experiment saas labs labs saas newon-form">
+    <a class="rx-row" href="labs/newon-form/" aria-label="labs: Newon Form">
+      <span class="rx-row__n" aria-hidden="true">04</span>
+      <span class="rx-row__type">LABS</span>
+      <span class="rx-row__main">
+        <span class="rx-row__title">Newon Form</span>
+        <span class="rx-row__desc">A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.</span>
+      </span>
+      <span class="rx-row__date">2026.08.12</span>
+      <span class="rx-row__go" aria-hidden="true">↗</span>
+    </a>
+  </li><li data-rx-row data-rx-topics="experiment ai labs labs ai ai-experiment">
+    <a class="rx-row" href="labs/ai-experiment/" aria-label="labs: AI Product Discovery">
+      <span class="rx-row__n" aria-hidden="true">05</span>
+      <span class="rx-row__type">LABS</span>
+      <span class="rx-row__main">
+        <span class="rx-row__title">AI Product Discovery</span>
+        <span class="rx-row__desc">Research that finds recurring problems and tests whether AI is actually a better solution.</span>
+      </span>
+      <span class="rx-row__date">2026.08.10</span>
+      <span class="rx-row__go" aria-hidden="true">↗</span>
+    </a>
+  </li><li data-rx-row data-rx-topics="experiment games labs labs games game-experiment">
+    <a class="rx-row" href="labs/game-experiment/" aria-label="labs: Game Experiment">
+      <span class="rx-row__n" aria-hidden="true">06</span>
+      <span class="rx-row__type">LABS</span>
+      <span class="rx-row__main">
+        <span class="rx-row__title">Game Experiment</span>
+        <span class="rx-row__desc">Research into how choice, memory, contradiction, and consequence reshape player experience.</span>
+      </span>
+      <span class="rx-row__date">2026.08.08</span>
+      <span class="rx-row__go" aria-hidden="true">↗</span>
+    </a>
+  </li><li data-rx-row data-rx-topics="templates kit store store templates app-launch-kit">
+    <a class="rx-row" href="store/app-launch-kit/" aria-label="store: App Launch Kit">
+      <span class="rx-row__n" aria-hidden="true">07</span>
+      <span class="rx-row__type">STORE</span>
+      <span class="rx-row__main">
+        <span class="rx-row__title">App Launch Kit</span>
+        <span class="rx-row__desc">Pre-launch checklist, store metadata, and launch schedule templates.</span>
+      </span>
+      <span class="rx-row__date">2026.08.01</span>
+      <span class="rx-row__go" aria-hidden="true">↗</span>
+    </a>
+  </li><li data-rx-row data-rx-topics="templates kit store store templates mvp-planning-kit">
+    <a class="rx-row" href="store/mvp-planning-kit/" aria-label="store: MVP Planning Kit">
+      <span class="rx-row__n" aria-hidden="true">08</span>
+      <span class="rx-row__type">STORE</span>
+      <span class="rx-row__main">
+        <span class="rx-row__title">MVP Planning Kit</span>
+        <span class="rx-row__desc">Worksheets from problem definition through MVP scope.</span>
+      </span>
+      <span class="rx-row__date">2026.08.01</span>
+      <span class="rx-row__go" aria-hidden="true">↗</span>
+    </a>
+  </li></ol>
+  </div>
+</section>
+
+<section class="rx-block rx-popular" id="rx-popular" data-rs-reveal aria-labelledby="rx-popular-title">
+  <div class="rx-shell">
+    <header class="rx-head">
+      <div>
+        <p class="rx-kicker">POPULAR</p>
+        <h2 class="rx-h2" id="rx-popular-title">Often picked<br />resources.</h2>
+      </div>
+    </header>
+    <ol class="rx-list" data-rx-popular><li data-rx-row data-rx-topics="experiment character labs labs character character-lab">
+    <a class="rx-row" href="labs/character-lab/" aria-label="labs: Character Lab">
+      <span class="rx-row__n" aria-hidden="true">01</span>
+      <span class="rx-row__type">LABS</span>
+      <span class="rx-row__main">
+        <span class="rx-row__title">Character Lab</span>
+        <span class="rx-row__desc">Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.</span>
+      </span>
+      <span class="rx-row__date">2026.08.26</span>
+      <span class="rx-row__go" aria-hidden="true">↗</span>
+    </a>
+  </li><li data-rx-row data-rx-topics="experiment ai labs labs ai review-ai">
+    <a class="rx-row" href="labs/review-ai/" aria-label="labs: Review AI">
+      <span class="rx-row__n" aria-hidden="true">02</span>
+      <span class="rx-row__type">LABS</span>
+      <span class="rx-row__main">
+        <span class="rx-row__title">Review AI</span>
+        <span class="rx-row__desc">An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.</span>
+      </span>
+      <span class="rx-row__date">2026.08.20</span>
+      <span class="rx-row__go" aria-hidden="true">↗</span>
+    </a>
+  </li><li data-rx-row data-rx-topics="experiment saas labs labs saas newon-qr">
+    <a class="rx-row" href="labs/newon-qr/" aria-label="labs: Newon QR">
+      <span class="rx-row__n" aria-hidden="true">03</span>
+      <span class="rx-row__type">LABS</span>
+      <span class="rx-row__main">
+        <span class="rx-row__title">Newon QR</span>
+        <span class="rx-row__desc">A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.</span>
+      </span>
+      <span class="rx-row__date">2026.08.18</span>
+      <span class="rx-row__go" aria-hidden="true">↗</span>
+    </a>
+  </li><li data-rx-row data-rx-topics="experiment saas labs labs saas newon-form">
+    <a class="rx-row" href="labs/newon-form/" aria-label="labs: Newon Form">
+      <span class="rx-row__n" aria-hidden="true">04</span>
+      <span class="rx-row__type">LABS</span>
+      <span class="rx-row__main">
+        <span class="rx-row__title">Newon Form</span>
+        <span class="rx-row__desc">A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.</span>
+      </span>
+      <span class="rx-row__date">2026.08.12</span>
+      <span class="rx-row__go" aria-hidden="true">↗</span>
+    </a>
+  </li><li data-rx-row data-rx-topics="experiment ai labs labs ai ai-experiment">
+    <a class="rx-row" href="labs/ai-experiment/" aria-label="labs: AI Product Discovery">
+      <span class="rx-row__n" aria-hidden="true">05</span>
+      <span class="rx-row__type">LABS</span>
+      <span class="rx-row__main">
+        <span class="rx-row__title">AI Product Discovery</span>
+        <span class="rx-row__desc">Research that finds recurring problems and tests whether AI is actually a better solution.</span>
+      </span>
+      <span class="rx-row__date">2026.08.10</span>
+      <span class="rx-row__go" aria-hidden="true">↗</span>
+    </a>
+  </li><li data-rx-row data-rx-topics="experiment games labs labs games game-experiment">
+    <a class="rx-row" href="labs/game-experiment/" aria-label="labs: Game Experiment">
+      <span class="rx-row__n" aria-hidden="true">06</span>
+      <span class="rx-row__type">LABS</span>
+      <span class="rx-row__main">
+        <span class="rx-row__title">Game Experiment</span>
+        <span class="rx-row__desc">Research into how choice, memory, contradiction, and consequence reshape player experience.</span>
+      </span>
+      <span class="rx-row__date">2026.08.08</span>
+      <span class="rx-row__go" aria-hidden="true">↗</span>
+    </a>
+  </li></ol>
+  </div>
+</section>
+
+<section class="rx-cta-band" data-rs-reveal aria-labelledby="rx-cta-band-title">
+  <div class="rx-shell rx-cta-band__inner">
+    <div>
+      <p class="rx-kicker">NEWON</p>
+      <h2 class="rx-h2" id="rx-cta-band-title">Ready to build<br />a product?</h2>
+      <p class="rx-sub">Newon Business and Studio help turn ideas into shipped products.</p>
+    </div>
+    <div class="rx-cta-band__actions">
+      <a class="rx-btn rx-btn--fill" href="../../business/inquiry/">Start a project →</a>
+      <a class="rx-btn rx-btn--line" href="../../products/">Explore products ↗</a>
+    </div>
   </div>
 </section>
 
@@ -795,7 +911,7 @@
       <div class="rx-find__hits" data-rs-search-results hidden></div>
       <p class="rx-find__empty" data-rx-empty hidden>No matching resources.</p>
       <div class="rx-find__suggest" data-rx-suggest><a class="rx-suggest" href="store/app-launch-kit/"><em>STORE</em><strong>App Launch Kit</strong></a><a class="rx-suggest" href="store/mvp-planning-kit/"><em>STORE</em><strong>MVP Planning Kit</strong></a><a class="rx-suggest" href="store/cursor-prompt-pack/"><em>STORE</em><strong>Cursor Product Builder Pack</strong></a></div>
-      <script type="application/json" id="rs-search-index">[{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;App Launch Kit&quot;,&quot;description&quot;:&quot;Pre-launch checklist, store metadata, and launch schedule templates.&quot;,&quot;url&quot;:&quot;store/app-launch-kit/&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;MVP Planning Kit&quot;,&quot;description&quot;:&quot;Worksheets from problem definition through MVP scope.&quot;,&quot;url&quot;:&quot;store/mvp-planning-kit/&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;Cursor Product Builder Pack&quot;,&quot;description&quot;:&quot;Cursor workflow prompts from product planning through build and QA.&quot;,&quot;url&quot;:&quot;store/cursor-prompt-pack/&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;Codex Builder Pack&quot;,&quot;description&quot;:&quot;Prompt and checklist pack for building products with Codex-style agent workflows.&quot;,&quot;url&quot;:&quot;store/codex-builder-pack/&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;Website Launch Checklist&quot;,&quot;description&quot;:&quot;Pre-launch checklist for SEO, performance, content, and legal notices.&quot;,&quot;url&quot;:&quot;store/website-launch-checklist/&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;Business Planning Workbook&quot;,&quot;description&quot;:&quot;A workbook to structure problem, market, model, and execution plans.&quot;,&quot;url&quot;:&quot;store/business-planning-workbook/&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;Product Research Template&quot;,&quot;description&quot;:&quot;A product research template for interviews, hypotheses, and competitor notes.&quot;,&quot;url&quot;:&quot;store/product-research-template/&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;Founder Dashboard&quot;,&quot;description&quot;:&quot;A founder dashboard template for metrics, tasks, and experiments.&quot;,&quot;url&quot;:&quot;store/founder-dashboard/&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;Product Roadmap Template&quot;,&quot;description&quot;:&quot;A roadmap template organized by quarter and theme.&quot;,&quot;url&quot;:&quot;store/product-roadmap/&quot;},{&quot;type&quot;:&quot;labs&quot;,&quot;title&quot;:&quot;Review AI&quot;,&quot;description&quot;:&quot;An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.&quot;,&quot;url&quot;:&quot;labs/review-ai/&quot;},{&quot;type&quot;:&quot;labs&quot;,&quot;title&quot;:&quot;Newon QR&quot;,&quot;description&quot;:&quot;A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.&quot;,&quot;url&quot;:&quot;labs/newon-qr/&quot;},{&quot;type&quot;:&quot;labs&quot;,&quot;title&quot;:&quot;Newon Form&quot;,&quot;description&quot;:&quot;A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.&quot;,&quot;url&quot;:&quot;labs/newon-form/&quot;},{&quot;type&quot;:&quot;labs&quot;,&quot;title&quot;:&quot;AI Product Discovery&quot;,&quot;description&quot;:&quot;Research that finds recurring problems and tests whether AI is actually a better solution.&quot;,&quot;url&quot;:&quot;labs/ai-experiment/&quot;},{&quot;type&quot;:&quot;labs&quot;,&quot;title&quot;:&quot;Game Experiment&quot;,&quot;description&quot;:&quot;Research into how choice, memory, contradiction, and consequence reshape player experience.&quot;,&quot;url&quot;:&quot;labs/game-experiment/&quot;},{&quot;type&quot;:&quot;labs&quot;,&quot;title&quot;:&quot;Character Lab&quot;,&quot;description&quot;:&quot;Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.&quot;,&quot;url&quot;:&quot;labs/character-lab/&quot;},{&quot;type&quot;:&quot;education&quot;,&quot;title&quot;:&quot;FROM IDEA TO MVP&quot;,&quot;description&quot;:&quot;How to narrow an idea into a testable minimum product.&quot;,&quot;url&quot;:&quot;education/#idea-to-mvp&quot;},{&quot;type&quot;:&quot;education&quot;,&quot;title&quot;:&quot;PRODUCT THINKING&quot;,&quot;description&quot;:&quot;Seeing products through problems and user flows—not feature lists.&quot;,&quot;url&quot;:&quot;education/#product-thinking&quot;},{&quot;type&quot;:&quot;education&quot;,&quot;title&quot;:&quot;BUILDING WITH AI&quot;,&quot;description&quot;:&quot;Practical patterns for shipping real products with AI as a partner.&quot;,&quot;url&quot;:&quot;education/#building-with-ai&quot;},{&quot;type&quot;:&quot;education&quot;,&quot;title&quot;:&quot;APP LAUNCH BASICS&quot;,&quot;description&quot;:&quot;Launch fundamentals: store listing, metadata, and early feedback.&quot;,&quot;url&quot;:&quot;education/#app-launch-basics&quot;},{&quot;type&quot;:&quot;education&quot;,&quot;title&quot;:&quot;VALIDATING IDEAS&quot;,&quot;description&quot;:&quot;Ways to test a hypothesis quickly before building big.&quot;,&quot;url&quot;:&quot;education/#validating-ideas&quot;}]</script>
+      <script type="application/json" id="rs-search-index">[{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;App Launch Kit&quot;,&quot;description&quot;:&quot;Pre-launch checklist, store metadata, and launch schedule templates.&quot;,&quot;url&quot;:&quot;store/app-launch-kit/&quot;,&quot;tags&quot;:[&quot;templates&quot;,&quot;kit&quot;,&quot;store&quot;],&quot;category&quot;:&quot;templates&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;MVP Planning Kit&quot;,&quot;description&quot;:&quot;Worksheets from problem definition through MVP scope.&quot;,&quot;url&quot;:&quot;store/mvp-planning-kit/&quot;,&quot;tags&quot;:[&quot;templates&quot;,&quot;kit&quot;,&quot;store&quot;],&quot;category&quot;:&quot;templates&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;Cursor Product Builder Pack&quot;,&quot;description&quot;:&quot;Cursor workflow prompts from product planning through build and QA.&quot;,&quot;url&quot;:&quot;store/cursor-prompt-pack/&quot;,&quot;tags&quot;:[&quot;ai-code&quot;,&quot;pack&quot;,&quot;store&quot;],&quot;category&quot;:&quot;ai-code&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;Codex Builder Pack&quot;,&quot;description&quot;:&quot;Prompt and checklist pack for building products with Codex-style agent workflows.&quot;,&quot;url&quot;:&quot;store/codex-builder-pack/&quot;,&quot;tags&quot;:[&quot;ai-code&quot;,&quot;pack&quot;,&quot;store&quot;],&quot;category&quot;:&quot;ai-code&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;Website Launch Checklist&quot;,&quot;description&quot;:&quot;Pre-launch checklist for SEO, performance, content, and legal notices.&quot;,&quot;url&quot;:&quot;store/website-launch-checklist/&quot;,&quot;tags&quot;:[&quot;templates&quot;,&quot;checklist&quot;,&quot;store&quot;],&quot;category&quot;:&quot;templates&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;Business Planning Workbook&quot;,&quot;description&quot;:&quot;A workbook to structure problem, market, model, and execution plans.&quot;,&quot;url&quot;:&quot;store/business-planning-workbook/&quot;,&quot;tags&quot;:[&quot;business&quot;,&quot;workbook&quot;,&quot;store&quot;],&quot;category&quot;:&quot;business&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;Product Research Template&quot;,&quot;description&quot;:&quot;A product research template for interviews, hypotheses, and competitor notes.&quot;,&quot;url&quot;:&quot;store/product-research-template/&quot;,&quot;tags&quot;:[&quot;reports&quot;,&quot;template&quot;,&quot;store&quot;],&quot;category&quot;:&quot;reports&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;Founder Dashboard&quot;,&quot;description&quot;:&quot;A founder dashboard template for metrics, tasks, and experiments.&quot;,&quot;url&quot;:&quot;store/founder-dashboard/&quot;,&quot;tags&quot;:[&quot;business&quot;,&quot;template&quot;,&quot;store&quot;],&quot;category&quot;:&quot;business&quot;},{&quot;type&quot;:&quot;store&quot;,&quot;title&quot;:&quot;Product Roadmap Template&quot;,&quot;description&quot;:&quot;A roadmap template organized by quarter and theme.&quot;,&quot;url&quot;:&quot;store/product-roadmap/&quot;,&quot;tags&quot;:[&quot;templates&quot;,&quot;template&quot;,&quot;store&quot;],&quot;category&quot;:&quot;templates&quot;},{&quot;type&quot;:&quot;labs&quot;,&quot;title&quot;:&quot;Review AI&quot;,&quot;description&quot;:&quot;An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.&quot;,&quot;url&quot;:&quot;labs/review-ai/&quot;},{&quot;type&quot;:&quot;labs&quot;,&quot;title&quot;:&quot;Newon QR&quot;,&quot;description&quot;:&quot;A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.&quot;,&quot;url&quot;:&quot;labs/newon-qr/&quot;},{&quot;type&quot;:&quot;labs&quot;,&quot;title&quot;:&quot;Newon Form&quot;,&quot;description&quot;:&quot;A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.&quot;,&quot;url&quot;:&quot;labs/newon-form/&quot;},{&quot;type&quot;:&quot;labs&quot;,&quot;title&quot;:&quot;AI Product Discovery&quot;,&quot;description&quot;:&quot;Research that finds recurring problems and tests whether AI is actually a better solution.&quot;,&quot;url&quot;:&quot;labs/ai-experiment/&quot;},{&quot;type&quot;:&quot;labs&quot;,&quot;title&quot;:&quot;Game Experiment&quot;,&quot;description&quot;:&quot;Research into how choice, memory, contradiction, and consequence reshape player experience.&quot;,&quot;url&quot;:&quot;labs/game-experiment/&quot;},{&quot;type&quot;:&quot;labs&quot;,&quot;title&quot;:&quot;Character Lab&quot;,&quot;description&quot;:&quot;Exploring character IP that can connect to Newon brand and products. No public characters yet — status Building.&quot;,&quot;url&quot;:&quot;labs/character-lab/&quot;},{&quot;type&quot;:&quot;education&quot;,&quot;title&quot;:&quot;FROM IDEA TO MVP&quot;,&quot;description&quot;:&quot;How to narrow an idea into a testable minimum product.&quot;,&quot;url&quot;:&quot;education/#idea-to-mvp&quot;},{&quot;type&quot;:&quot;education&quot;,&quot;title&quot;:&quot;PRODUCT THINKING&quot;,&quot;description&quot;:&quot;Seeing products through problems and user flows—not feature lists.&quot;,&quot;url&quot;:&quot;education/#product-thinking&quot;},{&quot;type&quot;:&quot;education&quot;,&quot;title&quot;:&quot;BUILDING WITH AI&quot;,&quot;description&quot;:&quot;Practical patterns for shipping real products with AI as a partner.&quot;,&quot;url&quot;:&quot;education/#building-with-ai&quot;},{&quot;type&quot;:&quot;education&quot;,&quot;title&quot;:&quot;APP LAUNCH BASICS&quot;,&quot;description&quot;:&quot;Launch fundamentals: store listing, metadata, and early feedback.&quot;,&quot;url&quot;:&quot;education/#app-launch-basics&quot;},{&quot;type&quot;:&quot;education&quot;,&quot;title&quot;:&quot;VALIDATING IDEAS&quot;,&quot;description&quot;:&quot;Ways to test a hypothesis quickly before building big.&quot;,&quot;url&quot;:&quot;education/#validating-ideas&quot;}]</script>
     </div>
   </div>
 </section>
@@ -839,7 +955,7 @@
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Resources</p>
-      <ul class="studio-footer__list"><li><a href="../resources/store/">Store</a></li><li><a href="../resources/insights/">Insights</a></li><li><a href="../resources/blog/">Blog</a></li><li><a href="../resources/labs/">Labs</a></li></ul>
+      <ul class="studio-footer__list"><li><a href="../resources/store/">Store</a></li><li><a href="../resources/insights/">Insights</a></li><li><a href="../resources/blog/">Blog</a></li><li><a href="../resources/media/">Media</a></li><li><a href="../resources/labs/">Labs</a></li><li><a href="../resources/newsletter/">Notes</a></li><li><a href="../resources/education/">Education</a></li></ul>
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Company</p>
@@ -863,6 +979,7 @@
       </div>
     </footer>
     <script src="/resources.js?v=20260826filt1" defer></script>
+    <script src="/media-hub.js?v=20260828mh1" defer></script>
     <script src="/labs-detail.js?v=20260826ld2" defer></script>
     <script src="/waitlist.js" defer></script>
     <script src="/site-chrome.js?v=20260826gnav5" defer></script>

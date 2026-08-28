@@ -53,7 +53,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css?v=20260825studio" />
-    <link rel="stylesheet" href="/gnav-mega.css?v=20260826gnav5" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20260828logo" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
     <link rel="stylesheet" href="/ox-month.css" />
     <link rel="stylesheet" href="/portfolio/portfolio.css" />
@@ -644,6 +644,152 @@
       @media (prefers-reduced-motion: reduce) {
         a.bz-card:hover .bz-card__more { transform: none; }
       }
+
+      /* ——— Inquiry explore: Business / Studio / Resources ——— */
+      .bz-inq-explore {
+        padding-top: clamp(3.5rem, 7vw, 5.5rem);
+        padding-bottom: clamp(3rem, 6vw, 4.5rem);
+        border-top: 1px solid #ececec;
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore {
+        border-top-color: var(--border);
+      }
+      .bz-inq-explore__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
+        border: 1px solid #111;
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__grid {
+        border-color: var(--border);
+      }
+      .bz-inq-explore__card {
+        display: flex;
+        flex-direction: column;
+        min-height: 15.5rem;
+        padding: 1.65rem 1.5rem 1.45rem;
+        border-bottom: 1px solid #ececec;
+        background: #fff;
+        color: inherit;
+        text-decoration: none;
+        transition: background 0.32s ease, color 0.32s ease, border-color 0.32s ease;
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card {
+        background: var(--surface);
+        border-bottom-color: var(--border);
+      }
+      .bz-inq-explore__card:last-child {
+        border-bottom: 0;
+      }
+      .bz-inq-explore__card:hover,
+      .bz-inq-explore__card:focus-visible {
+        background: #111;
+        color: #fff;
+        outline: none;
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:hover,
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:focus-visible {
+        background: #fff;
+        color: #111;
+      }
+      .bz-inq-explore__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.65rem;
+      }
+      .bz-inq-explore__n {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        color: #9a9a9a;
+      }
+      .bz-inq-explore__card:hover .bz-inq-explore__n,
+      .bz-inq-explore__card:focus-visible .bz-inq-explore__n {
+        color: rgba(255, 255, 255, 0.55);
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:hover .bz-inq-explore__n,
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:focus-visible .bz-inq-explore__n {
+        color: rgba(17, 17, 17, 0.55);
+      }
+      .bz-inq-explore__eyebrow {
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        color: #8a8a8a;
+      }
+      .bz-inq-explore__card:hover .bz-inq-explore__eyebrow,
+      .bz-inq-explore__card:focus-visible .bz-inq-explore__eyebrow {
+        color: rgba(255, 255, 255, 0.62);
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:hover .bz-inq-explore__eyebrow,
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:focus-visible .bz-inq-explore__eyebrow {
+        color: rgba(17, 17, 17, 0.62);
+      }
+      .bz-inq-explore__title {
+        margin: 0;
+        font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+      }
+      .bz-inq-explore__body {
+        margin: 0.85rem 0 0;
+        flex: 1;
+        max-width: 22rem;
+        font-size: 0.9375rem;
+        line-height: 1.65;
+        color: var(--text-muted);
+      }
+      .bz-inq-explore__card:hover .bz-inq-explore__body,
+      .bz-inq-explore__card:focus-visible .bz-inq-explore__body {
+        color: rgba(255, 255, 255, 0.72);
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:hover .bz-inq-explore__body,
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:focus-visible .bz-inq-explore__body {
+        color: rgba(17, 17, 17, 0.72);
+      }
+      .bz-inq-explore__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-top: 1.35rem;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+      }
+      .bz-inq-explore__arrow {
+        font-size: 1rem;
+        transition: transform 0.25s ease;
+      }
+      .bz-inq-explore__card:hover .bz-inq-explore__arrow,
+      .bz-inq-explore__card:focus-visible .bz-inq-explore__arrow {
+        transform: translate(3px, -3px);
+      }
+      @media (min-width: 860px) {
+        .bz-inq-explore__grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        .bz-inq-explore__card {
+          min-height: 17.5rem;
+          border-bottom: 0;
+          border-right: 1px solid #ececec;
+        }
+        html[data-newon-shell-theme="dark"] .bz-inq-explore__card {
+          border-right-color: var(--border);
+        }
+        .bz-inq-explore__card:last-child {
+          border-right: 0;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bz-inq-explore__card:hover .bz-inq-explore__arrow,
+        .bz-inq-explore__card:focus-visible .bz-inq-explore__arrow {
+          transform: none;
+        }
+      }
+
       @media (max-width: 799px) {
         .bz-card,
         .bz-eco-card,
@@ -1381,8 +1527,8 @@
     <header class="gnav site-header gnav--five" data-gnav>
       <div class="gnav__bar">
         <div class="gnav__inner">
-          <a class="gnav__brand" href="../../">
-            <img class="gnav__logo" src="/logo.png" alt="Newon" width="40" height="40" decoding="async" />
+          <a class="gnav__brand" href="../../" aria-label="Newon">
+            <img class="gnav__logo" src="/logo.png" alt="" width="40" height="40" decoding="async" />
             <span class="gnav__wordmark">Newon</span>
           </a>
           <nav class="gnav__nav" aria-label="Main navigation">
@@ -1553,11 +1699,32 @@
         <span class="gnav-mega__row-desc">Build logs and stories</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../../resources/labs/" role="menuitem">
+    </a><a class="gnav-mega__row" href="../../resources/media/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Media</span>
+        <span class="gnav-mega__row-desc">Video · product stories · visual</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../resources/labs/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Labs</span>
         <span class="gnav-mega__row-desc">Experiments · ventures · ideas</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../resources/newsletter/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">06</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Newsletter</span>
+        <span class="gnav-mega__row-desc">Short build log · updates</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../resources/education/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">07</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Education</span>
+        <span class="gnav-mega__row-desc">Guides · courses · workshops</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a>
@@ -1644,7 +1811,7 @@
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../../resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="../../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../../resources/labs/">Labs</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../../resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="../../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../../resources/media/">Media</a><a class="gnav-mobile__sublink" href="../../resources/labs/">Labs</a><a class="gnav-mobile__sublink" href="../../resources/newsletter/">Newsletter</a><a class="gnav-mobile__sublink" href="../../resources/education/">Education</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -1691,7 +1858,7 @@
                 </div>
               </div>
               <nav class="bz-hero-index bz-hero-enter" style="--d: 5" aria-label="コラボレーションする方法">
-                <a class="bz-hero-index__row" href="../partnership/">
+                <a class="bz-hero-index__row" href="../collaboration/partnership/">
                   <span class="bz-hero-index__n">01</span>
                   <span class="bz-hero-index__body">
                     <span class="bz-hero-index__en">パートナーシップ</span>
@@ -1699,7 +1866,7 @@
                   </span>
                   <span class="bz-hero-index__go" aria-hidden="true">↗</span>
                 </a>
-                <a class="bz-hero-index__row" href="../service/">
+                <a class="bz-hero-index__row" href="../collaboration/product-service/">
                   <span class="bz-hero-index__n">02</span>
                   <span class="bz-hero-index__body">
                     <span class="bz-hero-index__en">サービス</span>
@@ -1707,7 +1874,7 @@
                   </span>
                   <span class="bz-hero-index__go" aria-hidden="true">↗</span>
                 </a>
-                <a class="bz-hero-index__row" href="../promotion/">
+                <a class="bz-hero-index__row" href="../collaboration/promotion/">
                   <span class="bz-hero-index__n">03</span>
                   <span class="bz-hero-index__body">
                     <span class="bz-hero-index__en">プロモーション</span>
@@ -1715,7 +1882,7 @@
                   </span>
                   <span class="bz-hero-index__go" aria-hidden="true">↗</span>
                 </a>
-                <a class="bz-hero-index__row" href="../development/">
+                <a class="bz-hero-index__row" href="../collaboration/development/">
                   <span class="bz-hero-index__n">04</span>
                   <span class="bz-hero-index__body">
                     <span class="bz-hero-index__en">発達</span>
@@ -1731,158 +1898,47 @@
           <div class="bz-hero__bar-inner">
             <span class="bz-hero__bar-label">NEWON ビジネス</span>
             <span class="bz-hero__bar-meta">製品・技術・パートナーシップ</span>
-            <a class="bz-hero__bar-explore" href="#services">スクロールして詳細を確認してください ↓</a>
+            <a class="bz-hero__bar-explore" href="#explore">スクロールして詳細を確認してください ↓</a>
           </div>
         </div>
       </section>
 
-      <section id="services" class="bz-section bz-services bz-pillars-sec bz-reveal" aria-labelledby="bz-services-title">
+      <section id="explore" class="bz-section bz-inq-explore bz-reveal" aria-labelledby="bz-inq-explore-title">
     <div class="bz-inner">
       <header class="bz-sec-head">
         <div class="bz-sec-head__copy">
-          <p class="bz-label">SERVICES</p>
-          <h2 class="bz-title" id="bz-services-title">Five ways we work with you</h2>
+          <p class="bz-label">EXPLORE</p>
+          <h2 class="bz-title" id="bz-inq-explore-title">Newon を探索する</h2>
         </div>
-        <p class="bz-lead bz-sec-head__lead">Build · Automation · Creative · Research · Solutions</p>
+        <p class="bz-lead bz-sec-head__lead">Browse services, how we work, and resources before you inquire.</p>
       </header>
-      <div class="bz-pillars"><article class="bz-pillar" id="build">
-  <header class="bz-pillar__head">
-    <span class="bz-pillar__n" aria-hidden="true">01</span>
-    <div class="bz-pillar__intro">
-      <h3 class="bz-pillar__title"><a class="bz-pillar__title-link" href="../build/">建てる</a></h3>
-      <p class="bz-pillar__lead">From idea to a real product.</p>
+      <div class="bz-inq-explore__grid"><a class="bz-inq-explore__card" href="../" data-analytics="business_inquiry_explore_business">
+    <div class="bz-inq-explore__top">
+      <span class="bz-inq-explore__n" aria-hidden="true">01</span>
+      <span class="bz-inq-explore__eyebrow">BUSINESS</span>
     </div>
-    <a class="bz-pillar__more" href="../build/">Learn more →</a>
-  </header>
-  <div class="bz-pillar__list" role="list"><a class="bz-pillar__item" href="../mvp/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizMvp">
-    <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">MVP Development</span>
-      <span class="bz-pillar__item-desc">From idea to a real product, fast</span>
-    </div>
-    <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
+    <h3 class="bz-inq-explore__title">Explore Business</h3>
+    <p class="bz-inq-explore__body">See how we build products, automate work, research markets, and collaborate.</p>
+    <span class="bz-inq-explore__cta">View Business →<span class="bz-inq-explore__arrow" aria-hidden="true">↗</span></span>
   </a>
-<a class="bz-pillar__item" href="../web/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizWeb">
-    <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Web Development</span>
-      <span class="bz-pillar__item-desc">Websites for brands and services</span>
+<a class="bz-inq-explore__card" href="../../studio/" data-analytics="business_inquiry_explore_studio">
+    <div class="bz-inq-explore__top">
+      <span class="bz-inq-explore__n" aria-hidden="true">02</span>
+      <span class="bz-inq-explore__eyebrow">STUDIO</span>
     </div>
-    <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
+    <h3 class="bz-inq-explore__title">Explore Studio</h3>
+    <p class="bz-inq-explore__body">Brand, design, content, and IP production services.</p>
+    <span class="bz-inq-explore__cta">View Studio →<span class="bz-inq-explore__arrow" aria-hidden="true">↗</span></span>
   </a>
-<a class="bz-pillar__item" href="../landing/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizLanding">
-    <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Landing Page</span>
-      <span class="bz-pillar__item-desc">Conversion-focused landing pages</span>
+<a class="bz-inq-explore__card" href="../../resources/" data-analytics="business_inquiry_explore_resources">
+    <div class="bz-inq-explore__top">
+      <span class="bz-inq-explore__n" aria-hidden="true">03</span>
+      <span class="bz-inq-explore__eyebrow">RESOURCES</span>
     </div>
-    <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
-  </a>
-<a class="bz-pillar__item" href="../app/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizApp">
-    <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">App Development</span>
-      <span class="bz-pillar__item-desc">iOS · Android product development</span>
-    </div>
-    <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
+    <h3 class="bz-inq-explore__title">Explore Resources</h3>
+    <p class="bz-inq-explore__body">Browse the store, insights, tools, media, and more.</p>
+    <span class="bz-inq-explore__cta">View Resources →<span class="bz-inq-explore__arrow" aria-hidden="true">↗</span></span>
   </a></div>
-</article>
-<article class="bz-pillar" id="automation">
-  <header class="bz-pillar__head">
-    <span class="bz-pillar__n" aria-hidden="true">02</span>
-    <div class="bz-pillar__intro">
-      <h3 class="bz-pillar__title"><a class="bz-pillar__title-link" href="../automation/">AUTOMATE</a></h3>
-      <p class="bz-pillar__lead">Turn repeat work into systems.</p>
-    </div>
-    <a class="bz-pillar__more" href="../automation/">Learn more →</a>
-  </header>
-  <div class="bz-pillar__list" role="list"><a class="bz-pillar__item" href="../ai-automation/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizAi">
-    <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">AI Automation</span>
-      <span class="bz-pillar__item-desc">AI features and workflow automation</span>
-    </div>
-    <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
-  </a>
-<a class="bz-pillar__item" href="../automation/workflow/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizWorkflow">
-    <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Workflow Automation</span>
-      <span class="bz-pillar__item-desc">Turn repeat work into systems</span>
-    </div>
-    <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
-  </a>
-<a class="bz-pillar__item" href="../internal-tools/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizInternal">
-    <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Internal Tools</span>
-      <span class="bz-pillar__item-desc">Internal tools and dashboards</span>
-    </div>
-    <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
-  </a></div>
-</article>
-<article class="bz-pillar" id="research">
-  <header class="bz-pillar__head">
-    <span class="bz-pillar__n" aria-hidden="true">03</span>
-    <div class="bz-pillar__intro">
-      <h3 class="bz-pillar__title"><a class="bz-pillar__title-link" href="../research/">RESEARCH</a></h3>
-      <p class="bz-pillar__lead">Evidence over guesswork.</p>
-    </div>
-    <a class="bz-pillar__more" href="../research/">Learn more →</a>
-  </header>
-  <div class="bz-pillar__list" role="list"><a class="bz-pillar__item" href="../market-research/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizMarket">
-    <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Market Research</span>
-      <span class="bz-pillar__item-desc">Market and opportunity analysis</span>
-    </div>
-    <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
-  </a>
-<a class="bz-pillar__item" href="../competitor-analysis/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizCompetitor">
-    <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Competitor Analysis</span>
-      <span class="bz-pillar__item-desc">Competitive positioning</span>
-    </div>
-    <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
-  </a>
-<a class="bz-pillar__item" href="../consumer-research/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizConsumer">
-    <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Consumer Insights</span>
-      <span class="bz-pillar__item-desc">Users and demand signals</span>
-    </div>
-    <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
-  </a>
-<a class="bz-pillar__item" href="../ux-audit/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizUxAudit">
-    <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">UX Audit</span>
-      <span class="bz-pillar__item-desc">Diagnose product experience</span>
-    </div>
-    <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
-  </a></div>
-</article>
-<article class="bz-pillar" id="solutions">
-  <header class="bz-pillar__head">
-    <span class="bz-pillar__n" aria-hidden="true">04</span>
-    <div class="bz-pillar__intro">
-      <h3 class="bz-pillar__title"><a class="bz-pillar__title-link" href="../solutions/">SOLUTIONS</a></h3>
-      <p class="bz-pillar__lead">Adapt what we already built.</p>
-    </div>
-    <a class="bz-pillar__more" href="../solutions/">Learn more →</a>
-  </header>
-  <div class="bz-pillar__list" role="list"><a class="bz-pillar__item" href="../white-label/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizWhitelabel">
-    <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">White-label</span>
-      <span class="bz-pillar__item-desc">Custom products on proven tech</span>
-    </div>
-    <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
-  </a>
-<a class="bz-pillar__item" href="../custom-product/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizCustom">
-    <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Custom Solutions</span>
-      <span class="bz-pillar__item-desc">Tailored enterprise solutions</span>
-    </div>
-    <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
-  </a>
-<a class="bz-pillar__item" href="../product-launch/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizLaunchPkg">
-    <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Product Launch Package</span>
-      <span class="bz-pillar__item-desc">What you need to launch</span>
-    </div>
-    <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
-  </a></div>
-</article></div>
     </div>
   </section>
 
@@ -1892,22 +1948,22 @@
           <h2 class="bz-title" id="bz-work-title">Newon を操作する</h2>
           <p class="bz-lead">私たちは Newon の製品とテクノロジーに関してさまざまな方法で協力しています。</p>
           <div class="bz-grid bz-grid--4">
-            <a class="bz-card" href="../partnership/">
+            <a class="bz-card" href="../collaboration/partnership/">
               <h3>パートナーシップ</h3>
               <p>ブランドや企業とともに新たなサービスやビジネスチャンスを創造します。</p>
               <span class="bz-card__more">さらに詳しく→</span>
             </a>
-            <a class="bz-card" href="../service/">
+            <a class="bz-card" href="../collaboration/product-service/">
               <h3>アプリ連携</h3>
               <p>私たちは Newon アプリを使用してコンテンツ、サービス、共同プロジェクトで協力しています。</p>
               <span class="bz-card__more">さらに詳しく→</span>
             </a>
-            <a class="bz-card" href="../promotion/">
+            <a class="bz-card" href="../collaboration/promotion/">
               <h3>広告</h3>
               <p>当社は、Newon 製品とユーザー エクスペリエンスに合わせたブランドとサービスのプロモーションを提供します。</p>
               <span class="bz-card__more">さらに詳しく→</span>
             </a>
-            <a class="bz-card" href="../development/">
+            <a class="bz-card" href="../collaboration/development/">
               <h3>発達</h3>
               <p>私たちは、アイデアから設計、開発、発売まで、デジタル製品を一緒に構築します。</p>
               <span class="bz-card__more">さらに詳しく→</span>
@@ -2407,6 +2463,10 @@
                 <option value="Studio / Digital Stickers">Studio / Digital Stickers</option>
                 <option value="Studio / Experimental IP">Studio / Experimental IP</option>
                 <option value="Maintenance">Maintenance</option>
+                <option value="partnership">パートナーシップ</option>
+                <option value="product-service-collaboration">アプリ連携</option>
+                <option value="advertising-promotion">広告</option>
+                <option value="development-collaboration">発達</option>
                 <option value="Partnership">パートナーシップ</option>
                 <option value="Other">Other</option>
               </select>
@@ -2489,7 +2549,7 @@
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Resources</p>
-      <ul class="studio-footer__list"><li><a href="../../resources/store/">Store</a></li><li><a href="../../resources/insights/">Insights</a></li><li><a href="../../resources/blog/">Blog</a></li><li><a href="../../resources/labs/">Labs</a></li></ul>
+      <ul class="studio-footer__list"><li><a href="../../resources/store/">Store</a></li><li><a href="../../resources/insights/">Insights</a></li><li><a href="../../resources/blog/">Blog</a></li><li><a href="../../resources/media/">Media</a></li><li><a href="../../resources/labs/">Labs</a></li><li><a href="../../resources/newsletter/">Notes</a></li><li><a href="../../resources/education/">Education</a></li></ul>
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Company</p>
@@ -2618,7 +2678,18 @@
           "Digital Stickers": "Studio / Digital Stickers",
           "digital-stickers": "Studio / Digital Stickers",
           "Experimental IP": "Studio / Experimental IP",
-          "experimental-ip": "Studio / Experimental IP"
+          "experimental-ip": "Studio / Experimental IP",
+          partnership: "partnership",
+          Partnership: "partnership",
+          "product-service-collaboration": "product-service-collaboration",
+          service: "product-service-collaboration",
+          "App Collaboration": "product-service-collaboration",
+          "advertising-promotion": "advertising-promotion",
+          promotion: "advertising-promotion",
+          Advertising: "advertising-promotion",
+          "development-collaboration": "development-collaboration",
+          development: "development-collaboration",
+          Development: "development-collaboration"
         };
         var qType = params.get("type") || params.get("service");
         var qCategory = (params.get("category") || "").trim();

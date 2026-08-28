@@ -589,12 +589,72 @@ ${labNote(exp, lang)}
 ${detailCtas(lang)}`;
 }
 
+function bodyCharacterLab(exp, lang) {
+  const u = ui(lang);
+  const ko = lang === "ko";
+  const question = t(exp, lang, "questionKo", "questionEn");
+  const hypothesis = t(exp, lang, "hypothesisKo", "hypothesisEn");
+  const build = t(exp, lang, "buildKo", "buildEn");
+  const findings = t(exp, lang, "findingsKo", "findingsEn");
+  const next = t(exp, lang, "nextKo", "nextEn");
+  return `<section class="ld-section" id="the-question" data-ld-reveal>
+  <p class="ld-k">${escapeHtml(u.theQuestion)}</p>
+  <h2 class="ld-display ld-display--sm">${br(question)}</h2>
+</section>
+<section class="ld-section" id="why" data-ld-reveal>
+  <p class="ld-k">${escapeHtml(u.why)}</p>
+  <p class="ld-body">${escapeHtml(hypothesis)}</p>
+</section>
+<section class="ld-section" id="prototype" data-ld-reveal>
+  <p class="ld-k">${escapeHtml(u.demo)}</p>
+  <p class="ld-body">${escapeHtml(build)}</p>
+  <p class="ld-hint">${ko ? "공개 가능한 캐릭터 프로토타입은 아직 없습니다." : "No public character prototype yet."}</p>
+</section>
+<section class="ld-section" id="signals" data-ld-reveal>
+  <p class="ld-k">${escapeHtml(u.findings)}</p>
+  <p class="ld-body">${escapeHtml(findings)}</p>
+</section>
+<section class="ld-section" id="next-decision" data-ld-reveal>
+  <p class="ld-k">${escapeHtml(u.nextVerify)}</p>
+  <p class="ld-body">${escapeHtml(next)}</p>
+</section>
+${labNote(exp, lang)}
+${detailCtas(lang)}`;
+}
+
+function bodyGeneric(exp, lang) {
+  const u = ui(lang);
+  const question = t(exp, lang, "questionKo", "questionEn");
+  const hypothesis = t(exp, lang, "hypothesisKo", "hypothesisEn");
+  const findings = t(exp, lang, "findingsKo", "findingsEn");
+  const next = t(exp, lang, "nextKo", "nextEn");
+  return `<section class="ld-section" id="the-question" data-ld-reveal>
+  <p class="ld-k">${escapeHtml(u.theQuestion)}</p>
+  <h2 class="ld-display ld-display--sm">${br(question)}</h2>
+</section>
+<section class="ld-section" id="why" data-ld-reveal>
+  <p class="ld-k">${escapeHtml(u.why)}</p>
+  <p class="ld-body">${escapeHtml(hypothesis)}</p>
+</section>
+<section class="ld-section" id="signals" data-ld-reveal>
+  <p class="ld-k">${escapeHtml(u.findings)}</p>
+  <p class="ld-body">${escapeHtml(findings)}</p>
+</section>
+<section class="ld-section" id="next-decision" data-ld-reveal>
+  <p class="ld-k">${escapeHtml(u.nextVerify)}</p>
+  <p class="ld-body">${escapeHtml(next)}</p>
+</section>
+${labNote(exp, lang)}
+${detailCtas(lang)}`;
+}
+
 const BODIES = {
   "review-ai": bodyReviewAi,
   "newon-qr": bodyQr,
   "newon-form": bodyForm,
   "ai-experiment": bodyAi,
   "game-experiment": bodyGame,
+  "character-lab": bodyCharacterLab,
 };
 
 /**
@@ -606,7 +666,7 @@ const BODIES = {
 export function labDetailBody(exp, copies, lang, helpers) {
   const copy = copies.labs;
   const title = t(exp, lang, "titleKo", "titleEn");
-  const bodyFn = BODIES[exp.slug] || bodyReviewAi;
+  const bodyFn = BODIES[exp.slug] || bodyGeneric;
   const { breadcrumb, exploreGrid, resourceSwitcher } = helpers;
 
   return `${breadcrumb(copy, title, { resourcesHref: "../../", mid: copy.navLabel || "LABS", midHref: "../" })}

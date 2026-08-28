@@ -15,7 +15,8 @@ import {
   BUSINESS_APP_EXTRAS,
   BUSINESS_ECOSYSTEM,
 } from "./portfolio-data.mjs";
-import { generateBusinessDetails, BUSINESS_DETAIL_PAGES } from "./gen-business-details.mjs";
+import { mergeBusinessPagesLocales, writeInquirySuccessPages, BUSINESS_DETAIL_PAGES } from "./gen-business-details.mjs";
+import { renderBusinessCollabDetails } from "./render-business-collab-details.mjs";
 import { renderBusinessServices } from "./render-business-services.mjs";
 import { BUSINESS_SERVICE_PAGES } from "./business-service-catalog.mjs";
 import { publishedArticles } from "./news-data.mjs";
@@ -477,7 +478,9 @@ function writeRootBusinessRedirect() {
 }
 
 writeRootBusinessRedirect();
-generateBusinessDetails();
+mergeBusinessPagesLocales();
+writeInquirySuccessPages();
+renderBusinessCollabDetails();
 renderBusinessServices();
 
 /** robots.txt at site root (allow indexed pages; hide QR business-card slug). */
@@ -572,16 +575,17 @@ function writeSitemap() {
   }
 
   for (const page of BUSINESS_DETAIL_PAGES) {
+    const route = `business/collaboration/${page.pathSlug || page.slug}`;
     const alts = [
       ...LANGS.map(({ dir: d, hreflang: h }) => ({
         hreflang: h,
-        href: `${SITE_ORIGIN}/${d}/business/${page.slug}/`,
+        href: `${SITE_ORIGIN}/${d}/${route}/`,
       })),
-      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/business/${page.slug}/` },
+      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${route}/` },
     ];
     for (const { dir: d } of LANGS) {
       urls.push({
-        loc: `${SITE_ORIGIN}/${d}/business/${page.slug}/`,
+        loc: `${SITE_ORIGIN}/${d}/${route}/`,
         priority: "0.6",
         changefreq: "monthly",
         alternates: alts,
@@ -683,6 +687,7 @@ function writeSitemap() {
   const resourcePages = [
     "resources",
     "resources/store",
+    "resources/insights",
     "resources/blog",
     "resources/media",
     "resources/labs",

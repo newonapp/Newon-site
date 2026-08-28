@@ -39,7 +39,10 @@
     <link rel="stylesheet" href="/gnav-mega.css?v=20260826gnav5" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
     <link rel="stylesheet" href="/site-premium.css?v=20260826bw1" />
-    <link rel="stylesheet" href="/resources.css?v=20260826nl0" />
+    <link rel="stylesheet" href="/resources.css?v=20260828sdfocus" />
+    <link rel="stylesheet" href="/store-detail.css?v=20260828sd2" />
+    <link rel="stylesheet" href="/blog-hub.css?v=20260828nb2" />
+    <link rel="stylesheet" href="/media-hub.css?v=20260828mh1" />
     <link rel="stylesheet" href="/labs-detail.css?v=20260826ld9" />
     <script src="/theme-shell.js"></script>
     <script src="/analytics.js?v=20260825studio" defer></script>
@@ -50,8 +53,8 @@
     <header class="gnav site-header gnav--five" data-gnav>
       <div class="gnav__bar">
         <div class="gnav__inner">
-          <a class="gnav__brand" href="../../../">
-            <img class="gnav__logo" src="/logo.png" alt="Newon" width="40" height="40" decoding="async" />
+          <a class="gnav__brand" href="../../../" aria-label="Newon">
+            <img class="gnav__logo" src="/logo.png" alt="" width="40" height="40" decoding="async" />
             <span class="gnav__wordmark">Newon</span>
           </a>
           <nav class="gnav__nav" aria-label="Main navigation">
@@ -222,11 +225,32 @@
         <span class="gnav-mega__row-desc">Build logs and stories</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../../../resources/labs/" role="menuitem">
+    </a><a class="gnav-mega__row" href="../../../resources/media/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Media</span>
+        <span class="gnav-mega__row-desc">Video · product stories · visual</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../../resources/labs/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Labs</span>
         <span class="gnav-mega__row-desc">Experiments · ventures · ideas</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../../resources/newsletter/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">06</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Newon Notes</span>
+        <span class="gnav-mega__row-desc">Short build log · updates</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../../resources/education/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">07</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Education</span>
+        <span class="gnav-mega__row-desc">Guides · courses · workshops</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a>
@@ -313,7 +337,7 @@
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../../../resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="../../../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../../../resources/labs/">Labs</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../../../resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="../../../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../../../resources/media/">Media</a><a class="gnav-mobile__sublink" href="../../../resources/labs/">Labs</a><a class="gnav-mobile__sublink" href="../../../resources/newsletter/">Newon Notes</a><a class="gnav-mobile__sublink" href="../../../resources/education/">Education</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -384,7 +408,7 @@
     </div>
     <nav class="ld-pipe" aria-label="LABS → PRODUCT">
     <p class="ld-k">LABS → PRODUCT</p>
-    <ol class="ld-pipe__list"><li class="ld-pipe__step is-current"><span class="ld-pipe__name">RESEARCH</span><i aria-hidden="true">→</i></li><li class="ld-pipe__step "><span class="ld-pipe__name">PROTOTYPE</span><i aria-hidden="true">→</i></li><li class="ld-pipe__step "><span class="ld-pipe__name">TESTING</span><i aria-hidden="true">→</i></li><li class="ld-pipe__step "><span class="ld-pipe__name">VALIDATED</span><i aria-hidden="true">→</i></li><li class="ld-pipe__step "><span class="ld-pipe__name">PRODUCT</span></li></ol>
+    <ol class="ld-pipe__list"><li class="ld-pipe__step is-done"><span class="ld-pipe__name">IDEA</span><i aria-hidden="true">→</i></li><li class="ld-pipe__step is-current"><span class="ld-pipe__name">RESEARCH</span><i aria-hidden="true">→</i></li><li class="ld-pipe__step "><span class="ld-pipe__name">BUILDING</span><i aria-hidden="true">→</i></li><li class="ld-pipe__step "><span class="ld-pipe__name">TESTING</span><i aria-hidden="true">→</i></li><li class="ld-pipe__step "><span class="ld-pipe__name">VALIDATED</span><i aria-hidden="true">→</i></li><li class="ld-pipe__step "><span class="ld-pipe__name">PRODUCT</span></li></ol>
     
   </nav>
   </header>
@@ -551,7 +575,7 @@
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Resources</p>
-      <ul class="studio-footer__list"><li><a href="../../../resources/store/">Store</a></li><li><a href="../../../resources/insights/">Insights</a></li><li><a href="../../../resources/blog/">Blog</a></li><li><a href="../../../resources/labs/">Labs</a></li></ul>
+      <ul class="studio-footer__list"><li><a href="../../../resources/store/">Store</a></li><li><a href="../../../resources/insights/">Insights</a></li><li><a href="../../../resources/blog/">Blog</a></li><li><a href="../../../resources/media/">Media</a></li><li><a href="../../../resources/labs/">Labs</a></li><li><a href="../../../resources/newsletter/">Notes</a></li><li><a href="../../../resources/education/">Education</a></li></ul>
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Company</p>
@@ -575,6 +599,7 @@
       </div>
     </footer>
     <script src="/resources.js?v=20260826filt1" defer></script>
+    <script src="/media-hub.js?v=20260828mh1" defer></script>
     <script src="/labs-detail.js?v=20260826ld2" defer></script>
     <script src="/waitlist.js" defer></script>
     <script src="/site-chrome.js?v=20260826gnav5" defer></script>

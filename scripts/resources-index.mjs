@@ -6,11 +6,12 @@ import { RESOURCE_PAGES } from "./resources-catalog.mjs";
 import {
   getFeaturedStoreProducts,
   getLabsExperiments,
-  getPublishedBlogPosts,
-  getPublishedMediaItems,
-  getStoreProducts,
   buildSearchIndex,
 } from "./resources-data.mjs";
+import {
+  getLatestResources,
+  getPopularResources,
+} from "./resources-registry.mjs";
 
 function pad2(n) {
   return String(n).padStart(2, "0");
@@ -151,7 +152,8 @@ export function buildResourcesIndexBody(copies, lang, ctx) {
     .join("");
 
   const featured = collectFeatured(lang, tField, escapeHtml, copy);
-  const latest = collectLatest(lang, tField, escapeHtml, copy);
+  const latest = collectLatest(lang, escapeHtml, copy);
+  const popular = collectPopular(lang, escapeHtml, copy);
 
   /* Original black-grid explore cards — Store, Publishing, Insights, Tools, Blog, Media, Notes, Education */
   const surfaces = indexSurfaces(copy);
@@ -326,6 +328,36 @@ ${
     : ""
 }
 
+${
+  popular.length
+    ? `<section class="rx-block rx-popular" id="rx-popular" data-rs-reveal aria-labelledby="rx-popular-title">
+  <div class="rx-shell">
+    <header class="rx-head">
+      <div>
+        <p class="rx-kicker">${escapeHtml(copy.popularEyebrow || "POPULAR")}</p>
+        <h2 class="rx-h2" id="rx-popular-title">${brHeadline(copy.popularTitle || (ko ? "많이 찾는 리소스." : "Often picked resources."))}</h2>
+      </div>
+    </header>
+    <ol class="rx-list" data-rx-popular>${popular.join("")}</ol>
+  </div>
+</section>`
+    : ""
+}
+
+<section class="rx-cta-band" data-rs-reveal aria-labelledby="rx-cta-band-title">
+  <div class="rx-shell rx-cta-band__inner">
+    <div>
+      <p class="rx-kicker">${escapeHtml(copy.ctaBandEyebrow || "NEWON")}</p>
+      <h2 class="rx-h2" id="rx-cta-band-title">${brHeadline(copy.ctaBandTitle || (ko ? "제품을 만들 준비가 되셨나요?" : "Ready to build a product?"))}</h2>
+      ${copy.ctaBandLead ? `<p class="rx-sub">${escapeHtml(copy.ctaBandLead)}</p>` : ""}
+    </div>
+    <div class="rx-cta-band__actions">
+      <a class="rx-btn rx-btn--fill" href="../../business/inquiry/">${escapeHtml(copy.ctaBandPrimary || (ko ? "프로젝트 문의 →" : "Start a project →"))}</a>
+      <a class="rx-btn rx-btn--line" href="../../products/">${escapeHtml(copy.ctaBandSecondary || (ko ? "Newon 제품 보기 ↗" : "Explore products ↗"))}</a>
+    </div>
+  </div>
+</section>
+
 <section class="rx-why" data-rs-reveal aria-labelledby="rx-why-title">
   <div class="rx-shell rx-why__layout">
     <div class="rx-why__left">
@@ -411,7 +443,7 @@ function collectFeatured(lang, tField, escapeHtml, copy) {
       href: `labs/${labs[0].slug}/`,
       tags: labTags(labs[0]),
       viz: "bars",
-      badge: ko ? "LIVE" : "LIVE",
+      badge: "LIVE",
     });
   }
   if (stores[0]) {
@@ -488,82 +520,27 @@ function featCard({ escapeHtml, copy, type, date, title, desc, href, tags, large
   </a>`;
 }
 
-function collectLatest(lang, tField, escapeHtml, copy) {
-  const rows = [];
+function resourceListItem(item, escapeHtml, index) {
+  const date = displayDate(item.updatedAt || item.date);
+  const topics = topicHay(...(item.tags || []), item.type, item.category, item.slug);
+  return `<li data-rx-row data-rx-topics="${escapeHtml(topics)}">
+    <a class="rx-row" href="${escapeHtml(item.url)}" aria-label="${escapeHtml(`${item.type}: ${item.title}`)}">
+      <span class="rx-row__n" aria-hidden="true">${pad2(index + 1)}</span>
+      <span class="rx-row__type">${escapeHtml(String(item.type || "").toUpperCase())}</span>
+      <span class="rx-row__main">
+        <span class="rx-row__title">${escapeHtml(item.title)}</span>
+        ${item.description ? `<span class="rx-row__desc">${escapeHtml(item.description)}</span>` : ""}
+      </span>
+      <span class="rx-row__date">${date ? escapeHtml(date) : ""}</span>
+      <span class="rx-row__go" aria-hidden="true">↗</span>
+    </a>
+  </li>`;
+}
 
-  for (const e of getLabsExperiments()) {
-    const sk = sortKey(e.updatedAt);
-    if (!sk) continue;
-    const title = tField(e, lang, "titleKo", "titleEn");
-    const desc = tField(e, lang, "descKo", "descEn");
-    rows.push({
-      sort: sk,
-      type: "LABS",
-      date: displayDate(e.updatedAt),
-      title,
-      desc,
-      href: `labs/${e.slug}/`,
-      topics: topicHay(...labTags(e), e.slug, e.category, "experiment", "labs"),
-    });
-  }
-  for (const p of getStoreProducts()) {
-    const sk = sortKey(p.updated);
-    if (!sk) continue;
-    const title = tField(p, lang, "titleKo", "titleEn");
-    const desc = tField(p, lang, "descKo", "descEn");
-    rows.push({
-      sort: sk,
-      type: "STORE",
-      date: displayDate(p.updated),
-      title,
-      desc,
-      href: `store/${p.slug}/`,
-      topics: topicHay(...storeTags(p), p.slug, "store", "product", "startup"),
-    });
-  }
-  for (const p of getPublishedBlogPosts()) {
-    const raw = p.publishedAt || p.updatedAt || p.date;
-    const sk = sortKey(raw);
-    if (!sk) continue;
-    rows.push({
-      sort: sk,
-      type: "BLOG",
-      date: displayDate(raw),
-      title: tField(p, lang, "titleKo", "titleEn"),
-      desc: tField(p, lang, "descKo", "descEn"),
-      href: `blog/${p.slug}/`,
-      topics: topicHay("blog", "product", "writing"),
-    });
-  }
-  for (const m of getPublishedMediaItems()) {
-    const raw = m.publishedAt || m.updatedAt || m.date;
-    const sk = sortKey(raw);
-    if (!sk) continue;
-    rows.push({
-      sort: sk,
-      type: "MEDIA",
-      date: displayDate(raw),
-      title: tField(m, lang, "titleKo", "titleEn"),
-      desc: tField(m, lang, "descKo", "descEn"),
-      href: `media/${m.slug}/`,
-      topics: topicHay("media", "product"),
-    });
-  }
+function collectLatest(lang, escapeHtml) {
+  return getLatestResources(lang, 8).map((item, i) => resourceListItem(item, escapeHtml, i));
+}
 
-  rows.sort((a, b) => b.sort.localeCompare(a.sort));
-
-  return rows.slice(0, 8).map((r, i) => {
-    return `<li data-rx-row data-rx-topics="${escapeHtml(r.topics || "")}">
-      <a class="rx-row" href="${escapeHtml(r.href)}">
-        <span class="rx-row__n" aria-hidden="true">${pad2(i + 1)}</span>
-        <span class="rx-row__type">${escapeHtml(r.type)}</span>
-        <span class="rx-row__main">
-          <span class="rx-row__title">${escapeHtml(r.title)}</span>
-          ${r.desc ? `<span class="rx-row__desc">${escapeHtml(r.desc)}</span>` : ""}
-        </span>
-        <span class="rx-row__date">${r.date ? escapeHtml(r.date) : ""}</span>
-        <span class="rx-row__go" aria-hidden="true">↗</span>
-      </a>
-    </li>`;
-  });
+function collectPopular(lang, escapeHtml) {
+  return getPopularResources(lang, 6).map((item, i) => resourceListItem(item, escapeHtml, i));
 }

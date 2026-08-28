@@ -634,6 +634,152 @@
       @media (prefers-reduced-motion: reduce) {
         a.bz-card:hover .bz-card__more { transform: none; }
       }
+
+      /* ——— Inquiry explore: Business / Studio / Resources ——— */
+      .bz-inq-explore {
+        padding-top: clamp(3.5rem, 7vw, 5.5rem);
+        padding-bottom: clamp(3rem, 6vw, 4.5rem);
+        border-top: 1px solid #ececec;
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore {
+        border-top-color: var(--border);
+      }
+      .bz-inq-explore__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
+        border: 1px solid #111;
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__grid {
+        border-color: var(--border);
+      }
+      .bz-inq-explore__card {
+        display: flex;
+        flex-direction: column;
+        min-height: 15.5rem;
+        padding: 1.65rem 1.5rem 1.45rem;
+        border-bottom: 1px solid #ececec;
+        background: #fff;
+        color: inherit;
+        text-decoration: none;
+        transition: background 0.32s ease, color 0.32s ease, border-color 0.32s ease;
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card {
+        background: var(--surface);
+        border-bottom-color: var(--border);
+      }
+      .bz-inq-explore__card:last-child {
+        border-bottom: 0;
+      }
+      .bz-inq-explore__card:hover,
+      .bz-inq-explore__card:focus-visible {
+        background: #111;
+        color: #fff;
+        outline: none;
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:hover,
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:focus-visible {
+        background: #fff;
+        color: #111;
+      }
+      .bz-inq-explore__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.65rem;
+      }
+      .bz-inq-explore__n {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        color: #9a9a9a;
+      }
+      .bz-inq-explore__card:hover .bz-inq-explore__n,
+      .bz-inq-explore__card:focus-visible .bz-inq-explore__n {
+        color: rgba(255, 255, 255, 0.55);
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:hover .bz-inq-explore__n,
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:focus-visible .bz-inq-explore__n {
+        color: rgba(17, 17, 17, 0.55);
+      }
+      .bz-inq-explore__eyebrow {
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        color: #8a8a8a;
+      }
+      .bz-inq-explore__card:hover .bz-inq-explore__eyebrow,
+      .bz-inq-explore__card:focus-visible .bz-inq-explore__eyebrow {
+        color: rgba(255, 255, 255, 0.62);
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:hover .bz-inq-explore__eyebrow,
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:focus-visible .bz-inq-explore__eyebrow {
+        color: rgba(17, 17, 17, 0.62);
+      }
+      .bz-inq-explore__title {
+        margin: 0;
+        font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+      }
+      .bz-inq-explore__body {
+        margin: 0.85rem 0 0;
+        flex: 1;
+        max-width: 22rem;
+        font-size: 0.9375rem;
+        line-height: 1.65;
+        color: var(--text-muted);
+      }
+      .bz-inq-explore__card:hover .bz-inq-explore__body,
+      .bz-inq-explore__card:focus-visible .bz-inq-explore__body {
+        color: rgba(255, 255, 255, 0.72);
+      }
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:hover .bz-inq-explore__body,
+      html[data-newon-shell-theme="dark"] .bz-inq-explore__card:focus-visible .bz-inq-explore__body {
+        color: rgba(17, 17, 17, 0.72);
+      }
+      .bz-inq-explore__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-top: 1.35rem;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+      }
+      .bz-inq-explore__arrow {
+        font-size: 1rem;
+        transition: transform 0.25s ease;
+      }
+      .bz-inq-explore__card:hover .bz-inq-explore__arrow,
+      .bz-inq-explore__card:focus-visible .bz-inq-explore__arrow {
+        transform: translate(3px, -3px);
+      }
+      @media (min-width: 860px) {
+        .bz-inq-explore__grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        .bz-inq-explore__card {
+          min-height: 17.5rem;
+          border-bottom: 0;
+          border-right: 1px solid #ececec;
+        }
+        html[data-newon-shell-theme="dark"] .bz-inq-explore__card {
+          border-right-color: var(--border);
+        }
+        .bz-inq-explore__card:last-child {
+          border-right: 0;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bz-inq-explore__card:hover .bz-inq-explore__arrow,
+        .bz-inq-explore__card:focus-visible .bz-inq-explore__arrow {
+          transform: none;
+        }
+      }
+
       @media (max-width: 799px) {
         .bz-card,
         .bz-eco-card,
@@ -1394,7 +1540,7 @@
                 </div>
               </div>
               <nav class="bz-hero-index bz-hero-enter" style="--d: 5" aria-label="{{t:business.heroIndexAria}}">
-                <a class="bz-hero-index__row" href="../partnership/">
+                <a class="bz-hero-index__row" href="../collaboration/partnership/">
                   <span class="bz-hero-index__n">01</span>
                   <span class="bz-hero-index__body">
                     <span class="bz-hero-index__en">{{t:business.heroIndex1En}}</span>
@@ -1402,7 +1548,7 @@
                   </span>
                   <span class="bz-hero-index__go" aria-hidden="true">↗</span>
                 </a>
-                <a class="bz-hero-index__row" href="../service/">
+                <a class="bz-hero-index__row" href="../collaboration/product-service/">
                   <span class="bz-hero-index__n">02</span>
                   <span class="bz-hero-index__body">
                     <span class="bz-hero-index__en">{{t:business.heroIndex2En}}</span>
@@ -1410,7 +1556,7 @@
                   </span>
                   <span class="bz-hero-index__go" aria-hidden="true">↗</span>
                 </a>
-                <a class="bz-hero-index__row" href="../promotion/">
+                <a class="bz-hero-index__row" href="../collaboration/promotion/">
                   <span class="bz-hero-index__n">03</span>
                   <span class="bz-hero-index__body">
                     <span class="bz-hero-index__en">{{t:business.heroIndex3En}}</span>
@@ -1418,7 +1564,7 @@
                   </span>
                   <span class="bz-hero-index__go" aria-hidden="true">↗</span>
                 </a>
-                <a class="bz-hero-index__row" href="../development/">
+                <a class="bz-hero-index__row" href="../collaboration/development/">
                   <span class="bz-hero-index__n">04</span>
                   <span class="bz-hero-index__body">
                     <span class="bz-hero-index__en">{{t:business.heroIndex4En}}</span>
@@ -1434,7 +1580,7 @@
           <div class="bz-hero__bar-inner">
             <span class="bz-hero__bar-label">{{t:business.heroBarLabel}}</span>
             <span class="bz-hero__bar-meta">{{t:business.heroBarMeta}}</span>
-            <a class="bz-hero__bar-explore" href="#services">{{t:business.heroBarExplore}}</a>
+            <a class="bz-hero__bar-explore" href="#explore">{{t:business.heroBarExplore}}</a>
           </div>
         </div>
       </section>
@@ -1447,22 +1593,22 @@
           <h2 class="bz-title" id="bz-work-title">{{t:business.workTitle}}</h2>
           <p class="bz-lead">{{t:business.workLead}}</p>
           <div class="bz-grid bz-grid--4">
-            <a class="bz-card" href="../partnership/">
+            <a class="bz-card" href="../collaboration/partnership/">
               <h3>{{t:business.cardPartnershipTitle}}</h3>
               <p>{{t:business.cardPartnershipBody}}</p>
               <span class="bz-card__more">{{t:business.learnMore}}</span>
             </a>
-            <a class="bz-card" href="../service/">
+            <a class="bz-card" href="../collaboration/product-service/">
               <h3>{{t:business.cardCollabTitle}}</h3>
               <p>{{t:business.cardCollabBody}}</p>
               <span class="bz-card__more">{{t:business.learnMore}}</span>
             </a>
-            <a class="bz-card" href="../promotion/">
+            <a class="bz-card" href="../collaboration/promotion/">
               <h3>{{t:business.cardAdsTitle}}</h3>
               <p>{{t:business.cardAdsBody}}</p>
               <span class="bz-card__more">{{t:business.learnMore}}</span>
             </a>
-            <a class="bz-card" href="../development/">
+            <a class="bz-card" href="../collaboration/development/">
               <h3>{{t:business.cardDevTitle}}</h3>
               <p>{{t:business.cardDevBody}}</p>
               <span class="bz-card__more">{{t:business.learnMore}}</span>
@@ -1885,6 +2031,10 @@
                 <option value="Studio / Digital Stickers">Studio / Digital Stickers</option>
                 <option value="Studio / Experimental IP">Studio / Experimental IP</option>
                 <option value="Maintenance">{{t:studio.formTypeMaintain}}</option>
+                <option value="partnership">{{t:business.typePartnership}}</option>
+                <option value="product-service-collaboration">{{t:business.typeCollab}}</option>
+                <option value="advertising-promotion">{{t:business.typeAdvertising}}</option>
+                <option value="development-collaboration">{{t:business.typeDevelopment}}</option>
                 <option value="Partnership">{{t:business.typePartnership}}</option>
                 <option value="Other">{{t:studio.formTypeOther}}</option>
               </select>
@@ -2058,7 +2208,18 @@
           "Digital Stickers": "Studio / Digital Stickers",
           "digital-stickers": "Studio / Digital Stickers",
           "Experimental IP": "Studio / Experimental IP",
-          "experimental-ip": "Studio / Experimental IP"
+          "experimental-ip": "Studio / Experimental IP",
+          partnership: "partnership",
+          Partnership: "partnership",
+          "product-service-collaboration": "product-service-collaboration",
+          service: "product-service-collaboration",
+          "App Collaboration": "product-service-collaboration",
+          "advertising-promotion": "advertising-promotion",
+          promotion: "advertising-promotion",
+          Advertising: "advertising-promotion",
+          "development-collaboration": "development-collaboration",
+          development: "development-collaboration",
+          Development: "development-collaboration"
         };
         var qType = params.get("type") || params.get("service");
         var qCategory = (params.get("category") || "").trim();

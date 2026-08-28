@@ -165,11 +165,12 @@ export function studioStatusBadge(status, lang = "en") {
   const map = {
     LIVE: { ko: "Live", en: "Live", cls: "live" },
     OPERATING: { ko: "Operating", en: "Operating", cls: "operating" },
-    BUILDING: { ko: "Building", en: "Building", cls: "building" },
+    BUILDING: { ko: "Internal · Building", en: "Internal · Building", cls: "building" },
     TESTING: { ko: "Testing", en: "Testing", cls: "testing" },
-    EXPLORING: { ko: "Exploring", en: "Exploring", cls: "exploring" },
-    EXPERIMENTAL: { ko: "Experimental", en: "Experimental", cls: "exploring" },
+    EXPLORING: { ko: "Exploring · Custom", en: "Exploring · Custom", cls: "exploring" },
+    EXPERIMENTAL: { ko: "Experimental · Available", en: "Experimental · Available", cls: "exploring" },
     COMING_SOON: { ko: "Coming Soon", en: "Coming Soon", cls: "coming-soon" },
+    INTERNAL: { ko: "Internal", en: "Internal", cls: "building" },
     ARCHIVED: { ko: "Archived", en: "Archived", cls: "archived" },
   };
   const row = map[key] || map.COMING_SOON;

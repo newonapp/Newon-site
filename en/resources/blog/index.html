@@ -3,20 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog | Newon Resources</title>
-    <meta name="description" content="Essays and notes from building products at Newon." />
+    <title>Blog | Newon</title>
+    <meta name="description" content="Notes on Newon products, development, design, business, and the process of building." />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://www.newon.app/en/resources/blog/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.newon.app/en/resources/blog/" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="Blog | Newon Resources" />
-    <meta property="og:description" content="Essays and notes from building products at Newon." />
+    <meta property="og:title" content="Blog | Newon" />
+    <meta property="og:description" content="Notes on Newon products, development, design, business, and the process of building." />
     <meta property="og:site_name" content="Newon" />
     <meta property="og:image" content="https://www.newon.app/logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Blog | Newon Resources" />
-    <meta name="twitter:description" content="Essays and notes from building products at Newon." />
+    <meta name="twitter:title" content="Blog | Newon" />
+    <meta name="twitter:description" content="Notes on Newon products, development, design, business, and the process of building." />
     <meta name="twitter:image" content="https://www.newon.app/logo.png" />
     <link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/resources/blog/" />
     <link rel="alternate" hreflang="en" href="https://www.newon.app/en/resources/blog/" />
@@ -39,7 +39,10 @@
     <link rel="stylesheet" href="/gnav-mega.css?v=20260826gnav5" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
     <link rel="stylesheet" href="/site-premium.css?v=20260826bw1" />
-    <link rel="stylesheet" href="/resources.css?v=20260826nl0" />
+    <link rel="stylesheet" href="/resources.css?v=20260828sdfocus" />
+    <link rel="stylesheet" href="/store-detail.css?v=20260828sd2" />
+    <link rel="stylesheet" href="/blog-hub.css?v=20260828nb2" />
+    <link rel="stylesheet" href="/media-hub.css?v=20260828mh1" />
     <link rel="stylesheet" href="/labs-detail.css?v=20260826ld9" />
     <script src="/theme-shell.js"></script>
     <script src="/analytics.js?v=20260825studio" defer></script>
@@ -50,8 +53,8 @@
     <header class="gnav site-header gnav--five" data-gnav>
       <div class="gnav__bar">
         <div class="gnav__inner">
-          <a class="gnav__brand" href="../../">
-            <img class="gnav__logo" src="/logo.png" alt="Newon" width="40" height="40" decoding="async" />
+          <a class="gnav__brand" href="../../" aria-label="Newon">
+            <img class="gnav__logo" src="/logo.png" alt="" width="40" height="40" decoding="async" />
             <span class="gnav__wordmark">Newon</span>
           </a>
           <nav class="gnav__nav" aria-label="Main navigation">
@@ -222,11 +225,32 @@
         <span class="gnav-mega__row-desc">Build logs and stories</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../../resources/labs/" role="menuitem">
+    </a><a class="gnav-mega__row" href="../../resources/media/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Media</span>
+        <span class="gnav-mega__row-desc">Video · product stories · visual</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../resources/labs/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Labs</span>
         <span class="gnav-mega__row-desc">Experiments · ventures · ideas</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../resources/newsletter/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">06</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Newon Notes</span>
+        <span class="gnav-mega__row-desc">Short build log · updates</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../resources/education/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">07</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Education</span>
+        <span class="gnav-mega__row-desc">Guides · courses · workshops</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a>
@@ -313,7 +337,7 @@
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../../resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="../../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../../resources/labs/">Labs</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../../resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="../../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../../resources/media/">Media</a><a class="gnav-mobile__sublink" href="../../resources/labs/">Labs</a><a class="gnav-mobile__sublink" href="../../resources/newsletter/">Newon Notes</a><a class="gnav-mobile__sublink" href="../../resources/education/">Education</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -344,36 +368,190 @@
       <span>BLOG</span>
     </div>
   </nav>
-<section class="rs-hero" data-rs-reveal aria-labelledby="rs-hero-title">
-    <div class="rs-inner rs-hero__grid">
-      <div class="rs-hero__copy">
-        <p class="rs-eyebrow">NEWON BLOG<span class="rs-eyebrow__sep" aria-hidden="true">·</span><span class="rs-eyebrow__sub">ESSAYS &amp; NOTES</span></p>
-        <h1 class="rs-hero__title" id="rs-hero-title">We write what we learn<br />while building products.</h1>
-        <p class="rs-hero__lead">Product, AI, development, business. Official updates live in News; longer notes live here.</p>
-        <div class="rs-hero__actions"><a class="rs-btn rs-btn--primary" href="#rs-content">Latest ↓</a></div>
-      </div>
-      <div class="rs-hero__visual"><div class="rs-visual rs-visual--pub" aria-hidden="true">
-    <div class="rs-pub">
-      <span class="rs-pub__rule"></span>
-      <span class="rs-pub__line"></span>
-      <span class="rs-pub__line rs-pub__line--short"></span>
-      <span class="rs-pub__line"></span>
-      <span class="rs-pub__meta">VOL. — / ESSAY</span>
-    </div>
-  </div></div>
-    </div>
-  </section>
 <nav class="rs-switch" aria-label="Resources">
     <div class="rs-inner rs-switch__inner">
       <div class="rs-switch__track"><a class="rs-switch__link" href="../">RESOURCES</a><a class="rs-switch__link" href="../store/">STORE</a><a class="rs-switch__link" href="../insights/">INSIGHTS</a><a class="rs-switch__link is-active" href="#" aria-current="page">BLOG</a><a class="rs-switch__link" href="../media/">MEDIA</a><a class="rs-switch__link" href="../labs/">LABS</a><a class="rs-switch__link" href="../newsletter/">NOTES</a><a class="rs-switch__link" href="../education/">EDUCATION</a></div>
     </div>
   </nav>
-<section class="rs-section" id="rs-content">
-  <div class="rs-inner"><div class="rs-empty" data-rs-reveal>
-    <p class="rs-empty__title">First essays are in progress</p>
-    <p class="rs-empty__lead">Essays and field notes will appear here as they are ready.</p>
-  </div></div>
+<div class="nb-page">
+<header class="nb-hero">
+    <div class="rs-inner nb-hero__inner">
+      <div class="nb-hero__copy">
+        <p class="nb-eyebrow">NEWON BLOG</p>
+        <h1 class="nb-hero__title">Blog</h1>
+        <p class="nb-hero__lead">Notes from building and operating products.
+Explore Newon’s development, design, and business stories.</p>
+      </div>
+      <a class="nb-ext nb-hero__ext" href="https://m.blog.naver.com/PostList.naver?blogId=newonapp&amp;tab=1" target="_blank" rel="noopener noreferrer">Naver Blog ↗</a>
+    </div>
+  </header>
+<section class="nb-section" id="rs-content">
+  <div class="rs-inner">
+      <div class="nb-filters" data-rs-filters role="tablist" aria-label="Categories"><button type="button" class="nb-filter is-active" data-rs-filter="all">ALL</button><button type="button" class="nb-filter" data-rs-filter="product">PRODUCT</button><button type="button" class="nb-filter" data-rs-filter="development">DEVELOPMENT</button><button type="button" class="nb-filter" data-rs-filter="design">DESIGN</button><button type="button" class="nb-filter" data-rs-filter="business">BUSINESS</button><button type="button" class="nb-filter" data-rs-filter="newon">NEWON</button><button type="button" class="nb-filter" data-rs-filter="note">NOTE</button></div>
+      <section class="nb-latest" aria-labelledby="nb-latest-title">
+        <div class="nb-list" data-rs-filter-grid>
+          <a class="nb-featured__card nb-featured__card--media" href="https://m.blog.naver.com/PostView.naver?blogId=newonapp&amp;logNo=224376811561" target="_blank" rel="noopener noreferrer" data-category="product" data-rs-reveal>
+      <div class="nb-featured__main">
+        <p class="nb-eyebrow nb-eyebrow--inline">FEATURED</p>
+        <p class="nb-meta"><span class="nb-meta__cat">PRODUCT</span>
+    <span class="nb-meta__sep" aria-hidden="true">·</span>
+    <time class="nb-meta__date" datetime="2026-08-12">2026.08.12</time>
+    <span class="nb-meta__sep" aria-hidden="true">·</span>
+    <span class="nb-meta__src">NAVER BLOG</span></p>
+        <h2 class="nb-featured__title">My World: Travel log · Map · AI report</h2>
+        <p class="nb-featured__summary">Plan and record trips in one place. My World turns countries, cities, and moments into a travel world you can keep.</p>
+        <span class="nb-link">Read on Naver →</span>
+      </div>
+      <div class="nb-featured__media"><img src="/blog-thumbs/nb-224376811561.png" alt="" loading="lazy" decoding="async" width="640" height="480" /></div>
+    </a>
+          <h2 class="nb-eyebrow nb-latest__label" id="nb-latest-title">LATEST POSTS</h2>
+          <a class="nb-row nb-row--media" href="https://m.blog.naver.com/PostView.naver?blogId=newonapp&amp;logNo=224355286116" target="_blank" rel="noopener noreferrer" data-category="product" data-rs-reveal>
+    <span class="nb-row__side">
+      <span class="nb-row__cat">PRODUCT</span>
+      <time class="nb-row__date" datetime="2026-07-23">2026.07.23</time>
+    </span>
+    <span class="nb-row__thumb"><img src="/blog-thumbs/nb-224355286116.jpg" alt="" loading="lazy" decoding="async" width="320" height="200" /></span>
+    <span class="nb-row__main">
+      <span class="nb-row__title">Newon: Newon+ &amp; unified app membership</span>
+      <span class="nb-row__summary">More apps mean more sign-ups and subscriptions. Newon Membership connects Newon apps under one account.</span>
+      <span class="nb-row__src">NAVER BLOG</span>
+    </span>
+    <span class="nb-row__go">Read article ↗</span>
+  </a><a class="nb-row nb-row--media" href="https://m.blog.naver.com/PostView.naver?blogId=newonapp&amp;logNo=224355270833" target="_blank" rel="noopener noreferrer" data-category="product" data-rs-reveal>
+    <span class="nb-row__side">
+      <span class="nb-row__cat">PRODUCT</span>
+      <time class="nb-row__date" datetime="2026-07-23">2026.07.23</time>
+    </span>
+    <span class="nb-row__thumb"><img src="/blog-thumbs/nb-224355270833.jpg" alt="" loading="lazy" decoding="async" width="320" height="200" /></span>
+    <span class="nb-row__main">
+      <span class="nb-row__title">CountUp: Count &amp; goal tracking app</span>
+      <span class="nb-row__summary">Don’t leave workouts, study, reading, or streak habits to memory. CountUp turns small counts into visible progress.</span>
+      <span class="nb-row__src">NAVER BLOG</span>
+    </span>
+    <span class="nb-row__go">Read article ↗</span>
+  </a><a class="nb-row nb-row--media" href="https://m.blog.naver.com/PostView.naver?blogId=newonapp&amp;logNo=224355249438" target="_blank" rel="noopener noreferrer" data-category="product" data-rs-reveal>
+    <span class="nb-row__side">
+      <span class="nb-row__cat">PRODUCT</span>
+      <time class="nb-row__date" datetime="2026-07-23">2026.07.23</time>
+    </span>
+    <span class="nb-row__thumb"><img src="/blog-thumbs/nb-224355249438.jpg" alt="" loading="lazy" decoding="async" width="320" height="200" /></span>
+    <span class="nb-row__main">
+      <span class="nb-row__title">GoalUp: Consistent goal management app</span>
+      <span class="nb-row__summary">Setting goals is easy; finishing them is hard. GoalUp helps you grow with systems, not willpower alone.</span>
+      <span class="nb-row__src">NAVER BLOG</span>
+    </span>
+    <span class="nb-row__go">Read article ↗</span>
+  </a><a class="nb-row nb-row--media" href="https://m.blog.naver.com/PostView.naver?blogId=newonapp&amp;logNo=224355222334" target="_blank" rel="noopener noreferrer" data-category="product" data-rs-reveal>
+    <span class="nb-row__side">
+      <span class="nb-row__cat">PRODUCT</span>
+      <time class="nb-row__date" datetime="2026-07-23">2026.07.23</time>
+    </span>
+    <span class="nb-row__thumb"><img src="/blog-thumbs/nb-224355222334.jpg" alt="" loading="lazy" decoding="async" width="320" height="200" /></span>
+    <span class="nb-row__main">
+      <span class="nb-row__title">PiggyUp: AI savings habit app</span>
+      <span class="nb-row__summary">A ledger alone rarely sticks. PiggyUp builds savings habits with logs, challenges, and AI insights.</span>
+      <span class="nb-row__src">NAVER BLOG</span>
+    </span>
+    <span class="nb-row__go">Read article ↗</span>
+  </a><a class="nb-row nb-row--media" href="https://m.blog.naver.com/PostView.naver?blogId=newonapp&amp;logNo=224354838630" target="_blank" rel="noopener noreferrer" data-category="product" data-rs-reveal>
+    <span class="nb-row__side">
+      <span class="nb-row__cat">PRODUCT</span>
+      <time class="nb-row__date" datetime="2026-07-22">2026.07.22</time>
+    </span>
+    <span class="nb-row__thumb"><img src="/blog-thumbs/nb-224354838630.jpg" alt="" loading="lazy" decoding="async" width="320" height="200" /></span>
+    <span class="nb-row__main">
+      <span class="nb-row__title">PetLog: AI pet care app</span>
+      <span class="nb-row__summary">Meals, health, walks, family sharing, and AI insights — PetLog keeps your pet’s moments in one app.</span>
+      <span class="nb-row__src">NAVER BLOG</span>
+    </span>
+    <span class="nb-row__go">Read article ↗</span>
+  </a><a class="nb-row nb-row--media" href="https://m.blog.naver.com/PostView.naver?blogId=newonapp&amp;logNo=224354821529" target="_blank" rel="noopener noreferrer" data-category="product" data-rs-reveal>
+    <span class="nb-row__side">
+      <span class="nb-row__cat">PRODUCT</span>
+      <time class="nb-row__date" datetime="2026-07-22">2026.07.22</time>
+    </span>
+    <span class="nb-row__thumb"><img src="/blog-thumbs/nb-224354821529.jpg" alt="" loading="lazy" decoding="async" width="320" height="200" /></span>
+    <span class="nb-row__main">
+      <span class="nb-row__title">BabyLog: AI baby care app</span>
+      <span class="nb-row__summary">From feeding to growth, health, family sharing, and AI insights — BabyLog records the moments that grow every day.</span>
+      <span class="nb-row__src">NAVER BLOG</span>
+    </span>
+    <span class="nb-row__go">Read article ↗</span>
+  </a><a class="nb-row nb-row--media" href="https://m.blog.naver.com/PostView.naver?blogId=newonapp&amp;logNo=224354787176" target="_blank" rel="noopener noreferrer" data-category="product" data-rs-reveal>
+    <span class="nb-row__side">
+      <span class="nb-row__cat">PRODUCT</span>
+      <time class="nb-row__date" datetime="2026-07-22">2026.07.22</time>
+    </span>
+    <span class="nb-row__thumb"><img src="/blog-thumbs/nb-224354787176.jpg" alt="" loading="lazy" decoding="async" width="320" height="200" /></span>
+    <span class="nb-row__main">
+      <span class="nb-row__title">Savy: AI smart money tracker</span>
+      <span class="nb-row__summary">Track spending, income, and subscriptions — then use AI insights to build smarter money habits with SAVY.</span>
+      <span class="nb-row__src">NAVER BLOG</span>
+    </span>
+    <span class="nb-row__go">Read article ↗</span>
+  </a><a class="nb-row nb-row--media" href="https://m.blog.naver.com/PostView.naver?blogId=newonapp&amp;logNo=224354668231" target="_blank" rel="noopener noreferrer" data-category="product" data-rs-reveal>
+    <span class="nb-row__side">
+      <span class="nb-row__cat">PRODUCT</span>
+      <time class="nb-row__date" datetime="2026-07-22">2026.07.22</time>
+    </span>
+    <span class="nb-row__thumb"><img src="/blog-thumbs/nb-224354668231.jpg" alt="" loading="lazy" decoding="async" width="320" height="200" /></span>
+    <span class="nb-row__main">
+      <span class="nb-row__title">Pillmate: Medication reminder app</span>
+      <span class="nb-row__summary">Manage meds, supplements, and routines with reminders and family sharing. Pillmate helps health habits stick.</span>
+      <span class="nb-row__src">NAVER BLOG</span>
+    </span>
+    <span class="nb-row__go">Read article ↗</span>
+  </a><a class="nb-row nb-row--media" href="https://m.blog.naver.com/PostView.naver?blogId=newonapp&amp;logNo=224354634930" target="_blank" rel="noopener noreferrer" data-category="product" data-rs-reveal>
+    <span class="nb-row__side">
+      <span class="nb-row__cat">PRODUCT</span>
+      <time class="nb-row__date" datetime="2026-07-22">2026.07.22</time>
+    </span>
+    <span class="nb-row__thumb"><img src="/blog-thumbs/nb-224354634930.jpg" alt="" loading="lazy" decoding="async" width="320" height="200" /></span>
+    <span class="nb-row__main">
+      <span class="nb-row__title">SubPing: Subscription manager</span>
+      <span class="nb-row__summary">See recurring subscriptions at a glance — from streaming to SaaS and bills — and manage them with SubPing.</span>
+      <span class="nb-row__src">NAVER BLOG</span>
+    </span>
+    <span class="nb-row__go">Read article ↗</span>
+  </a><a class="nb-row nb-row--media" href="https://m.blog.naver.com/PostView.naver?blogId=newonapp&amp;logNo=224354526204" target="_blank" rel="noopener noreferrer" data-category="product" data-rs-reveal>
+    <span class="nb-row__side">
+      <span class="nb-row__cat">PRODUCT</span>
+      <time class="nb-row__date" datetime="2026-07-22">2026.07.22</time>
+    </span>
+    <span class="nb-row__thumb"><img src="/blog-thumbs/nb-224354526204.jpg" alt="" loading="lazy" decoding="async" width="320" height="200" /></span>
+    <span class="nb-row__main">
+      <span class="nb-row__title">OX MONTH: AI habit tracker</span>
+      <span class="nb-row__summary">Skip complex plans — mark today’s O/X. OX MONTH builds consistency with one simple daily record.</span>
+      <span class="nb-row__src">NAVER BLOG</span>
+    </span>
+    <span class="nb-row__go">Read article ↗</span>
+  </a><a class="nb-row nb-row--media" href="https://m.blog.naver.com/PostView.naver?blogId=newonapp&amp;logNo=224353748976" target="_blank" rel="noopener noreferrer" data-category="newon" data-rs-reveal>
+    <span class="nb-row__side">
+      <span class="nb-row__cat">NEWON</span>
+      <time class="nb-row__date" datetime="2026-07-22">2026.07.22</time>
+    </span>
+    <span class="nb-row__thumb"><img src="/blog-thumbs/nb-224353748976.png" alt="" loading="lazy" decoding="async" width="320" height="200" /></span>
+    <span class="nb-row__main">
+      <span class="nb-row__title">New + On — turning ideas on</span>
+      <span class="nb-row__summary">Newon turns ideas on and designs daily change — starting from connecting scattered app experiences into one flow.</span>
+      <span class="nb-row__src">NAVER BLOG</span>
+    </span>
+    <span class="nb-row__go">Read article ↗</span>
+  </a>
+        </div>
+        <p class="nb-filter-empty" data-rs-filter-empty hidden>No posts in this category.</p>
+      </section></div>
 </section>
+<section class="nb-cta" data-rs-reveal>
+    <div class="rs-inner">
+      <p class="nb-eyebrow">MORE STORIES</p>
+      <h2 class="nb-cta__title">See all of Newon’s notes</h2>
+      <p class="nb-cta__lead">More product, development, and business stories
+are on the Newon Naver Blog.</p>
+      <a class="nb-ext" href="https://m.blog.naver.com/PostList.naver?blogId=newonapp&amp;tab=1" target="_blank" rel="noopener noreferrer">Visit Naver Blog ↗</a>
+    </div>
+  </section>
+</div>
 <section class="rs-section rs-explore" data-rs-reveal aria-labelledby="rs-explore-title">
     <div class="rs-inner">
       <header class="rs-explore__head">
@@ -456,7 +634,7 @@
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Resources</p>
-      <ul class="studio-footer__list"><li><a href="../../resources/store/">Store</a></li><li><a href="../../resources/insights/">Insights</a></li><li><a href="../../resources/blog/">Blog</a></li><li><a href="../../resources/labs/">Labs</a></li></ul>
+      <ul class="studio-footer__list"><li><a href="../../resources/store/">Store</a></li><li><a href="../../resources/insights/">Insights</a></li><li><a href="../../resources/blog/">Blog</a></li><li><a href="../../resources/media/">Media</a></li><li><a href="../../resources/labs/">Labs</a></li><li><a href="../../resources/newsletter/">Notes</a></li><li><a href="../../resources/education/">Education</a></li></ul>
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Company</p>
@@ -480,6 +658,7 @@
       </div>
     </footer>
     <script src="/resources.js?v=20260826filt1" defer></script>
+    <script src="/media-hub.js?v=20260828mh1" defer></script>
     <script src="/labs-detail.js?v=20260826ld2" defer></script>
     <script src="/waitlist.js" defer></script>
     <script src="/site-chrome.js?v=20260826gnav5" defer></script>

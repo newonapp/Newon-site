@@ -14,10 +14,10 @@ const ROOT = path.join(__dirname, "..");
 const SITE_ORIGIN = "https://www.newon.app";
 
 export const BUSINESS_DETAIL_PAGES = [
-  { slug: "partnership", titleKey: "business.cardPartnershipTitle", bodyKey: "business.cardPartnershipBody", type: "Partnership", kind: "partnership" },
-  { slug: "service", titleKey: "business.cardCollabTitle", bodyKey: "business.cardCollabBody", type: "App Collaboration", kind: "service" },
-  { slug: "promotion", titleKey: "business.cardAdsTitle", bodyKey: "business.cardAdsBody", type: "Advertising", kind: "promotion" },
-  { slug: "development", titleKey: "business.cardDevTitle", bodyKey: "business.cardDevBody", type: "Development", kind: "development" },
+  { slug: "partnership", pathSlug: "partnership", titleKey: "business.cardPartnershipTitle", bodyKey: "business.cardPartnershipBody", type: "partnership", kind: "partnership" },
+  { slug: "service", pathSlug: "product-service", titleKey: "business.cardCollabTitle", bodyKey: "business.cardCollabBody", type: "product-service-collaboration", kind: "service" },
+  { slug: "promotion", pathSlug: "promotion", titleKey: "business.cardAdsTitle", bodyKey: "business.cardAdsBody", type: "advertising-promotion", kind: "promotion" },
+  { slug: "development", pathSlug: "development", titleKey: "business.cardDevTitle", bodyKey: "business.cardDevBody", type: "development-collaboration", kind: "development" },
 ];
 
 const LANGS = [
@@ -391,12 +391,25 @@ function fillMissing(target, source) {
   return out;
 }
 
+function collabRoute(page) {
+  const pathSlug = page.pathSlug || page.slug;
+  return `business/collaboration/${pathSlug}`;
+}
+
 function patchBusinessHubLinks() {
   const replacements = [
-    ['href="#inquiry" data-inquiry-type="Partnership"', "href=\"partnership/\""],
-    ['href="#inquiry" data-inquiry-type="App Collaboration"', "href=\"service/\""],
-    ['href="#inquiry" data-inquiry-type="Advertising"', "href=\"promotion/\""],
-    ['href="#inquiry" data-inquiry-type="Development"', "href=\"development/\""],
+    ['href="#inquiry" data-inquiry-type="Partnership"', 'href="collaboration/partnership/"'],
+    ['href="#inquiry" data-inquiry-type="App Collaboration"', 'href="collaboration/product-service/"'],
+    ['href="#inquiry" data-inquiry-type="Advertising"', 'href="collaboration/promotion/"'],
+    ['href="#inquiry" data-inquiry-type="Development"', 'href="collaboration/development/"'],
+    ['href="../partnership/"', 'href="../collaboration/partnership/"'],
+    ['href="../service/"', 'href="../collaboration/product-service/"'],
+    ['href="../promotion/"', 'href="../collaboration/promotion/"'],
+    ['href="../development/"', 'href="../collaboration/development/"'],
+    ['href="partnership/"', 'href="collaboration/partnership/"'],
+    ['href="service/"', 'href="collaboration/product-service/"'],
+    ['href="promotion/"', 'href="collaboration/promotion/"'],
+    ['href="development/"', 'href="collaboration/development/"'],
   ];
   for (const { dir } of LANGS) {
     const file = path.join(ROOT, dir, "business", "index.html");

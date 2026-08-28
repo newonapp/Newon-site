@@ -21,7 +21,7 @@ export function injectSiteChrome(
   if (!out.includes("gnav-mega.css")) {
     out = out.replace(
       /(<link rel="stylesheet" href="\/styles\.css[^"]*" \/>)/,
-      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260826gnav5" />'
+      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260828logo" />'
     );
   }
   if (!out.includes("site-chrome.js")) {
@@ -65,10 +65,10 @@ export function replaceLegacyChrome(
   if (!out.includes("gnav-mega.css")) {
     out = out.replace(
       /(<link rel="stylesheet" href="\/styles\.css[^"]*" \/>)/,
-      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260826gnav5" />'
+      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260828logo" />'
     );
   } else {
-    out = out.replace(/gnav-mega\.css\?v=[^"]+/g, "gnav-mega.css?v=20260826gnav5");
+    out = out.replace(/gnav-mega\.css\?v=[^"]+/g, "gnav-mega.css?v=20260828logo");
   }
   if (!out.includes("analytics.js")) {
     out = out.replace(/<\/head>/, '    <script src="/analytics.js?v=20260825studio" defer></script>\n  </head>');

@@ -54,19 +54,24 @@ export function visualStrategy() {
   });
 }
 
-/** Naming — name lab */
+/** Naming — naming process board */
 export function visualNaming() {
   return panelShell({
     mod: "naming",
-    live: "NAME LAB",
+    live: "NAMING PROCESS",
     meta: "NAMING",
     body: `
       <div class="bs-sv-naming">
-        <div class="bs-sv-naming__letters" aria-hidden="true">
-          <span>N</span><span class="is-on">E</span><span>W</span><span>O</span><span>N</span>
-        </div>
         <div class="bs-sv-naming__cols">
           <div class="bs-sv-naming__col">
+            <p class="bs-sv__k">BRAND</p>
+            <div class="bs-sv-naming__chips">
+              <span class="is-on">Brand / Product</span>
+            </div>
+            <p class="bs-sv__k">KEYWORDS</p>
+            <div class="bs-sv-naming__chips">
+              <span class="is-on">Core meaning</span>
+            </div>
             <p class="bs-sv__k">DIRECTIONS</p>
             <div class="bs-sv-naming__chips">
               <span class="is-on">Descriptive</span>
@@ -76,18 +81,22 @@ export function visualNaming() {
             </div>
           </div>
           <div class="bs-sv-naming__col">
-            <p class="bs-sv__k">SHORTLIST</p>
+            <p class="bs-sv__k">CANDIDATES</p>
             <ul class="bs-sv-naming__cands">
-              <li class="is-on"><strong>Nova</strong><em>Recommended</em></li>
-              <li><strong>Lumen</strong><em>Strong</em></li>
-              <li><strong>Orbit</strong><em>Explore</em></li>
+              <li class="is-on"><strong>Name A</strong><em>Shortlist</em></li>
+              <li><strong>Name B</strong><em>Explore</em></li>
+              <li><strong>Name C</strong><em>Explore</em></li>
+            </ul>
+            <p class="bs-sv__k">FINAL</p>
+            <ul class="bs-sv-naming__cands">
+              <li class="is-on"><strong>Recommended Name</strong><em>Selected</em></li>
             </ul>
           </div>
         </div>
         <div class="bs-sv-naming__criteria">
-          <div><span>Memory</span><i style="--w:86%"></i></div>
-          <div><span>Pronounce</span><i style="--w:92%"></i></div>
-          <div><span>Expand</span><i style="--w:78%"></i></div>
+          <div><span>Meaning</span><strong>Reviewed</strong></div>
+          <div><span>Pronunciation</span><strong>Reviewed</strong></div>
+          <div><span>Expansion</span><strong>Considered</strong></div>
         </div>
       </div>`,
   });
@@ -236,11 +245,12 @@ export function visualLandingDetail() {
           <section class="is-on"><span>CTA</span><em>Get access →</em></section>
         </div>
         <aside class="bs-sv-lp__funnel">
-          <p class="bs-sv__k">FLOW</p>
+          <p class="bs-sv__k">FUNNEL</p>
           <div class="bs-sv-lp__steps">
-            <div><span>Visit</span><strong>100</strong></div>
-            <div class="is-on"><span>CTA</span><strong>18</strong></div>
-            <div><span>Convert</span><strong>6</strong></div>
+            <div><span>01</span><strong>ATTENTION</strong></div>
+            <div><span>02</span><strong>VALUE</strong></div>
+            <div class="is-on"><span>03</span><strong>PROOF</strong></div>
+            <div><span>04</span><strong>ACTION</strong></div>
           </div>
         </aside>
       </div>`,

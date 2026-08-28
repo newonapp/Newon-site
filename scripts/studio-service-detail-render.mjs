@@ -33,6 +33,25 @@ const NAV_LABELS = {
   "experimental-ip": "EXP IP",
 };
 
+/** Hero eyebrow service names (NEWON STUDIO · CATEGORY · NAME). */
+const EYEBROW_SUB = {
+  "brand-strategy": "BRAND STRATEGY",
+  naming: "NAMING",
+  identity: "IDENTITY",
+  "logo-design": "LOGO DESIGN",
+  "web-design": "WEB DESIGN",
+  "app-ui-ux": "APP UI/UX",
+  "landing-page-design": "LANDING PAGE",
+  "product-design": "PRODUCT DESIGN",
+  "social-content": "SOCIAL CONTENT",
+  campaign: "CAMPAIGN",
+  "visual-content": "VISUAL CONTENT",
+  "character-lab": "CHARACTER LAB",
+  "digital-stickers": "DIGITAL STICKERS",
+  "newon-character": "NEWON CHARACTER",
+  "experimental-ip": "EXPERIMENTAL IP",
+};
+
 /** All Studio services in menu order (Brand → Digital → Content → IP). */
 const STUDIO_NAV_SLUGS = [
   ...(STUDIO_PILLAR_SERVICE_SLUGS.brand || []),
@@ -593,11 +612,8 @@ function exploreSection(detail) {
 }
 
 function adjacentSection(detail) {
-  const siblings = detail.siblingSlugs || [];
+  const siblings = STUDIO_NAV_SLUGS;
   const idx = siblings.indexOf(detail.slug);
-  if (idx < 0 || siblings.length < 2) {
-    if (!detail.adjacentPrev && !detail.adjacentNext) return "";
-  }
 
   const prevSlug = idx > 0 ? siblings[idx - 1] : null;
   const nextSlug = idx >= 0 && idx < siblings.length - 1 ? siblings[idx + 1] : null;
@@ -605,26 +621,16 @@ function adjacentSection(detail) {
   let prevBlock = `<span class="bs-adjacent__link bs-adjacent__link--prev is-empty"></span>`;
   let nextBlock = `<span class="bs-adjacent__link bs-adjacent__link--next is-empty"></span>`;
 
-  if (detail.adjacentPrev) {
-    prevBlock = `<a class="bs-adjacent__link bs-adjacent__link--prev" href="${escapeHtml(detail.adjacentPrev.href)}">
-      <span class="bs-adjacent__label">${escapeHtml(detail.ui.prevService)}</span>
-      <span class="bs-adjacent__name">${escapeHtml(detail.adjacentPrev.name)}</span>
-    </a>`;
-  } else if (prevSlug) {
+  if (prevSlug) {
     const peer = getStudioServiceDetail(prevSlug, detail._pageLang);
-    prevBlock = `<a class="bs-adjacent__link bs-adjacent__link--prev" href="../${studioServiceDetailHrefFromPillar(prevSlug)}">
+    prevBlock = `<a class="bs-adjacent__link bs-adjacent__link--prev" href="${escapeHtml(studioNavHref(detail.slug, prevSlug))}">
       <span class="bs-adjacent__label">${escapeHtml(detail.ui.prevService)}</span>
       <span class="bs-adjacent__name">${escapeHtml(peer?.displayName || prevSlug)}</span>
     </a>`;
   }
-  if (detail.adjacentNext) {
-    nextBlock = `<a class="bs-adjacent__link bs-adjacent__link--next" href="${escapeHtml(detail.adjacentNext.href)}">
-      <span class="bs-adjacent__label">${escapeHtml(detail.ui.nextService)}</span>
-      <span class="bs-adjacent__name">${escapeHtml(detail.adjacentNext.name)}</span>
-    </a>`;
-  } else if (nextSlug) {
+  if (nextSlug) {
     const peer = getStudioServiceDetail(nextSlug, detail._pageLang);
-    nextBlock = `<a class="bs-adjacent__link bs-adjacent__link--next" href="../${studioServiceDetailHrefFromPillar(nextSlug)}">
+    nextBlock = `<a class="bs-adjacent__link bs-adjacent__link--next" href="${escapeHtml(studioNavHref(detail.slug, nextSlug))}">
       <span class="bs-adjacent__label">${escapeHtml(detail.ui.nextService)}</span>
       <span class="bs-adjacent__name">${escapeHtml(peer?.displayName || nextSlug)}</span>
     </a>`;
@@ -638,9 +644,7 @@ function adjacentSection(detail) {
 function heroSubEyebrow(detail) {
   if (detail.hideHeroSub) return "";
   if (detail.eyebrowSub) return detail.eyebrowSub;
-  if (detail.typeLabel) return detail.typeLabel;
-  if (detail.statusLabel && detail.pageKind !== "service") return detail.statusLabel;
-  return NAV_LABELS[detail.slug] || "";
+  return EYEBROW_SUB[detail.slug] || detail.typeLabel || NAV_LABELS[detail.slug] || "";
 }
 
 function heroLeadHtml(description) {
@@ -655,7 +659,7 @@ function heroLeadHtml(description) {
 function heroSection(detail, inquiryHref) {
   const sub = heroSubEyebrow(detail);
   const eyebrow = sub
-    ? `${escapeHtml(detail.eyebrow)}<span class="bs-eyebrow__sep" aria-hidden="true">·</span><span class="bs-eyebrow__sub">${escapeHtml(sub)}</span>`
+    ? `${escapeHtml(detail.eyebrow)} <span class="bs-eyebrow__sep" aria-hidden="true">·</span> <span class="bs-eyebrow__sub">${escapeHtml(sub)}</span>`
     : escapeHtml(detail.eyebrow);
 
   let actions = "";
@@ -665,8 +669,8 @@ function heroSection(detail, inquiryHref) {
       detail.ctaBtn ||
       (detail.pageKind === "exploring"
         ? detail._pageLang === "ko"
-          ? "IP 프로젝트 문의 →"
-          : "IP project inquiry →"
+          ? "Experimental Project 문의 →"
+          : "Experimental project inquiry →"
         : detail.ui.ctaBtn);
     const secondaryHref = detail.process?.length ? "#process" : detail.overview ? "#bs-ss-overview-title" : "#";
     const secondaryLabel = detail.process?.length
@@ -719,8 +723,8 @@ function finalSection(detail, inquiryHref) {
     detail.ctaBtn ||
     (detail.pageKind === "exploring"
       ? detail._pageLang === "ko"
-        ? "IP 프로젝트 문의 →"
-        : "IP project inquiry →"
+        ? "Experimental Project 문의 →"
+        : "Experimental project inquiry →"
       : detail.ui.ctaBtn);
 
   return `<section class="bs-section bs-section--dark bs-final" data-bs-reveal aria-labelledby="bs-final-title"><div class="bs-inner">
@@ -771,8 +775,8 @@ ${developmentSection(detail)}
 ${nextStepsSection(detail)}
 ${noticesSection(detail)}
 ${faqSection(detail)}
-${adjacentSection(detail)}
-${finalSection(detail, inquiryHref)}`;
+${finalSection(detail, inquiryHref)}
+${adjacentSection(detail)}`;
 }
 
 export { listStudioDetailSlugs, getStudioServiceDetail };

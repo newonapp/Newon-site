@@ -7,7 +7,14 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { APP_CATALOG, featuredApps, loadPortfolioApps, moreApps } from "./portfolio-data.mjs";
-import { LANG_OPTIONS, SITE_LANGS, portfolioCopy, visibleCopyStats } from "./portfolio-i18n.mjs";
+import {
+  getPortfolioBeyondItems,
+  getPortfolioCaseStudies,
+  getPortfolioHubMetrics,
+  getPortfolioNowGroups,
+  COMPANY_TAGLINE,
+} from "./portfolio-hub-data.mjs";
+import { LANG_OPTIONS, SITE_LANGS, portfolioCopy } from "./portfolio-i18n.mjs";
 import { flatten, loadJson, fillMissing } from "./hub-utils.mjs";
 import { renderGlobalHeader, renderStudioFooter, renderCompanySwitcher } from "./site-chrome.mjs";
 
@@ -87,7 +94,7 @@ function head({ langMeta, copy, title, description, canonical, suffix }) {
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="/gnav-mega.css?v=20260826gnav5" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
-    <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260822founder" />
+    <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260828pfhub" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
     <script src="/theme-shell.js"></script>
   </head>`;
@@ -218,18 +225,128 @@ function exploreHref(lang, href) {
   return href.replace("{lang}", lang);
 }
 
-function openTopicHtml(topic) {
-  const meta = topic.meta
-    ? `<span class="pf-open__meta">/ ${esc(topic.meta)}</span>`
-    : "";
+function openTopicHtml(lang, topic) {
+  const meta = topic.meta ? `<span class="pf-open__meta">/ ${esc(topic.meta)}</span>` : "";
+  const href = topic.href ? `/${lang}/${String(topic.href).replace(/^\//, "")}` : "#contact";
   return `<li class="pf-open__row">
-              <span class="pf-open__n">${esc(topic.n)}</span>
-              <div class="pf-open__body">
-                <p class="pf-open__title">${esc(topic.title)}${meta}</p>
-                <p class="pf-open__desc">${esc(topic.desc)}</p>
-              </div>
-              <span class="pf-open__go" aria-hidden="true">→</span>
+              <a class="pf-open__link" href="${esc(href)}">
+                <span class="pf-open__n">${esc(topic.n)}</span>
+                <div class="pf-open__body">
+                  <p class="pf-open__title">${esc(topic.title)}${meta}</p>
+                  <p class="pf-open__desc">${esc(topic.desc)}</p>
+                </div>
+                <span class="pf-open__go" aria-hidden="true">→</span>
+              </a>
             </li>`;
+}
+
+function hubMetricHtml(item) {
+  return `<div class="pf-hub-metric pf-reveal">
+            <p class="pf-hub-metric__value">${esc(item.value)}</p>
+            <p class="pf-hub-metric__label">${esc(item.label)}</p>
+            <p class="pf-hub-metric__note">${esc(item.note)}</p>
+          </div>`;
+}
+
+function hubCapHtml(cap, lang) {
+  const en =
+    lang !== "en" && cap.en && cap.title !== cap.en
+      ? `<p class="pf-en">${esc(cap.en)}</p>`
+      : "";
+  const items = (cap.items || []).map((i) => `<li>${esc(i)}</li>`).join("");
+  return `<article class="pf-hub-cap pf-reveal">
+            <header class="pf-hub-cap__head">
+              <span class="pf-hub-cap__n">${esc(cap.n)}</span>
+              <div>
+                <h3>${esc(cap.title)}</h3>
+                ${en}
+              </div>
+            </header>
+            <ul class="pf-hub-cap__list">${items}</ul>
+          </article>`;
+}
+
+function hubProcessHtml(copy, lang) {
+  return copy.process
+    .map((s, i) => {
+      const en = processEn(lang, s);
+      const arrow =
+        i < copy.process.length - 1 ? `<span class="pf-hub-pipe__arrow" aria-hidden="true">↓</span>` : "";
+      return `<div class="pf-hub-pipe__step pf-reveal">
+                <span class="pf-hub-pipe__n">${String(i + 1).padStart(2, "0")}</span>
+                <div class="pf-hub-pipe__copy">
+                  <strong>${esc(s.title)}</strong>${en}
+                  ${s.body ? `<p>${esc(s.body)}</p>` : ""}
+                </div>
+                ${arrow}
+              </div>`;
+    })
+    .join("\n          ");
+}
+
+function hubCaseHtml(item, i, copy) {
+  const n = String(i + 1).padStart(2, "0");
+  return `<article class="pf-hub-case pf-reveal">
+            <header class="pf-hub-case__head">
+              <span class="pf-hub-case__n">CASE ${n}</span>
+              ${item.status ? `<span class="pf-hub-case__status">${esc(item.status)}</span>` : ""}
+            </header>
+            <h3 class="pf-hub-case__project">${esc(item.project)}</h3>
+            <dl class="pf-hub-case__grid">
+              <div><dt>${esc(copy.caseChallenge)}</dt><dd>${esc(item.challenge)}</dd></div>
+              <div><dt>${esc(copy.caseDecision)}</dt><dd>${esc(item.decision)}</dd></div>
+              <div><dt>${esc(copy.caseBuild)}</dt><dd>${esc(item.build)}</dd></div>
+              <div><dt>${esc(copy.caseLearn)}</dt><dd>${esc(item.learn)}</dd></div>
+            </dl>
+            <a class="pf-hub-case__cta" href="${esc(item.href)}">${esc(copy.caseStudyCta)}</a>
+          </article>`;
+}
+
+function hubBeyondHtml(item) {
+  const status = item.status ? `<span class="pf-hub-beyond__status">${esc(item.status)}</span>` : "";
+  const secondary =
+    item.hrefSecondary && item.ctaSecondary
+      ? `<a class="pf-hub-beyond__cta pf-hub-beyond__cta--ghost" href="${esc(item.hrefSecondary)}">${esc(item.ctaSecondary)}</a>`
+      : "";
+  return `<article class="pf-hub-beyond pf-reveal">
+            <div class="pf-hub-beyond__meta">
+              <span class="pf-hub-beyond__n">${esc(item.n)}</span>
+              <span class="pf-hub-beyond__tag">${esc(item.tag)}</span>
+              ${status}
+            </div>
+            <h3>${esc(item.title)}</h3>
+            <p>${esc(item.body)}</p>
+            <div class="pf-hub-beyond__actions">
+              <a class="pf-hub-beyond__cta" href="${esc(item.href)}">${esc(item.cta)}</a>
+              ${secondary}
+            </div>
+          </article>`;
+}
+
+function hubNowHtml(group, copy) {
+  const rows = group.items
+    .map(
+      (it) => `<li>
+        <a class="pf-hub-now__link" href="${esc(it.href)}">
+          <span class="pf-hub-now__cat">${esc(it.category || "")}</span>
+          <span class="pf-hub-now__title">${esc(it.title)}</span>
+          <span class="pf-hub-now__go">${esc(copy.nowView)}</span>
+        </a>
+      </li>`
+    )
+    .join("");
+  return `<div class="pf-hub-now__col pf-reveal">
+            <p class="pf-hub-now__status">${esc(group.status)}</p>
+            <p class="pf-hub-now__hint">${esc(group.statusHint)}</p>
+            <ul class="pf-hub-now__list">${rows}</ul>
+          </div>`;
+}
+
+function sectionNavHtml(copy) {
+  const items = (copy.sectionNav || [])
+    .map((it) => `<a class="pf-hub-index__link" href="#${esc(it.id)}">${esc(it.label)}</a>`)
+    .join("");
+  return `<nav class="pf-hub-index" aria-label="Portfolio sections">${items}</nav>`;
 }
 
 function exploreRowHtml(lang, item) {
@@ -248,18 +365,14 @@ function indexPage(langMeta, copy, apps) {
   const lang = langMeta.dir;
   const featured = featuredApps(apps);
   const more = moreApps(apps);
-  const work = copy.whatIDo
-    .map(
-      (w) =>
-        `<article class="pf-reveal"><h3>${esc(w.title)}</h3>${workEn(lang, w)}<p>${esc(w.body)}</p></article>`
-    )
+  const metrics = getPortfolioHubMetrics(lang);
+  const caseStudies = getPortfolioCaseStudies(lang);
+  const beyond = getPortfolioBeyondItems(lang);
+  const nowGroups = getPortfolioNowGroups(lang);
+  const caps = (copy.capabilities || [])
+    .map((c) => hubCapHtml(c, lang))
     .join("\n          ");
-  const process = copy.process
-    .map(
-      (s, i) =>
-        `<div class="pf-step pf-reveal"><span class="pf-step__n">${i + 1}</span><div><strong>${esc(s.title)}</strong>${processEn(lang, s)}</div></div>`
-    )
-    .join("\n          ");
+  const tagline = COMPANY_TAGLINE[lang] || COMPANY_TAGLINE.en;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
@@ -271,6 +384,7 @@ function indexPage(langMeta, copy, apps) {
       name: "Nawon Kyung",
       alternateName: "경나원",
       jobTitle: "CEO & App Developer",
+      description: copy.seoDescription,
       worksFor: { "@type": "Organization", name: "Newon", url: SITE },
       email: "mailto:newon@newon.app",
       url: `${SITE}${pfPrefix(lang)}/`,
@@ -297,15 +411,17 @@ function indexPage(langMeta, copy, apps) {
             <h1 class="pf-hero__name pf-enter" style="--d:2">경나원</h1>
             <p class="pf-hero__en pf-enter" style="--d:3">Nawon Kyung</p>
             <p class="pf-hero__role pf-enter" style="--d:4">CEO &amp; App Developer</p>
-            <p class="pf-hero__lead pf-enter" style="--d:5">${copy.heroLeadHtml}</p>
-            <div class="pf-hero__actions pf-enter" style="--d:6">
+            <p class="pf-hero__statement pf-enter" style="--d:5">${copy.heroStatementHtml || ""}</p>
+            <p class="pf-hero__lead pf-enter" style="--d:6">${copy.heroLeadHtml}</p>
+            <div class="pf-hero__actions pf-enter" style="--d:7">
               <a class="btn btn-primary pf-hero__btn" href="#projects">${esc(copy.ctaProjects)}</a>
+              <a class="btn btn-ghost pf-hero__btn" href="/${esc(lang)}/">${esc(copy.ctaNewon || "Newon ↗")}</a>
               <a class="btn btn-ghost pf-hero__btn" href="#contact">${esc(copy.ctaContact)}</a>
             </div>
           </div>
           <aside class="pf-hero__aside pf-enter" style="--d:5" aria-label="${esc(copy.heroMetaTitle)}">
             <p class="pf-hero__aside-title">${esc(copy.heroMetaTitle)}</p>
-            <dl class="pf-hero__meta">
+            <dl class="pf-hero__meta pf-hero__meta--focus">
               <div>
                 <dt>${esc(copy.heroMeta1En)}</dt>
                 <dd>${esc(copy.heroMeta1Body)}</dd>
@@ -318,9 +434,18 @@ function indexPage(langMeta, copy, apps) {
                 <dt>${esc(copy.heroMeta3En)}</dt>
                 <dd>${esc(copy.heroMeta3Body)}</dd>
               </div>
+              ${
+                copy.heroMeta4En
+                  ? `<div>
+                <dt>${esc(copy.heroMeta4En)}</dt>
+                <dd>${esc(copy.heroMeta4Body || "")}</dd>
+              </div>`
+                  : ""
+              }
             </dl>
           </aside>
         </div>
+        ${sectionNavHtml(copy)}
       </section>
 
       <section id="about" class="pf-section">
@@ -332,34 +457,34 @@ function indexPage(langMeta, copy, apps) {
         </div>
       </section>
 
-      <section id="numbers" class="pf-section">
+      <section id="numbers" class="pf-section pf-section--metrics">
         <div class="pf-wrap">
           <p class="pf-label">${esc(copy.numbersLabel)}</p>
           <h2>${esc(copy.numbersTitle)}</h2>
           <p class="pf-stats__headline">${esc(copy.numbersHeadline)}</p>
           <p class="pf-stats__support">${esc(copy.numbersSupport)}</p>
-          <div class="pf-stats">
-          ${visibleCopyStats(copy).map(statCard).join("\n          ")}
+          <div class="pf-hub-metrics">
+          ${metrics.map(hubMetricHtml).join("\n          ")}
           </div>
         </div>
       </section>
 
-      <section class="pf-section" id="what-i-do">
+      <section class="pf-section" id="capabilities">
         <div class="pf-wrap">
           <p class="pf-label">${esc(copy.workLabel)}</p>
           <h2>${esc(copy.workTitle)}</h2>
-          <div class="pf-work">
-          ${work}
+          <div class="pf-hub-cap-grid">
+          ${caps}
           </div>
         </div>
       </section>
 
-      <section class="pf-section">
+      <section class="pf-section" id="process">
         <div class="pf-wrap">
           <p class="pf-label">${esc(copy.processLabel)}</p>
           <h2>${esc(copy.processTitle)}</h2>
-          <div class="pf-process" aria-label="${esc(copy.processAria)}">
-          ${process}
+          <div class="pf-hub-pipe" data-count="${copy.process.length}" aria-label="${esc(copy.processAria)}">
+          ${hubProcessHtml(copy, lang)}
           </div>
         </div>
       </section>
@@ -395,6 +520,78 @@ function indexPage(langMeta, copy, apps) {
         </div>
       </section>
 
+${
+  caseStudies.length
+    ? `<section id="case-studies" class="pf-section pf-section--case">
+        <div class="pf-wrap">
+          <p class="pf-label">${esc(copy.caseStudiesLabel)}</p>
+          <h2>${esc(copy.caseStudiesTitle)}</h2>
+          <p class="pf-hub-lead pf-reveal">${esc(copy.caseStudiesLead)}</p>
+          <div class="pf-hub-case-grid">
+          ${caseStudies.map((c, i) => hubCaseHtml(c, i, copy)).join("\n          ")}
+          </div>
+        </div>
+      </section>`
+    : ""
+}
+
+      <section id="beyond" class="pf-section">
+        <div class="pf-wrap">
+          <p class="pf-label">${esc(copy.beyondLabel)}</p>
+          <h2>${esc(copy.beyondTitle)}</h2>
+          <div class="pf-hub-beyond-grid">
+          ${beyond.map(hubBeyondHtml).join("\n          ")}
+          </div>
+        </div>
+      </section>
+
+      <section id="now" class="pf-section pf-section--now">
+        <div class="pf-wrap">
+          <p class="pf-label">${esc(copy.nowSectionLabel)}</p>
+          <h2>${esc(copy.nowSectionTitle)}</h2>
+          <p class="pf-hub-lead pf-reveal">${esc(copy.nowSectionLead)}</p>
+          <div class="pf-hub-now-grid">
+          ${nowGroups.map((g) => hubNowHtml(g, copy)).join("\n          ")}
+          </div>
+        </div>
+      </section>
+
+      <section id="workflow" class="pf-section pf-section--workflow">
+        <div class="pf-wrap pf-wrap--narrow">
+          <p class="pf-label">${esc(copy.workflowLabel)}</p>
+          <h2>${esc(copy.workflowTitle)}</h2>
+          <p class="pf-reveal">${esc(copy.workflowBody)}</p>
+          <ol class="pf-hub-workflow pf-reveal" aria-label="${esc(copy.workflowLabel)}">
+            ${(copy.workflowSteps || [])
+              .map(
+                (step, i, arr) =>
+                  `<li>${esc(step)}${i < arr.length - 1 ? `<span aria-hidden="true">→</span>` : ""}</li>`
+              )
+              .join("")}
+          </ol>
+        </div>
+      </section>
+
+      <section id="principles" class="pf-section pf-section--principles">
+        <div class="pf-wrap">
+          <p class="pf-label">${esc(copy.principlesLabel)}</p>
+          <h2>${esc(copy.principlesTitle)}</h2>
+          <ol class="pf-hub-principles">
+            ${(copy.principles || [])
+              .map(
+                (p) => `<li class="pf-reveal">
+              <span class="pf-hub-principles__n">${esc(p.n)}</span>
+              <div>
+                <strong>${esc(p.title)}</strong>
+                <p>${esc(p.body)}</p>
+              </div>
+            </li>`
+              )
+              .join("\n            ")}
+          </ol>
+        </div>
+      </section>
+
       <section id="newon" class="pf-section">
         <div class="pf-wrap">
           <div class="pf-newon pf-reveal">
@@ -402,9 +599,9 @@ function indexPage(langMeta, copy, apps) {
             <div>
               <p class="pf-label">${esc(copy.studioLabel)}</p>
               <h2>Newon</h2>
-              <p class="pf-sub">${esc(copy.studioSub)}</p>
+              <p class="pf-sub">${esc(tagline)}</p>
               <p>${esc(copy.studioBody)}</p>
-              <a class="btn btn-primary" href="${SITE}/${lang}/">${esc(copy.studioCta)}</a>
+              <a class="btn btn-primary" href="/${esc(lang)}/about/">${esc(copy.studioCta)}</a>
             </div>
           </div>
         </div>
@@ -423,7 +620,11 @@ function indexPage(langMeta, copy, apps) {
             <p class="pf-founder__intro">${esc(copy.founderIntro)}</p>
             <p class="pf-founder__intro">${esc(copy.founderIntro2)}</p>
             <p class="pf-founder__expertise">${copy.founderExpertise.map((e) => `<span>${esc(e)}</span>`).join("")}</p>
-            <a class="pf-founder__biz" href="/${esc(lang)}/business/">${esc(copy.founderBusiness)}</a>
+            <div class="pf-founder__links">
+              <a class="pf-founder__biz" href="/${esc(lang)}/about/">${esc(copy.founderAboutCta || copy.studioCta)}</a>
+              <a class="pf-founder__biz" href="/${esc(lang)}/business/">${esc(copy.founderBusiness)}</a>
+              <a class="pf-founder__biz" href="#contact">${esc(copy.founderContactCta || copy.ctaContact)}</a>
+            </div>
           </div>
         </div>
       </section>
@@ -440,7 +641,7 @@ function indexPage(langMeta, copy, apps) {
             <div class="pf-cx__open-col pf-cx-enter" style="--d: 3">
               <p class="pf-cx__open-label">${esc(copy.contactOpenLabel)}</p>
               <ul class="pf-open">
-                ${copy.contactOpenTopics.map(openTopicHtml).join("\n                ")}
+                ${copy.contactOpenTopics.map((t) => openTopicHtml(lang, t)).join("\n                ")}
               </ul>
             </div>
 

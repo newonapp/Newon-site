@@ -4,19 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App Launch Kit | Newon Store</title>
-    <meta name="description" content="Pre-launch checklist, store metadata, and launch schedule templates." />
+    <meta name="description" content="App launch kit with step-by-step checklists for product definition, store metadata, QA, marketing, and post-launch review." />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://www.newon.app/pt-br/resources/store/app-launch-kit/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.newon.app/pt-br/resources/store/app-launch-kit/" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:title" content="App Launch Kit | Newon Store" />
-    <meta property="og:description" content="Pre-launch checklist, store metadata, and launch schedule templates." />
+    <meta property="og:description" content="App launch kit with step-by-step checklists for product definition, store metadata, QA, marketing, and post-launch review." />
     <meta property="og:site_name" content="Newon" />
     <meta property="og:image" content="https://www.newon.app/logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="App Launch Kit | Newon Store" />
-    <meta name="twitter:description" content="Pre-launch checklist, store metadata, and launch schedule templates." />
+    <meta name="twitter:description" content="App launch kit with step-by-step checklists for product definition, store metadata, QA, marketing, and post-launch review." />
     <meta name="twitter:image" content="https://www.newon.app/logo.png" />
     <link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/resources/store/app-launch-kit/" />
     <link rel="alternate" hreflang="en" href="https://www.newon.app/en/resources/store/app-launch-kit/" />
@@ -39,7 +39,10 @@
     <link rel="stylesheet" href="/gnav-mega.css?v=20260826gnav5" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
     <link rel="stylesheet" href="/site-premium.css?v=20260826bw1" />
-    <link rel="stylesheet" href="/resources.css?v=20260826nl0" />
+    <link rel="stylesheet" href="/resources.css?v=20260828sdfocus" />
+    <link rel="stylesheet" href="/store-detail.css?v=20260828sd2" />
+    <link rel="stylesheet" href="/blog-hub.css?v=20260828nb2" />
+    <link rel="stylesheet" href="/media-hub.css?v=20260828mh1" />
     <link rel="stylesheet" href="/labs-detail.css?v=20260826ld9" />
     <script src="/theme-shell.js"></script>
     <script src="/analytics.js?v=20260825studio" defer></script>
@@ -50,8 +53,8 @@
     <header class="gnav site-header gnav--five" data-gnav>
       <div class="gnav__bar">
         <div class="gnav__inner">
-          <a class="gnav__brand" href="../../../">
-            <img class="gnav__logo" src="/logo.png" alt="Newon" width="40" height="40" decoding="async" />
+          <a class="gnav__brand" href="../../../" aria-label="Newon">
+            <img class="gnav__logo" src="/logo.png" alt="" width="40" height="40" decoding="async" />
             <span class="gnav__wordmark">Newon</span>
           </a>
           <nav class="gnav__nav" aria-label="Main navigation">
@@ -222,11 +225,32 @@
         <span class="gnav-mega__row-desc">Build logs and stories</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../../../resources/labs/" role="menuitem">
+    </a><a class="gnav-mega__row" href="../../../resources/media/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Media</span>
+        <span class="gnav-mega__row-desc">Video · product stories · visual</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../../resources/labs/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Labs</span>
         <span class="gnav-mega__row-desc">Experiments · ventures · ideas</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../../resources/newsletter/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">06</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Newsletter</span>
+        <span class="gnav-mega__row-desc">Short build log · updates</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../../resources/education/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">07</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Education</span>
+        <span class="gnav-mega__row-desc">Guides · courses · workshops</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a>
@@ -313,7 +337,7 @@
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../../../resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="../../../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../../../resources/labs/">Labs</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../../../resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="../../../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../../../resources/media/">Media</a><a class="gnav-mobile__sublink" href="../../../resources/labs/">Labs</a><a class="gnav-mobile__sublink" href="../../../resources/newsletter/">Newsletter</a><a class="gnav-mobile__sublink" href="../../../resources/education/">Education</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -344,115 +368,179 @@
       <span>App Launch Kit</span>
     </div>
   </nav>
-<article class="rs-detail" data-rs-reveal>
-  <div class="rs-inner rs-detail__grid">
-    <div>
-      <p class="rs-eyebrow">TEMPLATES</p>
-      <h1 class="rs-hero__title">App Launch Kit</h1>
-      <p class="rs-price">COMING SOON</p>
-      <p class="rs-hero__lead">Pre-launch checklist, store metadata, and launch schedule templates.</p>
-      <div class="rs-detail__meta">
-        <div><span class="rs-k">VERSION</span><strong>0.1</strong></div>
-        <div><span class="rs-k">UPDATED</span><strong>2026-08</strong></div>
-      </div>
-      <form class="rs-form waitlist-form" data-waitlist-form data-form-type="waitlist" data-product-id="app-launch-kit">
-    <input type="hidden" name="productId" value="app-launch-kit" />
-    <input type="email" name="email" placeholder="email@example.com" required autocomplete="email" />
-    <input type="text" name="_honey" class="rs-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-    <button type="submit" class="rs-btn rs-btn--primary">Notify me at launch</button>
-  </form>
-  <p class="rs-form__msg" data-waitlist-success hidden>You're on the list.</p>
-  <p class="rs-form__msg" data-waitlist-duplicate hidden>This email is already registered.</p>
-  <p class="rs-form__msg rs-form__msg--error" data-waitlist-error hidden role="alert">Something went wrong. Please try again.</p>
-  <p class="rs-form__note">We'll email you when it launches. Checkout is not connected yet.</p>
-  <p class="rs-form__alt"><a href="../../business/inquiry/">Inquire →</a></p>
-    </div>
-    <aside class="rs-detail__aside">
-      <div class="rs-preview">
-        <p class="rs-k">PREVIEW</p>
-        <div class="rs-preview__frame"><span>App Launch Kit</span></div>
-      </div>
-      <div class="rs-detail__block">
-        <p class="rs-k">FOR</p>
-        <p>Teams and solo makers shipping a first app</p>
-      </div>
-      <div class="rs-detail__block">
-        <p class="rs-k">WHAT'S INCLUDED</p>
-        <ul class="rs-includes"><li>Launch checklist</li><li>Store listing draft</li><li>Launch calendar</li><li>Announcement copy samples</li></ul>
-      </div>
-    </aside>
-  </div>
-</article>
-<section class="rs-section rs-explore" data-rs-reveal aria-labelledby="rs-explore-title">
-    <div class="rs-inner">
-      <header class="rs-explore__head">
-        <p class="rs-eyebrow" id="rs-explore-title">EXPLORE RESOURCES</p>
-        <p class="rs-explore__count"><span class="rs-explore__count-label">INDEX</span><span class="rs-explore__count-n">07</span></p>
-      </header>
-      <div class="rs-explore__grid"><a class="rs-explore__item is-current" href="#" data-rs-explore="store" aria-current="page">
-      <span class="rs-explore__top">
-        <span class="rs-explore__idx" aria-hidden="true">01</span>
-        <span class="rs-explore__arrow" aria-hidden="true">→</span>
-      </span>
-      <span class="rs-explore__name">STORE</span>
-      <span class="rs-explore__desc">Templates · AI/Code · Business · Design</span>
-      <span class="rs-explore__motif" aria-hidden="true"></span>
-    </a><a class="rs-explore__item" href="../../insights/" data-rs-explore="insights">
-      <span class="rs-explore__top">
-        <span class="rs-explore__idx" aria-hidden="true">02</span>
-        <span class="rs-explore__arrow" aria-hidden="true">→</span>
-      </span>
-      <span class="rs-explore__name">INSIGHTS</span>
-      <span class="rs-explore__desc">Tech · AI · Product · Consumer · Startup · Market</span>
-      <span class="rs-explore__motif" aria-hidden="true"></span>
-    </a><a class="rs-explore__item" href="../../blog/" data-rs-explore="blog">
-      <span class="rs-explore__top">
-        <span class="rs-explore__idx" aria-hidden="true">03</span>
-        <span class="rs-explore__arrow" aria-hidden="true">→</span>
-      </span>
-      <span class="rs-explore__name">BLOG</span>
-      <span class="rs-explore__desc">Product · AI · Development · Business</span>
-      <span class="rs-explore__motif" aria-hidden="true"></span>
-    </a><a class="rs-explore__item" href="../../media/" data-rs-explore="media">
-      <span class="rs-explore__top">
-        <span class="rs-explore__idx" aria-hidden="true">04</span>
-        <span class="rs-explore__arrow" aria-hidden="true">→</span>
-      </span>
-      <span class="rs-explore__name">MEDIA</span>
-      <span class="rs-explore__desc">Video · stories · updates</span>
-      <span class="rs-explore__motif" aria-hidden="true"></span>
-    </a><a class="rs-explore__item" href="../../labs/" data-rs-explore="labs">
-      <span class="rs-explore__top">
-        <span class="rs-explore__idx" aria-hidden="true">05</span>
-        <span class="rs-explore__arrow" aria-hidden="true">→</span>
-      </span>
-      <span class="rs-explore__name">LABS</span>
-      <span class="rs-explore__desc">Pre-product experiments and prototypes.</span>
-      <span class="rs-explore__motif" aria-hidden="true"></span>
-    </a><a class="rs-explore__item" href="../../newsletter/" data-rs-explore="newsletter">
-      <span class="rs-explore__top">
-        <span class="rs-explore__idx" aria-hidden="true">06</span>
-        <span class="rs-explore__arrow" aria-hidden="true">→</span>
-      </span>
-      <span class="rs-explore__name">NEWON NOTES</span>
-      <span class="rs-explore__desc">Products, labs, and lessons.</span>
-      <span class="rs-explore__motif" aria-hidden="true"></span>
-    </a><a class="rs-explore__item" href="../../education/" data-rs-explore="education">
-      <span class="rs-explore__top">
-        <span class="rs-explore__idx" aria-hidden="true">07</span>
-        <span class="rs-explore__arrow" aria-hidden="true">→</span>
-      </span>
-      <span class="rs-explore__name">EDUCATION</span>
-      <span class="rs-explore__desc">Learning content in progress.</span>
-      <span class="rs-explore__motif" aria-hidden="true"></span>
-    </a></div>
-    </div>
-  </section>
 <nav class="rs-switch" aria-label="Resources">
     <div class="rs-inner rs-switch__inner">
       <div class="rs-switch__track"><a class="rs-switch__link" href="../">RESOURCES</a><a class="rs-switch__link is-active" href="#" aria-current="page">STORE</a><a class="rs-switch__link" href="../insights/">INSIGHTS</a><a class="rs-switch__link" href="../blog/">BLOG</a><a class="rs-switch__link" href="../media/">MEDIA</a><a class="rs-switch__link" href="../labs/">LABS</a><a class="rs-switch__link" href="../newsletter/">NOTES</a><a class="rs-switch__link" href="../education/">EDUCATION</a></div>
     </div>
   </nav>
+<article class="sd-page" data-sd-layout="split">
+  <header class="sd-hero sd-hero--split">
+      <div class="rs-inner sd-hero__split">
+        <div class="sd-hero__copy">
+    <p class="sd-eyebrow">TEMPLATES · PRODUCT LAUNCH</p>
+    <p class="sd-hero__kicker">FROM IDEA TO STORE</p>
+    <div class="sd-hero__row">
+      <h1 class="sd-hero__title">App Launch Kit</h1>
+      <span class="sd-badge">COMING SOON</span>
+    </div>
+    <p class="sd-hero__sub">A practical kit that turns an idea into a launch-ready app plan.</p>
+    <p class="sd-hero__desc">A practical template that organizes everything from pre-build to post-launch in one flow. Define the product, set MVP scope, prepare store listing, run QA, and plan early marketing — step by step.</p>
+  </div>
+        <div class="sd-hero__visual">
+          <p class="sd-hero__visual-label">Preview · sample data only</p>
+          <div class="sd-preview sd-preview--launch">
+    <div class="sd-preview__panel">
+      <p class="sd-preview__label">LAUNCH CHECKLIST</p>
+      <ul class="sd-check"><li class="sd-check__item">
+      <span class="sd-check__box" aria-hidden="true"></span>
+      <span class="sd-check__text"><strong>Product Definition</strong><span>Problem · User · Value</span></span>
+    </li><li class="sd-check__item">
+      <span class="sd-check__box" aria-hidden="true"></span>
+      <span class="sd-check__text"><strong>MVP Scope</strong><span>Must / Later split</span></span>
+    </li><li class="sd-check__item">
+      <span class="sd-check__box" aria-hidden="true"></span>
+      <span class="sd-check__text"><strong>Store Metadata</strong><span>Name · Subtitle · Keywords</span></span>
+    </li><li class="sd-check__item">
+      <span class="sd-check__box" aria-hidden="true"></span>
+      <span class="sd-check__text"><strong>QA Pass</strong><span>Function · UI · Edge cases</span></span>
+    </li></ul>
+    </div>
+    <div class="sd-preview__panel">
+      <p class="sd-preview__label">LAUNCH TIMELINE</p>
+      <ol class="sd-timeline"><li class="sd-timeline__item">
+      <span class="sd-timeline__t">T-14</span>
+      <span class="sd-timeline__d">Meta · accounts · policy</span>
+    </li><li class="sd-timeline__item">
+      <span class="sd-timeline__t">T-7</span>
+      <span class="sd-timeline__d">QA · screenshots</span>
+    </li><li class="sd-timeline__item">
+      <span class="sd-timeline__t">T-1</span>
+      <span class="sd-timeline__d">Final check</span>
+    </li><li class="sd-timeline__item">
+      <span class="sd-timeline__t">T+0</span>
+      <span class="sd-timeline__d">Launch</span>
+    </li><li class="sd-timeline__item">
+      <span class="sd-timeline__t">T+7</span>
+      <span class="sd-timeline__d">Reviews · bugs</span>
+    </li></ol>
+    </div>
+  </div>
+        </div>
+      </div>
+    </header>
+  
+
+  <section class="sd-section sd-section--wash" aria-labelledby="sd-includes-title">
+    <div class="rs-inner">
+      <p class="sd-eyebrow">02 · WHAT'S INCLUDED</p>
+      <h2 id="sd-includes-title" class="sd-title">What's Included</h2>
+      <ol class="sd-includes"><li class="sd-include">
+      <span class="sd-include__n">01</span>
+      <div class="sd-include__body">
+        <h3 class="sd-include__title">Product Definition</h3>
+        <p class="sd-include__text">Clarify the idea, problem, user, and core value</p>
+      </div>
+    </li><li class="sd-include">
+      <span class="sd-include__n">02</span>
+      <div class="sd-include__body">
+        <h3 class="sd-include__title">MVP Scope</h3>
+        <p class="sd-include__text">Separate must-ship features from later work</p>
+      </div>
+    </li><li class="sd-include">
+      <span class="sd-include__n">03</span>
+      <div class="sd-include__body">
+        <h3 class="sd-include__title">Pre-launch Checklist</h3>
+        <p class="sd-include__text">Accounts, policies, analytics, and pre-ship checks</p>
+      </div>
+    </li><li class="sd-include">
+      <span class="sd-include__n">04</span>
+      <div class="sd-include__body">
+        <h3 class="sd-include__title">App Store Metadata</h3>
+        <p class="sd-include__text">Name, subtitle, description, and keywords</p>
+      </div>
+    </li><li class="sd-include">
+      <span class="sd-include__n">05</span>
+      <div class="sd-include__body">
+        <h3 class="sd-include__title">QA Checklist</h3>
+        <p class="sd-include__text">Function, UI, device, and edge-case testing</p>
+      </div>
+    </li><li class="sd-include">
+      <span class="sd-include__n">06</span>
+      <div class="sd-include__body">
+        <h3 class="sd-include__title">Launch Timeline</h3>
+        <p class="sd-include__text">Schedule work before and after launch</p>
+      </div>
+    </li><li class="sd-include">
+      <span class="sd-include__n">07</span>
+      <div class="sd-include__body">
+        <h3 class="sd-include__title">Marketing Starter</h3>
+        <p class="sd-include__text">Social, landing page, and early-user prep</p>
+      </div>
+    </li><li class="sd-include">
+      <span class="sd-include__n">08</span>
+      <div class="sd-include__body">
+        <h3 class="sd-include__title">Post-launch Review</h3>
+        <p class="sd-include__text">Reviews, bugs, feedback, and update plans</p>
+      </div>
+    </li></ol>
+    </div>
+  </section>
+
+  
+
+  <section class="sd-section" aria-labelledby="sd-who-title">
+    <div class="rs-inner sd-split">
+      <div>
+        <p class="sd-eyebrow">04 · WHO IT'S FOR</p>
+        <h2 id="sd-who-title" class="sd-title">Who It's For</h2>
+        <ul class="sd-tags"><li class="sd-tag">Indie Makers</li><li class="sd-tag">App Developers</li><li class="sd-tag">Early-stage Founders</li><li class="sd-tag">Small Product Teams</li></ul>
+      </div>
+      <div>
+        <p class="sd-eyebrow">05 · FORMAT</p>
+        <h2 class="sd-title">Format</h2>
+        <ul class="sd-tags"><li class="sd-tag sd-tag--ghost">Checklist</li><li class="sd-tag sd-tag--ghost">Workspace Template</li><li class="sd-tag sd-tag--ghost">Launch Timeline</li><li class="sd-tag sd-tag--ghost">Planning Sheets</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sd-section sd-status" aria-labelledby="sd-status-title">
+    <div class="rs-inner">
+      <p class="sd-eyebrow">06 · STATUS</p>
+      <h2 id="sd-status-title" class="sd-status__title">COMING SOON</h2>
+      <div class="sd-status__body"><p>This resource is currently being built at Newon.</p><p>We only publish finished products.</p></div>
+    </div>
+  </section>
+
+  <section class="sd-section sd-section--wash" aria-labelledby="sd-related-title">
+    <div class="rs-inner">
+      <p class="sd-eyebrow">07 · RELATED</p>
+      <h2 id="sd-related-title" class="sd-title">Related / Navigation</h2>
+      <div class="sd-related"><a class="sd-related__item" href="../mvp-planning-kit/">
+        <span class="sd-related__cat">TEMPLATES</span>
+        <span class="sd-related__title">MVP Planning Kit</span>
+        <span class="sd-related__go" aria-hidden="true">→</span>
+      </a><a class="sd-related__item" href="../cursor-prompt-pack/">
+        <span class="sd-related__cat">AI-CODE</span>
+        <span class="sd-related__title">Cursor Product Builder Pack</span>
+        <span class="sd-related__go" aria-hidden="true">→</span>
+      </a><a class="sd-related__item" href="../codex-builder-pack/">
+        <span class="sd-related__cat">AI-CODE</span>
+        <span class="sd-related__title">Codex Builder Pack</span>
+        <span class="sd-related__go" aria-hidden="true">→</span>
+      </a><a class="sd-related__item" href="../website-launch-checklist/">
+        <span class="sd-related__cat">TEMPLATES</span>
+        <span class="sd-related__title">Website Launch Checklist</span>
+        <span class="sd-related__go" aria-hidden="true">→</span>
+      </a></div>
+      <nav class="sd-nav" aria-label="Store navigation">
+    <a class="sd-nav__back" href="../">← Back to Store</a>
+    <a class="sd-nav__next" href="../mvp-planning-kit/"><span>Next Resource →</span><strong>MVP Planning Kit</strong></a>
+  </nav>
+    </div>
+  </section>
+
+  
+</article>
     </main>
     <footer class="site-footer studio-footer">
       <div class="container studio-footer__grid studio-footer__grid--five">
@@ -470,7 +558,7 @@
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Resources</p>
-      <ul class="studio-footer__list"><li><a href="../../../resources/store/">Store</a></li><li><a href="../../../resources/insights/">Insights</a></li><li><a href="../../../resources/blog/">Blog</a></li><li><a href="../../../resources/labs/">Labs</a></li></ul>
+      <ul class="studio-footer__list"><li><a href="../../../resources/store/">Store</a></li><li><a href="../../../resources/insights/">Insights</a></li><li><a href="../../../resources/blog/">Blog</a></li><li><a href="../../../resources/media/">Media</a></li><li><a href="../../../resources/labs/">Labs</a></li><li><a href="../../../resources/newsletter/">Notes</a></li><li><a href="../../../resources/education/">Education</a></li></ul>
     </div>
         <div class="studio-footer__col">
       <p class="studio-footer__title">Company</p>
@@ -494,6 +582,7 @@
       </div>
     </footer>
     <script src="/resources.js?v=20260826filt1" defer></script>
+    <script src="/media-hub.js?v=20260828mh1" defer></script>
     <script src="/labs-detail.js?v=20260826ld2" defer></script>
     <script src="/waitlist.js" defer></script>
     <script src="/site-chrome.js?v=20260826gnav5" defer></script>

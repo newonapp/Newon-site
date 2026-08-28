@@ -171,15 +171,17 @@ function servicesSection(copy, inquiryHref = "../inquiry/#inquiry") {
       const hidden = i === 0 ? "" : " hidden";
       const active = i === 0 ? " is-active" : "";
       const label = escapeHtml(s.tab || shortTitle(s.title));
+      const statusBit = s.statusLabel ? ` · ${escapeHtml(s.statusLabel)}` : "";
       const isReady = s.ready !== false && !!(s.summary || s.what);
+      const quoteLabel = s.quoteCta || copy.quoteCta || "";
       const quoteBtn = panelInquiry
-        ? `<a class="bp-btn bp-btn--primary" href="${escapeHtml(panelInquiry)}" data-analytics="business_pillar_cta">${escapeHtml(copy.quoteCta || "")}</a>`
+        ? `<a class="bp-btn bp-btn--primary" href="${escapeHtml(panelInquiry)}" data-analytics="business_pillar_cta">${escapeHtml(quoteLabel)}</a>`
         : "";
       const actions = `<div class="bp-explore__actions">${detailAction(copy, s)}${quoteBtn}</div>`;
 
       if (!isReady) {
         return `<article class="bp-explore__panel bp-explore__panel--soon${active}" role="tabpanel" id="bp-panel-${i}" aria-labelledby="bp-tab-${i}" data-bp-panel="${i}"${hidden}>
-      <p class="bp-explore__kicker">${pad2(i + 1)} · ${label}</p>
+      <p class="bp-explore__kicker">${pad2(i + 1)} · ${label}${statusBit}</p>
       <h2 class="bp-explore__title">${escapeHtml(s.title || copy.comingSoon || "준비중")}</h2>
       <p class="bp-explore__summary">${escapeHtml(s.summary || copy.comingSoonLead || "")}</p>
       <footer class="bp-explore__foot">
@@ -190,7 +192,7 @@ function servicesSection(copy, inquiryHref = "../inquiry/#inquiry") {
       }
 
       return `<article class="bp-explore__panel${active}" role="tabpanel" id="bp-panel-${i}" aria-labelledby="bp-tab-${i}" data-bp-panel="${i}"${hidden}>
-      <p class="bp-explore__kicker">${pad2(i + 1)} · ${label}</p>
+      <p class="bp-explore__kicker">${pad2(i + 1)} · ${label}${statusBit}</p>
       <h2 class="bp-explore__title">${escapeHtml(s.title)}</h2>
       <p class="bp-explore__summary">${escapeHtml(s.summary)}</p>
       <dl class="bp-explore__detail">

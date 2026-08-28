@@ -1,49 +1,22 @@
 /**
- * Builds the redesigned About page body from copy + live catalog / news / labs data.
+ * Builds the About page body from copy + live company metrics / product catalog.
  */
 import { escapeHtml } from "./hub-utils.mjs";
 import { getAboutPageCopy } from "./about-page-copy.mjs";
-import { APP_CATALOG, PORTFOLIO_STATS, visibleStats } from "./portfolio-data.mjs";
+import { getCompanyMetrics } from "./company-metrics.mjs";
+import { APP_CATALOG } from "./portfolio-data.mjs";
 import { getCompanyProjects } from "./company-portfolio-data.mjs";
-import { getLabsExperiments } from "./lab-experiments.mjs";
-import {
-  publishedArticles,
-  articleCopy,
-  formatNewsDate,
-  productBySlug,
-  articleProductSlug,
-  buildTimelineEntries,
-  formatHistoryDisplayDate,
-  historyDatetimeAttr,
-} from "./news-data.mjs";
 
-const HOME_HASH_BY_SLUG = Object.fromEntries(
-  APP_CATALOG.map((a) => [a.slug, a.homeHash || ""])
-);
 const ICON_BY_SLUG = Object.fromEntries(APP_CATALOG.map((a) => [a.slug, a.icon || ""]));
 ICON_BY_SLUG["404-human"] = "/404-human-logo.png";
 
-function productHref(project, langDir) {
-  if (project.slug === "404-human") {
-    return `../404-human/`;
-  }
-  // Dedicated app intro pages — no home shell flash
+function productHref(project) {
+  if (project.slug === "404-human") return `../404-human/`;
   return `../portfolio/${escapeHtml(project.slug)}/`;
 }
 
 function productIcon(project) {
   return project.icon || ICON_BY_SLUG[project.slug] || "";
-}
-
-function companyStats() {
-  const stats = visibleStats(PORTFOLIO_STATS);
-  const byId = Object.fromEntries(stats.map((s) => [s.id, s]));
-  return {
-    products: String(APP_CATALOG.length),
-    languages: String(byId.languages?.value || "13"),
-    countries: String(byId.countries?.value || "177"),
-    founded: "2026",
-  };
 }
 
 function projectsBySlug(lang) {
@@ -67,12 +40,24 @@ function orderedProducts(copy, bySlug) {
   return out;
 }
 
+function logoHtml(slug, name, size = 48) {
+  const icon = ICON_BY_SLUG[slug] || (slug === "404-human" ? "/404-human-logo.png" : "");
+  if (icon) {
+    return `<span class="ab-logo"><img src="${escapeHtml(icon)}" alt="" width="${size}" height="${size}" loading="lazy" decoding="async" /></span>`;
+  }
+  const mark = String(name || slug || "?")
+    .replace(/^Newon\s+/i, "")
+    .slice(0, 2)
+    .toUpperCase();
+  return `<span class="ab-logo ab-logo--mark" aria-hidden="true">${escapeHtml(mark)}</span>`;
+}
+
 function metricsHtml(copy, stats) {
   const items = [
     { value: stats.products, label: copy.metricLabels.products },
-    { value: stats.languages, label: copy.metricLabels.languages },
     { value: stats.countries, label: copy.metricLabels.countries },
-    { value: stats.founded, label: copy.metricLabels.founded },
+    { value: stats.languages, label: copy.metricLabels.languages },
+    { value: stats.experiments, label: copy.metricLabels.experiments },
   ];
   return `<section class="ab-metrics" aria-label="Company metrics" data-ab-reveal>
   <div class="ab-inner ab-metrics__grid">
@@ -88,89 +73,212 @@ function metricsHtml(copy, stats) {
 </section>`;
 }
 
-function heroHtml(copy) {
-  const indexRows = (copy.indexItems || [])
-    .map(
-      (it) => `<li class="ab-index__row">
-      <span class="ab-index__n">${escapeHtml(it.n)}</span>
-      <span class="ab-index__label">${escapeHtml(it.label)}</span>
-    </li>`
-    )
-    .join("");
-  const meta = (copy.indexMeta || [])
-    .map((m) => `<span>${escapeHtml(m)}</span>`)
-    .join('<span class="ab-index__dot" aria-hidden="true">·</span>');
+function brandHtml(copy) {
+  const word = escapeHtml(copy.brandWord || "Newon");
+  return `<section class="ab-brand" aria-label="${escapeHtml(copy.brandAria || "Newon")}" data-ab-brand>
+  <div class="ab-brand__frame" aria-hidden="true"></div>
+  <div class="ab-brand__grain" aria-hidden="true"></div>
+  <div class="ab-brand__meta">
+    <span class="ab-brand__meta-item">${escapeHtml(copy.brandMetaLeft || "NEWON")}</span>
+    <span class="ab-brand__meta-item">${escapeHtml(copy.brandMetaRight || "EST. 2026")}</span>
+  </div>
+  <div class="ab-brand__stage">
+    <p class="ab-brand__kicker">${escapeHtml(copy.brandKicker || "NEW + ON")}</p>
+    <div class="ab-brand__rule" aria-hidden="true"></div>
+    <div class="ab-brand__mark-wrap" aria-hidden="true">
+      <img class="ab-brand__mark" src="/logo.png" alt="" width="120" height="120" decoding="async" />
+    </div>
+    <p class="ab-brand__word" aria-hidden="true">${word}</p>
+    <h1 class="visually-hidden">${word}</h1>
+    <div class="ab-brand__rule ab-brand__rule--bottom" aria-hidden="true"></div>
+    <p class="ab-brand__line">${escapeHtml(copy.brandLine || "Product & Venture Studio")}</p>
+  </div>
+  <a class="ab-brand__scroll" href="#ab-about" data-ab-brand-scroll>
+    <span class="ab-brand__scroll-label">${escapeHtml(copy.brandScroll || "Scroll")}</span>
+    <span class="ab-brand__scroll-icon" aria-hidden="true"><i></i></span>
+  </a>
+</section>`;
+}
 
-  return `<section class="ab-hero" aria-labelledby="ab-hero-title" data-ab-reveal>
-  <div class="ab-inner ab-hero__grid">
-    <div class="ab-hero__copy">
-      <p class="ab-eyebrow">${escapeHtml(copy.heroEyebrow)}</p>
-      <h1 id="ab-hero-title" class="ab-hero__title">${copy.heroTitleHtml}</h1>
-      <p class="ab-hero__lead">${escapeHtml(copy.heroLead)}</p>
-      <p class="ab-hero__sub">${escapeHtml(copy.heroSub)}</p>
-      <div class="ab-hero__cta">
-        <a class="ab-btn ab-btn--primary" href="../portfolio/">${escapeHtml(copy.ctaProducts)}</a>
-        <a class="ab-btn ab-btn--ghost" href="../business/">${escapeHtml(copy.ctaBusiness)}</a>
+function heroHtml(copy) {
+  return `<section class="ab-hero" id="ab-about" aria-labelledby="ab-hero-title" data-ab-reveal>
+  <div class="ab-inner ab-hero__single">
+    <p class="ab-eyebrow">${escapeHtml(copy.heroEyebrow)}</p>
+    <h2 id="ab-hero-title" class="ab-hero__title">${copy.heroTitleHtml}</h2>
+    <p class="ab-hero__lead">${escapeHtml(copy.heroLead)}</p>
+    <p class="ab-hero__sub">${escapeHtml(copy.heroSub)}</p>
+    <div class="ab-hero__cta">
+      <a class="ab-btn ab-btn--primary" href="../products/">${escapeHtml(copy.ctaProducts)}</a>
+      <a class="ab-btn ab-btn--ghost" href="../business/inquiry/">${escapeHtml(copy.ctaBusiness)}</a>
+    </div>
+  </div>
+</section>`;
+}
+
+function whyHtml(copy) {
+  const body = (copy.whyBody || [])
+    .map((p) => `<p>${escapeHtml(p)}</p>`)
+    .join("");
+  const cols = copy.whyNewCols || [];
+  const colHtml = (col) =>
+    col
+      ? `<div class="ab-why__col">
+      <p class="ab-why__head">${escapeHtml(col.head)}</p>
+      <ul class="ab-why__list">
+        ${(col.items || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+      </ul>
+    </div>`
+      : "";
+  return `<section class="ab-section ab-why" aria-labelledby="ab-why-title" data-ab-reveal>
+  <div class="ab-inner ab-why__grid">
+    <div class="ab-why__copy">
+      <p class="ab-eyebrow">${escapeHtml(copy.whyEyebrow)}</p>
+      <h2 id="ab-why-title" class="ab-title">${escapeHtml(copy.whyTitle)}</h2>
+      <p class="ab-why__tagline">${escapeHtml(copy.whyTagline)}</p>
+      <p class="ab-why__tagline-en">${escapeHtml(copy.whyTaglineEn)}</p>
+      <div class="ab-why__body">${body}</div>
+    </div>
+    <div class="ab-why__type" aria-hidden="true">
+      <div class="ab-why__type-grid">
+        ${colHtml(cols[0])}
+        <span class="ab-why__plus">+</span>
+        ${colHtml(cols[1])}
       </div>
     </div>
-    <aside class="ab-index" aria-label="${escapeHtml(copy.indexTitle)}">
-      <p class="ab-index__title">${escapeHtml(copy.indexTitle)}</p>
-      <ol class="ab-index__list">${indexRows}</ol>
-      <p class="ab-index__meta">${meta}</p>
-    </aside>
   </div>
 </section>`;
 }
 
 function glanceHtml(copy) {
-  const facts = (copy.glanceFacts || [])
+  const roles = (copy.glanceRoles || [])
     .map(
-      (f) => `<div class="ab-glance__fact">
-      <dt>${escapeHtml(f.k)}</dt>
-      <dd>${escapeHtml(f.v)}</dd>
-    </div>`
+      (r) => `<article class="ab-role">
+      <span class="ab-role__n">${escapeHtml(r.n)}</span>
+      <h3 class="ab-role__title">${escapeHtml(r.title)}</h3>
+      <p class="ab-role__body">${escapeHtml(r.body)}</p>
+    </article>`
     )
     .join("");
   return `<section class="ab-section ab-section--wash" aria-labelledby="ab-glance-title" data-ab-reveal>
-  <div class="ab-inner ab-glance">
-    <div class="ab-glance__copy">
-      <p class="ab-eyebrow">${escapeHtml(copy.glanceEyebrow)}</p>
-      <h2 id="ab-glance-title" class="ab-title">${escapeHtml(copy.glanceTitle)}</h2>
-      <p class="ab-lead">${escapeHtml(copy.glanceLead)}</p>
-    </div>
-    <dl class="ab-glance__facts">${facts}</dl>
+  <div class="ab-inner">
+    <p class="ab-eyebrow">${escapeHtml(copy.glanceEyebrow)}</p>
+    <h2 id="ab-glance-title" class="ab-title">${escapeHtml(copy.glanceTitle)}</h2>
+    <div class="ab-roles">${roles}</div>
   </div>
 </section>`;
 }
 
-function doHtml(copy) {
-  const areas = copy.doAreas || [];
-  const featured = areas.find((a) => a.featured) || areas[0];
-  const rest = areas.filter((a) => a !== featured);
-  const feat = featured
-    ? `<article class="ab-do__feature">
-      <span class="ab-do__n">${escapeHtml(featured.n)}</span>
-      <h3 class="ab-do__title">${escapeHtml(featured.title)}</h3>
-      <p class="ab-do__body">${escapeHtml(featured.body)}</p>
-    </article>`
-    : "";
-  const grid = rest
+function universeHtml(copy, products) {
+  const cards = products
+    .map((p) => {
+      const cat = (copy.productCats && copy.productCats[p.slug]) || p.categoryLabel || "";
+      const status = p.category === "game" || p.filter === "game" ? copy.statusProject : copy.statusLive;
+      const desc = escapeHtml(p.oneLiner || p.summary || "");
+      const icon = productIcon(p);
+      const logo = icon
+        ? `<span class="ab-product__logo"><img src="${escapeHtml(icon)}" alt="" width="72" height="72" loading="lazy" decoding="async" /></span>`
+        : `<span class="ab-product__logo ab-product__logo--fallback" aria-hidden="true">${escapeHtml(
+            (p.name || "?").slice(0, 1)
+          )}</span>`;
+      return `<a class="ab-product" href="${productHref(p)}">
+        <div class="ab-product__head">
+          ${logo}
+          <div class="ab-product__top">
+            <span class="ab-product__cat">${escapeHtml(cat)}</span>
+            <span class="ab-product__status">${escapeHtml(status || "")}</span>
+          </div>
+        </div>
+        <h3 class="ab-product__name">${escapeHtml(p.name)}</h3>
+        <p class="ab-product__desc">${desc}</p>
+        <span class="ab-product__go">${escapeHtml(copy.universeView || "View →")}</span>
+      </a>`;
+    })
+    .join("");
+  return `<section class="ab-section ab-section--wash" aria-labelledby="ab-universe-title" data-ab-reveal>
+  <div class="ab-inner">
+    <p class="ab-eyebrow">${escapeHtml(copy.universeEyebrow || "PRODUCT UNIVERSE")}</p>
+    <h2 id="ab-universe-title" class="ab-title">${escapeHtml(copy.universeTitle || "")}</h2>
+    ${copy.universeLead ? `<p class="ab-lead">${escapeHtml(copy.universeLead)}</p>` : ""}
+    <div class="ab-universe">${cards}</div>
+    <p class="ab-section__more"><a class="ab-text-link" href="../portfolio/">${escapeHtml(copy.universeAll || "Portfolio →")}</a></p>
+  </div>
+</section>`;
+}
+
+function spacesHtml(copy, bySlug) {
+  const cards = (copy.spaces || [])
+    .map((sp) => {
+      const apps = (sp.slugs || [])
+        .map((slug) => {
+          const p = bySlug[slug];
+          if (!p) return null;
+          return { slug, name: p.name, href: productHref(p) };
+        })
+        .filter(Boolean);
+      const logos = apps
+        .map(
+          (a) => `<a class="ab-space__app" href="${escapeHtml(a.href)}" title="${escapeHtml(a.name)}">
+          ${logoHtml(a.slug, a.name, 40)}
+          <span class="ab-space__app-name">${escapeHtml(a.name)}</span>
+        </a>`
+        )
+        .join("");
+      return `<article class="ab-space">
+        <div class="ab-space__meta">
+          <span class="ab-space__n">${escapeHtml(sp.n)}</span>
+          <span class="ab-space__count">${apps.length ? String(apps.length).padStart(2, "0") : "—"}</span>
+        </div>
+        <h3 class="ab-space__title">${escapeHtml(sp.title)}</h3>
+        <p class="ab-space__body">${escapeHtml(sp.body)}</p>
+        ${logos ? `<div class="ab-space__apps">${logos}</div>` : ""}
+      </article>`;
+    })
+    .join("");
+  if (!cards) return "";
+  return `<section class="ab-section" aria-labelledby="ab-spaces-title" data-ab-reveal>
+  <div class="ab-inner">
+    <p class="ab-eyebrow">${escapeHtml(copy.spacesEyebrow || "PROBLEM SPACES")}</p>
+    <h2 id="ab-spaces-title" class="ab-title">${escapeHtml(copy.spacesTitle || "")}</h2>
+    <div class="ab-spaces">${cards}</div>
+  </div>
+</section>`;
+}
+
+function buildHtml(copy) {
+  const cards = (copy.buildAreas || [])
     .map(
-      (a) => `<article class="ab-do__card">
-      <span class="ab-do__n">${escapeHtml(a.n)}</span>
-      <h3 class="ab-do__title">${escapeHtml(a.title)}</h3>
-      <p class="ab-do__body">${escapeHtml(a.body)}</p>
-    </article>`
+      (a) => `<a class="ab-build__card" href="${escapeHtml(a.href)}">
+      <span class="ab-build__n">${escapeHtml(a.n)}</span>
+      <h3 class="ab-build__title">${escapeHtml(a.title)}</h3>
+      <p class="ab-build__body">${escapeHtml(a.body)}</p>
+      <span class="ab-build__go" aria-hidden="true">↗</span>
+    </a>`
     )
     .join("");
-  return `<section class="ab-section" aria-labelledby="ab-do-title" data-ab-reveal>
+  return `<section class="ab-section" aria-labelledby="ab-build-title" data-ab-reveal>
   <div class="ab-inner">
-    <p class="ab-eyebrow">${escapeHtml(copy.doEyebrow)}</p>
-    <h2 id="ab-do-title" class="ab-title ab-title--wide">${escapeHtml(copy.doTitle)}</h2>
-    <div class="ab-do">
-      ${feat}
-      <div class="ab-do__grid">${grid}</div>
-    </div>
+    <p class="ab-eyebrow">${escapeHtml(copy.buildEyebrow)}</p>
+    <h2 id="ab-build-title" class="ab-title ab-title--wide">${escapeHtml(copy.buildTitle)}</h2>
+    <div class="ab-build">${cards}</div>
+  </div>
+</section>`;
+}
+
+function workHtml(copy) {
+  const steps = (copy.workSteps || [])
+    .map(
+      (s) => `<li class="ab-work__step">
+      <span class="ab-work__n">${escapeHtml(s.n)}</span>
+      <h3 class="ab-work__title">${escapeHtml(s.title)}</h3>
+      <p class="ab-work__body">${escapeHtml(s.body)}</p>
+    </li>`
+    )
+    .join("");
+  return `<section class="ab-section ab-section--ink ab-work" aria-labelledby="ab-work-title" data-ab-reveal>
+  <div class="ab-inner">
+    <p class="ab-eyebrow ab-eyebrow--on-ink">${escapeHtml(copy.workEyebrow)}</p>
+    <h2 id="ab-work-title" class="ab-title ab-title--on-ink">${escapeHtml(copy.workTitle)}</h2>
+    <ol class="ab-work__rail">${steps}</ol>
   </div>
 </section>`;
 }
@@ -198,235 +306,61 @@ function principlesHtml(copy) {
 </section>`;
 }
 
-function universeHtml(copy, products, langDir) {
-  const cards = products
-    .map((p) => {
-      const cat = copy.productCats[p.slug] || p.categoryLabel || "";
-      const status = p.category === "game" ? copy.statusProject : copy.statusLive;
-      const desc = escapeHtml(p.oneLiner || p.summary || "");
-      const icon = productIcon(p);
-      const logo = icon
-        ? `<span class="ab-product__logo"><img src="${escapeHtml(icon)}" alt="" width="88" height="88" loading="lazy" decoding="async" /></span>`
-        : `<span class="ab-product__logo ab-product__logo--fallback" aria-hidden="true">${escapeHtml(
-            (p.name || "?").slice(0, 1)
-          )}</span>`;
-      return `<a class="ab-product" href="${productHref(p, langDir)}">
-        <div class="ab-product__head">
-          ${logo}
-          <div class="ab-product__top">
-            <span class="ab-product__cat">${escapeHtml(cat)}</span>
-            <span class="ab-product__status">${escapeHtml(status)}</span>
-          </div>
-        </div>
-        <h3 class="ab-product__name">${escapeHtml(p.name)}</h3>
-        <p class="ab-product__desc">${desc}</p>
-        <span class="ab-product__go">${escapeHtml(copy.universeView)}</span>
-      </a>`;
-    })
+function ecosystemHtml(copy) {
+  const items = (copy.ecosystemItems || [])
+    .map(
+      (item) => `<a class="ab-eco__item" href="${escapeHtml(item.href)}">
+      <span class="ab-eco__label">${escapeHtml(item.title)}</span>
+      <span class="ab-eco__body">${escapeHtml(item.body)}</span>
+      <span class="ab-eco__go" aria-hidden="true">↗</span>
+    </a>`
+    )
     .join("");
-  return `<section class="ab-section ab-section--wash" aria-labelledby="ab-universe-title" data-ab-reveal>
+  return `<section class="ab-section ab-section--wash ab-eco" aria-labelledby="ab-eco-title" data-ab-reveal>
   <div class="ab-inner">
-    <p class="ab-eyebrow">${escapeHtml(copy.universeEyebrow)}</p>
-    <h2 id="ab-universe-title" class="ab-title">${escapeHtml(copy.universeTitle)}</h2>
-    <p class="ab-lead">${escapeHtml(copy.universeLead)}</p>
-    <div class="ab-universe">${cards}</div>
-    <p class="ab-section__more"><a class="ab-text-link" href="../portfolio/">${escapeHtml(copy.universeAll)}</a></p>
+    <p class="ab-eyebrow">${escapeHtml(copy.ecosystemEyebrow)}</p>
+    <h2 id="ab-eco-title" class="ab-title">${escapeHtml(copy.ecosystemTitle)}</h2>
+    <div class="ab-eco">
+      <p class="ab-eco__hub" aria-hidden="true">${escapeHtml(copy.ecosystemHub)}</p>
+      <div class="ab-eco__grid">${items}</div>
+    </div>
   </div>
 </section>`;
 }
 
-function appIntroHref(slug, langDir) {
-  if (!slug) return "../portfolio/";
-  if (slug === "404-human") return `../404-human/`;
-  // Dedicated portfolio intro — skip home hash router flash
-  if (HOME_HASH_BY_SLUG[slug] || ICON_BY_SLUG[slug]) {
-    return `../portfolio/${escapeHtml(slug)}/`;
-  }
-  return `../portfolio/${escapeHtml(slug)}/`;
-}
-
-function logoHtml(slug, name, size = 48) {
-  const icon = ICON_BY_SLUG[slug] || (slug === "404-human" ? "/404-human-logo.png" : "");
-  if (icon) {
-    return `<span class="ab-logo"><img src="${escapeHtml(icon)}" alt="" width="${size}" height="${size}" loading="lazy" decoding="async" /></span>`;
-  }
-  const mark = String(name || slug || "?")
-    .replace(/^Newon\s+/i, "")
-    .slice(0, 2)
-    .toUpperCase();
-  return `<span class="ab-logo ab-logo--mark" aria-hidden="true">${escapeHtml(mark)}</span>`;
-}
-
-function loopHtml(copy) {
-  const steps = copy.loopSteps || [];
-  const cells = steps
+function journeyHtml(copy) {
+  const steps = (copy.journeyMilestones || [])
     .map(
-      (s, i) => `<li class="ab-loop__step">
-      <span class="ab-loop__n">${escapeHtml(s.n)}</span>
-      <h3 class="ab-loop__title">${escapeHtml(s.title)}</h3>
-      <p class="ab-loop__body">${escapeHtml(s.body)}</p>
-      ${i < steps.length - 1 ? `<span class="ab-loop__connector" aria-hidden="true"></span>` : ""}
+      (m, i, arr) => `<li class="ab-journey__step${m.isNow ? " is-now" : ""}">
+      <div class="ab-journey__marker">
+        <span class="ab-journey__year">${escapeHtml(m.year)}</span>
+        ${i < arr.length - 1 ? `<span class="ab-journey__line" aria-hidden="true"></span>` : ""}
+      </div>
+      <div class="ab-journey__copy">
+        <h3 class="ab-journey__title">${escapeHtml(m.title)}</h3>
+        <p class="ab-journey__body">${escapeHtml(m.body)}</p>
+      </div>
     </li>`
     )
     .join("");
-  return `<section class="ab-section ab-section--ink" aria-labelledby="ab-loop-title" data-ab-reveal>
+  return `<section class="ab-section ab-journey" aria-labelledby="ab-journey-title" data-ab-reveal>
   <div class="ab-inner">
-    <div class="ab-loop__intro">
-      <p class="ab-eyebrow ab-eyebrow--on-ink">${escapeHtml(copy.loopEyebrow)}</p>
-      <h2 id="ab-loop-title" class="ab-title ab-title--on-ink ab-title--wide">${copy.loopTitleHtml}</h2>
-    </div>
-    <ol class="ab-loop__rail">${cells}</ol>
-    <p class="ab-loop__again">${escapeHtml(copy.loopAgain)}</p>
+    <p class="ab-eyebrow">${escapeHtml(copy.journeyEyebrow)}</p>
+    <h2 id="ab-journey-title" class="ab-title">${escapeHtml(copy.journeyTitle)}</h2>
+    ${copy.journeyNote ? `<p class="ab-lead">${escapeHtml(copy.journeyNote)}</p>` : ""}
+    <ol class="ab-journey__rail">${steps}</ol>
   </div>
 </section>`;
 }
 
-function spacesHtml(copy, bySlug, labs, langDir) {
-  const cards = (copy.spaces || [])
-    .map((sp) => {
-      let apps = (sp.slugs || [])
-        .map((slug) => {
-          const p = bySlug[slug];
-          if (!p) return null;
-          return { slug, name: p.name, href: appIntroHref(slug, langDir) };
-        })
-        .filter(Boolean);
-      if (sp.lab) {
-        apps = labs.slice(0, 3).map((l) => ({
-          slug: l.slug,
-          name: l.titleKo || l.titleEn || l.slug,
-          href: `../resources/labs/${escapeHtml(l.slug)}/`,
-          lab: true,
-        }));
-      }
-      const logos = apps
-        .map(
-          (a) => `<a class="ab-space__app" href="${escapeHtml(a.href)}" title="${escapeHtml(a.name)}">
-          ${logoHtml(a.slug, a.name, 40)}
-          <span class="ab-space__app-name">${escapeHtml(a.name)}</span>
-        </a>`
-        )
-        .join("");
-      return `<article class="ab-space">
-        <div class="ab-space__meta">
-          <span class="ab-space__n">${escapeHtml(sp.n)}</span>
-          <span class="ab-space__count">${apps.length ? String(apps.length).padStart(2, "0") : "—"}</span>
-        </div>
-        <h3 class="ab-space__title">${escapeHtml(sp.title)}</h3>
-        <p class="ab-space__body">${escapeHtml(sp.body)}</p>
-        ${logos ? `<div class="ab-space__apps">${logos}</div>` : ""}
-      </article>`;
-    })
-    .join("");
-  return `<section class="ab-section" aria-labelledby="ab-spaces-title" data-ab-reveal>
-  <div class="ab-inner">
-    <p class="ab-eyebrow">${escapeHtml(copy.spacesEyebrow)}</p>
-    <h2 id="ab-spaces-title" class="ab-title">${escapeHtml(copy.spacesTitle)}</h2>
-    <div class="ab-spaces">${cards}</div>
-  </div>
-</section>`;
-}
-
-function nowHtml(copy, lang, labs, langDir) {
-  const activeLabs = labs.filter((l) => l.status === "TESTING" || l.status === "PROTOTYPE" || l.status === "RESEARCH");
-  const experiment = labs.find((l) => l.slug === "review-ai") || activeLabs[0];
-  const building = activeLabs.filter((l) => !experiment || l.slug !== experiment.slug).slice(0, 2);
-  const articles = publishedArticles().slice(0, 2);
-
-  function nowItem({ href, slug, name, title, date, dateLabel, kind }) {
-    return `<a class="ab-now__item" href="${escapeHtml(href)}">
-      ${logoHtml(slug, name, 52)}
-      <span class="ab-now__text">
-        <span class="ab-now__kind">${escapeHtml(kind)}</span>
-        <strong class="ab-now__name">${escapeHtml(title)}</strong>
-        ${
-          date
-            ? `<time datetime="${escapeHtml(date)}">${escapeHtml(dateLabel || date)}</time>`
-            : ""
-        }
-      </span>
-      <span class="ab-now__arrow" aria-hidden="true">↗</span>
-    </a>`;
-  }
-
-  const buildingItems = building.length
-    ? building
-        .map((l) => {
-          const title = lang === "ko" ? l.displayTitleKo || l.titleKo : l.displayTitleEn || l.titleEn;
-          return nowItem({
-            href: `../resources/labs/${l.slug}/`,
-            slug: l.slug,
-            name: title,
-            title,
-            date: l.updatedAt || "",
-            kind: "LAB",
-          });
-        })
-        .join("")
-    : `<p class="ab-now__empty">${escapeHtml(copy.nowBuildingFallback)}</p>`;
-
-  const expTitle = experiment
-    ? lang === "ko"
-      ? experiment.displayTitleKo || experiment.titleKo
-      : experiment.displayTitleEn || experiment.titleEn
-    : copy.nowEmpty;
-  const expBlock = experiment
-    ? nowItem({
-        href: `../resources/labs/${experiment.slug}/`,
-        slug: experiment.slug,
-        name: expTitle,
-        title: expTitle,
-        date: experiment.updatedAt || "",
-        kind: "LAB",
-      })
-    : `<p class="ab-now__empty">${escapeHtml(copy.nowEmpty)}</p>`;
-
-  const shipped = articles.length
-    ? articles
-        .map((a) => {
-          const c = articleCopy(a, lang);
-          const product = productBySlug(a.relatedProduct);
-          const label = c.title || (product && product.name) || a.slug;
-          const slug = a.relatedProduct || "petlog";
-          const href = product
-            ? appIntroHref(product.slug, langDir)
-            : `../news/${a.slug}/`;
-          return nowItem({
-            href,
-            slug,
-            name: product ? product.name : label,
-            title: label,
-            date: a.date,
-            dateLabel: formatNewsDate(a.date),
-            kind: "UPDATE",
-          });
-        })
-        .join("")
-    : `<p class="ab-now__empty">${escapeHtml(copy.nowEmpty)}</p>`;
-
-  return `<section class="ab-section" aria-labelledby="ab-now-title" data-ab-reveal>
-  <div class="ab-inner">
-    <div class="ab-now__head">
-      <div>
-        <p class="ab-eyebrow">${escapeHtml(copy.nowEyebrow)}</p>
-        <h2 id="ab-now-title" class="ab-title">${escapeHtml(copy.nowTitle)}</h2>
-      </div>
-      <a class="ab-text-link" href="../news/">${escapeHtml(copy.nowAll)}</a>
+function founderHtml(copy) {
+  return `<section class="ab-section ab-founder" aria-labelledby="ab-founder-title" data-ab-reveal>
+  <div class="ab-inner ab-founder__grid">
+    <div>
+      <p class="ab-eyebrow">${escapeHtml(copy.founderEyebrow)}</p>
+      <h2 id="ab-founder-title" class="ab-title ab-title--wide">${escapeHtml(copy.founderRole)}</h2>
     </div>
-    <div class="ab-now">
-      <article class="ab-now__col">
-        <h3 class="ab-now__label">${escapeHtml(copy.nowBuilding)}</h3>
-        <div class="ab-now__stack">${buildingItems}</div>
-      </article>
-      <article class="ab-now__col">
-        <h3 class="ab-now__label">${escapeHtml(copy.nowExperiment)}</h3>
-        <div class="ab-now__stack">${expBlock}</div>
-      </article>
-      <article class="ab-now__col">
-        <h3 class="ab-now__label">${escapeHtml(copy.nowShipped)}</h3>
-        <div class="ab-now__stack">${shipped}</div>
-      </article>
-    </div>
+    <p class="ab-founder__body">${escapeHtml(copy.founderBody)}</p>
   </div>
 </section>`;
 }
@@ -453,72 +387,7 @@ function exploreHtml(copy) {
   <div class="ab-inner">
     <p class="ab-eyebrow">${escapeHtml(copy.exploreEyebrow)}</p>
     <h2 id="ab-explore-title" class="ab-title">${escapeHtml(copy.exploreTitle)}</h2>
-    <div class="ab-explore">${panels}</div>
-  </div>
-</section>`;
-}
-
-function buildLogHtml(copy, lang, langDir = lang) {
-  const articles = publishedArticles();
-  const entries = buildTimelineEntries(articles, {
-    productBySlug,
-    articleCopy,
-    articleProductSlug,
-  }).slice(0, 14);
-
-  if (!entries.length) return "";
-
-  const byYear = new Map();
-  for (const entry of entries) {
-    const y = String(entry.date || "").slice(0, 4) || "2026";
-    if (!byYear.has(y)) byYear.set(y, []);
-    byYear.get(y).push(entry);
-  }
-
-  const years = [...byYear.entries()]
-    .sort((a, b) => String(b[0]).localeCompare(String(a[0])))
-    .map(([year, items]) => {
-      const rows = items
-        .map((entry) => {
-          const pack = entry.copy || {};
-          const c = lang === "ko" ? pack.ko || pack.en || {} : pack.en || pack.ko || {};
-          const product = productBySlug(entry.product);
-          const name = product ? product.name : entry.product || "Newon";
-          const displayDate = formatHistoryDisplayDate(entry.date, entry.datePrecision);
-          const datetime = historyDatetimeAttr(entry.date, entry.datePrecision);
-          const type = entry.type || entry.category || "";
-          const href = entry.product ? appIntroHref(entry.product, langDir) : "";
-          const icon = logoHtml(entry.product || "", name, 40);
-          const titleInner = href
-            ? `<a href="${escapeHtml(href)}">${escapeHtml(c.title || name)}</a>`
-            : escapeHtml(c.title || name);
-          return `<li class="ab-log__item">
-            <time class="ab-log__date" datetime="${escapeHtml(datetime)}">${escapeHtml(displayDate)}</time>
-            <div class="ab-log__body">
-              ${icon}
-              <div class="ab-log__copy">
-                ${type ? `<span class="ab-log__type">${escapeHtml(String(type).toUpperCase())}</span>` : ""}
-                <p class="ab-log__product">${escapeHtml(name)}</p>
-                <h3 class="ab-log__title">${titleInner}</h3>
-                ${c.description ? `<p class="ab-log__desc">${escapeHtml(c.description)}</p>` : ""}
-              </div>
-            </div>
-          </li>`;
-        })
-        .join("");
-      return `<div class="ab-log__year">
-        <h3 class="ab-log__year-label">${escapeHtml(year)}</h3>
-        <ol class="ab-log__list">${rows}</ol>
-      </div>`;
-    })
-    .join("");
-
-  return `<section class="ab-section" aria-labelledby="ab-log-title" data-ab-reveal>
-  <div class="ab-inner">
-    <p class="ab-eyebrow">${escapeHtml(copy.logEyebrow)}</p>
-    <h2 id="ab-log-title" class="ab-title">${escapeHtml(copy.logTitle)}</h2>
-    ${copy.logNote ? `<p class="ab-lead">${escapeHtml(copy.logNote)}</p>` : ""}
-    <div class="ab-log">${years}</div>
+    <div class="ab-explore ab-explore--six">${panels}</div>
   </div>
 </section>`;
 }
@@ -545,10 +414,11 @@ function closeHtml(copy) {
     <p class="ab-eyebrow ab-eyebrow--on-ink">${escapeHtml(copy.closeEyebrow)}</p>
     <h2 id="ab-close-title" class="ab-title ab-title--on-ink">${copy.closeTitleHtml}</h2>
     <p class="ab-lead ab-lead--on-ink">${escapeHtml(copy.closeLead)}</p>
+    ${copy.closeTaglineEn ? `<p class="ab-close__en">${escapeHtml(copy.closeTaglineEn)}</p>` : ""}
     <div class="ab-close__cta">
-      <a class="ab-btn ab-btn--on-ink" href="../portfolio/">${escapeHtml(copy.closeProducts)}</a>
-      <a class="ab-btn ab-btn--ghost-on-ink" href="../ideas/">${escapeHtml(copy.closeIdeas)}</a>
-      <a class="ab-btn ab-btn--ghost-on-ink" href="../business/">${escapeHtml(copy.closeBusiness)}</a>
+      <a class="ab-btn ab-btn--on-ink" href="../products/">${escapeHtml(copy.closeProducts)}</a>
+      <a class="ab-btn ab-btn--ghost-on-ink" href="../business/inquiry/">${escapeHtml(copy.closeBusiness)}</a>
+      <a class="ab-btn ab-btn--ghost-on-ink ab-btn--tertiary" href="../ideas/">${escapeHtml(copy.closeIdeas)}</a>
     </div>
   </div>
 </section>`;
@@ -556,32 +426,27 @@ function closeHtml(copy) {
 
 /**
  * @param {string} lang - "ko" | "en" (other locales use EN copy)
- * @param {string} [langDir] - used for product pageHref substitution
  */
-export function buildAboutPageBody(lang, langDir = lang) {
+export function buildAboutPageBody(lang) {
   const copyLang = lang === "ko" ? "ko" : "en";
   const copy = getAboutPageCopy(copyLang);
-  const stats = companyStats();
+  const stats = getCompanyMetrics();
   const bySlug = projectsBySlug(copyLang);
-  // Fix pageHref for current lang dir
-  for (const p of Object.values(bySlug)) {
-    if (p.pageHref && p.pageHref.includes("{{LANG}}")) {
-      p.pageHref = p.pageHref.replace("{{LANG}}", langDir);
-    }
-  }
   const products = orderedProducts(copy, bySlug);
-  const labs = getLabsExperiments();
 
-  return `${heroHtml(copy)}
-${metricsHtml(copy, stats)}
+  return `${brandHtml(copy)}
+${heroHtml(copy)}
+${whyHtml(copy)}
 ${glanceHtml(copy)}
-${doHtml(copy)}
+${universeHtml(copy, products)}
+${spacesHtml(copy, bySlug)}
+${buildHtml(copy)}
+${workHtml(copy)}
 ${principlesHtml(copy)}
-${universeHtml(copy, products, langDir)}
-${loopHtml(copy)}
-${spacesHtml(copy, bySlug, labs, langDir)}
-${nowHtml(copy, copyLang, labs, langDir)}
-${buildLogHtml(copy, copyLang, langDir)}
+${ecosystemHtml(copy)}
+${metricsHtml(copy, stats)}
+${journeyHtml(copy)}
+${founderHtml(copy)}
 ${exploreHtml(copy)}
 ${ideaHtml(copy)}
 ${closeHtml(copy)}`;

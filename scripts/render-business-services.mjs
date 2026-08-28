@@ -9,6 +9,7 @@ import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml } from "./hub-utils.mjs
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { BUSINESS_SERVICE_PAGES } from "./business-service-catalog.mjs";
 import { getServiceCopy } from "./business-service-copy.mjs";
+import { businessHeroVisual } from "./business-bs-visuals.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const template = fs.readFileSync(path.join(ROOT, "templates", "business-service.html"), "utf8");
@@ -92,13 +93,13 @@ function visualPipeline(copy) {
     { t: "TEST", n: "05" },
     { t: "LAUNCH", n: "06" },
   ];
-  const progressVal = d.progress?.value || "68%";
+  const progressVal = d.progress?.value || "BUILD";
   const progressIsPct = String(progressVal).trim().endsWith("%");
   const progressBar = progressIsPct
     ? `<div class="bs-demo__bar"><span style="width:${escapeHtml(String(progressVal).trim())}"></span></div>`
     : "";
   const statusVal = d.status?.value || "BUILDING";
-  const featuresVal = d.features?.value || d.scope?.value || "8 / 12";
+  const featuresVal = d.features?.value || d.scope?.value || "CORE ONLY";
   const nextVal = d.next?.value || "QA TEST";
 
   const stepHtml = steps
@@ -149,11 +150,11 @@ function visualBrowser() {
         <span class="bs-browser__cta-chip">Explore Product →</span>
         <div class="bs-browser__wire" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="bs-browser__metrics">
-          <div><span class="bs-browser__mk">PERFORMANCE</span><strong>98</strong></div>
-          <div><span class="bs-browser__mk">RESPONSIVE</span><strong>READY</strong></div>
-          <div><span class="bs-browser__mk">SEO</span><strong>OPTIMIZED</strong></div>
+          <div><span class="bs-browser__mk">SCOPE</span><strong>CORE</strong></div>
+          <div><span class="bs-browser__mk">FLOW</span><strong>READY</strong></div>
+          <div><span class="bs-browser__mk">LAUNCH</span><strong>NEXT</strong></div>
         </div>
-        <p class="bs-demo__badge">DEMO PREVIEW</p>
+        <p class="bs-demo__badge">MVP CONCEPT</p>
       </div>
     </div>
   </div>`;
@@ -733,13 +734,12 @@ function visualMvpDetail() {
             <p class="bs-demo__v">BUILDING</p>
           </div>
           <div class="bs-pipe-panel__row">
-            <p class="bs-demo__k">PROGRESS</p>
-            <p class="bs-demo__v">68%</p>
-            <div class="bs-demo__bar"><span style="width:68%"></span></div>
+            <p class="bs-demo__k">CURRENT STAGE</p>
+            <p class="bs-demo__v">BUILD</p>
           </div>
           <div class="bs-pipe-panel__row">
-            <p class="bs-demo__k">CORE FEATURES</p>
-            <p class="bs-demo__v">8 / 12</p>
+            <p class="bs-demo__k">SCOPE</p>
+            <p class="bs-demo__v">CORE ONLY</p>
           </div>
           <div class="bs-pipe-panel__row">
             <p class="bs-demo__k">NEXT</p>
@@ -765,11 +765,11 @@ function visualWebDetail() {
         <span class="bs-browser__cta-chip">Get started →</span>
         <div class="bs-browser__wire" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="bs-browser__metrics">
-          <div><span class="bs-browser__mk">PAGES</span><strong>5</strong></div>
+          <div><span class="bs-browser__mk">STRUCTURE</span><strong>CLEAR</strong></div>
           <div><span class="bs-browser__mk">RESPONSIVE</span><strong>READY</strong></div>
-          <div><span class="bs-browser__mk">SEO SCORE</span><strong>98</strong></div>
+          <div><span class="bs-browser__mk">CTA</span><strong>WIRED</strong></div>
         </div>
-        <p class="bs-demo__badge">LIVE SITE PREVIEW</p>
+        <p class="bs-demo__badge">SITE CONCEPT</p>
       </div>
     </div>
   </div>`;
@@ -1202,44 +1202,66 @@ function adjacentHtml(page, copy, copies) {
   </section>`;
 }
 
-function listNumbered(items, className) {
-  return `<ul class="${className}">${items
+function listNumbered(items, className, variant = "") {
+  const mod = variant ? ` ${className}--${variant}` : "";
+  return `<ul class="${className}${mod}"${variant ? ` data-variant="${escapeHtml(variant)}"` : ""}>${items
     .map(
       (it) =>
-        `<li class="${className}__item"><span class="${className}__n">${escapeHtml(it.n || "")}</span><h3>${escapeHtml(it.title || "")}</h3><p>${escapeHtml(it.body || "")}</p></li>`
+        `<li class="${className}__item"><span class="${className}__n" aria-hidden="true">${escapeHtml(it.n || "")}</span><div class="${className}__copy"><h3>${escapeHtml(it.title || "")}</h3><p>${escapeHtml(it.body || "")}</p></div></li>`
     )
     .join("")}</ul>`;
 }
 
 function processList(items) {
-  return `<ol class="bs-process">${items
+  const count = items?.length || 0;
+  return `<ol class="bs-process bs-process--steps" data-variant="steps"${count ? ` data-count="${count}"` : ""}>${items
     .map(
       (it) =>
-        `<li class="bs-process__item"><span class="bs-process__n">${escapeHtml(it.n || "")}</span><h3>${escapeHtml(it.title || "")}</h3><p>${escapeHtml(it.body || "")}</p></li>`
+        `<li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">${escapeHtml(it.n || "")}</span><div class="bs-process__copy"><h3>${escapeHtml(it.title || "")}</h3><p>${escapeHtml(it.body || "")}</p></div></li>`
     )
     .join("")}</ol>`;
 }
 
-function chips(items) {
-  return `<ul class="bs-deliver">${items
+function chips(items, variant = "included") {
+  return `<ul class="bs-deliver bs-deliver--${variant}" data-variant="${escapeHtml(variant)}">${items
     .map(
       (t, i) =>
-        `<li class="bs-deliver__item"><span class="bs-deliver__n">${pad2(i + 1)}</span><span class="bs-deliver__t">${escapeHtml(t)}</span></li>`
+        `<li class="bs-deliver__item"><span class="bs-deliver__n" aria-hidden="true">${pad2(i + 1)}</span><span class="bs-deliver__t">${escapeHtml(t)}</span></li>`
     )
     .join("")}</ul>`;
 }
 
 function tagChips(items) {
-  return `<ul class="bs-chips">${(items || [])
+  return `<ul class="bs-chips bs-chips--tags">${(items || [])
     .map((t) => `<li>${escapeHtml(t)}</li>`)
     .join("")}</ul>`;
 }
 
-function areasHtml(items) {
-  return `<div class="bs-areas">${(items || [])
+function useCasesHtml(items) {
+  return `<div class="bs-type-grid" data-variant="types">${(items || [])
     .map(
       (it) =>
-        `<article class="bs-areas__item"><span class="bs-areas__n">${escapeHtml(it.n || "")}</span><h3>${escapeHtml(it.title || "")}</h3><p>${flowBodyHtml(it.body || "")}</p></article>`
+        `<article class="bs-type-grid__item"><h3>${escapeHtml(it.title || "")}</h3><p>${flowBodyHtml(it.body || "")}</p></article>`
+    )
+    .join("")}</div>`;
+}
+
+function processStepsHtml(processDetail) {
+  if (!processDetail?.length) return "";
+  const items = processDetail.map((p, i) => ({
+    n: p.n || pad2(i + 1),
+    title: p.title || p.t || "",
+    body: p.body || p.d || "",
+  }));
+  return processList(items);
+}
+
+function areasHtml(items, variant = "board") {
+  const mod = variant ? ` bs-areas--${variant}` : "";
+  return `<div class="bs-areas${mod}" data-variant="${escapeHtml(variant)}">${(items || [])
+    .map(
+      (it) =>
+        `<article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">${escapeHtml(it.n || "")}</span><div class="bs-areas__copy"><h3>${escapeHtml(it.title || "")}</h3><p>${flowBodyHtml(it.body || "")}</p></div></article>`
     )
     .join("")}</div>`;
 }
@@ -1274,11 +1296,11 @@ function flowcapsHtml(items, opts = {}) {
     .join("")}</div>`;
 }
 
-function deliverGridHtml(items, extras) {
-  let html = `<div class="bs-deliver-grid">${(items || [])
+function deliverGridHtml(items, extras, variant = "catalog") {
+  let html = `<div class="bs-deliver-grid bs-deliver-grid--${variant}" data-variant="${escapeHtml(variant)}">${(items || [])
     .map(
       (t, i) =>
-        `<article class="bs-deliver-grid__item"><span class="bs-deliver-grid__n">${pad2(i + 1)}</span><h3>${escapeHtml(typeof t === "string" ? t : t.title || "")}</h3>${typeof t === "object" && t.body ? `<p>${escapeHtml(t.body)}</p>` : ""}</article>`
+        `<article class="bs-deliver-grid__item"><span class="bs-deliver-grid__n" aria-hidden="true">${pad2(i + 1)}</span><div class="bs-deliver-grid__copy"><h3>${escapeHtml(typeof t === "string" ? t : t.title || "")}</h3>${typeof t === "object" && t.body ? `<p>${escapeHtml(t.body)}</p>` : ""}</div></article>`
     )
     .join("")}</div>`;
   if (extras?.length) html += tagChips(extras);
@@ -1301,6 +1323,7 @@ function flowStageGridHtml(steps, opts = {}) {
   if (!items.length) return "";
   const cols = opts.cols || processLayoutCols(items.length);
   const chipLimit = opts.chipLimit ?? 0;
+  const variant = opts.variant || "flow";
   const cards = items
     .map((s) => {
       const chips =
@@ -1310,100 +1333,91 @@ function flowStageGridHtml(steps, opts = {}) {
             .map((e) => `<li>${escapeHtml(e)}</li>`)
             .join("")}</ul>`
         : "";
-      return `<article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n">${escapeHtml(s.n)}</span><h3>${escapeHtml(s.title)}</h3><p>${flowBodyHtml(s.body)}</p>${chips}</article>`;
+      return `<article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">${escapeHtml(s.n)}</span><div class="bs-flow-stage-grid__copy"><h3>${escapeHtml(s.title)}</h3><p>${flowBodyHtml(s.body)}</p>${chips}</div></article>`;
     })
     .join("");
-  return `<div class="bs-flow-stage-grid" data-cols="${cols}">${cards}</div>`;
+  return `<div class="bs-flow-stage-grid bs-flow-stage-grid--${variant}" data-cols="${cols}" data-variant="${escapeHtml(variant)}">${cards}</div>`;
 }
 
 function dataReportingFlowHtml(flowDetail) {
   if (!flowDetail?.length) return "";
-  return flowStageGridHtml(flowDetail);
+  return flowStageGridHtml(flowDetail, { variant: "flow" });
 }
 
 function dataReportingProcessHtml(processDetail) {
-  if (!processDetail?.length) return "";
-  return flowStageGridHtml(processDetail);
+  return processStepsHtml(processDetail);
 }
 
 function marketResearchFlowHtml(flowDetail) {
   if (!flowDetail?.length) return "";
-  return flowStageGridHtml(flowDetail, { chipLimit: 3 });
+  return flowStageGridHtml(flowDetail, { chipLimit: 3, variant: "flow" });
 }
 
 function marketResearchProcessHtml(processDetail) {
-  if (!processDetail?.length) return "";
-  return flowStageGridHtml(processDetail, { chipLimit: 3 });
+  return processStepsHtml(processDetail);
 }
 
 function competitorAnalysisFlowHtml(flowDetail) {
   if (!flowDetail?.length) return "";
-  return flowStageGridHtml(flowDetail, { chipLimit: 3 });
+  return flowStageGridHtml(flowDetail, { chipLimit: 3, variant: "flow" });
 }
 
 function competitorAnalysisProcessHtml(processDetail) {
-  if (!processDetail?.length) return "";
-  return flowStageGridHtml(processDetail, { chipLimit: 3 });
+  return processStepsHtml(processDetail);
 }
 
 function consumerResearchFlowHtml(flowDetail) {
   if (!flowDetail?.length) return "";
-  return flowStageGridHtml(flowDetail, { chipLimit: 3 });
+  return flowStageGridHtml(flowDetail, { chipLimit: 3, variant: "flow" });
 }
 
 function consumerResearchProcessHtml(processDetail) {
-  if (!processDetail?.length) return "";
-  return flowStageGridHtml(processDetail, { chipLimit: 3 });
+  return processStepsHtml(processDetail);
 }
 
 function uxAuditFlowHtml(flowDetail) {
   if (!flowDetail?.length) return "";
-  return flowStageGridHtml(flowDetail, { chipLimit: 3 });
+  return flowStageGridHtml(flowDetail, { chipLimit: 3, variant: "flow" });
 }
 
 function uxAuditProcessHtml(processDetail) {
-  if (!processDetail?.length) return "";
-  return flowStageGridHtml(processDetail, { chipLimit: 3 });
+  return processStepsHtml(processDetail);
 }
 
 function trendResearchFlowHtml(flowDetail) {
   if (!flowDetail?.length) return "";
-  return flowStageGridHtml(flowDetail, { chipLimit: 3 });
+  return flowStageGridHtml(flowDetail, { chipLimit: 3, variant: "flow" });
 }
 
 function trendResearchProcessHtml(processDetail) {
-  if (!processDetail?.length) return "";
-  return flowStageGridHtml(processDetail, { chipLimit: 3 });
+  return processStepsHtml(processDetail);
 }
 
 function customProductFlowHtml(flowDetail) {
   if (!flowDetail?.length) return "";
-  return flowStageGridHtml(flowDetail, { chipLimit: 3 });
+  return flowStageGridHtml(flowDetail, { chipLimit: 3, variant: "flow" });
 }
 
 function customProductProcessHtml(processDetail) {
-  if (!processDetail?.length) return "";
-  return flowStageGridHtml(processDetail, { chipLimit: 3 });
+  return processStepsHtml(processDetail);
 }
 
 function productLaunchFlowHtml(flowDetail) {
   if (!flowDetail?.length) return "";
-  return flowStageGridHtml(flowDetail, { chipLimit: 3 });
+  return flowStageGridHtml(flowDetail, { chipLimit: 3, variant: "flow" });
 }
 
 function productLaunchProcessHtml(processDetail) {
-  if (!processDetail?.length) return "";
-  return flowStageGridHtml(processDetail, { chipLimit: 3 });
+  return processStepsHtml(processDetail);
 }
 
 function internalSystemFlowHtml(flowDetail) {
   if (!flowDetail?.length) return "";
-  return flowStageGridHtml(flowDetail, { chipLimit: 3 });
+  return flowStageGridHtml(flowDetail, { chipLimit: 3, variant: "flow" });
 }
 
 function internalSystemProcessHtml(processDetail) {
-  if (!processDetail?.length) return "";
-  return flowStageGridHtml(processDetail, { chipLimit: 3 });
+  return processStepsHtml(processDetail);
 }
 
 function researchOutputMatrixFrame(copy, metricVals, label) {
@@ -1555,12 +1569,11 @@ function researchOutputConsoleFrame(copy, metricVals, label) {
 
 function buildServiceFlowHtml(flowDetail) {
   if (!flowDetail?.length) return "";
-  return flowStageGridHtml(flowDetail, { chipLimit: 3 });
+  return flowStageGridHtml(flowDetail, { chipLimit: 3, variant: "flow" });
 }
 
 function buildServiceProcessHtml(processDetail) {
-  if (!processDetail?.length) return "";
-  return flowStageGridHtml(processDetail, { chipLimit: 3 });
+  return processStepsHtml(processDetail);
 }
 
 function researchOutputScopeFrame(copy, metricVals, label) {
@@ -1687,23 +1700,21 @@ function researchOutputBrandFrame(copy, metricVals, label) {
 }
 
 function internalToolsProcessHtml(processDetail) {
-  if (!processDetail?.length) return "";
-  return flowStageGridHtml(processDetail);
+  return processStepsHtml(processDetail);
 }
 
 function internalToolsFlowHtml(flowDetail) {
   if (!flowDetail?.length) return "";
-  return flowStageGridHtml(flowDetail);
+  return flowStageGridHtml(flowDetail, { variant: "flow" });
 }
 
 function workflowStructureHtml(structureDetail) {
   if (!structureDetail?.length) return "";
-  return flowStageGridHtml(structureDetail, { chipLimit: 3 });
+  return flowStageGridHtml(structureDetail, { chipLimit: 3, variant: "flow" });
 }
 
 function workflowProcessHtml(processDetail) {
-  if (!processDetail?.length) return "";
-  return flowStageGridHtml(processDetail);
+  return processStepsHtml(processDetail);
 }
 
 function workflowCapsHtml(caps) {
@@ -1822,10 +1833,10 @@ function internalToolsExtensionsHtml(copy) {
 }
 
 function whoList(items) {
-  return `<ol class="bs-who">${items
+  return `<ol class="bs-who bs-who--roster" data-variant="roster">${items
     .map(
       (t, i) =>
-        `<li class="bs-who__item"><span class="bs-who__n">${pad2(i + 1)}</span><p class="bs-who__t">${escapeHtml(t)}</p></li>`
+        `<li class="bs-who__item"><span class="bs-who__n" aria-hidden="true">${pad2(i + 1)}</span><p class="bs-who__t">${escapeHtml(t)}</p></li>`
     )
     .join("")}</ol>`;
 }
@@ -2298,12 +2309,7 @@ function aiExtras(copy) {
     <p class="bs-eyebrow">USE CASES</p>
     <h2 class="bs-title" id="bs-areas-title">${escapeHtml(copy.areasTitle || "AUTOMATION USE CASES")}</h2>
     ${copy.areasLead ? `<p class="bs-lead">${escapeHtml(copy.areasLead)}</p>` : ""}
-    <div class="bs-areas">${useCases
-      .map(
-        (a) =>
-          `<article class="bs-areas__item"><span class="bs-areas__n">${escapeHtml(a.n)}</span><h3>${escapeHtml(a.title)}</h3><p>${escapeHtml(a.body || "")}</p></article>`
-      )
-      .join("")}</div>
+    ${useCasesHtml(useCases)}
   </div></section>`;
 
   html += `<section class="bs-section" data-bs-reveal aria-labelledby="bs-loop-title"><div class="bs-inner">
@@ -2657,7 +2663,7 @@ function dataReportingExtras(copy) {
     html += `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-dr-problems-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(copy.problemsLabel || "PROBLEMS")}</p>
       <h2 class="bs-title" id="bs-dr-problems-title">${escapeHtml(copy.problemsTitle || "")}</h2>
-      ${areasHtml(problems)}
+      ${areasHtml(problems, "signal")}
     </div></section>`;
   }
 
@@ -2682,12 +2688,7 @@ function dataReportingExtras(copy) {
     html += `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-dr-caps-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(copy.capsLabel || "CAPABILITIES")}</p>
       <h2 class="bs-title" id="bs-dr-caps-title">${escapeHtml(copy.capsTitle || "")}</h2>
-      <div class="bs-areas bs-areas--quad">${caps
-        .map(
-          (a) =>
-            `<article class="bs-areas__item"><span class="bs-areas__n">${escapeHtml(a.n)}</span><h3>${escapeHtml(a.title)}</h3><p>${escapeHtml(a.body || "")}</p></article>`
-        )
-        .join("")}</div>
+      ${areasHtml(caps, "caps")}
     </div></section>`;
   }
 
@@ -2697,12 +2698,7 @@ function dataReportingExtras(copy) {
       <p class="bs-eyebrow">${escapeHtml(copy.useLabel || "USE CASES")}</p>
       <h2 class="bs-title" id="bs-dr-areas-title">${escapeHtml(copy.useTitle || "")}</h2>
       ${copy.useBadge ? `<p class="bs-mono bs-dr-badge">${escapeHtml(copy.useBadge)}</p>` : ""}
-      <div class="bs-areas">${useCases
-        .map(
-          (a) =>
-            `<article class="bs-areas__item"><span class="bs-areas__n">${escapeHtml(a.n)}</span><h3>${escapeHtml(a.title)}</h3><p>${escapeHtml(a.body || "")}</p></article>`
-        )
-        .join("")}</div>
+      ${useCasesHtml(useCases)}
     </div></section>`;
   }
 
@@ -2967,15 +2963,15 @@ function researchDetailExtras(copy, cfg = {}) {
   }
 
   if (problems.length) {
-    html += `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-dr-problems-title"><div class="bs-inner">
+    html += `<section class="bs-section bs-section--surface" data-bs-part="problems" data-bs-reveal aria-labelledby="bs-dr-problems-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(copy.problemsLabel || "PROBLEMS")}</p>
       <h2 class="bs-title" id="bs-dr-problems-title">${escapeHtml(copy.problemsTitle || "")}</h2>
-      ${areasHtml(problems)}
+      ${areasHtml(problems, "signal")}
     </div></section>`;
   }
 
   if (before.length || after.length) {
-    html += `<section class="bs-section" data-bs-reveal aria-labelledby="bs-dr-compare-title"><div class="bs-inner">
+    html += `<section class="bs-section" data-bs-part="compare" data-bs-reveal aria-labelledby="bs-dr-compare-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(copy.baLabel || "BEFORE / AFTER")}</p>
       <h2 class="bs-title" id="bs-dr-compare-title">${brHeadline(copy.baTitle || "BEFORE vs AFTER")}</h2>
       <div class="bs-compare">
@@ -2992,30 +2988,20 @@ function researchDetailExtras(copy, cfg = {}) {
   }
 
   if (caps.length) {
-    html += `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-dr-caps-title"><div class="bs-inner">
+    html += `<section class="bs-section bs-section--surface" data-bs-part="capabilities" data-bs-reveal aria-labelledby="bs-dr-caps-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(copy.capsLabel || "CAPABILITIES")}</p>
       <h2 class="bs-title" id="bs-dr-caps-title">${escapeHtml(copy.capsTitle || "")}</h2>
-      <div class="bs-areas bs-areas--quad">${caps
-        .map(
-          (a) =>
-            `<article class="bs-areas__item"><span class="bs-areas__n">${escapeHtml(a.n)}</span><h3>${escapeHtml(a.title)}</h3><p>${flowBodyHtml(a.body || "")}</p></article>`
-        )
-        .join("")}</div>
+      ${areasHtml(caps, "caps")}
     </div></section>`;
   }
 
   /* USE CASES — area cards like AI page */
   if (useCases.length) {
-    html += `<section class="bs-section" data-bs-reveal aria-labelledby="bs-dr-areas-title"><div class="bs-inner">
+    html += `<section class="bs-section" data-bs-part="usecases" data-bs-reveal aria-labelledby="bs-dr-areas-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(copy.useLabel || "USE CASES")}</p>
       <h2 class="bs-title" id="bs-dr-areas-title">${escapeHtml(copy.useTitle || "")}</h2>
       ${copy.useBadge ? `<p class="bs-mono bs-dr-badge">${escapeHtml(copy.useBadge)}</p>` : ""}
-      <div class="bs-areas">${useCases
-        .map(
-          (a) =>
-            `<article class="bs-areas__item"><span class="bs-areas__n">${escapeHtml(a.n)}</span><h3>${escapeHtml(a.title)}</h3><p>${flowBodyHtml(a.body || "")}</p></article>`
-        )
-        .join("")}</div>
+      ${useCasesHtml(useCases)}
     </div></section>`;
   }
 
@@ -3390,7 +3376,7 @@ function workflowAutomationExtras(copy) {
       <p class="bs-eyebrow">${escapeHtml(copy.whyLabel || copy.solveEyebrow || "WHY AUTOMATION")}</p>
       <h2 class="bs-title" id="bs-wfa-why-title">${brHeadline(copy.whyTitle || copy.solveTitle || "")}</h2>
       ${copy.whyLead || copy.solveLead ? `<p class="bs-lead">${escapeHtml(copy.whyLead || copy.solveLead)}</p>` : ""}
-      ${areasHtml(problems)}
+      ${areasHtml(problems, "signal")}
     </div></section>`;
   }
 
@@ -3655,7 +3641,7 @@ function internalToolsExtras(copy) {
     html += `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-it-problems-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(copy.problemsLabel || "PROBLEMS")}</p>
       <h2 class="bs-title" id="bs-it-problems-title">${escapeHtml(copy.problemsTitle || "")}</h2>
-      ${areasHtml(problems)}
+      ${areasHtml(problems, "signal")}
     </div></section>`;
   }
 
@@ -3681,12 +3667,7 @@ function internalToolsExtras(copy) {
       <p class="bs-eyebrow">${escapeHtml(copy.useLabel || "POSSIBILITIES")}</p>
       <h2 class="bs-title" id="bs-it-areas-title">${escapeHtml(copy.useTitle || "")}</h2>
       ${copy.useBadge ? `<p class="bs-mono bs-dr-badge">${escapeHtml(copy.useBadge)}</p>` : ""}
-      <div class="bs-areas">${useCases
-        .map(
-          (a) =>
-            `<article class="bs-areas__item"><span class="bs-areas__n">${escapeHtml(a.n)}</span><h3>${escapeHtml(a.title)}</h3><p>${escapeHtml(a.body || "")}</p></article>`
-        )
-        .join("")}</div>
+      ${useCasesHtml(useCases)}
     </div></section>`;
   }
 
@@ -3892,7 +3873,7 @@ function buildBody(page, copy, copies) {
       <p class="bs-eyebrow">${escapeHtml(copy.solveEyebrow || "WHAT WE SOLVE")}</p>
       <h2 class="bs-title" id="bs-solve-title">${brHeadline(copy.solveTitle || "")}</h2>
       ${copy.solveLead ? `<p class="bs-lead">${escapeHtml(copy.solveLead)}</p>` : ""}
-      ${listNumbered(copy.solveItems, "bs-solve")}
+      ${listNumbered(copy.solveItems, "bs-solve", "signal")}
     </div></section>`;
   }
 
@@ -3900,7 +3881,7 @@ function buildBody(page, copy, copies) {
     mid += `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-get-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(copy.getEyebrow || "WHAT YOU GET")}</p>
       <h2 class="bs-title" id="bs-get-title">${escapeHtml(copy.getTitle || "")}</h2>
-      ${listNumbered(copy.getItems, "bs-get")}
+      ${listNumbered(copy.getItems, "bs-get", "catalog")}
     </div></section>`;
   }
 
@@ -3940,8 +3921,6 @@ function buildBody(page, copy, copies) {
     </div></section>`;
   }
 
-  mid += adjacentHtml(page, copy, copies);
-
   mid += `<section class="bs-section bs-section--dark bs-final" data-bs-reveal aria-labelledby="bs-final-title"><div class="bs-inner">
     ${copy.finalLabel ? `<p class="bs-eyebrow">${escapeHtml(copy.finalLabel)}</p>` : ""}
     <h2 class="bs-final__title" id="bs-final-title">${brHeadline(copy.ctaFinalTitle || "")}</h2>
@@ -3951,6 +3930,8 @@ function buildBody(page, copy, copies) {
       ${copy.ctaFinalSecondary ? `<a class="bs-btn bs-btn--ghost" href="${escapeHtml(copy.ctaFinalSecondaryHref || "../automation/")}">${escapeHtml(copy.ctaFinalSecondary)}</a>` : ""}
     </div>
   </div></section>`;
+
+  mid += adjacentHtml(page, copy, copies);
 
   return `${breadcrumb(copy, page)}
 <section class="bs-hero" data-bs-reveal aria-labelledby="bs-hero-title">
@@ -3964,7 +3945,7 @@ function buildBody(page, copy, copies) {
         <a class="bs-btn bs-btn--ghost" href="${secondaryHref}" data-bs-cta="hero_secondary">${escapeHtml(copy.ctaSecondary || "")}</a>
       </div>
     </div>
-    ${heroVisual(page.visual, copy)}
+    ${businessHeroVisual(page.visual, page.slug)}
   </div>
 </section>
 ${serviceNav(page, copies)}

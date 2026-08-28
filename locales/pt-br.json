@@ -236,7 +236,10 @@
     "megaNewsDesc": "Official updates",
     "megaContactDesc": "Get in touch",
     "resourcesExploreCta": "Explore Resources →",
-    "companyExploreCta": "About Newon →"
+    "companyExploreCta": "About Newon →",
+    "megaMediaDesc": "Video · product stories · visual",
+    "megaNotesDesc": "Short build log · updates",
+    "megaEducationDesc": "Guides · courses · workshops"
   },
   "home": {
     "heroLogoAlt": "Newon logo",
@@ -530,7 +533,10 @@
     "doesCompanyTitle": "Empresa",
     "doesCompanyBody": "About Newon itself.",
     "doesCompanyItems": "About · Portfolio · News · Contact",
-    "doesCompanyCta": "About →"
+    "doesCompanyCta": "About →",
+    "resourceHub": "Store · Insights · Blog · Media · Labs · Notes · Education",
+    "resourceLabs": "Small experiments built and tested quickly.",
+    "statExperiments": "Experiments"
   },
   "footer": {
     "privacy": "Política de privacidade",
@@ -587,7 +593,9 @@
     "linkBrand": "Marca",
     "linkDigital": "Digital",
     "linkContent": "Contente",
-    "linkIp": "IP"
+    "linkIp": "IP",
+    "linkNotes": "Notes",
+    "linkEducation": "Education"
   },
   "ox": {
     "skip": "Ir para o conteúdo",
@@ -3577,7 +3585,22 @@
     "exploreCtaEyebrow": "HAVE A PROJECT?",
     "exploreCtaTitle": "If you have something to build, tell us.",
     "exploreCtaLead": "Even at the idea stage. We start by clarifying the scope you need.",
-    "exploreCtaBtn": "Project inquiry →"
+    "exploreCtaBtn": "Project inquiry →",
+    "inquiryExploreLabel": "EXPLORE",
+    "inquiryExploreTitle": "Explorar Newon",
+    "inquiryExploreLead": "Browse services, how we work, and resources before you inquire.",
+    "inquiryExploreBusinessEyebrow": "BUSINESS",
+    "inquiryExploreBusinessTitle": "Explore Business",
+    "inquiryExploreBusinessBody": "See how we build products, automate work, research markets, and collaborate.",
+    "inquiryExploreBusinessCta": "View Business →",
+    "inquiryExploreStudioEyebrow": "STUDIO",
+    "inquiryExploreStudioTitle": "Explore Studio",
+    "inquiryExploreStudioBody": "Brand, design, content, and IP production services.",
+    "inquiryExploreStudioCta": "View Studio →",
+    "inquiryExploreResourcesEyebrow": "RESOURCES",
+    "inquiryExploreResourcesTitle": "Explore Resources",
+    "inquiryExploreResourcesBody": "Browse the store, insights, tools, media, and more.",
+    "inquiryExploreResourcesCta": "View Resources →"
   },
   "businessPages": {
     "common": {

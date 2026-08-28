@@ -17,13 +17,25 @@ const LANG_OPTIONS = [
   { dir: "id", labelKey: "ui.langId", short: "ID" },
 ];
 
-const NAV_LABELS = {
+const NAV_LABEL_KEYS = {
+  products: "nav.topProducts",
+  business: "nav.topBusiness",
+  studio: "nav.topStudio",
+  resources: "nav.topResources",
+  company: "nav.topCompany",
+};
+
+const NAV_LABEL_FB = {
   products: "Products",
   business: "Business",
   studio: "Studio",
   resources: "Resources",
   company: "Company",
 };
+
+function navTopLabel(flat, flatEn, id) {
+  return escapeHtml(t(flat, flatEn, NAV_LABEL_KEYS[id], NAV_LABEL_FB[id]));
+}
 
 const MENU_META = {
   products: { kicker: "nav.productsMenuLabel", lead: "nav.productsMenuLead", footHref: "products/", footKey: "nav.viewAllProducts", footFb: "View all products →" },
@@ -72,13 +84,17 @@ const CHEVRON_SVG = `<svg class="gnav-dd__chev-svg" width="12" height="12" viewB
 
 const MOON_SVG = `<svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
-/** Editorial mega: max 4 numbered destinations */
+/** Editorial mega: max 4 numbered destinations (Resources shows all hubs) */
+function megaItemLimit(menuId) {
+  return menuId === "resources" ? Infinity : 4;
+}
+
 function editorialMega(flat, flatEn, base, menuId) {
   const meta = MENU_META[menuId];
   const kicker = escapeHtml(t(flat, flatEn, meta.kicker, menuId.toUpperCase()));
   const lead = escapeHtml(t(flat, flatEn, meta.lead));
   const foot = escapeHtml(t(flat, flatEn, meta.footKey, meta.footFb));
-  const items = (MEGA_DESTINATIONS[menuId] || []).slice(0, 4);
+  const items = (MEGA_DESTINATIONS[menuId] || []).slice(0, megaItemLimit(menuId));
   const rows = items
     .map((item, i) => {
       const title = escapeHtml(t(flat, flatEn, item.titleKey, item.titleFb));
@@ -107,7 +123,7 @@ function editorialMega(flat, flatEn, base, menuId) {
 const MEGA_RENDERERS = Object.fromEntries(TOP_NAV.map((id) => [id, (f, fe, b) => editorialMega(f, fe, b, id)]));
 
 function navMegaItem(flat, flatEn, base, activeNav, id) {
-  const label = NAV_LABELS[id];
+  const label = navTopLabel(flat, flatEn, id);
   const active = activeNav === id ? " gnav-dd--active" : "";
   const openAttr = activeNav === id ? ' aria-current="page"' : "";
   const body = MEGA_RENDERERS[id](flat, flatEn, base);
@@ -140,11 +156,11 @@ function langSelect(flat, flatEn, id) {
   </div>`;
 }
 
-/** Mobile: 5 accordions × max 4 destinations */
+/** Mobile: accordions — Resources lists all hubs */
 const MOBILE_MENUS = Object.fromEntries(
   TOP_NAV.map((id) => [
     id,
-    (MEGA_DESTINATIONS[id] || []).slice(0, 4).map((d) => ({
+    (MEGA_DESTINATIONS[id] || []).slice(0, megaItemLimit(id)).map((d) => ({
       labelKey: d.titleKey,
       href: d.href,
       titleFb: d.titleFb,
@@ -157,7 +173,7 @@ function mobileNav(flat, flatEn, base, suffix) {
   const themeLabel = escapeHtml(t(flat, flatEn, "common.themeToggle", "Theme"));
 
   const sections = TOP_NAV.map((id) => {
-    const label = NAV_LABELS[id];
+    const label = navTopLabel(flat, flatEn, id);
     const items = MOBILE_MENUS[id] || [];
     const links = items
       .map((item) => {
@@ -199,8 +215,8 @@ export function renderGlobalHeader(flat, flatEn, { activeNav = "", base = "../",
   return `<header class="gnav site-header gnav--five" data-gnav>
       <div class="gnav__bar">
         <div class="gnav__inner">
-          <a class="gnav__brand" href="${brandHref}">
-            <img class="gnav__logo" src="/logo.png" alt="Newon" width="40" height="40" decoding="async" />
+          <a class="gnav__brand" href="${brandHref}" aria-label="${brand}">
+            <img class="gnav__logo" src="/logo.png" alt="" width="40" height="40" decoding="async" />
             <span class="gnav__wordmark">${brand}</span>
           </a>
           <nav class="gnav__nav" aria-label="${escapeHtml(t(flat, flatEn, "nav.mainAria", "Main"))}">
@@ -286,7 +302,10 @@ export function renderStudioFooter(flat, flatEn, { base = "../" } = {}) {
           ["footer.linkStore", "../resources/store/", "Store"],
           ["footer.linkInsights", "../resources/insights/", "Insights"],
           ["footer.linkBlog", "../resources/blog/", "Blog"],
+          ["footer.linkMedia", "../resources/media/", "Media"],
           ["footer.linkLabs", "../resources/labs/", "Labs"],
+          ["footer.linkNotes", "../resources/newsletter/", "Notes"],
+          ["footer.linkEducation", "../resources/education/", "Education"],
         ], "RESOURCES")}
         ${col("footer.colCompany", [
           ["footer.about", "../about/", "About"],

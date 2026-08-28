@@ -99,7 +99,21 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  function initBrandScroll() {
+    var link = root.querySelector("[data-ab-brand-scroll]");
+    if (!link) return;
+    link.addEventListener("click", function (e) {
+      var href = link.getAttribute("href") || "";
+      if (href.charAt(0) !== "#") return;
+      var target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "start" });
+    });
+  }
+
   initReveal();
   initPrinciples();
   initSwitchScroll();
+  initBrandScroll();
 })();
