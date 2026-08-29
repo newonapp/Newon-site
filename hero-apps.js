@@ -161,7 +161,8 @@
     var desc = label.description || app.category;
     var cat = label.category || app.category;
     var aria = app.name + (desc ? " — " + desc : "");
-    var prio = priority ? ' fetchpriority="high"' : ' fetchpriority="auto"';
+    var loading = priority ? "eager" : "lazy";
+    var prio = priority ? ' fetchpriority="high"' : "";
     return (
       '<a class="hero-app-card" href="' +
       escapeAttr(app.href) +
@@ -181,7 +182,9 @@
       escapeAttr(app.icon) +
       '" alt="' +
       escapeAttr(app.name) +
-      '" width="96" height="96" loading="eager" decoding="async"' +
+      '" width="96" height="96" loading="' +
+      loading +
+      '" decoding="async"' +
       prio +
       " />" +
       '<span class="hero-app-card__meta">' +
@@ -204,7 +207,8 @@
     var i;
     for (i = 0; i < slugs.length; i++) {
       var app = bySlug(slugs[i]);
-      if (app) parts.push(cardHtml(app, labels, startIndex + i, prioritize && i < slugs.length));
+      /* Only first few visible-row icons are eager — clones stay lazy */
+      if (app) parts.push(cardHtml(app, labels, startIndex + i, prioritize && i < 4));
     }
     return parts.join("");
   }
@@ -223,10 +227,10 @@
     var gap = mobile ? 11 : 18;
     var viewport = Math.max(global.innerWidth || 0, mobile ? 390 : 1280);
     var unit = Math.max(cardW + gap, 64) * Math.max(cardCount, 1);
-    /* Enough copies for continuous marquee without a second remount fill */
-    var copies = Math.ceil((viewport * 2.2) / unit) + 2;
-    if (copies < 3) copies = 3;
-    if (copies > 10) copies = 10;
+    /* Enough for continuous marquee; keep DOM light for first paint */
+    var copies = Math.ceil((viewport * 1.6) / unit) + 1;
+    if (copies < 2) copies = 2;
+    if (copies > 4) copies = 4;
     return copies;
   }
 
@@ -269,10 +273,11 @@
     var r;
     for (r = 0; r < layouts.length; r++) {
       var row = layouts[r];
-      /* Prioritize first row icons so first paint isn't empty pastel tiles */
+      /* First paint: prioritize only the first unique set of row 0 */
       var once = buildCards(row.apps, labels, r * 12, r === 0);
+      var onceLazy = buildCards(row.apps, labels, r * 12, false);
       var copies = copiesForRow(row.apps.length);
-      var cards = repeatHtml(once, copies);
+      var cards = once + (copies > 1 ? repeatHtml(onceLazy, copies - 1) : "");
       var dur = prefersReducedMotion() ? row.duration * 4 : row.duration;
       html +=
         '<div class="hero-marquee__row hero-marquee__row--' +
@@ -285,7 +290,7 @@
         cards +
         "</div>" +
         '<div class="hero-marquee__group" aria-hidden="true">' +
-        cards +
+        repeatHtml(onceLazy, copies) +
         "</div>" +
         "</div>" +
         "</div>";

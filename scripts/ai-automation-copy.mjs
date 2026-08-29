@@ -133,40 +133,48 @@ export const AI_AUTOMATION_COPY = {
       "성공 지표·KPI",
       "데이터·보안 정책",
     ],
-    useLabel: "USE CASES",
+    useLabel: "활용 예시",
     useTitle: "이런 AI 자동화를 구축할 수 있습니다.",
     useBadge: "구축 가능 예시",
     useCases: [
       {
         t: "INQUIRY CLASSIFY",
+        tag: "CUSTOMER",
         d: "고객 문의를 주제·긴급도·담당자로 분류.\nFAQ 매칭과 라우팅 자동화.",
       },
       {
         t: "REPLY DRAFT",
+        tag: "CUSTOMER",
         d: "문의·이메일·채팅에 대한 초안 답변 생성.\n사람 검수 후 발송.",
       },
       {
         t: "REVIEW ANALYSIS",
+        tag: "INSIGHT",
         d: "리뷰·피드백을 주제별로 묶어 개선 포인트 정리.\n감성·이슈 클러스터링.",
       },
       {
         t: "CONTENT DRAFT",
+        tag: "CONTENT",
         d: "공지, 도움말, 마케팅 초안을 톤에 맞춰 생성.\n템플릿·가이드 기반.",
       },
       {
         t: "DOCUMENT SUMMARY",
+        tag: "OPS",
         d: "긴 문서·회의록을 의사결정용 요약으로 압축.\n핵심·액션·리스크 추출.",
       },
       {
         t: "INTERNAL KNOWLEDGE",
+        tag: "OPS",
         d: "분산된 문서를 찾아 근거와 함께 답하는 사내 AI.\n권한 범위 내 검색.",
       },
       {
         t: "OPS AUTOMATION",
+        tag: "OPS",
         d: "데이터 정리, 알림, 반복 리포트 생성.\n분류·요약과 연계.",
       },
       {
         t: "PRODUCT AI FEATURE",
+        tag: "PRODUCT",
         d: "기존 웹·앱에 AI 분류·초안·요약 기능 추가.\n사용자·운영자 워크플로에 통합.",
       },
     ],
@@ -534,34 +542,42 @@ export const AI_AUTOMATION_COPY = {
     useCases: [
       {
         t: "INQUIRY CLASSIFY",
+        tag: "CUSTOMER",
         d: "Classify customer inquiries by topic, urgency, owner.\nFAQ matching and routing automation.",
       },
       {
         t: "REPLY DRAFT",
+        tag: "CUSTOMER",
         d: "Generate draft replies for inquiries, email, chat.\nSend after human review.",
       },
       {
         t: "REVIEW ANALYSIS",
+        tag: "INSIGHT",
         d: "Cluster reviews and feedback by theme.\nSurface improvement points and sentiment.",
       },
       {
         t: "CONTENT DRAFT",
+        tag: "CONTENT",
         d: "Generate notices, help articles, marketing drafts on-tone.\nTemplate and guide based.",
       },
       {
         t: "DOCUMENT SUMMARY",
+        tag: "OPS",
         d: "Compress long docs and notes for decisions.\nExtract key points, actions, risks.",
       },
       {
         t: "INTERNAL KNOWLEDGE",
+        tag: "OPS",
         d: "Answer from scattered docs with sources.\nSearch within permission scope.",
       },
       {
         t: "OPS AUTOMATION",
+        tag: "OPS",
         d: "Data cleanup, alerts, recurring reports.\nLinked with classify and summarize.",
       },
       {
         t: "PRODUCT AI FEATURE",
+        tag: "PRODUCT",
         d: "Add classify, draft, summarize to existing web or app.\nIntegrated into user and operator workflows.",
       },
     ],

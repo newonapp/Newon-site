@@ -21,10 +21,19 @@ export function buildStoreDetailBody(product, _copies, lang) {
 export function storeDetailSeo(product, lang) {
   const detail = getStoreDetail(product.slug);
   const title = detail?.title || (lang === "ko" ? product.titleKo : product.titleEn) || product.slug;
-  const meta =
+  const overview = detail && (lang === "ko" ? detail.overviewBodyKo : detail.overviewBodyEn);
+  const overviewFirst = Array.isArray(overview) ? overview[0] : "";
+  const metaRaw =
     (detail && pick(detail, lang, "metaKo", "metaEn")) ||
+    overviewFirst ||
+    (detail && pick(detail, lang, "heroLeadKo", "heroLeadEn")) ||
     (lang === "ko" ? product.descKo : product.descEn) ||
     "";
+  const meta = String(metaRaw)
+    .replace(/\n+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 160);
   return {
     seoTitle: `${title} | Newon Store`,
     metaDescription: meta,

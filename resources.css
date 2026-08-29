@@ -473,7 +473,9 @@ html[data-newon-shell-theme="dark"] .rs-switch {
 }
 
 .rs-filter-empty[hidden],
-[data-rs-filter-empty][hidden] {
+[data-rs-filter-empty][hidden],
+.rx-find__empty[hidden],
+[data-rx-empty][hidden] {
   display: none !important;
 }
 
@@ -1875,6 +1877,35 @@ html[data-newon-shell-theme="dark"] .lx-close__btn--ghost:hover {
   padding-top: 2rem;
   border-top: 1px solid var(--rs-line);
 }
+.rs-notify--launch {
+  margin-top: 3rem;
+  padding: clamp(2.25rem, 4.5vw, 3.25rem) clamp(1.15rem, 3vw, 1.85rem);
+  border-top: 0;
+  background: #0a0a0a;
+  color: #f3f3f3;
+}
+.rs-notify--launch .rs-eyebrow {
+  color: rgba(255, 255, 255, 0.45);
+}
+.rs-notify--launch .rs-lead {
+  color: rgba(255, 255, 255, 0.62);
+}
+.rs-notify--launch .rs-form {
+  max-width: none;
+}
+.rs-notify--launch .rs-form__msg {
+  color: rgba(255, 255, 255, 0.55);
+}
+.rs-form--newsletter.nw-notify-form {
+  margin: 0 0 1.5rem;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: #0a0a0a;
+  color: #f3f3f3;
+  max-width: none;
+}
+.rs-newsletter .rs-form__msg {
+  margin-top: 0.85rem;
+}
 
 /* ——— Empty ——— */
 .rs-empty {
@@ -3241,25 +3272,32 @@ html[data-newon-shell-theme="dark"] .rs-page[data-rs-hub="index"] .rx-hit {
   font-size: 0.98rem;
 }
 .rs-page[data-rs-hub="index"] .rx-nl__form {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  max-width: none;
+}
+.rs-page[data-rs-hub="index"] .rx-nl__form .nw-notify-form__row {
+  width: min(100%, 38rem);
 }
 .rs-page[data-rs-hub="index"] .rx-nl__form input[type="email"] {
-  min-height: 2.75rem;
-  padding: 0 0.9rem;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.06);
-  color: #fff;
+  min-height: 3.25rem;
+  height: 3.25rem;
+  padding: 0 1rem;
+  border-radius: 2px;
+  border: 0;
+  background: #fff;
+  color: #0a0a0a;
 }
 .rs-page[data-rs-hub="index"] .rx-nl__form button {
-  min-height: 2.75rem;
-  padding: 0 1rem;
+  min-height: 3.25rem;
+  height: 3.25rem;
+  padding: 0 1.25rem;
   border: 0;
-  border-radius: 10px;
-  background: #f2f2f2;
-  color: #0a0a0a;
+  border-radius: 2px;
+  background: #fff;
+  color: #080808;
   font-weight: 650;
   cursor: pointer;
 }
@@ -3330,8 +3368,9 @@ html[data-newon-shell-theme="dark"] .rs-page[data-rs-hub="index"] .rx-hit {
   .rs-page[data-rs-hub="index"] .rx-cat-grid {
     grid-template-columns: 1fr;
   }
-  .rs-page[data-rs-hub="index"] .rx-nl__form {
-    grid-template-columns: 1fr;
+  .rs-page[data-rs-hub="index"] .rx-nl__form .nw-notify-form__row {
+    flex-direction: column;
+    width: 100%;
   }
   .rs-page[data-rs-hub="index"] .rx-find__kbd {
     display: none;
@@ -4150,29 +4189,76 @@ html[data-newon-shell-theme="dark"] .ri-research__btn--ghost:hover {
 }
 @media (hover: hover) and (pointer: fine) {
   .ri-research__card:hover {
-    background: #111;
-    color: #fff;
+    border-color: var(--rs-ink);
+    background: transparent;
+    color: inherit;
   }
   .ri-research__card:hover .ri-research__card-n,
   .ri-research__card:hover .ri-research__card-tag {
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--rs-soft);
   }
   .ri-research__card:hover .ri-research__card-desc {
-    color: rgba(255, 255, 255, 0.72);
+    color: var(--rs-muted);
   }
   .ri-research__card:hover .ri-research__card-go {
     opacity: 1;
-    transform: translate(2px, -2px);
+    transform: translateX(3px);
   }
 }
 html[data-newon-shell-theme="dark"] .ri-research__card:hover {
-  background: #fff;
-  color: #111;
+  background: transparent;
+  color: inherit;
+  border-color: #fff;
 }
 html[data-newon-shell-theme="dark"] .ri-research__card:hover .ri-research__card-n,
 html[data-newon-shell-theme="dark"] .ri-research__card:hover .ri-research__card-tag {
-  color: rgba(0, 0, 0, 0.55);
+  color: var(--rs-soft);
 }
 html[data-newon-shell-theme="dark"] .ri-research__card:hover .ri-research__card-desc {
-  color: rgba(0, 0, 0, 0.62);
+  color: var(--rs-muted);
 }
+.ri-research__panel--capabilities .ri-research__intro--capabilities {
+  grid-column: 1 / -1;
+  border-right: 0;
+  padding-bottom: 0.5rem;
+}
+.ri-research__panel--capabilities {
+  display: flex;
+  flex-direction: column;
+}
+.ri-research__card-explore {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  color: var(--rs-soft);
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+.ri-research__card:hover .ri-research__card-explore {
+  color: var(--rs-ink);
+}
+.ri-research__inquiry {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  margin-top: 0;
+  padding: 1.35rem 1.15rem 1.5rem;
+  border-top: 1px solid var(--rs-line);
+}
+.ri-research__inquiry-k {
+  margin: 0 0 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+}
+.ri-research__inquiry-lead {
+  margin: 0;
+  max-width: 28rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--rs-muted);
+}
+

@@ -12,12 +12,17 @@ function t(flat, flatEn, key, fb = "") {
 }
 
 const AI_IN_APPS = [
-  { slug: "savy", name: "Savy", capabilityKo: "AI 소비 인사이트", capabilityEn: "AI Spending Insight" },
+  { slug: "newon-plus", name: "Newon+", capabilityKo: "AI 앱 허브", capabilityEn: "AI App Hub" },
   { slug: "babylog", name: "BabyLog", capabilityKo: "AI 육아 인사이트", capabilityEn: "AI Parenting Insight" },
   { slug: "petlog", name: "PetLog", capabilityKo: "AI 케어 인사이트", capabilityEn: "AI Care Insight" },
-  { slug: "piggyup", name: "PiggyUp", capabilityKo: "AI 코치", capabilityEn: "AI Coach" },
   { slug: "myworld", name: "My World", capabilityKo: "AI 여행 리포트", capabilityEn: "AI Travel Report" },
+  { slug: "savy", name: "Savy", capabilityKo: "AI 소비 인사이트", capabilityEn: "AI Spending Insight" },
   { slug: "ox-month", name: "OX MONTH", capabilityKo: "AI 패턴 분석", capabilityEn: "AI Pattern Analysis" },
+  { slug: "pillmate", name: "Pillmate", capabilityKo: "AI 복약 인사이트", capabilityEn: "AI Medication Insight" },
+  { slug: "goalup", name: "GoalUp", capabilityKo: "AI 목표 코치", capabilityEn: "AI Goal Coach" },
+  { slug: "countup", name: "CountUp", capabilityKo: "AI 카운트 인사이트", capabilityEn: "AI Count Insight" },
+  { slug: "subping", name: "SubPing", capabilityKo: "AI 구독 인사이트", capabilityEn: "AI Subscription Insight" },
+  { slug: "piggyup", name: "PiggyUp", capabilityKo: "AI 코치", capabilityEn: "AI Coach" },
 ];
 
 function appBySlug(slug) {
@@ -249,14 +254,16 @@ function earlyAccessForm(flat, flatEn) {
         <p class="ai-early__eyebrow">${t(flat, flatEn, "studio.aiEarlyLabel", "NEWON AI / EARLY ACCESS")}</p>
         <h2 class="ai-early__title">${t(flat, flatEn, "studio.aiEarlyTitle", "Newon AI 제품 출시 소식을\n가장 먼저 받아보세요.")}</h2>
       </div>
-      <form class="ai-early__form waitlist-form" data-waitlist-form data-product-id="newon-ai" data-form-type="waitlist">
+      <form class="ai-early__form waitlist-form nw-notify-form" data-waitlist-form data-product-id="newon-ai" data-form-type="waitlist">
         <input type="hidden" name="productId" value="newon-ai" />
-        <label class="ai-early__field">
-          <span class="visually-hidden">Email</span>
-          <input type="email" name="email" placeholder="email@example.com" required autocomplete="email" aria-label="Email" />
-        </label>
+        <div class="nw-notify-form__row">
+          <label class="ai-early__field nw-notify-form__field">
+            <span class="visually-hidden">Email</span>
+            <input type="email" name="email" class="nw-notify-form__email" placeholder="email@example.com" required autocomplete="email" aria-label="Email" />
+          </label>
+          <button type="submit" class="btn btn-primary nw-notify-form__btn">${t(flat, flatEn, "studio.aiEarlyCta", "Join waitlist")}</button>
+        </div>
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-        <button type="submit" class="btn btn-primary">${t(flat, flatEn, "studio.aiEarlyCta", "Join waitlist")}</button>
       </form>
       <p class="waitlist-success" data-waitlist-success hidden>${t(flat, flatEn, "studio.waitlistSuccess", "")}</p>
       <p class="waitlist-success" data-waitlist-duplicate hidden>${t(flat, flatEn, "studio.newsletterAlready", "")}</p>
@@ -275,7 +282,7 @@ function appsInsideGrid(flat, flatEn, lang) {
     const cap = isKo ? row.capabilityKo : row.capabilityEn;
     const desc = isKo ? meta.taglineKo || cap : meta.taglineEn || cap;
     const name = row.name || app.name;
-    const href = `../portfolio/${row.slug}/`;
+    const href = `../${app.homeHash}`;
     return `<a class="ai-app-card" href="${escapeHtml(href)}" aria-label="${escapeHtml(name)} — ${escapeHtml(viewLabel)}">
       <img class="ai-app-card__icon" src="${escapeHtml(app.icon)}" alt="" width="48" height="48" loading="lazy" decoding="async" />
       <div class="ai-app-card__body">
@@ -291,7 +298,7 @@ function appsInsideGrid(flat, flatEn, lang) {
 }
 
 export function renderAiShowcaseBody(flat, flatEn, lang) {
-  const appsCount = "11+";
+  const appsCount = String(AI_IN_APPS.length);
 
   return `<div class="ai-page" data-ai-page>
   <section class="ai-hero ai-hero--fold" data-ai-reveal>
@@ -327,18 +334,7 @@ export function renderAiShowcaseBody(flat, flatEn, lang) {
     </div>
   </section>
 
-  <div id="ai-products" class="ai-pnav-wrap">
-    <nav class="ai-pnav hub-inner" aria-label="${t(flat, flatEn, "studio.aiSection1Title", "PRODUCTS")}">
-      <p class="ai-pnav__label">${t(flat, flatEn, "studio.aiSection1Title", "PRODUCTS")}</p>
-      <div class="ai-pnav__track" role="list">
-        <a class="ai-pnav__item" role="listitem" href="#ai-review" data-ai-nav="ai-review"><span>01</span><strong>Review</strong></a>
-        <a class="ai-pnav__item" role="listitem" href="#ai-content" data-ai-nav="ai-content"><span>02</span><strong>Content</strong></a>
-        <a class="ai-pnav__item" role="listitem" href="#ai-launch" data-ai-nav="ai-launch"><span>03</span><strong>Launch</strong></a>
-        <a class="ai-pnav__item" role="listitem" href="#ai-cs" data-ai-nav="ai-cs"><span>04</span><strong>CS AI</strong></a>
-      </div>
-      <a class="ai-pnav__all" href="#ai-products">${t(flat, flatEn, "studio.aiViewAll", "View all")} →</a>
-    </nav>
-  </div>
+  <div id="ai-products" class="ai-products-start"></div>
 
   ${productSection({
     id: "ai-review",

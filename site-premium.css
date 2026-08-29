@@ -276,10 +276,14 @@ html[data-newon-shell-theme="dark"] .hub-filter.is-active {
 
 .hub-filter:hover:not(.is-active) {
   background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(10, 10, 10, 0.28);
+  color: #0a0a0a;
 }
 
 html[data-newon-shell-theme="dark"] .hub-filter:hover:not(.is-active) {
   background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
 }
 
 .hub-badge {
@@ -455,6 +459,89 @@ html[data-newon-shell-theme="dark"] .tool-panel select:focus {
 .waitlist-form input[type="email"] {
   border-radius: var(--ui-radius-sm);
   min-height: 44px;
+}
+
+/* Shared launch-notify row: white email + white CTA (dark surfaces) */
+.nw-notify-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  max-width: none;
+  flex-wrap: nowrap;
+}
+.nw-notify-form__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.65rem;
+  width: min(100%, 38rem);
+}
+.nw-notify-form__email,
+.nw-notify-form input[type="email"] {
+  flex: 1 1 14rem;
+  min-width: min(100%, 12rem);
+  min-height: 3.25rem;
+  height: 3.25rem;
+  padding: 0 1rem;
+  border: 0 !important;
+  border-radius: 2px !important;
+  background: #fff !important;
+  color: #0a0a0a !important;
+  font: inherit;
+  font-size: 0.9375rem;
+  box-sizing: border-box;
+}
+.nw-notify-form__email::placeholder,
+.nw-notify-form input[type="email"]::placeholder {
+  color: rgba(10, 10, 10, 0.38);
+}
+.nw-notify-form__btn,
+.nw-notify-form button[type="submit"],
+.nw-notify-form .bs-btn--primary,
+.nw-notify-form .rs-btn--primary,
+.nw-notify-form .btn-primary,
+.nw-notify-form .btn.btn-primary {
+  flex: 0 0 auto;
+  margin-top: 0 !important;
+  min-height: 3.25rem;
+  height: 3.25rem;
+  padding: 0 1.25rem;
+  border-radius: 2px !important;
+  border: 1px solid #fff !important;
+  background: #fff !important;
+  color: #080808 !important;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.nw-notify-form__field {
+  display: block;
+  flex: 1 1 14rem;
+  min-width: min(100%, 12rem);
+  margin: 0;
+}
+.nw-notify-form__field input {
+  width: 100%;
+}
+@media (max-width: 560px) {
+  .nw-notify-form__row {
+    flex-direction: column;
+    width: 100%;
+  }
+  .nw-notify-form__email,
+  .nw-notify-form input[type="email"],
+  .nw-notify-form__btn,
+  .nw-notify-form button[type="submit"],
+  .nw-notify-form .bs-btn--primary,
+  .nw-notify-form .rs-btn--primary,
+  .nw-notify-form .btn-primary,
+  .nw-notify-form .btn.btn-primary {
+    width: 100%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

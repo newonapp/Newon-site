@@ -10,6 +10,7 @@ import { injectSiteChrome } from "./inject-chrome.mjs";
 import { BUSINESS_SERVICE_PAGES } from "./business-service-catalog.mjs";
 import { getServiceCopy } from "./business-service-copy.mjs";
 import { businessHeroVisual } from "./business-bs-visuals.mjs";
+import { streamlinedResearchDetail } from "./research-detail-streamlined.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const template = fs.readFileSync(path.join(ROOT, "templates", "business-service.html"), "utf8");
@@ -1238,11 +1239,24 @@ function tagChips(items) {
 }
 
 function useCasesHtml(items) {
-  return `<div class="bs-type-grid" data-variant="types">${(items || [])
-    .map(
-      (it) =>
-        `<article class="bs-type-grid__item"><h3>${escapeHtml(it.title || "")}</h3><p>${flowBodyHtml(it.body || "")}</p></article>`
-    )
+  const list = items || [];
+  if (!list.length) return "";
+  const count = list.length;
+  return `<div class="bs-use-board" data-count="${count}">${list
+    .map((it, i) => {
+      const n = escapeHtml(it.n || pad2(i + 1));
+      const tag = it.tag
+        ? `<span class="bs-use-board__tag">${escapeHtml(it.tag)}</span>`
+        : "";
+      return `<article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">${n}</span>
+          ${tag}
+        </div>
+        <h3 class="bs-use-board__title">${escapeHtml(it.title || "")}</h3>
+        <p class="bs-use-board__body">${flowBodyHtml(it.body || "")}</p>
+      </article>`;
+    })
     .join("")}</div>`;
 }
 
@@ -2305,12 +2319,14 @@ function aiExtras(copy) {
     </div>
   </div></section>`;
 
-  html += `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-areas-title"><div class="bs-inner">
-    <p class="bs-eyebrow">USE CASES</p>
-    <h2 class="bs-title" id="bs-areas-title">${escapeHtml(copy.areasTitle || "AUTOMATION USE CASES")}</h2>
-    ${copy.areasLead ? `<p class="bs-lead">${escapeHtml(copy.areasLead)}</p>` : ""}
+  html += `<section class="bs-section bs-usecases bs-section--surface" data-bs-reveal aria-labelledby="bs-areas-title">
+    <div class="bs-usecases__head bs-inner">
+      <p class="bs-eyebrow">USE CASES</p>
+      <h2 class="bs-title" id="bs-areas-title">${escapeHtml(copy.areasTitle || "AUTOMATION USE CASES")}</h2>
+      ${copy.areasLead ? `<p class="bs-lead">${escapeHtml(copy.areasLead)}</p>` : ""}
+    </div>
     ${useCasesHtml(useCases)}
-  </div></section>`;
+  </section>`;
 
   html += `<section class="bs-section" data-bs-reveal aria-labelledby="bs-loop-title"><div class="bs-inner">
     <p class="bs-eyebrow">GOVERNANCE</p>
@@ -2624,6 +2640,7 @@ function dataReportingExtras(copy) {
     n: pad2(i + 1),
     title: u.t,
     body: u.d,
+    tag: u.tag || "",
   }));
   const flowRail = (copy.flow || []).map((f) => ({ n: f.n, title: f.t }));
   const flowDetail = (copy.flow || []).map((f) => ({ n: f.n, title: f.t, body: f.d }));
@@ -2694,12 +2711,14 @@ function dataReportingExtras(copy) {
 
   /* USE CASES — area cards like AI page */
   if (useCases.length) {
-    html += `<section class="bs-section" data-bs-reveal aria-labelledby="bs-dr-areas-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(copy.useLabel || "USE CASES")}</p>
-      <h2 class="bs-title" id="bs-dr-areas-title">${escapeHtml(copy.useTitle || "")}</h2>
-      ${copy.useBadge ? `<p class="bs-mono bs-dr-badge">${escapeHtml(copy.useBadge)}</p>` : ""}
+    html += `<section class="bs-section bs-usecases" data-bs-part="usecases" data-bs-reveal aria-labelledby="bs-dr-areas-title">
+      <div class="bs-usecases__head bs-inner">
+        <p class="bs-eyebrow">${escapeHtml(copy.useLabel || "USE CASES")}</p>
+        <h2 class="bs-title" id="bs-dr-areas-title">${escapeHtml(copy.useTitle || "")}</h2>
+        ${copy.useBadge ? `<p class="bs-mono bs-dr-badge">${escapeHtml(copy.useBadge)}</p>` : ""}
+      </div>
       ${useCasesHtml(useCases)}
-    </div></section>`;
+    </section>`;
   }
 
   /* WORKFLOW — rail visual + captions (Landing rail rhythm) */
@@ -2877,6 +2896,7 @@ function researchDetailExtras(copy, cfg = {}) {
     n: pad2(i + 1),
     title: u.t,
     body: u.d,
+    tag: u.tag || "",
   }));
   const flowRail = (copy.flow || []).map((f) => ({ n: f.n, title: f.t }));
   const flowDetail = (copy.flow || []).map((f) => ({
@@ -2997,12 +3017,14 @@ function researchDetailExtras(copy, cfg = {}) {
 
   /* USE CASES — area cards like AI page */
   if (useCases.length) {
-    html += `<section class="bs-section" data-bs-part="usecases" data-bs-reveal aria-labelledby="bs-dr-areas-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(copy.useLabel || "USE CASES")}</p>
-      <h2 class="bs-title" id="bs-dr-areas-title">${escapeHtml(copy.useTitle || "")}</h2>
-      ${copy.useBadge ? `<p class="bs-mono bs-dr-badge">${escapeHtml(copy.useBadge)}</p>` : ""}
+    html += `<section class="bs-section bs-usecases" data-bs-part="usecases" data-bs-reveal aria-labelledby="bs-dr-areas-title">
+      <div class="bs-usecases__head bs-inner">
+        <p class="bs-eyebrow">${escapeHtml(copy.useLabel || "USE CASES")}</p>
+        <h2 class="bs-title" id="bs-dr-areas-title">${escapeHtml(copy.useTitle || "")}</h2>
+        ${copy.useBadge ? `<p class="bs-mono bs-dr-badge">${escapeHtml(copy.useBadge)}</p>` : ""}
+      </div>
       ${useCasesHtml(useCases)}
-    </div></section>`;
+    </section>`;
   }
 
   /* WORKFLOW — rail visual + captions (Landing rail rhythm) */
@@ -3123,64 +3145,55 @@ function researchDetailExtras(copy, cfg = {}) {
   return html;
 }
 
+function researchStreamlinedHelpers(copy, processHtmlFn) {
+  const timelines = (copy.timelines || []).map((t, i) => ({
+    title: t.t,
+    body: t.d,
+    n: pad2(i + 1),
+  }));
+  return {
+    areasHtml,
+    processHtmlFn: processHtmlFn || marketResearchProcessHtml,
+    engagementSectionHtml,
+    tagChips,
+    timelines,
+  };
+}
+
 function marketResearchExtras(copy) {
-  return researchDetailExtras(copy);
+  return streamlinedResearchDetail(
+    copy,
+    "market-research",
+    researchStreamlinedHelpers(copy, marketResearchProcessHtml)
+  );
 }
 
 function competitorAnalysisExtras(copy) {
-  return researchDetailExtras(copy, {
-    flowHtml: competitorAnalysisFlowHtml,
-    processHtml: competitorAnalysisProcessHtml,
-    connectPipe: ["SELECT", "COMPARE", "MATRIX"],
-    connectActive: 2,
-    connectNote: "ONE MATRIX",
-    connectOutputs: ["Competitor Matrix", "Position Summary", "Gap Analysis", "Implications"],
-    outputSecondLabel: "COMPETITOR MATRIX",
-    outputSecondKind: "matrix",
-    metricVals: ["5", "4", "3", "2"],
-  });
+  return streamlinedResearchDetail(
+    copy,
+    "competitor-analysis",
+    researchStreamlinedHelpers(copy, competitorAnalysisProcessHtml)
+  );
 }
 
 function consumerResearchExtras(copy) {
-  return researchDetailExtras(copy, {
-    flowHtml: consumerResearchFlowHtml,
-    processHtml: consumerResearchProcessHtml,
-    connectPipe: ["LISTEN", "ANALYZE", "INSIGHT"],
-    connectActive: 2,
-    connectNote: "ONE BRIEF",
-    connectOutputs: ["Insight Brief", "Segment Map", "Need Themes", "Implications"],
-    outputSecondLabel: "SEGMENT MAP",
-    outputSecondKind: "segments",
-    metricVals: ["4", "8", "12", "3"],
-  });
+  return streamlinedResearchDetail(
+    copy,
+    "consumer-research",
+    researchStreamlinedHelpers(copy, consumerResearchProcessHtml)
+  );
 }
 
 function uxAuditExtras(copy) {
-  return researchDetailExtras(copy, {
-    flowHtml: uxAuditFlowHtml,
-    processHtml: uxAuditProcessHtml,
-    connectPipe: ["MAP", "REVIEW", "PRIORITY"],
-    connectActive: 2,
-    connectNote: "ONE REPORT",
-    connectOutputs: ["Audit Report", "Issue List", "Flow Map", "Action Items"],
-    outputSecondLabel: "ISSUE LIST",
-    outputSecondKind: "audit",
-    metricVals: ["5", "14", "8", "3"],
-  });
+  return streamlinedResearchDetail(copy, "ux-audit", researchStreamlinedHelpers(copy, uxAuditProcessHtml));
 }
 
 function trendResearchExtras(copy) {
-  return researchDetailExtras(copy, {
-    flowHtml: trendResearchFlowHtml,
-    processHtml: trendResearchProcessHtml,
-    connectPipe: ["SCAN", "CLUSTER", "BRIEF"],
-    connectActive: 2,
-    connectNote: "ONE BRIEF",
-    connectOutputs: ["Trend Brief", "Theme Map", "Signal Summary", "Implications"],
-    outputSecondLabel: "THEME MAP",
-    outputSecondKind: "trends",
-    metricVals: ["6", "86", "2", "3"],
-  });
+  return streamlinedResearchDetail(
+    copy,
+    "trend-research",
+    researchStreamlinedHelpers(copy, trendResearchProcessHtml)
+  );
 }
 
 function customProductExtras(copy) {
@@ -3600,6 +3613,7 @@ function internalToolsExtras(copy) {
     n: pad2(i + 1),
     title: u.t,
     body: u.d,
+    tag: u.tag || "",
   }));
   const flowRail = (copy.flow || []).map((f) => ({ n: f.n, title: f.t }));
   const flowDetail = (copy.flow || []).map((f) => ({ n: f.n, title: f.t, body: f.d }));
@@ -3663,12 +3677,14 @@ function internalToolsExtras(copy) {
   }
 
   if (useCases.length) {
-    html += `<section class="bs-section" data-bs-reveal aria-labelledby="bs-it-areas-title"><div class="bs-inner">
-      <p class="bs-eyebrow">${escapeHtml(copy.useLabel || "POSSIBILITIES")}</p>
-      <h2 class="bs-title" id="bs-it-areas-title">${escapeHtml(copy.useTitle || "")}</h2>
-      ${copy.useBadge ? `<p class="bs-mono bs-dr-badge">${escapeHtml(copy.useBadge)}</p>` : ""}
+    html += `<section class="bs-section bs-usecases" data-bs-reveal aria-labelledby="bs-it-areas-title">
+      <div class="bs-usecases__head bs-inner">
+        <p class="bs-eyebrow">${escapeHtml(copy.useLabel || "POSSIBILITIES")}</p>
+        <h2 class="bs-title" id="bs-it-areas-title">${escapeHtml(copy.useTitle || "")}</h2>
+        ${copy.useBadge ? `<p class="bs-mono bs-dr-badge">${escapeHtml(copy.useBadge)}</p>` : ""}
+      </div>
       ${useCasesHtml(useCases)}
-    </div></section>`;
+    </section>`;
   }
 
   if (flowRail.length) {

@@ -21,7 +21,7 @@ export const COMPETITOR_ANALYSIS_COPY = {
       { k: "SERVICE", v: "Competitor Analysis" },
       { k: "BEST FOR", v: "포지셔닝·차별화 검토" },
       { k: "TIMELINE", v: "보통 1–2주" },
-      { k: "PRICE", v: "₩200,000부터" },
+      { k: "PRICE", v: "₩300,000부터" },
     ],
     overviewLabel: "OVERVIEW",
     overviewTitle: "경쟁사는 알지만,\n비교 기준이 없습니다.",

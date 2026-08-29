@@ -20,6 +20,7 @@ import { renderBusinessCollabDetails } from "./render-business-collab-details.mj
 import { renderBusinessServices } from "./render-business-services.mjs";
 import { BUSINESS_SERVICE_PAGES } from "./business-service-catalog.mjs";
 import { publishedArticles } from "./news-data.mjs";
+import { buildHomeStudioBody } from "./home-page-body.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { businessServicesHtml } from "./business-services-html.mjs";
 import { renderGlobalHeader } from "./site-chrome.mjs";
@@ -354,6 +355,9 @@ for (const { dir, file, htmlLang } of LANGS) {
   tpl = applyTemplate(tpl, flat, flatEn);
   tpl = applyLocImgs(tpl, dir);
   tpl = stripOxMonthShowcaseVariants(tpl, dir);
+
+  const copyLang = dir === "ko" ? "ko" : "en";
+  tpl = tpl.replace(/\{\{HOME_STUDIO_BODY\}\}/g, buildHomeStudioBody(copyLang));
 
   tpl = tpl.replace(/\{\{GLOBAL_HEADER\}\}/g, renderGlobalHeader(flat, flatEn, { activeNav: "", base: "", idSuffix: "home" }));
 

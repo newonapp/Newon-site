@@ -288,11 +288,13 @@ ${
       <p class="rx-nl__lead">${escapeHtml(copy.nlLead || (ko ? "Newon의 새로운 제품, 실험과 배운 점을 가끔 보내드립니다." : "Occasional notes on products, experiments, and what we learn."))}</p>
     </div>
     <div>
-      <form class="rx-nl__form waitlist-form" data-waitlist-form data-form-type="newsletter" data-product-id="newsletter">
+      <form class="rx-nl__form waitlist-form nw-notify-form" data-waitlist-form data-form-type="newsletter" data-product-id="newsletter">
         <input type="hidden" name="productId" value="newsletter" />
-        <label class="visually-hidden" for="rx-nl-email">Email</label>
-        <input id="rx-nl-email" type="email" name="email" required autocomplete="email" placeholder="${escapeHtml(copy.nlPlaceholder || nlCopy.formPlaceholder || "your@email.com")}" />
-        <button type="submit">${escapeHtml(copy.nlCta || (ko ? "구독하기 →" : "Subscribe →"))}</button>
+        <div class="nw-notify-form__row">
+          <label class="visually-hidden" for="rx-nl-email">Email</label>
+          <input id="rx-nl-email" type="email" name="email" class="nw-notify-form__email" required autocomplete="email" placeholder="${escapeHtml(copy.nlPlaceholder || nlCopy.formPlaceholder || "your@email.com")}" />
+          <button type="submit" class="nw-notify-form__btn">${escapeHtml(copy.nlCta || (ko ? "구독하기 →" : "Subscribe →"))}</button>
+        </div>
         <input type="text" name="_honey" class="rs-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
       </form>
       <p class="rs-form__msg" data-waitlist-success hidden>${escapeHtml(nlCopy.success || "")}</p>

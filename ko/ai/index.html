@@ -34,10 +34,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css?v=20260828btn1" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
-    <link rel="stylesheet" href="/ai-hub.css?v=20260827ai7" />
+    <link rel="stylesheet" href="/ai-hub.css?v=20260830notify1" />
     <script src="/theme-shell.js"></script>
     <script src="/lang-nav.js?v=20260825studio"></script>
     <script src="/analytics.js?v=20260825studio" defer></script>
+    <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
+
   </head>
   <body>
     <a class="skip-link" href="#hub-main">본문으로 건너뛰기</a>
@@ -268,7 +270,7 @@
         <span class="gnav-mega__row-desc">영상 · 제품 스토리 · 비주얼</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../contact/" role="menuitem">
+    </a><a class="gnav-mega__row" href="../business/inquiry/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">05</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">문의</span>
@@ -318,7 +320,7 @@
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">회사<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../about/">Newon 소개</a><a class="gnav-mobile__sublink" href="../portfolio/">포트폴리오</a><a class="gnav-mobile__sublink" href="../news/">뉴스</a><a class="gnav-mobile__sublink" href="../media/">미디어</a><a class="gnav-mobile__sublink" href="../contact/">문의</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../about/">Newon 소개</a><a class="gnav-mobile__sublink" href="../portfolio/">포트폴리오</a><a class="gnav-mobile__sublink" href="../news/">뉴스</a><a class="gnav-mobile__sublink" href="../media/">미디어</a><a class="gnav-mobile__sublink" href="../business/inquiry/">문의</a></div>
       </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <a class="gnav-mobile__cta btn btn-primary" href="../business/inquiry/">프로젝트 문의</a>
@@ -427,7 +429,7 @@
           <strong>04</strong>
           <span>AI Products<em>IN DEVELOPMENT</em></span>
         </li>
-        <li class="ai-hero__stat"><strong>11+</strong> <span>AI-enabled Apps</span></li>
+        <li class="ai-hero__stat"><strong>11</strong> <span>AI-enabled Apps</span></li>
         <li class="ai-hero__stat ai-hero__stat--text"><span>Product First</span></li>
         <li class="ai-hero__stat ai-hero__stat--text"><span>Built for Real Use</span></li>
       </ul>
@@ -435,18 +437,7 @@
     </div>
   </section>
 
-  <div id="ai-products" class="ai-pnav-wrap">
-    <nav class="ai-pnav hub-inner" aria-label="AI Products">
-      <p class="ai-pnav__label">AI Products</p>
-      <div class="ai-pnav__track" role="list">
-        <a class="ai-pnav__item" role="listitem" href="#ai-review" data-ai-nav="ai-review"><span>01</span><strong>Review</strong></a>
-        <a class="ai-pnav__item" role="listitem" href="#ai-content" data-ai-nav="ai-content"><span>02</span><strong>Content</strong></a>
-        <a class="ai-pnav__item" role="listitem" href="#ai-launch" data-ai-nav="ai-launch"><span>03</span><strong>Launch</strong></a>
-        <a class="ai-pnav__item" role="listitem" href="#ai-cs" data-ai-nav="ai-cs"><span>04</span><strong>CS AI</strong></a>
-      </div>
-      <a class="ai-pnav__all" href="#ai-products">View all →</a>
-    </nav>
-  </div>
+  <div id="ai-products" class="ai-products-start"></div>
 
   <section id="ai-review" class="ai-product" data-ai-reveal data-ai-section="ai-review">
     <div class="ai-product__inner hub-inner">
@@ -601,14 +592,16 @@
         <p class="ai-early__eyebrow">NEWON AI / EARLY ACCESS</p>
         <h2 class="ai-early__title">Newon AI 제품 출시 소식을 가장 먼저 받아보세요.</h2>
       </div>
-      <form class="ai-early__form waitlist-form" data-waitlist-form data-product-id="newon-ai" data-form-type="waitlist">
+      <form class="ai-early__form waitlist-form nw-notify-form" data-waitlist-form data-product-id="newon-ai" data-form-type="waitlist">
         <input type="hidden" name="productId" value="newon-ai" />
-        <label class="ai-early__field">
-          <span class="visually-hidden">Email</span>
-          <input type="email" name="email" placeholder="email@example.com" required autocomplete="email" aria-label="Email" />
-        </label>
+        <div class="nw-notify-form__row">
+          <label class="ai-early__field nw-notify-form__field">
+            <span class="visually-hidden">Email</span>
+            <input type="email" name="email" class="nw-notify-form__email" placeholder="email@example.com" required autocomplete="email" aria-label="Email" />
+          </label>
+          <button type="submit" class="btn btn-primary nw-notify-form__btn">JOIN EARLY ACCESS</button>
+        </div>
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-        <button type="submit" class="btn btn-primary">JOIN EARLY ACCESS</button>
       </form>
       <p class="waitlist-success" data-waitlist-success hidden>알림 신청이 완료되었습니다.</p>
       <p class="waitlist-success" data-waitlist-duplicate hidden>이미 등록된 이메일입니다.</p>
@@ -701,16 +694,16 @@
         <h2 class="ai-section-head__title">AI는 별도의 기능이 아니라 제품 안에서 작동합니다.</h2>
         <p class="ai-section-head__lead">Newon 자체 앱에 적용된 AI 경험입니다.</p>
       </header>
-      <div class="ai-app-grid" aria-label="AI가 탑재된 Newon 앱"><a class="ai-app-card" href="../portfolio/savy/" aria-label="Savy — VIEW PRODUCT">
-      <img class="ai-app-card__icon" src="/savy-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
+      <div class="ai-app-grid" aria-label="AI가 탑재된 Newon 앱"><a class="ai-app-card" href="../#newon-plus-app" aria-label="Newon+ — VIEW PRODUCT">
+      <img class="ai-app-card__icon" src="/newon-plus-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
       <div class="ai-app-card__body">
-        <h3 class="ai-app-card__name">Savy</h3>
-        <p class="ai-app-card__feat">AI 소비 인사이트</p>
-        <p class="ai-app-card__desc">소비 흐름을 기록하고 분석해 더 나은 소비 결정을 돕는 개인 금융 앱.</p>
+        <h3 class="ai-app-card__name">Newon+</h3>
+        <p class="ai-app-card__feat">AI 앱 허브</p>
+        <p class="ai-app-card__desc">Newon의 여러 서비스를 하나의 경험으로 연결하는 통합 서비스.</p>
         <span class="ai-app-card__cta">VIEW PRODUCT →</span>
       </div>
     </a>
-<a class="ai-app-card" href="../portfolio/babylog/" aria-label="BabyLog — VIEW PRODUCT">
+<a class="ai-app-card" href="../#babylog-app" aria-label="BabyLog — VIEW PRODUCT">
       <img class="ai-app-card__icon" src="/babylog-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
       <div class="ai-app-card__body">
         <h3 class="ai-app-card__name">BabyLog</h3>
@@ -719,7 +712,7 @@
         <span class="ai-app-card__cta">VIEW PRODUCT →</span>
       </div>
     </a>
-<a class="ai-app-card" href="../portfolio/petlog/" aria-label="PetLog — VIEW PRODUCT">
+<a class="ai-app-card" href="../#petlog-app" aria-label="PetLog — VIEW PRODUCT">
       <img class="ai-app-card__icon" src="/petlog-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
       <div class="ai-app-card__body">
         <h3 class="ai-app-card__name">PetLog</h3>
@@ -728,16 +721,7 @@
         <span class="ai-app-card__cta">VIEW PRODUCT →</span>
       </div>
     </a>
-<a class="ai-app-card" href="../portfolio/piggyup/" aria-label="PiggyUp — VIEW PRODUCT">
-      <img class="ai-app-card__icon" src="/piggyup-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
-      <div class="ai-app-card__body">
-        <h3 class="ai-app-card__name">PiggyUp</h3>
-        <p class="ai-app-card__feat">AI 코치</p>
-        <p class="ai-app-card__desc">절약 기록과 챌린지를 통해 저축 습관을 만드는 서비스.</p>
-        <span class="ai-app-card__cta">VIEW PRODUCT →</span>
-      </div>
-    </a>
-<a class="ai-app-card" href="../portfolio/myworld/" aria-label="My World — VIEW PRODUCT">
+<a class="ai-app-card" href="../#myworld-app" aria-label="My World — VIEW PRODUCT">
       <img class="ai-app-card__icon" src="/myworld-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
       <div class="ai-app-card__body">
         <h3 class="ai-app-card__name">My World</h3>
@@ -746,12 +730,66 @@
         <span class="ai-app-card__cta">VIEW PRODUCT →</span>
       </div>
     </a>
-<a class="ai-app-card" href="../portfolio/ox-month/" aria-label="OX MONTH — VIEW PRODUCT">
+<a class="ai-app-card" href="../#savy-app" aria-label="Savy — VIEW PRODUCT">
+      <img class="ai-app-card__icon" src="/savy-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
+      <div class="ai-app-card__body">
+        <h3 class="ai-app-card__name">Savy</h3>
+        <p class="ai-app-card__feat">AI 소비 인사이트</p>
+        <p class="ai-app-card__desc">소비 흐름을 기록하고 분석해 더 나은 소비 결정을 돕는 개인 금융 앱.</p>
+        <span class="ai-app-card__cta">VIEW PRODUCT →</span>
+      </div>
+    </a>
+<a class="ai-app-card" href="../#ox-month" aria-label="OX MONTH — VIEW PRODUCT">
       <img class="ai-app-card__icon" src="/ox-month-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
       <div class="ai-app-card__body">
         <h3 class="ai-app-card__name">OX MONTH</h3>
         <p class="ai-app-card__feat">AI 패턴 분석</p>
         <p class="ai-app-card__desc">매일의 행동을 O/X로 기록하고 한 달의 변화를 확인하는 월간 기록 앱.</p>
+        <span class="ai-app-card__cta">VIEW PRODUCT →</span>
+      </div>
+    </a>
+<a class="ai-app-card" href="../#pillmate-app" aria-label="Pillmate — VIEW PRODUCT">
+      <img class="ai-app-card__icon" src="/pillmate-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
+      <div class="ai-app-card__body">
+        <h3 class="ai-app-card__name">Pillmate</h3>
+        <p class="ai-app-card__feat">AI 복약 인사이트</p>
+        <p class="ai-app-card__desc">복약 일정과 기록을 관리하고 꾸준한 복용을 돕는 건강 관리 앱.</p>
+        <span class="ai-app-card__cta">VIEW PRODUCT →</span>
+      </div>
+    </a>
+<a class="ai-app-card" href="../#goalup-app" aria-label="GoalUp — VIEW PRODUCT">
+      <img class="ai-app-card__icon" src="/goalup-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
+      <div class="ai-app-card__body">
+        <h3 class="ai-app-card__name">GoalUp</h3>
+        <p class="ai-app-card__feat">AI 목표 코치</p>
+        <p class="ai-app-card__desc">목표를 계획하고 실행 과정을 기록하며 꾸준한 성장을 돕는 목표 관리 앱.</p>
+        <span class="ai-app-card__cta">VIEW PRODUCT →</span>
+      </div>
+    </a>
+<a class="ai-app-card" href="../#countup-app" aria-label="CountUp — VIEW PRODUCT">
+      <img class="ai-app-card__icon" src="/countup-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
+      <div class="ai-app-card__body">
+        <h3 class="ai-app-card__name">CountUp</h3>
+        <p class="ai-app-card__feat">AI 카운트 인사이트</p>
+        <p class="ai-app-card__desc">중요한 숫자와 반복 기록을 간단하게 쌓아가는 카운트 기록 앱.</p>
+        <span class="ai-app-card__cta">VIEW PRODUCT →</span>
+      </div>
+    </a>
+<a class="ai-app-card" href="../#subping-app" aria-label="SubPing — VIEW PRODUCT">
+      <img class="ai-app-card__icon" src="/subping-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
+      <div class="ai-app-card__body">
+        <h3 class="ai-app-card__name">SubPing</h3>
+        <p class="ai-app-card__feat">AI 구독 인사이트</p>
+        <p class="ai-app-card__desc">구독 서비스를 한곳에서 관리하고 결제 일정을 놓치지 않도록 돕는 구독 관리 앱.</p>
+        <span class="ai-app-card__cta">VIEW PRODUCT →</span>
+      </div>
+    </a>
+<a class="ai-app-card" href="../#piggyup-app" aria-label="PiggyUp — VIEW PRODUCT">
+      <img class="ai-app-card__icon" src="/piggyup-logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
+      <div class="ai-app-card__body">
+        <h3 class="ai-app-card__name">PiggyUp</h3>
+        <p class="ai-app-card__feat">AI 코치</p>
+        <p class="ai-app-card__desc">절약 기록과 챌린지를 통해 저축 습관을 만드는 서비스.</p>
         <span class="ai-app-card__cta">VIEW PRODUCT →</span>
       </div>
     </a></div>
@@ -851,29 +889,7 @@
   </section>
 </div>
     </main>
-    <footer class="site-footer studio-footer">
-      <div class="container studio-footer__grid studio-footer__grid--five">
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Products</p>
-      <ul class="studio-footer__list"><li><a href="../apps/">Apps</a></li><li><a href="../ai/">AI</a></li><li><a href="../games/">Games</a></li><li><a href="../tools/">Tools</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Business</p>
-      <ul class="studio-footer__list"><li><a href="../business/build/">Build</a></li><li><a href="../business/automation/">Automation</a></li><li><a href="../business/research/">Research</a></li><li><a href="../business/solutions/">Solutions</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">STUDIO</p>
-      <ul class="studio-footer__list"><li><a href="../studio/brand/">Brand</a></li><li><a href="../studio/digital/">Digital</a></li><li><a href="../studio/content/">Content</a></li><li><a href="../studio/ip/">IP</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Resources</p>
-      <ul class="studio-footer__list"><li><a href="../resources/store/">Store</a></li><li><a href="../resources/insights/">Insights</a></li><li><a href="../resources/blog/">Blog</a></li><li><a href="../resources/labs/">Labs</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Company</p>
-      <ul class="studio-footer__list"><li><a href="../about/">Newon 회사 소개</a></li><li><a href="../portfolio/">Newon 포트폴리오</a></li><li><a href="../news/">뉴스</a></li><li><a href="../media/">Media</a></li><li><a href="../contact/">문의</a></li></ul>
-    </div>
-      </div>
+    <footer class="site-footer studio-footer studio-footer--compact">
       <div class="container studio-footer__bottom studio-footer__bottom--brand">
         <div class="studio-footer__brand-row">
           <img class="studio-footer__logo" src="/logo.png" alt="" width="28" height="28" decoding="async" />

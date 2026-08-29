@@ -1860,7 +1860,182 @@ html[data-newon-shell-theme="dark"] .bp-mark__dot {
   }
 }
 
+/* ——— Custom Research (Research pillar) ——— */
+.bp-custom__grid {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+@media (min-width: 960px) {
+  .bp-custom__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  }
+}
+.bp-custom__title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.bp-custom__lead {
+  margin: 0 0 1.25rem;
+  max-width: 34rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--bp-muted, #666);
+}
+.bp-custom__brief {
+  border: 1px solid var(--bp-line, #ddd);
+}
+.bp-custom__brief-k {
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid var(--bp-line, #ddd);
+  color: var(--bp-soft, #888);
+}
+.bp-custom__row {
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1px solid var(--bp-line, #ddd);
+}
+.bp-custom__k {
+  margin: 0 0 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--bp-soft, #888);
+}
+.bp-custom__v {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--bp-muted, #666);
+}
+
 /* Layout accents per pillar */
 .bp--build .bp-hero {
   padding-bottom: 4rem;
+}
+
+/* Resources hub hero board (dense editorial) */
+.bp-hero__visual--board {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+}
+.bp-board {
+  width: min(100%, 22rem);
+  border: 1px solid var(--bp-line, rgba(0, 0, 0, 0.14));
+  background:
+    radial-gradient(ellipse 70% 50% at 100% 0%, rgba(0, 0, 0, 0.04), transparent 55%),
+    var(--bp-surface, #fff);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 16rem;
+  overflow: hidden;
+}
+.bp-board__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  border-bottom: 1px solid var(--bp-line, rgba(0, 0, 0, 0.12));
+  background: color-mix(in srgb, var(--bp-bg, #f7f7f5) 70%, #fff);
+}
+.bp-board__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.bp-board__live i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2f9e6e;
+  box-shadow: 0 0 0 3px rgba(47, 158, 110, 0.18);
+}
+.bp-board__meta {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--bp-soft, rgba(0, 0, 0, 0.4));
+}
+.bp-board__body {
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+.bp-board__k {
+  margin: 0;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--bp-soft, rgba(0, 0, 0, 0.4));
+}
+.bp-board__stack {
+  display: grid;
+  gap: 0.35rem;
+}
+.bp-board__stack span {
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--bp-line, rgba(0, 0, 0, 0.12));
+  font-size: 0.8125rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+}
+.bp-board__stack span.is-on {
+  background: #0a0a0a;
+  color: #f5f5f5;
+  border-color: #0a0a0a;
+}
+.bp-board__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+}
+.bp-board__grid div {
+  border: 1px solid var(--bp-line, rgba(0, 0, 0, 0.12));
+  padding: 0.5rem 0.4rem;
+  display: grid;
+  gap: 0.2rem;
+  text-align: center;
+}
+.bp-board__grid em {
+  font-style: normal;
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--bp-soft, rgba(0, 0, 0, 0.4));
+}
+.bp-board__grid strong {
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+}
+.bp-board__grid div.is-on {
+  background: #0a0a0a;
+  color: #f5f5f5;
+  border-color: #0a0a0a;
+}
+.bp-board__grid div.is-on em { color: rgba(255, 255, 255, 0.45); }
+html[data-newon-shell-theme="dark"] .bp-board {
+  background:
+    radial-gradient(ellipse 70% 50% at 100% 0%, rgba(255, 255, 255, 0.05), transparent 55%),
+    #0d0d0d;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+html[data-newon-shell-theme="dark"] .bp-board__head {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+html[data-newon-shell-theme="dark"] .bp-board__stack span,
+html[data-newon-shell-theme="dark"] .bp-board__grid div {
+  border-color: rgba(255, 255, 255, 0.14);
 }

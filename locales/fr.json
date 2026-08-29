@@ -539,7 +539,21 @@
     "statExperiments": "Experiments",
     "statApps": "Applications",
     "explore7Title": "Media",
-    "explore7Body": "Product, process, and stories — recorded on video."
+    "explore7Body": "Product, process, and stories — recorded on video.",
+    "heroEyebrowLine1": "NEWON",
+    "heroEyebrowLine2": "PRODUCT & VENTURE STUDIO",
+    "heroTitleHtml": "Build ideas.<br />Validate in products.",
+    "heroLeadNew": "Newon builds apps, AI, games, and web products — and partners with companies to design digital services and new business possibilities.",
+    "btnWorkWithNewon": "WORK WITH NEWON →",
+    "btnWorkWithNewonAria": "Work with Newon — business inquiry",
+    "heroEcoProducts": "PRODUITS",
+    "heroEcoProductsItems": "Apps / AI / Games / Tools",
+    "heroEcoBusiness": "BUSINESS",
+    "heroEcoBusinessItems": "Build / Automation / Research / Solutions",
+    "heroEcoStudio": "STUDIO",
+    "heroEcoStudioItems": "Brand / Digital / Content / IP",
+    "heroEcoLabs": "LABS",
+    "heroEcoLabsItems": "Research / Prototype / Testing"
   },
   "footer": {
     "privacy": "politique de confidentialité",
@@ -3525,7 +3539,8 @@
       "exploreBusinessGo": "Affaires →",
       "emptyTitle": "Demande d'affaires",
       "emptyLead": "Parlez-nous d’un nouveau projet ou d’une collaboration.",
-      "emptyCta": "Lancer une demande →"
+      "emptyCta": "Lancer une demande →",
+      "exploreLabel": "EXPLORER"
     },
     "ind1En": "MODE DE VIE",
     "ind2En": "FAMILLE",
@@ -3606,7 +3621,18 @@
     "inquiryExploreResourcesEyebrow": "RESOURCES",
     "inquiryExploreResourcesTitle": "Explore Resources",
     "inquiryExploreResourcesBody": "Browse the store, insights, tools, media, and more.",
-    "inquiryExploreResourcesCta": "View Resources →"
+    "inquiryExploreResourcesCta": "View Resources →",
+    "heroCrumbLeft": "Entreprise",
+    "heroCrumbRight": "INQUIRY",
+    "heroEyebrowRole": "Project Inquiry",
+    "heroDomainsAria": "What we build together",
+    "heroDomain1": "Applications",
+    "heroDomain2": "Web",
+    "heroDomain3": "MVP",
+    "heroDomain4": "AI",
+    "heroCardAria": "Ouvrir la carte numérique Newon",
+    "heroCardAlt": "Newon digital card",
+    "heroCardHint": "Digital card · tap to open"
   },
   "businessPages": {
     "common": {

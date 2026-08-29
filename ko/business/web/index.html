@@ -38,12 +38,14 @@
     <link rel="stylesheet" href="/styles.css?v=20260828btn1" />
     <link rel="stylesheet" href="/gnav-mega.css?v=20260828btn1" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
-    <link rel="stylesheet" href="/site-premium.css?v=20260828btn1" />
+    <link rel="stylesheet" href="/site-premium.css?v=20260830notify1" />
     <link rel="stylesheet" href="/business-type.css?v=20260827type4" />
-    <link rel="stylesheet" href="/business-service.css?v=20260828store2" />
+    <link rel="stylesheet" href="/business-service.css?v=20260829storeviz1" />
     <script src="/theme-shell.js"></script>
     <script src="/analytics.js?v=20260825studio" defer></script>
     <script src="/lang-nav.js?v=20260821stay2"></script>
+    <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
+
   </head>
   <body>
     <a class="skip-link" href="#bs-main">Skip to content</a>
@@ -274,7 +276,7 @@
         <span class="gnav-mega__row-desc">영상 · 제품 스토리 · 비주얼</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../../contact/" role="menuitem">
+    </a><a class="gnav-mega__row" href="../../business/inquiry/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">05</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">문의</span>
@@ -324,7 +326,7 @@
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">회사<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../about/">Newon 소개</a><a class="gnav-mobile__sublink" href="../../portfolio/">포트폴리오</a><a class="gnav-mobile__sublink" href="../../news/">뉴스</a><a class="gnav-mobile__sublink" href="../../media/">미디어</a><a class="gnav-mobile__sublink" href="../../contact/">문의</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../about/">Newon 소개</a><a class="gnav-mobile__sublink" href="../../portfolio/">포트폴리오</a><a class="gnav-mobile__sublink" href="../../news/">뉴스</a><a class="gnav-mobile__sublink" href="../../media/">미디어</a><a class="gnav-mobile__sublink" href="../../business/inquiry/">문의</a></div>
       </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <a class="gnav-mobile__cta btn btn-primary" href="../../business/inquiry/">프로젝트 문의</a>
@@ -366,24 +368,32 @@
     <div class="bs-visual bs-visual--studio bs-visual--biz-web" aria-hidden="true">
   <div class="bs-sv">
     <div class="bs-sv__head">
-      <span class="bs-sv__live"><i></i> SITE STRUCTURE</span>
+      <span class="bs-sv__live"><i></i> SITE ARCHITECTURE</span>
       <span class="bs-sv__meta">WEB</span>
     </div>
     <div class="bs-sv__body">
       <div class="bs-sv-biz-web">
-        <nav class="bs-sv-biz-web__nav">
-          <span class="is-on">Home</span><span>About</span><span>Work</span><span>Contact</span>
-        </nav>
-        <div class="bs-sv-biz-web__hero">
-          <p class="bs-sv-biz-web__brand">YOUR BRAND</p>
-          <p class="bs-sv-biz-web__tag">Build a site people trust and use.</p>
-          <span class="bs-sv-biz-web__cta">Get started →</span>
+        <div class="bs-sv-biz-web__browser">
+          <div class="bs-sv-biz-web__chrome"><i></i><i></i><i></i><em>yourbrand.com</em></div>
+          <nav class="bs-sv-biz-web__nav">
+            <span class="is-on">Home</span><span>About</span><span>Work</span><span>Contact</span>
+          </nav>
+          <div class="bs-sv-biz-web__hero">
+            <p class="bs-sv-biz-web__brand">YOUR BRAND</p>
+            <p class="bs-sv-biz-web__tag">Clear structure. Trust. Action.</p>
+            <span class="bs-sv-biz-web__cta">Get started →</span>
+          </div>
+          <div class="bs-sv-biz-web__blocks"><i></i><i></i><i></i></div>
         </div>
-        <div class="bs-sv-biz-web__metrics">
-          <div><span>STRUCTURE</span><strong>CLEAR</strong></div>
-          <div><span>RESPONSIVE</span><strong>READY</strong></div>
-          <div class="is-on"><span>CTA</span><strong>WIRED</strong></div>
-        </div>
+        <aside class="bs-sv-biz-web__map">
+          <p class="bs-sv__k">SITEMAP</p>
+          <ul>
+            <li class="is-on"><span>01</span><strong>Home</strong></li>
+            <li><span>02</span><strong>About</strong></li>
+            <li><span>03</span><strong>Services</strong></li>
+            <li><span>04</span><strong>Contact</strong></li>
+          </ul>
+        </aside>
       </div></div>
   </div>
 </div>
@@ -421,12 +431,70 @@
       <h2 class="bs-title" id="bs-dr-caps-title">웹 구축에 필요한 작업을
 한 구조로 진행합니다.</h2>
       <div class="bs-areas bs-areas--caps" data-variant="caps"><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">01</span><div class="bs-areas__copy"><h3>GOAL &amp; IA</h3><p>사이트 목적, 페이지 역할, 콘텐츠 우선순위를 정의합니다.<br />방문자가 길을 잃지 않는 구조를 만듭니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">02</span><div class="bs-areas__copy"><h3>UX / UI DESIGN</h3><p>브랜드 톤, 타이포, 여백, 컴포넌트를 맞춥니다.<br />템플릿이 아닌 브랜드 사이트로 보이게 합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">03</span><div class="bs-areas__copy"><h3>RESPONSIVE BUILD</h3><p>주요 디바이스에서 레이아웃과 가독성이 유지되도록 구현합니다.<br />모바일 우선으로 핵심 CTA를 보호합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">04</span><div class="bs-areas__copy"><h3>CORE PAGES</h3><p>홈, 소개, 서비스, 문의 등 목적에 필요한 페이지를 완성합니다.<br />섹션 구성과 콘텐츠 위계를 맞춥니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">05</span><div class="bs-areas__copy"><h3>CONVERSION WIRING</h3><p>폼, 메일, 비즈니스 문의 등 실제 다음 행동으로 이어지게 연결합니다.<br />CTA와 전환 흐름을 설계합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">06</span><div class="bs-areas__copy"><h3>SEO &amp; META</h3><p>제목, 설명, OG 등 기본 검색·공유 설정을 포함합니다.<br />페이지별 메타와 구조화를 설정합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">07</span><div class="bs-areas__copy"><h3>CMS &amp; OPS</h3><p>필요 시 콘텐츠·문구·이미지 교체가 가능한 구조를 만듭니다.<br />운영 방식에 맞춰 CMS 범위를 정합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">08</span><div class="bs-areas__copy"><h3>DEPLOY &amp; LAUNCH</h3><p>브라우저·디바이스 점검 후 배포합니다.<br />도메인 연결과 운영 안내를 전달합니다.</p></div></article></div>
-    </div></section><section class="bs-section" data-bs-part="usecases" data-bs-reveal aria-labelledby="bs-dr-areas-title"><div class="bs-inner">
-      <p class="bs-eyebrow">활용 예시</p>
-      <h2 class="bs-title" id="bs-dr-areas-title">이런 웹을 만들 수 있습니다.</h2>
-      <p class="bs-mono bs-dr-badge">구축 가능 예시</p>
-      <div class="bs-type-grid" data-variant="types"><article class="bs-type-grid__item"><h3>COMPANY / STUDIO SITE</h3><p>무엇을 하는 팀인지, 어떤 방식으로 일하는지 선명하게 보여주는 기업 웹.</p></article><article class="bs-type-grid__item"><h3>BRAND SITE</h3><p>제품보다 세계관과 톤이 먼저 전달되어야 하는 브랜드 중심 웹.</p></article><article class="bs-type-grid__item"><h3>SERVICE LANDING</h3><p>한 제품·캠페인의 가치와 CTA에 집중한 랜딩 페이지.</p></article><article class="bs-type-grid__item"><h3>PORTFOLIO / CASE WEB</h3><p>작업물과 과정을 설득력 있게 보여주는 아카이브형 웹.</p></article><article class="bs-type-grid__item"><h3>INQUIRY / HIRING HUB</h3><p>협업 문의, 채용, 파트너십 등 전환 목적의 허브 페이지.</p></article><article class="bs-type-grid__item"><h3>PRODUCT WEB</h3><p>제품 기능·가격·문의까지 연결된 서비스 소개 웹.</p></article><article class="bs-type-grid__item"><h3>MULTILINGUAL SITE</h3><p>언어 구조와 전환 UX를 포함한 다국어 웹.</p></article><article class="bs-type-grid__item"><h3>SITE RENEWAL</h3><p>유지할 페이지와 새로 만들 범위를 나눠 진행하는 리뉴얼.</p></article></div>
-    </div></section><section class="bs-section bs-section--surface" data-bs-reveal id="workflow" aria-labelledby="bs-dr-flow-title"><div class="bs-inner">
+    </div></section><section class="bs-section bs-usecases" data-bs-part="usecases" data-bs-reveal aria-labelledby="bs-dr-areas-title">
+      <div class="bs-usecases__head bs-inner">
+        <p class="bs-eyebrow">활용 예시</p>
+        <h2 class="bs-title" id="bs-dr-areas-title">이런 웹을 만들 수 있습니다.</h2>
+        <p class="bs-mono bs-dr-badge">구축 가능 예시</p>
+      </div>
+      <div class="bs-use-board" data-count="8"><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">01</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">COMPANY / STUDIO SITE</h3>
+        <p class="bs-use-board__body">무엇을 하는 팀인지, 어떤 방식으로 일하는지 선명하게 보여주는 기업 웹.</p>
+      </article><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">02</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">BRAND SITE</h3>
+        <p class="bs-use-board__body">제품보다 세계관과 톤이 먼저 전달되어야 하는 브랜드 중심 웹.</p>
+      </article><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">03</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">SERVICE LANDING</h3>
+        <p class="bs-use-board__body">한 제품·캠페인의 가치와 CTA에 집중한 랜딩 페이지.</p>
+      </article><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">04</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">PORTFOLIO / CASE WEB</h3>
+        <p class="bs-use-board__body">작업물과 과정을 설득력 있게 보여주는 아카이브형 웹.</p>
+      </article><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">05</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">INQUIRY / HIRING HUB</h3>
+        <p class="bs-use-board__body">협업 문의, 채용, 파트너십 등 전환 목적의 허브 페이지.</p>
+      </article><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">06</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">PRODUCT WEB</h3>
+        <p class="bs-use-board__body">제품 기능·가격·문의까지 연결된 서비스 소개 웹.</p>
+      </article><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">07</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">MULTILINGUAL SITE</h3>
+        <p class="bs-use-board__body">언어 구조와 전환 UX를 포함한 다국어 웹.</p>
+      </article><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">08</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">SITE RENEWAL</h3>
+        <p class="bs-use-board__body">유지할 페이지와 새로 만들 범위를 나눠 진행하는 리뉴얼.</p>
+      </article></div>
+    </section><section class="bs-section bs-section--surface" data-bs-reveal id="workflow" aria-labelledby="bs-dr-flow-title"><div class="bs-inner">
       <p class="bs-eyebrow">예시 워크플로</p>
       <h2 class="bs-title" id="bs-dr-flow-title">구조에서 출시까지</h2>
       <div class="bs-flow-stage-grid bs-flow-stage-grid--flow" data-cols="3" data-variant="flow"><article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">01</span><div class="bs-flow-stage-grid__copy"><h3>DEFINE</h3><p>브랜드 소개인지, 리드 확보인지, 서비스 설명인지 목표를 먼저 맞춥니다.<br />방문자 행동과 성공 기준을 정의합니다.</p><ul class="bs-flow-stage-chips"><li>목적</li><li>방문자</li><li>CTA</li></ul></div></article><article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">02</span><div class="bs-flow-stage-grid__copy"><h3>STRUCTURE</h3><p>페이지 맵과 섹션 구성을 잡고 콘텐츠 필요 목록을 정리합니다.<br />정보 구조와 네비게이션을 확정합니다.</p><ul class="bs-flow-stage-chips"><li>Sitemap</li><li>IA</li><li>섹션</li></ul></div></article><article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">03</span><div class="bs-flow-stage-grid__copy"><h3>DESIGN</h3><p>핵심 화면의 비주얼과 타이포 시스템을 확정합니다.<br />브랜드 톤과 컴포넌트 규칙을 맞춥니다.</p><ul class="bs-flow-stage-chips"><li>UI</li><li>타이포</li><li>컴포넌트</li></ul></div></article><article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">04</span><div class="bs-flow-stage-grid__copy"><h3>BUILD</h3><p>반응형 웹으로 구현하고, 인터랙션과 문의 흐름을 연결합니다.<br />SEO·메타 설정을 포함합니다.</p><ul class="bs-flow-stage-chips"><li>Frontend</li><li>Responsive</li><li>Forms</li></ul></div></article><article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">05</span><div class="bs-flow-stage-grid__copy"><h3>LAUNCH</h3><p>브라우저·디바이스 점검 후 배포하고 운영에 필요한 안내를 전달합니다.<br />도메인 연결을 지원합니다.</p><ul class="bs-flow-stage-chips"><li>QA</li><li>Deploy</li><li>Domain</li></ul></div></article></div>
@@ -594,29 +662,7 @@ SEO·메타와 인터랙션을 포함합니다.</p></div></li><li class="bs-proc
     </a></div>
   </section>
     </main>
-    <footer class="site-footer studio-footer">
-      <div class="container studio-footer__grid studio-footer__grid--five">
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Products</p>
-      <ul class="studio-footer__list"><li><a href="../../apps/">Apps</a></li><li><a href="../../ai/">AI</a></li><li><a href="../../games/">Games</a></li><li><a href="../../tools/">Tools</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Business</p>
-      <ul class="studio-footer__list"><li><a href="../../business/build/">Build</a></li><li><a href="../../business/automation/">Automation</a></li><li><a href="../../business/research/">Research</a></li><li><a href="../../business/solutions/">Solutions</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">STUDIO</p>
-      <ul class="studio-footer__list"><li><a href="../../studio/brand/">Brand</a></li><li><a href="../../studio/digital/">Digital</a></li><li><a href="../../studio/content/">Content</a></li><li><a href="../../studio/ip/">IP</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Resources</p>
-      <ul class="studio-footer__list"><li><a href="../../resources/store/">Store</a></li><li><a href="../../resources/insights/">Insights</a></li><li><a href="../../resources/blog/">Blog</a></li><li><a href="../../resources/labs/">Labs</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Company</p>
-      <ul class="studio-footer__list"><li><a href="../../about/">Newon 회사 소개</a></li><li><a href="../../portfolio/">Newon 포트폴리오</a></li><li><a href="../../news/">뉴스</a></li><li><a href="../../media/">Media</a></li><li><a href="../../contact/">문의</a></li></ul>
-    </div>
-      </div>
+    <footer class="site-footer studio-footer studio-footer--compact">
       <div class="container studio-footer__bottom studio-footer__bottom--brand">
         <div class="studio-footer__brand-row">
           <img class="studio-footer__logo" src="/logo.png" alt="" width="28" height="28" decoding="async" />

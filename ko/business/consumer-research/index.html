@@ -38,12 +38,14 @@
     <link rel="stylesheet" href="/styles.css?v=20260828btn1" />
     <link rel="stylesheet" href="/gnav-mega.css?v=20260828btn1" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
-    <link rel="stylesheet" href="/site-premium.css?v=20260828btn1" />
+    <link rel="stylesheet" href="/site-premium.css?v=20260830notify1" />
     <link rel="stylesheet" href="/business-type.css?v=20260827type4" />
-    <link rel="stylesheet" href="/business-service.css?v=20260828store2" />
+    <link rel="stylesheet" href="/business-service.css?v=20260829storeviz1" />
     <script src="/theme-shell.js"></script>
     <script src="/analytics.js?v=20260825studio" defer></script>
     <script src="/lang-nav.js?v=20260821stay2"></script>
+    <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
+
   </head>
   <body>
     <a class="skip-link" href="#bs-main">Skip to content</a>
@@ -274,7 +276,7 @@
         <span class="gnav-mega__row-desc">영상 · 제품 스토리 · 비주얼</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../../contact/" role="menuitem">
+    </a><a class="gnav-mega__row" href="../../business/inquiry/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">05</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">문의</span>
@@ -324,7 +326,7 @@
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">회사<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../about/">Newon 소개</a><a class="gnav-mobile__sublink" href="../../portfolio/">포트폴리오</a><a class="gnav-mobile__sublink" href="../../news/">뉴스</a><a class="gnav-mobile__sublink" href="../../media/">미디어</a><a class="gnav-mobile__sublink" href="../../contact/">문의</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../about/">Newon 소개</a><a class="gnav-mobile__sublink" href="../../portfolio/">포트폴리오</a><a class="gnav-mobile__sublink" href="../../news/">뉴스</a><a class="gnav-mobile__sublink" href="../../media/">미디어</a><a class="gnav-mobile__sublink" href="../../business/inquiry/">문의</a></div>
       </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <a class="gnav-mobile__cta btn btn-primary" href="../../business/inquiry/">프로젝트 문의</a>
@@ -356,8 +358,8 @@
   <div class="bs-inner bs-hero__grid">
     <div>
       <p class="bs-eyebrow">CONSUMER RESEARCH<span class="bs-eyebrow__sep" aria-hidden="true">·</span><span class="bs-eyebrow__sub">리서치</span></p>
-      <h1 class="bs-hero__title" id="bs-hero-title">사용자 목소리를 모으고,<br />패턴으로 이해합니다.</h1>
-      <p class="bs-hero__lead">리뷰, 설문, 인터뷰, 고객 문의, 행동 데이터에서 니즈·행동·불만 패턴을 조사합니다. 흩어진 사용자 신호를 세그먼트·니즈·동기 관점으로 정리해 타깃, 메시지, 제품 우선순위 논의에 바로 쓸 수 있는 인사이트 브리프로 전달합니다.</p>
+      <h1 class="bs-hero__title" id="bs-hero-title">사람들이 말하는 것보다,<br />왜 그렇게 행동하는지 봅니다.</h1>
+      <p class="bs-hero__lead">사용자의 행동, 문제, 요구와 기존 대안을 관찰해 제품이 해결해야 할 실제 문제를 탐색합니다. 범위에 따라 설문·인터뷰가 포함될 수 있습니다.</p>
       <div class="bs-hero__actions">
         <a class="bs-btn bs-btn--primary" href="../?service=consumer-research#inquiry" data-bs-cta="hero_primary" data-analytics="business_service_cta_click">CONSUMER RESEARCH 문의 →</a>
         <a class="bs-btn bs-btn--ghost" href="#workflow" data-bs-cta="hero_secondary">조사 흐름 보기 ↓</a>
@@ -366,126 +368,62 @@
     <div class="bs-visual bs-visual--studio bs-visual--biz-consumer" aria-hidden="true">
   <div class="bs-sv">
     <div class="bs-sv__head">
-      <span class="bs-sv__live"><i></i> USER SEGMENTS</span>
-      <span class="bs-sv__meta">RESEARCH</span>
+      <span class="bs-sv__live"><i></i> CONSUMER JOURNEY</span>
+      <span class="bs-sv__meta">INSIGHT</span>
     </div>
     <div class="bs-sv__body">
       <div class="bs-sv-biz-cr">
-        <ul class="bs-sv-biz-cr__segments">
-          <li class="is-on"><span>A</span><strong>Power users</strong><em>Speed · control</em></li>
-          <li><span>B</span><strong>New adopters</strong><em>Onboarding</em></li>
-          <li><span>C</span><strong>Price-sensitive</strong><em>Value</em></li>
-        </ul>
-        <div class="bs-sv-biz-cr__themes"><span class="is-on">Onboarding</span><span>Pricing</span><span>Support</span></div>
+        <div class="bs-sv-biz-cr__lanes">
+          <div class="bs-sv-biz-cr__lane"><span>01 OBSERVE</span><em>What people do</em><b></b><b></b></div>
+          <div class="bs-sv-biz-cr__lane"><span>02 FRICTION</span><em>Where it breaks</em><b class="is-on"></b><b></b></div>
+          <div class="bs-sv-biz-cr__lane is-on"><span>03 INSIGHT</span><em>What it means</em><b></b><b class="is-on"></b></div>
+          <div class="bs-sv-biz-cr__lane"><span>04 ACTION</span><em>What to build</em><b></b></div>
+        </div>
+        <div class="bs-sv-biz-cr__tags"><span class="is-on">Jobs</span><span>Pains</span><span>Gains</span><span>Quotes</span></div>
       </div></div>
   </div>
 </div>
   </div>
 </section>
 <nav class="bs-nav" aria-label="Services"><div class="bs-inner bs-nav__inner"><p class="bs-nav__label">SERVICES</p><div class="bs-nav__track"><a class="bs-nav__link" href="../mvp/">MVP</a><a class="bs-nav__link" href="../web/">WEB</a><a class="bs-nav__link" href="../landing/">LANDING</a><a class="bs-nav__link" href="../app/">APP</a><a class="bs-nav__link" href="../ai-automation/">AI</a><a class="bs-nav__link" href="../data-reporting/">DATA</a><a class="bs-nav__link" href="../internal-tools/">TOOLS</a><a class="bs-nav__link" href="../automation/workflow/">WORKFLOW</a><a class="bs-nav__link" href="../market-research/">MARKET</a><a class="bs-nav__link" href="../competitor-analysis/">COMPARE</a><a class="bs-nav__link is-active" href="#" aria-current="page">CONSUMER</a><a class="bs-nav__link" href="../ux-audit/">UX</a><a class="bs-nav__link" href="../trend-research/">TREND</a><a class="bs-nav__link" href="../custom-product/">CUSTOM</a><a class="bs-nav__link" href="../product-launch/">LAUNCH</a><a class="bs-nav__link" href="../internal-system/">INTERNAL</a><a class="bs-nav__link" href="../white-label/">WHITE-LABEL</a><a class="bs-nav__link" href="../design/">DESIGN</a></div></div></nav>
-<section class="bs-section" data-bs-reveal aria-labelledby="bs-dr-overview-title"><div class="bs-inner">
-      <div class="bs-dr-split">
-        <div class="bs-dr-split__copy">
-          <p class="bs-eyebrow">개요</p>
-          <h2 class="bs-title" id="bs-dr-overview-title">의견은 많은데,<br />누구의 어떤 니즈인지 모릅니다.</h2>
-          <div class="bs-overview"><p class="bs-lead">제품·마케팅·서비스 개선을 논의할 때 사용자 목소리는 항상 존재합니다. 문제는 그 목소리가 세그먼트별 니즈와 행동 패턴으로 정리되지 않는다는 점입니다.</p><p class="">리뷰, CS 문의, 설문 응답, 인터뷰, 커뮤니티 반응, 사용 데이터 — 각각 다른 사용자 관점을 주지만, 팀이 바로 결정에 쓰기 어렵게 흩어져 있습니다.</p><p class="">CONSUMER RESEARCH는 먼저 ‘무엇을 알아야 하는지’ 질문을 정의합니다. 그다음 관련 신호를 수집·분류·구조화해 세그먼트, 니즈, 불만, 동기, 기회를 하나의 인사이트 브리프로 정리합니다.</p></div>
-        </div>
-        <aside class="bs-dr-meta" aria-label="Service summary"><div class="bs-dr-meta__row"><p class="bs-dr-meta__k">SERVICE</p><p class="bs-dr-meta__v">Consumer Research</p></div><div class="bs-dr-meta__row"><p class="bs-dr-meta__k">BEST FOR</p><p class="bs-dr-meta__v">타깃·메시지·니즈 검증</p></div><div class="bs-dr-meta__row"><p class="bs-dr-meta__k">예상 기간</p><p class="bs-dr-meta__v">2–4주</p></div><div class="bs-dr-meta__row"><p class="bs-dr-meta__k">PRICE</p><p class="bs-dr-meta__v">₩400,000부터</p></div></aside>
-      </div>
-    </div></section><section class="bs-section bs-section--surface" data-bs-part="problems" data-bs-reveal aria-labelledby="bs-dr-problems-title"><div class="bs-inner">
-      <p class="bs-eyebrow">문제</p>
-      <h2 class="bs-title" id="bs-dr-problems-title">이런 상황에서 도움이 됩니다.</h2>
-      <div class="bs-areas bs-areas--signal" data-variant="signal"><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">01</span><div class="bs-areas__copy"><h3>TARGET UNCERTAINTY</h3><p>누구를 위한 제품·서비스인지,<br />어떤 사용자군이 핵심인지 불분명한 경우.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">02</span><div class="bs-areas__copy"><h3>SCATTERED VOICES</h3><p>리뷰·문의·피드백이 많지만 패턴이 정리되지 않은 경우.<br />같은 불만이 반복되지만 우선순위가 없는 경우.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">03</span><div class="bs-areas__copy"><h3>MESSAGE VALIDATION</h3><p>메시지·카피·포지셔닝을 검증할 근거가 필요한 경우.<br />사용자가 실제로 무엇에 반응하는지 알고 싶은 경우.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">04</span><div class="bs-areas__copy"><h3>NEED PRIORITY</h3><p>기능·서비스 후보는 많지만<br />어떤 니즈부터 해결할지 근거가 필요한 경우.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">05</span><div class="bs-areas__copy"><h3>BEHAVIOR GAP</h3><p>가설과 실제 행동·구매·이탈 패턴 사이에 차이가 있는 경우.<br />왜 그런지 맥락을 이해해야 하는 경우.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">06</span><div class="bs-areas__copy"><h3>PRE-LAUNCH INPUT</h3><p>출시·리브랜딩·신규 기능 전,<br />사용자 반응을 먼저 확인해야 하는 경우.</p></div></article></div>
-    </div></section><section class="bs-section" data-bs-part="compare" data-bs-reveal aria-labelledby="bs-dr-compare-title"><div class="bs-inner">
-      <p class="bs-eyebrow">이전 / 이후</p>
-      <h2 class="bs-title" id="bs-dr-compare-title">흩어진 목소리 vs<br />구조화된 사용자 이해</h2>
-      <div class="bs-compare">
-        <div class="bs-compare__col">
-          <div class="bs-compare__head"><span class="bs-compare__tag">01</span><h3>이전</h3></div>
-          <ol><li><span>01</span><p>리뷰·문의·설문을 각자 따로 확인</p></li><li><span>02</span><p>‘사용자가 원한다’는 말은 많지만 근거가 분산</p></li><li><span>03</span><p>세그먼트·니즈·우선순위가 회의마다 달라짐</p></li><li><span>04</span><p>인사이트가 문서로 남지 않고 다음 검증으로 이어지지 않음</p></li></ol>
-        </div>
-        <div class="bs-compare__col is-after">
-          <div class="bs-compare__head"><span class="bs-compare__tag">02</span><h3>이후</h3></div>
-          <ol><li><span>01</span><p>조사 질문과 대상 사용자를 먼저 정의</p></li><li><span>02</span><p>세그먼트·니즈·불만 패턴을 구조화</p></li><li><span>03</span><p>팀이 공유하는 인사이트 브리프</p></li><li><span>04</span><p>메시지·기능·실험 항목까지 연결</p></li></ol>
-        </div>
-      </div>
-    </div></section><section class="bs-section bs-section--surface" data-bs-part="capabilities" data-bs-reveal aria-labelledby="bs-dr-caps-title"><div class="bs-inner">
-      <p class="bs-eyebrow">역량</p>
-      <h2 class="bs-title" id="bs-dr-caps-title">사용자 이해에 필요한 조사를
-한 구조로 정리합니다.</h2>
-      <div class="bs-areas bs-areas--caps" data-variant="caps"><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">01</span><div class="bs-areas__copy"><h3>QUESTION DESIGN</h3><p>무엇을 알아야 결정할 수 있는지 질문을 정의합니다.<br />조사 목적과 대상 사용자를 명확히 합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">02</span><div class="bs-areas__copy"><h3>DESK RESEARCH</h3><p>리뷰, 커뮤니티, 공개 피드백, 기존 설문 등 2차 자료를 수집합니다.<br />출처와 맥락을 함께 확인합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">03</span><div class="bs-areas__copy"><h3>PRIMARY RESEARCH</h3><p>필요 시 인터뷰·설문 설계와 진행을 포함합니다.<br />질문 구조와 대상 선정을 함께 설계합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">04</span><div class="bs-areas__copy"><h3>SEGMENT MAPPING</h3><p>사용자를 세그먼트·페르소나·상황 관점에서 정리합니다.<br />누가, 왜, 어떤 맥락에서 쓰는지 구조화합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">05</span><div class="bs-areas__copy"><h3>NEED &amp; PAIN ANALYSIS</h3><p>니즈, 불만, 미충족 기대를 패턴으로 정리합니다.<br />반복 이슈와 우선순위를 도출합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">06</span><div class="bs-areas__copy"><h3>BEHAVIOR SIGNALS</h3><p>행동, 구매, 이탈, 사용 패턴 신호를 정리합니다.<br />가설과 실제 행동의 차이를 연결합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">07</span><div class="bs-areas__copy"><h3>MESSAGE INSIGHTS</h3><p>사용자가 반응하는 메시지·가치·표현을 정리합니다.<br />포지셔닝·카피 방향에 쓸 근거를 제공합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">08</span><div class="bs-areas__copy"><h3>IMPLICATIONS</h3><p>발견을 제품·마케팅·서비스 시사점으로 연결합니다.<br />다음 실험·검증 항목까지 제안합니다.</p></div></article></div>
-    </div></section><section class="bs-section" data-bs-part="usecases" data-bs-reveal aria-labelledby="bs-dr-areas-title"><div class="bs-inner">
-      <p class="bs-eyebrow">활용 예시</p>
-      <h2 class="bs-title" id="bs-dr-areas-title">이런 질문에 답할 수 있습니다.</h2>
-      <p class="bs-mono bs-dr-badge">조사 가능 예시</p>
-      <div class="bs-type-grid" data-variant="types"><article class="bs-type-grid__item"><h3>TARGET DEFINITION</h3><p>핵심 사용자·세그먼트가 누구인지 확인.<br />우선 공략할 사용자군을 구조화.</p></article><article class="bs-type-grid__item"><h3>NEED PRIORITY</h3><p>어떤 니즈·불만부터 해결할지 우선순위 도출.<br />기능·서비스 로드맵 근거로 활용.</p></article><article class="bs-type-grid__item"><h3>MESSAGE TEST</h3><p>메시지·가치·카피 방향 검증.<br />사용자가 실제로 반응하는 표현 파악.</p></article><article class="bs-type-grid__item"><h3>PAIN PATTERN</h3><p>반복 불만·이탈·불만 패턴 정리.<br />CS·리뷰·문의에서 공통 이슈 추출.</p></article><article class="bs-type-grid__item"><h3>BEHAVIOR CONTEXT</h3><p>구매·사용·이탈 행동의 맥락 이해.<br />가설과 실제 행동 차이 확인.</p></article><article class="bs-type-grid__item"><h3>PERSONA INPUT</h3><p>페르소나·JTBD·사용 상황 정리.<br />기획·디자인·마케팅 논의용 입력.</p></article><article class="bs-type-grid__item"><h3>PRE-LAUNCH CHECK</h3><p>출시·리브랜딩·신규 기능 전 반응 확인.<br />Go/No-go 및 메시지 조정 근거.</p></article><article class="bs-type-grid__item"><h3>OPPORTUNITY MAP</h3><p>미충족 니즈·공백 영역 정리.<br />신규 기능·서비스 기회 도출.</p></article></div>
-    </div></section><section class="bs-section bs-section--surface" data-bs-reveal id="workflow" aria-labelledby="bs-dr-flow-title"><div class="bs-inner">
-      <p class="bs-eyebrow">예시 워크플로</p>
-      <h2 class="bs-title" id="bs-dr-flow-title">질문에서 인사이트 브리프까지</h2>
-      <div class="bs-flow-stage-grid bs-flow-stage-grid--flow" data-cols="3" data-variant="flow"><article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">01</span><div class="bs-flow-stage-grid__copy"><h3>DEFINE</h3><p>조사 질문과 대상 사용자를 정의합니다.<br />무엇을 알아야 결정할 수 있는지 명확히 합니다.</p><ul class="bs-flow-stage-chips"><li>핵심 질문</li><li>대상 사용자</li><li>범위</li></ul></div></article><article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">02</span><div class="bs-flow-stage-grid__copy"><h3>COLLECT</h3><p>리뷰, 설문, 인터뷰, 문의 등 신호를 수집합니다.<br />2차·1차 자료를 함께 검토합니다.</p><ul class="bs-flow-stage-chips"><li>리뷰</li><li>설문</li><li>인터뷰</li></ul></div></article><article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">03</span><div class="bs-flow-stage-grid__copy"><h3>ANALYZE</h3><p>패턴, 세그먼트, 니즈, 불만을 분류합니다.<br />반복 신호와 차이를 구조화합니다.</p><ul class="bs-flow-stage-chips"><li>세그먼트</li><li>니즈</li><li>불만</li></ul></div></article><article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">04</span><div class="bs-flow-stage-grid__copy"><h3>SYNTHESIZE</h3><p>핵심 인사이트와 기회를 추출합니다.<br />무엇이 중요한지, 왜 중요한지 연결합니다.</p><ul class="bs-flow-stage-chips"><li>핵심 테마</li><li>우선순위</li><li>기회</li></ul></div></article><article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">05</span><div class="bs-flow-stage-grid__copy"><h3>DELIVER</h3><p>브리프·맵·시사점을 전달합니다.<br />팀이 바로 쓸 수 있는 형태로 정리합니다.</p><ul class="bs-flow-stage-chips"><li>Insight Brief</li><li>Segment Map</li><li>Next Steps</li></ul></div></article></div>
-    </div></section><section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-dr-sources-title"><div class="bs-inner">
-      <p class="bs-eyebrow">RESEARCH SOURCES</p>
-      <h2 class="bs-title" id="bs-dr-sources-title">목적에 맞는 사용자 신호를 조합합니다.</h2>
-      <div class="bs-dr-connect" aria-hidden="true">
-        <div class="bs-dr-connect__col">
-          <p class="bs-dr-connect__k">INPUTS</p>
-          <span class="bs-dr-connect__chip">제품·서비스 리뷰</span><span class="bs-dr-connect__chip">앱스토어·마켓 리뷰</span><span class="bs-dr-connect__chip">고객 문의·CS 로그</span><span class="bs-dr-connect__chip">설문·폼 응답</span><span class="bs-dr-connect__chip">사용자·업계 인터뷰</span><span class="bs-dr-connect__chip">커뮤니티·소셜 반응</span>
-        </div>
-        <div class="bs-dr-connect__mid">
-          <div class="bs-dr-connect__pipe">
-            <span>LISTEN</span><i></i><span>ANALYZE</span><i></i><span class="is-on">INSIGHT</span>
-          </div>
-          <p class="bs-dr-connect__note">ONE BRIEF</p>
-        </div>
-        <div class="bs-dr-connect__col bs-dr-connect__col--out">
-          <p class="bs-dr-connect__k">OUTPUTS</p>
-          <span class="bs-dr-connect__chip is-out">Insight Brief</span><span class="bs-dr-connect__chip is-out">Segment Map</span><span class="bs-dr-connect__chip is-out">Need Themes</span><span class="bs-dr-connect__chip is-out">Implications</span>
-        </div>
-      </div>
-      <ul class="bs-chips bs-chips--tags"><li>제품·서비스 리뷰</li><li>앱스토어·마켓 리뷰</li><li>고객 문의·CS 로그</li><li>설문·폼 응답</li><li>사용자·업계 인터뷰</li><li>커뮤니티·소셜 반응</li><li>사용·행동 데이터</li><li>NPS·피드백 설문</li><li>세일즈·상담 기록</li><li>내부 사용자 리서치</li><li>경쟁 제품 리뷰</li><li>포커스 그룹(별도 범위)</li></ul>
-      <p class="bs-note">조사 범위, 접근 가능한 데이터, 1차 조사 포함 여부에 따라 실제 사용 소스는 프로젝트마다 달라집니다.</p>
-    </div></section><section class="bs-section" data-bs-reveal aria-labelledby="bs-dr-output-title"><div class="bs-inner">
-    <p class="bs-eyebrow">OUTPUT</p>
-    <h2 class="bs-title" id="bs-dr-output-title">결과물은 제품·마케팅 결정에 바로 쓰는 구조로 전달합니다.</h2>
-    <p class="bs-lead">프로젝트 목적에 따라 구성은 달라집니다. 아래는 자주 포함되는 항목 예시입니다.</p>
-    <div class="bs-dr-output" aria-hidden="true">
-      <div class="bs-dr-output__frame bs-dr-output__frame--report">
-        <div class="bs-dr-output__chrome"><span class="bs-dr-output__label">BRIEF</span><span>인사이트 · 초안</span></div>
-        <div class="bs-dr-output__page">
-          <p class="bs-dr-output__doc-k">사용자 인사이트 요약</p>
-          <p class="bs-dr-output__doc-t">세그먼트·니즈·행동 패턴 브리프</p>
-          <div class="bs-dr-output__lines"><i></i><i></i><i style="width:72%"></i></div>
-          <div class="bs-dr-output__tags"><span>Executive Summary</span><span>Research Scope</span><span>Segment Overview</span><span>Need &amp; Pain Themes</span></div>
-          <div class="bs-dr-output__spark"><i style="height:40%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:70%"></i><i style="height:62%"></i><i style="height:80%"></i></div>
-        </div>
-      </div>
-      <div class="bs-dr-output__frame bs-dr-output__frame--segments">
-    <div class="bs-dr-output__chrome"><span class="bs-dr-output__label">SEGMENT MAP</span><span class="bs-dr-output__live"><i></i> LIVE</span></div>
-    <div class="bs-dr-output__page">
-      <div class="bs-cr-segments">
-        <div class="bs-cr-segments__row is-on"><span>A</span><strong>Power users</strong><em>Speed · control</em></div>
-        <div class="bs-cr-segments__row"><span>B</span><strong>New adopters</strong><em>Onboarding · trust</em></div>
-        <div class="bs-cr-segments__row"><span>C</span><strong>Price-sensitive</strong><em>Value · clarity</em></div>
-      </div>
-      <div class="bs-cr-segments__themes"><span class="is-on">Onboarding</span><span>Pricing</span><span>Support</span><span>Gaps</span></div>
-      <div class="bs-dr-output__kpis"><div><span>SEGMENTS</span><strong>4</strong></div><div><span>THEMES</span><strong>8</strong></div><div><span>QUOTES</span><strong>12</strong></div><div><span>PRIORITY</span><strong>3</strong></div></div>
-    </div>
-  </div>
-    </div>
-    <p class="bs-note">세그먼트 맵과 테마 구성은 프로젝트 범위와 목적에 따라 달라집니다.</p>
-  </div></section><section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-dr-ai-title"><div class="bs-inner">
-      <p class="bs-eyebrow">SYNTHESIS</p>
-      <h2 class="bs-title" id="bs-dr-ai-title">많은 사용자 목소리에서
-핵심 패턴만 남깁니다.</h2>
-      <p class="bs-lead">리뷰, 문의, 인터뷰, 설문 등 방대한 텍스트가 있을 때 필요한 관점에서 분류·요약·비교해 빠르게 확인할 수 있게 정리합니다.</p>
-      <div class="bs-quality"><article class="bs-quality__item"><span class="bs-quality__n">01</span><h3>리뷰·피드백 패턴 정리</h3></article><article class="bs-quality__item"><span class="bs-quality__n">02</span><h3>반복 불만·이슈 추출</h3></article><article class="bs-quality__item"><span class="bs-quality__n">03</span><h3>세그먼트별 니즈 비교</h3></article><article class="bs-quality__item"><span class="bs-quality__n">04</span><h3>인터뷰 핵심 인용 정리</h3></article><article class="bs-quality__item"><span class="bs-quality__n">05</span><h3>메시지·가치 반응 분석</h3></article><article class="bs-quality__item"><span class="bs-quality__n">06</span><h3>브리프·테마 맵 초안 구조화</h3></article></div>
-      <p class="bs-note">조사 결과의 해석과 최종 의사결정은 고객과 함께 검토합니다.</p>
-    </div></section><section class="bs-section" data-bs-reveal aria-labelledby="bs-dr-scope-title"><div class="bs-inner">
-      <p class="bs-eyebrow">SCOPE LEVELS</p>
-      <h2 class="bs-title" id="bs-dr-scope-title">프로젝트 복잡도를 이해하기 위한 구분입니다.</h2>
-      <p class="bs-lead">고정 패키지가 아닙니다. 조사 목적, 대상, 1차 조사 포함 여부에 맞춰 범위를 정합니다.</p>
-      <div class="bs-scope bs-scope--levels bs-scope--cards"><article class="bs-scope__col"><p class="bs-scope__k"><span class="bs-scope__lvl">01</span>DESK INSIGHT BRIEF</p><ul class="bs-scope__list"><li>2차 자료 중심(리뷰·문의·공개 피드백)</li><li>핵심 질문 3–5개</li><li>니즈·불만 테마 정리</li><li>요약 브리프</li><li>우선순위 포인트</li></ul></article><article class="bs-scope__col"><p class="bs-scope__k"><span class="bs-scope__lvl">02</span>SEGMENT &amp; NEED MAP</p><ul class="bs-scope__list"><li>세그먼트·페르소나 정리</li><li>니즈·불만·동기 맵</li><li>행동·메시지 시사점</li><li>기회 영역</li><li>발표용 요약 포함 가능</li></ul></article><article class="bs-scope__col"><p class="bs-scope__k"><span class="bs-scope__lvl">03</span>CUSTOM RESEARCH</p><ul class="bs-scope__list"><li>인터뷰·설문 설계·진행 포함</li><li>복수 세그먼트·채널</li><li>행동 데이터 연계</li><li>맞춤 프레젠테이션</li><li>BUILD·MVP 연계 설계</li></ul></article></div>
-    </div></section><section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-dr-engage-title-time"><div class="bs-inner">
+<section class="bs-section bs-rd-snap" data-bs-reveal aria-labelledby="bs-rd-snap-title"><div class="bs-inner">
+    <p class="bs-eyebrow">RESEARCH SNAPSHOT</p>
+    <h2 class="bs-sr-only" id="bs-rd-snap-title">RESEARCH SNAPSHOT</h2>
+    <div class="bs-rd-snap__grid"><article class="bs-rd-snap__cell"><p class="bs-rd-snap__k">SERVICE</p><p class="bs-rd-snap__v">Consumer Research</p></article><article class="bs-rd-snap__cell"><p class="bs-rd-snap__k">예상 기간</p><p class="bs-rd-snap__v">2–4주</p></article><article class="bs-rd-snap__cell"><p class="bs-rd-snap__k">PRICE</p><p class="bs-rd-snap__v">₩400,000부터</p></article><article class="bs-rd-snap__cell"><p class="bs-rd-snap__k">BEST FOR</p><p class="bs-rd-snap__v">타깃·메시지·니즈 검증</p></article></div>
+  </div></section><section class="bs-section bs-rd-question" data-bs-reveal aria-labelledby="bs-rd-q-title"><div class="bs-inner">
+    <p class="bs-eyebrow">THE QUESTION</p>
+    <h2 class="bs-rd-question__title" id="bs-rd-q-title">사용자가 정말 해결하고 싶은 문제는 무엇인가?</h2>
+  </div></section><section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-rd-analyze-title"><div class="bs-inner">
+    <p class="bs-eyebrow">WHAT WE OBSERVE</p>
+    <h2 class="bs-sr-only" id="bs-rd-analyze-title">WHAT WE OBSERVE</h2>
+    <div class="bs-areas bs-areas--signal" data-variant="signal"><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">01</span><div class="bs-areas__copy"><h3>BEHAVIOR</h3><p>현재 행동</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">02</span><div class="bs-areas__copy"><h3>PAIN</h3><p>불편과 마찰</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">03</span><div class="bs-areas__copy"><h3>NEED</h3><p>해결하고 싶은 것</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">04</span><div class="bs-areas__copy"><h3>MOTIVATION</h3><p>행동 이유</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">05</span><div class="bs-areas__copy"><h3>ALTERNATIVE</h3><p>기존 해결 방식</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">06</span><div class="bs-areas__copy"><h3>PATTERN</h3><p>반복되는 신호</p></div></article></div>
+  </div></section><section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-rd-preview-title"><div class="bs-inner">
+    <p class="bs-eyebrow">RESEARCH PREVIEW</p>
+    <h2 class="bs-sr-only" id="bs-rd-preview-title">RESEARCH PREVIEW</h2>
+    <div class="bs-rd-preview" id="bs-rd-preview">
+  <div class="bs-rd-preview__head"><span class="bs-rd-preview__badge">SAMPLE FRAMEWORK</span><span class="bs-rd-preview__note">DEMO DATA</span></div>
+  <div class="bs-rd-board"><div class="bs-rd-board__step"><p class="bs-rd-board__k">OBSERVATION</p><p class="bs-rd-board__v">What users do</p><span class="bs-rd-board__arrow" aria-hidden="true">↓</span></div><div class="bs-rd-board__step"><p class="bs-rd-board__k">FRICTION</p><p class="bs-rd-board__v">Where problems happen</p><span class="bs-rd-board__arrow" aria-hidden="true">↓</span></div><div class="bs-rd-board__step"><p class="bs-rd-board__k">NEED</p><p class="bs-rd-board__v">What they want to accomplish</p><span class="bs-rd-board__arrow" aria-hidden="true">↓</span></div><div class="bs-rd-board__step"><p class="bs-rd-board__k">PATTERN</p><p class="bs-rd-board__v">What repeats</p><span class="bs-rd-board__arrow" aria-hidden="true">↓</span></div><div class="bs-rd-board__step"><p class="bs-rd-board__k">INSIGHT</p><p class="bs-rd-board__v">What this may mean</p><span class="bs-rd-board__arrow" aria-hidden="true">↓</span></div><div class="bs-rd-board__step"><p class="bs-rd-board__k">PRODUCT DECISION</p><p class="bs-rd-board__v">What to test next</p></div></div>
+</div>
+  </div></section><section class="bs-section" data-bs-reveal id="workflow" aria-labelledby="bs-rd-work-title"><div class="bs-inner">
+    <p class="bs-eyebrow">HOW WE WORK</p>
+    <h2 class="bs-sr-only" id="bs-rd-work-title">HOW WE WORK</h2>
+    <ol class="bs-process bs-process--steps" data-variant="steps" data-count="6"><li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">01</span><div class="bs-process__copy"><h3>DEFINE</h3><p>질문과 타깃 정의</p></div></li><li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">02</span><div class="bs-process__copy"><h3>OBSERVE</h3><p>행동과 의견 수집</p></div></li><li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">03</span><div class="bs-process__copy"><h3>CLUSTER</h3><p>반복 패턴 분류</p></div></li><li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">04</span><div class="bs-process__copy"><h3>INTERPRET</h3><p>문제와 니즈 해석</p></div></li><li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">05</span><div class="bs-process__copy"><h3>SYNTHESIZE</h3><p>핵심 Insight 정리</p></div></li><li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">06</span><div class="bs-process__copy"><h3>APPLY</h3><p>제품·메시지 결정에 연결</p></div></li></ol>
+  </div></section><section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-rd-sources-title"><div class="bs-inner">
+    <p class="bs-eyebrow">SOURCES</p>
+    <h2 class="bs-title" id="bs-rd-sources-title">조사에 사용할 수 있는 자료</h2>
+    <div class="bs-rd-sources"><article class="bs-rd-sources__item"><p class="bs-rd-sources__k">PUBLIC DATA</p><p class="bs-rd-sources__v">공공 통계·정부 자료</p></article><article class="bs-rd-sources__item"><p class="bs-rd-sources__k">INDUSTRY</p><p class="bs-rd-sources__v">시장 리포트·전문 기사</p></article><article class="bs-rd-sources__item"><p class="bs-rd-sources__k">COMPANIES</p><p class="bs-rd-sources__v">기업 웹·IR·공시</p></article><article class="bs-rd-sources__item"><p class="bs-rd-sources__k">PRODUCTS</p><p class="bs-rd-sources__v">가격·제품 구조</p></article><article class="bs-rd-sources__item"><p class="bs-rd-sources__k">VOICE</p><p class="bs-rd-sources__v">리뷰·커뮤니티·사용자 반응</p></article><article class="bs-rd-sources__item"><p class="bs-rd-sources__k">PRIMARY</p><p class="bs-rd-sources__v">필요 시 인터뷰·설문</p></article></div>
+    <p class="bs-note">조사 범위, 접근 가능한 데이터, 1차 조사 포함 여부에 따라 실제 사용 소스는 프로젝트마다 달라집니다.</p>
+  </div></section><section class="bs-section" data-bs-reveal aria-labelledby="bs-rd-deliver-title"><div class="bs-inner">
+    <p class="bs-eyebrow">DELIVERABLES</p>
+    <h2 class="bs-title" id="bs-rd-deliver-title">RESULTS MAY INCLUDE</h2>
+    <p class="bs-lead">범위에 따라 아래 항목 중 필요한 결과물을 제공합니다.</p>
+    <div class="bs-rd-deliver"><article class="bs-rd-deliver__row"><span class="bs-rd-deliver__n">01</span><span class="bs-rd-deliver__k">Research Questions</span></article><article class="bs-rd-deliver__row"><span class="bs-rd-deliver__n">02</span><span class="bs-rd-deliver__k">Behavior / Need Map</span></article><article class="bs-rd-deliver__row"><span class="bs-rd-deliver__n">03</span><span class="bs-rd-deliver__k">Pain Point Summary</span></article><article class="bs-rd-deliver__row"><span class="bs-rd-deliver__n">04</span><span class="bs-rd-deliver__k">Alternative Analysis</span></article><article class="bs-rd-deliver__row"><span class="bs-rd-deliver__n">05</span><span class="bs-rd-deliver__k">Pattern Summary</span></article><article class="bs-rd-deliver__row"><span class="bs-rd-deliver__n">06</span><span class="bs-rd-deliver__k">Consumer Insights</span></article><article class="bs-rd-deliver__row"><span class="bs-rd-deliver__n">07</span><span class="bs-rd-deliver__k">Product Implications</span></article><article class="bs-rd-deliver__row"><span class="bs-rd-deliver__n">08</span><span class="bs-rd-deliver__k">Next Actions</span></article></div>
+  </div></section><section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-rd-scope-title"><div class="bs-inner">
+    <p class="bs-eyebrow">SCOPE LEVELS</p>
+    <h2 class="bs-title" id="bs-rd-scope-title">프로젝트 복잡도를 이해하기 위한 구분입니다.</h2>
+    <p class="bs-lead">고정 패키지가 아닙니다. 조사 목적, 대상, 1차 조사 포함 여부에 맞춰 범위를 정합니다.</p>
+    <div class="bs-scope bs-scope--levels bs-scope--cards"><article class="bs-scope__col"><p class="bs-scope__k"><span class="bs-scope__lvl">01</span>DESK INSIGHT BRIEF</p><ul class="bs-scope__list"><li>2차 자료 중심(리뷰·문의·공개 피드백)</li><li>핵심 질문 3–5개</li><li>니즈·불만 테마 정리</li><li>요약 브리프</li><li>우선순위 포인트</li></ul></article><article class="bs-scope__col"><p class="bs-scope__k"><span class="bs-scope__lvl">02</span>SEGMENT &amp; NEED MAP</p><ul class="bs-scope__list"><li>세그먼트·페르소나 정리</li><li>니즈·불만·동기 맵</li><li>행동·메시지 시사점</li><li>기회 영역</li><li>발표용 요약 포함 가능</li></ul></article><article class="bs-scope__col"><p class="bs-scope__k"><span class="bs-scope__lvl">03</span>CUSTOM RESEARCH</p><ul class="bs-scope__list"><li>인터뷰·설문 설계·진행 포함</li><li>복수 세그먼트·채널</li><li>행동 데이터 연계</li><li>맞춤 프레젠테이션</li><li>BUILD·MVP 연계 설계</li></ul></article></div>
+  </div></section><section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-dr-engage-title-time"><div class="bs-inner">
       <div class="bs-dr-split">
         <div class="bs-dr-split__copy">
           <p class="bs-eyebrow">TIMELINE</p>
@@ -512,23 +450,7 @@
       </div>
     </div>
     
-  </div></section><section class="bs-section" data-bs-reveal id="process" aria-labelledby="bs-dr-process-title"><div class="bs-inner">
-      <p class="bs-eyebrow">PROCESS</p>
-      <h2 class="bs-title" id="bs-dr-process-title">질문 정의부터 전달까지.</h2>
-      <ol class="bs-process bs-process--steps" data-variant="steps" data-count="7"><li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">01</span><div class="bs-process__copy"><h3>DISCOVERY</h3><p>조사 목적과 의사결정 맥락을 확인합니다.
-지금 무엇을 결정하려는지 파악합니다.</p></div></li><li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">02</span><div class="bs-process__copy"><h3>SCOPE</h3><p>질문, 대상 사용자, 방법, 산출물을 정의합니다.
-2차·1차 조사 포함 여부를 합의합니다.</p></div></li><li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">03</span><div class="bs-process__copy"><h3>RESEARCH</h3><p>관련 신호와 데이터를 수집·검토합니다.
-인터뷰·설문이 포함되면 함께 진행합니다.</p></div></li><li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">04</span><div class="bs-process__copy"><h3>ANALYSIS</h3><p>패턴, 세그먼트, 니즈를 구조화합니다.
-테마·우선순위를 도출합니다.</p></div></li><li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">05</span><div class="bs-process__copy"><h3>DRAFT</h3><p>인사이트 브리프와 맵 초안을 작성합니다.
-핵심 발견의 뼈대를 만듭니다.</p></div></li><li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">06</span><div class="bs-process__copy"><h3>REVIEW</h3><p>핵심 인사이트와 해석을 함께 검토합니다.
-누락·우선순위를 조정합니다.</p></div></li><li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">07</span><div class="bs-process__copy"><h3>DELIVER</h3><p>최종 문서와 시사점을 전달합니다.
-다음 실험·검증 항목까지 연결합니다.</p></div></li></ol>
-    </div></section><section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-dr-deliver-title"><div class="bs-inner">
-      <p class="bs-eyebrow">DELIVERABLES</p>
-      <h2 class="bs-title" id="bs-dr-deliver-title">프로젝트 완료 후 제공되는 것</h2>
-      <p class="bs-lead">범위에 따라 아래 항목 중 필요한 결과물을 제공합니다.</p>
-      <div class="bs-deliver-grid bs-deliver-grid--catalog" data-variant="catalog"><article class="bs-deliver-grid__item"><span class="bs-deliver-grid__n" aria-hidden="true">01</span><div class="bs-deliver-grid__copy"><h3>Insight Brief</h3></div></article><article class="bs-deliver-grid__item"><span class="bs-deliver-grid__n" aria-hidden="true">02</span><div class="bs-deliver-grid__copy"><h3>Segment Map</h3></div></article><article class="bs-deliver-grid__item"><span class="bs-deliver-grid__n" aria-hidden="true">03</span><div class="bs-deliver-grid__copy"><h3>Need &amp; Pain Summary</h3></div></article><article class="bs-deliver-grid__item"><span class="bs-deliver-grid__n" aria-hidden="true">04</span><div class="bs-deliver-grid__copy"><h3>Behavior Notes</h3></div></article><article class="bs-deliver-grid__item"><span class="bs-deliver-grid__n" aria-hidden="true">05</span><div class="bs-deliver-grid__copy"><h3>Message Insights</h3></div></article><article class="bs-deliver-grid__item"><span class="bs-deliver-grid__n" aria-hidden="true">06</span><div class="bs-deliver-grid__copy"><h3>Opportunity Overview</h3></div></article><article class="bs-deliver-grid__item"><span class="bs-deliver-grid__n" aria-hidden="true">07</span><div class="bs-deliver-grid__copy"><h3>Implications &amp; Recommendations</h3></div></article><article class="bs-deliver-grid__item"><span class="bs-deliver-grid__n" aria-hidden="true">08</span><div class="bs-deliver-grid__copy"><h3>Interview Guide (optional)</h3></div></article><article class="bs-deliver-grid__item"><span class="bs-deliver-grid__n" aria-hidden="true">09</span><div class="bs-deliver-grid__copy"><h3>Presentation Summary</h3></div></article></div>
-    </div></section><section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-who-title"><div class="bs-inner">
+  </div></section><section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-who-title"><div class="bs-inner">
       <p class="bs-eyebrow">WHO IT'S FOR</p>
       <h2 class="bs-title" id="bs-who-title">이런 팀에 적합합니다</h2>
       <ol class="bs-who bs-who--roster" data-variant="roster"><li class="bs-who__item"><span class="bs-who__n" aria-hidden="true">01</span><p class="bs-who__t">타깃·세그먼트를 검증하려는 제품·마케팅 팀</p></li><li class="bs-who__item"><span class="bs-who__n" aria-hidden="true">02</span><p class="bs-who__t">메시지·포지셔닝 근거가 필요한 팀</p></li><li class="bs-who__item"><span class="bs-who__n" aria-hidden="true">03</span><p class="bs-who__t">기능·서비스 우선순위를 정하려는 팀</p></li><li class="bs-who__item"><span class="bs-who__n" aria-hidden="true">04</span><p class="bs-who__t">출시·리브랜딩 전 사용자 반응을 확인하려는 경우</p></li></ol>
@@ -589,29 +511,7 @@
     </a></div>
   </section>
     </main>
-    <footer class="site-footer studio-footer">
-      <div class="container studio-footer__grid studio-footer__grid--five">
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Products</p>
-      <ul class="studio-footer__list"><li><a href="../../apps/">Apps</a></li><li><a href="../../ai/">AI</a></li><li><a href="../../games/">Games</a></li><li><a href="../../tools/">Tools</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Business</p>
-      <ul class="studio-footer__list"><li><a href="../../business/build/">Build</a></li><li><a href="../../business/automation/">Automation</a></li><li><a href="../../business/research/">Research</a></li><li><a href="../../business/solutions/">Solutions</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">STUDIO</p>
-      <ul class="studio-footer__list"><li><a href="../../studio/brand/">Brand</a></li><li><a href="../../studio/digital/">Digital</a></li><li><a href="../../studio/content/">Content</a></li><li><a href="../../studio/ip/">IP</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Resources</p>
-      <ul class="studio-footer__list"><li><a href="../../resources/store/">Store</a></li><li><a href="../../resources/insights/">Insights</a></li><li><a href="../../resources/blog/">Blog</a></li><li><a href="../../resources/labs/">Labs</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Company</p>
-      <ul class="studio-footer__list"><li><a href="../../about/">Newon 회사 소개</a></li><li><a href="../../portfolio/">Newon 포트폴리오</a></li><li><a href="../../news/">뉴스</a></li><li><a href="../../media/">Media</a></li><li><a href="../../contact/">문의</a></li></ul>
-    </div>
-      </div>
+    <footer class="site-footer studio-footer studio-footer--compact">
       <div class="container studio-footer__bottom studio-footer__bottom--brand">
         <div class="studio-footer__brand-row">
           <img class="studio-footer__logo" src="/logo.png" alt="" width="28" height="28" decoding="async" />

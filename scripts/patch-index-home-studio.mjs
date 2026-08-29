@@ -3,7 +3,6 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { getCompanyMetrics } from "./company-metrics.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const TPL = path.join(ROOT, "templates", "index.html");
@@ -58,8 +57,8 @@ function ensureAssets(html) {
       '<link rel="stylesheet" href="/hub-pages.css?v=20260826bw1" />\n    <link rel="stylesheet" href="/home-studio.css?v=20260826bw1" />'
     );
   } else {
-    out = out.replace(/home-studio\.css\?v=[^"]+/, "home-studio.css?v=20260826bw1");
-    out = out.replace(/hub-pages\.css\?v=[^"]+/, "hub-pages.css?v=20260826bw1");
+    out = out.replace(/home-studio\.css\?v=[^"]+/, "home-studio.css?v=20260828home2");
+    out = out.replace(/hub-pages\.css\?v=[^"]+/, "hub-pages.css?v=20260828home2");
   }
   if (!out.includes('src="/home-studio.js')) {
     out = out.replace(
@@ -67,19 +66,13 @@ function ensureAssets(html) {
       '<script src="/site-chrome.js?v=20260826gnav3" defer></script>\n    <script src="/home-studio.js?v=20260826ps3" defer></script>'
     );
   } else {
-    out = out.replace(/home-studio\.js\?v=[^"]+/, "home-studio.js?v=20260826ps3");
+    out = out.replace(/home-studio\.js\?v=[^"]+/, "home-studio.js?v=20260828home2");
   }
   return out;
 }
 
 const hero = fs.readFileSync(HERO, "utf8");
-const metrics = getCompanyMetrics();
-let studio = fs.readFileSync(INC, "utf8")
-  .replace(/\{\{METRICS_PRODUCTS\}\}/g, metrics.products)
-  .replace(/\{\{METRICS_COUNTRIES\}\}/g, metrics.countries)
-  .replace(/\{\{METRICS_LANGUAGES\}\}/g, metrics.languages)
-  .replace(/\{\{METRICS_EXPERIMENTS\}\}/g, metrics.experiments)
-  .trim();
+const studio = fs.readFileSync(INC, "utf8").trim();
 const block = hero + "\n" + studio;
 
 let html = fs.readFileSync(TPL, "utf8");

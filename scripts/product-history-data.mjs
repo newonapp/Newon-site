@@ -429,20 +429,21 @@ export function buildTimelineEntries(articles = [], { productBySlug, articleCopy
   return [...fromNews, ...curated].sort((a, b) => {
     if (a.sortKey < b.sortKey) return 1;
     if (a.sortKey > b.sortKey) return -1;
-    // Stable product order for same-precision ties (year/month buckets)
+    // Stable product order for same-precision ties (year/month buckets) — newest first.
+    // Inverse of NEWS / About launch lineup (earliest last).
     const order = [
       "404-human",
-      "myworld",
-      "newon-plus",
-      "countup",
-      "goalup",
-      "piggyup",
-      "petlog",
       "pillmate",
-      "savy",
-      "ox-month",
+      "petlog",
+      "piggyup",
       "subping",
+      "countup",
+      "newon-plus",
+      "myworld",
       "babylog",
+      "savy",
+      "goalup",
+      "ox-month",
     ];
     const ai = order.indexOf(a.product);
     const bi = order.indexOf(b.product);

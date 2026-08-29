@@ -14,9 +14,10 @@ export const MARKET_RESEARCH_COPY = {
     eyebrow: "MARKET RESEARCH",
     subEyebrow: "RESEARCH",
     headline: "시장을 추측하지 않고,\n근거로 읽습니다.",
-    lead: "신규 진입, 카테고리 확장, 포지셔닝 검토 전에 시장 구조·수요·경쟁 환경을 조사합니다. 산업 리포트, 공개 데이터, 경쟁사 자료, 리뷰를 한 흐름으로 정리해 회의·기획·투자 논의에 바로 쓸 수 있는 리서치 브리프와 마켓 맵으로 전달합니다.",
+    lead: "시장 구조, 수요, 경쟁 환경과 변화 신호를 조사해 제품과 사업 의사결정에 필요한 핵심 근거를 하나의 리서치 브리프로 정리합니다.",
     ctaPrimary: "MARKET RESEARCH 문의 →",
-    ctaSecondary: "리서치 흐름 보기 ↓",
+    ctaSecondary: "SEE HOW IT WORKS ↓",
+    ctaSecondaryHref: "#workflow",
     meta: [
       { k: "SERVICE", v: "Market Research" },
       { k: "BEST FOR", v: "진입·확장·포지셔닝 검토" },
@@ -423,7 +424,7 @@ export const MARKET_RESEARCH_COPY = {
     eyebrow: "MARKET RESEARCH",
     subEyebrow: "RESEARCH",
     headline: "Read the market\nby evidence, not guesswork.",
-    lead: "Before entering, expanding, or repositioning, we research market structure, demand signals, and competitive context. Industry reports, public data, competitor material, and reviews are organized into a research brief and market map your team can use in planning, meetings, and investment conversations.",
+    lead: "We research market structure, demand, competition, and change signals — then organize the evidence into one research brief your team can use to decide.",
     ctaPrimary: "Market research inquiry →",
     ctaSecondary: "See the research flow ↓",
     meta: [

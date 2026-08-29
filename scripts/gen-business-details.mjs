@@ -475,6 +475,11 @@ export function writeInquirySuccessPages() {
       fs.mkdirSync(path.join(pub, "business"), { recursive: true });
       fs.copyFileSync(jsSrc, path.join(pub, "business", "inquiry.js"));
     }
+    const cssSrc = path.join(ROOT, "business", "inquiry-success.css");
+    if (fs.existsSync(cssSrc)) {
+      fs.mkdirSync(path.join(pub, "business"), { recursive: true });
+      fs.copyFileSync(cssSrc, path.join(pub, "business", "inquiry-success.css"));
+    }
     for (const { dir } of LANGS) {
       const src = path.join(ROOT, dir, "business", "inquiry", "success", "index.html");
       const destDir = path.join(pub, dir, "business", "inquiry", "success");

@@ -439,20 +439,32 @@ function footNav(exp, lang, all) {
 function liveReviewAi(exp, lang) {
   const u = ui(lang);
   const ko = lang === "ko";
-  return `<section class="ld-live ld-live--wide" id="live-experiment" data-ld-review data-ld-reveal>
+  return `<section class="ld-live ld-live--wide ld-live--bench" id="live-experiment" data-ld-review data-ld-reveal>
     <div class="ld-live__head">
       <p class="ld-k">${escapeHtml(u.liveExperiment)}</p>
       <span class="ld-badge">${escapeHtml(u.prototypeNote)}</span>
     </div>
     <p class="ld-body ld-body--narrow">${ko ? "리뷰를 줄바꿈으로 여러 개 붙여넣고 분석해 보세요. 결과는 클라이언트 휴리스틱이며 실제 AI API가 아닙니다." : "Paste multiple reviews (one per line). Results use a client-side heuristic — not a live AI API."}</p>
-    <label class="ld-label" for="ld-review-input">${ko ? "Review text" : "Review text"}</label>
-    <textarea id="ld-review-input" class="ld-textarea" rows="8" placeholder="${ko ? "리뷰를 한 줄에 하나씩…" : "One review per line…"}"></textarea>
-    <button type="button" class="ld-btn" data-ld-review-run>ANALYZE REVIEWS →</button>
-    <div class="ld-review-out" data-ld-review-out hidden>
-      <p class="ld-badge">${escapeHtml(u.demo)}</p>
-      <div class="ld-stat-row" data-ld-review-stats></div>
-      <div class="ld-review-cols" data-ld-review-cols></div>
-      <div class="ld-priorities" data-ld-review-prio></div>
+    <div class="ld-live__work">
+      <div class="ld-live__pane">
+        <p class="ld-pane-k">INPUT</p>
+        <label class="ld-label" for="ld-review-input">${ko ? "Review text" : "Review text"}</label>
+        <textarea id="ld-review-input" class="ld-textarea" rows="8" placeholder="${ko ? "리뷰를 한 줄에 하나씩…" : "One review per line…"}"></textarea>
+        <button type="button" class="ld-btn" data-ld-review-run>ANALYZE REVIEWS →</button>
+      </div>
+      <div class="ld-live__pane ld-live__pane--out">
+        <p class="ld-pane-k">SIGNAL BOARD</p>
+        <div class="ld-live__placeholder">
+          <span class="ld-live__placeholder-mark" aria-hidden="true">◇</span>
+          <p>${ko ? "분석 결과가 여기에 나타납니다." : "Analysis will appear here."}</p>
+        </div>
+        <div class="ld-review-out" data-ld-review-out hidden>
+          <p class="ld-badge">${escapeHtml(u.demo)}</p>
+          <div class="ld-stat-row" data-ld-review-stats></div>
+          <div class="ld-review-cols" data-ld-review-cols></div>
+          <div class="ld-priorities" data-ld-review-prio></div>
+        </div>
+      </div>
     </div>
   </section>`;
 }
@@ -460,13 +472,14 @@ function liveReviewAi(exp, lang) {
 function liveQr(lang) {
   const u = ui(lang);
   const ko = lang === "ko";
-  return `<section class="ld-live ld-live--wide" id="live-qr" data-ld-qr data-ld-reveal>
+  return `<section class="ld-live ld-live--wide ld-live--bench" id="live-qr" data-ld-qr data-ld-reveal>
     <div class="ld-live__head">
       <p class="ld-k">LIVE QR BUILDER</p>
       <span class="ld-badge">${escapeHtml(u.demoProto)} · Client-side QR</span>
     </div>
-    <div class="ld-qr-build">
-      <div class="ld-qr-form">
+    <div class="ld-qr-build ld-live__work">
+      <div class="ld-qr-form ld-live__pane">
+        <p class="ld-pane-k">CONFIGURE</p>
         <label class="ld-label" for="ld-qr-url">Destination URL</label>
         <input id="ld-qr-url" class="ld-input" type="url" inputmode="url" placeholder="https://www.newon.app" autocomplete="url" />
         <label class="ld-label" for="ld-qr-name">QR Name</label>
@@ -479,13 +492,13 @@ function liveQr(lang) {
           <button type="button" class="ld-link" data-ld-qr-reset>Reset</button>
         </div>
       </div>
-      <div class="ld-qr-preview" data-ld-qr-preview aria-live="polite">
-        <p class="ld-k ld-k--sm">QR PREVIEW</p>
+      <div class="ld-qr-preview ld-live__pane ld-live__pane--out" data-ld-qr-preview aria-live="polite">
+        <p class="ld-pane-k">QR PREVIEW</p>
         <div class="ld-qr-frame" data-ld-qr-frame><p class="ld-hint">${ko ? "Enter a URL and generate." : "Enter a URL and generate."}</p></div>
       </div>
     </div>
     <div class="ld-qr-dash" data-ld-qr-dash>
-      <p class="ld-k ld-k--sm">SCAN SIGNAL</p>
+      <p class="ld-pane-k">SCAN SIGNAL</p>
       <div class="ld-stat-row">
         <div class="ld-stat"><strong class="ld-mono">—</strong><span>SCANS</span></div>
         <div class="ld-stat"><strong class="ld-mono">—</strong><span>VISITS</span></div>
@@ -504,19 +517,19 @@ function liveQr(lang) {
 function liveForm(lang) {
   const u = ui(lang);
   const ko = lang === "ko";
-  return `<section class="ld-live ld-live--wide" id="form-builder" data-ld-form data-lang="${escapeHtml(lang)}" data-ld-reveal>
+  return `<section class="ld-live ld-live--wide ld-live--bench" id="form-builder" data-ld-form data-lang="${escapeHtml(lang)}" data-ld-reveal>
     <div class="ld-live__head">
       <p class="ld-k">FORM BUILDER PROTOTYPE</p>
       <span class="ld-badge">${escapeHtml(u.demoProto)}</span>
     </div>
-    <div class="ld-form-split">
-      <div class="ld-form-build">
-        <p class="ld-k ld-k--sm">FORM BUILDER</p>
+    <div class="ld-form-split ld-live__work">
+      <div class="ld-form-build ld-live__pane">
+        <p class="ld-pane-k">FORM BUILDER</p>
         <label class="ld-label" for="ld-form-title">Form title</label>
         <input id="ld-form-title" class="ld-input" type="text" value="${ko ? "Product feedback" : "Product feedback"}" maxlength="120" />
         <label class="ld-label" for="ld-form-desc">Description</label>
         <textarea id="ld-form-desc" class="ld-textarea ld-textarea--sm" rows="2">${ko ? "Tell us one thing." : "Tell us one thing."}</textarea>
-        <p class="ld-k ld-k--sm" style="margin-top:1.25rem">${ko ? "Add question" : "Add question"}</p>
+        <p class="ld-pane-k ld-pane-k--gap">${ko ? "Add question" : "Add question"}</p>
         <div class="ld-form-types" role="group">
           <button type="button" class="ld-chip" data-ld-form-add="short">Short Text</button>
           <button type="button" class="ld-chip" data-ld-form-add="long">Long Text</button>
@@ -525,10 +538,10 @@ function liveForm(lang) {
         </div>
         <ul class="ld-form-qlist" data-ld-form-qlist></ul>
       </div>
-      <div class="ld-form-preview">
-        <p class="ld-k ld-k--sm">LIVE PREVIEW</p>
+      <div class="ld-form-preview ld-live__pane ld-live__pane--out">
+        <p class="ld-pane-k">LIVE PREVIEW</p>
         <div class="ld-form-card" data-ld-form-preview aria-live="polite"></div>
-        <button type="button" class="ld-btn" data-ld-form-open style="margin-top:1rem">PREVIEW FORM</button>
+        <button type="button" class="ld-btn" data-ld-form-open>PREVIEW FORM</button>
       </div>
     </div>
   </section>
@@ -551,15 +564,27 @@ function liveForm(lang) {
 function liveAiDiscovery(lang) {
   const u = ui(lang);
   const ko = lang === "ko";
-  return `<section class="ld-live ld-live--wide" id="idea-test" data-ld-idea data-ld-reveal>
+  return `<section class="ld-live ld-live--wide ld-live--bench" id="idea-test" data-ld-idea data-ld-reveal>
     <div class="ld-live__head">
       <p class="ld-k">IDEA TEST</p>
       <span class="ld-badge">${escapeHtml(u.prototypeNote)}</span>
     </div>
-    <label class="ld-label" for="ld-idea-input">${ko ? "Describe a recurring problem." : "Describe a recurring problem."}</label>
-    <textarea id="ld-idea-input" class="ld-textarea" rows="4" maxlength="600"></textarea>
-    <button type="button" class="ld-btn" data-ld-idea-run>TEST THE IDEA →</button>
-    <div class="ld-idea-out" data-ld-idea-out hidden></div>
+    <div class="ld-live__work">
+      <div class="ld-live__pane">
+        <p class="ld-pane-k">PROBLEM</p>
+        <label class="ld-label" for="ld-idea-input">${ko ? "Describe a recurring problem." : "Describe a recurring problem."}</label>
+        <textarea id="ld-idea-input" class="ld-textarea" rows="5" maxlength="600" placeholder="${ko ? "반복되는 문제를 적어 보세요…" : "Describe a recurring problem…"}"></textarea>
+        <button type="button" class="ld-btn" data-ld-idea-run>TEST THE IDEA →</button>
+      </div>
+      <div class="ld-live__pane ld-live__pane--out">
+        <p class="ld-pane-k">FIT READOUT</p>
+        <div class="ld-live__placeholder">
+          <span class="ld-live__placeholder-mark" aria-hidden="true">◇</span>
+          <p>${ko ? "아이디어 테스트 결과가 여기에 나타납니다." : "Idea fit readout will appear here."}</p>
+        </div>
+        <div class="ld-idea-out" data-ld-idea-out hidden></div>
+      </div>
+    </div>
   </section>`;
 }
 
@@ -573,12 +598,12 @@ function liveGame(exp, lang) {
         <a class="ld-btn" href="${escapeHtml(ko ? rel.hrefKo : rel.hrefEn)}">${escapeHtml(u.playExperiment)} ↗</a>
       </div>`
     : "";
-  return `<section class="ld-live ld-live--wide ld-live--cinema" id="the-experiment" data-ld-game data-ld-reveal>
+  return `<section class="ld-live ld-live--wide ld-live--bench ld-live--game" id="the-experiment" data-ld-game data-ld-reveal>
     <div class="ld-live__head">
       <p class="ld-k">${escapeHtml(u.liveExperiment)}</p>
       <span class="ld-badge">${escapeHtml(u.demoProto)}</span>
     </div>
-    <div class="ld-game" aria-live="polite">
+    <div class="ld-game ld-live__stage" aria-live="polite">
       <p class="ld-game__prompt" data-ld-game-prompt></p>
       <p class="ld-game__q" data-ld-game-q>WHAT DO YOU DO?</p>
       <div class="ld-game__choices" data-ld-game-choices></div>
@@ -595,13 +620,15 @@ function liveGame(exp, lang) {
 
 function liveCharacter(lang) {
   const ko = lang === "ko";
-  return `<section class="ld-live ld-live--wide" id="prototype" data-ld-reveal>
+  return `<section class="ld-live ld-live--wide ld-live--bench ld-live--character" id="prototype" data-ld-reveal>
     <div class="ld-live__head">
       <p class="ld-k">SYSTEM BOARD</p>
       <span class="ld-badge">${escapeHtml(ui(lang).demoProto)}</span>
     </div>
     <p class="ld-body ld-body--narrow">${ko ? "공개 가능한 캐릭터 에셋은 아직 없습니다. 실루엣과 시스템 그리드로 규칙만 탐색합니다." : "No public character assets yet. Exploring rules via silhouette and system grid only."}</p>
-    ${heroVisual("character-lab", lang)}
+    <div class="ld-live__stage ld-live__stage--visual">
+      ${heroVisual("character-lab", lang)}
+    </div>
   </section>`;
 }
 
@@ -630,7 +657,6 @@ function aiBoard(exp, lang) {
   const rows = (exp.board || [])
     .map(
       (row) => `<article class="ld-board__row">
-        <p class="ld-badge">${escapeHtml(u.demo)}</p>
         <dl class="ld-board__dl">
           <div><dt>PROBLEM</dt><dd>${escapeHtml(ko ? row.problemKo : row.problemEn)}</dd></div>
           <div><dt>TARGET USER</dt><dd>${escapeHtml(ko ? row.userKo : row.userEn)}</dd></div>
@@ -644,7 +670,10 @@ function aiBoard(exp, lang) {
     .join("");
   if (!rows) return "";
   return `<section class="ld-board-wrap" data-ld-reveal aria-label="Experiment board">
-    <p class="ld-k">EXPERIMENT BOARD</p>
+    <div class="ld-board-wrap__head">
+      <p class="ld-pane-k">EXPERIMENT BOARD</p>
+      <span class="ld-badge">${escapeHtml(u.demo)}</span>
+    </div>
     <div class="ld-board">${rows}</div>
   </section>`;
 }

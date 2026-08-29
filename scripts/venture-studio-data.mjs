@@ -89,7 +89,7 @@ export const MEGA_DESTINATIONS = {
     { titleKey: "nav.portfolio", descKey: "nav.megaPortfolioDesc", href: "portfolio/", titleFb: "Portfolio" },
     { titleKey: "nav.newsUpdates", descKey: "nav.megaNewsDesc", href: "news/", titleFb: "News" },
     { titleKey: "nav.media", descKey: "nav.megaMediaDesc", href: "media/", titleFb: "Media" },
-    { titleKey: "nav.contact", descKey: "nav.megaContactDesc", href: "contact/", titleFb: "Contact" },
+    { titleKey: "nav.contact", descKey: "nav.megaContactDesc", href: "business/inquiry/", titleFb: "Contact" },
   ],
 };
 

@@ -22,7 +22,7 @@ html[data-newon-shell-theme="dark"] .hub-page:has(.tools-detail) {
   --tools-line-strong: #d0d0d0;
   --tools-card: #ffffff;
   --tools-soft: #fafafa;
-  --tools-radius: 18px;
+  --tools-radius: 0;
 }
 html[data-newon-shell-theme="dark"] .tools-page,
 html[data-newon-shell-theme="dark"] .tools-detail {
@@ -1460,4 +1460,287 @@ html[data-newon-shell-theme="dark"] .tools-workspace--soon {
 html[data-newon-shell-theme="dark"] .tools-soon__badge,
 html[data-newon-shell-theme="dark"] .tools-soon__lead {
   color: var(--tools-muted);
+}
+
+/* ============================================================
+   Tools — angular editorial pass (match site B&W hubs)
+   ============================================================ */
+
+.tools-page,
+.tools-detail {
+  --tools-radius: 0;
+  --tools-line: rgba(10, 10, 10, 0.12);
+  --tools-line-strong: rgba(10, 10, 10, 0.2);
+  --tools-muted: #1a1a1a;
+  --tools-soft: #ffffff;
+}
+
+html[data-newon-shell-theme="dark"] .tools-page,
+html[data-newon-shell-theme="dark"] .tools-detail {
+  --tools-line: rgba(255, 255, 255, 0.14);
+  --tools-line-strong: rgba(255, 255, 255, 0.22);
+  --tools-muted: #e8e8e8;
+  --tools-soft: #0a0a0a;
+  --tools-card: #0a0a0a;
+}
+
+.tools-page :is(
+  .tools-search__shell,
+  .tools-search__panel,
+  .tools-cmd,
+  .tools-cmd__bar,
+  .tools-cmd__row,
+  .tools-filter,
+  .tools-quick__card,
+  .tools-quick__icon,
+  .tools-card,
+  .tools-card__icon,
+  .tools-empty,
+  .tools-cta,
+  .tools-workspace,
+  .tools-detail__panel,
+  input,
+  textarea,
+  select,
+  button,
+  .btn
+),
+.tools-detail :is(
+  .tools-search__shell,
+  .tools-search__panel,
+  .tools-filter,
+  .tools-quick__card,
+  .tools-quick__icon,
+  .tools-card,
+  .tools-card__icon,
+  .tools-empty,
+  .tools-cta,
+  .tools-workspace,
+  .tools-workspace *,
+  input,
+  textarea,
+  select,
+  button,
+  .btn,
+  .tools-field,
+  .tools-field__control,
+  .tools-out,
+  .tools-chip,
+  .tools-toggle,
+  .tools-pill,
+  .tools-badge,
+  .tools-soon__badge,
+  .ssd-meta__item,
+  .ssd-card,
+  .ssd-panel
+) {
+  border-radius: 0 !important;
+}
+
+.tools-filter {
+  border: 1px solid var(--tools-line-strong);
+  background: transparent;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.tools-filter.is-active,
+.tools-filter:hover {
+  background: var(--tools-ink);
+  border-color: var(--tools-ink);
+  color: #fff;
+}
+
+html[data-newon-shell-theme="dark"] .tools-filter.is-active,
+html[data-newon-shell-theme="dark"] .tools-filter:hover {
+  color: #0a0a0a;
+}
+
+.tools-quick__card,
+.tools-card {
+  border: 1px solid var(--tools-line);
+  box-shadow: none;
+  background: #fff;
+}
+
+html[data-newon-shell-theme="dark"] .tools-quick__card,
+html[data-newon-shell-theme="dark"] .tools-card {
+  background: #0a0a0a;
+}
+
+.tools-card:hover,
+.tools-quick__card:hover {
+  transform: none;
+  box-shadow: none;
+  background: #0a0a0a;
+  color: #fff;
+  border-color: #0a0a0a;
+}
+
+.tools-card:hover .tools-card__name,
+.tools-card:hover .tools-card__desc,
+.tools-card:hover .tools-card__foot,
+.tools-card:hover .tools-card__go,
+.tools-card:hover .tools-card__top,
+.tools-card:hover .tools-card__body,
+.tools-quick__card:hover,
+.tools-quick__card:hover .tools-quick__copy,
+.tools-quick__card:hover .tools-quick__copy strong,
+.tools-quick__card:hover .tools-quick__copy em,
+.tools-quick__card:hover .tools-quick__copy p,
+.tools-quick__card:hover .tools-quick__arrow {
+  color: #fff !important;
+  opacity: 1;
+}
+
+.tools-card:hover .tools-card__icon,
+.tools-quick__card:hover .tools-quick__icon {
+  border-color: #fff !important;
+  color: #fff !important;
+  background: transparent !important;
+}
+
+.tools-card:hover .tools-card__icon svg,
+.tools-quick__card:hover .tools-quick__icon svg {
+  color: #fff !important;
+  stroke: currentColor;
+}
+
+html[data-newon-shell-theme="dark"] .tools-card:hover,
+html[data-newon-shell-theme="dark"] .tools-quick__card:hover {
+  background: #fff;
+  color: #0a0a0a;
+  border-color: #fff;
+}
+
+html[data-newon-shell-theme="dark"] .tools-card:hover .tools-card__name,
+html[data-newon-shell-theme="dark"] .tools-card:hover .tools-card__desc,
+html[data-newon-shell-theme="dark"] .tools-card:hover .tools-card__foot,
+html[data-newon-shell-theme="dark"] .tools-card:hover .tools-card__go,
+html[data-newon-shell-theme="dark"] .tools-card:hover .tools-card__top,
+html[data-newon-shell-theme="dark"] .tools-card:hover .tools-card__body,
+html[data-newon-shell-theme="dark"] .tools-quick__card:hover .tools-quick__copy,
+html[data-newon-shell-theme="dark"] .tools-quick__card:hover .tools-quick__copy strong,
+html[data-newon-shell-theme="dark"] .tools-quick__card:hover .tools-quick__copy em,
+html[data-newon-shell-theme="dark"] .tools-quick__card:hover .tools-quick__copy p,
+html[data-newon-shell-theme="dark"] .tools-quick__card:hover .tools-quick__arrow {
+  color: #0a0a0a !important;
+  opacity: 1;
+}
+
+html[data-newon-shell-theme="dark"] .tools-card:hover .tools-card__icon,
+html[data-newon-shell-theme="dark"] .tools-quick__card:hover .tools-quick__icon {
+  border-color: #0a0a0a !important;
+  color: #0a0a0a !important;
+  background: transparent !important;
+}
+
+html[data-newon-shell-theme="dark"] .tools-card:hover .tools-card__icon svg,
+html[data-newon-shell-theme="dark"] .tools-quick__card:hover .tools-quick__icon svg {
+  color: #0a0a0a !important;
+}
+
+.tools-card__icon,
+.tools-quick__icon {
+  border: 1px solid var(--tools-line);
+  border-radius: 0 !important;
+  background: transparent;
+}
+
+.tools-search__shell,
+.tools-cmd,
+.tools-workspace {
+  border: 1px solid var(--tools-line);
+  border-radius: 0 !important;
+  box-shadow: none;
+}
+
+.tools-search__kbd {
+  border-radius: 0 !important;
+  border: 1px solid currentColor;
+}
+
+.tools-section-head__eyebrow {
+  color: var(--tools-ink);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.tools-card__desc,
+.tools-card__foot,
+.tools-quick__card p,
+.tools-muted {
+  color: var(--tools-ink);
+  opacity: 0.72;
+}
+
+.tools-card:hover .tools-card__desc,
+.tools-card:hover .tools-card__foot {
+  opacity: 0.8;
+}
+
+/* Force square chrome on tools (match apps hub) */
+.tools-page *,
+.tools-page *::before,
+.tools-page *::after,
+.tools-detail *,
+.tools-detail *::before,
+.tools-detail *::after {
+  border-radius: 0 !important;
+}
+
+.hub-page:has(.tools-page) .gnav .btn,
+.hub-page:has(.tools-page) .gnav .btn-primary,
+.hub-page:has(.tools-page) .gnav__lang-select,
+.hub-page:has(.tools-page) .gnav__theme,
+.hub-page:has(.tools-detail) .gnav .btn,
+.hub-page:has(.tools-detail) .gnav .btn-primary,
+.hub-page:has(.tools-detail) .gnav__lang-select,
+.hub-page:has(.tools-detail) .gnav__theme,
+.hub-page:has(.tools-page) .btn,
+.hub-page:has(.tools-detail) .btn {
+  border-radius: 0 !important;
+}
+
+.tools-search__shell,
+.tools-cmd,
+.tools-filter,
+.tools-quick__card,
+.tools-card,
+.tools-workspace,
+.tools-card__icon,
+.tools-quick__icon {
+  border: 1px solid var(--tools-line) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.tools-filter.is-active,
+.tools-filter:hover {
+  border-color: var(--tools-ink) !important;
+}
+
+.tools-card:hover,
+.tools-quick__card:hover {
+  border-color: #0a0a0a !important;
+}
+
+html[data-newon-shell-theme="dark"] .tools-search__shell,
+html[data-newon-shell-theme="dark"] .tools-cmd,
+html[data-newon-shell-theme="dark"] .tools-filter,
+html[data-newon-shell-theme="dark"] .tools-quick__card,
+html[data-newon-shell-theme="dark"] .tools-card,
+html[data-newon-shell-theme="dark"] .tools-workspace,
+html[data-newon-shell-theme="dark"] .tools-card__icon,
+html[data-newon-shell-theme="dark"] .tools-quick__icon {
+  border-color: var(--tools-line) !important;
+}
+
+html[data-newon-shell-theme="dark"] .tools-filter.is-active,
+html[data-newon-shell-theme="dark"] .tools-filter:hover,
+html[data-newon-shell-theme="dark"] .tools-card:hover,
+html[data-newon-shell-theme="dark"] .tools-quick__card:hover {
+  border-color: #fff !important;
 }

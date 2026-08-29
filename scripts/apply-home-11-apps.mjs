@@ -53,14 +53,14 @@ const LANG = {
   ko: {
     meta: {
       description:
-        "Newon — 아이디어를 현실로 만드는 앱 스튜디오. 습관·목표·건강·금융·가족·여행 기록까지 12개 앱을 운영합니다. OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+.",
+        "Newon은 앱, AI, 게임과 웹 제품을 직접 만들고 기업과 함께 새로운 디지털 제품과 비즈니스 가능성을 설계하는 Product & Venture Studio입니다.",
       ogDescription:
-        "Newon — 아이디어를 현실로 만드는 앱 스튜디오. 습관·목표·건강·금융·가족·여행 기록까지 12개 앱을 운영합니다.",
+        "Newon은 앱, AI, 게임과 웹 제품을 직접 만들고 기업과 함께 새로운 디지털 제품과 비즈니스 가능성을 설계하는 Product & Venture Studio입니다.",
       twitterDescription:
-        "Newon — 습관·목표·건강·금융·가족·여행 기록까지 12개 앱의 글로벌 라이프 플랫폼.",
+        "Newon — Product & Venture Studio. Apps, AI, games, and web products built and operated by Newon.",
       keywords:
-        "Newon, 뉴온, newon.app, 앱 스튜디오, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, 습관 기록 앱, 구독 관리 앱, 복약 관리 앱, 가계부 앱, 육아 기록 앱, 목표 관리 앱, 여행 기록, 방문 국가, 여행 지도, travel journal, travel tracker, visited countries, travel map, 생산성 앱",
-      orgDescription: "아이디어를 현실로 만드는 앱 스튜디오 · 12개 라이프 앱",
+        "Newon, 뉴온, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, Product & Venture Studio",
+      orgDescription: "Product & Venture Studio — apps, AI, games, and web products",
     },
     about: {
       lead: "Newon은 생산성, 금융, 건강, 가족, 여행까지 일상을 돕는 앱 스튜디오입니다.",
@@ -124,14 +124,14 @@ const LANG = {
   en: {
     meta: {
       description:
-        "Newon is an app studio that turns ideas into reality. 12 apps for productivity, health, finance, family, and travel—OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, and Newon+.",
+        "Newon builds apps, AI, games, and web products — and partners with companies to design new digital products and business possibilities.",
       ogDescription:
-        "Newon builds 11 lifestyle apps—habits, goals, health, finance, family, and travel journals—across 177 countries and 13 languages.",
+        "Newon builds apps, AI, games, and web products — and partners with companies to design new digital products and business possibilities.",
       twitterDescription:
-        "Newon — 12 apps for habits, health, finance, family, and travel tracking worldwide.",
+        "Newon — Product & Venture Studio. Apps, AI, games, and web products built and operated by Newon.",
       keywords:
-        "Newon, newon.app, app studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, habit tracker, subscription manager, medication reminder, budgeting app, baby log, goal tracking, travel journal, travel tracker, visited countries, travel map, productivity apps",
-      orgDescription: "App studio that turns ideas into reality · 11 life apps",
+        "Newon, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, Product & Venture Studio",
+      orgDescription: "Product & Venture Studio — apps, AI, games, and web products",
     },
     about: {
       lead: "Newon builds apps for productivity, finance, health, family, and travel.",

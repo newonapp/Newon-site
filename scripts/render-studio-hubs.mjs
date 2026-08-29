@@ -296,7 +296,7 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.appsSeoTitle"),
     description: pick(f, fe, "studio.appsMetaDescription"),
     body: appsBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/apps-hub.css?v=20260825apps7" />',
+    extraCss: '<link rel="stylesheet" href="/apps-hub.css?v=20260830appsline1" />',
     extraScripts: '<script src="/apps-hub.js?v=20260825apps5" defer></script>',
   }),
   ai: (f, fe, l) => ({
@@ -304,7 +304,7 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.aiSeoTitle"),
     description: pick(f, fe, "studio.aiMetaDescription"),
     body: aiBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260827ai7" />',
+    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260830notify1" />',
     extraScripts: '<script src="/ai-hub.js?v=20260827ai7" defer></script>',
   }),
   saas: (f, fe, l) => ({
@@ -334,7 +334,7 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.toolsSeoTitle"),
     description: pick(f, fe, "studio.toolsMetaDescription"),
     body: toolsHubBody(f, fe),
-    extraCss: '<link rel="stylesheet" href="/tools-hub.css?v=20260826tools9" />',
+    extraCss: '<link rel="stylesheet" href="/tools-hub.css?v=20260830toolsline1" />',
     extraScripts: '<script src="/tools/tools-hub.js?v=20260825tools2" defer></script>',
   }),
   store: (f, fe) => ({ activeNav: "resources", title: pick(f, fe, "studio.storeSeoTitle"), description: pick(f, fe, "studio.storeMetaDescription"), body: storeBody(f, fe) }),
@@ -378,7 +378,7 @@ for (const tool of TOOLS) {
       title: `${pick(flat, flatEn, tool.nameKey)} | Newon Tools`,
       description: pick(flat, flatEn, tool.descKey),
       body: toolPageBody(tool, flat, flatEn),
-      extraCss: '<link rel="stylesheet" href="/tools-hub.css?v=20260826tools9" />',
+      extraCss: '<link rel="stylesheet" href="/tools-hub.css?v=20260830toolsline1" />',
       extraScripts: '<script src="/tools/tools-runtime.js?v=20260826tools9" defer></script>',
     });
   }

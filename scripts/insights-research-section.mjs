@@ -1,5 +1,5 @@
 /**
- * Insights hub — Business Research promo block (editorial panel, no watermark).
+ * Insights hub — Research capabilities explore block (links to Business Research services).
  */
 
 function pad2(n) {
@@ -15,13 +15,9 @@ function itemDesc(item, lang) {
   return item.descEn || item.desc || "";
 }
 
-function defaultFacts(lang) {
-  const ko = lang === "ko";
-  return [
-    { k: "SCOPE", v: ko ? "시장 · 경쟁 · 소비자 · 맞춤" : "Market · Competitor · Consumer · Custom" },
-    { k: "OUTPUT", v: ko ? "리포트 · 브리프 · 실행 권고" : "Report · Brief · Recommendations" },
-    { k: "PROCESS", v: ko ? "질문 → 리서치 → 납품" : "Question → Research → Delivery" },
-  ];
+function cardExploreLabel(copy, lang) {
+  if (copy.researchCardCta) return copy.researchCardCta;
+  return lang === "ko" ? "VIEW RESEARCH →" : "VIEW RESEARCH →";
 }
 
 /**
@@ -38,20 +34,13 @@ export function insightsResearchSection(copy, lang, ctx) {
     if (pathPrefix === "../../../" && href.startsWith("../../")) {
       return href.replace(/^\.\.\/\.\.\//, "../../../");
     }
+    // Local Insights research slugs (market-research/, …) from an insight article detail
+    if (pathPrefix === "../../../" && !href.startsWith(".") && !href.startsWith("/") && !/^https?:/i.test(href)) {
+      return `../${href}`;
+    }
     return href;
   };
-  const researchHref = fixHref(copy.researchHref);
   const inquiryHref = fixHref(copy.researchInquiryHref || `${pathPrefix}business/inquiry/#inquiry`);
-
-  const facts = (copy.researchMeta || defaultFacts(lang))
-    .map(
-      (row) =>
-        `<div class="ri-research__meta-cell">
-          <p class="ri-research__meta-k">${escapeHtml(row.k)}</p>
-          <p class="ri-research__meta-v">${escapeHtml(row.v)}</p>
-        </div>`
-    )
-    .join("");
 
   const cards = items
     .map((it, i) => {
@@ -59,8 +48,9 @@ export function insightsResearchSection(copy, lang, ctx) {
       const title = escapeHtml(it.title || "");
       const tag = escapeHtml(it.tag || "");
       const desc = escapeHtml(itemDesc(it, lang));
+      const explore = escapeHtml(cardExploreLabel(copy, lang));
       const n = pad2(i + 1);
-      return `<a class="ri-research__card" href="${href}" data-analytics="business_cta_click" data-item-id="${title}">
+      return `<a class="ri-research__card" href="${href}" data-analytics="insights_research_explore" data-item-id="${title}">
         <span class="ri-research__card-top">
           <span class="ri-research__card-n" aria-hidden="true">${n}</span>
           ${tag ? `<span class="ri-research__card-tag">${tag}</span>` : ""}
@@ -68,31 +58,32 @@ export function insightsResearchSection(copy, lang, ctx) {
         </span>
         <span class="ri-research__card-title">${title}</span>
         ${desc ? `<span class="ri-research__card-desc">${desc}</span>` : ""}
+        <span class="ri-research__card-explore">${explore}</span>
       </a>`;
     })
     .join("");
 
-  const scopeLabel = escapeHtml(
-    copy.researchScopeCta || (ko ? "리서치 범위 보기 ↗" : "See research scope ↗")
-  );
-  const primaryLabel = escapeHtml(
-    copy.researchCta || (ko ? "Business Research 문의 →" : "Inquire about Business Research →")
+  const inquiryEyebrow = escapeHtml(copy.researchInquiryEyebrow || (ko ? "NEED CUSTOM RESEARCH?" : "NEED CUSTOM RESEARCH?"));
+  const inquiryLabel = escapeHtml(
+    copy.researchCta || (ko ? "Business Research 문의 →" : "Business Research inquiry →")
   );
 
   return `<section class="ri-research" data-rs-reveal aria-labelledby="ri-research-title">
   <div class="rs-inner">
-    <div class="ri-research__panel">
-      <div class="ri-research__intro">
-        <p class="ri-research__eyebrow">${escapeHtml(copy.researchEyebrow || "BUSINESS RESEARCH")}</p>
+    <div class="ri-research__panel ri-research__panel--capabilities">
+      <header class="ri-research__intro ri-research__intro--capabilities">
+        <p class="ri-research__eyebrow">${escapeHtml(copy.researchEyebrow || "RESEARCH CAPABILITIES")}</p>
         <h2 class="ri-research__title" id="ri-research-title">${br(copy.researchTitle, escapeHtml)}</h2>
         ${copy.researchLead ? `<p class="ri-research__lead">${escapeHtml(copy.researchLead)}</p>` : ""}
-        <div class="ri-research__meta" aria-label="${escapeHtml(ko ? "리서치 개요" : "Research overview")}">${facts}</div>
-        <div class="ri-research__actions">
-          <a class="ri-research__btn ri-research__btn--primary" href="${escapeHtml(inquiryHref)}" data-analytics="business_cta_click">${primaryLabel}</a>
-          <a class="ri-research__btn ri-research__btn--ghost" href="${escapeHtml(researchHref)}">${scopeLabel}</a>
-        </div>
-      </div>
+      </header>
       <div class="ri-research__grid">${cards}</div>
+      <div class="ri-research__inquiry">
+        <div class="ri-research__inquiry-copy">
+          <p class="ri-research__inquiry-k">${inquiryEyebrow}</p>
+          ${copy.researchInquiryLead ? `<p class="ri-research__inquiry-lead">${escapeHtml(copy.researchInquiryLead)}</p>` : ""}
+        </div>
+        <a class="ri-research__btn ri-research__btn--primary" href="${escapeHtml(inquiryHref)}" data-analytics="business_cta_click">${inquiryLabel}</a>
+      </div>
     </div>
   </div>
 </section>`;

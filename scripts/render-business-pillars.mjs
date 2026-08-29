@@ -488,6 +488,41 @@ function finalCta(copy, inquiryHref = "../inquiry/#inquiry") {
 </section>`;
 }
 
+function customResearchSection(lang, inquiryHref) {
+  const ko = lang === "ko";
+  const title = ko ? "정해진 패키지가 아니라,\n지금 필요한 질문에서 시작합니다." : "Not a fixed package.\nIt starts from the question you need answered.";
+  const lead = ko
+    ? "시장, 경쟁, 사용자, 트렌드와 제품에 관한 특정 질문을 기준으로 조사 범위를 설계합니다."
+    : "We design research scope around a specific question — market, competition, users, trends, or product.";
+  const cta = ko ? "CUSTOM RESEARCH 문의 →" : "Custom research inquiry →";
+  const rows = [
+    { k: "QUESTION", v: ko ? "무엇을 알고 싶은가" : "What you need to know" },
+    { k: "CONTEXT", v: ko ? "어떤 사업/제품인가" : "Business or product context" },
+    { k: "SCOPE", v: "Market · Competitor · Consumer · Trend" },
+    { k: "OUTPUT", v: ko ? "어떤 결정을 위한 자료인가" : "What decision the output supports" },
+  ];
+  const brief = rows
+    .map(
+      (r) =>
+        `<div class="bp-custom__row"><p class="bp-custom__k">${escapeHtml(r.k)}</p><p class="bp-custom__v">${escapeHtml(r.v)}</p></div>`
+    )
+    .join("");
+  return `<section id="custom" class="bp-sec bp-custom" data-bp-reveal>
+  <div class="bp-inner bp-custom__grid">
+    <div class="bp-custom__copy">
+      <p class="bp-label">CUSTOM RESEARCH</p>
+      <h2 class="bp-custom__title">${escapeHtml(title).replace(/\n/g, "<br />")}</h2>
+      <p class="bp-custom__lead">${escapeHtml(lead)}</p>
+      <a class="bp-btn bp-btn--primary" href="${escapeHtml(inquiryHref)}" data-analytics="business_pillar_cta">${escapeHtml(cta)}</a>
+    </div>
+    <div class="bp-custom__brief" aria-hidden="true">
+      <p class="bp-custom__brief-k">${ko ? "REPORT STRUCTURE PREVIEW" : "REPORT STRUCTURE PREVIEW"}</p>
+      <div class="bp-custom__brief-body">${brief}</div>
+    </div>
+  </div>
+</section>`;
+}
+
 export function buildPillarPageBody(slug, copy, lang, opts = {}) {
   const inquiryHref = opts.inquiryHref || "../inquiry/#inquiry";
   const crumbOpts = opts.crumb || {};
@@ -508,6 +543,7 @@ export function buildPillarPageBody(slug, copy, lang, opts = {}) {
   </div>
 </section>
 ${servicesSection(copy, inquiryHref)}
+${slug === "research" ? customResearchSection(lang, inquiryHref) : ""}
 ${useCasesSection(copy)}
 ${beforeAfterSection(copy)}
 ${researchOutputSection(copy)}

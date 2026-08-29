@@ -98,6 +98,25 @@ export const NEWS_PRODUCTS = [
 ];
 
 /**
+ * Official Newon app launch / lineup order (earliest → latest within the year line).
+ * Shared with Company About product strip — do not invent ship days.
+ */
+export const NEWS_LAUNCH_ORDER = [
+  "ox-month",
+  "goalup",
+  "savy",
+  "babylog",
+  "myworld",
+  "newon-plus",
+  "countup",
+  "subping",
+  "piggyup",
+  "petlog",
+  "pillmate",
+  "404-human",
+];
+
+/**
  * Optional highlight strip — product slugs only (no invented launch dates).
  * Leave empty to auto-fill from category:"launch" articles, or hide when none.
  */

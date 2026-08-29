@@ -752,7 +752,7 @@ html:has(.pf-page) {
   width: 148px;
   margin: 0;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 0;
   overflow: hidden;
   background: var(--surface);
   scroll-snap-align: start;
@@ -2513,4 +2513,4775 @@ html[data-newon-shell-theme="dark"] .pf-explore__row:hover {
   .pf-hub-now__col {
     border-right: none;
   }
+}
+
+/* ============================================================
+   Portfolio hero HQ (20260829 pfhq1)
+   Match About / Inquiry: clean identity + digital card
+   ============================================================ */
+.pf-page .pf-hero--hq {
+  padding: calc(var(--header-h, 74px) + clamp(1.5rem, 3.5vw, 2.25rem)) 0 0 !important;
+  min-height: 0 !important;
+  display: block !important;
+  background: #fff !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.12) !important;
+  overflow: visible !important;
+}
+.pf-page .pf-hero--hq::before {
+  display: none !important;
+}
+
+.pf-page .pf-hero--hq .pf-hero__grid {
+  width: min(1180px, calc(100% - clamp(1.25rem, 4vw, 2rem) * 2)) !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  gap: clamp(2rem, 4vw, 3.25rem) !important;
+  align-items: center !important;
+  grid-template-columns: 1fr !important;
+  padding-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+@media (min-width: 960px) {
+  .pf-page .pf-hero--hq .pf-hero__grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr) !important;
+  }
+}
+
+.pf-page .pf-hero--hq .pf-hero__eko,
+.pf-page .pf-hero--hq .pf-hero__role,
+.pf-page .pf-hero--hq .pf-hero__aside {
+  display: none !important;
+}
+
+.pf-page .pf-hero--hq .pf-hero__crumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 1.15rem;
+  font-size: 0.8125rem;
+  color: rgba(10, 10, 10, 0.42);
+}
+.pf-page .pf-hero--hq .pf-hero__crumb a {
+  color: inherit;
+  text-decoration: none;
+}
+.pf-page .pf-hero--hq .pf-hero__crumb a:hover { color: #0a0a0a; }
+.pf-page .pf-hero--hq .pf-hero__crumb-sep { opacity: 0.5; }
+
+.pf-page .pf-hero--hq .pf-hero__eyebrow {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.65rem;
+  margin: 0 0 1rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: rgba(10, 10, 10, 0.45) !important;
+}
+.pf-page .pf-hero--hq .pf-hero__eyebrow-sep { opacity: 0.35; }
+.pf-page .pf-hero--hq .pf-hero__eyebrow-role {
+  letter-spacing: 0.12em;
+  color: rgba(10, 10, 10, 0.38);
+}
+
+.pf-page .pf-hero--hq .pf-hero__name {
+  margin: 0 0 0.35rem !important;
+  font-size: clamp(2.85rem, 7vw, 4.5rem) !important;
+  font-weight: 720 !important;
+  letter-spacing: -0.055em !important;
+  line-height: 0.92 !important;
+  color: #0a0a0a !important;
+}
+
+.pf-page .pf-hero--hq .pf-hero__en {
+  margin: 0 0 1.15rem !important;
+  font-size: 0.9375rem !important;
+  font-weight: 650 !important;
+  letter-spacing: 0.04em !important;
+  color: rgba(10, 10, 10, 0.5) !important;
+}
+
+.pf-page .pf-hero--hq .pf-hero__statement {
+  margin: 0 0 1rem !important;
+  max-width: 14em !important;
+  font-size: clamp(1.45rem, 3vw, 2.05rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.2 !important;
+  color: #0a0a0a !important;
+}
+
+.pf-page .pf-hero--hq .pf-hero__lead {
+  margin: 0 0 1.5rem !important;
+  max-width: 34rem !important;
+  font-size: clamp(1.02rem, 1.55vw, 1.125rem) !important;
+  line-height: 1.68 !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+
+.pf-page .pf-hero--hq .pf-hero__actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.7rem !important;
+  margin: 0 !important;
+}
+.pf-page .pf-hero--hq .pf-hero__btn {
+  border-radius: 0 !important;
+  min-height: 2.85rem;
+  padding: 0.75rem 1.2rem !important;
+  font-weight: 700 !important;
+}
+.pf-page .pf-hero--hq .btn-primary {
+  background: #0a0a0a !important;
+  color: #fff !important;
+  border-color: #0a0a0a !important;
+}
+.pf-page .pf-hero--hq .btn-ghost {
+  background: transparent !important;
+  color: #0a0a0a !important;
+  border: 1px solid rgba(10, 10, 10, 0.35) !important;
+}
+.pf-page .pf-hero--hq .btn-ghost:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+  border-color: #0a0a0a !important;
+}
+
+/* Digital card board */
+.pf-page .pf-hero--hq .pf-hero__visual {
+  width: 100%;
+  max-width: 32rem;
+  margin-inline: auto;
+}
+@media (min-width: 960px) {
+  .pf-page .pf-hero--hq .pf-hero__visual {
+    max-width: none;
+    margin-inline: 0;
+  }
+}
+
+.pf-page .pf-sv {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid rgba(10, 10, 10, 0.12);
+  background: #fff;
+  box-shadow: 0 28px 70px -36px rgba(0, 0, 0, 0.42);
+  overflow: hidden;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pf-page .pf-sv:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 34px 80px -34px rgba(0, 0, 0, 0.48);
+}
+.pf-page .pf-sv__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+}
+.pf-page .pf-sv__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  color: rgba(10, 10, 10, 0.72);
+}
+.pf-page .pf-sv__live i {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
+}
+.pf-page .pf-sv__meta {
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  color: rgba(10, 10, 10, 0.4);
+}
+.pf-page .pf-sv__body {
+  padding: 1.25rem 1.15rem 1.1rem;
+  background: #fff;
+}
+.pf-page .pf-sv__card {
+  display: block;
+  overflow: hidden;
+  box-shadow: 0 12px 32px -18px rgba(0, 0, 0, 0.45);
+}
+.pf-page .pf-sv__card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1024 / 588;
+  object-fit: cover;
+  background: #0a0a0a;
+}
+.pf-page .pf-sv__hint {
+  margin: 0.9rem 0 0;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: rgba(10, 10, 10, 0.48);
+}
+.pf-page .pf-sv__foot {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid rgba(10, 10, 10, 0.1);
+}
+.pf-page .pf-sv__foot span {
+  padding: 0.85rem 1.05rem;
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.55);
+}
+.pf-page .pf-sv__foot span:first-child {
+  border-right: 1px solid rgba(10, 10, 10, 0.1);
+}
+
+/* Slim section index */
+.pf-page .pf-hero--hq .pf-hub-index--slim {
+  width: min(1180px, calc(100% - clamp(1.25rem, 4vw, 2rem) * 2));
+  margin: 0 auto;
+  padding: 0.9rem 0 1.15rem;
+  border-top: 1px solid rgba(10, 10, 10, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.15rem;
+  justify-content: flex-start;
+}
+.pf-page .pf-hero--hq .pf-hub-index--slim .pf-hub-index__link {
+  margin: 0;
+  padding: 0.2rem 0;
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.42);
+  border: 0;
+  background: transparent;
+}
+.pf-page .pf-hero--hq .pf-hub-index--slim .pf-hub-index__link:hover {
+  color: #0a0a0a;
+}
+
+/* Body sections — align with About studio boards
+   Keep #projects / other-projects (.pf-section--tight) on original styling */
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) {
+  background: #fff !important;
+  border-top: 1px solid rgba(10, 10, 10, 0.12);
+  padding-block: clamp(3.25rem, 6.5vw, 5.25rem) !important;
+}
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-label {
+  margin: 0 0 0.85rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) h2 {
+  margin: 0 0 1.25rem !important;
+  max-width: 18em;
+  font-size: clamp(1.85rem, 3.8vw, 2.55rem) !important;
+  font-weight: 720 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.15 !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hub-metrics {
+  display: grid !important;
+  gap: 0 !important;
+  border: 1px solid rgba(10, 10, 10, 0.14) !important;
+  background: #fff !important;
+  overflow: hidden;
+  box-shadow: 0 24px 60px -40px rgba(0, 0, 0, 0.28);
+}
+@media (min-width: 900px) {
+  .pf-page .pf-hub-metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+.pf-page .pf-hub-metric {
+  border: 0 !important;
+  border-right: 1px solid rgba(10, 10, 10, 0.12) !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.12) !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  padding: 1.45rem 1.25rem !important;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+@media (min-width: 900px) {
+  .pf-page .pf-hub-metric:nth-child(4n) { border-right: 0 !important; }
+  .pf-page .pf-hub-metric { border-bottom: 0 !important; }
+}
+.pf-page .pf-hub-metric:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-hub-metric:hover .pf-hub-metric__value,
+.pf-page .pf-hub-metric:hover .pf-hub-metric__label,
+.pf-page .pf-hub-metric:hover .pf-hub-metric__note {
+  color: #fff !important;
+}
+.pf-page .pf-hub-metric:hover .pf-hub-metric__note {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.pf-page .pf-hub-cap-grid {
+  display: grid !important;
+  gap: 0 !important;
+  border: 1px solid rgba(10, 10, 10, 0.14) !important;
+  overflow: hidden;
+  box-shadow: 0 24px 60px -40px rgba(0, 0, 0, 0.28);
+}
+@media (min-width: 900px) {
+  .pf-page .pf-hub-cap-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+.pf-page .pf-hub-cap {
+  border: 0 !important;
+  border-right: 1px solid rgba(10, 10, 10, 0.12) !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.12) !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.pf-page .pf-hub-cap:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-hub-cap:hover * {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+/* ============================================================
+   Portfolio small-type readability (20260829 pftype1)
+   Match About/Business meta size — modest bump only
+   ============================================================ */
+.pf-page .pf-label,
+.pf-page .pf-section .pf-label,
+.pf-page .pf-hero--hq .pf-hero__eyebrow,
+.pf-page .pf-sv__live,
+.pf-page .pf-sv__meta,
+.pf-page .pf-sv__foot span {
+  font-size: 0.8125rem !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+
+.pf-page .pf-hero--hq .pf-hero__crumb {
+  font-size: 0.875rem !important;
+  color: rgba(10, 10, 10, 0.52) !important;
+}
+
+.pf-page .pf-hero--hq .pf-hero__eyebrow-role {
+  color: rgba(10, 10, 10, 0.5) !important;
+}
+
+.pf-page .pf-hub-index__link,
+.pf-page .pf-hero--hq .pf-hub-index--slim .pf-hub-index__link {
+  font-size: 0.8125rem !important;
+  color: rgba(10, 10, 10, 0.52) !important;
+}
+
+.pf-page .pf-hub-metric__label,
+.pf-page .pf-hub-cap__n,
+.pf-page .pf-hub-pipe__n,
+.pf-page .pf-hub-case__n,
+.pf-page .pf-hub-case__status,
+.pf-page .pf-hub-beyond__n,
+.pf-page .pf-hub-beyond__tag,
+.pf-page .pf-hub-now__status,
+.pf-page .pf-hub-now__cat,
+.pf-page .pf-hub-principles__n {
+  font-size: 0.75rem !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+
+.pf-page .pf-hub-metric__note,
+.pf-page .pf-hub-pipe__hint,
+.pf-page .pf-hub-now__hint,
+.pf-page .pf-en,
+.pf-page .pf-sv__hint {
+  font-size: 0.8125rem !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+
+.pf-page .pf-case__cat,
+.pf-page .pf-more p,
+.pf-page .pf-more__go,
+.pf-page .hub-filter:not(.is-active) {
+  font-size: 0.875rem !important;
+  color: rgba(10, 10, 10, 0.62) !important;
+}
+
+.pf-page .hub-filter.is-active {
+  font-size: 0.875rem !important;
+  background: #0a0a0a !important;
+  border-color: #0a0a0a !important;
+  color: #fff !important;
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .hub-filter:not(.is-active) {
+  color: rgba(255, 255, 255, 0.62) !important;
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .hub-filter.is-active {
+  background: #fff !important;
+  border-color: #fff !important;
+  color: #0a0a0a !important;
+}
+
+.pf-page .pf-role,
+.pf-page .pf-case__sum {
+  font-size: 0.98rem !important;
+  line-height: 1.6 !important;
+  color: rgba(10, 10, 10, 0.68) !important;
+}
+
+.pf-page .pf-features span,
+.pf-page .pf-pill,
+.pf-page [class*="pf-feature"] {
+  font-size: 0.8125rem !important;
+}
+
+/* ============================================================
+   Portfolio hero — business-card layout (20260829 pfcard1)
+   Dual cards: identity + digital card · smaller name
+   ============================================================ */
+.pf-page .pf-hero--card {
+  padding: calc(var(--header-h, 74px) + clamp(1.15rem, 2.8vw, 1.75rem)) 0 0 !important;
+}
+.pf-page .pf-hero--card .pf-hero__grid {
+  gap: clamp(1.25rem, 2.5vw, 1.85rem) !important;
+  align-items: stretch !important;
+  padding-bottom: clamp(1.25rem, 2.8vw, 1.85rem) !important;
+}
+@media (min-width: 960px) {
+  .pf-page .pf-hero--card .pf-hero__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  }
+}
+
+.pf-page .pf-hero--card .pf-hero__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-width: 0;
+}
+.pf-page .pf-hero--card .pf-hero__crumb {
+  margin: 0 !important;
+  font-size: 0.8125rem !important;
+  color: rgba(10, 10, 10, 0.5) !important;
+}
+
+/* Identity card */
+.pf-page .pf-id {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 100%;
+  border: 1px solid rgba(10, 10, 10, 0.12);
+  background: #fff;
+  box-shadow: 0 22px 56px -38px rgba(0, 0, 0, 0.36);
+  overflow: hidden;
+}
+.pf-page .pf-id__head,
+.pf-page .pf-id__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1.05rem;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+  background: #fafafa;
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  color: rgba(10, 10, 10, 0.55);
+}
+.pf-page .pf-id__foot {
+  border-bottom: 0;
+  border-top: 1px solid rgba(10, 10, 10, 0.1);
+  margin-top: auto;
+  text-transform: uppercase;
+}
+.pf-page .pf-id__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: rgba(10, 10, 10, 0.68);
+}
+.pf-page .pf-id__live i {
+  width: 0.45rem;
+  height: 0.45rem;
+  background: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
+}
+.pf-page .pf-id__meta {
+  letter-spacing: 0.14em;
+  color: rgba(10, 10, 10, 0.42);
+}
+.pf-page .pf-id__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: clamp(1.25rem, 2.8vw, 1.65rem) clamp(1.15rem, 2.5vw, 1.5rem) clamp(1.2rem, 2.5vw, 1.5rem);
+  flex: 1 1 auto;
+}
+
+.pf-page .pf-hero--card .pf-id__role {
+  margin: 0 0 0.7rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: rgba(10, 10, 10, 0.5) !important;
+}
+
+/* Name — card scale, not billboard */
+.pf-page .pf-hero--card .pf-hero__name {
+  margin: 0 0 0.2rem !important;
+  font-size: clamp(1.7rem, 3.2vw, 2.2rem) !important;
+  font-weight: 740 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.1 !important;
+}
+.pf-page .pf-hero--card .pf-hero__en {
+  margin: 0 0 1rem !important;
+  padding: 0 0 0.95rem !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1) !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  color: rgba(10, 10, 10, 0.52) !important;
+}
+.pf-page .pf-hero--card .pf-hero__statement {
+  margin: 0 0 0.55rem !important;
+  max-width: none !important;
+  font-size: clamp(1.02rem, 1.6vw, 1.15rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.4 !important;
+}
+.pf-page .pf-hero--card .pf-hero__lead {
+  margin: 0 0 1.25rem !important;
+  max-width: 34rem !important;
+  font-size: 0.95rem !important;
+  line-height: 1.62 !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+.pf-page .pf-hero--card .pf-hero__actions {
+  margin-top: auto !important;
+  gap: 0.55rem !important;
+}
+.pf-page .pf-hero--card .pf-hero__btn {
+  min-height: 2.55rem !important;
+  padding: 0.6rem 1rem !important;
+  font-size: 0.9rem !important;
+}
+
+.pf-page .pf-hero--card .pf-hero__visual {
+  max-width: none !important;
+  height: 100%;
+}
+.pf-page .pf-hero--card .pf-sv {
+  height: 100%;
+  box-shadow: 0 22px 56px -38px rgba(0, 0, 0, 0.36);
+}
+.pf-page .pf-hero--card .pf-sv:hover {
+  transform: translateY(-3px);
+}
+.pf-page .pf-hero--card .pf-sv__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 auto;
+}
+.pf-page .pf-hero--card .pf-hub-index--slim {
+  margin-top: 0.15rem !important;
+  padding-top: 0.85rem !important;
+}
+
+/* ============================================================
+   Portfolio hero — studio match About / Inquiry (20260829 pfstudio1)
+   Open left copy + digital card · name as brand word (not billboard)
+   ============================================================ */
+.pf-page .pf-hero--studio {
+  padding: calc(var(--header-h, 74px) + clamp(1.35rem, 3.2vw, 2.1rem)) 0 0 !important;
+}
+.pf-page .pf-hero--studio .pf-hero__grid {
+  gap: clamp(2rem, 4vw, 3.25rem) !important;
+  align-items: center !important;
+  padding-bottom: clamp(1.5rem, 3.2vw, 2.25rem) !important;
+}
+@media (min-width: 960px) {
+  .pf-page .pf-hero--studio .pf-hero__grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr) !important;
+  }
+}
+
+.pf-page .pf-hero--studio .pf-hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 38rem;
+  gap: 0;
+}
+
+.pf-page .pf-hero--studio .pf-hero__crumb {
+  margin: 0 0 1.15rem !important;
+  font-size: 0.8125rem !important;
+  color: rgba(10, 10, 10, 0.5) !important;
+}
+
+.pf-page .pf-hero--studio .pf-hero__eyebrow {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.65rem;
+  margin: 0 0 0.95rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: rgba(10, 10, 10, 0.52) !important;
+}
+.pf-page .pf-hero--studio .pf-hero__eyebrow-sep { opacity: 0.35; }
+.pf-page .pf-hero--studio .pf-hero__eyebrow-role {
+  letter-spacing: 0.12em;
+  color: rgba(10, 10, 10, 0.45) !important;
+}
+
+/* Brand word = name — About-like, but one step smaller (was too big) */
+.pf-page .pf-hero--studio .pf-hero__word {
+  display: block;
+  margin: 0 0 0.25rem !important;
+  font-size: clamp(2.35rem, 5.2vw, 3.35rem) !important;
+  font-weight: 720 !important;
+  letter-spacing: -0.05em !important;
+  line-height: 0.95 !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hero--studio .pf-hero__en {
+  margin: 0 0 1.15rem !important;
+  font-size: 0.9375rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  color: rgba(10, 10, 10, 0.52) !important;
+}
+
+/* Statement = About headline scale */
+.pf-page .pf-hero--studio .pf-hero__statement,
+.pf-page .pf-hero--studio h1.pf-hero__statement {
+  margin: 0 0 0.95rem !important;
+  max-width: 14em !important;
+  font-size: clamp(1.55rem, 3.2vw, 2.15rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.2 !important;
+  color: #0a0a0a !important;
+}
+
+.pf-page .pf-hero--studio .pf-hero__lead {
+  margin: 0 0 1.45rem !important;
+  max-width: 34rem !important;
+  font-size: clamp(1.02rem, 1.55vw, 1.125rem) !important;
+  line-height: 1.68 !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+
+.pf-page .pf-hero--studio .pf-hero__actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.7rem !important;
+  margin: 0 !important;
+}
+.pf-page .pf-hero--studio .pf-hero__btn {
+  border-radius: 0 !important;
+  min-height: 2.85rem;
+  padding: 0.75rem 1.2rem !important;
+  font-weight: 700 !important;
+}
+
+/* Hide leftover card-id chrome if any */
+.pf-page .pf-hero--studio .pf-id,
+.pf-page .pf-hero--studio .pf-hero__name {
+  display: none !important;
+}
+
+.pf-page .pf-hero--studio .pf-hero__visual {
+  width: 100%;
+  max-width: 32rem;
+  margin-inline: auto;
+  height: auto;
+}
+@media (min-width: 960px) {
+  .pf-page .pf-hero--studio .pf-hero__visual {
+    max-width: none;
+    margin-inline: 0;
+  }
+}
+.pf-page .pf-hero--studio .pf-sv {
+  height: auto;
+  box-shadow: 0 28px 70px -36px rgba(0, 0, 0, 0.42);
+}
+.pf-page .pf-hero--studio .pf-sv__body {
+  display: block;
+  flex: none;
+}
+.pf-page .pf-hero--studio .pf-hub-index--slim {
+  margin-top: 0.25rem !important;
+  padding-top: 1rem !important;
+}
+
+/* ============================================================
+   Portfolio mid sections HQ (20260829 pfmid1)
+   About-like boards + readable type
+   DO NOT touch #projects / .pf-section--tight / .pf-case / .pf-more
+   ============================================================ */
+
+/* Section heads — match About build scale */
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) {
+  padding-block: clamp(2.25rem, 4.5vw, 3.5rem) !important;
+}
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-label {
+  margin: 0 0 0.55rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) h2,
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-founder__title,
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-cx__title {
+  margin: 0 0 0.95rem !important;
+  max-width: 22em !important;
+  font-size: clamp(1.55rem, 2.8vw, 2.05rem) !important;
+  font-weight: 740 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.18 !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-hub-lead,
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-stats__support,
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-cx__lead {
+  font-size: 0.98rem !important;
+  line-height: 1.6 !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+
+/* Numbers */
+.pf-page .pf-hub-metric__value {
+  font-size: clamp(1.85rem, 3vw, 2.35rem) !important;
+}
+.pf-page .pf-hub-metric__label {
+  font-size: 0.8125rem !important;
+  letter-spacing: 0.06em !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+.pf-page .pf-hub-metric__note {
+  font-size: 0.875rem !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+
+/* Capabilities board */
+.pf-page .pf-hub-cap {
+  padding: 1.35rem 1.25rem 1.3rem !important;
+  min-height: 12rem;
+}
+.pf-page .pf-hub-cap__n {
+  font-size: 0.8125rem !important;
+  font-weight: 750 !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-hub-cap__head h3,
+.pf-page .pf-hub-cap h3 {
+  font-size: 1.05rem !important;
+  font-weight: 760 !important;
+  letter-spacing: -0.02em !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hub-cap .pf-en {
+  font-size: 0.875rem !important;
+  color: rgba(10, 10, 10, 0.5) !important;
+}
+.pf-page .pf-hub-cap__list {
+  margin-top: 0.85rem !important;
+  gap: 0.4rem !important;
+}
+.pf-page .pf-hub-cap__list li {
+  font-size: 0.9rem !important;
+  line-height: 1.45 !important;
+  color: rgba(10, 10, 10, 0.62) !important;
+}
+
+/* Process board */
+.pf-page .pf-hub-pipe {
+  border: 1px solid rgba(10, 10, 10, 0.14) !important;
+  background: #fff !important;
+  overflow: hidden;
+  box-shadow: 0 20px 50px -38px rgba(0, 0, 0, 0.28);
+}
+.pf-page .pf-hub-pipe__step {
+  padding: 1.2rem 1.1rem !important;
+  border-color: rgba(10, 10, 10, 0.12) !important;
+  background: #fff !important;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.pf-page .pf-hub-pipe__n {
+  font-size: 0.8125rem !important;
+  font-weight: 750 !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-hub-pipe__copy strong {
+  font-size: 1.02rem !important;
+  font-weight: 760 !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hub-pipe__copy .pf-en,
+.pf-page .pf-hub-pipe__copy span.pf-en {
+  font-size: 0.875rem !important;
+  color: rgba(10, 10, 10, 0.5) !important;
+}
+.pf-page .pf-hub-pipe__copy p {
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+.pf-page .pf-hub-pipe__step:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-hub-pipe__step:hover * {
+  color: #fff !important;
+}
+
+/* Case studies */
+.pf-page .pf-hub-case {
+  border: 1px solid rgba(10, 10, 10, 0.14) !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  padding: 1.35rem 1.25rem !important;
+  box-shadow: 0 20px 50px -40px rgba(0, 0, 0, 0.28);
+}
+.pf-page .pf-hub-case__n,
+.pf-page .pf-hub-case__status {
+  font-size: 0.75rem !important;
+  letter-spacing: 0.1em !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-hub-case__project {
+  font-size: 1.2rem !important;
+  font-weight: 760 !important;
+}
+.pf-page .pf-hub-case__grid dt {
+  font-size: 0.75rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.1em !important;
+  color: rgba(10, 10, 10, 0.5) !important;
+}
+.pf-page .pf-hub-case__grid dd {
+  font-size: 0.925rem !important;
+  line-height: 1.55 !important;
+  color: rgba(10, 10, 10, 0.62) !important;
+}
+.pf-page .pf-hub-case__cta {
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+}
+
+/* Beyond */
+.pf-page .pf-hub-beyond-grid {
+  border: 1px solid rgba(10, 10, 10, 0.14) !important;
+  overflow: hidden;
+  box-shadow: 0 20px 50px -38px rgba(0, 0, 0, 0.28);
+}
+.pf-page .pf-hub-beyond {
+  border: 0 !important;
+  border-right: 1px solid rgba(10, 10, 10, 0.12) !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.12) !important;
+  border-radius: 0 !important;
+  padding: 1.35rem 1.25rem !important;
+  background: #fff !important;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.pf-page .pf-hub-beyond__n,
+.pf-page .pf-hub-beyond__tag,
+.pf-page .pf-hub-beyond__status {
+  font-size: 0.75rem !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-hub-beyond h3 {
+  font-size: 1.15rem !important;
+  font-weight: 760 !important;
+}
+.pf-page .pf-hub-beyond p {
+  font-size: 0.925rem !important;
+  line-height: 1.55 !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+.pf-page .pf-hub-beyond__cta {
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+}
+.pf-page .pf-hub-beyond:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-hub-beyond:hover * {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+/* Now / currently building */
+.pf-page .pf-hub-now-grid {
+  border: 1px solid rgba(10, 10, 10, 0.14) !important;
+  overflow: hidden;
+  box-shadow: 0 20px 50px -38px rgba(0, 0, 0, 0.28);
+}
+.pf-page .pf-hub-now__col {
+  border: 0 !important;
+  border-right: 1px solid rgba(10, 10, 10, 0.12) !important;
+  padding: 1.35rem 1.25rem !important;
+  background: #fff !important;
+}
+.pf-page .pf-hub-now__status {
+  font-size: 0.8125rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.1em !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-hub-now__hint {
+  font-size: 0.9rem !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+.pf-page .pf-hub-now__cat {
+  font-size: 0.75rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.08em !important;
+  color: rgba(10, 10, 10, 0.5) !important;
+}
+.pf-page .pf-hub-now__title {
+  font-size: 0.98rem !important;
+  font-weight: 700 !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hub-now__go {
+  font-size: 0.8125rem !important;
+  font-weight: 700 !important;
+}
+
+/* Workflow */
+.pf-page .pf-hub-workflow {
+  font-size: 0.8125rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+  line-height: 1.7 !important;
+}
+
+/* Principles — editorial list like About */
+.pf-page .pf-hub-principles {
+  border: 1px solid rgba(10, 10, 10, 0.14) !important;
+  overflow: hidden;
+  box-shadow: 0 20px 50px -38px rgba(0, 0, 0, 0.28);
+}
+.pf-page .pf-hub-principles li {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) !important;
+  gap: 1rem 1.35rem !important;
+  margin: 0 !important;
+  padding: 1.25rem 1.35rem !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.12) !important;
+  background: #fff !important;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.pf-page .pf-hub-principles li:last-child { border-bottom: 0 !important; }
+.pf-page .pf-hub-principles__n {
+  font-size: 0.8125rem !important;
+  font-weight: 750 !important;
+  color: rgba(10, 10, 10, 0.5) !important;
+}
+.pf-page .pf-hub-principles strong {
+  display: block;
+  font-size: 1.02rem !important;
+  font-weight: 760 !important;
+  letter-spacing: 0.04em !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hub-principles p {
+  margin: 0.35rem 0 0 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.55 !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+.pf-page .pf-hub-principles li:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-hub-principles li:hover * {
+  color: #fff !important;
+}
+
+/* Newon studio block */
+.pf-page .pf-newon {
+  display: grid !important;
+  gap: 1.25rem 1.75rem !important;
+  align-items: start !important;
+  padding: 1.5rem 1.35rem !important;
+  border: 1px solid rgba(10, 10, 10, 0.14) !important;
+  background: #fff !important;
+  box-shadow: 0 20px 50px -38px rgba(0, 0, 0, 0.28);
+}
+@media (min-width: 720px) {
+  .pf-page .pf-newon {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+  }
+}
+.pf-page .pf-newon .pf-sub {
+  font-size: 0.95rem !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-newon p {
+  font-size: 0.98rem !important;
+  line-height: 1.6 !important;
+  color: rgba(10, 10, 10, 0.62) !important;
+}
+
+/* Founder — keep within wrap, About-like split */
+.pf-page .pf-founder__grid {
+  width: 100% !important;
+  margin-inline: 0 !important;
+  gap: clamp(1.5rem, 3vw, 2.5rem) !important;
+}
+.pf-page .pf-founder__id .pf-label {
+  font-size: 0.8125rem !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-founder__name {
+  font-size: clamp(1.7rem, 3vw, 2.2rem) !important;
+  font-weight: 740 !important;
+  letter-spacing: -0.04em !important;
+}
+.pf-page .pf-founder__en,
+.pf-page .pf-founder__role {
+  font-size: 0.9rem !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-founder__intro {
+  font-size: 0.98rem !important;
+  line-height: 1.65 !important;
+  color: rgba(10, 10, 10, 0.62) !important;
+}
+.pf-page .pf-founder__expertise {
+  font-size: 0.875rem !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-founder__biz {
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+}
+
+/* Contact block */
+.pf-page .pf-cx__open-label,
+.pf-page .pf-ci__k,
+.pf-page .pf-cx__info-sub {
+  font-size: 0.8125rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-open__n {
+  font-size: 0.8125rem !important;
+  font-weight: 750 !important;
+}
+.pf-page .pf-open__title {
+  font-size: 1.02rem !important;
+  font-weight: 760 !important;
+}
+.pf-page .pf-open__desc {
+  font-size: 0.925rem !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+.pf-page .pf-ci__v {
+  font-size: 0.98rem !important;
+  font-weight: 700 !important;
+}
+.pf-page .pf-ci__copy,
+.pf-page .pf-cx__card .btn,
+.pf-page .pf-cx__card a.btn {
+  font-size: 0.875rem !important;
+}
+
+/* Explore rows */
+.pf-page .pf-explore__n {
+  font-size: 0.8125rem !important;
+}
+.pf-page .pf-explore__title {
+  font-size: 1.02rem !important;
+}
+.pf-page .pf-explore__desc,
+.pf-page .pf-explore__cta {
+  font-size: 0.9rem !important;
+}
+
+/* Hard lock: projects / more keep prior styling */
+.pf-page #projects .pf-label,
+.pf-page .pf-section--tight .pf-label {
+  font-size: 0.875rem !important;
+}
+.pf-page #projects h2,
+.pf-page .pf-section--tight h2 {
+  font-size: clamp(1.65rem, 3.2vw, 2.15rem) !important;
+}
+
+/* ============================================================
+   Portfolio dense remix (20260830 pfdense2)
+   Varied layouts, tighter rhythm — NEVER touch #projects / .pf-section--tight
+   ============================================================ */
+
+.pf-page .pf-hero--dense {
+  padding: clamp(1.1rem, 2.2vw, 1.65rem) 0 clamp(1.75rem, 3.2vw, 2.35rem) !important;
+}
+.pf-page .pf-hero--dense .pf-hero__grid {
+  gap: clamp(1.35rem, 3vw, 2.25rem) !important;
+  align-items: center !important;
+}
+.pf-page .pf-hero--dense .pf-hero__word {
+  margin: 0.2rem 0 0 !important;
+  font-size: clamp(2.35rem, 4.6vw, 3.35rem) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.045em !important;
+}
+.pf-page .pf-hero--dense .pf-hero__en {
+  margin: 0.2rem 0 0 !important;
+}
+.pf-page .pf-hero--dense .pf-hero__statement {
+  margin: 0.65rem 0 0 !important;
+  font-size: clamp(1.15rem, 2vw, 1.45rem) !important;
+  max-width: 22em !important;
+}
+.pf-page .pf-hero--dense .pf-hero__lead {
+  margin: 0.7rem 0 0 !important;
+  max-width: 34rem !important;
+  font-size: 0.95rem !important;
+  line-height: 1.55 !important;
+}
+.pf-page .pf-hero--dense .pf-hero__actions {
+  margin-top: 1.1rem !important;
+  gap: 0.5rem !important;
+}
+.pf-page .pf-hero--dense .pf-hero__btn {
+  min-height: 2.85rem !important;
+  padding: 0.65rem 1.15rem !important;
+}
+.pf-page .pf-hero__domains {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.pf-page .pf-hero__domains li {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.7rem;
+  padding: 0 0.55rem;
+  border: 1px solid rgba(10, 10, 10, 0.16);
+  background: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.62);
+}
+.pf-page .pf-hero--dense .pf-sv {
+  box-shadow: 0 22px 48px -34px rgba(0, 0, 0, 0.45);
+}
+
+/* Shared section rhythm (exclude projects) */
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) {
+  padding-block: clamp(1.65rem, 3.2vw, 2.45rem) !important;
+}
+.pf-page .pf-sec-head {
+  margin: 0 0 1rem !important;
+}
+.pf-page .pf-sec-head--row {
+  display: grid;
+  gap: 0.65rem 1.5rem;
+  align-items: end;
+}
+@media (min-width: 860px) {
+  .pf-page .pf-sec-head--row {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+  .pf-page .pf-sec-head--row .pf-hub-lead {
+    margin: 0 !important;
+    justify-self: end;
+    text-align: right;
+  }
+}
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-label {
+  margin: 0 0 0.35rem !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.14em !important;
+}
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) h2,
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-founder__title,
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-cx__title {
+  margin: 0 0 0.55rem !important;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem) !important;
+  line-height: 1.15 !important;
+}
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-hub-lead {
+  margin: 0.35rem 0 0.85rem !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+}
+
+/* ABOUT — split board */
+.pf-page .pf-section--about {
+  border-top: 1px solid rgba(10, 10, 10, 0.1);
+}
+.pf-page .pf-about--split {
+  display: grid;
+  gap: 1rem 1.75rem;
+  max-width: none !important;
+  padding: 1.25rem 1.2rem;
+  border: 1px solid rgba(10, 10, 10, 0.14);
+  background:
+    linear-gradient(180deg, #fafafa 0%, #fff 42%);
+  box-shadow: 0 18px 44px -36px rgba(0, 0, 0, 0.3);
+}
+@media (min-width: 860px) {
+  .pf-page .pf-about--split {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-items: start;
+  }
+}
+.pf-page .pf-about__rail h2 {
+  max-width: 14em !important;
+}
+.pf-page .pf-about__body {
+  display: grid;
+  gap: 0.75rem;
+  padding-top: 0.15rem;
+}
+.pf-page .pf-about__body p {
+  margin: 0 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+  color: rgba(10, 10, 10, 0.62) !important;
+}
+@media (min-width: 860px) {
+  .pf-page .pf-about__body {
+    border-left: 1px solid rgba(10, 10, 10, 0.12);
+    padding-left: 1.5rem;
+  }
+}
+
+/* NUMBERS / WORKFLOW — ink band (beat :not(#projects) specificity) */
+.pf-page .pf-section.pf-section--ink:not(#projects):not(.pf-section--tight) {
+  background: #0a0a0a !important;
+  color: #f3f3f3 !important;
+  border-top-color: rgba(255, 255, 255, 0.1) !important;
+}
+.pf-page .pf-section.pf-section--ink:not(#projects):not(.pf-section--tight) .pf-label,
+.pf-page .pf-section.pf-section--ink:not(#projects):not(.pf-section--tight) h2,
+.pf-page .pf-section.pf-section--ink:not(#projects):not(.pf-section--tight) .pf-stats__headline,
+.pf-page .pf-section.pf-section--ink:not(#projects):not(.pf-section--tight) .pf-stats__support,
+.pf-page .pf-section.pf-section--ink:not(#projects):not(.pf-section--tight) .pf-hub-lead,
+.pf-page .pf-section.pf-section--ink:not(#projects):not(.pf-section--tight) p,
+.pf-page .pf-section.pf-section--ink:not(#projects):not(.pf-section--tight) .pf-reveal {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+.pf-page .pf-section.pf-section--ink:not(#projects):not(.pf-section--tight) .pf-label {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+.pf-page .pf-section.pf-section--ink:not(#projects):not(.pf-section--tight) .pf-stats__support,
+.pf-page .pf-section.pf-section--ink:not(#projects):not(.pf-section--tight) .pf-hub-lead {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+.pf-page .pf-section.pf-section--soft:not(#projects):not(.pf-section--tight) {
+  background: #f4f4f4 !important;
+  border-block: 1px solid rgba(10, 10, 10, 0.08);
+}
+
+.pf-page .pf-section--ink {
+  background: #0a0a0a !important;
+  color: #f3f3f3 !important;
+  border: 0 !important;
+}
+.pf-page .pf-section--ink .pf-label,
+.pf-page .pf-section--ink h2,
+.pf-page .pf-section--ink .pf-stats__headline,
+.pf-page .pf-section--ink .pf-stats__support,
+.pf-page .pf-section--ink .pf-hub-lead,
+.pf-page .pf-section--ink p {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+.pf-page .pf-section--ink .pf-label {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+.pf-page .pf-section--ink .pf-stats__support,
+.pf-page .pf-section--ink .pf-hub-lead {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+.pf-page .pf-ink__head {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+.pf-page .pf-section--metrics .pf-stats__headline {
+  margin: 0.15rem 0 0 !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+}
+.pf-page .pf-section--metrics .pf-stats__support {
+  margin: 0.2rem 0 0 !important;
+  max-width: 40rem;
+  font-size: 0.875rem !important;
+}
+.pf-page .pf-section--ink .pf-hub-metrics {
+  margin-top: 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  background: transparent !important;
+}
+.pf-page .pf-section--ink .pf-hub-metric {
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  background: transparent !important;
+  padding: 1.05rem 0.95rem !important;
+}
+.pf-page .pf-section--ink .pf-hub-metric__value {
+  color: #fff !important;
+  font-size: clamp(1.7rem, 2.8vw, 2.15rem) !important;
+}
+.pf-page .pf-section--ink .pf-hub-metric__label,
+.pf-page .pf-section--ink .pf-hub-metric__note {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+.pf-page .pf-section--ink .pf-hub-metric:hover {
+  background: #fff !important;
+}
+.pf-page .pf-section--ink .pf-hub-metric:hover .pf-hub-metric__value,
+.pf-page .pf-section--ink .pf-hub-metric:hover .pf-hub-metric__label,
+.pf-page .pf-section--ink .pf-hub-metric:hover .pf-hub-metric__note {
+  color: #0a0a0a !important;
+}
+
+/* CAPABILITIES — denser board, no tall empty */
+.pf-page .pf-section--caps .pf-hub-cap-grid {
+  margin-top: 0 !important;
+  border: 1px solid rgba(10, 10, 10, 0.14) !important;
+  overflow: hidden;
+  box-shadow: 0 16px 40px -34px rgba(0, 0, 0, 0.28);
+}
+.pf-page .pf-section--caps .pf-hub-cap {
+  min-height: 0 !important;
+  padding: 1rem 1rem 0.95rem !important;
+}
+.pf-page .pf-section--caps .pf-hub-cap__list {
+  margin-top: 0.55rem !important;
+  gap: 0.28rem !important;
+}
+.pf-page .pf-section--caps .pf-hub-cap__list li {
+  font-size: 0.84rem !important;
+}
+
+/* PROCESS */
+.pf-page .pf-section--process .pf-hub-pipe {
+  margin-top: 0 !important;
+  box-shadow: 0 16px 40px -34px rgba(0, 0, 0, 0.28);
+}
+.pf-page .pf-section--process .pf-hub-pipe__step {
+  padding: 0.95rem 0.9rem !important;
+}
+
+/* CASE STUDIES — stacked editorial rows */
+.pf-page .pf-hub-case-grid--rows {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+  border: 1px solid rgba(10, 10, 10, 0.14);
+  overflow: hidden;
+  box-shadow: 0 16px 40px -34px rgba(0, 0, 0, 0.28);
+}
+.pf-page .pf-hub-case-grid--rows .pf-hub-case {
+  display: grid;
+  gap: 0.75rem 1.25rem;
+  margin: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.12) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 1.1rem 1.15rem !important;
+  background: #fff !important;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.pf-page .pf-hub-case-grid--rows .pf-hub-case:last-child {
+  border-bottom: 0 !important;
+}
+@media (min-width: 900px) {
+  .pf-page .pf-hub-case-grid--rows .pf-hub-case {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) auto;
+    align-items: start;
+  }
+}
+.pf-page .pf-hub-case-grid--rows .pf-hub-case__project {
+  margin: 0.25rem 0 0 !important;
+}
+.pf-page .pf-hub-case-grid--rows .pf-hub-case__grid {
+  margin: 0 !important;
+  display: grid;
+  gap: 0.45rem 1rem;
+}
+@media (min-width: 700px) {
+  .pf-page .pf-hub-case-grid--rows .pf-hub-case__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.pf-page .pf-hub-case-grid--rows .pf-hub-case__cta {
+  align-self: end;
+  white-space: nowrap;
+}
+.pf-page .pf-hub-case-grid--rows .pf-hub-case:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-hub-case-grid--rows .pf-hub-case:hover * {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* BEYOND */
+.pf-page .pf-section--beyond .pf-hub-beyond-grid {
+  margin-top: 0 !important;
+}
+.pf-page .pf-section--beyond .pf-hub-beyond {
+  padding: 1.05rem 1rem !important;
+}
+
+/* NOW — soft canvas + dense columns */
+.pf-page .pf-section--soft {
+  background: #f4f4f4 !important;
+  border-block: 1px solid rgba(10, 10, 10, 0.08);
+}
+.pf-page .pf-section--now .pf-hub-now-grid {
+  margin-top: 0 !important;
+}
+.pf-page .pf-section--now .pf-hub-now__col {
+  padding: 1.05rem 1rem !important;
+}
+.pf-page .pf-hub-now__link {
+  padding: 0.55rem 0 !important;
+}
+
+/* WORKFLOW — ink board with numbered steps */
+.pf-page .pf-workflow-board {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.25rem 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+@media (min-width: 900px) {
+  .pf-page .pf-workflow-board {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 1.75rem;
+    align-items: center;
+  }
+}
+.pf-page .pf-section--workflow .pf-hub-workflow,
+.pf-page .pf-method__workflow .pf-hub-workflow {
+  display: grid !important;
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+.pf-page .pf-section--workflow .pf-hub-workflow li,
+.pf-page .pf-method__workflow .pf-hub-workflow li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.65rem;
+  align-items: center;
+  margin: 0 !important;
+  padding: 0.75rem 0.85rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.875rem !important;
+  font-weight: 650 !important;
+  letter-spacing: 0.02em !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+.pf-page .pf-section--workflow .pf-hub-workflow li:last-child,
+.pf-page .pf-method__workflow .pf-hub-workflow li:last-child {
+  border-bottom: 0;
+}
+.pf-page .pf-hub-workflow__n {
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.42);
+}
+.pf-page .pf-hub-workflow__arrow {
+  color: rgba(255, 255, 255, 0.35);
+}
+.pf-page .pf-section--workflow .pf-hub-workflow li:hover,
+.pf-page .pf-method__workflow .pf-hub-workflow li:hover {
+  background: #fff;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-section--workflow .pf-hub-workflow li:hover .pf-hub-workflow__n,
+.pf-page .pf-section--workflow .pf-hub-workflow li:hover .pf-hub-workflow__arrow,
+.pf-page .pf-method__workflow .pf-hub-workflow li:hover .pf-hub-workflow__n,
+.pf-page .pf-method__workflow .pf-hub-workflow li:hover .pf-hub-workflow__arrow {
+  color: rgba(10, 10, 10, 0.45);
+}
+
+/* PRINCIPLES — 2-col dense */
+.pf-page .pf-hub-principles--dense {
+  display: grid !important;
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+@media (min-width: 860px) {
+  .pf-page .pf-hub-principles--dense {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pf-page .pf-hub-principles--dense li:nth-child(odd) {
+    border-right: 1px solid rgba(10, 10, 10, 0.12) !important;
+  }
+}
+.pf-page .pf-hub-principles--dense li {
+  padding: 1rem 1.05rem !important;
+}
+
+/* NEWON studio — ink CTA */
+.pf-page .pf-newon--ink {
+  display: grid !important;
+  gap: 1.15rem 1.5rem !important;
+  align-items: center !important;
+  padding: 1.35rem 1.2rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  background: #0a0a0a !important;
+  color: #f3f3f3 !important;
+  box-shadow: none !important;
+}
+@media (min-width: 720px) {
+  .pf-page .pf-newon--ink {
+    grid-template-columns: auto minmax(0, 1fr) auto !important;
+  }
+}
+.pf-page .pf-newon__rail {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.55rem;
+  padding-left: 1.25rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 0.6875rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.42);
+}
+@media (min-width: 900px) {
+  .pf-page .pf-newon__rail { display: flex; }
+}
+.pf-page .pf-newon--ink .pf-label,
+.pf-page .pf-newon--ink h2,
+.pf-page .pf-newon--ink .pf-sub,
+.pf-page .pf-newon--ink p {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.pf-page .pf-newon--ink .pf-label {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+.pf-page .pf-newon--ink .pf-sub,
+.pf-page .pf-newon--ink p {
+  color: rgba(255, 255, 255, 0.58) !important;
+}
+.pf-page .pf-newon--ink .pf-newon__mark {
+  filter: invert(1);
+  width: 56px;
+  height: 56px;
+}
+.pf-page .pf-newon--ink .pf-newon__cta,
+.pf-page .pf-newon--ink .btn-primary {
+  margin-top: 0.65rem;
+  background: #fff !important;
+  color: #0a0a0a !important;
+  border-color: #fff !important;
+  border-radius: 2px !important;
+}
+
+/* FOUNDER — ID plate + story */
+.pf-page .pf-section--founder {
+  border-top: 1px solid rgba(10, 10, 10, 0.1);
+}
+.pf-page .pf-section--founder .pf-founder__grid {
+  gap: 0 !important;
+  border: 1px solid rgba(10, 10, 10, 0.14);
+  overflow: hidden;
+  box-shadow: 0 16px 40px -34px rgba(0, 0, 0, 0.28);
+  background: #fff;
+}
+.pf-page .pf-section--founder .pf-founder__id {
+  padding: 1.25rem 1.15rem !important;
+  background: #0a0a0a;
+  color: #fff;
+}
+.pf-page .pf-section--founder .pf-founder__id .pf-label,
+.pf-page .pf-section--founder .pf-founder__en,
+.pf-page .pf-section--founder .pf-founder__role {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+.pf-page .pf-section--founder .pf-founder__name {
+  color: #fff !important;
+  margin: 0.35rem 0 0 !important;
+}
+.pf-page .pf-founder__stamp {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.4);
+}
+.pf-page .pf-section--founder .pf-founder__story {
+  padding: 1.25rem 1.15rem !important;
+  border: 0 !important;
+}
+.pf-page .pf-section--founder .pf-founder__intro {
+  margin: 0 0 0.65rem !important;
+  font-size: 0.92rem !important;
+  line-height: 1.55 !important;
+}
+.pf-page .pf-section--founder .pf-founder__expertise {
+  margin: 0.85rem 0 0 !important;
+  padding: 0.65rem 0 0 !important;
+  border-top: 1px solid rgba(10, 10, 10, 0.1);
+}
+.pf-page .pf-section--founder .pf-founder__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.85rem;
+  margin-top: 0.85rem;
+}
+
+/* CONTACT denser */
+.pf-page .pf-cx {
+  padding-block: clamp(1.85rem, 3.5vw, 2.75rem) !important;
+}
+.pf-page .pf-cx__head {
+  margin-bottom: 1.1rem !important;
+}
+.pf-page .pf-cx__split {
+  gap: 1rem !important;
+}
+.pf-page .pf-open__row,
+.pf-page .pf-open__link {
+  padding-block: 0.7rem !important;
+}
+.pf-page .pf-cx__card {
+  padding: 1.1rem 1.05rem !important;
+}
+
+/* EXPLORE denser */
+.pf-page .pf-explore {
+  padding-block: clamp(1.65rem, 3vw, 2.35rem) !important;
+}
+.pf-page .pf-explore__row {
+  padding: 0.85rem 0.95rem !important;
+}
+
+/* Dark theme shells */
+html[data-newon-shell-theme="dark"] .pf-page .pf-about--split,
+html[data-newon-shell-theme="dark"] .pf-page .pf-section--caps .pf-hub-cap-grid,
+html[data-newon-shell-theme="dark"] .pf-page .pf-hub-case-grid--rows,
+html[data-newon-shell-theme="dark"] .pf-page .pf-section--founder .pf-founder__grid {
+  background: #111;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+html[data-newon-shell-theme="dark"] .pf-page .pf-section--soft {
+  background: #101010 !important;
+}
+html[data-newon-shell-theme="dark"] .pf-page .pf-hero__domains li {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Restore projects sizing lock after denser heads */
+.pf-page #projects,
+.pf-page .pf-section--tight {
+  padding-block: clamp(2.5rem, 5vw, 4rem) !important;
+}
+
+/* ============================================================
+   Portfolio story polish (20260830 pfstory1)
+   Clearer narrative + visual hierarchy — NEVER touch #projects / .pf-section--tight
+   ============================================================ */
+
+/* ABOUT — intro + focus cards */
+.pf-page .pf-about--story {
+  display: grid;
+  gap: 1.35rem 1.75rem;
+  max-width: none !important;
+  padding: 1.35rem 1.25rem;
+  border: 1px solid rgba(10, 10, 10, 0.12);
+  background:
+    linear-gradient(165deg, #fafafa 0%, #fff 48%, #f7f7f7 100%);
+  box-shadow: 0 20px 48px -38px rgba(0, 0, 0, 0.32);
+}
+@media (min-width: 960px) {
+  .pf-page .pf-about--story {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-items: start;
+  }
+}
+.pf-page .pf-about__intro h2 {
+  max-width: 16em !important;
+  margin-bottom: 0.85rem !important;
+}
+.pf-page .pf-about--story .pf-about__body {
+  display: grid;
+  gap: 0.7rem;
+  border: 0 !important;
+  padding: 0 !important;
+}
+.pf-page .pf-about--story .pf-about__body p {
+  margin: 0 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.62 !important;
+  color: rgba(10, 10, 10, 0.64) !important;
+}
+.pf-page .pf-about__focus {
+  display: grid;
+  gap: 0.75rem;
+}
+@media (min-width: 960px) {
+  .pf-page .pf-about__focus {
+    border-left: 1px solid rgba(10, 10, 10, 0.1);
+    padding-left: 1.5rem;
+  }
+}
+.pf-page .pf-focus-grid {
+  display: grid;
+  gap: 0.65rem;
+}
+.pf-page .pf-focus {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "n title"
+    "n body";
+  column-gap: 0.75rem;
+  row-gap: 0.2rem;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid rgba(10, 10, 10, 0.1);
+  background: #fff;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.pf-page .pf-focus__n {
+  grid-area: n;
+  align-self: start;
+  margin-top: 0.15rem;
+  font-size: 0.6875rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  color: rgba(10, 10, 10, 0.38);
+}
+.pf-page .pf-focus__title {
+  grid-area: title;
+  margin: 0 !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.25 !important;
+}
+.pf-page .pf-focus__body {
+  grid-area: body;
+  margin: 0 !important;
+  font-size: 0.84rem !important;
+  line-height: 1.5 !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+.pf-page .pf-focus:hover {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+.pf-page .pf-focus:hover .pf-focus__n,
+.pf-page .pf-focus:hover .pf-focus__title,
+.pf-page .pf-focus:hover .pf-focus__body {
+  color: #fff !important;
+}
+
+/* NUMBERS — split ink head */
+.pf-page .pf-ink__head--split {
+  display: grid;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 1.1rem;
+}
+@media (min-width: 820px) {
+  .pf-page .pf-ink__head--split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    align-items: end;
+  }
+  .pf-page .pf-ink__head-aside {
+    text-align: right;
+    justify-self: end;
+  }
+}
+.pf-page .pf-ink__head-aside .pf-stats__headline {
+  margin: 0 !important;
+}
+.pf-page .pf-ink__head-aside .pf-stats__support {
+  margin: 0.35rem 0 0 !important;
+  max-width: 28rem;
+}
+@media (min-width: 820px) {
+  .pf-page .pf-ink__head-aside .pf-stats__support {
+    margin-left: auto !important;
+  }
+}
+
+/* METHOD — workflow + principles paired */
+.pf-page .pf-section--method:not(#projects):not(.pf-section--tight) {
+  padding-block: clamp(1.35rem, 2.8vw, 2rem) !important;
+  background: transparent !important;
+}
+.pf-page .pf-method {
+  display: grid;
+  gap: 1rem;
+  max-width: none !important;
+}
+@media (min-width: 980px) {
+  .pf-page .pf-method {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: stretch;
+  }
+}
+.pf-page .pf-method__workflow {
+  padding: 1.15rem 1.05rem;
+  background: #0a0a0a !important;
+  color: #f3f3f3 !important;
+  border: 1px solid rgba(10, 10, 10, 0.9);
+}
+.pf-page .pf-method__workflow .pf-label,
+.pf-page .pf-method__workflow h2,
+.pf-page .pf-method__workflow p,
+.pf-page .pf-method__workflow .pf-reveal {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.pf-page .pf-method__workflow .pf-label {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+.pf-page .pf-method__workflow .pf-workflow-board__copy p.pf-reveal {
+  color: rgba(255, 255, 255, 0.58) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.55 !important;
+}
+.pf-page .pf-method__workflow .pf-workflow-board {
+  border: 0;
+  padding: 0;
+  grid-template-columns: 1fr !important;
+}
+@media (min-width: 980px) {
+  .pf-page .pf-method__workflow .pf-workflow-board {
+    gap: 1rem;
+  }
+}
+.pf-page .pf-method__principles {
+  padding: 1.15rem 1.05rem;
+  border: 1px solid rgba(10, 10, 10, 0.12);
+  background: #fff;
+  box-shadow: 0 16px 40px -34px rgba(0, 0, 0, 0.28);
+}
+.pf-page .pf-method__principles .pf-hub-principles--dense {
+  border: 1px solid rgba(10, 10, 10, 0.1);
+}
+.pf-page .pf-method__principles .pf-hub-principles--dense li {
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1) !important;
+}
+.pf-page .pf-method__principles .pf-hub-principles--dense li:last-child {
+  border-bottom: 0 !important;
+}
+
+/* STUDIO + FOUNDER stacked board */
+.pf-page .pf-studio-founder {
+  display: grid;
+  gap: 1rem;
+  max-width: none !important;
+}
+.pf-page .pf-founder--plate {
+  display: grid;
+  gap: 0;
+  border: 1px solid rgba(10, 10, 10, 0.12);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 16px 40px -34px rgba(0, 0, 0, 0.28);
+}
+@media (min-width: 860px) {
+  .pf-page .pf-founder--plate {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
+}
+.pf-page .pf-founder--plate .pf-founder__id {
+  padding: 1.25rem 1.15rem !important;
+  background: #0a0a0a;
+  color: #fff;
+}
+.pf-page .pf-founder--plate .pf-founder__id .pf-label,
+.pf-page .pf-founder--plate .pf-founder__en,
+.pf-page .pf-founder--plate .pf-founder__role {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+.pf-page .pf-founder--plate .pf-founder__name {
+  color: #fff !important;
+  margin: 0.35rem 0 0 !important;
+  font-size: clamp(1.55rem, 2.6vw, 1.95rem) !important;
+  letter-spacing: -0.03em;
+}
+.pf-page .pf-founder--plate .pf-founder__story {
+  padding: 1.25rem 1.15rem !important;
+  border: 0 !important;
+}
+.pf-page .pf-founder--plate .pf-founder__intro {
+  margin: 0 0 0.65rem !important;
+  font-size: 0.92rem !important;
+  line-height: 1.55 !important;
+  color: rgba(10, 10, 10, 0.62);
+}
+.pf-page .pf-founder--plate .pf-founder__expertise {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.85rem 0 0 !important;
+  padding: 0.75rem 0 0 !important;
+  border-top: 1px solid rgba(10, 10, 10, 0.1);
+}
+.pf-page .pf-founder--plate .pf-founder__expertise span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.65rem;
+  padding: 0 0.55rem;
+  border: 1px solid rgba(10, 10, 10, 0.12);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.62);
+}
+.pf-page .pf-founder--plate .pf-founder__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.85rem;
+  margin-top: 0.9rem;
+}
+
+/* Case labels clearer */
+.pf-page .pf-hub-case-grid--rows .pf-hub-case__grid dt {
+  font-size: 0.6875rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: rgba(10, 10, 10, 0.42) !important;
+}
+.pf-page .pf-hub-case-grid--rows .pf-hub-case__grid dd {
+  margin: 0.2rem 0 0 !important;
+  font-size: 0.875rem !important;
+  line-height: 1.45 !important;
+}
+
+/* Dark theme story shells */
+html[data-newon-shell-theme="dark"] .pf-page .pf-about--story,
+html[data-newon-shell-theme="dark"] .pf-page .pf-method__principles,
+html[data-newon-shell-theme="dark"] .pf-page .pf-founder--plate {
+  background: #111;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+html[data-newon-shell-theme="dark"] .pf-page .pf-focus {
+  background: #161616;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+html[data-newon-shell-theme="dark"] .pf-page .pf-about__focus {
+  border-left-color: rgba(255, 255, 255, 0.12);
+}
+html[data-newon-shell-theme="dark"] .pf-page .pf-founder--plate .pf-founder__expertise span {
+  border-color: rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Final projects lock */
+.pf-page #projects,
+.pf-page .pf-section--tight {
+  padding-block: clamp(2.5rem, 5vw, 4rem) !important;
+}
+
+/* ============================================================
+   Portfolio HQ stage v2 — Newon/Founder + Contact
+   Matches About / Inquiry boards (angular, invert, no soft cards)
+   ============================================================ */
+
+.pf-page .pf-section--hq:not(#projects):not(.pf-section--tight) {
+  padding-block: clamp(1.85rem, 3.8vw, 2.85rem) !important;
+}
+
+.pf-page .pf-hq-duo {
+  display: grid;
+  gap: 0;
+  border: 1px solid rgba(10, 10, 10, 0.14);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 22px 52px -40px rgba(0, 0, 0, 0.35);
+}
+
+@media (min-width: 960px) {
+  .pf-page .pf-hq-duo {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  }
+}
+
+.pf-page .pf-hq-duo__studio {
+  display: grid;
+  gap: 0.85rem;
+  align-content: start;
+  padding: clamp(1.35rem, 3vw, 2rem);
+  background: #0a0a0a;
+  color: #f3f3f3;
+}
+
+.pf-page .pf-hq-duo__studio-top {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.pf-page .pf-hq-duo__mark {
+  width: 48px;
+  height: 48px;
+  filter: invert(1);
+}
+
+.pf-page .pf-hq-duo__studio .pf-label {
+  margin: 0 0 0.2rem !important;
+  color: rgba(255, 255, 255, 0.42) !important;
+}
+
+.pf-page .pf-hq-duo__brand {
+  margin: 0 !important;
+  font-size: clamp(1.75rem, 3vw, 2.25rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.04em !important;
+  color: #fff !important;
+}
+
+.pf-page .pf-hq-duo__tag {
+  margin: 0.15rem 0 0 !important;
+  font-size: 0.8125rem !important;
+  font-weight: 650 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.pf-page .pf-hq-duo__body {
+  margin: 0.35rem 0 0 !important;
+  max-width: 34rem;
+  font-size: 0.95rem !important;
+  line-height: 1.65 !important;
+  color: rgba(255, 255, 255, 0.62) !important;
+}
+
+.pf-page .pf-hq-duo__domains {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pf-page .pf-hq-duo__domains li {
+  min-height: 1.6rem;
+  padding: 0 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.625rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  display: inline-flex;
+  align-items: center;
+}
+
+.pf-page .pf-hq-duo__cta,
+.pf-page .pf-hq-duo__studio .btn-primary {
+  justify-self: start;
+  margin-top: 0.55rem;
+  border-radius: 2px !important;
+  background: #fff !important;
+  color: #0a0a0a !important;
+  border-color: #fff !important;
+}
+
+.pf-page .pf-hq-duo__founder {
+  display: grid;
+  gap: 0;
+  background: #fff;
+}
+
+@media (min-width: 960px) {
+  .pf-page .pf-hq-duo__founder {
+    border-left: 1px solid rgba(10, 10, 10, 0.12);
+  }
+}
+
+.pf-page .pf-hq-duo__id {
+  padding: 1.15rem 1.25rem 1rem;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+  background:
+    linear-gradient(180deg, #fafafa 0%, #fff 100%);
+}
+
+.pf-page .pf-hq-duo__id .pf-label {
+  margin: 0 0 0.35rem !important;
+}
+
+.pf-page .pf-hq-duo__name {
+  margin: 0 !important;
+  font-size: clamp(1.55rem, 2.8vw, 2rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.1 !important;
+}
+
+.pf-page .pf-hq-duo__en {
+  margin: 0.2rem 0 0 !important;
+  font-size: 0.875rem !important;
+  color: rgba(10, 10, 10, 0.48) !important;
+}
+
+.pf-page .pf-hq-duo__role {
+  margin: 0.35rem 0 0 !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.42) !important;
+}
+
+.pf-page .pf-hq-duo__story {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1.25rem 1.25rem 1.35rem;
+}
+
+.pf-page .pf-hq-duo__title {
+  margin: 0 !important;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.2 !important;
+}
+
+.pf-page .pf-hq-duo__story p {
+  margin: 0 !important;
+  font-size: 0.92rem !important;
+  line-height: 1.6 !important;
+  color: rgba(10, 10, 10, 0.6) !important;
+}
+
+.pf-page .pf-hq-duo__expertise {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.25rem !important;
+  padding-top: 0.85rem !important;
+  border-top: 1px solid rgba(10, 10, 10, 0.1);
+}
+
+.pf-page .pf-hq-duo__expertise span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.65rem;
+  padding: 0 0.55rem;
+  border: 1px solid rgba(10, 10, 10, 0.14);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.62);
+  background: #fff;
+}
+
+.pf-page .pf-hq-duo__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  margin-top: 0.35rem;
+}
+
+.pf-page .pf-hq-duo__links a {
+  font-size: 0.8125rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  color: #0a0a0a;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.35);
+  padding-bottom: 0.1rem;
+}
+
+.pf-page .pf-hq-duo__links a:hover {
+  border-bottom-color: #0a0a0a;
+}
+
+/* Contact HQ */
+.pf-page .pf-cx--hq {
+  padding-block: clamp(2.25rem, 4.5vw, 3.5rem) !important;
+  border-top: 1px solid rgba(10, 10, 10, 0.1);
+  background: #fff;
+}
+
+.pf-page .pf-cx-hq {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+  align-items: start;
+}
+
+@media (min-width: 980px) {
+  .pf-page .pf-cx-hq {
+    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 22rem);
+    gap: clamp(1.75rem, 3.5vw, 3rem);
+  }
+}
+
+.pf-page .pf-cx-hq__head {
+  max-width: 22em;
+  margin-bottom: 1.35rem !important;
+  padding-left: 1rem;
+  border-left: 3px solid #0a0a0a;
+}
+
+.pf-page .pf-cx--hq .pf-cx__title {
+  margin: 0.55rem 0 0 !important;
+  max-width: 11em !important;
+  font-size: clamp(2rem, 4.2vw, 3rem) !important;
+  line-height: 1.08 !important;
+}
+
+.pf-page .pf-cx--hq .pf-cx__lead {
+  margin: 0.85rem 0 0 !important;
+  max-width: 32rem;
+  font-size: 0.98rem !important;
+}
+
+.pf-page .pf-cx--hq .pf-cx__open-label {
+  margin: 0 0 0.75rem !important;
+  font-size: 0.6875rem !important;
+  letter-spacing: 0.14em !important;
+}
+
+.pf-page .pf-open--board {
+  gap: 0 !important;
+  border: 1px solid rgba(10, 10, 10, 0.14);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 16px 40px -34px rgba(0, 0, 0, 0.28);
+}
+
+.pf-page .pf-open--board .pf-open__row {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  transform: none !important;
+}
+
+.pf-page .pf-open--board .pf-open__row:last-child {
+  border-bottom: 0 !important;
+}
+
+.pf-page .pf-open--board .pf-open__link {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  gap: 0.75rem 1rem;
+  align-items: start;
+  padding: 1.05rem 1.1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.pf-page .pf-open--board .pf-open__row:hover .pf-open__link,
+.pf-page .pf-open--board .pf-open__link:hover {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+.pf-page .pf-open--board .pf-open__n {
+  padding-top: 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+
+.pf-page .pf-open--board .pf-open__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+
+.pf-page .pf-open--board .pf-open__meta {
+  margin-left: 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(10, 10, 10, 0.4);
+}
+
+.pf-page .pf-open--board .pf-open__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.55rem 0 0;
+}
+
+.pf-page .pf-open--board .pf-open__chips span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.45rem;
+  padding: 0 0.45rem;
+  border: 1px solid rgba(10, 10, 10, 0.14);
+  font-size: 0.6875rem;
+  font-weight: 650;
+  color: rgba(10, 10, 10, 0.58);
+}
+
+.pf-page .pf-open--board .pf-open__go {
+  opacity: 1;
+  transform: none;
+  padding-top: 0.25rem;
+  color: rgba(10, 10, 10, 0.35);
+}
+
+.pf-page .pf-open--board .pf-open__row:hover .pf-open__n,
+.pf-page .pf-open--board .pf-open__row:hover .pf-open__title,
+.pf-page .pf-open--board .pf-open__row:hover .pf-open__meta,
+.pf-page .pf-open--board .pf-open__row:hover .pf-open__go,
+.pf-page .pf-open--board .pf-open__link:hover .pf-open__n,
+.pf-page .pf-open--board .pf-open__link:hover .pf-open__title,
+.pf-page .pf-open--board .pf-open__link:hover .pf-open__meta,
+.pf-page .pf-open--board .pf-open__link:hover .pf-open__go {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.pf-page .pf-open--board .pf-open__row:hover .pf-open__chips span,
+.pf-page .pf-open--board .pf-open__link:hover .pf-open__chips span {
+  border-color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.pf-page .pf-cx-hq__card {
+  position: sticky;
+  top: calc(var(--header-h) + 1rem);
+  padding: 1.25rem 1.15rem;
+  border: 1px solid rgba(10, 10, 10, 0.14);
+  border-radius: 0 !important;
+  background: #f7f7f7;
+  box-shadow: 0 16px 40px -34px rgba(0, 0, 0, 0.28);
+}
+
+.pf-page .pf-cx--hq .pf-cx__card-head {
+  padding-bottom: 0.95rem;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+}
+
+.pf-page .pf-cx--hq .pf-cx__info-title {
+  font-size: 1.15rem !important;
+  letter-spacing: -0.03em;
+}
+
+.pf-page .pf-cx--hq .pf-cx__btn-primary,
+.pf-page .pf-cx--hq .pf-cx__btn-secondary {
+  border-radius: 2px !important;
+}
+
+.pf-page .pf-cx-hq__band {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  background: #0a0a0a;
+  color: #f3f3f3;
+}
+
+.pf-page .pf-cx-msg--ink {
+  padding-block: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+.pf-page .pf-cx-msg--ink .pf-label,
+.pf-page .pf-cx-msg--ink .pf-cx-msg__title,
+.pf-page .pf-cx-msg--ink .pf-cx-msg__lead,
+.pf-page .pf-cx-msg--ink .pf-cx-msg__mail {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.pf-page .pf-cx-msg--ink .pf-label {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.pf-page .pf-cx-msg--ink .pf-cx-msg__lead {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.pf-page .pf-cx-msg--ink .pf-cx-msg__mail {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 2px;
+  padding: 0.85rem 1.1rem;
+  text-decoration: none;
+}
+
+.pf-page .pf-cx-msg--ink .pf-cx-msg__mail:hover {
+  background: #fff;
+  color: #0a0a0a !important;
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .pf-hq-duo,
+html[data-newon-shell-theme="dark"] .pf-page .pf-open--board,
+html[data-newon-shell-theme="dark"] .pf-page .pf-cx-hq__card {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .pf-hq-duo__founder,
+html[data-newon-shell-theme="dark"] .pf-page .pf-hq-duo__story,
+html[data-newon-shell-theme="dark"] .pf-page .pf-open--board {
+  background: #111;
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .pf-hq-duo__id {
+  background: #161616;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .pf-cx-hq__card {
+  background: #161616;
+}
+
+@media (max-width: 979px) {
+  .pf-page .pf-cx-hq__card {
+    position: static;
+  }
+}
+
+/* ============================================================
+   Portfolio type scale bump (20260830 pftype1)
+   Make small copy readable — exclude #projects / .pf-section--tight
+   ============================================================ */
+
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-label,
+.pf-page .pf-cx--hq .pf-label,
+.pf-page .pf-hq-duo .pf-label,
+.pf-page .pf-hero .pf-hero__eyebrow {
+  font-size: 0.875rem !important;
+  letter-spacing: 0.12em !important;
+}
+
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) h2,
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-founder__title,
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-hq-duo__title,
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-cx__title {
+  font-size: clamp(1.65rem, 3vw, 2.25rem) !important;
+  line-height: 1.18 !important;
+}
+
+.pf-page .pf-cx--hq .pf-cx__title {
+  font-size: clamp(2.15rem, 4.4vw, 3.15rem) !important;
+}
+
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-hub-lead,
+.pf-page .pf-section:not(#projects):not(.pf-section--tight) .pf-lead,
+.pf-page .pf-cx--hq .pf-cx__lead {
+  font-size: 1.05rem !important;
+  line-height: 1.65 !important;
+}
+
+.pf-page .pf-about--story .pf-about__body p,
+.pf-page .pf-about__body p,
+.pf-page .pf-focus__body,
+.pf-page .pf-hq-duo__body,
+.pf-page .pf-hq-duo__story p,
+.pf-page .pf-founder--plate .pf-founder__intro,
+.pf-page .pf-stats__support,
+.pf-page .pf-ink__head-aside .pf-stats__support {
+  font-size: 1.02rem !important;
+  line-height: 1.65 !important;
+}
+
+.pf-page .pf-focus__title,
+.pf-page .pf-hq-duo__name,
+.pf-page .pf-hq-duo__brand {
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem) !important;
+}
+
+.pf-page .pf-focus__n,
+.pf-page .pf-hub-cap__n,
+.pf-page .pf-hub-pipe__n,
+.pf-page .pf-hub-case__n,
+.pf-page .pf-hub-workflow__n,
+.pf-page .pf-hub-principles__n,
+.pf-page .pf-built-stats__n,
+.pf-page .pf-open--board .pf-open__n,
+.pf-page .pf-company-grid__n,
+.pf-page .pf-lab-card__n {
+  font-size: 0.8125rem !important;
+}
+
+.pf-page .pf-hero__domains li,
+.pf-page .pf-hq-duo__domains li,
+.pf-page .pf-hq-duo__expertise span,
+.pf-page .pf-founder--plate .pf-founder__expertise span,
+.pf-page .pf-open--board .pf-open__chips span {
+  font-size: 0.8125rem !important;
+  min-height: 1.85rem !important;
+  padding: 0 0.65rem !important;
+}
+
+.pf-page .pf-section--caps .pf-hub-cap__list li,
+.pf-page .pf-hub-cap h3,
+.pf-page .pf-hub-pipe__copy strong,
+.pf-page .pf-hub-pipe__copy p,
+.pf-page .pf-hub-case__grid dd,
+.pf-page .pf-hub-case__grid dt,
+.pf-page .pf-hub-beyond h3,
+.pf-page .pf-hub-beyond p,
+.pf-page .pf-hub-principles--dense strong,
+.pf-page .pf-hub-principles--dense p,
+.pf-page .pf-hub-workflow li,
+.pf-page .pf-hub-now__title,
+.pf-page .pf-hub-now__cat,
+.pf-page .pf-hub-now__go,
+.pf-page .pf-latest-row__title,
+.pf-page .pf-latest-row__type,
+.pf-page .pf-latest-row__date,
+.pf-page .pf-explore__lead,
+.pf-page .pf-explore__row,
+.pf-page .pf-cx__info-sub,
+.pf-page .pf-ci__k,
+.pf-page .pf-ci__v,
+.pf-page .pf-ci__copy,
+.pf-page .pf-cx__quick-label,
+.pf-page .pf-cx__open-label,
+.pf-page .pf-open--board .pf-open__title,
+.pf-page .pf-open--board .pf-open__meta,
+.pf-page .pf-hq-duo__tag,
+.pf-page .pf-hq-duo__en,
+.pf-page .pf-hq-duo__role,
+.pf-page .pf-hq-duo__links a,
+.pf-page .pf-stats__headline,
+.pf-page .pf-hub-metric__label,
+.pf-page .pf-hub-metric__note {
+  font-size: 1rem !important;
+  line-height: 1.55 !important;
+}
+
+.pf-page .pf-hub-cap h3,
+.pf-page .pf-open--board .pf-open__title,
+.pf-page .pf-hub-beyond h3,
+.pf-page .pf-hub-principles--dense strong,
+.pf-page .pf-latest-row__title,
+.pf-page .pf-stats__headline {
+  font-size: 1.12rem !important;
+  line-height: 1.35 !important;
+}
+
+.pf-page .pf-hub-metric__value,
+.pf-page .pf-built-stats__val {
+  font-size: clamp(1.95rem, 3.2vw, 2.45rem) !important;
+}
+
+.pf-page .pf-hero--dense .pf-hero__lead {
+  font-size: 1.05rem !important;
+  line-height: 1.65 !important;
+}
+
+.pf-page .pf-hero--dense .pf-hero__statement {
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem) !important;
+}
+
+.pf-page .pf-hero--dense .pf-hero__word {
+  font-size: clamp(2.55rem, 5vw, 3.55rem) !important;
+}
+
+.pf-page .pf-sv__hint,
+.pf-page .pf-sv__live,
+.pf-page .pf-sv__meta,
+.pf-page .pf-sv__foot {
+  font-size: 0.8125rem !important;
+}
+
+.pf-page .pf-cx--hq .pf-cx__btn-primary,
+.pf-page .pf-cx--hq .pf-cx__btn-secondary,
+.pf-page .pf-hq-duo__cta,
+.pf-page .pf-hero--dense .pf-hero__btn {
+  font-size: 0.95rem !important;
+}
+
+.pf-page .pf-cx-msg--ink .pf-cx-msg__title {
+  font-size: clamp(1.55rem, 3vw, 2.1rem) !important;
+}
+
+.pf-page .pf-cx-msg--ink .pf-cx-msg__lead,
+.pf-page .pf-cx-msg--ink .pf-cx-msg__mail {
+  font-size: 1.05rem !important;
+}
+
+/* Keep projects sizing lock */
+.pf-page #projects .pf-label,
+.pf-page .pf-section--tight .pf-label {
+  font-size: 0.875rem !important;
+}
+.pf-page #projects h2,
+.pf-page .pf-section--tight h2 {
+  font-size: clamp(1.65rem, 3.2vw, 2.15rem) !important;
+}
+
+/* ============================================================
+   Portfolio angular corners (20260830 pfang1)
+   Filters + more-project cards + case board — sharp edges
+   ============================================================ */
+
+.pf-page .hub-filter {
+  border-radius: 0 !important;
+}
+
+.pf-page .hub-filter.is-active {
+  border-radius: 0 !important;
+  background: #0a0a0a !important;
+  border-color: #0a0a0a !important;
+  color: #fff !important;
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .hub-filter.is-active {
+  background: #fff !important;
+  border-color: #fff !important;
+  color: #0a0a0a !important;
+}
+
+.pf-page .pf-more a {
+  border-radius: 0 !important;
+}
+
+.pf-page .pf-more img {
+  border-radius: 2px !important;
+}
+
+.pf-page .pf-hub-case-grid--rows,
+.pf-page .pf-hub-case-grid--rows .pf-hub-case,
+.pf-page .pf-hub-case {
+  border-radius: 0 !important;
+}
+
+.pf-page #projects .pf-case,
+.pf-page #projects .pf-case__inner,
+.pf-page #projects .pf-case__icon,
+.pf-page #projects .pf-case img {
+  border-radius: 0 !important;
+}
+
+.pf-page #projects .pf-case__icon {
+  border-radius: 2px !important;
+}
+
+/* ============================================================
+   Portfolio visual remix (20260830 pfviz1)
+   About / Inquiry variety — NEVER touch header, hero, #projects, .pf-section--tight
+   ============================================================ */
+
+.pf-page .pf-section--wash:not(#projects):not(.pf-section--tight) {
+  background: #f6f6f6 !important;
+  border-top: 1px solid rgba(10, 10, 10, 0.08);
+}
+
+.pf-page .pf-board {
+  border: 1px solid rgba(10, 10, 10, 0.14) !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 18px 48px -40px rgba(0, 0, 0, 0.32);
+}
+
+/* ABOUT — focus board with ink lead tile */
+.pf-page .pf-about--story {
+  border-radius: 0 !important;
+}
+.pf-page .pf-focus-grid {
+  gap: 0 !important;
+  border: 1px solid rgba(10, 10, 10, 0.12);
+  overflow: hidden;
+}
+.pf-page .pf-focus {
+  border: 0 !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1) !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 1.05rem 1.05rem !important;
+}
+.pf-page .pf-focus:last-child {
+  border-bottom: 0 !important;
+}
+.pf-page .pf-focus--ink {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-focus--ink .pf-focus__n,
+.pf-page .pf-focus--ink .pf-focus__body {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+.pf-page .pf-focus--ink .pf-focus__title {
+  color: #fff !important;
+}
+.pf-page .pf-focus:not(.pf-focus--ink):hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-focus:not(.pf-focus--ink):hover .pf-focus__n,
+.pf-page .pf-focus:not(.pf-focus--ink):hover .pf-focus__title,
+.pf-page .pf-focus:not(.pf-focus--ink):hover .pf-focus__body {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.pf-page .pf-focus--ink:hover {
+  background: #fff !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-focus--ink:hover .pf-focus__n,
+.pf-page .pf-focus--ink:hover .pf-focus__body {
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-focus--ink:hover .pf-focus__title {
+  color: #0a0a0a !important;
+}
+
+/* NUMBERS — bleed metrics strip */
+.pf-page .pf-ink__head--compact {
+  margin-bottom: 1.15rem !important;
+  max-width: 40rem;
+}
+.pf-page .pf-hub-metrics--bleed {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0 !important;
+  margin: 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+  background: transparent !important;
+}
+@media (max-width: 860px) {
+  .pf-page .pf-hub-metrics--bleed {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.pf-page .pf-hub-metrics--bleed .pf-hub-metric {
+  border: 0 !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 0 !important;
+  padding: 1.35rem 1.15rem !important;
+  background: transparent !important;
+}
+.pf-page .pf-hub-metrics--bleed .pf-hub-metric:nth-child(4n),
+.pf-page .pf-hub-metrics--bleed .pf-hub-metric:last-child {
+  border-right: 0 !important;
+}
+@media (max-width: 860px) {
+  .pf-page .pf-hub-metrics--bleed .pf-hub-metric:nth-child(2n) {
+    border-right: 0 !important;
+  }
+  .pf-page .pf-hub-metrics--bleed .pf-hub-metric:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  }
+}
+.pf-page .pf-hub-metrics--bleed .pf-hub-metric:hover {
+  background: #fff !important;
+}
+.pf-page .pf-hub-metrics--bleed .pf-hub-metric:hover .pf-hub-metric__value,
+.pf-page .pf-hub-metrics--bleed .pf-hub-metric:hover .pf-hub-metric__label,
+.pf-page .pf-hub-metrics--bleed .pf-hub-metric:hover .pf-hub-metric__note {
+  color: #0a0a0a !important;
+}
+
+/* CAPABILITIES — checkerboard board */
+.pf-page .pf-board--caps {
+  display: grid !important;
+  gap: 0 !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 900px) {
+  .pf-page .pf-board--caps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .pf-page .pf-board--caps {
+    grid-template-columns: 1fr;
+  }
+}
+.pf-page .pf-board--caps .pf-hub-cap {
+  border: 0 !important;
+  border-right: 1px solid rgba(10, 10, 10, 0.1) !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1) !important;
+  border-radius: 0 !important;
+  min-height: 11.5rem;
+  background: #fff !important;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.pf-page .pf-board--caps .pf-hub-cap:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-board--caps .pf-hub-cap:hover * {
+  color: rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* PROCESS — sticky intro + track */
+.pf-page .pf-process-rail {
+  display: grid;
+  gap: 1.25rem;
+  max-width: none !important;
+}
+@media (min-width: 960px) {
+  .pf-page .pf-process-rail {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 1.75rem;
+    align-items: start;
+  }
+  .pf-page .pf-process-rail__intro {
+    position: sticky;
+    top: calc(var(--header-h) + 1.25rem);
+  }
+}
+.pf-page .pf-process-rail .pf-hub-pipe {
+  display: grid !important;
+  gap: 0 !important;
+  margin: 0 !important;
+}
+.pf-page .pf-process-rail .pf-hub-pipe__step {
+  border: 0 !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1) !important;
+  border-radius: 0 !important;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.pf-page .pf-process-rail .pf-hub-pipe__step:last-child {
+  border-bottom: 0 !important;
+}
+.pf-page .pf-process-rail .pf-hub-pipe__step:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-process-rail .pf-hub-pipe__step:hover * {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+/* BEYOND — zero-gap board */
+.pf-page .pf-board--beyond {
+  display: grid !important;
+  gap: 0 !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 720px) {
+  .pf-page .pf-board--beyond {
+    grid-template-columns: 1fr;
+  }
+}
+.pf-page .pf-board--beyond .pf-hub-beyond {
+  border: 0 !important;
+  border-right: 1px solid rgba(10, 10, 10, 0.1) !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  min-height: 12rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.pf-page .pf-board--beyond .pf-hub-beyond:nth-child(2n) {
+  border-right: 0 !important;
+}
+.pf-page .pf-board--beyond .pf-hub-beyond:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-board--beyond .pf-hub-beyond:hover * {
+  color: rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* NOW — column board */
+.pf-page .pf-board--now {
+  display: grid !important;
+  gap: 0 !important;
+}
+@media (min-width: 860px) {
+  .pf-page .pf-board--now {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.pf-page .pf-board--now .pf-hub-now__col {
+  border: 0 !important;
+  border-right: 1px solid rgba(10, 10, 10, 0.1) !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  padding: 1.15rem 1.05rem !important;
+}
+.pf-page .pf-board--now .pf-hub-now__col:last-child {
+  border-right: 0 !important;
+}
+.pf-page .pf-board--now .pf-hub-now__link {
+  border-radius: 0 !important;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.pf-page .pf-board--now .pf-hub-now__link:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-board--now .pf-hub-now__link:hover * {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+/* EXPLORE — About-style 2×2 panels */
+.pf-page .pf-explore--board {
+  background: #fff;
+  border-top: 1px solid rgba(10, 10, 10, 0.1);
+}
+.pf-page .pf-explore__grid {
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 720px) {
+  .pf-page .pf-explore__grid {
+    grid-template-columns: 1fr;
+  }
+}
+.pf-page .pf-explore__panel {
+  display: grid;
+  gap: 0.55rem;
+  align-content: start;
+  min-height: 12rem;
+  padding: 1.35rem 1.2rem;
+  border-right: 1px solid rgba(10, 10, 10, 0.1);
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.pf-page .pf-explore__panel:nth-child(2n) {
+  border-right: 0;
+}
+.pf-page .pf-explore__panel:nth-child(n + 3) {
+  border-bottom: 0;
+}
+.pf-page .pf-explore__panel.is-invert {
+  background: #0a0a0a;
+  color: #f5f5f5;
+}
+.pf-page .pf-explore__panel.is-invert .pf-explore__n,
+.pf-page .pf-explore__panel.is-invert .pf-explore__desc,
+.pf-page .pf-explore__panel.is-invert .pf-explore__go {
+  color: rgba(255, 255, 255, 0.5);
+}
+.pf-page .pf-explore__panel:hover {
+  background: #0a0a0a;
+  color: #fff;
+}
+.pf-page .pf-explore__panel:hover .pf-explore__n,
+.pf-page .pf-explore__panel:hover .pf-explore__desc,
+.pf-page .pf-explore__panel:hover .pf-explore__go,
+.pf-page .pf-explore__panel:hover .pf-explore__title {
+  color: rgba(255, 255, 255, 0.9);
+}
+.pf-page .pf-explore__panel.is-invert:hover {
+  background: #fff;
+  color: #0a0a0a;
+}
+.pf-page .pf-explore__panel.is-invert:hover .pf-explore__n,
+.pf-page .pf-explore__panel.is-invert:hover .pf-explore__desc,
+.pf-page .pf-explore__panel.is-invert:hover .pf-explore__go,
+.pf-page .pf-explore__panel.is-invert:hover .pf-explore__title {
+  color: rgba(10, 10, 10, 0.7);
+}
+.pf-page .pf-explore__n {
+  font-size: 0.8125rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  color: rgba(10, 10, 10, 0.38);
+}
+.pf-page .pf-explore__title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.pf-page .pf-explore__desc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(10, 10, 10, 0.58);
+}
+.pf-page .pf-explore__go {
+  margin-top: auto;
+  padding-top: 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 750;
+  color: rgba(10, 10, 10, 0.45);
+}
+
+/* Case board outer radius lock */
+.pf-page .pf-hub-case-grid--rows {
+  border-radius: 0 !important;
+}
+
+/* Dark theme boards */
+html[data-newon-shell-theme="dark"] .pf-page .pf-section--wash:not(#projects):not(.pf-section--tight) {
+  background: #101010 !important;
+}
+html[data-newon-shell-theme="dark"] .pf-page .pf-board,
+html[data-newon-shell-theme="dark"] .pf-page .pf-focus-grid,
+html[data-newon-shell-theme="dark"] .pf-page .pf-explore__panel {
+  background: #111;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* Hard lock projects after remix */
+.pf-page #projects,
+.pf-page .pf-section--tight {
+  padding-block: clamp(2.5rem, 5vw, 4rem) !important;
+}
+
+/* ============================================================
+   Portfolio dense white pass (20260830 pfdense4)
+   Kill gray wash / soft · densify boards · fix open chips
+   NEVER touch header, hero, #projects, .pf-section--tight
+   ============================================================ */
+
+.pf-page .pf-section--wash:not(#projects):not(.pf-section--tight),
+.pf-page .pf-section--soft:not(#projects):not(.pf-section--tight),
+.pf-page .pf-section.pf-section--soft:not(#projects):not(.pf-section--tight) {
+  background: #fff !important;
+  border-block: 0 !important;
+  border-top: 0 !important;
+}
+
+.pf-page .pf-section--caps,
+.pf-page .pf-section--process,
+.pf-page .pf-section--case,
+.pf-page .pf-section--beyond,
+.pf-page .pf-section--now,
+.pf-page .pf-explore--board,
+.pf-page .pf-cx--hq {
+  background: #fff !important;
+  padding-block: clamp(1.75rem, 3.2vw, 2.65rem) !important;
+}
+
+.pf-page .pf-section--caps .pf-sec-head,
+.pf-page .pf-section--process .pf-sec-head,
+.pf-page .pf-section--case .pf-hub-head,
+.pf-page .pf-section--beyond .pf-sec-head,
+.pf-page .pf-section--now .pf-sec-head,
+.pf-page .pf-explore__head {
+  margin-bottom: 1rem !important;
+}
+
+.pf-page .pf-sec-head--inline {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem !important;
+}
+.pf-page .pf-sec-head--inline h2 {
+  margin: 0.2rem 0 0 !important;
+  max-width: 18em;
+  font-size: clamp(1.55rem, 3vw, 2.1rem) !important;
+  letter-spacing: -0.035em;
+  line-height: 1.15 !important;
+}
+
+/* CAPS — denser + ink accents */
+.pf-page .pf-board--caps .pf-hub-cap {
+  min-height: 0 !important;
+  padding: 0.95rem 0.95rem 0.9rem !important;
+}
+.pf-page .pf-board--caps .pf-hub-cap__list {
+  margin-top: 0.45rem !important;
+  gap: 0.2rem !important;
+}
+.pf-page .pf-hub-cap--ink {
+  background: #0a0a0a !important;
+  color: #f5f5f5 !important;
+}
+.pf-page .pf-hub-cap--ink .pf-hub-cap__n,
+.pf-page .pf-hub-cap--ink .pf-en,
+.pf-page .pf-hub-cap--ink .pf-hub-cap__list li {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+.pf-page .pf-hub-cap--ink h3 {
+  color: #fff !important;
+}
+.pf-page .pf-hub-cap--ink:hover {
+  background: #fff !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hub-cap--ink:hover .pf-hub-cap__n,
+.pf-page .pf-hub-cap--ink:hover .pf-en,
+.pf-page .pf-hub-cap--ink:hover .pf-hub-cap__list li,
+.pf-page .pf-hub-cap--ink:hover h3 {
+  color: inherit !important;
+}
+.pf-page .pf-hub-cap--ink:hover h3 {
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hub-cap--ink:hover .pf-hub-cap__n,
+.pf-page .pf-hub-cap--ink:hover .pf-en,
+.pf-page .pf-hub-cap--ink:hover .pf-hub-cap__list li {
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+
+/* PROCESS — full-width dense track (no sticky empty rail) */
+.pf-page .pf-board--process {
+  display: grid !important;
+  gap: 0 !important;
+  grid-template-columns: 1fr;
+}
+.pf-page .pf-board--process .pf-hub-pipe__step {
+  display: grid !important;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: 0.35rem 0.85rem;
+  align-items: start;
+  margin: 0 !important;
+  padding: 0.85rem 1rem !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1) !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.pf-page .pf-board--process .pf-hub-pipe__step:last-child {
+  border-bottom: 0 !important;
+}
+@media (min-width: 960px) {
+  .pf-page .pf-board--process[data-count="5"] {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .pf-page .pf-board--process[data-count="5"] .pf-hub-pipe__step {
+    grid-template-columns: auto minmax(0, 1fr);
+    border-bottom: 0 !important;
+    border-right: 1px solid rgba(10, 10, 10, 0.1) !important;
+    min-height: 11rem;
+    align-content: start;
+  }
+  .pf-page .pf-board--process[data-count="5"] .pf-hub-pipe__step:last-child {
+    border-right: 0 !important;
+  }
+  .pf-page .pf-board--process[data-count="7"] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .pf-page .pf-board--process[data-count="7"] .pf-hub-pipe__step {
+    grid-template-columns: auto minmax(0, 1fr);
+    border-right: 1px solid rgba(10, 10, 10, 0.1) !important;
+    min-height: 9.5rem;
+    align-content: start;
+  }
+  .pf-page .pf-board--process[data-count="7"] .pf-hub-pipe__step:nth-child(4n) {
+    border-right: 0 !important;
+  }
+  .pf-page .pf-board--process[data-count="7"] .pf-hub-pipe__step:nth-child(-n + 4) {
+    border-bottom: 1px solid rgba(10, 10, 10, 0.1) !important;
+  }
+  .pf-page .pf-board--process[data-count="7"] .pf-hub-pipe__step:nth-child(n + 5) {
+    border-bottom: 0 !important;
+  }
+}
+.pf-page .pf-board--process .pf-hub-pipe__n {
+  font-size: 0.75rem !important;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  color: rgba(10, 10, 10, 0.38);
+}
+.pf-page .pf-board--process .pf-hub-pipe__copy strong {
+  display: block;
+  font-size: 1rem !important;
+  letter-spacing: -0.02em;
+}
+.pf-page .pf-board--process .pf-hub-pipe__copy .pf-en,
+.pf-page .pf-board--process .pf-hub-pipe__copy span.pf-en {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.42);
+}
+.pf-page .pf-board--process .pf-hub-pipe__copy p {
+  margin: 0.45rem 0 0 !important;
+  font-size: 0.84rem !important;
+  line-height: 1.45 !important;
+  color: rgba(10, 10, 10, 0.58);
+}
+.pf-page .pf-board--process .pf-hub-pipe__arrow {
+  display: none !important;
+}
+.pf-page .pf-board--process .pf-hub-pipe__step:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-board--process .pf-hub-pipe__step:hover * {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+/* CASE — tighter rows */
+.pf-page .pf-hub-case-grid--rows .pf-hub-case {
+  padding: 0.95rem 1.05rem !important;
+  gap: 0.55rem 1rem !important;
+}
+.pf-page .pf-hub-case-grid--rows .pf-hub-case__grid {
+  gap: 0.35rem 0.85rem !important;
+}
+
+/* BEYOND / NOW denser */
+.pf-page .pf-board--beyond .pf-hub-beyond {
+  padding: 1rem 0.95rem !important;
+  min-height: 0 !important;
+}
+.pf-page .pf-board--now .pf-hub-now__col {
+  padding: 1rem 0.95rem !important;
+}
+.pf-page .pf-hub-now__link {
+  padding: 0.45rem 0 !important;
+}
+
+/* CONTACT — fix chips (row was 3-col grid with only <a> → crushed width) */
+.pf-page .pf-open--board .pf-open__row {
+  display: block !important;
+  width: 100%;
+}
+.pf-page .pf-open--board .pf-open__link {
+  display: grid !important;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto !important;
+  gap: 0.55rem 0.85rem !important;
+  align-items: start;
+  width: 100%;
+  padding: 0.85rem 1rem !important;
+}
+.pf-page .pf-open--board .pf-open__chips {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center;
+  gap: 0.3rem !important;
+  margin: 0.4rem 0 0 !important;
+  max-width: 100%;
+}
+.pf-page .pf-open--board .pf-open__chips span {
+  display: inline-flex !important;
+  flex: 0 0 auto;
+  width: auto !important;
+  white-space: nowrap;
+  min-height: 1.5rem !important;
+  padding: 0 0.5rem !important;
+  font-size: 0.72rem !important;
+  border: 1px solid rgba(10, 10, 10, 0.14);
+  border-radius: 0 !important;
+}
+.pf-page .pf-cx-hq__card {
+  background: #fff !important;
+  box-shadow: none !important;
+  padding: 1.1rem 1rem !important;
+}
+.pf-page .pf-cx-hq__head {
+  margin-bottom: 1rem !important;
+}
+.pf-page .pf-cx--hq .pf-cx__title {
+  font-size: clamp(1.75rem, 3.6vw, 2.55rem) !important;
+}
+
+/* HQ duo denser */
+.pf-page .pf-hq-duo__studio,
+.pf-page .pf-hq-duo__founder {
+  padding: 1.15rem 1.1rem !important;
+}
+.pf-page .pf-hq-duo__body,
+.pf-page .pf-hq-duo__story p {
+  margin-top: 0.55rem !important;
+}
+
+/* EXPLORE — featured + dense mosaic (no invert titles) */
+.pf-page .pf-explore__grid {
+  display: grid !important;
+  gap: 0 !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (min-width: 860px) {
+  .pf-page .pf-explore__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: minmax(9.5rem, auto);
+  }
+  .pf-page .pf-explore__panel.is-featured {
+    grid-column: span 2;
+    grid-row: span 2;
+    background: #0a0a0a !important;
+    color: #fff !important;
+  }
+  .pf-page .pf-explore__panel.is-featured .pf-explore__n,
+  .pf-page .pf-explore__panel.is-featured .pf-explore__desc,
+  .pf-page .pf-explore__panel.is-featured .pf-explore__go {
+    color: rgba(255, 255, 255, 0.55) !important;
+  }
+  .pf-page .pf-explore__panel.is-featured .pf-explore__title {
+    color: #fff !important;
+    font-size: clamp(1.55rem, 2.6vw, 2rem) !important;
+  }
+  .pf-page .pf-explore__panel.is-featured:hover {
+    background: #fff !important;
+    color: #0a0a0a !important;
+  }
+  .pf-page .pf-explore__panel.is-featured:hover .pf-explore__n,
+  .pf-page .pf-explore__panel.is-featured:hover .pf-explore__desc,
+  .pf-page .pf-explore__panel.is-featured:hover .pf-explore__go,
+  .pf-page .pf-explore__panel.is-featured:hover .pf-explore__title {
+    color: inherit !important;
+  }
+  .pf-page .pf-explore__panel.is-featured:hover .pf-explore__title {
+    color: #0a0a0a !important;
+  }
+  .pf-page .pf-explore__panel.is-featured:hover .pf-explore__n,
+  .pf-page .pf-explore__panel.is-featured:hover .pf-explore__desc,
+  .pf-page .pf-explore__panel.is-featured:hover .pf-explore__go {
+    color: rgba(10, 10, 10, 0.55) !important;
+  }
+}
+.pf-page .pf-explore__panel {
+  min-height: 9.5rem !important;
+  padding: 1.05rem 1rem !important;
+  gap: 0.4rem !important;
+  border-right: 1px solid rgba(10, 10, 10, 0.1) !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1) !important;
+  background: #fff !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-explore__panel.is-invert {
+  background: #fff !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-explore__panel.is-invert .pf-explore__n,
+.pf-page .pf-explore__panel.is-invert .pf-explore__desc,
+.pf-page .pf-explore__panel.is-invert .pf-explore__go,
+.pf-page .pf-explore__panel.is-invert .pf-explore__title {
+  color: inherit !important;
+}
+.pf-page .pf-explore__panel.is-invert .pf-explore__n,
+.pf-page .pf-explore__panel.is-invert .pf-explore__desc,
+.pf-page .pf-explore__panel.is-invert .pf-explore__go {
+  color: rgba(10, 10, 10, 0.5) !important;
+}
+.pf-page .pf-explore__panel:nth-child(2n) {
+  border-right: 1px solid rgba(10, 10, 10, 0.1);
+}
+.pf-page .pf-explore__panel:nth-child(n + 3) {
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+}
+@media (min-width: 860px) {
+  .pf-page .pf-explore__panel:nth-child(3n) {
+    border-right: 0 !important;
+  }
+}
+.pf-page .pf-explore__title {
+  color: inherit !important;
+}
+.pf-page .pf-explore__go {
+  padding-top: 0.55rem !important;
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .pf-section--wash:not(#projects):not(.pf-section--tight),
+html[data-newon-shell-theme="dark"] .pf-page .pf-section--soft:not(#projects):not(.pf-section--tight),
+html[data-newon-shell-theme="dark"] .pf-page .pf-section--caps,
+html[data-newon-shell-theme="dark"] .pf-page .pf-section--process,
+html[data-newon-shell-theme="dark"] .pf-page .pf-section--beyond,
+html[data-newon-shell-theme="dark"] .pf-page .pf-section--now,
+html[data-newon-shell-theme="dark"] .pf-page .pf-explore--board,
+html[data-newon-shell-theme="dark"] .pf-page .pf-cx--hq {
+  background: #0c0c0c !important;
+}
+html[data-newon-shell-theme="dark"] .pf-page .pf-cx-hq__card,
+html[data-newon-shell-theme="dark"] .pf-page .pf-explore__panel,
+html[data-newon-shell-theme="dark"] .pf-page .pf-board--process .pf-hub-pipe__step,
+html[data-newon-shell-theme="dark"] .pf-page .pf-board--caps .pf-hub-cap {
+  background: #111 !important;
+}
+
+/* ============================================================
+   Portfolio dense fix (20260830 pfdense5)
+   Ink specificity · process full-width rows · explore 2×2 ink
+   ============================================================ */
+
+.pf-page .pf-board--caps .pf-hub-cap.pf-hub-cap--ink {
+  background: #0a0a0a !important;
+  color: #f5f5f5 !important;
+}
+.pf-page .pf-board--caps .pf-hub-cap.pf-hub-cap--ink h3,
+.pf-page .pf-board--caps .pf-hub-cap.pf-hub-cap--ink .pf-hub-cap__n,
+.pf-page .pf-board--caps .pf-hub-cap.pf-hub-cap--ink .pf-en,
+.pf-page .pf-board--caps .pf-hub-cap.pf-hub-cap--ink .pf-hub-cap__list li {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+.pf-page .pf-board--caps .pf-hub-cap.pf-hub-cap--ink .pf-hub-cap__n,
+.pf-page .pf-board--caps .pf-hub-cap.pf-hub-cap--ink .pf-en,
+.pf-page .pf-board--caps .pf-hub-cap.pf-hub-cap--ink .pf-hub-cap__list li {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+.pf-page .pf-board--caps .pf-hub-cap.pf-hub-cap--ink:hover {
+  background: #fff !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-board--caps .pf-hub-cap.pf-hub-cap--ink:hover h3 {
+  color: #0a0a0a !important;
+}
+.pf-page .pf-board--caps .pf-hub-cap.pf-hub-cap--ink:hover .pf-hub-cap__n,
+.pf-page .pf-board--caps .pf-hub-cap.pf-hub-cap--ink:hover .pf-en,
+.pf-page .pf-board--caps .pf-hub-cap.pf-hub-cap--ink:hover .pf-hub-cap__list li {
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+
+/* PROCESS — force readable full-width rows (kill old flex width %) */
+.pf-page .pf-board.pf-board--process.pf-hub-pipe {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+  width: 100% !important;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step,
+.pf-page .pf-board.pf-board--process[data-count] .pf-hub-pipe__step,
+.pf-page .pf-board.pf-board--process[data-count="7"] .pf-hub-pipe__step,
+.pf-page .pf-board.pf-board--process[data-count="7"] .pf-hub-pipe__step:nth-child(-n + 3),
+.pf-page .pf-board.pf-board--process[data-count="7"] .pf-hub-pipe__step:nth-child(n + 4) {
+  display: grid !important;
+  grid-template-columns: 2.75rem minmax(0, 1fr) !important;
+  grid-template-rows: auto !important;
+  align-items: start !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0.85rem 1.05rem !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1) !important;
+  border-right: 0 !important;
+  box-sizing: border-box !important;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step:last-child {
+  border-bottom: 0 !important;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__copy {
+  min-width: 0 !important;
+  width: auto !important;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__copy strong {
+  display: inline !important;
+  font-size: 1.02rem !important;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__copy .pf-en,
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__copy span.pf-en {
+  display: inline !important;
+  margin-left: 0.45rem;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.42) !important;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__copy p {
+  display: block !important;
+  width: auto !important;
+  max-width: 42rem;
+  margin: 0.3rem 0 0 !important;
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  white-space: normal !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+@media (min-width: 960px) {
+  .pf-page .pf-board.pf-board--process .pf-hub-pipe__step {
+    grid-template-columns: 3rem minmax(0, 12rem) minmax(0, 1fr) !important;
+  }
+  .pf-page .pf-board.pf-board--process .pf-hub-pipe__copy {
+    display: contents;
+  }
+  .pf-page .pf-board.pf-board--process .pf-hub-pipe__copy strong {
+    grid-column: 2;
+  }
+  .pf-page .pf-board.pf-board--process .pf-hub-pipe__copy .pf-en {
+    display: block !important;
+    margin: 0.2rem 0 0 !important;
+    grid-column: 2;
+  }
+  .pf-page .pf-board.pf-board--process .pf-hub-pipe__copy p {
+    grid-column: 3;
+    margin: 0 !important;
+    align-self: center;
+  }
+}
+
+/* EXPLORE — clean 2×2, first panel ink (no mosaic holes) */
+.pf-page .pf-explore__grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+}
+.pf-page .pf-explore__panel,
+.pf-page .pf-explore__panel.is-featured,
+.pf-page .pf-explore__panel.is-ink {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  min-height: 10.5rem !important;
+  padding: 1.1rem 1.05rem !important;
+}
+.pf-page .pf-explore__panel.is-ink,
+.pf-page .pf-explore__panel.is-featured {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-explore__panel.is-ink .pf-explore__title,
+.pf-page .pf-explore__panel.is-featured .pf-explore__title {
+  color: #fff !important;
+  font-size: 1.25rem !important;
+}
+.pf-page .pf-explore__panel.is-ink .pf-explore__n,
+.pf-page .pf-explore__panel.is-ink .pf-explore__desc,
+.pf-page .pf-explore__panel.is-ink .pf-explore__go,
+.pf-page .pf-explore__panel.is-featured .pf-explore__n,
+.pf-page .pf-explore__panel.is-featured .pf-explore__desc,
+.pf-page .pf-explore__panel.is-featured .pf-explore__go {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+.pf-page .pf-explore__panel.is-ink:hover,
+.pf-page .pf-explore__panel.is-featured:hover {
+  background: #fff !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-explore__panel.is-ink:hover .pf-explore__title,
+.pf-page .pf-explore__panel.is-featured:hover .pf-explore__title {
+  color: #0a0a0a !important;
+}
+.pf-page .pf-explore__panel.is-ink:hover .pf-explore__n,
+.pf-page .pf-explore__panel.is-ink:hover .pf-explore__desc,
+.pf-page .pf-explore__panel.is-ink:hover .pf-explore__go,
+.pf-page .pf-explore__panel.is-featured:hover .pf-explore__n,
+.pf-page .pf-explore__panel.is-featured:hover .pf-explore__desc,
+.pf-page .pf-explore__panel.is-featured:hover .pf-explore__go {
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-explore__panel:nth-child(2n) {
+  border-right: 0 !important;
+}
+.pf-page .pf-explore__panel:nth-child(n + 3) {
+  border-bottom: 0 !important;
+}
+
+/* ============================================================
+   Portfolio light pass (20260830 pflight1)
+   Remove heavy ink blocks · case studies gone · paper boards
+   ============================================================ */
+
+/* Metrics — paper instead of full ink band */
+.pf-page .pf-section--metrics.pf-section--paper {
+  background: #fff !important;
+  color: #0a0a0a !important;
+  padding-block: clamp(1.75rem, 3.2vw, 2.65rem) !important;
+  border-top: 1px solid rgba(10, 10, 10, 0.1);
+}
+.pf-page .pf-section--metrics.pf-section--paper .pf-label,
+.pf-page .pf-section--metrics.pf-section--paper h2,
+.pf-page .pf-section--metrics.pf-section--paper .pf-stats__headline,
+.pf-page .pf-section--metrics.pf-section--paper .pf-stats__support,
+.pf-page .pf-section--metrics.pf-section--paper p {
+  color: inherit !important;
+}
+.pf-page .pf-section--metrics.pf-section--paper .pf-label {
+  color: rgba(10, 10, 10, 0.42) !important;
+}
+.pf-page .pf-section--metrics.pf-section--paper .pf-stats__support {
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-hub-metrics--paper {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0 !important;
+  margin-top: 1rem !important;
+  border: 1px solid rgba(10, 10, 10, 0.14) !important;
+  background: #fff !important;
+  overflow: hidden;
+}
+@media (max-width: 860px) {
+  .pf-page .pf-hub-metrics--paper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.pf-page .pf-hub-metrics--paper .pf-hub-metric {
+  border: 0 !important;
+  border-right: 1px solid rgba(10, 10, 10, 0.1) !important;
+  border-radius: 0 !important;
+  padding: 1.1rem 1rem !important;
+  background: #fff !important;
+}
+.pf-page .pf-hub-metrics--paper .pf-hub-metric:last-child {
+  border-right: 0 !important;
+}
+.pf-page .pf-hub-metrics--paper .pf-hub-metric__value {
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hub-metrics--paper .pf-hub-metric__label,
+.pf-page .pf-hub-metrics--paper .pf-hub-metric__note {
+  color: rgba(10, 10, 10, 0.5) !important;
+}
+.pf-page .pf-hub-metrics--paper .pf-hub-metric:hover {
+  background: #0a0a0a !important;
+}
+.pf-page .pf-hub-metrics--paper .pf-hub-metric:hover .pf-hub-metric__value,
+.pf-page .pf-hub-metrics--paper .pf-hub-metric:hover .pf-hub-metric__label,
+.pf-page .pf-hub-metrics--paper .pf-hub-metric:hover .pf-hub-metric__note {
+  color: #fff !important;
+}
+
+/* Workflow — white paper board (no big black slab) */
+.pf-page .pf-method__workflow--paper,
+.pf-page .pf-workflow-board--paper {
+  background: #fff !important;
+  color: #0a0a0a !important;
+  border: 1px solid rgba(10, 10, 10, 0.14);
+  border-radius: 0 !important;
+}
+.pf-page .pf-workflow-board--paper {
+  padding: 1.15rem 1.05rem !important;
+  box-shadow: none !important;
+}
+.pf-page .pf-workflow-board--paper .pf-label {
+  color: rgba(10, 10, 10, 0.42) !important;
+}
+.pf-page .pf-workflow-board--paper h2,
+.pf-page .pf-workflow-board--paper p {
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hub-workflow--paper {
+  border: 1px solid rgba(10, 10, 10, 0.12) !important;
+  background: #fff !important;
+}
+.pf-page .pf-hub-workflow--paper li {
+  border-color: rgba(10, 10, 10, 0.1) !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hub-workflow--paper .pf-hub-workflow__n,
+.pf-page .pf-hub-workflow--paper .pf-hub-workflow__arrow {
+  color: rgba(10, 10, 10, 0.4) !important;
+}
+.pf-page .pf-hub-workflow--paper li:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-hub-workflow--paper li:hover .pf-hub-workflow__n,
+.pf-page .pf-hub-workflow--paper li:hover .pf-hub-workflow__t,
+.pf-page .pf-hub-workflow--paper li:hover .pf-hub-workflow__arrow {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.pf-page .pf-method {
+  display: grid !important;
+  gap: 1rem !important;
+}
+@media (min-width: 960px) {
+  .pf-page .pf-method {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: start;
+  }
+}
+.pf-page .pf-hub-principles--dense.pf-board {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  border: 1px solid rgba(10, 10, 10, 0.14);
+  overflow: hidden;
+  background: #fff;
+}
+.pf-page .pf-hub-principles--dense.pf-board li {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: 0.45rem 0.65rem;
+  margin: 0 !important;
+  padding: 0.9rem 0.95rem !important;
+  border: 0 !important;
+  border-right: 1px solid rgba(10, 10, 10, 0.1) !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1) !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.pf-page .pf-hub-principles--dense.pf-board li:nth-child(2n) {
+  border-right: 0 !important;
+}
+.pf-page .pf-hub-principles--dense.pf-board li:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-hub-principles--dense.pf-board li:hover * {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+/* HQ duo — studio paper (no black half) */
+.pf-page .pf-hq-duo__studio--paper,
+.pf-page .pf-hq-duo__studio.pf-hq-duo__studio--paper {
+  background: #fff !important;
+  color: #0a0a0a !important;
+  border-right: 1px solid rgba(10, 10, 10, 0.12);
+}
+.pf-page .pf-hq-duo__studio--paper .pf-hq-duo__mark {
+  filter: none !important;
+}
+.pf-page .pf-hq-duo__studio--paper .pf-label {
+  color: rgba(10, 10, 10, 0.42) !important;
+}
+.pf-page .pf-hq-duo__studio--paper .pf-hq-duo__brand {
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hq-duo__studio--paper .pf-hq-duo__tag {
+  color: rgba(10, 10, 10, 0.5) !important;
+}
+.pf-page .pf-hq-duo__studio--paper .pf-hq-duo__body {
+  color: rgba(10, 10, 10, 0.62) !important;
+}
+.pf-page .pf-hq-duo__studio--paper .pf-hq-duo__domains li {
+  border-color: rgba(10, 10, 10, 0.14) !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-hq-duo__studio--paper .pf-hq-duo__cta,
+.pf-page .pf-hq-duo__studio--paper .btn-primary {
+  background: #0a0a0a !important;
+  color: #fff !important;
+  border: 1px solid #0a0a0a !important;
+}
+.pf-page .pf-hq-duo__studio--paper .pf-hq-duo__cta:hover,
+.pf-page .pf-hq-duo__studio--paper .btn-primary:hover {
+  background: #fff !important;
+  color: #0a0a0a !important;
+}
+
+/* Kill lingering ink accents on caps / explore / focus */
+.pf-page .pf-hub-cap--ink,
+.pf-page .pf-explore__panel.is-ink,
+.pf-page .pf-explore__panel.is-featured,
+.pf-page .pf-focus--ink {
+  background: #fff !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hub-cap--ink *,
+.pf-page .pf-explore__panel.is-ink *,
+.pf-page .pf-explore__panel.is-featured *,
+.pf-page .pf-focus--ink * {
+  color: inherit !important;
+}
+.pf-page .pf-hub-cap--ink .pf-hub-cap__n,
+.pf-page .pf-hub-cap--ink .pf-en,
+.pf-page .pf-hub-cap--ink .pf-hub-cap__list li,
+.pf-page .pf-explore__panel.is-ink .pf-explore__n,
+.pf-page .pf-explore__panel.is-ink .pf-explore__desc,
+.pf-page .pf-explore__panel.is-ink .pf-explore__go,
+.pf-page .pf-focus--ink .pf-focus__n,
+.pf-page .pf-focus--ink .pf-focus__body {
+  color: rgba(10, 10, 10, 0.5) !important;
+}
+
+/* Hide case studies if any stale markup remains */
+.pf-page #case-studies,
+.pf-page .pf-section--case {
+  display: none !important;
+}
+
+/* ============================================================
+   Portfolio craft pass (20260830pfcraft2)
+   Caps / Process / Method / Explore / Contact CTA
+   About·Contact density · fix invisible workflow labels
+   ============================================================ */
+
+/* --- CAPABILITIES: chip board, watermark index, hover invert --- */
+.pf-page .pf-section--caps:not(#projects):not(.pf-section--tight) {
+  padding-block: clamp(1.75rem, 3.4vw, 2.75rem) !important;
+}
+.pf-page .pf-section--caps .pf-sec-head {
+  margin-bottom: 1.1rem !important;
+}
+.pf-page .pf-board--caps {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  border: 1px solid rgba(10, 10, 10, 0.16) !important;
+  background: #fff !important;
+  overflow: hidden;
+}
+@media (max-width: 900px) {
+  .pf-page .pf-board--caps {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 560px) {
+  .pf-page .pf-board--caps {
+    grid-template-columns: 1fr !important;
+  }
+}
+.pf-page .pf-hub-cap--craft,
+.pf-page .pf-board--caps .pf-hub-cap--craft {
+  position: relative;
+  display: grid !important;
+  gap: 0.85rem !important;
+  align-content: start;
+  min-height: 11.5rem;
+  margin: 0 !important;
+  padding: 1.2rem 1.15rem 1.25rem !important;
+  border: 0 !important;
+  border-right: 1px solid rgba(10, 10, 10, 0.12) !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.12) !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.pf-page .pf-board--caps .pf-hub-cap--craft:nth-child(3n) {
+  border-right: 0 !important;
+}
+.pf-page .pf-board--caps .pf-hub-cap--craft:nth-child(n + 4) {
+  border-bottom: 0 !important;
+}
+@media (max-width: 900px) {
+  .pf-page .pf-board--caps .pf-hub-cap--craft:nth-child(3n) {
+    border-right: 1px solid rgba(10, 10, 10, 0.12) !important;
+  }
+  .pf-page .pf-board--caps .pf-hub-cap--craft:nth-child(2n) {
+    border-right: 0 !important;
+  }
+  .pf-page .pf-board--caps .pf-hub-cap--craft:nth-child(n + 4) {
+    border-bottom: 1px solid rgba(10, 10, 10, 0.12) !important;
+  }
+  .pf-page .pf-board--caps .pf-hub-cap--craft:nth-child(n + 5) {
+    border-bottom: 0 !important;
+  }
+}
+.pf-page .pf-hub-cap--craft .pf-hub-cap__n {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.95rem;
+  margin: 0 !important;
+  font-size: 0.6875rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.12em !important;
+  color: rgba(10, 10, 10, 0.32) !important;
+}
+.pf-page .pf-hub-cap--craft .pf-hub-cap__head {
+  display: grid !important;
+  gap: 0.2rem !important;
+  padding-right: 2rem;
+}
+.pf-page .pf-hub-cap--craft .pf-hub-cap__head h3,
+.pf-page .pf-hub-cap--craft h3 {
+  margin: 0 !important;
+  font-size: 1.2rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.15 !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hub-cap--craft .pf-en {
+  margin: 0 !important;
+  font-size: 0.6875rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.42) !important;
+}
+.pf-page .pf-hub-cap--craft .pf-hub-cap__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: auto;
+}
+.pf-page .pf-hub-cap--craft .pf-hub-cap__chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.55rem;
+  padding: 0 0.5rem;
+  border: 1px solid rgba(10, 10, 10, 0.14);
+  border-radius: 0;
+  font-size: 0.6875rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: rgba(10, 10, 10, 0.62);
+  background: transparent;
+}
+.pf-page .pf-hub-cap--craft:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-hub-cap--craft:hover .pf-hub-cap__n,
+.pf-page .pf-hub-cap--craft:hover .pf-en,
+.pf-page .pf-hub-cap--craft:hover h3 {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.pf-page .pf-hub-cap--craft:hover .pf-hub-cap__n,
+.pf-page .pf-hub-cap--craft:hover .pf-en {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+.pf-page .pf-hub-cap--craft:hover .pf-hub-cap__chip {
+  border-color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* --- PROCESS: contact-open style rows --- */
+.pf-page .pf-section--process:not(#projects):not(.pf-section--tight) {
+  padding-block: clamp(1.55rem, 3vw, 2.4rem) !important;
+}
+.pf-page .pf-board.pf-board--process.pf-hub-pipe {
+  border: 1px solid rgba(10, 10, 10, 0.16) !important;
+  background: #fff !important;
+  overflow: hidden;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step--craft,
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step {
+  display: grid !important;
+  grid-template-columns: 3rem minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 0.75rem 1rem !important;
+  padding: 1rem 1.15rem !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1) !important;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step:last-child {
+  border-bottom: 0 !important;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__n {
+  font-size: 0.75rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.12em !important;
+  color: rgba(10, 10, 10, 0.34) !important;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__copy {
+  display: grid !important;
+  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) !important;
+  align-items: baseline !important;
+  column-gap: 1.25rem !important;
+  row-gap: 0.15rem !important;
+  min-width: 0 !important;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__copy strong {
+  grid-column: 1;
+  margin: 0 !important;
+  font-size: 1.05rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__copy .pf-en,
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__copy span.pf-en {
+  grid-column: 1;
+  display: block !important;
+  margin: 0.1rem 0 0 !important;
+  font-size: 0.6875rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.4) !important;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__copy p {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center !important;
+  margin: 0 !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.45 !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__go {
+  font-size: 1rem;
+  color: rgba(10, 10, 10, 0.28);
+  transition: transform 0.18s ease, color 0.18s ease;
+}
+@media (max-width: 720px) {
+  .pf-page .pf-board.pf-board--process .pf-hub-pipe__copy {
+    grid-template-columns: 1fr !important;
+  }
+  .pf-page .pf-board.pf-board--process .pf-hub-pipe__copy p {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 0.25rem !important;
+  }
+  .pf-page .pf-board.pf-board--process .pf-hub-pipe__go {
+    display: none;
+  }
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step:hover .pf-hub-pipe__n,
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step:hover .pf-en,
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step:hover strong,
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step:hover p,
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step:hover .pf-hub-pipe__go {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step:hover .pf-hub-pipe__n,
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step:hover .pf-en,
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step:hover .pf-hub-pipe__go {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step:hover .pf-hub-pipe__go {
+  transform: translateX(3px);
+}
+
+/* --- METHOD: fix white-on-white workflow labels + denser boards --- */
+.pf-page .pf-section--method:not(#projects):not(.pf-section--tight) {
+  padding-block: clamp(1.55rem, 3vw, 2.4rem) !important;
+}
+.pf-page .pf-method {
+  display: grid !important;
+  gap: 1rem !important;
+  align-items: stretch !important;
+}
+@media (min-width: 980px) {
+  .pf-page .pf-method {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  }
+}
+.pf-page .pf-method__workflow--paper,
+.pf-page .pf-method__workflow.pf-method__workflow--paper {
+  background: #fff !important;
+  color: #0a0a0a !important;
+  border: 1px solid rgba(10, 10, 10, 0.16) !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+.pf-page .pf-method__workflow--paper .pf-workflow-board--paper,
+.pf-page .pf-workflow-board.pf-workflow-board--paper {
+  display: grid !important;
+  gap: 1rem !important;
+  padding: 1.25rem 1.15rem 1.15rem !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-method__workflow--paper .pf-label,
+.pf-page .pf-workflow-board--paper .pf-label {
+  color: rgba(10, 10, 10, 0.42) !important;
+}
+.pf-page .pf-method__workflow--paper h2,
+.pf-page .pf-workflow-board--paper h2 {
+  margin: 0.25rem 0 0 !important;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.2 !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-method__workflow--paper .pf-reveal,
+.pf-page .pf-method__workflow--paper p,
+.pf-page .pf-workflow-board--paper p {
+  margin: 0.55rem 0 0 !important;
+  max-width: 34rem;
+  font-size: 0.9rem !important;
+  line-height: 1.55 !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+
+/* CRITICAL: beat older black-slab li color (higher specificity) */
+.pf-page .pf-method__workflow--paper .pf-hub-workflow--paper,
+.pf-page .pf-method__workflow .pf-hub-workflow.pf-hub-workflow--paper {
+  margin: 0.35rem 0 0 !important;
+  border: 1px solid rgba(10, 10, 10, 0.14) !important;
+  background: #fff !important;
+  list-style: none !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+.pf-page .pf-method__workflow--paper .pf-hub-workflow--paper li,
+.pf-page .pf-method__workflow .pf-hub-workflow.pf-hub-workflow--paper li,
+.pf-page .pf-method__workflow--paper .pf-hub-workflow__row {
+  display: grid !important;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 0.65rem !important;
+  margin: 0 !important;
+  padding: 0.8rem 0.95rem !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1) !important;
+  font-size: 0.8125rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase;
+  color: #0a0a0a !important;
+  background: #fff !important;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.pf-page .pf-method__workflow--paper .pf-hub-workflow--paper li:last-child,
+.pf-page .pf-method__workflow .pf-hub-workflow.pf-hub-workflow--paper li:last-child {
+  border-bottom: 0 !important;
+}
+.pf-page .pf-method__workflow--paper .pf-hub-workflow__n,
+.pf-page .pf-method__workflow .pf-hub-workflow--paper .pf-hub-workflow__n {
+  font-size: 0.6875rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.12em !important;
+  color: rgba(10, 10, 10, 0.34) !important;
+}
+.pf-page .pf-method__workflow--paper .pf-hub-workflow__t,
+.pf-page .pf-method__workflow .pf-hub-workflow--paper .pf-hub-workflow__t {
+  color: #0a0a0a !important;
+  font-weight: 750 !important;
+}
+.pf-page .pf-method__workflow--paper .pf-hub-workflow__arrow,
+.pf-page .pf-method__workflow .pf-hub-workflow--paper .pf-hub-workflow__arrow {
+  color: rgba(10, 10, 10, 0.28) !important;
+}
+.pf-page .pf-method__workflow--paper .pf-hub-workflow--paper li:hover,
+.pf-page .pf-method__workflow .pf-hub-workflow.pf-hub-workflow--paper li:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-method__workflow--paper .pf-hub-workflow--paper li:hover .pf-hub-workflow__n,
+.pf-page .pf-method__workflow--paper .pf-hub-workflow--paper li:hover .pf-hub-workflow__t,
+.pf-page .pf-method__workflow--paper .pf-hub-workflow--paper li:hover .pf-hub-workflow__arrow,
+.pf-page .pf-method__workflow .pf-hub-workflow--paper li:hover .pf-hub-workflow__n,
+.pf-page .pf-method__workflow .pf-hub-workflow--paper li:hover .pf-hub-workflow__t,
+.pf-page .pf-method__workflow .pf-hub-workflow--paper li:hover .pf-hub-workflow__arrow {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.pf-page .pf-method__workflow--paper .pf-hub-workflow--paper li:hover .pf-hub-workflow__n,
+.pf-page .pf-method__workflow--paper .pf-hub-workflow--paper li:hover .pf-hub-workflow__arrow {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.pf-page .pf-method__principles {
+  padding: 1.25rem 1.15rem 1.15rem !important;
+  border: 1px solid rgba(10, 10, 10, 0.16) !important;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+.pf-page .pf-method__principles .pf-sec-head {
+  margin-bottom: 0.85rem !important;
+}
+.pf-page .pf-method__principles .pf-sec-head h2 {
+  margin: 0.2rem 0 0 !important;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.035em !important;
+}
+.pf-page .pf-hub-principles--dense.pf-board {
+  border: 1px solid rgba(10, 10, 10, 0.14) !important;
+}
+.pf-page .pf-hub-principles--dense.pf-board li {
+  min-height: 6.25rem;
+  padding: 1rem 1rem !important;
+  align-content: start;
+}
+.pf-page .pf-hub-principles--dense.pf-board .pf-hub-principles__n {
+  font-size: 0.6875rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.12em !important;
+  color: rgba(10, 10, 10, 0.34) !important;
+}
+.pf-page .pf-hub-principles--dense.pf-board strong {
+  display: block;
+  margin: 0 0 0.35rem !important;
+  font-size: 0.98rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hub-principles--dense.pf-board p {
+  margin: 0 !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.5 !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-hub-principles--dense.pf-board li:nth-child(5) {
+  grid-column: 1 / -1;
+}
+
+/* --- EXPLORE: denser craft panels --- */
+.pf-page .pf-explore--board {
+  padding-block: clamp(1.75rem, 3.4vw, 2.75rem) !important;
+}
+.pf-page .pf-explore__head {
+  margin-bottom: 1.1rem !important;
+}
+.pf-page .pf-explore__head .pf-explore__title,
+.pf-page .pf-explore--board .pf-explore__title {
+  margin: 0.2rem 0 0 !important;
+  font-size: clamp(1.55rem, 3vw, 2.05rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.035em !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-explore__lead {
+  margin: 0.45rem 0 0 !important;
+  max-width: 36rem;
+  font-size: 0.9375rem !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-explore__grid.pf-board {
+  border: 1px solid rgba(10, 10, 10, 0.16) !important;
+  overflow: hidden;
+  background: #fff;
+}
+.pf-page .pf-explore__panel--craft,
+.pf-page .pf-explore__panel.pf-explore__panel--craft {
+  display: grid !important;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 0.45rem !important;
+  align-content: start;
+  min-height: 11.5rem !important;
+  padding: 1.25rem 1.2rem !important;
+  border-right: 1px solid rgba(10, 10, 10, 0.12) !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.12) !important;
+  background: #fff !important;
+  color: #0a0a0a !important;
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.pf-page .pf-explore__panel--craft:nth-child(2n) {
+  border-right: 0 !important;
+}
+.pf-page .pf-explore__panel--craft:nth-child(n + 3) {
+  border-bottom: 0 !important;
+}
+.pf-page .pf-explore__panel--craft .pf-explore__n {
+  font-size: 0.6875rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.12em !important;
+  color: rgba(10, 10, 10, 0.34) !important;
+}
+.pf-page .pf-explore__panel--craft .pf-explore__title {
+  margin: 0 !important;
+  font-size: 1.2rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.2 !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-explore__panel--craft .pf-explore__desc {
+  margin: 0 !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-explore__panel--craft .pf-explore__go {
+  margin-top: 0.85rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.02em;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-explore__panel--craft:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-explore__panel--craft:hover .pf-explore__n,
+.pf-page .pf-explore__panel--craft:hover .pf-explore__title,
+.pf-page .pf-explore__panel--craft:hover .pf-explore__desc,
+.pf-page .pf-explore__panel--craft:hover .pf-explore__go {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+.pf-page .pf-explore__panel--craft:hover .pf-explore__n,
+.pf-page .pf-explore__panel--craft:hover .pf-explore__desc {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+@media (max-width: 720px) {
+  .pf-page .pf-explore__panel--craft:nth-child(2n) {
+    border-right: 0 !important;
+  }
+  .pf-page .pf-explore__panel--craft {
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(10, 10, 10, 0.12) !important;
+  }
+  .pf-page .pf-explore__panel--craft:last-child {
+    border-bottom: 0 !important;
+  }
+}
+
+/* --- CONTACT CTA: paper board (no heavy black slab) --- */
+.pf-page .pf-cx-hq__band {
+  margin-top: 1.5rem;
+  background: transparent !important;
+}
+.pf-page .pf-cx-msg--paper {
+  border: 1px solid rgba(10, 10, 10, 0.16) !important;
+  background: #fff !important;
+  color: #0a0a0a !important;
+  padding: clamp(1.35rem, 3vw, 1.85rem) 1.25rem !important;
+}
+.pf-page .pf-cx-msg--paper .pf-cx-msg__grid {
+  display: grid;
+  gap: 1.15rem;
+  align-items: end;
+}
+@media (min-width: 820px) {
+  .pf-page .pf-cx-msg--paper .pf-cx-msg__grid {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+.pf-page .pf-cx-msg--paper .pf-label {
+  color: rgba(10, 10, 10, 0.42) !important;
+}
+.pf-page .pf-cx-msg--paper .pf-cx-msg__title {
+  margin: 0.3rem 0 0 !important;
+  font-size: clamp(1.45rem, 3vw, 2rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.15 !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-cx-msg--paper .pf-cx-msg__lead {
+  margin: 0.55rem 0 0 !important;
+  max-width: 34rem;
+  font-size: 0.9375rem !important;
+  line-height: 1.55 !important;
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+.pf-page .pf-cx-msg--paper .pf-cx-msg__mail {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  min-height: 2.75rem;
+  padding: 0 1.1rem;
+  border: 1px solid #0a0a0a;
+  background: #0a0a0a;
+  color: #fff !important;
+  font-size: 0.9375rem !important;
+  font-weight: 750 !important;
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.pf-page .pf-cx-msg--paper .pf-cx-msg__mail:hover {
+  background: #fff;
+  color: #0a0a0a !important;
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .pf-hub-cap--craft,
+html[data-newon-shell-theme="dark"] .pf-page .pf-board--caps,
+html[data-newon-shell-theme="dark"] .pf-page .pf-board.pf-board--process.pf-hub-pipe,
+html[data-newon-shell-theme="dark"] .pf-page .pf-method__workflow--paper,
+html[data-newon-shell-theme="dark"] .pf-page .pf-method__principles,
+html[data-newon-shell-theme="dark"] .pf-page .pf-explore__grid.pf-board,
+html[data-newon-shell-theme="dark"] .pf-page .pf-explore__panel--craft,
+html[data-newon-shell-theme="dark"] .pf-page .pf-cx-msg--paper {
+  background: #111 !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  color: #fff !important;
+}
+html[data-newon-shell-theme="dark"] .pf-page .pf-hub-cap--craft h3,
+html[data-newon-shell-theme="dark"] .pf-page .pf-hub-pipe__copy strong,
+html[data-newon-shell-theme="dark"] .pf-page .pf-method__workflow--paper h2,
+html[data-newon-shell-theme="dark"] .pf-page .pf-hub-workflow__t,
+html[data-newon-shell-theme="dark"] .pf-page .pf-explore__panel--craft .pf-explore__title,
+html[data-newon-shell-theme="dark"] .pf-page .pf-cx-msg--paper .pf-cx-msg__title {
+  color: #fff !important;
+}
+
+/* Process craft — beat older data-count !important grids */
+.pf-page .pf-board.pf-board--process[data-count] .pf-hub-pipe__step,
+.pf-page .pf-board.pf-board--process[data-count="7"] .pf-hub-pipe__step,
+.pf-page .pf-board.pf-board--process[data-count="7"] .pf-hub-pipe__step:nth-child(-n + 4),
+.pf-page .pf-board.pf-board--process[data-count="7"] .pf-hub-pipe__step:nth-child(n + 5),
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step--craft {
+  display: grid !important;
+  grid-template-columns: 3rem minmax(0, 1fr) 1.5rem !important;
+  grid-template-rows: auto !important;
+  align-items: center !important;
+  column-gap: 1rem !important;
+  row-gap: 0 !important;
+}
+.pf-page .pf-board.pf-board--process[data-count] .pf-hub-pipe__copy,
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step--craft .pf-hub-pipe__copy {
+  display: grid !important;
+  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) !important;
+  grid-template-rows: auto auto !important;
+}
+.pf-page .pf-board.pf-board--process[data-count] .pf-hub-pipe__go,
+.pf-page .pf-board.pf-board--process .pf-hub-pipe__step--craft .pf-hub-pipe__go {
+  grid-column: 3 !important;
+  grid-row: 1 !important;
+  justify-self: end;
+  align-self: center;
+  font-size: 1rem;
+  line-height: 1;
+  color: rgba(10, 10, 10, 0.28) !important;
+}
+@media (max-width: 720px) {
+  .pf-page .pf-board.pf-board--process[data-count] .pf-hub-pipe__step,
+  .pf-page .pf-board.pf-board--process .pf-hub-pipe__step--craft {
+    grid-template-columns: 2.75rem minmax(0, 1fr) !important;
+  }
+  .pf-page .pf-board.pf-board--process[data-count] .pf-hub-pipe__go,
+  .pf-page .pf-board.pf-board--process .pf-hub-pipe__step--craft .pf-hub-pipe__go {
+    display: none !important;
+  }
+}
+
+/* Principles — contact-open vertical rows (no orphan cell) */
+.pf-page .pf-hub-principles--rows.pf-board {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  border: 1px solid rgba(10, 10, 10, 0.14) !important;
+  overflow: hidden;
+  background: #fff !important;
+}
+.pf-page .pf-hub-principles--rows li {
+  display: grid !important;
+  grid-template-columns: 2.5rem minmax(0, 1fr) !important;
+  gap: 0.65rem 0.85rem !important;
+  align-items: start !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+  padding: 0.9rem 1rem !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1) !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.pf-page .pf-hub-principles--rows li:last-child {
+  border-bottom: 0 !important;
+}
+.pf-page .pf-hub-principles--rows .pf-hub-principles__n {
+  font-size: 0.6875rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.12em !important;
+  color: rgba(10, 10, 10, 0.34) !important;
+  padding-top: 0.2rem;
+}
+.pf-page .pf-hub-principles--rows strong {
+  display: block;
+  margin: 0 0 0.25rem !important;
+  font-size: 0.98rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-hub-principles--rows p {
+  margin: 0 !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.5 !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+.pf-page .pf-hub-principles--rows li:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+.pf-page .pf-hub-principles--rows li:hover .pf-hub-principles__n,
+.pf-page .pf-hub-principles--rows li:hover strong,
+.pf-page .pf-hub-principles--rows li:hover p {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.pf-page .pf-hub-principles--rows li:hover .pf-hub-principles__n,
+.pf-page .pf-hub-principles--rows li:hover p {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ============================================================
+   Portfolio principles — full-width rail (20260830 pfprin1)
+   AI workflow removed; principles fill the section
+   ============================================================ */
+
+.pf-page .pf-section--principles:not(#projects):not(.pf-section--tight) {
+  padding-block: clamp(2rem, 4vw, 3rem) !important;
+  background: #fff !important;
+  color: #0a0a0a !important;
+}
+
+.pf-page .pf-prin-head {
+  margin: 0 0 1.15rem;
+  max-width: 36rem;
+}
+
+.pf-page .pf-prin-head .pf-label {
+  margin: 0 0 0.4rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.12em !important;
+  color: rgba(10, 10, 10, 0.55) !important;
+}
+
+.pf-page .pf-prin-head h2 {
+  margin: 0 !important;
+  font-size: clamp(1.85rem, 3.6vw, 2.65rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.12 !important;
+  color: #0a0a0a !important;
+}
+
+.pf-page .pf-prin-rail {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(10, 10, 10, 0.14) !important;
+  background: #fff !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+}
+
+.pf-page .pf-prin-rail__row {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 14rem) minmax(0, 1fr) auto;
+  gap: 0.75rem 1.15rem;
+  align-items: center;
+  margin: 0;
+  padding: 1.2rem 1.25rem;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.12);
+  background: #fff;
+  color: #0a0a0a;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.pf-page .pf-prin-rail__row:last-child {
+  border-bottom: 0;
+}
+
+.pf-page .pf-prin-rail__n {
+  font-size: 0.8125rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.12em !important;
+  color: rgba(10, 10, 10, 0.45) !important;
+}
+
+.pf-page .pf-prin-rail__title {
+  margin: 0;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  color: #0a0a0a !important;
+}
+
+.pf-page .pf-prin-rail__body {
+  margin: 0 !important;
+  font-size: 1rem !important;
+  line-height: 1.55 !important;
+  color: rgba(10, 10, 10, 0.62) !important;
+}
+
+.pf-page .pf-prin-rail__go {
+  font-size: 1rem;
+  color: rgba(10, 10, 10, 0.32);
+  transition: transform 0.18s ease, color 0.18s ease;
+}
+
+.pf-page .pf-prin-rail__row:hover {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+
+.pf-page .pf-prin-rail__row:hover .pf-prin-rail__n,
+.pf-page .pf-prin-rail__row:hover .pf-prin-rail__body,
+.pf-page .pf-prin-rail__row:hover .pf-prin-rail__go {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.pf-page .pf-prin-rail__row:hover .pf-prin-rail__title {
+  color: #fff !important;
+}
+
+.pf-page .pf-prin-rail__row:hover .pf-prin-rail__go {
+  transform: translateX(3px);
+  color: #fff !important;
+}
+
+@media (max-width: 720px) {
+  .pf-page .pf-prin-rail__row {
+    grid-template-columns: 2.75rem minmax(0, 1fr) auto;
+  }
+  .pf-page .pf-prin-rail__body {
+    grid-column: 2 / -1;
+  }
+  .pf-page .pf-prin-rail__go {
+    grid-row: 1;
+    grid-column: 3;
+  }
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .pf-section--principles,
+html[data-newon-shell-theme="dark"] .pf-page .pf-prin-rail,
+html[data-newon-shell-theme="dark"] .pf-page .pf-prin-rail__row {
+  background: #111 !important;
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .pf-prin-head h2,
+html[data-newon-shell-theme="dark"] .pf-page .pf-prin-rail__title {
+  color: #fff !important;
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .pf-prin-head .pf-label,
+html[data-newon-shell-theme="dark"] .pf-page .pf-prin-rail__n,
+html[data-newon-shell-theme="dark"] .pf-page .pf-prin-rail__body {
+  color: rgba(255, 255, 255, 0.58) !important;
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .pf-prin-rail__row:hover {
+  background: #fff !important;
+  color: #0a0a0a !important;
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .pf-prin-rail__row:hover .pf-prin-rail__title,
+html[data-newon-shell-theme="dark"] .pf-page .pf-prin-rail__row:hover .pf-prin-rail__go {
+  color: #0a0a0a !important;
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .pf-prin-rail__row:hover .pf-prin-rail__n,
+html[data-newon-shell-theme="dark"] .pf-page .pf-prin-rail__row:hover .pf-prin-rail__body {
+  color: rgba(10, 10, 10, 0.58) !important;
+}
+
+/* ============================================================
+   Contact CTA band — full black, no box (20260830 pfinck1)
+   ============================================================ */
+
+.pf-page .pf-cx-hq__band {
+  margin-top: clamp(1.75rem, 3.5vw, 2.75rem) !important;
+  background: #0a0a0a !important;
+  color: #f5f5f5 !important;
+  border: 0 !important;
+}
+
+.pf-page .pf-cx-msg--ink {
+  margin-top: 0 !important;
+  padding-block: clamp(2rem, 4.5vw, 3.25rem) !important;
+  padding-inline: 0 !important;
+  border: 0 !important;
+  border-top: 0 !important;
+  background: transparent !important;
+  color: #f5f5f5 !important;
+}
+
+.pf-page .pf-cx-msg--ink .pf-cx-msg__grid {
+  display: grid !important;
+  gap: 1.35rem 2.5rem !important;
+  align-items: end !important;
+}
+
+@media (min-width: 820px) {
+  .pf-page .pf-cx-msg--ink .pf-cx-msg__grid {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+  }
+}
+
+.pf-page .pf-cx-msg--ink .pf-label {
+  margin: 0 0 0.45rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.12em !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.pf-page .pf-cx-msg--ink .pf-cx-msg__title {
+  margin: 0 !important;
+  max-width: 12em;
+  font-size: clamp(1.65rem, 3.2vw, 2.35rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.15 !important;
+  color: #fff !important;
+}
+
+.pf-page .pf-cx-msg--ink .pf-cx-msg__lead {
+  margin: 0.7rem 0 0 !important;
+  max-width: 34rem;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  color: rgba(255, 255, 255, 0.62) !important;
+}
+
+.pf-page .pf-cx-msg--ink .pf-cx-msg__mail {
+  display: inline-flex !important;
+  align-items: center;
+  justify-self: start;
+  min-height: 3rem;
+  padding: 0 1.25rem !important;
+  border: 1px solid #fff !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  color: #0a0a0a !important;
+  font-size: 0.9375rem !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.01em;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.pf-page .pf-cx-msg--ink .pf-cx-msg__mail:hover {
+  background: transparent !important;
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
+}
+
+html[data-newon-shell-theme="dark"] .pf-page .pf-cx-hq__band {
+  background: #000 !important;
+}
+
+/* Contact ink CTA — beat section h2 / label ink !important */
+.pf-page .pf-section.pf-cx:not(#projects):not(.pf-section--tight) .pf-cx-msg--ink .pf-label,
+.pf-page .pf-cx-hq__band .pf-cx-msg--ink .pf-label {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+.pf-page .pf-section.pf-cx:not(#projects):not(.pf-section--tight) .pf-cx-msg--ink h2.pf-cx-msg__title,
+.pf-page .pf-cx-hq__band .pf-cx-msg--ink .pf-cx-msg__title {
+  color: #fff !important;
+}
+.pf-page .pf-section.pf-cx:not(#projects):not(.pf-section--tight) .pf-cx-msg--ink .pf-cx-msg__lead,
+.pf-page .pf-cx-hq__band .pf-cx-msg--ink .pf-cx-msg__lead {
+  color: rgba(255, 255, 255, 0.62) !important;
+}
+.pf-page .pf-cx-hq__band .pf-cx-msg--ink .pf-cx-msg__mail {
+  background: #fff !important;
+  border-color: #fff !important;
+  color: #0a0a0a !important;
+}
+.pf-page .pf-cx-hq__band .pf-cx-msg--ink .pf-cx-msg__mail:hover {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
+  color: #fff !important;
 }

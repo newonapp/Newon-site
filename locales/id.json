@@ -539,7 +539,21 @@
     "statExperiments": "Experiments",
     "statApps": "Aplikasi",
     "explore7Title": "Media",
-    "explore7Body": "Product, process, and stories — recorded on video."
+    "explore7Body": "Product, process, and stories — recorded on video.",
+    "heroEyebrowLine1": "NEWON",
+    "heroEyebrowLine2": "PRODUCT & VENTURE STUDIO",
+    "heroTitleHtml": "Build ideas.<br />Validate in products.",
+    "heroLeadNew": "Newon builds apps, AI, games, and web products — and partners with companies to design digital services and new business possibilities.",
+    "btnWorkWithNewon": "WORK WITH NEWON →",
+    "btnWorkWithNewonAria": "Work with Newon — business inquiry",
+    "heroEcoProducts": "PRODUK",
+    "heroEcoProductsItems": "Apps / AI / Games / Tools",
+    "heroEcoBusiness": "BUSINESS",
+    "heroEcoBusinessItems": "Build / Automation / Research / Solutions",
+    "heroEcoStudio": "STUDIO",
+    "heroEcoStudioItems": "Brand / Digital / Content / IP",
+    "heroEcoLabs": "LABS",
+    "heroEcoLabsItems": "Research / Prototype / Testing"
   },
   "footer": {
     "privacy": "Kebijakan privasi",
@@ -3525,7 +3539,8 @@
       "exploreBusinessGo": "Bisnis →",
       "emptyTitle": "Penyelidikan bisnis",
       "emptyLead": "Beritahu kami tentang proyek atau kolaborasi baru.",
-      "emptyCta": "Mulai pertanyaan →"
+      "emptyCta": "Mulai pertanyaan →",
+      "exploreLabel": "JELAJAHI"
     },
     "ind1En": "GAYA HIDUP",
     "ind2En": "KELUARGA",
@@ -3606,7 +3621,18 @@
     "inquiryExploreResourcesEyebrow": "RESOURCES",
     "inquiryExploreResourcesTitle": "Explore Resources",
     "inquiryExploreResourcesBody": "Browse the store, insights, tools, media, and more.",
-    "inquiryExploreResourcesCta": "View Resources →"
+    "inquiryExploreResourcesCta": "View Resources →",
+    "heroCrumbLeft": "Bisnis",
+    "heroCrumbRight": "INQUIRY",
+    "heroEyebrowRole": "Project Inquiry",
+    "heroDomainsAria": "What we build together",
+    "heroDomain1": "Aplikasi",
+    "heroDomain2": "Web",
+    "heroDomain3": "MVP",
+    "heroDomain4": "AI",
+    "heroCardAria": "Buka Newon kartu digital",
+    "heroCardAlt": "Newon digital card",
+    "heroCardHint": "Digital card · tap to open"
   },
   "businessPages": {
     "common": {

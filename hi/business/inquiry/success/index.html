@@ -36,256 +36,15 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/gnav-mega.css?v=20260828btn1" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260830filt1" />
     <link rel="stylesheet" href="/styles.css?v=20260828btn1" />
     <link rel="stylesheet" href="/ox-month.css" />
     <link rel="stylesheet" href="/portfolio/portfolio.css" />
+    <link rel="stylesheet" href="/business/inquiry-success.css?v=20260830okspace1" />
     <script src="/theme-shell.js"></script>
-    <style>
-      .bz-ok-page { padding-top: var(--header-h); overflow-x: clip; }
-      .bz-ok-inner {
-        width: min(820px, calc(100% - var(--space) * 2));
-        margin: 0 auto;
-        padding: 4.5rem 0 5rem;
-        text-align: left;
-      }
-      @media (max-width: 799px) {
-        .bz-ok-inner {
-          width: min(820px, calc(100% - 2rem));
-          padding: 3rem 0 4rem;
-        }
-      }
-      .bz-ok-kicker {
-        margin: 0 0 1rem;
-        font-size: 0.875rem;
-        font-weight: 600;
-        letter-spacing: 0.14em;
-        color: var(--text-soft);
-      }
-      .bz-ok-head {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.85rem;
-      }
-      .bz-ok-check {
-        flex: 0 0 auto;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 1.65rem;
-        height: 1.65rem;
-        margin-top: 0.28rem;
-        border: 1px solid var(--text);
-        border-radius: 50%;
-        color: var(--text);
-      }
-      .bz-ok-check svg { display: block; }
-      .bz-ok-title {
-        margin: 0 0 1rem;
-        font-size: clamp(1.85rem, 4.2vw, 2.55rem);
-        font-weight: 700;
-        letter-spacing: -0.04em;
-        line-height: 1.2;
-        color: var(--text);
-        word-break: keep-all;
-      }
-      .bz-ok-lead {
-        margin: 0 0 0.8125rem;
-        max-width: 36rem;
-        font-size: 1.125rem;
-        line-height: 1.7;
-        color: var(--text);
-        word-break: keep-all;
-      }
-      .bz-ok-thanks {
-        margin: 0;
-        max-width: 36rem;
-        font-size: 0.95rem;
-        line-height: 1.65;
-        color: var(--text-muted);
-        word-break: keep-all;
-      }
-      .bz-ok-rule {
-        height: 1px;
-        margin: 2.75rem 0;
-        background: var(--border, #ececec);
-        border: 0;
-      }
-      html[data-newon-shell-theme="dark"] .bz-ok-rule { background: var(--border); }
-      .bz-ok-label {
-        margin: 0 0 1.15rem;
-        font-size: 0.875rem;
-        font-weight: 600;
-        letter-spacing: 0.14em;
-        color: var(--text-soft);
-      }
-      .bz-ok-steps {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: grid;
-        gap: 1.35rem;
-      }
-      .bz-ok-step {
-        display: grid;
-        grid-template-columns: 2.4rem minmax(0, 1fr);
-        gap: 0.85rem 1rem;
-        align-items: baseline;
-      }
-      .bz-ok-step__n {
-        font-size: 0.9375rem;
-        letter-spacing: 0.08em;
-        color: var(--text-soft);
-      }
-      .bz-ok-step h2 {
-        margin: 0 0 0.3rem;
-        font-size: 1.125rem;
-        font-weight: 600;
-        letter-spacing: -0.02em;
-        color: var(--text);
-      }
-      .bz-ok-step p {
-        margin: 0;
-        font-size: 0.95rem;
-        line-height: 1.6;
-        color: var(--text-muted);
-        word-break: keep-all;
-      }
-      .bz-ok-dl {
-        margin: 0;
-        display: grid;
-        gap: 1.125rem;
-      }
-      .bz-ok-dl div { min-width: 0; }
-      .bz-ok-dl dt {
-        margin: 0 0 0.2rem;
-        font-size: 0.875rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        color: var(--text-soft);
-      }
-      .bz-ok-dl dd {
-        margin: 0;
-        font-size: 0.98rem;
-        color: var(--text);
-        word-break: break-word;
-      }
-      .bz-ok-dl a { color: inherit; }
-      .bz-ok-dl a:hover { opacity: 0.72; }
-      .bz-ok-cta {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.8125rem 0.85rem;
-      }
-      .bz-ok-cta .btn { min-height: 48px; }
-      .bz-ok-home {
-        display: inline-block;
-        margin-top: 1.125rem;
-        font-size: 0.88rem;
-        font-weight: 500;
-        color: var(--text-muted);
-        text-decoration: none;
-      }
-      .bz-ok-home:hover { color: var(--text); }
-      .bz-ok-explore-title {
-        margin: 0 0 1.25rem;
-        font-size: 1.125rem;
-        font-weight: 600;
-        letter-spacing: -0.02em;
-        color: var(--text);
-        word-break: keep-all;
-      }
-      .bz-ok-cards {
-        display: grid;
-        gap: 0.85rem;
-      }
-      @media (min-width: 720px) {
-        .bz-ok-cards { grid-template-columns: 1fr 1fr; }
-      }
-      .bz-ok-card {
-        display: block;
-        padding: 1.2rem 1.2rem 1.1rem;
-        border: 1px solid var(--border, #ececec);
-        border-radius: 12px;
-        color: inherit;
-        text-decoration: none;
-      }
-      html[data-newon-shell-theme="dark"] .bz-ok-card { border-color: var(--border); }
-      .bz-ok-card:hover { border-color: var(--text); }
-      .bz-ok-card h2 {
-        margin: 0 0 0.4rem;
-        font-size: 1rem;
-        font-weight: 600;
-      }
-      .bz-ok-card p {
-        margin: 0 0 0.85rem;
-        font-size: 0.9rem;
-        line-height: 1.55;
-        color: var(--text-muted);
-        word-break: keep-all;
-      }
-      .bz-ok-card span {
-        font-size: 0.88rem;
-        font-weight: 600;
-        color: var(--text);
-      }
-      .bz-ok-empty .bz-ok-cta { margin-top: 1.75rem; }
-      .bz-ok-check,
-      .bz-ok-title,
-      .bz-ok-lead,
-      .bz-ok-thanks,
-      .bz-ok-step,
-      .bz-ok-cta,
-      .bz-ok-card {
-        animation: none;
-      }
-      #bz-ok:not([hidden]) .bz-ok-check,
-      #bz-ok:not([hidden]) .bz-ok-title,
-      #bz-ok:not([hidden]) .bz-ok-lead,
-      #bz-ok:not([hidden]) .bz-ok-thanks,
-      #bz-ok:not([hidden]) .bz-ok-step,
-      #bz-ok:not([hidden]) .bz-ok-cta,
-      #bz-ok:not([hidden]) .bz-ok-card {
-        animation: bz-ok-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
-      }
-      #bz-ok:not([hidden]) .bz-ok-check { animation-name: bz-ok-fade; }
-      #bz-ok:not([hidden]) .bz-ok-title { animation-delay: 0.05s; }
-      #bz-ok:not([hidden]) .bz-ok-lead { animation-delay: 0.1s; }
-      #bz-ok:not([hidden]) .bz-ok-thanks { animation-delay: 0.14s; }
-      #bz-ok:not([hidden]) .bz-ok-step:nth-child(1) { animation-delay: 0.16s; }
-      #bz-ok:not([hidden]) .bz-ok-step:nth-child(2) { animation-delay: 0.24s; }
-      #bz-ok:not([hidden]) .bz-ok-step:nth-child(3) { animation-delay: 0.32s; }
-      #bz-ok:not([hidden]) .bz-ok-cta { animation-delay: 0.18s; }
-      #bz-ok:not([hidden]) .bz-ok-card:nth-child(1) { animation-delay: 0.2s; }
-      #bz-ok:not([hidden]) .bz-ok-card:nth-child(2) { animation-delay: 0.28s; }
-      @keyframes bz-ok-fade {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-      @keyframes bz-ok-up {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: none; }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        #bz-ok:not([hidden]) .bz-ok-check,
-        #bz-ok:not([hidden]) .bz-ok-title,
-        #bz-ok:not([hidden]) .bz-ok-lead,
-        #bz-ok:not([hidden]) .bz-ok-thanks,
-        #bz-ok:not([hidden]) .bz-ok-step,
-        #bz-ok:not([hidden]) .bz-ok-cta,
-        #bz-ok:not([hidden]) .bz-ok-card {
-          animation: none;
-        }
-      }
-      .bz-ok-title:focus { outline: none; }
-      .bz-ok-title:focus-visible {
-        outline: 2px solid var(--text);
-        outline-offset: 4px;
-      }
-    </style>
     <link rel="stylesheet" href="/business-type.css?v=20260827type4" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
+    <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
   </head>
   <body>
     <a class="skip-link" href="#bz-inquiry-success">सामग्री पर जाएँ</a>
@@ -516,7 +275,7 @@
         <span class="gnav-mega__row-desc">Video · product stories · visual</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../../../contact/" role="menuitem">
+    </a><a class="gnav-mega__row" href="../../../business/inquiry/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">05</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">संपर्क</span>
@@ -566,7 +325,7 @@
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../about/">About Newon</a><a class="gnav-mobile__sublink" href="../../../portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="../../../news/">News</a><a class="gnav-mobile__sublink" href="../../../media/">Media</a><a class="gnav-mobile__sublink" href="../../../contact/">संपर्क</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../about/">About Newon</a><a class="gnav-mobile__sublink" href="../../../portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="../../../news/">News</a><a class="gnav-mobile__sublink" href="../../../media/">Media</a><a class="gnav-mobile__sublink" href="../../../business/inquiry/">संपर्क</a></div>
       </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <a class="gnav-mobile__cta btn btn-primary" href="../../../business/inquiry/">परियोजना पूछताछ</a>
@@ -588,49 +347,54 @@
       <div class="bz-ok-inner">
         <section id="bz-ok" hidden>
           <p class="bz-ok-kicker">[[[टी0]]] / व्यवसाय</p>
-          <div class="bz-ok-head">
-            <span class="bz-ok-check" aria-hidden="true">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M2.2 6.2 4.7 8.6 9.8 3.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <div>
+
+          <div class="bz-ok-status">
+            <div class="bz-ok-status__top">
+              <span class="bz-ok-check" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+                  <path d="M2.2 6.2 4.7 8.6 9.8 3.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
               <h1 class="bz-ok-title" id="bz-ok-title" tabindex="-1">आपकी पूछताछ प्राप्त हो गई है.</h1>
+            </div>
+            <div class="bz-ok-status__copy">
               <p class="visually-hidden">पूछताछ प्राप्त हुई</p>
               <p class="bz-ok-lead">आपने जो भेजा है हम उसकी समीक्षा करेंगे और आपके द्वारा दिए गए ईमेल पर आपसे संपर्क करेंगे।</p>
               <p class="bz-ok-thanks">Newon में आपकी रुचि के लिए धन्यवाद।</p>
             </div>
           </div>
 
-          <hr class="bz-ok-rule" />
+          <div class="bz-ok-block">
+            <p class="bz-ok-label">अगले कदम</p>
+            <ol class="bz-ok-steps">
+              <li class="bz-ok-step">
+                <span class="bz-ok-step__n">01</span>
+                <div>
+                  <h2>प्राप्त</h2>
+                  <p>आपने जो भेजा था वह हमें मिल गया है.</p>
+                </div>
+                <span class="bz-ok-step__go" aria-hidden="true">→</span>
+              </li>
+              <li class="bz-ok-step">
+                <span class="bz-ok-step__n">02</span>
+                <div>
+                  <h2>समीक्षा</h2>
+                  <p>हम परियोजना और सहयोग विवरण की समीक्षा करते हैं।</p>
+                </div>
+                <span class="bz-ok-step__go" aria-hidden="true">→</span>
+              </li>
+              <li class="bz-ok-step">
+                <span class="bz-ok-step__n">03</span>
+                <div>
+                  <h2>पालन ​​करें</h2>
+                  <p>यदि आवश्यकता हुई, तो हम आपके द्वारा दिए गए ईमेल पर आपसे संपर्क करेंगे।</p>
+                </div>
+                <span class="bz-ok-step__go" aria-hidden="true">✓</span>
+              </li>
+            </ol>
+          </div>
 
-          <p class="bz-ok-label">अगले कदम</p>
-          <ol class="bz-ok-steps">
-            <li class="bz-ok-step">
-              <span class="bz-ok-step__n">01</span>
-              <div>
-                <h2>प्राप्त</h2>
-                <p>आपने जो भेजा था वह हमें मिल गया है.</p>
-              </div>
-            </li>
-            <li class="bz-ok-step">
-              <span class="bz-ok-step__n">02</span>
-              <div>
-                <h2>समीक्षा</h2>
-                <p>हम परियोजना और सहयोग विवरण की समीक्षा करते हैं।</p>
-              </div>
-            </li>
-            <li class="bz-ok-step">
-              <span class="bz-ok-step__n">03</span>
-              <div>
-                <h2>पालन ​​करें</h2>
-                <p>यदि आवश्यकता हुई, तो हम आपके द्वारा दिए गए ईमेल पर आपसे संपर्क करेंगे।</p>
-              </div>
-            </li>
-          </ol>
-
-          <div id="bz-ok-summary" hidden>
-            <hr class="bz-ok-rule" />
+          <div id="bz-ok-summary" class="bz-ok-block" hidden>
             <p class="bz-ok-label">पूछताछ सारांश</p>
             <dl class="bz-ok-dl">
               <div>
@@ -648,35 +412,40 @@
             </dl>
           </div>
 
-          <hr class="bz-ok-rule" />
-
           <div class="bz-ok-cta">
             <a class="btn btn-primary" href="../../../portfolio/">पोर्टफोलियो ब्राउज़ करें →</a>
             <a class="btn btn-ghost" href="../../">व्यवसाय पर वापस</a>
           </div>
           <a class="bz-ok-home" href="../../../">घर जाओ</a>
 
-          <hr class="bz-ok-rule" />
-
-          <p class="bz-ok-explore-title">जब आप प्रतीक्षा करें, तो Newon के चारों ओर देखें।</p>
-          <div class="bz-ok-cards">
-            <a class="bz-ok-card" href="../../../portfolio/">
-              <h2>पोर्टफोलियो</h2>
-              <p>Newon द्वारा बनाए गए उत्पाद और प्रोजेक्ट देखें।</p>
-              <span>पोर्टफोलियो →</span>
-            </a>
-            <a class="bz-ok-card" href="../../">
-              <h2>व्यापार</h2>
-              <p>देखें कि आप किस तरह से Newon के साथ सहयोग कर सकते हैं।</p>
-              <span>व्यवसाय →</span>
-            </a>
+          <div class="bz-ok-explore">
+            <p class="bz-ok-label">और देखें</p>
+            <p class="bz-ok-explore-title">जब आप प्रतीक्षा करें, तो Newon के चारों ओर देखें।</p>
+            <div class="bz-ok-cards">
+              <a class="bz-ok-card" href="../../../portfolio/">
+                <span class="bz-ok-card__n">01</span>
+                <h2>पोर्टफोलियो</h2>
+                <p>Newon द्वारा बनाए गए उत्पाद और प्रोजेक्ट देखें।</p>
+                <span>पोर्टफोलियो →</span>
+              </a>
+              <a class="bz-ok-card" href="../../">
+                <span class="bz-ok-card__n">02</span>
+                <h2>व्यापार</h2>
+                <p>देखें कि आप किस तरह से Newon के साथ सहयोग कर सकते हैं।</p>
+                <span>व्यवसाय →</span>
+              </a>
+            </div>
           </div>
         </section>
 
         <section class="bz-ok-empty" id="bz-empty">
           <p class="bz-ok-kicker">[[[टी0]]] / व्यवसाय</p>
-          <h1 class="bz-ok-title" id="bz-empty-title" tabindex="-1">व्यापार जांच</h1>
-          <p class="bz-ok-lead">हमें किसी नए प्रोजेक्ट या सहयोग के बारे में बताएं.</p>
+          <div class="bz-ok-status">
+            <h1 class="bz-ok-title" id="bz-empty-title" tabindex="-1">व्यापार जांच</h1>
+            <div class="bz-ok-status__copy">
+              <p class="bz-ok-lead">हमें किसी नए प्रोजेक्ट या सहयोग के बारे में बताएं.</p>
+            </div>
+          </div>
           <div class="bz-ok-cta">
             <a class="btn btn-primary" id="bz-empty-cta" href="../../#inquiry">पूछताछ शुरू करें →</a>
           </div>
@@ -684,29 +453,7 @@
       </div>
     </main>
 
-    <footer class="site-footer studio-footer">
-      <div class="container studio-footer__grid studio-footer__grid--five">
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Products</p>
-      <ul class="studio-footer__list"><li><a href="../../../apps/">Apps</a></li><li><a href="../../../ai/">AI</a></li><li><a href="../../../games/">Games</a></li><li><a href="../../../tools/">Tools</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Business</p>
-      <ul class="studio-footer__list"><li><a href="../../../business/build/">निर्माण</a></li><li><a href="../../../business/automation/">Automation</a></li><li><a href="../../../business/research/">Research</a></li><li><a href="../../../business/solutions/">Solutions</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">STUDIO</p>
-      <ul class="studio-footer__list"><li><a href="../../../studio/brand/">ब्रांड</a></li><li><a href="../../../studio/digital/">Digital</a></li><li><a href="../../../studio/content/">सामग्री</a></li><li><a href="../../../studio/ip/">IP</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Resources</p>
-      <ul class="studio-footer__list"><li><a href="../../../resources/store/">Store</a></li><li><a href="../../../resources/insights/">Insights</a></li><li><a href="../../../resources/blog/">Blog</a></li><li><a href="../../../resources/labs/">Labs</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Company</p>
-      <ul class="studio-footer__list"><li><a href="../../../about/">Newon परिचय</a></li><li><a href="../../../portfolio/">[[[टी0]]] पोर्टफोलियो</a></li><li><a href="../../../news/">News</a></li><li><a href="../../../media/">Media</a></li><li><a href="../../../contact/">संपर्क</a></li></ul>
-    </div>
-      </div>
+    <footer class="site-footer studio-footer studio-footer--compact">
       <div class="container studio-footer__bottom studio-footer__bottom--brand">
         <div class="studio-footer__brand-row">
           <img class="studio-footer__logo" src="/logo.png" alt="" width="28" height="28" decoding="async" />
@@ -737,6 +484,6 @@
     <script src="/business/inquiry.js"></script>
     <script src="/portfolio/portfolio.js"></script>
     <script src="/lang-dropdown.js"></script>
-      <script src="/site-chrome.js?v=20260826gnav5" defer></script>
+    <script src="/site-chrome.js?v=20260826gnav5" defer></script>
   </body>
 </html>

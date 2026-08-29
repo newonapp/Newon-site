@@ -61,10 +61,11 @@
       root.querySelector("[data-rs-filter-empty]");
     if (!grid) return;
 
-    function setEmptyVisible(show) {
+    function setEmptyVisible(show, filtered) {
       if (!empty) return;
-      empty.hidden = !show;
-      if (show) {
+      var on = show && filtered;
+      empty.hidden = !on;
+      if (on) {
         empty.removeAttribute("hidden");
         empty.setAttribute("aria-hidden", "false");
       } else {
@@ -119,7 +120,7 @@
         });
       }
 
-      setEmptyVisible(visible === 0);
+      setEmptyVisible(visible === 0, key !== "all");
 
       if (pushUrl && window.history && window.history.replaceState) {
         try {
@@ -164,10 +165,11 @@
     var empty = archive.querySelector("[data-rs-lab-empty]");
     if (!bar || !grid) return;
 
-    function setLabEmptyVisible(show) {
+    function setLabEmptyVisible(show, filtered) {
       if (!empty) return;
-      empty.hidden = !show;
-      if (show) {
+      var on = show && filtered;
+      empty.hidden = !on;
+      if (on) {
         empty.removeAttribute("hidden");
         empty.setAttribute("aria-hidden", "false");
       } else {
@@ -190,7 +192,7 @@
         item.hidden = !match;
         if (match) visible += 1;
       });
-      setLabEmptyVisible(visible === 0);
+      setLabEmptyVisible(visible === 0, key !== "all");
       if (push && window.history && window.history.replaceState) {
         try {
           var url = new URL(window.location.href);
@@ -236,7 +238,10 @@
         item.hidden = !match;
         if (match) visible += 1;
       });
-      if (empty) empty.hidden = visible > 0;
+      if (empty) {
+        empty.hidden = !(visible === 0 && status !== "all");
+        empty.setAttribute("aria-hidden", empty.hidden ? "true" : "false");
+      }
     });
   });
 
@@ -297,10 +302,17 @@
 
     function renderHits(hits, q) {
       if (!results) return;
-      if (!q) {
+      var hasQuery = Boolean(String(q || "").trim());
+      var typeFiltered = activeType !== "all";
+      var filtered = hasQuery || typeFiltered;
+      if (!filtered) {
         results.hidden = true;
         results.innerHTML = "";
-        if (emptyEl) emptyEl.hidden = true;
+        if (emptyEl) {
+          emptyEl.hidden = true;
+          emptyEl.setAttribute("hidden", "");
+          emptyEl.setAttribute("aria-hidden", "true");
+        }
         if (suggestEl) suggestEl.hidden = false;
         return;
       }
@@ -308,10 +320,18 @@
       if (hits.length === 0) {
         results.hidden = true;
         results.innerHTML = "";
-        if (emptyEl) emptyEl.hidden = false;
+        if (emptyEl) {
+          emptyEl.hidden = false;
+          emptyEl.removeAttribute("hidden");
+          emptyEl.setAttribute("aria-hidden", "false");
+        }
         return;
       }
-      if (emptyEl) emptyEl.hidden = true;
+      if (emptyEl) {
+        emptyEl.hidden = true;
+        emptyEl.setAttribute("hidden", "");
+        emptyEl.setAttribute("aria-hidden", "true");
+      }
       results.hidden = false;
       results.innerHTML = hits
         .map(function (it) {
@@ -333,10 +353,11 @@
       var q = String(input.value || "")
         .trim()
         .toLowerCase();
+      var typeFiltered = activeType !== "all";
       var hits = items.filter(function (it) {
         var typeOk = activeType === "all" || String(it.type || "") === activeType;
         if (!typeOk) return false;
-        if (!q) return false;
+        if (!q) return typeFiltered;
         return (
           String(it.title || "")
             .toLowerCase()
@@ -370,6 +391,7 @@
         runSearch();
       });
     }
+    runSearch();
 
     document.addEventListener("keydown", function (ev) {
       var meta = ev.metaKey || ev.ctrlKey;

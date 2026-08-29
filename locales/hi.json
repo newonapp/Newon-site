@@ -539,7 +539,21 @@
     "statExperiments": "Experiments",
     "statApps": "ऐप्स",
     "explore7Title": "Media",
-    "explore7Body": "Product, process, and stories — recorded on video."
+    "explore7Body": "Product, process, and stories — recorded on video.",
+    "heroEyebrowLine1": "NEWON",
+    "heroEyebrowLine2": "PRODUCT & VENTURE STUDIO",
+    "heroTitleHtml": "Build ideas.<br />Validate in products.",
+    "heroLeadNew": "Newon builds apps, AI, games, and web products — and partners with companies to design digital services and new business possibilities.",
+    "btnWorkWithNewon": "WORK WITH NEWON →",
+    "btnWorkWithNewonAria": "Work with Newon — business inquiry",
+    "heroEcoProducts": "उत्पादों",
+    "heroEcoProductsItems": "Apps / AI / Games / Tools",
+    "heroEcoBusiness": "BUSINESS",
+    "heroEcoBusinessItems": "Build / Automation / Research / Solutions",
+    "heroEcoStudio": "STUDIO",
+    "heroEcoStudioItems": "Brand / Digital / Content / IP",
+    "heroEcoLabs": "LABS",
+    "heroEcoLabsItems": "Research / Prototype / Testing"
   },
   "footer": {
     "privacy": "गोपनीयता नीति",
@@ -3525,7 +3539,8 @@
       "exploreBusinessGo": "व्यवसाय →",
       "emptyTitle": "व्यापार जांच",
       "emptyLead": "हमें किसी नए प्रोजेक्ट या सहयोग के बारे में बताएं.",
-      "emptyCta": "पूछताछ शुरू करें →"
+      "emptyCta": "पूछताछ शुरू करें →",
+      "exploreLabel": "और देखें"
     },
     "ind1En": "जीवन शैली",
     "ind2En": "परिवार",
@@ -3606,7 +3621,18 @@
     "inquiryExploreResourcesEyebrow": "RESOURCES",
     "inquiryExploreResourcesTitle": "Explore Resources",
     "inquiryExploreResourcesBody": "Browse the store, insights, tools, media, and more.",
-    "inquiryExploreResourcesCta": "View Resources →"
+    "inquiryExploreResourcesCta": "View Resources →",
+    "heroCrumbLeft": "व्यापार",
+    "heroCrumbRight": "INQUIRY",
+    "heroEyebrowRole": "Project Inquiry",
+    "heroDomainsAria": "What we build together",
+    "heroDomain1": "ऐप्स",
+    "heroDomain2": "Web",
+    "heroDomain3": "एमवीपी",
+    "heroDomain4": "AI",
+    "heroCardAria": "Newon डिजिटल कार्ड खोलें",
+    "heroCardAlt": "Newon digital card",
+    "heroCardHint": "Digital card · tap to open"
   },
   "businessPages": {
     "common": {

@@ -254,47 +254,10 @@ export function renderCompanySwitcher(_flat, _flatEn, _opts = {}) {
 
 export function renderStudioFooter(flat, flatEn, { base = "../" } = {}) {
   const tf = (k, fb) => escapeHtml(pick(flat, flatEn, k) || fb);
-  const b = base || "../";
+  const b = base == null ? "../" : base;
   const resolve = (h) => (h.startsWith("../") ? b + h.slice(3) : h);
-  const col = (titleKey, links, titleFb) => `<div class="studio-footer__col">
-      <p class="studio-footer__title">${tf(titleKey, titleFb || titleKey)}</p>
-      <ul class="studio-footer__list">${links.map(([k, h, fb]) => `<li><a href="${resolve(h)}">${tf(k, fb || k)}</a></li>`).join("")}</ul>
-    </div>`;
 
-  return `<footer class="site-footer studio-footer">
-      <div class="container studio-footer__grid studio-footer__grid--five">
-        ${col("footer.colProducts", [
-          ["footer.linkApps", "../apps/", "Apps"],
-          ["footer.linkAi", "../ai/", "AI"],
-          ["footer.linkGames", "../games/", "Games"],
-          ["footer.linkTools", "../tools/", "Tools"],
-        ], "PRODUCTS")}
-        ${col("footer.colBusiness", [
-          ["footer.linkBuild", "../business/build/", "Build"],
-          ["footer.linkAutomation", "../business/automation/", "Automation"],
-          ["footer.linkResearch", "../business/research/", "Research"],
-          ["footer.linkSolutions", "../business/solutions/", "Solutions"],
-        ], "BUSINESS")}
-        ${col("footer.colStudio", [
-          ["footer.linkBrand", "../studio/brand/", "Brand"],
-          ["footer.linkDigital", "../studio/digital/", "Digital"],
-          ["footer.linkContent", "../studio/content/", "Content"],
-          ["footer.linkIp", "../studio/ip/", "IP"],
-        ], "STUDIO")}
-        ${col("footer.colResources", [
-          ["footer.linkStore", "../resources/store/", "Store"],
-          ["footer.linkInsights", "../resources/insights/", "Insights"],
-          ["footer.linkBlog", "../resources/blog/", "Blog"],
-          ["footer.linkLabs", "../resources/labs/", "Labs"],
-        ], "RESOURCES")}
-        ${col("footer.colCompany", [
-          ["footer.about", "../about/", "About"],
-          ["footer.portfolio", "../portfolio/", "Portfolio"],
-          ["nav.newsUpdates", "../news/", "News"],
-          ["footer.linkMedia", "../media/", "Media"],
-          ["nav.contact", "../contact/", "Contact"],
-        ], "COMPANY")}
-      </div>
+  return `<footer class="site-footer studio-footer studio-footer--compact">
       <div class="container studio-footer__bottom studio-footer__bottom--brand">
         <div class="studio-footer__brand-row">
           <img class="studio-footer__logo" src="/logo.png" alt="" width="28" height="28" decoding="async" />

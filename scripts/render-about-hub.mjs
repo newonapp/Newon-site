@@ -162,6 +162,12 @@ for (const { dir, file, htmlLang } of LANGS) {
   pt = pt.replace(/\{\{JS_META_DESCRIPTION\}\}/g, JSON.stringify(seo.metaDescription));
   pt = pt.replace(/\{\{ABOUT_BODY\}\}/g, body);
   pt = applyTemplate(pt, flat, flatEn);
+  if (seo.metaKeywords) {
+    pt = pt.replace(
+      /<meta name="keywords" content="[^"]*" \/>/,
+      `<meta name="keywords" content="${escapeHtml(seo.metaKeywords)}" />`
+    );
+  }
   pt = injectSiteChrome(pt, flat, flatEn, { activeNav: "company", companySwitch: "about" });
 
   const pd = path.join(ROOT, dir, "about");

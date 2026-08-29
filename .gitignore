@@ -26,10 +26,15 @@ promo/frames/
 .ncard-*.png
 .logo-opt-bak/
 _preview-*.html
+_preview-shots/
 app-icons.zip
 newon-wordmark-chrome-white.png
 .chrome-shot/
+.chrome-shot-tmp/
 .chrome-tmp*/
+.chrome-ps-test/
+.chrome-*-test*/
+.chrome-bp-test*/
 
 # Exported KO screenshot packs (derived from i18n-img / subping-img)
 screenshots-ko/

@@ -38,12 +38,14 @@
     <link rel="stylesheet" href="/styles.css?v=20260828btn1" />
     <link rel="stylesheet" href="/gnav-mega.css?v=20260828btn1" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
-    <link rel="stylesheet" href="/site-premium.css?v=20260828btn1" />
+    <link rel="stylesheet" href="/site-premium.css?v=20260830notify1" />
     <link rel="stylesheet" href="/business-type.css?v=20260827type4" />
-    <link rel="stylesheet" href="/business-service.css?v=20260828store2" />
+    <link rel="stylesheet" href="/business-service.css?v=20260829storeviz1" />
     <script src="/theme-shell.js"></script>
     <script src="/analytics.js?v=20260825studio" defer></script>
     <script src="/lang-nav.js?v=20260821stay2"></script>
+    <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
+
   </head>
   <body>
     <a class="skip-link" href="#bs-main">Skip to content</a>
@@ -274,7 +276,7 @@
         <span class="gnav-mega__row-desc">영상 · 제품 스토리 · 비주얼</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../../contact/" role="menuitem">
+    </a><a class="gnav-mega__row" href="../../business/inquiry/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">05</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">문의</span>
@@ -324,7 +326,7 @@
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">회사<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../about/">Newon 소개</a><a class="gnav-mobile__sublink" href="../../portfolio/">포트폴리오</a><a class="gnav-mobile__sublink" href="../../news/">뉴스</a><a class="gnav-mobile__sublink" href="../../media/">미디어</a><a class="gnav-mobile__sublink" href="../../contact/">문의</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../about/">Newon 소개</a><a class="gnav-mobile__sublink" href="../../portfolio/">포트폴리오</a><a class="gnav-mobile__sublink" href="../../news/">뉴스</a><a class="gnav-mobile__sublink" href="../../media/">미디어</a><a class="gnav-mobile__sublink" href="../../business/inquiry/">문의</a></div>
       </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <a class="gnav-mobile__cta btn btn-primary" href="../../business/inquiry/">프로젝트 문의</a>
@@ -366,25 +368,38 @@
     <div class="bs-visual bs-visual--studio bs-visual--biz-mvp" aria-hidden="true">
   <div class="bs-sv">
     <div class="bs-sv__head">
-      <span class="bs-sv__live"><i></i> MVP BUILD PIPELINE</span>
+      <span class="bs-sv__live"><i></i> MVP BUILD BOARD</span>
       <span class="bs-sv__meta">BUILD</span>
     </div>
     <div class="bs-sv__body">
       <div class="bs-sv-biz-mvp">
-        <ol class="bs-sv-biz-mvp__steps">
-          <li><span>01</span><strong>IDEA</strong></li>
-          <li><span>02</span><strong>DEFINE</strong></li>
-          <li><span>03</span><strong>DESIGN</strong></li>
-          <li class="is-on"><span>04</span><strong>BUILD</strong></li>
-          <li><span>05</span><strong>TEST</strong></li>
-          <li><span>06</span><strong>LAUNCH</strong></li>
-        </ol>
-        <aside class="bs-sv-biz-mvp__status">
-          <p class="bs-sv__k">PROJECT STATUS</p>
+        <div class="bs-sv-biz-mvp__stage">
+          <div class="bs-sv-biz-mvp__phone">
+            <span class="bs-sv-biz-mvp__notch"></span>
+            <div class="bs-sv-biz-mvp__screen">
+              <p class="bs-sv__k">CORE FLOW</p>
+              <div class="bs-sv-biz-mvp__wire"><i class="is-on"></i><i></i><i></i></div>
+              <div class="bs-sv-biz-mvp__wire is-soft"><i></i><i class="is-on"></i></div>
+              <span class="bs-sv-biz-mvp__cta">Primary CTA</span>
+            </div>
+          </div>
+          <ol class="bs-sv-biz-mvp__steps">
+            <li><span>01</span><strong>IDEA</strong></li>
+            <li><span>02</span><strong>DEFINE</strong></li>
+            <li><span>03</span><strong>DESIGN</strong></li>
+            <li class="is-on"><span>04</span><strong>BUILD</strong></li>
+            <li><span>05</span><strong>TEST</strong></li>
+            <li><span>06</span><strong>SHIP</strong></li>
+          </ol>
+        </div>
+        <aside class="bs-sv-biz-mvp__aside">
+          <p class="bs-sv__k">SCOPE</p>
+          <div class="bs-sv-biz-mvp__chips"><span class="is-on">Core</span><span>Later</span><span>Cut</span></div>
+          <p class="bs-sv__k">STATUS</p>
           <div class="bs-sv-biz-mvp__rows">
             <div><span>STAGE</span><strong>BUILD</strong></div>
-            <div><span>SCOPE</span><strong>CORE ONLY</strong></div>
-            <div><span>NEXT</span><strong>QA TEST</strong></div>
+            <div><span>FOCUS</span><strong>ONE FLOW</strong></div>
+            <div class="is-on"><span>NEXT</span><strong>TEST</strong></div>
           </div>
         </aside>
       </div></div>
@@ -424,12 +439,70 @@
       <h2 class="bs-title" id="bs-dr-caps-title">MVP 구축에 필요한 작업을
 한 구조로 진행합니다.</h2>
       <div class="bs-areas bs-areas--caps" data-variant="caps"><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">01</span><div class="bs-areas__copy"><h3>PROBLEM FRAMING</h3><p>해결할 문제, 주요 사용자, 검증 질문을 정의합니다.<br />MVP에 넣을 것과 빼야 할 것을 명확히 합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">02</span><div class="bs-areas__copy"><h3>SCOPE DEFINITION</h3><p>첫 버전에 필요한 핵심 기능만 남깁니다.<br />Core / Next / Later로 우선순위를 구분합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">03</span><div class="bs-areas__copy"><h3>UX / UI DESIGN</h3><p>화면 단위가 아니라 사용자 목표 달성 경로를 설계합니다.<br />실제 제품 인터페이스를 만듭니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">04</span><div class="bs-areas__copy"><h3>PRODUCT BUILD</h3><p>Web 또는 App MVP를 구현합니다.<br />데모가 아닌 동작하는 제품을 만듭니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">05</span><div class="bs-areas__copy"><h3>BACKEND &amp; DATA</h3><p>로그인, 저장, 조회 등 검증에 필요한 최소 서버·데이터 구조를 포함합니다.<br />실제 사용 시나리오를 지원합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">06</span><div class="bs-areas__copy"><h3>INTEGRATIONS</h3><p>결제, 알림, API, 외부 서비스 등 MVP에 필요한 연동을 구현합니다.<br />범위 내에서만 포함합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">07</span><div class="bs-areas__copy"><h3>QA &amp; LAUNCH</h3><p>핵심 시나리오를 검수하고 실제 환경에 배포합니다.<br />팀·초기 사용자에게 공유할 수 있게 합니다.</p></div></article><article class="bs-areas__item"><span class="bs-areas__n" aria-hidden="true">08</span><div class="bs-areas__copy"><h3>NEXT-STEP ROADMAP</h3><p>MVP 이후 확장·보류·폐기 항목을 정리합니다.<br />검증 결과를 다음 BUILD 단계로 연결합니다.</p></div></article></div>
-    </div></section><section class="bs-section" data-bs-part="usecases" data-bs-reveal aria-labelledby="bs-dr-areas-title"><div class="bs-inner">
-      <p class="bs-eyebrow">활용 예시</p>
-      <h2 class="bs-title" id="bs-dr-areas-title">이런 MVP를 만들 수 있습니다.</h2>
-      <p class="bs-mono bs-dr-badge">구축 가능 예시</p>
-      <div class="bs-type-grid" data-variant="types"><article class="bs-type-grid__item"><h3>WEB MVP</h3><p>웹에서 바로 쓰는 핵심 플로우.<br />가입·사용·전환까지 검증 가능한 첫 버전.</p></article><article class="bs-type-grid__item"><h3>MOBILE APP MVP</h3><p>모바일에서만 성립하는 습관·알림·현장 경험.<br />iOS·Android 첫 출시.</p></article><article class="bs-type-grid__item"><h3>INTERNAL TOOL MVP</h3><p>팀이 매일 쓰는 운영 도구의 첫 버전.<br />속도와 정확도 우선.</p></article><article class="bs-type-grid__item"><h3>AI PRODUCT MVP</h3><p>반복 업무를 줄이는 AI 기능.<br />모델보다 워크플로와 검증에 집중.</p></article><article class="bs-type-grid__item"><h3>CLICKABLE PROTOTYPE</h3><p>투자·팀 설득용 클릭 가능한 시연.<br />빠르게, 선명하게.</p></article><article class="bs-type-grid__item"><h3>LANDING + PRODUCT</h3><p>설득용 랜딩과 실제 제품 진입을 한 흐름으로.<br />전환과 사용을 함께 검증.</p></article><article class="bs-type-grid__item"><h3>SAAS MVP</h3><p>구독·권한·관리 기능을 포함한 SaaS 첫 버전.<br />핵심 가치 흐름 중심.</p></article><article class="bs-type-grid__item"><h3>MARKETPLACE MVP</h3><p>다중 사용자·역할이 있는 플랫폼형 첫 버전.<br />목록·매칭·기본 관리 포함.</p></article></div>
-    </div></section><section class="bs-section bs-section--surface" data-bs-reveal id="workflow" aria-labelledby="bs-dr-flow-title"><div class="bs-inner">
+    </div></section><section class="bs-section bs-usecases" data-bs-part="usecases" data-bs-reveal aria-labelledby="bs-dr-areas-title">
+      <div class="bs-usecases__head bs-inner">
+        <p class="bs-eyebrow">활용 예시</p>
+        <h2 class="bs-title" id="bs-dr-areas-title">이런 MVP를 만들 수 있습니다.</h2>
+        <p class="bs-mono bs-dr-badge">구축 가능 예시</p>
+      </div>
+      <div class="bs-use-board" data-count="8"><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">01</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">WEB MVP</h3>
+        <p class="bs-use-board__body">웹에서 바로 쓰는 핵심 플로우.<br />가입·사용·전환까지 검증 가능한 첫 버전.</p>
+      </article><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">02</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">MOBILE APP MVP</h3>
+        <p class="bs-use-board__body">모바일에서만 성립하는 습관·알림·현장 경험.<br />iOS·Android 첫 출시.</p>
+      </article><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">03</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">INTERNAL TOOL MVP</h3>
+        <p class="bs-use-board__body">팀이 매일 쓰는 운영 도구의 첫 버전.<br />속도와 정확도 우선.</p>
+      </article><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">04</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">AI PRODUCT MVP</h3>
+        <p class="bs-use-board__body">반복 업무를 줄이는 AI 기능.<br />모델보다 워크플로와 검증에 집중.</p>
+      </article><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">05</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">CLICKABLE PROTOTYPE</h3>
+        <p class="bs-use-board__body">투자·팀 설득용 클릭 가능한 시연.<br />빠르게, 선명하게.</p>
+      </article><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">06</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">LANDING + PRODUCT</h3>
+        <p class="bs-use-board__body">설득용 랜딩과 실제 제품 진입을 한 흐름으로.<br />전환과 사용을 함께 검증.</p>
+      </article><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">07</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">SAAS MVP</h3>
+        <p class="bs-use-board__body">구독·권한·관리 기능을 포함한 SaaS 첫 버전.<br />핵심 가치 흐름 중심.</p>
+      </article><article class="bs-use-board__item">
+        <div class="bs-use-board__meta">
+          <span class="bs-use-board__n" aria-hidden="true">08</span>
+          
+        </div>
+        <h3 class="bs-use-board__title">MARKETPLACE MVP</h3>
+        <p class="bs-use-board__body">다중 사용자·역할이 있는 플랫폼형 첫 버전.<br />목록·매칭·기본 관리 포함.</p>
+      </article></div>
+    </section><section class="bs-section bs-section--surface" data-bs-reveal id="workflow" aria-labelledby="bs-dr-flow-title"><div class="bs-inner">
       <p class="bs-eyebrow">예시 워크플로</p>
       <h2 class="bs-title" id="bs-dr-flow-title">IDEA → BUILD → LAUNCH</h2>
       <div class="bs-flow-stage-grid bs-flow-stage-grid--flow" data-cols="3" data-variant="flow"><article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">01</span><div class="bs-flow-stage-grid__copy"><h3>IDEA</h3><p>아이디어와 해결하려는 문제를 정리합니다.<br />검증 질문과 성공 기준을 함께 정의합니다.</p><ul class="bs-flow-stage-chips"><li>문제</li><li>사용자</li><li>가설</li></ul></div></article><article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">02</span><div class="bs-flow-stage-grid__copy"><h3>SCOPE</h3><p>첫 버전에 필요한 핵심 기능을 결정합니다.<br />넣을 것과 빼야 할 것을 명확히 구분합니다.</p><ul class="bs-flow-stage-chips"><li>Core</li><li>Next</li><li>Later</li></ul></div></article><article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">03</span><div class="bs-flow-stage-grid__copy"><h3>DESIGN</h3><p>사용자의 핵심 흐름과 인터페이스를 설계합니다.<br />화면 구조와 UX를 확정합니다.</p><ul class="bs-flow-stage-chips"><li>플로우</li><li>UI</li><li>화면</li></ul></div></article><article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">04</span><div class="bs-flow-stage-grid__copy"><h3>BUILD</h3><p>작동하는 제품을 개발합니다.<br />핵심 기능·백엔드·연동을 구현합니다.</p><ul class="bs-flow-stage-chips"><li>Frontend</li><li>Backend</li><li>API</li></ul></div></article><article class="bs-flow-stage-grid__item"><span class="bs-flow-stage-grid__n" aria-hidden="true">05</span><div class="bs-flow-stage-grid__copy"><h3>LAUNCH</h3><p>테스트 후 실제 환경에 배포합니다.<br />다음 단계 로드맵을 함께 전달합니다.</p><ul class="bs-flow-stage-chips"><li>Deploy</li><li>Share</li><li>Feedback</li></ul></div></article></div>
@@ -595,29 +668,7 @@
     </a></div>
   </section>
     </main>
-    <footer class="site-footer studio-footer">
-      <div class="container studio-footer__grid studio-footer__grid--five">
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Products</p>
-      <ul class="studio-footer__list"><li><a href="../../apps/">Apps</a></li><li><a href="../../ai/">AI</a></li><li><a href="../../games/">Games</a></li><li><a href="../../tools/">Tools</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Business</p>
-      <ul class="studio-footer__list"><li><a href="../../business/build/">Build</a></li><li><a href="../../business/automation/">Automation</a></li><li><a href="../../business/research/">Research</a></li><li><a href="../../business/solutions/">Solutions</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">STUDIO</p>
-      <ul class="studio-footer__list"><li><a href="../../studio/brand/">Brand</a></li><li><a href="../../studio/digital/">Digital</a></li><li><a href="../../studio/content/">Content</a></li><li><a href="../../studio/ip/">IP</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Resources</p>
-      <ul class="studio-footer__list"><li><a href="../../resources/store/">Store</a></li><li><a href="../../resources/insights/">Insights</a></li><li><a href="../../resources/blog/">Blog</a></li><li><a href="../../resources/labs/">Labs</a></li></ul>
-    </div>
-        <div class="studio-footer__col">
-      <p class="studio-footer__title">Company</p>
-      <ul class="studio-footer__list"><li><a href="../../about/">Newon 회사 소개</a></li><li><a href="../../portfolio/">Newon 포트폴리오</a></li><li><a href="../../news/">뉴스</a></li><li><a href="../../media/">Media</a></li><li><a href="../../contact/">문의</a></li></ul>
-    </div>
-      </div>
+    <footer class="site-footer studio-footer studio-footer--compact">
       <div class="container studio-footer__bottom studio-footer__bottom--brand">
         <div class="studio-footer__brand-row">
           <img class="studio-footer__logo" src="/logo.png" alt="" width="28" height="28" decoding="async" />

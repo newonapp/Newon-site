@@ -99,6 +99,5 @@ ${helpers.resourceSwitcher("blog", copies)}
   <div class="rs-inner">${archive}</div>
 </section>
 ${cta}
-</div>
-${helpers.exploreGrid(copies, "../", "blog")}`;
+</div>`;
 }

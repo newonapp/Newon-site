@@ -147,9 +147,8 @@ const showcaseRep = `<section
                     alt="{{t:np.imgShot1Alt}}"
                     width="576"
                     height="1024"
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
-                    fetchpriority="high"
                   />
                 </figure>
                 <figure class="sp-showcase-scroll__item">
@@ -158,7 +157,7 @@ const showcaseRep = `<section
                     alt="{{t:np.imgShot2Alt}}"
                     width="576"
                     height="1024"
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
                   />
                 </figure>

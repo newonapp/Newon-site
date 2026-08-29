@@ -73,7 +73,7 @@ function heroMosaic(apps) {
     ${picks
       .map(
         (a, i) =>
-          `<span class="apps-hero__mosaic-item" style="--i:${i};--apps-tint:${escapeHtml(a.tint)}"><img src="${escapeHtml(a.icon)}" alt="" width="72" height="72" loading="eager" decoding="async" /></span>`
+          `<span class="apps-hero__mosaic-item" style="--i:${i};--apps-tint:${escapeHtml(a.tint)}"><img src="${escapeHtml(a.icon)}" alt="" width="72" height="72" loading="lazy" decoding="async" /></span>`
       )
       .join("")}
   </div>`;
@@ -93,7 +93,7 @@ function appCard(app, flat, flatEn, index) {
     <p class="apps-card__tagline">${escapeHtml(app.tagline)}</p>
     ${featureTags(app.features)}
     <div class="apps-card__foot">
-      <a class="apps-card__cta" href="${escapeHtml(app.detailUrl)}">${t(flat, flatEn, "studio.appsLearnMore", "Learn more")} <span aria-hidden="true">→</span></a>
+      <a class="apps-card__cta" href="${escapeHtml(app.homeUrl)}">${t(flat, flatEn, "studio.appsLearnMore", "Learn more")} <span aria-hidden="true">→</span></a>
       ${storeLinks(app, flat, flatEn)}
     </div>
   </article>`;
@@ -130,7 +130,7 @@ function ecosystemBlock(app, allApps, flat, flatEn) {
         <p class="apps-eco__eyebrow">${t(flat, flatEn, "studio.appsEcoLabel", "NEWON+")}</p>
         <h2 class="apps-eco__title">${t(flat, flatEn, "studio.appsEcoTitle", "One account connects Newon services.")}</h2>
         <p class="apps-eco__lead">${escapeHtml(app.tagline)}</p>
-        <a class="btn btn-primary" href="${escapeHtml(app.detailUrl)}">${t(flat, flatEn, "studio.appsEcoCta", "Learn about Newon+")} →</a>
+        <a class="btn btn-primary" href="${escapeHtml(app.homeUrl)}">${t(flat, flatEn, "studio.appsEcoCta", "Learn about Newon+")} →</a>
       </div>
       <div class="apps-eco__visual">
         <div class="apps-eco__logo-wrap">
@@ -169,7 +169,7 @@ export function renderAppsShowcaseBody(flat, flatEn, lang) {
         <p class="apps-hero__lead">${t(flat, flatEn, "studio.appsHeroLead", "")}</p>
         <div class="apps-hero__actions">
           <a class="btn btn-primary" href="#apps-grid">${t(flat, flatEn, "studio.appsCtaBrowse", "Browse apps")} ↓</a>
-          <a class="btn btn-ghost" href="${escapeHtml(eco?.detailUrl || "../#newon-plus-app")}">${t(flat, flatEn, "studio.appsCtaNewonPlus", "Learn about Newon+")} →</a>
+          <a class="btn btn-ghost" href="${escapeHtml(eco?.homeUrl || "../#newon-plus-app")}">${t(flat, flatEn, "studio.appsCtaNewonPlus", "Learn about Newon+")} →</a>
         </div>
         <ul class="apps-hero__stats" aria-label="${t(flat, flatEn, "studio.appsStatsAria", "Product stats")}">
           <li><strong>${escapeHtml(count)}</strong><span>${t(flat, flatEn, "studio.appsStatApps", "Apps")}</span></li>
@@ -206,7 +206,7 @@ export function renderAppsShowcaseBody(flat, flatEn, lang) {
         <p class="apps-discover__lead">${t(flat, flatEn, "studio.appsDiscoverLead", "")}</p>
         <div class="apps-discover__actions">
           <a class="btn btn-primary apps-discover__btn" href="../products/">${t(flat, flatEn, "studio.appsDiscoverCtaProducts", "View all products")}</a>
-          <a class="btn btn-ghost apps-discover__btn apps-discover__btn--ghost" href="${escapeHtml(eco?.detailUrl || "../#newon-plus-app")}">${t(flat, flatEn, "studio.appsDiscoverCtaPlus", "Learn about Newon+")}</a>
+          <a class="btn btn-ghost apps-discover__btn apps-discover__btn--ghost" href="${escapeHtml(eco?.homeUrl || "../#newon-plus-app")}">${t(flat, flatEn, "studio.appsDiscoverCtaPlus", "Learn about Newon+")}</a>
         </div>
       </div>
       <div class="apps-discover__icons" aria-hidden="true">${discoverIcons(apps)}</div>

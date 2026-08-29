@@ -77,7 +77,10 @@
     }, 1500);
   }
 
-  function rowMarkup(icon, label, hint) {
+  function rowMarkup(icon, label, hint, goLabel) {
+    var go = goLabel
+      ? '<span class="ncard__go ncard__go--label" aria-hidden="true">' + goLabel + " →</span>"
+      : '<span class="ncard__go" aria-hidden="true"></span>';
     return (
       '<span class="ncard__icon">' +
       icon +
@@ -88,7 +91,7 @@
       "</span>" +
       (hint ? '<span class="ncard__hint">' + hint + "</span>" : "") +
       "</span>" +
-      '<span class="ncard__go" aria-hidden="true"></span>'
+      go
     );
   }
 
@@ -96,25 +99,25 @@
     var href = (item.href || "").trim();
     if (!href) {
       var disabled = el('<button type="button" class="ncard__item is-disabled" disabled></button>');
-      disabled.innerHTML = rowMarkup(icon, item.label, item.hint);
+      disabled.innerHTML = rowMarkup(icon, item.label, item.hint, item.goLabel);
       disabled.setAttribute("aria-label", item.label);
       return disabled;
     }
-    var a = el('<a class="ncard__item"></a>');
+    var a = el('<a class="ncard__item' + (item.primary ? " is-primary" : "") + '"></a>');
     a.href = href;
     if (item.external) {
       a.target = "_blank";
       a.rel = "noopener noreferrer";
     }
     a.setAttribute("aria-label", aria || item.label);
-    a.innerHTML = rowMarkup(icon, item.label, item.hint);
+    a.innerHTML = rowMarkup(icon, item.label, item.hint, item.goLabel);
     return a;
   }
 
   function makeContact(item, icon) {
     var details = el('<details class="ncard-details"></details>');
     var summary = el('<summary class="ncard__item"></summary>');
-    summary.setAttribute("aria-label", "Contact");
+    summary.setAttribute("aria-label", "연락처");
     summary.innerHTML = rowMarkup(icon, item.label, item.hint);
     details.appendChild(summary);
 
@@ -123,7 +126,7 @@
       el(
         '<a class="ncard-details__link" href="' +
           item.phoneHref +
-          '"><span class="ncard-details__kicker">Mobile</span><span class="ncard-details__value">' +
+          '"><span class="ncard-details__kicker">전화</span><span class="ncard-details__value">' +
           item.phone +
           "</span></a>"
       )
@@ -132,7 +135,7 @@
       el(
         '<a class="ncard-details__link" href="' +
           item.emailHref +
-          '"><span class="ncard-details__kicker">Email</span><span class="ncard-details__value">' +
+          '"><span class="ncard-details__kicker">이메일</span><span class="ncard-details__value">' +
           item.email +
           "</span></a>"
       )

@@ -28,18 +28,9 @@ export function resourcesHeroVisual(copy, navLabel = "", escapeHtml) {
   </aside>`;
   }
 
-  if (navLabel && parts[0]?.toUpperCase() !== navLabel.toUpperCase()) {
-    return `<aside class="bp-hero__visual bp-hero__visual--mark" aria-hidden="true">
-    <p class="bp-mark bp-mark--stack">
-      <span class="bp-mark__line">RESOURCES</span>
-      <span class="bp-mark__dot"></span>
-      <span class="bp-mark__line">${escapeHtml(navLabel)}</span>
-    </p>
-  </aside>`;
-  }
-
+  const single = parts[0] || navLabel || "RESOURCES";
   return `<aside class="bp-hero__visual bp-hero__visual--mark" aria-hidden="true">
-    <p class="bp-mark">${escapeHtml(mark)}</p>
+    <p class="bp-mark">${escapeHtml(single)}</p>
   </aside>`;
 }
 

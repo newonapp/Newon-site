@@ -971,3 +971,233 @@ html[data-newon-shell-theme="dark"] .hub-page:has(.apps-page) .studio-footer {
     transform: none;
   }
 }
+
+/* ============================================================
+   Apps — angular editorial pass (match other hubs)
+   ============================================================ */
+
+.apps-page {
+  --apps-card: #ffffff;
+  --apps-surface: #ffffff;
+}
+
+.apps-page :is(
+  .apps-hero__stat,
+  .apps-filter,
+  .apps-card,
+  .apps-card__icon-wrap,
+  .apps-card__icon,
+  .apps-featured__item,
+  .apps-featured__visual,
+  .apps-featured__visual img,
+  .apps-eco__panel,
+  .apps-eco__logo-wrap,
+  .apps-eco__orbit-item,
+  .apps-discover__icon,
+  .apps-hero__mosaic-item,
+  .apps-store__badge,
+  .apps-store__icon,
+  button,
+  .btn,
+  a.btn
+) {
+  border-radius: 0 !important;
+}
+
+.apps-filter {
+  border: 1px solid rgba(10, 10, 10, 0.16);
+  background: transparent;
+  color: #0a0a0a;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.apps-filter.is-active,
+.apps-filter:hover {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+  transform: none;
+}
+
+html[data-newon-shell-theme="dark"] .apps-filter {
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+html[data-newon-shell-theme="dark"] .apps-filter.is-active,
+html[data-newon-shell-theme="dark"] .apps-filter:hover {
+  background: #fff;
+  border-color: #fff;
+  color: #0a0a0a;
+}
+
+.apps-hero__stat {
+  border: 1px solid rgba(10, 10, 10, 0.12);
+  border-radius: 0 !important;
+  background: #fff;
+  box-shadow: none;
+}
+
+html[data-newon-shell-theme="dark"] .apps-hero__stat {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: #0a0a0a;
+}
+
+.apps-card,
+.apps-featured__item,
+.apps-eco__panel {
+  border: 1px solid rgba(10, 10, 10, 0.12);
+  border-radius: 0 !important;
+  box-shadow: none;
+  background: #fff;
+}
+
+html[data-newon-shell-theme="dark"] .apps-card,
+html[data-newon-shell-theme="dark"] .apps-featured__item,
+html[data-newon-shell-theme="dark"] .apps-eco__panel {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: #0a0a0a;
+}
+
+.apps-card:hover,
+.apps-featured__item:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: #0a0a0a;
+  background: #0a0a0a;
+  color: #fff;
+}
+
+.apps-card:hover .apps-card__name,
+.apps-card:hover .apps-card__tagline,
+.apps-card:hover .apps-card__cat,
+.apps-card:hover .apps-card__tags,
+.apps-card:hover .apps-card__cta,
+.apps-card:hover .apps-card__idx,
+.apps-card:hover .apps-store__label {
+  color: #fff;
+}
+
+.apps-card:hover .apps-card__icon-wrap {
+  border-color: #fff;
+  background: transparent;
+}
+
+html[data-newon-shell-theme="dark"] .apps-card:hover,
+html[data-newon-shell-theme="dark"] .apps-featured__item:hover {
+  background: #fff;
+  color: #0a0a0a;
+  border-color: #fff;
+}
+
+html[data-newon-shell-theme="dark"] .apps-card:hover .apps-card__name,
+html[data-newon-shell-theme="dark"] .apps-card:hover .apps-card__tagline,
+html[data-newon-shell-theme="dark"] .apps-card:hover .apps-card__cat,
+html[data-newon-shell-theme="dark"] .apps-card:hover .apps-card__tags,
+html[data-newon-shell-theme="dark"] .apps-card:hover .apps-card__cta,
+html[data-newon-shell-theme="dark"] .apps-card:hover .apps-card__idx,
+html[data-newon-shell-theme="dark"] .apps-card:hover .apps-store__label {
+  color: #0a0a0a;
+}
+
+.apps-card__icon-wrap,
+.apps-featured__visual,
+.apps-eco__logo-wrap,
+.apps-hero__mosaic-item {
+  border: 1px solid rgba(10, 10, 10, 0.12);
+  border-radius: 0 !important;
+  background: #fff;
+  box-shadow: none;
+}
+
+html[data-newon-shell-theme="dark"] .apps-card__icon-wrap,
+html[data-newon-shell-theme="dark"] .apps-featured__visual,
+html[data-newon-shell-theme="dark"] .apps-eco__logo-wrap,
+html[data-newon-shell-theme="dark"] .apps-hero__mosaic-item {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: #0a0a0a;
+}
+
+.apps-card__icon,
+.apps-featured__visual img,
+.apps-eco__orbit-item,
+.apps-discover__icon {
+  border-radius: 0 !important;
+  box-shadow: none;
+}
+
+.apps-store__badge {
+  border: 1px solid currentColor;
+  border-radius: 0 !important;
+}
+
+.apps-card__cta {
+  letter-spacing: 0.02em;
+  font-weight: 700;
+}
+
+.apps-discover {
+  border-radius: 0 !important;
+}
+
+.apps-discover__inner,
+.apps-eco__orbit-item img {
+  border-radius: 0 !important;
+}
+
+/* Force square chrome — correct selectors + clip logos */
+.apps-page *,
+.apps-page *::before,
+.apps-page *::after {
+  border-radius: 0 !important;
+}
+
+.apps-hero__stats li {
+  border-radius: 0 !important;
+  border: 1px solid rgba(10, 10, 10, 0.12);
+  background: #fff;
+}
+
+html[data-newon-shell-theme="dark"] .apps-hero__stats li {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: #0a0a0a;
+}
+
+.apps-hero__mosaic-item,
+.apps-card__icon-wrap,
+.apps-featured__visual,
+.apps-eco__logo-wrap,
+.apps-eco__orbit-item,
+.apps-discover__icon {
+  overflow: hidden !important;
+  border-radius: 0 !important;
+}
+
+.apps-hero__mosaic-item img,
+.apps-card__icon,
+.apps-featured__visual img,
+.apps-eco__logo-wrap img,
+.apps-eco__orbit-item img,
+.apps-discover__icon img {
+  border-radius: 0 !important;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hub-page:has(.apps-page) .btn,
+.hub-page:has(.apps-page) .btn-primary,
+.hub-page:has(.apps-page) .btn-ghost {
+  border-radius: 0 !important;
+}
+
+/* Also square global chrome while on apps page */
+.hub-page:has(.apps-page) .gnav .btn,
+.hub-page:has(.apps-page) .gnav .btn-primary,
+.hub-page:has(.apps-page) .gnav__lang-select,
+.hub-page:has(.apps-page) .gnav__theme {
+  border-radius: 0 !important;
+}

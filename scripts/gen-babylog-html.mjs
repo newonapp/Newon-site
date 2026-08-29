@@ -158,9 +158,8 @@ const preview = `        <section
                     alt="{{t:bl.imgShot1Alt}}"
                     width="520"
                     height="520"
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
-                    fetchpriority="high"
                   />
                 </figure>
                 <figure class="sp-showcase-scroll__item">
@@ -169,7 +168,7 @@ const preview = `        <section
                     alt="{{t:bl.imgShot2Alt}}"
                     width="520"
                     height="520"
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
                   />
                 </figure>
@@ -179,7 +178,7 @@ const preview = `        <section
                     alt="{{t:bl.imgShot3Alt}}"
                     width="520"
                     height="520"
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
                   />
                 </figure>
@@ -189,7 +188,7 @@ const preview = `        <section
                     alt="{{t:bl.imgShot4Alt}}"
                     width="520"
                     height="520"
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
                   />
                 </figure>
@@ -199,7 +198,7 @@ const preview = `        <section
                     alt="{{t:bl.imgShot5Alt}}"
                     width="520"
                     height="520"
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
                   />
                 </figure>
@@ -209,7 +208,7 @@ const preview = `        <section
                     alt="{{t:bl.imgShot6Alt}}"
                     width="520"
                     height="520"
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
                   />
                 </figure>
@@ -219,7 +218,7 @@ const preview = `        <section
                     alt="{{t:bl.imgShot7Alt}}"
                     width="520"
                     height="520"
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
                   />
                 </figure>

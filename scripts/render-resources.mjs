@@ -37,6 +37,14 @@ import { resourcesBreadcrumb, resourcesHeroBlock } from "./resources-hub-hero.mj
 import { buildRhExploreSection } from "./resources-explore-grid.mjs";
 import { insightsResearchSection } from "./insights-research-section.mjs";
 
+/** Insights research detail routes → Business Research (redirect-only; no full-page render). */
+const INSIGHTS_RESEARCH_REDIRECTS = {
+  "market-research": "business/market-research/",
+  "competitor-analysis": "business/competitor-analysis/",
+  "consumer-research": "business/consumer-research/",
+  "custom-report": "business/research/#custom",
+};
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const template = fs.readFileSync(path.join(ROOT, "templates", "resource.html"), "utf8");
 const bsTemplate = fs.readFileSync(path.join(ROOT, "templates", "business-service.html"), "utf8");
@@ -320,8 +328,7 @@ ${resourceSwitcher("store", copies)}
     <div class="rs-product-grid" data-rs-filter-grid>${cards}</div>
     <p class="rs-filter-empty" data-rs-filter-empty hidden>${escapeHtml(copy.emptyTitle || "")}</p>
   </div>
-</section>
-${exploreGrid(copies, "../", "store", lang)}`;
+</section>`;
 }
 
 function storeDetailBody(product, copies, lang) {
@@ -356,6 +363,10 @@ function renderStoreDetailHtml({
     activeNav: "resources",
     base: chromeBase,
   });
+  html = html.replace(
+    /business-service\.css\?v=[^"]+/g,
+    "business-service.css?v=20260830notify1"
+  );
   html = html.replace(
     '<script src="/business-service.js',
     '<script src="/waitlist.js" defer></script>\n    <script src="/business-service.js'
@@ -451,15 +462,19 @@ function renderLabDetailHtml({
   );
   html = html.replace(
     '<link rel="stylesheet" href="/business-service.css',
-    '<link rel="stylesheet" href="/labs-detail.css?v=20260828lx2" />\n    <link rel="stylesheet" href="/business-service.css'
+    '<link rel="stylesheet" href="/labs-detail.css?v=20260829lablive2" />\n    <link rel="stylesheet" href="/business-service.css'
   );
   html = injectSiteChrome(html, flat, flatEn, {
     activeNav: "resources",
     base: chromeBase,
   });
   html = html.replace(
+    /business-service\.css\?v=[^"]+/g,
+    "business-service.css?v=20260829lablive2"
+  );
+  html = html.replace(
     '<script src="/business-service.js',
-    '<script src="/labs-detail.js?v=20260828lx2" defer></script>\n    <script src="/business-service.js'
+    '<script src="/labs-detail.js?v=20260829lablive2" defer></script>\n    <script src="/business-service.js'
   );
   return html;
 }
@@ -483,7 +498,7 @@ function newsletterHubBody(copies, lang) {
 
   const archive =
     issues.length === 0
-      ? emptyState(copy.emptyTitle || copy.archiveTitle, copy.emptyLead)
+      ? `<div class="rs-empty" data-rs-reveal>${copy.emptyLead ? `<p class="rs-empty__lead">${escapeHtml(copy.emptyLead)}</p>` : ""}</div>`
       : `<ol class="rs-build-log">${issues
           .map((iss) => {
             const date = iss.publishedAt || iss.date || "";
@@ -508,11 +523,11 @@ ${heroBlock(copy)}
 ${resourceSwitcher("newsletter", copies)}
 <section class="rs-section" id="rs-content">
   <div class="rs-inner rs-newsletter">
-    <form class="rs-form rs-form--newsletter waitlist-form" data-waitlist-form data-form-type="newsletter" data-product-id="newsletter">
+    <form class="rs-form rs-form--newsletter waitlist-form nw-notify-form" data-waitlist-form data-form-type="newsletter" data-product-id="newsletter">
       <input type="hidden" name="productId" value="newsletter" />
-      <div class="rs-form__row">
-        <input type="email" name="email" placeholder="${escapeHtml(copy.formPlaceholder)}" required autocomplete="email" />
-        <button type="submit" class="rs-btn rs-btn--primary">${escapeHtml(copy.ctaPrimary)}</button>
+      <div class="rs-form__row nw-notify-form__row">
+        <input type="email" name="email" class="nw-notify-form__email" placeholder="${escapeHtml(copy.formPlaceholder)}" required autocomplete="email" />
+        <button type="submit" class="rs-btn rs-btn--primary nw-notify-form__btn">${escapeHtml(copy.ctaPrimary)}</button>
       </div>
       <input type="text" name="_honey" class="rs-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
     </form>
@@ -528,8 +543,7 @@ ${resourceSwitcher("newsletter", copies)}
     <p class="rs-eyebrow" style="margin-top:3rem">${escapeHtml(copy.archiveTitle || "ARCHIVE")}</p>
     ${archive}
   </div>
-</section>
-${exploreGrid(copies, "../", "newsletter", lang)}`;
+</section>`;
 }
 
 function educationHubBody(copies, lang) {
@@ -574,15 +588,15 @@ ${resourceSwitcher("education", copies)}
     </div>
     <p class="rs-eyebrow" style="margin-top:3rem">${escapeHtml(copy.topicsTitle)}</p>
     ${topicsByTrack}
-    <div class="rs-notify" data-rs-reveal>
+    <div class="rs-notify rs-notify--launch" data-rs-reveal>
       <p class="rs-eyebrow">${escapeHtml(copy.notifyTitle)}</p>
       <p class="rs-lead">${escapeHtml(copy.notifyLead)}</p>
-      <form class="rs-form waitlist-form" data-waitlist-form data-form-type="waitlist" data-product-id="education">
+      <form class="rs-form waitlist-form nw-notify-form" data-waitlist-form data-form-type="waitlist" data-product-id="education">
         <input type="hidden" name="productId" value="education" />
         <input type="hidden" name="interest" value="${escapeHtml(copy.interestHidden || "education")}" />
-        <div class="rs-form__row">
-          <input type="email" name="email" placeholder="${escapeHtml(copy.formPlaceholder)}" required autocomplete="email" />
-          <button type="submit" class="rs-btn rs-btn--primary">${escapeHtml(copy.ctaPrimary)}</button>
+        <div class="rs-form__row nw-notify-form__row">
+          <input type="email" name="email" class="nw-notify-form__email" placeholder="${escapeHtml(copy.formPlaceholder)}" required autocomplete="email" />
+          <button type="submit" class="rs-btn rs-btn--primary nw-notify-form__btn">${escapeHtml(copy.ctaPrimary)}</button>
         </div>
         <input type="text" name="_honey" class="rs-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
       </form>
@@ -591,8 +605,7 @@ ${resourceSwitcher("education", copies)}
       <p class="rs-form__msg rs-form__msg--error" data-waitlist-error hidden role="alert">${escapeHtml(copy.error)}</p>
     </div>
   </div>
-</section>
-${exploreGrid(copies, "../", "education", lang)}`;
+</section>`;
 }
 
 function insightsHubBody(copies, lang) {
@@ -606,6 +619,7 @@ function insightsHubBody(copies, lang) {
     .join("");
 
   let content = emptyState(copy.emptyTitle, copy.emptyLead);
+  const filterEmptyMsg = published.length ? copy.filterEmpty || "" : "";
   if (published.length) {
     content = published
       .map((a) => {
@@ -631,11 +645,10 @@ ${resourceSwitcher("insights", copies)}
     <p class="rs-eyebrow">${escapeHtml(copy.catalogTitle || "INSIGHT CATALOG")}</p>
     <div class="rs-filters" data-rs-filters>${filters}</div>
     <div data-rs-filter-grid>${content}</div>
-    <p class="rs-filter-empty" data-rs-filter-empty hidden>${escapeHtml(copy.emptyTitle || "")}</p>
+    ${published.length ? `<p class="rs-filter-empty" data-rs-filter-empty hidden>${escapeHtml(filterEmptyMsg)}</p>` : ""}
   </div>
 </section>
-${insightsResearchSection(copy, lang, { escapeHtml })}
-${exploreGrid(copies, "../", "insights", lang)}`;
+${insightsResearchSection(copy, lang, { escapeHtml })}`;
 }
 
 function insightSection(title, bodyHtml) {
@@ -695,7 +708,6 @@ ${jsonLdScript({
   datePublished: article.publishedAt || undefined,
   author: { "@type": "Organization", name: "Newon" },
 })}
-${exploreGrid(copies, "../../", "insights", lang)}
 ${resourceSwitcher("insights", copies, "../")}`;
 }
 
@@ -747,7 +759,6 @@ ${jsonLdScript({
   description: desc,
   uploadDate: item.publishedAt || item.date || undefined,
 })}
-${exploreGrid(copies, "../../", "media", lang)}
 ${resourceSwitcher("media", copies, "../")}`;
 }
 
@@ -792,7 +803,100 @@ function publishCopy(relPath) {
 }
 
 export function renderResources() {
+  const onlyArg = process.argv.find((a) => a.startsWith("--only="));
+  const only = onlyArg ? onlyArg.slice("--only=".length) : "";
   const flatEn = flatten(loadJson("en.json"));
+
+  if (only === "store") {
+    let count = 0;
+    for (const { dir, file, htmlLang } of LANGS) {
+      const flat = flatten(loadJson(file));
+      const lang = copyLang(dir);
+      const copies = getAllResourceCopies(lang);
+      for (const product of getStoreProducts()) {
+        const seo = storeDetailSeo(product, lang);
+        const html = renderStoreDetailHtml({
+          htmlLang,
+          ogLocale: OG_LOCALE[dir] || "en_US",
+          canonical: `${SITE_ORIGIN}/${dir}/resources/store/${product.slug}/`,
+          hreflang: hreflangBlock(`store/${product.slug}`),
+          seoTitle: seo.seoTitle,
+          metaDescription: seo.metaDescription,
+          serviceSlug: product.slug,
+          analyticsId: `store_${product.slug}`,
+          body: storeDetailBody(product, copies, lang),
+          flat,
+          flatEn,
+          chromeBase: "../../../",
+        });
+        writeFile(path.join(ROOT, dir, "resources", "store", product.slug, "index.html"), html);
+        count += 1;
+      }
+    }
+    const pub = path.join(ROOT, "_publish");
+    if (fs.existsSync(pub)) {
+      const css = path.join(ROOT, "business-service.css");
+      if (fs.existsSync(css)) fs.copyFileSync(css, path.join(pub, "business-service.css"));
+      for (const { dir } of LANGS) {
+        for (const product of getStoreProducts()) {
+          const src = path.join(ROOT, dir, "resources", "store", product.slug, "index.html");
+          if (!fs.existsSync(src)) continue;
+          const dest = path.join(pub, dir, "resources", "store", product.slug, "index.html");
+          fs.mkdirSync(path.dirname(dest), { recursive: true });
+          fs.copyFileSync(src, dest);
+        }
+      }
+    }
+    console.log(`render-resources: only=store; ${count} detail pages`);
+    return;
+  }
+
+  if (only === "labs") {
+    let count = 0;
+    for (const { dir, file, htmlLang } of LANGS) {
+      const flat = flatten(loadJson(file));
+      const lang = copyLang(dir);
+      const copies = getAllResourceCopies(lang);
+      for (const exp of getLabsExperiments()) {
+        const title = tField(exp, lang, "titleKo", "titleEn");
+        const desc = labDetailSeoDescription(exp, lang);
+        const html = renderLabDetailHtml({
+          htmlLang,
+          ogLocale: OG_LOCALE[dir] || "en_US",
+          canonical: `${SITE_ORIGIN}/${dir}/resources/labs/${exp.slug}/`,
+          hreflang: hreflangBlock(`labs/${exp.slug}`),
+          seoTitle: `${title} — Newon Labs | Newon`,
+          metaDescription: desc,
+          serviceSlug: exp.slug,
+          analyticsId: `labs_${exp.slug}`,
+          body: labDetailBody(exp, copies, lang),
+          flat,
+          flatEn,
+          chromeBase: "../../../",
+        });
+        writeFile(path.join(ROOT, dir, "resources", "labs", exp.slug, "index.html"), html);
+        count += 1;
+      }
+    }
+    const pub = path.join(ROOT, "_publish");
+    if (fs.existsSync(pub)) {
+      for (const f of ["business-service.css", "labs-detail.css", "labs-detail.js"]) {
+        const src = path.join(ROOT, f);
+        if (fs.existsSync(src)) fs.copyFileSync(src, path.join(pub, f));
+      }
+      for (const { dir } of LANGS) {
+        for (const exp of getLabsExperiments()) {
+          const src = path.join(ROOT, dir, "resources", "labs", exp.slug, "index.html");
+          if (!fs.existsSync(src)) continue;
+          const dest = path.join(pub, dir, "resources", "labs", exp.slug, "index.html");
+          fs.mkdirSync(path.dirname(dest), { recursive: true });
+          fs.copyFileSync(src, dest);
+        }
+      }
+    }
+    console.log(`render-resources: only=labs; ${count} detail pages`);
+    return;
+  }
 
   for (const { dir, file, htmlLang } of LANGS) {
     const flat = flatten(loadJson(file));
@@ -935,6 +1039,15 @@ export function renderResources() {
         chromeBase: "../../../",
       });
       writeFile(path.join(ROOT, dir, "resources", "insights", article.slug, "index.html"), html);
+    }
+
+    // Insights Research detail routes — redirect only (canonical lives on Business Research)
+    for (const [insightSlug, destPath] of Object.entries(INSIGHTS_RESEARCH_REDIRECTS)) {
+      const target = `/${dir}/${destPath}`;
+      writeFile(
+        path.join(ROOT, dir, "resources", "insights", insightSlug, "index.html"),
+        metaRefreshHtml(target, `Redirect · ${insightSlug}`)
+      );
     }
 
     // Media details — published only

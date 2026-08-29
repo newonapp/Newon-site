@@ -9,7 +9,6 @@ import { fileURLToPath } from "url";
 import { APP_CATALOG, featuredApps, loadPortfolioApps, moreApps } from "./portfolio-data.mjs";
 import {
   getPortfolioBeyondItems,
-  getPortfolioCaseStudies,
   getPortfolioHubMetrics,
   getPortfolioNowGroups,
   COMPANY_TAGLINE,
@@ -93,8 +92,8 @@ function head({ langMeta, copy, title, description, canonical, suffix }) {
     <link href="${FONTS}" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="/gnav-mega.css?v=20260826gnav5" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
-    <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260828pfhub" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260830filt1" />
+    <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260830pfinck2" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
     <script src="/theme-shell.js"></script>
   </head>`;
@@ -226,14 +225,25 @@ function exploreHref(lang, href) {
 }
 
 function openTopicHtml(lang, topic) {
-  const meta = topic.meta ? `<span class="pf-open__meta">/ ${esc(topic.meta)}</span>` : "";
+  const meta = topic.meta ? `<span class="pf-open__meta">${esc(topic.meta)}</span>` : "";
   const href = topic.href ? `/${lang}/${String(topic.href).replace(/^\//, "")}` : "#contact";
+  const chips = Array.isArray(topic.chips)
+    ? topic.chips
+    : String(topic.desc || "")
+        .split(/[·/,]/)
+        .map((s) => s.trim())
+        .filter(Boolean);
+  const chipHtml = chips.length
+    ? `<p class="pf-open__chips">${chips.map((c) => `<span>${esc(c)}</span>`).join("")}</p>`
+    : topic.desc
+      ? `<p class="pf-open__desc">${esc(topic.desc)}</p>`
+      : "";
   return `<li class="pf-open__row">
               <a class="pf-open__link" href="${esc(href)}">
                 <span class="pf-open__n">${esc(topic.n)}</span>
                 <div class="pf-open__body">
-                  <p class="pf-open__title">${esc(topic.title)}${meta}</p>
-                  <p class="pf-open__desc">${esc(topic.desc)}</p>
+                  <p class="pf-open__title">${esc(topic.title)} ${meta}</p>
+                  ${chipHtml}
                 </div>
                 <span class="pf-open__go" aria-hidden="true">→</span>
               </a>
@@ -248,58 +258,47 @@ function hubMetricHtml(item) {
           </div>`;
 }
 
-function hubCapHtml(cap, lang) {
+function hubFocusHtml(item, i) {
+  return `<article class="pf-focus pf-reveal">
+            <span class="pf-focus__n">${String(i + 1).padStart(2, "0")}</span>
+            <h3 class="pf-focus__title">${esc(item.title)}</h3>
+            <p class="pf-focus__body">${esc(item.body)}</p>
+          </article>`;
+}
+
+function hubCapHtml(cap, lang, i = 0) {
   const en =
     lang !== "en" && cap.en && cap.title !== cap.en
       ? `<p class="pf-en">${esc(cap.en)}</p>`
       : "";
-  const items = (cap.items || []).map((i) => `<li>${esc(i)}</li>`).join("");
-  return `<article class="pf-hub-cap pf-reveal">
+  const chips = (cap.items || [])
+    .map((item) => `<span class="pf-hub-cap__chip">${esc(item)}</span>`)
+    .join("");
+  return `<article class="pf-hub-cap pf-hub-cap--craft pf-reveal">
+            <span class="pf-hub-cap__n" aria-hidden="true">${esc(cap.n)}</span>
             <header class="pf-hub-cap__head">
-              <span class="pf-hub-cap__n">${esc(cap.n)}</span>
-              <div>
-                <h3>${esc(cap.title)}</h3>
-                ${en}
-              </div>
+              <h3>${esc(cap.title)}</h3>
+              ${en}
             </header>
-            <ul class="pf-hub-cap__list">${items}</ul>
+            <div class="pf-hub-cap__chips">${chips}</div>
           </article>`;
 }
 
 function hubProcessHtml(copy, lang) {
   return copy.process
-    .map((s, i) => {
+    .map((s, i, arr) => {
       const en = processEn(lang, s);
-      const arrow =
-        i < copy.process.length - 1 ? `<span class="pf-hub-pipe__arrow" aria-hidden="true">↓</span>` : "";
-      return `<div class="pf-hub-pipe__step pf-reveal">
+      const last = i === arr.length - 1;
+      return `<div class="pf-hub-pipe__step pf-hub-pipe__step--craft pf-reveal">
                 <span class="pf-hub-pipe__n">${String(i + 1).padStart(2, "0")}</span>
                 <div class="pf-hub-pipe__copy">
                   <strong>${esc(s.title)}</strong>${en}
                   ${s.body ? `<p>${esc(s.body)}</p>` : ""}
                 </div>
-                ${arrow}
+                ${last ? "" : `<span class="pf-hub-pipe__go" aria-hidden="true">→</span>`}
               </div>`;
     })
     .join("\n          ");
-}
-
-function hubCaseHtml(item, i, copy) {
-  const n = String(i + 1).padStart(2, "0");
-  return `<article class="pf-hub-case pf-reveal">
-            <header class="pf-hub-case__head">
-              <span class="pf-hub-case__n">CASE ${n}</span>
-              ${item.status ? `<span class="pf-hub-case__status">${esc(item.status)}</span>` : ""}
-            </header>
-            <h3 class="pf-hub-case__project">${esc(item.project)}</h3>
-            <dl class="pf-hub-case__grid">
-              <div><dt>${esc(copy.caseChallenge)}</dt><dd>${esc(item.challenge)}</dd></div>
-              <div><dt>${esc(copy.caseDecision)}</dt><dd>${esc(item.decision)}</dd></div>
-              <div><dt>${esc(copy.caseBuild)}</dt><dd>${esc(item.build)}</dd></div>
-              <div><dt>${esc(copy.caseLearn)}</dt><dd>${esc(item.learn)}</dd></div>
-            </dl>
-            <a class="pf-hub-case__cta" href="${esc(item.href)}">${esc(copy.caseStudyCta)}</a>
-          </article>`;
 }
 
 function hubBeyondHtml(item) {
@@ -346,18 +345,16 @@ function sectionNavHtml(copy) {
   const items = (copy.sectionNav || [])
     .map((it) => `<a class="pf-hub-index__link" href="#${esc(it.id)}">${esc(it.label)}</a>`)
     .join("");
-  return `<nav class="pf-hub-index" aria-label="Portfolio sections">${items}</nav>`;
+  return `<nav class="pf-hub-index pf-hub-index--slim" aria-label="Portfolio sections">${items}</nav>`;
 }
 
-function exploreRowHtml(lang, item) {
+function exploreRowHtml(lang, item, i = 0) {
   const href = exploreHref(lang, item.href);
-  return `<a class="pf-explore__row" href="${esc(href)}">
+  return `<a class="pf-explore__panel pf-explore__panel--craft" href="${esc(href)}">
               <span class="pf-explore__n">${esc(item.n)}</span>
-              <div class="pf-explore__body">
-                <p class="pf-explore__title">${esc(item.title)}</p>
-                <p class="pf-explore__desc">${esc(item.desc)}</p>
-              </div>
-              <span class="pf-explore__cta">${esc(item.cta)}</span>
+              <p class="pf-explore__title">${esc(item.title)}</p>
+              <p class="pf-explore__desc">${esc(item.desc)}</p>
+              <span class="pf-explore__go">${esc(item.cta || "→")}</span>
             </a>`;
 }
 
@@ -366,11 +363,10 @@ function indexPage(langMeta, copy, apps) {
   const featured = featuredApps(apps);
   const more = moreApps(apps);
   const metrics = getPortfolioHubMetrics(lang);
-  const caseStudies = getPortfolioCaseStudies(lang);
   const beyond = getPortfolioBeyondItems(lang);
   const nowGroups = getPortfolioNowGroups(lang);
   const caps = (copy.capabilities || [])
-    .map((c) => hubCapHtml(c, lang))
+    .map((c, i) => hubCapHtml(c, lang, i))
     .join("\n          ");
   const tagline = COMPANY_TAGLINE[lang] || COMPANY_TAGLINE.en;
   const jsonLd = {
@@ -403,87 +399,102 @@ function indexPage(langMeta, copy, apps) {
     <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
     ${chromeNav(lang, { base: "../", idSuffix: "pf-hub" })}
     <main id="pf-main">
-      <section class="pf-hero">
+      <section class="pf-hero pf-hero--hq pf-hero--studio pf-hero--dense">
         <div class="pf-hero__grid">
           <div class="pf-hero__copy">
-            <p class="pf-hero__eyebrow pf-enter" style="--d:0">${esc(copy.heroEyebrow)}</p>
-            <img class="pf-hero__eko pf-enter" style="--d:1" src="/logo.png" alt="Newon" width="64" height="64" />
-            <h1 class="pf-hero__name pf-enter" style="--d:2">경나원</h1>
-            <p class="pf-hero__en pf-enter" style="--d:3">Nawon Kyung</p>
-            <p class="pf-hero__role pf-enter" style="--d:4">CEO &amp; App Developer</p>
-            <p class="pf-hero__statement pf-enter" style="--d:5">${copy.heroStatementHtml || ""}</p>
-            <p class="pf-hero__lead pf-enter" style="--d:6">${copy.heroLeadHtml}</p>
-            <div class="pf-hero__actions pf-enter" style="--d:7">
+            <nav class="pf-hero__crumb pf-enter" style="--d:0" aria-label="Breadcrumb">
+              <a href="/${esc(lang)}/about/">${esc(copy.heroCrumbLeft || "Company")}</a>
+              <span class="pf-hero__crumb-sep" aria-hidden="true">/</span>
+              <span>${esc(copy.heroCrumbRight || "PORTFOLIO")}</span>
+            </nav>
+            <p class="pf-hero__eyebrow pf-enter" style="--d:1">${esc(copy.heroEyebrow)}<span class="pf-hero__eyebrow-sep" aria-hidden="true">·</span><span class="pf-hero__eyebrow-role">CEO &amp; App Developer</span></p>
+            <p class="pf-hero__word pf-enter" style="--d:2" aria-hidden="true">${esc(copy.heroName || "경나원")}</p>
+            <p class="pf-hero__en pf-enter" style="--d:3">${esc(copy.heroNameEn || "Nawon Kyung")}</p>
+            <h1 class="pf-hero__statement pf-enter" style="--d:4"><span class="visually-hidden">${esc(copy.heroName || "경나원")} — </span>${copy.heroStatementHtml || ""}</h1>
+            <p class="pf-hero__lead pf-enter" style="--d:5">${copy.heroLeadHtml}</p>
+            <ul class="pf-hero__domains pf-enter" style="--d:5.5" aria-label="${esc(copy.aboutFocusLabel || "Focus")}">
+              ${(copy.heroDomains || ["Apps", "UX/UI", "Build", "Launch"]).map((d) => `<li>${esc(d)}</li>`).join("")}
+            </ul>
+            <div class="pf-hero__actions pf-enter" style="--d:6">
               <a class="btn btn-primary pf-hero__btn" href="#projects">${esc(copy.ctaProjects)}</a>
-              <a class="btn btn-ghost pf-hero__btn" href="/${esc(lang)}/">${esc(copy.ctaNewon || "Newon ↗")}</a>
               <a class="btn btn-ghost pf-hero__btn" href="#contact">${esc(copy.ctaContact)}</a>
             </div>
           </div>
-          <aside class="pf-hero__aside pf-enter" style="--d:5" aria-label="${esc(copy.heroMetaTitle)}">
-            <p class="pf-hero__aside-title">${esc(copy.heroMetaTitle)}</p>
-            <dl class="pf-hero__meta pf-hero__meta--focus">
-              <div>
-                <dt>${esc(copy.heroMeta1En)}</dt>
-                <dd>${esc(copy.heroMeta1Body)}</dd>
+          <aside class="pf-hero__visual pf-enter" style="--d:3" aria-label="${esc(copy.cardAria || "Digital card")}">
+            <div class="pf-sv">
+              <div class="pf-sv__head">
+                <span class="pf-sv__live" aria-hidden="true"><i></i> DIGITAL CARD</span>
+                <span class="pf-sv__meta">NEWON</span>
               </div>
-              <div>
-                <dt>${esc(copy.heroMeta2En)}</dt>
-                <dd>${esc(copy.heroMeta2Body)}</dd>
+              <div class="pf-sv__body">
+                <a class="pf-sv__card" href="/card-n7x4k9/" aria-label="${esc(copy.cardAria || "Open digital card")}">
+                  <img src="/card-n7x4k9/newon-card-back.jpg" alt="${esc(copy.cardAlt || "Newon card")}" width="1024" height="588" decoding="async" fetchpriority="high" />
+                </a>
+                <p class="pf-sv__hint">${esc(copy.cardHint || "Digital card · tap to open")}</p>
               </div>
-              <div>
-                <dt>${esc(copy.heroMeta3En)}</dt>
-                <dd>${esc(copy.heroMeta3Body)}</dd>
+              <div class="pf-sv__foot" aria-hidden="true">
+                <span>NAWON KYUNG</span>
+                <span>CEO</span>
               </div>
-              ${
-                copy.heroMeta4En
-                  ? `<div>
-                <dt>${esc(copy.heroMeta4En)}</dt>
-                <dd>${esc(copy.heroMeta4Body || "")}</dd>
-              </div>`
-                  : ""
-              }
-            </dl>
+            </div>
           </aside>
         </div>
-        ${sectionNavHtml(copy)}
       </section>
 
-      <section id="about" class="pf-section">
-        <div class="pf-wrap pf-wrap--narrow pf-about">
-          <p class="pf-label">${esc(copy.aboutLabel)}</p>
-          <h2>${esc(copy.aboutTitle)}</h2>
-          <p class="pf-reveal">${esc(copy.aboutP1)}</p>
-          <p class="pf-reveal">${esc(copy.aboutP2)}</p>
+      <section id="about" class="pf-section pf-section--about">
+        <div class="pf-wrap pf-about pf-about--story">
+          <div class="pf-about__intro">
+            <p class="pf-label">${esc(copy.aboutLabel)}</p>
+            <h2>${esc(copy.aboutTitle)}</h2>
+            <div class="pf-about__body">
+              <p class="pf-reveal">${esc(copy.aboutP1)}</p>
+              <p class="pf-reveal">${esc(copy.aboutP2)}</p>
+            </div>
+          </div>
+          <div class="pf-about__focus">
+            <p class="pf-label">${esc(copy.aboutFocusLabel || "FOCUS")}</p>
+            <div class="pf-focus-grid">
+            ${(copy.whatIDo || []).map((item, i) => hubFocusHtml(item, i)).join("\n            ")}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="numbers" class="pf-section pf-section--metrics">
+      <section id="numbers" class="pf-section pf-section--metrics pf-section--paper">
         <div class="pf-wrap">
-          <p class="pf-label">${esc(copy.numbersLabel)}</p>
-          <h2>${esc(copy.numbersTitle)}</h2>
-          <p class="pf-stats__headline">${esc(copy.numbersHeadline)}</p>
-          <p class="pf-stats__support">${esc(copy.numbersSupport)}</p>
-          <div class="pf-hub-metrics">
+          <div class="pf-ink__head pf-ink__head--compact pf-metrics-head">
+            <p class="pf-label">${esc(copy.numbersLabel)}</p>
+            <h2>${esc(copy.numbersTitle)}</h2>
+            <p class="pf-stats__headline">${esc(copy.numbersHeadline)}</p>
+            <p class="pf-stats__support">${esc(copy.numbersSupport)}</p>
+          </div>
+          <div class="pf-hub-metrics pf-hub-metrics--paper pf-board">
           ${metrics.map(hubMetricHtml).join("\n          ")}
           </div>
         </div>
       </section>
 
-      <section class="pf-section" id="capabilities">
+      <section class="pf-section pf-section--caps" id="capabilities">
         <div class="pf-wrap">
-          <p class="pf-label">${esc(copy.workLabel)}</p>
-          <h2>${esc(copy.workTitle)}</h2>
-          <div class="pf-hub-cap-grid">
+          <header class="pf-sec-head">
+            <p class="pf-label">${esc(copy.workLabel)}</p>
+            <h2>${esc(copy.workTitle)}</h2>
+          </header>
+          <div class="pf-hub-cap-grid pf-board pf-board--caps">
           ${caps}
           </div>
         </div>
       </section>
 
-      <section class="pf-section" id="process">
+      <section class="pf-section pf-section--process" id="process">
         <div class="pf-wrap">
-          <p class="pf-label">${esc(copy.processLabel)}</p>
-          <h2>${esc(copy.processTitle)}</h2>
-          <div class="pf-hub-pipe" data-count="${copy.process.length}" aria-label="${esc(copy.processAria)}">
+          <header class="pf-sec-head pf-sec-head--inline">
+            <div>
+              <p class="pf-label">${esc(copy.processLabel)}</p>
+              <h2>${esc(copy.processTitle)}</h2>
+            </div>
+          </header>
+          <div class="pf-hub-pipe pf-board pf-board--process" data-count="${copy.process.length}" aria-label="${esc(copy.processAria)}">
           ${hubProcessHtml(copy, lang)}
           </div>
         </div>
@@ -520,26 +531,15 @@ function indexPage(langMeta, copy, apps) {
         </div>
       </section>
 
-${
-  caseStudies.length
-    ? `<section id="case-studies" class="pf-section pf-section--case">
-        <div class="pf-wrap">
-          <p class="pf-label">${esc(copy.caseStudiesLabel)}</p>
-          <h2>${esc(copy.caseStudiesTitle)}</h2>
-          <p class="pf-hub-lead pf-reveal">${esc(copy.caseStudiesLead)}</p>
-          <div class="pf-hub-case-grid">
-          ${caseStudies.map((c, i) => hubCaseHtml(c, i, copy)).join("\n          ")}
-          </div>
-        </div>
-      </section>`
-    : ""
-}
+${""}
 
-      <section id="beyond" class="pf-section">
+      <section id="beyond" class="pf-section pf-section--beyond">
         <div class="pf-wrap">
-          <p class="pf-label">${esc(copy.beyondLabel)}</p>
-          <h2>${esc(copy.beyondTitle)}</h2>
-          <div class="pf-hub-beyond-grid">
+          <header class="pf-sec-head">
+            <p class="pf-label">${esc(copy.beyondLabel)}</p>
+            <h2>${esc(copy.beyondTitle)}</h2>
+          </header>
+          <div class="pf-hub-beyond-grid pf-board pf-board--beyond">
           ${beyond.map(hubBeyondHtml).join("\n          ")}
           </div>
         </div>
@@ -547,44 +547,33 @@ ${
 
       <section id="now" class="pf-section pf-section--now">
         <div class="pf-wrap">
-          <p class="pf-label">${esc(copy.nowSectionLabel)}</p>
-          <h2>${esc(copy.nowSectionTitle)}</h2>
-          <p class="pf-hub-lead pf-reveal">${esc(copy.nowSectionLead)}</p>
-          <div class="pf-hub-now-grid">
+          <header class="pf-sec-head pf-sec-head--row">
+            <div>
+              <p class="pf-label">${esc(copy.nowSectionLabel)}</p>
+              <h2>${esc(copy.nowSectionTitle)}</h2>
+            </div>
+            <p class="pf-hub-lead pf-reveal">${esc(copy.nowSectionLead)}</p>
+          </header>
+          <div class="pf-hub-now-grid pf-board pf-board--now">
           ${nowGroups.map((g) => hubNowHtml(g, copy)).join("\n          ")}
           </div>
         </div>
       </section>
 
-      <section id="workflow" class="pf-section pf-section--workflow">
-        <div class="pf-wrap pf-wrap--narrow">
-          <p class="pf-label">${esc(copy.workflowLabel)}</p>
-          <h2>${esc(copy.workflowTitle)}</h2>
-          <p class="pf-reveal">${esc(copy.workflowBody)}</p>
-          <ol class="pf-hub-workflow pf-reveal" aria-label="${esc(copy.workflowLabel)}">
-            ${(copy.workflowSteps || [])
-              .map(
-                (step, i, arr) =>
-                  `<li>${esc(step)}${i < arr.length - 1 ? `<span aria-hidden="true">→</span>` : ""}</li>`
-              )
-              .join("")}
-          </ol>
-        </div>
-      </section>
-
       <section id="principles" class="pf-section pf-section--principles">
         <div class="pf-wrap">
-          <p class="pf-label">${esc(copy.principlesLabel)}</p>
-          <h2>${esc(copy.principlesTitle)}</h2>
-          <ol class="pf-hub-principles">
+          <header class="pf-prin-head">
+            <p class="pf-label">${esc(copy.principlesLabel)}</p>
+            <h2>${esc(copy.principlesTitle)}</h2>
+          </header>
+          <ol class="pf-board pf-prin-rail" aria-label="${esc(copy.principlesLabel)}">
             ${(copy.principles || [])
               .map(
-                (p) => `<li class="pf-reveal">
-              <span class="pf-hub-principles__n">${esc(p.n)}</span>
-              <div>
-                <strong>${esc(p.title)}</strong>
-                <p>${esc(p.body)}</p>
-              </div>
+                (p) => `<li class="pf-prin-rail__row pf-reveal">
+              <span class="pf-prin-rail__n">${esc(p.n)}</span>
+              <strong class="pf-prin-rail__title">${esc(p.title)}</strong>
+              <p class="pf-prin-rail__body">${esc(p.body)}</p>
+              <span class="pf-prin-rail__go" aria-hidden="true">→</span>
             </li>`
               )
               .join("\n            ")}
@@ -592,122 +581,127 @@ ${
         </div>
       </section>
 
-      <section id="newon" class="pf-section">
+      <section id="newon" class="pf-section pf-section--studio pf-section--hq">
         <div class="pf-wrap">
-          <div class="pf-newon pf-reveal">
-            <img class="pf-newon__mark" src="/logo.png" alt="Newon" width="72" height="72" />
-            <div>
-              <p class="pf-label">${esc(copy.studioLabel)}</p>
-              <h2>Newon</h2>
-              <p class="pf-sub">${esc(tagline)}</p>
-              <p>${esc(copy.studioBody)}</p>
-              <a class="btn btn-primary" href="/${esc(lang)}/about/">${esc(copy.studioCta)}</a>
-            </div>
+          <div class="pf-hq-duo pf-reveal">
+            <article class="pf-hq-duo__studio pf-hq-duo__studio--paper">
+              <div class="pf-hq-duo__studio-top">
+                <img class="pf-hq-duo__mark" src="/logo.png" alt="" width="48" height="48" />
+                <div>
+                  <p class="pf-label">${esc(copy.studioLabel)}</p>
+                  <h2 class="pf-hq-duo__brand">Newon</h2>
+                </div>
+              </div>
+              <p class="pf-hq-duo__tag">${esc(tagline)}</p>
+              <p class="pf-hq-duo__body">${esc(copy.studioBody)}</p>
+              <ul class="pf-hq-duo__domains" aria-hidden="true">
+                <li>Apps</li><li>AI</li><li>SaaS</li><li>Games</li><li>Web</li>
+              </ul>
+              <a class="btn btn-primary pf-hq-duo__cta" href="/${esc(lang)}/about/">${esc(copy.studioCta)}</a>
+            </article>
+            <article id="founder" class="pf-hq-duo__founder">
+              <header class="pf-hq-duo__id">
+                <p class="pf-label">${esc(copy.founderLabel)}</p>
+                <p class="pf-hq-duo__name">${esc(copy.heroName || "경나원")}</p>
+                <p class="pf-hq-duo__en">${esc(copy.heroNameEn || "Nawon Kyung")}</p>
+                <p class="pf-hq-duo__role">CEO &amp; App Developer</p>
+              </header>
+              <div class="pf-hq-duo__story">
+                <h2 class="pf-hq-duo__title">${esc(copy.founderTitle)}</h2>
+                <p>${esc(copy.founderIntro)}</p>
+                <p>${esc(copy.founderIntro2)}</p>
+                <p class="pf-hq-duo__expertise">${copy.founderExpertise.map((e) => `<span>${esc(e)}</span>`).join("")}</p>
+                <div class="pf-hq-duo__links">
+                  <a href="/${esc(lang)}/about/">${esc(copy.founderAboutCta || copy.studioCta)}</a>
+                  <a href="/${esc(lang)}/business/">${esc(copy.founderBusiness)}</a>
+                  <a href="#contact">${esc(copy.founderContactCta || copy.ctaContact)}</a>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <section id="founder" class="pf-section pf-founder">
-        <div class="pf-wrap pf-founder__grid">
-          <div class="pf-founder__id">
-            <p class="pf-label">${esc(copy.founderLabel)}</p>
-            <p class="pf-founder__name">경나원</p>
-            <p class="pf-founder__en">Nawon Kyung</p>
-            <p class="pf-founder__role">CEO &amp; App Developer</p>
-          </div>
-          <div class="pf-founder__story">
-            <h2 class="pf-founder__title">${esc(copy.founderTitle)}</h2>
-            <p class="pf-founder__intro">${esc(copy.founderIntro)}</p>
-            <p class="pf-founder__intro">${esc(copy.founderIntro2)}</p>
-            <p class="pf-founder__expertise">${copy.founderExpertise.map((e) => `<span>${esc(e)}</span>`).join("")}</p>
-            <div class="pf-founder__links">
-              <a class="pf-founder__biz" href="/${esc(lang)}/about/">${esc(copy.founderAboutCta || copy.studioCta)}</a>
-              <a class="pf-founder__biz" href="/${esc(lang)}/business/">${esc(copy.founderBusiness)}</a>
-              <a class="pf-founder__biz" href="#contact">${esc(copy.founderContactCta || copy.ctaContact)}</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="pf-section pf-cx">
-        <div class="pf-wrap">
-          <header class="pf-cx__head">
-            <p class="pf-label pf-cx-enter" style="--d: 0">${esc(copy.contactLabel)}</p>
-            <h2 class="pf-cx__title pf-cx-enter" style="--d: 1">${copy.contactHeroTitleHtml}</h2>
-            <p class="pf-cx__lead pf-cx-enter" style="--d: 2">${esc(copy.contactLead)}</p>
-          </header>
-
-          <div class="pf-cx__split">
-            <div class="pf-cx__open-col pf-cx-enter" style="--d: 3">
+      <section id="contact" class="pf-section pf-cx pf-cx--hq">
+        <div class="pf-wrap pf-cx-hq">
+          <div class="pf-cx-hq__main">
+            <header class="pf-cx-hq__head">
+              <p class="pf-label pf-cx-enter" style="--d: 0">${esc(copy.contactLabel)}</p>
+              <h2 class="pf-cx__title pf-cx-enter" style="--d: 1">${copy.contactHeroTitleHtml}</h2>
+              <p class="pf-cx__lead pf-cx-enter" style="--d: 2">${esc(copy.contactLead)}</p>
+            </header>
+            <div class="pf-cx-hq__topics pf-cx-enter" style="--d: 3">
               <p class="pf-cx__open-label">${esc(copy.contactOpenLabel)}</p>
-              <ul class="pf-open">
+              <ul class="pf-open pf-open--board">
                 ${copy.contactOpenTopics.map((t) => openTopicHtml(lang, t)).join("\n                ")}
               </ul>
             </div>
-
-            <aside class="pf-cx__card pf-cx-enter" style="--d: 4" aria-labelledby="pf-cx-info-title">
-              <div class="pf-cx__card-head">
-                <h3 id="pf-cx-info-title" class="pf-cx__info-title">${esc(copy.contactInfoTitle)}</h3>
-                <p class="pf-cx__info-sub">${esc(copy.contactInfoSub)}</p>
-              </div>
-              <div class="pf-ci">
-                <div class="pf-ci__item">
-                  <span class="pf-ci__k">${esc(copy.contactPhone)}</span>
-                  <div class="pf-ci__main">
-                    <a class="pf-ci__v" href="tel:01039238904">010-3923-8904</a>
-                    <button type="button" class="pf-ci__copy" data-copy="010-3923-8904" data-copied="${esc(copy.contactCopied)}" aria-live="polite">
-                      <span data-copy-label>${esc(copy.contactCopy)}</span>
-                    </button>
-                  </div>
-                </div>
-                <div class="pf-ci__item">
-                  <span class="pf-ci__k">${esc(copy.contactEmail)}</span>
-                  <div class="pf-ci__main">
-                    <a class="pf-ci__v" href="mailto:newon@newon.app">newon@newon.app</a>
-                    <button type="button" class="pf-ci__copy" data-copy="newon@newon.app" data-copied="${esc(copy.contactCopied)}" aria-live="polite">
-                      <span data-copy-label>${esc(copy.contactCopy)}</span>
-                    </button>
-                  </div>
-                </div>
-                <div class="pf-ci__item">
-                  <span class="pf-ci__k">${esc(copy.contactWeb)}</span>
-                  <div class="pf-ci__main">
-                    <a class="pf-ci__v" href="https://www.newon.app">newon.app</a>
-                  </div>
-                </div>
-              </div>
-              <div class="pf-cx__card-foot">
-                <p class="pf-cx__quick-label">${esc(copy.contactQuick)}</p>
-                <div class="pf-cx__actions">
-                  <a class="btn btn-primary pf-cx__btn-primary" href="mailto:newon@newon.app">${esc(copy.contactMailCta)}</a>
-                  <a class="btn btn-ghost pf-cx__btn-secondary" href="${VCARD}" data-save-vcard>${esc(copy.contactSave)}</a>
-                </div>
-              </div>
-            </aside>
           </div>
+
+          <aside class="pf-cx-hq__card pf-cx-enter" style="--d: 4" aria-labelledby="pf-cx-info-title">
+            <div class="pf-cx__card-head">
+              <h3 id="pf-cx-info-title" class="pf-cx__info-title">${esc(copy.contactInfoTitle)}</h3>
+              <p class="pf-cx__info-sub">${esc(copy.contactInfoSub)}</p>
+            </div>
+            <div class="pf-ci">
+              <div class="pf-ci__item">
+                <span class="pf-ci__k">${esc(copy.contactPhone)}</span>
+                <div class="pf-ci__main">
+                  <a class="pf-ci__v" href="tel:01039238904">010-3923-8904</a>
+                  <button type="button" class="pf-ci__copy" data-copy="010-3923-8904" data-copied="${esc(copy.contactCopied)}" aria-live="polite">
+                    <span data-copy-label>${esc(copy.contactCopy)}</span>
+                  </button>
+                </div>
+              </div>
+              <div class="pf-ci__item">
+                <span class="pf-ci__k">${esc(copy.contactEmail)}</span>
+                <div class="pf-ci__main">
+                  <a class="pf-ci__v" href="mailto:newon@newon.app">newon@newon.app</a>
+                  <button type="button" class="pf-ci__copy" data-copy="newon@newon.app" data-copied="${esc(copy.contactCopied)}" aria-live="polite">
+                    <span data-copy-label>${esc(copy.contactCopy)}</span>
+                  </button>
+                </div>
+              </div>
+              <div class="pf-ci__item">
+                <span class="pf-ci__k">${esc(copy.contactWeb)}</span>
+                <div class="pf-ci__main">
+                  <a class="pf-ci__v" href="https://www.newon.app">newon.app</a>
+                </div>
+              </div>
+            </div>
+            <div class="pf-cx__card-foot">
+              <p class="pf-cx__quick-label">${esc(copy.contactQuick)}</p>
+              <div class="pf-cx__actions">
+                <a class="btn btn-primary pf-cx__btn-primary" href="mailto:newon@newon.app">${esc(copy.contactMailCta)}</a>
+                <a class="btn btn-ghost pf-cx__btn-secondary" href="${VCARD}" data-save-vcard>${esc(copy.contactSave)}</a>
+              </div>
+            </div>
+          </aside>
         </div>
 
-        <div class="pf-wrap pf-cx-msg">
-          <div class="pf-cx-msg__grid pf-cx-enter" style="--d: 8">
-            <div class="pf-cx-msg__copy">
-              <p class="pf-label">${esc(copy.contactMsgLabel)}</p>
-              <h2 class="pf-cx-msg__title">${copy.contactMsgTitleHtml}</h2>
-              <p class="pf-cx-msg__lead">${esc(copy.contactMsgLead)}</p>
+        <div class="pf-cx-hq__band">
+          <div class="pf-wrap pf-cx-msg pf-cx-msg--ink">
+            <div class="pf-cx-msg__grid pf-cx-enter" style="--d: 8">
+              <div class="pf-cx-msg__copy">
+                <p class="pf-label">${esc(copy.contactMsgLabel)}</p>
+                <h2 class="pf-cx-msg__title">${copy.contactMsgTitleHtml}</h2>
+                <p class="pf-cx-msg__lead">${esc(copy.contactMsgLead)}</p>
+              </div>
+              <a class="pf-cx-msg__mail" href="mailto:newon@newon.app">${esc(copy.contactMsgMail)}</a>
             </div>
-            <a class="pf-cx-msg__mail" href="mailto:newon@newon.app">${esc(copy.contactMsgMail)}</a>
           </div>
         </div>
       </section>
 
-      <section class="pf-section pf-explore" aria-labelledby="pf-explore-title">
+      <section class="pf-section pf-explore pf-explore--board" aria-labelledby="pf-explore-title">
         <div class="pf-wrap">
           <div class="pf-explore__head pf-cx-enter" style="--d: 0">
             <p class="pf-label">${esc(copy.exploreLabel)}</p>
             <h2 id="pf-explore-title" class="pf-explore__title">${esc(copy.exploreTitle)}</h2>
             <p class="pf-explore__lead">${esc(copy.exploreLead)}</p>
           </div>
-          <nav class="pf-explore__nav" aria-label="${esc(copy.exploreLabel)}">
-            ${copy.exploreNav.map((item) => exploreRowHtml(lang, item)).join("\n            ")}
+          <nav class="pf-explore__grid pf-board" aria-label="${esc(copy.exploreLabel)}">
+            ${copy.exploreNav.map((item, i) => exploreRowHtml(lang, item, i)).join("\n            ")}
           </nav>
         </div>
       </section>
