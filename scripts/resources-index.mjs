@@ -180,7 +180,8 @@ export function buildResourcesIndexBody(copies, lang, ctx) {
     .join("");
 
   const searchItems = buildSearchIndex(lang);
-  const searchJson = escapeHtml(JSON.stringify(searchItems));
+  /* Raw JSON in <script type="application/json"> — do not HTML-escape (breaks JSON.parse). */
+  const searchJson = JSON.stringify(searchItems).replace(/</g, "\\u003c");
   const suggest = searchItems
     .slice(0, 3)
     .map(

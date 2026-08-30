@@ -1472,7 +1472,7 @@ function renderCompany() {
         chromeBase,
         i18n: { emptyFilter: copy.emptyFilter || "" },
         extraHead: '<link rel="stylesheet" href="/news/newsroom.css?v=20260830nrtight1" />',
-        extraScripts: '<script src="/news/newsroom.js?v=20260829nr1" defer></script>',
+        extraScripts: '<script src="/news/newsroom.js?v=20260830empty1" defer></script>',
       });
       writeFile(path.join(ROOT, dir, "news", "index.html"), html);
       pageCount += 1;

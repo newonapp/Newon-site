@@ -289,7 +289,16 @@
   if (searchRoot && indexEl && searchRoot.hasAttribute("data-rs-search-ready")) {
     var items = [];
     try {
-      items = JSON.parse(indexEl.textContent || "[]");
+      var raw = String(indexEl.textContent || "").trim();
+      try {
+        items = JSON.parse(raw || "[]");
+      } catch (parseErr) {
+        /* Legacy pages HTML-escaped the JSON blob — decode once then parse. */
+        var ta = document.createElement("textarea");
+        ta.innerHTML = raw;
+        items = JSON.parse(String(ta.value || "").trim() || "[]");
+      }
+      if (!Array.isArray(items)) items = [];
     } catch (e) {
       items = [];
     }
@@ -300,38 +309,40 @@
     var filterBar = searchRoot.querySelector("[data-rx-filters]");
     var activeType = "all";
 
+    function setEmptyVisible(show) {
+      if (!emptyEl) return;
+      emptyEl.hidden = !show;
+      if (show) {
+        emptyEl.removeAttribute("hidden");
+        emptyEl.setAttribute("aria-hidden", "false");
+      } else {
+        emptyEl.setAttribute("hidden", "");
+        emptyEl.setAttribute("aria-hidden", "true");
+      }
+    }
+
     function renderHits(hits, q) {
       if (!results) return;
-      var hasQuery = Boolean(String(q || "").trim());
+      var query = String(q || "").trim();
+      var hasQuery = query.length > 0;
       var typeFiltered = activeType !== "all";
-      var filtered = hasQuery || typeFiltered;
-      if (!filtered) {
+      /* Empty only when (query OR non-ALL filter) AND zero matches */
+      var filtering = hasQuery || typeFiltered;
+      if (!filtering) {
         results.hidden = true;
         results.innerHTML = "";
-        if (emptyEl) {
-          emptyEl.hidden = true;
-          emptyEl.setAttribute("hidden", "");
-          emptyEl.setAttribute("aria-hidden", "true");
-        }
+        setEmptyVisible(false);
         if (suggestEl) suggestEl.hidden = false;
         return;
       }
       if (suggestEl) suggestEl.hidden = true;
-      if (hits.length === 0) {
+      if (!hits || hits.length === 0) {
         results.hidden = true;
         results.innerHTML = "";
-        if (emptyEl) {
-          emptyEl.hidden = false;
-          emptyEl.removeAttribute("hidden");
-          emptyEl.setAttribute("aria-hidden", "false");
-        }
+        setEmptyVisible(true);
         return;
       }
-      if (emptyEl) {
-        emptyEl.hidden = true;
-        emptyEl.setAttribute("hidden", "");
-        emptyEl.setAttribute("aria-hidden", "true");
-      }
+      setEmptyVisible(false);
       results.hidden = false;
       results.innerHTML = hits
         .map(function (it) {
@@ -391,6 +402,8 @@
         runSearch();
       });
     }
+    /* Ensure ALL default never shows empty before first interaction */
+    setEmptyVisible(false);
     runSearch();
 
     document.addEventListener("keydown", function (ev) {

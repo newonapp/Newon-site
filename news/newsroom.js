@@ -38,17 +38,28 @@
   }
 
   function apply(cat) {
-    current = cat;
-    var visible = 0;
+    current = cat === "all" ? "all" : cat;
+    var filteredNews = 0;
     Array.prototype.forEach.call(items, function (el) {
       var itemCat = (el.getAttribute("data-nr-cat") || "").toLowerCase();
-      var show = cat === "all" || itemCat === cat;
+      var show = current === "all" || itemCat === current;
       el.hidden = !show;
-      if (show) visible += 1;
+      if (show) filteredNews += 1;
     });
-    if (empty) empty.hidden = !(cat !== "all" && visible === 0);
+    /* Empty only when a non-ALL category is active and filteredNews.length === 0 */
+    if (empty) {
+      var showEmpty = current !== "all" && filteredNews === 0;
+      empty.hidden = !showEmpty;
+      if (showEmpty) {
+        empty.removeAttribute("hidden");
+        empty.setAttribute("aria-hidden", "false");
+      } else {
+        empty.setAttribute("hidden", "");
+        empty.setAttribute("aria-hidden", "true");
+      }
+    }
     Array.prototype.forEach.call(tabs, function (btn) {
-      var on = btn.getAttribute("data-nr-filter") === cat;
+      var on = btn.getAttribute("data-nr-filter") === current;
       btn.classList.toggle("is-active", on);
       if (on) btn.setAttribute("aria-current", "true");
       else btn.removeAttribute("aria-current");
