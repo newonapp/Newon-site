@@ -129,23 +129,23 @@ html[data-newon-shell-theme="dark"] .btn-ghost:hover {
   transform: none;
 }
 
-/* Keep home hero + studio on white canvas in all themes */
+/* Dark shell — ecosystem hero on black */
 html[data-newon-shell-theme="dark"] .hero--ecosystem,
 html[data-newon-shell-theme="dark"] .hero--ecosystem .hero-bg {
-  background: #ffffff;
+  background: #000000;
 }
 
 html[data-newon-shell-theme="dark"] .hero--ecosystem .hero-sub,
 html[data-newon-shell-theme="dark"] .hero--ecosystem .hero-desc {
-  color: rgba(10, 10, 10, 0.62);
+  color: rgba(245, 245, 245, 0.68);
 }
 
 html[data-newon-shell-theme="dark"] .hero--ecosystem .hub-strip a {
-  color: rgba(10, 10, 10, 0.5);
+  color: rgba(245, 245, 245, 0.55);
 }
 
 html[data-newon-shell-theme="dark"] .hero--ecosystem .hub-strip a:hover {
-  color: #0a0a0a;
+  color: #f5f5f5;
 }
 
 .hero--ecosystem .hero-sub {

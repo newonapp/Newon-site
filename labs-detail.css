@@ -18,16 +18,16 @@
 }
 
 html[data-newon-shell-theme="dark"] .ld-page {
-  --ld-ink: #0a0a0a;
-  --ld-paper: #ffffff;
-  --ld-muted: #555555;
+  --ld-ink: #f5f5f5;
+  --ld-paper: #000000;
+  --ld-muted: #a8a8a8;
   --ld-soft: #8a8a8a;
-  --ld-line: #e8e8e8;
-  --ld-line-strong: #0a0a0a;
-  --ld-fill: #0a0a0a;
-  --ld-on-fill: #ffffff;
-  color: #0a0a0a;
-  background: #ffffff;
+  --ld-line: rgba(255, 255, 255, 0.12);
+  --ld-line-strong: rgba(255, 255, 255, 0.28);
+  --ld-fill: #f5f5f5;
+  --ld-on-fill: #000000;
+  color: #f5f5f5;
+  background: #000000;
 }
 
 .ld-page :where(h1, h2, h3, p, li, a, span, dt, dd) {

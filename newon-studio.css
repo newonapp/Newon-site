@@ -369,11 +369,13 @@ html[data-newon-shell-theme="dark"] .ns-board__row:focus-visible {
   color: var(--bz-ink);
 }
 html[data-newon-shell-theme="dark"] .ns-studio-menu.bz-page {
-  --bz-ink: #f4f4f4;
-  --bz-paper: #090909;
+  --bz-ink: #f5f5f5;
+  --bz-paper: #000000;
   --bz-line: rgba(255, 255, 255, 0.14);
   --bz-mute: #b0b0b0;
   --bz-soft: #888;
+  background: #000000;
+  color: #f5f5f5;
 }
 .ns-studio-menu .bz-inner {
   width: min(1200px, calc(100% - clamp(1.25rem, 4vw, 3rem) * 2));
@@ -420,8 +422,8 @@ html[data-newon-shell-theme="dark"] .ns-studio-menu .studio-status {
   color: #fff;
 }
 html[data-newon-shell-theme="dark"] .ns-close--fold {
-  background: #f5f5f5;
-  color: #0a0a0a;
+  background: #000000;
+  color: #f5f5f5;
 }
 .ns-close__stage {
   display: grid;

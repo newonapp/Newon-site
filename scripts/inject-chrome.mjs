@@ -24,6 +24,14 @@ export function injectSiteChrome(
       '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260828logo" />'
     );
   }
+  if (!out.includes("site-dark.css")) {
+    out = out.replace(
+      /<\/body>/,
+      '    <link rel="stylesheet" href="/site-dark.css?v=20260830dark7" />\n  </body>'
+    );
+  } else {
+    out = out.replace(/site-dark\.css\?v=[^"]+/g, "site-dark.css?v=20260830dark7");
+  }
   if (!out.includes("site-chrome.js")) {
     out = out.replace(
       /<\/body>/,
@@ -71,6 +79,14 @@ export function replaceLegacyChrome(
     );
   } else {
     out = out.replace(/gnav-mega\.css\?v=[^"]+/g, "gnav-mega.css?v=20260828logo");
+  }
+  if (!out.includes("site-dark.css")) {
+    out = out.replace(
+      /<\/body>/,
+      '    <link rel="stylesheet" href="/site-dark.css?v=20260830dark7" />\n  </body>'
+    );
+  } else {
+    out = out.replace(/site-dark\.css\?v=[^"]+/g, "site-dark.css?v=20260830dark7");
   }
   if (!out.includes("analytics.js")) {
     out = out.replace(/<\/head>/, '    <script src="/analytics.js?v=20260825studio" defer></script>\n  </head>');

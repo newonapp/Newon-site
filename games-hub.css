@@ -6,9 +6,13 @@
   overflow-x: clip;
 }
 
-html[data-newon-shell-theme="dark"] .hub-page:has(.games-page),
 html[data-newon-shell-theme="light"] .hub-page:has(.games-page) {
   background: #ffffff;
+  color: #0a0a0a;
+}
+html[data-newon-shell-theme="dark"] .hub-page:has(.games-page) {
+  background: #000000;
+  color: #f5f5f5;
 }
 
 /* Soften header → game world */
@@ -40,6 +44,15 @@ html[data-newon-shell-theme="dark"] body:has([data-games-page]) header.gnav {
   --g-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
   background: var(--g-light);
   color: var(--g-light-ink);
+}
+
+html[data-newon-shell-theme="dark"] .games-page {
+  --g-light: #000000;
+  --g-light-alt: #0a0a0a;
+  --g-light-ink: #f5f5f5;
+  --g-light-muted: rgba(245, 245, 245, 0.62);
+  background: #000000;
+  color: #f5f5f5;
 }
 
 .games-page .hub-inner {
@@ -1122,7 +1135,7 @@ html[data-newon-shell-theme="dark"] body:has([data-games-page]) header.gnav {
   letter-spacing: 0.1em;
   color: #aaa;
 }
-[data-cursor]::after {
+[data-caret]::after {
   content: "▮";
   margin-left: 0.15rem;
   animation: games-blink 1s steps(1) infinite;
@@ -1813,7 +1826,7 @@ html[data-newon-shell-theme="dark"] .games-next__redact span {
   .games-hero__grid,
   .games-surveillance__live i,
   [data-pulse],
-  [data-cursor]::after {
+  [data-caret]::after {
     animation: none !important;
     transition: none !important;
   }

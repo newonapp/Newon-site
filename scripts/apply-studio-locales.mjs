@@ -261,7 +261,7 @@ const STUDIO_KO = {
     store1Desc: "앱 출시 체크리스트와 템플릿.",
     store2Name: "MVP Planning Kit",
     store2Desc: "MVP 기획 워크시트.",
-    store3Name: "Cursor Prompt Pack",
+    store3Name: "Product Builder Prompt Pack",
     store3Desc: "제품 개발용 프롬프트 모음.",
     store4Name: "Founder Dashboard",
     store4Desc: "창업자용 대시보드 템플릿.",

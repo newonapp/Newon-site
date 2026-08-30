@@ -9547,3 +9547,30 @@ html[data-newon-shell-theme="dark"] .ab-page {
 .ab-page .ab-glance--hq .ab-glance__stage {
   width: 100% !important;
 }
+
+
+/* Dark mode — About HQ (20260830dark3) */
+html[data-newon-shell-theme="dark"] .ab-page .ab-brand.ab-brand--intro,
+html[data-newon-shell-theme="dark"] .ab-page .ab-brand--v3.ab-brand--intro {
+  --ab-brand-ink: #f5f5f5;
+  --ab-brand-mute: rgba(245, 245, 245, 0.62);
+  --ab-brand-line: rgba(255, 255, 255, 0.14);
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+html[data-newon-shell-theme="dark"] .ab-page .ab-brand--intro .ab-brand__eyebrow { color: rgba(245,245,245,0.5) !important; }
+html[data-newon-shell-theme="dark"] .ab-page .ab-brand--intro .ab-brand__word,
+html[data-newon-shell-theme="dark"] .ab-page .ab-brand--intro .ab-brand__headline { color: #f5f5f5 !important; }
+html[data-newon-shell-theme="dark"] .ab-page .ab-brand--intro .ab-brand__role { color: rgba(245,245,245,0.62) !important; }
+html[data-newon-shell-theme="dark"] .ab-page .ab-brand--intro .ab-brand__lead { color: rgba(245,245,245,0.68) !important; }
+html[data-newon-shell-theme="dark"] .ab-page .ab-brand--intro .ab-brand__domains li {
+  border-color: rgba(255,255,255,0.2) !important;
+  color: rgba(245,245,245,0.78) !important;
+  background: transparent !important;
+}
+html[data-newon-shell-theme="dark"] .ab-page .ab-brand--intro .ab-btn--primary {
+  background: #fff !important; color: #000 !important; border-color: #fff !important;
+}
+html[data-newon-shell-theme="dark"] .ab-page .ab-brand--intro .ab-btn--ghost {
+  color: #f5f5f5 !important; border-color: rgba(255,255,255,0.35) !important; background: transparent !important;
+}

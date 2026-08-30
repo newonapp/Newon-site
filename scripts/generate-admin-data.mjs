@@ -19,7 +19,7 @@ const snapshot = {
   note: "Business leads, waitlist, and newsletter submissions are collected via FormSubmit to newon@newon.app. Activate the inbox at formsubmit.co if not done yet.",
   products: allProducts("ko"),
   labs: LABS_EXPERIMENTS,
-  store: STORE_PRODUCTS,
+  store: STORE_PRODUCTS.filter((p) => p.listed !== false),
   tools: TOOLS.map((t) => ({ id: t.id, slug: t.slug, status: t.status || "live" })),
   growth: {
     // Explicit null = no wired data source. Do not invent zeros.

@@ -586,32 +586,6 @@
     ]
   },
   {
-    "title": "Cursor Product Builder Pack",
-    "desc": "제품 기획부터 구현·QA까지 Cursor 워크플로 프롬프트 모음.",
-    "type": "store",
-    "url": "https://www.newon.app/ko/resources/store/cursor-prompt-pack/",
-    "lang": "ko",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
-      "store"
-    ]
-  },
-  {
-    "title": "Codex Builder Pack",
-    "desc": "Codex/에이전트 워크플로로 제품을 만드는 프롬프트·체크리스트 팩.",
-    "type": "store",
-    "url": "https://www.newon.app/ko/resources/store/codex-builder-pack/",
-    "lang": "ko",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
-      "store"
-    ]
-  },
-  {
     "title": "Website Launch Checklist",
     "desc": "웹사이트 런칭 전 SEO·성능·콘텐츠·법적 고지 체크리스트.",
     "type": "store",
@@ -1380,32 +1354,6 @@
     "tags": [
       "templates",
       "kit",
-      "store"
-    ]
-  },
-  {
-    "title": "Cursor Product Builder Pack",
-    "desc": "Cursor workflow prompts from product planning through build and QA.",
-    "type": "store",
-    "url": "https://www.newon.app/en/resources/store/cursor-prompt-pack/",
-    "lang": "en",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
-      "store"
-    ]
-  },
-  {
-    "title": "Codex Builder Pack",
-    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
-    "type": "store",
-    "url": "https://www.newon.app/en/resources/store/codex-builder-pack/",
-    "lang": "en",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
       "store"
     ]
   },
@@ -2182,32 +2130,6 @@
     ]
   },
   {
-    "title": "Cursor Product Builder Pack",
-    "desc": "Cursor workflow prompts from product planning through build and QA.",
-    "type": "store",
-    "url": "https://www.newon.app/ja/resources/store/cursor-prompt-pack/",
-    "lang": "ja",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
-      "store"
-    ]
-  },
-  {
-    "title": "Codex Builder Pack",
-    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
-    "type": "store",
-    "url": "https://www.newon.app/ja/resources/store/codex-builder-pack/",
-    "lang": "ja",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
-      "store"
-    ]
-  },
-  {
     "title": "Website Launch Checklist",
     "desc": "Pre-launch checklist for SEO, performance, content, and legal notices.",
     "type": "store",
@@ -2976,32 +2898,6 @@
     "tags": [
       "templates",
       "kit",
-      "store"
-    ]
-  },
-  {
-    "title": "Cursor Product Builder Pack",
-    "desc": "Cursor workflow prompts from product planning through build and QA.",
-    "type": "store",
-    "url": "https://www.newon.app/es/resources/store/cursor-prompt-pack/",
-    "lang": "es",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
-      "store"
-    ]
-  },
-  {
-    "title": "Codex Builder Pack",
-    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
-    "type": "store",
-    "url": "https://www.newon.app/es/resources/store/codex-builder-pack/",
-    "lang": "es",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
       "store"
     ]
   },
@@ -3778,32 +3674,6 @@
     ]
   },
   {
-    "title": "Cursor Product Builder Pack",
-    "desc": "Cursor workflow prompts from product planning through build and QA.",
-    "type": "store",
-    "url": "https://www.newon.app/pt-br/resources/store/cursor-prompt-pack/",
-    "lang": "pt-br",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
-      "store"
-    ]
-  },
-  {
-    "title": "Codex Builder Pack",
-    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
-    "type": "store",
-    "url": "https://www.newon.app/pt-br/resources/store/codex-builder-pack/",
-    "lang": "pt-br",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
-      "store"
-    ]
-  },
-  {
     "title": "Website Launch Checklist",
     "desc": "Pre-launch checklist for SEO, performance, content, and legal notices.",
     "type": "store",
@@ -4572,32 +4442,6 @@
     "tags": [
       "templates",
       "kit",
-      "store"
-    ]
-  },
-  {
-    "title": "Cursor Product Builder Pack",
-    "desc": "Cursor workflow prompts from product planning through build and QA.",
-    "type": "store",
-    "url": "https://www.newon.app/fr/resources/store/cursor-prompt-pack/",
-    "lang": "fr",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
-      "store"
-    ]
-  },
-  {
-    "title": "Codex Builder Pack",
-    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
-    "type": "store",
-    "url": "https://www.newon.app/fr/resources/store/codex-builder-pack/",
-    "lang": "fr",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
       "store"
     ]
   },
@@ -5374,32 +5218,6 @@
     ]
   },
   {
-    "title": "Cursor Product Builder Pack",
-    "desc": "Cursor workflow prompts from product planning through build and QA.",
-    "type": "store",
-    "url": "https://www.newon.app/de/resources/store/cursor-prompt-pack/",
-    "lang": "de",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
-      "store"
-    ]
-  },
-  {
-    "title": "Codex Builder Pack",
-    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
-    "type": "store",
-    "url": "https://www.newon.app/de/resources/store/codex-builder-pack/",
-    "lang": "de",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
-      "store"
-    ]
-  },
-  {
     "title": "Website Launch Checklist",
     "desc": "Pre-launch checklist for SEO, performance, content, and legal notices.",
     "type": "store",
@@ -6172,32 +5990,6 @@
     ]
   },
   {
-    "title": "Cursor Product Builder Pack",
-    "desc": "Cursor workflow prompts from product planning through build and QA.",
-    "type": "store",
-    "url": "https://www.newon.app/hi/resources/store/cursor-prompt-pack/",
-    "lang": "hi",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
-      "store"
-    ]
-  },
-  {
-    "title": "Codex Builder Pack",
-    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
-    "type": "store",
-    "url": "https://www.newon.app/hi/resources/store/codex-builder-pack/",
-    "lang": "hi",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
-      "store"
-    ]
-  },
-  {
     "title": "Website Launch Checklist",
     "desc": "Pre-launch checklist for SEO, performance, content, and legal notices.",
     "type": "store",
@@ -6966,32 +6758,6 @@
     "tags": [
       "templates",
       "kit",
-      "store"
-    ]
-  },
-  {
-    "title": "Cursor Product Builder Pack",
-    "desc": "Cursor workflow prompts from product planning through build and QA.",
-    "type": "store",
-    "url": "https://www.newon.app/id/resources/store/cursor-prompt-pack/",
-    "lang": "id",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
-      "store"
-    ]
-  },
-  {
-    "title": "Codex Builder Pack",
-    "desc": "Prompt and checklist pack for building products with Codex-style agent workflows.",
-    "type": "store",
-    "url": "https://www.newon.app/id/resources/store/codex-builder-pack/",
-    "lang": "id",
-    "featured": false,
-    "tags": [
-      "ai-code",
-      "pack",
       "store"
     ]
   },

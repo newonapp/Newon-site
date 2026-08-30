@@ -9,8 +9,8 @@ import { storeHeroVisual, storeLargePreview } from "./store-bs-visuals.mjs";
 const STORE_NAV_LABELS = {
   "app-launch-kit": "LAUNCH",
   "mvp-planning-kit": "MVP",
-  "cursor-prompt-pack": "CURSOR",
-  "codex-builder-pack": "CODEX",
+  "cursor-prompt-pack": "PROMPTS",
+  "codex-builder-pack": "AI BUILD",
   "website-launch-checklist": "WEB",
   "business-planning-workbook": "BIZ PLAN",
   "product-research-template": "RESEARCH",

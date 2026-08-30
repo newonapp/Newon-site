@@ -721,6 +721,7 @@ function writeSitemap() {
 
   try {
     for (const product of STORE_PRODUCTS) {
+      if (product.listed === false) continue;
       const page = `resources/store/${product.slug}`;
       const alts = [
         ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),

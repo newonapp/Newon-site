@@ -89,33 +89,10 @@ export const STORE_PRODUCTS = [
   {
     id: "cursor-prompt-pack",
     slug: "cursor-prompt-pack",
-    titleKo: "Cursor Product Builder Pack",
-    titleEn: "Cursor Product Builder Pack",
-    descKo: "제품 기획부터 구현·QA까지 Cursor 워크플로 프롬프트 모음.",
-    descEn: "Cursor workflow prompts from product planning through build and QA.",
-    category: "ai-code",
-    collection: null,
-    type: "pack",
-    price: "COMING SOON",
-    status: "building",
-    buyable: false,
-    free: false,
-    featured: true,
-    version: "0.1",
-    updated: "2026-08",
-    includesKo: ["기획·스펙 프롬프트", "UI/UX 프롬프트", "구현·리팩터 프롬프트", "QA 체크 프롬프트"],
-    includesEn: ["Spec prompts", "UI/UX prompts", "Build & refactor prompts", "QA check prompts"],
-    audienceKo: "Cursor로 제품을 만드는 개발자·메이커",
-    audienceEn: "Developers and makers building with Cursor",
-    locale: "all",
-  },
-  {
-    id: "codex-builder-pack",
-    slug: "codex-builder-pack",
-    titleKo: "Codex Builder Pack",
-    titleEn: "Codex Builder Pack",
-    descKo: "Codex/에이전트 워크플로로 제품을 만드는 프롬프트·체크리스트 팩.",
-    descEn: "Prompt and checklist pack for building products with Codex-style agent workflows.",
+    titleKo: "Product Builder Prompt Pack",
+    titleEn: "Product Builder Prompt Pack",
+    descKo: "제품 기획부터 구현·QA까지 AI 기반 개발 환경용 프롬프트 워크플로 모음.",
+    descEn: "Prompt workflow pack for planning, building, and QA in AI-assisted development environments.",
     category: "ai-code",
     collection: null,
     type: "pack",
@@ -124,12 +101,37 @@ export const STORE_PRODUCTS = [
     buyable: false,
     free: false,
     featured: false,
+    listed: false,
+    version: "0.1",
+    updated: "2026-08",
+    includesKo: ["기획·스펙 프롬프트", "UI/UX 프롬프트", "구현·리팩터 프롬프트", "QA 체크 프롬프트"],
+    includesEn: ["Spec prompts", "UI/UX prompts", "Build & refactor prompts", "QA check prompts"],
+    audienceKo: "AI 기반 개발 환경에서 제품을 만드는 개발자·메이커",
+    audienceEn: "Developers and makers building products in AI-assisted environments",
+    locale: "all",
+  },
+  {
+    id: "codex-builder-pack",
+    slug: "codex-builder-pack",
+    titleKo: "AI Product Builder Pack",
+    titleEn: "AI Product Builder Pack",
+    descKo: "에이전트형 AI 워크플로로 제품을 만드는 프롬프트·체크리스트 팩.",
+    descEn: "Prompt and checklist pack for building products with agent-style AI workflows.",
+    category: "ai-code",
+    collection: null,
+    type: "pack",
+    price: "COMING SOON",
+    status: "building",
+    buyable: false,
+    free: false,
+    featured: false,
+    listed: false,
     version: "0.1",
     updated: "2026-08",
     includesKo: ["에이전트 작업 분해", "스펙→코드 프롬프트", "리뷰 체크리스트", "릴리스 노트 골격"],
     includesEn: ["Agent task breakdown", "Spec→code prompts", "Review checklist", "Release-note outline"],
-    audienceKo: "AI 코딩 에이전트로 제품을 만드는 팀",
-    audienceEn: "Teams building products with AI coding agents",
+    audienceKo: "에이전트형 AI 워크플로로 제품을 만드는 팀",
+    audienceEn: "Teams building products with agent-style AI workflows",
     locale: "all",
   },
   {
@@ -335,8 +337,13 @@ export const EDUCATION_TOPICS = [
   },
 ];
 
-export function getStoreProducts() {
+export function getAllStoreProducts() {
   return STORE_PRODUCTS.slice();
+}
+
+/** Public store catalog (excludes listed:false). */
+export function getStoreProducts() {
+  return STORE_PRODUCTS.filter((p) => p.listed !== false);
 }
 
 export function getStoreProduct(slug) {
@@ -344,8 +351,9 @@ export function getStoreProduct(slug) {
 }
 
 export function getFeaturedStoreProducts(limit = 3) {
-  const featured = STORE_PRODUCTS.filter((p) => p.featured);
-  const list = featured.length ? featured : STORE_PRODUCTS;
+  const publicProducts = getStoreProducts();
+  const featured = publicProducts.filter((p) => p.featured);
+  const list = featured.length ? featured : publicProducts;
   return list.slice(0, limit);
 }
 
@@ -386,6 +394,7 @@ export function buildSearchIndex(lang = "en") {
   const items = [];
 
   for (const p of STORE_PRODUCTS) {
+    if (p.listed === false) continue;
     items.push({
       type: "store",
       title: isKo ? p.titleKo : p.titleEn,

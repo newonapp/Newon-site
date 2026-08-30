@@ -12,6 +12,7 @@ import { RESOURCE_PAGES } from "./resources-catalog.mjs";
 import { getResourceCopy, getAllResourceCopies } from "./resources-copy.mjs";
 import {
   getStoreProducts,
+  getAllStoreProducts,
   getPublishedBlogPosts,
   getLabsExperiments,
   getLabStatusCounts,
@@ -93,8 +94,9 @@ function hreflangBlock(subpath) {
   return lines.join("\n");
 }
 
-function metaRefreshHtml(target, title = "Redirect") {
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta http-equiv="refresh" content="0;url=${target}"/><link rel="canonical" href="${SITE_ORIGIN}${target}"/><title>${escapeHtml(title)}</title></head><body><p><a href="${target}">Continue</a></p></body></html>\n`;
+function metaRefreshHtml(target, title = "Redirect", { noindex = false } = {}) {
+  const robots = noindex ? '<meta name="robots" content="noindex, nofollow" />' : "";
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/>${robots}<meta http-equiv="refresh" content="0;url=${target}"/><link rel="canonical" href="${SITE_ORIGIN}${target}"/><title>${escapeHtml(title)}</title><script>location.replace(${JSON.stringify(target)});</script></head><body><p><a href="${target}">Continue</a></p></body></html>\n`;
 }
 
 function writeFile(filePath, contents) {
@@ -832,6 +834,17 @@ export function renderResources() {
         writeFile(path.join(ROOT, dir, "resources", "store", product.slug, "index.html"), html);
         count += 1;
       }
+      for (const product of getAllStoreProducts().filter((p) => p.listed === false)) {
+        const hub = `/${dir}/resources/store/`;
+        writeFile(
+          path.join(ROOT, dir, "resources", "store", product.slug, "index.html"),
+          metaRefreshHtml(hub, "Newon Store", { noindex: true })
+        );
+        writeFile(
+          path.join(ROOT, dir, "store", product.slug, "index.html"),
+          metaRefreshHtml(hub, "Newon Store", { noindex: true })
+        );
+      }
     }
     const pub = path.join(ROOT, "_publish");
     if (fs.existsSync(pub)) {
@@ -972,7 +985,7 @@ export function renderResources() {
       );
     }
 
-    // Store details
+    // Store details (public listed only); unlisted → noindex redirect to Store hub
     for (const product of getStoreProducts()) {
       const seo = storeDetailSeo(product, lang);
       const html = renderStoreDetailHtml({
@@ -990,6 +1003,17 @@ export function renderResources() {
         chromeBase: "../../../",
       });
       writeFile(path.join(ROOT, dir, "resources", "store", product.slug, "index.html"), html);
+    }
+    for (const product of getAllStoreProducts().filter((p) => p.listed === false)) {
+      const hub = `/${dir}/resources/store/`;
+      writeFile(
+        path.join(ROOT, dir, "resources", "store", product.slug, "index.html"),
+        metaRefreshHtml(hub, "Newon Store", { noindex: true })
+      );
+      writeFile(
+        path.join(ROOT, dir, "store", product.slug, "index.html"),
+        metaRefreshHtml(hub, "Newon Store", { noindex: true })
+      );
     }
 
     // Lab details
@@ -1085,7 +1109,7 @@ export function renderResources() {
       );
     }
 
-    // Old store product pages → new paths
+    // Old store product pages → new paths (public only; unlisted handled above)
     for (const product of getStoreProducts()) {
       writeFile(
         path.join(ROOT, dir, "store", product.slug, "index.html"),

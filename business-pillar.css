@@ -2039,3 +2039,29 @@ html[data-newon-shell-theme="dark"] .bp-board__stack span,
 html[data-newon-shell-theme="dark"] .bp-board__grid div {
   border-color: rgba(255, 255, 255, 0.14);
 }
+
+
+/* Dark mode — pure black surfaces (20260830dark2) */
+html[data-newon-shell-theme="dark"] .bp-explore__tab.is-active,
+html[data-newon-shell-theme="dark"] .bp-board,
+html[data-newon-shell-theme="dark"] .bp-card,
+html[data-newon-shell-theme="dark"] .bp-panel,
+html[data-newon-shell-theme="dark"] .bp-item,
+html[data-newon-shell-theme="dark"] .bz-pillar__item,
+html[data-newon-shell-theme="dark"] [class*="bp-"] {
+  /* keep scoped below to avoid breaking icons */
+}
+html[data-newon-shell-theme="dark"] .bp-explore__tab.is-active {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+  box-shadow: inset 0 -2px 0 #f5f5f5 !important;
+}
+html[data-newon-shell-theme="dark"] .bp-explore__tab:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #f5f5f5 !important;
+}
+html[data-newon-shell-theme="dark"] .bp-board {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}

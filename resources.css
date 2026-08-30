@@ -33,7 +33,7 @@ html[data-newon-shell-theme="dark"] .rs-page {
   --rs-bg: #0a0a0a;
 }
 
-/* Labs hub + detail — always white editorial surface */
+/* Labs hub — follows shell theme */
 .rs-page[data-rs-hub="labs"] {
   --rs-ink: #0a0a0a;
   --rs-muted: #666;
@@ -42,36 +42,40 @@ html[data-newon-shell-theme="dark"] .rs-page {
   --rs-line-strong: #cfcfcf;
   --rs-surface: #ffffff;
   --rs-bg: #ffffff;
-  background: #ffffff !important;
+  background: #ffffff;
   color: #0a0a0a;
 }
 
 html[data-newon-shell-theme="dark"] .rs-page[data-rs-hub="labs"] {
-  --rs-ink: #0a0a0a;
-  --rs-muted: #666;
+  --rs-ink: #f5f5f5;
+  --rs-muted: #a8a8a8;
   --rs-soft: #8a8a8a;
-  --rs-line: #e6e6e6;
-  --rs-line-strong: #cfcfcf;
-  --rs-surface: #ffffff;
-  --rs-bg: #ffffff;
-  background: #ffffff !important;
-  color: #0a0a0a;
+  --rs-line: rgba(255, 255, 255, 0.12);
+  --rs-line-strong: rgba(255, 255, 255, 0.22);
+  --rs-surface: #000000;
+  --rs-bg: #000000;
+  background: #000000 !important;
+  color: #f5f5f5;
 }
 
-body:has(.rs-page[data-rs-hub="labs"]) {
+html[data-newon-shell-theme="light"] body:has(.rs-page[data-rs-hub="labs"]) {
   background: #ffffff !important;
+}
+html[data-newon-shell-theme="dark"] body:has(.rs-page[data-rs-hub="labs"]) {
+  background: #000000 !important;
 }
 
 html[data-newon-shell-theme="dark"] .rs-page[data-rs-hub="labs"] .lx-card {
-  background: #ffffff;
-  color: #0a0a0a;
+  background: #0a0a0a;
+  color: #f5f5f5;
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 html[data-newon-shell-theme="dark"] .rs-page[data-rs-hub="labs"] .lx-feat__main,
 html[data-newon-shell-theme="dark"] .rs-page[data-rs-hub="labs"] .lx-feat__side,
 html[data-newon-shell-theme="dark"] .rs-page[data-rs-hub="labs"] .lx-feat__band {
-  background: #ffffff;
-  color: #0a0a0a;
+  background: #0a0a0a;
+  color: #f5f5f5;
 }
 
 html[data-newon-shell-theme="dark"] .rs-page[data-rs-hub="labs"] .lx-viz--term {

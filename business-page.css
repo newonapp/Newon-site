@@ -11,11 +11,13 @@
 }
 
 html[data-newon-shell-theme="dark"] .bz-page {
-  --bz-ink: #f4f4f4;
-  --bz-paper: var(--bg, #0a0a0a);
+  --bz-ink: #f5f5f5;
+  --bz-paper: #000000;
   --bz-line: rgba(255, 255, 255, 0.14);
   --bz-mute: #b0b0b0;
   --bz-soft: #888;
+  background: #000000;
+  color: #f5f5f5;
 }
 
 .bz-page .bz-section {

@@ -291,7 +291,7 @@ export function renderGamesShowcaseBody(flat, flatEn) {
           <div class="games-meter__head"><span>HUMANITY</span></div>
           <div class="games-meter__track"><i style="--w:55%"></i></div>
         </div>
-        <p class="games-escape__calc">ESCAPE PROBABILITY · CALCULATING<span data-cursor></span></p>
+        <p class="games-escape__calc">ESCAPE PROBABILITY · CALCULATING<span data-caret></span></p>
       </aside>
     </div>
   </section>

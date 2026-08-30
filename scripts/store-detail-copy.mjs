@@ -703,35 +703,35 @@ export const STORE_DETAILS = {
   },
 
   "cursor-prompt-pack": {
-    preview: "cursor-workflow",
-    categoryEyebrow: "STORE · CURSOR",
-    title: "Cursor Product Builder Pack",
-    previewNameKo: "Cursor Workflow Preview",
-    previewNameEn: "Cursor Workflow Preview",
+    preview: "prompt-workflow",
+    categoryEyebrow: "STORE · PROMPTS",
+    title: "Product Builder Prompt Pack",
+    previewNameKo: "Product Workflow Preview",
+    previewNameEn: "Product Workflow Preview",
     heroTitleKo: "한 번의 프롬프트가 아니라\n제품 제작 흐름을 만듭니다.",
     heroTitleEn: "Not one prompt —\na product-building workflow.",
     heroLeadKo:
-      "AI에게 “앱 만들어줘”라고 맡기면\n구조 없는 코드와 다시 고칠 부채가 남습니다.\n\n제품 구조, UI 규칙, 기능 단위 구현,\n리팩터, 디버깅, QA, 배포 전 점검까지\n단계마다 다른 질문이 필요합니다.\n\nCursor Product Builder Pack은\nCursor 위에서 그 단계를 순서대로 돌리는\n프롬프트 워크플로입니다.",
+      "AI에게 “앱 만들어줘”라고 맡기면\n구조 없는 코드와 다시 고칠 부채가 남습니다.\n\n제품 구조, UI 규칙, 기능 단위 구현,\n리팩터, 디버깅, QA, 배포 전 점검까지\n단계마다 다른 질문이 필요합니다.\n\nProduct Builder Prompt Pack은\nAI 기반 개발 환경에서 그 단계를 순서대로 돌리는\n프롬프트 워크플로입니다.",
     heroLeadEn:
-      "Asking AI to “just build the app”\nusually leaves unstructured code and rework.\n\nProduct structure, UI rules, feature builds,\nrefactoring, debugging, QA, and pre-release checks\neach need a different kind of ask.\n\nCursor Product Builder Pack is a staged prompt workflow\nfor running that sequence inside Cursor.",
+      "Asking AI to “just build the app”\nusually leaves unstructured code and rework.\n\nProduct structure, UI rules, feature builds,\nrefactoring, debugging, QA, and pre-release checks\neach need a different kind of ask.\n\nProduct Builder Prompt Pack is a staged prompt workflow\nfor running that sequence in an AI-assisted development environment.",
     overviewTitleKo: "프롬프트 모음이 아니라\n작업 순서입니다.",
     overviewTitleEn: "Not a prompt dump —\na work order.",
     overviewBodyKo: [
       "좋은 결과는 마법 문장이 아니라\n맥락을 나눠 주는 방식에서 나옵니다.",
       "요구사항을 명세로 바꾸고,\nUI 규칙을 고정한 뒤,\n기능을 하나씩 구현하고,\n깨진 부분을 같은 절차로 고칩니다.",
-      "이 팩은 Cursor에서 그 절차를\n복사·붙여넣기 가능한 단계로 제공합니다.",
+      "이 팩은 AI 기반 개발 환경에서 그 절차를\n복사·붙여넣기 가능한 단계로 제공합니다.",
     ],
     overviewBodyEn: [
       "Good results come less from magic phrasing\nand more from how you split context.",
       "Turn requirements into a build spec,\nlock UI rules,\nimplement feature by feature,\nthen fix breakage with the same discipline.",
-      "This pack gives that procedure to Cursor\nas copyable stages.",
+      "This pack gives that procedure for AI-assisted development\nas copyable stages.",
     ],
     whoTitleKo: "이런 사람과 팀에게 필요합니다.",
     whoTitleEn: "Who this pack is for.",
     whoKo: [
       {
-        t: "CURSOR USERS",
-        d: "Cursor를 쓰지만\n매 작업마다 프롬프트를 즉흥으로 써서\n결과가 들쭉날쭉한 경우",
+        t: "AI BUILDERS",
+        d: "AI 코딩 도구를 쓰지만\n매 작업마다 프롬프트를 즉흥으로 써서\n결과가 들쭉날쭉한 경우",
       },
       {
         t: "SOLO DEVELOPERS",
@@ -743,7 +743,7 @@ export const STORE_DETAILS = {
       },
       {
         t: "EARLY PRODUCT TEAMS",
-        d: "작은 팀이 Cursor로\n기능 단위 작업을 나누고\n같은 워크플로를 공유하고 싶은 경우",
+        d: "작은 팀이 AI 기반 환경에서\n기능 단위 작업을 나누고\n같은 워크플로를 공유하고 싶은 경우",
       },
       {
         t: "PROTOTYPE TO PRODUCT",
@@ -756,8 +756,8 @@ export const STORE_DETAILS = {
     ],
     whoEn: [
       {
-        t: "CURSOR USERS",
-        d: "Already in Cursor but improvising prompts\nand getting uneven results",
+        t: "AI BUILDERS",
+        d: "Already using AI-assisted development but improvising prompts\nand getting uneven results",
       },
       {
         t: "SOLO DEVELOPERS",
@@ -769,7 +769,7 @@ export const STORE_DETAILS = {
       },
       {
         t: "EARLY PRODUCT TEAMS",
-        d: "Small teams splitting feature work in Cursor\nand wanting a shared workflow",
+        d: "Small teams splitting feature work with AI assistance\nand wanting a shared workflow",
       },
       {
         t: "PROTOTYPE TO PRODUCT",
@@ -874,8 +874,8 @@ export const STORE_DETAILS = {
       "Context Handoff Notes",
       "Safe Edit Patterns",
     ],
-    outcomesTitleKo: "Cursor 작업이\n반복 가능한 절차가 됩니다.",
-    outcomesTitleEn: "Cursor work becomes\na repeatable procedure.",
+    outcomesTitleKo: "AI 보조 개발 작업이\n반복 가능한 절차가 됩니다.",
+    outcomesTitleEn: "AI-assisted development work becomes\na repeatable procedure.",
     outcomesKo: [
       {
         t: "STAGED CONTEXT",
@@ -970,8 +970,8 @@ export const STORE_DETAILS = {
     formatEn: ["Prompt Library", "Workflow Guide", "QA Checklist", "Release Checklist"],
     faqKo: [
       {
-        q: "Cursor 구독이나 특정 플랜이 필요한가요?",
-        a: "Cursor를 사용할 수 있는 환경이면 됩니다. Newon은 Cursor와 무관한 독립 리소스이며, 플랜·요금은 Cursor 정책을 따릅니다.",
+        q: "특정 AI 코딩 도구 구독이 필요한가요?",
+        a: "AI 기반 개발 환경을 사용할 수 있으면 됩니다. Newon은 특정 도구 벤더와 무관한 독립 리소스입니다.",
       },
       {
         q: "프롬프트만 복사하면 제품이 완성되나요?",
@@ -982,14 +982,14 @@ export const STORE_DETAILS = {
         a: "가능합니다. Setup과 Refactoring·Debugging 모듈을 기존 코드베이스 맥락에 맞게 쓰면 됩니다.",
       },
       {
-        q: "Codex Builder Pack과 무엇이 다른가요?",
-        a: "이 팩은 Cursor 중심의 대화형 제품 제작 흐름입니다. Codex Builder Pack은 에이전트형 작업 명세·멀티파일 변경·리뷰에 더 초점을 둡니다.",
+        q: "AI Product Builder Pack과 무엇이 다른가요?",
+        a: "이 팩은 대화형 AI 보조 제작 흐름입니다. AI Product Builder Pack은 에이전트형 작업 명세·멀티파일 변경·리뷰에 더 초점을 둡니다.",
       },
     ],
     faqEn: [
       {
-        q: "Do I need a specific Cursor plan?",
-        a: "Any environment where you can use Cursor works. This is an independent Newon resource; plans and pricing follow Cursor’s own policies.",
+        q: "Do I need a specific AI development tool plan?",
+        a: "Any AI-assisted development environment works. This is an independent Newon resource and is not tied to a specific vendor plan.",
       },
       {
         q: "Will copying prompts finish my product?",
@@ -1000,28 +1000,28 @@ export const STORE_DETAILS = {
         a: "Yes. Use Setup plus Refactoring and Debugging modules with your current codebase context.",
       },
       {
-        q: "How is it different from Codex Builder Pack?",
-        a: "This pack is a Cursor-centered conversational build flow. Codex Builder Pack focuses more on agent-style task specs, multi-file changes, and review.",
+        q: "How is it different from AI Product Builder Pack?",
+        a: "This pack is a conversational AI-assisted build flow. AI Product Builder Pack focuses more on agent-style task specs, multi-file changes, and review.",
       },
     ],
     disclaimerKo:
-      "이 리소스는 Newon이 제작한 독립 제품입니다.\nCursor 또는 Anysphere와 제휴·보증·공식 관계가 없습니다.",
+      "이 리소스는 Newon이 제작한 독립 제품입니다.\n특정 AI 코딩 도구 벤더와 제휴·보증·공식 관계가 없습니다.",
     disclaimerEn:
-      "This resource is an independent Newon product.\nIt is not affiliated with, endorsed by, or partnered with Cursor or Anysphere.",
+      "This resource is an independent Newon product.\nIt is not affiliated with, endorsed by, or partnered with any specific AI development tool vendor.",
   },
 
   "codex-builder-pack": {
-    preview: "codex-workflow",
-    categoryEyebrow: "STORE · CODEX",
-    title: "Codex Builder Pack",
-    previewNameKo: "Codex Workflow Preview",
-    previewNameEn: "Codex Workflow Preview",
+    preview: "ai-build-workflow",
+    categoryEyebrow: "STORE · AI BUILD",
+    title: "AI Product Builder Pack",
+    previewNameKo: "Agent Workflow Preview",
+    previewNameEn: "Agent Workflow Preview",
     heroTitleKo: "에이전트 작업을\n안전한 절차로 운영합니다.",
     heroTitleEn: "Run agent work\nas a safe procedure.",
     heroLeadKo:
-      "에이전트에게 저장소를 맡기면\n빠른 변경과 함께 회귀 위험도 커집니다.\n\n먼저 구조를 읽고,\n작업 단위를 작게 쓰고,\n구현·리뷰·테스트·릴리스 준비를\n같은 리듬으로 돌려야 합니다.\n\nCodex Builder Pack은 Codex 스타일 에이전트 개발을\n체계적으로 운영하기 위한 실전 워크플로입니다.",
+      "에이전트에게 저장소를 맡기면\n빠른 변경과 함께 회귀 위험도 커집니다.\n\n먼저 구조를 읽고,\n작업 단위를 작게 쓰고,\n구현·리뷰·테스트·릴리스 준비를\n같은 리듬으로 돌려야 합니다.\n\nAI Product Builder Pack은 에이전트형 AI 개발을\n체계적으로 운영하기 위한 실전 워크플로입니다.",
     heroLeadEn:
-      "Handing a repo to an agent\nspeeds change — and raises regression risk.\n\nRead the structure first,\nwrite small task units,\nthen cycle implement → review → test → release prep\non the same rhythm.\n\nCodex Builder Pack is a practical workflow\nfor running Codex-style agent development with control.",
+      "Handing a repo to an agent\nspeeds change — and raises regression risk.\n\nRead the structure first,\nwrite small task units,\nthen cycle implement → review → test → release prep\non the same rhythm.\n\nAI Product Builder Pack is a practical workflow\nfor running agent-style AI development with control.",
     overviewTitleKo: "속도보다 먼저\n작업의 경계를 만듭니다.",
     overviewTitleEn: "Draw the boundary of work\nbefore chasing speed.",
     overviewBodyKo: [
@@ -1278,38 +1278,38 @@ export const STORE_DETAILS = {
     formatEn: ["Workflow Guide", "Prompt Library", "Review Checklist", "Release Checklist"],
     faqKo: [
       {
-        q: "OpenAI Codex 공식 제품인가요?",
+        q: "특정 AI 에이전트 공식 제품인가요?",
         a: "아닙니다. Newon이 만든 독립 교육·실무 리소스이며 OpenAI와 제휴·보증 관계가 없습니다.",
       },
       {
         q: "특정 에이전트 도구에만 맞나요?",
-        a: "Codex 스타일의 에이전트 작업 흐름을 기준으로 썼습니다. 비슷한 에이전트 환경에도 절차를 옮길 수 있습니다.",
+        a: "에이전트형 AI 작업 흐름을 기준으로 썼습니다. 비슷한 에이전트 환경에도 절차를 옮길 수 있습니다.",
       },
       {
         q: "테스트 코드 작성까지 자동화하나요?",
         a: "테스트 작성 지시와 검증 목록을 포함하지만, 무엇을 통과해야 하는지는 저장소와 팀이 정합니다.",
       },
       {
-        q: "Cursor Product Builder Pack과 함께 써도 되나요?",
-        a: "가능합니다. Cursor에서의 대화형 제작과 에이전트형 작업 루프를 역할에 맞게 나눠 쓰면 됩니다.",
+        q: "Product Builder Prompt Pack과 함께 써도 되나요?",
+        a: "가능합니다. 대화형 AI 보조 제작과 에이전트형 작업 루프를 역할에 맞게 나눠 쓰면 됩니다.",
       },
     ],
     faqEn: [
       {
-        q: "Is this an official OpenAI Codex product?",
+        q: "Is this an official product of a specific AI agent vendor?",
         a: "No. It is an independent educational and practical resource by Newon, not affiliated with or endorsed by OpenAI.",
       },
       {
         q: "Is it tied to one agent tool only?",
-        a: "It is written around Codex-style agent workflows. You can adapt the procedure to similar agent environments.",
+        a: "It is written around agent-style AI workflows. You can adapt the procedure to similar agent environments.",
       },
       {
         q: "Does it auto-write all tests?",
         a: "It includes test-writing prompts and validation lists. Pass criteria still belong to your repo and team.",
       },
       {
-        q: "Can I use it with Cursor Product Builder Pack?",
-        a: "Yes. Use Cursor for conversational build flow and this pack for agent-style task loops as roles require.",
+        q: "Can I use it with Product Builder Prompt Pack?",
+        a: "Yes. Use the conversational prompt pack for build flow and this pack for agent-style task loops as roles require.",
       },
     ],
     disclaimerKo:

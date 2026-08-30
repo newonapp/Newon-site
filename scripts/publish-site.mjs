@@ -33,6 +33,7 @@ const PUBLISH_ROOT_CORE = [
   "search-index.json",
   "styles.css",
   "gnav-mega.css",
+  "site-dark.css",
   "site-premium.css",
   "hub-pages.css",
   "home-studio.css",

@@ -384,8 +384,20 @@ for (const tool of TOOLS) {
   }
 }
 
-// Store detail pages → resources/store/{slug}/
+// Store detail pages → resources/store/{slug}/ (skip unlisted)
 for (const product of STORE_PRODUCTS) {
+  if (product.listed === false) {
+    for (const lang of LANGS) {
+      const hub = `/${lang.dir}/resources/store/`;
+      const gone = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="robots" content="noindex, nofollow"/><meta http-equiv="refresh" content="0;url=${hub}"/><link rel="canonical" href="https://www.newon.app${hub}"/><title>Newon Store</title><script>location.replace(${JSON.stringify(hub)});</script></head><body><p><a href="${hub}">Store</a></p></body></html>\n`;
+      for (const rel of [`store/${product.slug}/index.html`, `resources/store/${product.slug}/index.html`]) {
+        const out = path.join(ROOT, lang.dir, rel);
+        ensureDir(out);
+        fs.writeFileSync(out, gone);
+      }
+    }
+    continue;
+  }
   for (const lang of LANGS) {
     const out = path.join(ROOT, lang.dir, "store", product.slug, "index.html");
     ensureDir(out);

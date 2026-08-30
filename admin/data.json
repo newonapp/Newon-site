@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-30T03:20:38.439Z",
+  "generatedAt": "2026-08-30T09:15:46.762Z",
   "note": "Business leads, waitlist, and newsletter submissions are collected via FormSubmit to newon@newon.app. Activate the inbox at formsubmit.co if not done yet.",
   "products": [
     {
@@ -371,26 +371,6 @@
       "buyable": false,
       "nameKey": "studio.store2Name",
       "descKey": "studio.store2Desc",
-      "priceKo": "Coming Soon",
-      "priceEn": "Coming Soon"
-    },
-    {
-      "slug": "cursor-prompt-pack",
-      "category": "ai-code",
-      "status": "building",
-      "buyable": false,
-      "nameKey": "studio.store3Name",
-      "descKey": "studio.store3Desc",
-      "priceKo": "Coming Soon",
-      "priceEn": "Coming Soon"
-    },
-    {
-      "slug": "codex-builder-pack",
-      "category": "ai-code",
-      "status": "building",
-      "buyable": false,
-      "nameKey": "studio.storeCodexName",
-      "descKey": "studio.storeCodexDesc",
       "priceKo": "Coming Soon",
       "priceEn": "Coming Soon"
     },

@@ -13,6 +13,10 @@
 
   function getTheme() {
     try {
+      var q = new URLSearchParams(global.location.search).get("theme");
+      if (q === "light" || q === "dark") return q;
+    } catch (e) {}
+    try {
       var t = global.localStorage.getItem(KEY);
       if (t === "light" || t === "dark") return t;
     } catch (e) {}
@@ -25,6 +29,14 @@
       global.localStorage.setItem(KEY, theme);
     } catch (e) {}
     document.documentElement.setAttribute("data-newon-shell-theme", theme);
+    /* Keep legacy app-landing selectors (ox-month etc.) in sync */
+    document.documentElement.setAttribute("data-theme", theme);
+    var appRoots = document.querySelectorAll(
+      "#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app"
+    );
+    appRoots.forEach(function (el) {
+      el.setAttribute("data-theme", theme);
+    });
   }
 
   var MOON_SVG =

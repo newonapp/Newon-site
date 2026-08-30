@@ -75,17 +75,17 @@ function visualMvp(lang) {
   });
 }
 
-/** Cursor Prompt Pack — prompt workspace */
-function visualCursor(lang) {
+/** Product Builder Prompt Pack — prompt workspace */
+function visualPromptPack(lang) {
   const ko = lang === "ko";
   return panelShell({
-    mod: "cursor",
+    mod: "prompt",
     live: "PROMPT WORKSPACE",
-    meta: "CURSOR",
+    meta: "PROMPTS",
     lang,
     body: `
-      <div class="bs-sv-sx-cursor">
-        <aside class="bs-sv-sx-cursor__phases">
+      <div class="bs-sv-sx-prompt">
+        <aside class="bs-sv-sx-prompt__phases">
           <p class="bs-sv__k">PHASES</p>
           <ol>
             <li class="is-on"><span>01</span>DEFINE</li>
@@ -94,9 +94,9 @@ function visualCursor(lang) {
             <li><span>04</span>SHIP</li>
           </ol>
         </aside>
-        <div class="bs-sv-sx-cursor__prompt">
+        <div class="bs-sv-sx-prompt__prompt">
           <p class="bs-sv__k">PRODUCT BUILD PROMPT</p>
-          <div class="bs-sv-sx-cursor__fields">
+          <div class="bs-sv-sx-prompt__fields">
             <div class="is-on"><span>CONTEXT</span><strong>${ko ? "프로젝트 맥락" : "Project context"}</strong></div>
             <div><span>GOAL</span><strong>${ko ? "무엇을 만들지" : "What to build"}</strong></div>
             <div><span>CONSTRAINTS</span><strong>${ko ? "바꾸면 안 되는 것" : "Must not change"}</strong></div>
@@ -107,24 +107,24 @@ function visualCursor(lang) {
   });
 }
 
-/** Codex Builder Pack — agent console */
-function visualCodex(lang) {
+/** AI Product Builder Pack — agent console */
+function visualAiBuild(lang) {
   const ko = lang === "ko";
   return panelShell({
-    mod: "codex",
+    mod: "aibuild",
     live: "AGENT CONSOLE",
-    meta: "CODEX",
+    meta: "AI BUILD",
     lang,
     body: `
-      <div class="bs-sv-sx-codex">
-        <div class="bs-sv-sx-codex__bar"><i></i><i></i><i></i><em>agent · run</em></div>
-        <div class="bs-sv-sx-codex__grid">
+      <div class="bs-sv-sx-aibuild">
+        <div class="bs-sv-sx-aibuild__bar"><i></i><i></i><i></i><em>agent · run</em></div>
+        <div class="bs-sv-sx-aibuild__grid">
           <article><p class="bs-sv__k">REPO</p><strong>${ko ? "구조 스캔" : "Scan structure"}</strong></article>
           <article class="is-on"><p class="bs-sv__k">TASK</p><strong>${ko ? "작업 단위" : "Work unit"}</strong></article>
           <article><p class="bs-sv__k">EXECUTE</p><strong>${ko ? "멀티파일" : "Multi-file"}</strong></article>
           <article><p class="bs-sv__k">REVIEW</p><strong>${ko ? "품질 점검" : "QA check"}</strong></article>
         </div>
-        <div class="bs-sv-sx-codex__log">
+        <div class="bs-sv-sx-aibuild__log">
           <p>$ agent run --task "implement-auth"</p>
           <p>→ analyzing repository…</p>
           <p class="is-on">→ applying patch (4 files)</p>
@@ -266,8 +266,8 @@ function visualRoadmap(lang) {
 const SLUG_VISUAL = {
   "app-launch-kit": visualLaunch,
   "mvp-planning-kit": visualMvp,
-  "cursor-prompt-pack": visualCursor,
-  "codex-builder-pack": visualCodex,
+  "cursor-prompt-pack": visualPromptPack,
+  "codex-builder-pack": visualAiBuild,
   "website-launch-checklist": visualWeb,
   "business-planning-workbook": visualBiz,
   "product-research-template": visualResearch,
@@ -278,8 +278,8 @@ const SLUG_VISUAL = {
 const SLUG_PREVIEW = {
   "app-launch-kit": "launch-checklist",
   "mvp-planning-kit": "mvp-flow",
-  "cursor-prompt-pack": "cursor-workflow",
-  "codex-builder-pack": "codex-workflow",
+  "cursor-prompt-pack": "prompt-workflow",
+  "codex-builder-pack": "agent-workflow",
   "website-launch-checklist": "web-checklist",
   "business-planning-workbook": "biz-flow",
   "product-research-template": "research-board",
@@ -326,7 +326,7 @@ function largeShell({ mod, body, foot = "", lang = "ko" }) {
   </div>`;
 }
 
-function cursorWorkspaceLarge(lang) {
+function promptWorkspaceLarge(lang) {
   const phases = ["DEFINE", "PLAN", "BUILD", "SHIP"];
   const nav = phases
     .map(
@@ -357,8 +357,8 @@ function cursorWorkspaceLarge(lang) {
     )
     .join("");
   return largeShell({
-    mod: "cursor-ws",
-    foot: "Independent resource by Newon. Not affiliated with Cursor.",
+    mod: "prompt-ws",
+    foot: "Independent resource by Newon. Independent Newon resource.",
     lang,
     body: `<div class="bs-sv-store-ws">
       <div class="bs-sv-store-ws__rail" aria-hidden="true"><p class="bs-sv-store-ws__label">PHASES</p><ol>${nav}</ol></div>
@@ -370,7 +370,7 @@ function cursorWorkspaceLarge(lang) {
   });
 }
 
-function codexConsoleLarge(lang) {
+function aiBuildConsoleLarge(lang) {
   const tasks =
     lang === "ko"
       ? [
@@ -386,7 +386,7 @@ function codexConsoleLarge(lang) {
           ["REVIEW", "Regression · quality"],
         ];
   return largeShell({
-    mod: "codex",
+    mod: "aibuild",
     lang,
     body: `<div class="bs-sv-store-console">
     <div class="bs-sv-store-console__bar"><em>AGENT EXECUTION CONSOLE</em></div>
@@ -445,8 +445,8 @@ function mvpCanvasLarge(lang) {
 const LARGE_VISUALS = {
   "launch-checklist": (lang) => launchCommandLarge(lang),
   "mvp-flow": (lang) => mvpCanvasLarge(lang),
-  "cursor-workflow": (lang) => cursorWorkspaceLarge(lang),
-  "codex-workflow": (lang) => codexConsoleLarge(lang),
+  "prompt-workflow": (lang) => promptWorkspaceLarge(lang),
+  "agent-workflow": (lang) => aiBuildConsoleLarge(lang),
   "web-checklist": (lang) =>
     largeShell({
       mod: "web-qa",

@@ -20,18 +20,23 @@
   color: var(--hs-text);
 }
 
-/* Force white studio canvas even in dark site theme */
+/* Dark shell — black canvas, light type */
 html[data-newon-shell-theme="dark"] .hs-home {
-  --hs-bg: #ffffff;
-  --hs-surface: #ffffff;
-  --hs-surface-2: #ffffff;
-  --hs-border: rgba(0, 0, 0, 0.08);
-  --hs-border-strong: rgba(0, 0, 0, 0.14);
-  --hs-text: #0a0a0a;
-  --hs-text-muted: rgba(10, 10, 10, 0.62);
-  --hs-text-soft: rgba(10, 10, 10, 0.42);
-  background: #ffffff;
-  color: #0a0a0a;
+  --hs-bg: #000000;
+  --hs-surface: #000000;
+  --hs-surface-2: #0a0a0a;
+  --hs-border: rgba(255, 255, 255, 0.12);
+  --hs-border-strong: rgba(255, 255, 255, 0.22);
+  --hs-text: #f5f5f5;
+  --hs-text-muted: rgba(245, 245, 245, 0.68);
+  --hs-text-soft: rgba(245, 245, 245, 0.48);
+  --hs-ink: #f5f5f5;
+  --hs-paper: #000000;
+  --hs-line: rgba(255, 255, 255, 0.14);
+  --hs-muted: rgba(245, 245, 245, 0.62);
+  --hs-faint: rgba(245, 245, 245, 0.45);
+  background: #000000;
+  color: #f5f5f5;
 }
 
 .hs-wrap {
@@ -1133,8 +1138,8 @@ html[data-newon-shell-theme="dark"] .hs-home {
 }
 
 html[data-newon-shell-theme="dark"] #home .hero--home {
-  background: #ffffff;
-  color: #0a0a0a;
+  background: #000000;
+  color: #f5f5f5;
 }
 
 #home .hero-inner--home {
@@ -6973,123 +6978,123 @@ html[data-newon-shell-theme="dark"] .hs-home .hs-biz-split__intro {
    Business wrap still used legacy 2-col grid → half-width board.
    ============================================================ */
 
-.hs-home .hs-section--built,
-.hs-home .hs-section--labs,
-.hs-home .hs-section--explore,
-.hs-home .hs-section--studio,
-.hs-home .hs-section--resources,
-.hs-home .hs-section--business,
-.hs-home .hs-section--does,
-.hs-home .hs-section--products {
+html[data-newon-shell-theme="light"] .hs-home .hs-section--built,
+html[data-newon-shell-theme="light"] .hs-home .hs-section--labs,
+html[data-newon-shell-theme="light"] .hs-home .hs-section--explore,
+html[data-newon-shell-theme="light"] .hs-home .hs-section--studio,
+html[data-newon-shell-theme="light"] .hs-home .hs-section--resources,
+html[data-newon-shell-theme="light"] .hs-home .hs-section--business,
+html[data-newon-shell-theme="light"] .hs-home .hs-section--does,
+html[data-newon-shell-theme="light"] .hs-home .hs-section--products {
   color: #0a0a0a !important;
   background: #fff !important;
 }
 
-.hs-home .hs-section--built .hs-h2,
-.hs-home .hs-section--labs .hs-h2,
-.hs-home .hs-section--labs .hs-link,
-.hs-home .hs-built-rail__title,
-.hs-home .hs-built-rail__body,
-.hs-home .hs-built-stats__val,
-.hs-home .hs-lab__name,
-.hs-home .hs-explore-feat__title,
-.hs-home .hs-explore-list__title,
-.hs-home .hs-studio-wall__title,
-.hs-home .hs-does-row__title,
-.hs-home .hs-res-dir__title,
-.hs-home .hs-biz-stack__title,
-.hs-home .hs-prod__name {
+html[data-newon-shell-theme="light"] .hs-home .hs-section--built .hs-h2,
+html[data-newon-shell-theme="light"] .hs-home .hs-section--labs .hs-h2,
+html[data-newon-shell-theme="light"] .hs-home .hs-section--labs .hs-link,
+html[data-newon-shell-theme="light"] .hs-home .hs-built-rail__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-built-rail__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-built-stats__val,
+html[data-newon-shell-theme="light"] .hs-home .hs-lab__name,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-studio-wall__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-does-row__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-res-dir__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-biz-stack__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod__name {
   color: #0a0a0a !important;
 }
 
-.hs-home .hs-kicker {
+html[data-newon-shell-theme="light"] .hs-home .hs-kicker {
   font-size: 0.8125rem !important;
   letter-spacing: 0.12em !important;
   color: rgba(10, 10, 10, 0.58) !important;
 }
 
-.hs-home .hs-lead {
+html[data-newon-shell-theme="light"] .hs-home .hs-lead {
   font-size: 1.08rem !important;
   color: rgba(10, 10, 10, 0.68) !important;
 }
 
-.hs-home .hs-link {
+html[data-newon-shell-theme="light"] .hs-home .hs-link {
   font-size: 0.9375rem !important;
   color: #0a0a0a !important;
 }
 
-.hs-home .hs-does-row__n,
-.hs-home .hs-does-row__items,
-.hs-home .hs-biz-stack__n,
-.hs-home .hs-built-rail__n,
-.hs-home .hs-built-stats__lbl,
-.hs-home .hs-built-rail__tags,
-.hs-home .hs-lab__n,
-.hs-home .hs-lab__status,
-.hs-home .hs-lab__q,
-.hs-home .hs-studio-wall__n,
-.hs-home .hs-studio-wall__items,
-.hs-home .hs-res-dir__n,
-.hs-home .hs-res-dir__items,
-.hs-home .hs-res-dir__body,
-.hs-home .hs-does-row__body,
-.hs-home .hs-biz-stack__body,
-.hs-home .hs-explore-feat__n,
-.hs-home .hs-explore-feat__body,
-.hs-home .hs-explore-list__n,
-.hs-home .hs-explore-list__body,
-.hs-home .hs-latest__type,
-.hs-home .hs-latest__date,
-.hs-home .hs-prod__n,
-.hs-home .hs-prod__cat,
-.hs-home .hs-prod__plat,
-.hs-home .hs-prod__desc {
+html[data-newon-shell-theme="light"] .hs-home .hs-does-row__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-does-row__items,
+html[data-newon-shell-theme="light"] .hs-home .hs-biz-stack__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-built-rail__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-built-stats__lbl,
+html[data-newon-shell-theme="light"] .hs-home .hs-built-rail__tags,
+html[data-newon-shell-theme="light"] .hs-home .hs-lab__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-lab__status,
+html[data-newon-shell-theme="light"] .hs-home .hs-lab__q,
+html[data-newon-shell-theme="light"] .hs-home .hs-studio-wall__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-studio-wall__items,
+html[data-newon-shell-theme="light"] .hs-home .hs-res-dir__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-res-dir__items,
+html[data-newon-shell-theme="light"] .hs-home .hs-res-dir__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-does-row__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-biz-stack__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-latest__type,
+html[data-newon-shell-theme="light"] .hs-home .hs-latest__date,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod__cat,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod__plat,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod__desc {
   color: rgba(10, 10, 10, 0.62) !important;
 }
 
-.hs-home .hs-does-row__items,
-.hs-home .hs-res-dir__items,
-.hs-home .hs-studio-wall__items,
-.hs-home .hs-built-rail__tags,
-.hs-home .hs-built-stats__lbl,
-.hs-home .hs-lab__n,
-.hs-home .hs-lab__status,
-.hs-home .hs-latest__type,
-.hs-home .hs-latest__date,
-.hs-home .hs-prod__n,
-.hs-home .hs-prod__cat {
+html[data-newon-shell-theme="light"] .hs-home .hs-does-row__items,
+html[data-newon-shell-theme="light"] .hs-home .hs-res-dir__items,
+html[data-newon-shell-theme="light"] .hs-home .hs-studio-wall__items,
+html[data-newon-shell-theme="light"] .hs-home .hs-built-rail__tags,
+html[data-newon-shell-theme="light"] .hs-home .hs-built-stats__lbl,
+html[data-newon-shell-theme="light"] .hs-home .hs-lab__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-lab__status,
+html[data-newon-shell-theme="light"] .hs-home .hs-latest__type,
+html[data-newon-shell-theme="light"] .hs-home .hs-latest__date,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod__cat {
   font-size: 0.875rem !important;
 }
 
-.hs-home .hs-lab__q,
-.hs-home .hs-does-row__body,
-.hs-home .hs-biz-stack__body,
-.hs-home .hs-res-dir__body,
-.hs-home .hs-explore-feat__body,
-.hs-home .hs-explore-list__body,
-.hs-home .hs-prod__desc {
+html[data-newon-shell-theme="light"] .hs-home .hs-lab__q,
+html[data-newon-shell-theme="light"] .hs-home .hs-does-row__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-biz-stack__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-res-dir__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod__desc {
   font-size: 1rem !important;
 }
 
-.hs-home .hs-labs-pipe {
+html[data-newon-shell-theme="light"] .hs-home .hs-labs-pipe {
   color: rgba(10, 10, 10, 0.62) !important;
   background: #fff !important;
   border-color: rgba(10, 10, 10, 0.14) !important;
   font-size: 0.875rem !important;
 }
-.hs-home .hs-labs-pipe__step {
+html[data-newon-shell-theme="light"] .hs-home .hs-labs-pipe__step {
   color: rgba(10, 10, 10, 0.72) !important;
   border: 1px solid rgba(10, 10, 10, 0.16) !important;
   background: #fff !important;
   padding: 0.35rem 0.55rem;
 }
-.hs-home .hs-labs-pipe__sep {
+html[data-newon-shell-theme="light"] .hs-home .hs-labs-pipe__sep {
   color: rgba(10, 10, 10, 0.35) !important;
   opacity: 1 !important;
 }
 
 /* Business — kill legacy wrap 2-col that shrunk the board */
-.hs-home .hs-section--business .hs-wrap {
+html[data-newon-shell-theme="light"] .hs-home .hs-section--business .hs-wrap {
   display: block !important;
   padding: 0 !important;
   border: 0 !important;
@@ -7100,22 +7105,22 @@ html[data-newon-shell-theme="dark"] .hs-home .hs-biz-split__intro {
   grid-template-columns: none !important;
   gap: 0 !important;
 }
-.hs-home .hs-biz-split {
+html[data-newon-shell-theme="light"] .hs-home .hs-biz-split {
   width: 100% !important;
   max-width: none !important;
 }
 
 /* Explore — featured + list (not another 2×2) */
-.hs-home .hs-explore-split {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-split {
   display: grid !important;
   gap: 0 !important;
 }
 @media (min-width: 900px) {
-  .hs-home .hs-explore-split {
+  html[data-newon-shell-theme="light"] .hs-home .hs-explore-split {
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   }
 }
-.hs-home .hs-explore-feat {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat {
   display: grid;
   gap: 0.55rem;
   align-content: start;
@@ -7128,30 +7133,30 @@ html[data-newon-shell-theme="dark"] .hs-home .hs-biz-split__intro {
   transition: background 0.18s ease, color 0.18s ease;
 }
 @media (min-width: 900px) {
-  .hs-home .hs-explore-feat {
+  html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat {
     border-bottom: 0;
     border-right: 1px solid var(--hs-line);
   }
 }
-.hs-home .hs-explore-feat__n {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat__n {
   font-size: 0.875rem !important;
   font-weight: 750;
   letter-spacing: 0.12em;
   color: rgba(255, 255, 255, 0.55) !important;
 }
-.hs-home .hs-explore-feat__title {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat__title {
   font-size: clamp(1.85rem, 3.4vw, 2.45rem) !important;
   font-weight: 800;
   letter-spacing: -0.04em;
   color: #fff !important;
 }
-.hs-home .hs-explore-feat__body {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat__body {
   font-size: 1.05rem !important;
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.68) !important;
   max-width: 22rem;
 }
-.hs-home .hs-explore-feat__go {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat__go {
   margin-top: 0.65rem;
   font-size: 0.9rem;
   font-weight: 750;
@@ -7160,26 +7165,26 @@ html[data-newon-shell-theme="dark"] .hs-home .hs-biz-split__intro {
   width: fit-content;
   padding-bottom: 0.05rem;
 }
-.hs-home .hs-explore-feat:hover {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat:hover {
   background: #fff;
   color: #0a0a0a;
 }
-.hs-home .hs-explore-feat:hover .hs-explore-feat__n,
-.hs-home .hs-explore-feat:hover .hs-explore-feat__body {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat:hover .hs-explore-feat__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat:hover .hs-explore-feat__body {
   color: rgba(10, 10, 10, 0.58) !important;
 }
-.hs-home .hs-explore-feat:hover .hs-explore-feat__title,
-.hs-home .hs-explore-feat:hover .hs-explore-feat__go {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat:hover .hs-explore-feat__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat:hover .hs-explore-feat__go {
   color: #0a0a0a !important;
 }
-.hs-home .hs-explore-feat:hover .hs-explore-feat__go {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-feat:hover .hs-explore-feat__go {
   border-bottom-color: #0a0a0a;
 }
-.hs-home .hs-explore-list {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list {
   display: grid;
   gap: 0;
 }
-.hs-home .hs-explore-list__row {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__row {
   display: grid;
   grid-template-columns: 2.75rem minmax(0, 8.5rem) minmax(0, 1fr) auto;
   gap: 0.65rem 0.9rem;
@@ -7190,125 +7195,125 @@ html[data-newon-shell-theme="dark"] .hs-home .hs-biz-split__intro {
   text-decoration: none;
   transition: background 0.18s ease, color 0.18s ease;
 }
-.hs-home .hs-explore-list__row:last-child { border-bottom: 0; }
-.hs-home .hs-explore-list__n {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__row:last-child { border-bottom: 0; }
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__n {
   font-size: 0.875rem !important;
   font-weight: 750;
   letter-spacing: 0.1em;
 }
-.hs-home .hs-explore-list__title {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__title {
   font-size: 1.1rem !important;
   font-weight: 800;
   letter-spacing: -0.025em;
 }
-.hs-home .hs-explore-list__body {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__body {
   font-size: 0.98rem !important;
   line-height: 1.45;
 }
-.hs-home .hs-explore-list__go {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__go {
   color: rgba(10, 10, 10, 0.4);
 }
-.hs-home .hs-explore-list__row:hover {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__row:hover {
   background: #0a0a0a;
   color: #fff;
 }
-.hs-home .hs-explore-list__row:hover .hs-explore-list__n,
-.hs-home .hs-explore-list__row:hover .hs-explore-list__body,
-.hs-home .hs-explore-list__row:hover .hs-explore-list__go {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__row:hover .hs-explore-list__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__row:hover .hs-explore-list__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__row:hover .hs-explore-list__go {
   color: rgba(255, 255, 255, 0.7) !important;
 }
-.hs-home .hs-explore-list__row:hover .hs-explore-list__title {
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__row:hover .hs-explore-list__title {
   color: #fff !important;
 }
 @media (max-width: 720px) {
-  .hs-home .hs-explore-list__row {
+  html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__row {
     grid-template-columns: 2.5rem minmax(0, 1fr) auto;
   }
-  .hs-home .hs-explore-list__body {
+  html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__body {
     grid-column: 2;
   }
 }
 
 /* Built boards stay paper with readable ink */
-.hs-home .hs-built-rail,
-.hs-home .hs-built-stats {
+html[data-newon-shell-theme="light"] .hs-home .hs-built-rail,
+html[data-newon-shell-theme="light"] .hs-home .hs-built-stats {
   background: #fff !important;
   color: #0a0a0a !important;
 }
-.hs-home .hs-built-stats li:hover .hs-built-stats__val,
-.hs-home .hs-built-stats li:hover .hs-built-stats__lbl {
+html[data-newon-shell-theme="light"] .hs-home .hs-built-stats li:hover .hs-built-stats__val,
+html[data-newon-shell-theme="light"] .hs-home .hs-built-stats li:hover .hs-built-stats__lbl {
   color: rgba(255, 255, 255, 0.9) !important;
 }
 
 /* Lab cards explicit ink */
-.hs-home .hs-lab,
-.hs-home .hs-labs-rest {
+html[data-newon-shell-theme="light"] .hs-home .hs-lab,
+html[data-newon-shell-theme="light"] .hs-home .hs-labs-rest {
   background: #fff !important;
   color: #0a0a0a !important;
 }
-.hs-home .hs-lab:hover {
+html[data-newon-shell-theme="light"] .hs-home .hs-lab:hover {
   background: #0a0a0a !important;
   color: #fff !important;
 }
-.hs-home .hs-lab:hover .hs-lab__name,
-.hs-home .hs-lab:hover .hs-lab__go {
+html[data-newon-shell-theme="light"] .hs-home .hs-lab:hover .hs-lab__name,
+html[data-newon-shell-theme="light"] .hs-home .hs-lab:hover .hs-lab__go {
   color: #fff !important;
 }
-.hs-home .hs-lab:hover .hs-lab__n,
-.hs-home .hs-lab:hover .hs-lab__status,
-.hs-home .hs-lab:hover .hs-lab__q {
+html[data-newon-shell-theme="light"] .hs-home .hs-lab:hover .hs-lab__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-lab:hover .hs-lab__status,
+html[data-newon-shell-theme="light"] .hs-home .hs-lab:hover .hs-lab__q {
   color: rgba(255, 255, 255, 0.72) !important;
 }
-.hs-home .hs-lab:hover .hs-lab__status {
+html[data-newon-shell-theme="light"] .hs-home .hs-lab:hover .hs-lab__status {
   border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 /* Invert-hover rows — beat readable !important ink colors */
-.hs-home .hs-does-row:hover .hs-does-row__n,
-.hs-home .hs-does-row:hover .hs-does-row__items,
-.hs-home .hs-does-row:hover .hs-does-row__body,
-.hs-home .hs-does-row:hover .hs-does-row__cta,
-.hs-home .hs-does-row:hover .hs-does-row__title,
-.hs-home .hs-biz-stack__row:hover .hs-biz-stack__n,
-.hs-home .hs-biz-stack__row:hover .hs-biz-stack__title,
-.hs-home .hs-biz-stack__row:hover .hs-biz-stack__body,
-.hs-home .hs-biz-stack__row:hover .hs-biz-stack__go,
-.hs-home .hs-studio-wall__row:hover .hs-studio-wall__n,
-.hs-home .hs-studio-wall__row:hover .hs-studio-wall__title,
-.hs-home .hs-studio-wall__row:hover .hs-studio-wall__items,
-.hs-home .hs-studio-wall__row:hover .hs-studio-wall__go,
-.hs-home .hs-res-dir__row:hover .hs-res-dir__n,
-.hs-home .hs-res-dir__row:hover .hs-res-dir__items,
-.hs-home .hs-res-dir__row:hover .hs-res-dir__body,
-.hs-home .hs-res-dir__row:hover .hs-res-dir__title,
-.hs-home .hs-res-dir__row:hover .hs-res-dir__cta,
-.hs-home .hs-explore-list__row:hover .hs-explore-list__n,
-.hs-home .hs-explore-list__row:hover .hs-explore-list__title,
-.hs-home .hs-explore-list__row:hover .hs-explore-list__body,
-.hs-home .hs-explore-list__row:hover .hs-explore-list__go,
-.hs-home .hs-latest:hover .hs-latest__type,
-.hs-home .hs-latest:hover .hs-latest__date,
-.hs-home .hs-latest:hover .hs-latest__title,
-.hs-home .hs-latest:hover .hs-latest__go,
-.hs-home .hs-prod:hover .hs-prod__n,
-.hs-home .hs-prod:hover .hs-prod__cat,
-.hs-home .hs-prod:hover .hs-prod__plat,
-.hs-home .hs-prod:hover .hs-prod__name,
-.hs-home .hs-prod:hover .hs-prod__desc,
-.hs-home .hs-prod:hover .hs-prod__go {
+html[data-newon-shell-theme="light"] .hs-home .hs-does-row:hover .hs-does-row__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-does-row:hover .hs-does-row__items,
+html[data-newon-shell-theme="light"] .hs-home .hs-does-row:hover .hs-does-row__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-does-row:hover .hs-does-row__cta,
+html[data-newon-shell-theme="light"] .hs-home .hs-does-row:hover .hs-does-row__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-biz-stack__row:hover .hs-biz-stack__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-biz-stack__row:hover .hs-biz-stack__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-biz-stack__row:hover .hs-biz-stack__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-biz-stack__row:hover .hs-biz-stack__go,
+html[data-newon-shell-theme="light"] .hs-home .hs-studio-wall__row:hover .hs-studio-wall__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-studio-wall__row:hover .hs-studio-wall__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-studio-wall__row:hover .hs-studio-wall__items,
+html[data-newon-shell-theme="light"] .hs-home .hs-studio-wall__row:hover .hs-studio-wall__go,
+html[data-newon-shell-theme="light"] .hs-home .hs-res-dir__row:hover .hs-res-dir__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-res-dir__row:hover .hs-res-dir__items,
+html[data-newon-shell-theme="light"] .hs-home .hs-res-dir__row:hover .hs-res-dir__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-res-dir__row:hover .hs-res-dir__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-res-dir__row:hover .hs-res-dir__cta,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__row:hover .hs-explore-list__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__row:hover .hs-explore-list__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__row:hover .hs-explore-list__body,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__row:hover .hs-explore-list__go,
+html[data-newon-shell-theme="light"] .hs-home .hs-latest:hover .hs-latest__type,
+html[data-newon-shell-theme="light"] .hs-home .hs-latest:hover .hs-latest__date,
+html[data-newon-shell-theme="light"] .hs-home .hs-latest:hover .hs-latest__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-latest:hover .hs-latest__go,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod:hover .hs-prod__n,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod:hover .hs-prod__cat,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod:hover .hs-prod__plat,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod:hover .hs-prod__name,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod:hover .hs-prod__desc,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod:hover .hs-prod__go {
   color: rgba(255, 255, 255, 0.88) !important;
 }
 
-.hs-home .hs-does-row:hover .hs-does-row__title,
-.hs-home .hs-does-row:hover .hs-does-row__cta,
-.hs-home .hs-biz-stack__row:hover .hs-biz-stack__title,
-.hs-home .hs-studio-wall__row:hover .hs-studio-wall__title,
-.hs-home .hs-res-dir__row:hover .hs-res-dir__title,
-.hs-home .hs-res-dir__row:hover .hs-res-dir__cta,
-.hs-home .hs-explore-list__row:hover .hs-explore-list__title,
-.hs-home .hs-latest:hover .hs-latest__title,
-.hs-home .hs-prod:hover .hs-prod__name,
-.hs-home .hs-prod:hover .hs-prod__go {
+html[data-newon-shell-theme="light"] .hs-home .hs-does-row:hover .hs-does-row__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-does-row:hover .hs-does-row__cta,
+html[data-newon-shell-theme="light"] .hs-home .hs-biz-stack__row:hover .hs-biz-stack__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-studio-wall__row:hover .hs-studio-wall__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-res-dir__row:hover .hs-res-dir__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-res-dir__row:hover .hs-res-dir__cta,
+html[data-newon-shell-theme="light"] .hs-home .hs-explore-list__row:hover .hs-explore-list__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-latest:hover .hs-latest__title,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod:hover .hs-prod__name,
+html[data-newon-shell-theme="light"] .hs-home .hs-prod:hover .hs-prod__go {
   color: #fff !important;
 }
 
@@ -7355,4 +7360,101 @@ html[data-newon-shell-theme="dark"] .hs-home .hs-built-stats__val {
 }
 .hs-home #hs-final.hs-final--ink .hs-final__ghost {
   color: rgba(255, 255, 255, 0.88) !important;
+}
+
+
+/* ============================================================
+   Dark mode home — full black canvas, readable type (20260830dark1)
+   ============================================================ */
+html[data-newon-shell-theme="dark"] .hs-home,
+html[data-newon-shell-theme="dark"] .hs-home.hs-home--hq {
+  --hs-bg: #000000 !important;
+  --hs-surface: #000000 !important;
+  --hs-surface-2: #0a0a0a !important;
+  --hs-paper: #000000 !important;
+  --hs-ink: #f5f5f5 !important;
+  --hs-text: #f5f5f5 !important;
+  --hs-text-muted: rgba(245, 245, 245, 0.68) !important;
+  --hs-text-soft: rgba(245, 245, 245, 0.48) !important;
+  --hs-muted: rgba(245, 245, 245, 0.62) !important;
+  --hs-faint: rgba(245, 245, 245, 0.45) !important;
+  --hs-border: rgba(255, 255, 255, 0.12) !important;
+  --hs-border-strong: rgba(255, 255, 255, 0.22) !important;
+  --hs-line: rgba(255, 255, 255, 0.14) !important;
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+html[data-newon-shell-theme="dark"] .hs-home .hs-section,
+html[data-newon-shell-theme="dark"] .hs-home .hs-section--built,
+html[data-newon-shell-theme="dark"] .hs-home .hs-section--labs,
+html[data-newon-shell-theme="dark"] .hs-home .hs-section--explore,
+html[data-newon-shell-theme="dark"] .hs-home .hs-section--studio,
+html[data-newon-shell-theme="dark"] .hs-home .hs-section--resources,
+html[data-newon-shell-theme="dark"] .hs-home .hs-section--business,
+html[data-newon-shell-theme="dark"] .hs-home .hs-section--does,
+html[data-newon-shell-theme="dark"] .hs-home .hs-section--products,
+html[data-newon-shell-theme="dark"] .hs-home .hs-board,
+html[data-newon-shell-theme="dark"] .hs-home .hs-lab,
+html[data-newon-shell-theme="dark"] .hs-home .hs-labs-rest,
+html[data-newon-shell-theme="dark"] .hs-home .hs-biz-split__intro,
+html[data-newon-shell-theme="dark"] .hs-home .hs-bridge,
+html[data-newon-shell-theme="dark"] .hs-home .hs-bridge__panel,
+html[data-newon-shell-theme="dark"] .hs-home .hs-explore-feat,
+html[data-newon-shell-theme="dark"] #home .hero--home {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+html[data-newon-shell-theme="dark"] .hs-home .hs-h2,
+html[data-newon-shell-theme="dark"] .hs-home .hs-lead,
+html[data-newon-shell-theme="dark"] .hs-home .hs-link,
+html[data-newon-shell-theme="dark"] .hs-home .hs-built-rail__title,
+html[data-newon-shell-theme="dark"] .hs-home .hs-built-rail__body,
+html[data-newon-shell-theme="dark"] .hs-home .hs-built-stats__val,
+html[data-newon-shell-theme="dark"] .hs-home .hs-lab__name,
+html[data-newon-shell-theme="dark"] .hs-home .hs-explore-feat__title,
+html[data-newon-shell-theme="dark"] .hs-home .hs-explore-list__title,
+html[data-newon-shell-theme="dark"] .hs-home .hs-studio-wall__title,
+html[data-newon-shell-theme="dark"] .hs-home .hs-does-row__title,
+html[data-newon-shell-theme="dark"] .hs-home .hs-res-dir__title,
+html[data-newon-shell-theme="dark"] .hs-home .hs-biz-stack__title,
+html[data-newon-shell-theme="dark"] .hs-home .hs-prod__name,
+html[data-newon-shell-theme="dark"] .hs-home .hs-latest__title,
+html[data-newon-shell-theme="dark"] #home .hero--home .hero-title,
+html[data-newon-shell-theme="dark"] #home .hero--home h1 {
+  color: #f5f5f5 !important;
+}
+html[data-newon-shell-theme="dark"] .hs-home .hs-kicker,
+html[data-newon-shell-theme="dark"] .hs-home .hs-does-row__n,
+html[data-newon-shell-theme="dark"] .hs-home .hs-does-row__items,
+html[data-newon-shell-theme="dark"] .hs-home .hs-biz-stack__n,
+html[data-newon-shell-theme="dark"] .hs-home .hs-built-rail__n,
+html[data-newon-shell-theme="dark"] .hs-home .hs-built-stats__lbl,
+html[data-newon-shell-theme="dark"] .hs-home .hs-built-rail__tags,
+html[data-newon-shell-theme="dark"] .hs-home .hs-lab__n,
+html[data-newon-shell-theme="dark"] .hs-home .hs-lab__status,
+html[data-newon-shell-theme="dark"] .hs-home .hs-lab__q,
+html[data-newon-shell-theme="dark"] .hs-home .hs-studio-wall__n,
+html[data-newon-shell-theme="dark"] .hs-home .hs-studio-wall__items,
+html[data-newon-shell-theme="dark"] .hs-home .hs-res-dir__n,
+html[data-newon-shell-theme="dark"] .hs-home .hs-res-dir__items,
+html[data-newon-shell-theme="dark"] .hs-home .hs-res-dir__body,
+html[data-newon-shell-theme="dark"] .hs-home .hs-does-row__body,
+html[data-newon-shell-theme="dark"] .hs-home .hs-biz-stack__body,
+html[data-newon-shell-theme="dark"] .hs-home .hs-explore-feat__n,
+html[data-newon-shell-theme="dark"] .hs-home .hs-explore-feat__body,
+html[data-newon-shell-theme="dark"] .hs-home .hs-explore-list__n,
+html[data-newon-shell-theme="dark"] .hs-home .hs-explore-list__body,
+html[data-newon-shell-theme="dark"] .hs-home .hs-latest__type,
+html[data-newon-shell-theme="dark"] .hs-home .hs-latest__date,
+html[data-newon-shell-theme="dark"] .hs-home .hs-prod__n,
+html[data-newon-shell-theme="dark"] .hs-home .hs-prod__cat,
+html[data-newon-shell-theme="dark"] #home .hero--home .hero-sub,
+html[data-newon-shell-theme="dark"] #home .hero--home .hero-desc {
+  color: rgba(245, 245, 245, 0.62) !important;
+}
+/* Keep intentional ink bands black with light type */
+html[data-newon-shell-theme="dark"] .hs-home #hs-final.hs-final--ink {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
 }

@@ -206,7 +206,10 @@ function normalizeEducation(item, lang) {
 
 export function getAllResources(lang = "en") {
   const items = [];
-  for (const p of STORE_PRODUCTS) items.push(normalizeStore(p, lang));
+  for (const p of STORE_PRODUCTS) {
+    if (p.listed === false) continue;
+    items.push(normalizeStore(p, lang));
+  }
   for (const a of getPublishedInsights()) items.push(normalizeInsight(a, lang));
   for (const b of loadPublishedBlogRegistry()) items.push(normalizeBlog(b, lang));
   for (const m of MEDIA_ITEMS.filter((x) => x && x.status === "published")) items.push(normalizeMedia(m, lang));

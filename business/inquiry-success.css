@@ -25,7 +25,7 @@ html[data-newon-shell-theme="dark"] .bz-ok-page {
   --ok-soft: rgba(255, 255, 255, 0.4);
   --ok-line: rgba(255, 255, 255, 0.16);
   --ok-line-soft: rgba(255, 255, 255, 0.1);
-  --ok-bg: #0a0a0a;
+  --ok-bg: #000000;
   --ok-fill: #ffffff;
   --ok-on-fill: #0a0a0a;
 }
