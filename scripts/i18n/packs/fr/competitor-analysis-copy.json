@@ -1,0 +1,478 @@
+{
+  "seoTitle": "COMPETITOR ANALYSIS--- Newon Entreprise",
+  "metaDescription": "Comparez les concurrents clés et les substituts sur les caractéristiques, la tarification, la messagerie et le positionnement – structurés pour la différenciation. Newon COMPETITOR ANALYSIS.",
+  "crumbBusiness": "ENTREPRISES",
+  "crumbServices": "SERVICES",
+  "crumbResearch": "RECHERCHE",
+  "crumbHere": "COMPETITOR ANALYSIS",
+  "eyebrow": "COMPETITOR ANALYSIS",
+  "subEyebrow": "RECHERCHE",
+  "headline": "Ne pas lister les concurrents —\nles rendent comparables.",
+  "lead": "Nous comparons les principaux concurrents et substituts à travers le positionnement, les fonctionnalités, les prix, la messagerie et la cible. Les pages de produit, les commentaires, les prix et le matériel IR sont organisés en matrice concurrente et un résumé de votre équipe peut utiliser dans les conversations de différenciation et de stratégie.",
+  "ctaPrimary": "Enquête d'analyse des concurrents →",
+  "ctaSecondary": "Voir le flux de comparaison",
+  "meta": [
+    {
+      "k": "SERVICES",
+      "v": "Analyse des concurrents"
+    },
+    {
+      "k": "BEST POUR",
+      "v": "Revue de positionnement et de différenciation"
+    },
+    {
+      "k": "Échéancier",
+      "v": "Habituellement 1 à 2 semaines"
+    },
+    {
+      "k": "PRIX",
+      "v": "À partir de -200 000"
+    }
+  ],
+  "overviewLabel": "APERÇU",
+  "overviewTitle": "Vous connaissez les noms.\nPas les critères de comparaison.",
+  "overviewBody": [
+    "Les noms des concurrents apparaissent souvent dans les conversations sur les produits, le marketing et l'investissement. Mais il est plus difficile de comparer les caractéristiques, les prix, les messages et les cibles sur les mêmes critères.",
+    "Le site de chaque entreprise, les pages produits, les prix, les revues, les app stores et IR offrent des angles différents, mais rarement dans une structure les équipes peuvent utiliser immédiatement.",
+    "COMPETITOR ANALYSIS commence par définir qui comparer et sur quels axes. Ensuite, nous collectons et organisons le matériel en une matrice concurrente, un résumé de positionnement et une analyse des lacunes dans un produit livrable. PROBLÈMES"
+  ],
+  "problemsLabel": "",
+  "problemsTitle": "C'est utile quand on fait face à ces situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "POSITIONNEMENT",
+      "d": "Votre position par rapport aux concurrents n'est pas claire.\nVous avez besoin d'une vue partagée de votre position."
+    },
+    {
+      "n": "02",
+      "t": "PARITÉ DE CARACTÈRE",
+      "d": "Vous connaissez les listes de fonctionnalités mais pas les différences ou les priorités.\nVous avez besoin d'une comparaison structurée."
+    },
+    {
+      "n": "03",
+      "t": "GAP DE MESSAGE",
+      "d": "La messagerie concurrente est claire, mais la vôtre manque de différenciation.\nIl faut comparer la cible, la valeur et le ton."
+    },
+    {
+      "n": "04",
+      "t": "CONTEXTE PRICTIF",
+      "d": "Il faut comparer les tarifs, les emballages et les modèles.\nVous avez besoin de preuves pour la stratégie de tarification."
+    },
+    {
+      "n": "05",
+      "t": "Allez-y.",
+      "d": "Vous avez besoin d'une lecture rapide sur la concurrence avant le lancement ou l'expansion.\nVous avez besoin d'un résumé pour les réunions des investisseurs ou des partenaires."
+    },
+    {
+      "n": "06",
+      "t": "INVESTISSEMENT",
+      "d": "Avant MVP ou le champ d'application de la feuille de route,\nvous avez besoin de preuves pour construire les premiers par rapport aux concurrents."
+    }
+  ],
+  "baLabel": "AVANT / APRÈS",
+  "baTitle": "Listes des concurrents par rapport à la comparaison structurée\n",
+  "beforeLabel": "AVANT",
+  "afterLabel": "APRÈS",
+  "before": [
+    "Tout le monde recueille l'information concurrente séparément",
+    "Critères de comparaison décalage par conversation",
+    "La différenciation n'existe que dans les points de discussion",
+    "Les prix, la messagerie et la position ne sont pas documentés"
+  ],
+  "after": [
+    "Ensemble de concurrents et axes convenus en premier",
+    "Une matrice concurrente pour l'équipe",
+    "Lacunes, forces et risques structurés",
+    "Connecté aux décisions de stratégie et de feuille de route"
+  ],
+  "capsLabel": "CAPABILITÉS",
+  "capsTitle": "Nous avons structuré la comparaison\nvos besoins de décision de positionnement.",
+  "caps": [
+    {
+      "t": "COMPÉTITEUR SET",
+      "d": "Définir qui comparer.\nSéparer les joueurs directs, indirects et substituts."
+    },
+    {
+      "t": "AXES COMPARAISONNELLES",
+      "d": "Définir les axes — fonctionnalités, tarification, messagerie, cible.\nFaire correspondre les critères à l'objectif du projet."
+    },
+    {
+      "t": "DESK RECHERCHE",
+      "d": "Recueillir du matériel public — pages de produits, prix, commentaires, IR.\nVérifiez la source et la date. COMPARE DE CARACTÉRISTIQUES"
+    },
+    {
+      "t": "COMPARE DES CARACTÉRISTIQUES",
+      "d": "Comparer les caractéristiques de base et la portée.\nStructurer les forces, les lacunes et les dépassements. CARTE DE POSITION"
+    },
+    {
+      "t": "CARTE DE POSITION",
+      "d": "Organiser le positionnement dans une carte ou une matrice.\nVoyez qui est fort où en un coup d'oeil."
+    },
+    {
+      "t": "PRICING & EMBALLAGE",
+      "d": "Comparer les bandes, les emballages et les modèles de revenus.\nFournir le contexte de votre stratégie de tarification."
+    },
+    {
+      "t": "EXAMEN DU MESSAGE",
+      "d": "Comparer le message central, la cible et le ton.\nEspace de différenciation des documents et lacunes."
+    },
+    {
+      "t": "INCIDENCES",
+      "d": "Connectez la comparaison avec le produit, le marketing et la stratégie.\nProposer la prochaine validation et action."
+    }
+  ],
+  "sourcesLabel": "SOURCES DE RECHERCHE",
+  "sourcesTitle": "Nous combinons les besoins de comparaison des sources.",
+  "sourcesNote": "Les sources réelles varient selon le nombre de concurrents, l'accès et le type de produit.",
+  "sources": [
+    "Sites web concurrents et pages de produits",
+    "Tarifs et pages d'emballage",
+    "App store / marché",
+    "Avis sur les produits et services",
+    "IR & communiqués de presse",
+    "Démos & contenu embarqué",
+    "Social & communauté",
+    "Signalisation d'embauche et d'org",
+    "Brevets et divulgations de fonctionnalités",
+    "Rapports industriels",
+    "Points de référence internes",
+    "Commentaires des utilisateurs"
+  ],
+  "useLabel": "UTILISATION CAS",
+  "useTitle": "Nous pouvons répondre aux questions.",
+  "useBadge": "Exemples de sujets d'analyse",
+  "useCases": [
+    {
+      "t": "RÉVISION DE POSITION",
+      "d": "Voyez où vous en êtes contre les concurrents.\nDifférenciation de la structure et lacunes."
+    },
+    {
+      "t": "CARACTÉRISTIQUES BENCHMARK",
+      "d": "Comparer les caractéristiques de base et la portée.\nUtiliser comme preuve pour MVP et priorité de feuille de route."
+    },
+    {
+      "t": "BENCHMARK PRICING",
+      "d": "Comparez les bandes, les emballages et les modèles.\nÉtablir des preuves de prix et d'emballage. COMPARE DE MESSAGE"
+    },
+    {
+      "t": "COMPARE DE MESSAGE",
+      "d": "Comparez le message, la cible et le ton.\nInformer la marque et la direction du contenu."
+    },
+    {
+      "t": "PRÉPÔT DU LAUNCH",
+      "d": "Lecture rapide sur la compétition avant le lancement.\nRésumé pour les conversations sur le marché."
+    },
+    {
+      "t": "BRIEF INVESTISSEUR",
+      "d": "Résumé concurrentiel pour les investisseurs ou les partenaires.\nInclure les principales différences et risques."
+    },
+    {
+      "t": "SOUS-SCAN",
+      "d": "Inclure les substituts et les concurrents indirects.\nComparez l'ensemble de choix."
+    },
+    {
+      "t": "ANALYSE DU GAP",
+      "d": "Documenter les zones sous- desservies et les zones sur desservies par rapport à la concurrence.\nPrivilégier les opportunités."
+    }
+  ],
+  "flowLabel": "FLUX DE TRAVAIL EXEMPLES",
+  "flowTitle": "De concurrent à matrice",
+  "flow": [
+    {
+      "n": "01",
+      "t": "SÉLECTIONNER",
+      "d": "Définir l'ensemble des concurrents et l'objectif de comparaison.\nClarifier qui, quoi, et pourquoi comparer.",
+      "examples": [
+        "Ensemble de concurrents",
+        "Objectif",
+        "Axes",
+        "Produits livrables"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "COLLECTE",
+      "d": "Recueillir des produits, des prix, des messages et du matériel d'examen.\nExaminer les sources publiques et internes.",
+      "examples": [
+        "Pages produits",
+        "Tarifs",
+        "Revues",
+        "IR & actualités COMPARE"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "",
+      "d": "Comparer article par article sur axes définis.\nAlignez tout sur les mêmes critères.",
+      "examples": [
+        "Caractéristiques",
+        "Tarifs",
+        "Messagerie",
+        "Objectif"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "SYNTHÈSE",
+      "d": "Extraire les différences, les lacunes et les forces.\nConnectez-vous au positionnement et à la différenciation.",
+      "examples": [
+        "Fonction",
+        "Différenciation",
+        "Lacunes",
+        "Risques"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DELIVRE",
+      "d": "Fournir une matrice, un résumé et des implications.\nFormat pour une utilisation en équipe immédiate.",
+      "examples": [
+        "Matrice du concurrent",
+        "Résumé",
+        "Prochaines étapes"
+      ]
+    }
+  ],
+  "reportLabel": "OUVERTURE",
+  "reportTitle": "Produits livrables structurés pour comparaison et décision.",
+  "reportLead": "La composition varie selon les objectifs du projet. Voici des sections communes. COMPARE",
+  "reportMockStatus": "· PROJET DE RÉSUMÉ COMPÉTITIVE",
+  "reportMockK": "SOMMAIRE CONCURRENTIEL",
+  "reportMockT": "Matrice des concurrents · Positionnement",
+  "reportItems": [
+    "Résumé",
+    "Aperçu de l'ensemble de concurrents",
+    "Comparaison de la matrice",
+    "Comparaison des caractéristiques",
+    "Prix et emballage",
+    "Comparaison de messages",
+    "Positionnement de la carte",
+    "Analyse des lacunes",
+    "Conséquences",
+    "Prochaines étapes recommandées"
+  ],
+  "dashTitle": "Comparer la position concurrentielle d'un point de vue.",
+  "dashLead": "Matrix concurrent et carte de positionnement ensemble — ainsi les différences de caractéristiques, de prix et de messagerie sont visibles en un coup d'oeil.",
+  "dashNote": "La composition des matrices et des cartes varie selon la portée et le but.",
+  "dashMetrics": [
+    "Participants",
+    "Axes",
+    "Lacunes",
+    "Priorité"
+  ],
+  "dashFilters": [
+    "Tous",
+    "Caractéristiques",
+    "Tarifs",
+    "Messagerie"
+  ],
+  "aiLabel": "SYNTHÈSE",
+  "aiTitle": "De grand concurrent définit\nà ce qui diffère.",
+  "aiLead": "Quand il y a beaucoup de pages de produits, de revues, de nouvelles et de matériel IR, nous résumons, classons et comparons à partir des angles dont vous avez besoin.",
+  "aiExamples": [
+    "Résumé de la différence de fonctionnalité et de portée",
+    "Prix et emballage comparer",
+    "Message et positionnement comparer",
+    "Récapitulatif des motifs de commentaires",
+    "Extraction de lacunes et de différenciation",
+    "Matrix et résumé du projet"
+  ],
+  "aiNote": "L'interprétation et les décisions finales sont examinées avec vous.",
+  "delLabel": "LIVRABLES",
+  "delTitle": "Ce que vous recevez après le projet",
+  "delLead": "Selon la portée, nous livrons les articles dont vous avez besoin dans la liste ci-dessous.",
+  "deliverables": [
+    "Matrice du concurrent",
+    "Sommaire de positionnement",
+    "Comparaison des caractéristiques",
+    "Comparaison de prix",
+    "Résumé de la messagerie",
+    "Analyse des lacunes",
+    "Incidences et recommandations",
+    "Source Annexe",
+    "Résumé de la présentation"
+  ],
+  "processLabel": "PROCESSUS",
+  "processTitle": "De la définition du concurrent à la livraison.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DÉCOUVREMENT",
+      "d": "Confirmer l'objectif de comparaison et le contexte décisionnel.\nComprenez ce que vous décidez.",
+      "examples": [
+        "Objectif",
+        "Parties prenantes",
+        "Chronologie",
+        "Contraintes"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PORTÉE",
+      "d": "Définir l'ensemble de concurrents, les axes et le format livrable.\nAccord sur les inclusions et les exclusions.",
+      "examples": [
+        "Nombre de concurrents",
+        "Axes",
+        "Format",
+        "Priorité"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "RECHERCHE",
+      "d": "Recueillir et examiner les documents de concurrence et de remplacement.\nVérifiez la source et la date. COMPARE DE CARACTÉRISTIQUES",
+      "examples": [
+        "Produit",
+        "Tarifs",
+        "Revues",
+        "IR"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "",
+      "d": "Comparer article par article sur axes définis.\nStructure et carte.",
+      "examples": [
+        "Caractéristiques",
+        "Tarifs",
+        "Messagerie",
+        "Fonction"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PROJET DE",
+      "d": "Projet de matrice et résumé.\nConstruire la colonne vertébrale des différences et des implications.",
+      "examples": [
+        "Matrice",
+        "Résumé",
+        "Lacunes"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "EXAMEN",
+      "d": "Examiner la comparaison et l'interprétation ensemble.\nAjuster les lacunes et les priorités.",
+      "examples": [
+        "Commentaires",
+        "Raffinement",
+        "Priorité"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "DELIVRE",
+      "d": "Fournir les documents finaux et les implications.\nConnectez-vous à la prochaine validation et action.",
+      "examples": [
+        "Matrice finale",
+        "Résumé",
+        "Prochaines étapes"
+      ]
+    }
+  ],
+  "scopeLabel": "NIVEAUX DE PORTÉE",
+  "scopeTitle": "Un guide de la complexité du projet.",
+  "scopeLead": "Pas de packages fixes — nous avons une portée et un devis basés sur le but de comparaison et le nombre de concurrents.",
+  "scopes": [
+    {
+      "t": "COMPARE FOCUSÉ",
+      "items": [
+        "3 à 5 concurrents",
+        "3–4 axes de comparaison",
+        "Recherche de bureau",
+        "Matrice du concurrent",
+        "Résumé de la différenciation et de l'écart"
+      ]
+    },
+    {
+      "t": "COMPÉTITEUR FULL MATRIX",
+      "items": [
+        "5-10 concurrents et substituts",
+        "Caractéristiques, prix, messagerie, cible",
+        "Positionnement de la carte",
+        "Analyse des lacunes",
+        "Présentation résumé facultatif"
+      ]
+    },
+    {
+      "t": "DOMMAGE DOUANIER",
+      "items": [
+        "Plusieurs catégories ou marchés",
+        "Fonction plus profonde et UX comparer",
+        "Messagerie et analyse de contenu",
+        "Présentation personnalisée",
+        "Peut être relié à MARKET RESEARCH"
+      ]
+    }
+  ],
+  "timeLabel": "Échéancier",
+  "timeTitle": "Le calendrier dépend de la portée.",
+  "timeLead": "Le nombre de concurrents, les axes et l'accès aux sources peuvent changer la durée.",
+  "timelines": [
+    {
+      "t": "Comparaison ciblée",
+      "d": "Environ 1 semaine"
+    },
+    {
+      "t": "Matrice complète des concurrents",
+      "d": "Environ 1 à 2 semaines"
+    },
+    {
+      "t": "Plongée de profondeur personnalisée",
+      "d": "Étendu séparément"
+    }
+  ],
+  "priceLabel": "PROJET COÛT",
+  "priceTitle": "Nous ne citons que la portée dont vous avez besoin.",
+  "priceName": "COMPETITOR ANALYSIS",
+  "priceValue": "À partir de -200 000",
+  "priceFactorsLabel": "Ce qui façonne le prix",
+  "priceFactors": [
+    "Nombre de concurrents / substituts",
+    "Nombre d'axes de comparaison",
+    "Profondeur d'analyse",
+    "Caractéristique / UX comparer inclusion",
+    "Messagerie / analyse de contenu",
+    "Format livrable",
+    "Chronologie urgente"
+  ],
+  "priceNote": "La soumission finale est confirmée après examen du but, de l'ensemble des concurrents et de la portée.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Foire aux questions",
+  "faqs": [
+    {
+      "q": "Combien de concurrents pouvez-vous comparer?",
+      "a": "Nous définissons la taille définie par objectif et accès à la source. Typiquement de 3 à 10 joueurs — nous confirmons l'ajustement avant de commencer."
+    },
+    {
+      "q": "Que comparez-vous ?",
+      "a": "Caractéristiques, prix, emballage, messagerie, cible, canaux, et plus encore — les axes correspondent à votre objectif. Nous acceptons les critères avant de commencer."
+    },
+    {
+      "q": "Quel est le format des produits livrables?",
+      "a": "Document et tableau d'abord : matrice des concurrents, résumé de positionnement, analyse des lacunes. Des résumés de présentation peuvent être inclus."
+    },
+    {
+      "q": "En quoi est-ce différent de MARKET RESEARCH ?",
+      "a": "COMPETITOR ANALYSIS se concentre sur la comparaison entre concurrents et substituts. Si la structure globale du marché est nécessaire, MARKET RESEARCH peut s'adapter mieux — les champs d'application peuvent être liés."
+    },
+    {
+      "q": "Notre produit peut-il être inclus dans la matrice?",
+      "a": "Oui, quand tu veux. Partagez du matériel interne et nous pouvons inclure une colonne 'Vous'."
+    },
+    {
+      "q": "Cette connexion peut-elle se connecter à BUILD ou MVP ?",
+      "a": "Oui. La comparaison peut alimenter la priorité, le positionnement et les décisions de mise en marché."
+    },
+    {
+      "q": "Comment la confidentialité est-elle traitée?",
+      "a": "Nous ne travaillons que dans le cadre convenu. Une ADN peut être signée au besoin."
+    }
+  ],
+  "finalLabel": "ÉTAT D'UN PROJET",
+  "finalTitle": "Ne pas lister les concurrents —\nLes comparer d'abord.",
+  "finalLead": "Dites-nous les concurrents, la catégorie ou le problème de positionnement que vous évaluez. Nous allons confirmer quoi comparer et comment structurer la sortie.",
+  "ctaFinalSecondary": "Voir tout RECHERCHE →",
+  "ctaFinalSecondaryHref": "../research/"
+}

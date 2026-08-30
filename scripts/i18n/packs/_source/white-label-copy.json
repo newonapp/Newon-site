@@ -1,0 +1,483 @@
+{
+  "seoTitle": "WHITE-LABEL | Newon Business",
+  "metaDescription": "Ship a proven system under your brand — booking, CRM, inquiry, dashboards, AI support, and more. Newon WHITE-LABEL.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICES",
+  "crumbSolutions": "SOLUTIONS",
+  "crumbHere": "WHITE-LABEL",
+  "eyebrow": "WHITE-LABEL",
+  "subEyebrow": "SOLUTIONS",
+  "headline": "One system.\nYour brand.",
+  "lead": "Instead of building every foundation from zero, we reshape a proven product structure to your brand, domain, and features. Booking, inquiry, CRM, dashboards, AI support — white-label on a validated Base System with Brand, Features, and Domains configured for you.",
+  "ctaPrimary": "White-label inquiry →",
+  "ctaSecondary": "See the configuration flow ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "White-label"
+    },
+    {
+      "k": "BEST FOR",
+      "v": "Brand-fit digital product launch"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Depends on scope"
+    },
+    {
+      "k": "PRICE",
+      "v": "Custom quote"
+    }
+  ],
+  "overviewLabel": "OVERVIEW",
+  "overviewTitle": "You keep rebuilding\nthe same foundations.",
+  "overviewBody": [
+    "Booking, inquiry, CRM, dashboards — repeating foundations already have proven patterns. But every org differs in brand, domain, feature set, and operations. Building everything from scratch costs too much time and money.",
+    "Off-the-shelf tools are fast but feel generic. Full custom build takes too long to launch. What you need is a validated Base System with your brand and differentiating features on top.",
+    "WHITE-LABEL selects the right foundation, then applies brand customization and feature configuration. Domain, deploy, admin, permissions — delivered as one system that operates under your brand."
+  ],
+  "problemsLabel": "PROBLEMS",
+  "problemsTitle": "Helpful when you face these situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "REBUILD FOUNDATION",
+      "d": "You rebuild booking, inquiry, CRM-like cores from scratch.\nYou want to focus on brand and differentiation."
+    },
+    {
+      "n": "02",
+      "t": "LONG TIMELINE",
+      "d": "Custom build timelines delay launch.\nSpeed to market matters."
+    },
+    {
+      "n": "03",
+      "t": "GENERIC EXPERIENCE",
+      "d": "The experience still feels like generic SaaS.\nYou need more than a logo swap."
+    },
+    {
+      "n": "04",
+      "t": "MODULE OVERLOAD",
+      "d": "You want only the modules you need.\nYou need to reduce complexity."
+    },
+    {
+      "n": "05",
+      "t": "OWN BRAND OPS",
+      "d": "You want to offer an operations tool under your brand.\nClients and partners should see it as yours."
+    },
+    {
+      "n": "06",
+      "t": "PRE-CUSTOM START",
+      "d": "You want a base product before full custom build.\nYou need room to extend later."
+    }
+  ],
+  "baLabel": "BEFORE / AFTER",
+  "baTitle": "Build from scratch vs\nBase + Brand customization",
+  "beforeLabel": "BEFORE",
+  "afterLabel": "AFTER",
+  "before": [
+    "Redesign booking, inquiry, CRM foundations each time",
+    "Long development before launch",
+    "Brand experience feels like a generic tool",
+    "Unneeded features add complexity"
+  ],
+  "after": [
+    "Start from a validated Base System",
+    "Launch faster with brand, modules, domain fit",
+    "UI, content, and features shaped to the brand",
+    "Pick only needed modules and manage complexity"
+  ],
+  "capsLabel": "CAPABILITIES",
+  "capsTitle": "We run white-label build\nas one structured engagement.",
+  "caps": [
+    {
+      "t": "BASE SELECTION",
+      "d": "Choose the white-label foundation and included features.\nPropose module combinations — booking, inquiry, CRM, dashboard."
+    },
+    {
+      "t": "BRAND CUSTOMIZATION",
+      "d": "Apply logo, color, type, and UI tone to the brand.\nCreate a consistent brand experience."
+    },
+    {
+      "t": "FEATURE CONFIGURATION",
+      "d": "Enable needed modules; remove or simplify the rest.\nShape workflows to brand and operations."
+    },
+    {
+      "t": "CONTENT & IA",
+      "d": "Adjust menus, information structure, copy tone.\nOrganize user and operator experience."
+    },
+    {
+      "t": "DOMAIN & DEPLOY",
+      "d": "Connect your domain and prepare the operating environment.\nSet email, SSL, and deploy structure."
+    },
+    {
+      "t": "ADMIN & PERMISSIONS",
+      "d": "Match admin surfaces and permission structure for operations.\nDesign roles, access, and audit."
+    },
+    {
+      "t": "INTEGRATIONS",
+      "d": "Implement payments, CRM, AI support, automation, external APIs as needed.\nFeatures outside the base are scoped separately."
+    },
+    {
+      "t": "LAUNCH & HANDOFF",
+      "d": "Run QA, launch, and operating guide.\nConnect extension and Phase 2 points."
+    }
+  ],
+  "sourcesLabel": "PROJECT INPUTS",
+  "sourcesTitle": "We combine the inputs your project needs.",
+  "sourcesNote": "Actual inputs vary by brand, purpose, and reference products.",
+  "sources": [
+    "Service purpose and user definition",
+    "Brand guide, logo, color",
+    "Reference products and competitors",
+    "Must-have and excluded features",
+    "Domain and email requirements",
+    "Content and menu structure",
+    "Permissions and org structure",
+    "Integration and API requirements",
+    "AI and automation needs",
+    "Legal, security, compliance",
+    "Launch timeline and budget",
+    "Future expansion plans"
+  ],
+  "useLabel": "USE CASES",
+  "useTitle": "White-label products we can configure.",
+  "useBadge": "Example configurations",
+  "useCases": [
+    {
+      "t": "BOOKING SYSTEM",
+      "d": "Brand-fit service centered on booking, schedule, alerts.\nCustomer and admin surfaces included."
+    },
+    {
+      "t": "INQUIRY / CRM",
+      "d": "Inquiry inbox, CRM light, owner routing.\nCustomer and lead management portal."
+    },
+    {
+      "t": "OPERATIONS DASHBOARD",
+      "d": "Ops metrics, status, and alert dashboard.\nBrand-fit KPI composition."
+    },
+    {
+      "t": "CLIENT PORTAL",
+      "d": "Dedicated portal for clients or partners.\nOrders, inquiry, status, document sharing."
+    },
+    {
+      "t": "AI SUPPORT LAYER",
+      "d": "Connect AI support and automation modules.\nInquiry classify, draft, summarize integrated."
+    },
+    {
+      "t": "MULTI-BRAND OPS",
+      "d": "Multi-brand or multi-tenant operations structure.\nDomain, permission, module separation."
+    },
+    {
+      "t": "MEMBERSHIP / SUBSCRIPTION",
+      "d": "Subscription, membership, permission-based service.\nPayment and admin included."
+    },
+    {
+      "t": "FIELD SERVICE TOOL",
+      "d": "Operations tool for field and service industries.\nBooking, inquiry, report linked."
+    }
+  ],
+  "flowLabel": "EXAMPLE WORKFLOW",
+  "flowTitle": "From base selection to brand launch",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINE",
+      "d": "Confirm service purpose, users, must-have features.\nSet base matching criteria.",
+      "examples": [
+        "Purpose",
+        "Users",
+        "Features",
+        "Timeline"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "BASE",
+      "d": "Propose suitable foundation and module combination.\nAgree customization scope.",
+      "examples": [
+        "Base",
+        "Modules",
+        "Scope",
+        "Phase"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "BRAND",
+      "d": "Apply visual, copy, UI tone to the brand.\nAdjust information structure and menus.",
+      "examples": [
+        "Logo",
+        "Color",
+        "UI",
+        "Copy"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONFIGURE",
+      "d": "Implement feature add, remove, and integrations.\nMatch workflows and admin.",
+      "examples": [
+        "Features",
+        "Admin",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LAUNCH",
+      "d": "Connect domain, QA, and operating handover.\nConnect extension points.",
+      "examples": [
+        "Domain",
+        "Deploy",
+        "Docs",
+        "Handoff"
+      ]
+    }
+  ],
+  "reportLabel": "OUTPUT",
+  "reportTitle": "Deliverables are a branded system and supporting docs.",
+  "reportLead": "Composition varies by project scope. Below are common items.",
+  "reportMockStatus": "SYSTEM · CONFIG",
+  "reportMockK": "WHITE-LABEL SPEC",
+  "reportMockT": "Base, Brand, Features, Domains summary",
+  "reportItems": [
+    "Base Selection",
+    "Brand Application",
+    "Feature Configuration",
+    "Content & IA",
+    "Domain Setup",
+    "Admin & Permissions",
+    "Integration List",
+    "Launch Checklist",
+    "Ops Guide",
+    "Extension Points"
+  ],
+  "dashTitle": "Share Base and Brand configuration on one view.",
+  "dashLead": "Modules, Brand, Features, and Domains together speed scope agreement and launch discussions.",
+  "dashNote": "Module composition and brand customization depth vary by project goal and budget.",
+  "dashMetrics": [
+    "Modules",
+    "Brand",
+    "Features",
+    "Domains"
+  ],
+  "dashFilters": [
+    "All",
+    "Core",
+    "Brand",
+    "Add-on"
+  ],
+  "aiLabel": "OPTIONAL AI",
+  "aiTitle": "Connect AI support and automation\nas modules when needed.",
+  "aiLead": "You can optionally connect AI support, inquiry classification, reply drafts, and document summaries to the white-label base. Designed with AI AUTOMATION scope, it can integrate a brand-fit AI experience.",
+  "aiExamples": [
+    "AI support and chat widget",
+    "Inquiry classify and reply draft",
+    "Ops dashboard AI summary",
+    "Internal knowledge search module",
+    "Review and feedback analysis",
+    "Automation workflow link"
+  ],
+  "aiNote": "AI modules are optional. Need and data policy are confirmed early in the project.",
+  "delLabel": "DELIVERABLES",
+  "delTitle": "What you receive when the project completes",
+  "delLead": "We deliver the items below as needed for your scope.",
+  "deliverables": [
+    "Branded System (Web / Portal)",
+    "Feature Configuration List",
+    "Admin Console",
+    "Brand Application Assets",
+    "Domain & Deployment Setup",
+    "Integration Configuration",
+    "Operating Guide",
+    "Launch QA Report",
+    "Extension Roadmap (optional)"
+  ],
+  "processLabel": "PROCESS",
+  "processTitle": "From requirements to launch handoff.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOVERY",
+      "d": "Confirm service purpose, users, must-have features, timeline.\nUnderstand reference products and brand needs.",
+      "examples": [
+        "Purpose",
+        "Users",
+        "Features",
+        "Brand"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "BASE MATCH",
+      "d": "Recommend foundation and customization range.\nAgree modules and phases.",
+      "examples": [
+        "Base",
+        "Modules",
+        "Scope",
+        "Timeline"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "BRAND",
+      "d": "Apply visual, copy, UI tone to the brand.\nConfirm information structure and core screens.",
+      "examples": [
+        "Logo",
+        "UI",
+        "Copy",
+        "Review"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONFIGURE",
+      "d": "Implement feature add, remove, integrations.\nMatch admin, permissions, workflows.",
+      "examples": [
+        "Features",
+        "Admin",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "TEST",
+      "d": "Verify features, brand, domain, permissions.\nCheck against operational scenarios.",
+      "examples": [
+        "QA",
+        "UAT",
+        "Fixes",
+        "Sign-off"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "LAUNCH",
+      "d": "Connect domain, deploy, and launch.\nConfirm monitoring and access paths.",
+      "examples": [
+        "Domain",
+        "Deploy",
+        "Access",
+        "Monitor"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "HANDOFF",
+      "d": "Document operations and hand off.\nConnect expansion and maintenance path.",
+      "examples": [
+        "Docs",
+        "Training",
+        "Support",
+        "Phase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "SCOPE LEVELS",
+  "scopeTitle": "How to think about project complexity.",
+  "scopeLead": "Not a fixed package. Scope is set by base type, brand depth, and module or domain count.",
+  "scopes": [
+    {
+      "t": "BRAND LAUNCH",
+      "items": [
+        "Single Base System",
+        "Brand and UI customization",
+        "Core module configuration",
+        "Single domain deploy",
+        "Basic admin and permissions"
+      ]
+    },
+    {
+      "t": "MODULE CONFIGURATION",
+      "items": [
+        "Multiple modules and feature tuning",
+        "Content and IA customization",
+        "1–3 integrations",
+        "Admin and permission structure",
+        "Operating guide included"
+      ]
+    },
+    {
+      "t": "MULTI-DOMAIN PLATFORM",
+      "items": [
+        "Multi-brand or multi-tenant",
+        "Multiple domains and permissions",
+        "AI and automation module links",
+        "Custom feature additions",
+        "Long-term ops and expansion design"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Timeline depends on scope.",
+  "timeLead": "Duration varies by base type, brand customization depth, modules, integrations, and decision speed.",
+  "timelines": [
+    {
+      "t": "Brand Launch",
+      "d": "About 2–4 weeks · varies"
+    },
+    {
+      "t": "Module Configuration",
+      "d": "About 4–8 weeks · varies"
+    },
+    {
+      "t": "Multi-domain Platform",
+      "d": "About 8–12+ weeks · custom"
+    }
+  ],
+  "priceLabel": "PROJECT COST",
+  "priceTitle": "Quoted per project.",
+  "priceName": "WHITE-LABEL",
+  "priceValue": "Custom quote",
+  "priceFactorsLabel": "Pricing factors",
+  "priceFactors": [
+    "Base — foundation and module type",
+    "Brand depth — UI and content customization",
+    "Features — module and feature configuration",
+    "Domains — domain and tenant count",
+    "Integration — API, payments, AI links",
+    "Timeline — schedule and resourcing",
+    "Custom add-ons — features outside base",
+    "Post-launch — maintenance and expansion"
+  ],
+  "priceNote": "We review Base / Brand / Features / Domains, then provide a quote. No fixed menu pricing.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Frequently asked questions",
+  "faqs": [
+    {
+      "q": "How is this different from full custom development?",
+      "a": "You start from a reusable base. Effort focuses on brand and differentiating features."
+    },
+    {
+      "q": "Who owns the code?",
+      "a": "It depends on the agreement. We clarify ownership and operations during inquiry."
+    },
+    {
+      "q": "Can we add features later?",
+      "a": "Yes. Features outside the base are scoped separately."
+    },
+    {
+      "q": "Can multiple brands run on one setup?",
+      "a": "If you need multi-brand operations, we design for that."
+    },
+    {
+      "q": "Can AI modules be included?",
+      "a": "Yes — support and automation modules can be connected when needed."
+    },
+    {
+      "q": "How is this different from CUSTOM PRODUCT?",
+      "a": "White-label adapts a validated Base System to your brand and modules. CUSTOM PRODUCT designs and builds for the problem from the start."
+    },
+    {
+      "q": "Can you support post-launch maintenance?",
+      "a": "Yes. Feature expansion, module additions, and operational support can continue under separate agreement."
+    }
+  ],
+  "finalLabel": "START A PROJECT",
+  "finalTitle": "Launch a system\nthat wears your brand.",
+  "finalLead": "Share the features you need, reference products, and brand requirements. We will confirm Base System selection and Brand, Features, Domains configuration together.",
+  "ctaFinalSecondary": "View all SOLUTIONS →",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

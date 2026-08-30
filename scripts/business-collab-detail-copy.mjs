@@ -1,3 +1,5 @@
+import { deepMerge, loadPackOverlay, resolveCopyLang } from "./i18n/copy-lang.mjs";
+
 /** Structured copy for /{lang}/business/collaboration/{slug}/ detail pages. */
 export const COLLAB_PAGE_META = {
   partnership: { pathSlug: "partnership", inquiryType: "partnership", visual: "partnership" },
@@ -981,12 +983,20 @@ function localizeKoCopy(copy) {
   return out;
 }
 
+
 export function getCollabCopy(slug, lang) {
-  const pack = lang === "ko" ? KO : EN;
-  const page = pack[slug];
+  const L = resolveCopyLang(lang);
+  const pack = L === "ko" ? KO : EN;
+  const page = pack[slug] || EN[slug];
   if (!page) return null;
-  const merged = { ...pack.common, ...page };
-  return lang === "ko" ? localizeKoCopy(merged) : merged;
+  let merged = { ...(L === "ko" ? KO.common : EN.common), ...page };
+  if (L === "ko") merged = localizeKoCopy(merged);
+  if (L !== "ko" && L !== "en") {
+    const overlayAll = loadPackOverlay("business-collab", L);
+    const overlay = overlayAll?.[slug];
+    if (overlay) merged = deepMerge({ ...EN.common, ...EN[slug] }, overlay);
+  }
+  return { ...merged, _pageLang: L };
 }
 
 export function collabPageRoute(slug) {

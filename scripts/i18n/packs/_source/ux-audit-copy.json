@@ -1,0 +1,479 @@
+{
+  "seoTitle": "UX AUDIT | Newon Business",
+  "metaDescription": "Audit key app and web flows and UI — usability issues, conversion and drop-off points, and prioritized action items in an audit report. Newon UX AUDIT.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICES",
+  "crumbResearch": "RESEARCH",
+  "crumbHere": "UX AUDIT",
+  "eyebrow": "UX AUDIT",
+  "subEyebrow": "RESEARCH",
+  "headline": "You see the problems.\nNot where to start.",
+  "lead": "We review core flows and UI — signup, onboarding, purchase, settings, and more. Usability issues, information structure, and conversion or drop-off points are structured into an audit report, issue list, and prioritized action items your team can execute.",
+  "ctaPrimary": "UX audit inquiry →",
+  "ctaSecondary": "See the audit flow ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "UX Audit"
+    },
+    {
+      "k": "BEST FOR",
+      "v": "Conversion and usability fixes"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Usually 1–2 weeks"
+    },
+    {
+      "k": "PRICE",
+      "v": "From ₩300,000"
+    }
+  ],
+  "overviewLabel": "OVERVIEW",
+  "overviewTitle": "Improvements are needed.\nPriority is not clear.",
+  "overviewBody": [
+    "Conversion, churn, support tickets, review complaints — signals that UX problems exist are often there. What is harder is seeing which flow, UI, or information structure causes the friction.",
+    "Teams share opinions that something is awkward, but without classifying issues by core flow and priority, improvement discussions repeat or stall.",
+    "UX AUDIT starts by defining scope and core flows. Then we review screens, flows, and information structure, classify issues, and prioritize action items by impact and effort."
+  ],
+  "problemsLabel": "PROBLEMS",
+  "problemsTitle": "Helpful when you face these situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "CONVERSION DROP",
+      "d": "Signup, purchase, or inquiry conversion is below expectations.\nYou need a structured view of where users drop off."
+    },
+    {
+      "n": "02",
+      "t": "ONBOARDING FRICTION",
+      "d": "Users get stuck in first use or onboarding.\nSteps, copy, or UI are unclear or too heavy."
+    },
+    {
+      "n": "03",
+      "t": "SCATTERED FEEDBACK",
+      "d": "Support, reviews, and internal notes exist but issues are not organized.\nThe same friction repeats without priority."
+    },
+    {
+      "n": "04",
+      "t": "FLOW COMPLEXITY",
+      "d": "Too many steps to complete core tasks.\nNavigation or information structure feels confusing."
+    },
+    {
+      "n": "05",
+      "t": "MOBILE GAP",
+      "d": "Mobile or responsive experience underperforms.\nDrop-off or error patterns differ from desktop."
+    },
+    {
+      "n": "06",
+      "t": "PRE-REDESIGN",
+      "d": "Before redesign, renewal, or a major feature change,\nyou need a diagnosis of the current experience."
+    }
+  ],
+  "baLabel": "BEFORE / AFTER",
+  "baTitle": "Scattered friction vs\nstructured fix list",
+  "beforeLabel": "BEFORE",
+  "afterLabel": "AFTER",
+  "before": [
+    "Many ‘this is awkward’ opinions but scattered evidence",
+    "No agreement on which flow is the core problem",
+    "Improvement priority shifts by meeting",
+    "No diagnosis document before redesign or dev"
+  ],
+  "after": [
+    "Core flows and audit scope defined first",
+    "Flow, UI, and IA issues classified",
+    "Prioritized action items by impact",
+    "Connected to design, dev, and experiment discussions"
+  ],
+  "capsLabel": "CAPABILITIES",
+  "capsTitle": "We structure the audit\nyour experience diagnosis needs.",
+  "caps": [
+    {
+      "t": "SCOPE & GOALS",
+      "d": "Define audit purpose and core flows.\nConnect to conversion, churn, and support goals."
+    },
+    {
+      "t": "FLOW MAPPING",
+      "d": "Map signup, onboarding, purchase, settings, and other key journeys.\nStructure steps, branches, and drop-off points."
+    },
+    {
+      "t": "HEURISTIC REVIEW",
+      "d": "Review against usability principles — consistency, feedback, error prevention.\nRecord issues by screen and flow."
+    },
+    {
+      "t": "UI & IA REVIEW",
+      "d": "Review layout, hierarchy, labels, CTAs, and information structure.\nDocument cognitive load and confusion points."
+    },
+    {
+      "t": "FRICTION ANALYSIS",
+      "d": "Analyze unnecessary steps, input burden, wait states, and error experiences.\nPrioritize friction points."
+    },
+    {
+      "t": "MOBILE & RESPONSIVE",
+      "d": "Audit mobile, tablet, and responsive experience.\nInclude touch, readability, and navigation issues."
+    },
+    {
+      "t": "EVIDENCE LINKING",
+      "d": "Connect support, reviews, data, and internal feedback to issues.\nDocument hypotheses and observations together."
+    },
+    {
+      "t": "ACTION PRIORITY",
+      "d": "Rank issues by impact and effort.\nSeparate quick wins from structural improvements."
+    }
+  ],
+  "sourcesLabel": "AUDIT INPUTS",
+  "sourcesTitle": "We combine the materials and observations your audit needs.",
+  "sourcesNote": "Actual inputs vary by access (staging, accounts, data) per project.",
+  "sources": [
+    "Core user flows",
+    "Signup & onboarding screens",
+    "Purchase, payment & inquiry flows",
+    "Dashboard, settings & admin UI",
+    "Mobile & responsive UI",
+    "Support & inquiry logs",
+    "App & web review feedback",
+    "Usage & drop-off data",
+    "Internal QA & feedback",
+    "Competitive benchmarks",
+    "Basic accessibility check",
+    "Heatmaps & sessions (if provided)"
+  ],
+  "useLabel": "USE CASES",
+  "useTitle": "Questions we can help answer.",
+  "useBadge": "Example audit topics",
+  "useCases": [
+    {
+      "t": "CONVERSION PATH",
+      "d": "Find where signup, purchase, or inquiry paths break.\nStructure drop-off and pre-drop screens."
+    },
+    {
+      "t": "ONBOARDING UX",
+      "d": "Review first-use, tutorial, and initial setup.\nIdentify causes of new-user churn."
+    },
+    {
+      "t": "CHECKOUT & FORMS",
+      "d": "Review input burden, errors, and steps in payment, booking, or inquiry forms.\nSurface completion improvements."
+    },
+    {
+      "t": "NAV & IA",
+      "d": "Audit menu, information structure, and navigation paths.\nDocument findability, duplication, and depth issues."
+    },
+    {
+      "t": "MOBILE EXPERIENCE",
+      "d": "Review mobile-only and responsive UI usability.\nTouch targets, readability, scroll issues."
+    },
+    {
+      "t": "ERROR & EMPTY STATES",
+      "d": "Review error, empty, loading, and permission states.\nDocument exception paths where users get stuck."
+    },
+    {
+      "t": "PRE-REDESIGN",
+      "d": "Diagnose current UX before renewal or rebrand.\nEvidence for scope and priority."
+    },
+    {
+      "t": "POST-LAUNCH REVIEW",
+      "d": "Re-audit after launch using conversion, support, and reviews.\nSeparate quick wins from structural fixes."
+    }
+  ],
+  "flowLabel": "EXAMPLE WORKFLOW",
+  "flowTitle": "From flow definition to action items",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINE",
+      "d": "Define audit purpose, core flows, and scope.\nClarify what you are trying to improve.",
+      "examples": [
+        "Goals",
+        "Core flows",
+        "Scope",
+        "Deliverables"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "MAP",
+      "d": "Map user journeys and screen flows.\nStructure steps, branches, and drop-off points.",
+      "examples": [
+        "Signup",
+        "Onboarding",
+        "Purchase",
+        "Settings"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "REVIEW",
+      "d": "Audit flows, UI, and information structure.\nRecord issues by screen and step.",
+      "examples": [
+        "Heuristics",
+        "UI",
+        "IA",
+        "Mobile"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PRIORITIZE",
+      "d": "Rank issues by impact and effort.\nSeparate quick wins from structural improvements.",
+      "examples": [
+        "P1",
+        "P2",
+        "P3",
+        "Quick win"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DELIVER",
+      "d": "Deliver audit report and action items.\nConnect to design, dev, and experiment discussions.",
+      "examples": [
+        "Audit Report",
+        "Issue List",
+        "Action Items"
+      ]
+    }
+  ],
+  "reportLabel": "OUTPUT",
+  "reportTitle": "Outputs structured for immediate improvement work.",
+  "reportLead": "Composition varies by project scope. Below are common items.",
+  "reportMockStatus": "UX · DRAFT",
+  "reportMockK": "UX AUDIT SUMMARY",
+  "reportMockT": "Core flows, issues, and priority brief",
+  "reportItems": [
+    "Executive Summary",
+    "Audit Scope",
+    "Flow Overview",
+    "Issue List",
+    "Severity & Priority",
+    "UI & IA Notes",
+    "Mobile Findings",
+    "Quick Wins",
+    "Recommended Actions",
+    "Appendix Screens"
+  ],
+  "dashTitle": "Share issues and priority on one view.",
+  "dashLead": "Flow-level issues, severity, and action items speed up improvement discussions.",
+  "dashNote": "Issue classification and priority criteria vary by project goal and scope.",
+  "dashMetrics": [
+    "Flows",
+    "Issues",
+    "Actions",
+    "Critical"
+  ],
+  "dashFilters": [
+    "All",
+    "P1",
+    "P2",
+    "Quick win"
+  ],
+  "aiLabel": "SYNTHESIS",
+  "aiTitle": "From many screens and notes\nto actionable issues.",
+  "aiLead": "When support logs, reviews, QA notes, and multi-screen audits pile up, we classify, dedupe, and summarize by pattern and priority for faster review.",
+  "aiExamples": [
+    "Extract recurring support and review issues",
+    "Classify issues by flow",
+    "Draft severity and priority ranking",
+    "Separate quick wins from structural fixes",
+    "Compare mobile vs desktop findings",
+    "Structure audit report and action items"
+  ],
+  "aiNote": "Final interpretation and improvement priority are reviewed with you.",
+  "delLabel": "DELIVERABLES",
+  "delTitle": "What you receive when the project completes",
+  "delLead": "We deliver the items below as needed for your scope.",
+  "deliverables": [
+    "UX Audit Report",
+    "Flow Map",
+    "Issue List",
+    "Priority Matrix",
+    "Action Items",
+    "Quick Wins Summary",
+    "UI & IA Notes",
+    "Presentation Summary",
+    "Redesign Input Brief (optional)"
+  ],
+  "processLabel": "PROCESS",
+  "processTitle": "From scope to delivery.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOVERY",
+      "d": "Confirm audit purpose and business context.\nUnderstand conversion, churn, and support concerns.",
+      "examples": [
+        "Goals",
+        "KPIs",
+        "Stakeholders",
+        "Timeline"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCOPE",
+      "d": "Define core flows, screen range, and access method.\nAgree staging, accounts, and data scope.",
+      "examples": [
+        "Flows",
+        "Screens",
+        "Devices",
+        "Materials"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "AUDIT",
+      "d": "Review flows, UI, and information structure.\nRecord issues by screen and step.",
+      "examples": [
+        "Heuristics",
+        "UI",
+        "Mobile",
+        "Evidence"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ANALYSIS",
+      "d": "Classify, dedupe, and prioritize issues.\nConnect impact and implementation effort.",
+      "examples": [
+        "Classification",
+        "P1–P3",
+        "Quick win",
+        "Patterns"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DRAFT",
+      "d": "Draft audit report and action items.\nBuild the skeleton of key findings.",
+      "examples": [
+        "Summary",
+        "Issues",
+        "Actions"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "REVIEW",
+      "d": "Review key issues and priority together.\nAdjust gaps, overload, and feasibility.",
+      "examples": [
+        "Feedback",
+        "Refinement",
+        "Priority"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "DELIVER",
+      "d": "Deliver final documents and action items.\nConnect to design, dev, and experiment next steps.",
+      "examples": [
+        "Final Report",
+        "Actions",
+        "Next Steps"
+      ]
+    }
+  ],
+  "scopeLabel": "SCOPE LEVELS",
+  "scopeTitle": "How to think about project complexity.",
+  "scopeLead": "Not a fixed package. Scope is set by audit goal, flow count, and device coverage.",
+  "scopes": [
+    {
+      "t": "CORE FLOW AUDIT",
+      "items": [
+        "1–2 core flows",
+        "Desktop or mobile focus",
+        "Issue list + priority",
+        "Summary audit report",
+        "Quick wins proposal"
+      ]
+    },
+    {
+      "t": "FULL UX AUDIT",
+      "items": [
+        "3–5 core flows",
+        "Desktop + mobile",
+        "Flow map + issue list",
+        "Priority matrix",
+        "Action items + presentation summary"
+      ]
+    },
+    {
+      "t": "CUSTOM AUDIT",
+      "items": [
+        "Multiple products or channels",
+        "Data and support-linked analysis",
+        "Accessibility and benchmark inclusion",
+        "Redesign input brief",
+        "DESIGN and BUILD linkage"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Timeline depends on scope.",
+  "timeLead": "Duration varies by flow count, device coverage, and environment access.",
+  "timelines": [
+    {
+      "t": "Core Flow Audit",
+      "d": "About 1 week"
+    },
+    {
+      "t": "Full UX Audit",
+      "d": "About 1–2 weeks"
+    },
+    {
+      "t": "Custom Audit",
+      "d": "About 2–3 weeks · custom quote"
+    }
+  ],
+  "priceLabel": "PROJECT COST",
+  "priceTitle": "Quoted for the scope you need.",
+  "priceName": "UX AUDIT",
+  "priceValue": "From ₩200,000",
+  "priceFactorsLabel": "Pricing factors",
+  "priceFactors": [
+    "Number of flows audited",
+    "Screen and feature range",
+    "Desktop and mobile inclusion",
+    "Environment access (staging, accounts)",
+    "Data and support linkage",
+    "Deliverable format",
+    "Presentation or workshop",
+    "Rush timeline"
+  ],
+  "priceNote": "Final quotes are confirmed after audit goal, scope, and access method.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Frequently asked questions",
+  "faqs": [
+    {
+      "q": "What products or services can you audit?",
+      "a": "Web, apps, SaaS, commerce, booking, and inquiry flows — depending on goal and accessible scope. We confirm fit before kickoff."
+    },
+    {
+      "q": "Does this include user testing?",
+      "a": "UX AUDIT is expert review (heuristics, flows, UI). User testing can be added or linked with CONSUMER RESEARCH when needed."
+    },
+    {
+      "q": "What do deliverables look like?",
+      "a": "UX Audit Report, Issue List, Priority Matrix, Action Items — document and map focused. Presentation summary available when needed."
+    },
+    {
+      "q": "Do you need staging or account access?",
+      "a": "We prefer the real usage environment when possible. If access is limited, we work within public screens and provided materials."
+    },
+    {
+      "q": "Can this connect to design or development?",
+      "a": "Yes. Audit results can feed redesign, UI improvements, and BUILD or MVP priority."
+    },
+    {
+      "q": "How is this different from CONSUMER RESEARCH?",
+      "a": "UX AUDIT reviews product, screen, and flow usability. For user needs and behavior research, link scope with CONSUMER RESEARCH."
+    },
+    {
+      "q": "How is confidentiality handled?",
+      "a": "Materials are used only within agreed scope. NDA available when required."
+    }
+  ],
+  "finalLabel": "START A PROJECT",
+  "finalTitle": "Start with a clear\nimprovement list.",
+  "finalLead": "If conversion, churn, or usability is a concern, tell us what flows to audit and how you want findings structured.",
+  "ctaFinalSecondary": "View all RESEARCH →",
+  "ctaFinalSecondaryHref": "../research/"
+}

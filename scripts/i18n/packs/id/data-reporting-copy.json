@@ -1,0 +1,528 @@
+{
+  "seoTitle": "DATA & PELAPORAN | Newon OTOMATISASI",
+  "metaDescription": "Kumpulkan dan bersihkan data yang tersebar, lalu otomatiskan metrik dan laporan. Newon DATA & PELAPORAN.",
+  "crumbBusiness": "BISNIS",
+  "crumbServices": "LAYANAN",
+  "crumbAutomation": "OTOMATISASI",
+  "crumbHere": "DATA & PELAPORAN",
+  "eyebrow": "DATA & PELAPORAN",
+  "subEyebrow": "OTOMATISASI",
+  "headline": "Kumpulkan data yang tersebar\ndan ubah menjadi apa yang Anda butuhkan.",
+  "lead": "Kami mengumpulkan dan mengatur data yang tersebar di seluruh layanan dan dokumen, lalu mengotomatiskan metrik dan laporan yang Anda perlukan — mulai dari pengumpulan dan pembersihan berulang hingga penghitungan, visualisasi, pembuatan laporan, dan pengiriman.",
+  "ctaPrimary": "Pertanyaan DATA & PELAPORAN →",
+  "ctaSecondary": "Lihat aliran data ↓",
+  "meta": [
+    {
+      "k": "LAYANAN",
+      "v": "Otomatisasi Data & Pelaporan"
+    },
+    {
+      "k": "TERBAIK UNTUK",
+      "v": "Pekerjaan pengumpulan dan pelaporan data berulang"
+    },
+    {
+      "k": "GARIS WAKTU",
+      "v": "Biasanya 2–4 minggu"
+    },
+    {
+      "k": "HARGA",
+      "v": "Dikutip berdasarkan ruang lingkup proyek"
+    }
+  ],
+  "overviewLabel": "GAMBARAN UMUM",
+  "overviewTitle": "Habiskan lebih sedikit waktu untuk mengumpulkan data,\nlebih banyak waktu menggunakannya.",
+  "overviewBody": [
+    "Tim terus-menerus membuat data di banyak layanan.",
+    "Ketika data penjualan, pertanyaan, pemasaran, penggunaan produk, proyek, survei, ulasan, dan operasi berada di tempat yang berbeda, orang akhirnya berburu, menyalin, dan membersihkan dengan tangan.",
+    "DATA & PELAPORAN menghubungkan pekerjaan berulang ke dalam satu aliran data — ambil apa yang Anda perlukan, bersihkan sesuai aturan, hitung metrik utama, dan kirimkan sebagai Dasbor atau Laporan."
+  ],
+  "problemsLabel": "MASALAH",
+  "problemsTitle": "Pekerjaan dapat kami otomatisasi.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "PENGUMPULAN DATA",
+      "d": "Orang-orang masih mengambil data dari berbagai layanan dengan tangan."
+    },
+    {
+      "n": "02",
+      "t": "PEMBERSIHAN DATA",
+      "d": "Formatnya berbeda-beda dan pembersihan dilakukan setiap saat."
+    },
+    {
+      "n": "03",
+      "t": "LAPORAN BERULANG",
+      "d": "Laporan mingguan atau bulanan dibuat ulang berulang kali."
+    },
+    {
+      "n": "04",
+      "t": "PELACAKAN METRIK",
+      "d": "Penjualan, pengguna, pertanyaan, dan konversi memerlukan pelacakan berkelanjutan."
+    },
+    {
+      "n": "05",
+      "t": "BEBERAPA SUMBER",
+      "d": "Data tersebar di seluruh spreadsheet, formulir, dan database."
+    },
+    {
+      "n": "06",
+      "t": "PENGIRIMAN LAPORAN",
+      "d": "Laporan yang sudah selesai harus sampai ke pemilik sesuai jadwal."
+    }
+  ],
+  "baLabel": "SEBELUM/SETELAH",
+  "baTitle": "Pelaporan manual vs\nDATA & PELAPORAN otomatis",
+  "beforeLabel": "PANDUAN",
+  "afterLabel": "OTOMATIS",
+  "before": [
+    "Salin data dari setiap layanan",
+    "Tempel ke dalam spreadsheet",
+    "Hitung metrik dengan tangan",
+    "Buat kembali laporan setiap siklus"
+  ],
+  "after": [
+    "Kumpulkan dari sumber secara otomatis",
+    "Bersihkan data sesuai aturan yang ditentukan",
+    "Hitung metrik secara otomatis",
+    "Menyampaikan laporan dan dasbor sesuai jadwal"
+  ],
+  "capsLabel": "KEMAMPUAN",
+  "capsTitle": "Kami membangun aliran data yang Anda butuhkan.",
+  "caps": [
+    {
+      "t": "PENGUMPULAN DATA",
+      "d": "Ambil data yang diperlukan dari berbagai sumber."
+    },
+    {
+      "t": "PEMBERSIHAN DATA",
+      "d": "Bersihkan duplikat, nilai kosong, dan format celah sesuai aturan yang ditentukan."
+    },
+    {
+      "t": "TRANSFORMASI DATA",
+      "d": "Ubah data mentah menjadi bentuk yang siap untuk dianalisis dan dilaporkan."
+    },
+    {
+      "t": "PERHITUNGAN METRIK",
+      "d": "Hitung metrik seperti pendapatan, pertumbuhan, konversi, dan pengguna."
+    },
+    {
+      "t": "LAPORAN OTOMATIS",
+      "d": "Hasilkan laporan mingguan, bulanan, atau irama lainnya."
+    },
+    {
+      "t": "DASBOR",
+      "d": "Buat dasbor yang membuat metrik utama tetap terlihat di satu tempat."
+    },
+    {
+      "t": "RINGKASAN AI",
+      "d": "Bila diperlukan, rangkum data atau masukan pelanggan dengan AI."
+    },
+    {
+      "t": "PENGIRIMAN LAPORAN",
+      "d": "Kirimkan hasilnya ke email, spreadsheet, dasbor, atau tujuan lainnya."
+    }
+  ],
+  "sourcesLabel": "SUMBER DATA",
+  "sourcesTitle": "Hubungkan data yang sudah Anda gunakan.",
+  "sourcesNote": "Konektivitas sebenarnya bergantung pada API masing-masing layanan dan metode akses data.",
+  "sources": [
+    "<<<BARU KEEP000>>>",
+    "Excel / CSV",
+    "Formulir",
+    "Basis data",
+    "Data Situs Web",
+    "Data Aplikasi",
+    "Analisis",
+    "<<<BARU KEEP000>>>",
+    "Data E-niaga",
+    "Data Pemasaran",
+    "Umpan Balik Pelanggan",
+    "Ulasan",
+    "API Eksternal"
+  ],
+  "useLabel": "KASUS PENGGUNAAN",
+  "useTitle": "Sistem yang bisa kita bangun.",
+  "useBadge": "Contoh yang bisa dibangun",
+  "useCases": [
+    {
+      "t": "LAPORAN PENJUALAN",
+      "d": "Kumpulkan data penjualan secara otomatis ke dalam laporan harian, mingguan, atau bulanan."
+    },
+    {
+      "t": "LAPORAN PEMASARAN",
+      "d": "Atur iklan dan data pemasaran untuk membandingkan kinerja saluran."
+    },
+    {
+      "t": "LAPORAN PELANGGAN",
+      "d": "Atur pertanyaan dan umpan balik untuk menemukan masalah dan permintaan yang berulang."
+    },
+    {
+      "t": "TINJAUAN LAPORAN",
+      "d": "Kumpulkan ulasan produk dan rangkum tema, masalah, dan tren penilaian."
+    },
+    {
+      "t": "LAPORAN PRODUK",
+      "d": "Atur data pengguna dan produk ke dalam metrik produk inti."
+    },
+    {
+      "t": "LAPORAN OPERASI",
+      "d": "Kumpulkan data operasi ke dalam laporan status operasional berulang."
+    },
+    {
+      "t": "RINGKASAN EKSEKUTIF",
+      "d": "Ringkas berbagai sumber ke dalam metrik utama yang siap mengambil keputusan."
+    },
+    {
+      "t": "RINGKASAN UMPAN BALIK AI",
+      "d": "Klasifikasikan dan rangkum umpan balik teks besar menjadi opini inti."
+    }
+  ],
+  "flowLabel": "CONTOH ALUR KERJA",
+  "flowTitle": "Bagaimana data menjadi laporan",
+  "flow": [
+    {
+      "n": "01",
+      "t": "KUMPULKAN",
+      "d": "Ambil dari spreadsheet, database, dan API.\nKami merancang koneksi dan jadwal pengumpulan bersama-sama."
+    },
+    {
+      "n": "02",
+      "t": "BERSIH",
+      "d": "Perbaiki duplikat, celah, dan ketidakcocokan format.\nData dinormalisasi sesuai aturan yang Anda tetapkan."
+    },
+    {
+      "n": "03",
+      "t": "PROSES",
+      "d": "Jalankan penghitungan dan transformasi yang diperlukan.\nBentuk data untuk metrik yang Anda perlukan."
+    },
+    {
+      "n": "04",
+      "t": "ANALISIS",
+      "d": "Ekstrak metrik utama dan wawasan yang diperlukan.\nBandingkan tren dan temukan anomali."
+    },
+    {
+      "n": "05",
+      "t": "LAPORAN",
+      "d": "Buat dasbor atau laporan.\nDibuat dalam formulir yang dapat segera digunakan oleh tim Anda."
+    },
+    {
+      "n": "06",
+      "t": "MENGIRIM",
+      "d": "Kirim hasil melalui email atau ke tujuan yang dipilih.\nDikirim secara otomatis sesuai jadwal."
+    }
+  ],
+  "reportLabel": "LAPORAN",
+  "reportTitle": "Laporan hanya berisi apa yang Anda perlukan.",
+  "reportLead": "Tergantung pada proyeknya, laporan dapat mencakup item seperti ini. Konten tidak sama di seluruh proyek — konten mengikuti tujuan Anda.",
+  "reportItems": [
+    "Ringkasan",
+    "Metrik Utama",
+    "Kinerja",
+    "Perubahan vs Periode Sebelumnya",
+    "Item Teratas",
+    "Masalah",
+    "Umpan Balik Pelanggan",
+    "Tren",
+    "Wawasan",
+    "Ringkasan AI",
+    "Referensi Data Mentah"
+  ],
+  "dashLabel": "DASBOR",
+  "dashTitle": "Perluas ke papan status hampir real-time bila diperlukan.",
+  "dashLead": "Selain laporan PDF atau spreadsheet terjadwal, kami dapat membuat dasbor web saat proyek memerlukannya.",
+  "dashNote": "Dasbor tidak disertakan secara otomatis — dasbor ditambahkan berdasarkan cakupan proyek.",
+  "dashMetricsLabel": "Contoh metrik",
+  "dashMetrics": [
+    "Pendapatan",
+    "Pesanan",
+    "Pengguna",
+    "Konversi",
+    "Memimpin",
+    "Retensi",
+    "Umpan Balik Pelanggan",
+    "Produk Unggulan",
+    "Kinerja Saluran",
+    "Perbandingan Periode"
+  ],
+  "dashFiltersLabel": "Contoh filter",
+  "dashFilters": [
+    "Hari ini",
+    "7 hari",
+    "30 Hari",
+    "Periode Adat",
+    "Saluran",
+    "Produk",
+    "Kategori"
+  ],
+  "aiLabel": "PELAPORAN AI",
+  "aiTitle": "Atur makna, bukan hanya angka.",
+  "aiLead": "Bila diperlukan, AI dapat meringkas teks dan data berukuran besar ke dalam bentuk yang dapat ditinjau orang dengan cepat.",
+  "aiExamples": [
+    "Tinjau ringkasan tema",
+    "Deteksi keluhan berulang",
+    "Pengelompokan umpan balik positif",
+    "Klasifikasi permintaan pelanggan",
+    "Penjelasan periode demi periode",
+    "Draf ringkasan laporan"
+  ],
+  "aiNote": "Analisis dan ringkasan AI adalah untuk referensi. Keputusan penting mungkin masih memerlukan pemeriksaan data sumber.",
+  "delLabel": "PENGIRIMAN",
+  "delTitle": "Apa yang Anda terima setelah proyek",
+  "delLead": "Tergantung pada cakupannya, kami menyediakan kiriman yang Anda perlukan dari daftar di bawah. Tidak setiap proyek mencakup setiap item.",
+  "deliverables": [
+    "Alur Pengumpulan Data",
+    "Aturan Pembersihan Data",
+    "Definisi Metrik",
+    "Alur Kerja Otomatisasi",
+    "Templat Laporan",
+    "Laporan Otomatis",
+    "Dasbor",
+    "Pelaporan Terjadwal",
+    "Ringkasan AI",
+    "Ekspor Data",
+    "Dokumentasi Dasar",
+    "Panduan operasi"
+  ],
+  "processLabel": "PROSES",
+  "processTitle": "Kami mulai dengan struktur data.",
+  "process": [
+    {
+      "n": "01",
+      "t": "PENEMUAN",
+      "d": "Konfirmasikan data apa yang Anda kelola dan di mana data tersebut berada."
+    },
+    {
+      "n": "02",
+      "t": "AUDIT DATA",
+      "d": "Tinjau format, metode akses, dan kualitas."
+    },
+    {
+      "n": "03",
+      "t": "METRIK",
+      "d": "Tentukan metrik dan tujuan laporan yang penting."
+    },
+    {
+      "n": "04",
+      "t": "ARSITEKTUR",
+      "d": "Desain kumpulkan → proses → simpan → laporan."
+    },
+    {
+      "n": "05",
+      "t": "MEMBANGUN",
+      "d": "Menerapkan jalur otomatisasi dan laporan/dasbor."
+    },
+    {
+      "n": "06",
+      "t": "UJI",
+      "d": "Validasi perhitungan dan keluaran dengan data nyata."
+    },
+    {
+      "n": "07",
+      "t": "PELUNCURAN",
+      "d": "Atur jadwal berjalan dan pengiriman."
+    },
+    {
+      "n": "08",
+      "t": "PENYERAHAN",
+      "d": "Serahkan panduan operasi dan catatan manajemen dasar."
+    }
+  ],
+  "scopeLabel": "TINGKAT RUANG LINGKUP",
+  "scopeTitle": "Sebuah cara untuk memahami kompleksitas proyek.",
+  "scopeLead": "Ini adalah tingkat referensi untuk penawaran harga — bukan paket tetap.",
+  "scopes": [
+    {
+      "t": "OTOMATISASI LAPORAN DASAR",
+      "items": [
+        "Satu atau beberapa sumber data",
+        "Pembersihan dasar",
+        "Metrik inti",
+        "Laporan terjadwal",
+        "Pengiriman sederhana"
+      ]
+    },
+    {
+      "t": "PELAPORAN MULTI-SUMBER",
+      "items": [
+        "Berbagai sumber",
+        "Konsolidasi data",
+        "Beberapa metrik",
+        "Laporan otomatis",
+        "Pemrosesan bersyarat"
+      ]
+    },
+    {
+      "t": "SISTEM DATA KHUSUS",
+      "items": [
+        "Integrasi multi-sistem",
+        "Basis data khusus",
+        "Dasbor web",
+        "Metrik tingkat lanjut",
+        "Analisis AI",
+        "Otomatisasi khusus"
+      ]
+    }
+  ],
+  "timeLabel": "GARIS WAKTU",
+  "timeTitle": "Garis waktu tergantung pada ruang lingkup.",
+  "timeLead": "Izin akses, API, kualitas data, dan fitur yang diperlukan dapat mengubah jadwal.",
+  "timelines": [
+    {
+      "t": "Otomatisasi Laporan Sederhana",
+      "d": "Sekitar 1–2 minggu"
+    },
+    {
+      "t": "Berbagai Sumber Data",
+      "d": "Sekitar 2–4 minggu"
+    },
+    {
+      "t": "Dasbor Khusus / Sistem Data Kompleks",
+      "d": "Dicakup secara terpisah"
+    }
+  ],
+  "priceLabel": "BIAYA PROYEK",
+  "priceTitle": "Kami hanya membangun cakupan yang Anda perlukan.",
+  "priceName": "DATA & PELAPORAN",
+  "priceValue": "Mulai dari ₩500.000",
+  "priceFactorsLabel": "Apa yang membentuk kutipan itu",
+  "priceFactors": [
+    "Jumlah sumber data",
+    "Volume dan struktur data",
+    "Integrasi API",
+    "Kompleksitas pembersihan",
+    "Jumlah metrik",
+    "Alur kerja otomatisasi",
+    "Kebutuhan dasbor",
+    "fitur AI",
+    "Akun / izin",
+    "Jenis laporan",
+    "Jalankan irama",
+    "Pemeliharaan"
+  ],
+  "priceNote": "Penawaran akhir ditetapkan setelah meninjau lingkungan data Anda saat ini dan fitur yang diperlukan.",
+  "extLabel": "BIAYA EKSTERNAL",
+  "extTitle": "Biaya yang mungkin berada di luar Newon biaya pembangunan",
+  "extItems": [
+    "Server/Hosting",
+    "Basis data",
+    "API Eksternal",
+    "API AI",
+    "Layanan Analisis",
+    "Otomatisasi SaaS",
+    "Pelaporan SaaS",
+    "Penyimpanan Awan",
+    "Layanan pihak ketiga berbayar lainnya"
+  ],
+  "faqLabel": "Pertanyaan Umum",
+  "faqTitle": "Pertanyaan, terjawab",
+  "faqs": [
+    {
+      "q": "Data apa yang dapat Anda sambungkan?",
+      "a": "Spreadsheet, CSV, database, analitik, formulir, dan API eksternal adalah hal yang umum. Konektivitas sebenarnya bergantung pada metode akses dan API masing-masing layanan."
+    },
+    {
+      "q": "Bisakah kita memulai dengan Google Sheets saja?",
+      "a": "Ya. Kami meninjau struktur saat ini, lalu menentukan cakupan pembersihan dan otomatisasi."
+    },
+    {
+      "q": "Bisakah kami menerima laporan setiap minggu secara otomatis?",
+      "a": "Bergantung pada cakupannya, kami dapat membuat pemrosesan dan pengiriman terjadwal."
+    },
+    {
+      "q": "Bisakah Anda membuat dasbor juga?",
+      "a": "Ya. Metrik, metode penyegaran, dan konteks pengguna dicakup secara terpisah bila diperlukan."
+    },
+    {
+      "q": "Bisakah analisis AI ditambahkan?",
+      "a": "Ya — misalnya mengklasifikasikan dan merangkum ulasan, pertanyaan, dan teks survei."
+    },
+    {
+      "q": "Bagaimana jika data kita berantakan?",
+      "a": "Kami mulai dengan meninjau kualitas data saat ini. Pembersihan besar-besaran mungkin dianggap sebagai pekerjaan tambahan."
+    },
+    {
+      "q": "Apakah data real-time mungkin?",
+      "a": "Itu tergantung pada sumber dan API. Pemrosesan real-time tidak dijamin untuk setiap sistem."
+    },
+    {
+      "q": "Apakah Anda mendukung pemeliharaan setelah peluncuran?",
+      "a": "Ya — perubahan sumber, pengeditan otomatisasi, dan penambahan fitur dapat dicakup secara terpisah."
+    }
+  ],
+  "finalLabel": "MULAI PROYEK",
+  "finalTitle": "Otomatiskan laporan\nyang masih Anda buat dengan tangan.",
+  "finalLead": "Beritahu kami data yang Anda gunakan dan laporan yang Anda ulangi. Kami akan menguraikan bagaimana pengumpulan, pembersihan, dan pengiriman dapat terhubung — dan seperti apa cakupan proyeknya.",
+  "formTitle": "Permintaan DATA & PELAPORAN",
+  "formLead": "Bagikan lingkungan data Anda saat ini dan hasil yang diinginkan sehingga kami dapat mengonfirmasi cakupannya.",
+  "formCategory": "OTOMATISASI",
+  "formService": "DATA & PELAPORAN",
+  "labelCategory": "KATEGORI LAYANAN",
+  "labelService": "LAYANAN",
+  "labelName": "Nama",
+  "labelCompany": "Perusahaan / merek",
+  "labelEmail": "Surel",
+  "labelDataWhere": "Dimana data dikelola saat ini",
+  "labelDataSources": "Sumber data yang Anda butuhkan",
+  "labelCurrentReport": "Laporan yang Anda buat saat ini",
+  "labelDesired": "Hasil yang diinginkan",
+  "labelDashboard": "Dasbor diperlukan?",
+  "labelCadence": "Pelaporan irama",
+  "labelTimeline": "Garis waktu yang diharapkan",
+  "labelBudget": "Kisaran anggaran",
+  "labelMessage": "Deskripsi proyek",
+  "labelConsent": "Saya menyetujui pengumpulan dan penggunaan informasi pribadi.",
+  "privacyLink": "Kebijakan Privasi",
+  "optional": "opsional",
+  "dataWhereOptions": [
+    "<<<BARU KEEP000>>>",
+    "Excel / CSV",
+    "Basis data",
+    "Analisis",
+    "<<<BARU KEEP000>>>",
+    "perdagangan elektronik",
+    "Lainnya"
+  ],
+  "desiredOptions": [
+    "Laporan Otomatis",
+    "Dasbor",
+    "Integrasi Data",
+    "Ringkasan AI",
+    "Saluran Data",
+    "Tidak yakin"
+  ],
+  "dashboardOptions": [
+    "Dibutuhkan",
+    "Tidak diperlukan",
+    "Belum yakin"
+  ],
+  "cadenceOptions": [
+    "Setiap hari",
+    "Mingguan",
+    "Bulanan",
+    "Triwulanan",
+    "Lainnya / TBD"
+  ],
+  "timelineOptions": [
+    "Sesegera mungkin",
+    "1–2 minggu",
+    "2–4 minggu",
+    "1–2 bulan",
+    "TBD"
+  ],
+  "budgetOptions": [
+    "₩500k–1M",
+    "₩1M–3M",
+    "₩3M–5M",
+    "₩5 juta+",
+    "TBD"
+  ],
+  "phDataSources": "misalnya Google Sheets + Analisis",
+  "phCurrentReport": "misalnya laporan penjualan mingguan, laporan pemasaran bulanan",
+  "phMessage": "Bagikan lokasi data, pekerjaan rutin, dan hasil yang diinginkan.",
+  "submit": "Kirim pertanyaan",
+  "submitting": "Mengirim…",
+  "fail": "Pengiriman gagal. Silakan coba lagi atau kirim email kepada kami.",
+  "mailSubject": "Newon Permintaan DATA & PELAPORAN",
+  "backAutomation": "Kembali ke OTOMATISASI →",
+  "exploreAi": "Lihat OTOMATISASI AI →"
+}

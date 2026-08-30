@@ -2,6 +2,8 @@
  * COMPETITOR ANALYSIS service detail — KO/EN copy.
  * Path: /{lang}/business/competitor-analysis/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const COMPETITOR_ANALYSIS_COPY = {
   ko: {
     seoTitle: "COMPETITOR ANALYSIS | Newon Business",
@@ -796,5 +798,5 @@ export const COMPETITOR_ANALYSIS_COPY = {
 };
 
 export function getCompetitorAnalysisCopy(lang) {
-  return lang === "ko" ? COMPETITOR_ANALYSIS_COPY.ko : COMPETITOR_ANALYSIS_COPY.en;
+  return resolveKoEnPack(COMPETITOR_ANALYSIS_COPY, lang, "competitor-analysis-copy");
 }

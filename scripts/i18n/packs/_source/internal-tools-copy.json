@@ -1,0 +1,584 @@
+{
+  "seoTitle": "INTERNAL TOOLS | Newon AUTOMATION",
+  "metaDescription": "Turn scattered spreadsheet and multi-tool work into an internal system that fits how your team operates. Newon INTERNAL TOOLS.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICES",
+  "crumbHere": "INTERNAL TOOLS",
+  "eyebrow": "03 · TOOLS",
+  "subEyebrow": "AUTOMATION",
+  "headline": "Tools shaped around\nhow your team works.",
+  "lead": "We consolidate work scattered across spreadsheets and services into one internal system — designing screens, permissions, and data structures for the ops and admin flows your team actually runs.",
+  "ctaPrimary": "INTERNAL TOOLS inquiry →",
+  "ctaSecondary": "See what we build ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Custom Internal Tool"
+    },
+    {
+      "k": "BEST FOR",
+      "v": "Teams with recurring ops and admin work"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Typically 4–8 weeks"
+    },
+    {
+      "k": "PRICE",
+      "v": "Custom quote"
+    }
+  ],
+  "overviewLabel": "OVERVIEW",
+  "overviewTitle": "Build an internal system\nfor how the team works.",
+  "overviewBody": [
+    "Many teams still run operations across spreadsheets, chat, email, and multiple SaaS tools.",
+    "When intake, status, approvals, inventory, schedules, and customer records live in different places, people become the integration layer.",
+    "INTERNAL TOOLS turns that into screens and data structures that match your real process — not a customer-facing product, but a tool your team uses every day."
+  ],
+  "problemsLabel": "PROBLEMS",
+  "problemsTitle": "When an internal tool becomes necessary.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "SCATTERED WORK",
+      "d": "Requests and records live across sheets, chat, mail, and tools."
+    },
+    {
+      "n": "02",
+      "t": "MANUAL HANDOFF",
+      "d": "People manually pass work whenever ownership or stage changes."
+    },
+    {
+      "n": "03",
+      "t": "STATUS BLINDNESS",
+      "d": "It’s hard to see what’s in progress at a glance."
+    },
+    {
+      "n": "04",
+      "t": "APPROVAL FRICTION",
+      "d": "Reviews and approvals stall across chat and email."
+    },
+    {
+      "n": "05",
+      "t": "PERMISSION RISK",
+      "d": "Sensitive data sits in shared sheets everyone can open."
+    },
+    {
+      "n": "06",
+      "t": "NO HISTORY",
+      "d": "There’s little record of who changed what, and when."
+    },
+    {
+      "n": "07",
+      "t": "SCALE LIMIT",
+      "d": "Spreadsheet ops break down as people and volume grow."
+    },
+    {
+      "n": "08",
+      "t": "TOOL MISFIT",
+      "d": "Off-the-shelf SaaS doesn’t match the team process."
+    }
+  ],
+  "capsLabel": "CAPABILITIES",
+  "capsTitle": "We compose the functions your work needs.",
+  "caps": [
+    {
+      "t": "REQUEST & INTAKE",
+      "d": "Receive requests through defined forms and flows.",
+      "examples": [
+        "Inquiry intake",
+        "Work requests",
+        "Internal tickets",
+        "Onboarding forms"
+      ]
+    },
+    {
+      "t": "WORKBOARD",
+      "d": "Manage status, owners, and priority in one place.",
+      "examples": [
+        "Kanban/list",
+        "Filters",
+        "Assignment",
+        "Deadlines"
+      ]
+    },
+    {
+      "t": "APPROVAL FLOW",
+      "d": "Lock review and approval into clear stages.",
+      "examples": [
+        "Multi-step approval",
+        "Role permissions",
+        "Comments",
+        "History"
+      ]
+    },
+    {
+      "t": "OPS DASHBOARD",
+      "d": "Bring operational status into one view.",
+      "examples": [
+        "Progress",
+        "Bottlenecks",
+        "Throughput",
+        "Period compare"
+      ]
+    },
+    {
+      "t": "DATA ADMIN",
+      "d": "Structure internal reference data and records.",
+      "examples": [
+        "Master data",
+        "Search",
+        "Tags",
+        "Export"
+      ]
+    },
+    {
+      "t": "ROLE & ACCESS",
+      "d": "Split screens and permissions by role.",
+      "examples": [
+        "Admin",
+        "Manager",
+        "Member",
+        "Read-only"
+      ]
+    },
+    {
+      "t": "INTEGRATION",
+      "d": "Connect services and data you already use.",
+      "examples": [
+        "Sheets",
+        "Slack/Email",
+        "CRM",
+        "API"
+      ]
+    },
+    {
+      "t": "AUDIT & LOG",
+      "d": "Keep changes and actions traceable.",
+      "examples": [
+        "Change log",
+        "Action history",
+        "Alerts",
+        "Backup points"
+      ]
+    }
+  ],
+  "useLabel": "POSSIBILITIES",
+  "useTitle": "Internal tools we can build.",
+  "useBadge": "Buildable examples",
+  "useCases": [
+    {
+      "t": "OPS CONSOLE",
+      "d": "A console for requests, progress, and ownership."
+    },
+    {
+      "t": "REQUEST PORTAL",
+      "d": "Standard intake forms with shared status for teams."
+    },
+    {
+      "t": "APPROVAL SYSTEM",
+      "d": "Systemize budget, content, or access approvals."
+    },
+    {
+      "t": "CLIENT OPS TOOL",
+      "d": "Manage client work, schedules, and deliverables internally."
+    },
+    {
+      "t": "INVENTORY / ASSET",
+      "d": "Track inventory, assets, and movement."
+    },
+    {
+      "t": "CRM LITE",
+      "d": "A pipeline tool simplified to your sales/inquiry process."
+    },
+    {
+      "t": "CONTENT TRACKER",
+      "d": "One board for production, review, and publish status."
+    },
+    {
+      "t": "INTERNAL DASHBOARD",
+      "d": "An ops board combining metrics from multiple sources."
+    }
+  ],
+  "baLabel": "BEFORE / AFTER",
+  "baTitle": "How work gets organized",
+  "beforeLabel": "BEFORE",
+  "afterLabel": "AFTER",
+  "before": [
+    "Spreadsheet + Chat + Email",
+    "Manual handoffs",
+    "Hard-to-see status",
+    "Unclear access and history"
+  ],
+  "after": [
+    "One internal tool",
+    "Defined work flow",
+    "Visible status and owners",
+    "Role-based access and logs"
+  ],
+  "flowLabel": "EXAMPLE WORKFLOW",
+  "flowTitle": "How an internal tool runs",
+  "flow": [
+    {
+      "n": "01",
+      "t": "INTAKE",
+      "d": "Requests and data enter via forms, APIs, or files.\nRequired fields and attachments are validated first."
+    },
+    {
+      "n": "02",
+      "t": "ROUTE",
+      "d": "Type, priority, and owner rules assign the work.\nThe next stage and approval path are set automatically."
+    },
+    {
+      "n": "03",
+      "t": "PROCESS",
+      "d": "Teams process, edit, and approve in-screen.\nComments, files, and status changes stay in one flow."
+    },
+    {
+      "n": "04",
+      "t": "UPDATE",
+      "d": "Status changes notify the people who need to know.\nDelivered through Slack, email, or in-app alerts."
+    },
+    {
+      "n": "05",
+      "t": "RECORD",
+      "d": "Who changed what, and when, is stored as history.\nOutcomes are kept for audit and replay."
+    },
+    {
+      "n": "06",
+      "t": "REVIEW",
+      "d": "Dashboards, lists, and filters show current state.\nBottlenecks, delays, and throughput in one view."
+    }
+  ],
+  "featuresLabel": "FEATURES",
+  "featuresTitle": "Features we can include by project",
+  "featuresLead": "Not every project gets the same feature set — we compose for the work that matters.",
+  "features": [
+    "Form / Intake",
+    "List & Filter",
+    "Kanban Board",
+    "Detail View",
+    "Status Workflow",
+    "Role-based Access",
+    "Comments",
+    "File Attachments",
+    "Notifications",
+    "Search",
+    "Export",
+    "Admin Settings",
+    "Activity Log",
+    "Simple Dashboard",
+    "API / Webhook",
+    "Mobile-friendly UI"
+  ],
+  "integLabel": "INTEGRATIONS",
+  "integTitle": "Connect the tools you already use.",
+  "integNote": "Actual connectivity depends on each service’s API, permissions, and data structure.",
+  "integrations": [
+    "Google Sheets",
+    "Notion",
+    "Slack",
+    "Email",
+    "Google Drive",
+    "CRM",
+    "Database",
+    "Forms",
+    "Analytics",
+    "Payment / Billing data",
+    "External API",
+    "Webhook"
+  ],
+  "aiLabel": "AI EXTENSION",
+  "aiTitle": "Connect AI into the work flow when needed.",
+  "aiLead": "If classification, drafting, or summarization repeats, AI can sit as an assist inside the tool.",
+  "aiExamples": [
+    "Auto-classify requests",
+    "Ticket summaries",
+    "Draft generation",
+    "Duplicate / similar detection",
+    "Note cleanup",
+    "Status suggestions"
+  ],
+  "aiNote": "AI output is advisory — important decisions stay human-confirmed by default.",
+  "autoLabel": "AUTOMATION EXTENSION",
+  "autoTitle": "Automate repetitive work inside the tool.",
+  "autoLead": "Clear rules — alerts, status changes, sync, scheduled reports — can expand into automation scope.",
+  "autoExamples": [
+    "Status-change alerts",
+    "Deadline reminders",
+    "Sheet/DB sync",
+    "Scheduled digest email",
+    "Conditional routing",
+    "Batch updates"
+  ],
+  "delLabel": "DELIVERABLES",
+  "delTitle": "What you receive when the project completes",
+  "delLead": "Depending on scope, deliverables may include the items below — not every project includes every item.",
+  "deliverables": [
+    "Requirements Summary",
+    "Information Architecture",
+    "UI Screens",
+    "Working Internal Tool",
+    "Role / Permission Setup",
+    "Data Structure",
+    "Basic Integrations",
+    "Admin Guide",
+    "Ops handoff notes",
+    "Handoff Notes"
+  ],
+  "processLabel": "PROCESS",
+  "processTitle": "We start from how the work actually runs.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOVERY",
+      "d": "Map current flow, tools, and bottlenecks.\nWe start by finding where time is lost."
+    },
+    {
+      "n": "02",
+      "t": "WORK MAPPING",
+      "d": "Document request → process → done, plus exceptions.\nDraw how work actually moves today."
+    },
+    {
+      "n": "03",
+      "t": "SCOPE",
+      "d": "Decide what belongs in v1 and what waits.\nMake the first release boundary clear."
+    },
+    {
+      "n": "04",
+      "t": "STRUCTURE",
+      "d": "Design screens, data model, and permissions.\nDefine the structure your team will use."
+    },
+    {
+      "n": "05",
+      "t": "PROTOTYPE",
+      "d": "Validate the core flow quickly.\nTest the main scenarios first."
+    },
+    {
+      "n": "06",
+      "t": "BUILD",
+      "d": "Implement a tool ready for real use.\nShip something the team can run daily."
+    },
+    {
+      "n": "07",
+      "t": "INTEGRATE",
+      "d": "Connect required integrations and automation.\nLink existing tools and data."
+    },
+    {
+      "n": "08",
+      "t": "TEST",
+      "d": "Review permissions, flows, and data with real scenarios.\nInclude edge cases, not just happy paths."
+    },
+    {
+      "n": "09",
+      "t": "HANDOFF",
+      "d": "Hand over operations and admin guidance.\nSo your team can run it independently."
+    }
+  ],
+  "scopeLabel": "SCOPE LEVELS",
+  "scopeTitle": "A guide to understanding project complexity.",
+  "scopeLead": "Not fixed packages — a reference for scoping and quoting what you need.",
+  "scopes": [
+    {
+      "t": "FOCUSED TOOL",
+      "items": [
+        "One core work flow",
+        "Basic CRUD screens",
+        "Simple permissions",
+        "Small data set",
+        "Minimal integrations"
+      ]
+    },
+    {
+      "t": "TEAM OPS SYSTEM",
+      "items": [
+        "Multiple roles/permissions",
+        "Status workflow",
+        "List/detail/dashboard",
+        "Notifications",
+        "Key service integrations"
+      ]
+    },
+    {
+      "t": "CUSTOM INTERNAL PLATFORM",
+      "items": [
+        "Multiple modules",
+        "Complex approvals/rules",
+        "Multi-integrations",
+        "AI/Automation extensions",
+        "Ops admin features"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Timeline depends on scope.",
+  "timeLead": "Features, integrations, permission structure, and existing data can change duration.",
+  "timelines": [
+    {
+      "t": "Focused Internal Tool",
+      "d": "About 3–5 weeks"
+    },
+    {
+      "t": "Team Ops System",
+      "d": "About 4–8 weeks"
+    },
+    {
+      "t": "Custom Internal Platform",
+      "d": "Scoped separately"
+    }
+  ],
+  "priceLabel": "PROJECT COST",
+  "priceTitle": "We quote only the scope you need.",
+  "priceName": "INTERNAL TOOLS",
+  "priceValue": "Custom quote",
+  "priceFactorsLabel": "What shapes the price",
+  "priceFactors": [
+    "Work-flow complexity",
+    "Number of screens/modules",
+    "Role/permission structure",
+    "Data model",
+    "Number of integrations",
+    "Automation scope",
+    "AI features",
+    "Dashboard needs",
+    "Existing data migration",
+    "Users / concurrency",
+    "Mobile support",
+    "Maintenance"
+  ],
+  "priceNote": "Final quote is set after we review your current process and required features.",
+  "extLabel": "EXTERNAL COST",
+  "extTitle": "Costs that may sit outside Newon’s build fee",
+  "extItems": [
+    "Server / Hosting",
+    "Database",
+    "Auth / Identity",
+    "External API",
+    "AI API",
+    "Automation SaaS",
+    "Cloud Storage",
+    "Email / Messaging service",
+    "Other paid external services"
+  ],
+  "secLabel": "SECURITY",
+  "secTitle": "Internal tools start with access and data.",
+  "secLead": "When sensitive information is involved, we design for role-based access, least privilege, and only the logs you need. Security requirements are confirmed before kickoff.",
+  "secItems": [
+    "Role-based access",
+    "Least privilege",
+    "Audit log",
+    "Environment separation",
+    "Credential handling",
+    "Data minimization"
+  ],
+  "faqLabel": "FAQ",
+  "faqTitle": "Frequently asked questions",
+  "faqs": [
+    {
+      "q": "Isn’t Notion or a spreadsheet enough?",
+      "a": "It can be early on. When permissions, status, approvals, history, and integrations get complex, a dedicated internal tool is often more stable."
+    },
+    {
+      "q": "How is this different from customizing SaaS?",
+      "a": "SaaS is great for speed, but may not match your process. INTERNAL TOOLS starts from your real flow and builds the screens and rules you need."
+    },
+    {
+      "q": "Do we need a large system from day one?",
+      "a": "No. We recommend starting with the most repetitive, high-cost work flow in a focused scope."
+    },
+    {
+      "q": "Can you migrate existing sheet data?",
+      "a": "Yes. Migration scope depends on data cleanliness and structure, and may be scoped separately."
+    },
+    {
+      "q": "Can it work on mobile?",
+      "a": "We can build a mobile-friendly UI. Native-app needs are confirmed as separate scope."
+    },
+    {
+      "q": "Can AI or automation be included?",
+      "a": "Yes. We often extend from clear areas first — classification, summaries, alerts, and sync."
+    },
+    {
+      "q": "What about sensitive internal data?",
+      "a": "We align on access, data range, and logs. Hosting and auth follow your environment and policy."
+    },
+    {
+      "q": "Can you maintain and extend after launch?",
+      "a": "Yes. Feature additions, integration changes, and ops support can be scoped separately."
+    }
+  ],
+  "finalLabel": "START A PROJECT",
+  "finalTitle": "Turn recurring team work\ninto a tool.",
+  "finalLead": "Tell us which work is scattered across sheets and chat. We’ll confirm the screens and flow you need.",
+  "formTitle": "INTERNAL TOOLS inquiry",
+  "formLead": "Share your current process and needed features — we’ll confirm scope.",
+  "formCategory": "AUTOMATION",
+  "formService": "INTERNAL TOOLS",
+  "labelCategory": "SERVICE CATEGORY",
+  "labelService": "SERVICE",
+  "labelName": "Name",
+  "labelCompany": "Company / brand",
+  "labelEmail": "Email",
+  "labelCurrentTools": "Tools you use today",
+  "labelCurrentWork": "Recurring work today",
+  "labelDesired": "Features you need",
+  "labelUsers": "Expected users",
+  "labelIntegrations": "Services to connect",
+  "labelTimeline": "Expected timeline",
+  "labelBudget": "Budget range",
+  "labelMessage": "Project description",
+  "labelConsent": "I agree to the collection and use of personal information.",
+  "privacyLink": "Privacy Policy",
+  "optional": "optional",
+  "currentToolsOptions": [
+    "Google Sheets",
+    "Excel",
+    "Notion",
+    "Slack",
+    "Email",
+    "CRM",
+    "Other SaaS",
+    "None / ad-hoc"
+  ],
+  "desiredOptions": [
+    "Request / Intake",
+    "Workboard",
+    "Approval Flow",
+    "Dashboard",
+    "Role & Access",
+    "Integrations",
+    "AI Assist",
+    "Automation",
+    "Not Sure"
+  ],
+  "usersOptions": [
+    "1–5",
+    "6–20",
+    "21–50",
+    "50+",
+    "TBD"
+  ],
+  "timelineOptions": [
+    "As soon as possible",
+    "2–4 weeks",
+    "4–8 weeks",
+    "2–3 months",
+    "TBD"
+  ],
+  "budgetOptions": [
+    "₩1M–3M",
+    "₩3M–5M",
+    "₩5M–10M",
+    "₩10M+",
+    "TBD"
+  ],
+  "phCurrentWork": "e.g. intake → assign → approve → record done",
+  "phIntegrations": "e.g. Google Sheets + Slack",
+  "phMessage": "Share current flow, pain points, and screens/features you need.",
+  "submit": "Send inquiry",
+  "submitting": "Sending…",
+  "fail": "Send failed. Please try again or email us.",
+  "mailSubject": "Newon INTERNAL TOOLS inquiry",
+  "backAutomation": "Back to AUTOMATION →",
+  "exploreAi": "View AI AUTOMATION →"
+}

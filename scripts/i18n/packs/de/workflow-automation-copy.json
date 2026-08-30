@@ -1,0 +1,570 @@
+{
+  "seoTitle": "Workflow-Automatisierung | Newon Geschäft",
+  "metaDescription": "Verbinden Sie SaaS, Daten und die tägliche Arbeit in einem automatisierten Workflow mit Newon Workflow-Automatisierung.",
+  "eyebrow": "02 * WORKFLOW-AUTOMATISIERUNG",
+  "subEyebrow": "",
+  "headline": "Verbinden Sie sich wiederholende Arbeiten \nzu einem Flow.",
+  "lead": "Wir verbinden sich wiederholende Arbeiten über SaaS, E—Mail, Tabellenkalkulationen, Datenbanken und interne Tools hinweg zu automatisierten Workflows - von Auslösern und Aktionen bis hin zu Verzweigungen, Datenverarbeitung, Benachrichtigungen und Ausnahmebehandlung.",
+  "ctaPrimary": "Angebot anfordern →",
+  "ctaSecondary": "Siehe Projektumfang ↓",
+  "ctaSecondaryHref": "#scope",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Workflow-Automatisierung"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Typischerweise 3-6 Wochen"
+    },
+    {
+      "k": "BEGINNEND BEI",
+      "v": "Von ₩1,000,000"
+    },
+    {
+      "k": "AM BESTEN FÜR",
+      "v": "Teams verbinden Tools und Daten manuell"
+    }
+  ],
+  "overviewLabel": "ÜBERBLICK",
+  "overviewTitle": "Sie haben bereits die Werkzeuge.\nAutomatisiere die Verbindungen.",
+  "overviewBody": [
+    "Wir verbinden sich wiederholende Arbeiten über SaaS, E-Mail, Tabellenkalkulationen, Datenbanken und interne Tools zu einem automatisierten Workflow.",
+    "Von Auslösern und Aktionen bis hin zu Verzweigungen, Datenverarbeitung, Benachrichtigungen und Ausnahmebehandlung — entwickelt, um die tatsächliche Arbeitsweise Ihres Teams zu berücksichtigen."
+  ],
+  "whyLabel": "WARUM AUTOMATISIERUNG",
+  "whyTitle": "Verbinden die Leute\n-Systeme immer noch von Hand?",
+  "whyLead": "Sie haben bereits genug Tools, aber wenn sie nicht miteinander kommunizieren, verschieben die Leute Daten und lösen den nächsten Schritt manuell aus.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "KOPIEREN UND EINFÜGEN",
+      "d": "Dieselben Informationen werden immer wieder in mehrere Dienste eingegeben."
+    },
+    {
+      "n": "02",
+      "t": "MANUELLE BENACHRICHTIGUNG",
+      "d": "Jemand benachrichtigt das Team manuell, wenn eine neue Anfrage oder Bestellung eintrifft."
+    },
+    {
+      "n": "03",
+      "t": "VERSTREUTE DATEN",
+      "d": "Kunden- und Betriebsdaten befinden sich in vielen SaaS-Tools und -Blättern."
+    },
+    {
+      "n": "04",
+      "t": "SICH WIEDERHOLENDE AUFGABE",
+      "d": "Die gleiche Arbeit wiederholt sich täglich oder wöchentlich."
+    },
+    {
+      "n": "05",
+      "t": "VERPASSTES FOLLOW-UP",
+      "d": "Die nächsten Schritte hängen vom Speicher ab, sodass die Arbeit durchrutschen kann."
+    },
+    {
+      "n": "06",
+      "t": "MANUELLE BERICHTERSTATTUNG",
+      "d": "Berichte werden durch manuelles Sammeln von Daten neu erstellt."
+    }
+  ],
+  "baLabel": "VORHER / NACHHER",
+  "baTitle": "Manuelle Verbindungen vs\nautomatisierter Workflow",
+  "beforeLabel": "MANUAL",
+  "afterLabel": "AUTOMATISIERTE",
+  "before": [
+    "Überprüfen Sie das Formular und kopieren Sie es auf ein Blatt",
+    "Benachrichtigen Sie den Besitzer manuell",
+    "Daten von Hand in das CRM eingeben",
+    "Jemand erinnert sich an den nächsten Schritt"
+  ],
+  "after": [
+    "Trigger erkennt das Ereignis",
+    "Konditionsrouten der Pfad",
+    "Prozess bereinigt die Daten",
+    "Aktionen und Warnungen werden automatisch ausgeführt"
+  ],
+  "structureLabel": "WIE ES FUNKTIONIERT",
+  "structureTitle": "Ein Ereignis kann\nautomatisch die nächste Aufgabe starten.",
+  "structure": [
+    {
+      "n": "01",
+      "t": "AUSLÖSEN",
+      "d": "Das Ereignis, das die Automatisierung startet.\nFormulare, Bestellungen oder Statusänderungen können einen Workflow auslösen.",
+      "examples": [
+        "Neue Anfrage",
+        "Formular absenden",
+        "Neue Bestellung",
+        "Statusänderung",
+        "Geplante Zeit",
+        "Neue Daten erstellt"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "BEDINGUNG",
+      "d": "Entscheide, ob du rennst und welchen Weg du einschlagen willst.\nVerzweigen Sie nach Betrag, Typ oder Statuswerten.",
+      "examples": [
+        "Kundentyp",
+        "Bestellmenge",
+        "Art der Anfrage",
+        "Arbeitsstatus",
+        "Erforderlicher Wert vorhanden"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "PROZESS",
+      "d": "Behandeln Sie die Daten, die Sie benötigen.\n Bereinige, berechne oder führe KI-Schritte in der Mitte aus.",
+      "examples": [
+        "Saubere Daten",
+        "Formatwechsel",
+        "Berechnung",
+        "Extraktion",
+        "KI-Analyse",
+        "Daten zusammenführen"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "AKTION",
+      "d": "Führen Sie die eigentliche Arbeit aus.\n Warnungen, CRM-Updates und Blattschreibvorgänge folgen.",
+      "examples": [
+        "E-Mail senden",
+        "Besitzer benachrichtigen",
+        "CRM-Datensatz erstellen",
+        "Aktualisierungsblatt",
+        "Aufgabe erstellen",
+        "In DB speichern"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PROTOKOLLIEREN / ÜBERWACHEN",
+      "d": "Bestätigen Sie die Ausführungsergebnisse.\n Verfolgt Erfolg, Misserfolg, Laufzeit und Fehler.",
+      "examples": [
+        "Erfolg",
+        "Scheitern",
+        "Laufzeit",
+        "Ergebnis",
+        "Fehlerprotokoll"
+      ]
+    }
+  ],
+  "capsTitle": "Arbeit, die wir automatisieren können.",
+  "caps": [
+    {
+      "t": "LEAD-VERWALTUNG",
+      "d": "Aufnahme → Kundendaten speichern → Eigentümer zuweisen → Benachrichtigen → Nachverfolgen"
+    },
+    {
+      "t": "KUNDENDIENST",
+      "d": "Anfordern → Klassifizieren → Zuweisen → Lösen → Ergebnis aufzeichnen"
+    },
+    {
+      "t": "UMSATZ",
+      "d": "Neuer Lead → CRM → Mitarbeiter zuweisen → Nachverfolgung"
+    },
+    {
+      "t": "BESTELLEN",
+      "d": "Bestellung → Datensatzdaten → interner Alarm → Statusänderung → Kundenaktualisierung"
+    },
+    {
+      "t": "INHALT",
+      "d": "Anfrage → Aufgabe erstellen → Zuweisen → Überprüfen → Genehmigen"
+    },
+    {
+      "t": "BERICHTERSTATTUNG",
+      "d": "Sammeln → Bereinigen → berechnen → Bericht erstellen → liefern"
+    },
+    {
+      "t": "INTERNE OPERATIONEN",
+      "d": "Interne Anfrage → genehmigen → bearbeiten → Abschließen → Aufzeichnen"
+    },
+    {
+      "t": "DATENSYNCHRONISATION",
+      "d": "Synchronisieren Sie benötigte Daten automatisch systemübergreifend.\nOrdne nur die Felder zu, die du in beiden Richtungen benötigst."
+    }
+  ],
+  "useLabel": "GLICHKEITEN",
+  "useTitle": "In der realen Arbeit verbindet sich\nso.",
+  "useBadge": "Beispiele erstellen",
+  "useCases": [
+    {
+      "n": "01",
+      "t": "KUNDENANFRAGE",
+      "steps": [
+        "Website-Formular",
+        "Kundendaten",
+        "CRM",
+        "Zuweisungsmanager",
+        "Slack / E-Mail-Benachrichtigung",
+        "Bestätigungsmail",
+        "Folgeaufgabe"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "BESTELLEN",
+      "steps": [
+        "Neue Bestellung",
+        "Daten validieren",
+        "Datenbank",
+        "Interne Benachrichtigung",
+        "Auftragsabwicklung",
+        "Kunden-Update",
+        "Komplett"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "BERICHT",
+      "steps": [
+        "Zeitplan",
+        "Daten sammeln",
+        "Saubere Daten",
+        "Metriken berechnen",
+        "Bericht erstellen",
+        "Bericht senden"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "INHALT",
+      "steps": [
+        "Inhaltsanfrage",
+        "Aufgabe erstellen",
+        "Zuweisen",
+        "Entwurf",
+        "Bewertung",
+        "Genehmigen",
+        "Veröffentlichen"
+      ]
+    }
+  ],
+  "integLabel": "INTEGRATION",
+  "integTitle": "Verbinden Sie die Werkzeuge\n, die Sie bereits verwenden.",
+  "integNote": "Die tatsächliche Konnektivität hängt von der API, den Webhooks, den Berechtigungen und der technischen Umgebung der einzelnen Dienste ab.",
+  "integGroups": [
+    {
+      "k": "KOMMUNIKATION",
+      "items": [
+        "Email",
+        "Slack",
+        "Messaging-Dienste"
+      ]
+    },
+    {
+      "k": "DATEN",
+      "items": [
+        "Google Sheets",
+        "Excel / CSV",
+        "Datenbank"
+      ]
+    },
+    {
+      "k": "PRODUKTIVITÄT",
+      "items": [
+        "Notion",
+        "Forms",
+        "Kalender",
+        "Projektwerkzeuge"
+      ]
+    },
+    {
+      "k": "BUSINESS",
+      "items": [
+        "CRM",
+        "E-Handel",
+        "Analytics",
+        "Bestehende Unternehmenssoftware"
+      ]
+    },
+    {
+      "k": "HIGHTECH",
+      "items": [
+        "REST-API",
+        "Webhook",
+        "Cloud-Dienste",
+        "Bestehendes internes System"
+      ]
+    },
+    {
+      "k": "KI",
+      "items": [
+        "AI-API",
+        "Textanalyse",
+        "Klassifizierung",
+        "Verdichtung",
+        "Generation"
+      ]
+    }
+  ],
+  "aiLabel": "AI-ERWEITERUNG",
+  "aiTitle": "Sie können AI judgement \n in einen Workflow einfügen.",
+  "aiLead": "Über das Verschieben von Daten von A nach B hinaus kann KI dort angeschlossen werden, wo Text verstanden oder klassifiziert werden muss.",
+  "aiExamples": [
+    "ANFRAGENKLASSIFIZIERUNG - Automatische Klassifizierung von Kundenanfragen",
+    "BEWERTUNGSANALYSE - Analysieren Sie Bewertungen und Feedback",
+    "ZUSAMMENFASSUNG - Fassen Sie lange Dokumente oder E-Mails zusammen",
+    "DATENEXTRAKTION - Extrahieren Sie die erforderlichen Informationen aus dem Text",
+    "BERICHTSZUSAMMENFASSUNG - Fassen Sie datengesteuerte Berichte zusammen",
+    "INHALTSENTWURF - Entwurf von Folge-E-Mails oder Inhalten",
+    "PRIORITÄT - Klassifizieren Sie die Priorität aus dem Anforderungsinhalt"
+  ],
+  "aiNote": "KI-Funktionen werden bei Bedarf als separater Bereich hinzugefügt.",
+  "controlLabel": "KONTROLLE",
+  "controlTitle": "Nicht alles\nmuss automatisch laufen.",
+  "controlLead": "Wichtige Entscheidungen können bei den Menschen bleiben, während das System die sich wiederholende Verarbeitung übernimmt.",
+  "loopSteps": [
+    {
+      "n": "01",
+      "title": "ANFRAGE"
+    },
+    {
+      "n": "02",
+      "title": "KI / SYSTEMPROZESS"
+    },
+    {
+      "n": "03",
+      "title": "MENSCHLICHE ÜBERPRÜFUNG"
+    },
+    {
+      "n": "04",
+      "title": "GENEHMIGEN / ABLEHNEN"
+    },
+    {
+      "n": "05",
+      "title": "NÄCHSTE AKTION"
+    }
+  ],
+  "humanExamples": [
+    "Genehmigung durch den Manager vor dem Senden eines Angebots",
+    "Überprüfung vor der Veröffentlichung von Inhalten",
+    "Manuelle Prüfung bei Bestellungen mit hohem Wert",
+    "Eigentümerbewertung für wichtige Kundenanfragen",
+    "Überprüfen Sie die KI-Ausgabe, bevor der nächste Schritt ausgeführt wird"
+  ],
+  "reliabilityLabel": "ZUVERLÄSSIGKEIT",
+  "reliabilityTitle": "Wir entwerfen für das Scheitern\nsowie für den Erfolg.",
+  "reliabilityLead": "Je nach Umfang planen wir für:",
+  "reliabilityItems": [
+    "Validierung",
+    "Fehlende Daten",
+    "Duplikatschutz",
+    "Retry",
+    "Fehlerprotokoll",
+    "Fehlermeldung",
+    "Manuelle Überprüfung",
+    "Fallback-Prozess"
+  ],
+  "reliabilityScenarios": [
+    {
+      "t": "Externe API antwortet nicht",
+      "d": "Fehler protokollieren → Wiederholen → Eigentümer benachrichtigen, wenn er weiterhin fehlschlägt"
+    },
+    {
+      "t": "Erforderliche Daten fehlen",
+      "d": "Workflow stoppen → Zur Überprüfung registrieren"
+    },
+    {
+      "t": "Doppelte Anfrage",
+      "d": "Vorhandene Daten prüfen → doppelte Bearbeitung verhindern"
+    }
+  ],
+  "monitorLabel": "MONITORING",
+  "monitorTitle": "Sie sollten in der Lage sein zu sehen\n, ob die Automatisierung funktioniert.",
+  "monitorLead": "Je nach Projekt können wir belichten:",
+  "monitorMetrics": [
+    "Letzte Läufe",
+    "Anzahl der Durchläufe",
+    "Erfolg",
+    "Scheitern",
+    "Laufzeit",
+    "Fehlermeldung",
+    "Suchergebnisse",
+    "Wiederholungsstatus"
+  ],
+  "monitorNote": "Ein separates Admin-Dashboard kann bei Bedarf hinzugefügt werden.",
+  "delTitle": "Was du bekommst.",
+  "delLead": "Je nach Umfang liefern wir Ihnen das, was Sie benötigen, aus der folgenden Liste.",
+  "deliverables": [
+    "WORKFLOW-KARTE",
+    "AUTOMATISIERUNGS-WORKFLOW",
+    "INTEGRATION",
+    "DATENMAPPINGS",
+    "GESCHÄFTSBEDINGUNGEN",
+    "FEHLERBEHANDLUNG",
+    "ÜBERWACHUNGSLEITFADEN",
+    "DOKUMENTATION"
+  ],
+  "deliverExtras": [
+    "Admin-Dashboard",
+    "KI-Integration",
+    "Internes Werkzeug",
+    "Meldesystem"
+  ],
+  "processTitle": "Wir beginnen damit zu verstehen, wie die Arbeit heute abläuft.",
+  "process": [
+    {
+      "n": "01",
+      "t": "ENTDECKUNG",
+      "d": "Überprüfen Sie die aktuelle Arbeit und die verwendeten Tools"
+    },
+    {
+      "n": "02",
+      "t": "MAPPING",
+      "d": "Visualisieren Sie den aktuellen Workflow"
+    },
+    {
+      "n": "03",
+      "t": "ANALYSE",
+      "d": "Wiederholungen, manuelle Arbeit und Fehlrisiken finden"
+    },
+    {
+      "n": "04",
+      "t": "DESIGN",
+      "d": "Trigger, Bedingungen und Aktionen entwerfen"
+    },
+    {
+      "n": "05",
+      "t": "PROTOTYP",
+      "d": "Testen des Kernworkflows"
+    },
+    {
+      "n": "06",
+      "t": "BAUEN",
+      "d": "Implementieren Sie die Automatisierung"
+    },
+    {
+      "n": "07",
+      "t": "INTEGRATION",
+      "d": "Dienste und Daten verbinden"
+    },
+    {
+      "n": "08",
+      "t": "TEST",
+      "d": "Testen von Normal-, Fehler- und Randfällen"
+    },
+    {
+      "n": "09",
+      "t": "START",
+      "d": "Auf echte Arbeit anwenden"
+    },
+    {
+      "n": "10",
+      "t": "HANDOFF",
+      "d": "Übergabevorgänge"
+    }
+  ],
+  "scopeLabel": "UMFANG",
+  "scopeTitle": "Automatisieren Sie nur das, was Sie brauchen.",
+  "scopes": [
+    {
+      "t": "LEVEL 01 * EINFACHE AUTOMATISIERUNG",
+      "items": [
+        "Ein klarer, sich wiederholender Workflow",
+        "Formular → Blatt → E-Mail",
+        "Neuer Lead → CRM → Benachrichtigung"
+      ]
+    },
+    {
+      "t": "STUFE 02 · MEHRSTUFIGER WORKFLOW",
+      "items": [
+        "Mehrstufige Workflows mit Bedingungen",
+        "Auslöser → Bedingung → Prozess → Mehrere Aktionen → Aufzeichnung → Nachverfolgung"
+      ]
+    },
+    {
+      "t": "STUFE 03 * GESCHÄFTSAUTOMATISIERUNGSSYSTEM",
+      "items": [
+        "Vernetzte Betriebsautomatisierung über Workflows hinweg",
+        "Lead + Vertrieb + Kunde + Betrieb + Berichterstattung"
+      ]
+    }
+  ],
+  "priceTitle": "Von ₩1,000,000",
+  "priceLead": "Selbst für denselben Servicetyp können Sie Schwierigkeitsänderungen mit verbundenen Systemen und Geschäftslogik erstellen. Endgültige Zitate verwenden die folgenden Faktoren.",
+  "priceName": "WORKFLOW-AUTOMATISIERUNG",
+  "priceValue": "Von ₩1,000,000",
+  "priceFactors": [
+    "Anzahl der Workflows",
+    "Anzahl der Schritte",
+    "Verbundene Dienste",
+    "Anzahl der Trigger",
+    "Konditionen / Branchen",
+    "API-Integration",
+    "Datenstruktur",
+    "KI-Funktionen",
+    "Fehlerbehandlung",
+    "Monitoring",
+    "Dashboard",
+    "Sicherheitsberechtigungen",
+    "Dokumentation"
+  ],
+  "priceNote": "Grundlegende Projekte zur Workflow-Automatisierung beginnen bei ₩1,000,000. Die endgültigen Kosten werden nach Überprüfung der Anforderungen bestätigt.",
+  "timeTitle": "Typischerweise 3-6 Wochen",
+  "timeLead": "Die Zeitachse variiert je nach Integrationen, API-Umgebung, Workflow-Komplexität, KI-Funktionen und Testumfang.",
+  "timelines": [
+    {
+      "t": "EINFACH",
+      "d": "Ca.1-2 Wochen"
+    },
+    {
+      "t": "STANDARD",
+      "d": "Ungefähr 3-6 Wochen"
+    },
+    {
+      "t": "KOMPLEX",
+      "d": "6+ Wochen / benutzerdefiniert"
+    }
+  ],
+  "extLabel": "EXTERNE DIENSTLEISTUNGEN",
+  "extTitle": "Externe Servicekosten können separat anfallen.",
+  "extItems": [
+    "Automatisierungsplattform",
+    "AI-API",
+    "Externe API",
+    "Cloud",
+    "Server",
+    "Datenbank",
+    "E-Mail-Dienst",
+    "Nachrichtendienst",
+    "Andere kostenpflichtige SaaS"
+  ],
+  "faqTitle": "FAQ'S",
+  "faqs": [
+    {
+      "q": "Welche Arbeit passt gut zur Automatisierung?",
+      "a": "Arbeit, die sich mit einem ziemlich definierten Auslöser und Prozess wiederholt, passt gut. Wir überprüfen zuerst Ihren aktuellen Workflow und definieren, was automatisiert werden kann."
+    },
+    {
+      "q": "Müssen wir unsere aktuellen Werkzeuge ersetzen?",
+      "a": "Nicht unbedingt. Wir prüfen zunächst, ob Ihre vorhandenen Tools über APIs oder Webhooks verbunden bleiben können."
+    },
+    {
+      "q": "Können mehrere SaaS-Tools gleichzeitig verbunden werden?",
+      "a": "Ja. Die API- und Zugriffsberechtigungen jedes Dienstes müssen bestätigt werden."
+    },
+    {
+      "q": "Kann KI einbezogen werden?",
+      "a": "Ja. Klassifizierung, Zusammenfassung, Extraktion und Generierung von Inhalten können bei Bedarf hinzugefügt werden."
+    },
+    {
+      "q": "Was passiert, wenn die Automatisierung versagt?",
+      "a": "Je nach Umfang können wir Fehlerprotokolle, Wiederholungsversuche, Eigentümerwarnungen oder manuelle Überprüfungsschritte hinzufügen."
+    },
+    {
+      "q": "Kann ein Mensch zustimmen, bevor der nächste Schritt ausgeführt wird?",
+      "a": "Ja. Wichtige Schritte können auf die Genehmigung warten, bevor der Workflow fortgesetzt wird."
+    },
+    {
+      "q": "Können Sie einen bestehenden Workflow verbessern?",
+      "a": "Ja. Wir analysieren Ihre aktuelle Struktur und Tools und definieren dann, was verbessert werden kann."
+    }
+  ],
+  "finalTitle": "Zeig uns die Arbeit, die\nLeute heute wiederholen.",
+  "finalLead": "Teilen Sie uns mit, welche Dienste Sie nutzen, welche Daten Sie verschieben und welche Aufgaben sich wiederholen. Wir analysieren den aktuellen Workflow und definieren, was automatisiert werden kann.",
+  "ctaFinalBtn": "Anfrage zur WORKFLOW-AUTOMATISIERUNG →",
+  "ctaFinalSecondary": "Siehe andere Automatisierungsdienste →",
+  "automationHubHref": "../"
+}

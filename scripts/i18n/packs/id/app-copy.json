@@ -1,0 +1,483 @@
+{
+  "seoTitle": "PROTOTIPE APLIKASI | Newon Bisnis",
+  "metaDescription": "Ubah ide aplikasi menjadi layar dan alur iOS dan Android yang interaktif — validasi dengan investor dan tim internal sebelum pengembangan penuh. Newon PROTOTIPE APLIKASI.",
+  "crumbBusiness": "BISNIS",
+  "crumbServices": "LAYANAN",
+  "crumbBuild": "MEMBANGUN",
+  "crumbHere": "PROTOTIPE APLIKASI",
+  "eyebrow": "PROTOTIPE APLIKASI",
+  "subEyebrow": "MEMBANGUN",
+  "headline": "Ubah ide aplikasi\nmenjadi pengalaman nyata.",
+  "lead": "Kami merancang dan membangun prototipe aplikasi interaktif dengan alur inti iOS dan Android. Sebelum pertemuan investor, tinjauan internal, atau pengembangan dimulai — validasi bagaimana sebenarnya perasaan ide tersebut ketika orang menggunakannya.",
+  "ctaPrimary": "Permintaan prototipe aplikasi →",
+  "ctaSecondary": "Lihat aliran prototipe ↓",
+  "meta": [
+    {
+      "k": "LAYANAN",
+      "v": "Prototipe Aplikasi"
+    },
+    {
+      "k": "TERBAIK UNTUK",
+      "v": "Validasi investor & internal"
+    },
+    {
+      "k": "GARIS WAKTU",
+      "v": "Sekitar 2–3 minggu"
+    },
+    {
+      "k": "HARGA",
+      "v": "Mulai dari ₩500.000"
+    }
+  ],
+  "overviewLabel": "GAMBARAN UMUM",
+  "overviewTitle": "Anda punya ceritanya.\nBukan pengalamannya.",
+  "overviewBody": [
+    "Ide aplikasi jarang muncul hanya melalui slide dan gambar rangka. Investor, mitra, dan pemangku kepentingan internal meminta untuk mencobanya — dan tim teknik kesulitan untuk memulainya tanpa batasan, alur, dan kondisi yang jelas.",
+    "Membangun aplikasi produksi sejak hari pertama menghabiskan terlalu banyak waktu dan uang. Figma saja sering kali kurang interaksi, transisi, dan konteks seluler. Yang Anda butuhkan adalah prototipe tempat aliran inti benar-benar berfungsi.",
+    "PROTOTIPE APLIKASI dimulai dengan menentukan tujuan aplikasi dan skenario utama. Kami merancang layar, alur pengguna, dan interaksi iOS dan Android — lalu memberikan prototipe yang dapat diklik untuk berbagi, validasi, dan serah terima pengembangan."
+  ],
+  "problemsLabel": "MASALAH",
+  "problemsTitle": "Bermanfaat ketika Anda menghadapi situasi ini.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "HANYA IDE",
+      "d": "Anda mempunyai konsep tetapi tidak ada yang bisa ditampilkan sebagai layar dan alur nyata.\nPenjelasan saja tidak meyakinkan."
+    },
+    {
+      "n": "02",
+      "t": "DEMO INVESTOR",
+      "d": "Anda memerlukan demo kerja sebelum pertemuan investor atau mitra.\nNilai inti harus dirasakan, bukan dibayangkan."
+    },
+    {
+      "n": "03",
+      "t": "PENYESUAIAN INTERNAL",
+      "d": "Produk, desain, teknik, dan kepemimpinan tidak selaras.\nAnda memerlukan satu prototipe yang dapat ditanggapi oleh semua orang."
+    },
+    {
+      "n": "04",
+      "t": "KESEMBIHAN ALIRAN",
+      "d": "Anda memiliki kabel atau tiruan tetapi tidak ada transisi aliran atau status yang divalidasi.\nOnboarding, tindakan inti, dan jalur edge tidak jelas."
+    },
+    {
+      "n": "05",
+      "t": "RISIKO SEBELUM PERKEMBANGAN",
+      "d": "Cakupan, layar, dan prioritas tidak ditentukan sebelum pengembangan.\nAnda memerlukan validasi sebelum berkomitmen pada pembangunan MVP."
+    },
+    {
+      "n": "06",
+      "t": "PILIHAN PLATFORM",
+      "d": "Anda harus memutuskan iOS, Android, atau web terlebih dahulu.\nPerbedaan UX platform perlu diuji."
+    }
+  ],
+  "baLabel": "SEBELUM/SETELAH",
+  "baTitle": "Tiruan statis vs\nprototipe yang berfungsi",
+  "beforeLabel": "SEBELUM",
+  "afterLabel": "SETELAH",
+  "before": [
+    "Hanya slide, kabel, dan tiruan statis",
+    "Aliran inti dijelaskan dengan kata-kata",
+    "Tinjauan investor dan internal bergantung pada imajinasi",
+    "Cakupan pengembangan dan prioritas layar tidak jelas"
+  ],
+  "after": [
+    "Layar inti dan alur iOS/Android ditentukan",
+    "Prototipe yang dapat diklik dengan transisi nyata",
+    "Bagikan tautan atau bangun untuk investor dan validasi internal",
+    "Layar, alur, dan paket spesifikasi untuk permulaan pengembangan"
+  ],
+  "capsLabel": "KEMAMPUAN",
+  "capsTitle": "Kami menjalankan pekerjaan prototipe aplikasi\nsebagai satu keterlibatan terstruktur.",
+  "caps": [
+    {
+      "t": "FRAMING TUJUAN",
+      "d": "Tentukan tujuan aplikasi, pengguna inti, dan skenario keberhasilan.\nPerjelas apa yang harus divalidasi oleh prototipe."
+    },
+    {
+      "t": "DESAIN ALIRAN",
+      "d": "Desain orientasi, tindakan inti, dan transisi status utama.\nBentuk alur untuk konteks iOS dan Android."
+    },
+    {
+      "t": "DESAIN UX / UI",
+      "d": "Desain UI layar inti dan struktur informasi.\nMencerminkan sentuhan seluler dan pola navigasi."
+    },
+    {
+      "t": "PEMBANGUNAN INTERAKTIF",
+      "d": "Bangun prototipe tempat interaksi berfungsi.\nFokus pada aliran inti untuk kecepatan."
+    },
+    {
+      "t": "RUANG LINGKUP PLATFORM",
+      "d": "Tetapkan iOS, Android, atau cakupan web untuk tujuan proyek.\nMencerminkan perbedaan platform jika diperlukan."
+    },
+    {
+      "t": "DUKUNGAN VALIDASI",
+      "d": "Siapkan format pembagian untuk tinjauan investor, internal, dan kegunaan.\nSertakan putaran revisi umpan balik."
+    },
+    {
+      "t": "SPESIFIKASI & HANDOFF",
+      "d": "Layar dokumen, alur, dan interaksi.\nMenyediakan handoff untuk MVP atau build produksi."
+    },
+    {
+      "t": "LANGKAH BERIKUTNYA",
+      "d": "Hubungkan prototipe ke MVP atau pengembangan yang siap disimpan.\nUsulkan cakupan, garis waktu, dan penawaran berikutnya."
+    }
+  ],
+  "sourcesLabel": "INPUT PROYEK",
+  "sourcesTitle": "Kami menggabungkan masukan yang dibutuhkan prototipe Anda.",
+  "sourcesNote": "Masukan aktual bervariasi berdasarkan tahap ide, spesifikasi yang ada, dan aplikasi referensi.",
+  "sources": [
+    "Konsep dan tujuan aplikasi",
+    "Targetkan pengguna dan skenario",
+    "Aplikasi referensi",
+    "Kabel atau spesifikasi yang ada",
+    "Pedoman merek dan UI",
+    "Konteks pasar dan pesaing",
+    "Daftar fitur inti",
+    "Definisi orientasi dan tindakan inti",
+    "iOS vs Android prioritas",
+    "Batas waktu investor atau demo",
+    "Umpan balik pemangku kepentingan internal",
+    "MVP masa depan atau rencana peluncuran"
+  ],
+  "useLabel": "KASUS PENGGUNAAN",
+  "useTitle": "Prototipe yang bisa kami buat.",
+  "useBadge": "Contoh tipe build",
+  "useCases": [
+    {
+      "t": "DEMO INVESTOR",
+      "d": "Demo aliran inti untuk pertemuan investor dan mitra.\nInteraksi yang membuat nilai menjadi nyata."
+    },
+    {
+      "t": "VALIDASI INTERNAL",
+      "d": "Prototipe penyelarasan untuk kepemimpinan, produk, desain, dan teknik.\nTinjauan internal dan putaran umpan balik."
+    },
+    {
+      "t": "IDE APLIKASI KONSUMEN",
+      "d": "Orientasi dan penggunaan inti untuk ide aplikasi B2C.\niOS dan Android validasi UX."
+    },
+    {
+      "t": "APLIKASI LAYANAN",
+      "d": "Alur pemesanan, pemesanan, berlangganan, atau pencocokan aplikasi.\nTransisi status dan desain yang berfokus pada CTA."
+    },
+    {
+      "t": "ALAT SELULER INTERNAL",
+      "d": "Prototipe alat seluler lapangan, operasi, atau admin.\nPeran, izin, dan pemeriksaan alur tugas."
+    },
+    {
+      "t": "FITUR PoC",
+      "d": "Validasi fitur baru, desain ulang, atau perubahan orientasi.\nPoC sebelum memperluas aplikasi yang sudah ada."
+    },
+    {
+      "t": "MULTI-PLATFORM",
+      "d": "Inti bersama ditambah perbedaan spesifik platform.\nMendukung keputusan prioritas platform."
+    },
+    {
+      "t": "RUANG LINGKUP PRA-MVP",
+      "d": "Tentukan cakupan, layar, dan prioritas MVP sebelum pembuatan penuh.\nMateri untuk kutipan dan garis waktu pengembang."
+    }
+  ],
+  "flowLabel": "CONTOH ALUR KERJA",
+  "flowTitle": "Dari ide hingga prototipe yang dapat dibagikan",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINISI",
+      "d": "Tentukan tujuan aplikasi, pengguna, dan skenario utama.\nSetujui apa yang harus divalidasi oleh prototipe.",
+      "examples": [
+        "Tujuan",
+        "Pengguna",
+        "Skenario",
+        "Garis Waktu"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRUKTUR",
+      "d": "Daftar layar desain, IA, dan alur.\nTetapkan cakupan iOS dan Android.",
+      "examples": [
+        "Layar",
+        "Mengalir",
+        "IA",
+        "Peron"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESAIN",
+      "d": "Rancang UI layar inti dan arah interaksi.\nKonfirmasi layar yang diperlukan untuk demo dan validasi.",
+      "examples": [
+        "UI",
+        "Gerakan",
+        "Amerika",
+        "Ulasan"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PROTOTIPE",
+      "d": "Bangun prototipe yang berfungsi.\nSelesaikan aliran inti dengan cepat.",
+      "examples": [
+        "Ketuk",
+        "Gesek",
+        "Navigasi",
+        "Amerika"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "BERBAGI",
+      "d": "Kirimkan tautan berbagi, pembuatan, dan spesifikasi.\nHubungkan masukan dan langkah selanjutnya.",
+      "examples": [
+        "Tautan",
+        "Demo",
+        "Spesifikasi",
+        "MVP"
+      ]
+    }
+  ],
+  "reportLabel": "KELUARAN",
+  "reportTitle": "Hasil kerja adalah prototipe yang dapat dibagikan dan spesifikasi pendukung.",
+  "reportLead": "Komposisi bervariasi berdasarkan ruang lingkup proyek. Di bawah ini adalah item umum.",
+  "reportMockStatus": "PROTOTIPE · SPESIFIKASI",
+  "reportMockK": "SPESIFIKASI PROTOTIPE APLIKASI",
+  "reportMockT": "Layar, alur, platform, interaksi",
+  "reportItems": [
+    "Tujuan & Skenario",
+    "Daftar Layar",
+    "Peta Alur Pengguna",
+    "Layar UI Inti",
+    "Catatan Interaksi",
+    "Ruang Lingkup Platform",
+    "Tautan/Bangun Prototipe",
+    "Catatan Validasi",
+    "Ringkasan Serah Terima",
+    "Jalur MVP (opsional)"
+  ],
+  "dashTitle": "Bagikan layar, alur, dan cakupan platform dalam satu tampilan.",
+  "dashLead": "Layar, Alur, Platform, dan Integrasi bersama-sama mempercepat perjanjian cakupan dan persiapan demo.",
+  "dashNote": "Jumlah layar, platform, dan kedalaman interaksi bervariasi berdasarkan tujuan dan lini waktu proyek.",
+  "dashMetrics": [
+    "Layar",
+    "Mengalir",
+    "Platform",
+    "Integrasi"
+  ],
+  "dashFilters": [
+    "Semua",
+    "Inti",
+    "<<<BARU KEEP000>>>",
+    "<<<BARU KEEP000>>>"
+  ],
+  "aiLabel": "PERCEPATAN",
+  "aiTitle": "Otomatiskan pengulangan.\nFokus pada desain dan prototipe.",
+  "aiLead": "Daftar layar, draf alur, catatan interaksi, dan daftar periksa QA dapat dibantu dengan AI untuk mempercepat — sementara orang fokus pada UX, alur inti, dan kualitas prototipe.",
+  "aiExamples": [
+    "Layar draf dan daftar alur",
+    "Skenario struktur dan transisi keadaan",
+    "Draf salinan dan label UI",
+    "Daftar periksa kegunaan dan demo",
+    "Draf dokumen serah terima dan spesifikasi",
+    "Bandingkan cakupan dan prioritas MVP"
+  ],
+  "aiNote": "Layar akhir, alur, dan keputusan interaksi dikonfirmasi dengan tim proyek Anda.",
+  "delLabel": "PENGIRIMAN",
+  "delTitle": "Apa yang Anda terima ketika proyek selesai",
+  "delLead": "Kami mengirimkan item di bawah ini sesuai kebutuhan untuk cakupan Anda.",
+  "deliverables": [
+    "Prototipe Aplikasi Interaktif",
+    "UI Layar Inti",
+    "Peta Alur Pengguna",
+    "Spesifikasi Layar & Interaksi",
+    "Catatan Lingkup Platform",
+    "Tautan Prototipe / Bangun",
+    "Dukungan Demo Validasi",
+    "Paket Serah Terima",
+    "Proposal Cakupan MVP (opsional)"
+  ],
+  "processLabel": "PROSES",
+  "processTitle": "Dari tujuan untuk berbagi.",
+  "process": [
+    {
+      "n": "01",
+      "t": "PENEMUAN",
+      "d": "Konfirmasikan tujuan aplikasi, pengguna, skenario utama, dan garis waktu.\nPahami tujuan demo dan validasi.",
+      "examples": [
+        "Tujuan",
+        "Pengguna",
+        "Demo",
+        "Garis Waktu"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRUKTUR",
+      "d": "Tentukan daftar layar, IA, alur, dan cakupan platform.\nPisahkan inti dari layar ekspansi.",
+      "examples": [
+        "Layar",
+        "Mengalir",
+        "<<<BARU KEEP000>>>",
+        "<<<BARU KEEP000>>>"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESAIN",
+      "d": "Rancang UI layar inti dan arah interaksi.\nJalankan putaran peninjauan dan masukan.",
+      "examples": [
+        "UI",
+        "Amerika",
+        "Ulasan",
+        "Revisi"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PROTOTIPE",
+      "d": "Bangun prototipe yang berfungsi.\nVerifikasi aliran dan transisi inti.",
+      "examples": [
+        "Membangun",
+        "Ketuk",
+        "Navigasi",
+        "Polandia"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "VALIDASI",
+      "d": "Demo dukungan, tinjauan internal, dan pemeriksaan kegunaan.\nTerapkan masukan.",
+      "examples": [
+        "Demo",
+        "Umpan balik",
+        "Perbaikan",
+        "Penandatanganan"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "SPESIFIKASI",
+      "d": "Layar dokumen, alur, dan interaksi.\nSiapkan handoff untuk pengembangan.",
+      "examples": [
+        "Spesifikasi",
+        "Catatan",
+        "Aset",
+        "penyerahan"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "BERIKUTNYA",
+      "d": "Hubungkan MVP, build lengkap, atau jalur siap simpan.\nUsulkan cakupan, garis waktu, dan penawaran selanjutnya.",
+      "examples": [
+        "MVP",
+        "Ruang lingkup",
+        "Kutipan",
+        "Fase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "TINGKAT RUANG LINGKUP",
+  "scopeTitle": "Bagaimana memikirkan kompleksitas proyek.",
+  "scopeLead": "Bukan paket tetap. Cakupan ditentukan berdasarkan jumlah layar, platform, kedalaman interaksi, dan integrasi.",
+  "scopes": [
+    {
+      "t": "PROTOTIPE",
+      "items": [
+        "5–8 layar inti",
+        "1–2 aliran inti",
+        "Prototipe interaktif",
+        "iOS atau Android fokus",
+        "Validasi investor dan internal"
+      ]
+    },
+    {
+      "t": "APLIKASI MVP",
+      "items": [
+        "Layar yang diperluas dan banyak aliran",
+        "iOS + Android cakupan",
+        "Termasuk jalur negara bagian dan tepi",
+        "Integrasi dasar atau tiruan API",
+        "Paket spesifikasi awal pengembangan"
+      ]
+    },
+    {
+      "t": "SIAP TOKO",
+      "items": [
+        "Pengembangan aplikasi yang siap disimpan",
+        "Backend, autentikasi, pembayaran, push",
+        "QA, terapkan, simpan pengiriman",
+        "Tautan operasi dan pemeliharaan",
+        "Kutipan dan garis waktu khusus"
+      ]
+    }
+  ],
+  "timeLabel": "GARIS WAKTU",
+  "timeTitle": "Garis waktu tergantung pada ruang lingkup.",
+  "timeLead": "Durasi bervariasi berdasarkan jumlah layar, kedalaman interaksi, platform, dan putaran umpan balik.",
+  "timelines": [
+    {
+      "t": "Prototipe",
+      "d": "Sekitar 2–3 minggu · bervariasi"
+    },
+    {
+      "t": "Aplikasi MVP",
+      "d": "Sekitar 4–6 minggu · bervariasi"
+    },
+    {
+      "t": "Siap disimpan",
+      "d": "Kustom · ruang lingkup terpisah"
+    }
+  ],
+  "priceLabel": "BIAYA PROYEK",
+  "priceTitle": "Dikutip per proyek.",
+  "priceName": "PROTOTIPE APLIKASI",
+  "priceValue": "Mulai dari ₩500.000",
+  "priceFactorsLabel": "Faktor harga",
+  "priceFactors": [
+    "Layar — jumlah inti dan ekspansi",
+    "Arus - kompleksitas aliran dan keadaan",
+    "Platform — iOS / Android / web",
+    "Interaksi — interaksi dan kedalaman gerak",
+    "Timeline — jadwal dan putaran umpan balik",
+    "Integrasi — tiruan API dan cakupan tautan",
+    "Kedalaman desain — UI dan sistem desain",
+    "Langkah selanjutnya — MVP atau tautan siap pakai"
+  ],
+  "priceNote": "Mulai dari ₩500.000 adalah harga awal untuk APP PROTOTYPE. Aplikasi MVP dan build siap pakai dikutip secara terpisah berdasarkan cakupannya.",
+  "faqLabel": "Pertanyaan Umum",
+  "faqTitle": "Pertanyaan yang sering diajukan",
+  "faqs": [
+    {
+      "q": "Apa saja yang tercakup dalam Mulai ₩500.000?",
+      "a": "Ini adalah harga awal untuk APP PROTOTYPE — biasanya layar inti dan 1–2 alur interaktif. Aplikasi MVP dan build siap pakai dikutip secara terpisah."
+    },
+    {
+      "q": "Apakah ini aplikasi yang siap disimpan?",
+      "a": "Standarnya adalah prototipe untuk validasi investor, internal, dan pra-pengembangan. Pengembangan aplikasi yang siap disimpan di toko adalah cakupan siap pakai yang terpisah."
+    },
+    {
+      "q": "Bisakah Anda meliput iOS dan Android?",
+      "a": "Ya. Kami merancang untuk satu fokus platform atau keduanya, bergantung pada tujuan proyek. Penawaran bervariasi berdasarkan layar dan jumlah platform."
+    },
+    {
+      "q": "Berapa lama waktu yang dibutuhkan?",
+      "a": "Pembuatan prototipe biasanya memakan waktu 2–3 minggu; Aplikasi MVP sekitar 4–6 minggu. Tergantung pada layar, kedalaman interaksi, dan putaran umpan balik."
+    },
+    {
+      "q": "Apakah ini bisa berlanjut ke tahap pengembangan?",
+      "a": "Ya. Kami dapat mengusulkan MVP, full build, atau store-ready scope dari prototipe dan spesifikasi."
+    },
+    {
+      "q": "Berapa banyak revisi?",
+      "a": "Dua putaran revisi disertakan. Perubahan di luar cakupan dan layar tambahan memengaruhi garis waktu dan penawaran harga."
+    },
+    {
+      "q": "Figma saja, atau prototipe yang berfungsi?",
+      "a": "Fokusnya adalah prototipe kerja interaktif. File UI dan dokumen spesifikasi dapat disertakan bila diperlukan."
+    }
+  ],
+  "finalLabel": "MULAI PROYEK",
+  "finalTitle": "Tunjukkan pengalamannya\nsebelum presentasi singkat.",
+  "finalLead": "Jika Anda memiliki ide aplikasi, sasaran demo, aplikasi referensi, atau tenggat waktu, beri tahu kami apa yang perlu Anda validasi. Kami akan mengonfirmasi iOS/Android cakupan prototipe dan pendekatan validasi secara bersamaan.",
+  "ctaFinalSecondary": "Lihat semua MEMBANGUN →",
+  "ctaFinalSecondaryHref": "../build/"
+}

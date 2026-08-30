@@ -2,6 +2,8 @@
  * INTERNAL TOOLS service detail — KO/EN copy.
  * Path: /{lang}/business/internal-tools/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const INTERNAL_TOOLS_COPY = {
   ko: {
     seoTitle: "INTERNAL TOOLS | Newon AUTOMATION",
@@ -760,5 +762,5 @@ export const INTERNAL_TOOLS_COPY = {
 };
 
 export function getInternalToolsCopy(lang) {
-  return (lang === "ko" ? INTERNAL_TOOLS_COPY.ko : INTERNAL_TOOLS_COPY.en) || INTERNAL_TOOLS_COPY.en;
+  return resolveKoEnPack(INTERNAL_TOOLS_COPY, lang, "internal-tools-copy");
 }

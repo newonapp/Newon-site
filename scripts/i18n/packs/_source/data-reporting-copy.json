@@ -1,0 +1,528 @@
+{
+  "seoTitle": "DATA & REPORTING | Newon AUTOMATION",
+  "metaDescription": "Collect and clean scattered data, then automate metrics and reports. Newon DATA & REPORTING.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICES",
+  "crumbAutomation": "AUTOMATION",
+  "crumbHere": "DATA & REPORTING",
+  "eyebrow": "DATA & REPORTING",
+  "subEyebrow": "AUTOMATION",
+  "headline": "Gather scattered data\nand turn it into what you need.",
+  "lead": "We collect and organize data spread across services and documents, then automate the metrics and reports you need — from recurring collection and cleanup to calculation, visualization, report generation, and delivery.",
+  "ctaPrimary": "DATA & REPORTING inquiry →",
+  "ctaSecondary": "See the data flow ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Data & Reporting Automation"
+    },
+    {
+      "k": "BEST FOR",
+      "v": "Recurring data collection and reporting work"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Typically 2–4 weeks"
+    },
+    {
+      "k": "PRICE",
+      "v": "Quoted by project scope"
+    }
+  ],
+  "overviewLabel": "OVERVIEW",
+  "overviewTitle": "Spend less time gathering data,\nmore time using it.",
+  "overviewBody": [
+    "Teams constantly create data across many services.",
+    "When sales, inquiries, marketing, product usage, projects, surveys, reviews, and ops data live in different places, people end up hunting, copying, and cleaning by hand.",
+    "DATA & REPORTING connects that repetitive work into one data flow — pull what you need, clean by rules, calculate key metrics, and deliver as a Dashboard or Report."
+  ],
+  "problemsLabel": "PROBLEMS",
+  "problemsTitle": "Work we can automate.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "DATA COLLECTION",
+      "d": "People still pull data from multiple services by hand."
+    },
+    {
+      "n": "02",
+      "t": "DATA CLEANING",
+      "d": "Formats differ and cleanup happens every time."
+    },
+    {
+      "n": "03",
+      "t": "RECURRING REPORT",
+      "d": "Weekly or monthly reports are rebuilt repeatedly."
+    },
+    {
+      "n": "04",
+      "t": "METRIC TRACKING",
+      "d": "Sales, users, inquiries, and conversion need ongoing tracking."
+    },
+    {
+      "n": "05",
+      "t": "MULTIPLE SOURCES",
+      "d": "Data is scattered across spreadsheets, forms, and databases."
+    },
+    {
+      "n": "06",
+      "t": "REPORT DELIVERY",
+      "d": "Finished reports must reach owners on a schedule."
+    }
+  ],
+  "baLabel": "BEFORE / AFTER",
+  "baTitle": "Manual reporting vs\nautomated DATA & REPORTING",
+  "beforeLabel": "MANUAL",
+  "afterLabel": "AUTOMATED",
+  "before": [
+    "Copy data from each service",
+    "Paste into spreadsheets",
+    "Calculate metrics by hand",
+    "Rebuild the report every cycle"
+  ],
+  "after": [
+    "Collect from sources automatically",
+    "Clean data on defined rules",
+    "Calculate metrics automatically",
+    "Deliver reports and dashboards on schedule"
+  ],
+  "capsLabel": "CAPABILITIES",
+  "capsTitle": "We build the data flow you need.",
+  "caps": [
+    {
+      "t": "DATA COLLECTION",
+      "d": "Pull required data from multiple sources."
+    },
+    {
+      "t": "DATA CLEANING",
+      "d": "Clean duplicates, empty values, and format gaps by defined rules."
+    },
+    {
+      "t": "DATA TRANSFORM",
+      "d": "Transform raw data into shapes ready for analysis and reporting."
+    },
+    {
+      "t": "METRIC CALCULATION",
+      "d": "Calculate metrics like revenue, growth, conversion, and users."
+    },
+    {
+      "t": "AUTOMATED REPORT",
+      "d": "Generate reports on weekly, monthly, or other cadences."
+    },
+    {
+      "t": "DASHBOARD",
+      "d": "Build a dashboard that keeps key metrics visible in one place."
+    },
+    {
+      "t": "AI SUMMARY",
+      "d": "When needed, summarize data or customer feedback with AI."
+    },
+    {
+      "t": "REPORT DELIVERY",
+      "d": "Deliver results to email, spreadsheets, dashboards, or other destinations."
+    }
+  ],
+  "sourcesLabel": "DATA SOURCES",
+  "sourcesTitle": "Connect the data you already use.",
+  "sourcesNote": "Actual connectivity depends on each service’s API and data-access method.",
+  "sources": [
+    "Google Sheets",
+    "Excel / CSV",
+    "Forms",
+    "Database",
+    "Website Data",
+    "App Data",
+    "Analytics",
+    "CRM",
+    "E-commerce Data",
+    "Marketing Data",
+    "Customer Feedback",
+    "Reviews",
+    "External API"
+  ],
+  "useLabel": "USE CASES",
+  "useTitle": "Systems we can build.",
+  "useBadge": "Buildable examples",
+  "useCases": [
+    {
+      "t": "SALES REPORT",
+      "d": "Auto-collect sales data into daily, weekly, or monthly reports."
+    },
+    {
+      "t": "MARKETING REPORT",
+      "d": "Organize ads and marketing data to compare channel performance."
+    },
+    {
+      "t": "CUSTOMER REPORT",
+      "d": "Organize inquiries and feedback to spot recurring issues and requests."
+    },
+    {
+      "t": "REVIEW REPORT",
+      "d": "Collect product reviews and summarize themes, issues, and rating trends."
+    },
+    {
+      "t": "PRODUCT REPORT",
+      "d": "Organize user and product data into core product metrics."
+    },
+    {
+      "t": "OPERATIONS REPORT",
+      "d": "Collect ops data into recurring operational status reports."
+    },
+    {
+      "t": "EXECUTIVE SUMMARY",
+      "d": "Summarize multiple sources into decision-ready key metrics."
+    },
+    {
+      "t": "AI FEEDBACK SUMMARY",
+      "d": "Classify and summarize large text feedback into core opinions."
+    }
+  ],
+  "flowLabel": "EXAMPLE WORKFLOW",
+  "flowTitle": "How data becomes a report",
+  "flow": [
+    {
+      "n": "01",
+      "t": "COLLECT",
+      "d": "Pull from spreadsheets, databases, and APIs.\nWe design connections and collection schedules together."
+    },
+    {
+      "n": "02",
+      "t": "CLEAN",
+      "d": "Fix duplicates, gaps, and format mismatches.\nData is normalized to your defined rules."
+    },
+    {
+      "n": "03",
+      "t": "PROCESS",
+      "d": "Run required calculations and transforms.\nShape data for the metrics you need."
+    },
+    {
+      "n": "04",
+      "t": "ANALYZE",
+      "d": "Extract key metrics and needed insights.\nCompare trends and spot anomalies."
+    },
+    {
+      "n": "05",
+      "t": "REPORT",
+      "d": "Generate a dashboard or report.\nBuilt in a form your team can use immediately."
+    },
+    {
+      "n": "06",
+      "t": "DELIVER",
+      "d": "Send results by email or to a chosen destination.\nDelivered automatically on schedule."
+    }
+  ],
+  "reportLabel": "REPORT",
+  "reportTitle": "Reports carry only what you need.",
+  "reportLead": "Depending on the project, reports can include items like these. Content is not identical across projects — it follows your goals.",
+  "reportItems": [
+    "Summary",
+    "Key Metrics",
+    "Performance",
+    "Change vs Previous Period",
+    "Top Items",
+    "Issues",
+    "Customer Feedback",
+    "Trend",
+    "Insights",
+    "AI Summary",
+    "Raw Data Reference"
+  ],
+  "dashLabel": "DASHBOARD",
+  "dashTitle": "Extend into a near-real-time status board when needed.",
+  "dashLead": "Beyond scheduled PDF or spreadsheet reports, we can build a web dashboard when the project requires it.",
+  "dashNote": "Dashboards are not automatically included — they are added by project scope.",
+  "dashMetricsLabel": "Example metrics",
+  "dashMetrics": [
+    "Revenue",
+    "Orders",
+    "Users",
+    "Conversion",
+    "Leads",
+    "Retention",
+    "Customer Feedback",
+    "Top Products",
+    "Channel Performance",
+    "Period Comparison"
+  ],
+  "dashFiltersLabel": "Example filters",
+  "dashFilters": [
+    "Today",
+    "7 Days",
+    "30 Days",
+    "Custom Period",
+    "Channel",
+    "Product",
+    "Category"
+  ],
+  "aiLabel": "AI REPORTING",
+  "aiTitle": "Organize meaning, not just numbers.",
+  "aiLead": "When needed, AI can summarize large text and data into forms people can review quickly.",
+  "aiExamples": [
+    "Review theme summaries",
+    "Recurring complaint detection",
+    "Positive feedback grouping",
+    "Customer request classification",
+    "Period-over-period explanations",
+    "Report summary drafts"
+  ],
+  "aiNote": "AI analysis and summaries are for reference. Important decisions may still require checking the source data.",
+  "delLabel": "DELIVERABLES",
+  "delTitle": "What you receive after the project",
+  "delLead": "Depending on scope, we provide the deliverables you need from the list below. Not every project includes every item.",
+  "deliverables": [
+    "Data Collection Flow",
+    "Data Cleaning Rules",
+    "Metric Definition",
+    "Automation Workflow",
+    "Report Template",
+    "Automated Report",
+    "Dashboard",
+    "Scheduled Reporting",
+    "AI Summary",
+    "Data Export",
+    "Basic Documentation",
+    "Ops guidance"
+  ],
+  "processLabel": "PROCESS",
+  "processTitle": "We start with the data structure.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOVERY",
+      "d": "Confirm what data you manage and where it lives."
+    },
+    {
+      "n": "02",
+      "t": "DATA AUDIT",
+      "d": "Review formats, access methods, and quality."
+    },
+    {
+      "n": "03",
+      "t": "METRICS",
+      "d": "Define the metrics and report purpose that matter."
+    },
+    {
+      "n": "04",
+      "t": "ARCHITECTURE",
+      "d": "Design collect → process → store → report."
+    },
+    {
+      "n": "05",
+      "t": "BUILD",
+      "d": "Implement the automation pipeline and report/dashboard."
+    },
+    {
+      "n": "06",
+      "t": "TEST",
+      "d": "Validate calculations and outputs with real data."
+    },
+    {
+      "n": "07",
+      "t": "LAUNCH",
+      "d": "Set up scheduled runs and delivery."
+    },
+    {
+      "n": "08",
+      "t": "HANDOFF",
+      "d": "Hand off ops guidance and basic management notes."
+    }
+  ],
+  "scopeLabel": "SCOPE LEVELS",
+  "scopeTitle": "A way to understand project complexity.",
+  "scopeLead": "These are reference levels for quoting — not fixed packages.",
+  "scopes": [
+    {
+      "t": "BASIC REPORT AUTOMATION",
+      "items": [
+        "One or a few data sources",
+        "Basic cleanup",
+        "Core metrics",
+        "Scheduled report",
+        "Simple delivery"
+      ]
+    },
+    {
+      "t": "MULTI-SOURCE REPORTING",
+      "items": [
+        "Multiple sources",
+        "Data consolidation",
+        "Multiple metrics",
+        "Automated reports",
+        "Conditional processing"
+      ]
+    },
+    {
+      "t": "CUSTOM DATA SYSTEM",
+      "items": [
+        "Multi-system integration",
+        "Custom database",
+        "Web dashboard",
+        "Advanced metrics",
+        "AI analysis",
+        "Custom automation"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Timeline depends on scope.",
+  "timeLead": "Access permissions, APIs, data quality, and required features can change the schedule.",
+  "timelines": [
+    {
+      "t": "Simple Report Automation",
+      "d": "About 1–2 weeks"
+    },
+    {
+      "t": "Multiple Data Sources",
+      "d": "About 2–4 weeks"
+    },
+    {
+      "t": "Custom Dashboard / Complex Data System",
+      "d": "Scoped separately"
+    }
+  ],
+  "priceLabel": "PROJECT COST",
+  "priceTitle": "We build only the scope you need.",
+  "priceName": "DATA & REPORTING",
+  "priceValue": "From ₩500,000",
+  "priceFactorsLabel": "What shapes the quote",
+  "priceFactors": [
+    "Number of data sources",
+    "Data volume and structure",
+    "API integration",
+    "Cleanup complexity",
+    "Number of metrics",
+    "Automation workflow",
+    "Dashboard need",
+    "AI features",
+    "Accounts / permissions",
+    "Report types",
+    "Run cadence",
+    "Maintenance"
+  ],
+  "priceNote": "Final quotes are set after reviewing your current data environment and required features.",
+  "extLabel": "EXTERNAL COST",
+  "extTitle": "Costs that may sit outside Newon build fees",
+  "extItems": [
+    "Server / Hosting",
+    "Database",
+    "External API",
+    "AI API",
+    "Analytics Service",
+    "Automation SaaS",
+    "Reporting SaaS",
+    "Cloud Storage",
+    "Other paid third-party services"
+  ],
+  "faqLabel": "FAQ",
+  "faqTitle": "Questions, answered",
+  "faqs": [
+    {
+      "q": "What data can you connect?",
+      "a": "Spreadsheets, CSV, databases, analytics, forms, and external APIs are common. Actual connectivity depends on each service’s access method and API."
+    },
+    {
+      "q": "Can we start with Google Sheets only?",
+      "a": "Yes. We review the current structure, then define cleanup and automation scope."
+    },
+    {
+      "q": "Can we receive reports every week automatically?",
+      "a": "Depending on scope, we can build scheduled processing and delivery."
+    },
+    {
+      "q": "Can you build a dashboard too?",
+      "a": "Yes. Metrics, refresh method, and user context are scoped separately when needed."
+    },
+    {
+      "q": "Can AI analysis be added?",
+      "a": "Yes — for example classifying and summarizing reviews, inquiries, and survey text."
+    },
+    {
+      "q": "What if our data is messy?",
+      "a": "We start by reviewing current data quality. Heavy cleanup may be scoped as additional work."
+    },
+    {
+      "q": "Is real-time data possible?",
+      "a": "It depends on the source and API. Real-time processing is not guaranteed for every system."
+    },
+    {
+      "q": "Do you support maintenance after launch?",
+      "a": "Yes — source changes, automation edits, and feature additions can be scoped separately."
+    }
+  ],
+  "finalLabel": "START A PROJECT",
+  "finalTitle": "Automate the reports\nyou still build by hand.",
+  "finalLead": "Tell us the data you use and the reports you repeat. We’ll outline how collection, cleanup, and delivery can connect — and what the project scope looks like.",
+  "formTitle": "DATA & REPORTING inquiry",
+  "formLead": "Share your current data environment and desired outcomes so we can confirm scope.",
+  "formCategory": "AUTOMATION",
+  "formService": "DATA & REPORTING",
+  "labelCategory": "SERVICE CATEGORY",
+  "labelService": "SERVICE",
+  "labelName": "Name",
+  "labelCompany": "Company / brand",
+  "labelEmail": "Email",
+  "labelDataWhere": "Where data is managed today",
+  "labelDataSources": "Data sources you need",
+  "labelCurrentReport": "Reports you currently make",
+  "labelDesired": "Desired outcomes",
+  "labelDashboard": "Dashboard needed?",
+  "labelCadence": "Reporting cadence",
+  "labelTimeline": "Expected timeline",
+  "labelBudget": "Budget range",
+  "labelMessage": "Project description",
+  "labelConsent": "I agree to the collection and use of personal information.",
+  "privacyLink": "Privacy Policy",
+  "optional": "optional",
+  "dataWhereOptions": [
+    "Google Sheets",
+    "Excel / CSV",
+    "Database",
+    "Analytics",
+    "CRM",
+    "E-commerce",
+    "Other"
+  ],
+  "desiredOptions": [
+    "Automated Report",
+    "Dashboard",
+    "Data Integration",
+    "AI Summary",
+    "Data Pipeline",
+    "Not Sure"
+  ],
+  "dashboardOptions": [
+    "Needed",
+    "Not needed",
+    "Not sure yet"
+  ],
+  "cadenceOptions": [
+    "Daily",
+    "Weekly",
+    "Monthly",
+    "Quarterly",
+    "Other / TBD"
+  ],
+  "timelineOptions": [
+    "As soon as possible",
+    "1–2 weeks",
+    "2–4 weeks",
+    "1–2 months",
+    "TBD"
+  ],
+  "budgetOptions": [
+    "₩500k–1M",
+    "₩1M–3M",
+    "₩3M–5M",
+    "₩5M+",
+    "TBD"
+  ],
+  "phDataSources": "e.g. Google Sheets + Analytics",
+  "phCurrentReport": "e.g. weekly sales report, monthly marketing report",
+  "phMessage": "Share data locations, recurring work, and desired outcomes.",
+  "submit": "Send inquiry",
+  "submitting": "Sending…",
+  "fail": "Send failed. Please try again or email us.",
+  "mailSubject": "Newon DATA & REPORTING inquiry",
+  "backAutomation": "Back to AUTOMATION →",
+  "exploreAi": "View AI AUTOMATION →"
+}

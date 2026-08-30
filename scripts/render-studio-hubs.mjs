@@ -174,7 +174,7 @@ function studioBody(flat, flatEn, lang = "en") {
   const titleHtml = (k, fb = "") => t(k, fb).replace(/\n/g, "<br />");
 
   const close = studioExploreCloseHtml(flat, flatEn, lang);
-  const cssV = "20260827ns18";
+  const cssV = "20260830wrap1";
   const pillars = [
     { href: "#brand", label: "Brand" },
     { href: "#digital", label: "Digital" },

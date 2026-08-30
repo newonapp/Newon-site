@@ -3,6 +3,7 @@
  * Layout/CSS unchanged. Pricing from studio-pricing.mjs.
  */
 import { applyStudioPillarPricing } from "./studio-pricing.mjs";
+import { deepMerge, loadPackOverlay, resolveCopyLang } from "./i18n/copy-lang.mjs";
 
 export const STUDIO_PILLAR_SLUGS = ["brand", "digital", "content", "ip"];
 
@@ -64,8 +65,8 @@ const PILLAR_COPY = {
       metaDescription:
         "Newon Studio BRAND — 브랜드 전략, 네이밍, 아이덴티티, 로고. 전략부터 하나의 브랜드 시스템으로 연결합니다.",
       eyebrow: "NEWON STUDIO · BRAND",
-      headline: "브랜드의 방향과 정체성을 만듭니다.",
-      lead: "좋은 브랜드는 로고에서 시작하지 않습니다. 전략부터 네이밍, 아이덴티티와 로고까지 하나의 브랜드 시스템으로 연결합니다.",
+      headline: "브랜드의 방향과 정체성을\n만듭니다.",
+      lead: "좋은 브랜드는 로고에서 시작하지 않습니다.\n전략부터 네이밍, 아이덴티티와 로고까지 하나의 브랜드 시스템으로 연결합니다.",
       process: [
         { n: "01", t: "DISCOVER", d: "브랜드와 시장 이해" },
         { n: "02", t: "DEFINE", d: "포지셔닝과 방향 정의" },
@@ -130,7 +131,7 @@ const PILLAR_COPY = {
       seoTitle: "BRAND | Newon Studio",
       metaDescription: "Newon Studio BRAND — strategy, naming, identity, and logo as one brand system.",
       eyebrow: "NEWON STUDIO · BRAND",
-      headline: "Shape brand direction and identity.",
+      headline: "Shape brand direction\nand identity.",
       lead: "A strong brand does not start with a logo. We connect strategy, naming, identity, and logo into one brand system.",
       process: [
         { n: "01", t: "DISCOVER", d: "Understand brand and market" },
@@ -199,8 +200,8 @@ const PILLAR_COPY = {
       seoTitle: "DIGITAL | Newon Studio",
       metaDescription: "Newon Studio DIGITAL — 웹, 앱 UI/UX, 랜딩, 제품 디자인. 구조부터 인터페이스까지 설계합니다.",
       eyebrow: "NEWON STUDIO · DIGITAL",
-      headline: "웹과 제품 경험을 설계합니다.",
-      lead: "좋은 디지털 제품은 예쁜 화면만으로 완성되지 않습니다. 정보 구조와 사용자 흐름부터 UI/UX까지 하나의 경험으로 설계합니다.",
+      headline: "웹과 제품 경험을\n설계합니다.",
+      lead: "좋은 디지털 제품은 예쁜 화면만으로 완성되지 않습니다.\n정보 구조와 사용자 흐름부터 UI/UX까지 하나의 경험으로 설계합니다.",
       process: [
         { n: "01", t: "DISCOVER", d: "목표와 사용자 이해" },
         { n: "02", t: "DEFINE", d: "구조와 핵심 흐름 정의" },
@@ -265,7 +266,7 @@ const PILLAR_COPY = {
       seoTitle: "DIGITAL | Newon Studio",
       metaDescription: "Newon Studio DIGITAL — web, app UI/UX, landing, and product design from structure to interface.",
       eyebrow: "NEWON STUDIO · DIGITAL",
-      headline: "Design web and product experience.",
+      headline: "Design web and\nproduct experience.",
       lead: "A strong digital product is not only beautiful screens. We design from information architecture and flows through UI/UX as one experience.",
       process: [
         { n: "01", t: "DISCOVER", d: "Goals and users" },
@@ -334,8 +335,8 @@ const PILLAR_COPY = {
       seoTitle: "CONTENT | Newon Studio",
       metaDescription: "Newon Studio CONTENT — 소셜 콘텐츠, 캠페인, 비주얼 에셋.",
       eyebrow: "NEWON STUDIO · CONTENT",
-      headline: "브랜드가 실제로 보이고 기억되는 콘텐츠를 만듭니다.",
-      lead: "브랜드 메시지를 SNS, 캠페인, 제품 출시와 디지털 채널에 맞는 콘텐츠로 변환합니다.",
+      headline: "브랜드가 실제로 보이고 기억되는\n콘텐츠를 만듭니다.",
+      lead: "브랜드 메시지를 SNS, 캠페인, 제품 출시와\n디지털 채널에 맞는 콘텐츠로 변환합니다.",
       process: [
         { n: "01", t: "DISCOVER", d: "브랜드와 채널 이해" },
         { n: "02", t: "DEFINE", d: "메시지와 포맷 정의" },
@@ -389,7 +390,7 @@ const PILLAR_COPY = {
       seoTitle: "CONTENT | Newon Studio",
       metaDescription: "Newon Studio CONTENT — social content, campaigns, and visual assets.",
       eyebrow: "NEWON STUDIO · CONTENT",
-      headline: "Create content that makes the brand visible and memorable.",
+      headline: "Create content that makes the brand\nvisible and memorable.",
       lead: "We turn brand messages into content for social, campaigns, launches, and digital channels.",
       process: [
         { n: "01", t: "DISCOVER", d: "Understand brand and channels" },
@@ -447,8 +448,8 @@ const PILLAR_COPY = {
       seoTitle: "IP | Newon Studio",
       metaDescription: "Newon Studio IP — Character Lab과 실험적 IP. 과장 없이 가능성을 탐색합니다.",
       eyebrow: "NEWON STUDIO · IP",
-      headline: "캐릭터와 새로운 IP의 가능성을 실험합니다.",
-      lead: "작은 캐릭터 콘셉트에서 시작해 디지털 표현으로 확장될 수 있는 브랜드 자산을 탐색합니다. 실험 영역과 의뢰 가능 영역을 명확히 구분해 안내합니다.",
+      headline: "캐릭터와 새로운 IP의 가능성을\n실험합니다.",
+      lead: "작은 캐릭터 콘셉트에서 시작해 디지털 표현으로 확장될 수 있는 브랜드 자산을 탐색합니다.\n실험 영역과 의뢰 가능 영역을 명확히 구분해 안내합니다.",
       process: [
         { n: "01", t: "EXPLORE", d: "가능성 탐색" },
         { n: "02", t: "CONCEPT", d: "콘셉트 정의" },
@@ -521,7 +522,7 @@ const PILLAR_COPY = {
       seoTitle: "IP | Newon Studio",
       metaDescription: "Newon Studio IP — Character Lab and experimental IP without overselling unfinished areas.",
       eyebrow: "NEWON STUDIO · IP",
-      headline: "Experiment with characters and new IP possibilities.",
+      headline: "Experiment with characters\nand new IP possibilities.",
       lead: "We explore brand assets that can grow from small character concepts into digital expression. Experimental and commissionable areas are labeled clearly.",
       process: [
         { n: "01", t: "EXPLORE", d: "Explore possibilities" },
@@ -597,17 +598,23 @@ const PILLAR_COPY = {
 export function getStudioPillarCopy(slug, lang) {
   const pack = PILLAR_COPY[slug];
   if (!pack) return null;
-  const pageLang = lang === "ko" ? "ko" : "en";
-  const shared = SHARED[pageLang];
-  const local = pack[pageLang] || pack.en;
+  const L = resolveCopyLang(lang);
+  const priceLang = L === "ko" ? "ko" : "en";
+  const shared = SHARED[priceLang];
+  let local = pack[L] || pack[priceLang] || pack.en;
+  if (L !== "ko" && L !== "en") {
+    const overlayAll = loadPackOverlay("studio-pillar", L);
+    const overlay = overlayAll?.[slug];
+    if (overlay) local = deepMerge(pack.en, overlay);
+  }
   const base = {
     ...shared,
     ...local,
     slug,
-    _pageLang: pageLang,
+    _pageLang: L,
     crumbBusiness: shared.crumbStudio,
     services: (local.services || []).map((s) => ({ ...s })),
     headline: local.headline,
   };
-  return applyStudioPillarPricing(base, slug, pageLang);
+  return applyStudioPillarPricing(base, slug, priceLang);
 }

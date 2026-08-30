@@ -2,6 +2,7 @@
  * KO/EN copy for Newon Resources hubs + index.
  * Slugs: index | store | insights | blog | media | labs | newsletter | education
  */
+import { deepMerge, loadPackOverlay, resolveCopyLang } from "./i18n/copy-lang.mjs";
 
 const SHARED = {
   ko: {
@@ -1010,16 +1011,23 @@ const COPY = {
 };
 
 export function getResourceCopy(slug, lang) {
-  const L = lang === "ko" ? "ko" : "en";
-  const shared = SHARED[L];
-  const page = COPY[L][slug] || COPY.en[slug] || COPY.en.index;
-  return { ...shared, ...page };
+  const L = resolveCopyLang(lang);
+  const priceLang = L === "ko" ? "ko" : "en";
+  const shared = SHARED[priceLang];
+  let page = COPY[L]?.[slug] || COPY[priceLang][slug] || COPY.en[slug] || COPY.en.index;
+  if (L !== "ko" && L !== "en") {
+    const overlayAll = loadPackOverlay("resources", L);
+    const overlay = overlayAll?.[slug];
+    if (overlay) page = deepMerge(COPY.en[slug] || COPY.en.index, overlay);
+  }
+  return { ...shared, ...page, _pageLang: L };
 }
 
 export function getAllResourceCopies(lang) {
-  const L = lang === "ko" ? "ko" : "en";
+  const L = resolveCopyLang(lang);
+  const priceLang = L === "ko" ? "ko" : "en";
   const out = {};
-  for (const slug of Object.keys(COPY[L])) {
+  for (const slug of Object.keys(COPY[priceLang])) {
     out[slug] = getResourceCopy(slug, L);
   }
   return out;

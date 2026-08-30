@@ -1,0 +1,478 @@
+{
+  "seoTitle": "COMPETITOR ANALYSIS _ Newon Negócios",
+  "metaDescription": "Compare os principais concorrentes e substitutos em recursos, preços, mensagens e posicionamento — estruturados para diferenciação. Newon COMPETITOR ANALYSIS.",
+  "crumbBusiness": "EMPRESAS",
+  "crumbServices": "SERVIÇOS",
+  "crumbResearch": "INVESTIGAÇÃO",
+  "crumbHere": "COMPETITOR ANALYSIS",
+  "eyebrow": "COMPETITOR ANALYSIS",
+  "subEyebrow": "INVESTIGAÇÃO",
+  "headline": "Não listar concorrentes —\ntorná-los comparáveis.",
+  "lead": "Comparamos os principais concorrentes e substitutos entre posicionamento, recursos, preços, mensagens e alvo. Páginas de produto, comentários, preços e material IR são organizados em uma Matrix Concorrente e resumo que sua equipe pode usar em conversas de diferenciação e estratégia.",
+  "ctaPrimary": "Inquérito de análise de concorrentes →",
+  "ctaSecondary": "Veja o fluxo de comparação ↓",
+  "meta": [
+    {
+      "k": "SERVIÇO",
+      "v": "Análise dos Concorrentes"
+    },
+    {
+      "k": "MELHOR PARA",
+      "v": "Revisão da posição e diferenciação"
+    },
+    {
+      "k": "Cronologia",
+      "v": "Normalmente 1–2 semanas"
+    },
+    {
+      "k": "PREÇO",
+      "v": "A partir de 200.000"
+    }
+  ],
+  "overviewLabel": "VISÃO GERAL",
+  "overviewTitle": "Sabes os nomes.\nNão são critérios de comparação.",
+  "overviewBody": [
+    "Nomes de concorrentes aparecem muitas vezes em conversas de produto, marketing e investimento. Mas comparar recursos, preços, mensagens e alvo nos mesmos critérios é mais difícil.",
+    "O site de cada empresa, páginas de produtos, preços, avaliações, lojas de aplicativos e IR oferecem ângulos diferentes — mas raramente em equipes de estrutura podem ser usados imediatamente.",
+    "COMPETITOR ANALYSIS começa definindo quem comparar e quais eixos. Em seguida, coletamos e organizamos material em uma Matrix Competidor, posicionando resumo e análise de gap em uma entrega."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Ajudante quando você enfrenta essas situações.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "POSIÇÃO",
+      "d": "A sua posição em relação aos concorrentes não é clara.\nVocê precisa de uma visão compartilhada de onde você está."
+    },
+    {
+      "n": "02",
+      "t": "PRINCIPALIDADE",
+      "d": "Você conhece listas de recursos, mas não diferenças ou prioridade.\nVocê precisa de uma comparação estruturada."
+    },
+    {
+      "n": "03",
+      "t": "GAP DE MENSAGEM",
+      "d": "As mensagens dos concorrentes são claras, mas a sua falta de diferenciação.\nVocê precisa comparar alvo, valor e tom."
+    },
+    {
+      "n": "04",
+      "t": "CONTEXTO DE PRICAÇÃO",
+      "d": "Você precisa de faixas de preços, embalagens e modelos comparados.\nPrecisas de provas para a estratégia de preços."
+    },
+    {
+      "n": "05",
+      "t": "IR PARA O MERCADO",
+      "d": "Você precisa de uma leitura rápida sobre a competição antes do lançamento ou expansão.\nVocê precisa de um resumo para reuniões de investidores ou parceiros."
+    },
+    {
+      "n": "06",
+      "t": "INPUT ROADMAP",
+      "d": "Antes de MVP ou escopo do roteiro,\nvocê precisa de evidências para o que construir primeiro vs concorrentes."
+    }
+  ],
+  "baLabel": "ANTES / APÓS",
+  "baTitle": "Listas de concorrentes vs comparação estruturada\n",
+  "beforeLabel": "ANTES",
+  "afterLabel": "APÓS",
+  "before": [
+    "Todo mundo coleta informações do concorrente separadamente",
+    "Os critérios de comparação mudança por conversa",
+    "diferenciação existe apenas em pontos de conversa",
+    "Preços, mensagens e posição não estão documentados"
+  ],
+  "after": [
+    "Conjunto de concorrentes e eixos acordados primeiro",
+    "Uma Matriz Concorrente para a equipe",
+    "Gaps, pontos fortes e riscos estruturados",
+    "Ligado às decisões de estratégia e roteiro"
+  ],
+  "capsLabel": "CAPABILIDADES",
+  "capsTitle": "Nós estruturamos a comparação\nsuas necessidades de decisão de posicionamento.",
+  "caps": [
+    {
+      "t": "CONCORRÊNCIA",
+      "d": "Defina quem comparar.\nSepare os jogadores diretos, indiretos e substitutos."
+    },
+    {
+      "t": "AXAS COMPARAÇÃO",
+      "d": "Defina eixos — características, preços, mensagens, alvo.\nCoincidir critérios com o objetivo do projeto."
+    },
+    {
+      "t": "DESK INVESTIGAÇÃO",
+      "d": "Colete material público — páginas de produto, preços, comentários, IR.\nVerifique a origem e a data."
+    },
+    {
+      "t": "CARACTERÍSTICA COMPARE",
+      "d": "Compare características principais e escopo.\nForças estruturais, lacunas e excesso de alcance. MAP DE POSIÇÃO"
+    },
+    {
+      "t": "MAPA DE POSIÇÃO",
+      "d": "Organize o posicionamento em um mapa ou matriz.\nVeja quem é forte onde de relance."
+    },
+    {
+      "t": "PRICAGEM E ACONDICIONAMENTO",
+      "d": "Compare faixas, embalagens e modelos de receita.\nForneça contexto para sua estratégia de preços."
+    },
+    {
+      "t": "REVISÃO DE MENSAGEM",
+      "d": "Compare mensagem central, alvo e tom.\nSala de diferenciação de documentos e lacunas. IMPLICAÇÕES"
+    },
+    {
+      "t": "IMPLICAÇÕES",
+      "d": "Conecte comparação com produto, marketing e estratégia.\nSugerir a próxima validação e ação. FONTES DE INVESTIGAÇÃO"
+    }
+  ],
+  "sourcesLabel": "FONTES DE INVESTIGAÇÃO",
+  "sourcesTitle": "Combinamos as necessidades de comparação de fontes.",
+  "sourcesNote": "As fontes reais variam de acordo com a contagem de concorrentes, acesso e tipo de produto.",
+  "sources": [
+    "Sites e páginas de produtos concorrentes",
+    "Preços e embalagens",
+    "Loja de aplicativos / mercado",
+    "Revisão de produtos e serviços",
+    "IR e comunicados de imprensa",
+    "Demonstrações e conteúdo integrado",
+    "Social & comunidade",
+    "Contratando sinais de & org",
+    "Patentes e divulgações de recursos",
+    "Relatórios industriais",
+    "Valores de referência internos",
+    "Feedback do usuário"
+  ],
+  "useLabel": "PROCESSOS DE UTILIZAÇÃO",
+  "useTitle": "Perguntas que podemos ajudar a responder.",
+  "useBadge": "Tópicos de análise de exemplos",
+  "useCases": [
+    {
+      "t": "REVISÃO DE POSIÇÃO",
+      "d": "Veja onde você está vs concorrentes.\nDiferenciação estrutural e lacunas."
+    },
+    {
+      "t": "MARCA DE BENCHMARK DE CARACTERÍSTICA",
+      "d": "Compare características principais e escopo.\nUse como evidência para MVP e prioridade de roteiro."
+    },
+    {
+      "t": "BENCHMARK PRICÁRIO",
+      "d": "Compare bandas, embalagens e modelos.\nConstrua evidências para preços e embalagens."
+    },
+    {
+      "t": "COMPARE DE MENSAGEM",
+      "d": "Compare mensagem, alvo e tom.\nInforme a direção da marca e do conteúdo."
+    },
+    {
+      "t": "PREPARAÇÃO DE LANÇAMENTO",
+      "d": "Leitura rápida na competição antes do lançamento.\nResumo para conversas de mercado."
+    },
+    {
+      "t": "INVESTOR BREVE",
+      "d": "Resumo competitivo para investidores ou parceiros.\nIncluir as principais diferenças e riscos."
+    },
+    {
+      "t": "SUBSTITUTO",
+      "d": "Incluir substitutos e concorrentes indiretos.\nCompare o conjunto de escolha completo. ANÁLISE"
+    },
+    {
+      "t": "ANÁLISE DA GAP",
+      "d": "Documento sub- e áreas sobre-servidas versus concorrência.\nPriorizar oportunidades."
+    }
+  ],
+  "flowLabel": "EXEMPLO DE TRABALHO",
+  "flowTitle": "Do conjunto concorrente à matriz",
+  "flow": [
+    {
+      "n": "01",
+      "t": "SELECIONAR",
+      "d": "Defina o conjunto de concorrentes e objetivo de comparação.\nEsclarecer quem, o quê e porquê comparar.",
+      "examples": [
+        "Conjunto de concorrentes",
+        "Objectivo",
+        "Eixos",
+        "Entregas"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "COLECT",
+      "d": "Recolher produto, preços, mensagens e material de revisão.\nReveja fontes públicas e internas.",
+      "examples": [
+        "Páginas de produto",
+        "Preços",
+        "Revisões",
+        "& Notícias de IR"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "COMPARAR",
+      "d": "Comparar item por item em eixos definidos.\nAlinhar tudo nos mesmos critérios.",
+      "examples": [
+        "Características",
+        "Preços",
+        "Mensagens",
+        "Alvo"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "SYNTESIZE",
+      "d": "Extrair diferenças, lacunas e pontos fortes.\nConecte-se ao posicionamento e diferenciação.",
+      "examples": [
+        "Posição",
+        "Diferenciação",
+        "Lacunas",
+        "Riscos"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ADMINISTRAR",
+      "d": "Entregue matriz, resumo e implicações.\nFormato para uso imediato da equipa.",
+      "examples": [
+        "Matriz Concorrente",
+        "Resumo",
+        "Próximas etapas"
+      ]
+    }
+  ],
+  "reportLabel": "SAÍDA",
+  "reportTitle": "Entregas estruturadas para comparação e decisões.",
+  "reportLead": "A composição varia de acordo com o objectivo do projecto. Abaixo estão as seções comuns.",
+  "reportMockStatus": "COMPARE · PROJECTO",
+  "reportMockK": "RESUMO COMPETITIVO",
+  "reportMockT": "Matriz Concorrente · Posicionamento",
+  "reportItems": [
+    "Resumo Executivo",
+    "Concorrente Definir Visão Geral",
+    "Comparação Matrix",
+    "Comparação de Característica",
+    "Preços e Embalagem",
+    "Comparação de Mensagens",
+    "Mapa de Posicionamento",
+    "Análise de Gap",
+    "Implicações",
+    "Recomendado Próximos Passos"
+  ],
+  "dashTitle": "Compare a posição competitiva em uma visão.",
+  "dashLead": "Matriz Concorrente e mapa de posicionamento juntos — então características, preços e diferenças de mensagens são visíveis em um relance.",
+  "dashNote": "A composição da matriz e do mapa varia por escopo e objetivo.",
+  "dashMetrics": [
+    "Competidores",
+    "Eixos",
+    "Lacunas",
+    "Prioridade"
+  ],
+  "dashFilters": [
+    "Todos",
+    "Características",
+    "Preços",
+    "Mensagens"
+  ],
+  "aiLabel": "SYNTESIS",
+  "aiTitle": "De grandes conjuntos de concorrentes\nao que difere.",
+  "aiLead": "Quando há um monte de páginas de produto, comentários, notícias e material IR, nós resumemos, classificamos e comparamos a partir dos ângulos que você precisa.",
+  "aiExamples": [
+    "Resumo da diferença de características e escopo",
+    "Preços e embalagem compare",
+    "Mensagem e posicionamento compare",
+    "Revisão e resumo do padrão de feedback",
+    "Gap e extração de diferenciação",
+    "Matrix e resumo esboço"
+  ],
+  "aiNote": "Interpretação e decisões finais são revisadas junto com você.",
+  "delLabel": "DELIVERÁVEIS",
+  "delTitle": "O que você recebe após o projeto",
+  "delLead": "Dependendo do escopo, entregamos os itens que você precisa da lista abaixo.",
+  "deliverables": [
+    "Matriz Concorrente",
+    "Resumo de posicionamento",
+    "Comparação de Característica",
+    "Comparação de preços",
+    "Resumo da mensagem",
+    "Análise de Gap",
+    "Implicações e Recomendações",
+    "Apêndice de origem",
+    "Resumo da Apresentação"
+  ],
+  "processLabel": "PROCESSO",
+  "processTitle": "Do competidor definido definição para a entrega.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCOBERTA",
+      "d": "Confirme a comparação objetivo e contexto de decisão.\nEntenda o que está a decidir.",
+      "examples": [
+        "Objectivo",
+        "Participantes",
+        "Linha do Tempo",
+        "Restrições"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ÂMBITO DE APLICAÇÃO",
+      "d": "Defina o conjunto de concorrentes, eixos e formato de entrega.\nConcordo com as inclusões e exclusões.",
+      "examples": [
+        "Contagem de concorrentes",
+        "Eixos",
+        "Formato",
+        "Prioridade"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "INVESTIGAÇÃO",
+      "d": "Coletar e rever o concorrente e material substituto.\nVerifique a origem e a data.",
+      "examples": [
+        "Produto",
+        "Preços",
+        "Revisões",
+        "IR"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "COMPARAR",
+      "d": "Comparar item por item em eixos definidos.\nMatriz de estrutura e mapa.",
+      "examples": [
+        "Características",
+        "Preços",
+        "Mensagens",
+        "Posição"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PROJETO",
+      "d": "Rascunho matriz e resumo.\nConstruir a espinha dorsal de diferenças e implicações.",
+      "examples": [
+        "Matriz",
+        "Resumo",
+        "Lacunas"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "REVISÃO",
+      "d": "Reveja a comparação e interpretação em conjunto.\nAjustar lacunas e prioridade.",
+      "examples": [
+        "Feedback",
+        "Refinamento",
+        "Prioridade"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "ADMINISTRAR",
+      "d": "Entregue documentos e implicações finais.\nConecte-se à próxima validação e ação.",
+      "examples": [
+        "Matriz Final NÍVEIS DE ÂMBITO DE APLICAÇÃO",
+        "Resumo",
+        "Próximas etapas"
+      ]
+    }
+  ],
+  "scopeLabel": "NÍVEIS DE ÂMBITO DE APLICAÇÃO",
+  "scopeTitle": "Um guia para a complexidade do projeto.",
+  "scopeLead": "Pacotes não fixos — nós examinamos e citamos com base em objetivos de comparação e contagem de concorrentes.",
+  "scopes": [
+    {
+      "t": "COMPARE FOCUSADO",
+      "items": [
+        "3–5 concorrentes",
+        "3–4 eixos de comparação",
+        "foco de pesquisa secretária",
+        "Matriz Concorrente",
+        "Diferenciação e resumo de gap"
+      ]
+    },
+    {
+      "t": "COMPETITOR FULL MATRIX",
+      "items": [
+        "5-10 concorrentes e substitutos",
+        "Características, preços, mensagens, destino",
+        "Mapa de posicionamento",
+        "Análise de gap",
+        "Resumo da apresentação opcional"
+      ]
+    },
+    {
+      "t": "DIVULGAÇÃO ADUANEIRA",
+      "items": [
+        "Várias categorias ou mercados",
+        "Características mais profundas e UX comparar",
+        "Mensagens e análise de conteúdo",
+        "Apresentação personalizada",
+        "Pode se conectar com MARKET RESEARCH"
+      ]
+    }
+  ],
+  "timeLabel": "Cronologia",
+  "timeTitle": "A linha do tempo depende do escopo.",
+  "timeLead": "Contagem de concorrentes, eixos e acesso à fonte podem mudar a duração.",
+  "timelines": [
+    {
+      "t": "Comparação Focada",
+      "d": "Cerca de 1 semana"
+    },
+    {
+      "t": "Matriz Competidora Completa",
+      "d": "Cerca de 1–2 semanas"
+    },
+    {
+      "t": "Mergulho Profundo Personalizado",
+      "d": "Âmbito de aplicação separado"
+    }
+  ],
+  "priceLabel": "CUSTO DO PROJECTO",
+  "priceTitle": "Citamos apenas o escopo que você precisa.",
+  "priceName": "COMPETITOR ANALYSIS",
+  "priceValue": "A partir de 200.000",
+  "priceFactorsLabel": "O que molda o preço",
+  "priceFactors": [
+    "Número de concorrentes / substitutos",
+    "Número de eixos de comparação",
+    "Profundidade da análise",
+    "Característica / UX compare a inclusão",
+    "Análise de mensagens / conteúdo",
+    "Formato disponível",
+    "Linha temporal urgente"
+  ],
+  "priceNote": "A citação final é confirmada após a revisão do objetivo, conjunto de concorrentes e escopo.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Perguntas mais frequentes",
+  "faqs": [
+    {
+      "q": "Quantos concorrentes você pode comparar?",
+      "a": "Definemos tamanho por meta e acesso à fonte. Tipicamente 3-10 jogadores — confirmamos o ajuste antes de começar."
+    },
+    {
+      "q": "O que comparas?",
+      "a": "Características, preços, embalagem, mensagens, alvo, canais e muito mais — eixos correspondem ao seu objetivo. Concordamos com critérios antes de começar."
+    },
+    {
+      "q": "Que formato os entregables tomam?",
+      "a": "Documento e tabela-primeiro: Matriz Concorrente, resumo de posicionamento, análise de gap. Podem ser incluídos resumos de apresentação."
+    },
+    {
+      "q": "Como é que isto é diferente do MARKET RESEARCH?",
+      "a": "COMPETITOR ANALYSIS se concentra em comparação de concorrentes e substitutos. Se a estrutura global do mercado é a necessidade, MARKET RESEARCH pode caber melhor - escopos podem ser ligados."
+    },
+    {
+      "q": "O nosso produto pode ser incluído na matriz?",
+      "a": "Sim, quando quiseres. Compartilhar material interno e podemos incluir uma coluna 'Você'."
+    },
+    {
+      "q": "Isto pode conectar-se ao BUILD ou ao MVP?",
+      "a": "Sim. A comparação pode fornecer prioridade, posicionamento e decisões de mercado."
+    },
+    {
+      "q": "Como é tratada a confidencialidade?",
+      "a": "Trabalhamos apenas dentro do âmbito acordado. Um NDA pode ser assinado quando necessário."
+    }
+  ],
+  "finalLabel": "Iniciar um projeto",
+  "finalTitle": "Não listar concorrentes —\nCompare-os primeiro.",
+  "finalLead": "Diga-nos os concorrentes, categoria, ou problema de posicionamento que você está avaliando. Vamos confirmar o que comparar e como estruturar a saída.",
+  "ctaFinalSecondary": "Ver todos INVESTIGAÇÃO →",
+  "ctaFinalSecondaryHref": "../research/"
+}

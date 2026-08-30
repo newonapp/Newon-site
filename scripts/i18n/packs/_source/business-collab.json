@@ -1,0 +1,995 @@
+{
+  "partnership": {
+    "crumbBusiness": "Business",
+    "crumbCollaboration": "Collaboration",
+    "whoEyebrow": "WHO IT'S FOR",
+    "whatEyebrow": "WHAT WE CAN DO",
+    "processEyebrow": "HOW IT WORKS",
+    "bringsEyebrow": "WHAT NEWON BRINGS",
+    "scopeEyebrow": "SCOPE / DELIVERABLES",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "FAQ",
+    "relatedEyebrow": "RELATED SERVICES",
+    "relatedTitle": "Related services",
+    "otherEyebrow": "OTHER",
+    "otherTitle": "Other collaboration types",
+    "navAriaLabel": "Collaboration",
+    "navLabel": "COLLABORATION",
+    "otherTypeLabel": "COLLAB",
+    "keywordsAria": "Keywords",
+    "possibleEyebrow": "POSSIBLE COLLABORATION",
+    "useCasesEyebrow": "USE CASES",
+    "techEyebrow": "TECHNICAL OPTIONS",
+    "formatsEyebrow": "CAMPAIGN FORMATS",
+    "principlesEyebrow": "PRINCIPLES",
+    "measurementEyebrow": "MEASUREMENT",
+    "metricsEyebrow": "METRICS",
+    "capabilitiesEyebrow": "CAPABILITIES",
+    "deliverablesEyebrow": "DELIVERABLES",
+    "pricingEyebrow": "PRICING / STARTING POINT",
+    "requirementsEyebrow": "PROJECT REQUIREMENTS",
+    "faqCommon1Q": "Can we inquire at the idea stage?",
+    "faqCommon1A": "Yes. We can review fit based on purpose and problem even without a detailed plan.",
+    "faqCommon2Q": "How long does a project take?",
+    "faqCommon2A": "It depends on scope and deliverables. We share a timeline after scope is defined.",
+    "faqCommon3Q": "Can we inquire without a fixed budget?",
+    "faqCommon3A": "Yes. We clarify the needed scope first, then propose a suitable approach.",
+    "seoTitle": "Newon Partnership | Business Collaboration",
+    "metaDescription": "Connect Newon's products, technology, and brand with partner strengths to create new user experiences and business opportunities.",
+    "crumb": "Partnership",
+    "heroLabel": "PARTNERSHIP",
+    "heroTitle": "Build bigger opportunities together.",
+    "heroLead": "We connect Newon's products, technology, and brand with what companies and services do best to create new experiences and business opportunities.",
+    "heroKeywords": [
+      "Strategic Partnership",
+      "Co-Business",
+      "Distribution",
+      "Brand Collaboration"
+    ],
+    "ctaPrimary": "Propose a partnership →",
+    "ctaSecondary": "Explore Newon →",
+    "ctaSecondaryHref": "../../../about/",
+    "whoTitle": "Partners we work with",
+    "whoItems": [
+      {
+        "title": "Companies",
+        "body": "Teams exploring new digital products or service expansion"
+      },
+      {
+        "title": "Startups",
+        "body": "Early teams needing product, tech, distribution, or marketing collaboration"
+      },
+      {
+        "title": "Brands",
+        "body": "Brands that can connect with Newon products or user experiences"
+      },
+      {
+        "title": "Platforms / Services",
+        "body": "Services open to integration, audience growth, or joint projects"
+      },
+      {
+        "title": "Content / Media",
+        "body": "Partners for joint campaigns or content collaboration"
+      }
+    ],
+    "whatTitle": "What partnership can include",
+    "whatItems": [
+      {
+        "title": "Strategic Partnership",
+        "body": "Long-term product, service, and business collaboration"
+      },
+      {
+        "title": "Co-Product",
+        "body": "A joint product built by two brands or services"
+      },
+      {
+        "title": "Distribution Partnership",
+        "body": "Distribution and channel collaboration"
+      },
+      {
+        "title": "Platform Integration",
+        "body": "Service and feature integration"
+      },
+      {
+        "title": "Brand Collaboration",
+        "body": "Joint brand projects"
+      },
+      {
+        "title": "Market Expansion",
+        "body": "Collaboration to reach new audiences or markets"
+      }
+    ],
+    "processTitle": "From inquiry to launch",
+    "processItems": [
+      {
+        "title": "PROPOSAL",
+        "body": "Share the collaboration idea and purpose"
+      },
+      {
+        "title": "REVIEW",
+        "body": "Review fit and feasibility with Newon"
+      },
+      {
+        "title": "ALIGN",
+        "body": "Define roles, goals, timeline, and scope"
+      },
+      {
+        "title": "BUILD",
+        "body": "Create products, content, features, or campaigns"
+      },
+      {
+        "title": "LAUNCH",
+        "body": "Launch and operate together"
+      },
+      {
+        "title": "GROW",
+        "body": "Review results and decide whether to expand"
+      }
+    ],
+    "possibleTitle": "Possible collaboration shapes",
+    "possibleNote": "Examples of directions we can explore — not client case studies.",
+    "possibleItems": [
+      "Brand benefits inside Newon apps",
+      "Joint digital products",
+      "Co-created content",
+      "Service feature integration",
+      "Joint user benefit promotions",
+      "Joint campaigns",
+      "New business PoC",
+      "Joint overseas market tests"
+    ],
+    "bringsTitle": "What Newon brings",
+    "bringsItems": [
+      {
+        "title": "Product Strategy",
+        "body": "Product structure and user experience design"
+      },
+      {
+        "title": "Design",
+        "body": "Brand / UI / UX / content"
+      },
+      {
+        "title": "Development",
+        "body": "Web / app / AI / SaaS development"
+      },
+      {
+        "title": "Operations",
+        "body": "Product launch and operations"
+      },
+      {
+        "title": "Experimentation",
+        "body": "Fast MVP / PoC validation"
+      }
+    ],
+    "scopeTitle": "Scope and deliverables",
+    "scopeItems": [
+      "Collaboration goal definition",
+      "Roles and timeline",
+      "Product, content, or feature work",
+      "Joint launch and operation plan"
+    ],
+    "scopeNote": "Deliverables vary by project scope.",
+    "faqs": [
+      {
+        "q": "Can we inquire at the idea stage?",
+        "a": "Yes. We can review fit based on purpose and problem even without a detailed plan."
+      },
+      {
+        "q": "Can we inquire without a concrete plan?",
+        "a": "Yes. A service you want to connect and a purpose are enough to start."
+      },
+      {
+        "q": "Do you work with overseas companies?",
+        "a": "Yes. What matters most is whether the collaboration fits Newon services."
+      },
+      {
+        "q": "How are terms decided?",
+        "a": "They depend on collaboration type and scope. We guide you after review."
+      },
+      {
+        "q": "Are one-off campaigns possible?",
+        "a": "Yes, though we prioritize directions that can grow over time."
+      }
+    ],
+    "finalTitle": "Connect new possibilities\nwith Newon.",
+    "finalLead": "A concrete proposal is not required.\nWe can start by reviewing what might work together.",
+    "finalBtn": "Propose a partnership →",
+    "related": [
+      {
+        "label": "Business",
+        "href": "../../"
+      },
+      {
+        "label": "Products",
+        "href": "../../../products/"
+      },
+      {
+        "label": "Labs",
+        "href": "../../../resources/labs/"
+      }
+    ]
+  },
+  "service": {
+    "crumbBusiness": "Business",
+    "crumbCollaboration": "Collaboration",
+    "whoEyebrow": "WHO IT'S FOR",
+    "whatEyebrow": "WHAT WE CAN DO",
+    "processEyebrow": "HOW IT WORKS",
+    "bringsEyebrow": "WHAT NEWON BRINGS",
+    "scopeEyebrow": "SCOPE / DELIVERABLES",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "FAQ",
+    "relatedEyebrow": "RELATED SERVICES",
+    "relatedTitle": "Related services",
+    "otherEyebrow": "OTHER",
+    "otherTitle": "Other collaboration types",
+    "navAriaLabel": "Collaboration",
+    "navLabel": "COLLABORATION",
+    "otherTypeLabel": "COLLAB",
+    "keywordsAria": "Keywords",
+    "possibleEyebrow": "POSSIBLE COLLABORATION",
+    "useCasesEyebrow": "USE CASES",
+    "techEyebrow": "TECHNICAL OPTIONS",
+    "formatsEyebrow": "CAMPAIGN FORMATS",
+    "principlesEyebrow": "PRINCIPLES",
+    "measurementEyebrow": "MEASUREMENT",
+    "metricsEyebrow": "METRICS",
+    "capabilitiesEyebrow": "CAPABILITIES",
+    "deliverablesEyebrow": "DELIVERABLES",
+    "pricingEyebrow": "PRICING / STARTING POINT",
+    "requirementsEyebrow": "PROJECT REQUIREMENTS",
+    "faqCommon1Q": "Can we inquire at the idea stage?",
+    "faqCommon1A": "Yes. We can review fit based on purpose and problem even without a detailed plan.",
+    "faqCommon2Q": "How long does a project take?",
+    "faqCommon2A": "It depends on scope and deliverables. We share a timeline after scope is defined.",
+    "faqCommon3Q": "Can we inquire without a fixed budget?",
+    "faqCommon3A": "Yes. We clarify the needed scope first, then propose a suitable approach.",
+    "seoTitle": "App & Service Collaboration | Newon",
+    "metaDescription": "Connect content, features, brands, data, and benefits with Newon apps and digital services.",
+    "crumb": "App & service collaboration",
+    "heroLabel": "APP & SERVICE COLLABORATION",
+    "heroTitle": "Products and services\ncreate more value together.",
+    "heroLead": "Collaboration that connects content, features, brands, data, and benefits with Newon apps and digital services.",
+    "heroKeywords": [
+      "App Integration",
+      "Service Integration",
+      "Content",
+      "User Benefit"
+    ],
+    "ctaPrimary": "Inquire about service collaboration →",
+    "ctaSecondary": "View Newon Products →",
+    "ctaSecondaryHref": "../../../products/",
+    "whoTitle": "Who this is for",
+    "whoItems": [
+      {
+        "title": "App operators",
+        "body": "Teams with services that can connect to Newon app users"
+      },
+      {
+        "title": "SaaS companies",
+        "body": "SaaS products seeking feature or data integration"
+      },
+      {
+        "title": "Commerce platforms",
+        "body": "Platforms with benefits or content that fit in-app contexts"
+      },
+      {
+        "title": "Finance / health / lifestyle",
+        "body": "Services that fit relevant user contexts"
+      },
+      {
+        "title": "Content platforms",
+        "body": "Partners providing content usable inside apps"
+      },
+      {
+        "title": "Brand membership",
+        "body": "Brands exploring coupons, benefits, or membership links"
+      }
+    ],
+    "whatTitle": "What we can do",
+    "whatItems": [
+      {
+        "title": "Service Integration",
+        "body": "Feature or API integration"
+      },
+      {
+        "title": "Content Integration",
+        "body": "Content usable inside apps"
+      },
+      {
+        "title": "Benefit Partnership",
+        "body": "Coupons, benefits, and membership links"
+      },
+      {
+        "title": "Feature Collaboration",
+        "body": "Joint development of specific features"
+      },
+      {
+        "title": "Cross Promotion",
+        "body": "Mutual promotion across services"
+      },
+      {
+        "title": "Joint Product",
+        "body": "Joint features or products built on existing apps"
+      }
+    ],
+    "useCasesTitle": "Possible collaboration examples",
+    "useCasesNote": "Examples of directions we can explore — not client case studies.",
+    "useCasesItems": [
+      "SubPing + subscription service benefits",
+      "PetLog + pet-related service content",
+      "BabyLog + parenting service information",
+      "Productivity app + educational content",
+      "In-app brand rewards",
+      "Cross-service features across Newon apps"
+    ],
+    "techTitle": "Technical options",
+    "techItems": [
+      "API Integration",
+      "Deep Link",
+      "Webhook",
+      "SDK",
+      "OAuth",
+      "Embedded Content",
+      "Data Exchange",
+      "Referral Tracking"
+    ],
+    "techNote": "Supported options vary by project.",
+    "processTitle": "From review to integration",
+    "processItems": [
+      {
+        "title": "SERVICE REVIEW",
+        "body": "Review each product structure"
+      },
+      {
+        "title": "USE CASE",
+        "body": "Define value for users"
+      },
+      {
+        "title": "TECH CHECK",
+        "body": "Confirm technical feasibility"
+      },
+      {
+        "title": "PROTOTYPE",
+        "body": "Test a small feature first"
+      },
+      {
+        "title": "INTEGRATION",
+        "body": "Implement the integration"
+      },
+      {
+        "title": "MEASURE",
+        "body": "Review usage and conversion data"
+      }
+    ],
+    "metricsTitle": "What can be measured",
+    "metricsItems": [
+      "Feature Usage",
+      "Click-through",
+      "Activation",
+      "Conversion",
+      "Retention",
+      "Referral"
+    ],
+    "metricsNote": "We do not promise numbers upfront. Measurable items are defined with scope.",
+    "bringsTitle": "What Newon brings",
+    "bringsItems": [
+      {
+        "title": "Product Context",
+        "body": "Understanding Newon app structure and user flows"
+      },
+      {
+        "title": "Integration Design",
+        "body": "Designing natural integration experiences"
+      },
+      {
+        "title": "Development",
+        "body": "Building required integration features"
+      },
+      {
+        "title": "Content",
+        "body": "Content usable inside apps"
+      },
+      {
+        "title": "Launch Support",
+        "body": "Launch and early operation support"
+      }
+    ],
+    "scopeTitle": "Scope and deliverables",
+    "scopeItems": [
+      "Integration scope",
+      "User flow design",
+      "Feature or content work",
+      "Integration testing and launch"
+    ],
+    "scopeNote": "Scope depends on whether API integration or content collaboration is needed.",
+    "faqs": [
+      {
+        "q": "Which Newon apps can we collaborate with?",
+        "a": "We discuss based on apps Newon currently operates across parenting, pets, productivity, and lifestyle."
+      },
+      {
+        "q": "Is technical integration required?",
+        "a": "No. Content collaboration and joint projects can proceed without integration."
+      },
+      {
+        "q": "Does Newon handle development?",
+        "a": "It depends on the collaboration type. Roles are split when integration is needed."
+      },
+      {
+        "q": "Can smaller services inquire?",
+        "a": "Yes. The key is whether the connection feels natural for users."
+      },
+      {
+        "q": "How long does it take?",
+        "a": "It depends on integration scope and deliverables."
+      }
+    ],
+    "finalTitle": "Have an idea for\nconnecting services?",
+    "finalLead": "Share the service you want to connect and your goal. We will follow up after review.",
+    "finalBtn": "Inquire about app & service collaboration →",
+    "related": [
+      {
+        "label": "Products",
+        "href": "../../../products/"
+      },
+      {
+        "label": "AI",
+        "href": "../../../ai/"
+      },
+      {
+        "label": "SaaS",
+        "href": "../../../saas/"
+      }
+    ]
+  },
+  "promotion": {
+    "crumbBusiness": "Business",
+    "crumbCollaboration": "Collaboration",
+    "whoEyebrow": "WHO IT'S FOR",
+    "whatEyebrow": "WHAT WE CAN DO",
+    "processEyebrow": "HOW IT WORKS",
+    "bringsEyebrow": "WHAT NEWON BRINGS",
+    "scopeEyebrow": "SCOPE / DELIVERABLES",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "FAQ",
+    "relatedEyebrow": "RELATED SERVICES",
+    "relatedTitle": "Related services",
+    "otherEyebrow": "OTHER",
+    "otherTitle": "Other collaboration types",
+    "navAriaLabel": "Collaboration",
+    "navLabel": "COLLABORATION",
+    "otherTypeLabel": "COLLAB",
+    "keywordsAria": "Keywords",
+    "possibleEyebrow": "POSSIBLE COLLABORATION",
+    "useCasesEyebrow": "USE CASES",
+    "techEyebrow": "TECHNICAL OPTIONS",
+    "formatsEyebrow": "CAMPAIGN FORMATS",
+    "principlesEyebrow": "PRINCIPLES",
+    "measurementEyebrow": "MEASUREMENT",
+    "metricsEyebrow": "METRICS",
+    "capabilitiesEyebrow": "CAPABILITIES",
+    "deliverablesEyebrow": "DELIVERABLES",
+    "pricingEyebrow": "PRICING / STARTING POINT",
+    "requirementsEyebrow": "PROJECT REQUIREMENTS",
+    "faqCommon1Q": "Can we inquire at the idea stage?",
+    "faqCommon1A": "Yes. We can review fit based on purpose and problem even without a detailed plan.",
+    "faqCommon2Q": "How long does a project take?",
+    "faqCommon2A": "It depends on scope and deliverables. We share a timeline after scope is defined.",
+    "faqCommon3Q": "Can we inquire without a fixed budget?",
+    "faqCommon3A": "Yes. We clarify the needed scope first, then propose a suitable approach.",
+    "seoTitle": "Advertising & Promotion | Newon",
+    "metaDescription": "Brand promotions designed to fit naturally into Newon products and content experiences — not banner-only exposure.",
+    "crumb": "Advertising & promotion",
+    "heroLabel": "ADVERTISING & PROMOTION",
+    "heroTitle": "Promotions that do not\nbreak product experience.",
+    "heroLead": "Not banner-only exposure — we design brand promotions that connect naturally with Newon products and content experiences.",
+    "heroKeywords": [
+      "Campaign",
+      "Brand Integration",
+      "Content",
+      "Promotion"
+    ],
+    "ctaPrimary": "Inquire about promotion →",
+    "ctaSecondary": "View Media →",
+    "ctaSecondaryHref": "../../../media/",
+    "whoTitle": "Who this is for",
+    "whoItems": [
+      {
+        "title": "Consumer brands",
+        "body": "Lifestyle and consumer brands relevant to Newon users"
+      },
+      {
+        "title": "Digital services",
+        "body": "Services that can be introduced naturally in app or web flows"
+      },
+      {
+        "title": "Lifestyle brands",
+        "body": "Brands in parenting, pets, productivity, and related topics"
+      },
+      {
+        "title": "Education / productivity",
+        "body": "Brands offering useful information or benefits"
+      },
+      {
+        "title": "Commerce",
+        "body": "Commerce brands with relevant user benefits or information"
+      },
+      {
+        "title": "New product launches",
+        "body": "Brands launching products that fit Newon channels"
+      }
+    ],
+    "whatTitle": "What we can do",
+    "whatItems": [
+      {
+        "title": "Product Placement",
+        "body": "Natural brand exposure inside Newon services"
+      },
+      {
+        "title": "Sponsored Content",
+        "body": "Content created with the brand"
+      },
+      {
+        "title": "Campaign",
+        "body": "Seasonal or topic-based campaigns"
+      },
+      {
+        "title": "User Benefit",
+        "body": "Coupons, benefits, and events for users"
+      },
+      {
+        "title": "Launch Promotion",
+        "body": "Collaboration for new product or service launches"
+      },
+      {
+        "title": "Cross Promotion",
+        "body": "Connections across Newon channels and products"
+      }
+    ],
+    "formatsTitle": "Campaign formats",
+    "formatsItems": [
+      {
+        "title": "App Campaign",
+        "body": "Topic-based campaigns inside apps"
+      },
+      {
+        "title": "Web Campaign",
+        "body": "Web- and landing-focused campaigns"
+      },
+      {
+        "title": "Card News",
+        "body": "Informational card content"
+      },
+      {
+        "title": "Short-form Video",
+        "body": "Short video content"
+      },
+      {
+        "title": "Product Story",
+        "body": "Product and brand story content"
+      },
+      {
+        "title": "Landing Page",
+        "body": "Campaign landing pages"
+      },
+      {
+        "title": "User Event",
+        "body": "Participatory user events"
+      },
+      {
+        "title": "Brand Benefit",
+        "body": "Brand benefit offers"
+      },
+      {
+        "title": "Sponsored Resource",
+        "body": "Sponsored guides and resources"
+      }
+    ],
+    "principlesTitle": "User experience comes before ads.",
+    "principlesItems": [
+      {
+        "title": "Relevant",
+        "body": "Promotions that are actually relevant to the product and users"
+      },
+      {
+        "title": "Useful",
+        "body": "Information or benefits for users"
+      },
+      {
+        "title": "Clear",
+        "body": "Clear ad / sponsorship labeling"
+      },
+      {
+        "title": "Native",
+        "body": "Formats that do not interrupt product experience"
+      },
+      {
+        "title": "Measurable",
+        "body": "Structures that allow performance review"
+      }
+    ],
+    "processTitle": "Campaign process",
+    "processItems": [
+      {
+        "title": "BRIEF",
+        "body": "Confirm brand and campaign goals"
+      },
+      {
+        "title": "AUDIENCE",
+        "body": "Select the right Newon product, content, and user context"
+      },
+      {
+        "title": "CONCEPT",
+        "body": "Design the campaign idea"
+      },
+      {
+        "title": "CREATE",
+        "body": "Create content, landing pages, and assets"
+      },
+      {
+        "title": "LAUNCH",
+        "body": "Launch the campaign"
+      },
+      {
+        "title": "REPORT",
+        "body": "Review performance within available data"
+      }
+    ],
+    "measurementTitle": "Measurable signals",
+    "measurementItems": [
+      "Impression",
+      "Click",
+      "Landing Visit",
+      "Product Visit",
+      "Conversion",
+      "Engagement"
+    ],
+    "measurementNote": "We only use data that can be collected in the actual analysis environment.",
+    "importantNote": "This is an early collaboration service for designing brand campaigns together — not a large-scale ad platform.",
+    "bringsTitle": "What Newon brings",
+    "bringsItems": [
+      {
+        "title": "Audience Context",
+        "body": "Channel selection based on service and user context"
+      },
+      {
+        "title": "Content",
+        "body": "Campaign content planning and production"
+      },
+      {
+        "title": "Design",
+        "body": "Landing, assets, and in-app experience design"
+      },
+      {
+        "title": "Product Fit",
+        "body": "Exposure design that protects product experience"
+      },
+      {
+        "title": "Reporting",
+        "body": "Performance review within available scope"
+      }
+    ],
+    "scopeTitle": "Scope and deliverables",
+    "scopeItems": [
+      "Campaign goal definition",
+      "Channel and format selection",
+      "Content, landing, and asset production",
+      "Campaign operation and reporting"
+    ],
+    "scopeNote": "Scope varies by brand, channel, and format.",
+    "faqs": [
+      {
+        "q": "Are ad rates fixed?",
+        "a": "We do not publish fixed rates. Terms depend on brand, channel, and format."
+      },
+      {
+        "q": "Can any brand participate?",
+        "a": "No. We prioritize brands relevant to Newon services and user experience."
+      },
+      {
+        "q": "Do you accept interruptive ads?",
+        "a": "No. We avoid forced exposure that breaks product flow."
+      },
+      {
+        "q": "Is content collaboration the only option?",
+        "a": "No. We can also explore joint campaigns and in-app introductions."
+      },
+      {
+        "q": "Can we inquire without a fixed budget?",
+        "a": "Yes. We clarify scope first, then propose a suitable approach."
+      }
+    ],
+    "finalTitle": "Create brand experiences\nwith Newon.",
+    "finalLead": "Share your brand and goals. We will review a format that fits the service.",
+    "finalBtn": "Inquire about advertising & promotion →",
+    "related": [
+      {
+        "label": "Media",
+        "href": "../../../media/"
+      },
+      {
+        "label": "Studio / Campaign",
+        "href": "../../../studio/content/campaign/"
+      },
+      {
+        "label": "Products",
+        "href": "../../../products/"
+      }
+    ]
+  },
+  "development": {
+    "crumbBusiness": "Business",
+    "crumbCollaboration": "Collaboration",
+    "whoEyebrow": "WHO IT'S FOR",
+    "whatEyebrow": "WHAT WE CAN DO",
+    "processEyebrow": "HOW IT WORKS",
+    "bringsEyebrow": "WHAT NEWON BRINGS",
+    "scopeEyebrow": "SCOPE / DELIVERABLES",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "FAQ",
+    "relatedEyebrow": "RELATED SERVICES",
+    "relatedTitle": "Related services",
+    "otherEyebrow": "OTHER",
+    "otherTitle": "Other collaboration types",
+    "navAriaLabel": "Collaboration",
+    "navLabel": "COLLABORATION",
+    "otherTypeLabel": "COLLAB",
+    "keywordsAria": "Keywords",
+    "possibleEyebrow": "POSSIBLE COLLABORATION",
+    "useCasesEyebrow": "USE CASES",
+    "techEyebrow": "TECHNICAL OPTIONS",
+    "formatsEyebrow": "CAMPAIGN FORMATS",
+    "principlesEyebrow": "PRINCIPLES",
+    "measurementEyebrow": "MEASUREMENT",
+    "metricsEyebrow": "METRICS",
+    "capabilitiesEyebrow": "CAPABILITIES",
+    "deliverablesEyebrow": "DELIVERABLES",
+    "pricingEyebrow": "PRICING / STARTING POINT",
+    "requirementsEyebrow": "PROJECT REQUIREMENTS",
+    "faqCommon1Q": "Can we inquire at the idea stage?",
+    "faqCommon1A": "Yes. We can review fit based on purpose and problem even without a detailed plan.",
+    "faqCommon2Q": "How long does a project take?",
+    "faqCommon2A": "It depends on scope and deliverables. We share a timeline after scope is defined.",
+    "faqCommon3Q": "Can we inquire without a fixed budget?",
+    "faqCommon3A": "Yes. We clarify the needed scope first, then propose a suitable approach.",
+    "seoTitle": "Development Collaboration | Newon",
+    "metaDescription": "From idea to planning, UX/UI, development, and launch — we build digital products together.",
+    "crumb": "Development collaboration",
+    "heroLabel": "DEVELOPMENT COLLABORATION",
+    "heroTitle": "From idea to\na working product.",
+    "heroLead": "From idea through planning, UX/UI, development, and launch — we work through the full digital product process together.",
+    "heroKeywords": [
+      "MVP",
+      "Web",
+      "App",
+      "AI",
+      "Product"
+    ],
+    "ctaPrimary": "Inquire about development collaboration →",
+    "ctaSecondary": "View Business Services →",
+    "ctaSecondaryHref": "../../",
+    "whoTitle": "Who this is for",
+    "whoItems": [
+      {
+        "title": "Founders",
+        "body": "You have an idea but development is difficult"
+      },
+      {
+        "title": "Startups",
+        "body": "You need an MVP"
+      },
+      {
+        "title": "Companies",
+        "body": "You want to build a new digital service"
+      },
+      {
+        "title": "Product teams",
+        "body": "You need to improve an existing service"
+      },
+      {
+        "title": "Organizations",
+        "body": "Internal development resources are limited"
+      }
+    ],
+    "whatTitle": "What we can build",
+    "whatItems": [
+      {
+        "title": "MVP",
+        "body": "Minimum product to validate a core hypothesis"
+      },
+      {
+        "title": "Web Service",
+        "body": "Brand sites, web services, and platforms"
+      },
+      {
+        "title": "Mobile App",
+        "body": "iOS / Android apps"
+      },
+      {
+        "title": "AI Product",
+        "body": "AI features and AI-based services"
+      },
+      {
+        "title": "SaaS",
+        "body": "Work tools and subscription services"
+      },
+      {
+        "title": "Internal Tool",
+        "body": "Internal business tools"
+      },
+      {
+        "title": "Automation",
+        "body": "Automation for repetitive work"
+      },
+      {
+        "title": "Prototype / PoC",
+        "body": "Early prototypes to test feasibility"
+      }
+    ],
+    "capabilitiesTitle": "Capabilities",
+    "capabilitiesItems": [
+      {
+        "title": "Product Strategy",
+        "body": "Problem definition / feature structure / MVP scope"
+      },
+      {
+        "title": "UX / UI",
+        "body": "User flows / information architecture / interface"
+      },
+      {
+        "title": "Development",
+        "body": "Web / app / backend / API"
+      },
+      {
+        "title": "AI Integration",
+        "body": "AI features when needed"
+      },
+      {
+        "title": "QA",
+        "body": "Functionality / responsive / edge-state checks"
+      },
+      {
+        "title": "Launch",
+        "body": "Deployment and launch preparation"
+      }
+    ],
+    "processTitle": "Project flow",
+    "processItems": [
+      {
+        "title": "DISCOVERY",
+        "body": "Understand the idea and problem"
+      },
+      {
+        "title": "SCOPE",
+        "body": "Define MVP and project scope"
+      },
+      {
+        "title": "DESIGN",
+        "body": "UX / UI / prototype"
+      },
+      {
+        "title": "BUILD",
+        "body": "Development"
+      },
+      {
+        "title": "QA",
+        "body": "Functionality / devices / states"
+      },
+      {
+        "title": "LAUNCH",
+        "body": "Deployment and launch"
+      },
+      {
+        "title": "ITERATE",
+        "body": "Improve based on real user response"
+      }
+    ],
+    "deliverablesTitle": "Possible deliverables",
+    "deliverablesItems": [
+      "Product Scope",
+      "Sitemap",
+      "User Flow",
+      "Wireframe",
+      "UI Design",
+      "Responsive Web",
+      "Mobile App",
+      "Source Code",
+      "API Integration",
+      "Deployment",
+      "Basic Documentation"
+    ],
+    "deliverablesNote": "Not every project includes all items. Scope varies by project.",
+    "pricingTitle": "Starting point",
+    "pricingBody": "Quotes vary by project scope.",
+    "pricingCta": "Discuss project scope →",
+    "requirementsTitle": "Helpful information before inquiry",
+    "requirementsItems": [
+      "Product you want to build",
+      "Problem you want to solve",
+      "Primary users",
+      "Core features needed",
+      "Reference services",
+      "Desired launch timeline",
+      "Expected budget range",
+      "Existing design / development materials"
+    ],
+    "bringsTitle": "What Newon brings",
+    "bringsItems": [
+      {
+        "title": "Product Strategy",
+        "body": "Problem definition and MVP scope"
+      },
+      {
+        "title": "UX / UI",
+        "body": "User flows and interface"
+      },
+      {
+        "title": "Development",
+        "body": "Web / app / backend development"
+      },
+      {
+        "title": "AI Integration",
+        "body": "AI features when needed"
+      },
+      {
+        "title": "Launch",
+        "body": "Deployment and launch preparation"
+      }
+    ],
+    "scopeTitle": "Collaboration scope",
+    "scopeItems": [
+      "Planning, design, and development scope",
+      "MVP or full product build",
+      "Launch and early iteration"
+    ],
+    "scopeNote": "Scope is defined together based on project goals and timeline.",
+    "faqs": [
+      {
+        "q": "Can we get a quote immediately?",
+        "a": "It depends on scope and purpose. We guide you after reviewing your inquiry."
+      },
+      {
+        "q": "Can we proceed without planning?",
+        "a": "Yes. An idea and the problem you want to solve are enough to start."
+      },
+      {
+        "q": "Is maintenance included?",
+        "a": "It depends on the project. Post-launch operations can be discussed separately."
+      },
+      {
+        "q": "How long does it take?",
+        "a": "It depends on whether this is an MVP, improvement, or new app."
+      },
+      {
+        "q": "What technology do you use?",
+        "a": "We choose mobile and web approaches based on product purpose and launch needs."
+      }
+    ],
+    "finalTitle": "Start turning your idea\ninto a product.",
+    "finalLead": "A finished brief is not required.\nWe can start from the problem and idea together.",
+    "finalBtn": "Inquire about a development project →",
+    "related": [
+      {
+        "label": "MVP",
+        "href": "../../mvp/"
+      },
+      {
+        "label": "Web",
+        "href": "../../web/"
+      },
+      {
+        "label": "App",
+        "href": "../../app/"
+      },
+      {
+        "label": "AI",
+        "href": "../../../ai/"
+      },
+      {
+        "label": "Product Design",
+        "href": "../../../studio/digital/product-design/"
+      }
+    ]
+  }
+}

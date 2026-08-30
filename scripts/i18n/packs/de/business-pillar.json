@@ -1,0 +1,672 @@
+{
+  "build": {
+    "crumbBusiness": "Geschäftsbetrieb",
+    "otherTitle": "SONSTIGE UNTERNEHMEN",
+    "ctaEyebrow": "Haben Sie ein Projekt?",
+    "ctaTitle": "Wenn Sie etwas zu bauen haben, sagen Sie es uns.",
+    "ctaLead": "Sogar in der Ideenphase. Wir beginnen mit der Klärung des Umfangs, den Sie benötigen.",
+    "ctaBtn": "Projektanfrage →",
+    "servicesLabel": "Dienstleistungen und Preise",
+    "processLabel": "VERFAHREN",
+    "pricingLabel": "PREIS",
+    "faqLabel": "FAQ",
+    "pricingNoteDefault": "Die endgültigen Zitate variieren je nach Funktionen, Seitenanzahl, Zeitleiste und Projektumfang.",
+    "quoteCta": "Fordern Sie ein Angebot an",
+    "whatWeBuild": "Was wir bauen",
+    "recommendedFor": "Empfohlen für",
+    "included": "Eingeschlossen",
+    "deliverables": "Leistungen",
+    "timeline": "Geschätzter Zeitplan",
+    "from": "von",
+    "startingAt": "",
+    "comingSoon": "Bald kommen",
+    "comingSoonLead": "Dieses Servicedetail wird in Kürze verfügbar sein.",
+    "detailCta": "Details ansehen",
+    "soonBtn": "Bald kommen",
+    "seoTitle": "BAU Newon Geschäftsbetrieb",
+    "metaDescription": "Newon BUILD - MVP, Website, Landing Page und App Prototyp. Design und Schiff Produkte, die Menschen tatsächlich verwenden können.",
+    "eyebrow": "NEWON UNTERNEHMEN",
+    "headline": "Wir machen aus Ideen\nechte Produkte.",
+    "lead": "Von frühen Ideen bis hin zu MVP, Website, Zielseite und App-Prototyp - wir entwerfen und implementieren Produkte, die Sie tatsächlich verwenden können.",
+    "ctaPrimary": "Starten Sie ein Projekt",
+    "ctaSecondary": "Siehe Anwendungsbereich ↓",
+    "heroIndex": [
+      "01 MVP",
+      "02 WEBSITE",
+      "03 ANLANDUNG",
+      "04 APP."
+    ],
+    "layout": "build",
+    "services": [
+      {
+        "title": "MVP-ENTWICKLUNG",
+        "href": "../mvp/",
+        "summary": "Core-Feature-MVPs, die entwickelt wurden, um Ideen schnell zu validieren.",
+        "what": "Ein schiffsfähiges MVP konzentrierte sich auf wesentliche Flüsse und Merkmale.",
+        "for": "Teams, die schnelles Markt- und Benutzersignal benötigen.",
+        "included": "Scope · Keyscreens · Core Build · Responsive QA",
+        "deliverables": "Deployable MVP, Short Ops Guide",
+        "timeline": "Typischerweise 3-6 Wochen"
+      },
+      {
+        "title": "WEBSITE",
+        "href": "../web/",
+        "summary": "Responsive Websites für Unternehmen, Marken und Produkte.",
+        "what": "Eine responsive Website, die Marke und Service klar erklärt.",
+        "for": "Unternehmen, die eine offizielle oder Produkt-Website benötigen.",
+        "included": "IA · UI · Responsive Build · Basic SEO Setup",
+        "deliverables": "Live-Site, Quelle/Assets, Edit Guide",
+        "timeline": "Typischerweise 2-5 Wochen"
+      },
+      {
+        "title": "ANLANDUNGSPAGE",
+        "href": "../landing/",
+        "summary": "Hochwertige Landungen für Start und Umbau.",
+        "what": "Konversionsorientierte Seiten für Start, Warteliste oder Kampagnen.",
+        "for": "Produkteinführungen, Vorregistrierung, Promotions.",
+        "included": "Messaging · Abschnittsdesign · Build · Analyseleitfaden",
+        "deliverables": "Landing Page, Assets, Checkliste veröffentlichen",
+        "timeline": "Typischerweise 1–2 Wochen"
+      },
+      {
+        "title": "APP-PROTOTYP",
+        "href": "../app/",
+        "summary": "App-Ideen ausgedrückt als reale Bildschirme und fließt.",
+        "what": "Interaktive Prototypen von Primärbildschirmen und -flüssen.",
+        "for": "Teams, die vor der Investition oder der vollständigen Entwicklung validiert werden.",
+        "included": "Flow · Keyscreens · Interaktion · Handoff Notes",
+        "deliverables": "Prototyp Link/Build, Bildschirmzusammenfassung",
+        "timeline": "Typischerweise 2-4 Wochen"
+      }
+    ],
+    "process": [
+      {
+        "n": "01",
+        "t": "ENTWICKLUNG",
+        "d": "Ziele und Anforderungen"
+      },
+      {
+        "n": "02",
+        "t": "DEFIN",
+        "d": "Merkmale und Struktur"
+      },
+      {
+        "n": "03",
+        "t": "BEZEICHNUNG",
+        "d": "UI/UX und Bildschirme"
+      },
+      {
+        "n": "04",
+        "t": "BAU",
+        "d": "Produktimplementierung"
+      },
+      {
+        "n": "05",
+        "t": "PRÜFUNG",
+        "d": "Funktion und responsive QA"
+      },
+      {
+        "n": "06",
+        "t": "GRUND",
+        "d": "Einsatz und Übergabe"
+      }
+    ],
+    "pricing": [
+      {
+        "name": "ANLANDUNGSPAGE",
+        "price": "Von 400.000",
+        "svc": 2
+      },
+      {
+        "name": "WEBSITE",
+        "price": "Von 700.000",
+        "svc": 1
+      },
+      {
+        "name": "MVP",
+        "price": "Von 1.000.000",
+        "svc": 0
+      },
+      {
+        "name": "APP-PROTOTYP",
+        "price": "von 500.000",
+        "svc": 3
+      }
+    ],
+    "pricingNote": "Die endgültigen Zitate variieren je nach Merkmalen, Seitenanzahl, Zeitleiste und Umfang.",
+    "faq": [
+      {
+        "q": "Wie lange dauert ein Projekt?",
+        "a": "Landungen in der Regel 1-2 Wochen, Websites 2-5 Wochen, MVPs etwa 3-6 Wochen je nach Umfang. Wir bestätigen einen Zeitplan vor dem Kickoff."
+      },
+      {
+        "q": "Wie viele Revisionsrunden sind enthalten?",
+        "a": "Revisionen erfolgen innerhalb vereinbarter Runden pro Etappe. Out-of-Scope-Änderungen beeinflussen Timeline und Zitat."
+      },
+      {
+        "q": "Können Sie ein bestehendes Projekt verbessern?",
+        "a": "Ja. Wir überprüfen den aktuellen Stand und die Ziele und schlagen dann Verbesserungsrahmen und Prioritäten vor."
+      },
+      {
+        "q": "Bieten Sie Wartung an?",
+        "a": "Post-Launch-Ops und kleine Verbesserungen können als Wartung oder ein Folgeprojekt arrangiert werden."
+      },
+      {
+        "q": "Wie werden die Ergebnisse weitergegeben?",
+        "a": "Sie erhalten eine Live-URL, Quelle/Assets und eine kurze Bedienungsanleitung."
+      }
+    ]
+  },
+  "automation": {
+    "crumbBusiness": "Geschäftsbetrieb",
+    "otherTitle": "SONSTIGE UNTERNEHMEN",
+    "ctaEyebrow": "Haben Sie ein Projekt?",
+    "ctaTitle": "Wenn Sie etwas zu bauen haben, sagen Sie es uns.",
+    "ctaLead": "Sogar in der Ideenphase. Wir beginnen mit der Klärung des Umfangs, den Sie benötigen.",
+    "ctaBtn": "Projektanfrage →",
+    "servicesLabel": "Dienstleistungen und Preise",
+    "processLabel": "VERFAHREN",
+    "pricingLabel": "PREIS",
+    "faqLabel": "FAQ",
+    "pricingNoteDefault": "Die endgültigen Zitate variieren je nach Funktionen, Seitenanzahl, Zeitleiste und Projektumfang.",
+    "quoteCta": "Fordern Sie ein Angebot an",
+    "whatWeBuild": "Was wir bauen",
+    "recommendedFor": "Empfohlen für",
+    "included": "Eingeschlossen",
+    "deliverables": "Leistungen",
+    "timeline": "Geschätzter Zeitplan",
+    "from": "von",
+    "startingAt": "",
+    "comingSoon": "Bald kommen",
+    "comingSoonLead": "Dieses Servicedetail wird in Kürze verfügbar sein.",
+    "detailCta": "Details ansehen",
+    "soonBtn": "Bald kommen",
+    "seoTitle": "AUTOMATION Newon Geschäftsbetrieb",
+    "metaDescription": "Newon AUTOMATION - KI-Automatisierung, Workflows, interne Tools, Reporting. Verwandeln Sie sich wiederholende Arbeit in Systeme.",
+    "eyebrow": "NEWON GESCHÄFTSUNTERNEHMEN",
+    "headline": "Wiederkehrende Arbeit\nin Systeme verwandeln.",
+    "lead": "Wir analysieren wiederkehrende Arbeit in Ihrem Team und bauen effizientere Abläufe mit KI und Automatisierung.",
+    "ctaPrimary": "Sprechen Automatisierung",
+    "ctaSecondary": "Siehe Dienstleistungen ↓",
+    "layout": "automation",
+    "services": [
+      {
+        "title": "AI AUTOMATION",
+        "href": "../ai-automation/",
+        "summary": "Automatisieren Sie sich wiederholende Arbeit mit AI.",
+        "what": "Automatisierung, wo KI passt – klassifizieren, entwerfen, zusammenfassen.",
+        "for": "Teams mit hohem Anfrage-, Inhalts- oder Dokumentenvolumen.",
+        "included": "Arbeitsanalyse · Regeln / Aufforderungen · Integrationen · Ops Guide",
+        "deliverables": "Arbeitsautomatisierungsfluss, config notes",
+        "timeline": "Typischerweise 2-5 Wochen"
+      },
+      {
+        "title": "ARBEITSBEHÖRDE",
+        "href": "./workflow/",
+        "summary": "Verbinden Sie Tools und Aufgaben in einem Workflow.",
+        "what": "End-to-End-Workflows über Tools, Kanäle und Daten hinweg.",
+        "for": "Teams überbrücken SaaS und Tabellenkalkulationen manuell.",
+        "included": "Zuordnung · Auslöser/Aktionen · Ausnahmen · Überwachungshinweise",
+        "deliverables": "Vernetzter Workflow, Incident Checkliste",
+        "timeline": "Typischerweise 3-6 Wochen"
+      },
+      {
+        "title": "INTERNE INSTRUMENTE",
+        "href": "../internal-tools/",
+        "summary": "Interne Tools, die Ihr Team tatsächlich verwendet.",
+        "what": "Ops und Admin Tools und Dashboards.",
+        "for": "Teams treffen Spreadsheet-Limits.",
+        "included": "Anforderungen · UI · Berechtigungen · Bereitstellung",
+        "deliverables": "Internes Werkzeug, Access Guide",
+        "timeline": "Typischerweise 4-8 Wochen"
+      },
+      {
+        "title": "DATEN UND BERICHTERSTATTUNG",
+        "href": "../data-reporting/",
+        "summary": "Automatisieren Sie die Erfassung, Bereinigung und Berichterstattung.",
+        "what": "Pipelines, die sammeln, reinigen und im Zeitplan zusammenfassen.",
+        "for": "Teams erstellen noch wöchentliche / monatliche Berichte von Hand.",
+        "included": "Quellen · Regeln · Vorlagen · Zeitplan",
+        "deliverables": "Automatisierter Bericht, Stichprobenausgabe",
+        "timeline": "Typischerweise 2-4 Wochen"
+      }
+    ],
+    "useCasesLabel": "VERWENDUNGSFÄLLE",
+    "useCasesNote": "Beispiele dafür, was gebaut werden kann",
+    "useCases": [
+      "Auto-Routing anfragen",
+      "Content Draft Generation",
+      "Datenbereinigung",
+      "Geplante Berichterstattung",
+      "Anforderungsmanagement",
+      "Arbeitswarnungen",
+      "Dokumentenverarbeitung",
+      "Internes Admin-Dashboard"
+    ],
+    "beforeAfterLabel": "VOR/NACH",
+    "before": [
+      "Manuelle Eingabe",
+      "Copy & Paste",
+      "Wiederholte Aufgaben",
+      "Streudaten"
+    ],
+    "after": [
+      "Connected Workflow",
+      "Automatisierung",
+      "Strukturierte Daten",
+      "Umsetzbarer Output"
+    ],
+    "process": [
+      {
+        "n": "01",
+        "t": "Kartenarbeit",
+        "d": "Stromfluss und Engpässe"
+      },
+      {
+        "n": "02",
+        "t": "Wiederholungen analysieren",
+        "d": "Wählen Sie Automatisierungskandidaten"
+      },
+      {
+        "n": "03",
+        "t": "Design",
+        "d": "Regeln, Integrationen, Ausnahmen"
+      },
+      {
+        "n": "04",
+        "t": "Prototyp",
+        "d": "Validierung des Kernstroms"
+      },
+      {
+        "n": "05",
+        "t": "Bau",
+        "d": "Gerät für den tatsächlichen Gebrauch"
+      },
+      {
+        "n": "06",
+        "t": "Test & Handoff",
+        "d": "QA und Transfer"
+      }
+    ],
+    "pricing": [
+      {
+        "name": "EINFACHE AUTOMATION",
+        "price": "von 500.000",
+        "svc": 0
+      },
+      {
+        "name": "ARBEITSFLUSS",
+        "price": "Von 1.000.000",
+        "svc": 1
+      },
+      {
+        "name": "ZOLLSYSTEM",
+        "price": "Zolltarif",
+        "svc": 2
+      }
+    ],
+    "pricingNote": "API-Nutzung, SaaS von Drittanbietern und Serverkosten können separat in Rechnung gestellt werden.",
+    "faq": [
+      {
+        "q": "Wo sollten wir anfangen zu automatisieren?",
+        "a": "Beginnen Sie mit hochfrequenten, klaren Regelaufgaben - Routing, Berichterstattung und Warnungen sind gemeinsame Einstiegspunkte."
+      },
+      {
+        "q": "Können Sie Notion, Sheets, Slack usw. verbinden?",
+        "a": "Je nach Tool und API. Wir bestätigen die Integrationsdurchführbarkeit vor dem Kickoff."
+      },
+      {
+        "q": "Wer zahlt AI/API Kosten?",
+        "a": "Modell- und API-Nutzung ist in der Regel auf dem Client-Konto. Wir schätzen die erwartete Nutzung zusammen."
+      },
+      {
+        "q": "Wie werden Fehler gehandhabt?",
+        "a": "Ausnahmepfade und Warnungen sind Teil des Designs, plus Anleitung zur Überwachung."
+      },
+      {
+        "q": "Was ist mit Sicherheit?",
+        "a": "Wir richten uns nach Zugriff, Datenumfang und Protokollierung aus. Sensible Daten werden durch Design minimiert."
+      }
+    ]
+  },
+  "research": {
+    "crumbBusiness": "Geschäftsbetrieb",
+    "otherTitle": "SONSTIGE UNTERNEHMEN",
+    "ctaEyebrow": "Haben Sie ein Projekt?",
+    "ctaTitle": "Wenn Sie etwas zu bauen haben, sagen Sie es uns.",
+    "ctaLead": "Sogar in der Ideenphase. Wir beginnen mit der Klärung des Umfangs, den Sie benötigen.",
+    "ctaBtn": "Projektanfrage →",
+    "servicesLabel": "Dienstleistungen und Preise",
+    "processLabel": "VERFAHREN",
+    "pricingLabel": "PREIS",
+    "faqLabel": "FAQ",
+    "pricingNoteDefault": "Die endgültigen Zitate variieren je nach Funktionen, Seitenanzahl, Zeitleiste und Projektumfang.",
+    "quoteCta": "Fordern Sie ein Angebot an",
+    "whatWeBuild": "Was wir bauen",
+    "recommendedFor": "Empfohlen für",
+    "included": "Eingeschlossen",
+    "deliverables": "Leistungen",
+    "timeline": "Geschätzter Zeitplan",
+    "from": "von",
+    "startingAt": "",
+    "comingSoon": "Bald kommen",
+    "comingSoonLead": "Dieses Servicedetail wird in Kürze verfügbar sein.",
+    "detailCta": "Details ansehen",
+    "soonBtn": "Bald kommen",
+    "seoTitle": "FORSCHUNG | Newon Geschäftsbetrieb",
+    "metaDescription": "Newon FORSCHUNG - Markt, Wettbewerber, Verbraucher und UX-Forschung. Entscheidungen mit Beweisen, nicht Bauchgefühl.",
+    "eyebrow": "NEWON UNTERNEHMEN",
+    "headline": "Evidenz statt\nIntuition.",
+    "lead": "Wir erforschen Märkte, Wettbewerber, Benutzererfahrung und Verbrauchersignale - und strukturieren dann, was Sie entscheiden müssen.",
+    "ctaPrimary": "Forschungsanfrage →",
+    "ctaSecondary": "Siehe Outputs ↓",
+    "layout": "research",
+    "services": [
+      {
+        "title": "MARKTFORSCHUNG",
+        "tab": "MARKT",
+        "href": "../market-research/",
+        "summary": "Marktstruktur und Chancenanalyse",
+        "what": "Struktur, Opportunity Areas und entscheidungsbereites Framing.",
+        "for": "Teams betreten oder erweitern einen Markt.",
+        "included": "Umfang · Schreibtischforschung · Strukturierung · Implikationen",
+        "deliverables": "Zusammenfassungsbericht, Marktkarte",
+        "timeline": "Typischerweise 1-3 Wochen"
+      },
+      {
+        "title": "WETTBEWERBSANALYSE",
+        "tab": "VERGLEICH",
+        "href": "../competitor-analysis/",
+        "summary": "Vergleichen Sie wichtige Produkte und Unternehmen",
+        "what": "Positionierung, Funktion und Messaging Vergleich.",
+        "for": "Teams klären Differenzierung.",
+        "included": "Menge · Achsen · Matrix · Implikationen",
+        "deliverables": "Wettbewerbermatrix, Zusammenfassung",
+        "timeline": "Typischerweise 1–2 Wochen"
+      },
+      {
+        "title": "VERBRAUCHERFORSCHUNG",
+        "tab": "VERBRAUCHER",
+        "href": "../consumer-research/",
+        "summary": "Bedarfs- und Verhaltensanalyse",
+        "what": "Bedürfnisse, Verhalten und Schmerzmuster.",
+        "for": "Teams validieren Publikum und Messaging.",
+        "included": "Fragen · Forschung · Muster · Einsichten",
+        "deliverables": "User Insight Zusammenfassung, Chancen",
+        "timeline": "Typischerweise 2-4 Wochen"
+      },
+      {
+        "title": "UX AUDIT",
+        "tab": "UX",
+        "href": "../ux-audit/",
+        "summary": "Diagnose bestehender App / Web-Erfahrung",
+        "what": "Themen und Prioritäten über Schlüsselflüsse und UI hinweg.",
+        "for": "Dienste, die mit Conversion oder Usability kämpfen.",
+        "included": "Ablaufüberprüfung · Themenliste · Prioritäten · Vorschläge",
+        "deliverables": "Auditbericht, Aktionspunkte",
+        "timeline": "Typischerweise 1–2 Wochen"
+      },
+      {
+        "title": "TREND FORSCHUNG",
+        "tab": "TREND",
+        "href": "../trend-research/",
+        "summary": "Branchen- und Verbrauchertrendanalyse",
+        "what": "Trends und Produktauswirkungen.",
+        "for": "Teams, die Roadmap oder Content-Richtung festlegen.",
+        "included": "Thema · Quellen · Muster · Empfehlungen",
+        "deliverables": "Trend kurz",
+        "timeline": "Typischerweise 1-3 Wochen"
+      }
+    ],
+    "outputLabel": "FORSCHUNGSOUTPUT",
+    "outputNote": "PROBENSTRUKTUR",
+    "outputK": "FORSCHUNGSKURZE",
+    "outputTitle": "Projektforschung Zusammenfassung",
+    "outputLead": "Outputs sind so strukturiert, dass Entscheidungen sofort folgen können.",
+    "outputs": [
+      "Zusammenfassung",
+      "Marktkarte",
+      "Wettbewerber Matrix",
+      "User Insight",
+      "Chancenbereiche",
+      "Empfehlungen",
+      "Aktionspunkte"
+    ],
+    "process": [
+      {
+        "n": "01",
+        "t": "FRAGE",
+        "d": "Was müssen wir lernen?"
+      },
+      {
+        "n": "02",
+        "t": "FORSCHUNG",
+        "d": "Quellen und Daten sammeln"
+      },
+      {
+        "n": "03",
+        "t": "ANALYSE",
+        "d": "Muster und Lücken finden"
+      },
+      {
+        "n": "04",
+        "t": "ANGABEN",
+        "d": "Synthesebefunde"
+      },
+      {
+        "n": "05",
+        "t": "AKTION",
+        "d": "Nächste Schritte empfehlen"
+      }
+    ],
+    "pricing": [
+      {
+        "name": "UX AUDIT",
+        "price": "Von <0xE2><0x82><0xA9>200.000",
+        "svc": 0
+      },
+      {
+        "name": "WETTBEWERBSANALYSE",
+        "price": "Von <0xE2><0x82><0xA9>200.000",
+        "svc": 1
+      },
+      {
+        "name": "MARKTFORSCHUNG",
+        "price": "Von 300.000",
+        "svc": 2
+      },
+      {
+        "name": "ZOLLFORSCHUNG",
+        "price": "Zolltarif",
+        "svc": 3
+      }
+    ],
+    "pricingNote": "Die endgültigen Zitate variieren je nach Umfang, Tiefe und ob Interviews enthalten sind.",
+    "faq": [
+      {
+        "q": "Wie sehen Deliverables aus?",
+        "a": "Strukturierte Zusammenfassungen, Tabellen und Karten. Slides können aufgenommen werden, wenn scoped."
+      },
+      {
+        "q": "Verwenden Sie interne Daten?",
+        "a": "Wenn verfügbar und angemessen. Ansonsten arbeiten wir aus öffentlichen Quellen und Beobachtung."
+      },
+      {
+        "q": "Sind Interviews inklusive?",
+        "a": "Abhängig vom Paket. Interviews können bei Bedarf hinzugefügt werden."
+      },
+      {
+        "q": "Wie wird mit Vertraulichkeit umgegangen?",
+        "a": "Im vereinbarten Umfang; NDA bei Bedarf."
+      },
+      {
+        "q": "Kann das zu BUILD führen?",
+        "a": "Ja. Insights können Produkt-Scoping als nächstes füttern."
+      }
+    ]
+  },
+  "solutions": {
+    "crumbBusiness": "Geschäftsbetrieb",
+    "otherTitle": "SONSTIGE UNTERNEHMEN",
+    "ctaEyebrow": "Haben Sie ein Projekt?",
+    "ctaTitle": "Wenn Sie etwas zu bauen haben, sagen Sie es uns.",
+    "ctaLead": "Sogar in der Ideenphase. Wir beginnen mit der Klärung des Umfangs, den Sie benötigen.",
+    "ctaBtn": "Projektanfrage →",
+    "servicesLabel": "LÖSUNGSARTEN",
+    "processLabel": "VERFAHREN",
+    "pricingLabel": "PREIS",
+    "faqLabel": "FAQ",
+    "pricingNoteDefault": "Die endgültigen Zitate variieren je nach Funktionen, Seitenanzahl, Zeitleiste und Projektumfang.",
+    "quoteCta": "Projektberatung",
+    "whatWeBuild": "Was wir bauen",
+    "recommendedFor": "Empfohlen für",
+    "included": "Eingeschlossen",
+    "deliverables": "Leistungen",
+    "timeline": "Geschätzter Zeitplan",
+    "from": "von",
+    "startingAt": "",
+    "comingSoon": "Bald kommen",
+    "comingSoonLead": "Dieses Servicedetail wird in Kürze verfügbar sein.",
+    "detailCta": "Details ansehen",
+    "soonBtn": "Bald kommen",
+    "seoTitle": "LÖSUNGEN | Newon Geschäftsbetrieb",
+    "metaDescription": "Newon LÖSUNGEN - White-Label, kundenspezifische Produkte, Startprogramme, interne Systeme. Gebaut für Projekte, die nicht in ein Paket passen.",
+    "eyebrow": "NEWON UNTERNEHMEN · LÖSUNGEN",
+    "headline": "Wir pressen Ihr Projekt\nnicht in ein Paket.",
+    "lead": "Für Arbeiten, die Standardpakete nicht lösen können, entwerfen und bauen wir um Ihre Ziele und Einschränkungen herum.",
+    "ctaPrimary": "Sprechen Sie mit uns",
+    "ctaSecondary": "Siehe Typen ↓",
+    "layout": "solutions",
+    "services": [
+      {
+        "title": "WEISSLABEL",
+        "href": "../white-label/",
+        "summary": "Passen Sie bestehende Produkt- / Technologiestrukturen an Ihre Marke an.",
+        "what": "White-Label-Setup ausgerichtet auf Marke, Domain und Ops.",
+        "for": "Unternehmen, die schneller ein Markenprodukt benötigen.",
+        "included": "Scope · Branding · Deployment · Handoff",
+        "deliverables": "Markenprodukt, Ops Guide",
+        "timeline": "Abhängig vom Umfang"
+      },
+      {
+        "title": "ZOLLPRODUKT",
+        "tab": "ZUSTAND",
+        "href": "../custom-product/",
+        "summary": "Kundenspezifische digitale Produkte für ein bestimmtes Problem.",
+        "what": "Vom Problem Framing bis zum Custom Product Build.",
+        "for": "Bedürfnisse, die nicht in Standardpakete passen.",
+        "included": "Framing · Design · Build · QA",
+        "deliverables": "Custom product, docs",
+        "timeline": "Abhängig vom Umfang"
+      },
+      {
+        "title": "PRODUKTLAUNCH",
+        "tab": "GRUND",
+        "href": "../product-launch/",
+        "summary": "Connect idea → product → landing → launch ready.",
+        "what": "Ein verbundener Pfad zum Starten.",
+        "for": "Teams, die Idea-to-Launch in einem Engagement wollen.",
+        "included": "Strategie · Design · Build · Launch Prep",
+        "deliverables": "Produkt + Landung + Start-Checkliste",
+        "timeline": "Abhängig vom Umfang"
+      },
+      {
+        "title": "INTERNES SYSTEM",
+        "tab": "INTERN",
+        "href": "../internal-system/",
+        "summary": "Interne Systeme für Betrieb und Management.",
+        "what": "Interne Operationen und Managementsysteme.",
+        "for": "Organisationen digitalisieren interne Prozesse.",
+        "included": "Anforderungen · Berechtigungen · Build · Deployment",
+        "deliverables": "Internes System, Access/Ops Guide",
+        "timeline": "Abhängig vom Umfang"
+      }
+    ],
+    "launchLabel": "PRODUKTLAUNCHFLUSS",
+    "launchFlow": [
+      {
+        "t": "IDEE",
+        "d": "Ziele und Hypothesen"
+      },
+      {
+        "t": "STRATEGIE",
+        "d": "Anwendungsbereich und Prioritäten"
+      },
+      {
+        "t": "BEZEICHNUNG",
+        "d": "Erfahrung und Struktur"
+      },
+      {
+        "t": "BAU",
+        "d": "Implementierung und Integration"
+      },
+      {
+        "t": "GRUND",
+        "d": "Schiff und Veröffentlichung"
+      },
+      {
+        "t": "VERBESSERUNG",
+        "d": "Lernen und Iterieren"
+      }
+    ],
+    "whenLabel": "ZUR VERWENDUNG VON LÖSUNGEN",
+    "whenNote": "Am besten geeignet für diese Situationen",
+    "whenItems": [
+      {
+        "tag": "ZOLLSTELLEN",
+        "t": "Projekte, die nicht zu vorhandenen Paketen passen"
+      },
+      {
+        "tag": "MULTIVERKEHR",
+        "t": "Mehrere Dienste gemeinsam benötigt"
+      },
+      {
+        "tag": "INTERN",
+        "t": "Interne Systeme erforderlich"
+      },
+      {
+        "tag": "WEISSLABEL",
+        "t": "White-Label-Produkte benötigt"
+      },
+      {
+        "tag": "VOLLSTÄNDIGER LAUNCH",
+        "t": "Vollständiger Produkt-Launch-Pfad erforderlich"
+      }
+    ],
+    "pricingCustom": true,
+    "pricingTitle": "ZOLLPROJEKT",
+    "pricingLead": "Pro Projekt angegeben",
+    "pricingBody": "Wir überprüfen Umfang / Komplexität / Timeline / Integration und geben dann ein Angebot ab. Keine festen Menüpreise.",
+    "pricingAxes": [
+      "Anwendungsbereich",
+      "Komplexität",
+      "Zeitleiste",
+      "Integration"
+    ],
+    "pricingNote": "Zolltarif",
+    "process": [],
+    "pricing": [],
+    "faq": [
+      {
+        "q": "Wie unterscheiden sich Lösungen von Paketen?",
+        "a": "Pakete sind definierte Angebote. Lösungen werden speziell für komplexe oder spezielle Projekte entwickelt."
+      },
+      {
+        "q": "Wie wird die Preisgestaltung festgelegt?",
+        "a": "Nach der Überprüfung von Zielen, Umfang, Komplexität, Zeitleiste und Integrationen."
+      },
+      {
+        "q": "Was beinhaltet White-Label?",
+        "a": "Anpassung bestehender Tech-/Produktstrukturen an Brand und Ops. Der realisierbare Umfang wird in Konsultationen bestätigt."
+      },
+      {
+        "q": "Können mehrere Stakeholder einbezogen werden?",
+        "a": "Ja. Wir definieren Entscheidungsträger und einen klaren Arbeitskanal."
+      },
+      {
+        "q": "Was ist mit Wartung und Erweiterung?",
+        "a": "Expansion und Ops nach dem Start können als separates Engagement fortgesetzt werden."
+      }
+    ]
+  }
+}

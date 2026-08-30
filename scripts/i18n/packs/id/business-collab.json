@@ -1,0 +1,995 @@
+{
+  "partnership": {
+    "crumbBusiness": "Bisnis",
+    "crumbCollaboration": "Kolaborasi",
+    "whoEyebrow": "UNTUK SIAPA",
+    "whatEyebrow": "APA YANG KITA BISA LAKUKAN",
+    "processEyebrow": "BAGAIMANA CARANYA BEKERJA",
+    "bringsEyebrow": "APA YANG DIBAWA NEWON",
+    "scopeEyebrow": "LINGKUP / HASIL YANG DIHARAPKAN",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "FAQ",
+    "relatedEyebrow": "LAYANAN TERKAIT",
+    "relatedTitle": "Layanan terkait",
+    "otherEyebrow": "LAINNYA",
+    "otherTitle": "Jenis kolaborasi lain",
+    "navAriaLabel": "Kolaborasi",
+    "navLabel": "KOLABORASI",
+    "otherTypeLabel": "KOLAB",
+    "keywordsAria": "Kata kunci",
+    "possibleEyebrow": "KOLABORASI YANG MUNGKIN",
+    "useCasesEyebrow": "USE CASES",
+    "techEyebrow": "OPSIONAL TEKNIS",
+    "formatsEyebrow": "FORMAT KAMPANYE",
+    "principlesEyebrow": "PRINSIP",
+    "measurementEyebrow": "PENGUKURAN",
+    "metricsEyebrow": "METRIK",
+    "capabilitiesEyebrow": "KEMAMPUAN",
+    "deliverablesEyebrow": "HASIL YANG DIHARAPKAN",
+    "pricingEyebrow": "HARGA / TITIK AWAL",
+    "requirementsEyebrow": "PERSYARATAN PROYEK",
+    "faqCommon1Q": "Bisakah kami menanyakan pada tahap ide?",
+    "faqCommon1A": "Ya. Kami bisa meninjau kecocokan berdasarkan tujuan dan masalah bahkan tanpa rencana rinci.",
+    "faqCommon2Q": "Berapa lama proyek berlangsung?",
+    "faqCommon2A": "Itu tergantung pada lingkup dan hasil yang diharapkan. Kami membagikan garis waktu setelah lingkup ditentukan.",
+    "faqCommon3Q": "Bisakah kami menanyakan tanpa anggaran tetap?",
+    "faqCommon3A": "Ya. Kami memperjelas lingkup yang dibutuhkan terlebih dahulu, kemudian mengusulkan pendekatan yang sesuai.",
+    "seoTitle": "Newon Kemitraan | Kolaborasi Bisnis",
+    "metaDescription": "Menghubungkan produk, teknologi, dan merek Newon dengan kekuatan mitra untuk menciptakan pengalaman pengguna baru dan peluang bisnis.",
+    "crumb": "Kemitraan",
+    "heroLabel": "KEMITRAAN",
+    "heroTitle": "Membangun peluang lebih besar bersama.",
+    "heroLead": "Kami menghubungkan produk, teknologi, dan merek Newon dengan apa yang perusahaan dan layanan lakukan terbaik untuk menciptakan pengalaman baru dan peluang bisnis.",
+    "heroKeywords": [
+      "Kemitraan Strategis",
+      "Bisnis Bersama",
+      "Distribusi",
+      "Kolaborasi Merek"
+    ],
+    "ctaPrimary": "Ajukan kemitraan →",
+    "ctaSecondary": "Jelajahi Newon →",
+    "ctaSecondaryHref": "../../../about/",
+    "whoTitle": "Mitra yang kami ajak bekerja sama",
+    "whoItems": [
+      {
+        "title": "Perusahaan",
+        "body": "Tim yang mengeksplorasi produk digital baru atau perluasan layanan"
+      },
+      {
+        "title": "Startup",
+        "body": "Tim awal yang membutuhkan kolaborasi produk, teknologi, distribusi, atau pemasaran"
+      },
+      {
+        "title": "Merek",
+        "body": "Merek yang dapat terhubung dengan produk atau pengalaman pengguna Newon"
+      },
+      {
+        "title": "Platform / Layanan",
+        "body": "Layanan yang terbuka untuk integrasi, pertumbuhan audiens, atau proyek bersama"
+      },
+      {
+        "title": "Konten / Media",
+        "body": "Mitra untuk kampanye bersama atau kolaborasi konten"
+      }
+    ],
+    "whatTitle": "Apa yang dapat termasuk dalam kemitraan",
+    "whatItems": [
+      {
+        "title": "Kemitraan Strategis",
+        "body": "Kolaborasi jangka panjang produk, layanan, dan bisnis"
+      },
+      {
+        "title": "Co-Produk",
+        "body": "Produk bersama yang dibangun oleh dua merek atau layanan"
+      },
+      {
+        "title": "Kemitraan Distribusi",
+        "body": "Kolaborasi distribusi dan saluran"
+      },
+      {
+        "title": "Integrasi Platform",
+        "body": "Integrasi layanan dan fitur"
+      },
+      {
+        "title": "Kolaborasi Merek",
+        "body": "Proyek merek bersama"
+      },
+      {
+        "title": "Ekspansi Pasar",
+        "body": "Kolaborasi untuk menjangkau audiens atau pasar baru"
+      }
+    ],
+    "processTitle": "Dari pertanyaan hingga peluncuran",
+    "processItems": [
+      {
+        "title": "USULAN",
+        "body": "Bagikan ide dan tujuan kolaborasi"
+      },
+      {
+        "title": "TINJAUAN",
+        "body": "Tinjau kesesuaian dan kelayakan dengan Newon"
+      },
+      {
+        "title": "SESUAIKAN",
+        "body": "Tentukan peran, tujuan, jadwal, dan lingkup"
+      },
+      {
+        "title": "BANGUN",
+        "body": "Buat produk, konten, fitur, atau kampanye"
+      },
+      {
+        "title": "LUNCURKAN",
+        "body": "Luncurkan dan operasikan bersama"
+      },
+      {
+        "title": "TUMBUH",
+        "body": "Tinjau hasil dan putuskan apakah akan memperluas"
+      }
+    ],
+    "possibleTitle": "Bentuk kolaborasi yang mungkin",
+    "possibleNote": "Contoh arah yang bisa kita jelajahi — bukan studi kasus klien.",
+    "possibleItems": [
+      "Manfaat merek dalam aplikasi Newon",
+      "Produk digital bersama",
+      "Konten yang dibuat bersama",
+      "Integrasi fitur layanan",
+      "Promosi manfaat pengguna bersama",
+      "Kampanye bersama",
+      "Bukti konsep bisnis baru (PoC)",
+      "Uji pasar luar negeri bersama"
+    ],
+    "bringsTitle": "Apa yang dibawa Newon",
+    "bringsItems": [
+      {
+        "title": "Strategi Produk",
+        "body": "Struktur produk dan desain pengalaman pengguna"
+      },
+      {
+        "title": "Desain",
+        "body": "Merek / UI / UX / konten"
+      },
+      {
+        "title": "Pengembangan",
+        "body": "Pengembangan web / aplikasi / AI / SaaS"
+      },
+      {
+        "title": "Operasi",
+        "body": "Peluncuran dan operasi produk"
+      },
+      {
+        "title": "Eksperimen",
+        "body": "Validasi MVP / PoC cepat"
+      }
+    ],
+    "scopeTitle": "Ruang lingkup dan hasil yang diharapkan",
+    "scopeItems": [
+      "Definisi tujuan kolaborasi",
+      "Peran dan timeline",
+      "Pekerjaan produk, konten, atau fitur",
+      "Rencana peluncuran dan operasi bersama"
+    ],
+    "scopeNote": "Hasil yang diharapkan bervariasi tergantung ruang lingkup proyek.",
+    "faqs": [
+      {
+        "q": "Bisakah kita bertanya di tahap ide?",
+        "a": "Ya. Kita dapat meninjau kesesuaian berdasarkan tujuan dan masalah meskipun tanpa rencana terperinci."
+      },
+      {
+        "q": "Bisakah kita bertanya tanpa rencana yang konkret?",
+        "a": "Ya. Layanan yang ingin Anda hubungkan dan tujuan sudah cukup untuk memulai."
+      },
+      {
+        "q": "Apakah Anda bekerja dengan perusahaan luar negeri?",
+        "a": "Ya. Yang paling penting adalah apakah kolaborasi sesuai dengan layanan Newon."
+      },
+      {
+        "q": "Bagaimana syarat ditentukan?",
+        "a": "Mereka tergantung pada jenis dan lingkup kolaborasi. Kami akan membimbing Anda setelah pemeriksaan."
+      },
+      {
+        "q": "Apakah kampanye satu kali memungkinkan?",
+        "a": "Ya, meskipun kami memprioritaskan arah yang dapat berkembang seiring waktu."
+      }
+    ],
+    "finalTitle": "Hubungkan kemungkinan baru\ndengan Newon.",
+    "finalLead": "Proposal konkret tidak diperlukan.\nKami bisa memulai dengan meninjau apa yang mungkin bekerja bersama.",
+    "finalBtn": "Ajukan kemitraan →",
+    "related": [
+      {
+        "label": "Bisnis",
+        "href": "../../"
+      },
+      {
+        "label": "Produk",
+        "href": "../../../products/"
+      },
+      {
+        "label": "Laboratorium",
+        "href": "../../../resources/labs/"
+      }
+    ]
+  },
+  "service": {
+    "crumbBusiness": "Bisnis",
+    "crumbCollaboration": "Kolaborasi",
+    "whoEyebrow": "UNTUK SIAPA",
+    "whatEyebrow": "APA YANG BISA KAMI LAKUKAN",
+    "processEyebrow": "CARA KERJANYA",
+    "bringsEyebrow": "APA YANG DIBAWA NEWON",
+    "scopeEyebrow": "LINGKUP / HASIL",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "FAQ",
+    "relatedEyebrow": "LAYANAN TERKAIT",
+    "relatedTitle": "Layanan terkait",
+    "otherEyebrow": "LAINNYA",
+    "otherTitle": "Jenis kolaborasi lain",
+    "navAriaLabel": "Kolaborasi",
+    "navLabel": "KOLABORASI",
+    "otherTypeLabel": "KOLAB",
+    "keywordsAria": "Kata kunci",
+    "possibleEyebrow": "KEMUNGKINAN KOLABORASI",
+    "useCasesEyebrow": "STUDI KASUS",
+    "techEyebrow": "OPSIONAL TEKNIS",
+    "formatsEyebrow": "FORMAT KAMPANYE",
+    "principlesEyebrow": "PRINSIP",
+    "measurementEyebrow": "PENGUKURAN",
+    "metricsEyebrow": "METRIK",
+    "capabilitiesEyebrow": "KAPABILITAS",
+    "deliverablesEyebrow": "HASIL",
+    "pricingEyebrow": "PENENTUAN HARGA / TITIK AWAL",
+    "requirementsEyebrow": "PERSYARATAN PROYEK",
+    "faqCommon1Q": "Apakah kami bisa menanyakan pada tahap ide?",
+    "faqCommon1A": "Ya. Kami bisa meninjau kesesuaian berdasarkan tujuan dan masalah meskipun tanpa rencana rinci.",
+    "faqCommon2Q": "Berapa lama proyek berlangsung?",
+    "faqCommon2A": "Itu tergantung pada lingkup dan hasil. Kami membagikan garis waktu setelah lingkup ditentukan.",
+    "faqCommon3Q": "Apakah kami bisa menanyakan tanpa anggaran tetap?",
+    "faqCommon3A": "Ya. Kami memperjelas cakupan yang dibutuhkan terlebih dahulu, kemudian mengusulkan pendekatan yang sesuai.",
+    "seoTitle": "Kolaborasi Aplikasi & Layanan | Newon",
+    "metaDescription": "Hubungkan konten, fitur, merek, data, dan manfaat dengan aplikasi dan layanan digital Newon.",
+    "crumb": "Kolaborasi aplikasi & layanan",
+    "heroLabel": "KOLABORASI APLIKASI & LAYANAN",
+    "heroTitle": "Produk dan layanan\nmenciptakan lebih banyak nilai bersama.",
+    "heroLead": "Kolaborasi yang menghubungkan konten, fitur, merek, data, dan manfaat dengan aplikasi dan layanan digital Newon.",
+    "heroKeywords": [
+      "Integrasi Aplikasi",
+      "Integrasi Layanan",
+      "Konten",
+      "Manfaat Pengguna"
+    ],
+    "ctaPrimary": "Tanyakan tentang kolaborasi layanan →",
+    "ctaSecondary": "Lihat Produk Newon →",
+    "ctaSecondaryHref": "../../../products/",
+    "whoTitle": "Untuk siapa ini",
+    "whoItems": [
+      {
+        "title": "Operator aplikasi",
+        "body": "Tim dengan layanan yang dapat terhubung ke pengguna aplikasi Newon"
+      },
+      {
+        "title": "Perusahaan SaaS",
+        "body": "Produk SaaS yang mencari integrasi fitur atau data"
+      },
+      {
+        "title": "Platform perdagangan",
+        "body": "Platform dengan manfaat atau konten yang sesuai dengan konteks di dalam aplikasi"
+      },
+      {
+        "title": "Keuangan / kesehatan / gaya hidup",
+        "body": "Layanan yang sesuai dengan konteks pengguna yang relevan"
+      },
+      {
+        "title": "Platform konten",
+        "body": "Mitra yang menyediakan konten yang dapat digunakan di dalam aplikasi"
+      },
+      {
+        "title": "Keanggotaan merek",
+        "body": "Merek yang menjajaki kupon, manfaat, atau tautan keanggotaan"
+      }
+    ],
+    "whatTitle": "Apa yang bisa kami lakukan",
+    "whatItems": [
+      {
+        "title": "Integrasi Layanan",
+        "body": "Integrasi fitur atau API"
+      },
+      {
+        "title": "Integrasi Konten",
+        "body": "Konten yang dapat digunakan di dalam aplikasi"
+      },
+      {
+        "title": "Kemitraan Manfaat",
+        "body": "Kupon, manfaat, dan tautan keanggotaan"
+      },
+      {
+        "title": "Kolaborasi Fitur",
+        "body": "Pengembangan bersama fitur tertentu"
+      },
+      {
+        "title": "Promosi Silang",
+        "body": "Promosi bersama antar layanan"
+      },
+      {
+        "title": "Produk Bersama",
+        "body": "Fitur atau produk bersama yang dibangun di atas aplikasi yang sudah ada"
+      }
+    ],
+    "useCasesTitle": "Contoh kemungkinan kolaborasi",
+    "useCasesNote": "Contoh arah yang bisa kami jelajahi — bukan studi kasus klien.",
+    "useCasesItems": [
+      "SubPing + manfaat layanan berlangganan",
+      "PetLog + konten layanan terkait hewan peliharaan",
+      "BabyLog + informasi layanan parenting",
+      "Aplikasi produktivitas + konten edukasi",
+      "Hadiah merek di dalam aplikasi",
+      "Fitur lintas layanan di aplikasi Newon"
+    ],
+    "techTitle": "Opsi teknis",
+    "techItems": [
+      "Integrasi API",
+      "Deep Link",
+      "Webhook",
+      "SDK",
+      "OAuth",
+      "Konten Tertanam",
+      "Pertukaran Data",
+      "Pelacakan Referensi"
+    ],
+    "techNote": "Opsi yang didukung bervariasi menurut proyek.",
+    "processTitle": "Dari ulasan hingga integrasi",
+    "processItems": [
+      {
+        "title": "TINJAUAN LAYANAN",
+        "body": "Tinjau setiap struktur produk"
+      },
+      {
+        "title": "USE CASE",
+        "body": "Tentukan nilai untuk pengguna"
+      },
+      {
+        "title": "PEMERIKSAAN TEKNIS",
+        "body": "Konfirmasi kelayakan teknis"
+      },
+      {
+        "title": "PROTOTIPE",
+        "body": "Uji fitur kecil terlebih dahulu"
+      },
+      {
+        "title": "INTEGRASI",
+        "body": "Terapkan integrasi"
+      },
+      {
+        "title": "UKUR",
+        "body": "Tinjau data penggunaan dan konversi"
+      }
+    ],
+    "metricsTitle": "Apa yang bisa diukur",
+    "metricsItems": [
+      "Penggunaan Fitur",
+      "Klik-lalu-masuk",
+      "Aktivasi",
+      "Konversi",
+      "Retensi",
+      "Referensi"
+    ],
+    "metricsNote": "Kami tidak menjanjikan angka di awal. Item yang dapat diukur ditentukan dengan ruang lingkup.",
+    "bringsTitle": "Apa yang dibawa Newon",
+    "bringsItems": [
+      {
+        "title": "Konteks Produk",
+        "body": "Memahami struktur aplikasi Newon dan alur pengguna"
+      },
+      {
+        "title": "Desain Integrasi",
+        "body": "Merancang pengalaman integrasi yang alami"
+      },
+      {
+        "title": "Pengembangan",
+        "body": "Membangun fitur integrasi yang dibutuhkan"
+      },
+      {
+        "title": "Konten",
+        "body": "Konten yang dapat digunakan di dalam aplikasi"
+      },
+      {
+        "title": "Dukungan Peluncuran",
+        "body": "Dukungan peluncuran dan operasi awal"
+      }
+    ],
+    "scopeTitle": "Ruang Lingkup dan Hasil",
+    "scopeItems": [
+      "Ruang lingkup integrasi",
+      "Desain alur pengguna",
+      "Pekerjaan fitur atau konten",
+      "Pengujian integrasi dan peluncuran"
+    ],
+    "scopeNote": "Ruang lingkup tergantung pada apakah integrasi API atau kolaborasi konten diperlukan.",
+    "faqs": [
+      {
+        "q": "Aplikasi Newon mana yang bisa kita kolaborasikan?",
+        "a": "Kami berdiskusi berdasarkan aplikasi yang saat ini dijalankan Newon di bidang parenting, hewan peliharaan, produktivitas, dan gaya hidup."
+      },
+      {
+        "q": "Apakah integrasi teknis diperlukan?",
+        "a": "Tidak. Kolaborasi konten dan proyek bersama dapat berjalan tanpa integrasi."
+      },
+      {
+        "q": "Apakah Newon menangani pengembangan?",
+        "a": "Tergantung pada jenis kolaborasi. Peran dibagi ketika integrasi diperlukan."
+      },
+      {
+        "q": "Apakah layanan yang lebih kecil bisa bertanya?",
+        "a": "Ya. Kuncinya adalah apakah koneksi terasa alami bagi pengguna."
+      },
+      {
+        "q": "Berapa lama waktunya?",
+        "a": "Tergantung pada ruang lingkup integrasi dan hasil yang diharapkan."
+      }
+    ],
+    "finalTitle": "Punya ide untuk\nmenghubungkan layanan?",
+    "finalLead": "Bagikan layanan yang ingin Anda hubungkan dan tujuan Anda. Kami akan menindaklanjuti setelah peninjauan.",
+    "finalBtn": "Tanyakan tentang kolaborasi aplikasi & layanan →",
+    "related": [
+      {
+        "label": "Produk",
+        "href": "../../../products/"
+      },
+      {
+        "label": "AI",
+        "href": "../../../ai/"
+      },
+      {
+        "label": "SaaS",
+        "href": "../../../saas/"
+      }
+    ]
+  },
+  "promotion": {
+    "crumbBusiness": "Bisnis",
+    "crumbCollaboration": "Kolaborasi",
+    "whoEyebrow": "UNTUK SIAPA",
+    "whatEyebrow": "APA YANG BISA KITA LAKUKAN",
+    "processEyebrow": "BAGAIMANA ITU BEKERJA",
+    "bringsEyebrow": "APA YANG DIBAWA NEWON",
+    "scopeEyebrow": "RUANG LINGKUP / HASIL YANG DIHARAPKAN",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "FAQ",
+    "relatedEyebrow": "LAYANAN TERKAIT",
+    "relatedTitle": "Layanan terkait",
+    "otherEyebrow": "LAINNYA",
+    "otherTitle": "Jenis kolaborasi lainnya",
+    "navAriaLabel": "Kolaborasi",
+    "navLabel": "KOLABORASI",
+    "otherTypeLabel": "KOLAB",
+    "keywordsAria": "Kata kunci",
+    "possibleEyebrow": "POTENSI KOLABORASI",
+    "useCasesEyebrow": "STUDI KASUS",
+    "techEyebrow": "OPSIONAL TEKNIS",
+    "formatsEyebrow": "FORMAT KAMPANYE",
+    "principlesEyebrow": "PRINSIP",
+    "measurementEyebrow": "PENGUKURAN",
+    "metricsEyebrow": "METRIK",
+    "capabilitiesEyebrow": "KAPABILITAS",
+    "deliverablesEyebrow": "HASIL YANG DIHARAPKAN",
+    "pricingEyebrow": "HARGA / TITIK AWAL",
+    "requirementsEyebrow": "PERSYARATAN PROYEK",
+    "faqCommon1Q": "Bisakah kami bertanya pada tahap ide?",
+    "faqCommon1A": "Ya. Kami dapat meninjau kecocokan berdasarkan tujuan dan masalah bahkan tanpa rencana rinci.",
+    "faqCommon2Q": "Berapa lama waktu yang dibutuhkan proyek?",
+    "faqCommon2A": "Tergantung pada ruang lingkup dan hasil yang diharapkan. Kami membagikan jadwal setelah ruang lingkup ditentukan.",
+    "faqCommon3Q": "Bisakah kami bertanya tanpa anggaran tetap?",
+    "faqCommon3A": "Ya. Kami memperjelas ruang lingkup yang dibutuhkan terlebih dahulu, lalu mengusulkan pendekatan yang sesuai.",
+    "seoTitle": "Periklanan & Promosi | Newon",
+    "metaDescription": "Promosi merek yang dirancang agar alami dalam produk dan pengalaman konten Newon — tidak hanya paparan banner.",
+    "crumb": "Periklanan & promosi",
+    "heroLabel": "PERIKLANAN & PROMOSI",
+    "heroTitle": "Promosi yang tidak\nmengakhiri pengalaman produk.",
+    "heroLead": "Tidak hanya paparan banner — kami merancang promosi merek yang terhubung secara alami dengan produk dan pengalaman konten Newon.",
+    "heroKeywords": [
+      "Kampanye",
+      "Integrasi Merek",
+      "Konten",
+      "Promosi"
+    ],
+    "ctaPrimary": "Tanyakan tentang promosi →",
+    "ctaSecondary": "Lihat Media →",
+    "ctaSecondaryHref": "../../../media/",
+    "whoTitle": "Untuk siapa ini",
+    "whoItems": [
+      {
+        "title": "Merek konsumen",
+        "body": "Merek gaya hidup dan konsumen yang relevan dengan pengguna Newon"
+      },
+      {
+        "title": "Layanan digital",
+        "body": "Layanan yang dapat diperkenalkan secara alami dalam alur aplikasi atau web"
+      },
+      {
+        "title": "Merek gaya hidup",
+        "body": "Merek di bidang parenting, hewan peliharaan, produktivitas, dan topik terkait"
+      },
+      {
+        "title": "Pendidikan / produktivitas",
+        "body": "Merek yang menawarkan informasi atau manfaat yang berguna"
+      },
+      {
+        "title": "Perdagangan",
+        "body": "Merek perdagangan dengan manfaat atau informasi yang relevan bagi pengguna"
+      },
+      {
+        "title": "Peluncuran produk baru",
+        "body": "Merek yang meluncurkan produk yang sesuai dengan saluran Newon"
+      }
+    ],
+    "whatTitle": "Apa yang bisa kita lakukan",
+    "whatItems": [
+      {
+        "title": "Penempatan Produk",
+        "body": "Eksposur merek yang alami di dalam layanan Newon"
+      },
+      {
+        "title": "Konten Bersponsor",
+        "body": "Konten yang dibuat bersama dengan merek"
+      },
+      {
+        "title": "Kampanye",
+        "body": "Kampanye musiman atau berbasis topik"
+      },
+      {
+        "title": "Manfaat Pengguna",
+        "body": "Kupon, manfaat, dan acara untuk pengguna"
+      },
+      {
+        "title": "Promosi Peluncuran",
+        "body": "Kolaborasi untuk peluncuran produk atau layanan baru"
+      },
+      {
+        "title": "Promosi Silang",
+        "body": "Koneksi di seluruh saluran dan produk Newon"
+      }
+    ],
+    "formatsTitle": "Format kampanye",
+    "formatsItems": [
+      {
+        "title": "Kampanye Aplikasi",
+        "body": "Kampanye berbasis topik di dalam aplikasi"
+      },
+      {
+        "title": "Kampanye Web",
+        "body": "Kampanye yang fokus pada web dan landing"
+      },
+      {
+        "title": "Berita Kartu",
+        "body": "Konten kartu informatif"
+      },
+      {
+        "title": "Video Singkat",
+        "body": "Konten video pendek"
+      },
+      {
+        "title": "Cerita Produk",
+        "body": "Konten cerita produk dan merek"
+      },
+      {
+        "title": "Halaman Landing",
+        "body": "Halaman arahan kampanye"
+      },
+      {
+        "title": "Acara Pengguna",
+        "body": "Acara pengguna partisipatif"
+      },
+      {
+        "title": "Manfaat Merek",
+        "body": "Penawaran manfaat merek"
+      },
+      {
+        "title": "Sumber Bersponsor",
+        "body": "Panduan dan sumber bersponsor"
+      }
+    ],
+    "principlesTitle": "Pengalaman pengguna didahulukan dibanding iklan.",
+    "principlesItems": [
+      {
+        "title": "Relevan",
+        "body": "Promosi yang benar-benar relevan dengan produk dan pengguna"
+      },
+      {
+        "title": "Bermanfaat",
+        "body": "Informasi atau manfaat untuk pengguna"
+      },
+      {
+        "title": "Jelas",
+        "body": "Pelabelan iklan / sponsor yang jelas"
+      },
+      {
+        "title": "Native",
+        "body": "Format yang tidak mengganggu pengalaman produk"
+      },
+      {
+        "title": "Terukur",
+        "body": "Struktur yang memungkinkan review kinerja"
+      }
+    ],
+    "processTitle": "Proses kampanye",
+    "processItems": [
+      {
+        "title": "SINGKATAN",
+        "body": "Konfirmasi tujuan merek dan kampanye"
+      },
+      {
+        "title": "AUDIENS",
+        "body": "Pilih produk, konten, dan konteks pengguna Newon yang tepat"
+      },
+      {
+        "title": "KONSEP",
+        "body": "Rancang ide kampanye"
+      },
+      {
+        "title": "BUAT",
+        "body": "Buat konten, halaman arahan, dan aset"
+      },
+      {
+        "title": "LUNCURKAN",
+        "body": "Luncurkan kampanye"
+      },
+      {
+        "title": "LAPORAN",
+        "body": "Tinjau kinerja dalam data yang tersedia"
+      }
+    ],
+    "measurementTitle": "Sinyal yang dapat diukur",
+    "measurementItems": [
+      "Tayangan",
+      "Klik",
+      "Kunjungan Halaman Arahan",
+      "Kunjungan Produk",
+      "Konversi",
+      "Keterlibatan"
+    ],
+    "measurementNote": "Kami hanya menggunakan data yang dapat dikumpulkan di lingkungan analisis aktual.",
+    "importantNote": "Ini adalah layanan kolaborasi awal untuk merancang kampanye merek bersama — bukan platform iklan berskala besar.",
+    "bringsTitle": "Apa yang dibawa Newon",
+    "bringsItems": [
+      {
+        "title": "Konteks Audiens",
+        "body": "Pemilihan saluran berdasarkan layanan dan konteks pengguna"
+      },
+      {
+        "title": "Konten",
+        "body": "Perencanaan dan produksi konten kampanye"
+      },
+      {
+        "title": "Desain",
+        "body": "Desain pengalaman pendaratan, aset, dan dalam aplikasi"
+      },
+      {
+        "title": "Kecocokan Produk",
+        "body": "Desain eksposur yang melindungi pengalaman produk"
+      },
+      {
+        "title": "Pelaporan",
+        "body": "Tinjauan kinerja dalam lingkup yang tersedia"
+      }
+    ],
+    "scopeTitle": "Ruang lingkup dan hasil",
+    "scopeItems": [
+      "Definisi tujuan kampanye",
+      "Pemilihan saluran dan format",
+      "Konten, pendaratan, dan produksi aset",
+      "Operasi kampanye dan pelaporan"
+    ],
+    "scopeNote": "Ruang lingkup bervariasi tergantung merek, saluran, dan format.",
+    "faqs": [
+      {
+        "q": "Apakah tarif iklan tetap?",
+        "a": "Kami tidak mempublikasikan tarif tetap. Syarat tergantung pada merek, saluran, dan format."
+      },
+      {
+        "q": "Apakah merek mana pun bisa berpartisipasi?",
+        "a": "Tidak. Kami memprioritaskan merek yang relevan dengan layanan Newon dan pengalaman pengguna."
+      },
+      {
+        "q": "Apakah Anda menerima iklan yang mengganggu?",
+        "a": "Tidak. Kami menghindari paparan paksa yang mengganggu alur produk."
+      },
+      {
+        "q": "Apakah kolaborasi konten satu-satunya pilihan?",
+        "a": "Tidak. Kita juga bisa mengeksplorasi kampanye bersama dan pengenalan dalam aplikasi."
+      },
+      {
+        "q": "Bisakah kami bertanya tanpa anggaran tetap?",
+        "a": "Ya. Kami memperjelas ruang lingkup terlebih dahulu, lalu mengusulkan pendekatan yang sesuai."
+      }
+    ],
+    "finalTitle": "Ciptakan pengalaman merek\ndengan Newon.",
+    "finalLead": "Bagikan merek dan tujuan Anda. Kami akan meninjau format yang sesuai dengan layanan.",
+    "finalBtn": "Tanyakan tentang iklan & promosi →",
+    "related": [
+      {
+        "label": "Media",
+        "href": "../../../media/"
+      },
+      {
+        "label": "Studio / Kampanye",
+        "href": "../../../studio/content/campaign/"
+      },
+      {
+        "label": "Produk",
+        "href": "../../../products/"
+      }
+    ]
+  },
+  "development": {
+    "crumbBusiness": "Bisnis",
+    "crumbCollaboration": "Kolaborasi",
+    "whoEyebrow": "UNTUK SIAPA INI",
+    "whatEyebrow": "APA YANG BISA KITA LAKUKAN",
+    "processEyebrow": "CARA KERJANYA",
+    "bringsEyebrow": "APA YANG DIBAWA NEWON",
+    "scopeEyebrow": "CAKUPAN / HASIL",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "FAQ",
+    "relatedEyebrow": "LAYANAN TERKAIT",
+    "relatedTitle": "Layanan terkait",
+    "otherEyebrow": "LAINNYA",
+    "otherTitle": "Jenis kolaborasi lainnya",
+    "navAriaLabel": "Kolaborasi",
+    "navLabel": "KOLABORASI",
+    "otherTypeLabel": "KOLABORASI",
+    "keywordsAria": "Kata kunci",
+    "possibleEyebrow": "KOLABORASI YANG MUNGKIN",
+    "useCasesEyebrow": "KASUS PENGGUNAAN",
+    "techEyebrow": "OPSI TEKNIS",
+    "formatsEyebrow": "FORMAT KAMPANYE",
+    "principlesEyebrow": "PRINSIP-PRINSIP",
+    "measurementEyebrow": "PENGUKURAN",
+    "metricsEyebrow": "METRIK",
+    "capabilitiesEyebrow": "KEMAMPUAN",
+    "deliverablesEyebrow": "DELIVERABLES",
+    "pricingEyebrow": "HARGA / TITIK AWAL",
+    "requirementsEyebrow": "PERSYARATAN PROYEK",
+    "faqCommon1Q": "Bisakah kami menanyakan di tahap ide?",
+    "faqCommon1A": "Ya. Kami dapat meninjau kecocokan berdasarkan tujuan dan masalah bahkan tanpa rencana yang rinci.",
+    "faqCommon2Q": "Berapa lama waktu yang dibutuhkan sebuah proyek?",
+    "faqCommon2A": "Itu tergantung pada cakupan dan hasil yang dihasilkan. Kami berbagi garis waktu setelah lingkup ditentukan.",
+    "faqCommon3Q": "Bisakah kami bertanya tanpa anggaran tetap?",
+    "faqCommon3A": "Ya. Kami memperjelas ruang lingkup yang dibutuhkan terlebih dahulu, lalu mengusulkan pendekatan yang sesuai.",
+    "seoTitle": "Kolaborasi Pengembangan | Newon",
+    "metaDescription": "Dari ide hingga perencanaan, UX/UI, pengembangan, hingga peluncuran — kami membangun produk digital bersama-sama.",
+    "crumb": "Kolaborasi pengembangan",
+    "heroLabel": "KOLABORASI PENGEMBANGAN",
+    "heroTitle": "Dari ide ke\nproduk yang berfungsi.",
+    "heroLead": "Dari ide hingga perencanaan, UX/UI, pengembangan, hingga peluncuran — kami bekerja bersama melalui seluruh proses produk digital.",
+    "heroKeywords": [
+      "MVP",
+      "Web",
+      "Aplikasi",
+      "AI",
+      "Produk"
+    ],
+    "ctaPrimary": "Tanyakan tentang kolaborasi pengembangan →",
+    "ctaSecondary": "Lihat → Layanan Bisnis",
+    "ctaSecondaryHref": "../../",
+    "whoTitle": "Siapa ini untuk",
+    "whoItems": [
+      {
+        "title": "Pendiri",
+        "body": "Anda memiliki ide tetapi pengembangan sulit"
+      },
+      {
+        "title": "Startup",
+        "body": "Anda membutuhkan MVP"
+      },
+      {
+        "title": "Perusahaan",
+        "body": "Anda ingin membangun layanan digital baru"
+      },
+      {
+        "title": "Tim produk",
+        "body": "Anda perlu meningkatkan layanan yang sudah ada"
+      },
+      {
+        "title": "Organisasi",
+        "body": "Sumber daya pengembangan internal terbatas"
+      }
+    ],
+    "whatTitle": "Apa yang bisa kami bangun",
+    "whatItems": [
+      {
+        "title": "MVP",
+        "body": "Produk minimum untuk memvalidasi hipotesis inti"
+      },
+      {
+        "title": "Layanan Web",
+        "body": "Situs merek, layanan web, dan platform"
+      },
+      {
+        "title": "Aplikasi Mobile",
+        "body": "Aplikasi iOS / Android"
+      },
+      {
+        "title": "Produk AI",
+        "body": "Fitur AI dan layanan berbasis AI"
+      },
+      {
+        "title": "SaaS",
+        "body": "Alat kerja dan layanan berlangganan"
+      },
+      {
+        "title": "Alat Internal",
+        "body": "Alat bisnis internal"
+      },
+      {
+        "title": "Otomatisasi",
+        "body": "Otomatisasi untuk pekerjaan berulang"
+      },
+      {
+        "title": "Prototipe / PoC",
+        "body": "Prototipe awal untuk menguji kelayakan"
+      }
+    ],
+    "capabilitiesTitle": "Kemampuan",
+    "capabilitiesItems": [
+      {
+        "title": "Strategi Produk",
+        "body": "Definisi masalah / struktur fitur / cakupan MVP"
+      },
+      {
+        "title": "UX / UI",
+        "body": "Alur pengguna / arsitektur informasi / antarmuka"
+      },
+      {
+        "title": "Pengembangan",
+        "body": "Web / aplikasi / backend / API"
+      },
+      {
+        "title": "Integrasi AI",
+        "body": "Fitur AI saat diperlukan"
+      },
+      {
+        "title": "QA",
+        "body": "Pemeriksaan fungsionalitas / responsif / edge-state"
+      },
+      {
+        "title": "Peluncuran",
+        "body": "Persiapan penyebaran dan peluncuran"
+      }
+    ],
+    "processTitle": "Alur proyek",
+    "processItems": [
+      {
+        "title": "PENEMUAN",
+        "body": "Memahami ide dan masalah"
+      },
+      {
+        "title": "LINGKUP",
+        "body": "Tentukan MVP dan lingkup proyek"
+      },
+      {
+        "title": "DESAIN",
+        "body": "UX / UI / prototipe"
+      },
+      {
+        "title": "BANGUN",
+        "body": "Pengembangan"
+      },
+      {
+        "title": "QA",
+        "body": "Fungsionalitas / perangkat / status"
+      },
+      {
+        "title": "PELAUNCURAN",
+        "body": "Penerapan dan peluncuran"
+      },
+      {
+        "title": "ITERASI",
+        "body": "Perbaiki berdasarkan tanggapan pengguna nyata"
+      }
+    ],
+    "deliverablesTitle": "Kemungkinan hasil kerja",
+    "deliverablesItems": [
+      "Lingkup Produk",
+      "Peta Situs",
+      "Alur Pengguna",
+      "Wireframe",
+      "Desain UI",
+      "Web Responsif",
+      "Aplikasi Mobile",
+      "Kode Sumber",
+      "Integrasi API",
+      "Penerapan",
+      "Dokumentasi Dasar"
+    ],
+    "deliverablesNote": "Tidak setiap proyek mencakup semua item. Lingkup bervariasi menurut proyek.",
+    "pricingTitle": "Titik awal",
+    "pricingBody": "Harga berbeda-beda menurut lingkup proyek.",
+    "pricingCta": "Diskusikan lingkup proyek →",
+    "requirementsTitle": "Informasi berguna sebelum menanyakan",
+    "requirementsItems": [
+      "Produk yang ingin Anda buat",
+      "Masalah yang ingin Anda selesaikan",
+      "Pengguna utama",
+      "Fitur inti yang dibutuhkan",
+      "Layanan referensi",
+      "Garis waktu peluncuran yang diinginkan",
+      "Perkiraan kisaran anggaran",
+      "Materi desain / pengembangan yang ada"
+    ],
+    "bringsTitle": "Apa yang dibawa Newon",
+    "bringsItems": [
+      {
+        "title": "Strategi Produk",
+        "body": "Definisi masalah dan lingkup MVP"
+      },
+      {
+        "title": "UX / UI",
+        "body": "Alur pengguna dan antarmuka"
+      },
+      {
+        "title": "Pengembangan",
+        "body": "Pengembangan web / aplikasi / backend"
+      },
+      {
+        "title": "Integrasi AI",
+        "body": "Fitur AI jika diperlukan"
+      },
+      {
+        "title": "Peluncuran",
+        "body": "Persiapan penyebaran dan peluncuran"
+      }
+    ],
+    "scopeTitle": "Ruang lingkup kolaborasi",
+    "scopeItems": [
+      "Ruang lingkup perencanaan, desain, dan pengembangan",
+      "Pembuatan MVP atau produk penuh",
+      "Peluncuran dan iterasi awal"
+    ],
+    "scopeNote": "Ruang lingkup ditentukan bersama berdasarkan tujuan dan jadwal proyek.",
+    "faqs": [
+      {
+        "q": "Bisakah kita mendapatkan penawaran segera?",
+        "a": "Tergantung pada ruang lingkup dan tujuan. Kami akan membimbing Anda setelah meninjau pertanyaan Anda."
+      },
+      {
+        "q": "Bisakah kita melanjutkan tanpa perencanaan?",
+        "a": "Ya. Sebuah ide dan masalah yang ingin Anda selesaikan sudah cukup untuk memulai."
+      },
+      {
+        "q": "Apakah pemeliharaan termasuk?",
+        "a": "Tergantung pada proyek. Operasi pasca peluncuran dapat dibahas secara terpisah."
+      },
+      {
+        "q": "Berapa lama waktunya?",
+        "a": "Tergantung apakah ini MVP, peningkatan, atau aplikasi baru."
+      },
+      {
+        "q": "Teknologi apa yang Anda gunakan?",
+        "a": "Kami memilih pendekatan mobile dan web berdasarkan tujuan produk dan kebutuhan peluncuran."
+      }
+    ],
+    "finalTitle": "Mulai ubah ide Anda\nmenjadi produk.",
+    "finalLead": "Brief yang sudah selesai tidak diperlukan.\nKita bisa memulai dari masalah dan ide bersama-sama.",
+    "finalBtn": "Ajukan pertanyaan tentang proyek pengembangan →",
+    "related": [
+      {
+        "label": "MVP",
+        "href": "../../mvp/"
+      },
+      {
+        "label": "Web",
+        "href": "../../web/"
+      },
+      {
+        "label": "Aplikasi",
+        "href": "../../app/"
+      },
+      {
+        "label": "AI",
+        "href": "../../../ai/"
+      },
+      {
+        "label": "Desain Produk",
+        "href": "../../../studio/digital/product-design/"
+      }
+    ]
+  }
+}

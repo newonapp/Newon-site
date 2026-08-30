@@ -1,0 +1,528 @@
+{
+  "seoTitle": "DATA & REPORTING | Newon AUTOMATIZACIÓN",
+  "metaDescription": "Recoge y limpia datos dispersos, luego automatiza métricas e informes. Newon DATA & REPORTING.",
+  "crumbBusiness": "NEGOCIOS",
+  "crumbServices": "SERVICIOS",
+  "crumbAutomation": "AUTOMATIZACIÓN",
+  "crumbHere": "DATA & REPORTING",
+  "eyebrow": "DATA & REPORTING",
+  "subEyebrow": "AUTOMATIZACIÓN",
+  "headline": "Recoge datos dispersos\ny conviértelos en lo que necesitas.",
+  "lead": "Recogemos y organizamos datos repartidos por servicios y documentos, luego automatizamos las métricas e informes que necesitas — desde la recolección y limpieza recurrente hasta el cálculo, visualización, generación de informes y entrega.",
+  "ctaPrimary": "Consulta de DATA & REPORTING →",
+  "ctaSecondary": "Ver el flujo de datos ↓",
+  "meta": [
+    {
+      "k": "SERVICIO",
+      "v": "Automatización de Datos e Informes"
+    },
+    {
+      "k": "MEJOR PARA",
+      "v": "Trabajo recurrente de recolección de datos e informes"
+    },
+    {
+      "k": "PLAZO",
+      "v": "Típicamente 2–4 semanas"
+    },
+    {
+      "k": "PRECIO",
+      "v": "Cotizado según alcance del proyecto"
+    }
+  ],
+  "overviewLabel": "RESUMEN",
+  "overviewTitle": "Dedica menos tiempo a reunir datos,\nmás tiempo a usarlos.",
+  "overviewBody": [
+    "Los equipos crean constantemente datos en muchos servicios.",
+    "Cuando los datos de ventas, consultas, marketing, uso de productos, proyectos, encuestas, reseñas y operaciones viven en lugares diferentes, las personas terminan buscando, copiando y limpiando a mano.",
+    "DATA & REPORTING conecta ese trabajo repetitivo en un solo flujo de datos — extrae lo que necesitas, limpia según reglas, calcula métricas clave y entrega como Panel o Informe."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Trabajo que podemos automatizar.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "RECOLECCIÓN DE DATOS",
+      "d": "Las personas todavía extraen datos de múltiples servicios a mano."
+    },
+    {
+      "n": "02",
+      "t": "LIMPIEZA DE DATOS",
+      "d": "Los formatos difieren y la limpieza ocurre cada vez."
+    },
+    {
+      "n": "03",
+      "t": "INFORME RECURRENTE",
+      "d": "Los informes semanales o mensuales se reconstruyen repetidamente."
+    },
+    {
+      "n": "04",
+      "t": "SEGUIMIENTO DE MÉTRICAS",
+      "d": "Ventas, usuarios, consultas y conversiones necesitan seguimiento continuo."
+    },
+    {
+      "n": "05",
+      "t": "MULTIPLES FUENTES",
+      "d": "Los datos están dispersos en hojas de cálculo, formularios y bases de datos."
+    },
+    {
+      "n": "06",
+      "t": "ENTREGA DE INFORMES",
+      "d": "Los informes terminados deben llegar a los propietarios según un cronograma."
+    }
+  ],
+  "baLabel": "ANTES / DESPUÉS",
+  "baTitle": "Informes manuales vs\nautomatizados DATA & REPORTING",
+  "beforeLabel": "MANUAL",
+  "afterLabel": "AUTOMATIZADO",
+  "before": [
+    "Copiar datos de cada servicio",
+    "Pegar en hojas de cálculo",
+    "Calcular métricas a mano",
+    "Reconstruir el informe en cada ciclo"
+  ],
+  "after": [
+    "Recopilar de fuentes automáticamente",
+    "Limpiar datos según reglas definidas",
+    "Calcular métricas automáticamente",
+    "Entregar informes y paneles según el cronograma"
+  ],
+  "capsLabel": "CAPACIDADES",
+  "capsTitle": "Construimos el flujo de datos que necesitas.",
+  "caps": [
+    {
+      "t": "RECOPILACIÓN DE DATOS",
+      "d": "Extraer datos requeridos de múltiples fuentes."
+    },
+    {
+      "t": "LIMPIEZA DE DATOS",
+      "d": "Eliminar duplicados, valores vacíos y fallas de formato según reglas definidas."
+    },
+    {
+      "t": "TRANSFORMACIÓN DE DATOS",
+      "d": "Transformar datos en bruto en formatos listos para análisis e informes."
+    },
+    {
+      "t": "CÁLCULO DE MÉTRICAS",
+      "d": "Calcular métricas como ingresos, crecimiento, conversión y usuarios."
+    },
+    {
+      "t": "INFORME AUTOMATIZADO",
+      "d": "Generar informes semanalmente, mensualmente u otras cadencias."
+    },
+    {
+      "t": "PANEL",
+      "d": "Construir un panel que mantenga las métricas clave visibles en un solo lugar."
+    },
+    {
+      "t": "RESUMEN AI",
+      "d": "Cuando sea necesario, resumir datos o comentarios de clientes con IA."
+    },
+    {
+      "t": "ENTREGA DE INFORMES",
+      "d": "Entregar resultados a correo electrónico, hojas de cálculo, paneles u otros destinos."
+    }
+  ],
+  "sourcesLabel": "FUENTES DE DATOS",
+  "sourcesTitle": "Conectar los datos que ya usas.",
+  "sourcesNote": "La conectividad real depende del API de cada servicio y del método de acceso a datos.",
+  "sources": [
+    "Google Sheets",
+    "Excel / CSV",
+    "Formularios",
+    "Base de datos",
+    "Datos del sitio web",
+    "Datos de la aplicación",
+    "Analítica",
+    "CRM",
+    "Datos de comercio electrónico",
+    "Datos de marketing",
+    "Comentarios de clientes",
+    "Reseñas",
+    "API externa"
+  ],
+  "useLabel": "CASOS DE USO",
+  "useTitle": "Sistemas que podemos construir.",
+  "useBadge": "Ejemplos construibles",
+  "useCases": [
+    {
+      "t": "INFORME DE VENTAS",
+      "d": "Recopilar automáticamente datos de ventas en informes diarios, semanales o mensuales."
+    },
+    {
+      "t": "INFORME DE MARKETING",
+      "d": "Organizar anuncios y datos de marketing para comparar el rendimiento de los canales."
+    },
+    {
+      "t": "INFORME DE CLIENTES",
+      "d": "Organizar consultas y comentarios para detectar problemas y solicitudes recurrentes."
+    },
+    {
+      "t": "INFORME DE RESEÑAS",
+      "d": "Recopilar reseñas de productos y resumir temas, problemas y tendencias de calificación."
+    },
+    {
+      "t": "INFORME DE PRODUCTOS",
+      "d": "Organizar datos de usuarios y productos en métricas clave del producto."
+    },
+    {
+      "t": "INFORME DE OPERACIONES",
+      "d": "Recopilar datos de operaciones en informes recurrentes de estado operativo."
+    },
+    {
+      "t": "RESUMEN EJECUTIVO",
+      "d": "Resumir múltiples fuentes en métricas clave listas para la toma de decisiones."
+    },
+    {
+      "t": "RESUMEN DE COMENTARIOS AI",
+      "d": "Clasificar y resumir comentarios extensos en opiniones principales."
+    }
+  ],
+  "flowLabel": "EJEMPLO DE FLUJO DE TRABAJO",
+  "flowTitle": "Cómo los datos se convierten en un informe",
+  "flow": [
+    {
+      "n": "01",
+      "t": "RECOPILAR",
+      "d": "Extraer de hojas de cálculo, bases de datos y APIs.\nDiseñamos las conexiones y los horarios de recopilación juntos."
+    },
+    {
+      "n": "02",
+      "t": "LIMPIAR",
+      "d": "Corregir duplicados, vacíos y desajustes de formato.\nLos datos se normalizan según tus reglas definidas."
+    },
+    {
+      "n": "03",
+      "t": "PROCESAR",
+      "d": "Realizar los cálculos y transformaciones necesarios.\nDar forma a los datos para las métricas que necesitas."
+    },
+    {
+      "n": "04",
+      "t": "ANALIZAR",
+      "d": "Extraer métricas clave e información necesaria.\nComparar tendencias y detectar anomalías."
+    },
+    {
+      "n": "05",
+      "t": "INFORME",
+      "d": "Generar un panel o informe.\nConstruido en un formato que su equipo puede usar de inmediato."
+    },
+    {
+      "n": "06",
+      "t": "ENTREGAR",
+      "d": "Enviar resultados por correo electrónico o al destino elegido.\nEntregado automáticamente según el calendario."
+    }
+  ],
+  "reportLabel": "INFORME",
+  "reportTitle": "Los informes contienen solo lo que necesita.",
+  "reportLead": "Dependiendo del proyecto, los informes pueden incluir elementos como estos. El contenido no es idéntico en todos los proyectos — sigue sus objetivos.",
+  "reportItems": [
+    "Resumen",
+    "Métricas Clave",
+    "Rendimiento",
+    "Cambio vs Periodo Anterior",
+    "Principales Elementos",
+    "Problemas",
+    "Comentarios de Clientes",
+    "Tendencia",
+    "Información",
+    "Resumen de IA",
+    "Referencia de Datos Crudos"
+  ],
+  "dashLabel": "PANEL DE CONTROL",
+  "dashTitle": "Ampliar a un tablero de estado casi en tiempo real cuando sea necesario.",
+  "dashLead": "Más allá de los informes programados en PDF o hojas de cálculo, podemos construir un panel web cuando el proyecto lo requiera.",
+  "dashNote": "Los paneles no se incluyen automáticamente — se agregan según el alcance del proyecto.",
+  "dashMetricsLabel": "Métricas de ejemplo",
+  "dashMetrics": [
+    "Ingresos",
+    "Pedidos",
+    "Usuarios",
+    "Conversión",
+    "Contactos",
+    "Retención",
+    "Comentarios de Clientes",
+    "Principales Productos",
+    "Rendimiento del Canal",
+    "Comparación de Periodos"
+  ],
+  "dashFiltersLabel": "Filtros de ejemplo",
+  "dashFilters": [
+    "Hoy",
+    "7 Días",
+    "30 Días",
+    "Periodo Personalizado",
+    "Canal",
+    "Producto",
+    "Categoría"
+  ],
+  "aiLabel": "INFORMES DE IA",
+  "aiTitle": "Organiza el significado, no solo los números.",
+  "aiLead": "Cuando es necesario, la IA puede resumir grandes cantidades de texto y datos en formularios que la gente puede revisar rápidamente.",
+  "aiExamples": [
+    "Resúmenes de temas de reseñas",
+    "Detección de quejas recurrentes",
+    "Agrupación de retroalimentación positiva",
+    "Clasificación de solicitudes de clientes",
+    "Explicaciones de periodo sobre periodo",
+    "Borradores resumen del informe"
+  ],
+  "aiNote": "El análisis y resúmenes de IA son de referencia. Las decisiones importantes pueden requerir aún revisar los datos fuente.",
+  "delLabel": "ENTREGABLES",
+  "delTitle": "Lo que recibes después del proyecto",
+  "delLead": "Dependiendo del alcance, proporcionamos los entregables que necesitas de la siguiente lista. No todos los proyectos incluyen todos los elementos.",
+  "deliverables": [
+    "Flujo de recogida de datos",
+    "Reglas de Limpieza de Datos",
+    "Definición de métrica",
+    "Flujo de trabajo de automatización",
+    "Plantilla de informe",
+    "Informe Automatizado",
+    "Salpicadero",
+    "Reportes programados",
+    "Resumen de IA",
+    "Exportación de datos",
+    "Documentación básica",
+    "Guía operativa"
+  ],
+  "processLabel": "PROCESO",
+  "processTitle": "Empezamos por la estructura de datos.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCUBRIMIENTO",
+      "d": "Confirma qué datos gestionas y dónde se encuentran."
+    },
+    {
+      "n": "02",
+      "t": "AUDITORÍA DE DATOS",
+      "d": "Formatos de revisión, métodos de acceso y calidad."
+    },
+    {
+      "n": "03",
+      "t": "MÉTRICAS",
+      "d": "Define las métricas y el informe de propósito que importan."
+    },
+    {
+      "n": "04",
+      "t": "ARQUITECTURA",
+      "d": "Diseñar → procesar → almacenar → informar."
+    },
+    {
+      "n": "05",
+      "t": "CONSTRUIR",
+      "d": "Implementa la cadena de automatización y el informe/panel de control."
+    },
+    {
+      "n": "06",
+      "t": "PRUEBA",
+      "d": "Valida cálculos y resultados con datos reales."
+    },
+    {
+      "n": "07",
+      "t": "LANZAMIENTO",
+      "d": "Organiza viajes programados y entregas."
+    },
+    {
+      "n": "08",
+      "t": "TRASPASO",
+      "d": "Guía de operaciones y notas básicas de gestión."
+    }
+  ],
+  "scopeLabel": "NIVELES DE ALCANCE",
+  "scopeTitle": "Una forma de entender la complejidad del proyecto.",
+  "scopeLead": "Estos son niveles de referencia para cotizaciones, no paquetes fijos.",
+  "scopes": [
+    {
+      "t": "AUTOMATIZACIÓN BÁSICA DE INFORMES",
+      "items": [
+        "Una o pocas fuentes de datos",
+        "Limpieza básica",
+        "Métricas principales",
+        "Informe programado",
+        "Entrega simple"
+      ]
+    },
+    {
+      "t": "INFORMES MULTIFUENTE",
+      "items": [
+        "Múltiples fuentes",
+        "Consolidación de datos",
+        "Múltiples métricas",
+        "Informes automatizados",
+        "Procesamiento condicional"
+      ]
+    },
+    {
+      "t": "SISTEMA DE DATOS PERSONALIZADO",
+      "items": [
+        "Integración multisistema",
+        "Base de datos personalizada",
+        "Panel web",
+        "Métricas avanzadas",
+        "Análisis de IA",
+        "Automatización personalizada"
+      ]
+    }
+  ],
+  "timeLabel": "CRONOGRAMA",
+  "timeTitle": "El cronograma depende del alcance.",
+  "timeLead": "Los permisos de acceso, APIs, calidad de datos y funciones requeridas pueden cambiar el calendario.",
+  "timelines": [
+    {
+      "t": "Automatización de informes simple",
+      "d": "Aproximadamente 1–2 semanas"
+    },
+    {
+      "t": "Múltiples fuentes de datos",
+      "d": "Aproximadamente 2–4 semanas"
+    },
+    {
+      "t": "Panel personalizado / Sistema de datos complejo",
+      "d": "Alcance definido por separado"
+    }
+  ],
+  "priceLabel": "COSTO DEL PROYECTO",
+  "priceTitle": "Construimos solo el alcance que necesitas.",
+  "priceName": "DATA & REPORTING",
+  "priceValue": "Desde ₩500,000",
+  "priceFactorsLabel": "Factores que determinan la cotización",
+  "priceFactors": [
+    "Número de fuentes de datos",
+    "Volumen y estructura de datos",
+    "Integración API",
+    "Complejidad de limpieza",
+    "Número de métricas",
+    "Flujo de automatización",
+    "Necesidad de panel",
+    "Funciones de IA",
+    "Cuentas / permisos",
+    "Tipos de informes",
+    "Frecuencia de ejecución",
+    "Mantenimiento"
+  ],
+  "priceNote": "Los presupuestos finales se establecen después de revisar su entorno de datos actual y las funciones requeridas.",
+  "extLabel": "COSTO EXTERNO",
+  "extTitle": "Costos que pueden estar fuera de los honorarios de desarrollo de Newon",
+  "extItems": [
+    "Servidor / Alojamiento",
+    "Base de datos",
+    "API externa",
+    "API de IA",
+    "Servicio de análisis",
+    "Automatización SaaS",
+    "Informes SaaS",
+    "Almacenamiento en la nube",
+    "Otros servicios de terceros pagos"
+  ],
+  "faqLabel": "Preguntas frecuentes",
+  "faqTitle": "Preguntas, respondidas",
+  "faqs": [
+    {
+      "q": "¿Qué datos pueden conectar?",
+      "a": "Hojas de cálculo, CSV, bases de datos, análisis, formularios y APIs externas son comunes. La conectividad real depende del método de acceso y API de cada servicio."
+    },
+    {
+      "q": "¿Podemos comenzar solo con Google Sheets?",
+      "a": "Sí. Revisamos la estructura actual y luego definimos el alcance de limpieza y automatización."
+    },
+    {
+      "q": "¿Podemos recibir informes automáticamente cada semana?",
+      "a": "Dependiendo del alcance, podemos construir procesamiento y entrega programada."
+    },
+    {
+      "q": "¿Pueden también construir un tablero de control?",
+      "a": "Sí. Las métricas, el método de actualización y el contexto del usuario se definen por separado según sea necesario."
+    },
+    {
+      "q": "¿Se puede agregar análisis de IA?",
+      "a": "Sí — por ejemplo, para clasificar y resumir reseñas, consultas y textos de encuestas."
+    },
+    {
+      "q": "¿Qué pasa si nuestros datos están desordenados?",
+      "a": "Comenzamos revisando la calidad de los datos actuales. La limpieza intensiva puede definirse como trabajo adicional."
+    },
+    {
+      "q": "¿Es posible recibir datos en tiempo real?",
+      "a": "Depende de la fuente y la API. El procesamiento en tiempo real no está garantizado para todos los sistemas."
+    },
+    {
+      "q": "¿Ofrecen soporte de mantenimiento después del lanzamiento?",
+      "a": "Sí — los cambios de fuente, ediciones de automatización y adiciones de funciones pueden definirse por separado."
+    }
+  ],
+  "finalLabel": "INICIAR UN PROYECTO",
+  "finalTitle": "Automatiza los informes\nque todavía creas a mano.",
+  "finalLead": "Cuéntanos los datos que usas y los informes que repites. Te explicaremos cómo la recolección, limpieza y entrega pueden conectarse — y cómo se ve el alcance del proyecto.",
+  "formTitle": "DATA & REPORTING consulta",
+  "formLead": "Comparte tu entorno de datos actual y los resultados deseados para que podamos confirmar el alcance.",
+  "formCategory": "AUTOMATIZACIÓN",
+  "formService": "DATA & REPORTING",
+  "labelCategory": "CATEGORÍA DE SERVICIO",
+  "labelService": "SERVICIO",
+  "labelName": "Nombre",
+  "labelCompany": "Empresa / marca",
+  "labelEmail": "Correo electrónico",
+  "labelDataWhere": "Dónde se gestionan los datos hoy",
+  "labelDataSources": "Fuentes de datos que necesitas",
+  "labelCurrentReport": "Informes que actualmente haces",
+  "labelDesired": "Resultados deseados",
+  "labelDashboard": "¿Se necesita un panel?",
+  "labelCadence": "Frecuencia de informes",
+  "labelTimeline": "Cronograma esperado",
+  "labelBudget": "Rango de presupuesto",
+  "labelMessage": "Descripción del proyecto",
+  "labelConsent": "Acepto la recopilación y el uso de información personal.",
+  "privacyLink": "Política de privacidad",
+  "optional": "opcional",
+  "dataWhereOptions": [
+    "Google Sheets",
+    "Excel / CSV",
+    "Base de datos",
+    "Analítica",
+    "CRM",
+    "Comercio electrónico",
+    "Otro"
+  ],
+  "desiredOptions": [
+    "Informe automatizado",
+    "Panel de control",
+    "Integración de datos",
+    "Resumen de IA",
+    "Canalización de datos",
+    "No estoy seguro"
+  ],
+  "dashboardOptions": [
+    "Necesario",
+    "No necesario",
+    "Aún no estoy seguro"
+  ],
+  "cadenceOptions": [
+    "Diario",
+    "Semanal",
+    "Mensual",
+    "Trimestral",
+    "Otro / Por definir"
+  ],
+  "timelineOptions": [
+    "Tan pronto como sea posible",
+    "1–2 semanas",
+    "2–4 semanas",
+    "1–2 meses",
+    "Por definir"
+  ],
+  "budgetOptions": [
+    "₩500k–1M",
+    "₩1M–3M",
+    "₩3M–5M",
+    "₩5M+",
+    "Por determinar"
+  ],
+  "phDataSources": "p. ej. Google Sheets + Análisis",
+  "phCurrentReport": "p. ej. informe semanal de ventas, informe mensual de marketing",
+  "phMessage": "Comparte ubicaciones de datos, trabajo recurrente y resultados deseados.",
+  "submit": "Enviar consulta",
+  "submitting": "Enviando…",
+  "fail": "Error al enviar. Por favor, inténtalo de nuevo o envíanos un correo electrónico.",
+  "mailSubject": "Consulta de Newon DATA & REPORTING",
+  "backAutomation": "Volver a AUTOMATIZACIÓN →",
+  "exploreAi": "Ver AI AUTOMATION →"
+}

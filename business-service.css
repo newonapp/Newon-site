@@ -221,8 +221,10 @@ html[data-newon-shell-theme="dark"] .bs-section--dark {
   font-size: clamp(2.2rem, 5vw, 3.85rem);
   font-weight: 700;
   letter-spacing: -0.045em;
-  line-height: 1.08;
-  text-wrap: balance;
+  line-height: 1.18;
+  text-wrap: pretty;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 .bs-hero__lead {
   margin: 1.15rem 0 0;
@@ -230,6 +232,9 @@ html[data-newon-shell-theme="dark"] .bs-section--dark {
   font-size: clamp(1rem, 1.65vw, 1.1rem);
   line-height: 1.65;
   color: var(--bs-muted);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
 }
 .bs-hero__actions {
   display: flex;

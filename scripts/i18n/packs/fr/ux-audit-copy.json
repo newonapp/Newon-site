@@ -1,0 +1,479 @@
+{
+  "seoTitle": "UX AUDIT.Newon Entreprises",
+  "metaDescription": "Vérification des principales applications et des flux Web et UI – problèmes d'utilisation, points de conversion et de dépôt et mesures prioritaires dans un rapport d'audit. Newon UX AUDIT.",
+  "crumbBusiness": "ENTREPRISES",
+  "crumbServices": "SERVICES",
+  "crumbResearch": "RECHERCHE",
+  "crumbHere": "UX AUDIT",
+  "eyebrow": "UX AUDIT",
+  "subEyebrow": "RECHERCHE",
+  "headline": "Vous voyez les problèmes.\nPas par où commencer.",
+  "lead": "Nous examinons les flux de base et UI — inscription, inscription, achat, paramètres, et plus encore. Les problèmes de facilité d'utilisation, la structure de l'information et les points de conversion ou de dépôt sont structurés en un rapport d'audit, une liste de problèmes et des éléments d'action prioritaires que votre équipe peut exécuter. Enquête d'audit",
+  "ctaPrimary": "UX enquête d'audit →",
+  "ctaSecondary": "Voir le flux d'audit",
+  "meta": [
+    {
+      "k": "SERVICES",
+      "v": "Vérification UX"
+    },
+    {
+      "k": "BEST POUR",
+      "v": "Corrections de conversion et d'utilisation"
+    },
+    {
+      "k": "Échéancier",
+      "v": "Habituellement 1 à 2 semaines"
+    },
+    {
+      "k": "PRIX",
+      "v": "À partir de 300,000"
+    }
+  ],
+  "overviewLabel": "APERÇU",
+  "overviewTitle": "Des améliorations sont nécessaires.\nLa priorité n'est pas claire.",
+  "overviewBody": [
+    "Conversion, churn, tickets de support, plaintes d'examen — les signaux que des problèmes UX existent sont souvent là. Ce qui est plus difficile, c'est de voir quel flux, UI ou structure d'information provoque le frottement.",
+    "Les équipes partagent l'opinion que quelque chose est gênant, mais sans classer les questions par flux central et priorité, les discussions d'amélioration se répètent ou s'arrêtent.",
+    "UX AUDIT commence par définir la portée et les flux de cœur. Ensuite, nous examinons les écrans, les flux et la structure de l'information, nous classons les questions et nous priorisons les mesures par impact et effort."
+  ],
+  "problemsLabel": "",
+  "problemsTitle": "C'est utile quand on fait face à ces situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "DROP DE CONVERSION",
+      "d": "L'inscription, l'achat ou la conversion de demande est en dessous des attentes.\nVous avez besoin d'une vue structurée de l'endroit où les utilisateurs déposent."
+    },
+    {
+      "n": "02",
+      "t": "FRICTION DE L'OBSERVATION",
+      "d": "Les utilisateurs sont coincés dans la première utilisation ou à bord.\nLes étapes, les copies ou les UI ne sont pas claires ou trop lourdes."
+    },
+    {
+      "n": "03",
+      "t": "FEUILLES DE CHARBON",
+      "d": "Le soutien, les examens et les notes internes existent, mais les questions ne sont pas organisées.\nLa même friction se répète sans priorité."
+    },
+    {
+      "n": "04",
+      "t": "COMPLEXITÉ DES FLEURS",
+      "d": "Trop d'étapes pour accomplir les tâches essentielles.\nLa navigation ou la structure de l'information semble confuse."
+    },
+    {
+      "n": "05",
+      "t": "GAP MOBILE",
+      "d": "L'expérience mobile ou réactive est sous-performante.\nLes modèles de dépôt ou d'erreur diffèrent de ceux du bureau."
+    },
+    {
+      "n": "06",
+      "t": "PRÉRÉDÉSIGNATION",
+      "d": "Avant de redessiner, renouveler ou modifier une fonctionnalité majeure,\nvous avez besoin d'un diagnostic de l'expérience actuelle."
+    }
+  ],
+  "baLabel": "AVANT / APRÈS",
+  "baTitle": "friction éparpillée par rapport à la liste de corrections structurée\n",
+  "beforeLabel": "AVANT",
+  "afterLabel": "APRÈS",
+  "before": [
+    "Beaucoup d'opinions embarrassantes, mais des preuves dispersées",
+    "Aucun accord sur le flux est le problème principal",
+    "Amélioration des changements de priorité en rencontrant",
+    "Aucun document de diagnostic avant la refonte ou dev"
+  ],
+  "after": [
+    "Flux de base et champ d'audit défini premier",
+    "Flow, UI, et IA problèmes classés",
+    "Actions prioritaires par impact",
+    "Connecté aux discussions sur la conception, le développement et l'expérimentation"
+  ],
+  "capsLabel": "CAPABILITÉS",
+  "capsTitle": "Nous avons structuré la vérification\nvotre expérience de diagnostic a besoin.",
+  "caps": [
+    {
+      "t": "PORTÉE ET OBJECTIFS",
+      "d": "Définir les objectifs de la vérification et les flux de base.\nConnectez-vous à des objectifs de conversion, de courbure et de soutien."
+    },
+    {
+      "t": "MAPPING DES FLUX",
+      "d": "Inscription de carte, à bord, achat, paramètres et autres voyages clés.\nÉtapes, branches et points de chute."
+    },
+    {
+      "t": "EXAMEN HEURISTIQUE",
+      "d": "Examen par rapport aux principes d'utilisation — cohérence, rétroaction, prévention des erreurs.\nEnregistrer les problèmes par écran et par flux."
+    },
+    {
+      "t": "UI & IA EXAMEN",
+      "d": "Examiner la mise en page, la hiérarchie, les étiquettes, les CTA et la structure d'information.\nDocumenter les points de charge cognitive et de confusion."
+    },
+    {
+      "t": "ANALYSE DES FRICTIONS",
+      "d": "Analysez les étapes inutiles, le fardeau d'entrée, les états d'attente et les expériences d'erreur.\nPrivilégier les points de friction."
+    },
+    {
+      "t": "MOBILE ET RESPONSABLE",
+      "d": "Audit mobile, tablette et expérience réactive.\nInclure les questions de toucher, de lisibilité et de navigation."
+    },
+    {
+      "t": "LIEN DE PREUVE",
+      "d": "Connectez le soutien, les examens, les données et la rétroaction interne aux enjeux.\nDocumenter ensemble les hypothèses et les observations. PRIORITÉ D'ACTION"
+    },
+    {
+      "t": "PRIORITÉ D'ACTION",
+      "d": "Points par impact et effort.\nSéparer les gains rapides des améliorations structurelles. INPUTS DE VÉRIFICATION"
+    }
+  ],
+  "sourcesLabel": "INPUTS DE VÉRIFICATION",
+  "sourcesTitle": "Nous combinons le matériel et les observations dont vous avez besoin.",
+  "sourcesNote": "Les intrants réels varient selon l'accès (réglage, comptes, données) par projet.",
+  "sources": [
+    "Flux de l'utilisateur principal",
+    "Inscription & écran de bord",
+    "Flux d'achat, de paiement et d'enquête",
+    "Tableau de bord, paramètres et admin UI",
+    "Mobile et réactif UI",
+    "Registres de soutien et d'enquête",
+    "App & web review feedback",
+    "Utilisation et drop-off données",
+    "Interne QA & feedback",
+    "Points de référence compétitifs",
+    "Contrôle d'accessibilité de base",
+    "Cartes thermiques et séances (si elles sont fournies)"
+  ],
+  "useLabel": "UTILISATION CAS",
+  "useTitle": "Nous pouvons répondre aux questions.",
+  "useBadge": "Exemple de sujets d'audit",
+  "useCases": [
+    {
+      "t": "PATH DE CONVERSION",
+      "d": "Trouver où les chemins d'inscription, d'achat ou de demande s'arrêtent.\nEcrans de chute et de pré-goutte."
+    },
+    {
+      "t": "SURVEILLANCE UX",
+      "d": "Examiner la première utilisation, le tutoriel et la configuration initiale.\nIdentifier les causes des nouveaux utilisateurs."
+    },
+    {
+      "t": "CONTRÔLE ET FORMULAIRES",
+      "d": "Examiner le fardeau, les erreurs et les étapes des formulaires de paiement, de réservation ou de demande.\nAmélioration de l'achèvement de la surface."
+    },
+    {
+      "t": "NAV & IA",
+      "d": "Menu d'audit, structure d'information et chemins de navigation.\nDocumenter les questions de facilité de recherche, de duplication et de profondeur."
+    },
+    {
+      "t": "EXPÉRIENCE MOBILE",
+      "d": "Examiner la facilité d'utilisation de UI uniquement sur mobile et réactif.\nToucher les cibles, la lisibilité, les problèmes de défilement."
+    },
+    {
+      "t": "ETATS D'ERREUR ET D'ENTRÉE",
+      "d": "Examiner les états d'erreur, vide, chargement et permission.\nDocumenter les chemins d'exception où les utilisateurs sont coincés."
+    },
+    {
+      "t": "PRÉRÉDÉSIGNATION",
+      "d": "Diagnose le UX actuel avant le renouvellement ou la remarque.\nPreuve de la portée et de la priorité."
+    },
+    {
+      "t": "POST-LAUNCH EXAMEN",
+      "d": "Revérifier après le lancement en utilisant la conversion, le soutien et les examens.\nSéparer les gains rapides des corrections structurelles."
+    }
+  ],
+  "flowLabel": "FLUX DE TRAVAIL EXEMPLES",
+  "flowTitle": "De la définition du flux aux éléments d'action",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DÉFINITION",
+      "d": "Définir l'objet de la vérification, les flux de base et la portée.\nClarifiez ce que vous essayez d'améliorer.",
+      "examples": [
+        "Objectifs",
+        "Flux de base",
+        "Portée",
+        "Produits livrables"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "CARTE",
+      "d": "Les trajets des utilisateurs de la carte et les flux d'écran.\nÉtapes, branches et points de chute.",
+      "examples": [
+        "Inscription",
+        "à bord de",
+        "Acheter les paramètres",
+        ""
+      ]
+    },
+    {
+      "n": "03",
+      "t": "EXAMEN",
+      "d": "Flux d'audit, UI et structure d'information.\nEnregistrez les questions par écran et par étape.",
+      "examples": [
+        "Heuristique",
+        "UI",
+        "IA",
+        "Mobile"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PRIORITÉ",
+      "d": "Points par impact et effort.\nSéparer les gains rapides des améliorations structurelles. INPUTS DE VÉRIFICATION",
+      "examples": [
+        "P1",
+        "P2",
+        "P3",
+        "Gagnez rapidement"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DELIVRE",
+      "d": "Fournir le rapport de vérification et les mesures à prendre.\nConnectez-vous à des discussions de conception, de développement et d'expérimentation.",
+      "examples": [
+        "Rapport d'audit",
+        "Liste d'enjeux",
+        "Actions"
+      ]
+    }
+  ],
+  "reportLabel": "OUVERTURE",
+  "reportTitle": "Produits structurés en vue de travaux d'amélioration immédiate.",
+  "reportLead": "La composition varie selon la portée du projet. Voici les points communs.",
+  "reportMockStatus": "UX · PROJET DE",
+  "reportMockK": "UX AUDIT RÉSUMÉ",
+  "reportMockT": "Principaux flux, questions et priorités",
+  "reportItems": [
+    "Résumé",
+    "Portée de la vérification",
+    "Aperçu du débit",
+    "Liste d'enjeux",
+    "Gravité et priorité",
+    "Notes UI et IA",
+    "Résultats mobiles",
+    "Gagne rapidement",
+    "Actions recommandées",
+    "Annexe Écrans"
+  ],
+  "dashTitle": "Partager les questions et les priorités d'un point de vue.",
+  "dashLead": "Les questions de flux, la gravité et les mesures à prendre accélèrent les discussions sur l'amélioration.",
+  "dashNote": "La classification des enjeux et les critères de priorité varient selon le but et la portée du projet.",
+  "dashMetrics": [
+    "Débits",
+    "Questions",
+    "Mesures à prendre",
+    "Critique"
+  ],
+  "dashFilters": [
+    "Tous",
+    "P1",
+    "P2",
+    "Gagnez rapidement"
+  ],
+  "aiLabel": "SYNTHÈSE",
+  "aiTitle": "De nombreux écrans et notes\nà des questions actionnables.",
+  "aiLead": "Lorsque les journaux, les revues, les notes QA et les audits multi-écrans s'accumulent, nous classons, dédoublons et résumons par modèle et par priorité pour un examen plus rapide.",
+  "aiExamples": [
+    "Extraire les problèmes récurrents de support et d'examen",
+    "Classer les problèmes par flux",
+    "Gravité du projet et classement des priorités",
+    "Séparer les gains rapides des corrections structurelles",
+    "Comparer les résultats pour le téléphone mobile et le bureau",
+    "Rapport d'audit de la structure et éléments d'action"
+  ],
+  "aiNote": "La dernière priorité en matière d'interprétation et d'amélioration est examinée avec vous.",
+  "delLabel": "LIVRABLES",
+  "delTitle": "Ce que vous recevez lorsque le projet complète",
+  "delLead": "Nous livrons les articles ci-dessous au besoin pour votre portée.",
+  "deliverables": [
+    "UX Rapport de vérification Carte de débit",
+    "",
+    "Liste d'enjeux",
+    "Matrice prioritaire",
+    "Actions",
+    "Résumé des gains rapides",
+    "Notes UI et IA",
+    "Résumé de la présentation",
+    "Mémoire d'entrée (facultatif)"
+  ],
+  "processLabel": "PROCESSUS",
+  "processTitle": "De la portée à la livraison.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DÉCOUVREMENT",
+      "d": "Confirmer l'objet de la vérification et le contexte opérationnel.\nComprendre les problèmes de conversion et de soutien.",
+      "examples": [
+        "Objectifs",
+        "ICR",
+        "Parties prenantes",
+        "Chronologie"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PORTÉE",
+      "d": "Définir les flux de base, la plage d'écran et la méthode d'accès.\nAccepter la mise en place, les comptes et la portée des données.",
+      "examples": [
+        "Débits",
+        "Écrans",
+        "Dispositifs",
+        "Matériaux"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "VÉRIFICATION",
+      "d": "Examiner les flux, UI et la structure de l'information.\nEnregistrez les questions par écran et par étape.",
+      "examples": [
+        "Heuristique",
+        "UI",
+        "Mobile",
+        "Preuve"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ANALYSE",
+      "d": "Classer, défaire et prioriser les questions.\nRelier l'impact et l'effort de mise en oeuvre.",
+      "examples": [
+        "Classement",
+        "P1–P3",
+        "Gagnez rapidement",
+        "Modèles"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PROJET DE",
+      "d": "Projet de rapport d'audit et mesures à prendre.\nConstruire le squelette des principales constatations.",
+      "examples": [
+        "Résumé",
+        "Questions",
+        "Mesures à prendre"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "EXAMEN",
+      "d": "Examiner ensemble les questions clés et les priorités.\nRégler les lacunes, la surcharge et la faisabilité.",
+      "examples": [
+        "Commentaires",
+        "Raffinement",
+        "Priorité"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "DELIVRE",
+      "d": "Fournir les documents finaux et les mesures à prendre.\nConnectez-vous à la conception, dev et expérimenter les prochaines étapes.",
+      "examples": [
+        "Rapport final",
+        "Mesures à prendre",
+        "Prochaines étapes"
+      ]
+    }
+  ],
+  "scopeLabel": "NIVEAUX DE PORTÉE",
+  "scopeTitle": "Comment penser à la complexité du projet.",
+  "scopeLead": "Pas un paquet fixe. La portée est établie par objectif de vérification, compte de débit et couverture des appareils.",
+  "scopes": [
+    {
+      "t": "CORE AUDIT",
+      "items": [
+        "1–2 flux de cœur",
+        "Bureau ou focalisation mobile",
+        "Liste des numéros + priorité",
+        "Rapport d ' audit récapitulatif",
+        "Proposition pour gagner rapidement"
+      ]
+    },
+    {
+      "t": "PLEIN UX AUDIT",
+      "items": [
+        "3–5 flux de cœur",
+        "Bureau + mobile",
+        "Carte de flux + liste des numéros",
+        "Matrice prioritaire",
+        "Mesures à prendre + résumé de la présentation"
+      ]
+    },
+    {
+      "t": "VÉRIFICATION DOUANIÈRE",
+      "items": [
+        "Produits ou canaux multiples",
+        "Analyse des données et du support",
+        "Accessibilité et inclusion de référence",
+        "Redesign input slip",
+        "DESIGN and BUILD linking"
+      ]
+    }
+  ],
+  "timeLabel": "Échéancier",
+  "timeTitle": "Le calendrier dépend de la portée.",
+  "timeLead": "La durée varie selon le débit, la couverture de l'appareil et l'accès à l'environnement.",
+  "timelines": [
+    {
+      "t": "Audit de flux de base",
+      "d": "Environ 1 semaine"
+    },
+    {
+      "t": "Complet UX Audit",
+      "d": "Environ 1 à 2 semaines"
+    },
+    {
+      "t": "Audit personnalisé",
+      "d": "Environ 2–3 semaines · devis personnalisé"
+    }
+  ],
+  "priceLabel": "PROJET COÛT",
+  "priceTitle": "Indiqué pour la portée dont vous avez besoin.",
+  "priceName": "UX AUDIT",
+  "priceValue": "À partir de -200 000",
+  "priceFactorsLabel": "Facteurs de tarification",
+  "priceFactors": [
+    "Nombre de flux audités",
+    "Plage d'écran et de fonctionnalités",
+    "Inclusion bureautique et mobile",
+    "Accès environnement (réglage, comptes)",
+    "Liaison de données et de support",
+    "Format livrable",
+    "Présentation ou atelier",
+    "Chronologie de pointe"
+  ],
+  "priceNote": "Les cotes finales sont confirmées après l'objectif de vérification, la portée et la méthode d'accès.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Foire aux questions",
+  "faqs": [
+    {
+      "q": "Quels produits ou services pouvez-vous vérifier?",
+      "a": "Web, applications, SaaS, commerce, réservation et flux d'enquête — selon l'objectif et la portée accessible. Nous confirmons l'ajustement avant le lancement."
+    },
+    {
+      "q": "Est-ce que cela inclut les tests des utilisateurs?",
+      "a": "UX AUDIT est une revue d'experts (heuristique, flux, UI). Les tests utilisateurs peuvent être ajoutés ou liés à CONSUMER RESEARCH au besoin."
+    },
+    {
+      "q": "À quoi ressemblent les produits livrables?",
+      "a": "UX Rapport de vérification, liste de questions, matrice des priorités, éléments d'action — document et carte ciblés. Résumé de la présentation disponible au besoin."
+    },
+    {
+      "q": "Avez-vous besoin d'un pointage ou d'un compte ?",
+      "a": "Nous préférons l'environnement d'utilisation réel lorsque c'est possible. Si l'accès est limité, nous travaillons dans les écrans publics et fournissons du matériel."
+    },
+    {
+      "q": "Cela peut-il se connecter à la conception ou au développement?",
+      "a": "Oui. Les résultats de l'audit peuvent alimenter la refonte, les améliorations UI et la priorité BUILD ou MVP."
+    },
+    {
+      "q": "En quoi est-ce différent de CONSUMER RESEARCH ?",
+      "a": "UX AUDIT examine les produits, l'écran et la facilité d'utilisation du flux. Pour les besoins des utilisateurs et la recherche comportementale, liez la portée à CONSUMER RESEARCH."
+    },
+    {
+      "q": "Comment la confidentialité est-elle traitée?",
+      "a": "Les matériaux ne sont utilisés que dans les limites convenues. NDA disponible au besoin."
+    }
+  ],
+  "finalLabel": "ÉTAT D'UN PROJET",
+  "finalTitle": "Commencez par un clair\nliste des améliorations.",
+  "finalLead": "Si la conversion, le churn, ou la facilité d'utilisation est une préoccupation, dites-nous quels flux de vérification et comment vous voulez des constatations structurées.",
+  "ctaFinalSecondary": "Voir tout RECHERCHE →",
+  "ctaFinalSecondaryHref": "../research/"
+}

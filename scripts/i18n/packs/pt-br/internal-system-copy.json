@@ -1,0 +1,483 @@
+{
+  "seoTitle": "INTERNAL SYSTEM _ Newon Negócios",
+  "metaDescription": "Crie sistemas internos personalizados de operações e gerenciamento — requisitos, permissões, implementação, implantação e guias de operações. Newon INTERNAL SYSTEM.",
+  "crumbBusiness": "EMPRESAS",
+  "crumbServices": "SERVIÇOS",
+  "crumbSolutions": "SOLUÇÕES",
+  "crumbHere": "INTERNAL SYSTEM",
+  "eyebrow": "INTERNAL SYSTEM",
+  "subEyebrow": "SOLUÇÕES",
+  "headline": "O trabalho interno é pesado.\nOs sistemas estão dispersos.",
+  "lead": "Aprovações, solicitações, inventário, RH, liquidação, relatórios, clientes e operações de projeto — nós projetamos e construímos sistemas internos personalizados de web, administrador e portal. A partir de requisitos, permissões e fluxos de trabalho através de integrações e Admin Console — entregues como um sistema que sua equipe realmente usa.",
+  "ctaPrimary": "Inquérito do sistema interno →",
+  "ctaSecondary": "Veja o fluxo de compilação ↓",
+  "meta": [
+    {
+      "k": "SERVIÇO",
+      "v": "Sistema Interno"
+    },
+    {
+      "k": "MELHOR PARA",
+      "v": "Digitalização de operações internas"
+    },
+    {
+      "k": "Cronologia",
+      "v": "Depende do escopo"
+    },
+    {
+      "k": "PREÇO",
+      "v": "Citação personalizada"
+    }
+  ],
+  "overviewLabel": "VISÃO GERAL",
+  "overviewTitle": "Operações executadas em planilhas\ne conversas.",
+  "overviewBody": [
+    "Pedidos internos, aprovações, liquidação, comunicação e entrada de dados — já existe trabalho operacional. O problema é que ele vive em planilhas, bate-papo, passos manuais e várias ferramentas SaaS em vez de um sistema conectado.",
+    "Ferramentas fora da prateleira se encaixam em partes do trabalho, mas lutam com sua estrutura de permissão, linhas de aprovação, dados e integrações legados. As equipes acabam em modo ‘quase trabalhos, mas desajeitado’.",
+    "INTERNAL SYSTEM começa definindo trabalho interno, usuários e estrutura de permissão. Em seguida, projetamos fluxos de trabalho, Admin Console, dados e integrações — e fornecemos guias de implementação, implantação e ops como um único sistema interno."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Ajudante quando você enfrenta essas situações.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "OPS MANUAIS",
+      "d": "Pedidos, aprovações e liquidação são executados em etapas manuais, planilhas ou chat.\nFaltam itens, atrasos e má rastreabilidade."
+    },
+    {
+      "n": "02",
+      "t": "FERROVIÁRIOS",
+      "d": "Cada departamento usa diferentes ferramentas e hábitos.\nUm processo interno não está conectado na forma do sistema."
+    },
+    {
+      "n": "03",
+      "t": "PERMISSÃO CHAOS",
+      "d": "O acesso e a aprovação devem ser diferentes por função e departamento, mas falta estrutura.\nAuditoria e história são difíceis."
+    },
+    {
+      "n": "04",
+      "t": "FRASCO DE HOMOLOGAÇÃO",
+      "d": "Aprovação, revisão, atribuição e gerenciamento de status são gargalos.\nNão está claro quem deve agir e quando."
+    },
+    {
+      "n": "05",
+      "t": "GAP LEGADO",
+      "d": "Você precisa de links para ERP, CRM, contabilidade, ou sistemas de RH.\nNovo trabalho permanece desconectado dos dados e processos existentes."
+    },
+    {
+      "n": "06",
+      "t": "CRESCIMENTO STRAIN",
+      "d": "Volume de org, transações ou pedidos supera os métodos atuais.\nVocê precisa de uma base de sistema para a escala operacional."
+    }
+  ],
+  "baLabel": "ANTES / APÓS",
+  "baTitle": "Ops dispersos vs\nsistema interno conectado",
+  "beforeLabel": "ANTES",
+  "afterLabel": "APÓS",
+  "before": [
+    "Trabalho espalhado por planilhas, bate-papo, passos manuais, SaaS",
+    "Difícil rastrear solicitações, aprovações e status",
+    "Permissões fracas, auditoria e histórico",
+    "Quebra de processo quando as operações escalam"
+  ],
+  "after": [
+    "Estrutura interna de trabalho e permissão definida primeiro",
+    "Pedidos, aprovações, status e relatórios em um sistema",
+    "Admin Console com acesso baseado em funções",
+    "Implantação, operações e caminho de expansão documentados"
+  ],
+  "capsLabel": "CAPABILIDADES",
+  "capsTitle": "está documentado na trajetória de implantação, operações e expansão Nós executamos\ncomo um engajamento estruturado.",
+  "caps": [
+    {
+      "t": "REQUISITOS",
+      "d": "Defina trabalho interno, usuários, linhas de aprovação, critérios de sucesso.\nEsclarecer o que sistematizar."
+    },
+    {
+      "t": "PROJETO DE FLORES DE TRABALHO",
+      "d": "Solicitação de projeto, aprovação, atribuição, status e fluxos de notificação.\nEstrutura para combinar com o processo org."
+    },
+    {
+      "t": "ROLOS E PERMISSÕES",
+      "d": "Departamento de design, papel, permissão e estrutura de registro de auditoria.\nDefina quem pode ver, fazer e aprovar o quê."
+    },
+    {
+      "t": "CONSOLE ADMIN",
+      "d": "Crie telas e ferramentas para operadores e administradores.\nInclua configurações, monitoramento e processamento de filas."
+    },
+    {
+      "t": "DADOS E RELATÓRIOS",
+      "d": "Design de entrada, agregação, relatório e estrutura do painel.\nTorna visíveis as métricas operacionais e o histórico."
+    },
+    {
+      "t": "INTEGRAÇÕES",
+      "d": "Connect ERP, CRM, HR, contabilidade, API, SSO e sistemas existentes.\nDefina claramente os limites dos dados."
+    },
+    {
+      "t": "DEploY & SEGURANÇA",
+      "d": "Definir ambiente de implantação, controle de acesso, backup, monitoramento.\nReflita os requisitos de segurança interna."
+    },
+    {
+      "t": "OPS HANDOFF",
+      "d": "Fornecer guia de operações, manual de permissão e entrega.\nConectar caminho de expansão e manutenção."
+    }
+  ],
+  "sourcesLabel": "INPUTOS DE PROJECTO",
+  "sourcesTitle": "Combinamos as entradas que seu sistema interno precisa.",
+  "sourcesNote": "As entradas reais variam de acordo com a estrutura, segurança e sistemas acessíveis.",
+  "sources": [
+    "Fluxos de trabalho e processos atuais",
+    "Org, departamento, estrutura de papel",
+    "Linhas e políticas de aprovação",
+    "Ferramentas e SaaS em uso",
+    "Legado, ERP, CRM",
+    "Dados internos e documentos",
+    "Relatórios e KPI precisa de",
+    "Segurança e conformidade",
+    "SSO e ambiente de autenticação",
+    "Entrevistas de operador e praticante",
+    "API e requisitos de integração",
+    "Mapa de expansão"
+  ],
+  "useLabel": "PROCESSOS DE UTILIZAÇÃO",
+  "useTitle": "Sistemas internos que podemos construir.",
+  "useBadge": "Tipos de sistema de exemplo",
+  "useCases": [
+    {
+      "t": "PEDIDO E HOMOLOGAÇÃO",
+      "d": "Pedido interno, aprovação, revisão, fluxos de trabalho de rejeição.\nEstado, proprietário e histórico."
+    },
+    {
+      "t": "PAINEL DE OPERAÇÕES",
+      "d": "métricas operacionais, filas, painéis de status de processamento.\nVistas da equipa e do departamento."
+    },
+    {
+      "t": "PORTAL DE ADMINISTRAÇÃO",
+      "d": "Configurações, usuários, permissões, portal de gerenciamento de auditoria.\nConsola focada no operador."
+    },
+    {
+      "t": "INVENTORY / ACTIVO",
+      "d": "Inventário, activo, equipamento, gestão de reservas.\nIn/out, status, links de propriedade. PROJECTO"
+    },
+    {
+      "t": "/ OPS CLIENTE",
+      "d": "Projeto interno, cliente, contrato, gestão de liquidação.\nColaboração da equipa, status, documentos."
+    },
+    {
+      "t": "HR / ONBORDING",
+      "d": "Participar/sair, embarcar, solicitar, aprovar fluxos internos.\nPermissão e fornecimento de acesso."
+    },
+    {
+      "t": "FINANCIAMENTO / EXECUÇÃO",
+      "d": "Liquidação, despesas, aprovação, processamento de provas.\nContabilidade e ligações ERP."
+    },
+    {
+      "t": "REPARTIÇÃO DA LEGACIDADE",
+      "d": "Substituir as ferramentas internas ou as operações de planilha.\nDesenho de transição em fase."
+    }
+  ],
+  "flowLabel": "EXEMPLO DE TRABALHO",
+  "flowTitle": "Dos requisitos ao sistema operacional",
+  "flow": [
+    {
+      "n": "01",
+      "t": "MAPA",
+      "d": "Defina trabalho interno, usuários, linhas de aprovação, dados.\nEsclareça o escopo de sistematização.",
+      "examples": [
+        "Aprovação",
+        "Funções",
+        "",
+        "Dados"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PROJETO",
+      "d": "Projete fluxos de trabalho, Admin Console, estrutura de permissão.\nConfirmar os ecrãs centrais e o fluxo de operações.",
+      "examples": [
+        "Fluxos",
+        "Admin.",
+        "Funções",
+        "UI"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "CONSTRUÇÃO",
+      "d": "Aplicar sistema interno e integrações.\nRevisão em fases com demos.",
+      "examples": [
+        "Consola",
+        "API",
+        "Integração",
+        "QA"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "LANÇAR",
+      "d": "Definir implantação, controle de acesso, monitoramento.\nPreparar ambiente operacional.",
+      "examples": [
+        "",
+        "Prod",
+        "SSO",
+        "Monitor"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "OPERATIONE",
+      "d": "Entregar guia de operações, manual de permissão, entrega. Guia\nConectar caminho de expansão e manutenção.",
+      "examples": [
+        "",
+        "Treinamento",
+        "Suporte",
+        "Fase 2"
+      ]
+    }
+  ],
+  "reportLabel": "SAÍDA",
+  "reportTitle": "Deliverables são um sistema interno operable e documentos de apoio.",
+  "reportLead": "A composição varia de acordo com o âmbito do projecto. Abaixo estão os itens comuns.",
+  "reportMockStatus": "INTERNAL · ESPEC",
+  "reportMockK": "INTERNAL SYSTEM ESPEC",
+  "reportMockT": "Trabalho, permissões, módulos, resumo de operações",
+  "reportItems": [
+    "Resumo dos Requisitos",
+    "Mapa do Fluxo de Trabalho",
+    "& Permissão de Papel Matriz",
+    "Lista de módulos",
+    "Admin Console Visão geral",
+    "& Integração de Dados",
+    "Notas de segurança",
+    "Plano de implantação",
+    "QA Lista de verificação",
+    "Guia de Operações"
+  ],
+  "dashTitle": "Compartilhe módulos e estado de ops em uma visão.",
+  "dashLead": "Fluxos de trabalho, permissões e processamento de filas juntos aceleram as discussões de operações internas.",
+  "dashNote": "A composição do módulo e a estrutura de permissão variam de acordo com as ordens e as necessidades de segurança.",
+  "dashMetrics": [
+    "Módulos",
+    "Funções",
+    "Filas",
+    "Integração"
+  ],
+  "dashFilters": [
+    "Todos",
+    "",
+    "Admin.",
+    "Relatório"
+  ],
+  "aiLabel": "ACELERAÇÃO",
+  "aiTitle": "Preparação de design mais rápida.\nQualidade de operação mais forte.",
+  "aiLead": "Estruturação de requisitos, rascunhos de fluxo de trabalho, matrizes de permissão, listas de verificação QA e ops — AI-assistida para velocidade enquanto as pessoas se concentram em permissões, integrações e implementação de núcleo.",
+  "aiExamples": [
+    "Requisitos e processos de estrutura",
+    "Projecto de aprovação e fluxos de estatuto",
+    "Organizar a matriz de funções e permissões",
+    "Tela Admin Console lista",
+    "Operações e transferências de documentos",
+    "Notas de fronteira de integração e dados"
+  ],
+  "aiNote": "Permissão final, segurança e design de operações são confirmados com sua organização.",
+  "delLabel": "DELIVERÁVEIS",
+  "delTitle": "O que você recebe quando o projeto completa",
+  "delLead": "Nós entregamos os itens abaixo, conforme necessário para o seu escopo.",
+  "deliverables": [
+    "Sistema Interno / Admin Console",
+    "Módulos de fluxo de trabalho e aprovação",
+    "& Permissão de Papel Configurar",
+    "Documentação técnica",
+    "Documentos de Integração",
+    "Configuração da implantação",
+    "Relatório QA",
+    "Guia de Operações e Acessos",
+    "Phase 2 Expansion Plan (opcional)"
+  ],
+  "processLabel": "PROCESSO",
+  "processTitle": "Das exigências às operações.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCOBERTA",
+      "d": "Confirmar trabalho interno, pontos de dor, partes interessadas, restrições.\nDefina objetivos operacionais e critérios de sucesso.",
+      "examples": [
+        "Aprovação",
+        "Dor",
+        "Participantes",
+        "Kpis"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ÂMBITO DE APLICAÇÃO",
+      "d": "Defina módulos, fluxos de trabalho, permissões, escopo de integração.\nConcordo Fase 1 e alcance de expansão.",
+      "examples": [
+        "Módulos",
+        "Fluxos de trabalho",
+        "Funções",
+        "Integração"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "PROJETO",
+      "d": "Design Admin Console, fluxos, estrutura de dados.\nConfirmar telas centrais e linhas de aprovação.",
+      "examples": [
+        "Consola",
+        "Fluxos",
+        "Funções",
+        "Revisão"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONSTRUÇÃO",
+      "d": "Sistema de implementação, integrações, permissões.\nDemonstração e revisão em fases.",
+      "examples": [
+        "Núcleo",
+        "Admin.",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "",
+      "d": "Verifique permissões, fluxos de trabalho, integrações, cenários de ops.\nVerifique da perspectiva do profissional.",
+      "examples": [
+        "UAT",
+        "Segurança",
+        "Correcções",
+        "Assinatura"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "LANÇAR",
+      "d": "Definir implantação, SSO, monitoramento, backup.\nPreparar ambiente operacional.",
+      "examples": [
+        "",
+        "Prod",
+        "",
+        "Monitor"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "MÃO",
+      "d": "Guia de operações, manual de permissão, treinamento e entrega.\nConectar caminho de expansão e manutenção.",
+      "examples": [
+        "",
+        "Treinamento",
+        "Suporte",
+        "Fase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "NÍVEIS DE ÂMBITO DE APLICAÇÃO",
+  "scopeTitle": "Como pensar sobre a complexidade do projeto.",
+  "scopeLead": "Não é um pacote fixo. O escopo é definido pela faixa de trabalho, complexidade de permissão/integração e necessidades de segurança.",
+  "scopes": [
+    {
+      "t": "SISTEMA DE OPS FOCUSADO",
+      "items": [
+        "Fluxo de trabalho único do núcleo",
+        "Funções e departamentos limitados",
+        "Admin Console",
+        "1–2 integrações básicas",
+        "Guia de operações"
+      ]
+    },
+    {
+      "t": "COMPLETOINTERNAL SYSTEM",
+      "items": [
+        "Múltiplos módulos e fluxos de trabalho",
+        "Funções, permissões, registos de auditoria",
+        "Quadros e relatórios",
+        "Multiintegração e SSO",
+        "Implantação e transferência incluindo"
+      ]
+    },
+    {
+      "t": "PLATFORMA EMPRESA",
+      "items": [
+        "Multi-departamento, multi-site ops",
+        "Linhas e políticas de aprovação complexas",
+        "Legacy e ERP deep links",
+        "Forte segurança e conformidade",
+        "Ops de longo prazo e projeto de expansão"
+      ]
+    }
+  ],
+  "timeLabel": "Cronologia",
+  "timeTitle": "A linha do tempo depende do escopo.",
+  "timeLead": "A duração varia de acordo com a contagem de módulos, integrações, complexidade de permissão e revisão de segurança.",
+  "timelines": [
+    {
+      "t": "Sistema de Ops focado",
+      "d": "Cerca de 4-8 semanas · varia"
+    },
+    {
+      "t": "Sistema interno completo",
+      "d": "Cerca de 8–16 semanas · varia"
+    },
+    {
+      "t": "Plataforma empresarial",
+      "d": "Cerca de 12+ semanas ·"
+    }
+  ],
+  "priceLabel": "CUSTO DO PROJECTO",
+  "priceTitle": "personalizado Citado por projeto.",
+  "priceName": "INTERNAL SYSTEM",
+  "priceValue": "Citação personalizada",
+  "priceFactorsLabel": "Fatores de preços",
+  "priceFactors": [
+    "Escopo — módulos, fluxos de trabalho, telas",
+    "Complexidade — permissões, linhas de aprovação, dados Integração",
+    "Prazo — calendário e reabastecimento",
+    "— ERP, CRM, SSO, API",
+    "Segurança — controlo de acesso e auditoria",
+    "Utilizadores e funções — departamentos, sites, funções",
+    "Participação da equipa – UAT e colaboração ops",
+    "Pós-lançamento — manutenção e expansão"
+  ],
+  "priceNote": "Revisamos Escopo / Complexidade / Linha do Tempo / Integração, em seguida, fornecer uma cotação. Nenhum preço de menu fixo.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Perguntas mais frequentes",
+  "faqs": [
+    {
+      "q": "Como é que isto é diferente do INTERNAL TOOLS (AUTOMAÇÃO)?",
+      "a": "INTERNAL TOOLS é um pacote de ferramentas de automação e ops definido. INTERNAL SYSTEM é uma compilação personalizada para o trabalho interno, permissões e integrações de sua org."
+    },
+    {
+      "q": "Como é que isto é diferente do CUSTOM PRODUCT?",
+      "a": "CUSTOM PRODUCT é uma construção de produto personalizado mais ampla. INTERNAL SYSTEM se concentra em operações internas, gestão, aprovação e Admin Console."
+    },
+    {
+      "q": "Como é definido o preço?",
+      "a": "Depois de analisar o escopo do trabalho, complexidade, cronograma, integrações e segurança — muitas vezes por fase."
+    },
+    {
+      "q": "Você pode integrar com ERP existente ou CRM?",
+      "a": "Sim. API, sincronização de dados, SSO e links profundos podem ser explorados e projetados."
+    },
+    {
+      "q": "As permissões e registros de auditoria estão incluídos?",
+      "a": "O acesso baseado em papéis, histórico de aprovação e registros de auditoria podem ser projetados e implementados no escopo."
+    },
+    {
+      "q": "Pode apoiar operações pós-lançamento?",
+      "a": "Sim. O suporte à expansão de recursos, manutenção e operações pode continuar sob acordo separado."
+    },
+    {
+      "q": "Como é tratada a confidencialidade?",
+      "a": "Os materiais são utilizados apenas dentro do âmbito acordado. NDA disponível quando necessário."
+    }
+  ],
+  "finalLabel": "Iniciar um projeto",
+  "finalTitle": "Conectar operações internas\nem um sistema.",
+  "finalLead": "Se você precisa digitalizar trabalho interno, linhas de aprovação ou integrações, diga-nos o que você está tentando resolver. Vamos confirmar o âmbito do sistema e construir uma abordagem em conjunto.",
+  "ctaFinalSecondary": "Ver todos SOLUÇÕES →",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

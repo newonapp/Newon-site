@@ -1,0 +1,483 @@
+{
+  "seoTitle": "PRODUCT LAUNCH Silencioso Newon Negocios",
+  "metaDescription": "Conectar la idea al producto, el aterrizaje y la preparación de lanzamiento en una línea: estrategia, diseño, construcción y lista de verificación. Newon PRODUCT LAUNCH.",
+  "crumbBusiness": "NEGOCIOS",
+  "crumbServices": "SERVICIOS",
+  "crumbSolutions": "SOLUCIONES",
+  "crumbHere": "PRODUCT LAUNCH",
+  "eyebrow": "PRODUCT LAUNCH",
+  "subEyebrow": "SOLUCIONES",
+  "headline": "Tienes la idea.\nLanzamiento todavía está disperso.",
+  "lead": "Definición de producto, UX/UI, MVP y landing build, deployment, and launch checklist — conectamos lo que necesitas de la idea a la liberación pública en un proyecto. No hay paquetes separados cosidos juntos, pero un flujo diseñado para su objetivo de lanzamiento.",
+  "ctaPrimary": "De investigación de lanzamiento de productos →",
+  "ctaSecondary": "Ver el flujo de lanzamiento ↓",
+  "meta": [
+    {
+      "k": "SERVICIO",
+      "v": "Producto de lanzamiento"
+    },
+    {
+      "k": "MEJOR",
+      "v": "Idea para el lanzamiento final a final"
+    },
+    {
+      "k": "TimeLINE",
+      "v": "Depende del alcance"
+    },
+    {
+      "k": "PRECIO",
+      "v": "Cita personalizada"
+    }
+  ],
+  "overviewLabel": "",
+  "overviewTitle": "Existen piezas.\nLa preparación de lanzamiento no lo hace.",
+  "overviewBody": [
+    "Lanzamiento de un nuevo servicio, característica o marca toma muchas partes móviles — definición de producto, diseño, desarrollo, aterrizaje, dominio, pagos, análisis, QA, y tiempo de vida. Se dispersan fácilmente entre equipos, vendedores y paquetes.",
+    "Construir sólo un MVP o sólo una página de aterrizaje rara vez alcanza 'listo para enviar.' Sin una visión clara de la prioridad y las lagunas, el horario y la calidad de las oscilaciones.",
+    "PRODUCT LAUNCH define el objetivo de lanzamiento primero, luego conecta estrategia, diseño, construcción y lanzamiento prep en un flujo — producto, aterrizaje, integraciones esenciales, y lista de verificación alineada a un estado navegable."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Ayudante cuando se enfrenta a estas situaciones.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "LANZAMIENTO ESTAFADOR",
+      "d": "Producto, desembarco, branding y despliegue corren en pistas separadas. Las fechas\nGo-live no se alinean."
+    },
+    {
+      "n": "02",
+      "t": "IDEA PARA ENVIAR",
+      "d": "Usted tiene una idea pero lucha para conectar MVP, aterrizaje y preparación de lanzamiento.\nNecesitas un compañero de principio a barco."
+    },
+    {
+      "n": "03",
+      "t": "LISTA DE VERIFICACIÓN DESAPARECIDA",
+      "d": "Las características están casi hechas pero faltan dominio, pagos, análisis, SEO o QA.\n\"Listo para lanzar\" es indefinido."
+    },
+    {
+      "n": "04",
+      "t": "PRIMERA CONFERENCIA",
+      "d": "Usted está preparando un primer producto, marca, o importante versión de características.\nNecesitas una reacción rápida al mercado."
+    },
+    {
+      "n": "05",
+      "t": "MULTISUPERFICIE",
+      "d": "Producto + aterrizaje + a bordo + administración son todos necesarios.\nUn solo paquete BUILD no es suficiente."
+    },
+    {
+      "n": "06",
+      "t": "FECHA DE LANZAMIENTO",
+      "d": "Usted debe lanzar para el día de demostración, reuniones de inversores, eventos, o fechas de marketing.\nLa prioridad y el alcance necesitan una estrecha coordinación."
+    }
+  ],
+  "baLabel": "ANTES / DESPUÉS",
+  "baTitle": "Prepárate para el vs.\nlanzamiento conectado",
+  "beforeLabel": "ANTES",
+  "afterLabel": "DESPUÉS",
+  "before": [
+    "MVP, aterrizaje, diseño y ejecución por separado",
+    "Pre-lanzamiento esencial falta — dominio, pagos, analítica",
+    "Horario, alcance y prioridad difieren por equipo",
+    "No hay camino desde go-live hasta el bucle de retroalimentación"
+  ],
+  "after": [
+    "Objetivo de lanzamiento y alcance definido primero",
+    "Estrategia → diseño → construir → prepa de lanzamiento en un flujo",
+    "Producto + aterrizaje + lista de verificación alineada",
+    "Mejora y medición posterior al lanzamiento conectados"
+  ],
+  "capsLabel": "CAPABILIDADES",
+  "capsTitle": "Conectamos lo que el lanzamiento necesita\nen un proyecto.",
+  "caps": [
+    {
+      "t": "OBJETIVOS DE LANZAMIENTO",
+      "d": "Define el objetivo de lanzamiento, los usuarios objetivo y los criterios de éxito.\nAclarar qué barcos y cuándo."
+    },
+    {
+      "t": "SCOPE &quot; STRATEGY",
+      "d": "Frame MVP scope, landing role, and must-have features.\nFase Separada 1 de la expansión posterior."
+    },
+    {
+      "t": "UX / UI DESIGN",
+      "d": "Diseño de producto, aterrizaje y experiencia de a bordo.\nConectar marca y mensaje de forma consistente."
+    },
+    {
+      "t": "PRODUCTO BUILD",
+      "d": "Implementar funciones básicas, MVP y superficies de administración.\nIncluye las integraciones y API necesarias."
+    },
+    {
+      "t": "LANDING &amp; MESSAGE",
+      "d": "Construir landing, intro y páginas de conversión.\nConectar CTA, investigación y flujos de registro."
+    },
+    {
+      "t": "INTEGRACIONES",
+      "d": "Establecer pagos, análisis, correo electrónico, austeridad y otros elementos esenciales de lanzamiento.\nConstruir la estructura operacional básica."
+    },
+    {
+      "t": "LA READINESS DE LA DESTACCIÓN",
+      "d": "Control de dominio, SEO, QA, monitorización, revolver en una lista de verificación de lanzamiento.\nConfirme el estado de envío."
+    },
+    {
+      "t": "POS-LANZAMIENTO",
+      "d": "Conectar la retroalimentación post-lanzamiento, métricas y mejoras.\nProponer el siguiente camino de iteración."
+    }
+  ],
+  "sourcesLabel": "PROYECTO INPUTS",
+  "sourcesTitle": "Combinamos las entradas que necesita su proyecto de lanzamiento.",
+  "sourcesNote": "Los insumos reales varían según la madurez de la idea, los activos y el cronograma.",
+  "sources": [
+    "Idea, hipótesis, objetivos",
+    "Definición de usuario objetivo",
+    "Contexto competitivo y de mercado",
+    "Cables de cable existentes o especificaciones",
+    "Marca y mensajería",
+    "Prioridad de la función",
+    "Dominio e infraestructura",
+    "Pago y requisitos legales",
+    "Plan de análisis y marketing",
+    "Demo o programa de inversores",
+    "Intereses internos",
+    "Post-launch KPI"
+  ],
+  "useLabel": "CASOS DE USO",
+  "useTitle": "Lanza que podemos preparar.",
+  "useBadge": "Tipos de lanzamiento",
+  "useCases": [
+    {
+      "t": "NUEVO PRODUCTO MVP",
+      "d": "Nuevo servicio MVP + aterrizaje + prepa de lanzamiento.\nConectado a los primeros usuarios."
+    },
+    {
+      "t": "CARACTERÍSTICAS",
+      "d": "Libere una nueva característica o módulo sobre un producto existente.\nIncluye a bordo, aterrizaje y flujo de anuncios."
+    },
+    {
+      "t": "REBRAND LAUNCH",
+      "d": "Remarcar con el producto y aterrizar juntos.\nMensaje y experiencia consistentes."
+    },
+    {
+      "t": "BETA → PÚBLICO",
+      "d": "Muévete de beta a lanzamiento público.\nLista de comprobación, QA y monitoreo en marcha."
+    },
+    {
+      "t": "INVESTOR / DÍA DEMO",
+      "d": "Inicie preparación para reuniones de demo o inversores.\nEstado listo para demo y naufragio."
+    },
+    {
+      "t": "CAMARERA → EN VIVO",
+      "d": "Lanzamiento después de la lista de espera o pre-registración.\nConecte conversión, a bordo y pago."
+    },
+    {
+      "t": "MULTICANAL",
+      "d": "Web + aterrizaje + administración + investigación en un proyecto.\nAlineados en un compromiso."
+    },
+    {
+      "t": "LOCAL / GLOBAL",
+      "d": "Prepa de lanzamiento nacional o mundial.\nLenguaje, pago y alcance de mensaje coordinado."
+    }
+  ],
+  "flowLabel": "EJEMPLO DE FLUJO DE TRABAJO",
+  "flowTitle": "De idea a lanzamiento",
+  "flow": [
+    {
+      "n": "01",
+      "t": "IDEA",
+      "d": "Aclarar objetivos, hipótesis, usuarios y criterios de éxito.\nDefina por qué lanzamiento ahora.",
+      "examples": [
+        "Objetivos",
+        "Hipótesis",
+        "Usuarios",
+        "KPI"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ESTRATEGIA",
+      "d": "Define el alcance MVP, el papel de aterrizaje y el cronograma.\nSeparar debe-tener de más tarde.",
+      "examples": [
+        "Ámbito",
+        "Prioridad",
+        "Timeline",
+        "Riesgo"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DISEÑO",
+      "d": "Producto de diseño, aterrizaje y a bordo de UX/UI.\nConectar marca y mensaje.",
+      "examples": [
+        "Flujos",
+        "UI",
+        "Aterrizaje",
+        "Valoración"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONSTRUCCIÓN",
+      "d": "Implementar MVP, aterrizaje e integraciones.\nRevisión en fases con demos.",
+      "examples": [
+        "Producto",
+        "Aterrizaje",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LANZAMIENTO",
+      "d": "Despliegue, ejecute la lista de verificación y vaya en vivo.\nConfirme las rutas de monitoreo y retroceso.",
+      "examples": [
+        "Despliegue",
+        "Lista de comprobación",
+        "Go-live",
+        "Monitor"
+      ]
+    }
+  ],
+  "reportLabel": "Fuera.",
+  "reportTitle": "Las entregas son un producto naufragable y estado listo para el lanzamiento.",
+  "reportLead": "La composición varía según el alcance del proyecto. A continuación se presentan artículos comunes.",
+  "reportMockStatus": "LANZAMIENTO · PLAN",
+  "reportMockK": "PRODUCT LAUNCHPLAN",
+  "reportMockT": "Alcance, cronología, activos, lista de verificación",
+  "reportItems": [
+    "Objetivos de lanzamiento",
+    "Resumen de alcance",
+    "MVP Lista de características",
+    "Esquema de aterrizaje",
+    "Activos de diseño",
+    "Lista de integración",
+    "Lista de verificación de lanzamiento",
+    "QA Resumen",
+    "Plan Go-live",
+    "Notas postales"
+  ],
+  "dashTitle": "Compartir disponibilidad de lanzamiento en una vista.",
+  "dashLead": "Estadios, activos y lista de verificación juntos de las discusiones de lanzamiento rápido y alineación de horarios.",
+  "dashNote": "La lista de verificación y la composición de la etapa varían según el objetivo del proyecto y el calendario.",
+  "dashMetrics": [
+    "Etapas",
+    "Activos",
+    "Listo",
+    "Bloqueadores"
+  ],
+  "dashFilters": [
+    "Todos",
+    "Producto",
+    "Aterrizaje",
+    "Opciones"
+  ],
+  "aiLabel": "ACCELERACIÓN",
+  "aiTitle": "Más rápido.\nCalidad de lanzamiento más fuerte.",
+  "aiLead": "Estructuración, lista de verificación, copia y andamio doc, listas QA — AI-asistida para la velocidad mientras la gente se centra en la estrategia, el diseño y la construcción de núcleo.",
+  "aiExamples": [
+    "Proyecto de alcance de lanzamiento y lista de verificación",
+    "Estructura de aterrizaje y mensaje",
+    "Organizar MVP lista de características",
+    "QA y listas de verificación de go-live",
+    "Comparar tiempo y hitos",
+    "Diseño post-lanzamiento KPI bucle"
+  ],
+  "aiNote": "Las decisiones de alcance final, calidad y Go/No-go se confirman con su equipo de proyecto.",
+  "delLabel": "SUMINISTROS",
+  "delTitle": "Lo que recibe cuando el proyecto completa",
+  "delLead": "Entregamos los siguientes elementos según sea necesario para su alcance.",
+  "deliverables": [
+    "MVP / Producto básico",
+    "Lanzamiento de aterrizaje",
+    "UX / UI Archivos de diseño",
+    "Lista de verificación de lanzamiento",
+    "Plan Go-live",
+    "Configuración de integración",
+    "QA Informe",
+    "Analytics &amp; Tracking Setup",
+    "Post-launch Plan de Mejora"
+  ],
+  "processLabel": "PROCESO",
+  "processTitle": "De la idea enmarcada a la liberación pública.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCUBRIMIENTO",
+      "d": "Confirme idea, objetivos, usuarios, cronología, limitaciones.\nDefinir los criterios de éxito del lanzamiento.",
+      "examples": [
+        "Objetivos",
+        "Usuarios",
+        "Timeline",
+        "KPI"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ESTRATEGIA",
+      "d": "Establecer MVP, aterrizaje, alcance de integración y prioridad.\nAgree Fase 1 rango de lanzamiento.",
+      "examples": [
+        "Ámbito",
+        "Prioridad",
+        "Riesgo",
+        "Timeline"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DISEÑO",
+      "d": "Producto de diseño, aterrizaje, a bordo de UX/UI.\nConfirme las pantallas y el mensaje del núcleo.",
+      "examples": [
+        "Flujos",
+        "UI",
+        "Aterrizaje",
+        "Valoración"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONSTRUCCIÓN",
+      "d": "Implementar MVP, aterrizaje, integraciones esenciales.\nDemo y revisión en fases.",
+      "examples": [
+        "Producto",
+        "Aterrizaje",
+        "Integraciones",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PRE-LANZAMIENTO",
+      "d": "Lista de comprobación, QA, puesta en escena, monitoreo.\nConfirme la preparación de la vida útil.",
+      "examples": [
+        "Lista de comprobación",
+        "",
+        "UAT",
+        "Arreglos"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "LANZAMIENTO",
+      "d": "Despliegue, publique, monitoreo inicial.\nConfirme el camino de respuesta de emisión.",
+      "examples": [
+        "Despliegue",
+        "Go-live",
+        "Monitor",
+        "Soporte"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "MEJORAR",
+      "d": "Revise la retroalimentación temprana y las métricas.\nConectar los siguientes elementos de iteración.",
+      "examples": [
+        "Metrices",
+        "Opinión",
+        "Arreglos",
+        "Roadmap"
+      ]
+    }
+  ],
+  "scopeLabel": "NIVELES DE ALCANCE",
+  "scopeTitle": "Cómo pensar en la complejidad del proyecto.",
+  "scopeLead": "No un paquete fijo. El alcance está fijado por objetivo de lanzamiento, profundidad de producto y rango de aterrizaje/integración.",
+  "scopes": [
+    {
+      "t": "LANZAMIENTO",
+      "items": [
+        "MVP núcleo + aterrizaje",
+        "Básica ux/ui",
+        "1–2 integraciones esenciales",
+        "Lista de verificación de lanzamiento",
+        "Go-live apoyo"
+      ]
+    },
+    {
+      "t": "LANZAMIENTO COMPLETO",
+      "items": [
+        "MVP + aterrizaje + a bordo de",
+        "Ajuste de marca y mensaje",
+        "Pago, analítica, integraciones de auth",
+        "QA, monitoreo, SEO",
+        "Mejora posterior al lanzamiento plan"
+      ]
+    },
+    {
+      "t": "LANZAMIENTO PERSONALIZADO",
+      "items": [
+        "Múltiples canales, idiomas, roles",
+        "Integraciones complejas y estructura de operaciones",
+        "Demo, inversor, o fecha límite del evento se ajustan a",
+        "Lista de comprobación personalizada y runbook",
+        "Diseño de iteración a largo plazo"
+      ]
+    }
+  ],
+  "timeLabel": "TimeLINE",
+  "timeTitle": "El plazo depende del alcance.",
+  "timeLead": "La duración varía según la profundidad de MVP, rango de diseño, integraciones y velocidad de decisión.",
+  "timelines": [
+    {
+      "t": "Lanzamiento",
+      "d": "Alrededor de 4-8 semanas · varía"
+    },
+    {
+      "t": "Lanzamiento completo",
+      "d": "Alrededor de 8 a 14 semanas · varía"
+    },
+    {
+      "t": "Lanzamiento personalizado",
+      "d": "Acerca 10+ semanas · personalizado"
+    }
+  ],
+  "priceLabel": "PROYECTO COST",
+  "priceTitle": "Citado por proyecto.",
+  "priceName": "PRODUCT LAUNCH",
+  "priceValue": "Cita personalizada",
+  "priceFactorsLabel": "Factores de precios",
+  "priceFactors": [
+    "Alcance — MVP, aterrizaje, rango de integración",
+    "Complejidad — características, datos, permisos",
+    "Timeline — horario y recursos",
+    "Profundidad de diseño — UX/UI range",
+    "Integraciones — pago, análisis, auth",
+    "Inicio de superficies — web, app, admin",
+    "Participación del equipo - decisiones, UAT",
+    "Post-lanzamiento: mejora y soporte de operaciones"
+  ],
+  "priceNote": "Revisamos Alcance / Complejidad / Timeline / Integración, luego proporcionamos una cotización. No hay precios fijos del menú.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Preguntas frecuentes",
+  "faqs": [
+    {
+      "q": "¿Cómo es diferente de MVP o paquetes de aterrizaje?",
+      "a": "MVP y LANDING son paquetes BUILD definidos. PRODUCT LAUNCH conecta la estrategia, diseño, producto, aterrizaje y preparación de lanzamiento para un go-live go en un proyecto."
+    },
+    {
+      "q": "¿Cómo es diferente de CUSTOM PRODUCT?",
+      "a": "CUSTOM PRODUCT se centra en la construcción de un producto a medida. PRODUCT LAUNCH se centra en el flujo de la idea a la opinión pública incluyendo el aterrizaje, lista de verificación, y go-live."
+    },
+    {
+      "q": "¿Cómo se fijan los precios?",
+      "a": "Después de revisar el objetivo de lanzamiento, alcance, complejidad, cronograma e integraciones, a menudo por fase."
+    },
+    {
+      "q": "¿Se incluye el diseño y el desarrollo?",
+      "a": "UX/UI diseño y construcción se puede incluir en el alcance. Las superficies requeridas (producto, aterrizaje, administración) se definen conjuntamente."
+    },
+    {
+      "q": "¿Qué hay en la lista de verificación de lanzamiento?",
+      "a": "Dominio, SEO, QA, análisis, pagos, monitoreo, devolución — personalizado a su proyecto."
+    },
+    {
+      "q": "¿Puede apoyar la mejora post-lanzamiento?",
+      "a": "Sí. La iteración y la ampliación de las características de la retroalimentación temprana y las métricas pueden continuar bajo acuerdo separado."
+    },
+    {
+      "q": "¿Cómo se maneja la confidencialidad?",
+      "a": "Los materiales sólo se utilizan dentro del alcance acordado. NDA disponible cuando sea necesario."
+    }
+  ],
+  "finalLabel": "START A PROYECTO",
+  "finalTitle": "Conectar la idea al lanzamiento\nen una línea.",
+  "finalLead": "Si está preparando un producto, característica o lanzamiento de marca, díganos su objetivo, alcance y cronología. Confirmaremos el camino juntos.",
+  "ctaFinalSecondary": "Ver todas las SOLUCIONES →",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

@@ -1,0 +1,2864 @@
+{
+  "brand-strategy": {
+    "headline": "Comenzamos decidiendo hacia dónde debe ir la marca.",
+    "description": [
+      "Una marca fuerte no comienza con un logotipo o color.\n\nPara quién es,\ndónde debería ubicarse en el mercado,\ny cómo debería ser recordada —\nesos vienen primero.\n\nNewon Studio Brand Strategy revisa la marca, el producto, la audiencia y la competencia en conjunto, y luego establece una dirección clara para todo lo que sigue."
+    ],
+    "seoTitle": "Estrategia de Marca | Newon Studio",
+    "metaDescription": "Estrategia de Marca — definir la dirección de la marca, posicionamiento, audiencia, mensaje y tono como la base para Naming, Identidad y Digital. Desde ₩400,000 · 1–3 semanas.",
+    "typeLabel": "",
+    "statusLabel": "",
+    "overview": {
+      "title": "Antes de moldear lo que la gente ve,\nestablece la base de la marca.",
+      "body": [
+        "La estrategia de marca no es un volcado de ideas rápido ni una tarea de diseño.",
+        "Define qué problema resuelve la marca, quién la necesita, cómo se diferencia de los competidores y cómo debería ser recordada.",
+        "Esa estrategia se convierte en la base compartida para Naming, Identidad, Logotipo, Sitio Web, App, Contenido — cada lugar donde la marca se encuentra con las personas."
+      ],
+      "criteriaLead": "",
+      "criteria": []
+    },
+    "problemsTitle": "Situaciones donde esto ayuda.",
+    "problems": [],
+    "whoTitle": "Construido para marcas y equipos en estas situaciones.",
+    "whatWeDoTitle": "Revisamos la marca desde múltiples ángulos\ny establecemos una dirección clara.",
+    "whatWeDo": [
+      {
+        "t": "REVISIÓN DE MARCA",
+        "d": "Entender la marca y el producto actuales.\n\nRevisamos lo que ofreces, el mensaje hoy y los activos de marca existentes."
+      },
+      {
+        "t": "CONTEXTO DE MERCADO",
+        "d": "Observa el mercado en el que compites.\n\nRevisamos las características del mercado y los competidores clave, y exploramos dónde puede ubicarse la marca."
+      },
+      {
+        "t": "AUDIENCIA",
+        "d": "Define la audiencia principal.\n\nQuién necesita esta marca, y qué problemas y necesidades traen."
+      },
+      {
+        "t": "POSICIONAMIENTO",
+        "d": "Define el lugar de la marca.\n\nFrente a los competidores, cuál valor y diferencia deberían liderar cómo explicas la marca."
+      },
+      {
+        "t": "ESENCIA DE MARCA",
+        "d": "Define la esencia de la marca.\n\nPropósito\nValor\nPersonalidad\nPalabras clave\n\ny otros elementos básicos de construcción."
+      },
+      {
+        "t": "MENSAJERÍA",
+        "d": "Construye lo que la marca debe comunicar.\n\nMensaje principal para el cliente y una dirección básica del lenguaje."
+      },
+      {
+        "t": "TONO Y ESTILO",
+        "d": "Define cómo debe hablar y aparecer la marca.\n\nUna dirección de comunicación utilizable más adelante en Sitio Web, Aplicación, Redes Sociales y Campañas."
+      }
+    ],
+    "useCasesTitle": "Ejemplos de lo que podemos moldear.",
+    "useCases": [],
+    "includedTitle": "Alcance básico del proyecto",
+    "included": [
+      "Revisión de Marca / Producto",
+      "Revisión del Contexto de Mercado",
+      "Revisión de Competencia",
+      "Definición del Público Objetivo",
+      "Posicionamiento de Marca",
+      "Valor Central",
+      "Palabras Clave de la Marca",
+      "Personalidad de la Marca",
+      "Mensaje Central",
+      "Dirección de Tono y Estilo",
+      "Resumen de la Dirección de Marca"
+    ],
+    "deliverablesTitle": "Cuando el proyecto termine,\nconservarás una línea base de la marca.",
+    "deliverables": [
+      {
+        "t": "DOCUMENTO DE ESTRATEGIA DE MARCA",
+        "d": "Documento final de estrategia y dirección central"
+      },
+      {
+        "t": "POSICIONAMIENTO",
+        "d": "Mercado y diferenciación clave"
+      },
+      {
+        "t": "DEFINICIÓN DE AUDIENCIA",
+        "d": "Audiencia central en la que la marca debe centrarse"
+      },
+      {
+        "t": "ESENCIA DE MARCA",
+        "d": "Propósito / Valor / Personalidad / Palabras clave y elementos centrales relacionados"
+      },
+      {
+        "t": "MENSAJE CENTRAL",
+        "d": "El mensaje central para los clientes"
+      },
+      {
+        "t": "TONO Y ESTILO",
+        "d": "Dirección básica de comunicación para web, aplicación, redes sociales y contenido"
+      },
+      {
+        "t": "PRÓXIMA DIRECCIÓN",
+        "d": "Siguientes pasos sugeridos como Naming / Identidad / Logo / Digital cuando sea útil"
+      }
+    ],
+    "processTitle": "Busca la dirección,\ny luego fijécalo como referencia de marca.",
+    "process": [
+      {
+        "t": "DESCUBRIR",
+        "d": "Entendimiento de marca\n\nMarca actual, producto, objetivos y contexto del proyecto."
+      },
+      {
+        "t": "RESEÑA",
+        "d": "Mercado y audiencia\n\nMercado, competidores clave y audiencia principal."
+      },
+      {
+        "t": "DEFINE",
+        "d": "Dirección de marca\n\nPosicionamiento, valor central y palabras clave de marca."
+      },
+      {
+        "t": "MENSAJE",
+        "d": "Mensajería\n\nDirección principal del mensaje y lenguaje del cliente."
+      },
+      {
+        "t": "ENTREGA",
+        "d": "Entrega de estrategias\n\nEntrega de entregables de estrategia de marca."
+      }
+    ],
+    "priceTitle": "Precio inicial y alcance base",
+    "ctaTitle": "Empieza con una dirección clara de marca\n.",
+    "ctaLead": "La marca no necesita estar terminada.\n\nComparte la idea, el producto y las preguntas — aclaramos el alcance de la Estrategia de Marca que necesitas.",
+    "ctaSecondary": "Ver estudio →",
+    "exploreTitle": "Otros servicios en Brand"
+  },
+  "naming": {
+    "headline": "Un nombre fuerte es\n, el primer activo de la marca.",
+    "description": [
+      "Analizamos la estrategia de marca, el carácter del producto, la audiencia, el mercado y la capacidad de ampliación — luego desarrollamos nombres fáciles de recordar y construidos para durar.",
+      "Esta no es una lista de candidatos aleatorios.\nEs diseñar cómo se recordará la marca."
+    ],
+    "seoTitle": "Nombres | Newon Studio",
+    "metaDescription": "Nombres — desarrollar nombres memorables y duraderos a partir del carácter de la marca, audiencia, mercado y capacidad de expansión. Desde ₩300,000 · 1–2 semanas.",
+    "typeLabel": "",
+    "statusLabel": "",
+    "overview": {
+      "title": "Incluso un nombre\nnecesita estrategia.",
+      "body": [
+        "Un nombre fuerte no es solo una palabra agradable.",
+        "Debe reflejar lo que hace la marca, para quién es, la impresión que debe dejar y hasta dónde puede crecer.",
+        "Newon Naming analiza la marca y el producto, define palabras clave y ejes de significado, explora múltiples direcciones y desarrolla candidatos que pueden convertirse en una marca real."
+      ],
+      "criteriaLead": "Pesamos criterios como estos juntos.",
+      "criteria": [
+        "Fácil de recordar",
+        "Fácil de pronunciar",
+        "Conectado al carácter de la marca",
+        "Diferente de otros servicios",
+        "Funciona en contextos digitales",
+        "Se escala a medida que el producto crece",
+        "Usable en contextos globales"
+      ]
+    },
+    "problemsTitle": "Naming ayuda en situaciones como estas.",
+    "problems": [
+      {
+        "t": "PIZARRA EN BLANCO",
+        "d": "La marca está lista — el nombre no.\n\nProducto y dirección están definidos, pero empezar con el nombre correcto es difícil."
+      },
+      {
+        "t": "DEMASIADO GENÉRICO",
+        "d": "El nombre es demasiado común.\n\nDesaparece en búsquedas, tiendas de aplicaciones, redes sociales y el mercado."
+      },
+      {
+        "t": "DIFÍCIL DE DECIR",
+        "d": "Difícil de leer o recordar.\n\nLa ortografía o pronunciación es compleja — o incómoda entre coreano e inglés."
+      },
+      {
+        "t": "SIN CONEXIÓN CON LA MARCA",
+        "d": "El nombre y la marca no se conectan.\n\nHay un nombre, pero el valor y el carácter no se transmiten."
+      },
+      {
+        "t": "SE NECESITA CAMBIAR NOMBRE",
+        "d": "El nombre actual debe cambiar.\n\nLa dirección, el público o el producto cambiaron — el nombre antiguo ya no encaja."
+      },
+      {
+        "t": "EXPANSIÓN GLOBAL",
+        "d": "La expansión global está en la hoja de ruta.\n\nNecesitas un nombre que funcione más allá de Corea."
+      }
+    ],
+    "whoTitle": "Construido para equipos y marcas como estas.",
+    "whatWeDoTitle": "Trabajo que realizamos en este proyecto.",
+    "whatWeDo": [
+      {
+        "t": "ANÁLISIS DE MARCA",
+        "d": "Analizar el carácter, objetivos y público de la marca, producto y servicio."
+      },
+      {
+        "t": "CONTEXTO DE MERCADO",
+        "d": "Revisar patrones de nombres en el mercado y competidores."
+      },
+      {
+        "t": "DIRECCIÓN DE NAMING",
+        "d": "Definir la dirección y los criterios que el nombre debe cumplir."
+      },
+      {
+        "t": "DESARROLLO DE PALABRAS CLAVE",
+        "d": "Construir palabras clave y ejes de significado que expresen la marca."
+      },
+      {
+        "t": "EXPLORACIÓN DE NOMBRES",
+        "d": "Explorar direcciones descriptivas, compuestas, simbólicas, abstractas y relacionadas."
+      },
+      {
+        "t": "DESARROLLO DE CANDIDATOS",
+        "d": "Preseleccionar y desarrollar candidatos de alto potencial."
+      },
+      {
+        "t": "SIGNIFICADO Y PRONUNCIACIÓN",
+        "d": "Revisar el significado, la pronunciación y la ortografía de cada candidato."
+      },
+      {
+        "t": "REVISIÓN DE EXPANSIÓN",
+        "d": "Revisión básica del servicio, producto y expansibilidad global."
+      },
+      {
+        "t": "RECOMENDACIÓN FINAL",
+        "d": "Entregar recomendaciones clasificadas por estrategia y usabilidad."
+      }
+    ],
+    "useCasesTitle": "Ejemplos de lo que podemos formar.",
+    "useCases": [],
+    "includedTitle": "Incluido en el alcance base.",
+    "included": [
+      "Análisis de Marca",
+      "Revisión del Contexto del Mercado",
+      "Dirección de Naming",
+      "Desarrollo de Palabras Clave",
+      "Exploración de Naming",
+      "Desarrollo de Candidatos",
+      "Revisión de Significado",
+      "Revisión de Pronunciación",
+      "Revisión Básica de Ajuste Digital",
+      "Revisión de Expansión de Marca",
+      "Recomendación Final"
+    ],
+    "deliverablesTitle": "Lo que recibes\nen la entrega.",
+    "deliverables": [
+      {
+        "t": "Estrategia de Naming",
+        "d": "Dirección de naming y criterios de decisión para la marca."
+      },
+      {
+        "t": "Dirección de Naming",
+        "d": "Principales direcciones de naming exploradas."
+      },
+      {
+        "t": "Lista de Candidatos de Naming",
+        "d": "Candidatos preseleccionados."
+      },
+      {
+        "t": "Significado del Candidato",
+        "d": "Significado y antecedentes lingüísticos de cada candidato."
+      },
+      {
+        "t": "Justificación del Candidato",
+        "d": "Razones estratégicas por las que se propuso cada nombre."
+      },
+      {
+        "t": "Evaluación de Candidatos",
+        "d": "Evaluación básica sobre memorabilidad, pronunciación, diferenciación, posibilidad de expansión y más."
+      },
+      {
+        "t": "Nombres recomendados",
+        "d": "Recomendaciones prioritarias."
+      },
+      {
+        "t": "Guía básica de uso de nombres",
+        "d": "Dirección básica de uso incluyendo la ortografía EN/KO."
+      }
+    ],
+    "processTitle": "Cómo se desarrolla el proyecto.",
+    "process": [
+      {
+        "t": "ENTENDER",
+        "d": "Comprensión de la marca\n\nProducto, mercado, audiencia y el problema que la marca resuelve."
+      },
+      {
+        "t": "DEFINIR",
+        "d": "Criterios de nombres\n\nCriterios específicos del proyecto para juzgar un nombre fuerte."
+      },
+      {
+        "t": "PALABRAS CLAVE",
+        "d": "Desarrollo de palabras clave\n\nExpande el valor y significado central en palabras y conceptos."
+      },
+      {
+        "t": "DIRECCIONES",
+        "d": "Establecer direcciones\n\nDefinir enfoques de nombres distintos."
+      },
+      {
+        "t": "EXPLORAR",
+        "d": "Exploración de nombres\n\nExplorar posibilidades dentro de cada dirección."
+      },
+      {
+        "t": "LISTA CORTA",
+        "d": "Lista corta\n\nPriorizar candidatos de alto potencial según estrategia y encaje con la marca."
+      },
+      {
+        "t": "REVISAR",
+        "d": "Revisión básica\n\nSignificado, pronunciación, ortografía, adecuación digital, posibilidad de expansión."
+      },
+      {
+        "t": "SELECCIONAR",
+        "d": "Recomendar\n\nEntregar nombres prioritarios y la razón de la selección."
+      }
+    ],
+    "priceTitle": "Cronograma y precio inicial.",
+    "ctaTitle": "Construyamos el nombre\nque inicia la marca.",
+    "ctaLead": "Está bien si aún no tienes un nombre.\n\nComenzamos desde lo que estás construyendo y cómo deseas ser recordado — luego definimos juntos la dirección correcta de nombres.",
+    "ctaSecondary": "Explorar Estudio →",
+    "exploreTitle": "Otros servicios en Marca"
+  },
+  "identity": {
+    "headline": "Para que la marca sea recordada\nde la misma manera, en todas partes.",
+    "description": [
+      "Convertimos la estrategia de marca en un lenguaje visual que las personas pueden ver y sentir.",
+      "Color, tipografía, elementos gráficos, imágenes y principios de uso se combinan en un solo sistema, para que la web, la aplicación, las redes sociales y el contenido mantengan la coherencia.",
+      "Esto no es decoración.\nEs la construcción de reglas visuales por las que la marca puede seguir viviendo."
+    ],
+    "seoTitle": "Identidad | Newon Studio",
+    "metaDescription": "Identidad — diseño de color, tipografía, gráficos, imágenes y reglas de uso como un solo Sistema de Identidad Visual. Desde ₩600,000 · 2–4 semanas.",
+    "typeLabel": "",
+    "statusLabel": "",
+    "overview": {
+      "title": "Un logotipo solo\nno termina una marca.",
+      "body": [
+        "Los clientes no experimentan una marca a través de un solo logotipo.",
+        "El color del sitio web, las pantallas de la aplicación, el contenido social, los anuncios, las imágenes, los documentos y los pequeños detalles gráficos se repiten hasta formar una imagen de marca.",
+        "Las marcas fuertes necesitan un Sistema de Identidad Visual que mantenga cada diseño conectado, no separado.",
+        "Newon Identity define elementos visuales centrales a partir de la estrategia de marca y luego construye un lenguaje de diseño consistente y reglas de uso para que la marca se mantenga reconocible en todos los contextos."
+      ],
+      "criteriaLead": "",
+      "criteria": []
+    },
+    "problemsTitle": "La identidad ayuda en situaciones como estas.",
+    "problems": [
+      {
+        "t": "SIN COHERENCIA",
+        "d": "La marca se ve diferente cada vez.\n\nEl sitio web, la aplicación, las redes sociales y el contenido usan colores y diseños diferentes; no parece una sola marca."
+      },
+      {
+        "t": "SOLO LOGOTIPO",
+        "d": "Hay un logotipo, pero no hay reglas siguientes.\n\nDespués del logotipo, nunca se definieron el color, la tipografía, las imágenes y los gráficos."
+      },
+      {
+        "t": "APARIENCIA GENÉRICA",
+        "d": "Se parece a otras marcas.\n\nEl producto está diferenciado, pero visualmente se mezcla con el mercado."
+      },
+      {
+        "t": "MARCA EN CRECIMIENTO",
+        "d": "Los productos y los canales están creciendo.\n\nLa web, la aplicación, las redes sociales y los anuncios necesitan criterios de diseño compartidos."
+      },
+      {
+        "t": "REBRANDING",
+        "d": "Quieres cambiar la imagen de la marca.\n\nLa dirección o el público ha cambiado: el diseño actual ya no expresa la marca."
+      },
+      {
+        "t": "SIN SISTEMA DE DISEÑO",
+        "d": "Cada equipo diseña de manera diferente.\n\nDiseñadores, desarrolladores y mercadólogos producen estilos separados: la consistencia se rompe."
+      }
+    ],
+    "whoTitle": "Diseñado para marcas como estas.",
+    "whatWeDoTitle": "Trabajo que realizamos en este proyecto.",
+    "whatWeDo": [
+      {
+        "t": "REVISIÓN DE MARCA",
+        "d": "Revisión de marca\n\nEntender la estrategia, el producto, el público y la impresión que la marca debe dejar."
+      },
+      {
+        "t": "DIRECCIÓN VISUAL",
+        "d": "Dirección visual\n\nDefinir el estado de ánimo visual general y la dirección del diseño."
+      },
+      {
+        "t": "SISTEMA DE COLORES",
+        "d": "Sistema de colores\n\nConstruir colores primarios / secundarios / neutrales que la marca reutilizará."
+      },
+      {
+        "t": "TIPOGRAFÍA",
+        "d": "Tipografía\n\nDefinir tipografías y reglas de uso para el carácter de la marca y contextos digitales."
+      },
+      {
+        "t": "LENGUAJE GRÁFICO",
+        "d": "Lenguaje gráfico\n\nDesarrollar formas, líneas, patrones y elementos de diseño reutilizables."
+      },
+      {
+        "t": "DIRECCIÓN DE IMÁGENES",
+        "d": "Dirección de imágenes\n\nDefinir el estado de ánimo y los criterios para fotos, ilustraciones u otras imágenes."
+      },
+      {
+        "t": "COMPOSICIÓN",
+        "d": "Principios de diseño\n\nEstablecer la composición básica y la jerarquía visual del contenido."
+      },
+      {
+        "t": "APLICACIÓN",
+        "d": "Aplicación\n\nMostrar cómo se aplica la identidad en web, aplicaciones, redes sociales, documentos y puntos clave de contacto."
+      },
+      {
+        "t": "GUÍAS",
+        "d": "Guías\n\nDocumentar el sistema para que se mantenga consistente después de la entrega."
+      }
+    ],
+    "useCasesTitle": "Elementos visuales que\nhacen una sola marca.",
+    "useCases": [
+      {
+        "t": "COLOR",
+        "d": "Sistema de Color\n\nRelación básica y de uso de los colores Primario / Secundario / Acento / Neutro."
+      },
+      {
+        "t": "TIPO",
+        "d": "Tipografía\n\nTítulo / Cuerpo / Leyenda y estructura tipográfica relacionada."
+      },
+      {
+        "t": "GRÁFICO",
+        "d": "Elementos Gráficos\n\nFormas, líneas, patrones y otros elementos gráficos de la marca."
+      },
+      {
+        "t": "IMAGEN",
+        "d": "Imágenes\n\nEstado de ánimo y estilo para fotos e imágenes."
+      },
+      {
+        "t": "DISEÑO",
+        "d": "Diseño\n\nPrincipios visuales básicos para organizar la información."
+      },
+      {
+        "t": "MOVIMIENTO",
+        "d": "Dirección de Movimiento\n\nCuando sea necesario, dirección de movimiento e interacción de la marca. (Definido por separado)"
+      }
+    ],
+    "includedTitle": "Incluido en el alcance base.",
+    "included": [
+      "Revisión Visual de la Marca",
+      "Dirección Visual",
+      "Sistema de Color Primario",
+      "Colores Secundarios / Neutros",
+      "Dirección Tipográfica",
+      "Lenguaje Gráfico",
+      "Dirección Básica de Imágenes",
+      "Principios de Diseño",
+      "Aplicación Digital Básica",
+      "Guías de Identidad Visual"
+    ],
+    "deliverablesTitle": "Lo que recibes\nen la entrega.",
+    "deliverables": [
+      {
+        "t": "DIRECCIÓN VISUAL",
+        "d": "Dirección Visual — dirección visual general para la marca."
+      },
+      {
+        "t": "SISTEMA DE COLORES",
+        "d": "Sistema de Color de la Marca — Primario / Secundario / Neutro y uso básico."
+      },
+      {
+        "t": "TIPOGRAFÍA",
+        "d": "Sistema Tipográfico — tipografías y estructura tipográfica básica."
+      },
+      {
+        "t": "SISTEMA GRÁFICO",
+        "d": "Lenguaje Gráfico — elementos gráficos reutilizables y su expresión."
+      },
+      {
+        "t": "DIRECCIÓN DE IMÁGENES",
+        "d": "Dirección de Imágenes — dirección visual para las imágenes y contenido de la marca."
+      },
+      {
+        "t": "PRINCIPIOS DE DISEÑO",
+        "d": "Principios de diseño — reglas básicas de composición y jerarquía."
+      },
+      {
+        "t": "EJEMPLOS DE APLICACIÓN",
+        "d": "Ejemplos de aplicación — Identidad aplicada a puntos de contacto seleccionados de la marca."
+      },
+      {
+        "t": "LINEAMIENTOS",
+        "d": "Guías de identidad visual — guía base para el uso consistente después de la entrega."
+      }
+    ],
+    "processTitle": "Cómo se desarrolla el proyecto.",
+    "process": [
+      {
+        "t": "DESCUBRIR",
+        "d": "Comprensión de la marca\n\nNegocio, producto, público y activos existentes de la marca."
+      },
+      {
+        "t": "DEFINIR",
+        "d": "Definir dirección\n\nCarácter visual y principios de diseño."
+      },
+      {
+        "t": "EXPLORAR",
+        "d": "Exploración visual\n\nExplorar opciones mediante color, tipografía, imágenes y gráficos."
+      },
+      {
+        "t": "SISTEMATIZAR",
+        "d": "Sistematizar\n\nConvertir la dirección elegida en un Sistema Visual reutilizable."
+      },
+      {
+        "t": "APLICAR",
+        "d": "Aplicar\n\nProbar la usabilidad en web, app, redes sociales y puntos de contacto clave."
+      },
+      {
+        "t": "REFINAR",
+        "d": "Refinar\n\nRevisar consistencia, legibilidad y capacidad de expansión."
+      },
+      {
+        "t": "ENTREGAR",
+        "d": "Entregar\n\nEntregar los activos finales y principios de uso."
+      }
+    ],
+    "priceTitle": "Cronograma y precio inicial.",
+    "ctaTitle": "Así la marca se vuelve más clara\ncuanto más se repite.",
+    "ctaLead": "Más allá de un solo logo — construimos un sistema visual para que la marca sea recordada con la misma apariencia e impresión en web, app, contenido y nuevos productos.",
+    "ctaSecondary": "Explorar Studio →",
+    "exploreTitle": "Otros servicios en Marca"
+  },
+  "logo-design": {
+    "headline": "Reconocido de un vistazo.\nRecordado como el rostro de la marca.",
+    "description": [
+      "Comprimimos estrategia y carácter de la marca en su forma visual más clara.",
+      "No solo un símbolo agradable — un Sistema de Logotipo que hace a la marca identificable y memorable.",
+      "Desde iconos diminutos hasta pantallas grandes, diseñamos forma, estructura, proporción y uso para que la marca funcione en la web, la aplicación, las redes sociales y más."
+    ],
+    "seoTitle": "Diseño de logotipos | Newon Studio",
+    "metaDescription": "Diseño de Logotipos — diseñar la marca identificativa principal y un Sistema de Logotipos que funcione en entornos reales. Desde ₩400,000 · 2–3 semanas.",
+    "typeLabel": "",
+    "statusLabel": "",
+    "overview": {
+      "title": "Un logotipo fuerte permite a las personas\nreconocer la marca sin explicación.",
+      "body": [
+        "Un logotipo es uno de los activos visuales más repetidos donde la marca conoce a las personas.",
+        "Aparece en sitios web, iconos de aplicaciones, perfiles sociales, productos, anuncios y documentos — formando memoria mediante la repetición.",
+        "Un logotipo fuerte no es solo una forma distintiva. Debe expresar el carácter de la marca, ser memorable, funcionar a través de tamaños y contextos, y seguir siendo utilizable con el tiempo.",
+        "Newon Diseño de Logotipos construye la marca central y un sistema práctico de logotipos a partir de la estrategia de marca y la Identidad."
+      ],
+      "criteriaLead": "",
+      "criteria": []
+    },
+    "problemsTitle": "El diseño de logotipos ayuda en situaciones como esta.",
+    "problems": [
+      {
+        "t": "SIN LOGOTIPO",
+        "d": "No hay ningún logotipo que represente la marca.\n\nEl negocio y el producto están listos, pero ninguna marca central identifica visualmente la marca."
+      },
+      {
+        "t": "GENÉRICO",
+        "d": "El logo actual es demasiado ordinario.\n\nSe mezcla con otras marcas o no logra crear memoria distintiva."
+      },
+      {
+        "t": "NO ESCALA",
+        "d": "Falla cuando es pequeño.\n\nEstá bien en pantallas grandes, pero la forma se rompe en iconos de aplicaciones, móviles y uso digital muy pequeño."
+      },
+      {
+        "t": "DESACTUALIZADO",
+        "d": "El logotipo y la marca ya no coinciden.\n\nEl negocio, la audiencia o la dirección cambiaron — la marca sigue pareciendo el pasado."
+      },
+      {
+        "t": "INCONSISTENTES",
+        "d": "El logotipo cambia cada vez que se usa.\n\nEl color, proporción, ubicación y versiones no están definidos."
+      },
+      {
+        "t": "EXPANSIÓN",
+        "d": "La marca aparece en más lugares.\n\nApp, web, social, anuncios, documentos y producto necesitan un Sistema de Logotipo."
+      }
+    ],
+    "whoTitle": "Construido para marcas como estas.",
+    "whatWeDoTitle": "Trabajo que realizamos en este proyecto.",
+    "whatWeDo": [
+      {
+        "t": "REVISIÓN DE MARCA",
+        "d": "Comprensión de la marca\n\nEstrategia, producto, audiencia, mercado y activos visuales existentes."
+      },
+      {
+        "t": "DIRECCIÓN DEL LOGOTIPO",
+        "d": "Dirección del logotipo\n\nDefinir el carácter y la dirección visual de la marca."
+      },
+      {
+        "t": "REFERENCIA Y CONTEXTO",
+        "d": "Contexto de mercado\n\nRevisar patrones visuales de la categoría y competidores para diferenciación."
+      },
+      {
+        "t": "DESARROLLO DE CONCEPTOS",
+        "d": "Desarrollo de conceptos\n\nConvertir ideas centrales de la marca en forma y conceptos visuales."
+      },
+      {
+        "t": "EXPLORACIÓN DE FORMAS",
+        "d": "Exploración de formas\n\nExplorar estructuras y formas para encontrar la dirección más fuerte."
+      },
+      {
+        "t": "DISEÑO DE LOGOTIPO",
+        "d": "Diseño de logotipo\n\nDesarrollar el concepto elegido en un logotipo listo para producción."
+      },
+      {
+        "t": "SISTEMA DE VARIACIÓN",
+        "d": "Sistema de variación\n\nConstruir versiones necesarias para diferentes espacios y contextos."
+      },
+      {
+        "t": "REVISIÓN DE USO",
+        "d": "Revisión de uso\n\nVerificar el rendimiento en web, móvil, icono de app, social y contextos relacionados."
+      },
+      {
+        "t": "FINALIZACIÓN",
+        "d": "Finalización\n\nBloquear el logotipo, reglas básicas de uso y archivos requeridos."
+      }
+    ],
+    "useCasesTitle": "No solo una marca —\nun sistema que puedes usar.",
+    "useCases": [
+      {
+        "t": "LOGOTIPO PRINCIPAL",
+        "d": "El logotipo representativo por defecto."
+      },
+      {
+        "t": "LOGOTIPO SECUNDARIO",
+        "d": "Una versión de apoyo para proporciones o contextos donde el Principal resulta incómodo."
+      },
+      {
+        "t": "SÍMBOLO / MARCA",
+        "d": "Cuando sea necesario, un gráfico principal que identifica la marca en espacios pequeños."
+      },
+      {
+        "t": "MARCA TIPOGRÁFICA",
+        "d": "Una forma de logotipo centrada en el nombre."
+      },
+      {
+        "t": "MONOCROMO",
+        "d": "Versiones que funcionan en contextos de un solo color."
+      },
+      {
+        "t": "VARIANTES RESPONSIVAS",
+        "d": "Cuando sea necesario, variantes definidas por tamaño y contexto de uso."
+      }
+    ],
+    "includedTitle": "Incluido en el alcance base.",
+    "included": [
+      "Revisión de Marca",
+      "Dirección del Logotipo",
+      "Desarrollo del Concepto",
+      "Exploración del Logotipo",
+      "Logotipo Principal",
+      "Variaciones Básicas del Logotipo",
+      "Versiones Básicas de Color",
+      "Revisión Básica de Uso Digital",
+      "Guía Básica de Uso del Logotipo",
+      "Archivos Finales del Logotipo"
+    ],
+    "deliverablesTitle": "Lo que recibe\nal momento de la entrega.",
+    "deliverables": [
+      {
+        "t": "LOGOTIPO PRINCIPAL",
+        "d": "Logotipo Principal — el logotipo representativo de la marca."
+      },
+      {
+        "t": "VARIACIONES DEL LOGOTIPO",
+        "d": "Variaciones del Logotipo — variantes básicas para los contextos necesarios."
+      },
+      {
+        "t": "VERSIONES DE COLOR",
+        "d": "Versiones de Color — color base / negro / blanco y versiones relacionadas según sea necesario."
+      },
+      {
+        "t": "MARCA DEL LOGOTIPO",
+        "d": "Marca del Logotipo — símbolo o marca independiente cuando está incluida en el alcance."
+      },
+      {
+        "t": "REGLAS DE USO",
+        "d": "Reglas Básicas de Uso — principios para el uso consistente del logotipo."
+      },
+      {
+        "t": "ESPACIO LIBRE",
+        "d": "Espacio Libre — espaciado básico alrededor del logotipo."
+      },
+      {
+        "t": "TAMAÑO MÍNIMO",
+        "d": "Tamaño Mínimo — tamaño mínimo base para legibilidad y reconocimiento."
+      },
+      {
+        "t": "ARCHIVOS FINALES",
+        "d": "Archivos Finales — formatos prácticos basados en el alcance contratado."
+      }
+    ],
+    "processTitle": "Cómo se desarrolla el proyecto.",
+    "process": [
+      {
+        "t": "DESCUBRIR",
+        "d": "Comprensión de la marca\n\nEstrategia, producto, audiencia y contextos de uso requeridos."
+      },
+      {
+        "t": "DEFINIR",
+        "d": "Definir dirección\n\nCriterios de carácter y diseño para el logo."
+      },
+      {
+        "t": "CONCEPTO",
+        "d": "Concepto\n\nConvertir las ideas centrales de la marca en conceptos visuales."
+      },
+      {
+        "t": "EXPLORAR",
+        "d": "Explorar\n\nBuscar formas y estructuras para la dirección correcta."
+      },
+      {
+        "t": "DISEÑO",
+        "d": "Diseñar\n\nRefinar la dirección elegida en un logo real."
+      },
+      {
+        "t": "PRUEBA",
+        "d": "Probar\n\nRevisar tamaños pequeños, web, móvil y fondos variados."
+      },
+      {
+        "t": "REFINAR",
+        "d": "Refinar\n\nAjustes finales de forma, proporción, equilibrio y detalle."
+      },
+      {
+        "t": "ENTREGAR",
+        "d": "Entregar\n\nEntregar el Sistema de Logo, reglas básicas de uso y archivos finales."
+      }
+    ],
+    "priceTitle": "Cronograma y precio inicial.",
+    "ctaTitle": "Hacer la marca memorable\nen su forma más comprimida.",
+    "ctaLead": "Ponemos estrategia y carácter en una forma — luego diseñamos un Sistema de Logos reutilizable desde íconos de aplicaciones pequeños hasta web y otros puntos de contacto de la marca.",
+    "ctaSecondary": "Explorar Studio →",
+    "exploreTitle": "Otros servicios en Marca"
+  },
+  "web-design": {
+    "headline": "Más allá de un sitio atractivo.\nDiseñamos experiencias que mueven a las personas a actuar.",
+    "description": [
+      "Convertimos la estrategia y el propósito de la marca en un punto de contacto web real.",
+      "Arquitectura de la información, flujo de usuario, jerarquía de contenido, experiencia responsiva y estructura de conversión se diseñan juntos — para que los visitantes comprendan la marca y alcancen la acción que deseas.",
+      "No solo páginas bonitas.\nUna experiencia digital donde los objetivos de la marca y los del usuario se encuentran."
+    ],
+    "seoTitle": "Diseño Web | Newon Studio",
+    "metaDescription": "Diseño Web — IA, flujo de usuario, UI, responsive y estructura de conversión. Solo diseño · desde ₩600,000 · 2–5 semanas.",
+    "typeLabel": "",
+    "statusLabel": "",
+    "overview": {
+      "title": "Un sitio web no es una vitrina.\nEs un lugar que impulsa la acción.",
+      "body": [
+        "Los clientes primero entienden una marca, comparan productos, construyen confianza y compran o hacen consultas a través del sitio web.",
+        "Un sitio web fuerte no es una página de folleto.",
+        "Debe decidir qué mostrar primero, en qué orden, dónde se detienen las personas y dónde actúan.",
+        "Newon El diseño web conecta la arquitectura de la información, el flujo de pantallas, la jerarquía visual y la estructura de conversión con el carácter de la marca y los objetivos comerciales, para que la experiencia realmente funcione."
+      ],
+      "criteriaLead": "La estructura de CTA sigue el propósito de la visita. No enfatizamos cada botón: separamos las acciones primarias y secundarias para que las personas no duden.",
+      "criteria": [
+        "CONTACTO",
+        "COMENZAR",
+        "REGISTRARSE",
+        "DESCARGAR",
+        "COMPRAR",
+        "RESERVAR",
+        "EXPLORAR"
+      ]
+    },
+    "problemsTitle": "El diseño web ayuda en situaciones como estas.",
+    "problems": [
+      {
+        "t": "SIN ESTRUCTURA CLARA",
+        "d": "Hay mucha información y ningún lugar claro para empezar.\n\nDemasiado contenido para que los visitantes comprendan rápidamente lo esencial."
+      },
+      {
+        "t": "BAJA CONVERSIÓN",
+        "d": "Las personas visitan, pero no actúan.\n\nLa consulta, compra, registro o descarga nunca se conecta de manera natural."
+      },
+      {
+        "t": "EXPERIENCIA OBSOLETA",
+        "d": "El sitio ya no coincide con la marca.\n\nLa marca y el producto crecieron, el sitio web se quedó en el pasado."
+      },
+      {
+        "t": "PROBLEMAS MÓVILES",
+        "d": "El móvil se siente roto.\n\nEl escritorio está bien, pero la estructura, legibilidad, botones y flujo fallan en móviles."
+      },
+      {
+        "t": "SITIO WEB GENÉRICO",
+        "d": "Se parece a cualquier otro sitio de empresa.\n\nLa diferenciación de la marca nunca aparece en la experiencia."
+      },
+      {
+        "t": "NEGOCIO EN CRECIMIENTO",
+        "d": "Los servicios y el contenido siguen expandiéndose.\n\nSe necesita una estructura escalable para productos, funciones, noticias, casos y nuevas páginas."
+      }
+    ],
+    "whoTitle": "Construido para proyectos como estos.",
+    "whatWeDoTitle": "Trabajo que realizamos en este proyecto.",
+    "whatWeDo": [
+      {
+        "t": "DEFINICIÓN DE OBJETIVOS",
+        "d": "Definición de objetivos\n\nDefinir el propósito principal del sitio y las acciones clave que los usuarios deben realizar."
+      },
+      {
+        "t": "AUDIENCIA",
+        "d": "Audiencia\n\nQuién visita, qué busca y qué información necesita."
+      },
+      {
+        "t": "ARQUITECTURA DE INFORMACIÓN",
+        "d": "Arquitectura de información\n\nOrganizar páginas, menús y contenido para que las personas puedan entender la estructura."
+      },
+      {
+        "t": "FLUJO DE USUARIO",
+        "d": "Flujo de usuario\n\nDiseñar rutas desde la visita hasta páginas clave y CTAs."
+      },
+      {
+        "t": "JERARQUÍA DE CONTENIDO",
+        "d": "Jerarquía de contenido\n\nPriorizar titulares, secciones, contenido de apoyo y CTAs."
+      },
+      {
+        "t": "WIREFRAME",
+        "d": "Wireframe\n\nEstructurar pantallas y la colocación del contenido antes del diseño de UI."
+      },
+      {
+        "t": "DISEÑO DE UI",
+        "d": "Diseño de UI web\n\nDiseñar pantallas web reales a partir de la identidad de marca."
+      },
+      {
+        "t": "DISEÑO RESPONSIVO",
+        "d": "Diseño responsivo\n\nOptimizar contenido y diseño para escritorio, tableta y móvil."
+      },
+      {
+        "t": "DIRECCIÓN DE INTERACCIÓN",
+        "d": "Dirección de interacción\n\nDefinir lo básico necesario — hover, transición, navegación, scroll y señales relacionadas."
+      },
+      {
+        "t": "ENTREGA",
+        "d": "Entrega\n\nCuando sigue la implementación, empaquetar la estructura y los criterios de diseño para los desarrolladores."
+      }
+    ],
+    "useCasesTitle": "Diseñar lo que la primera pantalla\nnecesita mostrar.",
+    "useCases": [
+      {
+        "t": "HÉROE",
+        "d": "Entregar lo que la marca ofrece lo más rápido posible."
+      },
+      {
+        "t": "VALOR",
+        "d": "Explica por qué alguien debería importarle."
+      },
+      {
+        "t": "PRODUCTO / SERVICIO",
+        "d": "Ayuda a las personas a entender los productos y servicios principales."
+      },
+      {
+        "t": "PRUEBA",
+        "d": "Genera confianza — resultados, clientes, casos, métricas cuando sean reales."
+      },
+      {
+        "t": "DIFERENCIACIÓN",
+        "d": "Muestra cómo esta elección se diferencia de las alternativas."
+      },
+      {
+        "t": "DETALLE",
+        "d": "Características, proceso, métodos y detalles de apoyo."
+      },
+      {
+        "t": "LLAMADO A LA ACCIÓN",
+        "d": "Conecta claramente con la siguiente acción."
+      }
+    ],
+    "includedTitle": "Incluido en el alcance básico.",
+    "included": [
+      "Definición de Objetivos",
+      "Revisión Básica del Usuario / Audiencia",
+      "Mapa del sitio / Arquitectura de la Información",
+      "Flujo de Usuario",
+      "Jerarquía de Contenidos",
+      "Esquema (Wireframe)",
+      "Diseño de la Interfaz de la Página Principal",
+      "Diseño Responsivo",
+      "Dirección Básica de Interacción",
+      "Entrega Básica de Diseño"
+    ],
+    "deliverablesTitle": "Lo que recibe al final.",
+    "deliverables": [
+      {
+        "t": "MAPA DEL SITIO",
+        "d": "Arquitectura de la Información — estructura general de páginas y contenido."
+      },
+      {
+        "t": "FLUJO DE USUARIO",
+        "d": "Flujo de Usuario — caminos hacia objetivos principales."
+      },
+      {
+        "t": "WIREFRAME",
+        "d": "Wireframes — estructura y colocación de contenido para páginas clave."
+      },
+      {
+        "t": "INTERFAZ DE ESCRITORIO",
+        "d": "Diseño de Escritorio — pantallas principales de escritorio."
+      },
+      {
+        "t": "INTERFAZ RESPONSIVA",
+        "d": "Diseño Responsivo — diseños compatibles con tabletas / móviles."
+      },
+      {
+        "t": "DIRECCIÓN DE INTERACCIÓN",
+        "d": "Dirección de Interacción — orientación básica para interacciones clave y estados."
+      },
+      {
+        "t": "ESPECIFICACIONES DE DISEÑO",
+        "d": "Entrega de Diseño — criterios básicos de diseño y estructura para la construcción."
+      }
+    ],
+    "processTitle": "Cómo se desarrolla el proyecto.",
+    "process": [
+      {
+        "t": "DESCUBRIR",
+        "d": "Entender objetivos\n\nNegocio, marca, audiencia y propósito del sitio web."
+      },
+      {
+        "t": "ESTRUCTURA",
+        "d": "Estructura\n\nConstruir sitemap y arquitectura de la información."
+      },
+      {
+        "t": "FLUJO",
+        "d": "Flujo de usuario\n\nDiseñar caminos desde la visita hasta las acciones principales."
+      },
+      {
+        "t": "WIREFRAME",
+        "d": "Estructura de pantalla\n\nDefinir jerarquía de contenidos y diseños base."
+      },
+      {
+        "t": "DISEÑO",
+        "d": "Diseño de UI\n\nConvertir la identidad y la estructura UX en pantallas web."
+      },
+      {
+        "t": "RESPONSIVO",
+        "d": "Responsivo\n\nOptimizar para escritorio, tablet y móvil."
+      },
+      {
+        "t": "REVISIÓN",
+        "d": "Refinar\n\nRevisar legibilidad, CTAs, interacción y consistencia."
+      },
+      {
+        "t": "ENTREGA",
+        "d": "Entrega\n\nEmpaquetar estructura y criterios para diseño y construcción."
+      }
+    ],
+    "priceTitle": "Precio inicial y alcance básico",
+    "ctaTitle": "Construir una experiencia web que la gente\npueda entender y actuar.",
+    "ctaLead": "No solo hacer que la marca luzca bien: diseñar una experiencia web donde las personas comprendan lo que necesitan y pasen a la siguiente acción.",
+    "ctaSecondary": "Explorar Studio →",
+    "exploreTitle": "Más en Digital"
+  },
+  "app-ui-ux": {
+    "headline": "No solo pantallas:\nflujos a los que la gente sigue regresando.",
+    "description": [
+      "Diseñamos la experiencia completa: desde el primer lanzamiento hasta la comprensión de las funciones principales, uso repetido y realización de acciones clave.",
+      "Arquitectura de la información, flujos de usuario, prioridad de pantallas, estados, interacción y un sistema de diseño se combinan para que las funciones complejas se sientan intuitivas.",
+      "No solo pantallas bonitas:\ndiseñando cómo se usa realmente el producto."
+    ],
+    "seoTitle": "Diseño de UI/UX de App | Newon Studio",
+    "metaDescription": "UI/UX de App: flujos, pantallas, estados, prototipo y sistema de UI básico. Solo diseño · desde ₩800,000 · 3–6 semanas.",
+    "typeLabel": "",
+    "statusLabel": "",
+    "overview": {
+      "title": "Una aplicación fuerte no es la que tiene más funciones —\nes la que hace que la próxima acción se sienta obvia.",
+      "body": [
+        "Las aplicaciones conectan registro, exploración, entrada, guardado, pago, notificación, configuraciones — muchas acciones en un solo producto.",
+        "Un pequeño obstáculo adicional y las personas pierden funciones o abandonan el flujo a la mitad.",
+        "Un UI/UX fuerte de aplicación se trata menos de una pantalla perfecta y más de cómo los flujos y la estructura del producto se conectan.",
+        "Newon UI/UX de aplicación analiza los objetivos del producto y el comportamiento del usuario, luego conecta la estructura de funciones, flujo de pantallas, interacción, estados y un sistema de diseño en una experiencia de producto usable y escalable."
+      ],
+      "criteriaLead": "Diseñamos para productos usados con los dedos. La háptica y señales similares dependen del alcance del desarrollo y la plataforma.",
+      "criteria": [
+        "Área de toque",
+        "Alcance del pulgar",
+        "Deslizar",
+        "Navegación inferior",
+        "Hoja inferior",
+        "Modal",
+        "Teclado",
+        "Entrada de formulario",
+        "Gesto",
+        "Deslizar para actualizar",
+        "Dirección háptica",
+        "Desplazamiento",
+        "Acción fija",
+        "Área segura"
+      ]
+    },
+    "problemsTitle": "UI/UX de aplicación ayuda en situaciones como estas.",
+    "problems": [
+      {
+        "t": "FLUJO COMPLEJO",
+        "d": "Muchas funciones — difícil de usar.\n\nDemasiados pasos para alcanzar un objetivo, o no está claro qué hacer a continuación."
+      },
+      {
+        "t": "ALTO ABANDONO",
+        "d": "Las personas se van a mitad del flujo.\n\nRegistro, incorporación, entrada o pago sigue perdiendo usuarios."
+      },
+      {
+        "t": "SIN ESTRUCTURA",
+        "d": "Las funciones existen, pero la estructura del producto no.\n\nLas pantallas y funciones se amontonan hasta que la IA y la navegación se vuelven desordenadas."
+      },
+      {
+        "t": "UI INCONSISTENTE",
+        "d": "El diseño y comportamiento cambia por pantalla.\n\nBotones, entradas, tarjetas y modales se ven y actúan diferente en todas partes."
+      },
+      {
+        "t": "NUEVO PRODUCTO",
+        "d": "Hay una idea — pero todavía no hay experiencia de producto.\n\nEl concepto y las características están definidos; convertirlos en pantallas utilizables es difícil."
+      },
+      {
+        "t": "REDISEÑO",
+        "d": "La aplicación existente necesita un rediseño.\n\nProblemas de usabilidad, conversión débil, interfaz desactualizada o crecimiento requieren un reinicio estructural."
+      },
+      {
+        "t": "ESCALADO DEL PRODUCTO",
+        "d": "Las características siguen creciendo.\n\nLas nuevas pantallas rompen la estructura y la consistencia del diseño."
+      },
+      {
+        "t": "SIN SISTEMA DE DISEÑO",
+        "d": "Cada construcción inventa pantallas nuevamente.\n\nNo hay reglas de interfaz reutilizables — desarrollo y mantenimiento lentos."
+      }
+    ],
+    "whoTitle": "Construido para productos como estos.",
+    "whatWeDoTitle": "Trabajo que realizamos en este proyecto.",
+    "whatWeDo": [
+      {
+        "t": "COMPRENSIÓN DEL PRODUCTO",
+        "d": "Comprensión del producto\n\nPropósito, características principales, usuarios y objetivos de negocio."
+      },
+      {
+        "t": "ESTRUCTURA DE CARACTERÍSTICAS",
+        "d": "Estructura de características\n\nPriorizar características y cómo se relacionan."
+      },
+      {
+        "t": "ARQUITECTURA DE LA INFORMACIÓN",
+        "d": "Arquitectura de la información\n\nCómo deben conectarse las características y el contenido."
+      },
+      {
+        "t": "FLUJO DE USUARIO",
+        "d": "Flujo de usuario\n\nRegistro, exploración, creación, pago y otros caminos principales."
+      },
+      {
+        "t": "WIREFRAME",
+        "d": "Wireframe\n\nEstructura del diseño y prioridad del contenido antes de la interfaz visual."
+      },
+      {
+        "t": "DISEÑO DE INTERFAZ DE USUARIO",
+        "d": "Diseño de UI\n\nPantallas reales de la app que reflejan la marca y el carácter del producto."
+      },
+      {
+        "t": "DISEÑO DE INTERACCIÓN",
+        "d": "Diseño de interacción\n\nToque, deslizamiento, desplazamiento, modal, hoja inferior, transición y respuestas relacionadas."
+      },
+      {
+        "t": "DISEÑO DE ESTADO",
+        "d": "Diseño de estado\n\nCargando, vacío, error, éxito, deshabilitado y otros estados de producto reales."
+      },
+      {
+        "t": "PROTOTIPO",
+        "d": "El prototipo\n\nConnect fluye para que puedan ser recorridos como si fueran usados."
+      },
+      {
+        "t": "SISTEMA DE DISEÑO",
+        "d": "Sistema básico de diseño\n\nReglas base para color, tipo, botones, entradas, tarjetas y la interfaz relacionada."
+      },
+      {
+        "t": "TRASPASO",
+        "d": "Handoff\n\nEstructura del paquete, componentes y criterios de comportamiento para la implementación."
+      }
+    ],
+    "useCasesTitle": "Nuevos productos, rediseños,\ny reglas de interfaz reutilizables.",
+    "useCases": [
+      {
+        "t": "NUEVO PRODUCTO",
+        "d": "Convierte ideas y necesidades de funciones en estructura de aplicación y pantallas útiles."
+      },
+      {
+        "t": "REDISEÑO",
+        "d": "Analizar problemas existentes y mejorar la IA, los flujos, la interfaz de usuario y los estados clave."
+      },
+      {
+        "t": "DISEÑO DE LA MEJOR OPCIÓN",
+        "d": "IDEA DE PRODUCTO → PROBLEMA CENTRAL → CARACTERÍSTICAS IMPRESCINDIBLES → FLUJO CENTRAL → INTERFAZ MVP → PRUEBA → ITERAR\n\nPriorizar el flujo mínimo que aporte valor fundamental."
+      },
+      {
+        "t": "COLOR",
+        "d": "Tokens de color\n\nLíneas base primarias / secundarias / semánticas / de fondo."
+      },
+      {
+        "t": "TIPOGRAFÍA",
+        "d": "Tipografía\n\nEstructura de encabezado / cuerpo / etiqueta / leyenda."
+      },
+      {
+        "t": "BOTÓN",
+        "d": "Botones\n\nPrioridad primaria / secundaria / texto / desactivada."
+      },
+      {
+        "t": "ENTRADA",
+        "d": "Componentes de formulario\n\nEntradas, desplegables, casillas de verificación y campos relacionados."
+      },
+      {
+        "t": "COMPONENTE",
+        "d": "Componentes reutilizables\n\nTarjetas, listas, modales, pestañas, navegación y patrones relacionados."
+      },
+      {
+        "t": "ESTADO",
+        "d": "Estados de componentes\n\nPor defecto / pulsado / seleccionado / desactivado / error."
+      },
+      {
+        "t": "Espaciamiento",
+        "d": "Espaciado y disposición\n\nReglas de espaciado base y colocación entre pantallas."
+      }
+    ],
+    "includedTitle": "Incluido en el alcance básico.",
+    "included": [
+      "Análisis de producto / Características",
+      "Arquitectura de la información",
+      "Flujo de usuario principal",
+      "Marcos Clave",
+      "Diseño básico de la interfaz de pantalla",
+      "Dirección básica de interacción",
+      "Estados clave de pantalla",
+      "Atención básica a la respuesta / Dispositivo",
+      "Prototipo básico",
+      "Sistema básico de componentes de interfaz de usuario",
+      "Transferencia de diseño"
+    ],
+    "deliverablesTitle": "Lo que recibes al final.",
+    "deliverables": [
+      {
+        "t": "ESTRUCTURA DEL PRODUCTO",
+        "d": "Arquitectura de la información — cómo se conectan las características y el contenido."
+      },
+      {
+        "t": "FLUJO DE USUARIO",
+        "d": "Flujo de usuario — caminos hacia objetivos clave."
+      },
+      {
+        "t": "WIREFRAMES",
+        "d": "Wireframes — estructura y jerarquía para pantallas de llaves."
+      },
+      {
+        "t": "PANTALLAS DE INTERFAZ",
+        "d": "Diseño de UI de aplicaciones — pantallas centrales dentro del alcance del proyecto."
+      },
+      {
+        "t": "ESTADOS DE PANTALLA",
+        "d": "Diseño de estados — carga / vacío / error / éxito y estados relacionados según sea necesario."
+      },
+      {
+        "t": "PROTOTIPO",
+        "d": "Prototipo — un prototipo básico para flujos de núcleo."
+      },
+      {
+        "t": "COMPONENTES DE LA INTERFAZ",
+        "d": "Sistema básico de interfaz — componentes y estilos reutilizables."
+      },
+      {
+        "t": "TRASPASO",
+        "d": "Traspaso de diseño — estructura base y criterios para la construcción."
+      }
+    ],
+    "processTitle": "Cómo funciona el proyecto.",
+    "process": [
+      {
+        "t": "DESCUBRIR",
+        "d": "Entiende el producto\n\nNegocio, producto, usuarios y características principales."
+      },
+      {
+        "t": "DEFINE",
+        "d": "Define características\n\nImprescindibles y prioridades."
+      },
+      {
+        "t": "ESTRUCTURA",
+        "d": "Estructura del producto\n\nArquitectura de información y navegación."
+      },
+      {
+        "t": "FLUJO",
+        "d": "Flujo de usuario\n\nAcciones principales y movimiento de pantalla."
+      },
+      {
+        "t": "ESTRUCTURA DE ALAMBRE",
+        "d": "Estructura de la pantalla\n\nContenido y prioridad de características."
+      },
+      {
+        "t": "DISEÑO",
+        "d": "Diseño de UI\n\nPantallas que reflejan la marca y la usabilidad."
+      },
+      {
+        "t": "PROTOTIPO",
+        "d": "Validar interacción\n\nConectar flujos clave y recorrer el uso."
+      },
+      {
+        "t": "SISTEMATIZAR",
+        "d": "Sistematizar UI\n\nComponentes reutilizables y reglas base."
+      },
+      {
+        "t": "ENTREGA",
+        "d": "Entrega\n\nEmpaquetar estructura de diseño y criterios para construcción."
+      }
+    ],
+    "priceTitle": "Precio inicial y alcance básico",
+    "ctaTitle": "Más allá de convertir funciones en pantallas —\nconstruir una experiencia de producto que la gente quiera usar.",
+    "ctaLead": "Entendemos las funciones principales y el comportamiento del usuario, luego diseñamos una experiencia de aplicación que fluya desde la primera entrada hasta el uso repetido.",
+    "ctaSecondary": "Explorar Studio →",
+    "exploreTitle": "Más en Digital"
+  },
+  "landing-page-design": {
+    "headline": "En una página —\ndejarlo claro, luego hacer que actúen.",
+    "description": [
+      "Diseñamos una página de aterrizaje enfocada en un producto, servicio, campaña o meta de lanzamiento — para que los visitantes comprendan el valor central rápidamente y pasen a consultar, aplicar, comprar o descargar.",
+      "No solo secciones bonitas —\norden del mensaje, confianza, CTAs y flujo de conversión diseñados como una historia."
+    ],
+    "seoTitle": "Diseño de Página de Aterrizaje | Newon Studio",
+    "metaDescription": "Página de Aterrizaje — diseño de una sola página enfocado en un objetivo de conversión. Solo diseño · desde ₩400,000 · 1–3 semanas.",
+    "typeLabel": "",
+    "statusLabel": "",
+    "overview": {
+      "title": "Una página de aterrizaje es corta —\npor lo que la estrategia debe ser más clara.",
+      "body": [
+        "Un sitio web típico puede explicar la marca y los servicios en muchas páginas. Una página de aterrizaje debe persuadir dentro de una pantalla limitada.",
+        "Los visitantes juzgan el encaje en la primera pantalla, recopilan más a medida que se desplazan, y luego deciden actuar.",
+        "Una página de aterrizaje fuerte responde claramente las siguientes preguntas.",
+        "Newon El diseño de páginas de aterrizaje organiza el contenido y la estructura de la interfaz de usuario para que toda la página funcione como un flujo de conversión único."
+      ],
+      "criteriaLead": "Estas seis respuestas deben estar claras antes de que comience el diseño.",
+      "criteria": [
+        "¿Qué ofreces?",
+        "¿Para quién es?",
+        "¿Por qué importa?",
+        "¿Qué es diferente?",
+        "¿Por qué confiar en ello?",
+        "¿Qué debo hacer ahora?"
+      ]
+    },
+    "problemsTitle": "La página de aterrizaje ayuda en situaciones como estas.",
+    "problems": [
+      {
+        "t": "NUEVO LANZAMIENTO",
+        "d": "Estás lanzando un producto o servicio.\n\nNecesitas una página enfocada antes de un sitio web completo."
+      },
+      {
+        "t": "MENSAJE NO CLARO",
+        "d": "La oferta es difícil de explicar.\n\nUn producto fuerte, pero los visitantes no pueden entender qué es a primera vista."
+      },
+      {
+        "t": "BAJA CONVERSIÓN",
+        "d": "Existe tráfico, pero no se generan consultas ni compras.\n\nLa ubicación del CTA, el orden del contenido y la estructura de persuasión no están claros."
+      },
+      {
+        "t": "CAMPAÑA",
+        "d": "Necesitas enfoque en la campaña.\n\nEvento, promoción, preinscripción, acceso anticipado: un objetivo, una página."
+      },
+      {
+        "t": "LANZAMIENTO DE APP",
+        "d": "Necesitas descargas de la aplicación.\n\nExplica el valor rápidamente y conecta con App Store / Google Play."
+      },
+      {
+        "t": "TRÁFICO DE ANUNCIOS",
+        "d": "Necesitas una página para el tráfico de anuncios.\n\nEl mensaje del anuncio y la experiencia de la página de aterrizaje deben mantenerse consistentes."
+      },
+      {
+        "t": "VALIDACIÓN MVP",
+        "d": "Quieres validar una idea rápidamente.\n\nRecoge listas de espera, consultas o registros antes de construir el producto completo."
+      }
+    ],
+    "whoTitle": "Construido para proyectos como estos.",
+    "whatWeDoTitle": "Trabajo que realizamos en este proyecto.",
+    "whatWeDo": [
+      {
+        "t": "DEFINICIÓN DE OBJETIVO",
+        "d": "Objetivo de conversión\n\nDefine la acción principal: consultar, aplicar, comprar, descargar, y objetivos relacionados."
+      },
+      {
+        "t": "AUDIENCIA",
+        "d": "Audiencia\n\nQuién visita, qué problemas trae y qué espera."
+      },
+      {
+        "t": "PROPUESTA DE VALOR",
+        "d": "Propuesta de valor\n\nAclarar el valor más importante para los visitantes."
+      },
+      {
+        "t": "ESTRUCTURA DEL MENSAJE",
+        "d": "Estructura del mensaje\n\nOrdenar la historia para que sea más fácil de entender."
+      },
+      {
+        "t": "PLANIFICACIÓN DE SECCIONES",
+        "d": "Planificación de secciones\n\nComponer Hero, Problema, Solución, Característica, Prueba, FAQ, CTA según sea necesario."
+      },
+      {
+        "t": "WIREFRAME",
+        "d": "Wireframe\n\nEstructurar el flujo de la página y la jerarquía del contenido antes de la UI visual."
+      },
+      {
+        "t": "DISEÑO DE INTERFAZ",
+        "d": "Diseño de UI\n\nDiseñar la Landing Page a partir de la identidad de la marca y el mensaje."
+      },
+      {
+        "t": "DISEÑO DE CTA",
+        "d": "Estructura de CTA\n\nPrioridad, ubicación y repetición de CTA primaria y secundaria."
+      },
+      {
+        "t": "DISEÑO RESPONSIVO",
+        "d": "Diseño responsivo\n\nMantener el mensaje y el flujo de conversión coherente en escritorio, tablet y móvil."
+      },
+      {
+        "t": "ENTREGA",
+        "d": "Entrega\n\nCuando se realice la construcción, empaquetar la estructura y los criterios de interacción para desarrollo."
+      }
+    ],
+    "useCasesTitle": "La estructura de la página sigue el objetivo.",
+    "useCases": [
+      {
+        "t": "LANZAMIENTO DE PRODUCTO",
+        "d": "Lanzamiento de producto\n\nValor central y razones para usar un nuevo producto o característica."
+      },
+      {
+        "t": "LANDING DE APP",
+        "d": "Landing de app\n\nExplicar características principales y conectar con App Store / Google Play."
+      },
+      {
+        "t": "SERVICIO",
+        "d": "Servicio\n\nExplicar el servicio, proceso y confianza — luego la consulta."
+      },
+      {
+        "t": "CAMPAÑA",
+        "d": "Campaña\n\nEnfocarse en evento, promoción y mensajes con tiempo limitado."
+      },
+      {
+        "t": "LISTA DE ESPERA",
+        "d": "Lista de espera\n\nCaptar interés antes del lanzamiento."
+      },
+      {
+        "t": "EVENTO",
+        "d": "Evento\n\nInformación del evento y flujo de registro."
+      },
+      {
+        "t": "LEAD B2B",
+        "d": "Lead B2B\n\nAyuda a los compradores de negocios a revisar la información clave, luego realizar consultas."
+      },
+      {
+        "t": "VALIDACIÓN MVP",
+        "d": "Validación MVP\n\nVerificar interés y demanda antes del lanzamiento completo."
+      },
+      {
+        "t": "ANUNCIO → LANDING",
+        "d": "Conexión del anuncio\n\nMantener la promesa del anuncio continua a través del Hero y el CTA."
+      },
+      {
+        "t": "DIRECCIÓN DE COPY",
+        "d": "Dirección de copy\n\nBásico: estructura del titular, dirección del mensaje de la sección, dirección del copy del CTA.\nEl copywriting completo, voz de la marca, copy de ventas, localización son un alcance separado."
+      }
+    ],
+    "includedTitle": "Incluido en el alcance básico.",
+    "included": [
+      "Definición del objetivo",
+      "Revisión básica de la audiencia",
+      "Estructura de la propuesta de valor",
+      "Jerarquía de mensajes",
+      "Planificación de secciones",
+      "Wireframe de la página de destino",
+      "Diseño UI de la página de destino",
+      "Estructura del CTA",
+      "Diseño responsivo",
+      "Dirección básica de interacción",
+      "Entrega de diseño"
+    ],
+    "deliverablesTitle": "Lo que recibes al final.",
+    "deliverables": [
+      {
+        "t": "ESTRATEGIA DE PÁGINA",
+        "d": "Estructura de la página de destino — propósito, mensaje central y flujo de contenido."
+      },
+      {
+        "t": "JERARQUÍA DE MENSAJES",
+        "d": "Estructura del mensaje — titular, contenido de apoyo, jerarquía del CTA."
+      },
+      {
+        "t": "WIREFRAME",
+        "d": "Wireframe — colocación del contenido y flujo de conversión."
+      },
+      {
+        "t": "DISEÑO DE ESCRITORIO",
+        "d": "UI de escritorio — página de destino de escritorio finalizada."
+      },
+      {
+        "t": "DISEÑO MÓVIL",
+        "d": "UI responsiva — pantallas responsivas dentro del alcance del proyecto, incluyendo móvil."
+      },
+      {
+        "t": "SISTEMA CTA",
+        "d": "Estructura de la CTA: prioridad primaria/secundaria y ubicación."
+      },
+      {
+        "t": "DIRECCIÓN DE INTERACCIÓN",
+        "d": "Interacción básica — pasar el rato desde la base, desplazarse, transición en dirección según sea necesario."
+      },
+      {
+        "t": "TRASPASO",
+        "d": "Traspaso de diseño — estructura de diseño y criterios base para la construcción."
+      }
+    ],
+    "processTitle": "Cómo funciona el proyecto.",
+    "process": [
+      {
+        "t": "DEFINE",
+        "d": "Define el objetivo\n\nLa acción principal que debe impulsar la Landing Page."
+      },
+      {
+        "t": "ENTIENDE",
+        "d": "Entender a los visitantes\n\nProblemas y expectativas."
+      },
+      {
+        "t": "MENSAJE",
+        "d": "Diseña el mensaje\n\nValor, problema, solución, diferenciación."
+      },
+      {
+        "t": "ESTRUCTURA",
+        "d": "Estructura de página\n\nOrdena contenido por eficacia."
+      },
+      {
+        "t": "ESTRUCTURA DE ALAMBRE",
+        "d": "Estructura de pantalla\n\nJerarquía y colocación de CTA."
+      },
+      {
+        "t": "DISEÑO",
+        "d": "Diseño de interfaz\n\nMarca y conversión a pantallas reales."
+      },
+      {
+        "t": "RESPUESTA",
+        "d": "Responsive\n\nOptimiza escritorio y móvil."
+      },
+      {
+        "t": "REFINAR",
+        "d": "Refinar\n\nLegibilidad, CTAs, flujo, consistencia."
+      },
+      {
+        "t": "TRASPASO",
+        "d": "Handoff\n\nDiseño del paquete y criterios base para la compilación."
+      }
+    ],
+    "priceTitle": "Precio inicial y alcance básico",
+    "ctaTitle": "Pon la historia más importante\nen una sola página.",
+    "ctaLead": "Diseñamos mensajes y imágenes como un solo flujo de conversión — para que los visitantes entiendan el valor rápidamente, generen confianza y elijan la siguiente acción.",
+    "ctaSecondary": "Explora Studio →",
+    "exploreTitle": "Más en Digital"
+  },
+  "product-design": {
+    "headline": "Convierte una idea\nen un producto que la gente realmente pueda usar.",
+    "description": [
+      "No trasladamos las listas de funciones directamente a las pantallas.",
+      "Empezamos desde el problema del usuario y el valor central que el producto debe ofrecer, luego diseñamos la priorización, la estructura del producto, los flujos, la interfaz y un MVP probado como una sola experiencia.",
+      "No solo producción de pantallas —\nun proceso de diseño de producto que decide qué construir y cómo la gente lo usará."
+    ],
+    "seoTitle": "Diseño de Producto | Newon Studio",
+    "metaDescription": "Diseño de Producto — definición del problema, MVP, estructura, flujos e interfaz del producto. Solo diseño · desde ₩1,200,000 · 4–8 semanas.",
+    "typeLabel": "",
+    "statusLabel": "",
+    "overview": {
+      "title": "Un producto sólido comienza con un problema claro —\nno con cuántas funciones tiene.",
+      "body": [
+        "El fallo más común al construir algo nuevo es incluir demasiadas funciones.",
+        "Incluso una idea fuerte se vuelve confusa sin claridad sobre qué construir primero, qué eliminar y por dónde deberían empezar los usuarios.",
+        "El diseño de producto comienza antes de la UI. Definimos el problema que resolvemos, priorizamos los casos de uso y las funciones, luego lo convertimos en pantallas y flujos.",
+        "El Diseño de Producto de Newon sigue Problema → Estructura del Producto → Flujo Central → MVP → UI → Validación."
+      ],
+      "criteriaLead": "Aclara esto antes de las pantallas.",
+      "criteria": [
+        "Problema",
+        "Objetivo del Producto",
+        "Valor",
+        "Estructura de Funciones",
+        "Priorización",
+        "Alcance del MVP",
+        "Flujo Central",
+        "Validación"
+      ]
+    },
+    "problemsTitle": "El diseño de producto ayuda en situaciones como estas.",
+    "problems": [
+      {
+        "t": "SOLO IDEA",
+        "d": "Hay una idea, pero no hay un comienzo claro.\n\nEl concepto existe sin funciones concretas ni pantallas."
+      },
+      {
+        "t": "DEMASIADAS FUNCIONES",
+        "d": "Demasiadas funciones parecen esenciales.\n\nTodo parece importante — el alcance del MVP nunca se concreta."
+      },
+      {
+        "t": "SIN VALOR CENTRAL",
+        "d": "El valor central no está claro.\n\nExplicaciones largas, pero no hay una razón en una sola frase para usarlo."
+      },
+      {
+        "t": "PRODUCTO COMPLEJO",
+        "d": "La estructura de las funciones es demasiado compleja.\n\nLa navegación y los flujos se rompen a medida que las funciones se acumulan."
+      },
+      {
+        "t": "CONSTRUIR ANTES DE VALIDAR",
+        "d": "La construcción comenzó demasiado pronto.\n\nLa implementación comienza antes de que el problema y los flujos centrales estén claros."
+      },
+      {
+        "t": "NECESIDAD DE MVP",
+        "d": "Necesitas un MVP rápido.\n\nDefine el alcance mínimo que pueda demostrar el valor central antes de un producto completo."
+      },
+      {
+        "t": "REDISEÑO",
+        "d": "El crecimiento superó la estructura original.\n\nNuevas funciones y usuarios necesitan una arquitectura de producto más clara."
+      },
+      {
+        "t": "DESALINEACIÓN DEL EQUIPO",
+        "d": "Producto, diseño e ingeniería imaginan productos diferentes.\n\nLa falta de coincidencia de prioridades causa retrabajo repetido."
+      }
+    ],
+    "whoTitle": "Construido para proyectos como estos.",
+    "whatWeDoTitle": "Trabajo que realizamos en este proyecto.",
+    "whatWeDo": [
+      {
+        "t": "DEFINICIÓN DEL PROBLEMA",
+        "d": "Definición del problema\n\nAclara el problema central del usuario que el producto debe resolver."
+      },
+      {
+        "t": "OBJETIVO DEL PRODUCTO",
+        "d": "Objetivo del producto\n\nDefine el resultado que los usuarios deben lograr."
+      },
+      {
+        "t": "DEFINICIÓN DE USUARIOS",
+        "d": "Usuarios centrales\n\nQuién necesita más el producto."
+      },
+      {
+        "t": "CASOS DE USO",
+        "d": "Casos de uso\n\nCuándo, por qué y en qué situaciones lo usan las personas."
+      },
+      {
+        "t": "ESTRUCTURA DE FUNCIONES",
+        "d": "Estructura de funciones\n\nOrganiza las funciones y cómo se relacionan."
+      },
+      {
+        "t": "PRIORIZACIÓN",
+        "d": "Priorización\n\nImprescindible / deseable / más tarde."
+      },
+      {
+        "t": "ALCANCE DEL MVP",
+        "d": "Alcance del MVP\n\nDefinir lo que la primera versión debe incluir para entregar valor central."
+      },
+      {
+        "t": "ARQUITECTURA DE INFORMACIÓN",
+        "d": "Arquitectura de información\n\nConectar funciones y contenido en la estructura del producto."
+      },
+      {
+        "t": "FLUJO DE USUARIO",
+        "d": "Flujo de usuario\n\nDiseñar acciones y pantallas para el objetivo principal."
+      },
+      {
+        "t": "WIREFRAME",
+        "d": "Wireframe\n\nConvertir funciones y jerarquía en la estructura de la pantalla."
+      },
+      {
+        "t": "INTERFAZ DE PRODUCTO",
+        "d": "Interfaz de producto\n\nDiseñar la interfaz teniendo en cuenta la marca y la usabilidad."
+      },
+      {
+        "t": "PROTOTIPO",
+        "d": "Prototipo\n\nConectar flujos clave para revisar la experiencia del producto."
+      },
+      {
+        "t": "ENTREGA",
+        "d": "Entrega\n\nEmpaquetar la estructura del producto y criterios de diseño para la construcción."
+      }
+    ],
+    "useCasesTitle": "No necesitas un producto terminado\ndesde el primer día.",
+    "useCases": [
+      {
+        "t": "IMPRESCINDIBLE",
+        "d": "Requerido para experimentar el valor central."
+      },
+      {
+        "t": "DEBERÍA TENER",
+        "d": "Mejora la experiencia temprana — no requerido para la v1."
+      },
+      {
+        "t": "DESPUÉS",
+        "d": "Puede esperar hasta después de la respuesta de los usuarios reales."
+      },
+      {
+        "t": "FLUJO MVP",
+        "d": "IDEA → PROBLEMA CENTRAL → ALCANCE DEL MVP → CONSTRUIR → PROBAR → APRENDER → ITERAR"
+      },
+      {
+        "t": "VALOR PARA EL USUARIO",
+        "d": "Prioridad — ¿valor real para los usuarios?"
+      },
+      {
+        "t": "EXPERIENCIA CENTRAL",
+        "d": "Prioridad — ¿necesario para la experiencia central?"
+      },
+      {
+        "t": "FRECUENCIA",
+        "d": "Prioridad — ¿con qué frecuencia lo usarán las personas?"
+      },
+      {
+        "t": "VALOR DE NEGOCIO",
+        "d": "Prioridad — ¿cuán vinculado a los objetivos del negocio?"
+      },
+      {
+        "t": "COMPLEJIDAD",
+        "d": "Prioridad — dificultad y costo de construcción?"
+      },
+      {
+        "t": "DEPENDENCIA",
+        "d": "Prioridad — ¿dependen otras funciones principales de ella?"
+      },
+      {
+        "t": "NAVEGACIÓN",
+        "d": "Estructura — áreas principales y movimiento."
+      },
+      {
+        "t": "CONTENIDO · ACCIÓN",
+        "d": "Estructura — información que las personas manejan y acciones principales."
+      },
+      {
+        "t": "ESTADO · RETROALIMENTACIÓN",
+        "d": "Estructura — estados y cómo se comunican los resultados."
+      },
+      {
+        "t": "CONFIGURACIÓN",
+        "d": "Estructura — personalización, configuraciones de cuenta y operaciones."
+      }
+    ],
+    "includedTitle": "Incluido en el alcance básico.",
+    "included": [
+      "Revisión de Producto / Problema",
+      "Objetivo Principal del Producto",
+      "Definición Básica de Usuario",
+      "Estructura de Funcionalidades",
+      "Priorización de Funciones",
+      "Alcance del MVP",
+      "Arquitectura de Información",
+      "Flujo Principal del Usuario",
+      "Esquemas Clave",
+      "UI Principal del Producto",
+      "Diseño de Estado Clave",
+      "Prototipo Básico",
+      "Entrega Básica"
+    ],
+    "deliverablesTitle": "Lo que recibes al final.",
+    "deliverables": [
+      {
+        "t": "DEFINICIÓN DEL PRODUCTO",
+        "d": "Definición del Producto — problema principal, valor, usuarios y objetivos."
+      },
+      {
+        "t": "MAPA DE FUNCIONALIDADES",
+        "d": "Estructura de Funciones — funciones principales y relaciones."
+      },
+      {
+        "t": "ALCANCE DEL MVP",
+        "d": "Alcance del MVP — funciones principales requeridas para la primera versión."
+      },
+      {
+        "t": "ARQUITECTURA DE INFORMACIÓN",
+        "d": "Estructura del Producto — cómo se conectan las funciones y el contenido."
+      },
+      {
+        "t": "FLUJOS DE USUARIO",
+        "d": "Flujos Principales del Usuario — caminos de extremo a extremo para acciones clave."
+      },
+      {
+        "t": "ESQUEMAS",
+        "d": "Esquemas — pantallas clave y jerarquía de información."
+      },
+      {
+        "t": "UI DEL PRODUCTO",
+        "d": "UI Principal del Producto — pantallas principales del producto dentro del alcance."
+      },
+      {
+        "t": "DISEÑO DE ESTADO",
+        "d": "Estados Clave — cargando / vacío / error / éxito y estados relacionados según sea necesario."
+      },
+      {
+        "t": "PROTOTIPO",
+        "d": "Prototipo Básico — un prototipo básico para flujos principales."
+      },
+      {
+        "t": "ENTREGA",
+        "d": "Entrega de Diseño de Producto — estructura y criterios de diseño para desarrollo."
+      }
+    ],
+    "processTitle": "Cómo se desarrolla el proyecto.",
+    "process": [
+      {
+        "t": "DESCUBRIR",
+        "d": "Comprender el problema\n\nNegocio, idea, problema del usuario y objetivos del proyecto."
+      },
+      {
+        "t": "DEFINIR",
+        "d": "Definir el producto\n\nUsuarios principales y el valor que el producto debe entregar."
+      },
+      {
+        "t": "PRIORIZAR",
+        "d": "Priorizar\n\nOrganizar características y definir el alcance del MVP."
+      },
+      {
+        "t": "ESTRUCTURAR",
+        "d": "Estructurar\n\nArquitectura de información y relaciones de características."
+      },
+      {
+        "t": "FLUJO",
+        "d": "Flujo\n\nConstruir el recorrido completo para acciones principales."
+      },
+      {
+        "t": "ESQUEMA",
+        "d": "Esquema\n\nConvertir características e información en pantallas."
+      },
+      {
+        "t": "DISEÑO",
+        "d": "Interfaz de Producto\n\nDiseñar la interfaz con la marca y la usabilidad."
+      },
+      {
+        "t": "PROTOTIPO",
+        "d": "Revisar experiencia\n\nConectar flujos clave y recorrer el uso."
+      },
+      {
+        "t": "REFINAR",
+        "d": "Refinar\n\nUsabilidad, estados, consistencia y viabilidad."
+      },
+      {
+        "t": "ENTREGA",
+        "d": "Conectar para construir\n\nEntregar estructura del producto y criterios de diseño."
+      }
+    ],
+    "priceTitle": "Precio inicial y alcance básico",
+    "ctaTitle": "Convertir ideas en características,\ny características en un producto.",
+    "ctaLead": "Definimos el problema y el valor central, organizamos características y flujos, y los convertimos en un producto digital que puedes construir y validar.",
+    "ctaSecondary": "Explorar Studio →",
+    "exploreTitle": "Más en Digital"
+  },
+  "social-content": {
+    "headline": "Construye una estructura de contenido desde la cual tu marca pueda comunicarse de manera consistente.",
+    "description": "Desde la revisión de canales hasta la dirección de contenido, pilares, formatos/plantillas y guías de canales. La gestión mensual completa de redes sociales no está incluida.",
+    "seoTitle": "Contenido Social | Newon Studio",
+    "metaDescription": "Contenido Social — dirección de contenido y diseño limitado. No incluye operaciones sociales mensuales.",
+    "typeLabel": "",
+    "statusLabel": "",
+    "overview": {
+      "title": "Una estructura de contenido\ndesde la cual tu marca puede comunicarse.",
+      "body": [
+        "Contenido Social cubre la revisión de canales, dirección, pilares, plantillas, dirección de redacción y guía de canales — no publicaciones aisladas, sino un sistema de contenido repetible.",
+        "Las operaciones sociales mensuales completas no están incluidas — la gestión continua tiene un presupuesto personalizado."
+      ],
+      "criteriaLead": "",
+      "criteria": []
+    },
+    "problemsTitle": "Situaciones en las que esto ayuda.",
+    "problems": [
+      {
+        "t": "PUBLICACIONES ALEATORIAS",
+        "d": "Tono y formato diferente en cada publicación."
+      },
+      {
+        "t": "SIN PILARES",
+        "d": "No hay una base sobre qué decir."
+      },
+      {
+        "t": "FALTA DE PLANTILLAS",
+        "d": "No hay plantillas que el equipo pueda reutilizar sin un diseñador."
+      },
+      {
+        "t": "REDACCIÓN EN PLATAFORMA",
+        "d": "La misma publicación pegada en todos los canales."
+      },
+      {
+        "t": "SIN LÓGICA DE CTA",
+        "d": "CTAs forzados en cada publicación."
+      },
+      {
+        "t": "CAOS EN LANZAMIENTO",
+        "d": "No hay flujo social antes y después del lanzamiento."
+      }
+    ],
+    "whoTitle": "Equipos y marcas para los que esto encaja.",
+    "whatWeDoTitle": "Trabajo que realizamos en este proyecto.",
+    "whatWeDo": [
+      {
+        "t": "REVISIÓN DE CANALES",
+        "d": "Revisar los canales actuales."
+      },
+      {
+        "t": "DIRECCIÓN DE CONTENIDO",
+        "d": "Definir la dirección del contenido."
+      },
+      {
+        "t": "PILARES DE CONTENIDO",
+        "d": "Construir pilares de contenido."
+      },
+      {
+        "t": "FORMATO Y PLANTILLA",
+        "d": "Diseñar formatos y plantillas visuales."
+      },
+      {
+        "t": "DIRECCIÓN DE REDACCIÓN",
+        "d": "Establecer la dirección de redacción."
+      },
+      {
+        "t": "GUÍA DE CANALES",
+        "d": "Entregar una guía de canales."
+      }
+    ],
+    "useCasesTitle": "Formatos coinciden\ncon el objetivo.",
+    "useCases": [
+      {
+        "t": "CARRUSEL",
+        "d": "Explicación / historia de múltiples cuadros"
+      },
+      {
+        "t": "PUBLICACIÓN INDIVIDUAL",
+        "d": "Mensaje clave de un solo cuadro"
+      },
+      {
+        "t": "FORMATO CORTO",
+        "d": "Contenido de video corto"
+      },
+      {
+        "t": "HISTORIA",
+        "d": "Contenido efímero y oportuno"
+      },
+      {
+        "t": "DEMOSTRACIÓN DE PRODUCTO",
+        "d": "Demostración de uso / función del producto"
+      },
+      {
+        "t": "TEXTO / INSIGHT",
+        "d": "Insight basado en texto"
+      },
+      {
+        "t": "ANUNCIO",
+        "d": "Anuncio / actualización"
+      }
+    ],
+    "includedTitle": "Incluido en el alcance base.",
+    "included": [
+      "Revisión del canal",
+      "Dirección de contenido",
+      "Pilares de contenido",
+      "Diseño de formato",
+      "Dirección de texto",
+      "Plantilla visual",
+      "Guía del canal"
+    ],
+    "deliverablesTitle": "Lo que recibes al entregar.",
+    "deliverables": [
+      "Dirección de contenido",
+      "Pilares de contenido",
+      "Plantillas sociales",
+      "Dirección de texto",
+      "Guía del canal",
+      "Contenidos de muestra"
+    ],
+    "processTitle": "Cómo se ejecuta el proyecto.",
+    "process": [
+      {
+        "t": "DESCUBRIR",
+        "d": "Marca y canales"
+      },
+      {
+        "t": "DEFINIR",
+        "d": "Dirección y pilares"
+      },
+      {
+        "t": "CREAR",
+        "d": "Plantillas y muestras"
+      },
+      {
+        "t": "ENTREGAR",
+        "d": "Entrega de guía"
+      }
+    ],
+    "priceTitle": "Cronograma y precio inicial.",
+    "ctaTitle": "Cuéntanos lo que tu marca y producto necesitan.",
+    "ctaLead": "Incluso si el alcance no es final aún — aclaramos tu etapa y objetivos, luego definimos el trabajo del Studio que necesitas.",
+    "ctaSecondary": "Ver Studio →",
+    "exploreTitle": "Más en esta área del Studio"
+  },
+  "campaign": {
+    "headline": "Un mensaje —\nentregado de manera fuerte a través de los puntos de contacto.",
+    "description": [
+      "Alrededor de un objetivo claro — lanzamiento, reconocimiento, evento, promoción o adquisición — diseñamos el concepto de la campaña, el mensaje, lo creativo y los puntos de contacto digitales como un solo flujo.",
+      "No un solo activo publicitario —\nun recorrido de campaña desde el primer contacto con el mensaje hasta la página de destino y la experiencia del producto."
+    ],
+    "seoTitle": "Campaña | Newon Studio",
+    "metaDescription": "Campaña — objetivo, gran idea, mensaje, creativo y conexión con landing / CTA. Desde ₩500,000 · 2–4 semanas.",
+    "typeLabel": "",
+    "statusLabel": "",
+    "overview": {
+      "title": "Una campaña fuerte deja un mensaje claro —\nno solo más exposición.",
+      "body": [
+        "Las personas no juzgan una marca solo por un anuncio.",
+        "Experimentan una campaña a través de redes sociales, anuncios, búsquedas, páginas de destino, sitios web y producto.",
+        "Cuando cada canal dice algo diferente, la claridad de la marca y del producto se desvanece.",
+        "Newon Campaña define primero el objetivo principal, luego diseña Idea de Campaña → Mensaje → Creativo → Canal → Experiencia de Landing → CTA como una sola historia."
+      ],
+      "criteriaLead": "Lo que conecta una campaña en una sola historia.",
+      "criteria": [
+        "Objetivo de la Campaña",
+        "Audiencia",
+        "Insight",
+        "Gran Idea",
+        "Mensaje Clave",
+        "Creativo",
+        "Canal",
+        "Landing / CTA"
+      ]
+    },
+    "problemsTitle": "La campaña ayuda en situaciones como estas.",
+    "problems": [
+      {
+        "t": "NUEVO LANZAMIENTO",
+        "d": "Estás lanzando un producto o servicio.\n\nNo solo anunciándolo — necesitas un mensaje claro de campaña sobre por qué la gente debería interesarse."
+      },
+      {
+        "t": "SIN GRAN IDEA",
+        "d": "Los anuncios se publican sin un solo mensaje.\n\nDiferentes líneas y visuales por canal debilitan toda la campaña."
+      },
+      {
+        "t": "BAJA ATENCIÓN",
+        "d": "El producto es fuerte pero difícil de notar.\n\nLas listas de características por sí solas no generan atención ni recuerdo."
+      },
+      {
+        "t": "RECORRIDO DESCONECTADO",
+        "d": "Los anuncios y las páginas de destino no están conectados.\n\nLa incongruencia del mensaje después del clic causa abandono."
+      },
+      {
+        "t": "PROMOCIÓN",
+        "d": "Necesitas un empuje fuerte durante un período determinado.\n\nPromoción, evento, lista de espera o comunicación estacional con fecha límite."
+      },
+      {
+        "t": "RECONOCIMIENTO DE MARCA",
+        "d": "Necesitas que la marca misma sea conocida.\n\nMás punto de vista e impresión que explicación de características."
+      },
+      {
+        "t": "MULTICANAL",
+        "d": "La campaña debe ejecutarse a través de múltiples canales.\n\nSocial, landing, display, email — una campaña, tono consistente."
+      },
+      {
+        "t": "SIN CTA CLARO",
+        "d": "La gente no sabe qué hacer a continuación.\n\nAplicar, descargar, consultar, comprar — la acción final no está clara."
+      }
+    ],
+    "whoTitle": "Construido para proyectos como estos.",
+    "whatWeDoTitle": "Trabajo que realizamos en este proyecto.",
+    "whatWeDo": [
+      {
+        "t": "OBJETIVO DE LA CAMPAÑA",
+        "d": "Objetivo\n\nAclara la acción principal — conciencia, lanzamiento, lead, descarga, ventas, evento y más."
+      },
+      {
+        "t": "AUDIENCIA",
+        "d": "Audiencia\n\nA quién nos dirigimos y qué problemas o deseos moldean el mensaje."
+      },
+      {
+        "t": "INFORMACIÓN CLAVE DE LA CAMPAÑA",
+        "d": "Información\n\nEncuentra dónde el contexto de la audiencia se encuentra con la fortaleza de la marca."
+      },
+      {
+        "t": "GRAN IDEA",
+        "d": "Gran idea\n\nDesarrolla la idea de la campaña que pueda conectar muchos activos y canales."
+      },
+      {
+        "t": "MENSAJE CLAVE",
+        "d": "Mensaje\n\nDefine las líneas centrales repetitivas y la estructura del mensaje."
+      },
+      {
+        "t": "DIRECCIÓN CREATIVA",
+        "d": "Dirección creativa\n\nEstablece el visual, tipografía, imagen, movimiento y tono del contenido."
+      },
+      {
+        "t": "ESTRUCTURA DE CANALES",
+        "d": "Estructura de canales\n\nAclara el rol de social, landing, display y otros puntos de contacto en el alcance."
+      },
+      {
+        "t": "RECURSOS DE CAMPAÑA",
+        "d": "Recursos de campaña\n\nProducir los creativos clave incluidos en el alcance del proyecto."
+      },
+      {
+        "t": "CONEXIÓN DE LANDING",
+        "d": "Conexión de landing\n\nAlinear el mensaje de la campaña con el héroe, valor y CTA de la landing."
+      },
+      {
+        "t": "GUÍA",
+        "d": "Guía\n\nReglas básicas para que la idea y el visual se mantengan a medida que los formatos se expanden."
+      }
+    ],
+    "useCasesTitle": "De una idea al mensaje y creativo.",
+    "useCases": [
+      {
+        "t": "MENSAJE PRINCIPAL",
+        "d": "Sistema de mensajes — la línea principal de la campaña."
+      },
+      {
+        "t": "MENSAJE DE APOYO",
+        "d": "Sistema de mensajes — líneas que explican el mensaje principal."
+      },
+      {
+        "t": "MENSAJE DE PRODUCTO",
+        "d": "Sistema de mensajes — valor y características del producto o servicio."
+      },
+      {
+        "t": "PRUEBA · CTA",
+        "d": "Sistema de mensajes — pruebas donde se necesiten, además de la solicitud final."
+      },
+      {
+        "t": "VISUAL CLAVE",
+        "d": "Sistema creativo — el visual central de la campaña."
+      },
+      {
+        "t": "TIPOGRAFÍA · COLOR",
+        "d": "Sistema creativo — jerarquía de titulares/texto y uso del color."
+      },
+      {
+        "t": "IMAGEN · GRÁFICO",
+        "d": "Sistema creativo — foto, visual del producto, captura de pantalla, dirección de formas o patrones."
+      },
+      {
+        "t": "MOVIMIENTO · CTA",
+        "d": "Sistema creativo — dirección del movimiento cuando se necesite y prioridad visual del CTA."
+      },
+      {
+        "t": "VARIACIÓN DE MENSAJE",
+        "d": "Variación creativa — mismo producto, diferentes problemas o ángulos de beneficio."
+      },
+      {
+        "t": "VARIACIÓN VISUAL · FORMATO",
+        "d": "Variación creativa — cambios de imagen/gráfico y adaptaciones estáticas · carrusel · formato corto · banner."
+      },
+      {
+        "t": "VARIACIÓN DE CTA",
+        "d": "Variación creativa — descarga / saber más / contacto ajustado al embudo."
+      },
+      {
+        "t": "CREATIVO DE RENDIMIENTO",
+        "d": "Creativo enfocado en conversión con gancho / oferta / prueba / visual / CTA. Sin garantías de CTR, CPA, ROAS o conversión."
+      },
+      {
+        "t": "A/B CREATIVO",
+        "d": "Es posible la producción creativa A/B. Las pruebas en medios en vivo y el análisis estadístico pueden ser un alcance separado."
+      },
+      {
+        "t": "TIPOS DE CONTENIDO DE CAMPAÑA",
+        "d": "Visual clave, creativo principal, social, carrusel, formato corto, historia, display, visual de landing, email, creativo para eventos, y más — no todos los activos están en el alcance base."
+      }
+    ],
+    "includedTitle": "Incluido en el alcance base.",
+    "included": [
+      "Definición del Objetivo de la Campaña",
+      "Revisión Básica del Público",
+      "Insight de Campaña",
+      "Gran Idea / Dirección del Concepto",
+      "Mensaje Clave",
+      "Dirección Creativa",
+      "Dirección del Visual Clave",
+      "Activos de campaña en el alcance del proyecto",
+      "Conexión CTA / Landing",
+      "Guía Básica de la Campaña"
+    ],
+    "deliverablesTitle": "Lo que recibe al final.",
+    "deliverables": [
+      {
+        "t": "ESTRATEGIA DE CAMPAÑA",
+        "d": "Dirección de la Campaña — objetivo, público y dirección general de la campaña."
+      },
+      {
+        "t": "GRAN IDEA",
+        "d": "Concepto de la Campaña — la idea que conecta los puntos de contacto."
+      },
+      {
+        "t": "MENSAJE CLAVE",
+        "d": "Sistema de Mensaje — estructura de mensaje repetitiva para la campaña."
+      },
+      {
+        "t": "DIRECCIÓN CREATIVA",
+        "d": "Dirección Creativa — visual, imagen, tipografía y expresión."
+      },
+      {
+        "t": "VISUAL CLAVE",
+        "d": "Visual Clave — un visual representativo cuando se incluye en el alcance."
+      },
+      {
+        "t": "ACTIVOS DE CAMPAÑA",
+        "d": "Creativos de la Campaña — activos incluidos en el contrato."
+      },
+      {
+        "t": "CONEXIÓN LANDING",
+        "d": "Dirección de Landing / CTA — estructura que conecta el mensaje con la acción."
+      },
+      {
+        "t": "GUÍA",
+        "d": "Guía Básica de la Campaña — reglas para mantener la idea consistente en todos los formatos."
+      }
+    ],
+    "processTitle": "Cómo se desarrolla el proyecto.",
+    "process": [
+      {
+        "t": "DESCUBRIR",
+        "d": "Comprender el contexto\n\nMarca, producto, mercado y por qué se necesita una campaña."
+      },
+      {
+        "t": "DEFINIR",
+        "d": "Definir el objetivo\n\nAclarar el resultado central y la acción que la campaña debe generar."
+      },
+      {
+        "t": "INSIGHT",
+        "d": "Insight de la audiencia\n\nA quién nos dirigimos y con qué historia."
+      },
+      {
+        "t": "CONCEPTO",
+        "d": "Gran idea\n\nDesarrollar la idea que mantiene unida la campaña."
+      },
+      {
+        "t": "MENSAJE",
+        "d": "Diseño del mensaje\n\nMensaje principal y mensajes de apoyo."
+      },
+      {
+        "t": "CREATIVO",
+        "d": "Desarrollo creativo\n\nConvertir la idea en visuales y contenido."
+      },
+      {
+        "t": "ADAPTAR",
+        "d": "Adaptación de canales\n\nExtenderse a los formatos y canales necesarios."
+      },
+      {
+        "t": "CONECTAR",
+        "d": "Conexión de landing / CTA\n\nConectar la atención de la campaña con la acción real del usuario."
+      },
+      {
+        "t": "ENTREGAR",
+        "d": "Entregar\n\nEmpaquetar activos y directrices."
+      }
+    ],
+    "priceTitle": "Precio de inicio y alcance básico",
+    "ctaTitle": "Una idea —\nuna experiencia a través de los puntos de contacto.",
+    "ctaLead": "Definimos el mensaje central que el producto y la marca deben entregar, luego expandimos el concepto de la campaña y el creativo a través de los canales — desde la atención hasta la acción como un flujo único.",
+    "ctaSecondary": "Explorar Studio →",
+    "exploreTitle": "Más en esta área de Studio"
+  },
+  "visual-content": {
+    "headline": "Convertir historias complejas\nen visuales entendidos de un vistazo.",
+    "description": [
+      "Convertimos mensajes de marca, características del producto, datos e ideas en contenido visual que la gente puede captar y recordar rápidamente.",
+      "Desde introducciones de productos e infografías hasta visuales clave, gráficos digitales, maquetas de productos y activos visuales de campaña — diseñados para el propósito y el canal.",
+      "No solo imágenes bonitas —\ncomunicación visual que aclara la información y fortalece la impresión de la marca."
+    ],
+    "seoTitle": "Contenido Visual | Newon Studio",
+    "metaDescription": "Contenido Visual — mensaje, jerarquía de información, dirección visual y recursos visuales. Desde ₩300,000 · 1–3 semanas.",
+    "typeLabel": "",
+    "statusLabel": "",
+    "overview": {
+      "title": "Un contenido visual fuerte se entiende antes de una mirada prolongada —\ny se recuerda después.",
+      "body": [
+        "En línea, una imagen, gráfico o pantalla de producto a menudo comunica más rápido que una explicación larga.",
+        "El contenido visual llamativo no es automáticamente buen contenido.",
+        "Qué mostrar primero, qué enfatizar y qué eliminar debe diseñarse como estructura de información.",
+        "Newon Contenido Visual comienza desde la marca y el propósito, luego diseña Mensaje → Información → Jerarquía → Visual → Aplicación."
+      ],
+      "criteriaLead": "Aclara esto antes de dibujar.",
+      "criteria": [
+        "Objetivo del Contenido",
+        "Mensaje",
+        "Información",
+        "Jerarquía",
+        "Dirección Visual",
+        "Recurso",
+        "Adaptación"
+      ]
+    },
+    "problemsTitle": "El Contenido Visual ayuda en situaciones como estas.",
+    "problems": [
+      {
+        "t": "DEMASIADA INFORMACIÓN",
+        "d": "Hay demasiado que explicar.\n\nLa información central del producto o servicio necesita una forma que las personas puedan captar más rápido que un texto largo."
+      },
+      {
+        "t": "SIN SISTEMA VISUAL",
+        "d": "Cada pieza se ve diferente.\n\nIntros de producto, presentaciones, redes sociales y web usan diseños distintos — la consistencia de la marca se debilita."
+      },
+      {
+        "t": "DIFÍCIL DE EXPLICAR",
+        "d": "Las características son difíciles de explicar con palabras.\n\nCaracterísticas o estructuras complejas necesitan imágenes, diagramas o visuales paso a paso."
+      },
+      {
+        "t": "PRESENTACIÓN DE PRODUCTO DÉBIL",
+        "d": "El producto es fuerte pero la presentación es débil.\n\nPantallas y características necesitan una expresión más clara y atractiva."
+      },
+      {
+        "t": "SIN RECURSOS DE CONTENIDO",
+        "d": "Faltan elementos visuales en la web o campaña.\n\nLa estructura de la página existe, pero los elementos visuales principales, gráficos de productos o ilustraciones son escasos."
+      },
+      {
+        "t": "LOS DATOS SON DIFÍCILES DE LEER",
+        "d": "Los números y datos son difíciles de leer.\n\nLas cifras complejas necesitan gráficos, infografías o estructuras destacadas."
+      },
+      {
+        "t": "MULTICANAL",
+        "d": "El mismo mensaje debe funcionar en todos los canales.\n\nWeb, redes sociales, presentaciones, campaña — los activos visuales deben adaptarse."
+      }
+    ],
+    "whoTitle": "Diseñado para proyectos como estos.",
+    "whatWeDoTitle": "Trabajo que realizamos en este proyecto.",
+    "whatWeDo": [
+      {
+        "t": "OBJETIVO DE CONTENIDO",
+        "d": "Objetivo de contenido\n\nQué información, para quién y con qué propósito."
+      },
+      {
+        "t": "MENSAJE",
+        "d": "Mensaje principal\n\nQué debe entenderse primero en el visual."
+      },
+      {
+        "t": "ESTRUCTURA DE INFORMACIÓN",
+        "d": "Estructura de información\n\nPriorizar texto, datos, imágenes y explicación de características."
+      },
+      {
+        "t": "DIRECCIÓN VISUAL",
+        "d": "Dirección visual\n\nDefinir la expresión que se ajusta a la identidad de la marca y al propósito."
+      },
+      {
+        "t": "SISTEMA DE DISEÑO",
+        "d": "Diseño\n\nJerarquía y disposición de diseño para una lectura rápida."
+      },
+      {
+        "t": "DESARROLLO GRÁFICO",
+        "d": "Desarrollo gráfico\n\nCrear formas, diagramas, íconos y elementos gráficos necesarios."
+      },
+      {
+        "t": "VISUAL DEL PRODUCTO",
+        "d": "Visual del producto\n\nHacer que aplicaciones, web o productos digitales sean más claros visualmente."
+      },
+      {
+        "t": "ADAPTACIÓN DE CONTENIDO",
+        "d": "Adaptación por canal\n\nAjustar un visual en diferentes proporciones o plataformas cuando sea necesario."
+      },
+      {
+        "t": "ACTIVO FINAL",
+        "d": "Activos finales\n\nOrganizar el contenido visual final dentro del alcance del proyecto."
+      }
+    ],
+    "useCasesTitle": "Hacer el producto, la información,\ny los datos más claros.",
+    "useCases": [
+      {
+        "t": "CONTEXTO",
+        "d": "Visual del producto: mostrar la situación en la que las personas usan el producto."
+      },
+      {
+        "t": "PANTALLA",
+        "d": "Visual del producto: centrar la pantalla principal real."
+      },
+      {
+        "t": "DESTACAR",
+        "d": "Visual del producto: enfatizar la característica o área importante."
+      },
+      {
+        "t": "EXPLICACIÓN · RESULTADO",
+        "d": "Visual del producto: breve explicación del valor, más el resultado o la experiencia obtenida."
+      },
+      {
+        "t": "PROCESO",
+        "d": "Visualización de información: proceso paso a paso."
+      },
+      {
+        "t": "COMPARACIÓN · LÍNEA DE TIEMPO",
+        "d": "Visualización de información: comparar enfoques o estados, y mostrar la secuencia a lo largo del tiempo."
+      },
+      {
+        "t": "FLUJO · JERARQUÍA",
+        "d": "Visualización de información: estructura de movimiento y relaciones de información/características."
+      },
+      {
+        "t": "MÉTRICA · DESGLOSE",
+        "d": "Visualización de información: resaltar cifras clave y desglosar contenido complejo en partes."
+      },
+      {
+        "t": "ANTES → DESPUÉS",
+        "d": "Usar comparación cuando el cambio es el punto. También funcionan estructuras PROBLEMA → SOLUCIÓN."
+      },
+      {
+        "t": "NÚMERO CLAVE · CONTEXTO",
+        "d": "Visualización de datos: la cifra más importante y lo que significa."
+      },
+      {
+        "t": "COMPARACIÓN · TENDENCIA",
+        "d": "Visualización de datos: comparar periodos o grupos, y mostrar cambios en el tiempo."
+      },
+      {
+        "t": "INSIGHT",
+        "d": "Visualización de datos: el mensaje central que los números apoyan."
+      }
+    ],
+    "includedTitle": "Incluido en el alcance base.",
+    "included": [
+      "Revisión del objetivo del contenido",
+      "Estructura del mensaje central",
+      "Jerarquía de información",
+      "Dirección visual",
+      "Dirección del diseño",
+      "Diseño de elementos visuales en el alcance del proyecto",
+      "Adaptación básica al canal",
+      "Organización final de los elementos"
+    ],
+    "deliverablesTitle": "Lo que recibes al final.",
+    "deliverables": [
+      {
+        "t": "ESTRUCTURA DE CONTENIDO",
+        "d": "Estructura de Contenido / Mensaje — información central y jerarquía que debe transmitir lo visual."
+      },
+      {
+        "t": "DIRECCIÓN VISUAL",
+        "d": "Dirección Visual — expresión visual general del proyecto."
+      },
+      {
+        "t": "VISUAL CLAVE",
+        "d": "Visual Clave — un recurso visual central cuando se incluye en el alcance."
+      },
+      {
+        "t": "ACTIVOS VISUALES",
+        "d": "Contenido Visual — gráficos y recursos de imagen en el contrato."
+      },
+      {
+        "t": "GRÁFICOS DE PRODUCTO",
+        "d": "Visuales del Producto — gráficos de características o pantallas explicativas cuando están dentro del alcance."
+      },
+      {
+        "t": "INFOGRÁFICOS",
+        "d": "Gráficos Informativos — gráficas de procesos, datos y flujos cuando sea necesario."
+      },
+      {
+        "t": "ADAPTACIONES",
+        "d": "Variaciones de Canal — variaciones de canal o proporción incluidas en el alcance."
+      },
+      {
+        "t": "ARCHIVOS FINALES",
+        "d": "Recursos Finales — recursos finales empaquetados en los formatos de archivo acordados."
+      }
+    ],
+    "processTitle": "Cómo se desarrolla el proyecto.",
+    "process": [
+      {
+        "t": "DESCUBRIR",
+        "d": "Entender el propósito\n\nMarca, producto y lo que debe comunicar el contenido."
+      },
+      {
+        "t": "DEFINIR",
+        "d": "Definir el mensaje\n\nAclarar qué es lo más importante en lo visual."
+      },
+      {
+        "t": "ESTRUCTURAR",
+        "d": "Estructurar la información\n\nPriorizar contenido y orden de entrega."
+      },
+      {
+        "t": "DIRECCIÓN",
+        "d": "Dirección visual\n\nDefinir expresión que encaje con la marca y propósito."
+      },
+      {
+        "t": "DISEÑAR",
+        "d": "Diseñar visuales\n\nProducir gráficos necesarios, visuales de producto, infografías y recursos relacionados."
+      },
+      {
+        "t": "REFINAR",
+        "d": "Refinar\n\nRevisar legibilidad, claridad y consistencia de la marca."
+      },
+      {
+        "t": "ADAPTAR",
+        "d": "Adaptar\n\nAjustar para formatos o canales necesarios."
+      },
+      {
+        "t": "ENTREGAR",
+        "d": "Entregar\n\nActivos finalizados del paquete dentro del alcance del proyecto."
+      }
+    ],
+    "priceTitle": "Precio inicial y alcance básico",
+    "ctaTitle": "Convertir información compleja\nen imágenes entendidas de un vistazo.",
+    "ctaLead": "Clarificamos el mensaje central que la marca y el producto deben transmitir, luego convertimos la información, características y datos en contenido visual que las personas puedan comprender y recordar rápidamente.",
+    "ctaSecondary": "Explorar Studio →",
+    "exploreTitle": "Más en esta área de Studio"
+  },
+  "character-lab": {
+    "headline": "Encontrar potencial de PI en una pequeña idea de personaje.",
+    "description": "Diseñamos personalidad, rol, elementos visuales y un mundo básico — luego experimentamos cómo puede crecer hacia contenido digital y activos de marca. Alcance experimental — trabajo de consulta y proyecto disponible.",
+    "seoTitle": "Character Lab | Newon Studio",
+    "metaDescription": "Character Lab — servicio experimental para clientes de concepto de personaje temprano y potencial de PI. Desde ₩500,000 · 2–4 semanas.",
+    "typeLabel": "",
+    "statusLabel": "EXPERIMENTAL · DISPONIBLE",
+    "overview": {
+      "title": "Experimentar potencial de PI\ndesde una pequeña idea.",
+      "body": [
+        "Character Lab es Experimental · Disponible — diseñamos concepto, personalidad, elementos visuales, expresiones y un mundo básico, luego probamos su expansión hacia contenido digital y activos de marca.",
+        "Esto no es una oferta de IP comercial finalizada ni un negocio de personajes grandes — el trabajo de consulta y proyecto todavía está disponible."
+      ],
+      "criteriaLead": "",
+      "criteria": []
+    },
+    "problemsTitle": "Situaciones donde esto ayuda.",
+    "problems": [
+      {
+        "t": "SOLO IDEA DE PERSONAJE",
+        "d": "La idea existe pero no está formada."
+      },
+      {
+        "t": "SIN RUTA DE USO",
+        "d": "No está claro dónde vive el personaje."
+      },
+      {
+        "t": "MASCOTA DE MARCA",
+        "d": "Se necesita una dirección de mascota de marca."
+      },
+      {
+        "t": "SIN SISTEMA",
+        "d": "Sin reglas de expresión, pose o voz."
+      },
+      {
+        "t": "CONFUSIÓN CON EL LOGO",
+        "d": "El logo y los roles del personaje están mezclados."
+      },
+      {
+        "t": "ARTE INDIVIDUAL",
+        "d": "Una ilustración — difícil de reutilizar en diferentes situaciones."
+      }
+    ],
+    "whoTitle": "Equipos y marcas esto encaja.",
+    "whatWeDoTitle": "El trabajo que hacemos en este proyecto.",
+    "whatWeDo": [
+      {
+        "t": "CONCEPTO DEL PERSONAJE",
+        "d": "Define el concepto del personaje."
+      },
+      {
+        "t": "PERSONALIDAD",
+        "d": "Moldea la personalidad y el rol."
+      },
+      {
+        "t": "DIRECCIÓN VISUAL",
+        "d": "Dirección visual del diseño."
+      },
+      {
+        "t": "ESTUDIO DE EXPRESIÓN",
+        "d": "Estudia expresiones."
+      },
+      {
+        "t": "AMBIENTACIÓN MUNDIAL",
+        "d": "Esboza un mundo básico."
+      },
+      {
+        "t": "DIRECCIÓN DE USO",
+        "d": "Sugiere instrucciones de uso digital."
+      }
+    ],
+    "useCasesTitle": "Reglas visuales\nque puedes reutilizar.",
+    "useCases": [
+      {
+        "t": "SILETA",
+        "d": "Siluetas"
+      },
+      {
+        "t": "PROPORCIÓN",
+        "d": "Proporción"
+      },
+      {
+        "t": "CARA",
+        "d": "Rostro"
+      },
+      {
+        "t": "COLOR",
+        "d": "Color"
+      },
+      {
+        "t": "DETALLE DE FIRMA",
+        "d": "Detalle de firma"
+      },
+      {
+        "t": "LENGUAJE DE FORMAS",
+        "d": "Lenguaje de formas"
+      },
+      {
+        "t": "ESCALA",
+        "d": "Escala"
+      }
+    ],
+    "includedTitle": "Incluido en el visor base.",
+    "included": [
+      "Concepto del personaje",
+      "Personalidad",
+      "Función",
+      "Dirección visual",
+      "Estudio de Expresión",
+      "Ambientación básica del mundo",
+      "Dirección de uso digital"
+    ],
+    "deliverablesTitle": "Lo que recibes en la entrega.",
+    "deliverables": [
+      "Hoja de concepto del personaje",
+      "Perfil de personalidad",
+      "Dirección visual",
+      "Conjunto de Expresiones",
+      "Guía Básica del Mundo",
+      "Concepto de uso"
+    ],
+    "processTitle": "Cómo funciona el proyecto.",
+    "process": [
+      {
+        "t": "EXPLORAR",
+        "d": "Explora el potencial"
+      },
+      {
+        "t": "CONCEPTO",
+        "d": "Concepto"
+      },
+      {
+        "t": "PERSONAJE",
+        "d": "Personaje"
+      },
+      {
+        "t": "EXPRESIONES",
+        "d": "Expresiones"
+      },
+      {
+        "t": "MUNDO",
+        "d": "Mundo"
+      },
+      {
+        "t": "PRUEBA",
+        "d": "Pruebas de uso"
+      }
+    ],
+    "priceTitle": "Cronograma y precio inicial.",
+    "ctaTitle": "Cuéntanos lo que tu marca y producto necesitan.",
+    "ctaLead": "Incluso si el alcance no es definitivo aún — aclaramos tu etapa y objetivos, luego definimos el trabajo del Studio que necesitas.",
+    "ctaSecondary": "Ver Studio →",
+    "exploreTitle": "Más en esta área del Studio"
+  },
+  "digital-stickers": {
+    "headline": "Extiende la personalidad y emoción del personaje a expresiones digitales.",
+    "description": "Aún en progreso — no se vende ni se opera como un servicio comercial en vivo todavía.",
+    "seoTitle": null,
+    "metaDescription": "Stickers digitales — Próximamente. Extendiendo la emoción del personaje a expresiones digitales.",
+    "typeLabel": "",
+    "statusLabel": "PRÓXIMAMENTE",
+    "overview": {
+      "title": "Emoción del personaje como\nexpresión digital.",
+      "body": [
+        "Stickers digitales extienden el personaje y la emoción de Character Lab a expresiones de mensajería y sociales. Aún en progreso — no se vende ni se opera como un servicio comercial en vivo todavía."
+      ],
+      "criteriaLead": "",
+      "criteria": []
+    },
+    "problemsTitle": "Situaciones donde esto ayuda.",
+    "problems": [],
+    "whoTitle": "Equipos y marcas a los que esto se ajusta.",
+    "whatWeDoTitle": "Trabajo que realizamos en este proyecto.",
+    "whatWeDo": [
+      {
+        "t": "EMOCIÓN DEL PERSONAJE",
+        "d": "Definir rango de emoción y expresión. (Planeado)"
+      },
+      {
+        "t": "FORMATO DE STICKER",
+        "d": "Diseñar formatos de sticker para mensajería/social. (Planeado)"
+      },
+      {
+        "t": "ESTRUCTURA DEL PAQUETE",
+        "d": "Estructurar paquetes y contexto de uso. (Planeado)"
+      }
+    ],
+    "useCasesTitle": "Ejemplos de lo que podemos moldear.",
+    "useCases": [],
+    "includedTitle": "Incluido en el alcance base.",
+    "included": [],
+    "deliverablesTitle": "Lo que recibes en la entrega.",
+    "deliverables": [],
+    "processTitle": "Cómo se ejecuta el proyecto.",
+    "process": [],
+    "priceTitle": "Cronograma y precio inicial.",
+    "ctaTitle": "Cuéntanos lo que tu marca y producto necesitan.",
+    "ctaLead": "Incluso si el alcance no es definitivo aún — aclaramos tu etapa y objetivos, luego definimos el trabajo del Studio que necesitas.",
+    "ctaSecondary": "Ver Estudio →",
+    "exploreTitle": "Más en esta área del Estudio"
+  },
+  "newon-character": {
+    "headline": "Construyendo propiedad intelectual de personajes para la marca Newon.",
+    "description": "Un proyecto interno que desarrolla propiedad intelectual de personajes y visual para Newon. No se ofrece como servicio a clientes.",
+    "seoTitle": "Personaje Newon | Estudio Newon",
+    "metaDescription": "Personaje Newon — proyecto interno de propiedad intelectual de la marca Newon. No es un servicio para clientes.",
+    "typeLabel": "",
+    "statusLabel": "INTERNO · EN CONSTRUCCIÓN",
+    "overview": {
+      "title": "Propiedad intelectual de personajes para\nla marca Newon.",
+      "body": [
+        "El personaje Newon es un proyecto interno que desarrolla propiedad intelectual de personajes y visual para Newon — no es un servicio por encargo de un cliente.",
+        "El progreso puede compartirse a través de Labs, Noticias y canales similares."
+      ],
+      "criteriaLead": "",
+      "criteria": []
+    },
+    "problemsTitle": "Situaciones donde esto ayuda.",
+    "problems": [],
+    "whoTitle": "Equipos y marcas a los que esto se ajusta.",
+    "whatWeDoTitle": "Trabajo que realizamos en este proyecto.",
+    "whatWeDo": [
+      {
+        "t": "PERSONAJE DE LA MARCA",
+        "d": "Explorar la dirección de personajes para la marca Newon."
+      },
+      {
+        "t": "PROPIEDAD INTELECTUAL VISUAL",
+        "d": "Experimentar con propiedad intelectual visual para productos y contenidos."
+      },
+      {
+        "t": "USO INTERNO",
+        "d": "Revisar la adaptación para la experiencia interna de la marca y el producto."
+      }
+    ],
+    "useCasesTitle": "Ejemplos de lo que podemos moldear.",
+    "useCases": [],
+    "includedTitle": "Incluido en el alcance base.",
+    "included": [],
+    "deliverablesTitle": "Lo que recibes al entregar.",
+    "deliverables": [],
+    "processTitle": "Cómo se lleva a cabo el proyecto.",
+    "process": [],
+    "priceTitle": "Cronograma y precio inicial.",
+    "ctaTitle": "Cuéntanos lo que tu marca y producto necesitan.",
+    "ctaLead": "Incluso si el alcance aún no es final — aclaramos tu etapa y objetivos, luego definimos el trabajo del Estudio que necesitas.",
+    "ctaSecondary": "Ver Estudio →",
+    "exploreTitle": "Más en esta área del Estudio"
+  },
+  "experimental-ip": {
+    "headline": "Crear lo que aún no existe —\npequeño, rápido y comprobable.",
+    "description": [
+      "Prototipamos rápidamente nuevos personajes, mundos, contenido digital, ideas interactivas y experimentos de marca como pequeñas construcciones.",
+      "En lugar de bloquear primero una respuesta terminada, visualizamos la hipótesis central, la hacemos mostrable y luego decidimos los próximos pasos según la respuesta y el potencial.",
+      "No hacer lluvia de ideas solo —\nun experimento creativo que prueba nuevo contenido intelectual (IP) y potencial de experiencia en forma real."
+    ],
+    "seoTitle": "Contenido intelectual experimental | Newon Studio",
+    "metaDescription": "Contenido intelectual experimental — proyecto experimental personalizado, no un paquete fijo. Idea → Hipótesis → Prototipo → Prueba → Aprender. Cotización personalizada.",
+    "typeLabel": "EXPLORANDO / PERSONALIZADO",
+    "statusLabel": "EXPLORANDO · PERSONALIZADO",
+    "overview": {
+      "title": "No todos los contenidos intelectuales necesitan comenzar\ncomo un mundo terminado.",
+      "body": [
+        "Incluso con un personaje o una idea de contenido, es difícil saber desde el principio si a la gente le importará, qué forma encaja mejor o hasta dónde puede expandirse.",
+        "Por eso los pequeños experimentos vienen antes de la gran producción.",
+        "Newon Contenido intelectual experimental revisa nuevos contenidos y experiencias a través de Idea → Hipótesis → Concepto → Prototipo → Prueba → Aprender → Siguiente.",
+        "No construimos primero un gran proyecto terminado — implementamos la idea central en su forma más pequeña, hacemos un resultado mostrable y luego juzgamos el potencial de expansión."
+      ],
+      "criteriaLead": "El ciclo que sigue un experimento.",
+      "criteria": [
+        "Idea",
+        "Hipótesis",
+        "Concepto",
+        "Prototipo",
+        "Prueba",
+        "Aprender",
+        "Iterar",
+        "Expandir / Detener"
+      ]
+    },
+    "problemsTitle": "El contenido intelectual experimental ayuda en situaciones como estas.",
+    "problems": [
+      {
+        "t": "IDEA PERO SIN FORMA",
+        "d": "Hay una idea — pero no una forma clara.\n\nLas ideas de personajes, contenido, servicio o mundo existen sin un artefacto concreto."
+      },
+      {
+        "t": "DEMASIADO TEMPRANO PARA CONSTRUIR GRANDE",
+        "d": "Es demasiado temprano para construir en grande.\n\nQuieres verificar el potencial central antes de la producción completa de animación, juego, merchandising o servicio."
+      },
+      {
+        "t": "SIN FORMATO CLARO",
+        "d": "El formato del contenido está indefinido.\n\nNecesitas explorar si la IP encaja en webtoon, formato corto, juego, app, social u otra forma."
+      },
+      {
+        "t": "NECESIDAD DIFERENCIACIÓN",
+        "d": "Necesitas un enfoque diferente.\n\nLa marca o producto busca expresión experimental más allá de los formatos existentes de campaña y contenido."
+      },
+      {
+        "t": "EXPANSIÓN DE LA PROPIEDAD INTELECTUAL",
+        "d": "Quieres ampliar un personaje o mundo existente.\n\nRevisar el potencial antes de pasar a una nueva plataforma, formato o experiencia interactiva."
+      },
+      {
+        "t": "VALIDACIÓN DE CONCEPTOS",
+        "d": "La idea solo vive dentro del equipo.\n\nExiste como charla o documental — necesitas un prototipo que puedas ver y juzgar."
+      },
+      {
+        "t": "NUEVA IDEA CULTURAL",
+        "d": "Quieres probar un nuevo formato o experiencia cultural.\n\nCultura digital, IA, comunidad, juego, personaje, social — explorando una nueva forma combinada."
+      }
+    ],
+    "whoTitle": "Construido para proyectos como este.",
+    "whatWeDoTitle": "El trabajo que hacemos en este proyecto.",
+    "whatWeDo": [
+      {
+        "t": "FRASE DE IDEAS",
+        "d": "Marco de ideas\n\nAclara por qué la idea importa antes de qué crear."
+      },
+      {
+        "t": "HIPÓTESIS",
+        "d": "Hipótesis\n\nDefine claramente qué debe aprender este experimento."
+      },
+      {
+        "t": "PÚBLICO / CONTEXTO",
+        "d": "Audiencia y contexto\n\nQuién lo experimenta y en qué situación."
+      },
+      {
+        "t": "DIRECCIÓN DEL CONCEPTO",
+        "d": "Dirección conceptual\n\nDefine el tema, el tono y la dirección de expresión."
+      },
+      {
+        "t": "ESTRUCTURA DE IP",
+        "d": "Estructura de IP\n\nCuando sea necesario, aclara personaje, mundo, relación, historia y reglas."
+      },
+      {
+        "t": "EXPLORACIÓN DE FORMATOS",
+        "d": "Exploración de formatos\n\nReseña de formas cortas, interactivas, de juegos, sociales, web, personajes, coleccionables digitales y afines."
+      },
+      {
+        "t": "PROTOTIPO",
+        "d": "Prototipo\n\nImplementa la idea principal en la forma más rápida que se pueda mostrar."
+      },
+      {
+        "t": "CONTENIDO PILOTO",
+        "d": "Contenido piloto\n\nCuando sea necesario, produce contenido pequeño que pueda publicarse o probarse."
+      },
+      {
+        "t": "ESCENARIO DE APLICACIÓN",
+        "d": "Escenario de aplicación\n\nMapea cómo la idea podría expandirse a canales, contenido o producto."
+      },
+      {
+        "t": "PRÓXIMO PASO",
+        "d": "Próximo paso\n\nRecomienda continuar / refinar / pivotar / detenerse según el aprendizaje del experimento."
+      }
+    ],
+    "useCasesTitle": "Una idea no es propiedad intelectual —\ny los niveles de prototipo son diferentes.",
+    "useCases": [
+      {
+        "t": "IDEA → PERSONAJE / MUNDO",
+        "d": "De una chispa a una presencia y un escenario que puedas mostrar repetidamente."
+      },
+      {
+        "t": "REGLA · FORMATO",
+        "d": "Reglas de comportamiento consistentes y la forma de contenido que las personas realmente experimentan."
+      },
+      {
+        "t": "REPETIBILIDAD · EXPANSIÓN",
+        "d": "Una estructura que puede continuar, y potencial para crecer a través de canales y productos."
+      },
+      {
+        "t": "NIVEL 01 — CONCEPTO",
+        "d": "Prototipo de concepto — estado de ánimo, historia, personaje, visuales bosquejados rápidamente."
+      },
+      {
+        "t": "NIVEL 02 — VISUAL",
+        "d": "Prototipo visual — ficha de personaje, visual clave, escena de la historia que puedes ver."
+      },
+      {
+        "t": "NIVEL 03 — CONTENIDO",
+        "d": "Piloto de contenido — formato corto, publicación social, mini episodio más cercano al contenido real."
+      },
+      {
+        "t": "NIVEL 04 — INTERACTIVO",
+        "d": "Prototipo interactivo — interacción simple en web / app / juego que la gente pueda probar."
+      },
+      {
+        "t": "PERSONAJE · MOTIVACIÓN",
+        "d": "Personalidad / visual central y lo que el personaje desea."
+      },
+      {
+        "t": "CONFLICTO · REGLA DEL MUNDO",
+        "d": "Conflicto que crea la historia, y reglas que el mundo debe mantener."
+      },
+      {
+        "t": "RELACIÓN · GANCHO DE CONTENIDO",
+        "d": "Relaciones y un gancho de contenido al que la gente pueda volver."
+      }
+    ],
+    "includedTitle": "Incluido en el alcance base.",
+    "included": [
+      "Revisión de Idea / Contexto",
+      "Objetivo del Experimento",
+      "Definición de Hipótesis",
+      "Dirección del Concepto",
+      "Estructura Básica de IP / Formato",
+      "Dirección del Prototipo",
+      "Prototipo o activo piloto dentro del alcance del proyecto",
+      "Escenario de Aplicación Básico",
+      "Revisión del Experimento",
+      "Recomendación del Próximo Paso"
+    ],
+    "deliverablesTitle": "Lo que recibes al final.",
+    "deliverables": [
+      {
+        "t": "RESUMEN DEL EXPERIMENTO",
+        "d": "Resumen del Experimento — idea, objetivo, hipótesis y alcance del experimento."
+      },
+      {
+        "t": "DIRECCIÓN DEL CONCEPTO",
+        "d": "Dirección del Concepto — tema, tono y dirección creativa."
+      },
+      {
+        "t": "ESTRUCTURA DE IP / FORMATO",
+        "d": "Estructura de IP — personaje, mundo, regla o estructura de formato de contenido cuando sea necesario."
+      },
+      {
+        "t": "PROTOTIPO",
+        "d": "Prototipo — prototipo visual / de contenido / interactivo dentro del alcance del proyecto."
+      },
+      {
+        "t": "ACTIVO PILOTO",
+        "d": "Contenido Piloto — pequeños activos que pueden publicarse o probarse cuando sea necesario."
+      },
+      {
+        "t": "MAPA DE APLICACIÓN",
+        "d": "Escenario de Expansión — posibles canales y formatos posteriores."
+      },
+      {
+        "t": "RESUMEN DEL APRENDIZAJE",
+        "d": "Aprendizaje del Experimento — lo que se confirmó y lo que aún necesita revisión."
+      },
+      {
+        "t": "PRÓXIMO PASO",
+        "d": "Próximo Paso — continuar / refinar / pivotar / recomendaciones para detener."
+      }
+    ],
+    "processTitle": "Cómo se ejecuta el proyecto.",
+    "process": [
+      {
+        "t": "DESCUBRIR",
+        "d": "Comprender la idea\n\nAntecedentes y la experiencia que deseas crear."
+      },
+      {
+        "t": "HIPÓTESIS",
+        "d": "Definir la hipótesis\n\nLa pregunta más importante que este experimento debe responder."
+      },
+      {
+        "t": "CONCEPTO",
+        "d": "Concepto\n\nDefinir tema, personaje, mundo, formato y dirección creativa relacionada."
+      },
+      {
+        "t": "ALCANCE",
+        "d": "Alcance del experimento\n\nEstablecer el prototipo más pequeño que pueda probar la hipótesis."
+      },
+      {
+        "t": "CONSTRUIR",
+        "d": "Construir el prototipo\n\nCrear algo que la gente pueda ver y experimentar."
+      },
+      {
+        "t": "PROBAR",
+        "d": "Comprobar la respuesta\n\nRevisión interna, respuesta del usuario u otro método que se ajuste al proyecto."
+      },
+      {
+        "t": "APRENDER",
+        "d": "Aprender\n\nQué funcionó y qué debería cambiar."
+      },
+      {
+        "t": "ITERAR",
+        "d": "Iterar\n\nRevisar el núcleo y revisar nuevamente cuando sea necesario."
+      },
+      {
+        "t": "DECIDIR",
+        "d": "Decidir los siguientes pasos\n\nElegir expandir / refinar / pivotar / detener."
+      }
+    ],
+    "priceTitle": "Cotización personalizada y alcance básico",
+    "ctaTitle": "Convertir una idea sin respuesta\nen algo que realmente puedas ver.",
+    "ctaLead": "Prototipamos el potencial de personajes, mundos, contenido, juegos, IA o experiencias interactivas en pequeña forma — luego decidimos los próximos pasos a partir de lo que realmente puedes revisar.",
+    "ctaSecondary": "Explorar Estudio →",
+    "exploreTitle": "Más en esta área del Estudio"
+  }
+}

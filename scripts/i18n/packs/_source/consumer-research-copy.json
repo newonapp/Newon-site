@@ -1,0 +1,479 @@
+{
+  "seoTitle": "CONSUMER RESEARCH | Newon Business",
+  "metaDescription": "Research consumer and user needs, behavior, and pain patterns — structured as insights for product and messaging decisions. Newon CONSUMER RESEARCH.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICES",
+  "crumbResearch": "RESEARCH",
+  "crumbHere": "CONSUMER RESEARCH",
+  "eyebrow": "CONSUMER RESEARCH",
+  "subEyebrow": "RESEARCH",
+  "headline": "Collect user voices.\nUnderstand them as patterns.",
+  "lead": "We research needs, behavior, and pain patterns from reviews, surveys, interviews, support logs, and usage signals. Scattered user voices are organized by segment, need, and motivation into an insight brief your team can use for target, messaging, and product priority decisions.",
+  "ctaPrimary": "Consumer research inquiry →",
+  "ctaSecondary": "See the research flow ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Consumer Research"
+    },
+    {
+      "k": "BEST FOR",
+      "v": "Target and message validation"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Usually 2–4 weeks"
+    },
+    {
+      "k": "PRICE",
+      "v": "From ₩300,000"
+    }
+  ],
+  "overviewLabel": "OVERVIEW",
+  "overviewTitle": "Plenty of opinions.\nNot enough pattern.",
+  "overviewBody": [
+    "User voices always exist when discussing product, marketing, or service improvement. The harder part is organizing them into segment needs and behavior patterns.",
+    "Reviews, support tickets, survey answers, interviews, community signals, and usage data each offer a different angle — but rarely in a form teams can decide from.",
+    "CONSUMER RESEARCH starts by defining what you need to learn. Then we collect, classify, and structure signals into segments, needs, pains, motivations, and opportunities in one insight brief."
+  ],
+  "problemsLabel": "PROBLEMS",
+  "problemsTitle": "Helpful when you face these situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "TARGET UNCERTAINTY",
+      "d": "It's unclear who the product or service is for,\nor which user group matters most."
+    },
+    {
+      "n": "02",
+      "t": "SCATTERED VOICES",
+      "d": "There are many reviews and tickets but no clear patterns.\nThe same complaints repeat without priority."
+    },
+    {
+      "n": "03",
+      "t": "MESSAGE VALIDATION",
+      "d": "You need evidence to validate messaging and positioning.\nYou want to know what users actually respond to."
+    },
+    {
+      "n": "04",
+      "t": "NEED PRIORITY",
+      "d": "You have many feature or service candidates\nbut lack evidence for what to solve first."
+    },
+    {
+      "n": "05",
+      "t": "BEHAVIOR GAP",
+      "d": "There is a gap between assumptions and actual behavior.\nYou need context for why users act that way."
+    },
+    {
+      "n": "06",
+      "t": "PRE-LAUNCH INPUT",
+      "d": "Before launch, rebrand, or a major feature,\nyou need user reaction first."
+    }
+  ],
+  "baLabel": "BEFORE / AFTER",
+  "baTitle": "Scattered voices vs\nstructured user understanding",
+  "beforeLabel": "BEFORE",
+  "afterLabel": "AFTER",
+  "before": [
+    "Everyone checks reviews, tickets, and surveys separately",
+    "‘Users want this’ is said often but evidence is scattered",
+    "Segments, needs, and priority shift by conversation",
+    "Insights are not documented or connected to next validation"
+  ],
+  "after": [
+    "Research questions and user scope are defined first",
+    "Segments, needs, and pain patterns are structured",
+    "A shared insight brief for the team",
+    "Connected to messaging, features, and experiments"
+  ],
+  "capsLabel": "CAPABILITIES",
+  "capsTitle": "We structure the research\nyour user understanding needs.",
+  "caps": [
+    {
+      "t": "QUESTION DESIGN",
+      "d": "Define what you need to learn to decide.\nClarify research purpose and target users."
+    },
+    {
+      "t": "DESK RESEARCH",
+      "d": "Collect secondary sources — reviews, community, public feedback.\nCheck source and context."
+    },
+    {
+      "t": "PRIMARY RESEARCH",
+      "d": "Include interview or survey design and fieldwork when needed.\nStructure questions and participant selection together."
+    },
+    {
+      "t": "SEGMENT MAPPING",
+      "d": "Organize users by segment, persona, and situation.\nStructure who uses what and why."
+    },
+    {
+      "t": "NEED & PAIN ANALYSIS",
+      "d": "Pattern needs, pains, and unmet expectations.\nPrioritize recurring issues."
+    },
+    {
+      "t": "BEHAVIOR SIGNALS",
+      "d": "Capture behavior, purchase, churn, and usage patterns.\nConnect assumptions to actual behavior."
+    },
+    {
+      "t": "MESSAGE INSIGHTS",
+      "d": "Summarize what messages, values, and language users respond to.\nProvide evidence for positioning and copy."
+    },
+    {
+      "t": "IMPLICATIONS",
+      "d": "Connect findings to product, marketing, and service implications.\nSuggest next experiments and validation."
+    }
+  ],
+  "sourcesLabel": "RESEARCH SOURCES",
+  "sourcesTitle": "We combine the user signals your goal needs.",
+  "sourcesNote": "Actual sources vary by scope, data access, and primary research inclusion.",
+  "sources": [
+    "Product & service reviews",
+    "App store & marketplace reviews",
+    "Support & inquiry logs",
+    "Survey & form responses",
+    "User & industry interviews",
+    "Community & social signals",
+    "Usage & behavior data",
+    "NPS & feedback surveys",
+    "Sales & consultation notes",
+    "Internal user research",
+    "Competitor product reviews",
+    "Focus groups (optional scope)"
+  ],
+  "useLabel": "USE CASES",
+  "useTitle": "Questions we can help answer.",
+  "useBadge": "Example research topics",
+  "useCases": [
+    {
+      "t": "TARGET DEFINITION",
+      "d": "Clarify core users and segments.\nStructure who to focus on first."
+    },
+    {
+      "t": "NEED PRIORITY",
+      "d": "Prioritize which needs and pains to solve first.\nUse as evidence for roadmap decisions."
+    },
+    {
+      "t": "MESSAGE TEST",
+      "d": "Validate messaging, value, and copy direction.\nSee what language users respond to."
+    },
+    {
+      "t": "PAIN PATTERN",
+      "d": "Pattern recurring complaints and churn signals.\nExtract common issues from CS and reviews."
+    },
+    {
+      "t": "BEHAVIOR CONTEXT",
+      "d": "Understand context behind purchase, use, and churn.\nCheck gaps between assumptions and behavior."
+    },
+    {
+      "t": "PERSONA INPUT",
+      "d": "Structure personas, jobs, and use situations.\nInput for product, design, and marketing."
+    },
+    {
+      "t": "PRE-LAUNCH CHECK",
+      "d": "Check user reaction before launch or rebrand.\nEvidence for Go/No-go and message adjustment."
+    },
+    {
+      "t": "OPPORTUNITY MAP",
+      "d": "Document unmet needs and whitespace.\nSurface new feature or service opportunities."
+    }
+  ],
+  "flowLabel": "EXAMPLE WORKFLOW",
+  "flowTitle": "From questions to an insight brief",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINE",
+      "d": "Define research questions and target users.\nClarify what you need to learn to decide.",
+      "examples": [
+        "Core questions",
+        "Target users",
+        "Scope",
+        "Deliverables"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "COLLECT",
+      "d": "Gather reviews, surveys, interviews, and support signals.\nReview secondary and primary material together.",
+      "examples": [
+        "Reviews",
+        "Surveys",
+        "Interviews",
+        "Support"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "ANALYZE",
+      "d": "Classify patterns, segments, needs, and pains.\nStructure recurring signals and differences.",
+      "examples": [
+        "Segments",
+        "Needs",
+        "Pains",
+        "Motivation"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "SYNTHESIZE",
+      "d": "Extract key insights and opportunities.\nConnect what matters and why it matters.",
+      "examples": [
+        "Key themes",
+        "Priority",
+        "Opportunity",
+        "Risk"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DELIVER",
+      "d": "Deliver brief, map, and implications.\nFormat for immediate team use.",
+      "examples": [
+        "Insight Brief",
+        "Segment Map",
+        "Next Steps"
+      ]
+    }
+  ],
+  "reportLabel": "OUTPUT",
+  "reportTitle": "Deliverables structured for product and marketing decisions.",
+  "reportLead": "Composition varies by project goal. Below are common sections.",
+  "reportMockStatus": "INSIGHT · DRAFT",
+  "reportMockK": "USER INSIGHT SUMMARY",
+  "reportMockT": "Segment · need · behavior pattern brief",
+  "reportItems": [
+    "Executive Summary",
+    "Research Scope",
+    "Segment Overview",
+    "Need & Pain Themes",
+    "Behavior Signals",
+    "Message Insights",
+    "Opportunity Areas",
+    "Implications",
+    "Recommended Next Steps",
+    "Source Notes"
+  ],
+  "dashTitle": "Share user patterns in one view.",
+  "dashLead": "Segment map and need themes together — so team discussions move faster.",
+  "dashNote": "Segment map and theme composition varies by scope and goal.",
+  "dashMetrics": [
+    "Segments",
+    "Themes",
+    "Quotes",
+    "Priority"
+  ],
+  "dashFilters": [
+    "All",
+    "Needs",
+    "Pains",
+    "Motivation"
+  ],
+  "aiLabel": "SYNTHESIS",
+  "aiTitle": "From many user voices\nto the patterns that matter.",
+  "aiLead": "When there is a lot of review, ticket, interview, and survey text, we classify, summarize, and compare from the angles you need.",
+  "aiExamples": [
+    "Review and feedback pattern summary",
+    "Recurring pain and issue extraction",
+    "Segment need comparison",
+    "Interview quote digest",
+    "Message and value response analysis",
+    "Brief and theme map outline draft"
+  ],
+  "aiNote": "Interpretation and final decisions are reviewed together with you.",
+  "delLabel": "DELIVERABLES",
+  "delTitle": "What you receive after the project",
+  "delLead": "Depending on scope, we deliver the items you need from the list below.",
+  "deliverables": [
+    "Insight Brief",
+    "Segment Map",
+    "Need & Pain Summary",
+    "Behavior Notes",
+    "Message Insights",
+    "Opportunity Overview",
+    "Implications & Recommendations",
+    "Interview Guide (optional)",
+    "Presentation Summary"
+  ],
+  "processLabel": "PROCESS",
+  "processTitle": "From question definition to delivery.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOVERY",
+      "d": "Confirm research purpose and decision context.\nUnderstand what you are deciding.",
+      "examples": [
+        "Goal",
+        "Stakeholders",
+        "Timeline",
+        "Constraints"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCOPE",
+      "d": "Define questions, target users, methods, and deliverables.\nAgree on primary research inclusion.",
+      "examples": [
+        "Questions",
+        "Target",
+        "Method",
+        "Format"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "RESEARCH",
+      "d": "Collect and review relevant signals and data.\nInclude interviews or surveys when scoped.",
+      "examples": [
+        "Reviews",
+        "Surveys",
+        "Interviews",
+        "Support"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ANALYSIS",
+      "d": "Structure patterns, segments, and needs.\nDerive themes and priority.",
+      "examples": [
+        "Segments",
+        "Themes",
+        "Priority",
+        "Quotes"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DRAFT",
+      "d": "Draft insight brief and map.\nBuild the spine of key findings.",
+      "examples": [
+        "Summary",
+        "Segment Map",
+        "Themes"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "REVIEW",
+      "d": "Review key insights and interpretation together.\nAdjust gaps and priority.",
+      "examples": [
+        "Feedback",
+        "Refinement",
+        "Priority"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "DELIVER",
+      "d": "Deliver final documents and implications.\nConnect to next experiments and validation.",
+      "examples": [
+        "Final Brief",
+        "Map",
+        "Next Steps"
+      ]
+    }
+  ],
+  "scopeLabel": "SCOPE LEVELS",
+  "scopeTitle": "A guide to project complexity.",
+  "scopeLead": "Not fixed packages — we scope based on goal, audience, and primary research inclusion.",
+  "scopes": [
+    {
+      "t": "DESK INSIGHT BRIEF",
+      "items": [
+        "Desk research focus (reviews, tickets, public feedback)",
+        "3–5 core questions",
+        "Need and pain theme summary",
+        "Summary brief",
+        "Priority points"
+      ]
+    },
+    {
+      "t": "SEGMENT & NEED MAP",
+      "items": [
+        "Segment and persona summary",
+        "Need, pain, and motivation map",
+        "Behavior and message implications",
+        "Opportunity areas",
+        "Presentation summary optional"
+      ]
+    },
+    {
+      "t": "CUSTOM RESEARCH",
+      "items": [
+        "Interview and survey design and fieldwork",
+        "Multiple segments or channels",
+        "Behavior data linkage",
+        "Custom presentation",
+        "BUILD or MVP linkage"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Timeline depends on scope.",
+  "timeLead": "Primary research inclusion, audience size, and data access can change duration.",
+  "timelines": [
+    {
+      "t": "Desk Insight Brief",
+      "d": "About 1–2 weeks"
+    },
+    {
+      "t": "Segment & Need Map",
+      "d": "About 2–3 weeks"
+    },
+    {
+      "t": "Custom Research",
+      "d": "About 3–4 weeks · scoped separately"
+    }
+  ],
+  "priceLabel": "PROJECT COST",
+  "priceTitle": "We quote only the scope you need.",
+  "priceName": "CONSUMER RESEARCH",
+  "priceValue": "From ₩300,000",
+  "priceFactorsLabel": "What shapes the price",
+  "priceFactors": [
+    "Number of research questions",
+    "Target user or segment scope",
+    "Primary research inclusion",
+    "Interview or response count",
+    "Research depth",
+    "Data accessibility",
+    "Deliverable format",
+    "Urgent timeline"
+  ],
+  "priceNote": "Final quote is confirmed after reviewing goal, method, and scope.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Frequently asked questions",
+  "faqs": [
+    {
+      "q": "What users or consumers can you research?",
+      "a": "B2B, B2C, SaaS, commerce, services, and more — depending on goal and accessible audience. We confirm fit before starting."
+    },
+    {
+      "q": "Does this include interviews or surveys?",
+      "a": "We can start desk-first. Interviews and surveys can be included in scope when needed."
+    },
+    {
+      "q": "What format do deliverables take?",
+      "a": "Document and map-first: Insight Brief, Segment Map, Need & Pain Summary, and more. Presentation summaries can be included."
+    },
+    {
+      "q": "Can you use our support or usage data?",
+      "a": "Yes, within what you can share. Otherwise we work from public reviews and feedback."
+    },
+    {
+      "q": "How is this different from MARKET RESEARCH?",
+      "a": "CONSUMER RESEARCH focuses on user and consumer needs and behavior. If market structure is the need, MARKET RESEARCH may fit better — scopes can be linked."
+    },
+    {
+      "q": "Can this connect to BUILD or MVP?",
+      "a": "Yes. Insights can feed feature priority, target definition, and messaging."
+    },
+    {
+      "q": "How is confidentiality handled?",
+      "a": "We work within agreed scope only. An NDA can be signed when required."
+    }
+  ],
+  "finalLabel": "START A PROJECT",
+  "finalTitle": "Don't guess your users —\nlisten and pattern first.",
+  "finalLead": "Tell us the target, messaging, or need issue you're evaluating. We'll confirm what to research and how to structure the output.",
+  "ctaFinalSecondary": "View all RESEARCH →",
+  "ctaFinalSecondaryHref": "../research/"
+}

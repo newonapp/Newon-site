@@ -1,0 +1,649 @@
+{
+  "brand": {
+    "crumbStudio": "スタジオ",
+    "otherTitle": "OTHER STUDIO AREAS",
+    "ctaEyebrow": "プロジェクトをお持ちですか?",
+    "ctaTitle": "あなたのブランドと製品が世界でどのように認知されるかを形作りましょう。",
+    "ctaLead": "アイデアの段階でも。まずは必要な範囲を明確にすることから始めます。",
+    "ctaBtn": "案件のお問い合わせ→",
+    "servicesLabel": "サービス",
+    "processLabel": "PROCESS",
+    "faqLabel": "FAQ",
+    "quoteCta": "案件のお問い合わせ→",
+    "whatWeBuild": "私たちがやっていること",
+    "recommendedFor": "こんな方におすすめ",
+    "included": "付属",
+    "deliverables": "成果物",
+    "timeline": "推定スケジュール",
+    "detailCta": "詳細を見る→",
+    "soonBtn": "近日公開予定",
+    "comingSoon": "近日公開予定",
+    "comingSoonLead": "この分野はまだ進行中であり、完成した商用サービスとしてはまだ提供されていません。",
+    "ctaPrimary": "プロジェクトを開始する →",
+    "ctaSecondary": "スコープを見る ↓",
+    "startingAt": "STARTING AT",
+    "seoTitle": "ブランド | Newon スタジオ",
+    "metaDescription": "Newon スタジオ ブランド — 戦略、ネーミング、アイデンティティ、ロゴを 1 つのブランド システムとしてまとめたもの。",
+    "eyebrow": "NEWON STUDIO · BRAND",
+    "headline": "ブランドの方向性\nとアイデンティティを形成します。",
+    "lead": "強いブランドはロゴから始まるわけではありません。私たちは戦略、ネーミング、アイデンティティ、ロゴを 1 つのブランド システムに結び付けます。",
+    "process": [
+      {
+        "n": "01",
+        "t": "DISCOVER",
+        "d": "ブランドと市場を理解する"
+      },
+      {
+        "n": "02",
+        "t": "DEFINE",
+        "d": "位置決めと方向性"
+      },
+      {
+        "n": "03",
+        "t": "DESIGN",
+        "d": "ブランドアイデンティティをデザインする"
+      },
+      {
+        "n": "04",
+        "t": "DELIVER",
+        "d": "ブランド資産の引き継ぎ"
+      }
+    ],
+    "faq": [
+      {
+        "q": "ブランディングのみを依頼することはできますか?",
+        "a": "はい — 戦略、ネーミング、アイデンティティ、ロゴなど、必要なものに範囲を限定します。"
+      },
+      {
+        "q": "既存のブランドをリニューアルしてもらえますか？",
+        "a": "はい。現在の資産と目標を確認し、範囲を提案します。"
+      },
+      {
+        "q": "商標クリアランスを保証しますか?",
+        "a": "いいえ。意味と拡張性を審査しますが、最終的な商標審査には IP の弁護士が必要です。"
+      },
+      {
+        "q": "開始価格は決まっていますか？",
+        "a": "いいえ。これは基本スコープの開始価格です。最終的な見積もりは、規模、生産範囲、成果物によって異なります。"
+      },
+      {
+        "q": "これを建築の仕事につなげることはできるでしょうか？",
+        "a": "デザインは Studio に残ります。実装は Newon Business BUILD まで継続されます。"
+      }
+    ],
+    "services": [
+      {
+        "title": "BRAND STRATEGY",
+        "tab": "STRATEGY",
+        "summary": "ポジショニングと核となるブランド メッセージを定義します。",
+        "what": "市場、顧客、競合状況からの方向性とメッセージを明確にします。",
+        "for": "ブランドの方向性を必要としているチーム、または既存のブランドを刷新したいチーム。",
+        "included": "監査、ターゲット、ポジショニング、核となるメッセージ、トーンとマナー",
+        "deliverables": "ブランド戦略文書、ポジショニング、トーン＆マナーガイド",
+        "timeline": "1～3週間",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Brand+Strategy&area=Brand#inquiry",
+        "_studioSlug": "brand-strategy",
+        "href": "strategy/",
+        "detailCta": "詳細を見る→"
+      },
+      {
+        "title": "NAMING",
+        "tab": "NAMING",
+        "summary": "記憶に残る名前と、ブランドとともに成長できるネーミングの方向性。",
+        "what": "ブランドキャラクターに合わせた名称候補や使用方向性を開発します。",
+        "for": "チームが会社、アプリ、サービスに名前を付ける、または名前を変更する。",
+        "included": "ネーミングの方向性・キーワード・候補・意味・読み方の検討",
+        "deliverables": "命名候補、根拠、命名使用ガイド",
+        "timeline": "1～2週間",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Naming&area=Brand#inquiry",
+        "_studioSlug": "naming",
+        "href": "naming/",
+        "detailCta": "詳細を見る→"
+      },
+      {
+        "title": "IDENTITY",
+        "tab": "IDENTITY",
+        "summary": "ブランドがどこに登場しても一貫性を感じるビジュアル言語。",
+        "what": "色、タイプ、グラフィック スタイルを 1 つのシステムに整理します。",
+        "for": "ブランド基準のないチーム、またはチャネルごとに異なるブランド。",
+        "included": "ビジュアルディレクション・カラー・タイポグラフィー・グラフィックスタイル・使用ルール",
+        "deliverables": "Visual Identity システム、カラーおよびタイポグラフィー ガイド",
+        "timeline": "2～4週間",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Identity&area=Brand#inquiry",
+        "_studioSlug": "identity",
+        "href": "identity/",
+        "detailCta": "詳細を見る→"
+      },
+      {
+        "title": "LOGO",
+        "tab": "LOGO",
+        "summary": "ブランドをシンプルに表現したロゴと基本的な使い方体系。",
+        "what": "ロゴのコンセプトを開発し、すぐに本番環境に使えるファイルを提供します。",
+        "for": "新しいロゴ、または既存のマークを改良するチーム。",
+        "included": "方向性・コンセプト・一次・二次・カラー版・基本ガイド",
+        "deliverables": "ロゴ ファイル、バリエーション、基本的なロゴ ガイド",
+        "timeline": "2～3週間",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Logo+Design&area=Brand#inquiry",
+        "_studioSlug": "logo-design",
+        "href": "logo/",
+        "detailCta": "詳細を見る→"
+      }
+    ],
+    "slug": "brand",
+    "crumbBusiness": "スタジオ",
+    "pricing": [
+      {
+        "name": "ブランド戦略",
+        "price": "₩400,000～",
+        "svc": 0,
+        "slug": "brand-strategy",
+        "pricingType": "開始時刻"
+      },
+      {
+        "name": "ネーミング",
+        "price": "₩300,000～",
+        "svc": 1,
+        "slug": "naming",
+        "pricingType": "開始時刻"
+      },
+      {
+        "name": "アイデンティティ",
+        "price": "₩600,000～",
+        "svc": 2,
+        "slug": "identity",
+        "pricingType": "開始時刻"
+      },
+      {
+        "name": "ロゴデザイン",
+        "price": "₩400,000～",
+        "svc": 3,
+        "slug": "logo-design",
+        "pricingType": "開始時刻"
+      }
+    ],
+    "pricingNote": "表示金額は基本スコープの開始価格です。最終的な見積もりは、プロジェクトの規模、生産範囲、成果物の数、要件によって異なる場合があります。",
+    "pricingNoteDefault": "表示金額は基本スコープの開始価格です。最終的な見積もりは、プロジェクトの規模、生産範囲、成果物の数、要件によって異なる場合があります。"
+  },
+  "digital": {
+    "crumbStudio": "スタジオ",
+    "otherTitle": "OTHER STUDIO AREAS",
+    "ctaEyebrow": "プロジェクトをお持ちですか?",
+    "ctaTitle": "あなたのブランドと製品が世界でどのように認知されるかを形作りましょう。",
+    "ctaLead": "アイデアの段階でも。まずは必要な範囲を明確にすることから始めます。",
+    "ctaBtn": "案件のお問い合わせ→",
+    "servicesLabel": "サービス",
+    "processLabel": "PROCESS",
+    "faqLabel": "FAQ",
+    "quoteCta": "案件のお問い合わせ→",
+    "whatWeBuild": "私たちがやっていること",
+    "recommendedFor": "こんな方におすすめ",
+    "included": "付属",
+    "deliverables": "成果物",
+    "timeline": "推定スケジュール",
+    "detailCta": "詳細を見る→",
+    "soonBtn": "近日公開予定",
+    "comingSoon": "近日公開予定",
+    "comingSoonLead": "この分野はまだ進行中であり、完成した商用サービスとしてはまだ提供されていません。",
+    "ctaPrimary": "プロジェクトを開始する →",
+    "ctaSecondary": "スコープを見る ↓",
+    "startingAt": "STARTING AT",
+    "seoTitle": "デジタル | Newon スタジオ",
+    "metaDescription": "Newon Studio DIGITAL — ウェブ、アプリ UI/UX、ランディング、構造からインターフェースまでの製品デザイン。",
+    "eyebrow": "NEWON STUDIO · DIGITAL",
+    "headline": "ウェブと\n製品エクスペリエンスをデザインします。",
+    "lead": "強いデジタル製品とは、美しい画面だけではありません。私たちは情報アーキテクチャから設計し、UI/UX を 1 つのエクスペリエンスとして流れます。",
+    "process": [
+      {
+        "n": "01",
+        "t": "DISCOVER",
+        "d": "目標とユーザー"
+      },
+      {
+        "n": "02",
+        "t": "DEFINE",
+        "d": "構造と主要なフロー"
+      },
+      {
+        "n": "03",
+        "t": "DESIGN",
+        "d": "UI/UX デザイン"
+      },
+      {
+        "n": "04",
+        "t": "PROTOTYPE",
+        "d": "プロトタイプの検証"
+      },
+      {
+        "n": "05",
+        "t": "HANDOFF",
+        "d": "開発の引き継ぎ"
+      }
+    ],
+    "faq": [
+      {
+        "q": "デザインだけ？",
+        "a": "はい。 DIGITAL の開始価格はデザインのみです — UI/UX、プロトタイプ、引き渡しはお客様のニーズに合わせて調整されます。"
+      },
+      {
+        "q": "あなたも建てますか？",
+        "a": "いいえ、Studio DIGITAL には開発は含まれません。導入は、Newon Business BUILD を通じて別途お見積りとなります。"
+      },
+      {
+        "q": "既存の製品を改良していただけますか?",
+        "a": "はい - フローと構造を確認し、範囲を提案します。"
+      },
+      {
+        "q": "レスポンシブ/モバイルは含まれますか?",
+        "a": "はい — デスクトップとモバイル UI を一緒に。"
+      }
+    ],
+    "services": [
+      {
+        "title": "WEB DESIGN",
+        "tab": "WEB",
+        "summary": "ブランドとサービスを明確に表現するウェブ UX/UI デザイン。 (デザインのみ)",
+        "what": "サイト構造からワイヤーフレーム、UI、レスポンシブ デザインまで。構築/開発は含まれません。",
+        "for": "会社/ブランド サイト、または既存のウェブ UX を改善する必要があるチーム。",
+        "included": "デザインのみ · IA · フロー · ワイヤーフレーム · UI · レスポンシブ · コンポーネント",
+        "deliverables": "サイトマップ、ワイヤーフレーム、デスクトップ/モバイル UI、ハンドオフ",
+        "timeline": "2～5週間",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Web+Design&area=Digital#inquiry",
+        "_studioSlug": "web-design",
+        "href": "web-design/",
+        "detailCta": "詳細を見る→"
+      },
+      {
+        "title": "APP UI/UX",
+        "tab": "APP",
+        "summary": "アプリのコア機能のフローと画面構造。 (デザインのみ)",
+        "what": "ユーザー フローから高忠実度 UI、プロトタイプ、ハンドオフまで。アプリ開発は含まれておりません。",
+        "for": "アプリのアイデア、MVP の設計、または UX の改善を明確にするチーム。",
+        "included": "デザインのみ · ユーザー フロー · IA · ワイヤーフレーム · UI · コンポーネント · プロトタイプ",
+        "deliverables": "ユーザー フロー、高忠実度 UI、プロトタイプ、ハンドオフ ファイル",
+        "timeline": "3～6週間",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=App+UI%2FUX&area=Digital#inquiry",
+        "_studioSlug": "app-ui-ux",
+        "href": "app-ui-ux/",
+        "detailCta": "詳細を見る→"
+      },
+      {
+        "title": "LANDING PAGE",
+        "tab": "LANDING",
+        "summary": "ランディング ページ UX/UI のデザインはコンバージョンのために構築されました。 (デザインのみ)",
+        "what": "メッセージ構造、CTA、セクション、モバイル UI。ライブ Web ビルドは含まれていません。",
+        "for": "発売、順番待ちリスト、広告、または MVP のデマンド検証。",
+        "included": "デザインのみ · メッセージ構造 · 変換フロー · ワイヤーフレーム · UI · モバイル",
+        "deliverables": "着陸構造、最終 UI、CTA システム、ハンドオフ",
+        "timeline": "1～3週間",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Landing+Page+Design&area=Digital#inquiry",
+        "_studioSlug": "landing-page-design",
+        "href": "landing/",
+        "detailCta": "詳細を見る→"
+      },
+      {
+        "title": "PRODUCT DESIGN",
+        "tab": "PRODUCT",
+        "summary": "画面だけでなく、製品全体のエクスペリエンスをデザインします。 (デザインのみ)",
+        "what": "製品構造、UX フロー、UI システム、および設計システムを調整します。構築/開発は含まれません。",
+        "for": "フルプロダクト UX を編成するチーム、またはデザイン システムを必要とするチーム。",
+        "included": "設計のみ · プロダクト構造 · UX フロー · UI システム · 設計システム · プロトタイプ",
+        "deliverables": "製品 UX アーキテクチャ、UI 設計、設計システム、ハンドオフ",
+        "timeline": "4～8週間",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Product+Design&area=Digital#inquiry",
+        "_studioSlug": "product-design",
+        "href": "product-design/",
+        "detailCta": "詳細を見る→"
+      }
+    ],
+    "slug": "digital",
+    "crumbBusiness": "スタジオ",
+    "pricing": [
+      {
+        "name": "ウェブデザイン",
+        "price": "₩600,000～",
+        "svc": 0,
+        "slug": "web-design",
+        "pricingType": "開始時刻"
+      },
+      {
+        "name": "アプリ UI/UX",
+        "price": "₩800,000～",
+        "svc": 1,
+        "slug": "app-ui-ux",
+        "pricingType": "開始時刻"
+      },
+      {
+        "name": "ランディングページのデザイン",
+        "price": "₩400,000～",
+        "svc": 2,
+        "slug": "landing-page-design",
+        "pricingType": "開始時刻"
+      },
+      {
+        "name": "プロダクトデザイン",
+        "price": "₩1,200,000～",
+        "svc": 3,
+        "slug": "product-design",
+        "pricingType": "開始時刻"
+      }
+    ],
+    "pricingNote": "表示金額は基本スコープの開始価格です。最終的な見積もりは、プロジェクトの規模、生産範囲、成果物の数、要件によって異なる場合があります。 DIGITAL価格はデザインのみの価格です。導入が必要なプロジェクトは、Newon Business BUILD を通じて別途お見積りとなります。",
+    "pricingNoteDefault": "表示金額は基本スコープの開始価格です。最終的な見積もりは、プロジェクトの規模、生産範囲、成果物の数、要件によって異なる場合があります。"
+  },
+  "content": {
+    "crumbStudio": "スタジオ",
+    "otherTitle": "OTHER STUDIO AREAS",
+    "ctaEyebrow": "プロジェクトをお持ちですか?",
+    "ctaTitle": "あなたのブランドと製品が世界でどのように認知されるかを形作りましょう。",
+    "ctaLead": "アイデアの段階でも。まずは必要な範囲を明確にすることから始めます。",
+    "ctaBtn": "案件のお問い合わせ→",
+    "servicesLabel": "サービス",
+    "processLabel": "PROCESS",
+    "faqLabel": "FAQ",
+    "quoteCta": "案件のお問い合わせ→",
+    "whatWeBuild": "私たちがやっていること",
+    "recommendedFor": "こんな方におすすめ",
+    "included": "付属",
+    "deliverables": "成果物",
+    "timeline": "推定スケジュール",
+    "detailCta": "詳細を見る→",
+    "soonBtn": "近日公開予定",
+    "comingSoon": "近日公開予定",
+    "comingSoonLead": "この分野はまだ進行中であり、完成した商用サービスとしてはまだ提供されていません。",
+    "ctaPrimary": "プロジェクトを開始する →",
+    "ctaSecondary": "スコープを見る ↓",
+    "startingAt": "STARTING AT",
+    "seoTitle": "コンテンツ | Newon スタジオ",
+    "metaDescription": "Newon スタジオ コンテンツ — ソーシャル コンテンツ、キャンペーン、ビジュアル アセット。",
+    "eyebrow": "NEWON STUDIO · CONTENT",
+    "headline": "ブランドを目に見えて記憶に残るコンテンツを作成します\n。",
+    "lead": "ブランドメッセージをソーシャル、キャンペーン、ローンチ、デジタルチャネルのコンテンツに変換します。",
+    "process": [
+      {
+        "n": "01",
+        "t": "DISCOVER",
+        "d": "ブランドとチャネルを理解する"
+      },
+      {
+        "n": "02",
+        "t": "DEFINE",
+        "d": "メッセージとフォーマットを定義する"
+      },
+      {
+        "n": "03",
+        "t": "CREATE",
+        "d": "コンテンツとビジュアルを制作する"
+      },
+      {
+        "n": "04",
+        "t": "DELIVER",
+        "d": "チャネル対応ファイルを引き渡す"
+      }
+    ],
+    "faq": [
+      {
+        "q": "コンテンツだけ？",
+        "a": "はい - 必要に応じて、ソーシャル、キャンペーン、または視覚的な範囲に適用します。"
+      },
+      {
+        "q": "まずブランドをやらなければいけないのでしょうか？",
+        "a": "既存のブランドと連携することも、ブランドを並行して運営することもできます。"
+      },
+      {
+        "q": "ソーシャル コンテンツには毎月の運用が含まれますか?",
+        "a": "いいえ。開始価格には、コンテンツのディレクションと限定的なデザイン セットが含まれます。完全な月次ソーシャル管理は含まれません。別途お見積りとなります。"
+      },
+      {
+        "q": "モーションは含まれていますか？",
+        "a": "合意による単純な動議。長編ビデオはデフォルトの範囲ではありません。"
+      },
+      {
+        "q": "チャンネル固有のサイズ?",
+        "a": "はい - 各チャンネルのサイズで配信されます。"
+      }
+    ],
+    "services": [
+      {
+        "title": "SOCIAL CONTENT",
+        "tab": "SOCIAL",
+        "summary": "コンテンツの方向性とソーシャル向けに設定された限定的なデザイン — 完全な月次運用ではありません。",
+        "what": "コンテンツの方向性、フォーマット、コピー/テンプレート、およびチャネル ガイド。完全な月次ソーシャル管理は含まれていません。",
+        "for": "Instagram、TikTok、Shorts、および同様のブランド チャネルの方向性を設定するチーム。",
+        "included": "方向性・柱・フォーマット・コピー方向・テンプレート・チャンネルガイド",
+        "deliverables": "コンテンツ戦略、ソーシャル テンプレート、チャンネル ガイド",
+        "timeline": "1～3週間",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Social+Content&area=Content#inquiry",
+        "_studioSlug": "social-content",
+        "href": "social/",
+        "detailCta": "詳細を見る→"
+      },
+      {
+        "title": "CAMPAIGN",
+        "tab": "CAMPAIGN",
+        "summary": "1つのメッセージとビジュアルでつながるローンチとプロモーション。",
+        "what": "キャンペーンコンセプト、キーメッセージ、キービジュアル、チャンネルアセット。",
+        "for": "製品の発売、プロモーション、またはイベント キャンペーンを実行するチーム。",
+        "included": "コンセプト・キーメッセージ・コピー・キービジュアル・ソーシャルアセット",
+        "deliverables": "キャンペーンコンセプト、キービジュアル、チャンネルアセット、キャンペーンガイド",
+        "timeline": "2～4週間",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Campaign&area=Content#inquiry",
+        "_studioSlug": "campaign",
+        "href": "campaign/",
+        "detailCta": "詳細を見る→"
+      },
+      {
+        "title": "VISUAL CONTENT",
+        "tab": "VISUAL",
+        "summary": "Web、ソーシャル、プロモーション用のブランドビジュアルアセット。",
+        "what": "視覚的な方向からチャンネルサイズのバリエーションまで。",
+        "for": "ブランド ビジュアルやチャネル対応の画像を必要とするチーム。",
+        "included": "ビジュアルディレクション · 製品/ソーシャルビジュアル · プロモーションアセット · サイズバリエーション",
+        "deliverables": "デジタルビジュアルアセット、ソーシャル/キャンペーン/ウェブアセット",
+        "timeline": "1～3週間",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Visual+Content&area=Content#inquiry",
+        "_studioSlug": "visual-content",
+        "href": "visual/",
+        "detailCta": "詳細を見る→"
+      }
+    ],
+    "slug": "content",
+    "crumbBusiness": "スタジオ",
+    "pricing": [
+      {
+        "name": "ソーシャルコンテンツ",
+        "price": "₩300,000～",
+        "svc": 0,
+        "slug": "social-content",
+        "pricingType": "開始時刻"
+      },
+      {
+        "name": "キャンペーン",
+        "price": "₩500,000～",
+        "svc": 1,
+        "slug": "campaign",
+        "pricingType": "開始時刻"
+      },
+      {
+        "name": "ビジュアルコンテンツ",
+        "price": "₩300,000～",
+        "svc": 2,
+        "slug": "visual-content",
+        "pricingType": "開始時刻"
+      }
+    ],
+    "pricingNote": "表示金額は基本スコープの開始価格です。最終的な見積もりは、プロジェクトの規模、生産範囲、成果物の数、要件によって異なる場合があります。ソーシャル コンテンツの開始価格には、コンテンツの方向性と限定されたデザイン セットが含まれます。月額のソーシャル オペレーション全体ではありません。継続的な月次管理は別途お見積りとなります。",
+    "pricingNoteDefault": "表示金額は基本スコープの開始価格です。最終的な見積もりは、プロジェクトの規模、生産範囲、成果物の数、要件によって異なる場合があります。"
+  },
+  "ip": {
+    "crumbStudio": "スタジオ",
+    "otherTitle": "OTHER STUDIO AREAS",
+    "ctaEyebrow": "プロジェクトをお持ちですか?",
+    "ctaTitle": "あなたのブランドと製品が世界でどのように認知されるかを形作りましょう。",
+    "ctaLead": "アイデアの段階でも。まずは必要な範囲を明確にすることから始めます。",
+    "ctaBtn": "案件のお問い合わせ→",
+    "servicesLabel": "サービス",
+    "processLabel": "PROCESS",
+    "faqLabel": "FAQ",
+    "quoteCta": "案件のお問い合わせ→",
+    "whatWeBuild": "私たちがやっていること",
+    "recommendedFor": "こんな方におすすめ",
+    "included": "付属",
+    "deliverables": "成果物",
+    "timeline": "推定スケジュール",
+    "detailCta": "詳細を見る→",
+    "soonBtn": "近日公開予定",
+    "comingSoon": "近日公開予定",
+    "comingSoonLead": "この分野はまだ進行中であり、完成した商用サービスとしてはまだ提供されていません。",
+    "ctaPrimary": "プロジェクトを開始する →",
+    "ctaSecondary": "スコープを見る ↓",
+    "startingAt": "STARTING AT",
+    "seoTitle": "IP | Newon スタジオ",
+    "metaDescription": "Newon スタジオ IP — キャラクター ラボおよび実験的な IP。未完成の領域を過剰に販売することはありません。",
+    "eyebrow": "NEWON STUDIO · IP",
+    "headline": "キャラクター\nと新しいIPの可能性を試してください。",
+    "lead": "私たちは、小さなキャラクターコンセプトからデジタル表現まで成長できるブランド資産を探求します。実験および委託可能なエリアには明確にラベルが付けられています。",
+    "process": [
+      {
+        "n": "01",
+        "t": "EXPLORE",
+        "d": "可能性を探る"
+      },
+      {
+        "n": "02",
+        "t": "CONCEPT",
+        "d": "コンセプトを定義する"
+      },
+      {
+        "n": "03",
+        "t": "CREATE",
+        "d": "初期のフォームを作成する"
+      },
+      {
+        "n": "04",
+        "t": "TEST",
+        "d": "テスト式と形式"
+      },
+      {
+        "n": "05",
+        "t": "EXPAND",
+        "d": "マップ展開パス"
+      }
+    ],
+    "faq": [
+      {
+        "q": "IP プロジェクトはどのように開始しますか?",
+        "a": "キャラクター ラボまたは実験範囲を設定するための実験 IP の概要。"
+      },
+      {
+        "q": "今すぐデジタルステッカーを注文できますか?",
+        "a": "近日公開 — まだコミッションは利用できません。"
+      },
+      {
+        "q": "Newon キャラクターはクライアント サービスですか?",
+        "a": "いいえ。これは社内の Newon ブランド IP プロジェクトです。"
+      },
+      {
+        "q": "試験運用版 IP を依頼できますか?",
+        "a": "はい。これは固定パッケージではありません。アイデアと実験範囲からカスタム プロジェクトを作成し、個別にお見積りします。"
+      }
+    ],
+    "services": [
+      {
+        "title": "CHARACTER LAB",
+        "tab": "CHAR LAB",
+        "statusLabel": "EXPERIMENTAL · AVAILABLE",
+        "summary": "初期のキャラクター コンセプトと IP の可能性を対象とした実験的なクライアント サービス。お問い合わせやプロジェクトのお仕事も可能です。",
+        "what": "性格、役割、ビジュアル、表情、ポーズ、使い方を形作ってから、IP の可能性をテストします。",
+        "for": "初期のキャラクター IP が必要なチームはすぐに結成されます。",
+        "included": "キャラクターコンセプト・性格・ビジュアルディレクション・表現検討",
+        "deliverables": "コンセプト シート、ビジュアル ディレクション、式セット、基本ガイド IP",
+        "timeline": "2～4週間",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Character+Lab&area=IP#inquiry",
+        "_studioSlug": "character-lab",
+        "href": "character-lab/",
+        "detailCta": "詳細を見る→"
+      },
+      {
+        "title": "DIGITAL STICKERS",
+        "tab": "STICKERS",
+        "statusLabel": "COMING SOON",
+        "summary": "キャラクターの感情をデジタル表現に拡張。近日公開予定 — コミッションには利用できません。",
+        "what": "",
+        "for": "",
+        "included": "",
+        "deliverables": "",
+        "timeline": "",
+        "ready": false,
+        "inquiryHref": null,
+        "_studioSlug": "digital-stickers",
+        "href": "digital-stickers/",
+        "detailCta": "詳細を見る→"
+      },
+      {
+        "title": "NEWON CHARACTER",
+        "tab": "NEWON",
+        "statusLabel": "INTERNAL · BUILDING",
+        "summary": "社内の Newon ブランド キャラクター IP プロジェクト - クライアント サービスではありません。",
+        "what": "",
+        "for": "",
+        "included": "",
+        "deliverables": "",
+        "timeline": "",
+        "ready": false,
+        "inquiryHref": null,
+        "_studioSlug": "newon-character",
+        "href": "newon-character/",
+        "detailCta": "詳細を見る→"
+      },
+      {
+        "title": "EXPERIMENTAL IP",
+        "tab": "EXPLORE",
+        "statusLabel": "EXPLORING · CUSTOM",
+        "summary": "固定パッケージではなく、カスタム実験プロジェクトとして実行します。キャラクター、世界、コンテンツ、インタラクティブ、ゲーム、または AI のアイデアを小さなプロトタイプとしてレビューします。",
+        "what": "アイデアと仮説からコンセプト、プロトタイプ、テスト、学習に至るまで、スコープを絞ったカスタムを実現します。",
+        "for": "最初に小規模な実験で新しい IP フォームを検証したいチーム。",
+        "included": "アイデアの検討・仮説・コンセプトの方向性・プロトタイプ/パイロット・次のステップ",
+        "deliverables": "実験概要、コンセプト/プロトタイプパック、学習ノート、次の推奨事項",
+        "timeline": "カスタム見積もり",
+        "quoteCta": "カスタムプロジェクトのお問い合わせ →",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Experimental+IP&area=IP#inquiry",
+        "_studioSlug": "experimental-ip",
+        "href": "experimental-ip/",
+        "detailCta": "詳細を見る→"
+      }
+    ],
+    "slug": "ip",
+    "crumbBusiness": "スタジオ",
+    "pricing": [
+      {
+        "name": "キャラクターラボ",
+        "price": "₩500,000～",
+        "svc": 0,
+        "slug": "character-lab",
+        "pricingType": "開始時刻"
+      },
+      {
+        "name": "試験運用版 IP",
+        "price": "カスタム見積もり",
+        "svc": 3,
+        "slug": "experimental-ip",
+        "pricingType": "カスタム見積もり"
+      }
+    ],
+    "pricingNote": "表示金額は基本スコープの開始価格です。最終的な見積もりは、プロジェクトの規模、生産範囲、成果物の数、要件によって異なる場合があります。",
+    "pricingNoteDefault": "表示金額は基本スコープの開始価格です。最終的な見積もりは、プロジェクトの規模、生産範囲、成果物の数、要件によって異なる場合があります。"
+  }
+}

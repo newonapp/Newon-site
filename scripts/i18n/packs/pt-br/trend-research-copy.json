@@ -1,0 +1,479 @@
+{
+  "seoTitle": "TREND RESEARCH Newon Business",
+  "metaDescription": "A indústria de pesquisa, o consumidor e os sinais da tendência do produto — estruturados como um resumo da tendência para as decisões de roteiro, conteúdo e estratégia. Newon TREND RESEARCH.",
+  "crumbBusiness": "EMPRESAS",
+  "crumbServices": "SERVIÇOS",
+  "crumbResearch": "INVESTIGAÇÃO",
+  "crumbHere": "TREND RESEARCH",
+  "eyebrow": "TREND RESEARCH",
+  "subEyebrow": "INVESTIGAÇÃO",
+  "headline": "Muitas tendências.\nNão há clareza suficiente.",
+  "lead": "Pesquisamos relatórios da indústria, lançamentos de produtos, investimentos e mudanças regulatórias, e sinais de consumo, tecnologia e comportamento. As pistas de tendência dispersas são organizadas por tema, linha do tempo e impacto em um resumo de tendências que sua equipe pode usar para decisões de roteiro, conteúdo e estratégia.",
+  "ctaPrimary": "Inquérito sobre a evolução da investigação →",
+  "ctaSecondary": "Veja o fluxo de pesquisa ↓",
+  "meta": [
+    {
+      "k": "SERVIÇO",
+      "v": "Investigação de Tendências"
+    },
+    {
+      "k": "MELHOR PARA",
+      "v": "Roteiro e direcção do conteúdo"
+    },
+    {
+      "k": "Cronologia",
+      "v": "Normalmente 1–3 semanas"
+    },
+    {
+      "k": "PREÇO",
+      "v": "A partir de 300.000"
+    }
+  ],
+  "overviewLabel": "VISÃO GERAL",
+  "overviewTitle": "Sobrecarga de informação.\nSem estrutura de decisão.",
+  "overviewBody": [
+    "Conversas sobre ‘o que é tendência’ aparecem frequentemente em reuniões de produtos, marketing e estratégia. A parte mais difícil é saber quais sinais são ruído e quais mudanças importam para suas decisões.",
+    "Notícias, relatórios, atualizações de concorrentes, sinais sociais e comunitários, e mudança regulatória cada um oferece pistas — mas raramente em um formulário as equipes podem decidir de.",
+    "TREND RESEARCH começa definindo tópico e horizonte de tempo. Em seguida, coletamos, classificamos e estruturamos sinais em temas, direção de mudança e implicações de produto, conteúdo e estratégia em uma tendência breve."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Ajudante quando você enfrenta essas situações.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "DIREÇÃO DO ROADMAP",
+      "d": "Você precisa de evidências para o roteiro, recurso ou direção de serviço.\nNão está claro que mudanças seguir."
+    },
+    {
+      "n": "02",
+      "t": "ESTRATÉGIA DOS CONTEÚDOS",
+      "d": "Você precisa de direção para conteúdo, marketing ou mensagens de marca.\nQueres provas do que importa agora."
+    },
+    {
+      "n": "03",
+      "t": "SINAL DO RUÍDO VS",
+      "d": "Há muitas informações sobre tendências, mas nenhuma prioridade.\nTens de separar as modas das mudanças estruturais."
+    },
+    {
+      "n": "04",
+      "t": "CATEGORIA SHIFT",
+      "d": "O contexto de categoria, indústria, regulação ou tecnologia está mudando.\nVocê precisa de impacto no produto e nos negócios."
+    },
+    {
+      "n": "05",
+      "t": "CIRCULAÇÃO COMPETITTIVA",
+      "d": "Você precisa de contexto para competidores e substitutos de lançamentos e mensagens.\nA cópia não é suficiente — questões de interpretação."
+    },
+    {
+      "n": "06",
+      "t": "INQUÉRITO DE PLANEAMENTO",
+      "d": "Antes do planeamento trimestral, nova revisão de negócios ou conversas de investidores,\nvocê precisa de contexto de tendência primeiro."
+    }
+  ],
+  "baLabel": "ANTES / APÓS",
+  "baTitle": "Tendências dispersas vs.\nFluxo estruturado",
+  "beforeLabel": "ANTES",
+  "afterLabel": "APÓS",
+  "before": [
+    "Todos verificam notícias, relatórios e sociais separadamente.",
+    "As «tendências» são frequentemente discutidas, mas sem provas nem prioridade",
+    "Modificações e mudanças estruturais não estão separadas",
+    "Não ligado às discussões de estratégia, roteiro ou conteúdo"
+  ],
+  "after": [
+    "Tópico de pesquisa e horizonte temporal definidos primeiro",
+    "Temas, sinais e estrutura de impacto",
+    "Breve tendência compartilhada para a equipe",
+    "Conectado ao roteiro, conteúdo e experimentos"
+  ],
+  "capsLabel": "CAPABILIDADES",
+  "capsTitle": "Nós estruturamos a pesquisa\nsuas necessidades de compreensão de tendência.",
+  "caps": [
+    {
+      "t": "FRAMAGEM TOPIC",
+      "d": "Defina o que precisa aprender a decidir.\nEsclareça a indústria, a categoria e o horizonte temporal."
+    },
+    {
+      "t": "DESK INVESTIGAÇÃO",
+      "d": "Colete fontes secundárias — relatórios, notícias, IR, atualizações de produtos.\nVerifique a fonte, o tempo e o contexto."
+    },
+    {
+      "t": "DIGITALIZAÇÃO DE SINAIS",
+      "d": "Digitalize os sinais de investimento, regulação, tecnologia e comportamento.\nSelecione as pistas mais relevantes."
+    },
+    {
+      "t": "TEMA ÂMBITO",
+      "d": "Sinais relacionados ao cluster em temas.\nEstrutura direções recorrentes de mudança."
+    },
+    {
+      "t": "VISÃO TEMPAL",
+      "d": "Organize mudanças em horizontes curtos e médios.\nDistintos estados emergentes, ascendentes e estáveis."
+    },
+    {
+      "t": "CONTEXTO COMPETITIVO",
+      "d": "Conectar concorrente e substituir movimentos para o contexto de tendência.\nInterpretar, não apenas listar."
+    },
+    {
+      "t": "IMPLICAÇÕES",
+      "d": "Conecte tendências a implicações de produto, conteúdo e estratégia.\nSeparar oportunidades, riscos e ignorar zonas."
+    },
+    {
+      "t": "LINHA DE ACÇÃO",
+      "d": "Conecte as descobertas ao roteiro, conteúdo e itens de experiência.\nSugerir próximos pontos de validação e monitoramento."
+    }
+  ],
+  "sourcesLabel": "FONTES DE INVESTIGAÇÃO",
+  "sourcesTitle": "Combinamos os sinais de tendência suas necessidades de objetivo.",
+  "sourcesNote": "As fontes reais variam por tópico, indústria e materiais acessíveis por projeto.",
+  "sources": [
+    "Indústria e relatórios de mercado",
+    "Notícias e mídia",
+    "Produto e serviço lança",
+    "Investimento, M&A e financiamento",
+    "Regulação e mudança de política",
+    "Tecnologia e mudanças de plataforma",
+    "Dados de consumo e comportamento",
+    "Sinais sociais e comunitários",
+    "Atualizações concorrentes",
+    "Conferências e jornais brancos",
+    "Dados internos e insights",
+    "Entrevistas de peritos (gama opcional)"
+  ],
+  "useLabel": "PROCESSOS DE UTILIZAÇÃO",
+  "useTitle": "Perguntas que podemos ajudar a responder.",
+  "useBadge": "Tópicos de pesquisa de exemplo",
+  "useCases": [
+    {
+      "t": "CATEGORIA TRENDS",
+      "d": "Confirme a direção principal em uma categoria ou indústria.\nCrescimento estrutural, declínio e fluxos de transição."
+    },
+    {
+      "t": "TECH & PRODUTO",
+      "d": "Capture mudanças nos padrões de tecnologia, produto e UX.\nUse como evidência para o roteiro e direção do recurso."
+    },
+    {
+      "t": "CONSUMIDORES SHIFT",
+      "d": "Resumir mudanças de consumo, comportamento e valor.\nReveja o alvo, mensagens e direção de serviço."
+    },
+    {
+      "t": "TEMAS DE CONTEÚDO",
+      "d": "Tópicos e ângulos derivados para conteúdo e marketing.\nTemporidade separada da durabilidade."
+    },
+    {
+      "t": "CIRCULAÇÃO COMPETITTIVA",
+      "d": "Contextualize os lançamentos, mensagens e recursos do concorrente.\nEntrada para resposta e diferenciação."
+    },
+    {
+      "t": "REGULAMENTO E POLÍTICA",
+      "d": "Resumir o impacto dos negócios da mudança regulatória e política.\nRisco de superfície e pontos de oportunidade."
+    },
+    {
+      "t": "PESQUISA HORIZON",
+      "d": "Analisar sinais de mudança de curto e médio prazo.\nSugerir temas e métricas para monitorar."
+    },
+    {
+      "t": "OPORTUNIDADE MAPA",
+      "d": "Documentar recursos baseados em tendências, serviços e oportunidades de conteúdo.\nConecte-se a experimentos e validação."
+    }
+  ],
+  "flowLabel": "EXEMPLO DE TRABALHO",
+  "flowTitle": "Da definição de tópico a um resumo de tendência",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINA",
+      "d": "Defina tópico de pesquisa, horizonte temporal e contexto de decisão.\nEsclareça o que precisa aprender a decidir.",
+      "examples": [
+        "Tópico",
+        "Âmbito de aplicação",
+        "Horizonte",
+        "Entregas"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "DIGITALIZAR",
+      "d": "Digitalize relatórios, notícias, lançamentos, investimentos e sinais de regulação.\nSelecione os materiais mais relevantes.",
+      "examples": [
+        "Relatórios",
+        "Notícias",
+        "Lança o",
+        "Investimento"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "AGLOMERADO",
+      "d": "Sinais relacionados ao cluster em temas.\nEstrutura padrões recorrentes e direção.",
+      "examples": [
+        "Temas",
+        "Grupos",
+        "Padrões",
+        "Estado"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "INTERPRETAR",
+      "d": "Interpretar o significado e o impacto dos temas.\nSeparar oportunidades, riscos e ignorar zonas.",
+      "examples": [
+        "Impacto",
+        "Oportunidade",
+        "Risco",
+        "Implicações"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ADMINISTRAR",
+      "d": "Entregue breve tendência e mapa do tema.\nConecte-se às discussões de roteiro, conteúdo e experiência.",
+      "examples": [
+        "Resumo de tendências",
+        "Mapa do Tema",
+        "Próximas etapas"
+      ]
+    }
+  ],
+  "reportLabel": "SAÍDA",
+  "reportTitle": "Saídas estruturadas para as decisões de estratégia, roteiro e conteúdo.",
+  "reportLead": "A composição varia de acordo com o objectivo do projecto. Abaixo estão os itens comuns.",
+  "reportMockStatus": "TREND · PROJECTO",
+  "reportMockK": "TREND RESEARCH RESUMO",
+  "reportMockT": "Temas, fluxo e implicações breves",
+  "reportItems": [
+    "Resumo Executivo",
+    "Âmbito de aplicação da investigação",
+    "Visão geral do tema",
+    "Resumo do sinal",
+    "Ver Linha do Tempo",
+    "Contexto competitivo",
+    "Áreas de oportunidade",
+    "Risco & Watchlist",
+    "Implicações",
+    "Recomendado Próximos Passos"
+  ],
+  "dashTitle": "Compartilhar temas de tendência e prioridade em uma visão.",
+  "dashLead": "Temas, estado e impacto juntos aceleram a estratégia e discussões de conteúdo.",
+  "dashNote": "A composição do tema e a classificação do estado variam de acordo com o objetivo e escopo do projeto.",
+  "dashMetrics": [
+    "Temas",
+    "Sinais",
+    "Aumento do",
+    "Prioridade"
+  ],
+  "dashFilters": [
+    "Todos",
+    "Aumento do",
+    "",
+    "Estável"
+  ],
+  "aiLabel": "SYNTESIS",
+  "aiTitle": "De muitos sinais\npara temas principais.",
+  "aiLead": "Quando notícias, relatórios, lançamentos e material social se acumulam, classificamos, resumemos e comparamos por relevância, padrão e impacto para uma revisão mais rápida.",
+  "aiExamples": [
+    "Notícias de cluster e reportar temas",
+    "Extrair padrões de sinal recorrentes",
+    "Classifique Rising / Emerging states",
+    "Contextualizar o concorrente move o",
+    "Resumir as implicações do roteiro e do conteúdo",
+    "Estrutura tendência breve e tema mapa"
+  ],
+  "aiNote": "interpretação final e prioridade são revisados com você.",
+  "delLabel": "DELIVERÁVEIS",
+  "delTitle": "O que você recebe quando o projeto completa",
+  "delLead": "Nós entregamos os itens abaixo, conforme necessário para o seu escopo.",
+  "deliverables": [
+    "Resumo de tendências",
+    "Mapa do Tema",
+    "Resumo do sinal",
+    "Ver Linha do Tempo",
+    "Oportunidade Visão geral",
+    "Risco & Watchlist",
+    "Implicações e Recomendações",
+    "Resumo da Apresentação",
+    "Guia de Monitorização (opcional)"
+  ],
+  "processLabel": "PROCESSO",
+  "processTitle": "Da definição do tópico à entrega.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCOBERTA",
+      "d": "Confirmar finalidade de pesquisa e contexto de decisão.\nEntenda se isso é para roteiro, conteúdo ou estratégia.",
+      "examples": [
+        "Objetivos",
+        "Participantes",
+        "Linha do Tempo",
+        "Restrições"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ÂMBITO DE APLICAÇÃO",
+      "d": "Defina tópico, horizonte de tempo, indústria e resultados.\nConcordo acompanhamento ou inclusão de entrevista.",
+      "examples": [
+        "Tópico",
+        "Horizonte",
+        "Âmbito de aplicação",
+        "Formato"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "INVESTIGAÇÃO",
+      "d": "Recolha e reveja os sinais e materiais relevantes.\nGravar fonte, tempo e contexto.",
+      "examples": [
+        "Relatórios",
+        "Notícias",
+        "Lança o",
+        "Investimento"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "",
+      "d": "Temas de estrutura, padrões e estados.\nImpacto e prioridade derivados.",
+      "examples": [
+        "Temas",
+        "Estado",
+        "Impacto",
+        "Prioridade"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PROJETO",
+      "d": "Projeto breve tendência e mapa temático.\nConstruir o esqueleto de descobertas-chave.",
+      "examples": [
+        "Resumo",
+        "Mapa do Tema",
+        "Linha do Tempo"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "REVISÃO",
+      "d": "Reveja os temas-chave e a interpretação em conjunto.\nAjuste lacunas, sobrecarga e viabilidade.",
+      "examples": [
+        "Feedback",
+        "Refinamento",
+        "Prioridade"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "ADMINISTRAR",
+      "d": "Entregue documentos e implicações finais.\nConecte-se ao monitoramento e experimente os próximos passos.",
+      "examples": [
+        "Resumo final",
+        "Mapa",
+        "Próximas etapas"
+      ]
+    }
+  ],
+  "scopeLabel": "NÍVEIS DE ÂMBITO DE APLICAÇÃO",
+  "scopeTitle": "Como pensar sobre a complexidade do projeto.",
+  "scopeLead": "Não é um pacote fixo. Escopo é definido por tópico, gama de indústria e profundidade.",
+  "scopes": [
+    {
+      "t": "BREVE DE TREND",
+      "items": [
+        "Um tópico ou categoria",
+        "Fontes secundárias focam",
+        "3-5 temas principais",
+        "Resumo da tendência",
+        "Implicações e prioridade"
+      ]
+    },
+    {
+      "t": "THEME & Timeline MAP",
+      "items": [
+        "Múltiplos temas e subtendências",
+        "Classificação de tempo e estado",
+        "Contexto competitivo e de lançamento",
+        "Oportunidade e resumo de risco",
+        "Resumo da apresentação opcional"
+      ]
+    },
+    {
+      "t": "PERSONALIZADOTREND RESEARCH",
+      "items": [
+        "Indústrias, regiões ou canais múltiplos",
+        "Entrevistas de especialistas incluíram",
+        "Guia de monitorização",
+        "Apresentação personalizada",
+        "BUILD e MVP ligação"
+      ]
+    }
+  ],
+  "timeLabel": "Cronologia",
+  "timeTitle": "A linha do tempo depende do escopo.",
+  "timeLead": "A duração varia de acordo com o número de tópicos, faixa de material e inclusão na entrevista.",
+  "timelines": [
+    {
+      "t": "Resumo de tendências",
+      "d": "Cerca de 1–2 semanas"
+    },
+    {
+      "t": "Linha de & Tema Mapa",
+      "d": "Cerca de 2-3 semanas"
+    },
+    {
+      "t": "Pesquisa de Tendência Personalizada",
+      "d": "Cerca de 3-4 semanas · citação personalizada"
+    }
+  ],
+  "priceLabel": "CUSTO DO PROJECTO",
+  "priceTitle": "Citado para o escopo que você precisa.",
+  "priceName": "TREND RESEARCH",
+  "priceValue": "A partir de 300.000",
+  "priceFactorsLabel": "Fatores de preços",
+  "priceFactors": [
+    "Tópico de pesquisa e faixa",
+    "Número de indústrias ou categorias",
+    "horizonte temporal e profundidade",
+    "Contexto competitivo e de lançamento",
+    "Entrevistas e especialistas",
+    "Formato disponível",
+    "Guia de monitorização",
+    "Correr linha do tempo"
+  ],
+  "priceNote": "As citações finais são confirmadas após objetivo, tópico e escopo da pesquisa.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Perguntas mais frequentes",
+  "faqs": [
+    {
+      "q": "Que indústrias ou tópicos você pode pesquisar?",
+      "a": "B2B, B2C, SaaS, comércio, conteúdo, serviços — dependendo do objetivo e materiais acessíveis. Confirmamos o ajuste antes do arranque."
+    },
+    {
+      "q": "Como é que isto é diferente do MARKET RESEARCH?",
+      "a": "TREND RESEARCH foca em sinais de mudança, temas e fluxo. Para estrutura de mercado e tamanho, ligue escopo com MARKET RESEARCH."
+    },
+    {
+      "q": "Como são as entregas?",
+      "a": "Resumo da Tendência, Mapa Temático, Resumo do Sinal — documento e mapa focados. Resumo da apresentação disponível quando necessário."
+    },
+    {
+      "q": "Isto inclui o acompanhamento contínuo?",
+      "a": "O padrão é a pesquisa e síntese ponto-em-tempo. O acompanhamento contínuo pode ser um Guia de Acompanhamento ou um âmbito separado."
+    },
+    {
+      "q": "Os movimentos dos concorrentes podem ser incluídos?",
+      "a": "Sim, o concorrente e os sinais de lançamento podem ser conectados no contexto de tendência. Para comparação profunda, link com COMPETITOR ANALYSIS."
+    },
+    {
+      "q": "Isto pode conectar-se ao BUILD ou ao MVP?",
+      "a": "Sim. Os insights de tendências podem fornecer recursos, roteiro e prioridade de conteúdo."
+    },
+    {
+      "q": "Como é tratada a confidencialidade?",
+      "a": "Os materiais são utilizados apenas dentro do âmbito acordado. NDA disponível quando necessário."
+    }
+  ],
+  "finalLabel": "Iniciar um projeto",
+  "finalTitle": "Recolha sinais de tendência.\nComece com temas.",
+  "finalLead": "Se você está revisando indústria, tópico, roteiro ou direção de conteúdo, diga-nos o que pesquisar e como você quer que as descobertas sejam estruturadas.",
+  "ctaFinalSecondary": "Ver todos INVESTIGAÇÃO →",
+  "ctaFinalSecondaryHref": "../research/"
+}

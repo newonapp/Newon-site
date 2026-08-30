@@ -1,0 +1,483 @@
+{
+  "seoTitle": "Bisnis CUSTOM PRODUCT 124; Newon",
+  "metaDescription": "Bangun produk digital kustom untuk masalah paket standar tidak dapat diselesaikan - dari framing melalui desain, implementasi, dan QA. Newon CUSTOM PRODUCT.",
+  "crumbBusiness": "BISNIS",
+  "crumbServices": "Servis",
+  "crumbSolutions": "SOLUSI",
+  "crumbHere": "CUSTOM PRODUCT",
+  "eyebrow": "CUSTOM PRODUCT",
+  "subEyebrow": "SOLUSI",
+  "headline": "Tidak dipaksa ke dalam paket.\nDibangun untuk masalah.",
+  "lead": "Kami merancang dan membangun aplikasi web kustom, alat internal, portal, dan dashboard untuk alur kerja tertentu, pengguna, dan operasi. Dari penjebakan masalah dan UX/UI melalui arsitektur, implementasi, integrasi, dan QA - ketika paket standar tidak cukup, kami memberikan satu produk koheren.",
+  "ctaPrimary": "Pencarian produk gubahan",
+  "ctaSecondary": "Lihat aliran pembangunannya.",
+  "meta": [
+    {
+      "k": "PELAYAN",
+      "v": "Produk Gubahan"
+    },
+    {
+      "k": "TERBAIK UNTUK",
+      "v": "Produk tanpa paket membangun"
+    },
+    {
+      "k": "GARIS WAKTU",
+      "v": "Tergantung pada scope"
+    },
+    {
+      "k": "HARGA",
+      "v": "Kutipan gubahan"
+    }
+  ],
+  "overviewLabel": "TINJAU",
+  "overviewTitle": "Kebutuhan jelas.\nTidak ada paket yang cocok.",
+  "overviewBody": [
+    "Pola umum seperti pemesanan, CRM, penyelidikan, dan dasbor dapat diselesaikan dengan paket. Dalam prakteknya, struktur org, alur kerja, data, perizinan, dan integrasinya jarang cocok dengan kotak standar tepatnya.",
+    "Memaksa off-the- rak alat membungkuk proses Anda. Membangun segalanya dari awal biaya terlalu banyak waktu dan uang. Apa yang Anda butuhkan adalah produk dirancang untuk masalah yang sebenarnya.",
+    "CUSTOM PRODUCTdimulai dengan mendefinisikan masalah, pengguna, dan konteks alur kerja. Kemudian kami merancang UX / UI, fitur lingkup, struktur data dan integrasi, dan memberikan implementasi, QA, dan handoff sebagai satu produk."
+  ],
+  "problemsLabel": "MASALAH",
+  "problemsTitle": "Membantu ketika Anda menghadapi situasi ini.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "PAKET FIT TAK ADA",
+      "d": "MVP, web, app, atau paket alat-pelatihan tidak sepenuhnya cocok.\nAliran kerja Anda perlu desain gubahan."
+    },
+    {
+      "n": "02",
+      "t": "GAP WORKFLOW",
+      "d": "SaaS, spreadsheet, atau proses manual memblokir pekerjaan.\nAnda memerlukan alur kerja sendiri dalam bentuk produk."
+    },
+    {
+      "n": "03",
+      "t": "MULTI- SISTEM",
+      "d": "Beberapa fitur, layar, perizinan, dan integrasi harus menjadi satu produk.\nSatu paket saja tidak cukup."
+    },
+    {
+      "n": "04",
+      "t": "TOOL INTERNAL",
+      "d": "Anda perlu operasi internal atau produk manajemen, bukan situs pemasaran publik.\nHak akses dan audit penting."
+    },
+    {
+      "n": "05",
+      "t": "INTEGRASI PERLU",
+      "d": "Anda harus menyambung ke _ _ Keeps _ _, _ _ KeepP001 _ _, pembayaran, data, atau _ _ KeeP002 _ s.\nIni membangun sistem, bukan hanya halaman."
+    },
+    {
+      "n": "06",
+      "t": "PRODUCT LONG-TERM",
+      "d": "Kau butuh sesuatu untuk operasi nyata dan ekspansi, bukan throwaway PoC.\nFitur masa depan harus dipertimbangkan."
+    }
+  ],
+  "baLabel": "SEBELUM / SETELAH",
+  "baTitle": "Perkakas yang dipaksakan vs\nProduksi yang pas",
+  "beforeLabel": "SEBELUM",
+  "afterLabel": "SETELAH",
+  "before": [
+    "Pekerjaan tersebar di SaaS, spreadsheet, dan langkah manual",
+    "Proses membungkuk ke alat bukan sebaliknya",
+    "Banyak persyaratan tetapi tidak ada lingkup atau prioritas",
+    "Integrasi, izin, dan ops menjadi kejutan terlambat"
+  ],
+  "after": [
+    "Masalah, pengguna, dan konteks workflow didefinisikan pertama",
+    "_ _ KeeP000 _ _ dan fitur scope dirancang",
+    "Implementasi, integrasi, dan QA dalam satu produk",
+    "Struktur dan doktur yang mendukung operasi dan pertumbuhan"
+  ],
+  "capsLabel": "CAPBILITIES",
+  "capsTitle": "Kami menjalankan pembuatan produk kustom\nsebagai salah satu keterlibatan terstruktur.",
+  "caps": [
+    {
+      "t": "Ada masalah.",
+      "d": "Tentukan masalah, pengguna, dan kriteria sukses.\nJelaskan mengapa produk kustom diperlukan."
+    },
+    {
+      "t": "SCOPE & ARSITEKTUR",
+      "d": "Desain lingkup fitur, data, hak akses, dan integrasinya.\nPisahkan MVP dari ekspansi."
+    },
+    {
+      "t": "UX / UI DESAIN",
+      "d": "Desain layar dan struktur informasi untuk alur kerja.\nTermasuk sistem desain bila diperlukan."
+    },
+    {
+      "t": "PEMBANGUNAN PRODUK",
+      "d": "Implement web, app, alat internal, portal, atau dashboard.\nBangun fitur inti dalam fase."
+    },
+    {
+      "t": "INTEGRASI",
+      "d": "Pembayaran impor, _ _ Keeps _ _, _ _ KeepP001 _ _, _ _ KEP002 _ s, pipa data.\nTentukan batas dengan sistem yang ada."
+    },
+    {
+      "t": "ADMIN & PERMISSION",
+      "d": "Mendesain dan membangun admin, peran, izin, catatan audit.\nMembuat operasi mungkin dari hari pertama."
+    },
+    {
+      "t": "QA & HANDOFF",
+      "d": "Memverifikasi fitur, aliran, dan integrasi.\nMenyediakan dokumen dan handoff untuk operasi dan pertumbuhan."
+    },
+    {
+      "t": "Iiterasi PATH",
+      "d": "Rencana post- peluncuran ekspansi dan perbaikan.\nHubungkan pemeliharaan dan lingkup Phase 2."
+    }
+  ],
+  "sourcesLabel": "PROYEK INPUTS",
+  "sourcesTitle": "Kami menggabungkan masukan yang diperlukan proyek Anda.",
+  "sourcesNote": "Input aktual bervariasi oleh organisasi, alur kerja, dan sistem yang dapat diakses.",
+  "sources": [
+    "Kerjaan dan deskripsi proses",
+    "Perkakas saat ini sedang dipakai",
+    "Data internal dan dokumen",
+    "API dan persyaratan integrasi",
+    "Struktur Hak dan org",
+    "Existing wireframes atau spesifikasi",
+    "Petunjuk merek dan UI",
+    "Hukum, keamanan, kepatuhan",
+    "Wawancara pengguna dan operator",
+    "Sistem legacy",
+    "Metrik sukses dan KPIs",
+    "Rencana ekspansi masa depan"
+  ],
+  "useLabel": "GUNAKAN KASES",
+  "useTitle": "Produk yang bisa kita bangun.",
+  "useBadge": "Contoh tipe build",
+  "useCases": [
+    {
+      "t": "OPERASI PORTAL",
+      "d": "Operasi internal, manajemen, persetujuan, dan meminta portal.\nKerjaan berbentuk untuk proses Anda."
+    },
+    {
+      "t": "SAAS GUBAHAN",
+      "d": "SaaS untuk grup pengguna atau alur kerja tertentu.\nBerlangganan, izin, dan termasuk admin."
+    },
+    {
+      "t": "TOOL CLIENT / PARTNER",
+      "d": "Portal untuk klien, mitra, atau vendor.\nPerintah, penyelidikan, status, berbagi dokumen."
+    },
+    {
+      "t": "DASHBOARD DATA",
+      "d": "Dashboard yang menyatukan data tersebar.\nKPI, laporkan, dan waspada struktur."
+    },
+    {
+      "t": "PRODUCT KERJA",
+      "d": "Memproduksi berpusat pada persetujuan, ulasan, tugas, status.\nDapat menghubungkan dengan otomatisasi."
+    },
+    {
+      "t": "MARKETPlace / PLATFORM",
+      "d": "Multi- user, multi- peran produk platform.\nDaftar, pencocokan, penyelesaian, admin."
+    },
+    {
+      "t": "ALAT RUAS / MOBILE",
+      "d": "Aplikasi gubahan pertama atau web.\nOffline dan sync dipertimbangkan."
+    },
+    {
+      "t": "LEGAKY REPTEMENT",
+      "d": "Ganti spreadsheet, ops manual, atau sistem warisan.\nPhased desain transisi."
+    }
+  ],
+  "flowLabel": "EXAMLE WORKFLOW",
+  "flowTitle": "Dari masalah penjebakan ke pengiriman produk",
+  "flow": [
+    {
+      "n": "01",
+      "t": "TENTUKAN",
+      "d": "Tentukan masalah, pengguna, dan kriteria sukses.\nSetuju mengapa produk kustom diperlukan.",
+      "examples": [
+        "Masalah",
+        "Pengguna",
+        "_ _ Simpan P000 _ _ s",
+        "Konstrain"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCOPE",
+      "d": "Desain lingkup fitur, UX, data, integrasinya.\nTahap Terpisah 1 dari ekspansi.",
+      "examples": [
+        "Fitur",
+        "Perangkat",
+        "Data",
+        "Integrasi"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESAIN",
+      "d": "Desain mengalir, UI, struktur informasi, izin.\nKonfirmasi layar inti dan admin.",
+      "examples": [
+        "Mengalir",
+        "UI",
+        "Peran",
+        "Admin"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "_ Jaga _ Belakang",
+      "d": "Implementasikan fitur inti dan integrasinya.\nTinjau dalam fase dengan umpan balik.",
+      "examples": [
+        "Antarmuka",
+        "Backend",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "KIRIM",
+      "d": "Menyebarkan, memverifikasi, dokumen, dan menyerahkan.\nHubungkan operasi dan jalur ekspansi.",
+      "examples": [
+        "Menyebarkan",
+        "Dokumen",
+        "Handoff",
+        "Tahap 2"
+      ]
+    }
+  ],
+  "reportLabel": "KELUARKAN",
+  "reportTitle": "Deliverables adalah produk yang dapat dioperasi dan mendukung docs.",
+  "reportLead": "Komposisi bervariasi dengan lingkup projek. Di bawah ini adalah item umum.",
+  "reportMockStatus": "PRODUK",
+  "reportMockK": "CUSTOM PRODUCTSPEC",
+  "reportMockT": "Scope, modul, integration, milestones",
+  "reportItems": [
+    "Masalah & Tujuan",
+    "Ringkasan Scope",
+    "Peta & Peran Pengguna",
+    "Daftar Fitur",
+    "UX / UI Tinjau",
+    "Integrasi",
+    "admin & Hak",
+    "Rencana Milestone",
+    "Checklist QA",
+    "Catatan Handoff"
+  ],
+  "dashTitle": "Berbagi scope dan struktur modul pada satu tampilan.",
+  "dashLead": "Fitur, integrasinya, dan bentuk bersama perjanjian lingkup kecepatan dan diskusi membangun.",
+  "dashNote": "Komposisi modul dan pembagian fase bervariasi dengan tujuan dan anggaran proyek.",
+  "dashMetrics": [
+    "Modul",
+    "Integrasi",
+    "Fase",
+    "Milestones"
+  ],
+  "dashFilters": [
+    "Semua",
+    "Inti",
+    "Admin",
+    "Tahap 2"
+  ],
+  "aiLabel": "ACELERASI",
+  "aiTitle": "Repetisi otomatis.\nFokus pada desain dan membangun.",
+  "aiLead": "Konstrukturisasi, draft aliran, skala doc, dan checklist QA dapat dibantu oleh AI- - sementara masyarakat fokus pada arsitektur, UX, dan implementasi inti.",
+  "aiExamples": [
+    "Kebutuhan struktur dan catatan pertemuan",
+    "Draft mengalir dan daftar layar",
+    "Mengatur API dan model data",
+    "QA dan checklist tes",
+    "Ops dan handoff rancangan doc",
+    "Bandingkan lingkup dan split fase"
+  ],
+  "aiNote": "Lingkup terakhir, desain, dan keputusan berkualitas dikonfirmasi dengan tim proyek Anda.",
+  "delLabel": "TERKIRIM",
+  "delTitle": "Apa yang Anda terima ketika proyek menyelesaikan",
+  "delLead": "Kami memberikan item di bawah ini yang diperlukan untuk lingkup Anda.",
+  "deliverables": [
+    "Produk Gubahan (Web / App / Portal)",
+    "Konsol admin",
+    "UX / UI Design Berkas",
+    "Dokumentasi Teknis",
+    "_ _ KeeP000 _ _ & Integrasi Docs",
+    "Setup Penyetelan",
+    "QA Laporkan",
+    "Handoff & Panduan Operasi",
+    "Phase 2 Roadmap (opsional)"
+  ],
+  "processLabel": "PROSES",
+  "processTitle": "Dari masalah framing untuk handoff.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOSANGAT",
+      "d": "Konfirmasi masalah, pengguna, proses saat ini, kendala.\nMemahami kriteria sukses dan struktur keputusan.",
+      "examples": [
+        "Masalah",
+        "Pengguna",
+        "Saat ini",
+        "_ _ Simpan P000 _ _ s"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCOPE",
+      "d": "Definisikan fitur, layar, data, lingkup integrasi.\nAgree Tahap 1 / 2, timeline, dan anggaran.",
+      "examples": [
+        "Fitur",
+        "Scope",
+        "Integrasi",
+        "Garis Waktu"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESAIN",
+      "d": "Desain mengalir, UI, struktur informasi, izin.\nKonfirmasi layar inti dan struktur admin.",
+      "examples": [
+        "Mengalir",
+        "UI",
+        "Admin",
+        "Ulasan"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "_ Jaga _ Belakang",
+      "d": "Lampiran antarmuka, backend, integration.\nDemo dan ulasan dalam fase.",
+      "examples": [
+        "Inti",
+        "API",
+        "Integrasi",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "UJI",
+      "d": "Verifikasi fitur, arus, izin, integrasi.\nPeriksa skenario operasional.",
+      "examples": [
+        "QA",
+        "UAT",
+        "Perbaikan",
+        "Sinyal mati"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "MENYEBARKAN",
+      "d": "Siapkan lingkungan dan lepaskan.\nKonfirmasikan jalan pemantauan dan rollback.",
+      "examples": [
+        "Pementasan",
+        "Prod",
+        "Akses",
+        "Monitor"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "HANDOFF",
+      "d": "Dokumen, operasi panduan, dan serahkan.\nHubungkan ekspansi dan jalur pemeliharaan.",
+      "examples": [
+        "Dokumen",
+        "Latihan",
+        "Dukung",
+        "Tahap 2"
+      ]
+    }
+  ],
+  "scopeLabel": "LEVELS SCOPE",
+  "scopeTitle": "Bagaimana untuk berpikir tentang proyek kompleksitas.",
+  "scopeLead": "Bukan paket tetap. Scope diatur oleh ukuran masalah, integrasi, dan izin kompleksitas.",
+  "scopes": [
+    {
+      "t": "PRODUK FOKUS",
+      "items": [
+        "Masalah tunggal atau alur kerja",
+        "Pengguna dan peran",
+        "terbatas Layar inti dan admin",
+        "1-2 integration dasar",
+        "Tahap 1 fokus peluncuran"
+      ]
+    },
+    {
+      "t": "FULL custom BUILD",
+      "items": [
+        "Multiple modul, peran, izin",
+        "Ubahan lengkap UX/UI",
+        "Struktur data multi- integrasi",
+        "Fitur operasi dan audit",
+        "Docs dan handoff disertakan"
+      ]
+    },
+    {
+      "t": "BUILD PLATFORM",
+      "items": [
+        "Platform atau struktur pasar",
+        "Multi- penyewa, penyelesaian, admin",
+        "Kompleks link API dan warisan",
+        "Ekspansi dan desain Phase 2",
+        "panjang-term ops dan link pemeliharaan"
+      ]
+    }
+  ],
+  "timeLabel": "GARIS WAKTU",
+  "timeTitle": "Waktu tergantung pada jangkauan.",
+  "timeLead": "Durasi bervariasi dengan jumlah fitur, integrasinya, kedalaman desain, dan kecepatan keputusan.",
+  "timelines": [
+    {
+      "t": "Produk Fokus",
+      "d": "Sekitar 4-8 minggu"
+    },
+    {
+      "t": "Build Ubahan Penuh",
+      "d": "Sekitar 8-16 minggu"
+    },
+    {
+      "t": "Build Platform",
+      "d": "Sekitar 12 minggu"
+    }
+  ],
+  "priceLabel": "PROYEK COST",
+  "priceTitle": "Kutipan per proyek.",
+  "priceName": "CUSTOM PRODUCT",
+  "priceValue": "Kutipan gubahan",
+  "priceFactorsLabel": "Faktor harga",
+  "priceFactors": [
+    "Scope - fitur, layar, modul",
+    "Kompleksitas - data, izin, logika",
+    "Timeline - jadwal dan sumber daya",
+    "Integrasi - API, warisan, pembayaran",
+    "Kedalaman desain - UX/UI jangkauan",
+    "Tipe platform - web, app, Portal",
+    "Keterlibatan tim - keputusan, UAT",
+    "Post- launch - pemeliharaan, ekspansi"
+  ],
+  "priceNote": "Kami meninjau Scope / Kompleksitas / Timeline / Integrasi, lalu memberikan kutipan. Tidak ada harga menu tetap.",
+  "faqLabel": "PSD",
+  "faqTitle": "Pertanyaan yang sering ditanyakan",
+  "faqs": [
+    {
+      "q": "Apa bedanya ini dengan MVP, web, atau paket aplikasi?",
+      "a": "Paket ditentukan-lingkup layanan standar. CUSTOM PRODUCT adalah desain kustom dan membangun untuk org, alur kerja, dan kebutuhan integrasi."
+    },
+    {
+      "q": "Apa bedanya ini dengan label putih?",
+      "a": "White- label adapts sebuah dasar validasi untuk merek Anda dan modul. CUSTOM PRODUCT merancang dan membangun untuk masalah dari awal."
+    },
+    {
+      "q": "Bagaimana harganya?",
+      "a": "Setelah meninjau tujuan, lingkup, kompleksitas, timeline, dan integration - sering oleh fase."
+    },
+    {
+      "q": "Apakah desain termasuk?",
+      "a": "UX/UI desain dapat disertakan dalam lingkup. Panduan merek atau desain yang ada dapat dipakai ketika tersedia."
+    },
+    {
+      "q": "Dapatkah Anda mengintegrasikan dengan sistem yang ada?",
+      "a": "Ya. API, data, SSO, pembayaran, ERP / CRM, dan kebutuhan integrasi lainnya dapat dipindai dan dirancang."
+    },
+    {
+      "q": "Dapatkah Anda mendukung pemeliharaan posting-peluncuran?",
+      "a": "Ya. Phase 2, fitur ekspansi, dan dukungan operasional dapat terus di bawah perjanjian terpisah."
+    },
+    {
+      "q": "Bagaimana kerahasiaan ditangani?",
+      "a": "Bahan hanya digunakan dalam lingkup yang disepakati. NDA tersedia ketika diperlukan."
+    }
+  ],
+  "finalLabel": "MULAI SUATU PROJEK",
+  "finalTitle": "Mulailah dengan masalah,\nbukan paketnya.",
+  "finalLead": "Jika Anda memiliki masalah alur kerja, pengguna, dan kebutuhan integrasi, beritahu kami apa yang Anda coba pecahkan. Kami akan mengkonfirmasi lingkup produk custom dan membangun pendekatan bersama-sama.",
+  "ctaFinalSecondary": "Lihat semua SOLUTIONS",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

@@ -1,0 +1,483 @@
+{
+  "seoTitle": "PRODUCT LAUNCH | Newon Geschäft",
+  "metaDescription": "Verbinden Sie Idee mit Produkt, Landung und Startbereitschaft in einer Linie - Strategie, Design, Build und Checkliste. Newon PRODUCT LAUNCH.",
+  "crumbBusiness": "UNTERNEHMEN",
+  "crumbServices": "DIENSTLEISTUNGEN",
+  "crumbSolutions": "LÖSUNGEN",
+  "crumbHere": "PRODUCT LAUNCH",
+  "eyebrow": "PRODUCT LAUNCH",
+  "subEyebrow": "LÖSUNGEN",
+  "headline": "Sie haben die Idee.\nDer Start ist immer noch verstreut.",
+  "lead": "Produktdefinition, UX/UI, MVP und Landing Build, Deployment und Launch Checkliste - wir verbinden das, was Sie brauchen, von der Idee bis zur Veröffentlichung in einem Projekt. Nicht separate Pakete zusammengenäht, sondern ein Flow für Ihr Startziel.",
+  "ctaPrimary": "Anfrage zum Produktstart",
+  "ctaSecondary": "Siehe Startfluss ↓",
+  "meta": [
+    {
+      "k": "DIENST",
+      "v": "Produkteinführung"
+    },
+    {
+      "k": "BESTES",
+      "v": "Idee zum Starten von End-to-End"
+    },
+    {
+      "k": "TIMELIN",
+      "v": "Abhängig vom Umfang"
+    },
+    {
+      "k": "PREIS",
+      "v": "Benutzerdefiniertes Angebot"
+    }
+  ],
+  "overviewLabel": "ÜBERSICHT",
+  "overviewTitle": "Stücke existieren.\nStartbereitschaft nicht.",
+  "overviewBody": [
+    "Die Einführung eines neuen Dienstes, einer neuen Funktion oder Marke erfordert viele bewegliche Teile - Produktdefinition, Design, Entwicklung, Landung, Domain, Zahlungen, Analysen, QA und Go-Live-Timing. Sie verteilen sich leicht über Teams, Anbieter und Pakete.",
+    "Das Erstellen nur einer MVP oder nur einer Landing Page erreicht selten \"Ready to Ship\". Ohne eine klare Sicht auf Priorität und Lücken, Zeitplan und Qualität wackeln.",
+    "PRODUCT LAUNCH definiert zuerst das Startziel und verbindet dann Strategie, Design, Build und Startvorbereitung in einem Fluss - Produkt, Landung, wesentliche Integrationen und Checkliste, die auf einen versandbaren Zustand ausgerichtet sind."
+  ],
+  "problemsLabel": "PROBLEM",
+  "problemsTitle": "Hilfreich, wenn Sie sich diesen Situationen stellen.",
+  "problems": [
+    {
+      "n": "01 01",
+      "t": "KATTERIERTE LAUNCH",
+      "d": "Produkt, Landung, Branding und Deployment laufen auf getrennten Tracks.\nGo-live Daten nicht übereinstimmen."
+    },
+    {
+      "n": "02",
+      "t": "IDATE DES SCHIFFS",
+      "d": "Sie haben eine Idee, aber kämpfen MVP zu verbinden, Landung und Startvorbereitung.\nSie brauchen einen Partner von Anfang bis Schiff."
+    },
+    {
+      "n": "03",
+      "t": "FEHLENDE KONTROLLE",
+      "d": "Funktionen sind fast fertig, aber Domain, Zahlungen, Analysen, SEO oder QA fehlen.\n\"Ready to Launch\" ist nicht definiert."
+    },
+    {
+      "n": "04",
+      "t": "FIRST RELEACE",
+      "d": "Sie bereiten eine erste Produkt-, Marken- oder Hauptfunktionsversion vor.\nSie brauchen schnell eine Marktreaktion."
+    },
+    {
+      "n": "05",
+      "t": "MULTI-URFACE",
+      "d": "Produkt + Landung + Onboarding + Admin sind erforderlich.\nEin einzelnes BUILD-Paket reicht nicht aus."
+    },
+    {
+      "n": "06",
+      "t": "DEADLAGELAUNCH",
+      "d": "Sie müssen für den Demo-Tag, Investorentreffen, Veranstaltungen oder Marketingtermine starten.\nPriorität und Anwendungsbereich erfordern eine enge Koordinierung."
+    }
+  ],
+  "baLabel": "VOR / NACH",
+  "baTitle": "Gestreute Prep vs.\nverbundener Start",
+  "beforeLabel": "VOR",
+  "afterLabel": "NACH",
+  "before": [
+    "MVP, Landung, Design und Bereitstellung laufen separat",
+    "Das Wesentliche vor dem Start fehlt - Domain, Zahlungen, Analysen",
+    "Zeitplan, Umfang und Priorität unterscheiden sich je nach Team",
+    "Kein Pfad von Go-Live zur Feedbackschleife"
+  ],
+  "after": [
+    "Startziel und Umfang definiert erste",
+    "Strategie → Design → Build → Startvorbereitung in einem Fluss",
+    "Produkt + Landung + Checkliste ausgerichtet",
+    "Verbesserung und Messung nach dem Start verbunden"
+  ],
+  "capsLabel": "KAPAZITÄTEN",
+  "capsTitle": "Wir verbinden die Startbedürfnisse von\nin einem Projekt.",
+  "caps": [
+    {
+      "t": "LAUNCHZIELE",
+      "d": "Definieren Sie Startziel, Zielbenutzer und Erfolgskriterien.\nKlären Sie, welche Schiffe und wann."
+    },
+    {
+      "t": "UMFANG & STRATEGIE",
+      "d": "Frame MVP Umfang, Landerolle und Must-Have-Funktionen.\nSeparate Phase 1 von späterer Expansion."
+    },
+    {
+      "t": "UX/UI-BEZEICHNUNG",
+      "d": "Design Produkt, Landung und Onboarding Erfahrung.\nVerbinden Sie Marke und Botschaft konsequent."
+    },
+    {
+      "t": "PRODUKT BUILD",
+      "d": "Implementieren Sie Kernfunktionen, MVP und Adminoberflächen.\nFügen Sie erforderliche APIs und Integrationen hinzu."
+    },
+    {
+      "t": "ANLANDUNG UND MESSAGE",
+      "d": "Build Start Landing, Intro und Conversion Seiten.\nVerbinden Sie CTA, Abfrage- und Anmeldeflüsse."
+    },
+    {
+      "t": "Integrierungen",
+      "d": "Richten Sie Zahlungen, Analysen, E-Mail, Auth und andere Launch Essentials ein.\nAufbau einer grundlegenden operativen Struktur."
+    },
+    {
+      "t": "LAUNCHBEDIENUNG",
+      "d": "Überprüfen Sie Domäne, SEO, QA, Überwachung, Rollback auf einer Start-Checkliste.\nBestätigen Sie Shippable State."
+    },
+    {
+      "t": "POST-LAUNCH-LOOP",
+      "d": "Verbinden Sie Feedback, Metriken und Verbesserungen nach dem Start.\nSchlagen Sie den nächsten Iterationspfad vor."
+    }
+  ],
+  "sourcesLabel": "PROJEKTINFORMATIONEN",
+  "sourcesTitle": "Wir kombinieren die Inputs, die Ihr Startprojekt benötigt.",
+  "sourcesNote": "Die tatsächlichen Inputs variieren je nach Ideenreife, Assets und Timeline.",
+  "sources": [
+    "Idee, Hypothese, Ziele",
+    "Definition des Zielbenutzers",
+    "Wettbewerbs- und Marktkontext",
+    "Bestehende Wireframes oder Spezifikationen",
+    "Brand und Messaging",
+    "Priorität",
+    "Domain und Infrastruktur",
+    "Zahlung und rechtliche Anforderungen",
+    "Analyse- und Marketingplan",
+    "Demo oder Investor Zeitplan",
+    "Interne Stakeholder",
+    "Nach dem Start KPIs"
+  ],
+  "useLabel": "VERWENDUNGSFÄLLE",
+  "useTitle": "Launches können wir vorbereiten.",
+  "useBadge": "Beispiele für Startarten",
+  "useCases": [
+    {
+      "t": "NEUES PRODUKT MVP",
+      "d": "Neuer Service MVP + Landung + Startvorbereitung.\nVerbindet mit den ersten Benutzern."
+    },
+    {
+      "t": "FEATURE LAUNCH",
+      "d": "Veröffentlichen Sie ein neues Feature oder Modul für ein bestehendes Produkt.\nInklusive Onboarding, Landung und Ankündigungsfluss."
+    },
+    {
+      "t": "REBRANDLAUNCH",
+      "d": "Rebranding mit Produkt und gemeinsamer Landung.\nKonsequente Botschaft und Erfahrung."
+    },
+    {
+      "t": "BETA → ÖFFENTLICH",
+      "d": "Wechseln Sie von der Beta zum öffentlichen Start.\nCheckliste, QA und Überwachung vorhanden."
+    },
+    {
+      "t": "INVESTOR / DEMO-TAG",
+      "d": "Starten Sie die Vorbereitung für Demo- oder Investorentreffen.\nDemo-ready und Shippable Zustand."
+    },
+    {
+      "t": "WAITLIST LIVE",
+      "d": "Start nach Warteliste oder Vorregistrierung.\nKonvertierung, Onboarding und Zahlung verbinden."
+    },
+    {
+      "t": "Multikanal",
+      "d": "Web + Landung + Admin + Anfrage in einem Projekt.\nIn einem Engagement ausgerichtet."
+    },
+    {
+      "t": "LOKAL / GLOBAL",
+      "d": "Nationale oder globale Startvorbereitung.\nSprache, Zahlung und Nachrichtenumfang koordiniert."
+    }
+  ],
+  "flowLabel": "BEISPIEL WORKFLOW",
+  "flowTitle": "Von der Idee,",
+  "flow": [
+    {
+      "n": "01 01",
+      "t": "IDEE",
+      "d": "zu starten Klären Sie Ziele, Hypothesen, Benutzer und Erfolgskriterien.\nDefinieren Sie, warum Sie jetzt starten.",
+      "examples": [
+        "Ziele",
+        "Hypothese",
+        "Nutzer",
+        "KPI"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRATEGIE",
+      "d": "Definieren Sie MVP Umfang, Landerolle und Zeitleiste.\nSeparates Must-Have von später.",
+      "examples": [
+        "Anwendungsbereich",
+        "Priorität",
+        "Zeitleiste",
+        "Risiko"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "BEZEICHNUNG",
+      "d": "Designprodukt, Landung und Onboarding UX/UI.\nVerbinden Sie Marke und Botschaft.",
+      "examples": [
+        "Flüsse",
+        "UI",
+        "Landung",
+        "Überprüfung"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BAU",
+      "d": "Implementieren Sie MVP, Landung und Integrationen.\nReview in Phasen mit Demos.",
+      "examples": [
+        "Produkt",
+        "Landung",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "GRUND",
+      "d": "Bereitstellen, Checkliste ausführen und live gehen.\nBestätigen Sie Überwachungs- und Rollback-Pfade.",
+      "examples": [
+        "Einsatz",
+        "Checkliste",
+        "Lebend",
+        "Überwachung"
+      ]
+    }
+  ],
+  "reportLabel": "AUSGANGSLEISTUNG",
+  "reportTitle": "Deliverables sind ein versandfähiges Produkt und ein startbereiter Zustand.",
+  "reportLead": "Die Zusammensetzung variiert je nach Projektumfang. Unten sind gemeinsame Elemente.",
+  "reportMockStatus": "START · PLAN",
+  "reportMockK": "PRODUCT LAUNCHPLAN",
+  "reportMockT": "Anwendungsbereich, Timeline, Assets, Checklistenzusammenfassung",
+  "reportItems": [
+    "Startziele",
+    "Umfang Zusammenfassung",
+    "Mvp Feature List",
+    "Landeplan",
+    "Designvermögenswerte",
+    "Integrationsliste",
+    "Start-Checkliste",
+    "QA Zusammenfassung",
+    "Go-Live Plan",
+    "Post-Launch Notes"
+  ],
+  "dashTitle": "Startbereitschaft auf einer Ansicht teilen.",
+  "dashLead": "Phasen, Assets und Checkliste zusammen beschleunigen Startdiskussionen und Zeitplananpassung.",
+  "dashNote": "Checkliste und Bühnenzusammensetzung variieren je nach Projektziel und Zeitplan.",
+  "dashMetrics": [
+    "Phasen",
+    "Vermögenswerte",
+    "Fertig",
+    "Blockierer"
+  ],
+  "dashFilters": [
+    "Alle",
+    "Produkt",
+    "Landung",
+    "Ops"
+  ],
+  "aiLabel": "BESCHLUSS",
+  "aiTitle": "Schnellere Vorbereitung.\nStärkere Startqualität.",
+  "aiLead": "Umfangsstrukturierung, Checklistenentwürfe, Kopier- und Doc-Gerüst, QA-Listen - AI-unterstützt für Geschwindigkeit, während sich die Leute auf Strategie, Design und Kernaufbau konzentrieren.",
+  "aiExamples": [
+    "Entwurf des Startumfangs und der Checkliste",
+    "Struktur Landung und Nachricht",
+    "Organisation der MVP-Funktionsliste",
+    "QA und Go-Live-Checklisten",
+    "Vergleichen Sie Timeline und Meilensteine",
+    "Design nach dem Launch KPI"
+  ],
+  "aiNote": "Endgültiger Umfang, Qualität und Go/No-go Entscheidungen werden mit Ihrem Projektteam bestätigt.",
+  "delLabel": "LIEFERBARE",
+  "delTitle": "Was Sie erhalten, wenn das Projekt",
+  "delLead": "abschließt Wir liefern die folgenden Artikel nach Bedarf für Ihren Umfang.",
+  "deliverables": [
+    "MVP / Kernprodukt",
+    "Startlandung",
+    "UX / UI Designdateien",
+    "Start-Checkliste",
+    "Go-Live Plan",
+    "Integrationsaufbau",
+    "QA Bericht",
+    "Analytics & Tracking Einrichtung",
+    "Verbesserungsplan nach dem Start"
+  ],
+  "processLabel": "PROZESS",
+  "processTitle": "Vom Ideenrahmen bis zur öffentlichen Veröffentlichung.",
+  "process": [
+    {
+      "n": "01 01",
+      "t": "ENTWICKLUNG",
+      "d": "Bestätigen Sie Idee, Ziele, Benutzer, Zeitleiste, Einschränkungen.\nDefinieren Sie Erfolgskriterien für den Start.",
+      "examples": [
+        "Ziele",
+        "Nutzer",
+        "Zeitleiste",
+        "KPI"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRATEGIE",
+      "d": "Setzen Sie MVP, Landung, Integrationsumfang und Priorität.\nPhase 1 Startbereich vereinbaren.",
+      "examples": [
+        "Anwendungsbereich",
+        "Priorität",
+        "Risiko",
+        "Zeitleiste"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "BEZEICHNUNG",
+      "d": "Designprodukt, Landung, Onboarding UX/UI.\nBestätigen Sie Kernbildschirme und Nachricht.",
+      "examples": [
+        "Flüsse",
+        "UI",
+        "Landung",
+        "Überprüfung"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BAU",
+      "d": "Implementieren Sie MVP, Landung, wesentliche Integrationen.\nDemo und Review in Phasen.",
+      "examples": [
+        "Produkt",
+        "Landung",
+        "Integrationen",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "VORSCHRIFTEN",
+      "d": "Checkliste, QA, Staging, Monitoring.\nBestätige die Go-Live-Bereitschaft.",
+      "examples": [
+        "Checkliste",
+        "Stufung",
+        "UAT",
+        "Fixes"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "GRUND",
+      "d": "Bereitstellung, Veröffentlichung, Erstüberwachung.\nBestätigen Sie den Issue Response Path.",
+      "examples": [
+        "Einsatz",
+        "Lebend",
+        "Überwachung",
+        "Unterstützung"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "VERBESSERUNG",
+      "d": "Überprüfen Sie frühes Feedback und Metriken.\nVerbinden Sie die nächsten Iterationselemente.",
+      "examples": [
+        "Metriken",
+        "Feedback",
+        "Fixes",
+        "Fahrplan"
+      ]
+    }
+  ],
+  "scopeLabel": "ANWENDUNGSBEREICH",
+  "scopeTitle": "Wie man über die Komplexität von Projekten denkt.",
+  "scopeLead": "Kein festes Paket. Der Umfang wird nach Startziel, Produkttiefe und Lande- / Integrationsbereich festgelegt.",
+  "scopes": [
+    {
+      "t": "MAGERSTART",
+      "items": [
+        "Core MVP + Landung",
+        "Grundlegende UX/UI",
+        "1–2 wesentliche Integrationen",
+        "Start-Checkliste",
+        "Go-live Unterstützung"
+      ]
+    },
+    {
+      "t": "VOLLSTÄNDIGER LAUNCH",
+      "items": [
+        "MVP + Landung + Onboarding",
+        "Marken- und Nachrichtenausrichtung",
+        "Payment, Analytics, Auth Integration",
+        "QA, Monitoring, SEO",
+        "Verbesserung nach dem Start Plan"
+      ]
+    },
+    {
+      "t": "KUNDENLAUNCH",
+      "items": [
+        "Mehrere Kanäle, Sprachen, Rollen",
+        "Komplexe Integrationen und Ops-Struktur",
+        "Demo, Investor oder Event-Frist passen",
+        "Benutzerdefinierte Checkliste und Runbook",
+        "Langfrist-Iterationsdesign"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELIN",
+  "timeTitle": "verlinken Timeline hängt vom Umfang ab.",
+  "timeLead": "Dauer variiert je nach MVP Tiefe, Designbereich, Integrationen und Entscheidungsgeschwindigkeit.",
+  "timelines": [
+    {
+      "t": "Magerstart",
+      "d": "Etwa 4-8 Wochen · variiert"
+    },
+    {
+      "t": "Vollständiger Start",
+      "d": "Etwa 8-14 Wochen · variiert"
+    },
+    {
+      "t": "Benutzerdefinierte Einführung",
+      "d": "Über 10 Wochen · benutzerdefinierte"
+    }
+  ],
+  "priceLabel": "PROJEKTKOSTEN",
+  "priceTitle": "Pro Projekt angegeben.",
+  "priceName": "PRODUCT LAUNCH",
+  "priceValue": "Benutzerdefiniertes Angebot",
+  "priceFactorsLabel": "Preisfaktoren",
+  "priceFactors": [
+    "Anwendungsbereich — MVP, Landung, Integrationsbereich",
+    "Komplexität — Features, Daten, Berechtigungen",
+    "Zeitplan und Mittelausstattung",
+    "Auslegungstiefe — Bereich UX/UI",
+    "Integrationen — Payment, Analytics, auth",
+    "Startflächen — Web, App, Administrator",
+    "Beteiligung des Teams — Entscheidungen, UAT",
+    "Post-Launch – Verbesserung und Ops unterstützen"
+  ],
+  "priceNote": "Wir überprüfen Umfang / Komplexität / Timeline / Integration und geben dann ein Angebot ab. Keine festen Menüpreise.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faqs": [
+    {
+      "q": "Wie unterscheidet sich das von MVP oder Landing Packages?",
+      "a": "MVP und LANDING sind BUILD-Pakete mit definiertem Umfang. PRODUCT LAUNCH verbindet Strategie, Design, Produkt, Landung und Startvorbereitung für ein Go-Live-Ziel in einem Projekt."
+    },
+    {
+      "q": "Wie unterscheidet sich das von CUSTOM PRODUCT?",
+      "a": "CUSTOM PRODUCT konzentriert sich auf die Entwicklung eines maßgeschneiderten Produkts. PRODUCT LAUNCH konzentriert sich auf den vollständigen Ideenfluss, einschließlich Landung, Checkliste und Go-Live."
+    },
+    {
+      "q": "Wie wird die Preisgestaltung festgelegt?",
+      "a": "Nach der Überprüfung von Startziel, Umfang, Komplexität, Zeitleiste und Integrationen - oft nach Phasen."
+    },
+    {
+      "q": "Sind Design und Entwicklung beides inklusive?",
+      "a": "UX/UI Design und Build können in den Umfang einbezogen werden. Erforderliche Flächen (Produkt, Landung, Admin) werden gemeinsam definiert."
+    },
+    {
+      "q": "Was steht auf der Start-Checkliste?",
+      "a": "Domäne, SEO, QA, Analysen, Zahlungen, Überwachung, Rollback - angepasst an Ihr Projekt."
+    },
+    {
+      "q": "Können Sie die Verbesserung nach dem Start unterstützen?",
+      "a": "Ja. Iteration und Funktionserweiterung durch frühes Feedback und Metriken können unter separater Vereinbarung fortgesetzt werden."
+    },
+    {
+      "q": "Wie wird mit Vertraulichkeit umgegangen?",
+      "a": "Materialien werden nur im vereinbarten Umfang verwendet. NDA bei Bedarf verfügbar."
+    }
+  ],
+  "finalLabel": "START A PROJEKT",
+  "finalTitle": "Connect Idea zum Launch\nIn einer Linie.",
+  "finalLead": "Wenn Sie ein Produkt, ein Feature oder eine Markeneinführung vorbereiten, teilen Sie uns Ihr Ziel, Ihren Umfang und Ihren Zeitplan mit. Wir werden den Weg gemeinsam bestätigen.",
+  "ctaFinalSecondary": "Alle Lösungen ansehen",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

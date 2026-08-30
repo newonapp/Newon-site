@@ -1,0 +1,672 @@
+{
+  "build": {
+    "crumbBusiness": "Business",
+    "otherTitle": "OTHER BUSINESS SERVICES",
+    "ctaEyebrow": "HAVE A PROJECT?",
+    "ctaTitle": "If you have something to build, tell us.",
+    "ctaLead": "Even at the idea stage. We start by clarifying the scope you need.",
+    "ctaBtn": "Project inquiry →",
+    "servicesLabel": "Services & pricing",
+    "processLabel": "PROCESS",
+    "pricingLabel": "PRICING",
+    "faqLabel": "FAQ",
+    "pricingNoteDefault": "Final quotes vary by features, page count, timeline, and project scope.",
+    "quoteCta": "Request a quote →",
+    "whatWeBuild": "What we build",
+    "recommendedFor": "Recommended for",
+    "included": "Included",
+    "deliverables": "Deliverables",
+    "timeline": "Estimated timeline",
+    "from": "from",
+    "startingAt": "",
+    "comingSoon": "Coming soon",
+    "comingSoonLead": "This service detail will be available shortly.",
+    "detailCta": "View details →",
+    "soonBtn": "Coming soon",
+    "seoTitle": "BUILD | Newon Business",
+    "metaDescription": "Newon BUILD — MVP, website, landing page, and app prototype. Design and ship products people can actually use.",
+    "eyebrow": "NEWON BUSINESS · BUILD",
+    "headline": "We turn ideas into\nreal products.",
+    "lead": "From early ideas to MVP, website, landing page, and app prototype — we design and implement products you can actually use.",
+    "ctaPrimary": "Start a project →",
+    "ctaSecondary": "See scope ↓",
+    "heroIndex": [
+      "01 MVP",
+      "02 WEBSITE",
+      "03 LANDING",
+      "04 APP"
+    ],
+    "layout": "build",
+    "services": [
+      {
+        "title": "MVP DEVELOPMENT",
+        "href": "../mvp/",
+        "summary": "Core-feature MVPs built to validate ideas quickly.",
+        "what": "A shippable MVP focused on essential flows and features.",
+        "for": "Teams that need fast market and user signal.",
+        "included": "Scope · key screens · core build · responsive QA",
+        "deliverables": "Deployable MVP, short ops guide",
+        "timeline": "Typically 3–6 weeks"
+      },
+      {
+        "title": "WEBSITE",
+        "href": "../web/",
+        "summary": "Responsive websites for companies, brands, and products.",
+        "what": "A responsive site that explains brand and service clearly.",
+        "for": "Companies needing an official or product website.",
+        "included": "IA · UI · responsive build · basic SEO setup",
+        "deliverables": "Live site, source/assets, edit guide",
+        "timeline": "Typically 2–5 weeks"
+      },
+      {
+        "title": "LANDING PAGE",
+        "href": "../landing/",
+        "summary": "High-quality landings for launch and conversion.",
+        "what": "Conversion-focused pages for launch, waitlist, or campaigns.",
+        "for": "Product launches, pre-registration, promotions.",
+        "included": "Messaging · section design · build · analytics guidance",
+        "deliverables": "Landing page, assets, publish checklist",
+        "timeline": "Typically 1–2 weeks"
+      },
+      {
+        "title": "APP PROTOTYPE",
+        "href": "../app/",
+        "summary": "App ideas expressed as real screens and flows.",
+        "what": "Interactive prototypes of primary screens and flows.",
+        "for": "Teams validating before investment or full development.",
+        "included": "Flow · key screens · interaction · handoff notes",
+        "deliverables": "Prototype link/build, screen summary",
+        "timeline": "Typically 2–4 weeks"
+      }
+    ],
+    "process": [
+      {
+        "n": "01",
+        "t": "DISCOVER",
+        "d": "Goals and requirements"
+      },
+      {
+        "n": "02",
+        "t": "DEFINE",
+        "d": "Features and structure"
+      },
+      {
+        "n": "03",
+        "t": "DESIGN",
+        "d": "UI/UX and screens"
+      },
+      {
+        "n": "04",
+        "t": "BUILD",
+        "d": "Product implementation"
+      },
+      {
+        "n": "05",
+        "t": "TEST",
+        "d": "Function and responsive QA"
+      },
+      {
+        "n": "06",
+        "t": "LAUNCH",
+        "d": "Deploy and handoff"
+      }
+    ],
+    "pricing": [
+      {
+        "name": "LANDING PAGE",
+        "price": "From ₩400,000",
+        "svc": 2
+      },
+      {
+        "name": "WEBSITE",
+        "price": "From ₩700,000",
+        "svc": 1
+      },
+      {
+        "name": "MVP",
+        "price": "From ₩1,000,000",
+        "svc": 0
+      },
+      {
+        "name": "APP PROTOTYPE",
+        "price": "From ₩500,000",
+        "svc": 3
+      }
+    ],
+    "pricingNote": "Final quotes vary by features, page count, timeline, and scope.",
+    "faq": [
+      {
+        "q": "How long does a project take?",
+        "a": "Landings typically 1–2 weeks, websites 2–5 weeks, MVPs about 3–6 weeks depending on scope. We confirm a schedule before kickoff."
+      },
+      {
+        "q": "How many revision rounds are included?",
+        "a": "Revisions happen within agreed rounds per stage. Out-of-scope changes affect timeline and quote."
+      },
+      {
+        "q": "Can you improve an existing project?",
+        "a": "Yes. We review the current state and goals, then propose improvement scope and priorities."
+      },
+      {
+        "q": "Do you offer maintenance?",
+        "a": "Post-launch ops and small improvements can be arranged as maintenance or a follow-up project."
+      },
+      {
+        "q": "How are deliverables handed off?",
+        "a": "You receive a live URL, source/assets, and a short operating guide."
+      }
+    ]
+  },
+  "automation": {
+    "crumbBusiness": "Business",
+    "otherTitle": "OTHER BUSINESS SERVICES",
+    "ctaEyebrow": "HAVE A PROJECT?",
+    "ctaTitle": "If you have something to build, tell us.",
+    "ctaLead": "Even at the idea stage. We start by clarifying the scope you need.",
+    "ctaBtn": "Project inquiry →",
+    "servicesLabel": "Services & pricing",
+    "processLabel": "PROCESS",
+    "pricingLabel": "PRICING",
+    "faqLabel": "FAQ",
+    "pricingNoteDefault": "Final quotes vary by features, page count, timeline, and project scope.",
+    "quoteCta": "Request a quote →",
+    "whatWeBuild": "What we build",
+    "recommendedFor": "Recommended for",
+    "included": "Included",
+    "deliverables": "Deliverables",
+    "timeline": "Estimated timeline",
+    "from": "from",
+    "startingAt": "",
+    "comingSoon": "Coming soon",
+    "comingSoonLead": "This service detail will be available shortly.",
+    "detailCta": "View details →",
+    "soonBtn": "Coming soon",
+    "seoTitle": "AUTOMATION | Newon Business",
+    "metaDescription": "Newon AUTOMATION — AI automation, workflows, internal tools, reporting. Turn repetitive work into systems.",
+    "eyebrow": "NEWON BUSINESS · AUTOMATION",
+    "headline": "Turn repetitive work\ninto systems.",
+    "lead": "We analyze repetitive work in your team and build more efficient flows with AI and automation.",
+    "ctaPrimary": "Talk automation →",
+    "ctaSecondary": "See services ↓",
+    "layout": "automation",
+    "services": [
+      {
+        "title": "AI AUTOMATION",
+        "href": "../ai-automation/",
+        "summary": "Automate repetitive work with AI.",
+        "what": "Automation where AI fits — classify, draft, summarize.",
+        "for": "Teams with high inquiry, content, or document volume.",
+        "included": "Work analysis · rules/prompts · integrations · ops guide",
+        "deliverables": "Working automation flow, config notes",
+        "timeline": "Typically 2–5 weeks"
+      },
+      {
+        "title": "WORKFLOW AUTOMATION",
+        "href": "./workflow/",
+        "summary": "Connect tools and tasks into one workflow.",
+        "what": "End-to-end workflows across tools, channels, and data.",
+        "for": "Teams manually bridging SaaS and spreadsheets.",
+        "included": "Mapping · triggers/actions · exceptions · monitoring notes",
+        "deliverables": "Connected workflow, incident checklist",
+        "timeline": "Typically 3–6 weeks"
+      },
+      {
+        "title": "INTERNAL TOOLS",
+        "href": "../internal-tools/",
+        "summary": "Internal tools your team actually uses.",
+        "what": "Ops and admin tools and dashboards.",
+        "for": "Teams hitting spreadsheet limits.",
+        "included": "Requirements · UI · permissions · deploy",
+        "deliverables": "Internal tool, access guide",
+        "timeline": "Typically 4–8 weeks"
+      },
+      {
+        "title": "DATA & REPORTING",
+        "href": "../data-reporting/",
+        "summary": "Automate collection, cleanup, and reporting.",
+        "what": "Pipelines that collect, clean, and summarize on schedule.",
+        "for": "Teams still building weekly/monthly reports by hand.",
+        "included": "Sources · rules · templates · schedule",
+        "deliverables": "Automated report, sample output",
+        "timeline": "Typically 2–4 weeks"
+      }
+    ],
+    "useCasesLabel": "USE CASES",
+    "useCasesNote": "Examples of what can be built",
+    "useCases": [
+      "Inquiry auto-routing",
+      "Content draft generation",
+      "Data cleanup",
+      "Scheduled reporting",
+      "Request management",
+      "Work alerts",
+      "Document processing",
+      "Internal admin dashboard"
+    ],
+    "beforeAfterLabel": "BEFORE / AFTER",
+    "before": [
+      "Manual Input",
+      "Copy & Paste",
+      "Repeated Tasks",
+      "Scattered Data"
+    ],
+    "after": [
+      "Connected Workflow",
+      "Automation",
+      "Structured Data",
+      "Actionable Output"
+    ],
+    "process": [
+      {
+        "n": "01",
+        "t": "Map work",
+        "d": "Current flow and bottlenecks"
+      },
+      {
+        "n": "02",
+        "t": "Analyze repeats",
+        "d": "Pick automation candidates"
+      },
+      {
+        "n": "03",
+        "t": "Design",
+        "d": "Rules, integrations, exceptions"
+      },
+      {
+        "n": "04",
+        "t": "Prototype",
+        "d": "Validate the core flow"
+      },
+      {
+        "n": "05",
+        "t": "Build",
+        "d": "Implement for real use"
+      },
+      {
+        "n": "06",
+        "t": "Test & handoff",
+        "d": "QA and transfer"
+      }
+    ],
+    "pricing": [
+      {
+        "name": "SIMPLE AUTOMATION",
+        "price": "From ₩500,000",
+        "svc": 0
+      },
+      {
+        "name": "WORKFLOW",
+        "price": "From ₩1,000,000",
+        "svc": 1
+      },
+      {
+        "name": "CUSTOM SYSTEM",
+        "price": "Custom quote",
+        "svc": 2
+      }
+    ],
+    "pricingNote": "API usage, third-party SaaS, and server costs may be billed separately.",
+    "faq": [
+      {
+        "q": "Where should we start automating?",
+        "a": "Start with high-frequency, clear-rule tasks — routing, reporting, and alerts are common entry points."
+      },
+      {
+        "q": "Can you connect Notion, Sheets, Slack, etc.?",
+        "a": "Depends on the tool and API. We confirm integration feasibility before kickoff."
+      },
+      {
+        "q": "Who pays AI/API costs?",
+        "a": "Model and API usage is usually on the client account. We estimate expected usage together."
+      },
+      {
+        "q": "How are failures handled?",
+        "a": "Exception paths and alerts are part of the design, plus guidance for monitoring."
+      },
+      {
+        "q": "What about security?",
+        "a": "We align on access, data scope, and logging. Sensitive data is minimized by design."
+      }
+    ]
+  },
+  "research": {
+    "crumbBusiness": "Business",
+    "otherTitle": "OTHER BUSINESS SERVICES",
+    "ctaEyebrow": "HAVE A PROJECT?",
+    "ctaTitle": "If you have something to build, tell us.",
+    "ctaLead": "Even at the idea stage. We start by clarifying the scope you need.",
+    "ctaBtn": "Project inquiry →",
+    "servicesLabel": "Services & pricing",
+    "processLabel": "PROCESS",
+    "pricingLabel": "PRICING",
+    "faqLabel": "FAQ",
+    "pricingNoteDefault": "Final quotes vary by features, page count, timeline, and project scope.",
+    "quoteCta": "Request a quote →",
+    "whatWeBuild": "What we build",
+    "recommendedFor": "Recommended for",
+    "included": "Included",
+    "deliverables": "Deliverables",
+    "timeline": "Estimated timeline",
+    "from": "from",
+    "startingAt": "",
+    "comingSoon": "Coming soon",
+    "comingSoonLead": "This service detail will be available shortly.",
+    "detailCta": "View details →",
+    "soonBtn": "Coming soon",
+    "seoTitle": "RESEARCH | Newon Business",
+    "metaDescription": "Newon RESEARCH — market, competitor, consumer, and UX research. Decisions with evidence, not gut feel.",
+    "eyebrow": "NEWON BUSINESS · RESEARCH",
+    "headline": "Evidence over\nintuition.",
+    "lead": "We research markets, competitors, user experience, and consumer signals — then structure what you need to decide.",
+    "ctaPrimary": "Research inquiry →",
+    "ctaSecondary": "See outputs ↓",
+    "layout": "research",
+    "services": [
+      {
+        "title": "MARKET RESEARCH",
+        "tab": "MARKET",
+        "href": "../market-research/",
+        "summary": "Market structure and opportunity analysis",
+        "what": "Structure, opportunity areas, and decision-ready framing.",
+        "for": "Teams entering or expanding a market.",
+        "included": "Scope · desk research · structuring · implications",
+        "deliverables": "Summary report, market map",
+        "timeline": "Typically 1–3 weeks"
+      },
+      {
+        "title": "COMPETITOR ANALYSIS",
+        "tab": "COMPARE",
+        "href": "../competitor-analysis/",
+        "summary": "Compare key products and companies",
+        "what": "Positioning, feature, and messaging comparison.",
+        "for": "Teams clarifying differentiation.",
+        "included": "Set · axes · matrix · implications",
+        "deliverables": "Competitor matrix, summary",
+        "timeline": "Typically 1–2 weeks"
+      },
+      {
+        "title": "CONSUMER RESEARCH",
+        "tab": "CONSUMER",
+        "href": "../consumer-research/",
+        "summary": "Needs and behavior analysis",
+        "what": "Needs, behavior, and pain patterns.",
+        "for": "Teams validating audience and messaging.",
+        "included": "Questions · research · patterns · insights",
+        "deliverables": "User insight summary, opportunities",
+        "timeline": "Typically 2–4 weeks"
+      },
+      {
+        "title": "UX AUDIT",
+        "tab": "UX",
+        "href": "../ux-audit/",
+        "summary": "Diagnose existing app/web experience",
+        "what": "Issues and priorities across key flows and UI.",
+        "for": "Services struggling with conversion or usability.",
+        "included": "Flow review · issue list · priorities · proposals",
+        "deliverables": "Audit report, action items",
+        "timeline": "Typically 1–2 weeks"
+      },
+      {
+        "title": "TREND RESEARCH",
+        "tab": "TREND",
+        "href": "../trend-research/",
+        "summary": "Industry and consumer trend analysis",
+        "what": "Trends and product implications.",
+        "for": "Teams setting roadmap or content direction.",
+        "included": "Topic · sources · patterns · recommendations",
+        "deliverables": "Trend brief",
+        "timeline": "Typically 1–3 weeks"
+      }
+    ],
+    "outputLabel": "RESEARCH OUTPUT",
+    "outputNote": "SAMPLE STRUCTURE",
+    "outputK": "RESEARCH BRIEF",
+    "outputTitle": "Project Research Summary",
+    "outputLead": "Outputs are structured so decisions can follow immediately.",
+    "outputs": [
+      "Executive Summary",
+      "Market Map",
+      "Competitor Matrix",
+      "User Insight",
+      "Opportunity Areas",
+      "Recommendations",
+      "Action Items"
+    ],
+    "process": [
+      {
+        "n": "01",
+        "t": "QUESTION",
+        "d": "What must we learn?"
+      },
+      {
+        "n": "02",
+        "t": "RESEARCH",
+        "d": "Gather sources and data"
+      },
+      {
+        "n": "03",
+        "t": "ANALYSIS",
+        "d": "Find patterns and gaps"
+      },
+      {
+        "n": "04",
+        "t": "INSIGHT",
+        "d": "Synthesize findings"
+      },
+      {
+        "n": "05",
+        "t": "ACTION",
+        "d": "Recommend next moves"
+      }
+    ],
+    "pricing": [
+      {
+        "name": "UX AUDIT",
+        "price": "From ₩200,000",
+        "svc": 0
+      },
+      {
+        "name": "COMPETITOR ANALYSIS",
+        "price": "From ₩200,000",
+        "svc": 1
+      },
+      {
+        "name": "MARKET RESEARCH",
+        "price": "From ₩300,000",
+        "svc": 2
+      },
+      {
+        "name": "CUSTOM RESEARCH",
+        "price": "Custom quote",
+        "svc": 3
+      }
+    ],
+    "pricingNote": "Final quotes vary by scope, depth, and whether interviews are included.",
+    "faq": [
+      {
+        "q": "What do deliverables look like?",
+        "a": "Structured summaries, tables, and maps. Slides can be included if scoped."
+      },
+      {
+        "q": "Do you use internal data?",
+        "a": "When available and appropriate. Otherwise we work from public sources and observation."
+      },
+      {
+        "q": "Are interviews included?",
+        "a": "Depends on the package. Interviews can be added when needed."
+      },
+      {
+        "q": "How is confidentiality handled?",
+        "a": "Within agreed scope; NDA when required."
+      },
+      {
+        "q": "Can this lead into BUILD?",
+        "a": "Yes. Insights can feed product scoping next."
+      }
+    ]
+  },
+  "solutions": {
+    "crumbBusiness": "Business",
+    "otherTitle": "OTHER BUSINESS SERVICES",
+    "ctaEyebrow": "HAVE A PROJECT?",
+    "ctaTitle": "If you have something to build, tell us.",
+    "ctaLead": "Even at the idea stage. We start by clarifying the scope you need.",
+    "ctaBtn": "Project inquiry →",
+    "servicesLabel": "SOLUTION TYPES",
+    "processLabel": "PROCESS",
+    "pricingLabel": "PRICING",
+    "faqLabel": "FAQ",
+    "pricingNoteDefault": "Final quotes vary by features, page count, timeline, and project scope.",
+    "quoteCta": "Project consultation →",
+    "whatWeBuild": "What we build",
+    "recommendedFor": "Recommended for",
+    "included": "Included",
+    "deliverables": "Deliverables",
+    "timeline": "Estimated timeline",
+    "from": "from",
+    "startingAt": "",
+    "comingSoon": "Coming soon",
+    "comingSoonLead": "This service detail will be available shortly.",
+    "detailCta": "View details →",
+    "soonBtn": "Coming soon",
+    "seoTitle": "SOLUTIONS | Newon Business",
+    "metaDescription": "Newon SOLUTIONS — white-label, custom products, launch programs, internal systems. Built for projects that don’t fit a package.",
+    "eyebrow": "NEWON BUSINESS · SOLUTIONS",
+    "headline": "We don’t force your project\ninto a package.",
+    "lead": "For work that standard packages can’t solve, we design and build around your goals and constraints.",
+    "ctaPrimary": "Talk to us →",
+    "ctaSecondary": "See types ↓",
+    "layout": "solutions",
+    "services": [
+      {
+        "title": "WHITE-LABEL",
+        "href": "../white-label/",
+        "summary": "Adapt existing product/tech structures to your brand.",
+        "what": "White-label setup aligned to brand, domain, and ops.",
+        "for": "Companies that need a branded product faster.",
+        "included": "Scope · branding · deploy · handoff",
+        "deliverables": "Branded product, ops guide",
+        "timeline": "Depends on scope"
+      },
+      {
+        "title": "CUSTOM PRODUCT",
+        "tab": "CUSTOM",
+        "href": "../custom-product/",
+        "summary": "Custom digital products for a specific problem.",
+        "what": "From problem framing to custom product build.",
+        "for": "Needs that don’t fit standard packages.",
+        "included": "Framing · design · build · QA",
+        "deliverables": "Custom product, docs",
+        "timeline": "Depends on scope"
+      },
+      {
+        "title": "PRODUCT LAUNCH",
+        "tab": "LAUNCH",
+        "href": "../product-launch/",
+        "summary": "Connect idea → product → landing → launch readiness.",
+        "what": "One connected path to launch.",
+        "for": "Teams that want idea-to-launch in one engagement.",
+        "included": "Strategy · design · build · launch prep",
+        "deliverables": "Product + landing + launch checklist",
+        "timeline": "Depends on scope"
+      },
+      {
+        "title": "INTERNAL SYSTEM",
+        "tab": "INTERNAL",
+        "href": "../internal-system/",
+        "summary": "Internal systems for operations and management.",
+        "what": "Internal ops and management systems.",
+        "for": "Organizations digitizing internal processes.",
+        "included": "Requirements · permissions · build · deploy",
+        "deliverables": "Internal system, access/ops guide",
+        "timeline": "Depends on scope"
+      }
+    ],
+    "launchLabel": "PRODUCT LAUNCH FLOW",
+    "launchFlow": [
+      {
+        "t": "IDEA",
+        "d": "Goals and hypotheses"
+      },
+      {
+        "t": "STRATEGY",
+        "d": "Scope and priorities"
+      },
+      {
+        "t": "DESIGN",
+        "d": "Experience and structure"
+      },
+      {
+        "t": "BUILD",
+        "d": "Implementation and integrations"
+      },
+      {
+        "t": "LAUNCH",
+        "d": "Ship and publish"
+      },
+      {
+        "t": "IMPROVE",
+        "d": "Learn and iterate"
+      }
+    ],
+    "whenLabel": "WHEN TO USE SOLUTIONS",
+    "whenNote": "Best fit for these situations",
+    "whenItems": [
+      {
+        "tag": "CUSTOM FIT",
+        "t": "Projects that don’t fit existing packages"
+      },
+      {
+        "tag": "MULTI-SERVICE",
+        "t": "Multiple services needed together"
+      },
+      {
+        "tag": "INTERNAL",
+        "t": "Internal systems required"
+      },
+      {
+        "tag": "WHITE-LABEL",
+        "t": "White-label products needed"
+      },
+      {
+        "tag": "FULL LAUNCH",
+        "t": "Full product launch path needed"
+      }
+    ],
+    "pricingCustom": true,
+    "pricingTitle": "CUSTOM PROJECT",
+    "pricingLead": "Quoted per project",
+    "pricingBody": "We review Scope / Complexity / Timeline / Integration, then provide a quote. No fixed menu pricing.",
+    "pricingAxes": [
+      "Scope",
+      "Complexity",
+      "Timeline",
+      "Integration"
+    ],
+    "pricingNote": "Custom quote",
+    "process": [],
+    "pricing": [],
+    "faq": [
+      {
+        "q": "How is Solutions different from packages?",
+        "a": "Packages are defined-scope offerings. Solutions are custom-designed for complex or special projects."
+      },
+      {
+        "q": "How is pricing set?",
+        "a": "After reviewing goals, scope, complexity, timeline, and integrations."
+      },
+      {
+        "q": "What does white-label include?",
+        "a": "Adapting existing tech/product structures to brand and ops. Feasible scope is confirmed in consultation."
+      },
+      {
+        "q": "Can multiple stakeholders be involved?",
+        "a": "Yes. We define decision-makers and a clear working channel."
+      },
+      {
+        "q": "What about maintenance and expansion?",
+        "a": "Post-launch expansion and ops can continue as a separate engagement."
+      }
+    ]
+  }
+}

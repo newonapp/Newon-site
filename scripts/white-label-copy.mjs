@@ -2,6 +2,8 @@
  * WHITE-LABEL service detail — KO/EN copy.
  * Path: /{lang}/business/white-label/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const WHITE_LABEL_COPY = {
   ko: {
     seoTitle: "WHITE-LABEL | Newon Business",
@@ -796,5 +798,5 @@ export const WHITE_LABEL_COPY = {
 };
 
 export function getWhiteLabelCopy(lang) {
-  return lang === "ko" ? WHITE_LABEL_COPY.ko : WHITE_LABEL_COPY.en;
+  return resolveKoEnPack(WHITE_LABEL_COPY, lang, "white-label-copy");
 }

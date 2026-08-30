@@ -1,0 +1,510 @@
+{
+  "seoTitle": "MVP DEVELOPMENT | Newon Business",
+  "metaDescription": "Turn an idea into a real product you can validate quickly — from problem framing through UX, build, and launch. Newon MVP DEVELOPMENT.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICES",
+  "crumbBuild": "BUILD",
+  "crumbHere": "MVP",
+  "eyebrow": "MVP DEVELOPMENT",
+  "subEyebrow": "BUILD",
+  "headline": "From idea to\na working product.",
+  "lead": "From idea validation and core feature definition through UX/UI, development, testing, and release — we design the first version so you can put it in front of real users quickly. One continuous path from planning to deploy: IDEA → BUILD → LAUNCH.",
+  "ctaPrimary": "MVP development inquiry →",
+  "ctaSecondary": "See the build flow ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "MVP Development"
+    },
+    {
+      "k": "BEST FOR",
+      "v": "Idea validation & first release"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Usually 3–6 weeks"
+    },
+    {
+      "k": "PRICE",
+      "v": "₩1,000,000부터"
+    }
+  ],
+  "overviewLabel": "OVERVIEW",
+  "overviewTitle": "You have the idea.\nNot the product shape.",
+  "overviewBody": [
+    "The idea is clear, but what to build first — and how much — often is not. More features delay launch; a demo alone cannot validate the real question.",
+    "An MVP must be minimal, but it must be a working product. Not slides — something users can click, type into, and complete the core job on web or app.",
+    "MVP DEVELOPMENT starts by defining the problem and validation question. Then we design UX/UI around the core flow only, and deliver a shippable first version including backend, data, and deploy."
+  ],
+  "problemsLabel": "PROBLEMS",
+  "problemsTitle": "Helpful when you face these situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "IDEA ONLY",
+      "d": "You have an idea but cannot decide what to build first.\nYou need the smallest product structure that can test the real question."
+    },
+    {
+      "n": "02",
+      "t": "SCOPE CREEP",
+      "d": "Building everything first is risky.\nFeature lists keep growing and launch keeps slipping."
+    },
+    {
+      "n": "03",
+      "t": "DISCONNECTED BUILD",
+      "d": "Planning, design, and development feel like separate vendors.\nOutput stays at demo level with no one owning the full path."
+    },
+    {
+      "n": "04",
+      "t": "NO VALIDATION PATH",
+      "d": "You built something but have no environment to show users.\nNo deploy, share, or feedback loop."
+    },
+    {
+      "n": "05",
+      "t": "PLATFORM UNCERTAINTY",
+      "d": "Hard to choose between web and app.\nYou need a recommendation matched to validation goals."
+    },
+    {
+      "n": "06",
+      "t": "POST-MVP GAP",
+      "d": "After launch, no priority for what to expand.\nYou need structure to connect validation to next steps."
+    }
+  ],
+  "baLabel": "BEFORE / AFTER",
+  "baTitle": "Demo-level output vs\na product you can validate",
+  "beforeLabel": "BEFORE",
+  "afterLabel": "AFTER",
+  "before": [
+    "Idea and feature list with no clear scope",
+    "Planning, design, and build disconnected",
+    "Slides and mockups — nothing to click",
+    "No deploy environment or next-step plan"
+  ],
+  "after": [
+    "Problem, users, and validation question defined first",
+    "Core-flow UX/UI and agreed scope",
+    "Working web or app MVP people can use",
+    "Deploy environment and post-MVP roadmap delivered"
+  ],
+  "capsLabel": "CAPABILITIES",
+  "capsTitle": "We run MVP build\nas one structured engagement.",
+  "caps": [
+    {
+      "t": "PROBLEM FRAMING",
+      "d": "Define problem, primary users, and validation question.\nClarify what belongs in the MVP — and what does not."
+    },
+    {
+      "t": "SCOPE DEFINITION",
+      "d": "Keep only what the first version needs.\nSeparate Core, Next, and Later priorities."
+    },
+    {
+      "t": "UX / UI DESIGN",
+      "d": "Design around the user goal path — not random screens.\nBuild the actual product interface."
+    },
+    {
+      "t": "PRODUCT BUILD",
+      "d": "Implement a web or app MVP.\nA working product, not a presentation."
+    },
+    {
+      "t": "BACKEND & DATA",
+      "d": "Include minimal server and data structure for validation.\nLogin, save, read — whatever the scenario requires."
+    },
+    {
+      "t": "INTEGRATIONS",
+      "d": "Implement payments, notifications, APIs, external services as scoped.\nOnly what the MVP needs."
+    },
+    {
+      "t": "QA & LAUNCH",
+      "d": "Verify core scenarios and deploy to a real environment.\nReady to share with team or early users."
+    },
+    {
+      "t": "NEXT-STEP ROADMAP",
+      "d": "Document expand, hold, or cut items after MVP.\nConnect validation results to the next BUILD phase."
+    }
+  ],
+  "sourcesLabel": "PROJECT INPUTS",
+  "sourcesTitle": "We combine the inputs your project needs.",
+  "sourcesNote": "Actual inputs vary by idea stage, available material, and team context.",
+  "sources": [
+    "Idea and problem description",
+    "Target user definition",
+    "Competitor and reference services",
+    "Existing wireframes or specs",
+    "Brand and UI guidelines",
+    "Technical and platform constraints",
+    "Business model hypothesis",
+    "Validation questions and KPIs",
+    "Initial content and data",
+    "API and integration requirements",
+    "Launch and deploy environment",
+    "Future expansion plans"
+  ],
+  "useLabel": "USE CASES",
+  "useTitle": "MVPs we can build.",
+  "useBadge": "Example build types",
+  "useCases": [
+    {
+      "t": "WEB MVP",
+      "d": "Core flow usable in the browser.\nSignup to value — a first version you can validate."
+    },
+    {
+      "t": "MOBILE APP MVP",
+      "d": "Habits, alerts, and on-the-go use that only make sense on mobile.\nFirst iOS or Android release."
+    },
+    {
+      "t": "INTERNAL TOOL MVP",
+      "d": "First version of daily ops software for your team.\nSpeed and accuracy first."
+    },
+    {
+      "t": "AI PRODUCT MVP",
+      "d": "AI that cuts repeat work.\nWorkflow and validation over model theater."
+    },
+    {
+      "t": "CLICKABLE PROTOTYPE",
+      "d": "A clickable demo for investors and teams — fast and sharp."
+    },
+    {
+      "t": "LANDING + PRODUCT",
+      "d": "Persuasion and product entry in one continuous path.\nValidate conversion and usage together."
+    },
+    {
+      "t": "SAAS MVP",
+      "d": "First SaaS version with subscription, permissions, admin.\nCore value flow centered."
+    },
+    {
+      "t": "MARKETPLACE MVP",
+      "d": "First platform version with multiple users and roles.\nListing, matching, basic admin included."
+    }
+  ],
+  "flowLabel": "EXAMPLE WORKFLOW",
+  "flowTitle": "IDEA → BUILD → LAUNCH",
+  "flow": [
+    {
+      "n": "01",
+      "t": "IDEA",
+      "d": "Organize the idea and problem to solve.\nDefine validation questions and success criteria together.",
+      "examples": [
+        "Problem",
+        "Users",
+        "Hypothesis",
+        "KPIs"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCOPE",
+      "d": "Decide core features for the first version.\nClearly separate in-scope from out-of-scope.",
+      "examples": [
+        "Core",
+        "Next",
+        "Later",
+        "Platform"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Design core user flows and interface.\nConfirm screen structure and UX.",
+      "examples": [
+        "Flows",
+        "UI",
+        "Screens",
+        "Review"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BUILD",
+      "d": "Develop a working product.\nImplement core features, backend, and integrations.",
+      "examples": [
+        "Frontend",
+        "Backend",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LAUNCH",
+      "d": "Test and deploy to a real environment.\nDeliver next-step roadmap together.",
+      "examples": [
+        "Deploy",
+        "Share",
+        "Feedback",
+        "Roadmap"
+      ]
+    }
+  ],
+  "reportLabel": "OUTPUT",
+  "reportTitle": "Deliverables are a product you can validate and supporting docs.",
+  "reportLead": "Composition varies by project scope. Below are common items.",
+  "reportMockStatus": "PRODUCT · SCOPE",
+  "reportMockK": "MVP SCOPE SPEC",
+  "reportMockT": "Features, flows, milestones",
+  "reportItems": [
+    "Problem & Goals",
+    "Scope Summary",
+    "User Flow Map",
+    "Feature List (Core / Next / Later)",
+    "UX / UI Overview",
+    "Technical Stack",
+    "Backend & Data Model",
+    "Integration Notes",
+    "QA Checklist",
+    "Post-MVP Roadmap"
+  ],
+  "dashTitle": "Share MVP scope and progress in one view.",
+  "dashLead": "Features, screens, flows, and integrations together speed scope agreement and build discussions.",
+  "dashNote": "Feature composition and priority vary by validation goal and budget.",
+  "dashMetrics": [
+    "Features",
+    "Screens",
+    "Flows",
+    "Integrations"
+  ],
+  "dashFilters": [
+    "All",
+    "Core",
+    "Next",
+    "Later"
+  ],
+  "aiLabel": "ACCELERATION",
+  "aiTitle": "Automate repetition.\nFocus on design and build.",
+  "aiLead": "Requirement structuring, flow drafts, screen lists, and QA checklists can be AI-assisted for speed — while people focus on scope decisions, UX, and core implementation.",
+  "aiExamples": [
+    "Structure ideas and requirements",
+    "Draft flows and screen lists",
+    "Organize feature priority",
+    "Draft API and data models",
+    "QA and test checklists",
+    "Post-MVP roadmap drafts"
+  ],
+  "aiNote": "Final scope, design, and quality decisions are confirmed with your project team.",
+  "delLabel": "DELIVERABLES",
+  "delTitle": "What you receive when the project completes",
+  "delLead": "We deliver the items below as needed for your scope.",
+  "deliverables": [
+    {
+      "title": "Scope Definition Document",
+      "body": "What ships in the MVP — and what stays out."
+    },
+    {
+      "title": "UX Flow / Screen Structure",
+      "body": "Core user flows and screen structure."
+    },
+    {
+      "title": "Working MVP (Web or App)",
+      "body": "A first version that actually runs."
+    },
+    {
+      "title": "Essential Backend & Data",
+      "body": "Essential data and backend foundations."
+    },
+    {
+      "title": "Deployed Environment",
+      "body": "Staging and production environments ready to use."
+    },
+    {
+      "title": "UX / UI Design Files",
+      "body": "Design files and key screen specs."
+    },
+    {
+      "title": "Technical Documentation",
+      "body": "Structure, integrations, and ops notes."
+    },
+    {
+      "title": "QA Report",
+      "body": "Results from core scenario checks."
+    },
+    {
+      "title": "Post-MVP Roadmap",
+      "body": "Priorities for improvement after launch."
+    }
+  ],
+  "processLabel": "PROCESS",
+  "processTitle": "From idea to launch.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOVERY",
+      "d": "Confirm idea, problem, users, and constraints.\nDefine validation questions and success criteria.",
+      "examples": [
+        "Idea",
+        "Problem",
+        "Users",
+        "KPIs"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCOPE",
+      "d": "Decide core features in and out of the MVP.\nAgree platform, timeline, and budget.",
+      "examples": [
+        "Core",
+        "Next",
+        "Later",
+        "Platform"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "UX / DESIGN",
+      "d": "Design core flows and screen structure.\nConfirm the actual product interface.",
+      "examples": [
+        "Flows",
+        "UI",
+        "Screens",
+        "Review"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "DEVELOPMENT",
+      "d": "Implement frontend, backend, and integrations.\nDemo and review in phases.",
+      "examples": [
+        "Frontend",
+        "Backend",
+        "API",
+        "Integrations"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "TEST",
+      "d": "Verify core scenarios.\nCheck against real usage flows.",
+      "examples": [
+        "QA",
+        "UAT",
+        "Fixes",
+        "Sign-off"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "LAUNCH",
+      "d": "Prepare deploy environment and release.\nShare with team or early users.",
+      "examples": [
+        "Staging",
+        "Prod",
+        "Access",
+        "Share"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "NEXT STEPS",
+      "d": "Organize validation results and expansion priority.\nConnect to the next BUILD phase.",
+      "examples": [
+        "Feedback",
+        "Roadmap",
+        "Expand",
+        "Pivot"
+      ]
+    }
+  ],
+  "scopeLabel": "SCOPE LEVELS",
+  "scopeTitle": "How to think about MVP complexity.",
+  "scopeLead": "Not a fixed package. Scope is set by validation goal, platform, and feature/integration range.",
+  "scopes": [
+    {
+      "t": "FOCUSED MVP",
+      "items": [
+        "Single core flow",
+        "Web or app — one platform",
+        "5–8 core screens",
+        "Basic backend and data",
+        "Deploy and share environment"
+      ]
+    },
+    {
+      "t": "STANDARD MVP",
+      "items": [
+        "Multiple core features and flows",
+        "Web or app + admin",
+        "Login, permissions, save",
+        "1–2 integrations",
+        "Post-MVP roadmap"
+      ]
+    },
+    {
+      "t": "EXTENDED MVP",
+      "items": [
+        "Multiple modules and roles",
+        "Multi-integration and API",
+        "AI, payments, notifications",
+        "Expansion design included",
+        "Scoped separately"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Timeline depends on scope.",
+  "timeLead": "Duration varies by feature count, platform, integrations, design depth, and feedback speed.",
+  "timelines": [
+    {
+      "t": "Focused MVP",
+      "d": "About 3–4 weeks"
+    },
+    {
+      "t": "Standard MVP",
+      "d": "About 4–6 weeks"
+    },
+    {
+      "t": "Extended",
+      "d": "Scoped separately"
+    }
+  ],
+  "priceLabel": "PROJECT COST",
+  "priceTitle": "We quote only the scope you need.",
+  "priceName": "MVP DEVELOPMENT",
+  "priceValue": "₩1,000,000부터",
+  "priceFactorsLabel": "Pricing factors",
+  "priceFactors": [
+    "Scope — features, screens, flows",
+    "Platform — web, app, or both",
+    "Complexity — data, permissions, logic",
+    "Timeline — schedule and resourcing",
+    "Integration — API, payments, alerts",
+    "Design depth — UX/UI range",
+    "Backend — server, DB, auth",
+    "Post-launch — expansion, maintenance"
+  ],
+  "priceNote": "We review platform, scope, complexity, and timeline, then provide a quote. Final amount is confirmed after scope lock.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Frequently asked questions",
+  "faqs": [
+    {
+      "q": "Can we start without a full plan?",
+      "a": "Yes. An idea and the problem you want to solve are enough to shape scope together."
+    },
+    {
+      "q": "Web or app — which one?",
+      "a": "We recommend based on your validation goal and users. We do not build both by default."
+    },
+    {
+      "q": "How long does it take?",
+      "a": "It depends on scope. Focused MVP is typically about 3–4 weeks; Standard MVP about 4–6 weeks."
+    },
+    {
+      "q": "Can I get a fixed price on the website?",
+      "a": "Pricing depends on platform and scope. Starting from ₩1,000,000 — we guide you after reviewing the inquiry."
+    },
+    {
+      "q": "Can we expand after the MVP?",
+      "a": "Yes. We extend from the flows that already proved useful."
+    },
+    {
+      "q": "Can this connect to RESEARCH?",
+      "a": "Yes. Market, competitor, and user research can feed MVP scope and feature priority."
+    },
+    {
+      "q": "How is confidentiality handled?",
+      "a": "Materials are used only within agreed scope. NDA available when required."
+    }
+  ],
+  "finalLabel": "START A PROJECT",
+  "finalTitle": "Turn your idea\ninto a first product.",
+  "finalLead": "Tell us the service you want to build and your current stage. We will confirm MVP scope and the IDEA → BUILD → LAUNCH path together.",
+  "ctaFinalSecondary": "View all BUILD →",
+  "ctaFinalSecondaryHref": "../build/"
+}

@@ -2,6 +2,8 @@
  * INTERNAL SYSTEM service detail — KO/EN copy.
  * Path: /{lang}/business/internal-system/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const INTERNAL_SYSTEM_COPY = {
   ko: {
     seoTitle: "INTERNAL SYSTEM | Newon Business",
@@ -796,5 +798,5 @@ export const INTERNAL_SYSTEM_COPY = {
 };
 
 export function getInternalSystemCopy(lang) {
-  return lang === "ko" ? INTERNAL_SYSTEM_COPY.ko : INTERNAL_SYSTEM_COPY.en;
+  return resolveKoEnPack(INTERNAL_SYSTEM_COPY, lang, "internal-system-copy");
 }

@@ -466,7 +466,7 @@ export function renderInternalTools() {
   const flatEn = flatten(loadJson("en.json"));
 
   for (const { dir, file, htmlLang } of LANGS) {
-    const lang = dir === "ko" ? "ko" : "en";
+    const lang = dir;
     const copy = getInternalToolsCopy(lang);
     const flat = flatten(loadJson(file));
     let html = template;

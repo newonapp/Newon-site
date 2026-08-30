@@ -60,7 +60,7 @@ function brHeadline(s) {
 }
 
 function copyLang(dir) {
-  return dir === "ko" ? "ko" : "en";
+  return dir;
 }
 
 function writeFile(filePath, contents) {

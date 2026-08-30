@@ -1,0 +1,483 @@
+{
+  "seoTitle": "CUSTOM PRODUCT | Newon Business",
+  "metaDescription": "Build custom digital products for problems standard packages cannot solve — from framing through design, implementation, and QA. Newon CUSTOM PRODUCT.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICES",
+  "crumbSolutions": "SOLUTIONS",
+  "crumbHere": "CUSTOM PRODUCT",
+  "eyebrow": "CUSTOM PRODUCT",
+  "subEyebrow": "SOLUTIONS",
+  "headline": "Not forced into a package.\nBuilt for the problem.",
+  "lead": "We design and build custom web apps, internal tools, portals, and dashboards for specific workflows, users, and operations. From problem framing and UX/UI through architecture, implementation, integrations, and QA — when standard packages are not enough, we deliver one coherent product.",
+  "ctaPrimary": "Custom product inquiry →",
+  "ctaSecondary": "See the build flow ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Custom Product"
+    },
+    {
+      "k": "BEST FOR",
+      "v": "Non-package product builds"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Depends on scope"
+    },
+    {
+      "k": "PRICE",
+      "v": "Custom quote"
+    }
+  ],
+  "overviewLabel": "OVERVIEW",
+  "overviewTitle": "The need is clear.\nNo package fits.",
+  "overviewBody": [
+    "Common patterns like booking, CRM, inquiry, and dashboards can be solved with packages. In practice, org structure, workflow, data, permissions, and integrations rarely match a standard box exactly.",
+    "Forcing off-the-shelf tools bends your process. Building everything from scratch costs too much time and money. What you need is a product designed for the actual problem.",
+    "CUSTOM PRODUCT starts by defining the problem, users, and workflow context. Then we design UX/UI, feature scope, data and integration structure, and deliver implementation, QA, and handoff as one product."
+  ],
+  "problemsLabel": "PROBLEMS",
+  "problemsTitle": "Helpful when you face these situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "NO FIT PACKAGE",
+      "d": "MVP, web, app, or internal-tool packages do not fully fit.\nYour workflow needs custom design."
+    },
+    {
+      "n": "02",
+      "t": "WORKFLOW GAP",
+      "d": "Existing SaaS, spreadsheets, or manual process blocks the work.\nYou need your own workflow in product form."
+    },
+    {
+      "n": "03",
+      "t": "MULTI-SYSTEM",
+      "d": "Multiple features, screens, permissions, and integrations must become one product.\nA single package is not enough scope."
+    },
+    {
+      "n": "04",
+      "t": "INTERNAL TOOL",
+      "d": "You need an internal operations or management product, not a public marketing site.\nPermissions and audit matter."
+    },
+    {
+      "n": "05",
+      "t": "INTEGRATION NEED",
+      "d": "You must connect to ERP, CRM, payments, data, or APIs.\nThis is system build, not just pages."
+    },
+    {
+      "n": "06",
+      "t": "LONG-TERM PRODUCT",
+      "d": "You need something for real operation and expansion, not a throwaway PoC.\nFuture features must be considered."
+    }
+  ],
+  "baLabel": "BEFORE / AFTER",
+  "baTitle": "Forced tools vs\nproblem-fit product",
+  "beforeLabel": "BEFORE",
+  "afterLabel": "AFTER",
+  "before": [
+    "Work scattered across SaaS, spreadsheets, and manual steps",
+    "Process bends to tools instead of the other way around",
+    "Many requirements but no scope or priority",
+    "Integrations, permissions, and ops become late surprises"
+  ],
+  "after": [
+    "Problem, users, and workflow context defined first",
+    "Custom UX/UI and feature scope designed",
+    "Implementation, integrations, and QA in one product",
+    "Structure and docs that support operation and growth"
+  ],
+  "capsLabel": "CAPABILITIES",
+  "capsTitle": "We run custom product build\nas one structured engagement.",
+  "caps": [
+    {
+      "t": "PROBLEM FRAMING",
+      "d": "Define problem, users, and success criteria.\nClarify why a custom product is needed."
+    },
+    {
+      "t": "SCOPE & ARCHITECTURE",
+      "d": "Design feature scope, data, permissions, integrations.\nSeparate MVP from expansion."
+    },
+    {
+      "t": "UX / UI DESIGN",
+      "d": "Design screens and information structure for the workflow.\nInclude design system when needed."
+    },
+    {
+      "t": "PRODUCT BUILD",
+      "d": "Implement web, app, internal tool, portal, or dashboard.\nBuild core features in phases."
+    },
+    {
+      "t": "INTEGRATIONS",
+      "d": "Implement payments, CRM, ERP, APIs, data pipelines.\nDefine boundaries with existing systems."
+    },
+    {
+      "t": "ADMIN & PERMISSIONS",
+      "d": "Design and build admin, roles, permissions, audit logs.\nMake operation possible from day one."
+    },
+    {
+      "t": "QA & HANDOFF",
+      "d": "Verify features, flows, and integrations.\nProvide docs and handoff for operation and growth."
+    },
+    {
+      "t": "ITERATION PATH",
+      "d": "Plan post-launch expansion and improvement.\nConnect maintenance and Phase 2 scope."
+    }
+  ],
+  "sourcesLabel": "PROJECT INPUTS",
+  "sourcesTitle": "We combine the inputs your project needs.",
+  "sourcesNote": "Actual inputs vary by organization, workflow, and accessible systems.",
+  "sources": [
+    "Workflow and process descriptions",
+    "Current tools in use",
+    "Internal data and documents",
+    "API and integration requirements",
+    "Permissions and org structure",
+    "Existing wireframes or specs",
+    "Brand and UI guidelines",
+    "Legal, security, compliance",
+    "User and operator interviews",
+    "Legacy systems",
+    "Success metrics and KPIs",
+    "Future expansion plans"
+  ],
+  "useLabel": "USE CASES",
+  "useTitle": "Products we can build.",
+  "useBadge": "Example build types",
+  "useCases": [
+    {
+      "t": "OPERATIONS PORTAL",
+      "d": "Internal ops, management, approval, and request portals.\nWorkflows shaped to your process."
+    },
+    {
+      "t": "CUSTOM SAAS",
+      "d": "SaaS for a specific user group or workflow.\nSubscription, permissions, and admin included."
+    },
+    {
+      "t": "CLIENT / PARTNER TOOL",
+      "d": "Portals for clients, partners, or vendors.\nOrders, inquiry, status, document sharing."
+    },
+    {
+      "t": "DATA DASHBOARD",
+      "d": "Dashboards that unify scattered data.\nKPI, report, and alert structure."
+    },
+    {
+      "t": "WORKFLOW PRODUCT",
+      "d": "Products centered on approval, review, assignment, status.\nCan link with automation."
+    },
+    {
+      "t": "MARKETPLACE / PLATFORM",
+      "d": "Multi-user, multi-role platform products.\nListing, matching, settlement, admin."
+    },
+    {
+      "t": "FIELD / MOBILE TOOL",
+      "d": "Field-first custom app or web.\nOffline and sync considered."
+    },
+    {
+      "t": "LEGACY REPLACEMENT",
+      "d": "Replace spreadsheets, manual ops, or legacy systems.\nPhased transition design."
+    }
+  ],
+  "flowLabel": "EXAMPLE WORKFLOW",
+  "flowTitle": "From problem framing to product delivery",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINE",
+      "d": "Define problem, users, and success criteria.\nAgree why a custom product is needed.",
+      "examples": [
+        "Problem",
+        "Users",
+        "KPIs",
+        "Constraints"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCOPE",
+      "d": "Design feature scope, UX, data, integrations.\nSeparate Phase 1 from expansion.",
+      "examples": [
+        "Features",
+        "Screens",
+        "Data",
+        "Integrations"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Design flows, UI, information structure, permissions.\nConfirm core screens and admin.",
+      "examples": [
+        "Flows",
+        "UI",
+        "Roles",
+        "Admin"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BUILD",
+      "d": "Implement core features and integrations.\nReview in phases with feedback.",
+      "examples": [
+        "Frontend",
+        "Backend",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DELIVER",
+      "d": "Deploy, verify, document, and hand off.\nConnect operation and expansion path.",
+      "examples": [
+        "Deploy",
+        "Docs",
+        "Handoff",
+        "Phase 2"
+      ]
+    }
+  ],
+  "reportLabel": "OUTPUT",
+  "reportTitle": "Deliverables are an operable product and supporting docs.",
+  "reportLead": "Composition varies by project scope. Below are common items.",
+  "reportMockStatus": "PRODUCT · SPEC",
+  "reportMockK": "CUSTOM PRODUCT SPEC",
+  "reportMockT": "Scope, modules, integrations, milestones",
+  "reportItems": [
+    "Problem & Goals",
+    "Scope Summary",
+    "User & Role Map",
+    "Feature List",
+    "UX / UI Overview",
+    "Data & Integration",
+    "Admin & Permissions",
+    "Milestone Plan",
+    "QA Checklist",
+    "Handoff Notes"
+  ],
+  "dashTitle": "Share scope and module structure on one view.",
+  "dashLead": "Features, integrations, and phases together speed scope agreement and build discussions.",
+  "dashNote": "Module composition and phase split vary by project goal and budget.",
+  "dashMetrics": [
+    "Modules",
+    "Integrations",
+    "Phases",
+    "Milestones"
+  ],
+  "dashFilters": [
+    "All",
+    "Core",
+    "Admin",
+    "Phase 2"
+  ],
+  "aiLabel": "ACCELERATION",
+  "aiTitle": "Automate repetition.\nFocus on design and build.",
+  "aiLead": "Requirement structuring, flow drafts, doc scaffolding, and QA checklists can be AI-assisted for speed — while people focus on architecture, UX, and core implementation.",
+  "aiExamples": [
+    "Structure requirements and meeting notes",
+    "Draft flows and screen lists",
+    "Organize API and data models",
+    "QA and test checklists",
+    "Ops and handoff doc drafts",
+    "Compare scope and phase splits"
+  ],
+  "aiNote": "Final scope, design, and quality decisions are confirmed with your project team.",
+  "delLabel": "DELIVERABLES",
+  "delTitle": "What you receive when the project completes",
+  "delLead": "We deliver the items below as needed for your scope.",
+  "deliverables": [
+    "Custom Product (Web / App / Portal)",
+    "Admin Console",
+    "UX / UI Design Files",
+    "Technical Documentation",
+    "API & Integration Docs",
+    "Deployment Setup",
+    "QA Report",
+    "Handoff & Ops Guide",
+    "Phase 2 Roadmap (optional)"
+  ],
+  "processLabel": "PROCESS",
+  "processTitle": "From problem framing to handoff.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOVERY",
+      "d": "Confirm problem, users, current process, constraints.\nUnderstand success criteria and decision structure.",
+      "examples": [
+        "Problem",
+        "Users",
+        "Current",
+        "KPIs"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCOPE",
+      "d": "Define feature, screen, data, integration scope.\nAgree Phase 1 / 2, timeline, and budget.",
+      "examples": [
+        "Features",
+        "Scope",
+        "Integrations",
+        "Timeline"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Design flows, UI, information structure, permissions.\nConfirm core screens and admin structure.",
+      "examples": [
+        "Flows",
+        "UI",
+        "Admin",
+        "Review"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BUILD",
+      "d": "Implement frontend, backend, integrations.\nDemo and review in phases.",
+      "examples": [
+        "Core",
+        "API",
+        "Integrations",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "TEST",
+      "d": "Verify features, flows, permissions, integrations.\nCheck against operational scenarios.",
+      "examples": [
+        "QA",
+        "UAT",
+        "Fixes",
+        "Sign-off"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "DEPLOY",
+      "d": "Prepare environment and release.\nConfirm monitoring and rollback paths.",
+      "examples": [
+        "Staging",
+        "Prod",
+        "Access",
+        "Monitor"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "HANDOFF",
+      "d": "Document, guide operations, and hand off.\nConnect expansion and maintenance path.",
+      "examples": [
+        "Docs",
+        "Training",
+        "Support",
+        "Phase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "SCOPE LEVELS",
+  "scopeTitle": "How to think about project complexity.",
+  "scopeLead": "Not a fixed package. Scope is set by problem size, integrations, and permission complexity.",
+  "scopes": [
+    {
+      "t": "FOCUSED PRODUCT",
+      "items": [
+        "Single core problem or workflow",
+        "Limited users and roles",
+        "Core screens and admin",
+        "1–2 basic integrations",
+        "Phase 1 launch focus"
+      ]
+    },
+    {
+      "t": "FULL CUSTOM BUILD",
+      "items": [
+        "Multiple modules, roles, permissions",
+        "Full custom UX/UI",
+        "Multi-integration data structure",
+        "Operations and audit features",
+        "Docs and handoff included"
+      ]
+    },
+    {
+      "t": "PLATFORM BUILD",
+      "items": [
+        "Platform or marketplace structure",
+        "Multi-tenant, settlement, admin",
+        "Complex API and legacy links",
+        "Expansion and Phase 2 design",
+        "Long-term ops and maintenance link"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Timeline depends on scope.",
+  "timeLead": "Duration varies by feature count, integrations, design depth, and decision speed.",
+  "timelines": [
+    {
+      "t": "Focused Product",
+      "d": "About 4–8 weeks · varies"
+    },
+    {
+      "t": "Full Custom Build",
+      "d": "About 8–16 weeks · varies"
+    },
+    {
+      "t": "Platform Build",
+      "d": "About 12+ weeks · custom"
+    }
+  ],
+  "priceLabel": "PROJECT COST",
+  "priceTitle": "Quoted per project.",
+  "priceName": "CUSTOM PRODUCT",
+  "priceValue": "Custom quote",
+  "priceFactorsLabel": "Pricing factors",
+  "priceFactors": [
+    "Scope — features, screens, modules",
+    "Complexity — data, permissions, logic",
+    "Timeline — schedule and resourcing",
+    "Integration — API, legacy, payments",
+    "Design depth — UX/UI range",
+    "Platform type — web, app, portal",
+    "Team involvement — decisions, UAT",
+    "Post-launch — maintenance, expansion"
+  ],
+  "priceNote": "We review Scope / Complexity / Timeline / Integration, then provide a quote. No fixed menu pricing.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Frequently asked questions",
+  "faqs": [
+    {
+      "q": "How is this different from MVP, web, or app packages?",
+      "a": "Packages are defined-scope standard services. CUSTOM PRODUCT is custom design and build for org, workflow, and integration needs."
+    },
+    {
+      "q": "How is this different from white-label?",
+      "a": "White-label adapts a validated foundation to your brand and modules. CUSTOM PRODUCT designs and builds for the problem from the start."
+    },
+    {
+      "q": "How is pricing set?",
+      "a": "After reviewing goals, scope, complexity, timeline, and integrations — often by phase."
+    },
+    {
+      "q": "Is design included?",
+      "a": "UX/UI design can be included in scope. Existing brand or design guidelines can be used when available."
+    },
+    {
+      "q": "Can you integrate with existing systems?",
+      "a": "Yes. API, data, SSO, payments, ERP/CRM, and other integration needs can be scoped and designed."
+    },
+    {
+      "q": "Can you support post-launch maintenance?",
+      "a": "Yes. Phase 2, feature expansion, and operational support can continue under separate agreement."
+    },
+    {
+      "q": "How is confidentiality handled?",
+      "a": "Materials are used only within agreed scope. NDA available when required."
+    }
+  ],
+  "finalLabel": "START A PROJECT",
+  "finalTitle": "Start with the problem,\nnot the package.",
+  "finalLead": "If you have a workflow problem, users, and integration needs, tell us what you are trying to solve. We will confirm custom product scope and build approach together.",
+  "ctaFinalSecondary": "View all SOLUTIONS →",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

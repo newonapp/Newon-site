@@ -1,0 +1,528 @@
+{
+  "seoTitle": "DONNÉES & RAPPORTS | Newon AUTOMATISATION",
+  "metaDescription": "Collectez et nettoyez les données dispersées, puis automatisez les métriques et les rapports. Newon DONNÉES & RAPPORTS.",
+  "crumbBusiness": "ENTREPRISE",
+  "crumbServices": "SERVICES",
+  "crumbAutomation": "AUTOMATISATION",
+  "crumbHere": "DONNÉES & RAPPORTS",
+  "eyebrow": "DONNÉES & RAPPORTS",
+  "subEyebrow": "AUTOMATISATION",
+  "headline": "Rassembler des données éparses\net les transformer en ce dont vous avez besoin.",
+  "lead": "Nous collectons et organisons les données réparties sur différents services et documents, puis automatisons les métriques et rapports dont vous avez besoin — de la collecte et du nettoyage récurrents à la calcul, la visualisation, la génération de rapports et la livraison.",
+  "ctaPrimary": "Demande de DONNÉES & RAPPORTS →",
+  "ctaSecondary": "Voir le flux de données ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Automatisation des données et des rapports"
+    },
+    {
+      "k": "IDÉAL POUR",
+      "v": "Travail récurrent de collecte de données et de reporting"
+    },
+    {
+      "k": "CHRONOLOGIE",
+      "v": "Typiquement 2 à 4 semaines"
+    },
+    {
+      "k": "PRIX",
+      "v": "Tarif selon la portée du projet"
+    }
+  ],
+  "overviewLabel": "APERÇU",
+  "overviewTitle": "Passez moins de temps à rassembler des données,\nplus de temps à les utiliser.",
+  "overviewBody": [
+    "Les équipes créent constamment des données sur de nombreux services.",
+    "Lorsque les données de ventes, de demandes, de marketing, d'utilisation des produits, de projets, d'enquêtes, d'avis et d'opérations se trouvent à différents endroits, les gens finissent par chercher, copier et nettoyer manuellement.",
+    "LES DONNÉES & RAPPORTS connecte ce travail répétitif en un seul flux de données — tirez ce dont vous avez besoin, nettoyez selon les règles, calculez les indicateurs clés, et livrez-le sous forme de tableau de bord ou de rapport."
+  ],
+  "problemsLabel": "PROBLÈMES",
+  "problemsTitle": "Travail que nous pouvons automatiser.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "COLLECTE DE DONNÉES",
+      "d": "Les gens tirent encore les données de plusieurs services manuellement."
+    },
+    {
+      "n": "02",
+      "t": "NETTOYAGE DES DONNÉES",
+      "d": "Les formats diffèrent et le nettoyage se produit à chaque fois."
+    },
+    {
+      "n": "03",
+      "t": "RAPPORT RÉCURRENT",
+      "d": "Les rapports hebdomadaires ou mensuels sont reconstruits à plusieurs reprises."
+    },
+    {
+      "n": "04",
+      "t": "SUIVI DES MÉTRIQUES",
+      "d": "Les ventes, les utilisateurs, les demandes et la conversion nécessitent un suivi continu."
+    },
+    {
+      "n": "05",
+      "t": "PLUSIEURS SOURCES",
+      "d": "Les données sont dispersées à travers des feuilles de calcul, des formulaires et des bases de données."
+    },
+    {
+      "n": "06",
+      "t": "LIVRAISON DES RAPPORTS",
+      "d": "Les rapports finis doivent parvenir aux propriétaires selon un calendrier."
+    }
+  ],
+  "baLabel": "AVANT / APRÈS",
+  "baTitle": "Reporting manuel vs\ndonnées et rapports automatisés",
+  "beforeLabel": "MANUEL",
+  "afterLabel": "AUTOMATISÉ",
+  "before": [
+    "Copier les données de chaque service",
+    "Coller dans des feuilles de calcul",
+    "Calculer les indicateurs à la main",
+    "Reconstruire le rapport à chaque cycle"
+  ],
+  "after": [
+    "Collecter automatiquement les données depuis les sources",
+    "Nettoyer les données selon des règles définies",
+    "Calculer automatiquement les indicateurs",
+    "Livrer les rapports et tableaux de bord selon le calendrier"
+  ],
+  "capsLabel": "CAPACITÉS",
+  "capsTitle": "Nous construisons le flux de données dont vous avez besoin.",
+  "caps": [
+    {
+      "t": "COLLECTE DE DONNÉES",
+      "d": "Extraire les données nécessaires de plusieurs sources."
+    },
+    {
+      "t": "NETTOYAGE DES DONNÉES",
+      "d": "Supprimer les doublons, les valeurs vides et les écarts de format selon des règles définies."
+    },
+    {
+      "t": "TRANSFORMATION DES DONNÉES",
+      "d": "Transformer les données brutes en formes prêtes pour l'analyse et le reporting."
+    },
+    {
+      "t": "CALCUL DES MÉTRIQUES",
+      "d": "Calculer des métriques comme le chiffre d'affaires, la croissance, la conversion et les utilisateurs."
+    },
+    {
+      "t": "RAPPORT AUTOMATISÉ",
+      "d": "Générer des rapports sur une cadence hebdomadaire, mensuelle ou autre."
+    },
+    {
+      "t": "TABLEAU DE BORD",
+      "d": "Créer un tableau de bord qui garde les principales métriques visibles en un seul endroit."
+    },
+    {
+      "t": "RÉSUMÉ IA",
+      "d": "Lorsque nécessaire, résumez les données ou les retours clients avec l'IA."
+    },
+    {
+      "t": "LIVRAISON DES RAPPORTS",
+      "d": "Livrez les résultats par e-mail, feuilles de calcul, tableaux de bord ou autres destinations."
+    }
+  ],
+  "sourcesLabel": "SOURCES DE DONNÉES",
+  "sourcesTitle": "Connectez les données que vous utilisez déjà.",
+  "sourcesNote": "La connectivité réelle dépend de l'API de chaque service et de la méthode d'accès aux données.",
+  "sources": [
+    "Google Sheets",
+    "Excel / CSV",
+    "Formulaires",
+    "Base de données",
+    "Données du site Web",
+    "Données de l'application",
+    "Analytique",
+    "CRM",
+    "Données de commerce électronique",
+    "Données Marketing",
+    "Retour des Clients",
+    "Avis",
+    "API externe"
+  ],
+  "useLabel": "CAS D'UTILISATION",
+  "useTitle": "Systèmes que nous pouvons construire.",
+  "useBadge": "Exemples construisibles",
+  "useCases": [
+    {
+      "t": "RAPPORT DE VENTES",
+      "d": "Collecter automatiquement les données de ventes dans des rapports quotidiens, hebdomadaires ou mensuels."
+    },
+    {
+      "t": "RAPPORT MARKETING",
+      "d": "Organiser les publicités et les données marketing pour comparer la performance des canaux."
+    },
+    {
+      "t": "RAPPORT CLIENT",
+      "d": "Organiser les demandes et retours pour identifier les problèmes et les requêtes récurrentes."
+    },
+    {
+      "t": "RAPPORT D'AVIS",
+      "d": "Collecter les avis sur les produits et résumer les thèmes, problèmes et tendances des évaluations."
+    },
+    {
+      "t": "RAPPORT PRODUIT",
+      "d": "Organiser les données utilisateurs et produits en métriques principales des produits."
+    },
+    {
+      "t": "RAPPORT OPÉRATIONNEL",
+      "d": "Collecter les données opérationnelles dans des rapports d'état opérationnel récurrents."
+    },
+    {
+      "t": "RÉSUMÉ EXÉCUTIF",
+      "d": "Résumez plusieurs sources en indicateurs clés prêts à prendre la décision. "
+    },
+    {
+      "t": "RÉSUMÉ DES RETOURS DE L’IA",
+      "d": "Classez et résumez les retours volumineux en opinions principales. "
+    }
+  ],
+  "flowLabel": "EXEMPLE DE FLUX DE TRAVAIL",
+  "flowTitle": "Comment les données deviennent un rapport",
+  "flow": [
+    {
+      "n": "01",
+      "t": "COLLECTER",
+      "d": "Puisez dans des tableaux de calcul, des bases de données et des API. \n Nous concevons ensemble les connexions et les plannings de collecte. "
+    },
+    {
+      "n": "02",
+      "t": "CLEAN",
+      "d": "Corrigez les doublons, les lacunes et les incompatibilités de format. \n Les données sont normalisées selon vos règles définies. "
+    },
+    {
+      "n": "03",
+      "t": "PROCESSUS",
+      "d": "Effectuez les calculs et transformations nécessaires. \n Données de forme pour les métriques dont vous avez besoin. "
+    },
+    {
+      "n": "04",
+      "t": "ANALYSER",
+      "d": "Extraire les indicateurs clés et les informations nécessaires. \n Comparer les tendances et repérer les anomalies. "
+    },
+    {
+      "n": "05",
+      "t": "RAPPORT",
+      "d": "Générez un tableau de bord ou un rapport. \n Conçu sous un formulaire que votre équipe peut utiliser immédiatement. "
+    },
+    {
+      "n": "06",
+      "t": "LIVRAISON",
+      "d": "Envoyez les résultats par e-mail ou vers une destination choisie.\nLivré automatiquement selon le calendrier."
+    }
+  ],
+  "reportLabel": "RAPPORT",
+  "reportTitle": "Les rapports contiennent uniquement ce dont vous avez besoin.",
+  "reportLead": "Selon le projet, les rapports peuvent inclure des éléments comme ceux-ci. Le contenu n'est pas identique pour tous les projets — il suit vos objectifs.",
+  "reportItems": [
+    "Résumé",
+    "Indicateurs Clés",
+    "Performance",
+    "Changement par rapport à la période précédente",
+    "Éléments principaux",
+    "Problèmes",
+    "Retour des Clients",
+    "Tendance",
+    "Aperçus",
+    "Résumé IA",
+    "Référence des données brutes"
+  ],
+  "dashLabel": "TABLEAU DE BORD",
+  "dashTitle": "Étendez-le à un tableau de bord quasi en temps réel si nécessaire.",
+  "dashLead": "Au-delà des rapports PDF ou tableurs programmés, nous pouvons construire un tableau de bord web lorsque le projet le nécessite.",
+  "dashNote": "Les tableaux de bord ne sont pas automatiquement inclus — ils sont ajoutés selon le périmètre du projet.",
+  "dashMetricsLabel": "Exemples de métriques",
+  "dashMetrics": [
+    "Chiffre d'affaires",
+    "Commandes",
+    "Utilisateurs",
+    "Conversion",
+    "Prospects",
+    "Fidélisation",
+    "Retour des Clients",
+    "Produits phares",
+    "Performance des canaux",
+    "Comparaison des périodes"
+  ],
+  "dashFiltersLabel": "Exemples de filtres",
+  "dashFilters": [
+    "Aujourd'hui",
+    "7 jours",
+    "30 jours",
+    "Période personnalisée",
+    "Canal",
+    "Produit",
+    "Catégorie"
+  ],
+  "aiLabel": "RAPPORTING IA",
+  "aiTitle": "Organisez le sens, pas seulement les chiffres.",
+  "aiLead": "Lorsque cela est nécessaire, l'IA peut résumer de grands textes et données sous des formats que les gens peuvent consulter rapidement.",
+  "aiExamples": [
+    "Examiner les résumés thématiques",
+    "Détection des plaintes récurrentes",
+    "Regroupement des retours positifs",
+    "Classification des demandes client",
+    "Explications période par période",
+    "Brouillons de résumé de rapport"
+  ],
+  "aiNote": "Les analyses et résumés générés par l'IA sont à titre de référence. Les décisions importantes peuvent encore nécessiter la vérification des données sources.",
+  "delLabel": "LIVRABLES",
+  "delTitle": "Ce que vous recevez après le projet",
+  "delLead": "Selon l'étendue, nous fournissons les livrables dont vous avez besoin parmi la liste ci-dessous. Chaque projet n'inclut pas tous les éléments.",
+  "deliverables": [
+    "Flux de collecte des données",
+    "Règles de nettoyage des données",
+    "Définition des métriques",
+    "Flux de travail automatisé",
+    "Modèle de rapport",
+    "Rapport automatisé",
+    "Tableau de bord",
+    "Rapports programmés",
+    "Résumé IA",
+    "Exportation des données",
+    "Documentation de base",
+    "Guide opérationnel"
+  ],
+  "processLabel": "PROCESSUS",
+  "processTitle": "Nous commençons par la structure des données.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DÉCOUVERTE",
+      "d": "Confirmez les données que vous gérez et leur emplacement."
+    },
+    {
+      "n": "02",
+      "t": "AUDIT DES DONNÉES",
+      "d": "Examiner les formats, les méthodes d'accès et la qualité."
+    },
+    {
+      "n": "03",
+      "t": "MÉTRIQUES",
+      "d": "Définir les métriques et l'objectif du rapport qui comptent."
+    },
+    {
+      "n": "04",
+      "t": "ARCHITECTURE",
+      "d": "Concevoir collecter → traiter → stocker → rapporter."
+    },
+    {
+      "n": "05",
+      "t": "CONSTRUIRE",
+      "d": "Mettre en œuvre le pipeline d'automatisation et le rapport/tableau de bord."
+    },
+    {
+      "n": "06",
+      "t": "TEST",
+      "d": "Valider les calculs et les résultats avec des données réelles."
+    },
+    {
+      "n": "07",
+      "t": "LANCEMENT",
+      "d": "Configurer les exécutions programmées et la livraison."
+    },
+    {
+      "n": "08",
+      "t": "REMISE",
+      "d": "Transmettre les directives opérationnelles et les notes de gestion de base."
+    }
+  ],
+  "scopeLabel": "NIVEAUX DE PORTÉE",
+  "scopeTitle": "Un moyen de comprendre la complexité du projet.",
+  "scopeLead": "Ce sont des niveaux de référence pour la tarification — pas des forfaits fixes.",
+  "scopes": [
+    {
+      "t": "AUTOMATISATION DU RAPPORT DE BASE",
+      "items": [
+        "Une ou quelques sources de données",
+        "Nettoyage de base",
+        "Métriques principales",
+        "Rapport programmé",
+        "Livraison simple"
+      ]
+    },
+    {
+      "t": "RAPPORTS MULTISOURCES",
+      "items": [
+        "Sources multiples",
+        "Consolidation des données",
+        "Multiples métriques",
+        "Rapports automatisés",
+        "Traitement conditionnel"
+      ]
+    },
+    {
+      "t": "SYSTÈME DE DONNÉES PERSONNALISÉ",
+      "items": [
+        "Intégration multi-systèmes",
+        "Base de données personnalisée",
+        "Tableau de bord web",
+        "Métriques avancées",
+        "Analyse IA",
+        "Automatisation personnalisée"
+      ]
+    }
+  ],
+  "timeLabel": "CHRONOLOGIE",
+  "timeTitle": "Le calendrier dépend de l'étendue.",
+  "timeLead": "Les autorisations d'accès, les API, la qualité des données et les fonctionnalités requises peuvent modifier le calendrier.",
+  "timelines": [
+    {
+      "t": "Automatisation simple des rapports",
+      "d": "Environ 1 à 2 semaines"
+    },
+    {
+      "t": "Sources de données multiples",
+      "d": "Environ 2 à 4 semaines"
+    },
+    {
+      "t": "Tableau de bord personnalisé / Système de données complexe",
+      "d": "Délimité séparément"
+    }
+  ],
+  "priceLabel": "COÛT DU PROJET",
+  "priceTitle": "Nous construisons uniquement la portée dont vous avez besoin.",
+  "priceName": "DONNÉES & RAPPORTS",
+  "priceValue": "À partir de ₩500,000",
+  "priceFactorsLabel": "Ce qui influence le devis",
+  "priceFactors": [
+    "Nombre de sources de données",
+    "Volume et structure des données",
+    "Intégration API",
+    "Complexité du nettoyage",
+    "Nombre de métriques",
+    "Flux de travail d’automatisation",
+    "Besoin de tableau de bord",
+    "Fonctionnalités IA",
+    "Comptes / permissions",
+    "Types de rapports",
+    "Cadence de course",
+    "Maintenance"
+  ],
+  "priceNote": "Les devis finaux sont fixés après avoir examiné votre environnement de données actuel et les fonctionnalités requises. ",
+  "extLabel": "COÛT EXTERNE",
+  "extTitle": "Coûts qui peuvent être en dehors des frais de construction Newon",
+  "extItems": [
+    "Serveur / Hébergement",
+    "Base de données",
+    "API externe",
+    "API IA",
+    "Service d’analyse",
+    "SaaS d'automatisation",
+    "Reporting SaaS",
+    "Stockage cloud",
+    "Autres services tiers payants"
+  ],
+  "faqLabel": "FAQ",
+  "faqTitle": "Questions, réponses",
+  "faqs": [
+    {
+      "q": "Quelles données pouvez-vous connecter ? ",
+      "a": "Les tableaux Tableur, CSV, bases de données, analytiques, formulaires et API externes sont courants. La connectivité réelle dépend de la méthode d’accès et de l’API de chaque service. "
+    },
+    {
+      "q": "Peut-on commencer uniquement par Google Sheets ?",
+      "a": "Oui. Nous examinons la structure actuelle, puis définissons l'étendue du nettoyage et de l'automatisation."
+    },
+    {
+      "q": "Pouvons-nous recevoir des rapports chaque semaine automatiquement ?",
+      "a": "Selon l'étendue, nous pouvons créer un traitement et une livraison planifiés."
+    },
+    {
+      "q": "Pouvez-vous également créer un tableau de bord ?",
+      "a": "Oui. Les métriques, la méthode de rafraîchissement et le contexte utilisateur sont définis séparément lorsque nécessaire."
+    },
+    {
+      "q": "Est-il possible d'ajouter une analyse par IA ?",
+      "a": "Oui — par exemple classifier et résumer des avis, des demandes et des textes d'enquête."
+    },
+    {
+      "q": "Et si nos données sont désordonnées ?",
+      "a": "Nous commençons par examiner la qualité des données actuelles. Un nettoyage important peut être envisagé comme un travail supplémentaire."
+    },
+    {
+      "q": "Les données en temps réel sont-elles possibles ?",
+      "a": "Cela dépend de la source et de l'API. Le traitement en temps réel n'est pas garanti pour chaque système."
+    },
+    {
+      "q": "Soutenez-vous la maintenance après le lancement ?",
+      "a": "Oui — les modifications de code source, les ajustements d'automatisation et les ajouts de fonctionnalités peuvent être définis séparément."
+    }
+  ],
+  "finalLabel": "DÉMARRER UN PROJET",
+  "finalTitle": "Automatisez les rapports\nque vous créez encore manuellement.",
+  "finalLead": "Indiquez-nous les données que vous utilisez et les rapports que vous répétez. Nous expliquerons comment la collecte, le nettoyage et la livraison peuvent se connecter — et à quoi ressemble le périmètre du projet.",
+  "formTitle": "Demande de DONNÉES & RAPPORTS",
+  "formLead": "Partagez votre environnement de données actuel et les résultats souhaités afin que nous puissions confirmer le périmètre.",
+  "formCategory": "AUTOMATISATION",
+  "formService": "DONNÉES & RAPPORTS",
+  "labelCategory": "CATÉGORIE DE SERVICE",
+  "labelService": "SERVICE",
+  "labelName": "Nom",
+  "labelCompany": "Entreprise / marque",
+  "labelEmail": "Email",
+  "labelDataWhere": "Où les données sont gérées aujourd'hui",
+  "labelDataSources": "Sources de données dont vous avez besoin",
+  "labelCurrentReport": "Rapports que vous produisez actuellement",
+  "labelDesired": "Résultats souhaités",
+  "labelDashboard": "Tableau de bord nécessaire ?",
+  "labelCadence": "Fréquence des rapports",
+  "labelTimeline": "Calendrier prévu",
+  "labelBudget": "Plage budgétaire",
+  "labelMessage": "Description du projet",
+  "labelConsent": "J'accepte la collecte et l'utilisation des informations personnelles.",
+  "privacyLink": "Politique de confidentialité",
+  "optional": "facultatif",
+  "dataWhereOptions": [
+    "Google Sheets",
+    "Excel / CSV",
+    "Base de données",
+    "Analytique",
+    "CRM",
+    "Commerce électronique",
+    "Autre"
+  ],
+  "desiredOptions": [
+    "Rapport automatisé",
+    "Tableau de bord",
+    "Intégration de données",
+    "Résumé IA",
+    "Pipeline de données",
+    "Pas sûr"
+  ],
+  "dashboardOptions": [
+    "Nécessaire",
+    "Non nécessaire",
+    "Pas encore sûr"
+  ],
+  "cadenceOptions": [
+    "Quotidien",
+    "Hebdomadaire",
+    "Mensuel",
+    "Trimestriel",
+    "Autre / À déterminer"
+  ],
+  "timelineOptions": [
+    "Dès que possible",
+    "1–2 semaines",
+    "2 à 4 semaines",
+    "1–2 mois",
+    "À déterminer"
+  ],
+  "budgetOptions": [
+    "₩500k–1M",
+    "₩1M–3M",
+    "₩3M–5M",
+    "₩5M+",
+    "À déterminer"
+  ],
+  "phDataSources": "p.ex. Google Sheets + Analytique",
+  "phCurrentReport": "p.ex. rapport hebdomadaire des ventes, rapport mensuel marketing",
+  "phMessage": "Partager les emplacements des données, le travail récurrent et les résultats souhaités.",
+  "submit": "Envoyer une demande",
+  "submitting": "Envoyer... ",
+  "fail": "Envoi échoué. Veuillez réessayer ou nous envoyer un e-mail. ",
+  "mailSubject": "Demande de DONNÉES & RAPPORTS Newon",
+  "backAutomation": "Retour à l’AUTOMATISATION →",
+  "exploreAi": "Voir l’AUTOMATISATION IA →"
+}

@@ -1,0 +1,483 @@
+{
+  "seoTitle": "PROTÓTIPO DE APLICATIVO | Newon Negócios",
+  "metaDescription": "Transforme ideias de aplicativos em telas e fluxos interativos iOS e Android — valide com investidores e equipes internas antes do desenvolvimento completo. Newon PROTÓTIPO DE APLICATIVO.",
+  "crumbBusiness": "NEGÓCIOS",
+  "crumbServices": "SERVIÇOS",
+  "crumbBuild": "CONSTRUIR",
+  "crumbHere": "PROTÓTIPO DE APLICATIVO",
+  "eyebrow": "PROTÓTIPO DE APLICATIVO",
+  "subEyebrow": "CONSTRUIR",
+  "headline": "Transforme uma ideia de aplicativo\nem uma experiência real.",
+  "lead": "Projetamos e construímos protótipos de aplicativos interativos com fluxos principais iOS e Android. Antes de reuniões com investidores, revisões internas ou início do desenvolvimento – valide como a ideia realmente parece quando as pessoas a usam.",
+  "ctaPrimary": "Consulta de protótipo de aplicativo →",
+  "ctaSecondary": "Veja o fluxo do protótipo ↓",
+  "meta": [
+    {
+      "k": "SERVIÇO",
+      "v": "Protótipo de aplicativo"
+    },
+    {
+      "k": "MELHOR PARA",
+      "v": "Investidor e validação interna"
+    },
+    {
+      "k": "LINHA DO TEMPO",
+      "v": "Cerca de 2–3 semanas"
+    },
+    {
+      "k": "PREÇO",
+      "v": "A partir de ₩500.000"
+    }
+  ],
+  "overviewLabel": "VISÃO GERAL",
+  "overviewTitle": "Você tem a história.\nNão a experiência.",
+  "overviewBody": [
+    "As ideias de aplicativos raramente chegam apenas por meio de slides e wireframes. Investidores, parceiros e partes interessadas internas pedem para experimentar — e as equipes de engenharia lutam para começar sem telas, fluxos e estados definidos.",
+    "Construir um aplicativo de produção desde o primeiro dia custa muito tempo e dinheiro. Figma por si só muitas vezes carece de interação, transições e contexto móvel. O que você precisa é de um protótipo onde os fluxos principais realmente funcionem.",
+    "O APP PROTOTYPE começa definindo os objetivos do aplicativo e os principais cenários. Projetamos telas iOS e Android, fluxos de usuário e interações e, em seguida, entregamos um protótipo clicável para compartilhamento, validação e transferência de desenvolvimento."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Útil quando você enfrenta essas situações.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "SÓ IDEIA",
+      "d": "Você tem um conceito, mas nada para mostrar como telas e fluxos reais.\nA explicação por si só não convence."
+    },
+    {
+      "n": "02",
+      "t": "DEMONSTRAÇÃO PARA INVESTIDORES",
+      "d": "Você precisa de uma demonstração funcional antes das reuniões com investidores ou parceiros.\nO valor central deve ser sentido, não imaginado."
+    },
+    {
+      "n": "03",
+      "t": "ALINHAMENTO INTERNO",
+      "d": "Produto, design, engenharia e liderança não estão alinhados.\nVocê precisa de um protótipo ao qual todos possam reagir."
+    },
+    {
+      "n": "04",
+      "t": "FALTA DE FLUXO",
+      "d": "Você tem ligações ou simulações, mas nenhum fluxo validado ou transições de estado.\nA integração, as ações principais e os caminhos de borda não são claros."
+    },
+    {
+      "n": "05",
+      "t": "RISCO PRÉ-DEV",
+      "d": "Escopo, telas e prioridades são indefinidos antes do desenvolvimento.\nVocê precisa de validação antes de se comprometer com a construção do MVP."
+    },
+    {
+      "n": "06",
+      "t": "ESCOLHA DA PLATAFORMA",
+      "d": "Você deve decidir iOS, Android ou web primeiro.\nAs diferenças de UX da plataforma precisam ser testadas."
+    }
+  ],
+  "baLabel": "ANTES / DEPOIS",
+  "baTitle": "Simulações estáticas vs\nprotótipo funcional",
+  "beforeLabel": "ANTES",
+  "afterLabel": "DEPOIS",
+  "before": [
+    "Somente slides, fios e simulações estáticas",
+    "Fluxos principais explicados em palavras",
+    "As avaliações internas e de investidores dependem da imaginação",
+    "Escopo de desenvolvimento e prioridade de tela pouco claros"
+  ],
+  "after": [
+    "Telas principais e fluxos iOS/Android definidos",
+    "Protótipo clicável com transições reais",
+    "Compartilhe link ou build para investidor e validação interna",
+    "Tela, fluxo e pacote de especificações para início do desenvolvimento"
+  ],
+  "capsLabel": "CAPACIDADES",
+  "capsTitle": "Executamos o trabalho de protótipo de aplicativo\ncomo um compromisso estruturado.",
+  "caps": [
+    {
+      "t": "QUADRO DE OBJETIVOS",
+      "d": "Defina a finalidade do aplicativo, os principais usuários e os cenários de sucesso.\nEsclareça o que o protótipo deve validar."
+    },
+    {
+      "t": "PROJETO DE FLUXO",
+      "d": "Projete integração, ações principais e transições de estado chave.\nForma fluxos para o contexto iOS e Android."
+    },
+    {
+      "t": "DESIGN DE UX/UI",
+      "d": "Projete a interface do usuário da tela principal e a estrutura de informações.\nReflete os padrões de navegação e toque móvel."
+    },
+    {
+      "t": "CONSTRUÇÃO INTERATIVA",
+      "d": "Crie um protótipo onde as interações funcionem.\nConcentre-se nos fluxos principais para obter velocidade."
+    },
+    {
+      "t": "ESCOPO DA PLATAFORMA",
+      "d": "Defina iOS, Android ou escopo da web para o objetivo do projeto.\nRefleta as diferenças de plataforma quando necessário."
+    },
+    {
+      "t": "SUPORTE DE VALIDAÇÃO",
+      "d": "Prepare formatos de compartilhamento para análise de investidores, interna e de usabilidade.\nInclua rodadas de revisão de feedback."
+    },
+    {
+      "t": "ESPECIFICAÇÃO E TRANSFERÊNCIA",
+      "d": "Documente telas, fluxos e interações.\nForneça transferência para MVP ou construção de produção."
+    },
+    {
+      "t": "PRÓXIMO PASSO",
+      "d": "Conecte o protótipo ao MVP ou ao desenvolvimento pronto para a loja.\nProponha escopo, cronograma e orçamento a seguir."
+    }
+  ],
+  "sourcesLabel": "ENTRADAS DO PROJETO",
+  "sourcesTitle": "Combinamos os insumos que seu protótipo precisa.",
+  "sourcesNote": "As entradas reais variam de acordo com o estágio da ideia, as especificações existentes e os aplicativos de referência.",
+  "sources": [
+    "Conceito e propósito do aplicativo",
+    "Segmentar usuários e cenários",
+    "Aplicativos de referência",
+    "Fios ou especificações existentes",
+    "Diretrizes de marca e UI",
+    "Contexto de mercado e concorrente",
+    "Lista de recursos principais",
+    "Onboarding e definição de ação principal",
+    "iOS vs Android prioridade",
+    "Prazo para investidor ou demonstração",
+    "Feedback das partes interessadas internas",
+    "Futuro MVP ou plano de lançamento"
+  ],
+  "useLabel": "CASOS DE USO",
+  "useTitle": "Protótipos que podemos construir.",
+  "useBadge": "Exemplos de tipos de compilação",
+  "useCases": [
+    {
+      "t": "DEMONSTRAÇÃO PARA INVESTIDORES",
+      "d": "Demonstração do fluxo principal para reuniões com investidores e parceiros.\nInteração que torna o valor tangível."
+    },
+    {
+      "t": "VALIDAÇÃO INTERNA",
+      "d": "Protótipo de alinhamento para liderança, produto, design e engenharia.\nRevisão interna e ciclo de feedback."
+    },
+    {
+      "t": "IDEIA DE APLICATIVO DE CONSUMIDOR",
+      "d": "Integração e uso principal para ideias de aplicativos B2C.\niOS e Android Validação UX."
+    },
+    {
+      "t": "APLICATIVO DE SERVIÇO",
+      "d": "Fluxos de reservas, pedidos, assinaturas ou aplicativos correspondentes.\nTransições de estado e design focado em CTA."
+    },
+    {
+      "t": "FERRAMENTA MÓVEL INTERNA",
+      "d": "Protótipo de ferramenta móvel de campo, operações ou administração.\nFunções, permissões e verificação de fluxo de tarefas."
+    },
+    {
+      "t": "RECURSO PoC",
+      "d": "Valide novos recursos, redesenho ou alterações de integração.\nPoC antes de estender um aplicativo existente."
+    },
+    {
+      "t": "MULTI-PLATAFORMA",
+      "d": "Núcleo compartilhado mais diferenças específicas da plataforma.\nSuporte a decisões de prioridade da plataforma."
+    },
+    {
+      "t": "ESCOPO PRÉ-MVP",
+      "d": "Defina o escopo, as telas e a prioridade do MVP antes da construção completa.\nMaterial para cotação de desenvolvimento e cronograma."
+    }
+  ],
+  "flowLabel": "EXEMPLO DE FLUXO DE TRABALHO",
+  "flowTitle": "Da ideia ao protótipo compartilhável",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINIR",
+      "d": "Defina a finalidade do aplicativo, os usuários e os principais cenários.\nAcorde o que o protótipo deve validar.",
+      "examples": [
+        "Objetivo",
+        "Usuários",
+        "Cenários",
+        "Linha do tempo"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ESTRUTURA",
+      "d": "Projete lista de telas, IA e fluxos.\nDefina o escopo iOS e Android.",
+      "examples": [
+        "Telas",
+        "Fluxos",
+        "IA",
+        "Plataforma"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "PROJETO",
+      "d": "Projete a interface do usuário da tela principal e a direção da interação.\nConfirme as telas necessárias para demonstração e validação.",
+      "examples": [
+        "IU",
+        "Movimento",
+        "Estados",
+        "Revisão"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PROTÓTIPO",
+      "d": "Crie um protótipo funcional.\nConclua os fluxos principais rapidamente.",
+      "examples": [
+        "Toque",
+        "Deslizar",
+        "Navegar",
+        "Estados"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "COMPARTILHE",
+      "d": "Forneça link de compartilhamento, construção e especificações.\nConecte feedback e próximas etapas.",
+      "examples": [
+        "Ligação",
+        "Demonstração",
+        "Especificações",
+        "MVP"
+      ]
+    }
+  ],
+  "reportLabel": "SAÍDA",
+  "reportTitle": "As entregas são um protótipo compartilhável e especificações de suporte.",
+  "reportLead": "A composição varia de acordo com o escopo do projeto. Abaixo estão os itens comuns.",
+  "reportMockStatus": "PROTÓTIPO · ESPEC.",
+  "reportMockK": "ESPECIFICAÇÕES DO PROTÓTIPO DO APLICATIVO",
+  "reportMockT": "Telas, fluxos, plataformas, interações",
+  "reportItems": [
+    "Metas e cenários",
+    "Lista de telas",
+    "Mapa de fluxo do usuário",
+    "Telas principais da IU",
+    "Notas de interação",
+    "Escopo da plataforma",
+    "Link/construção de protótipo",
+    "Notas de validação",
+    "Resumo de transferência",
+    "Caminho MVP (opcional)"
+  ],
+  "dashTitle": "Compartilhe tela, fluxo e escopo de plataforma em uma visualização.",
+  "dashLead": "Telas, fluxos, plataformas e integrações juntos aceleram o acordo de escopo e a preparação de demonstrações.",
+  "dashNote": "A contagem de telas, a plataforma e a profundidade da interação variam de acordo com o objetivo e o cronograma do projeto.",
+  "dashMetrics": [
+    "Telas",
+    "Fluxos",
+    "Plataformas",
+    "Integrações"
+  ],
+  "dashFilters": [
+    "Todos",
+    "Núcleo",
+    "iOS",
+    "Android"
+  ],
+  "aiLabel": "ACELERAÇÃO",
+  "aiTitle": "Automatize a repetição.\nConcentre-se no design e no protótipo.",
+  "aiLead": "Listas de telas, rascunhos de fluxo, notas de interação e listas de verificação de controle de qualidade podem ser assistidos por IA para aumentar a velocidade – enquanto as pessoas se concentram na experiência do usuário, nos fluxos principais e na qualidade do protótipo.",
+  "aiExamples": [
+    "Tela de rascunho e listas de fluxo",
+    "Cenários de estrutura e transições de estado",
+    "Rascunho de cópia e rótulos da IU",
+    "Listas de verificação de usabilidade e demonstração",
+    "Rascunhos de documentos de transferência e especificações",
+    "Compare o escopo e a prioridade do MVP"
+  ],
+  "aiNote": "As telas finais, os fluxos e as decisões de interação são confirmados com a equipe do projeto.",
+  "delLabel": "ENTREGAS",
+  "delTitle": "O que você recebe quando o projeto é concluído",
+  "delLead": "Entregamos os itens abaixo conforme necessidade para seu escopo.",
+  "deliverables": [
+    "Protótipo de aplicativo interativo",
+    "IU da tela principal",
+    "Mapa de fluxo do usuário",
+    "Especificações de tela e interação",
+    "Notas de escopo da plataforma",
+    "Link/construção de protótipo",
+    "Suporte para demonstração de validação",
+    "Pacote de transferência",
+    "Proposta de escopo MVP (opcional)"
+  ],
+  "processLabel": "PROCESSO",
+  "processTitle": "Do propósito ao compartilhamento.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCOBERTA",
+      "d": "Confirme a finalidade do aplicativo, os usuários, os principais cenários e o cronograma.\nEntenda as metas de demonstração e validação.",
+      "examples": [
+        "Objetivo",
+        "Usuários",
+        "Demonstração",
+        "Linha do tempo"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ESTRUTURA",
+      "d": "Defina a lista de telas, IA, fluxos e escopo da plataforma.\nSepare o núcleo das telas de expansão.",
+      "examples": [
+        "Telas",
+        "Fluxos",
+        "iOS",
+        "Android"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "PROJETO",
+      "d": "Projete a interface do usuário da tela principal e a direção da interação.\nExecute rodadas de revisão e feedback.",
+      "examples": [
+        "IU",
+        "Estados",
+        "Revisão",
+        "Revisar"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PROTÓTIPO",
+      "d": "Construa um protótipo funcional.\nVerifique os principais fluxos e transições.",
+      "examples": [
+        "Construir",
+        "Toque",
+        "Navegar",
+        "Polonês"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "VALIDAR",
+      "d": "Demonstração de suporte, revisão interna e verificação de usabilidade.\nAplicar feedback.",
+      "examples": [
+        "Demonstração",
+        "Comentários",
+        "Correções",
+        "Aprovação"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "ESPECIFICAÇÃO",
+      "d": "Documente telas, fluxos e interações.\nPrepare a transferência para desenvolvimento.",
+      "examples": [
+        "Especificações",
+        "Notas",
+        "Ativos",
+        "Transferência"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "PRÓXIMO",
+      "d": "Conecte MVP, compilação completa ou caminho pronto para armazenamento.\nProponha escopo, cronograma e orçamento a seguir.",
+      "examples": [
+        "MVP",
+        "Escopo",
+        "Citação",
+        "Fase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "NÍVEIS DE ESCOPO",
+  "scopeTitle": "Como pensar na complexidade do projeto.",
+  "scopeLead": "Não é um pacote fixo. O escopo é definido por contagem de telas, plataforma, profundidade de interação e integrações.",
+  "scopes": [
+    {
+      "t": "PROTÓTIPO",
+      "items": [
+        "5–8 telas principais",
+        "1–2 fluxos principais",
+        "Protótipo interativo",
+        "iOS ou Android foco",
+        "Validação interna e do investidor"
+      ]
+    },
+    {
+      "t": "APLICATIVO MVP",
+      "items": [
+        "Telas expandidas e múltiplos fluxos",
+        "iOS + Android escopo",
+        "Estados e caminhos de borda incluídos",
+        "Integração básica ou simulação de API",
+        "Pacote de especificações iniciais do desenvolvedor"
+      ]
+    },
+    {
+      "t": "PRONTO PARA ARMAZENAGEM",
+      "items": [
+        "Desenvolvimento de aplicativos prontos para loja",
+        "Back-end, autenticação, pagamentos, push",
+        "Controle de qualidade, implantação, envio de armazenamento",
+        "Link de operações e manutenção",
+        "Orçamento e cronograma personalizados"
+      ]
+    }
+  ],
+  "timeLabel": "LINHA DO TEMPO",
+  "timeTitle": "O cronograma depende do escopo.",
+  "timeLead": "A duração varia de acordo com a contagem de telas, profundidade da interação, plataforma e rodadas de feedback.",
+  "timelines": [
+    {
+      "t": "Protótipo",
+      "d": "Cerca de 2–3 semanas · varia"
+    },
+    {
+      "t": "Aplicativo MVP",
+      "d": "Cerca de 4–6 semanas · varia"
+    },
+    {
+      "t": "Pronto para loja",
+      "d": "Personalizado · escopo separado"
+    }
+  ],
+  "priceLabel": "CUSTO DO PROJETO",
+  "priceTitle": "Cotado por projeto.",
+  "priceName": "PROTÓTIPO DE APLICATIVO",
+  "priceValue": "A partir de ₩500.000",
+  "priceFactorsLabel": "Fatores de preços",
+  "priceFactors": [
+    "Telas – contagem de núcleos e expansões",
+    "Fluxos - complexidade de fluxo e estado",
+    "Plataforma — iOS / Android / web",
+    "Interação – interação e profundidade de movimento",
+    "Cronograma – cronograma e rodadas de feedback",
+    "Integração – simulação de API e escopo de link",
+    "Profundidade de design – UI e sistema de design",
+    "Próxima etapa – MVP ou link pronto para loja"
+  ],
+  "priceNote": "A partir de ₩500.000 é o preço inicial do APP PROTOTYPE. O aplicativo MVP e as compilações prontas para a loja são citadas separadamente por escopo.",
+  "faqLabel": "Perguntas frequentes",
+  "faqTitle": "Perguntas frequentes",
+  "faqs": [
+    {
+      "q": "O que a partir de ₩500.000 cobre?",
+      "a": "É o preço inicial do APP PROTOTYPE – normalmente telas principais e 1–2 fluxos interativos. O aplicativo MVP e as compilações prontas para loja são cotadas separadamente."
+    },
+    {
+      "q": "Este é um aplicativo pronto para loja?",
+      "a": "O padrão é um protótipo para validação do investidor, interna e pré-desenvolvimento. O desenvolvimento de aplicativos prontos para a loja é um escopo pronto para a loja separado."
+    },
+    {
+      "q": "Você pode cobrir iOS e Android?",
+      "a": "Sim. Projetamos para um foco de plataforma ou ambos, dependendo do objetivo do projeto. A cotação varia de acordo com as telas e a contagem de plataformas."
+    },
+    {
+      "q": "Quanto tempo leva?",
+      "a": "O protótipo dura normalmente de 2 a 3 semanas; Aplicativo MVP cerca de 4–6 semanas. Depende das telas, da profundidade da interação e das rodadas de feedback."
+    },
+    {
+      "q": "Isso pode continuar em desenvolvimento?",
+      "a": "Sim. Podemos propor MVP, construção completa ou escopo pronto para armazenamento a partir do protótipo e das especificações."
+    },
+    {
+      "q": "Quantas revisões?",
+      "a": "Duas rodadas de revisão estão incluídas. Alterações fora do escopo e telas extras afetam o cronograma e a cotação."
+    },
+    {
+      "q": "Apenas Figma ou um protótipo funcional?",
+      "a": "O foco é um protótipo de trabalho interativo. Arquivos de UI e documentos de especificações podem ser incluídos quando necessário."
+    }
+  ],
+  "finalLabel": "INICIE UM PROJETO",
+  "finalTitle": "Mostre a experiência\nantes da apresentação do argumento de venda.",
+  "finalLead": "Se você tem uma ideia de aplicativo, objetivo de demonstração, aplicativos de referência ou um prazo, diga-nos o que você precisa validar. Confirmaremos o escopo do protótipo iOS/Android e a abordagem de validação juntos.",
+  "ctaFinalSecondary": "Ver tudo CONSTRUÇÃO →",
+  "ctaFinalSecondaryHref": "../build/"
+}

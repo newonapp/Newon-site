@@ -1,0 +1,483 @@
+{
+  "seoTitle": "INTERNAL SYSTEM | Newon Geschäft",
+  "metaDescription": "Erstellen Sie benutzerdefinierte interne Betriebs- und Managementsysteme - Anforderungen, Berechtigungen, Implementierung, Bereitstellung und Ops-Anleitungen. Newon INTERNAL SYSTEM.",
+  "crumbBusiness": "UNTERNEHMEN",
+  "crumbServices": "DIENSTLEISTUNGEN",
+  "crumbSolutions": "LÖSUNGEN",
+  "crumbHere": "INTERNAL SYSTEM",
+  "eyebrow": "INTERNAL SYSTEM",
+  "subEyebrow": "LÖSUNGEN",
+  "headline": "Die interne Arbeit ist schwer.\nSysteme sind verstreut.",
+  "lead": "Genehmigungen, Anfragen, Inventar, HR, Abwicklung, Reporting, Client- und Projekt-Ops - wir entwerfen und bauen benutzerdefinierte interne Web-, Admin- und Portalsysteme. Von Anforderungen, Berechtigungen und Workflows bis hin zu Integrationen und Admin Console – als ein System bereitgestellt, das Ihr Team tatsächlich verwendet.",
+  "ctaPrimary": "Interne Systemuntersuchung",
+  "ctaSecondary": "Siehe den Build-Flow ↓",
+  "meta": [
+    {
+      "k": "DIENST",
+      "v": "Internes System"
+    },
+    {
+      "k": "BESTES",
+      "v": "Interne Ops Digitalisierung"
+    },
+    {
+      "k": "TIMELIN",
+      "v": "Abhängig vom Umfang"
+    },
+    {
+      "k": "PREIS",
+      "v": "Benutzerdefiniertes Angebot"
+    }
+  ],
+  "overviewLabel": "ÜBERSICHT",
+  "overviewTitle": "Ops läuft auf Spreadsheets\nund Chat Threads.",
+  "overviewBody": [
+    "Interne Anfragen, Genehmigungen, Abrechnung, Berichterstattung und Dateneingabe – operative Arbeiten sind bereits vorhanden. Das Problem ist, dass es sich über Tabellenkalkulationen, Chat, manuelle Schritte und mehrere SaaS-Tools anstelle eines verbundenen Systems erstreckt.",
+    "Off-the-shelf-Tools passen zu Teilen der Arbeit, haben jedoch Probleme mit Ihrer Berechtigungsstruktur, Genehmigungszeilen, Daten und Legacy-Integrationen. Teams enden im \"fast funktioniert, aber umständlichen\" Modus.",
+    "INTERNAL SYSTEM beginnt mit der Definition interner Arbeit, Benutzer und Berechtigungsstruktur. Dann entwerfen wir Workflows, Admin Console, Daten und Integrationen – und liefern Implementierungs-, Bereitstellungs- und Operations-Guides als ein internes System."
+  ],
+  "problemsLabel": "PROBLEM",
+  "problemsTitle": "Hilfreich, wenn Sie sich diesen Situationen stellen.",
+  "problems": [
+    {
+      "n": "01 01",
+      "t": "MANUELLOPS",
+      "d": "Anfragen, Genehmigungen und Abrechnungen laufen auf manuellen Schritten, Tabellenkalkulationen oder Chat.\nVerpasste Gegenstände, Verzögerungen und schlechte Rückverfolgbarkeit wiederholen sich."
+    },
+    {
+      "n": "02",
+      "t": "KATTERIERTE INSTRUMENTE",
+      "d": "Jede Abteilung verwendet unterschiedliche Werkzeuge und Gewohnheiten.\nEin interner Prozess ist nicht in Systemform verbunden."
+    },
+    {
+      "n": "03",
+      "t": "ZULASSUNGSKHAOS",
+      "d": "Zugang und Genehmigung sollten sich je nach Rolle und Abteilung unterscheiden, aber die Struktur fehlt.\nAudit und Geschichte sind hart."
+    },
+    {
+      "n": "04",
+      "t": "GENEHMIGUNGSBOTTLENECK",
+      "d": "Genehmigung, Überprüfung, Zuweisung und Statusmanagement sind Engpässe.\nEs ist unklar, wer wann handeln soll."
+    },
+    {
+      "n": "05",
+      "t": "RECHTSVORSCHRIFTEN",
+      "d": "Sie benötigen Links zu ERP, CRM, Buchhaltung oder HR-Systemen.\nNeue Arbeit bleibt von vorhandenen Daten und Prozessen getrennt."
+    },
+    {
+      "n": "06",
+      "t": "WACHSTUM STRAIN",
+      "d": "Das Volumen von Org, Transaktionen oder Anfragen wächst über die aktuellen Methoden hinaus.\nSie benötigen eine Systemgrundlage für den operativen Maßstab."
+    }
+  ],
+  "baLabel": "VOR / NACH",
+  "baTitle": "Verstreute Operationen gegen\nverbundenes internes System",
+  "beforeLabel": "VOR",
+  "afterLabel": "NACH",
+  "before": [
+    "Arbeit verteilt über Tabellenkalkulationen, Chat, manuelle Schritte, SaaS",
+    "Schwer zu verfolgende Anfragen, Genehmigungen und Status",
+    "Schwache Berechtigungen, Audit und Historie",
+    "Prozess bricht, wenn Operationen skalieren"
+  ],
+  "after": [
+    "Interne Arbeits- und Berechtigungsstruktur definiert erste",
+    "Anfragen, Genehmigungen, Status und Reporting in einem System",
+    "Admin Console mit rollenbasiertem Zugriff",
+    "Deployment, Ops und Erweiterungspfad dokumentiert"
+  ],
+  "capsLabel": "KAPAZITÄTEN",
+  "capsTitle": "Wir betreiben interne System Build\nals ein strukturiertes Engagement aus.",
+  "caps": [
+    {
+      "t": "ANFORDERUNGEN",
+      "d": "Definieren Sie interne Arbeit, Benutzer, Genehmigungslinien, Erfolgskriterien.\nKlären Sie, was zu systematisieren ist."
+    },
+    {
+      "t": "ARBEITSBEREICH",
+      "d": "Entwurfsanfrage, Genehmigung, Zuweisung, Status und Benachrichtigungsflüsse.\nStruktur zum Org-Prozess."
+    },
+    {
+      "t": "ROLLEN UND PERMISSIONEN",
+      "d": "Konstruktionsabteilung, Rolle, Berechtigung und Protokollstruktur.\nDefinieren Sie, wer was sehen, tun und genehmigen kann."
+    },
+    {
+      "t": "ADMIN-KONSOLL",
+      "d": "Erstellen Sie Bildschirme und Tools für Betreiber und Administratoren.\nUmfassen Sie Einstellungen, Überwachung und Verarbeitung von Warteschlangen."
+    },
+    {
+      "t": "DATEN & BERICHTERSTATTUNG",
+      "d": "Design-Input, Aggregation, Bericht und Dashboard-Struktur.\nMachen Sie operative Metriken und Geschichte sichtbar."
+    },
+    {
+      "t": "Integrierungen",
+      "d": "Verbinden Sie ERP, CRM, HR, Buchhaltung, API, SSO und bestehende Systeme.\nDefinieren Sie Datengrenzen klar."
+    },
+    {
+      "t": "DEPLOY & SICHERHEIT",
+      "d": "Bereitstellungsumgebung, Zugriffskontrolle, Backup, Überwachung festlegen.\nBerücksichtigung der internen Sicherheitsanforderungen."
+    },
+    {
+      "t": "OPS-HANDOFF",
+      "d": "Geben Sie Ops Guide, Berechtigungshandbuch und Handoff.\nVerbinden Sie Erweiterungs- und Wartungspfad."
+    }
+  ],
+  "sourcesLabel": "PROJEKTINFORMATIONEN",
+  "sourcesTitle": "Wir kombinieren die Inputs, die Ihr internes System benötigt.",
+  "sourcesNote": "Die tatsächlichen Eingaben variieren je nach Organisationsstruktur, Sicherheit und zugänglichen Systemen.",
+  "sources": [
+    "Aktuelle Workflows und Prozesse",
+    "Org, Abteilung, Rollenstruktur",
+    "Genehmigungslinien und -richtlinien",
+    "Werkzeuge und SaaS im Einsatz",
+    "Legacy, erp, crm",
+    "Interne Daten und Dokumente",
+    "Reporting und KPI Bedürfnisse",
+    "Sicherheit und Einhaltung",
+    "SSO und Authenumgebung",
+    "Interviews mit Anwendern und Praktikern",
+    "API und Integrationsanforderungen",
+    "Erweiterungsfahrplan"
+  ],
+  "useLabel": "VERWENDUNGSFÄLLE",
+  "useTitle": "Interne Systeme können wir bauen.",
+  "useBadge": "Beispiel für Systemtypen",
+  "useCases": [
+    {
+      "t": "ANTRAG & GENEHMIGUNG",
+      "d": "Interne Anfrage, Genehmigung, Überprüfung, Ablehnung Workflows.\nStatus, Besitzer und History Tracking."
+    },
+    {
+      "t": "OPS DASHBOARD",
+      "d": "Betriebskennzahlen, Warteschlangen, Verarbeitungsstatus-Dashboards.\nTeam und Abteilung Ansichten."
+    },
+    {
+      "t": "ADMIN PORT",
+      "d": "Einstellungen, Benutzer, Berechtigungen, Audit Management Portal.\nBetreiberorientierte Konsole."
+    },
+    {
+      "t": "INVENTOR / ASSET",
+      "d": "Inventar, Asset, Equipment, Reservierungsmanagement.\nIn/Out, Status, Eigentumslinks."
+    },
+    {
+      "t": "PROJEKT / KUNDEN OPS",
+      "d": "Internes Projekt, Kunde, Vertrag, Abwicklungsmanagement.\nTeamzusammenarbeit, Status, Dokumente."
+    },
+    {
+      "t": "HR/EINBAU",
+      "d": "Join/Leave, Onboarding, Request, Approval Internal Flows.\nPermission und Access Provisioning."
+    },
+    {
+      "t": "FINANCE / SETTLE",
+      "d": "Abrechnung, Kosten, Genehmigung, Beweisverarbeitung.\nBuchhaltung und ERP Links."
+    },
+    {
+      "t": "RECHTSVORSCHRIFTEN",
+      "d": "Ersetzen Sie ältere interne Tools oder Tabellenkalkulationsoperationen.\nPhasenweises Übergangsdesign."
+    }
+  ],
+  "flowLabel": "BEISPIEL WORKFLOW",
+  "flowTitle": "Von den Anforderungen an das Betriebssystem",
+  "flow": [
+    {
+      "n": "01 01",
+      "t": "KARTE",
+      "d": "Definieren Sie interne Arbeit, Benutzer, Genehmigungslinien, Daten.\nKlärung des Systemisierungsumfangs.",
+      "examples": [
+        "Arbeiten",
+        "Rollen",
+        "Genehmigung",
+        "Daten"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "BEZEICHNUNG",
+      "d": "Design-Workflows, Admin Console, Berechtigungsstruktur.\nBestätigen Sie Core Screens und Ops Flow.",
+      "examples": [
+        "Flüsse",
+        "Admin",
+        "Rollen",
+        "UI"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "BAU",
+      "d": "Implementieren Sie interne Systeme und Integrationen.\nReview in Phasen mit Demos.",
+      "examples": [
+        "Konsole",
+        "API",
+        "Integrationen",
+        "QA"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "EINSATZ",
+      "d": "Set-Bereitstellung, Zugangskontrolle, Überwachung.\nBetriebsumgebung vorbereiten.",
+      "examples": [
+        "Stufung",
+        "Prod",
+        "SSO",
+        "Überwachung"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "OPERATION",
+      "d": "Deliver ops guide, permission manual, handoff.\nVerbinden Sie Erweiterungs- und Wartungspfad.",
+      "examples": [
+        "Führung",
+        "Ausbildung",
+        "Unterstützung",
+        "Phase 2"
+      ]
+    }
+  ],
+  "reportLabel": "AUSGANGSLEISTUNG",
+  "reportTitle": "Deliverables sind ein funktionsfähiges internes System und unterstützende Dokumente.",
+  "reportLead": "Die Zusammensetzung variiert je nach Projektumfang. Unten sind gemeinsame Elemente.",
+  "reportMockStatus": "INTERN · SPEC",
+  "reportMockK": "INTERNAL SYSTEMSPEC",
+  "reportMockT": "Arbeit, Berechtigungen, Module, Ops Zusammenfassung",
+  "reportItems": [
+    "Anforderungen Zusammenfassung",
+    "Workflow Map",
+    "Rolle und Erlaubnis Matrix",
+    "Modulliste",
+    "Admin Console Übersicht",
+    "Daten & Integration",
+    "Sicherheitshinweise",
+    "Bereitstellungsplan",
+    "QA Checkliste",
+    "Operationsführung"
+  ],
+  "dashTitle": "Teile Module und Ops Zustand auf einer Ansicht.",
+  "dashLead": "Workflows, Berechtigungen und Verarbeitungswarteschlangen beschleunigen interne Ops-Diskussionen.",
+  "dashNote": "Modulzusammensetzung und Berechtigungsstruktur variieren je nach Organisation und Sicherheitsanforderungen.",
+  "dashMetrics": [
+    "Module",
+    "Rollen",
+    "Warteschlangen",
+    "Integrationen"
+  ],
+  "dashFilters": [
+    "Alle",
+    "Genehmigung",
+    "Admin",
+    "Bericht"
+  ],
+  "aiLabel": "BESCHLUSS",
+  "aiTitle": "Schnellere Designvorbereitung.\nStärkere Ops-Qualität.",
+  "aiLead": "Anforderungsstrukturierung, Workflow-Entwürfe, Berechtigungsmatrizen, QA- und Ops-Checklisten - AI-unterstützt auf Geschwindigkeit, während sich die Benutzer auf Berechtigungen, Integrationen und Kernimplementierung konzentrieren.",
+  "aiExamples": [
+    "Strukturanforderungen und -prozesse",
+    "Entwurfsgenehmigung und Statusabläufe",
+    "Rollen- und Berechtigungsmatrix organisieren",
+    "Admin Console Bildschirmlisten",
+    "Ops und Handoff Doc Drafts",
+    "Integrations- und Datengrenzangaben"
+  ],
+  "aiNote": "Endgültige Berechtigung, Sicherheit und Ops Design werden von Ihrer Organisation bestätigt.",
+  "delLabel": "LIEFERBARE",
+  "delTitle": "Was Sie erhalten, wenn das Projekt",
+  "delLead": "abschließt Wir liefern die folgenden Artikel nach Bedarf für Ihren Umfang.",
+  "deliverables": [
+    "Internes System / Admin Console",
+    "Workflow & Genehmigung Module",
+    "Rolle und Erlaubnis Einrichtung",
+    "Technische Dokumentation",
+    "Integrationsdokumente",
+    "Bereitstellung",
+    "QA Bericht",
+    "Ops & Access Guide",
+    "Phase 2 Erweiterungsplan (fakultativ)"
+  ],
+  "processLabel": "PROZESS",
+  "processTitle": "Von Anforderungen bis zur Ops Handoff.",
+  "process": [
+    {
+      "n": "01 01",
+      "t": "ENTWICKLUNG",
+      "d": "Bestätigen Sie interne Arbeit, Schmerzpunkte, Stakeholder, Einschränkungen.\nDefinieren Sie operative Ziele und Erfolgskriterien.",
+      "examples": [
+        "Arbeiten",
+        "Schmerzen",
+        "Stakeholder",
+        "KPI"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "UMFANG",
+      "d": "Definieren Sie Module, Workflows, Berechtigungen, Integrationsumfang.\nPhase 1 und Erweiterungsbereich vereinbaren.",
+      "examples": [
+        "Module",
+        "Workflows",
+        "Rollen",
+        "Integrationen"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "BEZEICHNUNG",
+      "d": "Design Admin Console, Flüsse, Datenstruktur.\nBestätigen Sie Kernbildschirme und Genehmigungslinien.",
+      "examples": [
+        "Konsole",
+        "Flüsse",
+        "Rollen",
+        "Überprüfung"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BAU",
+      "d": "Implementieren Sie System, Integrationen, Berechtigungen.\nDemo und Review in Phasen.",
+      "examples": [
+        "Kernnetz",
+        "Admin",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PRÜFUNG",
+      "d": "Überprüfen Sie Berechtigungen, Workflows, Integrationen und Ops-Szenarien.\nÜberprüfen Sie aus der Perspektive des Praktizierenden.",
+      "examples": [
+        "UAT",
+        "Sicherheit",
+        "Fixes",
+        "Abnahme"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "EINSATZ",
+      "d": "Set-Bereitstellung, SSO, Überwachung, Backup.\nBetriebsumgebung vorbereiten.",
+      "examples": [
+        "Stufung",
+        "Prod",
+        "",
+        "Überwachung"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "HANDBUFF",
+      "d": "Ops guide, permission manual, training und handoff.\nVerbinden Sie Erweiterungs- und Wartungspfad.",
+      "examples": [
+        "Führung",
+        "Ausbildung",
+        "Unterstützung",
+        "Phase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "ANWENDUNGSBEREICH",
+  "scopeTitle": "Wie man über die Komplexität von Projekten denkt.",
+  "scopeLead": "Kein festes Paket. Der Umfang wird nach Arbeitsbereich, Berechtigungs-/Integrationskomplexität und Sicherheitsanforderungen festgelegt.",
+  "scopes": [
+    {
+      "t": "FOKUSSIERTES OPS-SYSTEM",
+      "items": [
+        "Single Core Workflow",
+        "Begrenzte Rollen und Abteilungen",
+        "Grundlegende Admin Console",
+        "1–2 Grundintegrationen",
+        "Ops Guide"
+      ]
+    },
+    {
+      "t": "VOLLSTÄNDIG INTERNAL SYSTEM",
+      "items": [
+        "Mehrere Module und Workflows",
+        "Rollen, Berechtigungen, Prüfprotokolle",
+        "Dashboards und Berichte",
+        "Multi-Integration und SSO",
+        "Bereitstellung und Übergabe enthalten"
+      ]
+    },
+    {
+      "t": "UNTERNEHMENSPLATFORM",
+      "items": [
+        "Multi-Department, Multi-Site Ops",
+        "Komplexe Genehmigungslinien und Richtlinien",
+        "Legacy und ERP Deep Links",
+        "Starke Sicherheit und Compliance",
+        "Die Dauer der Langzeitoperationen und des Erweiterungsdesigns"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELIN",
+  "timeTitle": "verlinken Timeline hängt vom Umfang ab.",
+  "timeLead": "Die Dauer variiert je nach Modulanzahl, Integrationen, Berechtigungskomplexität und Sicherheitsüberprüfung.",
+  "timelines": [
+    {
+      "t": "Fokussiertes Ops-System",
+      "d": "Etwa 4-8 Wochen · variiert"
+    },
+    {
+      "t": "Vollständiges internes System",
+      "d": "Etwa 8-16 Wochen · variiert"
+    },
+    {
+      "t": "Unternehmensplattform",
+      "d": "Über 12+ Wochen · benutzerdefinierte"
+    }
+  ],
+  "priceLabel": "PROJEKTKOSTEN",
+  "priceTitle": "Pro Projekt angegeben.",
+  "priceName": "INTERNAL SYSTEM",
+  "priceValue": "Benutzerdefiniertes Angebot",
+  "priceFactorsLabel": "Preisfaktoren",
+  "priceFactors": [
+    "Umfang — Module, Workflows, Bildschirme",
+    "Komplexität — Berechtigungen, Genehmigungslinien, Daten",
+    "Zeitplan und Mittelausstattung",
+    "Integration — erp, crm, sso, api",
+    "Sicherheit - Zugriffskontrolle und Audit",
+    "Benutzer und Rollen - Abteilungen, Websites, Rollen",
+    "Beteiligung des Teams — UAT und Zusammenarbeit",
+    "Post-Launch — Wartung und Erweiterung"
+  ],
+  "priceNote": "Wir überprüfen Umfang / Komplexität / Timeline / Integration und geben dann ein Angebot ab. Keine festen Menüpreise.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faqs": [
+    {
+      "q": "Wie unterscheidet sich das von INTERNAL TOOLS (AUTOMATION)?",
+      "a": "INTERNAL TOOLS ist ein definiertes Automatisierungs- und Operations-Toolpaket. INTERNAL SYSTEM ist benutzerdefiniertes Build für die interne Arbeit, Berechtigungen und Integrationen Ihrer Organisation."
+    },
+    {
+      "q": "Wie unterscheidet sich das von CUSTOM PRODUCT?",
+      "a": "CUSTOM PRODUCT ist eine breitere benutzerdefinierte Produktentwicklung. INTERNAL SYSTEM konzentriert sich auf interne Operationen, Verwaltung, Genehmigung und Admin Console."
+    },
+    {
+      "q": "Wie wird die Preisgestaltung festgelegt?",
+      "a": "Nach Überprüfung von Arbeitsumfang, Komplexität, Zeitleiste, Integrationen und Sicherheit - oft nach Phasen."
+    },
+    {
+      "q": "Können Sie mit bestehenden ERP oder CRM integrieren?",
+      "a": "Ja. API, Data Sync, SSO und Deep Links können erweitert und gestaltet werden."
+    },
+    {
+      "q": "Sind Berechtigungen und Audit-Logs enthalten?",
+      "a": "Rollenbasierte Zugriffs-, Genehmigungshistorie- und Auditprotokolle können im Umfang entworfen und implementiert werden."
+    },
+    {
+      "q": "Können Sie Post-Launch-Operationen unterstützen?",
+      "a": "Ja. Feature-Erweiterung, Wartung und Ops-Unterstützung können unter separater Vereinbarung fortgesetzt werden."
+    },
+    {
+      "q": "Wie wird mit Vertraulichkeit umgegangen?",
+      "a": "Materialien werden nur im vereinbarten Umfang verwendet. NDA bei Bedarf verfügbar."
+    }
+  ],
+  "finalLabel": "START A PROJEKT",
+  "finalTitle": "Verbinden Sie interne Operationen\nin einem System.",
+  "finalLead": "Wenn Sie interne Arbeit, Genehmigungslinien oder Integrationen digitalisieren müssen, sagen Sie uns, was Sie zu lösen versuchen. Wir werden den Systemumfang bestätigen und gemeinsam einen Ansatz entwickeln.",
+  "ctaFinalSecondary": "Alle Lösungen ansehen",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

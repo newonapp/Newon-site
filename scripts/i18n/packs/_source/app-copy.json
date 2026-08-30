@@ -1,0 +1,483 @@
+{
+  "seoTitle": "APP PROTOTYPE | Newon Business",
+  "metaDescription": "Turn app ideas into interactive iOS and Android screens and flows — validate with investors and internal teams before full development. Newon APP PROTOTYPE.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICES",
+  "crumbBuild": "BUILD",
+  "crumbHere": "APP PROTOTYPE",
+  "eyebrow": "APP PROTOTYPE",
+  "subEyebrow": "BUILD",
+  "headline": "Turn an app idea\ninto a real experience.",
+  "lead": "We design and build interactive app prototypes with core iOS and Android flows. Before investor meetings, internal reviews, or development kickoff — validate how the idea actually feels when people use it.",
+  "ctaPrimary": "App prototype inquiry →",
+  "ctaSecondary": "See the prototype flow ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "App Prototype"
+    },
+    {
+      "k": "BEST FOR",
+      "v": "Investor & internal validation"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "About 2–3 weeks"
+    },
+    {
+      "k": "PRICE",
+      "v": "From ₩500,000"
+    }
+  ],
+  "overviewLabel": "OVERVIEW",
+  "overviewTitle": "You have the story.\nNot the experience.",
+  "overviewBody": [
+    "App ideas rarely land through slides and wireframes alone. Investors, partners, and internal stakeholders ask to try it — and engineering teams struggle to start without defined screens, flows, and states.",
+    "Building a production app from day one costs too much time and money. Figma alone often lacks interaction, transitions, and mobile context. What you need is a prototype where core flows actually work.",
+    "APP PROTOTYPE starts by defining app goals and key scenarios. We design iOS and Android screens, user flows, and interactions — then deliver a clickable prototype for sharing, validation, and dev handoff."
+  ],
+  "problemsLabel": "PROBLEMS",
+  "problemsTitle": "Helpful when you face these situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "IDEA ONLY",
+      "d": "You have a concept but nothing to show as real screens and flows.\nExplanation alone does not convince."
+    },
+    {
+      "n": "02",
+      "t": "INVESTOR DEMO",
+      "d": "You need a working demo before investor or partner meetings.\nThe core value must be felt, not imagined."
+    },
+    {
+      "n": "03",
+      "t": "INTERNAL ALIGN",
+      "d": "Product, design, engineering, and leadership are not aligned.\nYou need one prototype everyone can react to."
+    },
+    {
+      "n": "04",
+      "t": "FLOW GAP",
+      "d": "You have wires or mocks but no validated flow or state transitions.\nOnboarding, core actions, and edge paths are unclear."
+    },
+    {
+      "n": "05",
+      "t": "PRE-DEV RISK",
+      "d": "Scope, screens, and priorities are undefined before development.\nYou need validation before committing to MVP build."
+    },
+    {
+      "n": "06",
+      "t": "PLATFORM CHOICE",
+      "d": "You must decide iOS, Android, or web first.\nPlatform UX differences need to be tested."
+    }
+  ],
+  "baLabel": "BEFORE / AFTER",
+  "baTitle": "Static mocks vs\nworking prototype",
+  "beforeLabel": "BEFORE",
+  "afterLabel": "AFTER",
+  "before": [
+    "Slides, wires, and static mocks only",
+    "Core flows explained in words",
+    "Investor and internal reviews rely on imagination",
+    "Dev scope and screen priority unclear"
+  ],
+  "after": [
+    "Core screens and iOS/Android flows defined",
+    "Clickable prototype with real transitions",
+    "Share link or build for investor and internal validation",
+    "Screen, flow, and spec pack for development kickoff"
+  ],
+  "capsLabel": "CAPABILITIES",
+  "capsTitle": "We run app prototype work\nas one structured engagement.",
+  "caps": [
+    {
+      "t": "GOAL FRAMING",
+      "d": "Define app purpose, core users, and success scenarios.\nClarify what the prototype must validate."
+    },
+    {
+      "t": "FLOW DESIGN",
+      "d": "Design onboarding, core actions, and key state transitions.\nShape flows for iOS and Android context."
+    },
+    {
+      "t": "UX / UI DESIGN",
+      "d": "Design core screen UI and information structure.\nReflect mobile touch and navigation patterns."
+    },
+    {
+      "t": "INTERACTIVE BUILD",
+      "d": "Build a prototype where interactions work.\nFocus on core flows for speed."
+    },
+    {
+      "t": "PLATFORM SCOPE",
+      "d": "Set iOS, Android, or web scope for the project goal.\nReflect platform differences where needed."
+    },
+    {
+      "t": "VALIDATION SUPPORT",
+      "d": "Prepare share formats for investor, internal, and usability review.\nInclude feedback revision rounds."
+    },
+    {
+      "t": "SPEC & HANDOFF",
+      "d": "Document screens, flows, and interactions.\nProvide handoff for MVP or production build."
+    },
+    {
+      "t": "NEXT STEP PATH",
+      "d": "Connect prototype to MVP or store-ready development.\nPropose scope, timeline, and quote next."
+    }
+  ],
+  "sourcesLabel": "PROJECT INPUTS",
+  "sourcesTitle": "We combine the inputs your prototype needs.",
+  "sourcesNote": "Actual inputs vary by idea stage, existing specs, and reference apps.",
+  "sources": [
+    "App concept and purpose",
+    "Target users and scenarios",
+    "Reference apps",
+    "Existing wires or specs",
+    "Brand and UI guidelines",
+    "Market and competitor context",
+    "Core feature list",
+    "Onboarding and core action definition",
+    "iOS vs Android priority",
+    "Investor or demo deadline",
+    "Internal stakeholder feedback",
+    "Future MVP or launch plan"
+  ],
+  "useLabel": "USE CASES",
+  "useTitle": "Prototypes we can build.",
+  "useBadge": "Example build types",
+  "useCases": [
+    {
+      "t": "INVESTOR DEMO",
+      "d": "Core-flow demo for investor and partner meetings.\nInteraction that makes value tangible."
+    },
+    {
+      "t": "INTERNAL VALIDATION",
+      "d": "Alignment prototype for leadership, product, design, and engineering.\nInternal review and feedback loop."
+    },
+    {
+      "t": "CONSUMER APP IDEA",
+      "d": "Onboarding and core usage for B2C app ideas.\niOS and Android UX validation."
+    },
+    {
+      "t": "SERVICE APP",
+      "d": "Booking, order, subscription, or matching app flows.\nState transitions and CTA-focused design."
+    },
+    {
+      "t": "INTERNAL MOBILE TOOL",
+      "d": "Field, ops, or admin mobile tool prototype.\nRoles, permissions, and task flow check."
+    },
+    {
+      "t": "FEATURE PoC",
+      "d": "Validate new feature, redesign, or onboarding change.\nPoC before extending an existing app."
+    },
+    {
+      "t": "MULTI-PLATFORM",
+      "d": "Shared core plus platform-specific differences.\nSupport platform priority decisions."
+    },
+    {
+      "t": "PRE-MVP SCOPE",
+      "d": "Define MVP scope, screens, and priority before full build.\nMaterial for dev quote and timeline."
+    }
+  ],
+  "flowLabel": "EXAMPLE WORKFLOW",
+  "flowTitle": "From idea to shareable prototype",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINE",
+      "d": "Define app purpose, users, and key scenarios.\nAgree what the prototype must validate.",
+      "examples": [
+        "Purpose",
+        "Users",
+        "Scenarios",
+        "Timeline"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRUCTURE",
+      "d": "Design screen list, IA, and flows.\nSet iOS and Android scope.",
+      "examples": [
+        "Screens",
+        "Flows",
+        "IA",
+        "Platform"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Design core screen UI and interaction direction.\nConfirm screens needed for demo and validation.",
+      "examples": [
+        "UI",
+        "Motion",
+        "States",
+        "Review"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PROTOTYPE",
+      "d": "Build a working prototype.\nComplete core flows quickly.",
+      "examples": [
+        "Tap",
+        "Swipe",
+        "Navigate",
+        "States"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "SHARE",
+      "d": "Deliver share link, build, and spec.\nConnect feedback and next steps.",
+      "examples": [
+        "Link",
+        "Demo",
+        "Spec",
+        "MVP"
+      ]
+    }
+  ],
+  "reportLabel": "OUTPUT",
+  "reportTitle": "Deliverables are a shareable prototype and supporting spec.",
+  "reportLead": "Composition varies by project scope. Below are common items.",
+  "reportMockStatus": "PROTOTYPE · SPEC",
+  "reportMockK": "APP PROTOTYPE SPEC",
+  "reportMockT": "Screens, flows, platforms, interactions",
+  "reportItems": [
+    "Goals & Scenarios",
+    "Screen List",
+    "User Flow Map",
+    "Core UI Screens",
+    "Interaction Notes",
+    "Platform Scope",
+    "Prototype Link/Build",
+    "Validation Notes",
+    "Handoff Summary",
+    "MVP Path (optional)"
+  ],
+  "dashTitle": "Share screen, flow, and platform scope on one view.",
+  "dashLead": "Screens, Flows, Platforms, and Integrations together speed scope agreement and demo prep.",
+  "dashNote": "Screen count, platform, and interaction depth vary by project goal and timeline.",
+  "dashMetrics": [
+    "Screens",
+    "Flows",
+    "Platforms",
+    "Integrations"
+  ],
+  "dashFilters": [
+    "All",
+    "Core",
+    "iOS",
+    "Android"
+  ],
+  "aiLabel": "ACCELERATION",
+  "aiTitle": "Automate repetition.\nFocus on design and prototype.",
+  "aiLead": "Screen lists, flow drafts, interaction notes, and QA checklists can be AI-assisted for speed — while people focus on UX, core flows, and prototype quality.",
+  "aiExamples": [
+    "Draft screen and flow lists",
+    "Structure scenarios and state transitions",
+    "Draft UI copy and labels",
+    "Usability and demo checklists",
+    "Handoff and spec doc drafts",
+    "Compare MVP scope and priority"
+  ],
+  "aiNote": "Final screens, flows, and interaction decisions are confirmed with your project team.",
+  "delLabel": "DELIVERABLES",
+  "delTitle": "What you receive when the project completes",
+  "delLead": "We deliver the items below as needed for your scope.",
+  "deliverables": [
+    "Interactive App Prototype",
+    "Core Screen UI",
+    "User Flow Map",
+    "Screen & Interaction Spec",
+    "Platform Scope Notes",
+    "Prototype Link / Build",
+    "Validation Demo Support",
+    "Handoff Pack",
+    "MVP Scope Proposal (optional)"
+  ],
+  "processLabel": "PROCESS",
+  "processTitle": "From purpose to share.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOVERY",
+      "d": "Confirm app purpose, users, key scenarios, and timeline.\nUnderstand demo and validation goals.",
+      "examples": [
+        "Purpose",
+        "Users",
+        "Demo",
+        "Timeline"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRUCTURE",
+      "d": "Define screen list, IA, flows, and platform scope.\nSeparate core from expansion screens.",
+      "examples": [
+        "Screens",
+        "Flows",
+        "iOS",
+        "Android"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Design core screen UI and interaction direction.\nRun review and feedback rounds.",
+      "examples": [
+        "UI",
+        "States",
+        "Review",
+        "Revise"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PROTOTYPE",
+      "d": "Build a working prototype.\nVerify core flows and transitions.",
+      "examples": [
+        "Build",
+        "Tap",
+        "Navigate",
+        "Polish"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "VALIDATE",
+      "d": "Support demo, internal review, and usability check.\nApply feedback.",
+      "examples": [
+        "Demo",
+        "Feedback",
+        "Fixes",
+        "Sign-off"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "SPEC",
+      "d": "Document screens, flows, and interactions.\nPrepare handoff for development.",
+      "examples": [
+        "Spec",
+        "Notes",
+        "Assets",
+        "Handoff"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "NEXT",
+      "d": "Connect MVP, full build, or store-ready path.\nPropose scope, timeline, and quote next.",
+      "examples": [
+        "MVP",
+        "Scope",
+        "Quote",
+        "Phase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "SCOPE LEVELS",
+  "scopeTitle": "How to think about project complexity.",
+  "scopeLead": "Not a fixed package. Scope is set by screen count, platform, interaction depth, and integrations.",
+  "scopes": [
+    {
+      "t": "PROTOTYPE",
+      "items": [
+        "5–8 core screens",
+        "1–2 core flows",
+        "Interactive prototype",
+        "iOS or Android focus",
+        "Investor and internal validation"
+      ]
+    },
+    {
+      "t": "MVP APP",
+      "items": [
+        "Expanded screens and multiple flows",
+        "iOS + Android scope",
+        "States and edge paths included",
+        "Basic integration or API mock",
+        "Dev kickoff spec pack"
+      ]
+    },
+    {
+      "t": "STORE-READY",
+      "items": [
+        "Store-ready app development",
+        "Backend, auth, payments, push",
+        "QA, deploy, store submission",
+        "Ops and maintenance link",
+        "Custom quote and timeline"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Timeline depends on scope.",
+  "timeLead": "Duration varies by screen count, interaction depth, platform, and feedback rounds.",
+  "timelines": [
+    {
+      "t": "Prototype",
+      "d": "About 2–3 weeks · varies"
+    },
+    {
+      "t": "MVP App",
+      "d": "About 4–6 weeks · varies"
+    },
+    {
+      "t": "Store-ready",
+      "d": "Custom · separate scope"
+    }
+  ],
+  "priceLabel": "PROJECT COST",
+  "priceTitle": "Quoted per project.",
+  "priceName": "APP PROTOTYPE",
+  "priceValue": "From ₩500,000",
+  "priceFactorsLabel": "Pricing factors",
+  "priceFactors": [
+    "Screens — core and expansion count",
+    "Flows — flow and state complexity",
+    "Platform — iOS / Android / web",
+    "Interaction — interaction and motion depth",
+    "Timeline — schedule and feedback rounds",
+    "Integration — API mock and link scope",
+    "Design depth — UI and design system",
+    "Next step — MVP or store-ready link"
+  ],
+  "priceNote": "From ₩500,000 is the starting price for APP PROTOTYPE. MVP App and store-ready builds are quoted separately by scope.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Frequently asked questions",
+  "faqs": [
+    {
+      "q": "What does From ₩500,000 cover?",
+      "a": "It is the starting price for APP PROTOTYPE — typically core screens and 1–2 interactive flows. MVP App and store-ready builds are quoted separately."
+    },
+    {
+      "q": "Is this a store-ready app?",
+      "a": "The default is a prototype for investor, internal, and pre-dev validation. Store-ready app development is a separate Store-ready scope."
+    },
+    {
+      "q": "Can you cover both iOS and Android?",
+      "a": "Yes. We design for one platform focus or both, depending on project goal. Quote varies by screens and platform count."
+    },
+    {
+      "q": "How long does it take?",
+      "a": "Prototype is typically 2–3 weeks; MVP App about 4–6 weeks. Depends on screens, interaction depth, and feedback rounds."
+    },
+    {
+      "q": "Can this continue into development?",
+      "a": "Yes. We can propose MVP, full build, or store-ready scope from the prototype and spec."
+    },
+    {
+      "q": "How many revisions?",
+      "a": "Two revision rounds are included. Out-of-scope changes and extra screens affect timeline and quote."
+    },
+    {
+      "q": "Figma only, or a working prototype?",
+      "a": "The focus is an interactive working prototype. UI files and spec docs can be included when needed."
+    }
+  ],
+  "finalLabel": "START A PROJECT",
+  "finalTitle": "Show the experience\nbefore the pitch deck.",
+  "finalLead": "If you have an app idea, demo goal, reference apps, or a deadline, tell us what you need to validate. We will confirm iOS/Android prototype scope and validation approach together.",
+  "ctaFinalSecondary": "View all BUILD →",
+  "ctaFinalSecondaryHref": "../build/"
+}

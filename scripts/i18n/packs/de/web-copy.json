@@ -1,0 +1,510 @@
+{
+  "seoTitle": "WEBENTWICKLUNG / Newon Geschäft",
+  "metaDescription": "Hochwertige Websites für Marken und Dienstleistungen — Unternehmenswebsites, Landungen und Produktwebsites von der Struktur über das Design, den Aufbau und die Einführung. Newon WEBENTWICKLUNG.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICE",
+  "crumbBuild": "BAUEN",
+  "crumbHere": "WEB",
+  "eyebrow": "WEBENTWICKLUNG",
+  "subEyebrow": "BAUEN",
+  "headline": "Polierte Webseite für\nMarken und Dienstleistungen.",
+  "lead": "Von Markenseiten und Landingpages bis hin zu Produkt— und Serviceseiten - wir entwerfen und bauen digitale Erlebnisse, die auf Ihr Ziel abgestimmt sind. Informationsarchitektur, Benutzeroberfläche, reaktionsschnelle Implementierung, SEO, Anfrageverbindungen und Bereitstellung in einem kontinuierlichen Pfad.",
+  "ctaPrimary": "Website-Projektanfrage →",
+  "ctaSecondary": "Siehe den Geltungsbereich ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Webentwicklung"
+    },
+    {
+      "k": "AM BESTEN FÜR",
+      "v": "Marken- und Service-Web-Builds"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Normalerweise 2-5 Wochen"
+    },
+    {
+      "k": "PREIS",
+      "v": "Von ₩700,000"
+    }
+  ],
+  "overviewLabel": "ÜBERBLICK",
+  "overviewTitle": "Sie haben eine Website.\n Die Marke wird nicht angezeigt.",
+  "overviewBody": [
+    "Viele Teams haben eine Website, aber die Marke und das Angebot lesen sich nicht auf einen Blick. Vorlagenähnliche Layouts, fehlerhafte mobile Ansichten und Pfade, die niemals Anfragen oder Konvertierungen erreichen, sind häufig.",
+    "Eine Website ist keine Informationshalde - sie ist ein Erlebnis, das den Besuchern hilft, die Marke zu verstehen und den nächsten Schritt zu tun. Struktur, Typografie, Abstand, CTA, responsives Layout und SEO müssen zusammenarbeiten.",
+    "Die WEBENTWICKLUNG beginnt mit der Definition des Zwecks und der Besucheraktionen der Website. Dann entwerfen wir die Informationsarchitektur und die markengerechte Benutzeroberfläche und liefern eine hochwertige Site mit responsivem Build, Anfrageverkabelung und Launch."
+  ],
+  "problemsLabel": "PROBLEM",
+  "problemsTitle": "Hilfreich, wenn Sie sich diesen Situationen stellen.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "KEINE MARKENPRÄSENZ",
+      "d": "Sie haben eine Website, aber die Marke und der Service werden nicht gelesen.\n Das Layout fühlt sich an wie eine Vorlage, die neu erstellt werden muss."
+    },
+    {
+      "n": "02",
+      "t": "MOBILE PAUSEN",
+      "d": "Das Handy fühlt sich kaputt oder schwer zu scannen an.\nResponsive Struktur und Informationshierarchie brauchen einen Reset."
+    },
+    {
+      "n": "03",
+      "t": "KEIN KONVERTIERUNGSPFAD",
+      "d": "Die Geschichte hört bei der Einführung auf - Besucher erreichen niemals Anfragen, bewerben oder Erkunden.\n Sie benötigen ein Konvertierungsflussdesign."
+    },
+    {
+      "n": "04",
+      "t": "VERSTREUTER INHALT",
+      "d": "Viele Seiten, aber unklare Rollen und Prioritäten.\nInformationsarchitektur muss organisiert werden."
+    },
+    {
+      "n": "05",
+      "t": "VERALTETE SEITE",
+      "d": "Sie müssen trennen, was zu behalten ist, von dem, was neu aufgebaut werden soll.\n Erneuerung oder vollständiger Umbau ist erforderlich."
+    },
+    {
+      "n": "06",
+      "t": "START BLOCKIERT",
+      "d": "Das Design ist vorhanden, aber die Implementierung, Bereitstellung oder Domänenverbindung hängt fest.\nDu brauchst einen Partner bis zum Launch."
+    }
+  ],
+  "baLabel": "VORHER / NACHHER",
+  "baTitle": "Informationsdump vs \neine Seite, auf der die Marke liest",
+  "beforeLabel": "VOR",
+  "afterLabel": "NACH",
+  "before": [
+    "Template-ähnliches Layout und inkonsistenter Ton",
+    "Layout- und Lesbarkeitsprobleme auf Mobilgeräten",
+    "Unterschiedliche Button- und Abschnittsregeln pro Seite",
+    "Kein Weg von der Story zur Anfrage oder Konvertierung"
+  ],
+  "after": [
+    "Zweck und Besucheraktionen zuerst definiert",
+    "Markengerechte Informationsarchitektur und UI",
+    "Responsives Layout lesbar auf Desktop und Handy",
+    "Anfrage, CTA, SEO und Bereitstellung verbunden"
+  ],
+  "capsLabel": "FÄHIGKEIT",
+  "capsTitle": "Wir betreiben Web Build \n als ein strukturiertes Engagement.",
+  "caps": [
+    {
+      "t": "ZIEL & FOLGENABSCHÄTZUNG",
+      "d": "Definieren Sie den Site-Zweck, die Seitenrollen und die Inhaltspriorität.\n Bauen Sie eine Struktur auf, die die Orientierung der Besucher gewährleistet."
+    },
+    {
+      "t": "UX / UI-GESTALTUNG",
+      "d": "Passen Sie Markenton, Typografie, Abstand und Komponenten an.\n Sieht aus wie deine Marke — kein Thema."
+    },
+    {
+      "t": "REAKTIONSSCHNELLER AUFBAU",
+      "d": "Implementieren Sie Layouts, die über primäre Geräte hinweg gültig sind.\n Schützen Sie den Kern-CTA mit einer Mobile-First-Struktur."
+    },
+    {
+      "t": "KERNSEITEN",
+      "d": "Komplettes Zuhause, Info, Dienstleistungen, Anfrage - was auch immer das Ziel erfordert.\nRichtet Abschnitte und Inhaltshierarchie aus."
+    },
+    {
+      "t": "UMWANDLUNG VERDRAHTUNG",
+      "d": "Überweisen Sie Formulare, E-Mails und Geschäftsanfragen an echte nächste Schritte.\n CTA- und Conversion-Flows entwerfen."
+    },
+    {
+      "t": "SEO UND META",
+      "d": "Fügen Sie grundlegende Such— und Freigabeeinstellungen hinzu - Titel, Beschreibungen, Offenes Diagramm.\n Legt Meta und Struktur auf Seitenebene fest."
+    },
+    {
+      "t": "CMS UND OPS",
+      "d": "Erstellen Sie bei Bedarf Strukturen, die spätere Kopier- und Image-Aktualisierungen ermöglichen.\nScope CMS, wie Sie arbeiten möchten."
+    },
+    {
+      "t": "BEREITSTELLEN UND STARTEN",
+      "d": "Qualitätssicherung über Browser und Geräte hinweg, dann bereitstellen.\n Liefert Domain-Verbindungs- und Bedienungshinweise."
+    }
+  ],
+  "sourcesLabel": "PROJEKTEINGABEN",
+  "sourcesTitle": "Wir kombinieren die Inputs, die Ihr Projekt benötigt.",
+  "sourcesNote": "Die tatsächlichen Eingaben variieren je nach vorhandener Site, verfügbaren Assets und Markenmaterial.",
+  "sources": [
+    "Marken- und Servicebeschreibung",
+    "Bestehende Website und Inhalte",
+    "Logo und visuelle Elemente",
+    "Marken- und UI-Richtlinien",
+    "Referenzstandorte und Benchmarks",
+    "Seiten- und Menüanforderungen",
+    "Anfrage- und Konversionsziele",
+    "SEO und Keyword-Ausrichtung",
+    "Mehrsprachige Struktur",
+    "Rechtliches, Datenschutz, Bedingungen",
+    "Hosting- und Domain-Umgebung",
+    "Zukünftige Expansionspläne"
+  ],
+  "useLabel": "ANWENDUNGSFÄLLE",
+  "useTitle": "Websites, die wir erstellen können.",
+  "useBadge": "Beispiel-Site-Typen",
+  "useCases": [
+    {
+      "t": "FIRMEN- / STUDIOSTANDORT",
+      "d": "Ein übersichtliches Unternehmenswebsite, das erklärt, wer Sie sind und wie Sie arbeiten."
+    },
+    {
+      "t": "MARKENSEITE",
+      "d": "Welt und Ton zuerst - wenn die Marke über das Produkt führen muss."
+    },
+    {
+      "t": "SERVICE-LANDUNG",
+      "d": "Ein Angebot, eine Geschichte - fokussiert auf Wert und CTA."
+    },
+    {
+      "t": "PORTFOLIO / FALLWEBSEITE",
+      "d": "Arbeit und Prozess klar und überzeugend dargestellt."
+    },
+    {
+      "t": "ANFRAGE / HIRING HUB",
+      "d": "Partnerschafts-, Karriere- und Conversion-fokussierte Hub-Seiten."
+    },
+    {
+      "t": "PRODUKTWEBSEITE",
+      "d": "Serviceeinführung Verbindungsfunktionen, Preise und Anfrage."
+    },
+    {
+      "t": "MEHRSPRACHIGE WEBSITE",
+      "d": "Mehrsprachiges Web mit Sprachstruktur und wechselnder UX."
+    },
+    {
+      "t": "STANDORTERNEUERUNG",
+      "d": "Erneuerung trennt, was zu behalten ist, von dem, was wieder aufgebaut werden soll."
+    }
+  ],
+  "flowLabel": "BEISPIEL-WORKFLOW",
+  "flowTitle": "Von der Struktur bis zum Start",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINIEREN",
+      "d": "Richten Sie sich nach dem Ergebnis aus - Markengeschichte, Lead-Erfassung oder Produkterklärung.\nDefinieren Besucheraktionen und Erfolgskriterien.",
+      "examples": [
+        "Ziel",
+        "Publikum",
+        "CTA",
+        "Kennzahlen"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRUKTUR",
+      "d": "Legen Sie die Seitenübersicht, Abschnitte und Inhaltsanforderungen fest.\nInformationsarchitektur und Navigation bestätigen.",
+      "examples": [
+        "Impressum _ Datenschutz",
+        "IA",
+        "Abschnitt",
+        "Inhalt"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Bestätigen Sie die wichtigsten Bildschirme, das visuelle System und die Typografie.\n Richten Sie Markenton- und Komponentenregeln aus.",
+      "examples": [
+        "BENUTZEROBERFLÄCHE",
+        "Art",
+        "Hauptkomponenten",
+        "Bewertung"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BAUEN",
+      "d": "Implementieren Sie responsives Web mit Interaktionen und Anfragefluss.\n Beinhaltet SEO- und Meta-Setup.",
+      "examples": [
+        "Vorderes Ende",
+        "Reagieren",
+        "Forms",
+        "SEO"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "START",
+      "d": "Geräteprüfungen, Bereitstellungs- und Betriebshinweise.\n Unterstützt Domänenverbindungen.",
+      "examples": [
+        "QS",
+        "Bereitstellen",
+        "Domain",
+        "Handoff"
+      ]
+    }
+  ],
+  "reportLabel": "AUSGABE",
+  "reportTitle": "Ergebnisse sind eine funktionsfähige Website und unterstützende Dokumente.",
+  "reportLead": "Die Zusammensetzung variiert je nach Projektumfang. Nachfolgend sind allgemeine Elemente aufgeführt.",
+  "reportMockStatus": "WEB * STRUKTUR",
+  "reportMockK": "WEBSITE-SPEZIFIKATION",
+  "reportMockT": "Seiten, Abschnitte, Konvertierungsfluss",
+  "reportItems": [
+    "Ziele und Zielgruppe der Website",
+    "Sitemap / ER",
+    "Seiten- & Abschnittsliste",
+    "UX / UI Übersicht",
+    "Reaktionsschnelle Haltepunkte",
+    "Formular- und CTA-Verkabelung",
+    "SEO- und Meta-Einrichtung",
+    "CMS / Ops Hinweise",
+    "QS-Checkliste",
+    "Start- und Übergabehinweise"
+  ],
+  "dashTitle": "Teilen Sie Site-Struktur und Seitenumfang in einer Ansicht.",
+  "dashLead": "Seiten, Abschnitte, Sprachen und Integrationen beschleunigen zusammen die Vereinbarung des Umfangs und bauen Diskussionen auf.",
+  "dashNote": "Seitenaufbau und Funktionsumfang variieren je nach Ziel und Budget der Website.",
+  "dashMetrics": [
+    "Internetseiten",
+    "Abschnitt",
+    "Sprache",
+    "Integration"
+  ],
+  "dashFilters": [
+    "Aller",
+    "Kern",
+    "Unterordner",
+    "Global"
+  ],
+  "aiLabel": "BESCHLEUNIGUNG",
+  "aiTitle": "Wiederholung automatisieren.\n Fokus auf Design und Bau.",
+  "aiLead": "Inhaltsstrukturierung, Abschnittsentwürfe, SEO-Meta— und QS-Checklisten können aus Gründen der Geschwindigkeit KI-unterstützt werden - während sich die Mitarbeiter auf IA, Marken-UI und Kernimplementierung konzentrieren.",
+  "aiExamples": [
+    "Entwurfs-Seiten- und Abschnittsstruktur",
+    "Inhaltshierarchie und Kopierrichtung organisieren",
+    "SEO-Titel und -Beschreibungen entwerfen",
+    "Responsive QS-Checklisten",
+    "Mehrsprachige Strukturorganisation",
+    "Ops- und Übergabedokumententwürfe"
+  ],
+  "aiNote": "Endgültige Struktur-, Design- und Qualitätsentscheidungen werden mit Ihrem Projektteam bestätigt.",
+  "delLabel": "LIEFERBAR",
+  "delTitle": "Was Sie erhalten, wenn das Projekt abgeschlossen ist",
+  "delLead": "Wir liefern die folgenden Artikel nach Bedarf für Ihren Umfang.",
+  "deliverables": [
+    {
+      "title": "Sitemap / Folgenabschätzungsdokument",
+      "body": "Site-Struktur und Seitenrollen, klar abgebildet."
+    },
+    {
+      "title": "Entworfene Schlüsselbildschirme",
+      "body": "UX / UI für die Seiten, die am wichtigsten sind."
+    },
+    {
+      "title": "Responsive Webentwicklung",
+      "body": "Ein Build, der geräteübergreifend lesbar bleibt."
+    },
+    {
+      "title": "Formular- und CTA-Verbindungen",
+      "body": "Formulare und CTAs sind mit echten nächsten Aktionen verbunden."
+    },
+    {
+      "title": "Grundlegendes SEO-Setup",
+      "body": "Titel, Beschreibungen und grundlegende Freigabemetas."
+    },
+    {
+      "title": "UX / UI-Designdateien",
+      "body": "Designdateien und Schlüsselkomponenten."
+    },
+    {
+      "title": "Bereitgestellte Umgebung",
+      "body": "Eine live bereitgestellte Site, auf die zugegriffen werden kann."
+    },
+    {
+      "title": "CMS-Einrichtung (falls umfangreich)",
+      "body": "Inhaltsbearbeitungsstruktur, wenn im Bereich enthalten."
+    },
+    {
+      "title": "Start- und Betriebsleitfaden",
+      "body": "Eine kurze Anleitung für den Start und die laufenden Operationen."
+    }
+  ],
+  "processLabel": "PROZESS",
+  "processTitle": "Von der Zieldefinition bis zum Launch.",
+  "process": [
+    {
+      "n": "01",
+      "t": "ENTDECKUNG",
+      "d": "Bestätigen Sie den Zweck der Website, die Besucher, das Umlaufvermögen und die Einschränkungen.\nErfolgskriterien und Konversionsziele verstehen.",
+      "examples": [
+        "Ziel",
+        "Publikum",
+        "Assets",
+        "Kennzahlen"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRUKTUR",
+      "d": "Definieren Sie Seitenübersicht, Abschnitte und Inhaltsanforderungen.\n Stimmen Informationsarchitektur und Navigation zu.",
+      "examples": [
+        "Impressum _ Datenschutz",
+        "IA",
+        "Abschnitt",
+        "Inhalt"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Bestätigen Sie die wichtigsten Bildschirme, das visuelle System und die Typografie.\nMarkenton und Komponenten ausrichten.",
+      "examples": [
+        "BENUTZEROBERFLÄCHE",
+        "Art",
+        "Hauptkomponenten",
+        "Bewertung"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BAUEN",
+      "d": "Implementieren Sie responsive Web- und Drahtanfragen und CTA.\n Umfasst SEO, Meta und Interaktionen.",
+      "examples": [
+        "Vorderes Ende",
+        "Forms",
+        "SEO",
+        "Reagieren"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "QS",
+      "d": "Überprüfen Sie das Layout und den Fluss über Browser und Geräte hinweg.\n Überprüfen Sie Konvertierungspfade und Zugänglichkeit.",
+      "examples": [
+        "Desktop",
+        "Mobile",
+        "Forms",
+        "Bugfixes"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "START",
+      "d": "Domäne bereitstellen und verbinden.\n Liefert Anleitungen zur Bedienung und Aktualisierung von Inhalten.",
+      "examples": [
+        "Bereitstellen",
+        "Domain",
+        "Zugang",
+        "Guide"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "HANDOFF",
+      "d": "Liefern Sie Dokumente und Bedienungsanleitung.\n Verbindungspfad für zukünftige Seiten und Funktionen.",
+      "examples": [
+        "Dok",
+        "CM",
+        "Unterstützung",
+        "Phase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "GELTUNGSBEREICH EBENEN",
+  "scopeTitle": "Wie man über die Komplexität von Webprojekten nachdenkt.",
+  "scopeLead": "Kein festes Paket. Der Umfang wird nach Seitenzahl, Designtiefe und Mehrsprachigkeit oder Integrationsbereich festgelegt.",
+  "scopes": [
+    {
+      "t": "EINZELSEITE",
+      "items": [
+        "Einzelne Landing- oder Kampagnenseite",
+        "5-8 kernabschnitte",
+        "Reaktionsschnelle Implementierung",
+        "Formular- und CTA-Verkabelung",
+        "Grundlegende SEO und Bereitstellung"
+      ]
+    },
+    {
+      "t": "MEHRSEITIGE WEBSITE",
+      "items": [
+        "Startseite, über, Dienstleistungen, Anfrage - mehrere Seiten",
+        "Markengerechte benutzerdefinierte Benutzeroberfläche",
+        "Informationsarchitektur und Navigation",
+        "Anfrage- und Konvertierungsverbindungen",
+        "SEO, Bereitstellung, Domain-Unterstützung"
+      ]
+    },
+    {
+      "t": "BENUTZERDEFINIERTES WEB",
+      "items": [
+        "Mehrsprachig, CMS, Integrationen",
+        "Komplexe IA und benutzerdefinierte Funktionen",
+        "Erneuerung und Migration",
+        "Erweiterung und Phase 2 Design",
+        "Bereich separat"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Der Zeitplan hängt vom Umfang ab.",
+  "timeLead": "Die Dauer variiert je nach Seitenzahl, Designtiefe, Inhaltsbereitschaft und Mehrsprachigkeit oder Integration.",
+  "timelines": [
+    {
+      "t": "Einzelseite",
+      "d": "Ungefähr 2 Wochen"
+    },
+    {
+      "t": "Mehrseitige Website",
+      "d": "Ungefähr 3-5 Wochen"
+    },
+    {
+      "t": "Benutzerdefinierte",
+      "d": "Bereich separat"
+    }
+  ],
+  "priceLabel": "PROJEKTKOSTEN",
+  "priceTitle": "Wir geben nur den Umfang an, den Sie benötigen.",
+  "priceName": "WEBENTWICKLUNG",
+  "priceValue": "Von ₩700,000",
+  "priceFactorsLabel": "Preisfaktoren",
+  "priceFactors": [
+    "Umfang - Seiten- und Abschnittsanzahl",
+    "Designtiefe - UX/UI-Bereich",
+    "Zeitplan - Zeitplan und Ressourcen",
+    "Inhaltsbereitschaft von Kopien und Assets",
+    "Sprachen - mehrsprachige Struktur",
+    "Integration - Formulare, CRM, API",
+    "CMS - Betrieb und Administrationsumfang",
+    "Erneuerung - Migration bestehender Websites"
+  ],
+  "priceNote": "Wir überprüfen die Seitenzahl, den Umfang, die Designtiefe und den Zeitplan und erstellen dann ein Angebot. Der endgültige Betrag wird nach der Bereichssperre bestätigt.",
+  "faqLabel": "FAQ'S",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faqs": [
+    {
+      "q": "Schreiben Sie Texte und stellen Bilder zur Verfügung?",
+      "a": "Wir helfen bei Struktur und Entwurfsrichtung. Die endgültige Markensprache und die Assets werden auf Ihr Team abgestimmt."
+    },
+    {
+      "q": "Können Sie eine bestehende Website erneuern?",
+      "a": "Ja. Wir trennen, was zu behalten ist, von dem, was wieder aufgebaut werden soll."
+    },
+    {
+      "q": "Ist ein CMS enthalten?",
+      "a": "Nur bei Bedarf. Wir bestimmen, wie Sie die Site betreiben möchten."
+    },
+    {
+      "q": "Unterstützen Sie mehrsprachige Websites?",
+      "a": "Ja. Sprachstruktur und Switching UX sind Teil des Designs."
+    },
+    {
+      "q": "Was ist mit Hosting?",
+      "a": "Wir empfehlen einen zweckmäßigen Bereitstellungsansatz und helfen bei der Verbindung."
+    },
+    {
+      "q": "Wie unterscheidet sich das von MVP oder Landung?",
+      "a": "Die WEBENTWICKLUNG konzentriert sich auf hochwertige Marken- und Serviceseiten. Ein funktionierendes Produkt-MVP oder eine einzelne Kampagnenlandung passen möglicherweise besser zu MVP- oder Landungsdiensten."
+    },
+    {
+      "q": "Wie wird die Vertraulichkeit gehandhabt?",
+      "a": "Materialien werden nur im vereinbarten Umfang verwendet. NDA bei Bedarf verfügbar."
+    }
+  ],
+  "finalLabel": "STARTEN SIE EIN PROJEKT",
+  "finalTitle": "Erstellen Sie eine Website\n, auf der die Marke deutlich lesbar ist.",
+  "finalLead": "Sagen Sie uns den Site-Typ und was Sie bereits haben. Wir werden den Umfang und die Struktur des Webs, das Design und den Build-Ansatz gemeinsam bestätigen.",
+  "ctaFinalSecondary": "Alle BUILD anzeigen →",
+  "ctaFinalSecondaryHref": "../build/"
+}

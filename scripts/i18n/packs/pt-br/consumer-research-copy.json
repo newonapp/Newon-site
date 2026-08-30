@@ -1,0 +1,479 @@
+{
+  "seoTitle": "CONSUMER RESEARCH _ Newon Negócios",
+  "metaDescription": "Pesquisa as necessidades do consumidor e do usuário, comportamento e padrões de dor — estruturados como insights para decisões de produto e mensagens. Newon CONSUMER RESEARCH.",
+  "crumbBusiness": "EMPRESAS",
+  "crumbServices": "SERVIÇOS",
+  "crumbResearch": "INVESTIGAÇÃO",
+  "crumbHere": "CONSUMER RESEARCH",
+  "eyebrow": "CONSUMER RESEARCH",
+  "subEyebrow": "INVESTIGAÇÃO",
+  "headline": "Recolha vozes de utilizadores.\nEntendê-los como padrões.",
+  "lead": "Pesquisamos necessidades, comportamentos e padrões de dor de revisões, pesquisas, entrevistas, registros de suporte e sinais de uso. Vozes dispersas de usuários são organizadas por segmento, necessidade e motivação em um breve insight que sua equipe pode usar para decisões de prioridade de alvo, mensagens e produtos.",
+  "ctaPrimary": "Inquérito à investigação dos consumidores →",
+  "ctaSecondary": "Veja o fluxo de pesquisa ↓",
+  "meta": [
+    {
+      "k": "SERVIÇO",
+      "v": "Investigação ao Consumidor"
+    },
+    {
+      "k": "MELHOR PARA",
+      "v": "Validação do alvo e da mensagem"
+    },
+    {
+      "k": "Cronologia",
+      "v": "Normalmente 2-4 semanas"
+    },
+    {
+      "k": "PREÇO",
+      "v": "A partir de 300.000"
+    }
+  ],
+  "overviewLabel": "VISÃO GERAL",
+  "overviewTitle": "Muitas opiniões.\nNão há padrão suficiente.",
+  "overviewBody": [
+    "As vozes do usuário sempre existem quando se discute produto, marketing ou melhoria de serviços. A parte mais difícil é organizá-los em necessidades de segmento e padrões de comportamento.",
+    "Revisões, tickets de suporte, respostas de pesquisa, entrevistas, sinais comunitários e dados de uso cada um oferecem um ângulo diferente — mas raramente em um formulário as equipes podem decidir a partir.",
+    "CONSUMER RESEARCH começa definindo o que você precisa aprender. Em seguida, coletamos, classificamos e estruturamos sinais em segmentos, necessidades, dores, motivações e oportunidades em um breve insight."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Ajudante quando você enfrenta essas situações.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "INCERTIDADE- ALVO",
+      "d": "Não está claro para quem é o produto ou serviço,\nou qual grupo de usuários mais importa."
+    },
+    {
+      "n": "02",
+      "t": "VOZES SCATTERADAS",
+      "d": "Há muitos comentários e tickets, mas não há padrões claros.\nAs mesmas queixas repetem-se sem prioridade."
+    },
+    {
+      "n": "03",
+      "t": "VALIDAÇÃO DA MENSAGEM",
+      "d": "Você precisa de provas para validar mensagens e posicionamento.\nVocê quer saber ao que os usuários realmente respondem."
+    },
+    {
+      "n": "04",
+      "t": "NECESSIDADE PRIORIDADE",
+      "d": "Você tem muitos candidatos de recurso ou serviço\n, mas falta evidência para o que resolver primeiro."
+    },
+    {
+      "n": "05",
+      "t": "GAP DE COMPORTAMENTO",
+      "d": "Existe uma lacuna entre suposições e comportamento real.\nVocê precisa de contexto para que os usuários ajam assim."
+    },
+    {
+      "n": "06",
+      "t": "PRÉ-LANÇAMENTO INPUT",
+      "d": "Antes do lançamento, rebrand, ou um recurso principal,\nvocê precisa de reação do usuário primeiro."
+    }
+  ],
+  "baLabel": "ANTES / APÓS",
+  "baTitle": "Vozes dispersas vs\nentendimento estruturado do usuário",
+  "beforeLabel": "ANTES",
+  "afterLabel": "APÓS",
+  "before": [
+    "Todos verificam avaliações, tickets e pesquisas separadamente",
+    "‘Usuários querem isso’ é dito muitas vezes, mas evidências são dispersas",
+    "Segmentos, necessidades e mudança de prioridade por conversa",
+    "Insights não são documentados ou conectados à próxima validação"
+  ],
+  "after": [
+    "Questões de pesquisa e escopo do usuário são definidos primeiro",
+    "Segmentos, necessidades e padrões de dor são estruturados",
+    "Um breve insight compartilhado para a equipe",
+    "Conectado a mensagens, recursos e experimentos"
+  ],
+  "capsLabel": "CAPABILIDADES",
+  "capsTitle": "Nós estruturamos a pesquisa\nsuas necessidades de compreensão do usuário.",
+  "caps": [
+    {
+      "t": "PERGUNTA DE DESIGN",
+      "d": "Defina o que precisa aprender a decidir.\nEsclareça o propósito da pesquisa e alvo dos usuários."
+    },
+    {
+      "t": "DESK INVESTIGAÇÃO",
+      "d": "Recolha fontes secundárias — revisões, comunidade, feedback público.\nVerifique a origem e o contexto."
+    },
+    {
+      "t": "INVESTIGAÇÃO PRIMÁRIA",
+      "d": "Incluir entrevista ou desenho de pesquisa e trabalho de campo quando necessário.\nPerguntas estruturais e seleção de participantes em conjunto."
+    },
+    {
+      "t": "REALIZAÇÃO DOS SEGMENTOS",
+      "d": "Organize usuários por segmento, persona e situação.\nEstrutura que usa o quê e porquê."
+    },
+    {
+      "t": "Need & PAIN ANÁLISE",
+      "d": "Necessidades de padrões, dores e expectativas não atendidas.\nPriorizar questões recorrentes."
+    },
+    {
+      "t": "SINAIS DE COMPORTAMENTO",
+      "d": "Capturar o comportamento, compra, churn e padrões de uso.\nConectar suposições ao comportamento real."
+    },
+    {
+      "t": "MENSAGEM INSIGHTS",
+      "d": "Resumir o que mensagens, valores e usuários de linguagem respondem.\nFornecer provas para posicionamento e cópia."
+    },
+    {
+      "t": "IMPLICAÇÕES",
+      "d": "Conecte as descobertas a implicações de produto, marketing e serviço.\nSugerir as próximas experiências e validação."
+    }
+  ],
+  "sourcesLabel": "FONTES DE INVESTIGAÇÃO",
+  "sourcesTitle": "Combinamos os sinais do usuário suas necessidades de objetivo.",
+  "sourcesNote": "As fontes reais variam de acordo com o escopo, o acesso aos dados e a inclusão primária da pesquisa.",
+  "sources": [
+    "Revisão de produtos e serviços",
+    "Loja de aplicativos e revisões de mercado",
+    "Registros de suporte e inquérito",
+    "Pesquisa e respostas de formulário",
+    "Entrevistas de usuário e indústria",
+    "Sinais comunitários e sociais",
+    "Dados de uso e comportamento",
+    "NPS & pesquisas de feedback",
+    "Vendas e notas de consulta",
+    "Pesquisa interna de usuários",
+    "Comentários de produtos concorrentes",
+    "Grupos focais ( escopo opcional)"
+  ],
+  "useLabel": "PROCESSOS DE UTILIZAÇÃO",
+  "useTitle": "Perguntas que podemos ajudar a responder.",
+  "useBadge": "Tópicos de pesquisa de exemplo",
+  "useCases": [
+    {
+      "t": "DEFINIÇÃO DO TARGET",
+      "d": "Esclareça os usuários e segmentos principais.\nEstrutura em quem focar primeiro."
+    },
+    {
+      "t": "NECESSIDADE PRIORIDADE",
+      "d": "Priorize quais necessidades e dores para resolver primeiro.\nUse como evidência para decisões de roteiro."
+    },
+    {
+      "t": "ENSAIO DE MENSAGEM",
+      "d": "Validar mensagem, valor e direção de cópia.\nVeja ao que os usuários da linguagem respondem."
+    },
+    {
+      "t": "PAIN PATERN",
+      "d": "Reclamações recorrentes e sinais de agitação.\nExtrair questões comuns de CS e revisões."
+    },
+    {
+      "t": "CONTEXTO DO COMPORTAMENTO",
+      "d": "Entenda o contexto por trás da compra, uso e churn.\nVerificar lacunas entre suposições e comportamento."
+    },
+    {
+      "t": "ENTRADA PERSONA",
+      "d": "Estrutura personas, trabalhos e situações de uso.\nEntrada para produto, design e marketing."
+    },
+    {
+      "t": "VERIFICAÇÃO PRÉ-LANÇAMENTO",
+      "d": "Verifique a reação do usuário antes de lançar ou remarcar.\nProvas para o Go/No-go e ajuste de mensagem."
+    },
+    {
+      "t": "OPORTUNIDADE MAPA",
+      "d": "Documentar as necessidades não satisfeitas e espaço em branco.\nSuperfície novo recurso ou oportunidades de serviço."
+    }
+  ],
+  "flowLabel": "EXEMPLO DE TRABALHO",
+  "flowTitle": "De perguntas a uma breve visão",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINA",
+      "d": "Defina questões de pesquisa e usuários alvo.\nEsclareça o que precisa aprender a decidir.",
+      "examples": [
+        "Questões principais",
+        "Usuários alvo",
+        "Âmbito de aplicação",
+        "Entregas"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "COLECT",
+      "d": "Reúna comentários, pesquisas, entrevistas e sinais de apoio.\nReveja o material secundário e primário juntos.",
+      "examples": [
+        "Revisões",
+        "Pesquisas",
+        "Entrevistas",
+        "Suporte"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "ANALISAR",
+      "d": "Classificar padrões, segmentos, necessidades e dores.\nEstrutura sinais recorrentes e diferenças.",
+      "examples": [
+        "Segmentos",
+        "Necessidades",
+        "Dor",
+        "Motivação"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "SYNTESIZE",
+      "d": "Extrair insights-chave e oportunidades.\nConecte o que importa e por que importa.",
+      "examples": [
+        "Temas-chave",
+        "Prioridade",
+        "Oportunidade",
+        "Risco"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ADMINISTRAR",
+      "d": "Entregue breves, mapas e implicações.\nFormato para uso imediato da equipa.",
+      "examples": [
+        "Resumo Perspicaz",
+        "Mapa do Segmento",
+        "Próximas etapas"
+      ]
+    }
+  ],
+  "reportLabel": "SAÍDA",
+  "reportTitle": "Entregas estruturadas para decisões de produto e marketing.",
+  "reportLead": "A composição varia de acordo com o objectivo do projecto. Abaixo estão as seções comuns.",
+  "reportMockStatus": "INSIGHT · PROJECTO",
+  "reportMockK": "RESUMO DO INSIGADO DO UTILIZADOR",
+  "reportMockT": "Segmento · necessidade · comportamento padrão breve",
+  "reportItems": [
+    "Resumo Executivo",
+    "Âmbito de aplicação da investigação",
+    "Visão Geral do Segmento",
+    "Necessidade de & Dor Temas",
+    "Sinais de Comportamento",
+    "Insights da Mensagem",
+    "Áreas de oportunidade",
+    "Implicações",
+    "Recomendado Próximos Passos",
+    "Notas de origem"
+  ],
+  "dashTitle": "Compartilhar padrões de usuário em uma visão.",
+  "dashLead": "Mapa de segmentos e precisam de temas juntos — assim as discussões em equipe se movem mais rápido.",
+  "dashNote": "Mapa do segmento e composição do tema varia de acordo com o escopo e objetivo.",
+  "dashMetrics": [
+    "Segmentos",
+    "Temas",
+    "Citações",
+    "Prioridade"
+  ],
+  "dashFilters": [
+    "Todos",
+    "Necessidades",
+    "Dor",
+    "Motivação"
+  ],
+  "aiLabel": "SYNTESIS",
+  "aiTitle": "De muitas vozes de usuário\npara os padrões que importam.",
+  "aiLead": "Quando há muita revisão, ticket, entrevista e texto de pesquisa, classificamos, resumemos e comparamos a partir dos ângulos que você precisa.",
+  "aiExamples": [
+    "Revisão e resumo do padrão de feedback",
+    "Dor recorrente e extração de emissão",
+    "precisa de comparação",
+    "Entrevistas digerem",
+    "Análise de resposta de mensagem e valor",
+    "Breve e mapa de tema esboço"
+  ],
+  "aiNote": "Interpretação e decisões finais são revisadas junto com você.",
+  "delLabel": "DELIVERÁVEIS",
+  "delTitle": "O que você recebe após o projeto",
+  "delLead": "Dependendo do escopo, entregamos os itens que você precisa da lista abaixo.",
+  "deliverables": [
+    "Resumo Perspicaz",
+    "Mapa do Segmento",
+    "Necessidade e dor Resumo",
+    "Comportamento Notas",
+    "Insights da Mensagem",
+    "Oportunidade Visão geral",
+    "Implicações e Recomendações",
+    "Guia de entrevista (opcional)",
+    "Resumo da Apresentação"
+  ],
+  "processLabel": "PROCESSO",
+  "processTitle": "Da definição da pergunta à entrega.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCOBERTA",
+      "d": "Confirmar finalidade de pesquisa e contexto de decisão.\nEntenda o que está a decidir.",
+      "examples": [
+        "Objectivo",
+        "Participantes",
+        "Linha do Tempo",
+        "Restrições"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ÂMBITO DE APLICAÇÃO",
+      "d": "Defina perguntas, usuários alvo, métodos e entregables.\nConcordo com a inclusão primária da pesquisa.",
+      "examples": [
+        "Perguntas",
+        "Alvo",
+        "Método",
+        "Formato"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "INVESTIGAÇÃO",
+      "d": "Recolha e reveja os sinais e dados relevantes.\nIncluir entrevistas ou inquéritos quando examinado. ANÁLISE",
+      "examples": [
+        "Revisões",
+        "Pesquisas",
+        "Entrevistas",
+        "Suporte"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "",
+      "d": "Padrões de estrutura, segmentos e necessidades.\nTemas e prioridades derivados.",
+      "examples": [
+        "Segmentos",
+        "Temas",
+        "Prioridade",
+        "Citações"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PROJETO",
+      "d": "Rascunho breve e mapa.\nConstruir a espinha dorsal de descobertas fundamentais.",
+      "examples": [
+        "Resumo",
+        "Mapa do Segmento",
+        "Temas"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "REVISÃO",
+      "d": "Analise os principais insights e interpretação juntos.\nAjustar lacunas e prioridade.",
+      "examples": [
+        "Feedback",
+        "Refinamento",
+        "Prioridade"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "ADMINISTRAR",
+      "d": "Entregue documentos e implicações finais.\nConecte-se aos próximos experimentos e validação.",
+      "examples": [
+        "Resumo final",
+        "Mapa",
+        "Próximas etapas"
+      ]
+    }
+  ],
+  "scopeLabel": "NÍVEIS DE ÂMBITO DE APLICAÇÃO",
+  "scopeTitle": "Um guia para a complexidade do projeto.",
+  "scopeLead": "Pacotes não fixos — nós exploramos com base em objetivos, público e inclusão de pesquisa primária.",
+  "scopes": [
+    {
+      "t": "DESK INSHIGHT BRIEF",
+      "items": [
+        "Foco de pesquisa de mesa (reviews, tickets, feedback público)",
+        "3–5 questões principais",
+        "Resumo do tema Necessidade e dor",
+        "Resumo sucinto",
+        "Pontos prioritários"
+      ]
+    },
+    {
+      "t": "SEGMENTO E NECESSIDADE MAPA",
+      "items": [
+        "Segmento e persona resumo",
+        "Necessidade, dor e motivação mapa",
+        "Comportamento e implicações da mensagem",
+        "Áreas de oportunidade",
+        "Resumo da apresentação opcional"
+      ]
+    },
+    {
+      "t": "INVESTIGAÇÃO ADUANEIRA",
+      "items": [
+        "Desenho de entrevista e pesquisa e trabalho de campo",
+        "Vários segmentos ou canais",
+        "Relação de dados de comportamento",
+        "Apresentação personalizada",
+        "BUILD ou MVP linkage"
+      ]
+    }
+  ],
+  "timeLabel": "Cronologia",
+  "timeTitle": "A linha do tempo depende do escopo.",
+  "timeLead": "A inclusão primária da pesquisa, o tamanho do público e o acesso aos dados podem mudar a duração.",
+  "timelines": [
+    {
+      "t": "Breve Perspectiva da secretária",
+      "d": "Cerca de 1–2 semanas"
+    },
+    {
+      "t": "Mapa do Segmento & Necessidade",
+      "d": "Cerca de 2-3 semanas"
+    },
+    {
+      "t": "Pesquisa personalizada",
+      "d": "Cerca de 3-4 semanas · escopo separado"
+    }
+  ],
+  "priceLabel": "CUSTO DO PROJECTO",
+  "priceTitle": "Citamos apenas o escopo que você precisa.",
+  "priceName": "CONSUMER RESEARCH",
+  "priceValue": "A partir de 300.000",
+  "priceFactorsLabel": "O que molda o preço",
+  "priceFactors": [
+    "Número de questões de investigação",
+    "Âmbito do utilizador-alvo ou do segmento",
+    "Inclusão primária da investigação",
+    "Número de entrevistas ou de respostas",
+    "Profundidade da pesquisa",
+    "Acessibilidade dos dados",
+    "Formato disponível",
+    "Linha temporal urgente"
+  ],
+  "priceNote": "A citação final é confirmada após revisão do objetivo, método e escopo.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Perguntas mais frequentes",
+  "faqs": [
+    {
+      "q": "Que utilizadores ou consumidores podem pesquisar?",
+      "a": "B2B, B2C, SaaS, comércio, serviços e muito mais — dependendo do objetivo e público acessível. Confirmamos o ajuste antes de começar."
+    },
+    {
+      "q": "Isso inclui entrevistas ou pesquisas?",
+      "a": "Podemos começar pela secretária primeiro. Entrevistas e inquéritos podem ser incluídos no escopo quando necessário."
+    },
+    {
+      "q": "Que formato os entregables tomam?",
+      "a": "Document and map-first: Insight Brief, Segment Map, Need & Pain Summary, e muito mais. Podem ser incluídos resumos de apresentação."
+    },
+    {
+      "q": "Você pode usar nosso suporte ou dados de uso?",
+      "a": "Sim, dentro do que você pode compartilhar. Caso contrário, trabalhamos a partir de comentários e comentários públicos."
+    },
+    {
+      "q": "Como é que isto é diferente do MARKET RESEARCH?",
+      "a": "CONSUMER RESEARCH se concentra nas necessidades e comportamento do usuário e do consumidor. Se a estrutura de mercado é a necessidade, MARKET RESEARCH pode caber melhor — escopos podem ser ligados."
+    },
+    {
+      "q": "Isto pode conectar-se ao BUILD ou ao MVP?",
+      "a": "Sim. O Insights pode alimentar prioridade, definição de alvo e mensagens."
+    },
+    {
+      "q": "Como é tratada a confidencialidade?",
+      "a": "Trabalhamos apenas dentro do âmbito acordado. Um NDA pode ser assinado quando necessário."
+    }
+  ],
+  "finalLabel": "Iniciar um projeto",
+  "finalTitle": "Não adivinhe seus usuários -\nOuça e padrão primeiro.",
+  "finalLead": "Diga-nos o alvo, mensagens ou problemas que está a avaliar. Vamos confirmar o que pesquisar e como estruturar a saída.",
+  "ctaFinalSecondary": "Ver todos INVESTIGAÇÃO →",
+  "ctaFinalSecondaryHref": "../research/"
+}

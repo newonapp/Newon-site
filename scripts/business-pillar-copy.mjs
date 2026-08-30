@@ -1,8 +1,9 @@
 /**
  * Copy for Business pillar detail pages: build / automation / research / solutions.
- * ko + en; other langs fall back to en via fillMissing.
+ * ko + en; other langs merge MT overlays from scripts/i18n/packs/{lang}/business-pillar.json.
  */
 import { applyPillarPricing } from "./business-pricing.mjs";
+import { deepMerge, loadPackOverlay, resolveCopyLang } from "./i18n/copy-lang.mjs";
 
 export const PILLAR_SLUGS = ["build", "automation", "research", "solutions"];
 
@@ -67,8 +68,8 @@ export const PILLAR_COPY = {
       metaDescription:
         "Newon BUILD — MVP, 웹사이트, 랜딩페이지, 앱 프로토타입. 아이디어를 실제 제품으로 설계하고 구현합니다.",
       eyebrow: "NEWON BUSINESS · BUILD",
-      headline: "아이디어를 실제 제품으로 만듭니다.",
-      lead: "초기 아이디어부터 MVP, 웹사이트, 랜딩페이지, 앱 프로토타입까지 제품을 설계하고 실제 사용할 수 있는 형태로 구현합니다.",
+      headline: "아이디어를 실제 제품으로\n만듭니다.",
+      lead: "초기 아이디어부터 MVP, 웹사이트, 랜딩페이지, 앱 프로토타입까지\n제품을 설계하고 실제 사용할 수 있는 형태로 구현합니다.",
       ctaPrimary: "프로젝트 시작하기 →",
       ctaSecondary: "작업 범위 보기 ↓",
       heroIndex: ["01 MVP", "02 WEBSITE", "03 LANDING", "04 APP"],
@@ -160,7 +161,7 @@ export const PILLAR_COPY = {
       metaDescription:
         "Newon BUILD — MVP, website, landing page, and app prototype. Design and ship products people can actually use.",
       eyebrow: "NEWON BUSINESS · BUILD",
-      headline: "We turn ideas into real products.",
+      headline: "We turn ideas into\nreal products.",
       lead: "From early ideas to MVP, website, landing page, and app prototype — we design and implement products you can actually use.",
       ctaPrimary: "Start a project →",
       ctaSecondary: "See scope ↓",
@@ -255,8 +256,8 @@ export const PILLAR_COPY = {
       metaDescription:
         "Newon AUTOMATION — AI 자동화, 워크플로, 내부 도구, 리포트. 반복 업무를 시스템으로 바꿉니다.",
       eyebrow: "NEWON BUSINESS · AUTOMATION",
-      headline: "반복되는 업무를 시스템으로 바꿉니다.",
-      lead: "기업과 팀의 반복 업무를 분석하고 AI와 자동화를 활용해 더 효율적인 업무 흐름을 구축합니다.",
+      headline: "반복되는 업무를\n시스템으로 바꿉니다.",
+      lead: "기업과 팀의 반복 업무를 분석하고 AI와 자동화를 활용해\n더 효율적인 업무 흐름을 구축합니다.",
       ctaPrimary: "자동화 상담하기 →",
       ctaSecondary: "서비스 보기 ↓",
       layout: "automation",
@@ -360,7 +361,7 @@ export const PILLAR_COPY = {
       metaDescription:
         "Newon AUTOMATION — AI automation, workflows, internal tools, reporting. Turn repetitive work into systems.",
       eyebrow: "NEWON BUSINESS · AUTOMATION",
-      headline: "Turn repetitive work into systems.",
+      headline: "Turn repetitive work\ninto systems.",
       lead: "We analyze repetitive work in your team and build more efficient flows with AI and automation.",
       ctaPrimary: "Talk automation →",
       ctaSecondary: "See services ↓",
@@ -468,8 +469,8 @@ export const PILLAR_COPY = {
       metaDescription:
         "Newon RESEARCH — 시장·경쟁·소비자·UX 리서치. 감이 아니라 근거로 의사결정을 돕습니다.",
       eyebrow: "NEWON BUSINESS · RESEARCH",
-      headline: "감이 아니라 근거를 찾습니다.",
-      lead: "시장, 경쟁 제품, 사용자 경험과 소비자 데이터를 조사해 제품과 사업 의사결정에 필요한 정보를 정리합니다.",
+      headline: "감이 아니라\n근거를 찾습니다.",
+      lead: "시장, 경쟁 제품, 사용자 경험과 소비자 데이터를 조사해\n제품과 사업 의사결정에 필요한 정보를 정리합니다.",
       ctaPrimary: "리서치 문의 →",
       ctaSecondary: "결과물 보기 ↓",
       layout: "research",
@@ -587,7 +588,7 @@ export const PILLAR_COPY = {
       metaDescription:
         "Newon RESEARCH — market, competitor, consumer, and UX research. Decisions with evidence, not gut feel.",
       eyebrow: "NEWON BUSINESS · RESEARCH",
-      headline: "Evidence over intuition.",
+      headline: "Evidence over\nintuition.",
       lead: "We research markets, competitors, user experience, and consumer signals — then structure what you need to decide.",
       ctaPrimary: "Research inquiry →",
       ctaSecondary: "See outputs ↓",
@@ -709,8 +710,8 @@ export const PILLAR_COPY = {
       metaDescription:
         "Newon SOLUTIONS — White-label, 맞춤 제품, 출시 패키지, 내부 시스템. 패키지로 풀기 어려운 프로젝트를 설계합니다.",
       eyebrow: "NEWON BUSINESS · SOLUTIONS",
-      headline: "정해진 서비스에 맞추지 않습니다.",
-      lead: "일반적인 패키지로 해결하기 어려운 프로젝트를 기업의 목표와 환경에 맞춰 설계하고 구축합니다.",
+      headline: "정해진 서비스에\n맞추지 않습니다.",
+      lead: "일반적인 패키지로 해결하기 어려운 프로젝트를\n기업의 목표와 환경에 맞춰 설계하고 구축합니다.",
       ctaPrimary: "프로젝트 상담하기 →",
       ctaSecondary: "유형 보기 ↓",
       layout: "solutions",
@@ -817,7 +818,7 @@ export const PILLAR_COPY = {
       metaDescription:
         "Newon SOLUTIONS — white-label, custom products, launch programs, internal systems. Built for projects that don’t fit a package.",
       eyebrow: "NEWON BUSINESS · SOLUTIONS",
-      headline: "We don’t force your project into a package.",
+      headline: "We don’t force your project\ninto a package.",
       lead: "For work that standard packages can’t solve, we design and build around your goals and constraints.",
       ctaPrimary: "Talk to us →",
       ctaSecondary: "See types ↓",
@@ -925,9 +926,15 @@ export const PILLAR_COPY = {
 export function getPillarCopy(slug, lang) {
   const pack = PILLAR_COPY[slug];
   if (!pack) return null;
+  const L = resolveCopyLang(lang);
   const en = pack.en;
-  const local = pack[lang] || en;
-  const pageLang = lang === "ko" ? "ko" : "en";
-  const merged = { ...en, ...local, slug, _pageLang: pageLang };
-  return applyPillarPricing(merged, slug, pageLang);
+  let local = pack[L] || (L === "ko" ? pack.ko : en);
+  if (L !== "ko" && L !== "en") {
+    const overlayAll = loadPackOverlay("business-pillar", L);
+    const overlay = overlayAll?.[slug];
+    if (overlay) local = deepMerge(en, overlay);
+  }
+  const merged = { ...en, ...local, slug, _pageLang: L };
+  const priced = applyPillarPricing(merged, slug, L === "ko" ? "ko" : "en");
+  return { ...priced, _pageLang: L };
 }

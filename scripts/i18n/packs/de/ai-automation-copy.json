@@ -1,0 +1,491 @@
+{
+  "seoTitle": "KI-AUTOMATISIERUNG / Newon Geschäft",
+  "metaDescription": "Automatisieren Sie sich wiederholende Arbeiten und unterstützen Sie mit KI —Anfragenklassifizierung, Antwortentwürfen, Dokumentzusammenfassungen und interner Wissenssuche, die mit realen Workflows verbunden sind. Newon KI-AUTOMATISIERUNG.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICE",
+  "crumbAutomation": "AUTOMATISIERUNG",
+  "crumbHere": "KI-AUTOMATISIERUNG",
+  "eyebrow": "KI-AUTOMATISIERUNG",
+  "subEyebrow": "AUTOMATISIERUNG",
+  "headline": "Automatisieren Sie sich wiederholende Arbeiten \n mit KI, die zum Job passt.",
+  "lead": "Wir bilden sich wiederholende Arbeiten ab und verbinden die KI—Automatisierung mit der Arbeitsweise Ihres Teams - Klassifizierung von Anfragen, Antwortentwürfen, Dokumentzusammenfassungen, Überprüfungsanalysen und interne Wissenssuche. Kein Demo-Chatbot - KI, die an die Kanäle, Tools und Prozesse angehängt ist, die Sie bereits verwenden.",
+  "ctaPrimary": "KI-Automatisierungsanfrage →",
+  "ctaSecondary": "Siehe den Automatisierungsablauf ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "KI-Automatisierung"
+    },
+    {
+      "k": "AM BESTEN FÜR",
+      "v": "Wiederkehrende Arbeiten und Support-Automatisierung"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Abhängig vom Umfang"
+    },
+    {
+      "k": "PREIS",
+      "v": "Individuelles Angebot"
+    }
+  ],
+  "overviewLabel": "ÜBERBLICK",
+  "overviewTitle": "Du willst KI.\n Weiß nicht, wo es leben soll.",
+  "overviewBody": [
+    "Anfragen, Bewertungen, Inhalte, Dokumente, interne Q& A — Wiederholungsarbeiten gibt es bereits. Teams wollen KI, aber POCs erreichen oft nie echte Workflows.",
+    "Das Hinzufügen eines generischen Chatbots oder Tools lässt den Prozess unverändert. Die Leute klassifizieren, entwerfen und fassen immer noch von Hand zusammen. Was Sie brauchen, ist eine KI-Automatisierung, die für Ihren Workflow-Kontext entwickelt wurde.",
+    "Die KI-AUTOMATISIERUNG beginnt mit der Definition sich wiederholender Arbeiten, Kanäle, Daten und Qualitätsbalken. Dann entwerfen wir Klassifizierungs—, Entwurfs-, Zusammenfassungs- und Routing-Abläufe — mit Überprüfung durch den Menschen in der Schleife und Leitplanken - und liefern Automatisierung, die sich an reale Vorgänge anpasst."
+  ],
+  "problemsLabel": "PROBLEM",
+  "problemsTitle": "Hilfreich, wenn Sie sich diesen Situationen stellen.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "ANTWORTEN WIEDERHOLEN",
+      "d": "Menschen klassifizieren und verfassen die gleichen Anfragen und Aufgaben.\n Urteilsarbeit wird verdrängt."
+    },
+    {
+      "n": "02",
+      "t": "KI-POC-STALL",
+      "d": "Sie haben einen KI-PoC ausprobiert, der jedoch nie in Betrieb genommen wurde.\n Keine Priorität für die Stelle, an der sich die KI verbinden soll."
+    },
+    {
+      "n": "03",
+      "t": "ZERSIEDELUNG VON WERKZEUGEN",
+      "d": "Werkzeuge stapeln sich, aber der Workflow ändert sich nicht.\n Kanäle, CRM, Mail und Tabellen bleiben getrennt."
+    },
+    {
+      "n": "04",
+      "t": "INKONSISTENTE AUSGABE",
+      "d": "Die Antworten variieren für dieselbe Frage.\n Kein Markenton, keine Richtlinien oder Qualitätsbalken."
+    },
+    {
+      "n": "05",
+      "t": "DOC-ÜBERLADUNG",
+      "d": "Menschen lesen und organisieren lange Dokumente, Notizen und Rezensionen.\n Arbeitswiederholungen zusammenfassen, klassifizieren und extrahieren."
+    },
+    {
+      "n": "06",
+      "t": "KEINE LEITPLANKEN",
+      "d": "Es ist schwer, die AI-Ausgabe unverändert zu senden.\n Keine Überprüfungs-, Genehmigungs- oder Ausnahmestruktur."
+    }
+  ],
+  "baLabel": "VORHER / NACHHER",
+  "baTitle": "Manuelle Wiederholung vs \n Mensch-in-der-Schleife-Automatisierung",
+  "beforeLabel": "VOR",
+  "afterLabel": "NACH",
+  "before": [
+    "Anfragen kommen kanalübergreifend an",
+    "Eigentümer klassifizieren und zeichnen von Hand",
+    "Die Antworten variieren für dieselbe Frage",
+    "Status ist erst nachträglich sichtbar"
+  ],
+  "after": [
+    "Anfragen werden automatisch klassifiziert",
+    "Antwortentwürfe und Zusammenfassungen erscheinen zuerst",
+    "Menschen behandeln Überprüfungen und Ausnahmen",
+    "Ergebnisse werden aufgezeichnet, sobald sie eintreten"
+  ],
+  "capsLabel": "FÄHIGKEIT",
+  "capsTitle": "Wir betreiben AI automation build\nals ein strukturiertes Engagement.",
+  "caps": [
+    {
+      "t": "ARBEITS-MAPPING",
+      "d": "Bestätigen Sie sich wiederholende Aufgaben, Kanäle, Datenstandort, Qualitätsbalken.\nIdentifizieren Sie, wo Automatisierung Hebelwirkung schafft."
+    },
+    {
+      "t": "WORKFLOW-GESTALTUNG",
+      "d": "Entwurfsinput → Prozess → Überprüfung → Ausgabeflüsse.\n Schließt menschliche Überprüfungspunkte und Ausnahmepfade ein."
+    },
+    {
+      "t": "KLASSIFIZIEREN & ROUTE",
+      "d": "Klassifizieren Sie Anfragen, Anfragen und Feedback nach Thema, Priorität, Eigentümer.\nDefinieren Sie Routing-Regeln und SLAs."
+    },
+    {
+      "t": "ENTWURF & ZUSAMMENFASSUNG",
+      "d": "Implementieren Sie Antwortentwürfe, Dokumentzusammenfassungen und Überprüfungsclustering.\n Markenton und Ausgabeformat anpassen."
+    },
+    {
+      "t": "INTEGRATION",
+      "d": "Verbinden Sie Web, App, Mail, CRM, Tabellen und interne Tools.\n Füge KI zu Umgebungen hinzu, die du bereits verwendest."
+    },
+    {
+      "t": "LEITPLANKE",
+      "d": "Fügen Sie Überprüfungsschritte und Berechtigungsbereiche hinzu, die fehlerhafte Ausgaben abfangen.\n Entwurfspfade für sensible Fälle und Ausnahmefälle."
+    },
+    {
+      "t": "PILOTEN & STIMMEN",
+      "d": "Führen Sie Pilot mit einem begrenzten Team oder Kanal aus und stimmen Sie die Qualität ab.\nVerbessere Eingabeaufforderungen, Regeln und Überprüfungsleisten."
+    },
+    {
+      "t": "OPS UND ÜBERGABE",
+      "d": "Dokumentieren Sie Betriebs- und Verbesserungsmethoden.\nVerbinde Erweiterung und Phase 2 Scope."
+    }
+  ],
+  "sourcesLabel": "PROJEKTEINGABEN",
+  "sourcesTitle": "Wir kombinieren die Inputs, die Ihr Projekt benötigt.",
+  "sourcesNote": "Die tatsächlichen Eingaben variieren je nach Organisation, Kanälen und Datenrichtlinie.",
+  "sources": [
+    "Sich wiederholende Arbeits- und Prozessbeschreibungen",
+    "Musteranfragen, Bewertungen, Dokumente",
+    "FAQ, Richtlinien und Anleitungen",
+    "Markenton- und Antwortvorlagen",
+    "CRM-, E-Mail- und Chat-Protokolle",
+    "Interne Wissens- und Dokumentenspeicher",
+    "API- und Integrationsanforderungen",
+    "Berechtigungen und Organisationsstruktur",
+    "Qualitätsleisten und Überprüfungsregeln",
+    "Vorhandene Automatisierung und Skripte",
+    "Erfolgsmetriken und KPIs",
+    "Daten- und Sicherheitspolitik"
+  ],
+  "useLabel": "ANWENDUNGSFÄLLE",
+  "useTitle": "KI-Automatisierung, die wir aufbauen können.",
+  "useBadge": "Beispiel-Build-Typen",
+  "useCases": [
+    {
+      "t": "ANFRAGE KLASSIFIZIEREN",
+      "tag": "KUNDE",
+      "d": "Klassifizieren Sie Kundenanfragen nach Thema, Dringlichkeit, Eigentümer.\nFAQ Matching und Routing-Automatisierung."
+    },
+    {
+      "t": "ANTWORTENTWURF",
+      "tag": "KUNDE",
+      "d": "Generieren Sie Entwürfe von Antworten für Anfragen, E-Mails und Chats.\n Nach menschlicher Überprüfung senden."
+    },
+    {
+      "t": "ÜBERPRÜFUNGSANALYSE",
+      "tag": "EINBLICK",
+      "d": "Cluster-Bewertungen und Feedback nach Themen.\n Oberflächenverbesserungspunkte und Stimmung."
+    },
+    {
+      "t": "INHALTSENTWURF",
+      "tag": "INHALT",
+      "d": "Erstellen Sie Benachrichtigungen, Hilfeartikel und Marketingentwürfe in Ton.\n Vorlage und Anleitung basiert."
+    },
+    {
+      "t": "DOKUMENTZUSAMMENFASSUNG",
+      "tag": "OPS",
+      "d": "Komprimieren Sie lange Dokumente und Notizen für Entscheidungen.\nExtrahieren Sie wichtige Punkte, Maßnahmen, Risiken."
+    },
+    {
+      "t": "INTERNES WISSEN",
+      "tag": "OPS",
+      "d": "Antwort aus verstreuten Dokumenten mit Quellen.\n Suche innerhalb des Berechtigungsbereichs."
+    },
+    {
+      "t": "OPS-AUTOMATISIERUNG",
+      "tag": "OPS",
+      "d": "Datenbereinigung, Warnungen, wiederkehrende Berichte.\n Verknüpft mit klassifizieren und Zusammenfassen."
+    },
+    {
+      "t": "PRODUKT-AI-FUNKTION",
+      "tag": "PRODUKT",
+      "d": "Fügen Sie klassifizieren, Entwerfen, zusammenfassen zu vorhandenem Web oder App hinzu.\nIntegriert in Benutzer- und Bedienerworkflows."
+    }
+  ],
+  "flowLabel": "BEISPIEL-WORKFLOW",
+  "flowTitle": "Von der Arbeitsplanung bis zur Betriebserweiterung",
+  "flow": [
+    {
+      "n": "01",
+      "t": "ANZEIGEN",
+      "d": "Bestätigen Sie sich wiederholende Arbeiten, Kanäle, Daten, Qualitätsbalken.\n Legen Sie Automatisierungsmöglichkeiten und Prioritäten fest.",
+      "examples": [
+        "Arbeit",
+        "TV",
+        "Daten",
+        "Kennzahlen"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "DESIGN",
+      "d": "Entwerfen klassifizieren, entwerfen, zusammenfassen, Überprüfen von Abläufen.\n Bestätigen Sie die Human-in-the-Loop-Punkte.",
+      "examples": [
+        "Flow",
+        "Bewertung",
+        "Ausnahme",
+        "Rollen"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "BAUEN",
+      "d": "Implementieren Sie KI-Funktionen und -Integrationen.\nValidieren Sie die Qualität mit Beispieldaten.",
+      "examples": [
+        "Modell",
+        "Eingabeaufforderung",
+        "API",
+        "Integration"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PILOT",
+      "d": "Führen Sie Pilot mit einem begrenzten Team oder Kanal aus.\n Passen Sie die Ausgabequalität an und überprüfen Sie das Laden.",
+      "examples": [
+        "Pilot",
+        "Melodie",
+        "Bewertung",
+        "Metrik"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ERWEITERN",
+      "d": "Erweitern Sie bewährte Abläufe auf angrenzende Arbeiten.\n Verbinden Sie Ops-Anleitung und Verbesserungspfad.",
+      "examples": [
+        "Skala",
+        "Dok",
+        "Phase 2",
+        "Überwachung"
+      ]
+    }
+  ],
+  "reportLabel": "AUSGABE",
+  "reportTitle": "Ergebnisse sind bedienbare Automatisierung und unterstützende Dokumente.",
+  "reportLead": "Die Zusammensetzung variiert je nach Projektumfang. Nachfolgend sind allgemeine Elemente aufgeführt.",
+  "reportMockStatus": "AUTOMATISIERUNG * WORKFLOW",
+  "reportMockK": "KI-AUTOMATISIERUNGSSPEZIFIKATION",
+  "reportMockT": "Umfang, Workflows, Integrationen, Zusammenfassung der Überprüfungen",
+  "reportItems": [
+    "Automatisierungsumfang",
+    "Workflow-Karte",
+    "Regeln klassifizieren",
+    "Entwurfsvorlagen",
+    "Format der Zusammenfassung",
+    "Integrationsliste",
+    "Überprüfungs-Checkliste",
+    "Leitplankenrichtlinie",
+    "Pilotergebnisse",
+    "Ops-Anleitung"
+  ],
+  "dashTitle": "Teilen Sie Workflow- und Automatisierungsstrukturen auf einer Ansicht.",
+  "dashLead": "Workflows, Modelle, Integrationen und Automatisierungseinheiten beschleunigen zusammen die Umfangsvereinbarung und bauen Diskussionen auf.",
+  "dashNote": "Workflow-Zusammensetzung und Automatisierungsbereich variieren je nach Projektziel und Datenrichtlinie.",
+  "dashMetrics": [
+    "Workflow",
+    "Geschäftsmodelle",
+    "Integration",
+    "Automatisierung"
+  ],
+  "dashFilters": [
+    "Aller",
+    "Klassifizieren",
+    "Entwurf",
+    "Zusammenfassung"
+  ],
+  "aiLabel": "MENSCH-IN-DER-SCHLEIFE",
+  "aiTitle": "AI entwirft die Arbeit.\nLeute behalten Überprüfung und Urteil.",
+  "aiLead": "KI kümmert sich um Klassifizieren, Entwerfen und Zusammenfassen — während die Mitarbeiter das endgültige Urteil, Ausnahmen, sensible Fälle, Markenfreigaben und Richtlinienentscheidungen behalten. Der Überprüfungsumfang kann sich schrittweise erweitern, wenn sich die Qualität stabilisiert.",
+  "aiExamples": [
+    "Klassifizieren → Entwurf → menschliche Überprüfung → Senden",
+    "Cluster überprüfen → Zusammenfassung → Bestätigung des Eigentümers",
+    "Dokumentzusammenfassung → Schlüsselauszug → Überprüfung der Entscheidungsträger",
+    "Interne Fragen und Antworten → Quellen → Antworten innerhalb von Berechtigungen",
+    "Ausnahme / sensibler Fall → menschliche Eskalation",
+    "Kontinuierliche prompte und Qualitätsverbesserung"
+  ],
+  "aiNote": "Vollautomatisches Senden wird zunächst nicht empfohlen. Beginnen Sie mit der Human-in-the-Loop-Struktur, bestätigen Sie die Qualität und erweitern Sie dann den Anwendungsbereich.",
+  "delLabel": "LIEFERBAR",
+  "delTitle": "Was Sie erhalten, wenn das Projekt abgeschlossen ist",
+  "delLead": "Wir liefern die folgenden Artikel nach Bedarf für Ihren Umfang.",
+  "deliverables": [
+    "Definition des Automatisierungsumfangs",
+    "Workflow-Gestaltung",
+    "Aufbau von KI-Fähigkeiten",
+    "Einrichtung der Integration",
+    "Überprüfung & Leitplankenleitfaden",
+    "Betriebsdokumentation",
+    "Pilotenbericht",
+    "Einrichtung von Qualitätsmetriken",
+    "Roadmap für Phase 2 (optional)"
+  ],
+  "processLabel": "PROZESS",
+  "processTitle": "Von der Arbeitszuordnung bis zur Betriebsübergabe.",
+  "process": [
+    {
+      "n": "01",
+      "t": "ENTDECKUNG",
+      "d": "Bestätigen Sie sich wiederholende Arbeiten, Kanäle, Daten, Qualitätsbalken.\nVerstehen Sie Automatisierungsziele und -einschränkungen.",
+      "examples": [
+        "Arbeit",
+        "TV",
+        "Daten",
+        "Politik"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PRIORISIEREN",
+      "d": "Beginnen Sie dort, wo Wirkung und Anstrengung am stärksten sind.\n Vereinbaren Sie den Pilotumfang und die Erfolgskriterien.",
+      "examples": [
+        "Priorität",
+        "Pilot",
+        "Kennzahlen",
+        "Umfang"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Entwerfen Sie Workflows mit Eingabeaufforderungen, Regeln und Überprüfungspunkten.\n Bestätigen Sie die Mensch-in-der-Schleife-Struktur.",
+      "examples": [
+        "Flow",
+        "Bewertung",
+        "Leitplanke",
+        "Integration"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BAUEN",
+      "d": "Implementieren Sie KI-Funktionen und -Integrationen.\nValidieren klassifizieren, entwerfen, Qualität mit Mustern zusammenfassen.",
+      "examples": [
+        "Klassifizieren",
+        "Entwurf",
+        "Zusammenfassung",
+        "API"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PILOT",
+      "d": "Arbeiten Sie mit einem begrenzten Team oder Kanal und stimmen Sie die Qualität ab.\n Balance zwischen Überprüfungslast und Automatisierungsrate.",
+      "examples": [
+        "Pilot",
+        "Melodie",
+        "Feedback",
+        "Metrik"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "BEREITSTELLEN",
+      "d": "Bereitstellung für die Produktion und Einrichtung der Überwachung.\n Bestätigen Sie Rollback- und Eskalationspfade.",
+      "examples": [
+        "Bereitstellen",
+        "Überwachung",
+        "Zugang",
+        "Warnung"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "HANDOFF",
+      "d": "Vorgänge dokumentieren und übergeben.\n Verbindet Erweiterungs- und Verbesserungspfad.",
+      "examples": [
+        "Dok",
+        "Ausbildung",
+        "Phase 2",
+        "Unterstützung"
+      ]
+    }
+  ],
+  "scopeLabel": "GELTUNGSBEREICH EBENEN",
+  "scopeTitle": "Wie man über die Komplexität von Projekten nachdenkt.",
+  "scopeLead": "Kein festes Paket. Der Umfang wird durch die Anzahl der Workflows, Integrationen, Datenrichtlinien und Überprüfungstiefe festgelegt.",
+  "scopes": [
+    {
+      "t": "FOKUSSIERTER PILOT",
+      "items": [
+        "Einzelne sich wiederholende Aufgabe oder Kanal",
+        "Eine von klassifizieren, entwerfen oder zusammenfassen",
+        "Mensch-in-der-Schleife-Überprüfung",
+        "1-2 grundlegende Integrationen",
+        "Schwerpunkt Pilotbetrieb"
+      ]
+    },
+    {
+      "t": "MULTI-WORKFLOW-AUFBAU",
+      "items": [
+        "Mehrere Workflows und Kanäle",
+        "Klassifizieren, entwerfen, zusammenfassen kombiniert",
+        "CRM, E-Mail, interne Tool-Verknüpfungen",
+        "Leitplanken und Prüfprotokolle",
+        "Bedienungsanleitung enthalten"
+      ]
+    },
+    {
+      "t": "PLATTFORMINTEGRATION",
+      "items": [
+        "Web, App, interne Systemintegration",
+        "Mehrere Modelle und Datenquellen",
+        "Erlaubnis, Mieter, Richtlinienstruktur",
+        "Erweiterung und Phase 2 Design",
+        "Langzeitoperationen und Tuning Link"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Der Zeitplan hängt vom Umfang ab.",
+  "timeLead": "Die Dauer variiert je nach Anzahl der Workflows, Integrationen, Datenzugriff, Überprüfungsstruktur und Entscheidungsgeschwindigkeit.",
+  "timelines": [
+    {
+      "t": "Fokussierter Pilot",
+      "d": "Ca.2-4 Wochen * variiert"
+    },
+    {
+      "t": "Multi-Workflow-Aufbau",
+      "d": "Ca.4-8 Wochen * variiert"
+    },
+    {
+      "t": "Plattformintegration",
+      "d": "Über 8+ Wochen * benutzerdefiniert"
+    }
+  ],
+  "priceLabel": "PROJEKTKOSTEN",
+  "priceTitle": "Pro Projekt angegeben.",
+  "priceName": "KI-AUTOMATISIERUNG",
+  "priceValue": "Individuelles Angebot",
+  "priceFactorsLabel": "Preisfaktoren",
+  "priceFactors": [
+    "Umfang - Workflow und Funktionsumfang",
+    "Komplexität - klassifizieren, entwerfen, Tiefe zusammenfassen",
+    "Zeitplan - Zeitplan und Ressourcen",
+    "Integration - CRM, E-Mail, API, interne Tools",
+    "Datenrichtlinie - Sicherheit, Aufbewahrung, Schulungsumfang",
+    "Überprüfungstiefe - Mensch-in-der-Schleife-Ebene",
+    "Modellverwendung - API und Volumen",
+    "Post—Launch - Tuning und Erweiterung"
+  ],
+  "priceNote": "Wir überprüfen Umfang / Komplexität / Zeitplan / Integration und erstellen dann ein Angebot. Keine festen Menüpreise.",
+  "faqLabel": "FAQ'S",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faqs": [
+    {
+      "q": "Welches Modell verwenden Sie?",
+      "a": "Wir schlagen ein Setup vor, das der Arbeits— und Datenrichtlinie entspricht - keine Bindung an einen einzelnen Anbieter."
+    },
+    {
+      "q": "Werden unsere Daten für Schulungen verwendet?",
+      "a": "Standard ist die operative Nutzung für Ihre Arbeit. Schulung und Aufbewahrung werden separat vereinbart."
+    },
+    {
+      "q": "Werden Antworten vollautomatisch gesendet?",
+      "a": "Wir beginnen normalerweise mit einer Überprüfung durch den Menschen. Automatisierung erweitert sich, wenn die Qualität stabil ist."
+    },
+    {
+      "q": "Kann es eine Verbindung zu CRM, Mail oder Tabellen herstellen?",
+      "a": "Wir überprüfen Ihren Stack und bestätigen, was wir verbinden können."
+    },
+    {
+      "q": "Kann ein kleines Team starten?",
+      "a": "Ja. Testen Sie zuerst einen sich wiederholenden Workflow."
+    },
+    {
+      "q": "Wie unterscheidet sich das von der Workflow-Automatisierung?",
+      "a": "Die Workflow-Automatisierung konzentriert sich auf SaaS und Datenverbindungen. KI-AUTOMATISIERUNG konzentriert sich auf KI-Klassifikation, Entwurf und Zusammenfassung im Workflow."
+    },
+    {
+      "q": "Können Sie Tuning und Erweiterung nach dem Start unterstützen?",
+      "a": "Ja. Zeitnahe Verbesserungen, Workflow-Erweiterungen und zusätzliche Integrationen können nach gesonderter Vereinbarung fortgesetzt werden."
+    }
+  ],
+  "finalLabel": "STARTEN SIE EIN PROJEKT",
+  "finalTitle": "Beginnen Sie mit KI-Automatisierung \n, die mit echter Arbeit verbunden ist.",
+  "finalLead": "Teilen Sie uns die sich wiederholenden Arbeiten und Werkzeuge mit, die Sie bereits verwenden. Wir werden die Klassifizierung, den Entwurf und die Zusammenfassung des Umfangs und der Human-in-the-Loop-Struktur gemeinsam bestätigen.",
+  "ctaFinalSecondary": "Alle anzeigen AUTOMATISIERUNG →",
+  "ctaFinalSecondaryHref": "../automation/"
+}

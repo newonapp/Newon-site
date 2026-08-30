@@ -2,6 +2,8 @@
  * APP PROTOTYPE service detail — KO/EN copy.
  * Path: /{lang}/business/app/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const APP_COPY = {
   ko: {
     seoTitle: "APP PROTOTYPE | Newon Business",
@@ -796,5 +798,5 @@ export const APP_COPY = {
 };
 
 export function getAppCopy(lang) {
-  return lang === "ko" ? APP_COPY.ko : APP_COPY.en;
+  return resolveKoEnPack(APP_COPY, lang, "app-copy");
 }

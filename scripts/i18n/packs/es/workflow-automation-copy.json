@@ -1,0 +1,570 @@
+{
+  "seoTitle": "Automatización de flujos de trabajo | Newon Negocio",
+  "metaDescription": "Conecta SaaS, datos y trabajo diario en un solo flujo de trabajo automatizado con Newon Automatización de Flujo de Trabajo.",
+  "eyebrow": "02 · WORKFLOW AUTOMATION",
+  "subEyebrow": "",
+  "headline": "Conecta el trabajo repetitivo\nen un solo flujo.",
+  "lead": "Conectamos trabajos repetitivos a través de SaaS, correo electrónico, hojas de cálculo, bases de datos y herramientas internas en flujos de trabajo automatizados — desde desencadenantes y acciones hasta ramificaciones, procesamiento de datos, notificaciones y gestión de excepciones.",
+  "ctaPrimary": "Solicita un presupuesto →",
+  "ctaSecondary": "Ver alcance del proyecto ↓",
+  "ctaSecondaryHref": "#scope",
+  "meta": [
+    {
+      "k": "SERVICIO",
+      "v": "Automatización de flujos de trabajo"
+    },
+    {
+      "k": "CRONOLOGÍA",
+      "v": "Normalmente entre 3 y 6 semanas"
+    },
+    {
+      "k": "EMPIEZA EN",
+      "v": "Desde ₩1.000.000"
+    },
+    {
+      "k": "MEJOR PARA",
+      "v": "Teams conectando manualmente herramientas y datos"
+    }
+  ],
+  "overviewLabel": "RESUMEN",
+  "overviewTitle": "Ya tienes las herramientas.\nAutomatiza las conexiones.",
+  "overviewBody": [
+    "Conectamos trabajos repetitivos a través de SaaS, correo electrónico, hojas de cálculo, bases de datos y herramientas internas en un flujo de trabajo automatizado.",
+    "Desde desencadenantes y acciones hasta ramificaciones, procesamiento de datos, notificaciones y gestión de excepciones — diseñados en torno a cómo funciona realmente tu equipo."
+  ],
+  "whyLabel": "POR QUÉ LA AUTOMATIZACIÓN",
+  "whyTitle": "¿La gente sigue conectando sistemas\na mano?",
+  "whyLead": "Ya tienes suficientes herramientas, pero cuando no se comunican, la gente mueve datos y activa el siguiente paso manualmente.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "COPIAR Y PEGAR",
+      "d": "La misma información se introduce en múltiples servicios una y otra vez."
+    },
+    {
+      "n": "02",
+      "t": "NOTIFICACIÓN MANUAL",
+      "d": "Alguien avisa manualmente al equipo cada vez que llega una nueva consulta o pedido."
+    },
+    {
+      "n": "03",
+      "t": "DATOS DISPERSOS",
+      "d": "Los datos de clientes y operaciones están presentes en muchas herramientas y hojas SaaS."
+    },
+    {
+      "n": "04",
+      "t": "TAREA REPETITIVA",
+      "d": "El mismo trabajo se repite diariamente o semanalmente."
+    },
+    {
+      "n": "05",
+      "t": "SEGUIMIENTO PERDIDO",
+      "d": "Los siguientes pasos dependen de la memoria, por lo que el trabajo puede pasarse por alto."
+    },
+    {
+      "n": "06",
+      "t": "INFORMES MANUALES",
+      "d": "Los informes se reconstruyen recopilando datos a mano."
+    }
+  ],
+  "baLabel": "ANTES / DESPUÉS",
+  "baTitle": "Conexiones manuales vs\nflujo de trabajo automatizado",
+  "beforeLabel": "MANUAL",
+  "afterLabel": "AUTOMATIZADO",
+  "before": [
+    "Revisar el formulario, luego copiarlo a una hoja",
+    "Alertar manualmente al propietario",
+    "Ingresar datos en el CRM a mano",
+    "Alguien recuerda el siguiente paso"
+  ],
+  "after": [
+    "El disparador detecta el evento",
+    "La condición dirige el camino",
+    "El proceso limpia los datos",
+    "Acciones y alertas se ejecutan automáticamente"
+  ],
+  "structureLabel": "CÓMO FUNCIONA",
+  "structureTitle": "Un evento puede\niniciar la siguiente tarea automáticamente.",
+  "structure": [
+    {
+      "n": "01",
+      "t": "DISPARADOR",
+      "d": "El evento que inicia la automatización.\nFormularios, pedidos o cambios de estado pueden iniciar un flujo de trabajo.",
+      "examples": [
+        "Nueva consulta",
+        "Envío de formulario",
+        "Nuevo pedido",
+        "Cambio de estado",
+        "Hora programada",
+        "Datos nuevos creados"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "CONDICIÓN",
+      "d": "Decide si ejecutar y qué camino tomar.\nRamificar según monto, tipo o valores de estado.",
+      "examples": [
+        "Tipo de cliente",
+        "Monto del pedido",
+        "Tipo de consulta",
+        "Estado del trabajo",
+        "Existe el valor requerido"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "PROCESO",
+      "d": "Gestiona los datos que necesitas.\nLimpia, calcula o ejecuta pasos de IA en el medio.",
+      "examples": [
+        "Limpiar datos",
+        "Cambio de formato",
+        "Cálculo",
+        "Extracción",
+        "Análisis de IA",
+        "Fusionar datos"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ACCIÓN",
+      "d": "Ejecuta el trabajo real.\nAlertas, actualizaciones del CRM y escrituras en hojas a continuación.",
+      "examples": [
+        "Enviar correo electrónico",
+        "Notificar al propietario",
+        "Crear registro en CRM",
+        "Actualizar hoja",
+        "Crear tarea",
+        "Guardar en la base de datos"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "REGISTRAR / MONITOREAR",
+      "d": "Confirmar resultados de la ejecución.\nRastrear éxito, fracaso, tiempo de ejecución y errores.",
+      "examples": [
+        "Éxito",
+        "Fracaso",
+        "Tiempo de ejecución",
+        "Resultado",
+        "Registro de errores"
+      ]
+    }
+  ],
+  "capsTitle": "Trabajo que podemos automatizar.",
+  "caps": [
+    {
+      "t": "GESTIÓN DE PROSPECTOS",
+      "d": "Recepción → almacenar datos del cliente → asignar propietario → notificar → hacer seguimiento"
+    },
+    {
+      "t": "ATENCIÓN AL CLIENTE",
+      "d": "Solicitud → clasificar → asignar → resolver → registrar resultado"
+    },
+    {
+      "t": "VENTAS",
+      "d": "Nuevo prospecto → CRM → asignar representante → seguimiento"
+    },
+    {
+      "t": "PEDIDO",
+      "d": "Pedido → registrar datos → alerta interna → cambio de estado → actualización al cliente"
+    },
+    {
+      "t": "CONTENIDO",
+      "d": "Solicitud → crear tarea → asignar → revisar → aprobar"
+    },
+    {
+      "t": "INFORMES",
+      "d": "Recolectar → limpiar → calcular → generar informe → entregar"
+    },
+    {
+      "t": "OPERACIONES INTERNAS",
+      "d": "Solicitud interna → aprobar → procesar → completar → registrar"
+    },
+    {
+      "t": "SINCRONIZACIÓN DE DATOS",
+      "d": "Sincronizar automáticamente los datos necesarios entre sistemas.\nMapear solo los campos que necesites en ambas direcciones."
+    }
+  ],
+  "useLabel": "POSIBILIDADES",
+  "useTitle": "En el trabajo real,\nasí es como se conecta.",
+  "useBadge": "Construir ejemplos",
+  "useCases": [
+    {
+      "n": "01",
+      "t": "CONSULTA DEL CLIENTE",
+      "steps": [
+        "Formulario del sitio web",
+        "Datos del cliente",
+        "CRM",
+        "Asignar gerente",
+        "Slack / Notificación por correo electrónico",
+        "Correo de confirmación",
+        "Tarea de seguimiento"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PEDIDO",
+      "steps": [
+        "Nuevo pedido",
+        "Validar datos",
+        "Base de datos",
+        "Notificación Interna",
+        "Procesamiento de Pedidos",
+        "Actualización del Cliente",
+        "Completo"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "INFORME",
+      "steps": [
+        "Programar",
+        "Recopilar Datos",
+        "Limpiar Datos",
+        "Calcular Métricas",
+        "Generar Informe",
+        "Enviar Informe"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONTENIDO",
+      "steps": [
+        "Solicitud de Contenido",
+        "Crear Tarea",
+        "Asignar",
+        "Borrador",
+        "Revisar",
+        "Aprobar",
+        "Publicar"
+      ]
+    }
+  ],
+  "integLabel": "INTEGRACIONES",
+  "integTitle": "Conecta las herramientas\nque ya usas.",
+  "integNote": "La conectividad real depende de la API, webhooks, permisos y entorno técnico de cada servicio.",
+  "integGroups": [
+    {
+      "k": "COMUNICACIÓN",
+      "items": [
+        "Correo Electrónico",
+        "Slack",
+        "Servicios de mensajería"
+      ]
+    },
+    {
+      "k": "DATOS",
+      "items": [
+        "Google Sheets",
+        "Excel / CSV",
+        "Base de Datos"
+      ]
+    },
+    {
+      "k": "PRODUCTIVIDAD",
+      "items": [
+        "Notion",
+        "Formularios",
+        "Calendario",
+        "Herramientas de Proyecto"
+      ]
+    },
+    {
+      "k": "NEGOCIOS",
+      "items": [
+        "CRM",
+        "Comercio Electrónico",
+        "Analítica",
+        "Software empresarial existente"
+      ]
+    },
+    {
+      "k": "TECNOLOGÍA",
+      "items": [
+        "API REST",
+        "Webhook",
+        "Servicio en la Nube",
+        "Sistema Interno Existente"
+      ]
+    },
+    {
+      "k": "IA",
+      "items": [
+        "API de IA",
+        "Análisis de Texto",
+        "Clasificación",
+        "Resumen",
+        "Generación"
+      ]
+    }
+  ],
+  "aiLabel": "EXTENSIÓN DE IA",
+  "aiTitle": "Puedes agregar juicio de IA\ndentro de un flujo de trabajo.",
+  "aiLead": "Más allá de mover datos de A a B, la IA puede conectarse donde se debe entender o clasificar texto.",
+  "aiExamples": [
+    "CLASIFICACIÓN DE CONSULTAS — Clasificar automáticamente las consultas de los clientes",
+    "ANÁLISIS DE RESEÑAS — Analizar reseñas y comentarios",
+    "RESUMEN — Resumir documentos o correos electrónicos largos",
+    "EXTRACCIÓN DE DATOS — Extraer información requerida del texto",
+    "RESUMEN DE INFORMES — Resumir informes basados en datos",
+    "BORRADOR DE CONTENIDO — Redactar correos de seguimiento o contenidos",
+    "PRIORIDAD — Clasificar prioridad según el contenido de la solicitud"
+  ],
+  "aiNote": "Las funciones de IA se agregan como un alcance separado cuando se requieren.",
+  "controlLabel": "CONTROL",
+  "controlTitle": "No todo\nnecesita ejecutarse automáticamente.",
+  "controlLead": "Las decisiones importantes pueden permanecer con las personas mientras el sistema maneja el procesamiento repetitivo.",
+  "loopSteps": [
+    {
+      "n": "01",
+      "title": "SOLICITUD"
+    },
+    {
+      "n": "02",
+      "title": "PROCESO DE IA / SISTEMA"
+    },
+    {
+      "n": "03",
+      "title": "REVISIÓN HUMANA"
+    },
+    {
+      "n": "04",
+      "title": "APROBAR / RECHAZAR"
+    },
+    {
+      "n": "05",
+      "title": "PRÓXIMA ACCIÓN"
+    }
+  ],
+  "humanExamples": [
+    "Aprobación del gerente antes de enviar una cotización",
+    "Revisión antes de publicar contenido",
+    "Revisión manual de pedidos de alto valor",
+    "Revisión del propietario para consultas importantes de clientes",
+    "Revisar la salida de la IA antes de que se ejecute el siguiente paso"
+  ],
+  "reliabilityLabel": "CONFIABILIDAD",
+  "reliabilityTitle": "Diseñamos para el fracaso\nasí como para el éxito.",
+  "reliabilityLead": "Dependiendo del alcance, planificamos para:",
+  "reliabilityItems": [
+    "Validación",
+    "Datos faltantes",
+    "Prevención de duplicados",
+    "Reintento",
+    "Registro de errores",
+    "Notificación de fallas",
+    "Revisión manual",
+    "Proceso de respaldo"
+  ],
+  "reliabilityScenarios": [
+    {
+      "t": "La API externa no responde",
+      "d": "Registrar error → reintentar → notificar al propietario si sigue fallando"
+    },
+    {
+      "t": "Faltan datos requeridos",
+      "d": "Detener flujo de trabajo → registrar para revisión"
+    },
+    {
+      "t": "Solicitud duplicada",
+      "d": "Verificar datos existentes → prevenir manejo duplicado"
+    }
+  ],
+  "monitorLabel": "MONITOREO",
+  "monitorTitle": "Deberías poder ver\nsi la automatización está funcionando.",
+  "monitorLead": "Dependiendo del proyecto, podemos exponer:",
+  "monitorMetrics": [
+    "Ejecuciones recientes",
+    "Cantidad de ejecuciones",
+    "Éxito",
+    "Fallo",
+    "Tiempo de ejecución",
+    "Errores",
+    "Resultados",
+    "Estado de reintento"
+  ],
+  "monitorNote": "Se puede añadir un panel de administración separado cuando sea necesario.",
+  "delTitle": "Lo que obtienes.",
+  "delLead": "Dependiendo del alcance, entregamos lo que necesitas de la lista a continuación.",
+  "deliverables": [
+    "MAPA DE FLUJO DE TRABAJO",
+    "FLUJO DE TRABAJO DE AUTOMATIZACIÓN",
+    "INTEGRACIONES",
+    "MAPEO DE DATOS",
+    "CONDICIONES",
+    "MANEJO DE ERRORES",
+    "GUÍA DE MONITOREO",
+    "DOCUMENTACIÓN"
+  ],
+  "deliverExtras": [
+    "Panel de administración",
+    "Integración de IA",
+    "Herramienta interna",
+    "Sistema de informes"
+  ],
+  "processTitle": "Comenzamos por entender cómo se realiza el trabajo hoy.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCUBRIMIENTO",
+      "d": "Revisar el trabajo actual y las herramientas en uso"
+    },
+    {
+      "n": "02",
+      "t": "MAPEO",
+      "d": "Visualizar el flujo de trabajo actual"
+    },
+    {
+      "n": "03",
+      "t": "ANÁLISIS",
+      "d": "Encontrar repetición, trabajo manual y riesgos de omisión"
+    },
+    {
+      "n": "04",
+      "t": "DISEÑO",
+      "d": "Diseñar disparadores, condiciones y acciones"
+    },
+    {
+      "n": "05",
+      "t": "PROTOTIPO",
+      "d": "Probar el flujo de trabajo principal"
+    },
+    {
+      "n": "06",
+      "t": "CONSTRUCCIÓN",
+      "d": "Implementar la automatización"
+    },
+    {
+      "n": "07",
+      "t": "INTEGRACIÓN",
+      "d": "Conectar servicios y datos"
+    },
+    {
+      "n": "08",
+      "t": "PRUEBA",
+      "d": "Probar casos normales, de error y extremos"
+    },
+    {
+      "n": "09",
+      "t": "LANZAMIENTO",
+      "d": "Aplicar al trabajo real"
+    },
+    {
+      "n": "10",
+      "t": "ENTREGA",
+      "d": "Entregar operaciones"
+    }
+  ],
+  "scopeLabel": "ALCANCE",
+  "scopeTitle": "Automatiza solo lo que necesitas.",
+  "scopes": [
+    {
+      "t": "NIVEL 01 · AUTOMATIZACIÓN SIMPLE",
+      "items": [
+        "Un flujo de trabajo repetitivo claro",
+        "Formulario → Hoja → Correo",
+        "Nuevo Cliente Potencial → CRM → Notificación"
+      ]
+    },
+    {
+      "t": "NIVEL 02 · FLUJO DE TRABAJO MULTI-ETAPA",
+      "items": [
+        "Flujos de trabajo de múltiples pasos con condiciones",
+        "Disparador → Condición → Proceso → Múltiples Acciones → Registro → Seguimiento"
+      ]
+    },
+    {
+      "t": "NIVEL 03 · SISTEMA DE AUTOMATIZACIÓN EMPRESARIAL",
+      "items": [
+        "Automatización de operaciones conectadas a través de flujos de trabajo",
+        "Clientes Potenciales + Ventas + Clientes + Operaciones + Informes"
+      ]
+    }
+  ],
+  "priceTitle": "Desde ₩1,000,000",
+  "priceLead": "Incluso para el mismo tipo de servicio, la dificultad de construcción cambia con los sistemas conectados y la lógica empresarial. Las cotizaciones finales usan los factores a continuación.",
+  "priceName": "WORKFLOW AUTOMATION",
+  "priceValue": "Desde ₩1,000,000",
+  "priceFactors": [
+    "Número de flujos de trabajo",
+    "Número de pasos",
+    "Servicios conectados",
+    "Número de disparadores",
+    "Condiciones / ramas",
+    "Integración API",
+    "Estructura de datos",
+    "Funciones de IA",
+    "Manejo de errores",
+    "Monitoreo",
+    "Tablero",
+    "Seguridad / permisos",
+    "Documentación"
+  ],
+  "priceNote": "Los proyectos de Automatización de Flujo de Trabajo Básico comienzan desde ₩1,000,000. El costo final se confirma después de la revisión de los requisitos.",
+  "timeTitle": "Típicamente 3–6 semanas",
+  "timeLead": "El cronograma varía según integraciones, entorno API, complejidad del flujo de trabajo, funciones de IA y alcance de pruebas.",
+  "timelines": [
+    {
+      "t": "SIMPLE",
+      "d": "Aproximadamente 1–2 semanas"
+    },
+    {
+      "t": "ESTÁNDAR",
+      "d": "Aproximadamente 3–6 semanas"
+    },
+    {
+      "t": "COMPLEJO",
+      "d": "Más de 6 semanas / personalizado"
+    }
+  ],
+  "extLabel": "SERVICIOS EXTERNOS",
+  "extTitle": "Los costos de servicios externos pueden aplicarse por separado.",
+  "extItems": [
+    "Plataforma de Automatización",
+    "API de IA",
+    "API externa",
+    "Nube",
+    "Servidor",
+    "Base de datos",
+    "Servicio de correo electrónico",
+    "Servicio de mensajería",
+    "Otros SaaS de pago"
+  ],
+  "faqTitle": "Preguntas frecuentes",
+  "faqs": [
+    {
+      "q": "¿Qué tipo de trabajo es adecuado para la automatización?",
+      "a": "El trabajo que se repite con un desencadenante y proceso bastante definidos es una buena opción. Primero revisamos tu flujo de trabajo actual y definimos lo que se puede automatizar."
+    },
+    {
+      "q": "¿Necesitamos reemplazar nuestras herramientas actuales?",
+      "a": "No necesariamente. Primero verificamos si tus herramientas existentes pueden mantenerse conectadas mediante APIs o webhooks."
+    },
+    {
+      "q": "¿Se pueden conectar múltiples herramientas SaaS a la vez?",
+      "a": "Sí. Se deben confirmar la API y los permisos de acceso de cada servicio."
+    },
+    {
+      "q": "¿Se puede incluir IA?",
+      "a": "Sí. Se pueden agregar clasificación, resumen, extracción y generación de contenido donde sea necesario."
+    },
+    {
+      "q": "¿Qué pasa cuando falla la automatización?",
+      "a": "Dependiendo del alcance, podemos agregar registros de errores, reintentos, alertas al responsable o pasos de revisión manual."
+    },
+    {
+      "q": "¿Puede un humano aprobar antes de que se ejecute el siguiente paso?",
+      "a": "Sí. Los pasos importantes pueden esperar la aprobación antes de que el flujo de trabajo continúe."
+    },
+    {
+      "q": "¿Pueden mejorar un flujo de trabajo existente?",
+      "a": "Sí. Analizamos tu estructura y herramientas actuales, luego definimos lo que se puede mejorar."
+    }
+  ],
+  "finalTitle": "Muéstranos el trabajo\nque las personas repiten hoy.",
+  "finalLead": "Cuéntanos qué servicios usas, qué datos mueves y qué tareas se repiten. Analizamos el flujo de trabajo actual y definimos lo que se puede automatizar.",
+  "ctaFinalBtn": "Consulta sobre WORKFLOW AUTOMATION →",
+  "ctaFinalSecondary": "Ver otros servicios de Automatización →",
+  "automationHubHref": "../"
+}

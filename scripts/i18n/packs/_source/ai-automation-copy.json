@@ -1,0 +1,491 @@
+{
+  "seoTitle": "AI AUTOMATION | Newon Business",
+  "metaDescription": "Automate repetitive work and support with AI — inquiry classification, reply drafts, document summaries, and internal knowledge search connected to real workflows. Newon AI AUTOMATION.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICES",
+  "crumbAutomation": "AUTOMATION",
+  "crumbHere": "AI AUTOMATION",
+  "eyebrow": "AI AUTOMATION",
+  "subEyebrow": "AUTOMATION",
+  "headline": "Automate repetitive work\nwith AI that fits the job.",
+  "lead": "We map repeating work and connect AI automation to how your team already operates — inquiry classification, reply drafts, document summaries, review analysis, and internal knowledge search. Not a demo chatbot — AI attached to the channels, tools, and processes you already use.",
+  "ctaPrimary": "AI automation inquiry →",
+  "ctaSecondary": "See the automation flow ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "AI Automation"
+    },
+    {
+      "k": "BEST FOR",
+      "v": "Repeating work and support automation"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Depends on scope"
+    },
+    {
+      "k": "PRICE",
+      "v": "Custom quote"
+    }
+  ],
+  "overviewLabel": "OVERVIEW",
+  "overviewTitle": "You want AI.\nNot sure where it should live.",
+  "overviewBody": [
+    "Inquiries, reviews, content, documents, internal Q&A — repeating work already exists. Teams want AI but PoCs often never reach real workflows.",
+    "Adding a generic chatbot or tool leaves the process unchanged. People still classify, draft, and summarize by hand. What you need is AI automation designed for your workflow context.",
+    "AI AUTOMATION starts by defining repeating work, channels, data, and quality bars. Then we design classify, draft, summarize, and routing flows — with human-in-the-loop review and guardrails — and deliver automation that attaches to real operations."
+  ],
+  "problemsLabel": "PROBLEMS",
+  "problemsTitle": "Helpful when you face these situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "REPEAT REPLIES",
+      "d": "People classify and draft the same inquiries and tasks.\nJudgment work gets crowded out."
+    },
+    {
+      "n": "02",
+      "t": "AI POC STALL",
+      "d": "You tried an AI PoC but it never reached operations.\nNo priority for where AI should connect."
+    },
+    {
+      "n": "03",
+      "t": "TOOL SPRAWL",
+      "d": "Tools pile up but the workflow does not change.\nChannels, CRM, mail, and sheets stay disconnected."
+    },
+    {
+      "n": "04",
+      "t": "INCONSISTENT OUTPUT",
+      "d": "Answers vary for the same question.\nNo brand tone, policy, or quality bar."
+    },
+    {
+      "n": "05",
+      "t": "DOC OVERLOAD",
+      "d": "People read and organize long docs, notes, and reviews.\nSummarize, classify, and extract work repeats."
+    },
+    {
+      "n": "06",
+      "t": "NO GUARDRAILS",
+      "d": "Hard to send AI output as-is.\nNo review, permission, or exception structure."
+    }
+  ],
+  "baLabel": "BEFORE / AFTER",
+  "baTitle": "Manual repetition vs\nhuman-in-the-loop automation",
+  "beforeLabel": "BEFORE",
+  "afterLabel": "AFTER",
+  "before": [
+    "Requests arrive across channels",
+    "Owners classify and draft by hand",
+    "Answers vary for the same question",
+    "Status is visible only after the fact"
+  ],
+  "after": [
+    "Requests are classified automatically",
+    "Draft replies and summaries appear first",
+    "Humans handle review and exceptions",
+    "Outcomes are recorded as they happen"
+  ],
+  "capsLabel": "CAPABILITIES",
+  "capsTitle": "We run AI automation build\nas one structured engagement.",
+  "caps": [
+    {
+      "t": "WORK MAPPING",
+      "d": "Confirm repeating tasks, channels, data location, quality bars.\nIdentify where automation creates leverage."
+    },
+    {
+      "t": "WORKFLOW DESIGN",
+      "d": "Design input → process → review → output flows.\nInclude human review points and exception paths."
+    },
+    {
+      "t": "CLASSIFY & ROUTE",
+      "d": "Classify inquiries, requests, and feedback by topic, priority, owner.\nDefine routing rules and SLAs."
+    },
+    {
+      "t": "DRAFT & SUMMARIZE",
+      "d": "Implement reply drafts, document summaries, review clustering.\nMatch brand tone and output format."
+    },
+    {
+      "t": "INTEGRATIONS",
+      "d": "Connect web, app, mail, CRM, sheets, internal tools.\nAttach AI to environments you already use."
+    },
+    {
+      "t": "GUARDRAILS",
+      "d": "Add review steps and permission scope that catch bad output.\nDesign paths for sensitive and exception cases."
+    },
+    {
+      "t": "PILOT & TUNE",
+      "d": "Run pilot with a limited team or channel and tune quality.\nImprove prompts, rules, and review bars."
+    },
+    {
+      "t": "OPS & HANDOFF",
+      "d": "Document operating and improvement methods.\nConnect expansion and Phase 2 scope."
+    }
+  ],
+  "sourcesLabel": "PROJECT INPUTS",
+  "sourcesTitle": "We combine the inputs your project needs.",
+  "sourcesNote": "Actual inputs vary by organization, channels, and data policy.",
+  "sources": [
+    "Repeating work and process descriptions",
+    "Sample inquiries, reviews, documents",
+    "FAQ, policy, and guides",
+    "Brand tone and reply templates",
+    "CRM, mail, and chat logs",
+    "Internal knowledge and document stores",
+    "API and integration requirements",
+    "Permissions and org structure",
+    "Quality bars and review rules",
+    "Existing automation and scripts",
+    "Success metrics and KPIs",
+    "Data and security policy"
+  ],
+  "useLabel": "USE CASES",
+  "useTitle": "AI automation we can build.",
+  "useBadge": "Example build types",
+  "useCases": [
+    {
+      "t": "INQUIRY CLASSIFY",
+      "tag": "CUSTOMER",
+      "d": "Classify customer inquiries by topic, urgency, owner.\nFAQ matching and routing automation."
+    },
+    {
+      "t": "REPLY DRAFT",
+      "tag": "CUSTOMER",
+      "d": "Generate draft replies for inquiries, email, chat.\nSend after human review."
+    },
+    {
+      "t": "REVIEW ANALYSIS",
+      "tag": "INSIGHT",
+      "d": "Cluster reviews and feedback by theme.\nSurface improvement points and sentiment."
+    },
+    {
+      "t": "CONTENT DRAFT",
+      "tag": "CONTENT",
+      "d": "Generate notices, help articles, marketing drafts on-tone.\nTemplate and guide based."
+    },
+    {
+      "t": "DOCUMENT SUMMARY",
+      "tag": "OPS",
+      "d": "Compress long docs and notes for decisions.\nExtract key points, actions, risks."
+    },
+    {
+      "t": "INTERNAL KNOWLEDGE",
+      "tag": "OPS",
+      "d": "Answer from scattered docs with sources.\nSearch within permission scope."
+    },
+    {
+      "t": "OPS AUTOMATION",
+      "tag": "OPS",
+      "d": "Data cleanup, alerts, recurring reports.\nLinked with classify and summarize."
+    },
+    {
+      "t": "PRODUCT AI FEATURE",
+      "tag": "PRODUCT",
+      "d": "Add classify, draft, summarize to existing web or app.\nIntegrated into user and operator workflows."
+    }
+  ],
+  "flowLabel": "EXAMPLE WORKFLOW",
+  "flowTitle": "From work mapping to operational expansion",
+  "flow": [
+    {
+      "n": "01",
+      "t": "MAP",
+      "d": "Confirm repeating work, channels, data, quality bars.\nSet automation opportunities and priority.",
+      "examples": [
+        "Work",
+        "Channels",
+        "Data",
+        "KPIs"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "DESIGN",
+      "d": "Design classify, draft, summarize, review flows.\nConfirm human-in-the-loop points.",
+      "examples": [
+        "Flow",
+        "Review",
+        "Exceptions",
+        "Roles"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "BUILD",
+      "d": "Implement AI capabilities and integrations.\nValidate quality with sample data.",
+      "examples": [
+        "Model",
+        "Prompt",
+        "API",
+        "Integration"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PILOT",
+      "d": "Run pilot with a limited team or channel.\nAdjust output quality and review load.",
+      "examples": [
+        "Pilot",
+        "Tune",
+        "Review",
+        "Metrics"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "EXPAND",
+      "d": "Expand proven flows to adjacent work.\nConnect ops guide and improvement path.",
+      "examples": [
+        "Scale",
+        "Docs",
+        "Phase 2",
+        "Monitor"
+      ]
+    }
+  ],
+  "reportLabel": "OUTPUT",
+  "reportTitle": "Deliverables are operable automation and supporting docs.",
+  "reportLead": "Composition varies by project scope. Below are common items.",
+  "reportMockStatus": "AUTOMATION · WORKFLOW",
+  "reportMockK": "AI AUTOMATION SPEC",
+  "reportMockT": "Scope, workflows, integrations, review summary",
+  "reportItems": [
+    "Automation Scope",
+    "Workflow Map",
+    "Classify Rules",
+    "Draft Templates",
+    "Summary Format",
+    "Integration List",
+    "Review Checklist",
+    "Guardrail Policy",
+    "Pilot Results",
+    "Ops Guide"
+  ],
+  "dashTitle": "Share workflow and automation structure on one view.",
+  "dashLead": "Workflows, models, integrations, and automation units together speed scope agreement and build discussions.",
+  "dashNote": "Workflow composition and automation range vary by project goal and data policy.",
+  "dashMetrics": [
+    "Workflows",
+    "Models",
+    "Integrations",
+    "Automations"
+  ],
+  "dashFilters": [
+    "All",
+    "Classify",
+    "Draft",
+    "Summary"
+  ],
+  "aiLabel": "HUMAN-IN-THE-LOOP",
+  "aiTitle": "AI drafts the work.\nPeople keep review and judgment.",
+  "aiLead": "AI handles classify, draft, and summarize — while people keep final judgment, exceptions, sensitive cases, brand-tone approval, and policy decisions. Review scope can widen in phases as quality stabilizes.",
+  "aiExamples": [
+    "Classify → draft → human review → send",
+    "Review cluster → summary → owner confirmation",
+    "Doc summary → key extract → decision-maker review",
+    "Internal Q&A → sources → answer within permissions",
+    "Exception / sensitive case → human escalation",
+    "Continuous prompt and quality-bar improvement"
+  ],
+  "aiNote": "Fully automatic sending is not recommended at first. Start with human-in-the-loop structure, confirm quality, then widen scope.",
+  "delLabel": "DELIVERABLES",
+  "delTitle": "What you receive when the project completes",
+  "delLead": "We deliver the items below as needed for your scope.",
+  "deliverables": [
+    "Automation Scope Definition",
+    "Workflow Design",
+    "AI Capability Build",
+    "Integration Setup",
+    "Review & Guardrail Guide",
+    "Operating Documentation",
+    "Pilot Report",
+    "Quality Metrics Setup",
+    "Phase 2 Roadmap (optional)"
+  ],
+  "processLabel": "PROCESS",
+  "processTitle": "From work mapping to operating handoff.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOVERY",
+      "d": "Confirm repeating work, channels, data, quality bars.\nUnderstand automation goals and constraints.",
+      "examples": [
+        "Work",
+        "Channels",
+        "Data",
+        "Policy"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PRIORITIZE",
+      "d": "Start where impact versus effort is strongest.\nAgree pilot scope and success criteria.",
+      "examples": [
+        "Priority",
+        "Pilot",
+        "KPIs",
+        "Scope"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Design workflows with prompts, rules, review points.\nConfirm human-in-the-loop structure.",
+      "examples": [
+        "Flow",
+        "Review",
+        "Guardrails",
+        "Integrations"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BUILD",
+      "d": "Implement AI capabilities and integrations.\nValidate classify, draft, summarize quality with samples.",
+      "examples": [
+        "Classify",
+        "Draft",
+        "Summary",
+        "API"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PILOT",
+      "d": "Operate with a limited team or channel and tune quality.\nBalance review load and automation rate.",
+      "examples": [
+        "Pilot",
+        "Tune",
+        "Feedback",
+        "Metrics"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "DEPLOY",
+      "d": "Deploy to production and set monitoring.\nConfirm rollback and escalation paths.",
+      "examples": [
+        "Deploy",
+        "Monitor",
+        "Access",
+        "Alert"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "HANDOFF",
+      "d": "Document operations and hand off.\nConnect expansion and improvement path.",
+      "examples": [
+        "Docs",
+        "Training",
+        "Phase 2",
+        "Support"
+      ]
+    }
+  ],
+  "scopeLabel": "SCOPE LEVELS",
+  "scopeTitle": "How to think about project complexity.",
+  "scopeLead": "Not a fixed package. Scope is set by workflow count, integrations, data policy, and review depth.",
+  "scopes": [
+    {
+      "t": "FOCUSED PILOT",
+      "items": [
+        "Single repeating task or channel",
+        "One of classify, draft, or summarize",
+        "Human-in-the-loop review",
+        "1–2 basic integrations",
+        "Pilot operation focus"
+      ]
+    },
+    {
+      "t": "MULTI-WORKFLOW BUILD",
+      "items": [
+        "Multiple workflows and channels",
+        "Classify, draft, summarize combined",
+        "CRM, mail, internal tool links",
+        "Guardrails and audit logs",
+        "Operating guide included"
+      ]
+    },
+    {
+      "t": "PLATFORM INTEGRATION",
+      "items": [
+        "Web, app, internal system integration",
+        "Multiple models and data sources",
+        "Permission, tenant, policy structure",
+        "Expansion and Phase 2 design",
+        "Long-term ops and tuning link"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Timeline depends on scope.",
+  "timeLead": "Duration varies by workflow count, integrations, data access, review structure, and decision speed.",
+  "timelines": [
+    {
+      "t": "Focused Pilot",
+      "d": "About 2–4 weeks · varies"
+    },
+    {
+      "t": "Multi-workflow Build",
+      "d": "About 4–8 weeks · varies"
+    },
+    {
+      "t": "Platform Integration",
+      "d": "About 8+ weeks · custom"
+    }
+  ],
+  "priceLabel": "PROJECT COST",
+  "priceTitle": "Quoted per project.",
+  "priceName": "AI AUTOMATION",
+  "priceValue": "Custom quote",
+  "priceFactorsLabel": "Pricing factors",
+  "priceFactors": [
+    "Scope — workflow and feature range",
+    "Complexity — classify, draft, summarize depth",
+    "Timeline — schedule and resourcing",
+    "Integration — CRM, mail, API, internal tools",
+    "Data policy — security, retention, training scope",
+    "Review depth — human-in-the-loop level",
+    "Model usage — API and volume",
+    "Post-launch — tuning and expansion"
+  ],
+  "priceNote": "We review Scope / Complexity / Timeline / Integration, then provide a quote. No fixed menu pricing.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Frequently asked questions",
+  "faqs": [
+    {
+      "q": "Which model do you use?",
+      "a": "We propose a setup that fits the work and data policy — not a single vendor lock-in."
+    },
+    {
+      "q": "Is our data used for training?",
+      "a": "Default is operational use for your work. Training and retention are agreed separately."
+    },
+    {
+      "q": "Will it send replies fully automatically?",
+      "a": "We usually start with human-in-the-loop review. Automation widens when quality is stable."
+    },
+    {
+      "q": "Can it connect to CRM, mail, or sheets?",
+      "a": "We review your stack and confirm what we can connect."
+    },
+    {
+      "q": "Can a small team start?",
+      "a": "Yes. Pilot one repeating workflow first."
+    },
+    {
+      "q": "How is this different from Workflow Automation?",
+      "a": "Workflow Automation focuses on SaaS and data connections. AI AUTOMATION centers on AI classify, draft, and summarize in the workflow."
+    },
+    {
+      "q": "Can you support tuning and expansion after launch?",
+      "a": "Yes. Prompt improvement, workflow expansion, and additional integrations can continue under separate agreement."
+    }
+  ],
+  "finalLabel": "START A PROJECT",
+  "finalTitle": "Start with AI automation\nthat attaches to real work.",
+  "finalLead": "Tell us the repeating work and tools you already use. We will confirm classify, draft, and summarize scope and human-in-the-loop structure together.",
+  "ctaFinalSecondary": "View all AUTOMATION →",
+  "ctaFinalSecondaryHref": "../automation/"
+}

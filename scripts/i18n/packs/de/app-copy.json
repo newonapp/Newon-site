@@ -1,0 +1,483 @@
+{
+  "seoTitle": "APP-PROTOTYP / Newon Geschäft",
+  "metaDescription": "Verwandeln Sie App-Ideen in interaktive iOS— und Android -Bildschirme und -Abläufe - Validieren Sie sie mit Investoren und internen Teams vor der vollständigen Entwicklung. Newon APP-PROTOTYP.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICE",
+  "crumbBuild": "BAUEN",
+  "crumbHere": "APP-PROTOTYP",
+  "eyebrow": "APP-PROTOTYP",
+  "subEyebrow": "BAUEN",
+  "headline": "Machen Sie eine App-Idee\nzu einem echten Erlebnis.",
+  "lead": "Wir entwerfen und bauen interaktive App-Prototypen mit den Kernabläufen iOS und Android. Überprüfen Sie vor Investorentreffen, internen Überprüfungen oder dem Entwicklungsstart, wie sich die Idee tatsächlich anfühlt, wenn die Leute sie verwenden.",
+  "ctaPrimary": "App-Prototyp-Anfrage →",
+  "ctaSecondary": "Siehe den Prototyp-Ablauf ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "App-Prototyp"
+    },
+    {
+      "k": "AM BESTEN FÜR",
+      "v": "Investoren- und interne Validierung"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Ungefähr 2-3 Wochen"
+    },
+    {
+      "k": "PREIS",
+      "v": "Von ₩500,000"
+    }
+  ],
+  "overviewLabel": "ÜBERBLICK",
+  "overviewTitle": "Du hast die Geschichte.\nNicht die Erfahrung.",
+  "overviewBody": [
+    "App-Ideen landen selten allein durch Folien und Drahtgitter. Investoren, Partner und interne Stakeholder bitten darum, es auszuprobieren — und Entwicklungsteams haben Schwierigkeiten, ohne definierte Bildschirme, Abläufe und Zustände zu beginnen.",
+    "Das Erstellen einer Produktions-App vom ersten Tag an kostet zu viel Zeit und Geld. Figma allein fehlt es oft an Interaktion, Übergängen und mobilem Kontext. Was Sie brauchen, ist ein Prototyp, in dem Kernflüsse tatsächlich funktionieren.",
+    "Der APP-PROTOTYP beginnt mit der Definition von App-Zielen und Schlüsselszenarien. Wir entwerfen iOS— und Android-Bildschirme, Benutzerabläufe und Interaktionen - und liefern dann einen anklickbaren Prototyp für die Freigabe, Validierung und Übergabe der Entwickler."
+  ],
+  "problemsLabel": "PROBLEM",
+  "problemsTitle": "Hilfreich, wenn Sie sich diesen Situationen stellen.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "NUR IDEE",
+      "d": "Sie haben ein Konzept, aber nichts zu zeigen als echte Bildschirme und Abläufe.\n Erklärung allein überzeugt nicht."
+    },
+    {
+      "n": "02",
+      "t": "INVESTOREN-DEMO",
+      "d": "Sie benötigen vor Investoren- oder Partnertreffen eine funktionierende Demo.\nDer Kernwert muss gefühlt, nicht vorgestellt werden."
+    },
+    {
+      "n": "03",
+      "t": "INTERNE AUSRICHTUNG",
+      "d": "Produkt, Design, Technik und Führung sind nicht aufeinander abgestimmt.\nDu brauchst einen Prototyp, auf den jeder reagieren kann."
+    },
+    {
+      "n": "04",
+      "t": "STRÖMUNGSSPALT",
+      "d": "Sie haben Drähte oder Mocks, aber keine validierten Fluss- oder Zustandsübergänge.\n Onboarding, Kernaktionen und Kantenpfade sind unklar."
+    },
+    {
+      "n": "05",
+      "t": "RISIKO VOR DER ENTWICKLUNG",
+      "d": "Umfang, Bildschirme und Prioritäten sind vor der Entwicklung nicht definiert.\n Sie benötigen eine Validierung, bevor Sie sich zum MVP-Build verpflichten."
+    },
+    {
+      "n": "06",
+      "t": "PLATTFORMWAHL",
+      "d": "Sie müssen sich zuerst für iOS, Android oder web entscheiden.\n Plattform-UX-Unterschiede müssen getestet werden."
+    }
+  ],
+  "baLabel": "VORHER / NACHHER",
+  "baTitle": "Statische Mocks gegen \n funktionierender Prototyp",
+  "beforeLabel": "VOR",
+  "afterLabel": "NACH",
+  "before": [
+    "Nur Folien, Drähte und statische Mocks",
+    "Kernflüsse in Worten erklärt",
+    "Investoren- und interne Bewertungen setzen auf Fantasie",
+    "Entwicklungsumfang und Bildschirmpriorität unklar"
+  ],
+  "after": [
+    "Kernbildschirme und iOS / Android -Flüsse definiert",
+    "Klickbarer Prototyp mit echten Übergängen",
+    "Link teilen oder bauen für Investoren- und interne Validierung",
+    "Bildschirm-, Fluss- und Spezifikationspaket für den Entwicklungsstart"
+  ],
+  "capsLabel": "FÄHIGKEIT",
+  "capsTitle": "Wir führen die App-Prototypenarbeit \n als ein strukturiertes Engagement durch.",
+  "caps": [
+    {
+      "t": "ZIELSETZUNG",
+      "d": "Definieren Sie App-Zweck, Kernbenutzer und Erfolgsszenarien.\n Klären Sie, was der Prototyp validieren muss."
+    },
+    {
+      "t": "STRÖMUNGSDESIGN",
+      "d": "Entwerfen Sie Onboarding, Kernaktionen und wichtige Statusübergänge.\n Formflüsse für iOS und Android Kontext."
+    },
+    {
+      "t": "UX / UI-GESTALTUNG",
+      "d": "Entwerfen Sie die Benutzeroberfläche und die Informationsstruktur des Kernbildschirms.\n Spiegelt mobile Touch- und Navigationsmuster wider."
+    },
+    {
+      "t": "INTERAKTIVER AUFBAU",
+      "d": "Erstellen Sie einen Prototyp, in dem Interaktionen funktionieren.\n Konzentriere dich auf Kernflüsse für Geschwindigkeit."
+    },
+    {
+      "t": "PLATTFORM-UMFANG",
+      "d": "Legen Sie iOS, Android oder den Web-Bereich für das Projektziel fest.\n Spiegelt Plattformunterschiede bei Bedarf wider."
+    },
+    {
+      "t": "VALIDIERUNGSUNTERSTÜTZUNG",
+      "d": "Bereiten Sie Aktienformate für Investoren-, interne und Usability-Überprüfungen vor.\n Fügen Sie Feedback-Revisionsrunden hinzu."
+    },
+    {
+      "t": "SPEZIFIKATION & ÜBERGABE",
+      "d": "Dokumentiere Bildschirme, Abläufe und Interaktionen.\n Bietet Übergabe für MVP oder Produktionsbau."
+    },
+    {
+      "t": "NÄCHSTER SCHRITT PFAD",
+      "d": "Verbinden Sie den Prototyp mit dem MVP oder der ladenfertigen Entwicklung.\n Schlagen Sie als Nächstes Umfang, Zeitplan und Zitat vor."
+    }
+  ],
+  "sourcesLabel": "PROJEKTEINGABEN",
+  "sourcesTitle": "Wir kombinieren die Inputs, die Ihr Prototyp benötigt.",
+  "sourcesNote": "Die tatsächlichen Eingaben variieren je nach Ideenstadium, vorhandenen Spezifikationen und Referenz-Apps.",
+  "sources": [
+    "App-Konzept und Zweck",
+    "Zielbenutzer und Szenarien",
+    "Referenz-Apps",
+    "Vorhandene Drähte oder Spezifikationen",
+    "Marken- und UI-Richtlinien",
+    "Markt- und Wettbewerbskontext",
+    "Liste der Kernfunktionen",
+    "Onboarding und Definition von Kernmaßnahmen",
+    "iOS vs Android Priorität",
+    "Investoren- oder Demo-Frist",
+    "Internes Stakeholder-Feedback",
+    "Zukünftiger MVP oder Launchplan"
+  ],
+  "useLabel": "ANWENDUNGSFÄLLE",
+  "useTitle": "Prototypen, die wir bauen können.",
+  "useBadge": "Beispiel-Build-Typen",
+  "useCases": [
+    {
+      "t": "INVESTOREN-DEMO",
+      "d": "Core-Flow-Demo für Investoren- und Partnertreffen.\nInteraktion, die Werte greifbar macht."
+    },
+    {
+      "t": "INTERNE VALIDIERUNG",
+      "d": "Ausrichtungsprototyp für Führung, Produkt, Design und Technik.\n Interne Überprüfung und Feedbackschleife."
+    },
+    {
+      "t": "VERBRAUCHER-APP-IDEE",
+      "d": "Onboarding und Kernnutzung für B2C-App-Ideen.\n iOS und Android UX-Validierung."
+    },
+    {
+      "t": "SERVICE-APP",
+      "d": "Buchungs-, Bestell-, Abonnement- oder passende App-Flows.\n Zustandsübergänge und CTA-fokussiertes Design."
+    },
+    {
+      "t": "INTERNES MOBILES WERKZEUG",
+      "d": "Prototyp für mobile Außendienst-, Ops- oder Admin-Tools.\n Überprüfung von Rollen, Berechtigungen und Aufgabenfluss."
+    },
+    {
+      "t": "MERKMAL PoC",
+      "d": "Validieren Sie neue Funktionen, Redesigns oder Onboarding-Änderungen.\n PoC vor der Erweiterung einer bestehenden App."
+    },
+    {
+      "t": "PLATTFORMÜBERGREIFEND",
+      "d": "Gemeinsamer Kern plus plattformspezifische Unterschiede.\n Unterstützt Entscheidungen zur Priorität der Plattform."
+    },
+    {
+      "t": "UMFANG VOR DEM MVP",
+      "d": "Definieren Sie den MVP-Umfang, die Bildschirme und die Priorität vor dem vollständigen Build.\n Material für Entwicklerzitat und Zeitleiste."
+    }
+  ],
+  "flowLabel": "BEISPIEL-WORKFLOW",
+  "flowTitle": "Von der Idee zum teilbaren Prototyp",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINIEREN",
+      "d": "Definieren Sie App-Zweck, Benutzer und Schlüsselszenarien.\n Stimmt zu, was der Prototyp validieren muss.",
+      "examples": [
+        "Zweck",
+        "Internetnutzer",
+        "Szenario",
+        "Timeline"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRUKTUR",
+      "d": "Entwurfsbildschirmliste, IA und Flows.\n Legt den Bereich iOS und Android fest.",
+      "examples": [
+        "Touchscreens",
+        "Migrationsströme",
+        "IA",
+        "Plattform"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Entwerfen Sie die Benutzeroberfläche des Kernbildschirms und die Interaktionsrichtung.\n Bestätigungsbildschirme, die für Demo und Validierung benötigt werden.",
+      "examples": [
+        "BENUTZEROBERFLÄCHE",
+        "Bewegung",
+        "Mitgliedstaaten",
+        "Bewertung"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PROTOTYP",
+      "d": "Baue einen funktionierenden Prototyp.\n Schließt Kernflüsse schnell ab.",
+      "examples": [
+        "Tippen",
+        "Streichen",
+        "Navigieren",
+        "Mitgliedstaaten"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "teilen",
+      "d": "Liefern Sie Freigabelink, Build und Spezifikation.\nConnectFeedback und nächste Schritte.",
+      "examples": [
+        "Verknüpfen",
+        "Demo",
+        "Spezifikation",
+        "MVP"
+      ]
+    }
+  ],
+  "reportLabel": "AUSGABE",
+  "reportTitle": "Die Ergebnisse sind ein gemeinsam nutzbarer Prototyp und unterstützende Spezifikationen.",
+  "reportLead": "Die Zusammensetzung variiert je nach Projektumfang. Nachfolgend sind allgemeine Elemente aufgeführt.",
+  "reportMockStatus": "PROTOTYP * SPEZIFIKATION",
+  "reportMockK": "SPEZIFIKATION DES APP-PROTOTYPS",
+  "reportMockT": "Bildschirme, Flows, Plattformen, Interaktionen",
+  "reportItems": [
+    "Ziele & Szenarien",
+    "Bildschirmliste",
+    "Benutzerflusskarte",
+    "Kern-UI-Bildschirme",
+    "Interaktionsnotizen",
+    "Plattform-Umfang",
+    "Prototyp verlinken / bauen",
+    "Validierungshinweise",
+    "Zusammenfassung der Übergabe",
+    "MVP-Pfad (optional)"
+  ],
+  "dashTitle": "Teilen Sie Bildschirm-, Flow- und Plattformbereiche in einer Ansicht.",
+  "dashLead": "Bildschirme, Flows, Plattformen und Integrationen beschleunigen zusammen die Umfangsvereinbarung und die Demo-Vorbereitung.",
+  "dashNote": "Bildschirmanzahl, Plattform und Interaktionstiefe variieren je nach Projektziel und Zeitplan.",
+  "dashMetrics": [
+    "Touchscreens",
+    "Migrationsströme",
+    "Plattform",
+    "Integration"
+  ],
+  "dashFilters": [
+    "Aller",
+    "Kern",
+    "iOS",
+    "Android"
+  ],
+  "aiLabel": "BESCHLEUNIGUNG",
+  "aiTitle": "Wiederholung automatisieren.\n Fokus auf Design und Prototyp.",
+  "aiLead": "Bildschirmlisten, Flow-Entwürfe, Interaktionsnotizen und QS—Checklisten können aus Gründen der Geschwindigkeit KI-unterstützt werden, während sich die Mitarbeiter auf UX, Kernabläufe und Prototypenqualität konzentrieren.",
+  "aiExamples": [
+    "Entwurfssieb und Ablauflisten",
+    "Strukturszenarien und Zustandsübergänge",
+    "Entwurf von UI-Kopien und -Etiketten",
+    "Usability- und Demo-Checklisten",
+    "Übergabe- und Spezifikationsdokumententwürfe",
+    "Vergleichen Sie MVP-Umfang und -Priorität"
+  ],
+  "aiNote": "Endgültige Bildschirme, Abläufe und Interaktionsentscheidungen werden mit Ihrem Projektteam bestätigt.",
+  "delLabel": "LIEFERBAR",
+  "delTitle": "Was Sie erhalten, wenn das Projekt abgeschlossen ist",
+  "delLead": "Wir liefern die folgenden Artikel nach Bedarf für Ihren Umfang.",
+  "deliverables": [
+    "Interaktiver App-Prototyp",
+    "Kernbildschirm-Benutzeroberfläche",
+    "Benutzerflusskarte",
+    "Bildschirm- und Interaktionsspezifikation",
+    "Hinweise zum Plattformumfang",
+    "Prototyp verlinken / bauen",
+    "Demo-Unterstützung für die Validierung",
+    "Übergabepaket",
+    "Vorschlag für den MVP-Umfang (optional)"
+  ],
+  "processLabel": "PROZESS",
+  "processTitle": "Vom Zweck zum Teilen.",
+  "process": [
+    {
+      "n": "01",
+      "t": "ENTDECKUNG",
+      "d": "Bestätigen Sie den App-Zweck, die Benutzer, die wichtigsten Szenarien und die Zeitachse.\n Verstehe Demo- und Validierungsziele.",
+      "examples": [
+        "Zweck",
+        "Internetnutzer",
+        "Demo",
+        "Timeline"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRUKTUR",
+      "d": "Definieren Sie Bildschirmliste, IA, Flows und Plattformumfang.\n Trennen Sie den Kern von den Erweiterungsbildschirmen.",
+      "examples": [
+        "Touchscreens",
+        "Migrationsströme",
+        "iOS",
+        "Android"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Entwerfen Sie die Benutzeroberfläche des Kernbildschirms und die Interaktionsrichtung.\n Führe Überprüfungs- und Feedbackrunden durch.",
+      "examples": [
+        "BENUTZEROBERFLÄCHE",
+        "Mitgliedstaaten",
+        "Bewertung",
+        "Überarbeiten"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PROTOTYP",
+      "d": "Baue einen funktionierenden Prototyp.\n Überprüfen Sie Kernflüsse und Übergänge.",
+      "examples": [
+        "Bauen",
+        "Tippen",
+        "Navigieren",
+        "Polnisch"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "VALIDIEREN",
+      "d": "Support-Demo, interne Überprüfung und Usability-Check.\n Feedback anwenden.",
+      "examples": [
+        "Demo",
+        "Feedback",
+        "Bugfixes",
+        "Abmelden"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "SPEZIFIKATION",
+      "d": "Dokumentiere Bildschirme, Abläufe und Interaktionen.\nBereite die Übergabe für die Entwicklung vor.",
+      "examples": [
+        "Spezifikation",
+        "Notes",
+        "Assets",
+        "Handoff"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "NÄCHSTEN",
+      "d": "Verbinden Sie MVP, vollständigen Build oder Store-fähigen Pfad.\n Schlagen Sie als Nächstes Umfang, Zeitplan und Zitat vor.",
+      "examples": [
+        "MVP",
+        "Umfang",
+        "Zitieren",
+        "Phase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "GELTUNGSBEREICH EBENEN",
+  "scopeTitle": "Wie man über die Komplexität von Projekten nachdenkt.",
+  "scopeLead": "Kein festes Paket. Der Umfang wird durch Bildschirmanzahl, Plattform, Interaktionstiefe und Integrationen festgelegt.",
+  "scopes": [
+    {
+      "t": "PROTOTYP",
+      "items": [
+        "5-8 Kernsiebe",
+        "1-2 kernströme",
+        "Interaktiver Prototyp",
+        "iOS oder Android Fokus",
+        "Investoren- und interne Validierung"
+      ]
+    },
+    {
+      "t": "DIE MVP-APP",
+      "items": [
+        "Erweiterte Bildschirme und mehrere Flows",
+        "iOS + Android Geltungsbereich",
+        "Zustände und Kantenpfade enthalten",
+        "Grundlegende Integration oder API-Mock",
+        "Entwickler-Kickoff-Spezifikationspaket"
+      ]
+    },
+    {
+      "t": "LAGERFÄHIG",
+      "items": [
+        "Store-fähige App-Entwicklung",
+        "Backend, Authentifizierung, Zahlungen, Push",
+        "Qualitätssicherung, Bereitstellung, Einreichung speichern",
+        "Ops und Wartung link",
+        "Individuelles Angebot und Zeitplan"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Der Zeitplan hängt vom Umfang ab.",
+  "timeLead": "Die Dauer variiert je nach Anzahl der Bildschirme, Interaktionstiefe, Plattform und Feedbackrunden.",
+  "timelines": [
+    {
+      "t": "Prototyp",
+      "d": "Ca.2-3 Wochen * variiert"
+    },
+    {
+      "t": "Die MVP-App",
+      "d": "Ca.4-6 Wochen * variiert"
+    },
+    {
+      "t": "Lagerfähig",
+      "d": "Benutzerdefiniert * separater Bereich"
+    }
+  ],
+  "priceLabel": "PROJEKTKOSTEN",
+  "priceTitle": "Pro Projekt angegeben.",
+  "priceName": "APP-PROTOTYP",
+  "priceValue": "Von ₩500,000",
+  "priceFactorsLabel": "Preisfaktoren",
+  "priceFactors": [
+    "Bildschirme - Anzahl der Kerne und Erweiterungen",
+    "Flows - Fluss- und Zustandskomplexität",
+    "Plattform - iOS / Android / web",
+    "Interaktion - Interaktion und Bewegungstiefe",
+    "Zeitplan - Zeitplan und Feedbackrunden",
+    "Integration - API-Mock- und Link-Umfang",
+    "Designtiefe - UI und Designsystem",
+    "Nächster Schritt - MVP oder Store-Ready-Link"
+  ],
+  "priceNote": "Ab ₩500,000 ist der Startpreis für den APP-PROTOTYP. MVP-App- und Store-fähige Builds werden nach Umfang getrennt angegeben.",
+  "faqLabel": "FAQ'S",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faqs": [
+    {
+      "q": "Was deckt ab ₩500.000 ab?",
+      "a": "Es ist der Einstiegspreis für APP-PROTOTYPEN - in der Regel Kernbildschirme und 1-2 interaktive Flows. MVP-App- und Store-fähige Builds werden separat angegeben."
+    },
+    {
+      "q": "Ist das eine Store-fähige App?",
+      "a": "Der Standardwert ist ein Prototyp für die Investoren-, interne und Vorentwicklungsvalidierung. Store-fähige App-Entwicklung ist ein separater Store-fähiger Bereich."
+    },
+    {
+      "q": "Können Sie sowohl iOS als auch Android abdecken?",
+      "a": "Ja. Wir entwerfen für einen Plattformfokus oder beide, je nach Projektziel. Das Angebot variiert je nach Anzahl der Bildschirme und Plattformen."
+    },
+    {
+      "q": "Wie lange dauert es?",
+      "a": "Prototyp ist in der Regel 2-3 Wochen; MVP-App etwa 4-6 Wochen. Hängt von Bildschirmen, Interaktionstiefe und Feedbackrunden ab."
+    },
+    {
+      "q": "Kann das in der Entwicklung weitergehen?",
+      "a": "Ja. Wir können MVP, vollständigen Build oder Store-Ready-Umfang aus dem Prototyp und der Spezifikation vorschlagen."
+    },
+    {
+      "q": "Wie viele Revisionen?",
+      "a": "Zwei Revisionsrunden sind enthalten. Änderungen außerhalb des Geltungsbereichs und zusätzliche Bildschirme wirken sich auf Zeitachse und Angebot aus."
+    },
+    {
+      "q": "nur Figma oder ein funktionierender Prototyp?",
+      "a": "Im Mittelpunkt steht ein interaktiver funktionierender Prototyp. UI-Dateien und Spezifikationsdokumente können bei Bedarf eingefügt werden."
+    }
+  ],
+  "finalLabel": "STARTEN SIE EIN PROJEKT",
+  "finalTitle": "Zeige das Erlebnis\nvor dem Pitch Deck.",
+  "finalLead": "Wenn Sie eine App-Idee, ein Demo-Ziel, Referenz-Apps oder eine Frist haben, teilen Sie uns mit, was Sie validieren müssen. Wir werden iOS / Android Prototypumfang und Validierungsansatz gemeinsam bestätigen.",
+  "ctaFinalSecondary": "Alle BUILD anzeigen →",
+  "ctaFinalSecondaryHref": "../build/"
+}

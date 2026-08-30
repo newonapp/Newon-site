@@ -1,0 +1,510 @@
+{
+  "seoTitle": "WEB DEVELOPMENT | Newon Business",
+  "metaDescription": "High-finish websites for brands and services — company sites, landings, and product web from structure through design, build, and launch. Newon WEB DEVELOPMENT.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICES",
+  "crumbBuild": "BUILD",
+  "crumbHere": "WEB",
+  "eyebrow": "WEB DEVELOPMENT",
+  "subEyebrow": "BUILD",
+  "headline": "Polished web for\nbrands and services.",
+  "lead": "From brand sites and landing pages to product web and service sites — we design and build digital experiences matched to your goal. Information architecture, UI, responsive implementation, SEO, inquiry connections, and deploy in one continuous path.",
+  "ctaPrimary": "Website project inquiry →",
+  "ctaSecondary": "See the scope ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Web Development"
+    },
+    {
+      "k": "BEST FOR",
+      "v": "Brand & service web builds"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Usually 2–5 weeks"
+    },
+    {
+      "k": "PRICE",
+      "v": "From ₩700,000"
+    }
+  ],
+  "overviewLabel": "OVERVIEW",
+  "overviewTitle": "You have a site.\nThe brand doesn't show.",
+  "overviewBody": [
+    "Many teams have a website, but the brand and offer do not read in one glance. Template-like layouts, broken mobile views, and paths that never reach inquiry or conversion are common.",
+    "A website is not a dump of information — it is an experience that helps visitors understand the brand and take the next step. Structure, typography, spacing, CTA, responsive layout, and SEO must work together.",
+    "WEB DEVELOPMENT starts by defining the site's purpose and visitor actions. Then we design information architecture and brand-fit UI, and deliver a high-finish site including responsive build, inquiry wiring, and launch."
+  ],
+  "problemsLabel": "PROBLEMS",
+  "problemsTitle": "Helpful when you face these situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "NO BRAND PRESENCE",
+      "d": "You have a site but the brand and service do not read.\nThe layout feels like a template that needs rebuilding."
+    },
+    {
+      "n": "02",
+      "t": "MOBILE BREAKS",
+      "d": "Mobile feels broken or hard to scan.\nResponsive structure and information hierarchy need a reset."
+    },
+    {
+      "n": "03",
+      "t": "NO CONVERSION PATH",
+      "d": "The story stops at introduction — visitors never reach inquiry, apply, or explore.\nYou need conversion flow design."
+    },
+    {
+      "n": "04",
+      "t": "SCATTERED CONTENT",
+      "d": "Many pages but unclear roles and priority.\nInformation architecture needs organizing."
+    },
+    {
+      "n": "05",
+      "t": "OUTDATED SITE",
+      "d": "You need to separate what to keep from what to rebuild.\nRenewal or full rebuild is required."
+    },
+    {
+      "n": "06",
+      "t": "LAUNCH BLOCKED",
+      "d": "Design exists but implementation, deploy, or domain connection is stuck.\nYou need one partner through launch."
+    }
+  ],
+  "baLabel": "BEFORE / AFTER",
+  "baTitle": "Information dump vs\na site where the brand reads",
+  "beforeLabel": "BEFORE",
+  "afterLabel": "AFTER",
+  "before": [
+    "Template-like layout and inconsistent tone",
+    "Layout and readability issues on mobile",
+    "Different button and section rules per page",
+    "No path from story to inquiry or conversion"
+  ],
+  "after": [
+    "Purpose and visitor actions defined first",
+    "Brand-fit information architecture and UI",
+    "Responsive layout readable on desktop and mobile",
+    "Inquiry, CTA, SEO, and deploy connected"
+  ],
+  "capsLabel": "CAPABILITIES",
+  "capsTitle": "We run web build\nas one structured engagement.",
+  "caps": [
+    {
+      "t": "GOAL & IA",
+      "d": "Define site purpose, page roles, and content priority.\nBuild structure that keeps visitors oriented."
+    },
+    {
+      "t": "UX / UI DESIGN",
+      "d": "Match brand tone, typography, spacing, and components.\nLook like your brand — not a theme."
+    },
+    {
+      "t": "RESPONSIVE BUILD",
+      "d": "Implement layouts that hold across primary devices.\nProtect core CTA with mobile-first structure."
+    },
+    {
+      "t": "CORE PAGES",
+      "d": "Complete home, about, services, inquiry — whatever the goal requires.\nAlign sections and content hierarchy."
+    },
+    {
+      "t": "CONVERSION WIRING",
+      "d": "Wire forms, email, and business inquiry to real next steps.\nDesign CTA and conversion flows."
+    },
+    {
+      "t": "SEO & META",
+      "d": "Include basic search and share settings — titles, descriptions, Open Graph.\nSet page-level meta and structure."
+    },
+    {
+      "t": "CMS & OPS",
+      "d": "When needed, build structures that allow later copy and image updates.\nScope CMS to how you want to operate."
+    },
+    {
+      "t": "DEPLOY & LAUNCH",
+      "d": "QA across browsers and devices, then deploy.\nDeliver domain connection and operating notes."
+    }
+  ],
+  "sourcesLabel": "PROJECT INPUTS",
+  "sourcesTitle": "We combine the inputs your project needs.",
+  "sourcesNote": "Actual inputs vary by existing site, available assets, and brand material.",
+  "sources": [
+    "Brand and service description",
+    "Existing site and content",
+    "Logo and visual assets",
+    "Brand and UI guidelines",
+    "Reference sites and benchmarks",
+    "Page and menu requirements",
+    "Inquiry and conversion goals",
+    "SEO and keyword direction",
+    "Multilingual structure",
+    "Legal, privacy, terms",
+    "Hosting and domain environment",
+    "Future expansion plans"
+  ],
+  "useLabel": "USE CASES",
+  "useTitle": "Websites we can build.",
+  "useBadge": "Example site types",
+  "useCases": [
+    {
+      "t": "COMPANY / STUDIO SITE",
+      "d": "A clear corporate web that explains who you are and how you work."
+    },
+    {
+      "t": "BRAND SITE",
+      "d": "World and tone first — when the brand must lead over product."
+    },
+    {
+      "t": "SERVICE LANDING",
+      "d": "One offer, one story — focused on value and CTA."
+    },
+    {
+      "t": "PORTFOLIO / CASE WEB",
+      "d": "Work and process presented with clarity and persuasion."
+    },
+    {
+      "t": "INQUIRY / HIRING HUB",
+      "d": "Partnership, careers, and conversion-focused hub pages."
+    },
+    {
+      "t": "PRODUCT WEB",
+      "d": "Service introduction connecting features, pricing, and inquiry."
+    },
+    {
+      "t": "MULTILINGUAL SITE",
+      "d": "Multilingual web with language structure and switching UX."
+    },
+    {
+      "t": "SITE RENEWAL",
+      "d": "Renewal separating what to keep from what to rebuild."
+    }
+  ],
+  "flowLabel": "EXAMPLE WORKFLOW",
+  "flowTitle": "From structure to launch",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINE",
+      "d": "Align on outcome — brand story, lead capture, or product explanation.\nDefine visitor actions and success criteria.",
+      "examples": [
+        "Goal",
+        "Audience",
+        "CTA",
+        "KPIs"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRUCTURE",
+      "d": "Set page map, sections, and content needs.\nConfirm information architecture and navigation.",
+      "examples": [
+        "Sitemap",
+        "IA",
+        "Sections",
+        "Content"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Confirm key screens, visual system, and typography.\nAlign brand tone and component rules.",
+      "examples": [
+        "UI",
+        "Type",
+        "Components",
+        "Review"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BUILD",
+      "d": "Implement responsive web with interactions and inquiry flow.\nInclude SEO and meta setup.",
+      "examples": [
+        "Frontend",
+        "Responsive",
+        "Forms",
+        "SEO"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LAUNCH",
+      "d": "Device checks, deploy, and operating notes.\nSupport domain connection.",
+      "examples": [
+        "QA",
+        "Deploy",
+        "Domain",
+        "Handoff"
+      ]
+    }
+  ],
+  "reportLabel": "OUTPUT",
+  "reportTitle": "Deliverables are an operable website and supporting docs.",
+  "reportLead": "Composition varies by project scope. Below are common items.",
+  "reportMockStatus": "WEB · STRUCTURE",
+  "reportMockK": "WEB SITE SPEC",
+  "reportMockT": "Pages, sections, conversion flow",
+  "reportItems": [
+    "Site Goals & Audience",
+    "Sitemap / IA",
+    "Page & Section List",
+    "UX / UI Overview",
+    "Responsive Breakpoints",
+    "Form & CTA Wiring",
+    "SEO & Meta Setup",
+    "CMS / Ops Notes",
+    "QA Checklist",
+    "Launch & Handoff Notes"
+  ],
+  "dashTitle": "Share site structure and page scope in one view.",
+  "dashLead": "Pages, sections, languages, and integrations together speed scope agreement and build discussions.",
+  "dashNote": "Page composition and feature range vary by site goal and budget.",
+  "dashMetrics": [
+    "Pages",
+    "Sections",
+    "Languages",
+    "Integrations"
+  ],
+  "dashFilters": [
+    "All",
+    "Core",
+    "Sub",
+    "Global"
+  ],
+  "aiLabel": "ACCELERATION",
+  "aiTitle": "Automate repetition.\nFocus on design and build.",
+  "aiLead": "Content structuring, section drafts, SEO meta, and QA checklists can be AI-assisted for speed — while people focus on IA, brand UI, and core implementation.",
+  "aiExamples": [
+    "Draft page and section structure",
+    "Organize content hierarchy and copy direction",
+    "Draft SEO titles and descriptions",
+    "Responsive QA checklists",
+    "Multilingual structure organization",
+    "Ops and handoff doc drafts"
+  ],
+  "aiNote": "Final structure, design, and quality decisions are confirmed with your project team.",
+  "delLabel": "DELIVERABLES",
+  "delTitle": "What you receive when the project completes",
+  "delLead": "We deliver the items below as needed for your scope.",
+  "deliverables": [
+    {
+      "title": "Sitemap / IA Document",
+      "body": "Site structure and page roles, clearly mapped."
+    },
+    {
+      "title": "Designed Key Screens",
+      "body": "UX/UI for the pages that matter most."
+    },
+    {
+      "title": "Responsive Web Build",
+      "body": "A build that stays readable across devices."
+    },
+    {
+      "title": "Form & CTA Connections",
+      "body": "Forms and CTAs wired to real next actions."
+    },
+    {
+      "title": "Basic SEO Setup",
+      "body": "Titles, descriptions, and basic share meta."
+    },
+    {
+      "title": "UX / UI Design Files",
+      "body": "Design files and key components."
+    },
+    {
+      "title": "Deployed Environment",
+      "body": "A live deployed site ready to access."
+    },
+    {
+      "title": "CMS Setup (if scoped)",
+      "body": "Content edit structure when included in scope."
+    },
+    {
+      "title": "Launch & Ops Guide",
+      "body": "A short guide for launch and ongoing ops."
+    }
+  ],
+  "processLabel": "PROCESS",
+  "processTitle": "From goal definition to launch.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOVERY",
+      "d": "Confirm site purpose, visitors, current assets, constraints.\nUnderstand success criteria and conversion goals.",
+      "examples": [
+        "Goal",
+        "Audience",
+        "Assets",
+        "KPIs"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRUCTURE",
+      "d": "Define page map, sections, and content needs.\nAgree information architecture and navigation.",
+      "examples": [
+        "Sitemap",
+        "IA",
+        "Sections",
+        "Content"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Confirm key screens, visual system, typography.\nAlign brand tone and components.",
+      "examples": [
+        "UI",
+        "Type",
+        "Components",
+        "Review"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BUILD",
+      "d": "Implement responsive web and wire inquiry and CTA.\nInclude SEO, meta, and interactions.",
+      "examples": [
+        "Frontend",
+        "Forms",
+        "SEO",
+        "Responsive"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "QA",
+      "d": "Verify layout and flow across browsers and devices.\nCheck conversion paths and accessibility.",
+      "examples": [
+        "Desktop",
+        "Mobile",
+        "Forms",
+        "Fixes"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "LAUNCH",
+      "d": "Deploy and connect domain.\nDeliver operating and content update guidance.",
+      "examples": [
+        "Deploy",
+        "Domain",
+        "Access",
+        "Guide"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "HANDOFF",
+      "d": "Deliver docs and operating guide.\nConnect path for future pages and features.",
+      "examples": [
+        "Docs",
+        "CMS",
+        "Support",
+        "Phase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "SCOPE LEVELS",
+  "scopeTitle": "How to think about web project complexity.",
+  "scopeLead": "Not a fixed package. Scope is set by page count, design depth, and multilingual or integration range.",
+  "scopes": [
+    {
+      "t": "SINGLE-PAGE",
+      "items": [
+        "Single landing or campaign page",
+        "5–8 core sections",
+        "Responsive implementation",
+        "Form and CTA wiring",
+        "Basic SEO and deploy"
+      ]
+    },
+    {
+      "t": "MULTI-PAGE SITE",
+      "items": [
+        "Home, about, services, inquiry — multiple pages",
+        "Brand-fit custom UI",
+        "Information architecture and navigation",
+        "Inquiry and conversion connections",
+        "SEO, deploy, domain support"
+      ]
+    },
+    {
+      "t": "CUSTOM WEB",
+      "items": [
+        "Multilingual, CMS, integrations",
+        "Complex IA and custom features",
+        "Renewal and migration",
+        "Expansion and Phase 2 design",
+        "Scoped separately"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Timeline depends on scope.",
+  "timeLead": "Duration varies by page count, design depth, content readiness, and multilingual or integration inclusion.",
+  "timelines": [
+    {
+      "t": "Single-page",
+      "d": "About 2 weeks"
+    },
+    {
+      "t": "Multi-page site",
+      "d": "About 3–5 weeks"
+    },
+    {
+      "t": "Custom",
+      "d": "Scoped separately"
+    }
+  ],
+  "priceLabel": "PROJECT COST",
+  "priceTitle": "We quote only the scope you need.",
+  "priceName": "WEB DEVELOPMENT",
+  "priceValue": "From ₩700,000",
+  "priceFactorsLabel": "Pricing factors",
+  "priceFactors": [
+    "Scope — page and section count",
+    "Design depth — UX/UI range",
+    "Timeline — schedule and resourcing",
+    "Content — readiness of copy and assets",
+    "Languages — multilingual structure",
+    "Integration — forms, CRM, API",
+    "CMS — operations and admin scope",
+    "Renewal — existing site migration"
+  ],
+  "priceNote": "We review page count, scope, design depth, and timeline, then provide a quote. Final amount is confirmed after scope lock.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Frequently asked questions",
+  "faqs": [
+    {
+      "q": "Do you write copy and provide images?",
+      "a": "We help with structure and draft direction. Final brand language and assets are aligned with your team."
+    },
+    {
+      "q": "Can you renew an existing site?",
+      "a": "Yes. We separate what to keep from what to rebuild."
+    },
+    {
+      "q": "Is a CMS included?",
+      "a": "Only if needed. We scope to how you want to operate the site."
+    },
+    {
+      "q": "Do you support multilingual sites?",
+      "a": "Yes. Language structure and switching UX are part of the design."
+    },
+    {
+      "q": "What about hosting?",
+      "a": "We recommend a fit-for-purpose deploy approach and help connect it."
+    },
+    {
+      "q": "How is this different from MVP or landing?",
+      "a": "WEB DEVELOPMENT focuses on high-finish brand and service sites. A working product MVP or single campaign landing may fit MVP or LANDING services better."
+    },
+    {
+      "q": "How is confidentiality handled?",
+      "a": "Materials are used only within agreed scope. NDA available when required."
+    }
+  ],
+  "finalLabel": "START A PROJECT",
+  "finalTitle": "Build a website\nwhere the brand reads clearly.",
+  "finalLead": "Tell us the site type and what you already have. We will confirm web scope and structure, design, and build approach together.",
+  "ctaFinalSecondary": "View all BUILD →",
+  "ctaFinalSecondaryHref": "../build/"
+}

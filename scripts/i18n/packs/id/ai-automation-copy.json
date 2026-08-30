@@ -1,0 +1,491 @@
+{
+  "seoTitle": "OTOMATISASI AI | Newon Bisnis",
+  "metaDescription": "Otomatiskan pekerjaan berulang dan dukungan dengan AI — klasifikasi pertanyaan, draf balasan, ringkasan dokumen, dan pencarian pengetahuan internal yang terhubung ke alur kerja nyata. Newon OTOMATISASI AI.",
+  "crumbBusiness": "BISNIS",
+  "crumbServices": "LAYANAN",
+  "crumbAutomation": "OTOMATISASI",
+  "crumbHere": "OTOMATISASI AI",
+  "eyebrow": "OTOMATISASI AI",
+  "subEyebrow": "OTOMATISASI",
+  "headline": "Otomatiskan pekerjaan berulang\ndengan AI yang sesuai dengan pekerjaan.",
+  "lead": "Kami memetakan pekerjaan berulang dan menghubungkan otomatisasi AI dengan cara tim Anda beroperasi — klasifikasi pertanyaan, draf balasan, ringkasan dokumen, analisis tinjauan, dan pencarian pengetahuan internal. Bukan chatbot demo — AI melekat pada saluran, alat, dan proses yang sudah Anda gunakan.",
+  "ctaPrimary": "Pertanyaan otomatisasi AI →",
+  "ctaSecondary": "Lihat alur otomatisasi ↓",
+  "meta": [
+    {
+      "k": "LAYANAN",
+      "v": "Otomatisasi AI"
+    },
+    {
+      "k": "TERBAIK UNTUK",
+      "v": "Mengulangi pekerjaan dan mendukung otomatisasi"
+    },
+    {
+      "k": "GARIS WAKTU",
+      "v": "Tergantung pada ruang lingkup"
+    },
+    {
+      "k": "HARGA",
+      "v": "Kutipan khusus"
+    }
+  ],
+  "overviewLabel": "GAMBARAN UMUM",
+  "overviewTitle": "Anda menginginkan AI.\nTidak yakin di mana ia harus tinggal.",
+  "overviewBody": [
+    "Pertanyaan, ulasan, konten, dokumen, tanya jawab internal — pekerjaan berulang sudah ada. Tim menginginkan AI tetapi PoC sering kali tidak pernah mencapai alur kerja nyata.",
+    "Menambahkan chatbot atau alat umum membuat prosesnya tidak berubah. Orang masih mengklasifikasikan, menyusun, dan merangkum dengan tangan. Yang Anda butuhkan adalah otomatisasi AI yang dirancang untuk konteks alur kerja Anda.",
+    "OTOMATISASI AI dimulai dengan menentukan pekerjaan berulang, saluran, data, dan bilah kualitas. Kemudian kami merancang alur klasifikasi, draf, ringkasan, dan perutean — dengan tinjauan dan pagar pembatas yang dilakukan secara langsung oleh manusia — dan memberikan otomatisasi yang melekat pada operasi nyata."
+  ],
+  "problemsLabel": "MASALAH",
+  "problemsTitle": "Bermanfaat ketika Anda menghadapi situasi ini.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "ULANGI Balasan",
+      "d": "Orang-orang mengklasifikasikan dan menyusun pertanyaan dan tugas yang sama.\nPekerjaan penilaian menjadi semakin padat."
+    },
+    {
+      "n": "02",
+      "t": "TOKO AI POC",
+      "d": "Anda mencoba AI PoC tetapi tidak pernah mencapai operasi.\nTidak ada prioritas di mana AI harus terhubung."
+    },
+    {
+      "n": "03",
+      "t": "PENYEDIAAN ALAT",
+      "d": "Alat menumpuk namun alur kerja tidak berubah.\nSaluran, CRM, mail, dan sheet tetap terputus."
+    },
+    {
+      "n": "04",
+      "t": "KELUARAN YANG TIDAK KONSISTEN",
+      "d": "Jawabannya berbeda-beda untuk pertanyaan yang sama.\nTidak ada corak merek, kebijakan, atau standar kualitas."
+    },
+    {
+      "n": "05",
+      "t": "KELEBIHAN DOKTER",
+      "d": "Orang-orang membaca dan mengatur dokumen, catatan, dan ulasan yang panjang.\nRangkum, klasifikasikan, dan ekstrak pengulangan pekerjaan."
+    },
+    {
+      "n": "06",
+      "t": "TIDAK ADA GUARDRAIL",
+      "d": "Sulit mengirim output AI apa adanya.\nTidak ada tinjauan, izin, atau struktur pengecualian."
+    }
+  ],
+  "baLabel": "SEBELUM/SETELAH",
+  "baTitle": "Pengulangan manual vs\notomatisasi human-in-the-loop",
+  "beforeLabel": "SEBELUM",
+  "afterLabel": "SETELAH",
+  "before": [
+    "Permintaan tiba di berbagai saluran",
+    "Pemilik mengklasifikasikan dan menyusun dengan tangan",
+    "Jawaban bervariasi untuk pertanyaan yang sama",
+    "Status hanya terlihat setelah kejadian"
+  ],
+  "after": [
+    "Permintaan diklasifikasikan secara otomatis",
+    "Draf balasan dan ringkasan muncul pertama kali",
+    "Manusia menangani peninjauan dan pengecualian",
+    "Hasil dicatat pada saat terjadinya"
+  ],
+  "capsLabel": "KEMAMPUAN",
+  "capsTitle": "Kami menjalankan pembangunan otomatisasi AI\nsebagai satu keterlibatan terstruktur.",
+  "caps": [
+    {
+      "t": "PEMETAAN KERJA",
+      "d": "Konfirmasikan tugas yang berulang, saluran, lokasi data, bilah kualitas.\nIdentifikasi di mana otomatisasi menciptakan pengaruh."
+    },
+    {
+      "t": "DESAIN ALUR KERJA",
+      "d": "Masukan desain → proses → tinjauan → aliran keluaran.\nSertakan poin tinjauan manusia dan jalur pengecualian."
+    },
+    {
+      "t": "KLASIFIKASI & RUTE",
+      "d": "Klasifikasikan pertanyaan, permintaan, dan masukan berdasarkan topik, prioritas, pemilik.\nTentukan aturan perutean dan SLA."
+    },
+    {
+      "t": "DRAFT & RINGKASAN",
+      "d": "Terapkan draf balasan, ringkasan dokumen, pengelompokan tinjauan.\nSesuaikan dengan corak merek dan format keluaran."
+    },
+    {
+      "t": "INTEGRASI",
+      "d": "Hubungkan web, aplikasi, email, CRM, sheet, alat internal.\nLampirkan AI ke lingkungan yang sudah Anda gunakan."
+    },
+    {
+      "t": "Pagar Pembatas",
+      "d": "Tambahkan langkah peninjauan dan cakupan izin yang menangkap keluaran buruk.\nRancang jalur untuk kasus sensitif dan pengecualian."
+    },
+    {
+      "t": "PILOT & PENYESUAIAN",
+      "d": "Jalankan uji coba dengan tim atau saluran terbatas dan sesuaikan kualitasnya.\nTingkatkan perintah, aturan, dan bilah ulasan."
+    },
+    {
+      "t": "OPS & PENYERAHAN",
+      "d": "Dokumentasikan metode pengoperasian dan peningkatan.\nHubungkan perluasan dan cakupan Fase 2."
+    }
+  ],
+  "sourcesLabel": "INPUT PROYEK",
+  "sourcesTitle": "Kami menggabungkan masukan yang dibutuhkan proyek Anda.",
+  "sourcesNote": "Masukan sebenarnya berbeda-beda menurut organisasi, saluran, dan kebijakan data.",
+  "sources": [
+    "Mengulangi deskripsi pekerjaan dan proses",
+    "Contoh pertanyaan, ulasan, dokumen",
+    "FAQ, kebijakan, dan panduan",
+    "Templat nada dan balasan merek",
+    "CRM, email, dan log obrolan",
+    "Pengetahuan internal dan penyimpanan dokumen",
+    "Persyaratan API dan integrasi",
+    "Izin dan struktur organisasi",
+    "Bilah kualitas dan aturan peninjauan",
+    "Otomatisasi dan skrip yang ada",
+    "Metrik kesuksesan dan KPI",
+    "Kebijakan data dan keamanan"
+  ],
+  "useLabel": "KASUS PENGGUNAAN",
+  "useTitle": "Otomatisasi AI yang dapat kami bangun.",
+  "useBadge": "Contoh tipe build",
+  "useCases": [
+    {
+      "t": "KLASIFIKASI PERTANYAAN",
+      "tag": "PELANGGAN",
+      "d": "Klasifikasikan pertanyaan pelanggan berdasarkan topik, urgensi, pemilik.\nPencocokan FAQ dan otomatisasi perutean."
+    },
+    {
+      "t": "DRAFT JAWABAN",
+      "tag": "PELANGGAN",
+      "d": "Hasilkan draf balasan untuk pertanyaan, email, obrolan.\nKirim setelah ditinjau oleh manusia."
+    },
+    {
+      "t": "ANALISIS TINJAUAN",
+      "tag": "WAWASAN",
+      "d": "Kelompokkan ulasan dan masukan berdasarkan tema.\nPoin peningkatan dan sentimen yang muncul di permukaan."
+    },
+    {
+      "t": "DRAFT ISI",
+      "tag": "ISI",
+      "d": "Buat pemberitahuan, artikel bantuan, draf pemasaran sesuai keinginan.\nBerbasis template dan panduan."
+    },
+    {
+      "t": "RINGKASAN DOKUMEN",
+      "tag": "operasi",
+      "d": "Kompres dokumen dan catatan panjang untuk mengambil keputusan.\nEkstraksi poin-poin penting, tindakan, risiko."
+    },
+    {
+      "t": "PENGETAHUAN INTERNAL",
+      "tag": "operasi",
+      "d": "Jawaban dari dokumen yang tersebar dengan sumber.\nCari dalam lingkup izin."
+    },
+    {
+      "t": "OTOMATISASI OPS",
+      "tag": "operasi",
+      "d": "Pembersihan data, peringatan, laporan berulang.\nTerkait dengan klasifikasi dan ringkasan."
+    },
+    {
+      "t": "FITUR AI PRODUK",
+      "tag": "PRODUK",
+      "d": "Tambahkan klasifikasi, draf, rangkum ke web atau aplikasi yang ada.\nTerintegrasi ke dalam alur kerja pengguna dan operator."
+    }
+  ],
+  "flowLabel": "CONTOH ALUR KERJA",
+  "flowTitle": "Mulai dari pemetaan kerja hingga perluasan operasional",
+  "flow": [
+    {
+      "n": "01",
+      "t": "PETA",
+      "d": "Konfirmasikan pekerjaan berulang, saluran, data, standar kualitas.\nTetapkan peluang dan prioritas otomatisasi.",
+      "examples": [
+        "Bekerja",
+        "Saluran",
+        "Data",
+        "KPI"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "DESAIN",
+      "d": "Rancang klasifikasi, draf, rangkum, tinjau alur.\nKonfirmasi poin-poin yang melibatkan manusia.",
+      "examples": [
+        "Mengalir",
+        "Ulasan",
+        "Pengecualian",
+        "Peran"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "MEMBANGUN",
+      "d": "Menerapkan kemampuan dan integrasi AI.\nValidasi kualitas dengan data sampel.",
+      "examples": [
+        "Model",
+        "Cepat",
+        "API",
+        "Integrasi"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PILOT",
+      "d": "Jalankan uji coba dengan tim atau saluran terbatas.\nSesuaikan kualitas keluaran dan beban tinjauan.",
+      "examples": [
+        "Percontohan",
+        "Lagu",
+        "Ulasan",
+        "Metrik"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PERLUAS",
+      "d": "Perluas alur yang telah terbukti ke pekerjaan yang berdekatan.\nHubungkan panduan operasi dan jalur peningkatan.",
+      "examples": [
+        "Skala",
+        "dokumen",
+        "Fase 2",
+        "Memantau"
+      ]
+    }
+  ],
+  "reportLabel": "KELUARAN",
+  "reportTitle": "Hasil yang dihasilkan adalah otomatisasi yang dapat dioperasikan dan dokumen pendukung.",
+  "reportLead": "Komposisi bervariasi berdasarkan ruang lingkup proyek. Di bawah ini adalah item umum.",
+  "reportMockStatus": "OTOMATISASI · ALUR KERJA",
+  "reportMockK": "SPESIFIKASI OTOMATISASI AI",
+  "reportMockT": "Cakupan, alur kerja, integrasi, ringkasan tinjauan",
+  "reportItems": [
+    "Ruang Lingkup Otomasi",
+    "Peta Alur Kerja",
+    "Klasifikasi Aturan",
+    "Templat Draf",
+    "Format Ringkasan",
+    "Daftar Integrasi",
+    "Tinjau Daftar Periksa",
+    "Kebijakan Pagar Pembatas",
+    "Hasil Percontohan",
+    "Panduan Operasi"
+  ],
+  "dashTitle": "Bagikan alur kerja dan struktur otomatisasi dalam satu tampilan.",
+  "dashLead": "Alur kerja, model, integrasi, dan unit otomatisasi bersama-sama mempercepat kesepakatan cakupan dan membangun diskusi.",
+  "dashNote": "Komposisi alur kerja dan rentang otomatisasi bervariasi berdasarkan tujuan proyek dan kebijakan data.",
+  "dashMetrics": [
+    "Alur kerja",
+    "Model",
+    "Integrasi",
+    "Otomatisasi"
+  ],
+  "dashFilters": [
+    "Semua",
+    "Klasifikasi",
+    "Draf",
+    "Ringkasan"
+  ],
+  "aiLabel": "MANUSIA DALAM LOOP",
+  "aiTitle": "AI menyusun karyanya.\nOrang-orang terus meninjau dan menilai.",
+  "aiLead": "AI menangani pengklasifikasian, penyusunan draf, dan ringkasan — sementara manusia menyimpan penilaian akhir, pengecualian, kasus sensitif, persetujuan warna merek, dan keputusan kebijakan. Cakupan tinjauan dapat diperluas secara bertahap seiring dengan stabilnya kualitas.",
+  "aiExamples": [
+    "Klasifikasi → draf → tinjauan manusia → kirim",
+    "Tinjau kluster → ringkasan → konfirmasi pemilik",
+    "Ringkasan dokumen → ekstrak kunci → tinjauan pengambil keputusan",
+    "T&J internal → sumber → jawaban sesuai izin",
+    "Pengecualian/kasus sensitif → eskalasi manusia",
+    "Peningkatan cepat dan peningkatan kualitas yang berkelanjutan"
+  ],
+  "aiNote": "Pengiriman otomatis sepenuhnya tidak disarankan pada awalnya. Mulailah dengan struktur human-in-the-loop, konfirmasi kualitas, lalu perluas cakupannya.",
+  "delLabel": "PENGIRIMAN",
+  "delTitle": "Apa yang Anda terima ketika proyek selesai",
+  "delLead": "Kami mengirimkan item di bawah ini sesuai kebutuhan untuk cakupan Anda.",
+  "deliverables": [
+    "Definisi Lingkup Otomasi",
+    "Desain Alur Kerja",
+    "Peningkatan Kemampuan AI",
+    "Pengaturan Integrasi",
+    "Tinjauan & Panduan Pagar Pembatas",
+    "Dokumentasi Operasi",
+    "Laporan Percontohan",
+    "Pengaturan Metrik Kualitas",
+    "Peta Jalan Fase 2 (opsional)"
+  ],
+  "processLabel": "PROSES",
+  "processTitle": "Mulai dari pemetaan pekerjaan hingga serah terima operasi.",
+  "process": [
+    {
+      "n": "01",
+      "t": "PENEMUAN",
+      "d": "Konfirmasikan pekerjaan berulang, saluran, data, bilah kualitas.\nPahami sasaran dan batasan otomatisasi.",
+      "examples": [
+        "Bekerja",
+        "Saluran",
+        "Data",
+        "Kebijakan"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PRIORITAS",
+      "d": "Mulailah ketika dampak versus upaya paling kuat.\nSetujui cakupan percontohan dan kriteria keberhasilan.",
+      "examples": [
+        "Prioritas",
+        "Percontohan",
+        "KPI",
+        "Ruang lingkup"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESAIN",
+      "d": "Rancang alur kerja dengan petunjuk, aturan, poin tinjauan.\nKonfirmasi struktur human-in-the-loop.",
+      "examples": [
+        "Mengalir",
+        "Ulasan",
+        "Pagar pembatas",
+        "Integrasi"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "MEMBANGUN",
+      "d": "Menerapkan kemampuan dan integrasi AI.\nValidasi klasifikasi, draf, rangkum kualitas dengan sampel.",
+      "examples": [
+        "Klasifikasi",
+        "Draf",
+        "Ringkasan",
+        "API"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PILOT",
+      "d": "Beroperasi dengan tim atau saluran terbatas dan menyetel kualitas.\nMenyeimbangkan beban tinjauan dan tingkat otomatisasi.",
+      "examples": [
+        "Percontohan",
+        "Lagu",
+        "Umpan balik",
+        "Metrik"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "MENYEBARKAN",
+      "d": "Terapkan ke produksi dan atur pemantauan.\nKonfirmasi jalur rollback dan eskalasi.",
+      "examples": [
+        "Menyebarkan",
+        "Memantau",
+        "Akses",
+        "Waspada"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "PENYERAHAN",
+      "d": "Dokumentasikan operasi dan serah terima.\nHubungkan jalur perluasan dan peningkatan.",
+      "examples": [
+        "dokumen",
+        "Pelatihan",
+        "Fase 2",
+        "Dukungan"
+      ]
+    }
+  ],
+  "scopeLabel": "TINGKAT RUANG LINGKUP",
+  "scopeTitle": "Bagaimana memikirkan kompleksitas proyek.",
+  "scopeLead": "Bukan paket tetap. Cakupan ditentukan berdasarkan jumlah alur kerja, integrasi, kebijakan data, dan kedalaman tinjauan.",
+  "scopes": [
+    {
+      "t": "PILOT TERFOKUS",
+      "items": [
+        "Tugas atau saluran tunggal yang berulang",
+        "Salah satunya mengklasifikasikan, menyusun, atau meringkas",
+        "Tinjauan manusia dalam lingkaran",
+        "1–2 integrasi dasar",
+        "Fokus operasi percontohan"
+      ]
+    },
+    {
+      "t": "PEMBANGUNAN MULTI-ALIRAN KERJA",
+      "items": [
+        "Berbagai alur kerja dan saluran",
+        "Klasifikasi, draf, rangkum digabungkan",
+        "CRM, email, tautan alat internal",
+        "Pagar pembatas dan log audit",
+        "Panduan pengoperasian disertakan"
+      ]
+    },
+    {
+      "t": "INTEGRASI PLATFORM",
+      "items": [
+        "Web, aplikasi, integrasi sistem internal",
+        "Berbagai model dan sumber data",
+        "Izin, penyewa, struktur kebijakan",
+        "Ekspansi dan desain Tahap 2",
+        "Tautan operasi dan penyetelan jangka panjang"
+      ]
+    }
+  ],
+  "timeLabel": "GARIS WAKTU",
+  "timeTitle": "Garis waktu tergantung pada ruang lingkup.",
+  "timeLead": "Durasi bervariasi berdasarkan jumlah alur kerja, integrasi, akses data, struktur tinjauan, dan kecepatan keputusan.",
+  "timelines": [
+    {
+      "t": "Percontohan Terfokus",
+      "d": "Sekitar 2–4 minggu · bervariasi"
+    },
+    {
+      "t": "Pembuatan Multi-alur kerja",
+      "d": "Sekitar 4–8 minggu · bervariasi"
+    },
+    {
+      "t": "Integrasi Platform",
+      "d": "Sekitar 8+ minggu · kebiasaan"
+    }
+  ],
+  "priceLabel": "BIAYA PROYEK",
+  "priceTitle": "Dikutip per proyek.",
+  "priceName": "OTOMATISASI AI",
+  "priceValue": "Kutipan khusus",
+  "priceFactorsLabel": "Faktor harga",
+  "priceFactors": [
+    "Cakupan — alur kerja dan rentang fitur",
+    "Kompleksitas - mengklasifikasikan, menyusun, merangkum kedalaman",
+    "Timeline — jadwal dan sumber daya",
+    "Integrasi — CRM, email, API, alat internal",
+    "Kebijakan data — keamanan, retensi, cakupan pelatihan",
+    "Kedalaman tinjauan — tingkat manusia dalam lingkaran",
+    "Penggunaan model — API dan volume",
+    "Pasca peluncuran — penyetelan dan perluasan"
+  ],
+  "priceNote": "Kami meninjau Cakupan / Kompleksitas / Timeline / Integrasi, lalu memberikan penawaran. Tidak ada harga menu tetap.",
+  "faqLabel": "Pertanyaan Umum",
+  "faqTitle": "Pertanyaan yang sering diajukan",
+  "faqs": [
+    {
+      "q": "Model mana yang Anda gunakan?",
+      "a": "Kami mengusulkan pengaturan yang sesuai dengan kebijakan kerja dan data — bukan satu vendor yang mengunci."
+    },
+    {
+      "q": "Apakah data kami digunakan untuk pelatihan?",
+      "a": "Defaultnya adalah penggunaan operasional untuk pekerjaan Anda. Pelatihan dan retensi disepakati secara terpisah."
+    },
+    {
+      "q": "Apakah ini akan mengirimkan balasan sepenuhnya secara otomatis?",
+      "a": "Kami biasanya memulai dengan tinjauan human-in-the-loop. Otomatisasi meluas ketika kualitas stabil."
+    },
+    {
+      "q": "Bisakah terhubung ke CRM, mail, atau sheet?",
+      "a": "Kami meninjau tumpukan Anda dan mengonfirmasi apa yang dapat kami sambungkan."
+    },
+    {
+      "q": "Bisakah tim kecil memulai?",
+      "a": "Ya. Uji coba alur kerja yang berulang terlebih dahulu."
+    },
+    {
+      "q": "Apa bedanya dengan Otomatisasi Alur Kerja?",
+      "a": "Otomatisasi Alur Kerja berfokus pada SaaS dan koneksi data. AI AUTOMATION berpusat pada klasifikasi, draf, dan ringkasan AI dalam alur kerja."
+    },
+    {
+      "q": "Bisakah Anda mendukung penyetelan dan perluasan setelah peluncuran?",
+      "a": "Ya. Peningkatan cepat, perluasan alur kerja, dan integrasi tambahan dapat dilanjutkan berdasarkan perjanjian terpisah."
+    }
+  ],
+  "finalLabel": "MULAI PROYEK",
+  "finalTitle": "Mulailah dengan otomatisasi AI\nyang melekat pada pekerjaan nyata.",
+  "finalLead": "Beritahu kami pekerjaan berulang dan alat yang sudah Anda gunakan. Kami akan mengonfirmasi pengklasifikasian, penyusunan, dan ringkasan cakupan dan struktur human-in-the-loop bersama-sama.",
+  "ctaFinalSecondary": "Lihat semua OTOMATISASI →",
+  "ctaFinalSecondaryHref": "../automation/"
+}

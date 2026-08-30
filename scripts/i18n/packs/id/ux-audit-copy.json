@@ -1,0 +1,479 @@
+{
+  "seoTitle": "UX AUDIT 124; bisnis Newon",
+  "metaDescription": "Aplikasi kunci audit dan web mengalir dan UI - masalah penggunaan, konversi dan drop-off poin, dan prioritas item aksi dalam laporan audit. Newon UX AUDIT.",
+  "crumbBusiness": "BISNIS",
+  "crumbServices": "Servis",
+  "crumbResearch": "PENELITIAN",
+  "crumbHere": "UX AUDIT",
+  "eyebrow": "UX AUDIT",
+  "subEyebrow": "PENELITIAN",
+  "headline": "Kau lihat masalahnya.\nTidak di mana untuk memulai.",
+  "lead": "Kami meninjau arus inti dan UI - mendaftar, masuk, membeli, pengaturan, dan banyak lagi. Masalah penggunaan, struktur informasi, dan konversi atau titik drop-off terstruktur menjadi laporan audit, daftar isu, dan prioritas item aksi tim Anda dapat mengeksekusi.",
+  "ctaPrimary": "UX audit requestion",
+  "ctaSecondary": "Lihat audit mengalir melalui",
+  "meta": [
+    {
+      "k": "PELAYAN",
+      "v": "Ux audit"
+    },
+    {
+      "k": "TERBAIK UNTUK",
+      "v": "Konversi dan kegunaan perbaikan"
+    },
+    {
+      "k": "GARIS WAKTU",
+      "v": "Biasanya 1-2 minggu"
+    },
+    {
+      "k": "HARGA",
+      "v": "Dari £300,000"
+    }
+  ],
+  "overviewLabel": "TINJAU",
+  "overviewTitle": "Kesulitan diperlukan.\nPrioritas tidak jelas.",
+  "overviewBody": [
+    "Konversi, churn, dukungan tiket, peninjauan keluhan - sinyal bahwa masalah UX sering ada di sana. Yang lebih sulit adalah melihat aliran mana, UI, atau struktur informasi menyebabkan gesekan.",
+    "Tim berbagi pendapat bahwa ada sesuatu yang canggung, tapi tanpa mengklasifikasikan isu oleh aliran inti dan prioritas, diskusi perbaikan berulang atau kios.",
+    "UX AUDIT dimulai dengan mendefinisikan lingkup dan arus inti. Kemudian kita meninjau layar, aliran, dan struktur informasi, isu-isu yang mengklasifikasikan, dan memprioritaskan tindakan item dengan dampak dan usaha."
+  ],
+  "problemsLabel": "MASALAH",
+  "problemsTitle": "Membantu ketika Anda menghadapi situasi ini.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "DROP CONVERSION",
+      "d": "Sinyal, pembelian, atau konversi penyelidikan di bawah harapan.\nAnda perlu pandangan terstruktur dari mana pengguna drop off."
+    },
+    {
+      "n": "02",
+      "t": "FRICTION ONBOARDING",
+      "d": "Pengguna terjebak di penggunaan pertama atau onboarding.\nSteps, copy, atau UI tidak jelas atau terlalu berat."
+    },
+    {
+      "n": "03",
+      "t": "FEEDBACK TERSEBAR",
+      "d": "Dukungan, ulasan, dan catatan internal ada tapi masalah tidak terorganisir.\nGesekan yang sama terulang tanpa prioritas."
+    },
+    {
+      "n": "04",
+      "t": "FLOW KOMPLEXITY",
+      "d": "Terlalu banyak langkah untuk menyelesaikan tugas inti.\nNavigasi atau struktur informasi terasa membingungkan."
+    },
+    {
+      "n": "05",
+      "t": "GAP MOBILE",
+      "d": "Pengalaman mobile atau responsif berfungsi.\nPola Drop-off atau error berbeda dari desktop."
+    },
+    {
+      "n": "06",
+      "t": "PREDESIGN",
+      "d": "Sebelum mendesain ulang, pembaharuan, atau perubahan fitur utama,\nAnda perlu diagnosis dari pengalaman saat ini."
+    }
+  ],
+  "baLabel": "SEBELUM / SETELAH",
+  "baTitle": "Gesekan menyebar vs\nterstruktur daftar fix",
+  "beforeLabel": "SEBELUM",
+  "afterLabel": "SETELAH",
+  "before": [
+    "Banyak 'ini aneh' pendapat tapi tersebar bukti",
+    "Tidak ada kesepakatan tentang aliran yang merupakan masalah inti",
+    "pergeseran prioritas improvelocation dengan pertemuan",
+    "Tidak ada dokumen diagnosis sebelum mendesain ulang atau dev"
+  ],
+  "after": [
+    "Core arus dan lingkup audit didefinisikan pertama",
+    "Flow, UI, dan masalah IA diklasifikasikan",
+    "Prioritas item aksi dengan dampak",
+    "Terhubung dengan desain, dev, dan diskusi percobaan"
+  ],
+  "capsLabel": "CAPBILITIES",
+  "capsTitle": "Kami membangun audit\npengalaman Anda diagnosis kebutuhan.",
+  "caps": [
+    {
+      "t": "SCOPE & TUJUAN",
+      "d": "Tentukan tujuan audit dan inti mengalir.\nHubungkan ke konversi, churn, dan dukungan tujuan."
+    },
+    {
+      "t": "PEMETAAN ALIRAN",
+      "d": "Peta signal, onboarding, pembelian, pengaturan, dan perjalanan kunci lainnya.\nStruktur langkah, cabang, dan titik putus."
+    },
+    {
+      "t": "REVIEW HEURIC",
+      "d": "Tinjau terhadap prinsip-prinsip kegunaannya - konsistensi, umpan balik, pencegahan kesalahan.\nCatatan isu dengan layar dan aliran."
+    },
+    {
+      "t": "UI & IA ULASAN",
+      "d": "Tata letak review, hirarki, label, CTAs, dan struktur informasi.\nLoad kognitif dokumen dan titik kebingungan."
+    },
+    {
+      "t": "ANALIS FRIKSI",
+      "d": "Analisa langkah yang tidak perlu, beban masukan, status tunggu, dan pengalaman kesalahan.\nPrioritas titik-titik gesekan."
+    },
+    {
+      "t": "MOBILE & RESPONSIF",
+      "d": "Audit mobile, tablet, dan pengalaman responsif.\nSertakan sentuhan, kemampuan baca, dan masalah navigasi."
+    },
+    {
+      "t": "TAUT BUKTI",
+      "d": "Hubungkan dukungan, ulasan, data, dan umpan balik internal ke isu.\nHipotesis dokumen dan pengamatan bersama."
+    },
+    {
+      "t": "AKSI PRIORITY",
+      "d": "Masalah tingkat oleh dampak dan usaha.\nMemisahkan kemenangan cepat dari perbaikan struktural."
+    }
+  ],
+  "sourcesLabel": "INPUT AUDIT",
+  "sourcesTitle": "Kami menggabungkan bahan dan pengamatan kebutuhan audit Anda.",
+  "sourcesNote": "Input aktual bervariasi dengan akses (pementasan, akun, data) setiap projek.",
+  "sources": [
+    "Pengguna inti arus",
+    "Sinyal & onboarding layar",
+    "Pembelian, pembayaran & penyelidikan mengalir",
+    "Dashboard, pengaturan & admin _ _ Simpan P000 _ _",
+    "Mobile & responsif UI",
+    "Dukungan & log penyelidikan",
+    "feedback review App & web",
+    "Penggunaan & drop-off data",
+    "Internal QA & umpan balik",
+    "Competitive benchmark",
+    "Pemeriksaan aksesibilitas dasar",
+    "Heatmap & sesi (bila diberikan)"
+  ],
+  "useLabel": "GUNAKAN KASES",
+  "useTitle": "Pertanyaan yang bisa kami jawab.",
+  "useBadge": "Contoh topik audit",
+  "useCases": [
+    {
+      "t": "LOKASI CONVERSION",
+      "d": "Cari di mana tanda tangan, pembelian, atau jalan penyelidikan istirahat.\nStruktur drop- off dan pra-drop layar."
+    },
+    {
+      "t": "UX ONBOARDING",
+      "d": "Ulas pertama - gunakan, tutorial, dan penataan awal.\nMengidentifikasi penyebab dari churn pengguna baru."
+    },
+    {
+      "t": "CHECKOUT & BENTUK",
+      "d": "Tinjau beban masukan, kesalahan, dan langkah dalam pembayaran, pemesanan, atau formulir penyelidikan.\nPeningkatan penyelesaian permukaan."
+    },
+    {
+      "t": "NAV & LA",
+      "d": "Menu audit, struktur informasi, dan jalur navigasi.\nFindabilitas dokumen, duplikasi, dan masalah kedalaman."
+    },
+    {
+      "t": "Eksperiensi MOBILE",
+      "d": "Ulasan mobil- hanya dan responsif UI daya.\nSentuh target, menyesuaikan, masalah gulungan."
+    },
+    {
+      "t": "KESALAHAN & EMPTY",
+      "d": "Kesalahan Ulasan, kosong, loading, dan hak akses menyatakan.\nPath eksepsi dokumen dimana pengguna terjebak."
+    },
+    {
+      "t": "PREDESIGN",
+      "d": "Diagnose saat ini UX sebelum pembaharuan atau rebrand.\nBukti untuk lingkup dan prioritas."
+    },
+    {
+      "t": "POST- LAUNCH REVIEW",
+      "d": "Audit ulang setelah peluncuran menggunakan konversi, dukungan, dan ulasan.\nMemisahkan kemenangan cepat dari perbaikan struktural."
+    }
+  ],
+  "flowLabel": "EXAMLE WORKFLOW",
+  "flowTitle": "Dari definisi aliran ke item aksi",
+  "flow": [
+    {
+      "n": "01",
+      "t": "TENTUKAN",
+      "d": "Tentukan tujuan audit, inti mengalir, dan lingkup.\nClarify apa yang Anda mencoba untuk meningkatkan.",
+      "examples": [
+        "Tujuan",
+        "Inti mengalir",
+        "Scope",
+        "Dikirim"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PETA",
+      "d": "Perjalanan pengguna peta dan layar mengalir.\nStruktur langkah, cabang, dan titik putus.",
+      "examples": [
+        "Sinyal",
+        "Onboarding",
+        "Pembelian",
+        "Pengaturan"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "ULASAN",
+      "d": "Audit mengalir, UI, dan struktur informasi.\nRekam masalah dengan layar dan langkah.",
+      "examples": [
+        "Heuristik",
+        "UI",
+        "IA",
+        "Mobile"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PRIORITAS",
+      "d": "Masalah tingkat oleh dampak dan usaha.\nMemisahkan kemenangan cepat dari perbaikan struktural.",
+      "examples": [
+        "P1",
+        "P2",
+        "P3",
+        "Cepat menang"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "KIRIM",
+      "d": "Kirim laporan audit dan tindakan item.\nHubungkan dengan desain, dev, dan diskusi eksperimen.",
+      "examples": [
+        "Laporan Audit",
+        "Daftar Isu",
+        "Item Aksi"
+      ]
+    }
+  ],
+  "reportLabel": "KELUARKAN",
+  "reportTitle": "Hasil terstruktur untuk perbaikan segera bekerja.",
+  "reportLead": "Komposisi bervariasi dengan lingkup projek. Di bawah ini adalah item umum.",
+  "reportMockStatus": "UX",
+  "reportMockK": "UX AUDITRINGKASAN",
+  "reportMockT": "Inti arus, isu, dan prioritas singkat",
+  "reportItems": [
+    "Ringkasan Eksekutif",
+    "Scope Audit",
+    "Pinggiran Lipat",
+    "Daftar Isu",
+    "& Prioritas Severity",
+    "Catatan UI & IA",
+    "Findings Mobile",
+    "Wins Cepat",
+    "Aksi Yang Disarankan",
+    "Layar Lampiran"
+  ],
+  "dashTitle": "Berbagi masalah dan prioritas pada satu pandangan.",
+  "dashLead": "Masalah tingkat-lantai, tingkat keparahan, dan tindakan item mempercepat diskusi perbaikan.",
+  "dashNote": "Klasifikasi isu dan kriteria prioritas bervariasi dengan tujuan dan lingkup projek.",
+  "dashMetrics": [
+    "Mengalir",
+    "Masalah",
+    "Aksi",
+    "Kritis"
+  ],
+  "dashFilters": [
+    "Semua",
+    "P1",
+    "P2",
+    "Cepat menang"
+  ],
+  "aiLabel": "SINTESIS",
+  "aiTitle": "Dari banyak layar dan catatan\nuntuk masalah ditindaklanjuti.",
+  "aiLead": "Ketika log dukungan, ulasan, catatan QA, dan audit multi- layar menumpuk, kami mengklasifikasikan, dedupe, dan meringkas oleh pola dan prioritas untuk tinjauan lebih cepat.",
+  "aiExamples": [
+    "Ekstrak masalah dukungan dan ulasan berulang",
+    "Klasifikasi isu berdasarkan aliran",
+    "Tingkat keparahan dan prioritas Draft",
+    "Pisahkan kemenangan cepat dari perbaikan struktural",
+    "Bandingkan temuan desktop vs mobile",
+    "Laporan audit struktur dan item aksi"
+  ],
+  "aiNote": "Interpretasi akhir dan prioritas perbaikan ditinjau dengan Anda.",
+  "delLabel": "TERKIRIM",
+  "delTitle": "Apa yang Anda terima ketika proyek menyelesaikan",
+  "delLead": "Kami memberikan item di bawah ini yang diperlukan untuk lingkup Anda.",
+  "deliverables": [
+    "UX Laporan Audit",
+    "Peta Flow",
+    "Daftar Isu",
+    "Matrix Prioritas",
+    "Item Aksi",
+    "Cepat Wins Ringkasan",
+    "Catatan UI & IA",
+    "Ringkasan Presentasi",
+    "Desain Ulang Brief Masukan (opsional)"
+  ],
+  "processLabel": "PROSES",
+  "processTitle": "Dari ruang lingkup ke pengiriman.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOSANGAT",
+      "d": "Konfirmasikan tujuan audit dan konteks bisnis.\nMemahami konversi, churn, dan dukungan kekhawatiran.",
+      "examples": [
+        "Tujuan",
+        "_ _ Simpan P000 _ _ s",
+        "Penyimpanan",
+        "Garis Waktu"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCOPE",
+      "d": "Tentukan aliran inti, jangkauan layar, dan metode akses.\nAgree pementasan, rekening, dan lingkup data.",
+      "examples": [
+        "Mengalir",
+        "Perangkat",
+        "Layar",
+        "Bahan"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "AUDIZ",
+      "d": "Ulasan mengalir, UI, dan struktur informasi.\nRekam masalah dengan layar dan langkah.",
+      "examples": [
+        "Heuristik",
+        "UI",
+        "Mobile",
+        "Bukti"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ANALISIS",
+      "d": "Klasifikasi, dedupe, dan prioritas masalah.\nHubungkan dampak dan upaya implementasi.",
+      "examples": [
+        "Klasifikasi",
+        "P1-P3",
+        "Cepat menang",
+        "Pola"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DRAFT",
+      "d": "Audit Draft melaporkan dan tindakan item.\nBangun kerangka temuan kunci.",
+      "examples": [
+        "Ringkasan",
+        "Masalah",
+        "Aksi"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "ULASAN",
+      "d": "Tinjau masalah kunci dan prioritas bersama.\nAtur kesenjangan, kelebihan beban, dan kelayakan.",
+      "examples": [
+        "Umpan balik",
+        "Perbaikan",
+        "Prioritas"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "KIRIM",
+      "d": "Kirim dokumen terakhir dan action item.\nHubungkan dengan desain, dev, dan percobaan langkah berikutnya.",
+      "examples": [
+        "Laporan Terakhir",
+        "Aksi",
+        "Langkah Berikutnya"
+      ]
+    }
+  ],
+  "scopeLabel": "LEVELS SCOPE",
+  "scopeTitle": "Bagaimana untuk berpikir tentang proyek kompleksitas.",
+  "scopeLead": "Bukan paket tetap. Scope diatur oleh tujuan audit, jumlah aliran, dan cakupan perangkat.",
+  "scopes": [
+    {
+      "t": "AUDIT FLOW INTI",
+      "items": [
+        "1-2 inti mengalir",
+        "Desktop atau fokus mobile",
+        "Daftar penerbit + prioritas",
+        "Laporan audit Ringkasan",
+        "Cepat menang proposal"
+      ]
+    },
+    {
+      "t": "PENUHUX AUDIT",
+      "items": [
+        "3-5 core flows",
+        "Ponsel Desktop +",
+        "Daftar bilangan peta +",
+        "Matriks prioritas",
+        "Ringkasan aksi butir + presentasi"
+      ]
+    },
+    {
+      "t": "AUDIT GUBAHAN",
+      "items": [
+        "Beberapa produk atau saluran",
+        "Analisis data dan support- terkait",
+        "Keakses dan penyertaan benchmark",
+        "Merancang ulang singkat masukan",
+        "DESIGN dan BUILD linkage"
+      ]
+    }
+  ],
+  "timeLabel": "GARIS WAKTU",
+  "timeTitle": "Waktu tergantung pada jangkauan.",
+  "timeLead": "Durasi bervariasi dengan jumlah aliran, cakupan perangkat, dan akses lingkungan.",
+  "timelines": [
+    {
+      "t": "Audit Flow Inti",
+      "d": "Sekitar 1 minggu"
+    },
+    {
+      "t": "Audit UX Penuh",
+      "d": "Sekitar 1-2 minggu"
+    },
+    {
+      "t": "Audit Gubahan",
+      "d": "Sekitar 2-3 minggu"
+    }
+  ],
+  "priceLabel": "PROYEK COST",
+  "priceTitle": "Kutipan untuk lingkup yang Anda butuhkan.",
+  "priceName": "UX AUDIT",
+  "priceValue": "Dari £200.000",
+  "priceFactorsLabel": "Faktor harga",
+  "priceFactors": [
+    "Jumlah mengalir diaudit",
+    "Jangkauan layar dan fitur",
+    "Inklusif Desktop dan mobile",
+    "Akses lingkungan (pementasan, akun)",
+    "Sambungan data dan dukungan",
+    "Format yang dapat dilepas",
+    "Presentasi atau workshop",
+    "Garis waktu bergegas"
+  ],
+  "priceNote": "Kutipan akhir dikonfirmasi setelah audit tujuan, lingkup, dan metode akses.",
+  "faqLabel": "PSD",
+  "faqTitle": "Pertanyaan yang sering ditanyakan",
+  "faqs": [
+    {
+      "q": "Produk atau jasa apa yang bisa kau audit?",
+      "a": "Web, apps, SaaS, commerce, booking, dan arus penyelidikan - tergantung pada tujuan dan jangkauan yang dapat diakses. Kami mengkonfirmasi cocok sebelum kickoff."
+    },
+    {
+      "q": "Apakah ini termasuk pengujian pengguna?",
+      "a": "UX AUDIT adalah tinjauan ahli (heuristik, aliran, UI). Pengujian pengguna dapat ditambahkan atau dihubungkan dengan CONSUMER RESEARCH ketika dibutuhkan."
+    },
+    {
+      "q": "Bagaimana rupa tukang antar?",
+      "a": "_ _ KEP000 _ _ Audit Laporan, Daftar Isu, Matrix Prioritas, Item Aksi - dokumen dan fokus peta. Ringkasan presentasi tersedia ketika diperlukan."
+    },
+    {
+      "q": "Apakah Anda perlu pementasan atau akses rekening?",
+      "a": "Kami lebih suka menggunakan lingkungan nyata bila memungkinkan. Jika akses terbatas, kita bekerja dalam layar publik dan menyediakan bahan."
+    },
+    {
+      "q": "Dapatkah ini terhubung ke desain atau pengembangan?",
+      "a": "Ya. Hasil audit dapat memberikan desain ulang, peningkatan UI, dan prioritas BUILD atau MVP."
+    },
+    {
+      "q": "Apa bedanya ini dengan CONSUMER RESEARCH?",
+      "a": "UX AUDIT ulasan produk, layar, dan fungsi aliran. Untuk keperluan pengguna dan penelitian perilaku, hubungkan lingkup dengan CONSUMER RESEARCH."
+    },
+    {
+      "q": "Bagaimana kerahasiaan ditangani?",
+      "a": "Bahan hanya digunakan dalam lingkup yang disepakati. NDA tersedia ketika diperlukan."
+    }
+  ],
+  "finalLabel": "MULAI SUATU PROJEK",
+  "finalTitle": "Mulailah dengan\nyang jelas.",
+  "finalLead": "Jika konversi, churn, atau penggunaan adalah kekhawatiran, memberitahu kita apa yang mengalir ke audit dan bagaimana Anda ingin penemuan terstruktur.",
+  "ctaFinalSecondary": "Lihat semua RESEARCH GNU",
+  "ctaFinalSecondaryHref": "../research/"
+}

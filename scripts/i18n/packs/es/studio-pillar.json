@@ -1,0 +1,649 @@
+{
+  "brand": {
+    "crumbStudio": "Studio",
+    "otherTitle": "OTROS ESTUDIOS",
+    "ctaEyebrow": "¿Tienes un trato?",
+    "ctaTitle": "Vamos a dar forma a cómo su marca y producto aparecen en el mundo.",
+    "ctaLead": "Incluso en la etapa de la idea. Comenzamos aclarando el alcance que necesita.",
+    "ctaBtn": "Investigación del proyecto →",
+    "servicesLabel": "Servicios",
+    "processLabel": "PROCESO",
+    "faqLabel": "FAQ",
+    "quoteCta": "Investigación del proyecto →",
+    "whatWeBuild": "Lo que hacemos",
+    "recommendedFor": "Recomendado para",
+    "included": "Incluido",
+    "deliverables": "Suministros",
+    "timeline": "Calendario estimado",
+    "detailCta": "Ver detalles →",
+    "soonBtn": "Pronto.",
+    "comingSoon": "Pronto.",
+    "comingSoonLead": "Esta zona todavía está en marcha, no se ofrece como un servicio comercial terminado todavía.",
+    "ctaPrimary": "Iniciar un proyecto →",
+    "ctaSecondary": "Ver el alcance ↓",
+    "startingAt": "STAR TO",
+    "seoTitle": "BRAND Newon Studio",
+    "metaDescription": "Newon Studio BRAND — estrategia, nombre, identidad y logotipo como un sistema de marca.",
+    "eyebrow": "NEWON ESTUDIO · BRAND",
+    "headline": "Dirección de la marca de forma\ne identidad.",
+    "lead": "Una marca fuerte no comienza con un logotipo. Conectamos la estrategia, el nombre, la identidad y el logotipo en un sistema de marca.",
+    "process": [
+      {
+        "n": "01",
+        "t": "DESCUBRE",
+        "d": "Comprender marca y mercado"
+      },
+      {
+        "n": "02",
+        "t": "DEFINE",
+        "d": "Posición y dirección"
+      },
+      {
+        "n": "03",
+        "t": "DISEÑO",
+        "d": "Design brand identity"
+      },
+      {
+        "n": "04",
+        "t": "ENTREGA",
+        "d": "Entrega de activos de marca"
+      }
+    ],
+    "faq": [
+      {
+        "q": "¿Podemos contratar a marca?",
+        "a": "Sí — estrategia, nombre, identidad o logotipo, abarcado a lo que necesita."
+      },
+      {
+        "q": "¿Puedes refrescar una marca existente?",
+        "a": "Sí. Revisamos los activos y objetivos actuales, luego proponemos el alcance."
+      },
+      {
+        "q": "¿Le garantiza la autorización de marcas?",
+        "a": "No. Revisamos el significado y la expandibilidad, pero la revisión final de la marca necesita un abogado IP."
+      },
+      {
+        "q": "¿Se fija el precio inicial?",
+        "a": "No. Es un precio inicial para un alcance básico; las citas finales varían con escala, alcance de producción y entregables."
+      },
+      {
+        "q": "¿Puede esto conectarse a construir trabajo?",
+        "a": "El diseño permanece en Studio; la implementación continúa a través de Newon BUILD de negocios."
+      }
+    ],
+    "services": [
+      {
+        "title": "ESTRATEGIA DE MARCAS",
+        "tab": "ESTRATEGIA",
+        "summary": "Define el posicionamiento y los mensajes de marca núcleo.",
+        "what": "Clarify dirección y mensajería desde el mercado, cliente y contexto competitivo.",
+        "for": "Equipos que necesitan dirección de marca o quieren refrescar una marca existente.",
+        "included": "Auditoría · objetivo · posicionamiento · mensaje central · tono",
+        "deliverables": "Brand Strategy Document, Positioning, Tone &amp; Manner Guide",
+        "timeline": "1 a 3 semanas",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Brand+Strategy&area=Brand#inquiry",
+        "_studioSlug": "brand-strategy",
+        "href": "strategy/",
+        "detailCta": "Ver detalles →"
+      },
+      {
+        "title": "NAMING",
+        "tab": "NAMING",
+        "summary": "Memorables nombres y dirección de nombres que pueden crecer con la marca.",
+        "what": "Desarrollar candidatos de nombre y dirección de uso que se ajusten al personaje de marca.",
+        "for": "Los equipos nombran a una empresa, aplicación o servicio — o renombre.",
+        "included": "Dirección de natación · palabras clave · candidatos · revisión de significado/pronunciación",
+        "deliverables": "Naming Candidatos, Rationale, Naming Usage Guide",
+        "timeline": "1 a 2 semanas",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Naming&area=Brand#inquiry",
+        "_studioSlug": "naming",
+        "href": "naming/",
+        "detailCta": "Ver detalles →"
+      },
+      {
+        "title": "IDENTIDAD",
+        "tab": "IDENTIDAD",
+        "summary": "Un lenguaje visual que se siente consistente donde aparezca la marca.",
+        "what": "Organizar color, tipo y estilo gráfico en un sistema.",
+        "for": "Equipos sin estándares de marca, o marcas que se ven diferentes en cada canal.",
+        "included": "Dirección visual · color · tipografía · estilo gráfico · reglas de uso",
+        "deliverables": "Sistema de identidad visual, Guía de color y tipografía",
+        "timeline": "2 a 4 semanas",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Identity&area=Brand#inquiry",
+        "_studioSlug": "identity",
+        "href": "identity/",
+        "detailCta": "Ver detalles →"
+      },
+      {
+        "title": "LOGOTIPOS",
+        "tab": "LOGOTIPOS",
+        "summary": "Un logotipo y un sistema de uso básico que expresan la marca simplemente.",
+        "what": "Desarrollar conceptos de logotipo y entregar archivos listos para la producción.",
+        "for": "Nuevos logos o equipos que mejoran una marca existente.",
+        "included": "Dirección · conceptos · primaria/secundaria · versiones en color · guía básica",
+        "deliverables": "Archivos de Logo, Variaciones, Guía de Logos Básico",
+        "timeline": "2 a 3 semanas",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Logo+Design&area=Brand#inquiry",
+        "_studioSlug": "logo-design",
+        "href": "logo/",
+        "detailCta": "Ver detalles →"
+      }
+    ],
+    "slug": "brand",
+    "crumbBusiness": "Studio",
+    "pricing": [
+      {
+        "name": "Estrategia de Marcas",
+        "price": "De ‹400,000",
+        "svc": 0,
+        "slug": "brand-strategy",
+        "pricingType": "startingAt"
+      },
+      {
+        "name": "Naming",
+        "price": "Desde el principio 300.000",
+        "svc": 1,
+        "slug": "naming",
+        "pricingType": "startingAt"
+      },
+      {
+        "name": "Identidad",
+        "price": "De ‹600,000",
+        "svc": 2,
+        "slug": "identity",
+        "pricingType": "startingAt"
+      },
+      {
+        "name": "Logotipo de diseño",
+        "price": "De ‹400,000",
+        "svc": 3,
+        "slug": "logo-design",
+        "pricingType": "startingAt"
+      }
+    ],
+    "pricingNote": "Las cantidades enumeradas están empezando los precios de un alcance básico. Las citas finales pueden variar con escala de proyectos, alcance de producción, conteo entregable y requisitos.",
+    "pricingNoteDefault": "Las cantidades enumeradas están empezando los precios de un alcance básico. Las citas finales pueden variar con escala de proyectos, alcance de producción, conteo entregable y requisitos."
+  },
+  "digital": {
+    "crumbStudio": "Studio",
+    "otherTitle": "OTROS ESTUDIOS",
+    "ctaEyebrow": "¿Tienes un trato?",
+    "ctaTitle": "Vamos a dar forma a cómo su marca y producto aparecen en el mundo.",
+    "ctaLead": "Incluso en la etapa de la idea. Comenzamos aclarando el alcance que necesita.",
+    "ctaBtn": "Investigación del proyecto →",
+    "servicesLabel": "Servicios",
+    "processLabel": "PROCESO",
+    "faqLabel": "FAQ",
+    "quoteCta": "Investigación del proyecto →",
+    "whatWeBuild": "Lo que hacemos",
+    "recommendedFor": "Recomendado para",
+    "included": "Incluido",
+    "deliverables": "Suministros",
+    "timeline": "Calendario estimado",
+    "detailCta": "Ver detalles →",
+    "soonBtn": "Pronto.",
+    "comingSoon": "Pronto.",
+    "comingSoonLead": "Esta zona todavía está en marcha, no se ofrece como un servicio comercial terminado todavía.",
+    "ctaPrimary": "Iniciar un proyecto →",
+    "ctaSecondary": "Ver el alcance ↓",
+    "startingAt": "STAR TO",
+    "seoTitle": "DIGITAL Newon Studio",
+    "metaDescription": "Newon Studio DIGITAL — web, app UI/UX, landing y diseño de producto de estructura a interfaz.",
+    "eyebrow": "NEWON ESTUDIO · DIGITAL",
+    "headline": "Diseño web y\nexperiencia de producto.",
+    "lead": "Un producto digital fuerte no es sólo hermosas pantallas. Diseñamos desde la arquitectura de la información y fluye a través de UI/UX como una experiencia.",
+    "process": [
+      {
+        "n": "01",
+        "t": "DESCUBRE",
+        "d": "Objetivos y usuarios"
+      },
+      {
+        "n": "02",
+        "t": "DEFINE",
+        "d": "Estructura y corrientes clave"
+      },
+      {
+        "n": "03",
+        "t": "DISEÑO",
+        "d": "Diseño UI/UX"
+      },
+      {
+        "n": "04",
+        "t": "PROTOTIPO",
+        "d": "Validación de prototipos"
+      },
+      {
+        "n": "05",
+        "t": "HANDOFF",
+        "d": "Paso del desarrollo"
+      }
+    ],
+    "faq": [
+      {
+        "q": "¿Diseño solo?",
+        "a": "Sí. Los precios iniciales de DIGITAL son solo diseños: UI/UX, prototipo y desvío abarcado a sus necesidades."
+      },
+      {
+        "q": "¿También construyes?",
+        "a": "No. Studio DIGITAL no incluye desarrollo. La aplicación se cita por separado Newon BUILD de negocios."
+      },
+      {
+        "q": "¿Puede mejorar un producto existente?",
+        "a": "Sí — revisamos los flujos y la estructura, luego proponemos el alcance."
+      },
+      {
+        "q": "¿Se incluye respuesta/móvil?",
+        "a": "Sí — escritorio y interfaz de usuario móvil juntos."
+      }
+    ],
+    "services": [
+      {
+        "title": "DISEÑO WEB",
+        "tab": "WEB",
+        "summary": "Diseño Web UX/UI que presenta marca y servicio claramente. (Design Only)",
+        "what": "De la estructura del sitio a los cuadros de alambre, la interfaz de usuario y el diseño sensible. La construcción/desarrollo no está incluida.",
+        "for": "Equipos que necesitan un sitio de empresa/marca, o mejorar la UX web existente.",
+        "included": "Diseño sólo · IA · flujos · marco de cable · UI · receptivo · componentes",
+        "deliverables": "Mapa del sitio, Wireframes, Desktop/Mobile UI, Handoff",
+        "timeline": "2 a 5 semanas",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Web+Design&area=Digital#inquiry",
+        "_studioSlug": "web-design",
+        "href": "web-design/",
+        "detailCta": "Ver detalles →"
+      },
+      {
+        "title": "APP UI/UX",
+        "tab": "APP",
+        "summary": "Flujos y estructura de pantalla para las características de la aplicación principal. (Design Only)",
+        "what": "De flujos de usuario a UI de alta fidelidad, prototipo y desvío. No se incluye el desarrollo de aplicaciones.",
+        "for": "Equipos que aclaran una idea de aplicación, diseño MVP o mejora UX.",
+        "included": "Diseño Sólo · Flujo de usuario · IA · alambre · UI · componentes · prototipo",
+        "deliverables": "UI de alta fidelidad, Prototipo, Archivos Handoff",
+        "timeline": "3 a 6 semanas",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=App+UI%2FUX&area=Digital#inquiry",
+        "_studioSlug": "app-ui-ux",
+        "href": "app-ui-ux/",
+        "detailCta": "Ver detalles →"
+      },
+      {
+        "title": "LANDING PAGE",
+        "tab": "LANDING",
+        "summary": "Landing page Diseño UX/UI construido para la conversión. (Design Only)",
+        "what": "Estructura del mensaje, CTAs, secciones y UI móvil. La construcción web en vivo no está incluida.",
+        "for": "Lanza, camareros, anuncios o validación de la demanda MVP.",
+        "included": "Diseño sólo · Estructura del mensaje · flujo de conversión · cable · UI · móvil",
+        "deliverables": "Landing Structure, Final UI, CTA System, Handoff",
+        "timeline": "1 a 3 semanas",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Landing+Page+Design&area=Digital#inquiry",
+        "_studioSlug": "landing-page-design",
+        "href": "landing/",
+        "detailCta": "Ver detalles →"
+      },
+      {
+        "title": "DISEÑO DE PRODUCTO",
+        "tab": "PRODUCTO",
+        "summary": "Diseño de experiencia de producto completo — no sólo pantallas. (Design Only)",
+        "what": "Estructura de producto alineada, flujo UX, sistema UI y sistema de diseño. La construcción/desarrollo no está incluida.",
+        "for": "Equipos organizando UX de producto completo o necesitando un sistema de diseño.",
+        "included": "Diseño sólo · Estructura del producto · Flujo UX · Sistema UI · sistema de diseño · prototipo",
+        "deliverables": "Product UX Architecture, UI Design, Design System, Handoff",
+        "timeline": "4 a 8 semanas",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Product+Design&area=Digital#inquiry",
+        "_studioSlug": "product-design",
+        "href": "product-design/",
+        "detailCta": "Ver detalles →"
+      }
+    ],
+    "slug": "digital",
+    "crumbBusiness": "Studio",
+    "pricing": [
+      {
+        "name": "Diseño Web",
+        "price": "De ‹600,000",
+        "svc": 0,
+        "slug": "web-design",
+        "pricingType": "startingAt"
+      },
+      {
+        "name": "App UI/UX",
+        "price": "Desde el principio 800.000",
+        "svc": 1,
+        "slug": "app-ui-ux",
+        "pricingType": "startingAt"
+      },
+      {
+        "name": "Landing Page Design",
+        "price": "De ‹400,000",
+        "svc": 2,
+        "slug": "landing-page-design",
+        "pricingType": "startingAt"
+      },
+      {
+        "name": "Diseño de producto",
+        "price": "Desde el punto de vista 1.200.000",
+        "svc": 3,
+        "slug": "product-design",
+        "pricingType": "startingAt"
+      }
+    ],
+    "pricingNote": "Las cantidades enumeradas están empezando los precios de un alcance básico. Las citas finales pueden variar con escala de proyectos, alcance de producción, conteo entregable y requisitos. Los precios DIGITAL son solo diseño. Los proyectos que necesitan aplicación se citan por separado Newon BUILD de negocios.",
+    "pricingNoteDefault": "Las cantidades enumeradas están empezando los precios de un alcance básico. Las citas finales pueden variar con escala de proyectos, alcance de producción, conteo entregable y requisitos."
+  },
+  "content": {
+    "crumbStudio": "Studio",
+    "otherTitle": "OTROS ESTUDIOS",
+    "ctaEyebrow": "¿Tienes un trato?",
+    "ctaTitle": "Vamos a dar forma a cómo su marca y producto aparecen en el mundo.",
+    "ctaLead": "Incluso en la etapa de la idea. Comenzamos aclarando el alcance que necesita.",
+    "ctaBtn": "Investigación del proyecto →",
+    "servicesLabel": "Servicios",
+    "processLabel": "PROCESO",
+    "faqLabel": "FAQ",
+    "quoteCta": "Investigación del proyecto →",
+    "whatWeBuild": "Lo que hacemos",
+    "recommendedFor": "Recomendado para",
+    "included": "Incluido",
+    "deliverables": "Suministros",
+    "timeline": "Calendario estimado",
+    "detailCta": "Ver detalles →",
+    "soonBtn": "Pronto.",
+    "comingSoon": "Pronto.",
+    "comingSoonLead": "Esta zona todavía está en marcha, no se ofrece como un servicio comercial terminado todavía.",
+    "ctaPrimary": "Iniciar un proyecto →",
+    "ctaSecondary": "Ver el alcance ↓",
+    "startingAt": "STAR TO",
+    "seoTitle": "CONTENT ← Newon Studio",
+    "metaDescription": "Newon Studio CONTENT — contenido social, campañas y activos visuales.",
+    "eyebrow": "NEWON ESTUDIO · CONTENIDO",
+    "headline": "Crear contenido que haga la marca\nvisible e inolvidable.",
+    "lead": "Transformamos los mensajes de marca en contenido para redes sociales, campañas, lanzamientos y canales digitales.",
+    "process": [
+      {
+        "n": "01",
+        "t": "DESCUBRE",
+        "d": "Comprender marca y canales"
+      },
+      {
+        "n": "02",
+        "t": "DEFINE",
+        "d": "Define el mensaje y los formatos"
+      },
+      {
+        "n": "03",
+        "t": "CREAR",
+        "d": "Producir contenido y visuales"
+      },
+      {
+        "n": "04",
+        "t": "ENTREGA",
+        "d": "Entrega sobre los archivos del canal"
+      }
+    ],
+    "faq": [
+      {
+        "q": "¿Contenido solamente?",
+        "a": "Sí — social, campaña o alcance visual según sea necesario."
+      },
+      {
+        "q": "¿Debemos hacer la marca primero?",
+        "a": "Podemos alinearnos con una marca existente o ejecutar Brand en paralelo."
+      },
+      {
+        "q": "¿El Contenido Social incluye operaciones mensuales?",
+        "a": "No. El precio inicial cubre la dirección de contenido más un conjunto de diseño limitado, no la gestión social mensual completa, que se cita por separado."
+      },
+      {
+        "q": "¿Está incluida la moción?",
+        "a": "Movimiento simple por acuerdo. El vídeo de formato largo no es el alcance predeterminado."
+      },
+      {
+        "q": "¿Tamaños para canales específicos?",
+        "a": "Sí — entregado tamaño para cada canal."
+      }
+    ],
+    "services": [
+      {
+        "title": "SOCIAL CONTENT",
+        "tab": "SOCIAL",
+        "summary": "Dirección de contenidos y un diseño limitado para operaciones sociales, no mensuales completas.",
+        "what": "Dirección de contenido, formatos, copia/templatos y guías de canal. No se incluye la gestión social mensual completa.",
+        "for": "Los equipos establecen la dirección para Instagram, TikTok, Shorts y canales de marca similares.",
+        "included": "Dirección · pilares · formatos · dirección de copia · plantillas · guía de canal",
+        "deliverables": "Estrategia de Contenido, Plantillas Sociales, Guía del Canal",
+        "timeline": "1 a 3 semanas",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Social+Content&area=Content#inquiry",
+        "_studioSlug": "social-content",
+        "href": "social/",
+        "detailCta": "Ver detalles →"
+      },
+      {
+        "title": "CAMPAÑA",
+        "tab": "CAMPAÑA",
+        "summary": "Lanzamientos y promociones conectados por un mensaje y visual.",
+        "what": "Concepto de campaña, mensaje clave, clave visual y activos de canal.",
+        "for": "Equipos que ejecutan lanzamientos de productos, promociones o campañas de eventos.",
+        "included": "Concepto · mensaje clave · copia · clave visual · activos sociales",
+        "deliverables": "Concepto de Campaña, Visual Clave, Activos de Canal, Guía de Campaña",
+        "timeline": "2 a 4 semanas",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Campaign&area=Content#inquiry",
+        "_studioSlug": "campaign",
+        "href": "campaign/",
+        "detailCta": "Ver detalles →"
+      },
+      {
+        "title": "CONTENIDO VISUAL",
+        "tab": "VISUAL",
+        "summary": "Activos visuales de marca para web, social y promociones.",
+        "what": "Desde la dirección visual hasta las variantes de tamaño del canal.",
+        "for": "Equipos que necesitan imágenes de marca o más imágenes de canal.",
+        "included": "Dirección visual · producto/social visual · activo promo · variantes de tamaño",
+        "deliverables": "Activos Visuales Digitales, Activos Social/Campaign/Web",
+        "timeline": "1 a 3 semanas",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Visual+Content&area=Content#inquiry",
+        "_studioSlug": "visual-content",
+        "href": "visual/",
+        "detailCta": "Ver detalles →"
+      }
+    ],
+    "slug": "content",
+    "crumbBusiness": "Studio",
+    "pricing": [
+      {
+        "name": "Social Content",
+        "price": "Desde el principio 300.000",
+        "svc": 0,
+        "slug": "social-content",
+        "pricingType": "startingAt"
+      },
+      {
+        "name": "Campaña",
+        "price": "Desde el principio 500.000",
+        "svc": 1,
+        "slug": "campaign",
+        "pricingType": "startingAt"
+      },
+      {
+        "name": "Contenido visual",
+        "price": "Desde el principio 300.000",
+        "svc": 2,
+        "slug": "visual-content",
+        "pricingType": "startingAt"
+      }
+    ],
+    "pricingNote": "Las cantidades enumeradas están empezando los precios de un alcance básico. Las citas finales pueden variar con escala de proyectos, alcance de producción, conteo entregable y requisitos. El precio inicial del contenido social cubre la dirección de contenido más un conjunto de diseño limitado, no operaciones sociales mensuales completas. La gestión mensual continua se cita por separado.",
+    "pricingNoteDefault": "Las cantidades enumeradas están empezando los precios de un alcance básico. Las citas finales pueden variar con escala de proyectos, alcance de producción, conteo entregable y requisitos."
+  },
+  "ip": {
+    "crumbStudio": "Studio",
+    "otherTitle": "OTROS ESTUDIOS",
+    "ctaEyebrow": "¿Tienes un trato?",
+    "ctaTitle": "Vamos a dar forma a cómo su marca y producto aparecen en el mundo.",
+    "ctaLead": "Incluso en la etapa de la idea. Comenzamos aclarando el alcance que necesita.",
+    "ctaBtn": "Investigación del proyecto →",
+    "servicesLabel": "Servicios",
+    "processLabel": "PROCESO",
+    "faqLabel": "FAQ",
+    "quoteCta": "Investigación del proyecto →",
+    "whatWeBuild": "Lo que hacemos",
+    "recommendedFor": "Recomendado para",
+    "included": "Incluido",
+    "deliverables": "Suministros",
+    "timeline": "Calendario estimado",
+    "detailCta": "Ver detalles →",
+    "soonBtn": "Pronto.",
+    "comingSoon": "Pronto.",
+    "comingSoonLead": "Esta zona todavía está en marcha, no se ofrece como un servicio comercial terminado todavía.",
+    "ctaPrimary": "Iniciar un proyecto →",
+    "ctaSecondary": "Ver el alcance ↓",
+    "startingAt": "STAR TO",
+    "seoTitle": "IP confidencialidad Newon Studio",
+    "metaDescription": "Newon Estudio IP — Laboratorio de caracteres y IP experimental sin sobreventar áreas sin terminar.",
+    "eyebrow": "NEWON STUDIO · IP",
+    "headline": "Experimento con personajes\ny nuevas posibilidades IP.",
+    "lead": "Exploramos los activos de marca que pueden crecer desde pequeños conceptos de carácter hasta la expresión digital. Las áreas experimentales y comisionables se etiquetan claramente.",
+    "process": [
+      {
+        "n": "01",
+        "t": "EXPLORAR",
+        "d": "Explore las posibilidades"
+      },
+      {
+        "n": "02",
+        "t": "CONCEPTO",
+        "d": "Definir el concepto"
+      },
+      {
+        "n": "03",
+        "t": "CREAR",
+        "d": "Crear formas tempranas"
+      },
+      {
+        "n": "04",
+        "t": "PRUEBA",
+        "d": "Expresión y formatos de prueba"
+      },
+      {
+        "n": "05",
+        "t": "AMPLIACIÓN",
+        "d": "Mapa rutas de expansión"
+      }
+    ],
+    "faq": [
+      {
+        "q": "¿Cómo comienzan los proyectos IP?",
+        "a": "Laboratorio de caracteres o un informe experimental IP para establecer el alcance del experimento."
+      },
+      {
+        "q": "¿Podemos pedir pegatinas digitales ahora?",
+        "a": "Llegando a Soon - todavía no disponible para la comisión."
+      },
+      {
+        "q": "I Newon ¿Personal un servicio al cliente?",
+        "a": "No. Es un interior Newon proyecto IP de marca."
+      },
+      {
+        "q": "¿Podemos encargar la IP experimental?",
+        "a": "Sí. No es un paquete fijo — formamos un proyecto personalizado de la idea y el alcance del experimento, luego citamos por separado."
+      }
+    ],
+    "services": [
+      {
+        "title": "LABORATORIO DE CARACTERES",
+        "tab": "CHAR LAB",
+        "statusLabel": "EXPERIMENTAL · DISPONIBLE",
+        "summary": "Un servicio de cliente experimental para el concepto de carácter temprano y el potencial de IP. Se dispone de investigación y trabajo de proyectos.",
+        "what": "Shape la personalidad, el papel, las visuales, la expresión, la pose y el uso, luego prueba el potencial IP.",
+        "for": "Equipos que quieren una forma IP de carácter temprano rápidamente.",
+        "included": "Concepto de carácter · personalidad · dirección visual · estudio de expresión",
+        "deliverables": "Ficha conceptual, Dirección visual, Juego de Expresión, Guía IP básica",
+        "timeline": "2 a 4 semanas",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Character+Lab&area=IP#inquiry",
+        "_studioSlug": "character-lab",
+        "href": "character-lab/",
+        "detailCta": "Ver detalles →"
+      },
+      {
+        "title": "PEGATINAS DIGITALES",
+        "tab": "ESTICKERS",
+        "statusLabel": "Venir pronto",
+        "summary": "Ampliar la emoción de carácter en expresiones digitales. Enseguida —no disponible para la comisión.",
+        "what": "",
+        "for": "",
+        "included": "",
+        "deliverables": "",
+        "timeline": "",
+        "ready": false,
+        "inquiryHref": null,
+        "_studioSlug": "digital-stickers",
+        "href": "digital-stickers/",
+        "detailCta": "Ver detalles →"
+      },
+      {
+        "title": "NEWON CARACTER",
+        "tab": "NEWON",
+        "statusLabel": "INTERNA · EDIFICIO",
+        "summary": "Internos Newon marca carácter IP proyecto — no un servicio al cliente.",
+        "what": "",
+        "for": "",
+        "included": "",
+        "deliverables": "",
+        "timeline": "",
+        "ready": false,
+        "inquiryHref": null,
+        "_studioSlug": "newon-character",
+        "href": "newon-character/",
+        "detailCta": "Ver detalles →"
+      },
+      {
+        "title": "IP EXPERIMENTAL",
+        "tab": "EXPLORAR",
+        "statusLabel": "EXPLORACIÓN · CLIENTE",
+        "summary": "No es un paquete fijo, dirigido como un proyecto experimental personalizado. Revisamos las ideas de carácter, mundo, contenido, interactivo, juego o AI como prototipos pequeños.",
+        "what": "De la idea y la hipótesis a través del concepto, prototipo, prueba y aprender — la costumbre ampliada.",
+        "for": "Equipos que quieren validar una nueva forma IP con un pequeño experimento primero.",
+        "included": "Revisión de Idea · hipótesis · dirección de concepto · prototipo / piloto · siguiente paso",
+        "deliverables": "Experimento breve, concepto / prototipo de paquete, notas de aprendizaje, siguiente recomendación",
+        "timeline": "Cita personalizada",
+        "quoteCta": "Investigación de proyecto personalizado →",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Experimental+IP&area=IP#inquiry",
+        "_studioSlug": "experimental-ip",
+        "href": "experimental-ip/",
+        "detailCta": "Ver detalles →"
+      }
+    ],
+    "slug": "ip",
+    "crumbBusiness": "Studio",
+    "pricing": [
+      {
+        "name": "Laboratorio de caracteres",
+        "price": "Desde el principio 500.000",
+        "svc": 0,
+        "slug": "character-lab",
+        "pricingType": "startingAt"
+      },
+      {
+        "name": "IP experimental",
+        "price": "Citas personalizadas",
+        "svc": 3,
+        "slug": "experimental-ip",
+        "pricingType": "customQuote"
+      }
+    ],
+    "pricingNote": "Las cantidades enumeradas están empezando los precios de un alcance básico. Las citas finales pueden variar con escala de proyectos, alcance de producción, conteo entregable y requisitos.",
+    "pricingNoteDefault": "Las cantidades enumeradas están empezando los precios de un alcance básico. Las citas finales pueden variar con escala de proyectos, alcance de producción, conteo entregable y requisitos."
+  }
+}

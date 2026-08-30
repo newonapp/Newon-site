@@ -1,0 +1,534 @@
+{
+  "seoTitle": "MARKTFORSCHUNG / Newon Geschäft",
+  "metaDescription": "Recherchieren Sie Marktstruktur, Nachfrage und Wettbewerbskontext — geliefert als Kurzbeschreibung und Marktkarte, auf die Ihr Team reagieren kann. Newon MARKTFORSCHUNG.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICE",
+  "crumbResearch": "FORSCHUNG",
+  "crumbHere": "MARKTFORSCHUNG",
+  "eyebrow": "MARKTFORSCHUNG",
+  "subEyebrow": "FORSCHUNG",
+  "headline": "Den Markt lesen\nDurch Beweise, nicht durch Vermutungen.",
+  "lead": "Wir untersuchen Marktstruktur, Nachfrage, Wettbewerb und Veränderungssignale — dann organisieren wir die Beweise in einem Forschungsauftrag, anhand dessen Ihr Team entscheiden kann.",
+  "ctaPrimary": "Marktforschungsanfrage →",
+  "ctaSecondary": "Siehe den Forschungsfluss ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Marktforschung"
+    },
+    {
+      "k": "AM BESTEN FÜR",
+      "v": "Einstieg, Expansion, Positionierungsprüfung"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Normalerweise 1-3 Wochen"
+    },
+    {
+      "k": "PREIS",
+      "v": "Von ₩300,000"
+    }
+  ],
+  "overviewLabel": "ÜBERBLICK",
+  "overviewTitle": "Viele Informationen.\n Nicht genügend gemeinsame Kriterien.",
+  "overviewBody": [
+    "Bei der Bewertung eines neuen Marktes, einer Kategorie oder einer Zielgruppe ist das Material selten der Engpass. Der schwierigere Teil ist die Ausrichtung auf Struktur, Priorität und was als Beweismittel gilt.",
+    "Branchenberichte, Nachrichten, IR von Mitbewerbern, App—Bewertungen, Community-Signale und öffentliche Statistiken bieten jeweils einen anderen Blickwinkel - aber selten in einer Form, aus der Teams im selben Meeting entscheiden können.",
+    "Die MARKTFORSCHUNG beginnt damit, zu definieren, was Sie wissen müssen, um eine Entscheidung zu treffen. Dann sammeln, vergleichen und strukturieren wir Quellen in einer Marktkarte, Opportunitätsbereichen und Implikationen in einem Brief."
+  ],
+  "problemsLabel": "PROBLEM",
+  "problemsTitle": "Hilfreich, wenn Sie sich diesen Situationen stellen.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "MARKTEINTRITT",
+      "d": "Sie benötigen eine gemeinsame Sicht auf die Marktgröße und -struktur\nbevor man ein neues Land, eine neue Kategorie oder ein neues Publikum betritt."
+    },
+    {
+      "n": "02",
+      "t": "VERSTREUTE INFORMATIONEN",
+      "d": "Es gibt viel Material, aber keine klare Karte von Segmenten, Spielern oder Möglichkeiten.\nDie gleichen Fragen wiederholen sich in jedem Meeting."
+    },
+    {
+      "n": "03",
+      "t": "WETTBEWERBSKONTEXT",
+      "d": "Zu viele Konkurrenten und Substitute, um die Positionierung auf einen Blick zu vergleichen.\nDu brauchst Kontext darüber, wer wo stark ist."
+    },
+    {
+      "n": "04",
+      "t": "KARTE DER MÖGLICHKEITEN",
+      "d": "Sie sehen viele Wege für Eintritt, Expansion oder Differenzierung\naber es fehlt an Beweisen, um sie zu priorisieren."
+    },
+    {
+      "n": "05",
+      "t": "AUSRICHTUNG DER STAKEHOLDER",
+      "d": "Teams, Investoren oder Partner brauchen das gleiche Marktbild.\nDu brauchst eine interne Zusammenfassung, auf die sich jeder beziehen kann."
+    },
+    {
+      "n": "06",
+      "t": "PRODUKTRICHTUNG",
+      "d": "Vor MVP-, Roadmap- oder Preisentscheidungen,\nDu brauchst zuerst Marktkontext und Nachfragesignale."
+    }
+  ],
+  "baLabel": "VORHER / NACHHER",
+  "baTitle": "Bauchgefühl-Entscheidungen vs\nstrukturiertes Marktverständnis",
+  "beforeLabel": "VOR",
+  "afterLabel": "NACH",
+  "before": [
+    "Jeder sammelt Quellen separat",
+    "Marktgröße, Wettbewerb und Chancenverschiebung durch Konversation",
+    "Dieselben Fragen wiederholen sich ohne dokumentierte Schlussfolgerung",
+    "Ergebnisse sind nicht mit der nächsten Validierung oder Aktion verbunden"
+  ],
+  "after": [
+    "Forschungsfragen und -umfang werden zuerst vereinbart",
+    "Segmente, Spieler und Opportunity werden abgebildet",
+    "Ein gemeinsamer Forschungsauftrag für das Team",
+    "Auswirkungen, die mit den nächsten Maßnahmen verknüpft sind"
+  ],
+  "capsLabel": "FÄHIGKEIT",
+  "capsTitle": "Wir strukturieren die Forschung\nIhre Marktentscheidungsbedürfnisse.",
+  "caps": [
+    {
+      "t": "GELTUNGSBEREICH DEFINITION",
+      "d": "Definieren Sie die Fragen und Grenzen, die die Entscheidung erfordert.\n Klären Sie, was Sie lernen müssen und was nicht in den Rahmen fällt.",
+      "examples": [
+        "Kernfragen",
+        "Marktumfang",
+        "Anzahl der Teilnehmer",
+        "Lieferbares Format"
+      ]
+    },
+    {
+      "t": "SCHREIBTISCHRECHERCHE",
+      "d": "Sammeln Sie systematisch Sekundärquellen und öffentliche Daten.\nÜberprüfen Sie gemeinsam die Qualität und Glaubwürdigkeit der Quelle.",
+      "examples": [
+        "Branchenberichte",
+        "Öffentliche Statistiken",
+        "Nachrichten & IR",
+        "Bewertungen & Community"
+      ]
+    },
+    {
+      "t": "MARKTSTRUKTUR",
+      "d": "Organisieren Sie den Markt nach Segmenten, Akteuren und Wertfluss.\nStrukturiere, wer wo spielt und wie der Markt aufgeteilt ist.",
+      "examples": [
+        "Segmentkarte",
+        "Wertschöpfungskette",
+        "Nachfrage & Angebot",
+        "Kanalstruktur"
+      ]
+    },
+    {
+      "t": "WETTBEWERBSUMFELD",
+      "d": "Vergleichen Sie wichtige Wettbewerber und Ersatzprodukte.\n Fasst Unterschiede in Funktionen, Preisen, Messaging und Ziel zusammen.",
+      "examples": [
+        "Spielerkarte",
+        "Positionierung vergleichen",
+        "Differenzierung",
+        "Ersatzstoffen"
+      ]
+    },
+    {
+      "t": "OPPORTUNITY-MAPPING",
+      "d": "Strukturieren Sie Bereiche für den Eintritt, die Expansion oder die Differenzierung.\nDokumentieren Sie die Beweise und Annahmen hinter jeder Gelegenheit.",
+      "examples": [
+        "Unerfüllte Bedürfnisse",
+        "Leerzeichen",
+        "Eintrittsbarrieren",
+        "Priorität"
+      ]
+    },
+    {
+      "t": "TRENDSIGNALE",
+      "d": "Erfassen Sie Industrie-, Verbraucher- und Technologieverschiebungen mit dem Kontext.\nTrennt kurzfristigen Lärm vom Strukturwandel.",
+      "examples": [
+        "Verordnung",
+        "Verhaltensänderung",
+        "Einführung von Technologien",
+        "Preise & Verpackung"
+      ]
+    },
+    {
+      "t": "AUSWIRKUNG",
+      "d": "Verknüpfen Sie Erkenntnisse mit Produkt, Geschäft und Strategie.\n Bewege dich von der Einsicht zu dem, was es bedeutet, dass du tun solltest.",
+      "examples": [
+        "Positionieren",
+        "Funktionspriorität",
+        "Gehen / Nicht gehen",
+        "Risiko"
+      ]
+    },
+    {
+      "t": "AKTIONSELEMENTE",
+      "d": "Schlagen Sie die nächsten Validierungs- und Entscheidungsschritte vor.\n Kennzeichnet, wo Interviews, Experimente oder tiefere Forschung benötigt werden.",
+      "examples": [
+        "Validierungsfragen",
+        "Interviewziele",
+        "Hypothesen testen",
+        "Anwendungsbereich der Nachverfolgung"
+      ]
+    }
+  ],
+  "sourcesLabel": "FORSCHUNGSQUELLEN",
+  "sourcesTitle": "Wir kombinieren die Quelltypen, die Ihr Ziel benötigt.",
+  "sourcesNote": "Die tatsächlichen Quellen variieren je nach Umfang, Markt und Zugänglichkeit. Wir bestätigen die Passform vor dem Start.",
+  "sources": [
+    "Branchenberichte",
+    "Öffentliche Statistiken",
+    "Unternehmenseinreichungen",
+    "Nachrichten & Artikel",
+    "Testberichte",
+    "App Store / Marktplatz",
+    "Soziales & Gemeinschaft",
+    "Patente & Anmeldungen",
+    "Fachpublikationen",
+    "Interne Daten",
+    "Experteninterviews",
+    "Websites von Mitbewerbern"
+  ],
+  "useLabel": "ANWENDUNGSFÄLLE",
+  "useTitle": "Fragen, die wir beantworten können.",
+  "useBadge": "Beispielforschungsthemen",
+  "useCases": [
+    {
+      "t": "NEUER MARKTEINTRITT",
+      "d": "Überprüfen Sie die Struktur, die Nachfragesignale und Eintrittsbarrieren\nbevor man einen Markt oder eine Kategorie betritt."
+    },
+    {
+      "t": "KATEGORIE LANDSCHAFT",
+      "d": "Karte, wer wo spielt und wie der Markt aufgeteilt ist.\nSehen Sie Segmentrollen und -beziehungen auf einen Blick."
+    },
+    {
+      "t": "WETTBEWERBSKONTEXT",
+      "d": "Vergleichen Sie schnell wichtige Akteure und Positionierungsunterschiede.\n Fasst Funktionen, Preise, Messaging und Ziel zusammen."
+    },
+    {
+      "t": "PREISKONTEXT",
+      "d": "Fassen Sie Preisbänder, Verpackung und Erlösmodellkontext zusammen.\nErstellen Sie Beweise für Ihre Preisstrategie."
+    },
+    {
+      "t": "KUNDENSEGMENTE",
+      "d": "Klären Sie aus Segmentsicht, wen der Markt bedient.\nStrukturieren Unterschiede in Bedürfnissen, Verhalten und Kaufkriterien."
+    },
+    {
+      "t": "TRENDBRIEF",
+      "d": "Fassen Sie die letzten Verschiebungen zusammen und was sie für Ihr Produkt oder Geschäft bedeuten.\nTrennt kurzfristige Themen vom Strukturwandel."
+    },
+    {
+      "t": "INVESTORENBRIEFING",
+      "d": "Eine Marktzusammenfassung für interne oder externe Stakeholder.\n Fügen Sie wichtige Beweise und Risiken zusammen."
+    },
+    {
+      "t": "PRODUKTUMFANG EINGABE",
+      "d": "Stellen Sie den Marktkontext vor der MVP- oder Roadmap-Definition bereit.\n Verwenden Sie als Beweis dafür, was zuerst gebaut werden soll."
+    }
+  ],
+  "flowLabel": "BEISPIEL-WORKFLOW",
+  "flowTitle": "Von der Frage zum Forschungsauftrag",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINIEREN",
+      "d": "Definieren Sie Forschungsfragen und -umfang.\nKlären, welche Informationsentscheidungen erforderlich sind und was ausgeschlossen ist.",
+      "examples": [
+        "Kernfragen",
+        "Marktumfang",
+        "Hauptkonkurrenten",
+        "Lieferbar"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SAMMELN",
+      "d": "Sammeln Sie relevante Quellen und Daten.\nÜberprüfen Sie öffentliches und internes Material gemeinsam.",
+      "examples": [
+        "Reports",
+        "Statistik",
+        "Gästebewertungen",
+        "IR und Nachrichten"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "STRUKTUR",
+      "d": "Organisieren Sie nach Markt, Wettbewerb und Nachfrage.\nMacht verstreute Informationen vergleichbar.",
+      "examples": [
+        "Segmente",
+        "Spieler",
+        "Preisgestaltung",
+        "TV"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "SYNTHETISIEREN",
+      "d": "Extrahieren Sie wichtige Erkenntnisse und Möglichkeiten.\n Verbinde, was wichtig ist und warum es wichtig ist.",
+      "examples": [
+        "Chancenbereiche",
+        "Gesundheitsrisiken",
+        "Differenzierung",
+        "Cken"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LIEFERN",
+      "d": "Liefern Sie Kurzbeschreibung, Karte und Implikationen.\n-Format für den sofortigen Einsatz im Team.",
+      "examples": [
+        "Kurzfassung",
+        "Marktkarte",
+        "Nächste Schritte"
+      ]
+    }
+  ],
+  "reportLabel": "AUSGABE",
+  "reportTitle": "Strukturierte Ergebnisse für Entscheidungen.",
+  "reportLead": "Die Zusammensetzung variiert je nach Projektziel. Nachfolgend finden Sie allgemeine Abschnitte — wir enthalten nur das, was der Auftrag erfordert.",
+  "reportMockStatus": "MARKT * ENTWURF",
+  "reportMockK": "MARKTÜBERSICHT",
+  "reportMockT": "Kurzbeschreibung der Kategorie- und Wettbewerbslandschaft",
+  "reportItems": [
+    "Kurzfassung",
+    "Marktkarte",
+    "Segmentübersicht",
+    "Wettbewerbsumfeld",
+    "Chancenbereiche",
+    "Trendsignale",
+    "Hauptrisiken",
+    "Auswirkung",
+    "Empfohlene nächste Schritte",
+    "Quellennotizen"
+  ],
+  "dashTitle": "Aktienmarktstruktur auf einen Blick.",
+  "dashLead": "Wenn es nützlich ist, fügen wir eine Marktkarte hinzu, die Segmente, Akteure und Opportunitätsbereiche zeigt — damit Diskussionen schneller neben dem Briefing voranschreiten.",
+  "dashNote": "Eine Marktkarte ist nicht in jedem Projekt identisch - Umfang und Zweck definieren das Ergebnis.",
+  "dashMetrics": [
+    "Segmente",
+    "Spieler",
+    "Geschäftsmöglichkeiten",
+    "Trends",
+    "Gesundheitsrisiken",
+    "Priorität"
+  ],
+  "dashFilters": [
+    "Aller",
+    "B2B-Produkte",
+    "B2B",
+    "Unternehmen"
+  ],
+  "aiLabel": "SYNTHESE",
+  "aiTitle": "Von großen Quellensätzen \nbis hin zu dem, worauf es ankommt.",
+  "aiLead": "Wenn es viele Berichte, Nachrichten, Rezensionen und Konkurrenzmaterial gibt, fassen wir zusammen, klassifizieren und vergleichen aus den Blickwinkeln, die Sie benötigen. Auslegung und endgültige Entscheidungen werden gemeinsam mit Ihnen überprüft.",
+  "aiExamples": [
+    "Wettbewerbsbotschaft & Positionierung vergleichen",
+    "Zusammenfassung der Überprüfungs- und Feedbackmuster",
+    "Branchennachrichten und Ausgabe Digest",
+    "Segmentbedarf und Schmerzzusammenfassung",
+    "Priorisierung von Chancen",
+    "Kurz- und Präsentationsentwurf"
+  ],
+  "aiNote": "Auslegung und endgültige Entscheidungen werden gemeinsam mit Ihnen überprüft. KI-Zusammenfassungen sind Referenzmaterial - wichtige Anrufe sollten weiterhin auf Originalquellen verweisen.",
+  "delLabel": "LIEFERBAR",
+  "delTitle": "Was Sie nach dem Projekt erhalten",
+  "delLead": "Je nach Umfang liefern wir die von Ihnen benötigten Artikel aus der untenstehenden Liste. Nicht jedes Element ist in jedem Projekt enthalten.",
+  "deliverables": [
+    "Forschungsbericht",
+    "Marktkarte",
+    "Wettbewerbszusammenfassung",
+    "Überblick über die Möglichkeiten",
+    "Trendhinweise",
+    "Implikationen & Empfehlungen",
+    "Quelle Anhang",
+    "Zusammenfassung der Präsentation",
+    "Anschlussfragen"
+  ],
+  "processLabel": "PROZESS",
+  "processTitle": "Von der Fragestellung bis zur Lieferung.",
+  "process": [
+    {
+      "n": "01",
+      "t": "ENTDECKUNG",
+      "d": "Bestätigen Sie den Entscheidungskontext und den Forschungszweck.\n Verstehe, was du entscheidest und wer die Ausgabe verwenden wird.",
+      "examples": [
+        "Ziel",
+        "Beteiligte",
+        "Timeline",
+        "Zw"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "UMFANG",
+      "d": "Definieren Sie Fragen, Umfang und lieferbares Format.\n Stimmt zu, was drin ist, was draußen ist und Priorität hat.",
+      "examples": [
+        "Kernfragen",
+        "Marktumfang",
+        "Hauptkonkurrenten",
+        "Formatierung"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "FORSCHUNG",
+      "d": "Sammeln und überprüfen Sie relevante Quellen und Daten.\n Überprüfen Sie die Qualität und Glaubwürdigkeit der Quelle.",
+      "examples": [
+        "Reports",
+        "Statistik",
+        "Gästebewertungen",
+        "IR"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ANALYSE",
+      "d": "Strukturieren Sie Muster, Unterschiede und Möglichkeiten.\nOrganisieren Sie nach Segment, Wettbewerb und Nachfrage.",
+      "examples": [
+        "Segmente",
+        "Positionieren",
+        "Gelegenheit",
+        "Risiko"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ENTWURF",
+      "d": "Entwerfen Sie die Kurz- und Marktkarte.\nBaut das Rückgrat der Erkenntnisse und Implikationen auf.",
+      "examples": [
+        "Zusammenfassung",
+        "Marktkarte",
+        "Auswirkung"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "BEWERTUNG",
+      "d": "Überprüfen Sie die wichtigsten Ergebnisse und Interpretationen gemeinsam.\nPassen Sie Lücken, Annahmen und Prioritäten an.",
+      "examples": [
+        "Feedback",
+        "Verfeinerung",
+        "Priorität",
+        "Gehen / Nicht gehen"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "LIEFERN",
+      "d": "Liefern Sie endgültige Dokumente und Implikationen.\n Verbinde dich mit der nächsten Validierung und Aktion.",
+      "examples": [
+        "Letzter Brief",
+        "Anzeigen",
+        "Nächste Schritte"
+      ]
+    }
+  ],
+  "scopeLabel": "GELTUNGSBEREICH EBENEN",
+  "scopeTitle": "Ein Leitfaden zur Projektkomplexität.",
+  "scopeLead": "Keine festen Pakete - wir erstellen und kalkulieren basierend auf Ihrem Ziel und der Tiefe, die Sie benötigen.",
+  "scopes": [
+    {
+      "t": "FOKUSSIERTER MARKTBERICHT",
+      "items": [
+        "Binnenmarkt oder Kategorie",
+        "3-5 kernfragen",
+        "Forschungsschwerpunkte",
+        "Zusammenfassung (~ 10-15 Seiten)",
+        "Chancen- und Risikopunkte"
+      ]
+    },
+    {
+      "t": "MARKT- UND WETTBEWERBSKARTE",
+      "items": [
+        "Segment- und Spielerkarte",
+        "Vergleiche 5-10 wichtige Wettbewerber",
+        "Positionierung, Preisgestaltung, Messaging Zusammenfassung",
+        "Chancenbereiche und Auswirkungen",
+        "Präsentationszusammenfassung optional"
+      ]
+    },
+    {
+      "t": "KUNDENSPEZIFISCHE FORSCHUNG",
+      "items": [
+        "Mehrere Märkte oder Kategorien",
+        "Primärforschung (Interviews/Umfragen) optional",
+        "Tiefere Trend-, Regulierungs- und Risikoanalyse",
+        "Benutzerdefinierte Präsentation",
+        "Follow-up-Validierung oder BUILD-Verknüpfung"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Der Zeitplan hängt vom Umfang ab.",
+  "timeLead": "Tiefe, Quellzugriff, Anzahl der Wettbewerber und Einbeziehung von Interviews können die Dauer ändern.",
+  "timelines": [
+    {
+      "t": "Fokussierter Marktbericht",
+      "d": "Ca.1-2 Wochen"
+    },
+    {
+      "t": "Markt- und Wettbewerbskarte",
+      "d": "Ungefähr 2-3 Wochen"
+    },
+    {
+      "t": "Kundenspezifische Forschung",
+      "d": "Bereich separat"
+    }
+  ],
+  "priceLabel": "PROJEKTKOSTEN",
+  "priceTitle": "Wir geben nur den Umfang an, den Sie benötigen.",
+  "priceName": "MARKTFORSCHUNG",
+  "priceValue": "Von ₩300,000",
+  "priceFactorsLabel": "Was den Preis prägt",
+  "priceFactors": [
+    "Anzahl der Forschungsfragen",
+    "Markt- oder Kategorieumfang",
+    "Anzahl der Teilnehmer / Spieler",
+    "Forschungstiefe",
+    "Inklusion in die Primärforschung",
+    "Quellzugriff und bezahlte Berichte",
+    "Lieferbares Format und Länge",
+    "Dringender Zeitplan"
+  ],
+  "priceNote": "Das endgültige Angebot wird nach Überprüfung der Ziele, des Umfangs und des Zeitplans bestätigt.",
+  "faqLabel": "FAQ'S",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faqs": [
+    {
+      "q": "Welche Märkte und Branchen können Sie erforschen?",
+      "a": "B2B, B2C, SaaS, Handel, Plattformen, Dienstleistungen, Fertigung und mehr — je nach Ziel und zugänglichen Quellen. Wir bestätigen die Markttauglichkeit und den Quellzugang vor dem Start."
+    },
+    {
+      "q": "Gehört dazu auch Primärforschung?",
+      "a": "Der Standardwert ist Schreibtischrecherche. Benutzer- oder Brancheninterviews und Umfragedesign können bei Bedarf als separater Bereich hinzugefügt werden."
+    },
+    {
+      "q": "Welches Format haben die Ergebnisse?",
+      "a": "Dokument zuerst: Zusammenfassung, Marktkarte, Wettbewerbszusammenfassung, Implikationen und andere Abschnitte, die auf Ihr Ziel abgestimmt sind. Präsentationszusammenfassungen können enthalten sein."
+    },
+    {
+      "q": "Können Sie bezahlte Branchenberichte kaufen?",
+      "a": "Ja, wenn nötig. Bezahlte Quellkosten werden separat erfasst und vor dem Kauf mit Ihnen bestätigt."
+    },
+    {
+      "q": "Können Sie unsere internen Daten verwenden?",
+      "a": "Ja, innerhalb dessen, was Sie teilen können. Ansonsten arbeiten wir aus öffentlichen Quellen."
+    },
+    {
+      "q": "Wie unterscheidet sich das von der KONKURRENZANALYSE?",
+      "a": "Die MARKTFORSCHUNG betrachtet die allgemeine Marktstruktur und die Chancen. Wenn der Wettbewerbsvergleich das Kernbedürfnis ist, kann die WETTBEWERBSANALYSE besser passen — Bereiche können bei Bedarf verknüpft werden."
+    },
+    {
+      "q": "Kann dies mit BUILD oder MVP verbunden werden?",
+      "a": "Ja. Forschung kann Produktumfang, Funktionspriorität und Go / No-Go-Entscheidungen einfließen lassen."
+    },
+    {
+      "q": "Wie wird die Vertraulichkeit gehandhabt?",
+      "a": "Wir arbeiten nur im vereinbarten Umfang. Ein NDA kann bei Bedarf unterzeichnet werden."
+    }
+  ],
+  "finalLabel": "STARTEN SIE EIN PROJEKT",
+  "finalTitle": "Erraten Sie den Markt nicht — \n kartiert ihn zuerst.",
+  "finalLead": "Nennen Sie uns den Markt, die Kategorie oder den Wettbewerbskontext, den Sie bewerten. Wir werden bestätigen, was zu recherchieren und wie die Ausgabe zu strukturieren ist.",
+  "ctaFinalSecondary": "Alle FORSCHUNGSERGEBNISSE anzeigen →",
+  "ctaFinalSecondaryHref": "../research/"
+}

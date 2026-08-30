@@ -3269,7 +3269,7 @@ function normalizeWhiteLabelCopy(c, lang) {
 }
 
 export function getServiceCopy(slug, lang) {
-  const l = lang === "ko" ? "ko" : "en";
+  const l = lang; // keep full lang so service packs can apply MT overlays
   let copy;
   if (slug === "landing") {
     copy = normalizeLandingDetailCopy(getLandingCopy(l), lang);

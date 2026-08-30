@@ -1,0 +1,483 @@
+{
+  "seoTitle": "INTERNAL SYSTEM | NewonBisnis",
+  "metaDescription": "Bangun operasi internal dan sistem manajemen kustom - persyaratan, izin, implementasi, penyebaran, dan ops panduan. Newon INTERNAL SYSTEM.",
+  "crumbBusiness": "BISNIS",
+  "crumbServices": "Servis",
+  "crumbSolutions": "SOLUSI",
+  "crumbHere": "INTERNAL SYSTEM",
+  "eyebrow": "INTERNAL SYSTEM",
+  "subEyebrow": "SOLUSI",
+  "headline": "Pekerjaan internal berat.\nSistem yang tersebar.",
+  "lead": "Persetujuan, permintaan, inventaris, HR, penyelesaian, pelaporan, klien dan operasi proyek - kami merancang dan membangun web internal kustom, admin, dan sistem portal. Dari persyaratan, perizinan, dan kerja mengalir melalui integrasi dan Admin Console - dikirimkan sebagai satu sistem yang sebenarnya digunakan oleh tim Anda.",
+  "ctaPrimary": "Penyelidikan sistem internal:",
+  "ctaSecondary": "Lihat aliran pembangunannya.",
+  "meta": [
+    {
+      "k": "PELAYAN",
+      "v": "Sistem internal"
+    },
+    {
+      "k": "TERBAIK UNTUK",
+      "v": "Internal ops digitalisasi"
+    },
+    {
+      "k": "GARIS WAKTU",
+      "v": "Tergantung pada scope"
+    },
+    {
+      "k": "HARGA",
+      "v": "Kutipan gubahan"
+    }
+  ],
+  "overviewLabel": "TINJAU",
+  "overviewTitle": "Ops berjalan pada spreadsheet\ndan chatting threads.",
+  "overviewBody": [
+    "Permintaan internal, persetujuan, penyelesaian, pelaporan, dan entri data - pekerjaan operasional sudah ada. Masalahnya adalah bahwa ia tinggal di seberang spreadsheet, chatting, langkah manual, dan beberapa alat SaaS bukan satu sistem yang terhubung.",
+    "Off-rak alat yang cocok bagian dari pekerjaan tapi berjuang dengan struktur izin Anda, garis persetujuan, data, dan integrasi warisan. Tim berakhir dalam mode 'hampir bekerja tapi canggung'.",
+    "INTERNAL SYSTEM dimulai dengan mendefinisikan pekerjaan internal, pengguna, dan struktur perizinan. Lalu kami merancang alur kerja, Admin Console, data dan integrasinya - dan memberikan implementasi, penyebaran, dan ops memandu sebagai satu sistem internal."
+  ],
+  "problemsLabel": "MASALAH",
+  "problemsTitle": "Membantu ketika Anda menghadapi situasi ini.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "OPS MANUAL",
+      "d": "Permintaan, persetujuan, dan penyelesaian berjalan pada langkah manual, lembar kerja, atau obrolan.\nMelewatkan barang, penundaan, dan mengulangi traceability yang buruk."
+    },
+    {
+      "n": "02",
+      "t": "TOOLS SCATTERED",
+      "d": "Setiap departemen menggunakan alat dan kebiasaan yang berbeda.\nSatu proses internal tidak terhubung dalam bentuk sistem."
+    },
+    {
+      "n": "03",
+      "t": "PERMISI CHAOS",
+      "d": "Akses dan persetujuan harus berbeda oleh peran dan departemen tetapi struktur yang hilang.\nAudit dan sejarah sulit."
+    },
+    {
+      "n": "04",
+      "t": "PENDEKATAN BOTOL",
+      "d": "Persetujuan, ulasan, tugas, dan manajemen status adalah bottlenecks.\nTidak jelas siapa yang harus bertindak dan kapan."
+    },
+    {
+      "n": "05",
+      "t": "GAP LEGACY",
+      "d": "Anda perlu link ke _ _ Keeps _ _, _ _ KeepP001 _ _, akuntansi, atau sistem HR.\nPekerjaan baru tetap terputus dari data dan proses yang ada."
+    },
+    {
+      "n": "06",
+      "t": "GROWTH StrAIN",
+      "d": "Volume org, transaksi, atau permintaan outgrows metode kini.\nKau butuh pondasi sistem untuk skala operasional."
+    }
+  ],
+  "baLabel": "SEBELUM / SETELAH",
+  "baTitle": "Operasi tersebar vs\nterhubung sistem internal",
+  "beforeLabel": "SEBELUM",
+  "afterLabel": "SETELAH",
+  "before": [
+    "Pekerjaan tersebar di spreadsheet, chat, langkah manual, SaaS",
+    "Sulit untuk melacak permintaan, persetujuan, dan status",
+    "Hak akses lemah, audit, dan sejarah",
+    "Proses rusak ketika skala operasi"
+  ],
+  "after": [
+    "Internal bekerja dan struktur izin didefinisikan pertama",
+    "Permintaan, persetujuan, status, dan pelaporan dalam satu sistem",
+    "Admin Console dengan akses berbasis-",
+    "Penyebaran, ops, dan jalur ekspansi didokumentasikan"
+  ],
+  "capsLabel": "CAPBILITIES",
+  "capsTitle": "Kami menjalankan internal membangun sistem\nsebagai salah satu keterlibatan terstruktur.",
+  "caps": [
+    {
+      "t": "REQ _ _ KEP000 _ _ REMENTS",
+      "d": "Tentukan pekerjaan internal, pengguna, garis persetujuan, kriteria keberhasilan.\nPerjelas apa yang harus diselenggarakan."
+    },
+    {
+      "t": "DESIGN KERJA",
+      "d": "Mendesain permintaan, persetujuan, tugas, status, dan pemberitahuan mengalir.\nStruktur untuk mencocokkan proses org."
+    },
+    {
+      "t": "PERAN & HAK",
+      "d": "Desain departemen, peran, izin, dan struktur log audit.\nJelaskan siapa yang bisa melihat, lakukan, dan menyetujui apa."
+    },
+    {
+      "t": "KONSOL ADMIN",
+      "d": "Membangun layar dan alat untuk operator dan admin.\nTermasuk pengaturan, pemantauan, dan antrian pemrosesan."
+    },
+    {
+      "t": "DATA & Laporkan",
+      "d": "Desain masukan, agregasi, laporan, dan struktur dashboard.\nMembuat metrik operasional dan sejarah terlihat."
+    },
+    {
+      "t": "INTEGRASI",
+      "d": "Hubungkan _ _ KeeP000 _ _, _ _ KeepP001 _ _, HR, akuntansi, _ _ KeeP002 _ _, _ Keeps P003 _, dan sistem yang ada.\nJelaskan batasan data dengan jelas."
+    },
+    {
+      "t": "DEPLOY & KEAMANAN",
+      "d": "Mengatur lingkungan penyebaran, kontrol akses, cadangan, pemantauan.\nRefleksi persyaratan keamanan internal."
+    },
+    {
+      "t": "OPS HANDOFF",
+      "d": "Menyediakan ops panduan, izin manual, dan handoff.\nHubungkan ekspansi dan jalur pemeliharaan."
+    }
+  ],
+  "sourcesLabel": "PROYEK INPUTS",
+  "sourcesTitle": "Kami menggabungkan masukan kebutuhan sistem internal Anda.",
+  "sourcesNote": "Input aktual bervariasi dengan struktur org, keamanan, dan sistem yang dapat diakses.",
+  "sources": [
+    "Saat ini mengalir dan proses",
+    "Org, departemen, struktur peran",
+    "Persetujuan baris dan kebijakan",
+    "Perkakas dan SaaS sedang digunakan",
+    "Legacy, erp, crm",
+    "Data internal dan dokumen",
+    "Laporan dan kebutuhan KPI",
+    "Keamanan dan kepatuhan",
+    "SSO dan lingkungan auth",
+    "Operator dan praktisi wawancara",
+    "API dan persyaratan integrasi",
+    "Peta jalan Ekspansi"
+  ],
+  "useLabel": "GUNAKAN KASES",
+  "useTitle": "Sistem internal yang bisa kita bangun.",
+  "useBadge": "Tipe sistem contoh",
+  "useCases": [
+    {
+      "t": "PERMINTAAN & PERSETUJUAN",
+      "d": "Permintaan internal, persetujuan, ulasan, arus kerja penolakan.\nStatus, pemilik, dan pelacakan sejarah."
+    },
+    {
+      "t": "OPS DASHBOARD",
+      "d": "Metrik operasional, antrian, dashboard status pemrosesan.\nTim dan pandangan departemen."
+    },
+    {
+      "t": "ADMIN PORTAL",
+      "d": "Pengaturan, pengguna, perizinan, portal manajemen audit.\nOperasi fokus pada konsol."
+    },
+    {
+      "t": "INVENTORI / ASSET",
+      "d": "Inventaris, aset, peralatan, manajemen reservasi.\nMasuk / keluar, status, link kepemilikan."
+    },
+    {
+      "t": "PROYEK / CLIENT OPS",
+      "d": "Proyek internal, klien, kontrak, manajemen penyelesaian.\nKolaborasi tim, status, dokumen."
+    },
+    {
+      "t": "HR / ONBOARDING",
+      "d": "Gabung / pergi, naik pesawat, permintaan, persetujuan arus internal.\nIzin dan penyediaan akses."
+    },
+    {
+      "t": "FINCE / SETTLEMENT",
+      "d": "Penyelesaian, biaya, persetujuan, pengolahan bukti.\nAkuntansi dan link ERP."
+    },
+    {
+      "t": "LEGAKY REPTEMENT",
+      "d": "Gantikan perangkat internal atau lembar kerja warisan.\nPhased desain transisi."
+    }
+  ],
+  "flowLabel": "EXAMLE WORKFLOW",
+  "flowTitle": "Dari persyaratan ke sistem operasi",
+  "flow": [
+    {
+      "n": "01",
+      "t": "PETA",
+      "d": "Tentukan pekerjaan internal, pengguna, garis persetujuan, data.\nClarify lingkup sistemisasi.",
+      "examples": [
+        "Kantor",
+        "Peran",
+        "Persetujuan",
+        "Data"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "DESAIN",
+      "d": "Desain mengalir, Admin Console, izin struktur.\nKonfirmasi layar inti dan aliran ops.",
+      "examples": [
+        "Mengalir",
+        "Admin",
+        "Peran",
+        "UI"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "_ Jaga _ Belakang",
+      "d": "Implikasi sistem internal dan integrasinya.\nUlasan fase dengan demos.",
+      "examples": [
+        "Konsol",
+        "API",
+        "Integrasi",
+        "QA"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "MENYEBARKAN",
+      "d": "Mengatur penyebaran, kontrol akses, pemantauan.\nSiapkan operasi lingkungan.",
+      "examples": [
+        "Pementasan",
+        "Prod",
+        "SSO",
+        "Monitor"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "OPERASI",
+      "d": "Kirim panduan ops, izin manual, handoff.\nHubungkan ekspansi dan jalur pemeliharaan.",
+      "examples": [
+        "Panduan",
+        "Latihan",
+        "Dukung",
+        "Tahap 2"
+      ]
+    }
+  ],
+  "reportLabel": "KELUARKAN",
+  "reportTitle": "Terkirim adalah sistem internal yang dapat beroperasi dan mendukung dokumen.",
+  "reportLead": "Komposisi bervariasi dengan lingkup projek. Di bawah ini adalah item umum.",
+  "reportMockStatus": "INTERNAL",
+  "reportMockK": "INTERNAL SYSTEMSPEC",
+  "reportMockT": "Kantor, perizinan, modul, ringkasan ops",
+  "reportItems": [
+    "Ringkasan Permintaan",
+    "Peta Aliran Kerja",
+    "Peran & Ijin Matrix",
+    "Daftar Modul",
+    "Tampilan Konsol Admin",
+    "Integrasi",
+    "Catatan Keamanan",
+    "Rencana Penyebaran",
+    "Checklist QA",
+    "Panduan Ops"
+  ],
+  "dashTitle": "Berbagi modul dan ops negara pada satu tampilan.",
+  "dashLead": "Workflow, perizinan, dan pemrosesan antrian bersama-sama mempercepat diskusi operasi internal.",
+  "dashNote": "Komposisi modul dan struktur perizinan bervariasi oleh org dan kebutuhan keamanan.",
+  "dashMetrics": [
+    "Modul",
+    "Peran",
+    "Antrian",
+    "Integrasi"
+  ],
+  "dashFilters": [
+    "Semua",
+    "Persetujuan",
+    "Admin",
+    "Laporan"
+  ],
+  "aiLabel": "ACELERASI",
+  "aiTitle": "Lebih cepat persiapan desain.\nKualitas yang lebih kuat.",
+  "aiLead": "Konstrukturisasi, rancangan alur kerja, izin matriks, QA dan daftar operasi checklist - AI-dibantu untuk kecepatan sementara orang-orang fokus pada hak akses, integrasi, dan implementasi inti.",
+  "aiExamples": [
+    "Struktur persyaratan dan proses",
+    "Draft persetujuan dan status mengalir",
+    "Mengatur peran dan izin matriks",
+    "_ _ KeeP000 _ _ screen daftar",
+    "Ops dan handoff rancangan doc",
+    "Integrasi dan catatan batas data"
+  ],
+  "aiNote": "Izin terakhir, keamanan, dan rancangan operasi dikonfirmasi dengan organisasi Anda.",
+  "delLabel": "TERKIRIM",
+  "delTitle": "Apa yang Anda terima ketika proyek menyelesaikan",
+  "delLead": "Kami memberikan item di bawah ini yang diperlukan untuk lingkup Anda.",
+  "deliverables": [
+    "Konsol Sistem / Admin Internal",
+    "Aliran Kerja & Persetujuan Modul",
+    "Peran & Izin Penyiapan",
+    "Dokumentasi Teknis",
+    "Dokumen Integrasi",
+    "Setup Penyetelan",
+    "QA Laporkan",
+    "Ops & Panduan Akses",
+    "Phase 2 Rencana Ekspansi (opsional)"
+  ],
+  "processLabel": "PROSES",
+  "processTitle": "Dari persyaratan untuk ops handoff.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOSANGAT",
+      "d": "Konfirmasi pekerjaan internal, titik-titik nyeri, pemegang saham, batasan.\nTentukan tujuan operasional dan kriteria sukses.",
+      "examples": [
+        "Kantor",
+        "Sakit",
+        "Penyimpanan",
+        "_ _ Simpan P000 _ _ s"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCOPE",
+      "d": "Definisikan modul, alur kerja, hak akses, lingkup integrasi.\nAgree Tahap 1 dan jangkauan ekspansi.",
+      "examples": [
+        "Modul",
+        "Aliran Kerja",
+        "Peran",
+        "Integrasi"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESAIN",
+      "d": "Desain Admin Console, mengalir, struktur data.\nKonfirmasi layar inti dan garis persetujuan.",
+      "examples": [
+        "Konsol",
+        "Mengalir",
+        "Peran",
+        "Ulasan"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "_ Jaga _ Belakang",
+      "d": "Implement system, integration, perizinan.\nDemo dan ulasan dalam fase.",
+      "examples": [
+        "Inti",
+        "Admin",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "UJI",
+      "d": "Verifikasi perizinan, alur kerja, integrasi, skenario ops.\nPeriksa dari perspektif praktisi.",
+      "examples": [
+        "UAT",
+        "Keamanan",
+        "Perbaikan",
+        "Sinyal mati"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "MENYEBARKAN",
+      "d": "Atur penyebaran, SSO, pemantauan, backup.\nSiapkan operasi lingkungan.",
+      "examples": [
+        "Pementasan",
+        "Prod",
+        "Akses",
+        "Monitor"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "HANDOFF",
+      "d": "Ops panduan, izin manual, pelatihan dan handoff.\nHubungkan ekspansi dan jalur pemeliharaan.",
+      "examples": [
+        "Panduan",
+        "Latihan",
+        "Dukung",
+        "Tahap 2"
+      ]
+    }
+  ],
+  "scopeLabel": "LEVELS SCOPE",
+  "scopeTitle": "Bagaimana untuk berpikir tentang proyek kompleksitas.",
+  "scopeLead": "Bukan paket tetap. Scope diatur oleh rentang kerja, izin / integrasi kompleksitas, dan kebutuhan keamanan.",
+  "scopes": [
+    {
+      "t": "FOCUSED OPS SISTEM",
+      "items": [
+        "Aliran kerja inti tunggal",
+        "Peran dan departemen terbatas",
+        "Dasar Admin Console",
+        "1-2 integration dasar",
+        "Panduan Ops"
+      ]
+    },
+    {
+      "t": "PENUHINTERNAL SYSTEM",
+      "items": [
+        "Multiple modul dan alur kerja",
+        "Peran, ijin, catatan audit",
+        "Dashboard dan laporan",
+        "Multi- integrasi dan SSO",
+        "Penyebaran dan handoff termasuk"
+      ]
+    },
+    {
+      "t": "ENT _ KEP000 _ _ RISE PLATFORM",
+      "items": [
+        "Multi- departemen, multi- site ops",
+        "Garis persetujuan kompleks dan kebijakan",
+        "Legacy dan ERP link dalam",
+        "Keamanan kuat dan kepatuhan",
+        "Desain ops dan ekspansi jangka panjang"
+      ]
+    }
+  ],
+  "timeLabel": "GARIS WAKTU",
+  "timeTitle": "Waktu tergantung pada jangkauan.",
+  "timeLead": "Durasi bervariasi dengan jumlah modul, integrasi, izin kompleksitas, dan ulasan keamanan.",
+  "timelines": [
+    {
+      "t": "Sistem Operasi Fokus",
+      "d": "Sekitar 4-8 minggu"
+    },
+    {
+      "t": "Sistem Internal Penuh",
+      "d": "Sekitar 8-16 minggu"
+    },
+    {
+      "t": "Platform perusahaan",
+      "d": "Sekitar 12 minggu"
+    }
+  ],
+  "priceLabel": "PROYEK COST",
+  "priceTitle": "Kutipan per proyek.",
+  "priceName": "INTERNAL SYSTEM",
+  "priceValue": "Kutipan gubahan",
+  "priceFactorsLabel": "Faktor harga",
+  "priceFactors": [
+    "Scope - modul, arus kerja, layar",
+    "Kompleksitas - izin, baris persetujuan, data",
+    "Timeline - jadwal dan sumber daya",
+    "Integrasi - ERP, CRM, SSO, API",
+    "Keamanan - akses kontrol dan audit",
+    "Pengguna dan peran - departemen, situs, peran",
+    "Keterlibatan tim - UAT dan kerjasama ops",
+    "Post- launch - pemeliharaan dan ekspansi"
+  ],
+  "priceNote": "Kami meninjau Scope / Kompleksitas / Timeline / Integrasi, lalu memberikan kutipan. Tidak ada harga menu tetap.",
+  "faqLabel": "PSD",
+  "faqTitle": "Pertanyaan yang sering ditanyakan",
+  "faqs": [
+    {
+      "q": "Apa bedanya dengan INTERNAL TOOLS (AUTOMATI)?",
+      "a": "INTERNAL TOOLS adalah sebuah paket alat automatisasi dan ops yang didefinisikan. INTERNAL SYSTEM adalah custom build for your org 's internal work, permissions, and integrations."
+    },
+    {
+      "q": "Apa bedanya ini dengan CUSTOM PRODUCT?",
+      "a": "CUSTOM PRODUCT adalah pembuatan produk custom yang lebih luas. INTERNAL SYSTEM fokus pada operasi internal, manajemen, persetujuan, dan Admin Console."
+    },
+    {
+      "q": "Bagaimana harganya?",
+      "a": "Setelah meninjau lingkup kerja, kompleksitas, timeline, integration, dan keamanan - sering oleh fase."
+    },
+    {
+      "q": "Dapatkah Anda mengintegrasikan dengan ERP yang ada atau CRM?",
+      "a": "API, penyelarasan data, SSO, dan link dalam dapat dipindai dan dirancang."
+    },
+    {
+      "q": "Apakah hak akses dan termasuk log audit?",
+      "a": "Role- akses berbasis, riwayat persetujuan, dan log audit dapat dirancang dan diimplementasikan dalam lingkup."
+    },
+    {
+      "q": "Dapatkah Anda mendukung operasi posting-peluncuran?",
+      "a": "Ya. Ekspansi fitur, pemeliharaan, dan dukungan ops dapat dilanjutkan dengan persetujuan terpisah."
+    },
+    {
+      "q": "Bagaimana kerahasiaan ditangani?",
+      "a": "Bahan hanya digunakan dalam lingkup yang disepakati. NDA tersedia ketika diperlukan."
+    }
+  ],
+  "finalLabel": "MULAI SUATU PROJEK",
+  "finalTitle": "Hubungkan operasi internal\nDalam satu sistem.",
+  "finalLead": "Jika Anda perlu mendigitalisasi pekerjaan internal, garis persetujuan, atau integrasi, beritahu kami apa yang Anda coba untuk memecahkan. Kami akan mengkonfirmasi lingkup sistem dan membangun pendekatan bersama.",
+  "ctaFinalSecondary": "Lihat semua SOLUTIONS",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

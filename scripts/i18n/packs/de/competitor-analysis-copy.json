@@ -1,0 +1,478 @@
+{
+  "seoTitle": "COMPETITOR ANALYSIS | Newon Geschäft",
+  "metaDescription": "Vergleichen Sie wichtige Wettbewerber und Substitute zu Funktionen, Preisen, Messaging und Positionierung - strukturiert für die Differenzierung. Newon COMPETITOR ANALYSIS.",
+  "crumbBusiness": "UNTERNEHMEN",
+  "crumbServices": "DIENSTLEISTUNGEN",
+  "crumbResearch": "FORSCHUNG",
+  "crumbHere": "COMPETITOR ANALYSIS",
+  "eyebrow": "COMPETITOR ANALYSIS",
+  "subEyebrow": "FORSCHUNG",
+  "headline": "Listen Sie keine Wettbewerber auf -\nMachen Sie sie vergleichbar.",
+  "lead": "Wir vergleichen wichtige Wettbewerber und Substitute über Positionierung, Funktionen, Preise, Messaging und Ziel. Produktseiten, Rezensionen, Preise und IR-Material sind in einer Konkurrenzmatrix und Zusammenfassung organisiert, die Ihr Team in Differenzierungs- und Strategiegesprächen verwenden kann.",
+  "ctaPrimary": "Konkurrenzanalyseanfrage",
+  "ctaSecondary": "Siehe Vergleichsfluss ↓",
+  "meta": [
+    {
+      "k": "DIENST",
+      "v": "Wettbewerbsanalyse"
+    },
+    {
+      "k": "BESTES",
+      "v": "Positions- und Differenzierungsprüfung"
+    },
+    {
+      "k": "TIMELIN",
+      "v": "Normalerweise 1–2 Wochen"
+    },
+    {
+      "k": "PREIS",
+      "v": "Von <0xE2><0x82><0xA9>200.000"
+    }
+  ],
+  "overviewLabel": "ÜBERSICHT",
+  "overviewTitle": "Sie kennen die Namen.\nNicht die Vergleichskriterien.",
+  "overviewBody": [
+    "Wettbewerbernamen tauchen häufig in Produkt-, Marketing- und Investitionsgesprächen auf. Aber der vergleich von features, preisen, messaging und ziel nach den gleichen kriterien ist schwieriger.",
+    "Die Website, Produktseiten, Preise, Bewertungen, App Stores und IR bieten unterschiedliche Blickwinkel - aber selten in einer Struktur können Teams sofort verwenden.",
+    "COMPETITOR ANALYSIS beginnt mit der Definition, wer zu vergleichen ist und auf welchen Achsen. Dann sammeln und organisieren wir Material in einer Konkurrenzmatrix, Positionierungszusammenfassung und Lückenanalyse in einem Ergebnis."
+  ],
+  "problemsLabel": "PROBLEM",
+  "problemsTitle": "Hilfreich, wenn Sie sich diesen Situationen stellen.",
+  "problems": [
+    {
+      "n": "01 01",
+      "t": "POSITION",
+      "d": "Ihre Position gegenüber Wettbewerbern ist unklar.\nSie brauchen eine gemeinsame Sicht darauf, wo Sie stehen."
+    },
+    {
+      "n": "02",
+      "t": "MERKMALSPARITÄT",
+      "d": "Sie kennen Funktionslisten, aber keine Unterschiede oder Prioritäten.\nSie benötigen einen strukturierten Feature-Vergleich."
+    },
+    {
+      "n": "03",
+      "t": "BEWERTUNGSGRUPPE",
+      "d": "Wettbewerbsnachrichten sind klar, aber ihnen fehlt es an differenzierung.\nSie brauchen Ziel, Wert und Ton verglichen."
+    },
+    {
+      "n": "04",
+      "t": "PREISKONTEXT",
+      "d": "Sie benötigen Preisbänder, Verpackungen und Modelle im Vergleich.\nSie benötigen Beweise für die Preisstrategie."
+    },
+    {
+      "n": "05",
+      "t": "GO-TO-MARKET",
+      "d": "Sie benötigen eine schnelle Lektüre über den Wettbewerb vor dem Start oder der Erweiterung.\nSie benötigen eine Zusammenfassung für Investoren- oder Partnertreffen."
+    },
+    {
+      "n": "06",
+      "t": "STRASSENINSPUT",
+      "d": "Vor MVP oder Roadmap-Bereich,\nbenötigen Sie Beweise dafür, was Sie zuerst im Vergleich zu Mitbewerbern erstellen müssen."
+    }
+  ],
+  "baLabel": "VOR / NACH",
+  "baTitle": "Wettbewerberlisten vs\nstrukturierter Vergleich",
+  "beforeLabel": "VOR",
+  "afterLabel": "NACH",
+  "before": [
+    "Jeder sammelt die Wettbewerbsinformationen separat",
+    "Vergleichskriterien verschieben sich im Gespräch",
+    "Differenzierung existiert nur in Gesprächspunkten",
+    "Preise, Nachrichten und Position sind nicht dokumentiert"
+  ],
+  "after": [
+    "Wettbewerber-Set und zuerst vereinbarte Achsen",
+    "Eine Konkurrenzmatrix für das Team",
+    "Lücken, Stärken und Risiken strukturiert",
+    "Verbunden mit Strategie- und Roadmap-Entscheidungen"
+  ],
+  "capsLabel": "KAPAZITÄTEN",
+  "capsTitle": "Wir strukturieren den Vergleich\n, den Ihre Positionierungsentscheidung braucht.",
+  "caps": [
+    {
+      "t": "WETTBEWERBER",
+      "d": "Definieren Sie, wer zu vergleichen ist.\nSeparate direkte, indirekte und Ersatzspieler."
+    },
+    {
+      "t": "VERGLEICHSACHSEN",
+      "d": "Definieren Sie Achsen — Funktionen, Preise, Messaging, Ziel.\nÜbereinstimmung der Kriterien mit dem Projektziel."
+    },
+    {
+      "t": "DESK FORSCHUNG",
+      "d": "Sammeln Sie öffentliches Material - Produktseiten, Preise, Bewertungen, IR.\nÜberprüfen Sie Quelle und Datum."
+    },
+    {
+      "t": "VEREINBARUNG",
+      "d": "Vergleichen Sie Kernmerkmale und Umfang.\nStrukturstärken, Lücken und Überreichweite. POSITIONIERUNGSKARTE"
+    },
+    {
+      "t": "POSITIONSKARTE",
+      "d": "Organisieren Sie die Positionierung in einer Karte oder Matrix.\nSehen Sie, wer wo stark ist auf einen Blick."
+    },
+    {
+      "t": "PREIS UND VERPACKUNG",
+      "d": "Vergleichen Sie Bands, Verpackungen und Umsatzmodelle.\nGeben Sie Kontext für Ihre Preisstrategie."
+    },
+    {
+      "t": "BESCHREIBUNG",
+      "d": "Vergleichen Sie Kernbotschaft, Ziel und Ton.\nDokumentieren Sie Differenzierungsraum und Lücken."
+    },
+    {
+      "t": "IMPLIKATIONEN",
+      "d": "Verbinden Sie Vergleich mit Produkt, Marketing und Strategie.\nSchlagen Sie die nächste Validierung und Aktion vor."
+    }
+  ],
+  "sourcesLabel": "FORSCHUNGSQUELLEN",
+  "sourcesTitle": "Wir kombinieren die Quellenvergleichsbedürfnisse.",
+  "sourcesNote": "Die tatsächlichen Quellen variieren je nach Anzahl der Wettbewerber, Zugriff und Produkttyp.",
+  "sources": [
+    "Wettbewerber Webseiten & Produktseiten",
+    "Preis- und Verpackungsseiten",
+    "App Store / Marktplatz",
+    "Produkt & Service Bewertungen",
+    "IR & Pressemitteilungen",
+    "Demos & Onboarding-Inhalte",
+    "Social & Community",
+    "Hiring & Org Signale",
+    "Patente & Feature Disclosures",
+    "Branchenberichte",
+    "Interne Referenzwerte",
+    "Nutzerfeedback"
+  ],
+  "useLabel": "VERWENDUNGSFÄLLE",
+  "useTitle": "Fragen, die wir beantworten können.",
+  "useBadge": "Beispielanalysethemen",
+  "useCases": [
+    {
+      "t": "POSITIONSÜBERPRÜFUNG",
+      "d": "Sehen Sie, wo Sie gegen Konkurrenten stehen.\nStrukturdifferenzierung und Lücken."
+    },
+    {
+      "t": "FEATURE BENCHMARK",
+      "d": "Vergleichen Sie Kernmerkmale und Umfang.\nVerwenden Sie als Beweis für MVP und Roadmap-Priorität."
+    },
+    {
+      "t": "PREISBENCHMARK",
+      "d": "Vergleichen Sie Bänder, Verpackungen und Modelle.\nErstellen Sie Beweise für Preisgestaltung und Verpackung."
+    },
+    {
+      "t": "VERMESSUNGSVEREINBAR",
+      "d": "Vergleichen Sie Nachricht, Ziel und Ton.\nInformieren Sie die Marken- und Inhaltsrichtung."
+    },
+    {
+      "t": "PRÜFUNG",
+      "d": "Lesen Sie schnell über den Wettbewerb vor dem Start.\nZusammenfassung für Go-to-Market-Gespräche."
+    },
+    {
+      "t": "KURZE INVESTOR",
+      "d": "Wettbewerbszusammenfassung für Investoren oder Partner.\nBeziehen Sie wichtige Unterschiede und Risiken ein."
+    },
+    {
+      "t": "SUBSTITUT SCAN",
+      "d": "Einschließlich Substitute und indirekte Wettbewerber.\nVergleichen Sie die vollständige Auswahl."
+    },
+    {
+      "t": "GAP-ANALYSE",
+      "d": "Dokumentieren Sie unter- und überversorgte Bereiche vs Konkurrenz.\nChancen priorisieren."
+    }
+  ],
+  "flowLabel": "BEISPIEL WORKFLOW",
+  "flowTitle": "Vom Mitbewerber-Set zur Matrix",
+  "flow": [
+    {
+      "n": "01 01",
+      "t": "SELEKT",
+      "d": "Definieren Sie Wettbewerber-Set und Vergleichsziel.\nKlären Sie, wer, was und warum zu vergleichen.",
+      "examples": [
+        "Wettbewerbersatz",
+        "Ziel",
+        "Achsen",
+        "Leistungen"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "KOLLEKT",
+      "d": "Sammeln Sie Produkt-, Preis-, Messaging- und Review-Material.\nÜberprüfen Sie öffentliche und interne Quellen.",
+      "examples": [
+        "Produktseiten",
+        "Preisgestaltung",
+        "Überprüfungen",
+        "IR & News"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "VERGLEICH",
+      "d": "Vergleichen Sie Artikel für Artikel auf definierten Achsen.\nRichten Sie alles an den gleichen Kriterien aus.",
+      "examples": [
+        "Merkmale",
+        "Preisgestaltung",
+        "Messaging",
+        "Ziel"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "SYNTHESE",
+      "d": "Extrahieren Sie Unterschiede, Lücken und Stärken.\nVerbinden Sie sich mit Positionierung und Differenzierung.",
+      "examples": [
+        "Position",
+        "Differenzierung",
+        "Lücken",
+        "Risiken"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LIEFERER",
+      "d": "Liefern Sie Matrix, Zusammenfassung und Implikationen.\nFormat für die sofortige Teamnutzung.",
+      "examples": [
+        "Wettbewerber Matrix",
+        "Zusammenfassung",
+        "Nächste Schritte"
+      ]
+    }
+  ],
+  "reportLabel": "AUSGANGSLEISTUNG",
+  "reportTitle": "Deliverables strukturiert für Vergleich und Entscheidungen.",
+  "reportLead": "Die Zusammensetzung variiert je nach Projektziel. Unten sind gemeinsame Abschnitte.",
+  "reportMockStatus": "COMPARE · ENTWURF",
+  "reportMockK": "WETTBEWERBSZUSAMMENFASSUNG",
+  "reportMockT": "Wettbewerbermatrix · Positionierung von",
+  "reportItems": [
+    "Zusammenfassung",
+    "Konkurrenz Set Überblick",
+    "Vergleichsmatrix",
+    "Feature Vergleich",
+    "Preis & Verpackung",
+    "Messaging Vergleich",
+    "Positionskarte",
+    "Lückenanalyse",
+    "Implikationen",
+    "Empfohlen Nächste Schritte"
+  ],
+  "dashTitle": "Vergleichen Sie die Wettbewerbsposition in einer Ansicht.",
+  "dashLead": "Konkurrenzmatrix und Positionierungskarte zusammen - so sind Feature-, Preis- und Messaging-Unterschiede auf einen Blick sichtbar.",
+  "dashNote": "Die Matrix- und Kartenzusammensetzung variiert je nach Umfang und Ziel.",
+  "dashMetrics": [
+    "Wettbewerber",
+    "Achsen",
+    "Lücken",
+    "Priorität"
+  ],
+  "dashFilters": [
+    "Alle",
+    "Merkmale",
+    "Preisgestaltung",
+    "Messaging"
+  ],
+  "aiLabel": "SYNTHESE",
+  "aiTitle": "Von großen Konkurrenten setzt\nzu dem, was sich unterscheidet.",
+  "aiLead": "Wenn es viele Produktseiten, Bewertungen, Nachrichten und IR-Material gibt, fassen wir zusammen, klassifizieren und vergleichen Sie aus den Blickwinkeln, die Sie benötigen.",
+  "aiExamples": [
+    "Feature and Scope Difference Zusammenfassung",
+    "Preisgestaltung und Verpackung vergleichen",
+    "Nachricht und Positionierung vergleichen",
+    "Review und Feedback-Muster Zusammenfassung",
+    "Gap und Differenzierung Extraktion",
+    "Matrix und Zusammenfassung Entwurf"
+  ],
+  "aiNote": "Interpretation und endgültige Entscheidungen werden gemeinsam mit Ihnen überprüft.",
+  "delLabel": "LIEFERBARE",
+  "delTitle": "Was Sie nach dem Projekt",
+  "delLead": "erhalten Je nach Umfang liefern wir die Artikel, die Sie benötigen, aus der folgenden Liste.",
+  "deliverables": [
+    "Wettbewerber Matrix",
+    "Positionierung Zusammenfassung",
+    "Feature Vergleich",
+    "Preisvergleich",
+    "Nachrichtenzusammenfassung",
+    "Lückenanalyse",
+    "Implikationen & Empfehlungen",
+    "Quelle Anhang",
+    "Zusammenfassung"
+  ],
+  "processLabel": "PROZESS",
+  "processTitle": "Vom Mitbewerber Set Definition bis zur Lieferung.",
+  "process": [
+    {
+      "n": "01 01",
+      "t": "ENTWICKLUNG",
+      "d": "Vergleichsziel und Entscheidungskontext bestätigen.\nVerstehen Sie, was Sie entscheiden.",
+      "examples": [
+        "Ziel",
+        "Stakeholder",
+        "Zeitleiste",
+        "Einschränkungen"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "UMFANG",
+      "d": "Definieren Sie Wettbewerbersatz, Achsen und lieferbares Format.\nVereinbaren Sie Ein- und Ausschlüsse.",
+      "examples": [
+        "Anzahl Wettbewerber",
+        "Achsen",
+        "Format",
+        "Priorität"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "FORSCHUNG",
+      "d": "Sammeln und überprüfen Sie Wettbewerber und Ersatzmaterial.\nÜberprüfen Sie Quelle und Datum.",
+      "examples": [
+        "Produkt",
+        "Preisgestaltung",
+        "Überprüfungen",
+        "IR"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "VERGLEICH",
+      "d": "Vergleichen Sie Artikel für Artikel auf definierten Achsen.\nStrukturmatrix und Karte.",
+      "examples": [
+        "Merkmale",
+        "Preisgestaltung",
+        "Messaging",
+        "Position"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ENTWURF",
+      "d": "Matrix und Zusammenfassung.\nBauen Sie die Wirbelsäule der Unterschiede und Implikationen.",
+      "examples": [
+        "Matrix",
+        "Zusammenfassung",
+        "Lücken"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "ÜBERPRÜFUNG",
+      "d": "Überprüfen Sie Vergleich und Interpretation zusammen.\nStellen Sie Lücken und Prioritäten ein.",
+      "examples": [
+        "Feedback",
+        "Verfeinerung",
+        "Priorität"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "LIEFERER",
+      "d": "Liefern Sie endgültige Dokumente und Implikationen.\nVerbinden Sie sich mit der nächsten Validierung und Aktion.",
+      "examples": [
+        "Letzte Matrix",
+        "Zusammenfassung",
+        "Nächste Schritte"
+      ]
+    }
+  ],
+  "scopeLabel": "ANWENDUNGSBEREICH",
+  "scopeTitle": "Ein Leitfaden zur Projektkomplexität.",
+  "scopeLead": "Keine festen Pakete - wir bewerten und zitieren basierend auf dem Vergleichsziel und der Anzahl der Wettbewerber.",
+  "scopes": [
+    {
+      "t": "KONZENTRIERTER VERGLEICH",
+      "items": [
+        "3-5 Wettbewerber",
+        "3-4 Vergleichsachsen",
+        "Deskforschungsschwerpunkt",
+        "Wettbewerber Matrix",
+        "Differenzierung und Lückenzusammenfassung"
+      ]
+    },
+    {
+      "t": "VOLLSTÄNDIGE WETTBEWERBSMATRIX",
+      "items": [
+        "5-10 Konkurrenten & Ersatz",
+        "Features, Preise, Messaging, Target",
+        "Positionskarte",
+        "Lückenanalyse",
+        "Zusammenfassung fakultativ"
+      ]
+    },
+    {
+      "t": "DEEP DIVE",
+      "items": [
+        "Mehrere Kategorien oder Märkte",
+        "Tieferes Feature und UX vergleichen",
+        "Messaging und Inhaltsanalyse",
+        "Benutzerdefinierte Präsentation",
+        "Kann mit MARKET RESEARCH"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELIN",
+  "timeTitle": "verlinken Timeline hängt vom Umfang ab.",
+  "timeLead": "Die Anzahl der Wettbewerber, die Achsen und der Quellzugriff können die Dauer ändern.",
+  "timelines": [
+    {
+      "t": "Fokussiert",
+      "d": "vergleichen Über 1 Woche"
+    },
+    {
+      "t": "Voller Konkurrent Matrix",
+      "d": "Über 1–2 Wochen"
+    },
+    {
+      "t": "Benutzerdefinierter Deep Dive",
+      "d": "Erfasst separat"
+    }
+  ],
+  "priceLabel": "PROJEKTKOSTEN",
+  "priceTitle": "Wir nennen nur den Umfang, den Sie benötigen.",
+  "priceName": "COMPETITOR ANALYSIS",
+  "priceValue": "Von <0xE2><0x82><0xA9>200.000",
+  "priceFactorsLabel": "Welche Formen der Preis",
+  "priceFactors": [
+    "Anzahl der Wettbewerber / Ersatz",
+    "Anzahl der Vergleichsachsen",
+    "Analysetiefe",
+    "Feature / UX vergleichen Einschluss",
+    "Messaging / Content Analyse",
+    "Lieferbares Format",
+    "Zeitleiste"
+  ],
+  "priceNote": "Das endgültige Angebot wird nach Überprüfung von Ziel, Wettbewerbersatz und Umfang bestätigt.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faqs": [
+    {
+      "q": "Wie viele Wettbewerber können Sie vergleichen?",
+      "a": "Wir definieren die festgelegte Größe nach Ziel und Quellzugriff. Typischerweise 3-10 Spieler - wir bestätigen fit vor dem Start."
+    },
+    {
+      "q": "Was vergleichen Sie?",
+      "a": "Features, Preise, Verpackung, Messaging, Ziel, Kanäle und mehr - Achsen, die auf Ihr Ziel abgestimmt sind. Wir vereinbaren Kriterien, bevor wir beginnen."
+    },
+    {
+      "q": "Welches Format haben Deliverables?",
+      "a": "Dokument und Tabelle zuerst: Konkurrenzmatrix, Positionierungszusammenfassung, Lückenanalyse. Präsentationszusammenfassungen können einbezogen werden."
+    },
+    {
+      "q": "Wie unterscheidet sich das von MARKET RESEARCH?",
+      "a": "COMPETITOR ANALYSIS konzentriert sich auf Wettbewerber und Ersatzvergleich. Wenn die allgemeine Marktstruktur die Notwendigkeit ist, passt MARKET RESEARCH möglicherweise besser - Umfange können verknüpft werden."
+    },
+    {
+      "q": "Kann unser Produkt in die Matrix aufgenommen werden?",
+      "a": "Ja, wenn Sie wollen. Teilen Sie internes Material und wir können eine \"Sie\" -Spalte einfügen."
+    },
+    {
+      "q": "Kann dies eine Verbindung zu BUILD oder MVP herstellen?",
+      "a": "Ja. Vergleich kann Feature-Priorität, Positionierung und Go-to-Market-Entscheidungen liefern."
+    },
+    {
+      "q": "Wie wird mit Vertraulichkeit umgegangen?",
+      "a": "Wir arbeiten nur im vereinbarten Umfang. Eine NDA kann bei Bedarf unterzeichnet werden."
+    }
+  ],
+  "finalLabel": "START A PROJEKT",
+  "finalTitle": "Listen Sie keine Wettbewerber auf -\nVergleichen Sie sie zuerst.",
+  "finalLead": "Sagen Sie uns die Konkurrenz, Kategorie oder Positionierung Problem, das Sie bewerten. Wir werden bestätigen, was zu vergleichen und wie die Ausgabe zu strukturieren.",
+  "ctaFinalSecondary": "Alle Forschen ansehen",
+  "ctaFinalSecondaryHref": "../research/"
+}

@@ -1,0 +1,672 @@
+{
+  "build": {
+    "crumbBusiness": "ビジネス",
+    "otherTitle": "OTHER BUSINESS SERVICES",
+    "ctaEyebrow": "プロジェクトをお持ちですか?",
+    "ctaTitle": "何か構築したいものがあれば、私たちに教えてください。",
+    "ctaLead": "アイデアの段階でも。まずは必要な範囲を明確にすることから始めます。",
+    "ctaBtn": "案件のお問い合わせ→",
+    "servicesLabel": "サービスと価格",
+    "processLabel": "PROCESS",
+    "pricingLabel": "PRICING",
+    "faqLabel": "FAQ",
+    "pricingNoteDefault": "最終的な見積もりは、機能、ページ数、スケジュール、プロジェクトの範囲によって異なります。",
+    "quoteCta": "見積依頼 →",
+    "whatWeBuild": "私たちが構築するもの",
+    "recommendedFor": "こんな方におすすめ",
+    "included": "付属",
+    "deliverables": "成果物",
+    "timeline": "推定スケジュール",
+    "from": "から",
+    "startingAt": "",
+    "comingSoon": "近日公開予定",
+    "comingSoonLead": "このサービスの詳細は間もなく公開される予定です。",
+    "detailCta": "詳細を見る→",
+    "soonBtn": "近日公開予定",
+    "seoTitle": "ビルド | Newon ビジネス",
+    "metaDescription": "Newon ビルド — MVP、ウェブサイト、ランディング ページ、アプリのプロトタイプ。人々が実際に使用できる製品を設計し、出荷します。",
+    "eyebrow": "NEWON BUSINESS · BUILD",
+    "headline": "アイデアを実際の製品に\n変えます。",
+    "lead": "初期のアイデアから MVP、ウェブサイト、ランディング ページ、アプリのプロトタイプに至るまで、実際に使用できる製品を設計して実装します。",
+    "ctaPrimary": "プロジェクトを開始する →",
+    "ctaSecondary": "スコープ参照↓",
+    "heroIndex": [
+      "01 MVP",
+      "02 WEBSITE",
+      "03 LANDING",
+      "04 APP"
+    ],
+    "layout": "構築する",
+    "services": [
+      {
+        "title": "MVP DEVELOPMENT",
+        "href": "../mvp/",
+        "summary": "アイデアを迅速に検証するために構築されたコア機能 MVP。",
+        "what": "出荷可能な MVP は、重要なフローと機能に焦点を当てています。",
+        "for": "迅速な市場とユーザーのシグナルを必要とするチーム。",
+        "included": "スコープ · キー画面 · コアビルド · レスポンシブ QA",
+        "deliverables": "デプロイ可能な MVP、簡単な運用ガイド",
+        "timeline": "通常 3 ～ 6 週間"
+      },
+      {
+        "title": "WEBSITE",
+        "href": "../web/",
+        "summary": "企業、ブランド、製品のレスポンシブ Web サイト。",
+        "what": "ブランドやサービスをわかりやすく説明するレスポンシブサイト。",
+        "for": "公式ウェブサイトまたは製品ウェブサイトが必要な企業。",
+        "included": "IA · UI · レスポンシブ ビルド · 基本的な SEO セットアップ",
+        "deliverables": "ライブサイト、ソース/アセット、編集ガイド",
+        "timeline": "通常 2 ～ 5 週間"
+      },
+      {
+        "title": "LANDING PAGE",
+        "href": "../landing/",
+        "summary": "打ち上げと転換のための高品質な着陸。",
+        "what": "発売、順番待ちリスト、キャンペーンなどのコンバージョンを重視したページ。",
+        "for": "製品の発売、事前登録、プロモーション。",
+        "included": "メッセージング、セクション設計、構築、分析ガイダンス",
+        "deliverables": "ランディング ページ、アセット、公開チェックリスト",
+        "timeline": "通常 1 ～ 2 週間"
+      },
+      {
+        "title": "APP PROTOTYPE",
+        "href": "../app/",
+        "summary": "アプリのアイデアを実際の画面とフローとして表現。",
+        "what": "プライマリ画面とフローのインタラクティブなプロトタイプ。",
+        "for": "投資または完全な開発の前にチームが検証します。",
+        "included": "フロー · キー画面 · インタラクション · 引き継ぎメモ",
+        "deliverables": "プロトタイプリンク/ビルド、画面概要",
+        "timeline": "通常 2 ～ 4 週間"
+      }
+    ],
+    "process": [
+      {
+        "n": "01",
+        "t": "DISCOVER",
+        "d": "目標と要件"
+      },
+      {
+        "n": "02",
+        "t": "DEFINE",
+        "d": "特長と構造"
+      },
+      {
+        "n": "03",
+        "t": "DESIGN",
+        "d": "UI/UX と画面"
+      },
+      {
+        "n": "04",
+        "t": "BUILD",
+        "d": "製品の導入"
+      },
+      {
+        "n": "05",
+        "t": "TEST",
+        "d": "機能と応答性の高い QA"
+      },
+      {
+        "n": "06",
+        "t": "LAUNCH",
+        "d": "デプロイとハンドオフ"
+      }
+    ],
+    "pricing": [
+      {
+        "name": "LANDING PAGE",
+        "price": "₩400,000～",
+        "svc": 2
+      },
+      {
+        "name": "WEBSITE",
+        "price": "₩700,000～",
+        "svc": 1
+      },
+      {
+        "name": "MVP",
+        "price": "₩1,000,000～",
+        "svc": 0
+      },
+      {
+        "name": "APP PROTOTYPE",
+        "price": "₩500,000～",
+        "svc": 3
+      }
+    ],
+    "pricingNote": "最終的な見積もりは、機能、ページ数、スケジュール、範囲によって異なります。",
+    "faq": [
+      {
+        "q": "プロジェクトにはどのくらい時間がかかりますか?",
+        "a": "範囲に応じて、ランディングには通常 1 ～ 2 週間、ウェブサイトには 2 ～ 5 週間、MVP には約 3 ～ 6 週間かかります。キックオフ前にスケジュールを確認します。"
+      },
+      {
+        "q": "何回の改訂ラウンドが含まれていますか?",
+        "a": "改訂は段階ごとに合意されたラウンド内で行われます。範囲外の変更はタイムラインと見積もりに影響します。"
+      },
+      {
+        "q": "既存のプロジェクトを改善できますか?",
+        "a": "はい。現状と目標を確認し、改善範囲と優先順位を提案します。"
+      },
+      {
+        "q": "メンテナンスは行っていますか？",
+        "a": "リリース後の運用や小さな改善は、メンテナンスまたはフォローアップ プロジェクトとして手配できます。"
+      },
+      {
+        "q": "成果物はどのように引き渡されますか?",
+        "a": "ライブ URL、ソース/アセット、および短い操作ガイドを受け取ります。"
+      }
+    ]
+  },
+  "automation": {
+    "crumbBusiness": "ビジネス",
+    "otherTitle": "OTHER BUSINESS SERVICES",
+    "ctaEyebrow": "プロジェクトをお持ちですか?",
+    "ctaTitle": "何か構築したいものがあれば、私たちに教えてください。",
+    "ctaLead": "アイデアの段階でも。まずは必要な範囲を明確にすることから始めます。",
+    "ctaBtn": "案件のお問い合わせ→",
+    "servicesLabel": "サービスと価格",
+    "processLabel": "PROCESS",
+    "pricingLabel": "PRICING",
+    "faqLabel": "FAQ",
+    "pricingNoteDefault": "最終的な見積もりは、機能、ページ数、スケジュール、プロジェクトの範囲によって異なります。",
+    "quoteCta": "見積もりを依頼 →",
+    "whatWeBuild": "私たちが構築するもの",
+    "recommendedFor": "こんな方におすすめ",
+    "included": "付属",
+    "deliverables": "成果物",
+    "timeline": "推定スケジュール",
+    "from": "から",
+    "startingAt": "",
+    "comingSoon": "近日公開予定",
+    "comingSoonLead": "このサービスの詳細は間もなく公開される予定です。",
+    "detailCta": "詳しく見る →",
+    "soonBtn": "近日公開予定",
+    "seoTitle": "オートメーション | Newon ビジネス",
+    "metaDescription": "Newon 自動化 — AI 自動化、ワークフロー、内部ツール、レポート。反復的な作業をシステムに変えます。",
+    "eyebrow": "NEWON BUSINESS · AUTOMATION",
+    "headline": "反復的な作業を\nシステムに変えます。",
+    "lead": "企業とチームの繰り返し業務を分析し、AIと自動化で\nより効率的な業務フローを構築します。",
+    "ctaPrimary": "自動化の相談 →",
+    "ctaSecondary": "サービスを見る ↓",
+    "layout": "自動化",
+    "services": [
+      {
+        "title": "AI AUTOMATION",
+        "href": "../ai-automation/",
+        "summary": "AI を使用して繰り返しの作業を自動化します。",
+        "what": "AI が適した自動化 - 分類、下書き、要約。",
+        "for": "問い合わせ、内容、ドキュメントの量が多いチーム。",
+        "included": "作業分析 · ルール/プロンプト · 統合 · 運用ガイド",
+        "deliverables": "作業自動化フロー、構成メモ",
+        "timeline": "通常 2 ～ 5 週間"
+      },
+      {
+        "title": "WORKFLOW AUTOMATION",
+        "href": "./workflow/",
+        "summary": "ツールとタスクを 1 つのワークフローに接続します。",
+        "what": "ツール、チャネル、データにわたるエンドツーエンドのワークフロー。",
+        "for": "チームは手動で SaaS とスプレッドシートをブリッジしています。",
+        "included": "マッピング · トリガー/アクション · 例外 · 監視メモ",
+        "deliverables": "接続されたワークフロー、インシデント チェックリスト",
+        "timeline": "通常 3 ～ 6 週間"
+      },
+      {
+        "title": "INTERNAL TOOLS",
+        "href": "../internal-tools/",
+        "summary": "チームが実際に使用している内部ツール。",
+        "what": "運用および管理ツールとダッシュボード。",
+        "for": "チームがスプレッドシートの限界に達している。",
+        "included": "要件 · UI · 権限 · デプロイ",
+        "deliverables": "内部ツール、アクセスガイド",
+        "timeline": "通常 4 ～ 8 週間"
+      },
+      {
+        "title": "DATA & REPORTING",
+        "href": "../data-reporting/",
+        "summary": "収集、クリーンアップ、レポートを自動化します。",
+        "what": "スケジュールに従って収集、クリーンアップ、要約を行うパイプライン。",
+        "for": "チームは今でも週次/月次レポートを手作業で作成しています。",
+        "included": "ソース、ルール、テンプレート、スケジュール",
+        "deliverables": "自動レポート、サンプル出力",
+        "timeline": "通常 2 ～ 4 週間"
+      }
+    ],
+    "useCasesLabel": "USE CASES",
+    "useCasesNote": "構築できるものの例",
+    "useCases": [
+      "お問い合わせの自動ルーティング",
+      "コンテンツドラフトの生成",
+      "データのクリーンアップ",
+      "スケジュールされたレポート",
+      "リクエスト管理",
+      "作業アラート",
+      "文書処理",
+      "内部管理者ダッシュボード"
+    ],
+    "beforeAfterLabel": "BEFORE / AFTER",
+    "before": [
+      "手動入力",
+      "コピー＆ペースト",
+      "繰り返されるタスク",
+      "散在するデータ"
+    ],
+    "after": [
+      "接続されたワークフロー",
+      "自動化",
+      "構造化データ",
+      "実用的な出力"
+    ],
+    "process": [
+      {
+        "n": "01",
+        "t": "地図の仕事",
+        "d": "電流の流れとボトルネック"
+      },
+      {
+        "n": "02",
+        "t": "繰り返しを分析する",
+        "d": "自動化の候補を選択する"
+      },
+      {
+        "n": "03",
+        "t": "デザイン",
+        "d": "ルール、統合、例外"
+      },
+      {
+        "n": "04",
+        "t": "プロトタイプ",
+        "d": "コアフローを検証する"
+      },
+      {
+        "n": "05",
+        "t": "ビルドする",
+        "d": "実際に使用するために実装する"
+      },
+      {
+        "n": "06",
+        "t": "テストとハンドオフ",
+        "d": "QA と転送"
+      }
+    ],
+    "pricing": [
+      {
+        "name": "SIMPLE AUTOMATION",
+        "price": "₩500,000～",
+        "svc": 0
+      },
+      {
+        "name": "WORKFLOW",
+        "price": "₩1,000,000～",
+        "svc": 1
+      },
+      {
+        "name": "CUSTOM SYSTEM",
+        "price": "カスタム見積もり",
+        "svc": 2
+      }
+    ],
+    "pricingNote": "API の使用量、サードパーティの SaaS、サーバーの費用は別途請求される場合があります。",
+    "faq": [
+      {
+        "q": "どこから自動化を始めるべきでしょうか?",
+        "a": "高頻度で明確なルールのタスクから始めます。ルーティング、レポート、アラートが一般的なエントリ ポイントです。"
+      },
+      {
+        "q": "Notion、スプレッドシート、Slack などを接続できますか?",
+        "a": "ツールと API によって異なります。キックオフ前に統合の実現可能性を確認します。"
+      },
+      {
+        "q": "AI/API の費用は誰が支払いますか?",
+        "a": "モデルと API の使用は通常、クライアント アカウントで行われます。予想される使用量も合わせて見積もります。"
+      },
+      {
+        "q": "失敗はどのように処理されますか?",
+        "a": "例外パスとアラートは設計の一部であり、監視のためのガイダンスも含まれています。"
+      },
+      {
+        "q": "セキュリティについてはどうですか?",
+        "a": "私たちはアクセス、データ範囲、ロギングに関して調整を行っています。機密データは設計により最小限に抑えられます。"
+      }
+    ]
+  },
+  "research": {
+    "crumbBusiness": "ビジネス",
+    "otherTitle": "OTHER BUSINESS SERVICES",
+    "ctaEyebrow": "プロジェクトをお持ちですか?",
+    "ctaTitle": "何か構築したいものがあれば、私たちに教えてください。",
+    "ctaLead": "アイデアの段階でも。まずは必要な範囲を明確にすることから始めます。",
+    "ctaBtn": "案件のお問い合わせ→",
+    "servicesLabel": "サービスと価格",
+    "processLabel": "PROCESS",
+    "pricingLabel": "PRICING",
+    "faqLabel": "FAQ",
+    "pricingNoteDefault": "最終的な見積もりは、機能、ページ数、スケジュール、プロジェクトの範囲によって異なります。",
+    "quoteCta": "見積依頼 →",
+    "whatWeBuild": "私たちが構築するもの",
+    "recommendedFor": "こんな方におすすめ",
+    "included": "付属",
+    "deliverables": "成果物",
+    "timeline": "推定スケジュール",
+    "from": "から",
+    "startingAt": "",
+    "comingSoon": "近日公開予定",
+    "comingSoonLead": "このサービスの詳細は間もなく公開される予定です。",
+    "detailCta": "詳細を見る→",
+    "soonBtn": "近日公開予定",
+    "seoTitle": "研究 | Newon ビジネス",
+    "metaDescription": "Newon リサーチ — 市場、競合他社、消費者、および UX のリサーチ。直感ではなく、証拠に基づいた決定。",
+    "eyebrow": "NEWON BUSINESS · RESEARCH",
+    "headline": "直感ではなく\n根拠を見つけます。",
+    "lead": "私たちは市場、競合他社、ユーザー エクスペリエンス、消費者シグナルを調査し、決定すべき事項を構造化します。",
+    "ctaPrimary": "研究に関するお問い合わせ →",
+    "ctaSecondary": "出力を参照↓",
+    "layout": "研究",
+    "services": [
+      {
+        "title": "MARKET RESEARCH",
+        "tab": "MARKET",
+        "href": "../market-research/",
+        "summary": "市場構造と機会分析",
+        "what": "構造、機会領域、意思決定にすぐに使える枠組み。",
+        "for": "市場に参入または市場を拡大するチーム。",
+        "included": "範囲・机上調査・構造化・影響",
+        "deliverables": "概要レポート、市場マップ",
+        "timeline": "通常 1 ～ 3 週間"
+      },
+      {
+        "title": "COMPETITOR ANALYSIS",
+        "tab": "COMPARE",
+        "href": "../competitor-analysis/",
+        "summary": "主要な製品と企業を比較する",
+        "what": "ポジショニング、機能、メッセージングの比較。",
+        "for": "差別化を明確にするチーム。",
+        "included": "集合・軸・行列・含意",
+        "deliverables": "競合他社マトリックス、概要",
+        "timeline": "通常 1 ～ 2 週間"
+      },
+      {
+        "title": "CONSUMER RESEARCH",
+        "tab": "CONSUMER",
+        "href": "../consumer-research/",
+        "summary": "ニーズと行動の分析",
+        "what": "ニーズ、行動、痛みのパターン。",
+        "for": "チームは視聴者とメッセージを検証します。",
+        "included": "質問、調査、パターン、洞察",
+        "deliverables": "ユーザーインサイトの概要、機会",
+        "timeline": "通常 2 ～ 4 週間"
+      },
+      {
+        "title": "UX AUDIT",
+        "tab": "UX",
+        "href": "../ux-audit/",
+        "summary": "既存のアプリ/Web エクスペリエンスを診断する",
+        "what": "主要なフローと UI にわたる問題と優先順位。",
+        "for": "コンバージョンやユーザビリティに苦戦しているサービス。",
+        "included": "フローレビュー・課題リスト・優先順位・提案",
+        "deliverables": "監査報告書、アクションアイテム",
+        "timeline": "通常 1 ～ 2 週間"
+      },
+      {
+        "title": "TREND RESEARCH",
+        "tab": "TREND",
+        "href": "../trend-research/",
+        "summary": "業界と消費者のトレンド分析",
+        "what": "トレンドと製品への影響。",
+        "for": "チームはロードマップまたはコンテンツの方向性を設定します。",
+        "included": "トピック、ソース、パターン、推奨事項",
+        "deliverables": "トレンド概要",
+        "timeline": "通常 1 ～ 3 週間"
+      }
+    ],
+    "outputLabel": "RESEARCH OUTPUT",
+    "outputNote": "SAMPLE STRUCTURE",
+    "outputK": "RESEARCH BRIEF",
+    "outputTitle": "プロジェクト研究概要",
+    "outputLead": "出力は構造化されているため、すぐに決定を下すことができます。",
+    "outputs": [
+      "エグゼクティブサマリー",
+      "マーケットマップ",
+      "競合他社のマトリックス",
+      "ユーザーインサイト",
+      "機会領域",
+      "推奨事項",
+      "アクションアイテム"
+    ],
+    "process": [
+      {
+        "n": "01",
+        "t": "QUESTION",
+        "d": "私たちは何を学ばなければなりませんか？"
+      },
+      {
+        "n": "02",
+        "t": "RESEARCH",
+        "d": "ソースとデータを収集する"
+      },
+      {
+        "n": "03",
+        "t": "ANALYSIS",
+        "d": "パターンとギャップを見つける"
+      },
+      {
+        "n": "04",
+        "t": "INSIGHT",
+        "d": "調査結果を統合する"
+      },
+      {
+        "n": "05",
+        "t": "ACTION",
+        "d": "次の動きを推奨する"
+      }
+    ],
+    "pricing": [
+      {
+        "name": "UX AUDIT",
+        "price": "₩200,000～",
+        "svc": 0
+      },
+      {
+        "name": "COMPETITOR ANALYSIS",
+        "price": "₩200,000～",
+        "svc": 1
+      },
+      {
+        "name": "MARKET RESEARCH",
+        "price": "₩300,000～",
+        "svc": 2
+      },
+      {
+        "name": "CUSTOM RESEARCH",
+        "price": "カスタム見積もり",
+        "svc": 3
+      }
+    ],
+    "pricingNote": "最終的な見積もりは範囲、深さ、インタビューが含まれるかどうかによって異なります。",
+    "faq": [
+      {
+        "q": "成果物はどのようなものですか?",
+        "a": "構造化された概要、表、地図。スコープが設定されている場合は、スライドを含めることができます。"
+      },
+      {
+        "q": "内部データを使用しますか?",
+        "a": "利用可能かつ適切な場合。それ以外の場合は、公的情報源と観察に基づいて作業します。"
+      },
+      {
+        "q": "インタビューは含まれますか?",
+        "a": "パッケージにより異なります。必要に応じてインタビューを追加することもできます。"
+      },
+      {
+        "q": "機密保持はどのように扱われますか?",
+        "a": "合意された範囲内で;必要に応じて秘密保持契約を締結します。"
+      },
+      {
+        "q": "これはビルドにつながる可能性がありますか?",
+        "a": "はい。洞察は次に製品の範囲設定に役立ちます。"
+      }
+    ]
+  },
+  "solutions": {
+    "crumbBusiness": "ビジネス",
+    "otherTitle": "OTHER BUSINESS SERVICES",
+    "ctaEyebrow": "プロジェクトをお持ちですか?",
+    "ctaTitle": "何か構築したいものがあれば、私たちに教えてください。",
+    "ctaLead": "アイデアの段階でも。まずは必要な範囲を明確にすることから始めます。",
+    "ctaBtn": "案件のお問い合わせ→",
+    "servicesLabel": "SOLUTION TYPES",
+    "processLabel": "PROCESS",
+    "pricingLabel": "PRICING",
+    "faqLabel": "FAQ",
+    "pricingNoteDefault": "最終的な見積もりは、機能、ページ数、スケジュール、プロジェクトの範囲によって異なります。",
+    "quoteCta": "プロジェクトのご相談 →",
+    "whatWeBuild": "私たちが構築するもの",
+    "recommendedFor": "こんな方におすすめ",
+    "included": "付属",
+    "deliverables": "成果物",
+    "timeline": "推定スケジュール",
+    "from": "から",
+    "startingAt": "",
+    "comingSoon": "近日公開予定",
+    "comingSoonLead": "このサービスの詳細は間もなく公開される予定です。",
+    "detailCta": "詳細を見る→",
+    "soonBtn": "近日公開予定",
+    "seoTitle": "ソリューション | Newon ビジネス",
+    "metaDescription": "Newon ソリューション — ホワイトラベル、カスタム製品、発売プログラム、内部システム。パッケージに収まらないプロジェクト向けに構築されています。",
+    "eyebrow": "NEWON BUSINESS · SOLUTIONS",
+    "headline": "決まったサービスに\n無理に合わせません。",
+    "lead": "標準パッケージでは解決できない作業については、お客様の目標と制約に基づいて設計および構築します。",
+    "ctaPrimary": "ご相談ください→",
+    "ctaSecondary": "種類を見る↓",
+    "layout": "ソリューション",
+    "services": [
+      {
+        "title": "WHITE-LABEL",
+        "href": "../white-label/",
+        "summary": "既存の製品/技術構造をブランドに適応させます。",
+        "what": "ブランド、ドメイン、運用に合わせたホワイトラベルのセットアップ。",
+        "for": "ブランド製品をより迅速に必要とする企業。",
+        "included": "スコープ、ブランディング、デプロイ、ハンドオフ",
+        "deliverables": "ブランド製品、運用ガイド",
+        "timeline": "範囲に応じて異なります"
+      },
+      {
+        "title": "CUSTOM PRODUCT",
+        "tab": "CUSTOM",
+        "href": "../custom-product/",
+        "summary": "特定の問題に対するカスタムのデジタル製品。",
+        "what": "問題の枠組みからカスタム製品の構築まで。",
+        "for": "標準パッケージには当てはまらないニーズ。",
+        "included": "フレーム · デザイン · 構築 · QA",
+        "deliverables": "カスタム製品、ドキュメント",
+        "timeline": "範囲に応じて異なります"
+      },
+      {
+        "title": "PRODUCT LAUNCH",
+        "tab": "LAUNCH",
+        "href": "../product-launch/",
+        "summary": "アイデア→製品→着陸→発売準備を接続します。",
+        "what": "起動する 1 つの接続されたパス。",
+        "for": "アイデアを 1 回のエンゲージメントで実現したいチーム。",
+        "included": "戦略・設計・構築・発売準備",
+        "deliverables": "製品 + 上陸 + 発売チェックリスト",
+        "timeline": "範囲に応じて異なります"
+      },
+      {
+        "title": "INTERNAL SYSTEM",
+        "tab": "INTERNAL",
+        "href": "../internal-system/",
+        "summary": "運用管理のための社内システム。",
+        "what": "内部運用と管理システム。",
+        "for": "内部プロセスをデジタル化する組織。",
+        "included": "要件、権限、ビルド、デプロイ",
+        "deliverables": "内部システム、アクセス/操作ガイド",
+        "timeline": "範囲に応じて異なります"
+      }
+    ],
+    "launchLabel": "PRODUCT LAUNCH FLOW",
+    "launchFlow": [
+      {
+        "t": "IDEA",
+        "d": "目標と仮説"
+      },
+      {
+        "t": "STRATEGY",
+        "d": "範囲と優先順位"
+      },
+      {
+        "t": "DESIGN",
+        "d": "経験と体制"
+      },
+      {
+        "t": "BUILD",
+        "d": "実装と統合"
+      },
+      {
+        "t": "LAUNCH",
+        "d": "発送して公開する"
+      },
+      {
+        "t": "IMPROVE",
+        "d": "学び、反復する"
+      }
+    ],
+    "whenLabel": "WHEN TO USE SOLUTIONS",
+    "whenNote": "こんな状況に最適",
+    "whenItems": [
+      {
+        "tag": "CUSTOM FIT",
+        "t": "既存のパッケージに適合しないプロジェクト"
+      },
+      {
+        "tag": "MULTI-SERVICE",
+        "t": "複数のサービスを同時に必要とする"
+      },
+      {
+        "tag": "INTERNAL",
+        "t": "社内システムが必要"
+      },
+      {
+        "tag": "WHITE-LABEL",
+        "t": "ホワイトラベル製品が必要"
+      },
+      {
+        "tag": "FULL LAUNCH",
+        "t": "完全な製品発売パスが必要"
+      }
+    ],
+    "pricingCustom": true,
+    "pricingTitle": "CUSTOM PROJECT",
+    "pricingLead": "プロジェクトごとにお見積り",
+    "pricingBody": "範囲 / 複雑さ / タイムライン / 統合を確認し、見積もりを提供します。固定メニュー料金はありません。",
+    "pricingAxes": [
+      "範囲",
+      "複雑さ",
+      "タイムライン",
+      "統合"
+    ],
+    "pricingNote": "カスタム見積もり",
+    "process": [],
+    "pricing": [],
+    "faq": [
+      {
+        "q": "ソリューションはパッケージとどう違うのですか?",
+        "a": "パッケージは範囲が定義された製品です。ソリューションは、複雑なプロジェクトまたは特殊なプロジェクト向けにカスタム設計されています。"
+      },
+      {
+        "q": "価格はどのように設定されていますか?",
+        "a": "目標、範囲、複雑さ、スケジュール、統合を確認した後。"
+      },
+      {
+        "q": "ホワイトラベルには何が含まれますか?",
+        "a": "既存の技術/製品構造をブランドと運用に適応させる。実現可能な範囲はご相談に応じて確認させていただきます。"
+      },
+      {
+        "q": "複数の利害関係者が関与することはできますか?",
+        "a": "はい。私たちは意思決定者と明確な作業チャネルを定義します。"
+      },
+      {
+        "q": "メンテナンスや拡張についてはどうですか？",
+        "a": "リリース後の拡張と運用は、別個の取り組みとして継続できます。"
+      }
+    ]
+  }
+}

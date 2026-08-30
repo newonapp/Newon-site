@@ -2,6 +2,8 @@
  * MARKET RESEARCH service detail — KO/EN copy.
  * Path: /{lang}/business/market-research/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const MARKET_RESEARCH_COPY = {
   ko: {
     seoTitle: "MARKET RESEARCH | Newon Business",
@@ -825,5 +827,5 @@ export const MARKET_RESEARCH_COPY = {
 };
 
 export function getMarketResearchCopy(lang) {
-  return lang === "ko" ? MARKET_RESEARCH_COPY.ko : MARKET_RESEARCH_COPY.en;
+  return resolveKoEnPack(MARKET_RESEARCH_COPY, lang, "market-research-copy");
 }

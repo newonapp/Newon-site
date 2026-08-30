@@ -1,0 +1,483 @@
+{
+  "seoTitle": "CUSTOM PRODUCT | NewonEntreprises",
+  "metaDescription": "Construisez des produits numériques personnalisés pour résoudre les problèmes des paquets standard ne peuvent pas résoudre — du cadrage à la conception, l'implémentation et QA. Newon CUSTOM PRODUCT.",
+  "crumbBusiness": "ENTREPRISES",
+  "crumbServices": "SERVICES",
+  "crumbSolutions": "SOLUTIONS",
+  "crumbHere": "CUSTOM PRODUCT",
+  "eyebrow": "CUSTOM PRODUCT",
+  "subEyebrow": "SOLUTIONS",
+  "headline": "Pas forcé dans un paquet.\nConstruit pour le problème.",
+  "lead": "Nous concevons et construisons des applications web personnalisées, des outils internes, des portails et des tableaux de bord pour des workflows, des utilisateurs et des opérations spécifiques. Du cadrage de problèmes et UX/UI à l'architecture, l'implémentation, les intégrations et QA — lorsque les paquets standard ne suffisent pas, nous livrons un produit cohérent.",
+  "ctaPrimary": "Demande de produit personnalisé →",
+  "ctaSecondary": "Voir le flux de construction",
+  "meta": [
+    {
+      "k": "SERVICES",
+      "v": "Produit personnalisé"
+    },
+    {
+      "k": "BEST POUR",
+      "v": "Constructions de produits non emballés"
+    },
+    {
+      "k": "Échéancier",
+      "v": "Dépend de la portée"
+    },
+    {
+      "k": "PRIX",
+      "v": "Devis personnalisé"
+    }
+  ],
+  "overviewLabel": "APERÇU",
+  "overviewTitle": "Le besoin est clair.\nPas de paquet.",
+  "overviewBody": [
+    "Les modèles courants comme la réservation, CRM, la demande et les tableaux de bord peuvent être résolus avec des paquets. En pratique, la structure org, le workflow, les données, les permissions et les intégrations correspondent rarement exactement à une boîte standard.",
+    "Forcer les outils hors de la plate-forme fléchit votre processus. Tout construire à partir de zéro coûte trop de temps et d'argent. Ce dont vous avez besoin est un produit conçu pour le problème réel.",
+    "CUSTOM PRODUCT commence par définir le problème, les utilisateurs et le contexte de workflow. Ensuite, nous concevons UX/UI, la portée des fonctionnalités, les données et la structure d'intégration, et livrons l'implémentation, QA, et le transfert comme un produit."
+  ],
+  "problemsLabel": "",
+  "problemsTitle": "C'est utile quand on fait face à ces situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "PAS D' EMBALLAGE FIT",
+      "d": "MVP, web, app ou les paquets d'outils internes ne sont pas entièrement adaptés.\nVotre workflow a besoin d'un design personnalisé."
+    },
+    {
+      "n": "02",
+      "t": "FEUILLE DE TRAVAIL",
+      "d": "SaaS, tableurs ou processus manuel existants bloquent le travail.\nVous avez besoin de votre propre workflow sous forme de produit."
+    },
+    {
+      "n": "03",
+      "t": "SYSTÈME MULTI",
+      "d": "Plusieurs fonctionnalités, écrans, permissions et intégrations doivent devenir un seul produit.\nUn seul paquet ne suffit pas."
+    },
+    {
+      "n": "04",
+      "t": "OUTOL INTERNE",
+      "d": "Vous avez besoin d'un produit d'exploitation ou de gestion interne, pas d'un site de marketing public.\nAutorisations et questions de vérification."
+    },
+    {
+      "n": "05",
+      "t": "INTÉGRATION BESOIN",
+      "d": "Vous devez vous connecter à ERP, CRM, paiements, données ou API.\nC'est la construction du système, pas seulement des pages."
+    },
+    {
+      "n": "06",
+      "t": "PRODUIT À LONG TERME",
+      "d": "Vous avez besoin de quelque chose pour le fonctionnement réel et l'expansion, pas un PoC à jeter.\nLes caractéristiques futures doivent être prises en compte."
+    }
+  ],
+  "baLabel": "AVANT / APRÈS",
+  "baTitle": "Outils forcés vs produit\n",
+  "beforeLabel": "AVANT",
+  "afterLabel": "APRÈS",
+  "before": [
+    "Travail réparti entre SaaS, feuilles de calcul et étapes manuelles",
+    "Processus de virage aux outils au lieu de l'inverse autour de",
+    "De nombreuses exigences, mais aucune portée ou priorité",
+    "Intégrations, permissions et ops deviennent des surprises tardives"
+  ],
+  "after": [
+    "Problème, utilisateurs et contexte de flux de travail défini d'abord",
+    "Custom UX/UI et la portée des fonctionnalités conçu",
+    "Implémentation, intégrations et QA dans un produit",
+    "Structure et documents qui prennent en charge l'exploitation et la croissance"
+  ],
+  "capsLabel": "CAPABILITÉS",
+  "capsTitle": "Nous effectuons la construction de produits personnalisés\ncomme un engagement structuré.",
+  "caps": [
+    {
+      "t": "PROBLÈME",
+      "d": "Définir le problème, les utilisateurs et les critères de réussite.\nPréciser pourquoi un produit personnalisé est nécessaire."
+    },
+    {
+      "t": "CHAMP D'APPLICATION ET ARCHITECTURE",
+      "d": "Portée des fonctionnalités de conception, données, permissions, intégrations.\nSéparer MVP de l'extension."
+    },
+    {
+      "t": "CONCEPTION UX / UI",
+      "d": "Conception d'écrans et d'une structure d'information pour le flux de travail.\nInclure le système de conception au besoin."
+    },
+    {
+      "t": "PRODUIT B_KEEP000_LD",
+      "d": "Mettre en œuvre web, app, outil interne, portail ou tableau de bord.\nConstruisez des fonctionnalités de base en phases. INTEGRATIONS"
+    },
+    {
+      "t": "INTÉGRATIONS",
+      "d": "Implémenter les paiements, CRM, ERP, APIs, pipelines de données.\nDéfinir les limites avec les systèmes existants."
+    },
+    {
+      "t": "ADMINISTRATIF ET PERMISSIONS",
+      "d": "Concevoir et construire admin, rôles, autorisations, journaux de vérification.\nRendre l'opération possible dès le premier jour."
+    },
+    {
+      "t": "QA & REMISE",
+      "d": "Vérifier les caractéristiques, les flux et les intégrations.\nFournir des documents et la remise pour le fonctionnement et la croissance."
+    },
+    {
+      "t": "VOIE D'ITÉRATION",
+      "d": "Planifier l'expansion et l'amélioration après le lancement.\nConnectez la maintenance et la portée Phase 2. INPUTS DE PROJET"
+    }
+  ],
+  "sourcesLabel": "INPUTS DE PROJET",
+  "sourcesTitle": "Nous combinons les intrants dont votre projet a besoin.",
+  "sourcesNote": "Les intrants réels varient selon l'organisation, le déroulement du travail et les systèmes accessibles.",
+  "sources": [
+    "Description des flux de travail et des processus",
+    "Outils en cours d'utilisation",
+    "Données et documents internes",
+    "API et exigences d'intégration",
+    "Autorisations et structure org",
+    "Cadres ou spécifications existants",
+    "Lignes directrices de marque et UI",
+    "Droit, sécurité, conformité",
+    "Entretiens avec les utilisateurs et les opérateurs",
+    "Systèmes hérités",
+    "Indicateurs de succès et KPI",
+    "Plans d'expansion futurs"
+  ],
+  "useLabel": "UTILISATION CAS",
+  "useTitle": "Produits que nous pouvons construire.",
+  "useBadge": "Exemple types de construction",
+  "useCases": [
+    {
+      "t": "OPÉRATIONS PORTALES",
+      "d": "Opérations internes, gestion, approbation et portails de demande.\nLes flux de travail façonnés à votre processus."
+    },
+    {
+      "t": "SAINS DOUANIÈRES",
+      "d": "SaaS pour un groupe d'utilisateurs ou un workflow spécifique.\nAbonnement, permissions et admin inclus."
+    },
+    {
+      "t": "OUTIL CLIENT / PARTENAIRE",
+      "d": "Portails pour clients, partenaires ou fournisseurs.\nOrdres, enquête, statut, partage de documents."
+    },
+    {
+      "t": "DONNÉES DASHBOARD",
+      "d": "Tableau de bord qui unifie les données dispersées.\nKPI, rapport et structure d'alerte."
+    },
+    {
+      "t": "PRODUIT DE TRAVAIL",
+      "d": "Produits centrés sur l'approbation, l'examen, l'affectation, le statut.\nPeut être relié à l'automatisation."
+    },
+    {
+      "t": "MARCHANDISES / PLATFORM",
+      "d": "Produits multi-utilisateurs et multi-rôles.\nListe, correspondance, règlement, admin."
+    },
+    {
+      "t": "OUTILS DE ZONE / MOBILE",
+      "d": "Champ-première application personnalisée ou web.\nDéconnecté et synchronisé envisagé."
+    },
+    {
+      "t": "REMPLACEMENT LÉGACY",
+      "d": "Remplacer les feuilles de calcul, les opérations manuelles ou les systèmes existants.\nConception de transition progressive."
+    }
+  ],
+  "flowLabel": "FLUX DE TRAVAIL EXEMPLES",
+  "flowTitle": "Du cadrage des problèmes à la livraison des produits",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DÉFINITION",
+      "d": "Définir le problème, les utilisateurs et les critères de réussite.\nAcceptez pourquoi un produit personnalisé est nécessaire.",
+      "examples": [
+        "Problème",
+        "Utilisateurs",
+        "ICR",
+        "Contraintes"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PORTÉE",
+      "d": "Portée des fonctionnalités de conception, UX, données, intégrations.\nSéparer la phase 1 de l'expansion.",
+      "examples": [
+        "Caractéristiques",
+        "Écrans",
+        "Données",
+        "Intégrations"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESCRIPTION",
+      "d": "Flux de conception, UI, structure d'information, autorisations.\nConfirmer les écrans de base et l'administration.",
+      "examples": [
+        "Débits",
+        "UI",
+        "Rôles",
+        "Administrateur"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BÂTIMENT",
+      "d": "Mettre en œuvre les caractéristiques essentielles et les intégrations.\nExaminer en phases avec rétroaction.",
+      "examples": [
+        "Frontière",
+        "Moteur",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DELIVRE",
+      "d": "Déployez, vérifiez, documentez et remettez.\nConnectez l'opération et le chemin d'expansion.",
+      "examples": [
+        "Déployer",
+        "Docteurs",
+        "Remise",
+        "Phase 2"
+      ]
+    }
+  ],
+  "reportLabel": "OUVERTURE",
+  "reportTitle": "Les produits livrables sont un produit opérationnel et des documents de support.",
+  "reportLead": "La composition varie selon la portée du projet. Voici les points communs.",
+  "reportMockStatus": "PRODUIT · SPEC",
+  "reportMockK": "CUSTOM PRODUCTSPÉCIFICATIONS",
+  "reportMockT": "Portée, modules, intégrations, jalons",
+  "reportItems": [
+    "Problème et objectifs",
+    "Sommaire de la portée",
+    "Carte utilisateur et rôle",
+    "Liste des caractéristiques",
+    "UX / UI Aperçu",
+    "Données et intégration",
+    "Administrateur et autorisations",
+    "Plan d'étape",
+    "QA Liste de contrôle",
+    "Notes de retrait"
+  ],
+  "dashTitle": "Partager la portée et la structure du module sur une seule vue.",
+  "dashLead": "Les caractéristiques, les intégrations et les phases ensemble accélèrent l'accord de portée et construisent des discussions.",
+  "dashNote": "La composition et la répartition des modules varient selon l'objectif et le budget du projet.",
+  "dashMetrics": [
+    "Modules",
+    "Intégrations",
+    "Phases",
+    "Jalons"
+  ],
+  "dashFilters": [
+    "Tous",
+    "Noyau",
+    "Administrateur",
+    "Phase 2"
+  ],
+  "aiLabel": "ACCÉLÉRATION",
+  "aiTitle": "Automatisez la répétition.\nConcentrez-vous sur la conception et la construction.",
+  "aiLead": "La structuration des exigences, les ébauches de flux, l'échafaudage doc et les listes de contrôle QA peuvent être assistées par AI pour la vitesse, tandis que les gens se concentrent sur l'architecture, UX et l'implémentation de base.",
+  "aiExamples": [
+    "Exigences de structure et notes de conformité",
+    "Ébauche de flux et de listes d'écran",
+    "Organisez API et modèles de données",
+    "QA et listes de vérification de test",
+    "Ops et brouillons de doc à main",
+    "Comparer la portée et les scissions de phase"
+  ],
+  "aiNote": "Les décisions finales en matière de portée, de conception et de qualité sont confirmées par votre équipe de projet.",
+  "delLabel": "LIVRABLES",
+  "delTitle": "Ce que vous recevez lorsque le projet complète",
+  "delLead": "Nous livrons les articles ci-dessous au besoin pour votre portée.",
+  "deliverables": [
+    "Produit personnalisé (Web / App / Portal)",
+    "Console d'administration",
+    "UX / UI Fichiers de conception",
+    "Documentation technique",
+    "API & Docs d'intégration",
+    "Configuration de déploiement",
+    "QA Rapport",
+    "Guide de sortie & ops",
+    "Phase 2 Carte routière (facultative)"
+  ],
+  "processLabel": "PROCESSUS",
+  "processTitle": "Du cadrage à la remise.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DÉCOUVREMENT",
+      "d": "Confirmer le problème, les utilisateurs, le processus actuel, les contraintes.\nComprendre les critères de réussite et la structure de décision.",
+      "examples": [
+        "Problème",
+        "Utilisateurs",
+        "actuel",
+        "ICR"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PORTÉE",
+      "d": "Définir la fonctionnalité, l'écran, les données, la portée d'intégration.\nAccepter la phase 1 / 2, l'échéancier et le budget.",
+      "examples": [
+        "Caractéristiques",
+        "Portée",
+        "Intégrations",
+        "Chronologie"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESCRIPTION",
+      "d": "Flux de conception, UI, structure d'information, autorisations.\nConfirmer les écrans de base et la structure d'administration.",
+      "examples": [
+        "Débits",
+        "UI",
+        "Administrateur",
+        "Révision"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BÂTIMENT",
+      "d": "Mettre en œuvre frontend, backend, intégrations.\nDémo et examen par étapes.",
+      "examples": [
+        "Noyau",
+        "API",
+        "Intégrations",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "",
+      "d": "Vérifier les fonctionnalités, les flux, les permissions, les intégrations.\nVérifier les scénarios opérationnels.",
+      "examples": [
+        "QA",
+        "UAT",
+        "corrige",
+        "Signature"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "DÉPLOIEMENT",
+      "d": "Préparer l'environnement et libérer.\nConfirmer les chemins de surveillance et de recul.",
+      "examples": [
+        "Mise en scène",
+        "Produit",
+        "Accès",
+        "Moniteur"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "MAINTENANT",
+      "d": "Documenter, guider les opérations et les distribuer.\nConnectez le chemin d'expansion et de maintenance.",
+      "examples": [
+        "Docteurs",
+        "Formation",
+        "Appui",
+        "Phase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "NIVEAUX DE PORTÉE",
+  "scopeTitle": "Comment penser à la complexité du projet.",
+  "scopeLead": "Pas un paquet fixe. La portée est définie par la taille du problème, les intégrations et la complexité des permissions.",
+  "scopes": [
+    {
+      "t": "PRODUIT FOCÉ",
+      "items": [
+        "Problème ou flux de travail de base unique",
+        "Utilisateurs et rôles limités",
+        "Écrans de base et admin",
+        "1-2 intégrations de base",
+        "Lancement de la phase 1"
+      ]
+    },
+    {
+      "t": "BÂTIMENT DOUANIER PLEIN",
+      "items": [
+        "Plusieurs modules, rôles, permissions",
+        "UX/UI entièrement personnalisé",
+        "entièrement personnalisé Structure de données multi-intégration",
+        "Opérations et fonctions d'audit",
+        "Docs et remise inclus"
+      ]
+    },
+    {
+      "t": "BÂTIMENT DE PLATFORME",
+      "items": [
+        "Plateforme ou structure du marché",
+        "Multi-locataires, règlement, admin",
+        "Complexe API et liens historiques",
+        "Expansion et design Phase 2",
+        "Ops à long terme et liaison de maintenance"
+      ]
+    }
+  ],
+  "timeLabel": "Échéancier",
+  "timeTitle": "Le calendrier dépend de la portée.",
+  "timeLead": "La durée varie selon le nombre de fonctionnalités, les intégrations, la profondeur de conception et la vitesse de décision.",
+  "timelines": [
+    {
+      "t": "Produit concentré",
+      "d": "Environ 4-8 semaines · varie"
+    },
+    {
+      "t": "Complete Custom Build",
+      "d": "Environ 8-16 semaines · varie"
+    },
+    {
+      "t": "Plate-forme Construction",
+      "d": "Environ 12+ semaines · personnalisé"
+    }
+  ],
+  "priceLabel": "PROJET COÛT",
+  "priceTitle": "Citation par projet.",
+  "priceName": "CUSTOM PRODUCT",
+  "priceValue": "Devis personnalisé",
+  "priceFactorsLabel": "Facteurs de tarification",
+  "priceFactors": [
+    "Portée — fonctionnalités, écrans, modules",
+    "Complexité — données, autorisations, logique",
+    "Calendrier — calendrier et ressourcement",
+    "Intégration — API, héritage, paiements",
+    "Profondeur de conception — UX/UI gamme",
+    "Type de plateforme — web, application, portail",
+    "Participation de l'équipe — décisions, UAT",
+    "Après le lancement — maintenance, extension"
+  ],
+  "priceNote": "Nous examinons la portée / complexité / chronologie / intégration, puis fournissons un devis. Pas de prix de menu fixe.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Foire aux questions",
+  "faqs": [
+    {
+      "q": "En quoi est-ce différent des paquets MVP, web ou app ?",
+      "a": "Les forfaits sont des services standard définis. CUSTOM PRODUCT est la conception et la construction personnalisées pour les besoins d'org, de workflow et d'intégration."
+    },
+    {
+      "q": "En quoi est-ce différent de l'étiquette blanche?",
+      "a": "La marque blanche adapte une fondation validée à votre marque et à vos modules. CUSTOM PRODUCT conçoit et construit le problème dès le début."
+    },
+    {
+      "q": "Comment les prix sont-ils fixés?",
+      "a": "Après avoir examiné les objectifs, la portée, la complexité, le calendrier et les intégrations, souvent par étapes."
+    },
+    {
+      "q": "La conception est-elle incluse? La conception",
+      "a": "UX/UI peut être incluse dans la portée. Les lignes directrices existantes en matière de marques ou de conception peuvent être utilisées lorsqu'elles sont disponibles."
+    },
+    {
+      "q": "Pouvez-vous vous intégrer aux systèmes existants?",
+      "a": "Oui. API, données, SSO, paiements, ERP/CRM, et d'autres besoins d'intégration peuvent être couverts et conçus."
+    },
+    {
+      "q": "Pouvez-vous soutenir la maintenance après le lancement?",
+      "a": "Oui. Phase 2, l'extension des fonctionnalités et le soutien opérationnel peuvent se poursuivre dans le cadre d'un accord séparé."
+    },
+    {
+      "q": "Comment la confidentialité est-elle traitée?",
+      "a": "Les matériaux ne sont utilisés que dans les limites convenues. NDA disponible au besoin."
+    }
+  ],
+  "finalLabel": "ÉTAT D'UN PROJET",
+  "finalTitle": "Commencez par le problème,\nPas le paquet.",
+  "finalLead": "Si vous avez un problème de workflow, des utilisateurs et des besoins d'intégration, dites-nous ce que vous essayez de résoudre. Nous allons confirmer la portée du produit personnalisé et construire une approche ensemble.",
+  "ctaFinalSecondary": "Afficher toutes les SOLUTIONS →",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

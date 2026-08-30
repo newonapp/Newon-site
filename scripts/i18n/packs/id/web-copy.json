@@ -1,0 +1,510 @@
+{
+  "seoTitle": "PENGEMBANGAN WEB | Newon Bisnis",
+  "metaDescription": "Situs web berkualitas tinggi untuk merek dan layanan — situs perusahaan, arahan, dan web produk mulai dari struktur hingga desain, pembuatan, dan peluncuran. Newon PENGEMBANGAN WEB.",
+  "crumbBusiness": "BISNIS",
+  "crumbServices": "LAYANAN",
+  "crumbBuild": "MEMBANGUN",
+  "crumbHere": "WEB",
+  "eyebrow": "PENGEMBANGAN WEB",
+  "subEyebrow": "MEMBANGUN",
+  "headline": "Web yang disempurnakan untuk\nmerek dan layanan.",
+  "lead": "Dari situs merek dan laman landas hingga web produk dan situs layanan — kami merancang dan membangun pengalaman digital yang sesuai dengan tujuan Anda. Arsitektur informasi, UI, implementasi responsif, SEO, koneksi penyelidikan, dan penerapan dalam satu jalur berkelanjutan.",
+  "ctaPrimary": "Pertanyaan proyek situs web →",
+  "ctaSecondary": "Lihat ruang lingkup ↓",
+  "meta": [
+    {
+      "k": "LAYANAN",
+      "v": "Pengembangan Web"
+    },
+    {
+      "k": "TERBAIK UNTUK",
+      "v": "Pembuatan web merek & layanan"
+    },
+    {
+      "k": "GARIS WAKTU",
+      "v": "Biasanya 2–5 minggu"
+    },
+    {
+      "k": "HARGA",
+      "v": "Mulai dari ₩700.000"
+    }
+  ],
+  "overviewLabel": "GAMBARAN UMUM",
+  "overviewTitle": "Anda memiliki situs.\nMereknya tidak ditampilkan.",
+  "overviewBody": [
+    "Banyak tim memiliki situs web, tetapi merek dan penawarannya tidak terbaca dalam satu pandangan. Tata letak seperti template, tampilan seluler yang rusak, dan jalur yang tidak pernah menjangkau pertanyaan atau konversi adalah hal biasa.",
+    "Situs web bukanlah tempat pembuangan informasi — ini adalah pengalaman yang membantu pengunjung memahami merek dan mengambil langkah berikutnya. Struktur, tipografi, spasi, CTA, tata letak responsif, dan SEO harus bekerja sama.",
+    "PENGEMBANGAN WEB dimulai dengan menentukan tujuan situs dan tindakan pengunjung. Kemudian kami merancang arsitektur informasi dan UI yang sesuai dengan merek, dan menghadirkan situs berkualitas tinggi termasuk pembuatan responsif, pengkabelan penyelidikan, dan peluncuran."
+  ],
+  "problemsLabel": "MASALAH",
+  "problemsTitle": "Bermanfaat ketika Anda menghadapi situasi ini.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "TIDAK ADA KEHADIRAN MEREK",
+      "d": "Anda memiliki situs tetapi merek dan layanannya tidak terbaca.\nTata letaknya terasa seperti templat yang perlu dibangun kembali."
+    },
+    {
+      "n": "02",
+      "t": "RUSAK SELULER",
+      "d": "Seluler terasa rusak atau sulit dipindai.\nStruktur responsif dan hierarki informasi perlu diatur ulang."
+    },
+    {
+      "n": "03",
+      "t": "TIDAK ADA JALUR KONVERSI",
+      "d": "Ceritanya berhenti di perkenalan — pengunjung tidak pernah menanyakan, melamar, atau menjelajah.\nAnda memerlukan desain alur konversi."
+    },
+    {
+      "n": "04",
+      "t": "KONTEN TERSEBAR",
+      "d": "Banyak halaman tetapi peran dan prioritasnya tidak jelas.\nArsitektur informasi perlu diatur."
+    },
+    {
+      "n": "05",
+      "t": "SITUS KELUAR",
+      "d": "Anda perlu memisahkan apa yang perlu dipertahankan dan apa yang harus dibangun kembali.\nDiperlukan pembaruan atau pembangunan kembali secara menyeluruh."
+    },
+    {
+      "n": "06",
+      "t": "PELUNCURAN DIBLOKIR",
+      "d": "Desain sudah ada tetapi implementasi, penerapan, atau koneksi domain terhenti.\nAnda memerlukan satu mitra selama peluncuran."
+    }
+  ],
+  "baLabel": "SEBELUM/SETELAH",
+  "baTitle": "Tempat pembuangan informasi vs\nsitus tempat membaca merek",
+  "beforeLabel": "SEBELUM",
+  "afterLabel": "SETELAH",
+  "before": [
+    "Tata letak seperti template dan nada tidak konsisten",
+    "Masalah tata letak dan keterbacaan di perangkat seluler",
+    "Aturan tombol dan bagian yang berbeda per halaman",
+    "Tidak ada jalan dari cerita menuju penyelidikan atau pertobatan"
+  ],
+  "after": [
+    "Tujuan dan tindakan pengunjung ditentukan terlebih dahulu",
+    "Arsitektur informasi dan UI yang sesuai dengan merek",
+    "Tata letak responsif dapat dibaca di desktop dan seluler",
+    "Permintaan, CTA, SEO, dan penerapan terhubung"
+  ],
+  "capsLabel": "KEMAMPUAN",
+  "capsTitle": "Kami menjalankan pembangunan web\nsebagai satu keterlibatan terstruktur.",
+  "caps": [
+    {
+      "t": "TUJUAN & IA",
+      "d": "Tentukan tujuan situs, peran halaman, dan prioritas konten.\nBangun struktur yang membuat pengunjung tetap berorientasi."
+    },
+    {
+      "t": "DESAIN UX / UI",
+      "d": "Cocokkan corak merek, tipografi, spasi, dan komponen.\nTerlihat seperti merek Anda — bukan tema."
+    },
+    {
+      "t": "BANGUNAN RESPONSIF",
+      "d": "Terapkan tata letak yang berlaku di seluruh perangkat utama.\nLindungi CTA inti dengan struktur yang mengutamakan seluler."
+    },
+    {
+      "t": "HALAMAN INTI",
+      "d": "Lengkapi beranda, tentang, layanan, pertanyaan — apa pun yang diperlukan oleh tujuan tersebut.\nSejajarkan bagian dan hierarki konten."
+    },
+    {
+      "t": "KABEL KONVERSI",
+      "d": "Kirimkan formulir, email, dan pertanyaan bisnis ke langkah nyata berikutnya.\nRancang CTA dan alur konversi."
+    },
+    {
+      "t": "SEO & META",
+      "d": "Sertakan pengaturan pencarian dan berbagi dasar — ​​judul, deskripsi, Open Graph.\nTetapkan meta dan struktur tingkat halaman."
+    },
+    {
+      "t": "CMS & OPS",
+      "d": "Bila diperlukan, buatlah struktur yang memungkinkan penyalinan dan pembaruan gambar di kemudian hari.\nCakupan CMS sesuai keinginan Anda dalam pengoperasiannya."
+    },
+    {
+      "t": "PENYEDIAAN & PELUNCURAN",
+      "d": "QA di seluruh browser dan perangkat, lalu terapkan.\nKirimkan koneksi domain dan catatan pengoperasian."
+    }
+  ],
+  "sourcesLabel": "INPUT PROYEK",
+  "sourcesTitle": "Kami menggabungkan masukan yang dibutuhkan proyek Anda.",
+  "sourcesNote": "Masukan aktual bervariasi berdasarkan situs yang ada, aset yang tersedia, dan materi merek.",
+  "sources": [
+    "Deskripsi merek dan layanan",
+    "Situs dan konten yang ada",
+    "Logo dan aset visual",
+    "Pedoman merek dan UI",
+    "Situs referensi dan tolok ukur",
+    "Persyaratan halaman dan menu",
+    "Tujuan penyelidikan dan konversi",
+    "SEO dan arah kata kunci",
+    "Struktur multibahasa",
+    "Hukum, privasi, persyaratan",
+    "Lingkungan hosting dan domain",
+    "Rencana ekspansi di masa depan"
+  ],
+  "useLabel": "KASUS PENGGUNAAN",
+  "useTitle": "Website yang bisa kami bangun.",
+  "useBadge": "Contoh jenis situs",
+  "useCases": [
+    {
+      "t": "SITUS PERUSAHAAN / STUDIO",
+      "d": "Web perusahaan yang jelas yang menjelaskan siapa Anda dan cara Anda bekerja."
+    },
+    {
+      "t": "SITUS MEREK",
+      "d": "Dunia dan nada menjadi yang pertama — ketika merek harus memimpin atas produk."
+    },
+    {
+      "t": "PENDAFTARAN LAYANAN",
+      "d": "Satu tawaran, satu cerita — berfokus pada nilai dan CTA."
+    },
+    {
+      "t": "PORTOFOLIO / WEB KASUS",
+      "d": "Pekerjaan dan proses disajikan dengan jelas dan persuasif."
+    },
+    {
+      "t": "PERTANYAAN / HUB PEKERJAAN",
+      "d": "Halaman hub yang berfokus pada kemitraan, karier, dan konversi."
+    },
+    {
+      "t": "WEB PRODUK",
+      "d": "Pengenalan layanan yang menghubungkan fitur, harga, dan pertanyaan."
+    },
+    {
+      "t": "SITUS MULTILINGUAL",
+      "d": "Web multibahasa dengan struktur bahasa dan peralihan UX."
+    },
+    {
+      "t": "PEMBARUAN SITUS",
+      "d": "Pembaruan memisahkan apa yang harus dipertahankan dan apa yang harus dibangun kembali."
+    }
+  ],
+  "flowLabel": "CONTOH ALUR KERJA",
+  "flowTitle": "Dari struktur hingga peluncuran",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINISI",
+      "d": "Menyelaraskan hasil — kisah merek, perolehan prospek, atau penjelasan produk.\nTentukan tindakan pengunjung dan kriteria keberhasilan.",
+      "examples": [
+        "Tujuan",
+        "Penonton",
+        "CTA",
+        "KPI"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRUKTUR",
+      "d": "Tetapkan peta halaman, bagian, dan kebutuhan konten.\nKonfirmasi arsitektur informasi dan navigasi.",
+      "examples": [
+        "Peta Situs",
+        "IA",
+        "Bagian",
+        "Konten"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESAIN",
+      "d": "Konfirmasikan layar utama, sistem visual, dan tipografi.\nSelaraskan nuansa merek dan aturan komponen.",
+      "examples": [
+        "UI",
+        "Ketik",
+        "Komponen",
+        "Ulasan"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "MEMBANGUN",
+      "d": "Terapkan web responsif dengan interaksi dan alur pertanyaan.\nSertakan SEO dan pengaturan meta.",
+      "examples": [
+        "Bagian depan",
+        "Responsif",
+        "Formulir",
+        "seo"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PELUNCURAN",
+      "d": "Pemeriksaan perangkat, penerapan, dan catatan pengoperasian.\nMendukung koneksi domain.",
+      "examples": [
+        "QA",
+        "Menyebarkan",
+        "Domain",
+        "penyerahan"
+      ]
+    }
+  ],
+  "reportLabel": "KELUARAN",
+  "reportTitle": "Hasil kerja adalah situs web yang dapat dioperasikan dan dokumen pendukung.",
+  "reportLead": "Komposisi bervariasi berdasarkan ruang lingkup proyek. Di bawah ini adalah item umum.",
+  "reportMockStatus": "WEB · STRUKTUR",
+  "reportMockK": "SPESIFIKASI SITUS WEB",
+  "reportMockT": "Halaman, bagian, alur konversi",
+  "reportItems": [
+    "Sasaran & Pemirsa Situs",
+    "Peta Situs / IA",
+    "Daftar Halaman & Bagian",
+    "Ikhtisar UX / UI",
+    "Breakpoint Responsif",
+    "Pengkabelan Formulir & CTA",
+    "SEO & Pengaturan Meta",
+    "CMS / Catatan Operasi",
+    "Daftar Periksa QA",
+    "Catatan Peluncuran & Penyerahan"
+  ],
+  "dashTitle": "Bagikan struktur situs dan cakupan halaman dalam satu tampilan.",
+  "dashLead": "Halaman, bagian, bahasa, dan integrasi bersama-sama mempercepat kesepakatan cakupan dan membangun diskusi.",
+  "dashNote": "Komposisi halaman dan rentang fitur bervariasi menurut tujuan situs dan anggaran.",
+  "dashMetrics": [
+    "Halaman",
+    "Bagian",
+    "Bahasa",
+    "Integrasi"
+  ],
+  "dashFilters": [
+    "Semua",
+    "Inti",
+    "Sub",
+    "Global"
+  ],
+  "aiLabel": "PERCEPATAN",
+  "aiTitle": "Otomatiskan pengulangan.\nFokus pada desain dan pembuatan.",
+  "aiLead": "Penataan konten, draf bagian, meta SEO, dan daftar periksa QA dapat dibantu oleh AI untuk kecepatan — sementara orang fokus pada IA, UI merek, dan implementasi inti.",
+  "aiExamples": [
+    "Halaman draf dan struktur bagian",
+    "Atur hierarki konten dan arah penyalinan",
+    "Draf judul dan deskripsi SEO",
+    "Daftar periksa QA yang responsif",
+    "Organisasi struktur multibahasa",
+    "Draf dokumen operasi dan serah terima"
+  ],
+  "aiNote": "Keputusan struktur akhir, desain, dan kualitas dikonfirmasi dengan tim proyek Anda.",
+  "delLabel": "PENGIRIMAN",
+  "delTitle": "Apa yang Anda terima ketika proyek selesai",
+  "delLead": "Kami mengirimkan item di bawah ini sesuai kebutuhan untuk cakupan Anda.",
+  "deliverables": [
+    {
+      "title": "Peta Situs / Dokumen IA",
+      "body": "Struktur situs dan peran halaman, dipetakan dengan jelas."
+    },
+    {
+      "title": "Layar Kunci yang Dirancang",
+      "body": "UX/UI untuk halaman yang paling penting."
+    },
+    {
+      "title": "Pembuatan Web Responsif",
+      "body": "Sebuah build yang tetap dapat dibaca di seluruh perangkat."
+    },
+    {
+      "title": "Koneksi Formulir & CTA",
+      "body": "Formulir dan CTA dihubungkan dengan tindakan nyata selanjutnya."
+    },
+    {
+      "title": "Pengaturan SEO Dasar",
+      "body": "Judul, deskripsi, dan meta berbagi dasar."
+    },
+    {
+      "title": "File Desain UX / UI",
+      "body": "File desain dan komponen utama."
+    },
+    {
+      "title": "Lingkungan yang Dikerahkan",
+      "body": "Situs yang diterapkan langsung dan siap diakses."
+    },
+    {
+      "title": "CMS Penyiapan (jika tercakup)",
+      "body": "Struktur edit konten saat disertakan dalam cakupan."
+    },
+    {
+      "title": "Panduan Peluncuran & Operasi",
+      "body": "Panduan singkat untuk peluncuran dan operasi yang sedang berlangsung."
+    }
+  ],
+  "processLabel": "PROSES",
+  "processTitle": "Dari definisi tujuan hingga peluncuran.",
+  "process": [
+    {
+      "n": "01",
+      "t": "PENEMUAN",
+      "d": "Konfirmasikan tujuan situs, pengunjung, aset saat ini, batasan.\nPahami kriteria keberhasilan dan sasaran konversi.",
+      "examples": [
+        "Tujuan",
+        "Penonton",
+        "Aset",
+        "KPI"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRUKTUR",
+      "d": "Tentukan peta halaman, bagian, dan kebutuhan konten.\nSetujui arsitektur informasi dan navigasi.",
+      "examples": [
+        "Peta Situs",
+        "IA",
+        "Bagian",
+        "Konten"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESAIN",
+      "d": "Konfirmasikan layar utama, sistem visual, tipografi.\nMenyelaraskan warna merek dan komponen.",
+      "examples": [
+        "UI",
+        "Ketik",
+        "Komponen",
+        "Ulasan"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "MEMBANGUN",
+      "d": "Terapkan penyelidikan web dan kawat yang responsif serta CTA.\nSertakan SEO, meta, dan interaksi.",
+      "examples": [
+        "Bagian depan",
+        "Formulir",
+        "seo",
+        "Responsif"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "QA",
+      "d": "Verifikasi tata letak dan alur di seluruh browser dan perangkat.\nPeriksa jalur konversi dan aksesibilitas.",
+      "examples": [
+        "Desktop",
+        "Seluler",
+        "Formulir",
+        "Perbaikan"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "PELUNCURAN",
+      "d": "Terapkan dan sambungkan domain.\nMemberikan panduan pengoperasian dan pembaruan konten.",
+      "examples": [
+        "Menyebarkan",
+        "Domain",
+        "Akses",
+        "Panduan"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "PENYERAHAN",
+      "d": "Kirimkan dokumen dan panduan pengoperasian.\nHubungkan jalur untuk halaman dan fitur berikutnya.",
+      "examples": [
+        "dokumen",
+        "<<<BARU KEEP000>>>",
+        "Dukungan",
+        "Fase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "TINGKAT RUANG LINGKUP",
+  "scopeTitle": "Bagaimana memikirkan kompleksitas proyek web.",
+  "scopeLead": "Bukan paket tetap. Cakupan ditentukan berdasarkan jumlah halaman, kedalaman desain, dan jangkauan multibahasa atau integrasi.",
+  "scopes": [
+    {
+      "t": "HALAMAN TUNGGAL",
+      "items": [
+        "Halaman arahan atau kampanye tunggal",
+        "5–8 bagian inti",
+        "Implementasi yang responsif",
+        "Pengkabelan formulir dan CTA",
+        "SEO dasar dan terapkan"
+      ]
+    },
+    {
+      "t": "SITUS MULTI HALAMAN",
+      "items": [
+        "Beranda, tentang, layanan, pertanyaan — banyak halaman",
+        "UI khusus yang sesuai merek",
+        "Arsitektur informasi dan navigasi",
+        "Koneksi penyelidikan dan konversi",
+        "SEO, penerapan, dukungan domain"
+      ]
+    },
+    {
+      "t": "WEB KHUSUS",
+      "items": [
+        "Multibahasa, CMS, integrasi",
+        "IA kompleks dan fitur khusus",
+        "Pembaruan dan migrasi",
+        "Ekspansi dan desain Tahap 2",
+        "Dicakup secara terpisah"
+      ]
+    }
+  ],
+  "timeLabel": "GARIS WAKTU",
+  "timeTitle": "Garis waktu tergantung pada ruang lingkup.",
+  "timeLead": "Durasi bervariasi berdasarkan jumlah halaman, kedalaman desain, kesiapan konten, dan penyertaan multibahasa atau integrasi.",
+  "timelines": [
+    {
+      "t": "Satu halaman",
+      "d": "Sekitar 2 minggu"
+    },
+    {
+      "t": "Situs multi-halaman",
+      "d": "Sekitar 3–5 minggu"
+    },
+    {
+      "t": "Adat",
+      "d": "Dicakup secara terpisah"
+    }
+  ],
+  "priceLabel": "BIAYA PROYEK",
+  "priceTitle": "Kami hanya mengutip cakupan yang Anda butuhkan.",
+  "priceName": "PENGEMBANGAN WEB",
+  "priceValue": "Mulai dari ₩700.000",
+  "priceFactorsLabel": "Faktor harga",
+  "priceFactors": [
+    "Cakupan — jumlah halaman dan bagian",
+    "Kedalaman desain — rentang UX/UI",
+    "Timeline — jadwal dan sumber daya",
+    "Konten — kesiapan salinan dan aset",
+    "Bahasa — struktur multibahasa",
+    "Integrasi — formulir, CRM, API",
+    "CMS — operasi dan cakupan admin",
+    "Pembaruan — migrasi situs yang ada"
+  ],
+  "priceNote": "Kami meninjau jumlah halaman, cakupan, kedalaman desain, dan garis waktu, lalu memberikan penawaran. Jumlah akhir dikonfirmasi setelah kunci cakupan.",
+  "faqLabel": "Pertanyaan Umum",
+  "faqTitle": "Pertanyaan yang sering diajukan",
+  "faqs": [
+    {
+      "q": "Apakah Anda menulis salinan dan memberikan gambar?",
+      "a": "Kami membantu dengan struktur dan arahan rancangan. Bahasa dan aset merek akhir selaras dengan tim Anda."
+    },
+    {
+      "q": "Bisakah Anda memperbarui situs yang sudah ada?",
+      "a": "Ya. Kami memisahkan apa yang harus dipertahankan dan apa yang harus dibangun kembali."
+    },
+    {
+      "q": "Apakah CMS disertakan?",
+      "a": "Hanya jika diperlukan. Kami menyesuaikan dengan cara Anda ingin mengoperasikan situs ini."
+    },
+    {
+      "q": "Apakah Anda mendukung situs multibahasa?",
+      "a": "Ya. Struktur bahasa dan peralihan UX adalah bagian dari desain."
+    },
+    {
+      "q": "Bagaimana dengan hostingnya?",
+      "a": "Kami merekomendasikan pendekatan penerapan yang sesuai dengan tujuan dan membantu menghubungkannya."
+    },
+    {
+      "q": "Apa bedanya dengan MVP atau landing?",
+      "a": "PENGEMBANGAN WEB berfokus pada situs merek dan layanan kelas atas. MVP produk yang berfungsi atau arahan kampanye tunggal mungkin lebih cocok dengan layanan MVP atau LANDING."
+    },
+    {
+      "q": "Bagaimana kerahasiaan ditangani?",
+      "a": "Bahan digunakan hanya dalam lingkup yang disepakati. NDA tersedia bila diperlukan."
+    }
+  ],
+  "finalLabel": "MULAI PROYEK",
+  "finalTitle": "Bangun situs web\ntempat merek terbaca dengan jelas.",
+  "finalLead": "Beri tahu kami jenis situs dan apa yang sudah Anda miliki. Kami akan mengonfirmasi cakupan dan struktur web, merancang, dan membangun pendekatan bersama.",
+  "ctaFinalSecondary": "Lihat semua MEMBANGUN →",
+  "ctaFinalSecondaryHref": "../build/"
+}

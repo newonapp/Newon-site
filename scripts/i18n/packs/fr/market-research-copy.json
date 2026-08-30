@@ -1,0 +1,534 @@
+{
+  "seoTitle": "RECHERCHE DE MARCHÉ | Affaires Newon",
+  "metaDescription": "Recherchez la structure du marché, la demande et le contexte concurrentiel — livré sous forme de brief et de carte du marché que votre équipe peut exploiter. RECHERCHE DE MARCHÉ Newon.",
+  "crumbBusiness": "ENTREPRISE",
+  "crumbServices": "SERVICES",
+  "crumbResearch": "RECHERCHE",
+  "crumbHere": "RECHERCHE DE MARCHÉ",
+  "eyebrow": "RECHERCHE DE MARCHÉ",
+  "subEyebrow": "RECHERCHE",
+  "headline": "Lire le marché\n par des preuves, pas par des suppositions.",
+  "lead": "Nous recherchons la structure du marché, la demande, la concurrence et les signaux de changement — puis nous organisons les preuves dans un seul rapport de recherche que votre équipe peut utiliser pour prendre une décision.",
+  "ctaPrimary": "Demande de recherche de marché →",
+  "ctaSecondary": "Voir le flux de recherche ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Recherche de marché"
+    },
+    {
+      "k": "IDÉAL POUR",
+      "v": "Revue d’entrée, d’expansion et de positionnement"
+    },
+    {
+      "k": "CHRONOLOGIE",
+      "v": "Généralement 1 à 3 semaines"
+    },
+    {
+      "k": "PRIX",
+      "v": "À partir de ₩300,000"
+    }
+  ],
+  "overviewLabel": "APERÇU",
+  "overviewTitle": "Beaucoup d’informations.\nPas assez de critères partagés.",
+  "overviewBody": [
+    "Lors de l’évaluation d’un nouveau marché, d’une catégorie ou d’un public, le matériel n’est rarement le goulot d’étranglement. La partie la plus difficile est de s’accorder sur la structure, les priorités et ce qui compte comme preuve.",
+    "Les rapports sectoriels, les actualités, les rapports financiers des concurrents, les avis d’applications, les signaux communautaires et les statistiques publiques offrent chacun un angle différent — mais rarement sous une forme permettant aux équipes de décider lors de la même réunion.",
+    "LA RECHERCHE DE MARCHÉ commence par définir ce que vous devez savoir pour décider. Ensuite, nous collectons, comparons et structurons les sources dans une carte du marché, des zones d'opportunité et des implications dans un seul brief."
+  ],
+  "problemsLabel": "PROBLÈMES",
+  "problemsTitle": "Utile lorsque vous êtes confronté à ces situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "ENTRÉE SUR LE MARCHÉ",
+      "d": "Vous avez besoin d'une vision partagée de la taille et de la structure du marché\navant d'entrer dans un nouveau pays, une nouvelle catégorie ou un nouveau public."
+    },
+    {
+      "n": "02",
+      "t": "INFORMATIONS ÉPARSES",
+      "d": "Il y a beaucoup de matériel mais pas de carte claire des segments, des acteurs ou des opportunités.\nLes mêmes questions se répètent à chaque réunion."
+    },
+    {
+      "n": "03",
+      "t": "CONTEXTE CONCURRENTIEL",
+      "d": "Trop de concurrents et de produits de substitution pour comparer leur positionnement en un coup d'œil.\nVous avez besoin de contexte sur qui est fort où."
+    },
+    {
+      "n": "04",
+      "t": "CARTE DES OPPORTUNITÉS",
+      "d": "Vous voyez de nombreux chemins pour entrer, vous développer ou vous différencier\nmais il vous manque des preuves pour les prioriser."
+    },
+    {
+      "n": "05",
+      "t": "ALIGNEMENT DES PARTIES PRENANTES",
+      "d": "Les équipes, les investisseurs ou les partenaires ont besoin de la même vision du marché.\nVous avez besoin d'un résumé interne que tout le monde peut consulter."
+    },
+    {
+      "n": "06",
+      "t": "ORIENTATION DU PRODUIT",
+      "d": "Avant les décisions concernant le MVP, la feuille de route ou les prix,\nvous avez d'abord besoin du contexte du marché et des signaux de demande."
+    }
+  ],
+  "baLabel": "AVANT / APRÈS",
+  "baTitle": "Décisions basées sur l'intuition vs\ncompréhension structurée du marché",
+  "beforeLabel": "AVANT",
+  "afterLabel": "APRÈS",
+  "before": [
+    "Chacun collecte les sources séparément",
+    "La taille du marché, la concurrence et les opportunités changent au fil des conversations",
+    "Les mêmes questions se répètent sans conclusion documentée",
+    "Les conclusions ne sont pas reliées à la prochaine validation ou action"
+  ],
+  "after": [
+    "Les questions et le périmètre de la recherche sont convenus en premier",
+    "Les segments, les acteurs et les opportunités sont cartographiés",
+    "Un brief de recherche partagé pour l'équipe",
+    "Implications liées aux actions suivantes"
+  ],
+  "capsLabel": "CAPACITÉS",
+  "capsTitle": "Nous structurons la recherche\nvos besoins en matière de décisions sur le marché.",
+  "caps": [
+    {
+      "t": "DÉFINITION DU PÉRIMÈTRE",
+      "d": "Définir les questions et les limites que la décision nécessite.\nClarifier ce que vous devez apprendre et ce qui est hors de portée.",
+      "examples": [
+        "Questions principales",
+        "Portée du marché",
+        "Nombre de concurrents",
+        "Format du livrable"
+      ]
+    },
+    {
+      "t": "RECHERCHE DOCUMENTAIRE",
+      "d": "Collecter systématiquement des sources secondaires et des données publiques.\nExaminer ensemble la qualité et la crédibilité des sources.",
+      "examples": [
+        "Rapports sectoriels",
+        "Statistiques publiques",
+        "Actualités & IR",
+        "Avis & communauté"
+      ]
+    },
+    {
+      "t": "STRUCTURE DU MARCHÉ",
+      "d": "Organiser le marché par segments, acteurs et flux de valeur.\nStructurer qui joue où et comment le marché est divisé.",
+      "examples": [
+        "Carte des segments",
+        "Chaîne de valeur",
+        "Demande et offre",
+        "Structure du canal"
+      ]
+    },
+    {
+      "t": "PAYSAGE COMPÉTITIF",
+      "d": "Comparer les principaux concurrents et substituts.\nRésumer les différences en termes de caractéristiques, prix, communication et cible.",
+      "examples": [
+        "Carte des acteurs",
+        "Comparaison de positionnement",
+        "Différenciation",
+        "Substituts"
+      ]
+    },
+    {
+      "t": "CARTOGRAPHIE DES OPPORTUNITÉS",
+      "d": "Structurer les zones pour l'entrée, l'expansion ou la différenciation.\nDocumenter les preuves et hypothèses derrière chaque opportunité.",
+      "examples": [
+        "Besoins non satisfaits",
+        "Espace blanc",
+        "Barrières à l'entrée",
+        "Priorité"
+      ]
+    },
+    {
+      "t": "SIGNES DES TENDANCES",
+      "d": "Capturer les évolutions de l'industrie, des consommateurs et de la technologie avec contexte.\nSéparer le bruit à court terme du changement structurel.",
+      "examples": [
+        "Réglementation",
+        "Changement de comportement",
+        "Adoption de la technologie",
+        "Tarification et emballage"
+      ]
+    },
+    {
+      "t": "IMPLICATIONS",
+      "d": "Reliez les conclusions au produit, à l'entreprise et à la stratégie.\nPassez de l'insight à ce que cela signifie que vous devriez faire.",
+      "examples": [
+        "Positionnement",
+        "Priorité des fonctionnalités",
+        "Go / No-go",
+        "Risque"
+      ]
+    },
+    {
+      "t": "ACTIONS À ENTREPRENDRE",
+      "d": "Suggérez les prochaines étapes de validation et de décision.\nSignalez où des interviews, des expériences ou des recherches plus approfondies sont nécessaires.",
+      "examples": [
+        "Questions de validation",
+        "Cibles des interviews",
+        "Tester les hypothèses",
+        "Portée du suivi"
+      ]
+    }
+  ],
+  "sourcesLabel": "SOURCES DE RECHERCHE",
+  "sourcesTitle": "Nous combinons les types de sources dont votre objectif a besoin.",
+  "sourcesNote": "Les sources réelles varient selon la portée, le marché et l’accessibilité. Nous confirmons l’adéquation avant de commencer.",
+  "sources": [
+    "Rapports de l'industrie",
+    "Statistiques Publiques",
+    "Dépôts d'Entreprise",
+    "Actualités & Articles",
+    "Avis sur les Produits",
+    "App Store / Place de Marché",
+    "Réseaux Sociaux & Communauté",
+    "Brevets & Dépôts",
+    "Publications Commerciales",
+    "Données Internes",
+    "Interviews d'Experts",
+    "Sites Web de Concurrents"
+  ],
+  "useLabel": "CAS D'UTILISATION",
+  "useTitle": "Questions auxquelles nous pouvons aider à répondre.",
+  "useBadge": "Exemples de sujets de recherche",
+  "useCases": [
+    {
+      "t": "NOUVELLE ENTRÉE SUR LE MARCHÉ",
+      "d": "Vérifiez la structure, les signaux de demande et les barrières d'entrée\navant d'entrer sur un marché ou une catégorie."
+    },
+    {
+      "t": "PAYSAGE DE CATÉGORIE",
+      "d": "Cartographiez qui joue où et comment le marché est divisé.\nVoyez les rôles et les relations des segments en un coup d'œil."
+    },
+    {
+      "t": "CONTEXTE DES CONCURRENTS",
+      "d": "Comparer rapidement les principaux acteurs et les différences de positionnement.\nRésumer les fonctionnalités, les prix, la communication et la cible."
+    },
+    {
+      "t": "CONTEXTE DES TARIFS",
+      "d": "Résumé des gammes de prix, des offres et du contexte du modèle de revenus.\nConstruire des preuves pour votre stratégie tarifaire."
+    },
+    {
+      "t": "SEGMENTS DE CLIENTS",
+      "d": "Clarifier à qui le marché s'adresse du point de vue des segments.\nStructurer les différences en matière de besoins, de comportement et de critères d'achat."
+    },
+    {
+      "t": "BRÈVE SUR LES TENDANCES",
+      "d": "Résumez les récents changements et ce qu'ils signifient pour votre produit ou votre entreprise.\nSéparez les problèmes à court terme du changement structurel."
+    },
+    {
+      "t": "BRÈVE POUR INVESTISSEURS",
+      "d": "Un résumé du marché pour les parties prenantes internes ou externes.\nIncluez les preuves clés et les risques ensemble."
+    },
+    {
+      "t": "ENTRÉE SUR LE PÉRIMÈTRE DU PRODUIT",
+      "d": "Fournir le contexte du marché avant la définition du MVP ou de la feuille de route.\nUtiliser comme preuve de ce qu'il faut construire en premier. "
+    }
+  ],
+  "flowLabel": "EXEMPLE DE FLUX DE TRAVAIL",
+  "flowTitle": "Des questions à un brief de recherche ",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DÉFINIR",
+      "d": "Définir les questions de recherche et le périmètre.\nPréciser quelles décisions nécessitent quelles informations et ce qui est exclu. ",
+      "examples": [
+        "Questions principales",
+        "Portée du marché",
+        "Concurrents ",
+        "Livrables "
+      ]
+    },
+    {
+      "n": "02",
+      "t": "COLLECTER",
+      "d": "Rassembler les sources et données pertinentes.\nExaminer ensemble le matériel public et interne. ",
+      "examples": [
+        "Rapports ",
+        "Statistiques ",
+        "Avis",
+        "Relations investisseurs et actualités "
+      ]
+    },
+    {
+      "n": "03",
+      "t": "STRUCTURE",
+      "d": "Organiser par marché, concurrence et demande.\nRendre les informations dispersées comparables. ",
+      "examples": [
+        "Segments ",
+        "Acteurs ",
+        "Tarification ",
+        "Canaux"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "SYNTHÉTISER ",
+      "d": "Extraire les principales conclusions et opportunités.\nRelier ce qui est important et pourquoi c'est important. ",
+      "examples": [
+        "Domaines d'opportunité ",
+        "Risques",
+        "Différenciation",
+        "Lacunes"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LIVRAISON",
+      "d": "Fournir un résumé, une carte et les implications.\nFormat pour utilisation immédiate par l'équipe.",
+      "examples": [
+        "Résumé Exécutif",
+        "Carte du Marché",
+        "Prochaines Étapes"
+      ]
+    }
+  ],
+  "reportLabel": "PRODUCTION",
+  "reportTitle": "Livrables structurés pour les décisions.",
+  "reportLead": "La composition varie selon l'objectif du projet. Ci-dessous les sections courantes — nous incluons seulement ce que le brief exige.",
+  "reportMockStatus": "MARCHÉ · BROUILLON",
+  "reportMockK": "RÉSUMÉ DU MARCHÉ",
+  "reportMockT": "Résumé de la catégorie et du paysage concurrentiel",
+  "reportItems": [
+    "Résumé Exécutif",
+    "Carte du Marché",
+    "Aperçu du Segment",
+    "Paysage Concurrentiel",
+    "Domaines d'Opportunité",
+    "Signaux de Tendances",
+    "Principaux Risques",
+    "Implications",
+    "Prochaines Étapes Recommandées",
+    "Notes Sources"
+  ],
+  "dashTitle": "Partager la structure du marché en une seule vue.",
+  "dashLead": "Lorsque c'est utile, nous incluons une carte du marché montrant les segments, les acteurs et les zones d'opportunité — afin que les discussions avancent plus rapidement avec le brief.",
+  "dashNote": "Une carte du marché n'est pas identique pour chaque projet — la portée et l'objectif définissent le livrable.",
+  "dashMetrics": [
+    "Segments ",
+    "Acteurs ",
+    "Opportunités",
+    "Tendances",
+    "Risques",
+    "Priorité"
+  ],
+  "dashFilters": [
+    "Tous",
+    "B2B",
+    "B2C",
+    "Entreprise"
+  ],
+  "aiLabel": "SYNTHÈSE",
+  "aiTitle": "À partir de grands ensembles de sources\njusqu'à ce qui compte.",
+  "aiLead": "Lorsqu'il y a beaucoup de rapports, de nouvelles, de critiques et de matériel concurrent, nous résumons, classons et comparons selon les angles dont vous avez besoin. L'interprétation et les décisions finales sont examinées ensemble avec vous.",
+  "aiExamples": [
+    "Comparaison des messages et du positionnement des concurrents",
+    "Résumé des motifs de révision et de feedback",
+    "Digest des actualités et des enjeux de l'industrie",
+    "Résumé des besoins et des douleurs du segment",
+    "Priorisation des opportunités",
+    "Brouillon de brief et plan de présentation"
+  ],
+  "aiNote": "L'interprétation et les décisions finales sont examinées avec vous. Les résumés IA sont du matériel de référence — les appels importants doivent toujours se référer aux sources originales.",
+  "delLabel": "LIVRABLES",
+  "delTitle": "Ce que vous recevez après le projet",
+  "delLead": "Selon la portée, nous livrons les éléments dont vous avez besoin à partir de la liste ci-dessous. Tous les éléments ne sont pas inclus dans chaque projet.",
+  "deliverables": [
+    "Brief de recherche",
+    "Carte du Marché",
+    "Résumé concurrentiel",
+    "Aperçu des opportunités",
+    "Notes sur les tendances",
+    "Implications et recommandations",
+    "Annexe des sources",
+    "Résumé de la présentation",
+    "Questions de suivi"
+  ],
+  "processLabel": "PROCESSUS",
+  "processTitle": "De la définition de la question à la livraison.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DÉCOUVERTE",
+      "d": "Confirmer le contexte de la décision et le but de la recherche.\nComprendre ce que vous décidez et qui utilisera le résultat.",
+      "examples": [
+        "Objectif",
+        "Parties prenantes",
+        "Chronologie",
+        "Contraintes"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PORTÉE",
+      "d": "Définir les questions, le périmètre et le format des livrables.\nSe mettre d'accord sur ce qui est inclus, ce qui est exclu et la priorité.",
+      "examples": [
+        "Questions principales",
+        "Portée du marché",
+        "Concurrents ",
+        "Format"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "RECHERCHE",
+      "d": "Collecter et examiner les sources et données pertinentes.\nVérifier la qualité et la crédibilité des sources.",
+      "examples": [
+        "Rapports ",
+        "Statistiques ",
+        "Avis",
+        "IR"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ANALYSE",
+      "d": "Structurer les modèles, différences et opportunités.\nOrganiser par segment, concurrence et demande.",
+      "examples": [
+        "Segments ",
+        "Positionnement",
+        "Opportunité",
+        "Risque"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ÉBAUCHE",
+      "d": "Rédiger le résumé et la carte du marché.\nConstruire l'épine dorsale des conclusions et implications.",
+      "examples": [
+        "Résumé",
+        "Carte du Marché",
+        "Implications"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "REVUE",
+      "d": "Examiner ensemble les principales conclusions et interprétation.\nAjuster les lacunes, hypothèses et priorités.",
+      "examples": [
+        "Retour",
+        "Affinement",
+        "Priorité",
+        "Go/No-go"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "LIVRAISON",
+      "d": "Remettre les documents finaux et les implications.\nConnecter à la prochaine validation et action. ",
+      "examples": [
+        "Résumé final",
+        "Carte",
+        "Prochaines Étapes"
+      ]
+    }
+  ],
+  "scopeLabel": "NIVEAUX DE PORTÉE",
+  "scopeTitle": "Un guide de la complexité du projet.",
+  "scopeLead": "Pas de packages fixes — nous définissons le périmètre et faisons un devis en fonction de votre objectif et de la profondeur nécessaire.",
+  "scopes": [
+    {
+      "t": "BRIEF MARCHÉ FOCALISÉ",
+      "items": [
+        "Marché ou catégorie unique",
+        "3–5 questions principales",
+        "Focus sur la recherche documentaire",
+        "Résumé du brief (~10–15 pages)",
+        "Points d’opportunité et de risque"
+      ]
+    },
+    {
+      "t": "CARTE DU MARCHÉ & DE LA CONCURRENCE",
+      "items": [
+        "Carte des segments et des acteurs",
+        "Comparer 5–10 concurrents clés",
+        "Résumé du positionnement, des prix et du message",
+        "Domaines d’opportunité et implications",
+        "Résumé de présentation optionnel"
+      ]
+    },
+    {
+      "t": "RECHERCHE PERSONNALISÉE",
+      "items": [
+        "Marchés ou catégories multiples",
+        "Recherche primaire (entretiens/enquêtes) facultative",
+        "Analyse approfondie des tendances, de la réglementation et des risques",
+        "Présentation personnalisée",
+        "Validation de suivi ou lien BUILD"
+      ]
+    }
+  ],
+  "timeLabel": "CHRONOLOGIE",
+  "timeTitle": "Le calendrier dépend de l'étendue.",
+  "timeLead": "La profondeur, l'accès aux sources, le nombre de concurrents et l'inclusion des entretiens peuvent modifier la durée.",
+  "timelines": [
+    {
+      "t": "Résumé de marché ciblé",
+      "d": "Environ 1 à 2 semaines"
+    },
+    {
+      "t": "Carte du marché et des concurrents",
+      "d": "Environ 2 à 3 semaines"
+    },
+    {
+      "t": "Recherche personnalisée",
+      "d": "Délimité séparément"
+    }
+  ],
+  "priceLabel": "COÛT DU PROJET",
+  "priceTitle": "Nous facturons uniquement l'étendue dont vous avez besoin.",
+  "priceName": "RECHERCHE DE MARCHÉ",
+  "priceValue": "À partir de ₩300,000",
+  "priceFactorsLabel": "Ce qui détermine le prix",
+  "priceFactors": [
+    "Nombre de questions de recherche",
+    "Portée du marché ou de la catégorie",
+    "Nombre de concurrents / acteurs",
+    "Profondeur de la recherche",
+    "Inclusion de recherche primaire",
+    "Accès aux sources et rapports payants",
+    "Format et longueur du livrable",
+    "Délai urgent"
+  ],
+  "priceNote": "Le devis final est confirmé après avoir examiné les objectifs, la portée et le calendrier.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Questions fréquemment posées",
+  "faqs": [
+    {
+      "q": "Quels marchés et industries pouvez-vous rechercher ?",
+      "a": "B2B, B2C, SaaS, commerce, plateformes, services, fabrication, et plus encore — selon l'objectif et les sources accessibles. Nous confirmons l'adéquation au marché et l'accès aux sources avant de commencer."
+    },
+    {
+      "q": "Cela inclut-il la recherche primaire ?",
+      "a": "Par défaut, il s'agit de recherches documentaires. Les entretiens avec les utilisateurs ou l'industrie et la conception d'enquêtes peuvent être ajoutés comme portée séparée si nécessaire."
+    },
+    {
+      "q": "Quel format prennent les livrables ?",
+      "a": "Document d'abord : Résumé exécutif, Carte du marché, Résumé des concurrents, Implications, et autres sections adaptées à votre objectif. Des résumés sous forme de présentation peuvent être inclus."
+    },
+    {
+      "q": "Pouvez-vous acheter des rapports industriels payants ?",
+      "a": "Oui, lorsque c'est nécessaire. Les coûts des sources payantes sont évalués séparément et confirmés avec vous avant l'achat."
+    },
+    {
+      "q": "Pouvez-vous utiliser nos données internes ?",
+      "a": "Oui, dans la limite de ce que vous pouvez partager. Sinon, nous travaillons à partir de sources publiques. "
+    },
+    {
+      "q": "En quoi cela diffère-t-il de l'ANALYSE DE LA CONCURRENCE ?",
+      "a": "L'ÉTUDE DE MARCHÉ examine la structure globale du marché et les opportunités. Si la comparaison avec les concurrents est le besoin principal, l'ANALYSE DES CONCURRENTS peut être plus appropriée — les périmètres peuvent être liés lorsque c'est utile."
+    },
+    {
+      "q": "Cela peut-il se connecter à BUILD ou MVP ?",
+      "a": "Oui. La recherche peut alimenter le périmètre du produit, la priorité des fonctionnalités et les décisions Aller/Ne pas aller."
+    },
+    {
+      "q": "Comment la confidentialité est-elle gérée ?",
+      "a": "Nous travaillons uniquement dans le périmètre convenu. Un NDA peut être signé si nécessaire."
+    }
+  ],
+  "finalLabel": "DÉMARRER UN PROJET",
+  "finalTitle": "Ne devinez pas le marché —\ncartographiez-le d'abord.",
+  "finalLead": "Indiquez-nous le marché, la catégorie ou le contexte concurrentiel que vous évaluez. Nous confirmerons ce qu'il faut rechercher et comment structurer le résultat.",
+  "ctaFinalSecondary": "Voir toutes les RECHERCHES →",
+  "ctaFinalSecondaryHref": "../research/"
+}

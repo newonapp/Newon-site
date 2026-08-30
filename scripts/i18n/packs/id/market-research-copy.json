@@ -1,0 +1,534 @@
+{
+  "seoTitle": "RISET PASAR | Newon Bisnis",
+  "metaDescription": "Teliti struktur pasar, permintaan, dan konteks persaingan — disampaikan sebagai peta pasar singkat dan dapat ditindaklanjuti oleh tim Anda. Newon PENELITIAN PASAR.",
+  "crumbBusiness": "BISNIS",
+  "crumbServices": "LAYANAN",
+  "crumbResearch": "PENELITIAN",
+  "crumbHere": "PENELITIAN PASAR",
+  "eyebrow": "PENELITIAN PASAR",
+  "subEyebrow": "PENELITIAN",
+  "headline": "Baca pasar\ndengan bukti, bukan dugaan.",
+  "lead": "Kami meneliti struktur pasar, permintaan, persaingan, dan sinyal perubahan — lalu menyusun bukti-bukti tersebut ke dalam satu ringkasan penelitian yang dapat digunakan oleh tim Anda untuk mengambil keputusan.",
+  "ctaPrimary": "Pertanyaan riset pasar →",
+  "ctaSecondary": "Lihat alur penelitian ↓",
+  "meta": [
+    {
+      "k": "LAYANAN",
+      "v": "Riset Pasar"
+    },
+    {
+      "k": "TERBAIK UNTUK",
+      "v": "Masuk, perluasan, tinjauan posisi"
+    },
+    {
+      "k": "GARIS WAKTU",
+      "v": "Biasanya 1–3 minggu"
+    },
+    {
+      "k": "HARGA",
+      "v": "Mulai dari ₩300.000"
+    }
+  ],
+  "overviewLabel": "GAMBARAN UMUM",
+  "overviewTitle": "Banyak informasi.\nKriteria bersama tidak cukup.",
+  "overviewBody": [
+    "Saat mengevaluasi pasar, kategori, atau audiens baru, materi jarang menjadi hambatan. Bagian tersulitnya adalah menyelaraskan struktur, prioritas, dan hal-hal yang dianggap sebagai bukti.",
+    "Laporan industri, berita, IR pesaing, ulasan aplikasi, sinyal komunitas, dan statistik publik masing-masing menawarkan sudut pandang yang berbeda — namun jarang dalam bentuk yang dapat diputuskan oleh tim dalam pertemuan yang sama.",
+    "PENELITIAN PASAR dimulai dengan mendefinisikan apa yang perlu Anda ketahui untuk mengambil keputusan. Kemudian kami mengumpulkan, membandingkan, dan menyusun sumber-sumber ke dalam peta pasar, area peluang, dan implikasinya dalam satu laporan singkat."
+  ],
+  "problemsLabel": "MASALAH",
+  "problemsTitle": "Bermanfaat ketika Anda menghadapi situasi ini.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "MASUK PASAR",
+      "d": "Anda memerlukan pandangan bersama tentang ukuran dan struktur pasar\nsebelum memasuki negara, kategori, atau audiens baru."
+    },
+    {
+      "n": "02",
+      "t": "INFO TERSEBAR",
+      "d": "Ada banyak materi tetapi tidak ada peta segmen, pemain, atau peluang yang jelas.\nPertanyaan yang sama berulang di setiap pertemuan."
+    },
+    {
+      "n": "03",
+      "t": "KONTEKS KOMPETITIF",
+      "d": "Terlalu banyak pesaing dan pengganti untuk membandingkan posisi secara sekilas.\nAnda memerlukan konteks tentang siapa yang kuat di mana."
+    },
+    {
+      "n": "04",
+      "t": "PETA PELUANG",
+      "d": "Anda melihat banyak jalur masuk, ekspansi, atau diferensiasi\nnamun tidak ada bukti untuk memprioritaskannya."
+    },
+    {
+      "n": "05",
+      "t": "PENYESUAIAN PEMANGKU KEPENTINGAN",
+      "d": "Tim, investor, atau mitra memerlukan gambaran pasar yang sama.\nAnda memerlukan ringkasan internal yang dapat dirujuk oleh semua orang."
+    },
+    {
+      "n": "06",
+      "t": "ARAH PRODUK",
+      "d": "Sebelum mengambil keputusan MVP, peta jalan, atau penetapan harga,\nAnda memerlukan konteks pasar dan sinyal permintaan terlebih dahulu."
+    }
+  ],
+  "baLabel": "SEBELUM/SETELAH",
+  "baTitle": "Keputusan berdasarkan firasat vs\npemahaman pasar terstruktur",
+  "beforeLabel": "SEBELUM",
+  "afterLabel": "SETELAH",
+  "before": [
+    "Setiap orang mengumpulkan sumber secara terpisah",
+    "Ukuran pasar, persaingan, dan pergeseran peluang melalui percakapan",
+    "Pertanyaan yang sama berulang tanpa kesimpulan yang terdokumentasi",
+    "Temuan tidak terhubung dengan validasi atau tindakan berikutnya"
+  ],
+  "after": [
+    "Pertanyaan dan ruang lingkup penelitian disepakati terlebih dahulu",
+    "Segmen, pemain, dan peluang dipetakan",
+    "Ringkasan penelitian bersama untuk tim",
+    "Implikasi terkait dengan tindakan selanjutnya"
+  ],
+  "capsLabel": "KEMAMPUAN",
+  "capsTitle": "Kami menyusun penelitian\nkebutuhan keputusan pasar Anda.",
+  "caps": [
+    {
+      "t": "DEFINISI RUANG LINGKUP",
+      "d": "Tentukan pertanyaan dan batasan yang diperlukan dalam pengambilan keputusan.\nPerjelas apa yang perlu Anda pelajari dan apa yang di luar cakupan.",
+      "examples": [
+        "Pertanyaan inti",
+        "Ruang lingkup pasar",
+        "Jumlah pesaing",
+        "Format penyampaian"
+      ]
+    },
+    {
+      "t": "PENELITIAN MEJA",
+      "d": "Kumpulkan sumber sekunder dan data publik secara sistematis.\nTinjau kualitas dan kredibilitas sumber bersama-sama.",
+      "examples": [
+        "Laporan industri",
+        "Statistik publik",
+        "Berita & IR",
+        "Ulasan & komunitas"
+      ]
+    },
+    {
+      "t": "STRUKTUR PASAR",
+      "d": "Atur pasar berdasarkan segmen, pemain, dan aliran nilai.\nStruktur siapa yang berperan di mana dan bagaimana pasar dibagi.",
+      "examples": [
+        "Peta segmen",
+        "Rantai nilai",
+        "Permintaan & penawaran",
+        "Struktur saluran"
+      ]
+    },
+    {
+      "t": "LANSKAP KOMPETITIF",
+      "d": "Bandingkan pesaing utama dan penggantinya.\nRingkaslah perbedaan dalam fitur, harga, pesan, dan target.",
+      "examples": [
+        "Peta pemain",
+        "Perbandingan posisi",
+        "Diferensiasi",
+        "Pengganti"
+      ]
+    },
+    {
+      "t": "PEMETAAN PELUANG",
+      "d": "Susun area untuk masuk, ekspansi, atau diferensiasi.\nDokumentasikan bukti dan asumsi di balik setiap peluang.",
+      "examples": [
+        "Kebutuhan yang belum terpenuhi",
+        "Ruang putih",
+        "Hambatan masuk",
+        "Prioritas"
+      ]
+    },
+    {
+      "t": "SINYAL TREN",
+      "d": "Tangkap perubahan industri, konsumen, dan teknologi berdasarkan konteks.\nPisahkan gangguan jangka pendek dari perubahan struktural.",
+      "examples": [
+        "Peraturan",
+        "Pergeseran perilaku",
+        "Adopsi teknologi",
+        "Penetapan harga & pengemasan"
+      ]
+    },
+    {
+      "t": "IMPLIKASI",
+      "d": "Hubungkan temuan dengan produk, bisnis, dan strategi.\nBeralih dari wawasan ke hal yang harus Anda lakukan.",
+      "examples": [
+        "Penentuan posisi",
+        "Prioritas fitur",
+        "Pergi / Tidak pergi",
+        "Resiko"
+      ]
+    },
+    {
+      "t": "ITEM TINDAKAN",
+      "d": "Sarankan langkah validasi dan pengambilan keputusan selanjutnya.\nTandai di mana wawancara, eksperimen, atau penelitian lebih mendalam diperlukan.",
+      "examples": [
+        "Pertanyaan validasi",
+        "Target wawancara",
+        "Uji hipotesis",
+        "Ruang lingkup tindak lanjut"
+      ]
+    }
+  ],
+  "sourcesLabel": "SUMBER PENELITIAN",
+  "sourcesTitle": "Kami menggabungkan jenis sumber yang dibutuhkan sasaran Anda.",
+  "sourcesNote": "Sumber sebenarnya bervariasi menurut cakupan, pasar, dan aksesibilitas. Kami mengonfirmasi kecocokan sebelum memulai.",
+  "sources": [
+    "Laporan Industri",
+    "Statistik Publik",
+    "Pengajuan Perusahaan",
+    "Berita & Artikel",
+    "Ulasan Produk",
+    "App Store / Pasar",
+    "Sosial & Komunitas",
+    "Paten & Pengajuan",
+    "Publikasi Perdagangan",
+    "Data Dalaman",
+    "Wawancara Ahli",
+    "Situs Web Pesaing"
+  ],
+  "useLabel": "KASUS PENGGUNAAN",
+  "useTitle": "Pertanyaan yang dapat kami bantu jawab.",
+  "useBadge": "Contoh topik penelitian",
+  "useCases": [
+    {
+      "t": "MASUK PASAR BARU",
+      "d": "Periksa struktur, sinyal permintaan, dan hambatan masuk\nsebelum memasuki pasar atau kategori."
+    },
+    {
+      "t": "LANDSCAPE KATEGORI",
+      "d": "Petakan siapa yang berperan di mana dan bagaimana pasar dibagi.\nLihat sekilas peran dan hubungan segmen."
+    },
+    {
+      "t": "KONTEKS PESAING",
+      "d": "Bandingkan pemain kunci dan perbedaan posisi dengan cepat.\nRangkum fitur, harga, pesan, dan target."
+    },
+    {
+      "t": "KONTEKS HARGA",
+      "d": "Ringkas rentang harga, kemasan, dan konteks model pendapatan.\nBangun bukti untuk strategi penetapan harga Anda."
+    },
+    {
+      "t": "SEGMEN PELANGGAN",
+      "d": "Memperjelas siapa yang dilayani pasar dari sudut pandang segmen.\nPerbedaan struktur dalam kebutuhan, perilaku, dan kriteria pembelian."
+    },
+    {
+      "t": "TREN SINGKAT",
+      "d": "Rangkum perubahan terkini dan pengaruhnya bagi produk atau bisnis Anda.\nPisahkan masalah jangka pendek dari perubahan struktural."
+    },
+    {
+      "t": "SINGKAT INVESTOR",
+      "d": "Ringkasan pasar untuk pemangku kepentingan internal atau eksternal.\nSertakan bukti utama dan risiko bersama-sama."
+    },
+    {
+      "t": "INPUT LINGKUP PRODUK",
+      "d": "Berikan konteks pasar sebelum definisi MVP atau peta jalan.\nGunakan sebagai bukti tentang apa yang harus dibangun terlebih dahulu."
+    }
+  ],
+  "flowLabel": "CONTOH ALUR KERJA",
+  "flowTitle": "Dari pertanyaan hingga ringkasan penelitian",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINISI",
+      "d": "Tentukan pertanyaan dan ruang lingkup penelitian.\nPerjelas informasi apa saja yang diperlukan dalam pengambilan keputusan dan apa saja yang dikecualikan.",
+      "examples": [
+        "Pertanyaan inti",
+        "Ruang lingkup pasar",
+        "Pesaing",
+        "Hasil kerja"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "KUMPULKAN",
+      "d": "Kumpulkan sumber dan data yang relevan.\nTinjau materi publik dan internal bersama-sama.",
+      "examples": [
+        "Laporan",
+        "Statistik",
+        "Ulasan",
+        "IR & berita"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "STRUKTUR",
+      "d": "Atur berdasarkan pasar, persaingan, dan permintaan.\nJadikan informasi yang tersebar dapat dibandingkan.",
+      "examples": [
+        "Segmen",
+        "Pemain",
+        "Harga",
+        "Saluran"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "SINTESIS",
+      "d": "Ekstrak temuan dan peluang utama.\nHubungkan apa yang penting dan mengapa hal itu penting.",
+      "examples": [
+        "Area peluang",
+        "Resiko",
+        "Diferensiasi",
+        "Kesenjangan"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "MENGIRIM",
+      "d": "Menyampaikan ringkasan, peta, dan implikasi.\nFormat untuk penggunaan tim langsung.",
+      "examples": [
+        "Ringkasan Eksekutif",
+        "Peta Pasar",
+        "Langkah Selanjutnya"
+      ]
+    }
+  ],
+  "reportLabel": "KELUARAN",
+  "reportTitle": "Hasil kerja disusun untuk pengambilan keputusan.",
+  "reportLead": "Komposisi bervariasi berdasarkan tujuan proyek. Di bawah ini adalah bagian umum — kami hanya menyertakan apa yang diperlukan dalam ringkasan.",
+  "reportMockStatus": "PASAR · DRAFT",
+  "reportMockK": "RINGKASAN PASAR",
+  "reportMockT": "Ringkasan kategori & lanskap kompetitif",
+  "reportItems": [
+    "Ringkasan Eksekutif",
+    "Peta Pasar",
+    "Ikhtisar Segmen",
+    "Lanskap Kompetitif",
+    "Area Peluang",
+    "Sinyal Tren",
+    "Risiko Utama",
+    "Implikasi",
+    "Langkah Berikutnya yang Direkomendasikan",
+    "Catatan Sumber"
+  ],
+  "dashTitle": "Bagikan struktur pasar dalam satu tampilan.",
+  "dashLead": "Jika berguna, kami menyertakan peta pasar yang menunjukkan segmen, pemain, dan area peluang — sehingga diskusi berjalan lebih cepat seiring dengan ringkasan.",
+  "dashNote": "Peta pasar tidak sama di setiap proyek — ruang lingkup dan tujuan menentukan hasil yang dapat dicapai.",
+  "dashMetrics": [
+    "Segmen",
+    "Pemain",
+    "Peluang",
+    "Tren",
+    "Resiko",
+    "Prioritas"
+  ],
+  "dashFilters": [
+    "Semua",
+    "B2B",
+    "B2C",
+    "Perusahaan"
+  ],
+  "aiLabel": "SINTESIS",
+  "aiTitle": "Dari kumpulan sumber besar\nhingga hal-hal penting.",
+  "aiLead": "Ketika ada banyak laporan, berita, ulasan, dan materi pesaing, kami merangkum, mengklasifikasikan, dan membandingkan dari sudut yang Anda butuhkan. Interpretasi dan keputusan akhir ditinjau bersama dengan Anda.",
+  "aiExamples": [
+    "Pesan pesaing & perbandingan posisi",
+    "Ringkasan pola tinjauan dan umpan balik",
+    "Berita industri dan intisari masalah",
+    "Ringkasan kebutuhan dan rasa sakit segmen",
+    "Prioritas peluang",
+    "Draf garis besar singkat dan presentasi"
+  ],
+  "aiNote": "Interpretasi dan keputusan akhir ditinjau bersama dengan Anda. Ringkasan AI adalah bahan referensi — panggilan penting harus tetap mengacu pada sumber asli.",
+  "delLabel": "PENGIRIMAN",
+  "delTitle": "Apa yang Anda terima setelah proyek",
+  "delLead": "Tergantung pada cakupannya, kami mengirimkan barang yang Anda butuhkan dari daftar di bawah. Tidak semua item disertakan dalam setiap proyek.",
+  "deliverables": [
+    "Ringkasan Penelitian",
+    "Peta Pasar",
+    "Ringkasan Kompetitif",
+    "Ikhtisar Peluang",
+    "Catatan Tren",
+    "Implikasi & Rekomendasi",
+    "Sumber Lampiran",
+    "Ringkasan Presentasi",
+    "Pertanyaan Lanjutan"
+  ],
+  "processLabel": "PROSES",
+  "processTitle": "Dari definisi pertanyaan hingga penyampaiannya.",
+  "process": [
+    {
+      "n": "01",
+      "t": "PENEMUAN",
+      "d": "Konfirmasikan konteks keputusan dan tujuan penelitian.\nPahami apa yang Anda putuskan dan siapa yang akan menggunakan hasilnya.",
+      "examples": [
+        "Tujuan",
+        "Pemangku kepentingan",
+        "Garis Waktu",
+        "Kendala"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "RUANG LINGKUP",
+      "d": "Tentukan pertanyaan, ruang lingkup, dan format penyampaian.\nSepakati apa yang masuk, apa yang keluar, dan prioritas.",
+      "examples": [
+        "Pertanyaan inti",
+        "Ruang lingkup pasar",
+        "Pesaing",
+        "Format"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "PENELITIAN",
+      "d": "Kumpulkan dan tinjau sumber dan data yang relevan.\nPeriksa kualitas dan kredibilitas sumber.",
+      "examples": [
+        "Laporan",
+        "Statistik",
+        "Ulasan",
+        "IR"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ANALISIS",
+      "d": "Pola struktur, perbedaan, dan peluang.\nAtur berdasarkan segmen, persaingan, dan permintaan.",
+      "examples": [
+        "Segmen",
+        "Penentuan posisi",
+        "Peluang",
+        "Resiko"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DRAFT",
+      "d": "Buat draf ringkasan dan peta pasar.\nBuat landasan temuan dan implikasinya.",
+      "examples": [
+        "Ringkasan",
+        "Peta Pasar",
+        "Implikasi"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "TINJAUAN",
+      "d": "Tinjau temuan-temuan utama dan interpretasinya bersama-sama.\nSesuaikan kesenjangan, asumsi, dan prioritas.",
+      "examples": [
+        "Umpan balik",
+        "Penyempurnaan",
+        "Prioritas",
+        "Pergi/Tidak-pergi"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "MENGIRIM",
+      "d": "Kirimkan dokumen akhir dan implikasinya.\nTerhubung ke validasi dan tindakan berikutnya.",
+      "examples": [
+        "Ringkasan Akhir",
+        "Peta",
+        "Langkah Selanjutnya"
+      ]
+    }
+  ],
+  "scopeLabel": "TINGKAT RUANG LINGKUP",
+  "scopeTitle": "Panduan untuk kompleksitas proyek.",
+  "scopeLead": "Bukan paket tetap — kami mencakup dan mengutip berdasarkan tujuan Anda dan kedalaman yang Anda butuhkan.",
+  "scopes": [
+    {
+      "t": "SINGKAT PASAR FOKUS",
+      "items": [
+        "Pasar atau kategori tunggal",
+        "3–5 pertanyaan inti",
+        "Fokus penelitian meja",
+        "Ringkasan singkat (~10–15 halaman)",
+        "Poin peluang dan risiko"
+      ]
+    },
+    {
+      "t": "PETA PASAR & KOMPETITIF",
+      "items": [
+        "Segmen dan peta pemain",
+        "Bandingkan 5–10 pesaing utama",
+        "Penentuan posisi, harga, ringkasan pesan",
+        "Area peluang dan implikasinya",
+        "Ringkasan presentasi opsional"
+      ]
+    },
+    {
+      "t": "PENELITIAN KHUSUS",
+      "items": [
+        "Berbagai pasar atau kategori",
+        "Penelitian primer (wawancara/survei) opsional",
+        "Tren, regulasi, dan analisis risiko yang lebih mendalam",
+        "Presentasi khusus",
+        "Validasi tindak lanjut atau BUILD linkage"
+      ]
+    }
+  ],
+  "timeLabel": "GARIS WAKTU",
+  "timeTitle": "Garis waktu tergantung pada ruang lingkup.",
+  "timeLead": "Kedalaman, akses sumber, jumlah pesaing, dan penyertaan wawancara dapat mengubah durasi.",
+  "timelines": [
+    {
+      "t": "Ringkasan Pasar Terfokus",
+      "d": "Sekitar 1–2 minggu"
+    },
+    {
+      "t": "Peta Pasar & Persaingan",
+      "d": "Sekitar 2–3 minggu"
+    },
+    {
+      "t": "Riset Kustom",
+      "d": "Dicakup secara terpisah"
+    }
+  ],
+  "priceLabel": "BIAYA PROYEK",
+  "priceTitle": "Kami hanya mengutip cakupan yang Anda butuhkan.",
+  "priceName": "PENELITIAN PASAR",
+  "priceValue": "Mulai dari ₩300.000",
+  "priceFactorsLabel": "Apa yang membentuk harga",
+  "priceFactors": [
+    "Jumlah pertanyaan penelitian",
+    "Cakupan pasar atau kategori",
+    "Jumlah pesaing/pemain",
+    "Kedalaman penelitian",
+    "Inklusi penelitian primer",
+    "Akses sumber dan laporan berbayar",
+    "Format dan panjang penyampaian",
+    "Garis waktu yang mendesak"
+  ],
+  "priceNote": "Penawaran akhir dikonfirmasi setelah meninjau tujuan, ruang lingkup, dan garis waktu.",
+  "faqLabel": "Pertanyaan Umum",
+  "faqTitle": "Pertanyaan yang sering diajukan",
+  "faqs": [
+    {
+      "q": "Pasar dan industri apa yang dapat Anda teliti?",
+      "a": "B2B, B2C, SaaS, perdagangan, platform, layanan, manufaktur, dan banyak lagi — bergantung pada tujuan dan sumber yang dapat diakses. Kami mengonfirmasi kesesuaian pasar dan akses sumber sebelum memulai."
+    },
+    {
+      "q": "Apakah ini termasuk penelitian primer?",
+      "a": "Standarnya adalah riset pustaka. Wawancara pengguna atau industri dan desain survei dapat ditambahkan sebagai cakupan terpisah bila diperlukan."
+    },
+    {
+      "q": "Format apa yang diambil untuk kiriman?",
+      "a": "Dokumen pertama: Ringkasan Eksekutif, Peta Pasar, Ringkasan Kompetitif, Implikasi, dan bagian lain yang sesuai dengan tujuan Anda. Ringkasan presentasi dapat disertakan."
+    },
+    {
+      "q": "Bisakah Anda membeli laporan industri berbayar?",
+      "a": "Ya, bila diperlukan. Biaya sumber berbayar dicakup secara terpisah dan dikonfirmasikan kepada Anda sebelum pembelian."
+    },
+    {
+      "q": "Bisakah Anda menggunakan data internal kami?",
+      "a": "Ya, sesuai dengan apa yang bisa Anda bagikan. Jika tidak, kami bekerja dari sumber publik."
+    },
+    {
+      "q": "Apa bedanya dengan ANALISIS PESAING?",
+      "a": "RISET PASAR melihat struktur dan peluang pasar secara keseluruhan. Jika perbandingan pesaing adalah kebutuhan inti, ANALISIS PESAING mungkin lebih cocok — cakupan dapat dihubungkan jika berguna."
+    },
+    {
+      "q": "Bisakah ini terhubung ke BUILD atau MVP?",
+      "a": "Ya. Penelitian dapat memenuhi cakupan produk, prioritas fitur, dan keputusan Boleh/Tidak Boleh Dipakai."
+    },
+    {
+      "q": "Bagaimana kerahasiaan ditangani?",
+      "a": "Kami bekerja hanya dalam lingkup yang disepakati. NDA dapat ditandatangani bila diperlukan."
+    }
+  ],
+  "finalLabel": "MULAI PROYEK",
+  "finalTitle": "Jangan menebak pasar —\npetakan terlebih dahulu.",
+  "finalLead": "Beri tahu kami pasar, kategori, atau konteks persaingan yang Anda evaluasi. Kami akan mengonfirmasi apa yang harus diteliti dan bagaimana menyusun hasilnya.",
+  "ctaFinalSecondary": "Lihat semua PENELITIAN →",
+  "ctaFinalSecondaryHref": "../research/"
+}

@@ -397,7 +397,7 @@ export function renderBusinessCollabDetails() {
 
   for (const { dir, file, htmlLang } of LANGS) {
     const flat = flatten(loadJson(file));
-    const lang = dir === "ko" ? "ko" : "en";
+    const lang = dir;
 
     for (const slug of COLLAB_PAGE_ORDER) {
       const route = pagePath(slug);

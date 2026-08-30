@@ -79,7 +79,7 @@ export function resourcesHeroBlock(copy, { escapeHtml, brHeadline, ...opts } = {
     <div class="bp-hero__copy">
       <p class="bp-eyebrow">${escapeHtml(eyebrow)}</p>
       <h1 class="bp-hero__title" id="rs-hero-title">${brHeadline(copy.headline)}</h1>
-      <p class="bp-hero__lead">${escapeHtml(String(copy.lead || "").replace(/\n/g, " "))}</p>
+      <p class="bp-hero__lead">${brHeadline(copy.lead)}</p>
       ${actions}
     </div>
     ${resourcesHeroVisual(copy, navLabel, escapeHtml)}

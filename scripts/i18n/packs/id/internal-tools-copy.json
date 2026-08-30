@@ -1,0 +1,584 @@
+{
+  "seoTitle": "ALAT INTERNAL | Newon OTOMATISASI",
+  "metaDescription": "Ubah spreadsheet dan pekerjaan multi-alat yang tersebar menjadi sistem internal yang sesuai dengan cara tim Anda beroperasi. Newon ALAT INTERNAL.",
+  "crumbBusiness": "BISNIS",
+  "crumbServices": "LAYANAN",
+  "crumbHere": "ALAT INTERNAL",
+  "eyebrow": "03 · ALAT",
+  "subEyebrow": "OTOMATISASI",
+  "headline": "Alat yang dibentuk berdasarkan\ncara kerja tim Anda.",
+  "lead": "Kami menggabungkan pekerjaan yang tersebar di seluruh spreadsheet dan layanan ke dalam satu sistem internal — merancang layar, izin, dan struktur data untuk alur operasi dan admin yang sebenarnya dijalankan tim Anda.",
+  "ctaPrimary": "Pertanyaan ALAT INTERNAL →",
+  "ctaSecondary": "Lihat apa yang kami bangun ↓",
+  "meta": [
+    {
+      "k": "LAYANAN",
+      "v": "Alat Internal Khusus"
+    },
+    {
+      "k": "TERBAIK UNTUK",
+      "v": "Tim dengan operasi berulang dan pekerjaan admin"
+    },
+    {
+      "k": "GARIS WAKTU",
+      "v": "Biasanya 4–8 minggu"
+    },
+    {
+      "k": "HARGA",
+      "v": "Kutipan khusus"
+    }
+  ],
+  "overviewLabel": "GAMBARAN UMUM",
+  "overviewTitle": "Bangun sistem internal\nuntuk cara kerja tim.",
+  "overviewBody": [
+    "Banyak tim masih menjalankan operasi di seluruh spreadsheet, chat, email, dan beberapa alat SaaS.",
+    "Ketika penerimaan, status, persetujuan, inventaris, jadwal, dan catatan pelanggan berada di tempat yang berbeda, orang menjadi lapisan integrasi.",
+    "ALAT INTERNAL mengubahnya menjadi layar dan struktur data yang sesuai dengan proses Anda yang sebenarnya — bukan produk yang berhubungan dengan pelanggan, tetapi alat yang digunakan tim Anda setiap hari."
+  ],
+  "problemsLabel": "MASALAH",
+  "problemsTitle": "Ketika alat internal diperlukan.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "PEKERJAAN YANG TERSEBAR",
+      "d": "Permintaan dan catatan tersedia di seluruh sheet, chat, email, dan alat."
+    },
+    {
+      "n": "02",
+      "t": "PENYERAHAN MANUAL",
+      "d": "Orang-orang meneruskan pekerjaan secara manual setiap kali kepemilikan atau tahapan berubah."
+    },
+    {
+      "n": "03",
+      "t": "KEBUTAAN STATUS",
+      "d": "Sulit untuk melihat apa yang sedang berlangsung secara sekilas."
+    },
+    {
+      "n": "04",
+      "t": "GESEKAN PERSETUJUAN",
+      "d": "Peninjauan dan persetujuan terhenti di chat dan email."
+    },
+    {
+      "n": "05",
+      "t": "RISIKO IZIN",
+      "d": "Data sensitif disimpan dalam lembar bersama yang dapat dibuka semua orang."
+    },
+    {
+      "n": "06",
+      "t": "TIDAK ADA SEJARAH",
+      "d": "Hanya ada sedikit catatan mengenai siapa yang mengubah apa dan kapan."
+    },
+    {
+      "n": "07",
+      "t": "BATAS SKALA",
+      "d": "Operasi spreadsheet terpecah seiring bertambahnya jumlah orang dan volume."
+    },
+    {
+      "n": "08",
+      "t": "KESALAHAN ALAT",
+      "d": "SaaS yang tersedia tidak sesuai dengan proses tim."
+    }
+  ],
+  "capsLabel": "KEMAMPUAN",
+  "capsTitle": "Kami menyusun fungsi yang dibutuhkan pekerjaan Anda.",
+  "caps": [
+    {
+      "t": "PERMINTAAN & MASUK",
+      "d": "Menerima permintaan melalui formulir dan aliran yang ditentukan.",
+      "examples": [
+        "Asupan pertanyaan",
+        "Permintaan pekerjaan",
+        "Tiket internal",
+        "Formulir orientasi"
+      ]
+    },
+    {
+      "t": "PAPAN KERJA",
+      "d": "Kelola status, pemilik, dan prioritas di satu tempat.",
+      "examples": [
+        "Kanban/daftar",
+        "Filter",
+        "Tugas",
+        "Tenggat waktu"
+      ]
+    },
+    {
+      "t": "ALIRAN PERSETUJUAN",
+      "d": "Kunci peninjauan dan persetujuan ke dalam tahapan yang jelas.",
+      "examples": [
+        "Persetujuan multi-langkah",
+        "Izin peran",
+        "Komentar",
+        "Sejarah"
+      ]
+    },
+    {
+      "t": "DAsbor OPS",
+      "d": "Bawa status operasional ke dalam satu tampilan.",
+      "examples": [
+        "Kemajuan",
+        "Kemacetan",
+        "Hasil",
+        "Perbandingan periode"
+      ]
+    },
+    {
+      "t": "ADMIN DATA",
+      "d": "Menyusun data dan catatan referensi internal.",
+      "examples": [
+        "Data induk",
+        "Cari",
+        "Tag",
+        "Ekspor"
+      ]
+    },
+    {
+      "t": "PERAN & AKSES",
+      "d": "Pisahkan layar dan izin berdasarkan peran.",
+      "examples": [
+        "Admin",
+        "Manajer",
+        "Anggota",
+        "Hanya baca"
+      ]
+    },
+    {
+      "t": "INTEGRASI",
+      "d": "Hubungkan layanan dan data yang sudah Anda gunakan.",
+      "examples": [
+        "Seprai",
+        "Slack/Email",
+        "<<<BARU KEEP000>>>",
+        "API"
+      ]
+    },
+    {
+      "t": "AUDIT & LOG",
+      "d": "Jaga agar perubahan dan tindakan dapat dilacak.",
+      "examples": [
+        "Ubah catatan",
+        "Sejarah tindakan",
+        "Peringatan",
+        "Poin cadangan"
+      ]
+    }
+  ],
+  "useLabel": "KEMUNGKINAN",
+  "useTitle": "Alat internal yang dapat kami buat.",
+  "useBadge": "Contoh yang bisa dibangun",
+  "useCases": [
+    {
+      "t": "KONSOL OPS",
+      "d": "Konsol untuk permintaan, kemajuan, dan kepemilikan."
+    },
+    {
+      "t": "PORTAL PERMINTAAN",
+      "d": "Formulir penerimaan standar dengan status bersama untuk tim."
+    },
+    {
+      "t": "SISTEM PERSETUJUAN",
+      "d": "Sistemisasi anggaran, konten, atau persetujuan akses."
+    },
+    {
+      "t": "ALAT OPS KLIEN",
+      "d": "Kelola pekerjaan klien, jadwal, dan hasil kerja secara internal."
+    },
+    {
+      "t": "PERSEDIAAN / ASET",
+      "d": "Lacak inventaris, aset, dan pergerakan."
+    },
+    {
+      "t": "CRM LITE",
+      "d": "Alat saluran yang disederhanakan untuk proses penjualan/penyelidikan Anda."
+    },
+    {
+      "t": "PELACAK KONTEN",
+      "d": "Satu papan untuk status produksi, ulasan, dan publikasi."
+    },
+    {
+      "t": "DAsbor INTERNAL",
+      "d": "Papan operasi yang menggabungkan metrik dari berbagai sumber."
+    }
+  ],
+  "baLabel": "SEBELUM/SETELAH",
+  "baTitle": "Bagaimana pekerjaan diatur",
+  "beforeLabel": "SEBELUM",
+  "afterLabel": "SETELAH",
+  "before": [
+    "Spreadsheet + Obrolan + Email",
+    "Penyerahan secara manual",
+    "Status yang sulit dilihat",
+    "Akses dan riwayat tidak jelas"
+  ],
+  "after": [
+    "Satu alat internal",
+    "Alur kerja yang ditentukan",
+    "Status dan pemilik terlihat",
+    "Akses dan log berbasis peran"
+  ],
+  "flowLabel": "CONTOH ALUR KERJA",
+  "flowTitle": "Bagaimana alat internal berjalan",
+  "flow": [
+    {
+      "n": "01",
+      "t": "ASAP",
+      "d": "Permintaan dan data dimasukkan melalui formulir, API, atau file.\nKolom dan lampiran yang wajib diisi divalidasi terlebih dahulu."
+    },
+    {
+      "n": "02",
+      "t": "RUTE",
+      "d": "Jenis, prioritas, dan aturan pemilik menetapkan pekerjaan.\nTahap selanjutnya dan jalur persetujuan diatur secara otomatis."
+    },
+    {
+      "n": "03",
+      "t": "PROSES",
+      "d": "Tim memproses, mengedit, dan menyetujui di layar.\nKomentar, file, dan perubahan status tetap dalam satu alur."
+    },
+    {
+      "n": "04",
+      "t": "PEMBARUAN",
+      "d": "Perubahan status memberi tahu orang-orang yang perlu mengetahuinya.\nDikirim melalui Slack, email, atau peringatan dalam aplikasi."
+    },
+    {
+      "n": "05",
+      "t": "REKAM",
+      "d": "Siapa yang mengubah apa, dan kapan, disimpan sebagai riwayat.\nHasil disimpan untuk diaudit dan diputar ulang."
+    },
+    {
+      "n": "06",
+      "t": "TINJAUAN",
+      "d": "Dasbor, daftar, dan filter menunjukkan status saat ini.\nHambatan, penundaan, dan throughput dalam satu tampilan."
+    }
+  ],
+  "featuresLabel": "FITUR",
+  "featuresTitle": "Fitur yang dapat kami sertakan berdasarkan proyek",
+  "featuresLead": "Tidak setiap proyek mendapatkan rangkaian fitur yang sama — kami menyusunnya untuk pekerjaan yang penting.",
+  "features": [
+    "Bentuk/Pengambilan",
+    "Daftar & Filter",
+    "Kanban Papan",
+    "Tampilan Detil",
+    "Alur Kerja Status",
+    "Akses Berbasis Peran",
+    "Komentar",
+    "Lampiran Berkas",
+    "Pemberitahuan",
+    "Cari",
+    "Ekspor",
+    "Pengaturan Admin",
+    "Catatan Aktivitas",
+    "Dasbor Sederhana",
+    "API / Webhook",
+    "UI ramah seluler"
+  ],
+  "integLabel": "INTEGRASI",
+  "integTitle": "Hubungkan alat yang sudah Anda gunakan.",
+  "integNote": "Konektivitas sebenarnya bergantung pada API, izin, dan struktur data setiap layanan.",
+  "integrations": [
+    "<<<BARU KEEP000>>>",
+    "<<<BARU KEEP000>>>",
+    "<<<BARU KEEP000>>>",
+    "Surel",
+    "<<<BARU KEEP000>>>",
+    "<<<BARU KEEP000>>>",
+    "Basis data",
+    "Formulir",
+    "Analisis",
+    "Data Pembayaran / Penagihan",
+    "API Eksternal",
+    "kait web"
+  ],
+  "aiLabel": "EKSTENSI AI",
+  "aiTitle": "Hubungkan AI ke dalam alur kerja bila diperlukan.",
+  "aiLead": "Jika klasifikasi, penyusunan, atau peringkasan berulang, AI dapat berperan sebagai bantuan di dalam alat tersebut.",
+  "aiExamples": [
+    "Permintaan klasifikasi otomatis",
+    "Ringkasan tiket",
+    "Pembuatan draf",
+    "Deteksi duplikat/serupa",
+    "Catatan pembersihan",
+    "Saran status"
+  ],
+  "aiNote": "Keluaran AI bersifat nasihat — keputusan penting tetap dikonfirmasi oleh manusia secara default.",
+  "autoLabel": "EKSTENSI OTOMATISASI",
+  "autoTitle": "Otomatiskan pekerjaan berulang di dalam alat.",
+  "autoLead": "Aturan yang jelas — peringatan, perubahan status, sinkronisasi, laporan terjadwal — dapat diperluas ke cakupan otomatisasi.",
+  "autoExamples": [
+    "Peringatan perubahan status",
+    "Pengingat tenggat waktu",
+    "Sinkronisasi lembar/DB",
+    "Email intisari terjadwal",
+    "Perutean bersyarat",
+    "Pembaruan batch"
+  ],
+  "delLabel": "PENGIRIMAN",
+  "delTitle": "Apa yang Anda terima ketika proyek selesai",
+  "delLead": "Tergantung pada cakupannya, kiriman dapat mencakup item-item di bawah ini — tidak setiap proyek mencakup setiap item.",
+  "deliverables": [
+    "Ringkasan Persyaratan",
+    "Arsitektur Informasi",
+    "Layar UI",
+    "Alat Internal yang Bekerja",
+    "Pengaturan Peran / Izin",
+    "Struktur Data",
+    "Integrasi Dasar",
+    "Panduan Admin",
+    "Catatan serah terima operasi",
+    "Catatan Serah Terima"
+  ],
+  "processLabel": "PROSES",
+  "processTitle": "Kita mulai dari bagaimana pekerjaan itu sebenarnya berjalan.",
+  "process": [
+    {
+      "n": "01",
+      "t": "PENEMUAN",
+      "d": "Memetakan alur, alat, dan hambatan saat ini.\nKita mulai dengan mencari tahu di mana waktu terbuang."
+    },
+    {
+      "n": "02",
+      "t": "PEMETAAN KERJA",
+      "d": "Permintaan dokumen → proses → selesai, ditambah pengecualian.\nGambarkan bagaimana pekerjaan sebenarnya bergerak saat ini."
+    },
+    {
+      "n": "03",
+      "t": "RUANG LINGKUP",
+      "d": "Putuskan apa yang termasuk dalam v1 dan apa yang menunggu.\nPerjelas batasan rilis pertama."
+    },
+    {
+      "n": "04",
+      "t": "STRUKTUR",
+      "d": "Desain layar, model data, dan izin.\nTentukan struktur yang akan digunakan tim Anda."
+    },
+    {
+      "n": "05",
+      "t": "PROTOTIPE",
+      "d": "Validasi alur inti dengan cepat.\nUji skenario utama terlebih dahulu."
+    },
+    {
+      "n": "06",
+      "t": "MEMBANGUN",
+      "d": "Implementasikan alat yang siap digunakan secara nyata.\nKirimkan sesuatu yang dapat dijalankan tim setiap hari."
+    },
+    {
+      "n": "07",
+      "t": "INTEGRASI",
+      "d": "Hubungkan integrasi dan otomatisasi yang diperlukan.\nTautkan alat dan data yang ada."
+    },
+    {
+      "n": "08",
+      "t": "UJI",
+      "d": "Tinjau izin, alur, dan data dengan skenario nyata.\nSertakan kasus tepi, bukan hanya jalur bahagia."
+    },
+    {
+      "n": "09",
+      "t": "PENYERAHAN",
+      "d": "Serahkan pengoperasian dan panduan admin.\nAgar tim Anda dapat menjalankannya secara mandiri."
+    }
+  ],
+  "scopeLabel": "TINGKAT RUANG LINGKUP",
+  "scopeTitle": "Panduan untuk memahami kompleksitas proyek.",
+  "scopeLead": "Bukan paket tetap — referensi untuk pelingkupan dan mengutip apa yang Anda butuhkan.",
+  "scopes": [
+    {
+      "t": "ALAT FOKUS",
+      "items": [
+        "Alur kerja satu inti",
+        "Layar CRUD dasar",
+        "Izin sederhana",
+        "Kumpulan data kecil",
+        "Integrasi minimal"
+      ]
+    },
+    {
+      "t": "SISTEM OPS TIM",
+      "items": [
+        "Berbagai peran/izin",
+        "Alur kerja status",
+        "Daftar/detail/dasbor",
+        "Pemberitahuan",
+        "Integrasi layanan utama"
+      ]
+    },
+    {
+      "t": "PLATFORM INTERNAL KHUSUS",
+      "items": [
+        "Beberapa modul",
+        "Persetujuan/aturan yang rumit",
+        "Multi-integrasi",
+        "Ekstensi AI/Otomasi",
+        "Fitur admin operasi"
+      ]
+    }
+  ],
+  "timeLabel": "GARIS WAKTU",
+  "timeTitle": "Garis waktu tergantung pada ruang lingkup.",
+  "timeLead": "Fitur, integrasi, struktur izin, dan data yang ada dapat mengubah durasi.",
+  "timelines": [
+    {
+      "t": "Alat Internal Terfokus",
+      "d": "Sekitar 3–5 minggu"
+    },
+    {
+      "t": "Sistem Operasi Tim",
+      "d": "Sekitar 4–8 minggu"
+    },
+    {
+      "t": "Platform Internal Khusus",
+      "d": "Dicakup secara terpisah"
+    }
+  ],
+  "priceLabel": "BIAYA PROYEK",
+  "priceTitle": "Kami hanya mengutip cakupan yang Anda butuhkan.",
+  "priceName": "ALAT INTERNAL",
+  "priceValue": "Kutipan khusus",
+  "priceFactorsLabel": "Apa yang membentuk harga",
+  "priceFactors": [
+    "Kompleksitas alur kerja",
+    "Jumlah layar/modul",
+    "Struktur peran/izin",
+    "Model data",
+    "Jumlah integrasi",
+    "Ruang lingkup otomatisasi",
+    "fitur AI",
+    "Kebutuhan dasbor",
+    "Migrasi data yang ada",
+    "Pengguna / konkurensi",
+    "Dukungan seluler",
+    "Pemeliharaan"
+  ],
+  "priceNote": "Penawaran akhir ditetapkan setelah kami meninjau proses Anda saat ini dan fitur yang diperlukan.",
+  "extLabel": "BIAYA EKSTERNAL",
+  "extTitle": "Biaya yang mungkin berada di luar biaya pembangunan Newon",
+  "extItems": [
+    "Server/Hosting",
+    "Basis data",
+    "Otentikasi / Identitas",
+    "API Eksternal",
+    "API AI",
+    "Otomatisasi SaaS",
+    "Penyimpanan Awan",
+    "Layanan Email/Pesan",
+    "Layanan eksternal berbayar lainnya"
+  ],
+  "secLabel": "KEAMANAN",
+  "secTitle": "Alat internal dimulai dengan akses dan data.",
+  "secLead": "Ketika informasi sensitif terlibat, kami merancang akses berbasis peran, hak istimewa paling rendah, dan hanya log yang Anda perlukan. Persyaratan keamanan dikonfirmasi sebelum kickoff.",
+  "secItems": [
+    "Akses berbasis peran",
+    "Hak istimewa paling sedikit",
+    "Catatan audit",
+    "Pemisahan lingkungan",
+    "Penanganan kredensial",
+    "Minimalkan data"
+  ],
+  "faqLabel": "Pertanyaan Umum",
+  "faqTitle": "Pertanyaan yang sering diajukan",
+  "faqs": [
+    {
+      "q": "Bukankah Notion atau spreadsheet saja sudah cukup?",
+      "a": "Ini bisa dilakukan sejak dini. Ketika izin, status, persetujuan, riwayat, dan integrasi menjadi rumit, alat internal khusus seringkali lebih stabil."
+    },
+    {
+      "q": "Apa bedanya dengan menyesuaikan SaaS?",
+      "a": "SaaS bagus untuk kecepatan, namun mungkin tidak cocok dengan proses Anda. ALAT INTERNAL dimulai dari aliran Anda yang sebenarnya dan membangun layar serta aturan yang Anda perlukan."
+    },
+    {
+      "q": "Apakah kita memerlukan sistem yang besar sejak hari pertama?",
+      "a": "Tidak. Kami merekomendasikan memulai dengan alur kerja yang paling berulang dan berbiaya tinggi dalam lingkup yang terfokus."
+    },
+    {
+      "q": "Bisakah Anda memigrasikan data sheet yang ada?",
+      "a": "Ya. Cakupan migrasi bergantung pada kebersihan dan struktur data, dan dapat dicakup secara terpisah."
+    },
+    {
+      "q": "Bisakah ini berfungsi di seluler?",
+      "a": "Kita dapat membangun UI yang ramah seluler. Kebutuhan aplikasi asli dikonfirmasi sebagai cakupan terpisah."
+    },
+    {
+      "q": "Bisakah AI atau otomatisasi disertakan?",
+      "a": "Ya. Kami sering kali memperluas dari area yang jelas terlebih dahulu — klasifikasi, ringkasan, peringatan, dan sinkronisasi."
+    },
+    {
+      "q": "Bagaimana dengan data internal yang sensitif?",
+      "a": "Kami menyelaraskan akses, jangkauan data, dan log. Hosting dan autentikasi mengikuti lingkungan dan kebijakan Anda."
+    },
+    {
+      "q": "Bisakah Anda mempertahankan dan memperluas setelah peluncuran?",
+      "a": "Ya. Penambahan fitur, perubahan integrasi, dan dukungan operasi dapat dicakup secara terpisah."
+    }
+  ],
+  "finalLabel": "MULAI PROYEK",
+  "finalTitle": "Ubah kerja tim yang berulang\nmenjadi sebuah alat.",
+  "finalLead": "Beri tahu kami karya mana yang tersebar di lembaran dan obrolan. Kami akan mengonfirmasi layar dan alur yang Anda butuhkan.",
+  "formTitle": "Pertanyaan ALAT INTERNAL",
+  "formLead": "Bagikan proses Anda saat ini dan fitur yang dibutuhkan — kami akan mengonfirmasi cakupannya.",
+  "formCategory": "OTOMATISASI",
+  "formService": "ALAT INTERNAL",
+  "labelCategory": "KATEGORI LAYANAN",
+  "labelService": "LAYANAN",
+  "labelName": "Nama",
+  "labelCompany": "Perusahaan / merek",
+  "labelEmail": "Surel",
+  "labelCurrentTools": "Alat yang Anda gunakan hari ini",
+  "labelCurrentWork": "Pekerjaan berulang hari ini",
+  "labelDesired": "Fitur yang Anda perlukan",
+  "labelUsers": "Pengguna yang diharapkan",
+  "labelIntegrations": "Layanan untuk terhubung",
+  "labelTimeline": "Garis waktu yang diharapkan",
+  "labelBudget": "Kisaran anggaran",
+  "labelMessage": "Deskripsi proyek",
+  "labelConsent": "Saya menyetujui pengumpulan dan penggunaan informasi pribadi.",
+  "privacyLink": "Kebijakan Privasi",
+  "optional": "opsional",
+  "currentToolsOptions": [
+    "<<<BARU KEEP000>>>",
+    "<<<BARU KEEP000>>>",
+    "<<<BARU KEEP000>>>",
+    "<<<BARU KEEP000>>>",
+    "Surel",
+    "<<<BARU KEEP000>>>",
+    "Lainnya SaaS",
+    "Tidak ada / ad-hoc"
+  ],
+  "desiredOptions": [
+    "Permintaan / Penerimaan",
+    "papan kerja",
+    "Alur Persetujuan",
+    "Dasbor",
+    "Peran & Akses",
+    "Integrasi",
+    "Bantuan AI",
+    "Otomatisasi",
+    "Tidak yakin"
+  ],
+  "usersOptions": [
+    "1–5",
+    "6–20",
+    "21–50",
+    "50+",
+    "TBD"
+  ],
+  "timelineOptions": [
+    "Sesegera mungkin",
+    "2–4 minggu",
+    "4–8 minggu",
+    "2–3 bulan",
+    "TBD"
+  ],
+  "budgetOptions": [
+    "₩1M–3M",
+    "₩3M–5M",
+    "₩5M–10M",
+    "₩10 juta+",
+    "TBD"
+  ],
+  "phCurrentWork": "misalnya asupan → tugaskan → setujui → catatan selesai",
+  "phIntegrations": "misalnya Google Sheets + Slack",
+  "phMessage": "Bagikan aliran saat ini, titik nyeri, dan layar/fitur yang Anda perlukan.",
+  "submit": "Kirim pertanyaan",
+  "submitting": "Mengirim…",
+  "fail": "Pengiriman gagal. Silakan coba lagi atau kirim email kepada kami.",
+  "mailSubject": "Newon PERTANYAAN ALAT INTERNAL",
+  "backAutomation": "Kembali ke OTOMATISASI →",
+  "exploreAi": "Lihat OTOMATISASI AI →"
+}

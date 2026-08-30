@@ -1,0 +1,483 @@
+{
+  "seoTitle": "CUSTOM PRODUCT | Newon Geschäft",
+  "metaDescription": "Erstellen Sie benutzerdefinierte digitale Produkte für Probleme, die Standardpakete nicht lösen können - vom Framing über Design, Implementierung und QA. Newon CUSTOM PRODUCT.",
+  "crumbBusiness": "UNTERNEHMEN",
+  "crumbServices": "DIENSTLEISTUNGEN",
+  "crumbSolutions": "LÖSUNGEN",
+  "crumbHere": "CUSTOM PRODUCT",
+  "eyebrow": "CUSTOM PRODUCT",
+  "subEyebrow": "LÖSUNGEN",
+  "headline": "Nicht in ein Paket gezwungen.\nGebaut für das Problem.",
+  "lead": "Wir entwerfen und erstellen benutzerdefinierte Web-Apps, interne Tools, Portale und Dashboards für bestimmte Workflows, Benutzer und Operationen. Vom Problemrahmen und UX/UI über Architektur, Implementierung, Integrationen und QA – wenn Standardpakete nicht ausreichen, liefern wir ein kohärentes Produkt.",
+  "ctaPrimary": "Zollproduktuntersuchung",
+  "ctaSecondary": "Siehe den Build-Flow ↓",
+  "meta": [
+    {
+      "k": "DIENST",
+      "v": "Zollgut"
+    },
+    {
+      "k": "BESTES",
+      "v": "Non-Package-Produkt baut"
+    },
+    {
+      "k": "TIMELIN",
+      "v": "Abhängig vom Umfang"
+    },
+    {
+      "k": "PREIS",
+      "v": "Benutzerdefiniertes Angebot"
+    }
+  ],
+  "overviewLabel": "ÜBERSICHT",
+  "overviewTitle": "Die Notwendigkeit ist klar.\nKein Paket passt.",
+  "overviewBody": [
+    "Häufige Muster wie Buchung, CRM, Anfrage und Dashboards können mit Paketen gelöst werden. In der Praxis stimmen Organisationsstruktur, Workflow, Daten, Berechtigungen und Integrationen selten genau mit einer Standardbox überein.",
+    "Das Erzwingen von Off-the-Shelf-Tools verbiegt Ihren Prozess. Alles von Grund auf neu zu bauen kostet zu viel Zeit und Geld. Was Sie brauchen, ist ein Produkt, das für das eigentliche Problem entwickelt wurde.",
+    "CUSTOM PRODUCT beginnt mit der Definition des Problems, der Benutzer und des Workflow-Kontexts. Dann entwerfen wir UX/UI, Funktionsumfang, Daten- und Integrationsstruktur und liefern Implementierung, QA und Übergabe als ein Produkt."
+  ],
+  "problemsLabel": "PROBLEM",
+  "problemsTitle": "Hilfreich, wenn Sie sich diesen Situationen stellen.",
+  "problems": [
+    {
+      "n": "01 01",
+      "t": "NO FIT PACKUNG",
+      "d": "MVP, Web, App oder interne Tool-Pakete passen nicht vollständig.\nIhr Workflow benötigt ein individuelles Design."
+    },
+    {
+      "n": "02",
+      "t": "ARBEITSGAP",
+      "d": "Bestehende SaaS, Tabellenkalkulationen oder manuelle Prozesse blockieren die Arbeit.\nSie benötigen Ihren eigenen Workflow in Produktform."
+    },
+    {
+      "n": "03",
+      "t": "MULTISYSTEM",
+      "d": "Mehrere Funktionen, Bildschirme, Berechtigungen und Integrationen müssen zu einem Produkt werden.\nEin einziges Paket reicht nicht aus."
+    },
+    {
+      "n": "04",
+      "t": "INTERNES TOOL",
+      "d": "Sie benötigen ein internes Betriebs- oder Managementprodukt, keine öffentliche Marketing-Website.\nGenehmigungen und Prüfungsangelegenheiten."
+    },
+    {
+      "n": "05",
+      "t": "INTEGRIERUNG ERFORDERLICH",
+      "d": "Sie müssen sich mit ERP, CRM, Zahlungen, Daten oder APIs verbinden.\nDas ist Systemaufbau, nicht nur Seiten."
+    },
+    {
+      "n": "06",
+      "t": "LANGFRISTiges PRODUKT",
+      "d": "Sie brauchen etwas für den realen Betrieb und die Erweiterung, keinen Wegwerf-PoC.\nZukünftige Features müssen berücksichtigt werden."
+    }
+  ],
+  "baLabel": "VOR / NACH",
+  "baTitle": "Erzwungene Werkzeuge vs\nproblemgerechtes Produkt",
+  "beforeLabel": "VOR",
+  "afterLabel": "NACH",
+  "before": [
+    "Arbeit verteilt auf SaaS, Tabellenkalkulation und manuelle Schritte",
+    "Prozess biegt zu Werkzeugen statt umgekehrt um",
+    "Viele Anforderungen, aber kein Umfang oder Priorität",
+    "Integrationen, Berechtigungen und Operationen werden zu späten Überraschungen"
+  ],
+  "after": [
+    "Problem, Benutzer und Workflow-Kontext definiert erste",
+    "Benutzerdefinierte UX/UI und Funktionsumfang",
+    "Implementierung, Integrationen und QA in einem Produkt",
+    "Struktur und Dokumente, die Betrieb und Wachstum"
+  ],
+  "capsLabel": "KAPAZITÄTEN",
+  "capsTitle": "unterstützen Wir führen kundenspezifische Produktentwicklung\nals ein strukturiertes Engagement aus.",
+  "caps": [
+    {
+      "t": "PROBLEM FRAMM",
+      "d": "Definieren Sie Problem, Benutzer und Erfolgskriterien.\nErklären Sie, warum ein kundenspezifisches Produkt benötigt wird."
+    },
+    {
+      "t": "UMFANG & ARCHITEKT",
+      "d": "Design Feature Umfang, Daten, Berechtigungen, Integrationen.\nTrennen Sie MVP von der Erweiterung."
+    },
+    {
+      "t": "UX/UI-BEZEICHNUNG",
+      "d": "Design-Bildschirme und Informationsstruktur für den Workflow.\nFügen Sie bei Bedarf ein Konstruktionssystem hinzu."
+    },
+    {
+      "t": "PRODUKT BUILD",
+      "d": "Implementieren Sie Web, App, internes Tool, Portal oder Dashboard.\nErstellen Sie Kernfunktionen in Phasen."
+    },
+    {
+      "t": "Integrierungen",
+      "d": "Implementieren Sie Zahlungen, CRM, ERP, APIs, Datenpipelines.\nDefinieren Sie Grenzen mit bestehenden Systemen."
+    },
+    {
+      "t": "ADMIN & BERECHTIGUNGEN",
+      "d": "Entwerfen und Erstellen von Administratoren, Rollen, Berechtigungen, Audit-Logs.\nMachen Sie den Betrieb vom ersten Tag an möglich."
+    },
+    {
+      "t": "QA und HANDOFF",
+      "d": "Überprüfen Sie Features, Flows und Integrationen.\nGeben Sie Dokumente und Handoff für Betrieb und Wachstum."
+    },
+    {
+      "t": "ITERATIONSPATH",
+      "d": "Planen Sie nach dem Start Erweiterung und Verbesserung.\nConnect Maintenance und Phase 2 Umfang."
+    }
+  ],
+  "sourcesLabel": "PROJEKTINFORMATIONEN",
+  "sourcesTitle": "Wir kombinieren die Inputs, die Ihr Projekt benötigt.",
+  "sourcesNote": "Die tatsächlichen Eingaben variieren je nach Organisation, Workflow und zugänglichen Systemen.",
+  "sources": [
+    "Workflow- und Prozessbeschreibungen",
+    "Aktuelle Werkzeuge im Einsatz",
+    "Interne Daten und Dokumente",
+    "API und Integrationsanforderungen",
+    "Berechtigungen und Organisationsstruktur",
+    "Bestehende Wireframes oder Spezifikationen",
+    "Marken- und UI Richtlinien",
+    "Recht, Sicherheit, Compliance",
+    "Benutzer- und Betreiberinterviews",
+    "Alte Systeme",
+    "Erfolgsmetriken und KPIs",
+    "Zukünftige Erweiterungspläne"
+  ],
+  "useLabel": "VERWENDUNGSFÄLLE",
+  "useTitle": "Produkte, die wir bauen können.",
+  "useBadge": "Beispiel-Build-Typen",
+  "useCases": [
+    {
+      "t": "OPERATIONEN PORTAL",
+      "d": "Interne Ops, Management-, Genehmigungs- und Anforderungsportale.\nWorkflows, die auf Ihren Prozess abgestimmt sind."
+    },
+    {
+      "t": "CUSTOM SAAS",
+      "d": "SaaS für eine bestimmte Benutzergruppe oder einen Workflow.\nAbonnement, Berechtigungen und Admin enthalten."
+    },
+    {
+      "t": "KUNDEN / PARTNERINFORMATION",
+      "d": "Portale für Kunden, Partner oder Anbieter.\nBestellungen, Anfrage, Status, Dokumentenaustausch."
+    },
+    {
+      "t": "DATENDASHBOARD",
+      "d": "Dashboards, die verstreute Daten vereinen.\nKPI, Bericht und Alarmstruktur."
+    },
+    {
+      "t": "WORKFLOW PRODUKT",
+      "d": "Produkte, die sich auf Genehmigung, Überprüfung, Zuordnung, Status konzentrieren.\nKann mit Automatisierung verknüpft werden."
+    },
+    {
+      "t": "MARKTPLACE / PLATTFORM",
+      "d": "Multi-User, Multi-Role-Plattform-Produkte.\nListing, Matching, Settlement, Admin."
+    },
+    {
+      "t": "FELD/MOBILE",
+      "d": "Field-First benutzerdefinierte App oder Web.\nOffline und Sync betrachtet."
+    },
+    {
+      "t": "RECHTSVORSCHRIFTEN",
+      "d": "Ersetzen Sie Tabellenkalkulationen, manuelle Operationen oder Legacy-Systeme.\nPhasenweises Übergangsdesign."
+    }
+  ],
+  "flowLabel": "BEISPIEL WORKFLOW",
+  "flowTitle": "Vom Problemrahmen bis zur Produktlieferung",
+  "flow": [
+    {
+      "n": "01 01",
+      "t": "DEFIN",
+      "d": "Definieren Sie Problem, Benutzer und Erfolgskriterien.\nStimmen Sie zu, warum ein kundenspezifisches Produkt benötigt wird.",
+      "examples": [
+        "Problem",
+        "Nutzer",
+        "KPI",
+        "Einschränkungen"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "UMFANG",
+      "d": "Design Feature Scope, UX, Daten, Integrationen.\nPhase 1 von der Expansion trennen.",
+      "examples": [
+        "Merkmale",
+        "Bildschirme",
+        "Daten",
+        "Integrationen"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "BEZEICHNUNG",
+      "d": "Designflows, UI, Informationsstruktur, Berechtigungen.\nBestätigen Sie Kernbildschirme und Admin.",
+      "examples": [
+        "Flüsse",
+        "UI",
+        "Rollen",
+        "Admin"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BAU",
+      "d": "Implementieren Sie Kernfunktionen und Integrationen.\nReview in Phasen mit Feedback.",
+      "examples": [
+        "Vorderteil",
+        "Backend",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LIEFERER",
+      "d": "Bereitstellen, Verifizieren, Dokumentieren und Abgeben.\nVerbinden Sie den Betriebs- und Erweiterungspfad.",
+      "examples": [
+        "Einsatz",
+        "Dokumente",
+        "Übergabe",
+        "Phase 2"
+      ]
+    }
+  ],
+  "reportLabel": "AUSGANGSLEISTUNG",
+  "reportTitle": "Deliverables sind ein funktionsfähiges Produkt und unterstützende Dokumente.",
+  "reportLead": "Die Zusammensetzung variiert je nach Projektumfang. Unten sind gemeinsame Elemente.",
+  "reportMockStatus": "PRODUKT · SPEC",
+  "reportMockK": "CUSTOM PRODUCTSPEC",
+  "reportMockT": "Umfang, Module, Integrationen, Meilensteine",
+  "reportItems": [
+    "Problem & Ziele",
+    "Umfang Zusammenfassung",
+    "Benutzer- und Rollenkarte",
+    "Merkmalsliste",
+    "UX / UI Übersicht",
+    "Daten & Integration",
+    "Admin & Berechtigungen",
+    "Meilensteinplan",
+    "QA Checkliste",
+    "Handoff Notes"
+  ],
+  "dashTitle": "Teilen Sie Umfang und Modulstruktur in einer Ansicht.",
+  "dashLead": "Features, Integrationen und Phasen zusammen beschleunigen Umfang Vereinbarung und bauen Diskussionen.",
+  "dashNote": "Modulzusammensetzung und Phasenaufteilung variieren je nach Projektziel und Budget.",
+  "dashMetrics": [
+    "Module",
+    "Integrationen",
+    "Phasen",
+    "Meilensteine"
+  ],
+  "dashFilters": [
+    "Alle",
+    "Kernnetz",
+    "Admin",
+    "Phase 2"
+  ],
+  "aiLabel": "BESCHLUSS",
+  "aiTitle": "Automatische Wiederholung.\nKonzentriere dich auf Design und Build.",
+  "aiLead": "Anforderungsstrukturierung, Flussentwürfe, Doc-Gerüst und QA-Checklisten können für die Geschwindigkeit von AI unterstützt werden - während sich die Benutzer auf Architektur, UX und Kernimplementierung konzentrieren.",
+  "aiExamples": [
+    "Strukturanforderungen und Sitzungshinweise",
+    "Draft Flows und Screen Lists",
+    "Organisieren Sie API und Datenmodelle",
+    "QA und Test-Checklisten",
+    "Ops und Handoff Doc Drafts",
+    "Vergleichen Sie Umfang und Phasensplits"
+  ],
+  "aiNote": "Endgültiger Umfang, Design und Qualitätsentscheidungen werden mit Ihrem Projektteam bestätigt.",
+  "delLabel": "LIEFERBARE",
+  "delTitle": "Was Sie erhalten, wenn das Projekt",
+  "delLead": "abschließt Wir liefern die folgenden Artikel nach Bedarf für Ihren Umfang.",
+  "deliverables": [
+    "Kundenspezifisches Produkt (Web / App / Portal)",
+    "Admin-Konsole",
+    "UX / UI Designdateien",
+    "Technische Dokumentation",
+    "Api & Integration Docs",
+    "Bereitstellung",
+    "QA Bericht",
+    "Handoff & Ops Guide",
+    "Phase 2 Fahrplan (fakultativ)"
+  ],
+  "processLabel": "PROZESS",
+  "processTitle": "Vom Problemrahmen bis zur Übergabe.",
+  "process": [
+    {
+      "n": "01 01",
+      "t": "ENTWICKLUNG",
+      "d": "Bestätigen Sie Problem, Benutzer, aktuellen Prozess, Einschränkungen.\nErfolgskriterien und Entscheidungsstruktur verstehen.",
+      "examples": [
+        "Problem",
+        "Nutzer",
+        "Aktuell",
+        "KPI"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "UMFANG",
+      "d": "Definieren Sie Feature, Bildschirm, Daten, Integrationsumfang.\nVereinbaren Sie Phase 1 / 2, Timeline und Budget.",
+      "examples": [
+        "Merkmale",
+        "Anwendungsbereich",
+        "Integrationen",
+        "Zeitleiste"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "BEZEICHNUNG",
+      "d": "Designflows, UI, Informationsstruktur, Berechtigungen.\nBestätigen Sie Kernbildschirme und Admin-Struktur.",
+      "examples": [
+        "Flüsse",
+        "UI",
+        "Admin",
+        "Überprüfung"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BAU",
+      "d": "Implementieren Sie Frontend, Backend, Integrationen.\nDemo und Review in Phasen.",
+      "examples": [
+        "Kernnetz",
+        "API",
+        "Integrationen",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PRÜFUNG",
+      "d": "Überprüfen Sie Features, Flows, Berechtigungen, Integrationen.\nÜberprüfen Sie gegen Betriebsszenarien.",
+      "examples": [
+        "QA",
+        "UAT",
+        "Fixes",
+        "Abnahme"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "EINSATZ",
+      "d": "Bereiten Sie die Umgebung und die Freigabe vor.\nBestätigen Sie Überwachungs- und Rollback-Pfade.",
+      "examples": [
+        "Stufung",
+        "Prod",
+        "",
+        "Überwachung"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "HANDBUFF",
+      "d": "Dokument, Anleitungen und Hand off.\nVerbinden Sie Erweiterungs- und Wartungspfad.",
+      "examples": [
+        "Dokumente",
+        "Ausbildung",
+        "Unterstützung",
+        "Phase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "ANWENDUNGSBEREICH",
+  "scopeTitle": "Wie man über die Komplexität von Projekten denkt.",
+  "scopeLead": "Kein festes Paket. Der Umfang wird durch Problemgröße, Integrationen und Berechtigungskomplexität festgelegt.",
+  "scopes": [
+    {
+      "t": "FOCUSED PRODUKT",
+      "items": [
+        "Single Core Problem oder Workflow",
+        "Begrenzte Benutzer und Rollen",
+        "Kernbildschirme und Admin",
+        "1–2 Grundintegrationen",
+        "Phase 1 Startfokus"
+      ]
+    },
+    {
+      "t": "VOLLSTÄNDIGES KUNSTGEBÄUDE",
+      "items": [
+        "Mehrere Module, Rollen, Berechtigungen",
+        "Benutzerdefinierte UX/UI",
+        "Multiintegrationsdatenstruktur",
+        "Betriebs- und Auditfunktionen",
+        "Dokumente und Übergabe enthalten"
+      ]
+    },
+    {
+      "t": "PLATTFORMBAU",
+      "items": [
+        "Plattform- oder Marktplatzstruktur",
+        "Multitenant, Settlement, Admin",
+        "Complex API und Legacy Links",
+        "Expansion und Phase 2 Design",
+        "Die Langzeit-Ops- und Wartungsverbindung"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELIN",
+  "timeTitle": "verlinken Timeline hängt vom Umfang ab.",
+  "timeLead": "-Dauer variiert je nach Anzahl der Funktionen, Integrationen, Designtiefe und Entscheidungsgeschwindigkeit.",
+  "timelines": [
+    {
+      "t": "Fokussiertes Produkt",
+      "d": "Etwa 4-8 Wochen · variiert"
+    },
+    {
+      "t": "Full-Custom Build",
+      "d": "Etwa 8-16 Wochen · variiert"
+    },
+    {
+      "t": "Plattform Build",
+      "d": "Über 12+ Wochen · benutzerdefinierte"
+    }
+  ],
+  "priceLabel": "PROJEKTKOSTEN",
+  "priceTitle": "Pro Projekt angegeben.",
+  "priceName": "CUSTOM PRODUCT",
+  "priceValue": "Benutzerdefiniertes Angebot",
+  "priceFactorsLabel": "Preisfaktoren",
+  "priceFactors": [
+    "Umfang — Features, Bildschirme, Module",
+    "Komplexität — Daten, Berechtigungen, Logik",
+    "Zeitplan und Mittelausstattung",
+    "Integration — API, Legacy, Zahlungen",
+    "Auslegungstiefe — Bereich UX/UI",
+    "Art der Plattform — Web, App, Portal",
+    "Beteiligung des Teams — Entscheidungen, UAT",
+    "Post-Launch — Wartung, Erweiterung"
+  ],
+  "priceNote": "Wir überprüfen Umfang / Komplexität / Timeline / Integration und geben dann ein Angebot ab. Keine festen Menüpreise.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faqs": [
+    {
+      "q": "Wie unterscheidet sich das von MVP, Web- oder App-Paketen?",
+      "a": "Pakete sind Standarddienste mit definiertem Umfang. CUSTOM PRODUCT ist benutzerdefiniertes Design und Build für Org, Workflow und Integrationsanforderungen."
+    },
+    {
+      "q": "Wie unterscheidet sich das von White-Label?",
+      "a": "White-label passt eine validierte Grundlage an Ihre Marke und Module an. CUSTOM PRODUCT entwirft und baut von Anfang an für das Problem."
+    },
+    {
+      "q": "Wie wird die Preisgestaltung festgelegt?",
+      "a": "Nach der Überprüfung von Zielen, Umfang, Komplexität, Zeitleiste und Integrationen - oft nach Phasen."
+    },
+    {
+      "q": "Ist Design inklusive?",
+      "a": "Das UX/UI-Design kann in den Geltungsbereich aufgenommen werden. Bestehende Marken- oder Designrichtlinien können verwendet werden, wenn verfügbar."
+    },
+    {
+      "q": "Können Sie sich in bestehende Systeme integrieren?",
+      "a": "Ja. API, Daten, SSO, Zahlungen, ERP/CRM und andere Integrationsanforderungen können erweitert und gestaltet werden."
+    },
+    {
+      "q": "Können Sie die Wartung nach dem Start unterstützen?",
+      "a": "Ja. Phase 2, Funktionserweiterung und operativer Support können unter separater Vereinbarung fortgesetzt werden."
+    },
+    {
+      "q": "Wie wird mit Vertraulichkeit umgegangen?",
+      "a": "Materialien werden nur im vereinbarten Umfang verwendet. NDA bei Bedarf verfügbar."
+    }
+  ],
+  "finalLabel": "START A PROJEKT",
+  "finalTitle": "Beginnen Sie mit dem Problem,\nNicht das Paket.",
+  "finalLead": "Wenn Sie ein Workflowproblem, Benutzer und Integrationsanforderungen haben, sagen Sie uns, was Sie zu lösen versuchen. Wir werden den benutzerdefinierten Produktumfang bestätigen und gemeinsam einen Ansatz entwickeln.",
+  "ctaFinalSecondary": "Alle Lösungen ansehen",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

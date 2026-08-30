@@ -2,6 +2,8 @@
  * CONSUMER RESEARCH service detail — KO/EN copy.
  * Path: /{lang}/business/consumer-research/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const CONSUMER_RESEARCH_COPY = {
   ko: {
     seoTitle: "CONSUMER RESEARCH | Newon Business",
@@ -798,5 +800,5 @@ export const CONSUMER_RESEARCH_COPY = {
 };
 
 export function getConsumerResearchCopy(lang) {
-  return lang === "ko" ? CONSUMER_RESEARCH_COPY.ko : CONSUMER_RESEARCH_COPY.en;
+  return resolveKoEnPack(CONSUMER_RESEARCH_COPY, lang, "consumer-research-copy");
 }

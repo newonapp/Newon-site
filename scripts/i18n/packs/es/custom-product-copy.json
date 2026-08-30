@@ -1,0 +1,483 @@
+{
+  "seoTitle": "CUSTOM PRODUCT Silencioso Newon Negocios",
+  "metaDescription": "Construir productos digitales personalizados para problemas Los paquetes estándar no pueden resolver: desde el diseño, la implementación y QA. Newon CUSTOM PRODUCT.",
+  "crumbBusiness": "NEGOCIOS",
+  "crumbServices": "SERVICIOS",
+  "crumbSolutions": "SOLUCIONES",
+  "crumbHere": "CUSTOM PRODUCT",
+  "eyebrow": "CUSTOM PRODUCT",
+  "subEyebrow": "SOLUCIONES",
+  "headline": "No se forzó a un paquete.\nConstruido para el problema.",
+  "lead": "Diseñamos y construimos aplicaciones web personalizadas, herramientas internas, portales y paneles para flujos de trabajo específicos, usuarios y operaciones. Desde el encuadre de problemas y UX/UI a través de arquitectura, implementación, integraciones y QA — cuando los paquetes estándar no son suficientes, entregamos un producto coherente.",
+  "ctaPrimary": "De investigación personalizada de productos →",
+  "ctaSecondary": "Ver el flujo de construcción ↓",
+  "meta": [
+    {
+      "k": "SERVICIO",
+      "v": "Producto personalizado"
+    },
+    {
+      "k": "MEJOR",
+      "v": "No paquete de productos construye"
+    },
+    {
+      "k": "TimeLINE",
+      "v": "Depende del alcance"
+    },
+    {
+      "k": "PRECIO",
+      "v": "Cita personalizada"
+    }
+  ],
+  "overviewLabel": "",
+  "overviewTitle": "La necesidad es clara.\nNingún paquete encaja.",
+  "overviewBody": [
+    "Los patrones comunes como la reserva, CRM, la pregunta y los paneles pueden ser resueltos con paquetes. En la práctica, estructura de org, flujo de trabajo, datos, permisos e integraciones raramente coinciden con una caja estándar exactamente.",
+    "Forzar herramientas fuera de la plataforma dobla tu proceso. Construir todo desde cero cuesta demasiado tiempo y dinero. Lo que necesitas es un producto diseñado para el problema real.",
+    "CUSTOM PRODUCT comienza definiendo el problema, los usuarios y el contexto del flujo de trabajo. Luego diseñamos UX/UI, el alcance de la función, la estructura de datos e integración, y entregamos la implementación, QA, y la entrega como un producto."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Ayudante cuando se enfrenta a estas situaciones.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "NO PAQUETE DE AJUSTE",
+      "d": "MVP, web, app o paquetes de herramientas internas no encajan completamente.\nSu flujo de trabajo necesita diseño personalizado."
+    },
+    {
+      "n": "02",
+      "t": "TRABAJO GAP",
+      "d": "SaaS existente, hojas de cálculo o proceso manual bloquea el trabajo.\nNecesitas tu propio flujo de trabajo en forma de producto."
+    },
+    {
+      "n": "03",
+      "t": "MULTISISTEMA",
+      "d": "Múltiples características, pantallas, permisos e integraciones deben convertirse en un producto.\nUn solo paquete no es suficiente."
+    },
+    {
+      "n": "04",
+      "t": "HERRAMIENTA INTERNA",
+      "d": "Necesitas un producto interno o de gestión, no un sitio de marketing público.\nPermisos y asuntos de auditoría."
+    },
+    {
+      "n": "05",
+      "t": "NECESIDAD DE INTEGRACIÓN",
+      "d": "Debe conectarse a ERP, CRM, pagos, datos o APIs.\nEsto es la construcción del sistema, no sólo páginas."
+    },
+    {
+      "n": "06",
+      "t": "PRODUCTO A LARGO PLAZO",
+      "d": "Necesitas algo para una operación y expansión real, no un PoC desechable.\nDeben tenerse en cuenta las características futuras."
+    }
+  ],
+  "baLabel": "ANTES / DESPUÉS",
+  "baTitle": "Herramientas forzadas vs\nproducto problem-fit",
+  "beforeLabel": "ANTES",
+  "afterLabel": "DESPUÉS",
+  "before": [
+    "Trabajo diseminado a través de SaaS, hojas de cálculo y pasos manuales",
+    "Proceso se dobla a las herramientas en lugar de la otra manera",
+    "Muchos requisitos, pero sin alcance o prioridad",
+    "Las integraciones, permisos y operaciones se convierten en sorpresas tardías"
+  ],
+  "after": [
+    "Problema, usuarios y contexto de flujo de trabajo definen primero",
+    "UX/UI personalizado y el alcance de la característica diseñado",
+    "Implementación, integraciones y QA en un producto",
+    "Estructura y docs que apoyan el funcionamiento y el crecimiento"
+  ],
+  "capsLabel": "CAPABILIDADES",
+  "capsTitle": "Utilizamos la construcción de productos personalizados\ncomo un compromiso estructurado.",
+  "caps": [
+    {
+      "t": "PROBLEMA DE FRAUDE",
+      "d": "Define el problema, los usuarios y los criterios de éxito.\nAclarar por qué se necesita un producto personalizado."
+    },
+    {
+      "t": "SCOPE &amp; ARCHITECTURE",
+      "d": "Diseño de alcance, datos, permisos, integraciones.\nSeparar MVP de la expansión."
+    },
+    {
+      "t": "UX / UI DESIGN",
+      "d": "Pantallas de diseño y estructura de información para el flujo de trabajo.\nIncluya el sistema de diseño cuando sea necesario."
+    },
+    {
+      "t": "PRODUCTO BUILD",
+      "d": "Implementar web, aplicación, herramienta interna, portal o dashboard.\nConstruir características centrales en fases."
+    },
+    {
+      "t": "INTEGRACIONES",
+      "d": "Ejecutar pagos, CRM, ERP, APIs, tuberías de datos.\nDefinir los límites con los sistemas existentes."
+    },
+    {
+      "t": "ADMIN &quot; PERMISSIONS",
+      "d": "Diseñar y construir administración, roles, permisos, registros de auditoría.\nHacer posible la operación desde el primer día."
+    },
+    {
+      "t": "QA &amp; HANDOFF",
+      "d": "Verificar características, flujos e integraciones.\nProveer docs y handoff para el funcionamiento y el crecimiento."
+    },
+    {
+      "t": "RUTA DE LA ITERACIÓN",
+      "d": "Planifique la expansión y mejora posterior al lanzamiento.\nConectar mantenimiento y alcance Phase 2."
+    }
+  ],
+  "sourcesLabel": "PROYECTO INPUTS",
+  "sourcesTitle": "Combinamos las entradas que necesita su proyecto.",
+  "sourcesNote": "Los insumos reales varían por organización, flujo de trabajo y sistemas accesibles.",
+  "sources": [
+    "Flujo de trabajo y descripciones de procesos",
+    "Herramientas actuales en uso",
+    "Datos y documentos internos",
+    "API y requisitos de integración",
+    "Permisos y estructura de org",
+    "Cables de cable existentes o especificaciones",
+    "Marca y UI directrices",
+    "Legal, security, compliance",
+    "Entrevistas de usuario y operador",
+    "Sistemas de Legado",
+    "Metrices de éxito y KPIs",
+    "Planes de expansión futuros"
+  ],
+  "useLabel": "CASOS DE USO",
+  "useTitle": "Productos que podemos construir.",
+  "useBadge": "Tipos de construcción de ejemplos",
+  "useCases": [
+    {
+      "t": "PORTAL DE OPERACIONES",
+      "d": "Operaciones internas, administración, aprobación y portales de solicitud.\nFlujos de trabajo en forma de su proceso."
+    },
+    {
+      "t": "SAAS PERSONALIZADAS",
+      "d": "SaaS para un grupo de usuarios o flujo de trabajo específico.\nSuscripción, permisos y administración incluidos."
+    },
+    {
+      "t": "HERRAMIENTA CLIENTE / SOCIO",
+      "d": "Portales para clientes, socios o proveedores.\nPedidos, investigación, estado, intercambio de documentos."
+    },
+    {
+      "t": "DASHBOARD",
+      "d": "Dashboards que unifican los datos dispersos.\nKPI, informe y estructura de alerta."
+    },
+    {
+      "t": "TRABAJO PRODUCTO",
+      "d": "Productos centrados en la aprobación, revisión, asignación, estado.\nPuede conectarse con la automatización."
+    },
+    {
+      "t": "MERCADO / PLATAFORMA",
+      "d": "Productos multiusuario de plataforma multi-role.\nListing, matching, settlement, admin."
+    },
+    {
+      "t": "TOOL DE FELIZ / MOBILE",
+      "d": "Primera aplicación personalizada o web.\nSin conexión y sincronización considerada."
+    },
+    {
+      "t": "SUSTITUCIÓN HEREDADA",
+      "d": "Reemplazar hojas de cálculo, operaciones manuales o sistemas heredados.\nDiseño de transición gradual."
+    }
+  ],
+  "flowLabel": "EJEMPLO DE FLUJO DE TRABAJO",
+  "flowTitle": "De la definición de problema a la entrega de productos",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINIR",
+      "d": "Define el problema, los usuarios y los criterios de éxito.\nDe acuerdo por qué se necesita un producto personalizado.",
+      "examples": [
+        "Problema",
+        "Usuarios",
+        "KPI",
+        "Limitaciones"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ÁMBITO",
+      "d": "Alcance de características de diseño, UX, datos, integraciones.\nFase 1 separada de la expansión.",
+      "examples": [
+        "Características",
+        "Pantallas",
+        "Datos",
+        "Integraciones"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DISEÑO",
+      "d": "Flujos de diseño, UI, estructura de información, permisos.\nConfirme las pantallas centrales y el administrador.",
+      "examples": [
+        "Flujos",
+        "UI",
+        "Funciones",
+        "Admin"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONSTRUCCIÓN",
+      "d": "Implementar características e integraciones básicas.\nRevise en fases con retroalimentación.",
+      "examples": [
+        "Frontend",
+        "Backend",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ENTREGA",
+      "d": "Despliegue, verifique, documente y entregue.\nConectar el camino de operación y expansión.",
+      "examples": [
+        "Despliegue",
+        "Docs",
+        "Handoff",
+        "Fase 2"
+      ]
+    }
+  ],
+  "reportLabel": "Fuera.",
+  "reportTitle": "Las entregas son un producto operable y docs de apoyo.",
+  "reportLead": "La composición varía según el alcance del proyecto. A continuación se presentan artículos comunes.",
+  "reportMockStatus": "PRODUCTO · ESPECIFICACIÓN",
+  "reportMockK": "CUSTOM PRODUCT",
+  "reportMockT": "Alcance, módulos, integraciones, hitos",
+  "reportItems": [
+    "Problema de los objetivos",
+    "Resumen de alcance",
+    "Mapa de roles",
+    "Lista de características",
+    "UX / UI Vista general",
+    "Datos e integración",
+    "Admin &quot; Permissions",
+    "Plan de Milestone",
+    "QA Lista de comprobación",
+    "Notas de entrega"
+  ],
+  "dashTitle": "Compartir el alcance y la estructura del módulo en una vista.",
+  "dashLead": "Características, integraciones y fases unen el acuerdo de alcance de velocidad y construyen discusiones.",
+  "dashNote": "La composición del módulo y la división de fase varían según el objetivo del proyecto y el presupuesto.",
+  "dashMetrics": [
+    "Módulos",
+    "Integraciones",
+    "Fases",
+    "Millas"
+  ],
+  "dashFilters": [
+    "Todos",
+    "Núcleo básico",
+    "Admin",
+    "Fase 2"
+  ],
+  "aiLabel": "ACCELERACIÓN",
+  "aiTitle": "Automatizar la repetición.\nConcéntrate en el diseño y la construcción.",
+  "aiLead": "Las listas de verificación QA pueden recibir ayuda de AI para la velocidad, mientras que las personas se centran en la arquitectura, UX y la implementación básica.",
+  "aiExamples": [
+    "Requisitos de estructura y notas de reunión",
+    "Borrar flujos y listas de pantalla",
+    "Organizar API y modelos de datos",
+    "QA y listas de comprobación",
+    "Opciones y borradores de doc",
+    "Compare el alcance y las divisiones de fase"
+  ],
+  "aiNote": "El alcance final, el diseño y las decisiones de calidad se confirman con su equipo de proyecto.",
+  "delLabel": "SUMINISTROS",
+  "delTitle": "Lo que recibe cuando el proyecto completa",
+  "delLead": "Entregamos los siguientes elementos según sea necesario para su alcance.",
+  "deliverables": [
+    "Producto personalizado (Web / App / Portal)",
+    "Consola de administración",
+    "UX / UI Archivos de diseño",
+    "Documentación técnica",
+    "Api &amp; integration docs",
+    "Configuración del despliegue",
+    "QA Informe",
+    "Handoff &amp; Ops Guide",
+    "Phase 2 Roadmap (opcional)"
+  ],
+  "processLabel": "PROCESO",
+  "processTitle": "De la definición de problema a la entrega.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCUBRIMIENTO",
+      "d": "Confirme el problema, usuarios, proceso actual, limitaciones.\nComprender los criterios de éxito y la estructura de decisiones.",
+      "examples": [
+        "Problema",
+        "Usuarios",
+        "actual",
+        "KPI"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ÁMBITO",
+      "d": "Definir función, pantalla, datos, alcance de integración.\nFase Agree 1 / 2, cronograma y presupuesto.",
+      "examples": [
+        "Características",
+        "Ámbito",
+        "Integraciones",
+        "Timeline"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DISEÑO",
+      "d": "Flujos de diseño, UI, estructura de información, permisos.\nConfirme pantallas centrales y estructura de administración.",
+      "examples": [
+        "Flujos",
+        "UI",
+        "Admin",
+        "Valoración"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONSTRUCCIÓN",
+      "d": "Implementar frontend, backend, integraciones.\nDemo y revisión en fases.",
+      "examples": [
+        "Núcleo básico",
+        "API",
+        "Integraciones",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PRUEBA",
+      "d": "Verificar características, flujos, permisos, integraciones.\nControle los escenarios operativos.",
+      "examples": [
+        "QA",
+        "UAT",
+        "Arreglos",
+        "Sign-off"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "DESPLIEGUE",
+      "d": "Prepare el ambiente y la liberación.\nConfirme las rutas de monitoreo y retroceso.",
+      "examples": [
+        "",
+        "Prod",
+        "Acceso",
+        "Monitor"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "HANDOFF",
+      "d": "Documentos, operaciones de guía y desvío.\nConectar el camino de expansión y mantenimiento.",
+      "examples": [
+        "Docs",
+        "Capacitación",
+        "Soporte",
+        "Fase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "NIVELES DE ALCANCE",
+  "scopeTitle": "Cómo pensar en la complejidad del proyecto.",
+  "scopeLead": "No un paquete fijo. El alcance está fijado por el tamaño del problema, las integraciones y la complejidad del permiso.",
+  "scopes": [
+    {
+      "t": "PRODUCTO CENTRADO",
+      "items": [
+        "Problema de núcleo único o flujo de trabajo",
+        "Usuarios limitados y roles",
+        "Pantallas básicas y administración",
+        "1–2 integraciones básicas",
+        "Fase 1 foco de lanzamiento"
+      ]
+    },
+    {
+      "t": "CONSTRUCCIÓN COMPLETA PERSONALIZADA",
+      "items": [
+        "Múltiples módulos, roles, permisos",
+        "UX/UI personalizado",
+        "Estructura de datos multi-integración",
+        "Operaciones y funciones de auditoría",
+        "Docs y handoff incluidos"
+      ]
+    },
+    {
+      "t": "PLATAFORMA DE CONSTRUCCIÓN",
+      "items": [
+        "Estructura de plataforma o mercado",
+        "Multi-tenant, liquidación, admin",
+        "Complex API y enlaces heredados",
+        "Expansion y Phase 2 diseño",
+        "Enlace de operaciones y mantenimiento a largo plazo"
+      ]
+    }
+  ],
+  "timeLabel": "TimeLINE",
+  "timeTitle": "El plazo depende del alcance.",
+  "timeLead": "La duración varía según el recuento de características, integraciones, profundidad de diseño y velocidad de decisión.",
+  "timelines": [
+    {
+      "t": "Producto focalizado",
+      "d": "Alrededor de 4-8 semanas · varía"
+    },
+    {
+      "t": "Construcción completa personalizada",
+      "d": "Alrededor de 8–16 semanas · varía"
+    },
+    {
+      "t": "Plataforma de construcción",
+      "d": "Alrededor de 12+ semanas · personalizado"
+    }
+  ],
+  "priceLabel": "PROYECTO COST",
+  "priceTitle": "Citado por proyecto.",
+  "priceName": "CUSTOM PRODUCT",
+  "priceValue": "Cita personalizada",
+  "priceFactorsLabel": "Factores de precios",
+  "priceFactors": [
+    "Alcance — características, pantallas, módulos",
+    "Complejidad — datos, permisos, lógica",
+    "Timeline — horario y recursos",
+    "Integración — API, legado, pagos",
+    "Profundidad de diseño — UX/UI range",
+    "Tipo de plataforma — web, app, portal",
+    "Participación del equipo - decisiones, UAT",
+    "Post-lanzamiento: mantenimiento, expansión"
+  ],
+  "priceNote": "Revisamos Alcance / Complejidad / Timeline / Integración, luego proporcionamos una cotización. No hay precios fijos del menú.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Preguntas frecuentes",
+  "faqs": [
+    {
+      "q": "¿Cómo es diferente de los paquetes MVP, web o app?",
+      "a": "Los paquetes son servicios estándar definidos. CUSTOM PRODUCT es diseño personalizado y construye para org, flujo de trabajo y necesidades de integración."
+    },
+    {
+      "q": "¿Cómo es diferente a la etiqueta blanca?",
+      "a": "White-label adapta una base validada a tu marca y módulos. CUSTOM PRODUCT diseña y construye para el problema desde el principio."
+    },
+    {
+      "q": "¿Cómo se fijan los precios?",
+      "a": "Después de revisar objetivos, alcance, complejidad, cronograma e integraciones, a menudo por fase."
+    },
+    {
+      "q": "¿Está incluido el diseño? El diseño",
+      "a": "UX/UI puede ser incluido en el alcance. Las directrices existentes de marca o diseño se pueden utilizar cuando estén disponibles."
+    },
+    {
+      "q": "¿Se puede integrar con los sistemas existentes?",
+      "a": "Sí. API, datos, SSO, pagos, ERP/CRM y otras necesidades de integración pueden ser concebidas y diseñadas."
+    },
+    {
+      "q": "¿Puede apoyar el mantenimiento post-lanzamiento?",
+      "a": "Sí. Phase 2, expansión de características y soporte operativo puede continuar bajo acuerdo separado."
+    },
+    {
+      "q": "¿Cómo se maneja la confidencialidad?",
+      "a": "Los materiales sólo se utilizan dentro del alcance acordado. NDA disponible cuando sea necesario."
+    }
+  ],
+  "finalLabel": "START A PROYECTO",
+  "finalTitle": "Empieza con el problema,\nno el paquete.",
+  "finalLead": "Si usted tiene un problema de flujo de trabajo, los usuarios y las necesidades de integración, díganos lo que está tratando de resolver. Confirmaremos el alcance del producto personalizado y construiremos el enfoque juntos.",
+  "ctaFinalSecondary": "Ver todas las SOLUCIONES →",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

@@ -34,6 +34,7 @@ const PUBLISH_ROOT_CORE = [
   "styles.css",
   "gnav-mega.css",
   "site-dark.css",
+  "site-mobile.css",
   "site-premium.css",
   "hub-pages.css",
   "home-studio.css",

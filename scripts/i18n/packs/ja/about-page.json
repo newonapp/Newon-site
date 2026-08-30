@@ -1,0 +1,385 @@
+{
+  "seoTitle": "Newon について |プロダクト＆ベンチャースタジオ",
+  "metaDescription": "Newon は、アプリ、AI、ゲーム、ウェブ サービスを構築するプロダクト & ベンチャー スタジオであり、企業と提携して新しいデジタル エクスペリエンスとビジネスの可能性を設計します。",
+  "metaKeywords": "Newon、プロダクト スタジオ、ベンチャー スタジオ、OX MONTH、GoalUp、CountUp、Savy、SubPing、PiggyUp、 Pillmate、BabyLog、PetLog、My World、Newon+、プロダクト & ベンチャー スタジオ",
+  "brandAria": "Newon",
+  "brandMarkAlt": "Newon",
+  "brandWord": "Newon",
+  "brandLine": "プロダクト＆ベンチャースタジオ",
+  "brandCrumb": "会社概要 / 会社概要",
+  "brandScroll": "下にスクロールします",
+  "brandPointTitle": "NEWON CARD",
+  "brandPointSub": "デジタル カードを通じて Newon に会いましょう",
+  "brandPointBadge": "DIGITAL",
+  "brandMetaLeft": "NEWON",
+  "brandMetaRight": "東部標準時。 2026年",
+  "brandKicker": "NEW + ON",
+  "brandTag": "アプリ · AI · ゲーム · ウェブ — 弊社によって構築および検証されました。",
+  "brandDomainsAria": "私たちが構築するもの",
+  "brandDomains": [
+    "アプリ",
+    "AI",
+    "ゲーム",
+    "ウェブ"
+  ],
+  "brandMeaning": "新しい可能性にスイッチを入れ、それを現実のものにします。",
+  "heroEyebrow": "ABOUT NEWON",
+  "heroTitleHtml": "新たな可能性<br />を製品に変えます。",
+  "heroLeadHtml": "私たちはアプリ、AI、ゲーム、ウェブ サービスを構築して実行し、同じ実行を使用して企業や創設者とともに次の製品の可能性を開きます。",
+  "heroNameAria": "新しい + オン",
+  "heroNameKicker": "NEW + ON",
+  "heroNameNew": "NEW",
+  "heroNameNewDesc": "新しいアイデアと可能性",
+  "heroNameOn": "ON",
+  "heroNameOnDesc": "アイデアを実際の製品として機能させる",
+  "heroNameNote": "New + On は、新しいアイデアや可能性をオンにし、それらを現実にすることを意味します。",
+  "cardAria": "Newon デジタル カードを開きます",
+  "cardAlt": "Newon 名刺",
+  "cardHint": "デジタルカード · タップして開きます",
+  "ctaProducts": "製品を見る→",
+  "ctaBusiness": "お仕事のお問い合わせ →",
+  "whyEyebrow": "WHY NEWON",
+  "whyTitle": "可能性を広げる名前。",
+  "whyTagline": "新しい + オン",
+  "whyTaglineEn": "TURN POSSIBILITIES ON",
+  "whyBody": [
+    "Newon は New + On で始まります。",
+    "新しいは、アイデア、経験、製品、可能性を表します。オンとは、スイッチをオンにすること、つまり機能させて世界に接続することを意味します。",
+    "私たちはアイデアを思考として残しません。私たちは構築、出荷、学習し、検証されたものを次のものに結びつけます。"
+  ],
+  "whyNewCols": [
+    {
+      "head": "NEW",
+      "items": [
+        "新しいアイデア",
+        "新しい体験",
+        "新製品",
+        "新たな可能性"
+      ]
+    },
+    {
+      "head": "ON",
+      "items": [
+        "うまくいくようにする",
+        "接続してください",
+        "発送してください",
+        "成長させましょう"
+      ]
+    }
+  ],
+  "missionEyebrow": "MISSION",
+  "missionTitle": "アイデアから製品へ、そして次のものへ。",
+  "missionLead": "Newon は製品を直接構築して運用し、その構造と実行を企業や創設者と共有します。",
+  "missionPoints": [
+    {
+      "n": "01",
+      "title": "MAKE",
+      "body": "日常の問題をアプリ、AI、ゲーム、ウェブ製品に変えます。"
+    },
+    {
+      "n": "02",
+      "title": "VALIDATE",
+      "body": "実際の起動、使用状況、フィードバックを通じて検証します。"
+    },
+    {
+      "n": "03",
+      "title": "EXPAND",
+      "body": "ビジネス、スタジオ、ラボを通じて実証済みの成果を拡大します。"
+    }
+  ],
+  "glanceEyebrow": "WHO WE BUILD FOR",
+  "glanceTitle": "私たちが一緒に構築する人。",
+  "glanceLead": "当社の製品を使用する人々から、アイデアを検証するチーム、そして一緒に構築する会社に至るまで、Newon は 3 つの関係を経ていきます。",
+  "glanceRoles": [
+    {
+      "n": "01",
+      "title": "USERS",
+      "via": "PRODUCTS",
+      "body": "習慣、お金、健康、家族、旅行などの日常生活をもっとシンプルにしたいと考えている人。",
+      "tags": [
+        "習慣",
+        "お金",
+        "ケア",
+        "旅行",
+        "人生"
+      ]
+    },
+    {
+      "n": "02",
+      "title": "FOUNDERS",
+      "via": "BUSINESS",
+      "body": "アイデアを迅速に実際の製品に変える必要がある創設者とチーム。",
+      "tags": [
+        "MVP",
+        "ビルドする",
+        "船"
+      ]
+    },
+    {
+      "n": "03",
+      "title": "COMPANIES",
+      "via": "BUSINESS · STUDIO",
+      "body": "デジタル サービス、自動化、リサーチ、ブランド エクスペリエンスを構築する企業とブランド。",
+      "tags": [
+        "自動化",
+        "研究",
+        "ブランド"
+      ]
+    }
+  ],
+  "spacesEyebrow": "PROBLEM SPACES",
+  "spacesTitle": "私たちが掘り下げる問題。",
+  "spaces": [
+    {
+      "n": "01",
+      "title": "HABIT & GROWTH",
+      "body": "人々が追跡し、目標を設定し、小さな変化を継続できるように支援します。",
+      "slugs": [
+        "牛月",
+        "ゴールアップ",
+        "カウントアップ"
+      ]
+    },
+    {
+      "n": "02",
+      "title": "MONEY",
+      "body": "支出、サブスクリプション、貯蓄をより明確にします。",
+      "slugs": [
+        "賢い",
+        "サブピング",
+        "おんぶ"
+      ]
+    },
+    {
+      "n": "03",
+      "title": "CARE",
+      "body": "家族、ペット、健康のケアを一緒に記録します。",
+      "slugs": [
+        "ベイビーログ",
+        "ペットログ",
+        "ピルメイト"
+      ]
+    },
+    {
+      "n": "04",
+      "title": "LIFE & PLATFORM",
+      "body": "旅行記録から Newon メンバーシップまで、エクスペリエンスを結び付けます。",
+      "slugs": [
+        "私の世界",
+        "ニューオンプラス"
+      ]
+    }
+  ],
+  "journeyEyebrow": "JOURNEY",
+  "journeyTitle": "小さなことから始めましょう。拡大を続けてください。",
+  "journeyNote": "私たちは成長ストーリーをでっち上げるわけではありません。 Newon は出荷と運用を通じて学習します。",
+  "journeyMilestones": [
+    {
+      "year": "START",
+      "title": "製品スタジオとしてスタート",
+      "body": "アプリやデジタル製品の企画、構築、発売からスタート。"
+    },
+    {
+      "year": "BUILD",
+      "title": "運用と検証",
+      "body": "習慣、お金、家族、健康、旅行にわたる製品を構築して実行します。"
+    },
+    {
+      "year": "EXPAND",
+      "title": "ビジネス・スタジオ・ラボ",
+      "body": "ビジネス、スタジオ、ラボを通じて、製品エクスペリエンスを企業との連携に拡張します。",
+      "isNow": true
+    },
+    {
+      "year": "NEXT",
+      "title": "次は何ですか",
+      "body": "より多くの市場、より多くの言語、より有用な製品と実験を続けてください。"
+    }
+  ],
+  "studioNoteEyebrow": "STUDIO NOTE",
+  "studioNoteTitle": "スタジオはひとつ。多くの可能性。",
+  "studioNoteBody": "Newon は 1 つのアプリにとどまりません。私たちは製品を開発し、企業とコラボレーションし、ブランドをデザインし、次のものを見つけるために小さな実験を実行します。",
+  "metricLabels": {
+    "apps": "APPS",
+    "products": "PRODUCTS",
+    "countries": "COUNTRIES",
+    "languages": "LANGUAGES"
+  },
+  "buildEyebrow": "WHAT NEWON DOES",
+  "buildTitle": "製品から実験まで、1 つのスタジオで行います。",
+  "buildAreas": [
+    {
+      "n": "01",
+      "title": "PRODUCTS",
+      "body": "私たちが構築および運用するデジタル製品。アプリ · AI · ゲーム · ツール",
+      "href": "../products/"
+    },
+    {
+      "n": "02",
+      "title": "BUSINESS",
+      "body": "企業と創業者のためのデジタル構築と問題解決。構築・自動化・研究・ソリューション",
+      "href": "../business/"
+    },
+    {
+      "n": "03",
+      "title": "STUDIO",
+      "body": "ブランドとデジタルエクスペリエンスのデザイン。ブランド · デジタル · コンテンツ · IP",
+      "href": "../studio/"
+    },
+    {
+      "n": "04",
+      "title": "LABS",
+      "body": "次に何が起こるかを検証するための小さな実験。研究・試作・試験",
+      "href": "../resources/labs/"
+    }
+  ],
+  "productAreasEyebrow": "PRODUCT AREAS",
+  "productAreas": [
+    "人生",
+    "生産性",
+    "金融",
+    "健康",
+    "家族",
+    "旅行"
+  ],
+  "workEyebrow": "HOW WE WORK",
+  "workTitle": "小さく構築します。実際に検証します。",
+  "workSteps": [
+    {
+      "n": "01",
+      "title": "DISCOVER",
+      "body": "問題と機会を見つけます。"
+    },
+    {
+      "n": "02",
+      "title": "BUILD",
+      "body": "有用な最小バージョンを迅速に出荷します。"
+    },
+    {
+      "n": "03",
+      "title": "SHIP",
+      "body": "実際に人が使えるものをリリースする。"
+    },
+    {
+      "n": "04",
+      "title": "LEARN",
+      "body": "使い方と反応から学びましょう。"
+    },
+    {
+      "n": "05",
+      "title": "EXPAND",
+      "body": "検証された成果をより大きな製品やビジネスに成長させます。"
+    }
+  ],
+  "principlesEyebrow": "PRINCIPLES",
+  "principlesTitle": "私たちが仕事をどのように保持するか。",
+  "principles": [
+    {
+      "n": "01",
+      "title": "BUILD USEFUL PRODUCTS",
+      "body": "製品は実際の問題を解決するものでなければなりません。"
+    },
+    {
+      "n": "02",
+      "title": "START SMALL",
+      "body": "最小の有用な形式から始めます。"
+    },
+    {
+      "n": "03",
+      "title": "SHIP FAST",
+      "body": "完璧を待つよりも発送を優先してください。"
+    },
+    {
+      "n": "04",
+      "title": "LEARN FROM USERS",
+      "body": "使い方とレスポンスが第一です。"
+    },
+    {
+      "n": "05",
+      "title": "THINK GLOBAL",
+      "body": "最初から多くの市場と言語に合わせてデザインします。"
+    }
+  ],
+  "selectedEyebrow": "SELECTED PRODUCTS",
+  "selectedTitle": "製品 Newon は直接ビルドされます。",
+  "selectedLead": "代表的なプロダクト Newon が企画、構築、運用を行っています。",
+  "selectedAll": "すべての製品を見る→",
+  "selectedProductsMax": 11,
+  "universeView": "製品を見る ↗",
+  "statusLive": "ライブ",
+  "statusProject": "プロジェクト",
+  "productCats": {
+    "ox-month": "習慣・生活",
+    "goalup": "生産性",
+    "countup": "ユーティリティ",
+    "savy": "金融",
+    "subping": "金融",
+    "piggyup": "金融",
+    "pillmate": "健康",
+    "babylog": "家族",
+    "petlog": "家族",
+    "myworld": "旅行・生活",
+    "newon-plus": "プラットフォーム",
+    "404-human": "ゲーム"
+  },
+  "productOrder": [
+    "牛月",
+    "ゴールアップ",
+    "賢い",
+    "ベイビーログ",
+    "私の世界",
+    "ニューオンプラス",
+    "カウントアップ",
+    "サブピング",
+    "おんぶ",
+    "ペットログ",
+    "ピルメイト",
+    "404-人間"
+  ],
+  "exploreEyebrow": "EXPLORE NEWON",
+  "exploreTitle": "Newon をさらに詳しく見てみましょう。",
+  "explorePanels": [
+    {
+      "n": "01",
+      "title": "PORTFOLIO",
+      "body": "Newon が構築した製品とプロジェクト。",
+      "cta": "ポートフォリオ →",
+      "href": "../portfolio/",
+      "invert": true
+    },
+    {
+      "n": "02",
+      "title": "NEWS",
+      "body": "発売と公式アップデート。",
+      "cta": "ニュース →",
+      "href": "../news/"
+    },
+    {
+      "n": "03",
+      "title": "MEDIA",
+      "body": "製品ストーリー、構築プロセス、ビデオ。",
+      "cta": "メディア →",
+      "href": "../media/"
+    },
+    {
+      "n": "04",
+      "title": "BUSINESS",
+      "body": "企業と協力して構築されたデジタル プロジェクト。",
+      "cta": "ビジネス →",
+      "href": "../business/",
+      "invert": true
+    }
+  ],
+  "ideaEyebrow": "あなたのアイデア × NEWON",
+  "ideaTitleHtml": "次の製品<br />はあなたの問題から始まるかもしれません。",
+  "ideaLead": "新しいアプリ、AI ツール、ウェブサービス、または Newon 製品の機能が必要な場合は、お知らせください。それを現実のものに変える方法を検討していきます。",
+  "ideaCta": "アイデアを送信する →",
+  "ideaHint": "APP · AI · WEB · GAME · BUSINESS",
+  "closeEyebrow": "NEWON",
+  "closeTitleHtml": "私たちは<br />次のものを構築し続けます。",
+  "closeLead": "Newon の製品を探索したり、アイデアを共有したり、新しいデジタル エクスペリエンスを一緒に構築したりできます。",
+  "closeTaglineEn": "",
+  "closeProducts": "製品を見る→",
+  "closeBusiness": "お仕事のお問い合わせ →",
+  "closePortfolio": "ポートフォリオ →"
+}

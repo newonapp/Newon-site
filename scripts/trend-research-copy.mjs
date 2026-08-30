@@ -2,6 +2,8 @@
  * TREND RESEARCH service detail — KO/EN copy.
  * Path: /{lang}/business/trend-research/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const TREND_RESEARCH_COPY = {
   ko: {
     seoTitle: "TREND RESEARCH | Newon Business",
@@ -797,5 +799,5 @@ export const TREND_RESEARCH_COPY = {
 };
 
 export function getTrendResearchCopy(lang) {
-  return lang === "ko" ? TREND_RESEARCH_COPY.ko : TREND_RESEARCH_COPY.en;
+  return resolveKoEnPack(TREND_RESEARCH_COPY, lang, "trend-research-copy");
 }

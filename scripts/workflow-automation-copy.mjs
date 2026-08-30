@@ -2,6 +2,8 @@
  * WORKFLOW AUTOMATION service detail — KO/EN copy.
  * Canonical URL: /{lang}/business/automation/workflow/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const WORKFLOW_AUTOMATION_COPY = {
   ko: {
     seoTitle: "Workflow Automation | Newon Business",
@@ -680,5 +682,5 @@ export const WORKFLOW_AUTOMATION_COPY = {
 };
 
 export function getWorkflowAutomationCopy(lang) {
-  return WORKFLOW_AUTOMATION_COPY[lang === "ko" ? "ko" : "en"] || WORKFLOW_AUTOMATION_COPY.en;
+  return resolveKoEnPack(WORKFLOW_AUTOMATION_COPY, lang, "workflow-automation-copy");
 }

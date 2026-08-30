@@ -71,7 +71,7 @@ export function renderStudioServiceDetails() {
     writeRootRedirect(pagePath);
 
     for (const lang of LANGS) {
-      const pageLang = lang.dir === "ko" ? "ko" : "en";
+      const pageLang = lang.dir;
       const detail = getStudioServiceDetail(slug, pageLang);
       if (!detail) continue;
       const body = renderStudioServiceDetailBody(slug, pageLang);

@@ -1,0 +1,483 @@
+{
+  "seoTitle": "CUSTOM PRODUCT Newon Business",
+  "metaDescription": "Crie produtos digitais personalizados para problemas que pacotes padrão não podem resolver — desde o enquadramento até o design, implementação e QA. Newon CUSTOM PRODUCT.",
+  "crumbBusiness": "EMPRESAS",
+  "crumbServices": "SERVIÇOS",
+  "crumbSolutions": "SOLUÇÕES",
+  "crumbHere": "CUSTOM PRODUCT",
+  "eyebrow": "CUSTOM PRODUCT",
+  "subEyebrow": "SOLUÇÕES",
+  "headline": "Não forçado a um pacote.\nConstruído para o problema.",
+  "lead": "Nós projetamos e construímos aplicativos web personalizados, ferramentas internas, portais e painéis para fluxos de trabalho específicos, usuários e operações. Desde o enquadramento de problemas e UX/UI até arquitetura, implementação, integrações e QA — quando pacotes padrão não são suficientes, entregamos um produto coerente.",
+  "ctaPrimary": "Questionário de produto personalizado →",
+  "ctaSecondary": "Veja o fluxo de compilação ↓",
+  "meta": [
+    {
+      "k": "SERVIÇO",
+      "v": "Produto personalizado"
+    },
+    {
+      "k": "MELHOR PARA",
+      "v": "O produto não embalado constrói"
+    },
+    {
+      "k": "Cronologia",
+      "v": "Depende do escopo"
+    },
+    {
+      "k": "PREÇO",
+      "v": "Citação personalizada"
+    }
+  ],
+  "overviewLabel": "VISÃO GERAL",
+  "overviewTitle": "A necessidade é clara.\nNenhum pacote se encaixa.",
+  "overviewBody": [
+    "Padrões comuns como reserva, CRM, inquérito e painéis podem ser resolvidos com pacotes. Na prática, estrutura de org, fluxo de trabalho, dados, permissões e integrações raramente correspondem a uma caixa padrão exatamente.",
+    "Forçar ferramentas fora da prateleira dobra seu processo. Construir tudo do zero custa muito tempo e dinheiro. O que você precisa é de um produto projetado para o problema real.",
+    "CUSTOM PRODUCT começa definindo o problema, usuários e contexto de fluxo de trabalho. Em seguida, projetamos UX/UI, escopo de recursos, dados e estrutura de integração, e entregamos implementação, QA, e transferência como um produto."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Ajudante quando você enfrenta essas situações.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "NO FIT PACOTE",
+      "d": "MVP, pacotes web, aplicativo ou ferramenta interna não se encaixam totalmente.\nSeu fluxo de trabalho precisa de design personalizado."
+    },
+    {
+      "n": "02",
+      "t": "GAP DE FLUXO DE TRABALHO",
+      "d": "SaaS existente, planilhas, ou processo manual bloqueia o trabalho.\nVocê precisa de seu próprio fluxo de trabalho em forma de produto."
+    },
+    {
+      "n": "03",
+      "t": "MULTI-SISTEMA",
+      "d": "Múltiplos recursos, telas, permissões e integrações devem se tornar um produto.\nUm pacote único não é suficiente."
+    },
+    {
+      "n": "04",
+      "t": "TOOL INTERNAL",
+      "d": "Você precisa de um produto interno de operações ou gestão, não de um site de marketing público.\nPermissões e auditorias."
+    },
+    {
+      "n": "05",
+      "t": "NECESSIDADE DE INTEGRAÇÃO",
+      "d": "Você deve se conectar a ERP, CRM, pagamentos, dados ou APIs.\nIsto é construção de sistema, não apenas páginas."
+    },
+    {
+      "n": "06",
+      "t": "PRODUTO DE LONGO PRAZO",
+      "d": "Você precisa de algo para operação e expansão reais, não um PoC descartável.\nRecursos futuros devem ser considerados."
+    }
+  ],
+  "baLabel": "ANTES / APÓS",
+  "baTitle": "Ferramentas forçadas vs produto de ajuste de problemas\n",
+  "beforeLabel": "ANTES",
+  "afterLabel": "APÓS",
+  "before": [
+    "Trabalhar espalhado por SaaS, planilhas e etapas manuais",
+    "Processo dobra para ferramentas em vez de o contrário em torno de",
+    "Muitos requisitos, mas nenhum escopo ou prioridade",
+    "Integrações, permissões e ops se tornam surpresas tardias"
+  ],
+  "after": [
+    "Problema, usuários e contexto de fluxo de trabalho definido primeiro",
+    "Custom UX/UI e escopo de recursos projetado",
+    "Implementação, integrações e QA em um produto",
+    "Estrutura e documentos que suportam operação e crescimento"
+  ],
+  "capsLabel": "CAPABILIDADES",
+  "capsTitle": "Executamos a construção personalizada de produtos\ncomo um engajamento estruturado.",
+  "caps": [
+    {
+      "t": "ENQUADRAMENTO DE PROBLEMAS",
+      "d": "Defina problemas, usuários e critérios de sucesso.\nEsclareça por que um produto personalizado é necessário."
+    },
+    {
+      "t": "ÂMBITO E ARQUITETURA",
+      "d": "Projeto de escopo de recursos, dados, permissões, integrações.\nSepare MVP da expansão."
+    },
+    {
+      "t": "Design UX / UI",
+      "d": "Design telas e estrutura de informação para o fluxo de trabalho.\nIncluir o sistema de design quando necessário."
+    },
+    {
+      "t": "PRODUTO BUILD",
+      "d": "Implemente web, aplicativo, ferramenta interna, portal ou painel.\nConstruir características de núcleo em fases. INTEGRAÇÕES"
+    },
+    {
+      "t": "INTEGRAÇÕES",
+      "d": "Implementar pagamentos, CRM, ERP, APIs, pipelines de dados.\nDefina limites com os sistemas existentes."
+    },
+    {
+      "t": "ADMIN & PERMISSÕES",
+      "d": "Projete e construa o administrador, funções, permissões, registros de auditoria.\nTornar possível a operação desde o primeiro dia."
+    },
+    {
+      "t": "QA & HANDOFF",
+      "d": "Verifique recursos, fluxos e integrações.\nFornecer documentos e entrega para operação e crescimento."
+    },
+    {
+      "t": "ITERAÇÃO PATH",
+      "d": "Planeje expansão e melhoria pós-lançamento.\nConectar manutenção e escopo Phase 2."
+    }
+  ],
+  "sourcesLabel": "INPUTOS DE PROJECTO",
+  "sourcesTitle": "Combinamos as entradas que seu projeto precisa.",
+  "sourcesNote": "As entradas reais variam de acordo com a organização, fluxo de trabalho e sistemas acessíveis.",
+  "sources": [
+    "Fluxo de trabalho e descrições do processo",
+    "Ferramentas atuais em uso",
+    "Dados internos e documentos",
+    "API e requisitos de integração",
+    "Permissões e estrutura de org",
+    "Frames ou especificações existentes",
+    "Marca e diretrizes UI",
+    "Legal, segurança, conformidade",
+    "Entrevistas de usuário e operador",
+    "Sistemas legados",
+    "métricas de sucesso e KPIs",
+    "Futuros planos de expansão"
+  ],
+  "useLabel": "PROCESSOS DE UTILIZAÇÃO",
+  "useTitle": "Produtos que podemos construir.",
+  "useBadge": "Tipos de compilação de exemplos",
+  "useCases": [
+    {
+      "t": "OPERAÇÕES PORTAL",
+      "d": "Operações internas, gestão, aprovação e portais de pedidos.\nFluxos de trabalho em forma para o seu processo."
+    },
+    {
+      "t": "SAAS ADUANEIRAS",
+      "d": "SaaS para um grupo de usuários ou fluxo de trabalho específico.\nAssinatura, permissões e administrador incluído."
+    },
+    {
+      "t": "CLIENTE / PARCEIRO",
+      "d": "Portais para clientes, parceiros ou fornecedores.\nOrdens, perguntas, status, partilha de documentos."
+    },
+    {
+      "t": "DASHBOARD DE DADOS",
+      "d": "Painéis que unificam dados dispersos.\nKPI, relatório e estrutura de alerta."
+    },
+    {
+      "t": "PRODUTO DE FLORES DE TRABALHO",
+      "d": "Produtos centrados na aprovação, revisão, atribuição, status.\nPode se conectar com a automação."
+    },
+    {
+      "t": "MERCADO/PLATFORMA",
+      "d": "Multi-usuário, multi-papel de produtos de plataforma.\nListagem, correspondência, acordo, administração."
+    },
+    {
+      "t": "CAMPO/TOOL MÓVEL",
+      "d": "Primeiro aplicativo personalizado de campo ou web.\nDesligado e sincronizado considerado."
+    },
+    {
+      "t": "REPARTIÇÃO DA LEGACIDADE",
+      "d": "Substituir planilhas, operações manuais ou sistemas legados.\nDesenho de transição em fase."
+    }
+  ],
+  "flowLabel": "EXEMPLO DE TRABALHO",
+  "flowTitle": "Desde o enquadramento de problemas até a entrega do produto",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINA",
+      "d": "Defina problemas, usuários e critérios de sucesso.\nConcordo porque um produto personalizado é necessário.",
+      "examples": [
+        "Problema",
+        "Usuários",
+        "Kpis",
+        "Restrições"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ÂMBITO DE APLICAÇÃO",
+      "d": "Projeto de escopo de recursos, UX, dados, integrações.\nSepare a Fase 1 da expansão.",
+      "examples": [
+        "Características",
+        "Ecrãs",
+        "Dados",
+        "Integração"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "PROJETO",
+      "d": "Fluxos de design, UI, estrutura de informação, permissões.\nConfirme telas centrais e administrador.",
+      "examples": [
+        "Fluxos",
+        "UI",
+        "Funções",
+        "Admin."
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONSTRUÇÃO",
+      "d": "Implementar os principais recursos e integrações.\nReveja em fases com feedback.",
+      "examples": [
+        "Interface",
+        "Infraestrutura",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ADMINISTRAR",
+      "d": "Implantar, verificar, documentar e entregar.\nConectar o caminho de operação e expansão.",
+      "examples": [
+        "Lançar",
+        "Dogs",
+        "Transferência",
+        "Fase 2"
+      ]
+    }
+  ],
+  "reportLabel": "SAÍDA",
+  "reportTitle": "Entregas são um produto operável e documentos de apoio.",
+  "reportLead": "A composição varia de acordo com o âmbito do projecto. Abaixo estão os itens comuns.",
+  "reportMockStatus": "PRODUTO · ESPECÍFICO",
+  "reportMockK": "CUSTOM PRODUCT ESPEC",
+  "reportMockT": "Âmbito, módulos, integrações, marcos",
+  "reportItems": [
+    "& Objetivos do Problema",
+    "Resumo do Âmbito de aplicação",
+    "Mapa de & Funções do Utilizador",
+    "Lista de Caracteres",
+    "UX / UI Visão geral",
+    "& Integração de Dados",
+    "& Permissões de administração",
+    "Plano Milestone",
+    "QA Lista de verificação",
+    "Notas de Transferência"
+  ],
+  "dashTitle": "Compartilhar escopo e estrutura do módulo em uma visão.",
+  "dashLead": "Características, integrações e fases juntos acelerar acordo de escopo e construir discussões.",
+  "dashNote": "A composição do módulo e a divisão de fases variam segundo o objetivo e o orçamento do projeto.",
+  "dashMetrics": [
+    "Módulos",
+    "Integração",
+    "Fases",
+    "Marcos"
+  ],
+  "dashFilters": [
+    "Todos",
+    "Núcleo",
+    "Admin.",
+    "Fase 2"
+  ],
+  "aiLabel": "ACELERAÇÃO",
+  "aiTitle": "Automatizar repetição.\nFoco no design e construção.",
+  "aiLead": "Estruturação de requisitos, rascunhos de fluxo, andaimes de documentos e checklists QA podem ser assistidos por AI para velocidade, enquanto as pessoas se concentram na arquitetura, UX e implementação de núcleo.",
+  "aiExamples": [
+    "Requisitos de estrutura e notas de atendimento",
+    "Rascunhos e listas de tela",
+    "Organize API e modelos de dados",
+    "QA e listas de verificação de testes",
+    "Operações e transferências de documentos",
+    "Comparar escopo e splits de fase"
+  ],
+  "aiNote": "As decisões finais de escopo, design e qualidade são confirmadas com sua equipe de projeto.",
+  "delLabel": "DELIVERÁVEIS",
+  "delTitle": "O que você recebe quando o projeto completa",
+  "delLead": "Nós entregamos os itens abaixo, conforme necessário para o seu escopo.",
+  "deliverables": [
+    "Produto personalizado (Web / App / Portal)",
+    "Consola de administração",
+    "Ficheiros de Desenho UX / UI",
+    "Documentação técnica",
+    "API & Documentos de Integração",
+    "Configuração da implantação",
+    "Relatório QA",
+    "Guia de & Operações de Transferência",
+    "Phase 2 Roteiro (opcional)"
+  ],
+  "processLabel": "PROCESSO",
+  "processTitle": "De enquadramento de problemas para entrega.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCOBERTA",
+      "d": "Confirmar problema, usuários, processo atual, restrições.\nCompreender critérios de sucesso e estrutura de decisão.",
+      "examples": [
+        "Problema",
+        "Usuários",
+        "Actual",
+        "Kpis"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ÂMBITO DE APLICAÇÃO",
+      "d": "Definir recurso, tela, dados, escopo de integração.\nConcordo Fase 1 / 2, linha do tempo e orçamento.",
+      "examples": [
+        "Características",
+        "Âmbito de aplicação",
+        "Integração",
+        "Linha do Tempo"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "PROJETO",
+      "d": "Fluxos de design, UI, estrutura de informação, permissões.\nConfirme telas centrais e estrutura de administração.",
+      "examples": [
+        "Fluxos",
+        "UI",
+        "Admin.",
+        "Revisão"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONSTRUÇÃO",
+      "d": "Implementar frontend, backend, integrações.\nDemonstração e revisão em fases.",
+      "examples": [
+        "Núcleo",
+        "API",
+        "Integração",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "",
+      "d": "Verifique recursos, fluxos, permissões, integrações.\nVerifique os cenários operacionais.",
+      "examples": [
+        "QA",
+        "UAT",
+        "Correcções",
+        "Assinatura"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "LANÇAR",
+      "d": "Preparar ambiente e liberação.\nConfirmar caminhos de monitorização e retrocesso.",
+      "examples": [
+        "",
+        "Prod",
+        "",
+        "Monitor"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "MÃO",
+      "d": "Documento, guiar operações e entregar.\nConectar caminho de expansão e manutenção.",
+      "examples": [
+        "Dogs",
+        "Treinamento",
+        "Suporte",
+        "Fase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "NÍVEIS DE ÂMBITO DE APLICAÇÃO",
+  "scopeTitle": "Como pensar sobre a complexidade do projeto.",
+  "scopeLead": "Não é um pacote fixo. Escopo é definido pelo tamanho do problema, integrações e complexidade de permissão.",
+  "scopes": [
+    {
+      "t": "PRODUTO FOCULADO",
+      "items": [
+        "Problema de núcleo único ou fluxo de trabalho",
+        "Usuários limitados e funções",
+        "Telas principais e administrador",
+        "1–2 integrações básicas",
+        "Foco de lançamento da Fase 1"
+      ]
+    },
+    {
+      "t": "CONSTRUÇÃO ADUANEIRA TOTAL",
+      "items": [
+        "Múltiplos módulos, funções, permissões",
+        "UX/UI personalizado completo",
+        "Estrutura de dados multiintegração",
+        "Operações e recursos de auditoria",
+        "Docs e transferência inclui"
+      ]
+    },
+    {
+      "t": "CONSTRUÇÃO DE PLATFORMA",
+      "items": [
+        "Plataforma ou estrutura de mercado",
+        "Multi-doente, liquidação, administrador",
+        "Complexo API e ligações legados",
+        "Expansão e projeto Phase 2",
+        "Ops de longo prazo e conexão de manutenção"
+      ]
+    }
+  ],
+  "timeLabel": "Cronologia",
+  "timeTitle": "A linha do tempo depende do escopo.",
+  "timeLead": "A duração varia de acordo com a contagem de recursos, integrações, profundidade de projeto e velocidade de decisão.",
+  "timelines": [
+    {
+      "t": "Produto focado",
+      "d": "Cerca de 4-8 semanas · varia"
+    },
+    {
+      "t": "Compilação completa personalizada",
+      "d": "Cerca de 8–16 semanas · varia"
+    },
+    {
+      "t": "Plataforma Construir",
+      "d": "Cerca de 12+ semanas ·"
+    }
+  ],
+  "priceLabel": "CUSTO DO PROJECTO",
+  "priceTitle": "personalizado Citado por projeto.",
+  "priceName": "CUSTOM PRODUCT",
+  "priceValue": "Citação personalizada",
+  "priceFactorsLabel": "Fatores de preços",
+  "priceFactors": [
+    "Escopo — recursos, telas, módulos",
+    "Complexidade — dados, permissões, lógica",
+    "Prazo — calendário e reabastecimento",
+    "Integração — API, legado, pagamentos",
+    "Profundidade de projeto — Faixa UX/UI",
+    "Tipo de plataforma – web, aplicativo, portal",
+    "Participação da equipa — decisões, UAT",
+    "Pós-lançamento — manutenção, expansão"
+  ],
+  "priceNote": "Revisamos Escopo / Complexidade / Linha do Tempo / Integração, em seguida, fornecer uma cotação. Nenhum preço de menu fixo.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Perguntas mais frequentes",
+  "faqs": [
+    {
+      "q": "Como isso é diferente dos pacotes MVP, web ou app?",
+      "a": "Os pacotes são serviços padrão definidos. CUSTOM PRODUCT é design personalizado e construir para org, fluxo de trabalho e necessidades de integração."
+    },
+    {
+      "q": "Como é que isto é diferente do rótulo branco?",
+      "a": "O White-label adapta uma fundação validada à sua marca e módulos. CUSTOM PRODUCT projeta e constrói para o problema desde o início."
+    },
+    {
+      "q": "Como é definido o preço?",
+      "a": "Depois de revisar metas, escopo, complexidade, cronograma e integrações — muitas vezes por fase."
+    },
+    {
+      "q": "O design está incluído?",
+      "a": "O design UX/UI pode ser incluído no escopo. As diretrizes de marca ou design existentes podem ser usadas quando disponíveis."
+    },
+    {
+      "q": "Pode integrar-se aos sistemas existentes?",
+      "a": "Sim. API, dados, SSO, pagamentos, ERP/CRM, e outras necessidades de integração pode ser escopo e projetado."
+    },
+    {
+      "q": "Pode apoiar a manutenção pós-lançamento?",
+      "a": "Sim. Phase 2, expansão de recursos e suporte operacional podem continuar sob acordo separado."
+    },
+    {
+      "q": "Como é tratada a confidencialidade?",
+      "a": "Os materiais são utilizados apenas dentro do âmbito acordado. NDA disponível quando necessário."
+    }
+  ],
+  "finalLabel": "Iniciar um projeto",
+  "finalTitle": "Comece com o problema,\nNão o pacote.",
+  "finalLead": "Se você tem um problema de fluxo de trabalho, usuários e necessidades de integração, diga-nos o que você está tentando resolver. Vamos confirmar o escopo do produto personalizado e construir abordagem juntos.",
+  "ctaFinalSecondary": "Ver todos SOLUÇÕES →",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

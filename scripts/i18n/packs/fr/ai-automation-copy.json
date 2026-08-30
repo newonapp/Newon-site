@@ -1,0 +1,491 @@
+{
+  "seoTitle": "AUTOMATISATION PAR IA | Newon Business",
+  "metaDescription": "Automatisez le travail répétitif et le support avec l'IA — classification des demandes, brouillons de réponses, résumés de documents et recherche de connaissances internes connectée aux flux de travail réels. Newon AUTOMATISATION PAR IA.",
+  "crumbBusiness": "ENTREPRISE",
+  "crumbServices": "SERVICES",
+  "crumbAutomation": "AUTOMATISATION",
+  "crumbHere": "AUTOMATISATION PAR IA",
+  "eyebrow": "AUTOMATISATION PAR IA",
+  "subEyebrow": "AUTOMATISATION",
+  "headline": "Automatisez le travail répétitif\navec l'IA adaptée à la tâche.",
+  "lead": "Nous cartographions le travail répétitif et connectons l'automatisation par IA à la manière dont votre équipe fonctionne déjà — classification des demandes, brouillons de réponses, résumés de documents, analyse des avis, et recherche de connaissances internes. Pas un chatbot de démonstration — IA attachée aux canaux, outils et processus que vous utilisez déjà.",
+  "ctaPrimary": "Demande d'automatisation IA →",
+  "ctaSecondary": "Voir le flux d'automatisation ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Automatisation par IA"
+    },
+    {
+      "k": "IDÉAL POUR",
+      "v": "Travail répétitif et automatisation du support"
+    },
+    {
+      "k": "CHRONOLOGIE",
+      "v": "Dépend de l'étendue"
+    },
+    {
+      "k": "PRIX",
+      "v": "Devis personnalisé"
+    }
+  ],
+  "overviewLabel": "APERÇU",
+  "overviewTitle": "Vous voulez de l'IA.\nPas sûr d'où elle devrait se situer.",
+  "overviewBody": [
+    "Demandes, avis, contenu, documents, questions-réponses internes — le travail répétitif existe déjà. Les équipes veulent de l'IA mais les PoC n'atteignent souvent jamais les flux de travail réels.",
+    "Ajouter un chatbot générique ou un outil ne change rien au processus. Les gens continuent de classer, rédiger et résumer à la main. Ce dont vous avez besoin, c'est d'une automatisation par IA conçue pour le contexte de votre flux de travail.",
+    "L'AUTOMATISATION PAR IA commence par définir le travail répétitif, les canaux, les données et les critères de qualité. Ensuite, nous concevons des flux de classification, de rédaction, de résumé et de routage — avec un examen humain et des garde-fous — et livrons une automatisation qui s'attache aux opérations réelles."
+  ],
+  "problemsLabel": "PROBLÈMES",
+  "problemsTitle": "Utile lorsque vous êtes confronté à ces situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "RÉPÉTER LES RÉPONSES",
+      "d": "Les gens classent et rédigent les mêmes demandes et tâches.\nLe travail de jugement est écrasé."
+    },
+    {
+      "n": "02",
+      "t": "POC IA BLOQUÉE",
+      "d": "Vous avez essayé un POC IA mais il n'a jamais atteint les opérations.\nPas de priorité sur l'endroit où l'IA devrait se connecter."
+    },
+    {
+      "n": "03",
+      "t": "PROLIFÉRATION D'OUTILS",
+      "d": "Les outils s'accumulent mais le flux de travail ne change pas.\nLes canaux, CRM, mails et feuilles restent déconnectés."
+    },
+    {
+      "n": "04",
+      "t": "RÉSULTATS INCOHÉRENTS",
+      "d": "Les réponses varient pour la même question.\nPas de ton de marque, de politique ou de niveau de qualité."
+    },
+    {
+      "n": "05",
+      "t": "SURCHARGE DE DOCUMENTS",
+      "d": "Les gens lisent et organisent de longs documents, notes et avis.\nRésumer, classer et extraire le travail se répète."
+    },
+    {
+      "n": "06",
+      "t": "PAS DE GARDE-FOUS",
+      "d": "Difficile d'envoyer la sortie de l'IA telle quelle.\nPas de structure de révision, d'autorisation ou d'exception."
+    }
+  ],
+  "baLabel": "AVANT / APRÈS",
+  "baTitle": "Répétition manuelle vs\nautomatisation avec intervention humaine",
+  "beforeLabel": "AVANT",
+  "afterLabel": "APRÈS",
+  "before": [
+    "Les demandes arrivent à travers les canaux",
+    "Les responsables classent et rédigent à la main",
+    "Les réponses varient pour la même question",
+    "Le statut n'est visible qu'après coup"
+  ],
+  "after": [
+    "Les demandes sont classées automatiquement",
+    "Les brouillons de réponses et les résumés apparaissent en premier",
+    "Les humains gèrent l'examen et les exceptions",
+    "Les résultats sont enregistrés au fur et à mesure"
+  ],
+  "capsLabel": "CAPACITÉS",
+  "capsTitle": "Nous effectuons la construction de l'automatisation IA\ncomme un engagement structuré.",
+  "caps": [
+    {
+      "t": "CARTOGRAPHIE DU TRAVAIL",
+      "d": "Confirmer les tâches répétitives, les canaux, l'emplacement des données, les standards de qualité.\nIdentifier où l'automatisation crée un levier."
+    },
+    {
+      "t": "CONCEPTION DU FLUX DE TRAVAIL",
+      "d": "Entrée de conception → processus → révision → flux de sortie.\nInclure les points de révision humaine et les chemins d'exception."
+    },
+    {
+      "t": "CLASSER ET ORIENTER",
+      "d": "Classifier les demandes de renseignements, les requêtes et les retours par sujet, priorité, responsable.\nDéfinir les règles de routage et les SLA."
+    },
+    {
+      "t": "ÉLABORER ET RÉSUMER",
+      "d": "Mettre en œuvre des brouillons de réponses, des résumés de documents, le regroupement pour révision.\nRespecter le ton de la marque et le format de sortie."
+    },
+    {
+      "t": "INTÉGRATIONS",
+      "d": "Connectez le web, l'application, le mail, le CRM, les feuilles de calcul, les outils internes.\nAttachez l'IA aux environnements que vous utilisez déjà."
+    },
+    {
+      "t": "GARDES-FOUS",
+      "d": "Ajoutez des étapes de révision et un périmètre d'autorisation qui détectent les mauvaises productions.\nConcevez des parcours pour les cas sensibles et exceptionnels."
+    },
+    {
+      "t": "PILOTER & AJUSTER",
+      "d": "Lancez un pilote avec une équipe ou un canal limité et ajustez la qualité.\nAméliorez les invites, les règles et les barres de révision."
+    },
+    {
+      "t": "OPS & TRANSFERT",
+      "d": "Documentez les méthodes d'exploitation et d'amélioration.\nConnectez l'expansion et le périmètre de la Phase 2."
+    }
+  ],
+  "sourcesLabel": "ENTRÉES DU PROJET",
+  "sourcesTitle": "Nous combinons les entrées dont votre projet a besoin.",
+  "sourcesNote": "Les entrées réelles varient selon l'organisation, les canaux et la politique de données.",
+  "sources": [
+    "Travail et descriptions de processus répétés",
+    "Exemples de demandes, de révisions, de documents",
+    "FAQ, politiques et guides",
+    "Ton de marque et modèles de réponse",
+    "CRM, mails et historiques de chat",
+    "Connaissances internes et magasins de documents",
+    "Exigences pour l'API et l'intégration",
+    "Autorisations et structure organisationnelle",
+    "Normes de qualité et règles de révision",
+    "Automatisations et scripts existants",
+    "Indicateurs de réussite et KPI",
+    "Politique de données et de sécurité"
+  ],
+  "useLabel": "CAS D'UTILISATION",
+  "useTitle": "Automatisation IA que nous pouvons créer.",
+  "useBadge": "Exemples de types de construction",
+  "useCases": [
+    {
+      "t": "CLASSIFICATION DES DEMANDES",
+      "tag": "CLIENT",
+      "d": "Classer les demandes des clients par sujet, urgence, responsable.\nCorrespondance FAQ et automatisation de routage."
+    },
+    {
+      "t": "RÉDACTION DE RÉPONSE",
+      "tag": "CLIENT",
+      "d": "Générer des brouillons de réponses pour les demandes, e-mail, chat.\nEnvoyer après révision humaine."
+    },
+    {
+      "t": "ANALYSE DE RÉVISION",
+      "tag": "APERÇU",
+      "d": "Regrouper les avis et retours par thème.\nFaire ressortir les points d'amélioration et le sentiment."
+    },
+    {
+      "t": "Ébauche de contenu",
+      "tag": "CONTENU",
+      "d": "Générez des avis, des articles d'aide, des brouillons marketing dans le ton approprié.\nBasé sur des modèles et des guides. "
+    },
+    {
+      "t": "RÉSUMÉ DU DOCUMENT",
+      "tag": "OPS",
+      "d": "Compressez les documents et notes longs pour les décisions.\nExtrayez les points clés, actions, risques."
+    },
+    {
+      "t": "CONNAISSANCE INTERNE",
+      "tag": "OPS",
+      "d": "Répondez à partir de documents dispersés avec sources.\nRecherchez dans le périmètre de permissions."
+    },
+    {
+      "t": "AUTOMATISATION OPS",
+      "tag": "OPS",
+      "d": "Nettoyage des données, alertes, rapports récurrents.\nLié à la classification et au résumé."
+    },
+    {
+      "t": "FONCTIONNALITÉ IA PRODUIT",
+      "tag": "PRODUIT",
+      "d": "Ajoutez classification, brouillon, résumé à un site web ou application existant.\nIntégré dans les flux de travail des utilisateurs et des opérateurs."
+    }
+  ],
+  "flowLabel": "EXEMPLE DE FLUX DE TRAVAIL",
+  "flowTitle": "De la cartographie du travail à l'expansion opérationnelle",
+  "flow": [
+    {
+      "n": "01",
+      "t": "CARTOGRAPHIE",
+      "d": "Confirmer le travail répétitif, les canaux, les données, les barres de qualité.\nDéfinir les opportunités d'automatisation et la priorité.",
+      "examples": [
+        "Travail",
+        "Canaux",
+        "Données",
+        "KPIs"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "CONCEPTION",
+      "d": "Concevoir, classer, rédiger, résumer, revoir les flux.\nConfirmer les points humains dans le processus.",
+      "examples": [
+        "Flux",
+        "Revue",
+        "Exceptions",
+        "Rôles"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "CONSTRUIRE",
+      "d": "Mettre en œuvre les capacités et intégrations IA.\nValider la qualité avec des données échantillons.",
+      "examples": [
+        "Modèle",
+        "Invite",
+        "API",
+        "Intégration"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PILOTE",
+      "d": "Lancer le pilote avec une équipe ou un canal limité.\nAjuster la qualité du rendu et la charge de revue.",
+      "examples": [
+        "Pilote",
+        "Ajuster",
+        "Revue",
+        "Mesures"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ÉTENDRE",
+      "d": "Étendre les flux éprouvés à des travaux adjacents.\nConnecter le guide opérationnel et le chemin d'amélioration.",
+      "examples": [
+        "Échelle",
+        "Documents",
+        "Phase 2",
+        "Surveiller"
+      ]
+    }
+  ],
+  "reportLabel": "PRODUCTION",
+  "reportTitle": "Les livrables sont l'automatisation opérationnelle et les documents de support.",
+  "reportLead": "La composition varie selon l'étendue du projet. Voici les éléments communs.",
+  "reportMockStatus": "AUTOMATISATION · FLUX DE TRAVAIL",
+  "reportMockK": "SPÉCIFICATION D'AUTOMATISATION IA",
+  "reportMockT": "Portée, flux de travail, intégrations, résumé des révisions",
+  "reportItems": [
+    "Portée de l'automatisation",
+    "Carte du flux de travail",
+    "Règles de classification",
+    "Modèles de brouillon",
+    "Format du résumé",
+    "Liste des intégrations",
+    "Liste de vérification de la révision",
+    "Politique de garde-fous",
+    "Résultats du pilote",
+    "Guide des opérations"
+  ],
+  "dashTitle": "Partager la structure du flux de travail et de l'automatisation dans une seule vue.",
+  "dashLead": "Flux de travail, modèles, intégrations et unités d'automatisation ensemble accélèrent l'accord sur la portée et les discussions de construction.",
+  "dashNote": "La composition du flux de travail et la portée de l'automatisation varient selon l'objectif du projet et la politique des données.",
+  "dashMetrics": [
+    "Flux de travail",
+    "Modèles",
+    "Intégrations",
+    "Automatisations"
+  ],
+  "dashFilters": [
+    "Tous",
+    "Classer",
+    "Ébauche",
+    "Résumé"
+  ],
+  "aiLabel": "HUMAIN-DANS-LE-BOUCLE",
+  "aiTitle": "L'IA rédige le travail.\nLes humains continuent les révisions et le jugement.",
+  "aiLead": "L'IA gère la classification, l'ébauche et le résumé — tandis que les humains gardent le jugement final, les exceptions, les cas sensibles, l'approbation du ton de la marque et les décisions de politique. La portée de la révision peut s'élargir par phases à mesure que la qualité se stabilise.",
+  "aiExamples": [
+    "Classer → ébauche → révision humaine → envoyer",
+    "Révision du cluster → résumé → confirmation du propriétaire",
+    "Résumé du document → extrait clé → révision par le décideur",
+    "Questions/Réponses internes → sources → réponse dans les permissions",
+    "Exception / cas sensible → escalade humaine",
+    "Amélioration continue des invites et de la barre de qualité"
+  ],
+  "aiNote": "L'envoi entièrement automatique n'est pas recommandé au début. Commencez avec une structure à intervention humaine, confirmez la qualité, puis élargissez le périmètre.",
+  "delLabel": "LIVRABLES",
+  "delTitle": "Ce que vous recevrez à la fin du projet",
+  "delLead": "Nous livrons les éléments ci-dessous selon les besoins pour votre périmètre.",
+  "deliverables": [
+    "Définition du périmètre de l'automatisation",
+    "Conception du flux de travail",
+    "Développement des capacités de l'IA",
+    "Mise en place de l'intégration",
+    "Guide de révision et de garde-fous",
+    "Documentation opérationnelle",
+    "Rapport pilote",
+    "Configuration des indicateurs de qualité",
+    "Feuille de route de la phase 2 (optionnelle)"
+  ],
+  "processLabel": "PROCESSUS",
+  "processTitle": "Du mappage du travail à la passation opérationnelle.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DÉCOUVERTE",
+      "d": "Confirmer le travail répétitif, les canaux, les données, les barres de qualité.\nComprendre les objectifs et les contraintes de l'automatisation.",
+      "examples": [
+        "Travail",
+        "Canaux",
+        "Données",
+        "Politique"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PRIORISER",
+      "d": "Commencer là où l'impact par rapport à l'effort est le plus fort.\nConvenir de la portée du pilote et des critères de succès.",
+      "examples": [
+        "Priorité",
+        "Pilote",
+        "KPIs",
+        "Portée"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "CONCEPTION",
+      "d": "Concevez des flux de travail avec des invites, des règles, des points de révision.\nConfirmez la structure humain-dans-la-boucle.",
+      "examples": [
+        "Flux",
+        "Revue",
+        "Garde-fous",
+        "Intégrations"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONSTRUIRE",
+      "d": "Implémentez des capacités et des intégrations d'IA.\nValidez la classification, l'ébauche et la qualité du résumé avec des échantillons.",
+      "examples": [
+        "Classer",
+        "Ébauche",
+        "Résumé",
+        "API"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PILOTE",
+      "d": "Opérez avec une équipe ou un canal limité et ajustez la qualité.\nÉquilibrez la charge de révision et le taux d'automatisation.",
+      "examples": [
+        "Pilote",
+        "Ajuster",
+        "Retour",
+        "Mesures"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "DÉPLOYER",
+      "d": "Déployez en production et configurez la surveillance.\nConfirmez les chemins de retour en arrière et d'escalade.",
+      "examples": [
+        "Déployer",
+        "Surveiller",
+        "Accès",
+        "Alerte"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "REMISE",
+      "d": "Documentez les opérations et transférez-les.\nConnectez le chemin d'expansion et d'amélioration.",
+      "examples": [
+        "Documents",
+        "Formation",
+        "Phase 2",
+        "Support"
+      ]
+    }
+  ],
+  "scopeLabel": "NIVEAUX DE PORTÉE",
+  "scopeTitle": "Comment penser à la complexité du projet.",
+  "scopeLead": "Pas de package fixe. La portée est définie par le nombre de flux de travail, les intégrations, la politique de données et la profondeur de révision.",
+  "scopes": [
+    {
+      "t": "PILOTE FOCALISÉ",
+      "items": [
+        "Tâche ou canal unique et répétitif",
+        "L'un des suivants : classer, rédiger ou résumer",
+        "Révision avec intervention humaine",
+        "1 à 2 intégrations de base",
+        "Orientation opération pilote"
+      ]
+    },
+    {
+      "t": "CONSTRUCTION MULTI-FLUVEAU",
+      "items": [
+        "Plusieurs flux de travail et canaux",
+        "Combinaison de classer, rédiger, résumer",
+        "Liens CRM, mail, outils internes",
+        "Garde-fous et journaux d'audit",
+        "Guide d'utilisation inclus"
+      ]
+    },
+    {
+      "t": "INTÉGRATION DE PLATEFORME",
+      "items": [
+        "Intégration web, application, système interne",
+        "Plusieurs modèles et sources de données",
+        "Structure de permissions, locataire, politique",
+        "Extension et conception de la Phase 2",
+        "Lien pour les opérations à long terme et l'ajustement"
+      ]
+    }
+  ],
+  "timeLabel": "CHRONOLOGIE",
+  "timeTitle": "Le calendrier dépend de l'étendue.",
+  "timeLead": "La durée varie selon le nombre de flux de travail, les intégrations, l'accès aux données, la structure de révision et la rapidité de décision.",
+  "timelines": [
+    {
+      "t": "Pilote ciblé",
+      "d": "Environ 2 à 4 semaines · variable"
+    },
+    {
+      "t": "Construction multi-flux de travail",
+      "d": "Environ 4 à 8 semaines · variable"
+    },
+    {
+      "t": "Intégration de la plateforme",
+      "d": "Environ 8 semaines et plus · personnalisé"
+    }
+  ],
+  "priceLabel": "COÛT DU PROJET",
+  "priceTitle": "Devis par projet.",
+  "priceName": "AUTOMATISATION PAR IA",
+  "priceValue": "Devis personnalisé",
+  "priceFactorsLabel": "Facteurs de tarification",
+  "priceFactors": [
+    "Portée — flux de travail et étendue des fonctionnalités",
+    "Complexité — classification, rédaction, niveau de résumé",
+    "Chronologie — calendrier et ressources",
+    "Intégration — CRM, e-mail, API, outils internes",
+    "Politique de données — sécurité, conservation, étendue de la formation",
+    "Profondeur de révision — niveau humain dans la boucle",
+    "Utilisation du modèle — API et volume",
+    "Après le lancement — ajustement et expansion"
+  ],
+  "priceNote": "Nous examinons Portée / Complexité / Chronologie / Intégration, puis fournissons un devis. Pas de tarification fixe par menu.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Questions fréquemment posées",
+  "faqs": [
+    {
+      "q": "Quel modèle utilisez-vous ?",
+      "a": "Nous proposons une configuration adaptée au travail et à la politique de données — pas de verrouillage chez un seul fournisseur."
+    },
+    {
+      "q": "Nos données sont-elles utilisées pour la formation ?",
+      "a": "Par défaut, c'est pour un usage opérationnel dans votre travail. La formation et la rétention sont convenues séparément."
+    },
+    {
+      "q": "Répondra-t-il automatiquement aux messages ?",
+      "a": "Nous commençons généralement par une révision avec intervention humaine. L'automatisation s'élargit lorsque la qualité est stable."
+    },
+    {
+      "q": "Peut-il se connecter à un CRM, un mail ou des feuilles de calcul ?",
+      "a": "Nous examinons votre pile et confirmons ce que nous pouvons connecter."
+    },
+    {
+      "q": "Une petite équipe peut-elle commencer ?",
+      "a": "Oui. Pilotez d'abord un flux de travail répétitif."
+    },
+    {
+      "q": "En quoi cela diffère-t-il de l'automatisation des flux de travail ?",
+      "a": "L'automatisation des flux de travail se concentre sur les connexions SaaS et de données. L'AUTOMATISATION IA se centre sur la classification, la rédaction et le résumé par IA dans le flux de travail."
+    },
+    {
+      "q": "Pouvez-vous supporter l'ajustement et l'expansion après le lancement ?",
+      "a": "Oui. L'amélioration des prompts, l'expansion des flux de travail et des intégrations supplémentaires peuvent continuer sous un accord séparé."
+    }
+  ],
+  "finalLabel": "DÉMARRER UN PROJET",
+  "finalTitle": "Commencez par l'automatisation par IA\nqui se connecte au vrai travail.",
+  "finalLead": "Dites-nous le travail répétitif et les outils que vous utilisez déjà. Nous confirmerons, classifierons, rédigerons et résumerons ensemble la portée et la structure avec intervention humaine.",
+  "ctaFinalSecondary": "Voir toute l'AUTOMATISATION →",
+  "ctaFinalSecondaryHref": "../automation/"
+}

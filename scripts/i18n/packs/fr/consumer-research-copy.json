@@ -1,0 +1,479 @@
+{
+  "seoTitle": "CONSUMER RESEARCH | NewonEntreprises",
+  "metaDescription": "Rechercher les besoins des consommateurs et des utilisateurs, leur comportement et leurs habitudes de douleur — structurés comme des idées pour les décisions relatives aux produits et aux messages. Newon CONSUMER RESEARCH.",
+  "crumbBusiness": "ENTREPRISES",
+  "crumbServices": "SERVICES",
+  "crumbResearch": "RECHERCHE",
+  "crumbHere": "CONSUMER RESEARCH",
+  "eyebrow": "CONSUMER RESEARCH",
+  "subEyebrow": "RECHERCHE",
+  "headline": "Recueillir les voix des utilisateurs.\nComprenez-les comme des modèles.",
+  "lead": "Nous recherchons les besoins, les comportements et les modes de douleur des examens, des enquêtes, des entrevues, des journaux de soutien et des signaux d'utilisation. Les voix des utilisateurs éparpillées sont organisées par segment, besoin et motivation en un bref d'information que votre équipe peut utiliser pour les décisions de cible, de messagerie et de priorité de produit.",
+  "ctaPrimary": "Enquête de recherche auprès des consommateurs →",
+  "ctaSecondary": "Voir le flux de recherche ▼",
+  "meta": [
+    {
+      "k": "SERVICES",
+      "v": "Recherche auprès des consommateurs"
+    },
+    {
+      "k": "BEST POUR",
+      "v": "Validation de la cible et du message"
+    },
+    {
+      "k": "Échéancier",
+      "v": "Habituellement 2-4 semaines"
+    },
+    {
+      "k": "PRIX",
+      "v": "À partir de 300,000"
+    }
+  ],
+  "overviewLabel": "APERÇU",
+  "overviewTitle": "Beaucoup d'opinions.\nPas assez.",
+  "overviewBody": [
+    "Les voix des utilisateurs existent toujours lors de la discussion sur les produits, le marketing ou l'amélioration des services. La partie la plus difficile est de les organiser en segments besoins et modèles de comportement.",
+    "Les critiques, les tickets de soutien, les réponses au sondage, les entrevues, les signaux communautaires et les données d'utilisation offrent chacun un angle différent, mais rarement dans une forme les équipes peuvent décider de.",
+    "CONSUMER RESEARCH commence par définir ce que vous devez apprendre. Ensuite, nous recueillons, classons et structurons les signaux en segments, besoins, douleurs, motivations et opportunités dans un bref aperçu."
+  ],
+  "problemsLabel": "",
+  "problemsTitle": "C'est utile quand on fait face à ces situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "TARGET UNCERT_KEEP000_NTY",
+      "d": "Il n'est pas clair qui est le produit ou le service pour,\nou quel groupe d'utilisateurs est le plus important."
+    },
+    {
+      "n": "02",
+      "t": "VOIX SCATTERED",
+      "d": "Il y a beaucoup de commentaires et de billets mais pas de motifs clairs.\nLes mêmes plaintes se répètent sans priorité."
+    },
+    {
+      "n": "03",
+      "t": "VALIDATION DU MESSAGE",
+      "d": "Vous avez besoin de preuves pour valider la messagerie et le positionnement.\nVous voulez savoir à quoi les utilisateurs répondent réellement."
+    },
+    {
+      "n": "04",
+      "t": "PRIORITÉ DES BESOINS",
+      "d": "Vous avez de nombreux candidats de fonction ou de service\nmais n'avez pas de preuves de ce qu'il faut résoudre en premier."
+    },
+    {
+      "n": "05",
+      "t": "GAP DE COMPORTEMENT",
+      "d": "Il y a un écart entre les hypothèses et le comportement réel.\nVous avez besoin de contexte pour pourquoi les utilisateurs agissent ainsi."
+    },
+    {
+      "n": "06",
+      "t": "PRÉLÈVEMENT",
+      "d": "Avant de lancer, rebrand, ou une fonctionnalité majeure,\nvous avez besoin de la réaction de l'utilisateur d'abord."
+    }
+  ],
+  "baLabel": "AVANT / APRÈS",
+  "baTitle": "Voix dispersées par rapport à\nCompréhension des utilisateurs structurés",
+  "beforeLabel": "AVANT",
+  "afterLabel": "APRÈS",
+  "before": [
+    "Tout le monde vérifie séparément les commentaires, les billets et les sondages",
+    "«Les utilisateurs veulent ceci, on dit souvent mais les preuves sont dispersées",
+    "Segments, besoins et changement de priorité par conversation",
+    "Insights ne sont pas documentés ou connectés à la prochaine validation"
+  ],
+  "after": [
+    "Les questions de recherche et la portée utilisateur sont définies en premier",
+    "Les segments, les besoins et la douleur sont structurés",
+    "Un aperçu partagé pour l'équipe",
+    "Connecté à la messagerie, aux fonctionnalités et aux expériences"
+  ],
+  "capsLabel": "CAPABILITÉS",
+  "capsTitle": "Nous structurons la recherche\nvos besoins de compréhension utilisateur.",
+  "caps": [
+    {
+      "t": "DES QUESTIONS",
+      "d": "Définissez ce que vous devez apprendre à décider.\nPréciser le but de la recherche et cibler les utilisateurs."
+    },
+    {
+      "t": "DESK RECHERCHE",
+      "d": "Recueillir des sources secondaires – examens, commentaires de la collectivité et du public.\nVérifiez la source et le contexte."
+    },
+    {
+      "t": "RECHERCHE PRIMAIRE",
+      "d": "Inclure la conception de l'entrevue ou de l'enquête et le travail sur le terrain au besoin.\nStructurer les questions et sélectionner les participants ensemble."
+    },
+    {
+      "t": "CARTOGRAPHIE DES SEGMENTS",
+      "d": "Organiser les utilisateurs par segment, persona et situation.\nStructure qui utilise quoi et pourquoi."
+    },
+    {
+      "t": "BESOINS ET PAIN ANALYSE",
+      "d": "Besoins, douleurs et attentes non satisfaites.\nPrivilégier les questions récurrentes. SIGNALISATIONS DE COMPORTEMENT"
+    },
+    {
+      "t": "SIGNALISATIONS DE COMPORTEMENT",
+      "d": "Capturer le comportement, l'achat, le churn et les modèles d'utilisation.\nConnectez les hypothèses au comportement réel. INSTALLATIONS DE MESSAGE"
+    },
+    {
+      "t": "POINTS FORTS DU MESSAGE",
+      "d": "Résumez les messages, les valeurs et la langue auxquels les utilisateurs répondent.\nFournir des preuves de positionnement et de copie."
+    },
+    {
+      "t": "INCIDENCES",
+      "d": "Relier les résultats aux répercussions sur les produits, le marketing et les services.\nProposer les prochaines expériences et validation."
+    }
+  ],
+  "sourcesLabel": "SOURCES DE RECHERCHE",
+  "sourcesTitle": "Nous combinons les signaux de l'utilisateur à vos besoins.",
+  "sourcesNote": "Les sources réelles varient selon la portée, l'accès aux données et l'inclusion de la recherche primaire.",
+  "sources": [
+    "Avis sur les produits et services",
+    "App store et revues du marché",
+    "Registres de soutien et d'enquête",
+    "Réponses au sondage et au formulaire",
+    "Entretiens avec les utilisateurs et l'industrie",
+    "Signaux communautaires et sociaux",
+    "Données d'utilisation et de comportement",
+    "NPS & sondages de rétroaction",
+    "Notes de vente et de consultation",
+    "Recherche interne des utilisateurs",
+    "Évaluations des produits concurrents",
+    "Groupes de discussion (champ d'application facultatif)"
+  ],
+  "useLabel": "UTILISATION CAS",
+  "useTitle": "Nous pouvons répondre aux questions.",
+  "useBadge": "Exemples de thèmes de recherche",
+  "useCases": [
+    {
+      "t": "TARGET DÉFINITION",
+      "d": "Clarifier les utilisateurs et les segments du noyau.\nStructure sur laquelle se concentrer d'abord."
+    },
+    {
+      "t": "PRIORITÉ DES BESOINS",
+      "d": "Prioriser les besoins et les douleurs pour résoudre d'abord.\nUtiliser comme preuve pour les décisions sur la feuille de route."
+    },
+    {
+      "t": "ESSAI DE MESSAGE",
+      "d": "Valider la messagerie, la valeur et la direction de copie.\nVoir à quel langage les utilisateurs répondent."
+    },
+    {
+      "t": "MOTIF DE DOULEUR",
+      "d": "Dessiner des plaintes récurrentes et des signaux d'urgence.\nExtraire les questions communes de CS et les examens."
+    },
+    {
+      "t": "CONTEXTE DE COMPORTEMENT",
+      "d": "Comprendre le contexte derrière l'achat, l'utilisation et le churn.\nVérifier les écarts entre les hypothèses et le comportement."
+    },
+    {
+      "t": "PERSONNA INPUT",
+      "d": "Structurer les personnages, les emplois et les situations d'utilisation.\nEntrée pour le produit, la conception et la commercialisation."
+    },
+    {
+      "t": "CHECK PRÉLAUNCH",
+      "d": "Vérifiez la réaction de l'utilisateur avant le lancement ou rebrand.\nPreuve pour Go/No-go et réglage du message."
+    },
+    {
+      "t": "OPPORTUNITÉ MAP",
+      "d": "Documenter les besoins non satisfaits et l'espace blanc.\nSurface nouvelle fonctionnalité ou possibilités de service."
+    }
+  ],
+  "flowLabel": "FLUX DE TRAVAIL EXEMPLES",
+  "flowTitle": "Des questions à un bref aperçu",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DÉFINITION",
+      "d": "Définir les questions de recherche et cibler les utilisateurs.\nClarifiez ce que vous devez apprendre à décider.",
+      "examples": [
+        "Questions principales",
+        "Utilisateurs cibles",
+        "Portée",
+        "Produits livrables"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "COLLECTE",
+      "d": "Recueillir des examens, des enquêtes, des entrevues et des signaux de soutien.\nRevoir le matériel secondaire et primaire ensemble.",
+      "examples": [
+        "Revues",
+        "Enquêtes",
+        "Entrevues",
+        "Appui"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "ANALYSER",
+      "d": "Classer les motifs, les segments, les besoins et les douleurs.\nStructurer les signaux et les différences récurrents.",
+      "examples": [
+        "Segments",
+        "Besoins Douleurs",
+        "",
+        "Motivation"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "SYNTHÈSE",
+      "d": "Extraire les principales perspectives et opportunités.\nConnectez ce qui compte et pourquoi cela compte.",
+      "examples": [
+        "Thèmes clés",
+        "Priorité",
+        "Opportunité",
+        "Risque"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DELIVRE",
+      "d": "Présenter brièvement, cartographier et les implications.\nFormat pour une utilisation en équipe immédiate.",
+      "examples": [
+        "Aperçu",
+        "Carte du segment",
+        "Prochaines étapes"
+      ]
+    }
+  ],
+  "reportLabel": "OUVERTURE",
+  "reportTitle": "Produits livrables structurés pour les décisions relatives aux produits et à la commercialisation.",
+  "reportLead": "La composition varie selon les objectifs du projet. Voici des sections communes. COMPARE",
+  "reportMockStatus": "INSIGHT · PROJET DE RÉSUMÉ DE L'UTILISATEUR",
+  "reportMockK": "RÉSUMÉ DE L' INSTALLATEUR",
+  "reportMockT": "Segment · besoin · modèle de comportement bref",
+  "reportItems": [
+    "Résumé",
+    "Portée de la recherche",
+    "Aperçu du segment",
+    "Besoin et douleur Thèmes",
+    "Signalisation du comportement",
+    "Points forts du message",
+    "Zones d'opportunité",
+    "Conséquences",
+    "Prochaines étapes recommandées",
+    "Notes de source"
+  ],
+  "dashTitle": "Partagez les modèles d'utilisateur dans une vue.",
+  "dashLead": "La carte des segments et les thèmes nécessaires ensemble — les discussions d'équipe vont donc plus vite.",
+  "dashNote": "La carte des segments et la composition des thèmes varient selon la portée et le but.",
+  "dashMetrics": [
+    "Segments",
+    "Thèmes",
+    "Citations",
+    "Priorité"
+  ],
+  "dashFilters": [
+    "Tous",
+    "Besoins Douleurs",
+    "",
+    "Motivation"
+  ],
+  "aiLabel": "SYNTHÈSE",
+  "aiTitle": "De nombreuses voix utilisateur\naux modèles qui comptent.",
+  "aiLead": "Lorsqu'il y a beaucoup de commentaires, de tickets, d'entrevues et de textes de sondage, nous classons, résumons et comparons sous les angles dont vous avez besoin.",
+  "aiExamples": [
+    "Récapitulatif des motifs de commentaires",
+    "Douleur récurrente et extraction de problèmes",
+    "Comparaison des besoins du segment",
+    "Interview citation digest",
+    "Analyse de la réponse au message et de la valeur",
+    "Brève carte thématique ébauche"
+  ],
+  "aiNote": "L'interprétation et les décisions finales sont examinées avec vous.",
+  "delLabel": "LIVRABLES",
+  "delTitle": "Ce que vous recevez après le projet",
+  "delLead": "Selon la portée, nous livrons les articles dont vous avez besoin dans la liste ci-dessous.",
+  "deliverables": [
+    "Aperçu",
+    "Carte du segment",
+    "Besoin et douleur Résumé",
+    "Comportement Remarques",
+    "Points forts du message",
+    "Possibilité Aperçu",
+    "Incidences et recommandations",
+    "Guide d'entrevue (facultatif)",
+    "Résumé de la présentation"
+  ],
+  "processLabel": "PROCESSUS",
+  "processTitle": "De la définition des questions à la livraison.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DÉCOUVREMENT",
+      "d": "Confirmer le but de la recherche et le contexte décisionnel.\nComprenez ce que vous décidez.",
+      "examples": [
+        "Objectif",
+        "Parties prenantes",
+        "Chronologie",
+        "Contraintes"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PORTÉE",
+      "d": "Définir les questions, les utilisateurs cibles, les méthodes et les produits livrables.\nAccord sur l'inclusion de la recherche primaire.",
+      "examples": [
+        "Questions",
+        "Objectif",
+        "Méthode",
+        "Format"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "RECHERCHE",
+      "d": "Recueillir et examiner les signaux et les données pertinents.\nInclure les entrevues ou les sondages lorsqu'ils sont visés.",
+      "examples": [
+        "Revues",
+        "Enquêtes",
+        "Entrevues",
+        "Appui"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ANALYSE",
+      "d": "Structures, segments et besoins.\nThèmes dérivés et priorité.",
+      "examples": [
+        "Segments",
+        "Thèmes",
+        "Priorité",
+        "Citations"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PROJET DE",
+      "d": "Projet de résumé et de carte.\nConstruisez la colonne vertébrale des principales constatations.",
+      "examples": [
+        "Résumé",
+        "Carte du segment",
+        "Thèmes"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "EXAMEN",
+      "d": "Examiner ensemble les principaux points de vue et l'interprétation.\nAjuster les lacunes et les priorités.",
+      "examples": [
+        "Commentaires",
+        "Raffinement",
+        "Priorité"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "DELIVRE",
+      "d": "Fournir les documents finaux et les implications.\nConnectez-vous aux prochaines expériences et validations.",
+      "examples": [
+        "Brève finale Carte",
+        "",
+        "Prochaines étapes"
+      ]
+    }
+  ],
+  "scopeLabel": "NIVEAUX DE PORTÉE",
+  "scopeTitle": "Un guide de la complexité du projet.",
+  "scopeLead": "Les paquets ne sont pas fixes — nous avons une portée basée sur l'objectif, le public et l'inclusion de la recherche primaire.",
+  "scopes": [
+    {
+      "t": "BREF D'ASSISTANCE",
+      "items": [
+        "Concentré sur la recherche de bureau (examens, billets, commentaires du public)",
+        "3 à 5 questions fondamentales",
+        "Résumé des besoins et de la douleur",
+        "Résumé",
+        "Points prioritaires"
+      ]
+    },
+    {
+      "t": "SEGMENT ET CARTE DES BESOINS",
+      "items": [
+        "Résumé du segment et de la personne",
+        "Besoin, douleur et motivation carte",
+        "Comportement et implications du message",
+        "Zones d'opportunité",
+        "Présentation résumé facultatif"
+      ]
+    },
+    {
+      "t": "RECHERCHE DOUANIÈRE",
+      "items": [
+        "Conception des entrevues et des enquêtes et travail sur le terrain",
+        "Multiples segments ou canaux",
+        "Liaison de données de comportement",
+        "Présentation personnalisée",
+        "BUILD ou MVP liaison"
+      ]
+    }
+  ],
+  "timeLabel": "Échéancier",
+  "timeTitle": "Le calendrier dépend de la portée.",
+  "timeLead": "L'inclusion de la recherche primaire, la taille de l'auditoire et l'accès aux données peuvent changer la durée.",
+  "timelines": [
+    {
+      "t": "Aperçu de bureau",
+      "d": "Environ 1 à 2 semaines"
+    },
+    {
+      "t": "Carte des segments et des besoins",
+      "d": "Environ 2 à 3 semaines"
+    },
+    {
+      "t": "Recherche personnalisée",
+      "d": "Environ 3 à 4 semaines · globé séparément"
+    }
+  ],
+  "priceLabel": "PROJET COÛT",
+  "priceTitle": "Nous ne citons que la portée dont vous avez besoin.",
+  "priceName": "CONSUMER RESEARCH",
+  "priceValue": "À partir de 300,000",
+  "priceFactorsLabel": "Ce qui façonne le prix",
+  "priceFactors": [
+    "Nombre de questions de recherche",
+    "Objectif utilisateur ou segment",
+    "Intégration de la recherche primaire",
+    "Nombre d'entrevues ou de réponses",
+    "Profondeur de recherche",
+    "Accessibilité des données",
+    "Format livrable",
+    "Chronologie urgente"
+  ],
+  "priceNote": "La soumission finale est confirmée après avoir examiné le but, la méthode et la portée.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Foire aux questions",
+  "faqs": [
+    {
+      "q": "Quels utilisateurs ou consommateurs pouvez-vous rechercher?",
+      "a": "B2B, B2C, SaaS, commerce, services et plus encore, selon le but et le public accessible. Nous confirmons l'ajustement avant de commencer."
+    },
+    {
+      "q": "Cela comprend-il des entrevues ou des enquêtes?",
+      "a": "On peut commencer le bureau. Les entrevues et les sondages peuvent être inclus dans la portée au besoin."
+    },
+    {
+      "q": "Quel est le format des produits livrables?",
+      "a": "Document et map-first: Insight Brief, Segment Map, Need & Pain Summary, et plus encore. Des résumés de présentation peuvent être inclus."
+    },
+    {
+      "q": "Pouvez-vous utiliser nos données de support ou d'utilisation ?",
+      "a": "Oui, dans ce que vous pouvez partager. Sinon, nous travaillons à partir d'examens publics et de commentaires."
+    },
+    {
+      "q": "En quoi est-ce différent de MARKET RESEARCH ?",
+      "a": "CONSUMER RESEARCH se concentre sur les besoins et le comportement des utilisateurs et des consommateurs. Si la structure du marché est nécessaire, MARKET RESEARCH peut s'adapter mieux — les champs d'application peuvent être liés."
+    },
+    {
+      "q": "Cette connexion peut-elle se connecter à BUILD ou MVP ?",
+      "a": "Oui. Insights peut alimenter la priorité, la définition de cible et la messagerie."
+    },
+    {
+      "q": "Comment la confidentialité est-elle traitée?",
+      "a": "Nous ne travaillons que dans le cadre convenu. Une ADN peut être signée au besoin."
+    }
+  ],
+  "finalLabel": "ÉTAT D'UN PROJET",
+  "finalTitle": "Ne devinez pas vos utilisateurs —\nécoutez et modélisez d'abord.",
+  "finalLead": "Dites-nous la cible, la messagerie ou le problème que vous évaluez. Nous confirmerons quoi faire et comment structurer les résultats.",
+  "ctaFinalSecondary": "Voir tout RECHERCHE →",
+  "ctaFinalSecondaryHref": "../research/"
+}

@@ -2,6 +2,8 @@
  * DATA & REPORTING service detail — KO/EN copy.
  * Path: /{lang}/business/automation/data-reporting/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const DATA_REPORTING_COPY = {
   ko: {
     seoTitle: "DATA & REPORTING | Newon AUTOMATION",
@@ -680,5 +682,5 @@ export const DATA_REPORTING_COPY = {
 };
 
 export function getDataReportingCopy(lang) {
-  return lang === "ko" ? DATA_REPORTING_COPY.ko : DATA_REPORTING_COPY.en;
+  return resolveKoEnPack(DATA_REPORTING_COPY, lang, "data-reporting-copy");
 }

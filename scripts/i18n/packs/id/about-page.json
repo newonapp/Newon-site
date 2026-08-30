@@ -1,0 +1,385 @@
+{
+  "seoTitle": "Tentang Newon | Produk & Venture Studio",
+  "metaDescription": "Newon adalah & Venture Studio yang membangun aplikasi, AI, game, dan layanan web - dan mitra dengan perusahaan untuk merancang pengalaman digital dan kemungkinan bisnis baru.",
+  "metaKeywords": "Newon, Studio Produk, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, Studio Produk & Venture",
+  "brandAria": "Newon",
+  "brandMarkAlt": "Newon",
+  "brandWord": "Newon",
+  "brandLine": "Produk & Venture Studio",
+  "brandCrumb": "Perusahaan / Tentang",
+  "brandScroll": "Gulung ke bawah",
+  "brandPointTitle": "NEWON CARD",
+  "brandPointSub": "Perkenalkan Newon melalui kartu digital",
+  "brandPointBadge": "DIGITAL",
+  "brandMetaLeft": "NEWON",
+  "brandMetaRight": "EST. 2026",
+  "brandKicker": "NEW + ON",
+  "brandTag": "Apps",
+  "brandDomainsAria": "Apa yang kita bangun",
+  "brandDomains": [
+    "Apps",
+    "AI",
+    "Permainan",
+    "Web"
+  ],
+  "brandMeaning": "Mengubah kemungkinan baru pada - membuat mereka nyata.",
+  "heroEyebrow": "Tentang NEWON",
+  "heroTitleHtml": "Mengubah kemungkinan baru Produk <br />into.",
+  "heroLeadHtml": "Kami membangun dan menjalankan aplikasi, AI, game, dan layanan web - dan menggunakan eksekusi yang sama untuk membuka kemungkinan produk berikutnya dengan perusahaan dan pendiri.",
+  "heroNameAria": "Baru + Pada",
+  "heroNameKicker": "NEW + ON",
+  "heroNameNew": "NEW",
+  "heroNameNewDesc": "Ide dan kemungkinan baru",
+  "heroNameOn": "ON",
+  "heroNameOnDesc": "Membuat ide-ide bekerja sebagai produk nyata",
+  "heroNameNote": "Baru + Pada berarti menghidupkan ide-ide baru dan kemungkinan pada - membuat mereka nyata.",
+  "cardAria": "Buka kartu digital Newon",
+  "cardAlt": "Kartu nama Newon",
+  "cardHint": "Kartu digital untuk dibuka",
+  "ctaProducts": "Lihat produk →",
+  "ctaBusiness": "Penyelidikan bisnis →",
+  "whyEyebrow": "MENGAPA NEWON",
+  "whyTitle": "Sebuah nama yang mengubah kemungkinan pada.",
+  "whyTagline": "Baru + Pada",
+  "whyTaglineEn": "TURN POSSIBILITIES ON",
+  "whyBody": [
+    "Newon diawali dengan New + On.",
+    "Baru singkatan dari ide, pengalaman, produk, dan kemungkinan. Pada cara menghidupkan mereka - membuat mereka bekerja dan menghubungkan mereka ke dunia.",
+    "Kita tidak meninggalkan ide-ide sebagai pemikiran. Kami membangun, kapal, belajar, dan menghubungkan apa yang divalidasi dengan apa yang datang berikutnya."
+  ],
+  "whyNewCols": [
+    {
+      "head": "NEW",
+      "items": [
+        "Ide baru",
+        "Pengalaman baru",
+        "Produk baru",
+        "Kemungkinan baru"
+      ]
+    },
+    {
+      "head": "ON",
+      "items": [
+        "Buatlah bekerja",
+        "Hubungkan",
+        "Kapal itu",
+        "Tumbuhkan"
+      ]
+    }
+  ],
+  "missionEyebrow": "MISI",
+  "missionTitle": "Dari ide ke produk - kemudian apa yang berikutnya.",
+  "missionLead": "Newon membangun dan mengoperasikan produk langsung - kemudian berbagi struktur dan eksekusi dengan perusahaan dan pendiri.",
+  "missionPoints": [
+    {
+      "n": "01",
+      "title": "MEMBUAT",
+      "body": "Mengubah masalah sehari-hari menjadi aplikasi, AI, game, dan produk web."
+    },
+    {
+      "n": "02",
+      "title": "VALIDATE",
+      "body": "Validasi melalui peluncuran nyata, penggunaan, dan umpan balik."
+    },
+    {
+      "n": "03",
+      "title": "EXPAND",
+      "body": "Expand terbukti bekerja melalui Bisnis, Studio, dan Lab."
+    }
+  ],
+  "glanceEyebrow": "WHO WE BUILD FOR",
+  "glanceTitle": "Dengan siapa kita membangun.",
+  "glanceLead": "Dari orang-orang yang menggunakan produk kami, untuk tim memvalidasi ide, untuk perusahaan yang kami bangun bersama - Newon bergerak melalui tiga hubungan.",
+  "glanceRoles": [
+    {
+      "n": "01",
+      "title": "Pengguna",
+      "via": "PRODUCTS",
+      "body": "Orang-orang yang ingin kehidupan sehari-hari - kebiasaan, uang, kesehatan, keluarga, perjalanan - untuk merasa lebih sederhana.",
+      "tags": [
+        "Kebiasaan",
+        "Uang",
+        "Care",
+        "Perjalanan",
+        "Life"
+      ]
+    },
+    {
+      "n": "02",
+      "title": "FOUNDERS",
+      "via": "BUSINESS",
+      "body": "Pendiri dan tim yang perlu mengubah ide menjadi produk nyata dengan cepat.",
+      "tags": [
+        "MVP",
+        "Build",
+        "Kapal"
+      ]
+    },
+    {
+      "n": "03",
+      "title": "COMPANIES",
+      "via": "BUSINESS",
+      "body": "Perusahaan dan merek membuat layanan digital, otomatisasi, penelitian, dan pengalaman merek.",
+      "tags": [
+        "Otomatis",
+        "Penelitian",
+        "Brand"
+      ]
+    }
+  ],
+  "spacesEyebrow": "SPACES MASALAH",
+  "spacesTitle": "Masalah yang kita gali.",
+  "spaces": [
+    {
+      "n": "01",
+      "title": "HABIT & GROTH",
+      "body": "Membantu orang melacak, menetapkan tujuan, dan menjaga perubahan kecil terjadi.",
+      "slugs": [
+        "ox-month",
+        "goalup",
+        "countup"
+      ]
+    },
+    {
+      "n": "02",
+      "title": "Uang",
+      "body": "Membuat pengeluaran, langganan, dan menabung lebih jelas.",
+      "slugs": [
+        "savy",
+        "subping",
+        "piggyup"
+      ]
+    },
+    {
+      "n": "03",
+      "title": "CARE",
+      "body": "Catatan perawatan untuk keluarga, hewan peliharaan, dan kesehatan - bersama-sama.",
+      "slugs": [
+        "babylog",
+        "petlog",
+        "pillmate"
+      ]
+    },
+    {
+      "n": "04",
+      "title": "LIFE & PLATFORM",
+      "body": "Dari catatan perjalanan ke Newon keanggotaan - pengalaman terhubung.",
+      "slugs": [
+        "myworld",
+        "newon-plus"
+      ]
+    }
+  ],
+  "journeyEyebrow": "Journey",
+  "journeyTitle": "Mulai dari yang kecil. Terus memperluas.",
+  "journeyNote": "Kami tidak menemukan cerita pertumbuhan. Newon belajar dengan pengiriman dan operasi.",
+  "journeyMilestones": [
+    {
+      "year": "MULAI",
+      "title": "Mulai sebagai Studio Produk",
+      "body": "Dimulai dengan perencanaan, membangun, dan meluncurkan aplikasi dan produk digital."
+    },
+    {
+      "year": "BUILD",
+      "title": "Operate dan validasi",
+      "body": "Membangun dan menjalankan produk melalui kebiasaan, uang, keluarga, kesehatan, dan perjalanan."
+    },
+    {
+      "year": "EXPAND",
+      "title": "Bisnis",
+      "body": "Perluas pengalaman produk dengan perusahaan melalui Bisnis, Studio, dan Lab.",
+      "isNow": true
+    },
+    {
+      "year": "Berikutnya",
+      "title": "Apa selanjutnya",
+      "body": "Terus - lebih banyak pasar, lebih banyak bahasa, lebih berguna produk dan percobaan."
+    }
+  ],
+  "studioNoteEyebrow": "CATATAN STUTE",
+  "studioNoteTitle": "Satu studio. Banyak kemungkinan.",
+  "studioNoteBody": "Newon tidak berhenti pada satu aplikasi. Kami membuat produk, berkolaborasi dengan perusahaan, merek desain, dan menjalankan percobaan kecil untuk menemukan apa yang berikutnya.",
+  "metricLabels": {
+    "apps": "APPS",
+    "products": "PRODUCTS",
+    "countries": "COUNTRIES",
+    "languages": "GRAAGES"
+  },
+  "buildEyebrow": "APA YANG PERLU TIDAK",
+  "buildTitle": "Dari produk ke eksperimen - satu studio.",
+  "buildAreas": [
+    {
+      "n": "01",
+      "title": "PRODUCTS",
+      "body": "Produk digital yang kita buat dan jalankan. Apps",
+      "href": "../products/"
+    },
+    {
+      "n": "02",
+      "title": "BUSINESS",
+      "body": "Digital membangun dan masalah memecahkan perusahaan dan pendiri. Bangun",
+      "href": "../business/"
+    },
+    {
+      "n": "03",
+      "title": "STULName",
+      "body": "Desain pengalaman merek dan digital. Merek",
+      "href": "../studio/"
+    },
+    {
+      "n": "04",
+      "title": "LABS",
+      "body": "Percobaan kecil untuk memvalidasi apa yang berikutnya. Penelitian",
+      "href": "../resources/labs/"
+    }
+  ],
+  "productAreasEyebrow": "PRODUCT AREAS",
+  "productAreas": [
+    "Life",
+    "Produktivitas",
+    "Keuangan",
+    "Kesehatan",
+    "Family",
+    "Perjalanan"
+  ],
+  "workEyebrow": "Bagaimana kita bekerja",
+  "workTitle": "Membangun kecil. Validasi untuk nyata.",
+  "workSteps": [
+    {
+      "n": "01",
+      "title": "DISCOVER",
+      "body": "Cari masalah dan kesempatan."
+    },
+    {
+      "n": "02",
+      "title": "BUILD",
+      "body": "Kapal versi terkecil berguna dengan cepat."
+    },
+    {
+      "n": "03",
+      "title": "SHIP",
+      "body": "Lepaskan sesuatu yang bisa digunakan orang."
+    },
+    {
+      "n": "04",
+      "title": "LEARN",
+      "body": "Belajar dari penggunaan dan respon."
+    },
+    {
+      "n": "05",
+      "title": "EXPAND",
+      "body": "Tumbuh memvalidasi pekerjaan menjadi produk yang lebih besar dan bisnis."
+    }
+  ],
+  "principlesEyebrow": "PRINCIPLES",
+  "principlesTitle": "Bagaimana kita memegang pekerjaan.",
+  "principles": [
+    {
+      "n": "01",
+      "title": "BUILD USEFUL PRODUCTS",
+      "body": "Produk harus memecahkan masalah nyata."
+    },
+    {
+      "n": "02",
+      "title": "MULAI SMALL",
+      "body": "Mulailah dengan bentuk terkecil yang berguna."
+    },
+    {
+      "n": "03",
+      "title": "FAST SHIP",
+      "body": "Prioritas pengiriman atas menunggu untuk sempurna."
+    },
+    {
+      "n": "04",
+      "title": "LANGKAH DARI PENGGUNA",
+      "body": "Penggunaan dan respon datang pertama."
+    },
+    {
+      "n": "05",
+      "title": "BERPIKIR GLOBAL",
+      "body": "Mendesain banyak pasar dan bahasa dari awal."
+    }
+  ],
+  "selectedEyebrow": "PRODUCTED SELEKSI",
+  "selectedTitle": "Memproduksi Newon membangun langsung.",
+  "selectedLead": "Produk representatif Newon berencana, membangun, dan beroperasi.",
+  "selectedAll": "VIEW SEMUA PRODUCTS →",
+  "selectedProductsMax": 11,
+  "universeView": "Lihat produk ↗",
+  "statusLive": "Live",
+  "statusProject": "Projek",
+  "productCats": {
+    "ox-month": "Kebiasaan / Hidup",
+    "goalup": "Produktivitas",
+    "countup": "Utilitas",
+    "savy": "Keuangan",
+    "subping": "Keuangan",
+    "piggyup": "Keuangan",
+    "pillmate": "Kesehatan",
+    "babylog": "Family",
+    "petlog": "Family",
+    "myworld": "Perjalanan / Hidup",
+    "newon-plus": "Platform",
+    "404-human": "Permainan"
+  },
+  "productOrder": [
+    "ox-month",
+    "goalup",
+    "savy",
+    "babylog",
+    "myworld",
+    "newon-plus",
+    "countup",
+    "subping",
+    "piggyup",
+    "petlog",
+    "pillmate",
+    "404-human"
+  ],
+  "exploreEyebrow": "EXPLORE NEWON",
+  "exploreTitle": "Menjelajahi lebih banyak Newon.",
+  "explorePanels": [
+    {
+      "n": "01",
+      "title": "PORTFOLIO",
+      "body": "Produk dan proyek Newon telah dibangun.",
+      "cta": "Portfolio →",
+      "href": "../portfolio/",
+      "invert": true
+    },
+    {
+      "n": "02",
+      "title": "Berita",
+      "body": "Peluncuran dan pemutakhiran resmi.",
+      "cta": "Berita →",
+      "href": "../news/"
+    },
+    {
+      "n": "03",
+      "title": "MEDIA",
+      "body": "Memproduksi cerita, membangun proses, dan video.",
+      "cta": "Media →",
+      "href": "../media/"
+    },
+    {
+      "n": "04",
+      "title": "BUSINESS",
+      "body": "Proyek digital dibangun dengan perusahaan.",
+      "cta": "Bisnis →",
+      "href": "../business/",
+      "invert": true
+    }
+  ],
+  "ideaEyebrow": "IDEA ANDA BERIKUT",
+  "ideaTitleHtml": "Produksi berikutnya ZXXXVA<br />. mungkin mulai dengan masalahmu.",
+  "ideaLead": "Jika Anda memerlukan aplikasi baru, alat AI, layanan web, atau fitur produk Newon - beritahu kami. Kita akan mengeksplorasi bagaimana mengubahnya menjadi sesuatu yang nyata.",
+  "ideaCta": "Kirim sebuah ide →",
+  "ideaHint": "APP",
+  "closeEyebrow": "NEWON",
+  "closeTitleHtml": "Kami terus buildingZXXXVA<br />what berikutnya.",
+  "closeLead": "Jelajahi produk Newon, berbagi ide, atau membangun pengalaman digital baru bersama.",
+  "closeTaglineEn": "",
+  "closeProducts": "Lihat produk →",
+  "closeBusiness": "Penyelidikan bisnis →",
+  "closePortfolio": "Portfolio →"
+}

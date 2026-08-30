@@ -1,0 +1,649 @@
+{
+  "brand": {
+    "crumbStudio": "Studio",
+    "otherTitle": "STUBEN LAIN AREAS",
+    "ctaEyebrow": "Punya permintaan?",
+    "ctaTitle": "Mari kita bentuk bagaimana merek dan produk Anda muncul di dunia.",
+    "ctaLead": "Bahkan pada tahap ide. Kita mulai dengan menjelaskan lingkup yang kau butuhkan.",
+    "ctaBtn": "Proyek penyelidikan →",
+    "servicesLabel": "Layanan",
+    "processLabel": "PROSES",
+    "faqLabel": "PSD",
+    "quoteCta": "Proyek penyelidikan →",
+    "whatWeBuild": "Apa yang kita lakukan",
+    "recommendedFor": "Disarankan untuk",
+    "included": "Termasuk",
+    "deliverables": "Terkirim",
+    "timeline": "Perkiraan waktu",
+    "detailCta": "Lihat rincian →",
+    "soonBtn": "Segera datang.",
+    "comingSoon": "Segera datang.",
+    "comingSoonLead": "Daerah ini masih dalam proses - tidak ditawarkan sebagai layanan komersial selesai belum.",
+    "ctaPrimary": "Mulai projek →",
+    "ctaSecondary": "Lihat scope ↓",
+    "startingAt": "MULAI DI",
+    "seoTitle": "BRAND |XQBANewon Studio",
+    "metaDescription": "Newon Studio BRAND - strategi, penamaan, identitas, dan logo sebagai satu merek sistem.",
+    "eyebrow": "STUAND BARU",
+    "headline": "Arah merek bentuk\ndan identitas.",
+    "lead": "Sebuah merek yang kuat tidak dimulai dengan logo. Kami menghubungkan strategi, penamaan, identitas, dan logo ke dalam satu merek sistem.",
+    "process": [
+      {
+        "n": "01",
+        "t": "DISCOVER",
+        "d": "Memahami merek dan pasar"
+      },
+      {
+        "n": "02",
+        "t": "DEFINE",
+        "d": "Posisi dan arah"
+      },
+      {
+        "n": "03",
+        "t": "DESIGN",
+        "d": "Mendesain identitas merek"
+      },
+      {
+        "n": "04",
+        "t": "DELIVER",
+        "d": "Serahkan aset merek"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Bisakah kita menyewa branding saja?",
+        "a": "Ya - strategi, penamaan, identitas, atau logo, scoped untuk apa yang Anda butuhkan."
+      },
+      {
+        "q": "Dapatkah Anda menyegarkan merek yang ada?",
+        "a": "Ya. Kami meninjau aset dan tujuan saat ini, kemudian mengusulkan scope."
+      },
+      {
+        "q": "Apakah Anda menjamin izin merek dagang?",
+        "a": "Tidak. Kami meninjau makna dan ekspandabilitas, tapi ulasan merek dagang akhir membutuhkan pengacara IP."
+      },
+      {
+        "q": "Apakah harga awal tetap?",
+        "a": "Tidak. Ini adalah harga awal untuk lingkup dasar; kutipan terakhir bervariasi dengan skala, lingkup produksi, dan pengiriman."
+      },
+      {
+        "q": "Bisakah ini terhubung untuk membangun pekerjaan?",
+        "a": "Desain tetap di Studio; implementasi terus melalui Newon Bisnis ramai."
+      }
+    ],
+    "services": [
+      {
+        "title": "BRAND STATEGY",
+        "tab": "STRATEGY",
+        "summary": "Tentukan posisi dan pesan merek inti.",
+        "what": "Clarify arah dan pesan dari pasar, pelanggan, dan konteks kompetitif.",
+        "for": "Tim yang membutuhkan arah merek atau ingin menyegarkan merek yang ada.",
+        "included": "Audit & cara",
+        "deliverables": "Dokumen Strategy Brand, Positioning, Tone & Panduan Manner",
+        "timeline": "1-3 minggu",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Brand+Strategy&area=Brand#inquiry",
+        "_studioSlug": "brand-strategy",
+        "href": "strategy/",
+        "detailCta": "Lihat rincian →"
+      },
+      {
+        "title": "NING",
+        "tab": "NING",
+        "summary": "Nama yang dapat diingat dan penamaan arah yang dapat tumbuh dengan merek.",
+        "what": "Mengembangkan kandidat nama dan arah penggunaan yang sesuai karakter merek.",
+        "for": "Tim penamaan sebuah perusahaan, aplikasi, atau layanan - atau berganti nama.",
+        "included": "Nama tujuan",
+        "deliverables": "Nama Kandidat, Rasionale, Nama Panduan Penggunaan",
+        "timeline": "1-2 minggu",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Naming&area=Brand#inquiry",
+        "_studioSlug": "naming",
+        "href": "naming/",
+        "detailCta": "Lihat rincian →"
+      },
+      {
+        "title": "IDENTITY",
+        "tab": "IDENTITY",
+        "summary": "Sebuah bahasa visual yang terasa konsisten dimanapun merek muncul.",
+        "what": "Atur warna, tipe, dan gaya grafis menjadi satu sistem.",
+        "for": "Tim tanpa standar merek, atau merek yang terlihat berbeda di setiap saluran.",
+        "included": "Arah pandang",
+        "deliverables": "Identitas Visual Sistem, Warna & Panduan Tipografi",
+        "timeline": "2-4 minggu",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Identity&area=Brand#inquiry",
+        "_studioSlug": "identity",
+        "href": "identity/",
+        "detailCta": "Lihat rincian →"
+      },
+      {
+        "title": "LOGO",
+        "tab": "LOGO",
+        "summary": "Sebuah logo dan sistem penggunaan dasar yang mengekspresikan merek sederhana.",
+        "what": "Mengembangkan konsep logo dan memberikan berkas produksi-siap.",
+        "for": "Logo baru, atau tim meningkatkan tanda yang ada.",
+        "included": "Arah",
+        "deliverables": "Berkas Logo, Variasi, Panduan Logo Dasar",
+        "timeline": "2-3 minggu",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Logo+Design&area=Brand#inquiry",
+        "_studioSlug": "logo-design",
+        "href": "logo/",
+        "detailCta": "Lihat rincian →"
+      }
+    ],
+    "slug": "brand",
+    "crumbBusiness": "Studio",
+    "pricing": [
+      {
+        "name": "Strategi Merek",
+        "price": "Dari $400.000",
+        "svc": 0,
+        "slug": "brand-strategy",
+        "pricingType": "mulai Pada"
+      },
+      {
+        "name": "Nama",
+        "price": "Dari £300,000",
+        "svc": 1,
+        "slug": "naming",
+        "pricingType": "mulai Pada"
+      },
+      {
+        "name": "Identitas",
+        "price": "Dari $600.000",
+        "svc": 2,
+        "slug": "identity",
+        "pricingType": "mulai Pada"
+      },
+      {
+        "name": "Desain Logo",
+        "price": "Dari $400.000",
+        "svc": 3,
+        "slug": "logo-design",
+        "pricingType": "mulai Pada"
+      }
+    ],
+    "pricingNote": "Terdaftar jumlah mulai harga untuk lingkup dasar. Kutipan terakhir mungkin bervariasi dengan skala proyek, scope produksi, jumlah pengiriman, dan persyaratan.",
+    "pricingNoteDefault": "Terdaftar jumlah mulai harga untuk lingkup dasar. Kutipan terakhir mungkin bervariasi dengan skala proyek, scope produksi, jumlah pengiriman, dan persyaratan."
+  },
+  "digital": {
+    "crumbStudio": "Studio",
+    "otherTitle": "STUBEN LAIN AREAS",
+    "ctaEyebrow": "Punya permintaan?",
+    "ctaTitle": "Mari kita bentuk bagaimana merek dan produk Anda muncul di dunia.",
+    "ctaLead": "Bahkan pada tahap ide. Kita mulai dengan menjelaskan lingkup yang kau butuhkan.",
+    "ctaBtn": "Proyek penyelidikan →",
+    "servicesLabel": "Layanan",
+    "processLabel": "PROSES",
+    "faqLabel": "PSD",
+    "quoteCta": "Proyek penyelidikan →",
+    "whatWeBuild": "Apa yang kita lakukan",
+    "recommendedFor": "Disarankan untuk",
+    "included": "Termasuk",
+    "deliverables": "Terkirim",
+    "timeline": "Perkiraan waktu",
+    "detailCta": "Lihat rincian →",
+    "soonBtn": "Segera datang.",
+    "comingSoon": "Segera datang.",
+    "comingSoonLead": "Daerah ini masih dalam proses - tidak ditawarkan sebagai layanan komersial selesai belum.",
+    "ctaPrimary": "Mulai projek →",
+    "ctaSecondary": "Lihat scope ↓",
+    "startingAt": "MULAI DI",
+    "seoTitle": "|Newon Studio",
+    "metaDescription": "Newon Studio DIGITAL - web, aplikasi UI / UX, pendaratan, dan desain produk dari struktur ke antarmuka.",
+    "eyebrow": "STUL WON",
+    "headline": "Desain web dan\npengalaman produk.",
+    "lead": "Sebuah produk digital yang kuat tidak hanya layar indah. Kami merancang dari arsitektur informasi dan mengalir melalui UI / UX sebagai satu pengalaman.",
+    "process": [
+      {
+        "n": "01",
+        "t": "DISCOVER",
+        "d": "Tujuan dan pengguna"
+      },
+      {
+        "n": "02",
+        "t": "DEFINE",
+        "d": "Struktur dan aliran kunci"
+      },
+      {
+        "n": "03",
+        "t": "DESIGN",
+        "d": "Desain UI / UX"
+      },
+      {
+        "n": "04",
+        "t": "PROTOTYPE",
+        "d": "Validasi prototype"
+      },
+      {
+        "n": "05",
+        "t": "HANDOFF",
+        "d": "Pembangunan handoff"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Mendesain saja?",
+        "a": "Ya. Harga awal DIGITAL hanya - UI / UX, prototipe, dan handoff scoped untuk kebutuhan Anda."
+      },
+      {
+        "q": "Apakah Anda juga membangun?",
+        "a": "No Studio DIGITAL tidak termasuk pengembangan. Implikasi dikutip secara terpisah melalui Newon Bisnis ramai."
+      },
+      {
+        "q": "Dapatkah Anda meningkatkan produk yang ada?",
+        "a": "Ya - kita meninjau aliran dan struktur, kemudian mengusulkan lingkup."
+      },
+      {
+        "q": "Apakah responsif / ponsel termasuk?",
+        "a": "Ya - desktop dan mobil UI bersama-sama."
+      }
+    ],
+    "services": [
+      {
+        "title": "WEB DESIGN",
+        "tab": "WEB",
+        "summary": "Desain UX / UI web yang menyajikan merek dan layanan dengan jelas. (Hanya Desain)",
+        "what": "Dari struktur situs ke wireframes, UI, dan desain responsif. Pembangunan / pengembangan tidak termasuk.",
+        "for": "Tim membutuhkan sebuah situs perusahaan / merek, atau meningkatkan web UX yang sudah ada.",
+        "included": "Mendesain Hanya Komponen",
+        "deliverables": "Sitmap, Wireframes, Desktop / Mobile UI, Handoff",
+        "timeline": "2-5 minggu",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Web+Design&area=Digital#inquiry",
+        "_studioSlug": "web-design",
+        "href": "web-design/",
+        "detailCta": "Lihat rincian →"
+      },
+      {
+        "title": "APP UI / UX",
+        "tab": "APP",
+        "summary": "Flows dan struktur layar untuk fitur aplikasi inti. (Hanya Desain)",
+        "what": "Dari pengguna mengalir ke UI yang tinggi, prototipe, dan handoff. Pengembangan app tidak termasuk.",
+        "for": "Tim mengklarifikasi ide aplikasi, desain MVP, atau perbaikan UX.",
+        "included": "Mendesain Hanya Arus Pengguna",
+        "deliverables": "User Flow, High- Fielity UI, Prototype, Handoff Files",
+        "timeline": "3-6 minggu",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=App+UI%2FUX&area=Digital#inquiry",
+        "_studioSlug": "app-ui-ux",
+        "href": "app-ui-ux/",
+        "detailCta": "Lihat rincian →"
+      },
+      {
+        "title": "RUANG LANDING",
+        "tab": "LANDING",
+        "summary": "Mendarat halaman UX / UI desain dibangun untuk konversi. (Hanya Desain)",
+        "what": "Struktur pesan, CTA, bagian, dan UI mobile. Pembangunan web tidak termasuk.",
+        "for": "Peluncuran, pelayan, iklan, atau permintaan validasi MVP.",
+        "included": "Mendesain Hanya Struktur Pesan",
+        "deliverables": "Struktur Landing, UI Final, Sistem CTA, Handoff",
+        "timeline": "1-3 minggu",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Landing+Page+Design&area=Digital#inquiry",
+        "_studioSlug": "landing-page-design",
+        "href": "landing/",
+        "detailCta": "Lihat rincian →"
+      },
+      {
+        "title": "PRODUCT DESIGN",
+        "tab": "PRODUCT",
+        "summary": "Yang mana desain pengalaman produk - tidak hanya layar. (Hanya Desain)",
+        "what": "Sejajarkan struktur produk, aliran UX, sistem UI, dan sistem desain. Pembangunan / pengembangan tidak termasuk.",
+        "for": "Tim pengorganisasian penuh produk UX atau membutuhkan sistem desain.",
+        "included": "Mendesain hanya struktur yang Diolah mengalir sistem desain",
+        "deliverables": "Produk Arsitektur UX, Desain UI, Sistem Desain, Handoff",
+        "timeline": "4-8 minggu",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Product+Design&area=Digital#inquiry",
+        "_studioSlug": "product-design",
+        "href": "product-design/",
+        "detailCta": "Lihat rincian →"
+      }
+    ],
+    "slug": "digital",
+    "crumbBusiness": "Studio",
+    "pricing": [
+      {
+        "name": "Desain Web",
+        "price": "Dari $600.000",
+        "svc": 0,
+        "slug": "web-design",
+        "pricingType": "mulai Pada"
+      },
+      {
+        "name": "App UI / UX",
+        "price": "Dari £800.000",
+        "svc": 1,
+        "slug": "app-ui-ux",
+        "pricingType": "mulai Pada"
+      },
+      {
+        "name": "Desain Halaman Pendaratan",
+        "price": "Dari $400.000",
+        "svc": 2,
+        "slug": "landing-page-design",
+        "pricingType": "mulai Pada"
+      },
+      {
+        "name": "Desain Produk",
+        "price": "Dari £1,200.000",
+        "svc": 3,
+        "slug": "product-design",
+        "pricingType": "mulai Pada"
+      }
+    ],
+    "pricingNote": "Terdaftar jumlah mulai harga untuk lingkup dasar. Kutipan terakhir mungkin bervariasi dengan skala proyek, scope produksi, jumlah pengiriman, dan persyaratan. Harga DIGITAL hanya dibuat. Proyek yang perlu diimplementasikan dikutip secara terpisah melalui bisnis Newon.",
+    "pricingNoteDefault": "Terdaftar jumlah mulai harga untuk lingkup dasar. Kutipan terakhir mungkin bervariasi dengan skala proyek, scope produksi, jumlah pengiriman, dan persyaratan."
+  },
+  "content": {
+    "crumbStudio": "Studio",
+    "otherTitle": "STUBEN LAIN AREAS",
+    "ctaEyebrow": "Punya permintaan?",
+    "ctaTitle": "Mari kita bentuk bagaimana merek dan produk Anda muncul di dunia.",
+    "ctaLead": "Bahkan pada tahap ide. Kita mulai dengan menjelaskan lingkup yang kau butuhkan.",
+    "ctaBtn": "Proyek penyelidikan →",
+    "servicesLabel": "Layanan",
+    "processLabel": "PROSES",
+    "faqLabel": "PSD",
+    "quoteCta": "Proyek penyelidikan →",
+    "whatWeBuild": "Apa yang kita lakukan",
+    "recommendedFor": "Disarankan untuk",
+    "included": "Termasuk",
+    "deliverables": "Terkirim",
+    "timeline": "Perkiraan waktu",
+    "detailCta": "Lihat rincian →",
+    "soonBtn": "Segera datang.",
+    "comingSoon": "Segera datang.",
+    "comingSoonLead": "Daerah ini masih dalam proses - tidak ditawarkan sebagai layanan komersial selesai belum.",
+    "ctaPrimary": "Mulai projek →",
+    "ctaSecondary": "Lihat scope ↓",
+    "startingAt": "MULAI DI",
+    "seoTitle": "| Newon Studio",
+    "metaDescription": "Newon Konten Studio - konten sosial, kampanye, dan aset visual.",
+    "eyebrow": "STUENT WON",
+    "headline": "Buat isi yang membuat merek\nterlihat dan mengesankan.",
+    "lead": "Kami mengubah pesan merek menjadi konten untuk sosial, kampanye, peluncuran, dan saluran digital.",
+    "process": [
+      {
+        "n": "01",
+        "t": "DISCOVER",
+        "d": "Memahami merek dan saluran"
+      },
+      {
+        "n": "02",
+        "t": "DEFINE",
+        "d": "Tentukan pesan dan format"
+      },
+      {
+        "n": "03",
+        "t": "CREATE",
+        "d": "Menghasilkan isi dan visual"
+      },
+      {
+        "n": "04",
+        "t": "DELIVER",
+        "d": "Serahkan berkas-berkas yang sudah dipersiapkan"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Konten saja?",
+        "a": "Ya - sosial, kampanye, atau lingkup visual seperti yang dibutuhkan."
+      },
+      {
+        "q": "Harus kita lakukan merek pertama?",
+        "a": "Kita dapat menyelaraskan ke merek yang ada atau menjalankan Brand secara paralel."
+      },
+      {
+        "q": "Apakah Konten Sosial termasuk operasi bulanan?",
+        "a": "Tidak. Harga awal mencakup arah isi ditambah seperangkat desain terbatas - tidak penuh manajemen sosial bulanan, yang dikutip secara terpisah."
+      },
+      {
+        "q": "Apakah gerak termasuk?",
+        "a": "Gerakan sederhana oleh kesepakatan. Video bentuk panjang bukan scope baku."
+      },
+      {
+        "q": "Ukuran tertentu?",
+        "a": "Ya - dikirim berukuran untuk setiap saluran."
+      }
+    ],
+    "services": [
+      {
+        "title": "Kontak SOCIAL",
+        "tab": "SOCIAL",
+        "summary": "Arah konten dan desain terbatas untuk sosial - tidak penuh ops bulanan.",
+        "what": "Arah isi, format, salin / templat, dan pemandu saluran. Manajemen sosial bulanan penuh tidak termasuk.",
+        "for": "Arah pengaturan tim untuk Instagram, TikTok, Shorts, dan saluran merek yang serupa.",
+        "included": "Arah",
+        "deliverables": "Strategi Konten, Templat Sosial, Panduan Saluran",
+        "timeline": "1-3 minggu",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Social+Content&area=Content#inquiry",
+        "_studioSlug": "social-content",
+        "href": "social/",
+        "detailCta": "Lihat rincian →"
+      },
+      {
+        "title": "CAMPAIGN",
+        "tab": "CAMPAIGN",
+        "summary": "Peluncuran dan promosi terhubung oleh satu pesan dan visual.",
+        "what": "Konsep kampanye, pesan kunci, visual kunci, dan aset saluran.",
+        "for": "Tim yang menjalankan produk meluncurkan, promo, atau kampanye acara.",
+        "included": "Konsep",
+        "deliverables": "Konsep Kampanye, Panduan Visual Kunci, Aset Kanal, Panduan Kampanye",
+        "timeline": "2-4 minggu",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Campaign&area=Content#inquiry",
+        "_studioSlug": "campaign",
+        "href": "campaign/",
+        "detailCta": "Lihat rincian →"
+      },
+      {
+        "title": "Konten VISUAL",
+        "tab": "VISUAL",
+        "summary": "Aset visual merek untuk web, sosial, dan promosi.",
+        "what": "Dari arah visual ke varians ukuran saluran.",
+        "for": "Tim membutuhkan visual merek atau lebih disalurkan-siap citra.",
+        "included": "Arah visual produk / sosial",
+        "deliverables": "Aset Visual Digital, Aset Sosial / Kampanye / Web",
+        "timeline": "1-3 minggu",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Visual+Content&area=Content#inquiry",
+        "_studioSlug": "visual-content",
+        "href": "visual/",
+        "detailCta": "Lihat rincian →"
+      }
+    ],
+    "slug": "content",
+    "crumbBusiness": "Studio",
+    "pricing": [
+      {
+        "name": "Isi Sosial",
+        "price": "Dari £300,000",
+        "svc": 0,
+        "slug": "social-content",
+        "pricingType": "mulai Pada"
+      },
+      {
+        "name": "Kampanye",
+        "price": "Dari £500.000",
+        "svc": 1,
+        "slug": "campaign",
+        "pricingType": "mulai Pada"
+      },
+      {
+        "name": "Isi Visual",
+        "price": "Dari £300,000",
+        "svc": 2,
+        "slug": "visual-content",
+        "pricingType": "mulai Pada"
+      }
+    ],
+    "pricingNote": "Terdaftar jumlah mulai harga untuk lingkup dasar. Kutipan terakhir mungkin bervariasi dengan skala proyek, scope produksi, jumlah pengiriman, dan persyaratan. Konten sosial mulai mencakup arah isi harga ditambah seperangkat desain terbatas - tidak sepenuhnya ops sosial bulanan. Manajemen bulanan yang sedang berlangsung dikutip secara terpisah.",
+    "pricingNoteDefault": "Terdaftar jumlah mulai harga untuk lingkup dasar. Kutipan terakhir mungkin bervariasi dengan skala proyek, scope produksi, jumlah pengiriman, dan persyaratan."
+  },
+  "ip": {
+    "crumbStudio": "Studio",
+    "otherTitle": "STUBEN LAIN AREAS",
+    "ctaEyebrow": "Punya permintaan?",
+    "ctaTitle": "Mari kita bentuk bagaimana merek dan produk Anda muncul di dunia.",
+    "ctaLead": "Bahkan pada tahap ide. Kita mulai dengan menjelaskan lingkup yang kau butuhkan.",
+    "ctaBtn": "Proyek penyelidikan →",
+    "servicesLabel": "Layanan",
+    "processLabel": "PROSES",
+    "faqLabel": "PSD",
+    "quoteCta": "Proyek penyelidikan →",
+    "whatWeBuild": "Apa yang kita lakukan",
+    "recommendedFor": "Disarankan untuk",
+    "included": "Termasuk",
+    "deliverables": "Terkirim",
+    "timeline": "Perkiraan waktu",
+    "detailCta": "Lihat rincian →",
+    "soonBtn": "Segera datang.",
+    "comingSoon": "Segera datang.",
+    "comingSoonLead": "Daerah ini masih dalam proses - tidak ditawarkan sebagai layanan komersial selesai belum.",
+    "ctaPrimary": "Mulai projek →",
+    "ctaSecondary": "Lihat scope ↓",
+    "startingAt": "MULAI DI",
+    "seoTitle": "IP | Newon Studio",
+    "metaDescription": "Newon IP Studio - Lab Karakter dan IP eksperimental tanpa overselling daerah yang belum selesai.",
+    "eyebrow": "STUP WON",
+    "headline": "Percobaan dengan karakter\ndan kemungkinan IP baru.",
+    "lead": "Kami menjelajahi aset merek yang dapat tumbuh dari konsep karakter kecil menjadi ekspresi digital. Area percobaan dan komunisatif diberi label dengan jelas.",
+    "process": [
+      {
+        "n": "01",
+        "t": "Explore",
+        "d": "Menjelajahi kemungkinan"
+      },
+      {
+        "n": "02",
+        "t": "CONCEPT",
+        "d": "Jelaskan konsepnya"
+      },
+      {
+        "n": "03",
+        "t": "CREATE",
+        "d": "Buat bentuk awal"
+      },
+      {
+        "n": "04",
+        "t": "TEST",
+        "d": "Uji ekspresi dan format"
+      },
+      {
+        "n": "05",
+        "t": "EXPAND",
+        "d": "Path ekspansi peta"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Bagaimana proyek IP dimulai?",
+        "a": "Lab Karakter atau sesi IP percobaan untuk mengatur lingkup percobaan."
+      },
+      {
+        "q": "Bisakah kita memesan Digital Stickers sekarang?",
+        "a": "Coming Soon - tidak tersedia untuk komisi belum."
+      },
+      {
+        "q": "Apakah Newon Karakter layanan klien?",
+        "a": "Tidak. Ini adalah proyek IP merek Newon."
+      },
+      {
+        "q": "Bisakah kita komisi IP Eksperimental?",
+        "a": "Ya. Ini bukan paket tetap - kami membentuk proyek kustom dari ide dan lingkup percobaan, kemudian kutipan secara terpisah."
+      }
+    ],
+    "services": [
+      {
+        "title": "LAB KARAKTER",
+        "tab": "CHAR LAB",
+        "statusLabel": "EKSPERIMENTAL",
+        "summary": "Sebuah layanan klien eksperimental untuk konsep karakter awal dan potensi IP. Pertanyaan dan pekerjaan proyek tersedia.",
+        "what": "Bentuk kepribadian, peran, visual, ekspresi, pose, dan penggunaan - kemudian uji potensi IP.",
+        "for": "Tim yang ingin bentuk IP karakter awal cepat.",
+        "included": "Konsep karakter",
+        "deliverables": "Penyimpanan Konsep, Arah Visual, Ekspresi Set, Panduan IP Dasar",
+        "timeline": "2-4 minggu",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Character+Lab&area=IP#inquiry",
+        "_studioSlug": "character-lab",
+        "href": "character-lab/",
+        "detailCta": "Lihat rincian →"
+      },
+      {
+        "title": "STIKER DIGITAL",
+        "tab": "STIKES",
+        "statusLabel": "COMING SOON",
+        "summary": "Memperluas emosi karakter ke ekspresi digital. Segera datang - tidak tersedia untuk komisi.",
+        "what": "",
+        "for": "",
+        "included": "",
+        "deliverables": "",
+        "timeline": "",
+        "ready": false,
+        "inquiryHref": null,
+        "_studioSlug": "digital-stickers",
+        "href": "digital-stickers/",
+        "detailCta": "Lihat rincian →"
+      },
+      {
+        "title": "KARAKTER NEWON",
+        "tab": "NEWON",
+        "statusLabel": "INTERNAL",
+        "summary": "Internal Newon proyek IP karakter merek - bukan layanan klien.",
+        "what": "",
+        "for": "",
+        "included": "",
+        "deliverables": "",
+        "timeline": "",
+        "ready": false,
+        "inquiryHref": null,
+        "_studioSlug": "newon-character",
+        "href": "newon-character/",
+        "detailCta": "Lihat rincian →"
+      },
+      {
+        "title": "EKSPERIMENTAL IP",
+        "tab": "Explore",
+        "statusLabel": "LEDAKAN",
+        "summary": "Bukan paket tetap - dijalankan sebagai Proyek Eksperimen Kustom. Kami meninjau karakter, dunia, konten, interaktif, permainan, atau ide AI sebagai prototipe kecil.",
+        "what": "Dari ide dan hipotesis melalui konsep, prototipe, tes, dan belajar - scoped kustom.",
+        "for": "Tim yang ingin memvalidasi bentuk IP baru dengan percobaan kecil pertama.",
+        "included": "Ulasan ide",
+        "deliverables": "Eksperimen singkat, paket konsep / prototipe, catatan belajar, rekomendasi berikutnya",
+        "timeline": "Kutipan gubahan",
+        "quoteCta": "Pencarian projek gubahan →",
+        "ready": true,
+        "inquiryHref": "../../business/inquiry/?category=Studio&service=Experimental+IP&area=IP#inquiry",
+        "_studioSlug": "experimental-ip",
+        "href": "experimental-ip/",
+        "detailCta": "Lihat rincian →"
+      }
+    ],
+    "slug": "ip",
+    "crumbBusiness": "Studio",
+    "pricing": [
+      {
+        "name": "Lab Karakter",
+        "price": "Dari £500.000",
+        "svc": 0,
+        "slug": "character-lab",
+        "pricingType": "mulai Pada"
+      },
+      {
+        "name": "IP percobaan",
+        "price": "Kutipan Gubahan",
+        "svc": 3,
+        "slug": "experimental-ip",
+        "pricingType": "gubahan Kutipan"
+      }
+    ],
+    "pricingNote": "Terdaftar jumlah mulai harga untuk lingkup dasar. Kutipan terakhir mungkin bervariasi dengan skala proyek, scope produksi, jumlah pengiriman, dan persyaratan.",
+    "pricingNoteDefault": "Terdaftar jumlah mulai harga untuk lingkup dasar. Kutipan terakhir mungkin bervariasi dengan skala proyek, scope produksi, jumlah pengiriman, dan persyaratan."
+  }
+}

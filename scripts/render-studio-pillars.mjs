@@ -89,7 +89,7 @@ export function renderStudioPillars() {
 
   for (const { dir, file, htmlLang } of LANGS) {
     const flat = flatten(loadJson(file));
-    const lang = dir === "ko" ? "ko" : "en";
+    const lang = dir;
 
     for (const slug of STUDIO_PILLAR_SLUGS) {
       const copy = getStudioPillarCopy(slug, lang);

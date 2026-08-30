@@ -1,0 +1,479 @@
+{
+  "seoTitle": "UX AUDIT _ Newon Negócios",
+  "metaDescription": "Teste os principais fluxos de aplicativos e web e UI — problemas de usabilidade, pontos de conversão e drop-off, e itens de ação priorizados em um relatório de auditoria. Newon UX AUDIT.",
+  "crumbBusiness": "EMPRESAS",
+  "crumbServices": "SERVIÇOS",
+  "crumbResearch": "INVESTIGAÇÃO",
+  "crumbHere": "UX AUDIT",
+  "eyebrow": "UX AUDIT",
+  "subEyebrow": "INVESTIGAÇÃO",
+  "headline": "Vês os problemas.\nNão por onde começar.",
+  "lead": "Nós revisamos fluxos de núcleo e UI — inscrição, integração, compra, configurações e muito mais. Problemas de usabilidade, estrutura de informação e pontos de conversão ou drop-off são estruturados em um relatório de auditoria, lista de problemas e itens de ação priorizados que sua equipe pode executar. Inquérito de auditoria",
+  "ctaPrimary": "Inquérito de auditoria UX →",
+  "ctaSecondary": "Ver o fluxo de auditoria ↓",
+  "meta": [
+    {
+      "k": "SERVIÇO",
+      "v": "Auditoria UX"
+    },
+    {
+      "k": "MELHOR PARA",
+      "v": "Conversão e usabilidade corrige"
+    },
+    {
+      "k": "Cronologia",
+      "v": "Normalmente 1–2 semanas"
+    },
+    {
+      "k": "PREÇO",
+      "v": "A partir de 300.000"
+    }
+  ],
+  "overviewLabel": "VISÃO GERAL",
+  "overviewTitle": "São necessárias melhorias.\nA prioridade não é clara.",
+  "overviewBody": [
+    "Conversão, churn, tickets de suporte, reclamações de revisão — sinais de que os problemas do UX existem muitas vezes. O mais difícil é ver qual fluxo, UI, ou estrutura de informação causa o atrito.",
+    "As equipes compartilham opiniões de que algo é estranho, mas sem classificar questões por fluxo central e prioridade, discussões de melhoria repetem ou param.",
+    "UX AUDIT começa definindo escopo e fluxos de núcleo. Em seguida, revisamos telas, fluxos e estrutura de informação, classificamos questões e priorizamos itens de ação por impacto e esforço."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Ajudante quando você enfrenta essas situações.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "CONVERSÃO DROP",
+      "d": "Inscrição, compra ou conversão de inquérito está abaixo das expectativas.\nVocê precisa de uma visão estruturada de onde os usuários saem."
+    },
+    {
+      "n": "02",
+      "t": "FRICÇÃO ABORDAGEM",
+      "d": "Os usuários ficam presos no primeiro uso ou a bordo.\nPassos, cópia ou UI não são claros ou muito pesados."
+    },
+    {
+      "n": "03",
+      "t": "CARACTERÍSTICAS",
+      "d": "Suporte, revisões e notas internas existem, mas as questões não são organizadas.\nO mesmo atrito repete-se sem prioridade."
+    },
+    {
+      "n": "04",
+      "t": "COMPLEXIDADE DOS FLUXOS",
+      "d": "Demasiados passos para completar as tarefas principais.\nNavegação ou estrutura de informação parece confuso."
+    },
+    {
+      "n": "05",
+      "t": "GAP MÓVEL",
+      "d": "Experiência móvel ou responsiva de baixo desempenho.\nOs padrões de entrega ou erro diferem da área de trabalho."
+    },
+    {
+      "n": "06",
+      "t": "PRÉ-REDES",
+      "d": "Antes de redesenhar, renovação ou uma grande mudança de funcionalidades,\nvocê precisa de um diagnóstico da experiência atual."
+    }
+  ],
+  "baLabel": "ANTES / APÓS",
+  "baTitle": "Fricção dispersa vs.\nlista de correção estruturada",
+  "beforeLabel": "ANTES",
+  "afterLabel": "APÓS",
+  "before": [
+    "Muitas opiniões “isto é estranho” mas evidências dispersas",
+    "Nenhum acordo em que o fluxo é o problema principal",
+    "Melhoria das deslocações prioritárias por reunião",
+    "Nenhum documento diagnóstico antes de redesenhar ou dev"
+  ],
+  "after": [
+    "Fluxos principais e âmbito de auditoria definido em primeiro lugar",
+    "Fluxo, UI e IA questões classificadas",
+    "Itens de ação priorizados pelo impacto",
+    "Conectado a discussões de design, desenvolvimento e experiências"
+  ],
+  "capsLabel": "CAPABILIDADES",
+  "capsTitle": "Estruturamos a auditoria\nnecessidades de diagnóstico da sua experiência.",
+  "caps": [
+    {
+      "t": "ÂMBITO E OBJECTIVOS",
+      "d": "Definir finalidade de auditoria e fluxos principais.\nConecte-se a metas de conversão, churn e suporte."
+    },
+    {
+      "t": "MAPEAMENTO DE FLUXOS",
+      "d": "Inscrição do mapa, integração, compra, configurações e outras viagens chave.\nPassos de estrutura, ramos e pontos de entrega."
+    },
+    {
+      "t": "REVISÃO HEURÍSTICA",
+      "d": "Revisão contra os princípios de usabilidade — consistência, feedback, prevenção de erros.\nGravar problemas por tela e fluxo."
+    },
+    {
+      "t": "UI & IA REVISÃO",
+      "d": "Reveja layout, hierarquia, etiquetas, CTAs e estrutura de informação.\nDocumentar a carga cognitiva e os pontos de confusão."
+    },
+    {
+      "t": "ANÁLISE DA FRICÇÃO",
+      "d": "Analise passos desnecessários, carga de entrada, estados de espera e experiências de erro.\nPriorizar pontos de atrito."
+    },
+    {
+      "t": "MÓVEIS E RESPONSIVOS",
+      "d": "Teste a experiência móvel, tablet e responsivo.\nIncluir problemas de toque, legibilidade e navegação."
+    },
+    {
+      "t": "EVIDÊNCIA LINKING",
+      "d": "Conecte suporte, revisões, dados e feedback interno a problemas.\nDocumentar hipóteses e observações em conjunto."
+    },
+    {
+      "t": "ACTION PRIORIDADE",
+      "d": "Classificar as questões por impacto e esforço.\nSeparar vitórias rápidas de melhorias estruturais."
+    }
+  ],
+  "sourcesLabel": "INPUTS DE AUDITORIA",
+  "sourcesTitle": "Combinamos os materiais e observações das suas necessidades de auditoria.",
+  "sourcesNote": "As entradas reais variam de acordo com o acesso (estadiamento, contas, dados) por projeto.",
+  "sources": [
+    "Fluxos principais do usuário",
+    "Telas de inscrição e integração",
+    "Compra, pagamento e inquérito fluxos",
+    "Painel, configurações e administrador UI",
+    "UI móvel e responsivo",
+    "Registros de suporte e inquérito",
+    "App & Web review feedback",
+    "Utilização e drop-off de dados",
+    "Interno QA e feedback",
+    "Benchmarks competitivos",
+    "Verificação básica da acessibilidade",
+    "Mapas de calor e sessões (se fornecido)"
+  ],
+  "useLabel": "PROCESSOS DE UTILIZAÇÃO",
+  "useTitle": "Perguntas que podemos ajudar a responder.",
+  "useBadge": "Exemplo de tópicos de auditoria",
+  "useCases": [
+    {
+      "t": "CONVERSÃO PATH",
+      "d": "Encontre onde a inscrição, compra, ou caminhos de inquérito quebrar.\nEstrutura drop-off e telas pré-drop."
+    },
+    {
+      "t": "UX ONBOARDING",
+      "d": "Reveja o primeiro uso, tutorial e configuração inicial.\nIdentificar as causas do churn do novo usuário."
+    },
+    {
+      "t": "CONTROLO E FORMAS",
+      "d": "Reveja a carga de entrada, erros e etapas nos formulários de pagamento, reserva ou inquérito.\nMelhorias na conclusão da superfície."
+    },
+    {
+      "t": "NAV & IA",
+      "d": "Menu de auditoria, estrutura de informação e caminhos de navegação.\nEncontrar documentos, duplicações e problemas de profundidade."
+    },
+    {
+      "t": "EXPERIÊNCIA MÓVEL",
+      "d": "Reveja a usabilidade UI somente para dispositivos móveis e responsivos.\nTocar alvos, legibilidade, problemas de rolagem."
+    },
+    {
+      "t": "ERROR & EMPTY ESTADOS",
+      "d": "Erro de revisão, estados vazios, carregamento e permissão.\nDocumentar os caminhos de exceção onde os usuários ficam presos."
+    },
+    {
+      "t": "PRÉ-REDES",
+      "d": "Diagnose atual UX antes da renovação ou remarcação.\nProvas de âmbito e prioridade."
+    },
+    {
+      "t": "REVISÃO POSTAL",
+      "d": "Re-auditar após o lançamento usando conversão, suporte e revisões.\nSeparar vitórias rápidas de correções estruturais."
+    }
+  ],
+  "flowLabel": "EXEMPLO DE TRABALHO",
+  "flowTitle": "Da definição de fluxo aos itens de ação",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINA",
+      "d": "Definir objetivo de auditoria, fluxos principais e escopo.\nEsclareça o que você está tentando melhorar.",
+      "examples": [
+        "Objetivos",
+        "Fluxos principais",
+        "Âmbito de aplicação",
+        "Entregas"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "MAPA",
+      "d": "Mapear viagens de usuário e fluxos de tela.\nPassos de estrutura, ramos e pontos de entrega.",
+      "examples": [
+        "Inscrição",
+        "Abordagem",
+        "Compra",
+        "Configurações"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "REVISÃO",
+      "d": "Fluxos de auditoria, UI e estrutura de informação.\nGravar problemas por tela e passo.",
+      "examples": [
+        "Heurísticas",
+        "UI",
+        "IA",
+        ""
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PRIORITIZAÇÃO",
+      "d": "Classificar as questões por impacto e esforço.\nSeparar vitórias rápidas de melhorias estruturais.",
+      "examples": [
+        "P1",
+        "P2",
+        "P3",
+        "Vitória rápida"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ADMINISTRAR",
+      "d": "Forneça relatórios de auditoria e itens de ação.\nConecte-se às discussões de design, desenvolvimento e experiências.",
+      "examples": [
+        "Relatório de Auditoria",
+        "Lista de questões",
+        "Itens de acção"
+      ]
+    }
+  ],
+  "reportLabel": "SAÍDA",
+  "reportTitle": "Saídas estruturadas para o trabalho de melhoria imediata.",
+  "reportLead": "A composição varia de acordo com o âmbito do projecto. Abaixo estão os itens comuns.",
+  "reportMockStatus": "UX · RASCUNHO",
+  "reportMockK": "UX AUDIT RESUMO",
+  "reportMockT": "Fluxos principais, questões e breves prioridades",
+  "reportItems": [
+    "Resumo Executivo",
+    "Escopo da auditoria",
+    "Visão geral do fluxo",
+    "Lista de questões",
+    "Severidade & Prioridade",
+    "Notas UI e IA",
+    "Achados Móveis",
+    "Ganha rapidamente",
+    "Acções Recomendadas",
+    "Ecrãs de Apêndice"
+  ],
+  "dashTitle": "Compartilhar questões e prioridade em uma visão.",
+  "dashLead": "Questões de nível de fluxo, gravidade e itens de ação aceleram as discussões de melhoria.",
+  "dashNote": "A classificação das emissões e os critérios prioritários variam de acordo com o objectivo e o âmbito do projecto.",
+  "dashMetrics": [
+    "Fluxos",
+    "Emissões",
+    "Ações",
+    "Crítico"
+  ],
+  "dashFilters": [
+    "Todos",
+    "P1",
+    "P2",
+    "Vitória rápida"
+  ],
+  "aiLabel": "SYNTESIS",
+  "aiTitle": "De muitas telas e notas\npara problemas acionáveis.",
+  "aiLead": "Quando os registros de suporte, comentários, notas QA e auditorias multi-tela se acumulam, classificamos, dedupe e resumemos por padrão e prioridade para uma revisão mais rápida.",
+  "aiExamples": [
+    "Extrair problemas recorrentes de suporte e revisão",
+    "Classifique questões por fluxo",
+    "Rascunho de gravidade e classificação de prioridade",
+    "Separar vitórias rápidas de correções estruturais",
+    "Comparar as descobertas do telemóvel vs do ecrã",
+    "Relatório de auditoria da estrutura e itens de ação"
+  ],
+  "aiNote": "Interpretação final e prioridade de melhoria são revisadas com você.",
+  "delLabel": "DELIVERÁVEIS",
+  "delTitle": "O que você recebe quando o projeto completa",
+  "delLead": "Nós entregamos os itens abaixo, conforme necessário para o seu escopo.",
+  "deliverables": [
+    "UX Relatório de Auditoria",
+    "Mapa do Fluxo",
+    "Lista de questões",
+    "Matriz Prioritária",
+    "Itens de acção",
+    "Resumo de vitórias rápidas",
+    "Notas UI e IA",
+    "Resumo da Apresentação",
+    "Redesign Input Brief (opcional)"
+  ],
+  "processLabel": "PROCESSO",
+  "processTitle": "Da mira à entrega.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCOBERTA",
+      "d": "Confirmar a finalidade da auditoria e o contexto empresarial.\nEntenda as preocupações de conversão, agitação e apoio.",
+      "examples": [
+        "Objetivos",
+        "Kpis",
+        "Participantes",
+        "Linha do Tempo"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ÂMBITO DE APLICAÇÃO",
+      "d": "Defina fluxos de núcleo, alcance de tela e método de acesso.\nConcordar estadiamento, contas e escopo de dados.",
+      "examples": [
+        "Fluxos",
+        "Ecrãs",
+        "Dispositivos",
+        "Materiais"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "AUDITORIA",
+      "d": "Fluxos de revisão, UI e estrutura de informação.\nGravar problemas por tela e passo.",
+      "examples": [
+        "Heurísticas",
+        "UI",
+        "",
+        "Prova"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "",
+      "d": "Qualifique, dedupe e priorize questões.\nConecte impacto e esforço de implementação.",
+      "examples": [
+        "Classificação",
+        "P1–P3",
+        "Vitória rápida",
+        "Padrões"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PROJETO",
+      "d": "Projecto de relatório de auditoria e pontos de acção.\nConstruir o esqueleto de descobertas-chave.",
+      "examples": [
+        "Resumo",
+        "Emissões",
+        "Ações"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "REVISÃO",
+      "d": "Reveja em conjunto as questões-chave e a prioridade.\nAjuste lacunas, sobrecarga e viabilidade.",
+      "examples": [
+        "Feedback",
+        "Refinamento",
+        "Prioridade"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "ADMINISTRAR",
+      "d": "Entregue documentos finais e itens de ação.\nConecte-se ao design, dev e experimente os próximos passos.",
+      "examples": [
+        "Relatório final",
+        "Ações",
+        "Próximas etapas"
+      ]
+    }
+  ],
+  "scopeLabel": "NÍVEIS DE ÂMBITO DE APLICAÇÃO",
+  "scopeTitle": "Como pensar sobre a complexidade do projeto.",
+  "scopeLead": "Não é um pacote fixo. O escopo é definido por objetivo de auditoria, contagem de fluxos e cobertura de dispositivos.",
+  "scopes": [
+    {
+      "t": "AUDITORIA CORE FLOW",
+      "items": [
+        "1–2 fluxos de núcleo",
+        "Área de trabalho ou foco móvel",
+        "Lista de questões + prioridade",
+        "Relatório de auditoria sumário",
+        "Proposta rápida ganha"
+      ]
+    },
+    {
+      "t": "COMPLETOUX AUDIT",
+      "items": [
+        "Fluxos principais de 3–5",
+        "Desktop + móvel",
+        "Mapa de fluxo + lista de números",
+        "Matriz prioritária",
+        "Itens de ação + resumo da apresentação"
+      ]
+    },
+    {
+      "t": "AUDITORIA ADUANEIRA",
+      "items": [
+        "Vários produtos ou canais",
+        "Análise ligada aos dados e suporte",
+        "Acessibilidade e inclusão de referência",
+        "Redesign input briefing",
+        "DESIGN e BUILD ligação"
+      ]
+    }
+  ],
+  "timeLabel": "Cronologia",
+  "timeTitle": "A linha do tempo depende do escopo.",
+  "timeLead": "A duração varia de acordo com a contagem de fluxo, cobertura do dispositivo e acesso ao ambiente.",
+  "timelines": [
+    {
+      "t": "Auditoria de fluxo central",
+      "d": "Cerca de 1 semana"
+    },
+    {
+      "t": "Auditoria completa UX",
+      "d": "Cerca de 1–2 semanas"
+    },
+    {
+      "t": "Auditoria personalizada",
+      "d": "Cerca de 2-3 semanas · citação personalizada"
+    }
+  ],
+  "priceLabel": "CUSTO DO PROJECTO",
+  "priceTitle": "Citado para o escopo que você precisa.",
+  "priceName": "UX AUDIT",
+  "priceValue": "A partir de 200.000",
+  "priceFactorsLabel": "Fatores de preços",
+  "priceFactors": [
+    "Número de fluxos auditados",
+    "Tela e faixa de recursos",
+    "Desktop e inclusão móvel",
+    "Acesso ao ambiente (estacionamento, contas)",
+    "Ligação de dados e suporte",
+    "Formato disponível",
+    "Apresentação ou oficina",
+    "Correr linha do tempo"
+  ],
+  "priceNote": "As citações finais são confirmadas após o objetivo de auditoria, escopo e método de acesso.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Perguntas mais frequentes",
+  "faqs": [
+    {
+      "q": "Que produtos ou serviços você pode auditar?",
+      "a": "Web, aplicativos, SaaS, fluxos de comércio, reserva e inquérito – dependendo do objetivo e escopo acessível. Confirmamos o ajuste antes do arranque."
+    },
+    {
+      "q": "Isso inclui o teste do usuário?",
+      "a": "UX AUDIT é uma análise especializada (heurísticas, fluxos, UI). Teste de usuário pode ser adicionado ou ligado com CONSUMER RESEARCH quando necessário."
+    },
+    {
+      "q": "Como são as entregas?",
+      "a": "UX Relatório de Auditoria, Lista de Edição, Matriz Prioritária, Itens de Ação — documento e mapa focados. Resumo da apresentação disponível quando necessário."
+    },
+    {
+      "q": "Precisa de encenação ou acesso à conta?",
+      "a": "Preferimos o ambiente de uso real quando possível. Se o acesso é limitado, trabalhamos em telas públicas e materiais fornecidos."
+    },
+    {
+      "q": "Isso pode se conectar ao design ou desenvolvimento?",
+      "a": "Sim. Os resultados da auditoria podem fornecer redesenho, melhorias UI e prioridade BUILD ou MVP."
+    },
+    {
+      "q": "Como é que isto é diferente do CONSUMER RESEARCH?",
+      "a": "UX AUDIT analisa produto, tela e usabilidade de fluxo. Para as necessidades do usuário e pesquisa de comportamento, ligue escopo com CONSUMER RESEARCH."
+    },
+    {
+      "q": "Como é tratada a confidencialidade?",
+      "a": "Os materiais são utilizados apenas dentro do âmbito acordado. NDA disponível quando necessário."
+    }
+  ],
+  "finalLabel": "Iniciar um projeto",
+  "finalTitle": "Comece com uma lista de melhorias\nclara.",
+  "finalLead": "Se conversão, churn, ou usabilidade é uma preocupação, diga-nos quais fluxos para auditoria e como você quer as descobertas estruturadas.",
+  "ctaFinalSecondary": "Ver todos INVESTIGAÇÃO →",
+  "ctaFinalSecondaryHref": "../research/"
+}

@@ -1,0 +1,534 @@
+{
+  "seoTitle": "MARKET RESEARCH | Newon Negocios",
+  "metaDescription": "Investiga la estructura del mercado, la demanda y el contexto competitivo: entregado como un resumen y un mapa de mercado que tu equipo puede usar. Newon MARKET RESEARCH.",
+  "crumbBusiness": "NEGOCIOS",
+  "crumbServices": "SERVICIOS",
+  "crumbResearch": "INVESTIGACIÓN",
+  "crumbHere": "MARKET RESEARCH",
+  "eyebrow": "MARKET RESEARCH",
+  "subEyebrow": "INVESTIGACIÓN",
+  "headline": "Lee el mercado\ncon base en evidencia, no en suposiciones.",
+  "lead": "Investigamos la estructura del mercado, la demanda, la competencia y las señales de cambio, y luego organizamos la evidencia en un único informe de investigación que tu equipo puede usar para decidir.",
+  "ctaPrimary": "Consulta de investigación de mercado →",
+  "ctaSecondary": "Ve el flujo de investigación ↓",
+  "meta": [
+    {
+      "k": "SERVICIO",
+      "v": "Investigación de Mercado"
+    },
+    {
+      "k": "MEJOR PARA",
+      "v": "Entrada, expansión, revisión de posicionamiento"
+    },
+    {
+      "k": "CRONOGRAMA",
+      "v": "Generalmente 1–3 semanas"
+    },
+    {
+      "k": "PRECIO",
+      "v": "Desde ₩300,000"
+    }
+  ],
+  "overviewLabel": "RESUMEN",
+  "overviewTitle": "Mucha información.\nNo hay suficientes criterios compartidos.",
+  "overviewBody": [
+    "Al evaluar un nuevo mercado, categoría o público, el material rara vez es el cuello de botella. La parte más difícil es alinearse sobre la estructura, prioridad y lo que cuenta como evidencia.",
+    "Los informes de la industria, noticias, informes de competidores, reseñas de aplicaciones, señales de la comunidad y estadísticas públicas ofrecen cada uno un ángulo diferente, pero rara vez en una forma que los equipos puedan usar para decidir en la misma reunión.",
+    "MARKET RESEARCH comienza definiendo lo que necesitas saber para decidir. Luego recopilamos, comparamos y estructuramos las fuentes en un mapa de mercado, áreas de oportunidad e implicaciones en un único informe."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Útil cuando enfrentas estas situaciones.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "ENTRADA AL MERCADO",
+      "d": "Necesitas una visión compartida del tamaño y la estructura del mercado\nantes de entrar a un nuevo país, categoría o público."
+    },
+    {
+      "n": "02",
+      "t": "INFORMACIÓN DISPERSA",
+      "d": "Hay mucho material pero no hay un mapa claro de segmentos, jugadores u oportunidades.\nLas mismas preguntas se repiten en cada reunión."
+    },
+    {
+      "n": "03",
+      "t": "CONTEXTO COMPETITIVO",
+      "d": "Demasiados competidores y sustitutos para comparar su posicionamiento de un vistazo.\nNecesitas contexto sobre quién es fuerte dónde."
+    },
+    {
+      "n": "04",
+      "t": "MAPA DE OPORTUNIDADES",
+      "d": "Ves muchos caminos para entrar, expandirte o diferenciarte\npero careces de evidencia para priorizarlos."
+    },
+    {
+      "n": "05",
+      "t": "ALINEACIÓN DE INTERESADOS",
+      "d": "Equipos, inversores o socios necesitan la misma imagen del mercado.\nNecesitas un resumen interno al que todos puedan referirse."
+    },
+    {
+      "n": "06",
+      "t": "DIRECCIÓN DEL PRODUCTO",
+      "d": "Antes de MVP, hoja de ruta o decisiones de precios,\nprimero necesitas contexto de mercado y señales de demanda."
+    }
+  ],
+  "baLabel": "ANTES / DESPUÉS",
+  "baTitle": "Decisiones basadas en intuición vs\ncomprensión estructurada del mercado",
+  "beforeLabel": "ANTES",
+  "afterLabel": "DESPUÉS",
+  "before": [
+    "Todos recopilan fuentes por separado",
+    "El tamaño del mercado, la competencia y las oportunidades cambian según la conversación",
+    "Las mismas preguntas se repiten sin una conclusión documentada",
+    "Los hallazgos no están conectados a la siguiente validación o acción"
+  ],
+  "after": [
+    "Las preguntas de investigación y el alcance se acuerdan primero",
+    "Se mapean segmentos, jugadores y oportunidades",
+    "Un brief de investigación compartido para el equipo",
+    "Implicaciones vinculadas a las siguientes acciones"
+  ],
+  "capsLabel": "CAPACIDADES",
+  "capsTitle": "Estructuramos la investigación\nque tu decisión de mercado necesita.",
+  "caps": [
+    {
+      "t": "DEFINICIÓN DEL ALCANCE",
+      "d": "Define las preguntas y los límites que la decisión requiere.\nAclara lo que necesitas aprender y lo que está fuera de alcance.",
+      "examples": [
+        "Preguntas principales",
+        "Alcance del mercado",
+        "Cantidad de competidores",
+        "Formato del entregable"
+      ]
+    },
+    {
+      "t": "INVESTIGACIÓN DE ESCRITORIO",
+      "d": "Recopilar fuentes secundarias y datos públicos de forma sistemática.\nRevisar la calidad de las fuentes y la credibilidad conjuntamente.",
+      "examples": [
+        "Informes del sector",
+        "Estadísticas públicas",
+        "Noticias y RI",
+        "Reseñas y comunidad"
+      ]
+    },
+    {
+      "t": "ESTRUCTURA DEL MERCADO",
+      "d": "Organizar el mercado por segmentos, jugadores y flujo de valor.\nEstructura quién juega dónde y cómo se divide el mercado.",
+      "examples": [
+        "Mapa segmentado",
+        "Cadena de valor",
+        "Oferta y demanda",
+        "Estructura del canal"
+      ]
+    },
+    {
+      "t": "PANORAMA COMPETITIVO",
+      "d": "Compara a los principales competidores y sustitutos.\nResume las diferencias en características, precios, mensajería y objetivo.",
+      "examples": [
+        "Mapa de jugadores",
+        "Comparación de posicionamiento",
+        "Diferenciación",
+        "Suplentes"
+      ]
+    },
+    {
+      "t": "MAPEO DE OPORTUNIDADES",
+      "d": "Estructura áreas para entrada, expansión o diferenciación.\nDocumenta la evidencia y las suposiciones detrás de cada oportunidad.",
+      "examples": [
+        "Necesidades no cubiertas",
+        "Espacio en blanco",
+        "Barreras de entrada",
+        "Prioridad"
+      ]
+    },
+    {
+      "t": "SEÑALES DE TENDENCIA",
+      "d": "Capturar cambios de la industria, el consumidor y la tecnología con contexto.\nSepara el ruido a corto plazo del cambio estructural.",
+      "examples": [
+        "Regulación",
+        "Cambio de comportamiento",
+        "Adopción tecnológica",
+        "Precios y embalaje"
+      ]
+    },
+    {
+      "t": "IMPLICACIONES",
+      "d": "Conecta los hallazgos con producto, negocio y estrategia.\nPasa de la visión a lo que significa que debes hacer.",
+      "examples": [
+        "Posicionamiento",
+        "Prioridad de características",
+        "Go / No-go",
+        "Riesgo"
+      ]
+    },
+    {
+      "t": "ELEMENTOS DE ACCIÓN",
+      "d": "Sugiere los siguientes pasos de validación y decisión.\nIndicador donde se necesiten entrevistas, experimentos o investigaciones más profundas.",
+      "examples": [
+        "Preguntas de validación",
+        "Objetivos de la entrevista",
+        "Probar hipótesis",
+        "Alcance del seguimiento"
+      ]
+    }
+  ],
+  "sourcesLabel": "FUENTES DE INVESTIGACIÓN",
+  "sourcesTitle": "Combinamos los tipos de fuentes que necesita tu objetivo.",
+  "sourcesNote": "Las fuentes reales varían según el alcance, el mercado y la accesibilidad. Confirmamos la adecuación antes de comenzar.",
+  "sources": [
+    "Informes de la industria",
+    "Estadísticas públicas",
+    "Presentaciones de empresas",
+    "Noticias y artículos",
+    "Reseñas de productos",
+    "App Store / Mercado",
+    "Redes sociales y comunidad",
+    "Patentes y registros",
+    "Publicaciones comerciales",
+    "Datos internos",
+    "Entrevistas con expertos",
+    "Sitios web de competidores"
+  ],
+  "useLabel": "CASOS DE USO",
+  "useTitle": "Preguntas que podemos ayudar a responder.",
+  "useBadge": "Ejemplos de temas de investigación",
+  "useCases": [
+    {
+      "t": "ENTRADA A NUEVOS MERCADOS",
+      "d": "Verificar estructura, señales de demanda y barreras de entrada\nantes de ingresar a un mercado o categoría."
+    },
+    {
+      "t": "PANORAMA DE CATEGORÍAS",
+      "d": "Mapear quién opera dónde y cómo se divide el mercado.\nVer roles de segmento y relaciones de un vistazo."
+    },
+    {
+      "t": "CONTEXTO DE COMPETIDORES",
+      "d": "Comparar rápidamente a los jugadores clave y las diferencias de posicionamiento.\nResumir características, precios, mensajes y público objetivo."
+    },
+    {
+      "t": "CONTEXTO DE PRECIOS",
+      "d": "Resumir bandas de precios, empaques y contexto del modelo de ingresos.\nConstruir evidencia para tu estrategia de precios."
+    },
+    {
+      "t": "SEGMENTOS DE CLIENTES",
+      "d": "Aclarar a quién sirve el mercado desde la perspectiva de segmentación.\nEstructurar diferencias en necesidades, comportamiento y criterios de compra."
+    },
+    {
+      "t": "RESUMEN DE TENDENCIAS",
+      "d": "Resumir cambios recientes y lo que significan para tu producto o negocio.\nSeparar problemas a corto plazo de cambios estructurales."
+    },
+    {
+      "t": "RESUMEN PARA INVERSORES",
+      "d": "Un resumen del mercado para partes interesadas internas o externas.\nIncluya evidencia clave y riesgos juntos."
+    },
+    {
+      "t": "ENTRADA DEL ALCANCE DEL PRODUCTO",
+      "d": "Proporcione contexto del mercado antes de la definición del MVP o la hoja de ruta.\nÚselo como evidencia de qué construir primero."
+    }
+  ],
+  "flowLabel": "EJEMPLO DE FLUJO DE TRABAJO",
+  "flowTitle": "De preguntas a un informe de investigación",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINIR",
+      "d": "Defina preguntas de investigación y alcance.\nAclare qué información requieren las decisiones y qué queda excluido.",
+      "examples": [
+        "Preguntas principales",
+        "Alcance del mercado",
+        "Competidores",
+        "Entregables"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "RECOPILAR",
+      "d": "Reúna fuentes y datos relevantes.\nRevise el material público e interno juntos.",
+      "examples": [
+        "Informes",
+        "Estadísticas",
+        "Reseñas",
+        "IR y noticias"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "ESTRUCTURAR",
+      "d": "Organice por mercado, competencia y demanda.\nHaga que la información dispersa sea comparable.",
+      "examples": [
+        "Segmentos",
+        "Jugadores",
+        "Precios",
+        "Canales"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "SINTETIZAR",
+      "d": "Extraiga hallazgos clave y oportunidades.\nConecte lo que importa y por qué importa.",
+      "examples": [
+        "Áreas de oportunidad",
+        "Riesgos",
+        "Diferenciación",
+        "Vacíos"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ENTREGAR",
+      "d": "Entregue el informe, el mapa y las implicaciones.\nFormatee para uso inmediato del equipo.",
+      "examples": [
+        "Resumen ejecutivo",
+        "Mapa del mercado",
+        "Próximos pasos"
+      ]
+    }
+  ],
+  "reportLabel": "SALIDA",
+  "reportTitle": "Entregables estructurados para decisiones.",
+  "reportLead": "La composición varía según el objetivo del proyecto. A continuación, se presentan secciones comunes — incluimos solo lo que el informe requiere.",
+  "reportMockStatus": "MERCADO · BORRADOR",
+  "reportMockK": "RESUMEN DEL MERCADO",
+  "reportMockT": "Informe de categoría y panorama competitivo",
+  "reportItems": [
+    "Resumen Ejecutivo",
+    "Mapa del Mercado",
+    "Resumen del Segmento",
+    "Panorama Competitivo",
+    "Áreas de Oportunidad",
+    "Señales de Tendencia",
+    "Riesgos Clave",
+    "Implicaciones",
+    "Próximos Pasos Recomendados",
+    "Notas de Fuente"
+  ],
+  "dashTitle": "Compartir la estructura del mercado en una sola vista.",
+  "dashLead": "Cuando es útil, incluimos un mapa del mercado que muestra segmentos, jugadores y áreas de oportunidad, para que las discusiones avancen más rápido junto con el resumen.",
+  "dashNote": "Un mapa del mercado no es idéntico en cada proyecto: el alcance y el propósito definen el entregable.",
+  "dashMetrics": [
+    "Segmentos",
+    "Jugadores",
+    "Oportunidades",
+    "Tendencias",
+    "Riesgos",
+    "Prioridad"
+  ],
+  "dashFilters": [
+    "Todo",
+    "B2B",
+    "B2C",
+    "Empresa"
+  ],
+  "aiLabel": "SÍNTESIS",
+  "aiTitle": "Desde grandes conjuntos de fuentes\nhasta lo que importa.",
+  "aiLead": "Cuando hay muchos informes, noticias, reseñas y material de competidores, resumimos, clasificamos y comparamos desde los ángulos que necesitas. La interpretación y las decisiones finales se revisan junto contigo.",
+  "aiExamples": [
+    "Comparación de mensajes y posicionamiento de competidores",
+    "Resumen del patrón de revisión y retroalimentación",
+    "Digest de noticias e incidentes de la industria",
+    "Resumen de necesidades y problemas del segmento",
+    "Priorización de oportunidades",
+    "Borrador de resumen y esquema de presentación"
+  ],
+  "aiNote": "La interpretación y las decisiones finales se revisan junto contigo. Los resúmenes de IA son material de referencia; las decisiones importantes aún deben referirse a las fuentes originales.",
+  "delLabel": "ENTREGABLES",
+  "delTitle": "Lo que recibes después del proyecto",
+  "delLead": "Dependiendo del alcance, entregamos los elementos que necesitas de la lista a continuación. No todos los elementos se incluyen en cada proyecto.",
+  "deliverables": [
+    "Resumen de Investigación",
+    "Mapa del Mercado",
+    "Resumen competitivo",
+    "Visión general de la oportunidad",
+    "Notas de tendencias",
+    "Implicaciones y recomendaciones",
+    "Apéndice de fuentes",
+    "Resumen de la presentación",
+    "Preguntas de seguimiento"
+  ],
+  "processLabel": "PROCESO",
+  "processTitle": "Desde la definición de la pregunta hasta la entrega.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCUBRIMIENTO",
+      "d": "Confirma el contexto de la decisión y el propósito de la investigación.\nEntiende lo que estás decidiendo y quién usará la salida.",
+      "examples": [
+        "Objetivo",
+        "Partes interesadas",
+        "Cronología",
+        "Restricciones"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ALCANCE",
+      "d": "Define preguntas, alcance y formato de entregable.\nAcorda qué está dentro, qué está fuera y prioridad.",
+      "examples": [
+        "Preguntas principales",
+        "Alcance del mercado",
+        "Competidores",
+        "Formato"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "INVESTIGACIÓN",
+      "d": "Recopilar y revisar fuentes y datos relevantes.\nComprobar la calidad y credibilidad de las fuentes.",
+      "examples": [
+        "Informes",
+        "Estadísticas",
+        "Reseñas",
+        "IR"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ANÁLISIS",
+      "d": "Estructurar patrones, diferencias y oportunidades.\nOrganizar por segmento, competencia y demanda.",
+      "examples": [
+        "Segmentos",
+        "Posicionamiento",
+        "Opportunity",
+        "Riesgo"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DRAFT",
+      "d": "Redacta el resumen y el mapa de mercado.\nConstruye la columna vertebral de hallazgos e implicaciones.",
+      "examples": [
+        "Resumen",
+        "Mapa del mercado",
+        "Implicaciones"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "RESEÑA",
+      "d": "Revisa conjuntamente los hallazgos clave e interpretaciones.\nAjusta lagunas, suposiciones y prioridades.",
+      "examples": [
+        "Retroalimentación",
+        "Refinamiento",
+        "Prioridad",
+        "Adelante/No adelante"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "ENTREGA",
+      "d": "Entregar documentos finales e implicaciones.\nConectar con la siguiente validación y acción.",
+      "examples": [
+        "Informe Final",
+        "Mapa",
+        "Próximos Pasos"
+      ]
+    }
+  ],
+  "scopeLabel": "NIVELES DE ALCANCE",
+  "scopeTitle": "Una guía sobre la complejidad del proyecto.",
+  "scopeLead": "No son paquetes fijos: definimos el alcance y cotizamos según tu objetivo y la profundidad que necesites.",
+  "scopes": [
+    {
+      "t": "INFORME DE MERCADO ENFOCADO",
+      "items": [
+        "Mercado o categoría única",
+        "3–5 preguntas clave",
+        "Enfoque de investigación documental",
+        "Informe resumido (~10–15 páginas)",
+        "Puntos de oportunidad y riesgo"
+      ]
+    },
+    {
+      "t": "MAPA DE MERCADO Y COMPETITIVO",
+      "items": [
+        "Mapa de segmentos y jugadores",
+        "Comparar 5–10 competidores clave",
+        "Resumen de posicionamiento, precios y mensajes",
+        "Áreas de oportunidad e implicaciones",
+        "Resumen de presentación opcional"
+      ]
+    },
+    {
+      "t": "INVESTIGACIÓN PERSONALIZADA",
+      "items": [
+        "Múltiples mercados o categorías",
+        "Investigación primaria (entrevistas/encuestas) opcional",
+        "Análisis más profundo de tendencias, regulación y riesgos",
+        "Presentación personalizada",
+        "Validación de seguimiento o vínculo con BUILD"
+      ]
+    }
+  ],
+  "timeLabel": "CRONOGRAMA",
+  "timeTitle": "El cronograma depende del alcance.",
+  "timeLead": "La profundidad, el acceso a fuentes, el número de competidores y la inclusión de entrevistas pueden cambiar la duración.",
+  "timelines": [
+    {
+      "t": "Informe de Mercado Enfocado",
+      "d": "Aproximadamente 1–2 semanas"
+    },
+    {
+      "t": "Mapa de Mercado y Competitivo",
+      "d": "Aproximadamente 2–3 semanas"
+    },
+    {
+      "t": "Investigación Personalizada",
+      "d": "Alcance definido por separado"
+    }
+  ],
+  "priceLabel": "COSTO DEL PROYECTO",
+  "priceTitle": "Cotizamos solo el alcance que necesitas.",
+  "priceName": "MARKET RESEARCH",
+  "priceValue": "Desde ₩300,000",
+  "priceFactorsLabel": "Qué influye en el precio",
+  "priceFactors": [
+    "Número de preguntas de investigación",
+    "Alcance de mercado o categoría",
+    "Número de competidores / jugadores",
+    "Profundidad de la investigación",
+    "Inclusión de investigación primaria",
+    "Acceso a fuentes e informes pagos",
+    "Formato y extensión del entregable",
+    "Plazo urgente"
+  ],
+  "priceNote": "La cotización final se confirma después de revisar los objetivos, el alcance y el cronograma.",
+  "faqLabel": "Preguntas frecuentes",
+  "faqTitle": "Preguntas más frecuentes",
+  "faqs": [
+    {
+      "q": "¿Qué mercados e industrias pueden investigar?",
+      "a": "B2B, B2C, SaaS, comercio, plataformas, servicios, manufactura y más, dependiendo del objetivo y de las fuentes accesibles. Confirmamos la adecuación del mercado y el acceso a fuentes antes de comenzar."
+    },
+    {
+      "q": "¿Esto incluye investigación primaria?",
+      "a": "Por defecto, es investigación de escritorio. Las entrevistas con usuarios o la industria y el diseño de encuestas pueden agregarse como un alcance separado cuando sea necesario."
+    },
+    {
+      "q": "¿Qué formato tienen los entregables?",
+      "a": "Documento principal: Resumen Ejecutivo, Mapa del Mercado, Resumen Competitivo, Implicaciones y otras secciones alineadas con su objetivo. Se pueden incluir resúmenes en presentación."
+    },
+    {
+      "q": "¿Pueden adquirir informes de industria pagos?",
+      "a": "Sí, cuando sea necesario. Los costos de fuentes pagas se definen por separado y se confirman con usted antes de la compra."
+    },
+    {
+      "q": "¿Pueden usar nuestros datos internos?",
+      "a": "Sí, dentro de lo que pueda compartir. De lo contrario, trabajamos con fuentes públicas."
+    },
+    {
+      "q": "¿Cómo se diferencia esto de COMPETITOR ANALYSIS?",
+      "a": "MARKET RESEARCH analiza la estructura general del mercado y la oportunidad. Si la comparación de competidores es la necesidad principal, COMPETITOR ANALYSIS puede ser más adecuado; los alcances pueden vincularse cuando sea útil."
+    },
+    {
+      "q": "¿Se puede conectar esto con BUILD o MVP?",
+      "a": "Sí. La investigación puede alimentar el alcance del producto, la prioridad de características y las decisiones de Continuar/No continuar."
+    },
+    {
+      "q": "¿Cómo se maneja la confidencialidad?",
+      "a": "Trabajamos únicamente dentro del alcance acordado. Se puede firmar un NDA cuando sea necesario."
+    }
+  ],
+  "finalLabel": "INICIAR UN PROYECTO",
+  "finalTitle": "No adivine el mercado:\nmapéelo primero.",
+  "finalLead": "Dinos el mercado, la categoría o el contexto competitivo que estás evaluando. Confirmaremos qué investigar y cómo estructurar el resultado.",
+  "ctaFinalSecondary": "Ver toda la INVESTIGACIÓN →",
+  "ctaFinalSecondaryHref": "../research/"
+}

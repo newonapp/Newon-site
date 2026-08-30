@@ -1,0 +1,479 @@
+{
+  "seoTitle": "TREND RESEARCH | Newon Business",
+  "metaDescription": "Research industry, consumer, and product trend signals — structured as a trend brief for roadmap, content, and strategy decisions. Newon TREND RESEARCH.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICES",
+  "crumbResearch": "RESEARCH",
+  "crumbHere": "TREND RESEARCH",
+  "eyebrow": "TREND RESEARCH",
+  "subEyebrow": "RESEARCH",
+  "headline": "Plenty of trends.\nNot enough clarity.",
+  "lead": "We research industry reports, product launches, investment and regulatory shifts, and consumer, technology, and behavior signals. Scattered trend clues are organized by theme, timeline, and impact into a trend brief your team can use for roadmap, content, and strategy decisions.",
+  "ctaPrimary": "Trend research inquiry →",
+  "ctaSecondary": "See the research flow ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Trend Research"
+    },
+    {
+      "k": "BEST FOR",
+      "v": "Roadmap and content direction"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Usually 1–3 weeks"
+    },
+    {
+      "k": "PRICE",
+      "v": "From ₩300,000"
+    }
+  ],
+  "overviewLabel": "OVERVIEW",
+  "overviewTitle": "Information overload.\nNo decision structure.",
+  "overviewBody": [
+    "Conversations about ‘what’s trending’ show up often in product, marketing, and strategy meetings. The harder part is knowing which signals are noise and which shifts matter for your decisions.",
+    "News, reports, competitor updates, social and community signals, and regulatory change each offer clues — but rarely in a form teams can decide from.",
+    "TREND RESEARCH starts by defining topic and time horizon. Then we collect, classify, and structure signals into themes, direction of change, and product, content, and strategy implications in one trend brief."
+  ],
+  "problemsLabel": "PROBLEMS",
+  "problemsTitle": "Helpful when you face these situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "ROADMAP DIRECTION",
+      "d": "You need evidence for roadmap, feature, or service direction.\nIt is unclear which shifts to follow."
+    },
+    {
+      "n": "02",
+      "t": "CONTENT STRATEGY",
+      "d": "You need direction for content, marketing, or brand messaging.\nYou want evidence for what matters now."
+    },
+    {
+      "n": "03",
+      "t": "NOISE VS SIGNAL",
+      "d": "There is plenty of trend information but no priority.\nYou need to separate fads from structural change."
+    },
+    {
+      "n": "04",
+      "t": "CATEGORY SHIFT",
+      "d": "Category, industry, regulation, or technology context is shifting.\nYou need impact on product and business."
+    },
+    {
+      "n": "05",
+      "t": "COMPETITIVE MOVES",
+      "d": "You need context for competitor and substitute launches and messaging.\nCopying is not enough — interpretation matters."
+    },
+    {
+      "n": "06",
+      "t": "PLANNING INPUT",
+      "d": "Before quarterly planning, new business review, or investor conversations,\nyou need trend context first."
+    }
+  ],
+  "baLabel": "BEFORE / AFTER",
+  "baTitle": "Scattered trends vs\nstructured flow",
+  "beforeLabel": "BEFORE",
+  "afterLabel": "AFTER",
+  "before": [
+    "Everyone checks news, reports, and social separately",
+    "‘Trends’ are discussed often but without evidence or priority",
+    "Fads and structural shifts are not separated",
+    "Not connected to strategy, roadmap, or content discussions"
+  ],
+  "after": [
+    "Research topic and time horizon defined first",
+    "Themes, signals, and impact structured",
+    "A shared trend brief for the team",
+    "Connected to roadmap, content, and experiments"
+  ],
+  "capsLabel": "CAPABILITIES",
+  "capsTitle": "We structure the research\nyour trend understanding needs.",
+  "caps": [
+    {
+      "t": "TOPIC FRAMING",
+      "d": "Define what you need to learn to decide.\nClarify industry, category, and time horizon."
+    },
+    {
+      "t": "DESK RESEARCH",
+      "d": "Collect secondary sources — reports, news, IR, product updates.\nCheck source, timing, and context."
+    },
+    {
+      "t": "SIGNAL SCAN",
+      "d": "Scan investment, regulation, technology, and behavior signals.\nSelect the most relevant clues."
+    },
+    {
+      "t": "THEME MAPPING",
+      "d": "Cluster related signals into themes.\nStructure recurring directions of change."
+    },
+    {
+      "t": "TIMELINE VIEW",
+      "d": "Organize change across short and medium horizons.\nDistinguish Emerging, Rising, and Stable states."
+    },
+    {
+      "t": "COMPETITIVE CONTEXT",
+      "d": "Connect competitor and substitute moves to trend context.\nInterpret, not just list."
+    },
+    {
+      "t": "IMPLICATIONS",
+      "d": "Connect trends to product, content, and strategy implications.\nSeparate opportunity, risk, and ignore zones."
+    },
+    {
+      "t": "ACTION LINK",
+      "d": "Connect findings to roadmap, content, and experiment items.\nSuggest next validation and monitoring points."
+    }
+  ],
+  "sourcesLabel": "RESEARCH SOURCES",
+  "sourcesTitle": "We combine the trend signals your goal needs.",
+  "sourcesNote": "Actual sources vary by topic, industry, and accessible materials per project.",
+  "sources": [
+    "Industry and market reports",
+    "News and media",
+    "Product and service launches",
+    "Investment, M&A, and funding",
+    "Regulation and policy change",
+    "Technology and platform shifts",
+    "Consumer and behavior data",
+    "Social and community signals",
+    "Competitor updates",
+    "Conferences and whitepapers",
+    "Internal data and insights",
+    "Expert interviews (optional scope)"
+  ],
+  "useLabel": "USE CASES",
+  "useTitle": "Questions we can help answer.",
+  "useBadge": "Example research topics",
+  "useCases": [
+    {
+      "t": "CATEGORY TRENDS",
+      "d": "Confirm major direction in a category or industry.\nStructure growth, decline, and transition flows."
+    },
+    {
+      "t": "TECH & PRODUCT",
+      "d": "Capture shifts in technology, product, and UX patterns.\nUse as evidence for roadmap and feature direction."
+    },
+    {
+      "t": "CONSUMER SHIFT",
+      "d": "Summarize consumer, behavior, and value shifts.\nReview target, messaging, and service direction."
+    },
+    {
+      "t": "CONTENT THEMES",
+      "d": "Derive topics and angles for content and marketing.\nSeparate timeliness from durability."
+    },
+    {
+      "t": "COMPETITIVE MOVES",
+      "d": "Contextualize competitor launches, messaging, and features.\nInput for response and differentiation."
+    },
+    {
+      "t": "REGULATION & POLICY",
+      "d": "Summarize business impact of regulatory and policy change.\nSurface risk and opportunity points."
+    },
+    {
+      "t": "HORIZON SCAN",
+      "d": "Scan short- and medium-term change signals.\nSuggest themes and metrics to monitor."
+    },
+    {
+      "t": "OPPORTUNITY MAP",
+      "d": "Document trend-based feature, service, and content opportunities.\nConnect to experiments and validation."
+    }
+  ],
+  "flowLabel": "EXAMPLE WORKFLOW",
+  "flowTitle": "From topic definition to a trend brief",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINE",
+      "d": "Define research topic, time horizon, and decision context.\nClarify what you need to learn to decide.",
+      "examples": [
+        "Topic",
+        "Scope",
+        "Horizon",
+        "Deliverables"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCAN",
+      "d": "Scan reports, news, launches, investment, and regulation signals.\nSelect the most relevant materials.",
+      "examples": [
+        "Reports",
+        "News",
+        "Launches",
+        "Investment"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "CLUSTER",
+      "d": "Cluster related signals into themes.\nStructure recurring patterns and direction.",
+      "examples": [
+        "Themes",
+        "Clusters",
+        "Patterns",
+        "State"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "INTERPRET",
+      "d": "Interpret meaning and impact of themes.\nSeparate opportunity, risk, and ignore zones.",
+      "examples": [
+        "Impact",
+        "Opportunity",
+        "Risk",
+        "Implications"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DELIVER",
+      "d": "Deliver trend brief and theme map.\nConnect to roadmap, content, and experiment discussions.",
+      "examples": [
+        "Trend Brief",
+        "Theme Map",
+        "Next Steps"
+      ]
+    }
+  ],
+  "reportLabel": "OUTPUT",
+  "reportTitle": "Outputs structured for strategy, roadmap, and content decisions.",
+  "reportLead": "Composition varies by project goal. Below are common items.",
+  "reportMockStatus": "TREND · DRAFT",
+  "reportMockK": "TREND RESEARCH SUMMARY",
+  "reportMockT": "Themes, flow, and implications brief",
+  "reportItems": [
+    "Executive Summary",
+    "Research Scope",
+    "Theme Overview",
+    "Signal Summary",
+    "Timeline View",
+    "Competitive Context",
+    "Opportunity Areas",
+    "Risk & Watchlist",
+    "Implications",
+    "Recommended Next Steps"
+  ],
+  "dashTitle": "Share trend themes and priority on one view.",
+  "dashLead": "Themes, state, and impact together speed up strategy and content discussions.",
+  "dashNote": "Theme composition and state classification vary by project goal and scope.",
+  "dashMetrics": [
+    "Themes",
+    "Signals",
+    "Rising",
+    "Priority"
+  ],
+  "dashFilters": [
+    "All",
+    "Rising",
+    "Emerging",
+    "Stable"
+  ],
+  "aiLabel": "SYNTHESIS",
+  "aiTitle": "From many signals\nto core themes.",
+  "aiLead": "When news, reports, launches, and social material pile up, we classify, summarize, and compare by relevance, pattern, and impact for faster review.",
+  "aiExamples": [
+    "Cluster news and report themes",
+    "Extract recurring signal patterns",
+    "Classify Rising / Emerging states",
+    "Contextualize competitor moves",
+    "Summarize roadmap and content implications",
+    "Structure trend brief and theme map"
+  ],
+  "aiNote": "Final interpretation and priority are reviewed with you.",
+  "delLabel": "DELIVERABLES",
+  "delTitle": "What you receive when the project completes",
+  "delLead": "We deliver the items below as needed for your scope.",
+  "deliverables": [
+    "Trend Brief",
+    "Theme Map",
+    "Signal Summary",
+    "Timeline View",
+    "Opportunity Overview",
+    "Risk & Watchlist",
+    "Implications & Recommendations",
+    "Presentation Summary",
+    "Monitoring Guide (optional)"
+  ],
+  "processLabel": "PROCESS",
+  "processTitle": "From topic definition to delivery.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOVERY",
+      "d": "Confirm research purpose and decision context.\nUnderstand whether this is for roadmap, content, or strategy.",
+      "examples": [
+        "Goals",
+        "Stakeholders",
+        "Timeline",
+        "Constraints"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCOPE",
+      "d": "Define topic, time horizon, industry, and deliverables.\nAgree monitoring or interview inclusion.",
+      "examples": [
+        "Topic",
+        "Horizon",
+        "Scope",
+        "Format"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "RESEARCH",
+      "d": "Collect and review relevant signals and materials.\nRecord source, timing, and context.",
+      "examples": [
+        "Reports",
+        "News",
+        "Launches",
+        "Investment"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ANALYSIS",
+      "d": "Structure themes, patterns, and states.\nDerive impact and priority.",
+      "examples": [
+        "Themes",
+        "State",
+        "Impact",
+        "Priority"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DRAFT",
+      "d": "Draft trend brief and theme map.\nBuild the skeleton of key findings.",
+      "examples": [
+        "Summary",
+        "Theme Map",
+        "Timeline"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "REVIEW",
+      "d": "Review key themes and interpretation together.\nAdjust gaps, overload, and feasibility.",
+      "examples": [
+        "Feedback",
+        "Refinement",
+        "Priority"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "DELIVER",
+      "d": "Deliver final documents and implications.\nConnect to monitoring and experiment next steps.",
+      "examples": [
+        "Final Brief",
+        "Map",
+        "Next Steps"
+      ]
+    }
+  ],
+  "scopeLabel": "SCOPE LEVELS",
+  "scopeTitle": "How to think about project complexity.",
+  "scopeLead": "Not a fixed package. Scope is set by topic, industry range, and depth.",
+  "scopes": [
+    {
+      "t": "TREND BRIEF",
+      "items": [
+        "Single topic or category",
+        "Secondary sources focus",
+        "3–5 core themes",
+        "Summary trend brief",
+        "Implications and priority"
+      ]
+    },
+    {
+      "t": "THEME & TIMELINE MAP",
+      "items": [
+        "Multiple themes and sub-trends",
+        "Timeline and state classification",
+        "Competitive and launch context",
+        "Opportunity and risk summary",
+        "Presentation summary optional"
+      ]
+    },
+    {
+      "t": "CUSTOM TREND RESEARCH",
+      "items": [
+        "Multiple industries, regions, or channels",
+        "Expert interviews included",
+        "Monitoring guide",
+        "Custom presentation",
+        "BUILD and MVP linkage"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Timeline depends on scope.",
+  "timeLead": "Duration varies by topic count, material range, and interview inclusion.",
+  "timelines": [
+    {
+      "t": "Trend Brief",
+      "d": "About 1–2 weeks"
+    },
+    {
+      "t": "Theme & Timeline Map",
+      "d": "About 2–3 weeks"
+    },
+    {
+      "t": "Custom Trend Research",
+      "d": "About 3–4 weeks · custom quote"
+    }
+  ],
+  "priceLabel": "PROJECT COST",
+  "priceTitle": "Quoted for the scope you need.",
+  "priceName": "TREND RESEARCH",
+  "priceValue": "From ₩300,000",
+  "priceFactorsLabel": "Pricing factors",
+  "priceFactors": [
+    "Research topic and range",
+    "Number of industries or categories",
+    "Time horizon and depth",
+    "Competitive and launch context",
+    "Interviews and experts",
+    "Deliverable format",
+    "Monitoring guide",
+    "Rush timeline"
+  ],
+  "priceNote": "Final quotes are confirmed after research goal, topic, and scope.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Frequently asked questions",
+  "faqs": [
+    {
+      "q": "What industries or topics can you research?",
+      "a": "B2B, B2C, SaaS, commerce, content, services — depending on goal and accessible materials. We confirm fit before kickoff."
+    },
+    {
+      "q": "How is this different from MARKET RESEARCH?",
+      "a": "TREND RESEARCH focuses on change signals, themes, and flow. For market structure and size, link scope with MARKET RESEARCH."
+    },
+    {
+      "q": "What do deliverables look like?",
+      "a": "Trend Brief, Theme Map, Signal Summary — document and map focused. Presentation summary available when needed."
+    },
+    {
+      "q": "Does this include ongoing monitoring?",
+      "a": "Default is point-in-time research and synthesis. Ongoing monitoring can be a Monitoring Guide or separate scope."
+    },
+    {
+      "q": "Can competitor moves be included?",
+      "a": "Yes, competitor and launch signals can be connected in trend context. For deep comparison, link with COMPETITOR ANALYSIS."
+    },
+    {
+      "q": "Can this connect to BUILD or MVP?",
+      "a": "Yes. Trend insights can feed feature, roadmap, and content priority."
+    },
+    {
+      "q": "How is confidentiality handled?",
+      "a": "Materials are used only within agreed scope. NDA available when required."
+    }
+  ],
+  "finalLabel": "START A PROJECT",
+  "finalTitle": "Collect trend signals.\nStart with themes.",
+  "finalLead": "If you are reviewing industry, topic, roadmap, or content direction, tell us what to research and how you want findings structured.",
+  "ctaFinalSecondary": "View all RESEARCH →",
+  "ctaFinalSecondaryHref": "../research/"
+}

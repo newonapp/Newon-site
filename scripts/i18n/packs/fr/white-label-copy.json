@@ -1,0 +1,483 @@
+{
+  "seoTitle": "WHITE-LABEL-Newon Business",
+  "metaDescription": "Envoyez un système éprouvé sous votre marque — réservation, CRM, demande, tableaux de bord, support AI, et plus encore. Newon WHITE-LABEL.",
+  "crumbBusiness": "ENTREPRISES",
+  "crumbServices": "SERVICES",
+  "crumbSolutions": "SOLUTIONS",
+  "crumbHere": "WHITE-LABEL",
+  "eyebrow": "WHITE-LABEL",
+  "subEyebrow": "SOLUTIONS",
+  "headline": "Un seul système.\nVotre marque.",
+  "lead": "Au lieu de construire chaque fondation à partir de zéro, nous avons remodelé une structure éprouvée de produit à votre marque, domaine, et fonctionnalités. Réservation, demande, CRM, tableaux de bord, support AI — étiquette blanche sur un système de base validé avec marque, fonctionnalités et domaines configurés pour vous.",
+  "ctaPrimary": "Enquête en blanc →",
+  "ctaSecondary": "Voir le flux de configuration ▼",
+  "meta": [
+    {
+      "k": "SERVICES",
+      "v": "Marque blanche"
+    },
+    {
+      "k": "BEST POUR",
+      "v": "Lancement de produit numérique de marque-fit"
+    },
+    {
+      "k": "Échéancier",
+      "v": "Dépend de la portée"
+    },
+    {
+      "k": "PRIX",
+      "v": "Devis personnalisé"
+    }
+  ],
+  "overviewLabel": "APERÇU",
+  "overviewTitle": "Vous continuez à reconstruire\nles mêmes fondations.",
+  "overviewBody": [
+    "Réservation, demande, CRM, tableaux de bord — les fondations répétitives ont déjà prouvé des modèles. Mais chaque org diffère dans la marque, le domaine, le jeu de fonctionnalités et les opérations. Tout construire à partir de zéro coûte trop de temps et d'argent.",
+    "Les outils off-the-shelf sont rapides mais se sentent génériques. La construction sur mesure prend trop de temps pour être lancée. Ce dont vous avez besoin, c'est d'un système de base validé avec votre marque et des fonctionnalités de différenciation sur le dessus.",
+    "WHITE-LABEL sélectionne la fondation appropriée, puis applique la personnalisation de la marque et la configuration des fonctionnalités. Domain, deploy, admin, permissions — livré comme un système qui fonctionne sous votre marque."
+  ],
+  "problemsLabel": "",
+  "problemsTitle": "C'est utile quand on fait face à ces situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "REBUILD FONDATION",
+      "d": "Vous reconstruisez la réservation, demande, CRM-comme des carottes à partir de zéro.\nVous voulez vous concentrer sur la marque et la différenciation."
+    },
+    {
+      "n": "02",
+      "t": "LONGUE DURÉE",
+      "d": "Custom build délais de lancement.\nLa rapidité du marché."
+    },
+    {
+      "n": "03",
+      "t": "EXPÉRIENCE GÉNÉRIQUE",
+      "d": "L'expérience se sent toujours comme SaaS générique.\nVous avez besoin de plus qu'un échange de logo."
+    },
+    {
+      "n": "04",
+      "t": "MODULE SUPÉRIEUR",
+      "d": "Vous ne voulez que les modules dont vous avez besoin.\nVous devez réduire la complexité."
+    },
+    {
+      "n": "05",
+      "t": "PRESCRIPTIONS GÉNÉRALES",
+      "d": "Vous voulez offrir un outil d'exploitation sous votre marque.\nLes clients et les partenaires devraient le considérer comme le vôtre."
+    },
+    {
+      "n": "06",
+      "t": "START PRÉCUSTOM",
+      "d": "Vous voulez un produit de base avant la construction complète sur mesure.\nIl vous faut de la place pour prolonger plus tard."
+    }
+  ],
+  "baLabel": "AVANT / APRÈS",
+  "baTitle": "Construire à partir de zéro vs\nBase + personnalisation de la marque",
+  "beforeLabel": "AVANT",
+  "afterLabel": "APRÈS",
+  "before": [
+    "Reconception réservation, demande, fondations CRM à chaque fois",
+    "Long développement avant lancement",
+    "L'expérience de la marque ressemble à un outil générique",
+    "Les fonctionnalités inutiles ajoutent la complexité"
+  ],
+  "after": [
+    "Démarrer à partir d'un système de base validé",
+    "Lancer plus rapidement avec la marque, les modules, l'ajustement du domaine",
+    "UI, le contenu et les caractéristiques de la marque",
+    "Choisir uniquement les modules nécessaires et gérer la complexité"
+  ],
+  "capsLabel": "CAPABILITÉS",
+  "capsTitle": "Nous effectuons la construction de la marque blanche\ncomme un engagement structuré.",
+  "caps": [
+    {
+      "t": "SÉLECTION DE BASE",
+      "d": "Choisissez la fondation en marque blanche et les caractéristiques incluses.\nProposer des combinaisons de modules — réservation, demande, CRM, tableau de bord."
+    },
+    {
+      "t": "MARQUE DOUANISATION",
+      "d": "Appliquer le logo, la couleur, le type et le ton UI à la marque.\nCréez une expérience de marque cohérente. CONFIGURATION DES CARACTÉRISTIQUES DE"
+    },
+    {
+      "t": "CONFIGURATION DES CARACTÉRISTIQUES",
+      "d": "Activer les modules nécessaires; supprimer ou simplifier le reste.\nFormez les flux de travail à la marque et aux opérations."
+    },
+    {
+      "t": "CONTENU ET IA",
+      "d": "Ajustez les menus, la structure d'information, le ton de copie.\nOrganiser l'expérience utilisateur et opérateur."
+    },
+    {
+      "t": "DOMAINE ET DÉPLOIEMENT",
+      "d": "Connectez votre domaine et préparez l'environnement opérationnel.\nDéfinir email, SSL et la structure de déploiement."
+    },
+    {
+      "t": "ADMINISTRATIF ET PERMISSIONS",
+      "d": "Faire correspondre les surfaces administratives et la structure de permission pour les opérations.\nConcevoir les rôles, l'accès et la vérification."
+    },
+    {
+      "t": "INTÉGRATIONS",
+      "d": "Implémenter les paiements, CRM, support AI, automatisation, API externes au besoin.\nLes caractéristiques extérieures à la base sont définies séparément."
+    },
+    {
+      "t": "LANCER ET RETIRER",
+      "d": "Exécutez QA, lancement et guide d'exploitation.\nConnectez l'extension et les points Phase 2."
+    }
+  ],
+  "sourcesLabel": "INPUTS DE PROJET",
+  "sourcesTitle": "Nous combinons les intrants dont votre projet a besoin.",
+  "sourcesNote": "Les intrants réels varient selon la marque, le but et les produits de référence.",
+  "sources": [
+    "Objectif du service et définition de l'utilisateur",
+    "Marque guide, logo, couleur",
+    "Produits de référence et concurrents",
+    "Caractéristiques obligatoires et exclues",
+    "Exigences relatives aux domaines et aux courriels",
+    "Structure du contenu et du menu",
+    "Autorisations et structure org",
+    "Intégration et exigences API",
+    "AI et besoins d'automatisation",
+    "Droit, sécurité, conformité",
+    "Calendrier de lancement et budget",
+    "Plans d'expansion futurs"
+  ],
+  "useLabel": "UTILISATION CAS",
+  "useTitle": "Produits en marque blanche que nous pouvons configurer.",
+  "useBadge": "Exemple de configurations Système de réservation",
+  "useCases": [
+    {
+      "t": "SYSTÈME DE RÉSERVATION",
+      "d": "Service de marque-fit centré sur la réservation, l'horaire, les alertes.\nSurfaces client et administrateur incluses."
+    },
+    {
+      "t": "ENQUÊTE / CRM",
+      "d": "Demande boîte de réception, CRM lumière, routage du propriétaire.\nPortail de gestion client et chef de file."
+    },
+    {
+      "t": "OPÉRATIONS DASHBOARD",
+      "d": "Paramètres opérationnels, état et tableau de bord d'alerte.\nComposition de la marque KPI."
+    },
+    {
+      "t": "PORTAL CLIENT",
+      "d": "Portail dédié aux clients ou partenaires.\nOrdres, enquête, statut, partage de documents."
+    },
+    {
+      "t": "AI SOUTIEN LAYER",
+      "d": "Connectez AI modules de support et d'automatisation.\nEnquête classifier, rédiger, résumer intégré."
+    },
+    {
+      "t": "OPÉRATIONS MULTIMARQUES",
+      "d": "Structure d'exploitation multimarques ou multilocataires.\nDomaine, permission, séparation des modules."
+    },
+    {
+      "t": "MEMBRE / SOUS-CRIPTION",
+      "d": "Abonnement, adhésion, service basé sur la permission.\nPaiement et administrateur inclus. OUTILS DE SERVICE"
+    },
+    {
+      "t": "OUTILS DE SERVICE DANS LE DOMAINE",
+      "d": "Outil d'exploitation pour les industries de terrain et de services.\nRéservation, enquête, rapport lié."
+    }
+  ],
+  "flowLabel": "FLUX DE TRAVAIL EXEMPLES",
+  "flowTitle": "De la sélection de base au lancement de marque",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DÉFINITION",
+      "d": "Confirmer le but du service, les utilisateurs, doivent avoir des fonctionnalités.\nDéfinir des critères d'appariement de base.",
+      "examples": [
+        "Objet",
+        "Utilisateurs",
+        "Caractéristiques",
+        "Chronologie"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "BASE",
+      "d": "Proposer une combinaison de fondation et de module appropriée.\nAccepter la portée de la personnalisation.",
+      "examples": [
+        "Base",
+        "Modules",
+        "Portée",
+        "Phase"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "GRANDE",
+      "d": "Appliquer le ton visuel, copie, UI à la marque.\nModifier la structure et les menus d'information.",
+      "examples": [
+        "Logo",
+        "Couleur",
+        "UI",
+        "Copier la CONFIGURE"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONFIGURATION",
+      "d": "Mettre en œuvre la fonctionnalité ajouter, supprimer et intégrations.\nCorrespond aux flux de travail et à l'administration.",
+      "examples": [
+        "Caractéristiques",
+        "Administrateur",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LANCEMENT",
+      "d": "Connectez le domaine, QA et le transfert d'exploitation.\nConnectez les points d'extension.",
+      "examples": [
+        "Domaine",
+        "Déployer",
+        "Docteurs",
+        "Remise"
+      ]
+    }
+  ],
+  "reportLabel": "OUVERTURE",
+  "reportTitle": "Les produits livrables sont un système de marque et des documents de support. Système",
+  "reportLead": "La composition varie selon la portée du projet. Voici les points communs.",
+  "reportMockStatus": "SYSTÈME · CONFIG",
+  "reportMockK": "WHITE-LABELSPÉCIFICATIONS",
+  "reportMockT": "Base, Marque, Caractéristiques, Sommaire des domaines",
+  "reportItems": [
+    "Sélection de base",
+    "Demande de marque",
+    "Configuration des fonctionnalités",
+    "Contenu et configuration du domaine IA",
+    "Configuration du domaine",
+    "Administrateur et autorisations",
+    "Liste d'intégration",
+    "Liste de vérification de lancement",
+    "Guide des opérations",
+    "Points d'extension"
+  ],
+  "dashTitle": "Partager la base et la configuration de la marque sur une seule vue.",
+  "dashLead": "Modules, Marque, Caractéristiques et Domaines unissent l'accord de portée de vitesse et lancent les discussions.",
+  "dashNote": "La composition du module et la profondeur de personnalisation de la marque varient selon l'objectif et le budget du projet.",
+  "dashMetrics": [
+    "Modules",
+    "Marque",
+    "Caractéristiques",
+    "Domaines"
+  ],
+  "dashFilters": [
+    "Tous",
+    "Noyau",
+    "Marque",
+    "Ajouter"
+  ],
+  "aiLabel": "OPTIONNEL AI",
+  "aiTitle": "Connexion AI support et automatisation\nen tant que modules au besoin.",
+  "aiLead": "Vous pouvez éventuellement connecter le support AI, la classification des demandes, les ébauches de réponses et les résumés de documents à la base de l'étiquette blanche. Conçu avec la portée d'AUTOMATION AI, il peut intégrer une expérience AI de marque.",
+  "aiExamples": [
+    "__TEEP000__ widget de prise en charge et de chat",
+    "Enquête classifier et répondre projet",
+    "Ops tableau de bord AI résumé",
+    "Module de recherche interne des connaissances",
+    "Analyse de la revue et des commentaires",
+    "Lien de flux de travail d'automatisation"
+  ],
+  "aiNote": "AI sont optionnels. Les besoins et la politique en matière de données sont confirmés au début du projet.",
+  "delLabel": "LIVRABLES",
+  "delTitle": "Ce que vous recevez lorsque le projet complète",
+  "delLead": "Nous livrons les articles ci-dessous au besoin pour votre portée.",
+  "deliverables": [
+    "Système de marque (Web / Portal)",
+    "Liste de configuration des fonctions",
+    "Console d'administration",
+    "Biens d'application de marque",
+    "Domaine & Déploiement Configuration",
+    "Configuration d'intégration",
+    "Guide d'exploitation",
+    "Lancement du rapport QA",
+    "Feuille de route pour l'extension (facultatif)"
+  ],
+  "processLabel": "PROCESSUS",
+  "processTitle": "Des exigences au décollage.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DÉCOUVREMENT",
+      "d": "Confirmer le but du service, les utilisateurs, doivent-avoir des fonctionnalités, timeline.\nComprendre les produits de référence et les besoins de la marque.",
+      "examples": [
+        "Objet",
+        "Utilisateurs",
+        "Caractéristiques",
+        "Marque"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "CORRESPONDANCE DE BASE",
+      "d": "Recommander base et gamme de personnalisation.\nAccepter les modules et les phases.",
+      "examples": [
+        "Base",
+        "Modules",
+        "Portée",
+        "Chronologie"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "GRANDE",
+      "d": "Appliquer le ton visuel, copie, UI à la marque.\nConfirmer la structure de l'information et les écrans de base.",
+      "examples": [
+        "Logo",
+        "UI",
+        "Copier la CONFIGURE",
+        "Révision"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONFIGURATION",
+      "d": "Mettre en œuvre la fonctionnalité ajouter, supprimer, intégrations.\nCorrespond à l'administrateur, aux permissions, aux flux de travail.",
+      "examples": [
+        "Caractéristiques",
+        "Administrateur",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "",
+      "d": "Vérifier les fonctionnalités, la marque, le domaine, les permissions.\nVérifier les scénarios opérationnels.",
+      "examples": [
+        "QA",
+        "UAT",
+        "corrige",
+        "Signature"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "LANCEMENT",
+      "d": "Connectez le domaine, déployez et lancez.\nConfirmer les chemins de surveillance et d'accès.",
+      "examples": [
+        "Domaine",
+        "Déployer",
+        "Accès",
+        "Moniteur"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "MAINTENANT",
+      "d": "Documenter les opérations et remettre.\nConnectez le chemin d'expansion et de maintenance.",
+      "examples": [
+        "Docteurs",
+        "Formation",
+        "Appui",
+        "Phase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "NIVEAUX DE PORTÉE",
+  "scopeTitle": "Comment penser à la complexité du projet.",
+  "scopeLead": "Pas un paquet fixe. La portée est définie par type de base, profondeur de marque et nombre de modules ou de domaines.",
+  "scopes": [
+    {
+      "t": "GRANDE LANCEMENT",
+      "items": [
+        "Système de base unique",
+        "Personnalisation de la marque et UI",
+        "Configuration du module de base",
+        "Un seul domaine déploie",
+        "Administration de base et permissions"
+      ]
+    },
+    {
+      "t": "MODULE CONFIGURE",
+      "items": [
+        "Modules multiples et réglage des fonctionnalités",
+        "Contenu et personnalisation IA",
+        "intégrations 1 à 3",
+        "Structure d'administration et d'autorisation",
+        "Le guide de fonctionnement comprenait"
+      ]
+    },
+    {
+      "t": "PLATFORME MULTI-DOMAINE",
+      "items": [
+        "Multi-marque ou multi-tenant",
+        "Plusieurs domaines et permissions",
+        "AI et liens de module d'automatisation",
+        "Ajouts de fonctionnalités personnalisées",
+        "Ops à long terme et conception d'extension"
+      ]
+    }
+  ],
+  "timeLabel": "Échéancier",
+  "timeTitle": "Le calendrier dépend de la portée.",
+  "timeLead": "La durée varie selon le type de base, la profondeur de personnalisation de la marque, les modules, les intégrations et la vitesse de décision.",
+  "timelines": [
+    {
+      "t": "Lancement de la marque",
+      "d": "Environ 2 à 4 semaines · varie"
+    },
+    {
+      "t": "Configuration du module",
+      "d": "Environ 4-8 semaines · varie"
+    },
+    {
+      "t": "Plateforme multidomaine",
+      "d": "Environ 8-12+ semaines · personnalisé"
+    }
+  ],
+  "priceLabel": "PROJET COÛT",
+  "priceTitle": "Citation par projet.",
+  "priceName": "WHITE-LABEL",
+  "priceValue": "Devis personnalisé",
+  "priceFactorsLabel": "Facteurs de tarification",
+  "priceFactors": [
+    "Base — base et type de module",
+    "Profondeur de la marque — UI et personnalisation du contenu",
+    "Caractéristiques — configuration du module et des fonctionnalités",
+    "Domaines — domaine et nombre de locataires",
+    "Intégration — API, paiements, AI liens",
+    "Calendrier — calendrier et ressourcement",
+    "Add-ons personnalisés — fonctionnalités externes",
+    "Après le lancement — maintenance et extension"
+  ],
+  "priceNote": "Nous examinons Base / Marque / Caractéristiques / Domaines, puis fournir un devis. Pas de prix de menu fixe.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Foire aux questions",
+  "faqs": [
+    {
+      "q": "En quoi est-ce différent du développement complet sur mesure?",
+      "a": "Vous commencez par une base réutilisable. Effort se concentre sur la marque et les caractéristiques de différenciation."
+    },
+    {
+      "q": "Qui possède le code ?",
+      "a": "Cela dépend de l'accord. Nous clarifions la propriété et les opérations pendant l'enquête."
+    },
+    {
+      "q": "Pouvons-nous ajouter des fonctionnalités plus tard?",
+      "a": "Oui. Les caractéristiques extérieures à la base sont définies séparément."
+    },
+    {
+      "q": "Plusieurs marques peuvent-elles fonctionner sur une seule configuration ?",
+      "a": "Si vous avez besoin d'opérations multimarques, nous concevons pour cela."
+    },
+    {
+      "q": "Les modules AI peuvent-ils être inclus ?",
+      "a": "Oui — les modules de support et d'automatisation peuvent être connectés au besoin."
+    },
+    {
+      "q": "En quoi est-ce différent de CUSTOM PRODUCT ?",
+      "a": "La marque blanche adapte un système de base validé à votre marque et à vos modules. CUSTOM PRODUCT conçoit et construit le problème dès le début."
+    },
+    {
+      "q": "Pouvez-vous soutenir la maintenance après le lancement?",
+      "a": "Oui. L'expansion des fonctions, l'ajout de modules et le soutien opérationnel peuvent se poursuivre dans le cadre d'un accord distinct."
+    }
+  ],
+  "finalLabel": "ÉTAT D'UN PROJET",
+  "finalTitle": "Lancer un système\nqui porte votre marque.",
+  "finalLead": "Partagez les caractéristiques dont vous avez besoin, les produits de référence et les exigences de la marque. Nous confirmerons ensemble la sélection du système de base et la configuration de la marque, des fonctionnalités, des domaines.",
+  "ctaFinalSecondary": "Afficher toutes les SOLUTIONS →",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

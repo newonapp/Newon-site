@@ -1,0 +1,483 @@
+{
+  "seoTitle": "WHITE-LABEL □ Newon Business",
+  "metaDescription": "Envie um sistema comprovado sob sua marca – reserva, CRM, inquérito, painéis, suporte AI e muito mais. Newon WHITE-LABEL.",
+  "crumbBusiness": "EMPRESAS",
+  "crumbServices": "SERVIÇOS",
+  "crumbSolutions": "SOLUÇÕES",
+  "crumbHere": "WHITE-LABEL",
+  "eyebrow": "WHITE-LABEL",
+  "subEyebrow": "SOLUÇÕES",
+  "headline": "Um sistema.\nA tua marca.",
+  "lead": "Em vez de construir todas as fundações a partir de zero, reformulamos uma estrutura de produto comprovada para sua marca, domínio e recursos. Reserva, inquérito, CRM, painéis, suporte ao AI — white-label em um sistema base validado com marca, recursos e domínios configurados para você.",
+  "ctaPrimary": "Inquérito em branco →",
+  "ctaSecondary": "Veja o fluxo de configuração ↓",
+  "meta": [
+    {
+      "k": "SERVIÇO",
+      "v": "Marca branca"
+    },
+    {
+      "k": "MELHOR PARA",
+      "v": "Lançamento de produto digital marca-fit"
+    },
+    {
+      "k": "Cronologia",
+      "v": "Depende do escopo"
+    },
+    {
+      "k": "PREÇO",
+      "v": "Citação personalizada"
+    }
+  ],
+  "overviewLabel": "VISÃO GERAL",
+  "overviewTitle": "Você continua reconstruindo\nas mesmas fundações.",
+  "overviewBody": [
+    "Reserva, inquérito, CRM, painéis — fundações repetitivas já têm padrões comprovados. Mas cada org difere em marca, domínio, conjunto de recursos e operações. Construir tudo do zero custa muito tempo e dinheiro.",
+    "As ferramentas fora da prateleira são rápidas, mas parecem genéricas. A compilação personalizada completa leva muito tempo para ser lançada. O que você precisa é de um Sistema Base validado com sua marca e recursos diferenciadores no topo.",
+    "WHITE-LABEL seleciona a fundação certa, então aplica a personalização da marca e configuração de recursos. Domínio, implantação, administração, permissões — entregues como um sistema que opera sob sua marca."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Ajudante quando você enfrenta essas situações.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "REBUILD FUNDAÇÃO",
+      "d": "Você reconstruir reserva, inquérito, CRM-como núcleos do zero.\nVocê quer se concentrar na marca e diferenciação."
+    },
+    {
+      "n": "02",
+      "t": "LONGO TEMPO",
+      "d": "As linhas do tempo de compilação personalizadas atrasam o lançamento.\nVelocidade para questões de mercado."
+    },
+    {
+      "n": "03",
+      "t": "EXPERIÊNCIA GENERICA",
+      "d": "A experiência ainda parece o genérico SaaS.\nVocê precisa mais do que uma troca de logotipo."
+    },
+    {
+      "n": "04",
+      "t": "OPERAÇÕES DE MÓDULO",
+      "d": "Você só quer os módulos de que precisa.\nTens de reduzir a complexidade."
+    },
+    {
+      "n": "05",
+      "t": "OPS PRÓPRIOS",
+      "d": "Você quer oferecer uma ferramenta de operações sob sua marca.\nClientes e parceiros devem vê-lo como seu."
+    },
+    {
+      "n": "06",
+      "t": "INÍCIO PRÉ-CUSTO",
+      "d": "Você quer um produto base antes de construir totalmente personalizado.\nPrecisa de espaço para mais tarde."
+    }
+  ],
+  "baLabel": "ANTES / APÓS",
+  "baTitle": "Compilar do zero vs.\nBase + Personalização de marca",
+  "beforeLabel": "ANTES",
+  "afterLabel": "APÓS",
+  "before": [
+    "Redesign reserva, inquérito, CRM fundações cada vez",
+    "Longo desenvolvimento antes do lançamento",
+    "Experiência de marca parece uma ferramenta genérica",
+    "Recursos desnecessários adicionam complexidade"
+  ],
+  "after": [
+    "Iniciar a partir de um Sistema Base validado",
+    "Lançar mais rápido com marca, módulos, ajuste de domínio",
+    "UI, conteúdo e recursos em forma de marca",
+    "Escolha apenas os módulos necessários e gerencie a complexidade"
+  ],
+  "capsLabel": "CAPABILIDADES",
+  "capsTitle": "Executamos a compilação em branco\ncomo um engajamento estruturado.",
+  "caps": [
+    {
+      "t": "SELEÇÃO DE BASE",
+      "d": "Escolha a base em branco e as funcionalidades incluídas.\nPropor combinações de módulos — reserva, inquérito, CRM, painel."
+    },
+    {
+      "t": "CUSTOMIZAÇÃO DA FRANÇA",
+      "d": "Aplicar logotipo, cor, tipo e tom UI para a marca.\nCrie uma experiência de marca consistente."
+    },
+    {
+      "t": "CONFIGURAÇÃO DAS CARACTERÍSTICAS",
+      "d": "Activar os módulos necessários; remover ou simplificar o resto.\nForma fluxos de trabalho para a marca e operações."
+    },
+    {
+      "t": "CONTEÚDO & IA",
+      "d": "Ajuste menus, estrutura de informação, tom de cópia.\nOrganize a experiência do usuário e do operador."
+    },
+    {
+      "t": "& IMPLANTAR O DOMÍNIO",
+      "d": "Conecte seu domínio e prepare o ambiente operacional.\nDefina e-mail, SSL e estrutura de implantação."
+    },
+    {
+      "t": "ADMIN & PERMISSÕES",
+      "d": "Combine superfícies de administrador e estrutura de permissão para operações.\nDesign funções, acesso e auditoria."
+    },
+    {
+      "t": "INTEGRAÇÕES",
+      "d": "Implemente pagamentos, CRM, suporte AI, automação, APIs externos conforme necessário.\nAs características fora da base são examinadas separadamente."
+    },
+    {
+      "t": "LUGAR E HANDOFF",
+      "d": "Run QA, lançamento e guia operacional.\nConecte extensão e pontos Phase 2."
+    }
+  ],
+  "sourcesLabel": "INPUTOS DE PROJECTO",
+  "sourcesTitle": "Combinamos as entradas que seu projeto precisa.",
+  "sourcesNote": "As entradas reais variam de acordo com a marca, finalidade e produtos de referência.",
+  "sources": [
+    "Objetivo do serviço e definição do usuário",
+    "Guia de marca, logotipo, cor",
+    "Produtos de referência e concorrentes",
+    "Características necessárias e excluídas",
+    "Requisitos de domínio e e-mail",
+    "Estrutura de conteúdo e menu",
+    "Permissões e estrutura de org",
+    "Integração e requisitos API",
+    "AI e necessidades de automação",
+    "Legal, segurança, conformidade",
+    "Lançar linha do tempo e orçamento",
+    "Futuros planos de expansão"
+  ],
+  "useLabel": "PROCESSOS DE UTILIZAÇÃO",
+  "useTitle": "Produtos de rótulo branco que podemos configurar.",
+  "useBadge": "Configurações de exemplo",
+  "useCases": [
+    {
+      "t": "SISTEMA DE RESERVAS",
+      "d": "Serviço de marca centrada na reserva, programação, alertas.\nSuperfícies de cliente e administrador incluído."
+    },
+    {
+      "t": "INQUÉRITO / CRM",
+      "d": "Caixa de entrada de inquérito, luz CRM, roteamento do proprietário.\nPortal de gestão de clientes e líderes."
+    },
+    {
+      "t": "OPERAÇÕES DASHBOARD",
+      "d": "métricas de operações, status e painel de alerta.\nComposição da marca KPI."
+    },
+    {
+      "t": "CLIENTE PORTAL",
+      "d": "Portal dedicado para clientes ou parceiros.\nOrdens, perguntas, status, partilha de documentos."
+    },
+    {
+      "t": "AI APOIO LAYER",
+      "d": "Conectar módulos de suporte e automação AI.\nConsulta classificar, rascunho, resumir integrado."
+    },
+    {
+      "t": "OPS MULTI-BRAND",
+      "d": "Estrutura de operações multimarca ou multidotação.\nDomínio, permissão, separação do módulo."
+    },
+    {
+      "t": "MEMBRO/SUBSCRIÇÃO",
+      "d": "Assinatura, assinatura, serviço baseado em permissão.\nPagamento e administrador incluído."
+    },
+    {
+      "t": "TOOL DE SERVIÇO DE CAMPO",
+      "d": "Ferramenta de operações para indústrias de campo e serviços.\nReserva, inquérito, relatório ligado."
+    }
+  ],
+  "flowLabel": "EXEMPLO DE TRABALHO",
+  "flowTitle": "Da seleção de base ao lançamento da marca",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINA",
+      "d": "Confirmar finalidade de serviço, usuários, deve ter recursos.\nDefinir critérios de correspondência de base.",
+      "examples": [
+        "Finalidade",
+        "Usuários",
+        "Características",
+        "Linha do Tempo"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "BASE",
+      "d": "Propor uma combinação adequada de fundação e módulo.\nConcordo com o escopo de personalização.",
+      "examples": [
+        "Base",
+        "Módulos",
+        "Âmbito de aplicação",
+        "Fase"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "MARCA",
+      "d": "Aplicar visual, cópia, tom UI para a marca.\nAjuste a estrutura de informação e menus.",
+      "examples": [
+        "Logotipo",
+        "Cor",
+        "UI",
+        "Copiar CONFIGURA"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONFIGURA",
+      "d": "Implementar funcionalidades adicionar, remover e integrações.\nCombine fluxos de trabalho e administrador.",
+      "examples": [
+        "Características",
+        "Admin.",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LANÇAMENTO",
+      "d": "Connect domain, QA, and operating handover.\nConectar pontos de extensão.",
+      "examples": [
+        "Domínio",
+        "Lançar",
+        "Dogs",
+        "Transferência"
+      ]
+    }
+  ],
+  "reportLabel": "SAÍDA",
+  "reportTitle": "Deliverables são um sistema de marca e documentos de apoio.",
+  "reportLead": "A composição varia de acordo com o âmbito do projecto. Abaixo estão os itens comuns.",
+  "reportMockStatus": "SISTEMA · CONFIG",
+  "reportMockK": "WHITE-LABEL ESPEC",
+  "reportMockT": "Base, Brand, Características, Resumo de Domínios",
+  "reportItems": [
+    "Seleção Base",
+    "Aplicação da marca",
+    "Configuração da Característica",
+    "Conteúdo & IA",
+    "Configuração do Domínio",
+    "& Permissões de administração",
+    "Lista de Integração",
+    "Lista de Verificação de Lançamento",
+    "Guia de Operações",
+    "Pontos de Extensão"
+  ],
+  "dashTitle": "Compartilhar configuração de base e marca em uma visão.",
+  "dashLead": "Módulos, Marca, Recursos e Domínios juntos aceleram o acordo de escopo e lançam discussões.",
+  "dashNote": "A composição do módulo e a profundidade de personalização da marca variam de acordo com o objetivo e o orçamento do projeto.",
+  "dashMetrics": [
+    "Módulos",
+    "Marca",
+    "Características",
+    "Domínios"
+  ],
+  "dashFilters": [
+    "Todos",
+    "Núcleo",
+    "Marca",
+    ""
+  ],
+  "aiLabel": "OPCIONAL AI",
+  "aiTitle": "Conectar suporte e automação AI\ncomo módulos quando necessário.",
+  "aiLead": "Você pode opcionalmente conectar suporte AI, classificação de inquérito, rascunhos de resposta e resumos de documentos para a base de white-label. Projetado com escopo AI AUTOMATION, ele pode integrar uma experiência AI brand-fit.",
+  "aiExamples": [
+    "AI suporte e widget de chat",
+    "Inquérito classificar e responder rascunho",
+    "Painel Ops AI resumo",
+    "Módulo interno de pesquisa de conhecimento",
+    "Análise de revisão e feedback",
+    "Ligação de fluxo de trabalho de automação"
+  ],
+  "aiNote": "Os módulos AI são opcionais. A necessidade e a política de dados são confirmadas no início do projeto.",
+  "delLabel": "DELIVERÁVEIS",
+  "delTitle": "O que você recebe quando o projeto completa",
+  "delLead": "Nós entregamos os itens abaixo, conforme necessário para o seu escopo.",
+  "deliverables": [
+    "Sistema Marcado (Web / Portal)",
+    "Lista de Configuração de Característica",
+    "Consola de administração",
+    "Marca Ativos de aplicação",
+    "& Implantação do Domínio Configurar",
+    "Configuração da Integração",
+    "Guia Operacional",
+    "Lançar QA Relatório",
+    "de lançamento Roteiro de extensão (opcional)"
+  ],
+  "processLabel": "PROCESSO",
+  "processTitle": "Desde os requisitos até ao lançamento.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCOBERTA",
+      "d": "Confirme o propósito do serviço, usuários, recursos obrigatórios, linha do tempo.\nCompreenda produtos de referência e necessidades de marca.",
+      "examples": [
+        "Finalidade",
+        "Usuários",
+        "Características",
+        "Marca"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "BASE LOTE",
+      "d": "Recomendar gama de fundação e personalização.\nConcordar módulos e fases.",
+      "examples": [
+        "Base",
+        "Módulos",
+        "Âmbito de aplicação",
+        "Linha do Tempo"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "MARCA",
+      "d": "Aplicar visual, cópia, tom UI para a marca.\nConfirme a estrutura de informações e telas centrais.",
+      "examples": [
+        "Logotipo",
+        "UI",
+        "Copiar CONFIGURA",
+        "Revisão"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONFIGURA",
+      "d": "Implementar recurso adicionar, remover, integrações.\nCombine o administrador, permissões, fluxos de trabalho.",
+      "examples": [
+        "Características",
+        "Admin.",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "",
+      "d": "Verifique recursos, marca, domínio, permissões.\nVerifique os cenários operacionais.",
+      "examples": [
+        "QA",
+        "UAT",
+        "Correcções",
+        "Assinatura"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "LANÇAMENTO",
+      "d": "Conecte domínio, implante e lançamento.\nConfirme caminhos de monitoramento e acesso.",
+      "examples": [
+        "Domínio",
+        "Lançar",
+        "",
+        "Monitor"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "MÃO",
+      "d": "Operações de documentos e entrega.\nConectar caminho de expansão e manutenção.",
+      "examples": [
+        "Dogs",
+        "Treinamento",
+        "Suporte",
+        "Fase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "NÍVEIS DE ÂMBITO DE APLICAÇÃO",
+  "scopeTitle": "Como pensar sobre a complexidade do projeto.",
+  "scopeLead": "Não é um pacote fixo. O escopo é definido por tipo de base, profundidade da marca e contagem de módulo ou domínio.",
+  "scopes": [
+    {
+      "t": "LANÇAMENTO DA MARCA",
+      "items": [
+        "Sistema de base única",
+        "Personalização de marca e UI",
+        "Configuração do módulo principal",
+        "Implementação de domínio único",
+        "Administrador básico e permissões"
+      ]
+    },
+    {
+      "t": "MÓDULO CONFIGURAÇÃO",
+      "items": [
+        "Múltiplos módulos e ajustes de recursos",
+        "Conteúdo e personalização IA",
+        "1–3 integrações",
+        "Estrutura de administração e permissão",
+        "Guia operacional incluído"
+      ]
+    },
+    {
+      "t": "PLATFORMA MULTI-DOMAIN",
+      "items": [
+        "Multi-marca ou multi-doente",
+        "Múltiplos domínios e permissões",
+        "AI e ligações de módulo de automação",
+        "Adições personalizadas de recursos",
+        "Ops de longo prazo e projeto de expansão"
+      ]
+    }
+  ],
+  "timeLabel": "Cronologia",
+  "timeTitle": "A linha do tempo depende do escopo.",
+  "timeLead": "Duração varia de acordo com o tipo de base, profundidade de personalização da marca, módulos, integrações e velocidade de decisão.",
+  "timelines": [
+    {
+      "t": "Lançamento da Marca",
+      "d": "Cerca de 2-4 semanas · varia"
+    },
+    {
+      "t": "Configuração do Módulo",
+      "d": "Cerca de 4-8 semanas · varia"
+    },
+    {
+      "t": "Plataforma multidomínio",
+      "d": "Cerca de 8-12+ semanas ·"
+    }
+  ],
+  "priceLabel": "CUSTO DO PROJECTO",
+  "priceTitle": "personalizado Citado por projeto.",
+  "priceName": "WHITE-LABEL",
+  "priceValue": "Citação personalizada",
+  "priceFactorsLabel": "Fatores de preços",
+  "priceFactors": [
+    "personalizado Base — fundação e tipo de módulo",
+    "Profundidade de marca – UI e personalização de conteúdo",
+    "Características — módulo e configuração de recursos",
+    "Domínios — domínio e contagem de inquilinos",
+    "Integração — API, pagamentos, AI links",
+    "Prazo — calendário e reabastecimento",
+    "Add-ons personalizados — funcionalidades externas da base",
+    "Pós-lançamento — manutenção e expansão"
+  ],
+  "priceNote": "Revisamos Base / Marca / Características / Domínios, em seguida, fornecer uma cotação. Nenhum preço de menu fixo.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Perguntas mais frequentes",
+  "faqs": [
+    {
+      "q": "Como isso é diferente do desenvolvimento personalizado completo?",
+      "a": "Começa de uma base reutilizável. Esforço se concentra em marca e características diferenciadoras."
+    },
+    {
+      "q": "Quem é o dono do código?",
+      "a": "Depende do acordo. Nós esclarecemos a propriedade e as operações durante o inquérito."
+    },
+    {
+      "q": "Podemos adicionar recursos mais tarde?",
+      "a": "Sim. As características fora da base são examinadas separadamente."
+    },
+    {
+      "q": "Várias marcas podem ser executadas em uma única configuração?",
+      "a": "Se você precisa de operações multi-marca, nós projetamos para isso."
+    },
+    {
+      "q": "Os módulos AI podem ser incluídos?",
+      "a": "Sim — os módulos de suporte e automação podem ser conectados quando necessário."
+    },
+    {
+      "q": "Como é que isto é diferente do CUSTOM PRODUCT?",
+      "a": "O White-label adapta um Sistema Base validado à sua marca e módulos. CUSTOM PRODUCT projeta e constrói para o problema desde o início."
+    },
+    {
+      "q": "Pode apoiar a manutenção pós-lançamento?",
+      "a": "Sim. Expansão de recursos, adições de módulos e suporte operacional podem continuar sob acordo separado."
+    }
+  ],
+  "finalLabel": "Iniciar um projeto",
+  "finalTitle": "Lançar um sistema\nque usa a tua marca.",
+  "finalLead": "Compartilhe os recursos que você precisa, produtos de referência e requisitos de marca. Confirmaremos a seleção do Sistema Base e a configuração da Marca, Características e Domínios juntos.",
+  "ctaFinalSecondary": "Ver todos SOLUÇÕES →",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

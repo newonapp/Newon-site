@@ -1,0 +1,479 @@
+{
+  "seoTitle": "UX AUDIT | Newon Geschäft",
+  "metaDescription": "Audit Key App und Webflows und UI - Usability-Probleme, Conversion- und Drop-Off-Punkte sowie priorisierte Aktionselemente in einem Audit-Bericht. Newon UX AUDIT.",
+  "crumbBusiness": "UNTERNEHMEN",
+  "crumbServices": "DIENSTLEISTUNGEN",
+  "crumbResearch": "FORSCHUNG",
+  "crumbHere": "UX AUDIT",
+  "eyebrow": "UX AUDIT",
+  "subEyebrow": "FORSCHUNG",
+  "headline": "Sie sehen die Probleme.\nNicht, wo man anfangen soll.",
+  "lead": "Wir überprüfen Kernflüsse und UI - Anmeldung, Onboarding, Kauf, Einstellungen und mehr. Usability-Probleme, Informationsstruktur und Conversion- oder Drop-Off-Punkte werden in einen Auditbericht, eine Problemliste und priorisierte Aktionselemente strukturiert, die Ihr Team ausführen kann.",
+  "ctaPrimary": "UX Prüfungsanfrage →",
+  "ctaSecondary": "Siehe Audit Flow ↓",
+  "meta": [
+    {
+      "k": "DIENST",
+      "v": "Ux audit"
+    },
+    {
+      "k": "BESTES",
+      "v": "Conversion und Usability behebt"
+    },
+    {
+      "k": "TIMELIN",
+      "v": "Normalerweise 1–2 Wochen"
+    },
+    {
+      "k": "PREIS",
+      "v": "Ab 300.000"
+    }
+  ],
+  "overviewLabel": "ÜBERSICHT",
+  "overviewTitle": "Verbesserungen sind notwendig.\nDie Priorität ist nicht klar.",
+  "overviewBody": [
+    "Conversion, Churn, Support-Tickets, Rezensionen - Signale, dass UX-Probleme existieren, sind oft vorhanden. Was schwieriger ist, ist zu sehen, welcher Fluss, UI oder Informationsstruktur die Reibung verursacht.",
+    "Teams teilen Meinungen, dass etwas unangenehm ist, aber ohne Probleme nach Kernfluss und Priorität zu klassifizieren, wiederholen sich Verbesserungsdiskussionen oder werden blockiert.",
+    "UX AUDIT beginnt mit der Definition von Scope- und Core-Flows. Anschließend überprüfen wir Bildschirme, Abläufe und Informationsstruktur, klassifizieren Probleme und priorisieren Aktionselemente nach Wirkung und Aufwand."
+  ],
+  "problemsLabel": "PROBLEM",
+  "problemsTitle": "Hilfreich, wenn Sie sich diesen Situationen stellen.",
+  "problems": [
+    {
+      "n": "01 01",
+      "t": "KONVERSIONSDROP",
+      "d": "Die Konvertierung von Anmeldung, Kauf oder Anfrage liegt unter den Erwartungen.\nSie benötigen eine strukturierte Ansicht darüber, wo Benutzer absteigen."
+    },
+    {
+      "n": "02",
+      "t": "EINBAU DER FRICTION",
+      "d": "Benutzer bleiben beim ersten Gebrauch oder beim Onboarding stecken.\nSchritte, Kopie oder UI sind unklar oder zu schwer."
+    },
+    {
+      "n": "03",
+      "t": "KATTERIERTE FEEDBACK",
+      "d": "Support, Bewertungen und interne Notizen existieren, aber Probleme sind nicht organisiert.\nDie gleiche Reibung wiederholt sich ohne Priorität."
+    },
+    {
+      "n": "04",
+      "t": "FLOW COMPLEXION",
+      "d": "Zu viele Schritte, um Kernaufgaben zu erledigen.\nNavigation oder Informationsstruktur fühlt sich verwirrend an."
+    },
+    {
+      "n": "05",
+      "t": "MOBILE LÜCKE",
+      "d": "Mobile oder responsive Erfahrung underperforms.\nDrop-off- oder Fehlermuster unterscheiden sich vom Desktop."
+    },
+    {
+      "n": "06",
+      "t": "VORREGELUNG",
+      "d": "Vor dem Redesign, der Erneuerung oder einer größeren Feature-Änderung,\n, benötigen Sie eine Diagnose der aktuellen Erfahrung."
+    }
+  ],
+  "baLabel": "VOR / NACH",
+  "baTitle": "Zerstreute Reibung vs\nstrukturierte Fixliste",
+  "beforeLabel": "VOR",
+  "afterLabel": "NACH",
+  "before": [
+    "Viele \"das ist unangenehm\" Meinungen, aber verstreute Beweise",
+    "Keine Vereinbarung darüber, welcher Fluss das Kernproblem ist",
+    "Verbesserungsprioritätsverschiebungen durch Erfüllung",
+    "Kein Diagnosedokument vor der Neugestaltung oder Entwicklung von"
+  ],
+  "after": [
+    "Core-Flows und Audit-Scope definierte erste",
+    "-Flow-, UI- und IA-Probleme klassifizierte",
+    "Priorisierte Aktionspunkte nach Auswirkungen",
+    "Verbunden mit Design-, Entwicklungs- und Experimentdiskussionen"
+  ],
+  "capsLabel": "KAPAZITÄTEN",
+  "capsTitle": "Wir strukturieren das Audit\nIhre Erfahrung Diagnose Bedürfnisse.",
+  "caps": [
+    {
+      "t": "UMFANG UND ZIELE",
+      "d": "Definieren Sie Auditzweck und Kernflüsse.\nVerbinden Sie sich mit Conversion-, Churn- und Support-Zielen."
+    },
+    {
+      "t": "STRÖMUNGSABBILDUNG",
+      "d": "Map Signup, Onboarding, Kauf, Einstellungen und andere wichtige Reisen.\nStrukturieren Sie Schritte, Zweige und Drop-off-Punkte."
+    },
+    {
+      "t": "HEURISTISCHE ÜBERPRÜFUNG",
+      "d": "Überprüfung anhand der Usability-Prinzipien — Konsistenz, Feedback, Fehlerprävention.\nNotieren Sie Probleme nach Bildschirm und Fluss."
+    },
+    {
+      "t": "UI & IA Überprüfung",
+      "d": "Überprüfen Sie Layout, Hierarchie, Labels, CTAs und Informationsstruktur.\nDokumentieren Sie kognitive Belastung und Verwirrungspunkte."
+    },
+    {
+      "t": "FRICTIONSANALYSE",
+      "d": "Analysieren Sie unnötige Schritte, Eingabelast, Wartezustände und Fehlererfahrungen.\nPriorisieren Sie Reibungspunkte."
+    },
+    {
+      "t": "MOBILE UND RESPONSIVE",
+      "d": "Audit mobile, Tablet und responsive Erfahrung.\nFügen Sie Berührungs-, Lesbarkeits- und Navigationsprobleme hinzu."
+    },
+    {
+      "t": "EVIDENZ VERBINDUNG",
+      "d": "Verbinden Sie Support, Reviews, Daten und internes Feedback zu Problemen.\nDokument Hypothesen und Beobachtungen zusammen."
+    },
+    {
+      "t": "AKTIVITÄT",
+      "d": "Rangieren Sie Themen nach Wirkung und Anstrengung.\nTrennen Sie schnelle Gewinne von strukturellen Verbesserungen."
+    }
+  ],
+  "sourcesLabel": "AUDITINFORMATIONEN",
+  "sourcesTitle": "Wir kombinieren die Materialien und Beobachtungen, die Ihre Audit-Anforderungen erfüllen.",
+  "sourcesNote": "Die tatsächlichen Eingaben variieren je nach Zugriff (Stufe, Konten, Daten) pro Projekt.",
+  "sources": [
+    "Benutzerströme",
+    "Anmelde- und Onboarding-Bildschirme",
+    "Kauf, Zahlung & Anfrage fließt",
+    "Dashboard, Einstellungen & Administrator UI",
+    "Mobile und responsive UI",
+    "Support & Request Logs",
+    "App & Web Review Feedback",
+    "Nutzungs- & Drop-off-Daten",
+    "Internes QA & Feedback",
+    "Wettbewerbsfähige Benchmarks",
+    "Grundlegende Zugänglichkeitsprüfung",
+    "Heatmaps & Sessions (falls vorhanden)"
+  ],
+  "useLabel": "VERWENDUNGSFÄLLE",
+  "useTitle": "Fragen, die wir beantworten können.",
+  "useBadge": "Beispiele für Auditthemen",
+  "useCases": [
+    {
+      "t": "KONVERSIONSPfad",
+      "d": "Finden Sie heraus, wo Anmelde-, Kauf- oder Anfragepfade brechen.\nStruktur Drop-off und Pre-Drop-Bildschirme."
+    },
+    {
+      "t": "AUFBAU UX",
+      "d": "Überprüfen Sie First-Use, Tutorial und Initial Setup.\nIdentifizieren Sie Ursachen für New-User-Abwanderung."
+    },
+    {
+      "t": "CHECKOUT & FORMULARE",
+      "d": "Überprüfen Sie Eingabelast, Fehler und Schritte in Zahlungs-, Buchungs- oder Anfrageformularen.\nVerbesserungen der Oberflächenvervollständigung."
+    },
+    {
+      "t": "NAV UND IA",
+      "d": "Auditmenü, Informationsstruktur und Navigationspfade.\nDokumentenauffindbarkeit, Duplizierung und Tiefenprobleme."
+    },
+    {
+      "t": "MOBILE ERFAHRUNG",
+      "d": "Überprüfen Sie nur mobile und responsive UI Usability.\nTouch-Ziele, Lesbarkeit, Scroll-Probleme."
+    },
+    {
+      "t": "FEHLER & EMPTISCHE STAATEN",
+      "d": "Überprüfen Sie Fehler-, Leer-, Lade- und Berechtigungszustände.\nDokumentieren Sie Ausnahmepfade, bei denen Benutzer stecken bleiben."
+    },
+    {
+      "t": "VORREGELUNG",
+      "d": "Diagnose aktuellen UX vor der Erneuerung oder Rebranding.\nNachweis von Umfang und Priorität."
+    },
+    {
+      "t": "ÜBERPRÜFUNG DER POSTLAUNCH",
+      "d": "Re-Audit nach dem Start mit Conversion, Support und Reviews.\nTrennen Sie schnelle Gewinne von strukturellen Fixes."
+    }
+  ],
+  "flowLabel": "BEISPIEL WORKFLOW",
+  "flowTitle": "Von der Flussdefinition zu den Aktionspunkten",
+  "flow": [
+    {
+      "n": "01 01",
+      "t": "DEFIN",
+      "d": "Definieren Sie Auditzweck, Kernflüsse und Umfang.\nKlären Sie, was Sie zu verbessern versuchen.",
+      "examples": [
+        "Ziele",
+        "Kernströme",
+        "Anwendungsbereich",
+        "Leistungen"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "KARTE",
+      "d": "Map User Journeys und Screenflows.\nStrukturieren Sie Schritte, Zweige und Drop-off-Punkte.",
+      "examples": [
+        "Anmeldung",
+        "Onboarding",
+        "Kauf",
+        "Einstellungen"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "ÜBERPRÜFUNG",
+      "d": "Auditflows, UI und Informationsstruktur.\nNotieren Sie Probleme nach Bildschirm und Schritt.",
+      "examples": [
+        "Heuristik",
+        "UI",
+        "IA",
+        "Mobil"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PRIORITÄT",
+      "d": "Rangieren Sie Themen nach Wirkung und Anstrengung.\nTrennen Sie schnelle Gewinne von strukturellen Verbesserungen.",
+      "examples": [
+        "P1",
+        "P2",
+        "P3",
+        "Schneller Sieg"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LIEFERER",
+      "d": "Vorlage von Prüfberichten und Maßnahmenpunkten.\nVerbinden Sie sich mit Design-, Entwicklungs- und Experimentdiskussionen.",
+      "examples": [
+        "Prüfbericht",
+        "Ausgabeliste",
+        "Aktionspunkte"
+      ]
+    }
+  ],
+  "reportLabel": "AUSGANGSLEISTUNG",
+  "reportTitle": "Outputs strukturiert für sofortige Verbesserungsarbeit.",
+  "reportLead": "Die Zusammensetzung variiert je nach Projektumfang. Unten sind gemeinsame Elemente.",
+  "reportMockStatus": "UX · ENTWURF",
+  "reportMockK": "UX AUDIT ZUSAMMENFASSUNG",
+  "reportMockT": "Kernströme, Themen und Priority Briefing",
+  "reportItems": [
+    "Zusammenfassung",
+    "Prüfungsumfang",
+    "Flussübersicht",
+    "Ausgabeliste",
+    "Schweregrad und Priorität",
+    "UI & IA Notizen",
+    "Mobile Feststellungen",
+    "Quick Wins",
+    "Empfohlene Aktionen",
+    "Anhang Bildschirme"
+  ],
+  "dashTitle": "Teilen Sie Themen und Prioritäten in einer Ansicht.",
+  "dashLead": "Flow-Level-Probleme, Schweregrad und Aktionselemente beschleunigen die Verbesserungsdiskussionen.",
+  "dashNote": "Problemklassifizierung und Prioritätskriterien variieren je nach Projektziel und Umfang.",
+  "dashMetrics": [
+    "Flüsse",
+    "Themen",
+    "Aktionen",
+    "Kritisch"
+  ],
+  "dashFilters": [
+    "Alle",
+    "P1",
+    "P2",
+    "Schneller Sieg"
+  ],
+  "aiLabel": "SYNTHESE",
+  "aiTitle": "Von vielen Bildschirmen und Notizen\nzu umsetzbaren Themen.",
+  "aiLead": "Wenn sich Protokolle, Bewertungen, QA-Notizen und Multi-Screen-Audits häufen, klassifizieren, dedupen und fassen wir nach Muster und Priorität für eine schnellere Überprüfung zusammen.",
+  "aiExamples": [
+    "Extrahieren Sie wiederkehrende Support- und Review-Probleme",
+    "Klassifizierung von Emissionen nach Stromflüssen",
+    "Strenge und Priority Ranking",
+    "Separate Quick Wins von strukturellen Fixes",
+    "Vergleichen Sie Mobile vs Desktop Ergebnisse",
+    "Strukturauditbericht und Maßnahmenpositionen"
+  ],
+  "aiNote": "Die endgültige Interpretations- und Verbesserungspriorität wird mit Ihnen überprüft.",
+  "delLabel": "LIEFERBARE",
+  "delTitle": "Was Sie erhalten, wenn das Projekt",
+  "delLead": "abschließt Wir liefern die folgenden Artikel nach Bedarf für Ihren Umfang.",
+  "deliverables": [
+    "UX Auditbericht",
+    "Flusskarte",
+    "Ausgabeliste",
+    "Prioritätsmatrix",
+    "Aktionspunkte",
+    "Quick Wins Zusammenfassung",
+    "UI & IA Notizen",
+    "Zusammenfassung",
+    "Redesign Input Brief (fakultativ)"
+  ],
+  "processLabel": "PROZESS",
+  "processTitle": "Vom Umfang bis zur Lieferung.",
+  "process": [
+    {
+      "n": "01 01",
+      "t": "ENTWICKLUNG",
+      "d": "Bestätigung des Auditzwecks und des Geschäftskontexts.\nVerstehen Sie Conversion, Churn und Support Bedenken.",
+      "examples": [
+        "Ziele",
+        "KPI",
+        "Stakeholder",
+        "Zeitleiste"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "UMFANG",
+      "d": "Definieren Sie Kernflüsse, Bildschirmbereich und Zugriffsmethode.\nVereinbaren Sie Staging, Konten und Datenumfang.",
+      "examples": [
+        "Flüsse",
+        "Bildschirme",
+        "Geräte",
+        "Materialien"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "AUDIT",
+      "d": "Review-Flows, UI und Informationsstruktur.\nNotieren Sie Probleme nach Bildschirm und Schritt.",
+      "examples": [
+        "Heuristik",
+        "UI",
+        "Mobil",
+        "Nachweise"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ANALYSE",
+      "d": "Klassifizieren, Dedupe und Priorisieren von Problemen.\nAuswirkungen und Implementierungsaufwand verbinden.",
+      "examples": [
+        "Einstufung",
+        "P1–P3",
+        "Schneller Sieg",
+        "Muster"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ENTWURF",
+      "d": "Entwurf des Auditberichts und Maßnahmenpunkte.\nBauen Sie das Skelett der wichtigsten Erkenntnisse.",
+      "examples": [
+        "Zusammenfassung",
+        "Themen",
+        "Aktionen"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "ÜBERPRÜFUNG",
+      "d": "Überprüfen Sie gemeinsam die wichtigsten Themen und Prioritäten.\nStellen Sie Lücken, Überlastung und Machbarkeit ein.",
+      "examples": [
+        "Feedback",
+        "Verfeinerung",
+        "Priorität"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "LIEFERER",
+      "d": "Liefern Sie endgültige Dokumente und Aktionspunkte.\nVerbinden Sie sich mit Design, Dev und Experimentieren der nächsten Schritte.",
+      "examples": [
+        "Abschlussbericht",
+        "Aktionen",
+        "Nächste Schritte"
+      ]
+    }
+  ],
+  "scopeLabel": "ANWENDUNGSBEREICH",
+  "scopeTitle": "Wie man über die Komplexität von Projekten denkt.",
+  "scopeLead": "Kein festes Paket. Der Umfang wird durch Auditziel, Flow Count und Geräteabdeckung festgelegt.",
+  "scopes": [
+    {
+      "t": "KERNSTROMPRÜFUNG",
+      "items": [
+        "1–2 Kernströme",
+        "Desktop oder mobiler Fokus",
+        "Ausgabeliste + Priorität",
+        "Zusammenfassung des Auditberichts",
+        "Quick Wins Vorschlag"
+      ]
+    },
+    {
+      "t": "VOLLSTÄNDIG UX AUDIT",
+      "items": [
+        "3-5 Kernströme",
+        "Desktop + Mobil",
+        "Flusskarte + Ausgabeliste",
+        "Prioritätsmatrix",
+        "Aktionspunkte + Zusammenfassung der Darstellung"
+      ]
+    },
+    {
+      "t": "ZOLLAUDIT",
+      "items": [
+        "Mehrere Produkte oder Kanäle",
+        "Daten- und Support-verknüpfte Analyse",
+        "Zugänglichkeit und Benchmark-Einbeziehung",
+        "Redesign Input Brief",
+        "DESIGN und BUILD Verknüpfung"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELIN",
+  "timeTitle": "verlinken Timeline hängt vom Umfang ab.",
+  "timeLead": "Die Dauer variiert je nach Flow Count, Geräteabdeckung und Umgebungszugriff.",
+  "timelines": [
+    {
+      "t": "Kernstromprüfung",
+      "d": "vergleichen Über 1 Woche"
+    },
+    {
+      "t": "Vollständiges UX Audit",
+      "d": "Über 1–2 Wochen"
+    },
+    {
+      "t": "Benutzerdefiniertes Audit",
+      "d": "Über 2-3 Wochen · benutzerdefiniertes Angebot"
+    }
+  ],
+  "priceLabel": "PROJEKTKOSTEN",
+  "priceTitle": "Zitiert für den Umfang, den Sie benötigen.",
+  "priceName": "UX AUDIT",
+  "priceValue": "Von <0xE2><0x82><0xA9>200.000",
+  "priceFactorsLabel": "Preisfaktoren",
+  "priceFactors": [
+    "Anzahl der geprüften Stromflüsse",
+    "Bildschirm und Funktionsumfang",
+    "Desktop und mobile Inklusion",
+    "Zugang zu Umgebungen (Stufen, Konten)",
+    "Daten- und Support-Linkage",
+    "Lieferbares Format",
+    "Präsentation oder Workshop",
+    "Rush Timeline"
+  ],
+  "priceNote": "Endgültige Zitate werden nach Auditziel, Umfang und Zugriffsmethode bestätigt.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faqs": [
+    {
+      "q": "Welche Produkte oder Dienstleistungen können Sie auditieren?",
+      "a": "Web, Apps, SaaS, Commerce, Buchung und Anfrageströme - je nach Ziel und zugänglichem Umfang. Wir bestätigen fit vor dem Kickoff."
+    },
+    {
+      "q": "Beinhaltet dies Benutzertests?",
+      "a": "UX AUDIT ist eine Expertenbewertung (Heuristiken, Flüsse, UI). Benutzertests können bei Bedarf mit CONSUMER RESEARCH hinzugefügt oder verknüpft werden."
+    },
+    {
+      "q": "Wie sehen Deliverables aus?",
+      "a": "UX Audit Report, Issue List, Priority Matrix, Action Items — Dokument und Karte fokussiert. Zusammenfassung der Darstellung bei Bedarf verfügbar."
+    },
+    {
+      "q": "Benötigen Sie Staging oder Account-Zugriff?",
+      "a": "Wir bevorzugen die reale Nutzungsumgebung, wenn möglich. Wenn der Zugang eingeschränkt ist, arbeiten wir auf öffentlichen Bildschirmen und bereitgestellten Materialien."
+    },
+    {
+      "q": "Kann sich das mit Design oder Entwicklung verbinden?",
+      "a": "Ja. Auditergebnisse können Redesign, UI-Verbesserungen und BUILD- oder MVP-Priorität liefern."
+    },
+    {
+      "q": "Wie unterscheidet sich das von CONSUMER RESEARCH?",
+      "a": "UX AUDIT überprüft Produkt-, Bildschirm- und Flow-Usability. Für Benutzerbedürfnisse und Verhaltensforschung, Link Umfang mit CONSUMER RESEARCH."
+    },
+    {
+      "q": "Wie wird mit Vertraulichkeit umgegangen?",
+      "a": "Materialien werden nur im vereinbarten Umfang verwendet. NDA bei Bedarf verfügbar."
+    }
+  ],
+  "finalLabel": "START A PROJEKT",
+  "finalTitle": "Beginnen Sie mit einem klaren\nVerbesserungsliste.",
+  "finalLead": "Wenn Conversion, Churn oder Usability ein Problem darstellen, teilen Sie uns mit, was zu auditieren ist und wie Sie die Ergebnisse strukturieren möchten.",
+  "ctaFinalSecondary": "Alle Forschen ansehen",
+  "ctaFinalSecondaryHref": "../research/"
+}

@@ -1,0 +1,510 @@
+{
+  "seoTitle": "WEB DEVELOPMENT | Newon Negocios",
+  "metaDescription": "Sitios web de acabado superior para marcas y servicios — sitios de empresa, landing pages y web de productos desde la estructura hasta el diseño, construcción y lanzamiento. Newon WEB DEVELOPMENT.",
+  "crumbBusiness": "NEGOCIO",
+  "crumbServices": "SERVICIOS",
+  "crumbBuild": "CONSTRUIR",
+  "crumbHere": "WEB",
+  "eyebrow": "WEB DEVELOPMENT",
+  "subEyebrow": "CONSTRUIR",
+  "headline": "Web pulida para\nmarcas y servicios.",
+  "lead": "Desde sitios de marca y páginas de aterrizaje hasta web de productos y sitios de servicios: diseñamos y construimos experiencias digitales acordes con tu objetivo. Arquitectura de información, interfaz de usuario, implementación responsiva, SEO, conexiones de consultas y despliegue en un trayecto continuo.",
+  "ctaPrimary": "Consulta de proyecto de sitio web →",
+  "ctaSecondary": "Ver el alcance ↓",
+  "meta": [
+    {
+      "k": "SERVICIO",
+      "v": "Desarrollo Web"
+    },
+    {
+      "k": "MEJOR PARA",
+      "v": "Construcciones web de marca y servicio"
+    },
+    {
+      "k": "CRONOGRAMA",
+      "v": "Usualmente 2–5 semanas"
+    },
+    {
+      "k": "PRECIO",
+      "v": "Desde ₩700,000"
+    }
+  ],
+  "overviewLabel": "RESUMEN",
+  "overviewTitle": "Tienes un sitio.\nLa marca no se muestra.",
+  "overviewBody": [
+    "Muchos equipos tienen un sitio web, pero la marca y la oferta no se leen de un vistazo. Diseños tipo plantilla, vistas móviles rotas y caminos que nunca llegan a consulta o conversión son comunes.",
+    "Un sitio web no es un vertedero de información: es una experiencia que ayuda a los visitantes a entender la marca y dar el siguiente paso. Estructura, tipografía, espaciado, CTA, diseño responsivo y SEO deben funcionar juntos.",
+    "WEB DEVELOPMENT comienza definiendo el propósito del sitio y las acciones del visitante. Luego diseñamos la arquitectura de la información y la interfaz de usuario acorde con la marca, y entregamos un sitio de acabado superior incluyendo construcción responsiva, cableado de consultas y lanzamiento."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Útil cuando enfrentas estas situaciones.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "SIN PRESENCIA DE MARCA",
+      "d": "Tienes un sitio pero la marca y el servicio no se perciben.\nEl diseño se siente como una plantilla que necesita reconstruirse."
+    },
+    {
+      "n": "02",
+      "t": "MÓVIL ROTOS",
+      "d": "El móvil se siente roto o difícil de escanear.\nLa estructura responsive y la jerarquía de información necesitan un reinicio."
+    },
+    {
+      "n": "03",
+      "t": "SIN CAMINO DE CONVERSIÓN",
+      "d": "La historia se detiene en la introducción: los visitantes nunca llegan a hacer consultas, aplicar o explorar.\nNecesitas diseño de flujo de conversión."
+    },
+    {
+      "n": "04",
+      "t": "CONTENIDO DISPERSO",
+      "d": "Muchas páginas pero roles y prioridades poco claros.\nLa arquitectura de la información necesita organización."
+    },
+    {
+      "n": "05",
+      "t": "SITIO DESACTUALIZADO",
+      "d": "Necesitas separar lo que se debe mantener de lo que se debe reconstruir.\nSe requiere renovación o reconstrucción completa."
+    },
+    {
+      "n": "06",
+      "t": "LANZAMIENTO BLOQUEADO",
+      "d": "El diseño existe pero la implementación, despliegue o conexión de dominio está atascada.\nNecesitas un solo socio durante el lanzamiento."
+    }
+  ],
+  "baLabel": "ANTES / DESPUÉS",
+  "baTitle": "Volcado de información vs\nun sitio donde la marca se lea",
+  "beforeLabel": "ANTES",
+  "afterLabel": "DESPUÉS",
+  "before": [
+    "Diseño tipo plantilla y tono inconsistente",
+    "Problemas de diseño y legibilidad en móvil",
+    "Diferentes reglas de botones y secciones por página",
+    "No hay camino de la historia a la consulta o conversión"
+  ],
+  "after": [
+    "Propósito y acciones del visitante definidas primero",
+    "Arquitectura de información y UI acorde a la marca",
+    "Diseño responsive legible en escritorio y móvil",
+    "Consulta, CTA, SEO y despliegue conectados"
+  ],
+  "capsLabel": "CAPACIDADES",
+  "capsTitle": "Realizamos la construcción web\ncomo un compromiso estructurado.",
+  "caps": [
+    {
+      "t": "OBJETIVO & AI",
+      "d": "Definir propósito del sitio, roles de página y prioridad de contenido.\nConstruir la estructura que mantenga a los visitantes orientados."
+    },
+    {
+      "t": "DISEÑO UX / UI",
+      "d": "Combinar tono de marca, tipografía, espaciado y componentes.\nLucir como tu marca — no un tema."
+    },
+    {
+      "t": "CONSTRUCCIÓN RESPONSIVE",
+      "d": "Implementar diseños que se mantengan en los dispositivos principales.\nProteger CTA principal con estructura mobile-first."
+    },
+    {
+      "t": "PÁGINAS PRINCIPALES",
+      "d": "Completa el hogar, sobre, servicios, consulta — lo que requiera el objetivo.\nAlinea secciones y jerarquía de contenido."
+    },
+    {
+      "t": "TORMENTO DE CONVERSIÓN",
+      "d": "Enviar formularios, correos electrónicos y consultas empresariales a los siguientes pasos reales.\nDesign CTA y flujos de conversión."
+    },
+    {
+      "t": "SEO y META",
+      "d": "Incluye ajustes básicos de búsqueda y compartir — títulos, descripciones, Open Graph.\nEstablece meta y estructura a nivel de página."
+    },
+    {
+      "t": "CMS y OPS",
+      "d": "Cuando sea necesario, construye estructuras que permitan copias posteriores y actualizaciones de imagen.\nScope CMS según cómo quieras operar."
+    },
+    {
+      "t": "DESPLIEGUE & LANZAMIENTO",
+      "d": "Control de calidad entre navegadores y dispositivos, luego desplegar.\nEntregar notas de conexión de dominio y operativas."
+    }
+  ],
+  "sourcesLabel": "APORTACIONES AL PROYECTO",
+  "sourcesTitle": "Combinamos los datos que tu proyecto necesita.",
+  "sourcesNote": "Las entradas reales varían según el sitio existente, los activos disponibles y el material de la marca.",
+  "sources": [
+    "Descripción de la marca y del servicio",
+    "Sitio y contenido existentes",
+    "Logotipo y activos visuales",
+    "Directrices de marca e interfaz",
+    "Sitios de referencia y referencias",
+    "Requisitos de página y menú",
+    "Indagación y metales de conversión",
+    "SEO y dirección de palabras clave",
+    "Estructura multilingüe",
+    "Legal, privacidad, términos",
+    "Entorno de alojamiento y dominio",
+    "Planes de expansión futura"
+  ],
+  "useLabel": "CASOS DE USO",
+  "useTitle": "Sitios web que podemos construir.",
+  "useBadge": "Ejemplos de tipos de sitios",
+  "useCases": [
+    {
+      "t": "EMPRESA / ESTUDIO",
+      "d": "Una web corporativa clara que explique quién eres y cómo trabajas."
+    },
+    {
+      "t": "SITIO DE LA MARCA",
+      "d": "El mundo y el tono primero: cuando la marca debe liderar sobre el producto."
+    },
+    {
+      "t": "EMBARCADERO DE SERVICIO",
+      "d": "Una oferta, una historia — centrada en el valor y el CTA."
+    },
+    {
+      "t": "PORTAFOLIO / WEB DE CASOS",
+      "d": "Trabajo y proceso presentados con claridad y persuasión."
+    },
+    {
+      "t": "CENTRO DE CONSULTAS / EMPLEO",
+      "d": "Páginas principales enfocadas en asociaciones, carreras y conversión."
+    },
+    {
+      "t": "WEB DE PRODUCTO",
+      "d": "Introducción al servicio conectando características, precios y consultas."
+    },
+    {
+      "t": "SITIO MULTILINGÜE",
+      "d": "Web multilingüe con estructura de idiomas y UX de cambio de idioma."
+    },
+    {
+      "t": "RENOVACIÓN DEL SITIO",
+      "d": "Renovación separando lo que se mantiene de lo que se reconstruye."
+    }
+  ],
+  "flowLabel": "FLUJO DE TRABAJO DE EJEMPLO",
+  "flowTitle": "Desde la estructura hasta el lanzamiento",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINIR",
+      "d": "Alinear en el resultado: historia de la marca, captura de leads o explicación del producto.\nDefinir acciones del visitante y criterios de éxito.",
+      "examples": [
+        "Objetivo",
+        "Audiencia",
+        "CTA",
+        "KPIs"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ESTRUCTURA",
+      "d": "Definir mapa de páginas, secciones y necesidades de contenido.\nConfirmar arquitectura de la información y navegación.",
+      "examples": [
+        "Mapa del sitio",
+        "AI",
+        "Secciones",
+        "Contenido"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DISEÑO",
+      "d": "Confirmar pantallas clave, sistema visual y tipografía.\nAlinear tono de la marca y reglas de componentes.",
+      "examples": [
+        "UI",
+        "Tipografía",
+        "Componentes",
+        "Revisión"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONSTRUCCIÓN",
+      "d": "Implementar web responsiva con interacciones y flujo de consultas.\nIncluir SEO y configuración de meta.",
+      "examples": [
+        "Frontend",
+        "Responsivo",
+        "Formularios",
+        "SEO"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LANZAMIENTO",
+      "d": "Chequeo de dispositivos, despliegue y notas de operación.\nSoporte para conexión de dominio.",
+      "examples": [
+        "QA",
+        "Desplegar",
+        "Dominio",
+        "Entrega"
+      ]
+    }
+  ],
+  "reportLabel": "SALIDA",
+  "reportTitle": "Los entregables son un sitio web operativo y documentos de soporte.",
+  "reportLead": "La composición varía según el alcance del proyecto. A continuación se presentan los elementos comunes.",
+  "reportMockStatus": "WEB · ESTRUCTURA",
+  "reportMockK": "ESPECIFICACIÓN DEL SITIO WEB",
+  "reportMockT": "Páginas, secciones, flujo de conversión",
+  "reportItems": [
+    "Objetivos y audiencia del sitio",
+    "Mapa del sitio / IA",
+    "Lista de páginas y secciones",
+    "Resumen de UX / UI",
+    "Puntos de ruptura responsivos",
+    "Configuración de formularios y CTA",
+    "SEO y configuración de metadatos",
+    "CMS / Notas de operación",
+    "Lista de verificación de QA",
+    "Notas de lanzamiento y entrega"
+  ],
+  "dashTitle": "Compartir la estructura del sitio y el alcance de las páginas en una vista.",
+  "dashLead": "Páginas, secciones, idiomas e integraciones juntos aceleran la concordancia del alcance y las discusiones de construcción.",
+  "dashNote": "La composición de la página y el rango de funciones varían según los objetivos del sitio y el presupuesto.",
+  "dashMetrics": [
+    "Páginas",
+    "Secciones",
+    "Idiomas",
+    "Integraciones"
+  ],
+  "dashFilters": [
+    "Todos",
+    "Núcleo",
+    "Sub",
+    "Global"
+  ],
+  "aiLabel": "ACELERACIÓN",
+  "aiTitle": "Automatiza la repetición.\nConcéntrate en el diseño y la construcción.",
+  "aiLead": "La estructuración de contenido, borradores de secciones, metadatos SEO y listas de verificación de QA pueden ser asistidos por IA para mayor rapidez, mientras las personas se enfocan en IA, UI de la marca e implementación principal.",
+  "aiExamples": [
+    "Borrador de la estructura de páginas y secciones",
+    "Organizar la jerarquía de contenido y la dirección del texto",
+    "Borrador de títulos y descripciones SEO",
+    "Listas de verificación de QA responsivas",
+    "Organización de la estructura multilingüe",
+    "Borradores de documentos de operaciones y entrega"
+  ],
+  "aiNote": "Las decisiones finales sobre estructura, diseño y calidad se confirman con su equipo de proyecto.",
+  "delLabel": "ENTREGABLES",
+  "delTitle": "Lo que recibe al completar el proyecto",
+  "delLead": "Entregamos los elementos a continuación según sea necesario para su alcance.",
+  "deliverables": [
+    {
+      "title": "Documento de Mapa del sitio / IA",
+      "body": "Estructura del sitio y roles de página, claramente mapeados."
+    },
+    {
+      "title": "Pantallas de teclas diseñadas",
+      "body": "UX/UI para las páginas que más importan."
+    },
+    {
+      "title": "Construcción web responsiva",
+      "body": "Una versión que se mantenga legible en todos los dispositivos."
+    },
+    {
+      "title": "Forma y conexiones con la CTA",
+      "body": "Formularios y CTAs conectados a acciones reales de seguimiento."
+    },
+    {
+      "title": "Configuración básica de SEO",
+      "body": "Títulos, descripciones y lo básico comparten meta."
+    },
+    {
+      "title": "Archivos de diseño UX / UI",
+      "body": "Archivos de diseño y componentes clave."
+    },
+    {
+      "title": "Entorno desplegado",
+      "body": "Un sitio desplegado en vivo y accesible."
+    },
+    {
+      "title": "Configuración de CMS (si está alcanzado)",
+      "body": "Estructura de edición de contenido cuando se incluye en el alcance."
+    },
+    {
+      "title": "Guía de Lanzamiento y Operaciones",
+      "body": "Una breve guía para el lanzamiento y operaciones en curso."
+    }
+  ],
+  "processLabel": "PROCESO",
+  "processTitle": "Desde la definición del objetivo hasta el lanzamiento.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCUBRIMIENTO",
+      "d": "Confirma el propósito del sitio, visitantes, activos actuales, restricciones.\nEntiende los criterios de éxito y los objetivos de conversión.",
+      "examples": [
+        "Objetivo",
+        "Público",
+        "Activos",
+        "KPIs"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ESTRUCTURA",
+      "d": "Define el mapa de la página, las secciones y las necesidades de contenido.\nAcuerda la arquitectura de la información y la navegación.",
+      "examples": [
+        "Mapa del sitio",
+        "IA",
+        "Secciones",
+        "Contenido"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DISEÑO",
+      "d": "Confirma pantallas de tecla, sistema visual, tipografía.\nAlinea el tono y los componentes de la marca.",
+      "examples": [
+        "UI",
+        "Tipo",
+        "Componentes",
+        "Reseña"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONSTRUIR",
+      "d": "Implementar web y wire consulty y CTA responsivos.\nIncluye SEO, meta e interacciones.",
+      "examples": [
+        "Frontend",
+        "Formas",
+        "SEO",
+        "Responsive"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "QA",
+      "d": "Verificar el diseño y el flujo en navegadores y dispositivos.\nVerificar rutas de conversión y accesibilidad.",
+      "examples": [
+        "Escritorio",
+        "Móvil",
+        "Formularios",
+        "Correcciones"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "LANZAMIENTO",
+      "d": "Implementar y conectar el dominio.\nProporcionar orientación sobre operación y actualización de contenido.",
+      "examples": [
+        "Implementar",
+        "Dominio",
+        "Acceso",
+        "Guía"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "ENTREGA",
+      "d": "Entregar documentación y guía de operación.\nConectar el camino para futuras páginas y funciones.",
+      "examples": [
+        "Documentos",
+        "CMS",
+        "Soporte",
+        "Fase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "NIVELES DE ALCANCE",
+  "scopeTitle": "Cómo pensar sobre la complejidad de un proyecto web.",
+  "scopeLead": "No es un paquete fijo. El alcance se define por el número de páginas, la profundidad del diseño y el rango multilingüe o de integración.",
+  "scopes": [
+    {
+      "t": "PÁGINA ÚNICA",
+      "items": [
+        "Página de aterrizaje o campaña única",
+        "5–8 secciones principales",
+        "Implementación adaptable",
+        "Conexión de formularios y CTA",
+        "SEO básico e implementación"
+      ]
+    },
+    {
+      "t": "SITIO MULTIPÁGINA",
+      "items": [
+        "Inicio, acerca de, servicios, consulta — múltiples páginas",
+        "Interfaz personalizada acorde a la marca",
+        "Arquitectura de información y navegación",
+        "Conexiones de consulta y conversión",
+        "SEO, implementación, soporte de dominio"
+      ]
+    },
+    {
+      "t": "WEB PERSONALIZADA",
+      "items": [
+        "Multilingüe, CMS, integraciones",
+        "IA compleja y funciones personalizadas",
+        "Renovación y migración",
+        "Expansión y diseño de Fase 2",
+        "Alcance separado"
+      ]
+    }
+  ],
+  "timeLabel": "CRONOGRAMA",
+  "timeTitle": "El cronograma depende del alcance.",
+  "timeLead": "La duración varía según el número de páginas, profundidad del diseño, preparación de contenido e inclusión multilingüe o de integración.",
+  "timelines": [
+    {
+      "t": "Página única",
+      "d": "Alrededor de 2 semanas"
+    },
+    {
+      "t": "Sitio de varias páginas",
+      "d": "Alrededor de 3–5 semanas"
+    },
+    {
+      "t": "Personalizado",
+      "d": "Alcance definido por separado"
+    }
+  ],
+  "priceLabel": "COSTO DEL PROYECTO",
+  "priceTitle": "Cotizamos solo el alcance que necesitas.",
+  "priceName": "WEB DEVELOPMENT",
+  "priceValue": "Desde ₩700,000",
+  "priceFactorsLabel": "Factores de precio",
+  "priceFactors": [
+    "Alcance — número de páginas y secciones",
+    "Profundidad de diseño — gama UX/UI",
+    "Cronograma — programación y recursos",
+    "Contenido — disponibilidad de textos y recursos",
+    "Idiomas — estructura multilingüe",
+    "Integración — formularios, CRM, API",
+    "CMS — operaciones y alcance administrativo",
+    "Renovación — migración de sitio existente"
+  ],
+  "priceNote": "Revisamos el número de páginas, alcance, profundidad de diseño y cronograma, luego proporcionamos una cotización. El monto final se confirma después de cerrar el alcance.",
+  "faqLabel": "Preguntas frecuentes",
+  "faqTitle": "Preguntas frecuentes",
+  "faqs": [
+    {
+      "q": "¿Ustedes redactan contenidos y proporcionan imágenes?",
+      "a": "Ayudamos con la estructura y dirección de borradores. El lenguaje final de la marca y los recursos se alinean con tu equipo."
+    },
+    {
+      "q": "¿Pueden renovar un sitio existente?",
+      "a": "Sí. Separamos lo que se conserva de lo que se reconstruye."
+    },
+    {
+      "q": "¿Se incluye un CMS?",
+      "a": "Solo si es necesario. Definimos el alcance según cómo quieras operar el sitio."
+    },
+    {
+      "q": "¿Soportan sitios multilingües?",
+      "a": "Sí. La estructura de idiomas y la UX de cambio de idioma forman parte del diseño."
+    },
+    {
+      "q": "¿Qué pasa con el hosting?",
+      "a": "Recomendamos un enfoque de despliegue adecuado y ayudamos a conectarlo."
+    },
+    {
+      "q": "¿Cómo se diferencia esto de un MVP o landing?",
+      "a": "WEB DEVELOPMENT se centra en sitios de marca y servicios con acabado alto. Un MVP funcional o landing de campaña única puede ajustarse mejor a los servicios MVP o LANDING."
+    },
+    {
+      "q": "¿Cómo se maneja la confidencialidad?",
+      "a": "Los materiales se usan solo dentro del alcance acordado. NDA disponible cuando se requiera."
+    }
+  ],
+  "finalLabel": "INICIAR UN PROYECTO",
+  "finalTitle": "Construir un sitio web\ndonde la marca se lea claramente.",
+  "finalLead": "Cuéntenos el tipo de sitio y lo que ya tiene. Confirmaremos juntos el alcance y la estructura del sitio web, el diseño y el enfoque de construcción.",
+  "ctaFinalSecondary": "Ver todo CONSTRUIR →",
+  "ctaFinalSecondaryHref": "../build/"
+}

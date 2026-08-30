@@ -146,7 +146,7 @@ const template = fs.readFileSync(path.join(ROOT, "templates", "about.html"), "ut
 for (const { dir, file, htmlLang } of LANGS) {
   const merged = fillMissing(loadJson(file), enData);
   const flat = flatten(merged);
-  const copyLang = dir === "ko" ? "ko" : "en";
+  const copyLang = dir;
   const seo = getAboutSeo(copyLang);
   const body = buildAboutPageBody(copyLang, dir);
 

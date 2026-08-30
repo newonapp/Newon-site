@@ -2,6 +2,8 @@
  * PRODUCT LAUNCH service detail — KO/EN copy.
  * Path: /{lang}/business/product-launch/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const PRODUCT_LAUNCH_COPY = {
   ko: {
     seoTitle: "PRODUCT LAUNCH | Newon Business",
@@ -796,5 +798,5 @@ export const PRODUCT_LAUNCH_COPY = {
 };
 
 export function getProductLaunchCopy(lang) {
-  return lang === "ko" ? PRODUCT_LAUNCH_COPY.ko : PRODUCT_LAUNCH_COPY.en;
+  return resolveKoEnPack(PRODUCT_LAUNCH_COPY, lang, "product-launch-copy");
 }

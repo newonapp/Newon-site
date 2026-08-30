@@ -9,6 +9,7 @@ import {
 } from "./studio-pricing.mjs";
 import { STUDIO_DETAIL_ENRICHMENTS, mergeStudioDetail } from "./studio-service-detail-enrichments.mjs";
 import { applyStudioKoLabels } from "./studio-section-labels.mjs";
+import { deepMerge, loadPackOverlay, resolveCopyLang } from "./i18n/copy-lang.mjs";
 
 const CAT = {
   brand: { ko: "브랜드", en: "BRAND" },
@@ -7762,11 +7763,12 @@ export function getStudioServiceDetail(slug, lang = "ko") {
   const raw = mergeStudioDetail(DETAIL[slug], slug, STUDIO_DETAIL_ENRICHMENTS);
   const pricing = STUDIO_SERVICE_PRICING[slug];
   if (!raw || !pricing) return null;
-  const pageLang = lang === "ko" ? "ko" : "en";
+  const contentLang = resolveCopyLang(lang);
+  const pageLang = contentLang === "ko" ? "ko" : "en";
   const ui = studioDetailUi(pageLang);
   const categoryLabel = CAT[pricing.category]?.[pageLang] || pricing.category.toUpperCase();
 
-  return applyStudioKoLabels(
+  let detail = applyStudioKoLabels(
     {
     slug,
     pagePath: studioServicePagePath(slug),
@@ -7896,9 +7898,15 @@ export function getStudioServiceDetail(slug, lang = "ko") {
     siblingSlugs: STUDIO_PILLAR_SERVICE_SLUGS[pricing.category] || [],
     ui,
     pricing,
-    _pageLang: pageLang,
+    _pageLang: contentLang,
   },
     pageLang,
   );
+  if (contentLang !== "ko" && contentLang !== "en") {
+    const overlayAll = loadPackOverlay("studio-service-details", contentLang);
+    const overlay = overlayAll?.[slug];
+    if (overlay) detail = deepMerge(detail, overlay);
+  }
+  return detail;
 }
 

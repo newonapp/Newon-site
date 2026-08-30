@@ -2,6 +2,8 @@
  * WEB DEVELOPMENT service detail — KO/EN copy.
  * Path: /{lang}/business/web/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const WEB_COPY = {
   ko: {
     seoTitle: "WEB DEVELOPMENT | Newon Business",
@@ -796,5 +798,5 @@ export const WEB_COPY = {
 };
 
 export function getWebCopy(lang) {
-  return lang === "ko" ? WEB_COPY.ko : WEB_COPY.en;
+  return resolveKoEnPack(WEB_COPY, lang, "web-copy");
 }

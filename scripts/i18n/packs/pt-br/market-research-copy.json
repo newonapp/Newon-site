@@ -1,0 +1,534 @@
+{
+  "seoTitle": "PESQUISA DE MERCADO | Newon Negócios",
+  "metaDescription": "Pesquise a estrutura do mercado, a demanda e o contexto competitivo – entregue como um resumo e um mapa de mercado no qual sua equipe pode atuar. Newon PESQUISA DE MERCADO.",
+  "crumbBusiness": "NEGÓCIOS",
+  "crumbServices": "SERVIÇOS",
+  "crumbResearch": "PESQUISA",
+  "crumbHere": "PESQUISA DE MERCADO",
+  "eyebrow": "PESQUISA DE MERCADO",
+  "subEyebrow": "PESQUISA",
+  "headline": "Leia o mercado\ncom base em evidências, não em suposições.",
+  "lead": "Pesquisamos a estrutura do mercado, a demanda, a concorrência e os sinais de mudança. Em seguida, organizamos as evidências em um resumo de pesquisa que sua equipe pode usar para decidir.",
+  "ctaPrimary": "Inquérito de pesquisa de mercado →",
+  "ctaSecondary": "Veja o fluxo da pesquisa ↓",
+  "meta": [
+    {
+      "k": "SERVIÇO",
+      "v": "Pesquisa de mercado"
+    },
+    {
+      "k": "MELHOR PARA",
+      "v": "Entrada, expansão, revisão de posicionamento"
+    },
+    {
+      "k": "LINHA DO TEMPO",
+      "v": "Geralmente 1–3 semanas"
+    },
+    {
+      "k": "PREÇO",
+      "v": "A partir de ₩300.000"
+    }
+  ],
+  "overviewLabel": "VISÃO GERAL",
+  "overviewTitle": "Muita informação.\nCritérios compartilhados insuficientes.",
+  "overviewBody": [
+    "Ao avaliar um novo mercado, categoria ou público, o material raramente é o gargalo. A parte mais difícil é alinhar a estrutura, a prioridade e o que conta como evidência.",
+    "Relatórios do setor, notícias, RI da concorrência, análises de aplicativos, sinais da comunidade e estatísticas públicas oferecem, cada um, um ângulo diferente – mas raramente de uma forma que as equipes possam decidir na mesma reunião.",
+    "A PESQUISA DE MERCADO começa definindo o que você precisa saber para decidir. Em seguida, coletamos, comparamos e estruturamos as fontes em um mapa de mercado, áreas de oportunidades e implicações em um resumo."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Útil quando você enfrenta essas situações.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "ENTRADA NO MERCADO",
+      "d": "Você precisa de uma visão compartilhada do tamanho e estrutura do mercado\nantes de entrar em um novo país, categoria ou público."
+    },
+    {
+      "n": "02",
+      "t": "INFORMAÇÕES ESPALHADAS",
+      "d": "Há muito material, mas nenhum mapa claro de segmentos, atores ou oportunidades.\nAs mesmas perguntas se repetem em todas as reuniões."
+    },
+    {
+      "n": "03",
+      "t": "CONTEXTO COMPETITIVO",
+      "d": "Muitos concorrentes e substitutos para comparar o posicionamento rapidamente.\nVocê precisa de contexto sobre quem é forte e onde."
+    },
+    {
+      "n": "04",
+      "t": "MAPA DE OPORTUNIDADES",
+      "d": "Você vê muitos caminhos para entrada, expansão ou diferenciação\nmas faltam evidências para priorizá-los."
+    },
+    {
+      "n": "05",
+      "t": "ALINHAMENTO DAS PARTES INTERESSADAS",
+      "d": "Equipes, investidores ou parceiros precisam da mesma imagem de mercado.\nVocê precisa de um resumo interno que todos possam consultar."
+    },
+    {
+      "n": "06",
+      "t": "DIREÇÃO DO PRODUTO",
+      "d": "Antes de tomar decisões sobre MVP, roteiro ou preços,\nvocê precisa primeiro do contexto do mercado e dos sinais de demanda."
+    }
+  ],
+  "baLabel": "ANTES / DEPOIS",
+  "baTitle": "Decisões instintivas vs\ncompreensão estruturada do mercado",
+  "beforeLabel": "ANTES",
+  "afterLabel": "DEPOIS",
+  "before": [
+    "Todo mundo coleta fontes separadamente",
+    "Tamanho do mercado, concorrência e mudança de oportunidade por conversa",
+    "As mesmas perguntas se repetem sem conclusão documentada",
+    "As descobertas não estão conectadas à próxima validação ou ação"
+  ],
+  "after": [
+    "As questões e o escopo da pesquisa são acordados primeiro",
+    "Segmentos, players e oportunidades são mapeados",
+    "Um resumo de pesquisa compartilhado para a equipe",
+    "Implicações ligadas às próximas ações"
+  ],
+  "capsLabel": "CAPACIDADES",
+  "capsTitle": "Estruturamos a pesquisa\nque sua decisão de mercado precisa.",
+  "caps": [
+    {
+      "t": "DEFINIÇÃO DO ESCOPO",
+      "d": "Defina as questões e os limites que a decisão exige.\nEsclareça o que você precisa aprender e o que está fora do escopo.",
+      "examples": [
+        "Perguntas centrais",
+        "Escopo de mercado",
+        "Contagem de concorrentes",
+        "Formato de entrega"
+      ]
+    },
+    {
+      "t": "PESQUISA DE MESA",
+      "d": "Colete fontes secundárias e dados públicos sistematicamente.\nAnalise a qualidade e a credibilidade da fonte em conjunto.",
+      "examples": [
+        "Relatórios da indústria",
+        "Estatísticas públicas",
+        "Notícias e RI",
+        "Críticas e comunidade"
+      ]
+    },
+    {
+      "t": "ESTRUTURA DE MERCADO",
+      "d": "Organize o mercado por segmentos, players e fluxo de valor.\nEstruture quem atua onde e como o mercado está dividido.",
+      "examples": [
+        "Mapa de segmento",
+        "Cadeia de valor",
+        "Demanda e oferta",
+        "Estrutura do canal"
+      ]
+    },
+    {
+      "t": "CENÁRIO COMPETITIVO",
+      "d": "Compare os principais concorrentes e substitutos.\nResuma as diferenças em recursos, preços, mensagens e alvo.",
+      "examples": [
+        "Mapa do jogador",
+        "Comparação de posicionamento",
+        "Diferenciação",
+        "Suplentes"
+      ]
+    },
+    {
+      "t": "MAPEAMENTO DE OPORTUNIDADES",
+      "d": "Estruture áreas para entrada, expansão ou diferenciação.\nDocumente as evidências e suposições por trás de cada oportunidade.",
+      "examples": [
+        "Necessidades não atendidas",
+        "Espaço em branco",
+        "Barreiras de entrada",
+        "Prioridade"
+      ]
+    },
+    {
+      "t": "SINAIS DE TENDÊNCIA",
+      "d": "Capture as mudanças da indústria, do consumidor e da tecnologia com o contexto.\nSepare o ruído de curto prazo da mudança estrutural.",
+      "examples": [
+        "Regulamento",
+        "Mudança de comportamento",
+        "Adoção de tecnologia",
+        "Preço e embalagem"
+      ]
+    },
+    {
+      "t": "IMPLICAÇÕES",
+      "d": "Conecte as descobertas ao produto, ao negócio e à estratégia.\nPasse do insight para o que isso significa que você deve fazer.",
+      "examples": [
+        "Posicionamento",
+        "Prioridade de recursos",
+        "Vai / Não vai",
+        "Risco"
+      ]
+    },
+    {
+      "t": "ITENS DE AÇÃO",
+      "d": "Sugira as próximas etapas de validação e decisão.\nSinalize onde entrevistas, experimentos ou pesquisas mais aprofundadas são necessárias.",
+      "examples": [
+        "Perguntas de validação",
+        "Alvos da entrevista",
+        "Testar hipóteses",
+        "Escopo de acompanhamento"
+      ]
+    }
+  ],
+  "sourcesLabel": "FONTES DE PESQUISA",
+  "sourcesTitle": "Combinamos os tipos de fontes que seu objetivo precisa.",
+  "sourcesNote": "As fontes reais variam de acordo com escopo, mercado e acessibilidade. Confirmamos o ajuste antes de começar.",
+  "sources": [
+    "Relatórios da indústria",
+    "Estatísticas Públicas",
+    "Arquivos da Empresa",
+    "Notícias e artigos",
+    "Avaliações de produtos",
+    "App Store / Mercado",
+    "Social e comunitário",
+    "Patentes e registros",
+    "Publicações comerciais",
+    "Dados Internos",
+    "Entrevistas com especialistas",
+    "Sites dos concorrentes"
+  ],
+  "useLabel": "CASOS DE USO",
+  "useTitle": "Perguntas que podemos ajudar a responder.",
+  "useBadge": "Exemplos de tópicos de pesquisa",
+  "useCases": [
+    {
+      "t": "ENTRADA NO NOVO MERCADO",
+      "d": "Verifique a estrutura, os sinais de demanda e as barreiras de entrada\nantes de entrar em um mercado ou categoria."
+    },
+    {
+      "t": "CATEGORIA PAISAGEM",
+      "d": "Mapeie quem atua onde e como o mercado está dividido.\nVeja rapidamente as funções e relacionamentos do segmento."
+    },
+    {
+      "t": "CONTEXTO DO CONCORRENTE",
+      "d": "Compare os principais participantes e as diferenças de posicionamento rapidamente.\nResuma recursos, preços, mensagens e alvo."
+    },
+    {
+      "t": "CONTEXTO DE PREÇOS",
+      "d": "Resuma as faixas de preços, embalagens e contexto do modelo de receita.\nCrie evidências para sua estratégia de preços."
+    },
+    {
+      "t": "SEGMENTOS DE CLIENTES",
+      "d": "Esclareça quem o mercado atende a partir de uma visão de segmento.\nEstruture diferenças em necessidades, comportamento e critérios de compra."
+    },
+    {
+      "t": "RESUMO DE TENDÊNCIAS",
+      "d": "Resuma as mudanças recentes e o que elas significam para o seu produto ou negócio.\nSepare as questões de curto prazo das mudanças estruturais."
+    },
+    {
+      "t": "RESUMO DO INVESTIDOR",
+      "d": "Um resumo do mercado para partes interessadas internas ou externas.\nInclua as principais evidências e riscos juntos."
+    },
+    {
+      "t": "ENTRADA DO ESCOPO DO PRODUTO",
+      "d": "Forneça o contexto do mercado antes da definição do MVP ou do roteiro.\nUse como evidência sobre o que construir primeiro."
+    }
+  ],
+  "flowLabel": "EXEMPLO DE FLUXO DE TRABALHO",
+  "flowTitle": "De perguntas a um resumo de pesquisa",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DEFINIR",
+      "d": "Defina as questões e o escopo da pesquisa.\nEsclareça quais informações as decisões exigem e o que é excluído.",
+      "examples": [
+        "Perguntas centrais",
+        "Escopo de mercado",
+        "Concorrentes",
+        "Entregáveis"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "COLETAR",
+      "d": "Reúna fontes e dados relevantes.\nRevise juntos o material público e interno.",
+      "examples": [
+        "Relatórios",
+        "Estatísticas",
+        "Avaliações",
+        "RI e notícias"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "ESTRUTURA",
+      "d": "Organize por mercado, concorrência e demanda.\nTorne informações dispersas comparáveis.",
+      "examples": [
+        "Segmentos",
+        "Jogadores",
+        "Preços",
+        "Canais"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "SINTETIZAR",
+      "d": "Extraia as principais descobertas e oportunidades.\nConecte o que é importante e por que é importante.",
+      "examples": [
+        "Áreas de oportunidade",
+        "Riscos",
+        "Diferenciação",
+        "Lacunas"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ENTREGAR",
+      "d": "Forneça resumo, mapa e implicações.\nFormato para uso imediato da equipe.",
+      "examples": [
+        "Resumo Executivo",
+        "Mapa de mercado",
+        "Próximas etapas"
+      ]
+    }
+  ],
+  "reportLabel": "SAÍDA",
+  "reportTitle": "Entregas estruturadas para decisões.",
+  "reportLead": "A composição varia de acordo com o objetivo do projeto. Abaixo estão as seções comuns – incluímos apenas o que o briefing exige.",
+  "reportMockStatus": "MERCADO · PROJETO",
+  "reportMockK": "RESUMO DO MERCADO",
+  "reportMockT": "Categoria e resumo do cenário competitivo",
+  "reportItems": [
+    "Resumo Executivo",
+    "Mapa de mercado",
+    "Visão geral do segmento",
+    "Cenário Competitivo",
+    "Áreas de oportunidade",
+    "Sinais de tendência",
+    "Principais riscos",
+    "Implicações",
+    "Próximas etapas recomendadas",
+    "Notas de origem"
+  ],
+  "dashTitle": "Compartilhe a estrutura do mercado em uma visão.",
+  "dashLead": "Quando útil, incluímos um mapa de mercado mostrando segmentos, participantes e áreas de oportunidade – para que as discussões avancem mais rapidamente ao longo do briefing.",
+  "dashNote": "Um mapa de mercado não é idêntico em todos os projetos – o escopo e o propósito definem a entrega.",
+  "dashMetrics": [
+    "Segmentos",
+    "Jogadores",
+    "Oportunidades",
+    "Tendências",
+    "Riscos",
+    "Prioridade"
+  ],
+  "dashFilters": [
+    "Todos",
+    "B2B",
+    "B2C",
+    "Empresa"
+  ],
+  "aiLabel": "SÍNTESE",
+  "aiTitle": "Desde grandes conjuntos de fontes\naté o que importa.",
+  "aiLead": "Quando há muitos relatórios, notícias, análises e material de concorrentes, resumimos, classificamos e comparamos dos ângulos que você precisa. A interpretação e as decisões finais são revisadas junto com você.",
+  "aiExamples": [
+    "Mensagem do concorrente e comparação de posicionamento",
+    "Resumo do padrão de revisão e feedback",
+    "Notícias do setor e resumo de problemas",
+    "Necessidade do segmento e resumo da dor",
+    "Priorização de oportunidades",
+    "Breve e esboço da apresentação"
+  ],
+  "aiNote": "A interpretação e as decisões finais são revisadas junto com você. Os resumos de IA são materiais de referência – chamadas importantes ainda devem fazer referência a fontes originais.",
+  "delLabel": "ENTREGAS",
+  "delTitle": "O que você recebe após o projeto",
+  "delLead": "Dependendo do escopo, entregamos os itens que você precisa da lista abaixo. Nem todos os itens estão incluídos em todos os projetos.",
+  "deliverables": [
+    "Resumo de pesquisa",
+    "Mapa de mercado",
+    "Resumo Competitivo",
+    "Visão geral da oportunidade",
+    "Notas de tendência",
+    "Implicações e recomendações",
+    "Apêndice Fonte",
+    "Resumo da apresentação",
+    "Perguntas de acompanhamento"
+  ],
+  "processLabel": "PROCESSO",
+  "processTitle": "Da definição da pergunta até a entrega.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCOBERTA",
+      "d": "Confirme o contexto da decisão e o propósito da pesquisa.\nEntenda o que você está decidindo e quem usará o resultado.",
+      "examples": [
+        "Objetivo",
+        "Partes interessadas",
+        "Linha do tempo",
+        "Restrições"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ESCOPO",
+      "d": "Defina perguntas, escopo e formato de entrega.\nAcorde sobre o que está dentro, o que está fora e a prioridade.",
+      "examples": [
+        "Perguntas centrais",
+        "Escopo de mercado",
+        "Concorrentes",
+        "Formato"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "PESQUISA",
+      "d": "Colete e revise fontes e dados relevantes.\nVerifique a qualidade e credibilidade da fonte.",
+      "examples": [
+        "Relatórios",
+        "Estatísticas",
+        "Avaliações",
+        "RI"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ANÁLISE",
+      "d": "Estruture padrões, diferenças e oportunidades.\nOrganize por segmento, concorrência e demanda.",
+      "examples": [
+        "Segmentos",
+        "Posicionamento",
+        "Oportunidade",
+        "Risco"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ESBOÇO",
+      "d": "Elabore o resumo e o mapa do mercado.\nConstrua a espinha dorsal das descobertas e implicações.",
+      "examples": [
+        "Resumo",
+        "Mapa de mercado",
+        "Implicações"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "REVISÃO",
+      "d": "Revise as principais conclusões e interpretações em conjunto.\nAjuste as lacunas, suposições e prioridades.",
+      "examples": [
+        "Comentários",
+        "Refinamento",
+        "Prioridade",
+        "Vai/Não vai"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "ENTREGAR",
+      "d": "Entregue os documentos e implicações finais.\nConecte-se à próxima validação e ação.",
+      "examples": [
+        "Resumo Final",
+        "Mapa",
+        "Próximas etapas"
+      ]
+    }
+  ],
+  "scopeLabel": "NÍVEIS DE ESCOPO",
+  "scopeTitle": "Um guia para a complexidade do projeto.",
+  "scopeLead": "Pacotes não fixos – nós delimitamos e cotamos com base em seu objetivo e na profundidade que você precisa.",
+  "scopes": [
+    {
+      "t": "RESUMO FOCADO NO MERCADO",
+      "items": [
+        "Mercado único ou categoria",
+        "3–5 questões principais",
+        "Foco de pesquisa documental",
+        "Resumo resumido (cerca de 10 a 15 páginas)",
+        "Oportunidades e pontos de risco"
+      ]
+    },
+    {
+      "t": "MERCADO E MAPA COMPETITIVO",
+      "items": [
+        "Segmento e mapa do jogador",
+        "Compare 5 a 10 concorrentes principais",
+        "Posicionamento, preços, resumo de mensagens",
+        "Áreas de oportunidade e implicações",
+        "Resumo da apresentação opcional"
+      ]
+    },
+    {
+      "t": "PESQUISA PERSONALIZADA",
+      "items": [
+        "Vários mercados ou categorias",
+        "Pesquisa primária (entrevistas/pesquisas) opcional",
+        "Tendências mais profundas, regulamentação e análise de risco",
+        "Apresentação personalizada",
+        "Validação de acompanhamento ou ligação BUILD"
+      ]
+    }
+  ],
+  "timeLabel": "LINHA DO TEMPO",
+  "timeTitle": "O cronograma depende do escopo.",
+  "timeLead": "Profundidade, acesso à fonte, contagem de concorrentes e inclusão de entrevistas podem alterar a duração.",
+  "timelines": [
+    {
+      "t": "Resumo do Mercado Focado",
+      "d": "Cerca de 1–2 semanas"
+    },
+    {
+      "t": "Mercado e Mapa Competitivo",
+      "d": "Cerca de 2–3 semanas"
+    },
+    {
+      "t": "Pesquisa personalizada",
+      "d": "Escopo separado"
+    }
+  ],
+  "priceLabel": "CUSTO DO PROJETO",
+  "priceTitle": "Citamos apenas o escopo que você precisa.",
+  "priceName": "PESQUISA DE MERCADO",
+  "priceValue": "A partir de ₩300.000",
+  "priceFactorsLabel": "O que molda o preço",
+  "priceFactors": [
+    "Número de questões de pesquisa",
+    "Escopo de mercado ou categoria",
+    "Número de competidores/jogadores",
+    "Profundidade da pesquisa",
+    "Inclusão de pesquisa primária",
+    "Acesso à fonte e relatórios pagos",
+    "Formato e comprimento da entrega",
+    "Cronograma urgente"
+  ],
+  "priceNote": "A cotação final é confirmada após a revisão das metas, escopo e cronograma.",
+  "faqLabel": "Perguntas frequentes",
+  "faqTitle": "Perguntas frequentes",
+  "faqs": [
+    {
+      "q": "Quais mercados e indústrias você pode pesquisar?",
+      "a": "B2B, B2C, SaaS, comércio, plataformas, serviços, manufatura e muito mais — dependendo do objetivo e das fontes acessíveis. Confirmamos a adequação ao mercado e o acesso à fonte antes de começar."
+    },
+    {
+      "q": "Isso inclui pesquisa primária?",
+      "a": "O padrão é pesquisa documental. Entrevistas com usuários ou com o setor e o design da pesquisa podem ser adicionados como um escopo separado quando necessário."
+    },
+    {
+      "q": "Qual formato as entregas assumem?",
+      "a": "Documente primeiro: Resumo Executivo, Mapa de Mercado, Resumo Competitivo, Implicações e outras seções adequadas ao seu objetivo. Resumos de apresentações podem ser incluídos."
+    },
+    {
+      "q": "Você pode comprar relatórios pagos do setor?",
+      "a": "Sim, quando necessário. Os custos de origem pagos são definidos separadamente e confirmados com você antes da compra."
+    },
+    {
+      "q": "Você pode usar nossos dados internos?",
+      "a": "Sim, dentro do que você pode compartilhar. Caso contrário, trabalhamos a partir de fontes públicas."
+    },
+    {
+      "q": "Como isso difere da ANÁLISE DO CONCORRENTE?",
+      "a": "A PESQUISA DE MERCADO analisa a estrutura geral e as oportunidades do mercado. Se a comparação da concorrência for a necessidade principal, a ANÁLISE DA CONCORRÊNCIA pode ser uma opção melhor – os escopos podem ser vinculados quando útil."
+    },
+    {
+      "q": "Isso pode se conectar ao BUILD ou MVP?",
+      "a": "Sim. A pesquisa pode alimentar o escopo do produto, a prioridade dos recursos e as decisões de avançar/não avançar."
+    },
+    {
+      "q": "Como é tratada a confidencialidade?",
+      "a": "Trabalhamos apenas dentro do escopo acordado. Um NDA pode ser assinado quando necessário."
+    }
+  ],
+  "finalLabel": "INICIE UM PROJETO",
+  "finalTitle": "Não adivinhe o mercado —\nmapeie-o primeiro.",
+  "finalLead": "Informe-nos o mercado, categoria ou contexto competitivo que você está avaliando. Confirmaremos o que pesquisar e como estruturar o resultado.",
+  "ctaFinalSecondary": "Ver todas as PESQUISAS →",
+  "ctaFinalSecondaryHref": "../research/"
+}

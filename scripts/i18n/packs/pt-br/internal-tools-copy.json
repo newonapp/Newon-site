@@ -1,0 +1,584 @@
+{
+  "seoTitle": "FERRAMENTAS INTERNAS | Newon AUTOMAÇÃO",
+  "metaDescription": "Transforme planilhas dispersas e trabalho com múltiplas ferramentas em um sistema interno que se adapta ao modo como sua equipe opera. Newon FERRAMENTAS INTERNAS.",
+  "crumbBusiness": "NEGÓCIOS",
+  "crumbServices": "SERVIÇOS",
+  "crumbHere": "FERRAMENTAS INTERNAS",
+  "eyebrow": "03 · FERRAMENTAS",
+  "subEyebrow": "AUTOMAÇÃO",
+  "headline": "Ferramentas moldadas em torno de\ncomo sua equipe trabalha.",
+  "lead": "Consolidamos o trabalho espalhado por planilhas e serviços em um sistema interno – projetando telas, permissões e estruturas de dados para as operações e fluxos administrativos que sua equipe realmente executa.",
+  "ctaPrimary": "Consulta de FERRAMENTAS INTERNAS →",
+  "ctaSecondary": "Veja o que construímos ↓",
+  "meta": [
+    {
+      "k": "SERVIÇO",
+      "v": "Ferramenta interna personalizada"
+    },
+    {
+      "k": "MELHOR PARA",
+      "v": "Equipes com operações recorrentes e trabalho administrativo"
+    },
+    {
+      "k": "LINHA DO TEMPO",
+      "v": "Normalmente 4–8 semanas"
+    },
+    {
+      "k": "PREÇO",
+      "v": "Orçamento personalizado"
+    }
+  ],
+  "overviewLabel": "VISÃO GERAL",
+  "overviewTitle": "Construa um sistema interno\nde como a equipe funciona.",
+  "overviewBody": [
+    "Muitas equipes ainda executam operações em planilhas, chat, e-mail e diversas ferramentas SaaS.",
+    "Quando a entrada, o status, as aprovações, o estoque, as programações e os registros dos clientes residem em locais diferentes, as pessoas se tornam a camada de integração.",
+    "FERRAMENTAS INTERNAS transformam isso em telas e estruturas de dados que correspondem ao seu processo real – não um produto voltado para o cliente, mas uma ferramenta que sua equipe usa todos os dias."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Quando uma ferramenta interna se torna necessária.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "TRABALHO DISPERSO",
+      "d": "Solicitações e registros ficam disponíveis em planilhas, bate-papo, e-mail e ferramentas."
+    },
+    {
+      "n": "02",
+      "t": "TRANSFERÊNCIA MANUAL",
+      "d": "As pessoas passam o trabalho manualmente sempre que a propriedade ou o estágio mudam."
+    },
+    {
+      "n": "03",
+      "t": "CEGUEIRA DE STATUS",
+      "d": "É difícil ver rapidamente o que está em andamento."
+    },
+    {
+      "n": "04",
+      "t": "ATRITO DE APROVAÇÃO",
+      "d": "Avaliações e aprovações são interrompidas no chat e no e-mail."
+    },
+    {
+      "n": "05",
+      "t": "RISCO DE PERMISSÃO",
+      "d": "Os dados confidenciais ficam em planilhas compartilhadas que todos podem abrir."
+    },
+    {
+      "n": "06",
+      "t": "SEM HISTÓRIA",
+      "d": "Há poucos registros de quem mudou o quê e quando."
+    },
+    {
+      "n": "07",
+      "t": "LIMITE DE ESCALA",
+      "d": "As operações de planilhas são interrompidas à medida que as pessoas e o volume aumentam."
+    },
+    {
+      "n": "08",
+      "t": "FERRAMENTA DESAJUSTE",
+      "d": "O SaaS pronto para uso não corresponde ao processo da equipe."
+    }
+  ],
+  "capsLabel": "CAPACIDADES",
+  "capsTitle": "Compomos as funções que sua obra necessita.",
+  "caps": [
+    {
+      "t": "PEDIDO E INGRESSO",
+      "d": "Receba solicitações por meio de formulários e fluxos definidos.",
+      "examples": [
+        "Ingestão de consultas",
+        "Solicitações de trabalho",
+        "Tíquetes internos",
+        "Formulários de integração"
+      ]
+    },
+    {
+      "t": "QUADRO DE TRABALHO",
+      "d": "Gerencie status, proprietários e prioridade em um só lugar.",
+      "examples": [
+        "Kanban/lista",
+        "Filtros",
+        "Tarefa",
+        "Prazos"
+      ]
+    },
+    {
+      "t": "FLUXO DE APROVAÇÃO",
+      "d": "Bloqueie a revisão e a aprovação em etapas claras.",
+      "examples": [
+        "Aprovação em várias etapas",
+        "Permissões de função",
+        "Comentários",
+        "História"
+      ]
+    },
+    {
+      "t": "PAINEL DE OPERAÇÕES",
+      "d": "Reúna o status operacional em uma única visualização.",
+      "examples": [
+        "Progresso",
+        "Gargalos",
+        "Taxa de transferência",
+        "Comparação de períodos"
+      ]
+    },
+    {
+      "t": "ADMINISTRADOR DE DADOS",
+      "d": "Estruturar dados e registros de referência interna.",
+      "examples": [
+        "Dados mestre",
+        "Pesquisar",
+        "Etiquetas",
+        "Exportar"
+      ]
+    },
+    {
+      "t": "PAPEL E ACESSO",
+      "d": "Divida telas e permissões por função.",
+      "examples": [
+        "Administrador",
+        "Gerente",
+        "Membro",
+        "Somente leitura"
+      ]
+    },
+    {
+      "t": "INTEGRAÇÃO",
+      "d": "Conecte serviços e dados que você já usa.",
+      "examples": [
+        "Planilhas",
+        "Slack/E-mail",
+        "CRM",
+        "API"
+      ]
+    },
+    {
+      "t": "AUDITORIA E REGISTRO",
+      "d": "Mantenha as alterações e ações rastreáveis.",
+      "examples": [
+        "Registro de alterações",
+        "Histórico de ação",
+        "Alertas",
+        "Pontos de backup"
+      ]
+    }
+  ],
+  "useLabel": "POSSIBILIDADES",
+  "useTitle": "Ferramentas internas que podemos construir.",
+  "useBadge": "Exemplos edificáveis",
+  "useCases": [
+    {
+      "t": "CONSOLE DE OPERAÇÕES",
+      "d": "Um console para solicitações, progresso e propriedade."
+    },
+    {
+      "t": "PORTAL DE SOLICITAÇÃO",
+      "d": "Formulários de admissão padrão com status compartilhado para equipes."
+    },
+    {
+      "t": "SISTEMA DE APROVAÇÃO",
+      "d": "Sistematize orçamento, conteúdo ou aprovações de acesso."
+    },
+    {
+      "t": "FERRAMENTA DE OPS DO CLIENTE",
+      "d": "Gerencie o trabalho, os cronogramas e as entregas do cliente internamente."
+    },
+    {
+      "t": "INVENTÁRIO / ATIVO",
+      "d": "Rastreie estoque, ativos e movimentação."
+    },
+    {
+      "t": "CRM LITE",
+      "d": "Uma ferramenta de pipeline simplificada para seu processo de vendas/consulta."
+    },
+    {
+      "t": "RASTREADOR DE CONTEÚDO",
+      "d": "Um quadro para produção, revisão e status de publicação."
+    },
+    {
+      "t": "PAINEL INTERNO",
+      "d": "Um quadro de operações que combina métricas de diversas fontes."
+    }
+  ],
+  "baLabel": "ANTES / DEPOIS",
+  "baTitle": "Como o trabalho é organizado",
+  "beforeLabel": "ANTES",
+  "afterLabel": "DEPOIS",
+  "before": [
+    "Planilha + Bate-papo + E-mail",
+    "Transferências manuais",
+    "Status difícil de ver",
+    "Acesso e histórico pouco claros"
+  ],
+  "after": [
+    "Uma ferramenta interna",
+    "Fluxo de trabalho definido",
+    "Status e proprietários visíveis",
+    "Acesso e registros baseados em função"
+  ],
+  "flowLabel": "EXEMPLO DE FLUXO DE TRABALHO",
+  "flowTitle": "Como uma ferramenta interna funciona",
+  "flow": [
+    {
+      "n": "01",
+      "t": "INGESTÃO",
+      "d": "Solicitações e dados são inseridos por meio de formulários, APIs ou arquivos.\nCampos e anexos obrigatórios são validados primeiro."
+    },
+    {
+      "n": "02",
+      "t": "ROTA",
+      "d": "As regras de tipo, prioridade e proprietário atribuem o trabalho.\nO próximo estágio e o caminho de aprovação são definidos automaticamente."
+    },
+    {
+      "n": "03",
+      "t": "PROCESSO",
+      "d": "As equipes processam, editam e aprovam na tela.\nComentários, arquivos e alterações de status permanecem em um único fluxo."
+    },
+    {
+      "n": "04",
+      "t": "ATUALIZAR",
+      "d": "As alterações de status notificam as pessoas que precisam saber.\nEntregue por meio de Slack, e-mail ou alertas no aplicativo."
+    },
+    {
+      "n": "05",
+      "t": "REGISTRO",
+      "d": "Quem mudou o quê e quando é armazenado no histórico.\nOs resultados são mantidos para auditoria e reprodução."
+    },
+    {
+      "n": "06",
+      "t": "REVISÃO",
+      "d": "Painéis, listas e filtros mostram o estado atual.\nGargalos, atrasos e taxa de transferência em uma visualização."
+    }
+  ],
+  "featuresLabel": "RECURSOS",
+  "featuresTitle": "Recursos que podemos incluir por projeto",
+  "featuresLead": "Nem todo projeto recebe o mesmo conjunto de recursos – nós compomos para o trabalho que importa.",
+  "features": [
+    "Formulário / Admissão",
+    "Listar e Filtrar",
+    "Kanban Quadro",
+    "Visualização de detalhes",
+    "Fluxo de trabalho de status",
+    "Acesso baseado em função",
+    "Comentários",
+    "Anexos de arquivo",
+    "Notificações",
+    "Pesquisar",
+    "Exportar",
+    "Configurações de administrador",
+    "Registro de atividades",
+    "Painel simples",
+    "API/Webhook",
+    "UI otimizada para dispositivos móveis"
+  ],
+  "integLabel": "INTEGRAÇÕES",
+  "integTitle": "Conecte as ferramentas que você já usa.",
+  "integNote": "A conectividade real depende da API, das permissões e da estrutura de dados de cada serviço.",
+  "integrations": [
+    "Google Sheets",
+    "Notion",
+    "Slack",
+    "E-mail",
+    "Google Drive",
+    "CRM",
+    "Banco de dados",
+    "Formulários",
+    "Análise",
+    "Dados de pagamento/faturamento",
+    "API externa",
+    "Webhook"
+  ],
+  "aiLabel": "EXTENSÃO DE IA",
+  "aiTitle": "Conecte a IA ao fluxo de trabalho quando necessário.",
+  "aiLead": "Se a classificação, o rascunho ou o resumo se repetirem, a IA pode servir de auxiliar dentro da ferramenta.",
+  "aiExamples": [
+    "Classificar solicitações automaticamente",
+    "Resumos de ingressos",
+    "Geração de rascunho",
+    "Detecção duplicada/semelhante",
+    "Limpeza de notas",
+    "Sugestões de status"
+  ],
+  "aiNote": "Os resultados da IA são consultivos – decisões importantes permanecem confirmadas por humanos por padrão.",
+  "autoLabel": "EXTENSÃO DE AUTOMAÇÃO",
+  "autoTitle": "Automatize o trabalho repetitivo dentro da ferramenta.",
+  "autoLead": "Regras claras — alertas, alterações de status, sincronização, relatórios programados — podem se expandir para o escopo da automação.",
+  "autoExamples": [
+    "Alertas de mudança de status",
+    "Lembretes de prazo",
+    "Sincronização de planilha/banco de dados",
+    "E-mail de resumo agendado",
+    "Roteamento condicional",
+    "Atualizações em lote"
+  ],
+  "delLabel": "ENTREGAS",
+  "delTitle": "O que você recebe quando o projeto é concluído",
+  "delLead": "Dependendo do escopo, as entregas podem incluir os itens abaixo – nem todo projeto inclui todos os itens.",
+  "deliverables": [
+    "Resumo dos Requisitos",
+    "Arquitetura da Informação",
+    "Telas de IU",
+    "Ferramenta interna de trabalho",
+    "Configuração de função/permissão",
+    "Estrutura de dados",
+    "Integrações Básicas",
+    "Guia de administração",
+    "Notas de transferência de operações",
+    "Notas de transferência"
+  ],
+  "processLabel": "PROCESSO",
+  "processTitle": "Começamos pela forma como o trabalho realmente funciona.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCOBERTA",
+      "d": "Mapeie o fluxo atual, as ferramentas e os gargalos.\nComeçamos descobrindo onde o tempo é perdido."
+    },
+    {
+      "n": "02",
+      "t": "MAPEAMENTO DE TRABALHO",
+      "d": "Solicitação de documento → processo → concluído, mais exceções.\nDesenhe como o trabalho realmente se move hoje."
+    },
+    {
+      "n": "03",
+      "t": "ESCOPO",
+      "d": "Decida o que pertence à v1 e o que espera.\nDeixe claro o limite do primeiro lançamento."
+    },
+    {
+      "n": "04",
+      "t": "ESTRUTURA",
+      "d": "Projete telas, modelo de dados e permissões.\nDefina a estrutura que sua equipe usará."
+    },
+    {
+      "n": "05",
+      "t": "PROTÓTIPO",
+      "d": "Valide o fluxo principal rapidamente.\nTeste primeiro os cenários principais."
+    },
+    {
+      "n": "06",
+      "t": "CONSTRUIR",
+      "d": "Implemente uma ferramenta pronta para uso real.\nEnvie algo que a equipe possa executar diariamente."
+    },
+    {
+      "n": "07",
+      "t": "INTEGRAR",
+      "d": "Conecte as integrações e a automação necessárias.\nVincule ferramentas e dados existentes."
+    },
+    {
+      "n": "08",
+      "t": "TESTE",
+      "d": "Revise permissões, fluxos e dados com cenários reais.\nInclua casos extremos, não apenas caminhos felizes."
+    },
+    {
+      "n": "09",
+      "t": "TRANSFERÊNCIA",
+      "d": "Transfira as operações e orientação administrativa.\nPara que sua equipe possa executá-lo de forma independente."
+    }
+  ],
+  "scopeLabel": "NÍVEIS DE ESCOPO",
+  "scopeTitle": "Um guia para entender a complexidade do projeto.",
+  "scopeLead": "Pacotes não fixos — uma referência para definir o escopo e citar o que você precisa.",
+  "scopes": [
+    {
+      "t": "FERRAMENTA FOCADA",
+      "items": [
+        "Um fluxo de trabalho principal",
+        "Telas básicas de CRUD",
+        "Permissões simples",
+        "Pequeno conjunto de dados",
+        "Integrações mínimas"
+      ]
+    },
+    {
+      "t": "SISTEMA DE OPERAÇÕES DE EQUIPE",
+      "items": [
+        "Múltiplas funções/permissões",
+        "Fluxo de trabalho de status",
+        "Lista/detalhe/painel",
+        "Notificações",
+        "Principais integrações de serviços"
+      ]
+    },
+    {
+      "t": "PLATAFORMA INTERNA PERSONALIZADA",
+      "items": [
+        "Vários módulos",
+        "Aprovações/regras complexas",
+        "Multi-integrações",
+        "Extensões de IA/automação",
+        "Recursos de administração de operações"
+      ]
+    }
+  ],
+  "timeLabel": "LINHA DO TEMPO",
+  "timeTitle": "O cronograma depende do escopo.",
+  "timeLead": "Recursos, integrações, estrutura de permissão e dados existentes podem alterar a duração.",
+  "timelines": [
+    {
+      "t": "Ferramenta Interna Focada",
+      "d": "Cerca de 3–5 semanas"
+    },
+    {
+      "t": "Sistema de operações de equipe",
+      "d": "Cerca de 4–8 semanas"
+    },
+    {
+      "t": "Plataforma interna personalizada",
+      "d": "Escopo separado"
+    }
+  ],
+  "priceLabel": "CUSTO DO PROJETO",
+  "priceTitle": "Citamos apenas o escopo que você precisa.",
+  "priceName": "FERRAMENTAS INTERNAS",
+  "priceValue": "Orçamento personalizado",
+  "priceFactorsLabel": "O que molda o preço",
+  "priceFactors": [
+    "Complexidade do fluxo de trabalho",
+    "Número de telas/módulos",
+    "Estrutura de função/permissão",
+    "Modelo de dados",
+    "Número de integrações",
+    "Escopo de automação",
+    "Recursos de IA",
+    "Necessidades do painel",
+    "Migração de dados existente",
+    "Usuários/simultaneidade",
+    "Suporte móvel",
+    "Manutenção"
+  ],
+  "priceNote": "O orçamento final é definido depois de revisarmos seu processo atual e os recursos necessários.",
+  "extLabel": "CUSTO EXTERNO",
+  "extTitle": "Custos que podem ficar fora da taxa de construção de Newon",
+  "extItems": [
+    "Servidor / Hospedagem",
+    "Banco de dados",
+    "Autenticação/Identidade",
+    "API externa",
+    "API de IA",
+    "Automação SaaS",
+    "Armazenamento em nuvem",
+    "Serviço de e-mail/mensagens",
+    "Outros serviços externos pagos"
+  ],
+  "secLabel": "SEGURANÇA",
+  "secTitle": "As ferramentas internas começam com acesso e dados.",
+  "secLead": "Quando informações confidenciais estão envolvidas, projetamos acesso baseado em função, privilégios mínimos e apenas os registros necessários. Os requisitos de segurança são confirmados antes do início do jogo.",
+  "secItems": [
+    "Acesso baseado em função",
+    "Menor privilégio",
+    "Registro de auditoria",
+    "Separação de ambiente",
+    "Tratamento de credenciais",
+    "Minimização de dados"
+  ],
+  "faqLabel": "Perguntas frequentes",
+  "faqTitle": "Perguntas frequentes",
+  "faqs": [
+    {
+      "q": "Notion ou uma planilha não é suficiente?",
+      "a": "Pode ser cedo. Quando permissões, status, aprovações, histórico e integrações ficam complexos, uma ferramenta interna dedicada costuma ser mais estável."
+    },
+    {
+      "q": "Qual a diferença entre isso e personalizar SaaS?",
+      "a": "SaaS é ótimo para velocidade, mas pode não corresponder ao seu processo. O INTERNAL TOOLS parte do seu fluxo real e constrói as telas e regras que você precisa."
+    },
+    {
+      "q": "Precisamos de um sistema grande desde o primeiro dia?",
+      "a": "Não. Recomendamos começar com o fluxo de trabalho mais repetitivo e de alto custo em um escopo específico."
+    },
+    {
+      "q": "Você pode migrar dados de planilhas existentes?",
+      "a": "Sim. O escopo da migração depende da limpeza e estrutura dos dados e pode ter escopo separado."
+    },
+    {
+      "q": "Pode funcionar no celular?",
+      "a": "Podemos construir uma IU compatível com dispositivos móveis. As necessidades do aplicativo nativo são confirmadas como um escopo separado."
+    },
+    {
+      "q": "A IA ou a automação podem ser incluídas?",
+      "a": "Sim. Freqüentemente, estendemos primeiro as áreas claras – classificação, resumos, alertas e sincronização."
+    },
+    {
+      "q": "E quanto aos dados internos confidenciais?",
+      "a": "Alinhamos o acesso, o intervalo de dados e os registros. A hospedagem e a autenticação seguem seu ambiente e política."
+    },
+    {
+      "q": "Você pode manter e estender após o lançamento?",
+      "a": "Sim. Adições de recursos, alterações de integração e suporte operacional podem ter escopo separado."
+    }
+  ],
+  "finalLabel": "INICIE UM PROJETO",
+  "finalTitle": "Transforme o trabalho recorrente em equipe\nem uma ferramenta.",
+  "finalLead": "Diga-nos quais trabalhos estão espalhados nas planilhas e no chat. Confirmaremos as telas e o fluxo que você precisa.",
+  "formTitle": "Consulta de FERRAMENTAS INTERNAS",
+  "formLead": "Compartilhe seu processo atual e os recursos necessários – confirmaremos o escopo.",
+  "formCategory": "AUTOMAÇÃO",
+  "formService": "FERRAMENTAS INTERNAS",
+  "labelCategory": "CATEGORIA DE SERVIÇO",
+  "labelService": "SERVIÇO",
+  "labelName": "Nome",
+  "labelCompany": "Empresa/marca",
+  "labelEmail": "E-mail",
+  "labelCurrentTools": "Ferramentas que você usa hoje",
+  "labelCurrentWork": "Trabalho recorrente hoje",
+  "labelDesired": "Recursos que você precisa",
+  "labelUsers": "Usuários esperados",
+  "labelIntegrations": "Serviços para conectar",
+  "labelTimeline": "Cronograma esperado",
+  "labelBudget": "Faixa de orçamento",
+  "labelMessage": "Descrição do projeto",
+  "labelConsent": "Concordo com a coleta e uso de informações pessoais.",
+  "privacyLink": "Política de Privacidade",
+  "optional": "opcional",
+  "currentToolsOptions": [
+    "Google Sheets",
+    "Excel",
+    "Notion",
+    "Slack",
+    "E-mail",
+    "CRM",
+    "Outros SaaS",
+    "Nenhum/ad hoc"
+  ],
+  "desiredOptions": [
+    "Solicitação/entrada",
+    "Quadro de trabalho",
+    "Fluxo de aprovação",
+    "Painel",
+    "Função e acesso",
+    "Integrações",
+    "Assistência de IA",
+    "Automação",
+    "Não tenho certeza"
+  ],
+  "usersOptions": [
+    "1–5",
+    "6–20",
+    "21–50",
+    "Mais de 50",
+    "A definir"
+  ],
+  "timelineOptions": [
+    "O mais rápido possível",
+    "2–4 semanas",
+    "4–8 semanas",
+    "2–3 meses",
+    "A definir"
+  ],
+  "budgetOptions": [
+    "₩ 1 milhão – 3 milhões",
+    "₩ 3 milhões – 5 milhões",
+    "₩ 5 milhões – 10 milhões",
+    "₩10M+",
+    "A definir"
+  ],
+  "phCurrentWork": "por exemplo entrada → atribuir → aprovar → registro concluído",
+  "phIntegrations": "por exemplo Google Sheets + Slack",
+  "phMessage": "Compartilhe o fluxo atual, pontos problemáticos e telas/recursos necessários.",
+  "submit": "Enviar consulta",
+  "submitting": "Enviando…",
+  "fail": "Falha no envio. Por favor, tente novamente ou envie-nos um e-mail.",
+  "mailSubject": "Newon Consulta de FERRAMENTAS INTERNAS",
+  "backAutomation": "Voltar para AUTOMAÇÃO →",
+  "exploreAi": "Veja AUTOMAÇÃO DE IA →"
+}

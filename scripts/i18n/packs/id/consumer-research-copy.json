@@ -1,0 +1,479 @@
+{
+  "seoTitle": "CONSUMER RESEARCH | NewonBisnis",
+  "metaDescription": "Konsumen dan kebutuhan pengguna, perilaku, dan pola nyeri - terstruktur sebagai wawasan untuk produk dan keputusan mengirim pesan. Newon CONSUMER RESEARCH.",
+  "crumbBusiness": "BISNIS",
+  "crumbServices": "Servis",
+  "crumbResearch": "PENELITIAN",
+  "crumbHere": "CONSUMER RESEARCH",
+  "eyebrow": "CONSUMER RESEARCH",
+  "subEyebrow": "PENELITIAN",
+  "headline": "Kumpulkan suara pengguna.\nMemahami mereka sebagai pola.",
+  "lead": "Kami meneliti kebutuhan, perilaku, dan pola nyeri dari ulasan, survei, wawancara, dukungan log, dan penggunaan sinyal. Suara pengguna yang menyebar diselenggarakan oleh segmen, kebutuhan, dan motivasi menjadi singkat wawasan yang dapat digunakan tim Anda untuk target, pesan, dan keputusan prioritas produk.",
+  "ctaPrimary": "Pencarian penelitian konsumen",
+  "ctaSecondary": "Lihat hasil penelitian ini.",
+  "meta": [
+    {
+      "k": "PELAYAN",
+      "v": "Riset Konsumer"
+    },
+    {
+      "k": "TERBAIK UNTUK",
+      "v": "Target dan validasi pesan"
+    },
+    {
+      "k": "GARIS WAKTU",
+      "v": "Biasanya 2-4 minggu"
+    },
+    {
+      "k": "HARGA",
+      "v": "Dari £300,000"
+    }
+  ],
+  "overviewLabel": "TINJAU",
+  "overviewTitle": "Banyak pendapat.\nTidak cukup pola.",
+  "overviewBody": [
+    "Suara pengguna selalu ada saat membahas peningkatan produk, pemasaran, atau layanan. Bagian yang sulit adalah mengorganisir mereka ke segmen kebutuhan dan pola perilaku.",
+    "Ulasan, tiket dukungan, survey jawaban, wawancara, sinyal masyarakat, dan data penggunaan masing-masing menawarkan sudut yang berbeda - tapi jarang dalam tim formulir dapat memutuskan dari.",
+    "CONSUMER RESEARCH mulai dengan mendefinisikan apa yang perlu kau pelajari. Kemudian kita mengumpulkan, mengklasifikasikan, dan struktur sinyal ke segmen, kebutuhan, rasa sakit, motivasi, dan kesempatan dalam satu wawasan singkat."
+  ],
+  "problemsLabel": "MASALAH",
+  "problemsTitle": "Membantu ketika Anda menghadapi situasi ini.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "TARGET UNCERT _ _ KEP000 _ _ NTY",
+      "d": "Tidak jelas untuk siapa produk atau jasa ini,\natau grup pengguna mana yang paling penting."
+    },
+    {
+      "n": "02",
+      "t": "SUARA SCATTERED",
+      "d": "Ada banyak ulasan dan tiket tapi tidak ada pola yang jelas.\nKeluhan yang sama terulang tanpa prioritas."
+    },
+    {
+      "n": "03",
+      "t": "VALIDATION MESSAGE",
+      "d": "Anda perlu bukti untuk memvalidasi pesan dan posisi.\nAnda ingin tahu apa respon pengguna sebenarnya."
+    },
+    {
+      "n": "04",
+      "t": "Perlu prioritas",
+      "d": "Anda memiliki banyak fitur atau kandidat layanan\ntetapi kurang bukti untuk apa yang harus dipecahkan pertama."
+    },
+    {
+      "n": "05",
+      "t": "GAP BEHAVIOR",
+      "d": "Ada kesenjangan antara asumsi dan perilaku yang sebenarnya.\nAnda perlu konteks mengapa pengguna bertindak seperti itu."
+    },
+    {
+      "n": "06",
+      "t": "PRE--LAUNCH INPUT",
+      "d": "Sebelum peluncuran, merek ulang, atau fitur utama,\nAnda perlu reaksi pengguna pertama."
+    }
+  ],
+  "baLabel": "SEBELUM / SETELAH",
+  "baTitle": "Scattered voices vs\npemahaman pengguna terstruktur",
+  "beforeLabel": "SEBELUM",
+  "afterLabel": "SETELAH",
+  "before": [
+    "Semua orang memeriksa ulasan, tiket, dan survei secara terpisah",
+    "'Pengguna menginginkan ini' sering dikatakan tapi bukti tersebar",
+    "Segmen, kebutuhan, dan prioritas pergeseran oleh percakapan",
+    "Insight tidak didokumentasikan atau terhubung ke validasi berikutnya"
+  ],
+  "after": [
+    "Pertanyaan penelitian dan lingkup pengguna didefinisikan pertama",
+    "Segmen, kebutuhan, dan pola nyeri terstruktur",
+    "Sebuah singkat wawasan bersama untuk tim",
+    "Terhubung ke pesan, fitur, dan percobaan"
+  ],
+  "capsLabel": "CAPBILITIES",
+  "capsTitle": "Kami membangun penelitian\nAnda pemahaman kebutuhan pengguna.",
+  "caps": [
+    {
+      "t": "PERTANYAAN DESIGN",
+      "d": "Tentukan apa yang Anda butuhkan untuk belajar untuk memutuskan.\nClarify tujuan penelitian dan target pengguna."
+    },
+    {
+      "t": "PENELITIAN MEJA",
+      "d": "Mengumpulkan sumber sekunder - ulasan, komunitas, umpan balik publik.\nPeriksa sumber dan konteks."
+    },
+    {
+      "t": "PENELITIAN PRIMER",
+      "d": "Termasuk wawancara atau desain survei dan lapangan bila diperlukan.\nStruktur pertanyaan dan peserta seleksi bersama-sama."
+    },
+    {
+      "t": "PEMETAAN SEGMEN",
+      "d": "Atur pengguna berdasarkan segmen, persona, dan situasi.\nStruktur yang menggunakan apa dan mengapa."
+    },
+    {
+      "t": "PERLU & P _ _ KEP _ _ N ANALYSIS",
+      "d": "Pola kebutuhan, rasa sakit, dan harapan tak terduga.\nPrioritas berulang masalah."
+    },
+    {
+      "t": "SINYAL PERILAKU",
+      "d": "Menangkap perilaku, pembelian, churn, dan pola penggunaan.\nHubungkan asumsi ke perilaku yang sebenarnya."
+    },
+    {
+      "t": "PESAN INSSAGE",
+      "d": "Merangkum pesan apa, nilai, dan pengguna bahasa yang merespon.\nMenyediakan bukti untuk posisi dan salinan."
+    },
+    {
+      "t": "IMPLIKASI",
+      "d": "Hubungkan temuan ke produk, pemasaran, dan implikasi layanan.\nSarankan percobaan berikutnya dan validasi."
+    }
+  ],
+  "sourcesLabel": "SOURCES RESEARCH",
+  "sourcesTitle": "Kami menggabungkan sinyal pengguna yang dibutuhkan tujuanmu.",
+  "sourcesNote": "Sumber aktual bervariasi dengan lingkup, akses data, dan penyertaan penelitian utama.",
+  "sources": [
+    "Produk & ulasan layanan",
+    "Ulasan toko & pasar",
+    "Dukungan & log penyelidikan",
+    "Respon & Survey",
+    "Wawancara pengguna & industri",
+    "Sinyal & sosial komunitas",
+    "Gunakan data perilaku",
+    "NPS & survei umpan balik",
+    "Catatan penjualan & konsultasi",
+    "Penelitian pengguna internal",
+    "Ulasan produk peserta",
+    "Kelompok fokus (lingkup opsional)"
+  ],
+  "useLabel": "GUNAKAN KASES",
+  "useTitle": "Pertanyaan yang bisa kami jawab.",
+  "useBadge": "Topik penelitian contoh",
+  "useCases": [
+    {
+      "t": "PERINTAH TARGET",
+      "d": "Clarify inti pengguna dan segmen.\nStruktur siapa yang harus fokus terlebih dahulu."
+    },
+    {
+      "t": "Perlu prioritas",
+      "d": "Prioritas yang perlu dan sakit untuk memecahkan pertama.\nGunakan sebagai bukti untuk keputusan peta jalan."
+    },
+    {
+      "t": "TEST PESAN",
+      "d": "Validate pesan, nilai, dan salin arah.\nLihat apa tanggapan pengguna bahasa."
+    },
+    {
+      "t": "PAIN POLA",
+      "d": "Pola berulang keluhan dan sinyal churn.\nEkstrak masalah umum dari CS dan ulasan."
+    },
+    {
+      "t": "KONTEK BEHAVIOR",
+      "d": "Memahami konteks di balik pembelian, penggunaan, dan churn.\nPeriksa kesenjangan antara asumsi dan perilaku."
+    },
+    {
+      "t": "INPUT PERSONA",
+      "d": "Struktur personas, pekerjaan, dan menggunakan situasi.\nMasukan untuk produk, desain, dan pemasaran."
+    },
+    {
+      "t": "LEDAKAN PRE- LAUNCH",
+      "d": "Periksa reaksi pengguna sebelum peluncuran atau rebrand.\nBukti untuk Go/No-go dan penyesuaian pesan."
+    },
+    {
+      "t": "OPPOUNITY MAP",
+      "d": "Dokumen kebutuhan tak terpenuhi dan whitespace.\nPermukaan fitur baru atau peluang layanan."
+    }
+  ],
+  "flowLabel": "EXAMLE WORKFLOW",
+  "flowTitle": "Dari pertanyaan ke singkat wawasan",
+  "flow": [
+    {
+      "n": "01",
+      "t": "TENTUKAN",
+      "d": "Jelaskan pertanyaan penelitian dan target pengguna.\nClarify apa yang Anda butuhkan untuk belajar untuk memutuskan.",
+      "examples": [
+        "Pertanyaan utama",
+        "Target pengguna",
+        "Scope",
+        "Dikirim"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "MENGUMPULKAN",
+      "d": "Kumpulkan ulasan, survei, wawancara, dan sinyal dukungan.\nUlas kedua dan utama bahan bersama-sama.",
+      "examples": [
+        "Ulasan berita",
+        "Survei",
+        "Wawancara",
+        "Dukung"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "ANALISA",
+      "d": "Pola klasifikasi, segmen, kebutuhan, dan rasa sakit.\nStruktur berulang sinyal dan perbedaan.",
+      "examples": [
+        "Segmen",
+        "Kebutuhan",
+        "Halaman",
+        "Motivasi"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "SINTESIS",
+      "d": "Ekstrak wawasan kunci dan peluang.\nHubungkan apa yang penting dan mengapa hal itu penting.",
+      "examples": [
+        "Tema kunci",
+        "Prioritas",
+        "Kesempatan",
+        "Risiko"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "KIRIM",
+      "d": "Kirim singkat, peta, dan implikasi.\nFormat untuk penggunaan tim langsung.",
+      "examples": [
+        "Brief Insight",
+        "Peta Segmen",
+        "Langkah Berikutnya"
+      ]
+    }
+  ],
+  "reportLabel": "KELUARKAN",
+  "reportTitle": "Dikirim terstruktur untuk produk dan keputusan pemasaran.",
+  "reportLead": "Komposisi bervariasi dengan tujuan proyek. Di bawah ini adalah bagian umum.",
+  "reportMockStatus": "DALAM PANDANGAN",
+  "reportMockK": "RINGKASAN PENGGUNA INSIGHT",
+  "reportMockT": "Segmen",
+  "reportItems": [
+    "Ringkasan Eksekutif",
+    "Scope Riset",
+    "Ringkasan Segmen",
+    "Perlu & Sakit Tema",
+    "Sinyal Perilaku",
+    "Insight Pesan",
+    "Peluang Area",
+    "Implikasi",
+    "Disarankan Langkah Berikutnya",
+    "Catatan Sumber"
+  ],
+  "dashTitle": "Berbagi pola pengguna dalam satu tampilan.",
+  "dashLead": "Segmen peta dan perlu tema bersama-sama - jadi diskusi tim bergerak lebih cepat.",
+  "dashNote": "Peta segmen dan komposisi tema bervariasi dengan lingkup dan tujuan.",
+  "dashMetrics": [
+    "Segmen",
+    "Tema",
+    "Kutipan",
+    "Prioritas"
+  ],
+  "dashFilters": [
+    "Semua",
+    "Kebutuhan",
+    "Halaman",
+    "Motivasi"
+  ],
+  "aiLabel": "SINTESIS",
+  "aiTitle": "Dari banyak suara pengguna\ndengan pola yang penting.",
+  "aiLead": "Ketika ada banyak ulasan, tiket, wawancara, dan teks survei, kami mengklasifikasikan, meringkas, dan membandingkan dari sudut yang Anda butuhkan.",
+  "aiExamples": [
+    "Ringkasan pola review dan umpan balik",
+    "Mengulang rasa sakit dan masalah ekstraksi",
+    "Segmen perlu perbandingan",
+    "Kutipan wawancara digest",
+    "Analisis respon pesan dan nilai",
+    "Draft garis peta singkat dan tema"
+  ],
+  "aiNote": "Interpretasi dan keputusan akhir ditinjau bersama denganmu.",
+  "delLabel": "TERKIRIM",
+  "delTitle": "Apa yang Anda terima setelah proyek",
+  "delLead": "Tergantung pada lingkup, kami memberikan item yang Anda butuhkan dari daftar di bawah ini.",
+  "deliverables": [
+    "Brief Insight",
+    "Peta Segmen",
+    "Perlu dan Ringkasan Sakit",
+    "Catatan Perilaku",
+    "Insight Pesan",
+    "Overview Peluang",
+    "Implikasi & Rekomendasi",
+    "Panduan Wawancara (opsional)",
+    "Ringkasan Presentasi"
+  ],
+  "processLabel": "PROSES",
+  "processTitle": "Dari definisi pertanyaan ke pengiriman.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOSANGAT",
+      "d": "Konfirmasikan tujuan penelitian dan konteks keputusan.\nDan pahamilah apa yang kamu putuskan.",
+      "examples": [
+        "Gol",
+        "Penyimpanan",
+        "Garis Waktu",
+        "Konstrain"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCOPE",
+      "d": "Tentukan pertanyaan, target pengguna, metode, dan pengiriman.\nSetuju dalam penelitian utama.",
+      "examples": [
+        "Pertanyaan",
+        "Target",
+        "Metode",
+        "Format"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "PENELITIAN",
+      "d": "Mengumpulkan dan meninjau sinyal dan data yang relevan.\nTermasuk wawancara atau survei ketika discoped.",
+      "examples": [
+        "Ulasan berita",
+        "Survei",
+        "Wawancara",
+        "Dukung"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ANALISIS",
+      "d": "Pola struktur, segmen, dan kebutuhan.\nDerive tema dan prioritas.",
+      "examples": [
+        "Segmen",
+        "Tema",
+        "Prioritas",
+        "Kutipan"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DRAFT",
+      "d": "Wawasan singkat dan peta.\nMembangun tulang belakang penemuan kunci.",
+      "examples": [
+        "Ringkasan",
+        "Peta Segmen",
+        "Tema"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "ULASAN",
+      "d": "Ulasan kunci wawasan dan interpretasi bersama.\nAtur kesenjangan dan prioritas.",
+      "examples": [
+        "Umpan balik",
+        "Perbaikan",
+        "Prioritas"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "KIRIM",
+      "d": "Kirim dokumen terakhir dan implikasi.\nHubungkan ke percobaan berikutnya dan validasi.",
+      "examples": [
+        "Akhir Brief",
+        "Peta",
+        "Langkah Berikutnya"
+      ]
+    }
+  ],
+  "scopeLabel": "LEVELS SCOPE",
+  "scopeTitle": "Panduan untuk proyek kompleksitas.",
+  "scopeLead": "Tidak tetap paket - kita lingkup berdasarkan tujuan, penonton, dan inklusif penelitian utama.",
+  "scopes": [
+    {
+      "t": "DECK INSIGHT BRIEF",
+      "items": [
+        "Fokus penelitian di meja (ulasan, tiket, umpan balik publik)",
+        "3-5 pertanyaan inti",
+        "Perlu dan ringkasan tema nyeri",
+        "Ringkasan Ringkasan",
+        "Prioritas poin"
+      ]
+    },
+    {
+      "t": "SEGMENT & PERLU MAP",
+      "items": [
+        "Ringkasan segmen dan persona",
+        "Perlu, rasa sakit, dan peta motivasi",
+        "Perilaku dan implikasi pesan",
+        "Daerah peluang",
+        "Ringkasan presentasi opsional"
+      ]
+    },
+    {
+      "t": "RISET UBAHAN",
+      "items": [
+        "Wawancara dan desain survei dan lapangan",
+        "Multiple segmen atau kanal",
+        "Hubungan data perilaku",
+        "Presentasi gubahan",
+        "_ _ KeeP000 _ _ LD atau _ _ KeepP001 _ _ linkage"
+      ]
+    }
+  ],
+  "timeLabel": "GARIS WAKTU",
+  "timeTitle": "Waktu tergantung pada jangkauan.",
+  "timeLead": "Penambahan penelitian utama, ukuran penonton, dan akses data dapat mengubah durasi.",
+  "timelines": [
+    {
+      "t": "Deck Insight Brief",
+      "d": "Sekitar 1-2 minggu"
+    },
+    {
+      "t": "Segmen & Peta Perlu",
+      "d": "Sekitar 2-3 minggu"
+    },
+    {
+      "t": "Riset Ubahan",
+      "d": "Sekitar 3-4 minggu terpisah"
+    }
+  ],
+  "priceLabel": "PROYEK COST",
+  "priceTitle": "Kami hanya mengutip lingkup yang Anda butuhkan.",
+  "priceName": "CONSUMER RESEARCH",
+  "priceValue": "Dari £300,000",
+  "priceFactorsLabel": "Apa yang membentuk harga",
+  "priceFactors": [
+    "Jumlah pertanyaan penelitian",
+    "Target lingkup pengguna atau segmen",
+    "Penambahan penelitian utama",
+    "Wawancara atau jumlah respon",
+    "Kedalaman Penelitian",
+    "Aksesibilitas data",
+    "Format yang dapat dilepas",
+    "Garis waktu penting"
+  ],
+  "priceNote": "Kutipan akhir dikonfirmasi setelah meninjau tujuan, metode, dan lingkup.",
+  "faqLabel": "PSD",
+  "faqTitle": "Pertanyaan yang sering ditanyakan",
+  "faqs": [
+    {
+      "q": "Pengguna atau konsumen apa yang bisa kau teliti?",
+      "a": "B2B, B2C, SaaS, perdagangan, jasa, dan lebih - tergantung pada tujuan dan penonton yang dapat diakses. Kami mengkonfirmasi cocok sebelum mulai."
+    },
+    {
+      "q": "Apakah ini termasuk wawancara atau survei?",
+      "a": "Kita bisa mulai desk- pertama. Wawancara dan survei dapat disertakan dalam lingkup bila diperlukan."
+    },
+    {
+      "q": "Format apa yang digunakan untuk pengiriman?",
+      "a": "Dokumen dan peta pertama: Berita tersembunyi, peta Segmen, Ringkasan Perlu dan Sakit, dan banyak lagi. Ringkasan presentasi dapat disertakan."
+    },
+    {
+      "q": "Dapatkah Anda menggunakan dukungan atau data penggunaan kami?",
+      "a": "Ya, dengan apa yang bisa kau bagi. Jika tidak kita bekerja dari ulasan publik dan umpan balik."
+    },
+    {
+      "q": "Apa bedanya ini dengan MARKET RESEARCH?",
+      "a": "CONSUMER RESEARCH berfokus pada pengguna dan kebutuhan konsumen dan perilaku. Jika struktur pasar adalah kebutuhan, MARKET RESEARCH mungkin cocok lebih baik - lingkup dapat dihubungkan."
+    },
+    {
+      "q": "Dapatkah ini terhubung ke B _ KEP000 _ _ LD atau _ KEP001 _?",
+      "a": "Ya. Insight dapat memberi makan fitur prioritas, definisi target, dan pesan."
+    },
+    {
+      "q": "Bagaimana kerahasiaan ditangani?",
+      "a": "Kami bekerja dalam lingkup yang disepakati saja. Sebuah NDA dapat ditandatangani ketika diperlukan."
+    }
+  ],
+  "finalLabel": "MULAI SUATU PROJEK",
+  "finalTitle": "Jangan menebak pengguna Anda -\nmendengarkan dan pola pertama.",
+  "finalLead": "Beritahu kami target, pesan, atau masalah kebutuhan Anda mengevaluasi. Kami akan mengkonfirmasi apa yang harus penelitian dan bagaimana untuk struktur keluaran.",
+  "ctaFinalSecondary": "Lihat semua RESEARCH GNU",
+  "ctaFinalSecondaryHref": "../research/"
+}

@@ -499,9 +499,9 @@ function finalHtml(copy) {
 }
 
 
-/** @param {"ko"|"en"} lang */
+/** @param {string} lang */
 export function buildHomeStudioBody(lang) {
-  const copy = getHomePageCopy(lang === "ko" ? "ko" : "en");
+  const copy = getHomePageCopy(lang);
   const stats = getCompanyMetrics();
   const bySlug = projectsBySlug(lang);
 

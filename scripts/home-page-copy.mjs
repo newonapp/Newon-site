@@ -1,9 +1,14 @@
 /**
  * Homepage studio copy (KO / EN). Dynamic lists built in home-page-body.mjs.
  */
+import { deepMerge, loadPackOverlay, resolveCopyLang } from "./i18n/copy-lang.mjs";
 
 export function getHomePageCopy(lang) {
-  return lang === "ko" ? KO : EN;
+  const L = resolveCopyLang(lang);
+  if (L === "ko") return KO;
+  if (L === "en") return EN;
+  const overlay = loadPackOverlay("home-page", L);
+  return overlay ? deepMerge(EN, overlay) : EN;
 }
 
 const KO = {

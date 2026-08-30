@@ -1,0 +1,385 @@
+{
+  "seoTitle": "About Newon | Product & Venture Studio",
+  "metaDescription": "Newon is a Product & Venture Studio that builds apps, AI, games, and web services — and partners with companies to design new digital experiences and business possibilities.",
+  "metaKeywords": "Newon, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, Product & Venture Studio",
+  "brandAria": "Newon",
+  "brandMarkAlt": "Newon",
+  "brandWord": "Newon",
+  "brandLine": "Product & Venture Studio",
+  "brandCrumb": "Company / ABOUT",
+  "brandScroll": "Scroll down",
+  "brandPointTitle": "NEWON CARD",
+  "brandPointSub": "Meet Newon through the digital card",
+  "brandPointBadge": "DIGITAL",
+  "brandMetaLeft": "NEWON",
+  "brandMetaRight": "EST. 2026",
+  "brandKicker": "NEW + ON",
+  "brandTag": "Apps · AI · Games · Web — built and validated by us.",
+  "brandDomainsAria": "What we build",
+  "brandDomains": [
+    "Apps",
+    "AI",
+    "Games",
+    "Web"
+  ],
+  "brandMeaning": "Turning new possibilities on — making them real.",
+  "heroEyebrow": "ABOUT NEWON",
+  "heroTitleHtml": "Turning new possibilities<br />into products.",
+  "heroLeadHtml": "We build and run apps, AI, games, and web services — and use that same execution to open the next product possibilities with companies and founders.",
+  "heroNameAria": "New + On",
+  "heroNameKicker": "NEW + ON",
+  "heroNameNew": "NEW",
+  "heroNameNewDesc": "New ideas and possibilities",
+  "heroNameOn": "ON",
+  "heroNameOnDesc": "Making ideas work as real products",
+  "heroNameNote": "New + On means turning new ideas and possibilities on — making them real.",
+  "cardAria": "Open Newon digital card",
+  "cardAlt": "Newon business card",
+  "cardHint": "Digital card · tap to open",
+  "ctaProducts": "View products →",
+  "ctaBusiness": "Business inquiry →",
+  "whyEyebrow": "WHY NEWON",
+  "whyTitle": "A name that turns possibilities on.",
+  "whyTagline": "New + On",
+  "whyTaglineEn": "TURN POSSIBILITIES ON",
+  "whyBody": [
+    "Newon starts with New + On.",
+    "New stands for ideas, experiences, products, and possibilities. On means switching them on — making them work and connecting them to the world.",
+    "We don’t leave ideas as thoughts. We build, ship, learn, and connect what’s validated to what comes next."
+  ],
+  "whyNewCols": [
+    {
+      "head": "NEW",
+      "items": [
+        "New ideas",
+        "New experiences",
+        "New products",
+        "New possibilities"
+      ]
+    },
+    {
+      "head": "ON",
+      "items": [
+        "Make it work",
+        "Connect it",
+        "Ship it",
+        "Grow it"
+      ]
+    }
+  ],
+  "missionEyebrow": "MISSION",
+  "missionTitle": "From idea to product — then to what’s next.",
+  "missionLead": "Newon builds and operates products directly — then shares that structure and execution with companies and founders.",
+  "missionPoints": [
+    {
+      "n": "01",
+      "title": "MAKE",
+      "body": "Turn everyday problems into apps, AI, games, and web products."
+    },
+    {
+      "n": "02",
+      "title": "VALIDATE",
+      "body": "Validate through real launches, usage, and feedback."
+    },
+    {
+      "n": "03",
+      "title": "EXPAND",
+      "body": "Expand proven work through Business, Studio, and Labs."
+    }
+  ],
+  "glanceEyebrow": "WHO WE BUILD FOR",
+  "glanceTitle": "Who we build with.",
+  "glanceLead": "From people who use our products, to teams validating ideas, to companies we build with — Newon moves through three relationships.",
+  "glanceRoles": [
+    {
+      "n": "01",
+      "title": "USERS",
+      "via": "PRODUCTS",
+      "body": "People who want daily life — habits, money, health, family, travel — to feel simpler.",
+      "tags": [
+        "Habit",
+        "Money",
+        "Care",
+        "Travel",
+        "Life"
+      ]
+    },
+    {
+      "n": "02",
+      "title": "FOUNDERS",
+      "via": "BUSINESS",
+      "body": "Founders and teams who need to turn an idea into a real product quickly.",
+      "tags": [
+        "MVP",
+        "Build",
+        "Ship"
+      ]
+    },
+    {
+      "n": "03",
+      "title": "COMPANIES",
+      "via": "BUSINESS · STUDIO",
+      "body": "Companies and brands building digital services, automation, research, and brand experience.",
+      "tags": [
+        "Automation",
+        "Research",
+        "Brand"
+      ]
+    }
+  ],
+  "spacesEyebrow": "PROBLEM SPACES",
+  "spacesTitle": "The problems we dig into.",
+  "spaces": [
+    {
+      "n": "01",
+      "title": "HABIT & GROWTH",
+      "body": "Help people track, set goals, and keep small changes going.",
+      "slugs": [
+        "ox-month",
+        "goalup",
+        "countup"
+      ]
+    },
+    {
+      "n": "02",
+      "title": "MONEY",
+      "body": "Make spending, subscriptions, and saving clearer.",
+      "slugs": [
+        "savy",
+        "subping",
+        "piggyup"
+      ]
+    },
+    {
+      "n": "03",
+      "title": "CARE",
+      "body": "Record care for family, pets, and health — together.",
+      "slugs": [
+        "babylog",
+        "petlog",
+        "pillmate"
+      ]
+    },
+    {
+      "n": "04",
+      "title": "LIFE & PLATFORM",
+      "body": "From travel records to Newon membership — connect experiences.",
+      "slugs": [
+        "myworld",
+        "newon-plus"
+      ]
+    }
+  ],
+  "journeyEyebrow": "JOURNEY",
+  "journeyTitle": "Start small. Keep expanding.",
+  "journeyNote": "We don’t invent growth stories. Newon learns by shipping and operating.",
+  "journeyMilestones": [
+    {
+      "year": "START",
+      "title": "Began as a Product Studio",
+      "body": "Started by planning, building, and launching apps and digital products."
+    },
+    {
+      "year": "BUILD",
+      "title": "Operate and validate",
+      "body": "Build and run products across habit, money, family, health, and travel."
+    },
+    {
+      "year": "EXPAND",
+      "title": "Business · Studio · Labs",
+      "body": "Expand product experience into work with companies through Business, Studio, and Labs.",
+      "isNow": true
+    },
+    {
+      "year": "NEXT",
+      "title": "What’s next",
+      "body": "Keep going — more markets, more languages, more useful products and experiments."
+    }
+  ],
+  "studioNoteEyebrow": "STUDIO NOTE",
+  "studioNoteTitle": "One studio. Many possibilities.",
+  "studioNoteBody": "Newon doesn’t stop at one app. We build products, collaborate with companies, design brands, and run small experiments to find what’s next.",
+  "metricLabels": {
+    "apps": "APPS",
+    "products": "PRODUCTS",
+    "countries": "COUNTRIES",
+    "languages": "LANGUAGES"
+  },
+  "buildEyebrow": "WHAT NEWON DOES",
+  "buildTitle": "From products to experiments — one studio.",
+  "buildAreas": [
+    {
+      "n": "01",
+      "title": "PRODUCTS",
+      "body": "Digital products we build and operate. Apps · AI · Games · Tools",
+      "href": "../products/"
+    },
+    {
+      "n": "02",
+      "title": "BUSINESS",
+      "body": "Digital builds and problem-solving for companies and founders. Build · Automation · Research · Solutions",
+      "href": "../business/"
+    },
+    {
+      "n": "03",
+      "title": "STUDIO",
+      "body": "Brand and digital experience design. Brand · Digital · Content · IP",
+      "href": "../studio/"
+    },
+    {
+      "n": "04",
+      "title": "LABS",
+      "body": "Small experiments to validate what’s next. Research · Prototype · Testing",
+      "href": "../resources/labs/"
+    }
+  ],
+  "productAreasEyebrow": "PRODUCT AREAS",
+  "productAreas": [
+    "Life",
+    "Productivity",
+    "Finance",
+    "Health",
+    "Family",
+    "Travel"
+  ],
+  "workEyebrow": "HOW WE WORK",
+  "workTitle": "Build small. Validate for real.",
+  "workSteps": [
+    {
+      "n": "01",
+      "title": "DISCOVER",
+      "body": "Find problems and opportunities."
+    },
+    {
+      "n": "02",
+      "title": "BUILD",
+      "body": "Ship the smallest useful version quickly."
+    },
+    {
+      "n": "03",
+      "title": "SHIP",
+      "body": "Release something people can actually use."
+    },
+    {
+      "n": "04",
+      "title": "LEARN",
+      "body": "Learn from usage and response."
+    },
+    {
+      "n": "05",
+      "title": "EXPAND",
+      "body": "Grow validated work into larger products and business."
+    }
+  ],
+  "principlesEyebrow": "PRINCIPLES",
+  "principlesTitle": "How we hold the work.",
+  "principles": [
+    {
+      "n": "01",
+      "title": "BUILD USEFUL PRODUCTS",
+      "body": "Products should solve real problems."
+    },
+    {
+      "n": "02",
+      "title": "START SMALL",
+      "body": "Begin with the smallest useful form."
+    },
+    {
+      "n": "03",
+      "title": "SHIP FAST",
+      "body": "Prioritize shipping over waiting for perfect."
+    },
+    {
+      "n": "04",
+      "title": "LEARN FROM USERS",
+      "body": "Usage and response come first."
+    },
+    {
+      "n": "05",
+      "title": "THINK GLOBAL",
+      "body": "Design for many markets and languages from the start."
+    }
+  ],
+  "selectedEyebrow": "SELECTED PRODUCTS",
+  "selectedTitle": "Products Newon builds directly.",
+  "selectedLead": "Representative products Newon plans, builds, and operates.",
+  "selectedAll": "VIEW ALL PRODUCTS →",
+  "selectedProductsMax": 11,
+  "universeView": "View product ↗",
+  "statusLive": "Live",
+  "statusProject": "Project",
+  "productCats": {
+    "ox-month": "Habit / Life",
+    "goalup": "Productivity",
+    "countup": "Utility",
+    "savy": "Finance",
+    "subping": "Finance",
+    "piggyup": "Finance",
+    "pillmate": "Health",
+    "babylog": "Family",
+    "petlog": "Family",
+    "myworld": "Travel / Life",
+    "newon-plus": "Platform",
+    "404-human": "Games"
+  },
+  "productOrder": [
+    "ox-month",
+    "goalup",
+    "savy",
+    "babylog",
+    "myworld",
+    "newon-plus",
+    "countup",
+    "subping",
+    "piggyup",
+    "petlog",
+    "pillmate",
+    "404-human"
+  ],
+  "exploreEyebrow": "EXPLORE NEWON",
+  "exploreTitle": "Explore more of Newon.",
+  "explorePanels": [
+    {
+      "n": "01",
+      "title": "PORTFOLIO",
+      "body": "Products and projects Newon has built.",
+      "cta": "Portfolio →",
+      "href": "../portfolio/",
+      "invert": true
+    },
+    {
+      "n": "02",
+      "title": "NEWS",
+      "body": "Launches and official updates.",
+      "cta": "News →",
+      "href": "../news/"
+    },
+    {
+      "n": "03",
+      "title": "MEDIA",
+      "body": "Product stories, build process, and video.",
+      "cta": "Media →",
+      "href": "../media/"
+    },
+    {
+      "n": "04",
+      "title": "BUSINESS",
+      "body": "Digital projects built with companies.",
+      "cta": "Business →",
+      "href": "../business/",
+      "invert": true
+    }
+  ],
+  "ideaEyebrow": "YOUR IDEA × NEWON",
+  "ideaTitleHtml": "The next product<br />might start with your problem.",
+  "ideaLead": "If you need a new app, AI tool, web service, or a feature for a Newon product — tell us. We’ll explore how to turn it into something real.",
+  "ideaCta": "Submit an idea →",
+  "ideaHint": "APP · AI · WEB · GAME · BUSINESS",
+  "closeEyebrow": "NEWON",
+  "closeTitleHtml": "We keep building<br />what’s next.",
+  "closeLead": "Explore Newon products, share an idea, or build a new digital experience together.",
+  "closeTaglineEn": "",
+  "closeProducts": "View products →",
+  "closeBusiness": "Business inquiry →",
+  "closePortfolio": "Portfolio →"
+}

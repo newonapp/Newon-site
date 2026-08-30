@@ -1,0 +1,483 @@
+{
+  "seoTitle": "INTERNAL SYSTEM | Newon Business",
+  "metaDescription": "Build custom internal operations and management systems — requirements, permissions, implementation, deployment, and ops guides. Newon INTERNAL SYSTEM.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICES",
+  "crumbSolutions": "SOLUTIONS",
+  "crumbHere": "INTERNAL SYSTEM",
+  "eyebrow": "INTERNAL SYSTEM",
+  "subEyebrow": "SOLUTIONS",
+  "headline": "Internal work is heavy.\nSystems are scattered.",
+  "lead": "Approvals, requests, inventory, HR, settlement, reporting, client and project ops — we design and build custom internal web, admin, and portal systems. From requirements, permissions, and workflows through integrations and Admin Console — delivered as one system your team actually uses.",
+  "ctaPrimary": "Internal system inquiry →",
+  "ctaSecondary": "See the build flow ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Internal System"
+    },
+    {
+      "k": "BEST FOR",
+      "v": "Internal ops digitization"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Depends on scope"
+    },
+    {
+      "k": "PRICE",
+      "v": "Custom quote"
+    }
+  ],
+  "overviewLabel": "OVERVIEW",
+  "overviewTitle": "Ops runs on spreadsheets\nand chat threads.",
+  "overviewBody": [
+    "Internal requests, approvals, settlement, reporting, and data entry — operational work already exists. The problem is that it lives across spreadsheets, chat, manual steps, and multiple SaaS tools instead of one connected system.",
+    "Off-the-shelf tools fit parts of the work but struggle with your permission structure, approval lines, data, and legacy integrations. Teams end up in ‘almost works but awkward’ mode.",
+    "INTERNAL SYSTEM starts by defining internal work, users, and permission structure. Then we design workflows, Admin Console, data and integrations — and deliver implementation, deployment, and ops guides as one internal system."
+  ],
+  "problemsLabel": "PROBLEMS",
+  "problemsTitle": "Helpful when you face these situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "MANUAL OPS",
+      "d": "Requests, approvals, and settlement run on manual steps, spreadsheets, or chat.\nMissed items, delays, and poor traceability repeat."
+    },
+    {
+      "n": "02",
+      "t": "SCATTERED TOOLS",
+      "d": "Each department uses different tools and habits.\nOne internal process is not connected in system form."
+    },
+    {
+      "n": "03",
+      "t": "PERMISSION CHAOS",
+      "d": "Access and approval should differ by role and department but structure is missing.\nAudit and history are hard."
+    },
+    {
+      "n": "04",
+      "t": "APPROVAL BOTTLENECK",
+      "d": "Approval, review, assignment, and status management are bottlenecks.\nIt is unclear who should act and when."
+    },
+    {
+      "n": "05",
+      "t": "LEGACY GAP",
+      "d": "You need links to ERP, CRM, accounting, or HR systems.\nNew work stays disconnected from existing data and process."
+    },
+    {
+      "n": "06",
+      "t": "GROWTH STRAIN",
+      "d": "Volume of org, transactions, or requests outgrows current methods.\nYou need a system foundation for operational scale."
+    }
+  ],
+  "baLabel": "BEFORE / AFTER",
+  "baTitle": "Scattered ops vs\nconnected internal system",
+  "beforeLabel": "BEFORE",
+  "afterLabel": "AFTER",
+  "before": [
+    "Work scattered across spreadsheets, chat, manual steps, SaaS",
+    "Hard to track requests, approvals, and status",
+    "Weak permissions, audit, and history",
+    "Process breaks when operations scale"
+  ],
+  "after": [
+    "Internal work and permission structure defined first",
+    "Requests, approvals, status, and reporting in one system",
+    "Admin Console with role-based access",
+    "Deployment, ops, and expansion path documented"
+  ],
+  "capsLabel": "CAPABILITIES",
+  "capsTitle": "We run internal system build\nas one structured engagement.",
+  "caps": [
+    {
+      "t": "REQUIREMENTS",
+      "d": "Define internal work, users, approval lines, success criteria.\nClarify what to systemize."
+    },
+    {
+      "t": "WORKFLOW DESIGN",
+      "d": "Design request, approval, assignment, status, and notification flows.\nStructure to match org process."
+    },
+    {
+      "t": "ROLES & PERMISSIONS",
+      "d": "Design department, role, permission, and audit log structure.\nDefine who can see, do, and approve what."
+    },
+    {
+      "t": "ADMIN CONSOLE",
+      "d": "Build screens and tools for operators and admins.\nInclude settings, monitoring, and processing queues."
+    },
+    {
+      "t": "DATA & REPORTING",
+      "d": "Design input, aggregation, report, and dashboard structure.\nMake operational metrics and history visible."
+    },
+    {
+      "t": "INTEGRATIONS",
+      "d": "Connect ERP, CRM, HR, accounting, API, SSO, and existing systems.\nDefine data boundaries clearly."
+    },
+    {
+      "t": "DEPLOY & SECURITY",
+      "d": "Set deployment environment, access control, backup, monitoring.\nReflect internal security requirements."
+    },
+    {
+      "t": "OPS HANDOFF",
+      "d": "Provide ops guide, permission manual, and handoff.\nConnect expansion and maintenance path."
+    }
+  ],
+  "sourcesLabel": "PROJECT INPUTS",
+  "sourcesTitle": "We combine the inputs your internal system needs.",
+  "sourcesNote": "Actual inputs vary by org structure, security, and accessible systems.",
+  "sources": [
+    "Current workflows and processes",
+    "Org, department, role structure",
+    "Approval lines and policies",
+    "Tools and SaaS in use",
+    "Legacy, ERP, CRM",
+    "Internal data and documents",
+    "Reporting and KPI needs",
+    "Security and compliance",
+    "SSO and auth environment",
+    "Operator and practitioner interviews",
+    "API and integration requirements",
+    "Expansion roadmap"
+  ],
+  "useLabel": "USE CASES",
+  "useTitle": "Internal systems we can build.",
+  "useBadge": "Example system types",
+  "useCases": [
+    {
+      "t": "REQUEST & APPROVAL",
+      "d": "Internal request, approval, review, rejection workflows.\nStatus, owner, and history tracking."
+    },
+    {
+      "t": "OPS DASHBOARD",
+      "d": "Operational metrics, queues, processing status dashboards.\nTeam and department views."
+    },
+    {
+      "t": "ADMIN PORTAL",
+      "d": "Settings, users, permissions, audit management portal.\nOperator-focused console."
+    },
+    {
+      "t": "INVENTORY / ASSET",
+      "d": "Inventory, asset, equipment, reservation management.\nIn/out, status, ownership links."
+    },
+    {
+      "t": "PROJECT / CLIENT OPS",
+      "d": "Internal project, client, contract, settlement management.\nTeam collaboration, status, documents."
+    },
+    {
+      "t": "HR / ONBOARDING",
+      "d": "Join/leave, onboarding, request, approval internal flows.\nPermission and access provisioning."
+    },
+    {
+      "t": "FINANCE / SETTLEMENT",
+      "d": "Settlement, expense, approval, evidence processing.\nAccounting and ERP links."
+    },
+    {
+      "t": "LEGACY REPLACEMENT",
+      "d": "Replace legacy internal tools or spreadsheet ops.\nPhased transition design."
+    }
+  ],
+  "flowLabel": "EXAMPLE WORKFLOW",
+  "flowTitle": "From requirements to operating system",
+  "flow": [
+    {
+      "n": "01",
+      "t": "MAP",
+      "d": "Define internal work, users, approval lines, data.\nClarify systemization scope.",
+      "examples": [
+        "Work",
+        "Roles",
+        "Approval",
+        "Data"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "DESIGN",
+      "d": "Design workflows, Admin Console, permission structure.\nConfirm core screens and ops flow.",
+      "examples": [
+        "Flows",
+        "Admin",
+        "Roles",
+        "UI"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "BUILD",
+      "d": "Implement internal system and integrations.\nReview in phases with demos.",
+      "examples": [
+        "Console",
+        "API",
+        "Integrations",
+        "QA"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "DEPLOY",
+      "d": "Set deployment, access control, monitoring.\nPrepare operating environment.",
+      "examples": [
+        "Staging",
+        "Prod",
+        "SSO",
+        "Monitor"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "OPERATE",
+      "d": "Deliver ops guide, permission manual, handoff.\nConnect expansion and maintenance path.",
+      "examples": [
+        "Guide",
+        "Training",
+        "Support",
+        "Phase 2"
+      ]
+    }
+  ],
+  "reportLabel": "OUTPUT",
+  "reportTitle": "Deliverables are an operable internal system and supporting docs.",
+  "reportLead": "Composition varies by project scope. Below are common items.",
+  "reportMockStatus": "INTERNAL · SPEC",
+  "reportMockK": "INTERNAL SYSTEM SPEC",
+  "reportMockT": "Work, permissions, modules, ops summary",
+  "reportItems": [
+    "Requirements Summary",
+    "Workflow Map",
+    "Role & Permission Matrix",
+    "Module List",
+    "Admin Console Overview",
+    "Data & Integration",
+    "Security Notes",
+    "Deployment Plan",
+    "QA Checklist",
+    "Ops Guide"
+  ],
+  "dashTitle": "Share modules and ops state on one view.",
+  "dashLead": "Workflows, permissions, and processing queues together speed internal ops discussions.",
+  "dashNote": "Module composition and permission structure vary by org and security needs.",
+  "dashMetrics": [
+    "Modules",
+    "Roles",
+    "Queues",
+    "Integrations"
+  ],
+  "dashFilters": [
+    "All",
+    "Approval",
+    "Admin",
+    "Report"
+  ],
+  "aiLabel": "ACCELERATION",
+  "aiTitle": "Faster design prep.\nStronger ops quality.",
+  "aiLead": "Requirement structuring, workflow drafts, permission matrices, QA and ops checklists — AI-assisted for speed while people focus on permissions, integrations, and core implementation.",
+  "aiExamples": [
+    "Structure requirements and processes",
+    "Draft approval and status flows",
+    "Organize role and permission matrix",
+    "Admin Console screen lists",
+    "Ops and handoff doc drafts",
+    "Integration and data boundary notes"
+  ],
+  "aiNote": "Final permission, security, and ops design are confirmed with your organization.",
+  "delLabel": "DELIVERABLES",
+  "delTitle": "What you receive when the project completes",
+  "delLead": "We deliver the items below as needed for your scope.",
+  "deliverables": [
+    "Internal System / Admin Console",
+    "Workflow & Approval Modules",
+    "Role & Permission Setup",
+    "Technical Documentation",
+    "Integration Docs",
+    "Deployment Setup",
+    "QA Report",
+    "Ops & Access Guide",
+    "Phase 2 Expansion Plan (optional)"
+  ],
+  "processLabel": "PROCESS",
+  "processTitle": "From requirements to ops handoff.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOVERY",
+      "d": "Confirm internal work, pain points, stakeholders, constraints.\nDefine operational goals and success criteria.",
+      "examples": [
+        "Work",
+        "Pain",
+        "Stakeholders",
+        "KPIs"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCOPE",
+      "d": "Define modules, workflows, permissions, integration scope.\nAgree Phase 1 and expansion range.",
+      "examples": [
+        "Modules",
+        "Workflows",
+        "Roles",
+        "Integrations"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Design Admin Console, flows, data structure.\nConfirm core screens and approval lines.",
+      "examples": [
+        "Console",
+        "Flows",
+        "Roles",
+        "Review"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BUILD",
+      "d": "Implement system, integrations, permissions.\nDemo and review in phases.",
+      "examples": [
+        "Core",
+        "Admin",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "TEST",
+      "d": "Verify permissions, workflows, integrations, ops scenarios.\nCheck from practitioner perspective.",
+      "examples": [
+        "UAT",
+        "Security",
+        "Fixes",
+        "Sign-off"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "DEPLOY",
+      "d": "Set deployment, SSO, monitoring, backup.\nPrepare operating environment.",
+      "examples": [
+        "Staging",
+        "Prod",
+        "Access",
+        "Monitor"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "HANDOFF",
+      "d": "Ops guide, permission manual, training and handoff.\nConnect expansion and maintenance path.",
+      "examples": [
+        "Guide",
+        "Training",
+        "Support",
+        "Phase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "SCOPE LEVELS",
+  "scopeTitle": "How to think about project complexity.",
+  "scopeLead": "Not a fixed package. Scope is set by work range, permission/integration complexity, and security needs.",
+  "scopes": [
+    {
+      "t": "FOCUSED OPS SYSTEM",
+      "items": [
+        "Single core workflow",
+        "Limited roles and departments",
+        "Basic Admin Console",
+        "1–2 basic integrations",
+        "Ops guide"
+      ]
+    },
+    {
+      "t": "FULL INTERNAL SYSTEM",
+      "items": [
+        "Multiple modules and workflows",
+        "Roles, permissions, audit logs",
+        "Dashboards and reports",
+        "Multi-integration and SSO",
+        "Deployment and handoff included"
+      ]
+    },
+    {
+      "t": "ENTERPRISE PLATFORM",
+      "items": [
+        "Multi-department, multi-site ops",
+        "Complex approval lines and policies",
+        "Legacy and ERP deep links",
+        "Strong security and compliance",
+        "Long-term ops and expansion design"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Timeline depends on scope.",
+  "timeLead": "Duration varies by module count, integrations, permission complexity, and security review.",
+  "timelines": [
+    {
+      "t": "Focused Ops System",
+      "d": "About 4–8 weeks · varies"
+    },
+    {
+      "t": "Full Internal System",
+      "d": "About 8–16 weeks · varies"
+    },
+    {
+      "t": "Enterprise Platform",
+      "d": "About 12+ weeks · custom"
+    }
+  ],
+  "priceLabel": "PROJECT COST",
+  "priceTitle": "Quoted per project.",
+  "priceName": "INTERNAL SYSTEM",
+  "priceValue": "Custom quote",
+  "priceFactorsLabel": "Pricing factors",
+  "priceFactors": [
+    "Scope — modules, workflows, screens",
+    "Complexity — permissions, approval lines, data",
+    "Timeline — schedule and resourcing",
+    "Integration — ERP, CRM, SSO, API",
+    "Security — access control and audit",
+    "Users and roles — departments, sites, roles",
+    "Team involvement — UAT and ops collaboration",
+    "Post-launch — maintenance and expansion"
+  ],
+  "priceNote": "We review Scope / Complexity / Timeline / Integration, then provide a quote. No fixed menu pricing.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Frequently asked questions",
+  "faqs": [
+    {
+      "q": "How is this different from INTERNAL TOOLS (AUTOMATION)?",
+      "a": "INTERNAL TOOLS is a defined automation and ops tool package. INTERNAL SYSTEM is custom build for your org’s internal work, permissions, and integrations."
+    },
+    {
+      "q": "How is this different from CUSTOM PRODUCT?",
+      "a": "CUSTOM PRODUCT is broader custom product build. INTERNAL SYSTEM focuses on internal operations, management, approval, and Admin Console."
+    },
+    {
+      "q": "How is pricing set?",
+      "a": "After reviewing work scope, complexity, timeline, integrations, and security — often by phase."
+    },
+    {
+      "q": "Can you integrate with existing ERP or CRM?",
+      "a": "Yes. API, data sync, SSO, and deep links can be scoped and designed."
+    },
+    {
+      "q": "Are permissions and audit logs included?",
+      "a": "Role-based access, approval history, and audit logs can be designed and implemented in scope."
+    },
+    {
+      "q": "Can you support post-launch operations?",
+      "a": "Yes. Feature expansion, maintenance, and ops support can continue under separate agreement."
+    },
+    {
+      "q": "How is confidentiality handled?",
+      "a": "Materials are used only within agreed scope. NDA available when required."
+    }
+  ],
+  "finalLabel": "START A PROJECT",
+  "finalTitle": "Connect internal ops\ninto one system.",
+  "finalLead": "If you need to digitize internal work, approval lines, or integrations, tell us what you are trying to solve. We will confirm system scope and build approach together.",
+  "ctaFinalSecondary": "View all SOLUTIONS →",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

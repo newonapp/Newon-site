@@ -1,0 +1,672 @@
+{
+  "build": {
+    "crumbBusiness": "Bisnis",
+    "otherTitle": "PELAYAN BISINESS LAIN",
+    "ctaEyebrow": "Punya permintaan?",
+    "ctaTitle": "Jika Anda memiliki sesuatu untuk membangun, memberitahu kami.",
+    "ctaLead": "Bahkan pada tahap ide. Kita mulai dengan menjelaskan lingkup yang kau butuhkan.",
+    "ctaBtn": "Proyek penyelidikan →",
+    "servicesLabel": "Services & Harga",
+    "processLabel": "PROSES",
+    "pricingLabel": "MENCARI",
+    "faqLabel": "PSD",
+    "pricingNoteDefault": "Kutipan akhir bervariasi dengan fitur, jumlah halaman, timeline, dan scope projek.",
+    "quoteCta": "Meminta kutipan →",
+    "whatWeBuild": "Apa yang kita bangun",
+    "recommendedFor": "Disarankan untuk",
+    "included": "Termasuk",
+    "deliverables": "Terkirim",
+    "timeline": "Perkiraan waktu",
+    "from": "dari",
+    "startingAt": "",
+    "comingSoon": "Segera datang.",
+    "comingSoonLead": "Layanan ini akan segera tersedia.",
+    "detailCta": "Lihat rincian →",
+    "soonBtn": "Segera datang.",
+    "seoTitle": "BUILD | Newon Business",
+    "metaDescription": "Newon BUILD - MVP, website, halaman pendaratan, dan prototipe aplikasi. Desain dan produk kapal orang benar-benar dapat menggunakan.",
+    "eyebrow": "BUSINESS WON",
+    "headline": "Kami mengubah ide menjadi\nproduk nyata.",
+    "lead": "Dari ide awal ke MVP, situs web, halaman pendaratan, dan prototipe aplikasi - kami merancang dan menerapkan produk yang dapat Anda gunakan.",
+    "ctaPrimary": "Mulai projek →",
+    "ctaSecondary": "Lihat lingkup ↓",
+    "heroIndex": [
+      "01 MVP",
+      "02 WEBSITE",
+      "03 LANDING",
+      "04 APP"
+    ],
+    "layout": "build",
+    "services": [
+      {
+        "title": "PERANGKAT MVP",
+        "href": "../mvp/",
+        "summary": "Core- fitur MVP dibangun untuk memvalidasi ide dengan cepat.",
+        "what": "Sebuah MVP shippable difokuskan pada penting mengalir dan fitur.",
+        "for": "Tim yang membutuhkan cepat pasar dan sinyal pengguna.",
+        "included": "Scope",
+        "deliverables": "MVP Yang Dikerahkan, pemandu ops pendek",
+        "timeline": "Biasanya 3-6 minggu"
+      },
+      {
+        "title": "WEBSITE",
+        "href": "../web/",
+        "summary": "Situs web responsif untuk perusahaan, merek, dan produk.",
+        "what": "Sebuah situs responsif yang menjelaskan merek dan layanan jelas.",
+        "for": "Perusahaan membutuhkan situs resmi atau produk.",
+        "included": "IA",
+        "deliverables": "Situs langsung, sumber / aset, sunting panduan",
+        "timeline": "Biasanya 2-5 minggu"
+      },
+      {
+        "title": "RUANG LANDING",
+        "href": "../landing/",
+        "summary": "Pendaratan berkualitas tinggi untuk peluncuran dan konversi.",
+        "what": "Percakapan - difokuskan halaman untuk peluncuran, daftar tunggu, atau kampanye.",
+        "for": "Produk diluncurkan, sebelum pendaftaran, promosi.",
+        "included": "Pesan",
+        "deliverables": "Mendarat halaman, aset, mempublikasikan checklist",
+        "timeline": "Biasanya 1-2 minggu"
+      },
+      {
+        "title": "APP PROTOTYPE",
+        "href": "../app/",
+        "summary": "App ide-ide diungkapkan sebagai layar nyata dan mengalir.",
+        "what": "Purwarupa interaktif dari layar utama dan aliran.",
+        "for": "Tim memvalidasi sebelum investasi atau pengembangan penuh.",
+        "included": "Lipat",
+        "deliverables": "Prototype link / build, screen ringkasan",
+        "timeline": "Biasanya 2-4 minggu"
+      }
+    ],
+    "process": [
+      {
+        "n": "01",
+        "t": "DISCOVER",
+        "d": "Tujuan dan persyaratan"
+      },
+      {
+        "n": "02",
+        "t": "DEFINE",
+        "d": "Fitur dan struktur"
+      },
+      {
+        "n": "03",
+        "t": "DESIGN",
+        "d": "UI / UX dan layar"
+      },
+      {
+        "n": "04",
+        "t": "BUILD",
+        "d": "Aplikasi produksi"
+      },
+      {
+        "n": "05",
+        "t": "TEST",
+        "d": "Fungsi dan responsif QA"
+      },
+      {
+        "n": "06",
+        "t": "LAUNCH",
+        "d": "Menyebarkan dan handoff"
+      }
+    ],
+    "pricing": [
+      {
+        "name": "RUANG LANDING",
+        "price": "Dari $400.000",
+        "svc": 2
+      },
+      {
+        "name": "WEBSITE",
+        "price": "Dari $700.000",
+        "svc": 1
+      },
+      {
+        "name": "MVP",
+        "price": "Dari $1,000,000",
+        "svc": 0
+      },
+      {
+        "name": "APP PROTOTYPE",
+        "price": "Dari £500.000",
+        "svc": 3
+      }
+    ],
+    "pricingNote": "Kutipan akhir bervariasi dengan fitur, jumlah halaman, timeline, dan scope.",
+    "faq": [
+      {
+        "q": "Berapa lama proyek berlangsung?",
+        "a": "Pendaratan biasanya 1-2 minggu, website 2-5 minggu, MVP sekitar 3-6 minggu tergantung pada lingkup. Kami mengkonfirmasi jadwal sebelum kickoff."
+      },
+      {
+        "q": "Berapa banyak putaran revisi yang disertakan?",
+        "a": "Revisi terjadi dalam putaran setuju per tahap. Out- of -scope perubahan mempengaruhi timeline dan kutipan."
+      },
+      {
+        "q": "Dapatkah Anda meningkatkan proyek yang ada?",
+        "a": "Ya. Kami meninjau kondisi dan tujuan saat ini, kemudian mengusulkan peningkatan lingkup dan prioritas."
+      },
+      {
+        "q": "Apakah Anda menawarkan pemeliharaan?",
+        "a": "Operasi peluncuran dan perbaikan kecil dapat diatur sebagai pemeliharaan atau proyek follow- up."
+      },
+      {
+        "q": "Bagaimana pengiriman diserahkan?",
+        "a": "Anda menerima sebuah URL hidup, sumber / aset, dan panduan operasi singkat."
+      }
+    ]
+  },
+  "automation": {
+    "crumbBusiness": "Bisnis",
+    "otherTitle": "PELAYAN BISINESS LAIN",
+    "ctaEyebrow": "Punya permintaan?",
+    "ctaTitle": "Jika Anda memiliki sesuatu untuk membangun, memberitahu kami.",
+    "ctaLead": "Bahkan pada tahap ide. Kita mulai dengan menjelaskan lingkup yang kau butuhkan.",
+    "ctaBtn": "Proyek penyelidikan →",
+    "servicesLabel": "Services & Harga",
+    "processLabel": "PROSES",
+    "pricingLabel": "MENCARI",
+    "faqLabel": "PSD",
+    "pricingNoteDefault": "Kutipan akhir bervariasi dengan fitur, jumlah halaman, timeline, dan scope projek.",
+    "quoteCta": "Meminta kutipan →",
+    "whatWeBuild": "Apa yang kita bangun",
+    "recommendedFor": "Disarankan untuk",
+    "included": "Termasuk",
+    "deliverables": "Terkirim",
+    "timeline": "Perkiraan waktu",
+    "from": "dari",
+    "startingAt": "",
+    "comingSoon": "Segera datang.",
+    "comingSoonLead": "Layanan ini akan segera tersedia.",
+    "detailCta": "Lihat rincian →",
+    "soonBtn": "Segera datang.",
+    "seoTitle": "AUTOMATION | Newon Business",
+    "metaDescription": "Newon AUTOMATION - otomatisasi AI, aliran kerja, alat internal, pelaporan. Mengubah kerja berulang menjadi sistem.",
+    "eyebrow": "BUSINESS WON",
+    "headline": "Ubah pekerjaan berulang\nmenjadi sistem.",
+    "lead": "Kami menganalisis pekerjaan berulang di tim Anda dan membangun alur yang lebih efisien dengan AI dan otomasi.",
+    "ctaPrimary": "Bicara otomatisasi →",
+    "ctaSecondary": "Lihat layanan ↓",
+    "layout": "otomasi",
+    "services": [
+      {
+        "title": "AUTOMATI",
+        "href": "../ai-automation/",
+        "summary": "Pekerjaan berulang otomatis dengan AI.",
+        "what": "Automasi dimana AI cocok - mengklasifikasikan, draft, rangkuman.",
+        "for": "Tim dengan volume penyelidikan tinggi, konten, atau dokumen.",
+        "included": "Analisis pekerjaan",
+        "deliverables": "Aliran otomatis kerja, catatan konfigurasi",
+        "timeline": "Biasanya 2-5 minggu"
+      },
+      {
+        "title": "OTOMATIS KERJA",
+        "href": "./workflow/",
+        "summary": "Hubungkan alat dan tugas ke dalam satu aliran kerja.",
+        "what": "End-to-end workflow melintasi alat, saluran, dan data.",
+        "for": "Tim secara manual menjembatani SaaS dan lembar kerja.",
+        "included": "Pemetaan / tindakan",
+        "deliverables": "Sambungan alur kerja, daftar kejadian",
+        "timeline": "Biasanya 3-6 minggu"
+      },
+      {
+        "title": "TOOLS INTERNAL",
+        "href": "../internal-tools/",
+        "summary": "Alat internal yang sebenarnya digunakan tim Anda.",
+        "what": "Ops dan alat admin dan dashboard.",
+        "for": "Tim memukul batas spreadsheet.",
+        "included": "Kebutuhan",
+        "deliverables": "Alat internal, panduan akses",
+        "timeline": "Biasanya 4-8 minggu"
+      },
+      {
+        "title": "DATA & REPTING",
+        "href": "../data-reporting/",
+        "summary": "Koleksi otomatis, pembersihan, dan pelaporan.",
+        "what": "Pilet yang mengumpulkan, bersih, dan meringkas sesuai jadwal.",
+        "for": "Tim masih membangun laporan mingguan / bulanan dengan tangan.",
+        "included": "Sumber",
+        "deliverables": "Laporan otomatis, keluaran cuplikan",
+        "timeline": "Biasanya 2-4 minggu"
+      }
+    ],
+    "useCasesLabel": "USE CASES",
+    "useCasesNote": "Contoh dari apa yang dapat dibangun",
+    "useCases": [
+      "Inquiry auto- routing",
+      "Generasi draft isi",
+      "Pembersihan data",
+      "Pelaporan terjadwal",
+      "Permintaan manajemen",
+      "Kantor waspada",
+      "Proses dokumen",
+      "Papan dasbor admin internal"
+    ],
+    "beforeAfterLabel": "SEBELUM / SETELAH",
+    "before": [
+      "Masukan Manual",
+      "Salin & Tempel",
+      "Tugas Berulang",
+      "Data Tersebar"
+    ],
+    "after": [
+      "Aliran Kerja Terhubung",
+      "Otomatis",
+      "Data Terstruktur",
+      "Keluaran Dapat Diaksi"
+    ],
+    "process": [
+      {
+        "n": "01",
+        "t": "Peta bekerja",
+        "d": "Aliran dan batas saat ini"
+      },
+      {
+        "n": "02",
+        "t": "Analisa berulang",
+        "d": "Pilih kandidat otomatisasi"
+      },
+      {
+        "n": "03",
+        "t": "Desain",
+        "d": "Aturan, integrasi, pengecualian"
+      },
+      {
+        "n": "04",
+        "t": "Prototype",
+        "d": "Validasi aliran inti"
+      },
+      {
+        "n": "05",
+        "t": "Build",
+        "d": "Implikasi untuk penggunaan nyata"
+      },
+      {
+        "n": "06",
+        "t": "Uji & handoff",
+        "d": "QA dan transfer"
+      }
+    ],
+    "pricing": [
+      {
+        "name": "SIMPLE AUTOMATION",
+        "price": "Dari £500.000",
+        "svc": 0
+      },
+      {
+        "name": "WORKFLOW",
+        "price": "Dari $1,000,000",
+        "svc": 1
+      },
+      {
+        "name": "SISTEM CUSTOM",
+        "price": "Kutipan gubahan",
+        "svc": 2
+      }
+    ],
+    "pricingNote": "Penggunaan API, pihak ketiga SaaS, dan biaya server mungkin ditagih secara terpisah.",
+    "faq": [
+      {
+        "q": "Di mana kita harus mulai otomatis?",
+        "a": "Mulai dengan frekuensi tinggi, jelas-aturan tugas - routing, pelaporan, dan peringatan adalah titik entri umum."
+      },
+      {
+        "q": "Dapatkah Anda menghubungkan Notion, Sheets, Slack, dll.?",
+        "a": "Tergantung pada alat dan API. Kami mengkonfirmasi kemungkinan integrasi sebelum kickoff."
+      },
+      {
+        "q": "Siapa yang membayar biaya AI / API?",
+        "a": "Penggunaan model dan API biasanya pada akun klien. Kami memperkirakan penggunaan diharapkan bersama-sama."
+      },
+      {
+        "q": "Bagaimana kegagalan ditangani?",
+        "a": "Jalur pengecualian dan peringatan adalah bagian dari desain, ditambah bimbingan untuk pemantauan."
+      },
+      {
+        "q": "Bagaimana dengan keamanan?",
+        "a": "Kami menyelaraskan pada akses, data lingkup, dan log. Data sensitif diminimalkan oleh desain."
+      }
+    ]
+  },
+  "research": {
+    "crumbBusiness": "Bisnis",
+    "otherTitle": "PELAYAN BISINESS LAIN",
+    "ctaEyebrow": "Punya permintaan?",
+    "ctaTitle": "Jika Anda memiliki sesuatu untuk membangun, memberitahu kami.",
+    "ctaLead": "Bahkan pada tahap ide. Kita mulai dengan menjelaskan lingkup yang kau butuhkan.",
+    "ctaBtn": "Proyek penyelidikan →",
+    "servicesLabel": "Services & Harga",
+    "processLabel": "PROSES",
+    "pricingLabel": "MENCARI",
+    "faqLabel": "PSD",
+    "pricingNoteDefault": "Kutipan akhir bervariasi dengan fitur, jumlah halaman, timeline, dan scope projek.",
+    "quoteCta": "Meminta kutipan →",
+    "whatWeBuild": "Apa yang kita bangun",
+    "recommendedFor": "Disarankan untuk",
+    "included": "Termasuk",
+    "deliverables": "Terkirim",
+    "timeline": "Perkiraan waktu",
+    "from": "dari",
+    "startingAt": "",
+    "comingSoon": "Segera datang.",
+    "comingSoonLead": "Layanan ini akan segera tersedia.",
+    "detailCta": "Lihat rincian →",
+    "soonBtn": "Segera datang.",
+    "seoTitle": "RESEARCH | Newon Business",
+    "metaDescription": "Newon RESEARCH - pasar, pesaing, konsumen, dan UX penelitian. Keputusan dengan bukti, tidak merasa usus.",
+    "eyebrow": "BISINESS WON",
+    "headline": "Bukti selesai\nintuisi.",
+    "lead": "Kami meneliti pasar, pesaing, pengalaman pengguna, dan sinyal konsumen - kemudian struktur apa yang perlu Anda putuskan.",
+    "ctaPrimary": "Penelitian penyelidikan →",
+    "ctaSecondary": "Lihat outputs ↓",
+    "layout": "penelitian",
+    "services": [
+      {
+        "title": "MARKET RESEARCH",
+        "tab": "MARKET",
+        "href": "../market-research/",
+        "summary": "Struktur pasar dan analisis kesempatan",
+        "what": "Struktur, area kesempatan, dan keputusan siap.",
+        "for": "Tim masuk atau memperluas pasar.",
+        "included": "Memeriksa penelitian",
+        "deliverables": "Laporan Ringkasan, peta pasar",
+        "timeline": "Biasanya 1-3 minggu"
+      },
+      {
+        "title": "KOMPETIOR ANALYSIS",
+        "tab": "COMPARE",
+        "href": "../competitor-analysis/",
+        "summary": "Bandingkan produk kunci dan perusahaan",
+        "what": "Posisi, fitur, dan perbandingan pesan.",
+        "for": "Tim mengklarifikasi diferensiasi.",
+        "included": "Set",
+        "deliverables": "Matriks peserta, ringkasan",
+        "timeline": "Biasanya 1-2 minggu"
+      },
+      {
+        "title": "CONSUMER RESEARCH",
+        "tab": "CONSUMER",
+        "href": "../consumer-research/",
+        "summary": "Kebutuhan dan analisis perilaku",
+        "what": "Kebutuhan, perilaku, dan pola nyeri.",
+        "for": "Tim memvalidasi penonton dan pesan.",
+        "included": "Pertanyaan",
+        "deliverables": "Ringkasan wawasan pengguna, peluang",
+        "timeline": "Biasanya 2-4 minggu"
+      },
+      {
+        "title": "UX AUDIT",
+        "tab": "UX",
+        "href": "../ux-audit/",
+        "summary": "Diagnose existing app / web experience",
+        "what": "Masalah dan prioritas di kunci mengalir dan UI.",
+        "for": "Layanan berjuang dengan konversi atau kegunaan.",
+        "included": "Ulasan singkat daftar prioritas",
+        "deliverables": "Laporan audit, item aksi",
+        "timeline": "Biasanya 1-2 minggu"
+      },
+      {
+        "title": "TREND RESEARCH",
+        "tab": "TREND",
+        "href": "../trend-research/",
+        "summary": "Industri dan analisa tren konsumen",
+        "what": "Trends dan implikasi produk.",
+        "for": "Tim mengatur peta jalan atau arah isi.",
+        "included": "Topik",
+        "deliverables": "Ringkasan latar belakang",
+        "timeline": "Biasanya 1-3 minggu"
+      }
+    ],
+    "outputLabel": "KELUARKAN KELUARKAN",
+    "outputNote": "Sample STRUCTURE",
+    "outputK": "RESEARCH BRIEF",
+    "outputTitle": "Penelitian Projek Ringkasan",
+    "outputLead": "Hasil terstruktur sehingga keputusan dapat mengikuti segera.",
+    "outputs": [
+      "Ringkasan Eksekutif",
+      "Peta Pasar",
+      "Matriks Peserta",
+      "Insight Pengguna",
+      "Peluang Area",
+      "Rekomendasi",
+      "Item Aksi"
+    ],
+    "process": [
+      {
+        "n": "01",
+        "t": "Pertanyaan",
+        "d": "Apa yang harus kita pelajari?"
+      },
+      {
+        "n": "02",
+        "t": "RESEARCH",
+        "d": "Kumpulkan sumber dan data"
+      },
+      {
+        "n": "03",
+        "t": "ANALYSIS",
+        "d": "Cari pola dan jarak"
+      },
+      {
+        "n": "04",
+        "t": "INSIGHT",
+        "d": "Penemuan ukuran"
+      },
+      {
+        "n": "05",
+        "t": "AKSI",
+        "d": "Sarankan langkah berikutnya"
+      }
+    ],
+    "pricing": [
+      {
+        "name": "UX AUDIT",
+        "price": "Dari £200.000",
+        "svc": 0
+      },
+      {
+        "name": "KOMPETIOR ANALYSIS",
+        "price": "Dari £200.000",
+        "svc": 1
+      },
+      {
+        "name": "MARKET RESEARCH",
+        "price": "Dari £300,000",
+        "svc": 2
+      },
+      {
+        "name": "CUSTOM RESEARCH",
+        "price": "Kutipan gubahan",
+        "svc": 3
+      }
+    ],
+    "pricingNote": "Kutipan terakhir bervariasi oleh lingkup, kedalaman, dan apakah wawancara disertakan.",
+    "faq": [
+      {
+        "q": "Bagaimana rupa tukang antar?",
+        "a": "Rangkuman terstruktur, meja, dan peta. Slides dapat disertakan jika discoped."
+      },
+      {
+        "q": "Apa kau menggunakan data internal?",
+        "a": "Ketika tersedia dan sesuai. Jika tidak kita bekerja dari sumber publik dan observasi."
+      },
+      {
+        "q": "Apakah wawancara termasuk?",
+        "a": "Tergantung paketnya. Wawancara dapat ditambahkan ketika diperlukan."
+      },
+      {
+        "q": "Bagaimana kerahasiaan ditangani?",
+        "a": "Dalam lingkup yang disepakati; NDA bila diperlukan."
+      },
+      {
+        "q": "Bisakah ini mengarah ke BUILD?",
+        "a": "Ya. Insight dapat memberi makan produknya."
+      }
+    ]
+  },
+  "solutions": {
+    "crumbBusiness": "Bisnis",
+    "otherTitle": "PELAYAN BISINESS LAIN",
+    "ctaEyebrow": "Punya permintaan?",
+    "ctaTitle": "Jika Anda memiliki sesuatu untuk membangun, memberitahu kami.",
+    "ctaLead": "Bahkan pada tahap ide. Kita mulai dengan menjelaskan lingkup yang kau butuhkan.",
+    "ctaBtn": "Proyek penyelidikan →",
+    "servicesLabel": "TIPES SOLUTION",
+    "processLabel": "PROSES",
+    "pricingLabel": "MENCARI",
+    "faqLabel": "PSD",
+    "pricingNoteDefault": "Kutipan akhir bervariasi dengan fitur, jumlah halaman, timeline, dan scope projek.",
+    "quoteCta": "Konsultasi projek →",
+    "whatWeBuild": "Apa yang kita bangun",
+    "recommendedFor": "Disarankan untuk",
+    "included": "Termasuk",
+    "deliverables": "Terkirim",
+    "timeline": "Perkiraan waktu",
+    "from": "dari",
+    "startingAt": "",
+    "comingSoon": "Segera datang.",
+    "comingSoonLead": "Layanan ini akan segera tersedia.",
+    "detailCta": "Lihat rincian →",
+    "soonBtn": "Segera datang.",
+    "seoTitle": "SOLUTIONS | Newon Business",
+    "metaDescription": "Newon SOLUTIONS - White- label, produk kustom, program peluncuran, sistem internal. Dibangun untuk proyek yang tidak sesuai dengan paket.",
+    "eyebrow": "BISINESS WON",
+    "headline": "Kami tidak memaksa proyek Anda\nke dalam paket.",
+    "lead": "Untuk pekerjaan yang tidak bisa diselesaikan paket standar, kami merancang dan membangun sekitar tujuan dan kendala Anda.",
+    "ctaPrimary": "Bicaralah pada kami →",
+    "ctaSecondary": "Lihat tipe ↓",
+    "layout": "solusi",
+    "services": [
+      {
+        "title": "WHITE- LABEL",
+        "href": "../white-label/",
+        "summary": "Adat struktur produk / teknologi yang ada untuk merek Anda.",
+        "what": "Pengaturan label White- ditata ke merek, domain, dan ops.",
+        "for": "Perusahaan yang membutuhkan produk bermerek lebih cepat.",
+        "included": "Scope",
+        "deliverables": "Produk Branded, pemandu ops",
+        "timeline": "Tergantung pada scope"
+      },
+      {
+        "title": "PRODUCT CUSTOM",
+        "tab": "CUSTOM",
+        "href": "../custom-product/",
+        "summary": "Produk digital kustom untuk masalah tertentu.",
+        "what": "Dari masalah framing sampai pembuatan produk kustom.",
+        "for": "Kebutuhan yang tidak sesuai dengan standar paket.",
+        "included": "Framing",
+        "deliverables": "Produk gubahan, dokumen",
+        "timeline": "Tergantung pada scope"
+      },
+      {
+        "title": "PRODUCT LAUNCH",
+        "tab": "LAUNCH",
+        "href": "../product-launch/",
+        "summary": "Menghubungkan ide → produk → landing → kesiapan peluncuran.",
+        "what": "Satu jalur terhubung untuk diluncurkan.",
+        "for": "Tim yang ingin ide... diluncurkan dalam satu pertunangan.",
+        "included": "Strategi",
+        "deliverables": "Produk + landing + peluncuran checklist",
+        "timeline": "Tergantung pada scope"
+      },
+      {
+        "title": "SISTEM INTERNAL",
+        "tab": "INTERNAL",
+        "href": "../internal-system/",
+        "summary": "Sistem internal untuk operasi dan manajemen.",
+        "what": "Internal ops dan sistem manajemen.",
+        "for": "Organisasi mendigitalkan proses internal.",
+        "included": "Kebutuhan",
+        "deliverables": "Sistem internal, panduan akses / ops",
+        "timeline": "Tergantung pada scope"
+      }
+    ],
+    "launchLabel": "PRODUCT LAUNCH FLOW",
+    "launchFlow": [
+      {
+        "t": "IDEA",
+        "d": "Tujuan dan hipotesis"
+      },
+      {
+        "t": "STRATEGY",
+        "d": "Scope dan prioritas"
+      },
+      {
+        "t": "DESIGN",
+        "d": "Pengalaman dan struktur"
+      },
+      {
+        "t": "BUILD",
+        "d": "Implementasi dan integrasi"
+      },
+      {
+        "t": "LAUNCH",
+        "d": "Kapal dan mempublikasikan"
+      },
+      {
+        "t": "IMPROVE",
+        "d": "Pelajari dan iterasi"
+      }
+    ],
+    "whenLabel": "KETIKA MENGGUNAKAN SOLUTIONS",
+    "whenNote": "Terbaik cocok untuk situasi ini",
+    "whenItems": [
+      {
+        "tag": "CUSTOM FIT",
+        "t": "Proyek yang tidak sesuai dengan paket yang ada"
+      },
+      {
+        "tag": "MULTI- Layanan",
+        "t": "Beberapa layanan diperlukan bersama-sama"
+      },
+      {
+        "tag": "INTERNAL",
+        "t": "Sistem internal diperlukan"
+      },
+      {
+        "tag": "WHITE- LABEL",
+        "t": "Produk label White- dibutuhkan"
+      },
+      {
+        "tag": "Full Launch",
+        "t": "Path peluncuran produk lengkap dibutuhkan"
+      }
+    ],
+    "pricingCustom": true,
+    "pricingTitle": "PROYEK CUSTOM",
+    "pricingLead": "Kutipan per projek",
+    "pricingBody": "Kami meninjau Scope / Kompleksitas / Timeline / Integrasi, lalu memberikan kutipan. Tidak ada harga menu tetap.",
+    "pricingAxes": [
+      "Scope",
+      "Kompleksitas",
+      "Garis Waktu",
+      "Integrasi"
+    ],
+    "pricingNote": "Kutipan gubahan",
+    "process": [],
+    "pricing": [],
+    "faq": [
+      {
+        "q": "Bagaimana Solusi berbeda dari paket?",
+        "a": "Paket sudah ditentukan - penawaran scope. Solusi dirancang untuk proyek yang kompleks atau khusus."
+      },
+      {
+        "q": "Bagaimana harganya?",
+        "a": "Setelah meninjau tujuan, lingkup, kompleksitas, garis waktu, dan integrasinya."
+      },
+      {
+        "q": "Apa judul putih termasuk?",
+        "a": "Mengatur struktur teknologi / produk yang ada untuk merek dan ops. Ruang lingkup yang layak dikonfirmasi dalam konsultasi."
+      },
+      {
+        "q": "Bisakah beberapa pemegang saham terlibat?",
+        "a": "Ya. Kami mendefinisikan decision- pembuat dan saluran kerja yang jelas."
+      },
+      {
+        "q": "Bagaimana dengan pemeliharaan dan ekspansi?",
+        "a": "Post- peluncuran ekspansi dan ops dapat melanjutkan sebagai pertunangan terpisah."
+      }
+    ]
+  }
+}

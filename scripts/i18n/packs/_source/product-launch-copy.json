@@ -1,0 +1,483 @@
+{
+  "seoTitle": "PRODUCT LAUNCH | Newon Business",
+  "metaDescription": "Connect idea to product, landing, and launch readiness in one line — strategy, design, build, and checklist. Newon PRODUCT LAUNCH.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICES",
+  "crumbSolutions": "SOLUTIONS",
+  "crumbHere": "PRODUCT LAUNCH",
+  "eyebrow": "PRODUCT LAUNCH",
+  "subEyebrow": "SOLUTIONS",
+  "headline": "You have the idea.\nLaunch is still scattered.",
+  "lead": "Product definition, UX/UI, MVP and landing build, deployment, and launch checklist — we connect what you need from idea to public release in one project. Not separate packages stitched together, but one flow designed for your launch goal.",
+  "ctaPrimary": "Product launch inquiry →",
+  "ctaSecondary": "See the launch flow ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Product Launch"
+    },
+    {
+      "k": "BEST FOR",
+      "v": "Idea to launch end-to-end"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Depends on scope"
+    },
+    {
+      "k": "PRICE",
+      "v": "Custom quote"
+    }
+  ],
+  "overviewLabel": "OVERVIEW",
+  "overviewTitle": "Pieces exist.\nLaunch readiness does not.",
+  "overviewBody": [
+    "Launching a new service, feature, or brand takes many moving parts — product definition, design, development, landing, domain, payments, analytics, QA, and go-live timing. They easily scatter across teams, vendors, and packages.",
+    "Building only an MVP or only a landing page rarely reaches ‘ready to ship.’ Without a clear view of priority and gaps, schedule and quality wobble.",
+    "PRODUCT LAUNCH defines the launch goal first, then connects strategy, design, build, and launch prep in one flow — product, landing, essential integrations, and checklist aligned to a shippable state."
+  ],
+  "problemsLabel": "PROBLEMS",
+  "problemsTitle": "Helpful when you face these situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "SCATTERED LAUNCH",
+      "d": "Product, landing, branding, and deploy run on separate tracks.\nGo-live dates do not align."
+    },
+    {
+      "n": "02",
+      "t": "IDEA TO SHIP",
+      "d": "You have an idea but struggle to connect MVP, landing, and launch prep.\nYou need one partner from start to ship."
+    },
+    {
+      "n": "03",
+      "t": "MISSING CHECKLIST",
+      "d": "Features are almost done but domain, payments, analytics, SEO, or QA are missing.\n‘Ready to launch’ is undefined."
+    },
+    {
+      "n": "04",
+      "t": "FIRST RELEASE",
+      "d": "You are preparing a first product, brand, or major feature release.\nYou need market reaction quickly."
+    },
+    {
+      "n": "05",
+      "t": "MULTI-SURFACE",
+      "d": "Product + landing + onboarding + admin are all required.\nA single BUILD package is not enough scope."
+    },
+    {
+      "n": "06",
+      "t": "DEADLINE LAUNCH",
+      "d": "You must launch for demo day, investor meetings, events, or marketing dates.\nPriority and scope need tight coordination."
+    }
+  ],
+  "baLabel": "BEFORE / AFTER",
+  "baTitle": "Scattered prep vs\nconnected launch",
+  "beforeLabel": "BEFORE",
+  "afterLabel": "AFTER",
+  "before": [
+    "MVP, landing, design, and deploy run separately",
+    "Pre-launch essentials missing — domain, payments, analytics",
+    "Schedule, scope, and priority differ by team",
+    "No path from go-live to feedback loop"
+  ],
+  "after": [
+    "Launch goal and scope defined first",
+    "Strategy → design → build → launch prep in one flow",
+    "Product + landing + checklist aligned",
+    "Post-launch improvement and measurement connected"
+  ],
+  "capsLabel": "CAPABILITIES",
+  "capsTitle": "We connect what launch needs\nin one project.",
+  "caps": [
+    {
+      "t": "LAUNCH GOALS",
+      "d": "Define launch goal, target users, and success criteria.\nClarify what ships and when."
+    },
+    {
+      "t": "SCOPE & STRATEGY",
+      "d": "Frame MVP scope, landing role, and must-have features.\nSeparate Phase 1 from later expansion."
+    },
+    {
+      "t": "UX / UI DESIGN",
+      "d": "Design product, landing, and onboarding experience.\nConnect brand and message consistently."
+    },
+    {
+      "t": "PRODUCT BUILD",
+      "d": "Implement core features, MVP, and admin surfaces.\nInclude required APIs and integrations."
+    },
+    {
+      "t": "LANDING & MESSAGE",
+      "d": "Build launch landing, intro, and conversion pages.\nConnect CTA, inquiry, and signup flows."
+    },
+    {
+      "t": "INTEGRATIONS",
+      "d": "Set up payments, analytics, email, auth, and other launch essentials.\nBuild basic operational structure."
+    },
+    {
+      "t": "LAUNCH READINESS",
+      "d": "Check domain, SEO, QA, monitoring, rollback on a launch checklist.\nConfirm shippable state."
+    },
+    {
+      "t": "POST-LAUNCH LOOP",
+      "d": "Connect post-launch feedback, metrics, and improvements.\nPropose the next iteration path."
+    }
+  ],
+  "sourcesLabel": "PROJECT INPUTS",
+  "sourcesTitle": "We combine the inputs your launch project needs.",
+  "sourcesNote": "Actual inputs vary by idea maturity, assets, and timeline.",
+  "sources": [
+    "Idea, hypothesis, goals",
+    "Target user definition",
+    "Competitive and market context",
+    "Existing wireframes or specs",
+    "Brand and messaging",
+    "Feature priority",
+    "Domain and infrastructure",
+    "Payment and legal requirements",
+    "Analytics and marketing plan",
+    "Demo or investor schedule",
+    "Internal stakeholders",
+    "Post-launch KPIs"
+  ],
+  "useLabel": "USE CASES",
+  "useTitle": "Launches we can prepare.",
+  "useBadge": "Example launch types",
+  "useCases": [
+    {
+      "t": "NEW PRODUCT MVP",
+      "d": "New service MVP + landing + launch prep.\nConnected to first users."
+    },
+    {
+      "t": "FEATURE LAUNCH",
+      "d": "Release a new feature or module on an existing product.\nInclude onboarding, landing, and announcement flow."
+    },
+    {
+      "t": "REBRAND LAUNCH",
+      "d": "Rebrand with product and landing together.\nConsistent message and experience."
+    },
+    {
+      "t": "BETA → PUBLIC",
+      "d": "Move from beta to public launch.\nChecklist, QA, and monitoring in place."
+    },
+    {
+      "t": "INVESTOR / DEMO DAY",
+      "d": "Launch prep for demo or investor meetings.\nDemo-ready and shippable state."
+    },
+    {
+      "t": "WAITLIST → LIVE",
+      "d": "Launch after waitlist or pre-registration.\nConnect conversion, onboarding, and payment."
+    },
+    {
+      "t": "MULTI-CHANNEL",
+      "d": "Web + landing + admin + inquiry in one project.\nAligned in one engagement."
+    },
+    {
+      "t": "LOCAL / GLOBAL",
+      "d": "Domestic or global launch prep.\nLanguage, payment, and message scope coordinated."
+    }
+  ],
+  "flowLabel": "EXAMPLE WORKFLOW",
+  "flowTitle": "From idea to launch",
+  "flow": [
+    {
+      "n": "01",
+      "t": "IDEA",
+      "d": "Clarify goals, hypotheses, users, and success criteria.\nDefine why launch now.",
+      "examples": [
+        "Goals",
+        "Hypothesis",
+        "Users",
+        "KPIs"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRATEGY",
+      "d": "Define MVP scope, landing role, and timeline.\nSeparate must-have from later.",
+      "examples": [
+        "Scope",
+        "Priority",
+        "Timeline",
+        "Risk"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Design product, landing, and onboarding UX/UI.\nConnect brand and message.",
+      "examples": [
+        "Flows",
+        "UI",
+        "Landing",
+        "Review"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BUILD",
+      "d": "Implement MVP, landing, and integrations.\nReview in phases with demos.",
+      "examples": [
+        "Product",
+        "Landing",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LAUNCH",
+      "d": "Deploy, run checklist, and go live.\nConfirm monitoring and rollback paths.",
+      "examples": [
+        "Deploy",
+        "Checklist",
+        "Go-live",
+        "Monitor"
+      ]
+    }
+  ],
+  "reportLabel": "OUTPUT",
+  "reportTitle": "Deliverables are a shippable product and launch-ready state.",
+  "reportLead": "Composition varies by project scope. Below are common items.",
+  "reportMockStatus": "LAUNCH · PLAN",
+  "reportMockK": "PRODUCT LAUNCH PLAN",
+  "reportMockT": "Scope, timeline, assets, checklist summary",
+  "reportItems": [
+    "Launch Goals",
+    "Scope Summary",
+    "MVP Feature List",
+    "Landing Outline",
+    "Design Assets",
+    "Integration List",
+    "Launch Checklist",
+    "QA Summary",
+    "Go-live Plan",
+    "Post-launch Notes"
+  ],
+  "dashTitle": "Share launch readiness on one view.",
+  "dashLead": "Stages, assets, and checklist together speed launch discussions and schedule alignment.",
+  "dashNote": "Checklist and stage composition vary by project goal and timeline.",
+  "dashMetrics": [
+    "Stages",
+    "Assets",
+    "Ready",
+    "Blockers"
+  ],
+  "dashFilters": [
+    "All",
+    "Product",
+    "Landing",
+    "Ops"
+  ],
+  "aiLabel": "ACCELERATION",
+  "aiTitle": "Faster prep.\nStronger launch quality.",
+  "aiLead": "Scope structuring, checklist drafts, copy and doc scaffolding, QA lists — AI-assisted for speed while people focus on strategy, design, and core build.",
+  "aiExamples": [
+    "Draft launch scope and checklist",
+    "Structure landing and message",
+    "Organize MVP feature list",
+    "QA and go-live checklists",
+    "Compare timeline and milestones",
+    "Design post-launch KPI loop"
+  ],
+  "aiNote": "Final scope, quality, and Go/No-go decisions are confirmed with your project team.",
+  "delLabel": "DELIVERABLES",
+  "delTitle": "What you receive when the project completes",
+  "delLead": "We deliver the items below as needed for your scope.",
+  "deliverables": [
+    "MVP / Core Product",
+    "Launch Landing",
+    "UX / UI Design Files",
+    "Launch Checklist",
+    "Go-live Plan",
+    "Integration Setup",
+    "QA Report",
+    "Analytics & Tracking Setup",
+    "Post-launch Improvement Plan"
+  ],
+  "processLabel": "PROCESS",
+  "processTitle": "From idea framing to public release.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOVERY",
+      "d": "Confirm idea, goals, users, timeline, constraints.\nDefine launch success criteria.",
+      "examples": [
+        "Goals",
+        "Users",
+        "Timeline",
+        "KPIs"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRATEGY",
+      "d": "Set MVP, landing, integration scope and priority.\nAgree Phase 1 launch range.",
+      "examples": [
+        "Scope",
+        "Priority",
+        "Risk",
+        "Timeline"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESIGN",
+      "d": "Design product, landing, onboarding UX/UI.\nConfirm core screens and message.",
+      "examples": [
+        "Flows",
+        "UI",
+        "Landing",
+        "Review"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "BUILD",
+      "d": "Implement MVP, landing, essential integrations.\nDemo and review in phases.",
+      "examples": [
+        "Product",
+        "Landing",
+        "Integrations",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PRE-LAUNCH",
+      "d": "Check checklist, QA, staging, monitoring.\nConfirm go-live readiness.",
+      "examples": [
+        "Checklist",
+        "Staging",
+        "UAT",
+        "Fixes"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "LAUNCH",
+      "d": "Deploy, publish, initial monitoring.\nConfirm issue response path.",
+      "examples": [
+        "Deploy",
+        "Go-live",
+        "Monitor",
+        "Support"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "IMPROVE",
+      "d": "Review early feedback and metrics.\nConnect next iteration items.",
+      "examples": [
+        "Metrics",
+        "Feedback",
+        "Fixes",
+        "Roadmap"
+      ]
+    }
+  ],
+  "scopeLabel": "SCOPE LEVELS",
+  "scopeTitle": "How to think about project complexity.",
+  "scopeLead": "Not a fixed package. Scope is set by launch goal, product depth, and landing/integration range.",
+  "scopes": [
+    {
+      "t": "LEAN LAUNCH",
+      "items": [
+        "Core MVP + landing",
+        "Basic UX/UI",
+        "1–2 essential integrations",
+        "Launch checklist",
+        "Go-live support"
+      ]
+    },
+    {
+      "t": "FULL LAUNCH",
+      "items": [
+        "MVP + landing + onboarding",
+        "Brand and message alignment",
+        "Payment, analytics, auth integrations",
+        "QA, monitoring, SEO",
+        "Post-launch improvement plan"
+      ]
+    },
+    {
+      "t": "CUSTOM LAUNCH",
+      "items": [
+        "Multiple channels, languages, roles",
+        "Complex integrations and ops structure",
+        "Demo, investor, or event deadline fit",
+        "Custom checklist and runbook",
+        "Long-term iteration design"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Timeline depends on scope.",
+  "timeLead": "Duration varies by MVP depth, design range, integrations, and decision speed.",
+  "timelines": [
+    {
+      "t": "Lean Launch",
+      "d": "About 4–8 weeks · varies"
+    },
+    {
+      "t": "Full Launch",
+      "d": "About 8–14 weeks · varies"
+    },
+    {
+      "t": "Custom Launch",
+      "d": "About 10+ weeks · custom"
+    }
+  ],
+  "priceLabel": "PROJECT COST",
+  "priceTitle": "Quoted per project.",
+  "priceName": "PRODUCT LAUNCH",
+  "priceValue": "Custom quote",
+  "priceFactorsLabel": "Pricing factors",
+  "priceFactors": [
+    "Scope — MVP, landing, integration range",
+    "Complexity — features, data, permissions",
+    "Timeline — schedule and resourcing",
+    "Design depth — UX/UI range",
+    "Integrations — payment, analytics, auth",
+    "Launch surfaces — web, app, admin",
+    "Team involvement — decisions, UAT",
+    "Post-launch — improvement and ops support"
+  ],
+  "priceNote": "We review Scope / Complexity / Timeline / Integration, then provide a quote. No fixed menu pricing.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Frequently asked questions",
+  "faqs": [
+    {
+      "q": "How is this different from MVP or landing packages?",
+      "a": "MVP and LANDING are defined-scope BUILD packages. PRODUCT LAUNCH connects strategy, design, product, landing, and launch prep for a go-live goal in one project."
+    },
+    {
+      "q": "How is this different from CUSTOM PRODUCT?",
+      "a": "CUSTOM PRODUCT focuses on building a tailored product. PRODUCT LAUNCH focuses on the full idea-to-public flow including landing, checklist, and go-live."
+    },
+    {
+      "q": "How is pricing set?",
+      "a": "After reviewing launch goal, scope, complexity, timeline, and integrations — often by phase."
+    },
+    {
+      "q": "Are design and development both included?",
+      "a": "UX/UI design and build can be included in scope. Required surfaces (product, landing, admin) are defined together."
+    },
+    {
+      "q": "What is on the launch checklist?",
+      "a": "Domain, SEO, QA, analytics, payments, monitoring, rollback — customized to your project."
+    },
+    {
+      "q": "Can you support post-launch improvement?",
+      "a": "Yes. Iteration and feature expansion from early feedback and metrics can continue under separate agreement."
+    },
+    {
+      "q": "How is confidentiality handled?",
+      "a": "Materials are used only within agreed scope. NDA available when required."
+    }
+  ],
+  "finalLabel": "START A PROJECT",
+  "finalTitle": "Connect idea to launch\nin one line.",
+  "finalLead": "If you are preparing a product, feature, or brand launch, tell us your goal, scope, and timeline. We will confirm the path together.",
+  "ctaFinalSecondary": "View all SOLUTIONS →",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

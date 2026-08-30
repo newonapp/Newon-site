@@ -2,6 +2,8 @@
  * AI AUTOMATION service detail — KO/EN copy.
  * Path: /{lang}/business/ai-automation/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const AI_AUTOMATION_COPY = {
   ko: {
     seoTitle: "AI AUTOMATION | Newon Business",
@@ -812,5 +814,5 @@ export const AI_AUTOMATION_COPY = {
 };
 
 export function getAiAutomationCopy(lang) {
-  return lang === "ko" ? AI_AUTOMATION_COPY.ko : AI_AUTOMATION_COPY.en;
+  return resolveKoEnPack(AI_AUTOMATION_COPY, lang, "ai-automation-copy");
 }

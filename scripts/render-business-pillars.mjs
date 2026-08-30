@@ -45,6 +45,10 @@ function pad2(n) {
   return String(n).padStart(2, "0");
 }
 
+function brHeadline(s) {
+  return escapeHtml(String(s || "")).replace(/\n/g, "<br />");
+}
+
 function jsonLd(slug, copy, langDir) {
   const url = `${SITE_ORIGIN}/${langDir}/business/${slug}/`;
   const data = {
@@ -532,8 +536,8 @@ export function buildPillarPageBody(slug, copy, lang, opts = {}) {
   <div class="bp-inner bp-hero__grid">
     <div class="bp-hero__copy">
       <p class="bp-eyebrow">${escapeHtml(copy.eyebrow || "")}</p>
-      <h1 class="bp-hero__title" id="bp-hero-title">${escapeHtml(copy.headline || "")}</h1>
-      <p class="bp-hero__lead">${escapeHtml(copy.lead || "")}</p>
+      <h1 class="bp-hero__title" id="bp-hero-title">${brHeadline(copy.headline)}</h1>
+      <p class="bp-hero__lead">${brHeadline(copy.lead)}</p>
       <div class="bp-hero__actions">
         <a class="bp-btn bp-btn--primary" href="${escapeHtml(inquiryHref)}" data-analytics="business_pillar_cta">${escapeHtml(copy.ctaPrimary || "")}</a>
         <a class="bp-btn bp-btn--ghost" href="#services">${escapeHtml(copy.ctaSecondary || "")}</a>
@@ -574,7 +578,7 @@ export function renderBusinessPillars() {
 
   for (const { dir, file, htmlLang } of LANGS) {
     const flat = flatten(loadJson(file));
-    const lang = dir === "ko" ? "ko" : "en";
+    const lang = dir;
 
     for (const slug of PILLAR_SLUGS) {
       const copy = getPillarCopy(slug, lang);

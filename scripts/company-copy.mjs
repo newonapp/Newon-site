@@ -1,6 +1,7 @@
 /**
- * Company hub copy (KO / EN). Other locales fall back to EN.
+ * Company hub copy (KO / EN). Other locales merge MT overlays.
  */
+import { deepMerge, loadPackOverlay, resolveCopyLang } from "./i18n/copy-lang.mjs";
 
 const SHARED_KO = {
   crumbCompany: "COMPANY",
@@ -539,12 +540,23 @@ const EN = {
 };
 
 export function getCompanyCopy(slug, lang) {
-  const pack = lang === "ko" ? KO : EN;
-  const shared = lang === "ko" ? SHARED_KO : SHARED_EN;
-  const page = pack[slug] || EN[slug] || {};
-  return { ...shared, ...page, _lang: lang === "ko" ? "ko" : "en" };
+  const L = resolveCopyLang(lang);
+  const priceLang = L === "ko" ? "ko" : "en";
+  const pack = priceLang === "ko" ? KO : EN;
+  const shared = priceLang === "ko" ? SHARED_KO : SHARED_EN;
+  let page = pack[slug] || EN[slug] || {};
+  if (L !== "ko" && L !== "en") {
+    const overlayAll = loadPackOverlay("company", L);
+    const overlay = overlayAll?.[slug];
+    if (overlay) page = deepMerge(EN[slug] || {}, overlay);
+  }
+  return { ...shared, ...page, _lang: L, _pageLang: L };
 }
 
 export function getCompanyShared(lang) {
-  return lang === "ko" ? { ...SHARED_KO } : { ...SHARED_EN };
+  const L = resolveCopyLang(lang);
+  if (L === "ko") return { ...SHARED_KO };
+  if (L === "en") return { ...SHARED_EN };
+  const overlay = loadPackOverlay("company-shared", L);
+  return overlay ? deepMerge(SHARED_EN, overlay) : { ...SHARED_EN };
 }

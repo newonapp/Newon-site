@@ -1,0 +1,528 @@
+{
+  "seoTitle": "DATEN & BERICHTE / Newon AUTOMATISIERUNG",
+  "metaDescription": "Sammeln und bereinigen Sie verstreute Daten und automatisieren Sie dann Metriken und Berichte. Newon DATEN UND BERICHTE.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICE",
+  "crumbAutomation": "AUTOMATISIERUNG",
+  "crumbHere": "DATEN & BERICHTE",
+  "eyebrow": "DATEN & BERICHTE",
+  "subEyebrow": "AUTOMATISIERUNG",
+  "headline": "Sammle verstreute Daten \n und verwandle sie in das, was du brauchst.",
+  "lead": "Wir sammeln und organisieren Daten, die über Services und Dokumente verteilt sind, und automatisieren dann die Metriken und Berichte, die Sie benötigen — von der wiederkehrenden Erfassung und Bereinigung bis hin zur Berechnung, Visualisierung, Berichterstellung und Bereitstellung.",
+  "ctaPrimary": "DATEN- UND Berichtsanfrage →",
+  "ctaSecondary": "Siehe den Datenfluss ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Daten- und Berichtsautomatisierung"
+    },
+    {
+      "k": "AM BESTEN FÜR",
+      "v": "Wiederkehrende Datenerfassungs- und Berichtsarbeiten"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Typischerweise 2-4 Wochen"
+    },
+    {
+      "k": "PREIS",
+      "v": "Zitiert nach Projektumfang"
+    }
+  ],
+  "overviewLabel": "ÜBERBLICK",
+  "overviewTitle": "Verbringen Sie weniger Zeit mit dem Sammeln von Daten,\nmehr Zeit damit, sie zu nutzen.",
+  "overviewBody": [
+    "Teams erstellen ständig Daten über viele Dienste hinweg.",
+    "Wenn Vertriebs-, Anfragen-, Marketing-, Produktnutzungs-, Projekt-, Umfragen-, Überprüfungs- und Betriebsdaten an verschiedenen Orten gespeichert sind, müssen die Menschen am Ende von Hand jagen, kopieren und bereinigen.",
+    "DATA & REPORTING verbindet diese sich wiederholende Arbeit in einem Datenfluss - ziehen Sie, was Sie brauchen, bereinigen Sie nach Regeln, berechnen Sie wichtige Kennzahlen und stellen Sie sie als Dashboard oder Bericht bereit."
+  ],
+  "problemsLabel": "PROBLEM",
+  "problemsTitle": "Arbeit, die wir automatisieren können.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "DATENERHEBUNG",
+      "d": "Die Leute ziehen immer noch Daten von mehreren Diensten von Hand."
+    },
+    {
+      "n": "02",
+      "t": "DATENBEREINIGUNG",
+      "d": "Formate unterscheiden sich und die Bereinigung erfolgt jedes Mal."
+    },
+    {
+      "n": "03",
+      "t": "WIEDERKEHRENDER BERICHT",
+      "d": "Wöchentliche oder monatliche Berichte werden wiederholt neu erstellt."
+    },
+    {
+      "n": "04",
+      "t": "METRISCHES TRACKING",
+      "d": "Verkäufe, Benutzer, Anfragen und Konversion müssen fortlaufend nachverfolgt werden."
+    },
+    {
+      "n": "05",
+      "t": "MEHRERE QUELLEN",
+      "d": "Die Daten sind über Tabellenkalkulationen, Formulare und Datenbanken verteilt."
+    },
+    {
+      "n": "06",
+      "t": "ZUSTELLUNG VON BERICHTEN",
+      "d": "Fertige Berichte müssen die Eigentümer nach einem Zeitplan erreichen."
+    }
+  ],
+  "baLabel": "VORHER / NACHHER",
+  "baTitle": "Manuelle Berichterstellung vs \n automatisierte DATEN- und BERICHTERSTELLUNG",
+  "beforeLabel": "MANUAL",
+  "afterLabel": "AUTOMATISIERTE",
+  "before": [
+    "Kopieren von Daten von jedem Dienst",
+    "In Tabellenkalkulationen einfügen",
+    "Metriken von Hand berechnen",
+    "Erstellen Sie den Bericht in jedem Zyklus neu"
+  ],
+  "after": [
+    "Automatisch aus Quellen sammeln",
+    "Bereinigen Sie Daten nach definierten Regeln",
+    "Metriken automatisch berechnen",
+    "Termingerechte Bereitstellung von Berichten und Dashboards"
+  ],
+  "capsLabel": "FÄHIGKEIT",
+  "capsTitle": "Wir bauen den Datenfluss auf, den Sie benötigen.",
+  "caps": [
+    {
+      "t": "DATENERHEBUNG",
+      "d": "Ziehen Sie die erforderlichen Daten aus mehreren Quellen."
+    },
+    {
+      "t": "DATENBEREINIGUNG",
+      "d": "Bereinigen Sie Duplikate, leere Werte und Formatierungslücken nach definierten Regeln."
+    },
+    {
+      "t": "DATENTRANSFORMATION",
+      "d": "Wandeln Sie Rohdaten in Formen um, die für Analyse und Berichterstellung bereit sind."
+    },
+    {
+      "t": "METRISCHE BERECHNUNG",
+      "d": "Berechnen Sie Kennzahlen wie Umsatz, Wachstum, Conversion und Nutzer."
+    },
+    {
+      "t": "AUTOMATISIERTER BERICHT",
+      "d": "Erstellen Sie Berichte zu wöchentlichen, monatlichen oder anderen Kadenzen."
+    },
+    {
+      "t": "DASHBOARD",
+      "d": "Erstellen Sie ein Dashboard, das wichtige Kennzahlen an einem Ort sichtbar hält."
+    },
+    {
+      "t": "AI ZUSAMMENFASSUNG",
+      "d": "Fassen Sie bei Bedarf Daten oder Kundenfeedback mit KI zusammen."
+    },
+    {
+      "t": "ZUSTELLUNG VON BERICHTEN",
+      "d": "Liefern Sie Ergebnisse an E-Mails, Tabellenkalkulationen, Dashboards oder andere Ziele."
+    }
+  ],
+  "sourcesLabel": "DATENQUELLE",
+  "sourcesTitle": "Verbinden Sie die Daten, die Sie bereits verwenden.",
+  "sourcesNote": "Die tatsächliche Konnektivität hängt von der API und der Datenzugriffsmethode jedes Dienstes ab.",
+  "sources": [
+    "Google Sheets",
+    "Excel / CSV",
+    "Forms",
+    "Datenbank",
+    "Website-Daten",
+    "App-Daten",
+    "Analytics",
+    "CRM",
+    "E-Commerce-Daten",
+    "Marketingdaten",
+    "informieren",
+    "Gästebewertungen",
+    "Externe API"
+  ],
+  "useLabel": "ANWENDUNGSFÄLLE",
+  "useTitle": "Systeme, die wir bauen können.",
+  "useBadge": "Baubare Beispiele",
+  "useCases": [
+    {
+      "t": "VERKAUFSBERICHT",
+      "d": "Sammeln Sie Verkaufsdaten automatisch in täglichen, wöchentlichen oder monatlichen Berichten."
+    },
+    {
+      "t": "MARKETINGBERICHT",
+      "d": "Organisieren Sie Anzeigen und Marketingdaten, um die Kanalleistung zu vergleichen."
+    },
+    {
+      "t": "KUNDENBERICHT",
+      "d": "Organisieren Sie Anfragen und Feedback, um wiederkehrende Probleme und Anfragen zu erkennen."
+    },
+    {
+      "t": "ÜBERPRÜFUNGSBERICHT",
+      "d": "Sammeln Sie Produktbewertungen und fassen Sie Themen, Probleme und Bewertungstrends zusammen."
+    },
+    {
+      "t": "PRODUKTBERICHT",
+      "d": "Organisieren Sie Benutzer- und Produktdaten in Kernproduktmetriken."
+    },
+    {
+      "t": "BETRIEBSBERICHT",
+      "d": "Sammeln Sie Betriebsdaten in wiederkehrenden Betriebsstatusberichten."
+    },
+    {
+      "t": "KURZFASSUNG",
+      "d": "Fassen Sie mehrere Quellen zu entscheidungsbereiten Schlüsselmetriken zusammen."
+    },
+    {
+      "t": "ZUSAMMENFASSUNG DES KI-FEEDBACKS",
+      "d": "Klassifizieren und fassen Sie großes Textfeedback in Kernmeinungen zusammen."
+    }
+  ],
+  "flowLabel": "BEISPIEL-WORKFLOW",
+  "flowTitle": "Wie aus Daten ein Bericht wird",
+  "flow": [
+    {
+      "n": "01",
+      "t": "SAMMELN",
+      "d": "Ziehen Sie aus Tabellenkalkulationen, Datenbanken und APIs.\nWir gestalten Verbindungen und Abholpläne gemeinsam."
+    },
+    {
+      "n": "02",
+      "t": "SAUBER",
+      "d": "Beheben Sie Duplikate, Lücken und Formatfehler.\n Daten werden nach Ihren definierten Regeln normalisiert."
+    },
+    {
+      "n": "03",
+      "t": "PROZESS",
+      "d": "Führen Sie die erforderlichen Berechnungen und Transformationen aus.\n Formdaten für die Metriken, die Sie benötigen."
+    },
+    {
+      "n": "04",
+      "t": "ANALYSIEREN",
+      "d": "Extrahieren Sie wichtige Kennzahlen und benötigte Erkenntnisse.\nVergleichen Sie Trends und erkennen Sie Anomalien."
+    },
+    {
+      "n": "05",
+      "t": "BERICHT",
+      "d": "Erstellen Sie ein Dashboard oder einen Bericht.\n Wurde in einer Form erstellt, die Ihr Team sofort verwenden kann."
+    },
+    {
+      "n": "06",
+      "t": "LIEFERN",
+      "d": "Senden Sie die Ergebnisse per E-Mail oder an ein ausgewähltes Ziel.\n Wird automatisch termingerecht geliefert."
+    }
+  ],
+  "reportLabel": "BERICHT",
+  "reportTitle": "Berichte enthalten nur das, was Sie brauchen.",
+  "reportLead": "Je nach Projekt können Berichte solche Elemente enthalten. Inhalte sind nicht projektübergreifend identisch - sie folgen Ihren Zielen.",
+  "reportItems": [
+    "Zusammenfassung",
+    "Wichtige Kennzahlen",
+    "Leistung",
+    "Veränderung gegenüber der Vorperiode",
+    "Top Artikel",
+    "Sicherheitsfragen",
+    "informieren",
+    "Trend",
+    "Einblick",
+    "AI Zusammenfassung",
+    "Rohdatenreferenz"
+  ],
+  "dashLabel": "DASHBOARD",
+  "dashTitle": "Erweitern Sie sich bei Bedarf zu einer Statuskarte in nahezu Echtzeit.",
+  "dashLead": "Über geplante PDF- oder Tabellenkalkulationsberichte hinaus können wir ein Web-Dashboard erstellen, wenn das Projekt dies erfordert.",
+  "dashNote": "Dashboards sind nicht automatisch enthalten — sie werden nach Projektumfang hinzugefügt.",
+  "dashMetricsLabel": "Beispiel-Metriken",
+  "dashMetrics": [
+    "Einnahmen",
+    "Orders",
+    "Internetnutzer",
+    "Konvertierung",
+    "Führen",
+    "Retention",
+    "informieren",
+    "Top Produkte",
+    "Kanalleistung",
+    "Zeitraumvergleich"
+  ],
+  "dashFiltersLabel": "Beispielfilter",
+  "dashFilters": [
+    "Heute",
+    "7 Tage",
+    "30 Tage",
+    "Benutzerdefinierter Zeitraum",
+    "Kanal",
+    "Produkt",
+    "Zimmerkategorie"
+  ],
+  "aiLabel": "KI-BERICHTERSTATTUNG",
+  "aiTitle": "Organisiere Bedeutung, nicht nur Zahlen.",
+  "aiLead": "Bei Bedarf kann die KI große Texte und Daten in Formularen zusammenfassen, die die Benutzer schnell überprüfen können.",
+  "aiExamples": [
+    "Zusammenfassungen der Themen überprüfen",
+    "Erkennung wiederkehrender Beschwerden",
+    "Gruppierung positiver Rückmeldungen",
+    "Klassifizierung von Kundenanfragen",
+    "Zeitraum-über-Zeitraum-Erklärungen",
+    "Zusammenfassende Entwürfe von Berichten"
+  ],
+  "aiNote": "KI-Analysen und Zusammenfassungen dienen als Referenz. Wichtige Entscheidungen erfordern möglicherweise noch die Überprüfung der Quelldaten.",
+  "delLabel": "LIEFERBAR",
+  "delTitle": "Was Sie nach dem Projekt erhalten",
+  "delLead": "Je nach Umfang stellen wir Ihnen die von Ihnen benötigten Leistungen aus der folgenden Liste zur Verfügung. Nicht jedes Projekt enthält jeden Artikel.",
+  "deliverables": [
+    "Datensammlungsfluss",
+    "Regeln für die Datenbereinigung",
+    "Metrische Definition",
+    "Automatisierungs-Workflow",
+    "Berichtsvorlage",
+    "Automatisierter Bericht",
+    "Dashboard",
+    "Geplante Berichterstattung",
+    "AI Zusammenfassung",
+    "Datenexport",
+    "Grundlegende Dokumentation",
+    "Ops-Anleitung"
+  ],
+  "processLabel": "PROZESS",
+  "processTitle": "Beginnen wir mit der Datenstruktur.",
+  "process": [
+    {
+      "n": "01",
+      "t": "ENTDECKUNG",
+      "d": "Bestätigen Sie, welche Daten Sie verwalten und wo sie gespeichert sind."
+    },
+    {
+      "n": "02",
+      "t": "DATENAUDIT",
+      "d": "Überprüfen Sie Formate, Zugriffsmethoden und Qualität."
+    },
+    {
+      "n": "03",
+      "t": "METRIK",
+      "d": "Definieren Sie die Metriken und den Berichtszweck, die wichtig sind."
+    },
+    {
+      "n": "04",
+      "t": "ARCHITEKTUR",
+      "d": "Design sammeln → verarbeiten → speichern → Bericht."
+    },
+    {
+      "n": "05",
+      "t": "BAUEN",
+      "d": "Implementieren Sie die Automatisierungspipeline und den Bericht / das Dashboard."
+    },
+    {
+      "n": "06",
+      "t": "TEST",
+      "d": "Validieren Sie Berechnungen und Ausgaben mit realen Daten."
+    },
+    {
+      "n": "07",
+      "t": "START",
+      "d": "Richten Sie geplante Läufe und Lieferungen ein."
+    },
+    {
+      "n": "08",
+      "t": "HANDOFF",
+      "d": "Übergeben Sie Ops-Anleitungen und grundlegende Managementnotizen."
+    }
+  ],
+  "scopeLabel": "GELTUNGSBEREICH EBENEN",
+  "scopeTitle": "Eine Möglichkeit, die Komplexität von Projekten zu verstehen.",
+  "scopeLead": "Dies sind Referenzwerte für die Angebotserstellung - keine festen Pakete.",
+  "scopes": [
+    {
+      "t": "GRUNDLEGENDE BERICHTSAUTOMATISIERUNG",
+      "items": [
+        "Eine oder mehrere Datenquellen",
+        "Grundlegende Bereinigung",
+        "Kernmetriken",
+        "Geplanter Bericht",
+        "Einfache Lieferung"
+      ]
+    },
+    {
+      "t": "BERICHTE AUS MEHREREN QUELLEN",
+      "items": [
+        "Mehrere Quellen",
+        "Datenkonsolidierung",
+        "Mehrere Metriken",
+        "Automatisierte Berichte",
+        "Bedingte Verarbeitung"
+      ]
+    },
+    {
+      "t": "BENUTZERDEFINIERTES DATENSYSTEM",
+      "items": [
+        "Multisystemintegration",
+        "Benutzerdefinierte Datenbank",
+        "Web-Armaturenbrett",
+        "Erweiterte Metriken",
+        "KI-Analyse",
+        "Kundenspezifische Automatisierung"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Der Zeitplan hängt vom Umfang ab.",
+  "timeLead": "Zugriffsberechtigungen, APIs, Datenqualität und erforderliche Funktionen können den Zeitplan ändern.",
+  "timelines": [
+    {
+      "t": "Einfache Berichtsautomatisierung",
+      "d": "Ca.1-2 Wochen"
+    },
+    {
+      "t": "Mehrere Datenquellen",
+      "d": "Ungefähr 2-4 Wochen"
+    },
+    {
+      "t": "Benutzerdefiniertes Dashboard / komplexes Datensystem",
+      "d": "Bereich separat"
+    }
+  ],
+  "priceLabel": "PROJEKTKOSTEN",
+  "priceTitle": "Wir bauen nur den Umfang, den Sie benötigen.",
+  "priceName": "DATEN & BERICHTE",
+  "priceValue": "Von ₩500,000",
+  "priceFactorsLabel": "Was prägt das Zitat",
+  "priceFactors": [
+    "Anzahl der Datenquellen",
+    "Datenmenge und -struktur",
+    "API-Integration",
+    "Komplexität der Bereinigung",
+    "Anzahl der Metriken",
+    "Automatisierungs-Workflow",
+    "Dashboard-Bedarf",
+    "KI-Funktionen",
+    "Konten / Berechtigungen",
+    "Berichtstyp",
+    "Trittfrequenz ausführen",
+    "Wartung"
+  ],
+  "priceNote": "Endgültige Angebote werden nach Überprüfung Ihrer aktuellen Datenumgebung und der erforderlichen Funktionen festgelegt.",
+  "extLabel": "EXTERNE KOSTEN",
+  "extTitle": "Kosten, die außerhalb der Newon -Baugebühren liegen können",
+  "extItems": [
+    "Webhosting und Hosting",
+    "Datenbank",
+    "Externe API",
+    "AI-API",
+    "Analysedienst",
+    "Automatisierung SaaS",
+    "Berichterstellung SaaS",
+    "Cloud-Speicher",
+    "Andere kostenpflichtige Dienste von Drittanbietern"
+  ],
+  "faqLabel": "FAQ'S",
+  "faqTitle": "Fragen, beantwortet",
+  "faqs": [
+    {
+      "q": "Welche Daten können Sie verbinden?",
+      "a": "Tabellenkalkulationen, CSV, Datenbanken, Analysen, Formulare und externe APIs sind weit verbreitet. Die tatsächliche Konnektivität hängt von der Zugriffsmethode und der API jedes Dienstes ab."
+    },
+    {
+      "q": "Können wir nur mit Google Sheets beginnen?",
+      "a": "Ja. Wir überprüfen die aktuelle Struktur und definieren dann den Bereinigungs- und Automatisierungsumfang."
+    },
+    {
+      "q": "Können wir jede Woche automatisch Berichte erhalten?",
+      "a": "Je nach Umfang können wir eine planmäßige Verarbeitung und Lieferung aufbauen."
+    },
+    {
+      "q": "Können Sie auch ein Dashboard erstellen?",
+      "a": "Ja. Metriken, Aktualisierungsmethode und Benutzerkontext werden bei Bedarf separat festgelegt."
+    },
+    {
+      "q": "Kann KI-Analyse hinzugefügt werden?",
+      "a": "Ja — zum Beispiel das Klassifizieren und Zusammenfassen von Bewertungen, Anfragen und Umfragetexten."
+    },
+    {
+      "q": "Was ist, wenn unsere Daten unordentlich sind?",
+      "a": "Wir beginnen mit der Überprüfung der aktuellen Datenqualität. Schwere Aufräumarbeiten können als zusätzliche Arbeit eingestuft werden."
+    },
+    {
+      "q": "Sind Echtzeitdaten möglich?",
+      "a": "Dies hängt von der Quelle und der API ab. Die Echtzeitverarbeitung ist nicht für jedes System garantiert."
+    },
+    {
+      "q": "Unterstützen Sie die Wartung nach dem Start?",
+      "a": "Ja - Quelländerungen, Automatisierungsänderungen und Funktionserweiterungen können separat festgelegt werden."
+    }
+  ],
+  "finalLabel": "STARTEN SIE EIN PROJEKT",
+  "finalTitle": "Automatisieren Sie die Berichte\n, die Sie immer noch von Hand erstellen.",
+  "finalLead": "Teilen Sie uns die von Ihnen verwendeten Daten und die Berichte mit, die Sie wiederholen. Wir werden skizzieren, wie Abholung, Bereinigung und Lieferung zusammenhängen können — und wie der Projektumfang aussieht.",
+  "formTitle": "DATEN- UND Berichtsanfrage",
+  "formLead": "Teilen Sie Ihre aktuelle Datenumgebung und die gewünschten Ergebnisse mit, damit wir den Umfang bestätigen können.",
+  "formCategory": "AUTOMATISIERUNG",
+  "formService": "DATEN & BERICHTE",
+  "labelCategory": "SERVICEKATEGORIE",
+  "labelService": "SERVICE",
+  "labelName": "Name",
+  "labelCompany": "Firma / Marke",
+  "labelEmail": "Email",
+  "labelDataWhere": "Wo Daten heute verwaltet werden",
+  "labelDataSources": "Datenquellen, die Sie benötigen",
+  "labelCurrentReport": "Berichte, die Sie derzeit erstellen",
+  "labelDesired": "Gewünschte Ergebnisse",
+  "labelDashboard": "Dashboard benötigt?",
+  "labelCadence": "Trittfrequenz melden",
+  "labelTimeline": "Voraussichtlicher Zeitplan",
+  "labelBudget": "Budgetbereich",
+  "labelMessage": "Projektbeschreibung",
+  "labelConsent": "Ich stimme der Erhebung und Verwendung personenbezogener Daten zu.",
+  "privacyLink": "Datenschutzerklärung",
+  "optional": "optional",
+  "dataWhereOptions": [
+    "Google Sheets",
+    "Excel / CSV",
+    "Datenbank",
+    "Analytics",
+    "CRM",
+    "E-Handel",
+    "Andere"
+  ],
+  "desiredOptions": [
+    "Automatisierter Bericht",
+    "Dashboard",
+    "Datenintegration",
+    "AI Zusammenfassung",
+    "Datenpipeline",
+    "Nicht sicher"
+  ],
+  "dashboardOptions": [
+    "Benötigen",
+    "Nicht benötigt",
+    "Noch nicht sicher"
+  ],
+  "cadenceOptions": [
+    "Täglich",
+    "Wöchentlich",
+    "Monatlich",
+    "Vierteljährlich",
+    "Andere / TBD"
+  ],
+  "timelineOptions": [
+    "So schnell wie möglich",
+    "1-2 wochen",
+    "2-4 wochen",
+    "1-2 monate",
+    "TBD"
+  ],
+  "budgetOptions": [
+    "₩500 bis 1 M",
+    "₩ 1 BIS 3 M",
+    "₩3 BIS 5 M",
+    "₩ 5M+",
+    "TBD"
+  ],
+  "phDataSources": "z. B. Google Sheets + Analytics",
+  "phCurrentReport": "z.B. wöchentlicher Verkaufsbericht, monatlicher Marketingbericht",
+  "phMessage": "Teilen Sie Datenstandorte, wiederkehrende Arbeiten und gewünschte Ergebnisse.",
+  "submit": "Anfrage senden",
+  "submitting": "Senden…",
+  "fail": "Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder senden Sie uns eine E-Mail.",
+  "mailSubject": "Newon DATEN- und Berichtsanfrage",
+  "backAutomation": "Zurück zu AUTOMATISIERUNG →",
+  "exploreAi": "KI-AUTOMATISIERUNG anzeigen →"
+}

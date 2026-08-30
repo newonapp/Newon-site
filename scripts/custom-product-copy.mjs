@@ -2,6 +2,8 @@
  * CUSTOM PRODUCT service detail — KO/EN copy.
  * Path: /{lang}/business/custom-product/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const CUSTOM_PRODUCT_COPY = {
   ko: {
     seoTitle: "CUSTOM PRODUCT | Newon Business",
@@ -796,5 +798,5 @@ export const CUSTOM_PRODUCT_COPY = {
 };
 
 export function getCustomProductCopy(lang) {
-  return lang === "ko" ? CUSTOM_PRODUCT_COPY.ko : CUSTOM_PRODUCT_COPY.en;
+  return resolveKoEnPack(CUSTOM_PRODUCT_COPY, lang, "custom-product-copy");
 }

@@ -4009,7 +4009,7 @@ export function renderBusinessServices() {
 
   for (const { dir, file, htmlLang } of LANGS) {
     const flat = flatten(loadJson(file));
-    const lang = dir === "ko" ? "ko" : "en";
+    const lang = dir;
     const copies = Object.fromEntries(BUSINESS_SERVICE_PAGES.map((p) => [p.slug, getServiceCopy(p.slug, lang)]));
 
     for (const page of BUSINESS_SERVICE_PAGES) {

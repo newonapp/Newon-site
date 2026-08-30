@@ -1,0 +1,510 @@
+{
+  "seoTitle": "MVP DEVELOPMENT | Newon Negocio",
+  "metaDescription": "Convierte una idea en un producto real que puedas validar rápidamente, desde la definición del problema hasta UX, construcción y lanzamiento. Newon MVP DEVELOPMENT.",
+  "crumbBusiness": "NEGOCIO",
+  "crumbServices": "SERVICIOS",
+  "crumbBuild": "CONSTRUIR",
+  "crumbHere": "MVP",
+  "eyebrow": "MVP DEVELOPMENT",
+  "subEyebrow": "CONSTRUIR",
+  "headline": "De la idea a\nun producto funcional.",
+  "lead": "Desde la validación de la idea y la definición de funciones principales hasta UX/UI, desarrollo, pruebas y lanzamiento: diseñamos la primera versión para que puedas ponerla frente a usuarios reales rápidamente. Un camino continuo desde la planificación hasta el despliegue: IDEA → CONSTRUIR → LANZAR.",
+  "ctaPrimary": "Consulta sobre desarrollo de MVP →",
+  "ctaSecondary": "Ver el flujo de construcción ↓",
+  "meta": [
+    {
+      "k": "SERVICIO",
+      "v": "Desarrollo de MVP"
+    },
+    {
+      "k": "MEJOR PARA",
+      "v": "Validación de la idea y primer lanzamiento"
+    },
+    {
+      "k": "CRONOGRAMA",
+      "v": "Usualmente de 3 a 6 semanas"
+    },
+    {
+      "k": "PRECIO",
+      "v": "₩1,000,000 desde"
+    }
+  ],
+  "overviewLabel": "RESUMEN",
+  "overviewTitle": "Tienes la idea.\nNo la forma del producto.",
+  "overviewBody": [
+    "La idea está clara, pero qué construir primero — y cuánto — a menudo no lo está. Más funciones retrasan el lanzamiento; una demo por sí sola no puede validar la pregunta real.",
+    "Un MVP debe ser mínimo, pero debe ser un producto funcional. No diapositivas, sino algo en lo que los usuarios puedan hacer clic, escribir y completar la función principal en la web o la app.",
+    "MVP DEVELOPMENT comienza definiendo el problema y la pregunta de validación. Luego diseñamos UX/UI alrededor del flujo central únicamente y entregamos una primera versión lista para enviar, incluyendo backend, datos y despliegue."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Útil cuando enfrentas estas situaciones.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "SOLO IDEA",
+      "d": "Tienes una idea pero no puedes decidir qué construir primero.\nNecesitas la estructura de producto más pequeña que pueda probar la pregunta real."
+    },
+    {
+      "n": "02",
+      "t": "AMPLIACIÓN DEL ALCANCE",
+      "d": "Construir todo primero es arriesgado. Las listas de características de\nsiguen creciendo y el lanzamiento sigue retrasando."
+    },
+    {
+      "n": "03",
+      "t": "CONSTRUCCIÓN DESCONECTADA",
+      "d": "La planificación, el diseño y el desarrollo parecen proveedores separados.\nOutput se mantiene en nivel de demo sin que nadie tenga el camino completo."
+    },
+    {
+      "n": "04",
+      "t": "SIN RUTA DE VALIDACIÓN",
+      "d": "Has construido algo pero no tienes un entorno para mostrar a los usuarios.\nNo hay despliegue, compartir ni bucle de retroalimentación."
+    },
+    {
+      "n": "05",
+      "t": "INCERTIDUMBRE DE LA PLATAFORMA",
+      "d": "Es difícil elegir entre web y app.\nNecesitas una recomendación que se ajuste a los objetivos de validación."
+    },
+    {
+      "n": "06",
+      "t": "BRECHA TRAS EL MVP",
+      "d": "Después del lanzamiento, no hay prioridad para qué expandir.\nNecesitas estructura para conectar la validación con los siguientes pasos."
+    }
+  ],
+  "baLabel": "ANTES / DESPUÉS",
+  "baTitle": "Salida a nivel de demo vs\nun producto que puedes validar",
+  "beforeLabel": "ANTES",
+  "afterLabel": "DESPUÉS",
+  "before": [
+    "Lista de ideas y características sin un alcance claro",
+    "Planificación, diseño y construcción desconectados",
+    "Diapositivas y maquetas — nada que hacer clic",
+    "Sin entorno de despliegue ni plan de siguiente paso"
+  ],
+  "after": [
+    "Problema definido primero por la cuestión de los usuarios, los usuarios y la validación",
+    "UX/UI de flujo central y alcance acordado",
+    "La gente puede usar el MVP web o de aplicaciones que funcione",
+    "Entorno de despliegue y hoja de ruta post-MVP entregados"
+  ],
+  "capsLabel": "CAPACIDADES",
+  "capsTitle": "Ejecutamos la build MVP\ncomo un único compromiso estructurado.",
+  "caps": [
+    {
+      "t": "PROBLEMA DE LA FRANJA",
+      "d": "Define problema, usuarios principales y pregunta de validación.\nAclara qué pertenece al MVP y qué no."
+    },
+    {
+      "t": "DEFINICIÓN DEL ALCANCE",
+      "d": "Conserva solo lo que necesita la primera versión.\nPrioridades separadas de Core, Next y Later."
+    },
+    {
+      "t": "UX / DISEÑO DE UI",
+      "d": "Diseña en torno a la ruta de objetivos del usuario — no a pantallas aleatorias.\nConstruye la interfaz real del producto."
+    },
+    {
+      "t": "DESARROLLO DEL PRODUCTO",
+      "d": "Implementa un MVP web o de aplicación.\nUn producto funcional, no una presentación."
+    },
+    {
+      "t": "BACKEND & DATOS",
+      "d": "Incluye un servidor y estructura de datos mínimos para validación.\nIniciar sesión, guardar, leer — lo que requiera el escenario."
+    },
+    {
+      "t": "INTEGRACIONES",
+      "d": "Implementa pagos, notificaciones, APIs y servicios externos según el ámbito previsto.\nSolo lo que el MVP necesita."
+    },
+    {
+      "t": "QA y LANZAMIENTO",
+      "d": "Verifica los escenarios principales y despliega en un entorno real.\nListo para compartir con el equipo o con usuarios iniciales."
+    },
+    {
+      "t": "SIGUIENTE PASO DE HOJA DE RUTA",
+      "d": "Documento expandir, mantener o eliminar elementos después del MVP.\nConecta los resultados de validación a la siguiente fase de BUILD."
+    }
+  ],
+  "sourcesLabel": "APORTACIONES AL PROYECTO",
+  "sourcesTitle": "Combinamos los datos que tu proyecto necesita.",
+  "sourcesNote": "Las aportaciones reales varían según la fase de la idea, el material disponible y el contexto del equipo.",
+  "sources": [
+    "Descripción de la idea y el problema",
+    "Definición de usuario objetivo",
+    "Servicios competidores y de referencia",
+    "Wireframes o especificaciones existentes",
+    "Directrices de marca e interfaz",
+    "Limitaciones técnicas y de plataforma",
+    "Hipótesis del modelo de negocio",
+    "Preguntas de validación y KPIs",
+    "Contenido y datos iniciales",
+    "Requisitos de API e integración",
+    "Entorno de lanzamiento y despliegue",
+    "Planes de expansión futura"
+  ],
+  "useLabel": "CASOS DE USO",
+  "useTitle": "MVPs que podemos construir.",
+  "useBadge": "Ejemplos de tipos de construcción",
+  "useCases": [
+    {
+      "t": "JUGADOR MÁS VALIOSO DE LA WEB",
+      "d": "Flujo central utilizable en el navegador.\nRegistro para valor — una primera versión que puedes validar."
+    },
+    {
+      "t": "MVP DE LA APP MÓVIL",
+      "d": "Hábitos, alertas y uso en movimiento que solo tienen sentido en móvil.\nPrimera iOS o Android lanzamiento."
+    },
+    {
+      "t": "HERRAMIENTA INTERNA MVP",
+      "d": "Primera versión del software de operaciones diarias para tu equipo.\nPrimero velocidad y precisión."
+    },
+    {
+      "t": "MVP DE PRODUCTO DE IA",
+      "d": "IA que reduce el trabajo repetitivo.\nFlujo de trabajo y validación sobre espectáculo de modelos."
+    },
+    {
+      "t": "PROTOTIPO CLICABLE",
+      "d": "Una demostración clicable para inversores y equipos — rápida y precisa."
+    },
+    {
+      "t": "LANDING + PRODUCTO",
+      "d": "Persuasión y entrada de producto en un camino continuo.\nValidar conversión y uso juntos."
+    },
+    {
+      "t": "MVP DE SAAS",
+      "d": "Primera versión de SaaS con suscripción, permisos, administración.\nFlujo de valor central."
+    },
+    {
+      "t": "MVP DE MARKETPLACE",
+      "d": "Primera versión de la plataforma con múltiples usuarios y roles.\nListado, emparejamiento, administración básica incluida."
+    }
+  ],
+  "flowLabel": "EJEMPLO DE FLUJO DE TRABAJO",
+  "flowTitle": "IDEA → CONSTRUIR → LANZAR",
+  "flow": [
+    {
+      "n": "01",
+      "t": "IDEA",
+      "d": "Organiza la idea y el problema a resolver.\nDefine preguntas de validación y criterios de éxito juntos.",
+      "examples": [
+        "Problema",
+        "Usuarios",
+        "Hipótesis",
+        "KPIs"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ALCANCE",
+      "d": "Decide funciones principales para la primera versión.\nSepara claramente lo incluido en el alcance de lo que no lo está.",
+      "examples": [
+        "Núcleo",
+        "Siguiente",
+        "Después",
+        "Plataforma"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DISEÑO",
+      "d": "Diseña los flujos de usuario y la interfaz principales.\nConfirma la estructura de pantallas y la UX.",
+      "examples": [
+        "Flujos",
+        "UI",
+        "Pantallas",
+        "Revisión"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONSTRUIR",
+      "d": "Desarrolla un producto funcional.\nImplementa funciones principales, backend e integraciones.",
+      "examples": [
+        "Frontend",
+        "Backend",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LANZAMIENTO",
+      "d": "Prueba y despliega en un entorno real.\nEntrega hoja de ruta del siguiente paso juntos.",
+      "examples": [
+        "Desplegar",
+        "Compartir",
+        "Retroalimentación",
+        "Hoja de ruta"
+      ]
+    }
+  ],
+  "reportLabel": "SALIDA",
+  "reportTitle": "Los entregables son un producto que puedes validar y documentos de soporte.",
+  "reportLead": "La composición varía según el alcance del proyecto. A continuación se presentan elementos comunes.",
+  "reportMockStatus": "PRODUCTO · ALCANCE",
+  "reportMockK": "ESPECIFICACIÓN DEL ALCANCE DEL MVP",
+  "reportMockT": "Funciones, flujos, hitos",
+  "reportItems": [
+    "Problema y objetivos",
+    "Resumen del alcance",
+    "Mapa del flujo de usuario",
+    "Lista de funciones (Básicas / Próximas / Posteriores)",
+    "Resumen de UX / UI",
+    "Stack técnico",
+    "Backend y modelo de datos",
+    "Notas de integración",
+    "Lista de verificación de QA",
+    "Hoja de ruta post-MVP"
+  ],
+  "dashTitle": "Comparte el alcance y progreso del MVP en una vista.",
+  "dashLead": "Funciones, pantallas, flujos e integraciones juntos aceleran la discusión sobre el alcance y la construcción.",
+  "dashNote": "La composición y prioridad de las funciones varía según el objetivo de validación y el presupuesto.",
+  "dashMetrics": [
+    "Funciones",
+    "Pantallas",
+    "Flujos",
+    "Integraciones"
+  ],
+  "dashFilters": [
+    "Todas",
+    "Básicas",
+    "Próximas",
+    "Posteriores"
+  ],
+  "aiLabel": "ACELERACIÓN",
+  "aiTitle": "Automatiza la repetición.\nEnfócate en el diseño y la construcción.",
+  "aiLead": "La estructuración de requisitos, borradores de flujos, listas de pantallas y listas de verificación de QA pueden ser asistidos por IA para mayor velocidad, mientras las personas se enfocan en decisiones de alcance, UX y la implementación central.",
+  "aiExamples": [
+    "Estructura ideas y requisitos",
+    "Borra flujos y listas de pantallas",
+    "Organiza prioridad de funciones",
+    "Elabora modelos de API y datos",
+    "Listas de verificación de QA y pruebas",
+    "Borradores de hoja de ruta post-MVP"
+  ],
+  "aiNote": "Las decisiones finales de alcance, diseño y calidad se confirman con tu equipo de proyecto.",
+  "delLabel": "ENTREGABLES",
+  "delTitle": "Lo que recibes cuando el proyecto se completa",
+  "delLead": "Entregamos los siguientes elementos según sea necesario para su alcance.",
+  "deliverables": [
+    {
+      "title": "Documento de Definición del Alcance",
+      "body": "Qué se incluye en el MVP y qué se deja fuera."
+    },
+    {
+      "title": "Flujo UX / Estructura de Pantallas",
+      "body": "Flujos de usuario principales y estructura de pantalla."
+    },
+    {
+      "title": "MVP Funcionando (Web o App)",
+      "body": "Una primera versión que realmente funciona."
+    },
+    {
+      "title": "Backend y Datos Esenciales",
+      "body": "Datos esenciales y bases del backend."
+    },
+    {
+      "title": "Entorno Desplegado",
+      "body": "Entornos de staging y producción listos para usar."
+    },
+    {
+      "title": "Archivos de Diseño UX / UI",
+      "body": "Archivos de diseño y especificaciones clave de pantalla."
+    },
+    {
+      "title": "Documentación Técnica",
+      "body": "Estructura, integraciones y notas de operaciones."
+    },
+    {
+      "title": "Informe de QA",
+      "body": "Resultados de las comprobaciones de escenarios principales."
+    },
+    {
+      "title": "Hoja de Ruta Post-MVP",
+      "body": "Prioridades de mejora después del lanzamiento."
+    }
+  ],
+  "processLabel": "PROCESO",
+  "processTitle": "De la idea al lanzamiento.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCUBRIMIENTO",
+      "d": "Confirmar idea, problema, usuarios y restricciones.\nDefinir preguntas de validación y criterios de éxito.",
+      "examples": [
+        "Idea",
+        "Problema",
+        "Usuarios",
+        "KPIs"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "ALCANCE",
+      "d": "Decidir las funciones principales que entran y salen del MVP.\nAcordar plataforma, cronograma y presupuesto.",
+      "examples": [
+        "Core",
+        "Siguiente",
+        "Después",
+        "Plataforma"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "UX / DISEÑO",
+      "d": "Diseñar flujos principales y estructura de pantalla.\nConfirmar la interfaz real del producto.",
+      "examples": [
+        "Flujos",
+        "UI",
+        "Pantallas",
+        "Revisión"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "DESARROLLO",
+      "d": "Implementar frontend, backend e integraciones.\nDemostrar y revisar por fases.",
+      "examples": [
+        "Frontend",
+        "Backend",
+        "API",
+        "Integraciones"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PRUEBA",
+      "d": "Verificar escenarios principales.\nComprobar frente a los flujos de uso reales.",
+      "examples": [
+        "QA",
+        "UAT",
+        "Correcciones",
+        "Aprobación"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "LANZAMIENTO",
+      "d": "Preparar el entorno de despliegue y lanzamiento.\nCompartir con el equipo o usuarios tempranos.",
+      "examples": [
+        "Staging",
+        "Producción",
+        "Acceso",
+        "Compartir"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "PRÓXIMOS PASOS",
+      "d": "Organizar resultados de validación y prioridad de expansión.\nConectar con la siguiente fase de CONSTRUCCIÓN.",
+      "examples": [
+        "Retroalimentación",
+        "Hoja de ruta",
+        "Expandir",
+        "Pivotar"
+      ]
+    }
+  ],
+  "scopeLabel": "NIVELES DE ALCANCE",
+  "scopeTitle": "Cómo pensar sobre la complejidad del MVP.",
+  "scopeLead": "No es un paquete fijo. El alcance se establece según el objetivo de validación, plataforma y rango de características/integraciones.",
+  "scopes": [
+    {
+      "t": "MVP ENFOCADO",
+      "items": [
+        "Flujo principal único",
+        "Web o app — una plataforma",
+        "5–8 pantallas principales",
+        "Backend y datos básicos",
+        "Desplegar y compartir entorno"
+      ]
+    },
+    {
+      "t": "MVP ESTÁNDAR",
+      "items": [
+        "Múltiples funciones y flujos principales",
+        "Web o app + admin",
+        "Inicio de sesión, permisos, guardar",
+        "1–2 integraciones",
+        "Hoja de ruta post-MVP"
+      ]
+    },
+    {
+      "t": "MVP EXTENDIDO",
+      "items": [
+        "Múltiples módulos y roles",
+        "Multi-integración y API",
+        "IA, pagos, notificaciones",
+        "Diseño de expansión incluido",
+        "Alcance separado"
+      ]
+    }
+  ],
+  "timeLabel": "CRONOGRAMA",
+  "timeTitle": "El cronograma depende del alcance.",
+  "timeLead": "La duración varía según el número de características, plataforma, integraciones, profundidad del diseño y velocidad de retroalimentación.",
+  "timelines": [
+    {
+      "t": "MVP Enfocado",
+      "d": "Aproximadamente 3–4 semanas"
+    },
+    {
+      "t": "MVP Estándar",
+      "d": "Aproximadamente 4–6 semanas"
+    },
+    {
+      "t": "Extendido",
+      "d": "Alcance definido por separado"
+    }
+  ],
+  "priceLabel": "COSTO DEL PROYECTO",
+  "priceTitle": "Cotizamos solo el alcance que necesita.",
+  "priceName": "MVP DEVELOPMENT",
+  "priceValue": "₩1,000,000 desde",
+  "priceFactorsLabel": "Factores de precios",
+  "priceFactors": [
+    "Alcance — características, pantallas, flujos",
+    "Plataforma — web, app, o ambas",
+    "Complejidad — datos, permisos, lógica",
+    "Cronograma — planificación y recursos",
+    "Integración — API, pagos, alertas",
+    "Profundidad de diseño — rango de UX/UI",
+    "Backend — servidor, BD, autenticación",
+    "Post-lanzamiento — expansión, mantenimiento"
+  ],
+  "priceNote": "Revisamos plataforma, alcance, complejidad y cronograma, luego proporcionamos una cotización. El monto final se confirma después de definir el alcance.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Preguntas frecuentes",
+  "faqs": [
+    {
+      "q": "¿Podemos empezar sin un plan completo?",
+      "a": "Sí. Una idea y el problema que desea resolver son suficientes para definir el alcance juntos."
+    },
+    {
+      "q": "Web o app — ¿cuál elegir?",
+      "a": "Recomendamos según su objetivo de validación y usuarios. No construimos ambos por defecto."
+    },
+    {
+      "q": "¿Cuánto tiempo tarda?",
+      "a": "Depende del alcance. Un MVP enfocado toma normalmente alrededor de 3–4 semanas; MVP Estándar alrededor de 4–6 semanas."
+    },
+    {
+      "q": "¿Puedo obtener un precio fijo en el sitio web?",
+      "a": "El precio depende de la plataforma y el alcance. Desde ₩1,000,000 — le guiamos después de revisar la solicitud."
+    },
+    {
+      "q": "¿Podemos expandir después del MVP?",
+      "a": "Sí. Extendemos a partir de los flujos que ya demostraron ser útiles."
+    },
+    {
+      "q": "¿Esto puede conectarse con RESEARCH?",
+      "a": "Sí. La investigación de mercado, competidores y usuarios puede alimentar el alcance del MVP y la prioridad de funciones."
+    },
+    {
+      "q": "¿Cómo se maneja la confidencialidad?",
+      "a": "Los materiales se usan solo dentro del alcance acordado. NDA disponible cuando sea requerido."
+    }
+  ],
+  "finalLabel": "INICIAR UN PROYECTO",
+  "finalTitle": "Convierte tu idea\nen un primer producto.",
+  "finalLead": "Cuéntanos el servicio que quieres crear y tu etapa actual. Confirmaremos juntos el alcance del MVP y la ruta IDEA → CONSTRUIR → LANZAR.",
+  "ctaFinalSecondary": "Ver todo CONSTRUIR →",
+  "ctaFinalSecondaryHref": "../build/"
+}

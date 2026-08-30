@@ -2,9 +2,14 @@
  * About page copy (KO / EN). Structural lists live with the page body builder.
  * Metric values come from getCompanyMetrics() — never invent growth numbers.
  */
+import { deepMerge, loadPackOverlay, resolveCopyLang } from "./i18n/copy-lang.mjs";
 
 export function getAboutPageCopy(lang) {
-  return lang === "ko" ? KO : EN;
+  const L = resolveCopyLang(lang);
+  if (L === "ko") return KO;
+  if (L === "en") return EN;
+  const overlay = loadPackOverlay("about-page", L);
+  return overlay ? deepMerge(EN, overlay) : EN;
 }
 
 const KO = {

@@ -1,0 +1,584 @@
+{
+  "seoTitle": "INTERNE WERKZEUGE / Newon AUTOMATISIERUNG",
+  "metaDescription": "Verwandeln Sie verstreute Tabellenkalkulationen und Multitool-Arbeiten in ein internes System, das zu der Arbeitsweise Ihres Teams passt. Newon INTERNE WERKZEUGE.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICE",
+  "crumbHere": "INTERNE WERKZEUGE",
+  "eyebrow": "03 * WERKZEUGE",
+  "subEyebrow": "AUTOMATISIERUNG",
+  "headline": "Werkzeuge, die um\nherum gestaltet sind, wie Ihr Team arbeitet.",
+  "lead": "Wir konsolidieren die über Tabellenkalkulationen und Dienste verteilte Arbeit in einem internen System und entwerfen Bildschirme, Berechtigungen und Datenstrukturen für die Betriebs— und Verwaltungsabläufe, die Ihr Team tatsächlich ausführt.",
+  "ctaPrimary": "INTERNE TOOLS Anfrage →",
+  "ctaSecondary": "Sehen Sie, was wir bauen ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Benutzerdefiniertes internes Werkzeug"
+    },
+    {
+      "k": "AM BESTEN FÜR",
+      "v": "Teams mit wiederkehrenden Ops und Administrationsarbeiten"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Typischerweise 4-8 Wochen"
+    },
+    {
+      "k": "PREIS",
+      "v": "Individuelles Angebot"
+    }
+  ],
+  "overviewLabel": "ÜBERBLICK",
+  "overviewTitle": "Erstellen Sie ein internes System\ndafür, wie das Team arbeitet.",
+  "overviewBody": [
+    "Viele Teams führen Operationen immer noch über Tabellenkalkulationen, Chat, E-Mail und mehrere SaaS-Tools aus.",
+    "Wenn Aufnahme, Status, Genehmigungen, Inventar, Zeitpläne und Kundendatensätze an verschiedenen Orten gespeichert sind, werden die Menschen zur Integrationsschicht.",
+    "INTERNE TOOLS verwandeln das in Bildschirme und Datenstrukturen, die Ihrem realen Prozess entsprechen — kein kundenorientiertes Produkt, sondern ein Tool, das Ihr Team jeden Tag verwendet."
+  ],
+  "problemsLabel": "PROBLEM",
+  "problemsTitle": "Wenn ein internes Werkzeug notwendig wird.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "ZERSTREUTE ARBEIT",
+      "d": "Anfragen und Aufzeichnungen werden live in Tabellen, Chat, E-Mail und Tools angezeigt."
+    },
+    {
+      "n": "02",
+      "t": "MANUELLE ÜBERGABE",
+      "d": "Menschen übergeben Arbeit manuell, wenn sich der Besitz oder die Phase ändert."
+    },
+    {
+      "n": "03",
+      "t": "STATUSBLINDHEIT",
+      "d": "Es ist schwer auf einen Blick zu erkennen, was gerade läuft."
+    },
+    {
+      "n": "04",
+      "t": "GENEHMIGUNGSREIBUNG",
+      "d": "Überprüfungen und Genehmigungen bleiben über Chat und E-Mail hängen."
+    },
+    {
+      "n": "05",
+      "t": "BERECHTIGUNGSRISIKO",
+      "d": "Sensible Daten befinden sich in freigegebenen Blättern, die jeder öffnen kann."
+    },
+    {
+      "n": "06",
+      "t": "KEINE GESCHICHTE",
+      "d": "Es gibt wenig Aufzeichnungen darüber, wer was wann geändert hat."
+    },
+    {
+      "n": "07",
+      "t": "SKALIERUNGSGRENZE",
+      "d": "Spreadsheet-Operationen brechen zusammen, wenn Menschen und Volumen wachsen."
+    },
+    {
+      "n": "08",
+      "t": "WERKZEUG MISFIT",
+      "d": "Standard-SaaS passt nicht zum Teamprozess."
+    }
+  ],
+  "capsLabel": "FÄHIGKEIT",
+  "capsTitle": "Wir komponieren die Funktionen, die Ihre Arbeit benötigt.",
+  "caps": [
+    {
+      "t": "ANFRAGE & AUFNAHME",
+      "d": "Empfangen Sie Anfragen über definierte Formulare und Abläufe.",
+      "examples": [
+        "Anfrage-Aufnahme",
+        "Arbeitsanfragen",
+        "Interne Tickets",
+        "Onboarding-Formulare"
+      ]
+    },
+    {
+      "t": "ARBEITSPLATTE",
+      "d": "Verwalten Sie Status, Eigentümer und Priorität an einem Ort.",
+      "examples": [
+        "Kanban /Liste",
+        "Preisauswahl",
+        "Zuordnung",
+        "Frist"
+      ]
+    },
+    {
+      "t": "GENEHMIGUNGSABLAUF",
+      "d": "Sperren Sie die Überprüfung und Genehmigung in klare Phasen.",
+      "examples": [
+        "Mehrstufige Genehmigung",
+        "Rollenberechtigungen",
+        "Kommentare",
+        "Geschichte"
+      ]
+    },
+    {
+      "t": "OPS-DASHBOARD",
+      "d": "Bringen Sie den Betriebsstatus in eine Ansicht.",
+      "examples": [
+        "Fortschritt",
+        "Engpässe",
+        "Durchsatz",
+        "Zeitraum vergleichen"
+      ]
+    },
+    {
+      "t": "DATENADMINISTRATOR",
+      "d": "Strukturieren Sie interne Referenzdaten und Aufzeichnungen.",
+      "examples": [
+        "Stammdaten",
+        "Suche",
+        "Tags",
+        "Export"
+      ]
+    },
+    {
+      "t": "ROLLE & ZUGRIFF",
+      "d": "Geteilte Bildschirme und Berechtigungen nach Rolle.",
+      "examples": [
+        "Adminbereich",
+        "Manager",
+        "Mitglied",
+        "Schreibgesch"
+      ]
+    },
+    {
+      "t": "INTEGRATION",
+      "d": "Verbinden Sie Dienste und Daten, die Sie bereits verwenden.",
+      "examples": [
+        "Datenblättern",
+        "Slack/E-Mail",
+        "CRM",
+        "API"
+      ]
+    },
+    {
+      "t": "AUDIT UND PROTOKOLLIERUNG",
+      "d": "Halten Sie Änderungen und Aktionen nachvollziehbar.",
+      "examples": [
+        "Änderungsprotokoll",
+        "Aktionsverlauf",
+        "Sicherheitswarnungen",
+        "Backup-Punkte"
+      ]
+    }
+  ],
+  "useLabel": "GLICHKEITEN",
+  "useTitle": "Interne Werkzeuge, die wir bauen können.",
+  "useBadge": "Baubare Beispiele",
+  "useCases": [
+    {
+      "t": "OPS-KONSOLE",
+      "d": "Eine Konsole für Anfragen, Fortschritt und Besitz."
+    },
+    {
+      "t": "ANFORDERUNGSPORTAL",
+      "d": "Standard-Aufnahmeformulare mit gemeinsamem Status für Teams."
+    },
+    {
+      "t": "GENEHMIGUNGSSYSTEM",
+      "d": "Systematisieren Sie Budget-, Inhalts- oder Zugriffsgenehmigungen."
+    },
+    {
+      "t": "KUNDEN-OPS-TOOL",
+      "d": "Verwalten Sie Kundenarbeit, Zeitpläne und Ergebnisse intern."
+    },
+    {
+      "t": "INVENTAR / ANLAGEGUT",
+      "d": "Verfolgen Sie Inventar, Assets und Bewegungen."
+    },
+    {
+      "t": "CRM LITE",
+      "d": "Ein Pipeline-Tool, das für Ihren Verkaufs- / Anfrageprozess vereinfacht wurde."
+    },
+    {
+      "t": "INHALTS-TRACKER",
+      "d": "Ein Board für den Produktions-, Überprüfungs- und Veröffentlichungsstatus."
+    },
+    {
+      "t": "INTERNES DASHBOARD",
+      "d": "Ein Ops-Board, das Metriken aus mehreren Quellen kombiniert."
+    }
+  ],
+  "baLabel": "VORHER / NACHHER",
+  "baTitle": "Wie die Arbeit organisiert wird",
+  "beforeLabel": "VOR",
+  "afterLabel": "NACH",
+  "before": [
+    "Tabellenkalkulation + Chat + E-Mail",
+    "Manuelle Übergaben",
+    "Schwer zu erkennender Status",
+    "Unklarer Zugang und Geschichte"
+  ],
+  "after": [
+    "Ein internes Werkzeug",
+    "Definierter Arbeitsablauf",
+    "Sichtbarer Status und Besitzer",
+    "Rollenbasierter Zugriff und Protokolle"
+  ],
+  "flowLabel": "BEISPIEL-WORKFLOW",
+  "flowTitle": "Wie ein internes Tool funktioniert",
+  "flow": [
+    {
+      "n": "01",
+      "t": "AUFNAHME",
+      "d": "Anfragen und Daten werden über Formulare, APIs oder Dateien eingegeben.\nPflichtfelder und Anhänge werden zuerst validiert."
+    },
+    {
+      "n": "02",
+      "t": "ROUTE",
+      "d": "Typ-, Prioritäts- und Eigentümerregeln weisen die Arbeit zu.\nDie nächste Stufe und der Genehmigungspfad werden automatisch festgelegt."
+    },
+    {
+      "n": "03",
+      "t": "PROZESS",
+      "d": "Teams bearbeiten, bearbeiten und genehmigen auf dem Bildschirm.\nKommentare, Dateien und Statusänderungen bleiben in einem Fluss."
+    },
+    {
+      "n": "04",
+      "t": "UPDATE",
+      "d": "Statusänderungen benachrichtigen die Personen, die es wissen müssen.\n Wird über Slack, E-Mail oder In-App-Benachrichtigungen bereitgestellt."
+    },
+    {
+      "n": "05",
+      "t": "DATENSATZ",
+      "d": "Wer was wann geändert hat, wird als Historie gespeichert.\n Ergebnisse werden für Audits und Wiederholungen aufbewahrt."
+    },
+    {
+      "n": "06",
+      "t": "BEWERTUNG",
+      "d": "Dashboards, Listen und Filter zeigen den aktuellen Status an.\nEngpässe, Verzögerungen und Durchsatz auf einen Blick."
+    }
+  ],
+  "featuresLabel": "AUSSTATTUNG",
+  "featuresTitle": "Funktionen, die wir nach Projekt einschließen können",
+  "featuresLead": "Nicht jedes Projekt hat die gleichen Funktionen - wir komponieren für die Arbeit, auf die es ankommt.",
+  "features": [
+    "Formular / Aufnahme",
+    "Auflisten & Filtern",
+    "Kanban-Tafel",
+    "Detailansicht",
+    "Statusworkflow",
+    "Rollenbasierter Zugriff",
+    "Kommentare",
+    "Dateianlagen",
+    "Benachrichtigung",
+    "Suche",
+    "Export",
+    "Admin-Einstellungen",
+    "Aktivitätsprotokoll",
+    "Einfaches Dashboard",
+    "API / Webhooks",
+    "Mobilfreundliche Benutzeroberfläche"
+  ],
+  "integLabel": "INTEGRATION",
+  "integTitle": "Verbinden Sie die Tools, die Sie bereits verwenden.",
+  "integNote": "Die tatsächliche Konnektivität hängt von der API, den Berechtigungen und der Datenstruktur der einzelnen Dienste ab.",
+  "integrations": [
+    "Google Sheets",
+    "Notion",
+    "Slack",
+    "Email",
+    "Google Drive",
+    "CRM",
+    "Datenbank",
+    "Forms",
+    "Analytics",
+    "Zahlungs- / Rechnungsdaten",
+    "Externe API",
+    "Webhook"
+  ],
+  "aiLabel": "AI-ERWEITERUNG",
+  "aiTitle": "Binden Sie KI bei Bedarf in den Arbeitsablauf ein.",
+  "aiLead": "Wenn Klassifizierung, Entwurf oder Zusammenfassung wiederholt werden, kann KI als Unterstützung im Tool sitzen.",
+  "aiExamples": [
+    "Anfragen automatisch klassifizieren",
+    "Ticket-Zusammenfassungen",
+    "Entwurfsgenerierung",
+    "Doppelte / ähnliche Erkennung",
+    "Notizen bereinigen",
+    "Statusvorschläge"
+  ],
+  "aiNote": "KI-Output ist beratend — wichtige Entscheidungen bleiben standardmäßig von Menschen bestätigt.",
+  "autoLabel": "AUTOMATISIERUNGSERWEITERUNG",
+  "autoTitle": "Automatisieren Sie sich wiederholende Arbeiten innerhalb des Tools.",
+  "autoLead": "Klare Regeln - Warnungen, Statusänderungen, Synchronisierung, geplante Berichte — können in den Automatisierungsbereich erweitert werden.",
+  "autoExamples": [
+    "Statusänderungswarnungen",
+    "Terminerinnerungen",
+    "Blatt / DB-Synchronisierung",
+    "Geplante Digest-E-Mail",
+    "Bedingtes Routing",
+    "Batch-Aktualisierungen"
+  ],
+  "delLabel": "LIEFERBAR",
+  "delTitle": "Was Sie erhalten, wenn das Projekt abgeschlossen ist",
+  "delLead": "Je nach Umfang können die Leistungen die folgenden Punkte umfassen — nicht jedes Projekt enthält jeden Punkt.",
+  "deliverables": [
+    "Zusammenfassung der Anforderungen",
+    "Informationsarchitektur",
+    "UI-Bildschirme",
+    "Funktionierendes internes Werkzeug",
+    "Rollen- / Berechtigungseinrichtung",
+    "Datenstruktur",
+    "Grundlegende Integrationen",
+    "Admin-Anleitung",
+    "Ops-Übergabehinweise",
+    "Übergabehinweise"
+  ],
+  "processLabel": "PROZESS",
+  "processTitle": "Wir beginnen damit, wie die Arbeit tatsächlich abläuft.",
+  "process": [
+    {
+      "n": "01",
+      "t": "ENTDECKUNG",
+      "d": "Ordnen Sie den aktuellen Fluss, Werkzeuge und Engpässe zu.\nWir beginnen damit, herauszufinden, wo Zeit verloren geht."
+    },
+    {
+      "n": "02",
+      "t": "ARBEITS-MAPPING",
+      "d": "Dokumentenanforderung → Prozess → erledigt, plus Ausnahmen.\n Zeichne, wie sich die Arbeit heute tatsächlich bewegt."
+    },
+    {
+      "n": "03",
+      "t": "UMFANG",
+      "d": "Entscheide, was in v1 gehört und was wartet.\nMacht die erste Veröffentlichungsgrenze klar."
+    },
+    {
+      "n": "04",
+      "t": "STRUKTUR",
+      "d": "Entwerfen Sie Bildschirme, Datenmodell und Berechtigungen.\nDefiniere die Struktur, die dein Team verwenden wird."
+    },
+    {
+      "n": "05",
+      "t": "PROTOTYP",
+      "d": "Validieren Sie den Kernfluss schnell.\nTesten Sie zuerst die Hauptszenarien."
+    },
+    {
+      "n": "06",
+      "t": "BAUEN",
+      "d": "Implementieren Sie ein Werkzeug, das für den realen Gebrauch bereit ist.\n Verschicke etwas, das das Team täglich ausführen kann."
+    },
+    {
+      "n": "07",
+      "t": "INTEGRIEREN",
+      "d": "Verbinden Sie die erforderlichen Integrationen und Automatisierungen.\nVerknüpfen Sie vorhandene Tools und Daten."
+    },
+    {
+      "n": "08",
+      "t": "TEST",
+      "d": "Überprüfen Sie Berechtigungen, Flows und Daten mit realen Szenarien.\n Schließt Randfälle ein, nicht nur glückliche Pfade."
+    },
+    {
+      "n": "09",
+      "t": "HANDOFF",
+      "d": "Übergabe von Operationen und administrativer Anleitung.\n, damit Ihr Team es unabhängig betreiben kann."
+    }
+  ],
+  "scopeLabel": "GELTUNGSBEREICH EBENEN",
+  "scopeTitle": "Ein Leitfaden zum Verständnis der Projektkomplexität.",
+  "scopeLead": "Nicht reparierte Pakete - eine Referenz für das Scoping und Zitieren, was Sie brauchen.",
+  "scopes": [
+    {
+      "t": "FOKUSSIERTES WERKZEUG",
+      "items": [
+        "Ein zentraler Arbeitsablauf",
+        "Grundlegende CRUD-Bildschirme",
+        "Einfache Berechtigungen",
+        "Kleiner Datensatz",
+        "Minimale Integrationen"
+      ]
+    },
+    {
+      "t": "TEAM-OPS-SYSTEM",
+      "items": [
+        "Mehrere Rollen / Berechtigungen",
+        "Statusworkflow",
+        "Liste / Detail / Armaturenbrett",
+        "Benachrichtigung",
+        "Wichtige Service-Integrationen"
+      ]
+    },
+    {
+      "t": "BENUTZERDEFINIERTE INTERNE PLATTFORM",
+      "items": [
+        "Mehrere Module",
+        "Komplexe Genehmigungen / Regeln",
+        "Multiintegrationen",
+        "KI/Automatisierungserweiterungen",
+        "Funktionen von Ops Admin"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Der Zeitplan hängt vom Umfang ab.",
+  "timeLead": "Funktionen, Integrationen, Berechtigungsstruktur und vorhandene Daten können die Dauer ändern.",
+  "timelines": [
+    {
+      "t": "Fokussiertes internes Werkzeug",
+      "d": "Ungefähr 3-5 Wochen"
+    },
+    {
+      "t": "Team-Ops-System",
+      "d": "Ungefähr 4-8 Wochen"
+    },
+    {
+      "t": "Benutzerdefinierte interne Plattform",
+      "d": "Bereich separat"
+    }
+  ],
+  "priceLabel": "PROJEKTKOSTEN",
+  "priceTitle": "Wir geben nur den Umfang an, den Sie benötigen.",
+  "priceName": "INTERNE WERKZEUGE",
+  "priceValue": "Individuelles Angebot",
+  "priceFactorsLabel": "Was den Preis prägt",
+  "priceFactors": [
+    "Komplexität der Arbeitsabläufe",
+    "Anzahl der Bildschirme/Module",
+    "Rollen-/Berechtigungsstruktur",
+    "Datenmodell",
+    "Anzahl der Integrationen",
+    "Automatisierungsumfang",
+    "KI-Funktionen",
+    "Dashboard-Anforderungen",
+    "Migration bestehender Daten",
+    "Benutzer / Parallelität",
+    "Mobiler Support",
+    "Wartung"
+  ],
+  "priceNote": "Das endgültige Angebot wird festgelegt, nachdem wir Ihren aktuellen Prozess und die erforderlichen Funktionen überprüft haben.",
+  "extLabel": "EXTERNE KOSTEN",
+  "extTitle": "Kosten, die außerhalb der Baugebühr von Newon liegen können",
+  "extItems": [
+    "Webhosting und Hosting",
+    "Datenbank",
+    "Authentifizierung / Identität",
+    "Externe API",
+    "AI-API",
+    "Automatisierung SaaS",
+    "Cloud-Speicher",
+    "E-Mail / Nachrichtendienst",
+    "Andere kostenpflichtige externe Dienste"
+  ],
+  "secLabel": "SICHERHEIT",
+  "secTitle": "Interne Tools beginnen mit dem Zugriff und den Daten.",
+  "secLead": "Wenn es um vertrauliche Informationen geht, entwerfen wir für rollenbasierten Zugriff, geringste Berechtigungen und nur die Protokolle, die Sie benötigen. Die Sicherheitsanforderungen werden vor dem Anpfiff bestätigt.",
+  "secItems": [
+    "Rollenbasierter Zugriff",
+    "Geringste Privilegien",
+    "Prüfprotokoll",
+    "Umwelttrennung",
+    "Handhabung von Anmeldeinformationen",
+    "Datenminimierung"
+  ],
+  "faqLabel": "FAQ'S",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faqs": [
+    {
+      "q": "Reicht Notion oder eine Tabelle nicht aus?",
+      "a": "Es kann früh sein. Wenn Berechtigungen, Status, Genehmigungen, Verlauf und Integrationen komplex werden, ist ein dediziertes internes Tool oft stabiler."
+    },
+    {
+      "q": "Wie unterscheidet sich das von der Anpassung von SaaS?",
+      "a": "SaaS ist großartig für die Geschwindigkeit, passt aber möglicherweise nicht zu Ihrem Prozess. INTERNE TOOLS beginnen mit Ihrem realen Ablauf und erstellen die Bildschirme und Regeln, die Sie benötigen."
+    },
+    {
+      "q": "Brauchen wir vom ersten Tag an ein großes System?",
+      "a": "Nein. Wir empfehlen, mit dem sich wiederholendsten, kostenintensivsten Arbeitsablauf in einem fokussierten Bereich zu beginnen."
+    },
+    {
+      "q": "Können Sie vorhandene Blattdaten migrieren?",
+      "a": "Ja. Der Migrationsumfang hängt von der Sauberkeit und Struktur der Daten ab und kann separat festgelegt werden."
+    },
+    {
+      "q": "Kann es auf dem Handy funktionieren?",
+      "a": "Wir können eine mobilfreundliche Benutzeroberfläche erstellen. Native-App-Anforderungen werden als separater Bereich bestätigt."
+    },
+    {
+      "q": "Kann KI oder Automatisierung einbezogen werden?",
+      "a": "Ja. Wir gehen oft zuerst von klaren Bereichen aus — Klassifizierung, Zusammenfassungen, Warnungen und Synchronisierung."
+    },
+    {
+      "q": "Was ist mit sensiblen internen Daten?",
+      "a": "Wir richten uns nach Zugriff, Datenbereich und Protokollen aus. Hosting und Authentifizierung folgen Ihrer Umgebung und Richtlinie."
+    },
+    {
+      "q": "Können Sie nach dem Start warten und erweitern?",
+      "a": "Ja. Funktionserweiterungen, Integrationsänderungen und Ops-Unterstützung können separat festgelegt werden."
+    }
+  ],
+  "finalLabel": "STARTEN SIE EIN PROJEKT",
+  "finalTitle": "Machen Sie wiederkehrende Teamarbeit \nzu einem Werkzeug.",
+  "finalLead": "Sagen Sie uns, welche Arbeit über Blätter und Chat verteilt ist. Wir bestätigen die Bildschirme und den Fluss, die Sie benötigen.",
+  "formTitle": "INTERNE TOOLS-Anfrage",
+  "formLead": "Teilen Sie Ihren aktuellen Prozess und die benötigten Funktionen mit — wir bestätigen den Umfang.",
+  "formCategory": "AUTOMATISIERUNG",
+  "formService": "INTERNE WERKZEUGE",
+  "labelCategory": "SERVICEKATEGORIE",
+  "labelService": "SERVICE",
+  "labelName": "Name",
+  "labelCompany": "Firma / Marke",
+  "labelEmail": "Email",
+  "labelCurrentTools": "Werkzeuge, die Sie heute verwenden",
+  "labelCurrentWork": "Wiederkehrende Arbeit heute",
+  "labelDesired": "Funktionen, die Sie benötigen",
+  "labelUsers": "Erwartete Benutzer",
+  "labelIntegrations": "Dienste zum Verbinden",
+  "labelTimeline": "Voraussichtlicher Zeitplan",
+  "labelBudget": "Budgetbereich",
+  "labelMessage": "Projektbeschreibung",
+  "labelConsent": "Ich stimme der Erhebung und Verwendung personenbezogener Daten zu.",
+  "privacyLink": "Datenschutzerklärung",
+  "optional": "optional",
+  "currentToolsOptions": [
+    "Google Sheets",
+    "Excel",
+    "Notion",
+    "Slack",
+    "Email",
+    "CRM",
+    "Weitere SaaS",
+    "Keine / ad-hoc"
+  ],
+  "desiredOptions": [
+    "Anfrage / Aufnahme",
+    "Arbeitsplatte",
+    "Genehmigungsablauf",
+    "Dashboard",
+    "Rolle & Zugriff",
+    "Integration",
+    "AI Assist",
+    "Automatisierung",
+    "Nicht sicher"
+  ],
+  "usersOptions": [
+    "1–5",
+    "6–20",
+    "21–50",
+    "50+",
+    "TBD"
+  ],
+  "timelineOptions": [
+    "So schnell wie möglich",
+    "2-4 wochen",
+    "4-8 wochen",
+    "2-3 monate",
+    "TBD"
+  ],
+  "budgetOptions": [
+    "₩ 1 BIS 3 M",
+    "₩3 BIS 5 M",
+    "₩5 BIS 10 M",
+    "₩ 10M+",
+    "TBD"
+  ],
+  "phCurrentWork": "z.B. Aufnahme → zuweisen → Genehmigen → Datensatz erledigt",
+  "phIntegrations": "z. B. Google Sheets + Slack",
+  "phMessage": "Teilen Sie den aktuellen Fluss, Schmerzpunkte und Bildschirme / Funktionen, die Sie benötigen.",
+  "submit": "Anfrage senden",
+  "submitting": "Senden…",
+  "fail": "Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder senden Sie uns eine E-Mail.",
+  "mailSubject": "Newon INTERNE TOOLS Anfrage",
+  "backAutomation": "Zurück zu AUTOMATISIERUNG →",
+  "exploreAi": "KI-AUTOMATISIERUNG anzeigen →"
+}

@@ -5,7 +5,7 @@ import { escapeHtml, pick } from "./hub-utils.mjs";
 import { businessServicesHtml } from "./business-services-html.mjs";
 import { businessExploreCloseHtml } from "./business-explore-close.mjs";
 
-const CSS_V = "20260827ns18";
+const CSS_V = "20260830wrap1";
 
 function t(flat, flatEn, key, fb = "") {
   const v = pick(flat, flatEn, key);

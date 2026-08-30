@@ -76,7 +76,7 @@ function brHeadline(s) {
 }
 
 function copyLang(dir) {
-  return dir === "ko" ? "ko" : "en";
+  return dir;
 }
 
 function tField(obj, lang, koKey, enKey) {

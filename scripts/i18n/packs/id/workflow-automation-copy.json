@@ -1,0 +1,570 @@
+{
+  "seoTitle": "Otomatisasi Alur Kerja | Newon Bisnis",
+  "metaDescription": "Hubungkan SaaS, data, dan pekerjaan sehari-hari ke dalam satu alur kerja otomatis dengan Newon Otomatisasi Alur Kerja.",
+  "eyebrow": "02 · OTOMATISASI ALUR KERJA",
+  "subEyebrow": "",
+  "headline": "Hubungkan pekerjaan berulang\nke dalam satu alur.",
+  "lead": "Kami menghubungkan pekerjaan berulang di SaaS, email, spreadsheet, database, dan alat internal ke dalam alur kerja otomatis — mulai dari pemicu dan tindakan hingga percabangan, pemrosesan data, notifikasi, dan penanganan pengecualian.",
+  "ctaPrimary": "Minta penawaran →",
+  "ctaSecondary": "Lihat ruang lingkup proyek ↓",
+  "ctaSecondaryHref": "#ruang lingkup",
+  "meta": [
+    {
+      "k": "LAYANAN",
+      "v": "Otomatisasi Alur Kerja"
+    },
+    {
+      "k": "GARIS WAKTU",
+      "v": "Biasanya 3–6 minggu"
+    },
+    {
+      "k": "MULAI PADA",
+      "v": "Mulai dari ₩1.000.000"
+    },
+    {
+      "k": "TERBAIK UNTUK",
+      "v": "Teams menghubungkan alat dan data secara manual"
+    }
+  ],
+  "overviewLabel": "GAMBARAN UMUM",
+  "overviewTitle": "Anda sudah memiliki alatnya.\nOtomatiskan koneksi.",
+  "overviewBody": [
+    "Kami menghubungkan pekerjaan berulang di SaaS, email, spreadsheet, database, dan alat internal ke dalam satu alur kerja otomatis.",
+    "Dari pemicu dan tindakan hingga percabangan, pemrosesan data, notifikasi, dan penanganan pengecualian — dirancang berdasarkan cara kerja tim Anda sebenarnya."
+  ],
+  "whyLabel": "MENGAPA OTOMATISASI",
+  "whyTitle": "Apakah orang-orang masih menghubungkan\nsistem dengan tangan?",
+  "whyLead": "Anda sudah memiliki cukup alat, namun ketika mereka tidak berbicara satu sama lain, orang-orang memindahkan data dan memicu langkah berikutnya secara manual.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "SALIN & TEMPEL",
+      "d": "Informasi yang sama dimasukkan ke beberapa layanan berulang kali."
+    },
+    {
+      "n": "02",
+      "t": "PEMBERITAHUAN MANUAL",
+      "d": "Seseorang secara manual memberi tahu tim setiap kali ada pertanyaan atau pesanan baru."
+    },
+    {
+      "n": "03",
+      "t": "DATA TERSEBAR",
+      "d": "Data pelanggan dan operasi tersedia di banyak SaaS alat dan lembar."
+    },
+    {
+      "n": "04",
+      "t": "TUGAS BERULANG",
+      "d": "Pekerjaan yang sama diulangi setiap hari atau setiap minggu."
+    },
+    {
+      "n": "05",
+      "t": "TINDAK LANJUT TERLEWATKAN",
+      "d": "Langkah selanjutnya bergantung pada memori, sehingga pekerjaan bisa lolos."
+    },
+    {
+      "n": "06",
+      "t": "PELAPORAN MANUAL",
+      "d": "Laporan dibangun kembali dengan mengumpulkan data dengan tangan."
+    }
+  ],
+  "baLabel": "SEBELUM/SETELAH",
+  "baTitle": "Koneksi manual vs\nalur kerja otomatis",
+  "beforeLabel": "PANDUAN",
+  "afterLabel": "OTOMATIS",
+  "before": [
+    "Periksa formulir, lalu salin ke lembar",
+    "Peringatkan pemiliknya secara manual",
+    "Masukkan data ke dalam CRM dengan tangan",
+    "Seseorang mengingat langkah selanjutnya"
+  ],
+  "after": [
+    "Pemicu mendeteksi peristiwa tersebut",
+    "Kondisi merutekan jalan",
+    "Proses membersihkan data",
+    "Tindakan dan peringatan berjalan secara otomatis"
+  ],
+  "structureLabel": "BAGAIMANA CARA KERJANYA",
+  "structureTitle": "Satu acara dapat\nmemulai tugas berikutnya secara otomatis.",
+  "structure": [
+    {
+      "n": "01",
+      "t": "PEMICU",
+      "d": "Peristiwa yang memulai otomatisasi.\nFormulir, pesanan, atau perubahan status dapat memulai alur kerja.",
+      "examples": [
+        "Penyelidikan baru",
+        "Pengiriman formulir",
+        "Pesanan baru",
+        "Perubahan status",
+        "Waktu yang dijadwalkan",
+        "Data baru dibuat"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "KONDISI",
+      "d": "Putuskan apakah akan dijalankan dan jalur mana yang harus diambil.\nCabang pada nilai jumlah, jenis, atau status.",
+      "examples": [
+        "Tipe pelanggan",
+        "Jumlah pesanan",
+        "Jenis pertanyaan",
+        "Status pekerjaan",
+        "Nilai yang diperlukan ada"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "PROSES",
+      "d": "Tangani data yang Anda butuhkan.\nBersihkan, hitung, atau jalankan langkah AI di tengahnya.",
+      "examples": [
+        "Data bersih",
+        "Perubahan format",
+        "Perhitungan",
+        "Ekstraksi",
+        "Analisis AI",
+        "Gabungkan data"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "TINDAKAN",
+      "d": "Jalankan pekerjaan sebenarnya.\nPeringatan, CRM pembaruan, dan penulisan sheet menyusul.",
+      "examples": [
+        "Kirim email",
+        "Beritahu pemilik",
+        "Buat catatan CRM",
+        "Lembar pembaruan",
+        "Buat tugas",
+        "Simpan ke DB"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LOG / PEMANTAUAN",
+      "d": "Konfirmasikan hasil eksekusi.\nLacak keberhasilan, kegagalan, runtime, dan kesalahan.",
+      "examples": [
+        "Sukses",
+        "Kegagalan",
+        "Waktu proses",
+        "Hasil",
+        "Catatan kesalahan"
+      ]
+    }
+  ],
+  "capsTitle": "Pekerjaan dapat kami otomatisasi.",
+  "caps": [
+    {
+      "t": "MANAJEMEN PIMPIN",
+      "d": "Penerimaan → simpan data pelanggan → tetapkan pemilik → beri tahu → tindak lanjut"
+    },
+    {
+      "t": "DUKUNGAN PELANGGAN",
+      "d": "Permintaan → klasifikasikan → tetapkan → selesaikan → catat hasil"
+    },
+    {
+      "t": "PENJUALAN",
+      "d": "Prospek baru → CRM → tetapkan perwakilan → tindak lanjut"
+    },
+    {
+      "t": "PESANAN",
+      "d": "Pesanan → rekam data → peringatan internal → perubahan status → pembaruan pelanggan"
+    },
+    {
+      "t": "ISI",
+      "d": "Minta → buat tugas → tetapkan → tinjau → setujui"
+    },
+    {
+      "t": "PELAPORAN",
+      "d": "Kumpulkan → bersihkan → hitung → buat laporan → kirimkan"
+    },
+    {
+      "t": "OPERASI INTERNAL",
+      "d": "Permintaan internal → setujui → proses → selesai → rekam"
+    },
+    {
+      "t": "SINKRONISASI DATA",
+      "d": "Sinkronkan data yang diperlukan secara otomatis di seluruh sistem.\nPetakan hanya bidang yang Anda perlukan di kedua arah."
+    }
+  ],
+  "useLabel": "KEMUNGKINAN",
+  "useTitle": "Dalam pekerjaan nyata,\ninilah cara menghubungkannya.",
+  "useBadge": "Bangun contoh",
+  "useCases": [
+    {
+      "n": "01",
+      "t": "PERTANYAAN PELANGGAN",
+      "steps": [
+        "Formulir Situs Web",
+        "Data Pelanggan",
+        "<<<BARU KEEP000>>>",
+        "Tugaskan Manajer",
+        "Slack / Pemberitahuan Email",
+        "Email Konfirmasi",
+        "Tugas Tindak Lanjut"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PESANAN",
+      "steps": [
+        "Orde Baru",
+        "Validasi Data",
+        "Basis data",
+        "Pemberitahuan Internal",
+        "Pemrosesan Pesanan",
+        "Pembaruan Pelanggan",
+        "Lengkap"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "LAPORAN",
+      "steps": [
+        "Jadwal",
+        "Kumpulkan Data",
+        "Data Bersih",
+        "Hitung Metrik",
+        "Hasilkan Laporan",
+        "Kirim Laporan"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ISI",
+      "steps": [
+        "Permintaan Konten",
+        "Buat Tugas",
+        "Tetapkan",
+        "Draf",
+        "Ulasan",
+        "Menyetujui",
+        "Publikasikan"
+      ]
+    }
+  ],
+  "integLabel": "INTEGRASI",
+  "integTitle": "Hubungkan alat\nyang sudah Anda gunakan.",
+  "integNote": "Konektivitas sebenarnya bergantung pada API, webhook, izin, dan lingkungan teknis setiap layanan.",
+  "integGroups": [
+    {
+      "k": "KOMUNIKASI",
+      "items": [
+        "Surel",
+        "<<<BARU KEEP000>>>",
+        "Layanan pesan"
+      ]
+    },
+    {
+      "k": "DATA",
+      "items": [
+        "<<<BARU KEEP000>>>",
+        "Excel / CSV",
+        "Basis data"
+      ]
+    },
+    {
+      "k": "PRODUKTIVITAS",
+      "items": [
+        "<<<BARU KEEP000>>>",
+        "Formulir",
+        "Kalender",
+        "Alat proyek"
+      ]
+    },
+    {
+      "k": "BISNIS",
+      "items": [
+        "<<<BARU KEEP000>>>",
+        "perdagangan elektronik",
+        "Analisis",
+        "Perangkat lunak bisnis yang ada"
+      ]
+    },
+    {
+      "k": "TEKNOLOGI",
+      "items": [
+        "<<<BARU KEEP000>>>",
+        "kait web",
+        "Layanan Awan",
+        "Sistem Internal yang Ada"
+      ]
+    },
+    {
+      "k": "AI",
+      "items": [
+        "API AI",
+        "Analisis Teks",
+        "Klasifikasi",
+        "Peringkasan",
+        "Generasi"
+      ]
+    }
+  ],
+  "aiLabel": "EKSTENSI AI",
+  "aiTitle": "Anda dapat menambahkan penilaian AI\ndi dalam alur kerja.",
+  "aiLead": "Selain memindahkan data dari A ke B, AI dapat dihubungkan di mana teks harus dipahami atau diklasifikasikan.",
+  "aiExamples": [
+    "KLASIFIKASI PERTANYAAN — Mengklasifikasikan pertanyaan pelanggan secara otomatis",
+    "ANALISIS REVIEW - Analisis ulasan dan umpan balik",
+    "RINGKASAN — Meringkas dokumen atau email yang panjang",
+    "EKSTRAKSI DATA — Ekstrak informasi yang diperlukan dari teks",
+    "RINGKASAN LAPORAN — Meringkas laporan berdasarkan data",
+    "DRAFT KONTEN — Draf email atau konten tindak lanjut",
+    "PRIORITAS — Klasifikasikan prioritas dari konten permintaan"
+  ],
+  "aiNote": "Fitur AI ditambahkan sebagai cakupan terpisah bila diperlukan.",
+  "controlLabel": "KONTROL",
+  "controlTitle": "Tidak semuanya\nperlu dijalankan secara otomatis.",
+  "controlLead": "Keputusan penting dapat tetap berada di tangan orang-orang sementara sistem menangani pemrosesan yang berulang.",
+  "loopSteps": [
+    {
+      "n": "01",
+      "title": "PERMINTAAN"
+    },
+    {
+      "n": "02",
+      "title": "PROSES AI / SISTEM"
+    },
+    {
+      "n": "03",
+      "title": "TINJAUAN MANUSIA"
+    },
+    {
+      "n": "04",
+      "title": "MENYETUJUI / MENOLAK"
+    },
+    {
+      "n": "05",
+      "title": "TINDAKAN BERIKUTNYA"
+    }
+  ],
+  "humanExamples": [
+    "Persetujuan manajer sebelum mengirim penawaran",
+    "Tinjau sebelum menerbitkan konten",
+    "Pemeriksaan manual untuk pesanan bernilai tinggi",
+    "Ulasan pemilik untuk pertanyaan penting pelanggan",
+    "Tinjau keluaran AI sebelum langkah berikutnya dijalankan"
+  ],
+  "reliabilityLabel": "KEANDALAN",
+  "reliabilityTitle": "Kami merancang untuk kegagalan\nserta kesuksesan.",
+  "reliabilityLead": "Tergantung pada cakupannya, kami berencana untuk:",
+  "reliabilityItems": [
+    "Validasi",
+    "Data Hilang",
+    "Pencegahan Duplikat",
+    "Coba lagi",
+    "Catatan Kesalahan",
+    "Pemberitahuan Kegagalan",
+    "Tinjauan Manual",
+    "Proses Penggantian"
+  ],
+  "reliabilityScenarios": [
+    {
+      "t": "API eksternal tidak merespons",
+      "d": "Kesalahan log → coba lagi → beri tahu pemilik jika terus gagal"
+    },
+    {
+      "t": "Data yang diperlukan tidak ada",
+      "d": "Hentikan alur kerja → daftar untuk ditinjau"
+    },
+    {
+      "t": "Permintaan duplikat",
+      "d": "Periksa data yang ada → cegah penanganan duplikat"
+    }
+  ],
+  "monitorLabel": "PEMANTAUAN",
+  "monitorTitle": "Anda seharusnya dapat melihat\napakah otomatisasi berfungsi.",
+  "monitorLead": "Tergantung pada proyeknya, kami dapat memaparkan:",
+  "monitorMetrics": [
+    "Berjalan baru-baru ini",
+    "Jalankan hitungan",
+    "Sukses",
+    "Kegagalan",
+    "Waktu proses",
+    "Kesalahan",
+    "Hasil",
+    "Coba lagi statusnya"
+  ],
+  "monitorNote": "Dasbor admin terpisah dapat ditambahkan bila diperlukan.",
+  "delTitle": "Apa yang Anda dapatkan.",
+  "delLead": "Tergantung pada cakupannya, kami memberikan apa yang Anda butuhkan dari daftar di bawah.",
+  "deliverables": [
+    "PETA ALUR KERJA",
+    "ALUR KERJA OTOMATISASI",
+    "INTEGRASI",
+    "PEMETAAN DATA",
+    "KONDISI",
+    "PENANGANAN KESALAHAN",
+    "PANDUAN PEMANTAUAN",
+    "DOKUMENTASI"
+  ],
+  "deliverExtras": [
+    "Dasbor Admin",
+    "Integrasi AI",
+    "Alat Dalaman",
+    "Sistem Pelaporan"
+  ],
+  "processTitle": "Kita mulai dengan memahami bagaimana pekerjaan berjalan saat ini.",
+  "process": [
+    {
+      "n": "01",
+      "t": "PENEMUAN",
+      "d": "Tinjau pekerjaan saat ini dan alat yang digunakan"
+    },
+    {
+      "n": "02",
+      "t": "PEMETAAN",
+      "d": "Visualisasikan alur kerja saat ini"
+    },
+    {
+      "n": "03",
+      "t": "ANALISIS",
+      "d": "Temukan pengulangan, pekerjaan manual, dan risiko kesalahan"
+    },
+    {
+      "n": "04",
+      "t": "DESAIN",
+      "d": "Rancang pemicu, kondisi, dan tindakan"
+    },
+    {
+      "n": "05",
+      "t": "PROTOTIPE",
+      "d": "Uji alur kerja inti"
+    },
+    {
+      "n": "06",
+      "t": "MEMBANGUN",
+      "d": "Terapkan otomatisasi"
+    },
+    {
+      "n": "07",
+      "t": "INTEGRASI",
+      "d": "Hubungkan layanan dan data"
+    },
+    {
+      "n": "08",
+      "t": "UJI",
+      "d": "Uji kasus normal, kesalahan, dan edge"
+    },
+    {
+      "n": "09",
+      "t": "PELUNCURAN",
+      "d": "Terapkan ke pekerjaan nyata"
+    },
+    {
+      "n": "10",
+      "t": "PENYERAHAN",
+      "d": "Serahkan operasi"
+    }
+  ],
+  "scopeLabel": "RUANG LINGKUP",
+  "scopeTitle": "Otomatiskan hanya apa yang Anda perlukan.",
+  "scopes": [
+    {
+      "t": "LEVEL 01 · OTOMATISASI SEDERHANA",
+      "items": [
+        "Satu alur kerja berulang yang jelas",
+        "Formulir → Lembar → Email",
+        "Prospek Baru → CRM → Pemberitahuan"
+      ]
+    },
+    {
+      "t": "LEVEL 02 · ALUR KERJA MULTI-LANGKAH",
+      "items": [
+        "Alur kerja multi-langkah dengan ketentuan",
+        "Pemicu → Kondisi → Proses → Beberapa Tindakan → Rekam → Tindak Lanjut"
+      ]
+    },
+    {
+      "t": "LEVEL 03 · SISTEM OTOMATISASI BISNIS",
+      "items": [
+        "Otomatisasi operasi yang terhubung di seluruh alur kerja",
+        "Prospek + Penjualan + Pelanggan + Operasi + Pelaporan"
+      ]
+    }
+  ],
+  "priceTitle": "Mulai dari ₩1.000.000",
+  "priceLead": "Bahkan untuk jenis layanan yang sama, buat perubahan kesulitan dengan sistem yang terhubung dan logika bisnis. Kutipan terakhir menggunakan faktor-faktor di bawah ini.",
+  "priceName": "OTOMATISASI ALUR KERJA",
+  "priceValue": "Mulai dari ₩1.000.000",
+  "priceFactors": [
+    "Jumlah alur kerja",
+    "Jumlah langkah",
+    "Layanan yang terhubung",
+    "Jumlah pemicu",
+    "Kondisi/cabang",
+    "Integrasi API",
+    "Struktur data",
+    "fitur AI",
+    "Penanganan kesalahan",
+    "Pemantauan",
+    "Dasbor",
+    "Keamanan / izin",
+    "Dokumentasi"
+  ],
+  "priceNote": "Proyek Otomatisasi Alur Kerja Dasar dimulai dari ₩1.000.000. Biaya akhir dikonfirmasi setelah peninjauan persyaratan.",
+  "timeTitle": "Biasanya 3–6 minggu",
+  "timeLead": "Garis waktu bervariasi menurut integrasi, lingkungan API, kompleksitas alur kerja, fitur AI, dan cakupan pengujian.",
+  "timelines": [
+    {
+      "t": "SEDERHANA",
+      "d": "Sekitar 1–2 minggu"
+    },
+    {
+      "t": "STANDAR",
+      "d": "Sekitar 3–6 minggu"
+    },
+    {
+      "t": "KOMPLEKS",
+      "d": "6+ minggu / khusus"
+    }
+  ],
+  "extLabel": "LAYANAN EKSTERNAL",
+  "extTitle": "Biaya layanan eksternal mungkin berlaku secara terpisah.",
+  "extItems": [
+    "Platform Otomasi",
+    "API AI",
+    "API Eksternal",
+    "Awan",
+    "pelayan",
+    "Basis data",
+    "Layanan Email",
+    "Layanan Pesan",
+    "Berbayar lainnya SaaS"
+  ],
+  "faqTitle": "Pertanyaan Umum",
+  "faqs": [
+    {
+      "q": "Pekerjaan apa yang cocok untuk otomatisasi?",
+      "a": "Pekerjaan yang berulang dengan pemicu dan proses yang cukup jelas sangat cocok. Kami meninjau alur kerja Anda saat ini terlebih dahulu dan menentukan apa yang dapat diotomatisasi."
+    },
+    {
+      "q": "Apakah kita perlu mengganti alat yang kita miliki saat ini?",
+      "a": "Belum tentu. Kami terlebih dahulu memeriksa apakah alat Anda yang ada dapat tetap terhubung melalui API atau webhook."
+    },
+    {
+      "q": "Bisakah beberapa alat SaaS dihubungkan sekaligus?",
+      "a": "Ya. API setiap layanan dan izin akses perlu dikonfirmasi."
+    },
+    {
+      "q": "Bisakah AI dimasukkan?",
+      "a": "Ya. Klasifikasi, ringkasan, ekstraksi, dan pembuatan konten dapat ditambahkan jika diperlukan."
+    },
+    {
+      "q": "Apa yang terjadi jika otomatisasi gagal?",
+      "a": "Bergantung pada cakupannya, kami dapat menambahkan log kesalahan, percobaan ulang, peringatan pemilik, atau langkah peninjauan manual."
+    },
+    {
+      "q": "Bisakah manusia menyetujui sebelum langkah berikutnya dijalankan?",
+      "a": "Ya. Langkah-langkah penting bisa menunggu persetujuan sebelum alur kerja dilanjutkan."
+    },
+    {
+      "q": "Bisakah Anda meningkatkan alur kerja yang ada?",
+      "a": "Ya. Kami menganalisis struktur dan alat Anda saat ini, lalu menentukan apa yang dapat ditingkatkan."
+    }
+  ],
+  "finalTitle": "Tunjukkan pada kami hasil karyanya\nyang diulangi orang-orang hari ini.",
+  "finalLead": "Beri tahu kami layanan apa yang Anda gunakan, data apa yang Anda pindahkan, dan tugas apa yang berulang. Kami menganalisis alur kerja saat ini dan menentukan apa yang dapat diotomatisasi.",
+  "ctaFinalBtn": "Pertanyaan OTOMATISASI ALUR KERJA →",
+  "ctaFinalSecondary": "Lihat layanan Otomatisasi lainnya →",
+  "automationHubHref": "../"
+}

@@ -1,0 +1,483 @@
+{
+  "seoTitle": "PRODUCT LAUNCH 124; bisnis Newon",
+  "metaDescription": "Hubungkan ide ke produk, pendaratan, dan peluncuran kesiapan dalam satu baris - strategi, desain, membangun, dan checklist. Newon PRODUCT LAUNCH.",
+  "crumbBusiness": "BISNIS",
+  "crumbServices": "Servis",
+  "crumbSolutions": "SOLUSI",
+  "crumbHere": "PRODUCT LAUNCH",
+  "eyebrow": "PRODUCT LAUNCH",
+  "subEyebrow": "SOLUSI",
+  "headline": "Kau punya ide.\nPeluncuran masih tersebar.",
+  "lead": "Definisi produk, _ _ KEP000 _ _, _ _ KeeP001 _ _ dan pembuatan pendaratan, penyebaran, dan peluncuran checklist - kami menghubungkan apa yang Anda butuhkan dari ide ke rilis publik dalam satu proyek. Bukan paket terpisah dijahit bersama-sama, tapi satu aliran dirancang untuk tujuan peluncuran Anda.",
+  "ctaPrimary": "Penyelidikan peluncuran produk",
+  "ctaSecondary": "Lihat aliran peluncurannya",
+  "meta": [
+    {
+      "k": "PELAYAN",
+      "v": "Peluncuran Produk"
+    },
+    {
+      "k": "TERBAIK UNTUK",
+      "v": "Ide untuk meluncurkan akhir"
+    },
+    {
+      "k": "GARIS WAKTU",
+      "v": "Tergantung pada scope"
+    },
+    {
+      "k": "HARGA",
+      "v": "Kutipan gubahan"
+    }
+  ],
+  "overviewLabel": "TINJAU",
+  "overviewTitle": "Potongan ada.\nkesiapan peluncuran tidak.",
+  "overviewBody": [
+    "Meluncurkan layanan, fitur, atau merek baru mengambil banyak bagian yang bergerak - definisi produk, desain, pengembangan, pendaratan, domain, pembayaran, analitik, QA, dan pergi-waktu. Mereka dengan mudah menyebar di seluruh tim, vendor, dan paket.",
+    "Bangunan hanya sebuah MVP atau hanya halaman pendaratan jarang mencapai 'siap untuk kapal.' Tanpa pandangan yang jelas prioritas dan kesenjangan, jadwal dan kualitas goyah.",
+    "PRODUCT LAUNCH mendefinisikan tujuan peluncuran pertama, kemudian menghubungkan strategi, desain, membangun, dan meluncurkan persiapan dalam satu aliran - produk, pendaratan, penting integrasi, dan checklist selaras dengan keadaan yang bisa di-shippable."
+  ],
+  "problemsLabel": "MASALAH",
+  "problemsTitle": "Membantu ketika Anda menghadapi situasi ini.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "LAUNCH SCATTERED",
+      "d": "Produk, pendaratan, merek, dan menyebarkan berjalan di trek terpisah.\nTanggal Go-live tidak selaras."
+    },
+    {
+      "n": "02",
+      "t": "IDEA KE SHIP",
+      "d": "Anda memiliki ide tapi perjuangan untuk menghubungkan MVP, pendaratan, dan persiapan peluncuran.\nAnda perlu satu mitra dari awal ke kapal."
+    },
+    {
+      "n": "03",
+      "t": "KEHILANGAN CHECKLIST",
+      "d": "Fitur hampir selesai tapi domain, pembayaran, analitik, SEO, atau QA hilang.\n'Siap untuk memulai' tidak didefinisikan."
+    },
+    {
+      "n": "04",
+      "t": "F _ KEP000 _ _ ST RELEASE",
+      "d": "Anda sedang mempersiapkan produk pertama, merek, atau fitur utama rilis.\nAnda perlu reaksi pasar dengan cepat."
+    },
+    {
+      "n": "05",
+      "t": "MULTI- SURACE",
+      "d": "Produk + landing + onboarding + admin semua diperlukan.\nSatu paket BUILD tidak cukup."
+    },
+    {
+      "n": "06",
+      "t": "PELUNCURAN BATAS WAKTU",
+      "d": "Anda harus memulai untuk demo hari, investor pertemuan, peristiwa, atau tanggal pemasaran.\nPrioritas dan ruang lingkup membutuhkan koordinasi ketat."
+    }
+  ],
+  "baLabel": "SEBELUM / SETELAH",
+  "baTitle": "Scattered prep vs\npeluncuran terhubung",
+  "beforeLabel": "SEBELUM",
+  "afterLabel": "SETELAH",
+  "before": [
+    "MVP, pendaratan, desain, dan menyebarkan berjalan secara terpisah",
+    "Pre- peluncuran essentials hilang - domain, pembayaran, analisis",
+    "Jadwal, lingkup, dan prioritas berbeda oleh tim",
+    "Tidak ada lokasi dari go-live ke umpan balik loop"
+  ],
+  "after": [
+    "Tujuan peluncuran dan lingkup didefinisikan pertama",
+    "Rancangan Strategi (Strategy) memungkinkan untuk membuat persiapan peluncuran dalam satu aliran",
+    "Produk + landing + checklist aligned",
+    "Stok-launch peningkatan dan pengukuran tersambung"
+  ],
+  "capsLabel": "CAPBILITIES",
+  "capsTitle": "Kami menghubungkan apa yang dibutuhkan peluncuran\ndalam satu proyek.",
+  "caps": [
+    {
+      "t": "LUNCURKAN TUJUAN",
+      "d": "Tentukan tujuan peluncuran, target pengguna, dan kriteria sukses.\nPerjelas apa kapal dan kapan."
+    },
+    {
+      "t": "SCOPE & STRATEGI",
+      "d": "Bingkai lingkup MVP, peran pendaratan, dan musta- memiliki fitur.\nTahap Terpisah 1 dari ekspansi kemudian."
+    },
+    {
+      "t": "UX / UI DESAIN",
+      "d": "Desain produk, pendaratan, dan onboarding pengalaman.\nHubungkan merek dan pesan secara konsisten."
+    },
+    {
+      "t": "PEMBANGUNAN PRODUK",
+      "d": "Implikasi fitur inti, MVP, dan permukaan admin.\nTermasuk APIs dan integrasinya yang diperlukan."
+    },
+    {
+      "t": "MENDARAT & PESAN",
+      "d": "Bangun pendaratan peluncuran, intro, dan halaman konversi.\nHubungkan CTA, penyelidikan, dan aliran signal."
+    },
+    {
+      "t": "INTEGRASI",
+      "d": "Mengatur pembayaran, analisis, email, auth, dan peluncuran penting lainnya.\nMembangun struktur dasar operasional."
+    },
+    {
+      "t": "READINESS LAUNCH",
+      "d": "Periksa domain, SEO, QA, pemantauan, rollback pada checklist peluncuran.\nKonfirmasi negara bagian yang bisa di ubah."
+    },
+    {
+      "t": "POST- LAUNCH LOOP",
+      "d": "Hubungkan umpan balik, metrik, dan perbaikan.\nPropose jalur iterasi berikutnya."
+    }
+  ],
+  "sourcesLabel": "PROYEK INPUTS",
+  "sourcesTitle": "Kami menggabungkan kebutuhan proyek peluncuran Anda.",
+  "sourcesNote": "Input aktual bervariasi dengan ide kedewasaan, aset, dan timeline.",
+  "sources": [
+    "Ide, hipotesis, tujuan",
+    "Definisi pengguna target",
+    "Konteks competitif dan pasar",
+    "Existing wireframes atau spesifikasi",
+    "Merek dan mengirim pesan",
+    "Prioritas fitur",
+    "Domain dan infrastruktur",
+    "Pembayaran dan persyaratan hukum",
+    "Analitik dan rencana pemasaran",
+    "Demo atau investor jadwal",
+    "Pemegang saham internal",
+    "Post- launch KPIs"
+  ],
+  "useLabel": "GUNAKAN KASES",
+  "useTitle": "Peluncuran kita bisa mempersiapkan.",
+  "useBadge": "Contoh tipe peluncuran",
+  "useCases": [
+    {
+      "t": "PRODUCT BARU MVP",
+      "d": "Layanan baru MVP + pendaratan + persiapan peluncuran.\nTerhubung ke pengguna pertama."
+    },
+    {
+      "t": "LANGKAH MAKAN",
+      "d": "Lepaskan fitur atau modul baru pada produk yang ada.\nSertakan onboarding, pendaratan, dan aliran pengumuman."
+    },
+    {
+      "t": "PERANGKAT LAUNCH",
+      "d": "Rebrand dengan produk dan mendarat bersama-sama.\nKonsistensi pesan dan pengalaman."
+    },
+    {
+      "t": "BETA PUBLIC",
+      "d": "Pindah dari beta ke peluncuran publik.\nChecklist, QA, dan pemantauan di tempat."
+    },
+    {
+      "t": "INVESOR / DEMO DAY",
+      "d": "Luncurkan persiapan untuk demo atau rapat investor.\nDestro- siap dan negara shippable."
+    },
+    {
+      "t": "WAITLIST LIVE",
+      "d": "Luncurkan setelah waitlist atau pre-registrasi.\nHubungkan konversi, onboarding, dan pembayaran."
+    },
+    {
+      "t": "MULTI- CHANNEL",
+      "d": "Web + landing + admin + penyelidikan dalam satu proyek.\nDialign dalam satu pertunangan."
+    },
+    {
+      "t": "LOKAL / GLOBAL",
+      "d": "Domestik atau persiapan peluncuran global.\nBahasa, pembayaran, dan pesan terkoordinasi."
+    }
+  ],
+  "flowLabel": "EXAMLE WORKFLOW",
+  "flowTitle": "Dari ide untuk meluncurkan",
+  "flow": [
+    {
+      "n": "01",
+      "t": "IDE",
+      "d": "Klarifikasi tujuan, hipotesis, pengguna, dan kriteria sukses.\nJelaskan mengapa peluncuran sekarang.",
+      "examples": [
+        "Tujuan",
+        "Munafik",
+        "Pengguna",
+        "_ _ Simpan P000 _ _ s"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRATEGI",
+      "d": "Definisikan _ _ KeeP000 _ _ scope, peran pendaratan, dan timeline.\nTerpisah harus - memiliki dari kemudian.",
+      "examples": [
+        "Scope",
+        "Prioritas",
+        "Garis Waktu",
+        "Risiko"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESAIN",
+      "d": "Desain produk, pendaratan, dan onboarding UX/UI.\nHubungkan merek dan pesan.",
+      "examples": [
+        "Mengalir",
+        "UI",
+        "Mendarat",
+        "Ulasan"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "_ Jaga _ Belakang",
+      "d": "Implikasi MVP, pendaratan, dan integrasi.\nUlasan fase dengan demos.",
+      "examples": [
+        "Produk",
+        "Mendarat",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LUNCURKAN",
+      "d": "Menyebarkan, menjalankan checklist, dan pergi hidup.\nKonfirmasikan jalan pemantauan dan rollback.",
+      "examples": [
+        "Menyebarkan",
+        "Checklist",
+        "Hidup",
+        "Monitor"
+      ]
+    }
+  ],
+  "reportLabel": "KELUARKAN",
+  "reportTitle": "Terkirim adalah produk shippable dan launch- negara siap.",
+  "reportLead": "Komposisi bervariasi dengan lingkup projek. Di bawah ini adalah item umum.",
+  "reportMockStatus": "LUNCURKAN",
+  "reportMockK": "PRODUCT LAUNCHRENCANA",
+  "reportMockT": "Lingkup, timeline, aset, ringkasan checklist",
+  "reportItems": [
+    "Luncurkan Tujuan",
+    "Ringkasan Scope",
+    "MVP Daftar Fitur",
+    "Running outline",
+    "Aset Desain",
+    "Daftar Integrasi",
+    "Peluncuran Checklist",
+    "QA Ringkasan",
+    "Go-live Rencana",
+    "Catatan Peluncuran Pos"
+  ],
+  "dashTitle": "Berbagi kesiapan peluncuran pada satu pandangan.",
+  "dashLead": "Stages, aset, dan checklist bersama diskusi peluncuran kecepatan dan jadwal keselarasan.",
+  "dashNote": "Checklist dan komposisi panggung bervariasi oleh tujuan dan timeline projek.",
+  "dashMetrics": [
+    "Tahap",
+    "Aset",
+    "Siap",
+    "Blocker"
+  ],
+  "dashFilters": [
+    "Semua",
+    "Produk",
+    "Mendarat",
+    "Ops"
+  ],
+  "aiLabel": "ACELERASI",
+  "aiTitle": "Persiapan lebih cepat.\nKualitas peluncuran yang lebih kuat.",
+  "aiLead": "Struktur Scope, draft checklist, copy dan doc scaffolding, daftar QA - AI-dibantu untuk kecepatan sementara orang fokus pada strategi, desain, dan core build.",
+  "aiExamples": [
+    "Skup peluncuran draft dan checklist",
+    "Struktur pendaratan dan pesan",
+    "Atur daftar fitur MVP",
+    "QA dan go-live checklist",
+    "Bandingkan garis waktu dan tonggak",
+    "Desain posting-launch Loop KPI"
+  ],
+  "aiNote": "Lingkup akhir, kualitas, dan keputusan Go/No-go dikonfirmasi dengan tim proyek Anda.",
+  "delLabel": "TERKIRIM",
+  "delTitle": "Apa yang Anda terima ketika proyek menyelesaikan",
+  "delLead": "Kami memberikan item di bawah ini yang diperlukan untuk lingkup Anda.",
+  "deliverables": [
+    "Produk MVP / Core",
+    "Luncurkan Landing",
+    "UX / UI Design Berkas",
+    "Peluncuran Checklist",
+    "Go-live Rencana",
+    "Penyiapan Integrasi",
+    "QA Laporkan",
+    "Analitik & Pelacakan Penyiapan",
+    "Tunda-peluncuran Rencana Improvisasi"
+  ],
+  "processLabel": "PROSES",
+  "processTitle": "Dari ide framing untuk rilis publik.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOSANGAT",
+      "d": "Konfirmasi ide, tujuan, pengguna, timeline, batasan.\nJelaskan kriteria kesuksesan peluncuran.",
+      "examples": [
+        "Tujuan",
+        "Pengguna",
+        "Garis Waktu",
+        "_ _ Simpan P000 _ _ s"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRATEGI",
+      "d": "Set MVP, pendaratan, lingkup integrasi dan prioritas.\nAgree Tahap 1 jangkauan peluncuran.",
+      "examples": [
+        "Scope",
+        "Prioritas",
+        "Risiko",
+        "Garis Waktu"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESAIN",
+      "d": "Desain produk, pendaratan, onboarding UX/UI.\nKonfirmasi layar inti dan pesan.",
+      "examples": [
+        "Mengalir",
+        "UI",
+        "Mendarat",
+        "Ulasan"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "_ Jaga _ Belakang",
+      "d": "Implikasi MVP, pendaratan, integrasi esensial.\nDemo dan ulasan dalam fase.",
+      "examples": [
+        "Produk",
+        "Mendarat",
+        "Integrasi",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PREPARA",
+      "d": "Periksa daftar cek, QA, pementasan, pemantauan.\nKonfirmasi kesiapan langsung.",
+      "examples": [
+        "Checklist",
+        "Pementasan",
+        "UAT",
+        "Perbaikan"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "LUNCURKAN",
+      "d": "Menyebarkan, mempublikasikan, pemantauan awal.\nKonfirmasi jalur respon isu.",
+      "examples": [
+        "Menyebarkan",
+        "Hidup",
+        "Monitor",
+        "Dukung"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "MENINGKATKAN",
+      "d": "Tinjau umpan balik awal dan metrik.\nHubungkan item iterasi berikutnya.",
+      "examples": [
+        "Metrik",
+        "Umpan balik",
+        "Perbaikan",
+        "Peta jalan"
+      ]
+    }
+  ],
+  "scopeLabel": "LEVELS SCOPE",
+  "scopeTitle": "Bagaimana untuk berpikir tentang proyek kompleksitas.",
+  "scopeLead": "Bukan paket tetap. Scope diatur dengan tujuan peluncuran, kedalaman produk, dan jangkauan pendaratan / integrasi.",
+  "scopes": [
+    {
+      "t": "LUNCURKAN LEAN",
+      "items": [
+        "Inti pendaratan MVP +",
+        "Dasar UX/UI",
+        "1-2 integrasi esensial",
+        "Daftar cek peluncuran",
+        "Dukungan Go-live"
+      ]
+    },
+    {
+      "t": "Full Launch",
+      "items": [
+        "MVP + pendaratan + onboarding",
+        "Perataan merek dan pesan",
+        "Pembayaran, analisis, integrasi auth",
+        "QA, pemantauan, SEO",
+        "PAST - Luncurkan rencana perbaikan"
+      ]
+    },
+    {
+      "t": "PELUNCURAN UBAHAN",
+      "items": [
+        "Multiple chances, language, roles",
+        "Kompleks integration dan struktur ops",
+        "Demo, investor, atau tenggat waktu acara cocok",
+        "Daftar cek gubahan dan buku jalan",
+        "Desain iterasi jangka panjang"
+      ]
+    }
+  ],
+  "timeLabel": "GARIS WAKTU",
+  "timeTitle": "Waktu tergantung pada jangkauan.",
+  "timeLead": "Durasi bervariasi dengan kedalaman MVP, jangkauan desain, integrasinya, dan kecepatan keputusan.",
+  "timelines": [
+    {
+      "t": "Luncurkan Lean",
+      "d": "Sekitar 4-8 minggu"
+    },
+    {
+      "t": "Luncurkan Penuh",
+      "d": "Sekitar 8-14 minggu"
+    },
+    {
+      "t": "Peluncuran Ubahan",
+      "d": "Sekitar 10 minggu"
+    }
+  ],
+  "priceLabel": "PROYEK COST",
+  "priceTitle": "Kutipan per proyek.",
+  "priceName": "PRODUCT LAUNCH",
+  "priceValue": "Kutipan gubahan",
+  "priceFactorsLabel": "Faktor harga",
+  "priceFactors": [
+    "Scope - MVP, pendaratan, jangkauan integrasi",
+    "Kompleksitas - fitur, data, izin",
+    "Timeline - jadwal dan sumber daya",
+    "Kedalaman desain - UX/UI jangkauan",
+    "Integrasinya - pembayaran, analitik, auth",
+    "Luncurkan permukaan - web, app, admin",
+    "Keterlibatan tim - keputusan, UAT",
+    "Post- launch - perbaikan dan dukungan ops"
+  ],
+  "priceNote": "Kami meninjau Scope / Kompleksitas / Timeline / Integrasi, lalu memberikan kutipan. Tidak ada harga menu tetap.",
+  "faqLabel": "PSD",
+  "faqTitle": "Pertanyaan yang sering ditanyakan",
+  "faqs": [
+    {
+      "q": "Apa bedanya ini dengan MVP atau paket pendaratan?",
+      "a": "MVP dan LANDING sudah ditentukan - lingkup paket BUILD. PRODUCT LAUNCH menghubungkan strategi, desain, produk, pendaratan, dan meluncurkan persiapan untuk tujuan go- live dalam satu proyek."
+    },
+    {
+      "q": "Apa bedanya ini dengan CUSTOM PRODUCT?",
+      "a": "CUSTOM PRODUCT berfokus pada pembuatan produk disesuaikan. PRODUCT LAUNCH berfokus pada ide penuh ke-aliran publik termasuk pendaratan, checklist, dan go-live."
+    },
+    {
+      "q": "Bagaimana harganya?",
+      "a": "Setelah meninjau tujuan peluncuran, ruang lingkup, kompleksitas, garis waktu, dan integrasinya - sering oleh fase."
+    },
+    {
+      "q": "Apakah desain dan pembangunan termasuk?",
+      "a": "UX/UI desain dan membangun dapat disertakan dalam lingkup. Permukaan yang diperlukan (produk, pendaratan, admin) didefinisikan bersama."
+    },
+    {
+      "q": "Apa yang ada di daftar cek peluncuran?",
+      "a": "Domain, SEO, QA, analisis, pembayaran, pemantauan, rollback - disesuaikan dengan proyek Anda."
+    },
+    {
+      "q": "Bisakah kau mendukung peningkatan peluncuran?",
+      "a": "Ya. Pendek dan fitur ekspansi dari umpan balik awal dan metrik dapat melanjutkan di bawah perjanjian terpisah."
+    },
+    {
+      "q": "Bagaimana kerahasiaan ditangani?",
+      "a": "Bahan hanya digunakan dalam lingkup yang disepakati. NDA tersedia ketika diperlukan."
+    }
+  ],
+  "finalLabel": "MULAI SUATU PROJEK",
+  "finalTitle": "Hubungkan ide untuk memulai\ndalam satu baris.",
+  "finalLead": "Jika Anda mempersiapkan produk, fitur, atau peluncuran merek, beritahu kami tujuan Anda, scope, dan timeline. Kami akan mengkonfirmasi jalan bersama-sama.",
+  "ctaFinalSecondary": "Lihat semua SOLUTIONS",
+  "ctaFinalSecondaryHref": "../solutions/"
+}

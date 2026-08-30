@@ -1,0 +1,483 @@
+{
+  "seoTitle": "PROTOTYPE D'APP | Newon Entreprise",
+  "metaDescription": "Transformez des idées d'application en écrans et flux interactifs iOS et Android — validez-les avec des investisseurs et des équipes internes avant le développement complet. PROTOTYPE D'APPLICATION Newon.",
+  "crumbBusiness": "ENTREPRISE",
+  "crumbServices": "SERVICES",
+  "crumbBuild": "CONSTRUIRE",
+  "crumbHere": "PROTOTYPE D'APPLICATION",
+  "eyebrow": "PROTOTYPE D'APPLICATION",
+  "subEyebrow": "CONSTRUIRE",
+  "headline": "Transformez une idée d'application\n en une expérience réelle.",
+  "lead": "Nous concevons et construisons des prototypes d'application interactifs avec les flux principaux iOS et Android. Avant les réunions avec les investisseurs, les examens internes ou le lancement du développement — validez comment l'idée se ressent réellement lorsque les gens l'utilisent.",
+  "ctaPrimary": "Demande de prototype d'application →",
+  "ctaSecondary": "Voir le flux du prototype ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Prototype d'application"
+    },
+    {
+      "k": "IDÉAL POUR",
+      "v": "Validation par les investisseurs et en interne"
+    },
+    {
+      "k": "CHRONOLOGIE",
+      "v": "Environ 2 à 3 semaines"
+    },
+    {
+      "k": "PRIX",
+      "v": "À partir de ₩500,000"
+    }
+  ],
+  "overviewLabel": "APERÇU",
+  "overviewTitle": "Vous avez l'histoire.\nPas l'expérience.",
+  "overviewBody": [
+    "Les idées d'applications atterrissent rarement uniquement grâce à des diapositives et des maquettes filaires. Les investisseurs, partenaires et parties prenantes internes demandent à l'essayer — et les équipes d'ingénierie ont du mal à commencer sans écrans, flux et états définis.",
+    "Construire une application de production dès le premier jour coûte trop de temps et d'argent. Figma seul manque souvent d'interaction, de transitions et de contexte mobile. Ce dont vous avez besoin, c'est d'un prototype où les flux principaux fonctionnent réellement.",
+    "LE PROTOTYPE D'APPLICATION commence par définir les objectifs de l'application et les scénarios clés. Nous concevons les écrans iOS et Android, les parcours utilisateur et les interactions — puis livrons un prototype cliquable pour le partage, la validation et la transmission au développement."
+  ],
+  "problemsLabel": "PROBLÈMES",
+  "problemsTitle": "Utile lorsque vous êtes confronté à ces situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "UNIQUEMENT L'IDÉE",
+      "d": "Vous avez un concept mais rien à montrer en tant qu'écrans et parcours réels.\nLa seule explication ne convainc pas."
+    },
+    {
+      "n": "02",
+      "t": "DÉMONSTRATION POUR INVESTISSEUR",
+      "d": "Vous avez besoin d'une démo fonctionnelle avant les réunions avec des investisseurs ou des partenaires.\nLa valeur centrale doit être ressentie, pas imaginée."
+    },
+    {
+      "n": "03",
+      "t": "ALIGNEMENT INTERNE",
+      "d": "Produit, design, ingénierie et direction ne sont pas alignés.\nVous avez besoin d'un prototype sur lequel tout le monde peut réagir."
+    },
+    {
+      "n": "04",
+      "t": "ÉCART DE FLUX",
+      "d": "Vous avez des fils ou des maquettes mais aucun flux ou transitions d'état validés.\nL'intégration, les actions principales et les parcours secondaires sont flous."
+    },
+    {
+      "n": "05",
+      "t": "RISQUE PRÉ-DÉVELOPPEMENT",
+      "d": "Portée, écrans et priorités non définis avant le développement.\nVous avez besoin d'une validation avant de vous engager dans la construction du MVP."
+    },
+    {
+      "n": "06",
+      "t": "CHOIX DE PLATEFORME",
+      "d": "Vous devez décider iOS, Android ou web d'abord.\nLes différences UX entre les plateformes doivent être testées."
+    }
+  ],
+  "baLabel": "AVANT / APRÈS",
+  "baTitle": "Maquettes statiques vs\nprototype fonctionnel",
+  "beforeLabel": "AVANT",
+  "afterLabel": "APRÈS",
+  "before": [
+    "Diapositives, fils et maquettes statiques uniquement",
+    "Flux principaux expliqués en mots",
+    "Les évaluations des investisseurs et internes reposent sur l'imagination",
+    "Portée du développement et priorité des écrans peu claires"
+  ],
+  "after": [
+    "Écrans principaux et flux iOS/Android définis",
+    "Prototype cliquable avec transitions réelles",
+    "Partager le lien ou le build pour validation des investisseurs et internes",
+    "Écran, flux et pack de spécifications pour le lancement du développement"
+  ],
+  "capsLabel": "CAPACITÉS",
+  "capsTitle": "Nous réalisons le travail du prototype d'application\ncomme un engagement structuré.",
+  "caps": [
+    {
+      "t": "CADRAGE DES OBJECTIFS",
+      "d": "Définir le but de l'application, les utilisateurs principaux et les scénarios de réussite.\nClarifier ce que le prototype doit valider."
+    },
+    {
+      "t": "CONCEPTION DU FLUX",
+      "d": "Concevoir l'onboarding, les actions principales et les transitions d'état clés.\nStructurer les flux pour le contexte iOS et Android."
+    },
+    {
+      "t": "CONCEPTION UX / UI",
+      "d": "Concevoir l'interface utilisateur de l'écran principal et la structure de l'information.\nPrendre en compte les modèles de navigation et le tactile mobile."
+    },
+    {
+      "t": "CONSTRUCTION INTERACTIVE",
+      "d": "Créer un prototype où les interactions fonctionnent.\nSe concentrer sur les flux principaux pour la rapidité."
+    },
+    {
+      "t": "PORTÉE DE LA PLATEFORME",
+      "d": "Définir iOS, Android, ou la portée web pour l'objectif du projet.\nPrendre en compte les différences des plateformes si nécessaire."
+    },
+    {
+      "t": "SOUTIEN À LA VALIDATION",
+      "d": "Préparer des formats de partage pour les investisseurs, internes et pour les tests d'utilisabilité.\nInclure des cycles de révision des retours."
+    },
+    {
+      "t": "SPÉCIFICATIONS & TRANSFERT",
+      "d": "Documenter les écrans, les flux et les interactions.\nFournir le transfert pour la version MVP ou la version de production."
+    },
+    {
+      "t": "PROCHAINE ÉTAPE",
+      "d": "Connecter le prototype au développement prêt pour le MVP ou le store.\nProposer la portée, le calendrier et le devis suivant."
+    }
+  ],
+  "sourcesLabel": "ENTRÉES DU PROJET",
+  "sourcesTitle": "Nous combinons les entrées dont votre prototype a besoin.",
+  "sourcesNote": "Les entrées réelles varient selon le stade de l'idée, les spécifications existantes et les applications de référence.",
+  "sources": [
+    "Concept et objectif de l'application",
+    "Utilisateurs cibles et scénarios",
+    "Applications de référence",
+    "Fils ou spécifications existants",
+    "Directives de marque et d'interface utilisateur",
+    "Contexte du marché et des concurrents",
+    "Liste des fonctionnalités principales",
+    "Définition de l'intégration et de l'action principale",
+    "Priority iOS vs Android",
+    "Date limite pour l'investisseur ou la démonstration",
+    "Retour des parties prenantes internes",
+    "Plan futur du MVP ou du lancement"
+  ],
+  "useLabel": "CAS D'UTILISATION",
+  "useTitle": "Prototypes que nous pouvons construire.",
+  "useBadge": "Exemples de types de construction",
+  "useCases": [
+    {
+      "t": "DÉMONSTRATION POUR INVESTISSEUR",
+      "d": "Démo du flux principal pour les réunions avec investisseurs et partenaires.\n Interaction qui rend la valeur tangible."
+    },
+    {
+      "t": "VALIDATION INTERNE",
+      "d": "Prototype d'alignement pour le leadership, le produit, le design et l'ingénierie.\nRevue interne et boucle de feedback."
+    },
+    {
+      "t": "IDÉE D'APPLICATION CONSOMMATEUR",
+      "d": "Onboarding et utilisation principale pour des idées d'applications B2C.\niOS et Android validation UX."
+    },
+    {
+      "t": "APPLICATION DE SERVICE",
+      "d": "Flux de réservation, commande, abonnement ou de mise en relation.\nTransitions d'état et design axé sur les CTA."
+    },
+    {
+      "t": "OUTIL MOBILE INTERNE",
+      "d": "Prototype d'outil mobile pour le terrain, les opérations ou l'administration.\nVérification des rôles, des permissions et du flux de tâches."
+    },
+    {
+      "t": "PoC DE FONCTIONNALITÉ",
+      "d": "Valider une nouvelle fonctionnalité, un redesign ou un changement d'onboarding.\nPoC avant d'étendre une application existante."
+    },
+    {
+      "t": "MULTI-PLATEFORME",
+      "d": "Noyau partagé plus différences spécifiques à la plateforme.\nSoutenir les décisions de priorité de plateforme."
+    },
+    {
+      "t": "PORTÉE PRÉ-MVP",
+      "d": "Définir la portée, les écrans et la priorité du MVP avant la construction complète.\nMatériel pour le devis et le calendrier du développement."
+    }
+  ],
+  "flowLabel": "EXEMPLE DE FLUX DE TRAVAIL",
+  "flowTitle": "De l'idée au prototype partageable",
+  "flow": [
+    {
+      "n": "01",
+      "t": "DÉFINIR",
+      "d": "Définir le but de l'application, les utilisateurs et les scénarios clés.\nS'accorder sur ce que le prototype doit valider.",
+      "examples": [
+        "But",
+        "Utilisateurs",
+        "Scénarios",
+        "Chronologie"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRUCTURE",
+      "d": "Liste des écrans de conception, IA et flux.\nDéfinir le périmètre de iOS et Android.",
+      "examples": [
+        "Écrans",
+        "Flux",
+        "AI",
+        "Plateforme"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "CONCEPTION",
+      "d": "Concevoir l'UI de l'écran principal et la direction de l'interaction.\nConfirmer les écrans nécessaires pour la démonstration et la validation.",
+      "examples": [
+        "UI",
+        "Mouvement",
+        "États",
+        "Revue"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PROTOTYPE",
+      "d": "Construire un prototype fonctionnel.\nCompléter rapidement les flux principaux.",
+      "examples": [
+        "Taper",
+        "Faire glisser",
+        "Naviguer",
+        "États"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PARTAGER",
+      "d": "Fournir le lien de partage, construire et spécifier.\nConnecter les retours et les prochaines étapes.",
+      "examples": [
+        "Lien",
+        "Démo",
+        "Spécifications",
+        "MVP"
+      ]
+    }
+  ],
+  "reportLabel": "PRODUCTION",
+  "reportTitle": "Les livrables sont un prototype partageable et les spécifications associées.",
+  "reportLead": "La composition varie selon l'étendue du projet. Voici les éléments communs.",
+  "reportMockStatus": "PROTOYPE · SPÉCIFICATIONS",
+  "reportMockK": "SPÉCIFICATIONS DU PROTOTYPE D'APPLICATION",
+  "reportMockT": "Écrans, flux, plateformes, interactions",
+  "reportItems": [
+    "Objectifs et Scénarios",
+    "Liste des écrans",
+    "Carte du flux utilisateur",
+    "Écrans UI principaux",
+    "Notes d'interaction",
+    "Portée de la plateforme",
+    "Lien/Build du prototype",
+    "Notes de validation",
+    "Résumé de la passation",
+    "Chemin MVP (optionnel)"
+  ],
+  "dashTitle": "Partager l'écran, le flux et la portée de la plateforme sur une seule vue.",
+  "dashLead": "Écrans, flux, plateformes et intégrations ensemble accélèrent l'accord sur la portée et la préparation de la démo.",
+  "dashNote": "Le nombre d'écrans, la plateforme et la profondeur des interactions varient selon l'objectif du projet et le calendrier.",
+  "dashMetrics": [
+    "Écrans",
+    "Flux",
+    "Plateformes",
+    "Intégrations"
+  ],
+  "dashFilters": [
+    "Tous",
+    "Noyau",
+    "iOS",
+    "Android"
+  ],
+  "aiLabel": "ACCÉLÉRATION",
+  "aiTitle": "Automatisez la répétition.\nConcentrez-vous sur le design et le prototype.",
+  "aiLead": "Les listes d'écrans, ébauches de flux, notes d'interaction et checklists QA peuvent être assistées par l'IA pour gagner du temps — tandis que les personnes se concentrent sur l'UX, les flux principaux et la qualité du prototype.",
+  "aiExamples": [
+    "Ébaucher les listes d'écrans et de flux",
+    "Structurer les scénarios et transitions d'état",
+    "Ébaucher les textes UI et étiquettes",
+    "Checklists d'utilisabilité et de démonstration",
+    "Ébauches de documents de remise et de spécifications",
+    "Comparer la portée MVP et les priorités"
+  ],
+  "aiNote": "Les écrans finaux, les flux et les décisions d'interaction sont confirmés avec votre équipe projet.",
+  "delLabel": "LIVRABLES",
+  "delTitle": "Ce que vous recevrez à la fin du projet",
+  "delLead": "Nous livrons les éléments ci-dessous selon les besoins pour votre périmètre.",
+  "deliverables": [
+    "Prototype d'application interactif",
+    "UI de l'écran principal",
+    "Carte du flux utilisateur",
+    "Spécifications des écrans et interactions",
+    "Notes sur la portée de la plateforme",
+    "Lien / Build du prototype",
+    "Support de démonstration de validation",
+    "Pack de transfert",
+    "Proposition de périmètre MVP (facultatif)"
+  ],
+  "processLabel": "PROCESSUS",
+  "processTitle": "Du but au partage.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DÉCOUVERTE",
+      "d": "Confirmer le but de l'application, les utilisateurs, les scénarios clés et le calendrier.\nComprendre les objectifs de la démonstration et de la validation.",
+      "examples": [
+        "But",
+        "Utilisateurs",
+        "Démo",
+        "Chronologie"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "STRUCTURE",
+      "d": "Définir la liste des écrans, l'IA, les flux et le périmètre de la plateforme.\nSéparer les écrans principaux des écrans d'extension.",
+      "examples": [
+        "Écrans",
+        "Flux",
+        "iOS",
+        "Android"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "CONCEPTION",
+      "d": "Concevoir l'UI et la direction de l'interaction des écrans principaux.\nEffectuer des cycles de révision et de retour.",
+      "examples": [
+        "UI",
+        "États",
+        "Revue",
+        "Réviser"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PROTOTYPE",
+      "d": "Construire un prototype fonctionnel.\nVérifier les flux et les transitions principaux.",
+      "examples": [
+        "Construire",
+        "Taper",
+        "Naviguer",
+        "Polir"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "VALIDER",
+      "d": "Supporter la démonstration, la révision interne et la vérification de l'utilisabilité.\nAppliquer les retours.",
+      "examples": [
+        "Démo",
+        "Retour",
+        "Corrections",
+        "Validation finale"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "SPEC",
+      "d": "Documenter les écrans, les flux et les interactions.\nPréparer le transfert pour le développement.",
+      "examples": [
+        "Spécifications",
+        "Notes",
+        "Actifs",
+        "Transfert"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "SUIVANT",
+      "d": "Connectez MVP, build complet ou chemin prêt pour le magasin.\nProposez ensuite la portée, le calendrier et le devis.",
+      "examples": [
+        "MVP",
+        "Portée",
+        "Devis",
+        "Phase 2"
+      ]
+    }
+  ],
+  "scopeLabel": "NIVEAUX DE PORTÉE",
+  "scopeTitle": "Comment penser à la complexité du projet.",
+  "scopeLead": "Ce n'est pas un package fixe. La portée est définie par le nombre d'écrans, la plateforme, la profondeur des interactions et les intégrations.",
+  "scopes": [
+    {
+      "t": "PROTOTYPE",
+      "items": [
+        "5–8 écrans principaux",
+        "1–2 flux principaux",
+        "Prototype interactif",
+        "Focalisation iOS ou Android",
+        "Validation des investisseurs et interne"
+      ]
+    },
+    {
+      "t": "APPLICATION MVP",
+      "items": [
+        "Écrans étendus et plusieurs flux",
+        "Portée iOS + Android",
+        "États et chemins marginaux inclus",
+        "Intégration de base ou maquette API",
+        "Pack de spécifications pour le démarrage du développement"
+      ]
+    },
+    {
+      "t": "PRÊT POUR LA BOUTIQUE",
+      "items": [
+        "Développement d'application prête pour la boutique",
+        "Backend, authentification, paiements, notifications push",
+        "QA, déployer, soumettre au magasin",
+        "Lien opérations et maintenance",
+        "Devis personnalisé et calendrier"
+      ]
+    }
+  ],
+  "timeLabel": "CHRONOLOGIE",
+  "timeTitle": "Le calendrier dépend de l'étendue.",
+  "timeLead": "La durée varie en fonction du nombre d'écrans, de la profondeur des interactions, de la plateforme et des cycles de retour.",
+  "timelines": [
+    {
+      "t": "Prototype",
+      "d": "Environ 2 à 3 semaines · varie"
+    },
+    {
+      "t": "Application MVP",
+      "d": "Environ 4 à 6 semaines · varie"
+    },
+    {
+      "t": "Prêt pour le magasin",
+      "d": "Personnalisé · portée séparée"
+    }
+  ],
+  "priceLabel": "COÛT DU PROJET",
+  "priceTitle": "Devis par projet.",
+  "priceName": "PROTOTYPE D'APPLICATION",
+  "priceValue": "À partir de ₩500,000",
+  "priceFactorsLabel": "Facteurs de tarification",
+  "priceFactors": [
+    "Écrans — nombre de base et d'extension",
+    "Flux — complexité des flux et des états",
+    "Plateforme — iOS / Android / web",
+    "Interaction — profondeur des interactions et des mouvements",
+    "Calendrier — planning et cycles de retour",
+    "Intégration — maquette API et portée du lien",
+    "Profondeur du design — UI et système de design",
+    "Prochaine étape — MVP ou lien prêt pour le store"
+  ],
+  "priceNote": "À partir de ₩500,000 est le prix de départ pour le PROTOTYPE D'APP. Le MVP de l'application et les versions prêtes pour le store sont devisés séparément selon la portée.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Questions fréquemment posées",
+  "faqs": [
+    {
+      "q": "Que couvre le prix à partir de ₩500,000 ?",
+      "a": "C'est le prix de départ pour le PROTOTYPE D'APP — généralement les écrans principaux et 1 à 2 flux interactifs. Le MVP de l'application et les versions prêtes pour le store sont devisés séparément."
+    },
+    {
+      "q": "Est-ce une application prête pour le store ?",
+      "a": "Par défaut, il s'agit d'un prototype pour les investisseurs, l'interne et la validation pré-développement. Le développement d'une application prête pour le store constitue une portée distincte « Prêt pour le store »."
+    },
+    {
+      "q": "Pouvez-vous couvrir à la fois iOS et Android ?",
+      "a": "Oui. Nous concevons pour une plateforme unique ou les deux, selon l'objectif du projet. Le devis varie selon le nombre d'écrans et de plateformes."
+    },
+    {
+      "q": "Combien de temps cela prend-il ?",
+      "a": "Le prototype dure généralement 2 à 3 semaines ; l'application MVP environ 4 à 6 semaines. Cela dépend du nombre d'écrans, de la profondeur des interactions et des cycles de retours."
+    },
+    {
+      "q": "Cela peut-il continuer jusqu'au développement ?",
+      "a": "Oui. Nous pouvons proposer un MVP, une version complète ou un périmètre prêt pour le magasin à partir du prototype et des spécifications."
+    },
+    {
+      "q": "Combien de révisions ?",
+      "a": "Deux tours de révision sont inclus. Les modifications hors du périmètre et les écrans supplémentaires affectent le calendrier et le devis."
+    },
+    {
+      "q": "Figma seulement, ou un prototype fonctionnel ?",
+      "a": "L'objectif est un prototype de travail interactif. Les fichiers UI et les documents de spécification peuvent être inclus lorsque c'est nécessaire."
+    }
+  ],
+  "finalLabel": "DÉMARRER UN PROJET",
+  "finalTitle": "Montrez l'expérience\navant la présentation du pitch.",
+  "finalLead": "Si vous avez une idée d'application, un objectif de démonstration, des applications de référence ou une date limite, dites-nous ce dont vous avez besoin pour valider. Nous confirmerons ensemble la portée du prototype iOS/Android et l'approche de validation.",
+  "ctaFinalSecondary": "Voir tout CONSTRUIRE →",
+  "ctaFinalSecondaryHref": "../build/"
+}

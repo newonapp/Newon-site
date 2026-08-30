@@ -1,0 +1,479 @@
+{
+  "seoTitle": "CONSUMER RESEARCH | Newon Geschäft",
+  "metaDescription": "Erforschen Sie die Bedürfnisse, das Verhalten und die Schmerzmuster von Verbrauchern und Benutzern - strukturiert als Erkenntnisse für Produkt- und Messaging-Entscheidungen. Newon CONSUMER RESEARCH.",
+  "crumbBusiness": "UNTERNEHMEN",
+  "crumbServices": "DIENSTLEISTUNGEN",
+  "crumbResearch": "FORSCHUNG",
+  "crumbHere": "CONSUMER RESEARCH",
+  "eyebrow": "CONSUMER RESEARCH",
+  "subEyebrow": "FORSCHUNG",
+  "headline": "Sammeln Sie Benutzerstimmen.\nVerstehen Sie sie als Muster.",
+  "lead": "Wir erforschen Bedürfnisse, Verhalten und Schmerzmuster aus Bewertungen, Umfragen, Interviews, Support-Logs und Nutzungssignalen. Verstreute Benutzerstimmen sind nach Segment, Bedarf und Motivation in einem Einblicksbrief organisiert, den Ihr Team für Ziel-, Messaging- und Produktprioritätsentscheidungen verwenden kann.",
+  "ctaPrimary": "Verbraucherforschungsuntersuchung →",
+  "ctaSecondary": "Siehe Forschungsfluss ↓",
+  "meta": [
+    {
+      "k": "DIENST",
+      "v": "Verbraucherforschung"
+    },
+    {
+      "k": "BESTES",
+      "v": "Ziel- und Nachrichtenvalidierung"
+    },
+    {
+      "k": "TIMELIN",
+      "v": "Normalerweise 2-4 Wochen"
+    },
+    {
+      "k": "PREIS",
+      "v": "Ab 300.000"
+    }
+  ],
+  "overviewLabel": "ÜBERSICHT",
+  "overviewTitle": "Viele Meinungen.\nNicht genug Muster.",
+  "overviewBody": [
+    "Benutzerstimmen gibt es immer, wenn es um Produkt-, Marketing- oder Serviceverbesserungen geht. Der schwierigere Teil ist, sie in Segmentbedürfnisse und Verhaltensmuster zu organisieren.",
+    "Bewertungen, Support-Tickets, Umfrageantworten, Interviews, Community-Signale und Nutzungsdaten bieten jeweils einen anderen Blickwinkel - aber selten in einer Form, aus der Teams wählen können.",
+    "CONSUMER RESEARCH beginnt mit der Definition, was Sie lernen müssen. Dann sammeln, klassifizieren und strukturieren wir Signale in Segmente, Bedürfnisse, Schmerzen, Motivationen und Möglichkeiten in einem Einblick."
+  ],
+  "problemsLabel": "PROBLEM",
+  "problemsTitle": "Hilfreich, wenn Sie sich diesen Situationen stellen.",
+  "problems": [
+    {
+      "n": "01 01",
+      "t": "ZIELBESCHEINIGUNG",
+      "d": "Es ist unklar, für wen das Produkt oder die Dienstleistung,\noder welche Benutzergruppe am wichtigsten ist."
+    },
+    {
+      "n": "02",
+      "t": "STAATLICHE STIMMUNGEN",
+      "d": "Es gibt viele Bewertungen und Tickets, aber keine klaren Muster.\nDie gleichen Beschwerden wiederholen sich ohne Priorität."
+    },
+    {
+      "n": "03",
+      "t": "VALIDIERUNG",
+      "d": "Sie benötigen Beweise, um Messaging und Positionierung zu validieren.\nSie möchten wissen, worauf die Benutzer tatsächlich reagieren."
+    },
+    {
+      "n": "04",
+      "t": "NEED PRIORITÄT",
+      "d": "Sie haben viele Feature- oder Service-Kandidaten\n, aber es fehlen Beweise dafür, was zuerst zu lösen ist."
+    },
+    {
+      "n": "05",
+      "t": "VERHALTEN GAP",
+      "d": "Es gibt eine Lücke zwischen Annahmen und tatsächlichem Verhalten.\nSie brauchen Kontext, warum Benutzer so handeln."
+    },
+    {
+      "n": "06",
+      "t": "PRE-LAUNCH-INSPUT",
+      "d": "Vor dem Start, Rebranding oder einer Hauptfunktion,\n, benötigen Sie zuerst die Reaktion des Benutzers."
+    }
+  ],
+  "baLabel": "VOR / NACH",
+  "baTitle": "Gestreute Stimmen vs\nstrukturierter Benutzer verstehen",
+  "beforeLabel": "VOR",
+  "afterLabel": "NACH",
+  "before": [
+    "Jeder überprüft Bewertungen, Tickets und Umfragen separat",
+    "\"Benutzer wollen das\" wird oft gesagt, aber Beweise sind verstreut",
+    "Segmente, Bedürfnisse und Prioritätenverschiebung durch Konversation",
+    "Insights werden nicht dokumentiert oder mit der nächsten Validierung verbunden"
+  ],
+  "after": [
+    "Forschungsfragen und Benutzerumfang werden zuerst definiert",
+    "Segmente, Bedürfnisse und Schmerzmuster sind strukturiert",
+    "Ein gemeinsamer Insight Brief für das Team",
+    "Verbunden mit Messaging, Features und Experimenten"
+  ],
+  "capsLabel": "KAPAZITÄTEN",
+  "capsTitle": "Wir strukturieren die Forschung\nIhre User Understanding Bedürfnisse.",
+  "caps": [
+    {
+      "t": "FRAGEBOGEN",
+      "d": "Definieren Sie, was Sie lernen müssen, um zu entscheiden.\nKlärung des Forschungszwecks und der Zielbenutzer."
+    },
+    {
+      "t": "DESK FORSCHUNG",
+      "d": "Sammeln Sie sekundäre Quellen - Bewertungen, Community, öffentliches Feedback.\nÜberprüfen Sie Quelle und Kontext."
+    },
+    {
+      "t": "PRIMÄRFORSCHUNG",
+      "d": "Fügen Sie bei Bedarf Interview- oder Umfragedesign und Feldforschung hinzu.\nStrukturieren Sie Fragen und Teilnehmerauswahl zusammen."
+    },
+    {
+      "t": "SEGMENTVERARBEITUNG",
+      "d": "Organisieren Sie Benutzer nach Segment, Persona und Situation.\nStrukturieren Sie, wer was und warum verwendet."
+    },
+    {
+      "t": "NEED & PAIN ANALYSE",
+      "d": "Musterbedürfnisse, Schmerzen und unerfüllte Erwartungen.\nPriorisieren Sie wiederkehrende Probleme."
+    },
+    {
+      "t": "VERHALTSZEICHEN",
+      "d": "Erfassen Sie Verhalten, Kauf, Abwanderung und Nutzungsmuster.\nVerbinden Sie Annahmen mit dem tatsächlichen Verhalten."
+    },
+    {
+      "t": "NACHRICHTENERKENNTNISSE",
+      "d": "Fassen Sie zusammen, auf welche Nachrichten, Werte und Sprachbenutzer antworten.\nBelegen Sie die Positionierung und Kopie."
+    },
+    {
+      "t": "IMPLIKATIONEN",
+      "d": "Verbinden Sie die Ergebnisse mit Produkt-, Marketing- und Serviceimplikationen.\nSchlagen Sie die nächsten Experimente und Validierung vor."
+    }
+  ],
+  "sourcesLabel": "FORSCHUNGSQUELLEN",
+  "sourcesTitle": "Wir kombinieren die Nutzersignale, die Ihr Ziel braucht.",
+  "sourcesNote": "Tatsächliche Quellen variieren je nach Umfang, Datenzugriff und Einbeziehung in die Primärforschung.",
+  "sources": [
+    "Produkt & Service Bewertungen",
+    "App Store & Marketplace Bewertungen",
+    "Support & Request Logs",
+    "Umfrage und Formularantworten",
+    "Nutzer- und Brancheninterviews",
+    "Community & Social Signale",
+    "Nutzungs- und Verhaltensdaten",
+    "NPS & Feedback Umfragen",
+    "Verkaufs- und Beratungsschreiben",
+    "Interne Nutzerforschung",
+    "Konkurrenz Produktbewertungen",
+    "Fokusgruppen (fakultativer Anwendungsbereich)"
+  ],
+  "useLabel": "VERWENDUNGSFÄLLE",
+  "useTitle": "Fragen, die wir beantworten können.",
+  "useBadge": "Beispielhafte Forschungsthemen",
+  "useCases": [
+    {
+      "t": "ZIELDEFINITION",
+      "d": "Klarstellung von Kernbenutzern und Segmenten.\nStrukturieren Sie, auf wen Sie sich zuerst konzentrieren sollen."
+    },
+    {
+      "t": "NEED PRIORITÄT",
+      "d": "Priorisieren Sie, welche Bedürfnisse und Schmerzen zuerst zu lösen sind.\nVerwenden Sie als Beweis für Roadmap-Entscheidungen."
+    },
+    {
+      "t": "MESSENPRÜFUNG",
+      "d": "Validierung von Messaging, Wert und Kopierrichtung.\nSehen Sie, auf welche Sprache Benutzer antworten."
+    },
+    {
+      "t": "SCHMERZPATTERN",
+      "d": "Muster wiederkehrende Beschwerden und Churn-Signale.\nExtrahieren Sie häufige Probleme aus CS und Bewertungen."
+    },
+    {
+      "t": "VERHANDLUNGSKONTEXT",
+      "d": "Verstehen Sie den Kontext hinter Kauf, Verwendung und Abwanderung.\nÜberprüfen Sie Lücken zwischen Annahmen und Verhalten."
+    },
+    {
+      "t": "PERSONALINSPUT",
+      "d": "Strukturieren Sie Personas, Jobs und Nutzungssituationen.\nInput für Produkt, Design und Marketing."
+    },
+    {
+      "t": "VORSCHRIFTENKONTROLLE",
+      "d": "Überprüfen Sie die Benutzerreaktion vor dem Start oder Rebranding.\nBeweise für Go/No-go und Nachrichtenanpassung."
+    },
+    {
+      "t": "OPPORTUNITÄTSKARTE",
+      "d": "Dokument unerfüllte Bedürfnisse und Whitespace.\nOberfläche neue Funktion oder Servicemöglichkeiten."
+    }
+  ],
+  "flowLabel": "BEISPIEL WORKFLOW",
+  "flowTitle": "Von Fragen zu einem Insight Brief",
+  "flow": [
+    {
+      "n": "01 01",
+      "t": "DEFIN",
+      "d": "Definieren Sie Forschungsfragen und Zielbenutzer.\nKlären Sie, was Sie lernen müssen, um zu entscheiden.",
+      "examples": [
+        "Kernfragen",
+        "Zielnutzer",
+        "Anwendungsbereich",
+        "Leistungen"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "KOLLEKT",
+      "d": "Sammeln Sie Bewertungen, Umfragen, Interviews und Support-Signale.\nÜberprüfen Sie Sekundär- und Primärmaterial zusammen.",
+      "examples": [
+        "Überprüfungen",
+        "Erhebungen",
+        "Interviews",
+        "Unterstützung"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "ANALYZ",
+      "d": "Klassifizieren Sie Muster, Segmente, Bedürfnisse und Schmerzen.\nStrukturieren Sie wiederkehrende Signale und Unterschiede.",
+      "examples": [
+        "Segmente",
+        "Benötigt",
+        "Schmerzen",
+        "Motivation"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "SYNTHESE",
+      "d": "Extrahieren Sie wichtige Einblicke und Möglichkeiten.\nVerbinde, was wichtig ist und warum es wichtig ist.",
+      "examples": [
+        "Schlüsselthemen",
+        "Priorität",
+        "Möglichkeit",
+        "Risiko"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LIEFERER",
+      "d": "Liefern Sie kurze, Karte und Implikationen.\nFormat für die sofortige Teamnutzung.",
+      "examples": [
+        "Insight Brief",
+        "Segmentkarte",
+        "Nächste Schritte"
+      ]
+    }
+  ],
+  "reportLabel": "AUSGANGSLEISTUNG",
+  "reportTitle": "Deliverables strukturiert für Produkt- und Marketingentscheidungen.",
+  "reportLead": "Die Zusammensetzung variiert je nach Projektziel. Unten sind gemeinsame Abschnitte.",
+  "reportMockStatus": "INSIGHT · ENTWURF",
+  "reportMockK": "BENUTZER INSIGHT",
+  "reportMockT": "Segment · Bedarf · Verhaltensmuster kurz",
+  "reportItems": [
+    "Zusammenfassung",
+    "Forschungsumfang",
+    "Segmentübersicht",
+    "Bedürfnis & Schmerz",
+    "Verhaltenssignale",
+    "Nachrichtenerkenntnisse",
+    "Chancenbereiche",
+    "Implikationen",
+    "Empfohlen Nächste Schritte",
+    "Quelle:"
+  ],
+  "dashTitle": "Teilen Sie Benutzermuster in einer Ansicht.",
+  "dashLead": "Segmentkarte und brauchen Themen zusammen - so gehen die Teamdiskussionen schneller voran.",
+  "dashNote": "Segmentkarte und Themenzusammensetzung variieren je nach Umfang und Ziel.",
+  "dashMetrics": [
+    "Segmente",
+    "Themen",
+    "Zitate",
+    "Priorität"
+  ],
+  "dashFilters": [
+    "Alle",
+    "Benötigt",
+    "Schmerzen",
+    "Motivation"
+  ],
+  "aiLabel": "SYNTHESE",
+  "aiTitle": "Von vielen Benutzerstimmen\nzu den Mustern, die wichtig sind.",
+  "aiLead": "Wenn es viele Review-, Ticket-, Interview- und Umfragetexte gibt, klassifizieren, fassen und vergleichen wir aus den Blickwinkeln, die Sie benötigen.",
+  "aiExamples": [
+    "Review und Feedback-Muster Zusammenfassung",
+    "Wiederkehrende Schmerzen und Problemextraktion",
+    "Segment benötigen Vergleich",
+    "Interview quote digest",
+    "Nachrichten- und Wertantwortanalyse",
+    "Kurz- und Themenkartenentwurf"
+  ],
+  "aiNote": "Interpretation und endgültige Entscheidungen werden gemeinsam mit Ihnen überprüft.",
+  "delLabel": "LIEFERBARE",
+  "delTitle": "Was Sie nach dem Projekt",
+  "delLead": "erhalten Je nach Umfang liefern wir die Artikel, die Sie benötigen, aus der folgenden Liste.",
+  "deliverables": [
+    "Insight Brief",
+    "Segmentkarte",
+    "Need & Pain Zusammenfassung",
+    "Verhaltenshinweise",
+    "Nachrichtenerkenntnisse",
+    "Chancenüberblick",
+    "Implikationen & Empfehlungen",
+    "Interview Guide (fakultativ)",
+    "Zusammenfassung"
+  ],
+  "processLabel": "PROZESS",
+  "processTitle": "Von der Fragedefinition bis zur Lieferung.",
+  "process": [
+    {
+      "n": "01 01",
+      "t": "ENTWICKLUNG",
+      "d": "Bestätigen Sie Forschungszweck und Entscheidungskontext.\nVerstehen Sie, was Sie entscheiden.",
+      "examples": [
+        "Ziel",
+        "Stakeholder",
+        "Zeitleiste",
+        "Einschränkungen"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "UMFANG",
+      "d": "Definieren Sie Fragen, Zielbenutzer, Methoden und Ergebnisse.\nEinigung auf die Einbeziehung der Primärforschung.",
+      "examples": [
+        "Fragen",
+        "Ziel",
+        "Methode",
+        "Format"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "FORSCHUNG",
+      "d": "Sammeln und überprüfen Sie relevante Signale und Daten.\nEinschließen von Interviews oder Umfragen, wenn Umfang.",
+      "examples": [
+        "Überprüfungen",
+        "Erhebungen",
+        "Interviews",
+        "Unterstützung"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ANALYSE",
+      "d": "Strukturmuster, Segmente und Bedürfnisse.\nAbleiten von Themen und Prioritäten.",
+      "examples": [
+        "Segmente",
+        "Themen",
+        "Priorität",
+        "Zitate"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ENTWURF",
+      "d": "Draft Insight Brief und Karte.\nBauen Sie die Wirbelsäule der wichtigsten Erkenntnisse.",
+      "examples": [
+        "Zusammenfassung",
+        "Segmentkarte",
+        "Themen"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "ÜBERPRÜFUNG",
+      "d": "Überprüfen Sie wichtige Erkenntnisse und Interpretation zusammen.\nStellen Sie Lücken und Prioritäten ein.",
+      "examples": [
+        "Feedback",
+        "Verfeinerung",
+        "Priorität"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "LIEFERER",
+      "d": "Liefern Sie endgültige Dokumente und Implikationen.\nVerbinden Sie sich mit den nächsten Experimenten und Validierungen.",
+      "examples": [
+        "Letzter Brief",
+        "Karte",
+        "Nächste Schritte"
+      ]
+    }
+  ],
+  "scopeLabel": "ANWENDUNGSBEREICH",
+  "scopeTitle": "Ein Leitfaden zur Projektkomplexität.",
+  "scopeLead": "Keine festen Pakete - wir richten uns nach Ziel, Publikum und Primärforschung.",
+  "scopes": [
+    {
+      "t": "DESK INSight kurz",
+      "items": [
+        "Desk-Forschungsschwerpunkt (Bewertungen, Tickets, öffentliches Feedback)",
+        "3-5 Kernfragen",
+        "Bedarf und Schmerz Theme Zusammenfassung",
+        "Zusammenfassung",
+        "Prioritätspunkte"
+      ]
+    },
+    {
+      "t": "SEGMENT & NEED MAP",
+      "items": [
+        "Segment und Persona Zusammenfassung",
+        "Bedarf, Schmerz und Motivation Karte",
+        "Verhalten und Nachrichten Implikationen",
+        "Opportunity Areas",
+        "Zusammenfassung fakultativ"
+      ]
+    },
+    {
+      "t": "KUNDENFORSCHUNG",
+      "items": [
+        "Interview und Umfrage Design und Feldforschung",
+        "Mehrere Segmente oder Kanäle",
+        "Verhaltensdatenverbindung",
+        "Benutzerdefinierte Präsentation",
+        "BUILD oder MVP Verknüpfung"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELIN",
+  "timeTitle": "verlinken Timeline hängt vom Umfang ab.",
+  "timeLead": "Primäre Forschungsaufnahme, Zielgruppengröße und Datenzugriff können die Dauer ändern.",
+  "timelines": [
+    {
+      "t": "Desk Insight Brief",
+      "d": "Über 1–2 Wochen"
+    },
+    {
+      "t": "Segment & Need Map",
+      "d": "Ungefähr 2-3 Wochen"
+    },
+    {
+      "t": "Custom Research",
+      "d": "Etwa 3-4 Wochen · separat"
+    }
+  ],
+  "priceLabel": "PROJEKTKOSTEN",
+  "priceTitle": "Wir nennen nur den Umfang, den Sie benötigen.",
+  "priceName": "CONSUMER RESEARCH",
+  "priceValue": "Ab 300.000",
+  "priceFactorsLabel": "Welche Formen der Preis",
+  "priceFactors": [
+    "Anzahl der Forschungsfragen",
+    "Zielnutzer oder Segmentumfang",
+    "Einbeziehung in die Primärforschung",
+    "Interview oder Response Count",
+    "Forschungstiefe",
+    "Zugänglichkeit der Daten",
+    "Lieferbares Format",
+    "Zeitleiste"
+  ],
+  "priceNote": "Das endgültige Zitat wird nach Überprüfung von Ziel, Methode und Umfang bestätigt.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faqs": [
+    {
+      "q": "Welche Nutzer oder Konsumenten können Sie recherchieren?",
+      "a": "B2B, B2C, SaaS, Commerce, Services und mehr - je nach Ziel und zugänglichem Publikum. Wir bestätigen fit vor dem Start."
+    },
+    {
+      "q": "Beinhaltet dies Interviews oder Umfragen?",
+      "a": "Wir können zuerst mit dem Schreibtisch beginnen. Interviews und Umfragen können bei Bedarf in den Umfang aufgenommen werden."
+    },
+    {
+      "q": "Welches Format haben Deliverables?",
+      "a": "Dokument und Karte zuerst: Insight Brief, Segment Map, Need & Pain Summary und mehr. Präsentationszusammenfassungen können einbezogen werden."
+    },
+    {
+      "q": "Können Sie unsere Support- oder Nutzungsdaten nutzen?",
+      "a": "Ja, innerhalb dessen, was Sie teilen können. Ansonsten arbeiten wir aus öffentlichen Bewertungen und Feedback."
+    },
+    {
+      "q": "Wie unterscheidet sich das von MARKET RESEARCH?",
+      "a": "CONSUMER RESEARCH konzentriert sich auf die Bedürfnisse und das Verhalten von Benutzern und Verbrauchern. Wenn die Marktstruktur die Notwendigkeit ist, passt MARKET RESEARCH möglicherweise besser - Umfange können verknüpft werden."
+    },
+    {
+      "q": "Kann dies eine Verbindung zu BUILD oder MVP herstellen?",
+      "a": "Ja. Insights können Feature-Priorität, Zieldefinition und Messaging liefern."
+    },
+    {
+      "q": "Wie wird mit Vertraulichkeit umgegangen?",
+      "a": "Wir arbeiten nur im vereinbarten Umfang. Eine NDA kann bei Bedarf unterzeichnet werden."
+    }
+  ],
+  "finalLabel": "START A PROJEKT",
+  "finalTitle": "Erraten Sie Ihre Benutzer nicht -\nHören und Muster zuerst.",
+  "finalLead": "Teilen Sie uns das Ziel-, Nachrichten- oder Bedarfsproblem mit, das Sie bewerten. Wir werden bestätigen, was zu erforschen und wie die Ausgabe zu strukturieren.",
+  "ctaFinalSecondary": "Alle Forschen ansehen",
+  "ctaFinalSecondaryHref": "../research/"
+}

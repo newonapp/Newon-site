@@ -1,0 +1,479 @@
+{
+  "seoTitle": "TREND RESEARCH | Newon Geschäft",
+  "metaDescription": "Forschungsbranche, Verbraucher und Produkttrendsignale - strukturiert als Trendbrief für Roadmap-, Inhalts- und Strategieentscheidungen. Newon TREND RESEARCH.",
+  "crumbBusiness": "UNTERNEHMEN",
+  "crumbServices": "DIENSTLEISTUNGEN",
+  "crumbResearch": "FORSCHUNG",
+  "crumbHere": "TREND RESEARCH",
+  "eyebrow": "TREND RESEARCH",
+  "subEyebrow": "FORSCHUNG",
+  "headline": "Es gibt viele Trends.\nNicht genügend Klarheit.",
+  "lead": "Wir recherchieren Branchenberichte, Produkteinführungen, Investitions- und Regulierungsänderungen sowie Verbraucher-, Technologie- und Verhaltenssignale. Verstreute Trendhinweise sind nach Thema, Zeitleiste und Auswirkungen in einem Trendbrief organisiert, den Ihr Team für Roadmap-, Inhalts- und Strategieentscheidungen verwenden kann.",
+  "ctaPrimary": "Trendforschungsstudie →",
+  "ctaSecondary": "Siehe Forschungsfluss ↓",
+  "meta": [
+    {
+      "k": "DIENST",
+      "v": "Trendforschung"
+    },
+    {
+      "k": "BESTES",
+      "v": "Roadmap und Content Direction"
+    },
+    {
+      "k": "TIMELIN",
+      "v": "Normalerweise 1-3 Wochen"
+    },
+    {
+      "k": "PREIS",
+      "v": "Ab 300.000"
+    }
+  ],
+  "overviewLabel": "ÜBERSICHT",
+  "overviewTitle": "Informationsüberflutung.\nKeine Entscheidungsstruktur.",
+  "overviewBody": [
+    "Gespräche über \"Was ist Trend\" zeigen sich oft in Produkt-, Marketing- und Strategie-Meetings. Der schwierigere Teil ist zu wissen, welche Signale Rauschen sind und was die Materie für Ihre Entscheidungen verändert.",
+    "Nachrichten, Berichte, Wettbewerber-Updates, soziale und Community-Signale und regulatorische Änderungen bieten Hinweise - aber selten in einer Form, aus der Teams wählen können.",
+    "TREND RESEARCH beginnt mit der Definition von Thema und Zeithorizont. Dann sammeln, klassifizieren und strukturieren wir Signale in Themen, Richtung des Wandels und Produkt-, Inhalts- und Strategieimplikationen in einem Trendbrief."
+  ],
+  "problemsLabel": "PROBLEM",
+  "problemsTitle": "Hilfreich, wenn Sie sich diesen Situationen stellen.",
+  "problems": [
+    {
+      "n": "01 01",
+      "t": "STRASSENKARTE DIRECTION",
+      "d": "Sie benötigen Beweise für Roadmap, Feature oder Service-Richtung.\nEs ist unklar, welche Verschiebung zu folgen."
+    },
+    {
+      "n": "02",
+      "t": "INHALTSSTRATEGIE",
+      "d": "Sie benötigen eine Richtung für Content, Marketing oder Brand Messaging.\nSie wollen Beweise dafür, was jetzt zählt."
+    },
+    {
+      "n": "03",
+      "t": "NOIS VS SIGNAL",
+      "d": "Es gibt viele Trendinformationen, aber keine Priorität.\nSie müssen Modeerscheinungen vom Strukturwandel trennen."
+    },
+    {
+      "n": "04",
+      "t": "KATEGORIESCHALT",
+      "d": "Kategorie, Branche, Regulierung oder Technologiekontext verändern sich.\nSie brauchen Auswirkungen auf Produkt und Geschäft."
+    },
+    {
+      "n": "05",
+      "t": "WETTBEWERBER",
+      "d": "Sie benötigen Kontext für Wettbewerber und Ersatzstarts und Messaging.\nKopieren reicht nicht aus - Interpretation ist wichtig."
+    },
+    {
+      "n": "06",
+      "t": "PLANUNGSINSPUT",
+      "d": "Vor der Quartalsplanung, Neugeschäftsprüfung oder Investorengesprächen,\nbenötigen Sie zuerst den Trendkontext."
+    }
+  ],
+  "baLabel": "VOR / NACH",
+  "baTitle": "Zerstreute Trends vs\nstrukturierter Fluss",
+  "beforeLabel": "VOR",
+  "afterLabel": "NACH",
+  "before": [
+    "Jeder überprüft Nachrichten, Berichte und Social separat",
+    "\"Trends\" werden oft diskutiert, aber ohne Beweise oder Priorität",
+    "Fads und strukturelle Verschiebungen sind nicht getrennt",
+    "Nicht mit Strategie, Roadmap oder Inhaltsdiskussionen verbunden"
+  ],
+  "after": [
+    "Forschungsthema und Zeithorizont definieren erstes",
+    "Themen, Signale und Auswirkungen strukturiert",
+    "Ein gemeinsamer Trendbrief für das Team",
+    "Verbunden mit Roadmap, Inhalten und Experimenten"
+  ],
+  "capsLabel": "KAPAZITÄTEN",
+  "capsTitle": "Wir strukturieren die Forschung\nIhre Trendverständnisbedürfnisse.",
+  "caps": [
+    {
+      "t": "THEMA FRAMING",
+      "d": "Definieren Sie, was Sie lernen müssen, um zu entscheiden.\nKlären Sie Industrie, Kategorie und Zeithorizont."
+    },
+    {
+      "t": "DESK FORSCHUNG",
+      "d": "Sammeln Sie sekundäre Quellen - Berichte, Nachrichten, IR, Produktupdates.\nÜberprüfen Sie Quelle, Timing und Kontext."
+    },
+    {
+      "t": "SIGNALKAN",
+      "d": "Scannen Sie Investitions-, Regulierungs-, Technologie- und Verhaltenssignale.\nWählen Sie die wichtigsten Hinweise."
+    },
+    {
+      "t": "THEMA KAPITELUNG",
+      "d": "Cluster-bezogene Signale in Themen.\nStrukturieren Sie wiederkehrende Richtungen der Veränderung."
+    },
+    {
+      "t": "TIMELINE SICHT",
+      "d": "Organisieren Sie Veränderungen über kurze und mittlere Horizonte hinweg.\nUnterscheiden Sie Emerging, Rising und stabile Zustände."
+    },
+    {
+      "t": "WETTBEWERBSKONTEXT",
+      "d": "Verbinden Sie Wettbewerber und Ersatzbewegungen mit dem Trendkontext.\nInterpretieren, nicht nur Liste."
+    },
+    {
+      "t": "IMPLIKATIONEN",
+      "d": "Verknüpfen Sie Trends mit Produkt-, Inhalts- und Strategieimplikationen.\nTrennen Sie Chancen, Risiken und Ignorieren von Zonen."
+    },
+    {
+      "t": "AKTIONSLINKE",
+      "d": "Verbinden Sie die Ergebnisse mit Roadmap, Inhalten und Experimentelementen.\nSchlagen Sie die nächsten Validierungs- und Überwachungspunkte vor."
+    }
+  ],
+  "sourcesLabel": "FORSCHUNGSQUELLEN",
+  "sourcesTitle": "Wir kombinieren die Trendsignale, die Ihr Ziel braucht.",
+  "sourcesNote": "Die tatsächlichen Quellen variieren je nach Thema, Branche und zugänglichen Materialien pro Projekt.",
+  "sources": [
+    "Branchen- und Marktberichte",
+    "Nachrichten und Medien",
+    "Produkt- und Service-Launchs",
+    "Investitionen, M&A und Finanzierung",
+    "Regulierung und Politikwechsel",
+    "Technologie- und Plattformverschiebungen",
+    "Verbraucher- und Verhaltensdaten",
+    "Soziale und gemeinschaftliche Signale",
+    "Wettbewerber Updates",
+    "Konferenzen und Whitepapers",
+    "Interne Daten und Erkenntnisse",
+    "Experteninterviews (fakultativer Umfang)"
+  ],
+  "useLabel": "VERWENDUNGSFÄLLE",
+  "useTitle": "Fragen, die wir beantworten können.",
+  "useBadge": "Beispielhafte Forschungsthemen",
+  "useCases": [
+    {
+      "t": "KATEGORIETRÄGE",
+      "d": "Bestätigen Sie die Hauptrichtung in einer Kategorie oder Branche.\nStrukturieren Sie Wachstum, Rückgang und Übergangsströme."
+    },
+    {
+      "t": "TECH & PRODUKT",
+      "d": "Erfassen Sie Veränderungen in Technologie-, Produkt- und UX-Mustern.\nVerwenden Sie als Beweis für Roadmap und Feature Direction."
+    },
+    {
+      "t": "VERBRAUCHERSCHALT",
+      "d": "Fassen Sie Verbraucher, Verhalten und Wertverschiebungen zusammen.\nÜberprüfen Sie Ziel, Messaging und Service-Richtung."
+    },
+    {
+      "t": "INHALTSTHESEN",
+      "d": "Ableiten von Themen und Blickwinkeln für Content und Marketing.\nGetrennte Aktualität von Haltbarkeit."
+    },
+    {
+      "t": "WETTBEWERBER",
+      "d": "Kontextualisieren Sie Wettbewerberstarts, Messaging und Funktionen.\nInput für Response und Differenzierung."
+    },
+    {
+      "t": "VERORDNUNG UND POLITIK",
+      "d": "Fassen Sie die geschäftlichen Auswirkungen von regulatorischen und politischen Veränderungen zusammen.\nOberflächenrisiko- und -chancenpunkte."
+    },
+    {
+      "t": "HORIZON",
+      "d": "Scannen Sie kurz- und mittelfristige Änderungssignale.\nSchlagen Sie Themen und Metriken zum Überwachen vor."
+    },
+    {
+      "t": "OPPORTUNITÄTSKARTE",
+      "d": "Dokumentieren Sie trendbasierte Funktionen, Service- und Inhaltsmöglichkeiten.\nVerbinden Sie sich mit Experimenten und Validierung."
+    }
+  ],
+  "flowLabel": "BEISPIEL WORKFLOW",
+  "flowTitle": "Von der Themendefinition bis zu einem Trendbrief",
+  "flow": [
+    {
+      "n": "01 01",
+      "t": "DEFIN",
+      "d": "Definieren Sie Forschungsthema, Zeithorizont und Entscheidungskontext.\nKlären Sie, was Sie lernen müssen, um zu entscheiden.",
+      "examples": [
+        "Thema",
+        "Anwendungsbereich",
+        "Horizont",
+        "Leistungen"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCAN",
+      "d": "Scannen Sie Berichte, Nachrichten, Starts, Investitionen und Regulierungssignale.\nWählen Sie die wichtigsten Materialien aus.",
+      "examples": [
+        "Berichte",
+        "Nachrichten",
+        "Startet",
+        "Investitionen"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "KLUSTER",
+      "d": "Cluster-bezogene Signale in Themen.\nStrukturieren Sie wiederkehrende Muster und Richtung.",
+      "examples": [
+        "Themen",
+        "Cluster",
+        "Muster",
+        "Staat"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "INTERPRETIEREN",
+      "d": "Interpretieren Sie Bedeutung und Wirkung von Themen.\nTrennen Sie Chancen, Risiken und Ignorieren von Zonen.",
+      "examples": [
+        "Auswirkungen",
+        "Möglichkeit",
+        "Risiko",
+        "Implikationen"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "LIEFERER",
+      "d": "Liefern Sie Trend Brief und Theme Map.\nVerbinden Sie sich mit Roadmap, Inhalten und Experimentdiskussionen.",
+      "examples": [
+        "Trend kurz",
+        "Themenkarte",
+        "Nächste Schritte"
+      ]
+    }
+  ],
+  "reportLabel": "AUSGANGSLEISTUNG",
+  "reportTitle": "Outputs strukturiert für Strategie-, Roadmap- und Inhaltsentscheidungen.",
+  "reportLead": "Die Zusammensetzung variiert je nach Projektziel. Unten sind gemeinsame Elemente.",
+  "reportMockStatus": "TREND · ENTWURF",
+  "reportMockK": "TREND RESEARCH ZUSAMMENFASSUNG",
+  "reportMockT": "Themen, Flow und Implikationen brief",
+  "reportItems": [
+    "Zusammenfassung",
+    "Forschungsumfang",
+    "Theme Überblick",
+    "Signalzusammenfassung",
+    "Timeline Ansicht",
+    "Wettbewerbskontext",
+    "Chancenbereiche",
+    "Risiko & Watchlist",
+    "Implikationen",
+    "Empfohlen Nächste Schritte"
+  ],
+  "dashTitle": "Teilen Sie Trendthemen und Prioritäten in einer Ansicht.",
+  "dashLead": "Themen, Zustand und Wirkung zusammen beschleunigen Strategie und inhaltliche Diskussionen.",
+  "dashNote": "Themenzusammensetzung und Statusklassifizierung variieren je nach Projektziel und Umfang.",
+  "dashMetrics": [
+    "Themen",
+    "Signale",
+    "Steigende",
+    "Priorität"
+  ],
+  "dashFilters": [
+    "Alle",
+    "Steigende",
+    "Aufbruch",
+    "stabil"
+  ],
+  "aiLabel": "SYNTHESE",
+  "aiTitle": "Von vielen Signalen\nzu Kernthemen.",
+  "aiLead": "Wenn sich Nachrichten, Berichte, Starts und soziales Material häufen, klassifizieren, fassen und vergleichen wir nach Relevanz, Muster und Auswirkungen für eine schnellere Überprüfung.",
+  "aiExamples": [
+    "Cluster News und Berichtsthemen",
+    "Extrahieren Sie wiederkehrende Signalmuster",
+    "Klassifizieren Steigende / Emerging-Zustände",
+    "Kontextualisieren Mitbewerber bewegt sich",
+    "Zusammenfassung der Roadmap und der inhaltlichen Auswirkungen",
+    "Struktur Trend Brief und Theme Map"
+  ],
+  "aiNote": "Endgültige Interpretation und Priorität werden mit Ihnen überprüft.",
+  "delLabel": "LIEFERBARE",
+  "delTitle": "Was Sie erhalten, wenn das Projekt",
+  "delLead": "abschließt Wir liefern die folgenden Artikel nach Bedarf für Ihren Umfang.",
+  "deliverables": [
+    "Trend kurz",
+    "Themenkarte",
+    "Signalzusammenfassung",
+    "Timeline Ansicht",
+    "Chancenüberblick",
+    "Risiko & Watchlist",
+    "Implikationen & Empfehlungen",
+    "Zusammenfassung",
+    "Monitoring Guide (fakultativ)"
+  ],
+  "processLabel": "PROZESS",
+  "processTitle": "Von der Themendefinition bis zur Lieferung.",
+  "process": [
+    {
+      "n": "01 01",
+      "t": "ENTWICKLUNG",
+      "d": "Bestätigen Sie Forschungszweck und Entscheidungskontext.\nVerstehen Sie, ob dies für Roadmap, Inhalt oder Strategie ist.",
+      "examples": [
+        "Ziele",
+        "Stakeholder",
+        "Zeitleiste",
+        "Einschränkungen"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "UMFANG",
+      "d": "Definieren Sie Thema, Zeithorizont, Branche und Ergebnisse.\nStimmen Sie der Überwachung oder der Einbeziehung von Interviews zu.",
+      "examples": [
+        "Thema",
+        "Horizont",
+        "Anwendungsbereich",
+        "Format"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "FORSCHUNG",
+      "d": "Sammeln und überprüfen Sie relevante Signale und Materialien.\nQuelle, Timing und Kontext aufzeichnen.",
+      "examples": [
+        "Berichte",
+        "Nachrichten",
+        "Startet",
+        "Investitionen"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "ANALYSE",
+      "d": "Strukturieren Sie Themen, Muster und Zustände.\nAbleiten von Wirkung und Priorität.",
+      "examples": [
+        "Themen",
+        "Staat",
+        "Auswirkungen",
+        "Priorität"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "ENTWURF",
+      "d": "Draft Trend Brief und Theme Map.\nBauen Sie das Skelett der wichtigsten Erkenntnisse.",
+      "examples": [
+        "Zusammenfassung",
+        "Themenkarte",
+        "Zeitleiste"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "ÜBERPRÜFUNG",
+      "d": "Überprüfen Sie Schlüsselthemen und Interpretation zusammen.\nStellen Sie Lücken, Überlastung und Machbarkeit ein.",
+      "examples": [
+        "Feedback",
+        "Verfeinerung",
+        "Priorität"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "LIEFERER",
+      "d": "Liefern Sie endgültige Dokumente und Implikationen.\nVerbinden Sie sich mit der Überwachung und dem Experimentieren der nächsten Schritte.",
+      "examples": [
+        "Letzter Brief",
+        "Karte",
+        "Nächste Schritte"
+      ]
+    }
+  ],
+  "scopeLabel": "ANWENDUNGSBEREICH",
+  "scopeTitle": "Wie man über die Komplexität von Projekten denkt.",
+  "scopeLead": "Kein festes Paket. Der Umfang wird nach Thema, Branchenumfang und Tiefe festgelegt.",
+  "scopes": [
+    {
+      "t": "TREND KURZ",
+      "items": [
+        "Einzelthema oder Kategorie",
+        "Sekundäre Quellen konzentrieren sich auf",
+        "3-5 Kernthemen",
+        "Zusammenfassung Trendbrief",
+        "Implikationen und Priorität"
+      ]
+    },
+    {
+      "t": "THEM & TIMELINE MAP",
+      "items": [
+        "Mehrere Themen und Subtrends",
+        "Zeitleiste und Zustand Klassifikation",
+        "Wettbewerbs- und Startkontext",
+        "Gelegenheit und Risikozusammenfassung",
+        "Zusammenfassung fakultativ"
+      ]
+    },
+    {
+      "t": "KUNDE TREND RESEARCH",
+      "items": [
+        "Mehrere Branchen, Regionen oder Kanäle",
+        "Experteninterviews inklusive",
+        "Monitoring Guide",
+        "Benutzerdefinierte Präsentation",
+        "BUILD und MVP Verknüpfung"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELIN",
+  "timeTitle": "verlinken Timeline hängt vom Umfang ab.",
+  "timeLead": "Die Dauer variiert je nach Themenanzahl, Materialumfang und Intervieweinbeziehung.",
+  "timelines": [
+    {
+      "t": "Trend kurz",
+      "d": "Über 1–2 Wochen"
+    },
+    {
+      "t": "Thema & Timeline Karte",
+      "d": "Ungefähr 2-3 Wochen"
+    },
+    {
+      "t": "Benutzerdefinierte Trendforschung",
+      "d": "Über 3-4 Wochen · benutzerdefiniertes Angebot"
+    }
+  ],
+  "priceLabel": "PROJEKTKOSTEN",
+  "priceTitle": "Zitiert für den Umfang, den Sie benötigen.",
+  "priceName": "TREND RESEARCH",
+  "priceValue": "Ab 300.000",
+  "priceFactorsLabel": "Preisfaktoren",
+  "priceFactors": [
+    "Forschungsthema und Bereich",
+    "Anzahl der Branchen oder Kategorien",
+    "Zeithorizont und Tiefe",
+    "Wettbewerbs- und Startkontext",
+    "Interviews und Experten",
+    "Lieferbares Format",
+    "Monitoring Guide",
+    "Rush Timeline"
+  ],
+  "priceNote": "Die endgültigen Zitate werden nach Forschungsziel, Thema und Umfang bestätigt.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faqs": [
+    {
+      "q": "Welche Branchen oder Themen können Sie recherchieren?",
+      "a": "B2B, B2C, SaaS, Commerce, Content, Services – je nach Ziel und zugänglichen Materialien. Wir bestätigen fit vor dem Kickoff."
+    },
+    {
+      "q": "Wie unterscheidet sich das von MARKET RESEARCH?",
+      "a": "TREND RESEARCH konzentriert sich auf Änderungssignale, Themen und Fluss. Für Marktstruktur und Größe, Link Umfang mit MARKET RESEARCH."
+    },
+    {
+      "q": "Wie sehen Deliverables aus?",
+      "a": "Trendbrief, Thema Karte, Signalzusammenfassung — Dokument und Karte fokussiert. Zusammenfassung der Darstellung bei Bedarf verfügbar."
+    },
+    {
+      "q": "Umfasst dies die laufende Überwachung?",
+      "a": "Default ist Point-in-Time-Forschung und Synthese. Laufende Überwachung kann ein Monitoring Guide oder ein separater Anwendungsbereich sein."
+    },
+    {
+      "q": "Können Mitbewerberzüge einbezogen werden?",
+      "a": "Ja, Wettbewerber und Startsignale können im Trendkontext verbunden werden. Für einen tiefen Vergleich, Link mit COMPETITOR ANALYSIS."
+    },
+    {
+      "q": "Kann dies eine Verbindung zu BUILD oder MVP herstellen?",
+      "a": "Ja. Trend Insights können Feature, Roadmap und Content-Priorität liefern."
+    },
+    {
+      "q": "Wie wird mit Vertraulichkeit umgegangen?",
+      "a": "Materialien werden nur im vereinbarten Umfang verwendet. NDA bei Bedarf verfügbar."
+    }
+  ],
+  "finalLabel": "START A PROJEKT",
+  "finalTitle": "Sammeln Sie Trendsignale.\nBeginnen Sie mit Themen.",
+  "finalLead": "Wenn Sie die Branche, das Thema, die Roadmap oder die Inhaltsrichtung überprüfen, sagen Sie uns, was Sie recherchieren und wie Sie die Ergebnisse strukturieren möchten.",
+  "ctaFinalSecondary": "Alle Forschen ansehen",
+  "ctaFinalSecondaryHref": "../research/"
+}

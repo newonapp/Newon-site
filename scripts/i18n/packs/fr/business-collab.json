@@ -1,0 +1,995 @@
+{
+  "partnership": {
+    "crumbBusiness": "Entreprise",
+    "crumbCollaboration": "Collaboration",
+    "whoEyebrow": "POUR QUI C'EST",
+    "whatEyebrow": "CE QUE NOUS POUVONS FAIRE",
+    "processEyebrow": "COMMENT ÇA FONCTIONNE",
+    "bringsEyebrow": "CE QUE NEWON APORTE",
+    "scopeEyebrow": "PORTÉE / LIVRABLES",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "FAQ",
+    "relatedEyebrow": "SERVICES CONNEXES",
+    "relatedTitle": "Services connexes",
+    "otherEyebrow": "AUTRE",
+    "otherTitle": "Autres types de collaboration",
+    "navAriaLabel": "Collaboration",
+    "navLabel": "COLLABORATION",
+    "otherTypeLabel": "COLLAB",
+    "keywordsAria": "Mots-clés",
+    "possibleEyebrow": "COLLABORATION POSSIBLE",
+    "useCasesEyebrow": "CAS D'UTILISATION",
+    "techEyebrow": "OPTIONS TECHNIQUES",
+    "formatsEyebrow": "FORMATS DE CAMPAGNE",
+    "principlesEyebrow": "PRINCIPES",
+    "measurementEyebrow": "MESURE",
+    "metricsEyebrow": "INDICATEURS",
+    "capabilitiesEyebrow": "CAPACITÉS",
+    "deliverablesEyebrow": "LIVRABLES",
+    "pricingEyebrow": "TARIFICATION / POINT DE DÉPART",
+    "requirementsEyebrow": "EXIGENCES DU PROJET",
+    "faqCommon1Q": "Pouvons-nous nous renseigner à l'étape de l'idée?",
+    "faqCommon1A": "Oui. Nous pouvons examiner l'adéquation basée sur le but et le problème même sans plan détaillé.",
+    "faqCommon2Q": "Combien de temps prend un projet ?",
+    "faqCommon2A": "Cela dépend de la portée et des livrables. Nous partageons un calendrier après que la portée est définie.",
+    "faqCommon3Q": "Pouvons-nous nous renseigner sans budget fixe ?",
+    "faqCommon3A": "Oui. Nous clarifions d'abord la portée nécessaire, puis proposons une approche adaptée.",
+    "seoTitle": "Newon Partenariat | Collaboration commerciale",
+    "metaDescription": "Connecter les produits, la technologie et la marque de Newon aux forces des partenaires pour créer de nouvelles expériences utilisateurs et opportunités commerciales.",
+    "crumb": "Partenariat",
+    "heroLabel": "PARTENARIAT",
+    "heroTitle": "Construire des opportunités plus grandes ensemble.",
+    "heroLead": "Nous connectons les produits, la technologie et la marque de Newon avec ce que les entreprises et les services font de mieux pour créer de nouvelles expériences et opportunités commerciales.",
+    "heroKeywords": [
+      "Partenariat stratégique",
+      "Co-entreprise",
+      "Répartition",
+      "Collaboration de marque"
+    ],
+    "ctaPrimary": "Proposez un partenariat →",
+    "ctaSecondary": "Explorez Newon →",
+    "ctaSecondaryHref": "../../../about/",
+    "whoTitle": "Partenaires avec lesquels nous travaillons",
+    "whoItems": [
+      {
+        "title": "Entreprises",
+        "body": "Équipes explorant de nouveaux produits ou services numériques"
+      },
+      {
+        "title": "Startups",
+        "body": "Les premières équipes ayant besoin d’une collaboration produit, technologie, distribution ou marketing"
+      },
+      {
+        "title": "Marques",
+        "body": "Des marques capables de se connecter à Newon produits ou expériences utilisateur"
+      },
+      {
+        "title": "Quais / Services",
+        "body": "Services ouverts à l’intégration, à la croissance de l’audience ou à des projets conjoints"
+      },
+      {
+        "title": "Contenu / Médias",
+        "body": "Partenaires pour des campagnes conjointes ou une collaboration de contenu"
+      }
+    ],
+    "whatTitle": "Ce que le partenariat peut inclure",
+    "whatItems": [
+      {
+        "title": "Partenariat stratégique",
+        "body": "Collaboration à long terme entre produits, services et affaires"
+      },
+      {
+        "title": "Co-produit",
+        "body": "Un produit commun construit par deux marques ou services"
+      },
+      {
+        "title": "Partenariat de distribution",
+        "body": "Distribution et collaboration entre canaux"
+      },
+      {
+        "title": "Intégration de la plateforme",
+        "body": "Intégration des services et des fonctionnalités"
+      },
+      {
+        "title": "Collaboration de marque",
+        "body": "Projets de marque conjointe"
+      },
+      {
+        "title": "Expansion du marché",
+        "body": "Collaboration pour toucher de nouveaux publics ou marchés"
+      }
+    ],
+    "processTitle": "De l’enquête au lancement",
+    "processItems": [
+      {
+        "title": "PROPOSITION",
+        "body": "Partagez l’idée et le but de la collaboration"
+      },
+      {
+        "title": "CRITIQUE",
+        "body": "Évaluez l’adéquation et la faisabilité avec Newon"
+      },
+      {
+        "title": "ALIGN",
+        "body": "Définissez les rôles, les objectifs, le calendrier et le champ d’action"
+      },
+      {
+        "title": "BUILD",
+        "body": "Créer des produits, du contenu, des fonctionnalités ou des campagnes"
+      },
+      {
+        "title": "LANCEMENT",
+        "body": "Lancement et opération ensemble"
+      },
+      {
+        "title": "GRANDIR",
+        "body": "Examiner les résultats et décider s’il faut élargir"
+      }
+    ],
+    "possibleTitle": "Formes possibles de collaboration",
+    "possibleNote": "Des exemples de directions que nous pouvons explorer — pas des études de cas clients.",
+    "possibleItems": [
+      "Avantages de la marque dans Newon applications",
+      "Produits numériques conjoints",
+      "Contenu co-créé",
+      "Intégration des fonctionnalités de service",
+      "Promotions conjointes de prestations utilisateur",
+      "Campagnes conjointes",
+      "Nouvelles personnes de couleur pour les affaires",
+      "Tests conjoints sur le marché étranger"
+    ],
+    "bringsTitle": "Ce que Newon apporte",
+    "bringsItems": [
+      {
+        "title": "Stratégie produit",
+        "body": "Structure produit et conception de l’expérience utilisateur"
+      },
+      {
+        "title": "Conception",
+        "body": "Marque / UI / UX / contenu"
+      },
+      {
+        "title": "Développement",
+        "body": "Développement web / application / IA / SaaS"
+      },
+      {
+        "title": "Opérations",
+        "body": "Lancement du produit et opérations"
+      },
+      {
+        "title": "Expérimentation",
+        "body": "Validation rapide MVP / PoC"
+      }
+    ],
+    "scopeTitle": "Portée et livrables",
+    "scopeItems": [
+      "Définition des objectifs de collaboration",
+      "Rôles et chronologie",
+      "Travail sur le produit, le contenu ou la fonctionnalité",
+      "Lancement conjoint et plan opérationnel"
+    ],
+    "scopeNote": "Les livrables varient selon la portée du projet.",
+    "faqs": [
+      {
+        "q": "Pouvons-nous nous renseigner au stade de l’idée ?",
+        "a": "Oui. Nous pouvons examiner l’ajustement selon notre objectif et le problème même sans plan détaillé."
+      },
+      {
+        "q": "Peut-on s’informer sans plan concret ?",
+        "a": "Oui. Un service que vous souhaitez connecter et un but suffisent pour commencer."
+      },
+      {
+        "q": "Travaillez-vous avec des entreprises étrangères ?",
+        "a": "Oui. Ce qui compte le plus, c’est que la collaboration corresponde à Newon services."
+      },
+      {
+        "q": "Comment les conditions sont-elles décidées ?",
+        "a": "Ils dépendent du type et de l'étendue de la collaboration. Nous vous guidons après examen."
+      },
+      {
+        "q": "Des campagnes ponctuelles sont-elles possibles ?",
+        "a": "Oui, bien que nous privilégions les directions qui peuvent croître avec le temps."
+      }
+    ],
+    "finalTitle": "Connectez de nouvelles possibilités\navec Newon.",
+    "finalLead": "Une proposition concrète n'est pas requise.\nNous pouvons commencer par examiner ce qui pourrait fonctionner ensemble.",
+    "finalBtn": "Proposer un partenariat →",
+    "related": [
+      {
+        "label": "Entreprise",
+        "href": "../../"
+      },
+      {
+        "label": "Produits",
+        "href": "../../../products/"
+      },
+      {
+        "label": "Laboratoires",
+        "href": "../../../resources/labs/"
+      }
+    ]
+  },
+  "service": {
+    "crumbBusiness": "Entreprise",
+    "crumbCollaboration": "Collaboration",
+    "whoEyebrow": "POUR QUI C'EST",
+    "whatEyebrow": "CE QUE NOUS POUVONS FAIRE",
+    "processEyebrow": "COMMENT ÇA FONCTIONNE",
+    "bringsEyebrow": "CE QUE NEWON APPORT",
+    "scopeEyebrow": "ÉTENDUE / LIVRABLES",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "FAQ",
+    "relatedEyebrow": "SERVICES CONNEXES",
+    "relatedTitle": "Services connexes",
+    "otherEyebrow": "AUTRE",
+    "otherTitle": "Autres types de collaboration",
+    "navAriaLabel": "Collaboration",
+    "navLabel": "COLLABORATION",
+    "otherTypeLabel": "COLLAB",
+    "keywordsAria": "Mots-clés",
+    "possibleEyebrow": "COLLABORATION POSSIBLE",
+    "useCasesEyebrow": "CAS D'USAGE",
+    "techEyebrow": "OPTIONS TECHNIQUES",
+    "formatsEyebrow": "FORMATS DE CAMPAGNE",
+    "principlesEyebrow": "PRINCIPES",
+    "measurementEyebrow": "MESURE",
+    "metricsEyebrow": "INDICATEURS",
+    "capabilitiesEyebrow": "CAPACITÉS",
+    "deliverablesEyebrow": "LIVRABLES",
+    "pricingEyebrow": "TARIFICATION / POINT DE DÉPART",
+    "requirementsEyebrow": "EXIGENCES DU PROJET",
+    "faqCommon1Q": "Pouvons-nous nous renseigner à l'étape de l'idée ?",
+    "faqCommon1A": "Oui. Nous pouvons examiner la compatibilité en fonction du but et du problème même sans plan détaillé.",
+    "faqCommon2Q": "Combien de temps prend un projet ?",
+    "faqCommon2A": "Cela dépend de l'étendue et des livrables. Nous partageons un calendrier après définition de l'étendue.",
+    "faqCommon3Q": "Pouvons-nous nous renseigner sans budget fixe ?",
+    "faqCommon3A": "Oui. Nous clarifions d'abord l'étendue nécessaire, puis proposons une approche appropriée.",
+    "seoTitle": "Collaboration entre applications et services | Newon",
+    "metaDescription": "Connectez contenus, fonctionnalités, marques, données et avantages avec les applications et services numériques Newon.",
+    "crumb": "Collaboration entre applications et services",
+    "heroLabel": "COLLABORATION ENTRE APPLICATIONS ET SERVICES",
+    "heroTitle": "Les produits et services\ncréent plus de valeur ensemble.",
+    "heroLead": "Collaboration qui connecte contenus, fonctionnalités, marques, données et avantages avec les applications et services numériques Newon.",
+    "heroKeywords": [
+      "Intégration d'application",
+      "Intégration de service",
+      "Contenu",
+      "Avantage utilisateur"
+    ],
+    "ctaPrimary": "Renseignez-vous sur la collaboration de services →",
+    "ctaSecondary": "Voir les produits Newon →",
+    "ctaSecondaryHref": "../../../products/",
+    "whoTitle": "À qui cela s'adresse",
+    "whoItems": [
+      {
+        "title": "Opérateurs d'applications",
+        "body": "Équipes avec des services pouvant se connecter aux utilisateurs de l'application Newon"
+      },
+      {
+        "title": "Entreprises SaaS",
+        "body": "Produits SaaS recherchant l'intégration de fonctionnalités ou de données"
+      },
+      {
+        "title": "Plateformes de commerce",
+        "body": "Plateformes avec avantages ou contenus adaptés aux contextes in-app"
+      },
+      {
+        "title": "Finance / santé / style de vie",
+        "body": "Services adaptés aux contextes utilisateur pertinents"
+      },
+      {
+        "title": "Plateformes de contenu",
+        "body": "Partenaires fournissant du contenu utilisable à l'intérieur des applications"
+      },
+      {
+        "title": "Adhésion à une marque",
+        "body": "Marques explorant coupons, avantages ou liens d'adhésion"
+      }
+    ],
+    "whatTitle": "Ce que nous pouvons faire",
+    "whatItems": [
+      {
+        "title": "Intégration de services",
+        "body": "Intégration de fonctionnalités ou API"
+      },
+      {
+        "title": "Intégration de contenu",
+        "body": "Contenu utilisable à l'intérieur des applications"
+      },
+      {
+        "title": "Partenariat avantages",
+        "body": "Coupons, avantages et liens d'adhésion"
+      },
+      {
+        "title": "Collaboration sur les fonctionnalités",
+        "body": "Développement conjoint de fonctionnalités spécifiques"
+      },
+      {
+        "title": "Promotion croisée",
+        "body": "Promotion mutuelle à travers les services"
+      },
+      {
+        "title": "Produit conjoint",
+        "body": "Fonctionnalités ou produits conjoints construits sur des applications existantes"
+      }
+    ],
+    "useCasesTitle": "Exemples de collaboration possibles",
+    "useCasesNote": "Exemples de directions que nous pouvons explorer — pas des études de cas clients.",
+    "useCasesItems": [
+      "SubPing + avantages du service d'abonnement",
+      "PetLog + contenu de service lié aux animaux de compagnie",
+      "BabyLog + informations sur le service de parentalité",
+      "Application de productivité + contenu éducatif",
+      "Récompenses de marque dans l'application",
+      "Fonctionnalités inter-services à travers les applications Newon"
+    ],
+    "techTitle": "Options techniques",
+    "techItems": [
+      "Intégration API",
+      "Lien profond",
+      "Webhook",
+      "SDK",
+      "OAuth",
+      "Contenu intégré",
+      "Échange de données",
+      "Suivi des parrainages"
+    ],
+    "techNote": "Les options prises en charge varient selon le projet.",
+    "processTitle": "De la révision à l'intégration",
+    "processItems": [
+      {
+        "title": "REVUE DU SERVICE",
+        "body": "Réviser chaque structure de produit"
+      },
+      {
+        "title": "CAS D'UTILISATION",
+        "body": "Définir la valeur pour les utilisateurs"
+      },
+      {
+        "title": "VÉRIFICATION TECHNIQUE",
+        "body": "Confirmer la faisabilité technique"
+      },
+      {
+        "title": "PROTOTYPE",
+        "body": "Tester une petite fonctionnalité en premier"
+      },
+      {
+        "title": "INTÉGRATION",
+        "body": "Mettre en œuvre l'intégration"
+      },
+      {
+        "title": "MESURER",
+        "body": "Examiner les données d'utilisation et de conversion"
+      }
+    ],
+    "metricsTitle": "Ce qui peut être mesuré",
+    "metricsItems": [
+      "Utilisation des fonctionnalités",
+      "Taux de clic",
+      "Activation",
+      "Conversion",
+      "Rétention",
+      "Parrainage"
+    ],
+    "metricsNote": "Nous ne promettons pas de chiffres à l'avance. Les éléments mesurables sont définis avec la portée.",
+    "bringsTitle": "Ce que Newon apporte",
+    "bringsItems": [
+      {
+        "title": "Contexte du produit",
+        "body": "Comprendre la structure de l'application Newon et les flux utilisateurs"
+      },
+      {
+        "title": "Conception de l'intégration",
+        "body": "Concevoir des expériences d'intégration naturelles"
+      },
+      {
+        "title": "Développement",
+        "body": "Construire les fonctionnalités d'intégration requises"
+      },
+      {
+        "title": "Contenu",
+        "body": "Contenu utilisable à l'intérieur des applications"
+      },
+      {
+        "title": "Support au lancement",
+        "body": "Support au lancement et en début d'exploitation"
+      }
+    ],
+    "scopeTitle": "Portée et livrables",
+    "scopeItems": [
+      "Portée de l'intégration",
+      "Conception des flux utilisateurs",
+      "Travail sur les fonctionnalités ou le contenu",
+      "Tests d'intégration et lancement"
+    ],
+    "scopeNote": "La portée dépend de la nécessité d'une intégration API ou d'une collaboration sur le contenu.",
+    "faqs": [
+      {
+        "q": "Avec quelles applications Newon pouvons-nous collaborer ?",
+        "a": "Nous discutons sur la base des applications que Newon propose actuellement dans les domaines de la parentalité, des animaux domestiques, de la productivité et du mode de vie."
+      },
+      {
+        "q": "Une intégration technique est-elle nécessaire ?",
+        "a": "Non. La collaboration sur le contenu et les projets communs peut se faire sans intégration."
+      },
+      {
+        "q": "Newon s'occupe-t-il du développement ?",
+        "a": "Cela dépend du type de collaboration. Les rôles sont répartis lorsque l'intégration est nécessaire."
+      },
+      {
+        "q": "Les services plus petits peuvent-ils se renseigner ?",
+        "a": "Oui. L'essentiel est de savoir si la connexion semble naturelle pour les utilisateurs."
+      },
+      {
+        "q": "Combien de temps cela prend-il ?",
+        "a": "Cela dépend de la portée de l'intégration et des livrables."
+      }
+    ],
+    "finalTitle": "Avez-vous une idée pour\nconnecter des services ?",
+    "finalLead": "Partagez le service que vous souhaitez connecter et votre objectif. Nous ferons un suivi après examen.",
+    "finalBtn": "Se renseigner sur la collaboration entre applications et services →",
+    "related": [
+      {
+        "label": "Produits",
+        "href": "../../../products/"
+      },
+      {
+        "label": "IA",
+        "href": "../../../ai/"
+      },
+      {
+        "label": "SaaS",
+        "href": "../../../saas/"
+      }
+    ]
+  },
+  "promotion": {
+    "crumbBusiness": "Entreprise",
+    "crumbCollaboration": "Collaboration",
+    "whoEyebrow": "POUR QUI C'EST",
+    "whatEyebrow": "CE QUE NOUS POUVONS FAIRE",
+    "processEyebrow": "COMMENT ÇA FONCTIONNE",
+    "bringsEyebrow": "CE QUE NEWON APPORTE",
+    "scopeEyebrow": "PORTÉE / LIVRABLES",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "FAQ",
+    "relatedEyebrow": "SERVICES ASSOCIÉS",
+    "relatedTitle": "Services associés",
+    "otherEyebrow": "AUTRE",
+    "otherTitle": "Autres types de collaboration",
+    "navAriaLabel": "Collaboration",
+    "navLabel": "COLLABORATION",
+    "otherTypeLabel": "COLLAB",
+    "keywordsAria": "Mots-clés",
+    "possibleEyebrow": "COLLABORATION POSSIBLE",
+    "useCasesEyebrow": "CAS D'UTILISATION",
+    "techEyebrow": "OPTIONS TECHNIQUES",
+    "formatsEyebrow": "FORMATS DE CAMPAGNE",
+    "principlesEyebrow": "PRINCIPES",
+    "measurementEyebrow": "MESURE",
+    "metricsEyebrow": "INDICATEURS",
+    "capabilitiesEyebrow": "CAPACITÉS",
+    "deliverablesEyebrow": "LIVRABLES",
+    "pricingEyebrow": "PRIX / POINT DE DÉPART",
+    "requirementsEyebrow": "EXIGENCES DU PROJET",
+    "faqCommon1Q": "Pouvons-nous poser des questions au stade de l'idée ?",
+    "faqCommon1A": "Oui. Nous pouvons évaluer la pertinence en fonction de l'objectif et du problème même sans plan détaillé.",
+    "faqCommon2Q": "Combien de temps dure un projet ?",
+    "faqCommon2A": "Cela dépend de la portée et des livrables. Nous partageons un calendrier après la définition de la portée.",
+    "faqCommon3Q": "Pouvons-nous poser des questions sans budget fixe ?",
+    "faqCommon3A": "Oui. Nous clarifions d'abord la portée nécessaire, puis proposons une approche appropriée.",
+    "seoTitle": "Publicité & Promotion | Newon",
+    "metaDescription": "Promotions de marque conçues pour s'intégrer naturellement dans les produits et expériences de contenu Newon — pas uniquement de l'exposition par bannières.",
+    "crumb": "Publicité & promotion",
+    "heroLabel": "PUBLICITÉ & PROMOTION",
+    "heroTitle": "Promotions qui ne\nperturbent pas l'expérience produit.",
+    "heroLead": "Pas uniquement de l'exposition par bannières — nous concevons des promotions de marque qui se connectent naturellement aux produits et expériences de contenu Newon.",
+    "heroKeywords": [
+      "Campagne",
+      "Intégration de marque",
+      "Contenu",
+      "Promotion"
+    ],
+    "ctaPrimary": "Se renseigner sur la promotion →",
+    "ctaSecondary": "Voir les médias →",
+    "ctaSecondaryHref": "../../../media/",
+    "whoTitle": "À qui cela s'adresse",
+    "whoItems": [
+      {
+        "title": "Marques grand public",
+        "body": "Marques de mode de vie et grand public pertinentes pour les utilisateurs de Newon"
+      },
+      {
+        "title": "Services numériques",
+        "body": "Services pouvant être introduits naturellement dans les flux d'application ou web"
+      },
+      {
+        "title": "Marques de mode de vie",
+        "body": "Marques dans la parentalité, les animaux domestiques, la productivité et les sujets connexes"
+      },
+      {
+        "title": "Éducation / productivité",
+        "body": "Marques offrant des informations ou des avantages utiles"
+      },
+      {
+        "title": "Commerce",
+        "body": "Marques commerciales avec des avantages ou des informations pertinentes pour les utilisateurs"
+      },
+      {
+        "title": "Lancements de nouveaux produits",
+        "body": "Marques lançant des produits adaptés aux canaux Newon"
+      }
+    ],
+    "whatTitle": "Ce que nous pouvons faire",
+    "whatItems": [
+      {
+        "title": "Placement de produit",
+        "body": "Exposition naturelle de la marque à l'intérieur des services Newon"
+      },
+      {
+        "title": "Contenu sponsorisé",
+        "body": "Contenu créé avec la marque"
+      },
+      {
+        "title": "Campagne",
+        "body": "Campagnes saisonnières ou basées sur un thème"
+      },
+      {
+        "title": "Avantage utilisateur",
+        "body": "Coupons, avantages et événements pour les utilisateurs"
+      },
+      {
+        "title": "Promotion de lancement",
+        "body": "Collaboration pour les lancements de nouveaux produits ou services"
+      },
+      {
+        "title": "Promotion croisée",
+        "body": "Connexions à travers les canaux et produits Newon"
+      }
+    ],
+    "formatsTitle": "Formats de campagne",
+    "formatsItems": [
+      {
+        "title": "Campagne d'application",
+        "body": "Campagnes basées sur des thèmes à l'intérieur des applications"
+      },
+      {
+        "title": "Campagne web",
+        "body": "Campagnes axées sur le web et les pages d'atterrissage"
+      },
+      {
+        "title": "Card News",
+        "body": "Contenu de cartes informatives"
+      },
+      {
+        "title": "Vidéo courte",
+        "body": "Contenu vidéo court"
+      },
+      {
+        "title": "Histoire du produit",
+        "body": "Contenu sur le produit et l'histoire de la marque"
+      },
+      {
+        "title": "Page de destination",
+        "body": "Pages de destination de campagne"
+      },
+      {
+        "title": "Événement utilisateur",
+        "body": "Événements participatifs des utilisateurs"
+      },
+      {
+        "title": "Avantage de la marque",
+        "body": "Offres d'avantages de la marque"
+      },
+      {
+        "title": "Ressource sponsorisée",
+        "body": "Guides et ressources sponsorisés"
+      }
+    ],
+    "principlesTitle": "L'expérience utilisateur passe avant les publicités.",
+    "principlesItems": [
+      {
+        "title": "Pertinent",
+        "body": "Promotions réellement pertinentes pour le produit et pour les utilisateurs"
+      },
+      {
+        "title": "Utile",
+        "body": "Informations ou avantages pour les utilisateurs"
+      },
+      {
+        "title": "Clair",
+        "body": "Étiquetage clair des publicités / parrainages"
+      },
+      {
+        "title": "Native",
+        "body": "Formats qui n'interrompent pas l'expérience produit"
+      },
+      {
+        "title": "Mesurable",
+        "body": "Structures permettant l'évaluation des performances"
+      }
+    ],
+    "processTitle": "Processus de campagne",
+    "processItems": [
+      {
+        "title": "BRÈVE",
+        "body": "Confirmer les objectifs de la marque et de la campagne"
+      },
+      {
+        "title": "AUDIENCE",
+        "body": "Sélectionner le bon produit Newon, contenu et contexte utilisateur"
+      },
+      {
+        "title": "CONCEPT",
+        "body": "Concevoir l'idée de la campagne"
+      },
+      {
+        "title": "CRÉER",
+        "body": "Créer du contenu, des pages de destination et des ressources"
+      },
+      {
+        "title": "LANCER",
+        "body": "Lancer la campagne"
+      },
+      {
+        "title": "RAPPORT",
+        "body": "Analyser les performances avec les données disponibles"
+      }
+    ],
+    "measurementTitle": "Signaux mesurables",
+    "measurementItems": [
+      "Impression",
+      "Clic",
+      "Visite de la page de destination",
+      "Visite du produit",
+      "Conversion",
+      "Engagement"
+    ],
+    "measurementNote": "Nous n'utilisons que les données pouvant être collectées dans l'environnement d'analyse réel.",
+    "importantNote": "Il s'agit d'un service de collaboration précoce pour concevoir ensemble des campagnes de marque — pas d'une plateforme publicitaire à grande échelle.",
+    "bringsTitle": "Ce que Newon apporte",
+    "bringsItems": [
+      {
+        "title": "Contexte de l'audience",
+        "body": "Sélection du canal en fonction du service et du contexte utilisateur"
+      },
+      {
+        "title": "Contenu",
+        "body": "Planification et production de contenu de campagne"
+      },
+      {
+        "title": "Conception",
+        "body": "Conception de pages de destination, d'actifs et d'expérience dans l'application"
+      },
+      {
+        "title": "Adéquation produit",
+        "body": "Conception d'exposition qui protège l'expérience produit"
+      },
+      {
+        "title": "Rapport",
+        "body": "Revue de performance dans le cadre disponible"
+      }
+    ],
+    "scopeTitle": "Portée et livrables",
+    "scopeItems": [
+      "Définition de l'objectif de la campagne",
+      "Sélection du canal et du format",
+      "Production de contenu, pages de destination et actifs",
+      "Opération et rapport de campagne"
+    ],
+    "scopeNote": "La portée varie selon la marque, le canal et le format.",
+    "faqs": [
+      {
+        "q": "Les tarifs publicitaires sont-ils fixes ?",
+        "a": "Nous ne publions pas de tarifs fixes. Les conditions dépendent de la marque, du canal et du format."
+      },
+      {
+        "q": "Toute marque peut-elle participer ?",
+        "a": "Non. Nous priorisons les marques pertinentes pour les services et l'expérience utilisateur de Newon."
+      },
+      {
+        "q": "Acceptez-vous des publicités interruptives ?",
+        "a": "Non. Nous évitons l'exposition forcée qui perturbe le flux du produit."
+      },
+      {
+        "q": "La collaboration de contenu est-elle la seule option ?",
+        "a": "Non. Nous pouvons également explorer les campagnes conjointes et les introductions dans l'application."
+      },
+      {
+        "q": "Pouvons-nous nous renseigner sans budget fixe ?",
+        "a": "Oui. Nous clarifions d'abord la portée, puis proposons une approche adaptée."
+      }
+    ],
+    "finalTitle": "Créer des expériences de marque\navec Newon.",
+    "finalLead": "Partagez votre marque et vos objectifs. Nous examinerons un format adapté au service.",
+    "finalBtn": "Renseignez-vous sur la publicité et la promotion →",
+    "related": [
+      {
+        "label": "Média",
+        "href": "../../../media/"
+      },
+      {
+        "label": "Studio / Campagne",
+        "href": "../../../studio/content/campaign/"
+      },
+      {
+        "label": "Produits",
+        "href": "../../../products/"
+      }
+    ]
+  },
+  "development": {
+    "crumbBusiness": "Entreprise",
+    "crumbCollaboration": "Collaboration",
+    "whoEyebrow": "POUR QUI C'EST",
+    "whatEyebrow": "CE QUE NOUS POUVONS FAIRE",
+    "processEyebrow": "COMMENT ÇA FONCTIONNE",
+    "bringsEyebrow": "CE QUE NEWON APPORTE",
+    "scopeEyebrow": "PORTÉE / LIVRABLES",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "FAQ",
+    "relatedEyebrow": "SERVICES CONNEXES",
+    "relatedTitle": "Services connexes",
+    "otherEyebrow": "AUTRES",
+    "otherTitle": "Autres types de collaboration",
+    "navAriaLabel": "Collaboration",
+    "navLabel": "COLLABORATION",
+    "otherTypeLabel": "COLLAB",
+    "keywordsAria": "Mots-clés",
+    "possibleEyebrow": "POSSIBLE COLLABORATION",
+    "useCasesEyebrow": "CAS D’USAGE",
+    "techEyebrow": "OPTIONS TECHNIQUES",
+    "formatsEyebrow": "FORMATS DE CAMPAGNE",
+    "principlesEyebrow": "PRINCIPES",
+    "measurementEyebrow": "MESURE",
+    "metricsEyebrow": "MÉTRIQUES",
+    "capabilitiesEyebrow": "CAPACITÉS",
+    "deliverablesEyebrow": "LIVRABLES",
+    "pricingEyebrow": "PRIX / POINT DE DÉPART",
+    "requirementsEyebrow": "EXIGENCES DU PROJET",
+    "faqCommon1Q": "Pouvons-nous nous renseigner au stade de l’idée ?",
+    "faqCommon1A": "Oui. Nous pouvons examiner l’ajustement selon notre objectif et le problème même sans plan détaillé.",
+    "faqCommon2Q": "Combien de temps dure un projet ?",
+    "faqCommon2A": "Cela dépend de la portée et des livrables. Nous partageons un calendrier une fois le périmètre défini.",
+    "faqCommon3Q": "Peut-on se renseigner sans budget fixe ?",
+    "faqCommon3A": "Oui. Nous clarifions d’abord le périmètre nécessaire, puis proposons une approche appropriée.",
+    "seoTitle": "Collaboration au développement | Newon",
+    "metaDescription": "De l’idée à la planification, en passant par l’UX/UI, le développement et le lancement — nous développons ensemble des produits numériques.",
+    "crumb": "Collaboration pour le développement",
+    "heroLabel": "COLLABORATION AU DÉVELOPPEMENT",
+    "heroTitle": "De l’idée à\nun produit fonctionnel.",
+    "heroLead": "De l’idée à la planification, en passant par l’UX/UI, le développement et le lancement — nous travaillons ensemble à travers l’intégralité du processus produit numérique.",
+    "heroKeywords": [
+      "MVP",
+      "Web",
+      "Application",
+      "IA",
+      "Produit"
+    ],
+    "ctaPrimary": "Renseignez-vous sur la collaboration en développement →",
+    "ctaSecondary": "Voir les services aux entreprises →",
+    "ctaSecondaryHref": "../../",
+    "whoTitle": "À qui cela s'adresse",
+    "whoItems": [
+      {
+        "title": "Fondateurs",
+        "body": "Vous avez une idée mais le développement est difficile"
+      },
+      {
+        "title": "Startups",
+        "body": "Vous avez besoin d'un MVP"
+      },
+      {
+        "title": "Entreprises",
+        "body": "Vous souhaitez créer un nouveau service numérique"
+      },
+      {
+        "title": "Équipes produit",
+        "body": "Vous devez améliorer un service existant"
+      },
+      {
+        "title": "Organisations",
+        "body": "Les ressources internes de développement sont limitées"
+      }
+    ],
+    "whatTitle": "Ce que nous pouvons construire",
+    "whatItems": [
+      {
+        "title": "MVP",
+        "body": "Produit minimum pour valider une hypothèse centrale"
+      },
+      {
+        "title": "Service Web",
+        "body": "Sites de marque, services web et plateformes"
+      },
+      {
+        "title": "Application mobile",
+        "body": "Applications iOS / Android"
+      },
+      {
+        "title": "Produit IA",
+        "body": "Fonctionnalités IA et services basés sur l'IA"
+      },
+      {
+        "title": "SaaS",
+        "body": "Outils de travail et services d'abonnement"
+      },
+      {
+        "title": "Outil interne",
+        "body": "Outils métier internes"
+      },
+      {
+        "title": "Automatisation",
+        "body": "Automatisation des tâches répétitives"
+      },
+      {
+        "title": "Prototype / PoC",
+        "body": "Premiers prototypes pour tester la faisabilité"
+      }
+    ],
+    "capabilitiesTitle": "Capacités",
+    "capabilitiesItems": [
+      {
+        "title": "Stratégie produit",
+        "body": "Définition du problème / structure des fonctionnalités / périmètre du MVP"
+      },
+      {
+        "title": "UX / UI",
+        "body": "Flux utilisateurs / architecture de l'information / interface"
+      },
+      {
+        "title": "Développement",
+        "body": "Web / app / backend / API"
+      },
+      {
+        "title": "Intégration IA",
+        "body": "Fonctionnalités IA selon les besoins"
+      },
+      {
+        "title": "QA",
+        "body": "Fonctionnalité / responsive / vérifications des états limites"
+      },
+      {
+        "title": "Lancement",
+        "body": "Déploiement et préparation au lancement"
+      }
+    ],
+    "processTitle": "Flux de projet",
+    "processItems": [
+      {
+        "title": "DÉCOUVERTE",
+        "body": "Comprendre l'idée et le problème"
+      },
+      {
+        "title": "PORTÉE",
+        "body": "Définir le MVP et la portée du projet"
+      },
+      {
+        "title": "CONCEPTION",
+        "body": "UX / UI / prototype"
+      },
+      {
+        "title": "BUILD",
+        "body": "Développement"
+      },
+      {
+        "title": "QA",
+        "body": "Fonctionnalités / périphériques / états"
+      },
+      {
+        "title": "LANCEMENT",
+        "body": "Déploiement et lancement"
+      },
+      {
+        "title": "ITÉRER",
+        "body": "Améliorez-vous en fonction de la réaction réelle de l’utilisateur"
+      }
+    ],
+    "deliverablesTitle": "Livrables possibles",
+    "deliverablesItems": [
+      "Portée du produit",
+      "Carte du site",
+      "Flux utilisateur",
+      "Wireframe",
+      "Conception UI",
+      "Web réactif",
+      "Application mobile",
+      "Source Code",
+      "Intégration API",
+      "Déploiement",
+      "Documentation de base"
+    ],
+    "deliverablesNote": "Tous les projets n’incluent pas tous les éléments. Le périmètre varie selon les projets.",
+    "pricingTitle": "Point de départ",
+    "pricingBody": "Les devis varient selon la portée du projet.",
+    "pricingCta": "Discutez de la portée du projet →",
+    "requirementsTitle": "Informations utiles avant toute enquête",
+    "requirementsItems": [
+      "Produit que vous souhaitez construire",
+      "Problème que vous voulez résoudre",
+      "Utilisateurs principaux",
+      "Fonctionnalités de base nécessaires",
+      "Services de référence",
+      "Calendrier de lancement souhaité",
+      "Fourchette budgétaire attendue",
+      "Matériaux de conception / développement existants"
+    ],
+    "bringsTitle": "Ce que Newon apporte",
+    "bringsItems": [
+      {
+        "title": "Stratégie produit",
+        "body": "Définition du problème et portée du MVP"
+      },
+      {
+        "title": "UX / UI",
+        "body": "Flux utilisateurs et interface"
+      },
+      {
+        "title": "Développement",
+        "body": "Développement web / applications / backend"
+      },
+      {
+        "title": "Intégration de l’IA",
+        "body": "Fonctionnalités d’IA lorsque cela est nécessaire"
+      },
+      {
+        "title": "Lancement",
+        "body": "Déploiement et préparation au lancement"
+      }
+    ],
+    "scopeTitle": "Portée de la collaboration",
+    "scopeItems": [
+      "Champ de planification, conception et développement",
+      "MVP ou build complet du produit",
+      "Lancement et première itération"
+    ],
+    "scopeNote": "Le périmètre est défini ensemble en fonction des objectifs et des délais du projet.",
+    "faqs": [
+      {
+        "q": "Pouvons-nous avoir un devis immédiatement ?",
+        "a": "Cela dépend de la portée et de l’objectif. Nous vous guidons après avoir examiné votre demande."
+      },
+      {
+        "q": "Peut-on avancer sans planification ?",
+        "a": "Oui. Une idée et le problème que vous voulez résoudre suffisent pour commencer."
+      },
+      {
+        "q": "L’entretien est-il inclus ?",
+        "a": "Cela dépend du projet. Les opérations post-lancement peuvent être discutées séparément."
+      },
+      {
+        "q": "Combien de temps cela prend-il ?",
+        "a": "Cela dépend si c’est un MVP, une amélioration ou une nouvelle application."
+      },
+      {
+        "q": "Quelle technologie utilisez-vous ?",
+        "a": "Nous choisissons les approches mobiles et web en fonction de l’objectif du produit et des besoins de lancement."
+      }
+    ],
+    "finalTitle": "Commencez à transformer votre idée\nen produit.",
+    "finalLead": "Un cahier des charges fini n’est pas nécessaire.\nNous pouvons partir ensemble du problème et de l’idée.",
+    "finalBtn": "Renseignez-vous sur un projet de développement →",
+    "related": [
+      {
+        "label": "MVP",
+        "href": "../../mvp/"
+      },
+      {
+        "label": "Web",
+        "href": "../../web/"
+      },
+      {
+        "label": "Application",
+        "href": "../../app/"
+      },
+      {
+        "label": "IA",
+        "href": "../../../ai/"
+      },
+      {
+        "label": "Design produit",
+        "href": "../../../studio/digital/product-design/"
+      }
+    ]
+  }
+}

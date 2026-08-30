@@ -13,10 +13,6 @@ const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
 const CSS_VER = "20260830finalrail1";
 const JS_VER = "20260830finalrail1";
 
-function copyLang(lang) {
-  return lang === "ko" ? "ko" : "en";
-}
-
 function patchHome(html, body) {
   // Prefer HQ class; normalize legacy opener to HQ without touching hero.
   let next = html.replace(
@@ -43,7 +39,7 @@ for (const lang of LANGS) {
     console.warn("skip missing", lang);
     continue;
   }
-  const body = buildHomeStudioBody(copyLang(lang));
+  const body = buildHomeStudioBody(lang);
   const html = patchHome(fs.readFileSync(file, "utf8"), body);
   fs.writeFileSync(file, html);
   console.log("render-home-studio:", lang);

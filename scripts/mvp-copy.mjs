@@ -2,6 +2,8 @@
  * MVP DEVELOPMENT service detail — KO/EN copy.
  * Path: /{lang}/business/mvp/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const MVP_COPY = {
   ko: {
     seoTitle: "MVP DEVELOPMENT | Newon Business",
@@ -796,5 +798,5 @@ export const MVP_COPY = {
 };
 
 export function getMvpCopy(lang) {
-  return lang === "ko" ? MVP_COPY.ko : MVP_COPY.en;
+  return resolveKoEnPack(MVP_COPY, lang, "mvp-copy");
 }

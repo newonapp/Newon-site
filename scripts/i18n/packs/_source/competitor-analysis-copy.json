@@ -1,0 +1,478 @@
+{
+  "seoTitle": "COMPETITOR ANALYSIS | Newon Business",
+  "metaDescription": "Compare key competitors and substitutes on features, pricing, messaging, and positioning — structured for differentiation. Newon COMPETITOR ANALYSIS.",
+  "crumbBusiness": "BUSINESS",
+  "crumbServices": "SERVICES",
+  "crumbResearch": "RESEARCH",
+  "crumbHere": "COMPETITOR ANALYSIS",
+  "eyebrow": "COMPETITOR ANALYSIS",
+  "subEyebrow": "RESEARCH",
+  "headline": "Don't list competitors —\nmake them comparable.",
+  "lead": "We compare key competitors and substitutes across positioning, features, pricing, messaging, and target. Product pages, reviews, pricing, and IR material are organized into a Competitor Matrix and summary your team can use in differentiation and strategy conversations.",
+  "ctaPrimary": "Competitor analysis inquiry →",
+  "ctaSecondary": "See the comparison flow ↓",
+  "meta": [
+    {
+      "k": "SERVICE",
+      "v": "Competitor Analysis"
+    },
+    {
+      "k": "BEST FOR",
+      "v": "Positioning and differentiation review"
+    },
+    {
+      "k": "TIMELINE",
+      "v": "Usually 1–2 weeks"
+    },
+    {
+      "k": "PRICE",
+      "v": "From ₩200,000"
+    }
+  ],
+  "overviewLabel": "OVERVIEW",
+  "overviewTitle": "You know the names.\nNot the comparison criteria.",
+  "overviewBody": [
+    "Competitor names come up often in product, marketing, and investment conversations. But comparing features, pricing, messaging, and target on the same criteria is harder.",
+    "Each company's site, product pages, pricing, reviews, app stores, and IR offer different angles — but rarely in a structure teams can use immediately.",
+    "COMPETITOR ANALYSIS starts by defining who to compare and on what axes. Then we collect and organize material into a Competitor Matrix, positioning summary, and gap analysis in one deliverable."
+  ],
+  "problemsLabel": "PROBLEMS",
+  "problemsTitle": "Helpful when you face these situations.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "POSITIONING",
+      "d": "Your position relative to competitors is unclear.\nYou need a shared view of where you stand."
+    },
+    {
+      "n": "02",
+      "t": "FEATURE PARITY",
+      "d": "You know feature lists but not differences or priority.\nYou need a structured feature comparison."
+    },
+    {
+      "n": "03",
+      "t": "MESSAGING GAP",
+      "d": "Competitor messaging is clear but yours lacks differentiation.\nYou need target, value, and tone compared."
+    },
+    {
+      "n": "04",
+      "t": "PRICING CONTEXT",
+      "d": "You need pricing bands, packaging, and models compared.\nYou need evidence for pricing strategy."
+    },
+    {
+      "n": "05",
+      "t": "GO-TO-MARKET",
+      "d": "You need a fast read on competition before launch or expansion.\nYou need a summary for investor or partner meetings."
+    },
+    {
+      "n": "06",
+      "t": "ROADMAP INPUT",
+      "d": "Before MVP or roadmap scope,\nyou need evidence for what to build first vs competitors."
+    }
+  ],
+  "baLabel": "BEFORE / AFTER",
+  "baTitle": "Competitor lists vs\nstructured comparison",
+  "beforeLabel": "BEFORE",
+  "afterLabel": "AFTER",
+  "before": [
+    "Everyone collects competitor info separately",
+    "Comparison criteria shift by conversation",
+    "Differentiation exists only in talking points",
+    "Pricing, messaging, and position aren't documented"
+  ],
+  "after": [
+    "Competitor set and axes agreed first",
+    "One Competitor Matrix for the team",
+    "Gaps, strengths, and risks structured",
+    "Connected to strategy and roadmap decisions"
+  ],
+  "capsLabel": "CAPABILITIES",
+  "capsTitle": "We structure the comparison\nyour positioning decision needs.",
+  "caps": [
+    {
+      "t": "COMPETITOR SET",
+      "d": "Define who to compare.\nSeparate direct, indirect, and substitute players."
+    },
+    {
+      "t": "COMPARISON AXES",
+      "d": "Define axes — features, pricing, messaging, target.\nMatch criteria to project goal."
+    },
+    {
+      "t": "DESK RESEARCH",
+      "d": "Collect public material — product pages, pricing, reviews, IR.\nCheck source and date."
+    },
+    {
+      "t": "FEATURE COMPARE",
+      "d": "Compare core features and scope.\nStructure strengths, gaps, and overreach."
+    },
+    {
+      "t": "POSITIONING MAP",
+      "d": "Organize positioning in a map or matrix.\nSee who is strong where at a glance."
+    },
+    {
+      "t": "PRICING & PACKAGING",
+      "d": "Compare bands, packaging, and revenue models.\nProvide context for your pricing strategy."
+    },
+    {
+      "t": "MESSAGING REVIEW",
+      "d": "Compare core message, target, and tone.\nDocument differentiation room and gaps."
+    },
+    {
+      "t": "IMPLICATIONS",
+      "d": "Connect comparison to product, marketing, and strategy.\nSuggest next validation and action."
+    }
+  ],
+  "sourcesLabel": "RESEARCH SOURCES",
+  "sourcesTitle": "We combine the sources comparison needs.",
+  "sourcesNote": "Actual sources vary by competitor count, access, and product type.",
+  "sources": [
+    "Competitor websites & product pages",
+    "Pricing & packaging pages",
+    "App store / marketplace",
+    "Product & service reviews",
+    "IR & press releases",
+    "Demos & onboarding content",
+    "Social & community",
+    "Hiring & org signals",
+    "Patents & feature disclosures",
+    "Industry reports",
+    "Internal benchmarks",
+    "User feedback"
+  ],
+  "useLabel": "USE CASES",
+  "useTitle": "Questions we can help answer.",
+  "useBadge": "Example analysis topics",
+  "useCases": [
+    {
+      "t": "POSITIONING REVIEW",
+      "d": "See where you stand vs competitors.\nStructure differentiation and gaps."
+    },
+    {
+      "t": "FEATURE BENCHMARK",
+      "d": "Compare core features and scope.\nUse as evidence for MVP and roadmap priority."
+    },
+    {
+      "t": "PRICING BENCHMARK",
+      "d": "Compare bands, packaging, and models.\nBuild evidence for pricing and packaging."
+    },
+    {
+      "t": "MESSAGING COMPARE",
+      "d": "Compare message, target, and tone.\nInform brand and content direction."
+    },
+    {
+      "t": "LAUNCH PREP",
+      "d": "Fast read on competition before launch.\nSummary for go-to-market conversations."
+    },
+    {
+      "t": "INVESTOR BRIEF",
+      "d": "Competitive summary for investors or partners.\nInclude key differences and risks."
+    },
+    {
+      "t": "SUBSTITUTE SCAN",
+      "d": "Include substitutes and indirect competitors.\nCompare the full choice set."
+    },
+    {
+      "t": "GAP ANALYSIS",
+      "d": "Document under- and over-served areas vs competition.\nPrioritize opportunities."
+    }
+  ],
+  "flowLabel": "EXAMPLE WORKFLOW",
+  "flowTitle": "From competitor set to matrix",
+  "flow": [
+    {
+      "n": "01",
+      "t": "SELECT",
+      "d": "Define competitor set and comparison goal.\nClarify who, what, and why to compare.",
+      "examples": [
+        "Competitor set",
+        "Goal",
+        "Axes",
+        "Deliverables"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "COLLECT",
+      "d": "Gather product, pricing, messaging, and review material.\nReview public and internal sources.",
+      "examples": [
+        "Product pages",
+        "Pricing",
+        "Reviews",
+        "IR & news"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "COMPARE",
+      "d": "Compare item by item on defined axes.\nAlign everything on the same criteria.",
+      "examples": [
+        "Features",
+        "Pricing",
+        "Messaging",
+        "Target"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "SYNTHESIZE",
+      "d": "Extract differences, gaps, and strengths.\nConnect to positioning and differentiation.",
+      "examples": [
+        "Position",
+        "Differentiation",
+        "Gaps",
+        "Risks"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DELIVER",
+      "d": "Deliver matrix, summary, and implications.\nFormat for immediate team use.",
+      "examples": [
+        "Competitor Matrix",
+        "Summary",
+        "Next Steps"
+      ]
+    }
+  ],
+  "reportLabel": "OUTPUT",
+  "reportTitle": "Deliverables structured for comparison and decisions.",
+  "reportLead": "Composition varies by project goal. Below are common sections.",
+  "reportMockStatus": "COMPARE · DRAFT",
+  "reportMockK": "COMPETITIVE SUMMARY",
+  "reportMockT": "Competitor Matrix · Positioning",
+  "reportItems": [
+    "Executive Summary",
+    "Competitor Set Overview",
+    "Comparison Matrix",
+    "Feature Comparison",
+    "Pricing & Packaging",
+    "Messaging Comparison",
+    "Positioning Map",
+    "Gap Analysis",
+    "Implications",
+    "Recommended Next Steps"
+  ],
+  "dashTitle": "Compare competitive position in one view.",
+  "dashLead": "Competitor Matrix and positioning map together — so feature, pricing, and messaging differences are visible at a glance.",
+  "dashNote": "Matrix and map composition varies by scope and goal.",
+  "dashMetrics": [
+    "Competitors",
+    "Axes",
+    "Gaps",
+    "Priority"
+  ],
+  "dashFilters": [
+    "All",
+    "Features",
+    "Pricing",
+    "Messaging"
+  ],
+  "aiLabel": "SYNTHESIS",
+  "aiTitle": "From large competitor sets\nto what differs.",
+  "aiLead": "When there is a lot of product pages, reviews, news, and IR material, we summarize, classify, and compare from the angles you need.",
+  "aiExamples": [
+    "Feature and scope difference summary",
+    "Pricing and packaging compare",
+    "Message and positioning compare",
+    "Review and feedback pattern summary",
+    "Gap and differentiation extraction",
+    "Matrix and summary outline draft"
+  ],
+  "aiNote": "Interpretation and final decisions are reviewed together with you.",
+  "delLabel": "DELIVERABLES",
+  "delTitle": "What you receive after the project",
+  "delLead": "Depending on scope, we deliver the items you need from the list below.",
+  "deliverables": [
+    "Competitor Matrix",
+    "Positioning Summary",
+    "Feature Comparison",
+    "Pricing Comparison",
+    "Messaging Summary",
+    "Gap Analysis",
+    "Implications & Recommendations",
+    "Source Appendix",
+    "Presentation Summary"
+  ],
+  "processLabel": "PROCESS",
+  "processTitle": "From competitor set definition to delivery.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DISCOVERY",
+      "d": "Confirm comparison goal and decision context.\nUnderstand what you are deciding.",
+      "examples": [
+        "Goal",
+        "Stakeholders",
+        "Timeline",
+        "Constraints"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "SCOPE",
+      "d": "Define competitor set, axes, and deliverable format.\nAgree on inclusions and exclusions.",
+      "examples": [
+        "Competitor count",
+        "Axes",
+        "Format",
+        "Priority"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "RESEARCH",
+      "d": "Collect and review competitor and substitute material.\nCheck source and date.",
+      "examples": [
+        "Product",
+        "Pricing",
+        "Reviews",
+        "IR"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "COMPARE",
+      "d": "Compare item by item on defined axes.\nStructure matrix and map.",
+      "examples": [
+        "Features",
+        "Pricing",
+        "Messaging",
+        "Position"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "DRAFT",
+      "d": "Draft matrix and summary.\nBuild the spine of differences and implications.",
+      "examples": [
+        "Matrix",
+        "Summary",
+        "Gaps"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "REVIEW",
+      "d": "Review comparison and interpretation together.\nAdjust gaps and priority.",
+      "examples": [
+        "Feedback",
+        "Refinement",
+        "Priority"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "DELIVER",
+      "d": "Deliver final documents and implications.\nConnect to next validation and action.",
+      "examples": [
+        "Final Matrix",
+        "Summary",
+        "Next Steps"
+      ]
+    }
+  ],
+  "scopeLabel": "SCOPE LEVELS",
+  "scopeTitle": "A guide to project complexity.",
+  "scopeLead": "Not fixed packages — we scope and quote based on comparison goal and competitor count.",
+  "scopes": [
+    {
+      "t": "FOCUSED COMPARE",
+      "items": [
+        "3–5 competitors",
+        "3–4 comparison axes",
+        "Desk research focus",
+        "Competitor Matrix",
+        "Differentiation and gap summary"
+      ]
+    },
+    {
+      "t": "FULL COMPETITOR MATRIX",
+      "items": [
+        "5–10 competitors & substitutes",
+        "Features, pricing, messaging, target",
+        "Positioning map",
+        "Gap analysis",
+        "Presentation summary optional"
+      ]
+    },
+    {
+      "t": "CUSTOM DEEP DIVE",
+      "items": [
+        "Multiple categories or markets",
+        "Deeper feature and UX compare",
+        "Messaging and content analysis",
+        "Custom presentation",
+        "Can link with MARKET RESEARCH"
+      ]
+    }
+  ],
+  "timeLabel": "TIMELINE",
+  "timeTitle": "Timeline depends on scope.",
+  "timeLead": "Competitor count, axes, and source access can change duration.",
+  "timelines": [
+    {
+      "t": "Focused Compare",
+      "d": "About 1 week"
+    },
+    {
+      "t": "Full Competitor Matrix",
+      "d": "About 1–2 weeks"
+    },
+    {
+      "t": "Custom Deep Dive",
+      "d": "Scoped separately"
+    }
+  ],
+  "priceLabel": "PROJECT COST",
+  "priceTitle": "We quote only the scope you need.",
+  "priceName": "COMPETITOR ANALYSIS",
+  "priceValue": "From ₩200,000",
+  "priceFactorsLabel": "What shapes the price",
+  "priceFactors": [
+    "Number of competitors / substitutes",
+    "Number of comparison axes",
+    "Analysis depth",
+    "Feature / UX compare inclusion",
+    "Messaging / content analysis",
+    "Deliverable format",
+    "Urgent timeline"
+  ],
+  "priceNote": "Final quote is confirmed after reviewing goal, competitor set, and scope.",
+  "faqLabel": "FAQ",
+  "faqTitle": "Frequently asked questions",
+  "faqs": [
+    {
+      "q": "How many competitors can you compare?",
+      "a": "We define set size by goal and source access. Typically 3–10 players — we confirm fit before starting."
+    },
+    {
+      "q": "What do you compare?",
+      "a": "Features, pricing, packaging, messaging, target, channels, and more — axes matched to your goal. We agree criteria before starting."
+    },
+    {
+      "q": "What format do deliverables take?",
+      "a": "Document and table-first: Competitor Matrix, positioning summary, gap analysis. Presentation summaries can be included."
+    },
+    {
+      "q": "How is this different from MARKET RESEARCH?",
+      "a": "COMPETITOR ANALYSIS focuses on competitor and substitute comparison. If overall market structure is the need, MARKET RESEARCH may fit better — scopes can be linked."
+    },
+    {
+      "q": "Can our product be included in the matrix?",
+      "a": "Yes, when you want. Share internal material and we can include a 'You' column."
+    },
+    {
+      "q": "Can this connect to BUILD or MVP?",
+      "a": "Yes. Comparison can feed feature priority, positioning, and go-to-market decisions."
+    },
+    {
+      "q": "How is confidentiality handled?",
+      "a": "We work within agreed scope only. An NDA can be signed when required."
+    }
+  ],
+  "finalLabel": "START A PROJECT",
+  "finalTitle": "Don't list competitors —\ncompare them first.",
+  "finalLead": "Tell us the competitors, category, or positioning issue you're evaluating. We'll confirm what to compare and how to structure the output.",
+  "ctaFinalSecondary": "View all RESEARCH →",
+  "ctaFinalSecondaryHref": "../research/"
+}

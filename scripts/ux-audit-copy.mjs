@@ -2,6 +2,8 @@
  * UX AUDIT service detail — KO/EN copy.
  * Path: /{lang}/business/ux-audit/
  */
+import { resolveKoEnPack } from "./i18n/copy-lang.mjs";
+
 export const UX_AUDIT_COPY = {
   ko: {
     seoTitle: "UX AUDIT | Newon Business",
@@ -797,5 +799,5 @@ export const UX_AUDIT_COPY = {
 };
 
 export function getUxAuditCopy(lang) {
-  return lang === "ko" ? UX_AUDIT_COPY.ko : UX_AUDIT_COPY.en;
+  return resolveKoEnPack(UX_AUDIT_COPY, lang, "ux-audit-copy");
 }

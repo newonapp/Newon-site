@@ -1,0 +1,510 @@
+{
+  "seoTitle": "PENGEMBANGAN MVP | Newon Bisnis",
+  "metaDescription": "Ubah ide menjadi produk nyata yang dapat Anda validasi dengan cepat — mulai dari penyusunan masalah hingga UX, pembuatan, dan peluncuran. Newon PENGEMBANGAN MVP.",
+  "crumbBusiness": "BISNIS",
+  "crumbServices": "LAYANAN",
+  "crumbBuild": "MEMBANGUN",
+  "crumbHere": "MVP",
+  "eyebrow": "PENGEMBANGAN MVP",
+  "subEyebrow": "MEMBANGUN",
+  "headline": "Dari ide hingga\nproduk yang berhasil.",
+  "lead": "Dari validasi ide dan definisi fitur inti melalui UX/UI, pengembangan, pengujian, dan rilis — kami merancang versi pertama sehingga Anda dapat menampilkannya kepada pengguna sebenarnya dengan cepat. Satu jalur berkelanjutan mulai dari perencanaan hingga penerapan: IDE → MEMBANGUN → PELUNCURAN.",
+  "ctaPrimary": "Penyelidikan pengembangan MVP →",
+  "ctaSecondary": "Lihat alur pembangunan ↓",
+  "meta": [
+    {
+      "k": "LAYANAN",
+      "v": "Pengembangan MVP"
+    },
+    {
+      "k": "TERBAIK UNTUK",
+      "v": "Validasi ide & rilis pertama"
+    },
+    {
+      "k": "GARIS WAKTU",
+      "v": "Biasanya 3–6 minggu"
+    },
+    {
+      "k": "HARGA",
+      "v": "Mulai dari ₩1.000.000"
+    }
+  ],
+  "overviewLabel": "GAMBARAN UMUM",
+  "overviewTitle": "Anda punya idenya.\nBukan bentuk produknya.",
+  "overviewBody": [
+    "Idenya jelas, namun apa yang harus dibangun terlebih dahulu – dan seberapa banyak – seringkali tidak demikian. Lebih banyak fitur menunda peluncuran; demo saja tidak dapat memvalidasi pertanyaan sebenarnya.",
+    "MVP harus minimal, namun harus merupakan produk yang berfungsi. Bukan slide — sesuatu yang dapat diklik, diketik, dan diselesaikan pengguna di web atau aplikasi.",
+    "PENGEMBANGAN MVP dimulai dengan mendefinisikan masalah dan pertanyaan validasi. Kemudian kami merancang UX/UI berdasarkan aliran inti saja, dan memberikan versi pertama yang dapat dikirimkan termasuk backend, data, dan penerapan."
+  ],
+  "problemsLabel": "MASALAH",
+  "problemsTitle": "Bermanfaat ketika Anda menghadapi situasi ini.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "HANYA IDE",
+      "d": "Anda mempunyai ide tetapi tidak dapat memutuskan apa yang harus dibuat terlebih dahulu.\nAnda memerlukan struktur produk terkecil yang dapat menguji pertanyaan sebenarnya."
+    },
+    {
+      "n": "02",
+      "t": "RUANG LINGKUP MENYERAH",
+      "d": "Membangun semuanya terlebih dahulu itu berisiko.\nDaftar fitur terus bertambah dan peluncuran terus menurun."
+    },
+    {
+      "n": "03",
+      "t": "BANGUNAN TERHUBUNG",
+      "d": "Perencanaan, desain, dan pengembangan terasa seperti vendor yang terpisah.\nOutput tetap pada tingkat demo dan tidak ada yang memiliki jalur lengkapnya."
+    },
+    {
+      "n": "04",
+      "t": "TIDAK ADA JALUR VALIDASI",
+      "d": "Anda membuat sesuatu tetapi tidak memiliki lingkungan untuk ditampilkan kepada pengguna.\nTidak ada penerapan, pembagian, atau putaran masukan."
+    },
+    {
+      "n": "05",
+      "t": "KETIDAKPASTIAN PLATFORM",
+      "d": "Sulit untuk memilih antara web dan aplikasi.\nAnda memerlukan rekomendasi yang sesuai dengan sasaran validasi."
+    },
+    {
+      "n": "06",
+      "t": "KESENJANGAN PASCA MVP",
+      "d": "Setelah peluncuran, tidak ada prioritas mengenai apa yang perlu diperluas.\nAnda memerlukan struktur untuk menghubungkan validasi ke langkah berikutnya."
+    }
+  ],
+  "baLabel": "SEBELUM/SETELAH",
+  "baTitle": "Output tingkat demo vs\nproduk yang dapat Anda validasi",
+  "beforeLabel": "SEBELUM",
+  "afterLabel": "SETELAH",
+  "before": [
+    "Daftar ide dan fitur tanpa cakupan yang jelas",
+    "Perencanaan, desain, dan pembangunan tidak terhubung",
+    "Slide dan mockup — tidak ada yang perlu diklik",
+    "Tidak ada lingkungan penerapan atau rencana langkah selanjutnya"
+  ],
+  "after": [
+    "Masalah, pengguna, dan pertanyaan validasi ditentukan terlebih dahulu",
+    "UX/UI aliran inti dan cakupan yang disepakati",
+    "Web atau aplikasi MVP yang berfungsi dapat digunakan orang",
+    "Lingkungan penerapan dan peta jalan pasca-MVP telah disampaikan"
+  ],
+  "capsLabel": "KEMAMPUAN",
+  "capsTitle": "Kami menjalankan pembangunan MVP\nsebagai satu keterlibatan terstruktur.",
+  "caps": [
+    {
+      "t": "FRAMING MASALAH",
+      "d": "Tentukan masalah, pengguna utama, dan pertanyaan validasi.\nPerjelas apa yang termasuk dalam MVP — dan apa yang tidak."
+    },
+    {
+      "t": "DEFINISI RUANG LINGKUP",
+      "d": "Pertahankan hanya apa yang dibutuhkan versi pertama.\nPisahkan prioritas Inti, Berikutnya, dan Nanti."
+    },
+    {
+      "t": "DESAIN UX / UI",
+      "d": "Rancang berdasarkan jalur tujuan pengguna — bukan layar acak.\nBangun antarmuka produk yang sebenarnya."
+    },
+    {
+      "t": "PEMBANGUNAN PRODUK",
+      "d": "Menerapkan MVP web atau aplikasi.\nProduk yang berfungsi, bukan presentasi."
+    },
+    {
+      "t": "BELAKANG & DATA",
+      "d": "Sertakan server minimal dan struktur data untuk validasi.\nMasuk, simpan, baca — apa pun skenario yang diperlukan."
+    },
+    {
+      "t": "INTEGRASI",
+      "d": "Terapkan pembayaran, notifikasi, API, layanan eksternal sesuai cakupannya.\nHanya yang dibutuhkan MVP."
+    },
+    {
+      "t": "QA & PELUNCURAN",
+      "d": "Verifikasi skenario inti dan terapkan ke lingkungan nyata.\nSiap untuk berbagi dengan tim atau pengguna awal."
+    },
+    {
+      "t": "PETA JALAN LANGKAH BERIKUTNYA",
+      "d": "Dokumen diperluas, ditahan, atau dipotong item setelah MVP.\nHubungkan hasil validasi ke fase BUILD berikutnya."
+    }
+  ],
+  "sourcesLabel": "INPUT PROYEK",
+  "sourcesTitle": "Kami menggabungkan masukan yang dibutuhkan proyek Anda.",
+  "sourcesNote": "Masukan aktual bervariasi berdasarkan tahap ide, materi yang tersedia, dan konteks tim.",
+  "sources": [
+    "Deskripsi ide dan masalah",
+    "Definisi pengguna target",
+    "Layanan pesaing dan referensi",
+    "Gambar rangka atau spesifikasi yang ada",
+    "Pedoman merek dan UI",
+    "Kendala teknis dan platform",
+    "Hipotesis model bisnis",
+    "Pertanyaan validasi dan KPI",
+    "Konten dan data awal",
+    "Persyaratan API dan integrasi",
+    "Luncurkan dan terapkan lingkungan",
+    "Rencana ekspansi di masa depan"
+  ],
+  "useLabel": "KASUS PENGGUNAAN",
+  "useTitle": "MVP yang bisa kita bangun.",
+  "useBadge": "Contoh tipe build",
+  "useCases": [
+    {
+      "t": "MVP WEB",
+      "d": "Aliran inti dapat digunakan di browser.\nDaftar ke nilai — versi pertama yang dapat Anda validasi."
+    },
+    {
+      "t": "MVP APLIKASI SELULER",
+      "d": "Kebiasaan, peringatan, dan penggunaan saat bepergian yang hanya masuk akal di perangkat seluler.\nRilis iOS atau Android pertama."
+    },
+    {
+      "t": "MVP ALAT INTERNAL",
+      "d": "Versi pertama perangkat lunak operasi harian untuk tim Anda.\nKecepatan dan akurasi diutamakan."
+    },
+    {
+      "t": "MVP PRODUK AI",
+      "d": "AI yang memotong pekerjaan berulang.\nAlur kerja dan validasi melalui model teater."
+    },
+    {
+      "t": "PROTOTIPE YANG DAPAT DIKLIK",
+      "d": "Demo yang dapat diklik untuk investor dan tim — cepat dan tajam."
+    },
+    {
+      "t": "TANAH + PRODUK",
+      "d": "Persuasi dan entri produk dalam satu jalur berkelanjutan.\nValidasi konversi dan penggunaan secara bersamaan."
+    },
+    {
+      "t": "MVP SAAS",
+      "d": "Versi SaaS pertama dengan langganan, izin, admin.\nAliran nilai inti terpusat."
+    },
+    {
+      "t": "MVP PASAR",
+      "d": "Versi platform pertama dengan banyak pengguna dan peran.\nTermasuk daftar, pencocokan, admin dasar."
+    }
+  ],
+  "flowLabel": "CONTOH ALUR KERJA",
+  "flowTitle": "IDE → MEMBANGUN → LUNCURKAN",
+  "flow": [
+    {
+      "n": "01",
+      "t": "IDE",
+      "d": "Susun ide dan masalah yang ingin dipecahkan.\nTentukan pertanyaan validasi dan kriteria keberhasilan secara bersamaan.",
+      "examples": [
+        "Masalah",
+        "Pengguna",
+        "Hipotesis",
+        "KPI"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "RUANG LINGKUP",
+      "d": "Tentukan fitur inti untuk versi pertama.\nPisahkan dengan jelas di dalam cakupan dan di luar cakupan.",
+      "examples": [
+        "Inti",
+        "Selanjutnya",
+        "Nanti",
+        "Peron"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "DESAIN",
+      "d": "Rancang alur dan antarmuka pengguna inti.\nKonfirmasi struktur layar dan UX.",
+      "examples": [
+        "Mengalir",
+        "UI",
+        "Layar",
+        "Ulasan"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "MEMBANGUN",
+      "d": "Kembangkan produk yang berfungsi.\nTerapkan fitur inti, backend, dan integrasi.",
+      "examples": [
+        "Bagian depan",
+        "Bagian belakang",
+        "API",
+        "QA"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PELUNCURAN",
+      "d": "Uji dan terapkan ke lingkungan nyata.\nBersama-sama berikan peta jalan langkah selanjutnya.",
+      "examples": [
+        "Menyebarkan",
+        "Bagikan",
+        "Umpan balik",
+        "Peta jalan"
+      ]
+    }
+  ],
+  "reportLabel": "KELUARAN",
+  "reportTitle": "Hasil kerja adalah produk yang dapat Anda validasi dan dokumen pendukungnya.",
+  "reportLead": "Komposisi bervariasi berdasarkan ruang lingkup proyek. Di bawah ini adalah item umum.",
+  "reportMockStatus": "PRODUK · RUANG LINGKUP",
+  "reportMockK": "SPESIFIKASI RUANG LINGKUP MVP",
+  "reportMockT": "Fitur, alur, pencapaian",
+  "reportItems": [
+    "Masalah & Tujuan",
+    "Ringkasan Ruang Lingkup",
+    "Peta Alur Pengguna",
+    "Daftar Fitur (Inti / Berikutnya / Nanti)",
+    "Ikhtisar UX / UI",
+    "Tumpukan Teknis",
+    "Bagian Belakang & Model Data",
+    "Catatan Integrasi",
+    "Daftar Periksa QA",
+    "Peta Jalan Pasca MVP"
+  ],
+  "dashTitle": "Bagikan cakupan dan kemajuan MVP dalam satu tampilan.",
+  "dashLead": "Fitur, layar, alur, dan integrasi bersama-sama mempercepat kesepakatan cakupan dan membangun diskusi.",
+  "dashNote": "Komposisi dan prioritas fitur bervariasi berdasarkan tujuan validasi dan anggaran.",
+  "dashMetrics": [
+    "Fitur",
+    "Layar",
+    "Mengalir",
+    "Integrasi"
+  ],
+  "dashFilters": [
+    "Semua",
+    "Inti",
+    "Selanjutnya",
+    "Nanti"
+  ],
+  "aiLabel": "PERCEPATAN",
+  "aiTitle": "Otomatiskan pengulangan.\nFokus pada desain dan pembuatan.",
+  "aiLead": "Penataan kebutuhan, rancangan alur, daftar layar, dan daftar periksa QA dapat dibantu oleh AI untuk mempercepat — sementara orang fokus pada keputusan cakupan, UX, dan implementasi inti.",
+  "aiExamples": [
+    "Struktur ide dan persyaratan",
+    "Alur draf dan daftar layar",
+    "Atur prioritas fitur",
+    "Draf API dan model data",
+    "QA dan daftar periksa tes",
+    "Draf peta jalan pasca-MVP"
+  ],
+  "aiNote": "Keputusan cakupan, desain, dan kualitas akhir dikonfirmasi dengan tim proyek Anda.",
+  "delLabel": "PENGIRIMAN",
+  "delTitle": "Apa yang Anda terima ketika proyek selesai",
+  "delLead": "Kami mengirimkan item di bawah ini sesuai kebutuhan untuk cakupan Anda.",
+  "deliverables": [
+    {
+      "title": "Dokumen Definisi Ruang Lingkup",
+      "body": "Apa yang disertakan dalam MVP — dan apa yang tidak dimasukkan."
+    },
+    {
+      "title": "Aliran UX / Struktur Layar",
+      "body": "Alur pengguna inti dan struktur layar."
+    },
+    {
+      "title": "MVP yang berfungsi (Web atau Aplikasi)",
+      "body": "Versi pertama yang benar-benar berjalan."
+    },
+    {
+      "title": "Backend & Data Penting",
+      "body": "Data penting dan fondasi backend."
+    },
+    {
+      "title": "Lingkungan yang Dikerahkan",
+      "body": "Lingkungan pementasan dan produksi siap digunakan."
+    },
+    {
+      "title": "File Desain UX / UI",
+      "body": "File desain dan spesifikasi layar utama."
+    },
+    {
+      "title": "Dokumentasi Teknis",
+      "body": "Struktur, integrasi, dan catatan operasi."
+    },
+    {
+      "title": "Laporan QA",
+      "body": "Hasil dari pemeriksaan skenario inti."
+    },
+    {
+      "title": "Peta Jalan Pasca MVP",
+      "body": "Prioritas perbaikan setelah peluncuran."
+    }
+  ],
+  "processLabel": "PROSES",
+  "processTitle": "Dari ide hingga peluncuran.",
+  "process": [
+    {
+      "n": "01",
+      "t": "PENEMUAN",
+      "d": "Konfirmasikan ide, masalah, pengguna, dan kendala.\nTentukan pertanyaan validasi dan kriteria keberhasilan.",
+      "examples": [
+        "Ide",
+        "Masalah",
+        "Pengguna",
+        "KPI"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "RUANG LINGKUP",
+      "d": "Tentukan fitur inti di dalam dan di luar MVP.\nSetujui platform, linimasa, dan anggaran.",
+      "examples": [
+        "Inti",
+        "Selanjutnya",
+        "Nanti",
+        "Peron"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "UX / DESAIN",
+      "d": "Rancang alur inti dan struktur layar.\nKonfirmasikan antarmuka produk yang sebenarnya.",
+      "examples": [
+        "Mengalir",
+        "UI",
+        "Layar",
+        "Ulasan"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PERKEMBANGAN",
+      "d": "Terapkan frontend, backend, dan integrasi.\nDemo dan tinjau secara bertahap.",
+      "examples": [
+        "Bagian depan",
+        "Bagian belakang",
+        "API",
+        "Integrasi"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "UJI",
+      "d": "Verifikasi skenario inti.\nPeriksa alur penggunaan sebenarnya.",
+      "examples": [
+        "QA",
+        "UAT",
+        "Perbaikan",
+        "Penandatanganan"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "PELUNCURAN",
+      "d": "Siapkan lingkungan penerapan dan rilis.\nBagikan dengan tim atau pengguna awal.",
+      "examples": [
+        "Pementasan",
+        "Produk",
+        "Akses",
+        "Bagikan"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "LANGKAH BERIKUTNYA",
+      "d": "Atur hasil validasi dan prioritas perluasan.\nHubungkan ke fase BUILD berikutnya.",
+      "examples": [
+        "Umpan balik",
+        "Peta jalan",
+        "Perluas",
+        "Berputar"
+      ]
+    }
+  ],
+  "scopeLabel": "TINGKAT RUANG LINGKUP",
+  "scopeTitle": "Bagaimana memikirkan kompleksitas MVP.",
+  "scopeLead": "Bukan paket tetap. Cakupan ditentukan berdasarkan tujuan validasi, platform, dan rentang fitur/integrasi.",
+  "scopes": [
+    {
+      "t": "MVP TERFOKUS",
+      "items": [
+        "Aliran inti tunggal",
+        "Web atau aplikasi — satu platform",
+        "5–8 layar inti",
+        "Backend dan data dasar",
+        "Menyebarkan dan berbagi lingkungan"
+      ]
+    },
+    {
+      "t": "MVP STANDAR",
+      "items": [
+        "Berbagai fitur dan alur inti",
+        "Web atau aplikasi + admin",
+        "Login, izin, simpan",
+        "1–2 integrasi",
+        "Peta jalan pasca-MVP"
+      ]
+    },
+    {
+      "t": "MVP DIPERPANJANG",
+      "items": [
+        "Berbagai modul dan peran",
+        "Multi-integrasi dan API",
+        "AI, pembayaran, notifikasi",
+        "Termasuk desain ekspansi",
+        "Dicakup secara terpisah"
+      ]
+    }
+  ],
+  "timeLabel": "GARIS WAKTU",
+  "timeTitle": "Garis waktu tergantung pada ruang lingkup.",
+  "timeLead": "Durasi bervariasi berdasarkan jumlah fitur, platform, integrasi, kedalaman desain, dan kecepatan umpan balik.",
+  "timelines": [
+    {
+      "t": "MVP yang terfokus",
+      "d": "Sekitar 3–4 minggu"
+    },
+    {
+      "t": "MVP standar",
+      "d": "Sekitar 4–6 minggu"
+    },
+    {
+      "t": "Diperpanjang",
+      "d": "Dicakup secara terpisah"
+    }
+  ],
+  "priceLabel": "BIAYA PROYEK",
+  "priceTitle": "Kami hanya mengutip cakupan yang Anda butuhkan.",
+  "priceName": "PENGEMBANGAN MVP",
+  "priceValue": "Mulai dari ₩1.000.000",
+  "priceFactorsLabel": "Faktor harga",
+  "priceFactors": [
+    "Cakupan — fitur, layar, alur",
+    "Platform — web, aplikasi, atau keduanya",
+    "Kompleksitas — data, izin, logika",
+    "Timeline — jadwal dan sumber daya",
+    "Integrasi — API, pembayaran, peringatan",
+    "Kedalaman desain — rentang UX/UI",
+    "Backend — server, DB, autentikasi",
+    "Pasca peluncuran — perluasan, pemeliharaan"
+  ],
+  "priceNote": "Kami meninjau platform, ruang lingkup, kompleksitas, dan garis waktu, lalu memberikan penawaran. Jumlah akhir dikonfirmasi setelah kunci cakupan.",
+  "faqLabel": "Pertanyaan Umum",
+  "faqTitle": "Pertanyaan yang sering diajukan",
+  "faqs": [
+    {
+      "q": "Bisakah kita memulai tanpa rencana penuh?",
+      "a": "Ya. Sebuah ide dan masalah yang ingin Anda pecahkan sudah cukup untuk membentuk ruang lingkup bersama."
+    },
+    {
+      "q": "Web atau aplikasi — yang mana?",
+      "a": "Kami merekomendasikan berdasarkan tujuan validasi dan pengguna Anda. Kami tidak membangun keduanya secara default."
+    },
+    {
+      "q": "Berapa lama waktu yang dibutuhkan?",
+      "a": "Itu tergantung pada ruang lingkup. MVP terfokus biasanya berlangsung sekitar 3–4 minggu; MVP standar sekitar 4–6 minggu."
+    },
+    {
+      "q": "Bisakah saya mendapatkan harga tetap di situs web?",
+      "a": "Harga tergantung pada platform dan cakupan. Mulai dari ₩1.000.000 — kami memandu Anda setelah meninjau pertanyaan."
+    },
+    {
+      "q": "Bisakah kami melakukan ekspansi setelah MVP?",
+      "a": "Ya. Kami melanjutkan dari arus yang sudah terbukti bermanfaat."
+    },
+    {
+      "q": "Bisakah ini terhubung ke RESEARCH?",
+      "a": "Ya. Riset pasar, pesaing, dan pengguna dapat memenuhi cakupan MVP dan prioritas fitur."
+    },
+    {
+      "q": "Bagaimana kerahasiaan ditangani?",
+      "a": "Bahan digunakan hanya dalam lingkup yang disepakati. NDA tersedia bila diperlukan."
+    }
+  ],
+  "finalLabel": "MULAI PROYEK",
+  "finalTitle": "Ubah ide Anda\nmenjadi produk pertama.",
+  "finalLead": "Beritahu kami layanan yang ingin Anda bangun dan tahapan Anda saat ini. Kami akan mengonfirmasi cakupan MVP dan jalur IDEA → BUILD → LAUNCH secara bersamaan.",
+  "ctaFinalSecondary": "Lihat semua MEMBANGUN →",
+  "ctaFinalSecondaryHref": "../build/"
+}

@@ -1,0 +1,491 @@
+{
+  "seoTitle": "AUTOMAÇÃO DE IA | Newon Negócios",
+  "metaDescription": "Automatize o trabalho repetitivo e o suporte com IA: classificação de consultas, rascunhos de respostas, resumos de documentos e pesquisa de conhecimento interno conectada a fluxos de trabalho reais. Newon AUTOMAÇÃO DE IA.",
+  "crumbBusiness": "NEGÓCIOS",
+  "crumbServices": "SERVIÇOS",
+  "crumbAutomation": "AUTOMAÇÃO",
+  "crumbHere": "AUTOMAÇÃO DE IA",
+  "eyebrow": "AUTOMAÇÃO DE IA",
+  "subEyebrow": "AUTOMAÇÃO",
+  "headline": "Automatize o trabalho repetitivo\ncom IA adequada ao trabalho.",
+  "lead": "Mapeamos o trabalho repetido e conectamos a automação de IA à forma como sua equipe já opera: classificação de consultas, rascunhos de respostas, resumos de documentos, análise de revisão e pesquisa de conhecimento interno. Não é um chatbot de demonstração – IA anexada aos canais, ferramentas e processos que você já usa.",
+  "ctaPrimary": "Consulta de automação de IA →",
+  "ctaSecondary": "Veja o fluxo de automação ↓",
+  "meta": [
+    {
+      "k": "SERVIÇO",
+      "v": "Automação de IA"
+    },
+    {
+      "k": "MELHOR PARA",
+      "v": "Repetição de trabalho e automação de suporte"
+    },
+    {
+      "k": "LINHA DO TEMPO",
+      "v": "Depende do escopo"
+    },
+    {
+      "k": "PREÇO",
+      "v": "Orçamento personalizado"
+    }
+  ],
+  "overviewLabel": "VISÃO GERAL",
+  "overviewTitle": "Você quer IA.\nNão tenho certeza de onde ela deveria ficar.",
+  "overviewBody": [
+    "Consultas, análises, conteúdo, documentos, perguntas e respostas internas – já existe trabalho repetido. As equipes querem IA, mas os PoCs muitas vezes nunca alcançam fluxos de trabalho reais.",
+    "Adicionar um chatbot ou ferramenta genérico deixa o processo inalterado. As pessoas ainda classificam, rascunham e resumem à mão. O que você precisa é de automação de IA projetada para o contexto do seu fluxo de trabalho.",
+    "AI AUTOMATION começa definindo trabalho repetido, canais, dados e barras de qualidade. Em seguida, projetamos fluxos de classificação, rascunho, resumo e roteamento — com revisão e proteções humanas — e entregamos automação que se conecta a operações reais."
+  ],
+  "problemsLabel": "PROBLEMAS",
+  "problemsTitle": "Útil quando você enfrenta essas situações.",
+  "problems": [
+    {
+      "n": "01",
+      "t": "REPETIR RESPOSTAS",
+      "d": "As pessoas classificam e elaboram as mesmas perguntas e tarefas.\nO trabalho de julgamento fica lotado."
+    },
+    {
+      "n": "02",
+      "t": "PARADA AI POC",
+      "d": "Você tentou um AI PoC, mas ele nunca alcançou as operações.\nSem prioridade para onde a IA deve se conectar."
+    },
+    {
+      "n": "03",
+      "t": "ESPANHAMENTO DA FERRAMENTA",
+      "d": "As ferramentas se acumulam, mas o fluxo de trabalho não muda.\nCanais, CRM, e-mail e planilhas permanecem desconectados."
+    },
+    {
+      "n": "04",
+      "t": "SAÍDA INCONSISTENTE",
+      "d": "As respostas variam para a mesma pergunta.\nSem tom de marca, política ou barreira de qualidade."
+    },
+    {
+      "n": "05",
+      "t": "SOBRECARGA DE DOCUMENTOS",
+      "d": "As pessoas leem e organizam longos documentos, notas e revisões.\nResuma, classifique e extraia repetições de trabalho."
+    },
+    {
+      "n": "06",
+      "t": "SEM GUARDA-GUARDA",
+      "d": "Difícil enviar resultados de IA como estão.\nSem revisão, permissão ou estrutura de exceção."
+    }
+  ],
+  "baLabel": "ANTES / DEPOIS",
+  "baTitle": "Repetição manual vs\nautomação humana no circuito",
+  "beforeLabel": "ANTES",
+  "afterLabel": "DEPOIS",
+  "before": [
+    "As solicitações chegam através dos canais",
+    "Os proprietários classificam e elaboram manualmente",
+    "As respostas variam para a mesma pergunta",
+    "O status é visível somente após o fato"
+  ],
+  "after": [
+    "As solicitações são classificadas automaticamente",
+    "Rascunhos de respostas e resumos aparecem primeiro",
+    "Humanos lidam com revisões e exceções",
+    "Os resultados são registrados à medida que acontecem"
+  ],
+  "capsLabel": "CAPACIDADES",
+  "capsTitle": "Executamos a construção de automação de IA\ncomo um envolvimento estruturado.",
+  "caps": [
+    {
+      "t": "MAPEAMENTO DE TRABALHO",
+      "d": "Confirme tarefas repetidas, canais, localização de dados, barras de qualidade.\nIdentifique onde a automação cria alavancagem."
+    },
+    {
+      "t": "PROJETO DE FLUXO DE TRABALHO",
+      "d": "Projete entrada → processo → revisão → fluxos de saída.\nInclua pontos de revisão humana e caminhos de exceção."
+    },
+    {
+      "t": "CLASSIFICAR E ROTAR",
+      "d": "Classifique consultas, solicitações e comentários por tópico, prioridade, proprietário.\nDefina regras de roteamento e SLAs."
+    },
+    {
+      "t": "ESBOÇO E RESUMO",
+      "d": "Implemente rascunhos de resposta, resumos de documentos, agrupamento de análises.\nCombine o tom da marca e o formato de saída."
+    },
+    {
+      "t": "INTEGRAÇÕES",
+      "d": "Conecte web, aplicativos, e-mail, CRM, planilhas, ferramentas internas.\nAnexe IA aos ambientes que você já usa."
+    },
+    {
+      "t": "GUARDA-GUARDA",
+      "d": "Adicione etapas de revisão e escopo de permissão que capturam resultados incorretos.\nProjete caminhos para casos confidenciais e de exceção."
+    },
+    {
+      "t": "PILOTO E AJUSTE",
+      "d": "Execute o piloto com uma equipe ou canal limitado e ajuste a qualidade.\nMelhore os prompts, regras e barras de revisão."
+    },
+    {
+      "t": "OPS E TRANSFERÊNCIA",
+      "d": "Documente métodos operacionais e de melhoria.\nConecte a expansão e o escopo da Fase 2."
+    }
+  ],
+  "sourcesLabel": "ENTRADAS DO PROJETO",
+  "sourcesTitle": "Combinamos os insumos que seu projeto precisa.",
+  "sourcesNote": "As entradas reais variam de acordo com a organização, os canais e a política de dados.",
+  "sources": [
+    "Repetindo descrições de trabalho e processo",
+    "Exemplos de consultas, análises, documentos",
+    "Perguntas frequentes, políticas e guias",
+    "Tom da marca e modelos de resposta",
+    "CRM, e-mail e registros de bate-papo",
+    "Conhecimento interno e armazenamentos de documentos",
+    "Requisitos de API e integração",
+    "Permissões e estrutura organizacional",
+    "Barras de qualidade e regras de revisão",
+    "Automação e scripts existentes",
+    "Métricas e KPIs de sucesso",
+    "Política de dados e segurança"
+  ],
+  "useLabel": "CASOS DE USO",
+  "useTitle": "Automação de IA que podemos construir.",
+  "useBadge": "Exemplos de tipos de compilação",
+  "useCases": [
+    {
+      "t": "CLASSIFICAÇÃO DO CONSULTO",
+      "tag": "CLIENTE",
+      "d": "Classifique as consultas dos clientes por tópico, urgência, proprietário.\nCorrespondência de perguntas frequentes e automação de roteamento."
+    },
+    {
+      "t": "ESBOÇO DE RESPOSTA",
+      "tag": "CLIENTE",
+      "d": "Gere rascunhos de respostas para perguntas, e-mail, bate-papo.\nEnviar após revisão humana."
+    },
+    {
+      "t": "ANÁLISE DE REVISÃO",
+      "tag": "PERCEPÇÃO",
+      "d": "Avaliações de cluster e feedback por tema.\nApresente pontos de melhoria e sentimento."
+    },
+    {
+      "t": "ESBOÇO DE CONTEÚDO",
+      "tag": "CONTEÚDO",
+      "d": "Gere avisos, artigos de ajuda e rascunhos de marketing em tom.\nBaseado em modelo e guia."
+    },
+    {
+      "t": "RESUMO DO DOCUMENTO",
+      "tag": "OPS",
+      "d": "Comprima documentos e notas longos para decisões.\nExtraia pontos-chave, ações e riscos."
+    },
+    {
+      "t": "CONHECIMENTO INTERNO",
+      "tag": "OPS",
+      "d": "Resposta de documentos dispersos com fontes.\nPesquise dentro do escopo de permissão."
+    },
+    {
+      "t": "AUTOMAÇÃO DE OPERAÇÕES",
+      "tag": "OPS",
+      "d": "Limpeza de dados, alertas, relatórios recorrentes.\nVinculado com classificação e resumo."
+    },
+    {
+      "t": "RECURSO DE IA DO PRODUTO",
+      "tag": "PRODUTO",
+      "d": "Adicione classificação, rascunho e resumo à web ou aplicativo existente.\nIntegrado aos fluxos de trabalho do usuário e do operador."
+    }
+  ],
+  "flowLabel": "EXEMPLO DE FLUXO DE TRABALHO",
+  "flowTitle": "Do mapeamento do trabalho à expansão operacional",
+  "flow": [
+    {
+      "n": "01",
+      "t": "MAPA",
+      "d": "Confirme a repetição de trabalho, canais, dados e barras de qualidade.\nDefina oportunidades e prioridade de automação.",
+      "examples": [
+        "Trabalho",
+        "Canais",
+        "Dados",
+        "KPIs"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PROJETO",
+      "d": "Projete classificação, rascunho, resumo e revisão de fluxos.\nConfirme os pontos humanos no circuito.",
+      "examples": [
+        "Fluxo",
+        "Revisão",
+        "Exceções",
+        "Funções"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "CONSTRUIR",
+      "d": "Implemente recursos e integrações de IA.\nValide a qualidade com dados de amostra.",
+      "examples": [
+        "Modelo",
+        "Alerta",
+        "API",
+        "Integração"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "PILOTO",
+      "d": "Execute o piloto com uma equipe ou canal limitado.\nAjuste a qualidade da saída e a carga de revisão.",
+      "examples": [
+        "Piloto",
+        "Sintonia",
+        "Revisão",
+        "Métricas"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "EXPANDIR",
+      "d": "Expanda fluxos comprovados para trabalhos adjacentes.\nGuia de operações de conexão e caminho de melhoria.",
+      "examples": [
+        "Escala",
+        "Documentos",
+        "Fase 2",
+        "Monitorar"
+      ]
+    }
+  ],
+  "reportLabel": "SAÍDA",
+  "reportTitle": "Os resultados são automação operável e documentos de suporte.",
+  "reportLead": "A composição varia de acordo com o escopo do projeto. Abaixo estão os itens comuns.",
+  "reportMockStatus": "AUTOMAÇÃO · FLUXO DE TRABALHO",
+  "reportMockK": "ESPECIFICAÇÕES DE AUTOMAÇÃO DE IA",
+  "reportMockT": "Escopo, fluxos de trabalho, integrações, resumo da revisão",
+  "reportItems": [
+    "Escopo de automação",
+    "Mapa de fluxo de trabalho",
+    "Classificar regras",
+    "Modelos de rascunho",
+    "Formato de Resumo",
+    "Lista de Integração",
+    "Lista de verificação de revisão",
+    "Política de proteção",
+    "Resultados do piloto",
+    "Guia de operações"
+  ],
+  "dashTitle": "Compartilhe o fluxo de trabalho e a estrutura de automação em uma única visualização.",
+  "dashLead": "Fluxos de trabalho, modelos, integrações e unidades de automação juntos aceleram o acordo de escopo e criam discussões.",
+  "dashNote": "A composição do fluxo de trabalho e a faixa de automação variam de acordo com o objetivo do projeto e a política de dados.",
+  "dashMetrics": [
+    "Fluxos de trabalho",
+    "Modelos",
+    "Integrações",
+    "Automações"
+  ],
+  "dashFilters": [
+    "Todos",
+    "Classificar",
+    "Rascunho",
+    "Resumo"
+  ],
+  "aiLabel": "HUMANO NO LOOP",
+  "aiTitle": "A IA elabora o trabalho.\nAs pessoas mantêm a revisão e o julgamento.",
+  "aiLead": "A IA lida com classificação, rascunho e resumo – enquanto as pessoas mantêm o julgamento final, exceções, casos sensíveis, aprovação do tom da marca e decisões políticas. O escopo da revisão pode ser ampliado em fases à medida que a qualidade se estabiliza.",
+  "aiExamples": [
+    "Classificar → rascunho → revisão humana → enviar",
+    "Revise o cluster → resumo → confirmação do proprietário",
+    "Resumo do documento → extrato principal → revisão do tomador de decisão",
+    "Perguntas e respostas internas → fontes → resposta dentro das permissões",
+    "Exceção/caso sensível → escalonamento humano",
+    "Melhoria contínua do prompt e da barra de qualidade"
+  ],
+  "aiNote": "O envio totalmente automático não é recomendado a princípio. Comece com uma estrutura humana, confirme a qualidade e depois amplie o escopo.",
+  "delLabel": "ENTREGAS",
+  "delTitle": "O que você recebe quando o projeto é concluído",
+  "delLead": "Entregamos os itens abaixo conforme necessidade para seu escopo.",
+  "deliverables": [
+    "Definição do escopo de automação",
+    "Projeto de fluxo de trabalho",
+    "Desenvolvimento de capacidade de IA",
+    "Configuração de integração",
+    "Guia de revisão e proteção",
+    "Documentação Operacional",
+    "Relatório Piloto",
+    "Configuração de métricas de qualidade",
+    "Roteiro da Fase 2 (opcional)"
+  ],
+  "processLabel": "PROCESSO",
+  "processTitle": "Do mapeamento do trabalho à transferência operacional.",
+  "process": [
+    {
+      "n": "01",
+      "t": "DESCOBERTA",
+      "d": "Confirme a repetição de trabalho, canais, dados e barras de qualidade.\nEntenda as metas e restrições de automação.",
+      "examples": [
+        "Trabalho",
+        "Canais",
+        "Dados",
+        "Política"
+      ]
+    },
+    {
+      "n": "02",
+      "t": "PRIORIZAR",
+      "d": "Comece onde o impacto versus esforço é mais forte.\nAcorde o escopo do piloto e os critérios de sucesso.",
+      "examples": [
+        "Prioridade",
+        "Piloto",
+        "KPIs",
+        "Escopo"
+      ]
+    },
+    {
+      "n": "03",
+      "t": "PROJETO",
+      "d": "Projete fluxos de trabalho com prompts, regras e pontos de revisão.\nConfirme a estrutura humana no circuito.",
+      "examples": [
+        "Fluxo",
+        "Revisão",
+        "Guarda-corpos",
+        "Integrações"
+      ]
+    },
+    {
+      "n": "04",
+      "t": "CONSTRUIR",
+      "d": "Implemente recursos e integrações de IA.\nValide, classifique, rascunhe e resuma a qualidade com amostras.",
+      "examples": [
+        "Classificar",
+        "Rascunho",
+        "Resumo",
+        "API"
+      ]
+    },
+    {
+      "n": "05",
+      "t": "PILOTO",
+      "d": "Opere com uma equipe ou canal limitado e ajuste a qualidade.\nEquilibre a carga de revisão e a taxa de automação.",
+      "examples": [
+        "Piloto",
+        "Sintonia",
+        "Comentários",
+        "Métricas"
+      ]
+    },
+    {
+      "n": "06",
+      "t": "IMPLEMENTAR",
+      "d": "Implante na produção e defina o monitoramento.\nConfirme os caminhos de reversão e escalonamento.",
+      "examples": [
+        "Implantar",
+        "Monitorar",
+        "Acesso",
+        "Alerta"
+      ]
+    },
+    {
+      "n": "07",
+      "t": "TRANSFERÊNCIA",
+      "d": "Documente operações e transferência.\nConecte o caminho de expansão e melhoria.",
+      "examples": [
+        "Documentos",
+        "Treinamento",
+        "Fase 2",
+        "Suporte"
+      ]
+    }
+  ],
+  "scopeLabel": "NÍVEIS DE ESCOPO",
+  "scopeTitle": "Como pensar na complexidade do projeto.",
+  "scopeLead": "Não é um pacote fixo. O escopo é definido pela contagem de fluxos de trabalho, integrações, política de dados e profundidade da revisão.",
+  "scopes": [
+    {
+      "t": "PILOTO FOCADO",
+      "items": [
+        "Tarefa ou canal de repetição única",
+        "Um de classificar, rascunhar ou resumir",
+        "Revisão humana no circuito",
+        "1–2 integrações básicas",
+        "Foco na operação piloto"
+      ]
+    },
+    {
+      "t": "CONSTRUÇÃO DE MÚLTIPLOS FLUXOS DE TRABALHO",
+      "items": [
+        "Vários fluxos de trabalho e canais",
+        "Classificar, rascunhar, resumir combinados",
+        "CRM, e-mail, links de ferramentas internas",
+        "Guarda-corpos e registros de auditoria",
+        "Guia operacional incluído"
+      ]
+    },
+    {
+      "t": "INTEGRAÇÃO DE PLATAFORMA",
+      "items": [
+        "Web, aplicativo, integração de sistema interno",
+        "Vários modelos e fontes de dados",
+        "Permissão, inquilino, estrutura política",
+        "Projeto de expansão e fase 2",
+        "Operações de longo prazo e link de ajuste"
+      ]
+    }
+  ],
+  "timeLabel": "LINHA DO TEMPO",
+  "timeTitle": "O cronograma depende do escopo.",
+  "timeLead": "A duração varia de acordo com a contagem de fluxos de trabalho, integrações, acesso a dados, estrutura de revisão e velocidade de decisão.",
+  "timelines": [
+    {
+      "t": "Piloto Focado",
+      "d": "Cerca de 2–4 semanas · varia"
+    },
+    {
+      "t": "Construção de vários fluxos de trabalho",
+      "d": "Cerca de 4–8 semanas · varia"
+    },
+    {
+      "t": "Integração de plataforma",
+      "d": "Cerca de 8 semanas ou mais · personalizado"
+    }
+  ],
+  "priceLabel": "CUSTO DO PROJETO",
+  "priceTitle": "Cotado por projeto.",
+  "priceName": "AUTOMAÇÃO DE IA",
+  "priceValue": "Orçamento personalizado",
+  "priceFactorsLabel": "Fatores de preços",
+  "priceFactors": [
+    "Escopo – fluxo de trabalho e gama de recursos",
+    "Complexidade - classificar, rascunhar, resumir a profundidade",
+    "Cronograma – cronograma e recursos",
+    "Integração — CRM, correio, API, ferramentas internas",
+    "Política de dados — segurança, retenção, escopo de treinamento",
+    "Profundidade da revisão – nível humano no circuito",
+    "Uso do modelo – API e volume",
+    "Pós-lançamento – ajuste e expansão"
+  ],
+  "priceNote": "Analisamos Escopo/Complexidade/Cronograma/Integração e, em seguida, fornecemos um orçamento. Sem preço fixo de menu.",
+  "faqLabel": "Perguntas frequentes",
+  "faqTitle": "Perguntas frequentes",
+  "faqs": [
+    {
+      "q": "Qual modelo você usa?",
+      "a": "Propomos uma configuração que se adapta à política de trabalho e de dados – e não à dependência de um único fornecedor."
+    },
+    {
+      "q": "Nossos dados são usados para treinamento?",
+      "a": "O padrão é o uso operacional para o seu trabalho. Treinamento e retenção são acordados separadamente."
+    },
+    {
+      "q": "Ele enviará respostas de forma totalmente automática?",
+      "a": "Geralmente começamos com uma revisão humana. A automação se amplia quando a qualidade é estável."
+    },
+    {
+      "q": "Ele pode se conectar a CRM, correio ou planilhas?",
+      "a": "Analisamos sua pilha e confirmamos o que podemos conectar."
+    },
+    {
+      "q": "Uma equipe pequena pode começar?",
+      "a": "Sim. Pilote um fluxo de trabalho repetido primeiro."
+    },
+    {
+      "q": "Como isso é diferente da automação de fluxo de trabalho?",
+      "a": "A automação do fluxo de trabalho concentra-se em SaaS e conexões de dados. AI AUTOMATION centra-se na classificação, rascunho e resumo de IA no fluxo de trabalho."
+    },
+    {
+      "q": "Você pode oferecer suporte ao ajuste e expansão após o lançamento?",
+      "a": "Sim. Melhorias imediatas, expansão do fluxo de trabalho e integrações adicionais podem continuar sob acordo separado."
+    }
+  ],
+  "finalLabel": "INICIE UM PROJETO",
+  "finalTitle": "Comece com a automação de IA\nque se vincula ao trabalho real.",
+  "finalLead": "Conte-nos o trabalho repetido e as ferramentas que você já usa. Confirmaremos, juntos, a classificação, o rascunho e o resumo do escopo e da estrutura humana.",
+  "ctaFinalSecondary": "Ver tudo AUTOMAÇÃO →",
+  "ctaFinalSecondaryHref": "../automation/"
+}
