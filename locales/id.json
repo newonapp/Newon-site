@@ -612,7 +612,9 @@
     "linkContent": "Isi",
     "linkIp": "IP",
     "linkNotes": "Catatan",
-    "linkEducation": "Pendidikan"
+    "linkEducation": "Pendidikan",
+    "threadsAria": "Newon di Threads · terbuka di tab baru",
+    "threadsUrl": "https://www.threads.com/@newon.app.dev?invite=0"
   },
   "ox": {
     "skip": "Lompat ke konten",

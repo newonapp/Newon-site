@@ -612,7 +612,9 @@
     "linkContent": "सामग्री",
     "linkIp": "IP",
     "linkNotes": "नोट्स",
-    "linkEducation": "शिक्षा"
+    "linkEducation": "शिक्षा",
+    "threadsAria": "Newon Threads · नए टैब में खुलता है",
+    "threadsUrl": "https://www.threads.com/@newon.app.dev?invite=0"
   },
   "ox": {
     "skip": "सामग्री पर जाएँ",

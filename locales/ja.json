@@ -612,7 +612,9 @@
     "linkContent": "コンテンツ",
     "linkIp": "IP",
     "linkNotes": "メモ",
-    "linkEducation": "教育"
+    "linkEducation": "教育",
+    "threadsAria": "Newon Threads · 新しいタブで開く",
+    "threadsUrl": "https://www.threads.com/@newon.app.dev?invite=0"
   },
   "ox": {
     "skip": "本文へスキップ",

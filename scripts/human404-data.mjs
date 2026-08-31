@@ -247,10 +247,12 @@ export const fhKo = {
   emailAria: "이메일 보내기",
   instagramAria: "Instagram (새 탭)",
   youtubeAria: "YouTube (새 탭)",
+  threadsAria: "Threads (새 탭)",
   blogAria: "네이버 블로그 (새 탭)",
   tiktokAria: "TikTok (새 탭)",
   instagramUrl: "https://www.instagram.com/newon.app/",
   youtubeUrl: "https://www.youtube.com/@newonapp",
+  threadsUrl: "https://www.threads.com/@newon.app.dev?invite=0",
 };
 
 /** English page copy */
@@ -406,6 +408,7 @@ export const fhEn = {
   emailAria: "Send email",
   instagramAria: "Instagram (opens in a new tab)",
   youtubeAria: "YouTube (opens in a new tab)",
+  threadsAria: "Threads (opens in a new tab)",
   blogAria: "Naver Blog (opens in a new tab)",
   tiktokAria: "TikTok (opens in a new tab)",
 };

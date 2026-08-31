@@ -28,6 +28,20 @@ export const NAVER_BLOG_HOME =
 /** @type {NaverBlogPost[]} */
 export const NAVER_BLOG_POSTS = [
   {
+    id: "224395763455",
+    titleKo: "22살 1인 개발자, 6개월 만에 앱 11개를 개발하고 출시했습니다",
+    titleEn: "Solo developer at 22: 11 apps shipped in 6 months",
+    category: "newon",
+    summaryKo:
+      "약 6개월 전 처음 앱 개발을 시작해, 기획·디자인·개발·출시까지 혼자 반복한 결과 11개 앱이 되었습니다. My World부터 Newon+까지 만든 과정을 기록합니다.",
+    summaryEn:
+      "About six months after starting app development, 11 apps are live — planned, designed, built, and shipped solo. From My World to Newon+, a record of the build.",
+    date: "2026.08.31",
+    url: "https://m.blog.naver.com/PostView.naver?blogId=newonapp&logNo=224395763455",
+    thumbnail: "/blog-thumbs/nb-224395763455.jpg",
+    featured: true,
+  },
+  {
     id: "224376811561",
     titleKo: "My World : 여행 기록 · 여행 지도 · AI 리포트",
     titleEn: "My World: Travel log · Map · AI report",
@@ -39,7 +53,6 @@ export const NAVER_BLOG_POSTS = [
     date: "2026.08.12",
     url: "https://m.blog.naver.com/PostView.naver?blogId=newonapp&logNo=224376811561",
     thumbnail: "/blog-thumbs/nb-224376811561.png",
-    featured: true,
   },
   {
     id: "224355286116",

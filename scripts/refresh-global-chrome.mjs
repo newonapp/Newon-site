@@ -70,7 +70,9 @@ for (const { dir, file } of LANGS) {
     } else if (
       html.includes("gnav-dd__trigger") ||
       html.includes("class=\"gnav site-header") ||
-      html.includes("class=\"site-header gnav")
+      html.includes("class=\"site-header gnav") ||
+      html.includes("studio-footer--compact") ||
+      html.includes('class="site-footer"')
     ) {
       next = replaceLegacyChrome(html, flat, flatEn, { activeNav, base });
     }

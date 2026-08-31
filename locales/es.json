@@ -612,7 +612,9 @@
     "linkContent": "Contenido",
     "linkIp": "IP",
     "linkNotes": "Notas",
-    "linkEducation": "Educación"
+    "linkEducation": "Educación",
+    "threadsAria": "Newon en Threads · se abre en una pestaña nueva",
+    "threadsUrl": "https://www.threads.com/@newon.app.dev?invite=0"
   },
   "ox": {
     "skip": "Ir al contenido",

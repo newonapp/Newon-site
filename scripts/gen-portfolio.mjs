@@ -91,7 +91,7 @@ function head({ langMeta, copy, title, description, canonical, suffix }) {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="${FONTS}" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/gnav-mega.css?v=20260826gnav5" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20260831menu1" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260830filt1" />
     <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260830pfinck2" />
     <script src="/lang-nav.js?v=20260821stay2"></script>

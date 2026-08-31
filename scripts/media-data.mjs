@@ -282,7 +282,37 @@ export const MEDIA_ITEMS_HUB = [
     durationSeconds: 117,
   },
 
-  /* —— Instagram Reels (@newon.app) — thumbnail + external link (no embed) —— */
+  /* —— Instagram (@newon.app) — thumbnail + external link (no embed) —— */
+  {
+    id: "ig-Dcrk3d7khFL",
+    platform: "instagram",
+    category: "PRODUCT",
+    igType: "POST",
+    titleKo: "개강한 대학생이라면 저장해두기 — 필수 앱 9개",
+    titleEn: "Back-to-school picks: 9 apps for campus life",
+    descriptionKo: "목표·카운트·습관·저축·구독·가계부 등 새 학기에 쓸 앱을 모았습니다.",
+    descriptionEn: "Goals, counts, habits, savings, subscriptions, and more for the new semester.",
+    date: "2026-08-31",
+    url: "https://www.instagram.com/newon.app/p/Dcrk3d7khFL/",
+    embedUrl: null,
+    thumbnail: "/media-thumbs/ig-Dcrk3d7khFL.jpg",
+    duration: null,
+  },
+  {
+    id: "ig-Dcqh5c2FAy2",
+    platform: "instagram",
+    category: "BUILD",
+    igType: "POST",
+    titleKo: "22살, 6개월 동안 만든 11개의 앱",
+    titleEn: "Eleven apps built in six months at 22",
+    descriptionKo: "일상에서 필요하다고 느낀 아이디어를 하나씩 실제 앱으로 만든 기록.",
+    descriptionEn: "Turning everyday needs into real apps — one launch at a time.",
+    date: "2026-08-30",
+    url: "https://www.instagram.com/newon.app/p/Dcqh5c2FAy2/",
+    embedUrl: null,
+    thumbnail: "/media-thumbs/ig-Dcqh5c2FAy2.jpg",
+    duration: null,
+  },
   {
     id: "ig-Db-RGaAR6JH",
     platform: "instagram",

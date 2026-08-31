@@ -21,7 +21,7 @@ export function injectSiteChrome(
   if (!out.includes("gnav-mega.css")) {
     out = out.replace(
       /(<link rel="stylesheet" href="\/styles\.css[^"]*" \/>)/,
-      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260828logo" />'
+      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260831menu1" />'
     );
   }
   if (!out.includes("site-dark.css")) {
@@ -62,8 +62,8 @@ export function replaceLegacyChrome(
   out = out.replace(/<header class="site-header gnav[\s\S]*?<\/header>/, header);
   out = out.replace(/<header class="gnav site-header[\s\S]*?<\/header>/, header);
   out = out.replace(/<header class="site-header pf-header[\s\S]*?<\/header>/, header);
-  out = out.replace(/<footer class="site-footer[\s\S]*?<\/footer>/, footer);
-  out = out.replace(/<footer class="pf-foot[\s\S]*?<\/footer>/, footer);
+  out = out.replace(/<footer class="site-footer[\s\S]*?<\/footer>/g, footer);
+  out = out.replace(/<footer class="pf-foot[\s\S]*?<\/footer>/g, footer);
   out = out.replace(/<nav class="co-switch"[\s\S]*?<\/nav>\s*/g, "");
   out = out.replace(/<nav class="co-nav"[\s\S]*?<\/nav>\s*/g, "");
   if (companySwitch) {
@@ -83,10 +83,10 @@ export function replaceLegacyChrome(
   if (!out.includes("gnav-mega.css")) {
     out = out.replace(
       /(<link rel="stylesheet" href="\/styles\.css[^"]*" \/>)/,
-      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260828logo" />'
+      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260831menu1" />'
     );
   } else {
-    out = out.replace(/gnav-mega\.css\?v=[^"]+/g, "gnav-mega.css?v=20260828logo");
+    out = out.replace(/gnav-mega\.css\?v=[^"]+/g, "gnav-mega.css?v=20260831menu1");
   }
   if (!out.includes("site-dark.css")) {
     out = out.replace(

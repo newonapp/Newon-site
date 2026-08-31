@@ -236,7 +236,9 @@
     "linkBrand": "Marke",
     "linkDigital": "DIGITAL",
     "linkContent": "Inhalt",
-    "linkIp": "IP"
+    "linkIp": "IP",
+    "threadsAria": "Newon auf Threads · öffnet in neuem Tab",
+    "threadsUrl": "https://www.threads.com/@newon.app.dev?invite=0"
   },
   "ui": {
     "backHome": "Zur Startseite",
