@@ -23602,17 +23602,13 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
           btn.textContent = dark ? "☀" : "🌙";
         }
 
+        /** Default when no saved theme: always light (not OS preference). */
         function getSystemThemePreference() {
-          try {
-            if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-              return "dark";
-            }
-          } catch (e) {}
           return "light";
         }
 
         /**
-         * newon-app-theme 가 없으면 레거시 앱별 키 또는 OS 다크 설정으로 시드 후
+         * newon-app-theme 가 없으면 레거시 앱별 키로 시드(없으면 light) 후
          * 모든 앱 루트에 동일 data-theme 적용 (앱별로 다른 기본값이 남지 않게).
          */
         function ensureUnifiedThemeSeeded() {

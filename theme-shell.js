@@ -5,12 +5,6 @@
 (function (global) {
   var KEY = "newon-app-theme";
 
-  function systemTheme() {
-    return global.matchMedia && global.matchMedia("(prefers-color-scheme: light)").matches
-      ? "light"
-      : "dark";
-  }
-
   function getTheme() {
     try {
       var q = new URLSearchParams(global.location.search).get("theme");
@@ -20,7 +14,7 @@
       var t = global.localStorage.getItem(KEY);
       if (t === "light" || t === "dark") return t;
     } catch (e) {}
-    return systemTheme();
+    return "light";
   }
 
   function applyShellTheme(theme) {
