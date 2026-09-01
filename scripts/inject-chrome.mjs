@@ -5,7 +5,7 @@ import { renderStudioHeader, renderStudioFooter, renderGlobalHeader, renderCompa
 import { CHROME_HEAD_CSS } from "./hub-utils.mjs";
 
 const GnavCss = "gnav-mega.css?v=20260902nav1";
-const SiteChromeJs = "site-chrome.js?v=20260902nav1";
+const SiteChromeJs = "site-chrome.js?v=20260902nav2";
 
 function injectHeadCss(html) {
   let out = html;
@@ -28,10 +28,10 @@ export function injectSiteChrome(
   html,
   flat,
   flatEn,
-  { activeNav = "", mobileExtra = "", base = "../", idSuffix = "hub", companySwitch = "" } = {}
+  { activeNav = "", mobileExtra = "", base = "../", idSuffix = "hub", companySwitch = "", langDir = "" } = {}
 ) {
-  const header = renderGlobalHeader(flat, flatEn, { activeNav, base, idSuffix });
-  const footer = renderStudioFooter(flat, flatEn, { base });
+  const header = renderGlobalHeader(flat, flatEn, { activeNav, base, idSuffix, langDir });
+  const footer = renderStudioFooter(flat, flatEn, { base, langDir });
   let out = html.replace(/\{\{CHROME_HEADER\}\}/g, header).replace(/\{\{CHROME_FOOTER\}\}/g, footer);
   if (out.includes("{{COMPANY_SWITCHER}}")) {
     const switcher = companySwitch
@@ -60,10 +60,10 @@ export function replaceLegacyChrome(
   html,
   flat,
   flatEn,
-  { activeNav = "", mobileExtra = "", base = "../", companySwitch = "" } = {}
+  { activeNav = "", mobileExtra = "", base = "../", companySwitch = "", langDir = "" } = {}
 ) {
-  const header = renderGlobalHeader(flat, flatEn, { activeNav, base, idSuffix: "legacy" });
-  const footer = renderStudioFooter(flat, flatEn, { base });
+  const header = renderGlobalHeader(flat, flatEn, { activeNav, base, idSuffix: "legacy", langDir });
+  const footer = renderStudioFooter(flat, flatEn, { base, langDir });
   let out = html.replace(/<header class="site-header snav-header[\s\S]*?<\/header>/, header);
   out = out.replace(/<header class="site-header gnav[\s\S]*?<\/header>/, header);
   out = out.replace(/<header class="gnav site-header[\s\S]*?<\/header>/, header);

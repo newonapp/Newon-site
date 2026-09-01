@@ -66,7 +66,7 @@ for (const { dir, file } of LANGS) {
     const activeNav = resolveActiveNav(pathnameFromFile(filePath, dir));
     let next = null;
     if (html.includes("{{CHROME_HEADER}}")) {
-      next = injectSiteChrome(html, flat, flatEn, { activeNav, base, idSuffix: "refresh" });
+      next = injectSiteChrome(html, flat, flatEn, { activeNav, base, idSuffix: "refresh", langDir: dir });
     } else if (
       html.includes("gnav-dd__trigger") ||
       html.includes("class=\"gnav site-header") ||
@@ -74,7 +74,7 @@ for (const { dir, file } of LANGS) {
       html.includes("studio-footer--compact") ||
       html.includes('class="site-footer"')
     ) {
-      next = replaceLegacyChrome(html, flat, flatEn, { activeNav, base });
+      next = replaceLegacyChrome(html, flat, flatEn, { activeNav, base, langDir: dir });
     }
     if (!next || next === html) continue;
     fs.writeFileSync(filePath, next);

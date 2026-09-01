@@ -26,15 +26,21 @@ function langDir(lang) {
   return lang === "ko" ? "ko" : "en";
 }
 
+/** Root-absolute locale path — safe from / and /ko/ alike. */
+function pageHref(lang, path) {
+  if (!path || path.startsWith("#") || path.startsWith("/") || /^https?:/.test(path)) return path;
+  return `/${langDir(lang)}/${path.replace(/^\.\//, "")}`;
+}
+
 /** App intro overlays live on the locale home page (`#ox-month`, `#goalup-app`, …). */
-function productHref(slug) {
-  if (slug === "404-human") return "404-human/";
+function productHref(slug, lang) {
+  if (slug === "404-human") return pageHref(lang, "404-human/");
   const hash = HOME_HASH_BY_SLUG[slug];
   if (hash) {
     if (hash.endsWith("/")) return hash.replace(/^\//, "");
     return hash.startsWith("#") ? hash : `#${hash}`;
   }
-  return `portfolio/${slug}/`;
+  return pageHref(lang, `portfolio/${slug}/`);
 }
 
 function projectsBySlug(lang) {
@@ -54,14 +60,14 @@ function productCat(p, copy) {
   return (copy.productCats && copy.productCats[p.slug]) || p.categoryLabel || "APP";
 }
 
-function selectedProductsHtml(copy, bySlug) {
+function selectedProductsHtml(copy, bySlug, lang) {
   const apps = PRODUCT_SLUGS.map((s) => bySlug[s]).filter(Boolean);
   const cards = apps
     .map((p, i) => {
       const icon = p.icon
         ? `<img class="hs-prod__icon" src="${escapeHtml(p.icon)}" alt="" width="56" height="56" loading="lazy" decoding="async" />`
         : "";
-      return `<a class="hs-prod" href="${escapeHtml(productHref(p.slug))}">
+      return `<a class="hs-prod" href="${escapeHtml(productHref(p.slug, lang))}">
         <span class="hs-prod__n">${String(i + 1).padStart(2, "0")}</span>
         ${icon}
         <span class="hs-prod__cat">${escapeHtml(productCat(p, copy))}</span>
@@ -84,7 +90,7 @@ function selectedProductsHtml(copy, bySlug) {
 </section>`;
 }
 
-function doesHtml(copy) {
+function doesHtml(copy, lang) {
   const areas = [
     {
       n: "01",
@@ -92,7 +98,7 @@ function doesHtml(copy) {
       items: copy.doesProductsItems,
       body: copy.doesProductsBody,
       cta: copy.doesProductsCta,
-      href: "products/",
+      href: pageHref(lang, "products/"),
     },
     {
       n: "02",
@@ -100,7 +106,7 @@ function doesHtml(copy) {
       items: copy.doesBusinessItems,
       body: copy.doesBusinessBody,
       cta: copy.doesBusinessCta,
-      href: "business/",
+      href: pageHref(lang, "business/"),
     },
     {
       n: "03",
@@ -108,7 +114,7 @@ function doesHtml(copy) {
       items: copy.doesStudioItems,
       body: copy.doesStudioBody,
       cta: copy.doesStudioCta,
-      href: "studio/",
+      href: pageHref(lang, "studio/"),
     },
     {
       n: "04",
@@ -116,7 +122,7 @@ function doesHtml(copy) {
       items: copy.doesLabsItems,
       body: copy.doesLabsBody,
       cta: copy.doesLabsCta,
-      href: "resources/labs/",
+      href: pageHref(lang, "resources/labs/"),
     },
   ];
   return `<section id="hs-does" class="hs-section hs-section--does" data-hs-section aria-labelledby="hs-does-title">
@@ -143,12 +149,12 @@ function doesHtml(copy) {
 </section>`;
 }
 
-function businessHtml(copy) {
+function businessHtml(copy, lang) {
   const svcs = [
-    { n: "01", title: copy.businessBuildTitle, body: copy.businessBuildBody, href: "business/build/" },
-    { n: "02", title: copy.businessAutoTitle, body: copy.businessAutoBody, href: "business/automation/" },
-    { n: "03", title: copy.businessResearchTitle, body: copy.businessResearchBody, href: "business/research/" },
-    { n: "04", title: copy.businessSolutionsTitle, body: copy.businessSolutionsBody, href: "business/solutions/" },
+    { n: "01", title: copy.businessBuildTitle, body: copy.businessBuildBody, href: pageHref(lang, "business/build/") },
+    { n: "02", title: copy.businessAutoTitle, body: copy.businessAutoBody, href: pageHref(lang, "business/automation/") },
+    { n: "03", title: copy.businessResearchTitle, body: copy.businessResearchBody, href: pageHref(lang, "business/research/") },
+    { n: "04", title: copy.businessSolutionsTitle, body: copy.businessSolutionsBody, href: pageHref(lang, "business/solutions/") },
   ];
   return `<section id="hs-business" class="hs-section hs-section--business" data-hs-section aria-labelledby="hs-business-title">
   <div class="hs-wrap">
@@ -158,8 +164,8 @@ function businessHtml(copy) {
         <h2 id="hs-business-title" class="hs-h2">${copy.businessTitleHtml}</h2>
         <p class="hs-lead">${escapeHtml(copy.businessLead)}</p>
         <div class="hs-actions">
-          <a class="hs-btn hs-btn--fill" href="business/inquiry/">${escapeHtml(copy.businessInquiry)}</a>
-          <a class="hs-link" href="business/">${escapeHtml(copy.businessExplore)}</a>
+          <a class="hs-btn hs-btn--fill" href="${pageHref(lang, "business/inquiry/")}">${escapeHtml(copy.businessInquiry)}</a>
+          <a class="hs-link" href="${pageHref(lang, "business/")}">${escapeHtml(copy.businessExplore)}</a>
         </div>
       </div>
       <ol class="hs-biz-stack">${svcs
@@ -232,7 +238,7 @@ function labsHtml(copy, lang) {
     const title = isKo ? exp.displayTitleKo || exp.titleKo : exp.displayTitleEn || exp.titleEn;
     const question = isKo ? exp.questionListKo || exp.questionKo : exp.questionListEn || exp.questionEn;
     const status = isKo ? exp.stageLabelKo || exp.status : exp.stageLabelEn || exp.status;
-    return `<a class="hs-lab${featured ? " hs-lab--feat" : ""}" href="resources/labs/${escapeHtml(exp.slug)}/">
+    return `<a class="hs-lab${featured ? " hs-lab--feat" : ""}" href="${pageHref(lang, `resources/labs/${exp.slug}/`)}">
         <span class="hs-lab__meta">
           <span class="hs-lab__n">${String(i + 1).padStart(2, "0")}</span>
           <span class="hs-lab__status">${escapeHtml(status)}</span>
@@ -259,17 +265,17 @@ function labsHtml(copy, lang) {
       ${feat}
       <div class="hs-labs-rest">${rest}</div>
     </div>
-    <p class="hs-more"><a class="hs-link" href="resources/labs/">${escapeHtml(copy.labsAll)}</a></p>
+    <p class="hs-more"><a class="hs-link" href="${pageHref(lang, "resources/labs/")}">${escapeHtml(copy.labsAll)}</a></p>
   </div>
 </section>`;
 }
 
-function studioHtml(copy) {
+function studioHtml(copy, lang) {
   const areas = [
-    { title: copy.studioBrandTitle, items: copy.studioBrandItems, href: "studio/brand/" },
-    { title: copy.studioDigitalTitle, items: copy.studioDigitalItems, href: "studio/digital/" },
-    { title: copy.studioContentTitle, items: copy.studioContentItems, href: "studio/content/" },
-    { title: copy.studioIpTitle, items: copy.studioIpItems, href: "studio/ip/" },
+    { title: copy.studioBrandTitle, items: copy.studioBrandItems, href: pageHref(lang, "studio/brand/") },
+    { title: copy.studioDigitalTitle, items: copy.studioDigitalItems, href: pageHref(lang, "studio/digital/") },
+    { title: copy.studioContentTitle, items: copy.studioContentItems, href: pageHref(lang, "studio/content/") },
+    { title: copy.studioIpTitle, items: copy.studioIpItems, href: pageHref(lang, "studio/ip/") },
   ];
   return `<section id="hs-studio" class="hs-section hs-section--studio" data-hs-section aria-labelledby="hs-studio-title">
   <div class="hs-wrap">
@@ -279,7 +285,7 @@ function studioHtml(copy) {
         <h2 id="hs-studio-title" class="hs-h2">${copy.studioTitleHtml}</h2>
         <p class="hs-lead">${escapeHtml(copy.studioLead)}</p>
       </div>
-      <p class="hs-more hs-more--inline"><a class="hs-link" href="studio/">${escapeHtml(copy.studioAll)}</a></p>
+      <p class="hs-more hs-more--inline"><a class="hs-link" href="${pageHref(lang, "studio/")}">${escapeHtml(copy.studioAll)}</a></p>
     </header>
     <div class="hs-board hs-studio-wall" role="list">${areas
       .map(
@@ -306,7 +312,7 @@ function latestItems(lang) {
       typeLabel: "NEWS",
       title: c.title || c.latestTitle || a.slug,
       date: formatNewsDate(a.date),
-      href: `news/${a.slug}/`,
+      href: pageHref(lang, `news/${a.slug}/`),
       sort: a.date,
     });
   }
@@ -366,14 +372,14 @@ function latestHtml(copy, lang) {
         <p class="hs-kicker">${escapeHtml(copy.latestEyebrow)}</p>
         <h2 id="hs-latest-title" class="hs-h2">${copy.latestTitleHtml}</h2>
       </div>
-      <p class="hs-more hs-more--inline"><a class="hs-link" href="news/">${escapeHtml(copy.latestAll)}</a></p>
+      <p class="hs-more hs-more--inline"><a class="hs-link" href="${pageHref(lang, "news/")}">${escapeHtml(copy.latestAll)}</a></p>
     </header>
     <div class="hs-board hs-latest-list">${rows}</div>
   </div>
 </section>`;
 }
 
-function resourcesHtml(copy) {
+function resourcesHtml(copy, lang) {
   const items = [
     {
       n: "01",
@@ -381,7 +387,7 @@ function resourcesHtml(copy) {
       items: copy.resourceStoreItems,
       body: copy.resourceStoreBody,
       cta: copy.resourceStoreCta,
-      href: "resources/store/",
+      href: pageHref(lang, "resources/store/"),
     },
     {
       n: "02",
@@ -389,7 +395,7 @@ function resourcesHtml(copy) {
       items: copy.resourceInsightsItems,
       body: copy.resourceInsightsBody,
       cta: copy.resourceInsightsCta,
-      href: "resources/insights/",
+      href: pageHref(lang, "resources/insights/"),
     },
     {
       n: "03",
@@ -397,7 +403,7 @@ function resourcesHtml(copy) {
       items: copy.resourceBlogItems,
       body: copy.resourceBlogBody,
       cta: copy.resourceBlogCta,
-      href: "resources/blog/",
+      href: pageHref(lang, "resources/blog/"),
     },
     {
       n: "04",
@@ -405,7 +411,7 @@ function resourcesHtml(copy) {
       items: copy.resourceLabsItems,
       body: copy.resourceLabsBody,
       cta: copy.resourceLabsCta,
-      href: "resources/labs/",
+      href: pageHref(lang, "resources/labs/"),
     },
   ];
   return `<section id="hs-resources" class="hs-section hs-section--resources" data-hs-section aria-labelledby="hs-resources-title">
@@ -432,17 +438,17 @@ function resourcesHtml(copy) {
 </section>`;
 }
 
-function exploreHtml(copy) {
+function exploreHtml(copy, lang) {
   const feat = {
     n: "01",
     title: copy.exploreAboutTitle,
     body: copy.exploreAboutBody,
-    href: "about/",
+    href: pageHref(lang, "about/"),
   };
   const rest = [
-    { n: "02", title: copy.explorePortfolioTitle, body: copy.explorePortfolioBody, href: "portfolio/" },
-    { n: "03", title: copy.exploreNewsTitle, body: copy.exploreNewsBody, href: "news/" },
-    { n: "04", title: copy.exploreMediaTitle, body: copy.exploreMediaBody, href: "media/" },
+    { n: "02", title: copy.explorePortfolioTitle, body: copy.explorePortfolioBody, href: pageHref(lang, "portfolio/") },
+    { n: "03", title: copy.exploreNewsTitle, body: copy.exploreNewsBody, href: pageHref(lang, "news/") },
+    { n: "04", title: copy.exploreMediaTitle, body: copy.exploreMediaBody, href: pageHref(lang, "media/") },
   ];
   return `<section id="hs-explore" class="hs-section hs-section--explore" data-hs-section aria-labelledby="hs-explore-title">
   <div class="hs-wrap">
@@ -472,7 +478,7 @@ function exploreHtml(copy) {
 </section>`;
 }
 
-function finalHtml(copy) {
+function finalHtml(copy, lang) {
   return `<section id="hs-final" class="hs-final hs-final--ink hs-final--rail" data-hs-section aria-labelledby="hs-final-title">
   <div class="hs-wrap">
     <div class="hs-final__rail">
@@ -488,8 +494,8 @@ function finalHtml(copy) {
         <div class="hs-final__side">
           <p class="hs-lead hs-lead--on-ink hs-final__lead">${escapeHtml(copy.finalLead)}</p>
           <div class="hs-actions hs-final__actions">
-            <a class="hs-btn hs-btn--fill hs-final__btn" href="business/inquiry/">${escapeHtml(copy.finalPrimary)}</a>
-            <a class="hs-final__ghost" href="business/">${escapeHtml(copy.finalSecondary)}</a>
+            <a class="hs-btn hs-btn--fill hs-final__btn" href="${pageHref(lang, "business/inquiry/")}">${escapeHtml(copy.finalPrimary)}</a>
+            <a class="hs-final__ghost" href="${pageHref(lang, "business/")}">${escapeHtml(copy.finalSecondary)}</a>
           </div>
         </div>
       </div>
@@ -505,14 +511,14 @@ export function buildHomeStudioBody(lang) {
   const stats = getCompanyMetrics();
   const bySlug = projectsBySlug(lang);
 
-  return `${selectedProductsHtml(copy, bySlug)}
-${doesHtml(copy)}
-${businessHtml(copy)}
+  return `${selectedProductsHtml(copy, bySlug, lang)}
+${doesHtml(copy, lang)}
+${businessHtml(copy, lang)}
 ${builtHtml(copy, stats)}
 ${labsHtml(copy, lang)}
-${studioHtml(copy)}
+${studioHtml(copy, lang)}
 ${latestHtml(copy, lang)}
-${resourcesHtml(copy)}
-${exploreHtml(copy)}
-${finalHtml(copy)}`;
+${resourcesHtml(copy, lang)}
+${exploreHtml(copy, lang)}
+${finalHtml(copy, lang)}`;
 }

@@ -113,6 +113,7 @@ const PUBLISH_ROOT_IMAGES = [
 
 /** 통째로 _publish/<이름>/ 에 복사 (HTML과 상대 경로로 묶임) */
 const PUBLISH_COPY_DIRS = [
+  { from: "apps", to: "apps", required: false },
   { from: "locales", to: "locales", required: true },
   { from: "i18n-img", to: "i18n-img", required: false },
   { from: "ox-img", to: "ox-img", required: false },

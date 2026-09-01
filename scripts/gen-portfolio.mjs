@@ -107,7 +107,7 @@ function localeFlats(lang) {
 
 function chromeNav(lang, { base = "../", idSuffix = "portfolio" } = {}) {
   const { flat, flatEn } = localeFlats(lang);
-  const header = renderGlobalHeader(flat, flatEn, { activeNav: "company", base, idSuffix });
+  const header = renderGlobalHeader(flat, flatEn, { activeNav: "company", base, idSuffix, langDir: lang });
   const switcher = renderCompanySwitcher(flat, flatEn, { active: "portfolio", base });
   return `
     <a class="skip-link" href="#pf-main">${esc(portfolioCopy(lang).skip)}</a>
@@ -117,7 +117,7 @@ function chromeNav(lang, { base = "../", idSuffix = "portfolio" } = {}) {
 
 function foot(lang, { base = "../", hub = false } = {}) {
   const { flat, flatEn } = localeFlats(lang);
-  const siteFoot = renderStudioFooter(flat, flatEn, { base });
+  const siteFoot = renderStudioFooter(flat, flatEn, { base, langDir: lang });
   return `
     ${siteFoot}
     <script src="/lang-dropdown.js"></script>

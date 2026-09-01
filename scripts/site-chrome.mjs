@@ -50,13 +50,19 @@ function t(flat, flatEn, key, fb = "") {
   return v != null && v !== "" ? String(v) : fb;
 }
 
-function href(base, path) {
-  if (!path) return base || "./";
+function href(base, path, langDir = "") {
+  if (!path) {
+    if (langDir && (!base || base === "./")) return `/${langDir}/`;
+    return base || "./";
+  }
   if (path.startsWith("#")) {
-    const home = base || "./";
+    const home = langDir && (!base || base === "./") ? `/${langDir}/` : base || "./";
     if (!home || home === "./") return path;
     return `${home.replace(/\/?$/, "/")}${path.slice(1)}`;
   }
+  if (path.startsWith("/") || /^https?:/.test(path)) return path;
+  const clean = path.replace(/^\.\//, "");
+  if ((!base || base === "./") && langDir) return `/${langDir}/${clean}`;
   return `${base}${path}`;
 }
 
@@ -92,7 +98,7 @@ function megaItemLimit(menuId) {
   return 4;
 }
 
-function editorialMega(flat, flatEn, base, menuId) {
+function editorialMega(flat, flatEn, base, menuId, langDir = "") {
   const meta = MENU_META[menuId];
   const kicker = escapeHtml(t(flat, flatEn, meta.kicker, menuId.toUpperCase()));
   const lead = escapeHtml(t(flat, flatEn, meta.lead));
@@ -103,7 +109,7 @@ function editorialMega(flat, flatEn, base, menuId) {
       const title = escapeHtml(t(flat, flatEn, item.titleKey, item.titleFb));
       const desc = escapeHtml(t(flat, flatEn, item.descKey));
       const n = String(i + 1).padStart(2, "0");
-      return `<a class="gnav-mega__row" href="${href(base, item.href)}" role="menuitem">
+      return `<a class="gnav-mega__row" href="${href(base, item.href, langDir)}" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">${n}</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">${title}</span>
@@ -120,16 +126,18 @@ function editorialMega(flat, flatEn, base, menuId) {
     <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
       ${rows}
     </div>
-    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="${href(base, meta.footHref)}">${foot}</a></p>`;
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="${href(base, meta.footHref, langDir)}">${foot}</a></p>`;
 }
 
-const MEGA_RENDERERS = Object.fromEntries(TOP_NAV.map((id) => [id, (f, fe, b) => editorialMega(f, fe, b, id)]));
+const MEGA_RENDERERS = Object.fromEntries(
+  TOP_NAV.map((id) => [id, (f, fe, b, ld) => editorialMega(f, fe, b, id, ld)])
+);
 
-function navMegaItem(flat, flatEn, base, activeNav, id) {
+function navMegaItem(flat, flatEn, base, activeNav, id, langDir = "") {
   const label = navTopLabel(flat, flatEn, id);
   const active = activeNav === id ? " gnav-dd--active" : "";
   const openAttr = activeNav === id ? ' aria-current="page"' : "";
-  const body = MEGA_RENDERERS[id](flat, flatEn, base);
+  const body = MEGA_RENDERERS[id](flat, flatEn, base, langDir);
   return `<div class="gnav-dd${active}" data-gnav-dd data-gnav-menu="${id}">
     <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true"${openAttr}>
       ${label}${CHEVRON_SVG}
@@ -142,8 +150,8 @@ function navMegaItem(flat, flatEn, base, activeNav, id) {
   </div>`;
 }
 
-function desktopNav(flat, flatEn, base, activeNav) {
-  return TOP_NAV.map((id) => navMegaItem(flat, flatEn, base, activeNav, id)).join("\n          ");
+function desktopNav(flat, flatEn, base, activeNav, langDir = "") {
+  return TOP_NAV.map((id) => navMegaItem(flat, flatEn, base, activeNav, id, langDir)).join("\n          ");
 }
 
 function langSelect(flat, flatEn, id) {
@@ -171,18 +179,18 @@ const MOBILE_MENUS = Object.fromEntries(
   ])
 );
 
-function mobileNav(flat, flatEn, base, suffix) {
+function mobileNav(flat, flatEn, base, suffix, langDir = "") {
   const projectInquiry = escapeHtml(t(flat, flatEn, "nav.businessInquiryCtaMobile", "Project inquiry"));
   const themeLabel = escapeHtml(t(flat, flatEn, "common.themeToggle", "Theme"));
 
   const sections = TOP_NAV.map((id) => {
     const label = navTopLabel(flat, flatEn, id);
-    const hubHref = href(base, MENU_META[id].footHref);
+    const hubHref = href(base, MENU_META[id].footHref, langDir);
     const items = MOBILE_MENUS[id] || [];
     const links = items
       .map((item) => {
         const labelText = escapeHtml(t(flat, flatEn, item.labelKey, item.titleFb || ""));
-        return `<a class="gnav-mobile__sublink" href="${href(base, item.href)}">${labelText}</a>`;
+        return `<a class="gnav-mobile__sublink" href="${href(base, item.href, langDir)}">${labelText}</a>`;
       })
       .join("");
     return `<div class="gnav-mobile__acc" data-gnav-acc>
@@ -205,15 +213,15 @@ function mobileNav(flat, flatEn, base, suffix) {
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
           ${sections}
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
-          <a class="gnav-mobile__cta btn btn-primary" href="${href(base, "business/inquiry/")}">${projectInquiry}</a>
+          <a class="gnav-mobile__cta btn btn-primary" href="${href(base, "business/inquiry/", langDir)}">${projectInquiry}</a>
         </div>
       </div>
     </div>`;
 }
 
-export function renderGlobalHeader(flat, flatEn, { activeNav = "", base = "../", idSuffix = "hub" } = {}) {
+export function renderGlobalHeader(flat, flatEn, { activeNav = "", base = "../", idSuffix = "hub", langDir = "" } = {}) {
   const brand = escapeHtml(t(flat, flatEn, "nav.brandName", "Newon"));
-  const brandHref = base || "./";
+  const brandHref = langDir && (!base || base === "./") ? `/${langDir}/` : base || "./";
   const langId = `lang-select-gnav-${idSuffix}`;
   const inquiry = escapeHtml(t(flat, flatEn, "nav.inquiryCta", "Contact"));
   const menuLabel = escapeHtml(t(flat, flatEn, "nav.menuLabel", "Menu"));
@@ -228,10 +236,10 @@ export function renderGlobalHeader(flat, flatEn, { activeNav = "", base = "../",
             <span class="gnav__wordmark">${brand}</span>
           </a>
           <nav class="gnav__nav" aria-label="${escapeHtml(t(flat, flatEn, "nav.mainAria", "Main"))}">
-            ${desktopNav(flat, flatEn, base, activeNav)}
+            ${desktopNav(flat, flatEn, base, activeNav, langDir)}
           </nav>
           <div class="gnav__util">
-            <a class="gnav__cta" href="${href(base, "business/inquiry/")}">${inquiry}</a>
+            <a class="gnav__cta" href="${href(base, "business/inquiry/", langDir)}">${inquiry}</a>
             ${langSelect(flat, flatEn, langId)}
             <button type="button" class="gnav__theme" data-theme-toggle data-label-light="${escapeHtml(t(flat, flatEn, "common.themeToLight", ""))}" data-label-dark="${escapeHtml(t(flat, flatEn, "common.themeToDark", ""))}" title="${themeTitle}" aria-label="${themeLabel}">${MOON_SVG}</button>
             <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-${idSuffix}" aria-label="${menuLabel}">
@@ -240,7 +248,7 @@ export function renderGlobalHeader(flat, flatEn, { activeNav = "", base = "../",
           </div>
         </div>
       </div>
-      ${mobileNav(flat, flatEn, base, idSuffix)}
+      ${mobileNav(flat, flatEn, base, idSuffix, langDir)}
     </header>`;
 }
 
@@ -274,10 +282,18 @@ const SVG_BLOG = `<svg class="footer-icon-btn__svg" xmlns="http://www.w3.org/200
 
 const SVG_TIKTOK = `<svg class="footer-icon-btn__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>`;
 
-export function renderStudioFooter(flat, flatEn, { base = "../" } = {}) {
+export function renderStudioFooter(flat, flatEn, { base = "../", langDir = "" } = {}) {
   const tf = (k, fb) => escapeHtml(pick(flat, flatEn, k) || fb);
   const b = base == null ? "../" : base;
-  const resolve = (h) => (h.startsWith("../") ? b + h.slice(3) : h);
+  const resolve = (h) => {
+    if (h.startsWith("/") || /^https?:/.test(h)) return h;
+    if (h.startsWith("../")) {
+      const tail = h.slice(3);
+      if (langDir && (!b || b === "./")) return `/${langDir}/${tail}`;
+      return b + tail;
+    }
+    return h;
+  };
   const ig = escapeHtml(pick(flat, flatEn, "footer.instagramUrl") || "https://www.instagram.com/newon.app/");
   const yt = escapeHtml(pick(flat, flatEn, "footer.youtubeUrl") || "https://www.youtube.com/@newonapp");
   const year = new Date().getFullYear();

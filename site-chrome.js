@@ -174,8 +174,9 @@
   }
 
   function followMobileNavLink(link) {
-    var url = link.href;
-    if (!url) return;
+    var raw = link.getAttribute("href");
+    if (!raw || raw.charAt(0) === "#") return;
+    var url = raw.charAt(0) === "/" ? raw : link.href;
     closeMobile();
     window.location.assign(url);
   }

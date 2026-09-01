@@ -365,7 +365,7 @@ for (const { dir, file, htmlLang } of LANGS) {
   const copyLang = dir === "ko" ? "ko" : "en";
   tpl = tpl.replace(/\{\{HOME_STUDIO_BODY\}\}/g, buildHomeStudioBody(copyLang));
 
-  tpl = tpl.replace(/\{\{GLOBAL_HEADER\}\}/g, renderGlobalHeader(flat, flatEn, { activeNav: "", base: "", idSuffix: "home" }));
+  tpl = tpl.replace(/\{\{GLOBAL_HEADER\}\}/g, renderGlobalHeader(flat, flatEn, { activeNav: "", base: "", idSuffix: "home", langDir: dir }));
 
   const outDir = path.join(ROOT, dir);
   fs.mkdirSync(outDir, { recursive: true });
