@@ -191,6 +191,7 @@ function mobileNav(flat, flatEn, base, suffix) {
   }).join("\n        ");
 
   return `<div id="gnav-mobile-${suffix}" class="gnav-mobile" hidden aria-hidden="true">
+      <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="${escapeHtml(t(flat, flatEn, "common.close", "Close"))}"></button>
       <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="${escapeHtml(t(flat, flatEn, "nav.menuLabel", "Menu"))}">
         <div class="gnav-mobile__scroll">
           ${sections}
@@ -202,7 +203,6 @@ function mobileNav(flat, flatEn, base, suffix) {
           </div>
         </div>
       </div>
-      <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="${escapeHtml(t(flat, flatEn, "common.close", "Close"))}"></button>
     </div>`;
 }
 
