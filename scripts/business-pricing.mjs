@@ -334,7 +334,7 @@ function patchStaleTimelineText(text, lang = "ko") {
 export function formatPriceDisplay(slug, lang = "ko") {
   const cfg = SERVICE_PRICING[slug];
   if (!cfg) return "";
-  if (cfg.custom) return lang === "ko" ? "별도 견적" : "Custom quote";
+  if (cfg.custom) return lang === "ko" ? "맞춤 견적" : "Custom quote";
   const ko = lang === "ko";
   if (ko) return `${formatKrw(cfg.amount)}부터`;
   return `From ${formatKrw(cfg.amount)}`;
@@ -575,7 +575,7 @@ export const BUSINESS_PACKAGES = [
     id: "custom",
     nameKey: "studio.pkgCustomName",
     descKey: "studio.pkgCustomDesc",
-    priceKo: "별도 견적",
+    priceKo: "맞춤 견적",
     priceEn: "Custom quote",
   },
 ];

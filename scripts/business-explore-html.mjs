@@ -77,7 +77,7 @@ export function businessExploreHtml(flat, flatEn, lang = "en") {
       <p class="ns-lead">${t(flat, flatEn, "business.exploreLead", ko ? "Build · Automation · Research · Solutions — 기업과 함께하는 네 가지 방식을 한눈에 살펴보세요." : "Build · Automation · Research · Solutions — four ways we work with teams.")}</p>
       <div class="ns-actions">
         <a class="btn btn-ghost" href="#services">${t(flat, flatEn, "business.exploreCtaServices", ko ? "서비스 살펴보기 ↓" : "Explore services ↓")}</a>
-        <a class="btn btn-primary" href="inquiry/">${t(flat, flatEn, "business.ctaInquiry", ko ? "프로젝트 문의하기" : "Project inquiry")} ↗</a>
+        <a class="btn btn-primary" href="inquiry/">${t(flat, flatEn, "business.ctaInquiry", ko ? "프로젝트 상담하기" : "Start a consultation")} ↗</a>
       </div>
       ${rail(pillars, ko ? "Business 영역" : "Business areas")}
     </div>

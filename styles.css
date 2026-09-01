@@ -2638,6 +2638,17 @@ html[data-newon-shell-theme="dark"] .hero-desc {
     padding: calc(var(--home-mobile-chrome-h) + var(--eco-top)) 0 var(--eco-bottom);
   }
 
+  /* Home top hero: global nav only (no apps drawer row below header) */
+  #home.site-shell #top.hero--ecosystem {
+    --eco-top: 0.15rem;
+    padding-top: calc(var(--gnav-h, 74px) + env(safe-area-inset-top, 0px) + var(--eco-top));
+    padding-bottom: var(--eco-bottom);
+  }
+
+  #home.site-shell #top.hero--ecosystem .hero-eyebrow {
+    margin-bottom: 0.5rem;
+  }
+
   .hero--ecosystem .hero-inner--centered {
     flex: 1 1 auto;
     display: grid;

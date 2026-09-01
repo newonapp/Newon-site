@@ -37,7 +37,7 @@
     />
     <link rel="stylesheet" href="/styles.css?v=20260828btn1" />
     <link rel="stylesheet" href="/gnav-mega.css?v=20260902menu1" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
     <link rel="stylesheet" href="/site-premium.css?v=20260830notify1" />
     <link rel="stylesheet" href="/business-type.css?v=20260827type4" />
     <link rel="stylesheet" href="/business-service.css?v=20260830notify1" />
@@ -55,7 +55,7 @@
             <img class="gnav__logo" src="/logo.png" alt="" width="40" height="40" decoding="async" />
             <span class="gnav__wordmark">Newon</span>
           </a>
-          <nav class="gnav__nav" aria-label="Navegación principal">
+          <nav class="gnav__nav" aria-label="Main navigation">
             <div class="gnav-dd" data-gnav-dd data-gnav-menu="products">
     <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
       Products<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -63,14 +63,14 @@
     <div class="gnav-mega" role="menu" hidden>
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
-      <p class="gnav-mega__kicker">PRODUCTOS</p>
+      <p class="gnav-mega__kicker">PRODUCTS</p>
       <p class="gnav-mega__lead">Productos Newon construye y opera internamente</p>
     </div>
     <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
       <a class="gnav-mega__row" href="../../../apps/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Aplicaciones</span>
+        <span class="gnav-mega__row-title">Apps</span>
         <span class="gnav-mega__row-desc">Aplicaciones que Newon crea y gestiona</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
@@ -84,14 +84,14 @@
     </a><a class="gnav-mega__row" href="../../../games/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">03</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Juegos</span>
+        <span class="gnav-mega__row-title">Games</span>
         <span class="gnav-mega__row-desc">Juegos e interactivos</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../../../tools/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">04</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Herramientas</span>
+        <span class="gnav-mega__row-title">Tools</span>
         <span class="gnav-mega__row-desc">Herramientas web listas</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
@@ -205,7 +205,7 @@
       <a class="gnav-mega__row" href="../../../resources/store/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Tienda</span>
+        <span class="gnav-mega__row-title">Store</span>
         <span class="gnav-mega__row-desc">Plantillas · guías · productos digitales</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
@@ -250,21 +250,21 @@
       <a class="gnav-mega__row" href="../../../about/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Acerca de Newon</span>
+        <span class="gnav-mega__row-title">About Newon</span>
         <span class="gnav-mega__row-desc">Acerca de Newon</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../../../portfolio/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">02</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Portafolio</span>
+        <span class="gnav-mega__row-title">Portfolio</span>
         <span class="gnav-mega__row-desc">Productos y proyectos</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../../../news/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">03</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Noticias</span>
+        <span class="gnav-mega__row-title">News</span>
         <span class="gnav-mega__row-desc">Actualizaciones oficiales</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
@@ -290,27 +290,37 @@
   </div>
           </nav>
           <div class="gnav__util">
-            <a class="gnav__cta" href="../../../business/inquiry/">Contacto</a>
+            <a class="gnav__cta" href="../../../business/inquiry/">Contact</a>
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-gnav-legacy">Idioma</label>
-    <select id="lang-select-gnav-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
+    <label class="visually-hidden" for="lang-select-gnav-hub">Idioma</label>
+    <select id="lang-select-gnav-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Inglés</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Alemán</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Indonesia</option>
     </select>
   </div>
             <button type="button" class="gnav__theme" data-theme-toggle data-label-light="Modo claro" data-label-dark="Modo oscuro" title="Cambiar tema" aria-label="Modo oscuro"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-legacy" aria-label="Menú">
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-hub" aria-label="Menu">
               <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
             </button>
           </div>
         </div>
       </div>
-      <div id="gnav-mobile-legacy" class="gnav-mobile" hidden aria-hidden="true">
+      <div id="gnav-mobile-hub" class="gnav-mobile" hidden aria-hidden="true">
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
-      <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menú">
+      <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menu">
         <div class="gnav-mobile__scroll">
+          <div class="gnav-mobile__util-row">
+            <div class="gnav__lang" data-lang-switcher>
+    <label class="visually-hidden" for="lang-select-mobile-hub">Idioma</label>
+    <select id="lang-select-mobile-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
+      <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Inglés</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Alemán</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Indonesia</option>
+    </select>
+  </div>
+            <button type="button" class="gnav__theme gnav__theme--mobile" data-theme-toggle data-label-light="Modo claro" data-label-dark="Modo oscuro" title="Cambiar tema" aria-label="Cambiar tema"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Products<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../apps/">Aplicaciones</a><a class="gnav-mobile__sublink" href="../../../ai/">AI</a><a class="gnav-mobile__sublink" href="../../../games/">Juegos</a><a class="gnav-mobile__sublink" href="../../../tools/">Herramientas</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../apps/">Apps</a><a class="gnav-mobile__sublink" href="../../../ai/">AI</a><a class="gnav-mobile__sublink" href="../../../games/">Games</a><a class="gnav-mobile__sublink" href="../../../tools/">Tools</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Business<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -322,23 +332,14 @@
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../resources/store/">Tienda</a><a class="gnav-mobile__sublink" href="../../../resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="../../../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../../../resources/labs/">Laboratorios</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../../../resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="../../../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../../../resources/labs/">Laboratorios</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../about/">Acerca de Newon</a><a class="gnav-mobile__sublink" href="../../../portfolio/">Portafolio</a><a class="gnav-mobile__sublink" href="../../../news/">Noticias</a><a class="gnav-mobile__sublink" href="../../../media/">Medios</a><a class="gnav-mobile__sublink" href="../../../business/inquiry/">Contacto</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../about/">About Newon</a><a class="gnav-mobile__sublink" href="../../../portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="../../../news/">News</a><a class="gnav-mobile__sublink" href="../../../media/">Medios</a><a class="gnav-mobile__sublink" href="../../../business/inquiry/">Contacto</a></div>
       </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <a class="gnav-mobile__cta btn btn-primary" href="../../../business/inquiry/">Consulta de proyecto</a>
-          <div class="gnav-mobile__util-row">
-            <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-mobile-legacy">Idioma</label>
-    <select id="lang-select-mobile-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
-      <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Inglés</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Alemán</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Indonesia</option>
-    </select>
-  </div>
-            <button type="button" class="gnav__theme gnav__theme--mobile" data-theme-toggle data-label-light="Modo claro" data-label-dark="Modo oscuro" title="Cambiar tema" aria-label="Cambiar tema"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          </div>
         </div>
       </div>
     </div>
@@ -514,7 +515,7 @@
           </div>
           <div class="footer-links">
             <a class="footer-link" href="https://newon.app">https://newon.app</a>
-            <p class="footer-copy">Conectamos ideas con la realidad y facilitamos la vida cotidiana como plataforma global para la vida.</p>
+            <p class="footer-copy">Un estudio de apps que conecta ideas con la realidad</p>
             <div class="footer-legal-links">
               <a class="footer-legal" href="../../../products/">Products</a>
               <span class="footer-legal-sep" aria-hidden="true">·</span>

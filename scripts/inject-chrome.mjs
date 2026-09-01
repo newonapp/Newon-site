@@ -21,7 +21,7 @@ export function injectSiteChrome(
   if (!out.includes("gnav-mega.css")) {
     out = out.replace(
       /(<link rel="stylesheet" href="\/styles\.css[^"]*" \/>)/,
-      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260902menu1" />'
+      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260902brand1" />'
     );
   }
   if (!out.includes("site-dark.css")) {
@@ -83,10 +83,10 @@ export function replaceLegacyChrome(
   if (!out.includes("gnav-mega.css")) {
     out = out.replace(
       /(<link rel="stylesheet" href="\/styles\.css[^"]*" \/>)/,
-      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260902menu1" />'
+      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260902brand1" />'
     );
   } else {
-    out = out.replace(/gnav-mega\.css\?v=[^"]+/g, "gnav-mega.css?v=20260902menu1");
+    out = out.replace(/gnav-mega\.css\?v=[^"]+/g, "gnav-mega.css?v=20260902brand1");
   }
   if (!out.includes("site-dark.css")) {
     out = out.replace(

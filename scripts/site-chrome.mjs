@@ -194,13 +194,14 @@ function mobileNav(flat, flatEn, base, suffix) {
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="${escapeHtml(t(flat, flatEn, "common.close", "Close"))}"></button>
       <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="${escapeHtml(t(flat, flatEn, "nav.menuLabel", "Menu"))}">
         <div class="gnav-mobile__scroll">
-          ${sections}
-          <div class="gnav-mobile__divider" aria-hidden="true"></div>
-          <a class="gnav-mobile__cta btn btn-primary" href="${href(base, "business/inquiry/")}">${projectInquiry}</a>
           <div class="gnav-mobile__util-row">
             ${langSelect(flat, flatEn, `lang-select-mobile-${suffix}`)}
             <button type="button" class="gnav__theme gnav__theme--mobile" data-theme-toggle data-label-light="${escapeHtml(t(flat, flatEn, "common.themeToLight", ""))}" data-label-dark="${escapeHtml(t(flat, flatEn, "common.themeToDark", ""))}" title="${themeLabel}" aria-label="${themeLabel}">${MOON_SVG}</button>
           </div>
+          <div class="gnav-mobile__divider" aria-hidden="true"></div>
+          ${sections}
+          <div class="gnav-mobile__divider" aria-hidden="true"></div>
+          <a class="gnav-mobile__cta btn btn-primary" href="${href(base, "business/inquiry/")}">${projectInquiry}</a>
         </div>
       </div>
     </div>`;

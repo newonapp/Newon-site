@@ -37,7 +37,7 @@
     />
     <link rel="stylesheet" href="/styles.css?v=20260828btn1" />
     <link rel="stylesheet" href="/gnav-mega.css?v=20260902menu1" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
     <link rel="stylesheet" href="/site-premium.css?v=20260830notify1" />
     <link rel="stylesheet" href="/business-type.css?v=20260827type4" />
     <link rel="stylesheet" href="/business-service.css?v=20260830wrap1" />
@@ -55,7 +55,7 @@
             <img class="gnav__logo" src="/logo.png" alt="" width="40" height="40" decoding="async" />
             <span class="gnav__wordmark">Newon</span>
           </a>
-          <nav class="gnav__nav" aria-label="Navigasi utama">
+          <nav class="gnav__nav" aria-label="Main navigation">
             <div class="gnav-dd" data-gnav-dd data-gnav-menu="products">
     <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
       Products<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -63,14 +63,14 @@
     <div class="gnav-mega" role="menu" hidden>
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
-      <p class="gnav-mega__kicker">PRODUK</p>
+      <p class="gnav-mega__kicker">PRODUCTS</p>
       <p class="gnav-mega__lead">Produk Newon membangun dan mengoperasikan in - house</p>
     </div>
     <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
       <a class="gnav-mega__row" href="../../../apps/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Aplikasi</span>
+        <span class="gnav-mega__row-title">Apps</span>
         <span class="gnav-mega__row-desc">Aplikasi yang dibuat dan dikelola Newon</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
@@ -84,14 +84,14 @@
     </a><a class="gnav-mega__row" href="../../../games/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">03</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Game</span>
+        <span class="gnav-mega__row-title">Games</span>
         <span class="gnav-mega__row-desc">Permainan dan interaktif</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../../../tools/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">04</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Alat</span>
+        <span class="gnav-mega__row-title">Tools</span>
         <span class="gnav-mega__row-desc">Alat web siap pakai</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
@@ -205,7 +205,7 @@
       <a class="gnav-mega__row" href="../../../resources/store/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Toko</span>
+        <span class="gnav-mega__row-title">Store</span>
         <span class="gnav-mega__row-desc">Templat · panduan · barang digital</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
@@ -250,21 +250,21 @@
       <a class="gnav-mega__row" href="../../../about/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Tentang Newon</span>
+        <span class="gnav-mega__row-title">About Newon</span>
         <span class="gnav-mega__row-desc">Tentang Newon</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../../../portfolio/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">02</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Portofolio</span>
+        <span class="gnav-mega__row-title">Portfolio</span>
         <span class="gnav-mega__row-desc">Produk dan proyek</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../../../news/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">03</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Berita</span>
+        <span class="gnav-mega__row-title">News</span>
         <span class="gnav-mega__row-desc">Pembaruan resmi</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
@@ -290,27 +290,37 @@
   </div>
           </nav>
           <div class="gnav__util">
-            <a class="gnav__cta" href="../../../business/inquiry/">Kontak</a>
+            <a class="gnav__cta" href="../../../business/inquiry/">Contact</a>
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-gnav-legacy">Bahasa</label>
-    <select id="lang-select-gnav-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Bahasa">
+    <label class="visually-hidden" for="lang-select-gnav-hub">Bahasa</label>
+    <select id="lang-select-gnav-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Bahasa">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Bahasa inggris</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Spanyol</option><option value="pt-br" data-short="PT">Portugis (Brasil)</option><option value="fr" data-short="FR">Perancis</option><option value="de" data-short="DE">Jerman</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonesia</option>
     </select>
   </div>
             <button type="button" class="gnav__theme" data-theme-toggle data-label-light="Mode terang" data-label-dark="Mode gelap" title="Ganti tema" aria-label="Mode gelap"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-legacy" aria-label="Menu">
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-hub" aria-label="Menu">
               <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
             </button>
           </div>
         </div>
       </div>
-      <div id="gnav-mobile-legacy" class="gnav-mobile" hidden aria-hidden="true">
+      <div id="gnav-mobile-hub" class="gnav-mobile" hidden aria-hidden="true">
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
       <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menu">
         <div class="gnav-mobile__scroll">
+          <div class="gnav-mobile__util-row">
+            <div class="gnav__lang" data-lang-switcher>
+    <label class="visually-hidden" for="lang-select-mobile-hub">Bahasa</label>
+    <select id="lang-select-mobile-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Bahasa">
+      <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Bahasa inggris</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Spanyol</option><option value="pt-br" data-short="PT">Portugis (Brasil)</option><option value="fr" data-short="FR">Perancis</option><option value="de" data-short="DE">Jerman</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonesia</option>
+    </select>
+  </div>
+            <button type="button" class="gnav__theme gnav__theme--mobile" data-theme-toggle data-label-light="Mode terang" data-label-dark="Mode gelap" title="Ganti tema" aria-label="Ganti tema"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Products<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../apps/">Aplikasi</a><a class="gnav-mobile__sublink" href="../../../ai/">AI</a><a class="gnav-mobile__sublink" href="../../../games/">Game</a><a class="gnav-mobile__sublink" href="../../../tools/">Alat</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../apps/">Apps</a><a class="gnav-mobile__sublink" href="../../../ai/">AI</a><a class="gnav-mobile__sublink" href="../../../games/">Games</a><a class="gnav-mobile__sublink" href="../../../tools/">Tools</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Business<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -322,23 +332,14 @@
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../resources/store/">Toko</a><a class="gnav-mobile__sublink" href="../../../resources/insights/">Wawasan</a><a class="gnav-mobile__sublink" href="../../../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../../../resources/labs/">Lab</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../../../resources/insights/">Wawasan</a><a class="gnav-mobile__sublink" href="../../../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../../../resources/labs/">Lab</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../about/">Tentang Newon</a><a class="gnav-mobile__sublink" href="../../../portfolio/">Portofolio</a><a class="gnav-mobile__sublink" href="../../../news/">Berita</a><a class="gnav-mobile__sublink" href="../../../media/">Media</a><a class="gnav-mobile__sublink" href="../../../business/inquiry/">Kontak</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../../about/">About Newon</a><a class="gnav-mobile__sublink" href="../../../portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="../../../news/">News</a><a class="gnav-mobile__sublink" href="../../../media/">Media</a><a class="gnav-mobile__sublink" href="../../../business/inquiry/">Kontak</a></div>
       </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <a class="gnav-mobile__cta btn btn-primary" href="../../../business/inquiry/">Penyelidikan proyek</a>
-          <div class="gnav-mobile__util-row">
-            <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-mobile-legacy">Bahasa</label>
-    <select id="lang-select-mobile-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Bahasa">
-      <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Bahasa inggris</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Spanyol</option><option value="pt-br" data-short="PT">Portugis (Brasil)</option><option value="fr" data-short="FR">Perancis</option><option value="de" data-short="DE">Jerman</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonesia</option>
-    </select>
-  </div>
-            <button type="button" class="gnav__theme gnav__theme--mobile" data-theme-toggle data-label-light="Mode terang" data-label-dark="Mode gelap" title="Ganti tema" aria-label="Ganti tema"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          </div>
         </div>
       </div>
     </div>
@@ -482,7 +483,7 @@
           </div>
           <div class="footer-links">
             <a class="footer-link" href="https://newon.app">https://newon.app</a>
-            <p class="footer-copy">Menghubungkan ide dengan kenyataan dan memudahkan kehidupan sehari-hari sebagai platform kehidupan global.</p>
+            <p class="footer-copy">Studio aplikasi yang menghubungkan ide ke realitas</p>
             <div class="footer-legal-links">
               <a class="footer-legal" href="../../../products/">Products</a>
               <span class="footer-legal-sep" aria-hidden="true">·</span>

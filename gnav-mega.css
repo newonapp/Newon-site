@@ -1049,7 +1049,7 @@ html[data-newon-shell-theme="dark"] .gnav-mobile__panel {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.15rem;
+  margin-bottom: 0.85rem;
 }
 
 .gnav-mobile__util-row .gnav__lang-select {
@@ -1097,7 +1097,9 @@ body.gnav-mega-open { overflow: visible; }
 }
 
 @media (max-width: 420px) {
-  .gnav__wordmark { display: none; }
+  .gnav__wordmark {
+    font-size: 1.125rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

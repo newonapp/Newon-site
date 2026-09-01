@@ -33,8 +33,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css?v=20260828btn1" />
-    <link rel="stylesheet" href="/gnav-mega.css?v=20260902menu1" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
     
     <script src="/theme-shell.js"></script>
     <script src="/lang-nav.js?v=20260825studio"></script>
@@ -50,7 +49,7 @@
             <img class="gnav__logo" src="/logo.png" alt="" width="40" height="40" decoding="async" />
             <span class="gnav__wordmark">Newon</span>
           </a>
-          <nav class="gnav__nav" aria-label="Navegación principal">
+          <nav class="gnav__nav" aria-label="Main navigation">
             <div class="gnav-dd" data-gnav-dd data-gnav-menu="products">
     <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
       Products<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -58,14 +57,14 @@
     <div class="gnav-mega" role="menu" hidden>
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
-      <p class="gnav-mega__kicker">PRODUCTOS</p>
+      <p class="gnav-mega__kicker">PRODUCTS</p>
       <p class="gnav-mega__lead">Productos Newon construye y opera internamente</p>
     </div>
     <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
       <a class="gnav-mega__row" href="../apps/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Aplicaciones</span>
+        <span class="gnav-mega__row-title">Apps</span>
         <span class="gnav-mega__row-desc">Aplicaciones que Newon crea y gestiona</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
@@ -79,14 +78,14 @@
     </a><a class="gnav-mega__row" href="../games/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">03</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Juegos</span>
+        <span class="gnav-mega__row-title">Games</span>
         <span class="gnav-mega__row-desc">Juegos e interactivos</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../tools/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">04</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Herramientas</span>
+        <span class="gnav-mega__row-title">Tools</span>
         <span class="gnav-mega__row-desc">Herramientas web listas</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
@@ -200,7 +199,7 @@
       <a class="gnav-mega__row" href="../resources/store/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Tienda</span>
+        <span class="gnav-mega__row-title">Store</span>
         <span class="gnav-mega__row-desc">Plantillas · guías · productos digitales</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
@@ -245,21 +244,21 @@
       <a class="gnav-mega__row" href="../about/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Acerca de Newon</span>
+        <span class="gnav-mega__row-title">About Newon</span>
         <span class="gnav-mega__row-desc">Acerca de Newon</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../portfolio/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">02</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Portafolio</span>
+        <span class="gnav-mega__row-title">Portfolio</span>
         <span class="gnav-mega__row-desc">Productos y proyectos</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../news/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">03</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Noticias</span>
+        <span class="gnav-mega__row-title">News</span>
         <span class="gnav-mega__row-desc">Actualizaciones oficiales</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
@@ -285,27 +284,37 @@
   </div>
           </nav>
           <div class="gnav__util">
-            <a class="gnav__cta" href="../business/inquiry/">Contacto</a>
+            <a class="gnav__cta" href="../business/inquiry/">Contact</a>
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-gnav-legacy">Idioma</label>
-    <select id="lang-select-gnav-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
+    <label class="visually-hidden" for="lang-select-gnav-hub">Idioma</label>
+    <select id="lang-select-gnav-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Inglés</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Alemán</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Indonesia</option>
     </select>
   </div>
             <button type="button" class="gnav__theme" data-theme-toggle data-label-light="Modo claro" data-label-dark="Modo oscuro" title="Cambiar tema" aria-label="Modo oscuro"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-legacy" aria-label="Menú">
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-hub" aria-label="Menu">
               <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
             </button>
           </div>
         </div>
       </div>
-      <div id="gnav-mobile-legacy" class="gnav-mobile" hidden aria-hidden="true">
+      <div id="gnav-mobile-hub" class="gnav-mobile" hidden aria-hidden="true">
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
-      <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menú">
+      <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menu">
         <div class="gnav-mobile__scroll">
+          <div class="gnav-mobile__util-row">
+            <div class="gnav__lang" data-lang-switcher>
+    <label class="visually-hidden" for="lang-select-mobile-hub">Idioma</label>
+    <select id="lang-select-mobile-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
+      <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Inglés</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Alemán</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Indonesia</option>
+    </select>
+  </div>
+            <button type="button" class="gnav__theme gnav__theme--mobile" data-theme-toggle data-label-light="Modo claro" data-label-dark="Modo oscuro" title="Cambiar tema" aria-label="Cambiar tema"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Products<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../apps/">Aplicaciones</a><a class="gnav-mobile__sublink" href="../ai/">AI</a><a class="gnav-mobile__sublink" href="../games/">Juegos</a><a class="gnav-mobile__sublink" href="../tools/">Herramientas</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../apps/">Apps</a><a class="gnav-mobile__sublink" href="../ai/">AI</a><a class="gnav-mobile__sublink" href="../games/">Games</a><a class="gnav-mobile__sublink" href="../tools/">Tools</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Business<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -317,39 +326,30 @@
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../resources/store/">Tienda</a><a class="gnav-mobile__sublink" href="../resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../resources/labs/">Laboratorios</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../resources/labs/">Laboratorios</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../about/">Acerca de Newon</a><a class="gnav-mobile__sublink" href="../portfolio/">Portafolio</a><a class="gnav-mobile__sublink" href="../news/">Noticias</a><a class="gnav-mobile__sublink" href="../media/">Medios</a><a class="gnav-mobile__sublink" href="../business/inquiry/">Contacto</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../about/">About Newon</a><a class="gnav-mobile__sublink" href="../portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="../news/">News</a><a class="gnav-mobile__sublink" href="../media/">Medios</a><a class="gnav-mobile__sublink" href="../business/inquiry/">Contacto</a></div>
       </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <a class="gnav-mobile__cta btn btn-primary" href="../business/inquiry/">Consulta de proyecto</a>
-          <div class="gnav-mobile__util-row">
-            <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-mobile-legacy">Idioma</label>
-    <select id="lang-select-mobile-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
-      <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Inglés</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Alemán</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Indonesia</option>
-    </select>
-  </div>
-            <button type="button" class="gnav__theme gnav__theme--mobile" data-theme-toggle data-label-light="Modo claro" data-label-dark="Modo oscuro" title="Cambiar tema" aria-label="Cambiar tema"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          </div>
         </div>
       </div>
     </div>
     </header>
     <main id="hub-main" class="hub-page">
       <link rel="stylesheet" href="/business-type.css?v=20260827type4" />
-<link rel="stylesheet" href="/newon-studio.css?v=20260827ns18" />
-<link rel="stylesheet" href="/business-page.css?v=20260827ns18" />
+<link rel="stylesheet" href="/newon-studio.css?v=20260830wrap1" />
+<link rel="stylesheet" href="/business-page.css?v=20260830wrap1" />
 <link rel="stylesheet" href="/business-pillar.css?v=20260830wrap1" />
 <section class="ns-hero">
   <div class="ns-hero__bg" aria-hidden="true"></div>
   <div class="ns-inner ns-hero__stage">
     <div class="ns-hero__copy">
       <p class="ns-kicker"><span class="ns-kicker__mark" aria-hidden="true">N</span>NEWON FOR BUSINESS</p>
-      <h1 class="ns-title">From idea to<br />real product.</h1>
-      <p class="ns-lead">Build · Automation · Research · Solutions — four ways we work with teams.</p>
+      <h1 class="ns-title">From idea<br />to real product.</h1>
+      <p class="ns-lead">We build real services from planning through design, development, testing, and store launch — grounded in products we have shipped ourselves.</p>
       <div class="ns-actions">
         <a class="btn btn-ghost" href="#services">Explore services ↓</a>
         <a class="btn btn-primary" href="inquiry/">Start a project ↗</a>
@@ -418,28 +418,28 @@
   <div class="bz-pillar__list" role="list"><a class="bz-pillar__item" href="mvp/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizMvp">
     <div class="bz-pillar__item-copy">
       <span class="bz-pillar__item-title">MVP Development</span>
-      <span class="bz-pillar__item-desc">From idea to a real product, fast</span>
+      <span class="bz-pillar__item-desc">De la idea a un producto real, rápido</span>
     </div>
     <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
   </a>
 <a class="bz-pillar__item" href="web/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizWeb">
     <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Web Development</span>
-      <span class="bz-pillar__item-desc">Websites for brands and services</span>
+      <span class="bz-pillar__item-title">Desarrollo web</span>
+      <span class="bz-pillar__item-desc">Páginas web de marcas y servicios</span>
     </div>
     <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
   </a>
 <a class="bz-pillar__item" href="landing/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizLanding">
     <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Landing Page</span>
-      <span class="bz-pillar__item-desc">Conversion-focused landing pages</span>
+      <span class="bz-pillar__item-title">Página de destino</span>
+      <span class="bz-pillar__item-desc">Páginas de destino centradas en</span>
     </div>
     <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
   </a>
 <a class="bz-pillar__item" href="app/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizApp">
     <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">App Development</span>
-      <span class="bz-pillar__item-desc">iOS · Android product development</span>
+      <span class="bz-pillar__item-title">Desarrollo de aplicaciones</span>
+      <span class="bz-pillar__item-desc">iOS · Desarrollo de productos Android</span>
     </div>
     <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
   </a></div>
@@ -456,21 +456,21 @@
   <div class="bz-pillar__list" role="list"><a class="bz-pillar__item" href="ai-automation/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizAi">
     <div class="bz-pillar__item-copy">
       <span class="bz-pillar__item-title">AI Automation</span>
-      <span class="bz-pillar__item-desc">AI features and workflow automation</span>
+      <span class="bz-pillar__item-desc">Funciones de IA y automatización del flujo de trabajo</span>
     </div>
     <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
   </a>
 <a class="bz-pillar__item" href="automation/workflow/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizWorkflow">
     <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Workflow Automation</span>
-      <span class="bz-pillar__item-desc">Turn repeat work into systems</span>
+      <span class="bz-pillar__item-title">Automatización del flujo de trabajo</span>
+      <span class="bz-pillar__item-desc">Convierta el trabajo repetido en sistemas</span>
     </div>
     <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
   </a>
 <a class="bz-pillar__item" href="internal-tools/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizInternal">
     <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Internal Tools</span>
-      <span class="bz-pillar__item-desc">Internal tools and dashboards</span>
+      <span class="bz-pillar__item-title">Herramientas internas</span>
+      <span class="bz-pillar__item-desc">Herramientas y paneles</span>
     </div>
     <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
   </a></div>
@@ -486,29 +486,29 @@
   </header>
   <div class="bz-pillar__list" role="list"><a class="bz-pillar__item" href="market-research/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizMarket">
     <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Market Research</span>
-      <span class="bz-pillar__item-desc">Market and opportunity analysis</span>
+      <span class="bz-pillar__item-title">Investigación de mercado</span>
+      <span class="bz-pillar__item-desc">Análisis de mercado y oportunidades</span>
     </div>
     <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
   </a>
 <a class="bz-pillar__item" href="competitor-analysis/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizCompetitor">
     <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Competitor Analysis</span>
-      <span class="bz-pillar__item-desc">Competitive positioning</span>
+      <span class="bz-pillar__item-title">Análisis de la competencia</span>
+      <span class="bz-pillar__item-desc">Posicionamiento competitivo</span>
     </div>
     <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
   </a>
 <a class="bz-pillar__item" href="consumer-research/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizConsumer">
     <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Consumer Insights</span>
-      <span class="bz-pillar__item-desc">Users and demand signals</span>
+      <span class="bz-pillar__item-title">Perspectivas del consumidor</span>
+      <span class="bz-pillar__item-desc">Usuarios y señales de demanda</span>
     </div>
     <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
   </a>
 <a class="bz-pillar__item" href="ux-audit/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizUxAudit">
     <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">UX Audit</span>
-      <span class="bz-pillar__item-desc">Diagnose product experience</span>
+      <span class="bz-pillar__item-title">Auditoría de UX</span>
+      <span class="bz-pillar__item-desc">Diagnosticar la experiencia del producto</span>
     </div>
     <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
   </a></div>
@@ -525,21 +525,21 @@
   <div class="bz-pillar__list" role="list"><a class="bz-pillar__item" href="white-label/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizWhitelabel">
     <div class="bz-pillar__item-copy">
       <span class="bz-pillar__item-title">White-label</span>
-      <span class="bz-pillar__item-desc">Custom products on proven tech</span>
+      <span class="bz-pillar__item-desc">Productos personalizados en tecnología probada</span>
     </div>
     <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
   </a>
 <a class="bz-pillar__item" href="custom-product/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizCustom">
     <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Custom Solutions</span>
-      <span class="bz-pillar__item-desc">Tailored enterprise solutions</span>
+      <span class="bz-pillar__item-title">Soluciones personalizadas</span>
+      <span class="bz-pillar__item-desc">Soluciones empresariales a medida</span>
     </div>
     <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
   </a>
 <a class="bz-pillar__item" href="product-launch/" role="listitem" data-analytics="business_service_view" data-item-id="nav.bizLaunchPkg">
     <div class="bz-pillar__item-copy">
-      <span class="bz-pillar__item-title">Product Launch Package</span>
-      <span class="bz-pillar__item-desc">What you need to launch</span>
+      <span class="bz-pillar__item-title">Paquete de lanzamiento del</span>
+      <span class="bz-pillar__item-desc">Lo que necesitas para lanzar</span>
     </div>
     <span class="bz-pillar__item-meta"><span class="bz-pillar__arrow" aria-hidden="true">→</span></span>
   </a></div>
@@ -559,28 +559,32 @@
         <span class="bp-other__arrow" aria-hidden="true">→</span>
       </span>
       <span class="bp-other__t">BUILD</span>
-      <span class="bp-other__lead">We turn ideas into real products.</span>
+      <span class="bp-other__lead">We turn ideas into
+real products.</span>
     </a><a class="bp-other__card" href="automation/">
       <span class="bp-other__top">
         <span class="bp-other__n">02</span>
         <span class="bp-other__arrow" aria-hidden="true">→</span>
       </span>
       <span class="bp-other__t">AUTOMATION</span>
-      <span class="bp-other__lead">Turn repetitive work into systems.</span>
+      <span class="bp-other__lead">Turn repetitive work
+into systems.</span>
     </a><a class="bp-other__card" href="research/">
       <span class="bp-other__top">
         <span class="bp-other__n">03</span>
         <span class="bp-other__arrow" aria-hidden="true">→</span>
       </span>
       <span class="bp-other__t">RESEARCH</span>
-      <span class="bp-other__lead">Evidence over intuition.</span>
+      <span class="bp-other__lead">Evidence over
+intuition.</span>
     </a><a class="bp-other__card" href="solutions/">
       <span class="bp-other__top">
         <span class="bp-other__n">04</span>
         <span class="bp-other__arrow" aria-hidden="true">→</span>
       </span>
       <span class="bp-other__t">SOLUTIONS</span>
-      <span class="bp-other__lead">We don’t force your project into a package.</span>
+      <span class="bp-other__lead">We don’t force your project
+into a package.</span>
     </a></nav>
   </div>
 </section>
@@ -641,7 +645,7 @@
   </div>
 </section>
 </div>
-<script src="/business-pillar.js?v=20260827ns18" defer></script>
+<script src="/business-pillar.js?v=20260830wrap1" defer></script>
     </main>
     <footer class="site-footer">
         <div class="container footer-inner">
@@ -657,7 +661,7 @@
           </div>
           <div class="footer-links">
             <a class="footer-link" href="https://newon.app">https://newon.app</a>
-            <p class="footer-copy">Conectamos ideas con la realidad y facilitamos la vida cotidiana como plataforma global para la vida.</p>
+            <p class="footer-copy">Un estudio de apps que conecta ideas con la realidad</p>
             <div class="footer-legal-links">
               <a class="footer-legal" href="../products/">Products</a>
               <span class="footer-legal-sep" aria-hidden="true">·</span>
