@@ -45,11 +45,29 @@
     padding-top: 0.85rem;
     padding-inline: 0.5rem;
     justify-content: center;
+    position: relative;
+    z-index: 3;
   }
 
   .hero--ecosystem .hub-strip a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: 0.35rem 0.2rem;
     font-size: 0.75rem;
     letter-spacing: 0.05em;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .hero--ecosystem .hero-store-links {
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero--ecosystem .hero-store-link {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .hero--ecosystem .hero-sub,

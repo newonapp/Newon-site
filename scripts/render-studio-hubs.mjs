@@ -18,6 +18,7 @@ import {
   ensureDir,
   escapeHtml,
   pick,
+  fontLinksHtml,
   statusBadge,
 } from "./hub-utils.mjs";
 import { renderStudioHeader, renderStudioFooter, renderCompanySwitcher } from "./site-chrome.mjs";
@@ -76,6 +77,7 @@ function renderPage(lang, pagePath, opts) {
   const canonical = `${SITE_ORIGIN}/${lang.dir}/${pagePath}/`;
   const html = applyTemplate(SHELL, flat, flatEn, {
     HTML_LANG: lang.htmlLang,
+    FONT_LINKS: fontLinksHtml(lang.dir),
     TITLE: escapeHtml(opts.title),
     META_DESCRIPTION: escapeHtml(opts.description),
     CANONICAL: canonical,
@@ -296,7 +298,7 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.appsSeoTitle"),
     description: pick(f, fe, "studio.appsMetaDescription"),
     body: appsBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/apps-hub.css?v=20260830appsline1" />',
+    extraCss: '<link rel="stylesheet" href="/apps-hub.css?v=20260902appsmob1" />',
     extraScripts: '<script src="/apps-hub.js?v=20260825apps5" defer></script>',
   }),
   ai: (f, fe, l) => ({

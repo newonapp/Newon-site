@@ -90,6 +90,18 @@ export function pick(flat, flatEn, key) {
   return val;
 }
 
+/** Locale-aware Google Fonts — avoids loading JP/Devanagari on every page. */
+export function fontLinksHtml(langDir = "en") {
+  const families = ["family=Noto+Sans:wght@300;400;500;600;700"];
+  if (langDir === "ko") families.push("family=Noto+Sans+KR:wght@300;400;500;600;700");
+  else if (langDir === "ja") families.push("family=Noto+Sans+JP:wght@400;600;700");
+  else if (langDir === "hi") families.push("family=Noto+Sans+Devanagari:wght@400;600;700");
+  const url = `https://fonts.googleapis.com/css2?${families.join("&")}&display=swap`;
+  return `<link rel="preconnect" href="https://fonts.googleapis.com" />\n    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n    <link href="${url}" rel="stylesheet" />`;
+}
+
+export const CHROME_HEAD_CSS = `<link rel="stylesheet" href="/site-dark.css?v=20260902perf1" />\n    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />`;
+
 export function applyTemplate(template, flat, flatEn, extras = {}) {
   let out = template;
   for (const [key, val] of Object.entries(extras)) {

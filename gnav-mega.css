@@ -957,12 +957,72 @@ html[data-newon-shell-theme="dark"] .gnav-mobile__panel {
 .gnav-mobile__scroll {
   height: 100%;
   overflow: auto;
-  padding: calc(var(--gnav-h) + 0.5rem) 1.35rem 2.25rem;
+  padding: calc(env(safe-area-inset-top, 0px) + 0.65rem) 1.25rem 2rem;
   -webkit-overflow-scrolling: touch;
 }
 
 .gnav-mobile__acc {
   border-bottom: 1px solid var(--gnav-border);
+}
+
+.gnav-mobile__acc-head {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.gnav-mobile__acc-link {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-height: 54px;
+  padding: 0.85rem 0.1rem;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 620;
+  letter-spacing: -0.02em;
+  color: var(--gnav-text-strong);
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.18s ease;
+}
+
+.gnav-mobile__acc-link:hover {
+  color: var(--gnav-text-strong);
+}
+
+.gnav-mobile__acc-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--gnav-text-strong);
+  cursor: pointer;
+  flex-shrink: 0;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.16s ease;
+}
+
+.gnav-mobile__acc-toggle:hover {
+  background: var(--gnav-hover);
+}
+
+.gnav-mobile__acc-toggle .gnav-dd__chev-svg {
+  opacity: 0.5;
+  transition: transform 0.22s var(--gnav-ease), opacity 0.18s ease;
+}
+
+.gnav-mobile__acc-toggle[aria-expanded="true"] .gnav-dd__chev-svg {
+  transform: rotate(180deg);
+  opacity: 0.75;
 }
 
 .gnav-mobile__acc-trigger {
@@ -1013,6 +1073,8 @@ html[data-newon-shell-theme="dark"] .gnav-mobile__panel {
   letter-spacing: -0.01em;
   color: var(--gnav-muted);
   text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   transition: background 0.16s ease, color 0.16s ease;
 }
 
@@ -1043,13 +1105,15 @@ html[data-newon-shell-theme="dark"] .gnav-mobile__panel {
   min-height: 48px;
   margin-top: 0.35rem;
   border-radius: 11px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .gnav-mobile__util-row {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.65rem;
 }
 
 .gnav-mobile__util-row .gnav__lang-select {

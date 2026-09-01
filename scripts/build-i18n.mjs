@@ -24,6 +24,7 @@ import { buildHomeStudioBody } from "./home-page-body.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { businessServicesHtml } from "./business-services-html.mjs";
 import { renderGlobalHeader } from "./site-chrome.mjs";
+import { fontLinksHtml } from "./hub-utils.mjs";
 import { STORE_PRODUCTS, LABS_EXPERIMENTS } from "./resources-data.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -349,10 +350,15 @@ for (const { dir, file, htmlLang } of LANGS) {
   const baseUrl = `${SITE_ORIGIN}/${dir}/`;
   tpl = tpl.replace(/\{\{LANG_DIR\}\}/g, dir);
   tpl = tpl.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+  tpl = tpl.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(dir));
   tpl = tpl.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
   tpl = tpl.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflangBlock());
   tpl = tpl.replace(/\{\{CANONICAL\}\}/g, baseUrl);
   tpl = applyTemplate(tpl, flat, flatEn);
+  if (!tpl.includes("site-dark.css")) {
+    const headCss = `    <link rel="stylesheet" href="/site-dark.css?v=20260902perf1" />\n    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />`;
+    tpl = tpl.replace(/<\/head>/, `${headCss}\n  </head>`);
+  }
   tpl = applyLocImgs(tpl, dir);
   tpl = stripOxMonthShowcaseVariants(tpl, dir);
 

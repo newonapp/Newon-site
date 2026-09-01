@@ -341,8 +341,18 @@ function orgJsonLd() {
 
 /* ——— PORTFOLIO ——— */
 
-function portfolioFeaturedRow(project, copy) {
-  const href = `./${escapeHtml(project.slug)}/`;
+function portfolioProjectHref(project, lang) {
+  if (project.pageHref) {
+    const href = String(project.pageHref);
+    if (href.startsWith("/")) return href;
+    return href;
+  }
+  if (project.slug === "404-human") return `../404-human/`;
+  return `./${project.slug}/`;
+}
+
+function portfolioFeaturedRow(project, copy, lang) {
+  const href = portfolioProjectHref(project, lang);
   const icon = project.icon
     ? `<img class="co-feat__icon" src="${escapeHtml(project.icon)}" alt="" width="56" height="56" loading="lazy" decoding="async" />`
     : "";
@@ -363,8 +373,8 @@ function portfolioFeaturedRow(project, copy) {
   </a>`;
 }
 
-function portfolioIndexRow(project, copy) {
-  const href = `./${escapeHtml(project.slug)}/`;
+function portfolioIndexRow(project, copy, lang) {
+  const href = portfolioProjectHref(project, lang);
   const icon = project.icon
     ? `<img class="co-plist__icon" src="${escapeHtml(project.icon)}" alt="" width="40" height="40" loading="lazy" decoding="async" />`
     : "";
@@ -391,8 +401,8 @@ function portfolioBody(copy, lang) {
     })
     .join("");
 
-  const featuredHtml = featured.map((p) => portfolioFeaturedRow(p, copy)).join("\n");
-  const listHtml = rest.map((p) => portfolioIndexRow(p, copy)).join("\n");
+  const featuredHtml = featured.map((p) => portfolioFeaturedRow(p, copy, lang)).join("\n");
+  const listHtml = rest.map((p) => portfolioIndexRow(p, copy, lang)).join("\n");
 
   return `${breadcrumb(copy, COMPANY_NAV_LABELS.portfolio[lang === "ko" ? "ko" : "en"] || "PORTFOLIO")}
 ${companySwitcher("portfolio", lang, "../")}

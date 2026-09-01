@@ -2680,6 +2680,8 @@ html[data-newon-shell-theme="dark"] .hero-desc {
     padding-top: 0;
     padding-bottom: 0;
     overflow: visible;
+    position: relative;
+    z-index: 2;
   }
 
   .hero--ecosystem .hero-brand-mark {
@@ -2733,6 +2735,8 @@ html[data-newon-shell-theme="dark"] .hero-desc {
     margin: 0 auto;
     gap: 0.55rem;
     flex-shrink: 0;
+    position: relative;
+    z-index: 3;
   }
 
   .hero--ecosystem .hero-btn-primary,
@@ -2742,6 +2746,9 @@ html[data-newon-shell-theme="dark"] .hero-desc {
     min-height: 2.85rem;
     padding: 0.65rem 0.9rem;
     font-size: 0.9375rem;
+    position: relative;
+    z-index: 3;
+    touch-action: manipulation;
   }
 
   .hero--ecosystem .hero-store-links {

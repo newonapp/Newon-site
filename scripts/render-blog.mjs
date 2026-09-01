@@ -19,6 +19,7 @@ import {
   ensureDir,
   escapeHtml,
   pick,
+  fontLinksHtml,
 } from "./hub-utils.mjs";
 import { renderStudioHeader, renderStudioFooter } from "./site-chrome.mjs";
 
@@ -121,6 +122,7 @@ function renderPost(langDir, post) {
   const footer = renderStudioFooter(flat, flatEn);
   const html = applyTemplate(SHELL, flat, flatEn, {
     HTML_LANG: lang.htmlLang,
+    FONT_LINKS: fontLinksHtml(langDir),
     TITLE: `${title} — Newon Blog`,
     META_DESCRIPTION: escapeHtml(post.description || ""),
     CANONICAL: canonical,

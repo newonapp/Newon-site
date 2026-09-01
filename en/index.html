@@ -67,24 +67,24 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/styles.css?v=20260902homegap1" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css?v=20260902herocta1" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20260902nav1" />
     <link rel="preload" as="image" href="/newon-wordmark-chrome.png" />
     <link rel="stylesheet" href="/ox-month.css?v=20260828btn1" />
     <link rel="stylesheet" href="/app-landing-extras.css?v=20260828btn1" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260828home2" />
     <link rel="stylesheet" href="/home-studio.css?v=20260828home2" />
-    <script src="/theme-shell.js"></script>
+    <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
+<script src="/theme-shell.js"></script>
     <script src="/lang-nav.js?v=20260825studio"></script>
     <script src="/analytics.js?v=20260825studio" defer></script>
     <script src="/search.js?v=20260825studio" defer></script>
-    <script src="/site-chrome.js?v=20260826gnav5" defer></script>
+    <script src="/site-chrome.js?v=20260902nav1" defer></script>
     <script src="/home-studio.js?v=20260828home2" defer></script>
-    <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
-</head>
+      <link rel="stylesheet" href="/site-dark.css?v=20260902perf1" />
+    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
+  </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
@@ -359,23 +359,38 @@
           </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <div class="gnav-mobile__acc" data-gnav-acc>
-        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Products<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="products/">Products</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Products"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
         <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="apps/">Apps</a><a class="gnav-mobile__sublink" href="ai/">AI</a><a class="gnav-mobile__sublink" href="games/">Games</a><a class="gnav-mobile__sublink" href="tools/">Tools</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
-        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Business<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="business/">Business</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Business"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
         <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="business/build/">BUILD</a><a class="gnav-mobile__sublink" href="business/automation/">AUTOMATION</a><a class="gnav-mobile__sublink" href="business/research/">RESEARCH</a><a class="gnav-mobile__sublink" href="business/solutions/">SOLUTIONS</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
-        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Studio<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="studio/">Studio</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Studio"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
         <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="studio/brand/">BRAND</a><a class="gnav-mobile__sublink" href="studio/digital/">DIGITAL</a><a class="gnav-mobile__sublink" href="studio/content/">CONTENT</a><a class="gnav-mobile__sublink" href="studio/ip/">IP</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
-        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="resources/">Resources</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Resources"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
         <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="resources/store/">Store</a><a class="gnav-mobile__sublink" href="resources/insights/">Insights</a><a class="gnav-mobile__sublink" href="resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="resources/labs/">Labs</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
-        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="about/">Company</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Company"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
         <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="about/">About Newon</a><a class="gnav-mobile__sublink" href="portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="news/">News</a><a class="gnav-mobile__sublink" href="media/">Media</a><a class="gnav-mobile__sublink" href="business/inquiry/">Contact</a></div>
       </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
@@ -503,7 +518,7 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
   "myworld": { "description": "Travel journal · Travel map · AI report", "category": "Travel" }
 }
           </script>
-          <script src="/hero-apps.js"></script>
+          <script src="/hero-apps.js" defer></script>
           <div class="hero-scroll" aria-hidden="true">
             <span class="dot-pulse"></span>
             <span>Scroll</span>
@@ -936,6 +951,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
 </section>
         </div>
         <!-- HOME_STUDIO_END -->
+
+
+
+
+
+
+
+
 
 
 
@@ -2159,6 +2182,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
 
 
 
+
+
+
+
+
+
+
+
         <section id="ox-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="ox-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -2365,6 +2396,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -2938,6 +2977,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -4246,6 +4293,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
 
 
 
+
+
+
+
+
+
+
+
         <section id="pm-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pm-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -4417,6 +4472,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -4982,6 +5045,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -6293,6 +6364,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
 
 
 
+
+
+
+
+
+
+
+
         <section id="sv-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="sv-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -6454,6 +6533,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -7024,6 +7111,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -8332,6 +8427,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
 
 
 
+
+
+
+
+
+
+
+
         <section id="bl-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="bl-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -8503,6 +8606,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -9083,6 +9194,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -10390,6 +10509,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
 
 
 
+
+
+
+
+
+
+
+
         <section id="pl-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pl-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -10561,6 +10688,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -11141,6 +11276,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -12451,6 +12594,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
 
 
 
+
+
+
+
+
+
+
+
         <section id="pu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pu-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -12622,6 +12773,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -13192,6 +13351,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -14505,6 +14672,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
 
 
 
+
+
+
+
+
+
+
+
         <section id="gu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="gu-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -14676,6 +14851,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -15246,6 +15429,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -16559,6 +16750,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
 
 
 
+
+
+
+
+
+
+
+
         <section id="cu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="cu-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -16720,6 +16919,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -17290,6 +17497,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -18600,6 +18815,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
 
 
 
+
+
+
+
+
+
+
+
         <section id="np-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="np-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -19003,6 +19226,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -20313,6 +20544,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
 
 
 
+
+
+
+
+
+
+
+
         <section id="mw-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="mw-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -20484,6 +20723,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -21054,6 +21301,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -22368,6 +22623,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
 
 
 
+
+
+
+
+
+
+
+
         <section id="sp-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="sp-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -22541,6 +22804,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -23106,6 +23377,14 @@ Apps, AI, games, SaaS, and business — one studio to ship and learn.</p>
         </nav>
       </div>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -24980,8 +25259,6 @@ elNp.hidden = false;
         }
       })();
     </script>
-    <script src="/lang-dropdown.js"></script>
-      <link rel="stylesheet" href="/site-dark.css?v=20260830dark7" />
-    <link rel="stylesheet" href="/site-mobile.css?v=20260830m1" />
+    <script src="/lang-dropdown.js" defer></script>
 </body>
 </html>

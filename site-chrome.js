@@ -84,7 +84,7 @@
     btn.classList.add("gnav__menu-btn--open");
     document.documentElement.classList.add("gnav-open");
     document.body.classList.add("gnav-open");
-    var first = drawer.querySelector(".gnav-mobile__acc-trigger, a, button");
+    var first = drawer.querySelector(".gnav-mobile__acc-link, .gnav-mobile__acc-toggle, a, button");
     if (first) first.focus();
   }
 
@@ -173,14 +173,23 @@
     });
   }
 
+  function followMobileNavLink(link) {
+    var url = link.href;
+    if (!url) return;
+    closeMobile();
+    window.location.assign(url);
+  }
+
   function bindMobileAccordion() {
     document.querySelectorAll("[data-gnav-acc]").forEach(function (acc) {
-      var trigger = acc.querySelector(".gnav-mobile__acc-trigger");
+      var toggle = acc.querySelector(".gnav-mobile__acc-toggle");
       var panel = acc.querySelector(".gnav-mobile__acc-panel");
-      if (!trigger || !panel) return;
-      trigger.addEventListener("click", function () {
-        var open = trigger.getAttribute("aria-expanded") === "true";
-        trigger.setAttribute("aria-expanded", open ? "false" : "true");
+      if (!toggle || !panel) return;
+      toggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var open = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", open ? "false" : "true");
         panel.hidden = open;
       });
     });
@@ -215,8 +224,13 @@
     document.querySelectorAll("[data-gnav-close]").forEach(function (el) {
       el.addEventListener("click", closeMobile);
     });
-    document.querySelectorAll(".gnav-mobile__sublink[href], .gnav-mobile__cta").forEach(function (a) {
-      a.addEventListener("click", closeMobile);
+    document.querySelectorAll(".gnav-mobile__sublink[href], .gnav-mobile__cta, .gnav-mobile__acc-link[href]").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        var raw = a.getAttribute("href");
+        if (!raw || raw.charAt(0) === "#") return;
+        e.preventDefault();
+        followMobileNavLink(a);
+      });
     });
   }
 

@@ -31,15 +31,20 @@
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css?v=20260828btn1" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20260902nav1" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
     
-    <script src="/theme-shell.js"></script>
+    <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
+<script src="/theme-shell.js"></script>
     <script src="/lang-nav.js?v=20260825studio"></script>
     <script src="/analytics.js?v=20260825studio" defer></script>
-    <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
-</head>
+    <link rel="stylesheet" href="/site-dark.css?v=20260902perf1" />
+    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
+  </head>
   <body>
     <a class="skip-link" href="#hub-main">Zum Inhalt springen</a>
     <header class="gnav site-header gnav--five" data-gnav>
@@ -313,23 +318,38 @@
           </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <div class="gnav-mobile__acc" data-gnav-acc>
-        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Products<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../products/">Products</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Products"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
         <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../apps/">Apps</a><a class="gnav-mobile__sublink" href="../ai/">AI</a><a class="gnav-mobile__sublink" href="../games/">Games</a><a class="gnav-mobile__sublink" href="../tools/">Tools</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
-        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Business<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../business/">Business</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Business"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
         <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../business/build/">BAUEN</a><a class="gnav-mobile__sublink" href="../business/automation/">AUTOMATISIERUNG</a><a class="gnav-mobile__sublink" href="../business/research/">FORSCHUNG</a><a class="gnav-mobile__sublink" href="../business/solutions/">LÖSUNGEN</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
-        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Studio<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../studio/">Studio</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Studio"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
         <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../studio/brand/">MARKE</a><a class="gnav-mobile__sublink" href="../studio/digital/">DIGITAL</a><a class="gnav-mobile__sublink" href="../studio/content/">INHALT</a><a class="gnav-mobile__sublink" href="../studio/ip/">IP</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
-        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Resources<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../resources/">Resources</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Resources"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
         <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../resources/insights/">Einblicke</a><a class="gnav-mobile__sublink" href="../resources/blog/">Blog</a><a class="gnav-mobile__sublink" href="../resources/labs/">Labs</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
-        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">Company<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="../about/">Company</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Company"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
         <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../about/">About Newon</a><a class="gnav-mobile__sublink" href="../portfolio/">Portfolio</a><a class="gnav-mobile__sublink" href="../news/">News</a><a class="gnav-mobile__sublink" href="../media/">Medien</a><a class="gnav-mobile__sublink" href="../business/inquiry/">Kontakt</a></div>
       </div>
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
@@ -691,8 +711,6 @@ into a package.</span>
     <script src="/search.js?v=20260825studio" defer></script>
     <script src="/waitlist.js?v=20260825studio" defer></script>
     
-    <script src="/site-chrome.js?v=20260826gnav5" defer></script>
-      <link rel="stylesheet" href="/site-dark.css?v=20260830dark7" />
-    <link rel="stylesheet" href="/site-mobile.css?v=20260830m1" />
+    <script src="/site-chrome.js?v=20260902nav1" defer></script>
 </body>
 </html>

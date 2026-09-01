@@ -177,6 +177,7 @@ function mobileNav(flat, flatEn, base, suffix) {
 
   const sections = TOP_NAV.map((id) => {
     const label = navTopLabel(flat, flatEn, id);
+    const hubHref = href(base, MENU_META[id].footHref);
     const items = MOBILE_MENUS[id] || [];
     const links = items
       .map((item) => {
@@ -185,7 +186,10 @@ function mobileNav(flat, flatEn, base, suffix) {
       })
       .join("");
     return `<div class="gnav-mobile__acc" data-gnav-acc>
-        <button type="button" class="gnav-mobile__acc-trigger" aria-expanded="false">${label}${CHEVRON_SVG}</button>
+        <div class="gnav-mobile__acc-head">
+          <a class="gnav-mobile__acc-link" href="${hubHref}">${label}</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="${label}">${CHEVRON_SVG}</button>
+        </div>
         <div class="gnav-mobile__acc-panel" hidden>${links}</div>
       </div>`;
   }).join("\n        ");

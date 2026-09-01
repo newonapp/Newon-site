@@ -2,6 +2,27 @@
  * Inject shared site chrome into legacy templates via {{CHROME_HEADER}} / {{CHROME_FOOTER}}.
  */
 import { renderStudioHeader, renderStudioFooter, renderGlobalHeader, renderCompanySwitcher } from "./site-chrome.mjs";
+import { CHROME_HEAD_CSS } from "./hub-utils.mjs";
+
+const GnavCss = "gnav-mega.css?v=20260902nav1";
+const SiteChromeJs = "site-chrome.js?v=20260902nav1";
+
+function injectHeadCss(html) {
+  let out = html;
+  if (!out.includes("site-dark.css")) {
+    out = out.replace(/<\/head>/, `    ${CHROME_HEAD_CSS}\n  </head>`);
+  } else {
+    out = out.replace(/site-dark\.css\?v=[^"]+/g, "site-dark.css?v=20260902perf1");
+    out = out.replace(/site-mobile\.css\?v=[^"]+/g, "site-mobile.css?v=20260902nav1");
+  }
+  // Remove invalid late CSS in body (legacy inject)
+  out = out.replace(/\s*<link rel="stylesheet" href="\/site-dark\.css[^"]*" \/?>\s*/g, "\n");
+  out = out.replace(/\s*<link rel="stylesheet" href="\/site-mobile\.css[^"]*" \/?>\s*/g, "\n");
+  if (!out.includes("site-mobile.css")) {
+    out = out.replace(/(<link rel="stylesheet" href="\/site-dark\.css[^"]*" \/>)/, `$1\n    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />`);
+  }
+  return out;
+}
 
 export function injectSiteChrome(
   html,
@@ -21,29 +42,14 @@ export function injectSiteChrome(
   if (!out.includes("gnav-mega.css")) {
     out = out.replace(
       /(<link rel="stylesheet" href="\/styles\.css[^"]*" \/>)/,
-      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260902brand1" />'
+      `$1\n    <link rel="stylesheet" href="/${GnavCss}" />`
     );
   }
-  if (!out.includes("site-dark.css")) {
-    out = out.replace(
-      /<\/body>/,
-      '    <link rel="stylesheet" href="/site-dark.css?v=20260830dark7" />\n  </body>'
-    );
-  } else {
-    out = out.replace(/site-dark\.css\?v=[^"]+/g, "site-dark.css?v=20260830dark7");
-  }
-  if (!out.includes("site-mobile.css")) {
-    out = out.replace(
-      /<\/body>/,
-      '    <link rel="stylesheet" href="/site-mobile.css?v=20260830m1" />\n  </body>'
-    );
-  } else {
-    out = out.replace(/site-mobile\.css\?v=[^"]+/g, "site-mobile.css?v=20260830m1");
-  }
+  out = injectHeadCss(out);
   if (!out.includes("site-chrome.js")) {
     out = out.replace(
       /<\/body>/,
-      '    <script src="/site-chrome.js?v=20260826gnav5" defer></script>\n  </body>'
+      `    <script src="/${SiteChromeJs}" defer></script>\n  </body>`
     );
   }
   return out;
@@ -83,41 +89,26 @@ export function replaceLegacyChrome(
   if (!out.includes("gnav-mega.css")) {
     out = out.replace(
       /(<link rel="stylesheet" href="\/styles\.css[^"]*" \/>)/,
-      '$1\n    <link rel="stylesheet" href="/gnav-mega.css?v=20260902brand1" />'
+      `$1\n    <link rel="stylesheet" href="/${GnavCss}" />`
     );
   } else {
-    out = out.replace(/gnav-mega\.css\?v=[^"]+/g, "gnav-mega.css?v=20260902brand1");
+    out = out.replace(/gnav-mega\.css\?v=[^"]+/g, GnavCss);
   }
-  if (!out.includes("site-dark.css")) {
-    out = out.replace(
-      /<\/body>/,
-      '    <link rel="stylesheet" href="/site-dark.css?v=20260830dark7" />\n  </body>'
-    );
-  } else {
-    out = out.replace(/site-dark\.css\?v=[^"]+/g, "site-dark.css?v=20260830dark7");
-  }
-  if (!out.includes("site-mobile.css")) {
-    out = out.replace(
-      /<\/body>/,
-      '    <link rel="stylesheet" href="/site-mobile.css?v=20260830m1" />\n  </body>'
-    );
-  } else {
-    out = out.replace(/site-mobile\.css\?v=[^"]+/g, "site-mobile.css?v=20260830m1");
-  }
+  out = injectHeadCss(out);
   if (!out.includes("analytics.js")) {
     out = out.replace(/<\/head>/, '    <script src="/analytics.js?v=20260825studio" defer></script>\n  </head>');
   }
   if (!out.includes("site-chrome.js")) {
     out = out.replace(
       /<\/body>/,
-      '    <script src="/site-chrome.js?v=20260826gnav5" defer></script>\n  </body>'
+      `    <script src="/${SiteChromeJs}" defer></script>\n  </body>`
     );
   } else {
-    out = out.replace(/site-chrome\.js\?v=[^"]+/g, "site-chrome.js?v=20260826gnav5");
+    out = out.replace(/site-chrome\.js\?v=[^"]+/g, SiteChromeJs);
   }
   return out;
 }
 
 export const CHROME_SCRIPTS = `<script src="/analytics.js?v=20260825studio" defer></script>
     <script src="/search.js?v=20260825studio" defer></script>
-    <script src="/site-chrome.js?v=20260826gnav5" defer></script>`;
+    <script src="/${SiteChromeJs}" defer></script>`;
