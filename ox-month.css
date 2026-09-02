@@ -5,7 +5,9 @@
   --ox-radius-lg: 16px;
   --ox-max: 1120px;
   --ox-pad: clamp(1.25rem, 4vw, 2rem);
-  --ox-header-h: clamp(98px, 6.85vw, 116px);
+  /* Compact single-row app chrome (sits under global gnav when present) */
+  --ox-header-h: 52px;
+  --ox-chrome-offset: var(--ox-header-h);
   --ox-section-y: clamp(3.75rem, 9vw, 6rem);
   --ox-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -90,7 +92,7 @@ html {
   margin-inline: auto;
 }
 
-/* Header */
+/* Header — sit under global gnav so both bars stay fully visible */
 .ox-header {
   position: fixed;
   top: 0;
@@ -105,6 +107,15 @@ html {
     background 0.35s var(--ox-ease),
     border-color 0.35s var(--ox-ease),
     box-shadow 0.35s var(--ox-ease);
+}
+
+/* Home / pages with global nav: stack app bar below gnav (no overlap / clipped text) */
+body:has(.gnav) {
+  --ox-chrome-offset: calc(var(--gnav-h, 74px) + var(--ox-header-h));
+}
+
+body:has(.gnav) .ox-header {
+  top: var(--gnav-h, 74px);
 }
 
 .ox-header.is-scrolled {
@@ -127,12 +138,67 @@ html {
 /* 3-column toolbar (grid from styles.css `.navbar-bar`) */
 .navbar-bar--ox {
   min-height: var(--ox-header-h);
-  padding-block: clamp(4px, 0.75vw, 8px);
+  padding-block: 4px;
+  align-items: center;
 }
 
 .navbar-bar--ox.navbar-bar--brand-header {
   min-height: var(--ox-header-h);
-  padding-block: clamp(10px, 1.65vw, 14px);
+  padding-block: 4px;
+}
+
+/* Keep app name + tagline compact beside icon — no tall stacked chrome */
+.navbar-bar--ox .navbar-app-showcase {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 0.55rem;
+  row-gap: 0.05rem;
+  align-items: center;
+  justify-items: start;
+  text-align: left;
+  margin-inline: 0;
+  padding-block: 0;
+  max-width: min(420px, 100%);
+  min-width: 0;
+}
+
+.navbar-bar--ox .navbar-app-showcase__icon {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.navbar-bar--ox .navbar-app-showcase__icon-img {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+}
+
+.navbar-bar--ox .navbar-app-showcase__title {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 1.0625rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.navbar-bar--ox .navbar-app-showcase__tagline {
+  grid-column: 2;
+  grid-row: 2;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  max-width: min(280px, 32vw);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.62;
+}
+
+.navbar-bar--ox .navbar-app-showcase__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+  min-width: 0;
 }
 
 .navbar-bar--ox .navbar-hub__logo-img {
@@ -189,12 +255,26 @@ html {
 
 @media (max-width: 639px) {
   :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app).ox-page {
-    --ox-header-h: 84px;
+    --ox-header-h: 48px;
   }
 
   .navbar-bar--ox.navbar-bar--brand-header {
-    padding-block: 8px;
-    min-height: 60px;
+    padding-block: 4px;
+    min-height: var(--ox-header-h);
+  }
+
+  .navbar-bar--ox .navbar-app-showcase {
+    grid-template-rows: auto;
+    row-gap: 0;
+  }
+
+  .navbar-bar--ox .navbar-app-showcase__icon {
+    grid-row: 1;
+  }
+
+  .navbar-bar--ox .navbar-app-showcase__title {
+    font-size: 1rem;
+    align-self: center;
   }
 
   .navbar-bar__controls--brand-toolbar .ox-theme-toggle,
@@ -634,7 +714,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 
 /* Hero */
 .ox-hero {
-  padding: calc(var(--ox-header-h) + clamp(2rem, 6vw, 3.5rem)) 0 clamp(3rem, 8vw, 4.25rem);
+  padding: calc(var(--ox-chrome-offset, var(--ox-header-h)) + clamp(1.25rem, 4vw, 2.25rem)) 0 clamp(3rem, 8vw, 4.25rem);
   position: relative;
   overflow: hidden;
 }
@@ -2403,7 +2483,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 /* Phone polish — store badges + hero rhythm */
 @media (max-width: 639px) {
   .ox-hero {
-    padding: calc(var(--ox-header-h) + 2.25rem) 0 2.5rem;
+    padding: calc(var(--ox-chrome-offset, var(--ox-header-h)) + 1.35rem) 0 2.25rem;
   }
 
   .ox-hero-grid {
@@ -2473,7 +2553,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 
   .ox-section {
     padding-block: clamp(2.25rem, 7vw, 3.25rem);
-    scroll-margin-top: calc(var(--ox-header-h) + 0.85rem);
+    scroll-margin-top: calc(var(--ox-chrome-offset, var(--ox-header-h)) + 0.85rem);
   }
 
   .ox-step h3 {

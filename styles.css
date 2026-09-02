@@ -389,12 +389,12 @@ html[data-newon-shell-theme="light"] .navbar-app-showcase__icon-img {
 
 @media (max-width: 639px) {
   :root {
-    --brand-header-min-h: 60px;
+    --brand-header-min-h: 52px;
   }
 
   .navbar-bar--brand-header {
     min-height: var(--brand-header-min-h);
-    padding-block: 8px;
+    padding-block: 4px;
   }
 
   .navbar-app-showcase__tagline {
