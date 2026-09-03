@@ -91,24 +91,28 @@ export const SERVICE_PRICING = {
     category: PRICING_CATEGORIES.BUILD,
     basisKo: "기본 단일 랜딩페이지 제작 기준",
     basisEn: "Starting point for a single landing page",
-    inquiryLabelKo: "LANDING PAGE",
-    inquiryLabelEn: "LANDING PAGE",
+    inquiryLabelKo: "Landing Page Development",
+    inquiryLabelEn: "Landing Page Development",
   },
   web: {
     amount: 800000,
     category: PRICING_CATEGORIES.BUILD,
     basisKo: "소규모 기업·브랜드 웹사이트 기준",
     basisEn: "Starting point for a small company or brand website",
-    inquiryLabelKo: "WEBSITE",
-    inquiryLabelEn: "WEBSITE",
+    inquiryLabelKo: "Website Development",
+    inquiryLabelEn: "Website Development",
   },
   app: {
     amount: 600000,
     category: PRICING_CATEGORIES.BUILD,
     basisKo: "핵심 사용자 흐름과 주요 화면 Prototype 기준",
     basisEn: "Starting point for core user flows and key prototype screens",
-    inquiryLabelKo: "APP PROTOTYPE",
-    inquiryLabelEn: "APP PROTOTYPE",
+    extraNoteKo:
+      "시작가는 Prototype 기준입니다. Backend·결제·스토어 출시 등 상위 범위는 프로젝트에 따라 별도 견적입니다.",
+    extraNoteEn:
+      "Starting price covers Prototype scope. Backend, payments, store release, and broader scopes are quoted separately by project.",
+    inquiryLabelKo: "App Prototype",
+    inquiryLabelEn: "App Prototype",
   },
   mvp: {
     amount: 1500000,
@@ -124,8 +128,8 @@ export const SERVICE_PRICING = {
     externalCost: true,
     basisKo: "하나의 핵심 AI 업무 자동화 기준",
     basisEn: "Starting point for one core AI workflow automation",
-    inquiryLabelKo: "AI AUTOMATION",
-    inquiryLabelEn: "AI AUTOMATION",
+    inquiryLabelKo: "AI Automation",
+    inquiryLabelEn: "AI Automation",
   },
   "workflow-automation": {
     amount: 1000000,
@@ -133,8 +137,8 @@ export const SERVICE_PRICING = {
     externalCost: true,
     basisKo: "하나의 핵심 Workflow 및 기본 서비스 연동 기준",
     basisEn: "Starting point for one core workflow with basic integrations",
-    inquiryLabelKo: "WORKFLOW AUTOMATION",
-    inquiryLabelEn: "WORKFLOW AUTOMATION",
+    inquiryLabelKo: "Workflow Automation",
+    inquiryLabelEn: "Workflow Automation",
   },
   "data-reporting": {
     amount: 700000,
@@ -142,8 +146,8 @@ export const SERVICE_PRICING = {
     externalCost: true,
     basisKo: "기본 데이터 수집·정리·Reporting 자동화 기준",
     basisEn: "Starting point for basic data collection, cleanup, and reporting automation",
-    inquiryLabelKo: "DATA & REPORTING",
-    inquiryLabelEn: "DATA & REPORTING",
+    inquiryLabelKo: "Data & Reporting",
+    inquiryLabelEn: "Data & Reporting",
   },
   "internal-tools": {
     amount: 1500000,
@@ -151,24 +155,24 @@ export const SERVICE_PRICING = {
     externalCost: true,
     basisKo: "하나의 핵심 내부 업무를 위한 소규모 Tool 기준",
     basisEn: "Starting point for one core internal ops tool",
-    inquiryLabelKo: "INTERNAL TOOLS",
-    inquiryLabelEn: "INTERNAL TOOLS",
+    inquiryLabelKo: "Internal Tools",
+    inquiryLabelEn: "Internal Tools",
   },
   "market-research": {
     amount: 300000,
     category: PRICING_CATEGORIES.RESEARCH,
     basisKo: "기본 시장 조사 범위 기준",
     basisEn: "Starting point for a basic market research scope",
-    inquiryLabelKo: "MARKET RESEARCH",
-    inquiryLabelEn: "MARKET RESEARCH",
+    inquiryLabelKo: "Market Research",
+    inquiryLabelEn: "Market Research",
   },
   "competitor-analysis": {
     amount: 300000,
     category: PRICING_CATEGORIES.RESEARCH,
     basisKo: "주요 경쟁사 분석 기준",
     basisEn: "Starting point for primary competitor analysis",
-    inquiryLabelKo: "COMPETITOR ANALYSIS",
-    inquiryLabelEn: "COMPETITOR ANALYSIS",
+    inquiryLabelKo: "Competitor Analysis",
+    inquiryLabelEn: "Competitor Analysis",
   },
   "consumer-research": {
     amount: 400000,
@@ -179,24 +183,24 @@ export const SERVICE_PRICING = {
       "설문·인터뷰 참가자 모집, 리워드 및 외부 조사 비용은 별도로 발생할 수 있습니다.",
     extraNoteEn:
       "Recruitment, incentives, and third-party research costs may apply separately.",
-    inquiryLabelKo: "CONSUMER RESEARCH",
-    inquiryLabelEn: "CONSUMER RESEARCH",
+    inquiryLabelKo: "Consumer Research",
+    inquiryLabelEn: "Consumer Research",
   },
   "ux-audit": {
     amount: 300000,
     category: PRICING_CATEGORIES.RESEARCH,
     basisKo: "핵심 사용자 흐름 및 UX 진단 기준",
     basisEn: "Starting point for core journey and UX diagnosis",
-    inquiryLabelKo: "UX AUDIT / RESEARCH",
-    inquiryLabelEn: "UX AUDIT / RESEARCH",
+    inquiryLabelKo: "UX Audit",
+    inquiryLabelEn: "UX Audit",
   },
   "trend-research": {
     amount: 300000,
     category: PRICING_CATEGORIES.RESEARCH,
     basisKo: "특정 시장/주제의 기본 Trend Research 기준",
     basisEn: "Starting point for basic trend research on a topic or market",
-    inquiryLabelKo: "TREND RESEARCH",
-    inquiryLabelEn: "TREND RESEARCH",
+    inquiryLabelKo: "Trend Research",
+    inquiryLabelEn: "Trend Research",
   },
   "white-label": {
     custom: true,
@@ -204,8 +208,8 @@ export const SERVICE_PRICING = {
     basisKo: "프로젝트의 기능, 규모, 기술 환경과 운영 요구사항을 확인한 후 견적을 안내합니다.",
     basisEn:
       "We provide a quote after reviewing features, scale, technical environment, and operational requirements.",
-    inquiryLabelKo: "WHITE-LABEL",
-    inquiryLabelEn: "WHITE-LABEL",
+    inquiryLabelKo: "White-label",
+    inquiryLabelEn: "White-label",
   },
   "custom-product": {
     custom: true,
@@ -213,16 +217,16 @@ export const SERVICE_PRICING = {
     basisKo: "프로젝트의 기능, 규모, 기술 환경과 운영 요구사항을 확인한 후 견적을 안내합니다.",
     basisEn:
       "We provide a quote after reviewing features, scale, technical environment, and operational requirements.",
-    inquiryLabelKo: "CUSTOM PRODUCT",
-    inquiryLabelEn: "CUSTOM PRODUCT",
+    inquiryLabelKo: "Custom Product",
+    inquiryLabelEn: "Custom Product",
   },
   "product-launch": {
     amount: 1000000,
     category: PRICING_CATEGORIES.SOLUTIONS,
     basisKo: "기본적인 제품 출시 지원 범위 기준",
     basisEn: "Starting point for a basic product launch support scope",
-    inquiryLabelKo: "PRODUCT LAUNCH",
-    inquiryLabelEn: "PRODUCT LAUNCH",
+    inquiryLabelKo: "Product Launch",
+    inquiryLabelEn: "Product Launch",
   },
   "internal-system": {
     custom: true,
@@ -230,8 +234,8 @@ export const SERVICE_PRICING = {
     basisKo: "프로젝트의 기능, 규모, 기술 환경과 운영 요구사항을 확인한 후 견적을 안내합니다.",
     basisEn:
       "We provide a quote after reviewing features, scale, technical environment, and operational requirements.",
-    inquiryLabelKo: "INTERNAL SYSTEM",
-    inquiryLabelEn: "INTERNAL SYSTEM",
+    inquiryLabelKo: "Internal System",
+    inquiryLabelEn: "Internal System",
   },
 };
 
@@ -471,12 +475,15 @@ export function applyServicePricing(copy, slug, lang = "ko") {
     a: patchPriceText(f.a, slug, lang),
   }));
 
+  const extraNote = ko ? cfg.extraNoteKo || "" : cfg.extraNoteEn || "";
+  const priceNote = [basis, extraNote].filter(Boolean).join(" ");
+
   const priced = {
     ...copy,
     meta,
     faqs,
     priceValue: display,
-    priceNote: basis,
+    priceNote,
     priceName: custom ? "PRICE" : copy.priceName,
     priceTitle: ko ? "시작가와 기본 범위" : "Starting price and basic scope",
     priceLabel: "PROJECT SCOPE",
@@ -548,6 +555,160 @@ export function inquiryPricingJson() {
   return out;
 }
 
+const PILLAR_AREA = {
+  build: "BUILD",
+  automation: "AUTOMATION",
+  research: "RESEARCH",
+  solutions: "SOLUTIONS",
+};
+
+/** Canonical select value: "BUILD / MVP", "AUTOMATION / AI Automation", … */
+export function businessInquiryOptionValue(slug) {
+  const cfg = SERVICE_PRICING[slug];
+  if (!cfg?.inquiryLabelEn) return "";
+  return `${cfg.category} / ${cfg.inquiryLabelEn}`;
+}
+
+/** Human-readable service name for query `service=` (stable EN label). */
+export function businessInquiryServiceName(slug) {
+  return SERVICE_PRICING[slug]?.inquiryLabelEn || "";
+}
+
+export function listBusinessInquirableSlugs() {
+  return Object.keys(SERVICE_PRICING);
+}
+
+/**
+ * Detail-page CTA → /business/inquiry/?category=Business&service&slug&area&source#inquiry
+ * @param {string} slug
+ * @param {string} relativeBase e.g. "../inquiry/" or "../../inquiry/"
+ * @param {{ source?: string }} [opts]
+ */
+export function businessInquiryHref(slug, relativeBase = "../inquiry/", opts = {}) {
+  const cfg = SERVICE_PRICING[slug];
+  const params = new URLSearchParams({ category: "Business" });
+  if (cfg) {
+    params.set("service", cfg.inquiryLabelEn);
+    params.set("slug", slug);
+    params.set("area", cfg.category);
+  }
+  if (opts.source) params.set("source", opts.source);
+  else if (slug) params.set("source", `/business/${slug}/`);
+  return `${relativeBase}?${params.toString()}#inquiry`;
+}
+
+/**
+ * Pillar CTA — no service preselect.
+ * @param {string} pillarSlug build|automation|research|solutions
+ */
+export function businessPillarInquiryHref(pillarSlug, relativeBase = "../inquiry/", opts = {}) {
+  const area = PILLAR_AREA[pillarSlug] || String(pillarSlug || "").toUpperCase();
+  const params = new URLSearchParams({ category: "Business", area });
+  params.set("source", opts.source || `business-${pillarSlug}-pillar`);
+  return `${relativeBase}?${params.toString()}#inquiry`;
+}
+
+/** Keys → select option value (includes legacy aliases). */
+export function businessInquiryServiceMap() {
+  /** @type {Record<string, string>} */
+  const map = {};
+  for (const slug of listBusinessInquirableSlugs()) {
+    const cfg = SERVICE_PRICING[slug];
+    const value = businessInquiryOptionValue(slug);
+    if (!value) continue;
+    map[slug] = value;
+    map[cfg.inquiryLabelEn] = value;
+    map[cfg.inquiryLabelEn.toLowerCase()] = value;
+    map[cfg.inquiryLabelKo] = value;
+    map[value] = value;
+    map[`${cfg.category} / ${cfg.inquiryLabelEn.toUpperCase()}`] = value;
+  }
+  // Legacy aliases from older CTAs / select values
+  Object.assign(map, {
+    website: "BUILD / Website Development",
+    Website: "BUILD / Website Development",
+    WEBSITE: "BUILD / Website Development",
+    "BUILD / WEBSITE": "BUILD / Website Development",
+    "build-website": "BUILD / Website Development",
+    "LANDING PAGE": "BUILD / Landing Page Development",
+    "BUILD / LANDING": "BUILD / Landing Page Development",
+    "build-landing": "BUILD / Landing Page Development",
+    "APP PROTOTYPE": "BUILD / App Prototype",
+    "BUILD / APP": "BUILD / App Prototype",
+    "build-app": "BUILD / App Prototype",
+    App: "BUILD / App Prototype",
+    MVP: "BUILD / MVP",
+    "BUILD / MVP": "BUILD / MVP",
+    "build-mvp": "BUILD / MVP",
+    AI: "AUTOMATION / AI Automation",
+    "AI AUTOMATION": "AUTOMATION / AI Automation",
+    "ai-automation": "AUTOMATION / AI Automation",
+    Automation: "AUTOMATION / Workflow Automation",
+    "WORKFLOW AUTOMATION": "AUTOMATION / Workflow Automation",
+    "AUTOMATION / WORKFLOW AUTOMATION": "AUTOMATION / Workflow Automation",
+    "automation-workflow": "AUTOMATION / Workflow Automation",
+    "INTERNAL TOOLS": "AUTOMATION / Internal Tools",
+    "AUTOMATION / INTERNAL TOOLS": "AUTOMATION / Internal Tools",
+    "automation-internal-tools": "AUTOMATION / Internal Tools",
+    "DATA & REPORTING": "AUTOMATION / Data & Reporting",
+    "AUTOMATION / DATA & REPORTING": "AUTOMATION / Data & Reporting",
+    "automation-data-reporting": "AUTOMATION / Data & Reporting",
+    "MARKET RESEARCH": "RESEARCH / Market Research",
+    "RESEARCH / MARKET RESEARCH": "RESEARCH / Market Research",
+    "COMPETITOR ANALYSIS": "RESEARCH / Competitor Analysis",
+    "RESEARCH / COMPETITOR ANALYSIS": "RESEARCH / Competitor Analysis",
+    "CONSUMER RESEARCH": "RESEARCH / Consumer Research",
+    "RESEARCH / CONSUMER RESEARCH": "RESEARCH / Consumer Research",
+    "UX AUDIT / RESEARCH": "RESEARCH / UX Audit",
+    "RESEARCH / UX AUDIT": "RESEARCH / UX Audit",
+    "TREND RESEARCH": "RESEARCH / Trend Research",
+    "RESEARCH / TREND RESEARCH": "RESEARCH / Trend Research",
+    "WHITE-LABEL": "SOLUTIONS / White-label",
+    "White-label": "SOLUTIONS / White-label",
+    whitelabel: "SOLUTIONS / White-label",
+    "CUSTOM PRODUCT": "SOLUTIONS / Custom Product",
+    "SOLUTIONS / CUSTOM PRODUCT": "SOLUTIONS / Custom Product",
+    "PRODUCT LAUNCH": "SOLUTIONS / Product Launch",
+    "SOLUTIONS / PRODUCT LAUNCH": "SOLUTIONS / Product Launch",
+    "INTERNAL SYSTEM": "SOLUTIONS / Internal System",
+    "SOLUTIONS / INTERNAL SYSTEM": "SOLUTIONS / Internal System",
+  });
+  return map;
+}
+
+/** Primary BUILD + AUTOMATION options first, then Research/Solutions. */
+export function businessInquirySelectOptionsHtml() {
+  const order = [
+    ...(PILLAR_SERVICE_SLUGS.build || []),
+    ...(PILLAR_SERVICE_SLUGS.automation || []),
+    ...(PILLAR_SERVICE_SLUGS.research || []),
+    ...(PILLAR_SERVICE_SLUGS.solutions || []),
+  ];
+  return order
+    .map((slug) => {
+      const value = businessInquiryOptionValue(slug);
+      const cfg = SERVICE_PRICING[slug];
+      if (!value || !cfg) return "";
+      const label = value
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/"/g, "&quot;");
+      return `                <option value="${label}" data-biz-option="1" data-slug="${slug}" data-area="${cfg.category}">${label}</option>`;
+    })
+    .filter(Boolean)
+    .join("\n");
+}
+
+/** Inquiry package prices — single source of truth. */
+export function businessInquiryPackagePrices(lang = "ko") {
+  return {
+    landing: formatPriceDisplay("landing", lang),
+    web: formatPriceDisplay("web", lang),
+    mvp: formatPriceDisplay("mvp", lang),
+    custom: lang === "ko" ? "별도 견적" : "Custom quote",
+  };
+}
+
 /** Legacy exports used by studio hub */
 export const BUSINESS_PACKAGES = [
   {
@@ -561,8 +722,8 @@ export const BUSINESS_PACKAGES = [
     id: "build",
     nameKey: "studio.pkgBuildName",
     descKey: "studio.pkgBuildDesc",
-    priceKo: formatPriceDisplay("mvp", "ko"),
-    priceEn: formatPriceDisplay("mvp", "en"),
+    priceKo: formatPriceDisplay("web", "ko"),
+    priceEn: formatPriceDisplay("web", "en"),
   },
   {
     id: "mvp",

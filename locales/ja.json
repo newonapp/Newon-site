@@ -3642,7 +3642,13 @@
     "studioSelectedLabel": "Selected service",
     "studioTypeHint": "Studio service",
     "budgetHint": "Budget helps us understand project scope — it is not a final quote.",
-    "studioSelectPlaceholder": "Select a service"
+    "studioSelectPlaceholder": "Select a service",
+    "businessFormTitle": "Business project inquiry",
+    "businessFormLead": "Tell us about a project that needs implementation, development, integration, or deployment. We will review scope, timeline, and budget, then follow up.",
+    "businessPhMessage": "Share the Business service you need, project goals, current stage, and any references.",
+    "businessSelectedLabel": "Selected service",
+    "businessTypeHint": "Business service",
+    "businessSelectPlaceholder": "Select a service"
   },
   "businessPages": {
     "common": {

@@ -2454,7 +2454,7 @@
               <span class="bz-pkg__idx" aria-hidden="true">02</span>
               <span class="bz-pkg__tag">BUILD</span>
               <h3 class="bz-pkg__title">Website / Web Product</h3>
-              <p class="bz-pkg__price"><span class="bz-pkg__amount">From ₩1,000,000</span></p>
+              <p class="bz-pkg__price"><span class="bz-pkg__amount">From ₩800,000</span></p>
               <a class="bz-pkg__cta" href="#inquiry">Inquire →</a>
             </article>
             <article class="bz-pkg bz-pkg--featured">
@@ -2484,6 +2484,12 @@
         data-studio-selected="Selected service"
         data-studio-type-hint="Studio service"
         data-studio-select-ph="Select a service"
+        data-business-title="Business project inquiry"
+        data-business-lead="Tell us about a project that needs implementation, development, integration, or deployment. We will review scope, timeline, and budget, then follow up."
+        data-business-ph="Share the Business service you need, project goals, current stage, and any references."
+        data-business-selected="Selected service"
+        data-business-type-hint="Business service"
+        data-business-select-ph="Select a service"
         data-default-ph="Erzählen Sie uns kurz von dem Projekt oder der Zusammenarbeit."
       >
         <div class="bz-inner bz-form-wrap">
@@ -2522,19 +2528,23 @@
               <label for="bz-type">Anfragetyp<span class="bz-req" aria-hidden="true">*</span></label>
               <select id="bz-type" name="type" required>
                 <option value="" disabled selected>Bitte auswählen</option>
-                <option value="BUILD / MVP" data-biz-option="1">BUILD / MVP</option>
-                <option value="BUILD / WEBSITE" data-biz-option="1">BUILD / WEBSITE</option>
-                <option value="BUILD / LANDING" data-biz-option="1">BUILD / LANDING</option>
-                <option value="BUILD / APP" data-biz-option="1">BUILD / APP</option>
-                <option value="AUTOMATION / DATA & REPORTING" data-biz-option="1">AUTOMATION / DATA &amp; REPORTING</option>
-                <option value="AUTOMATION / INTERNAL TOOLS" data-biz-option="1">AUTOMATION / INTERNAL TOOLS</option>
-                <option value="AUTOMATION / WORKFLOW AUTOMATION" data-biz-option="1">AUTOMATION / WORKFLOW AUTOMATION</option>
-                <option value="App" data-biz-option="1">App</option>
-                <option value="Website" data-biz-option="1">Website</option>
-                <option value="MVP" data-biz-option="1">MVP</option>
-                <option value="AI" data-biz-option="1">AI</option>
-                <option value="Automation" data-biz-option="1">Automation</option>
-                <option value="White-label" data-biz-option="1">White-label</option>
+                <option value="BUILD / MVP" data-biz-option="1" data-slug="mvp" data-area="BUILD">BUILD / MVP</option>
+                <option value="BUILD / Website Development" data-biz-option="1" data-slug="web" data-area="BUILD">BUILD / Website Development</option>
+                <option value="BUILD / Landing Page Development" data-biz-option="1" data-slug="landing" data-area="BUILD">BUILD / Landing Page Development</option>
+                <option value="BUILD / App Prototype" data-biz-option="1" data-slug="app" data-area="BUILD">BUILD / App Prototype</option>
+                <option value="AUTOMATION / AI Automation" data-biz-option="1" data-slug="ai-automation" data-area="AUTOMATION">AUTOMATION / AI Automation</option>
+                <option value="AUTOMATION / Workflow Automation" data-biz-option="1" data-slug="workflow-automation" data-area="AUTOMATION">AUTOMATION / Workflow Automation</option>
+                <option value="AUTOMATION / Internal Tools" data-biz-option="1" data-slug="internal-tools" data-area="AUTOMATION">AUTOMATION / Internal Tools</option>
+                <option value="AUTOMATION / Data &amp; Reporting" data-biz-option="1" data-slug="data-reporting" data-area="AUTOMATION">AUTOMATION / Data &amp; Reporting</option>
+                <option value="RESEARCH / Market Research" data-biz-option="1" data-slug="market-research" data-area="RESEARCH">RESEARCH / Market Research</option>
+                <option value="RESEARCH / Competitor Analysis" data-biz-option="1" data-slug="competitor-analysis" data-area="RESEARCH">RESEARCH / Competitor Analysis</option>
+                <option value="RESEARCH / Consumer Research" data-biz-option="1" data-slug="consumer-research" data-area="RESEARCH">RESEARCH / Consumer Research</option>
+                <option value="RESEARCH / UX Audit" data-biz-option="1" data-slug="ux-audit" data-area="RESEARCH">RESEARCH / UX Audit</option>
+                <option value="RESEARCH / Trend Research" data-biz-option="1" data-slug="trend-research" data-area="RESEARCH">RESEARCH / Trend Research</option>
+                <option value="SOLUTIONS / White-label" data-biz-option="1" data-slug="white-label" data-area="SOLUTIONS">SOLUTIONS / White-label</option>
+                <option value="SOLUTIONS / Custom Product" data-biz-option="1" data-slug="custom-product" data-area="SOLUTIONS">SOLUTIONS / Custom Product</option>
+                <option value="SOLUTIONS / Product Launch" data-biz-option="1" data-slug="product-launch" data-area="SOLUTIONS">SOLUTIONS / Product Launch</option>
+                <option value="SOLUTIONS / Internal System" data-biz-option="1" data-slug="internal-system" data-area="SOLUTIONS">SOLUTIONS / Internal System</option>
                 <option value="Design" data-biz-option="1">Design</option>
                 <option value="Studio / Brand Strategy" data-studio-option="1">Studio / Brand Strategy</option>
                 <option value="Studio / Naming" data-studio-option="1">Studio / Naming</option>
@@ -2723,26 +2733,10 @@
         var formTitleEl = document.getElementById("bz-form-title");
         var formLeadEl = document.getElementById("bz-form-lead");
         var selectedEl = document.getElementById("bz-studio-selected");
-        var serviceMap = {
-          mvp: "MVP",
-          web: "Website",
-          website: "Website",
-          app: "App",
-          landing: "BUILD / LANDING",
-          "data-reporting": "AUTOMATION / DATA & REPORTING",
-          "automation-data-reporting": "AUTOMATION / DATA & REPORTING",
-          "internal-tools": "AUTOMATION / INTERNAL TOOLS",
-          "automation-internal-tools": "AUTOMATION / INTERNAL TOOLS",
-          "workflow-automation": "AUTOMATION / WORKFLOW AUTOMATION",
-          "automation-workflow": "AUTOMATION / WORKFLOW AUTOMATION",
-          "build-mvp": "BUILD / MVP",
-          "build-website": "BUILD / WEBSITE",
-          "build-landing": "BUILD / LANDING",
-          "build-app": "BUILD / APP",
-          "ai-automation": "AI",
-          ai: "AI",
-          "white-label": "White-label",
+        var businessServiceMap = {"landing":"BUILD / Landing Page Development","Landing Page Development":"BUILD / Landing Page Development","landing page development":"BUILD / Landing Page Development","BUILD / Landing Page Development":"BUILD / Landing Page Development","BUILD / LANDING PAGE DEVELOPMENT":"BUILD / Landing Page Development","web":"BUILD / Website Development","Website Development":"BUILD / Website Development","website development":"BUILD / Website Development","BUILD / Website Development":"BUILD / Website Development","BUILD / WEBSITE DEVELOPMENT":"BUILD / Website Development","app":"BUILD / App Prototype","App Prototype":"BUILD / App Prototype","app prototype":"BUILD / App Prototype","BUILD / App Prototype":"BUILD / App Prototype","BUILD / APP PROTOTYPE":"BUILD / App Prototype","mvp":"BUILD / MVP","MVP":"BUILD / MVP","BUILD / MVP":"BUILD / MVP","ai-automation":"AUTOMATION / AI Automation","AI Automation":"AUTOMATION / AI Automation","ai automation":"AUTOMATION / AI Automation","AUTOMATION / AI Automation":"AUTOMATION / AI Automation","AUTOMATION / AI AUTOMATION":"AUTOMATION / AI Automation","workflow-automation":"AUTOMATION / Workflow Automation","Workflow Automation":"AUTOMATION / Workflow Automation","workflow automation":"AUTOMATION / Workflow Automation","AUTOMATION / Workflow Automation":"AUTOMATION / Workflow Automation","AUTOMATION / WORKFLOW AUTOMATION":"AUTOMATION / Workflow Automation","data-reporting":"AUTOMATION / Data & Reporting","Data & Reporting":"AUTOMATION / Data & Reporting","data & reporting":"AUTOMATION / Data & Reporting","AUTOMATION / Data & Reporting":"AUTOMATION / Data & Reporting","AUTOMATION / DATA & REPORTING":"AUTOMATION / Data & Reporting","internal-tools":"AUTOMATION / Internal Tools","Internal Tools":"AUTOMATION / Internal Tools","internal tools":"AUTOMATION / Internal Tools","AUTOMATION / Internal Tools":"AUTOMATION / Internal Tools","AUTOMATION / INTERNAL TOOLS":"AUTOMATION / Internal Tools","market-research":"RESEARCH / Market Research","Market Research":"RESEARCH / Market Research","market research":"RESEARCH / Market Research","RESEARCH / Market Research":"RESEARCH / Market Research","RESEARCH / MARKET RESEARCH":"RESEARCH / Market Research","competitor-analysis":"RESEARCH / Competitor Analysis","Competitor Analysis":"RESEARCH / Competitor Analysis","competitor analysis":"RESEARCH / Competitor Analysis","RESEARCH / Competitor Analysis":"RESEARCH / Competitor Analysis","RESEARCH / COMPETITOR ANALYSIS":"RESEARCH / Competitor Analysis","consumer-research":"RESEARCH / Consumer Research","Consumer Research":"RESEARCH / Consumer Research","consumer research":"RESEARCH / Consumer Research","RESEARCH / Consumer Research":"RESEARCH / Consumer Research","RESEARCH / CONSUMER RESEARCH":"RESEARCH / Consumer Research","ux-audit":"RESEARCH / UX Audit","UX Audit":"RESEARCH / UX Audit","ux audit":"RESEARCH / UX Audit","RESEARCH / UX Audit":"RESEARCH / UX Audit","RESEARCH / UX AUDIT":"RESEARCH / UX Audit","trend-research":"RESEARCH / Trend Research","Trend Research":"RESEARCH / Trend Research","trend research":"RESEARCH / Trend Research","RESEARCH / Trend Research":"RESEARCH / Trend Research","RESEARCH / TREND RESEARCH":"RESEARCH / Trend Research","white-label":"SOLUTIONS / White-label","White-label":"SOLUTIONS / White-label","SOLUTIONS / White-label":"SOLUTIONS / White-label","SOLUTIONS / WHITE-LABEL":"SOLUTIONS / White-label","custom-product":"SOLUTIONS / Custom Product","Custom Product":"SOLUTIONS / Custom Product","custom product":"SOLUTIONS / Custom Product","SOLUTIONS / Custom Product":"SOLUTIONS / Custom Product","SOLUTIONS / CUSTOM PRODUCT":"SOLUTIONS / Custom Product","product-launch":"SOLUTIONS / Product Launch","Product Launch":"SOLUTIONS / Product Launch","product launch":"SOLUTIONS / Product Launch","SOLUTIONS / Product Launch":"SOLUTIONS / Product Launch","SOLUTIONS / PRODUCT LAUNCH":"SOLUTIONS / Product Launch","internal-system":"SOLUTIONS / Internal System","Internal System":"SOLUTIONS / Internal System","internal system":"SOLUTIONS / Internal System","SOLUTIONS / Internal System":"SOLUTIONS / Internal System","SOLUTIONS / INTERNAL SYSTEM":"SOLUTIONS / Internal System","website":"BUILD / Website Development","Website":"BUILD / Website Development","WEBSITE":"BUILD / Website Development","BUILD / WEBSITE":"BUILD / Website Development","build-website":"BUILD / Website Development","LANDING PAGE":"BUILD / Landing Page Development","BUILD / LANDING":"BUILD / Landing Page Development","build-landing":"BUILD / Landing Page Development","APP PROTOTYPE":"BUILD / App Prototype","BUILD / APP":"BUILD / App Prototype","build-app":"BUILD / App Prototype","App":"BUILD / App Prototype","build-mvp":"BUILD / MVP","AI":"AUTOMATION / AI Automation","AI AUTOMATION":"AUTOMATION / AI Automation","Automation":"AUTOMATION / Workflow Automation","WORKFLOW AUTOMATION":"AUTOMATION / Workflow Automation","automation-workflow":"AUTOMATION / Workflow Automation","INTERNAL TOOLS":"AUTOMATION / Internal Tools","automation-internal-tools":"AUTOMATION / Internal Tools","DATA & REPORTING":"AUTOMATION / Data & Reporting","automation-data-reporting":"AUTOMATION / Data & Reporting","MARKET RESEARCH":"RESEARCH / Market Research","COMPETITOR ANALYSIS":"RESEARCH / Competitor Analysis","CONSUMER RESEARCH":"RESEARCH / Consumer Research","UX AUDIT / RESEARCH":"RESEARCH / UX Audit","TREND RESEARCH":"RESEARCH / Trend Research","WHITE-LABEL":"SOLUTIONS / White-label","whitelabel":"SOLUTIONS / White-label","CUSTOM PRODUCT":"SOLUTIONS / Custom Product","PRODUCT LAUNCH":"SOLUTIONS / Product Launch","INTERNAL SYSTEM":"SOLUTIONS / Internal System"};
+        var serviceMap = Object.assign({}, businessServiceMap || {}, {
           design: "Design",
+          Design: "Design",
           "Brand Strategy": "Studio / Brand Strategy",
           "brand-strategy": "Studio / Brand Strategy",
           strategy: "Studio / Brand Strategy",
@@ -2786,30 +2780,34 @@
           "development-collaboration": "development-collaboration",
           development: "development-collaboration",
           Development: "development-collaboration"
-        };
+        });
         var qType = params.get("type") || params.get("service") || params.get("slug") || "";
         var qCategory = (params.get("category") || "").trim();
         var qArea = (params.get("area") || "").trim();
         var qSource = (params.get("source") || "").trim();
+        var qSlug = decodeParamSafe(params.get("slug") || "");
         var messageHints = {
           ko: {
-            "AUTOMATION / WORKFLOW AUTOMATION":
+            "AUTOMATION / Workflow Automation":
               "1. 현재 사용하는 서비스\n2. 현재 반복하고 있는 업무\n3. Workflow가 시작되는 조건\n4. 현재 업무 처리 과정\n5. 자동화하고 싶은 단계\n6. 연결해야 할 서비스\n7. 예상 사용자 수\n8. AI 기능 필요 여부\n9. Dashboard 필요 여부\n10. 희망 일정\n11. 예산 범위\n12. 기타 요구사항"
           },
           en: {
-            "AUTOMATION / WORKFLOW AUTOMATION":
+            "AUTOMATION / Workflow Automation":
               "1. Services you use today\n2. Repetitive work you do now\n3. What triggers the workflow\n4. Current handling process\n5. Steps you want automated\n6. Services to connect\n7. Expected number of users\n8. Whether AI is needed\n9. Whether a dashboard is needed\n10. Preferred timeline\n11. Budget range\n12. Other requirements"
           }
         };
         var msgEl = document.getElementById("bz-message");
         var pageLang = (document.documentElement.lang || "en").slice(0, 2);
         var hintPack = messageHints[pageLang] || messageHints.en;
-        function decodeParam(v) {
+        function decodeParamSafe(v) {
           try {
             return decodeURIComponent(String(v || "").replace(/\+/g, " ")).trim();
           } catch (e) {
             return String(v || "").trim();
           }
+        }
+        function decodeParam(v) {
+          return decodeParamSafe(v);
         }
         qType = decodeParam(qType);
         var blockedStudio = {
@@ -2835,14 +2833,14 @@
           });
         }
         function resolveInquiryType() {
-          // category=Studio alone → no default service (neutral select)
           if (!qType) return "";
           if (isBlockedStudioValue(qType)) return "";
           var mapped = "";
           if (/^Studio\s*\//i.test(qType)) mapped = qType.replace(/^studio\s*\//i, "Studio / ");
           else if (serviceMap[qType]) mapped = serviceMap[qType];
           else if (serviceMap[qType.toLowerCase()]) mapped = serviceMap[qType.toLowerCase()];
-          else mapped = serviceMap[qType] || "";
+          else if (qSlug && serviceMap[qSlug]) mapped = serviceMap[qSlug];
+          else mapped = "";
           if (!mapped) return "";
           if (isBlockedStudioValue(mapped)) return "";
           return mapped;
@@ -2854,26 +2852,66 @@
           if (qType && serviceMap[qType] && /^Studio\s*\//.test(serviceMap[qType])) return true;
           return false;
         }
+        function isBusinessInflow(mapped) {
+          if (isStudioInflow(mapped)) return false;
+          if (/^business$/i.test(qCategory)) return true;
+          if (/\/business\//i.test(qSource)) return true;
+          if (mapped && /^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)\s*\//.test(mapped)) return true;
+          if (qArea && /^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)$/i.test(qArea)) return true;
+          return false;
+        }
+        function humanServiceFromType(tv) {
+          var v = String(tv || "").trim();
+          if (!v) return "";
+          if (/^Studio\s*\//i.test(v)) return v.replace(/^Studio\s*\/\s*/i, "");
+          return v.replace(/^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)\s*\/\s*/i, "");
+        }
         function syncServiceHidden() {
           var formEl = document.getElementById("bz-inquiry-form");
           if (!formEl || !typeEl) return;
           var hidden = formEl.querySelector('input[name="service"]');
+          var slugHidden = formEl.querySelector('input[name="slug"]');
+          var areaHidden = formEl.querySelector('input[name="area"]');
           var tv = String(typeEl.value || "").trim();
+          var opt = typeEl.options[typeEl.selectedIndex];
           var next = "";
           if (tv && !isBlockedStudioValue(tv)) {
-            next = tv.replace(/^Studio\s*\/\s*/i, "");
+            next = humanServiceFromType(tv);
           }
           if (!next) {
             if (hidden) hidden.value = "";
-            return;
+          } else {
+            if (!hidden) {
+              hidden = document.createElement("input");
+              hidden.type = "hidden";
+              hidden.name = "service";
+              formEl.appendChild(hidden);
+            }
+            hidden.value = next;
           }
-          if (!hidden) {
-            hidden = document.createElement("input");
-            hidden.type = "hidden";
-            hidden.name = "service";
-            formEl.appendChild(hidden);
+          var slugVal = (opt && opt.getAttribute("data-slug")) || "";
+          if (!slugVal && qSlug && serviceMap[qSlug] === tv) slugVal = qSlug;
+          if (!slugVal) {
+            if (slugHidden) slugHidden.value = "";
+          } else {
+            if (!slugHidden) {
+              slugHidden = document.createElement("input");
+              slugHidden.type = "hidden";
+              slugHidden.name = "slug";
+              formEl.appendChild(slugHidden);
+            }
+            slugHidden.value = slugVal;
           }
-          hidden.value = next;
+          var areaVal = (opt && opt.getAttribute("data-area")) || "";
+          if (areaVal) {
+            if (!areaHidden) {
+              areaHidden = document.createElement("input");
+              areaHidden.type = "hidden";
+              areaHidden.name = "area";
+              formEl.appendChild(areaHidden);
+            }
+            areaHidden.value = areaVal;
+          }
         }
         function applyStudioMode(mapped) {
           if (!inquirySection || !isStudioInflow(mapped)) return;
@@ -2919,13 +2957,71 @@
             selectedEl.textContent = "";
           }
         }
+        function applyBusinessMode(mapped) {
+          if (!inquirySection || !isBusinessInflow(mapped)) return;
+          document.documentElement.setAttribute("data-inquiry-context", "business");
+          if (formTitleEl && inquirySection.getAttribute("data-business-title")) {
+            formTitleEl.textContent = inquirySection.getAttribute("data-business-title");
+          }
+          if (formLeadEl && inquirySection.getAttribute("data-business-lead")) {
+            formLeadEl.textContent = inquirySection.getAttribute("data-business-lead");
+          }
+          if (typeEl) {
+            Array.prototype.forEach.call(typeEl.options, function (opt) {
+              if (!opt.value) {
+                var bph = inquirySection.getAttribute("data-business-select-ph");
+                if (bph) opt.textContent = bph;
+                opt.hidden = false;
+                opt.disabled = false;
+                return;
+              }
+              if (opt.getAttribute("data-studio-option") === "1") {
+                opt.hidden = true;
+                opt.disabled = true;
+                return;
+              }
+              if (opt.getAttribute("data-biz-option") === "1" || opt.value === "Other") {
+                opt.hidden = false;
+                opt.disabled = false;
+              }
+            });
+            var typeLabelBiz = document.querySelector('label[for="bz-type"]');
+            var hintBiz = inquirySection.getAttribute("data-business-type-hint");
+            if (typeLabelBiz && hintBiz) {
+              typeLabelBiz.innerHTML = hintBiz + '<span class="bz-req" aria-hidden="true">*</span>';
+            }
+          }
+          if (msgEl && inquirySection.getAttribute("data-business-ph")) {
+            msgEl.placeholder = inquirySection.getAttribute("data-business-ph");
+          }
+          if (selectedEl && mapped && /^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)\s*\//.test(mapped)) {
+            var bizSel = inquirySection.getAttribute("data-business-selected") || "Selected service";
+            selectedEl.textContent = bizSel + ": " + humanServiceFromType(mapped);
+            selectedEl.hidden = false;
+          } else if (selectedEl) {
+            selectedEl.hidden = true;
+            selectedEl.textContent = "";
+          }
+        }
         function applyMessageHint() {
           if (!msgEl || !typeEl) return;
-          if (document.documentElement.getAttribute("data-inquiry-context") === "studio") {
+          var ctx = document.documentElement.getAttribute("data-inquiry-context");
+          if (ctx === "studio") {
             if (inquirySection && inquirySection.getAttribute("data-studio-ph")) {
               msgEl.placeholder = inquirySection.getAttribute("data-studio-ph");
             }
             return;
+          }
+          if (ctx === "business") {
+            var hintBiz = hintPack[typeEl.value];
+            if (hintBiz) {
+              msgEl.placeholder = hintBiz;
+              return;
+            }
+            if (inquirySection && inquirySection.getAttribute("data-business-ph")) {
+              msgEl.placeholder = inquirySection.getAttribute("data-business-ph");
+              return;
+            }
           }
           var hint = hintPack[typeEl.value];
           if (hint) msgEl.placeholder = hint;
@@ -2935,15 +3031,14 @@
         }
         if (typeEl) {
           var mapped = resolveInquiryType();
-          // If mapped value is not in the (visible) options, treat as unset
           if (mapped && !optionExists(mapped)) {
-            // options not yet filtered — check raw option list
             var rawExists = Array.prototype.some.call(typeEl.options, function (opt) {
               return opt.value === mapped;
             });
             if (!rawExists) mapped = "";
           }
           applyStudioMode(mapped);
+          applyBusinessMode(mapped);
           if (mapped && optionExists(mapped)) {
             typeEl.value = mapped;
             if (!typeEl.value) {
@@ -2952,8 +3047,7 @@
               });
             }
             applyMessageHint();
-          } else if (isStudioInflow("")) {
-            // Neutral: keep placeholder selected
+          } else if (isStudioInflow("") || isBusinessInflow("")) {
             typeEl.value = "";
             Array.prototype.forEach.call(typeEl.options, function (opt) {
               opt.selected = !opt.value;
@@ -2962,11 +3056,22 @@
           typeEl.addEventListener("change", function () {
             applyMessageHint();
             syncServiceHidden();
-            if (selectedEl && document.documentElement.getAttribute("data-inquiry-context") === "studio") {
+            var ctx = document.documentElement.getAttribute("data-inquiry-context");
+            if (selectedEl && ctx === "studio") {
               var v = typeEl.value || "";
               if (/^Studio\s*\//.test(v)) {
                 var selLabel = inquirySection.getAttribute("data-studio-selected") || "Selected service";
                 selectedEl.textContent = selLabel + ": " + v.replace(/^Studio\s*\/\s*/, "");
+                selectedEl.hidden = false;
+              } else {
+                selectedEl.hidden = true;
+              }
+            }
+            if (selectedEl && ctx === "business") {
+              var bv = typeEl.value || "";
+              if (/^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)\s*\//.test(bv)) {
+                var bizLabel = inquirySection.getAttribute("data-business-selected") || "Selected service";
+                selectedEl.textContent = bizLabel + ": " + humanServiceFromType(bv);
                 selectedEl.hidden = false;
               } else {
                 selectedEl.hidden = true;
@@ -3004,5 +3109,5 @@
     <script src="/business/inquiry.js"></script>
     <script src="/portfolio/portfolio.js"></script>
     <script src="/lang-dropdown.js" defer></script>
-</body>
+  </body>
 </html>

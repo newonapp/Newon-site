@@ -8,6 +8,7 @@ import { fileURLToPath } from "url";
 import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml } from "./hub-utils.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { PILLAR_SLUGS, getPillarCopy } from "./business-pillar-copy.mjs";
+import { businessInquiryHref, businessPillarInquiryHref } from "./business-pricing.mjs";
 
 const template = fs.readFileSync(path.join(ROOT, "templates", "business-pillar.html"), "utf8");
 
@@ -153,7 +154,7 @@ function priceBlock(copy, price) {
   }<strong>${escapeHtml(price)}</strong></div>`;
 }
 
-function servicesSection(copy, inquiryHref = "../inquiry/#inquiry") {
+function servicesSection(copy, pillarInquiryHref = "../inquiry/#inquiry", pillarSlug = "") {
   const services = copy.services || [];
   if (!services.length) return "";
 
@@ -171,7 +172,15 @@ function servicesSection(copy, inquiryHref = "../inquiry/#inquiry") {
   const panels = services
     .map((s, i) => {
       const price = priceForIndex(copy, i);
-      const panelInquiry = s.inquiryHref !== undefined ? s.inquiryHref : inquiryHref;
+      const svcSlug = s.slug || copy.pricing?.[i]?.slug || "";
+      let panelInquiry = s.inquiryHref;
+      if (panelInquiry === undefined) {
+        panelInquiry = svcSlug
+          ? businessInquiryHref(svcSlug, "../inquiry/", {
+              source: `business-${pillarSlug || "pillar"}-${svcSlug}`,
+            })
+          : pillarInquiryHref;
+      }
       const hidden = i === 0 ? "" : " hidden";
       const active = i === 0 ? " is-active" : "";
       const label = escapeHtml(s.tab || shortTitle(s.title));
@@ -528,7 +537,7 @@ function customResearchSection(lang, inquiryHref) {
 }
 
 export function buildPillarPageBody(slug, copy, lang, opts = {}) {
-  const inquiryHref = opts.inquiryHref || "../inquiry/#inquiry";
+  const inquiryHref = opts.inquiryHref || businessPillarInquiryHref(slug, "../inquiry/");
   const crumbOpts = opts.crumb || {};
   const otherOpts = opts.other || {};
   return `${breadcrumb(copy, slug, crumbOpts)}
@@ -546,7 +555,7 @@ export function buildPillarPageBody(slug, copy, lang, opts = {}) {
     ${heroVisual(copy)}
   </div>
 </section>
-${servicesSection(copy, inquiryHref)}
+${servicesSection(copy, inquiryHref, slug)}
 ${slug === "research" ? customResearchSection(lang, inquiryHref) : ""}
 ${useCasesSection(copy)}
 ${beforeAfterSection(copy)}
@@ -561,7 +570,9 @@ ${finalCta(copy, inquiryHref)}`;
 }
 
 function buildBody(slug, copy, lang) {
-  return buildPillarPageBody(slug, copy, lang);
+  return buildPillarPageBody(slug, copy, lang, {
+    inquiryHref: businessPillarInquiryHref(slug, "../inquiry/"),
+  });
 }
 
 function writeRedirect(slug) {

@@ -22,6 +22,11 @@ import { renderBusinessPillars } from "./render-business-pillars.mjs";
 import { renderPillarServices } from "./render-pillar-services.mjs";
 import { renderCreative } from "./render-creative.mjs";
 import { fontLinksHtml } from "./hub-utils.mjs";
+import {
+  businessInquirySelectOptionsHtml,
+  businessInquiryServiceMap,
+  businessInquiryPackagePrices,
+} from "./business-pricing.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_ORIGIN = "https://www.newon.app";
@@ -206,6 +211,16 @@ for (const { dir, file, htmlLang } of LANGS) {
   inquiry = inquiry.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangBlock("business/inquiry"));
   inquiry = inquiry.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/business/inquiry/`);
   inquiry = applyTemplate(inquiry, flat, flatEn);
+  const pkgPrices = businessInquiryPackagePrices(dir === "ko" ? "ko" : "en");
+  inquiry = inquiry.replace(/\{\{BUSINESS_SELECT_OPTIONS\}\}/g, businessInquirySelectOptionsHtml());
+  inquiry = inquiry.replace(
+    /\{\{BUSINESS_SERVICE_MAP_JSON\}\}/g,
+    JSON.stringify(businessInquiryServiceMap())
+  );
+  inquiry = inquiry.replace(/\{\{BUSINESS_PKG_LANDING_PRICE\}\}/g, escapeHtml(pkgPrices.landing));
+  inquiry = inquiry.replace(/\{\{BUSINESS_PKG_WEB_PRICE\}\}/g, escapeHtml(pkgPrices.web));
+  inquiry = inquiry.replace(/\{\{BUSINESS_PKG_MVP_PRICE\}\}/g, escapeHtml(pkgPrices.mvp));
+  inquiry = inquiry.replace(/\{\{BUSINESS_PKG_CUSTOM_PRICE\}\}/g, escapeHtml(pkgPrices.custom));
   inquiry = inquiry.replace(/\{\{BUSINESS_ECOSYSTEM\}\}/g, businessEcosystemHtml(flat, flatEn, "../../"));
   inquiry = inquiry.replace(
     /\{\{BUSINESS_SERVICES\}\}/g,

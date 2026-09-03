@@ -32,7 +32,7 @@
   }
 
   function inquiryHref() {
-    return "/" + langDir() + "/business/#inquiry";
+    return "/" + langDir() + "/business/inquiry/#inquiry";
   }
 
   function isLocalPreview() {
@@ -186,9 +186,14 @@
     // Keep service hidden field aligned with the visible type select (clear when unset)
     var typeField = form.querySelector("[name='type']") || document.getElementById("bz-type");
     var serviceField = form.querySelector("[name='service']");
+    var slugField = form.querySelector("[name='slug']");
     if (typeField) {
       var tv = String(typeField.value || "").trim();
-      var next = tv ? tv.replace(/^Studio\s*\/\s*/i, "") : "";
+      var next = "";
+      if (tv) {
+        if (/^Studio\s*\//i.test(tv)) next = tv.replace(/^Studio\s*\/\s*/i, "");
+        else next = tv.replace(/^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)\s*\/\s*/i, "");
+      }
       if (next) {
         if (!serviceField) {
           serviceField = document.createElement("input");
@@ -199,6 +204,30 @@
         serviceField.value = next;
       } else if (serviceField) {
         serviceField.value = "";
+      }
+      var opt = typeField.tagName === "SELECT" ? typeField.options[typeField.selectedIndex] : null;
+      var slugVal = opt && opt.getAttribute("data-slug") ? String(opt.getAttribute("data-slug")).trim() : "";
+      if (slugVal) {
+        if (!slugField) {
+          slugField = document.createElement("input");
+          slugField.type = "hidden";
+          slugField.name = "slug";
+          form.appendChild(slugField);
+        }
+        slugField.value = slugVal;
+      } else if (slugField && !slugVal) {
+        slugField.value = "";
+      }
+      var areaFromOpt = opt && opt.getAttribute("data-area") ? String(opt.getAttribute("data-area")).trim() : "";
+      if (areaFromOpt) {
+        var areaField = form.querySelector("[name='area']");
+        if (!areaField) {
+          areaField = document.createElement("input");
+          areaField.type = "hidden";
+          areaField.name = "area";
+          form.appendChild(areaField);
+        }
+        areaField.value = areaFromOpt;
       }
     }
     var payload = {
