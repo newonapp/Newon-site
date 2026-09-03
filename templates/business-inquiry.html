@@ -2387,14 +2387,22 @@
           var formEl = document.getElementById("bz-inquiry-form");
           if (!formEl || !typeEl) return;
           var hidden = formEl.querySelector('input[name="service"]');
-          if (!hidden) return;
-          // Always mirror select; clear when unset so blocked query params cannot stick
           var tv = String(typeEl.value || "").trim();
-          if (!tv || isBlockedStudioValue(tv)) {
-            hidden.value = "";
+          var next = "";
+          if (tv && !isBlockedStudioValue(tv)) {
+            next = tv.replace(/^Studio\s*\/\s*/i, "");
+          }
+          if (!next) {
+            if (hidden) hidden.value = "";
             return;
           }
-          hidden.value = tv.replace(/^Studio\s*\/\s*/i, "");
+          if (!hidden) {
+            hidden = document.createElement("input");
+            hidden.type = "hidden";
+            hidden.name = "service";
+            formEl.appendChild(hidden);
+          }
+          hidden.value = next;
         }
         function applyStudioMode(mapped) {
           if (!inquirySection || !isStudioInflow(mapped)) return;

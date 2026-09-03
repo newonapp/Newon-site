@@ -186,12 +186,19 @@
     // Keep service hidden field aligned with the visible type select (clear when unset)
     var typeField = form.querySelector("[name='type']") || document.getElementById("bz-type");
     var serviceField = form.querySelector("[name='service']");
-    if (typeField && serviceField) {
+    if (typeField) {
       var tv = String(typeField.value || "").trim();
-      if (!tv) {
+      var next = tv ? tv.replace(/^Studio\s*\/\s*/i, "") : "";
+      if (next) {
+        if (!serviceField) {
+          serviceField = document.createElement("input");
+          serviceField.type = "hidden";
+          serviceField.name = "service";
+          form.appendChild(serviceField);
+        }
+        serviceField.value = next;
+      } else if (serviceField) {
         serviceField.value = "";
-      } else {
-        serviceField.value = tv.replace(/^Studio\s*\/\s*/i, "");
       }
     }
     var payload = {
