@@ -7,6 +7,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { APP_CATALOG, featuredApps, loadPortfolioApps, moreApps } from "./portfolio-data.mjs";
+import { portfolioInquiryHref } from "./portfolio-case-studies.mjs";
 import {
   getPortfolioBeyondItems,
   getPortfolioHubMetrics,
@@ -93,7 +94,7 @@ function head({ langMeta, copy, title, description, canonical, suffix }) {
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="/gnav-mega.css?v=20260831menu1" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260830filt1" />
-    <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260830pfinck2" />
+    <link rel="stylesheet" href="/portfolio/portfolio.css?v=20260903pfcs1" />
     <script src="/lang-nav.js?v=20260821stay2"></script>
     <script src="/theme-shell.js"></script>
   </head>`;
@@ -140,15 +141,27 @@ function storeBtn(url, label, extraClass = "") {
   return `<a class="btn btn-ghost${extraClass ? ` ${extraClass}` : ""}" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>`;
 }
 
+function productBadgeHtml(app, copy) {
+  const badge = app.productBadge || copy.productBadge || "NEWON PRODUCT";
+  return `<span class="pf-badge">${esc(badge)}</span>`;
+}
+
 function viewProjectBtn(app, copy) {
-  if (!app.homeUrl) return "";
-  return `<a class="btn btn-primary" href="${esc(app.homeUrl)}" target="_blank" rel="noopener noreferrer">${esc(copy.viewProject)}</a>`;
+  const href = app.detailUrl || "";
+  if (!href) return "";
+  const label = app.isCaseStudy ? copy.viewCaseStudy || copy.viewProject : copy.viewProject;
+  return `<a class="btn btn-primary" href="${esc(href)}">${esc(label)}</a>`;
 }
 
 function storeButtons(app, copy) {
   return [viewProjectBtn(app, copy), storeBtn(app.appStoreUrl, copy.appStore), storeBtn(app.googlePlayUrl, copy.googlePlay)]
     .filter(Boolean)
     .join("\n              ");
+}
+
+function metaRow(label, value) {
+  if (!value) return "";
+  return `<div class="pf-meta__item"><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`;
 }
 
 function shotFigure(shot, lazy, sizes) {
@@ -184,12 +197,13 @@ function featuredCase(app, i, copy) {
   return `
         <article class="pf-case pf-reveal" data-pf-type="apps">
           <div>
+            ${productBadgeHtml(app, copy)}
             ${iconImg(app, "pf-case__icon", 56)}
             <h3>${esc(app.displayName)}</h3>
             ${app.oneLiner ? `<p class="pf-case__cat">${esc(app.oneLiner)}</p>` : ""}
             ${app.summary ? `<p class="pf-case__sum">${esc(app.summary)}</p>` : ""}
             ${featurePills(app.features, 4)}
-            <p class="pf-role">${esc(copy.roleLabel)}<br />${esc(copy.roleLine)}</p>
+            <p class="pf-role">${esc(copy.roleLabel)}<br />${esc(copy.caseRoleLine || copy.roleLine)}</p>
             <div class="pf-case__actions">
               ${storeButtons(app, copy)}
             </div>
@@ -199,10 +213,12 @@ function featuredCase(app, i, copy) {
 }
 
 function moreCard(app, copy) {
+  const href = app.detailUrl || "#";
   return `
-        <a href="${esc(app.homeUrl)}" target="_blank" rel="noopener noreferrer">
+        <a href="${esc(href)}">
           ${iconImg(app, "", 44)}
           <span>
+            ${productBadgeHtml(app, copy)}
             <h3>${esc(app.displayName)}</h3>
             ${app.oneLiner ? `<p>${esc(app.oneLiner)}</p>` : ""}
           </span>
@@ -714,14 +730,76 @@ function projectPage(langMeta, copy, app, apps) {
   const prefix = pfPrefix(lang);
   const others = apps.filter((a) => a.slug !== app.slug);
   const desc = app.summary || copy.projectFallback.replace("{name}", app.displayName);
-  const idea = app.ideaParagraphs.length
-    ? `<section class="pf-section pf-section--tight">
+  const roles = copy.caseRoles || copy.roles;
+  const roleLine = copy.caseRoleLine || copy.roleLine;
+
+  const overviewMeta = app.isCaseStudy
+    ? `<dl class="pf-meta">
+            ${metaRow(copy.metaProduct || "PRODUCT", app.displayName)}
+            ${metaRow(copy.metaType || "TYPE", app.caseType || app.productBadge)}
+            ${metaRow(copy.metaCategory || "CATEGORY", app.caseCategory || app.oneLiner)}
+            ${metaRow(copy.metaPlatform || "PLATFORM", app.casePlatform)}
+            ${metaRow(copy.metaRole || "ROLE", roleLine)}
+            ${metaRow(copy.metaStatus || "STATUS", app.caseStatus)}
+            ${metaRow(copy.metaRelease || "RELEASE", app.caseRelease)}
+          </dl>`
+    : "";
+
+  const problemSolution =
+    app.isCaseStudy && (app.caseProblem || app.caseSolution)
+      ? `<section class="pf-section pf-section--tight">
+        <div class="pf-wrap pf-wrap--narrow pf-prose pf-cs-grid">
+          ${
+            app.caseProblem
+              ? `<div class="pf-cs-block pf-reveal">
+            <h2>${esc(copy.problemTitle || "Problem")}</h2>
+            <p>${esc(app.caseProblem)}</p>
+          </div>`
+              : ""
+          }
+          ${
+            app.caseSolution
+              ? `<div class="pf-cs-block pf-reveal">
+            <h2>${esc(copy.solutionTitle || "Solution")}</h2>
+            <p>${esc(app.caseSolution)}</p>
+          </div>`
+              : ""
+          }
+        </div>
+      </section>`
+      : "";
+
+  const productApproach =
+    app.isCaseStudy && app.caseProduct
+      ? `<section class="pf-section pf-section--tight">
+        <div class="pf-wrap pf-wrap--narrow pf-prose">
+          <h2>${esc(copy.productTitle || "Product")}</h2>
+          <p class="pf-reveal">${esc(app.caseProduct)}</p>
+          ${app.caseBuilt ? `<p class="pf-reveal pf-cs-built">${esc(app.caseBuilt)}</p>` : ""}
+        </div>
+      </section>`
+      : "";
+
+  const idea =
+    !app.isCaseStudy && app.ideaParagraphs.length
+      ? `<section class="pf-section pf-section--tight">
         <div class="pf-wrap pf-wrap--narrow pf-prose">
           <h2>${esc(copy.ideaTitle)}</h2>
           ${app.ideaParagraphs.map((p) => `<p class="pf-reveal">${esc(p)}</p>`).join("\n          ")}
         </div>
       </section>`
-    : "";
+      : app.isCaseStudy && app.ideaParagraphs.length
+        ? `<section class="pf-section pf-section--tight">
+        <div class="pf-wrap pf-wrap--narrow pf-prose">
+          <h2>${esc(copy.overviewTitle || copy.ideaTitle)}</h2>
+          ${app.ideaParagraphs
+            .slice(0, 2)
+            .map((p) => `<p class="pf-reveal">${esc(p)}</p>`)
+            .join("\n          ")}
+        </div>
+      </section>`
+        : "";
+
   const feats = app.features.length
     ? `<section class="pf-section pf-section--tight">
         <div class="pf-wrap">
@@ -737,16 +815,84 @@ function projectPage(langMeta, copy, app, apps) {
         </div>
       </section>`
     : "";
+
   const screens = app.shots.length
     ? `<section class="pf-section pf-section--tight">
         <div class="pf-wrap">
-          <h2>${esc(copy.screensTitle)}</h2>
+          <h2>${esc(app.isCaseStudy ? copy.uiuxTitle || copy.screensTitle : copy.screensTitle)}</h2>
+          ${
+            app.isCaseStudy && app.caseUiux
+              ? `<p class="pf-cs-lead pf-reveal">${esc(app.caseUiux)}</p>`
+              : ""
+          }
           <div class="pf-screens">
             ${app.shots.map((s, i) => shotFigure(s, i > 0, "(max-width: 480px) 92vw, (max-width: 760px) 46vw, 30vw")).join("\n            ")}
           </div>
         </div>
       </section>`
     : "";
+
+  const development =
+    app.isCaseStudy && (app.caseTech?.length || app.caseBuilt)
+      ? `<section class="pf-section pf-section--tight">
+        <div class="pf-wrap pf-wrap--narrow">
+          <h2>${esc(copy.devTitle || "Development")}</h2>
+          ${
+            app.caseTech?.length
+              ? `<ul class="pf-tech">${app.caseTech.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`
+              : ""
+          }
+        </div>
+      </section>`
+      : "";
+
+  const release =
+    app.isCaseStudy && (app.caseStatus || app.appStoreUrl || app.googlePlayUrl)
+      ? `<section class="pf-section pf-section--tight">
+        <div class="pf-wrap pf-wrap--narrow">
+          <h2>${esc(copy.releaseTitle || "Release")}</h2>
+          <dl class="pf-meta pf-meta--release">
+            ${metaRow(copy.metaStatus || "STATUS", app.caseStatus)}
+            ${metaRow(copy.metaPlatform || "PLATFORM", app.casePlatform)}
+            ${metaRow(copy.metaRelease || "RELEASE", app.caseRelease)}
+          </dl>
+          <div class="pf-hero__actions">
+            ${storeBtn(app.appStoreUrl, copy.appStore)}
+            ${storeBtn(app.googlePlayUrl, copy.googlePlay)}
+          </div>
+        </div>
+      </section>`
+      : app.appStoreUrl || app.googlePlayUrl
+        ? `<section class="pf-section pf-section--tight">
+        <div class="pf-wrap pf-wrap--narrow">
+          <h2>${esc(copy.storeTitle || "App Store")}</h2>
+          <div class="pf-hero__actions">
+            ${storeBtn(app.appStoreUrl, copy.appStore)}
+            ${storeBtn(app.googlePlayUrl, copy.googlePlay)}
+          </div>
+        </div>
+      </section>`
+        : "";
+
+  const nextCta = app.isCaseStudy
+    ? `<section class="pf-section pf-section--tight pf-cs-next">
+        <div class="pf-wrap pf-wrap--narrow">
+          <p class="pf-label">${esc(copy.nextLabel || "NEXT")}</p>
+          <h2>${esc(copy.nextTitle || "Build a similar product")}</h2>
+          <p class="pf-cs-lead">${esc(copy.nextLead || "")}</p>
+          <div class="pf-hero__actions">
+            <a class="btn btn-primary" href="${esc(portfolioInquiryHref(lang, app.slug))}">${esc(copy.nextCta || "Project inquiry")}</a>
+            <a class="btn btn-ghost" href="/${esc(lang)}/business/">${esc(copy.nextBusiness || "Newon Business →")}</a>
+          </div>
+          ${
+            copy.nextStudio
+              ? `<p class="pf-cs-studio"><a href="/${esc(lang)}/studio/digital/">${esc(copy.nextStudio)}</a></p>`
+              : ""
+          }
+        </div>
+      </section>`
+    : "";
+
   const more = others.length
     ? `<section class="pf-section">
         <div class="pf-wrap">
@@ -772,41 +918,34 @@ function projectPage(langMeta, copy, app, apps) {
       <section class="pf-project-hero">
         <div class="pf-wrap pf-wrap--narrow">
           <a class="pf-back" href="${prefix}/#projects">${esc(copy.backPortfolio)}</a>
+          ${productBadgeHtml(app, copy)}
           ${iconImg(app, "pf-project-hero__icon", 64)}
           <h1>${esc(app.displayName)}</h1>
           ${app.oneLiner ? `<p class="pf-case__cat">${esc(app.oneLiner)}</p>` : ""}
           ${app.summary ? `<p class="pf-hero__lead">${esc(app.summary)}</p>` : ""}
+          ${overviewMeta}
           <div class="pf-hero__actions">
-            ${viewProjectBtn(app, copy)}
             ${storeBtn(app.appStoreUrl, copy.appStore)}
             ${storeBtn(app.googlePlayUrl, copy.googlePlay)}
           </div>
         </div>
       </section>
       ${idea}
+      ${problemSolution}
+      ${productApproach}
       ${feats}
       ${screens}
+      ${development}
       <section class="pf-section pf-section--tight">
         <div class="pf-wrap pf-wrap--narrow">
           <h2>${esc(copy.rolesTitle)}</h2>
           <ul class="pf-roles">
-            ${copy.roles.map((r) => `<li>${esc(r)}</li>`).join("")}
+            ${roles.map((r) => `<li>${esc(r)}</li>`).join("")}
           </ul>
         </div>
       </section>
-      ${
-        app.appStoreUrl || app.googlePlayUrl
-          ? `<section class="pf-section pf-section--tight">
-        <div class="pf-wrap pf-wrap--narrow">
-          <h2>App Store</h2>
-          <div class="pf-hero__actions">
-            ${storeBtn(app.appStoreUrl, copy.appStore)}
-            ${storeBtn(app.googlePlayUrl, copy.googlePlay)}
-          </div>
-        </div>
-      </section>`
-          : ""
-      }
+      ${release}
+      ${nextCta}
       ${more}
     </main>
 ${foot(lang, { base: "../../", hub: false })}`;

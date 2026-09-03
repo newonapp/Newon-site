@@ -1,26 +1,7 @@
 {
-  "generatedAt": "2026-09-03T08:40:14.002Z",
+  "generatedAt": "2026-09-03T09:04:05.664Z",
   "note": "Business leads, waitlist, and newsletter submissions are collected via FormSubmit to newon@newon.app. Activate the inbox at formsubmit.co if not done yet.",
   "products": [
-    {
-      "id": "newon-plus",
-      "slug": "newon-plus",
-      "type": "apps",
-      "status": "live",
-      "name": "Newon+",
-      "taglineKey": null,
-      "tagline": "Newon+",
-      "icon": "/newon-plus-logo.png",
-      "homeHash": "#newon-plus-app",
-      "url": "/ko/#newon-plus-app",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "featured": true,
-      "launchDate": null,
-      "pricing": "free"
-    },
     {
       "id": "babylog",
       "slug": "babylog",
@@ -32,44 +13,6 @@
       "icon": "/babylog-logo.png",
       "homeHash": "#babylog-app",
       "url": "/ko/#babylog-app",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "featured": true,
-      "launchDate": null,
-      "pricing": "free"
-    },
-    {
-      "id": "petlog",
-      "slug": "petlog",
-      "type": "apps",
-      "status": "live",
-      "name": "PetLog",
-      "taglineKey": null,
-      "tagline": "PetLog",
-      "icon": "/petlog-logo.png",
-      "homeHash": "#petlog-app",
-      "url": "/ko/#petlog-app",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "featured": true,
-      "launchDate": null,
-      "pricing": "free"
-    },
-    {
-      "id": "myworld",
-      "slug": "myworld",
-      "type": "apps",
-      "status": "live",
-      "name": "My World",
-      "taglineKey": null,
-      "tagline": "My World",
-      "icon": "/myworld-logo.png",
-      "homeHash": "#myworld-app",
-      "url": "/ko/#myworld-app",
       "platforms": [
         "iOS",
         "Android"
@@ -98,21 +41,21 @@
       "pricing": "free"
     },
     {
-      "id": "ox-month",
-      "slug": "ox-month",
+      "id": "myworld",
+      "slug": "myworld",
       "type": "apps",
       "status": "live",
-      "name": "OX MONTH",
+      "name": "My World",
       "taglineKey": null,
-      "tagline": "OX MONTH",
-      "icon": "/ox-month-logo.png",
-      "homeHash": "#ox-month",
-      "url": "/ko/#ox-month",
+      "tagline": "My World",
+      "icon": "/myworld-logo.png",
+      "homeHash": "#myworld-app",
+      "url": "/ko/#myworld-app",
       "platforms": [
         "iOS",
         "Android"
       ],
-      "featured": false,
+      "featured": true,
       "launchDate": null,
       "pricing": "free"
     },
@@ -127,6 +70,63 @@
       "icon": "/pillmate-logo.png",
       "homeHash": "#pillmate-app",
       "url": "/ko/#pillmate-app",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": true,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "ox-month",
+      "slug": "ox-month",
+      "type": "apps",
+      "status": "live",
+      "name": "OX MONTH",
+      "taglineKey": null,
+      "tagline": "OX MONTH",
+      "icon": "/ox-month-logo.png",
+      "homeHash": "#ox-month",
+      "url": "/ko/#ox-month",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": true,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "newon-plus",
+      "slug": "newon-plus",
+      "type": "apps",
+      "status": "live",
+      "name": "Newon+",
+      "taglineKey": null,
+      "tagline": "Newon+",
+      "icon": "/newon-plus-logo.png",
+      "homeHash": "#newon-plus-app",
+      "url": "/ko/#newon-plus-app",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": false,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "petlog",
+      "slug": "petlog",
+      "type": "apps",
+      "status": "live",
+      "name": "PetLog",
+      "taglineKey": null,
+      "tagline": "PetLog",
+      "icon": "/petlog-logo.png",
+      "homeHash": "#petlog-app",
+      "url": "/ko/#petlog-app",
       "platforms": [
         "iOS",
         "Android"

@@ -5,24 +5,12 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { CASE_STUDY_SLUGS, enrichCaseStudy } from "./portfolio-case-studies.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 /** Asset locations used on the live home pages. Copy comes from locales/ko.json. */
 export const APP_CATALOG = [
-  {
-    slug: "newon-plus",
-    ns: "np",
-    name: "Newon+",
-    label: "Newon+",
-    icon: "/newon-plus-logo.png",
-    homeHash: "#newon-plus-app",
-    shotPrefix: "np",
-    shotDir: "i18n-ko",
-    featured: true,
-    maxShots: 5,
-    indexShots: 5,
-  },
   {
     slug: "babylog",
     ns: "bl",
@@ -33,31 +21,7 @@ export const APP_CATALOG = [
     shotDir: "i18n-ko",
     featured: true,
     maxShots: 7,
-    indexShots: 7,
-  },
-  {
-    slug: "petlog",
-    ns: "pl",
-    name: "PetLog",
-    icon: "/petlog-logo.png",
-    homeHash: "#petlog-app",
-    shotPrefix: "pl",
-    shotDir: "i18n-ko",
-    featured: true,
-    maxShots: 7,
-    indexShots: 7,
-  },
-  {
-    slug: "myworld",
-    ns: "mw",
-    name: "My World",
-    icon: "/myworld-logo.png",
-    homeHash: "#myworld-app",
-    shotPrefix: "mw",
-    shotDir: "i18n-ko",
-    featured: true,
-    maxShots: 7,
-    indexShots: 7,
+    indexShots: 5,
   },
   {
     slug: "savy",
@@ -69,19 +33,19 @@ export const APP_CATALOG = [
     shotDir: "i18n-ko",
     featured: true,
     maxShots: 6,
-    indexShots: 6,
+    indexShots: 5,
   },
   {
-    slug: "ox-month",
-    ns: "ox",
-    name: "OX MONTH",
-    icon: "/ox-month-logo.png",
-    homeHash: "#ox-month",
-    shotPrefix: "ox",
-    shotDir: "ox",
-    featured: false,
-    maxShots: 9,
-    indexShots: 0,
+    slug: "myworld",
+    ns: "mw",
+    name: "My World",
+    icon: "/myworld-logo.png",
+    homeHash: "#myworld-app",
+    shotPrefix: "mw",
+    shotDir: "i18n-ko",
+    featured: true,
+    maxShots: 7,
+    indexShots: 5,
   },
   {
     slug: "pillmate",
@@ -91,6 +55,43 @@ export const APP_CATALOG = [
     homeHash: "#pillmate-app",
     shotPrefix: "pm",
     shotDir: "subping",
+    featured: true,
+    maxShots: 7,
+    indexShots: 5,
+  },
+  {
+    slug: "ox-month",
+    ns: "ox",
+    name: "OX MONTH",
+    icon: "/ox-month-logo.png",
+    homeHash: "#ox-month",
+    shotPrefix: "ox",
+    shotDir: "ox",
+    featured: true,
+    maxShots: 9,
+    indexShots: 5,
+  },
+  {
+    slug: "newon-plus",
+    ns: "np",
+    name: "Newon+",
+    label: "Newon+",
+    icon: "/newon-plus-logo.png",
+    homeHash: "#newon-plus-app",
+    shotPrefix: "np",
+    shotDir: "i18n-ko",
+    featured: false,
+    maxShots: 5,
+    indexShots: 0,
+  },
+  {
+    slug: "petlog",
+    ns: "pl",
+    name: "PetLog",
+    icon: "/petlog-logo.png",
+    homeHash: "#petlog-app",
+    shotPrefix: "pl",
+    shotDir: "i18n-ko",
     featured: false,
     maxShots: 7,
     indexShots: 0,
@@ -145,6 +146,10 @@ export const APP_CATALOG = [
   },
 ];
 
+/** App Store developer pages are not product store links — hide as App Store CTA. */
+export function isDeveloperAppStoreUrl(url) {
+  return /apps\.apple\.com\/[^/?#]+\/developer\//i.test(String(url || ""));
+}
 /** Home hub app menu order (matches site index). */
 export const NAV_FLYOUT_SLUGS = [
   "ox-month",
@@ -435,7 +440,9 @@ export function loadPortfolioApps(lang = "ko") {
       "";
     const paras = ideaParagraphs(loc);
     const iconOk = fs.existsSync(path.join(ROOT, entry.icon.replace(/^\//, "")));
-    return {
+    const rawAppStore = loc.appStoreUrl || "";
+    const appStoreUrl = isDeveloperAppStoreUrl(rawAppStore) ? "" : rawAppStore;
+    const app = {
       ...entry,
       displayName: entry.name || loc.h1,
       icon: iconOk ? entry.icon : "",
@@ -444,21 +451,29 @@ export function loadPortfolioApps(lang = "ko") {
       ideaParagraphs: paras,
       oneLiner: stripEmoji(loc.badge) || stripHtml(loc.subtitleHtml || loc.subtitle),
       features: featuresFromLocale(loc),
-      appStoreUrl: loc.appStoreUrl || "",
+      appStoreUrl,
       googlePlayUrl: loc.googlePlayUrl || "",
+      /** Home landing section — not used as Case Study CTA. */
       homeUrl: `https://www.newon.app/${lang}/${entry.homeHash}`,
+      detailUrl: `/${lang}/portfolio/${entry.slug}/`,
+      productBadge: "NEWON PRODUCT",
       shots,
       indexShotsList: shots.slice(0, entry.indexShots || 0),
     };
+    return enrichCaseStudy(app, lang);
   });
 }
 
 export function featuredApps(apps) {
+  const bySlug = Object.fromEntries(apps.map((a) => [a.slug, a]));
+  const ordered = CASE_STUDY_SLUGS.map((s) => bySlug[s]).filter(Boolean);
+  if (ordered.length) return ordered;
   return apps.filter((a) => a.featured);
 }
 
 export function moreApps(apps) {
-  return apps.filter((a) => !a.featured);
+  const featured = new Set(CASE_STUDY_SLUGS);
+  return apps.filter((a) => !featured.has(a.slug));
 }
 
 export function loadNavFlyout(lang = "ko") {

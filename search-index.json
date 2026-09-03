@@ -1,45 +1,9 @@
 [
   {
-    "title": "Newon+",
-    "desc": "Newon+",
-    "type": "apps",
-    "url": "https://www.newon.app/ko/#newon-plus-app",
-    "lang": "ko",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
     "title": "BabyLog",
     "desc": "BabyLog",
     "type": "apps",
     "url": "https://www.newon.app/ko/#babylog-app",
-    "lang": "ko",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "PetLog",
-    "desc": "PetLog",
-    "type": "apps",
-    "url": "https://www.newon.app/ko/#petlog-app",
-    "lang": "ko",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "My World",
-    "desc": "My World",
-    "type": "apps",
-    "url": "https://www.newon.app/ko/#myworld-app",
     "lang": "ko",
     "featured": true,
     "tags": [
@@ -60,12 +24,12 @@
     ]
   },
   {
-    "title": "OX MONTH",
-    "desc": "OX MONTH",
+    "title": "My World",
+    "desc": "My World",
     "type": "apps",
-    "url": "https://www.newon.app/ko/#ox-month",
+    "url": "https://www.newon.app/ko/#myworld-app",
     "lang": "ko",
-    "featured": false,
+    "featured": true,
     "tags": [
       "apps",
       "live"
@@ -76,6 +40,42 @@
     "desc": "Pillmate",
     "type": "apps",
     "url": "https://www.newon.app/ko/#pillmate-app",
+    "lang": "ko",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#ox-month",
+    "lang": "ko",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#newon-plus-app",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#petlog-app",
     "lang": "ko",
     "featured": false,
     "tags": [
@@ -772,46 +772,10 @@
     ]
   },
   {
-    "title": "Newon+",
-    "desc": "Newon+",
-    "type": "apps",
-    "url": "https://www.newon.app/en/#newon-plus-app",
-    "lang": "en",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
     "title": "BabyLog",
     "desc": "BabyLog",
     "type": "apps",
     "url": "https://www.newon.app/en/#babylog-app",
-    "lang": "en",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "PetLog",
-    "desc": "PetLog",
-    "type": "apps",
-    "url": "https://www.newon.app/en/#petlog-app",
-    "lang": "en",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "My World",
-    "desc": "My World",
-    "type": "apps",
-    "url": "https://www.newon.app/en/#myworld-app",
     "lang": "en",
     "featured": true,
     "tags": [
@@ -832,12 +796,12 @@
     ]
   },
   {
-    "title": "OX MONTH",
-    "desc": "OX MONTH",
+    "title": "My World",
+    "desc": "My World",
     "type": "apps",
-    "url": "https://www.newon.app/en/#ox-month",
+    "url": "https://www.newon.app/en/#myworld-app",
     "lang": "en",
-    "featured": false,
+    "featured": true,
     "tags": [
       "apps",
       "live"
@@ -848,6 +812,42 @@
     "desc": "Pillmate",
     "type": "apps",
     "url": "https://www.newon.app/en/#pillmate-app",
+    "lang": "en",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#ox-month",
+    "lang": "en",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#newon-plus-app",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#petlog-app",
     "lang": "en",
     "featured": false,
     "tags": [
@@ -1544,46 +1544,10 @@
     ]
   },
   {
-    "title": "Newon+",
-    "desc": "Newon+",
-    "type": "apps",
-    "url": "https://www.newon.app/ja/#newon-plus-app",
-    "lang": "ja",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
     "title": "BabyLog",
     "desc": "BabyLog",
     "type": "apps",
     "url": "https://www.newon.app/ja/#babylog-app",
-    "lang": "ja",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "PetLog",
-    "desc": "PetLog",
-    "type": "apps",
-    "url": "https://www.newon.app/ja/#petlog-app",
-    "lang": "ja",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "My World",
-    "desc": "My World",
-    "type": "apps",
-    "url": "https://www.newon.app/ja/#myworld-app",
     "lang": "ja",
     "featured": true,
     "tags": [
@@ -1604,12 +1568,12 @@
     ]
   },
   {
-    "title": "OX MONTH",
-    "desc": "OX MONTH",
+    "title": "My World",
+    "desc": "My World",
     "type": "apps",
-    "url": "https://www.newon.app/ja/#ox-month",
+    "url": "https://www.newon.app/ja/#myworld-app",
     "lang": "ja",
-    "featured": false,
+    "featured": true,
     "tags": [
       "apps",
       "live"
@@ -1620,6 +1584,42 @@
     "desc": "Pillmate",
     "type": "apps",
     "url": "https://www.newon.app/ja/#pillmate-app",
+    "lang": "ja",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#ox-month",
+    "lang": "ja",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#newon-plus-app",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#petlog-app",
     "lang": "ja",
     "featured": false,
     "tags": [
@@ -2316,46 +2316,10 @@
     ]
   },
   {
-    "title": "Newon+",
-    "desc": "Newon+",
-    "type": "apps",
-    "url": "https://www.newon.app/es/#newon-plus-app",
-    "lang": "es",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
     "title": "BabyLog",
     "desc": "BabyLog",
     "type": "apps",
     "url": "https://www.newon.app/es/#babylog-app",
-    "lang": "es",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "PetLog",
-    "desc": "PetLog",
-    "type": "apps",
-    "url": "https://www.newon.app/es/#petlog-app",
-    "lang": "es",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "My World",
-    "desc": "My World",
-    "type": "apps",
-    "url": "https://www.newon.app/es/#myworld-app",
     "lang": "es",
     "featured": true,
     "tags": [
@@ -2376,12 +2340,12 @@
     ]
   },
   {
-    "title": "OX MONTH",
-    "desc": "OX MONTH",
+    "title": "My World",
+    "desc": "My World",
     "type": "apps",
-    "url": "https://www.newon.app/es/#ox-month",
+    "url": "https://www.newon.app/es/#myworld-app",
     "lang": "es",
-    "featured": false,
+    "featured": true,
     "tags": [
       "apps",
       "live"
@@ -2392,6 +2356,42 @@
     "desc": "Pillmate",
     "type": "apps",
     "url": "https://www.newon.app/es/#pillmate-app",
+    "lang": "es",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#ox-month",
+    "lang": "es",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#newon-plus-app",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#petlog-app",
     "lang": "es",
     "featured": false,
     "tags": [
@@ -3088,46 +3088,10 @@
     ]
   },
   {
-    "title": "Newon+",
-    "desc": "Newon+",
-    "type": "apps",
-    "url": "https://www.newon.app/pt-br/#newon-plus-app",
-    "lang": "pt-br",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
     "title": "BabyLog",
     "desc": "BabyLog",
     "type": "apps",
     "url": "https://www.newon.app/pt-br/#babylog-app",
-    "lang": "pt-br",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "PetLog",
-    "desc": "PetLog",
-    "type": "apps",
-    "url": "https://www.newon.app/pt-br/#petlog-app",
-    "lang": "pt-br",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "My World",
-    "desc": "My World",
-    "type": "apps",
-    "url": "https://www.newon.app/pt-br/#myworld-app",
     "lang": "pt-br",
     "featured": true,
     "tags": [
@@ -3148,12 +3112,12 @@
     ]
   },
   {
-    "title": "OX MONTH",
-    "desc": "OX MONTH",
+    "title": "My World",
+    "desc": "My World",
     "type": "apps",
-    "url": "https://www.newon.app/pt-br/#ox-month",
+    "url": "https://www.newon.app/pt-br/#myworld-app",
     "lang": "pt-br",
-    "featured": false,
+    "featured": true,
     "tags": [
       "apps",
       "live"
@@ -3164,6 +3128,42 @@
     "desc": "Pillmate",
     "type": "apps",
     "url": "https://www.newon.app/pt-br/#pillmate-app",
+    "lang": "pt-br",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#ox-month",
+    "lang": "pt-br",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#newon-plus-app",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#petlog-app",
     "lang": "pt-br",
     "featured": false,
     "tags": [
@@ -3860,46 +3860,10 @@
     ]
   },
   {
-    "title": "Newon+",
-    "desc": "Newon+",
-    "type": "apps",
-    "url": "https://www.newon.app/fr/#newon-plus-app",
-    "lang": "fr",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
     "title": "BabyLog",
     "desc": "BabyLog",
     "type": "apps",
     "url": "https://www.newon.app/fr/#babylog-app",
-    "lang": "fr",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "PetLog",
-    "desc": "PetLog",
-    "type": "apps",
-    "url": "https://www.newon.app/fr/#petlog-app",
-    "lang": "fr",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "My World",
-    "desc": "My World",
-    "type": "apps",
-    "url": "https://www.newon.app/fr/#myworld-app",
     "lang": "fr",
     "featured": true,
     "tags": [
@@ -3920,12 +3884,12 @@
     ]
   },
   {
-    "title": "OX MONTH",
-    "desc": "OX MONTH",
+    "title": "My World",
+    "desc": "My World",
     "type": "apps",
-    "url": "https://www.newon.app/fr/#ox-month",
+    "url": "https://www.newon.app/fr/#myworld-app",
     "lang": "fr",
-    "featured": false,
+    "featured": true,
     "tags": [
       "apps",
       "live"
@@ -3936,6 +3900,42 @@
     "desc": "Pillmate",
     "type": "apps",
     "url": "https://www.newon.app/fr/#pillmate-app",
+    "lang": "fr",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#ox-month",
+    "lang": "fr",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#newon-plus-app",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#petlog-app",
     "lang": "fr",
     "featured": false,
     "tags": [
@@ -4632,46 +4632,10 @@
     ]
   },
   {
-    "title": "Newon+",
-    "desc": "Newon+",
-    "type": "apps",
-    "url": "https://www.newon.app/de/#newon-plus-app",
-    "lang": "de",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
     "title": "BabyLog",
     "desc": "BabyLog",
     "type": "apps",
     "url": "https://www.newon.app/de/#babylog-app",
-    "lang": "de",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "PetLog",
-    "desc": "PetLog",
-    "type": "apps",
-    "url": "https://www.newon.app/de/#petlog-app",
-    "lang": "de",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "My World",
-    "desc": "My World",
-    "type": "apps",
-    "url": "https://www.newon.app/de/#myworld-app",
     "lang": "de",
     "featured": true,
     "tags": [
@@ -4692,12 +4656,12 @@
     ]
   },
   {
-    "title": "OX MONTH",
-    "desc": "OX MONTH",
+    "title": "My World",
+    "desc": "My World",
     "type": "apps",
-    "url": "https://www.newon.app/de/#ox-month",
+    "url": "https://www.newon.app/de/#myworld-app",
     "lang": "de",
-    "featured": false,
+    "featured": true,
     "tags": [
       "apps",
       "live"
@@ -4708,6 +4672,42 @@
     "desc": "Pillmate",
     "type": "apps",
     "url": "https://www.newon.app/de/#pillmate-app",
+    "lang": "de",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#ox-month",
+    "lang": "de",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#newon-plus-app",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#petlog-app",
     "lang": "de",
     "featured": false,
     "tags": [
@@ -5404,46 +5404,10 @@
     ]
   },
   {
-    "title": "Newon+",
-    "desc": "Newon+",
-    "type": "apps",
-    "url": "https://www.newon.app/hi/#newon-plus-app",
-    "lang": "hi",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
     "title": "BabyLog",
     "desc": "BabyLog",
     "type": "apps",
     "url": "https://www.newon.app/hi/#babylog-app",
-    "lang": "hi",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "PetLog",
-    "desc": "PetLog",
-    "type": "apps",
-    "url": "https://www.newon.app/hi/#petlog-app",
-    "lang": "hi",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "My World",
-    "desc": "My World",
-    "type": "apps",
-    "url": "https://www.newon.app/hi/#myworld-app",
     "lang": "hi",
     "featured": true,
     "tags": [
@@ -5464,12 +5428,12 @@
     ]
   },
   {
-    "title": "OX MONTH",
-    "desc": "OX MONTH",
+    "title": "My World",
+    "desc": "My World",
     "type": "apps",
-    "url": "https://www.newon.app/hi/#ox-month",
+    "url": "https://www.newon.app/hi/#myworld-app",
     "lang": "hi",
-    "featured": false,
+    "featured": true,
     "tags": [
       "apps",
       "live"
@@ -5480,6 +5444,42 @@
     "desc": "Pillmate",
     "type": "apps",
     "url": "https://www.newon.app/hi/#pillmate-app",
+    "lang": "hi",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#ox-month",
+    "lang": "hi",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#newon-plus-app",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#petlog-app",
     "lang": "hi",
     "featured": false,
     "tags": [
@@ -6176,46 +6176,10 @@
     ]
   },
   {
-    "title": "Newon+",
-    "desc": "Newon+",
-    "type": "apps",
-    "url": "https://www.newon.app/id/#newon-plus-app",
-    "lang": "id",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
     "title": "BabyLog",
     "desc": "BabyLog",
     "type": "apps",
     "url": "https://www.newon.app/id/#babylog-app",
-    "lang": "id",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "PetLog",
-    "desc": "PetLog",
-    "type": "apps",
-    "url": "https://www.newon.app/id/#petlog-app",
-    "lang": "id",
-    "featured": true,
-    "tags": [
-      "apps",
-      "live"
-    ]
-  },
-  {
-    "title": "My World",
-    "desc": "My World",
-    "type": "apps",
-    "url": "https://www.newon.app/id/#myworld-app",
     "lang": "id",
     "featured": true,
     "tags": [
@@ -6236,12 +6200,12 @@
     ]
   },
   {
-    "title": "OX MONTH",
-    "desc": "OX MONTH",
+    "title": "My World",
+    "desc": "My World",
     "type": "apps",
-    "url": "https://www.newon.app/id/#ox-month",
+    "url": "https://www.newon.app/id/#myworld-app",
     "lang": "id",
-    "featured": false,
+    "featured": true,
     "tags": [
       "apps",
       "live"
@@ -6252,6 +6216,42 @@
     "desc": "Pillmate",
     "type": "apps",
     "url": "https://www.newon.app/id/#pillmate-app",
+    "lang": "id",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "OX MONTH",
+    "desc": "OX MONTH",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#ox-month",
+    "lang": "id",
+    "featured": true,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "Newon+",
+    "desc": "Newon+",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#newon-plus-app",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "PetLog",
+    "desc": "PetLog",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#petlog-app",
     "lang": "id",
     "featured": false,
     "tags": [
