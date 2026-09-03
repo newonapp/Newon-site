@@ -183,11 +183,16 @@
   function collectPayload(form) {
     var websiteEl = form.querySelector("[name='website']") || document.getElementById("bz-website");
     if (websiteEl && emptyWebsite(websiteEl.value)) websiteEl.value = "";
-    // Keep service hidden field aligned with the visible type select (Studio prefill / user change)
+    // Keep service hidden field aligned with the visible type select (clear when unset)
     var typeField = form.querySelector("[name='type']") || document.getElementById("bz-type");
     var serviceField = form.querySelector("[name='service']");
-    if (typeField && serviceField && String(typeField.value || "").trim()) {
-      serviceField.value = String(typeField.value || "").trim();
+    if (typeField && serviceField) {
+      var tv = String(typeField.value || "").trim();
+      if (!tv) {
+        serviceField.value = "";
+      } else {
+        serviceField.value = tv.replace(/^Studio\s*\/\s*/i, "");
+      }
     }
     var payload = {
       _subject: form.getAttribute("data-subject") || "Newon Business inquiry",

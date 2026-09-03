@@ -2859,8 +2859,13 @@
           if (!formEl || !typeEl) return;
           var hidden = formEl.querySelector('input[name="service"]');
           if (!hidden) return;
-          // Keep payload.service aligned with the selected type (not stale query)
-          if (typeEl.value) hidden.value = typeEl.value;
+          // Always mirror select; clear when unset so blocked query params cannot stick
+          var tv = String(typeEl.value || "").trim();
+          if (!tv || isBlockedStudioValue(tv)) {
+            hidden.value = "";
+            return;
+          }
+          hidden.value = tv.replace(/^Studio\s*\/\s*/i, "");
         }
         function applyStudioMode(mapped) {
           if (!inquirySection || !isStudioInflow(mapped)) return;
@@ -2946,7 +2951,6 @@
               opt.selected = !opt.value;
             });
           }
-          syncServiceHidden();
           typeEl.addEventListener("change", function () {
             applyMessageHint();
             syncServiceHidden();
@@ -2962,10 +2966,12 @@
             }
           });
         }
-        // Keep area/source on payload via hidden fields when present
+        // Keep area/source on payload via hidden fields when present.
+        // Do NOT copy raw service/slug query into hidden service — blocked COMING_SOON/BUILDING
+        // values must not persist. service is owned by syncServiceHidden() from the select.
         var form = document.getElementById("bz-inquiry-form");
         if (form) {
-          [["category", qCategory], ["area", qArea], ["source", qSource], ["service", qType]].forEach(function (pair) {
+          [["category", qCategory], ["area", qArea], ["source", qSource]].forEach(function (pair) {
             if (!pair[1]) return;
             var existing = form.querySelector('input[name="' + pair[0] + '"]');
             if (existing) {
@@ -2978,6 +2984,7 @@
             input.value = pair[1];
             form.appendChild(input);
           });
+          syncServiceHidden();
         }
         document.querySelectorAll("[data-inquiry-type]").forEach(function (link) {
           link.addEventListener("click", function () {
