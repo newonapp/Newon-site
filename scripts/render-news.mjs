@@ -616,20 +616,12 @@ function patchSitemap(articles) {
   const today = new Date().toISOString().slice(0, 10);
   for (const a of articles) {
     if (xml.includes(`/news/${a.slug}/</loc>`)) continue;
-    const alts = LANGS.map(
-      ({ dir: d, hreflang: h }) =>
-        `    <xhtml:link rel="alternate" hreflang="${h}" href="${SITE_ORIGIN}/${d}/news/${a.slug}/" />`
-    );
-    alts.push(
-      `    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}/en/news/${a.slug}/" />`
-    );
     const block = LANGS.map(
       ({ dir: d }) => `  <url>
     <loc>${SITE_ORIGIN}/${d}/news/${a.slug}/</loc>
     <lastmod>${a.date || today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.55</priority>
-${alts.join("\n")}
   </url>`
     ).join("\n");
     xml = xml.replace("</urlset>", `${block}\n</urlset>`);

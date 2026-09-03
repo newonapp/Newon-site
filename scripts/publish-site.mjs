@@ -274,6 +274,91 @@ function assemble() {
   stageHuman404Play();
 }
 
+function verifySitemap(sitemapPath, publishRoot) {
+  const raw = fs.readFileSync(sitemapPath, "utf8");
+  const sizeKb = (Buffer.byteLength(raw) / 1024).toFixed(1);
+  if (raw.includes("xmlns:xhtml") || raw.includes("xhtml:link")) {
+    console.error("publish-site verify: sitemap.xml must not include xhtml extensions");
+    process.exit(1);
+  }
+  if (!raw.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')) {
+    console.error("publish-site verify: sitemap.xml must use standard urlset namespace");
+    process.exit(1);
+  }
+  const banned = [
+    "card-n7x4k9",
+    "/admin/",
+    "delete-account",
+    "/success/",
+    "workflow-automation/",
+    "localhost",
+  ];
+  for (const b of banned) {
+    if (raw.includes(b)) {
+      console.error(`publish-site verify: sitemap.xml must not include "${b}"`);
+      process.exit(1);
+    }
+  }
+  if (/<loc>http:\/\//.test(raw)) {
+    console.error("publish-site verify: sitemap.xml must not use http:// loc URLs");
+    process.exit(1);
+  }
+  const requiredSnippets = [
+    "https://www.newon.app/ko/",
+    "https://www.newon.app/en/",
+    "https://www.newon.app/ko/business/",
+    "https://www.newon.app/ko/business/build/",
+    "https://www.newon.app/ko/business/mvp/",
+    "https://www.newon.app/ko/business/automation/workflow/",
+    "https://www.newon.app/ko/studio/",
+    "https://www.newon.app/ko/studio/digital/app-ui-ux/",
+    "https://www.newon.app/ko/resources/blog/",
+    "https://www.newon.app/ko/portfolio/",
+  ];
+  for (const s of requiredSnippets) {
+    if (!raw.includes(`<loc>${s}</loc>`) && !raw.includes(`<loc>${s.replace(/&/g, "&amp;")}</loc>`)) {
+      console.error(`publish-site verify: sitemap.xml missing required loc ${s}`);
+      process.exit(1);
+    }
+  }
+  if (raw.includes("https://www.newon.app/portfolio/</loc>")) {
+    console.error("publish-site verify: root /portfolio/ redirect must not be in sitemap");
+    process.exit(1);
+  }
+
+  const locs = [...raw.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].replace(/&amp;/g, "&"));
+  if (!locs.length) {
+    console.error("publish-site verify: sitemap.xml has no <loc> entries");
+    process.exit(1);
+  }
+  const seen = new Set();
+  for (const loc of locs) {
+    if (seen.has(loc)) {
+      console.error(`publish-site verify: duplicate sitemap loc ${loc}`);
+      process.exit(1);
+    }
+    seen.add(loc);
+    if (!loc.startsWith("https://www.newon.app/")) {
+      console.error(`publish-site verify: non-www/https loc ${loc}`);
+      process.exit(1);
+    }
+    if (loc === "https://www.newon.app/") {
+      if (!fs.existsSync(path.join(publishRoot, "index.html"))) {
+        console.error("publish-site verify: root index.html missing for sitemap /");
+        process.exit(1);
+      }
+      continue;
+    }
+    const rel = loc.replace("https://www.newon.app/", "").replace(/\/$/, "");
+    const indexPath = path.join(publishRoot, ...rel.split("/"), "index.html");
+    if (!fs.existsSync(indexPath)) {
+      console.error(`publish-site verify: sitemap loc has no publish file: ${loc}`);
+      process.exit(1);
+    }
+  }
+  console.log(`publish-site verify: sitemap OK (${locs.length} urls, ${sizeKb} KB)`);
+}
+
 function verify() {
   const required = [
     ...ALL_PUBLISH_ROOT_FILES.map((f) => path.join(OUT, f)),
@@ -357,18 +442,18 @@ function verify() {
   required.push(path.join(OUT, "hub-pages.css"));
   required.push(path.join(OUT, "analytics.js"));
   required.push(path.join(OUT, "sitemap.xml"));
-  const sitemap = fs.readFileSync(path.join(OUT, "sitemap.xml"), "utf8");
-  if (sitemap.includes("card-n7x4k9")) {
-    console.error("publish-site verify: card QR page must not appear in sitemap.xml");
-    process.exit(1);
-  }
-  if (!sitemap.includes("/portfolio/")) {
-    console.error("publish-site verify: sitemap.xml must include /portfolio/");
-    process.exit(1);
-  }
+  verifySitemap(path.join(OUT, "sitemap.xml"), OUT);
   const robots = fs.readFileSync(path.join(OUT, "robots.txt"), "utf8");
   if (!robots.includes("Disallow: /card-n7x4k9")) {
     console.error("publish-site verify: robots.txt must disallow the card QR page");
+    process.exit(1);
+  }
+  if (!robots.includes("Disallow: /admin/")) {
+    console.error("publish-site verify: robots.txt must disallow /admin/");
+    process.exit(1);
+  }
+  if (!robots.includes("Sitemap: https://www.newon.app/sitemap.xml")) {
+    console.error("publish-site verify: robots.txt must declare sitemap URL");
     process.exit(1);
   }
   for (const name of ["terms.html", "privacy.html"]) {

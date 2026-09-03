@@ -26,6 +26,11 @@ import { businessServicesHtml } from "./business-services-html.mjs";
 import { renderGlobalHeader } from "./site-chrome.mjs";
 import { fontLinksHtml } from "./hub-utils.mjs";
 import { STORE_PRODUCTS, LABS_EXPERIMENTS } from "./resources-data.mjs";
+import {
+  STUDIO_SERVICE_PRICING,
+  STUDIO_PILLAR_SERVICE_SLUGS,
+  studioServicePagePath,
+} from "./studio-pricing.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -493,13 +498,15 @@ writeInquirySuccessPages();
 renderBusinessCollabDetails();
 renderBusinessServices();
 
-/** robots.txt at site root (allow indexed pages; hide QR business-card slug). */
+/** robots.txt at site root (allow indexed pages; hide QR card + admin). */
 function writeRobotsTxt() {
   const body = [
     "User-agent: *",
     "Allow: /",
     "Disallow: /card-n7x4k9",
     "Disallow: /card-n7x4k9/",
+    "Disallow: /admin/",
+    "Disallow: /admin/growth/",
     "",
     `Sitemap: ${SITE_ORIGIN}/sitemap.xml`,
     "",
@@ -508,193 +515,88 @@ function writeRobotsTxt() {
 }
 
 /**
- * sitemap.xml covering real, crawlable URLs only.
- * Apps live as hash sections (#pillmate-app) on the home page, so they are
- * NOT separate URLs — including fake /apps/* paths would create 404s.
+ * Pure urlset sitemap (Naver-compatible): no xhtml:link.
+ * Uses catalog routePath / studio paths; skips redirects, admin, success, delete-account.
  */
 function writeSitemap() {
   const today = new Date().toISOString().slice(0, 10);
-  const urls = [];
+  /** @type {Map<string, { changefreq: string, priority: string }>} */
+  const entries = new Map();
 
-  const homeAlternates = [
-    ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/` })),
-    { hreflang: "x-default", href: `${SITE_ORIGIN}/en/` },
-  ];
-
-  // Root entry (points crawlers to the language selector / default).
-  urls.push({ loc: `${SITE_ORIGIN}/`, priority: "1.0", changefreq: "weekly", alternates: homeAlternates });
-
-  // Localized homepages (highest value for the "Newon" brand query).
-  for (const { dir: d } of LANGS) {
-    urls.push({
-      loc: `${SITE_ORIGIN}/${d}/`,
-      priority: "0.9",
-      changefreq: "weekly",
-      alternates: homeAlternates,
-    });
+  function add(locPath, priority = "0.5", changefreq = "monthly") {
+    const clean = String(locPath || "").replace(/^\/+/, "").replace(/\/+$/, "");
+    const loc = clean ? `${SITE_ORIGIN}/${clean}/` : `${SITE_ORIGIN}/`;
+    if (entries.has(loc)) return;
+    // Soft existence check when locale HTML already exists from this/prior build
+    if (clean) {
+      const rel = clean.split("/").join(path.sep);
+      const indexPath = path.join(ROOT, rel, "index.html");
+      // Only enforce existence for known locale-prefixed paths after renders
+      const first = clean.split("/")[0];
+      const isLocale = LANGS.some((l) => l.dir === first);
+      if (isLocale && !fs.existsSync(indexPath)) {
+        return;
+      }
+    }
+    entries.set(loc, { priority, changefreq });
   }
 
-  // About pages per language (additive SEO pages).
-  {
-    const aboutAlts = [
-      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/about/` })),
-      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/about/` },
-    ];
-    for (const { dir: d } of LANGS) {
-      urls.push({ loc: `${SITE_ORIGIN}/${d}/about/`, priority: "0.7", changefreq: "monthly", alternates: aboutAlts });
+  function addAllLocales(subPath, priority, changefreq) {
+    const rest = String(subPath || "").replace(/^\/+|\/+$/g, "");
+    for (const { dir } of LANGS) {
+      add(rest ? `${dir}/${rest}` : dir, priority, changefreq);
     }
   }
 
-  for (const page of ["news", "ideas"]) {
-    const alts = [
-      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),
-      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${page}/` },
-    ];
-    for (const { dir: d } of LANGS) {
-      urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.6", changefreq: "monthly", alternates: alts });
-    }
-  }
+  // Root (Korean homepage copy) + locale homes
+  add("", "1.0", "weekly");
+  addAllLocales("", "0.9", "weekly");
 
+  addAllLocales("about", "0.7", "monthly");
+  addAllLocales("news", "0.6", "monthly");
+  addAllLocales("ideas", "0.5", "monthly");
   for (const article of publishedArticles()) {
-    const alts = [
-      ...LANGS.map(({ dir: d, hreflang: h }) => ({
-        hreflang: h,
-        href: `${SITE_ORIGIN}/${d}/news/${article.slug}/`,
-      })),
-      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/news/${article.slug}/` },
-    ];
-    for (const { dir: d } of LANGS) {
-      urls.push({
-        loc: `${SITE_ORIGIN}/${d}/news/${article.slug}/`,
-        priority: "0.55",
-        changefreq: "monthly",
-        alternates: alts,
-      });
-    }
+    addAllLocales(`news/${article.slug}`, "0.55", "monthly");
   }
 
-  // Business pages per language.
-  {
-    const bizAlts = [
-      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/business/` })),
-      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/business/` },
-    ];
-    for (const { dir: d } of LANGS) {
-      urls.push({ loc: `${SITE_ORIGIN}/${d}/business/`, priority: "0.7", changefreq: "monthly", alternates: bizAlts });
-    }
+  // Product hubs
+  for (const page of ["products", "apps", "ai", "saas", "games", "tools", "market", "contact", "media"]) {
+    addAllLocales(page, "0.65", "monthly");
   }
+
+  // Business hub + pillars + inquiry (not success)
+  addAllLocales("business", "0.75", "monthly");
+  for (const pillar of ["build", "automation", "research", "solutions"]) {
+    addAllLocales(`business/${pillar}`, "0.7", "monthly");
+  }
+  addAllLocales("business/inquiry", "0.55", "monthly");
 
   for (const page of BUSINESS_DETAIL_PAGES) {
     const route = `business/collaboration/${page.pathSlug || page.slug}`;
-    const alts = [
-      ...LANGS.map(({ dir: d, hreflang: h }) => ({
-        hreflang: h,
-        href: `${SITE_ORIGIN}/${d}/${route}/`,
-      })),
-      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${route}/` },
-    ];
-    for (const { dir: d } of LANGS) {
-      urls.push({
-        loc: `${SITE_ORIGIN}/${d}/${route}/`,
-        priority: "0.6",
-        changefreq: "monthly",
-        alternates: alts,
-      });
-    }
+    addAllLocales(route, "0.55", "monthly");
   }
 
   for (const page of BUSINESS_SERVICE_PAGES) {
-    const alts = [
-      ...LANGS.map(({ dir: d, hreflang: h }) => ({
-        hreflang: h,
-        href: `${SITE_ORIGIN}/${d}/business/${page.slug}/`,
-      })),
-      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/business/${page.slug}/` },
-    ];
-    for (const { dir: d } of LANGS) {
-      urls.push({
-        loc: `${SITE_ORIGIN}/${d}/business/${page.slug}/`,
-        priority: "0.65",
-        changefreq: "monthly",
-        alternates: alts,
-      });
-    }
+    const route = page.routePath || page.slug;
+    addAllLocales(`business/${route}`, "0.65", "monthly");
   }
 
-  // Legal pages per language.
-  for (const page of ["privacy", "terms"]) {
-    const alts = [
-      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),
-      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${page}/` },
-    ];
-    for (const { dir: d } of LANGS) {
-      urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.3", changefreq: "yearly", alternates: alts });
-    }
+  // Studio hub + pillars + indexable service details
+  addAllLocales("studio", "0.7", "monthly");
+  for (const pillar of Object.keys(STUDIO_PILLAR_SERVICE_SLUGS)) {
+    addAllLocales(`studio/${pillar}`, "0.65", "monthly");
+  }
+  const skipStudioStatus = new Set(["COMING_SOON", "BUILDING"]);
+  for (const slug of Object.keys(STUDIO_SERVICE_PRICING)) {
+    const cfg = STUDIO_SERVICE_PRICING[slug];
+    if (skipStudioStatus.has(String(cfg.status || "").toUpperCase())) continue;
+    const pagePath = studioServicePagePath(slug);
+    if (!pagePath) continue;
+    addAllLocales(pagePath, "0.6", "monthly");
   }
 
-  // Founder portfolio — language-prefixed URLs + /portfolio/ redirect.
-  {
-    const pfAlts = [
-      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/portfolio/` })),
-      { hreflang: "x-default", href: `${SITE_ORIGIN}/ko/portfolio/` },
-    ];
-    urls.push({ loc: `${SITE_ORIGIN}/portfolio/`, priority: "0.5", changefreq: "monthly", alternates: pfAlts });
-    for (const { dir: d } of LANGS) {
-      urls.push({
-        loc: `${SITE_ORIGIN}/${d}/portfolio/`,
-        priority: "0.6",
-        changefreq: "monthly",
-        alternates: pfAlts,
-      });
-    }
-    for (const app of APP_CATALOG) {
-      const appAlts = [
-        ...LANGS.map(({ dir: d, hreflang: h }) => ({
-          hreflang: h,
-          href: `${SITE_ORIGIN}/${d}/portfolio/${app.slug}/`,
-        })),
-        { hreflang: "x-default", href: `${SITE_ORIGIN}/ko/portfolio/${app.slug}/` },
-      ];
-      urls.push({
-        loc: `${SITE_ORIGIN}/portfolio/${app.slug}/`,
-        priority: "0.4",
-        changefreq: "monthly",
-        alternates: appAlts,
-      });
-      for (const { dir: d } of LANGS) {
-        urls.push({
-          loc: `${SITE_ORIGIN}/${d}/portfolio/${app.slug}/`,
-          priority: "0.5",
-          changefreq: "monthly",
-          alternates: appAlts,
-        });
-      }
-    }
-  }
-
-  // Product Studio hubs
+  // Resources (canonical paths only — not /store /blog /labs aliases)
   for (const page of [
-    "products",
-    "apps",
-    "ai",
-    "saas",
-    "games",
-    "studio",
-    "tools",
-    "market",
-    "contact",
-  ]) {
-    const alts = [
-      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),
-      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${page}/` },
-    ];
-    for (const { dir: d } of LANGS) {
-      urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.65", changefreq: "monthly", alternates: alts });
-    }
-  }
-
-  // Resources platform
-  const resourcePages = [
     "resources",
     "resources/store",
     "resources/insights",
@@ -702,96 +604,57 @@ function writeSitemap() {
     "resources/labs",
     "resources/newsletter",
     "resources/education",
-  ];
-  for (const page of resourcePages) {
-    const alts = [
-      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),
-      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${page}/` },
-    ];
-    for (const { dir: d } of LANGS) {
-      urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.65", changefreq: "weekly", alternates: alts });
-    }
+  ]) {
+    addAllLocales(page, "0.65", "weekly");
   }
-
-  // Company Media
-  {
-    const page = "media";
-    const alts = [
-      ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),
-      { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${page}/` },
-    ];
-    for (const { dir: d } of LANGS) {
-      urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.65", changefreq: "weekly", alternates: alts });
-    }
-  }
-
   try {
     for (const product of STORE_PRODUCTS) {
       if (product.listed === false) continue;
-      const page = `resources/store/${product.slug}`;
-      const alts = [
-        ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),
-        { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${page}/` },
-      ];
-      for (const { dir: d } of LANGS) {
-        urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.55", changefreq: "monthly", alternates: alts });
-      }
+      addAllLocales(`resources/store/${product.slug}`, "0.5", "monthly");
     }
     for (const exp of LABS_EXPERIMENTS) {
-      const page = `resources/labs/${exp.slug}`;
-      const alts = [
-        ...LANGS.map(({ dir: d, hreflang: h }) => ({ hreflang: h, href: `${SITE_ORIGIN}/${d}/${page}/` })),
-        { hreflang: "x-default", href: `${SITE_ORIGIN}/en/${page}/` },
-      ];
-      for (const { dir: d } of LANGS) {
-        urls.push({ loc: `${SITE_ORIGIN}/${d}/${page}/`, priority: "0.5", changefreq: "monthly", alternates: alts });
-      }
+      addAllLocales(`resources/labs/${exp.slug}`, "0.45", "monthly");
     }
   } catch {
-    /* resources-data optional during partial builds */
+    /* optional */
   }
 
-  // Per-app account deletion pages (real, localized URLs).
-  for (const app of DELETE_ACCOUNT_APPS) {
-    for (const { dir: d } of LANGS) {
-      urls.push({
-        loc: `${SITE_ORIGIN}/${d}/${app.slug}/delete-account/`,
-        priority: "0.2",
-        changefreq: "yearly",
-      });
-    }
+  // Portfolio — locale canonical only (root /portfolio/ is a redirect stub)
+  addAllLocales("portfolio", "0.65", "monthly");
+  for (const app of APP_CATALOG) {
+    addAllLocales(`portfolio/${app.slug}`, "0.55", "monthly");
   }
 
-  const esc = (s) => s.replace(/&/g, "&amp;");
-  const body = urls
-    .map((u) => {
-      const alt = (u.alternates || [])
-        .map((a) => `    <xhtml:link rel="alternate" hreflang="${a.hreflang}" href="${esc(a.href)}" />`)
-        .join("\n");
-      return [
+  // Legal
+  addAllLocales("privacy", "0.3", "yearly");
+  addAllLocales("terms", "0.3", "yearly");
+
+  const esc = (s) => String(s).replace(/&/g, "&amp;");
+  const body = [...entries.entries()]
+    .map(([loc, meta]) =>
+      [
         "  <url>",
-        `    <loc>${esc(u.loc)}</loc>`,
+        `    <loc>${esc(loc)}</loc>`,
         `    <lastmod>${today}</lastmod>`,
-        `    <changefreq>${u.changefreq}</changefreq>`,
-        `    <priority>${u.priority}</priority>`,
-        alt,
+        `    <changefreq>${meta.changefreq}</changefreq>`,
+        `    <priority>${meta.priority}</priority>`,
         "  </url>",
-      ]
-        .filter(Boolean)
-        .join("\n");
-    })
+      ].join("\n")
+    )
     .join("\n");
 
   const xml =
     `<?xml version="1.0" encoding="UTF-8"?>\n` +
-    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     `${body}\n` +
     `</urlset>\n`;
   fs.writeFileSync(path.join(ROOT, "sitemap.xml"), xml);
+  console.log(
+    `writeSitemap: ${entries.size} urls, ${(Buffer.byteLength(xml) / 1024).toFixed(1)} KB (no xhtml)`
+  );
 }
 
-writeRobotsTxt();
-writeSitemap();
+// robots/sitemap written after page renders so existence checks see real output
 runScript("render-about-hub.mjs");
 runScript("render-news.mjs");
 runScript("render-ideas.mjs");
@@ -801,5 +664,7 @@ runScript("render-company.mjs");
 runScript("render-blog.mjs");
 runScript("generate-search-index.mjs");
 runScript("generate-admin-data.mjs");
+writeRobotsTxt();
+writeSitemap();
 
 console.log("i18n build OK:", LANGS.map((l) => l.dir).join(", "));
