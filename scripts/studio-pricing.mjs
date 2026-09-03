@@ -278,12 +278,48 @@ export function studioPillarPricingNote(pillarSlug, lang = "ko") {
   return studioScopeDisclaimer(lang);
 }
 
+/** True when the service may accept client inquiry (matches detail hasInquiry). */
+export function studioServiceAcceptsInquiry(slug) {
+  const cfg = STUDIO_SERVICE_PRICING[slug];
+  if (!cfg) return false;
+  return cfg.pricingType !== "comingSoon" && cfg.pricingType !== "internal";
+}
+
+/** Inquiry-capable Studio slugs in pillar order. */
+export function listStudioInquirableSlugs() {
+  return Object.keys(STUDIO_SERVICE_PRICING).filter((slug) => studioServiceAcceptsInquiry(slug));
+}
+
+/**
+ * Unified Studio inquiry CTA labels (KO/EN).
+ * Keep within: 프로젝트 문의 / 제작 문의 / 견적 문의 / 프로젝트 상담.
+ */
+export function studioInquiryCtaLabel(slug, lang = "ko") {
+  const ko = lang === "ko";
+  const cfg = STUDIO_SERVICE_PRICING[slug];
+  if (!cfg || !studioServiceAcceptsInquiry(slug)) return "";
+  if (cfg.pricingType === "customQuote") {
+    return ko ? "견적 문의 →" : "Quote inquiry →";
+  }
+  if (cfg.status === "EXPERIMENTAL") {
+    return ko ? "프로젝트 상담 →" : "Project consultation →";
+  }
+  if (cfg.designOnly || cfg.category === "content") {
+    return ko ? "제작 문의 →" : "Production inquiry →";
+  }
+  return ko ? "프로젝트 문의 →" : "Project inquiry →";
+}
+
 export function studioInquiryHref(slug, relativeBase = "../../business/inquiry/", opts = {}) {
   const cfg = STUDIO_SERVICE_PRICING[slug];
-  if (!cfg) return `${relativeBase}#inquiry`;
+  if (!cfg) return `${relativeBase}?category=Studio#inquiry`;
+  if (!studioServiceAcceptsInquiry(slug)) {
+    return `${relativeBase}?category=Studio#inquiry`;
+  }
   const params = new URLSearchParams({
     category: "Studio",
     service: cfg.inquiryService,
+    slug,
   });
   if (cfg.category === "brand") params.set("area", "Brand");
   else if (cfg.category === "digital") params.set("area", "Digital");
@@ -295,25 +331,39 @@ export function studioInquiryHref(slug, relativeBase = "../../business/inquiry/"
 
 export function studioInquiryOptionValue(slug) {
   const cfg = STUDIO_SERVICE_PRICING[slug];
-  if (!cfg) return "";
+  if (!cfg || !studioServiceAcceptsInquiry(slug)) return "";
   return `Studio / ${cfg.inquiryService}`;
 }
 
-/** Map used by inquiry form preselect (keys → select option value). */
+/** Map used by inquiry form preselect (keys → select option value). Inquirable only. */
 export function studioInquiryServiceMap() {
   /** @type {Record<string, string>} */
   const map = {};
-  for (const [slug, cfg] of Object.entries(STUDIO_SERVICE_PRICING)) {
+  for (const slug of listStudioInquirableSlugs()) {
+    const cfg = STUDIO_SERVICE_PRICING[slug];
     const value = studioInquiryOptionValue(slug);
+    if (!value) continue;
     map[slug] = value;
     map[cfg.inquiryService] = value;
     map[cfg.inquiryService.toLowerCase()] = value;
     map[cfg.serviceNameKo] = value;
+    map[cfg.detailSegment] = value;
     map[`studio-${slug}`] = value;
+    map[`Studio / ${cfg.inquiryService}`] = value;
   }
   map.Studio = "Studio / Brand Strategy";
   map.studio = "Studio / Brand Strategy";
   return map;
+}
+
+/** Option values for the inquiry <select> (inquirable Studio services only). */
+export function studioInquirySelectOptions() {
+  return listStudioInquirableSlugs().map((slug) => ({
+    slug,
+    value: studioInquiryOptionValue(slug),
+    label: studioInquiryOptionValue(slug),
+    area: STUDIO_SERVICE_PRICING[slug].category,
+  }));
 }
 
 export function applyStudioPillarPricing(copy, pillarSlug, lang = "ko") {
@@ -341,10 +391,12 @@ export function applyStudioPillarPricing(copy, pillarSlug, lang = "ko") {
     const cfg = slug ? STUDIO_SERVICE_PRICING[slug] : null;
     if (!cfg) return { ...s };
     const timeline = formatStudioTimelineDisplay(slug, pageLang);
-    const inquiryHref = studioInquiryHref(slug);
+    const accepts = studioServiceAcceptsInquiry(slug);
+    const inquiryHref = accepts ? studioInquiryHref(slug) : null;
     const next = { ...s, inquiryHref, _studioSlug: slug };
 
     if (timeline) next.timeline = timeline;
+    if (accepts) next.quoteCta = studioInquiryCtaLabel(slug, pageLang);
 
     if (cfg.designOnly) {
       const designTag = "Design Only";
@@ -359,8 +411,9 @@ export function applyStudioPillarPricing(copy, pillarSlug, lang = "ko") {
       next.detailCta = pageLang === "ko" ? "자세히 보기 →" : "View details →";
     }
 
-    if (cfg.pricingType === "comingSoon" || cfg.pricingType === "internal") {
+    if (!accepts) {
       next.inquiryHref = null;
+      next.quoteCta = null;
     }
 
     return next;

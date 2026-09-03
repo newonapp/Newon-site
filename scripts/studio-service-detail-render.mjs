@@ -7,6 +7,8 @@ import {
   formatStudioPriceDisplay,
   formatStudioTimelineDisplay,
   studioInquiryHref,
+  studioInquiryCtaLabel,
+  studioServiceAcceptsInquiry,
   studioServiceDetailHrefFromPillar,
   studioPillarPricingNote,
   STUDIO_PILLAR_SERVICE_SLUGS,
@@ -125,7 +127,11 @@ function processLayoutCols(count) {
 }
 
 function hasInquiry(detail) {
-  return detail.pageKind !== "comingSoon" && detail.pageKind !== "internal";
+  return studioServiceAcceptsInquiry(detail.slug);
+}
+
+function inquiryPrimaryLabel(detail) {
+  return studioInquiryCtaLabel(detail.slug, detail._pageLang === "ko" ? "ko" : "en");
 }
 
 function breadcrumb(detail) {
@@ -168,7 +174,14 @@ function metaRows(detail) {
   if (detail.typeLabel) rows.push({ k: "TYPE", v: detail.typeLabel });
   if (detail.statusLabel && detail.pageKind !== "service") rows.push({ k: "STATUS", v: detail.statusLabel });
   if (price) rows.push({ k: "STARTING AT", v: price });
-  if (timeline) rows.push({ k: "TIMELINE", v: timeline });
+  if (timeline) {
+    rows.push({ k: "TIMELINE", v: timeline });
+  } else if (detail.pageKind === "exploring") {
+    rows.push({
+      k: "TIMELINE",
+      v: lang === "ko" ? "프로젝트 범위에 따라 달라집니다." : "Depends on project scope.",
+    });
+  }
   if (!price && detail.pageKind === "exploring") {
     rows.push({ k: lang === "ko" ? "견적" : "QUOTE", v: lang === "ko" ? "별도 견적" : "Custom Quote" });
   }
@@ -520,6 +533,9 @@ function developmentSection(detail) {
           <div class="bs-dr-meta__row"><p class="bs-dr-meta__k">STUDIO</p><p class="bs-dr-meta__v">${escapeHtml(detail.displayName)}</p></div>
           <div class="bs-dr-meta__row"><p class="bs-dr-meta__k">NEXT</p><p class="bs-dr-meta__v">${escapeHtml(cta.eyebrow || (lang === "ko" ? "Business 연계" : "Business link"))}</p></div>
         </aside>`;
+  const portfolio = detail.portfolioCta
+    ? `<a class="bs-btn bs-btn--ghost" href="${escapeHtml(detail.portfolioCta.href)}">${escapeHtml(detail.portfolioCta.label)}</a>`
+    : "";
   return `<section class="bs-section bs-section--surface" data-bs-reveal aria-labelledby="bs-ss-dev-title"><div class="bs-inner">
       <div class="bs-dr-split">
         <div class="bs-dr-split__copy">
@@ -528,6 +544,7 @@ function developmentSection(detail) {
           ${proseParas(cta.body)}
           <div class="bs-hero__actions">
             <a class="bs-btn bs-btn--primary" href="${escapeHtml(cta.href)}">${escapeHtml(cta.label)}</a>
+            ${portfolio}
           </div>
         </div>
         ${meta}
@@ -664,14 +681,7 @@ function heroSection(detail, inquiryHref) {
 
   let actions = "";
   if (hasInquiry(detail)) {
-    const primaryLabel =
-      detail.heroCtaBtn ||
-      detail.ctaBtn ||
-      (detail.pageKind === "exploring"
-        ? detail._pageLang === "ko"
-          ? "Experimental Project 문의 →"
-          : "Experimental project inquiry →"
-        : detail.ui.ctaBtn);
+    const primaryLabel = inquiryPrimaryLabel(detail);
     const secondaryHref = detail.process?.length ? "#process" : detail.overview ? "#bs-ss-overview-title" : "#";
     const secondaryLabel = detail.process?.length
       ? detail._pageLang === "ko"
@@ -719,13 +729,7 @@ function finalSection(detail, inquiryHref) {
     </div></section>`;
   }
 
-  const primaryLabel =
-    detail.ctaBtn ||
-    (detail.pageKind === "exploring"
-      ? detail._pageLang === "ko"
-        ? "Experimental Project 문의 →"
-        : "Experimental project inquiry →"
-      : detail.ui.ctaBtn);
+  const primaryLabel = inquiryPrimaryLabel(detail);
 
   return `<section class="bs-section bs-section--dark bs-final" data-bs-reveal aria-labelledby="bs-final-title"><div class="bs-inner">
     <p class="bs-eyebrow">${escapeHtml(detail.ctaEyebrow || detail.ui.ctaEyebrow)}</p>

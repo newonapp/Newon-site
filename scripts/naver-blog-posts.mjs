@@ -28,6 +28,20 @@ export const NAVER_BLOG_HOME =
 /** @type {NaverBlogPost[]} */
 export const NAVER_BLOG_POSTS = [
   {
+    id: "224396976295",
+    titleKo: "개강 준비 끝! 대학생이라면 써볼 만한 필수 앱 추천",
+    titleEn: "Semester ready: essential apps for campus life",
+    category: "product",
+    summaryKo:
+      "새 학기 시간표·과제·목표·돈 관리까지. GoalUp, CountUp 등 개강 후 대학생활과 일상에 쓸 수 있는 Newon 앱을 소개합니다.",
+    summaryEn:
+      "Timetables, assignments, goals, and money for the new semester. GoalUp, CountUp, and more Newon apps for campus and everyday life.",
+    date: "2026.09.01",
+    url: "https://m.blog.naver.com/PostView.naver?blogId=newonapp&logNo=224396976295",
+    thumbnail: "/blog-thumbs/nb-224396976295.jpg",
+    featured: true,
+  },
+  {
     id: "224395763455",
     titleKo: "22살 1인 개발자, 6개월 만에 앱 11개를 개발하고 출시했습니다",
     titleEn: "Solo developer at 22: 11 apps shipped in 6 months",
@@ -39,7 +53,6 @@ export const NAVER_BLOG_POSTS = [
     date: "2026.08.31",
     url: "https://m.blog.naver.com/PostView.naver?blogId=newonapp&logNo=224395763455",
     thumbnail: "/blog-thumbs/nb-224395763455.jpg",
-    featured: true,
   },
   {
     id: "224376811561",

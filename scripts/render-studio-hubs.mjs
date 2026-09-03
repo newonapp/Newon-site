@@ -215,7 +215,7 @@ function studioBody(flat, flatEn, lang = "en") {
       <p class="ns-lead">${t("studioHub.heroLead", "브랜드의 이름과 정체성부터 디지털 경험, 콘텐츠와 새로운 IP까지 하나의 방향으로 설계합니다.")}</p>
       <div class="ns-actions">
         <a class="btn btn-ghost" href="#areas">${t("studioHub.ctaExplore", "Explore Studio ↓")}</a>
-        <a class="btn btn-primary" href="../business/inquiry/?category=Studio#inquiry">${t("studioHub.ctaProject", ko ? "프로젝트 문의하기 ↗" : "Start a Project ↗")}</a>
+        <a class="btn btn-primary" href="../business/inquiry/?category=Studio#inquiry">${t("studioHub.ctaProject", ko ? "프로젝트 문의 ↗" : "Project inquiry ↗")}</a>
       </div>
       <nav class="ns-rail" aria-label="${ko ? "Studio 영역" : "Studio areas"}">${rail}</nav>
     </div>
@@ -282,7 +282,7 @@ function contactBody(flat, flatEn) {
   return `<section class="hub-hero hub-inner"><h1 class="hub-title">${t("studio.contactHeroTitle")}</h1><p class="hub-lead">${t("studio.contactHeroLead")}</p></section>
   <section class="hub-inner hub-section"><div class="hub-grid hub-grid--2">
     <a class="hub-card" href="mailto:newon@newon.app"><span class="hub-card__title">${t("studio.contactGeneral")}</span><span class="hub-card__body">newon@newon.app</span></a>
-    <a class="hub-card" href="../business/inquiry/"><span class="hub-card__title">${t("studio.contactBusiness")}</span><span class="hub-card__body">Business form →</span></a>
+    <a class="hub-card" href="../business/inquiry/?category=Studio#inquiry"><span class="hub-card__title">${t("studio.contactBusiness")}</span><span class="hub-card__body">Studio / Business inquiry →</span></a>
     <a class="hub-card" href="mailto:newon@newon.app?subject=Partnership"><span class="hub-card__title">${t("studio.contactPartnership")}</span></a>
     <a class="hub-card" href="mailto:newon@newon.app?subject=Press"><span class="hub-card__title">${t("studio.contactPress")}</span></a>
     <a class="hub-card" href="../products/?filter=apps"><span class="hub-card__title">${t("studio.contactSupport")}</span><span class="hub-card__body">App support flows</span></a>

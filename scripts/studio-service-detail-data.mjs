@@ -3086,6 +3086,10 @@ const DETAIL = {
       },
       label: { ko: "Business BUILD 살펴보기 →", en: "Explore Business BUILD →" },
     },
+    portfolioCta: {
+      href: "../../../portfolio/",
+      label: { ko: "Newon 자체 제품 보기 →", en: "View Newon products →" },
+    },
     nextStepsLabel: "BRAND TO DIGITAL",
     nextStepsTitle: {
       ko: "브랜드를 실제 경험으로\n연결합니다.",
@@ -3837,6 +3841,10 @@ const DETAIL = {
       },
       label: { ko: "Business App 살펴보기 →", en: "Explore Business App →" },
     },
+    portfolioCta: {
+      href: "../../../portfolio/",
+      label: { ko: "Newon 자체 앱 제품 보기 →", en: "View Newon app products →" },
+    },
     nextStepsLabel: "PRODUCT CONNECTION",
     nextStepsTitle: {
       ko: "브랜드에서 실제 제품 경험까지\n연결합니다.",
@@ -4567,6 +4575,10 @@ const DETAIL = {
         en: "Studio Landing Page is design only — content structure, UX, UI, responsive screens, and CTA flow.\n\nLive implementation and deploy can continue through Newon Business Landing as a separate scope.",
       },
       label: { ko: "Business Landing 살펴보기 →", en: "Explore Business Landing →" },
+    },
+    portfolioCta: {
+      href: "../../../portfolio/",
+      label: { ko: "Newon 자체 제품 보기 →", en: "View Newon products →" },
     },
     nextStepsLabel: "DIGITAL PATH",
     nextStepsTitle: {
@@ -5318,6 +5330,10 @@ const DETAIL = {
         en: "Studio Product Design is design only — problem, features, structure, flows, and interface.\n\nLive implementation can continue through Newon Business MVP / BUILD as a separate scope.",
       },
       label: { ko: "Business MVP 살펴보기 →", en: "Explore Business MVP →" },
+    },
+    portfolioCta: {
+      href: "../../../portfolio/",
+      label: { ko: "Newon 자체 제품 보기 →", en: "View Newon products →" },
     },
     nextStepsLabel: "PRODUCT CONNECTION",
     nextStepsTitle: {
@@ -7880,6 +7896,12 @@ export function getStudioServiceDetail(slug, lang = "ko") {
           title: pickLang(raw.developmentCta.title, pageLang),
           body: pickLang(raw.developmentCta.body, pageLang),
           label: pickLang(raw.developmentCta.label, pageLang),
+        }
+      : null,
+    portfolioCta: raw.portfolioCta
+      ? {
+          href: raw.portfolioCta.href,
+          label: pickLang(raw.portfolioCta.label, pageLang),
         }
       : null,
     altCtas: pickLang(raw.altCtas, pageLang) || [],

@@ -3635,7 +3635,14 @@
     "exploreEyebrow": "NEWON FOR BUSINESS",
     "exploreTitle": "From idea\nto real product.",
     "exploreLead": "We build real services from planning through design, development, testing, and store launch — grounded in products we have shipped ourselves.",
-    "exploreCtaServices": "Explore services ↓"
+    "exploreCtaServices": "Explore services ↓",
+    "studioFormTitle": "Studio project inquiry",
+    "studioFormLead": "Tell us about your brand, digital product, content, or creative project. We will review scope, timeline, and budget, then follow up.",
+    "studioPhMessage": "Share the Studio service you need, project goals, current stage, and any references.",
+    "studioSelectedLabel": "Selected service",
+    "studioTypeHint": "Studio service",
+    "budgetHint": "Budget helps us understand project scope — it is not a final quote.",
+    "studioSelectPlaceholder": "Select a service"
   },
   "businessPages": {
     "common": {
@@ -4993,7 +5000,7 @@
     "heroTitle": "We shape how brands and products appear in the world.",
     "heroLead": "From naming and identity to digital experience, content, and new IP — one direction.",
     "ctaExplore": "Explore Studio ↓",
-    "ctaProject": "Start a Project ↗",
+    "ctaProject": "Project inquiry ↗",
     "ctaIp": "Character Lab →",
     "positioning": "Creative Studio · Product Studio · Experimental Lab",
     "brandLead": "Direction and identity.",

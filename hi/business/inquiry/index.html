@@ -54,7 +54,7 @@
     />
     <link rel="stylesheet" href="/styles.css?v=20260828btn1" />
     <link rel="stylesheet" href="/gnav-mega.css?v=20260902nav1" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
     <link rel="stylesheet" href="/ox-month.css" />
     <link rel="stylesheet" href="/portfolio/portfolio.css" />
     <script src="/theme-shell.js"></script>
@@ -1353,6 +1353,25 @@
         border-color: var(--border);
       }
       .bz-field textarea { min-height: 8.5rem; resize: vertical; }
+      .bz-field-hint {
+        margin: 0;
+        font-size: 0.75rem;
+        line-height: 1.45;
+        color: var(--text-muted);
+      }
+      .bz-studio-selected {
+        margin: 0.75rem 0 0;
+        padding: 0.65rem 0.85rem;
+        border: 1px solid #eaeaea;
+        border-radius: 10px;
+        background: #fafafa;
+        font-size: 0.875rem;
+        color: var(--text);
+      }
+      html[data-newon-shell-theme="dark"] .bz-studio-selected {
+        border-color: var(--border);
+        background: rgba(255, 255, 255, 0.04);
+      }
       .bz-form .btn,
       .bz-form .bz-submit {
         justify-self: stretch;
@@ -1846,26 +1865,26 @@
           <div class="gnav__util">
             <a class="gnav__cta" href="../../business/inquiry/">Contact</a>
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-gnav-legacy">भाषा</label>
-    <select id="lang-select-gnav-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="भाषा">
+    <label class="visually-hidden" for="lang-select-gnav-hub">भाषा</label>
+    <select id="lang-select-gnav-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="भाषा">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">अंग्रेज़ी</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">पोर्टुगुएस (ब्राजील)</option><option value="fr" data-short="FR">फ़्रांसीसी</option><option value="de" data-short="DE">deutsch</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">बहासा इंडोनेशिया</option>
     </select>
   </div>
             <button type="button" class="gnav__theme" data-theme-toggle data-label-light="लाइट मोड" data-label-dark="डार्क मोड" title="थीम बदलें" aria-label="डार्क मोड"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-legacy" aria-label="Menu">
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-hub" aria-label="Menu">
               <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
             </button>
           </div>
         </div>
       </div>
-      <div id="gnav-mobile-legacy" class="gnav-mobile" hidden aria-hidden="true">
+      <div id="gnav-mobile-hub" class="gnav-mobile" hidden aria-hidden="true">
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
       <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menu">
         <div class="gnav-mobile__scroll">
           <div class="gnav-mobile__util-row">
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-mobile-legacy">भाषा</label>
-    <select id="lang-select-mobile-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="भाषा">
+    <label class="visually-hidden" for="lang-select-mobile-hub">भाषा</label>
+    <select id="lang-select-mobile-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="भाषा">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">अंग्रेज़ी</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">पोर्टुगुएस (ब्राजील)</option><option value="fr" data-short="FR">फ़्रांसीसी</option><option value="de" data-short="DE">deutsch</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">बहासा इंडोनेशिया</option>
     </select>
   </div>
@@ -2456,10 +2475,21 @@
         </div>
       </section>
 
-      <section id="inquiry" class="bz-section bz-reveal" aria-labelledby="bz-form-title">
+      <section id="inquiry" class="bz-section bz-reveal" aria-labelledby="bz-form-title"
+        data-form-title="व्यापार जांच"
+        data-form-lead="कुछ विवरण साझा करें और हम ईमेल द्वारा फ़ॉलो करेंगे।"
+        data-studio-title="Studio project inquiry"
+        data-studio-lead="Tell us about your brand, digital product, content, or creative project. We will review scope, timeline, and budget, then follow up."
+        data-studio-ph="Share the Studio service you need, project goals, current stage, and any references."
+        data-studio-selected="Selected service"
+        data-studio-type-hint="Studio service"
+        data-studio-select-ph="Select a service"
+        data-default-ph="हमें परियोजना या सहयोग के बारे में संक्षेप में बताएं।"
+      >
         <div class="bz-inner bz-form-wrap">
           <h2 class="bz-title" id="bz-form-title">व्यापार जांच</h2>
-          <p class="bz-lead">कुछ विवरण साझा करें और हम ईमेल द्वारा फ़ॉलो करेंगे।</p>
+          <p class="bz-lead" id="bz-form-lead">कुछ विवरण साझा करें और हम ईमेल द्वारा फ़ॉलो करेंगे।</p>
+          <p class="bz-lead bz-studio-selected" id="bz-studio-selected" hidden></p>
           <form
             class="bz-form"
             id="bz-inquiry-form"
@@ -2492,40 +2522,39 @@
               <label for="bz-type">पूछताछ का प्रकार<span class="bz-req" aria-hidden="true">*</span></label>
               <select id="bz-type" name="type" required>
                 <option value="" disabled selected>कृपया चयन कीजिए</option>
-                <option value="BUILD / MVP">BUILD / MVP</option>
-                <option value="BUILD / WEBSITE">BUILD / WEBSITE</option>
-                <option value="BUILD / LANDING">BUILD / LANDING</option>
-                <option value="BUILD / APP">BUILD / APP</option>
-                <option value="AUTOMATION / DATA & REPORTING">AUTOMATION / DATA &amp; REPORTING</option>
-                <option value="AUTOMATION / INTERNAL TOOLS">AUTOMATION / INTERNAL TOOLS</option>
-                <option value="AUTOMATION / WORKFLOW AUTOMATION">AUTOMATION / WORKFLOW AUTOMATION</option>
-                <option value="App">App</option>
-                <option value="Website">Website</option>
-                <option value="MVP">MVP</option>
-                <option value="AI">AI</option>
-                <option value="Automation">Automation</option>
-                <option value="White-label">White-label</option>
-                <option value="Design">Design</option>
-                <option value="Studio / Brand Strategy">Studio / Brand Strategy</option>
-                <option value="Studio / Naming">Studio / Naming</option>
-                <option value="Studio / Identity">Studio / Identity</option>
-                <option value="Studio / Logo Design">Studio / Logo Design</option>
-                <option value="Studio / Web Design">Studio / Web Design</option>
-                <option value="Studio / App UI/UX">Studio / App UI/UX</option>
-                <option value="Studio / Landing Page Design">Studio / Landing Page Design</option>
-                <option value="Studio / Product Design">Studio / Product Design</option>
-                <option value="Studio / Social Content">Studio / Social Content</option>
-                <option value="Studio / Campaign">Studio / Campaign</option>
-                <option value="Studio / Visual Content">Studio / Visual Content</option>
-                <option value="Studio / Character Lab">Studio / Character Lab</option>
-                <option value="Studio / Digital Stickers">Studio / Digital Stickers</option>
-                <option value="Studio / Experimental IP">Studio / Experimental IP</option>
-                <option value="Maintenance">Maintenance</option>
-                <option value="partnership">साझेदारी</option>
-                <option value="product-service-collaboration">ऐप सहयोग</option>
-                <option value="advertising-promotion">विज्ञापन देना</option>
-                <option value="development-collaboration">विकास</option>
-                <option value="Partnership">साझेदारी</option>
+                <option value="BUILD / MVP" data-biz-option="1">BUILD / MVP</option>
+                <option value="BUILD / WEBSITE" data-biz-option="1">BUILD / WEBSITE</option>
+                <option value="BUILD / LANDING" data-biz-option="1">BUILD / LANDING</option>
+                <option value="BUILD / APP" data-biz-option="1">BUILD / APP</option>
+                <option value="AUTOMATION / DATA & REPORTING" data-biz-option="1">AUTOMATION / DATA &amp; REPORTING</option>
+                <option value="AUTOMATION / INTERNAL TOOLS" data-biz-option="1">AUTOMATION / INTERNAL TOOLS</option>
+                <option value="AUTOMATION / WORKFLOW AUTOMATION" data-biz-option="1">AUTOMATION / WORKFLOW AUTOMATION</option>
+                <option value="App" data-biz-option="1">App</option>
+                <option value="Website" data-biz-option="1">Website</option>
+                <option value="MVP" data-biz-option="1">MVP</option>
+                <option value="AI" data-biz-option="1">AI</option>
+                <option value="Automation" data-biz-option="1">Automation</option>
+                <option value="White-label" data-biz-option="1">White-label</option>
+                <option value="Design" data-biz-option="1">Design</option>
+                <option value="Studio / Brand Strategy" data-studio-option="1">Studio / Brand Strategy</option>
+                <option value="Studio / Naming" data-studio-option="1">Studio / Naming</option>
+                <option value="Studio / Identity" data-studio-option="1">Studio / Identity</option>
+                <option value="Studio / Logo Design" data-studio-option="1">Studio / Logo Design</option>
+                <option value="Studio / Web Design" data-studio-option="1">Studio / Web Design</option>
+                <option value="Studio / App UI/UX" data-studio-option="1">Studio / App UI/UX</option>
+                <option value="Studio / Landing Page Design" data-studio-option="1">Studio / Landing Page Design</option>
+                <option value="Studio / Product Design" data-studio-option="1">Studio / Product Design</option>
+                <option value="Studio / Social Content" data-studio-option="1">Studio / Social Content</option>
+                <option value="Studio / Campaign" data-studio-option="1">Studio / Campaign</option>
+                <option value="Studio / Visual Content" data-studio-option="1">Studio / Visual Content</option>
+                <option value="Studio / Character Lab" data-studio-option="1">Studio / Character Lab</option>
+                <option value="Studio / Experimental IP" data-studio-option="1">Studio / Experimental IP</option>
+                <option value="Maintenance" data-biz-option="1">Maintenance</option>
+                <option value="partnership" data-biz-option="1">साझेदारी</option>
+                <option value="product-service-collaboration" data-biz-option="1">ऐप सहयोग</option>
+                <option value="advertising-promotion" data-biz-option="1">विज्ञापन देना</option>
+                <option value="development-collaboration" data-biz-option="1">विकास</option>
+                <option value="Partnership" data-biz-option="1">साझेदारी</option>
                 <option value="Other">Other</option>
               </select>
             </div>
@@ -2540,6 +2569,7 @@
                 <option value="Over ₩5M">Over ₩5M</option>
                 <option value="To be discussed">To be discussed</option>
               </select>
+              <p class="bz-field-hint" id="bz-budget-hint">Budget helps us understand project scope — it is not a final quote.</p>
             </div>
             <div class="bz-field">
               <label for="bz-stage">परियोजना चरण <span class="bz-opt">(वैकल्पिक)</span></label>
@@ -2633,7 +2663,7 @@
       </footer>
 
     <script src="/search.js?v=20260825studio" defer></script>
-    <script src="/site-chrome.js?v=20260902nav2" defer></script>
+    <script src="/site-chrome.js?v=20260902nav1" defer></script>
     <script>
       (function () {
         var cur = "hi";
@@ -2689,6 +2719,10 @@
 
         var typeEl = document.getElementById("bz-type");
         var params = new URLSearchParams(window.location.search);
+        var inquirySection = document.getElementById("inquiry");
+        var formTitleEl = document.getElementById("bz-form-title");
+        var formLeadEl = document.getElementById("bz-form-lead");
+        var selectedEl = document.getElementById("bz-studio-selected");
         var serviceMap = {
           mvp: "MVP",
           web: "Website",
@@ -2711,31 +2745,34 @@
           design: "Design",
           "Brand Strategy": "Studio / Brand Strategy",
           "brand-strategy": "Studio / Brand Strategy",
+          strategy: "Studio / Brand Strategy",
           Naming: "Studio / Naming",
           naming: "Studio / Naming",
           Identity: "Studio / Identity",
           identity: "Studio / Identity",
           "Logo Design": "Studio / Logo Design",
           "logo-design": "Studio / Logo Design",
+          logo: "Studio / Logo Design",
           Logo: "Studio / Logo Design",
           "Web Design": "Studio / Web Design",
           "web-design": "Studio / Web Design",
           "App UI/UX": "Studio / App UI/UX",
           "app-ui-ux": "Studio / App UI/UX",
+          "app-uiux": "Studio / App UI/UX",
           "Landing Page Design": "Studio / Landing Page Design",
           "landing-page-design": "Studio / Landing Page Design",
           "Product Design": "Studio / Product Design",
           "product-design": "Studio / Product Design",
           "Social Content": "Studio / Social Content",
           "social-content": "Studio / Social Content",
+          social: "Studio / Social Content",
           Campaign: "Studio / Campaign",
           campaign: "Studio / Campaign",
           "Visual Content": "Studio / Visual Content",
           "visual-content": "Studio / Visual Content",
+          visual: "Studio / Visual Content",
           "Character Lab": "Studio / Character Lab",
           "character-lab": "Studio / Character Lab",
-          "Digital Stickers": "Studio / Digital Stickers",
-          "digital-stickers": "Studio / Digital Stickers",
           "Experimental IP": "Studio / Experimental IP",
           "experimental-ip": "Studio / Experimental IP",
           partnership: "partnership",
@@ -2750,8 +2787,10 @@
           development: "development-collaboration",
           Development: "development-collaboration"
         };
-        var qType = params.get("type") || params.get("service");
+        var qType = params.get("type") || params.get("service") || params.get("slug") || "";
         var qCategory = (params.get("category") || "").trim();
+        var qArea = (params.get("area") || "").trim();
+        var qSource = (params.get("source") || "").trim();
         var messageHints = {
           ko: {
             "AUTOMATION / WORKFLOW AUTOMATION":
@@ -2765,30 +2804,180 @@
         var msgEl = document.getElementById("bz-message");
         var pageLang = (document.documentElement.lang || "en").slice(0, 2);
         var hintPack = messageHints[pageLang] || messageHints.en;
-        function applyMessageHint() {
-          if (!msgEl || !typeEl) return;
-          var hint = hintPack[typeEl.value];
-          if (hint) msgEl.placeholder = hint;
+        function decodeParam(v) {
+          try {
+            return decodeURIComponent(String(v || "").replace(/\+/g, " ")).trim();
+          } catch (e) {
+            return String(v || "").trim();
+          }
+        }
+        qType = decodeParam(qType);
+        var blockedStudio = {
+          "digital-stickers": 1,
+          "Digital Stickers": 1,
+          "Studio / Digital Stickers": 1,
+          "newon-character": 1,
+          "Newon Character": 1,
+          "Studio / Newon Character": 1
+        };
+        function isBlockedStudioValue(v) {
+          if (!v) return false;
+          if (blockedStudio[v]) return true;
+          var lower = String(v).toLowerCase();
+          if (blockedStudio[lower]) return true;
+          if (/digital\s*stickers/i.test(v) || /newon\s*character/i.test(v)) return true;
+          return false;
+        }
+        function optionExists(value) {
+          if (!typeEl || !value) return false;
+          return Array.prototype.some.call(typeEl.options, function (opt) {
+            return opt.value === value && !opt.disabled && !opt.hidden;
+          });
         }
         function resolveInquiryType() {
-          if (!qType) {
-            if (/^studio$/i.test(qCategory)) return "Studio / Brand Strategy";
-            return "";
+          // category=Studio alone → no default service (neutral select)
+          if (!qType) return "";
+          if (isBlockedStudioValue(qType)) return "";
+          var mapped = "";
+          if (/^Studio\s*\//i.test(qType)) mapped = qType.replace(/^studio\s*\//i, "Studio / ");
+          else if (serviceMap[qType]) mapped = serviceMap[qType];
+          else if (serviceMap[qType.toLowerCase()]) mapped = serviceMap[qType.toLowerCase()];
+          else mapped = serviceMap[qType] || "";
+          if (!mapped) return "";
+          if (isBlockedStudioValue(mapped)) return "";
+          return mapped;
+        }
+        function isStudioInflow(mapped) {
+          if (/^studio$/i.test(qCategory)) return true;
+          if (/\/studio\//i.test(qSource)) return true;
+          if (mapped && /^Studio\s*\//.test(mapped)) return true;
+          if (qType && serviceMap[qType] && /^Studio\s*\//.test(serviceMap[qType])) return true;
+          return false;
+        }
+        function syncServiceHidden() {
+          var formEl = document.getElementById("bz-inquiry-form");
+          if (!formEl || !typeEl) return;
+          var hidden = formEl.querySelector('input[name="service"]');
+          if (!hidden) return;
+          // Keep payload.service aligned with the selected type (not stale query)
+          if (typeEl.value) hidden.value = typeEl.value;
+        }
+        function applyStudioMode(mapped) {
+          if (!inquirySection || !isStudioInflow(mapped)) return;
+          document.documentElement.setAttribute("data-inquiry-context", "studio");
+          if (formTitleEl && inquirySection.getAttribute("data-studio-title")) {
+            formTitleEl.textContent = inquirySection.getAttribute("data-studio-title");
           }
-          if (/^studio$/i.test(qCategory) && serviceMap[qType]) return serviceMap[qType];
-          if (/^Studio\s*\//.test(qType)) return qType;
-          return serviceMap[qType] || qType;
+          if (formLeadEl && inquirySection.getAttribute("data-studio-lead")) {
+            formLeadEl.textContent = inquirySection.getAttribute("data-studio-lead");
+          }
+          if (typeEl) {
+            Array.prototype.forEach.call(typeEl.options, function (opt) {
+              if (!opt.value) {
+                var sph = inquirySection.getAttribute("data-studio-select-ph");
+                if (sph) opt.textContent = sph;
+                opt.hidden = false;
+                opt.disabled = false;
+                return;
+              }
+              if (opt.getAttribute("data-studio-option") === "1" || opt.value === "Other") {
+                opt.hidden = false;
+                opt.disabled = false;
+              } else if (opt.getAttribute("data-biz-option") === "1") {
+                opt.hidden = true;
+                opt.disabled = true;
+              }
+            });
+            var typeLabel = document.querySelector('label[for="bz-type"]');
+            var hint = inquirySection.getAttribute("data-studio-type-hint");
+            if (typeLabel && hint) {
+              typeLabel.innerHTML = hint + '<span class="bz-req" aria-hidden="true">*</span>';
+            }
+          }
+          if (msgEl && inquirySection.getAttribute("data-studio-ph")) {
+            msgEl.placeholder = inquirySection.getAttribute("data-studio-ph");
+          }
+          if (selectedEl && mapped && /^Studio\s*\//.test(mapped)) {
+            var selLabel = inquirySection.getAttribute("data-studio-selected") || "Selected service";
+            selectedEl.textContent = selLabel + ": " + mapped.replace(/^Studio\s*\/\s*/, "");
+            selectedEl.hidden = false;
+          } else if (selectedEl) {
+            selectedEl.hidden = true;
+            selectedEl.textContent = "";
+          }
+        }
+        function applyMessageHint() {
+          if (!msgEl || !typeEl) return;
+          if (document.documentElement.getAttribute("data-inquiry-context") === "studio") {
+            if (inquirySection && inquirySection.getAttribute("data-studio-ph")) {
+              msgEl.placeholder = inquirySection.getAttribute("data-studio-ph");
+            }
+            return;
+          }
+          var hint = hintPack[typeEl.value];
+          if (hint) msgEl.placeholder = hint;
+          else if (inquirySection && inquirySection.getAttribute("data-default-ph")) {
+            msgEl.placeholder = inquirySection.getAttribute("data-default-ph");
+          }
         }
         if (typeEl) {
           var mapped = resolveInquiryType();
-          if (mapped) {
-            typeEl.value = mapped;
-            if (!typeEl.value) typeEl.value = mapped;
-            applyMessageHint();
+          // If mapped value is not in the (visible) options, treat as unset
+          if (mapped && !optionExists(mapped)) {
+            // options not yet filtered — check raw option list
+            var rawExists = Array.prototype.some.call(typeEl.options, function (opt) {
+              return opt.value === mapped;
+            });
+            if (!rawExists) mapped = "";
           }
+          applyStudioMode(mapped);
+          if (mapped && optionExists(mapped)) {
+            typeEl.value = mapped;
+            if (!typeEl.value) {
+              Array.prototype.forEach.call(typeEl.options, function (opt) {
+                if (opt.value === mapped) opt.selected = true;
+              });
+            }
+            applyMessageHint();
+          } else if (isStudioInflow("")) {
+            // Neutral: keep placeholder selected
+            typeEl.value = "";
+            Array.prototype.forEach.call(typeEl.options, function (opt) {
+              opt.selected = !opt.value;
+            });
+          }
+          syncServiceHidden();
+          typeEl.addEventListener("change", function () {
+            applyMessageHint();
+            syncServiceHidden();
+            if (selectedEl && document.documentElement.getAttribute("data-inquiry-context") === "studio") {
+              var v = typeEl.value || "";
+              if (/^Studio\s*\//.test(v)) {
+                var selLabel = inquirySection.getAttribute("data-studio-selected") || "Selected service";
+                selectedEl.textContent = selLabel + ": " + v.replace(/^Studio\s*\/\s*/, "");
+                selectedEl.hidden = false;
+              } else {
+                selectedEl.hidden = true;
+              }
+            }
+          });
         }
-        if (typeEl) {
-          typeEl.addEventListener("change", applyMessageHint);
+        // Keep area/source on payload via hidden fields when present
+        var form = document.getElementById("bz-inquiry-form");
+        if (form) {
+          [["category", qCategory], ["area", qArea], ["source", qSource], ["service", qType]].forEach(function (pair) {
+            if (!pair[1]) return;
+            var existing = form.querySelector('input[name="' + pair[0] + '"]');
+            if (existing) {
+              existing.value = pair[1];
+              return;
+            }
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = pair[0];
+            input.value = pair[1];
+            form.appendChild(input);
+          });
         }
         document.querySelectorAll("[data-inquiry-type]").forEach(function (link) {
           link.addEventListener("click", function () {
