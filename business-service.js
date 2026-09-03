@@ -18,12 +18,13 @@
 
   document.querySelectorAll("[data-bs-cta]").forEach(function (el) {
     el.addEventListener("click", function () {
-      if (window.newonTrack && window.newonAnalyticsEvents) {
-        window.newonTrack(window.newonAnalyticsEvents.BUSINESS_SERVICE_CTA_CLICK || "business_service_cta_click", {
-          service: analyticsId,
-          cta: el.getAttribute("data-bs-cta") || "primary",
-        });
-      }
+      if (!window.newonTrack || !window.newonAnalyticsEvents) return;
+      // data-analytics is handled by analytics.js (includes store_buy_click metadata).
+      if (el.getAttribute("data-analytics")) return;
+      window.newonTrack(window.newonAnalyticsEvents.BUSINESS_SERVICE_CTA_CLICK || "business_service_cta_click", {
+        service: analyticsId,
+        cta: el.getAttribute("data-bs-cta") || "primary",
+      });
     });
   });
 

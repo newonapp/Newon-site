@@ -2490,6 +2490,13 @@
         data-business-selected="Selected service"
         data-business-type-hint="Business service"
         data-business-select-ph="Select a service"
+        data-store-title="Store purchase inquiry"
+        data-store-lead="Share your contact details for this product. We will confirm by email. Instant download is not available."
+        data-store-ph="Add any payment or delivery questions. The product name is included automatically."
+        data-store-selected="Selected product"
+        data-store-type-hint="お問い合わせ種類"
+        data-store-select-ph="Select an inquiry type"
+        data-store-subject="Newon Store purchase inquiry"
         data-default-ph="プロジェクトやコラボレーションについて簡単に教えてください。"
       >
         <div class="bz-inner bz-form-wrap">
@@ -2559,6 +2566,7 @@
                 <option value="Studio / Visual Content" data-studio-option="1">Studio / Visual Content</option>
                 <option value="Studio / Character Lab" data-studio-option="1">Studio / Character Lab</option>
                 <option value="Studio / Experimental IP" data-studio-option="1">Studio / Experimental IP</option>
+                <option value="Store / Digital Product" data-store-option="1">Store / Digital Product</option>
                 <option value="Maintenance" data-biz-option="1">Maintenance</option>
                 <option value="partnership" data-biz-option="1">パートナーシップ</option>
                 <option value="product-service-collaboration" data-biz-option="1">アプリ連携</option>
@@ -2786,6 +2794,9 @@
         var qArea = (params.get("area") || "").trim();
         var qSource = (params.get("source") || "").trim();
         var qSlug = decodeParamSafe(params.get("slug") || "");
+        var qProduct = decodeParamSafe(params.get("product") || "");
+        var qPrice = decodeParamSafe(params.get("price") || "");
+        var STORE_TYPE = "Store / Digital Product";
         var messageHints = {
           ko: {
             "AUTOMATION / Workflow Automation":
@@ -2845,7 +2856,14 @@
           if (isBlockedStudioValue(mapped)) return "";
           return mapped;
         }
+        function isStoreInflow() {
+          if (/^store$/i.test(qCategory)) return true;
+          if (/^store[-_/]/i.test(qSource)) return true;
+          if (qProduct && qSlug) return true;
+          return false;
+        }
         function isStudioInflow(mapped) {
+          if (isStoreInflow()) return false;
           if (/^studio$/i.test(qCategory)) return true;
           if (/\/studio\//i.test(qSource)) return true;
           if (mapped && /^Studio\s*\//.test(mapped)) return true;
@@ -2853,6 +2871,7 @@
           return false;
         }
         function isBusinessInflow(mapped) {
+          if (isStoreInflow()) return false;
           if (isStudioInflow(mapped)) return false;
           if (/^business$/i.test(qCategory)) return true;
           if (/\/business\//i.test(qSource)) return true;
@@ -2913,6 +2932,63 @@
             areaHidden.value = areaVal;
           }
         }
+        function applyStoreMode() {
+          if (!inquirySection || !isStoreInflow()) return;
+          document.documentElement.setAttribute("data-inquiry-context", "store");
+          if (formTitleEl && inquirySection.getAttribute("data-store-title")) {
+            formTitleEl.textContent = inquirySection.getAttribute("data-store-title");
+          }
+          if (formLeadEl && inquirySection.getAttribute("data-store-lead")) {
+            formLeadEl.textContent = inquirySection.getAttribute("data-store-lead");
+          }
+          var formEl = document.getElementById("bz-inquiry-form");
+          if (formEl && inquirySection.getAttribute("data-store-subject")) {
+            formEl.setAttribute("data-subject", inquirySection.getAttribute("data-store-subject"));
+          }
+          if (typeEl) {
+            Array.prototype.forEach.call(typeEl.options, function (opt) {
+              if (!opt.value) {
+                var sph = inquirySection.getAttribute("data-store-select-ph");
+                if (sph) opt.textContent = sph;
+                opt.hidden = false;
+                opt.disabled = false;
+                return;
+              }
+              if (opt.getAttribute("data-store-option") === "1" || opt.value === "Other") {
+                opt.hidden = false;
+                opt.disabled = false;
+              } else {
+                opt.hidden = true;
+                opt.disabled = true;
+              }
+            });
+            var typeLabel = document.querySelector('label[for="bz-type"]');
+            var hint = inquirySection.getAttribute("data-store-type-hint");
+            if (typeLabel && hint) {
+              typeLabel.innerHTML = hint + '<span class="bz-req" aria-hidden="true">*</span>';
+            }
+            if (optionExists(STORE_TYPE)) {
+              typeEl.value = STORE_TYPE;
+            }
+          }
+          if (msgEl) {
+            var productLabel = qProduct || qSlug || "Store product";
+            var priceLabel = qPrice ? (String(qPrice).indexOf("₩") === 0 ? qPrice : "₩" + Number(qPrice).toLocaleString("en-US")) : "";
+            var prefill =
+              pageLang === "ko"
+                ? "구매 문의\n상품: " + productLabel + (priceLabel ? "\n가격: " + priceLabel : "") + (qSlug ? "\nslug: " + qSlug : "")
+                : "Purchase inquiry\nProduct: " + productLabel + (priceLabel ? "\nPrice: " + priceLabel : "") + (qSlug ? "\nslug: " + qSlug : "");
+            if (!msgEl.value) msgEl.value = prefill;
+            if (inquirySection.getAttribute("data-store-ph")) {
+              msgEl.placeholder = inquirySection.getAttribute("data-store-ph");
+            }
+          }
+          if (selectedEl) {
+            var selLabel = inquirySection.getAttribute("data-store-selected") || "Selected product";
+            selectedEl.textContent = selLabel + ": " + (qProduct || qSlug || STORE_TYPE.replace(/^Store\s*\/\s*/, ""));
+            selectedEl.hidden = false;
+          }
+        }
         function applyStudioMode(mapped) {
           if (!inquirySection || !isStudioInflow(mapped)) return;
           document.documentElement.setAttribute("data-inquiry-context", "studio");
@@ -2934,7 +3010,7 @@
               if (opt.getAttribute("data-studio-option") === "1" || opt.value === "Other") {
                 opt.hidden = false;
                 opt.disabled = false;
-              } else if (opt.getAttribute("data-biz-option") === "1") {
+              } else if (opt.getAttribute("data-biz-option") === "1" || opt.getAttribute("data-store-option") === "1") {
                 opt.hidden = true;
                 opt.disabled = true;
               }
@@ -2975,7 +3051,7 @@
                 opt.disabled = false;
                 return;
               }
-              if (opt.getAttribute("data-studio-option") === "1") {
+              if (opt.getAttribute("data-studio-option") === "1" || opt.getAttribute("data-store-option") === "1") {
                 opt.hidden = true;
                 opt.disabled = true;
                 return;
@@ -3006,6 +3082,12 @@
         function applyMessageHint() {
           if (!msgEl || !typeEl) return;
           var ctx = document.documentElement.getAttribute("data-inquiry-context");
+          if (ctx === "store") {
+            if (inquirySection && inquirySection.getAttribute("data-store-ph")) {
+              msgEl.placeholder = inquirySection.getAttribute("data-store-ph");
+            }
+            return;
+          }
           if (ctx === "studio") {
             if (inquirySection && inquirySection.getAttribute("data-studio-ph")) {
               msgEl.placeholder = inquirySection.getAttribute("data-studio-ph");
@@ -3031,12 +3113,16 @@
         }
         if (typeEl) {
           var mapped = resolveInquiryType();
+          if (isStoreInflow()) {
+            mapped = STORE_TYPE;
+          }
           if (mapped && !optionExists(mapped)) {
             var rawExists = Array.prototype.some.call(typeEl.options, function (opt) {
               return opt.value === mapped;
             });
             if (!rawExists) mapped = "";
           }
+          applyStoreMode();
           applyStudioMode(mapped);
           applyBusinessMode(mapped);
           if (mapped && optionExists(mapped)) {
@@ -3047,7 +3133,7 @@
               });
             }
             applyMessageHint();
-          } else if (isStudioInflow("") || isBusinessInflow("")) {
+          } else if (isStoreInflow() || isStudioInflow("") || isBusinessInflow("")) {
             typeEl.value = "";
             Array.prototype.forEach.call(typeEl.options, function (opt) {
               opt.selected = !opt.value;
@@ -3057,6 +3143,16 @@
             applyMessageHint();
             syncServiceHidden();
             var ctx = document.documentElement.getAttribute("data-inquiry-context");
+            if (selectedEl && ctx === "store") {
+              var sv = typeEl.value || "";
+              if (/^Store\s*\//.test(sv) || qProduct) {
+                var storeLabel = inquirySection.getAttribute("data-store-selected") || "Selected product";
+                selectedEl.textContent = storeLabel + ": " + (qProduct || sv.replace(/^Store\s*\/\s*/, ""));
+                selectedEl.hidden = false;
+              } else {
+                selectedEl.hidden = true;
+              }
+            }
             if (selectedEl && ctx === "studio") {
               var v = typeEl.value || "";
               if (/^Studio\s*\//.test(v)) {
@@ -3084,7 +3180,15 @@
         // values must not persist. service is owned by syncServiceHidden() from the select.
         var form = document.getElementById("bz-inquiry-form");
         if (form) {
-          [["category", qCategory], ["area", qArea], ["source", qSource]].forEach(function (pair) {
+          var pairs = [
+            ["category", qCategory || (isStoreInflow() ? "Store" : "")],
+            ["area", qArea],
+            ["source", qSource],
+          ];
+          if (isStoreInflow()) {
+            pairs.push(["product", qProduct], ["slug", qSlug], ["price", qPrice]);
+          }
+          pairs.forEach(function (pair) {
             if (!pair[1]) return;
             var existing = form.querySelector('input[name="' + pair[0] + '"]');
             if (existing) {
@@ -3098,6 +3202,36 @@
             form.appendChild(input);
           });
           syncServiceHidden();
+          if (isStoreInflow()) {
+            if (qSlug) {
+              var slugKeep = form.querySelector('input[name="slug"]');
+              if (!slugKeep) {
+                slugKeep = document.createElement("input");
+                slugKeep.type = "hidden";
+                slugKeep.name = "slug";
+                form.appendChild(slugKeep);
+              }
+              slugKeep.value = qSlug;
+            }
+            if (qProduct) {
+              var productKeep = form.querySelector('input[name="product"]');
+              if (!productKeep) {
+                productKeep = document.createElement("input");
+                productKeep.type = "hidden";
+                productKeep.name = "product";
+                form.appendChild(productKeep);
+              }
+              productKeep.value = qProduct;
+              var serviceKeep = form.querySelector('input[name="service"]');
+              if (!serviceKeep) {
+                serviceKeep = document.createElement("input");
+                serviceKeep.type = "hidden";
+                serviceKeep.name = "service";
+                form.appendChild(serviceKeep);
+              }
+              serviceKeep.value = qProduct;
+            }
+          }
         }
         document.querySelectorAll("[data-inquiry-type]").forEach(function (link) {
           link.addEventListener("click", function () {

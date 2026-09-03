@@ -3625,6 +3625,60 @@
     <priority>0.65</priority>
   </url>
   <url>
+    <loc>https://www.newon.app/ko/resources/store/newon-project-starter-kit/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/en/resources/store/newon-project-starter-kit/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/ja/resources/store/newon-project-starter-kit/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/es/resources/store/newon-project-starter-kit/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/pt-br/resources/store/newon-project-starter-kit/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/fr/resources/store/newon-project-starter-kit/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/de/resources/store/newon-project-starter-kit/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/hi/resources/store/newon-project-starter-kit/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.newon.app/id/resources/store/newon-project-starter-kit/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://www.newon.app/ko/resources/store/app-launch-kit/</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>

@@ -263,7 +263,36 @@ function visualRoadmap(lang) {
   });
 }
 
+/** NEWON Project Starter Kit — document kit panel */
+function visualProjectStarter(lang) {
+  const ko = lang === "ko";
+  return panelShell({
+    mod: "starter",
+    live: "DOC KIT",
+    meta: "STARTER",
+    lang,
+    body: `
+      <div class="bs-sv-sx-launch">
+        <div class="bs-sv-sx-launch__rail">
+          <span class="is-on">REQ</span><i></i><span>QUOTE</span><i></i><span>SCOPE</span><i></i><span>CONTRACT</span><i></i><span>DELIVER</span>
+        </div>
+        <div class="bs-sv-sx-launch__list">
+          <article class="is-on"><span>01</span><strong>Requirements</strong><em>${ko ? "요구사항 질문지" : "Questionnaire"}</em></article>
+          <article class="is-on"><span>02</span><strong>Quotation</strong><em>${ko ? "견적서" : "Quote sheet"}</em></article>
+          <article><span>03</span><strong>Scope of Work</strong><em>${ko ? "범위서" : "In / out"}</em></article>
+          <article><span>04</span><strong>Contract Draft</strong><em>${ko ? "계약 초안" : "Reference draft"}</em></article>
+          <article><span>05</span><strong>Delivery Checklist</strong><em>${ko ? "납품 체크" : "Handoff list"}</em></article>
+        </div>
+        <div class="bs-sv-sx-launch__day">
+          <span>FORMAT</span>
+          <strong>DOCX · PDF</strong>
+        </div>
+      </div>`,
+  });
+}
+
 const SLUG_VISUAL = {
+  "newon-project-starter-kit": visualProjectStarter,
   "app-launch-kit": visualLaunch,
   "mvp-planning-kit": visualMvp,
   "cursor-prompt-pack": visualPromptPack,
@@ -276,6 +305,7 @@ const SLUG_VISUAL = {
 };
 
 const SLUG_PREVIEW = {
+  "newon-project-starter-kit": "project-starter",
   "app-launch-kit": "launch-checklist",
   "mvp-planning-kit": "mvp-flow",
   "cursor-prompt-pack": "prompt-workflow",
@@ -443,6 +473,19 @@ function mvpCanvasLarge(lang) {
 }
 
 const LARGE_VISUALS = {
+  "project-starter": (lang) =>
+    largeShell({
+      mod: "starter-kit",
+      lang,
+      body: checklistGrid([
+        ["Requirements", lang === "ko" ? "요구사항 질문지" : "Questionnaire"],
+        ["Quotation", lang === "ko" ? "견적서" : "Quote sheet"],
+        ["Scope of Work", lang === "ko" ? "범위서" : "Scope sheet"],
+        ["Contract Draft", lang === "ko" ? "계약 초안" : "Reference draft"],
+        ["Delivery Checklist", lang === "ko" ? "납품 체크" : "Handoff list"],
+        ["Formats", "DOCX · PDF"],
+      ]),
+    }),
   "launch-checklist": (lang) => launchCommandLarge(lang),
   "mvp-flow": (lang) => mvpCanvasLarge(lang),
   "prompt-workflow": (lang) => promptWorkspaceLarge(lang),

@@ -117,11 +117,7 @@ function priceLabel(product, copy) {
 }
 
 function shelfPrice(product, copy) {
-  if (product.price === "FREE") return "FREE";
-  if (product.price === "COMING SOON" || product.price == null) {
-    return copy.comingSoon || "COMING SOON";
-  }
-  return copy.pricePlaceholder || "—";
+  return priceLabel(product, copy);
 }
 
 /* ——— Shared chrome ——— */
@@ -311,8 +307,10 @@ function storeHubBody(copies, lang) {
       const cat = normalizeStoreCategory(p.category || "");
       const collection = p.collection ? String(p.collection).toLowerCase() : "";
       const cats = [cat, collection, p.free ? "free" : ""].filter(Boolean).join(" ");
-      return `<a class="rs-product" href="${p.slug}/" data-category="${escapeHtml(cats)}" data-collection="${escapeHtml(collection)}" data-analytics="store_product_view" data-item-id="${escapeHtml(p.slug)}" data-category-prop="${escapeHtml(cat)}" data-rs-reveal>
-        <span class="rs-product__cat">${escapeHtml((cat || "").toUpperCase())}${collection ? ` · ${escapeHtml(collection.toUpperCase())}` : ""}</span>
+      const live = !!(p.buyable && p.status === "live");
+      const statusTag = live ? ` · ${escapeHtml(copy.availableLabel || "AVAILABLE")}` : "";
+      return `<a class="rs-product${live ? " rs-product--live" : ""}" href="${p.slug}/" data-category="${escapeHtml(cats)}" data-collection="${escapeHtml(collection)}" data-analytics="store_product_view" data-item-id="${escapeHtml(p.slug)}" data-category-prop="${escapeHtml(cat)}" data-rs-reveal>
+        <span class="rs-product__cat">${escapeHtml((cat || "").toUpperCase())}${collection ? ` · ${escapeHtml(collection.toUpperCase())}` : ""}${statusTag}</span>
         <span class="rs-product__title">${title}</span>
         <span class="rs-product__desc">${desc}</span>
         <span class="rs-product__price">${price}</span>

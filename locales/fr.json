@@ -3651,7 +3651,14 @@
     "businessPhMessage": "Share the Business service you need, project goals, current stage, and any references.",
     "businessSelectedLabel": "Selected service",
     "businessTypeHint": "Business service",
-    "businessSelectPlaceholder": "Select a service"
+    "businessSelectPlaceholder": "Select a service",
+    "storeFormTitle": "Store purchase inquiry",
+    "storeFormLead": "Share your contact details for this product. We will confirm by email. Instant download is not available.",
+    "storePhMessage": "Add any payment or delivery questions. The product name is included automatically.",
+    "storeSelectedLabel": "Selected product",
+    "storeTypeHint": "Type de demande",
+    "storeSelectPlaceholder": "Select an inquiry type",
+    "storeMailSubject": "Newon Store purchase inquiry"
   },
   "businessPages": {
     "common": {

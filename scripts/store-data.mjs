@@ -13,6 +13,20 @@ export const STORE_CATEGORIES = [
 
 export const STORE_PRODUCTS = [
   {
+    slug: "newon-project-starter-kit",
+    category: "business",
+    collection: "publishing",
+    status: "live",
+    buyable: true,
+    featured: true,
+    nameKey: "studio.storeStarterName",
+    descKey: "studio.storeStarterDesc",
+    priceKo: "₩19,000",
+    priceEn: "₩19,000",
+    priceAmount: 19000,
+    currency: "KRW",
+  },
+  {
     slug: "app-launch-kit",
     category: "templates",
     status: "building",

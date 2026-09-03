@@ -187,11 +187,20 @@
     var typeField = form.querySelector("[name='type']") || document.getElementById("bz-type");
     var serviceField = form.querySelector("[name='service']");
     var slugField = form.querySelector("[name='slug']");
+    var productField = form.querySelector("[name='product']");
+    var categoryField = form.querySelector("[name='category']");
+    var isStore =
+      (categoryField && /^store$/i.test(String(categoryField.value || "").trim())) ||
+      (typeField && /^Store\s*\//i.test(String(typeField.value || "").trim())) ||
+      !!(productField && String(productField.value || "").trim());
+    var preservedStoreSlug = isStore && slugField ? String(slugField.value || "").trim() : "";
+    var preservedStoreProduct = isStore && productField ? String(productField.value || "").trim() : "";
     if (typeField) {
       var tv = String(typeField.value || "").trim();
       var next = "";
       if (tv) {
         if (/^Studio\s*\//i.test(tv)) next = tv.replace(/^Studio\s*\/\s*/i, "");
+        else if (/^Store\s*\//i.test(tv)) next = preservedStoreProduct || tv.replace(/^Store\s*\/\s*/i, "");
         else next = tv.replace(/^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)\s*\/\s*/i, "");
       }
       if (next) {
@@ -202,7 +211,7 @@
           form.appendChild(serviceField);
         }
         serviceField.value = next;
-      } else if (serviceField) {
+      } else if (serviceField && !isStore) {
         serviceField.value = "";
       }
       var opt = typeField.tagName === "SELECT" ? typeField.options[typeField.selectedIndex] : null;
@@ -215,8 +224,27 @@
           form.appendChild(slugField);
         }
         slugField.value = slugVal;
-      } else if (slugField && !slugVal) {
+      } else if (slugField && !slugVal && !isStore) {
         slugField.value = "";
+      }
+      if (isStore && preservedStoreSlug) {
+        if (!slugField) {
+          slugField = document.createElement("input");
+          slugField.type = "hidden";
+          slugField.name = "slug";
+          form.appendChild(slugField);
+        }
+        slugField.value = preservedStoreSlug;
+      }
+      if (isStore && preservedStoreProduct) {
+        if (!productField) {
+          productField = document.createElement("input");
+          productField.type = "hidden";
+          productField.name = "product";
+          form.appendChild(productField);
+        }
+        productField.value = preservedStoreProduct;
+        if (serviceField) serviceField.value = preservedStoreProduct;
       }
       var areaFromOpt = opt && opt.getAttribute("data-area") ? String(opt.getAttribute("data-area")).trim() : "";
       if (areaFromOpt) {

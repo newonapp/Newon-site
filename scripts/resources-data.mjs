@@ -36,10 +36,55 @@ export function normalizeStoreCategory(cat) {
 
 /**
  * @type {Array<object>}
- * buyable:false until payment wired. free:true only when downloadable without charge.
+ * buyable:true + status:"live" = purchase inquiry CTA. buyable:false = waitlist.
+ * free:true only when downloadable without charge.
  * collection: "publishing" | null — surfaces under Store ?cat=publishing
  */
 export const STORE_PRODUCTS = [
+  {
+    id: "newon-project-starter-kit",
+    slug: "newon-project-starter-kit",
+    titleKo: "NEWON Project Starter Kit",
+    titleEn: "NEWON Project Starter Kit",
+    descKo: "프로젝트 시작에 필요한 요구사항·견적·범위·계약 초안·납품 체크리스트 5종 실무 문서 키트.",
+    descEn: "A five-document business kit: requirements, quotation, scope, contract draft, and delivery checklist.",
+    category: "business",
+    collection: "publishing",
+    type: "kit",
+    price: "₩19,000",
+    priceAmount: 19000,
+    currency: "KRW",
+    status: "live",
+    buyable: true,
+    free: false,
+    featured: true,
+    version: "1.0",
+    updated: "2026-09",
+    formats: ["DOCX", "PDF"],
+    includesKo: [
+      "프로젝트 요구사항 질문지",
+      "프로젝트 견적서",
+      "프로젝트 범위서",
+      "프로젝트 계약서 초안",
+      "납품 체크리스트",
+    ],
+    includesEn: [
+      "Project Requirements",
+      "Quotation",
+      "Scope of Work",
+      "Contract Draft",
+      "Delivery Checklist",
+    ],
+    audienceKo: "프리랜서, 1인 개발자·디자이너, 소규모 스튜디오, 초기 창업자, 외주 프로젝트를 시작하는 사람",
+    audienceEn: "Freelancers, solo builders, designers, small studios, early founders, and anyone starting client project work",
+    deliveryKo: "구매 문의 확인 후 이메일로 DOCX·PDF 파일을 전달합니다. 즉시 다운로드는 제공하지 않습니다.",
+    deliveryEn: "After your purchase inquiry is confirmed, DOCX and PDF files are delivered by email. Instant download is not available.",
+    licenseKo:
+      "구매자는 본인 또는 본인이 운영하는 사업·회사 프로젝트 업무에 문서를 수정하여 사용할 수 있습니다. 원본 파일의 재판매·재배포·공유, 상품 자체를 디지털 상품으로 판매하는 행위는 금지됩니다. 계약서 초안은 실무 참고용이며, 구체적인 거래와 법률관계에 따라 전문가 검토가 필요할 수 있습니다.",
+    licenseEn:
+      "Buyers may edit and use the documents for their own work or for projects run by their business. Reselling, redistributing, or sharing the original files — or selling the kit as your own digital product — is not allowed. The contract draft is a practical reference only; specific deals may require professional legal review.",
+    locale: "all",
+  },
   {
     id: "app-launch-kit",
     slug: "app-launch-kit",

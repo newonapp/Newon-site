@@ -7,6 +7,7 @@ import { getStoreDetail, getStoreDetailUi } from "./store-detail-copy.mjs";
 import { storeHeroVisual, storeLargePreview } from "./store-bs-visuals.mjs";
 
 const STORE_NAV_LABELS = {
+  "newon-project-starter-kit": "STARTER",
   "app-launch-kit": "LAUNCH",
   "mvp-planning-kit": "MVP",
   "cursor-prompt-pack": "PROMPTS",
@@ -39,8 +40,24 @@ function productTitle(product, lang) {
   return lang === "ko" ? product.titleKo || product.titleEn : product.titleEn || product.titleKo;
 }
 
+function isBuyable(product) {
+  return !!(product && product.buyable && product.status === "live");
+}
+
 function statusLabel(product, ui) {
+  if (isBuyable(product) || product.status === "live") return ui.availableBadge || ui.statusAvailable || "AVAILABLE";
   return product.status === "concept" ? ui.inDevBadge : ui.comingSoonBadge;
+}
+
+function purchaseInquiryHref(lang, product) {
+  const params = new URLSearchParams({
+    category: "Store",
+    product: product.titleEn || product.titleKo || product.slug,
+    slug: product.slug,
+    price: String(product.priceAmount != null ? product.priceAmount : ""),
+    source: `store-${product.slug}`,
+  });
+  return `/${lang}/business/inquiry/?${params.toString()}#inquiry`;
 }
 
 function proseLead(text) {
@@ -144,6 +161,14 @@ function heroSection(product, detail, lang, ui) {
     : "NEWON STORE";
   const headline = pick(detail, lang, "heroTitleKo", "heroTitleEn") || pick(detail, lang, "subtitleKo", "subtitleEn") || detail.title;
   const lead = pick(detail, lang, "heroLeadKo", "heroLeadEn") || pick(detail, lang, "descriptionKo", "descriptionEn");
+  const buyable = isBuyable(product);
+  const primaryHref = buyable ? purchaseInquiryHref(lang, product) : "#bs-store-status";
+  const primaryLabel = buyable ? ui.heroPurchaseCta || "Purchase inquiry →" : ui.heroNotifyCta;
+  const primaryAttrs = buyable
+    ? ` data-bs-cta="purchase" data-analytics="store_buy_click" data-item-id="${escapeHtml(product.slug)}" data-product-name="${escapeHtml(
+        productTitle(product, "en")
+      )}" data-price="${escapeHtml(String(product.priceAmount || ""))}" data-currency="${escapeHtml(product.currency || "KRW")}"`
+    : ` data-bs-cta="hero_primary"`;
 
   return `<section class="bs-hero" data-bs-reveal aria-labelledby="bs-hero-title">
   <div class="bs-inner bs-hero__grid">
@@ -152,9 +177,7 @@ function heroSection(product, detail, lang, ui) {
       <h1 class="bs-hero__title" id="bs-hero-title">${brHeadline(headline)}</h1>
       ${proseLead(lead)}
       <div class="bs-hero__actions">
-        <a class="bs-btn bs-btn--primary" href="#bs-store-status" data-bs-cta="hero_primary">${escapeHtml(
-          ui.heroNotifyCta
-        )}</a>
+        <a class="bs-btn bs-btn--primary" href="${escapeHtml(primaryHref)}"${primaryAttrs}>${escapeHtml(primaryLabel)}</a>
         <a class="bs-btn bs-btn--ghost" href="#process" data-bs-cta="hero_secondary">${escapeHtml(
           ui.heroProcessCta || ui.heroIncludesCta
         )}</a>
@@ -178,10 +201,11 @@ function metaRows(product, detail, lang, ui) {
     { k: "PRODUCT", v: detail.title },
     { k: "CATEGORY", v: String(product.category || "").toUpperCase() || "—" },
     { k: "STATUS", v: statusLabel(product, ui) },
+    { k: (ui.priceLabel || "PRICE").toUpperCase(), v: isBuyable(product) ? product.price || "" : "" },
     { k: (ui.includesLabel || "MODULES").toUpperCase(), v: includes.length ? String(includes.length) : "—" },
     { k: (ui.formatLabel || "FORMAT").toUpperCase(), v: format.slice(0, 3).join(" · ") || "—" },
     { k: (ui.forLabel || "FOR").toUpperCase(), v: whoPreview || "—" },
-  ];
+  ].filter((m) => m.v);
   return rows
     .map(
       (m) =>
@@ -275,15 +299,16 @@ function howToSection(detail, lang, ui) {
   if (!steps.length) return "";
   const title = pick(detail, lang, "howToTitleKo", "howToTitleEn") || ui.howToTitle;
   const list = `<ol class="bs-process bs-process--steps" data-count="${steps.length}">${steps
-    .map(
-      (s, i) =>
-        `<li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">${escapeHtml(
-          s.n || pad2(i + 1)
-        )}</span><div class="bs-process__copy"><h3>${escapeHtml(s.title)}</h3><p>${escapeHtml(s.body).replace(
-          /\n/g,
-          "<br />"
-        )}</p></div></li>`
-    )
+    .map((s, i) => {
+      const stepTitle = s.title || s.t || "";
+      const stepBody = s.body || s.d || "";
+      return `<li class="bs-process__item"><span class="bs-process__n" aria-hidden="true">${escapeHtml(
+        s.n || pad2(i + 1)
+      )}</span><div class="bs-process__copy"><h3>${escapeHtml(stepTitle)}</h3><p>${escapeHtml(stepBody).replace(
+        /\n/g,
+        "<br />"
+      )}</p></div></li>`;
+    })
     .join("")}</ol>`;
   return `<section class="bs-section" data-bs-part="process" data-bs-reveal id="process" aria-labelledby="bs-ss-how-title"><div class="bs-inner">
       <p class="bs-eyebrow">${escapeHtml(ui.howToEyebrow)}</p>
@@ -295,12 +320,14 @@ function howToSection(detail, lang, ui) {
 function formatSection(detail, lang, ui) {
   const format = pickArr(detail, lang, "formatKo", "formatEn");
   if (!format.length) return "";
+  const note = pick(detail, lang, "formatNoteKo", "formatNoteEn");
   return `<section class="bs-section bs-section--surface" data-bs-part="format" data-bs-reveal aria-labelledby="bs-ss-format-title"><div class="bs-inner">
       <div class="bs-dr-split">
         <div class="bs-dr-split__copy">
           <p class="bs-eyebrow">${escapeHtml(ui.formatEyebrow)}</p>
           <h2 class="bs-title" id="bs-ss-format-title">${escapeHtml(ui.formatTitle)}</h2>
           ${tagChips(format)}
+          ${note ? `<p class="bs-lead" style="margin-top:1rem">${escapeHtml(note)}</p>` : ""}
         </div>
         <aside class="bs-dr-meta" aria-label="Format">
           <div class="bs-dr-meta__row"><p class="bs-dr-meta__k">FORMAT</p><p class="bs-dr-meta__v">${escapeHtml(
@@ -311,6 +338,33 @@ function formatSection(detail, lang, ui) {
           )}</p></div>
         </aside>
       </div>
+    </div></section>`;
+}
+
+function licenseSection(product, detail, lang, ui) {
+  const text =
+    pick(detail, lang, "licenseKo", "licenseEn") ||
+    (lang === "ko" ? product.licenseKo : product.licenseEn) ||
+    "";
+  if (!text) return "";
+  return `<section class="bs-section" data-bs-part="license" data-bs-reveal aria-labelledby="bs-ss-license-title"><div class="bs-inner">
+      <p class="bs-eyebrow">${escapeHtml(ui.licenseEyebrow || "LICENSE")}</p>
+      <h2 class="bs-title" id="bs-ss-license-title">${escapeHtml(ui.licenseTitle || "License")}</h2>
+      <p class="bs-lead">${escapeHtml(text).replace(/\n/g, "<br />")}</p>
+    </div></section>`;
+}
+
+function deliverySection(product, detail, lang, ui) {
+  if (!isBuyable(product)) return "";
+  const text =
+    pick(detail, lang, "deliveryKo", "deliveryEn") ||
+    (lang === "ko" ? product.deliveryKo : product.deliveryEn) ||
+    "";
+  if (!text) return "";
+  return `<section class="bs-section bs-section--surface" data-bs-part="delivery" data-bs-reveal aria-labelledby="bs-ss-delivery-title"><div class="bs-inner">
+      <p class="bs-eyebrow">${escapeHtml(ui.deliveryEyebrow || "DELIVERY")}</p>
+      <h2 class="bs-title" id="bs-ss-delivery-title">${escapeHtml(ui.deliveryTitle || "Delivery")}</h2>
+      <p class="bs-lead">${escapeHtml(text).replace(/\n/g, "<br />")}</p>
     </div></section>`;
 }
 
@@ -335,6 +389,33 @@ function noticesSection(detail, lang, ui) {
 }
 
 function finalSection(product, detail, lang, ui) {
+  if (isBuyable(product)) {
+    const ctaTitle =
+      pick(detail, lang, "finalTitleKo", "finalTitleEn") || ui.purchaseFinalTitle || ui.finalTitle;
+    const lead =
+      pick(detail, lang, "finalLeadKo", "finalLeadEn") ||
+      ui.purchaseFinalLead ||
+      (lang === "ko" ? product.deliveryKo : product.deliveryEn) ||
+      "";
+    const href = purchaseInquiryHref(lang, product);
+    const price = product.price || "";
+    const ctaLabel = ui.heroPurchaseCta || (lang === "ko" ? "구매 문의 →" : "Purchase inquiry →");
+    return `<section class="bs-section bs-section--dark bs-final" id="bs-store-status" data-bs-reveal aria-labelledby="bs-final-title"><div class="bs-inner">
+    <p class="bs-eyebrow">${escapeHtml(ui.purchaseEyebrow || "PURCHASE")}</p>
+    <h2 class="bs-final__title" id="bs-final-title">${brHeadline(ctaTitle)}</h2>
+    ${lead ? `<p class="bs-lead">${escapeHtml(lead)}</p>` : ""}
+    ${price ? `<p class="bs-lead">${escapeHtml(price)}</p>` : ""}
+    <div class="bs-hero__actions" style="margin-top:1.25rem">
+      <a class="bs-btn bs-btn--primary" href="${escapeHtml(href)}" data-bs-cta="purchase" data-analytics="store_buy_click" data-item-id="${escapeHtml(
+        product.slug
+      )}" data-product-name="${escapeHtml(productTitle(product, "en"))}" data-price="${escapeHtml(
+        String(product.priceAmount || "")
+      )}" data-currency="${escapeHtml(product.currency || "KRW")}">${escapeHtml(ctaLabel)}</a>
+      <a class="bs-btn bs-btn--ghost" href="../">${escapeHtml(ui.ctaSecondary)}</a>
+    </div>
+  </div></section>`;
+  }
+
   const statusText = product.status === "concept" ? ui.statusInDevelopment : ui.statusComingSoon;
   const placeholder = "your@email.com";
   const submit = lang === "ko" ? "출시 알림 받기 →" : "Notify me →";
@@ -417,6 +498,8 @@ ${outcomesSection(detail, lang, ui)}
 ${howToSection(detail, lang, ui)}
 ${previewSection(product, detail, lang, ui)}
 ${formatSection(detail, lang, ui)}
+${licenseSection(product, detail, lang, ui)}
+${deliverySection(product, detail, lang, ui)}
 ${faqSection(detail, lang, ui)}
 ${noticesSection(detail, lang, ui)}
 ${finalSection(product, detail, lang, ui)}

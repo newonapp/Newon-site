@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T09:04:05.664Z",
+  "generatedAt": "2026-09-03T09:38:11.048Z",
   "note": "Business leads, waitlist, and newsletter submissions are collected via FormSubmit to newon@newon.app. Activate the inbox at formsubmit.co if not done yet.",
   "products": [
     {
@@ -354,6 +354,20 @@
     }
   ],
   "store": [
+    {
+      "slug": "newon-project-starter-kit",
+      "category": "business",
+      "collection": "publishing",
+      "status": "live",
+      "buyable": true,
+      "featured": true,
+      "nameKey": "studio.storeStarterName",
+      "descKey": "studio.storeStarterDesc",
+      "priceKo": "₩19,000",
+      "priceEn": "₩19,000",
+      "priceAmount": 19000,
+      "currency": "KRW"
+    },
     {
       "slug": "app-launch-kit",
       "category": "templates",

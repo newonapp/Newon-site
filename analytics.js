@@ -73,6 +73,10 @@
     if (el.dataset.analyticsTool) props.toolId = el.dataset.analyticsTool;
     if (el.dataset.analyticsStore) props.storeId = el.dataset.analyticsStore;
     if (el.dataset.itemId) props.itemId = el.dataset.itemId;
+    if (el.dataset.itemId) props.product_slug = el.dataset.itemId;
+    if (el.dataset.productName) props.product_name = el.dataset.productName;
+    if (el.dataset.price) props.price = el.dataset.price;
+    if (el.dataset.currency) props.currency = el.dataset.currency;
     if (el.dataset.category) props.category = el.dataset.category;
     if (el.dataset.categoryProp) props.category = el.dataset.categoryProp;
     if (el.dataset.source) props.source = el.dataset.source;
