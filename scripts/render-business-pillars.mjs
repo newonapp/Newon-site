@@ -6,6 +6,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml } from "./hub-utils.mjs";
+import { clampSeoDescription } from "./seo-meta.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { PILLAR_SLUGS, getPillarCopy } from "./business-pillar-copy.mjs";
 import { businessInquiryHref, businessPillarInquiryHref } from "./business-pricing.mjs";
@@ -600,7 +601,7 @@ export function renderBusinessPillars() {
       html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflangBlock(slug));
       html = html.replace(/\{\{JSON_LD\}\}/g, jsonLd(slug, copy, dir));
       html = html.replace(/\{\{SEO_TITLE\}\}/g, escapeHtml(copy.seoTitle || ""));
-      html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(copy.metaDescription || ""));
+      html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(clampSeoDescription(copy.metaDescription || "")));
       html = html.replace(/\{\{PILLAR_SLUG\}\}/g, slug);
       html = html.replace(/\{\{PAGE_BODY\}\}/g, buildBody(slug, copy, lang));
       html = injectSiteChrome(html, flat, flatEn, { activeNav: "business", base: "../../" });

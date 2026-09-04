@@ -8,6 +8,7 @@ import { injectSiteChrome } from "./inject-chrome.mjs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { buildAboutPageBody, getAboutSeo } from "./about-page-body.mjs";
+import { clampSeoDescription } from "./seo-meta.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_ORIGIN = "https://www.newon.app";
@@ -157,9 +158,9 @@ for (const { dir, file, htmlLang } of LANGS) {
   pt = pt.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangBlockLegal("about"));
   pt = pt.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/about/`);
   pt = pt.replace(/\{\{SEO_TITLE\}\}/g, escapeHtml(seo.seoTitle));
-  pt = pt.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(seo.metaDescription));
+  pt = pt.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(clampSeoDescription(seo.metaDescription)));
   pt = pt.replace(/\{\{JS_SEO_TITLE\}\}/g, JSON.stringify(seo.seoTitle));
-  pt = pt.replace(/\{\{JS_META_DESCRIPTION\}\}/g, JSON.stringify(seo.metaDescription));
+  pt = pt.replace(/\{\{JS_META_DESCRIPTION\}\}/g, JSON.stringify(clampSeoDescription(seo.metaDescription)));
   pt = pt.replace(/\{\{ABOUT_BODY\}\}/g, body);
   pt = applyTemplate(pt, flat, flatEn);
   if (seo.metaKeywords) {

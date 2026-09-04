@@ -154,7 +154,7 @@ const STUDIO_KO = {
   },
   studio: {
     searchOpen: "검색",
-    productsSeoTitle: "Products — Newon",
+    productsSeoTitle: "Newon Products | 앱·AI·웹 제품",
     productsMetaDescription: "Newon의 앱, AI, SaaS, 게임, 도구를 한곳에서 둘러보세요.",
     productsHeroLabel: "PRODUCTS",
     productsHeroTitle: "Newon의 모든 디지털 제품",
@@ -582,8 +582,8 @@ const STUDIO_EN = {
 
 // EN studio strings — translate key UI
 Object.assign(STUDIO_EN.studio, {
-  productsSeoTitle: "Products — Newon",
-  productsMetaDescription: "Browse Newon apps, AI, SaaS, games, and tools.",
+  productsSeoTitle: "Newon Products | Apps, AI & Web",
+  productsMetaDescription: "Explore Newon apps, AI, SaaS, games, and tools in one place.",
   productsHeroTitle: "All Newon digital products",
   aiHeroTitle: "AI as products you can\nactually use.",
   saasHeroTitle: "Web services for\nsmall, clear problems.",

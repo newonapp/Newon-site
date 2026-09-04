@@ -41,7 +41,7 @@ const EN = {
   menuOpen: "Open menu",
   seoTitle: "Nawon Kyung — CEO & App Developer | Newon Portfolio",
   seoDescription:
-    "Product planning, UX/UI, development, launch, and operations — Nawon Kyung's portfolio of digital products built at Newon.",
+    "Portfolio of product planning, design, build, and launch work at Newon.",
   jsonLdName: "Nawon Kyung portfolio",
   heroEyebrow: "PORTFOLIO",
   heroCrumbLeft: "Company",
@@ -360,7 +360,7 @@ const COPY = {
     menuOpen: "메뉴 열기",
     seoTitle: "경나원 — CEO & App Developer | Newon Portfolio",
     seoDescription:
-      "제품 기획, UX/UI, 개발, 출시, 운영까지 — Newon에서 만든 디지털 제품 제작 경험을 보여주는 경나원(Nawon Kyung)의 포트폴리오입니다.",
+      "Newon에서 만든 제품 기획·디자인·개발·출시 경험을 담은 포트폴리오입니다.",
     jsonLdName: "경나원 포트폴리오",
     heroEyebrow: "PORTFOLIO",
     heroCrumbLeft: "회사",

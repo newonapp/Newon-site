@@ -21,6 +21,7 @@ import {
   fontLinksHtml,
   statusBadge,
 } from "./hub-utils.mjs";
+import { clampSeoDescription } from "./seo-meta.mjs";
 import { renderStudioHeader, renderStudioFooter, renderCompanySwitcher } from "./site-chrome.mjs";
 import { allProducts, productsByType, AI_PRODUCTS, SAAS_PRODUCTS, GAMES_PRODUCTS, productCta } from "./products-data.mjs";
 import { renderAppsShowcaseBody } from "./apps-showcase-render.mjs";
@@ -79,7 +80,7 @@ function renderPage(lang, pagePath, opts) {
     HTML_LANG: lang.htmlLang,
     FONT_LINKS: fontLinksHtml(lang.dir),
     TITLE: escapeHtml(opts.title),
-    META_DESCRIPTION: escapeHtml(opts.description),
+    META_DESCRIPTION: escapeHtml(clampSeoDescription(opts.description)),
     CANONICAL: canonical,
     OG_LOCALE: OG_LOCALE[lang.dir] || "en_US",
     // Keep full pagePath so tool details hreflang to /{lang}/tools/{slug}/ (not hub).

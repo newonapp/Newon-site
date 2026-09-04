@@ -53,11 +53,11 @@ const LANG = {
   ko: {
     meta: {
       description:
-        "Newon은 앱, AI, 게임과 웹 제품을 직접 만들고 기업과 함께 새로운 디지털 제품과 비즈니스 가능성을 설계하는 Product & Venture Studio입니다.",
+        "Newon은 앱·AI·웹 제품을 만들고 기업의 디지털 제품을 함께 설계하는 스튜디오입니다.",
       ogDescription:
-        "Newon은 앱, AI, 게임과 웹 제품을 직접 만들고 기업과 함께 새로운 디지털 제품과 비즈니스 가능성을 설계하는 Product & Venture Studio입니다.",
+        "Newon은 앱·AI·웹 제품을 만들고 기업의 디지털 제품을 함께 설계하는 스튜디오입니다.",
       twitterDescription:
-        "Newon — Product & Venture Studio. Apps, AI, games, and web products built and operated by Newon.",
+        "Newon — 앱·AI·웹 제품을 만들고 운영하는 Product Studio입니다.",
       keywords:
         "Newon, 뉴온, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, Product & Venture Studio",
       orgDescription: "Product & Venture Studio — apps, AI, games, and web products",
@@ -65,7 +65,7 @@ const LANG = {
     about: {
       lead: "Newon은 생산성, 금융, 건강, 가족, 여행까지 일상을 돕는 앱 스튜디오입니다.",
       metaDescription:
-        "Newon은 생산성·금융·건강·라이프스타일 앱을 만듭니다. 177개국·13개 언어, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+ 등 12개 앱.",
+        "Newon은 앱·AI·웹을 만들고 기업의 디지털 제품을 함께 설계하는 스튜디오입니다.",
       statApps: "12개 앱 서비스 운영",
     },
     footer: { statLine3: "12개 앱 출시" },
@@ -124,11 +124,11 @@ const LANG = {
   en: {
     meta: {
       description:
-        "Newon builds apps, AI, games, and web products — and partners with companies to design new digital products and business possibilities.",
+        "Newon builds apps, AI, and web products—and partners on digital product work.",
       ogDescription:
-        "Newon builds apps, AI, games, and web products — and partners with companies to design new digital products and business possibilities.",
+        "Newon builds apps, AI, and web products—and partners on digital product work.",
       twitterDescription:
-        "Newon — Product & Venture Studio. Apps, AI, games, and web products built and operated by Newon.",
+        "Newon — Product & Venture Studio building and operating digital products.",
       keywords:
         "Newon, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, Product & Venture Studio",
       orgDescription: "Product & Venture Studio — apps, AI, games, and web products",
@@ -136,7 +136,7 @@ const LANG = {
     about: {
       lead: "Newon builds apps for productivity, finance, health, family, and travel.",
       metaDescription:
-        "Newon builds productivity, finance, health, and lifestyle apps. 177 countries, 13 languages—OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+.",
+        "Newon builds apps, AI, and web products—and partners on new digital work.",
       statApps: "12 app services",
     },
     footer: { statLine3: "12 apps released" },
@@ -203,7 +203,11 @@ const I18N_EXTRA = {
   ja: {
     meta: {
       description:
-        "Newonはアイデアを現実にするアプリスタジオ。習慣・目標・健康・金融・家族・旅行記録まで11のアプリを展開。OX MONTH、GoalUp、CountUp、Savy、SubPing、PiggyUp、Pillmate、BabyLog、PetLog、My World、Newon+。",
+        "Newon builds apps, AI, and web products—and partners on digital product work.",
+      ogDescription:
+        "Newon builds apps, AI, and web products—and partners on digital product work.",
+      twitterDescription:
+        "Newon — Product & Venture Studio building and operating digital products.",
       keywords:
         "Newon, newon.app, アプリスタジオ, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, 旅行記録, 訪問国, 旅行マップ, travel journal, travel tracker, visited countries",
       orgDescription: "アイデアを現実にするアプリスタジオ · 11のライフアプリ",

@@ -25,6 +25,7 @@ import { injectSiteChrome } from "./inject-chrome.mjs";
 import { businessServicesHtml } from "./business-services-html.mjs";
 import { renderGlobalHeader } from "./site-chrome.mjs";
 import { fontLinksHtml } from "./hub-utils.mjs";
+import { clampSeoDescription, isSeoDescriptionKey } from "./seo-meta.mjs";
 import { STORE_PRODUCTS, LABS_EXPERIMENTS } from "./resources-data.mjs";
 import { TOOLS } from "./tools-data.mjs";
 import {
@@ -273,12 +274,16 @@ function applyTemplate(template, flat, flatEn) {
   });
   out = out.replace(/\{\{js:([^}]+)\}\}/g, (_, key) => {
     const val = pick(flat, flatEn, key);
-    return JSON.stringify(val != null ? String(val) : "");
+    let s = val != null ? String(val) : "";
+    if (isSeoDescriptionKey(key)) s = clampSeoDescription(s);
+    return JSON.stringify(s);
   });
   out = out.replace(/\{\{t:([^}]+)\}\}/g, (_, key) => {
     const val = pick(flat, flatEn, key);
     if (val === undefined || val === null) return "";
-    return escapeHtml(String(val));
+    let s = String(val);
+    if (isSeoDescriptionKey(key)) s = clampSeoDescription(s);
+    return escapeHtml(s);
   });
   return out;
 }

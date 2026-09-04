@@ -5,6 +5,8 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
+import { clampSeoDescription, isSeoDescriptionKey } from "./seo-meta.mjs";
+
 export const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 export const SITE_ORIGIN = "https://www.newon.app";
 
@@ -113,12 +115,16 @@ export function applyTemplate(template, flat, flatEn, extras = {}) {
   });
   out = out.replace(/\{\{js:([^}]+)\}\}/g, (_, key) => {
     const val = pick(flat, flatEn, key);
-    return JSON.stringify(val != null ? String(val) : "");
+    let s = val != null ? String(val) : "";
+    if (isSeoDescriptionKey(key)) s = clampSeoDescription(s);
+    return JSON.stringify(s);
   });
   out = out.replace(/\{\{t:([^}]+)\}\}/g, (_, key) => {
     const val = pick(flat, flatEn, key);
     if (val === undefined || val === null) return "";
-    return escapeHtml(String(val));
+    let s = String(val);
+    if (isSeoDescriptionKey(key)) s = clampSeoDescription(s);
+    return escapeHtml(s);
   });
   return out;
 }

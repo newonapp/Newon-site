@@ -18,6 +18,7 @@ import {
   ensureDir,
   writeRootRedirect,
 } from "./hub-utils.mjs";
+import { clampSeoDescription } from "./seo-meta.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import {
   listStudioDetailSlugs,
@@ -51,7 +52,7 @@ function renderPage(lang, pagePath, opts) {
   html = html.replace(/\{\{CANONICAL\}\}/g, canonical);
   html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflangBlock(pagePath));
   html = html.replace(/\{\{SEO_TITLE\}\}/g, escapeHtml(opts.title));
-  html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(opts.description));
+  html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(clampSeoDescription(opts.description)));
   html = html.replace(/\{\{SERVICE_SLUG\}\}/g, escapeHtml(opts.slug));
   html = html.replace(/\{\{ANALYTICS_ID\}\}/g, escapeHtml(opts.analyticsId || `studio_${opts.slug}`));
   html = html.replace(/\{\{PAGE_BODY\}\}/g, opts.body);

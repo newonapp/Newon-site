@@ -22,6 +22,7 @@ import { renderBusinessPillars } from "./render-business-pillars.mjs";
 import { renderPillarServices } from "./render-pillar-services.mjs";
 import { renderCreative } from "./render-creative.mjs";
 import { fontLinksHtml } from "./hub-utils.mjs";
+import { clampSeoDescription } from "./seo-meta.mjs";
 import {
   businessInquirySelectOptionsHtml,
   businessInquiryServiceMap,
@@ -180,7 +181,7 @@ for (const { dir, file, htmlLang } of LANGS) {
   explore = explore.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
   explore = explore.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(dir));
   explore = explore.replace(/\{\{TITLE\}\}/g, escapeHtml(exploreTitle));
-  explore = explore.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(exploreDesc));
+  explore = explore.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(clampSeoDescription(exploreDesc)));
   explore = explore.replace(/\{\{CANONICAL\}\}/g, exploreCanonical);
   explore = explore.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
   explore = explore.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflangBlock("business"));

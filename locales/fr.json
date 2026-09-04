@@ -1,12 +1,12 @@
 {
   "meta": {
-    "title": "Newon | A Product Studio for digital products and new businesses",
+    "title": "Newon | Product & Venture Studio",
     "description": "Newon est un studio d'apps qui transforme les idées en réalité. 12 apps pour la productivité, la santé, la finance, la famille et les voyages.",
-    "ogTitle": "Newon | Product Studio",
+    "ogTitle": "Newon | Product & Venture Studio",
     "ogDescription": "Newon est un studio d'apps qui transforme les idées en réalité. 12 apps pour la productivité, la santé, la finance, la famille et les voyages.",
     "ogSiteName": "Newon",
-    "twitterTitle": "Newon | Product Studio",
-    "twitterDescription": "A Product Studio building digital products and new businesses.",
+    "twitterTitle": "Newon | Product & Venture Studio",
+    "twitterDescription": "Newon — Product & Venture Studio building and operating digital products.",
     "orgDescription": "Studio d'apps qui transforme les idées en réalité · 12 apps de vie",
     "titleHome": "Newon | Product Studio",
     "titleOx": "OX MONTH — Le suivi des habitudes le plus simple : un contrôle O/X par jour",
@@ -3038,7 +3038,7 @@
   },
   "about": {
     "seoTitle": "À propos | Newon App Studio",
-    "metaDescription": "Newon crée des applications de productivité, de finance, de santé et de style de vie. 177 pays, 13 langues : OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+.",
+    "metaDescription": "Newon builds apps, AI, and web products—and partners on new digital work.",
     "title": "Environ Newon",
     "lead": "Newon crée des apps pour la productivité, la finance, la santé, la famille et les voyages.",
     "statCountries": "Lancé dans 173 pays",
@@ -3336,7 +3336,7 @@
   },
   "business": {
     "seoTitle": "Affaires | Newon",
-    "metaDescription": "Travailler avec Newon sur les partenariats, la collaboration d'applications, la publicité et le développement de produits numériques.",
+    "metaDescription": "Newon Business — web & app builds, AI automation, design, and research.",
     "heroLabel": "NEWON FOR BUSINESS",
     "heroTitle": "La technologie pour un meilleur quotidien.",
     "heroLead": "Newon crée de nouvelles possibilités avec les marques, les entreprises et les partenaires, sur les produits et technologies numériques que nous fabriquons nous-mêmes.",
@@ -4219,8 +4219,8 @@
   },
   "studio": {
     "searchOpen": "검색",
-    "productsSeoTitle": "Products — Newon",
-    "productsMetaDescription": "Browse Newon apps, AI, SaaS, games, and tools.",
+    "productsSeoTitle": "Newon Products | Apps, AI & Web",
+    "productsMetaDescription": "Explore Newon apps, AI, SaaS, games, and tools in one place.",
     "productsHeroLabel": "PRODUCTS",
     "productsHeroTitle": "All Newon digital products",
     "productsHeroLead": "출시된 앱부터 준비 중인 실험까지.",

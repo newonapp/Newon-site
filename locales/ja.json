@@ -1,12 +1,12 @@
 {
   "meta": {
-    "title": "Newon | A Product Studio for digital products and new businesses",
-    "description": "Newonはアイデアを現実にするアプリスタジオ。習慣・目標・健康・金融・家族・旅行記録まで11のアプリを展開。OX MONTH、GoalUp、CountUp、Savy、SubPing、PiggyUp、Pillmate、BabyLog、PetLog、My World、Newon+。",
-    "ogTitle": "Newon | Product Studio",
-    "ogDescription": "Newonはアイデアを現実にするアプリスタジオ。習慣・目標・健康・金融・家族・旅行記録まで11のアプリを展開。OX MONTH、GoalUp、CountUp、Savy、SubPing、PiggyUp、Pillmate、BabyLog、PetLog、My World、Newon+。",
+    "title": "Newon | Product & Venture Studio",
+    "description": "Newon builds apps, AI, and web products—and partners on digital product work.",
+    "ogTitle": "Newon | Product & Venture Studio",
+    "ogDescription": "Newon builds apps, AI, and web products—and partners on digital product work.",
     "ogSiteName": "Newon",
-    "twitterTitle": "Newon | Product Studio",
-    "twitterDescription": "A Product Studio building digital products and new businesses.",
+    "twitterTitle": "Newon | Product & Venture Studio",
+    "twitterDescription": "Newon — Product & Venture Studio building and operating digital products.",
     "orgDescription": "アイデアを現実にするアプリスタジオ · 11のライフアプリ",
     "titleHome": "Newon | Product Studio",
     "titleOx": "OX MONTH — 最もシンプルな習慣トラッカー: 1 日 1 回の O/X チェック",
@@ -3035,7 +3035,7 @@
   },
   "about": {
     "seoTitle": "概要 | Newon アプリスタジオ",
-    "metaDescription": "Newon は、生産性、財務、健康、ライフスタイルのアプリを構築しています。 177 か国、13 言語 - OX MONTH、GoalUp、CountUp、Savy、SubPing、PiggyUp、Pillmate、BabyLog、PetLog、My World、Newon+。",
+    "metaDescription": "Newon builds apps, AI, and web products—and partners on new digital work.",
     "title": "Newonについて",
     "lead": "Newonは生産性・金融・健康・家族・旅行を支えるアプリスタジオです。",
     "statCountries": "173ヶ国で発売",
@@ -3333,7 +3333,7 @@
   },
   "business": {
     "seoTitle": "ビジネス | Newon",
-    "metaDescription": "Newon と協力して、パートナーシップ、アプリのコラボレーション、広告、デジタル製品開発に取り組みます。",
+    "metaDescription": "Newon Business — web & app builds, AI automation, design, and research.",
     "heroLabel": "NEWON FOR BUSINESS",
     "heroTitle": "より良い日常生活のためのテクノロジー。",
     "heroLead": "Newon は、ブランド、企業、パートナーと協力して、自社で作成したデジタル製品やテクノロジーに基づいて新たな可能性を構築します。",
@@ -4216,8 +4216,8 @@
   },
   "studio": {
     "searchOpen": "검색",
-    "productsSeoTitle": "Products — Newon",
-    "productsMetaDescription": "Browse Newon apps, AI, SaaS, games, and tools.",
+    "productsSeoTitle": "Newon Products | Apps, AI & Web",
+    "productsMetaDescription": "Explore Newon apps, AI, SaaS, games, and tools in one place.",
     "productsHeroLabel": "PRODUCTS",
     "productsHeroTitle": "All Newon digital products",
     "productsHeroLead": "출시된 앱부터 준비 중인 실험까지.",

@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Newon | Product & Venture Studio",
-    "description": "Newon은 앱, AI, 게임과 웹 제품을 직접 만들고 기업과 함께 새로운 디지털 제품과 비즈니스 가능성을 설계하는 Product & Venture Studio입니다.",
+    "description": "Newon은 앱·AI·웹 제품을 만들고 기업의 디지털 제품을 함께 설계하는 스튜디오입니다.",
     "ogTitle": "Newon | Product & Venture Studio",
-    "ogDescription": "Newon은 앱, AI, 게임과 웹 제품을 직접 만들고 기업과 함께 새로운 디지털 제품과 비즈니스 가능성을 설계하는 Product & Venture Studio입니다.",
+    "ogDescription": "Newon은 앱·AI·웹 제품을 만들고 기업의 디지털 제품을 함께 설계하는 스튜디오입니다.",
     "ogSiteName": "Newon",
     "keywords": "Newon, 뉴온, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, Product & Venture Studio",
     "twitterTitle": "Newon | Product & Venture Studio",
-    "twitterDescription": "Newon — Product & Venture Studio. Apps, AI, games, and web products built and operated by Newon.",
+    "twitterDescription": "Newon — 앱·AI·웹 제품을 만들고 운영하는 Product Studio입니다.",
     "orgDescription": "Product & Venture Studio — apps, AI, games, and web products",
     "titleHome": "Newon | 제품 스튜디오",
     "titleOx": "OX MONTH — 하루 한 번 O/X로 만드는 가장 단순한 습관 관리",
@@ -35,7 +35,7 @@
   },
   "about": {
     "seoTitle": "회사 소개 | Newon",
-    "metaDescription": "Newon은 생산성·금융·건강·라이프스타일 앱을 만듭니다. 177개국·13개 언어, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+ 등 12개 앱.",
+    "metaDescription": "Newon은 앱·AI·웹을 만들고 기업의 디지털 제품을 함께 설계하는 스튜디오입니다.",
     "title": "디지털 제품을 만들고 실험하는 스튜디오",
     "heroLabel": "ABOUT NEWON",
     "lead": "Newon은 앱, AI, 게임, 웹 서비스를 만들고 새로운 비즈니스를 실험하는 Product Studio입니다.",
@@ -331,8 +331,8 @@
     "navAria": "아이디어"
   },
   "business": {
-    "seoTitle": "Business | Newon Digital Product Studio",
-    "metaDescription": "Newon Business — MVP·웹·앱 구축, AI 자동화, 디자인, 리서치, 맞춤 솔루션. 자체 제품을 직접 만들고 운영하는 Digital Product Studio가 기업·브랜드 프로젝트를 함께합니다.",
+    "seoTitle": "Newon Business | 웹·앱 개발 및 디지털 솔루션",
+    "metaDescription": "Newon Business — 웹·앱 개발, AI 자동화, 디자인과 리서치로 디지털 제품을 함께 만듭니다.",
     "exploreSeoTitle": "Newon Business | Build · Automation · Research · Solutions",
     "exploreMetaDescription": "Newon Business — Build, Automation, Research, Solutions 네 가지 협업 방식을 한눈에 살펴보세요.",
     "inquirySeoTitle": "프로젝트 문의 | Newon Business",
@@ -4137,7 +4137,7 @@
   },
   "studio": {
     "searchOpen": "검색",
-    "productsSeoTitle": "Products — Newon",
+    "productsSeoTitle": "Newon Products | 앱·AI·웹 제품",
     "productsMetaDescription": "Newon의 앱, AI, SaaS, 게임, 도구를 한곳에서 둘러보세요.",
     "productsHeroLabel": "PRODUCTS",
     "productsHeroTitle": "Newon의 모든 디지털 제품",

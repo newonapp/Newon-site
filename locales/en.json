@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Newon | Product & Venture Studio",
-    "description": "Newon builds apps, AI, games, and web products — and partners with companies to design new digital products and business possibilities.",
+    "description": "Newon builds apps, AI, and web products—and partners on digital product work.",
     "ogTitle": "Newon | Product & Venture Studio",
-    "ogDescription": "Newon builds apps, AI, games, and web products — and partners with companies to design new digital products and business possibilities.",
+    "ogDescription": "Newon builds apps, AI, and web products—and partners on digital product work.",
     "ogSiteName": "Newon",
     "keywords": "Newon, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, Product & Venture Studio",
-    "twitterTitle": "Newon | Product Studio",
-    "twitterDescription": "Newon — Product & Venture Studio. Apps, AI, games, and web products built and operated by Newon.",
+    "twitterTitle": "Newon | Product & Venture Studio",
+    "twitterDescription": "Newon — Product & Venture Studio building and operating digital products.",
     "orgDescription": "Product & Venture Studio — apps, AI, games, and web products",
     "titleHome": "Newon | Product Studio",
     "titleOx": "OX MONTH — The simplest habit tracker: one O/X check a day",
@@ -34,8 +34,8 @@
     "descMyworld": "Turn the world you have traveled into your own map"
   },
   "about": {
-    "seoTitle": "About Newon | Company",
-    "metaDescription": "Newon builds productivity, finance, health, and lifestyle apps. 177 countries, 13 languages—OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+.",
+    "seoTitle": "About Newon | Product Studio",
+    "metaDescription": "Newon builds apps, AI, and web products—and partners on new digital work.",
     "title": "A studio that builds and experiments with digital products",
     "heroLabel": "ABOUT NEWON",
     "lead": "Newon builds apps, AI, games, and web services — and tests new businesses as a Product Studio.",
@@ -331,8 +331,8 @@
     "navAria": "Ideas"
   },
   "business": {
-    "seoTitle": "Business | Newon Digital Product Studio",
-    "metaDescription": "Newon Business — MVP, web, app, AI automation, design, research, and custom solutions for brands and companies. Built by a Digital Product Studio that ships its own products.",
+    "seoTitle": "Newon Business | Web, App & Digital Solutions",
+    "metaDescription": "Newon Business — web & app builds, AI automation, design, and research.",
     "exploreSeoTitle": "Newon Business | Build · Automation · Research · Solutions",
     "exploreMetaDescription": "Explore how Newon works with companies — Build, Automation, Research, and Solutions in one view.",
     "inquirySeoTitle": "Project Inquiry | Newon Business",
@@ -4132,8 +4132,8 @@
   },
   "studio": {
     "searchOpen": "검색",
-    "productsSeoTitle": "Products — Newon",
-    "productsMetaDescription": "Browse Newon apps, AI, SaaS, games, and tools.",
+    "productsSeoTitle": "Newon Products | Apps, AI & Web",
+    "productsMetaDescription": "Explore Newon apps, AI, SaaS, games, and tools in one place.",
     "productsHeroLabel": "PRODUCTS",
     "productsHeroTitle": "All Newon digital products",
     "productsHeroLead": "출시된 앱부터 준비 중인 실험까지.",

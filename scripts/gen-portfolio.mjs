@@ -16,6 +16,7 @@ import {
 } from "./portfolio-hub-data.mjs";
 import { LANG_OPTIONS, SITE_LANGS, portfolioCopy } from "./portfolio-i18n.mjs";
 import { flatten, loadJson, fillMissing } from "./hub-utils.mjs";
+import { clampSeoDescription } from "./seo-meta.mjs";
 import { renderGlobalHeader, renderStudioFooter, renderCompanySwitcher } from "./site-chrome.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -64,15 +65,21 @@ function langSelect(lang, copy) {
           </div>`;
 }
 
-function head({ langMeta, copy, title, description, canonical, suffix }) {
+function head({ langMeta, copy, title, description, canonical, suffix, image }) {
   const og = title;
+  const desc = clampSeoDescription(description);
+  const img = image && String(image).startsWith("http")
+    ? String(image)
+    : image
+      ? `${SITE}${String(image).startsWith("/") ? "" : "/"}${image}`
+      : `${SITE}/logo.png`;
   return `<!DOCTYPE html>
 <html lang="${esc(langMeta.htmlLang)}">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${esc(title)}</title>
-    <meta name="description" content="${esc(description)}" />
+    <meta name="description" content="${esc(desc)}" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="${esc(canonical)}" />
     ${altLinks(suffix || "")}
@@ -80,13 +87,13 @@ function head({ langMeta, copy, title, description, canonical, suffix }) {
     <meta property="og:url" content="${esc(canonical)}" />
     <meta property="og:locale" content="${esc(langMeta.ogLocale)}" />
     <meta property="og:title" content="${esc(og)}" />
-    <meta property="og:description" content="${esc(description)}" />
+    <meta property="og:description" content="${esc(desc)}" />
     <meta property="og:site_name" content="Newon" />
-    <meta property="og:image" content="${SITE}/logo.png" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="${esc(img)}" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${esc(og)}" />
-    <meta name="twitter:description" content="${esc(description)}" />
-    <meta name="twitter:image" content="${SITE}/logo.png" />
+    <meta name="twitter:description" content="${esc(desc)}" />
+    <meta name="twitter:image" content="${esc(img)}" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -911,6 +918,7 @@ function projectPage(langMeta, copy, app, apps) {
     description: desc,
     canonical: `${SITE}${prefix}/${app.slug}/`,
     suffix: `${app.slug}/`,
+    image: app.icon || app.logo || null,
   })}
   <body class="pf-page">
     ${chromeNav(lang, { base: "../../", idSuffix: `pf-${app.slug}` })}

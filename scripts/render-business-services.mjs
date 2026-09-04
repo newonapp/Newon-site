@@ -6,6 +6,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml } from "./hub-utils.mjs";
+import { clampSeoDescription } from "./seo-meta.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { BUSINESS_SERVICE_PAGES } from "./business-service-catalog.mjs";
 import { getServiceCopy } from "./business-service-copy.mjs";
@@ -4068,7 +4069,10 @@ export function renderBusinessServices() {
       html = html.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/business/${route}/`);
       html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflangBlock(page));
       html = html.replace(/\{\{SEO_TITLE\}\}/g, escapeHtml(copy.seoTitle || ""));
-      html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(copy.metaDescription || ""));
+      html = html.replace(
+        /\{\{META_DESCRIPTION\}\}/g,
+        escapeHtml(clampSeoDescription(copy.metaDescription || ""))
+      );
       html = html.replace(/\{\{SERVICE_SLUG\}\}/g, page.slug);
       html = html.replace(/\{\{ANALYTICS_ID\}\}/g, page.analyticsId);
       html = html.replace(/\{\{PAGE_BODY\}\}/g, buildBody(page, copy, copies));

@@ -13,11 +13,11 @@ export function getAboutPageCopy(lang) {
 }
 
 const KO = {
-  seoTitle: "회사 소개 | Newon Product & Venture Studio",
+  seoTitle: "회사 소개 | Newon",
   metaDescription:
-    "Newon은 앱, AI, 게임과 웹 서비스를 직접 만들고 기업과 함께 새로운 디지털 경험과 비즈니스 가능성을 설계하는 Product & Venture Studio입니다.",
+    "Newon은 앱·AI·웹을 만들고 기업의 디지털 제품을 함께 설계하는 스튜디오입니다.",
   metaKeywords:
-    "Newon, 뉴온, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, Product & Venture Studio",
+    "Newon, 뉴온, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+",
   brandAria: "Newon",
   brandMarkAlt: "Newon",
   brandWord: "Newon",
@@ -317,11 +317,11 @@ const KO = {
 };
 
 const EN = {
-  seoTitle: "About Newon | Product & Venture Studio",
+  seoTitle: "About Newon | Product Studio",
   metaDescription:
-    "Newon is a Product & Venture Studio that builds apps, AI, games, and web services — and partners with companies to design new digital experiences and business possibilities.",
+    "Newon builds apps, AI, and web products—and partners on new digital work.",
   metaKeywords:
-    "Newon, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, Product & Venture Studio",
+    "Newon, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+",
   brandAria: "Newon",
   brandMarkAlt: "Newon",
   brandWord: "Newon",

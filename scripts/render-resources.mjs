@@ -7,6 +7,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml } from "./hub-utils.mjs";
+import { clampSeoDescription } from "./seo-meta.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { RESOURCE_PAGES } from "./resources-catalog.mjs";
 import { getResourceCopy, getAllResourceCopies } from "./resources-copy.mjs";
@@ -355,7 +356,7 @@ function renderStoreDetailHtml({
   html = html.replace(/\{\{CANONICAL\}\}/g, canonical);
   html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflang);
   html = html.replace(/\{\{SEO_TITLE\}\}/g, escapeHtml(seoTitle || ""));
-  html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(metaDescription || ""));
+  html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(clampSeoDescription(metaDescription || "")));
   html = html.replace(/\{\{SERVICE_SLUG\}\}/g, escapeHtml(serviceSlug || ""));
   html = html.replace(/\{\{ANALYTICS_ID\}\}/g, escapeHtml(analyticsId || serviceSlug || ""));
   html = html.replace(/\{\{PAGE_BODY\}\}/g, body);
@@ -409,7 +410,7 @@ function renderHtml({
   html = html.replace(/\{\{CANONICAL\}\}/g, canonical);
   html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflang);
   html = html.replace(/\{\{SEO_TITLE\}\}/g, escapeHtml(seoTitle || ""));
-  html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(metaDescription || ""));
+  html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(clampSeoDescription(metaDescription || "")));
   html = html.replace(/\{\{HUB_SLUG\}\}/g, hubSlug || "");
   html = html.replace(/\{\{ANALYTICS_ID\}\}/g, analyticsId || hubSlug || "");
   html = html.replace(/\{\{PAGE_BODY\}\}/g, body);
@@ -452,7 +453,7 @@ function renderLabDetailHtml({
   html = html.replace(/\{\{CANONICAL\}\}/g, canonical);
   html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflang);
   html = html.replace(/\{\{SEO_TITLE\}\}/g, escapeHtml(seoTitle || ""));
-  html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(metaDescription || ""));
+  html = html.replace(/\{\{META_DESCRIPTION\}\}/g, escapeHtml(clampSeoDescription(metaDescription || "")));
   html = html.replace(/\{\{SERVICE_SLUG\}\}/g, escapeHtml(serviceSlug || ""));
   html = html.replace(/\{\{ANALYTICS_ID\}\}/g, escapeHtml(analyticsId || serviceSlug || ""));
   html = html.replace(/\{\{PAGE_BODY\}\}/g, body);
