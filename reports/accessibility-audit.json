@@ -1,0 +1,57 @@
+{
+  "generatedAt": "2026-09-04T13:00:00.000Z",
+  "standard": "WCAG 2.2 AA direction",
+  "certification": false,
+  "method": ["static-source-review", "representative-route-check"],
+  "summary": {
+    "p0": 0,
+    "p1Fixed": 2,
+    "p2Fixed": 3,
+    "p2Reported": 1,
+    "p3Fixed": 1
+  },
+  "issues": [
+    {
+      "id": "mobile-menu-focus",
+      "severity": "P1",
+      "status": "fixed",
+      "detail": "Focus restore, Tab trap, inert/aria-hidden on main/footer while drawer open"
+    },
+    {
+      "id": "search-label-live",
+      "severity": "P1",
+      "status": "fixed",
+      "detail": "Search input label + aria-live results + focus restore to opener"
+    },
+    {
+      "id": "inquiry-aria-invalid",
+      "priority": "P2",
+      "status": "fixed",
+      "detail": "Meaningful setCustomValidity, aria-invalid, budget aria-describedby, required note"
+    },
+    {
+      "id": "contact-focus-invalid",
+      "priority": "P2",
+      "status": "fixed",
+      "detail": "company.css focus-visible; company.js aria-invalid + success status live"
+    },
+    {
+      "id": "gnav-focus-visible",
+      "priority": "P2",
+      "status": "fixed",
+      "detail": "Explicit :focus-visible for theme/menu/cta/mobile links"
+    },
+    {
+      "id": "home-multiple-main",
+      "priority": "P2",
+      "status": "reported",
+      "detail": "Home page embeds multiple app-shell <main> elements; left unchanged to avoid redesign"
+    },
+    {
+      "id": "skip-link-visibility",
+      "priority": "P3",
+      "status": "fixed",
+      "detail": "Skip link offset and higher z-index on focus"
+    }
+  ]
+}

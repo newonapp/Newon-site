@@ -7,6 +7,7 @@
   var index = null;
   var modal = null;
   var activeIdx = -1;
+  var searchOpener = null;
   var LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
 
   function langDir() {
@@ -27,10 +28,11 @@
     modal.className = "search-modal";
     modal.hidden = true;
     modal.innerHTML =
-      '<div class="search-modal__backdrop" data-search-close tabindex="-1"></div>' +
+      '<div class="search-modal__backdrop" data-search-close tabindex="-1" aria-hidden="true"></div>' +
       '<div class="search-modal__panel" role="dialog" aria-modal="true" aria-label="Search">' +
-      '<input type="search" class="search-modal__input" data-search-input placeholder="Search products, tools, blog…" autocomplete="off" />' +
-      '<ul class="search-modal__results" data-search-results role="listbox"></ul>' +
+      '<label class="visually-hidden" for="newon-search-input">Search</label>' +
+      '<input id="newon-search-input" type="search" class="search-modal__input" data-search-input placeholder="Search products, tools, blog…" autocomplete="off" aria-label="Search" aria-controls="newon-search-results" />' +
+      '<ul id="newon-search-results" class="search-modal__results" data-search-results role="listbox" aria-live="polite" aria-atomic="true"></ul>' +
       "</div>";
     document.body.appendChild(modal);
     modal.querySelector("[data-search-close]").addEventListener("click", close);
@@ -91,8 +93,9 @@
       });
   }
 
-  function open() {
+  function open(opener) {
     var m = ensureModal();
+    searchOpener = opener || document.activeElement;
     m.hidden = false;
     activeIdx = -1;
     var input = m.querySelector("[data-search-input]");
@@ -105,6 +108,13 @@
   function close() {
     if (modal) modal.hidden = true;
     activeIdx = -1;
+    var opener = searchOpener;
+    searchOpener = null;
+    if (opener && typeof opener.focus === "function" && document.contains(opener)) {
+      try {
+        opener.focus();
+      } catch (err) {}
+    }
   }
 
   function escapeHtml(s) {
@@ -177,9 +187,10 @@
   }
 
   document.addEventListener("click", function (e) {
-    if (e.target.closest("[data-search-open]")) {
+    var opener = e.target.closest("[data-search-open]");
+    if (opener) {
       e.preventDefault();
-      open();
+      open(opener);
     }
   });
 

@@ -1337,10 +1337,17 @@ html[data-newon-shell-theme="dark"] .co-nav {
   resize: vertical;
 }
 
+.co-input:focus-visible,
+.co-textarea:focus-visible,
+.co-form select.co-input:focus-visible {
+  outline: 2px solid var(--co-ink);
+  outline-offset: 2px;
+  border-color: var(--co-ink);
+}
+
 .co-input:focus,
 .co-textarea:focus,
 .co-form select.co-input:focus {
-  outline: none;
   border-color: var(--co-ink);
 }
 

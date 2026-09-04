@@ -420,20 +420,41 @@
         websiteEl.setCustomValidity("");
       }
       if (emailEl) emailEl.setCustomValidity("");
-      if (email && !isEmail(email) && emailEl) emailEl.setCustomValidity(" ");
+      if (email && !isEmail(email) && emailEl) {
+        emailEl.setCustomValidity("Please enter a valid email address.");
+        emailEl.setAttribute("aria-invalid", "true");
+      }
+      Array.prototype.forEach.call(form.querySelectorAll("[aria-invalid='true']"), function (el) {
+        if (el !== emailEl) el.removeAttribute("aria-invalid");
+      });
       if (!form.reportValidity()) {
+        var invalid = form.querySelector(":invalid");
+        if (invalid) {
+          invalid.setAttribute("aria-invalid", "true");
+          try {
+            invalid.focus();
+          } catch (err) {}
+        }
         if (emailEl) emailEl.setCustomValidity("");
         return;
       }
-      if (emailEl) emailEl.setCustomValidity("");
+      if (emailEl) {
+        emailEl.setCustomValidity("");
+        emailEl.removeAttribute("aria-invalid");
+      }
 
       var consent = form.querySelector("[name='consent']");
       if (consent && !consent.checked) {
-        consent.setCustomValidity(" ");
+        consent.setCustomValidity("Please agree to the privacy notice.");
+        consent.setAttribute("aria-invalid", "true");
         form.reportValidity();
+        try {
+          consent.focus();
+        } catch (err2) {}
         consent.setCustomValidity("");
         return;
       }
+      if (consent) consent.removeAttribute("aria-invalid");
 
       if (window.newonTrack) {
         var submitEvt =

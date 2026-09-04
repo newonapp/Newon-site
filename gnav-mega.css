@@ -384,6 +384,19 @@ html[data-newon-shell-theme="dark"] .gnav__lang-select:hover {
   color: var(--gnav-text-strong);
 }
 
+.gnav__theme:focus-visible,
+.gnav__menu-btn:focus-visible,
+.gnav__cta:focus-visible,
+.gnav__link:focus-visible,
+.gnav-dd__trigger:focus-visible,
+.gnav-mobile__acc-toggle:focus-visible,
+.gnav-mobile__acc-link:focus-visible,
+.gnav-mobile__sublink:focus-visible,
+.gnav-mobile__cta:focus-visible {
+  outline: 2px solid var(--gnav-text-strong, currentColor);
+  outline-offset: 2px;
+}
+
 .gnav__theme-icon { display: block; }
 
 .gnav__menu-icon {

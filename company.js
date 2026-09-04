@@ -219,7 +219,14 @@
     showError(form, "");
     Array.prototype.forEach.call(form.querySelectorAll(".is-error"), function (el) {
       el.classList.remove("is-error");
+      el.removeAttribute("aria-invalid");
     });
+  }
+
+  function markError(el) {
+    if (!el) return;
+    el.classList.add("is-error");
+    el.setAttribute("aria-invalid", "true");
   }
 
   function setBusy(form, busy) {
@@ -239,6 +246,8 @@
     form.classList.add("is-sent");
     var box = form.querySelector("[data-co-form-success]");
     if (!box) return;
+    box.setAttribute("role", "status");
+    box.setAttribute("aria-live", "polite");
     var title = box.querySelector(".co-form__success-title");
     var body = box.querySelector("p");
     if (title && i18n.successTitle) title.textContent = i18n.successTitle;
@@ -350,29 +359,29 @@
       var legal = form.querySelector("[name='legal']");
 
       if (!title || !String(title.value || "").trim() || !problem || !String(problem.value || "").trim()) {
-        if (title && !String(title.value || "").trim()) title.classList.add("is-error");
-        if (problem && !String(problem.value || "").trim()) problem.classList.add("is-error");
+        if (title && !String(title.value || "").trim()) markError(title);
+        if (problem && !String(problem.value || "").trim()) markError(problem);
         showError(form, t("errRequired", "Please fill in the required fields."));
         return;
       }
 
       var emailVal = email ? String(email.value || "").trim() : "";
       if (emailVal && !isEmail(emailVal)) {
-        if (email) email.classList.add("is-error");
+        if (email) markError(email);
         showError(form, t("errEmail", "Please check the email format."));
         return;
       }
 
       var linkVal = link ? String(link.value || "").trim() : "";
       if (linkVal && !isUrl(linkVal)) {
-        if (link) link.classList.add("is-error");
+        if (link) markError(link);
         showError(form, t("errUrl", "Please check the URL format."));
         return;
       }
 
       if (legal && !legal.checked) {
         var check = legal.closest(".co-check");
-        if (check) check.classList.add("is-error");
+        if (check) markError(check);
         showError(form, t("errLegal", "Please confirm the notice before submitting."));
         return;
       }
@@ -522,7 +531,7 @@
       [name, email, subject, message].forEach(function (field) {
         if (!field || !String(field.value || "").trim()) {
           missing = true;
-          if (field) field.classList.add("is-error");
+          if (field) markError(field);
         }
       });
       if (missing) {
@@ -532,14 +541,14 @@
 
       var emailVal = String(email.value || "").trim();
       if (!isEmail(emailVal)) {
-        email.classList.add("is-error");
+        markError(email);
         showError(form, t("errEmail", "Please check the email format."));
         return;
       }
 
       var urlVal = url ? String(url.value || "").trim() : "";
       if (urlVal && !isUrl(urlVal)) {
-        if (url) url.classList.add("is-error");
+        if (url) markError(url);
         showError(form, t("errUrl", "Please check the URL format."));
         return;
       }

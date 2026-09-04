@@ -51,7 +51,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/styles.css?v=20260904perf1" />
+<link rel="stylesheet" href="/styles.css?v=20260904a11y1" />
     <link rel="stylesheet" href="/gnav-mega.css?v=20260902nav1" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
     <link rel="stylesheet" href="/ox-month.css" />
@@ -2501,14 +2501,17 @@
         <div class="bz-inner bz-form-wrap">
           <h2 class="bz-title" id="bz-form-title">Penyelidikan bisnis</h2>
           <p class="bz-lead" id="bz-form-lead">Bagikan beberapa detail dan kami akan menindaklanjutinya melalui email.</p>
+          <p class="visually-hidden" id="bz-form-req">Required fields are marked with an asterisk.</p>
           <p class="bz-lead bz-studio-selected" id="bz-studio-selected" hidden></p>
           <form
             class="bz-form"
             id="bz-inquiry-form"
             novalidate
+            data-analytics="business_inquiry"
             data-submit="Kirim pertanyaan →"
             data-submitting="Mengirim pertanyaan..."
             data-subject="Newon Pertanyaan bisnis"
+            aria-describedby="bz-form-lead bz-form-req"
           >
             <div class="bz-field">
               <label for="bz-company">Perusahaan / merek<span class="bz-req" aria-hidden="true">*</span></label>
@@ -2584,7 +2587,7 @@
             </div>
             <div class="bz-field">
               <label for="bz-budget">Budget</label>
-              <select id="bz-budget" name="budget">
+              <select id="bz-budget" name="budget" aria-describedby="bz-budget-hint">
                 <option value="">Silakan pilih</option>
                 <option value="Under ₩500K">Under ₩500K</option>
                 <option value="₩500K–1M">₩500K–1M</option>
@@ -2687,8 +2690,8 @@
         </div>
       </footer>
 
-    <script src="/search.js?v=20260904sec1" defer></script>
-    <script src="/site-chrome.js?v=20260902nav1" defer></script>
+    <script src="/search.js?v=20260904a11y1" defer></script>
+    <script src="/site-chrome.js?v=20260904a11y1" defer></script>
     <script>
       (function () {
         var cur = "id";
@@ -3247,7 +3250,7 @@
         });
       })();
     </script>
-    <script src="/business/inquiry.js?v=20260904sec1" defer></script>
+    <script src="/business/inquiry.js?v=20260904a11y1" defer></script>
     <script src="/portfolio/portfolio.js" defer></script>
     <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
   </body>
