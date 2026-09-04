@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T12:22:45.009Z",
+  "generatedAt": "2026-09-04T12:37:34.873Z",
   "measurement": "LAB / ESTIMATED (Lighthouse 13 simulate throttling against https://www.newon.app). Not CrUX field data.",
   "budgetSuggestion": {
     "htmlKb": 200,
@@ -272,5 +272,154 @@
       "status": "reported",
       "detail": "Weights 300–700 still requested; trimming 300 needs design QA"
     }
-  ]
+  ],
+  "routesAfter": [
+    {
+      "id": "desktop-ko-business",
+      "score": 64,
+      "lcpMs": 4402,
+      "cls": 0.003914177127528351,
+      "tbtMs": 0,
+      "fcpMs": 2259,
+      "totalBytesKb": 872
+    },
+    {
+      "id": "desktop-ko-inquiry",
+      "score": 58,
+      "lcpMs": 11784,
+      "cls": 0.003244898827113416,
+      "tbtMs": 0,
+      "fcpMs": 3187,
+      "totalBytesKb": 2431
+    },
+    {
+      "id": "desktop-ko-portfolio",
+      "score": 58,
+      "lcpMs": 9971,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 3193,
+      "totalBytesKb": 1988
+    },
+    {
+      "id": "desktop-ko",
+      "score": 59,
+      "lcpMs": 5128,
+      "cls": 0.09024108852566479,
+      "tbtMs": 0,
+      "fcpMs": 2913,
+      "totalBytesKb": 3001
+    },
+    {
+      "id": "mobile-404",
+      "score": 99,
+      "lcpMs": 998,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 998,
+      "totalBytesKb": 10
+    },
+    {
+      "id": "mobile-en",
+      "score": 66,
+      "lcpMs": 6004,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 4034,
+      "totalBytesKb": 1098
+    },
+    {
+      "id": "mobile-ko-business",
+      "score": 80,
+      "lcpMs": 3549,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 3549,
+      "totalBytesKb": 315
+    },
+    {
+      "id": "mobile-ko-contact",
+      "score": 92,
+      "lcpMs": 2653,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 2653,
+      "totalBytesKb": 134
+    },
+    {
+      "id": "mobile-ko-inquiry",
+      "score": 63,
+      "lcpMs": 6295,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 4472,
+      "totalBytesKb": 1017
+    },
+    {
+      "id": "mobile-ko-portfolio",
+      "score": 59,
+      "lcpMs": 7741,
+      "cls": 0,
+      "tbtMs": 73,
+      "fcpMs": 5903,
+      "totalBytesKb": 1165
+    },
+    {
+      "id": "mobile-ko-products",
+      "score": 92,
+      "lcpMs": 2653,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 2653,
+      "totalBytesKb": 658
+    },
+    {
+      "id": "mobile-ko-store",
+      "score": 80,
+      "lcpMs": 3794,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 3719,
+      "totalBytesKb": 343
+    },
+    {
+      "id": "mobile-ko-studio",
+      "score": 90,
+      "lcpMs": 2617,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 2617,
+      "totalBytesKb": 149
+    },
+    {
+      "id": "mobile-ko-tools",
+      "score": 88,
+      "lcpMs": 2845,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 2845,
+      "totalBytesKb": 142
+    },
+    {
+      "id": "mobile-ko",
+      "score": 68,
+      "lcpMs": 5661,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 3849,
+      "totalBytesKb": 1105
+    },
+    {
+      "id": "mobile-root",
+      "score": 66,
+      "lcpMs": 6204,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 4037,
+      "totalBytesKb": 1105
+    }
+  ],
+  "deployCommit": "e4987acd",
+  "deployRun": "https://github.com/newonapp/Newon-site/actions/runs/33873183923",
+  "compareNote": "LAB variance is high; byte-weight reductions are the most reliable signal. Field CrUX not available."
 }
