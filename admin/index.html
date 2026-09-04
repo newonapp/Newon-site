@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Newon HQ</title>
+  <link rel="stylesheet" href="./hq.css?v=20260904hq2d2" />
+</head>
+<body>
+  <div class="hq hq--auth" id="hq-auth-wrap">
+    <p class="hq__eyebrow">NEWON HQ</p>
+    <h1 class="hq__title">Private Operations</h1>
+    <p class="hq__lead">Internal operating console for Newon. Sign in with the authorized admin Google account.</p>
+    <p class="hq-status" id="hq-live-status" role="status" aria-live="polite"></p>
+
+    <section class="hq-view hq-panel" id="hq-view-loading" aria-label="Loading">
+      <p class="hq-status">Checking authentication…</p>
+    </section>
+
+    <section class="hq-view hq-panel" id="hq-view-config" hidden aria-label="Firebase config required">
+      <p class="hq__eyebrow">Setup</p>
+      <h2 class="hq__title" style="font-size:1.15rem">Firebase config required</h2>
+      <p class="hq-status hq-status--err">Missing: <span id="hq-config-missing"></span></p>
+    </section>
+
+    <section class="hq-view hq-panel" id="hq-view-signed-out" hidden aria-label="Sign in">
+      <p class="hq__lead" style="margin-bottom:0">Authorized admin Google account only.</p>
+      <div class="hq-actions">
+        <button type="button" class="hq-btn" id="hq-login">Continue with Google</button>
+      </div>
+    </section>
+
+    <section class="hq-view hq-panel" id="hq-view-denied" hidden aria-label="Access denied">
+      <p class="hq__eyebrow">Access denied</p>
+      <h2 class="hq__title" style="font-size:1.15rem">This account is not authorized for Newon HQ.</h2>
+      <p class="hq__lead">Signed in as <span id="hq-denied-email">—</span></p>
+      <div class="hq-actions">
+        <button type="button" class="hq-btn hq-btn--ghost" data-hq-logout>Sign out</button>
+      </div>
+    </section>
+
+    <section class="hq-view hq-panel" id="hq-view-error" hidden aria-label="Error">
+      <p class="hq-status hq-status--err" id="hq-error-msg">Something went wrong.</p>
+      <div class="hq-actions">
+        <button type="button" class="hq-btn" id="hq-retry">Try again</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="hq-shell" id="hq-view-authorized" hidden>
+    <button type="button" class="hq-nav-toggle" id="hq-nav-toggle" aria-controls="hq-nav" aria-expanded="false">Menu</button>
+    <div class="hq-shell-backdrop" id="hq-shell-backdrop" hidden></div>
+    <aside class="hq-nav" id="hq-nav" aria-label="HQ navigation">
+      <div class="hq-nav__brand">
+        <span class="hq-nav__brand-name">Newon</span>
+        <span class="hq-nav__brand-hq">HQ</span>
+        <span class="hq-nav__brand-label">Private Operations</span>
+      </div>
+      <div class="hq-nav__scroll">
+        <nav class="hq-nav__list" aria-label="Primary">
+          <p class="hq-nav__group">Overview</p>
+          <button type="button" class="hq-nav__link" data-hq-nav="dashboard"><svg class="hq-nav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h7V3H3v9zm0 9h7v-7H3v7zm11 0h7V12h-7v9zm0-18v7h7V3h-7z"/></svg><span>Dashboard</span></button>
+          <p class="hq-nav__group">Operations</p>
+          <button type="button" class="hq-nav__link" data-hq-nav="tasks"><svg class="hq-nav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg><span>Tasks</span></button>
+          <button type="button" class="hq-nav__link" data-hq-nav="releases"><svg class="hq-nav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg><span>Releases</span></button>
+          <button type="button" class="hq-nav__link" data-hq-nav="products"><svg class="hq-nav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg><span>Products</span></button>
+          <p class="hq-nav__group">Business</p>
+          <button type="button" class="hq-nav__link" data-hq-nav="leads"><svg class="hq-nav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Leads</span></button>
+          <button type="button" class="hq-nav__link" data-hq-nav="clients"><svg class="hq-nav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 11l2 2 4-4"/></svg><span>Clients</span></button>
+          <button type="button" class="hq-nav__link" data-hq-nav="projects"><svg class="hq-nav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>Projects</span></button>
+          <button type="button" class="hq-nav__link" data-hq-nav="documents"><svg class="hq-nav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg><span>Documents</span></button>
+          <button type="button" class="hq-nav__link" data-hq-nav="finance"><svg class="hq-nav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Finance</span></button>
+          <p class="hq-nav__group">System</p>
+          <button type="button" class="hq-nav__link" data-hq-nav="settings"><svg class="hq-nav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.6.9 1 1.6 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Settings</span></button>
+        </nav>
+      </div>
+      <div class="hq-nav__footer">
+        <div class="hq-nav__profile">
+          <span class="hq-nav__avatar" aria-hidden="true">N</span>
+          <div>
+            <p class="hq-nav__email" id="hq-shell-email">—</p>
+            <p class="hq-nav__role"><span class="hq-nav__dot" aria-hidden="true"></span> Admin</p>
+          </div>
+        </div>
+        <button type="button" class="hq-btn hq-btn--ghost hq-btn--small" data-hq-logout>Sign out</button>
+      </div>
+    </aside>
+    <main class="hq-main" id="hq-main">
+      <div class="hq-main__inner">
+        <p class="hq-toast" id="hq-toast" role="status" aria-live="polite" hidden></p>
+        <section class="hq-panel-section" id="hq-panel-dashboard"  aria-label="dashboard"></section>
+          <section class="hq-panel-section" id="hq-panel-tasks" hidden aria-label="tasks"></section>
+          <section class="hq-panel-section" id="hq-panel-releases" hidden aria-label="releases"></section>
+          <section class="hq-panel-section" id="hq-panel-leads" hidden aria-label="leads"></section>
+          <section class="hq-panel-section" id="hq-panel-clients" hidden aria-label="clients"></section>
+          <section class="hq-panel-section" id="hq-panel-projects" hidden aria-label="projects"></section>
+          <section class="hq-panel-section" id="hq-panel-documents" hidden aria-label="documents"></section>
+          <section class="hq-panel-section" id="hq-panel-finance" hidden aria-label="finance"></section>
+          <section class="hq-panel-section" id="hq-panel-products" hidden aria-label="products"></section>
+          <section class="hq-panel-section" id="hq-panel-settings" hidden aria-label="settings"></section>
+      </div>
+    </main>
+    <dialog class="hq-modal" id="hq-modal" aria-labelledby="hq-modal-title">
+      <div class="hq-modal__inner">
+        <h2 class="hq-modal__title" id="hq-modal-title">Modal</h2>
+        <div class="hq-modal__body" id="hq-modal-body"></div>
+        <div class="hq-modal__actions" id="hq-modal-actions"></div>
+      </div>
+    </dialog>
+  </div>
+
+  <script src="./firebase-config.js?v=20260904hq2d2"></script>
+  <script type="module" src="./hq-auth.js?v=20260904hq2d2"></script>
+  <script type="module" src="./hq-app.js?v=20260904hq2d2"></script>
+</body>
+</html>

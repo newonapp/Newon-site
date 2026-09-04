@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Page not found · Newon</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #0b0b0b;
+      --fg: #f4f4f4;
+      --muted: #a3a3a3;
+      --line: #2a2a2a;
+      --accent: #f4f4f4;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f7f5;
+        --fg: #121212;
+        --muted: #5c5c5c;
+        --line: #ddd;
+        --accent: #121212;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem 1.25rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+    }
+    main {
+      width: min(34rem, 100%);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1.75rem 1.5rem;
+    }
+    p.eyebrow {
+      margin: 0 0 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    h1 {
+      margin: 0 0 0.65rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      line-height: 1.15;
+      font-weight: 650;
+    }
+    p.lead {
+      margin: 0 0 1.35rem;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 1rem;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    a.btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.75rem;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      border: 1px solid var(--line);
+      color: var(--fg);
+      background: transparent;
+    }
+    a.btn--primary {
+      background: var(--accent);
+      color: var(--bg);
+      border-color: var(--accent);
+    }
+  </style>
+  <script>
+    (function () {
+      var L = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
+      var d = "ko";
+      try {
+        var v = localStorage.getItem("newon-lang-dir");
+        if (v && L.indexOf(v) !== -1) d = v;
+      } catch (e) {}
+      window.__NEWON_404_HOME = "/" + d + "/";
+      window.__NEWON_404_BIZ = "/" + d + "/business/";
+      window.__NEWON_404_CONTACT = "/" + d + "/business/inquiry/";
+    })();
+  </script>
+    <link rel="stylesheet" href="/site-dark.css?v=20260902perf1" />
+    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
+  </head>
+<body>
+  <main>
+    <p class="eyebrow">Newon</p>
+    <h1>Page not found</h1>
+    <p class="lead">
+      This URL is not part of the Newon site. Use the links below to continue, or open Home in your preferred language.
+    </p>
+    <div class="actions">
+      <a class="btn btn--primary" id="n404-home" href="/ko/">Home</a>
+      <a class="btn" id="n404-biz" href="/ko/business/">Business</a>
+      <a class="btn" id="n404-inq" href="/ko/business/inquiry/">Inquiry</a>
+    </div>
+  </main>
+  <script>
+    (function () {
+      var home = document.getElementById("n404-home");
+      var biz = document.getElementById("n404-biz");
+      var inq = document.getElementById("n404-inq");
+      if (home && window.__NEWON_404_HOME) home.href = window.__NEWON_404_HOME;
+      if (biz && window.__NEWON_404_BIZ) biz.href = window.__NEWON_404_BIZ;
+      if (inq && window.__NEWON_404_CONTACT) inq.href = window.__NEWON_404_CONTACT;
+    })();
+  </script>
+</body>
+</html>

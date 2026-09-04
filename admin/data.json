@@ -1,0 +1,579 @@
+{
+  "generatedAt": "2026-09-04T13:11:12.939Z",
+  "note": "Business leads, waitlist, and newsletter submissions are collected via FormSubmit to newon@newon.app. Activate the inbox at formsubmit.co if not done yet.",
+  "products": [
+    {
+      "id": "babylog",
+      "slug": "babylog",
+      "type": "apps",
+      "status": "live",
+      "name": "BabyLog",
+      "taglineKey": null,
+      "tagline": "BabyLog",
+      "icon": "/babylog-logo.png",
+      "homeHash": "#babylog-app",
+      "url": "/ko/#babylog-app",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": true,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "savy",
+      "slug": "savy",
+      "type": "apps",
+      "status": "live",
+      "name": "SAVY",
+      "taglineKey": null,
+      "tagline": "SAVY",
+      "icon": "/savy-logo.png",
+      "homeHash": "#savy-app",
+      "url": "/ko/#savy-app",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": true,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "myworld",
+      "slug": "myworld",
+      "type": "apps",
+      "status": "live",
+      "name": "My World",
+      "taglineKey": null,
+      "tagline": "My World",
+      "icon": "/myworld-logo.png",
+      "homeHash": "#myworld-app",
+      "url": "/ko/#myworld-app",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": true,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "pillmate",
+      "slug": "pillmate",
+      "type": "apps",
+      "status": "live",
+      "name": "Pillmate",
+      "taglineKey": null,
+      "tagline": "Pillmate",
+      "icon": "/pillmate-logo.png",
+      "homeHash": "#pillmate-app",
+      "url": "/ko/#pillmate-app",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": true,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "ox-month",
+      "slug": "ox-month",
+      "type": "apps",
+      "status": "live",
+      "name": "OX MONTH",
+      "taglineKey": null,
+      "tagline": "OX MONTH",
+      "icon": "/ox-month-logo.png",
+      "homeHash": "#ox-month",
+      "url": "/ko/#ox-month",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": true,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "newon-plus",
+      "slug": "newon-plus",
+      "type": "apps",
+      "status": "live",
+      "name": "Newon+",
+      "taglineKey": null,
+      "tagline": "Newon+",
+      "icon": "/newon-plus-logo.png",
+      "homeHash": "#newon-plus-app",
+      "url": "/ko/#newon-plus-app",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": false,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "petlog",
+      "slug": "petlog",
+      "type": "apps",
+      "status": "live",
+      "name": "PetLog",
+      "taglineKey": null,
+      "tagline": "PetLog",
+      "icon": "/petlog-logo.png",
+      "homeHash": "#petlog-app",
+      "url": "/ko/#petlog-app",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": false,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "goalup",
+      "slug": "goalup",
+      "type": "apps",
+      "status": "live",
+      "name": "GoalUp",
+      "taglineKey": null,
+      "tagline": "GoalUp",
+      "icon": "/goalup-logo.png",
+      "homeHash": "#goalup-app",
+      "url": "/ko/#goalup-app",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": false,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "countup",
+      "slug": "countup",
+      "type": "apps",
+      "status": "live",
+      "name": "CountUp",
+      "taglineKey": null,
+      "tagline": "CountUp",
+      "icon": "/countup-logo.png",
+      "homeHash": "#countup-app",
+      "url": "/ko/#countup-app",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": false,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "subping",
+      "slug": "subping",
+      "type": "apps",
+      "status": "live",
+      "name": "SubPing",
+      "taglineKey": null,
+      "tagline": "SubPing",
+      "icon": "/subping-logo.png",
+      "homeHash": "#subping-app",
+      "url": "/ko/#subping-app",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": false,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "piggyup",
+      "slug": "piggyup",
+      "type": "apps",
+      "status": "live",
+      "name": "PiggyUp",
+      "taglineKey": null,
+      "tagline": "PiggyUp",
+      "icon": "/piggyup-logo.png",
+      "homeHash": "#piggyup-app",
+      "url": "/ko/#piggyup-app",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": false,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "404-human",
+      "slug": "404-human",
+      "type": "games",
+      "status": "live",
+      "name": "404: HUMAN",
+      "taglineKey": "studio.game404Tagline",
+      "icon": "/404-human-logo.png",
+      "url": "/404-human/",
+      "playUrl": "/404-human/play/",
+      "platforms": [
+        "Web"
+      ],
+      "featured": true
+    },
+    {
+      "id": "newon-review-ai",
+      "slug": "review-ai",
+      "type": "ai",
+      "status": "building",
+      "nameKey": "studio.aiProduct1Name",
+      "taglineKey": "studio.aiProduct1Tagline",
+      "featured": true
+    },
+    {
+      "id": "newon-content-ai",
+      "slug": "content-ai",
+      "type": "ai",
+      "status": "concept",
+      "nameKey": "studio.aiProduct2Name",
+      "taglineKey": "studio.aiProduct2Tagline",
+      "featured": false
+    },
+    {
+      "id": "newon-launch-ai",
+      "slug": "launch-ai",
+      "type": "ai",
+      "status": "concept",
+      "nameKey": "studio.aiProduct3Name",
+      "taglineKey": "studio.aiProduct3Tagline",
+      "featured": false
+    },
+    {
+      "id": "newon-cs-ai",
+      "slug": "cs-ai",
+      "type": "ai",
+      "status": "concept",
+      "nameKey": "studio.aiProduct4Name",
+      "taglineKey": "studio.aiProduct4Tagline",
+      "featured": false
+    },
+    {
+      "id": "newon-review",
+      "slug": "review",
+      "type": "saas",
+      "status": "building",
+      "nameKey": "studio.saas1Name",
+      "taglineKey": "studio.saas1Tagline",
+      "pricing": "paid",
+      "featured": true
+    },
+    {
+      "id": "newon-qr",
+      "slug": "qr",
+      "type": "saas",
+      "status": "building",
+      "nameKey": "studio.saas2Name",
+      "taglineKey": "studio.saas2Tagline",
+      "pricing": "free",
+      "featured": false
+    },
+    {
+      "id": "newon-link",
+      "slug": "link",
+      "type": "saas",
+      "status": "concept",
+      "nameKey": "studio.saas3Name",
+      "taglineKey": "studio.saas3Tagline",
+      "pricing": "free",
+      "featured": false
+    },
+    {
+      "id": "newon-form",
+      "slug": "form",
+      "type": "saas",
+      "status": "concept",
+      "nameKey": "studio.saas4Name",
+      "taglineKey": "studio.saas4Tagline",
+      "pricing": "free",
+      "featured": false
+    }
+  ],
+  "labs": [
+    {
+      "id": "review-ai",
+      "slug": "review-ai",
+      "status": "building",
+      "nameKey": "studio.lab1Name",
+      "descKey": "studio.lab1Desc",
+      "type": "ai"
+    },
+    {
+      "id": "newon-qr",
+      "slug": "newon-qr",
+      "status": "building",
+      "nameKey": "studio.lab2Name",
+      "descKey": "studio.lab2Desc",
+      "type": "saas"
+    },
+    {
+      "id": "newon-form",
+      "slug": "newon-form",
+      "status": "concept",
+      "nameKey": "studio.lab3Name",
+      "descKey": "studio.lab3Desc",
+      "type": "saas"
+    },
+    {
+      "id": "ai-experiment",
+      "slug": "ai-experiment",
+      "status": "exploring",
+      "nameKey": "studio.lab4Name",
+      "descKey": "studio.lab4Desc",
+      "type": "ai"
+    },
+    {
+      "id": "game-experiment",
+      "slug": "game-experiment",
+      "status": "exploring",
+      "nameKey": "studio.lab5Name",
+      "descKey": "studio.lab5Desc",
+      "type": "games"
+    },
+    {
+      "id": "character-lab",
+      "slug": "character-lab",
+      "status": "building",
+      "nameKey": "studio.lab6Name",
+      "descKey": "studio.lab6Desc",
+      "type": "character"
+    }
+  ],
+  "store": [
+    {
+      "slug": "newon-project-starter-kit",
+      "category": "business",
+      "collection": "publishing",
+      "status": "live",
+      "buyable": true,
+      "featured": true,
+      "nameKey": "studio.storeStarterName",
+      "descKey": "studio.storeStarterDesc",
+      "priceKo": "₩19,000",
+      "priceEn": "₩19,000",
+      "priceAmount": 19000,
+      "currency": "KRW"
+    },
+    {
+      "slug": "app-launch-kit",
+      "category": "templates",
+      "status": "building",
+      "buyable": false,
+      "nameKey": "studio.store1Name",
+      "descKey": "studio.store1Desc",
+      "priceKo": "Coming Soon",
+      "priceEn": "Coming Soon"
+    },
+    {
+      "slug": "mvp-planning-kit",
+      "category": "templates",
+      "status": "building",
+      "buyable": false,
+      "nameKey": "studio.store2Name",
+      "descKey": "studio.store2Desc",
+      "priceKo": "Coming Soon",
+      "priceEn": "Coming Soon"
+    },
+    {
+      "slug": "website-launch-checklist",
+      "category": "templates",
+      "collection": "publishing",
+      "status": "building",
+      "buyable": false,
+      "nameKey": "studio.storeWebLaunchName",
+      "descKey": "studio.storeWebLaunchDesc",
+      "priceKo": "Coming Soon",
+      "priceEn": "Coming Soon"
+    },
+    {
+      "slug": "business-planning-workbook",
+      "category": "business",
+      "collection": "publishing",
+      "status": "building",
+      "buyable": false,
+      "nameKey": "studio.storeBizPlanName",
+      "descKey": "studio.storeBizPlanDesc",
+      "priceKo": "Coming Soon",
+      "priceEn": "Coming Soon"
+    },
+    {
+      "slug": "product-research-template",
+      "category": "reports",
+      "collection": "publishing",
+      "status": "building",
+      "buyable": false,
+      "nameKey": "studio.storeResearchName",
+      "descKey": "studio.storeResearchDesc",
+      "priceKo": "Coming Soon",
+      "priceEn": "Coming Soon"
+    },
+    {
+      "slug": "founder-dashboard",
+      "category": "business",
+      "status": "concept",
+      "buyable": false,
+      "nameKey": "studio.store4Name",
+      "descKey": "studio.store4Desc",
+      "priceKo": "Coming Soon",
+      "priceEn": "Coming Soon"
+    },
+    {
+      "slug": "product-roadmap",
+      "category": "templates",
+      "status": "concept",
+      "buyable": false,
+      "nameKey": "studio.store5Name",
+      "descKey": "studio.store5Desc",
+      "priceKo": "Coming Soon",
+      "priceEn": "Coming Soon"
+    }
+  ],
+  "tools": [
+    {
+      "id": "qr-generator",
+      "slug": "qr",
+      "status": "live"
+    },
+    {
+      "id": "random-picker",
+      "slug": "random-picker",
+      "status": "live"
+    },
+    {
+      "id": "wheel-spinner",
+      "slug": "wheel",
+      "status": "live"
+    },
+    {
+      "id": "dday-calculator",
+      "slug": "dday",
+      "status": "live"
+    },
+    {
+      "id": "text-counter",
+      "slug": "counter",
+      "status": "live"
+    },
+    {
+      "id": "password-generator",
+      "slug": "password",
+      "status": "live"
+    },
+    {
+      "id": "uuid-generator",
+      "slug": "uuid",
+      "status": "live"
+    },
+    {
+      "id": "json-formatter",
+      "slug": "json",
+      "status": "live"
+    },
+    {
+      "id": "color-converter",
+      "slug": "color",
+      "status": "live"
+    },
+    {
+      "id": "percent-calculator",
+      "slug": "percent",
+      "status": "live"
+    },
+    {
+      "id": "subscription-calculator",
+      "slug": "subscription",
+      "status": "live"
+    },
+    {
+      "id": "date-calculator",
+      "slug": "date",
+      "status": "live"
+    },
+    {
+      "id": "utm-builder",
+      "slug": "utm",
+      "status": "live"
+    },
+    {
+      "id": "app-launch-checklist",
+      "slug": "app-launch-checklist",
+      "status": "building"
+    },
+    {
+      "id": "mvp-planner",
+      "slug": "mvp-planner",
+      "status": "building"
+    },
+    {
+      "id": "app-pricing-calculator",
+      "slug": "app-pricing-calculator",
+      "status": "building"
+    }
+  ],
+  "growth": {
+    "metrics": [
+      {
+        "id": "page_views",
+        "label": "Page views",
+        "value": null,
+        "source": null
+      },
+      {
+        "id": "store_views",
+        "label": "Store product views",
+        "value": null,
+        "source": null
+      },
+      {
+        "id": "insight_views",
+        "label": "Insight views",
+        "value": null,
+        "source": null
+      },
+      {
+        "id": "tool_starts",
+        "label": "Tool starts",
+        "value": null,
+        "source": null
+      },
+      {
+        "id": "creative_inquiries",
+        "label": "Creative inquiries",
+        "value": null,
+        "source": null
+      },
+      {
+        "id": "newsletter_signups",
+        "label": "Newsletter signups",
+        "value": null,
+        "source": null
+      },
+      {
+        "id": "experiment_views",
+        "label": "Experiment views",
+        "value": null,
+        "source": null
+      },
+      {
+        "id": "affiliate_clicks",
+        "label": "Affiliate clicks",
+        "value": null,
+        "source": null
+      }
+    ]
+  }
+}
