@@ -1361,3 +1361,9 @@ textarea.hq-input {
     display: none;
   }
 }
+
+/* Phase 2A — project detail */
+.hq-detail-stack {
+  display: grid;
+  gap: 0.85rem;
+}

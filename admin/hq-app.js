@@ -15,13 +15,14 @@ import {
   orderBy,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
-const HQ_VERSION = "1.1.0";
+const HQ_VERSION = "1.2.0";
 const COL = {
   tasks: "hq_tasks",
   releases: "hq_releases",
   leads: "hq_leads",
   finance: "hq_finance",
   productsMeta: "hq_products_meta",
+  projects: "hq_projects",
 };
 
 const TASK_STATUS = ["todo", "doing", "done"];
@@ -60,11 +61,46 @@ const ACTIVE_LEAD = new Set([
 const FINANCE_TYPE = ["income", "expense"];
 const OPS_STATUS = ["active", "review", "maintenance", "paused", "planned"];
 
+const PROJECT_STATUS = [
+  "inquiry",
+  "planning",
+  "quoted",
+  "contract",
+  "active",
+  "review",
+  "completed",
+  "on_hold",
+  "cancelled",
+];
+const PROJECT_STATUS_LABEL = {
+  inquiry: "문의",
+  planning: "기획",
+  quoted: "견적",
+  contract: "계약",
+  active: "진행 중",
+  review: "검수",
+  completed: "완료",
+  on_hold: "보류",
+  cancelled: "취소",
+};
+const DEFAULT_SERVICE_TYPES = [
+  { value: "mvp", label: "MVP" },
+  { value: "app", label: "App Prototype" },
+  { value: "web", label: "Website Development" },
+  { value: "landing", label: "Landing Page Development" },
+  { value: "internal-tools", label: "Internal Tools" },
+  { value: "ai-automation", label: "AI Automation" },
+  { value: "workflow-automation", label: "Workflow Automation" },
+  { value: "market-research", label: "Market Research" },
+  { value: "other", label: "Other" },
+];
+
 const NAV_KEYS = [
   "dashboard",
   "tasks",
   "releases",
   "leads",
+  "projects",
   "finance",
   "products",
   "settings",
@@ -86,9 +122,14 @@ let filters = {
   tasks: { status: "", priority: "", q: "" },
   releases: { status: "", product: "" },
   leads: { status: "", source: "", archived: "active" },
+  projects: { status: "", service: "", priority: "", q: "", archived: "active" },
   finance: { month: "", type: "", archived: "active" },
   products: { status: "" },
 };
+/** @type {string|null} */
+let projectDetailId = null;
+/** @type {Array<{value:string,label:string}>} */
+let serviceTypes = DEFAULT_SERVICE_TYPES.slice();
 
 const PAGE_META = {
   dashboard: {
@@ -111,6 +152,11 @@ const PAGE_META = {
     title: "Leads",
     desc: "Inbound inquiries and pipeline status.",
   },
+  projects: {
+    eyebrow: "Projects",
+    title: "Client Projects",
+    desc: "Manage Newon client projects and delivery status.",
+  },
   finance: {
     eyebrow: "Business",
     title: "Finance",
@@ -130,7 +176,14 @@ const PAGE_META = {
 let saving = false;
 
 function emptyCache() {
-  return { tasks: [], releases: [], leads: [], finance: [], productsMeta: [] };
+  return {
+    tasks: [],
+    releases: [],
+    leads: [],
+    finance: [],
+    productsMeta: [],
+    projects: [],
+  };
 }
 
 function $(id) {
@@ -241,6 +294,7 @@ function setNavOpen(open) {
 }
 
 function showPanel(key) {
+  if (key !== "projects") projectDetailId = null;
   currentNav = key;
   for (const k of NAV_KEYS) {
     const p = $("hq-panel-" + k);
@@ -502,14 +556,15 @@ async function loadCol(name, orderField) {
 
 async function loadAll() {
   if (!ctx || !ctx.db) return;
-  const [tasks, releases, leads, finance, productsMeta] = await Promise.all([
+  const [tasks, releases, leads, finance, productsMeta, projects] = await Promise.all([
     loadCol(COL.tasks, "createdAt"),
     loadCol(COL.releases, "createdAt"),
     loadCol(COL.leads, "createdAt"),
     loadCol(COL.finance, "date"),
     loadCol(COL.productsMeta, null),
+    loadCol(COL.projects, "updatedAt"),
   ]);
-  cache = { tasks, releases, leads, finance, productsMeta };
+  cache = { tasks, releases, leads, finance, productsMeta, projects };
 }
 
 async function loadCatalog() {
@@ -523,6 +578,20 @@ async function loadCatalog() {
     catalog = Array.isArray(data) ? data : [];
   } catch {
     catalog = [];
+  }
+}
+
+async function loadServiceTypes() {
+  try {
+    const res = await fetch("./service-types.json", { cache: "no-store" });
+    if (!res.ok) {
+      serviceTypes = DEFAULT_SERVICE_TYPES.slice();
+      return;
+    }
+    const data = await res.json();
+    serviceTypes = Array.isArray(data) && data.length ? data : DEFAULT_SERVICE_TYPES.slice();
+  } catch {
+    serviceTypes = DEFAULT_SERVICE_TYPES.slice();
   }
 }
 
@@ -570,6 +639,40 @@ function confirmDelete(message, onYes) {
   ]);
 }
 
+
+function projectById(id) {
+  if (!id) return null;
+  return cache.projects.find((p) => p.id === id) || null;
+}
+
+function projectOptions(selected) {
+  const opts = [{ value: "", label: "None" }].concat(
+    cache.projects
+      .filter((p) => !p.archived)
+      .map((p) => ({ value: p.id, label: p.name || p.id }))
+  );
+  return select({}, opts, selected || "");
+}
+
+function serviceTypeOptions(selected) {
+  const opts = serviceTypes.map((s) =>
+    typeof s === "string" ? { value: s, label: s } : s
+  );
+  return select({}, opts, selected || (opts[0] && opts[0].value) || "other");
+}
+
+function projectStatusBadge(status) {
+  const s = String(status || "");
+  const label = PROJECT_STATUS_LABEL[s] || s || "—";
+  return badge(label, s);
+}
+
+function serviceTypeLabel(value) {
+  const hit = serviceTypes.find((s) => (s.value || s) === value);
+  if (!hit) return value || "—";
+  return hit.label || hit.value || value;
+}
+
 /* ---------- Dashboard ---------- */
 function renderDashboard(root) {
   clear(root);
@@ -577,6 +680,9 @@ function renderDashboard(root) {
   const month = monthKey(new Date());
   const openTasks = cache.tasks.filter((t) => t.status !== "done").length;
   const upcomingReleases = cache.releases.filter((r) => r.status !== "released").length;
+  const activeProjects = cache.projects.filter(
+    (p) => !p.archived && p.status === "active"
+  ).length;
   const activeLeads = cache.leads.filter(
     (l) => !l.archived && ACTIVE_LEAD.has(l.status)
   ).length;
@@ -601,7 +707,7 @@ function renderDashboard(root) {
   root.appendChild(
     el("div", { className: "hq-stat-grid" }, [
       statCard("Open tasks", openTasks, "Todo + doing"),
-      statCard("Upcoming releases", upcomingReleases, "Not released"),
+      statCard("Active projects", activeProjects, "Status = active"),
       statCard("Active leads", activeLeads, "In pipeline"),
       statCard("Month revenue", formatKrw(income), month),
       statCard("Month expense", formatKrw(expense), month),
@@ -697,6 +803,55 @@ function renderDashboard(root) {
     ])
   );
 
+  const projectPreview = cache.projects
+    .filter((p) => !p.archived && (p.status === "active" || p.status === "review" || p.status === "contract"))
+    .slice(0, 5);
+  const projectBody = [];
+  if (!projectPreview.length) {
+    projectBody.push(
+      el("div", { style: "padding:1rem 1.05rem" }, [emptyMsg("No active projects.")])
+    );
+  } else {
+    for (const p of projectPreview) {
+      const row = el("div", {
+        className: "hq-row",
+        style: "cursor:pointer",
+        onClick: () => {
+          projectDetailId = p.id;
+          showPanel("projects");
+        },
+      });
+      row.appendChild(projectStatusBadge(p.status));
+      const mid = el("div");
+      mid.appendChild(el("p", { className: "hq-row__title", text: p.name || "—" }));
+      mid.appendChild(
+        el("p", {
+          className: "hq-row__meta",
+          text: `${p.clientName || p.company || "—"} · ${ymd(p.targetDate) || "No target"}`,
+        })
+      );
+      row.appendChild(mid);
+      row.appendChild(priorityBadge(p.priority));
+      projectBody.push(row);
+    }
+  }
+  root.appendChild(
+    surfacePanel(
+      "Active Projects",
+      projectBody,
+      el("button", {
+        type: "button",
+        className: "hq-surface-panel__link",
+        text: "View all",
+        onClick: () => {
+          projectDetailId = null;
+          showPanel("projects");
+        },
+      })
+    )
+  );
+  root.appendChild(el("div", { style: "height:0.85rem" }));
+
   const leadBuckets = [
     ["new", "New"],
     ["contacted", "Contacted"],
@@ -773,8 +928,10 @@ function filteredTasks() {
   });
 }
 
-function openTaskForm(item) {
+function openTaskForm(item, opts) {
+  opts = opts || {};
   const isEdit = !!item;
+  const prefProject = (item && item.projectId) || opts.projectId || "";
   const titleIn = input({ value: (item && item.title) || "", required: true });
   const descIn = textarea({ text: (item && item.description) || "" });
   descIn.value = (item && item.description) || "";
@@ -782,12 +939,14 @@ function openTaskForm(item) {
   const priIn = select({}, TASK_PRIORITY, (item && item.priority) || "medium");
   const catIn = input({ value: (item && item.category) || "" });
   const dueIn = input({ type: "date", value: ymd(item && item.dueDate) });
+  const projectIn = projectOptions(prefProject);
   const form = el("form", { className: "hq-form" }, [
     fieldRow("제목 *", titleIn),
     fieldRow("설명", descIn),
     fieldRow("상태", statusIn),
     fieldRow("우선순위", priIn),
     fieldRow("카테고리", catIn),
+    fieldRow("Project", projectIn),
     fieldRow("마감일", dueIn),
   ]);
   const saveBtn = btn("저장", { type: "submit", dataset: { hqSave: "1" } });
@@ -818,6 +977,7 @@ function openTaskForm(item) {
         priority: priIn.value,
         category: catIn.value.trim(),
         dueDate: dueIn.value || null,
+        projectId: projectIn.value || null,
         updatedAt: serverTimestamp(),
         updatedBy: uid(),
       };
@@ -1387,6 +1547,12 @@ function renderLeads(root) {
     );
     if (!l.archived) {
       actions.appendChild(
+        btn("Create Project", {
+          className: "hq-btn hq-btn--small hq-btn--ghost",
+          onClick: () => openProjectForm(null, { lead: l }),
+        })
+      );
+      actions.appendChild(
         btn("Archive", {
           className: "hq-btn hq-btn--small hq-btn--ghost",
           onClick: withSaving(async () => {
@@ -1464,8 +1630,10 @@ function financeTotals(list) {
   return { income, expense, net: income - expense };
 }
 
-function openFinanceForm(item) {
+function openFinanceForm(item, opts) {
+  opts = opts || {};
   const isEdit = !!item;
+  const prefProject = (item && item.projectId) || opts.projectId || "";
   const typeIn = select({}, FINANCE_TYPE, (item && item.type) || "expense");
   const catIn = input({ value: (item && item.category) || "", required: true });
   const amountIn = input({
@@ -1482,13 +1650,15 @@ function openFinanceForm(item) {
   });
   const memoIn = textarea({});
   memoIn.value = (item && item.memo) || "";
-  const projectIn = input({ value: (item && item.relatedProject) || "" });
+  const projectIn = projectOptions(prefProject);
+  const labelIn = input({ value: (item && item.relatedProject) || "" });
   const form = el("form", { className: "hq-form" }, [
     fieldRow("유형", typeIn),
     fieldRow("카테고리 *", catIn),
     fieldRow("금액 *", amountIn),
     fieldRow("날짜 *", dateIn),
-    fieldRow("관련 프로젝트", projectIn),
+    fieldRow("Project", projectIn),
+    fieldRow("Related label", labelIn),
     fieldRow("메모", memoIn),
   ]);
   const saveBtn = btn("저장", { type: "submit", dataset: { hqSave: "1" } });
@@ -1518,13 +1688,20 @@ function openFinanceForm(item) {
         toast("금액은 0보다 커야 합니다", "err");
         return;
       }
+      const projectId = projectIn.value || null;
+      let relatedProject = labelIn.value.trim();
+      if (!relatedProject && projectId) {
+        const p = projectById(projectId);
+        relatedProject = (p && p.name) || "";
+      }
       const payload = {
         type: typeIn.value,
         category,
         amount,
         date,
         memo: memoIn.value.trim(),
-        relatedProject: projectIn.value.trim(),
+        relatedProject,
+        projectId,
         archived: !!(item && item.archived),
         updatedAt: serverTimestamp(),
         updatedBy: uid(),
@@ -1962,12 +2139,675 @@ function renderSettings(root) {
   );
 }
 
+
+/* ---------- Projects ---------- */
+function filteredProjects() {
+  const f = filters.projects;
+  const q = (f.q || "").trim().toLowerCase();
+  return cache.projects.filter((p) => {
+    if (f.archived === "active" && p.archived) return false;
+    if (f.archived === "archived" && !p.archived) return false;
+    if (f.status === "active" && p.status !== "active") return false;
+    else if (f.status === "review" && p.status !== "review") return false;
+    else if (f.status === "completed" && p.status !== "completed") return false;
+    else if (f.status === "on_hold" && p.status !== "on_hold") return false;
+    else if (f.status && !["active", "review", "completed", "on_hold", ""].includes(f.status)) {
+      if (p.status !== f.status) return false;
+    }
+    if (f.service && p.serviceType !== f.service) return false;
+    if (f.priority && p.priority !== f.priority) return false;
+    if (q) {
+      const hay = `${p.name || ""} ${p.clientName || ""} ${p.company || ""}`.toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function openProjectForm(item, opts) {
+  opts = opts || {};
+  const lead = opts.lead || null;
+  const isEdit = !!item;
+  const nameIn = input({
+    value:
+      (item && item.name) ||
+      (lead ? `${lead.company || lead.name || "Client"} Project` : ""),
+    required: true,
+  });
+  const clientIn = input({
+    value: (item && item.clientName) || (lead && lead.name) || "",
+  });
+  const companyIn = input({
+    value: (item && item.company) || (lead && lead.company) || "",
+  });
+  const emailIn = input({
+    type: "email",
+    value: (item && item.clientEmail) || (lead && lead.email) || "",
+  });
+  const phoneIn = input({
+    value: (item && item.clientPhone) || (lead && lead.phone) || "",
+  });
+  const serviceIn = serviceTypeOptions(
+    (item && item.serviceType) || "other"
+  );
+  const statusIn = select(
+    {},
+    PROJECT_STATUS.map((s) => ({
+      value: s,
+      label: `${PROJECT_STATUS_LABEL[s] || s} (${s})`,
+    })),
+    (item && item.status) || "inquiry"
+  );
+  const priIn = select({}, TASK_PRIORITY, (item && item.priority) || "medium");
+  const budgetIn = input({
+    type: "number",
+    min: "0",
+    step: "1",
+    value:
+      item && item.budget != null
+        ? String(item.budget)
+        : lead && lead.amountEstimate != null
+          ? String(lead.amountEstimate)
+          : "0",
+  });
+  const startIn = input({ type: "date", value: ymd(item && item.startDate) });
+  const targetIn = input({ type: "date", value: ymd(item && item.targetDate) });
+  const descIn = textarea({});
+  descIn.value = (item && item.description) || "";
+  const notesIn = textarea({});
+  notesIn.value = (item && item.internalNotes) || "";
+  const form = el("form", { className: "hq-form" }, [
+    fieldRow("Project Name *", nameIn),
+    fieldRow("Client Name", clientIn),
+    fieldRow("Company", companyIn),
+    fieldRow("Email", emailIn),
+    fieldRow("Phone", phoneIn),
+    fieldRow("Service Type *", serviceIn),
+    fieldRow("Status *", statusIn),
+    fieldRow("Priority", priIn),
+    fieldRow("Budget (KRW)", budgetIn),
+    fieldRow("Start Date", startIn),
+    fieldRow("Target Date", targetIn),
+    fieldRow("Description", descIn),
+    fieldRow("Internal Notes", notesIn),
+  ]);
+  const saveBtn = btn(isEdit ? "Save" : "Create", {
+    type: "submit",
+    dataset: { hqSave: "1" },
+  });
+  const cancelBtn = btn("Cancel", {
+    className: "hq-btn hq-btn--ghost",
+    onClick: (e) => {
+      e.preventDefault();
+      closeModal();
+    },
+  });
+  form.addEventListener(
+    "submit",
+    withSaving(async (e) => {
+      e.preventDefault();
+      const name = nameIn.value.trim();
+      if (!name) {
+        toast("Project name is required", "err");
+        return;
+      }
+      if (!serviceIn.value || !PROJECT_STATUS.includes(statusIn.value)) {
+        toast("Invalid service or status", "err");
+        return;
+      }
+      const email = emailIn.value.trim();
+      if (!isEmail(email)) {
+        toast("Invalid email", "err");
+        return;
+      }
+      const budget = Number(budgetIn.value || 0);
+      if (!Number.isFinite(budget) || budget < 0) {
+        toast("Budget must be 0 or greater", "err");
+        return;
+      }
+      if (startIn.value && targetIn.value && targetIn.value < startIn.value) {
+        toast("Target date is before start date", "err");
+        return;
+      }
+      if (!TASK_PRIORITY.includes(priIn.value)) {
+        toast("Invalid priority", "err");
+        return;
+      }
+      const leadId =
+        (item && item.leadId) || (lead && lead.id) || null;
+      const payload = {
+        name,
+        clientName: clientIn.value.trim(),
+        company: companyIn.value.trim(),
+        clientEmail: email,
+        clientPhone: phoneIn.value.trim(),
+        serviceType: serviceIn.value,
+        status: statusIn.value,
+        priority: priIn.value,
+        budget,
+        currency: "KRW",
+        startDate: startIn.value || null,
+        targetDate: targetIn.value || null,
+        description: descIn.value.trim(),
+        internalNotes: notesIn.value.trim(),
+        leadId,
+        archived: !!(item && item.archived),
+        updatedAt: serverTimestamp(),
+        updatedBy: uid(),
+      };
+      try {
+        let projectId = item && item.id;
+        if (isEdit) {
+          await updateDoc(doc(ctx.db, COL.projects, item.id), payload);
+        } else {
+          const ref = await addDoc(collection(ctx.db, COL.projects), {
+            ...payload,
+            archived: false,
+            createdAt: serverTimestamp(),
+            createdBy: uid(),
+          });
+          projectId = ref.id;
+          if (leadId) {
+            await updateDoc(doc(ctx.db, COL.leads, leadId), {
+              projectId,
+              updatedAt: serverTimestamp(),
+              updatedBy: uid(),
+            });
+          }
+        }
+        closeModal();
+        toast(isEdit ? "Saved" : "Project created", "ok");
+        projectDetailId = projectId || null;
+        currentNav = "projects";
+        await refreshAndRender();
+        showPanel("projects");
+      } catch {
+        toast("Save failed", "err");
+      }
+    })
+  );
+  openModal(isEdit ? "Edit Project" : "New Project", form, [cancelBtn, saveBtn]);
+}
+
+function openProjectStatusForm(item) {
+  const statusIn = select(
+    {},
+    PROJECT_STATUS.map((s) => ({
+      value: s,
+      label: `${PROJECT_STATUS_LABEL[s] || s} (${s})`,
+    })),
+    item.status || "inquiry"
+  );
+  const form = el("form", { className: "hq-form" }, [
+    fieldRow("Status", statusIn),
+  ]);
+  const saveBtn = btn("Update", { type: "submit", dataset: { hqSave: "1" } });
+  const cancelBtn = btn("Cancel", {
+    className: "hq-btn hq-btn--ghost",
+    onClick: (e) => {
+      e.preventDefault();
+      closeModal();
+    },
+  });
+  form.addEventListener(
+    "submit",
+    withSaving(async (e) => {
+      e.preventDefault();
+      if (!PROJECT_STATUS.includes(statusIn.value)) {
+        toast("Invalid status", "err");
+        return;
+      }
+      try {
+        await updateDoc(doc(ctx.db, COL.projects, item.id), {
+          status: statusIn.value,
+          updatedAt: serverTimestamp(),
+          updatedBy: uid(),
+        });
+        closeModal();
+        toast("Status updated", "ok");
+        await refreshAndRender();
+      } catch {
+        toast("Update failed", "err");
+      }
+    })
+  );
+  openModal("Change Status", form, [cancelBtn, saveBtn]);
+}
+
+function renderProjectDetail(root, project) {
+  clear(root);
+  root.appendChild(
+    pageHeader("projects", [
+      btn("← Back", {
+        className: "hq-btn hq-btn--ghost",
+        onClick: () => {
+          projectDetailId = null;
+          renderProjects(root);
+        },
+      }),
+      btn("Edit", { onClick: () => openProjectForm(project) }),
+      btn("Change Status", {
+        className: "hq-btn hq-btn--ghost",
+        onClick: () => openProjectStatusForm(project),
+      }),
+    ])
+  );
+
+  const head = el("div", { className: "hq-surface-panel", style: "margin-bottom:0.85rem" });
+  head.appendChild(
+    el("div", { className: "hq-surface-panel__body", style: "padding:1.1rem 1.05rem" }, [
+      el("p", { className: "hq-eyebrow", text: "Project" }),
+      el("h2", {
+        className: "hq-page-header__title",
+        style: "margin:0.2rem 0 0.45rem;font-size:1.65rem",
+        text: project.name || "—",
+      }),
+      el("p", {
+        className: "hq-page-header__desc",
+        text: `${project.clientName || "—"} · ${project.company || "—"}`,
+      }),
+      el("div", { className: "hq-product-card__ops", style: "margin-top:0.75rem" }, [
+        projectStatusBadge(project.status),
+        priorityBadge(project.priority),
+        badge(serviceTypeLabel(project.serviceType)),
+      ]),
+    ])
+  );
+  root.appendChild(head);
+
+  root.appendChild(
+    el("div", { className: "hq-grid-2--equal hq-grid-2" }, [
+      surfacePanel("Overview", [
+        el("div", { className: "hq-pipeline" }, [
+          el("p", { className: "hq-row__meta", text: `Client: ${project.clientName || "—"}` }),
+          el("p", { className: "hq-row__meta", text: `Company: ${project.company || "—"}` }),
+          el("p", { className: "hq-row__meta", text: `Email: ${project.clientEmail || "—"}` }),
+          el("p", { className: "hq-row__meta", text: `Phone: ${project.clientPhone || "—"}` }),
+          el("p", {
+            className: "hq-row__meta",
+            text: `Service: ${serviceTypeLabel(project.serviceType)}`,
+          }),
+          el("p", {
+            className: "hq-row__meta",
+            text: `Budget: ${formatKrw(project.budget || 0)} (${project.currency || "KRW"})`,
+          }),
+        ]),
+      ]),
+      surfacePanel("Progress", [
+        el("div", { className: "hq-pipeline" }, [
+          el("div", { className: "hq-row", style: "border:0;padding:0.35rem 0" }, [
+            projectStatusBadge(project.status),
+            el("span", {
+              className: "hq-row__aside",
+              text: PROJECT_STATUS_LABEL[project.status] || project.status || "",
+            }),
+          ]),
+          el("p", { className: "hq-row__meta", text: `Start: ${ymd(project.startDate) || "—"}` }),
+          el("p", { className: "hq-row__meta", text: `Target: ${ymd(project.targetDate) || "—"}` }),
+          el("p", { className: "hq-row__meta", text: `Updated: ${ymd(project.updatedAt) || "—"}` }),
+        ]),
+      ]),
+    ])
+  );
+
+  root.appendChild(el("div", { style: "height:0.85rem" }));
+  root.appendChild(
+    surfacePanel("Notes", [
+      el("div", { className: "hq-pipeline" }, [
+        el("p", { className: "hq-summary-pill__label", text: "Description" }),
+        el("p", {
+          className: "hq-row__meta",
+          text: project.description || "No description",
+        }),
+        el("p", {
+          className: "hq-summary-pill__label",
+          style: "margin-top:0.75rem",
+          text: "Internal notes",
+        }),
+        el("p", {
+          className: "hq-row__meta",
+          text: project.internalNotes || "No internal notes",
+        }),
+      ]),
+    ])
+  );
+
+  const lead = project.leadId
+    ? cache.leads.find((l) => l.id === project.leadId)
+    : null;
+  const relatedTasks = cache.tasks.filter((t) => t.projectId === project.id);
+  const relatedFinance = cache.finance.filter(
+    (f) => !f.archived && f.projectId === project.id
+  );
+  const fin = financeTotals(relatedFinance);
+
+  root.appendChild(el("div", { style: "height:0.85rem" }));
+  root.appendChild(
+    el("div", { className: "hq-grid-2" }, [
+      surfacePanel(
+        "Related · Lead",
+        [
+          el("div", { className: "hq-pipeline" }, [
+            el("p", {
+              className: "hq-row__meta",
+              text: lead
+                ? `${lead.name || "—"} · ${lead.status || ""} · ${lead.company || ""}`
+                : project.leadId
+                  ? "Linked lead not found in cache"
+                  : "No linked lead",
+            }),
+          ]),
+        ]
+      ),
+      surfacePanel("Related · Finance", [
+        el("div", { className: "hq-pipeline" }, [
+          el("p", {
+            className: "hq-row__meta",
+            text: `Budget (contract/estimate): ${formatKrw(project.budget || 0)}`,
+          }),
+          el("p", {
+            className: "hq-row__meta",
+            text: `Income (recorded): ${formatKrw(fin.income)}`,
+          }),
+          el("p", {
+            className: "hq-row__meta",
+            text: `Expense (recorded): ${formatKrw(fin.expense)}`,
+          }),
+          el("p", {
+            className: "hq-row__meta",
+            text: `Net (recorded): ${formatKrw(fin.net)}`,
+          }),
+          btn("+ Add Entry", {
+            className: "hq-btn hq-btn--small",
+            style: "margin-top:0.55rem",
+            onClick: () => openFinanceForm(null, { projectId: project.id }),
+          }),
+        ]),
+      ]),
+    ])
+  );
+
+  const taskKids = [];
+  if (!relatedTasks.length) {
+    taskKids.push(
+      el("div", { style: "padding:0.85rem 1.05rem" }, [emptyMsg("No linked tasks.")])
+    );
+  } else {
+    for (const t of relatedTasks.slice(0, 20)) {
+      const row = el("div", { className: "hq-row hq-row--task" });
+      row.appendChild(statusBadge(t.status));
+      const mid = el("div");
+      mid.appendChild(el("p", { className: "hq-row__title", text: t.title || "—" }));
+      mid.appendChild(
+        el("p", {
+          className: "hq-row__meta",
+          text: `${t.priority || ""} · ${ymd(t.dueDate) || "—"}`,
+        })
+      );
+      row.appendChild(mid);
+      row.appendChild(
+        btn("Edit", {
+          className: "hq-btn hq-btn--small",
+          onClick: () => openTaskForm(t),
+        })
+      );
+      taskKids.push(row);
+    }
+  }
+  root.appendChild(el("div", { style: "height:0.85rem" }));
+  root.appendChild(
+    surfacePanel(
+      "Related · Tasks",
+      taskKids,
+      btn("+ Add Task", {
+        className: "hq-surface-panel__link",
+        onClick: () => openTaskForm(null, { projectId: project.id }),
+      })
+    )
+  );
+
+  root.appendChild(el("div", { style: "height:0.85rem" }));
+  root.appendChild(
+    surfacePanel("Related · Documents", [
+      el("div", { className: "hq-pipeline" }, [
+        el("p", {
+          className: "hq-row__meta",
+          text: "Document workflow will be available in the next phase.",
+        }),
+      ]),
+    ])
+  );
+
+  if (!project.archived) {
+    root.appendChild(
+      el("div", { className: "hq-session-box" }, [
+        el("p", { className: "hq-session-box__title", text: "Archive" }),
+        el("p", {
+          className: "hq-session-box__desc",
+          text: "Archiving hides this project from the default list. Related leads, tasks, and finance are not deleted.",
+        }),
+        btn("Archive Project", {
+          className: "hq-btn hq-btn--ghost",
+          onClick: () =>
+            confirmDelete("Archive this project?", async () => {
+              try {
+                await updateDoc(doc(ctx.db, COL.projects, project.id), {
+                  archived: true,
+                  updatedAt: serverTimestamp(),
+                  updatedBy: uid(),
+                });
+                toast("Archived", "ok");
+                projectDetailId = null;
+                await refreshAndRender();
+              } catch {
+                toast("Archive failed", "err");
+              }
+            }),
+        }),
+      ])
+    );
+  }
+}
+
+function renderProjects(root) {
+  clear(root);
+  if (projectDetailId) {
+    const project = projectById(projectDetailId);
+    if (project) {
+      renderProjectDetail(root, project);
+      return;
+    }
+    projectDetailId = null;
+  }
+
+  const activeList = cache.projects.filter((p) => !p.archived);
+  const total = activeList.length;
+  const active = activeList.filter((p) => p.status === "active").length;
+  const review = activeList.filter((p) => p.status === "review").length;
+  const completed = activeList.filter((p) => p.status === "completed").length;
+  const budgetSum = activeList.reduce((s, p) => s + (Number(p.budget) || 0), 0);
+
+  root.appendChild(
+    pageHeader("projects", [
+      btn("+ New Project", { onClick: () => openProjectForm(null) }),
+    ])
+  );
+  root.appendChild(
+    el("div", { className: "hq-stat-grid" }, [
+      statCard("Total", total, "Not archived"),
+      statCard("Active", active, "In delivery"),
+      statCard("Review", review, "Client review"),
+      statCard("Completed", completed, "Done"),
+      statCard("Total budget", formatKrw(budgetSum), "Sum of budgets"),
+      statCard("Archived", cache.projects.filter((p) => p.archived).length, "Hidden by default"),
+    ])
+  );
+
+  const seg = el("div", { className: "hq-seg" });
+  for (const [val, label] of [
+    ["", "All"],
+    ["active", "Active"],
+    ["review", "Review"],
+    ["completed", "Completed"],
+    ["on_hold", "On Hold"],
+  ]) {
+    seg.appendChild(
+      el("button", {
+        type: "button",
+        className:
+          "hq-seg__btn" + (filters.projects.status === val ? " is-active" : ""),
+        text: label,
+        onClick: () => {
+          filters.projects.status = val;
+          renderProjects(root);
+        },
+      })
+    );
+  }
+  const serviceF = select(
+    {
+      onChange: (e) => {
+        filters.projects.service = e.target.value;
+        renderProjects(root);
+      },
+    },
+    [{ value: "", label: "Service" }].concat(
+      serviceTypes.map((s) =>
+        typeof s === "string" ? { value: s, label: s } : s
+      )
+    ),
+    filters.projects.service
+  );
+  const priF = select(
+    {
+      onChange: (e) => {
+        filters.projects.priority = e.target.value;
+        renderProjects(root);
+      },
+    },
+    [{ value: "", label: "Priority" }].concat(TASK_PRIORITY),
+    filters.projects.priority
+  );
+  const archF = select(
+    {
+      onChange: (e) => {
+        filters.projects.archived = e.target.value;
+        renderProjects(root);
+      },
+    },
+    [
+      { value: "active", label: "Active list" },
+      { value: "archived", label: "Archived" },
+      { value: "all", label: "All" },
+    ],
+    filters.projects.archived
+  );
+  const search = input({
+    className: "hq-input hq-input--search",
+    placeholder: "Search name / client / company",
+    value: filters.projects.q || "",
+    onInput: (e) => {
+      filters.projects.q = e.target.value;
+      renderProjects(root);
+    },
+  });
+  root.appendChild(toolbar([seg, serviceF, priF, archF, search]));
+
+  const list = filteredProjects();
+  if (!list.length) {
+    root.appendChild(
+      emptyState(
+        "No projects yet",
+        "Add the first client project to manage timeline, tasks, and revenue together.",
+        btn("+ New Project", { onClick: () => openProjectForm(null) })
+      )
+    );
+    return;
+  }
+
+  const rows = list.map((p) => {
+    const tr = el("tr", {
+      style: "cursor:pointer",
+      onClick: () => {
+        projectDetailId = p.id;
+        renderProjects(root);
+      },
+    });
+    const nameTd = el("td");
+    nameTd.appendChild(el("div", { className: "hq-row__title", text: p.name || "—" }));
+    nameTd.appendChild(
+      el("div", {
+        className: "hq-row__meta",
+        text: p.priority ? `Priority ${p.priority}` : "",
+      })
+    );
+    tr.appendChild(nameTd);
+    tr.appendChild(
+      el("td", {
+        text: `${p.clientName || "—"}${p.company ? " · " + p.company : ""}`,
+      })
+    );
+    tr.appendChild(el("td", { text: serviceTypeLabel(p.serviceType) }));
+    tr.appendChild(el("td", null, [projectStatusBadge(p.status)]));
+    tr.appendChild(el("td", { text: formatKrw(p.budget || 0) }));
+    tr.appendChild(el("td", { text: ymd(p.targetDate) || "—" }));
+    tr.appendChild(el("td", { text: ymd(p.updatedAt) || "—" }));
+    const actions = el("td", { className: "hq-actions-cell" });
+    actions.appendChild(
+      btn("Open", {
+        className: "hq-btn hq-btn--small",
+        onClick: (e) => {
+          e.stopPropagation();
+          projectDetailId = p.id;
+          renderProjects(root);
+        },
+      })
+    );
+    tr.appendChild(actions);
+    return tr;
+  });
+  root.appendChild(
+    table(
+      ["Project", "Client", "Service", "Status", "Budget", "Target", "Updated", ""],
+      rows,
+      "No matching projects."
+    )
+  );
+
+  const cards = el("div", { className: "hq-card-list is-mobile-only" });
+  for (const p of list) {
+    const cardEl = el("article", {
+      className: "hq-item-card",
+      style: "cursor:pointer",
+      onClick: () => {
+        projectDetailId = p.id;
+        renderProjects(root);
+      },
+    });
+    const top = el("div", { className: "hq-item-card__top" });
+    top.appendChild(el("p", { className: "hq-item-card__title", text: p.name || "—" }));
+    top.appendChild(projectStatusBadge(p.status));
+    cardEl.appendChild(top);
+    cardEl.appendChild(
+      el("p", {
+        className: "hq-item-card__meta",
+        text: `${p.clientName || p.company || "—"} · ${formatKrw(p.budget || 0)} · ${
+          ymd(p.targetDate) || "—"
+        }`,
+      })
+    );
+    cards.appendChild(cardEl);
+  }
+  root.appendChild(cards);
+}
+
 function renderCurrent() {
   const map = {
     dashboard: renderDashboard,
     tasks: renderTasks,
     releases: renderReleases,
     leads: renderLeads,
+    projects: renderProjects,
     finance: renderFinance,
     products: renderProducts,
     settings: renderSettings,
@@ -2010,6 +2850,8 @@ function stop() {
   unsubs = [];
   cache = emptyCache();
   catalog = [];
+  serviceTypes = DEFAULT_SERVICE_TYPES.slice();
+  projectDetailId = null;
   ctx = null;
   saving = false;
   closeModal();
@@ -2034,7 +2876,7 @@ async function start(startCtx) {
   bindShell();
   toast("Loading…");
   try {
-    await Promise.all([loadAll(), loadCatalog()]);
+    await Promise.all([loadAll(), loadCatalog(), loadServiceTypes()]);
     toast("");
     showPanel("dashboard");
   } catch {

@@ -9,6 +9,8 @@ rules_version = '2';
  * 3. Click Publish
  *
  * Only the configured admin Auth UID may read or write any document.
+ * HQ operational collections (hq_tasks, hq_releases, hq_leads, hq_finance,
+ * hq_products_meta, hq_projects) are covered by the catch-all admin rule.
  */
 service cloud.firestore {
   match /databases/{database}/documents {

@@ -1,0 +1,74 @@
+[
+  {
+    "value": "landing",
+    "label": "Landing Page Development"
+  },
+  {
+    "value": "web",
+    "label": "Website Development"
+  },
+  {
+    "value": "app",
+    "label": "App Prototype"
+  },
+  {
+    "value": "mvp",
+    "label": "MVP"
+  },
+  {
+    "value": "ai-automation",
+    "label": "AI Automation"
+  },
+  {
+    "value": "workflow-automation",
+    "label": "Workflow Automation"
+  },
+  {
+    "value": "data-reporting",
+    "label": "Data & Reporting"
+  },
+  {
+    "value": "internal-tools",
+    "label": "Internal Tools"
+  },
+  {
+    "value": "market-research",
+    "label": "Market Research"
+  },
+  {
+    "value": "competitor-analysis",
+    "label": "Competitor Analysis"
+  },
+  {
+    "value": "consumer-research",
+    "label": "Consumer Research"
+  },
+  {
+    "value": "ux-audit",
+    "label": "UX Audit"
+  },
+  {
+    "value": "trend-research",
+    "label": "Trend Research"
+  },
+  {
+    "value": "white-label",
+    "label": "White-label"
+  },
+  {
+    "value": "custom-product",
+    "label": "Custom Product"
+  },
+  {
+    "value": "product-launch",
+    "label": "Product Launch"
+  },
+  {
+    "value": "internal-system",
+    "label": "Internal System"
+  },
+  {
+    "value": "other",
+    "label": "Other"
+  }
+]
