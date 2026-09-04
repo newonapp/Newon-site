@@ -3829,37 +3829,6 @@ function internalToolsExtras(copy) {
   return html;
 }
 
-function studioBoundaryNoteHtml(slug, lang) {
-  const build = new Set(["mvp", "web", "landing", "app"]);
-  if (!build.has(slug)) return "";
-  const isKo = lang === "ko" || String(lang || "").startsWith("ko");
-  const studioLine = isKo
-    ? "Studio Digital: UI/UX 및 디자인 결과물이 필요한 프로젝트"
-    : "Studio Digital: for UI/UX and design deliverables";
-  const bizLine = isKo
-    ? "Business BUILD: 실제 구현·개발·연동·배포가 필요한 프로젝트"
-    : "Business BUILD: for implementation, development, integration, and deployment";
-  const pairs = {
-    web: isKo
-      ? "Website Development(구현)과 Studio Web Design(디자인)은 범위가 다릅니다."
-      : "Website Development (build) differs from Studio Web Design (design).",
-    landing: isKo
-      ? "Landing Page Development(구현)과 Studio Landing Page Design(디자인)은 범위가 다릅니다."
-      : "Landing Page Development (build) differs from Studio Landing Page Design (design).",
-    app: isKo
-      ? "App Prototype(구현·프로토타입)과 Studio App UI/UX(디자인)는 범위가 다릅니다."
-      : "App Prototype (build/prototype) differs from Studio App UI/UX (design).",
-    mvp: isKo
-      ? "MVP는 핵심 기능 구현·검증 중심이며, 디자인만 필요한 경우 Studio를 이용해 주세요."
-      : "MVP focuses on building and validating core features; use Studio when you need design-only work.",
-  };
-  const specific = pairs[slug] || "";
-  return `<section class="bs-section" data-bs-reveal aria-label="Business and Studio"><div class="bs-inner">
-    <p class="bs-note bs-note--emph">${escapeHtml(bizLine)} · ${escapeHtml(studioLine)}</p>
-    ${specific ? `<p class="bs-note">${escapeHtml(specific)}</p>` : ""}
-  </div></section>`;
-}
-
 function extrasFor(slug, copy) {
   switch (slug) {
     case "mvp":
@@ -3929,7 +3898,6 @@ function buildBody(page, copy, copies) {
   const secondaryHref = copy.ctaSecondaryHref || `#${processId}`;
 
   let mid = "";
-  mid += studioBoundaryNoteHtml(page.slug, copy._pageLang || "en");
 
   if (copy.solveItems?.length && !landingDetail.has(page.slug)) {
     mid += `<section class="bs-section" data-bs-reveal aria-labelledby="bs-solve-title"><div class="bs-inner">
