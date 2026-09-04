@@ -191,17 +191,23 @@
       setState(form, "loading");
       if (btn) btn.disabled = true;
 
-      var eventName =
-        formType === "newsletter"
-          ? window.newonAnalyticsEvents.NEWSLETTER_SIGNUP
-          : window.newonAnalyticsEvents.WAITLIST_SIGNUP;
-      if (window.newonTrack) {
-        window.newonTrack(eventName, {
-          productId: productId,
-          locale: payload.locale,
-          source: source,
-          interestedProducts: merged.length,
-        });
+      try {
+        var eventName =
+          formType === "newsletter"
+            ? (window.newonAnalyticsEvents && window.newonAnalyticsEvents.NEWSLETTER_SIGNUP) ||
+              "newsletter_signup"
+            : (window.newonAnalyticsEvents && window.newonAnalyticsEvents.WAITLIST_SIGNUP) ||
+              "waitlist_signup";
+        if (window.newonTrack) {
+          window.newonTrack(eventName, {
+            productId: productId,
+            locale: payload.locale,
+            source: source,
+            interestedProducts: merged.length,
+          });
+        }
+      } catch (e) {
+        /* analytics must never block waitlist submit */
       }
 
       fetch(ENDPOINT, {
@@ -221,7 +227,8 @@
         })
         .then(function (out) {
           var flag = out.data && out.data.success;
-          if (!out.ok && flag !== true && flag !== "true") throw new Error("submit-failed");
+          var ok = out.ok && (flag === true || flag === "true");
+          if (!ok) throw new Error("submit-failed");
           writeRecord(formType, productId, email, merged);
           setState(form, isUpdate ? "updated" : "success");
           form.hidden = true;
@@ -231,13 +238,17 @@
           setState(form, "error");
           if (btn) btn.disabled = false;
           showMessage(form, "[data-waitlist-error]", true);
-          if (window.newonTrack) {
-            var errEvt =
-              formType === "newsletter"
-                ? window.newonAnalyticsEvents.NEWSLETTER_ERROR
-                : window.newonAnalyticsEvents.WAITLIST_ERROR;
-            window.newonTrack(errEvt, { productId: productId });
-          }
+          try {
+            if (window.newonTrack) {
+              var errEvt =
+                formType === "newsletter"
+                  ? (window.newonAnalyticsEvents && window.newonAnalyticsEvents.NEWSLETTER_ERROR) ||
+                    "newsletter_error"
+                  : (window.newonAnalyticsEvents && window.newonAnalyticsEvents.WAITLIST_ERROR) ||
+                    "waitlist_error";
+              window.newonTrack(errEvt, { productId: productId });
+            }
+          } catch (e2) {}
         });
     });
   }

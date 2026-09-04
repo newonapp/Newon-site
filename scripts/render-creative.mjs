@@ -230,7 +230,7 @@ ${xdef}
   {{CHROME_FOOTER}}
   <script src="/site-chrome.js" defer></script>
   <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
-  <script src="/business-creative.js?v=20260904growth3" defer></script>
+  <script src="/business-creative.js?v=20260904rel1" defer></script>
 </body>
 </html>`;
 }

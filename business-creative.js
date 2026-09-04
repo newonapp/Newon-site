@@ -1,5 +1,5 @@
 /**
- * Newon Creative inquiry — FormSubmit + local success state.
+ * Newon Creative inquiry — FormSubmit with inquiry-aligned reliability.
  * Uses newonTrack SoT only (no PII in analytics).
  */
 (function () {
@@ -8,7 +8,7 @@
 
   function isLocal() {
     var h = (location.hostname || "").toLowerCase();
-    return h === "localhost" || h === "127.0.0.1" || h === "0.0.0.0";
+    return h === "localhost" || h === "127.0.0.1" || h === "0.0.0.0" || h === "::1";
   }
 
   function track(name, props) {
@@ -47,9 +47,79 @@
     if (ok) ok.hidden = false;
   }
 
+  function setBusy(form, btn, on) {
+    form.setAttribute("data-busy", on ? "1" : "0");
+    if (btn) btn.disabled = !!on;
+  }
+
+  function mailtoHref(payload) {
+    var body = Object.keys(payload)
+      .map(function (k) {
+        return k + ": " + payload[k];
+      })
+      .join("\n");
+    return (
+      "mailto:" +
+      INBOX +
+      "?subject=" +
+      encodeURIComponent(payload._subject) +
+      "&body=" +
+      encodeURIComponent(body)
+    );
+  }
+
+  function showFail(status, payload) {
+    if (!status) return;
+    status.hidden = false;
+    status.innerHTML = "";
+    status.appendChild(document.createTextNode("Submission failed. "));
+    var a = document.createElement("a");
+    a.href = mailtoHref(payload);
+    a.textContent = "Email us instead";
+    status.appendChild(a);
+  }
+
+  function postFormSubmit(payload) {
+    var ctrl = typeof AbortController === "function" ? new AbortController() : null;
+    var timer = setTimeout(function () {
+      if (ctrl) ctrl.abort();
+    }, 15000);
+    return fetch(ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+      signal: ctrl ? ctrl.signal : undefined,
+    })
+      .then(function (res) {
+        return res.json().then(
+          function (data) {
+            return { res: res, data: data };
+          },
+          function () {
+            return { res: res, data: null };
+          }
+        );
+      })
+      .then(function (out) {
+        var data = out.data || {};
+        var flag = data.success;
+        var ok = out.res.ok && (flag === true || flag === "true");
+        if (!ok) throw new Error("creative-failed");
+      })
+      .finally(function () {
+        clearTimeout(timer);
+      });
+  }
+
   function init() {
     var form = document.getElementById("cr-inquiry-form");
     if (!form) return;
+    var status = document.getElementById("cr-form-status");
+    var submitBtn = form.querySelector('[type="submit"]');
+    var sending = false;
 
     form.addEventListener("focusin", function () {
       if (form.dataset.started) return;
@@ -63,14 +133,18 @@
 
     form.addEventListener("submit", function (ev) {
       ev.preventDefault();
-      var status = document.getElementById("cr-form-status");
+      if (sending || form.getAttribute("data-busy") === "1") return;
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
 
+      var honey = form.querySelector("[name='_honey']");
+      if (honey && String(honey.value || "").trim()) return;
+
       var payload = {
         _subject: "Newon Creative inquiry",
+        _captcha: "false",
         type: form.type.value,
         company: form.company.value,
         services: servicesValue(form),
@@ -90,6 +164,13 @@
         ctx
       );
 
+      sending = true;
+      setBusy(form, submitBtn, true);
+      if (status) {
+        status.hidden = false;
+        status.textContent = "…";
+      }
+
       function onSuccess() {
         track(
           (window.newonAnalyticsEvents && window.newonAnalyticsEvents.INQUIRY_SUCCESS) ||
@@ -105,6 +186,9 @@
             "inquiry_error",
           ctx
         );
+        showFail(status, payload);
+        sending = false;
+        setBusy(form, submitBtn, false);
       }
 
       if (isLocal()) {
@@ -112,36 +196,7 @@
         return;
       }
 
-      if (status) {
-        status.hidden = false;
-        status.textContent = "…";
-      }
-
-      fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
-      })
-        .then(function (r) {
-          if (!r.ok) throw new Error("submit failed");
-          onSuccess();
-        })
-        .catch(function () {
-          onError();
-          var body = Object.keys(payload)
-            .map(function (k) {
-              return k + ": " + payload[k];
-            })
-            .join("\n");
-          location.href =
-            "mailto:" +
-            INBOX +
-            "?subject=" +
-            encodeURIComponent(payload._subject) +
-            "&body=" +
-            encodeURIComponent(body);
-          /* Mailto fallback is not treated as FormSubmit success. */
-        });
+      postFormSubmit(payload).then(onSuccess).catch(onError);
     });
   }
 

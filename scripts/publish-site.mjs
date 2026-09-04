@@ -150,6 +150,7 @@ const PUBLISH_COPY_DIRS = [
 const PUBLISH_ROOT_OPTIONAL = [
   "CNAME",
   ".nojekyll",
+  "404.html",
   "naver0a5bd04cafdfbdba9b8fa4d3c8daa648.html",
 ];
 

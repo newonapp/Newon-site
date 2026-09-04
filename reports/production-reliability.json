@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-09-04T11:02:25.522Z",
+  "probe": false,
+  "findings": [
+    {
+      "severity": "INFO",
+      "area": "headers",
+      "message": "GitHub Pages cannot serve custom CSP/HSTS via repo _headers; Access-Control-Allow-Origin is provided by GH/Fastly"
+    },
+    {
+      "severity": "INFO",
+      "area": "redirects",
+      "message": "_redirects is Netlify-style and is ignored on GitHub Pages"
+    },
+    {
+      "severity": "PASS",
+      "area": "routes",
+      "message": "Internal link check (ko/en): 27056 targets, 0 missing, 0 localhost",
+      "samples": []
+    },
+    {
+      "severity": "PASS",
+      "area": "i18n",
+      "message": "Runtime locale markers in ko/en HTML: undefined≈0, [object Object]=0, raw templates≈0",
+      "samples": []
+    }
+  ],
+  "summary": {
+    "P0": 0,
+    "P1": 0,
+    "P2": 0,
+    "PASS": 2
+  }
+}
