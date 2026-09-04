@@ -141,6 +141,8 @@ let projectDetailId = null;
 let serviceTypes = DEFAULT_SERVICE_TYPES.slice();
 /** @type {Record<string, {amount?:number,label?:string,custom?:boolean}>} */
 let pricingBySlug = {};
+/** @type {Array<Record<string, unknown>>} */
+let quotePackages = [];
 /** @type {ReturnType<typeof installHqDocs>|null} */
 let docsMod = null;
 /** @type {ReturnType<typeof installHqOps>|null} */
@@ -669,6 +671,20 @@ async function loadPricing() {
   }
 }
 
+async function loadQuotePackages() {
+  try {
+    const res = await fetch("./quote-packages.json", { cache: "no-store" });
+    if (!res.ok) {
+      quotePackages = [];
+      return;
+    }
+    const data = await res.json();
+    quotePackages = Array.isArray(data) ? data : [];
+  } catch {
+    quotePackages = [];
+  }
+}
+
 function ensureDocsMod() {
   if (docsMod) return docsMod;
   docsMod = installHqDocs({
@@ -707,6 +723,7 @@ function ensureDocsMod() {
     serviceTypeLabel,
     getServiceTypes: () => serviceTypes,
     getPricing: () => pricingBySlug,
+    getQuotePackages: () => quotePackages,
     refreshAndRender,
     showPanel,
     formatLongDate,
@@ -3108,7 +3125,13 @@ async function start(startCtx) {
   bindShell();
   toast("Loading…");
   try {
-    await Promise.all([loadAll(), loadCatalog(), loadServiceTypes(), loadPricing()]);
+    await Promise.all([
+      loadAll(),
+      loadCatalog(),
+      loadServiceTypes(),
+      loadPricing(),
+      loadQuotePackages(),
+    ]);
     ensureDocsMod();
     ensureOpsMod();
     ensureCrmMod();

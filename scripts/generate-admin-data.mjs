@@ -10,7 +10,7 @@ import { allProducts } from "./products-data.mjs";
 import { LABS_EXPERIMENTS } from "./labs-data.mjs";
 import { STORE_PRODUCTS } from "./store-data.mjs";
 import { TOOLS } from "./tools-data.mjs";
-import { SERVICE_PRICING } from "./business-pricing.mjs";
+import { SERVICE_PRICING, QUOTE_PACKAGES } from "./business-pricing.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "admin");
@@ -88,6 +88,25 @@ const pricing = Object.fromEntries(
 );
 fs.writeFileSync(path.join(OUT, "pricing.json"), JSON.stringify(pricing, null, 2));
 
+/** Quote Builder packages — derived from QUOTE_PACKAGES SoT (same as public Business). */
+fs.writeFileSync(
+  path.join(OUT, "quote-packages.json"),
+  JSON.stringify(
+    QUOTE_PACKAGES.map((p) => ({
+      id: p.id,
+      group: p.group,
+      label: p.label,
+      amount: p.amount == null ? 0 : p.amount,
+      custom: !!p.custom || p.amount == null,
+      timelineKo: p.timelineKo || "",
+      timelineEn: p.timelineEn || "",
+      serviceSlug: p.serviceSlug || "",
+    })),
+    null,
+    2
+  )
+);
+
 function navIcon(d) {
   return `<svg class="hq-nav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="${d}"/></svg>`;
 }
@@ -134,7 +153,7 @@ const hqHtml = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Newon HQ</title>
-  <link rel="stylesheet" href="./hq.css?v=20260904hq2d" />
+  <link rel="stylesheet" href="./hq.css?v=20260904hq2d2" />
 </head>
 <body>
   <div class="hq hq--auth" id="hq-auth-wrap">
@@ -230,9 +249,9 @@ const hqHtml = `<!DOCTYPE html>
     </dialog>
   </div>
 
-  <script src="./firebase-config.js?v=20260904hq2d"></script>
-  <script type="module" src="./hq-auth.js?v=20260904hq2d"></script>
-  <script type="module" src="./hq-app.js?v=20260904hq2d"></script>
+  <script src="./firebase-config.js?v=20260904hq2d2"></script>
+  <script type="module" src="./hq-auth.js?v=20260904hq2d2"></script>
+  <script type="module" src="./hq-app.js?v=20260904hq2d2"></script>
 </body>
 </html>
 `;
@@ -290,5 +309,5 @@ const growthHtml = `<!DOCTYPE html>
 fs.writeFileSync(path.join(OUT, "index.html"), hqHtml);
 fs.writeFileSync(path.join(OUT, "growth", "index.html"), growthHtml);
 console.log(
-  "generate-admin-data: wrote HQ shell + catalog + service-types + pricing + data + growth"
+  "generate-admin-data: wrote HQ shell + catalog + service-types + pricing + quote-packages + data + growth"
 );

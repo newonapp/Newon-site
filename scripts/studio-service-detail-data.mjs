@@ -2519,8 +2519,8 @@ const DETAIL = {
     eyebrowSub: { ko: "WEB DESIGN", en: "WEB DESIGN" },
     seoTitle: { ko: "Web Design | Newon Studio", en: "Web Design | Newon Studio" },
     meta: {
-      ko: "Web Design — 정보 구조, 사용자 흐름, UI·반응형과 전환 구조까지 설계합니다. Design Only · 시작가 ₩600,000부터 · 2–5주.",
-      en: "Web Design — IA, user flow, UI, responsive, and conversion structure. Design only · from ₩600,000 · 2–5 weeks.",
+      ko: "Web Design — 정보 구조, 사용자 흐름, UI·반응형과 전환 구조까지 설계합니다. Design Only · 시작가 ₩600,000부터 · 5–7일.",
+      en: "Web Design — IA, user flow, UI, responsive, and conversion structure. Design only · from ₩600,000 · 5–7 days.",
     },
     headline: {
       ko: "보기 좋은 웹을 넘어\n행동하게 만드는 경험을 설계합니다.",
@@ -2953,11 +2953,11 @@ const DETAIL = {
     },
     timelineBody: {
       ko: [
-        "기본 프로젝트는 약 2–5주를 기준으로 진행합니다.",
+        "기본 프로젝트는 약 5–7일을 기준으로 진행합니다.",
         "실제 일정은 페이지 수, 콘텐츠 양, 사용자 흐름 수, Custom UI 범위, 반응형·인터랙션 범위와 피드백 일정에 따라 달라질 수 있습니다.",
       ],
       en: [
-        "A basic-scope project typically runs about 2–5 weeks.",
+        "A basic-scope project typically runs about 5–7 days.",
         "Actual timing depends on page count, content volume, flow count, custom UI, responsive/interaction scope, and feedback cadence.",
       ],
     },
@@ -3159,7 +3159,7 @@ const DETAIL = {
         { q: "다국어 사이트도 가능한가요?", a: "가능합니다. 필요한 언어 수와 콘텐츠 관리 방식에 따라 다국어 구조를 설계할 수 있습니다." },
         { q: "수정은 몇 번 가능한가요?", a: "수정 라운드는 프로젝트 범위와 견적 단계에서 사전에 확정합니다." },
         { q: "완성 후 유지보수도 가능한가요?", a: "개발 또는 운영 범위가 포함되는 프로젝트에서는 별도 유지보수 계약 형태로 협의할 수 있습니다." },
-        { q: "프로젝트 기간과 시작가는?", a: "기본 범위 기준 약 2–5주, 시작가 ₩600,000부터입니다. 페이지 수와 복잡도, 개발 포함 여부에 따라 달라질 수 있습니다." },
+        { q: "프로젝트 기간과 시작가는?", a: "기본 범위 기준 약 5–7일, 시작가 ₩600,000부터입니다. 페이지 수와 복잡도, 개발 포함 여부에 따라 달라질 수 있습니다." },
       ],
       en: [
         { q: "Can I hire design only?", a: "Yes. Web Design can run alone while your internal team or another developer handles build." },
@@ -3174,7 +3174,7 @@ const DETAIL = {
         { q: "Are multilingual sites possible?", a: "Yes. We can design multilingual structure based on language count and content management needs." },
         { q: "How many revision rounds?", a: "Revision rounds are set in scope and quoting before work starts." },
         { q: "Is maintenance available after launch?", a: "When development or operations are in scope, maintenance can be discussed as a separate agreement." },
-        { q: "What are timeline and starting price?", a: "About 2–5 weeks for basic scope, from ₩600,000. Page count, complexity, and whether development is included can change the quote." },
+        { q: "What are timeline and starting price?", a: "About 5–7 days for basic scope, from ₩600,000. Page count, complexity, and whether development is included can change the quote." },
       ],
     },
     exploreLabel: "EXPLORE DIGITAL",

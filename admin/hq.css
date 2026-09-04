@@ -1568,11 +1568,25 @@ textarea.hq-input {
   body.hq-body--shell .hq-nav,
   body.hq-body--shell .hq-nav-toggle,
   body.hq-body--shell .hq-toast,
-  body.hq-body--shell .hq-shell-backdrop {
+  body.hq-body--shell .hq-shell-backdrop,
+  body.hq-body--shell .hq-btn,
+  body.hq-body--shell .hq-toolbar,
+  body.hq-body--shell .hq-session-box,
+  body.hq-body--shell .hq-seg {
     display: none !important;
   }
 
   body.hq-body--shell .hq-main {
     padding: 0;
+  }
+
+  body.hq-body--shell .hq-main__inner {
+    max-width: none;
+  }
+
+  .hq-surface-panel {
+    break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
   }
 }

@@ -265,6 +265,177 @@ export const SERVICE_PRICING = {
 };
 
 /**
+ * Quote / HQ starting packages — same numbers as public Business productization.
+ * Used by admin Quote Builder; not a separate price table.
+ * amount null = custom quote (user fills unit price).
+ */
+export const QUOTE_PACKAGES = [
+  {
+    id: "landing",
+    group: "WEB",
+    label: "Landing",
+    amount: 700000,
+    timelineKo: "3–5일",
+    timelineEn: "3–5 days",
+    serviceSlug: "landing",
+  },
+  {
+    id: "business-website",
+    group: "WEB",
+    label: "Business Website",
+    amount: 1200000,
+    timelineKo: "5–10일",
+    timelineEn: "5–10 days",
+    serviceSlug: "web",
+  },
+  {
+    id: "web-service",
+    group: "WEB",
+    label: "Web Service",
+    amount: 1800000,
+    timelineKo: "1–3주",
+    timelineEn: "1–3 weeks",
+    serviceSlug: "web",
+  },
+  {
+    id: "app-prototype",
+    group: "APP",
+    label: "App Prototype",
+    amount: 1000000,
+    timelineKo: "3–7일",
+    timelineEn: "3–7 days",
+    serviceSlug: "app",
+  },
+  {
+    id: "app-development",
+    group: "APP",
+    label: "App Development",
+    amount: 2500000,
+    timelineKo: "1–3주",
+    timelineEn: "1–3 weeks",
+    serviceSlug: "app",
+  },
+  {
+    id: "mvp-starter",
+    group: "MVP",
+    label: "MVP Starter",
+    amount: 3000000,
+    timelineKo: "1–2주",
+    timelineEn: "1–2 weeks",
+    serviceSlug: "mvp",
+  },
+  {
+    id: "mvp-standard",
+    group: "MVP",
+    label: "MVP Standard",
+    amount: 4500000,
+    timelineKo: "2–3주",
+    timelineEn: "2–3 weeks",
+    serviceSlug: "mvp",
+  },
+  {
+    id: "mvp-custom",
+    group: "MVP",
+    label: "MVP Custom",
+    amount: 6000000,
+    timelineKo: "별도 협의",
+    timelineEn: "By agreement",
+    serviceSlug: "mvp",
+  },
+  {
+    id: "admin-dashboard",
+    group: "INTERNAL",
+    label: "Admin Dashboard",
+    amount: 1500000,
+    timelineKo: "5–10일",
+    timelineEn: "5–10 days",
+    serviceSlug: "internal-tools",
+  },
+  {
+    id: "internal-tool",
+    group: "INTERNAL",
+    label: "Internal Tool",
+    amount: 2500000,
+    timelineKo: "1–2주",
+    timelineEn: "1–2 weeks",
+    serviceSlug: "internal-tools",
+  },
+  {
+    id: "custom-business-system",
+    group: "INTERNAL",
+    label: "Custom Business System",
+    amount: 4000000,
+    timelineKo: "2–4주 / 별도 협의",
+    timelineEn: "2–4 weeks / by agreement",
+    serviceSlug: "internal-system",
+  },
+  {
+    id: "workflow-automation",
+    group: "AUTOMATION",
+    label: "Workflow Automation",
+    amount: 1000000,
+    timelineKo: "3–7일",
+    timelineEn: "3–7 days",
+    serviceSlug: "workflow-automation",
+  },
+  {
+    id: "business-automation",
+    group: "AUTOMATION",
+    label: "Business Automation",
+    amount: 2000000,
+    timelineKo: "1–2주",
+    timelineEn: "1–2 weeks",
+    serviceSlug: "ai-automation",
+  },
+  {
+    id: "custom-automation",
+    group: "AUTOMATION",
+    label: "Custom Automation",
+    amount: null,
+    custom: true,
+    timelineKo: "별도 견적",
+    timelineEn: "Custom quote",
+    serviceSlug: "ai-automation",
+  },
+  {
+    id: "landing-ui",
+    group: "DESIGN",
+    label: "Landing UI",
+    amount: 400000,
+    timelineKo: "3–5일",
+    timelineEn: "3–5 days",
+    serviceSlug: "design",
+  },
+  {
+    id: "web-ui-ux",
+    group: "DESIGN",
+    label: "Web UI/UX",
+    amount: 600000,
+    timelineKo: "5–7일",
+    timelineEn: "5–7 days",
+    serviceSlug: "design",
+  },
+  {
+    id: "app-ui-ux",
+    group: "DESIGN",
+    label: "App UI/UX",
+    amount: 700000,
+    timelineKo: "5–10일",
+    timelineEn: "5–10 days",
+    serviceSlug: "design",
+  },
+  {
+    id: "product-design",
+    group: "DESIGN",
+    label: "Product Design",
+    amount: 1000000,
+    timelineKo: "1–2주",
+    timelineEn: "1–2 weeks",
+    serviceSlug: "design",
+  },
+];
+
+/**
  * Editorial product lines for Business hub comparison (starting engagement model).
  * Links into existing routes — no new public pages required.
  */
@@ -912,9 +1083,9 @@ export const BUSINESS_SERVICES = [
 /** Editorial HTML for Business hub product matrix (reuses bp-* classes). */
 export function businessProductMatrixHtml(lang = "en") {
   const ko = lang === "ko";
-  const title = ko ? "시작 engagement" : "Starting engagement";
+  const title = ko ? "기본 시작가" : "Starting engagement";
   const lead = ko
-    ? "필요한 문제에서 시작하는 시작가와 예상 기간입니다. 최종 견적은 범위 확인 후 안내합니다."
+    ? "필요한 문제에서 시작하는 기본 시작가와 예상 기간입니다. 최종 견적은 범위 확인 후 안내합니다."
     : "Starting prices and timelines for common engagements. Final quotes follow scope review.";
   const note = scopeDisclaimer(lang);
   const rows = BUSINESS_PRODUCT_LINES.map((line, i) => {

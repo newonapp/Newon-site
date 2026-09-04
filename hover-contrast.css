@@ -121,20 +121,37 @@
   border-color: rgba(255, 255, 255, 0.28) !important;
 }
 
-/* ——— Business: use-case light board ——— */
+/* ——— Business: use-case board (black hover → light text) ——— */
 .bs-use-board__item:hover,
 .bs-use-board__item:hover .bs-use-board__title {
-  color: #0a0a0a;
+  color: #ffffff;
 }
 .bs-use-board__item:hover .bs-use-board__n {
-  color: rgba(0, 0, 0, 0.22);
+  color: rgba(255, 255, 255, 0.55);
 }
 .bs-use-board__item:hover .bs-use-board__tag {
-  color: rgba(0, 0, 0, 0.5);
-  border-color: rgba(0, 0, 0, 0.14);
-  background: #fff;
+  color: rgba(255, 255, 255, 0.78);
+  border-color: rgba(255, 255, 255, 0.28);
+  background: transparent;
 }
 .bs-use-board__item:hover .bs-use-board__body {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+/* Dark shell: use-board flips to light hover — keep dark text */
+html[data-newon-shell-theme="dark"] .bs-use-board__item:hover,
+html[data-newon-shell-theme="dark"] .bs-use-board__item:hover .bs-use-board__title {
+  color: #0a0a0a;
+}
+html[data-newon-shell-theme="dark"] .bs-use-board__item:hover .bs-use-board__n {
+  color: rgba(0, 0, 0, 0.4);
+}
+html[data-newon-shell-theme="dark"] .bs-use-board__item:hover .bs-use-board__tag {
+  color: rgba(0, 0, 0, 0.55);
+  border-color: rgba(0, 0, 0, 0.2);
+  background: transparent;
+}
+html[data-newon-shell-theme="dark"] .bs-use-board__item:hover .bs-use-board__body {
   color: rgba(0, 0, 0, 0.62);
 }
 
