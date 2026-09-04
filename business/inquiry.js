@@ -5,7 +5,7 @@
  */
 (function () {
   var STORAGE_KEY = "newon-bz-inquiry-ok";
-  var MAX_AGE_MS = 2 * 60 * 60 * 1000;
+  var MAX_AGE_MS = 15 * 60 * 1000;
   var INBOX = "newon@newon.app";
   var ENDPOINT = "https://formsubmit.co/ajax/" + INBOX;
   var LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
@@ -541,6 +541,11 @@
       if (addr) mail.setAttribute("href", "mailto:" + addr);
       else mail.removeAttribute("href");
     }
+
+    /* One-time display: clear PII from sessionStorage after paint. */
+    try {
+      sessionStorage.removeItem(STORAGE_KEY);
+    } catch (eClear) {}
 
     var title = document.getElementById("bz-ok-title");
     if (title) {

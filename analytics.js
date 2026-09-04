@@ -101,7 +101,7 @@
   };
 
   var PII_KEYS =
-    /^(email|phone|name|message|description|company|company_name|contact|contact_name|_replyto|firebase_uid|uid|address|password)$/i;
+    /^(email|phone|name|fullname|message|description|company|company_name|contact|contact_name|full_?name|user_?email|phone_?number|mobile|tel|_replyto|firebase_uid|uid|address|password|invoice|contract|client_name|client_email)$/i;
 
   var PRODUCT_SLUGS = [
     "ox-month",

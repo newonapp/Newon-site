@@ -343,15 +343,29 @@
       }
       setEmptyVisible(false);
       results.hidden = false;
+      function escapeHtml(s) {
+        return String(s == null ? "" : s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+      function safeHref(url) {
+        var u = String(url || "").trim();
+        if (!u) return "#";
+        if (/^(https?:|\/|#|mailto:|tel:)/i.test(u) && !/^javascript:/i.test(u)) return u;
+        return "#";
+      }
       results.innerHTML = hits
         .map(function (it) {
           return (
             '<a class="rx-hit" href="' +
-            it.url +
+            escapeHtml(safeHref(it.url)) +
             '"><span>' +
-            String(it.type || "").toUpperCase() +
+            escapeHtml(String(it.type || "").toUpperCase()) +
             "</span><strong>" +
-            (it.title || "") +
+            escapeHtml(it.title || "") +
             "</strong></a>"
           );
         })

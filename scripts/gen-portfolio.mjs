@@ -130,8 +130,8 @@ function foot(lang, { base = "../", hub = false } = {}) {
     ${siteFoot}
     <script src="/lang-dropdown.js"></script>
     <script src="/portfolio/portfolio.js"></script>
-    <script src="/analytics.js?v=20260904growth3" defer></script>
-    <script src="/search.js?v=20260825studio" defer></script>
+    <script src="/analytics.js?v=20260904sec1" defer></script>
+    <script src="/search.js?v=20260904sec1" defer></script>
     <script src="/site-chrome.js?v=20260826gnav5" defer></script>
   </body>
 </html>

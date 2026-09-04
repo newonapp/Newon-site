@@ -131,6 +131,17 @@
       );
     });
 
+    if (!form.querySelector("[name='_honey']")) {
+      var honey = document.createElement("input");
+      honey.type = "text";
+      honey.name = "_honey";
+      honey.setAttribute("tabindex", "-1");
+      honey.setAttribute("autocomplete", "off");
+      honey.setAttribute("aria-hidden", "true");
+      honey.style.cssText = "position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden";
+      form.appendChild(honey);
+    }
+
     form.addEventListener("submit", function (ev) {
       ev.preventDefault();
       if (sending || form.getAttribute("data-busy") === "1") return;

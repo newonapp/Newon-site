@@ -56,8 +56,18 @@
     if (invalid) invalid.hidden = true;
   }
 
+  function emailKeyPart(email) {
+    var s = String(email || "").toLowerCase().trim();
+    var h = 2166136261;
+    for (var i = 0; i < s.length; i++) {
+      h ^= s.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return (h >>> 0).toString(16);
+  }
+
   function storageKey(formType, productId, email) {
-    return STORAGE_PREFIX + formType + ":" + (productId || "general") + ":" + email.toLowerCase();
+    return STORAGE_PREFIX + formType + ":" + (productId || "general") + ":" + emailKeyPart(email);
   }
 
   function readRecord(formType, productId, email) {

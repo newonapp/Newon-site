@@ -96,7 +96,7 @@ export function replaceLegacyChrome(
   }
   out = injectHeadCss(out);
   if (!out.includes("analytics.js")) {
-    out = out.replace(/<\/head>/, '    <script src="/analytics.js?v=20260904growth3" defer></script>\n  </head>');
+    out = out.replace(/<\/head>/, '    <script src="/analytics.js?v=20260904sec1" defer></script>\n  </head>');
   }
   if (!out.includes("site-chrome.js")) {
     out = out.replace(
@@ -109,6 +109,6 @@ export function replaceLegacyChrome(
   return out;
 }
 
-export const CHROME_SCRIPTS = `<script src="/analytics.js?v=20260904growth3" defer></script>
-    <script src="/search.js?v=20260825studio" defer></script>
+export const CHROME_SCRIPTS = `<script src="/analytics.js?v=20260904sec1" defer></script>
+    <script src="/search.js?v=20260904sec1" defer></script>
     <script src="/${SiteChromeJs}" defer></script>`;

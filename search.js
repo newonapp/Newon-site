@@ -107,6 +107,22 @@
     activeIdx = -1;
   }
 
+  function escapeHtml(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function safeHref(url) {
+    var u = String(url || "").trim();
+    if (!u) return "#";
+    if (/^(https?:|\/|#|mailto:|tel:)/i.test(u) && !/^javascript:/i.test(u)) return u;
+    return "#";
+  }
+
   function render(q) {
     var m = ensureModal();
     var ul = m.querySelector("[data-search-results]");
@@ -132,17 +148,17 @@
               var desc = h.desc || h.description || "";
               return (
                 '<li role="option"><a href="' +
-                h.url +
+                escapeHtml(safeHref(h.url)) +
                 '" class="' +
                 (i === 0 ? "is-active" : "") +
                 '" data-search-hit="' +
                 i +
                 '"><span class="search-modal__type">' +
-                (h.type || "") +
+                escapeHtml(h.type || "") +
                 "</span><strong>" +
-                h.title +
+                escapeHtml(h.title) +
                 "</strong>" +
-                (desc ? '<span class="search-modal__desc">' + desc + "</span>" : "") +
+                (desc ? '<span class="search-modal__desc">' + escapeHtml(desc) + "</span>" : "") +
                 "</a></li>"
               );
             })

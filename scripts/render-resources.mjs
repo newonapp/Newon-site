@@ -370,7 +370,7 @@ function renderStoreDetailHtml({
   );
   html = html.replace(
     '<script src="/business-service.js',
-    '<script src="/waitlist.js?v=20260904rel1" defer></script>\n    <script src="/business-service.js'
+    '<script src="/waitlist.js?v=20260904sec1" defer></script>\n    <script src="/business-service.js'
   );
   return html;
 }
