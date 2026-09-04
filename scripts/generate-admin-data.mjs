@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
- * Build-time admin dashboard — read-only product/experiment snapshot (noindex).
- * Growth page shows metric cards with "No data source" — never fake zeros as real metrics.
+ * Build-time admin snapshot + Newon HQ Auth entry (Phase 1A).
+ * - data.json / growth: preserved read-only catalog + empty growth cards
+ * - index.html: HQ Google Auth bootstrap (no Firestore, no ops CRUD)
  */
 import fs from "fs";
 import path from "path";
@@ -22,7 +23,6 @@ const snapshot = {
   store: STORE_PRODUCTS.filter((p) => p.listed !== false),
   tools: TOOLS.map((t) => ({ id: t.id, slug: t.slug, status: t.status || "live" })),
   growth: {
-    // Explicit null = no wired data source. Do not invent zeros.
     metrics: [
       { id: "page_views", label: "Page views", value: null, source: null },
       { id: "store_views", label: "Store product views", value: null, source: null },
@@ -40,50 +40,96 @@ fs.mkdirSync(OUT, { recursive: true });
 fs.mkdirSync(path.join(OUT, "growth"), { recursive: true });
 fs.writeFileSync(path.join(OUT, "data.json"), JSON.stringify(snapshot, null, 2));
 
-const html = `<!DOCTYPE html>
+const hqHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Newon Admin — Read-only</title>
-  <style>
-    body { font-family: system-ui, sans-serif; margin: 0; padding: 1.5rem; background: #111; color: #f5f5f5; }
-    h1 { font-size: 1.25rem; }
-    a { color: #ddd; }
-    section { margin: 2rem 0; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-    th, td { border: 1px solid #333; padding: 0.5rem; text-align: left; vertical-align: top; }
-    th { background: #1a1a1a; }
-    .note { color: #aaa; max-width: 48rem; line-height: 1.6; }
-  </style>
+  <title>Newon HQ — Sign in</title>
+  <link rel="stylesheet" href="./hq.css?v=20260904hq1a" />
 </head>
 <body>
-  <h1>Newon Admin (read-only)</h1>
-  <p><a href="./growth/">Growth metrics →</a></p>
-  <p class="note" id="note"></p>
-  <section><h2>Products</h2><div id="products"></div></section>
-  <section><h2>Labs</h2><div id="labs"></div></section>
-  <section><h2>Store</h2><div id="store"></div></section>
-  <p class="note">Generated at build time. Leads are not stored here — check FormSubmit inbox.</p>
-  <script>
-    fetch('./data.json').then(function(r){return r.json();}).then(function(d){
-      document.getElementById('note').textContent = d.note || '';
-      function table(rows, cols){
-        if(!rows.length) return '<p>Empty</p>';
-        var h = '<table><thead><tr>' + cols.map(function(c){return '<th>'+c+'</th>';}).join('') + '</tr></thead><tbody>';
-        rows.forEach(function(row){
-          h += '<tr>' + cols.map(function(c){ return '<td>' + (row[c]!=null?row[c]:'') + '</td>'; }).join('') + '</tr>';
-        });
-        return h + '</tbody></table>';
-      }
-      document.getElementById('products').innerHTML = table(d.products||[], ['id','type','status','name']);
-      document.getElementById('labs').innerHTML = table(d.labs||[], ['id','status']);
-      document.getElementById('store').innerHTML = table(d.store||[], ['slug','status','paymentProvider']);
-    });
-  </script>
+  <main class="hq" id="hq-app">
+    <p class="hq__eyebrow">NEWON HQ</p>
+    <h1 class="hq__title">Private Operations</h1>
+    <p class="hq__lead">Internal console for Newon. Sign in with the admin Google account.</p>
+    <p class="hq-status" id="hq-live-status" role="status" aria-live="polite"></p>
+
+    <section class="hq-view hq-panel" id="hq-view-loading" aria-label="Loading">
+      <p class="hq-status">Checking authentication…</p>
+    </section>
+
+    <section class="hq-view hq-panel" id="hq-view-config" hidden aria-label="Firebase config required">
+      <p class="hq__eyebrow">Setup</p>
+      <h2 class="hq__title" style="font-size:1.15rem">Firebase config required</h2>
+      <p class="hq__lead">
+        Public web config fields are missing in <code>admin/firebase-config.js</code>.
+        Fill them from Firebase Console → Project settings → Your apps → Web app “Newon HQ”.
+      </p>
+      <p class="hq-status hq-status--err">Missing: <span id="hq-config-missing"></span></p>
+      <ul class="hq-list">
+        <li>apiKey</li>
+        <li>appId</li>
+        <li>messagingSenderId (recommended)</li>
+        <li>storageBucket (recommended)</li>
+      </ul>
+      <p class="hq__lead" style="margin-top:1rem;margin-bottom:0">
+        Do not add service accounts, private keys, or Admin SDK credentials.
+      </p>
+    </section>
+
+    <section class="hq-view hq-panel" id="hq-view-signed-out" hidden aria-label="Sign in">
+      <p class="hq__lead" style="margin-bottom:0">
+        Use the Google account that will own Newon HQ. No operations data is available until an admin UID is configured in a later step.
+      </p>
+      <div class="hq-actions">
+        <button type="button" class="hq-btn" id="hq-login">Google 계정으로 로그인</button>
+      </div>
+    </section>
+
+    <section class="hq-view hq-panel" id="hq-view-setup" hidden aria-label="Admin setup required">
+      <p class="hq__eyebrow">Authentication successful</p>
+      <h2 class="hq__title" style="font-size:1.15rem">관리자 설정 필요</h2>
+      <p class="hq__lead">
+        Copy your Firebase UID. Next, set it as the admin UID in Firestore Security Rules.
+        Operations modules are not available in this step.
+      </p>
+      <dl class="hq-dl">
+        <div class="hq-dl__row">
+          <dt class="hq-dl__label">Name</dt>
+          <dd class="hq-dl__value" id="hq-display-name">—</dd>
+        </div>
+        <div class="hq-dl__row">
+          <dt class="hq-dl__label">Email</dt>
+          <dd class="hq-dl__value" id="hq-email">—</dd>
+        </div>
+        <div class="hq-dl__row">
+          <dt class="hq-dl__label">Firebase UID</dt>
+          <dd class="hq-uid-row">
+            <p class="hq-dl__value" id="hq-uid">—</p>
+            <button type="button" class="hq-btn hq-btn--ghost hq-btn--small" id="hq-copy-uid">Copy</button>
+          </dd>
+        </div>
+      </dl>
+      <div class="hq-actions">
+        <button type="button" class="hq-btn hq-btn--ghost" id="hq-logout">로그아웃</button>
+      </div>
+    </section>
+
+    <section class="hq-view hq-panel" id="hq-view-error" hidden aria-label="Error">
+      <p class="hq-status hq-status--err" id="hq-error-msg">Something went wrong.</p>
+      <div class="hq-actions">
+        <button type="button" class="hq-btn" id="hq-retry">Try again</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="./firebase-config.js?v=20260904hq1a"></script>
+  <script type="module" src="./hq-auth.js?v=20260904hq1a"></script>
 </body>
-</html>`;
+</html>
+`;
 
 const growthHtml = `<!DOCTYPE html>
 <html lang="en">
@@ -106,9 +152,9 @@ const growthHtml = `<!DOCTYPE html>
   </style>
 </head>
 <body>
-  <p><a href="../">← Admin</a></p>
+  <p><a href="../">← Newon HQ</a></p>
   <h1>Growth</h1>
-  <p class="note">Metrics stay blank until a real analytics source is wired. Empty cards mean “No data source” — not zero traffic.</p>
+  <p class="note">Metrics stay blank until a real analytics source is wired. Empty cards mean “No data source” — not zero traffic. Not linked from HQ Auth until authorization is configured.</p>
   <div class="grid" id="metrics"></div>
   <script>
     fetch('../data.json').then(function(r){return r.json();}).then(function(d){
@@ -135,6 +181,6 @@ const growthHtml = `<!DOCTYPE html>
 </body>
 </html>`;
 
-fs.writeFileSync(path.join(OUT, "index.html"), html);
+fs.writeFileSync(path.join(OUT, "index.html"), hqHtml);
 fs.writeFileSync(path.join(OUT, "growth", "index.html"), growthHtml);
-console.log("generate-admin-data: wrote admin/ + admin/growth/");
+console.log("generate-admin-data: wrote HQ auth entry + admin/data.json + admin/growth/");
