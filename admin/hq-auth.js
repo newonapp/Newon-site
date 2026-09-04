@@ -1,6 +1,7 @@
 /**
- * Newon HQ — Firebase Auth bootstrap (Phase 1A).
- * Google Sign-In only. No Firestore reads/writes. No tokens in DOM/console.
+ * Newon HQ — Auth + admin UID authorization (Phase 1B).
+ * Google Sign-In. Client UID guard + Firestore SDK init.
+ * No CRUD, no token logging, no Admin SDK.
  */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import {
@@ -10,6 +11,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 (function () {
   "use strict";
@@ -18,7 +20,8 @@ import {
     loading: document.getElementById("hq-view-loading"),
     config: document.getElementById("hq-view-config"),
     signedOut: document.getElementById("hq-view-signed-out"),
-    setup: document.getElementById("hq-view-setup"),
+    denied: document.getElementById("hq-view-denied"),
+    authorized: document.getElementById("hq-view-authorized"),
     error: document.getElementById("hq-view-error"),
   };
 
@@ -26,18 +29,19 @@ import {
     status: document.getElementById("hq-live-status"),
     errorMsg: document.getElementById("hq-error-msg"),
     configMissing: document.getElementById("hq-config-missing"),
-    displayName: document.getElementById("hq-display-name"),
-    email: document.getElementById("hq-email"),
-    uid: document.getElementById("hq-uid"),
-    copyUid: document.getElementById("hq-copy-uid"),
+    deniedEmail: document.getElementById("hq-denied-email"),
+    authEmail: document.getElementById("hq-auth-email"),
     loginBtn: document.getElementById("hq-login"),
-    logoutBtn: document.getElementById("hq-logout"),
     retryBtn: document.getElementById("hq-retry"),
   };
 
+  var logoutBtns = document.querySelectorAll("[data-hq-logout]");
+
   var auth = null;
+  var db = null;
   var provider = null;
   var busy = false;
+  var bridge = null;
 
   function setStatus(text, kind) {
     if (!els.status) return;
@@ -49,16 +53,17 @@ import {
     Object.keys(views).forEach(function (key) {
       var el = views[key];
       if (!el) return;
-      if (key === name) el.hidden = false;
-      else el.hidden = true;
+      el.hidden = key !== name;
     });
   }
 
   function setBusy(on) {
     busy = !!on;
     if (els.loginBtn) els.loginBtn.disabled = busy;
-    if (els.logoutBtn) els.logoutBtn.disabled = busy;
     if (els.retryBtn) els.retryBtn.disabled = busy;
+    logoutBtns.forEach(function (btn) {
+      btn.disabled = busy;
+    });
   }
 
   function showError(message) {
@@ -67,22 +72,34 @@ import {
     showView("error");
   }
 
-  function fillSetup(user) {
-    if (els.displayName) els.displayName.textContent = user.displayName || "—";
-    if (els.email) els.email.textContent = user.email || "—";
-    if (els.uid) els.uid.textContent = user.uid || "—";
+  function applyUser(user) {
+    if (!user) {
+      if (els.deniedEmail) els.deniedEmail.textContent = "—";
+      if (els.authEmail) els.authEmail.textContent = "—";
+      setStatus("Signed out");
+      showView("signedOut");
+      return;
+    }
+
+    var email = user.email || "—";
+    if (!bridge || !bridge.isAdminUid(user.uid)) {
+      if (els.deniedEmail) els.deniedEmail.textContent = email;
+      setStatus("Access denied", "err");
+      showView("denied");
+      return;
+    }
+
+    if (els.authEmail) els.authEmail.textContent = email;
+    setStatus("관리자 인증 완료", "ok");
+    showView("authorized");
   }
 
   function bootAuth() {
-    var bridge = window.NEWON_HQ_FIREBASE;
+    bridge = window.NEWON_HQ_FIREBASE;
     if (!bridge || !bridge.isConfigured()) {
-      var missing = (bridge && bridge.missingKeys && bridge.missingKeys()) || [
-        "apiKey",
-        "appId",
-      ];
-      if (els.configMissing) {
-        els.configMissing.textContent = missing.join(", ");
-      }
+      var missing = (bridge && bridge.missingKeys && bridge.missingKeys()) || ["apiKey", "appId"];
+      if (!bridge || !bridge.ADMIN_UID) missing = missing.concat(["ADMIN_UID"]);
+      if (els.configMissing) els.configMissing.textContent = missing.join(", ");
       setStatus("Firebase config incomplete", "err");
       showView("config");
       return;
@@ -91,24 +108,19 @@ import {
     try {
       var app = initializeApp(bridge.config);
       auth = getAuth(app);
+      db = getFirestore(app);
       provider = new GoogleAuthProvider();
       provider.setCustomParameters({ prompt: "select_account" });
+      // db is initialized for Phase 1C+; no reads/writes in 1B.
+      void db;
     } catch (err) {
-      showError("Could not initialize Firebase Auth.");
+      showError("Could not initialize Firebase.");
       return;
     }
 
     onAuthStateChanged(auth, function (user) {
       setBusy(false);
-      if (!user) {
-        fillSetup({ displayName: "", email: "", uid: "" });
-        setStatus("Signed out");
-        showView("signedOut");
-        return;
-      }
-      fillSetup(user);
-      setStatus("Authentication successful", "ok");
-      showView("setup");
+      applyUser(user);
     });
   }
 
@@ -118,7 +130,6 @@ import {
     setStatus("Opening Google sign-in…");
     try {
       await signInWithPopup(auth, provider);
-      // onAuthStateChanged handles UI
     } catch (err) {
       setBusy(false);
       var code = err && err.code ? String(err.code) : "";
@@ -142,31 +153,10 @@ import {
     }
   }
 
-  function copyUid() {
-    var uid = els.uid && els.uid.textContent ? els.uid.textContent.trim() : "";
-    if (!uid || uid === "—") return;
-    function done() {
-      setStatus("UID copied", "ok");
-      if (els.copyUid) {
-        var prev = els.copyUid.textContent;
-        els.copyUid.textContent = "Copied";
-        window.setTimeout(function () {
-          els.copyUid.textContent = prev;
-        }, 1200);
-      }
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(uid).then(done).catch(function () {
-        setStatus("Could not copy UID", "err");
-      });
-      return;
-    }
-    setStatus("Could not copy UID", "err");
-  }
-
   if (els.loginBtn) els.loginBtn.addEventListener("click", login);
-  if (els.logoutBtn) els.logoutBtn.addEventListener("click", logout);
-  if (els.copyUid) els.copyUid.addEventListener("click", copyUid);
+  logoutBtns.forEach(function (btn) {
+    btn.addEventListener("click", logout);
+  });
   if (els.retryBtn) {
     els.retryBtn.addEventListener("click", function () {
       setStatus("");
@@ -175,7 +165,7 @@ import {
         bootAuth();
         return;
       }
-      showView(auth.currentUser ? "setup" : "signedOut");
+      applyUser(auth.currentUser);
     });
   }
 

@@ -16,6 +16,9 @@
     measurementId: "G-4Y8WN7PQKX",
   };
 
+  /** Sole authorized HQ operator (Firebase Auth UID). Not a secret key. */
+  var ADMIN_UID = "HiVqVilIIZNmThfZa9z0YqU7vwl1";
+
   var required = ["apiKey", "authDomain", "projectId", "appId"];
 
   function missingKeys() {
@@ -26,9 +29,13 @@
 
   global.NEWON_HQ_FIREBASE = {
     config: config,
+    ADMIN_UID: ADMIN_UID,
     isConfigured: function () {
-      return missingKeys().length === 0;
+      return missingKeys().length === 0 && !!ADMIN_UID;
     },
     missingKeys: missingKeys,
+    isAdminUid: function (uid) {
+      return !!uid && !!ADMIN_UID && uid === ADMIN_UID;
+    },
   };
 })(typeof window !== "undefined" ? window : globalThis);

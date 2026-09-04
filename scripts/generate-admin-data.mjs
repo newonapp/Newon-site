@@ -47,7 +47,7 @@ const hqHtml = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Newon HQ — Sign in</title>
-  <link rel="stylesheet" href="./hq.css?v=20260904hq1a" />
+  <link rel="stylesheet" href="./hq.css?v=20260904hq1b" />
 </head>
 <body>
   <main class="hq" id="hq-app">
@@ -65,55 +65,43 @@ const hqHtml = `<!DOCTYPE html>
       <h2 class="hq__title" style="font-size:1.15rem">Firebase config required</h2>
       <p class="hq__lead">
         Public web config fields are missing in <code>admin/firebase-config.js</code>.
-        Fill them from Firebase Console → Project settings → Your apps → Web app “Newon HQ”.
       </p>
       <p class="hq-status hq-status--err">Missing: <span id="hq-config-missing"></span></p>
-      <ul class="hq-list">
-        <li>apiKey</li>
-        <li>appId</li>
-        <li>messagingSenderId (recommended)</li>
-        <li>storageBucket (recommended)</li>
-      </ul>
-      <p class="hq__lead" style="margin-top:1rem;margin-bottom:0">
-        Do not add service accounts, private keys, or Admin SDK credentials.
-      </p>
     </section>
 
     <section class="hq-view hq-panel" id="hq-view-signed-out" hidden aria-label="Sign in">
       <p class="hq__lead" style="margin-bottom:0">
-        Use the Google account that will own Newon HQ. No operations data is available until an admin UID is configured in a later step.
+        Authorized admin Google account only. Operations data stays behind Auth and Firestore Security Rules.
       </p>
       <div class="hq-actions">
         <button type="button" class="hq-btn" id="hq-login">Google 계정으로 로그인</button>
       </div>
     </section>
 
-    <section class="hq-view hq-panel" id="hq-view-setup" hidden aria-label="Admin setup required">
-      <p class="hq__eyebrow">Authentication successful</p>
-      <h2 class="hq__title" style="font-size:1.15rem">관리자 설정 필요</h2>
-      <p class="hq__lead">
-        Copy your Firebase UID. Next, set it as the admin UID in Firestore Security Rules.
-        Operations modules are not available in this step.
-      </p>
-      <dl class="hq-dl">
-        <div class="hq-dl__row">
-          <dt class="hq-dl__label">Name</dt>
-          <dd class="hq-dl__value" id="hq-display-name">—</dd>
-        </div>
-        <div class="hq-dl__row">
-          <dt class="hq-dl__label">Email</dt>
-          <dd class="hq-dl__value" id="hq-email">—</dd>
-        </div>
-        <div class="hq-dl__row">
-          <dt class="hq-dl__label">Firebase UID</dt>
-          <dd class="hq-uid-row">
-            <p class="hq-dl__value" id="hq-uid">—</p>
-            <button type="button" class="hq-btn hq-btn--ghost hq-btn--small" id="hq-copy-uid">Copy</button>
-          </dd>
-        </div>
-      </dl>
+    <section class="hq-view hq-panel" id="hq-view-denied" hidden aria-label="Access denied">
+      <p class="hq__eyebrow">Access denied</p>
+      <h2 class="hq__title" style="font-size:1.15rem">This account is not authorized for Newon HQ.</h2>
+      <p class="hq__lead">Signed in as <span id="hq-denied-email">—</span></p>
       <div class="hq-actions">
-        <button type="button" class="hq-btn hq-btn--ghost" id="hq-logout">로그아웃</button>
+        <button type="button" class="hq-btn hq-btn--ghost" data-hq-logout>로그아웃</button>
+      </div>
+    </section>
+
+    <section class="hq-view hq-panel" id="hq-view-authorized" hidden aria-label="Authorized">
+      <p class="hq__eyebrow">NEWON HQ</p>
+      <h2 class="hq__title" style="font-size:1.15rem">Private Operations</h2>
+      <p class="hq__lead">관리자 인증 완료. Operations modules arrive in the next phase — no live data here yet.</p>
+      <p class="hq-status hq-status--ok">Signed in as <span id="hq-auth-email">—</span></p>
+      <ul class="hq-list" aria-label="Upcoming modules">
+        <li>Dashboard</li>
+        <li>Products</li>
+        <li>Tasks</li>
+        <li>Releases</li>
+        <li>Leads</li>
+        <li>Finance</li>
+      </ul>
+      <div class="hq-actions">
+        <button type="button" class="hq-btn hq-btn--ghost" data-hq-logout>로그아웃</button>
       </div>
     </section>
 
@@ -125,8 +113,8 @@ const hqHtml = `<!DOCTYPE html>
     </section>
   </main>
 
-  <script src="./firebase-config.js?v=20260904hq1a"></script>
-  <script type="module" src="./hq-auth.js?v=20260904hq1a"></script>
+  <script src="./firebase-config.js?v=20260904hq1b"></script>
+  <script type="module" src="./hq-auth.js?v=20260904hq1b"></script>
 </body>
 </html>
 `;

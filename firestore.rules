@@ -1,0 +1,24 @@
+rules_version = '2';
+/**
+ * Newon HQ — Firestore Security Rules (Phase 1B)
+ * Project: newon-hq
+ *
+ * Deploy via Firebase Console (this site uses GitHub Pages, not Firebase Hosting):
+ * 1. Open https://console.firebase.google.com/project/newon-hq/firestore/rules
+ * 2. Replace the entire rules editor contents with this file
+ * 3. Click Publish
+ *
+ * Only the configured admin Auth UID may read or write any document.
+ */
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isHqAdmin() {
+      return request.auth != null
+        && request.auth.uid == 'HiVqVilIIZNmThfZa9z0YqU7vwl1';
+    }
+
+    match /{document=**} {
+      allow read, write: if isHqAdmin();
+    }
+  }
+}
