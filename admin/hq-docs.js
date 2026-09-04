@@ -146,6 +146,9 @@ export function installHqDocs(api) {
     showPanel,
     formatLongDate,
     openFinanceForm,
+    clientById,
+    companyById,
+    openCrmDetail,
   } = api;
 
   let documentDetailId = null;
@@ -266,6 +269,8 @@ export function installHqDocs(api) {
     return {
       projectId: project ? project.id : null,
       leadId: project ? project.leadId || null : null,
+      clientId: project ? project.clientId || null : null,
+      companyId: project ? project.companyId || null : null,
       clientName: project ? project.clientName || "" : "",
       company: project ? project.company || "" : "",
       type,
@@ -441,13 +446,22 @@ export function installHqDocs(api) {
           toast("Invalid type", "err");
           return;
         }
+        const linkedProj = projectById(projectIn.value) || project;
         const payload = {
           title,
           type: t,
           status: statusIn.value,
           version: versionIn.value.trim() || "1.0",
           projectId: projectIn.value || null,
-          leadId: projectById(projectIn.value)?.leadId || (project && project.leadId) || null,
+          leadId: (linkedProj && linkedProj.leadId) || null,
+          clientId:
+            (item && item.clientId) ||
+            (linkedProj && linkedProj.clientId) ||
+            null,
+          companyId:
+            (item && item.companyId) ||
+            (linkedProj && linkedProj.companyId) ||
+            null,
           clientName: clientIn.value.trim(),
           company: companyIn.value.trim(),
           content: contentCollectors(),
@@ -674,13 +688,22 @@ export function installHqDocs(api) {
           toast("Invalid quote lines", "err");
           return;
         }
+        const linkedProj = projectById(projectIn.value) || project;
         const payload = {
           title,
           type: "quote",
           status: statusIn.value,
           version: versionIn.value.trim() || "1.0",
           projectId: projectIn.value || null,
-          leadId: projectById(projectIn.value)?.leadId || (project && project.leadId) || null,
+          leadId: (linkedProj && linkedProj.leadId) || null,
+          clientId:
+            (item && item.clientId) ||
+            (linkedProj && linkedProj.clientId) ||
+            null,
+          companyId:
+            (item && item.companyId) ||
+            (linkedProj && linkedProj.companyId) ||
+            null,
           clientName: clientIn.value.trim(),
           company: companyIn.value.trim(),
           content: {
@@ -888,7 +911,28 @@ export function installHqDocs(api) {
           el("div", { className: "hq-pipeline" }, [
             el("p", { className: "hq-row__meta", text: `Name: ${d.clientName || "—"}` }),
             el("p", { className: "hq-row__meta", text: `Company: ${d.company || "—"}` }),
-          ]),
+            d.clientId && typeof openCrmDetail === "function"
+              ? btn("Open CRM client", {
+                  className: "hq-btn hq-btn--small",
+                  onClick: () => openCrmDetail("client", d.clientId),
+                })
+              : null,
+            d.companyId && typeof openCrmDetail === "function"
+              ? btn("Open CRM company", {
+                  className: "hq-btn hq-btn--small hq-btn--ghost",
+                  onClick: () => openCrmDetail("company", d.companyId),
+                })
+              : null,
+            !d.clientId &&
+            project &&
+            project.clientId &&
+            typeof openCrmDetail === "function"
+              ? btn("Open project client", {
+                  className: "hq-btn hq-btn--small hq-btn--ghost",
+                  onClick: () => openCrmDetail("client", project.clientId),
+                })
+              : null,
+          ].filter(Boolean)),
         ]),
       ])
     );
@@ -1052,6 +1096,8 @@ export function installHqDocs(api) {
                 relatedProject: (project && project.name) || d.company || "",
                 memo: `Invoice ${content.invoiceNumber || d.title || d.id}`,
                 invoiceId: d.id,
+                clientId: d.clientId || (project && project.clientId) || "",
+                companyId: d.companyId || (project && project.companyId) || "",
               });
             } else {
               toast("Finance form unavailable", "err");
@@ -1432,6 +1478,9 @@ export function installHqDocs(api) {
     openQuoteBuilder,
     clearDetail() {
       documentDetailId = null;
+    },
+    setDetailId(id) {
+      documentDetailId = id;
     },
     getDetailId() {
       return documentDetailId;

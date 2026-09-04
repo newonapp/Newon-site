@@ -153,6 +153,7 @@ export function installHqOps(api) {
     serviceTypeLabel,
     PROJECT_STATUS_LABEL,
     statusBadge,
+    crmLinkRow,
   } = api;
 
   let projectTab = "overview";
@@ -988,6 +989,7 @@ export function installHqOps(api) {
           className: "hq-page-header__desc",
           text: `${project.clientName || "—"} · ${project.company || "—"}`,
         }),
+        typeof crmLinkRow === "function" ? crmLinkRow(project) : null,
         el("div", { className: "hq-product-card__ops", style: "margin-top:0.75rem" }, [
           projectStatusBadge(project.status),
           badge(PROJECT_PHASE_LABEL[project.phase] || project.phase || "No phase"),

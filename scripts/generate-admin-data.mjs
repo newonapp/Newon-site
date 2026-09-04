@@ -101,6 +101,7 @@ const I = {
   tasks: "M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01",
   releases: "M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8",
   leads: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75",
+  clients: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 11l2 2 4-4",
   projects: "M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z",
   documents: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8",
   finance: "M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
@@ -113,6 +114,7 @@ const panels = [
   "tasks",
   "releases",
   "leads",
+  "clients",
   "projects",
   "documents",
   "finance",
@@ -132,7 +134,7 @@ const hqHtml = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Newon HQ</title>
-  <link rel="stylesheet" href="./hq.css?v=20260904hq2c" />
+  <link rel="stylesheet" href="./hq.css?v=20260904hq2d" />
 </head>
 <body>
   <div class="hq hq--auth" id="hq-auth-wrap">
@@ -194,6 +196,7 @@ const hqHtml = `<!DOCTYPE html>
           ${navBtn("products", "Products", I.products)}
           <p class="hq-nav__group">Business</p>
           ${navBtn("leads", "Leads", I.leads)}
+          ${navBtn("clients", "Clients", I.clients)}
           ${navBtn("projects", "Projects", I.projects)}
           ${navBtn("documents", "Documents", I.documents)}
           ${navBtn("finance", "Finance", I.finance)}
@@ -227,9 +230,9 @@ const hqHtml = `<!DOCTYPE html>
     </dialog>
   </div>
 
-  <script src="./firebase-config.js?v=20260904hq2c"></script>
-  <script type="module" src="./hq-auth.js?v=20260904hq2c"></script>
-  <script type="module" src="./hq-app.js?v=20260904hq2c"></script>
+  <script src="./firebase-config.js?v=20260904hq2d"></script>
+  <script type="module" src="./hq-auth.js?v=20260904hq2d"></script>
+  <script type="module" src="./hq-app.js?v=20260904hq2d"></script>
 </body>
 </html>
 `;

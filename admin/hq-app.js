@@ -16,8 +16,9 @@ import {
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 import { installHqDocs } from "./hq-docs.js";
 import { installHqOps, PROJECT_PHASE, PROJECT_PHASE_LABEL, BOARD_LANES } from "./hq-ops.js";
+import { installHqCrm } from "./hq-crm.js";
 
-const HQ_VERSION = "1.4.0";
+const HQ_VERSION = "1.5.0";
 const COL = {
   tasks: "hq_tasks",
   releases: "hq_releases",
@@ -27,6 +28,8 @@ const COL = {
   projects: "hq_projects",
   documents: "hq_documents",
   milestones: "hq_milestones",
+  clients: "hq_clients",
+  companies: "hq_companies",
 };
 
 const TASK_STATUS = ["todo", "doing", "done"];
@@ -104,6 +107,7 @@ const NAV_KEYS = [
   "tasks",
   "releases",
   "leads",
+  "clients",
   "projects",
   "documents",
   "finance",
@@ -141,6 +145,8 @@ let pricingBySlug = {};
 let docsMod = null;
 /** @type {ReturnType<typeof installHqOps>|null} */
 let opsMod = null;
+/** @type {ReturnType<typeof installHqCrm>|null} */
+let crmMod = null;
 
 const PAGE_META = {
   dashboard: {
@@ -162,6 +168,11 @@ const PAGE_META = {
     eyebrow: "Business",
     title: "Leads",
     desc: "Inbound inquiries and pipeline status.",
+  },
+  clients: {
+    eyebrow: "Business",
+    title: "Clients",
+    desc: "People and companies — Customer 360 CRM.",
   },
   projects: {
     eyebrow: "Projects",
@@ -201,6 +212,8 @@ function emptyCache() {
     projects: [],
     documents: [],
     milestones: [],
+    clients: [],
+    companies: [],
   };
 }
 
@@ -586,6 +599,8 @@ async function loadAll() {
     projects,
     documents,
     milestones,
+    clients,
+    companies,
   ] = await Promise.all([
     loadCol(COL.tasks, "createdAt"),
     loadCol(COL.releases, "createdAt"),
@@ -595,6 +610,8 @@ async function loadAll() {
     loadCol(COL.projects, "updatedAt"),
     loadCol(COL.documents, "updatedAt"),
     loadCol(COL.milestones, null),
+    loadCol(COL.clients, "updatedAt"),
+    loadCol(COL.companies, "updatedAt"),
   ]);
   cache = {
     tasks,
@@ -605,6 +622,8 @@ async function loadAll() {
     projects,
     documents,
     milestones,
+    clients,
+    companies,
   };
 }
 
@@ -692,6 +711,12 @@ function ensureDocsMod() {
     showPanel,
     formatLongDate,
     openFinanceForm,
+    clientById: (id) => (ensureCrmMod().clientById(id)),
+    companyById: (id) => (ensureCrmMod().companyById(id)),
+    openCrmDetail: (kind, id) => {
+      ensureCrmMod().setDetail(kind, id);
+      showPanel("clients");
+    },
     setProjectDetailId: (id) => {
       projectDetailId = id;
     },
@@ -752,8 +777,60 @@ function ensureOpsMod() {
     setProjectDetailId: (id) => {
       projectDetailId = id;
     },
+    crmLinkRow: (item) => ensureCrmMod().crmLinkRow(item),
   });
   return opsMod;
+}
+
+function ensureCrmMod() {
+  if (crmMod) return crmMod;
+  crmMod = installHqCrm({
+    el,
+    btn,
+    clear,
+    toast,
+    pageHeader,
+    toolbar,
+    table,
+    emptyState,
+    emptyMsg,
+    surfacePanel,
+    badge,
+    select,
+    input,
+    textarea,
+    fieldRow,
+    openModal,
+    closeModal,
+    withSaving,
+    confirmDelete,
+    formatKrw,
+    ymd,
+    uid,
+    serverTimestamp,
+    collection,
+    doc,
+    addDoc,
+    updateDoc,
+    COL,
+    getCache: () => cache,
+    getCtx: () => ctx,
+    refreshAndRender,
+    showPanel,
+    openLeadForm,
+    openProjectForm,
+    ensureDocsMod,
+    projectStatusBadge,
+    statusBadge,
+    projectHealth: (p) => ensureOpsMod().projectHealth(p),
+    setProjectDetailId: (id) => {
+      projectDetailId = id;
+    },
+    setDocumentDetailId: (id) => {
+      ensureDocsMod().setDetailId(id);
+    },
+  });
+  return crmMod;
 }
 
 async function refreshAndRender() {
@@ -873,6 +950,19 @@ function renderDashboard(root) {
       statCard("Month revenue", formatKrw(income), month),
       statCard("Month expense", formatKrw(expense), month),
       statCard("Net", formatKrw(net), "Income − expense"),
+    ])
+  );
+
+  root.appendChild(el("div", { style: "height:0.85rem" }));
+  root.appendChild(
+    surfacePanel("CRM", [
+      ensureCrmMod().renderDashboardCrmStrip(),
+      el("div", { style: "padding:0 1.05rem 1rem" }, [
+        btn("Open Clients", {
+          className: "hq-btn hq-btn--small hq-btn--ghost",
+          onClick: () => showPanel("clients"),
+        }),
+      ]),
     ])
   );
 
@@ -1532,12 +1622,27 @@ function filteredLeads() {
   });
 }
 
-function openLeadForm(item) {
+function openLeadForm(item, opts) {
+  opts = opts || {};
   const isEdit = !!item;
-  const nameIn = input({ value: (item && item.name) || "", required: true });
-  const companyIn = input({ value: (item && item.company) || "" });
-  const emailIn = input({ type: "email", value: (item && item.email) || "" });
-  const phoneIn = input({ value: (item && item.phone) || "" });
+  const prefClient =
+    (item && item.clientId) || opts.clientId || "";
+  const prefCompany =
+    (item && item.companyId) || opts.companyId || "";
+  const nameIn = input({
+    value: (item && item.name) || opts.name || "",
+    required: true,
+  });
+  const companyIn = input({
+    value: (item && item.company) || opts.company || "",
+  });
+  const emailIn = input({
+    type: "email",
+    value: (item && item.email) || opts.email || "",
+  });
+  const phoneIn = input({
+    value: (item && item.phone) || opts.phone || "",
+  });
   const sourceIn = select({}, LEAD_SOURCE, (item && item.source) || "Other");
   const statusIn = select({}, LEAD_STATUS, (item && item.status) || "new");
   const amountIn = input({
@@ -1548,7 +1653,22 @@ function openLeadForm(item) {
   });
   const notesIn = textarea({});
   notesIn.value = (item && item.notes) || "";
+  const clientIn = ensureCrmMod().clientOptions(prefClient);
+  const companyIdIn = ensureCrmMod().companyOptions(prefCompany);
+  clientIn.addEventListener("change", () => {
+    const c = ensureCrmMod().clientById(clientIn.value);
+    if (!c) return;
+    ensureCrmMod().fillFromClient(c, {
+      name: nameIn,
+      email: emailIn,
+      phone: phoneIn,
+      company: companyIn,
+      companyId: companyIdIn,
+    });
+  });
   const form = el("form", { className: "hq-form" }, [
+    fieldRow("CRM Client", clientIn),
+    fieldRow("CRM Company", companyIdIn),
     fieldRow("이름 *", nameIn),
     fieldRow("회사", companyIn),
     fieldRow("이메일", emailIn),
@@ -1598,6 +1718,8 @@ function openLeadForm(item) {
         status: statusIn.value,
         amountEstimate,
         notes: notesIn.value.trim(),
+        clientId: clientIn.value || null,
+        companyId: companyIdIn.value || null,
         archived: !!(item && item.archived),
         updatedAt: serverTimestamp(),
         updatedBy: uid(),
@@ -1759,6 +1881,20 @@ function renderLeads(root) {
       btn("Edit", { className: "hq-btn hq-btn--small", onClick: () => openLeadForm(l) })
     );
     if (!l.archived) {
+      if (!l.clientId) {
+        actions.appendChild(
+          btn("Create Client", {
+            className: "hq-btn hq-btn--small hq-btn--ghost",
+            onClick: () => ensureCrmMod().openClientForm(null, { lead: l }),
+          })
+        );
+        actions.appendChild(
+          btn("Link Client", {
+            className: "hq-btn hq-btn--small hq-btn--ghost",
+            onClick: () => ensureCrmMod().openLinkClientModal(l),
+          })
+        );
+      }
       actions.appendChild(
         btn("Create Project", {
           className: "hq-btn hq-btn--small hq-btn--ghost",
@@ -1876,12 +2012,20 @@ function openFinanceForm(item, opts) {
     value: (item && item.relatedProject) || opts.relatedProject || "",
   });
   const invoiceIdPref = (item && item.invoiceId) || opts.invoiceId || null;
+  const crmClientIn = ensureCrmMod().clientOptions(
+    (item && item.clientId) || opts.clientId || ""
+  );
+  const crmCompanyIn = ensureCrmMod().companyOptions(
+    (item && item.companyId) || opts.companyId || ""
+  );
   const form = el("form", { className: "hq-form" }, [
     fieldRow("유형", typeIn),
     fieldRow("카테고리 *", catIn),
     fieldRow("금액 *", amountIn),
     fieldRow("날짜 *", dateIn),
     fieldRow("Project", projectIn),
+    fieldRow("CRM Client", crmClientIn),
+    fieldRow("CRM Company", crmCompanyIn),
     fieldRow("Related label", labelIn),
     fieldRow("메모", memoIn),
   ]);
@@ -1918,6 +2062,15 @@ function openFinanceForm(item, opts) {
         const p = projectById(projectId);
         relatedProject = (p && p.name) || "";
       }
+      let clientId = crmClientIn.value || null;
+      let companyId = crmCompanyIn.value || null;
+      if (projectId && (!clientId || !companyId)) {
+        const p = projectById(projectId);
+        if (p) {
+          if (!clientId) clientId = p.clientId || null;
+          if (!companyId) companyId = p.companyId || null;
+        }
+      }
       const payload = {
         type: typeIn.value,
         category,
@@ -1926,6 +2079,8 @@ function openFinanceForm(item, opts) {
         memo: memoIn.value.trim(),
         relatedProject,
         projectId,
+        clientId,
+        companyId,
         archived: !!(item && item.archived),
         updatedAt: serverTimestamp(),
         updatedBy: uid(),
@@ -2400,17 +2555,56 @@ function openProjectForm(item, opts) {
     required: true,
   });
   const clientIn = input({
-    value: (item && item.clientName) || (lead && lead.name) || "",
+    value:
+      (item && item.clientName) ||
+      opts.clientName ||
+      (lead && lead.name) ||
+      "",
   });
   const companyIn = input({
-    value: (item && item.company) || (lead && lead.company) || "",
+    value:
+      (item && item.company) ||
+      opts.company ||
+      (lead && lead.company) ||
+      "",
   });
   const emailIn = input({
     type: "email",
-    value: (item && item.clientEmail) || (lead && lead.email) || "",
+    value:
+      (item && item.clientEmail) ||
+      opts.clientEmail ||
+      (lead && lead.email) ||
+      "",
   });
   const phoneIn = input({
-    value: (item && item.clientPhone) || (lead && lead.phone) || "",
+    value:
+      (item && item.clientPhone) ||
+      opts.clientPhone ||
+      (lead && lead.phone) ||
+      "",
+  });
+  const crmClientIn = ensureCrmMod().clientOptions(
+    (item && item.clientId) ||
+      opts.clientId ||
+      (lead && lead.clientId) ||
+      ""
+  );
+  const crmCompanyIn = ensureCrmMod().companyOptions(
+    (item && item.companyId) ||
+      opts.companyId ||
+      (lead && lead.companyId) ||
+      ""
+  );
+  crmClientIn.addEventListener("change", () => {
+    const c = ensureCrmMod().clientById(crmClientIn.value);
+    if (!c) return;
+    ensureCrmMod().fillFromClient(c, {
+      clientName: clientIn,
+      clientEmail: emailIn,
+      clientPhone: phoneIn,
+      company: companyIn,
+      companyId: crmCompanyIn,
+    });
   });
   const serviceIn = serviceTypeOptions(
     (item && item.serviceType) || "other"
@@ -2459,6 +2653,8 @@ function openProjectForm(item, opts) {
   notesIn.value = (item && item.internalNotes) || "";
   const form = el("form", { className: "hq-form" }, [
     fieldRow("Project Name *", nameIn),
+    fieldRow("CRM Client", crmClientIn),
+    fieldRow("CRM Company", crmCompanyIn),
     fieldRow("Client Name", clientIn),
     fieldRow("Company", companyIn),
     fieldRow("Email", emailIn),
@@ -2546,6 +2742,8 @@ function openProjectForm(item, opts) {
         description: descIn.value.trim(),
         internalNotes: notesIn.value.trim(),
         leadId,
+        clientId: crmClientIn.value || null,
+        companyId: crmCompanyIn.value || null,
         archived: !!(item && item.archived),
         updatedAt: serverTimestamp(),
         updatedBy: uid(),
@@ -2835,6 +3033,7 @@ function renderCurrent() {
     tasks: renderTasks,
     releases: renderReleases,
     leads: renderLeads,
+    clients: (root) => ensureCrmMod().renderClients(root),
     projects: renderProjects,
     documents: (root) => ensureDocsMod().renderDocuments(root),
     finance: renderFinance,
@@ -2884,6 +3083,7 @@ function stop() {
   projectDetailId = null;
   docsMod = null;
   opsMod = null;
+  crmMod = null;
   ctx = null;
   saving = false;
   closeModal();
@@ -2911,6 +3111,7 @@ async function start(startCtx) {
     await Promise.all([loadAll(), loadCatalog(), loadServiceTypes(), loadPricing()]);
     ensureDocsMod();
     ensureOpsMod();
+    ensureCrmMod();
     toast("");
     showPanel("dashboard");
   } catch {
