@@ -15,7 +15,7 @@
   --hq-ok: #7dba8e;
   --hq-warn: #c9a86a;
   --hq-focus: #ffffff;
-  --hq-nav-w: 15rem;
+  --hq-nav-w: 15.5rem;
   --hq-radius: 2px;
   --hq-font: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
   --hq-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
@@ -34,8 +34,8 @@ body {
   background: var(--hq-bg);
   color: var(--hq-text);
   font-family: var(--hq-font);
-  font-size: 14px;
-  line-height: 1.45;
+  font-size: 16px;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -67,7 +67,7 @@ body.hq-body--shell {
 .hq__eyebrow,
 .hq-eyebrow {
   margin: 0 0 0.65rem;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -76,7 +76,7 @@ body.hq-body--shell {
 
 .hq__title {
   margin: 0 0 0.65rem;
-  font-size: 1.75rem;
+  font-size: 1.9rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -86,7 +86,7 @@ body.hq-body--shell {
   margin: 0 0 1.5rem;
   color: var(--hq-muted);
   line-height: 1.6;
-  font-size: 0.9375rem;
+  font-size: 1rem;
 }
 
 .hq-panel {
@@ -114,7 +114,7 @@ body.hq-body--shell {
 .hq-status {
   margin: 0 0 1rem;
   min-height: 1.25rem;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: var(--hq-muted);
 }
 
@@ -137,7 +137,7 @@ body.hq-body--shell {
   padding: 0.55rem 1rem;
   font: inherit;
   font-weight: 600;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   letter-spacing: 0.01em;
   cursor: pointer;
   border-radius: var(--hq-radius);
@@ -194,7 +194,7 @@ body.hq-body--shell {
 .hq-btn--small {
   min-height: 36px;
   padding: 0.35rem 0.7rem;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 /* ——— Shell ——— */
@@ -220,7 +220,7 @@ body.hq-body--shell {
   min-height: 40px;
   padding: 0.4rem 0.75rem;
   font: inherit;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -256,7 +256,7 @@ body.hq-body--shell {
 
 .hq-nav__brand-name {
   display: block;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -265,7 +265,7 @@ body.hq-body--shell {
 .hq-nav__brand-hq {
   display: block;
   margin-top: 0.15rem;
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -274,7 +274,7 @@ body.hq-body--shell {
 .hq-nav__brand-label {
   display: block;
   margin-top: 0.55rem;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -290,7 +290,7 @@ body.hq-body--shell {
 
 .hq-nav__group {
   margin: 1rem 0.55rem 0.35rem;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -308,7 +308,7 @@ body.hq-body--shell {
   color: var(--hq-muted);
   text-align: left;
   font: inherit;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   padding: 0.55rem 0.55rem;
   cursor: pointer;
@@ -378,7 +378,7 @@ body.hq-body--shell {
   flex: 0 0 auto;
   display: grid;
   place-items: center;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--hq-muted);
@@ -386,7 +386,7 @@ body.hq-body--shell {
 
 .hq-nav__email {
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--hq-text);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -396,7 +396,7 @@ body.hq-body--shell {
 
 .hq-nav__role {
   margin: 0.15rem 0 0;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   color: var(--hq-muted);
   display: flex;
   align-items: center;
@@ -436,7 +436,7 @@ body.hq-body--shell {
   padding: 0.65rem 0.85rem;
   border: 1px solid var(--hq-border);
   background: var(--hq-surface-2);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: var(--hq-muted);
   border-radius: var(--hq-radius);
 }
@@ -470,7 +470,7 @@ body.hq-body--shell {
 
 .hq-page-header__title {
   margin: 0.2rem 0 0.35rem;
-  font-size: clamp(1.65rem, 2.2vw, 2.125rem);
+  font-size: clamp(1.85rem, 2.4vw, 2.35rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -479,7 +479,7 @@ body.hq-body--shell {
 .hq-page-header__desc {
   margin: 0;
   color: var(--hq-muted);
-  font-size: 0.875rem;
+  font-size: 1rem;
   max-width: 36rem;
   line-height: 1.5;
 }
@@ -493,7 +493,7 @@ body.hq-body--shell {
 }
 
 .hq-page-header__meta {
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--hq-subtle);
@@ -502,7 +502,7 @@ body.hq-body--shell {
 }
 
 .hq-page-header__count {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--hq-muted);
   border: 1px solid var(--hq-border);
   padding: 0.35rem 0.55rem;
@@ -530,7 +530,7 @@ body.hq-body--shell {
 .hq-stat__label,
 .hq-card__label {
   margin: 0;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -540,7 +540,7 @@ body.hq-body--shell {
 .hq-stat__value,
 .hq-card__value {
   margin: 0.55rem 0 0.25rem;
-  font-size: clamp(1.35rem, 1.8vw, 1.85rem);
+  font-size: clamp(1.5rem, 2vw, 2rem);
   font-weight: 600;
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
@@ -551,7 +551,7 @@ body.hq-body--shell {
 
 .hq-stat__caption {
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--hq-subtle);
 }
 
@@ -585,7 +585,7 @@ body.hq-body--shell {
 
 .hq-surface-panel__title {
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -597,7 +597,7 @@ body.hq-body--shell {
   background: none;
   color: var(--hq-muted);
   font: inherit;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 0.2em;
@@ -640,7 +640,7 @@ body.hq-body--shell {
 
 .hq-row__title {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -649,7 +649,7 @@ body.hq-body--shell {
 
 .hq-row__meta {
   margin: 0.2rem 0 0;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--hq-muted);
   font-variant-numeric: tabular-nums;
 }
@@ -660,7 +660,7 @@ body.hq-body--shell {
 }
 
 .hq-row__aside {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--hq-muted);
   font-variant-numeric: tabular-nums;
   font-family: var(--hq-mono);
@@ -683,7 +683,7 @@ body.hq-body--shell {
 
 .hq-pipeline__label {
   margin: 0;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--hq-muted);
@@ -707,7 +707,7 @@ body.hq-body--shell {
   text-align: right;
   font-family: var(--hq-mono);
   font-variant-numeric: tabular-nums;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
 }
 
 .hq-bar-pair {
@@ -725,7 +725,7 @@ body.hq-body--shell {
   display: flex;
   justify-content: space-between;
   gap: 0.75rem;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--hq-muted);
 }
 
@@ -774,7 +774,7 @@ body.hq-body--shell {
   background: transparent;
   color: var(--hq-muted);
   font: inherit;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 500;
   min-height: 36px;
   padding: 0.35rem 0.7rem;
@@ -819,7 +819,7 @@ body.hq-body--shell {
 .hq-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   min-width: 40rem;
 }
 
@@ -832,7 +832,7 @@ body.hq-body--shell {
 }
 
 .hq-table th {
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--hq-muted);
@@ -892,13 +892,13 @@ body.hq-body--shell {
 
 .hq-item-card__title {
   margin: 0;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
 .hq-item-card__meta {
   margin: 0.15rem 0 0;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--hq-muted);
 }
 
@@ -913,7 +913,7 @@ body.hq-body--shell {
 .hq-badge {
   display: inline-flex;
   align-items: center;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -961,7 +961,7 @@ body.hq-body--shell {
 .hq-empty-state {
   margin: 0;
   color: var(--hq-muted);
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .hq-empty-state {
@@ -985,7 +985,7 @@ body.hq-body--shell {
 .hq-empty-state__desc {
   margin: 0;
   color: var(--hq-muted);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   max-width: 28rem;
   line-height: 1.55;
 }
@@ -996,7 +996,7 @@ body.hq-body--shell {
   border: 1px solid var(--hq-border-strong);
   display: grid;
   place-items: center;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--hq-subtle);
   margin-bottom: 0.25rem;
 }
@@ -1009,7 +1009,7 @@ body.hq-body--shell {
 }
 
 .hq-field__label {
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--hq-muted);
@@ -1027,7 +1027,7 @@ textarea.hq-input {
   background: #0a0a0a;
   color: var(--hq-text);
   font: inherit;
-  font-size: 0.875rem;
+  font-size: 1rem;
   border-radius: var(--hq-radius);
 }
 
@@ -1084,7 +1084,7 @@ textarea.hq-input {
 
 .hq-settings-card__title {
   margin: 0 0 0.85rem;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--hq-muted);
@@ -1109,7 +1109,7 @@ textarea.hq-input {
 
 .hq-dl__label {
   margin: 0;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--hq-subtle);
@@ -1117,7 +1117,7 @@ textarea.hq-input {
 
 .hq-dl__value {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.45;
   overflow-wrap: anywhere;
 }
@@ -1132,7 +1132,7 @@ textarea.hq-input {
 
 .hq-session-box__title {
   margin: 0 0 0.35rem;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--hq-muted);
@@ -1141,7 +1141,7 @@ textarea.hq-input {
 .hq-session-box__desc {
   margin: 0 0 0.9rem;
   color: var(--hq-muted);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
 }
 
 /* ——— Products ——— */
@@ -1178,7 +1178,7 @@ textarea.hq-input {
 
 .hq-product-card__meta {
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--hq-muted);
 }
 
@@ -1192,13 +1192,13 @@ textarea.hq-input {
 
 .hq-product-card__note {
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--hq-subtle);
 }
 
 .hq-catalog-note {
   margin: 0 0 1rem;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--hq-subtle);
 }
 
@@ -1219,7 +1219,7 @@ textarea.hq-input {
 
 .hq-summary-pill__label {
   margin: 0;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--hq-muted);
@@ -1344,7 +1344,7 @@ textarea.hq-input {
   }
 
   .hq-page-header__title {
-    font-size: 1.55rem;
+    font-size: 1.75rem;
   }
 
   .hq-row--task {

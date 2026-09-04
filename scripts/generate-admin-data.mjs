@@ -118,7 +118,7 @@ const hqHtml = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Newon HQ</title>
-  <link rel="stylesheet" href="./hq.css?v=20260904hq2a" />
+  <link rel="stylesheet" href="./hq.css?v=20260904hq2a-type" />
 </head>
 <body>
   <div class="hq hq--auth" id="hq-auth-wrap">
