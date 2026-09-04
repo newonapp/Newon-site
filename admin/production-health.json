@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "generatedAt": "2026-09-04T10:40:39.541Z",
   "repo": {
-    "path": "/Users/kyungnawon/Newon",
+    "path": ".",
     "kind": "newon-public-website",
     "note": "This repository is the Newon public website (GitHub Pages). Consumer Flutter app sources are not vendored here.",
     "hqFirebase": {

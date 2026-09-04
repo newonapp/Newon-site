@@ -1,6 +1,6 @@
 # NEWON 11 APPS — Production Health Report
 
-Generated: 2026-09-04T10:27:57.330Z
+Generated: 2026-09-04T10:40:39.541Z
 Scope: This repository is the Newon public website (GitHub Pages). Consumer Flutter app sources are not vendored here.
 
 ## Overall matrix
@@ -48,8 +48,6 @@ HQ Firebase (`newon-hq`) rules file `firestore.rules`: HQ admin only — not per
 - `[APP_STORE_URL_PRESENT]` App Store product URL present in locales.
 - `[SITE_PRIVACY_PAGE]` Site privacy page exists (ko). (`ko/privacy/`)
 - `[SITE_TERMS_PAGE]` Site terms page exists (ko). (`ko/terms/`)
-- `[PLAY_HTTP_OK]` Store URL HTTP 200.
-- `[APPSTORE_HTTP_OK]` Store URL HTTP 200.
 
 ### UNKNOWN
 
@@ -86,8 +84,6 @@ HQ Firebase (`newon-hq`) rules file `firestore.rules`: HQ admin only — not per
 - `[APP_STORE_URL_PRESENT]` App Store product URL present in locales.
 - `[SITE_PRIVACY_PAGE]` Site privacy page exists (ko). (`ko/privacy/`)
 - `[SITE_TERMS_PAGE]` Site terms page exists (ko). (`ko/terms/`)
-- `[PLAY_HTTP_OK]` Store URL HTTP 200.
-- `[APPSTORE_HTTP_OK]` Store URL HTTP 200.
 
 ### UNKNOWN
 
@@ -124,8 +120,6 @@ HQ Firebase (`newon-hq`) rules file `firestore.rules`: HQ admin only — not per
 - `[APP_STORE_URL_PRESENT]` App Store product URL present in locales.
 - `[SITE_PRIVACY_PAGE]` Site privacy page exists (ko). (`ko/privacy/`)
 - `[SITE_TERMS_PAGE]` Site terms page exists (ko). (`ko/terms/`)
-- `[PLAY_HTTP_OK]` Store URL HTTP 200.
-- `[APPSTORE_HTTP_OK]` Store URL HTTP 200.
 
 ### UNKNOWN
 
@@ -163,8 +157,6 @@ HQ Firebase (`newon-hq`) rules file `firestore.rules`: HQ admin only — not per
 - `[APP_STORE_URL_PRESENT]` App Store product URL present in locales.
 - `[SITE_PRIVACY_PAGE]` Site privacy page exists (ko). (`ko/privacy/`)
 - `[SITE_TERMS_PAGE]` Site terms page exists (ko). (`ko/terms/`)
-- `[PLAY_HTTP_OK]` Store URL HTTP 200.
-- `[APPSTORE_HTTP_OK]` Store URL HTTP 200.
 
 ### UNKNOWN
 
@@ -204,8 +196,6 @@ HQ Firebase (`newon-hq`) rules file `firestore.rules`: HQ admin only — not per
 - `[APP_STORE_URL_PRESENT]` App Store product URL present in locales.
 - `[SITE_PRIVACY_PAGE]` Site privacy page exists (ko). (`ko/privacy/`)
 - `[SITE_TERMS_PAGE]` Site terms page exists (ko). (`ko/terms/`)
-- `[PLAY_HTTP_OK]` Store URL HTTP 200.
-- `[APPSTORE_HTTP_OK]` Store URL HTTP 200.
 
 ### UNKNOWN
 
@@ -245,8 +235,6 @@ HQ Firebase (`newon-hq`) rules file `firestore.rules`: HQ admin only — not per
 - `[APP_STORE_URL_PRESENT]` App Store product URL present in locales.
 - `[SITE_PRIVACY_PAGE]` Site privacy page exists (ko). (`ko/privacy/`)
 - `[SITE_TERMS_PAGE]` Site terms page exists (ko). (`ko/terms/`)
-- `[PLAY_HTTP_OK]` Store URL HTTP 200.
-- `[APPSTORE_HTTP_OK]` Store URL HTTP 200.
 
 ### UNKNOWN
 
@@ -285,8 +273,6 @@ HQ Firebase (`newon-hq`) rules file `firestore.rules`: HQ admin only — not per
 - `[APP_STORE_URL_PRESENT]` App Store product URL present in locales.
 - `[SITE_PRIVACY_PAGE]` Site privacy page exists (ko). (`ko/privacy/`)
 - `[SITE_TERMS_PAGE]` Site terms page exists (ko). (`ko/terms/`)
-- `[PLAY_HTTP_OK]` Store URL HTTP 200.
-- `[APPSTORE_HTTP_OK]` Store URL HTTP 200.
 
 ### UNKNOWN
 
@@ -323,8 +309,6 @@ HQ Firebase (`newon-hq`) rules file `firestore.rules`: HQ admin only — not per
 - `[APP_STORE_URL_PRESENT]` App Store product URL present in locales.
 - `[SITE_PRIVACY_PAGE]` Site privacy page exists (ko). (`ko/privacy/`)
 - `[SITE_TERMS_PAGE]` Site terms page exists (ko). (`ko/terms/`)
-- `[PLAY_HTTP_OK]` Store URL HTTP 200.
-- `[APPSTORE_HTTP_OK]` Store URL HTTP 200.
 
 ### UNKNOWN
 
@@ -361,8 +345,6 @@ HQ Firebase (`newon-hq`) rules file `firestore.rules`: HQ admin only — not per
 - `[APP_STORE_URL_PRESENT]` App Store product URL present in locales.
 - `[SITE_PRIVACY_PAGE]` Site privacy page exists (ko). (`ko/privacy/`)
 - `[SITE_TERMS_PAGE]` Site terms page exists (ko). (`ko/terms/`)
-- `[PLAY_HTTP_OK]` Store URL HTTP 200.
-- `[APPSTORE_HTTP_OK]` Store URL HTTP 200.
 
 ### UNKNOWN
 
@@ -399,7 +381,6 @@ HQ Firebase (`newon-hq`) rules file `firestore.rules`: HQ admin only — not per
 - `[PLAY_URL_PRESENT]` Google Play URL present and package id matches inventory.
 - `[SITE_PRIVACY_PAGE]` Site privacy page exists (ko). (`ko/privacy/`)
 - `[SITE_TERMS_PAGE]` Site terms page exists (ko). (`ko/terms/`)
-- `[PLAY_HTTP_OK]` Store URL HTTP 200.
 
 ### UNKNOWN
 
@@ -436,8 +417,6 @@ HQ Firebase (`newon-hq`) rules file `firestore.rules`: HQ admin only — not per
 - `[APP_STORE_URL_PRESENT]` App Store product URL present in locales.
 - `[SITE_PRIVACY_PAGE]` Site privacy page exists (ko). (`ko/privacy/`)
 - `[SITE_TERMS_PAGE]` Site terms page exists (ko). (`ko/terms/`)
-- `[PLAY_HTTP_OK]` Store URL HTTP 200.
-- `[APPSTORE_HTTP_OK]` Store URL HTTP 200.
 
 ### UNKNOWN
 

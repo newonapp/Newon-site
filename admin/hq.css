@@ -1590,3 +1590,132 @@ textarea.hq-input {
     border: 1px solid #ddd !important;
   }
 }
+
+/* ——— Product Health ——— */
+.hq-health-context {
+  margin: 0 0 0.85rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--hq-border-strong);
+  background: var(--hq-surface-2);
+  border-radius: var(--hq-radius);
+  color: var(--hq-text);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.hq-health-defs {
+  list-style: none;
+  margin: 0 0 1.1rem;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.hq-health-defs__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.75rem;
+  color: var(--hq-muted);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.hq-health-stats {
+  margin-bottom: 1.25rem;
+}
+
+.hq-health-table-wrap {
+  overflow-x: auto;
+}
+
+.hq-health-table .hq-health-row {
+  cursor: pointer;
+}
+
+.hq-health-table .hq-health-row:hover td {
+  background: var(--hq-surface-2);
+}
+
+.hq-health-table .hq-health-row:focus-visible {
+  outline: 2px solid var(--hq-border-strong);
+  outline-offset: -2px;
+}
+
+.hq-health-hint {
+  margin: 0;
+  color: var(--hq-subtle);
+  font-size: 0.8125rem;
+}
+
+.hq-health-mobile-hint {
+  display: none;
+  margin: 0.65rem 0 0;
+  color: var(--hq-muted);
+  font-size: 0.8125rem;
+}
+
+.hq-health-detail {
+  display: grid;
+  gap: 1rem;
+}
+
+.hq-health-detail__lead {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--hq-text);
+}
+
+.hq-health-detail__cells {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 0.5rem;
+}
+
+.hq-health-detail__cell {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--hq-border);
+  border-radius: var(--hq-radius);
+  background: var(--hq-surface);
+}
+
+.hq-health-detail__cell-label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hq-muted);
+  font-weight: 600;
+}
+
+.hq-health-detail__section {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.hq-health-detail__h {
+  margin: 0;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hq-muted);
+}
+
+.hq-health-detail__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--hq-text);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .hq-health-col--desk {
+    display: none;
+  }
+
+  .hq-health-mobile-hint {
+    display: block;
+  }
+}

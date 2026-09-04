@@ -17,8 +17,9 @@ import {
 import { installHqDocs } from "./hq-docs.js";
 import { installHqOps, PROJECT_PHASE, PROJECT_PHASE_LABEL, BOARD_LANES } from "./hq-ops.js";
 import { installHqCrm } from "./hq-crm.js";
+import { installHqHealth } from "./hq-health.js";
 
-const HQ_VERSION = "1.5.0";
+const HQ_VERSION = "1.5.1";
 const COL = {
   tasks: "hq_tasks",
   releases: "hq_releases",
@@ -112,6 +113,7 @@ const NAV_KEYS = [
   "documents",
   "finance",
   "products",
+  "health",
   "settings",
 ];
 
@@ -149,6 +151,8 @@ let docsMod = null;
 let opsMod = null;
 /** @type {ReturnType<typeof installHqCrm>|null} */
 let crmMod = null;
+/** @type {ReturnType<typeof installHqHealth>|null} */
+let healthMod = null;
 
 const PAGE_META = {
   dashboard: {
@@ -195,6 +199,11 @@ const PAGE_META = {
     eyebrow: "Operations",
     title: "Products",
     desc: "Catalog snapshot plus operational metadata.",
+  },
+  health: {
+    eyebrow: "Products",
+    title: "Health",
+    desc: "Read-only production health snapshot from production-health.json.",
   },
   settings: {
     eyebrow: "System",
@@ -848,6 +857,22 @@ function ensureCrmMod() {
     },
   });
   return crmMod;
+}
+
+function ensureHealthMod() {
+  if (healthMod) return healthMod;
+  healthMod = installHqHealth({
+    el,
+    btn,
+    clear,
+    pageHeader,
+    emptyState,
+    surfacePanel,
+    badge,
+    openModal,
+    closeModal,
+  });
+  return healthMod;
 }
 
 async function refreshAndRender() {
@@ -3055,6 +3080,7 @@ function renderCurrent() {
     documents: (root) => ensureDocsMod().renderDocuments(root),
     finance: renderFinance,
     products: renderProducts,
+    health: (root) => ensureHealthMod().render(root),
     settings: renderSettings,
   };
   const root = $("hq-panel-" + currentNav);
@@ -3101,6 +3127,7 @@ function stop() {
   docsMod = null;
   opsMod = null;
   crmMod = null;
+  healthMod = null;
   ctx = null;
   saving = false;
   closeModal();
@@ -3131,6 +3158,7 @@ async function start(startCtx) {
       loadServiceTypes(),
       loadPricing(),
       loadQuotePackages(),
+      ensureHealthMod().load(),
     ]);
     ensureDocsMod();
     ensureOpsMod();

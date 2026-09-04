@@ -174,14 +174,20 @@ async function main() {
   };
 
   const jsonPath = path.join(REPO_ROOT, "reports/production-health.json");
+  const hqJsonPath = path.join(REPO_ROOT, "admin/production-health.json");
   const mdPath = path.join(REPO_ROOT, "reports/production-health.md");
   writeJsonReport(report, jsonPath);
+  // HQ SoT copy: same report, absolute machine path redacted for public /admin/ hosting
+  const hqReport = JSON.parse(JSON.stringify(report));
+  if (hqReport.repo) hqReport.repo.path = ".";
+  writeJsonReport(hqReport, hqJsonPath);
   if (!jsonOnly) writeMarkdownReport(report, mdPath);
 
   console.log(`Production health check complete.`);
   console.log(`  Apps: ${appsOut.length}`);
   console.log(`  Flutter sources found: ${flutterRoots.length}/${appsOut.length}`);
   console.log(`  JSON: ${jsonPath}`);
+  console.log(`  HQ JSON: ${hqJsonPath}`);
   if (!jsonOnly) console.log(`  Markdown: ${mdPath}`);
   console.log(`  P0: ${priorities.P0.length}  P1: ${priorities.P1.length}  P2: ${priorities.P2.length}  P3: ${priorities.P3.length}`);
 

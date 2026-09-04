@@ -28,7 +28,8 @@ npm run health:apps:probe
 
 | File | Purpose |
 |------|---------|
-| `reports/production-health.json` | Machine-readable (HQ-ready schema v1) |
+| `reports/production-health.json` | Machine-readable (repo SoT) |
+| `admin/production-health.json` | Same report for HQ UI (path redacted) |
 | `reports/production-health.md` | Human-readable report |
 
 **Never** written into reports: secret values, API keys, private keys, Firebase UIDs, passwords.
@@ -91,7 +92,7 @@ Overall label: **HEALTHY** (≥85, no FAIL), **WATCH** (≥70), **AT_RISK** (els
 
 ## HQ compatibility
 
-`production-health.json` is structured for a future **HQ → Products → Health** (or Operations → Product Health) reader. This work does **not** wire HQ UI.
+`admin/production-health.json` is loaded read-only by **HQ → Products → Health** (`admin/hq-health.js`). HQ does not run the checker and does not copy health data into Firestore.
 
 ## Safety
 
