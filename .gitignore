@@ -32,6 +32,9 @@ promo/frames/
 .wordmark-*.png
 .ncard-*.png
 .logo-opt-bak/
+.logo-perf-bak/
+reports/lighthouse/
+reports/lighthouse-baseline/
 _preview-*.html
 _preview-shots/
 app-icons.zip

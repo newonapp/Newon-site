@@ -1,0 +1,276 @@
+{
+  "generatedAt": "2026-09-04T12:22:45.009Z",
+  "measurement": "LAB / ESTIMATED (Lighthouse 13 simulate throttling against https://www.newon.app). Not CrUX field data.",
+  "budgetSuggestion": {
+    "htmlKb": 200,
+    "jsKb": 150,
+    "cssKb": 250,
+    "fontsKb": 200,
+    "imagesAboveFoldKb": 200,
+    "thirdPartyKb": 100
+  },
+  "routesBefore": [
+    {
+      "id": "desktop-ko-business",
+      "formFactor": "desktop",
+      "score": 64,
+      "lcpMs": 4402,
+      "cls": 0.003914177127528351,
+      "tbtMs": 0,
+      "fcpMs": 2259,
+      "speedIndexMs": 2552,
+      "totalBytesKb": 872
+    },
+    {
+      "id": "desktop-ko-inquiry",
+      "formFactor": "desktop",
+      "score": 58,
+      "lcpMs": 11784,
+      "cls": 0.003244898827113416,
+      "tbtMs": 0,
+      "fcpMs": 3187,
+      "speedIndexMs": 3187,
+      "totalBytesKb": 2431
+    },
+    {
+      "id": "desktop-ko-portfolio",
+      "formFactor": "desktop",
+      "score": 58,
+      "lcpMs": 9971,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 3193,
+      "speedIndexMs": 3217,
+      "totalBytesKb": 1988
+    },
+    {
+      "id": "desktop-ko",
+      "formFactor": "desktop",
+      "score": 59,
+      "lcpMs": 5128,
+      "cls": 0.09024108852566479,
+      "tbtMs": 0,
+      "fcpMs": 2913,
+      "speedIndexMs": 2913,
+      "totalBytesKb": 3001
+    },
+    {
+      "id": "mobile-404",
+      "formFactor": "mobile",
+      "score": 100,
+      "lcpMs": 890,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 890,
+      "speedIndexMs": 1643,
+      "totalBytesKb": 4
+    },
+    {
+      "id": "mobile-en",
+      "formFactor": "mobile",
+      "score": 62,
+      "lcpMs": 9535,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 3860,
+      "speedIndexMs": 6077,
+      "totalBytesKb": 2658
+    },
+    {
+      "id": "mobile-ko-business",
+      "formFactor": "mobile",
+      "score": 62,
+      "lcpMs": 6474,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 6108,
+      "speedIndexMs": 6108,
+      "totalBytesKb": 775
+    },
+    {
+      "id": "mobile-ko-contact",
+      "formFactor": "mobile",
+      "score": 82,
+      "lcpMs": 4049,
+      "cls": 0.0032658368985461123,
+      "tbtMs": 0,
+      "fcpMs": 2872,
+      "speedIndexMs": 2872,
+      "totalBytesKb": 743
+    },
+    {
+      "id": "mobile-ko-inquiry",
+      "formFactor": "mobile",
+      "score": 57,
+      "lcpMs": 11938,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 7755,
+      "speedIndexMs": 7755,
+      "totalBytesKb": 2431
+    },
+    {
+      "id": "mobile-ko-myworld",
+      "formFactor": "mobile",
+      "score": 0,
+      "lcpMs": null,
+      "cls": 0,
+      "tbtMs": null,
+      "fcpMs": null,
+      "speedIndexMs": null,
+      "totalBytesKb": 0,
+      "note": "URL 404 in lab (product lives on hubs/hash routes)"
+    },
+    {
+      "id": "mobile-ko-ox-month",
+      "formFactor": "mobile",
+      "score": 0,
+      "lcpMs": null,
+      "cls": 0,
+      "tbtMs": null,
+      "fcpMs": null,
+      "speedIndexMs": null,
+      "totalBytesKb": 0,
+      "note": "URL 404 in lab (product lives on hubs/hash routes)"
+    },
+    {
+      "id": "mobile-ko-portfolio",
+      "formFactor": "mobile",
+      "score": 68,
+      "lcpMs": 9860,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 3157,
+      "speedIndexMs": 3416,
+      "totalBytesKb": 1988
+    },
+    {
+      "id": "mobile-ko-products",
+      "formFactor": "mobile",
+      "score": 71,
+      "lcpMs": 4923,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 4549,
+      "speedIndexMs": 4549,
+      "totalBytesKb": 1876
+    },
+    {
+      "id": "mobile-ko-store",
+      "formFactor": "mobile",
+      "score": 62,
+      "lcpMs": 6696,
+      "cls": 0.0007006042756867076,
+      "tbtMs": 0,
+      "fcpMs": 6149,
+      "speedIndexMs": 6149,
+      "totalBytesKb": 836
+    },
+    {
+      "id": "mobile-ko-studio",
+      "formFactor": "mobile",
+      "score": 67,
+      "lcpMs": 5179,
+      "cls": 0,
+      "tbtMs": 43,
+      "fcpMs": 4894,
+      "speedIndexMs": 5993,
+      "totalBytesKb": 585
+    },
+    {
+      "id": "mobile-ko-tools",
+      "formFactor": "mobile",
+      "score": 66,
+      "lcpMs": 5412,
+      "cls": 0.001185983430317891,
+      "tbtMs": 0,
+      "fcpMs": 5197,
+      "speedIndexMs": 5504,
+      "totalBytesKb": 599
+    },
+    {
+      "id": "mobile-ko",
+      "formFactor": "mobile",
+      "score": 59,
+      "lcpMs": 12060,
+      "cls": 0,
+      "tbtMs": 0,
+      "fcpMs": 6429,
+      "speedIndexMs": 6937,
+      "totalBytesKb": 3001
+    },
+    {
+      "id": "mobile-root",
+      "formFactor": "mobile",
+      "score": 57,
+      "lcpMs": 12607,
+      "cls": 0,
+      "tbtMs": 77,
+      "fcpMs": 6661,
+      "speedIndexMs": 7736,
+      "totalBytesKb": 3001
+    }
+  ],
+  "issues": [
+    {
+      "id": "fonts-all-families",
+      "severity": "P1",
+      "status": "fixed",
+      "detail": "Many pages loaded Noto Sans+JP+KR+Devanagari; now locale-aware via patch-perf-load/fontLinksHtml"
+    },
+    {
+      "id": "lcp-wordmark-png",
+      "severity": "P1",
+      "status": "fixed",
+      "detail": "Home LCP wordmark ~312KB PNG + dark 366KB; WebP + dark deferred"
+    },
+    {
+      "id": "nav-logo-oversized",
+      "severity": "P1",
+      "status": "fixed",
+      "detail": "gnav used 128KB logo.png at 40px; now logo-nav.png ~5KB"
+    },
+    {
+      "id": "heavy-app-logos",
+      "severity": "P2",
+      "status": "fixed",
+      "detail": "Palette-optimized myworld/404/pillmate/logo/newon-plus PNGs (backup in .logo-perf-bak)"
+    },
+    {
+      "id": "blocking-inquiry-scripts",
+      "severity": "P2",
+      "status": "fixed",
+      "detail": "defer on inquiry/portfolio/ideas/news scripts"
+    },
+    {
+      "id": "unused-css-home",
+      "severity": "P2",
+      "status": "reported",
+      "detail": "Home loads large CSS set; unused-css ~156KiB estimated — no purge (design risk)"
+    },
+    {
+      "id": "home-html-size",
+      "priority": "P2",
+      "status": "reported",
+      "detail": "Home document ~130KB with 11 app shells — architectural, not rewritten"
+    },
+    {
+      "id": "myworld-showcases",
+      "priority": "P3",
+      "status": "reported",
+      "detail": "myworld-img showcases up to ~1.4MB each; lazy where applicable; no quality crush"
+    },
+    {
+      "id": "critical-css",
+      "priority": "P3",
+      "status": "skipped",
+      "detail": "Critical CSS inline not introduced — complexity > benefit for static multi-CSS site"
+    },
+    {
+      "id": "font-weight-trim",
+      "priority": "P3",
+      "status": "reported",
+      "detail": "Weights 300–700 still requested; trimming 300 needs design QA"
+    }
+  ]
+}

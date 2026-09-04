@@ -4,7 +4,9 @@
             <div class="hero-copy hero-copy--centered">
               <p class="hero-eyebrow hero-eco-enter" style="--hero-enter-delay: 40ms">{{t:home.heroEyebrow}}</p>
               <h1 class="hero-brand-mark hero-eco-enter" style="--hero-enter-delay: 80ms">
-                <img
+                <picture class="hero-brand-mark__picture hero-brand-mark__picture--light">
+                  <source type="image/webp" srcset="/newon-wordmark-chrome.webp" />
+                  <img
                   class="hero-brand-mark__img hero-brand-mark__img--light"
                   src="/newon-wordmark-chrome.png"
                   alt="{{t:home.heroLogoAlt}}"
@@ -13,9 +15,10 @@
                   decoding="sync"
                   fetchpriority="high"
                 />
+                </picture>
                 <img
                   class="hero-brand-mark__img hero-brand-mark__img--dark"
-                  src="/newon-wordmark-chrome-dark.png"
+                  data-src="/newon-wordmark-chrome-dark.webp" data-src-fallback="/newon-wordmark-chrome-dark.png"
                   alt=""
                   width="948"
                   height="361"

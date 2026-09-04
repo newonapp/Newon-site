@@ -232,7 +232,7 @@ export function renderGlobalHeader(flat, flatEn, { activeNav = "", base = "../",
       <div class="gnav__bar">
         <div class="gnav__inner">
           <a class="gnav__brand" href="${brandHref}" aria-label="${brand}">
-            <img class="gnav__logo" src="/logo.png" alt="" width="40" height="40" decoding="async" />
+            <img class="gnav__logo" src="/logo-nav.png" alt="" width="40" height="40" decoding="async" />
             <span class="gnav__wordmark">${brand}</span>
           </a>
           <nav class="gnav__nav" aria-label="${escapeHtml(t(flat, flatEn, "nav.mainAria", "Main"))}">
@@ -303,7 +303,7 @@ export function renderStudioFooter(flat, flatEn, { base = "../", langDir = "" } 
           <div class="footer-brand">
             <img
               class="footer-brand-img"
-              src="/logo.png"
+              src="/logo-nav.png"
               alt=""
               width="32"
               height="32"

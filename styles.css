@@ -2091,6 +2091,10 @@ html[data-newon-shell-theme="dark"] .hero--ecosystem .hero-bg {
   position: relative;
 }
 
+.hero-brand-mark__picture {
+  display: contents;
+}
+
 .hero-brand-mark__img {
   display: block;
   width: 100%;

@@ -15,7 +15,7 @@ import {
   COMPANY_TAGLINE,
 } from "./portfolio-hub-data.mjs";
 import { LANG_OPTIONS, SITE_LANGS, portfolioCopy } from "./portfolio-i18n.mjs";
-import { flatten, loadJson, fillMissing } from "./hub-utils.mjs";
+import { flatten, loadJson, fillMissing, fontLinksHtml } from "./hub-utils.mjs";
 import { clampSeoDescription } from "./seo-meta.mjs";
 import { renderGlobalHeader, renderStudioFooter, renderCompanySwitcher } from "./site-chrome.mjs";
 
@@ -23,8 +23,6 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "portfolio");
 const SITE = "https://www.newon.app";
 const VCARD = "/card-n7x4k9/nawon-kyung.vcf";
-const FONTS =
-  "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap";
 
 function esc(s) {
   return String(s ?? "")
@@ -97,7 +95,7 @@ function head({ langMeta, copy, title, description, canonical, suffix, image }) 
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link href="${FONTS}" rel="stylesheet" />
+    ${fontLinksHtml(langMeta.dir)}
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="/gnav-mega.css?v=20260831menu1" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260830filt1" />

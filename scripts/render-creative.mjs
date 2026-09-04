@@ -14,6 +14,7 @@ import {
   flatten,
   studioStatusBadge,
   ensureDir,
+  fontLinksHtml,
 } from "./hub-utils.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 
@@ -108,13 +109,13 @@ ${hreflang}
 ${xdef}
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" href="/logo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=20260904lang1" />
+  ${fontLinksHtml(dir)}
+  <link rel="stylesheet" href="/styles.css?v=20260904perf1" />
   <link rel="stylesheet" href="/hub-pages.css?v=20260826vs" />
   <link rel="stylesheet" href="/gnav-mega.css?v=20260904lang1" />
   <link rel="stylesheet" href="/business-type.css?v=20260827type4" />
   <link rel="stylesheet" href="/business-creative.css?v=20260827type1" />
-  <script src="/theme-shell.js"></script>
+  <script src="/theme-shell.js?v=20260904perf1"></script>
   <script src="/lang-nav.js?v=20260825studio"></script>
   <script src="/analytics.js?v=20260904sec1" defer></script>
 </head>

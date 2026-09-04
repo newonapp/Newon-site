@@ -68,21 +68,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css?v=20260904lang1" />
+<link rel="stylesheet" href="/styles.css?v=20260904perf1" />
     <link rel="stylesheet" href="/gnav-mega.css?v=20260904lang1" />
-    <link rel="preload" as="image" href="/newon-wordmark-chrome.png" />
+    <link rel="preload" as="image" type="image/webp" href="/newon-wordmark-chrome.webp" />
     <link rel="stylesheet" href="/ox-month.css?v=20260902apptab1" />
     <link rel="stylesheet" href="/app-landing-extras.css?v=20260828btn1" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260828home2" />
     <link rel="stylesheet" href="/home-studio.css?v=20260828home2" />
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
-<script src="/theme-shell.js"></script>
+<script src="/theme-shell.js?v=20260904perf1"></script>
     <script src="/lang-nav.js?v=20260825studio"></script>
     <script src="/analytics.js?v=20260904sec1" defer></script>
     <script src="/search.js?v=20260904sec1" defer></script>
     <script src="/site-chrome.js?v=20260902nav2" defer></script>
     <script src="/home-studio.js?v=20260828home2" defer></script>
-      <link rel="stylesheet" href="/site-dark.css?v=20260902perf1" />
+    <link rel="stylesheet" href="/site-dark.css?v=20260902perf1" />
     <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
   </head>
   <body>
@@ -92,7 +92,7 @@
       <div class="gnav__bar">
         <div class="gnav__inner">
           <a class="gnav__brand" href="/fr/" aria-label="Newon">
-            <img class="gnav__logo" src="/logo.png" alt="" width="40" height="40" decoding="async" />
+            <img class="gnav__logo" src="/logo-nav.png" alt="" width="40" height="40" decoding="async" />
             <span class="gnav__wordmark">Newon</span>
           </a>
           <nav class="gnav__nav" aria-label="Main navigation">
@@ -408,7 +408,9 @@
             <div class="hero-copy hero-copy--centered">
               <p class="hero-eyebrow hero-eco-enter" style="--hero-enter-delay: 40ms">GLOBAL LIFE PLATFORM</p>
               <h1 class="hero-brand-mark hero-eco-enter" style="--hero-enter-delay: 80ms">
-                <img
+                <picture class="hero-brand-mark__picture hero-brand-mark__picture--light">
+                  <source type="image/webp" srcset="/newon-wordmark-chrome.webp" />
+                  <img
                   class="hero-brand-mark__img hero-brand-mark__img--light"
                   src="/newon-wordmark-chrome.png"
                   alt="Newon logo"
@@ -417,9 +419,10 @@
                   decoding="sync"
                   fetchpriority="high"
                 />
+                </picture>
                 <img
                   class="hero-brand-mark__img hero-brand-mark__img--dark"
-                  src="/newon-wordmark-chrome-dark.png"
+                  data-src="/newon-wordmark-chrome-dark.webp" data-src-fallback="/newon-wordmark-chrome-dark.png"
                   alt=""
                   width="948"
                   height="361"
@@ -1273,7 +1276,7 @@ trouvez ce qu’il vous faut sous une même marque.</p>
           <div class="footer-brand">
             <img
               class="footer-brand-img"
-              src="/logo.png"
+              src="/logo-nav.png"
               alt=""
               width="32"
               height="32"

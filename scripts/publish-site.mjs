@@ -86,6 +86,7 @@ const PUBLISH_ROOT_CORE = [
  */
 const PUBLISH_ROOT_IMAGES = [
   "logo.png",
+  "logo-nav.png",
   "logo-n.png",
   "favicon.ico",
   "apple-touch-icon.png",
@@ -100,7 +101,9 @@ const PUBLISH_ROOT_IMAGES = [
   "countup-logo.png",
   "newon-plus-logo.png",
   "newon-wordmark-chrome.png",
+  "newon-wordmark-chrome.webp",
   "newon-wordmark-chrome-dark.png",
+  "newon-wordmark-chrome-dark.webp",
   "myworld-logo.png",
   "404-human-logo.png",
   "subping-hero-mark.png",

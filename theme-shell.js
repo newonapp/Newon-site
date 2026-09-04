@@ -17,6 +17,22 @@
     return "light";
   }
 
+  function loadDeferredThemeImages(theme) {
+    document.querySelectorAll("img[data-src][data-src-fallback], img.hero-brand-mark__img--dark[data-src]").forEach(function (img) {
+      if (theme !== "dark") return;
+      if (img.getAttribute("src")) return;
+      var prefer = img.getAttribute("data-src");
+      var fallback = img.getAttribute("data-src-fallback");
+      if (!prefer) return;
+      // Prefer WebP when supported; otherwise PNG fallback.
+      var supportsWebp = false;
+      try {
+        supportsWebp = !!(document.createElement("canvas").toDataURL("image/webp").indexOf("data:image/webp") === 0);
+      } catch (e) {}
+      img.setAttribute("src", supportsWebp || !fallback ? prefer : fallback);
+    });
+  }
+
   function applyShellTheme(theme) {
     if (theme !== "light" && theme !== "dark") return;
     try {
@@ -31,6 +47,7 @@
     appRoots.forEach(function (el) {
       el.setAttribute("data-theme", theme);
     });
+    loadDeferredThemeImages(theme);
   }
 
   var MOON_SVG =
@@ -75,9 +92,13 @@
   applyShellTheme(getTheme());
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", bindToggles);
+    document.addEventListener("DOMContentLoaded", function () {
+      bindToggles();
+      loadDeferredThemeImages(getTheme());
+    });
   } else {
     bindToggles();
+    loadDeferredThemeImages(getTheme());
   }
 
   global.newonTheme = {
