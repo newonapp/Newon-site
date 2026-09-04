@@ -15,7 +15,7 @@ import {
   orderBy,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
-const HQ_VERSION = "1.0.0";
+const HQ_VERSION = "1.1.0";
 const COL = {
   tasks: "hq_tasks",
   releases: "hq_releases",
@@ -83,11 +83,49 @@ let cache = emptyCache();
 let catalog = [];
 let currentNav = "dashboard";
 let filters = {
-  tasks: { status: "", priority: "" },
+  tasks: { status: "", priority: "", q: "" },
   releases: { status: "", product: "" },
   leads: { status: "", source: "", archived: "active" },
   finance: { month: "", type: "", archived: "active" },
   products: { status: "" },
+};
+
+const PAGE_META = {
+  dashboard: {
+    eyebrow: "Overview",
+    title: "Dashboard",
+    desc: "Operations overview across tasks, releases, leads, and cash flow.",
+  },
+  tasks: {
+    eyebrow: "Operations",
+    title: "Tasks",
+    desc: "Track the work that keeps Newon shipping.",
+  },
+  releases: {
+    eyebrow: "Operations",
+    title: "Releases",
+    desc: "Manual release log for apps and platforms.",
+  },
+  leads: {
+    eyebrow: "Business",
+    title: "Leads",
+    desc: "Inbound inquiries and pipeline status.",
+  },
+  finance: {
+    eyebrow: "Business",
+    title: "Finance",
+    desc: "Founder cash-flow ledger for income and expense.",
+  },
+  products: {
+    eyebrow: "Operations",
+    title: "Products",
+    desc: "Catalog snapshot plus operational metadata.",
+  },
+  settings: {
+    eyebrow: "System",
+    title: "Settings",
+    desc: "Account, environment, and session controls.",
+  },
 };
 let saving = false;
 
@@ -295,17 +333,67 @@ function btn(label, opts) {
 }
 
 function emptyMsg(text) {
-  return el("p", { className: "hq-empty", text: text || "데이터가 없습니다." });
+  return el("p", { className: "hq-empty", text: text || "No data yet." });
+}
+
+function emptyState(title, desc, cta) {
+  const kids = [
+    el("div", { className: "hq-empty-state__mark", text: "—" }),
+    el("p", { className: "hq-empty-state__title", text: title }),
+    el("p", { className: "hq-empty-state__desc", text: desc }),
+  ];
+  if (cta) kids.push(cta);
+  return el("div", { className: "hq-empty-state" }, kids);
 }
 
 function toolbar(children) {
   return el("div", { className: "hq-toolbar" }, children);
 }
 
-function card(label, value) {
-  return el("div", { className: "hq-card" }, [
+function pageHeader(key, asideChildren) {
+  const meta = PAGE_META[key] || { eyebrow: "HQ", title: key, desc: "" };
+  const copy = el("div", { className: "hq-page-header__copy" }, [
+    el("p", { className: "hq-eyebrow", text: meta.eyebrow }),
+    el("h1", { className: "hq-page-header__title", text: meta.title }),
+    el("p", { className: "hq-page-header__desc", text: meta.desc }),
+  ]);
+  const aside = el("div", { className: "hq-page-header__aside" }, asideChildren || []);
+  return el("header", { className: "hq-page-header" }, [copy, aside]);
+}
+
+function formatLongDate(d) {
+  const x = toDate(d) || new Date();
+  try {
+    return x.toLocaleDateString("en-US", {
+      weekday: "short",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  } catch {
+    return ymd(x);
+  }
+}
+
+function card(label, value, caption) {
+  const kids = [
     el("p", { className: "hq-card__label", text: label }),
     el("p", { className: "hq-card__value", text: String(value) }),
+  ];
+  if (caption) kids.push(el("p", { className: "hq-stat__caption", text: caption }));
+  return el("div", { className: "hq-card hq-stat" }, kids);
+}
+
+function statCard(label, value, caption) {
+  return card(label, value, caption);
+}
+
+function surfacePanel(title, bodyChildren, action) {
+  const headKids = [el("h2", { className: "hq-surface-panel__title", text: title })];
+  if (action) headKids.push(action);
+  return el("section", { className: "hq-surface-panel" }, [
+    el("div", { className: "hq-surface-panel__head" }, headKids),
+    el("div", { className: "hq-surface-panel__body" }, bodyChildren),
   ]);
 }
 
@@ -321,13 +409,13 @@ function table(headers, rows, emptyText) {
   if (!rows.length) {
     const tr = el("tr");
     const td = el("td", { colSpan: String(headers.length) });
-    td.appendChild(emptyMsg(emptyText || "아직 데이터가 없습니다."));
+    td.appendChild(emptyMsg(emptyText || "No data yet."));
     tr.appendChild(td);
     tbody.appendChild(tr);
   } else {
     for (const row of rows) tbody.appendChild(row);
   }
-  return el("div", { className: "hq-table-wrap" }, [
+  return el("div", { className: "hq-table-wrap is-desktop-only" }, [
     el("table", { className: "hq-table" }, [thead, tbody]),
   ]);
 }
@@ -339,13 +427,35 @@ function badge(text, kind) {
   });
 }
 
+function statusBadge(status) {
+  const s = String(status || "").trim();
+  if (!s) return badge("—");
+  const label = s.replace(/_/g, " ");
+  return badge(label, s);
+}
+
+function priorityBadge(priority) {
+  const p = String(priority || "").toLowerCase();
+  const label = p ? p.charAt(0).toUpperCase() + p.slice(1) : "—";
+  return badge(label, p || undefined);
+}
+
 function dueBadge(dueDate) {
   const d = ymd(dueDate);
   if (!d) return null;
   const t = todayYmd();
-  if (d < t) return badge("기한 초과", "overdue");
-  if (d === t) return badge("오늘 마감", "due-today");
+  if (d < t) return badge("Overdue", "overdue");
+  if (d === t) return badge("Due today", "due-today");
   return null;
+}
+
+function pctBar(value, max, fillClass) {
+  const m = Math.max(Number(max) || 0, 0);
+  const v = Math.max(Number(value) || 0, 0);
+  const pct = m > 0 ? Math.min(100, Math.round((v / m) * 100)) : 0;
+  const fill = el("div", { className: fillClass || "hq-pipeline__fill" });
+  fill.style.width = pct + "%";
+  return el("div", { className: "hq-pipeline__track" }, [fill]);
 }
 
 function downloadCsv(filename, headers, rows) {
@@ -465,13 +575,11 @@ function renderDashboard(root) {
   clear(root);
   const today = todayYmd();
   const month = monthKey(new Date());
-  const todayTasks = cache.tasks.filter((t) => ymd(t.dueDate) === today).length;
-  const doingTasks = cache.tasks.filter((t) => t.status === "doing").length;
-  const newLeads = cache.leads.filter((l) => !l.archived && l.status === "new").length;
+  const openTasks = cache.tasks.filter((t) => t.status !== "done").length;
+  const upcomingReleases = cache.releases.filter((r) => r.status !== "released").length;
   const activeLeads = cache.leads.filter(
     (l) => !l.archived && ACTIVE_LEAD.has(l.status)
   ).length;
-  const recentReleases = cache.releases.slice(0, 3);
   let income = 0;
   let expense = 0;
   for (const f of cache.finance) {
@@ -483,80 +591,184 @@ function renderDashboard(root) {
   }
   const net = income - expense;
 
-  root.appendChild(el("h2", { className: "hq-section-title", text: "Dashboard" }));
   root.appendChild(
-    el("div", { className: "hq-cards" }, [
-      card("오늘 할 일", todayTasks),
-      card("진행 중 할 일", doingTasks),
-      card("신규 문의", newLeads),
-      card("진행 중 문의", activeLeads),
-      card("최근 릴리즈", recentReleases.length),
-      card("이번 달 수입", formatKrw(income)),
-      card("이번 달 지출", formatKrw(expense)),
-      card("이번 달 순현금흐름", formatKrw(net)),
+    pageHeader("dashboard", [
+      el("span", { className: "hq-page-header__meta", text: formatLongDate(new Date()) }),
+      el("span", { className: "hq-page-header__count", text: "Live data" }),
     ])
   );
 
-  root.appendChild(el("h3", { className: "hq-section-title", text: "최근 릴리즈" }));
-  if (!recentReleases.length) root.appendChild(emptyMsg("아직 데이터가 없습니다."));
-  else {
-    const ul = el("ul", { className: "hq-recent-list" });
-    for (const r of recentReleases) {
-      const li = el("li");
-      li.appendChild(
-        document.createTextNode(
-          `${r.product || "—"} ${r.version || ""} · ${r.platform || ""} · ${r.status || ""}`
-        )
-      );
-      ul.appendChild(li);
-    }
-    root.appendChild(ul);
-  }
+  root.appendChild(
+    el("div", { className: "hq-stat-grid" }, [
+      statCard("Open tasks", openTasks, "Todo + doing"),
+      statCard("Upcoming releases", upcomingReleases, "Not released"),
+      statCard("Active leads", activeLeads, "In pipeline"),
+      statCard("Month revenue", formatKrw(income), month),
+      statCard("Month expense", formatKrw(expense), month),
+      statCard("Net", formatKrw(net), "Income − expense"),
+    ])
+  );
 
-  root.appendChild(el("h3", { className: "hq-section-title", text: "최근 할 일" }));
-  const recentTasks = cache.tasks.slice(0, 5);
-  if (!recentTasks.length) root.appendChild(emptyMsg("아직 데이터가 없습니다."));
-  else {
-    const ul = el("ul", { className: "hq-recent-list" });
-    for (const t of recentTasks) {
-      const li = el("li");
-      li.appendChild(
-        document.createTextNode(
-          `${t.title || "—"} · ${t.status || ""} · ${t.priority || ""}`
-        )
-      );
-      const b = dueBadge(t.dueDate);
-      if (b) {
-        li.appendChild(document.createTextNode(" "));
-        li.appendChild(b);
-      }
-      ul.appendChild(li);
+  const taskPreview = cache.tasks
+    .filter((t) => t.status !== "done")
+    .slice(0, 6);
+  const taskBody = [];
+  if (!taskPreview.length) {
+    taskBody.push(
+      el("div", { style: "padding:1rem 1.05rem" }, [
+        emptyMsg("No open tasks."),
+      ])
+    );
+  } else {
+    for (const t of taskPreview) {
+      const row = el("div", {
+        className: "hq-row hq-row--task" + (t.status === "done" ? " is-done" : ""),
+      });
+      row.appendChild(statusBadge(t.status));
+      const mid = el("div");
+      mid.appendChild(el("p", { className: "hq-row__title", text: t.title || "—" }));
+      const metaBits = [t.priority || "", ymd(t.dueDate) || "No due date"]
+        .filter(Boolean)
+        .join(" · ");
+      mid.appendChild(el("p", { className: "hq-row__meta", text: metaBits }));
+      row.appendChild(mid);
+      const due = dueBadge(t.dueDate);
+      row.appendChild(due || el("span", { className: "hq-row__aside", text: "" }));
+      row.appendChild(priorityBadge(t.priority));
+      taskBody.push(row);
     }
-    root.appendChild(ul);
   }
-
-  root.appendChild(el("h3", { className: "hq-section-title", text: "최근 문의" }));
-  const recentLeads = cache.leads.filter((l) => !l.archived).slice(0, 5);
-  if (!recentLeads.length) root.appendChild(emptyMsg("아직 데이터가 없습니다."));
-  else {
-    const ul = el("ul", { className: "hq-recent-list" });
-    for (const l of recentLeads) {
-      ul.appendChild(
-        el("li", {
-          text: `${l.name || "—"} · ${l.company || ""} · ${l.status || ""}`,
+  const releasePreview = cache.releases
+    .filter((r) => r.status !== "released")
+    .concat(cache.releases.filter((r) => r.status === "released"))
+    .slice(0, 5);
+  const releaseBody = [];
+  if (!releasePreview.length) {
+    releaseBody.push(
+      el("div", { style: "padding:1rem 1.05rem" }, [
+        emptyMsg("No releases yet."),
+      ])
+    );
+  } else {
+    for (const r of releasePreview) {
+      const row = el("div", { className: "hq-row" });
+      row.appendChild(statusBadge(r.status));
+      const mid = el("div");
+      mid.appendChild(
+        el("p", {
+          className: "hq-row__title",
+          text: `${r.product || "—"} ${r.version || ""}`.trim(),
         })
       );
+      mid.appendChild(
+        el("p", {
+          className: "hq-row__meta",
+          text: `${r.platform || "—"} · ${ymd(r.releasedAt) || ymd(r.submittedAt) || "—"}`,
+        })
+      );
+      row.appendChild(mid);
+      row.appendChild(el("span", { className: "hq-row__aside", text: r.platform || "" }));
+      releaseBody.push(row);
     }
-    root.appendChild(ul);
   }
+
+  root.appendChild(
+    el("div", { className: "hq-grid-2" }, [
+      surfacePanel(
+        "Today / Tasks",
+        taskBody,
+        el("button", {
+          type: "button",
+          className: "hq-surface-panel__link",
+          text: "View all",
+          onClick: () => showPanel("tasks"),
+        })
+      ),
+      surfacePanel(
+        "Upcoming releases",
+        releaseBody,
+        el("button", {
+          type: "button",
+          className: "hq-surface-panel__link",
+          text: "View all",
+          onClick: () => showPanel("releases"),
+        })
+      ),
+    ])
+  );
+
+  const leadBuckets = [
+    ["new", "New"],
+    ["contacted", "Contacted"],
+    ["quoted", "Quote"],
+    ["contracted", "Won"],
+    ["rejected", "Lost"],
+  ];
+  const leadCounts = leadBuckets.map(([st, label]) => {
+    const n = cache.leads.filter((l) => !l.archived && l.status === st).length;
+    return { st, label, n };
+  });
+  const leadMax = Math.max(0, ...leadCounts.map((x) => x.n));
+  const pipeRows = leadCounts.map((x) =>
+    el("div", { className: "hq-pipeline__row" }, [
+      el("p", { className: "hq-pipeline__label", text: x.label }),
+      pctBar(x.n, leadMax || 1),
+      el("p", { className: "hq-pipeline__count", text: String(x.n) }),
+    ])
+  );
+
+  const finMax = Math.max(income, expense, 1);
+  const finBars = el("div", { className: "hq-bar-pair" }, [
+    el("div", { className: "hq-bar-pair__item" }, [
+      el("div", { className: "hq-bar-pair__top" }, [
+        el("span", { text: "Income" }),
+        el("span", { className: "hq-bar-pair__val", text: formatKrw(income) }),
+      ]),
+      el("div", { className: "hq-bar-pair__track" }, [
+        (() => {
+          const f = el("div", { className: "hq-bar-pair__fill--income" });
+          f.style.width = Math.round((income / finMax) * 100) + "%";
+          return f;
+        })(),
+      ]),
+    ]),
+    el("div", { className: "hq-bar-pair__item" }, [
+      el("div", { className: "hq-bar-pair__top" }, [
+        el("span", { text: "Expense" }),
+        el("span", { className: "hq-bar-pair__val", text: formatKrw(expense) }),
+      ]),
+      el("div", { className: "hq-bar-pair__track" }, [
+        (() => {
+          const f = el("div", { className: "hq-bar-pair__fill--expense" });
+          f.style.width = Math.round((expense / finMax) * 100) + "%";
+          return f;
+        })(),
+      ]),
+    ]),
+    el("p", {
+      className: "hq-stat__caption",
+      text: `Net ${formatKrw(net)} · ${month}`,
+    }),
+  ]);
+
+  root.appendChild(
+    el("div", { className: "hq-grid-2--equal hq-grid-2" }, [
+      surfacePanel("Leads pipeline", [el("div", { className: "hq-pipeline" }, pipeRows)]),
+      surfacePanel("Finance overview", [finBars]),
+    ])
+  );
 }
 
-/* ---------- Tasks ---------- */
 function filteredTasks() {
   const f = filters.tasks;
+  const q = (f.q || "").trim().toLowerCase();
   return cache.tasks.filter((t) => {
     if (f.status && t.status !== f.status) return false;
     if (f.priority && t.priority !== f.priority) return false;
+    if (q) {
+      const hay = `${t.title || ""} ${t.description || ""} ${t.category || ""}`.toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
     return true;
   });
 }
@@ -632,16 +844,33 @@ function openTaskForm(item) {
 
 function renderTasks(root) {
   clear(root);
-  const statusF = select(
-    {
-      onChange: (e) => {
-        filters.tasks.status = e.target.value;
-        renderTasks(root);
-      },
-    },
-    [{ value: "", label: "상태 전체" }].concat(TASK_STATUS),
-    filters.tasks.status
+  const openCount = cache.tasks.filter((t) => t.status !== "done").length;
+  root.appendChild(
+    pageHeader("tasks", [
+      el("span", { className: "hq-page-header__count", text: `${openCount} open` }),
+      btn("+ New Task", { onClick: () => openTaskForm(null) }),
+    ])
   );
+
+  const seg = el("div", { className: "hq-seg" });
+  for (const [val, label] of [
+    ["", "All"],
+    ["todo", "Todo"],
+    ["doing", "Doing"],
+    ["done", "Done"],
+  ]) {
+    seg.appendChild(
+      el("button", {
+        type: "button",
+        className: "hq-seg__btn" + (filters.tasks.status === val ? " is-active" : ""),
+        text: label,
+        onClick: () => {
+          filters.tasks.status = val;
+          renderTasks(root);
+        },
+      })
+    );
+  }
   const priF = select(
     {
       onChange: (e) => {
@@ -649,19 +878,36 @@ function renderTasks(root) {
         renderTasks(root);
       },
     },
-    [{ value: "", label: "우선순위 전체" }].concat(TASK_PRIORITY),
+    [{ value: "", label: "Priority" }].concat(
+      TASK_PRIORITY.map((p) => ({ value: p, label: p }))
+    ),
     filters.tasks.priority
   );
-  root.appendChild(el("h2", { className: "hq-section-title", text: "Tasks" }));
-  root.appendChild(
-    toolbar([
-      statusF,
-      priF,
-      btn("+ 새 할 일", { onClick: () => openTaskForm(null) }),
-    ])
-  );
-  const rows = filteredTasks().map((t) => {
-    const tr = el("tr");
+  const search = input({
+    className: "hq-input hq-input--search",
+    placeholder: "Search tasks",
+    value: filters.tasks.q || "",
+    onInput: (e) => {
+      filters.tasks.q = e.target.value;
+      renderTasks(root);
+    },
+  });
+  root.appendChild(toolbar([seg, priF, search]));
+
+  const list = filteredTasks();
+  if (!list.length) {
+    root.appendChild(
+      emptyState(
+        "No tasks yet",
+        "Add the first operational task to start the board.",
+        btn("+ New Task", { onClick: () => openTaskForm(null) })
+      )
+    );
+    return;
+  }
+
+  const rows = list.map((t) => {
+    const tr = el("tr", { className: t.status === "done" ? "is-done" : "" });
     const titleTd = el("td");
     titleTd.appendChild(document.createTextNode(t.title || "—"));
     const b = dueBadge(t.dueDate);
@@ -669,24 +915,26 @@ function renderTasks(root) {
       titleTd.appendChild(document.createTextNode(" "));
       titleTd.appendChild(b);
     }
+    tr.appendChild(el("td", null, [statusBadge(t.status)]));
     tr.appendChild(titleTd);
-    tr.appendChild(el("td", { text: t.status || "" }));
-    tr.appendChild(el("td", { text: t.priority || "" }));
-    tr.appendChild(el("td", { text: t.category || "" }));
+    tr.appendChild(el("td", null, [priorityBadge(t.priority)]));
     tr.appendChild(el("td", { text: ymd(t.dueDate) || "—" }));
+    tr.appendChild(el("td", { text: ymd(t.updatedAt) || "—" }));
     const actions = el("td", { className: "hq-actions-cell" });
-    actions.appendChild(btn("수정", { className: "hq-btn hq-btn--small", onClick: () => openTaskForm(t) }));
     actions.appendChild(
-      btn("삭제", {
+      btn("Edit", { className: "hq-btn hq-btn--small", onClick: () => openTaskForm(t) })
+    );
+    actions.appendChild(
+      btn("Delete", {
         className: "hq-btn hq-btn--small hq-btn--ghost",
         onClick: () =>
-          confirmDelete("이 할 일을 삭제할까요?", async () => {
+          confirmDelete("Delete this task?", async () => {
             try {
               await deleteDoc(doc(ctx.db, COL.tasks, t.id));
-              toast("삭제됨", "ok");
+              toast("Deleted", "ok");
               await refreshAndRender();
             } catch {
-              toast("삭제 실패", "err");
+              toast("Delete failed", "err");
             }
           }),
       })
@@ -695,15 +943,32 @@ function renderTasks(root) {
     return tr;
   });
   root.appendChild(
-    table(
-      ["제목", "상태", "우선순위", "카테고리", "마감", ""],
-      rows,
-      "첫 할 일을 추가하세요."
-    )
+    table(["Status", "Title", "Priority", "Due", "Updated", ""], rows, "No matching tasks.")
   );
+
+  const cards = el("div", { className: "hq-card-list is-mobile-only" });
+  for (const t of list) {
+    const cardEl = el("article", { className: "hq-item-card" });
+    const top = el("div", { className: "hq-item-card__top" });
+    top.appendChild(el("p", { className: "hq-item-card__title", text: t.title || "—" }));
+    top.appendChild(statusBadge(t.status));
+    cardEl.appendChild(top);
+    cardEl.appendChild(
+      el("p", {
+        className: "hq-item-card__meta",
+        text: `${t.priority || "—"} · due ${ymd(t.dueDate) || "—"}`,
+      })
+    );
+    const acts = el("div", { className: "hq-item-card__actions" });
+    acts.appendChild(
+      btn("Edit", { className: "hq-btn hq-btn--small", onClick: () => openTaskForm(t) })
+    );
+    cardEl.appendChild(acts);
+    cards.appendChild(cardEl);
+  }
+  root.appendChild(cards);
 }
 
-/* ---------- Releases ---------- */
 function filteredReleases() {
   const f = filters.releases;
   const q = (f.product || "").trim().toLowerCase();
@@ -791,7 +1056,11 @@ function openReleaseForm(item) {
 
 function renderReleases(root) {
   clear(root);
-  root.appendChild(el("h2", { className: "hq-section-title", text: "Releases" }));
+  root.appendChild(
+    pageHeader("releases", [
+      btn("+ New Release", { onClick: () => openReleaseForm(null) }),
+    ])
+  );
   const statusF = select(
     {
       onChange: (e) => {
@@ -799,64 +1068,86 @@ function renderReleases(root) {
         renderReleases(root);
       },
     },
-    [{ value: "", label: "상태 전체" }].concat(RELEASE_STATUS),
+    [{ value: "", label: "Status" }].concat(RELEASE_STATUS),
     filters.releases.status
   );
   const productF = input({
-    placeholder: "제품 필터",
+    placeholder: "Filter product",
     value: filters.releases.product || "",
     onInput: (e) => {
       filters.releases.product = e.target.value;
       renderReleases(root);
     },
   });
-  root.appendChild(
-    toolbar([
-      statusF,
-      productF,
-      btn("추가", { onClick: () => openReleaseForm(null) }),
-    ])
-  );
-  const rows = filteredReleases().map((r) => {
-    const tr = el("tr");
-    tr.appendChild(el("td", { text: r.product || "—" }));
-    tr.appendChild(el("td", { text: r.version || "" }));
-    tr.appendChild(el("td", { text: r.platform || "" }));
-    tr.appendChild(el("td", { text: r.status || "" }));
-    tr.appendChild(el("td", { text: ymd(r.submittedAt) || "—" }));
-    tr.appendChild(el("td", { text: ymd(r.releasedAt) || "—" }));
-    const actions = el("td", { className: "hq-actions-cell" });
-    actions.appendChild(
-      btn("수정", { className: "hq-btn hq-btn--small", onClick: () => openReleaseForm(r) })
+  root.appendChild(toolbar([statusF, productF]));
+
+  const list = filteredReleases();
+  const upcoming = list.filter((r) => r.status !== "released");
+  const released = list.filter((r) => r.status === "released");
+
+  function releaseRows(items) {
+    return items.map((r) => {
+      const tr = el("tr");
+      tr.appendChild(el("td", { text: r.product || "—" }));
+      tr.appendChild(el("td", { text: r.version || "—" }));
+      tr.appendChild(el("td", { text: r.platform || "—" }));
+      tr.appendChild(el("td", null, [statusBadge(r.status)]));
+      tr.appendChild(el("td", { text: ymd(r.releasedAt) || ymd(r.submittedAt) || "—" }));
+      tr.appendChild(el("td", { text: r.notes || "—" }));
+      const actions = el("td", { className: "hq-actions-cell" });
+      actions.appendChild(
+        btn("Edit", { className: "hq-btn hq-btn--small", onClick: () => openReleaseForm(r) })
+      );
+      actions.appendChild(
+        btn("Delete", {
+          className: "hq-btn hq-btn--small hq-btn--ghost",
+          onClick: () =>
+            confirmDelete("Delete this release?", async () => {
+              try {
+                await deleteDoc(doc(ctx.db, COL.releases, r.id));
+                toast("Deleted", "ok");
+                await refreshAndRender();
+              } catch {
+                toast("Delete failed", "err");
+              }
+            }),
+        })
+      );
+      tr.appendChild(actions);
+      return tr;
+    });
+  }
+
+  if (!list.length) {
+    root.appendChild(
+      emptyState(
+        "No release records",
+        "Log the next app or platform release when you start work.",
+        btn("+ New Release", { onClick: () => openReleaseForm(null) })
+      )
     );
-    actions.appendChild(
-      btn("삭제", {
-        className: "hq-btn hq-btn--small hq-btn--ghost",
-        onClick: () =>
-          confirmDelete("이 릴리즈를 삭제할까요?", async () => {
-            try {
-              await deleteDoc(doc(ctx.db, COL.releases, r.id));
-              toast("삭제됨", "ok");
-              await refreshAndRender();
-            } catch {
-              toast("삭제 실패", "err");
-            }
-          }),
-      })
-    );
-    tr.appendChild(actions);
-    return tr;
-  });
+    return;
+  }
+
+  root.appendChild(el("h3", { className: "hq-surface-panel__title", text: "Upcoming", style: "margin:0 0 0.65rem" }));
   root.appendChild(
     table(
-      ["제품", "버전", "플랫폼", "상태", "제출", "출시", ""],
-      rows,
-      "아직 릴리즈 기록이 없습니다."
+      ["Product", "Version", "Platform", "Status", "Date", "Notes", ""],
+      releaseRows(upcoming),
+      "No upcoming releases."
+    )
+  );
+  root.appendChild(el("div", { style: "height:1rem" }));
+  root.appendChild(el("h3", { className: "hq-surface-panel__title", text: "Released", style: "margin:0 0 0.65rem" }));
+  root.appendChild(
+    table(
+      ["Product", "Version", "Platform", "Status", "Date", "Notes", ""],
+      releaseRows(released),
+      "No released items yet."
     )
   );
 }
 
-/* ---------- Leads ---------- */
 function filteredLeads() {
   const f = filters.leads;
   return cache.leads.filter((l) => {
@@ -991,7 +1282,45 @@ function exportLeadsCsv() {
 
 function renderLeads(root) {
   clear(root);
-  root.appendChild(el("h2", { className: "hq-section-title", text: "Leads" }));
+  const active = cache.leads.filter((l) => !l.archived);
+  const counts = {
+    new: active.filter((l) => l.status === "new").length,
+    contacted: active.filter((l) => l.status === "contacted").length,
+    quoted: active.filter((l) => l.status === "quoted").length,
+    won: active.filter((l) => l.status === "contracted" || l.status === "completed").length,
+    lost: active.filter((l) => l.status === "rejected").length,
+  };
+  root.appendChild(
+    pageHeader("leads", [
+      btn("CSV", { className: "hq-btn hq-btn--ghost", onClick: exportLeadsCsv }),
+      btn("+ New Lead", { onClick: () => openLeadForm(null) }),
+    ])
+  );
+  root.appendChild(
+    el("div", { className: "hq-summary-strip" }, [
+      el("div", { className: "hq-summary-pill" }, [
+        el("p", { className: "hq-summary-pill__label", text: "New" }),
+        el("p", { className: "hq-summary-pill__value", text: String(counts.new) }),
+      ]),
+      el("div", { className: "hq-summary-pill" }, [
+        el("p", { className: "hq-summary-pill__label", text: "Contacted" }),
+        el("p", { className: "hq-summary-pill__value", text: String(counts.contacted) }),
+      ]),
+      el("div", { className: "hq-summary-pill" }, [
+        el("p", { className: "hq-summary-pill__label", text: "Quote" }),
+        el("p", { className: "hq-summary-pill__value", text: String(counts.quoted) }),
+      ]),
+      el("div", { className: "hq-summary-pill" }, [
+        el("p", { className: "hq-summary-pill__label", text: "Won" }),
+        el("p", { className: "hq-summary-pill__value", text: String(counts.won) }),
+      ]),
+      el("div", { className: "hq-summary-pill" }, [
+        el("p", { className: "hq-summary-pill__label", text: "Lost" }),
+        el("p", { className: "hq-summary-pill__value", text: String(counts.lost) }),
+      ]),
+    ])
+  );
+
   const statusF = select(
     {
       onChange: (e) => {
@@ -999,7 +1328,7 @@ function renderLeads(root) {
         renderLeads(root);
       },
     },
-    [{ value: "", label: "상태 전체" }].concat(LEAD_STATUS),
+    [{ value: "", label: "Status" }].concat(LEAD_STATUS),
     filters.leads.status
   );
   const sourceF = select(
@@ -1009,7 +1338,7 @@ function renderLeads(root) {
         renderLeads(root);
       },
     },
-    [{ value: "", label: "출처 전체" }].concat(LEAD_SOURCE),
+    [{ value: "", label: "Source" }].concat(LEAD_SOURCE),
     filters.leads.source
   );
   const archF = select(
@@ -1020,40 +1349,45 @@ function renderLeads(root) {
       },
     },
     [
-      { value: "active", label: "활성" },
-      { value: "archived", label: "보관" },
-      { value: "all", label: "전체" },
+      { value: "active", label: "Active" },
+      { value: "archived", label: "Archived" },
+      { value: "all", label: "All" },
     ],
     filters.leads.archived
   );
-  root.appendChild(
-    toolbar([
-      statusF,
-      sourceF,
-      archF,
-      btn("추가", { onClick: () => openLeadForm(null) }),
-      btn("CSV", { className: "hq-btn hq-btn--ghost", onClick: exportLeadsCsv }),
-    ])
-  );
-  const rows = filteredLeads().map((l) => {
+  root.appendChild(toolbar([statusF, sourceF, archF]));
+
+  const list = filteredLeads();
+  if (!list.length) {
+    root.appendChild(
+      emptyState(
+        "No leads yet",
+        "Register inbound inquiries manually. FormSubmit sync is deferred.",
+        btn("+ New Lead", { onClick: () => openLeadForm(null) })
+      )
+    );
+    return;
+  }
+
+  const rows = list.map((l) => {
     const tr = el("tr");
     tr.appendChild(el("td", { text: l.name || "—" }));
-    tr.appendChild(el("td", { text: l.company || "" }));
-    tr.appendChild(el("td", { text: l.status || "" }));
-    tr.appendChild(el("td", { text: l.source || "" }));
+    tr.appendChild(el("td", { text: l.company || "—" }));
+    tr.appendChild(el("td", { text: l.source || "—" }));
     tr.appendChild(
       el("td", {
-        text:
-          l.amountEstimate != null ? formatKrw(l.amountEstimate) : "—",
+        text: l.amountEstimate != null ? formatKrw(l.amountEstimate) : "—",
       })
     );
+    tr.appendChild(el("td", null, [statusBadge(l.status)]));
+    tr.appendChild(el("td", { text: ymd(l.createdAt) || "—" }));
     const actions = el("td", { className: "hq-actions-cell" });
     actions.appendChild(
-      btn("수정", { className: "hq-btn hq-btn--small", onClick: () => openLeadForm(l) })
+      btn("Edit", { className: "hq-btn hq-btn--small", onClick: () => openLeadForm(l) })
     );
     if (!l.archived) {
       actions.appendChild(
-        btn("보관", {
+        btn("Archive", {
           className: "hq-btn hq-btn--small hq-btn--ghost",
           onClick: withSaving(async () => {
             try {
@@ -1062,10 +1396,10 @@ function renderLeads(root) {
                 updatedAt: serverTimestamp(),
                 updatedBy: uid(),
               });
-              toast("보관됨", "ok");
+              toast("Archived", "ok");
               await refreshAndRender();
             } catch {
-              toast("보관 실패", "err");
+              toast("Archive failed", "err");
             }
           }),
         })
@@ -1076,14 +1410,37 @@ function renderLeads(root) {
   });
   root.appendChild(
     table(
-      ["이름", "회사", "상태", "출처", "예상", ""],
+      ["Lead", "Company", "Source", "Budget", "Status", "Created", ""],
       rows,
-      "아직 등록된 문의가 없습니다."
+      "No leads match filters."
     )
   );
+
+  const cards = el("div", { className: "hq-card-list is-mobile-only" });
+  for (const l of list) {
+    const cardEl = el("article", { className: "hq-item-card" });
+    const top = el("div", { className: "hq-item-card__top" });
+    top.appendChild(el("p", { className: "hq-item-card__title", text: l.name || "—" }));
+    top.appendChild(statusBadge(l.status));
+    cardEl.appendChild(top);
+    cardEl.appendChild(
+      el("p", {
+        className: "hq-item-card__meta",
+        text: `${l.company || "—"} · ${l.source || "—"} · ${
+          l.amountEstimate != null ? formatKrw(l.amountEstimate) : "—"
+        }`,
+      })
+    );
+    const acts = el("div", { className: "hq-item-card__actions" });
+    acts.appendChild(
+      btn("Edit", { className: "hq-btn hq-btn--small", onClick: () => openLeadForm(l) })
+    );
+    cardEl.appendChild(acts);
+    cards.appendChild(cardEl);
+  }
+  root.appendChild(cards);
 }
 
-/* ---------- Finance ---------- */
 function filteredFinance() {
   const f = filters.finance;
   if (!f.month) f.month = monthKey(new Date());
@@ -1213,8 +1570,60 @@ function exportFinanceCsv() {
 
 function renderFinance(root) {
   clear(root);
-  root.appendChild(el("h2", { className: "hq-section-title", text: "Finance" }));
   if (!filters.finance.month) filters.finance.month = monthKey(new Date());
+  const month = filters.finance.month;
+  const monthRows = cache.finance.filter(
+    (f) => !f.archived && monthKey(f.date) === month
+  );
+  const monthTotals = financeTotals(monthRows);
+  const allActive = cache.finance.filter((f) => !f.archived);
+  const allTime = financeTotals(allActive);
+
+  root.appendChild(
+    pageHeader("finance", [
+      btn("CSV", { className: "hq-btn hq-btn--ghost", onClick: exportFinanceCsv }),
+      btn("+ Add Entry", { onClick: () => openFinanceForm(null) }),
+    ])
+  );
+  root.appendChild(
+    el("div", { className: "hq-stat-grid" }, [
+      statCard("This month income", formatKrw(monthTotals.income), month),
+      statCard("This month expense", formatKrw(monthTotals.expense), month),
+      statCard("Net", formatKrw(monthTotals.net), "Current month"),
+      statCard("All-time net", formatKrw(allTime.net), "Active entries"),
+      (() => {
+        const max = Math.max(monthTotals.income, monthTotals.expense, 1);
+        const wrap = el("div", { className: "hq-card hq-stat", style: "grid-column: span 2" });
+        wrap.appendChild(el("p", { className: "hq-card__label", text: "Month mix" }));
+        const bars = el("div", { className: "hq-bar-pair", style: "padding:0.55rem 0 0" });
+        const inc = el("div", { className: "hq-bar-pair__fill--income" });
+        inc.style.width = Math.round((monthTotals.income / max) * 100) + "%";
+        const exp = el("div", { className: "hq-bar-pair__fill--expense" });
+        exp.style.width = Math.round((monthTotals.expense / max) * 100) + "%";
+        bars.appendChild(
+          el("div", { className: "hq-bar-pair__item" }, [
+            el("div", { className: "hq-bar-pair__top" }, [
+              el("span", { text: "Income" }),
+              el("span", { className: "hq-bar-pair__val", text: formatKrw(monthTotals.income) }),
+            ]),
+            el("div", { className: "hq-bar-pair__track" }, [inc]),
+          ])
+        );
+        bars.appendChild(
+          el("div", { className: "hq-bar-pair__item" }, [
+            el("div", { className: "hq-bar-pair__top" }, [
+              el("span", { text: "Expense" }),
+              el("span", { className: "hq-bar-pair__val", text: formatKrw(monthTotals.expense) }),
+            ]),
+            el("div", { className: "hq-bar-pair__track" }, [exp]),
+          ])
+        );
+        wrap.appendChild(bars);
+        return wrap;
+      })(),
+    ])
+  );
+
   const monthIn = input({
     type: "month",
     value: filters.finance.month,
@@ -1230,7 +1639,7 @@ function renderFinance(root) {
         renderFinance(root);
       },
     },
-    [{ value: "", label: "유형 전체" }].concat(FINANCE_TYPE),
+    [{ value: "", label: "Type" }].concat(FINANCE_TYPE),
     filters.finance.type
   );
   const archF = select(
@@ -1241,45 +1650,50 @@ function renderFinance(root) {
       },
     },
     [
-      { value: "active", label: "활성" },
-      { value: "archived", label: "보관" },
-      { value: "all", label: "전체" },
+      { value: "active", label: "Active" },
+      { value: "archived", label: "Archived" },
+      { value: "all", label: "All" },
     ],
     filters.finance.archived
   );
+  root.appendChild(toolbar([monthIn, typeF, archF]));
+
   const list = filteredFinance();
-  const totals = financeTotals(list);
-  root.appendChild(
-    toolbar([
-      monthIn,
-      typeF,
-      archF,
-      btn("추가", { onClick: () => openFinanceForm(null) }),
-      btn("CSV", { className: "hq-btn hq-btn--ghost", onClick: exportFinanceCsv }),
-    ])
-  );
-  root.appendChild(
-    el("div", { className: "hq-cards" }, [
-      card("수입", formatKrw(totals.income)),
-      card("지출", formatKrw(totals.expense)),
-      card("순익", formatKrw(totals.net)),
-    ])
-  );
+  if (!list.length) {
+    root.appendChild(
+      emptyState(
+        "No transactions this month",
+        "Add income or expense entries to build the cash-flow view.",
+        btn("+ Add Entry", { onClick: () => openFinanceForm(null) })
+      )
+    );
+    return;
+  }
+
   const rows = list.map((f) => {
     const tr = el("tr");
-    tr.appendChild(el("td", { text: f.type || "" }));
-    tr.appendChild(el("td", { text: f.category || "" }));
-    tr.appendChild(el("td", { text: formatKrw(f.amount) }));
     tr.appendChild(el("td", { text: ymd(f.date) || "—" }));
-    tr.appendChild(el("td", { text: f.relatedProject || "" }));
-    tr.appendChild(el("td", { text: f.memo || "" }));
+    tr.appendChild(el("td", { text: f.category || "—" }));
+    tr.appendChild(el("td", { text: f.memo || f.relatedProject || "—" }));
+    const amt =
+      f.type === "expense"
+        ? el("td", {
+            className: "hq-amount--expense",
+            text: "−" + formatKrw(f.amount),
+          })
+        : el("td", {
+            className: "hq-amount--income",
+            text: "+" + formatKrw(f.amount),
+          });
+    tr.appendChild(amt);
+    tr.appendChild(el("td", null, [statusBadge(f.type)]));
     const actions = el("td", { className: "hq-actions-cell" });
     actions.appendChild(
-      btn("수정", { className: "hq-btn hq-btn--small", onClick: () => openFinanceForm(f) })
+      btn("Edit", { className: "hq-btn hq-btn--small", onClick: () => openFinanceForm(f) })
     );
     if (!f.archived) {
       actions.appendChild(
-        btn("보관", {
+        btn("Archive", {
           className: "hq-btn hq-btn--small hq-btn--ghost",
           onClick: withSaving(async () => {
             try {
@@ -1288,10 +1702,10 @@ function renderFinance(root) {
                 updatedAt: serverTimestamp(),
                 updatedBy: uid(),
               });
-              toast("보관됨", "ok");
+              toast("Archived", "ok");
               await refreshAndRender();
             } catch {
-              toast("보관 실패", "err");
+              toast("Archive failed", "err");
             }
           }),
         })
@@ -1301,11 +1715,36 @@ function renderFinance(root) {
     return tr;
   });
   root.appendChild(
-    table(["유형", "카테고리", "금액", "날짜", "프로젝트", "메모", ""], rows, "이번 달 거래 내역이 없습니다.")
+    table(
+      ["Date", "Category", "Description", "Amount", "Type", ""],
+      rows,
+      "No transactions."
+    )
   );
+
+  const cards = el("div", { className: "hq-card-list is-mobile-only" });
+  for (const f of list) {
+    const cardEl = el("article", { className: "hq-item-card" });
+    const top = el("div", { className: "hq-item-card__top" });
+    top.appendChild(el("p", { className: "hq-item-card__title", text: f.category || "—" }));
+    top.appendChild(
+      el("span", {
+        className: f.type === "expense" ? "hq-amount--expense" : "hq-amount--income",
+        text: (f.type === "expense" ? "−" : "+") + formatKrw(f.amount),
+      })
+    );
+    cardEl.appendChild(top);
+    cardEl.appendChild(
+      el("p", {
+        className: "hq-item-card__meta",
+        text: `${ymd(f.date) || "—"} · ${f.memo || f.relatedProject || "—"}`,
+      })
+    );
+    cards.appendChild(cardEl);
+  }
+  root.appendChild(cards);
 }
 
-/* ---------- Products ---------- */
 function metaForSlug(slug) {
   return (
     cache.productsMeta.find((m) => m.id === slug || m.productSlug === slug) ||
@@ -1375,9 +1814,15 @@ function openProductMetaForm(product) {
 
 function renderProducts(root) {
   clear(root);
-  root.appendChild(el("h2", { className: "hq-section-title", text: "Products" }));
+  root.appendChild(pageHeader("products", []));
+  root.appendChild(
+    el("p", {
+      className: "hq-catalog-note",
+      text: "Catalog fields come from the public product SoT. Ops version / status / notes live only in Firestore meta.",
+    })
+  );
   if (!catalog.length) {
-    root.appendChild(emptyMsg("catalog.json 없음 또는 비어 있음"));
+    root.appendChild(emptyState("Catalog unavailable", "catalog.json is missing or empty.", null));
     return;
   }
   const statusF = select(
@@ -1387,90 +1832,134 @@ function renderProducts(root) {
         renderProducts(root);
       },
     },
-    [{ value: "", label: "상태 전체" }].concat(OPS_STATUS),
+    [{ value: "", label: "Ops status" }].concat(OPS_STATUS),
     filters.products.status
   );
   root.appendChild(toolbar([statusF]));
   const list = catalog.filter((p) => {
     if (!filters.products.status) return true;
     const meta = metaForSlug(p.slug);
-    const st = (meta && meta.opsStatus) || "";
-    return st === filters.products.status;
+    return (meta && meta.opsStatus) === filters.products.status;
   });
-  const rows = list.map((p) => {
+  if (!list.length) {
+    root.appendChild(emptyMsg("No products match this ops status."));
+    return;
+  }
+  const grid = el("div", { className: "hq-product-grid" });
+  for (const p of list) {
     const meta = metaForSlug(p.slug);
     const platforms = Array.isArray(p.platforms)
       ? p.platforms.join(" / ")
       : p.platforms || "—";
-    const tr = el("tr");
-    tr.appendChild(el("td", { text: p.name || p.slug || "—" }));
-    tr.appendChild(el("td", { text: p.type || "—" }));
-    tr.appendChild(el("td", { text: platforms || "—" }));
-    tr.appendChild(el("td", { text: (meta && meta.currentVersion) || "—" }));
-    tr.appendChild(el("td", { text: (meta && meta.opsStatus) || "—" }));
-    tr.appendChild(el("td", { text: (meta && meta.notes) || "—" }));
-    const actions = el("td", { className: "hq-actions-cell" });
-    actions.appendChild(
-      btn("메타", {
-        className: "hq-btn hq-btn--small",
-        onClick: () => openProductMetaForm(p),
+    const cardBtn = el("button", {
+      type: "button",
+      className: "hq-product-card",
+      onClick: () => openProductMetaForm(p),
+    });
+    cardBtn.appendChild(
+      el("p", { className: "hq-product-card__name", text: p.name || p.slug || "—" })
+    );
+    cardBtn.appendChild(
+      el("p", {
+        className: "hq-product-card__meta",
+        text: `${p.type || "—"} · ${platforms}`,
       })
     );
-    tr.appendChild(actions);
-    return tr;
-  });
-  root.appendChild(
-    table(
-      ["Product", "Type", "Platform", "Current version", "Ops status", "Notes", ""],
-      rows,
-      "표시할 제품이 없습니다."
-    )
-  );
+    const ops = el("div", { className: "hq-product-card__ops" });
+    ops.appendChild(
+      badge((meta && meta.currentVersion) || "No version", meta && meta.currentVersion ? "active" : "")
+    );
+    ops.appendChild(statusBadge((meta && meta.opsStatus) || "unset"));
+    cardBtn.appendChild(ops);
+    cardBtn.appendChild(
+      el("p", {
+        className: "hq-product-card__note",
+        text: (meta && meta.notes) || "No ops notes",
+      })
+    );
+    cardBtn.appendChild(
+      el("p", {
+        className: "hq-product-card__meta",
+        text: "Updated " + (ymd(meta && meta.updatedAt) || "—"),
+      })
+    );
+    grid.appendChild(cardBtn);
+  }
+  root.appendChild(grid);
 }
 
-/* ---------- Settings ---------- */
 function renderSettings(root) {
   clear(root);
-  root.appendChild(el("h2", { className: "hq-section-title", text: "Settings" }));
+  root.appendChild(pageHeader("settings", []));
   const u = ctx && ctx.user;
   const projectId =
     (window.NEWON_HQ_FIREBASE &&
       window.NEWON_HQ_FIREBASE.config &&
       window.NEWON_HQ_FIREBASE.config.projectId) ||
     "—";
-  const dl = el("dl", { className: "hq-dl" }, [
-    el("div", { className: "hq-dl__row" }, [
-      el("dt", { className: "hq-dl__label", text: "Display name" }),
-      el("dd", { className: "hq-dl__value", text: (u && u.displayName) || "—" }),
-    ]),
-    el("div", { className: "hq-dl__row" }, [
-      el("dt", { className: "hq-dl__label", text: "Email" }),
-      el("dd", { className: "hq-dl__value", text: (u && u.email) || "—" }),
-    ]),
-    el("div", { className: "hq-dl__row" }, [
-      el("dt", { className: "hq-dl__label", text: "Project ID" }),
-      el("dd", { className: "hq-dl__value", text: projectId }),
-    ]),
-    el("div", { className: "hq-dl__row" }, [
-      el("dt", { className: "hq-dl__label", text: "HQ version" }),
-      el("dd", { className: "hq-dl__value", text: HQ_VERSION }),
-    ]),
-  ]);
-  root.appendChild(dl);
-  const logout = btn("로그아웃", {
+
+  function settingsCard(title, rows) {
+    return el("section", { className: "hq-settings-card" }, [
+      el("h2", { className: "hq-settings-card__title", text: title }),
+      el(
+        "dl",
+        { className: "hq-dl" },
+        rows.map(([k, v]) =>
+          el("div", { className: "hq-dl__row" }, [
+            el("dt", { className: "hq-dl__label", text: k }),
+            el("dd", { className: "hq-dl__value", text: v }),
+          ])
+        )
+      ),
+    ]);
+  }
+
+  root.appendChild(
+    el("div", { className: "hq-settings-grid" }, [
+      settingsCard("Account", [
+        ["Display name", (u && u.displayName) || "—"],
+        ["Email", (u && u.email) || "—"],
+        ["Role", "Administrator"],
+      ]),
+      settingsCard("Firebase", [
+        ["Project", projectId],
+        ["Authentication", "Connected"],
+        ["Database", "Firestore"],
+      ]),
+      settingsCard("HQ", [
+        ["Version", HQ_VERSION],
+        ["Environment", "Production"],
+      ]),
+      settingsCard("Security", [
+        ["Admin access", "UID allowlist"],
+        ["Google Authentication", "Enabled"],
+        ["Firestore Rules", "Admin-only"],
+      ]),
+    ])
+  );
+
+  const signOut = btn("Sign out", {
     className: "hq-btn hq-btn--ghost",
-    dataset: { hqLogout: "1" },
     onClick: async () => {
       if (ctx && typeof ctx.signOutFn === "function") {
         try {
           await ctx.signOutFn();
         } catch {
-          toast("로그아웃 실패", "err");
+          toast("Sign out failed", "err");
         }
       }
     },
   });
-  root.appendChild(el("div", { className: "hq-actions" }, [logout]));
+  root.appendChild(
+    el("div", { className: "hq-session-box" }, [
+      el("p", { className: "hq-session-box__title", text: "Session" }),
+      el("p", {
+        className: "hq-session-box__desc",
+        text: "Sign out ends this HQ session on this browser.",
+      }),
+      signOut,
+    ])
+  );
 }
 
 function renderCurrent() {
@@ -1532,11 +2021,18 @@ async function start(startCtx) {
   stop();
   ctx = startCtx || null;
   if (!ctx || !ctx.db || !ctx.user) {
-    toast("컨텍스트가 없습니다", "err");
+    toast("Missing HQ context", "err");
     return;
   }
+  const emailEl = $("hq-shell-email");
+  if (emailEl) emailEl.textContent = ctx.user.email || "—";
+  const avatar = document.querySelector(".hq-nav__avatar");
+  if (avatar) {
+    const ch = (ctx.user.email || "N").trim().charAt(0).toUpperCase();
+    avatar.textContent = ch || "N";
+  }
   bindShell();
-  toast("로딩 중…");
+  toast("Loading…");
   try {
     await Promise.all([loadAll(), loadCatalog()]);
     toast("");

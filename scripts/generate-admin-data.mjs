@@ -67,20 +67,23 @@ fs.mkdirSync(path.join(OUT, "growth"), { recursive: true });
 fs.writeFileSync(path.join(OUT, "data.json"), JSON.stringify(snapshot, null, 2));
 fs.writeFileSync(path.join(OUT, "catalog.json"), JSON.stringify(catalog, null, 2));
 
-const nav = [
-  ["dashboard", "Dashboard"],
-  ["tasks", "Tasks"],
-  ["releases", "Releases"],
-  ["leads", "Leads"],
-  ["finance", "Finance"],
-  ["products", "Products"],
-  ["settings", "Settings"],
-]
-  .map(
-    ([id, label]) =>
-      `<button type="button" class="hq-nav__link" data-hq-nav="${id}">${label}</button>`
-  )
-  .join("\n        ");
+function navIcon(d) {
+  return `<svg class="hq-nav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="${d}"/></svg>`;
+}
+
+function navBtn(id, label, path) {
+  return `<button type="button" class="hq-nav__link" data-hq-nav="${id}">${navIcon(path)}<span>${label}</span></button>`;
+}
+
+const I = {
+  dashboard: "M3 12h7V3H3v9zm0 9h7v-7H3v7zm11 0h7V12h-7v9zm0-18v7h7V3h-7z",
+  tasks: "M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01",
+  releases: "M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8",
+  leads: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75",
+  finance: "M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
+  products: "M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z",
+  settings: "M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.6.9 1 1.6 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z",
+};
 
 const panels = [
   "dashboard",
@@ -95,7 +98,7 @@ const panels = [
     (id, i) =>
       `<section class="hq-panel-section" id="hq-panel-${id}" ${i === 0 ? "" : "hidden"} aria-label="${id}"></section>`
   )
-  .join("\n        ");
+  .join("\n          ");
 
 const hqHtml = `<!DOCTYPE html>
 <html lang="ko">
@@ -104,13 +107,13 @@ const hqHtml = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Newon HQ</title>
-  <link rel="stylesheet" href="./hq.css?v=20260904hq1c" />
+  <link rel="stylesheet" href="./hq.css?v=20260904hq1d" />
 </head>
 <body>
   <div class="hq hq--auth" id="hq-auth-wrap">
     <p class="hq__eyebrow">NEWON HQ</p>
     <h1 class="hq__title">Private Operations</h1>
-    <p class="hq__lead">Internal console for Newon. Sign in with the admin Google account.</p>
+    <p class="hq__lead">Internal operating console for Newon. Sign in with the authorized admin Google account.</p>
     <p class="hq-status" id="hq-live-status" role="status" aria-live="polite"></p>
 
     <section class="hq-view hq-panel" id="hq-view-loading" aria-label="Loading">
@@ -126,7 +129,7 @@ const hqHtml = `<!DOCTYPE html>
     <section class="hq-view hq-panel" id="hq-view-signed-out" hidden aria-label="Sign in">
       <p class="hq__lead" style="margin-bottom:0">Authorized admin Google account only.</p>
       <div class="hq-actions">
-        <button type="button" class="hq-btn" id="hq-login">Google 계정으로 로그인</button>
+        <button type="button" class="hq-btn" id="hq-login">Continue with Google</button>
       </div>
     </section>
 
@@ -135,7 +138,7 @@ const hqHtml = `<!DOCTYPE html>
       <h2 class="hq__title" style="font-size:1.15rem">This account is not authorized for Newon HQ.</h2>
       <p class="hq__lead">Signed in as <span id="hq-denied-email">—</span></p>
       <div class="hq-actions">
-        <button type="button" class="hq-btn hq-btn--ghost" data-hq-logout>로그아웃</button>
+        <button type="button" class="hq-btn hq-btn--ghost" data-hq-logout>Sign out</button>
       </div>
     </section>
 
@@ -151,15 +154,42 @@ const hqHtml = `<!DOCTYPE html>
     <button type="button" class="hq-nav-toggle" id="hq-nav-toggle" aria-controls="hq-nav" aria-expanded="false">Menu</button>
     <div class="hq-shell-backdrop" id="hq-shell-backdrop" hidden></div>
     <aside class="hq-nav" id="hq-nav" aria-label="HQ navigation">
-      <p class="hq-nav__brand">NEWON HQ</p>
-      <nav class="hq-nav__list">
-        ${nav}
-      </nav>
-      <button type="button" class="hq-btn hq-btn--ghost hq-btn--small hq-nav__logout" data-hq-logout>로그아웃</button>
+      <div class="hq-nav__brand">
+        <span class="hq-nav__brand-name">Newon</span>
+        <span class="hq-nav__brand-hq">HQ</span>
+        <span class="hq-nav__brand-label">Private Operations</span>
+      </div>
+      <div class="hq-nav__scroll">
+        <nav class="hq-nav__list" aria-label="Primary">
+          <p class="hq-nav__group">Overview</p>
+          ${navBtn("dashboard", "Dashboard", I.dashboard)}
+          <p class="hq-nav__group">Operations</p>
+          ${navBtn("tasks", "Tasks", I.tasks)}
+          ${navBtn("releases", "Releases", I.releases)}
+          ${navBtn("products", "Products", I.products)}
+          <p class="hq-nav__group">Business</p>
+          ${navBtn("leads", "Leads", I.leads)}
+          ${navBtn("finance", "Finance", I.finance)}
+          <p class="hq-nav__group">System</p>
+          ${navBtn("settings", "Settings", I.settings)}
+        </nav>
+      </div>
+      <div class="hq-nav__footer">
+        <div class="hq-nav__profile">
+          <span class="hq-nav__avatar" aria-hidden="true">N</span>
+          <div>
+            <p class="hq-nav__email" id="hq-shell-email">—</p>
+            <p class="hq-nav__role"><span class="hq-nav__dot" aria-hidden="true"></span> Admin</p>
+          </div>
+        </div>
+        <button type="button" class="hq-btn hq-btn--ghost hq-btn--small" data-hq-logout>Sign out</button>
+      </div>
     </aside>
     <main class="hq-main" id="hq-main">
-      <p class="hq-toast" id="hq-toast" role="status" aria-live="polite" hidden></p>
-      ${panels}
+      <div class="hq-main__inner">
+        <p class="hq-toast" id="hq-toast" role="status" aria-live="polite" hidden></p>
+        ${panels}
+      </div>
     </main>
     <dialog class="hq-modal" id="hq-modal" aria-labelledby="hq-modal-title">
       <div class="hq-modal__inner">
@@ -170,9 +200,9 @@ const hqHtml = `<!DOCTYPE html>
     </dialog>
   </div>
 
-  <script src="./firebase-config.js?v=20260904hq1c"></script>
-  <script type="module" src="./hq-auth.js?v=20260904hq1c"></script>
-  <script type="module" src="./hq-app.js?v=20260904hq1c"></script>
+  <script src="./firebase-config.js?v=20260904hq1d"></script>
+  <script type="module" src="./hq-auth.js?v=20260904hq1d"></script>
+  <script type="module" src="./hq-app.js?v=20260904hq1d"></script>
 </body>
 </html>
 `;
