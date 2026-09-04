@@ -45,3 +45,25 @@ jobs:
 
       - name: Verify production 404 HUMAN route
         run: node scripts/verify-production-404-human.mjs
+
+      # Report-only: CDN propagation / transient network must not fail a successful deploy.
+      - name: Post-deploy production smoke (report-only)
+        if: always()
+        continue-on-error: true
+        run: |
+          sleep 15
+          node scripts/monitoring/check-production.mjs --smoke --report-only
+        env:
+          NEWON_SITE_ORIGIN: https://www.newon.app
+
+      - name: Upload post-deploy smoke artifact
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-deploy-smoke-${{ github.run_id }}
+          path: |
+            reports/monitoring-latest.json
+            reports/monitoring-latest.md
+          if-no-files-found: ignore
+          retention-days: 14

@@ -6,6 +6,7 @@ Print or keep open during an incident.
 
 - [ ] Confirm impact: Public site / HQ / Firestore / Auth / External
 - [ ] Severity: SEV-1 / SEV-2 / SEV-3 / SEV-4
+- [ ] If alert came from monitoring: re-verify (`npm run monitor:production` or Actions → Production monitor)
 - [ ] Stop further deploys and risky data edits
 - [ ] Decide if Firestore writes must pause
 

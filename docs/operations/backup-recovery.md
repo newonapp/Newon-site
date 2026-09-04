@@ -276,6 +276,22 @@ Store on encrypted disk / access-limited private drive. **Not** GitHub, Slack, p
 
 ---
 
+## 15b. Monitoring → incident
+
+Production monitoring (`scripts/monitoring/`, Actions **Production monitor**) is read-only.
+
+On **FAIL / OUTAGE**:
+
+1. Verify (re-run monitor + browser)
+2. Determine scope
+3. Check latest deploy
+4. Classify severity
+5. Follow this runbook + `docs/operations/incident-checklist.md`
+
+Details: `docs/operations/monitoring.md`. No automatic rollback.
+
+---
+
 ## 16. Security constraints
 
 - No ADMIN_UID bypass for backup

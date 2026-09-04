@@ -1,0 +1,73 @@
+# Production monitor (read-only)
+
+name: Production monitor
+
+on:
+  schedule:
+    # Four times daily UTC (≈ 6h). Lightweight for current traffic.
+    - cron: "17 0,6,12,18 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "full = routes+assets+store; smoke = critical only"
+        required: true
+        default: full
+        type: choice
+        options:
+          - full
+          - smoke
+      fail_on_outage:
+        description: "Exit non-zero on FAIL (uncheck for report-only)"
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run production monitor
+        id: monitor
+        run: |
+          set +e
+          EXTRA=""
+          MODE="${{ github.event.inputs.mode || 'full' }}"
+          if [ "$MODE" = "smoke" ]; then
+            EXTRA="--smoke"
+          fi
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ github.event.inputs.fail_on_outage }}" != "true" ]; then
+            EXTRA="$EXTRA --report-only"
+          fi
+          node scripts/monitoring/check-production.mjs $EXTRA
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit $code
+        env:
+          NEWON_SITE_ORIGIN: https://www.newon.app
+
+      - name: Upload monitoring artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-monitoring-${{ github.run_id }}
+          path: |
+            reports/monitoring-latest.json
+            reports/monitoring-latest.md
+          if-no-files-found: warn
+          retention-days: 30
