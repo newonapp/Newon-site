@@ -3655,7 +3655,10 @@
     "storeSelectedLabel": "Selected product",
     "storeTypeHint": "Tipo de consulta",
     "storeSelectPlaceholder": "Select an inquiry type",
-    "storeMailSubject": "Newon Store purchase inquiry"
+    "storeMailSubject": "Newon Store purchase inquiry",
+    "time2weeks": "Within 2 weeks",
+    "time1month": "Within 1 month",
+    "timeFlexible": "Flexible"
   },
   "businessPages": {
     "common": {
@@ -5075,7 +5078,8 @@
     "toolUiEnterWebsite": "Enter a website URL",
     "toolUiInvalidUrl": "Enter a valid http(s) URL",
     "toolUiNeedUtm": "Enter at least one UTM parameter",
-    "toolUiComingSoon": "Tool coming soon."
+    "toolUiComingSoon": "Tool coming soon.",
+    "formBudget7": "To be discussed"
   },
   "creative": {
     "seoTitle": "Newon Creative | Brand · Web · App · Content",

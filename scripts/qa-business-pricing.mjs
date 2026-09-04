@@ -21,10 +21,30 @@ const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
 /** Match ₩1,000 / ₩300,000 style amounts in HTML. */
 const KRW_RE = /₩\d{1,3}(?:,\d{3})+/g;
 
+/** Related tier amounts may appear in notes (e.g. MVP Standard / App Development). */
+function relatedAmountTokensFromText(...texts) {
+  const set = new Set();
+  for (const text of texts) {
+    if (!text) continue;
+    for (const m of String(text).match(KRW_RE) || []) set.add(m);
+  }
+  return set;
+}
+
 function allowedAmountTokensForSlug(slug) {
   const cfg = SERVICE_PRICING[slug];
-  if (!cfg || cfg.custom || cfg.amount == null) return new Set();
-  return new Set([formatKrw(cfg.amount)]);
+  if (!cfg) return new Set();
+  const set = new Set();
+  if (!cfg.custom && cfg.amount != null) set.add(formatKrw(cfg.amount));
+  for (const t of relatedAmountTokensFromText(
+    cfg.basisKo,
+    cfg.basisEn,
+    cfg.extraNoteKo,
+    cfg.extraNoteEn
+  )) {
+    set.add(t);
+  }
+  return set;
 }
 
 function allowedDisplaysForSlug(slug) {

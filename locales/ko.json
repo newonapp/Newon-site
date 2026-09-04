@@ -346,7 +346,7 @@
     "exploreCtaBtn": "프로젝트 상담하기 →",
     "exploreEyebrow": "NEWON FOR BUSINESS",
     "exploreTitle": "아이디어에서\n실제 제품까지.",
-    "exploreLead": "기획부터 디자인, 개발, 테스트, 스토어 출시까지 — 직접 제품을 만들어 본 경험을 바탕으로 실제 서비스를 구축합니다.",
+    "exploreLead": "웹, 앱, MVP, 내부 시스템과 자동화까지.\n필요한 문제에서 시작해 실제 사용할 수 있는 제품으로 구현합니다.",
     "exploreCtaServices": "서비스 살펴보기 ↓",
     "heroLabel": "NEWON FOR BUSINESS",
     "heroTitle": "기술로 더 나은 일상을 만듭니다.",
@@ -648,7 +648,10 @@
     "heroDomain4": "AI",
     "heroCardAria": "디지털 명함 열기",
     "heroCardAlt": "Newon 디지털 명함",
-    "heroCardHint": "디지털 명함 · 터치하여 열기"
+    "heroCardHint": "디지털 명함 · 터치하여 열기",
+    "time2weeks": "2주 이내",
+    "time1month": "1개월 이내",
+    "timeFlexible": "유동적 / 미정"
   },
   "ui": {
     "language": "언어",
@@ -4996,7 +4999,8 @@
     "toolUiEnterWebsite": "웹사이트 URL을 입력하세요",
     "toolUiInvalidUrl": "올바른 http(s) URL을 입력하세요",
     "toolUiNeedUtm": "UTM 파라미터를 하나 이상 입력하세요",
-    "toolUiComingSoon": "곧 제공됩니다."
+    "toolUiComingSoon": "곧 제공됩니다.",
+    "formBudget7": "협의"
   },
   "creative": {
     "seoTitle": "Newon Creative | Brand · Web · App · Content",

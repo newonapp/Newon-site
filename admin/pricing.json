@@ -1,26 +1,26 @@
 {
   "landing": {
-    "amount": 500000,
+    "amount": 700000,
     "label": "Landing Page Development",
     "custom": false
   },
   "web": {
-    "amount": 800000,
+    "amount": 1200000,
     "label": "Website Development",
     "custom": false
   },
   "app": {
-    "amount": 600000,
+    "amount": 1000000,
     "label": "App Prototype",
     "custom": false
   },
   "mvp": {
-    "amount": 1500000,
+    "amount": 3000000,
     "label": "MVP",
     "custom": false
   },
   "ai-automation": {
-    "amount": 800000,
+    "amount": 2000000,
     "label": "AI Automation",
     "custom": false
   },
@@ -80,8 +80,13 @@
     "custom": false
   },
   "internal-system": {
-    "amount": 0,
+    "amount": 4000000,
     "label": "Internal System",
-    "custom": true
+    "custom": false
+  },
+  "design": {
+    "amount": 400000,
+    "label": "Design",
+    "custom": false
   }
 }

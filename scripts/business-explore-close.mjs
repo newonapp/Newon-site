@@ -1,8 +1,14 @@
 /**
- * Business explore hub — footer: pillar nav + FAQ + black CTA (build-page quality).
+ * Business explore hub — footer: product matrix + pillar nav + FAQ + black CTA.
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
 import { PILLAR_SLUGS, getPillarCopy } from "./business-pillar-copy.mjs";
+import {
+  businessProductMatrixHtml,
+  paymentPolicyBrief,
+  revisionPolicyBrief,
+  externalCostDisclaimer,
+} from "./business-pricing.mjs";
 
 const LABELS = {
   build: "BUILD",
@@ -15,11 +21,15 @@ const FAQ = {
   ko: [
     {
       q: "프로젝트 기간은 얼마나 걸리나요?",
-      a: "랜딩은 보통 1–2주, 웹사이트 2–5주, MVP는 범위에 따라 3–6주 전후입니다. 착수 전에 일정표를 함께 확정합니다.",
+      a: "요구사항 확정·착수 이후 기준으로 랜딩 3–5일, 웹 5–10일, 앱 프로토타입 3–7일, MVP Starter 1–2주가 일반적입니다. 고객 피드백 지연·외부 심사·스토어 심사 기간은 별도일 수 있습니다.",
     },
     {
       q: "수정은 몇 회 가능한가요?",
-      a: "단계별(설계·디자인·구현)로 합의한 라운드 안에서 수정합니다. 범위 밖 변경은 일정·견적에 반영합니다.",
+      a: revisionPolicyBrief("ko"),
+    },
+    {
+      q: "결제는 어떻게 진행되나요?",
+      a: `${paymentPolicyBrief("ko")} ${externalCostDisclaimer("ko")}`,
     },
     {
       q: "기존 프로젝트 개선도 가능한가요?",
@@ -27,7 +37,7 @@ const FAQ = {
     },
     {
       q: "유지보수도 가능한가요?",
-      a: "출시 후 운영·소규모 개선은 별도 유지보수 또는 후속 프로젝트로 협의할 수 있습니다.",
+      a: "납품 이후 계약 범위 내 오류 수정 기간을 안내할 수 있습니다. 장기 유지보수는 별도 계약이며, 프로젝트 문의로 연결해 주세요.",
     },
     {
       q: "최종 결과물은 어떻게 전달되나요?",
@@ -37,11 +47,15 @@ const FAQ = {
   en: [
     {
       q: "How long does a project take?",
-      a: "Landing pages are often 1–2 weeks, websites 2–5 weeks, MVPs roughly 3–6 weeks depending on scope. We align on a timeline before kickoff.",
+      a: "After requirements lock and kickoff: landing 3–5 days, web 5–10 days, app prototype 3–7 days, MVP Starter 1–2 weeks are typical. Feedback delays and store review time may be separate.",
     },
     {
       q: "How many revision rounds are included?",
-      a: "Revisions within agreed rounds per phase (design, build, etc.). Out-of-scope changes are reflected in timeline and quote.",
+      a: revisionPolicyBrief("en"),
+    },
+    {
+      q: "How does payment work?",
+      a: `${paymentPolicyBrief("en")} ${externalCostDisclaimer("en")}`,
     },
     {
       q: "Can you improve an existing product?",
@@ -49,7 +63,7 @@ const FAQ = {
     },
     {
       q: "Do you offer maintenance?",
-      a: "Post-launch ops and small improvements can continue as maintenance or a follow-on project.",
+      a: "We can cover in-scope defect fixes after delivery. Longer maintenance is a separate agreement — start via project inquiry.",
     },
     {
       q: "What do we receive at the end?",
@@ -152,8 +166,68 @@ function finalCta(flat, flatEn, lang) {
 </section>`;
 }
 
+function portfolioStrip(lang = "en") {
+  const ko = lang === "ko";
+  const label = ko ? "BUILT BY NEWON" : "BUILT BY NEWON";
+  const title = ko ? "직접 출시한 제품으로 신뢰를 쌓습니다." : "Trust built on products we ship ourselves.";
+  const btn = ko ? "Portfolio 보기 →" : "See portfolio →";
+  return `<section class="bp-sec bz-built-by" data-bp-reveal aria-labelledby="bz-built-by-label">
+  <div class="bp-inner" style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.25rem">
+    <div>
+      <p class="bp-label" id="bz-built-by-label">${label}</p>
+      <p class="bp-lead" style="margin:0.65rem 0 0;max-width:28rem">${escapeHtml(title)}</p>
+    </div>
+    <a class="bp-btn bp-btn--ghost" href="../portfolio/">${escapeHtml(btn)}</a>
+  </div>
+</section>`;
+}
+
+function processStrip(lang = "en") {
+  const ko = lang === "ko";
+  const steps = ko
+    ? [
+        { n: "01", t: "DISCOVER", d: "요구사항과 목표 확인" },
+        { n: "02", t: "DEFINE", d: "범위 · 일정 · 견적 확정" },
+        { n: "03", t: "BUILD", d: "디자인 · 개발 · 검증" },
+        { n: "04", t: "REVIEW", d: "피드백 및 수정" },
+        { n: "05", t: "LAUNCH", d: "배포 · 출시 · 납품" },
+      ]
+    : [
+        { n: "01", t: "DISCOVER", d: "Align on goals and requirements" },
+        { n: "02", t: "DEFINE", d: "Lock scope, timeline, and quote" },
+        { n: "03", t: "BUILD", d: "Design, develop, and validate" },
+        { n: "04", t: "REVIEW", d: "Feedback and revisions" },
+        { n: "05", t: "LAUNCH", d: "Deploy, ship, and hand off" },
+      ];
+  const note = ko
+    ? "소규모 프로젝트는 불필요하게 복잡한 절차 없이 빠르게 진행할 수 있습니다."
+    : "Smaller projects move quickly without unnecessary process overhead.";
+  const items = steps
+    .map(
+      (s) => `<article class="bp-other__card" style="pointer-events:none">
+      <span class="bp-other__top"><span class="bp-other__n">${s.n}</span></span>
+      <span class="bp-other__t">${escapeHtml(s.t)}</span>
+      <span class="bp-other__lead">${escapeHtml(s.d)}</span>
+    </article>`
+    )
+    .join("");
+  return `<section class="bp-sec bp-other bz-process-strip" data-bp-reveal aria-labelledby="bz-process-strip-label">
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label" id="bz-process-strip-label">${ko ? "PROCESS" : "PROCESS"}</p>
+    </header>
+    <div class="bp-other__grid">${items}</div>
+    <p class="bp-note" style="margin-top:1.25rem">${escapeHtml(note)}</p>
+  </div>
+</section>`;
+}
+
 export function businessExploreCloseHtml(flat, flatEn, lang = "en") {
+  const pageLang = lang === "ko" ? "ko" : "en";
   return `<div class="bp-page bz-explore-foot">
+${businessProductMatrixHtml(pageLang)}
+${processStrip(pageLang)}
+${portfolioStrip(pageLang)}
 ${pillarNav(flat, flatEn, lang)}
 ${faqSection(flat, flatEn, lang)}
 ${finalCta(flat, flatEn, lang)}

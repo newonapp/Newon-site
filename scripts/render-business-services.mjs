@@ -79,16 +79,6 @@ function bySlug(slug) {
 
 function inquiryHref(page) {
   const base = `${relPrefix(page)}inquiry/`;
-  if (page.slug === "design") {
-    // Orphan design page — keep Design type without inventing SoT pricing slug
-    const params = new URLSearchParams({
-      category: "Business",
-      service: "Design",
-      slug: "design",
-      source: `/business/design/`,
-    });
-    return `${base}?${params.toString()}#inquiry`;
-  }
   return businessInquiryHref(page.slug, base, {
     source: `/business/${pageRoute(page)}/`,
   });

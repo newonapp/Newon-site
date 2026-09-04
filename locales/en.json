@@ -346,7 +346,7 @@
     "exploreCtaBtn": "Start a consultation →",
     "exploreEyebrow": "NEWON FOR BUSINESS",
     "exploreTitle": "From idea\nto real product.",
-    "exploreLead": "We build real services from planning through design, development, testing, and store launch — grounded in products we have shipped ourselves.",
+    "exploreLead": "Web, apps, MVPs, internal systems, and automation.\nWe start from the problem you need and build something people can actually use.",
     "exploreCtaServices": "Explore services ↓",
     "heroLabel": "NEWON FOR BUSINESS",
     "heroTitle": "Technology for a better everyday life.",
@@ -557,7 +557,7 @@
     "stageLive": "Live / in operation",
     "stageOther": "Other",
     "timeAsap": "As soon as possible",
-    "time1to3": "Within 1–3 months",
+    "time1to3": "1–3 months",
     "time3to6": "Within 3–6 months",
     "time6plus": "After 6 months",
     "timeUnset": "Not decided yet",
@@ -648,7 +648,10 @@
     "heroDomain4": "AI",
     "heroCardAria": "Open Newon digital card",
     "heroCardAlt": "Newon digital card",
-    "heroCardHint": "Digital card · tap to open"
+    "heroCardHint": "Digital card · tap to open",
+    "time2weeks": "Within 2 weeks",
+    "time1month": "Within 1 month",
+    "timeFlexible": "Flexible"
   },
   "ui": {
     "language": "Language",
@@ -4991,7 +4994,8 @@
     "toolUiEnterWebsite": "Enter a website URL",
     "toolUiInvalidUrl": "Enter a valid http(s) URL",
     "toolUiNeedUtm": "Enter at least one UTM parameter",
-    "toolUiComingSoon": "Tool coming soon."
+    "toolUiComingSoon": "Tool coming soon.",
+    "formBudget7": "To be discussed"
   },
   "creative": {
     "seoTitle": "Newon Creative | Brand · Web · App · Content",

@@ -68,6 +68,10 @@
     "label": "Internal System"
   },
   {
+    "value": "design",
+    "label": "Design"
+  },
+  {
     "value": "other",
     "label": "Other"
   }
