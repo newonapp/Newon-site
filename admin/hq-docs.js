@@ -145,6 +145,7 @@ export function installHqDocs(api) {
     refreshAndRender,
     showPanel,
     formatLongDate,
+    openFinanceForm,
   } = api;
 
   let documentDetailId = null;
@@ -993,6 +994,80 @@ export function installHqDocs(api) {
         }),
       ])
     );
+
+    root.appendChild(el("div", { style: "height:0.85rem" }));
+    const actions = [];
+    if (d.type === "quote" && d.status === "approved" && project) {
+      const total = Number(content.total) || 0;
+      actions.push(
+        btn("Use Quote Total as Project Budget", {
+          className: "hq-btn hq-btn--ghost",
+          onClick: () => {
+            const current = Number(project.budget) || 0;
+            const msg =
+              current > 0 && current !== total
+                ? `Overwrite project budget ${formatKrw(current)} with quote total ${formatKrw(total)}?`
+                : `Set project budget to ${formatKrw(total)}?`;
+            confirmDelete(msg, async () => {
+              try {
+                await updateDoc(doc(ctx().db, COL.projects, project.id), {
+                  budget: total,
+                  updatedAt: serverTimestamp(),
+                  updatedBy: uid(),
+                });
+                toast("Project budget updated", "ok");
+                await refreshAndRender();
+              } catch {
+                toast("Budget update failed", "err");
+              }
+            });
+          },
+        })
+      );
+    }
+    if (d.type === "invoice" && d.status === "completed") {
+      const paidAmt =
+        Number(content.total) ||
+        Number(content.amount) ||
+        Number(content.subtotal) ||
+        0;
+      const already = (getCache().finance || []).some(
+        (f) => !f.archived && f.invoiceId === d.id
+      );
+      actions.push(
+        btn(already ? "Payment already in Finance" : "Record Payment in Finance", {
+          className: "hq-btn hq-btn--ghost",
+          disabled: already || paidAmt <= 0,
+          onClick: () => {
+            if (already) {
+              toast("Already recorded for this invoice", "err");
+              return;
+            }
+            if (typeof openFinanceForm === "function") {
+              openFinanceForm(null, {
+                type: "income",
+                category: "Invoice payment",
+                amount: paidAmt,
+                projectId: d.projectId || "",
+                relatedProject: (project && project.name) || d.company || "",
+                memo: `Invoice ${content.invoiceNumber || d.title || d.id}`,
+                invoiceId: d.id,
+              });
+            } else {
+              toast("Finance form unavailable", "err");
+            }
+          },
+        })
+      );
+    }
+    if (actions.length) {
+      root.appendChild(
+        surfacePanel("Integrations", [
+          el("div", { className: "hq-pipeline", style: "display:flex;flex-wrap:wrap;gap:0.5rem" }, actions),
+        ])
+      );
+      root.appendChild(el("div", { style: "height:0.85rem" }));
+    }
 
     if (!d.archived) {
       root.appendChild(

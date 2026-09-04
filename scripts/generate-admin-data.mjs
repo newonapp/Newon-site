@@ -132,7 +132,7 @@ const hqHtml = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Newon HQ</title>
-  <link rel="stylesheet" href="./hq.css?v=20260904hq2b" />
+  <link rel="stylesheet" href="./hq.css?v=20260904hq2c" />
 </head>
 <body>
   <div class="hq hq--auth" id="hq-auth-wrap">
@@ -227,9 +227,9 @@ const hqHtml = `<!DOCTYPE html>
     </dialog>
   </div>
 
-  <script src="./firebase-config.js?v=20260904hq2b"></script>
-  <script type="module" src="./hq-auth.js?v=20260904hq2b"></script>
-  <script type="module" src="./hq-app.js?v=20260904hq2b"></script>
+  <script src="./firebase-config.js?v=20260904hq2c"></script>
+  <script type="module" src="./hq-auth.js?v=20260904hq2c"></script>
+  <script type="module" src="./hq-app.js?v=20260904hq2c"></script>
 </body>
 </html>
 `;

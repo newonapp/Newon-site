@@ -15,8 +15,9 @@ import {
   orderBy,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 import { installHqDocs } from "./hq-docs.js";
+import { installHqOps, PROJECT_PHASE, PROJECT_PHASE_LABEL, BOARD_LANES } from "./hq-ops.js";
 
-const HQ_VERSION = "1.3.0";
+const HQ_VERSION = "1.4.0";
 const COL = {
   tasks: "hq_tasks",
   releases: "hq_releases",
@@ -25,6 +26,7 @@ const COL = {
   productsMeta: "hq_products_meta",
   projects: "hq_projects",
   documents: "hq_documents",
+  milestones: "hq_milestones",
 };
 
 const TASK_STATUS = ["todo", "doing", "done"];
@@ -137,6 +139,8 @@ let serviceTypes = DEFAULT_SERVICE_TYPES.slice();
 let pricingBySlug = {};
 /** @type {ReturnType<typeof installHqDocs>|null} */
 let docsMod = null;
+/** @type {ReturnType<typeof installHqOps>|null} */
+let opsMod = null;
 
 const PAGE_META = {
   dashboard: {
@@ -196,6 +200,7 @@ function emptyCache() {
     productsMeta: [],
     projects: [],
     documents: [],
+    milestones: [],
   };
 }
 
@@ -572,17 +577,35 @@ async function loadCol(name, orderField) {
 
 async function loadAll() {
   if (!ctx || !ctx.db) return;
-  const [tasks, releases, leads, finance, productsMeta, projects, documents] =
-    await Promise.all([
-      loadCol(COL.tasks, "createdAt"),
-      loadCol(COL.releases, "createdAt"),
-      loadCol(COL.leads, "createdAt"),
-      loadCol(COL.finance, "date"),
-      loadCol(COL.productsMeta, null),
-      loadCol(COL.projects, "updatedAt"),
-      loadCol(COL.documents, "updatedAt"),
-    ]);
-  cache = { tasks, releases, leads, finance, productsMeta, projects, documents };
+  const [
+    tasks,
+    releases,
+    leads,
+    finance,
+    productsMeta,
+    projects,
+    documents,
+    milestones,
+  ] = await Promise.all([
+    loadCol(COL.tasks, "createdAt"),
+    loadCol(COL.releases, "createdAt"),
+    loadCol(COL.leads, "createdAt"),
+    loadCol(COL.finance, "date"),
+    loadCol(COL.productsMeta, null),
+    loadCol(COL.projects, "updatedAt"),
+    loadCol(COL.documents, "updatedAt"),
+    loadCol(COL.milestones, null),
+  ]);
+  cache = {
+    tasks,
+    releases,
+    leads,
+    finance,
+    productsMeta,
+    projects,
+    documents,
+    milestones,
+  };
 }
 
 async function loadCatalog() {
@@ -668,11 +691,69 @@ function ensureDocsMod() {
     refreshAndRender,
     showPanel,
     formatLongDate,
+    openFinanceForm,
     setProjectDetailId: (id) => {
       projectDetailId = id;
     },
   });
   return docsMod;
+}
+
+function ensureOpsMod() {
+  if (opsMod) return opsMod;
+  opsMod = installHqOps({
+    el,
+    btn,
+    clear,
+    toast,
+    pageHeader,
+    toolbar,
+    emptyState,
+    emptyMsg,
+    surfacePanel,
+    badge,
+    select,
+    input,
+    textarea,
+    fieldRow,
+    openModal,
+    closeModal,
+    withSaving,
+    confirmDelete,
+    formatKrw,
+    ymd,
+    uid,
+    serverTimestamp,
+    collection,
+    doc,
+    addDoc,
+    updateDoc,
+    COL,
+    getCache: () => cache,
+    getCtx: () => ctx,
+    projectById,
+    refreshAndRender,
+    showPanel,
+    openTaskForm,
+    openProjectForm,
+    openProjectStatusForm,
+    financeTotals,
+    openFinanceForm,
+    ensureDocsMod,
+    projectStatusBadge,
+    priorityBadge,
+    serviceTypeLabel,
+    PROJECT_STATUS_LABEL,
+    statusBadge,
+    clearProjectDetail: () => {
+      projectDetailId = null;
+      if (opsMod) opsMod.resetTab();
+    },
+    setProjectDetailId: (id) => {
+      projectDetailId = id;
+    },
+  });
+  return opsMod;
 }
 
 async function refreshAndRender() {
@@ -1005,6 +1086,11 @@ function renderDashboard(root) {
       ]),
     ])
   );
+
+  root.appendChild(el("div", { style: "height:0.85rem" }));
+  root.appendChild(
+    surfacePanel("Upcoming work", [ensureOpsMod().renderDashboardOpsPanel()])
+  );
 }
 
 function filteredTasks() {
@@ -1032,14 +1118,39 @@ function openTaskForm(item, opts) {
   const priIn = select({}, TASK_PRIORITY, (item && item.priority) || "medium");
   const catIn = input({ value: (item && item.category) || "" });
   const dueIn = input({ type: "date", value: ymd(item && item.dueDate) });
+  const assigneeIn = input({ value: (item && item.assignee) || "" });
   const projectIn = projectOptions(prefProject);
+  const milestoneOpts = [{ value: "", label: "— None —" }].concat(
+    (cache.milestones || [])
+      .filter((m) => !m.archived && m.projectId === prefProject)
+      .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0))
+      .map((m) => ({ value: m.id, label: m.title || m.id }))
+  );
+  const milestoneIn = select(
+    {},
+    milestoneOpts,
+    (item && item.milestoneId) || opts.milestoneId || ""
+  );
+  const laneIn = select(
+    {},
+    BOARD_LANES,
+    (item && item.lane) ||
+      (item && item.status === "done"
+        ? "done"
+        : item && item.status === "doing"
+          ? "in_progress"
+          : "todo")
+  );
   const form = el("form", { className: "hq-form" }, [
     fieldRow("제목 *", titleIn),
     fieldRow("설명", descIn),
     fieldRow("상태", statusIn),
+    fieldRow("Board lane", laneIn),
     fieldRow("우선순위", priIn),
     fieldRow("카테고리", catIn),
+    fieldRow("Assignee", assigneeIn),
     fieldRow("Project", projectIn),
+    fieldRow("Milestone", milestoneIn),
     fieldRow("마감일", dueIn),
   ]);
   const saveBtn = btn("저장", { type: "submit", dataset: { hqSave: "1" } });
@@ -1063,14 +1174,23 @@ function openTaskForm(item, opts) {
         toast("유효하지 않은 값", "err");
         return;
       }
+      const lane = laneIn.value || null;
+      let status = statusIn.value;
+      if (lane === "done") status = "done";
+      else if (lane === "in_progress" || lane === "review") {
+        if (status === "done") status = "doing";
+      }
       const payload = {
         title,
         description: descIn.value.trim(),
-        status: statusIn.value,
+        status,
         priority: priIn.value,
         category: catIn.value.trim(),
         dueDate: dueIn.value || null,
         projectId: projectIn.value || null,
+        milestoneId: milestoneIn.value || null,
+        assignee: assigneeIn.value.trim() || null,
+        lane: lane || null,
         updatedAt: serverTimestamp(),
         updatedBy: uid(),
       };
@@ -1727,13 +1847,21 @@ function openFinanceForm(item, opts) {
   opts = opts || {};
   const isEdit = !!item;
   const prefProject = (item && item.projectId) || opts.projectId || "";
-  const typeIn = select({}, FINANCE_TYPE, (item && item.type) || "expense");
-  const catIn = input({ value: (item && item.category) || "", required: true });
+  const typeIn = select({}, FINANCE_TYPE, (item && item.type) || opts.type || "expense");
+  const catIn = input({
+    value: (item && item.category) || opts.category || "",
+    required: true,
+  });
   const amountIn = input({
     type: "number",
     min: "1",
     step: "1",
-    value: item && item.amount != null ? String(item.amount) : "",
+    value:
+      item && item.amount != null
+        ? String(item.amount)
+        : opts.amount != null
+          ? String(opts.amount)
+          : "",
     required: true,
   });
   const dateIn = input({
@@ -1742,9 +1870,12 @@ function openFinanceForm(item, opts) {
     required: true,
   });
   const memoIn = textarea({});
-  memoIn.value = (item && item.memo) || "";
+  memoIn.value = (item && item.memo) || opts.memo || "";
   const projectIn = projectOptions(prefProject);
-  const labelIn = input({ value: (item && item.relatedProject) || "" });
+  const labelIn = input({
+    value: (item && item.relatedProject) || opts.relatedProject || "",
+  });
+  const invoiceIdPref = (item && item.invoiceId) || opts.invoiceId || null;
   const form = el("form", { className: "hq-form" }, [
     fieldRow("유형", typeIn),
     fieldRow("카테고리 *", catIn),
@@ -1799,6 +1930,7 @@ function openFinanceForm(item, opts) {
         updatedAt: serverTimestamp(),
         updatedBy: uid(),
       };
+      if (invoiceIdPref) payload.invoiceId = invoiceIdPref;
       try {
         if (isEdit) {
           await updateDoc(doc(ctx.db, COL.finance, item.id), payload);
@@ -2291,6 +2423,22 @@ function openProjectForm(item, opts) {
     })),
     (item && item.status) || "inquiry"
   );
+  const phaseIn = select(
+    {},
+    [{ value: "", label: "— (unset) —" }].concat(
+      PROJECT_PHASE.map((p) => ({
+        value: p,
+        label: PROJECT_PHASE_LABEL[p] || p,
+      }))
+    ),
+    (item && item.phase) || ""
+  );
+  const progIn = input({
+    type: "number",
+    min: "0",
+    max: "100",
+    value: item && item.progress != null ? String(item.progress) : "",
+  });
   const priIn = select({}, TASK_PRIORITY, (item && item.priority) || "medium");
   const budgetIn = input({
     type: "number",
@@ -2317,6 +2465,8 @@ function openProjectForm(item, opts) {
     fieldRow("Phone", phoneIn),
     fieldRow("Service Type *", serviceIn),
     fieldRow("Status *", statusIn),
+    fieldRow("Phase", phaseIn),
+    fieldRow("Progress (0–100)", progIn),
     fieldRow("Priority", priIn),
     fieldRow("Budget (KRW)", budgetIn),
     fieldRow("Start Date", startIn),
@@ -2366,6 +2516,18 @@ function openProjectForm(item, opts) {
         toast("Invalid priority", "err");
         return;
       }
+      let progress = null;
+      if (progIn.value !== "") {
+        progress = Number(progIn.value);
+        if (!Number.isFinite(progress) || progress < 0 || progress > 100) {
+          toast("Progress must be 0–100", "err");
+          return;
+        }
+      }
+      if (phaseIn.value && !PROJECT_PHASE.includes(phaseIn.value)) {
+        toast("Invalid phase", "err");
+        return;
+      }
       const leadId =
         (item && item.leadId) || (lead && lead.id) || null;
       const payload = {
@@ -2388,6 +2550,10 @@ function openProjectForm(item, opts) {
         updatedAt: serverTimestamp(),
         updatedBy: uid(),
       };
+      if (phaseIn.value) payload.phase = phaseIn.value;
+      else if (isEdit && item && item.phase) payload.phase = null;
+      if (progress != null) payload.progress = progress;
+      else if (isEdit && item && item.progress != null) payload.progress = null;
       try {
         let projectId = item && item.id;
         if (isEdit) {
@@ -2468,239 +2634,7 @@ function openProjectStatusForm(item) {
 }
 
 function renderProjectDetail(root, project) {
-  clear(root);
-  root.appendChild(
-    pageHeader("projects", [
-      btn("← Back", {
-        className: "hq-btn hq-btn--ghost",
-        onClick: () => {
-          projectDetailId = null;
-          renderProjects(root);
-        },
-      }),
-      btn("Edit", { onClick: () => openProjectForm(project) }),
-      btn("Change Status", {
-        className: "hq-btn hq-btn--ghost",
-        onClick: () => openProjectStatusForm(project),
-      }),
-    ])
-  );
-
-  const head = el("div", { className: "hq-surface-panel", style: "margin-bottom:0.85rem" });
-  head.appendChild(
-    el("div", { className: "hq-surface-panel__body", style: "padding:1.1rem 1.05rem" }, [
-      el("p", { className: "hq-eyebrow", text: "Project" }),
-      el("h2", {
-        className: "hq-page-header__title",
-        style: "margin:0.2rem 0 0.45rem;font-size:1.65rem",
-        text: project.name || "—",
-      }),
-      el("p", {
-        className: "hq-page-header__desc",
-        text: `${project.clientName || "—"} · ${project.company || "—"}`,
-      }),
-      el("div", { className: "hq-product-card__ops", style: "margin-top:0.75rem" }, [
-        projectStatusBadge(project.status),
-        priorityBadge(project.priority),
-        badge(serviceTypeLabel(project.serviceType)),
-      ]),
-    ])
-  );
-  root.appendChild(head);
-
-  root.appendChild(
-    el("div", { className: "hq-grid-2--equal hq-grid-2" }, [
-      surfacePanel("Overview", [
-        el("div", { className: "hq-pipeline" }, [
-          el("p", { className: "hq-row__meta", text: `Client: ${project.clientName || "—"}` }),
-          el("p", { className: "hq-row__meta", text: `Company: ${project.company || "—"}` }),
-          el("p", { className: "hq-row__meta", text: `Email: ${project.clientEmail || "—"}` }),
-          el("p", { className: "hq-row__meta", text: `Phone: ${project.clientPhone || "—"}` }),
-          el("p", {
-            className: "hq-row__meta",
-            text: `Service: ${serviceTypeLabel(project.serviceType)}`,
-          }),
-          el("p", {
-            className: "hq-row__meta",
-            text: `Budget: ${formatKrw(project.budget || 0)} (${project.currency || "KRW"})`,
-          }),
-        ]),
-      ]),
-      surfacePanel("Progress", [
-        el("div", { className: "hq-pipeline" }, [
-          el("div", { className: "hq-row", style: "border:0;padding:0.35rem 0" }, [
-            projectStatusBadge(project.status),
-            el("span", {
-              className: "hq-row__aside",
-              text: PROJECT_STATUS_LABEL[project.status] || project.status || "",
-            }),
-          ]),
-          el("p", { className: "hq-row__meta", text: `Start: ${ymd(project.startDate) || "—"}` }),
-          el("p", { className: "hq-row__meta", text: `Target: ${ymd(project.targetDate) || "—"}` }),
-          el("p", { className: "hq-row__meta", text: `Updated: ${ymd(project.updatedAt) || "—"}` }),
-        ]),
-        el("div", { style: "padding:0.5rem 1.05rem 1rem" }, [
-          ensureDocsMod().renderProgressStrip(project),
-          el("p", {
-            className: "hq-stat__caption",
-            style: "margin-top:0.55rem",
-            text: "Read-only indicators from linked docs / checklist. No auto status writes.",
-          }),
-        ]),
-      ]),
-    ])
-  );
-
-  root.appendChild(el("div", { style: "height:0.85rem" }));
-  root.appendChild(
-    surfacePanel("Notes", [
-      el("div", { className: "hq-pipeline" }, [
-        el("p", { className: "hq-summary-pill__label", text: "Description" }),
-        el("p", {
-          className: "hq-row__meta",
-          text: project.description || "No description",
-        }),
-        el("p", {
-          className: "hq-summary-pill__label",
-          style: "margin-top:0.75rem",
-          text: "Internal notes",
-        }),
-        el("p", {
-          className: "hq-row__meta",
-          text: project.internalNotes || "No internal notes",
-        }),
-      ]),
-    ])
-  );
-
-  const lead = project.leadId
-    ? cache.leads.find((l) => l.id === project.leadId)
-    : null;
-  const relatedTasks = cache.tasks.filter((t) => t.projectId === project.id);
-  const relatedFinance = cache.finance.filter(
-    (f) => !f.archived && f.projectId === project.id
-  );
-  const fin = financeTotals(relatedFinance);
-
-  root.appendChild(el("div", { style: "height:0.85rem" }));
-  root.appendChild(
-    el("div", { className: "hq-grid-2" }, [
-      surfacePanel(
-        "Related · Lead",
-        [
-          el("div", { className: "hq-pipeline" }, [
-            el("p", {
-              className: "hq-row__meta",
-              text: lead
-                ? `${lead.name || "—"} · ${lead.status || ""} · ${lead.company || ""}`
-                : project.leadId
-                  ? "Linked lead not found in cache"
-                  : "No linked lead",
-            }),
-          ]),
-        ]
-      ),
-      surfacePanel("Related · Finance", [
-        el("div", { className: "hq-pipeline" }, [
-          el("p", {
-            className: "hq-row__meta",
-            text: `Budget (contract/estimate): ${formatKrw(project.budget || 0)}`,
-          }),
-          el("p", {
-            className: "hq-row__meta",
-            text: `Income (recorded): ${formatKrw(fin.income)}`,
-          }),
-          el("p", {
-            className: "hq-row__meta",
-            text: `Expense (recorded): ${formatKrw(fin.expense)}`,
-          }),
-          el("p", {
-            className: "hq-row__meta",
-            text: `Net (recorded): ${formatKrw(fin.net)}`,
-          }),
-          btn("+ Add Entry", {
-            className: "hq-btn hq-btn--small",
-            style: "margin-top:0.55rem",
-            onClick: () => openFinanceForm(null, { projectId: project.id }),
-          }),
-        ]),
-      ]),
-    ])
-  );
-
-  const taskKids = [];
-  if (!relatedTasks.length) {
-    taskKids.push(
-      el("div", { style: "padding:0.85rem 1.05rem" }, [emptyMsg("No linked tasks.")])
-    );
-  } else {
-    for (const t of relatedTasks.slice(0, 20)) {
-      const row = el("div", { className: "hq-row hq-row--task" });
-      row.appendChild(statusBadge(t.status));
-      const mid = el("div");
-      mid.appendChild(el("p", { className: "hq-row__title", text: t.title || "—" }));
-      mid.appendChild(
-        el("p", {
-          className: "hq-row__meta",
-          text: `${t.priority || ""} · ${ymd(t.dueDate) || "—"}`,
-        })
-      );
-      row.appendChild(mid);
-      row.appendChild(
-        btn("Edit", {
-          className: "hq-btn hq-btn--small",
-          onClick: () => openTaskForm(t),
-        })
-      );
-      taskKids.push(row);
-    }
-  }
-  root.appendChild(el("div", { style: "height:0.85rem" }));
-  root.appendChild(
-    surfacePanel(
-      "Related · Tasks",
-      taskKids,
-      btn("+ Add Task", {
-        className: "hq-surface-panel__link",
-        onClick: () => openTaskForm(null, { projectId: project.id }),
-      })
-    )
-  );
-
-  root.appendChild(el("div", { style: "height:0.85rem" }));
-  root.appendChild(ensureDocsMod().renderProjectDocumentsSection(project));
-  root.appendChild(el("div", { style: "height:0.85rem" }));
-  root.appendChild(ensureDocsMod().renderDeliverySection(project));
-
-  if (!project.archived) {
-    root.appendChild(
-      el("div", { className: "hq-session-box" }, [
-        el("p", { className: "hq-session-box__title", text: "Archive" }),
-        el("p", {
-          className: "hq-session-box__desc",
-          text: "Archiving hides this project from the default list. Related leads, tasks, and finance are not deleted.",
-        }),
-        btn("Archive Project", {
-          className: "hq-btn hq-btn--ghost",
-          onClick: () =>
-            confirmDelete("Archive this project?", async () => {
-              try {
-                await updateDoc(doc(ctx.db, COL.projects, project.id), {
-                  archived: true,
-                  updatedAt: serverTimestamp(),
-                  updatedBy: uid(),
-                });
-                toast("Archived", "ok");
-                projectDetailId = null;
-                await refreshAndRender();
-              } catch {
-                toast("Archive failed", "err");
-              }
-            }),
-        }),
-      ])
-    );
-  }
+  ensureOpsMod().renderProjectDetail(root, project);
 }
 
 function renderProjects(root) {
@@ -2949,6 +2883,7 @@ function stop() {
   pricingBySlug = {};
   projectDetailId = null;
   docsMod = null;
+  opsMod = null;
   ctx = null;
   saving = false;
   closeModal();
@@ -2975,6 +2910,7 @@ async function start(startCtx) {
   try {
     await Promise.all([loadAll(), loadCatalog(), loadServiceTypes(), loadPricing()]);
     ensureDocsMod();
+    ensureOpsMod();
     toast("");
     showPanel("dashboard");
   } catch {
