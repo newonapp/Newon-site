@@ -1,0 +1,1947 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-04T10:27:57.330Z",
+  "repo": {
+    "path": "/Users/kyungnawon/Newon",
+    "kind": "newon-public-website",
+    "note": "This repository is the Newon public website (GitHub Pages). Consumer Flutter app sources are not vendored here.",
+    "hqFirebase": {
+      "projectIdHint": "newon-hq",
+      "rulesFile": "firestore.rules",
+      "appliesTo": "HQ admin only — not per-app consumer Firebase"
+    },
+    "websiteAnalytics": {
+      "file": "analytics.js",
+      "ga4ConfiguredInRepo": false
+    },
+    "appsRootEnv": null,
+    "probeStore": true
+  },
+  "appsDetected": [
+    {
+      "id": "ox-month",
+      "name": "OX MONTH",
+      "flutterSourceFound": false,
+      "androidApplicationId": "com.newon.ox.month"
+    },
+    {
+      "id": "subping",
+      "name": "SubPing",
+      "flutterSourceFound": false,
+      "androidApplicationId": "com.newon.subping"
+    },
+    {
+      "id": "savy",
+      "name": "Savy",
+      "flutterSourceFound": false,
+      "androidApplicationId": "com.newon.savy"
+    },
+    {
+      "id": "pillmate",
+      "name": "Pillmate",
+      "flutterSourceFound": false,
+      "androidApplicationId": "com.newon.pill.mate"
+    },
+    {
+      "id": "babylog",
+      "name": "BabyLog",
+      "flutterSourceFound": false,
+      "androidApplicationId": "com.newon.babylog"
+    },
+    {
+      "id": "petlog",
+      "name": "PetLog",
+      "flutterSourceFound": false,
+      "androidApplicationId": "com.newon.petlog"
+    },
+    {
+      "id": "piggyup",
+      "name": "PiggyUp",
+      "flutterSourceFound": false,
+      "androidApplicationId": "com.newon.piggyup"
+    },
+    {
+      "id": "goalup",
+      "name": "GoalUp",
+      "flutterSourceFound": false,
+      "androidApplicationId": "goalup.newon.app"
+    },
+    {
+      "id": "countup",
+      "name": "CountUp",
+      "flutterSourceFound": false,
+      "androidApplicationId": "com.newon.countup"
+    },
+    {
+      "id": "newon-plus",
+      "name": "Newon+",
+      "flutterSourceFound": false,
+      "androidApplicationId": "com.newon.newon"
+    },
+    {
+      "id": "myworld",
+      "name": "My World",
+      "flutterSourceFound": false,
+      "androidApplicationId": "com.newon.myworld"
+    }
+  ],
+  "apps": [
+    {
+      "id": "ox-month",
+      "name": "OX MONTH",
+      "status": "INCOMPLETE",
+      "score": 46,
+      "inventory": {
+        "sourcePath": "UNKNOWN — not found in this repository",
+        "flutterRoot": null,
+        "androidApplicationId": "com.newon.ox.month",
+        "iosBundleId": "UNKNOWN",
+        "stores": {
+          "appStoreUrl": "https://apps.apple.com/kr/app/ox-month-ai-%EC%8A%B5%EA%B4%80-%EA%B4%80%EB%A6%AC/id6767996492",
+          "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.ox.month&pcampaignid=web_share",
+          "appStoreIsDeveloper": false,
+          "playPackageId": "com.newon.ox.month",
+          "appStoreId": "6767996492"
+        },
+        "websiteDeleteAccount": true,
+        "firebase": {
+          "connected": "UNKNOWN",
+          "project": "UNKNOWN",
+          "auth": "UNKNOWN",
+          "firestore": "UNKNOWN",
+          "storage": "UNKNOWN",
+          "functions": "UNKNOWN",
+          "analytics": "UNKNOWN",
+          "crashReporting": "UNKNOWN",
+          "push": "UNKNOWN",
+          "iap": "UNKNOWN"
+        },
+        "criticalFlows": [
+          "habit create",
+          "daily O/X",
+          "monthly history",
+          "reminder"
+        ],
+        "sensitiveData": false
+      },
+      "matrix": {
+        "platform": "Flutter (source UNKNOWN)",
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "auth": "UNKNOWN",
+        "security": "WARN",
+        "payment": "UNKNOWN",
+        "analytics": "UNKNOWN",
+        "crash": "UNKNOWN",
+        "store": "PASS",
+        "privacy": "PASS",
+        "criticalFlow": "UNKNOWN"
+      },
+      "scoreDims": {
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "security": "WARN",
+        "coreFlow": "UNKNOWN",
+        "payments": "UNKNOWN",
+        "errorMonitoring": "UNKNOWN",
+        "privacy": "PASS",
+        "store": "PASS"
+      },
+      "findings": [
+        {
+          "status": "PASS",
+          "code": "DELETE_ACCOUNT_PAGES",
+          "message": "Localized delete-account pages present (ko+en).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/oxmonth/delete-account/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "MARKETING_ICON",
+          "message": "Marketing icon asset present on website.",
+          "priority": null,
+          "category": "store",
+          "path": "ox-month-logo.png",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_URL_PRESENT",
+          "message": "Google Play URL present and package id matches inventory.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APP_STORE_URL_PRESENT",
+          "message": "App Store product URL present in locales.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_PRIVACY_PAGE",
+          "message": "Site privacy page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/privacy/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_TERMS_PAGE",
+          "message": "Site terms page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/terms/",
+          "manual": false
+        },
+        {
+          "status": "UNKNOWN",
+          "code": "FLUTTER_SOURCE_MISSING",
+          "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+          "priority": "P2",
+          "category": "build",
+          "path": null,
+          "manual": true
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APPSTORE_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "WARN",
+          "code": "REPO_SECURITY_CONTEXT",
+          "message": "See repository-wide findings (shared website/HQ scan).",
+          "priority": "P2",
+          "category": "security",
+          "path": null,
+          "manual": false
+        }
+      ],
+      "recommendedActions": [
+        "Point NEWON_APPS_ROOT (or FLUTTER_ROOTS) at the Flutter monorepo/clone to unlock build/Firebase/Auth/payment static audits."
+      ]
+    },
+    {
+      "id": "subping",
+      "name": "SubPing",
+      "status": "INCOMPLETE",
+      "score": 46,
+      "inventory": {
+        "sourcePath": "UNKNOWN — not found in this repository",
+        "flutterRoot": null,
+        "androidApplicationId": "com.newon.subping",
+        "iosBundleId": "UNKNOWN",
+        "stores": {
+          "appStoreUrl": "https://apps.apple.com/kr/app/subping-%EA%B5%AC%EB%8F%85-%EA%B4%80%EB%A6%AC/id6768013033",
+          "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.subping&pcampaignid=web_share",
+          "appStoreIsDeveloper": false,
+          "playPackageId": "com.newon.subping",
+          "appStoreId": "6768013033"
+        },
+        "websiteDeleteAccount": true,
+        "firebase": {
+          "connected": "UNKNOWN",
+          "project": "UNKNOWN",
+          "auth": "UNKNOWN",
+          "firestore": "UNKNOWN",
+          "storage": "UNKNOWN",
+          "functions": "UNKNOWN",
+          "analytics": "UNKNOWN",
+          "crashReporting": "UNKNOWN",
+          "push": "UNKNOWN",
+          "iap": "UNKNOWN"
+        },
+        "criticalFlows": [
+          "subscription create",
+          "renewal data",
+          "reminder"
+        ],
+        "sensitiveData": false
+      },
+      "matrix": {
+        "platform": "Flutter (source UNKNOWN)",
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "auth": "UNKNOWN",
+        "security": "WARN",
+        "payment": "UNKNOWN",
+        "analytics": "UNKNOWN",
+        "crash": "UNKNOWN",
+        "store": "PASS",
+        "privacy": "PASS",
+        "criticalFlow": "UNKNOWN"
+      },
+      "scoreDims": {
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "security": "WARN",
+        "coreFlow": "UNKNOWN",
+        "payments": "UNKNOWN",
+        "errorMonitoring": "UNKNOWN",
+        "privacy": "PASS",
+        "store": "PASS"
+      },
+      "findings": [
+        {
+          "status": "PASS",
+          "code": "DELETE_ACCOUNT_PAGES",
+          "message": "Localized delete-account pages present (ko+en).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/subping/delete-account/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "MARKETING_ICON",
+          "message": "Marketing icon asset present on website.",
+          "priority": null,
+          "category": "store",
+          "path": "subping-logo.png",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_URL_PRESENT",
+          "message": "Google Play URL present and package id matches inventory.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APP_STORE_URL_PRESENT",
+          "message": "App Store product URL present in locales.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_PRIVACY_PAGE",
+          "message": "Site privacy page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/privacy/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_TERMS_PAGE",
+          "message": "Site terms page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/terms/",
+          "manual": false
+        },
+        {
+          "status": "UNKNOWN",
+          "code": "FLUTTER_SOURCE_MISSING",
+          "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+          "priority": "P2",
+          "category": "build",
+          "path": null,
+          "manual": true
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APPSTORE_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "WARN",
+          "code": "REPO_SECURITY_CONTEXT",
+          "message": "See repository-wide findings (shared website/HQ scan).",
+          "priority": "P2",
+          "category": "security",
+          "path": null,
+          "manual": false
+        }
+      ],
+      "recommendedActions": [
+        "Point NEWON_APPS_ROOT (or FLUTTER_ROOTS) at the Flutter monorepo/clone to unlock build/Firebase/Auth/payment static audits."
+      ]
+    },
+    {
+      "id": "savy",
+      "name": "Savy",
+      "status": "INCOMPLETE",
+      "score": 46,
+      "inventory": {
+        "sourcePath": "UNKNOWN — not found in this repository",
+        "flutterRoot": null,
+        "androidApplicationId": "com.newon.savy",
+        "iosBundleId": "UNKNOWN",
+        "stores": {
+          "appStoreUrl": "https://apps.apple.com/kr/app/savy-%EC%8A%A4%EB%A7%88%ED%8A%B8-ai-%EA%B0%80%EA%B3%84%EB%B6%80/id6768017037",
+          "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.savy&pcampaignid=web_share",
+          "appStoreIsDeveloper": false,
+          "playPackageId": "com.newon.savy",
+          "appStoreId": "6768017037"
+        },
+        "websiteDeleteAccount": true,
+        "firebase": {
+          "connected": "UNKNOWN",
+          "project": "UNKNOWN",
+          "auth": "UNKNOWN",
+          "firestore": "UNKNOWN",
+          "storage": "UNKNOWN",
+          "functions": "UNKNOWN",
+          "analytics": "UNKNOWN",
+          "crashReporting": "UNKNOWN",
+          "push": "UNKNOWN",
+          "iap": "UNKNOWN"
+        },
+        "criticalFlows": [
+          "transaction",
+          "totals",
+          "persistence"
+        ],
+        "sensitiveData": false
+      },
+      "matrix": {
+        "platform": "Flutter (source UNKNOWN)",
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "auth": "UNKNOWN",
+        "security": "WARN",
+        "payment": "UNKNOWN",
+        "analytics": "UNKNOWN",
+        "crash": "UNKNOWN",
+        "store": "PASS",
+        "privacy": "PASS",
+        "criticalFlow": "UNKNOWN"
+      },
+      "scoreDims": {
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "security": "WARN",
+        "coreFlow": "UNKNOWN",
+        "payments": "UNKNOWN",
+        "errorMonitoring": "UNKNOWN",
+        "privacy": "PASS",
+        "store": "PASS"
+      },
+      "findings": [
+        {
+          "status": "PASS",
+          "code": "DELETE_ACCOUNT_PAGES",
+          "message": "Localized delete-account pages present (ko+en).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/savy/delete-account/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "MARKETING_ICON",
+          "message": "Marketing icon asset present on website.",
+          "priority": null,
+          "category": "store",
+          "path": "savy-logo.png",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_URL_PRESENT",
+          "message": "Google Play URL present and package id matches inventory.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APP_STORE_URL_PRESENT",
+          "message": "App Store product URL present in locales.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_PRIVACY_PAGE",
+          "message": "Site privacy page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/privacy/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_TERMS_PAGE",
+          "message": "Site terms page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/terms/",
+          "manual": false
+        },
+        {
+          "status": "UNKNOWN",
+          "code": "FLUTTER_SOURCE_MISSING",
+          "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+          "priority": "P2",
+          "category": "build",
+          "path": null,
+          "manual": true
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APPSTORE_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "WARN",
+          "code": "REPO_SECURITY_CONTEXT",
+          "message": "See repository-wide findings (shared website/HQ scan).",
+          "priority": "P2",
+          "category": "security",
+          "path": null,
+          "manual": false
+        }
+      ],
+      "recommendedActions": [
+        "Point NEWON_APPS_ROOT (or FLUTTER_ROOTS) at the Flutter monorepo/clone to unlock build/Firebase/Auth/payment static audits."
+      ]
+    },
+    {
+      "id": "pillmate",
+      "name": "Pillmate",
+      "status": "INCOMPLETE",
+      "score": 43,
+      "inventory": {
+        "sourcePath": "UNKNOWN — not found in this repository",
+        "flutterRoot": null,
+        "androidApplicationId": "com.newon.pill.mate",
+        "iosBundleId": "UNKNOWN",
+        "stores": {
+          "appStoreUrl": "https://apps.apple.com/kr/app/pillmate-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-%EB%B3%B5%EC%95%BD-%EC%95%8C%EB%A6%BC/id6768017347",
+          "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.pill.mate&pcampaignid=web_share",
+          "appStoreIsDeveloper": false,
+          "playPackageId": "com.newon.pill.mate",
+          "appStoreId": "6768017347"
+        },
+        "websiteDeleteAccount": true,
+        "firebase": {
+          "connected": "UNKNOWN",
+          "project": "UNKNOWN",
+          "auth": "UNKNOWN",
+          "firestore": "UNKNOWN",
+          "storage": "UNKNOWN",
+          "functions": "UNKNOWN",
+          "analytics": "UNKNOWN",
+          "crashReporting": "UNKNOWN",
+          "push": "UNKNOWN",
+          "iap": "UNKNOWN"
+        },
+        "criticalFlows": [
+          "medication create",
+          "reminder",
+          "family/data access"
+        ],
+        "sensitiveData": true
+      },
+      "matrix": {
+        "platform": "Flutter (source UNKNOWN)",
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "auth": "UNKNOWN",
+        "security": "WARN",
+        "payment": "UNKNOWN",
+        "analytics": "UNKNOWN",
+        "crash": "UNKNOWN",
+        "store": "PASS",
+        "privacy": "WARN",
+        "criticalFlow": "UNKNOWN"
+      },
+      "scoreDims": {
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "security": "WARN",
+        "coreFlow": "UNKNOWN",
+        "payments": "UNKNOWN",
+        "errorMonitoring": "UNKNOWN",
+        "privacy": "WARN",
+        "store": "PASS"
+      },
+      "findings": [
+        {
+          "status": "PASS",
+          "code": "DELETE_ACCOUNT_PAGES",
+          "message": "Localized delete-account pages present (ko+en).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/pillmate/delete-account/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "MARKETING_ICON",
+          "message": "Marketing icon asset present on website.",
+          "priority": null,
+          "category": "store",
+          "path": "pillmate-logo.png",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_URL_PRESENT",
+          "message": "Google Play URL present and package id matches inventory.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APP_STORE_URL_PRESENT",
+          "message": "App Store product URL present in locales.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_PRIVACY_PAGE",
+          "message": "Site privacy page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/privacy/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_TERMS_PAGE",
+          "message": "Site terms page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/terms/",
+          "manual": false
+        },
+        {
+          "status": "WARN",
+          "code": "SENSITIVE_DATA_PRODUCT",
+          "message": "Product may process sensitive personal data. In-app privacy, family access, and retention need MANUAL review in Flutter source / Console.",
+          "priority": "P1",
+          "category": "privacy",
+          "path": null,
+          "manual": true
+        },
+        {
+          "status": "UNKNOWN",
+          "code": "FLUTTER_SOURCE_MISSING",
+          "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+          "priority": "P2",
+          "category": "build",
+          "path": null,
+          "manual": true
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APPSTORE_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "WARN",
+          "code": "REPO_SECURITY_CONTEXT",
+          "message": "See repository-wide findings (shared website/HQ scan).",
+          "priority": "P2",
+          "category": "security",
+          "path": null,
+          "manual": false
+        }
+      ],
+      "recommendedActions": [
+        "Point NEWON_APPS_ROOT (or FLUTTER_ROOTS) at the Flutter monorepo/clone to unlock build/Firebase/Auth/payment static audits.",
+        "Manual: SENSITIVE_DATA_PRODUCT — Product may process sensitive personal data. In-app privacy, family access, and retention need MANUAL review in Flutter source / Console."
+      ]
+    },
+    {
+      "id": "babylog",
+      "name": "BabyLog",
+      "status": "INCOMPLETE",
+      "score": 43,
+      "inventory": {
+        "sourcePath": "UNKNOWN — not found in this repository",
+        "flutterRoot": null,
+        "androidApplicationId": "com.newon.babylog",
+        "iosBundleId": "UNKNOWN",
+        "stores": {
+          "appStoreUrl": "https://apps.apple.com/kr/app/babylog-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-ai-%EC%9C%A1%EC%95%84-%EA%B8%B0%EB%A1%9D/id6768019196",
+          "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.babylog&pcampaignid=web_share",
+          "appStoreIsDeveloper": false,
+          "playPackageId": "com.newon.babylog",
+          "appStoreId": "6768019196"
+        },
+        "websiteDeleteAccount": true,
+        "firebase": {
+          "connected": "UNKNOWN",
+          "project": "UNKNOWN",
+          "auth": "UNKNOWN",
+          "firestore": "UNKNOWN",
+          "storage": "UNKNOWN",
+          "functions": "UNKNOWN",
+          "analytics": "UNKNOWN",
+          "crashReporting": "UNKNOWN",
+          "push": "UNKNOWN",
+          "iap": "UNKNOWN"
+        },
+        "criticalFlows": [
+          "child record",
+          "family/data access"
+        ],
+        "sensitiveData": true
+      },
+      "matrix": {
+        "platform": "Flutter (source UNKNOWN)",
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "auth": "UNKNOWN",
+        "security": "WARN",
+        "payment": "UNKNOWN",
+        "analytics": "UNKNOWN",
+        "crash": "UNKNOWN",
+        "store": "PASS",
+        "privacy": "WARN",
+        "criticalFlow": "UNKNOWN"
+      },
+      "scoreDims": {
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "security": "WARN",
+        "coreFlow": "UNKNOWN",
+        "payments": "UNKNOWN",
+        "errorMonitoring": "UNKNOWN",
+        "privacy": "WARN",
+        "store": "PASS"
+      },
+      "findings": [
+        {
+          "status": "PASS",
+          "code": "DELETE_ACCOUNT_PAGES",
+          "message": "Localized delete-account pages present (ko+en).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/babylog/delete-account/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "MARKETING_ICON",
+          "message": "Marketing icon asset present on website.",
+          "priority": null,
+          "category": "store",
+          "path": "babylog-logo.png",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_URL_PRESENT",
+          "message": "Google Play URL present and package id matches inventory.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APP_STORE_URL_PRESENT",
+          "message": "App Store product URL present in locales.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_PRIVACY_PAGE",
+          "message": "Site privacy page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/privacy/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_TERMS_PAGE",
+          "message": "Site terms page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/terms/",
+          "manual": false
+        },
+        {
+          "status": "WARN",
+          "code": "SENSITIVE_DATA_PRODUCT",
+          "message": "Product may process sensitive personal data. In-app privacy, family access, and retention need MANUAL review in Flutter source / Console.",
+          "priority": "P1",
+          "category": "privacy",
+          "path": null,
+          "manual": true
+        },
+        {
+          "status": "UNKNOWN",
+          "code": "FLUTTER_SOURCE_MISSING",
+          "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+          "priority": "P2",
+          "category": "build",
+          "path": null,
+          "manual": true
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APPSTORE_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "WARN",
+          "code": "REPO_SECURITY_CONTEXT",
+          "message": "See repository-wide findings (shared website/HQ scan).",
+          "priority": "P2",
+          "category": "security",
+          "path": null,
+          "manual": false
+        }
+      ],
+      "recommendedActions": [
+        "Point NEWON_APPS_ROOT (or FLUTTER_ROOTS) at the Flutter monorepo/clone to unlock build/Firebase/Auth/payment static audits.",
+        "Manual: SENSITIVE_DATA_PRODUCT — Product may process sensitive personal data. In-app privacy, family access, and retention need MANUAL review in Flutter source / Console."
+      ]
+    },
+    {
+      "id": "petlog",
+      "name": "PetLog",
+      "status": "INCOMPLETE",
+      "score": 43,
+      "inventory": {
+        "sourcePath": "UNKNOWN — not found in this repository",
+        "flutterRoot": null,
+        "androidApplicationId": "com.newon.petlog",
+        "iosBundleId": "UNKNOWN",
+        "stores": {
+          "appStoreUrl": "https://apps.apple.com/kr/app/petlog-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-ai-%EB%B0%98%EB%A0%A4-%EA%B8%B0%EB%A1%9D/id6770971033",
+          "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.petlog&pcampaignid=web_share",
+          "appStoreIsDeveloper": false,
+          "playPackageId": "com.newon.petlog",
+          "appStoreId": "6770971033"
+        },
+        "websiteDeleteAccount": true,
+        "firebase": {
+          "connected": "UNKNOWN",
+          "project": "UNKNOWN",
+          "auth": "UNKNOWN",
+          "firestore": "UNKNOWN",
+          "storage": "UNKNOWN",
+          "functions": "UNKNOWN",
+          "analytics": "UNKNOWN",
+          "crashReporting": "UNKNOWN",
+          "push": "UNKNOWN",
+          "iap": "UNKNOWN"
+        },
+        "criticalFlows": [
+          "pet record",
+          "family/data access"
+        ],
+        "sensitiveData": true
+      },
+      "matrix": {
+        "platform": "Flutter (source UNKNOWN)",
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "auth": "UNKNOWN",
+        "security": "WARN",
+        "payment": "UNKNOWN",
+        "analytics": "UNKNOWN",
+        "crash": "UNKNOWN",
+        "store": "PASS",
+        "privacy": "WARN",
+        "criticalFlow": "UNKNOWN"
+      },
+      "scoreDims": {
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "security": "WARN",
+        "coreFlow": "UNKNOWN",
+        "payments": "UNKNOWN",
+        "errorMonitoring": "UNKNOWN",
+        "privacy": "WARN",
+        "store": "PASS"
+      },
+      "findings": [
+        {
+          "status": "PASS",
+          "code": "DELETE_ACCOUNT_PAGES",
+          "message": "Localized delete-account pages present (ko+en).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/petlog/delete-account/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "MARKETING_ICON",
+          "message": "Marketing icon asset present on website.",
+          "priority": null,
+          "category": "store",
+          "path": "petlog-logo.png",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_URL_PRESENT",
+          "message": "Google Play URL present and package id matches inventory.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APP_STORE_URL_PRESENT",
+          "message": "App Store product URL present in locales.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_PRIVACY_PAGE",
+          "message": "Site privacy page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/privacy/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_TERMS_PAGE",
+          "message": "Site terms page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/terms/",
+          "manual": false
+        },
+        {
+          "status": "WARN",
+          "code": "SENSITIVE_DATA_PRODUCT",
+          "message": "Product may process sensitive personal data. In-app privacy, family access, and retention need MANUAL review in Flutter source / Console.",
+          "priority": "P1",
+          "category": "privacy",
+          "path": null,
+          "manual": true
+        },
+        {
+          "status": "UNKNOWN",
+          "code": "FLUTTER_SOURCE_MISSING",
+          "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+          "priority": "P2",
+          "category": "build",
+          "path": null,
+          "manual": true
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APPSTORE_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "WARN",
+          "code": "REPO_SECURITY_CONTEXT",
+          "message": "See repository-wide findings (shared website/HQ scan).",
+          "priority": "P2",
+          "category": "security",
+          "path": null,
+          "manual": false
+        }
+      ],
+      "recommendedActions": [
+        "Point NEWON_APPS_ROOT (or FLUTTER_ROOTS) at the Flutter monorepo/clone to unlock build/Firebase/Auth/payment static audits.",
+        "Manual: SENSITIVE_DATA_PRODUCT — Product may process sensitive personal data. In-app privacy, family access, and retention need MANUAL review in Flutter source / Console."
+      ]
+    },
+    {
+      "id": "piggyup",
+      "name": "PiggyUp",
+      "status": "INCOMPLETE",
+      "score": 46,
+      "inventory": {
+        "sourcePath": "UNKNOWN — not found in this repository",
+        "flutterRoot": null,
+        "androidApplicationId": "com.newon.piggyup",
+        "iosBundleId": "UNKNOWN",
+        "stores": {
+          "appStoreUrl": "https://apps.apple.com/kr/app/piggyup-ai-%EC%A0%88%EC%95%BD-%EA%B4%80%EB%A6%AC-%EC%B1%8C%EB%A6%B0%EC%A7%80/id6772744969",
+          "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.piggyup&pcampaignid=web_share",
+          "appStoreIsDeveloper": false,
+          "playPackageId": "com.newon.piggyup",
+          "appStoreId": "6772744969"
+        },
+        "websiteDeleteAccount": true,
+        "firebase": {
+          "connected": "UNKNOWN",
+          "project": "UNKNOWN",
+          "auth": "UNKNOWN",
+          "firestore": "UNKNOWN",
+          "storage": "UNKNOWN",
+          "functions": "UNKNOWN",
+          "analytics": "UNKNOWN",
+          "crashReporting": "UNKNOWN",
+          "push": "UNKNOWN",
+          "iap": "UNKNOWN"
+        },
+        "criticalFlows": [
+          "saving goal",
+          "saved amount",
+          "progress"
+        ],
+        "sensitiveData": false
+      },
+      "matrix": {
+        "platform": "Flutter (source UNKNOWN)",
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "auth": "UNKNOWN",
+        "security": "WARN",
+        "payment": "UNKNOWN",
+        "analytics": "UNKNOWN",
+        "crash": "UNKNOWN",
+        "store": "PASS",
+        "privacy": "PASS",
+        "criticalFlow": "UNKNOWN"
+      },
+      "scoreDims": {
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "security": "WARN",
+        "coreFlow": "UNKNOWN",
+        "payments": "UNKNOWN",
+        "errorMonitoring": "UNKNOWN",
+        "privacy": "PASS",
+        "store": "PASS"
+      },
+      "findings": [
+        {
+          "status": "PASS",
+          "code": "DELETE_ACCOUNT_PAGES",
+          "message": "Localized delete-account pages present (ko+en).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/piggyup/delete-account/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "MARKETING_ICON",
+          "message": "Marketing icon asset present on website.",
+          "priority": null,
+          "category": "store",
+          "path": "piggyup-logo.png",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_URL_PRESENT",
+          "message": "Google Play URL present and package id matches inventory.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APP_STORE_URL_PRESENT",
+          "message": "App Store product URL present in locales.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_PRIVACY_PAGE",
+          "message": "Site privacy page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/privacy/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_TERMS_PAGE",
+          "message": "Site terms page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/terms/",
+          "manual": false
+        },
+        {
+          "status": "UNKNOWN",
+          "code": "FLUTTER_SOURCE_MISSING",
+          "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+          "priority": "P2",
+          "category": "build",
+          "path": null,
+          "manual": true
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APPSTORE_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "WARN",
+          "code": "REPO_SECURITY_CONTEXT",
+          "message": "See repository-wide findings (shared website/HQ scan).",
+          "priority": "P2",
+          "category": "security",
+          "path": null,
+          "manual": false
+        }
+      ],
+      "recommendedActions": [
+        "Point NEWON_APPS_ROOT (or FLUTTER_ROOTS) at the Flutter monorepo/clone to unlock build/Firebase/Auth/payment static audits."
+      ]
+    },
+    {
+      "id": "goalup",
+      "name": "GoalUp",
+      "status": "INCOMPLETE",
+      "score": 46,
+      "inventory": {
+        "sourcePath": "UNKNOWN — not found in this repository",
+        "flutterRoot": null,
+        "androidApplicationId": "goalup.newon.app",
+        "iosBundleId": "UNKNOWN",
+        "stores": {
+          "appStoreUrl": "https://apps.apple.com/kr/app/goalup-ai-%EB%AA%A9%ED%91%9C-%EA%B4%80%EB%A6%AC-%EC%B1%8C%EB%A6%B0%EC%A7%80/id6780510853",
+          "googlePlayUrl": "https://play.google.com/store/apps/details?id=goalup.newon.app&pcampaignid=web_share",
+          "appStoreIsDeveloper": false,
+          "playPackageId": "goalup.newon.app",
+          "appStoreId": "6780510853"
+        },
+        "websiteDeleteAccount": true,
+        "firebase": {
+          "connected": "UNKNOWN",
+          "project": "UNKNOWN",
+          "auth": "UNKNOWN",
+          "firestore": "UNKNOWN",
+          "storage": "UNKNOWN",
+          "functions": "UNKNOWN",
+          "analytics": "UNKNOWN",
+          "crashReporting": "UNKNOWN",
+          "push": "UNKNOWN",
+          "iap": "UNKNOWN"
+        },
+        "criticalFlows": [
+          "goal create",
+          "progress",
+          "challenge"
+        ],
+        "sensitiveData": false
+      },
+      "matrix": {
+        "platform": "Flutter (source UNKNOWN)",
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "auth": "UNKNOWN",
+        "security": "WARN",
+        "payment": "UNKNOWN",
+        "analytics": "UNKNOWN",
+        "crash": "UNKNOWN",
+        "store": "PASS",
+        "privacy": "PASS",
+        "criticalFlow": "UNKNOWN"
+      },
+      "scoreDims": {
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "security": "WARN",
+        "coreFlow": "UNKNOWN",
+        "payments": "UNKNOWN",
+        "errorMonitoring": "UNKNOWN",
+        "privacy": "PASS",
+        "store": "PASS"
+      },
+      "findings": [
+        {
+          "status": "PASS",
+          "code": "DELETE_ACCOUNT_PAGES",
+          "message": "Localized delete-account pages present (ko+en).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/goalup/delete-account/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "MARKETING_ICON",
+          "message": "Marketing icon asset present on website.",
+          "priority": null,
+          "category": "store",
+          "path": "goalup-logo.png",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_URL_PRESENT",
+          "message": "Google Play URL present and package id matches inventory.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APP_STORE_URL_PRESENT",
+          "message": "App Store product URL present in locales.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_PRIVACY_PAGE",
+          "message": "Site privacy page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/privacy/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_TERMS_PAGE",
+          "message": "Site terms page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/terms/",
+          "manual": false
+        },
+        {
+          "status": "UNKNOWN",
+          "code": "FLUTTER_SOURCE_MISSING",
+          "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+          "priority": "P2",
+          "category": "build",
+          "path": null,
+          "manual": true
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APPSTORE_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "WARN",
+          "code": "REPO_SECURITY_CONTEXT",
+          "message": "See repository-wide findings (shared website/HQ scan).",
+          "priority": "P2",
+          "category": "security",
+          "path": null,
+          "manual": false
+        }
+      ],
+      "recommendedActions": [
+        "Point NEWON_APPS_ROOT (or FLUTTER_ROOTS) at the Flutter monorepo/clone to unlock build/Firebase/Auth/payment static audits."
+      ]
+    },
+    {
+      "id": "countup",
+      "name": "CountUp",
+      "status": "INCOMPLETE",
+      "score": 46,
+      "inventory": {
+        "sourcePath": "UNKNOWN — not found in this repository",
+        "flutterRoot": null,
+        "androidApplicationId": "com.newon.countup",
+        "iosBundleId": "UNKNOWN",
+        "stores": {
+          "appStoreUrl": "https://apps.apple.com/kr/app/countup-%EC%B9%B4%EC%9A%B4%ED%8A%B8-%EB%AA%A9%ED%91%9C-%EA%B4%80%EB%A6%AC/id6786910628",
+          "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.countup&pcampaignid=web_share",
+          "appStoreIsDeveloper": false,
+          "playPackageId": "com.newon.countup",
+          "appStoreId": "6786910628"
+        },
+        "websiteDeleteAccount": true,
+        "firebase": {
+          "connected": "UNKNOWN",
+          "project": "UNKNOWN",
+          "auth": "UNKNOWN",
+          "firestore": "UNKNOWN",
+          "storage": "UNKNOWN",
+          "functions": "UNKNOWN",
+          "analytics": "UNKNOWN",
+          "crashReporting": "UNKNOWN",
+          "push": "UNKNOWN",
+          "iap": "UNKNOWN"
+        },
+        "criticalFlows": [
+          "counter create",
+          "count update",
+          "persistence"
+        ],
+        "sensitiveData": false
+      },
+      "matrix": {
+        "platform": "Flutter (source UNKNOWN)",
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "auth": "UNKNOWN",
+        "security": "WARN",
+        "payment": "UNKNOWN",
+        "analytics": "UNKNOWN",
+        "crash": "UNKNOWN",
+        "store": "PASS",
+        "privacy": "PASS",
+        "criticalFlow": "UNKNOWN"
+      },
+      "scoreDims": {
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "security": "WARN",
+        "coreFlow": "UNKNOWN",
+        "payments": "UNKNOWN",
+        "errorMonitoring": "UNKNOWN",
+        "privacy": "PASS",
+        "store": "PASS"
+      },
+      "findings": [
+        {
+          "status": "PASS",
+          "code": "DELETE_ACCOUNT_PAGES",
+          "message": "Localized delete-account pages present (ko+en).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/countup/delete-account/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "MARKETING_ICON",
+          "message": "Marketing icon asset present on website.",
+          "priority": null,
+          "category": "store",
+          "path": "countup-logo.png",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_URL_PRESENT",
+          "message": "Google Play URL present and package id matches inventory.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APP_STORE_URL_PRESENT",
+          "message": "App Store product URL present in locales.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_PRIVACY_PAGE",
+          "message": "Site privacy page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/privacy/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_TERMS_PAGE",
+          "message": "Site terms page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/terms/",
+          "manual": false
+        },
+        {
+          "status": "UNKNOWN",
+          "code": "FLUTTER_SOURCE_MISSING",
+          "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+          "priority": "P2",
+          "category": "build",
+          "path": null,
+          "manual": true
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APPSTORE_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "WARN",
+          "code": "REPO_SECURITY_CONTEXT",
+          "message": "See repository-wide findings (shared website/HQ scan).",
+          "priority": "P2",
+          "category": "security",
+          "path": null,
+          "manual": false
+        }
+      ],
+      "recommendedActions": [
+        "Point NEWON_APPS_ROOT (or FLUTTER_ROOTS) at the Flutter monorepo/clone to unlock build/Firebase/Auth/payment static audits."
+      ]
+    },
+    {
+      "id": "newon-plus",
+      "name": "Newon+",
+      "status": "INCOMPLETE",
+      "score": 43,
+      "inventory": {
+        "sourcePath": "UNKNOWN — not found in this repository",
+        "flutterRoot": null,
+        "androidApplicationId": "com.newon.newon",
+        "iosBundleId": "UNKNOWN",
+        "stores": {
+          "appStoreUrl": "https://apps.apple.com/kr/developer/newon/id6748248800",
+          "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.newon&pcampaignid=web_share",
+          "appStoreIsDeveloper": true,
+          "playPackageId": "com.newon.newon",
+          "appStoreId": null
+        },
+        "websiteDeleteAccount": true,
+        "firebase": {
+          "connected": "UNKNOWN",
+          "project": "UNKNOWN",
+          "auth": "UNKNOWN",
+          "firestore": "UNKNOWN",
+          "storage": "UNKNOWN",
+          "functions": "UNKNOWN",
+          "analytics": "UNKNOWN",
+          "crashReporting": "UNKNOWN",
+          "push": "UNKNOWN",
+          "iap": "UNKNOWN"
+        },
+        "criticalFlows": [
+          "account",
+          "product access",
+          "entitlement"
+        ],
+        "sensitiveData": false
+      },
+      "matrix": {
+        "platform": "Flutter (source UNKNOWN)",
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "auth": "UNKNOWN",
+        "security": "WARN",
+        "payment": "UNKNOWN",
+        "analytics": "UNKNOWN",
+        "crash": "UNKNOWN",
+        "store": "WARN",
+        "privacy": "PASS",
+        "criticalFlow": "UNKNOWN"
+      },
+      "scoreDims": {
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "security": "WARN",
+        "coreFlow": "UNKNOWN",
+        "payments": "UNKNOWN",
+        "errorMonitoring": "UNKNOWN",
+        "privacy": "PASS",
+        "store": "WARN"
+      },
+      "findings": [
+        {
+          "status": "PASS",
+          "code": "DELETE_ACCOUNT_PAGES",
+          "message": "Localized delete-account pages present (ko+en).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/newon/delete-account/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "MARKETING_ICON",
+          "message": "Marketing icon asset present on website.",
+          "priority": null,
+          "category": "store",
+          "path": "newon-plus-logo.png",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_URL_PRESENT",
+          "message": "Google Play URL present and package id matches inventory.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "WARN",
+          "code": "APP_STORE_DEVELOPER_PAGE",
+          "message": "App Store URL points to developer page (not a product listing). Treated as intentional for this product.",
+          "priority": "P2",
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_PRIVACY_PAGE",
+          "message": "Site privacy page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/privacy/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_TERMS_PAGE",
+          "message": "Site terms page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/terms/",
+          "manual": false
+        },
+        {
+          "status": "UNKNOWN",
+          "code": "FLUTTER_SOURCE_MISSING",
+          "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+          "priority": "P2",
+          "category": "build",
+          "path": null,
+          "manual": true
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "WARN",
+          "code": "REPO_SECURITY_CONTEXT",
+          "message": "See repository-wide findings (shared website/HQ scan).",
+          "priority": "P2",
+          "category": "security",
+          "path": null,
+          "manual": false
+        }
+      ],
+      "recommendedActions": [
+        "Point NEWON_APPS_ROOT (or FLUTTER_ROOTS) at the Flutter monorepo/clone to unlock build/Firebase/Auth/payment static audits."
+      ]
+    },
+    {
+      "id": "myworld",
+      "name": "My World",
+      "status": "INCOMPLETE",
+      "score": 46,
+      "inventory": {
+        "sourcePath": "UNKNOWN — not found in this repository",
+        "flutterRoot": null,
+        "androidApplicationId": "com.newon.myworld",
+        "iosBundleId": "UNKNOWN",
+        "stores": {
+          "appStoreUrl": "https://apps.apple.com/kr/app/my-world-%EC%97%AC%ED%96%89%EC%A7%80%EB%8F%84-%EB%B0%A9%EB%AC%B8%EA%B5%AD%EA%B0%80/id6792314945",
+          "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.newon.myworld&pcampaignid=web_share",
+          "appStoreIsDeveloper": false,
+          "playPackageId": "com.newon.myworld",
+          "appStoreId": "6792314945"
+        },
+        "websiteDeleteAccount": true,
+        "firebase": {
+          "connected": "UNKNOWN",
+          "project": "UNKNOWN",
+          "auth": "UNKNOWN",
+          "firestore": "UNKNOWN",
+          "storage": "UNKNOWN",
+          "functions": "UNKNOWN",
+          "analytics": "UNKNOWN",
+          "crashReporting": "UNKNOWN",
+          "push": "UNKNOWN",
+          "iap": "UNKNOWN"
+        },
+        "criticalFlows": [
+          "place/travel record",
+          "persistence"
+        ],
+        "sensitiveData": false
+      },
+      "matrix": {
+        "platform": "Flutter (source UNKNOWN)",
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "auth": "UNKNOWN",
+        "security": "WARN",
+        "payment": "UNKNOWN",
+        "analytics": "UNKNOWN",
+        "crash": "UNKNOWN",
+        "store": "PASS",
+        "privacy": "PASS",
+        "criticalFlow": "UNKNOWN"
+      },
+      "scoreDims": {
+        "build": "UNKNOWN",
+        "firebase": "UNKNOWN",
+        "security": "WARN",
+        "coreFlow": "UNKNOWN",
+        "payments": "UNKNOWN",
+        "errorMonitoring": "UNKNOWN",
+        "privacy": "PASS",
+        "store": "PASS"
+      },
+      "findings": [
+        {
+          "status": "PASS",
+          "code": "DELETE_ACCOUNT_PAGES",
+          "message": "Localized delete-account pages present (ko+en).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/myworld/delete-account/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "MARKETING_ICON",
+          "message": "Marketing icon asset present on website.",
+          "priority": null,
+          "category": "store",
+          "path": "myworld-logo.png",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_URL_PRESENT",
+          "message": "Google Play URL present and package id matches inventory.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APP_STORE_URL_PRESENT",
+          "message": "App Store product URL present in locales.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_PRIVACY_PAGE",
+          "message": "Site privacy page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/privacy/",
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "SITE_TERMS_PAGE",
+          "message": "Site terms page exists (ko).",
+          "priority": null,
+          "category": "privacy",
+          "path": "ko/terms/",
+          "manual": false
+        },
+        {
+          "status": "UNKNOWN",
+          "code": "FLUTTER_SOURCE_MISSING",
+          "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+          "priority": "P2",
+          "category": "build",
+          "path": null,
+          "manual": true
+        },
+        {
+          "status": "PASS",
+          "code": "PLAY_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "PASS",
+          "code": "APPSTORE_HTTP_OK",
+          "message": "Store URL HTTP 200.",
+          "priority": null,
+          "category": "store",
+          "path": null,
+          "manual": false
+        },
+        {
+          "status": "WARN",
+          "code": "REPO_SECURITY_CONTEXT",
+          "message": "See repository-wide findings (shared website/HQ scan).",
+          "priority": "P2",
+          "category": "security",
+          "path": null,
+          "manual": false
+        }
+      ],
+      "recommendedActions": [
+        "Point NEWON_APPS_ROOT (or FLUTTER_ROOTS) at the Flutter monorepo/clone to unlock build/Firebase/Auth/payment static audits."
+      ]
+    }
+  ],
+  "repoFindings": [
+    {
+      "status": "WARN",
+      "code": "HQ_HARDCODED_ADMIN_UID",
+      "message": "HQ firestore.rules appears to hardcode an admin UID. Consumer apps are unaffected; rotate/review if UID leaked outside intended admins. Value not reported.",
+      "priority": "P2",
+      "category": "security",
+      "path": "firestore.rules",
+      "manual": false
+    }
+  ],
+  "priorities": {
+    "P0": [],
+    "P1": [
+      {
+        "app": "Pillmate",
+        "code": "SENSITIVE_DATA_PRODUCT",
+        "message": "Product may process sensitive personal data. In-app privacy, family access, and retention need MANUAL review in Flutter source / Console.",
+        "status": "WARN"
+      },
+      {
+        "app": "BabyLog",
+        "code": "SENSITIVE_DATA_PRODUCT",
+        "message": "Product may process sensitive personal data. In-app privacy, family access, and retention need MANUAL review in Flutter source / Console.",
+        "status": "WARN"
+      },
+      {
+        "app": "PetLog",
+        "code": "SENSITIVE_DATA_PRODUCT",
+        "message": "Product may process sensitive personal data. In-app privacy, family access, and retention need MANUAL review in Flutter source / Console.",
+        "status": "WARN"
+      }
+    ],
+    "P2": [
+      {
+        "app": "OX MONTH",
+        "code": "FLUTTER_SOURCE_MISSING",
+        "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+        "status": "UNKNOWN"
+      },
+      {
+        "app": "OX MONTH",
+        "code": "REPO_SECURITY_CONTEXT",
+        "message": "See repository-wide findings (shared website/HQ scan).",
+        "status": "WARN"
+      },
+      {
+        "app": "SubPing",
+        "code": "FLUTTER_SOURCE_MISSING",
+        "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+        "status": "UNKNOWN"
+      },
+      {
+        "app": "Savy",
+        "code": "FLUTTER_SOURCE_MISSING",
+        "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+        "status": "UNKNOWN"
+      },
+      {
+        "app": "Pillmate",
+        "code": "FLUTTER_SOURCE_MISSING",
+        "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+        "status": "UNKNOWN"
+      },
+      {
+        "app": "BabyLog",
+        "code": "FLUTTER_SOURCE_MISSING",
+        "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+        "status": "UNKNOWN"
+      },
+      {
+        "app": "PetLog",
+        "code": "FLUTTER_SOURCE_MISSING",
+        "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+        "status": "UNKNOWN"
+      },
+      {
+        "app": "PiggyUp",
+        "code": "FLUTTER_SOURCE_MISSING",
+        "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+        "status": "UNKNOWN"
+      },
+      {
+        "app": "GoalUp",
+        "code": "FLUTTER_SOURCE_MISSING",
+        "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+        "status": "UNKNOWN"
+      },
+      {
+        "app": "CountUp",
+        "code": "FLUTTER_SOURCE_MISSING",
+        "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+        "status": "UNKNOWN"
+      },
+      {
+        "app": "Newon+",
+        "code": "APP_STORE_DEVELOPER_PAGE",
+        "message": "App Store URL points to developer page (not a product listing). Treated as intentional for this product.",
+        "status": "WARN"
+      },
+      {
+        "app": "Newon+",
+        "code": "FLUTTER_SOURCE_MISSING",
+        "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+        "status": "UNKNOWN"
+      },
+      {
+        "app": "My World",
+        "code": "FLUTTER_SOURCE_MISSING",
+        "message": "Flutter app source not found in this website repo. Set NEWON_APPS_ROOT or config FLUTTER_ROOTS to enable build/Firebase/Auth/payment audits.",
+        "status": "UNKNOWN"
+      }
+    ],
+    "P3": []
+  },
+  "hqCompatibility": {
+    "intendedReaders": [
+      "HQ → Products → Health",
+      "HQ → Operations → Product Health"
+    ],
+    "wiredToHq": false
+  }
+}

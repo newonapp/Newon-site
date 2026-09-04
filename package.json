@@ -3,6 +3,8 @@
   "private": true,
   "scripts": {
     "validate:sp": "node scripts/validate-sp-locales.mjs",
+    "health:apps": "node scripts/production-health/check-apps.mjs",
+    "health:apps:probe": "node scripts/production-health/check-apps.mjs --probe-store",
     "validate:locales": "node scripts/check-locales.mjs",
     "validate:404-human-play": "node scripts/validate-404-human-play.mjs",
     "validate:404-human-artifact": "node scripts/validate-404-human-artifact.mjs",
