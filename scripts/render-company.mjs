@@ -1545,9 +1545,15 @@ function renderCompany() {
 
       // Old company portfolio/news detail URLs → classic detail pages
       for (const project of projects) {
+        const detailTarget =
+          project.pageHref
+            ? String(project.pageHref).replaceAll("{{LANG}}", dir)
+            : project.slug === "404-human"
+              ? `/${dir}/404-human/`
+              : `/${dir}/portfolio/${project.slug}/`;
         writeFile(
           path.join(ROOT, dir, "company", "portfolio", project.slug, "index.html"),
-          metaRefreshHtml(`/${dir}/portfolio/${project.slug}/`, project.name || project.slug)
+          metaRefreshHtml(detailTarget, project.name || project.slug)
         );
         pageCount += 1;
       }

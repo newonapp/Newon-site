@@ -23,6 +23,23 @@ function loadJson(p) {
   return JSON.parse(fs.readFileSync(p, "utf8"));
 }
 
+/** Reject MT artifacts where HTML tags were turned into digit noise (e.g. "0123…45…"). */
+function isCorruptTranslation(value, enValue) {
+  if (typeof value !== "string" || !value) return false;
+  if (/0123/.test(value)) return true;
+  // Only treat digit-leading noise as corrupt when the English source was HTML-ish.
+  if (
+    typeof enValue === "string" &&
+    /<[a-z][\s\S]*>/i.test(enValue) &&
+    !/<[a-z]/i.test(value) &&
+    /^\d{2}/.test(value) &&
+    (value.match(/\d/g) || []).length >= 6
+  ) {
+    return true;
+  }
+  return false;
+}
+
 function walkApply(enVal, locVal, lang, cache, stats, keyPath) {
   if (enVal && typeof enVal === "object" && !Array.isArray(enVal)) {
     const out = locVal && typeof locVal === "object" ? { ...locVal } : {};
@@ -32,11 +49,14 @@ function walkApply(enVal, locVal, lang, cache, stats, keyPath) {
     return out;
   }
   if (typeof enVal !== "string") return locVal;
+  if (isCorruptTranslation(locVal, enVal)) {
+    locVal = enVal;
+  }
   if (locVal !== undefined && locVal !== null && locVal !== "" && locVal !== enVal) return locVal;
   const pair = `en|${MYMEMORY_LANG[lang] || lang}`;
   const cacheKey = `${pair}\u0000${enVal}`;
   const hit = cache[cacheKey];
-  if (hit && hit !== enVal) {
+  if (hit && hit !== enVal && !isCorruptTranslation(hit, enVal)) {
     stats.applied++;
     return hit;
   }

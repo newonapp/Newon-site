@@ -333,7 +333,7 @@ function latestItems(lang) {
       typeLabel: "MEDIA",
       title: isKo ? m.titleKo : m.titleEn,
       date: m.date.replace(/-/g, "."),
-      href: "media/",
+      href: pageHref(lang, "media/"),
       sort: m.date,
     });
   }
@@ -343,7 +343,7 @@ function latestItems(lang) {
       typeLabel: "LAB",
       title: isKo ? exp.displayTitleKo || exp.titleKo : exp.displayTitleEn || exp.titleEn,
       date: exp.updatedAt.replace(/-/g, "."),
-      href: `resources/labs/${exp.slug}/`,
+      href: pageHref(lang, `resources/labs/${exp.slug}/`),
       sort: exp.updatedAt,
     });
   }

@@ -383,10 +383,15 @@ function shotAlt(loc, n, name) {
 
 function ideaParagraphs(loc) {
   if (loc.introHtml) {
-    const matches = String(loc.introHtml).match(/<p[^>]*>[\s\S]*?<\/p>/gi) || [];
+    const raw = String(loc.introHtml);
+    const matches = raw.match(/<p[^>]*>[\s\S]*?<\/p>/gi) || [];
     const paras = matches.map(stripHtml).filter(Boolean);
     if (paras.length) return paras.slice(0, 4);
-    const one = stripHtml(loc.introHtml);
+    // Skip digit-mangled translation artifacts (e.g. "0123…45…") without inventing copy.
+    if (/0123/.test(raw)) {
+      return [];
+    }
+    const one = stripHtml(raw);
     return one ? [one] : [];
   }
   return [loc.introLeadHtml, loc.introP1, loc.introP2, loc.globalReachDescription]
