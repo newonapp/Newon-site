@@ -290,6 +290,8 @@ On **FAIL / OUTAGE**:
 
 Details: `docs/operations/monitoring.md`. No automatic rollback.
 
+Repo / CI maintenance (SoT, fast checks, deploy flow): `docs/operations/repo-ci-maintenance.md`.
+
 ---
 
 ## 16. Security constraints

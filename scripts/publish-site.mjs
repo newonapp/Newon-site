@@ -495,4 +495,15 @@ assemble();
 verify();
 verifyArtifact();
 
+function runFastCheck() {
+  const r = spawnSync(
+    process.execPath,
+    [path.join(ROOT, "scripts", "ci", "fast-check.mjs"), "--publish-root", OUT],
+    { cwd: ROOT, stdio: "inherit" },
+  );
+  if (r.status !== 0) process.exit(r.status ?? 1);
+}
+
+runFastCheck();
+
 console.log("publish-site OK →", path.relative(process.cwd(), OUT));

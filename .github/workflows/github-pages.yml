@@ -13,11 +13,13 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  # Do not cancel mid-publish: orphan gh-pages push must finish cleanly.
+  cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,13 +29,16 @@ jobs:
         with:
           node-version: "20"
 
+      # Site build uses Node stdlib only (no npm install required for deploy).
       - name: Build and assemble site
+        id: build
         run: node scripts/publish-site.mjs
         env:
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_RUN_ID: ${{ github.run_id }}
 
       - name: Publish to gh-pages
+        id: publish
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -44,11 +49,12 @@ jobs:
           cname: www.newon.app
 
       - name: Verify production 404 HUMAN route
+        if: success()
         run: node scripts/verify-production-404-human.mjs
 
-      # Report-only: CDN propagation / transient network must not fail a successful deploy.
+      # Report-only: CDN / transient network must not fail a successful deploy.
       - name: Post-deploy production smoke (report-only)
-        if: always()
+        if: success()
         continue-on-error: true
         run: |
           sleep 15
@@ -57,7 +63,7 @@ jobs:
           NEWON_SITE_ORIGIN: https://www.newon.app
 
       - name: Upload post-deploy smoke artifact
-        if: always()
+        if: success()
         continue-on-error: true
         uses: actions/upload-artifact@v4
         with:

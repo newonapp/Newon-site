@@ -1,6 +1,9 @@
 {
   "name": "newon-site",
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "validate:sp": "node scripts/validate-sp-locales.mjs",
     "health:apps": "node scripts/production-health/check-apps.mjs",
@@ -10,6 +13,8 @@
     "monitor:production": "node scripts/monitoring/check-production.mjs",
     "monitor:production:smoke": "node scripts/monitoring/check-production.mjs --smoke",
     "monitor:production:report": "node scripts/monitoring/check-production.mjs --report-only",
+    "check:fast": "node scripts/ci/fast-check.mjs",
+    "check:fast:publish": "node scripts/ci/fast-check.mjs --publish-root _publish",
     "validate:locales": "node scripts/check-locales.mjs",
     "validate:404-human-play": "node scripts/validate-404-human-play.mjs",
     "validate:404-human-artifact": "node scripts/validate-404-human-artifact.mjs",

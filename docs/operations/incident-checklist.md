@@ -37,3 +37,5 @@ Print or keep open during an incident.
 - [ ] Schedule prevention item
 
 See `docs/operations/backup-recovery.md` for full runbooks.
+
+Repo / CI maintenance: `docs/operations/repo-ci-maintenance.md`.
