@@ -6,6 +6,13 @@ Thumbs.db
 *.local
 _publish
 upload-pack
+
+# HQ / operational backups (may contain private business data — never commit)
+backup/
+backups/
+*hq-backup*.json
+newon-hq-backup-*.json
+
 Newon-site-upload.zip
 Newon-pages.zip
 # 로컬 백업·수동 복사본 (GitHub에는 소스만; Actions가 빌드함)

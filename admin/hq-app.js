@@ -18,8 +18,9 @@ import { installHqDocs } from "./hq-docs.js";
 import { installHqOps, PROJECT_PHASE, PROJECT_PHASE_LABEL, BOARD_LANES } from "./hq-ops.js";
 import { installHqCrm } from "./hq-crm.js";
 import { installHqHealth } from "./hq-health.js";
+import { exportHqBackup, downloadJsonFile, validateBackupJson, HQ_BACKUP_COLLECTIONS } from "./hq-backup.js";
 
-const HQ_VERSION = "1.5.1";
+const HQ_VERSION = "1.6.0";
 const COL = {
   tasks: "hq_tasks",
   releases: "hq_releases",
@@ -2534,6 +2535,73 @@ function renderSettings(root) {
         ["Google Authentication", "Enabled"],
         ["Firestore Rules", "Admin-only"],
       ]),
+    ])
+  );
+
+  const backupStatus = el("p", {
+    className: "hq-session-box__desc",
+    text: "Read-only export of HQ Firestore collections. Contains private business data — do not commit or share publicly.",
+  });
+  const backupBtn = btn("Export HQ backup", {
+    className: "hq-btn",
+    onClick: () => {
+      openModal(
+        "Export HQ backup",
+        el("div", null, [
+          el("p", {
+            className: "hq-session-box__desc",
+            text: "This backup may include clients, projects, documents, and finance records. It downloads only to this device. Restore remains a manual Console/admin procedure — this action does not write to Firestore.",
+          }),
+          el("p", {
+            className: "hq-session-box__desc",
+            text: "Collections: " + HQ_BACKUP_COLLECTIONS.join(", "),
+          }),
+        ]),
+        [
+          btn("Cancel", { className: "hq-btn hq-btn--ghost", onClick: () => closeModal() }),
+          btn("Export JSON", {
+            className: "hq-btn",
+            "data-hq-save": "1",
+            onClick: withSaving(async () => {
+              if (!ctx || !ctx.db) {
+                toast("HQ context missing", "err");
+                return;
+              }
+              try {
+                backupStatus.textContent = "Exporting (read-only)…";
+                const result = await exportHqBackup({
+                  db: ctx.db,
+                  collectionFn: collection,
+                  getDocsFn: getDocs,
+                });
+                validateBackupJson(result.json);
+                downloadJsonFile(result.filename, result.json);
+                const total = Object.values(result.collectionCounts).reduce((a, b) => a + b, 0);
+                backupStatus.textContent =
+                  "Downloaded " +
+                  result.filename +
+                  " · " +
+                  total +
+                  " docs · " +
+                  Object.keys(result.collectionCounts).length +
+                  " collections. Store privately.";
+                toast("Backup downloaded", "ok");
+                closeModal();
+              } catch (e) {
+                backupStatus.textContent = "Export failed.";
+                toast("Backup export failed", "err");
+              }
+            }),
+          }),
+        ]
+      );
+    },
+  });
+  root.appendChild(
+    el("div", { className: "hq-session-box" }, [
+      el("p", { className: "hq-session-box__title", text: "Backup" }),
+      backupStatus,
+      backupBtn,
     ])
   );
 
