@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T09:38:11.048Z",
+  "generatedAt": "2026-09-04T01:35:00.594Z",
   "note": "Business leads, waitlist, and newsletter submissions are collected via FormSubmit to newon@newon.app. Activate the inbox at formsubmit.co if not done yet.",
   "products": [
     {
@@ -506,7 +506,7 @@
     {
       "id": "utm-builder",
       "slug": "utm",
-      "status": "building"
+      "status": "live"
     },
     {
       "id": "app-launch-checklist",

@@ -229,7 +229,25 @@ export function renderToolDetailBody(tool, flat, flatEn) {
         <div data-tool-mount="${escapeHtml(tool.slug)}"></div>
       </div>`;
 
+  const productCta =
+    !building && tool.productCta
+      ? `<aside class="tools-soft-cta">
+      <p class="tools-soft-cta__lead">${t(flat, flatEn, tool.productCta.leadKey, "")}</p>
+      <a class="tools-soft-cta__link" href="${escapeHtml(tool.productCta.href)}">${t(
+          flat,
+          flatEn,
+          tool.productCta.nameKey,
+          ""
+        )} →</a>
+    </aside>`
+      : "";
+
+  const runtimeI18n = building
+    ? ""
+    : `<script type="application/json" id="tool-runtime-i18n">${runtimeI18nJson(flat, flatEn)}</script>`;
+
   return `<div class="tools-detail" data-tools-detail data-tool-slug="${escapeHtml(tool.slug)}" data-analytics-page="tool" data-item-id="${escapeHtml(tool.slug)}">
+  ${runtimeI18n}
   <div class="hub-inner">
     <nav class="tools-crumb" aria-label="Breadcrumb">
       <a href="../">${t(flat, flatEn, "studio.toolsCrumbRoot", "Newon Tools")}</a>
@@ -262,6 +280,8 @@ export function renderToolDetailBody(tool, flat, flatEn) {
         : ""
     }
 
+    ${productCta}
+
     <section class="tools-detail__related">
       <h2 class="tools-detail__h">${t(flat, flatEn, "studio.toolsRelatedLabel", "RELATED TOOLS")}</h2>
       <p class="tools-detail__related-lead">${t(flat, flatEn, "studio.toolsRelatedLead", "이 도구와 함께 사용해보세요.")}</p>
@@ -270,4 +290,105 @@ export function renderToolDetailBody(tool, flat, flatEn) {
   </div>
   <div class="tools-toast" data-tools-toast hidden role="status" aria-live="polite"></div>
 </div>`;
+}
+
+/** Runtime UI strings — ko/en from locales; other langs fall back via pick(). */
+function runtimeI18nJson(flat, flatEn) {
+  const keys = {
+    generate: "studio.toolUiGenerate",
+    copy: "studio.toolUiCopy",
+    copyUrl: "studio.toolUiCopyUrl",
+    copyResult: "studio.toolUiCopyResult",
+    copyRgb: "studio.toolUiCopyRgb",
+    reset: "studio.toolUiReset",
+    calculate: "studio.toolUiCalculate",
+    convert: "studio.toolUiConvert",
+    format: "studio.toolUiFormat",
+    minify: "studio.toolUiMinify",
+    validate: "studio.toolUiValidate",
+    pick: "studio.toolUiPick",
+    again: "studio.toolUiAgain",
+    clear: "studio.toolUiClear",
+    spin: "studio.toolUiSpin",
+    downloadPng: "studio.toolUiDownloadPng",
+    copied: "studio.toolUiCopied",
+    generated: "studio.toolUiGenerated",
+    picked: "studio.toolUiPicked",
+    resultReady: "studio.toolUiResultReady",
+    validJson: "studio.toolUiValidJson",
+    invalidJson: "studio.toolUiInvalidJson",
+    enterUrlText: "studio.toolUiEnterUrlText",
+    qrLabel: "studio.toolUiQrLabel",
+    qrPlaceholder: "studio.toolUiQrPlaceholder",
+    result: "studio.toolUiResult",
+    itemsLabel: "studio.toolUiItemsLabel",
+    itemsHint: "studio.toolUiItemsHint",
+    poolReady: "studio.toolUiPoolReady",
+    poolEmpty: "studio.toolUiPoolEmpty",
+    poolNeedOne: "studio.toolUiPoolNeedOne",
+    poolHint: "studio.toolUiPoolHint",
+    poolHintAdd: "studio.toolUiPoolHintAdd",
+    poolHintAgain: "studio.toolUiPoolHintAgain",
+    itemSingular: "studio.toolUiItemSingular",
+    itemPlural: "studio.toolUiItemPlural",
+    inPoolSingular: "studio.toolUiInPoolSingular",
+    inPoolPlural: "studio.toolUiInPoolPlural",
+    addItems: "studio.toolUiAddItems",
+    targetDate: "studio.toolUiTargetDate",
+    textLabel: "studio.toolUiTextLabel",
+    characters: "studio.toolUiCharacters",
+    noSpaces: "studio.toolUiNoSpaces",
+    words: "studio.toolUiWords",
+    lines: "studio.toolUiLines",
+    length: "studio.toolUiLength",
+    uppercase: "studio.toolUiUppercase",
+    lowercase: "studio.toolUiLowercase",
+    numbers: "studio.toolUiNumbers",
+    symbols: "studio.toolUiSymbols",
+    strength: "studio.toolUiStrength",
+    weak: "studio.toolUiWeak",
+    medium: "studio.toolUiMedium",
+    strong: "studio.toolUiStrong",
+    selectCharset: "studio.toolUiSelectCharset",
+    count: "studio.toolUiCount",
+    jsonLabel: "studio.toolUiJsonLabel",
+    hexLabel: "studio.toolUiHexLabel",
+    hexHint: "studio.toolUiHexHint",
+    mode: "studio.toolUiMode",
+    modeOf: "studio.toolUiModeOf",
+    modeIs: "studio.toolUiModeIs",
+    modeChange: "studio.toolUiModeChange",
+    valueA: "studio.toolUiValueA",
+    valueB: "studio.toolUiValueB",
+    enterBoth: "studio.toolUiEnterBoth",
+    bCannotZero: "studio.toolUiBCannotZero",
+    aCannotZero: "studio.toolUiACannotZero",
+    subLabel: "studio.toolUiSubLabel",
+    subPlaceholder: "studio.toolUiSubPlaceholder",
+    addSubs: "studio.toolUiAddSubs",
+    monthlyTotal: "studio.toolUiMonthlyTotal",
+    yearlyTotal: "studio.toolUiYearlyTotal",
+    start: "studio.toolUiStart",
+    end: "studio.toolUiEnd",
+    days: "studio.toolUiDays",
+    weeks: "studio.toolUiWeeks",
+    months: "studio.toolUiMonths",
+    websiteUrl: "studio.toolUiWebsiteUrl",
+    utmSource: "studio.toolUiUtmSource",
+    utmMedium: "studio.toolUiUtmMedium",
+    utmCampaign: "studio.toolUiUtmCampaign",
+    utmTerm: "studio.toolUiUtmTerm",
+    utmContent: "studio.toolUiUtmContent",
+    optional: "studio.toolUiOptional",
+    generatedUrl: "studio.toolUiGeneratedUrl",
+    enterWebsite: "studio.toolUiEnterWebsite",
+    invalidUrl: "studio.toolUiInvalidUrl",
+    needUtm: "studio.toolUiNeedUtm",
+    comingSoon: "studio.toolUiComingSoon",
+  };
+  const out = {};
+  for (const [k, localeKey] of Object.entries(keys)) {
+    out[k] = pick(flat, flatEn, localeKey) || "";
+  }
+  return JSON.stringify(out).replace(/</g, "\\u003c");
 }

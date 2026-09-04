@@ -27,6 +27,7 @@
     TOOL_OPEN: "tool_open",
     TOOL_USE: "tool_use",
     TOOL_COMPLETE: "tool_complete",
+    TOOL_COPY: "tool_copy",
     TOOL_SHARE: "tool_share",
     RESOURCE_DOWNLOAD: "resource_download",
     STORE_PRODUCT_VIEW: "store_product_view",

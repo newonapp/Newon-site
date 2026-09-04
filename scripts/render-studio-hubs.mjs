@@ -75,14 +75,15 @@ function renderPage(lang, pagePath, opts) {
     ? renderCompanySwitcher(flat, flatEn, { active: opts.companySwitch, base })
     : "";
   const canonical = `${SITE_ORIGIN}/${lang.dir}/${pagePath}/`;
-  const html = applyTemplate(SHELL, flat, flatEn, {
+  let html = applyTemplate(SHELL, flat, flatEn, {
     HTML_LANG: lang.htmlLang,
     FONT_LINKS: fontLinksHtml(lang.dir),
     TITLE: escapeHtml(opts.title),
     META_DESCRIPTION: escapeHtml(opts.description),
     CANONICAL: canonical,
     OG_LOCALE: OG_LOCALE[lang.dir] || "en_US",
-    HREFLANG_BLOCK: hreflangBlock(pagePath.replace(/\/.*$/, "") || pagePath.split("/")[0]),
+    // Keep full pagePath so tool details hreflang to /{lang}/tools/{slug}/ (not hub).
+    HREFLANG_BLOCK: hreflangBlock(pagePath),
     SKIP_LABEL: pick(flat, flatEn, "common.skipToContent") || "Skip to content",
     CHROME_HEADER: header + switcher,
     MAIN_CONTENT: opts.body,
@@ -90,6 +91,12 @@ function renderPage(lang, pagePath, opts) {
     EXTRA_CSS: opts.extraCss || "",
     EXTRA_SCRIPTS: opts.extraScripts || "",
   });
+  if (opts.robots) {
+    html = html.replace(
+      /<meta name="robots" content="[^"]*" \/>/,
+      `<meta name="robots" content="${opts.robots}" />`
+    );
+  }
   const out = path.join(ROOT, lang.dir, pagePath, "index.html");
   ensureDir(out);
   fs.writeFileSync(out, html);
@@ -336,7 +343,7 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.toolsSeoTitle"),
     description: pick(f, fe, "studio.toolsMetaDescription"),
     body: toolsHubBody(f, fe),
-    extraCss: '<link rel="stylesheet" href="/tools-hub.css?v=20260830toolsline1" />',
+    extraCss: '<link rel="stylesheet" href="/tools-hub.css?v=20260904tools1" />',
     extraScripts: '<script src="/tools/tools-hub.js?v=20260825tools2" defer></script>',
   }),
   store: (f, fe) => ({ activeNav: "resources", title: pick(f, fe, "studio.storeSeoTitle"), description: pick(f, fe, "studio.storeMetaDescription"), body: storeBody(f, fe) }),
@@ -373,15 +380,26 @@ for (const hub of HUB_PAGES) {
 
 // Tool detail pages
 for (const tool of TOOLS) {
+  const building = tool.status === "building" || tool.status === "coming_soon";
   for (const lang of LANGS) {
     const { flat, flatEn } = localeFlat(lang);
+    const name = pick(flat, flatEn, tool.nameKey) || tool.slug;
+    const title =
+      (tool.seoTitleKey && pick(flat, flatEn, tool.seoTitleKey)) || `${name} | Newon Tools`;
+    const description =
+      (tool.seoDescKey && pick(flat, flatEn, tool.seoDescKey)) ||
+      pick(flat, flatEn, tool.descKey) ||
+      "";
     renderPage(lang, `tools/${tool.slug}`, {
       activeNav: "products",
-      title: `${pick(flat, flatEn, tool.nameKey)} | Newon Tools`,
-      description: pick(flat, flatEn, tool.descKey),
+      title,
+      description,
+      robots: building
+        ? "noindex, follow"
+        : "index, follow, max-image-preview:large",
       body: toolPageBody(tool, flat, flatEn),
-      extraCss: '<link rel="stylesheet" href="/tools-hub.css?v=20260830toolsline1" />',
-      extraScripts: '<script src="/tools/tools-runtime.js?v=20260826tools9" defer></script>',
+      extraCss: '<link rel="stylesheet" href="/tools-hub.css?v=20260904tools1" />',
+      extraScripts: '<script src="/tools/tools-runtime.js?v=20260904tools1" defer></script>',
     });
   }
 }

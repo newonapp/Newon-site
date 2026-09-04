@@ -26,6 +26,7 @@ import { businessServicesHtml } from "./business-services-html.mjs";
 import { renderGlobalHeader } from "./site-chrome.mjs";
 import { fontLinksHtml } from "./hub-utils.mjs";
 import { STORE_PRODUCTS, LABS_EXPERIMENTS } from "./resources-data.mjs";
+import { TOOLS } from "./tools-data.mjs";
 import {
   STUDIO_SERVICE_PRICING,
   STUDIO_PILLAR_SERVICE_SLUGS,
@@ -562,6 +563,12 @@ function writeSitemap() {
   // Product hubs
   for (const page of ["products", "apps", "ai", "saas", "games", "tools", "market", "contact", "media"]) {
     addAllLocales(page, "0.65", "monthly");
+  }
+
+  // Live Tools details only (from tools-data — no hardcoded URL list)
+  for (const tool of TOOLS) {
+    if (tool.status !== "live") continue;
+    addAllLocales(`tools/${tool.slug}`, "0.55", "monthly");
   }
 
   // Business hub + pillars + inquiry (not success)

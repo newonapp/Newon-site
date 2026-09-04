@@ -31,6 +31,7 @@ for (const lang of LANGS) {
   }
 
   for (const tool of TOOLS) {
+    const building = tool.status === "building" || tool.status === "coming_soon";
     items.push({
       title: pick(flat, flatEn, tool.nameKey),
       desc: pick(flat, flatEn, tool.descKey),
@@ -38,7 +39,7 @@ for (const lang of LANGS) {
       url: `${SITE_ORIGIN}/${lang.dir}/tools/${tool.slug}/`,
       lang: lang.dir,
       featured: false,
-      tags: ["tools", tool.category],
+      tags: ["tools", tool.category, tool.status, building ? "coming soon" : "live"],
     });
   }
 

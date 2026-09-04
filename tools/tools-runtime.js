@@ -1,6 +1,7 @@
 /**
  * Tools runtime — mounts interactive UI for each tool detail page.
  * All tools remain client-side except QR image generation (external API).
+ * Analytics never receives user input content (JSON, URLs, passwords, text).
  */
 (function () {
   "use strict";
@@ -10,11 +11,29 @@
   var slug = mount.getAttribute("data-tool-mount");
   if (window.newonTrack) window.newonTrack(window.newonAnalyticsEvents.TOOL_OPEN, { toolId: slug });
 
+  var I18N = {};
+  try {
+    var raw = document.getElementById("tool-runtime-i18n");
+    if (raw && raw.textContent) I18N = JSON.parse(raw.textContent) || {};
+  } catch (e) {
+    I18N = {};
+  }
+
+  function t(key, fallback) {
+    var v = I18N[key];
+    return v != null && v !== "" ? v : fallback;
+  }
+
   function trackUse() {
     if (window.newonTrack) window.newonTrack(window.newonAnalyticsEvents.TOOL_USE, { toolId: slug });
   }
   function trackComplete() {
     if (window.newonTrack) window.newonTrack(window.newonAnalyticsEvents.TOOL_COMPLETE, { toolId: slug });
+  }
+  function trackCopy() {
+    if (window.newonTrack && window.newonAnalyticsEvents.TOOL_COPY) {
+      window.newonTrack(window.newonAnalyticsEvents.TOOL_COPY, { toolId: slug });
+    }
   }
 
   function toast(msg) {
@@ -31,23 +50,24 @@
   function markCopied(btn) {
     if (!btn) return;
     if (!btn.getAttribute("data-copy-label")) {
-      btn.setAttribute("data-copy-label", btn.textContent || "Copy");
+      btn.setAttribute("data-copy-label", btn.textContent || t("copy", "Copy"));
     }
-    btn.textContent = "Copied ✓";
+    btn.textContent = t("copied", "Copied ✓");
     window.clearTimeout(btn._copyT);
     btn._copyT = window.setTimeout(function () {
-      btn.textContent = btn.getAttribute("data-copy-label") || "Copy";
+      btn.textContent = btn.getAttribute("data-copy-label") || t("copy", "Copy");
     }, 1500);
   }
 
   function copyText(text, btn) {
     if (!text) return;
     function done() {
-      toast("Copied ✓");
+      toast(t("copied", "Copied ✓"));
       markCopied(btn);
+      trackCopy();
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done);
+      navigator.clipboard.writeText(text).then(done).catch(function () {});
       return;
     }
     var ta = document.createElement("textarea");
@@ -73,9 +93,11 @@
     );
   }
 
-  function hexToRgb(hex) {
-    hex = hex.replace("#", "");
-    if (hex.length === 3) {
+  /** Expand 3-digit HEX and validate; returns uppercase 6-char without # or null. */
+  function normalizeHex(hex) {
+    if (!hex) return null;
+    hex = String(hex).trim().replace(/^#/, "");
+    if (hex.length === 3 && /^[0-9a-fA-F]{3}$/.test(hex)) {
       hex = hex
         .split("")
         .map(function (c) {
@@ -83,8 +105,12 @@
         })
         .join("");
     }
-    if (hex.length !== 6) return null;
-    var n = parseInt(hex, 16);
+    if (hex.length !== 6 || !/^[0-9a-fA-F]{6}$/.test(hex)) return null;
+    return hex.toUpperCase();
+  }
+
+  function hexToRgb(hex6) {
+    var n = parseInt(hex6, 16);
     if (Number.isNaN(n)) return null;
     return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
   }
@@ -129,111 +155,284 @@
     if (/[a-z]/.test(pw) && /[A-Z]/.test(pw)) score++;
     if (/\d/.test(pw)) score++;
     if (/[^A-Za-z0-9]/.test(pw)) score++;
-    if (score <= 2) return "Weak";
-    if (score <= 3) return "Medium";
-    return "Strong";
+    if (score <= 2) return t("weak", "Weak");
+    if (score <= 3) return t("medium", "Medium");
+    return t("strong", "Strong");
+  }
+
+  function parseWebsiteUrl(raw) {
+    var v = String(raw || "").trim();
+    if (!v) return { error: "empty" };
+    var candidates = [v];
+    if (!/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(v)) {
+      candidates.push("https://" + v);
+    }
+    for (var i = 0; i < candidates.length; i++) {
+      try {
+        var u = new URL(candidates[i]);
+        if (u.protocol !== "http:" && u.protocol !== "https:") continue;
+        return { url: u };
+      } catch (e) {}
+    }
+    return { error: "invalid" };
   }
 
   var html = {
     qr:
-      '<label for="qr-in">URL / Text</label><input type="text" id="qr-in" placeholder="https://newon.app" />' +
-      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="qr-go">Generate</button>' +
-      '<button type="button" class="btn btn-ghost" id="qr-copy">Copy URL</button>' +
-      '<button type="button" class="btn btn-ghost" id="qr-reset">Reset</button></div>' +
-      '<div class="tool-output" id="qr-out">Enter text or URL</div>' +
-      '<div class="tool-actions"><a class="btn btn-ghost" id="qr-dl" hidden download="newon-qr.png">Download PNG</a></div>',
+      '<label for="qr-in">' +
+      t("qrLabel", "URL / Text") +
+      '</label><input type="text" id="qr-in" placeholder="' +
+      t("qrPlaceholder", "https://newon.app") +
+      '" />' +
+      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="qr-go">' +
+      t("generate", "Generate") +
+      '</button>' +
+      '<button type="button" class="btn btn-ghost" id="qr-copy">' +
+      t("copyUrl", "Copy URL") +
+      '</button>' +
+      '<button type="button" class="btn btn-ghost" id="qr-reset">' +
+      t("reset", "Reset") +
+      "</button></div>" +
+      '<div class="tool-output" id="qr-out" aria-live="polite">' +
+      t("enterUrlText", "Enter text or URL") +
+      "</div>" +
+      '<div class="tool-actions"><a class="btn btn-ghost" id="qr-dl" hidden download="newon-qr.png">' +
+      t("downloadPng", "Download PNG") +
+      "</a></div>",
     "random-picker":
       '<div class="rp" data-rp>' +
       '<section class="rp__stage" aria-live="polite">' +
       '<div class="rp__stage-top">' +
-      '<p class="rp__kicker">Result</p>' +
-      '<span class="rp__pool" id="rp-pool">0 in pool</span>' +
-      '</div>' +
-      '<div class="rp__result is-idle" id="rp-out"><span>Ready to pick</span></div>' +
-      '<p class="rp__hint" id="rp-hint">목록에서 항목을 무작위로 선택합니다</p>' +
-      '</section>' +
+      '<p class="rp__kicker">' +
+      t("result", "Result") +
+      '</p>' +
+      '<span class="rp__pool" id="rp-pool">0 ' +
+      t("inPoolPlural", "in pool") +
+      "</span>" +
+      "</div>" +
+      '<div class="rp__result is-idle" id="rp-out"><span>' +
+      t("poolReady", "Ready to pick") +
+      "</span></div>" +
+      '<p class="rp__hint" id="rp-hint">' +
+      t("poolHint", "Pick one item at random from your list") +
+      "</p>" +
+      "</section>" +
       '<section class="rp__editor">' +
       '<div class="rp__editor-head">' +
-      '<label for="rp-in">Items <em>one per line</em></label>' +
-      '<span class="rp__count" id="rp-count">0 items</span>' +
-      '</div>' +
+      '<label for="rp-in">' +
+      t("itemsLabel", "Items") +
+      " <em>" +
+      t("itemsHint", "one per line") +
+      "</em></label>" +
+      '<span class="rp__count" id="rp-count">0 ' +
+      t("itemPlural", "items") +
+      "</span>" +
+      "</div>" +
       '<textarea id="rp-in" rows="8" spellcheck="false">Apple\nBanana\nOrange</textarea>' +
       '<div class="rp__chips" id="rp-chips" aria-hidden="true"></div>' +
       '<div class="rp__actions">' +
-      '<button type="button" class="btn btn-primary rp__pick" id="rp-go">Pick</button>' +
-      '<button type="button" class="btn btn-ghost" id="rp-again">Again</button>' +
-      '<button type="button" class="btn btn-ghost" id="rp-clear">Clear</button>' +
-      '</div>' +
-      '</section>' +
-      '</div>',
+      '<button type="button" class="btn btn-primary rp__pick" id="rp-go">' +
+      t("pick", "Pick") +
+      '</button>' +
+      '<button type="button" class="btn btn-ghost" id="rp-again">' +
+      t("again", "Again") +
+      '</button>' +
+      '<button type="button" class="btn btn-ghost" id="rp-clear">' +
+      t("clear", "Clear") +
+      "</button>" +
+      "</div>" +
+      "</section>" +
+      "</div>",
     wheel:
-      '<label for="wh-in">Items (one per line)</label><textarea id="wh-in" rows="6" placeholder="A&#10;B&#10;C"></textarea>' +
+      '<label for="wh-in">' +
+      t("itemsLabel", "Items") +
+      " (" +
+      t("itemsHint", "one per line") +
+      ')</label><textarea id="wh-in" rows="6" placeholder="A&#10;B&#10;C"></textarea>' +
       '<div class="tool-wheel__pointer" aria-hidden="true"></div><div class="tool-wheel" id="wh-wheel" aria-hidden="true"></div>' +
-      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="wh-go">Spin</button>' +
-      '<button type="button" class="btn btn-ghost" id="wh-reset">Reset</button></div>' +
-      '<div class="tool-output" id="wh-out">—</div>',
+      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="wh-go">' +
+      t("spin", "Spin") +
+      '</button>' +
+      '<button type="button" class="btn btn-ghost" id="wh-reset">' +
+      t("reset", "Reset") +
+      "</button></div>" +
+      '<div class="tool-output" id="wh-out" aria-live="polite">—</div>',
     dday:
-      '<label for="dd-in">Target date</label><input type="date" id="dd-in" />' +
-      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="dd-go">Calculate</button>' +
-      '<button type="button" class="btn btn-ghost" id="dd-copy">Copy result</button></div>' +
-      '<div class="tool-output" id="dd-out">—</div>',
+      '<label for="dd-in">' +
+      t("targetDate", "Target date") +
+      '</label><input type="date" id="dd-in" />' +
+      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="dd-go">' +
+      t("calculate", "Calculate") +
+      '</button>' +
+      '<button type="button" class="btn btn-ghost" id="dd-copy">' +
+      t("copyResult", "Copy result") +
+      "</button></div>" +
+      '<div class="tool-output" id="dd-out" aria-live="polite">—</div>',
     counter:
-      '<label for="ct-in">Text</label><textarea id="ct-in" rows="10" placeholder="Type or paste…"></textarea>' +
-      '<div class="tool-stats" id="ct-out">' +
-      "<div><span>Characters</span><strong>0</strong></div>" +
-      "<div><span>No spaces</span><strong>0</strong></div>" +
-      "<div><span>Words</span><strong>0</strong></div>" +
-      "<div><span>Lines</span><strong>0</strong></div></div>",
+      '<label for="ct-in">' +
+      t("textLabel", "Text") +
+      '</label><textarea id="ct-in" rows="10" placeholder="…"></textarea>' +
+      '<div class="tool-stats" id="ct-out" aria-live="polite">' +
+      "<div><span>" +
+      t("characters", "Characters") +
+      "</span><strong>0</strong></div>" +
+      "<div><span>" +
+      t("noSpaces", "No spaces") +
+      "</span><strong>0</strong></div>" +
+      "<div><span>" +
+      t("words", "Words") +
+      "</span><strong>0</strong></div>" +
+      "<div><span>" +
+      t("lines", "Lines") +
+      "</span><strong>0</strong></div></div>",
     password:
-      '<label for="pw-len">Length</label><input type="number" id="pw-len" value="16" min="8" max="64" />' +
+      '<label for="pw-len">' +
+      t("length", "Length") +
+      '</label><input type="number" id="pw-len" value="16" min="8" max="64" />' +
       '<div class="tool-checks">' +
-      '<label><input type="checkbox" id="pw-upper" checked /> Uppercase</label>' +
-      '<label><input type="checkbox" id="pw-lower" checked /> Lowercase</label>' +
-      '<label><input type="checkbox" id="pw-num" checked /> Numbers</label>' +
-      '<label><input type="checkbox" id="pw-sym" checked /> Symbols</label></div>' +
-      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="pw-go">Generate</button>' +
-      '<button type="button" class="btn btn-ghost" id="pw-copy">Copy</button></div>' +
-      '<div class="tool-output" id="pw-out">—</div>',
+      '<label><input type="checkbox" id="pw-upper" checked /> ' +
+      t("uppercase", "Uppercase") +
+      "</label>" +
+      '<label><input type="checkbox" id="pw-lower" checked /> ' +
+      t("lowercase", "Lowercase") +
+      "</label>" +
+      '<label><input type="checkbox" id="pw-num" checked /> ' +
+      t("numbers", "Numbers") +
+      "</label>" +
+      '<label><input type="checkbox" id="pw-sym" checked /> ' +
+      t("symbols", "Symbols") +
+      "</label></div>" +
+      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="pw-go">' +
+      t("generate", "Generate") +
+      '</button>' +
+      '<button type="button" class="btn btn-ghost" id="pw-copy">' +
+      t("copy", "Copy") +
+      "</button></div>" +
+      '<div class="tool-output" id="pw-out" aria-live="polite">—</div>',
     uuid:
-      '<label for="uuid-n">Count</label><input type="number" id="uuid-n" value="1" min="1" max="50" />' +
-      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="uuid-go">Generate</button>' +
-      '<button type="button" class="btn btn-ghost" id="uuid-copy">Copy</button></div>' +
-      '<div class="tool-output" id="uuid-out">—</div>',
+      '<label for="uuid-n">' +
+      t("count", "Count") +
+      '</label><input type="number" id="uuid-n" value="1" min="1" max="50" />' +
+      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="uuid-go">' +
+      t("generate", "Generate") +
+      '</button>' +
+      '<button type="button" class="btn btn-ghost" id="uuid-copy">' +
+      t("copy", "Copy") +
+      "</button></div>" +
+      '<div class="tool-output" id="uuid-out" aria-live="polite">—</div>',
     json:
-      '<label for="js-in">JSON</label><textarea id="js-in" rows="12" placeholder=\'{"ok":true}\'></textarea>' +
-      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="js-go">Format</button>' +
-      '<button type="button" class="btn btn-ghost" id="js-min">Minify</button>' +
-      '<button type="button" class="btn btn-ghost" id="js-val">Validate</button>' +
-      '<button type="button" class="btn btn-ghost" id="js-copy">Copy</button></div>' +
-      '<div class="tool-output" id="js-out">—</div>',
+      '<label for="js-in">' +
+      t("jsonLabel", "JSON") +
+      '</label><textarea id="js-in" rows="12" placeholder=\'{"ok":true}\'></textarea>' +
+      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="js-go">' +
+      t("format", "Format") +
+      '</button>' +
+      '<button type="button" class="btn btn-ghost" id="js-min">' +
+      t("minify", "Minify") +
+      '</button>' +
+      '<button type="button" class="btn btn-ghost" id="js-val">' +
+      t("validate", "Validate") +
+      '</button>' +
+      '<button type="button" class="btn btn-ghost" id="js-copy">' +
+      t("copy", "Copy") +
+      "</button></div>" +
+      '<div class="tool-output" id="js-out" aria-live="polite">—</div>',
     color:
-      '<label for="co-in">HEX</label><input type="text" id="co-in" placeholder="#0A0A0A" />' +
+      '<label for="co-in">' +
+      t("hexLabel", "HEX") +
+      '</label><input type="text" id="co-in" placeholder="#0A0A0A" />' +
       '<div class="tool-color-swatch" id="co-swatch" aria-hidden="true"></div>' +
-      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="co-go">Convert</button>' +
-      '<button type="button" class="btn btn-ghost" id="co-copy">Copy RGB</button></div>' +
-      '<div class="tool-output" id="co-out">—</div>',
+      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="co-go">' +
+      t("convert", "Convert") +
+      '</button>' +
+      '<button type="button" class="btn btn-ghost" id="co-copy">' +
+      t("copyRgb", "Copy RGB") +
+      "</button></div>" +
+      '<div class="tool-output" id="co-out" aria-live="polite">—</div>',
     percent:
-      '<label for="pc-mode">Mode</label><select id="pc-mode">' +
-      '<option value="of">What is X% of Y?</option>' +
-      '<option value="is">X is what % of Y?</option>' +
-      '<option value="change">% change from X to Y</option></select>' +
-      '<label for="pc-a">Value A</label><input type="number" id="pc-a" />' +
-      '<label for="pc-b">Value B</label><input type="number" id="pc-b" />' +
-      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="pc-go">Calculate</button></div>' +
-      '<div class="tool-output" id="pc-out">—</div>',
+      '<label for="pc-mode">' +
+      t("mode", "Mode") +
+      '</label><select id="pc-mode">' +
+      '<option value="of">' +
+      t("modeOf", "What is X% of Y?") +
+      "</option>" +
+      '<option value="is">' +
+      t("modeIs", "X is what % of Y?") +
+      "</option>" +
+      '<option value="change">' +
+      t("modeChange", "% change from X to Y") +
+      "</option></select>" +
+      '<label for="pc-a">' +
+      t("valueA", "Value A") +
+      '</label><input type="number" id="pc-a" />' +
+      '<label for="pc-b">' +
+      t("valueB", "Value B") +
+      '</label><input type="number" id="pc-b" />' +
+      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="pc-go">' +
+      t("calculate", "Calculate") +
+      "</button></div>" +
+      '<div class="tool-output" id="pc-out" aria-live="polite">—</div>',
     subscription:
-      '<label for="sub-in">Subscriptions (name, monthly price — one per line)</label>' +
-      '<textarea id="sub-in" rows="7" placeholder="Netflix, 17000&#10;Spotify, 10900"></textarea>' +
-      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="sub-go">Calculate</button></div>' +
-      '<div class="tool-output" id="sub-out">—</div>',
+      '<label for="sub-in">' +
+      t("subLabel", "Subscriptions (name, monthly price — one per line)") +
+      '</label>' +
+      '<textarea id="sub-in" rows="7" placeholder="' +
+      t("subPlaceholder", "Netflix, 17000") +
+      '"></textarea>' +
+      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="sub-go">' +
+      t("calculate", "Calculate") +
+      "</button></div>" +
+      '<div class="tool-output" id="sub-out" aria-live="polite">—</div>',
     date:
-      '<label for="dt-a">Start</label><input type="date" id="dt-a" />' +
-      '<label for="dt-b">End</label><input type="date" id="dt-b" />' +
-      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="dt-go">Calculate</button></div>' +
-      '<div class="tool-output" id="dt-out">—</div>',
+      '<label for="dt-a">' +
+      t("start", "Start") +
+      '</label><input type="date" id="dt-a" />' +
+      '<label for="dt-b">' +
+      t("end", "End") +
+      '</label><input type="date" id="dt-b" />' +
+      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="dt-go">' +
+      t("calculate", "Calculate") +
+      "</button></div>" +
+      '<div class="tool-output" id="dt-out" aria-live="polite">—</div>',
+    utm:
+      '<label for="utm-url">' +
+      t("websiteUrl", "Website URL") +
+      '</label><input type="url" id="utm-url" placeholder="https://example.com/page" autocomplete="url" />' +
+      '<label for="utm-source">' +
+      t("utmSource", "utm_source") +
+      '</label><input type="text" id="utm-source" placeholder="newsletter" />' +
+      '<label for="utm-medium">' +
+      t("utmMedium", "utm_medium") +
+      '</label><input type="text" id="utm-medium" placeholder="email" />' +
+      '<label for="utm-campaign">' +
+      t("utmCampaign", "utm_campaign") +
+      '</label><input type="text" id="utm-campaign" placeholder="spring_sale" />' +
+      '<label for="utm-term">' +
+      t("utmTerm", "utm_term") +
+      " <em>(" +
+      t("optional", "optional") +
+      ')</em></label><input type="text" id="utm-term" />' +
+      '<label for="utm-content">' +
+      t("utmContent", "utm_content") +
+      " <em>(" +
+      t("optional", "optional") +
+      ')</em></label><input type="text" id="utm-content" />' +
+      '<div class="tool-actions"><button type="button" class="btn btn-primary" id="utm-go">' +
+      t("generate", "Generate") +
+      '</button>' +
+      '<button type="button" class="btn btn-ghost" id="utm-copy">' +
+      t("copy", "Copy") +
+      '</button>' +
+      '<button type="button" class="btn btn-ghost" id="utm-reset">' +
+      t("reset", "Reset") +
+      "</button></div>" +
+      '<p class="tool-output-label" id="utm-out-label">' +
+      t("generatedUrl", "Generated URL") +
+      "</p>" +
+      '<div class="tool-output tool-output--url" id="utm-out" aria-live="polite">—</div>',
   };
 
-  mount.innerHTML = html[slug] || "<p>Tool coming soon.</p>";
+  mount.innerHTML = html[slug] || "<p>" + t("comingSoon", "Tool coming soon.") + "</p>";
 
   if (slug === "qr") {
     var lastQr = "";
@@ -243,7 +442,7 @@
       var out = document.getElementById("qr-out");
       var dl = document.getElementById("qr-dl");
       if (!v) {
-        out.textContent = "Enter text or URL";
+        out.textContent = t("enterUrlText", "Enter text or URL");
         dl.hidden = true;
         return;
       }
@@ -251,7 +450,7 @@
       out.innerHTML = '<img alt="QR" width="200" height="200" src="' + lastQr + '" />';
       dl.href = lastQr;
       dl.hidden = false;
-      toast("Generated");
+      toast(t("generated", "Generated"));
       trackComplete();
     });
     document.getElementById("qr-copy").addEventListener("click", function () {
@@ -259,7 +458,7 @@
     });
     document.getElementById("qr-reset").addEventListener("click", function () {
       document.getElementById("qr-in").value = "";
-      document.getElementById("qr-out").textContent = "Enter text or URL";
+      document.getElementById("qr-out").textContent = t("enterUrlText", "Enter text or URL");
       document.getElementById("qr-dl").hidden = true;
     });
   }
@@ -320,14 +519,16 @@
     function rpUpdateCount() {
       var items = rpItems();
       var n = items.length;
-      rpCount.textContent = n + (n === 1 ? " item" : " items");
-      if (rpPool) rpPool.textContent = n + (n === 1 ? " in pool" : " in pool");
+      rpCount.textContent = n + " " + (n === 1 ? t("itemSingular", "item") : t("itemPlural", "items"));
+      if (rpPool)
+        rpPool.textContent =
+          n + " " + (n === 1 ? t("inPoolSingular", "in pool") : t("inPoolPlural", "in pool"));
       rpRenderChips(items);
       if (!n) {
         lastPick = "";
         rpOut.className = "rp__result is-idle";
-        rpOut.innerHTML = "<span>Add items to begin</span>";
-        if (rpHint) rpHint.textContent = "한 줄에 하나씩 입력하세요";
+        rpOut.innerHTML = "<span>" + t("poolEmpty", "Add items to begin") + "</span>";
+        if (rpHint) rpHint.textContent = t("poolHintAdd", "Enter one item per line");
       }
     }
 
@@ -337,8 +538,8 @@
       if (!items.length) {
         lastPick = "";
         rpOut.className = "rp__result is-idle";
-        rpOut.innerHTML = "<span>Add at least one item</span>";
-        if (rpHint) rpHint.textContent = "항목을 추가한 뒤 Pick을 누르세요";
+        rpOut.innerHTML = "<span>" + t("poolNeedOne", "Add at least one item") + "</span>";
+        if (rpHint) rpHint.textContent = t("poolHintAdd", "Enter one item per line");
         rpRenderChips(items);
         return;
       }
@@ -349,9 +550,9 @@
       window.setTimeout(function () {
         rpOut.className = "rp__result is-done";
         rpOut.innerHTML = "<strong>" + escapeHtmlLite(pick) + "</strong>";
-        if (rpHint) rpHint.textContent = "Again으로 다시 뽑을 수 있습니다";
+        if (rpHint) rpHint.textContent = t("poolHintAgain", "Use Again to pick once more");
         rpRenderChips(items);
-        toast("Picked");
+        toast(t("picked", "Picked"));
         trackComplete();
       }, 280);
     }
@@ -364,8 +565,8 @@
       lastPick = "";
       rpUpdateCount();
       rpOut.className = "rp__result is-idle";
-      rpOut.innerHTML = "<span>Ready to pick</span>";
-      if (rpHint) rpHint.textContent = "목록에서 항목을 무작위로 선택합니다";
+      rpOut.innerHTML = "<span>" + t("poolReady", "Ready to pick") + "</span>";
+      if (rpHint) rpHint.textContent = t("poolHint", "Pick one item at random from your list");
       rpIn.focus();
     });
     rpUpdateCount();
@@ -408,7 +609,7 @@
         })
         .filter(Boolean);
       if (!items.length) {
-        document.getElementById("wh-out").textContent = "Add items";
+        document.getElementById("wh-out").textContent = t("addItems", "Add items");
         return;
       }
       paintWheel(items);
@@ -417,7 +618,7 @@
       wheel.style.transform = "rotate(" + rot + "deg)";
       window.setTimeout(function () {
         document.getElementById("wh-out").textContent = items[idx];
-        toast("Result ready");
+        toast(t("resultReady", "Result ready"));
         trackComplete();
       }, 2400);
     });
@@ -440,7 +641,16 @@
       var label = diff >= 0 ? "D − " + diff : "D + " + Math.abs(diff);
       var weeks = Math.round(Math.abs(diff) / 7);
       var months = Math.round(Math.abs(diff) / 30.44);
-      lastDd = label + " · ~" + weeks + " weeks · ~" + months + " months";
+      lastDd =
+        label +
+        " · ~" +
+        weeks +
+        " " +
+        t("weeks", "weeks") +
+        " · ~" +
+        months +
+        " " +
+        t("months", "months");
       document.getElementById("dd-out").textContent = lastDd;
       trackComplete();
     });
@@ -452,12 +662,12 @@
   if (slug === "counter") {
     document.getElementById("ct-in").addEventListener("input", function () {
       trackUse();
-      var t = this.value;
-      var noSpace = t.replace(/\s/g, "").length;
-      var words = t.trim() ? t.trim().split(/\s+/).length : 0;
-      var lines = t ? t.split("\n").length : 0;
+      var txt = this.value;
+      var noSpace = txt.replace(/\s/g, "").length;
+      var words = txt.trim() ? txt.trim().split(/\s+/).length : 0;
+      var lines = txt ? txt.split("\n").length : 0;
       var stats = document.querySelectorAll("#ct-out strong");
-      stats[0].textContent = String(t.length);
+      stats[0].textContent = String(txt.length);
       stats[1].textContent = String(noSpace);
       stats[2].textContent = String(words);
       stats[3].textContent = String(lines);
@@ -475,7 +685,7 @@
       if (document.getElementById("pw-num").checked) sets.push("0123456789");
       if (document.getElementById("pw-sym").checked) sets.push("!@#$%^&*()-_=+[]{}");
       if (!sets.length) {
-        document.getElementById("pw-out").textContent = "Select at least one character set";
+        document.getElementById("pw-out").textContent = t("selectCharset", "Select at least one character set");
         return;
       }
       var chars = sets.join("");
@@ -486,8 +696,9 @@
         var r = arr[i] != null ? arr[i] : Math.floor(Math.random() * chars.length);
         out += chars[r % chars.length];
       }
-      document.getElementById("pw-out").textContent = out + "\n\nStrength: " + passwordStrength(out);
-      toast("Generated");
+      document.getElementById("pw-out").textContent =
+        out + "\n\n" + t("strength", "Strength") + ": " + passwordStrength(out);
+      toast(t("generated", "Generated"));
       trackComplete();
     });
     document.getElementById("pw-copy").addEventListener("click", function () {
@@ -506,7 +717,7 @@
         lines.push(crypto.randomUUID ? crypto.randomUUID() : "uuid-unavailable");
       }
       document.getElementById("uuid-out").textContent = lines.join("\n");
-      toast("Generated");
+      toast(t("generated", "Generated"));
       trackComplete();
     });
     document.getElementById("uuid-copy").addEventListener("click", function () {
@@ -517,17 +728,17 @@
   if (slug === "json") {
     function runJson(mode) {
       trackUse();
-      var raw = document.getElementById("js-in").value;
+      var rawJson = document.getElementById("js-in").value;
       var out = document.getElementById("js-out");
       try {
-        var obj = JSON.parse(raw);
+        var obj = JSON.parse(rawJson);
         if (mode === "minify") out.textContent = JSON.stringify(obj);
-        else if (mode === "validate") out.textContent = "Valid JSON ✓";
+        else if (mode === "validate") out.textContent = t("validJson", "Valid JSON ✓");
         else out.textContent = JSON.stringify(obj, null, 2);
-        toast(mode === "validate" ? "Valid" : "Formatted");
+        toast(mode === "validate" ? t("validJson", "Valid") : t("generated", "Formatted"));
         trackComplete();
-      } catch (e) {
-        out.textContent = "Invalid JSON: " + e.message + "\nFix the syntax near the reported position.";
+      } catch (err) {
+        out.textContent = t("invalidJson", "Invalid JSON") + ": " + err.message;
       }
     }
     document.getElementById("js-go").addEventListener("click", function () {
@@ -548,27 +759,27 @@
     var lastRgb = "";
     document.getElementById("co-go").addEventListener("click", function () {
       trackUse();
-      var hex = document.getElementById("co-in").value.trim();
-      var rgb = hexToRgb(hex);
+      var hex6 = normalizeHex(document.getElementById("co-in").value);
+      if (!hex6) {
+        document.getElementById("co-out").textContent = t(
+          "hexHint",
+          "Use a 3 or 6 digit HEX value (e.g. #0A0A0A)"
+        );
+        return;
+      }
+      var rgb = hexToRgb(hex6);
       if (!rgb) {
-        document.getElementById("co-out").textContent = "Use a 3 or 6 digit HEX value (e.g. #0A0A0A)";
+        document.getElementById("co-out").textContent = t(
+          "hexHint",
+          "Use a 3 or 6 digit HEX value (e.g. #0A0A0A)"
+        );
         return;
       }
       var hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
       lastRgb = "rgb(" + rgb.r + ", " + rgb.g + ", " + rgb.b + ")";
       document.getElementById("co-swatch").style.background = lastRgb;
       document.getElementById("co-out").textContent =
-        "#" +
-        hex.replace("#", "").toUpperCase().padStart(6, "0").slice(0, 6) +
-        "\n" +
-        lastRgb +
-        "\nhsl(" +
-        hsl.h +
-        ", " +
-        hsl.s +
-        "%, " +
-        hsl.l +
-        "%)";
+        "#" + hex6 + "\n" + lastRgb + "\nhsl(" + hsl.h + ", " + hsl.s + "%, " + hsl.l + "%)";
       trackComplete();
     });
     document.getElementById("co-copy").addEventListener("click", function () {
@@ -584,12 +795,16 @@
       var b = parseFloat(document.getElementById("pc-b").value);
       var out = document.getElementById("pc-out");
       if (Number.isNaN(a) || Number.isNaN(b)) {
-        out.textContent = "Enter both values";
+        out.textContent = t("enterBoth", "Enter both values");
         return;
       }
       if (mode === "of") out.textContent = ((a / 100) * b).toFixed(4).replace(/\.?0+$/, "");
-      else if (mode === "is") out.textContent = b ? ((a / b) * 100).toFixed(2) + "%" : "Value B cannot be 0";
-      else out.textContent = a ? (((b - a) / a) * 100).toFixed(2) + "%" : "Value A cannot be 0";
+      else if (mode === "is")
+        out.textContent = b ? ((a / b) * 100).toFixed(2) + "%" : t("bCannotZero", "Value B cannot be 0");
+      else
+        out.textContent = a
+          ? (((b - a) / a) * 100).toFixed(2) + "%"
+          : t("aCannotZero", "Value A cannot be 0");
       trackComplete();
     });
   }
@@ -605,7 +820,7 @@
         })
         .filter(Boolean);
       if (!lines.length) {
-        document.getElementById("sub-out").textContent = "Add subscriptions (name, price)";
+        document.getElementById("sub-out").textContent = t("addSubs", "Add subscriptions (name, price)");
         return;
       }
       var monthly = 0;
@@ -619,9 +834,13 @@
       });
       document.getElementById("sub-out").textContent =
         rows.join("\n") +
-        "\n\nMonthly total: ₩" +
+        "\n\n" +
+        t("monthlyTotal", "Monthly total") +
+        ": ₩" +
         monthly.toLocaleString() +
-        "\nYearly total: ₩" +
+        "\n" +
+        t("yearlyTotal", "Yearly total") +
+        ": ₩" +
         (monthly * 12).toLocaleString();
       trackComplete();
     });
@@ -633,12 +852,74 @@
       var a = document.getElementById("dt-a").value;
       var b = document.getElementById("dt-b").value;
       if (!a || !b) return;
-      var days = Math.round((new Date(b + "T00:00:00") - new Date(a + "T00:00:00")) / 86400000);
-      var weeks = (days / 7).toFixed(1);
-      var months = (days / 30.44).toFixed(1);
+      var dayCount = Math.round((new Date(b + "T00:00:00") - new Date(a + "T00:00:00")) / 86400000);
+      var weeks = (dayCount / 7).toFixed(1);
+      var months = (dayCount / 30.44).toFixed(1);
       document.getElementById("dt-out").textContent =
-        days + " days\n~" + weeks + " weeks\n~" + months + " months";
+        dayCount +
+        " " +
+        t("days", "days") +
+        "\n~" +
+        weeks +
+        " " +
+        t("weeks", "weeks") +
+        "\n~" +
+        months +
+        " " +
+        t("months", "months");
       trackComplete();
+    });
+  }
+
+  if (slug === "utm") {
+    var lastUtm = "";
+    document.getElementById("utm-go").addEventListener("click", function () {
+      trackUse();
+      var out = document.getElementById("utm-out");
+      var parsed = parseWebsiteUrl(document.getElementById("utm-url").value);
+      if (parsed.error === "empty") {
+        lastUtm = "";
+        out.textContent = t("enterWebsite", "Enter a website URL");
+        return;
+      }
+      if (parsed.error === "invalid") {
+        lastUtm = "";
+        out.textContent = t("invalidUrl", "Enter a valid http(s) URL");
+        return;
+      }
+      var source = document.getElementById("utm-source").value.trim();
+      var medium = document.getElementById("utm-medium").value.trim();
+      var campaign = document.getElementById("utm-campaign").value.trim();
+      var term = document.getElementById("utm-term").value.trim();
+      var content = document.getElementById("utm-content").value.trim();
+      if (!source && !medium && !campaign && !term && !content) {
+        lastUtm = "";
+        out.textContent = t("needUtm", "Enter at least one UTM parameter");
+        return;
+      }
+      var u = parsed.url;
+      // Set/update only filled UTM fields; leave blank fields untouched (preserve existing).
+      if (source) u.searchParams.set("utm_source", source);
+      if (medium) u.searchParams.set("utm_medium", medium);
+      if (campaign) u.searchParams.set("utm_campaign", campaign);
+      if (term) u.searchParams.set("utm_term", term);
+      if (content) u.searchParams.set("utm_content", content);
+      lastUtm = u.toString();
+      out.textContent = lastUtm;
+      toast(t("generated", "Generated"));
+      trackComplete();
+    });
+    document.getElementById("utm-copy").addEventListener("click", function () {
+      copyText(lastUtm || document.getElementById("utm-out").textContent, this);
+    });
+    document.getElementById("utm-reset").addEventListener("click", function () {
+      ["utm-url", "utm-source", "utm-medium", "utm-campaign", "utm-term", "utm-content"].forEach(
+        function (id) {
+          document.getElementById(id).value = "";
+        }
+      );
+      lastUtm = "";
+      document.getElementById("utm-out").textContent = "—";
     });
   }
 })();
