@@ -17,6 +17,7 @@ import {
   hreflangBlock,
   ensureDir,
   writeRootRedirect,
+  fontLinksHtml,
 } from "./hub-utils.mjs";
 import { clampSeoDescription } from "./seo-meta.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
@@ -48,6 +49,7 @@ function renderPage(lang, pagePath, opts) {
   const canonical = `${SITE_ORIGIN}/${lang.dir}/${pagePath}/`;
   let html = TEMPLATE;
   html = html.replace(/\{\{HTML_LANG\}\}/g, lang.htmlLang);
+  html = html.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(lang.dir));
   html = html.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[lang.dir] || "en_US");
   html = html.replace(/\{\{CANONICAL\}\}/g, canonical);
   html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflangBlock(pagePath));

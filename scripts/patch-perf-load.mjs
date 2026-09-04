@@ -63,25 +63,30 @@ function stripGoogleFontTags(html) {
   return out;
 }
 
-function injectFontLinks(html, lang) {
-  if (html.includes("{{FONT_LINKS}}")) return html;
-  if (html.includes("fonts.googleapis.com/css2")) return html; // strip failed
+function ensureFontLinks(html, lang) {
+  let out = html;
+  if (out.includes("{{FONT_LINKS}}")) {
+    out = out.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(lang));
+  }
+  if (out.includes("fonts.googleapis.com/css2") || out.includes("{{FONT_LINKS}}")) {
+    return out;
+  }
   const block = fontLinksHtml(lang);
-  if (html.includes('rel="apple-touch-icon"')) {
-    return html.replace(
+  if (out.includes('rel="apple-touch-icon"')) {
+    return out.replace(
       /(<link[^>]*rel="apple-touch-icon"[^>]*\/?>)/i,
       `$1\n    ${block}`
     );
   }
-  if (html.includes("</head>")) {
-    return html.replace(/<\/head>/i, `    ${block}\n  </head>`);
+  if (out.includes("</head>")) {
+    return out.replace(/<\/head>/i, `    ${block}\n  </head>`);
   }
-  return html;
+  return out;
 }
 
 function patchHtml(html, lang) {
   let out = html;
-  const hadFonts = /fonts\.googleapis\.com/.test(out);
+  const hadFonts = /fonts\.googleapis\.com|\{\{FONT_LINKS\}\}/.test(out);
 
   out = out.replace(/\s*<link rel="stylesheet" href="\/site-dark\.css[^"]*" \/?>\s*/g, "\n");
   out = out.replace(/\s*<link rel="stylesheet" href="\/site-mobile\.css[^"]*" \/?>\s*/g, "\n");
@@ -93,9 +98,9 @@ function patchHtml(html, lang) {
     out = out.replace(/site-mobile\.css\?v=[^"]+/g, "site-mobile.css?v=20260902nav1");
   }
 
-  if (hadFonts || /fonts\.googleapis\.com/.test(out)) {
+  if (hadFonts || /fonts\.googleapis\.com|\{\{FONT_LINKS\}\}/.test(out)) {
     out = stripGoogleFontTags(out);
-    out = injectFontLinks(out, lang);
+    out = ensureFontLinks(out, lang);
   }
 
   // Nav/footer logos: small display should not pull the master mark
