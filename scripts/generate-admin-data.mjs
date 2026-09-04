@@ -76,6 +76,18 @@ const serviceTypes = Object.entries(SERVICE_PRICING).map(([slug, cfg]) => ({
 serviceTypes.push({ value: "other", label: "Other" });
 fs.writeFileSync(path.join(OUT, "service-types.json"), JSON.stringify(serviceTypes, null, 2));
 
+const pricing = Object.fromEntries(
+  Object.entries(SERVICE_PRICING).map(([slug, cfg]) => [
+    slug,
+    {
+      amount: typeof cfg.amount === "number" ? cfg.amount : 0,
+      label: cfg.inquiryLabelEn || cfg.inquiryLabelKo || slug,
+      custom: !!cfg.custom,
+    },
+  ])
+);
+fs.writeFileSync(path.join(OUT, "pricing.json"), JSON.stringify(pricing, null, 2));
+
 function navIcon(d) {
   return `<svg class="hq-nav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="${d}"/></svg>`;
 }
@@ -90,6 +102,7 @@ const I = {
   releases: "M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8",
   leads: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75",
   projects: "M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z",
+  documents: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8",
   finance: "M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
   products: "M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z",
   settings: "M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.6.9 1 1.6 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z",
@@ -101,6 +114,7 @@ const panels = [
   "releases",
   "leads",
   "projects",
+  "documents",
   "finance",
   "products",
   "settings",
@@ -118,7 +132,7 @@ const hqHtml = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Newon HQ</title>
-  <link rel="stylesheet" href="./hq.css?v=20260904hq2a-type" />
+  <link rel="stylesheet" href="./hq.css?v=20260904hq2b" />
 </head>
 <body>
   <div class="hq hq--auth" id="hq-auth-wrap">
@@ -181,6 +195,7 @@ const hqHtml = `<!DOCTYPE html>
           <p class="hq-nav__group">Business</p>
           ${navBtn("leads", "Leads", I.leads)}
           ${navBtn("projects", "Projects", I.projects)}
+          ${navBtn("documents", "Documents", I.documents)}
           ${navBtn("finance", "Finance", I.finance)}
           <p class="hq-nav__group">System</p>
           ${navBtn("settings", "Settings", I.settings)}
@@ -212,9 +227,9 @@ const hqHtml = `<!DOCTYPE html>
     </dialog>
   </div>
 
-  <script src="./firebase-config.js?v=20260904hq2a"></script>
-  <script type="module" src="./hq-auth.js?v=20260904hq2a"></script>
-  <script type="module" src="./hq-app.js?v=20260904hq2a"></script>
+  <script src="./firebase-config.js?v=20260904hq2b"></script>
+  <script type="module" src="./hq-auth.js?v=20260904hq2b"></script>
+  <script type="module" src="./hq-app.js?v=20260904hq2b"></script>
 </body>
 </html>
 `;
@@ -272,5 +287,5 @@ const growthHtml = `<!DOCTYPE html>
 fs.writeFileSync(path.join(OUT, "index.html"), hqHtml);
 fs.writeFileSync(path.join(OUT, "growth", "index.html"), growthHtml);
 console.log(
-  "generate-admin-data: wrote HQ shell + catalog.json + service-types.json + data.json + growth/"
+  "generate-admin-data: wrote HQ shell + catalog + service-types + pricing + data + growth"
 );

@@ -1367,3 +1367,70 @@ textarea.hq-input {
   display: grid;
   gap: 0.85rem;
 }
+
+/* Phase 2B — documents / quote / progress */
+.hq-modal--wide {
+  max-width: min(48rem, calc(100vw - 1.5rem));
+}
+
+.hq-quote-lines {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.hq-quote-line {
+  border: 1px solid var(--hq-border);
+  padding: 0.75rem 0.85rem;
+  background: var(--hq-surface-2);
+}
+
+.hq-progress {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.45rem;
+}
+
+.hq-progress__step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8125rem;
+  color: var(--hq-muted);
+}
+
+.hq-progress__step.is-done {
+  color: var(--hq-ok);
+}
+
+.hq-progress__step.is-current {
+  color: var(--hq-text);
+}
+
+.hq-progress__mark {
+  font-family: var(--hq-mono);
+  font-size: 0.875rem;
+}
+
+.hq-progress__label {
+  letter-spacing: 0.02em;
+}
+
+.hq-progress__sep {
+  color: var(--hq-subtle);
+  font-size: 0.75rem;
+}
+
+@media print {
+  body.hq-body--shell .hq-nav,
+  body.hq-body--shell .hq-nav-toggle,
+  body.hq-body--shell .hq-toast,
+  body.hq-body--shell .hq-shell-backdrop {
+    display: none !important;
+  }
+
+  body.hq-body--shell .hq-main {
+    padding: 0;
+  }
+}

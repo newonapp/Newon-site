@@ -1,0 +1,87 @@
+{
+  "landing": {
+    "amount": 500000,
+    "label": "Landing Page Development",
+    "custom": false
+  },
+  "web": {
+    "amount": 800000,
+    "label": "Website Development",
+    "custom": false
+  },
+  "app": {
+    "amount": 600000,
+    "label": "App Prototype",
+    "custom": false
+  },
+  "mvp": {
+    "amount": 1500000,
+    "label": "MVP",
+    "custom": false
+  },
+  "ai-automation": {
+    "amount": 800000,
+    "label": "AI Automation",
+    "custom": false
+  },
+  "workflow-automation": {
+    "amount": 1000000,
+    "label": "Workflow Automation",
+    "custom": false
+  },
+  "data-reporting": {
+    "amount": 700000,
+    "label": "Data & Reporting",
+    "custom": false
+  },
+  "internal-tools": {
+    "amount": 1500000,
+    "label": "Internal Tools",
+    "custom": false
+  },
+  "market-research": {
+    "amount": 300000,
+    "label": "Market Research",
+    "custom": false
+  },
+  "competitor-analysis": {
+    "amount": 300000,
+    "label": "Competitor Analysis",
+    "custom": false
+  },
+  "consumer-research": {
+    "amount": 400000,
+    "label": "Consumer Research",
+    "custom": false
+  },
+  "ux-audit": {
+    "amount": 300000,
+    "label": "UX Audit",
+    "custom": false
+  },
+  "trend-research": {
+    "amount": 300000,
+    "label": "Trend Research",
+    "custom": false
+  },
+  "white-label": {
+    "amount": 0,
+    "label": "White-label",
+    "custom": true
+  },
+  "custom-product": {
+    "amount": 0,
+    "label": "Custom Product",
+    "custom": true
+  },
+  "product-launch": {
+    "amount": 1000000,
+    "label": "Product Launch",
+    "custom": false
+  },
+  "internal-system": {
+    "amount": 0,
+    "label": "Internal System",
+    "custom": true
+  }
+}

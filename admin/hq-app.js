@@ -14,8 +14,9 @@ import {
   query,
   orderBy,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { installHqDocs } from "./hq-docs.js";
 
-const HQ_VERSION = "1.2.0";
+const HQ_VERSION = "1.3.0";
 const COL = {
   tasks: "hq_tasks",
   releases: "hq_releases",
@@ -23,6 +24,7 @@ const COL = {
   finance: "hq_finance",
   productsMeta: "hq_products_meta",
   projects: "hq_projects",
+  documents: "hq_documents",
 };
 
 const TASK_STATUS = ["todo", "doing", "done"];
@@ -101,6 +103,7 @@ const NAV_KEYS = [
   "releases",
   "leads",
   "projects",
+  "documents",
   "finance",
   "products",
   "settings",
@@ -130,6 +133,10 @@ let filters = {
 let projectDetailId = null;
 /** @type {Array<{value:string,label:string}>} */
 let serviceTypes = DEFAULT_SERVICE_TYPES.slice();
+/** @type {Record<string, {amount?:number,label?:string,custom?:boolean}>} */
+let pricingBySlug = {};
+/** @type {ReturnType<typeof installHqDocs>|null} */
+let docsMod = null;
 
 const PAGE_META = {
   dashboard: {
@@ -157,6 +164,11 @@ const PAGE_META = {
     title: "Client Projects",
     desc: "Manage Newon client projects and delivery status.",
   },
+  documents: {
+    eyebrow: "Business",
+    title: "Documents",
+    desc: "Quotes, scope, requirements, contracts, and invoices.",
+  },
   finance: {
     eyebrow: "Business",
     title: "Finance",
@@ -183,6 +195,7 @@ function emptyCache() {
     finance: [],
     productsMeta: [],
     projects: [],
+    documents: [],
   };
 }
 
@@ -295,6 +308,7 @@ function setNavOpen(open) {
 
 function showPanel(key) {
   if (key !== "projects") projectDetailId = null;
+  if (key !== "documents" && docsMod) docsMod.clearDetail();
   currentNav = key;
   for (const k of NAV_KEYS) {
     const p = $("hq-panel-" + k);
@@ -316,6 +330,7 @@ function openModal(title, bodyNode, actions) {
   const b = $("hq-modal-body");
   const a = $("hq-modal-actions");
   if (!modal || !t || !b || !a) return;
+  modal.classList.remove("hq-modal--wide");
   t.textContent = title;
   clear(b);
   b.appendChild(bodyNode);
@@ -342,6 +357,7 @@ function openModal(title, bodyNode, actions) {
 function closeModal() {
   const modal = $("hq-modal");
   if (!modal) return;
+  modal.classList.remove("hq-modal--wide");
   if (typeof modal.close === "function" && modal.open) modal.close();
   else {
     modal.hidden = true;
@@ -556,15 +572,17 @@ async function loadCol(name, orderField) {
 
 async function loadAll() {
   if (!ctx || !ctx.db) return;
-  const [tasks, releases, leads, finance, productsMeta, projects] = await Promise.all([
-    loadCol(COL.tasks, "createdAt"),
-    loadCol(COL.releases, "createdAt"),
-    loadCol(COL.leads, "createdAt"),
-    loadCol(COL.finance, "date"),
-    loadCol(COL.productsMeta, null),
-    loadCol(COL.projects, "updatedAt"),
-  ]);
-  cache = { tasks, releases, leads, finance, productsMeta, projects };
+  const [tasks, releases, leads, finance, productsMeta, projects, documents] =
+    await Promise.all([
+      loadCol(COL.tasks, "createdAt"),
+      loadCol(COL.releases, "createdAt"),
+      loadCol(COL.leads, "createdAt"),
+      loadCol(COL.finance, "date"),
+      loadCol(COL.productsMeta, null),
+      loadCol(COL.projects, "updatedAt"),
+      loadCol(COL.documents, "updatedAt"),
+    ]);
+  cache = { tasks, releases, leads, finance, productsMeta, projects, documents };
 }
 
 async function loadCatalog() {
@@ -593,6 +611,68 @@ async function loadServiceTypes() {
   } catch {
     serviceTypes = DEFAULT_SERVICE_TYPES.slice();
   }
+}
+
+async function loadPricing() {
+  try {
+    const res = await fetch("./pricing.json", { cache: "no-store" });
+    if (!res.ok) {
+      pricingBySlug = {};
+      return;
+    }
+    const data = await res.json();
+    pricingBySlug = data && typeof data === "object" ? data : {};
+  } catch {
+    pricingBySlug = {};
+  }
+}
+
+function ensureDocsMod() {
+  if (docsMod) return docsMod;
+  docsMod = installHqDocs({
+    el,
+    btn,
+    clear,
+    toast,
+    pageHeader,
+    toolbar,
+    table,
+    emptyState,
+    emptyMsg,
+    surfacePanel,
+    badge,
+    select,
+    input,
+    textarea,
+    fieldRow,
+    openModal,
+    closeModal,
+    withSaving,
+    confirmDelete,
+    formatKrw,
+    ymd,
+    uid,
+    serverTimestamp,
+    collection,
+    doc,
+    addDoc,
+    updateDoc,
+    COL,
+    getCache: () => cache,
+    getCtx: () => ctx,
+    projectById,
+    projectOptions,
+    serviceTypeLabel,
+    getServiceTypes: () => serviceTypes,
+    getPricing: () => pricingBySlug,
+    refreshAndRender,
+    showPanel,
+    formatLongDate,
+    setProjectDetailId: (id) => {
+      projectDetailId = id;
+    },
+  });
+  return docsMod;
 }
 
 async function refreshAndRender() {
@@ -910,6 +990,19 @@ function renderDashboard(root) {
     el("div", { className: "hq-grid-2--equal hq-grid-2" }, [
       surfacePanel("Leads pipeline", [el("div", { className: "hq-pipeline" }, pipeRows)]),
       surfacePanel("Finance overview", [finBars]),
+    ])
+  );
+
+  root.appendChild(el("div", { style: "height:0.85rem" }));
+  root.appendChild(
+    surfacePanel("Documents pipeline", [
+      ensureDocsMod().renderDashboardDocsPanel(),
+      el("div", { style: "padding:0 1.05rem 1rem" }, [
+        btn("Open Documents", {
+          className: "hq-btn hq-btn--small hq-btn--ghost",
+          onClick: () => showPanel("documents"),
+        }),
+      ]),
     ])
   );
 }
@@ -2446,6 +2539,14 @@ function renderProjectDetail(root, project) {
           el("p", { className: "hq-row__meta", text: `Target: ${ymd(project.targetDate) || "—"}` }),
           el("p", { className: "hq-row__meta", text: `Updated: ${ymd(project.updatedAt) || "—"}` }),
         ]),
+        el("div", { style: "padding:0.5rem 1.05rem 1rem" }, [
+          ensureDocsMod().renderProgressStrip(project),
+          el("p", {
+            className: "hq-stat__caption",
+            style: "margin-top:0.55rem",
+            text: "Read-only indicators from linked docs / checklist. No auto status writes.",
+          }),
+        ]),
       ]),
     ])
   );
@@ -2567,16 +2668,9 @@ function renderProjectDetail(root, project) {
   );
 
   root.appendChild(el("div", { style: "height:0.85rem" }));
-  root.appendChild(
-    surfacePanel("Related · Documents", [
-      el("div", { className: "hq-pipeline" }, [
-        el("p", {
-          className: "hq-row__meta",
-          text: "Document workflow will be available in the next phase.",
-        }),
-      ]),
-    ])
-  );
+  root.appendChild(ensureDocsMod().renderProjectDocumentsSection(project));
+  root.appendChild(el("div", { style: "height:0.85rem" }));
+  root.appendChild(ensureDocsMod().renderDeliverySection(project));
 
   if (!project.archived) {
     root.appendChild(
@@ -2808,6 +2902,7 @@ function renderCurrent() {
     releases: renderReleases,
     leads: renderLeads,
     projects: renderProjects,
+    documents: (root) => ensureDocsMod().renderDocuments(root),
     finance: renderFinance,
     products: renderProducts,
     settings: renderSettings,
@@ -2851,7 +2946,9 @@ function stop() {
   cache = emptyCache();
   catalog = [];
   serviceTypes = DEFAULT_SERVICE_TYPES.slice();
+  pricingBySlug = {};
   projectDetailId = null;
+  docsMod = null;
   ctx = null;
   saving = false;
   closeModal();
@@ -2876,7 +2973,8 @@ async function start(startCtx) {
   bindShell();
   toast("Loading…");
   try {
-    await Promise.all([loadAll(), loadCatalog(), loadServiceTypes()]);
+    await Promise.all([loadAll(), loadCatalog(), loadServiceTypes(), loadPricing()]);
+    ensureDocsMod();
     toast("");
     showPanel("dashboard");
   } catch {
