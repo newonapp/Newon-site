@@ -109,11 +109,13 @@ ${xdef}
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" href="/logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=20260826vs" />
+  <link rel="stylesheet" href="/styles.css?v=20260904lang1" />
   <link rel="stylesheet" href="/hub-pages.css?v=20260826vs" />
+  <link rel="stylesheet" href="/gnav-mega.css?v=20260904lang1" />
   <link rel="stylesheet" href="/business-type.css?v=20260827type4" />
   <link rel="stylesheet" href="/business-creative.css?v=20260827type1" />
   <script src="/theme-shell.js"></script>
+  <script src="/lang-nav.js?v=20260825studio"></script>
   <script src="/analytics.js?v=20260826vs" defer></script>
 </head>
 <body class="hub-page cr-page">
@@ -227,6 +229,7 @@ ${xdef}
   </main>
   {{CHROME_FOOTER}}
   <script src="/site-chrome.js" defer></script>
+  <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
   <script src="/business-creative.js?v=20260826vs" defer></script>
 </body>
 </html>`;

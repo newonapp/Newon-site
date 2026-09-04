@@ -729,21 +729,50 @@ html[data-newon-shell-theme="light"] .navbar-theme-toggle:hover {
   flex: 0 0 auto;
 }
 
-.lang-menu.lang-menu--legal .lang-menu__btn {
+.lang-menu__globe {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  opacity: 0.72;
+}
+
+.lang-menu__globe svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+
+.lang-menu__btn-text {
+  min-width: 1.5em;
+}
+
+.lang-menu.lang-menu--chrome .lang-menu__btn,
+.lang-menu.lang-menu--legal .lang-menu__btn,
+.lang-menu.lang-menu--toolbar .lang-menu__btn {
   appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.4rem;
   background: rgba(17, 17, 17, 0.75);
   border: 1px solid color-mix(in srgb, var(--border) 90%, transparent);
   color: var(--text);
   font-family: inherit;
   font-size: 0.8125rem;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   line-height: 1.35;
   min-height: 34px;
-  padding: 0.3125rem 1.75rem 0.3125rem 0.6875rem;
+  min-width: 4.75rem;
+  width: auto;
+  max-width: none;
+  padding: 0.3125rem 1.7rem 0.3125rem 0.65rem;
   border-radius: 999px;
   cursor: pointer;
   text-align: left;
-  max-width: min(9rem, 34vw);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23a8a8a8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -754,45 +783,22 @@ html[data-newon-shell-theme="light"] .navbar-theme-toggle:hover {
     box-shadow 0.22s var(--ease-premium);
 }
 
-.lang-menu.lang-menu--legal .lang-menu__btn:hover {
+.lang-menu.lang-menu--chrome .lang-menu__btn:hover,
+.lang-menu.lang-menu--legal .lang-menu__btn:hover,
+.lang-menu.lang-menu--toolbar .lang-menu__btn:hover {
   border-color: color-mix(in srgb, var(--accent) 18%, transparent);
   background-color: rgba(22, 22, 22, 0.9);
 }
 
-.lang-menu.lang-menu--legal .lang-menu__btn:focus-visible {
+.lang-menu.lang-menu--chrome .lang-menu__btn:focus-visible,
+.lang-menu.lang-menu--legal .lang-menu__btn:focus-visible,
+.lang-menu.lang-menu--toolbar .lang-menu__btn:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.28);
   outline-offset: 2px;
 }
 
-.lang-menu.lang-menu--toolbar .lang-menu__btn {
-  width: clamp(146px, 14vw, 168px);
-  max-width: 168px;
-  min-height: 44px;
-  padding: 0.328rem 1.75rem 0.328rem 0.75rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  line-height: 1.38;
-  background: var(--surface);
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  color: var(--text);
-  font-family: inherit;
-  border-radius: 999px;
-  cursor: pointer;
-  text-align: left;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23a8a8a8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.55rem center;
-  transition:
-    border-color 0.22s var(--ease-premium),
-    background 0.22s var(--ease-premium),
-    box-shadow 0.22s var(--ease-premium);
-}
-
-.lang-menu.lang-menu--toolbar .lang-menu__btn:hover {
-  background-color: var(--surface);
-  border-color: rgba(255, 255, 255, 0.22);
-}
-
+html[data-newon-shell-theme="light"] .lang-menu.lang-menu--chrome .lang-menu__btn,
+html[data-newon-shell-theme="light"] .lang-menu.lang-menu--legal .lang-menu__btn,
 html[data-newon-shell-theme="light"] .lang-menu.lang-menu--toolbar .lang-menu__btn,
 html[data-newon-shell-theme="light"] .navbar-bar__controls--brand-toolbar .lang-menu.lang-menu--toolbar .lang-menu__btn,
 html[data-newon-shell-theme="light"] .navbar-bar--home .lang-menu.lang-menu--toolbar .lang-menu__btn {
@@ -802,6 +808,8 @@ html[data-newon-shell-theme="light"] .navbar-bar--home .lang-menu.lang-menu--too
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
+html[data-newon-shell-theme="light"] .lang-menu.lang-menu--chrome .lang-menu__btn:hover,
+html[data-newon-shell-theme="light"] .lang-menu.lang-menu--legal .lang-menu__btn:hover,
 html[data-newon-shell-theme="light"] .lang-menu.lang-menu--toolbar .lang-menu__btn:hover,
 html[data-newon-shell-theme="light"] .navbar-bar__controls--brand-toolbar .lang-menu.lang-menu--toolbar .lang-menu__btn:hover,
 html[data-newon-shell-theme="light"] .navbar-bar--home .lang-menu.lang-menu--toolbar .lang-menu__btn:hover {

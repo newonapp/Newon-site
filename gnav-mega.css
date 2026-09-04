@@ -257,6 +257,13 @@ html[data-newon-shell-theme="dark"] .gnav--scrolled {
   justify-content: flex-end;
   gap: 0.35rem;
   justify-self: end;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.gnav__util .gnav__lang,
+.gnav__util .lang-menu {
+  flex-shrink: 0;
 }
 
 .gnav__cta {
@@ -298,6 +305,14 @@ html[data-newon-shell-theme="dark"] .gnav__cta:hover {
 }
 
 .gnav__lang { position: relative; }
+
+.gnav__lang:has(.lang-menu)::after {
+  display: none;
+}
+
+.gnav__lang .lang-menu {
+  vertical-align: middle;
+}
 
 .gnav__lang-select {
   appearance: none;

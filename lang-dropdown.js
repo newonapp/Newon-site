@@ -74,10 +74,34 @@
     return document.querySelector("label.visually-hidden[for=\"" + id + "\"]");
   }
 
+  function optionShort(opt) {
+    if (!opt) return "";
+    var short = (opt.getAttribute("data-short") || "").trim();
+    if (short) return short;
+    var v = String(opt.value || "").trim();
+    if (v === "pt-br") return "PT";
+    if (v) return v.toUpperCase();
+    return "";
+  }
+
+  function optionFullLabel(opt) {
+    if (!opt) return "";
+    return String(opt.textContent || "")
+      .replace(/^\u2713\s*/, "")
+      .trim();
+  }
+
   function syncBtnLabel(sel, btn) {
     var ix = sel.selectedIndex;
     var opt = sel.options[ix >= 0 ? ix : 0];
-    btn.textContent = opt ? opt.textContent.replace(/^\u2713\s*/, "").trim() : "";
+    var full = optionFullLabel(opt);
+    var short = optionShort(opt);
+    // Always show short codes on the trigger so every screen reads as a language control.
+    var label = short || full;
+    var text = btn.querySelector(".lang-menu__btn-text");
+    if (text) text.textContent = label;
+    else btn.textContent = label;
+    if (short) sel.setAttribute("data-compact-label", short);
   }
 
   function syncSelectedMarks(root) {
@@ -123,14 +147,16 @@
 
     sel.dataset.newonLangEnhanced = "1";
     var toolbar = sel.classList.contains("lang-select--toolbar");
+    var inGnav = !!sel.closest(".gnav__lang, .gnav-mobile__util-row") || sel.classList.contains("gnav__lang-select");
     sel.classList.remove("lang-select", "lang-select--toolbar");
     sel.classList.add("visually-hidden");
 
     var ariaLabel =
       sel.getAttribute("aria-label") || sel.getAttribute("title") || undefined;
 
+    // One shared chrome style everywhere (gnav + app toolbars + legal pages).
     var root = document.createElement("div");
-    root.className = "lang-menu" + (toolbar ? " lang-menu--toolbar" : " lang-menu--legal");
+    root.className = "lang-menu lang-menu--chrome" + (toolbar || inGnav ? " lang-menu--toolbar" : " lang-menu--legal");
     root.setAttribute("data-lang-menu-root", "");
 
     var anon = sel.id ? "" : "-" + String(++idSeq);
@@ -145,6 +171,17 @@
     btn.setAttribute("aria-expanded", "false");
     btn.setAttribute("aria-haspopup", "listbox");
     btn.setAttribute("aria-controls", panelId);
+
+    var globe = document.createElement("span");
+    globe.className = "lang-menu__globe";
+    globe.setAttribute("aria-hidden", "true");
+    globe.innerHTML =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>';
+
+    var btnText = document.createElement("span");
+    btnText.className = "lang-menu__btn-text";
+    btn.appendChild(globe);
+    btn.appendChild(btnText);
 
     var panel = document.createElement("div");
     panel.id = panelId;
