@@ -312,7 +312,7 @@ export const MEDIA_ITEMS_HUB = [
     date: "2026-09-03",
     url: "https://www.instagram.com/newon.app/p/Dc2Vu8Vn4ax/",
     embedUrl: null,
-    thumbnail: "/media-thumbs/ig-Dc2Vu8Vn4ax.jpg",
+    thumbnail: "/media-thumbs/ig-Dc2Vu8Vn4ax.jpg?v=20260904s1",
     duration: null,
   },
   {

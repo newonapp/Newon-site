@@ -237,6 +237,7 @@ html[data-newon-shell-theme="dark"] .mh-page {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
   display: block;
   transition: transform 0.35s var(--mh-ease);
 }
