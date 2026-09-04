@@ -301,6 +301,21 @@ export const MEDIA_ITEMS_HUB = [
 
   /* —— Instagram (@newon.app) — thumbnail + external link (no embed) —— */
   {
+    id: "ig-Dc2Vu8Vn4ax",
+    platform: "instagram",
+    category: "PRODUCT",
+    igType: "POST",
+    titleKo: "작심삼일, 이번 달에는 끝내보자!",
+    titleEn: "Three-day resolutions? Finish this month instead",
+    descriptionKo: "OX MONTH — 매일 O/X로 체크하고, 한 달 성과와 AI 습관 분석을 한눈에.",
+    descriptionEn: "OX MONTH — daily O/X check-ins, monthly progress, and AI habit insights.",
+    date: "2026-09-03",
+    url: "https://www.instagram.com/newon.app/p/Dc2Vu8Vn4ax/",
+    embedUrl: null,
+    thumbnail: "/media-thumbs/ig-Dc2Vu8Vn4ax.jpg",
+    duration: null,
+  },
+  {
     id: "ig-DczvWuMHzfm",
     platform: "instagram",
     category: "PRODUCT",
