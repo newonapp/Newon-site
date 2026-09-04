@@ -130,7 +130,7 @@ function foot(lang, { base = "../", hub = false } = {}) {
     ${siteFoot}
     <script src="/lang-dropdown.js"></script>
     <script src="/portfolio/portfolio.js"></script>
-    <script src="/analytics.js?v=20260825studio" defer></script>
+    <script src="/analytics.js?v=20260904growth1" defer></script>
     <script src="/search.js?v=20260825studio" defer></script>
     <script src="/site-chrome.js?v=20260826gnav5" defer></script>
   </body>
@@ -143,9 +143,10 @@ function iconImg(app, className, size) {
   return `<img class="${className}" src="${esc(app.icon)}" alt="${esc(app.iconAlt)}" width="${size}" height="${size}" />`;
 }
 
-function storeBtn(url, label, extraClass = "") {
+function storeBtn(url, label, extraClass = "", productId = "") {
   if (!url) return "";
-  return `<a class="btn btn-ghost${extraClass ? ` ${extraClass}` : ""}" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>`;
+  const pid = productId ? ` data-product-id="${esc(productId)}"` : "";
+  return `<a class="btn btn-ghost${extraClass ? ` ${extraClass}` : ""}" href="${esc(url)}" target="_blank" rel="noopener noreferrer"${pid} data-cta-location="portfolio">${esc(label)}</a>`;
 }
 
 function productBadgeHtml(app, copy) {
@@ -161,7 +162,12 @@ function viewProjectBtn(app, copy) {
 }
 
 function storeButtons(app, copy) {
-  return [viewProjectBtn(app, copy), storeBtn(app.appStoreUrl, copy.appStore), storeBtn(app.googlePlayUrl, copy.googlePlay)]
+  const pid = app.slug || "";
+  return [
+    viewProjectBtn(app, copy),
+    storeBtn(app.appStoreUrl, copy.appStore, "", pid),
+    storeBtn(app.googlePlayUrl, copy.googlePlay, "", pid),
+  ]
     .filter(Boolean)
     .join("\n              ");
 }
@@ -864,8 +870,8 @@ function projectPage(langMeta, copy, app, apps) {
             ${metaRow(copy.metaRelease || "RELEASE", app.caseRelease)}
           </dl>
           <div class="pf-hero__actions">
-            ${storeBtn(app.appStoreUrl, copy.appStore)}
-            ${storeBtn(app.googlePlayUrl, copy.googlePlay)}
+            ${storeBtn(app.appStoreUrl, copy.appStore, "", app.slug || "")}
+            ${storeBtn(app.googlePlayUrl, copy.googlePlay, "", app.slug || "")}
           </div>
         </div>
       </section>`
@@ -874,8 +880,8 @@ function projectPage(langMeta, copy, app, apps) {
         <div class="pf-wrap pf-wrap--narrow">
           <h2>${esc(copy.storeTitle || "App Store")}</h2>
           <div class="pf-hero__actions">
-            ${storeBtn(app.appStoreUrl, copy.appStore)}
-            ${storeBtn(app.googlePlayUrl, copy.googlePlay)}
+            ${storeBtn(app.appStoreUrl, copy.appStore, "", app.slug || "")}
+            ${storeBtn(app.googlePlayUrl, copy.googlePlay, "", app.slug || "")}
           </div>
         </div>
       </section>`
@@ -933,8 +939,8 @@ function projectPage(langMeta, copy, app, apps) {
           ${app.summary ? `<p class="pf-hero__lead">${esc(app.summary)}</p>` : ""}
           ${overviewMeta}
           <div class="pf-hero__actions">
-            ${storeBtn(app.appStoreUrl, copy.appStore)}
-            ${storeBtn(app.googlePlayUrl, copy.googlePlay)}
+            ${storeBtn(app.appStoreUrl, copy.appStore, "", app.slug || "")}
+            ${storeBtn(app.googlePlayUrl, copy.googlePlay, "", app.slug || "")}
           </div>
         </div>
       </section>

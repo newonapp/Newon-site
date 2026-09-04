@@ -10,10 +10,9 @@
   var hub = root.getAttribute("data-rs-hub") || "";
   var analyticsId = root.getAttribute("data-rs-analytics") || hub;
 
-  if (window.newonTrack && window.newonAnalyticsEvents) {
-    window.newonTrack(window.newonAnalyticsEvents.PAGE_VIEW || "page_view", {
-      resources: analyticsId,
-    });
+  /* page_view is owned by analytics.js — only attach hub context for debug tools. */
+  if (root && analyticsId) {
+    root.setAttribute("data-rs-analytics", analyticsId);
   }
 
   var reduceMotion =

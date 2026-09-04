@@ -173,10 +173,40 @@
 
   function utmParams() {
     var p = new URLSearchParams(location.search);
-    return {
+    var fromUrl = {
       utm_source: p.get("utm_source") || "",
       utm_medium: p.get("utm_medium") || "",
       utm_campaign: p.get("utm_campaign") || "",
+      utm_content: p.get("utm_content") || "",
+    };
+    var stored = {};
+    try {
+      if (typeof window.newonAnalyticsUtm === "function") stored = window.newonAnalyticsUtm() || {};
+    } catch (e) {}
+    return {
+      utm_source: fromUrl.utm_source || stored.utm_source || "",
+      utm_medium: fromUrl.utm_medium || stored.utm_medium || "",
+      utm_campaign: fromUrl.utm_campaign || stored.utm_campaign || "",
+      utm_content: fromUrl.utm_content || stored.utm_content || "",
+    };
+  }
+
+  function inquiryAnalyticsContext(form) {
+    var slugEl = form && form.querySelector("[name='slug']");
+    var serviceEl = form && form.querySelector("[name='service']");
+    var typeEl = form && (form.querySelector("[name='type']") || document.getElementById("bz-type"));
+    var categoryEl = form && form.querySelector("[name='category']");
+    var serviceId = "";
+    if (slugEl && String(slugEl.value || "").trim()) serviceId = String(slugEl.value || "").trim();
+    else if (serviceEl && String(serviceEl.value || "").trim()) serviceId = String(serviceEl.value || "").trim();
+    var category = categoryEl ? String(categoryEl.value || "").trim() : "";
+    var typeVal = typeEl ? String(typeEl.value || "").trim() : "";
+    return {
+      service_id: serviceId || undefined,
+      category: category || undefined,
+      service_type: typeVal || undefined,
+      locale: langDir(),
+      cta_location: "inquiry_form",
     };
   }
 
@@ -354,7 +384,12 @@
     form.addEventListener("focusin", function () {
       if (window.newonTrack && !form.dataset.started) {
         form.dataset.started = "1";
-        window.newonTrack(window.newonAnalyticsEvents.BUSINESS_FORM_START, {});
+        var startEvt =
+          (window.newonAnalyticsEvents &&
+            (window.newonAnalyticsEvents.INQUIRY_START ||
+              window.newonAnalyticsEvents.BUSINESS_FORM_START)) ||
+          "inquiry_start";
+        window.newonTrack(startEvt, inquiryAnalyticsContext(form));
       }
     });
 
@@ -396,7 +431,14 @@
         return;
       }
 
-      if (window.newonTrack) window.newonTrack(window.newonAnalyticsEvents.BUSINESS_FORM_SUBMIT, {});
+      if (window.newonTrack) {
+        var submitEvt =
+          (window.newonAnalyticsEvents &&
+            (window.newonAnalyticsEvents.INQUIRY_SUBMIT ||
+              window.newonAnalyticsEvents.BUSINESS_FORM_SUBMIT)) ||
+          "inquiry_submit";
+        window.newonTrack(submitEvt, inquiryAnalyticsContext(form));
+      }
 
       sending = true;
       setBusy(form, submitBtn, true);
@@ -405,7 +447,12 @@
       sendInquiry(payload)
         .then(function () {
           if (window.newonTrack) {
-            window.newonTrack(window.newonAnalyticsEvents.BUSINESS_FORM_SUCCESS, { locale: langDir() });
+            var okEvt =
+              (window.newonAnalyticsEvents &&
+                (window.newonAnalyticsEvents.INQUIRY_SUCCESS ||
+                  window.newonAnalyticsEvents.BUSINESS_FORM_SUCCESS)) ||
+              "inquiry_success";
+            window.newonTrack(okEvt, inquiryAnalyticsContext(form));
           }
           writeRecord({
             type: typeLabel(form),
@@ -416,7 +463,11 @@
         })
         .catch(function () {
           if (window.newonTrack) {
-            window.newonTrack(window.newonAnalyticsEvents.BUSINESS_FORM_ERROR, { locale: langDir() });
+            window.newonTrack(
+              (window.newonAnalyticsEvents && window.newonAnalyticsEvents.BUSINESS_FORM_ERROR) ||
+                "inquiry_error",
+              inquiryAnalyticsContext(form)
+            );
           }
           sending = false;
           setBusy(form, submitBtn, false);

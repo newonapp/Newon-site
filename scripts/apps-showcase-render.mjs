@@ -29,7 +29,7 @@ function storeLinks(app, flat, flatEn) {
       name
     );
     parts.push(
-      `<a class="apps-store__badge apps-store__badge--apple" href="${escapeHtml(app.appStoreUrl)}" target="_blank" rel="noopener noreferrer" title="${tip}" aria-label="${aria}">
+      `<a class="apps-store__badge apps-store__badge--apple" href="${escapeHtml(app.appStoreUrl)}" target="_blank" rel="noopener noreferrer" title="${tip}" aria-label="${aria}" data-product-id="${escapeHtml(app.slug)}" data-cta-location="apps_hub">
         ${APPLE_SVG}
         <span class="apps-store__text">
           <span class="apps-store__small">Download on</span>
@@ -45,7 +45,7 @@ function storeLinks(app, flat, flatEn) {
       name
     );
     parts.push(
-      `<a class="apps-store__badge apps-store__badge--google" href="${escapeHtml(app.googlePlayUrl)}" target="_blank" rel="noopener noreferrer" title="${tip}" aria-label="${aria}">
+      `<a class="apps-store__badge apps-store__badge--google" href="${escapeHtml(app.googlePlayUrl)}" target="_blank" rel="noopener noreferrer" title="${tip}" aria-label="${aria}" data-product-id="${escapeHtml(app.slug)}" data-cta-location="apps_hub">
         ${PLAY_SVG}
         <span class="apps-store__text">
           <span class="apps-store__small">Get it on</span>

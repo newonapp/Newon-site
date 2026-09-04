@@ -10,10 +10,19 @@
   var service = root.getAttribute("data-bs-service") || "";
   var analyticsId = root.getAttribute("data-bs-analytics") || service;
 
-  if (window.newonTrack && window.newonAnalyticsEvents) {
-    window.newonTrack(window.newonAnalyticsEvents.BUSINESS_SERVICE_VIEW || "business_service_view", {
-      service: analyticsId,
-    });
+  function trackServiceView() {
+    if (window.newonTrack && window.newonAnalyticsEvents) {
+      window.newonTrack(window.newonAnalyticsEvents.BUSINESS_SERVICE_VIEW || "business_service_view", {
+        service_id: analyticsId,
+        service: analyticsId,
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", trackServiceView);
+  } else {
+    trackServiceView();
   }
 
   document.querySelectorAll("[data-bs-cta]").forEach(function (el) {
@@ -21,9 +30,11 @@
       if (!window.newonTrack || !window.newonAnalyticsEvents) return;
       // data-analytics is handled by analytics.js (includes store_buy_click metadata).
       if (el.getAttribute("data-analytics")) return;
-      window.newonTrack(window.newonAnalyticsEvents.BUSINESS_SERVICE_CTA_CLICK || "business_service_cta_click", {
+      window.newonTrack(window.newonAnalyticsEvents.BUSINESS_SERVICE_CTA_CLICK || "cta_click", {
+        service_id: analyticsId,
         service: analyticsId,
-        cta: el.getAttribute("data-bs-cta") || "primary",
+        cta_id: el.getAttribute("data-bs-cta") || "primary",
+        cta_location: el.getAttribute("data-bs-cta") || "service",
       });
     });
   });
