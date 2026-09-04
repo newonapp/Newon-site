@@ -116,7 +116,7 @@ ${xdef}
   <link rel="stylesheet" href="/business-creative.css?v=20260827type1" />
   <script src="/theme-shell.js"></script>
   <script src="/lang-nav.js?v=20260825studio"></script>
-  <script src="/analytics.js?v=20260904growth1" defer></script>
+  <script src="/analytics.js?v=20260904growth3" defer></script>
 </head>
 <body class="hub-page cr-page">
   {{CHROME_HEADER}}
@@ -230,7 +230,7 @@ ${xdef}
   {{CHROME_FOOTER}}
   <script src="/site-chrome.js" defer></script>
   <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
-  <script src="/business-creative.js?v=20260826vs" defer></script>
+  <script src="/business-creative.js?v=20260904growth3" defer></script>
 </body>
 </html>`;
 }

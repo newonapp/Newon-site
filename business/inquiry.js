@@ -201,12 +201,16 @@
     else if (serviceEl && String(serviceEl.value || "").trim()) serviceId = String(serviceEl.value || "").trim();
     var category = categoryEl ? String(categoryEl.value || "").trim() : "";
     var typeVal = typeEl ? String(typeEl.value || "").trim() : "";
+    var internal =
+      (window.newonAnalyticsInternal && window.newonAnalyticsInternal()) || {};
     return {
       service_id: serviceId || undefined,
       category: category || undefined,
       service_type: typeVal || undefined,
       locale: langDir(),
       cta_location: "inquiry_form",
+      from_page_type: internal.from_page_type || undefined,
+      from_path: internal.from_path || undefined,
     };
   }
 

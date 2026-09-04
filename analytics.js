@@ -7,8 +7,25 @@
   "use strict";
 
   var UTM_KEY = "newon_utm_v1";
+  var INTERNAL_KEY = "newon_nav_v1";
   var PAGE_VIEWED = false;
   var recent = Object.create(null);
+  var productViewsSent = Object.create(null);
+
+  /** Home hash / section id → stable product_id (route slug SoT). */
+  var HASH_TO_PRODUCT = {
+    "ox-month": "ox-month",
+    "subping-app": "subping",
+    "savy-app": "savy",
+    "pillmate-app": "pillmate",
+    "babylog-app": "babylog",
+    "petlog-app": "petlog",
+    "piggyup-app": "piggyup",
+    "goalup-app": "goalup",
+    "countup-app": "countup",
+    "newon-plus-app": "newon-plus",
+    "myworld-app": "myworld",
+  };
 
   /** Canonical event names (Growth Foundation taxonomy). */
   var EVENTS = {
@@ -260,6 +277,61 @@
     }
   }
 
+  /** Map known marketing utm_source values → stable channel label (no fingerprinting). */
+  function channelFromUtm(utm) {
+    var src = String((utm && utm.utm_source) || "")
+      .toLowerCase()
+      .trim();
+    if (!src) return "direct_or_unknown";
+    if (/thread/.test(src)) return "threads";
+    if (/instagram|ig\b/.test(src)) return "instagram";
+    if (/youtube|yt\b/.test(src)) return "youtube";
+    if (/tiktok|tt\b/.test(src)) return "tiktok";
+    if (/naver/.test(src)) return "naver";
+    if (/google|gads|adwords/.test(src)) return "google";
+    return "other";
+  }
+
+  function getInternalNav() {
+    try {
+      var raw = sessionStorage.getItem(INTERNAL_KEY);
+      if (!raw) return { from_page_type: "", from_path: "" };
+      var data = JSON.parse(raw);
+      if (!data || typeof data !== "object") return { from_page_type: "", from_path: "" };
+      var prev = data.previous || {};
+      return {
+        from_page_type: prev.page_type || "",
+        from_path: prev.path || "",
+      };
+    } catch (e) {
+      return { from_page_type: "", from_path: "" };
+    }
+  }
+
+  function rememberInternalNav() {
+    var current = {
+      page_type: classifyPageType(),
+      path: pathWithoutLocale(),
+    };
+    var previous = null;
+    try {
+      var raw = sessionStorage.getItem(INTERNAL_KEY);
+      if (raw) {
+        var data = JSON.parse(raw);
+        if (data && data.current) previous = data.current;
+      }
+    } catch (e) {}
+    try {
+      sessionStorage.setItem(
+        INTERNAL_KEY,
+        JSON.stringify({
+          previous: previous,
+          current: current,
+        })
+      );
+    } catch (e2) {}
+  }
+
   function sanitizeProps(props) {
     if (!props || typeof props !== "object") return {};
     var out = {};
@@ -275,6 +347,7 @@
 
   function baseContext() {
     var utm = getStoredUtm();
+    var internal = getInternalNav();
     var ctx = {
       page_path: pathname(),
       page_type: classifyPageType(),
@@ -285,6 +358,10 @@
     if (utm.utm_medium) ctx.utm_medium = utm.utm_medium;
     if (utm.utm_campaign) ctx.utm_campaign = utm.utm_campaign;
     if (utm.utm_content) ctx.utm_content = utm.utm_content;
+    var channel = channelFromUtm(utm);
+    if (channel) ctx.channel = channel;
+    if (internal.from_page_type) ctx.from_page_type = internal.from_page_type;
+    if (internal.from_path) ctx.from_path = internal.from_path;
     var pid = productIdFromPath();
     if (pid) ctx.product_id = pid;
     var sid = serviceIdFromPage();
@@ -499,10 +576,69 @@
     return true;
   }
 
+  function emitProductView(productId, extra) {
+    var id = productId === "my-world" ? "myworld" : productId;
+    if (!id || productViewsSent[id]) return;
+    productViewsSent[id] = true;
+    var props = Object.assign({ product_id: id }, extra || {});
+    track(EVENTS.PRODUCT_VIEW, props);
+  }
+
+  function annotateHomeProductSections() {
+    Object.keys(HASH_TO_PRODUCT).forEach(function (hashId) {
+      var node = document.getElementById(hashId);
+      if (!node) return;
+      var pid = HASH_TO_PRODUCT[hashId];
+      if (!node.getAttribute("data-product-id")) {
+        node.setAttribute("data-product-id", pid);
+      }
+    });
+  }
+
+  function productIdFromHash() {
+    var hash = (global.location && global.location.hash) || "";
+    if (!hash) return "";
+    var id = hash.replace(/^#/, "").split("?")[0];
+    return HASH_TO_PRODUCT[id] || "";
+  }
+
+  function observeHomeProductViews() {
+    annotateHomeProductSections();
+    var hashPid = productIdFromHash();
+    if (hashPid) emitProductView(hashPid, { cta_location: "home_hash" });
+
+    global.addEventListener("hashchange", function () {
+      var pid = productIdFromHash();
+      if (pid) emitProductView(pid, { cta_location: "home_hash" });
+    });
+
+    if (!("IntersectionObserver" in global)) return;
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          var pid =
+            (el.getAttribute && el.getAttribute("data-product-id")) ||
+            HASH_TO_PRODUCT[el.id] ||
+            "";
+          if (pid) emitProductView(pid, { cta_location: "home" });
+          io.unobserve(el);
+        });
+      },
+      { threshold: 0.28 }
+    );
+    Object.keys(HASH_TO_PRODUCT).forEach(function (hashId) {
+      var node = document.getElementById(hashId);
+      if (node) io.observe(node);
+    });
+  }
+
   function autoPageEvents() {
     if (PAGE_VIEWED) return;
     PAGE_VIEWED = true;
     captureUtm();
+    rememberInternalNav();
 
     var pageType = classifyPageType();
     var props = {};
@@ -513,7 +649,7 @@
     track(EVENTS.PAGE_VIEW, props);
 
     if (pageType === "product") {
-      track(EVENTS.PRODUCT_VIEW, { product_id: productIdFromPath() });
+      emitProductView(productIdFromPath(), { cta_location: "product" });
     }
     if (pageType === "portfolio" || pageType === "portfolio_detail") {
       var pfId = productIdFromPath();
@@ -521,10 +657,17 @@
         product_id: pfId || undefined,
       });
       if (pageType === "portfolio_detail" && pfId) {
-        track(EVENTS.PRODUCT_VIEW, { product_id: pfId, cta_location: "portfolio" });
+        emitProductView(pfId, { cta_location: "portfolio" });
       }
     }
     /* business_service_view is emitted by business-service.js to avoid duplicates. */
+
+    if (pageType === "home" || pageType === "other") {
+      observeHomeProductViews();
+    } else {
+      /* Still annotate if home shells exist on hybrid pages. */
+      annotateHomeProductSections();
+    }
 
     observePricingOnce();
   }
@@ -562,6 +705,7 @@
   global.newonAnalyticsEvents = EVENTS;
   global.newonTrack = track;
   global.newonAnalyticsUtm = getStoredUtm;
+  global.newonAnalyticsInternal = getInternalNav;
 
   document.addEventListener("DOMContentLoaded", function () {
     autoPageEvents();

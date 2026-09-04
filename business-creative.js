@@ -1,5 +1,6 @@
 /**
  * Newon Creative inquiry — FormSubmit + local success state.
+ * Uses newonTrack SoT only (no PII in analytics).
  */
 (function () {
   var INBOX = "newon@newon.app";
@@ -13,8 +14,21 @@
   function track(name, props) {
     try {
       if (window.newonTrack) window.newonTrack(name, props || {});
-      else if (window.gtag) window.gtag("event", name, props || {});
     } catch (e) {}
+  }
+
+  function analyticsCtx(form) {
+    var typeVal = form && form.type ? String(form.type.value || "").trim() : "";
+    var internal =
+      (window.newonAnalyticsInternal && window.newonAnalyticsInternal()) || {};
+    return {
+      service_id: "creative",
+      category: "creative",
+      service_type: typeVal || undefined,
+      cta_location: "creative_form",
+      from_page_type: internal.from_page_type || undefined,
+      from_path: internal.from_path || undefined,
+    };
   }
 
   function servicesValue(form) {
@@ -36,14 +50,25 @@
   function init() {
     var form = document.getElementById("cr-inquiry-form");
     if (!form) return;
+
+    form.addEventListener("focusin", function () {
+      if (form.dataset.started) return;
+      form.dataset.started = "1";
+      track(
+        (window.newonAnalyticsEvents && window.newonAnalyticsEvents.INQUIRY_START) ||
+          "inquiry_start",
+        analyticsCtx(form)
+      );
+    });
+
     form.addEventListener("submit", function (ev) {
       ev.preventDefault();
       var status = document.getElementById("cr-form-status");
-      var email = (form.email && form.email.value) || "";
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
+
       var payload = {
         _subject: "Newon Creative inquiry",
         type: form.type.value,
@@ -53,25 +78,37 @@
         timeline: form.timeline.value,
         message: form.message.value,
         name: form.name.value,
-        email: email,
+        email: (form.email && form.email.value) || "",
         source: "business/creative",
         page: location.pathname,
       };
-      track("creative_inquiry", {
-        source: "business/creative",
-        page: location.pathname,
-        item_id: payload.type,
-        category: "creative",
-      });
-      track("business_inquiry_submit", {
-        source: "creative",
-        page: location.pathname,
-        item_id: payload.type,
-        category: "creative",
-      });
+
+      var ctx = analyticsCtx(form);
+      track(
+        (window.newonAnalyticsEvents && window.newonAnalyticsEvents.INQUIRY_SUBMIT) ||
+          "inquiry_submit",
+        ctx
+      );
+
+      function onSuccess() {
+        track(
+          (window.newonAnalyticsEvents && window.newonAnalyticsEvents.INQUIRY_SUCCESS) ||
+            "inquiry_success",
+          ctx
+        );
+        showSuccess();
+      }
+
+      function onError() {
+        track(
+          (window.newonAnalyticsEvents && window.newonAnalyticsEvents.BUSINESS_FORM_ERROR) ||
+            "inquiry_error",
+          ctx
+        );
+      }
 
       if (isLocal()) {
-        showSuccess();
+        onSuccess();
         return;
       }
 
@@ -87,9 +124,10 @@
       })
         .then(function (r) {
           if (!r.ok) throw new Error("submit failed");
-          showSuccess();
+          onSuccess();
         })
         .catch(function () {
+          onError();
           var body = Object.keys(payload)
             .map(function (k) {
               return k + ": " + payload[k];
@@ -102,7 +140,7 @@
             encodeURIComponent(payload._subject) +
             "&body=" +
             encodeURIComponent(body);
-          showSuccess();
+          /* Mailto fallback is not treated as FormSubmit success. */
         });
     });
   }
