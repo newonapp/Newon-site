@@ -1,7 +1,6 @@
 /**
- * Newon HQ — Auth + admin UID authorization (Phase 1B).
- * Google Sign-In. Client UID guard + Firestore SDK init.
- * No CRUD, no token logging, no Admin SDK.
+ * Newon HQ — Auth + admin UID authorization + Operations bootstrap (Phase 1C).
+ * Google Sign-In. Client UID guard + Firestore SDK. Starts hq-app when authorized.
  */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import {
@@ -15,6 +14,8 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.2/firebase
 
 (function () {
   "use strict";
+
+  var authWrap = document.getElementById("hq-auth-wrap");
 
   var views = {
     loading: document.getElementById("hq-view-loading"),
@@ -30,7 +31,6 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.2/firebase
     errorMsg: document.getElementById("hq-error-msg"),
     configMissing: document.getElementById("hq-config-missing"),
     deniedEmail: document.getElementById("hq-denied-email"),
-    authEmail: document.getElementById("hq-auth-email"),
     loginBtn: document.getElementById("hq-login"),
     retryBtn: document.getElementById("hq-retry"),
   };
@@ -42,11 +42,48 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.2/firebase
   var provider = null;
   var busy = false;
   var bridge = null;
+  var appStarted = false;
+  var startTimer = null;
 
   function setStatus(text, kind) {
     if (!els.status) return;
     els.status.textContent = text || "";
     els.status.className = "hq-status" + (kind ? " hq-status--" + kind : "");
+  }
+
+  function stopHqApp() {
+    if (startTimer) {
+      clearTimeout(startTimer);
+      startTimer = null;
+    }
+    appStarted = false;
+    try {
+      if (window.NEWON_HQ_APP && typeof window.NEWON_HQ_APP.stop === "function") {
+        window.NEWON_HQ_APP.stop();
+      }
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
+  function startHqApp(user) {
+    if (appStarted) return;
+    function tryStart() {
+      if (!auth || !db || !user) return;
+      if (window.NEWON_HQ_APP && typeof window.NEWON_HQ_APP.start === "function") {
+        appStarted = true;
+        startTimer = null;
+        window.NEWON_HQ_APP.start({
+          user: user,
+          db: db,
+          auth: auth,
+          signOutFn: logout,
+        });
+        return;
+      }
+      startTimer = setTimeout(tryStart, 40);
+    }
+    tryStart();
   }
 
   function showView(name) {
@@ -55,6 +92,10 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.2/firebase
       if (!el) return;
       el.hidden = key !== name;
     });
+    var isShell = name === "authorized";
+    if (authWrap) authWrap.hidden = isShell;
+    document.body.classList.toggle("hq-body--shell", isShell);
+    if (!isShell) stopHqApp();
   }
 
   function setBusy(on) {
@@ -75,7 +116,6 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.2/firebase
   function applyUser(user) {
     if (!user) {
       if (els.deniedEmail) els.deniedEmail.textContent = "—";
-      if (els.authEmail) els.authEmail.textContent = "—";
       setStatus("Signed out");
       showView("signedOut");
       return;
@@ -89,9 +129,9 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.2/firebase
       return;
     }
 
-    if (els.authEmail) els.authEmail.textContent = email;
     setStatus("관리자 인증 완료", "ok");
     showView("authorized");
+    startHqApp(user);
   }
 
   function bootAuth() {
@@ -111,8 +151,6 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.2/firebase
       db = getFirestore(app);
       provider = new GoogleAuthProvider();
       provider.setCustomParameters({ prompt: "select_account" });
-      // db is initialized for Phase 1C+; no reads/writes in 1B.
-      void db;
     } catch (err) {
       showError("Could not initialize Firebase.");
       return;
@@ -145,6 +183,7 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.2/firebase
   async function logout() {
     if (!auth || busy) return;
     setBusy(true);
+    stopHqApp();
     try {
       await signOut(auth);
     } catch (err) {

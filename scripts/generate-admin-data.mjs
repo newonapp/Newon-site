@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 /**
- * Build-time admin snapshot + Newon HQ Auth entry (Phase 1A).
- * - data.json / growth: preserved read-only catalog + empty growth cards
- * - index.html: HQ Google Auth bootstrap (no Firestore, no ops CRUD)
+ * Build-time admin snapshot + Newon HQ entry (Auth + Operations shell).
+ * Operational CRUD data lives only in Firestore — never in these static files.
  */
 import fs from "fs";
 import path from "path";
@@ -36,21 +35,79 @@ const snapshot = {
   },
 };
 
+/** Public product SoT for HQ Products panel (read-only catalog, not ops CRUD). */
+const seen = new Set();
+const catalog = [];
+function pushCatalog(row) {
+  if (!row.slug || seen.has(row.slug)) return;
+  seen.add(row.slug);
+  catalog.push(row);
+}
+for (const p of allProducts("ko")) {
+  pushCatalog({
+    slug: p.slug,
+    name: p.name || p.slug,
+    type: p.type || "other",
+    platforms: Array.isArray(p.platforms) ? p.platforms.join(" / ") : p.platforms || "—",
+    status: p.status || "—",
+  });
+}
+for (const p of STORE_PRODUCTS.filter((x) => x.listed !== false)) {
+  pushCatalog({
+    slug: p.slug,
+    name: p.name || p.title || p.slug,
+    type: "store",
+    platforms: "Digital",
+    status: p.status || "—",
+  });
+}
+
 fs.mkdirSync(OUT, { recursive: true });
 fs.mkdirSync(path.join(OUT, "growth"), { recursive: true });
 fs.writeFileSync(path.join(OUT, "data.json"), JSON.stringify(snapshot, null, 2));
+fs.writeFileSync(path.join(OUT, "catalog.json"), JSON.stringify(catalog, null, 2));
+
+const nav = [
+  ["dashboard", "Dashboard"],
+  ["tasks", "Tasks"],
+  ["releases", "Releases"],
+  ["leads", "Leads"],
+  ["finance", "Finance"],
+  ["products", "Products"],
+  ["settings", "Settings"],
+]
+  .map(
+    ([id, label]) =>
+      `<button type="button" class="hq-nav__link" data-hq-nav="${id}">${label}</button>`
+  )
+  .join("\n        ");
+
+const panels = [
+  "dashboard",
+  "tasks",
+  "releases",
+  "leads",
+  "finance",
+  "products",
+  "settings",
+]
+  .map(
+    (id, i) =>
+      `<section class="hq-panel-section" id="hq-panel-${id}" ${i === 0 ? "" : "hidden"} aria-label="${id}"></section>`
+  )
+  .join("\n        ");
 
 const hqHtml = `<!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Newon HQ — Sign in</title>
-  <link rel="stylesheet" href="./hq.css?v=20260904hq1b" />
+  <title>Newon HQ</title>
+  <link rel="stylesheet" href="./hq.css?v=20260904hq1c" />
 </head>
 <body>
-  <main class="hq" id="hq-app">
+  <div class="hq hq--auth" id="hq-auth-wrap">
     <p class="hq__eyebrow">NEWON HQ</p>
     <h1 class="hq__title">Private Operations</h1>
     <p class="hq__lead">Internal console for Newon. Sign in with the admin Google account.</p>
@@ -63,16 +120,11 @@ const hqHtml = `<!DOCTYPE html>
     <section class="hq-view hq-panel" id="hq-view-config" hidden aria-label="Firebase config required">
       <p class="hq__eyebrow">Setup</p>
       <h2 class="hq__title" style="font-size:1.15rem">Firebase config required</h2>
-      <p class="hq__lead">
-        Public web config fields are missing in <code>admin/firebase-config.js</code>.
-      </p>
       <p class="hq-status hq-status--err">Missing: <span id="hq-config-missing"></span></p>
     </section>
 
     <section class="hq-view hq-panel" id="hq-view-signed-out" hidden aria-label="Sign in">
-      <p class="hq__lead" style="margin-bottom:0">
-        Authorized admin Google account only. Operations data stays behind Auth and Firestore Security Rules.
-      </p>
+      <p class="hq__lead" style="margin-bottom:0">Authorized admin Google account only.</p>
       <div class="hq-actions">
         <button type="button" class="hq-btn" id="hq-login">Google 계정으로 로그인</button>
       </div>
@@ -87,34 +139,40 @@ const hqHtml = `<!DOCTYPE html>
       </div>
     </section>
 
-    <section class="hq-view hq-panel" id="hq-view-authorized" hidden aria-label="Authorized">
-      <p class="hq__eyebrow">NEWON HQ</p>
-      <h2 class="hq__title" style="font-size:1.15rem">Private Operations</h2>
-      <p class="hq__lead">관리자 인증 완료. Operations modules arrive in the next phase — no live data here yet.</p>
-      <p class="hq-status hq-status--ok">Signed in as <span id="hq-auth-email">—</span></p>
-      <ul class="hq-list" aria-label="Upcoming modules">
-        <li>Dashboard</li>
-        <li>Products</li>
-        <li>Tasks</li>
-        <li>Releases</li>
-        <li>Leads</li>
-        <li>Finance</li>
-      </ul>
-      <div class="hq-actions">
-        <button type="button" class="hq-btn hq-btn--ghost" data-hq-logout>로그아웃</button>
-      </div>
-    </section>
-
     <section class="hq-view hq-panel" id="hq-view-error" hidden aria-label="Error">
       <p class="hq-status hq-status--err" id="hq-error-msg">Something went wrong.</p>
       <div class="hq-actions">
         <button type="button" class="hq-btn" id="hq-retry">Try again</button>
       </div>
     </section>
-  </main>
+  </div>
 
-  <script src="./firebase-config.js?v=20260904hq1b"></script>
-  <script type="module" src="./hq-auth.js?v=20260904hq1b"></script>
+  <div class="hq-shell" id="hq-view-authorized" hidden>
+    <button type="button" class="hq-nav-toggle" id="hq-nav-toggle" aria-controls="hq-nav" aria-expanded="false">Menu</button>
+    <div class="hq-shell-backdrop" id="hq-shell-backdrop" hidden></div>
+    <aside class="hq-nav" id="hq-nav" aria-label="HQ navigation">
+      <p class="hq-nav__brand">NEWON HQ</p>
+      <nav class="hq-nav__list">
+        ${nav}
+      </nav>
+      <button type="button" class="hq-btn hq-btn--ghost hq-btn--small hq-nav__logout" data-hq-logout>로그아웃</button>
+    </aside>
+    <main class="hq-main" id="hq-main">
+      <p class="hq-toast" id="hq-toast" role="status" aria-live="polite" hidden></p>
+      ${panels}
+    </main>
+    <dialog class="hq-modal" id="hq-modal" aria-labelledby="hq-modal-title">
+      <div class="hq-modal__inner">
+        <h2 class="hq-modal__title" id="hq-modal-title">Modal</h2>
+        <div class="hq-modal__body" id="hq-modal-body"></div>
+        <div class="hq-modal__actions" id="hq-modal-actions"></div>
+      </div>
+    </dialog>
+  </div>
+
+  <script src="./firebase-config.js?v=20260904hq1c"></script>
+  <script type="module" src="./hq-auth.js?v=20260904hq1c"></script>
+  <script type="module" src="./hq-app.js?v=20260904hq1c"></script>
 </body>
 </html>
 `;
@@ -142,7 +200,7 @@ const growthHtml = `<!DOCTYPE html>
 <body>
   <p><a href="../">← Newon HQ</a></p>
   <h1>Growth</h1>
-  <p class="note">Metrics stay blank until a real analytics source is wired. Empty cards mean “No data source” — not zero traffic. Not linked from HQ Auth until authorization is configured.</p>
+  <p class="note">Metrics stay blank until a real analytics source is wired. Empty cards mean “No data source” — not zero traffic.</p>
   <div class="grid" id="metrics"></div>
   <script>
     fetch('../data.json').then(function(r){return r.json();}).then(function(d){
@@ -171,4 +229,4 @@ const growthHtml = `<!DOCTYPE html>
 
 fs.writeFileSync(path.join(OUT, "index.html"), hqHtml);
 fs.writeFileSync(path.join(OUT, "growth", "index.html"), growthHtml);
-console.log("generate-admin-data: wrote HQ auth entry + admin/data.json + admin/growth/");
+console.log("generate-admin-data: wrote HQ shell + catalog.json + data.json + growth/");

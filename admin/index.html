@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Newon HQ — Sign in</title>
-  <link rel="stylesheet" href="./hq.css?v=20260904hq1b" />
+  <title>Newon HQ</title>
+  <link rel="stylesheet" href="./hq.css?v=20260904hq1c" />
 </head>
 <body>
-  <main class="hq" id="hq-app">
+  <div class="hq hq--auth" id="hq-auth-wrap">
     <p class="hq__eyebrow">NEWON HQ</p>
     <h1 class="hq__title">Private Operations</h1>
     <p class="hq__lead">Internal console for Newon. Sign in with the admin Google account.</p>
@@ -21,16 +21,11 @@
     <section class="hq-view hq-panel" id="hq-view-config" hidden aria-label="Firebase config required">
       <p class="hq__eyebrow">Setup</p>
       <h2 class="hq__title" style="font-size:1.15rem">Firebase config required</h2>
-      <p class="hq__lead">
-        Public web config fields are missing in <code>admin/firebase-config.js</code>.
-      </p>
       <p class="hq-status hq-status--err">Missing: <span id="hq-config-missing"></span></p>
     </section>
 
     <section class="hq-view hq-panel" id="hq-view-signed-out" hidden aria-label="Sign in">
-      <p class="hq__lead" style="margin-bottom:0">
-        Authorized admin Google account only. Operations data stays behind Auth and Firestore Security Rules.
-      </p>
+      <p class="hq__lead" style="margin-bottom:0">Authorized admin Google account only.</p>
       <div class="hq-actions">
         <button type="button" class="hq-btn" id="hq-login">Google 계정으로 로그인</button>
       </div>
@@ -45,33 +40,51 @@
       </div>
     </section>
 
-    <section class="hq-view hq-panel" id="hq-view-authorized" hidden aria-label="Authorized">
-      <p class="hq__eyebrow">NEWON HQ</p>
-      <h2 class="hq__title" style="font-size:1.15rem">Private Operations</h2>
-      <p class="hq__lead">관리자 인증 완료. Operations modules arrive in the next phase — no live data here yet.</p>
-      <p class="hq-status hq-status--ok">Signed in as <span id="hq-auth-email">—</span></p>
-      <ul class="hq-list" aria-label="Upcoming modules">
-        <li>Dashboard</li>
-        <li>Products</li>
-        <li>Tasks</li>
-        <li>Releases</li>
-        <li>Leads</li>
-        <li>Finance</li>
-      </ul>
-      <div class="hq-actions">
-        <button type="button" class="hq-btn hq-btn--ghost" data-hq-logout>로그아웃</button>
-      </div>
-    </section>
-
     <section class="hq-view hq-panel" id="hq-view-error" hidden aria-label="Error">
       <p class="hq-status hq-status--err" id="hq-error-msg">Something went wrong.</p>
       <div class="hq-actions">
         <button type="button" class="hq-btn" id="hq-retry">Try again</button>
       </div>
     </section>
-  </main>
+  </div>
 
-  <script src="./firebase-config.js?v=20260904hq1b"></script>
-  <script type="module" src="./hq-auth.js?v=20260904hq1b"></script>
+  <div class="hq-shell" id="hq-view-authorized" hidden>
+    <button type="button" class="hq-nav-toggle" id="hq-nav-toggle" aria-controls="hq-nav" aria-expanded="false">Menu</button>
+    <div class="hq-shell-backdrop" id="hq-shell-backdrop" hidden></div>
+    <aside class="hq-nav" id="hq-nav" aria-label="HQ navigation">
+      <p class="hq-nav__brand">NEWON HQ</p>
+      <nav class="hq-nav__list">
+        <button type="button" class="hq-nav__link" data-hq-nav="dashboard">Dashboard</button>
+        <button type="button" class="hq-nav__link" data-hq-nav="tasks">Tasks</button>
+        <button type="button" class="hq-nav__link" data-hq-nav="releases">Releases</button>
+        <button type="button" class="hq-nav__link" data-hq-nav="leads">Leads</button>
+        <button type="button" class="hq-nav__link" data-hq-nav="finance">Finance</button>
+        <button type="button" class="hq-nav__link" data-hq-nav="products">Products</button>
+        <button type="button" class="hq-nav__link" data-hq-nav="settings">Settings</button>
+      </nav>
+      <button type="button" class="hq-btn hq-btn--ghost hq-btn--small hq-nav__logout" data-hq-logout>로그아웃</button>
+    </aside>
+    <main class="hq-main" id="hq-main">
+      <p class="hq-toast" id="hq-toast" role="status" aria-live="polite" hidden></p>
+      <section class="hq-panel-section" id="hq-panel-dashboard"  aria-label="dashboard"></section>
+        <section class="hq-panel-section" id="hq-panel-tasks" hidden aria-label="tasks"></section>
+        <section class="hq-panel-section" id="hq-panel-releases" hidden aria-label="releases"></section>
+        <section class="hq-panel-section" id="hq-panel-leads" hidden aria-label="leads"></section>
+        <section class="hq-panel-section" id="hq-panel-finance" hidden aria-label="finance"></section>
+        <section class="hq-panel-section" id="hq-panel-products" hidden aria-label="products"></section>
+        <section class="hq-panel-section" id="hq-panel-settings" hidden aria-label="settings"></section>
+    </main>
+    <dialog class="hq-modal" id="hq-modal" aria-labelledby="hq-modal-title">
+      <div class="hq-modal__inner">
+        <h2 class="hq-modal__title" id="hq-modal-title">Modal</h2>
+        <div class="hq-modal__body" id="hq-modal-body"></div>
+        <div class="hq-modal__actions" id="hq-modal-actions"></div>
+      </div>
+    </dialog>
+  </div>
+
+  <script src="./firebase-config.js?v=20260904hq1c"></script>
+  <script type="module" src="./hq-auth.js?v=20260904hq1c"></script>
+  <script type="module" src="./hq-app.js?v=20260904hq1c"></script>
 </body>
 </html>
