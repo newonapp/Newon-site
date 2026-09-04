@@ -9,6 +9,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { buildAboutPageBody, getAboutSeo } from "./about-page-body.mjs";
 import { clampSeoDescription } from "./seo-meta.mjs";
+import { fontLinksHtml } from "./hub-utils.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_ORIGIN = "https://www.newon.app";
@@ -153,6 +154,7 @@ for (const { dir, file, htmlLang } of LANGS) {
 
   let pt = template;
   pt = pt.replace(/\{\{LANG_DIR\}\}/g, dir);
+  pt = pt.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(dir));
   pt = pt.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
   pt = pt.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
   pt = pt.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangBlockLegal("about"));

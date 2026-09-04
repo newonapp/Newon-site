@@ -343,6 +343,7 @@ function writeRootPrivacyPage() {
   pt = pt.replace(/\{\{HTML_LANG\}\}/g, "ko");
   pt = pt.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangBlockPrivacyRoot());
   pt = pt.replace(/\{\{CANONICAL\}\}/g, "https://www.newon.app/privacy/");
+  pt = pt.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml("ko"));
   pt = applyTemplate(pt, flat, flatEn);
   pt = applyLocImgs(pt, "ko");
 
@@ -389,6 +390,7 @@ for (const { dir, file, htmlLang } of LANGS) {
     pt = pt.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
     pt = pt.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangBlockLegal(page));
     pt = pt.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/${page}/`);
+    pt = pt.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(dir));
     pt = applyTemplate(pt, flat, flatEn);
     pt = applyLocImgs(pt, dir);
     if (page === "business") {
@@ -415,6 +417,7 @@ for (const { dir, file, htmlLang } of LANGS) {
       delHtml = delHtml.replace(/__NS__/g, app.ns);
     }
     delHtml = delHtml.replace(/\{\{LANG_DIR\}\}/g, dir);
+    delHtml = delHtml.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(dir));
     delHtml = delHtml.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
     delHtml = delHtml.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/${app.slug}/delete-account/`);
     delHtml = applyTemplate(delHtml, flat, flatEn);

@@ -30,6 +30,7 @@ import {
   HISTORY_TYPE_FILTERS,
 } from "./news-data.mjs";
 import { replaceLegacyChrome } from "./inject-chrome.mjs";
+import { fontLinksHtml } from "./hub-utils.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_ORIGIN = "https://www.newon.app";
@@ -675,6 +676,7 @@ for (const { dir, file, htmlLang } of LANGS) {
 
   let hub = listTpl;
   hub = hub.replace(/\{\{LANG_DIR\}\}/g, dir);
+  hub = hub.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(dir));
   hub = hub.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
   hub = hub.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
   hub = hub.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangNews(""));
@@ -731,6 +733,7 @@ for (const { dir, file, htmlLang } of LANGS) {
     const og = `${SITE_ORIGIN}${logoPath}`;
     let page = detailTpl;
     page = page.replace(/\{\{LANG_DIR\}\}/g, dir);
+    page = page.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(dir));
     page = page.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
     page = page.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
     page = page.replace(/\{\{CANONICAL\}\}/g, canonical);

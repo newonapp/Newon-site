@@ -6,7 +6,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml } from "./hub-utils.mjs";
+import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml, fontLinksHtml} from "./hub-utils.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { businessHeroVisual } from "./business-bs-visuals.mjs";
 import { BUSINESS_DETAIL_PAGES } from "./gen-business-details.mjs";
@@ -404,6 +404,7 @@ export function renderBusinessCollabDetails() {
       let html = template;
       const copy = getCollabCopy(slug, lang);
       html = html.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+    html = html.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(dir));
       html = html.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
       html = html.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/${route}/`);
       html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflangBlock(slug));

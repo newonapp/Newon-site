@@ -6,7 +6,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml } from "./hub-utils.mjs";
+import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml, fontLinksHtml} from "./hub-utils.mjs";
 import { clampSeoDescription } from "./seo-meta.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { RESOURCE_PAGES } from "./resources-catalog.mjs";
@@ -352,6 +352,7 @@ function renderStoreDetailHtml({
 }) {
   let html = bsTemplate;
   html = html.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+    html = html.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml((String(canonical).match(/\/\/[^/]+\/([^/]+)\//) || [])[1] || "en"));
   html = html.replace(/\{\{OG_LOCALE\}\}/g, ogLocale);
   html = html.replace(/\{\{CANONICAL\}\}/g, canonical);
   html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflang);
@@ -406,6 +407,7 @@ function renderHtml({
 }) {
   let html = template;
   html = html.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+  html = html.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml((String(canonical).match(/\/\/[^/]+\/([^/]+)\//) || [])[1] || "en"));
   html = html.replace(/\{\{OG_LOCALE\}\}/g, ogLocale);
   html = html.replace(/\{\{CANONICAL\}\}/g, canonical);
   html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflang);
@@ -449,6 +451,7 @@ function renderLabDetailHtml({
 }) {
   let html = bsTemplate;
   html = html.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+  html = html.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml((String(canonical).match(/\/\/[^/]+\/([^/]+)\//) || [])[1] || "en"));
   html = html.replace(/\{\{OG_LOCALE\}\}/g, ogLocale);
   html = html.replace(/\{\{CANONICAL\}\}/g, canonical);
   html = html.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflang);

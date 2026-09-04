@@ -208,6 +208,7 @@ for (const { dir, file, htmlLang } of LANGS) {
   let inquiry = inquiryTemplate;
   inquiry = inquiry.replace(/\{\{LANG_DIR\}\}/g, dir);
   inquiry = inquiry.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+  inquiry = inquiry.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(dir));
   inquiry = inquiry.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
   inquiry = inquiry.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangBlock("business/inquiry"));
   inquiry = inquiry.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/business/inquiry/`);

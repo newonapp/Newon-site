@@ -104,6 +104,10 @@ export function fontLinksHtml(langDir = "en") {
 
 export const CHROME_HEAD_CSS = `<link rel="stylesheet" href="/site-dark.css?v=20260902perf1" />\n    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />`;
 
+export function injectFontLinks(html, langDir = "en") {
+  return String(html).replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(langDir));
+}
+
 export function applyTemplate(template, flat, flatEn, extras = {}) {
   let out = template;
   for (const [key, val] of Object.entries(extras)) {
@@ -126,6 +130,10 @@ export function applyTemplate(template, flat, flatEn, extras = {}) {
     if (isSeoDescriptionKey(key)) s = clampSeoDescription(s);
     return escapeHtml(s);
   });
+  if (out.includes("{{FONT_LINKS}}")) {
+    const lang = extras.LANG_DIR || extras.langDir || extras.lang || "en";
+    out = injectFontLinks(out, lang);
+  }
   return out;
 }
 

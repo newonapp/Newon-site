@@ -8,6 +8,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { BUSINESS_PAGES_I18N } from "./business-pages-i18n.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
+import { fontLinksHtml } from "./hub-utils.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -446,6 +447,7 @@ export function writeInquirySuccessPages() {
       .replace(/\{\{HTML_LANG\}\}/g, htmlLang)
       .replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US")
       .replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/business/inquiry/success/`)
+      .replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(dir))
       .replace("{{HREFLANG_BLOCK}}", hreflangSuccess());
     html = applyTemplate(html, flat, flatEn);
     html = injectSiteChrome(html, flat, flatEn, {
@@ -506,6 +508,7 @@ export function generateBusinessDetails() {
         .replace(/\{\{HTML_LANG\}\}/g, htmlLang)
         .replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US")
         .replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/business/${page.slug}/`)
+        .replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(dir))
         .replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflangBlock(page.slug))
         .replace(/\{\{BP_SLUG\}\}/g, page.slug)
         .replace(/\{\{BP_PROCESS_HREF\}\}/g, page.slug === "development" ? "#launch" : "#process");

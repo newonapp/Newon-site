@@ -7,6 +7,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { ideaProducts } from "./ideas-data.mjs";
 import { replaceLegacyChrome } from "./inject-chrome.mjs";
+import { fontLinksHtml } from "./hub-utils.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_ORIGIN = "https://www.newon.app";
@@ -183,6 +184,7 @@ for (const { dir, file, htmlLang } of LANGS) {
 
   let hub = hubTpl;
   hub = hub.replace(/\{\{LANG_DIR\}\}/g, dir);
+  hub = hub.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(dir));
   hub = hub.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
   hub = hub.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
   hub = hub.replace(/\{\{HREFLANG_BLOCK_LEGAL\}\}/g, hreflangIdeas(""));
@@ -197,6 +199,7 @@ for (const { dir, file, htmlLang } of LANGS) {
 
   let ok = okTpl;
   ok = ok.replace(/\{\{LANG_DIR\}\}/g, dir);
+  ok = ok.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(dir));
   ok = ok.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
   ok = ok.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
   ok = ok.replace(/\{\{HREFLANG_BLOCK\}\}/g, hreflangIdeas("success"));

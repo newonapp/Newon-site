@@ -8,7 +8,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml } from "./hub-utils.mjs";
+import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml, fontLinksHtml} from "./hub-utils.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { COMPANY_PAGES, COMPANY_NAV_LABELS, COMPANY_HUB_REDIRECTS } from "./company-catalog.mjs";
 import { getCompanyCopy } from "./company-copy.mjs";
@@ -1405,6 +1405,7 @@ function renderPage({
 }) {
   let html = template;
   html = html.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+    html = html.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml((String(canonical).match(/\/\/[^/]+\/([^/]+)\//) || [])[1] || "en"));
   html = html.replace(/\{\{OG_LOCALE\}\}/g, ogLocale);
   html = html.replace(/\{\{OG_TYPE\}\}/g, ogType);
   html = html.replace(/\{\{CANONICAL\}\}/g, canonical);

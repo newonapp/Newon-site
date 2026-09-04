@@ -5,7 +5,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml } from "./hub-utils.mjs";
+import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml, fontLinksHtml} from "./hub-utils.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { getInternalToolsCopy } from "./internal-tools-copy.mjs";
 import { BUSINESS_SERVICE_PAGES } from "./business-service-catalog.mjs";
@@ -471,6 +471,7 @@ export function renderInternalTools() {
     const flat = flatten(loadJson(file));
     let html = template;
     html = html.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
+    html = html.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(dir));
     html = html.replace(/\{\{OG_LOCALE\}\}/g, OG_LOCALE[dir] || "en_US");
     html = html.replace(
       /\{\{CANONICAL\}\}/g,
