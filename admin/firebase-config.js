@@ -1,22 +1,19 @@
 /**
  * Newon HQ — Firebase Web App public config (newon-hq).
- *
- * Fill empty fields from Firebase Console → Project settings → Your apps → Web app "Newon HQ".
- * Do NOT put service accounts, private keys, or Admin SDK credentials here.
- *
- * Public web config is safe to ship in frontend; security is Auth + Firestore Rules.
+ * Public web config only. No service accounts, private keys, or Admin SDK.
  */
 (function (global) {
   "use strict";
 
   /** @type {Record<string, string>} */
   var config = {
-    apiKey: "",
+    apiKey: "AIzaSyD1kLxjKMJGgQwMFUgug6rAcdlvkyt4U7k",
     authDomain: "newon-hq.firebaseapp.com",
     projectId: "newon-hq",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: "",
+    storageBucket: "newon-hq.firebasestorage.app",
+    messagingSenderId: "227188651506",
+    appId: "1:227188651506:web:bc89feb7e8154a34c4676b",
+    measurementId: "G-4Y8WN7PQKX",
   };
 
   var required = ["apiKey", "authDomain", "projectId", "appId"];
