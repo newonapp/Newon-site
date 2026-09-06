@@ -125,6 +125,8 @@ const I = {
   documents: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8",
   finance: "M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
   products: "M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z",
+  health: "M22 12h-4l-3 9L9 3l-3 9H2",
+  analytics: "M4 19V5M10 19V9M16 19v-6M22 19V8",
   settings: "M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.6.9 1 1.6 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z",
 };
 
@@ -138,6 +140,8 @@ const panels = [
   "documents",
   "finance",
   "products",
+  "health",
+  "analytics",
   "settings",
 ]
   .map(
@@ -153,7 +157,7 @@ const hqHtml = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Newon HQ</title>
-  <link rel="stylesheet" href="./hq.css?v=20260904hq2d2" />
+  <link rel="stylesheet" href="./hq.css?v=20260905hq11" />
 </head>
 <body>
   <div class="hq hq--auth" id="hq-auth-wrap">
@@ -220,6 +224,8 @@ const hqHtml = `<!DOCTYPE html>
           ${navBtn("documents", "Documents", I.documents)}
           ${navBtn("finance", "Finance", I.finance)}
           <p class="hq-nav__group">System</p>
+          ${navBtn("health", "Health", I.health)}
+          ${navBtn("analytics", "Analytics", I.analytics)}
           ${navBtn("settings", "Settings", I.settings)}
         </nav>
       </div>
@@ -249,9 +255,9 @@ const hqHtml = `<!DOCTYPE html>
     </dialog>
   </div>
 
-  <script src="./firebase-config.js?v=20260904hq2d2"></script>
-  <script type="module" src="./hq-auth.js?v=20260904hq2d2"></script>
-  <script type="module" src="./hq-app.js?v=20260904hq2d2"></script>
+  <script src="./firebase-config.js?v=20260905hq11"></script>
+  <script type="module" src="./hq-auth.js?v=20260905hq11"></script>
+  <script type="module" src="./hq-app.js?v=20260905hq11"></script>
 </body>
 </html>
 `;

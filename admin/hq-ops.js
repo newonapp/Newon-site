@@ -1086,7 +1086,7 @@ export function installHqOps(api) {
         projectId: t.projectId,
       };
       if (due === todayY) today.push(row);
-      if (st === "overdue") overdue.push(row);
+      else if (st === "overdue") overdue.push(row);
       else if (st === "due_soon") week.push(row);
     });
     (cache().milestones || []).forEach((m) => {
@@ -1101,7 +1101,7 @@ export function installHqOps(api) {
         projectId: m.projectId,
       };
       if (due === todayY) today.push(row);
-      if (st === "overdue") overdue.push(row);
+      else if (st === "overdue") overdue.push(row);
       else if (st === "due_soon") week.push(row);
     });
     const atRisk = (cache().projects || []).filter((p) => {
@@ -1112,7 +1112,10 @@ export function installHqOps(api) {
   }
 
   function renderDeadlineRows(items) {
-    if (!items.length) return el("div", { style: "padding:0.85rem 1.05rem" }, [emptyMsg("None")]);
+    if (!items.length)
+      return el("div", { style: "padding:0.85rem 1.05rem" }, [
+        emptyMsg("해당 항목 없음"),
+      ]);
     return el(
       "div",
       null,
@@ -1136,12 +1139,12 @@ export function installHqOps(api) {
 
   function renderDashboardOpsPanel() {
     const { today, week, overdue, atRisk } = collectDeadlineItems();
-    return el("div", { className: "hq-grid-2" }, [
-      surfacePanel("Due today", [renderDeadlineRows(today)]),
-      surfacePanel("This week", [renderDeadlineRows(week)]),
-      surfacePanel("Overdue", [renderDeadlineRows(overdue)]),
+    return el("div", { className: "hq-grid-2 hq-ops-deadline-grid" }, [
+      surfacePanel("오늘 마감", [renderDeadlineRows(today)]),
+      surfacePanel("이번 주", [renderDeadlineRows(week)]),
+      surfacePanel("지연", [renderDeadlineRows(overdue)]),
       surfacePanel(
-        "Projects at risk",
+        "리스크 프로젝트",
         atRisk.length
           ? el(
               "div",
@@ -1161,14 +1164,16 @@ export function installHqOps(api) {
                 mid.appendChild(
                   el("p", {
                     className: "hq-row__meta",
-                    text: `Target ${ymd(p.targetDate) || "—"}`,
+                    text: `목표 ${ymd(p.targetDate) || "—"}`,
                   })
                 );
                 row.appendChild(mid);
                 return row;
               })
             )
-          : el("div", { style: "padding:0.85rem 1.05rem" }, [emptyMsg("None")])
+          : el("div", { style: "padding:0.85rem 1.05rem" }, [
+              emptyMsg("리스크 프로젝트 없음"),
+            ])
       ),
     ]);
   }

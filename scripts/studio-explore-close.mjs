@@ -21,6 +21,10 @@ const FAQ = {
       a: "가능합니다. 전략, 네이밍, 아이덴티티, 소셜, 캠페인 등 필요한 범위만 진행할 수 있습니다.",
     },
     {
+      q: "최종 금액이 사이트에 없어도 문의할 수 있나요?",
+      a: "가능합니다. 서비스별 시작가·별도 견적 안내를 참고한 뒤, 문의 폼에 목적·대략 일정·예산 감만 남겨 주시면 됩니다. 정확한 범위와 금액은 상담 후 견적으로 안내합니다.",
+    },
+    {
       q: "IP·캐릭터도 지금 의뢰할 수 있나요?",
       a: "Character Lab은 실험적으로 진행할 수 있습니다. Digital Stickers 등은 Coming Soon이며, Newon Character는 내부 프로젝트입니다.",
     },
@@ -41,6 +45,10 @@ const FAQ = {
     {
       q: "Can we hire branding or content only?",
       a: "Yes — strategy, naming, identity, social, campaign, and more, scoped to what you need.",
+    },
+    {
+      q: "Can we inquire if the final price is not listed?",
+      a: "Yes. Use the starting-price or custom-quote guidance on each service page, then leave your goal, rough timeline, and budget range in the inquiry form. Exact scope and pricing are confirmed after a short consultation.",
     },
     {
       q: "Can we start IP or character work now?",

@@ -5,10 +5,16 @@
 
 export const CRM_STATUS = ["prospect", "active", "inactive", "past"];
 export const CRM_STATUS_LABEL = {
-  prospect: "Prospect",
-  active: "Active",
-  inactive: "Inactive",
-  past: "Past",
+  prospect: "잠재",
+  active: "활성",
+  inactive: "비활성",
+  past: "과거",
+};
+const CRM_STATUS_RANK = {
+  active: 0,
+  prospect: 1,
+  inactive: 2,
+  past: 3,
 };
 
 function normEmail(v) {
@@ -74,7 +80,10 @@ export function installHqCrm(api) {
     ensureDocsMod,
     projectStatusBadge,
     statusBadge,
+    inquiryStatusBadge,
     projectHealth,
+    dataStateBanner,
+    getDataState,
   } = api;
 
   let mode = "people"; // people | companies
@@ -83,8 +92,8 @@ export function installHqCrm(api) {
   let clientTab = "overview";
   let companyTab = "overview";
   let filters = {
-    people: { status: "", companyId: "", tag: "", q: "", archived: "active", sort: "name" },
-    companies: { status: "", industry: "", tag: "", q: "", archived: "active", sort: "name" },
+    people: { status: "", companyId: "", tag: "", q: "", archived: "active", sort: "ops" },
+    companies: { status: "", industry: "", tag: "", q: "", archived: "active", sort: "ops" },
   };
 
   function cache() {
@@ -640,8 +649,8 @@ export function installHqCrm(api) {
   function renderModeTabs() {
     const wrap = el("div", { className: "hq-seg" });
     [
-      ["people", "People"],
-      ["companies", "Companies"],
+      ["people", "고객"],
+      ["companies", "회사"],
     ].forEach(([id, label]) => {
       wrap.appendChild(
         el("button", {
@@ -658,6 +667,41 @@ export function installHqCrm(api) {
       );
     });
     return wrap;
+  }
+
+  function crmStatusBadge(status) {
+    const s = String(status || "");
+    return badge(CRM_STATUS_LABEL[s] || s || "—", s || "other");
+  }
+
+  function compareClientsOps(a, b) {
+    const aActive = projectsForClient(a.id).some((p) => p.status === "active") ? 0 : 1;
+    const bActive = projectsForClient(b.id).some((p) => p.status === "active") ? 0 : 1;
+    if (aActive !== bActive) return aActive - bActive;
+    const ra = CRM_STATUS_RANK[a.status] != null ? CRM_STATUS_RANK[a.status] : 9;
+    const rb = CRM_STATUS_RANK[b.status] != null ? CRM_STATUS_RANK[b.status] : 9;
+    if (ra !== rb) return ra - rb;
+    const aa = String(entityLastActivity("client", a.id) || "");
+    const ba = String(entityLastActivity("client", b.id) || "");
+    if (aa !== ba) return ba.localeCompare(aa);
+    return String(a.name || "").localeCompare(String(b.name || ""), "ko");
+  }
+
+  function compareCompaniesOps(a, b) {
+    const aActive = projectsForCompany(a.id).some((p) => p.status === "active") ? 0 : 1;
+    const bActive = projectsForCompany(b.id).some((p) => p.status === "active") ? 0 : 1;
+    if (aActive !== bActive) return aActive - bActive;
+    const ra = CRM_STATUS_RANK[a.status] != null ? CRM_STATUS_RANK[a.status] : 9;
+    const rb = CRM_STATUS_RANK[b.status] != null ? CRM_STATUS_RANK[b.status] : 9;
+    if (ra !== rb) return ra - rb;
+    const aa = String(entityLastActivity("company", a.id) || "");
+    const ba = String(entityLastActivity("company", b.id) || "");
+    if (aa !== ba) return ba.localeCompare(aa);
+    return String(a.name || "").localeCompare(String(b.name || ""), "ko");
+  }
+
+  function crmDataState() {
+    return typeof getDataState === "function" ? getDataState() : { status: "ok" };
   }
 
   function renderDetailTabs(active, onChange, items) {
@@ -716,25 +760,37 @@ export function installHqCrm(api) {
           String(entityLastActivity("client", a.id) || "")
         );
       }
-      return String(a.name || "").localeCompare(String(b.name || ""));
+      if (f.sort === "name") {
+        return String(a.name || "").localeCompare(String(b.name || ""), "ko");
+      }
+      return compareClientsOps(a, b);
     });
 
     const allTags = new Set();
     clientsList().forEach((c) => parseTags(c.tags).forEach((t) => allTags.add(t)));
 
+    const ds = crmDataState();
+    const activeCount = clientsList().filter((c) => !c.archived && c.status === "active").length;
     root.appendChild(
       pageHeader("clients", [
         el("span", {
           className: "hq-page-header__count",
-          text: `${list.length} shown`,
+          text:
+            ds.status === "loading"
+              ? "로딩 중…"
+              : `표시 ${list.length} · 활성 ${activeCount}`,
         }),
-        btn("+ Client", { onClick: () => openClientForm(null) }),
-        btn("+ Company", {
+        btn("+ 고객", { onClick: () => openClientForm(null) }),
+        btn("+ 회사", {
           className: "hq-btn hq-btn--ghost",
           onClick: () => openCompanyForm(null),
         }),
       ])
     );
+    if (typeof dataStateBanner === "function") {
+      const banner = dataStateBanner();
+      if (banner) root.appendChild(banner);
+    }
     root.appendChild(renderModeTabs());
     root.appendChild(el("div", { style: "height:0.65rem" }));
 
@@ -745,7 +801,7 @@ export function installHqCrm(api) {
           renderClients(root);
         },
       },
-      [{ value: "", label: "All statuses" }].concat(
+      [{ value: "", label: "상태 전체" }].concat(
         CRM_STATUS.map((s) => ({ value: s, label: CRM_STATUS_LABEL[s] }))
       ),
       f.status
@@ -762,7 +818,7 @@ export function installHqCrm(api) {
           renderClients(root);
         },
       },
-      [{ value: "", label: "All tags" }].concat(
+      [{ value: "", label: "태그 전체" }].concat(
         [...allTags].sort().map((t) => ({ value: t, label: t }))
       ),
       f.tag
@@ -775,20 +831,32 @@ export function installHqCrm(api) {
         },
       },
       [
-        { value: "name", label: "Sort: Name" },
-        { value: "revenue", label: "Sort: Revenue" },
-        { value: "activity", label: "Sort: Activity" },
+        { value: "ops", label: "정렬: 운영" },
+        { value: "activity", label: "정렬: 최근 활동" },
+        { value: "revenue", label: "정렬: 매출" },
+        { value: "name", label: "정렬: 이름" },
       ],
       f.sort
     );
     const qIn = input({
+      className: "hq-input hq-input--search",
       value: f.q,
-      placeholder: "Search name / email / phone / company",
+      placeholder: "이름 / 이메일 / 전화 / 회사 검색…",
+      "aria-label": "고객 검색",
     });
-    qIn.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        f.q = qIn.value.trim();
-        renderClients(root);
+    qIn.addEventListener("input", () => {
+      f.q = qIn.value;
+      const caret = qIn.selectionStart;
+      renderClients(root);
+      const again = root.querySelector('input[aria-label="고객 검색"]');
+      if (again) {
+        again.focus();
+        try {
+          const pos = typeof caret === "number" ? caret : again.value.length;
+          again.setSelectionRange(pos, pos);
+        } catch {
+          /* ignore */
+        }
       }
     });
     root.appendChild(
@@ -798,14 +866,7 @@ export function installHqCrm(api) {
         tagF,
         sortF,
         qIn,
-        btn("Search", {
-          className: "hq-btn hq-btn--ghost",
-          onClick: () => {
-            f.q = qIn.value.trim();
-            renderClients(root);
-          },
-        }),
-        btn(f.archived === "archived" ? "Active" : "Archived", {
+        btn(f.archived === "archived" ? "운영 목록" : "보관 보기", {
           className: "hq-btn hq-btn--ghost",
           onClick: () => {
             f.archived = f.archived === "archived" ? "active" : "archived";
@@ -815,21 +876,25 @@ export function installHqCrm(api) {
       ])
     );
 
+    if (ds.status === "loading" && !clientsList().length) {
+      root.appendChild(
+        emptyState("고객 로딩 중", "Firestore에서 고객 목록을 불러오는 중입니다.", null)
+      );
+      return;
+    }
     if (!clientsList().length && f.archived === "active") {
       root.appendChild(
         emptyState(
-          "No clients yet",
-          "Create a client or convert a lead into a CRM contact.",
-          btn("+ Client", { onClick: () => openClientForm(null) })
+          "아직 고객이 없습니다",
+          "고객을 추가하거나 문의를 CRM으로 전환하면 여기에 표시됩니다.",
+          btn("+ 고객", { onClick: () => openClientForm(null) })
         )
       );
       return;
     }
     if (!list.length) {
       root.appendChild(
-        el("div", { style: "padding:1rem 0" }, [
-          emptyMsg("No clients match filters."),
-        ])
+        emptyState("조건에 맞는 고객 없음", "필터를 바꾸거나 검색어를 지워 보세요.", null)
       );
       return;
     }
@@ -840,6 +905,7 @@ export function installHqCrm(api) {
       const activeProjects = projects.filter((p) => p.status === "active").length;
       const rev = revenueStats("client", c.id).recorded;
       const tr = el("tr", {
+        className: "hq-table__row--clickable",
         style: "cursor:pointer",
         onClick: () => {
           detailKind = "client";
@@ -852,13 +918,13 @@ export function installHqCrm(api) {
       tr.appendChild(el("td", { text: (co && co.name) || "—" }));
       tr.appendChild(el("td", { text: c.email || "—" }));
       tr.appendChild(el("td", { text: c.phone || "—" }));
-      tr.appendChild(el("td", null, [badge(CRM_STATUS_LABEL[c.status] || c.status || "—", c.status)]));
+      tr.appendChild(el("td", null, [crmStatusBadge(c.status)]));
       tr.appendChild(el("td", { text: String(activeProjects) }));
       tr.appendChild(el("td", { text: formatKrw(rev) }));
       tr.appendChild(el("td", { text: entityLastActivity("client", c.id) || "—" }));
       const acts = el("td", { className: "hq-actions-cell" });
       acts.appendChild(
-        btn("Edit", {
+        btn("수정", {
           className: "hq-btn hq-btn--small",
           onClick: (e) => {
             e.stopPropagation();
@@ -868,21 +934,21 @@ export function installHqCrm(api) {
       );
       if (!c.archived) {
         acts.appendChild(
-          btn("Archive", {
+          btn("보관", {
             className: "hq-btn hq-btn--small hq-btn--ghost",
             onClick: (e) => {
               e.stopPropagation();
-              confirmDelete("Archive this client?", async () => {
+              confirmDelete("이 고객을 보관할까요?", async () => {
                 try {
                   await updateDoc(doc(ctx().db, COL.clients, c.id), {
                     archived: true,
                     updatedAt: serverTimestamp(),
                     updatedBy: uid(),
                   });
-                  toast("Archived", "ok");
+                  toast("보관됨", "ok");
                   await refreshAndRender();
                 } catch {
-                  toast("Archive failed", "err");
+                  toast("보관 실패", "err");
                 }
               });
             },
@@ -894,19 +960,9 @@ export function installHqCrm(api) {
     });
     root.appendChild(
       table(
-        [
-          "Name",
-          "Company",
-          "Email",
-          "Phone",
-          "Status",
-          "Active Projects",
-          "Total Revenue",
-          "Last Activity",
-          "",
-        ],
+        ["이름", "회사", "이메일", "전화", "상태", "진행 프로젝트", "매출", "최근 활동", ""],
         rows,
-        "No clients"
+        "조건에 맞는 고객이 없습니다."
       )
     );
 
@@ -925,7 +981,7 @@ export function installHqCrm(api) {
       });
       const top = el("div", { className: "hq-item-card__top" });
       top.appendChild(el("p", { className: "hq-item-card__title", text: c.name || "—" }));
-      top.appendChild(badge(CRM_STATUS_LABEL[c.status] || c.status || "—", c.status));
+      top.appendChild(crmStatusBadge(c.status));
       card.appendChild(top);
       card.appendChild(
         el("p", {
@@ -967,7 +1023,10 @@ export function installHqCrm(api) {
           revenueStats("company", a.id).recorded
         );
       }
-      return String(a.name || "").localeCompare(String(b.name || ""));
+      if (f.sort === "name") {
+        return String(a.name || "").localeCompare(String(b.name || ""), "ko");
+      }
+      return compareCompaniesOps(a, b);
     });
 
     const industries = [
@@ -980,19 +1039,28 @@ export function installHqCrm(api) {
     const allTags = new Set();
     companiesList().forEach((c) => parseTags(c.tags).forEach((t) => allTags.add(t)));
 
+    const ds = crmDataState();
+    const activeCount = companiesList().filter((c) => !c.archived && c.status === "active").length;
     root.appendChild(
       pageHeader("clients", [
         el("span", {
           className: "hq-page-header__count",
-          text: `${list.length} companies`,
+          text:
+            ds.status === "loading"
+              ? "로딩 중…"
+              : `표시 ${list.length} · 활성 ${activeCount}`,
         }),
-        btn("+ Company", { onClick: () => openCompanyForm(null) }),
-        btn("+ Client", {
+        btn("+ 회사", { onClick: () => openCompanyForm(null) }),
+        btn("+ 고객", {
           className: "hq-btn hq-btn--ghost",
           onClick: () => openClientForm(null),
         }),
       ])
     );
+    if (typeof dataStateBanner === "function") {
+      const banner = dataStateBanner();
+      if (banner) root.appendChild(banner);
+    }
     root.appendChild(renderModeTabs());
     root.appendChild(el("div", { style: "height:0.65rem" }));
 
@@ -1003,7 +1071,7 @@ export function installHqCrm(api) {
           renderClients(root);
         },
       },
-      [{ value: "", label: "All statuses" }].concat(
+      [{ value: "", label: "상태 전체" }].concat(
         CRM_STATUS.map((s) => ({ value: s, label: CRM_STATUS_LABEL[s] }))
       ),
       f.status
@@ -1015,7 +1083,7 @@ export function installHqCrm(api) {
           renderClients(root);
         },
       },
-      [{ value: "", label: "All industries" }].concat(
+      [{ value: "", label: "업종 전체" }].concat(
         industries.map((i) => ({ value: i, label: i }))
       ),
       f.industry
@@ -1027,26 +1095,54 @@ export function installHqCrm(api) {
           renderClients(root);
         },
       },
-      [{ value: "", label: "All tags" }].concat(
+      [{ value: "", label: "태그 전체" }].concat(
         [...allTags].sort().map((t) => ({ value: t, label: t }))
       ),
       f.tag
     );
-    const qIn = input({ value: f.q, placeholder: "Search companies" });
+    const sortF = select(
+      {
+        onChange: (e) => {
+          f.sort = e.target.value;
+          renderClients(root);
+        },
+      },
+      [
+        { value: "ops", label: "정렬: 운영" },
+        { value: "revenue", label: "정렬: 매출" },
+        { value: "name", label: "정렬: 이름" },
+      ],
+      f.sort
+    );
+    const qIn = input({
+      className: "hq-input hq-input--search",
+      value: f.q,
+      placeholder: "회사명 / 업종 검색…",
+      "aria-label": "회사 검색",
+    });
+    qIn.addEventListener("input", () => {
+      f.q = qIn.value;
+      const caret = qIn.selectionStart;
+      renderClients(root);
+      const again = root.querySelector('input[aria-label="회사 검색"]');
+      if (again) {
+        again.focus();
+        try {
+          const pos = typeof caret === "number" ? caret : again.value.length;
+          again.setSelectionRange(pos, pos);
+        } catch {
+          /* ignore */
+        }
+      }
+    });
     root.appendChild(
       toolbar([
         statusF,
         indF,
         tagF,
+        sortF,
         qIn,
-        btn("Search", {
-          className: "hq-btn hq-btn--ghost",
-          onClick: () => {
-            f.q = qIn.value.trim();
-            renderClients(root);
-          },
-        }),
-        btn(f.archived === "archived" ? "Active" : "Archived", {
+        btn(f.archived === "archived" ? "운영 목록" : "보관 보기", {
           className: "hq-btn hq-btn--ghost",
           onClick: () => {
             f.archived = f.archived === "archived" ? "active" : "archived";
@@ -1056,21 +1152,25 @@ export function installHqCrm(api) {
       ])
     );
 
+    if (ds.status === "loading" && !companiesList().length) {
+      root.appendChild(
+        emptyState("회사 로딩 중", "Firestore에서 회사 목록을 불러오는 중입니다.", null)
+      );
+      return;
+    }
     if (!companiesList().length && f.archived === "active") {
       root.appendChild(
         emptyState(
-          "No companies yet",
-          "Create a company to group clients and projects.",
-          btn("+ Company", { onClick: () => openCompanyForm(null) })
+          "아직 회사가 없습니다",
+          "회사를 추가하면 고객·프로젝트를 묶어 관리할 수 있습니다.",
+          btn("+ 회사", { onClick: () => openCompanyForm(null) })
         )
       );
       return;
     }
     if (!list.length) {
       root.appendChild(
-        el("div", { style: "padding:1rem 0" }, [
-          emptyMsg("No companies match filters."),
-        ])
+        emptyState("조건에 맞는 회사 없음", "필터를 바꾸거나 검색어를 지워 보세요.", null)
       );
       return;
     }
@@ -1084,6 +1184,7 @@ export function installHqCrm(api) {
       ).length;
       const rev = revenueStats("company", c.id).recorded;
       const tr = el("tr", {
+        className: "hq-table__row--clickable",
         style: "cursor:pointer",
         onClick: () => {
           detailKind = "company";
@@ -1094,14 +1195,14 @@ export function installHqCrm(api) {
       });
       tr.appendChild(el("td", { text: c.name || "—" }));
       tr.appendChild(el("td", { text: c.industry || "—" }));
-      tr.appendChild(el("td", null, [badge(CRM_STATUS_LABEL[c.status] || c.status || "—", c.status)]));
+      tr.appendChild(el("td", null, [crmStatusBadge(c.status)]));
       tr.appendChild(el("td", { text: String(contacts) }));
       tr.appendChild(el("td", { text: String(activeProjects) }));
       tr.appendChild(el("td", { text: formatKrw(rev) }));
       tr.appendChild(el("td", { text: entityLastActivity("company", c.id) || "—" }));
       const acts = el("td", { className: "hq-actions-cell" });
       acts.appendChild(
-        btn("Edit", {
+        btn("수정", {
           className: "hq-btn hq-btn--small",
           onClick: (e) => {
             e.stopPropagation();
@@ -1111,21 +1212,21 @@ export function installHqCrm(api) {
       );
       if (!c.archived) {
         acts.appendChild(
-          btn("Archive", {
+          btn("보관", {
             className: "hq-btn hq-btn--small hq-btn--ghost",
             onClick: (e) => {
               e.stopPropagation();
-              confirmDelete("Archive this company?", async () => {
+              confirmDelete("이 회사를 보관할까요?", async () => {
                 try {
                   await updateDoc(doc(ctx().db, COL.companies, c.id), {
                     archived: true,
                     updatedAt: serverTimestamp(),
                     updatedBy: uid(),
                   });
-                  toast("Archived", "ok");
+                  toast("보관됨", "ok");
                   await refreshAndRender();
                 } catch {
-                  toast("Archive failed", "err");
+                  toast("보관 실패", "err");
                 }
               });
             },
@@ -1137,18 +1238,9 @@ export function installHqCrm(api) {
     });
     root.appendChild(
       table(
-        [
-          "Company",
-          "Industry",
-          "Status",
-          "Contacts",
-          "Active Projects",
-          "Total Revenue",
-          "Last Activity",
-          "",
-        ],
+        ["회사", "업종", "상태", "연락처", "진행 프로젝트", "매출", "최근 활동", ""],
         rows,
-        "No companies"
+        "조건에 맞는 회사가 없습니다."
       )
     );
 
@@ -1166,7 +1258,7 @@ export function installHqCrm(api) {
       });
       const top = el("div", { className: "hq-item-card__top" });
       top.appendChild(el("p", { className: "hq-item-card__title", text: c.name || "—" }));
-      top.appendChild(badge(CRM_STATUS_LABEL[c.status] || c.status || "—", c.status));
+      top.appendChild(crmStatusBadge(c.status));
       card.appendChild(top);
       card.appendChild(
         el("p", {
@@ -1317,7 +1409,7 @@ export function installHqCrm(api) {
       else {
         leads.forEach((l) => {
           const row = el("div", { className: "hq-row" });
-          row.appendChild(statusBadge(l.status));
+          row.appendChild(inquiryStatusBadge(l.status));
           const mid = el("div");
           mid.appendChild(el("p", { className: "hq-row__title", text: l.name || "—" }));
           mid.appendChild(
@@ -1678,7 +1770,7 @@ export function installHqCrm(api) {
       else
         leads.forEach((l) => {
           const row = el("div", { className: "hq-row" });
-          row.appendChild(statusBadge(l.status));
+          row.appendChild(inquiryStatusBadge(l.status));
           row.appendChild(
             el("div", null, [
               el("p", { className: "hq-row__title", text: l.name || "—" }),
@@ -1868,22 +1960,24 @@ export function installHqCrm(api) {
     const withProjects = clients.filter(
       (c) => projectsForClient(c.id).some((p) => p.status === "active")
     ).length;
-    return el("div", { className: "hq-stat-grid" }, [
+    const ds = crmDataState();
+    const v = (n) => (ds.status === "loading" && !clients.length && !companies.length ? "—" : String(n));
+    return el("div", { className: "hq-stat-grid hq-stat-grid--compact" }, [
       el("div", { className: "hq-card hq-stat" }, [
-        el("p", { className: "hq-card__label", text: "Active clients" }),
-        el("p", { className: "hq-card__value", text: String(activeClients) }),
+        el("p", { className: "hq-card__label", text: "활성 고객" }),
+        el("p", { className: "hq-card__value", text: v(activeClients) }),
       ]),
       el("div", { className: "hq-card hq-stat" }, [
-        el("p", { className: "hq-card__label", text: "Prospects" }),
-        el("p", { className: "hq-card__value", text: String(prospects) }),
+        el("p", { className: "hq-card__label", text: "잠재 고객" }),
+        el("p", { className: "hq-card__value", text: v(prospects) }),
       ]),
       el("div", { className: "hq-card hq-stat" }, [
-        el("p", { className: "hq-card__label", text: "Active companies" }),
-        el("p", { className: "hq-card__value", text: String(activeCompanies) }),
+        el("p", { className: "hq-card__label", text: "활성 회사" }),
+        el("p", { className: "hq-card__value", text: v(activeCompanies) }),
       ]),
       el("div", { className: "hq-card hq-stat" }, [
-        el("p", { className: "hq-card__label", text: "Clients w/ active projects" }),
-        el("p", { className: "hq-card__value", text: String(withProjects) }),
+        el("p", { className: "hq-card__label", text: "진행 프로젝트 연결" }),
+        el("p", { className: "hq-card__value", text: v(withProjects) }),
       ]),
     ]);
   }
