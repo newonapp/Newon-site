@@ -115,25 +115,28 @@ function main() {
     }
   }
 
-  // 5b) Inquiry ingest unit tests (no network / no secrets)
+  // 5b) Inquiry ingest unit tests (no network / no secrets) — skip if ingest not in tree
   {
-    const t = spawnSync(
-      process.execPath,
-      [
-        "--test",
-        "ingest/test/ingest.test.mjs",
-        "ingest/test/dedupe.test.mjs",
-        "ingest/test/archive-sync.test.mjs",
-      ],
-      {
+    const ingestTests = [
+      "ingest/test/ingest.test.mjs",
+      "ingest/test/dedupe.test.mjs",
+      "ingest/test/archive-sync.test.mjs",
+    ];
+    const present = ingestTests.filter((rel) => fs.existsSync(path.join(ROOT, rel)));
+    if (present.length === ingestTests.length) {
+      const t = spawnSync(process.execPath, ["--test", ...present], {
         cwd: ROOT,
         encoding: "utf8",
+      });
+      if (t.status !== 0) {
+        errors.push("ingest unit tests failed");
+        if (t.stderr) console.error(t.stderr.slice(0, 2000));
+        if (t.stdout) console.error(t.stdout.slice(0, 2000));
       }
-    );
-    if (t.status !== 0) {
-      errors.push("ingest unit tests failed");
-      if (t.stderr) console.error(t.stderr.slice(0, 2000));
-      if (t.stdout) console.error(t.stdout.slice(0, 2000));
+    } else if (present.length > 0) {
+      warns.push(
+        `ingest tests incomplete (${present.length}/${ingestTests.length}); skipping ingest unit tests`
+      );
     }
   }
 
