@@ -41,6 +41,7 @@ const FORBIDDEN_PUBLISH_TOP = [
   "backup",
   "backups",
   "_restore_tmp",
+  "ingest",
 ];
 
 function parseArgs(argv) {
@@ -111,6 +112,28 @@ function main() {
       if (imp.status !== 0) {
         errors.push(`SoT module failed to load: ${mod}`);
       }
+    }
+  }
+
+  // 5b) Inquiry ingest unit tests (no network / no secrets)
+  {
+    const t = spawnSync(
+      process.execPath,
+      [
+        "--test",
+        "ingest/test/ingest.test.mjs",
+        "ingest/test/dedupe.test.mjs",
+        "ingest/test/archive-sync.test.mjs",
+      ],
+      {
+        cwd: ROOT,
+        encoding: "utf8",
+      }
+    );
+    if (t.status !== 0) {
+      errors.push("ingest unit tests failed");
+      if (t.stderr) console.error(t.stderr.slice(0, 2000));
+      if (t.stdout) console.error(t.stdout.slice(0, 2000));
     }
   }
 

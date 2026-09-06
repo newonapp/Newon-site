@@ -301,6 +301,21 @@ export const MEDIA_ITEMS_HUB = [
 
   /* —— Instagram (@newon.app) — thumbnail + external link (no embed) —— */
   {
+    id: "ig-Dc5KNRQH1Md",
+    platform: "instagram",
+    category: "PRODUCT",
+    igType: "POST",
+    titleKo: "세 번째 앱은 SubPing — 구독료 한눈에 관리",
+    titleEn: "Third up: SubPing — track every subscription in one place",
+    descriptionKo: "결제일 알림·월간·연간 구독 지출까지, 매달 빠져나가는 구독료를 놓치지 않게.",
+    descriptionEn: "Payment reminders and monthly/yearly spend — so recurring fees don’t slip by.",
+    date: "2026-09-04",
+    url: "https://www.instagram.com/newon.app/p/Dc5KNRQH1Md/",
+    embedUrl: null,
+    thumbnail: "/media-thumbs/ig-Dc5KNRQH1Md.jpg",
+    duration: null,
+  },
+  {
     id: "ig-Dc2Vu8Vn4ax",
     platform: "instagram",
     category: "PRODUCT",

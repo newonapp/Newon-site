@@ -7008,6 +7008,7 @@ const DETAIL = {
     displayName: "DIGITAL STICKERS",
     statusLabel: { ko: "COMING SOON", en: "COMING SOON" },
     eyebrowSub: { ko: "DIGITAL STICKERS", en: "DIGITAL STICKERS" },
+    seoTitle: { ko: "Digital Stickers | Newon Studio", en: "Digital Stickers | Newon Studio" },
     meta: {
       ko: "Digital Stickers — Coming Soon. 캐릭터 감정을 디지털 표현으로 확장하는 영역.",
       en: "Digital Stickers — Coming Soon. Extending character emotion into digital expressions.",
@@ -7052,8 +7053,8 @@ const DETAIL = {
     },
     altCtas: {
       ko: [
-        { href: "../../", label: "VIEW STUDIO →" },
-        { href: "../../../resources/labs/", label: "FOLLOW THE PROJECT →" },
+        { href: "../../", label: "Newon Studio 보기 →" },
+        { href: "../../../resources/labs/", label: "프로젝트 팔로우 →" },
       ],
       en: [
         { href: "../../", label: "VIEW STUDIO →" },

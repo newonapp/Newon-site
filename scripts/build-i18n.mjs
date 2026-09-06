@@ -596,15 +596,12 @@ function writeSitemap() {
     addAllLocales(`business/${route}`, "0.65", "monthly");
   }
 
-  // Studio hub + pillars + indexable service details
+  // Studio hub + pillars + all public service details (incl. Coming Soon / Internal pages)
   addAllLocales("studio", "0.7", "monthly");
   for (const pillar of Object.keys(STUDIO_PILLAR_SERVICE_SLUGS)) {
     addAllLocales(`studio/${pillar}`, "0.65", "monthly");
   }
-  const skipStudioStatus = new Set(["COMING_SOON", "BUILDING"]);
   for (const slug of Object.keys(STUDIO_SERVICE_PRICING)) {
-    const cfg = STUDIO_SERVICE_PRICING[slug];
-    if (skipStudioStatus.has(String(cfg.status || "").toUpperCase())) continue;
     const pagePath = studioServicePagePath(slug);
     if (!pagePath) continue;
     addAllLocales(pagePath, "0.6", "monthly");

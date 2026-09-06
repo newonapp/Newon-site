@@ -89,7 +89,7 @@ export function getPortfolioNowGroups(lang = "ko") {
       statusHint: homeT(lang, "nowExploringHint", ""),
       items: [
         { title: homeT(lang, "nowItemCharacter", "Character Lab"), href: `${prefix}resources/labs/character-lab/`, category: "LABS" },
-        { title: homeT(lang, "nowItemCreative", "Newon Studio"), href: `${prefix}business/creative/`, category: "STUDIO" },
+        { title: homeT(lang, "nowItemCreative", "Newon Studio"), href: `${prefix}studio/`, category: "STUDIO" },
       ],
     },
   ];

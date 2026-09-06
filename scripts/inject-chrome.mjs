@@ -5,7 +5,7 @@ import { renderStudioHeader, renderStudioFooter, renderGlobalHeader, renderCompa
 import { CHROME_HEAD_CSS } from "./hub-utils.mjs";
 
 const GnavCss = "gnav-mega.css?v=20260902nav1";
-const SiteChromeJs = "site-chrome.js?v=20260902nav2";
+const SiteChromeJs = "site-chrome.js?v=20260904a11y1";
 
 function injectHeadCss(html) {
   let out = html;
@@ -110,5 +110,5 @@ export function replaceLegacyChrome(
 }
 
 export const CHROME_SCRIPTS = `<script src="/analytics.js?v=20260904sec1" defer></script>
-    <script src="/search.js?v=20260904sec1" defer></script>
+    <script src="/search.js?v=20260904a11y1" defer></script>
     <script src="/${SiteChromeJs}" defer></script>`;

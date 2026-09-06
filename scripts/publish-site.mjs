@@ -316,6 +316,10 @@ function verifySitemap(sitemapPath, publishRoot) {
     "https://www.newon.app/ko/business/automation/workflow/",
     "https://www.newon.app/ko/studio/",
     "https://www.newon.app/ko/studio/digital/app-ui-ux/",
+    "https://www.newon.app/ko/studio/ip/digital-stickers/",
+    "https://www.newon.app/ko/studio/ip/newon-character/",
+    "https://www.newon.app/en/studio/ip/digital-stickers/",
+    "https://www.newon.app/en/studio/ip/newon-character/",
     "https://www.newon.app/ko/resources/blog/",
     "https://www.newon.app/ko/portfolio/",
   ];

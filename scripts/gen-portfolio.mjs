@@ -129,7 +129,7 @@ function foot(lang, { base = "../", hub = false } = {}) {
     <script src="/lang-dropdown.js"></script>
     <script src="/portfolio/portfolio.js"></script>
     <script src="/analytics.js?v=20260904sec1" defer></script>
-    <script src="/search.js?v=20260904sec1" defer></script>
+    <script src="/search.js?v=20260904a11y1" defer></script>
     <script src="/site-chrome.js?v=20260826gnav5" defer></script>
   </body>
 </html>

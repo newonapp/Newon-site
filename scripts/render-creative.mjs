@@ -110,9 +110,9 @@ ${xdef}
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" href="/logo.png" />
   ${fontLinksHtml(dir)}
-  <link rel="stylesheet" href="/styles.css?v=20260904perf1" />
+  <link rel="stylesheet" href="/styles.css?v=20260904a11y1" />
   <link rel="stylesheet" href="/hub-pages.css?v=20260826vs" />
-  <link rel="stylesheet" href="/gnav-mega.css?v=20260904lang1" />
+  <link rel="stylesheet" href="/gnav-mega.css?v=20260904a11y1" />
   <link rel="stylesheet" href="/business-type.css?v=20260827type4" />
   <link rel="stylesheet" href="/business-creative.css?v=20260827type1" />
   <script src="/theme-shell.js?v=20260904perf1"></script>
