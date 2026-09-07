@@ -29,7 +29,7 @@ window.NEWON_CARD = {
     email: "newon@newon.app",
     website: "https://www.newon.app/ko/",
   },
-  linkOrder: ["home", "portfolio", "pages", "appStore", "googlePlay", "contact", "saveContact"],
+  linkOrder: ["home", "ir", "portfolio", "pages", "appStore", "googlePlay", "contact", "saveContact"],
   links: {
     home: {
       type: "link",
@@ -37,6 +37,14 @@ window.NEWON_CARD = {
       href: "/ko/",
       label: "Newon",
       hint: "공식 웹사이트",
+      external: false,
+    },
+    ir: {
+      type: "link",
+      icon: "ir",
+      href: "/ir/",
+      label: "NEWON IR",
+      hint: "투자 자료",
       external: false,
     },
     portfolio: {

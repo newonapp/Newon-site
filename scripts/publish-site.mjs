@@ -130,6 +130,7 @@ const PUBLISH_COPY_DIRS = [
   { from: "business", to: "business", required: true },
   { from: "404-human", to: "404-human", required: true },
   { from: "card-n7x4k9", to: "card-n7x4k9", required: true },
+  { from: "ir", to: "ir", required: true },
   { from: "portfolio", to: "portfolio", required: true },
   { from: "tools", to: "tools", required: true },
   { from: "products", to: "products", required: false },
@@ -291,6 +292,7 @@ function verifySitemap(sitemapPath, publishRoot) {
   }
   const banned = [
     "card-n7x4k9",
+    "/ir/",
     "/admin/",
     "delete-account",
     "/success/",
@@ -439,6 +441,9 @@ function verify() {
   required.push(path.join(OUT, "card-n7x4k9", "index.html"));
   required.push(path.join(OUT, "card-n7x4k9", "card-config.js"));
   required.push(path.join(OUT, "card-n7x4k9", "nawon-kyung.vcf"));
+  required.push(path.join(OUT, "ir", "index.html"));
+  required.push(path.join(OUT, "ir", "ir.css"));
+  required.push(path.join(OUT, "ir", "ir.js"));
   required.push(path.join(OUT, "portfolio", "index.html"));
   required.push(path.join(OUT, "portfolio", "portfolio.css"));
   required.push(path.join(OUT, "portfolio", "portfolio.js"));
@@ -454,6 +459,10 @@ function verify() {
   const robots = fs.readFileSync(path.join(OUT, "robots.txt"), "utf8");
   if (!robots.includes("Disallow: /card-n7x4k9")) {
     console.error("publish-site verify: robots.txt must disallow the card QR page");
+    process.exit(1);
+  }
+  if (!robots.includes("Disallow: /ir/")) {
+    console.error("publish-site verify: robots.txt must disallow /ir/");
     process.exit(1);
   }
   if (!robots.includes("Disallow: /admin/")) {
