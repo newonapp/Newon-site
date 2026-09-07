@@ -428,16 +428,25 @@ body.oxm-body:has(.oxm-app[data-theme="light"]) {
 }
 
 .oxm-part-chip {
+  appearance: none;
+  -webkit-appearance: none;
   display: inline-block;
   padding: 3px 8px;
   border-radius: var(--ox-radius-6);
   background: var(--ox-input);
   border: 1px solid var(--ox-menu-border);
   color: var(--ox-subtitle);
+  font-family: inherit;
   font-size: 11px;
   font-weight: 700;
   line-height: 1;
   margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.oxm-part-chip:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
 }
 
 .oxm-habit-name {
@@ -613,9 +622,22 @@ body.oxm-body:has(.oxm-app[data-theme="light"]) {
 
 .oxm-habit-add {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin: 0 0 12px;
   align-items: stretch;
+}
+
+.oxm-habit-part {
+  flex: 0 0 auto;
+  min-width: 4.5rem;
+  border: 1px solid var(--ox-menu-border);
+  border-radius: var(--ox-radius-6);
+  background: var(--ox-input);
+  color: var(--ox-label);
+  padding: 10px 8px;
+  font-family: inherit;
+  font-size: 13px;
 }
 
 .oxm-habit-add input {
@@ -720,6 +742,99 @@ body.oxm-body:has(.oxm-app[data-theme="light"]) {
 .oxm-cell--disabled {
   opacity: 0.35;
   cursor: not-allowed;
+}
+
+.oxm-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.oxm-panel-body {
+  flex: 1;
+  overflow: auto;
+  padding: 16px 20px 28px;
+}
+
+.oxm-panel-label {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ox-hint);
+}
+
+.oxm-panel-label--mt {
+  margin-top: 20px;
+}
+
+.oxm-panel-email {
+  margin: 0 0 8px;
+  word-break: break-all;
+}
+
+.oxm-goal-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.oxm-goal-input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--ox-menu-border);
+  border-radius: var(--ox-radius-6);
+  background: var(--ox-input);
+  color: var(--ox-label);
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.oxm-accent-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.oxm-accent-swatch {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.oxm-accent-swatch.is-on {
+  border-color: var(--ox-label);
+  box-shadow: 0 0 0 1px var(--ox-bg);
+}
+
+.oxm-panel-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.oxm-stats-line {
+  margin: 0 0 8px;
+  color: var(--ox-label);
+  font-size: 15px;
+}
+
+.oxm-stats-list {
+  margin: 12px 0 0;
+  padding-left: 1.2em;
+  color: var(--ox-subtitle);
+  font-size: 14px;
+}
+
+.oxm-stats-list li {
+  margin-bottom: 6px;
 }
 
 /* Desktop web: month grid + today side-by-side (not a phone frame) */

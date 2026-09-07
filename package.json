@@ -14,6 +14,7 @@
     "monitor:production:smoke": "node scripts/monitoring/check-production.mjs --smoke",
     "monitor:production:report": "node scripts/monitoring/check-production.mjs --report-only",
     "check:fast": "node scripts/ci/fast-check.mjs",
+    "test:ox-month-web": "node --test apps/ox-month/ox-month-web.test.mjs",
     "check:fast:publish": "node scripts/ci/fast-check.mjs --publish-root _publish",
     "test:ingest": "node --test ingest/test/*.test.mjs",
     "check:ingest": "npm --prefix ingest run check",

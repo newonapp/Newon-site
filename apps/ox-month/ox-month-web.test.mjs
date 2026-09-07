@@ -39,6 +39,14 @@ import {
 } from "./ox-month-migrate-policy.mjs";
 import { savePrefsPatchWithConflictRetry } from "./ox-month-prefs-save.mjs";
 import { saveOxIntentionWithConflictRetry } from "./ox-month-ox-save.mjs";
+import { resolveAccents } from "./ox-month-accents.mjs";
+import {
+  computeMonthStats,
+  goalsPrefsKey,
+  goalsStorageMonthKey,
+  parseGoalsMap,
+  serializeGoalsMap,
+} from "./ox-month-stats.mjs";
 import {
   assertNoClientIdentityInBody,
   assertNoClientIdentityInUrl,
@@ -972,5 +980,55 @@ describe("migration conflict + idempotency policy", () => {
     });
     assert.equal(d.action, "blocked");
     assert.equal(d.reason, "no_local_data");
+  });
+});
+
+describe("ox-month accents + stats + setPart", () => {
+  it("resolves free default accents", () => {
+    const a = resolveAccents({});
+    assert.equal(a.oId, "c20");
+    assert.equal(a.xId, "c00");
+    assert.equal(a.oHex, "#00FF87");
+  });
+
+  it("computes month stats and goals map", () => {
+    const titles = serializeHabitTitles([
+      { title: "Run", part: 0 },
+      { title: "Read", part: 2 },
+    ]);
+    const check = JSON.stringify({
+      "2026-09-01": { Run: "o", Read: "x" },
+      "2026-09-02": { Run: "o" },
+    });
+    const stats = computeMonthStats(check, titles, "2026-09");
+    assert.equal(stats.totalO, 2);
+    assert.equal(stats.totalX, 1);
+    assert.equal(stats.habitCount, 2);
+    assert.equal(stats.best.title, "Run");
+
+    const gKey = goalsPrefsKey(EMAIL);
+    assert.equal(gKey, "ox_month_goals_map_v1_a@b.com");
+    const map = parseGoalsMap('{"2026_9":80}');
+    assert.equal(map["2026_9"], 80);
+    assert.equal(goalsStorageMonthKey(new Date(2026, 8, 1)), "2026_9");
+    assert.equal(serializeGoalsMap(map), '{"2026_9":80}');
+  });
+
+  it("setPart mutates titles only", () => {
+    const titlesKey = habitTitlesPrefsKey(EMAIL, "2026-09");
+    const payload = {
+      [titlesKey]: serializeHabitTitles([{ title: "Run", part: 2 }]),
+    };
+    const out = applyHabitListMutation(payload, {
+      email: EMAIL,
+      month: "2026-09",
+      action: "setPart",
+      title: "Run",
+      part: 0,
+    });
+    assert.deepEqual(parseHabitTitles(out.payload[titlesKey]), [
+      { title: "Run", part: 0 },
+    ]);
+    assert.equal(out.checkChanged, false);
   });
 });

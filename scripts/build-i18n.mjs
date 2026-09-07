@@ -672,6 +672,7 @@ runScript("render-news.mjs");
 runScript("render-ideas.mjs");
 runScript("render-business-hub.mjs");
 runScript("render-studio-hubs.mjs");
+runScript("render-ox-month-web.mjs");
 runScript("render-company.mjs");
 runScript("render-blog.mjs");
 runScript("generate-search-index.mjs");

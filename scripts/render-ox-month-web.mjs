@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from "url";
 import { LANGS, OG_LOCALE, SITE_ORIGIN } from "./hub-utils.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
-const ASSET_V = "20260907oxmw8";
+const ASSET_V = "20260907oxmw9";
 
 const COPY = {
   ko: {
@@ -46,6 +46,17 @@ const COPY = {
     emptySyncBody:
       "모바일 OX MONTH에서 같은 계정으로 데이터를 연결한 뒤 다시 열어 주세요. 웹에서 빈 문서를 자동으로 만들지 않습니다.",
     emptySyncCreate: "웹에서 새로 시작 (모바일 데이터 없음)",
+    settingsTitle: "설정",
+    statsTitle: "이번 달 통계",
+    monthGoal: "월 목표 (O %)",
+    accentsO: "O 색",
+    accentsX: "X 색",
+    account: "계정",
+    close: "닫기",
+    partLabel: "시간대",
+    openStats: "통계 보기",
+    privacy: "개인정보 처리방침",
+    terms: "이용약관",
   },
   en: {
     title: "OX MONTH | Web",
@@ -82,6 +93,17 @@ const COPY = {
     emptySyncBody:
       "Link this account from the OX MONTH mobile app, then reopen. The web app will not create an empty document automatically.",
     emptySyncCreate: "Start fresh on web (no mobile data)",
+    settingsTitle: "Settings",
+    statsTitle: "Month stats",
+    monthGoal: "Month goal (O %)",
+    accentsO: "O color",
+    accentsX: "X color",
+    account: "Account",
+    close: "Close",
+    partLabel: "Time of day",
+    openStats: "View stats",
+    privacy: "Privacy",
+    terms: "Terms",
   },
 };
 
@@ -170,12 +192,51 @@ ${hreflangs()}
           <button type="button" class="oxm-btn-filled oxm-btn-filled--mt" id="oxm-error-retry">${c.retry}</button>
         </section>
 
+        <section id="oxm-view-settings" class="oxm-view oxm-view--fill oxm-panel" hidden>
+          <header class="oxm-home-bar">
+            <button type="button" class="oxm-icon-btn" id="oxm-settings-back" aria-label="${c.close}">‹</button>
+            <h1 class="oxm-home-bar__title">${c.settingsTitle}</h1>
+            <span class="oxm-icon-btn" aria-hidden="true"></span>
+          </header>
+          <hr class="oxm-divider" />
+          <div class="oxm-panel-body">
+            <p class="oxm-panel-label">${c.account}</p>
+            <p id="oxm-settings-email" class="oxm-muted oxm-panel-email"></p>
+            <button type="button" class="oxm-btn-outline oxm-btn-filled--mt" id="oxm-settings-theme">${c.theme}</button>
+            <button type="button" class="oxm-btn-outline oxm-btn-filled--mt" id="oxm-settings-stats">${c.openStats}</button>
+            <p class="oxm-panel-label oxm-panel-label--mt">${c.monthGoal}</p>
+            <div class="oxm-goal-row">
+              <input id="oxm-goal-input" type="number" min="30" max="100" step="1" class="oxm-goal-input" />
+              <button type="button" class="oxm-btn-filled oxm-btn-filled--small" id="oxm-goal-save">${c.settingsTitle === "설정" ? "저장" : "Save"}</button>
+            </div>
+            <p class="oxm-panel-label oxm-panel-label--mt">${c.accentsO}</p>
+            <div id="oxm-accent-o" class="oxm-accent-grid" data-which="o"></div>
+            <p class="oxm-panel-label oxm-panel-label--mt">${c.accentsX}</p>
+            <div id="oxm-accent-x" class="oxm-accent-grid" data-which="x"></div>
+            <div class="oxm-panel-links">
+              <a class="oxm-text-btn" href="/${lang.dir}/privacy/" target="_blank" rel="noopener">${c.privacy}</a>
+              <a class="oxm-text-btn" href="/${lang.dir}/terms/" target="_blank" rel="noopener">${c.terms}</a>
+            </div>
+            <button type="button" class="oxm-btn-filled oxm-btn-filled--mt" id="oxm-settings-logout">${c.logout}</button>
+          </div>
+        </section>
+
+        <section id="oxm-view-stats" class="oxm-view oxm-view--fill oxm-panel" hidden>
+          <header class="oxm-home-bar">
+            <button type="button" class="oxm-icon-btn" id="oxm-stats-back" aria-label="${c.close}">‹</button>
+            <h1 class="oxm-home-bar__title">${c.statsTitle}</h1>
+            <span class="oxm-icon-btn" aria-hidden="true"></span>
+          </header>
+          <hr class="oxm-divider" />
+          <div class="oxm-panel-body" id="oxm-stats-body"></div>
+        </section>
+
         <section id="oxm-view-app" class="oxm-view oxm-view--fill" hidden
           data-part-morning="${c.partMorning}"
           data-part-lunch="${c.partLunch}"
           data-part-evening="${c.partEvening}">
           <header class="oxm-home-bar">
-            <button type="button" class="oxm-icon-btn" id="oxm-logout-btn" title="${c.logout}" aria-label="${c.logout}">⚙</button>
+            <button type="button" class="oxm-icon-btn" id="oxm-logout-btn" title="${c.settingsTitle}" aria-label="${c.settingsTitle}">⚙</button>
             <h1 class="oxm-home-bar__title">${c.brandTitle}</h1>
             <button type="button" class="oxm-icon-btn" id="oxm-theme-btn-home" title="${c.theme}" aria-label="${c.theme}">◐</button>
           </header>
@@ -197,9 +258,14 @@ ${hreflangs()}
                 <table class="oxm-habit-table" id="oxm-month-grid" aria-label="${c.brandTitle}"></table>
               </div>
             </div>
-            <div class="oxm-today-block">
+            <div class="oxm-today-block" id="oxm-today-block">
               <p class="oxm-today-block__label" id="oxm-today-label">${c.todayHabits}</p>
               <form id="oxm-habit-add-form" class="oxm-habit-add">
+                <select id="oxm-habit-part" class="oxm-habit-part" aria-label="${c.partLabel}">
+                  <option value="0">${c.partMorning}</option>
+                  <option value="1">${c.partLunch}</option>
+                  <option value="2" selected>${c.partEvening}</option>
+                </select>
                 <input id="oxm-habit-add-input" type="text" maxlength="80" autocomplete="off" placeholder="${c.addHabitPlaceholder}" />
                 <button type="submit" class="oxm-btn-filled oxm-btn-filled--small" id="oxm-habit-add-btn">${c.addHabit}</button>
               </form>
@@ -208,7 +274,7 @@ ${hreflangs()}
                 data-delete-label="${c.deleteHabit}"></ul>
             </div>
             <div class="oxm-home-footer">
-              <button type="button" class="oxm-btn-outline" id="oxm-today-cta" disabled>${c.todayCheck}</button>
+              <button type="button" class="oxm-btn-outline" id="oxm-today-cta">${c.todayCheck}</button>
             </div>
           </div>
         </section>

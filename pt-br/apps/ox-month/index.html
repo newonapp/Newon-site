@@ -27,8 +27,8 @@
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/ox-month-logo.png" />
     <link rel="apple-touch-icon" href="/ox-month-logo.png" />
-    <link rel="stylesheet" href="/apps/ox-month/ox-month-web.css?v=20260907oxmw8" />
-    <script src="/apps/ox-month/firebase-config.js?v=20260907oxmw8"></script>
+    <link rel="stylesheet" href="/apps/ox-month/ox-month-web.css?v=20260907oxmw9" />
+    <script src="/apps/ox-month/firebase-config.js?v=20260907oxmw9"></script>
   </head>
   <body class="oxm-body">
     <div id="oxm-app" class="oxm-app" data-theme="dark">
@@ -76,12 +76,51 @@
           <button type="button" class="oxm-btn-filled oxm-btn-filled--mt" id="oxm-error-retry">Retry</button>
         </section>
 
+        <section id="oxm-view-settings" class="oxm-view oxm-view--fill oxm-panel" hidden>
+          <header class="oxm-home-bar">
+            <button type="button" class="oxm-icon-btn" id="oxm-settings-back" aria-label="Close">‹</button>
+            <h1 class="oxm-home-bar__title">Settings</h1>
+            <span class="oxm-icon-btn" aria-hidden="true"></span>
+          </header>
+          <hr class="oxm-divider" />
+          <div class="oxm-panel-body">
+            <p class="oxm-panel-label">Account</p>
+            <p id="oxm-settings-email" class="oxm-muted oxm-panel-email"></p>
+            <button type="button" class="oxm-btn-outline oxm-btn-filled--mt" id="oxm-settings-theme">Theme</button>
+            <button type="button" class="oxm-btn-outline oxm-btn-filled--mt" id="oxm-settings-stats">View stats</button>
+            <p class="oxm-panel-label oxm-panel-label--mt">Month goal (O %)</p>
+            <div class="oxm-goal-row">
+              <input id="oxm-goal-input" type="number" min="30" max="100" step="1" class="oxm-goal-input" />
+              <button type="button" class="oxm-btn-filled oxm-btn-filled--small" id="oxm-goal-save">Save</button>
+            </div>
+            <p class="oxm-panel-label oxm-panel-label--mt">O color</p>
+            <div id="oxm-accent-o" class="oxm-accent-grid" data-which="o"></div>
+            <p class="oxm-panel-label oxm-panel-label--mt">X color</p>
+            <div id="oxm-accent-x" class="oxm-accent-grid" data-which="x"></div>
+            <div class="oxm-panel-links">
+              <a class="oxm-text-btn" href="/pt-br/privacy/" target="_blank" rel="noopener">Privacy</a>
+              <a class="oxm-text-btn" href="/pt-br/terms/" target="_blank" rel="noopener">Terms</a>
+            </div>
+            <button type="button" class="oxm-btn-filled oxm-btn-filled--mt" id="oxm-settings-logout">Log out</button>
+          </div>
+        </section>
+
+        <section id="oxm-view-stats" class="oxm-view oxm-view--fill oxm-panel" hidden>
+          <header class="oxm-home-bar">
+            <button type="button" class="oxm-icon-btn" id="oxm-stats-back" aria-label="Close">‹</button>
+            <h1 class="oxm-home-bar__title">Month stats</h1>
+            <span class="oxm-icon-btn" aria-hidden="true"></span>
+          </header>
+          <hr class="oxm-divider" />
+          <div class="oxm-panel-body" id="oxm-stats-body"></div>
+        </section>
+
         <section id="oxm-view-app" class="oxm-view oxm-view--fill" hidden
           data-part-morning="Morning"
           data-part-lunch="Lunch"
           data-part-evening="Evening">
           <header class="oxm-home-bar">
-            <button type="button" class="oxm-icon-btn" id="oxm-logout-btn" title="Log out" aria-label="Log out">⚙</button>
+            <button type="button" class="oxm-icon-btn" id="oxm-logout-btn" title="Settings" aria-label="Settings">⚙</button>
             <h1 class="oxm-home-bar__title">OX MONTH</h1>
             <button type="button" class="oxm-icon-btn" id="oxm-theme-btn-home" title="Theme" aria-label="Theme">◐</button>
           </header>
@@ -103,9 +142,14 @@
                 <table class="oxm-habit-table" id="oxm-month-grid" aria-label="OX MONTH"></table>
               </div>
             </div>
-            <div class="oxm-today-block">
+            <div class="oxm-today-block" id="oxm-today-block">
               <p class="oxm-today-block__label" id="oxm-today-label">Today</p>
               <form id="oxm-habit-add-form" class="oxm-habit-add">
+                <select id="oxm-habit-part" class="oxm-habit-part" aria-label="Time of day">
+                  <option value="0">Morning</option>
+                  <option value="1">Lunch</option>
+                  <option value="2" selected>Evening</option>
+                </select>
                 <input id="oxm-habit-add-input" type="text" maxlength="80" autocomplete="off" placeholder="New habit name" />
                 <button type="submit" class="oxm-btn-filled oxm-btn-filled--small" id="oxm-habit-add-btn">Add habit</button>
               </form>
@@ -114,12 +158,12 @@
                 data-delete-label="Delete"></ul>
             </div>
             <div class="oxm-home-footer">
-              <button type="button" class="oxm-btn-outline" id="oxm-today-cta" disabled>Today check</button>
+              <button type="button" class="oxm-btn-outline" id="oxm-today-cta">Today check</button>
             </div>
           </div>
         </section>
       </div>
     </div>
-    <script type="module" src="/apps/ox-month/ox-month-web-app.js?v=20260907oxmw8"></script>
+    <script type="module" src="/apps/ox-month/ox-month-web-app.js?v=20260907oxmw9"></script>
   </body>
 </html>

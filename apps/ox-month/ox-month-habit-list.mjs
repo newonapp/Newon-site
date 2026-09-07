@@ -72,6 +72,25 @@ export function addHabitEntry(entries, title, part = 2) {
 }
 
 /**
+ * @param {{ title: string, part: number }[]} entries
+ * @param {string} title
+ * @param {number} part
+ */
+export function setHabitPartEntry(entries, title, part) {
+  const key = canonicalHabitTitleKey(title);
+  const next = cloneHabitTitles(entries);
+  const idx = next.findIndex((h) => canonicalHabitTitleKey(h.title) === key);
+  if (idx < 0) throw new Error("habit_not_found");
+  const p = Number(part);
+  const clamped = Number.isFinite(p) ? Math.trunc(p) : 2;
+  next[idx] = {
+    title: next[idx].title,
+    part: clamped === 0 || clamped === 1 || clamped === 2 ? clamped : 2,
+  };
+  return next;
+}
+
+/**
  * Rename in titles list. Does not touch check root (caller migrates checks).
  * @param {{ title: string, part: number }[]} entries
  * @param {string} oldTitle
@@ -191,6 +210,12 @@ export function applyHabitListMutation(payload, op) {
     entries = removeHabitEntry(entries, op.title);
     prefs[titlesKey] = serializeHabitTitles(entries);
     // Flutter leaves orphaned check keys; month UI only shows current titles.
+    return { payload: prefs, titlesKey, checkKey, checkChanged: false };
+  }
+
+  if (op.action === "setPart") {
+    entries = setHabitPartEntry(entries, op.title, op.part ?? 2);
+    prefs[titlesKey] = serializeHabitTitles(entries);
     return { payload: prefs, titlesKey, checkKey, checkChanged: false };
   }
 

@@ -32,6 +32,19 @@ import { saveOxIntentionWithConflictRetry } from "./ox-month-ox-save.mjs";
 import { savePrefsPatchWithConflictRetry } from "./ox-month-prefs-save.mjs";
 import { bootstrapOxMonthSyncDocument } from "./ox-month-bootstrap.mjs";
 import {
+  ACCENT_OPTIONS,
+  ACCENT_O_KEY,
+  ACCENT_X_KEY,
+  resolveAccents,
+} from "./ox-month-accents.mjs";
+import {
+  computeMonthStats,
+  goalsPrefsKey,
+  goalsStorageMonthKey,
+  parseGoalsMap,
+  serializeGoalsMap,
+} from "./ox-month-stats.mjs";
+import {
   assertNoClientIdentityInUrl,
   createSyncClient,
 } from "./ox-month-sync.mjs";
@@ -48,6 +61,8 @@ import {
       config: document.getElementById("oxm-view-config"),
       signedOut: document.getElementById("oxm-view-signed-out"),
       app: document.getElementById("oxm-view-app"),
+      settings: document.getElementById("oxm-view-settings"),
+      stats: document.getElementById("oxm-view-stats"),
       error: document.getElementById("oxm-view-error"),
     },
     loginForm: document.getElementById("oxm-login-form"),
@@ -60,9 +75,12 @@ import {
     themeBtn: document.getElementById("oxm-theme-btn"),
     themeBtnHome: document.getElementById("oxm-theme-btn-home"),
     todayLabel: document.getElementById("oxm-today-label"),
+    todayBlock: document.getElementById("oxm-today-block"),
+    todayCta: document.getElementById("oxm-today-cta"),
     habitAddForm: document.getElementById("oxm-habit-add-form"),
     habitAddInput: document.getElementById("oxm-habit-add-input"),
     habitAddBtn: document.getElementById("oxm-habit-add-btn"),
+    habitPart: document.getElementById("oxm-habit-part"),
     habitList: document.getElementById("oxm-habit-list"),
     monthLabel: document.getElementById("oxm-month-label"),
     monthGrid: document.getElementById("oxm-month-grid"),
@@ -75,6 +93,17 @@ import {
     emptySyncCreate: document.getElementById("oxm-empty-sync-create"),
     errorMsg: document.getElementById("oxm-error-msg"),
     errorRetry: document.getElementById("oxm-error-retry"),
+    settingsBack: document.getElementById("oxm-settings-back"),
+    settingsEmail: document.getElementById("oxm-settings-email"),
+    settingsTheme: document.getElementById("oxm-settings-theme"),
+    settingsStats: document.getElementById("oxm-settings-stats"),
+    settingsLogout: document.getElementById("oxm-settings-logout"),
+    goalInput: document.getElementById("oxm-goal-input"),
+    goalSave: document.getElementById("oxm-goal-save"),
+    accentO: document.getElementById("oxm-accent-o"),
+    accentX: document.getElementById("oxm-accent-x"),
+    statsBack: document.getElementById("oxm-stats-back"),
+    statsBody: document.getElementById("oxm-stats-body"),
   };
 
   var syncClient = createSyncClient({
@@ -343,6 +372,120 @@ import {
     };
     state.syncStatus = "ready";
     setEmptySyncVisible(false);
+    applyAccentsFromPayload(state.sync.payload);
+    var mode = state.sync.payload && state.sync.payload.ox_month_appearance_mode_v1;
+    if (mode === "light" || mode === "dark") {
+      applyTheme(mode, { persistSync: false });
+    }
+  }
+
+  function applyAccentsFromPayload(payload) {
+    var accents = resolveAccents(payload || {});
+    root.style.setProperty("--ox-o", accents.oHex);
+    root.style.setProperty("--ox-x", accents.xHex);
+  }
+
+  function openSettings() {
+    if (els.settingsEmail) {
+      els.settingsEmail.textContent =
+        (state.user && state.user.email) || "";
+    }
+    renderAccentPickers();
+    var email = state.user && state.user.email ? state.user.email : "";
+    var goals = parseGoalsMap(currentPayload()[goalsPrefsKey(email)]);
+    var gKey = goalsStorageMonthKey(state.visibleMonth);
+    if (els.goalInput) {
+      els.goalInput.value =
+        goals[gKey] != null ? String(goals[gKey]) : "80";
+      els.goalInput.disabled = !canEditOx();
+    }
+    if (els.goalSave) els.goalSave.disabled = !canEditOx();
+    showView("settings");
+  }
+
+  function renderAccentPickers() {
+    var accents = resolveAccents(currentPayload());
+    function fill(node, selectedId, which) {
+      if (!node) return;
+      node.innerHTML = "";
+      ACCENT_OPTIONS.forEach(function (opt) {
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className =
+          "oxm-accent-swatch" + (opt.id === selectedId ? " is-on" : "");
+        btn.style.background = opt.hex;
+        btn.setAttribute("data-accent-id", opt.id);
+        btn.setAttribute("data-which", which);
+        btn.title = opt.id;
+        node.appendChild(btn);
+      });
+    }
+    fill(els.accentO, accents.oId, "o");
+    fill(els.accentX, accents.xId, "x");
+  }
+
+  function renderStatsPanel() {
+    if (!els.statsBody) return;
+    var email = state.user && state.user.email ? state.user.email : "";
+    var mk = monthKey(state.visibleMonth);
+    var titlesKey = habitTitlesPrefsKey(email, mk);
+    var checkKey = habitCheckPrefsKey(email);
+    var payload = currentPayload();
+    var stats = computeMonthStats(payload[checkKey], payload[titlesKey], mk);
+    var goals = parseGoalsMap(payload[goalsPrefsKey(email)]);
+    var goal = goals[goalsStorageMonthKey(state.visibleMonth)];
+    var lines = [];
+    lines.push(
+      isKo()
+        ? "습관 " + stats.habitCount + "개"
+        : stats.habitCount + " habits",
+    );
+    lines.push("O " + stats.totalO + " · X " + stats.totalX);
+    if (stats.oRatio != null) {
+      lines.push(
+        (isKo() ? "O 비율 " : "O rate ") +
+          Math.round(stats.oRatio * 100) +
+          "%",
+      );
+    }
+    if (goal != null) {
+      lines.push((isKo() ? "월 목표 " : "Goal ") + goal + "%");
+    }
+    lines.push(
+      (isKo() ? "기록 있는 날 " : "Days marked ") + stats.daysWithAnyMark,
+    );
+    if (stats.best) {
+      lines.push(
+        (isKo() ? "최고 " : "Best ") +
+          stats.best.title +
+          " (" +
+          Math.round((stats.best.rate || 0) * 100) +
+          "%)",
+      );
+    }
+    els.statsBody.innerHTML = "";
+    lines.forEach(function (t) {
+      var p = document.createElement("p");
+      p.className = "oxm-stats-line";
+      p.textContent = t;
+      els.statsBody.appendChild(p);
+    });
+    if (stats.ranked.length) {
+      var ul = document.createElement("ul");
+      ul.className = "oxm-stats-list";
+      stats.ranked.forEach(function (r) {
+        var li = document.createElement("li");
+        li.textContent =
+          r.title +
+          " — O " +
+          r.oCount +
+          " / X " +
+          r.xCount +
+          (r.rate != null ? " (" + Math.round(r.rate * 100) + "%)" : "");
+        ul.appendChild(li);
+      });
+      els.statsBody.appendChild(ul);
+    }
   }
 
   function canEditOx() {
@@ -443,6 +586,7 @@ import {
     var editable = canEditOx() && !state.oxSaving && !state.habitSaving;
     if (els.habitAddInput) els.habitAddInput.disabled = !editable;
     if (els.habitAddBtn) els.habitAddBtn.disabled = !editable;
+    if (els.habitPart) els.habitPart.disabled = !editable;
 
     if (els.habitList) {
       els.habitList.innerHTML = "";
@@ -459,9 +603,16 @@ import {
           li.className = "oxm-habit-row";
           var meta = document.createElement("div");
           meta.className = "oxm-habit-row__meta";
-          var chip = document.createElement("span");
+          var chip = document.createElement("button");
+          chip.type = "button";
           chip.className = "oxm-part-chip";
           chip.textContent = partLabel(h.part);
+          chip.disabled = !editable;
+          chip.setAttribute("data-habit-part", h.title);
+          chip.setAttribute("data-part", String(h.part));
+          chip.title = isKo()
+            ? "탭하여 아침/점심/저녁 변경"
+            : "Tap to change morning/lunch/evening";
           var name = document.createElement("p");
           name.className = "oxm-habit-name";
           name.textContent = h.title;
@@ -737,13 +888,15 @@ import {
       );
       return;
     }
-    // Add form lives under "오늘": always write this calendar month's titles.
+    var partEl = els.habitPart;
+    var part = partEl ? Number(partEl.value) : 2;
+    if (![0, 1, 2].includes(part)) part = 2;
     var ok = await saveHabitMutation({
       email: state.user.email || "",
       month: monthKey(new Date()),
       action: "add",
       title: title,
-      part: 2,
+      part: part,
     });
     if (ok && els.habitAddInput) els.habitAddInput.value = "";
   }
@@ -1081,9 +1234,100 @@ import {
 
     if (els.logoutBtn) {
       els.logoutBtn.addEventListener("click", function () {
+        openSettings();
+      });
+    }
+
+    if (els.settingsBack) {
+      els.settingsBack.addEventListener("click", function () {
+        showView("app");
+      });
+    }
+    if (els.settingsTheme) {
+      els.settingsTheme.addEventListener("click", toggleTheme);
+    }
+    if (els.settingsStats) {
+      els.settingsStats.addEventListener("click", function () {
+        renderStatsPanel();
+        showView("stats");
+      });
+    }
+    if (els.settingsLogout) {
+      els.settingsLogout.addEventListener("click", function () {
         safeLogout();
       });
     }
+    if (els.statsBack) {
+      els.statsBack.addEventListener("click", function () {
+        showView("settings");
+      });
+    }
+    if (els.goalSave) {
+      els.goalSave.addEventListener("click", async function () {
+        if (!canEditOx() || !state.user) return;
+        var n = Number(els.goalInput && els.goalInput.value);
+        if (!Number.isFinite(n)) return;
+        n = Math.max(30, Math.min(100, Math.round(n)));
+        var email = state.user.email || "";
+        var key = goalsPrefsKey(email);
+        var gKey = goalsStorageMonthKey(state.visibleMonth);
+        await savePrefsPatchWithConflictRetry({
+          client: syncClient,
+          getIdToken: function () {
+            return state.user.getIdToken();
+          },
+          syncState: cloneSync(state.sync),
+          applyLocal: function (payload) {
+            var map = parseGoalsMap(payload[key]);
+            map[gKey] = n;
+            var next = Object.assign({}, payload, {
+              [key]: serializeGoalsMap(map),
+            });
+            return { payload: next, patch: { [key]: next[key] } };
+          },
+        }).then(function (result) {
+          if (result.ok && result.sync) {
+            applySyncResult(result.sync);
+            setSyncBanner(
+              isKo() ? "월 목표를 저장했습니다." : "Month goal saved.",
+              false,
+            );
+            renderAccentPickers();
+          } else {
+            setSyncBanner(
+              isKo() ? "월 목표 저장에 실패했습니다." : "Could not save goal.",
+              true,
+            );
+          }
+        });
+      });
+    }
+    function onAccentClick(e) {
+      var btn = e.target && e.target.closest && e.target.closest("button[data-accent-id]");
+      if (!btn || !canEditOx() || !state.user) return;
+      var id = btn.getAttribute("data-accent-id");
+      var which = btn.getAttribute("data-which");
+      var patchKey = which === "x" ? ACCENT_X_KEY : ACCENT_O_KEY;
+      savePrefsPatchWithConflictRetry({
+        client: syncClient,
+        getIdToken: function () {
+          return state.user.getIdToken();
+        },
+        syncState: cloneSync(state.sync),
+        applyLocal: function (payload) {
+          var next = Object.assign({}, payload, { [patchKey]: id });
+          return { payload: next, patch: { [patchKey]: id } };
+        },
+      }).then(function (result) {
+        if (result.ok && result.sync) {
+          applySyncResult(result.sync);
+          renderAccentPickers();
+          refreshView();
+        }
+      });
+    }
+    if (els.accentO) els.accentO.addEventListener("click", onAccentClick);
+    if (els.accentX) els.accentX.addEventListener("click", onAccentClick);
 
     if (els.errorRetry) {
       els.errorRetry.addEventListener("click", function () {
@@ -1142,6 +1386,23 @@ import {
         var t = e.target;
         if (!t || !t.closest) return;
 
+        var partBtn = t.closest("button[data-habit-part]");
+        if (partBtn && !partBtn.disabled) {
+          var pTitle = partBtn.getAttribute("data-habit-part") || "";
+          var cur = Number(partBtn.getAttribute("data-part") || 2);
+          var nextPart = (cur + 1) % 3;
+          if (pTitle) {
+            saveHabitMutation({
+              email: state.user.email || "",
+              month: monthKey(new Date()),
+              action: "setPart",
+              title: pTitle,
+              part: nextPart,
+            });
+          }
+          return;
+        }
+
         var actionBtn = t.closest("button[data-habit-action]");
         if (actionBtn && !actionBtn.disabled) {
           var action = actionBtn.dataset.habitAction || "";
@@ -1159,6 +1420,16 @@ import {
         var pick = btn.dataset.pick || "";
         if (!title || (pick !== "o" && pick !== "x")) return;
         handleOxPick(title, pick);
+      });
+    }
+
+    if (els.todayCta) {
+      els.todayCta.addEventListener("click", function () {
+        var panel = document.getElementById("oxm-today");
+        if (panel && typeof panel.scrollIntoView === "function") {
+          panel.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        if (els.habitAddInput) els.habitAddInput.focus();
       });
     }
 
@@ -1216,14 +1487,37 @@ import {
     }
   }
 
-  function toggleTheme() {
-    var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+  function applyTheme(mode, opts) {
+    var next = mode === "light" ? "light" : "dark";
     root.setAttribute("data-theme", next);
     try {
       localStorage.setItem("ox_month_web_theme", next);
     } catch {
       /* ignore */
     }
+    if (opts && opts.persistSync && canEditOx() && state.user) {
+      savePrefsPatchWithConflictRetry({
+        client: syncClient,
+        getIdToken: function () {
+          return state.user.getIdToken();
+        },
+        syncState: cloneSync(state.sync),
+        applyLocal: function (payload) {
+          var patch = { ox_month_appearance_mode_v1: next };
+          return {
+            payload: Object.assign({}, payload, patch),
+            patch: patch,
+          };
+        },
+      }).then(function (result) {
+        if (result.ok && result.sync) applySyncResult(result.sync);
+      });
+    }
+  }
+
+  function toggleTheme() {
+    var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+    applyTheme(next, { persistSync: true });
   }
 
   function startMock() {
