@@ -1,0 +1,715 @@
+/**
+ * OX MONTH Web styles — tokens & layout from Flutter OxMonthPalette /
+ * LoginScreen / LogoHeader / AuthTextField / MainHomeScreen / _OxCircle.
+ */
+:root {
+  /* Free default accents (app_accent_theme.dart c20 / c00) */
+  --ox-o: #00ff87;
+  --ox-x: #ff3b3b;
+  --ox-on-o: #000000;
+  --ox-on-x: #ffffff;
+  --ox-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, "Noto Sans KR", sans-serif;
+  --ox-radius-12: 12px;
+  --ox-radius-6: 6px;
+  --ox-cell: 40px;
+  --ox-shell-max: 430px;
+  --ox-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.oxm-app[data-theme="dark"] {
+  --ox-bg: #000000;
+  --ox-input: #1c1c1e;
+  --ox-card: #1c1c1e;
+  --ox-hint: #8e8e93;
+  --ox-label: #ffffff;
+  --ox-subtitle: #8e8e93;
+  --ox-menu-border: rgba(255, 255, 255, 0.349);
+  --ox-grid-line: rgba(255, 255, 255, 0.662);
+}
+
+.oxm-app[data-theme="light"] {
+  --ox-bg: #ffffff;
+  --ox-input: #f2f2f7;
+  --ox-card: #f2f2f7;
+  --ox-hint: #8e8e93;
+  --ox-label: #000000;
+  --ox-subtitle: #6c6c70;
+  --ox-menu-border: rgba(0, 0, 0, 0.122);
+  --ox-grid-line: rgba(0, 0, 0, 0.543);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body.oxm-body {
+  font-family: var(--ox-font);
+  background: #000;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+.oxm-app {
+  min-height: 100dvh;
+  min-height: 100vh;
+  background: var(--ox-bg);
+  color: var(--ox-label);
+  transition: background 0.25s var(--ox-ease), color 0.25s var(--ox-ease);
+}
+
+/* Phone-width app shell centered on desktop (do not stretch like a dashboard) */
+.oxm-phone {
+  width: min(100%, var(--ox-shell-max));
+  margin: 0 auto;
+  min-height: 100dvh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--ox-bg);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.oxm-view[hidden] {
+  display: none !important;
+}
+
+.oxm-view--fill {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* —— LogoHeader —— */
+.oxm-logo {
+  text-align: center;
+}
+
+.oxm-logo-mark {
+  margin: 0;
+  color: var(--ox-label);
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.oxm-logo-title {
+  margin: 8px 0 0;
+  color: var(--ox-label);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+/* —— Auth (LoginScreen) —— */
+.oxm-auth {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 24px 32px;
+}
+
+.oxm-auth-form {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+.oxm-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.oxm-field label {
+  color: var(--ox-label);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.oxm-field input {
+  appearance: none;
+  border: none;
+  border-radius: var(--ox-radius-12);
+  background: var(--ox-input);
+  color: var(--ox-label);
+  font: inherit;
+  font-size: 16px;
+  padding: 16px;
+  min-height: 52px;
+  width: 100%;
+}
+
+.oxm-field input::placeholder {
+  color: var(--ox-hint);
+}
+
+.oxm-field input:focus {
+  outline: none;
+  box-shadow: 0 0 0 1.5px var(--ox-o);
+}
+
+.oxm-error {
+  margin: 0 0 12px;
+  color: var(--ox-x);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.oxm-btn-filled {
+  appearance: none;
+  border: none;
+  height: 52px;
+  border-radius: var(--ox-radius-12);
+  background: var(--ox-o);
+  color: var(--ox-on-o);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.oxm-btn-filled:disabled {
+  background: color-mix(in srgb, var(--ox-subtitle) 40%, transparent);
+  color: var(--ox-label);
+  cursor: not-allowed;
+}
+
+.oxm-btn-filled--mt {
+  margin-top: 12px;
+}
+
+.oxm-auth-links {
+  margin-top: 24px;
+  text-align: center;
+  color: var(--ox-label);
+  font-size: 14px;
+}
+
+.oxm-auth-links button {
+  appearance: none;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
+
+.oxm-auth-hint {
+  font-weight: 400;
+}
+
+.oxm-auth-theme {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.oxm-text-btn {
+  appearance: none;
+  border: none;
+  background: none;
+  color: var(--ox-label);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 8px;
+}
+
+/* —— Home chrome (MainHomeScreen) —— */
+.oxm-home-bar {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  min-height: 48px;
+  flex-shrink: 0;
+}
+
+.oxm-home-bar__title {
+  flex: 1;
+  margin: 0;
+  text-align: center;
+  color: var(--ox-label);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 2.5px;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.oxm-icon-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--ox-label);
+  width: 48px;
+  height: 48px;
+  display: inline-grid;
+  place-items: center;
+  cursor: pointer;
+  border-radius: 999px;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.oxm-icon-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.oxm-divider {
+  height: 1px;
+  background: var(--ox-grid-line);
+  border: 0;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.oxm-home-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.oxm-home-middle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  padding: 8px 0;
+}
+
+.oxm-month-nav {
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.oxm-month-nav__label {
+  flex: 1;
+  margin: 0;
+  text-align: center;
+  color: var(--ox-label);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.oxm-grid-scroll {
+  margin-top: 12px;
+  padding: 0 12px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.oxm-habit-table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.oxm-habit-table th,
+.oxm-habit-table td {
+  width: var(--ox-cell);
+  height: var(--ox-cell);
+  min-width: var(--ox-cell);
+  border: 1px solid var(--ox-grid-line);
+  text-align: center;
+  vertical-align: middle;
+  padding: 0;
+  color: var(--ox-label);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.oxm-habit-table th {
+  font-weight: 600;
+}
+
+.oxm-habit-table th.is-today {
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--ox-o);
+  background: color-mix(in srgb, var(--ox-o) 22%, transparent);
+}
+
+.oxm-habit-table td.is-today {
+  background: color-mix(in srgb, var(--ox-o) 12%, transparent);
+}
+
+.oxm-habit-table .mark-o {
+  color: var(--ox-o);
+  font-weight: 800;
+}
+
+.oxm-habit-table .mark-x {
+  color: var(--ox-x);
+  font-weight: 800;
+}
+
+.oxm-today-block {
+  padding: 0 16px 8px;
+  flex-shrink: 0;
+}
+
+.oxm-today-block__label {
+  margin: 0 0 10px;
+  color: var(--ox-subtitle);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.oxm-habit-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 38vh;
+  overflow-y: auto;
+}
+
+/* TodayCheckScreen _HabitRow */
+.oxm-habit-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--ox-radius-12);
+  border: 1px solid var(--ox-menu-border);
+  background: transparent;
+}
+
+.oxm-habit-row__meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.oxm-part-chip {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: var(--ox-radius-6);
+  background: var(--ox-input);
+  border: 1px solid var(--ox-menu-border);
+  color: var(--ox-subtitle);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.oxm-habit-name {
+  margin: 0;
+  color: var(--ox-label);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.oxm-ox-pair {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* _OxCircle: hit 48, circle 42, stroke 1.5, letter 16/w800 */
+.oxm-ox {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  padding: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1.5px solid currentColor;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  color: inherit;
+}
+
+.oxm-ox:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.oxm-ox:focus-visible {
+  outline: 2px solid var(--ox-o);
+  outline-offset: 2px;
+}
+
+.oxm-ox--o {
+  color: var(--ox-o);
+}
+
+.oxm-ox--x {
+  color: var(--ox-x);
+}
+
+.oxm-ox--x:focus-visible {
+  outline-color: var(--ox-x);
+}
+
+.oxm-ox--o.is-on {
+  background: var(--ox-o);
+  color: var(--ox-on-o);
+  box-shadow: 0 0 8px rgba(0, 255, 135, 0.45);
+}
+
+.oxm-ox--x.is-on {
+  background: var(--ox-x);
+  color: var(--ox-on-x);
+  box-shadow: 0 0 8px rgba(255, 59, 59, 0.45);
+}
+
+.oxm-home-footer {
+  padding: 8px 28px 28px;
+  flex-shrink: 0;
+}
+
+.oxm-btn-outline {
+  appearance: none;
+  width: 100%;
+  height: 50px;
+  border-radius: var(--ox-radius-12);
+  border: 1px solid color-mix(in srgb, var(--ox-label) 90%, transparent);
+  background: transparent;
+  color: var(--ox-label);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: default;
+  opacity: 0.85;
+}
+
+.oxm-banner {
+  margin: 8px 16px 0;
+  padding: 10px 12px;
+  border-radius: var(--ox-radius-12);
+  border: 1px solid var(--ox-menu-border);
+  color: var(--ox-subtitle);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.oxm-banner--warn {
+  border-color: color-mix(in srgb, var(--ox-x) 40%, transparent);
+  color: var(--ox-label);
+}
+
+.oxm-empty-sync {
+  margin: 8px 16px 0;
+  padding: 14px 12px;
+  border-radius: var(--ox-radius-12);
+  border: 1px solid var(--ox-menu-border);
+  background: var(--ox-card);
+}
+
+.oxm-empty-sync__title {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ox-label);
+}
+
+.oxm-empty-sync .oxm-muted {
+  margin: 0 0 12px;
+}
+
+.oxm-center {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 24px;
+  color: var(--ox-subtitle);
+}
+
+.oxm-spinner {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 2px solid var(--ox-menu-border);
+  border-top-color: var(--ox-o);
+  animation: oxm-spin 0.8s linear infinite;
+}
+
+@keyframes oxm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.oxm-muted {
+  margin: 0;
+  color: var(--ox-subtitle);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.oxm-config,
+.oxm-error-panel {
+  padding: 24px;
+}
+
+.oxm-config h2,
+.oxm-error-panel h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ox-label);
+}
+
+.oxm-habit-add {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 12px;
+  align-items: stretch;
+}
+
+.oxm-habit-add input {
+  flex: 1 1 auto;
+  min-width: 8rem;
+  width: 0;
+  border: 1px solid var(--ox-menu-border);
+  border-radius: var(--ox-radius-6);
+  background: var(--ox-input);
+  color: var(--ox-label);
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.oxm-habit-add input:focus {
+  outline: 2px solid var(--ox-o);
+  outline-offset: 1px;
+}
+
+.oxm-btn-filled--small {
+  width: auto;
+  flex: 0 0 auto;
+  height: auto;
+  min-height: 40px;
+  padding: 10px 12px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.oxm-habit-add .oxm-btn-filled {
+  width: auto;
+  flex: 0 0 auto;
+}
+
+.oxm-habit-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.oxm-text-btn {
+  border: 0;
+  background: transparent;
+  color: var(--ox-hint);
+  font-size: 12px;
+  padding: 2px 4px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.oxm-text-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.oxm-habit-row__actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.oxm-habit-action {
+  border: 0;
+  background: transparent;
+  color: var(--ox-hint);
+  font-size: 12px;
+  padding: 2px 4px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.oxm-habit-action:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.oxm-habit-table th.oxm-habit-col,
+.oxm-habit-table td.oxm-habit-col {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  min-width: 88px;
+  max-width: 120px;
+  text-align: left;
+  padding: 4px 8px;
+  background: var(--ox-bg);
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.oxm-cell--editable {
+  cursor: pointer;
+}
+
+.oxm-cell--editable:hover {
+  outline: 1px solid var(--ox-o);
+}
+
+.oxm-cell--disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+@media (min-width: 900px) {
+  body.oxm-body {
+    background: #0a0a0a;
+  }
+
+  .oxm-phone {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
+    min-height: min(100dvh, 900px);
+    margin-top: max(0px, calc((100dvh - 900px) / 2));
+  }
+}

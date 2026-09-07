@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OX MONTH | Web</title>
+    <meta name="description" content="OX MONTH on the web — view habits with the same account." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://www.newon.app/hi/apps/ox-month/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.newon.app/hi/apps/ox-month/" />
+    <meta property="og:locale" content="hi_IN" />
+    <meta property="og:title" content="OX MONTH | Web" />
+    <meta property="og:description" content="OX MONTH on the web — view habits with the same account." />
+    <meta property="og:site_name" content="Newon" />
+    <meta property="og:image" content="https://www.newon.app/ox-month-logo.png" />
+    <link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/apps/ox-month/" />
+    <link rel="alternate" hreflang="en" href="https://www.newon.app/en/apps/ox-month/" />
+    <link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/apps/ox-month/" />
+    <link rel="alternate" hreflang="es" href="https://www.newon.app/es/apps/ox-month/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/apps/ox-month/" />
+    <link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/apps/ox-month/" />
+    <link rel="alternate" hreflang="de" href="https://www.newon.app/de/apps/ox-month/" />
+    <link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/apps/ox-month/" />
+    <link rel="alternate" hreflang="id" href="https://www.newon.app/id/apps/ox-month/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/apps/ox-month/" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/ox-month-logo.png" />
+    <link rel="apple-touch-icon" href="/ox-month-logo.png" />
+    <link rel="stylesheet" href="/apps/ox-month/ox-month-web.css?v=20260907oxmw7" />
+    <script src="/apps/ox-month/firebase-config.js?v=20260907oxmw7"></script>
+  </head>
+  <body class="oxm-body">
+    <div id="oxm-app" class="oxm-app" data-theme="dark">
+      <div class="oxm-phone">
+        <section id="oxm-view-loading" class="oxm-view oxm-view--fill oxm-center" hidden>
+          <div class="oxm-spinner" aria-hidden="true"></div>
+          <p class="oxm-muted">Loading…</p>
+        </section>
+
+        <section id="oxm-view-config" class="oxm-view oxm-view--fill oxm-config" hidden>
+          <h2>Firebase Web config required</h2>
+          <p class="oxm-muted">Web apiKey / appId for newon-oxmonth are missing. Register a Web app in Firebase Console, then fill apps/ox-month/firebase-config.js.</p>
+        </section>
+
+        <section id="oxm-view-signed-out" class="oxm-view oxm-view--fill" hidden>
+          <div class="oxm-auth">
+            <div class="oxm-logo">
+              <p class="oxm-logo-mark">O/X</p>
+              <p class="oxm-logo-title">OX MONTH</p>
+            </div>
+            <form id="oxm-login-form" class="oxm-auth-form">
+              <div class="oxm-field">
+                <label for="oxm-email">Email</label>
+                <input id="oxm-email" name="email" type="email" autocomplete="username" required placeholder="you@example.com" />
+              </div>
+              <div class="oxm-field">
+                <label for="oxm-password">Password</label>
+                <input id="oxm-password" name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Password" />
+              </div>
+              <p id="oxm-auth-error" class="oxm-error" hidden></p>
+              <button type="submit" class="oxm-btn-filled" id="oxm-login-btn">Log in</button>
+              <p class="oxm-auth-links">
+                <span class="oxm-auth-hint">New here? </span><button type="button" id="oxm-signup-btn">Create account</button>
+              </p>
+              <div class="oxm-auth-theme">
+                <button type="button" class="oxm-text-btn" id="oxm-theme-btn">Theme</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section id="oxm-view-error" class="oxm-view oxm-view--fill oxm-error-panel" hidden>
+          <h2>Sync error</h2>
+          <p id="oxm-error-msg" class="oxm-muted"></p>
+          <button type="button" class="oxm-btn-filled oxm-btn-filled--mt" id="oxm-error-retry">Retry</button>
+        </section>
+
+        <section id="oxm-view-app" class="oxm-view oxm-view--fill" hidden
+          data-part-morning="Morning"
+          data-part-lunch="Lunch"
+          data-part-evening="Evening">
+          <header class="oxm-home-bar">
+            <button type="button" class="oxm-icon-btn" id="oxm-logout-btn" title="Log out" aria-label="Log out">⚙</button>
+            <h1 class="oxm-home-bar__title">OX MONTH</h1>
+            <button type="button" class="oxm-icon-btn" id="oxm-theme-btn-home" title="Theme" aria-label="Theme">◐</button>
+          </header>
+          <hr class="oxm-divider" />
+          <div id="oxm-sync-banner" class="oxm-banner" hidden></div>
+          <div id="oxm-empty-sync" class="oxm-empty-sync" hidden>
+            <h2 class="oxm-empty-sync__title">No synced data yet</h2>
+            <p id="oxm-empty-sync-msg" class="oxm-muted">Link this account from the OX MONTH mobile app, then reopen. The web app will not create an empty document automatically.</p>
+            <button type="button" class="oxm-btn-outline oxm-btn-filled--mt" id="oxm-empty-sync-create">Start fresh on web (no mobile data)</button>
+          </div>
+          <div class="oxm-home-body">
+            <div class="oxm-home-middle">
+              <div class="oxm-month-nav">
+                <button type="button" class="oxm-icon-btn" id="oxm-month-prev" aria-label="prev">‹</button>
+                <h2 class="oxm-month-nav__label" id="oxm-month-label"></h2>
+                <button type="button" class="oxm-icon-btn" id="oxm-month-next" aria-label="next">›</button>
+              </div>
+              <div class="oxm-grid-scroll">
+                <table class="oxm-habit-table" id="oxm-month-grid" aria-label="OX MONTH"></table>
+              </div>
+            </div>
+            <div class="oxm-today-block">
+              <p class="oxm-today-block__label" id="oxm-today-label">Today</p>
+              <form id="oxm-habit-add-form" class="oxm-habit-add">
+                <input id="oxm-habit-add-input" type="text" maxlength="80" autocomplete="off" placeholder="New habit name" />
+                <button type="submit" class="oxm-btn-filled oxm-btn-filled--small" id="oxm-habit-add-btn">Add habit</button>
+              </form>
+              <ul class="oxm-habit-list" id="oxm-habit-list"
+                data-edit-label="Edit"
+                data-delete-label="Delete"></ul>
+            </div>
+            <div class="oxm-home-footer">
+              <button type="button" class="oxm-btn-outline" id="oxm-today-cta" disabled>Today check</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="/apps/ox-month/ox-month-web-app.js?v=20260907oxmw7"></script>
+  </body>
+</html>

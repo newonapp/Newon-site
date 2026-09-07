@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OX MONTH | 웹</title>
+    <meta name="description" content="OX MONTH 웹 — 같은 계정으로 습관을 확인합니다." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://www.newon.app/ko/apps/ox-month/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.newon.app/ko/apps/ox-month/" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:title" content="OX MONTH | 웹" />
+    <meta property="og:description" content="OX MONTH 웹 — 같은 계정으로 습관을 확인합니다." />
+    <meta property="og:site_name" content="Newon" />
+    <meta property="og:image" content="https://www.newon.app/ox-month-logo.png" />
+    <link rel="alternate" hreflang="ko" href="https://www.newon.app/ko/apps/ox-month/" />
+    <link rel="alternate" hreflang="en" href="https://www.newon.app/en/apps/ox-month/" />
+    <link rel="alternate" hreflang="ja" href="https://www.newon.app/ja/apps/ox-month/" />
+    <link rel="alternate" hreflang="es" href="https://www.newon.app/es/apps/ox-month/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://www.newon.app/pt-br/apps/ox-month/" />
+    <link rel="alternate" hreflang="fr" href="https://www.newon.app/fr/apps/ox-month/" />
+    <link rel="alternate" hreflang="de" href="https://www.newon.app/de/apps/ox-month/" />
+    <link rel="alternate" hreflang="hi" href="https://www.newon.app/hi/apps/ox-month/" />
+    <link rel="alternate" hreflang="id" href="https://www.newon.app/id/apps/ox-month/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.newon.app/en/apps/ox-month/" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/ox-month-logo.png" />
+    <link rel="apple-touch-icon" href="/ox-month-logo.png" />
+    <link rel="stylesheet" href="/apps/ox-month/ox-month-web.css?v=20260907oxmw7" />
+    <script src="/apps/ox-month/firebase-config.js?v=20260907oxmw7"></script>
+  </head>
+  <body class="oxm-body">
+    <div id="oxm-app" class="oxm-app" data-theme="dark">
+      <div class="oxm-phone">
+        <section id="oxm-view-loading" class="oxm-view oxm-view--fill oxm-center" hidden>
+          <div class="oxm-spinner" aria-hidden="true"></div>
+          <p class="oxm-muted">불러오는 중…</p>
+        </section>
+
+        <section id="oxm-view-config" class="oxm-view oxm-view--fill oxm-config" hidden>
+          <h2>Firebase Web 설정 필요</h2>
+          <p class="oxm-muted">newon-oxmonth Web 앱의 apiKey / appId가 아직 없습니다. Firebase Console에서 Web 앱을 등록한 뒤 apps/ox-month/firebase-config.js를 채워 주세요.</p>
+        </section>
+
+        <section id="oxm-view-signed-out" class="oxm-view oxm-view--fill" hidden>
+          <div class="oxm-auth">
+            <div class="oxm-logo">
+              <p class="oxm-logo-mark">O/X</p>
+              <p class="oxm-logo-title">OX MONTH</p>
+            </div>
+            <form id="oxm-login-form" class="oxm-auth-form">
+              <div class="oxm-field">
+                <label for="oxm-email">이메일</label>
+                <input id="oxm-email" name="email" type="email" autocomplete="username" required placeholder="you@example.com" />
+              </div>
+              <div class="oxm-field">
+                <label for="oxm-password">비밀번호</label>
+                <input id="oxm-password" name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="비밀번호" />
+              </div>
+              <p id="oxm-auth-error" class="oxm-error" hidden></p>
+              <button type="submit" class="oxm-btn-filled" id="oxm-login-btn">로그인</button>
+              <p class="oxm-auth-links">
+                <span class="oxm-auth-hint">계정이 없나요? </span><button type="button" id="oxm-signup-btn">회원가입</button>
+              </p>
+              <div class="oxm-auth-theme">
+                <button type="button" class="oxm-text-btn" id="oxm-theme-btn">테마</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section id="oxm-view-error" class="oxm-view oxm-view--fill oxm-error-panel" hidden>
+          <h2>동기화 오류</h2>
+          <p id="oxm-error-msg" class="oxm-muted"></p>
+          <button type="button" class="oxm-btn-filled oxm-btn-filled--mt" id="oxm-error-retry">다시 시도</button>
+        </section>
+
+        <section id="oxm-view-app" class="oxm-view oxm-view--fill" hidden
+          data-part-morning="아침"
+          data-part-lunch="점심"
+          data-part-evening="저녁">
+          <header class="oxm-home-bar">
+            <button type="button" class="oxm-icon-btn" id="oxm-logout-btn" title="로그아웃" aria-label="로그아웃">⚙</button>
+            <h1 class="oxm-home-bar__title">OX MONTH</h1>
+            <button type="button" class="oxm-icon-btn" id="oxm-theme-btn-home" title="테마" aria-label="테마">◐</button>
+          </header>
+          <hr class="oxm-divider" />
+          <div id="oxm-sync-banner" class="oxm-banner" hidden></div>
+          <div id="oxm-empty-sync" class="oxm-empty-sync" hidden>
+            <h2 class="oxm-empty-sync__title">아직 동기화된 데이터가 없습니다</h2>
+            <p id="oxm-empty-sync-msg" class="oxm-muted">모바일 OX MONTH에서 같은 계정으로 데이터를 연결한 뒤 다시 열어 주세요. 웹에서 빈 문서를 자동으로 만들지 않습니다.</p>
+            <button type="button" class="oxm-btn-outline oxm-btn-filled--mt" id="oxm-empty-sync-create">웹에서 새로 시작 (모바일 데이터 없음)</button>
+          </div>
+          <div class="oxm-home-body">
+            <div class="oxm-home-middle">
+              <div class="oxm-month-nav">
+                <button type="button" class="oxm-icon-btn" id="oxm-month-prev" aria-label="prev">‹</button>
+                <h2 class="oxm-month-nav__label" id="oxm-month-label"></h2>
+                <button type="button" class="oxm-icon-btn" id="oxm-month-next" aria-label="next">›</button>
+              </div>
+              <div class="oxm-grid-scroll">
+                <table class="oxm-habit-table" id="oxm-month-grid" aria-label="OX MONTH"></table>
+              </div>
+            </div>
+            <div class="oxm-today-block">
+              <p class="oxm-today-block__label" id="oxm-today-label">오늘</p>
+              <form id="oxm-habit-add-form" class="oxm-habit-add">
+                <input id="oxm-habit-add-input" type="text" maxlength="80" autocomplete="off" placeholder="새 습관 이름" />
+                <button type="submit" class="oxm-btn-filled oxm-btn-filled--small" id="oxm-habit-add-btn">습관 추가</button>
+              </form>
+              <ul class="oxm-habit-list" id="oxm-habit-list"
+                data-edit-label="수정"
+                data-delete-label="삭제"></ul>
+            </div>
+            <div class="oxm-home-footer">
+              <button type="button" class="oxm-btn-outline" id="oxm-today-cta" disabled>오늘 체크하기</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="/apps/ox-month/ox-month-web-app.js?v=20260907oxmw7"></script>
+  </body>
+</html>
