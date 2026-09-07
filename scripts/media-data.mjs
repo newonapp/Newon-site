@@ -301,6 +301,22 @@ export const MEDIA_ITEMS_HUB = [
 
   /* —— Instagram (@newon.app) — thumbnail + external link (no embed) —— */
   {
+    id: "ig-Dc9y_tEHzrL",
+    platform: "instagram",
+    category: "PRODUCT",
+    igType: "POST",
+    titleKo: "네 번째 앱은 CountUp — 작은 성취를 카운트",
+    titleEn: "Fourth up: CountUp — count every small win",
+    descriptionKo: "운동·공부·독서처럼 꾸준히 하고 싶은 행동을 할 때마다 하나씩. 쌓이는 숫자가 동기가 됩니다.",
+    descriptionEn: "Log each workout, study session, or page — the number that builds becomes your motivation.",
+    date: "2026-09-07",
+    url: "https://www.instagram.com/newon.app/p/Dc9y_tEHzrL/",
+    embedUrl: null,
+    thumbnail: "/media-thumbs/ig-Dc9y_tEHzrL.jpg",
+    duration: null,
+    featured: true,
+  },
+  {
     id: "ig-Dc5KNRQH1Md",
     platform: "instagram",
     category: "PRODUCT",

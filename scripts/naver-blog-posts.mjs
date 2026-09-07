@@ -28,6 +28,72 @@ export const NAVER_BLOG_HOME =
 /** @type {NaverBlogPost[]} */
 export const NAVER_BLOG_POSTS = [
   {
+    id: "224403735725",
+    titleKo: "꾸준함을 위한 필수 앱, 포기 금지!",
+    titleEn: "Essential apps for consistency — don’t quit",
+    category: "product",
+    summaryKo:
+      "시작은 쉬운데 이어가기는 어렵죠. OX MONTH·CountUp·GoalUp·Savy·PiggyUp 등 매일 기록하고 눈으로 확인하는 Newon 앱으로 꾸준함을 만드세요.",
+    summaryEn:
+      "Starting is easy; sticking with it isn’t. Build consistency with Newon apps that help you log daily and see progress — OX MONTH, CountUp, GoalUp, and more.",
+    date: "2026.09.07",
+    url: "https://m.blog.naver.com/PostView.naver?blogId=newonapp&logNo=224403735725",
+    thumbnail: "/blog-thumbs/nb-224403735725.jpg",
+    featured: true,
+  },
+  {
+    id: "224403734933",
+    titleKo: "성공한 사람들의 비결은? 바로 이 앱!",
+    titleEn: "The secret of people who get it done? These apps",
+    category: "product",
+    summaryKo:
+      "거창한 계획보다 매일 기록하고 확인하는 것. 갓생을 조금 더 쉽게 만들어 줄 Newon 앱들을 소개합니다.",
+    summaryEn:
+      "Less grand plans, more daily logging and check-ins. Newon apps that make a focused routine a little easier.",
+    date: "2026.09.07",
+    url: "https://m.blog.naver.com/PostView.naver?blogId=newonapp&logNo=224403734933",
+    thumbnail: "/blog-thumbs/nb-224403734933.jpg",
+  },
+  {
+    id: "224403733709",
+    titleKo: "요즘 MZ들은 이 앱 쓴다!?",
+    titleEn: "What MZ generations are using right now",
+    category: "product",
+    summaryKo:
+      "공부·운동·돈 관리·여행까지. 일상 거의 모든 걸 앱으로 관리하는 MZ를 위한 Newon 앱 모음.",
+    summaryEn:
+      "Study, workouts, money, travel — a Newon lineup for people who run daily life from their phone.",
+    date: "2026.09.07",
+    url: "https://m.blog.naver.com/PostView.naver?blogId=newonapp&logNo=224403733709",
+    thumbnail: "/blog-thumbs/nb-224403733709.jpg",
+  },
+  {
+    id: "224403732981",
+    titleKo: "미루기 금지! 갓생 필수 앱",
+    titleEn: "No more putting it off — apps for getting started",
+    category: "product",
+    summaryKo:
+      "“내일부터”만 반복 중이라면. 습관·목표·돈·건강·여행까지 갓생을 시작하고 싶을 때 쓸 Newon 앱.",
+    summaryEn:
+      "If “I’ll start tomorrow” keeps winning, here’s a Newon stack for habits, goals, money, health, and travel.",
+    date: "2026.09.07",
+    url: "https://m.blog.naver.com/PostView.naver?blogId=newonapp&logNo=224403732981",
+    thumbnail: "/blog-thumbs/nb-224403732981.jpg",
+  },
+  {
+    id: "224403711355",
+    titleKo: "2026년 요즘 인기 앱",
+    titleEn: "Popular apps in 2026",
+    category: "product",
+    summaryKo:
+      "일정·습관·돈·건강·여행까지 스마트폰 하나로. 2026년에 주목할 만한 Newon 앱을 모아봤습니다.",
+    summaryEn:
+      "Schedule, habits, money, health, travel — Newon apps worth watching in 2026.",
+    date: "2026.09.07",
+    url: "https://m.blog.naver.com/PostView.naver?blogId=newonapp&logNo=224403711355",
+    thumbnail: "/blog-thumbs/nb-224403711355.jpg",
+  },
+  {
     id: "224396976295",
     titleKo: "개강 준비 끝! 대학생이라면 써볼 만한 필수 앱 추천",
     titleEn: "Semester ready: essential apps for campus life",
@@ -39,7 +105,6 @@ export const NAVER_BLOG_POSTS = [
     date: "2026.09.01",
     url: "https://m.blog.naver.com/PostView.naver?blogId=newonapp&logNo=224396976295",
     thumbnail: "/blog-thumbs/nb-224396976295.jpg",
-    featured: true,
   },
   {
     id: "224395763455",
