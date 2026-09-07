@@ -61,6 +61,8 @@ import {
       config: document.getElementById("oxm-view-config"),
       signedOut: document.getElementById("oxm-view-signed-out"),
       app: document.getElementById("oxm-view-app"),
+      today: document.getElementById("oxm-view-today"),
+      habits: document.getElementById("oxm-view-habits"),
       settings: document.getElementById("oxm-view-settings"),
       stats: document.getElementById("oxm-view-stats"),
       error: document.getElementById("oxm-view-error"),
@@ -72,21 +74,33 @@ import {
     loginBtn: document.getElementById("oxm-login-btn"),
     signupBtn: document.getElementById("oxm-signup-btn"),
     logoutBtn: document.getElementById("oxm-logout-btn"),
+    habitsBtn: document.getElementById("oxm-habits-btn"),
+    habitsBack: document.getElementById("oxm-habits-back"),
+    habitsView: document.getElementById("oxm-view-habits"),
+    manageList: document.getElementById("oxm-manage-list"),
     themeBtn: document.getElementById("oxm-theme-btn"),
-    themeBtnHome: document.getElementById("oxm-theme-btn-home"),
     todayLabel: document.getElementById("oxm-today-label"),
     todayBlock: document.getElementById("oxm-today-block"),
     todayCta: document.getElementById("oxm-today-cta"),
+    todayBack: document.getElementById("oxm-today-back"),
+    todayDayPrev: document.getElementById("oxm-today-day-prev"),
+    todayDayNext: document.getElementById("oxm-today-day-next"),
     habitAddForm: document.getElementById("oxm-habit-add-form"),
     habitAddInput: document.getElementById("oxm-habit-add-input"),
     habitAddBtn: document.getElementById("oxm-habit-add-btn"),
     habitPart: document.getElementById("oxm-habit-part"),
     habitList: document.getElementById("oxm-habit-list"),
+    sheet: document.getElementById("oxm-sheet"),
+    sheetDismiss: document.getElementById("oxm-sheet-dismiss"),
+    sheetTitle: document.getElementById("oxm-sheet-title"),
+    sheetBody: document.getElementById("oxm-sheet-body"),
+    sheetActions: document.getElementById("oxm-sheet-actions"),
     monthLabel: document.getElementById("oxm-month-label"),
     monthGrid: document.getElementById("oxm-month-grid"),
     monthPrev: document.getElementById("oxm-month-prev"),
     monthNext: document.getElementById("oxm-month-next"),
     appView: document.getElementById("oxm-view-app"),
+    todayView: document.getElementById("oxm-view-today"),
     syncBanner: document.getElementById("oxm-sync-banner"),
     emptySync: document.getElementById("oxm-empty-sync"),
     emptySyncMsg: document.getElementById("oxm-empty-sync-msg"),
@@ -96,9 +110,11 @@ import {
     settingsBack: document.getElementById("oxm-settings-back"),
     settingsEmail: document.getElementById("oxm-settings-email"),
     settingsTheme: document.getElementById("oxm-settings-theme"),
+    settingsThemeMeta: document.getElementById("oxm-settings-theme-meta"),
     settingsStats: document.getElementById("oxm-settings-stats"),
     settingsLogout: document.getElementById("oxm-settings-logout"),
     goalInput: document.getElementById("oxm-goal-input"),
+    goalPct: document.getElementById("oxm-goal-pct"),
     goalSave: document.getElementById("oxm-goal-save"),
     accentO: document.getElementById("oxm-accent-o"),
     accentX: document.getElementById("oxm-accent-x"),
@@ -122,6 +138,7 @@ import {
     oxSaving: false,
     habitSaving: false,
     visibleMonth: new Date(),
+    checkDay: new Date(),
   };
 
   var mockMode =
@@ -246,11 +263,116 @@ import {
   }
 
   function partLabel(part) {
-    var app = els.appView;
-    if (!app) return "";
+    var app = els.habitsView || els.todayView || els.appView;
+    if (!app) return part === 0 ? "Morning" : part === 1 ? "Lunch" : "Evening";
     if (part === 0) return app.getAttribute("data-part-morning") || "Morning";
     if (part === 1) return app.getAttribute("data-part-lunch") || "Lunch";
     return app.getAttribute("data-part-evening") || "Evening";
+  }
+
+  function habitsCopy(attr, fallback) {
+    if (els.habitsView && els.habitsView.getAttribute(attr)) {
+      return els.habitsView.getAttribute(attr);
+    }
+    return fallback;
+  }
+
+  function closeSheet() {
+    if (!els.sheet) return;
+    els.sheet.hidden = true;
+    if (els.sheetBody) els.sheetBody.innerHTML = "";
+    if (els.sheetActions) els.sheetActions.innerHTML = "";
+    if (els.sheetTitle) els.sheetTitle.textContent = "";
+  }
+
+  function openSheet(opts) {
+    if (!els.sheet || !els.sheetBody || !els.sheetActions || !els.sheetTitle) {
+      return;
+    }
+    els.sheetTitle.textContent = opts.title || "";
+    els.sheetBody.innerHTML = "";
+    els.sheetActions.innerHTML = "";
+    if (opts.bodyNode) els.sheetBody.appendChild(opts.bodyNode);
+    (opts.actions || []).forEach(function (a) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className =
+        "oxm-sheet__btn" +
+        (a.primary ? " oxm-sheet__btn--primary" : "") +
+        (a.danger ? " oxm-sheet__btn--danger" : "");
+      btn.textContent = a.label;
+      btn.disabled = !!a.disabled;
+      btn.addEventListener("click", function () {
+        if (typeof a.onClick === "function") a.onClick();
+      });
+      els.sheetActions.appendChild(btn);
+    });
+    els.sheet.hidden = false;
+  }
+
+  function openHabits(focusAdd) {
+    renderAccentPickers();
+    refreshView();
+    showView("habits");
+    if (focusAdd && els.habitAddInput) {
+      setTimeout(function () {
+        els.habitAddInput.focus();
+      }, 50);
+    }
+  }
+
+  function parseDateKeyLocal(dateKey) {
+    var parts = `${dateKey || ""}`.split("-").map(Number);
+    if (
+      parts.length !== 3 ||
+      parts.some(function (n) {
+        return !Number.isFinite(n);
+      })
+    ) {
+      return new Date();
+    }
+    return new Date(parts[0], parts[1] - 1, parts[2], 12, 0, 0, 0);
+  }
+
+  function shiftCheckDay(delta) {
+    var d = new Date(state.checkDay.getTime());
+    d.setDate(d.getDate() + delta);
+    var limit = new Date();
+    limit.setHours(23, 59, 59, 999);
+    if (d.getTime() > limit.getTime()) return;
+    state.checkDay = d;
+    refreshView();
+  }
+
+  function openTodayCheck(dateOrKey) {
+    if (typeof dateOrKey === "string") {
+      state.checkDay = parseDateKeyLocal(dateOrKey);
+    } else if (dateOrKey instanceof Date) {
+      state.checkDay = new Date(dateOrKey.getTime());
+    } else {
+      state.checkDay = new Date();
+    }
+    refreshView();
+    showView("today");
+  }
+
+  function syncGoalPctLabel() {
+    if (!els.goalPct || !els.goalInput) return;
+    var n = Number(els.goalInput.value);
+    if (!Number.isFinite(n)) n = 70;
+    els.goalPct.textContent = Math.round(n) + "%";
+  }
+
+  function syncThemeMeta() {
+    if (!els.settingsThemeMeta) return;
+    var light = root.getAttribute("data-theme") === "light";
+    els.settingsThemeMeta.textContent = light
+      ? isKo()
+        ? "라이트"
+        : "Light"
+      : isKo()
+        ? "다크"
+        : "Dark";
   }
 
   function editLabel() {
@@ -390,14 +512,15 @@ import {
       els.settingsEmail.textContent =
         (state.user && state.user.email) || "";
     }
-    renderAccentPickers();
+    syncThemeMeta();
     var email = state.user && state.user.email ? state.user.email : "";
     var goals = parseGoalsMap(currentPayload()[goalsPrefsKey(email)]);
     var gKey = goalsStorageMonthKey(state.visibleMonth);
     if (els.goalInput) {
       els.goalInput.value =
-        goals[gKey] != null ? String(goals[gKey]) : "80";
+        goals[gKey] != null ? String(goals[gKey]) : "70";
       els.goalInput.disabled = !canEditOx();
+      syncGoalPctLabel();
     }
     if (els.goalSave) els.goalSave.disabled = !canEditOx();
     showView("settings");
@@ -434,57 +557,112 @@ import {
     var stats = computeMonthStats(payload[checkKey], payload[titlesKey], mk);
     var goals = parseGoalsMap(payload[goalsPrefsKey(email)]);
     var goal = goals[goalsStorageMonthKey(state.visibleMonth)];
-    var lines = [];
-    lines.push(
-      isKo()
-        ? "습관 " + stats.habitCount + "개"
-        : stats.habitCount + " habits",
-    );
-    lines.push("O " + stats.totalO + " · X " + stats.totalX);
-    if (stats.oRatio != null) {
-      lines.push(
-        (isKo() ? "O 비율 " : "O rate ") +
-          Math.round(stats.oRatio * 100) +
-          "%",
-      );
-    }
-    if (goal != null) {
-      lines.push((isKo() ? "월 목표 " : "Goal ") + goal + "%");
-    }
-    lines.push(
-      (isKo() ? "기록 있는 날 " : "Days marked ") + stats.daysWithAnyMark,
-    );
-    if (stats.best) {
-      lines.push(
-        (isKo() ? "최고 " : "Best ") +
-          stats.best.title +
-          " (" +
-          Math.round((stats.best.rate || 0) * 100) +
-          "%)",
-      );
-    }
     els.statsBody.innerHTML = "";
-    lines.forEach(function (t) {
-      var p = document.createElement("p");
-      p.className = "oxm-stats-line";
-      p.textContent = t;
-      els.statsBody.appendChild(p);
-    });
+
+    var monthEl = document.createElement("p");
+    monthEl.className = "oxm-stats-month";
+    monthEl.textContent = formatMonthName(state.visibleMonth);
+    els.statsBody.appendChild(monthEl);
+
+    if (!stats.habitCount) {
+      var empty = document.createElement("p");
+      empty.className = "oxm-muted";
+      empty.textContent = isKo()
+        ? "이 달에 습관이 없습니다."
+        : "No habits this month.";
+      els.statsBody.appendChild(empty);
+      return;
+    }
+
     if (stats.ranked.length) {
+      var rankCard = document.createElement("div");
+      rankCard.className = "oxm-stats-card";
+      var rankTitle = document.createElement("p");
+      rankTitle.className = "oxm-stats-card__title";
+      rankTitle.textContent = isKo() ? "습관별 O" : "Habits by O";
+      rankCard.appendChild(rankTitle);
       var ul = document.createElement("ul");
-      ul.className = "oxm-stats-list";
+      ul.className = "oxm-stats-rank";
       stats.ranked.forEach(function (r) {
         var li = document.createElement("li");
-        li.textContent =
-          r.title +
-          " — O " +
+        var name = document.createElement("span");
+        name.className = "oxm-stats-rank__name";
+        name.textContent = r.title;
+        var meta = document.createElement("span");
+        meta.className = "oxm-stats-rank__meta";
+        meta.textContent =
+          "O " +
           r.oCount +
-          " / X " +
+          " · X " +
           r.xCount +
-          (r.rate != null ? " (" + Math.round(r.rate * 100) + "%)" : "");
+          (r.rate != null ? " · " + Math.round(r.rate * 100) + "%" : "");
+        li.appendChild(name);
+        li.appendChild(meta);
         ul.appendChild(li);
       });
-      els.statsBody.appendChild(ul);
+      rankCard.appendChild(ul);
+      els.statsBody.appendChild(rankCard);
+    }
+
+    var countCard = document.createElement("div");
+    countCard.className = "oxm-stats-card";
+    var counts = document.createElement("div");
+    counts.className = "oxm-stats-counts";
+    ["O", "X"].forEach(function (letter) {
+      var block = document.createElement("div");
+      var lab = document.createElement("p");
+      lab.className =
+        "oxm-stats-count__label oxm-stats-count__label--" + letter.toLowerCase();
+      lab.textContent = letter;
+      var val = document.createElement("p");
+      val.className = "oxm-stats-count__value";
+      val.textContent = String(letter === "O" ? stats.totalO : stats.totalX);
+      block.appendChild(lab);
+      block.appendChild(val);
+      counts.appendChild(block);
+    });
+    countCard.appendChild(counts);
+    if (stats.oRatio != null) {
+      var ratio = document.createElement("p");
+      ratio.className = "oxm-muted";
+      ratio.style.marginTop = "12px";
+      ratio.style.textAlign = "center";
+      ratio.textContent =
+        (isKo() ? "O 비율 " : "O rate ") + Math.round(stats.oRatio * 100) + "%";
+      countCard.appendChild(ratio);
+    }
+    if (goal != null) {
+      var goalLine = document.createElement("p");
+      goalLine.className = "oxm-muted";
+      goalLine.style.textAlign = "center";
+      goalLine.textContent = (isKo() ? "월 목표 " : "Goal ") + goal + "%";
+      countCard.appendChild(goalLine);
+    }
+    els.statsBody.appendChild(countCard);
+
+    if (stats.best) {
+      var best = document.createElement("div");
+      best.className = "oxm-stats-highlight";
+      best.innerHTML =
+        '<span class="oxm-stats-highlight__icon" aria-hidden="true">↑</span>';
+      var bestBody = document.createElement("div");
+      var kicker = document.createElement("p");
+      kicker.className = "oxm-stats-highlight__kicker";
+      kicker.textContent = isKo() ? "최고" : "Best";
+      var name = document.createElement("p");
+      name.className = "oxm-stats-highlight__name";
+      name.textContent = stats.best.title;
+      var rate = document.createElement("p");
+      rate.className = "oxm-stats-highlight__rate";
+      rate.textContent =
+        Math.round((stats.best.rate || 0) * 100) +
+        "% · O " +
+        stats.best.oCount;
+      bestBody.appendChild(kicker);
+      bestBody.appendChild(name);
+      bestBody.appendChild(rate);
+      best.appendChild(bestBody);
+      els.statsBody.appendChild(best);
     }
   }
 
@@ -511,11 +689,11 @@ import {
       email: email,
       now: state.visibleMonth,
     });
-    var todayVm = buildOxMonthViewModel(payload, {
+    var checkVm = buildOxMonthViewModel(payload, {
       email: email,
-      now: new Date(),
+      now: state.checkDay || new Date(),
     });
-    renderHome(monthVm, todayVm);
+    renderHome(monthVm, checkVm);
   }
 
   function makeOxButton(letter, mark, habitTitle, enabled) {
@@ -546,14 +724,16 @@ import {
     return btn;
   }
 
-  function makeHabitActionButtons(habitTitle, month, enabled) {
+  function makeHabitIconActions(habitTitle, month, enabled) {
     var wrap = document.createElement("div");
-    wrap.className = "oxm-habit-actions";
+    wrap.className = "oxm-manage-card__actions";
 
     var editBtn = document.createElement("button");
     editBtn.type = "button";
-    editBtn.className = "oxm-text-btn oxm-habit-edit";
-    editBtn.textContent = editLabel();
+    editBtn.className = "oxm-icon-action";
+    editBtn.textContent = "✎";
+    editBtn.title = habitsCopy("data-edit-label", isKo() ? "수정" : "Edit");
+    editBtn.setAttribute("aria-label", editBtn.title);
     editBtn.dataset.habitAction = "rename";
     editBtn.dataset.habitTitle = habitTitle;
     editBtn.dataset.habitMonth = month;
@@ -561,8 +741,10 @@ import {
 
     var delBtn = document.createElement("button");
     delBtn.type = "button";
-    delBtn.className = "oxm-text-btn oxm-habit-delete";
-    delBtn.textContent = deleteLabel();
+    delBtn.className = "oxm-icon-action oxm-icon-action--danger";
+    delBtn.textContent = "⌫";
+    delBtn.title = habitsCopy("data-delete-label", isKo() ? "삭제" : "Delete");
+    delBtn.setAttribute("aria-label", delBtn.title);
     delBtn.dataset.habitAction = "delete";
     delBtn.dataset.habitTitle = habitTitle;
     delBtn.dataset.habitMonth = month;
@@ -573,24 +755,80 @@ import {
     return wrap;
   }
 
-  function renderHome(monthVm, todayVm) {
-    todayVm = todayVm || monthVm;
-    var todayKey = todayVm.today || dayKey(new Date());
+  function makeDayPartSegment(habitTitle, part, month, enabled) {
+    var wrap = document.createElement("div");
+    wrap.className = "oxm-segment";
+    wrap.setAttribute("role", "group");
+    [0, 1, 2].forEach(function (p) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "oxm-segment__btn" + (part === p ? " is-on" : "");
+      btn.textContent = partLabel(p);
+      btn.disabled = !enabled;
+      btn.dataset.habitPartSet = habitTitle;
+      btn.dataset.part = String(p);
+      btn.dataset.habitMonth = month;
+      wrap.appendChild(btn);
+    });
+    return wrap;
+  }
+
+  function renderManageList(monthVm) {
+    if (!els.manageList) return;
+    var editable = canEditOx() && !state.oxSaving && !state.habitSaving;
+    var month = monthVm.month;
+    els.manageList.innerHTML = "";
+    var titles = monthVm.habitTitles || [];
+    if (!titles.length) {
+      var empty = document.createElement("p");
+      empty.className = "oxm-muted";
+      empty.textContent = isKo()
+        ? "이 달에 표시할 습관이 없습니다."
+        : "No habits for this month.";
+      els.manageList.appendChild(empty);
+      return;
+    }
+    titles.forEach(function (h) {
+      var li = document.createElement("li");
+      li.className = "oxm-manage-card";
+      var top = document.createElement("div");
+      top.className = "oxm-manage-card__top";
+      var name = document.createElement("p");
+      name.className = "oxm-manage-card__name";
+      name.textContent = h.title;
+      top.appendChild(name);
+      top.appendChild(makeHabitIconActions(h.title, month, editable));
+      li.appendChild(top);
+      li.appendChild(makeDayPartSegment(h.title, h.part, month, editable));
+      els.manageList.appendChild(li);
+    });
+  }
+
+  function renderHome(monthVm, checkVm) {
+    checkVm = checkVm || monthVm;
+    var calendarTodayKey = dayKey(new Date());
+    var checkDayKey = checkVm.today || calendarTodayKey;
     if (els.todayLabel) {
-      els.todayLabel.textContent = formatToday(new Date());
+      els.todayLabel.textContent = formatToday(state.checkDay || new Date());
     }
     if (els.monthLabel) {
       els.monthLabel.textContent = formatMonthName(state.visibleMonth);
     }
+    if (els.todayDayNext) {
+      els.todayDayNext.disabled = checkDayKey >= calendarTodayKey;
+    }
 
     var editable = canEditOx() && !state.oxSaving && !state.habitSaving;
+    var canMarkCheckDay = editable && checkDayKey <= calendarTodayKey;
     if (els.habitAddInput) els.habitAddInput.disabled = !editable;
     if (els.habitAddBtn) els.habitAddBtn.disabled = !editable;
     if (els.habitPart) els.habitPart.disabled = !editable;
 
+    renderManageList(monthVm);
+
     if (els.habitList) {
       els.habitList.innerHTML = "";
-      if (!todayVm.hasTitles) {
+      if (!checkVm.hasTitles) {
         var empty = document.createElement("p");
         empty.className = "oxm-muted";
         empty.textContent = isKo()
@@ -598,33 +836,27 @@ import {
           : "No habits for this month.";
         els.habitList.appendChild(empty);
       } else {
-        todayVm.habitsToday.forEach(function (h) {
+        checkVm.habitsToday.forEach(function (h) {
           var li = document.createElement("li");
           li.className = "oxm-habit-row";
           var meta = document.createElement("div");
           meta.className = "oxm-habit-row__meta";
-          var chip = document.createElement("button");
-          chip.type = "button";
-          chip.className = "oxm-part-chip";
+          var chip = document.createElement("span");
+          chip.className = "oxm-part-chip oxm-part-chip--static";
           chip.textContent = partLabel(h.part);
-          chip.disabled = !editable;
-          chip.setAttribute("data-habit-part", h.title);
-          chip.setAttribute("data-part", String(h.part));
-          chip.title = isKo()
-            ? "탭하여 아침/점심/저녁 변경"
-            : "Tap to change morning/lunch/evening";
           var name = document.createElement("p");
           name.className = "oxm-habit-name";
           name.textContent = h.title;
           meta.appendChild(chip);
           meta.appendChild(name);
-          meta.appendChild(
-            makeHabitActionButtons(h.title, todayVm.month, editable),
-          );
           var pair = document.createElement("div");
           pair.className = "oxm-ox-pair";
-          pair.appendChild(makeOxButton("O", h.mark, h.title, editable));
-          pair.appendChild(makeOxButton("X", h.mark, h.title, editable));
+          pair.appendChild(
+            makeOxButton("O", h.mark, h.title, canMarkCheckDay),
+          );
+          pair.appendChild(
+            makeOxButton("X", h.mark, h.title, canMarkCheckDay),
+          );
           li.appendChild(meta);
           li.appendChild(pair);
           els.habitList.appendChild(li);
@@ -636,14 +868,10 @@ import {
       els.monthGrid.innerHTML = "";
       var thead = document.createElement("thead");
       var headRow = document.createElement("tr");
-      var corner = document.createElement("th");
-      corner.className = "oxm-habit-col";
-      corner.textContent = isKo() ? "습관" : "";
-      headRow.appendChild(corner);
       monthVm.monthDays.forEach(function (day) {
         var th = document.createElement("th");
         th.textContent = String(day.day);
-        if (day.dateKey === todayKey) th.className = "is-today";
+        if (day.dateKey === calendarTodayKey) th.className = "is-today";
         headRow.appendChild(th);
       });
       thead.appendChild(headRow);
@@ -654,7 +882,7 @@ import {
       if (!titles.length) {
         var emptyRow = document.createElement("tr");
         var emptyTd = document.createElement("td");
-        emptyTd.colSpan = monthVm.monthDays.length + 1;
+        emptyTd.colSpan = Math.max(1, monthVm.monthDays.length);
         emptyTd.className = "oxm-muted";
         emptyTd.textContent = isKo()
           ? "이 달에 표시할 습관이 없습니다."
@@ -664,26 +892,12 @@ import {
       } else {
         titles.forEach(function (h) {
           var tr = document.createElement("tr");
-          var nameTd = document.createElement("td");
-          nameTd.className = "oxm-habit-col";
-          var nameWrap = document.createElement("div");
-          nameWrap.className = "oxm-habit-col__inner";
-          var nameEl = document.createElement("span");
-          nameEl.className = "oxm-habit-name";
-          nameEl.textContent = h.title;
-          nameWrap.appendChild(nameEl);
-          nameWrap.appendChild(
-            makeHabitActionButtons(h.title, monthVm.month, editable),
-          );
-          nameTd.appendChild(nameWrap);
-          tr.appendChild(nameTd);
-
           monthVm.monthDays.forEach(function (day) {
             var td = document.createElement("td");
             var mark = markForHabitTitle(day.marks, h.title);
-            var canEditDay = editable && day.dateKey <= todayKey;
-            if (day.dateKey === todayKey) td.classList.add("is-today");
-            if (day.dateKey > todayKey) td.classList.add("is-future");
+            var canOpen = day.dateKey <= calendarTodayKey;
+            if (day.dateKey === calendarTodayKey) td.classList.add("is-today");
+            if (day.dateKey > calendarTodayKey) td.classList.add("is-future");
             if (mark === "o") {
               td.textContent = "O";
               td.classList.add("mark-o");
@@ -693,10 +907,8 @@ import {
             } else {
               td.textContent = "";
             }
-            td.dataset.habitTitle = h.title;
             td.dataset.dateKey = day.dateKey;
-            td.dataset.mark = mark || "";
-            if (canEditDay) {
+            if (canOpen) {
               td.classList.add("oxm-cell--editable");
               td.setAttribute("role", "button");
               td.tabIndex = 0;
@@ -713,11 +925,11 @@ import {
       var scroll = els.monthGrid.parentElement;
       if (scroll && monthVm.monthDays.length) {
         var todayIdx = monthVm.monthDays.findIndex(function (d) {
-          return d.dateKey === todayKey;
+          return d.dateKey === calendarTodayKey;
         });
         if (todayIdx >= 0) {
           var cell = 40;
-          var target = (todayIdx + 2) * cell - scroll.clientWidth;
+          var target = (todayIdx + 1) * cell - scroll.clientWidth;
           scroll.scrollLeft = Math.max(0, target);
         }
       }
@@ -889,11 +1101,11 @@ import {
       return;
     }
     var partEl = els.habitPart;
-    var part = partEl ? Number(partEl.value) : 2;
-    if (![0, 1, 2].includes(part)) part = 2;
+    var part = partEl ? Number(partEl.value) : 0;
+    if (![0, 1, 2].includes(part)) part = 0;
     var ok = await saveHabitMutation({
       email: state.user.email || "",
-      month: monthKey(new Date()),
+      month: monthKey(state.visibleMonth),
       action: "add",
       title: title,
       part: part,
@@ -901,40 +1113,95 @@ import {
     if (ok && els.habitAddInput) els.habitAddInput.value = "";
   }
 
-  async function handleRenameHabit(oldTitle, month) {
+  function handleRenameHabit(oldTitle, month) {
     if (!canEditOx() || !state.user) return;
-    var promptMsg = isKo() ? "새 습관 이름" : "New habit name";
-    var next = window.prompt(promptMsg, oldTitle);
-    if (next == null) return;
-    next = `${next}`.trim();
-    if (!next || next === oldTitle) return;
-    await saveHabitMutation({
-      email: state.user.email || "",
-      month: month || monthKey(state.visibleMonth),
-      action: "rename",
-      title: oldTitle,
-      newTitle: next,
+    var input = document.createElement("input");
+    input.className = "oxm-sheet__input";
+    input.type = "text";
+    input.maxLength = 80;
+    input.value = oldTitle;
+    input.autocomplete = "off";
+    openSheet({
+      title: habitsCopy(
+        "data-rename-title",
+        isKo() ? "습관 이름 수정" : "Rename habit",
+      ),
+      bodyNode: input,
+      actions: [
+        {
+          label: habitsCopy("data-cancel-label", isKo() ? "취소" : "Cancel"),
+          onClick: closeSheet,
+        },
+        {
+          label: habitsCopy("data-save-label", isKo() ? "저장" : "Save"),
+          primary: true,
+          onClick: async function () {
+            var next = `${input.value || ""}`.trim();
+            if (!next || next === oldTitle) {
+              closeSheet();
+              return;
+            }
+            closeSheet();
+            await saveHabitMutation({
+              email: state.user.email || "",
+              month: month || monthKey(state.visibleMonth),
+              action: "rename",
+              title: oldTitle,
+              newTitle: next,
+            });
+          },
+        },
+      ],
     });
+    setTimeout(function () {
+      input.focus();
+      input.select();
+    }, 30);
   }
 
-  async function handleDeleteHabit(title, month) {
+  function handleDeleteHabit(title, month) {
     if (!canEditOx() || !state.user) return;
-    var ok = window.confirm(
-      isKo()
-        ? '"' + title + '" 습관을 삭제할까요?'
-        : 'Delete habit "' + title + '"?',
+    var msg = document.createElement("p");
+    msg.className = "oxm-sheet__msg";
+    var confirmTpl = habitsCopy(
+      "data-delete-confirm",
+      isKo() ? "이 습관을 삭제할까요?" : "Delete this habit?",
     );
-    if (!ok) return;
-    await saveHabitMutation({
-      email: state.user.email || "",
-      month: month || monthKey(state.visibleMonth),
-      action: "delete",
-      title: title,
+    msg.textContent = '"' + title + '" — ' + confirmTpl;
+    openSheet({
+      title: habitsCopy(
+        "data-delete-title",
+        isKo() ? "습관 삭제" : "Delete habit",
+      ),
+      bodyNode: msg,
+      actions: [
+        {
+          label: habitsCopy("data-cancel-label", isKo() ? "취소" : "Cancel"),
+          onClick: closeSheet,
+        },
+        {
+          label: habitsCopy("data-delete-label", isKo() ? "삭제" : "Delete"),
+          danger: true,
+          onClick: async function () {
+            closeSheet();
+            await saveHabitMutation({
+              email: state.user.email || "",
+              month: month || monthKey(state.visibleMonth),
+              action: "delete",
+              title: title,
+            });
+          },
+        },
+      ],
     });
   }
 
   async function handleOxPick(habitTitle, pick) {
-    await handleOxPickForDate(habitTitle, pick, dayKey(new Date()));
+    await handleOxPickForDate(
+      habitTitle,
+      pick,
+      dayKey(state.checkDay || new Date()),
+    );
   }
 
   async function handleOxPickForDate(habitTitle, pick, dateKey) {
@@ -1348,8 +1615,19 @@ import {
   }
 
   function bindAppControls() {
-    if (els.themeBtnHome) {
-      els.themeBtnHome.addEventListener("click", toggleTheme);
+    if (els.habitsBtn) {
+      els.habitsBtn.addEventListener("click", function () {
+        openHabits(true);
+      });
+    }
+    if (els.habitsBack) {
+      els.habitsBack.addEventListener("click", function () {
+        closeSheet();
+        showView("app");
+      });
+    }
+    if (els.sheetDismiss) {
+      els.sheetDismiss.addEventListener("click", closeSheet);
     }
 
     if (els.monthPrev) {
@@ -1381,20 +1659,21 @@ import {
       });
     }
 
-    if (els.habitList) {
-      els.habitList.addEventListener("click", function (e) {
+    if (els.manageList) {
+      els.manageList.addEventListener("click", function (e) {
         var t = e.target;
         if (!t || !t.closest) return;
 
-        var partBtn = t.closest("button[data-habit-part]");
+        var partBtn = t.closest("button[data-habit-part-set]");
         if (partBtn && !partBtn.disabled) {
-          var pTitle = partBtn.getAttribute("data-habit-part") || "";
-          var cur = Number(partBtn.getAttribute("data-part") || 2);
-          var nextPart = (cur + 1) % 3;
-          if (pTitle) {
+          var pTitle = partBtn.getAttribute("data-habit-part-set") || "";
+          var nextPart = Number(partBtn.getAttribute("data-part") || 0);
+          var pMonth =
+            partBtn.dataset.habitMonth || monthKey(state.visibleMonth);
+          if (pTitle && [0, 1, 2].includes(nextPart)) {
             saveHabitMutation({
               email: state.user.email || "",
-              month: monthKey(new Date()),
+              month: pMonth,
               action: "setPart",
               title: pTitle,
               part: nextPart,
@@ -1411,9 +1690,14 @@ import {
           if (!actionTitle) return;
           if (action === "rename") handleRenameHabit(actionTitle, actionMonth);
           else if (action === "delete") handleDeleteHabit(actionTitle, actionMonth);
-          return;
         }
+      });
+    }
 
+    if (els.habitList) {
+      els.habitList.addEventListener("click", function (e) {
+        var t = e.target;
+        if (!t || !t.closest) return;
         var btn = t.closest("button.oxm-ox");
         if (!btn || btn.disabled) return;
         var title = btn.dataset.habitTitle || "";
@@ -1425,39 +1709,37 @@ import {
 
     if (els.todayCta) {
       els.todayCta.addEventListener("click", function () {
-        var panel = document.getElementById("oxm-today");
-        if (panel && typeof panel.scrollIntoView === "function") {
-          panel.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-        if (els.habitAddInput) els.habitAddInput.focus();
+        openTodayCheck(new Date(), false);
       });
+    }
+    if (els.todayBack) {
+      els.todayBack.addEventListener("click", function () {
+        showView("app");
+      });
+    }
+    if (els.todayDayPrev) {
+      els.todayDayPrev.addEventListener("click", function () {
+        shiftCheckDay(-1);
+      });
+    }
+    if (els.todayDayNext) {
+      els.todayDayNext.addEventListener("click", function () {
+        shiftCheckDay(1);
+      });
+    }
+    if (els.goalInput) {
+      els.goalInput.addEventListener("input", syncGoalPctLabel);
     }
 
     if (els.monthGrid) {
       els.monthGrid.addEventListener("click", function (e) {
         var t = e.target;
         if (!t || !t.closest) return;
-
-        var actionBtn = t.closest("button[data-habit-action]");
-        if (actionBtn && !actionBtn.disabled) {
-          var action = actionBtn.dataset.habitAction || "";
-          var actionTitle = actionBtn.dataset.habitTitle || "";
-          var actionMonth = actionBtn.dataset.habitMonth || "";
-          if (!actionTitle) return;
-          if (action === "rename") handleRenameHabit(actionTitle, actionMonth);
-          else if (action === "delete") handleDeleteHabit(actionTitle, actionMonth);
-          return;
-        }
-
         var cell = t.closest("td[data-date-key]");
         if (!cell || !cell.classList.contains("oxm-cell--editable")) return;
-        var habitTitle = cell.dataset.habitTitle || "";
         var dateKey = cell.dataset.dateKey || "";
-        if (!habitTitle || !dateKey) return;
-        var current = cell.dataset.mark || null;
-        if (current !== "o" && current !== "x") current = null;
-        var next = nextCycleMark(current);
-        handleOxPickForDate(habitTitle, next, dateKey);
+        if (!dateKey) return;
+        openTodayCheck(dateKey, false);
       });
 
       els.monthGrid.addEventListener("keydown", function (e) {
@@ -1518,6 +1800,7 @@ import {
   function toggleTheme() {
     var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
     applyTheme(next, { persistSync: true });
+    syncThemeMeta();
   }
 
   function startMock() {
@@ -1530,11 +1813,31 @@ import {
       },
     };
 
-    // Empty store: GET 404 stays not_synced until explicit create PUT.
+    var now = new Date();
+    var mk = monthKey(now);
+    var today = dayKey(now);
+    var titlesKey = "ox_month_habit_titles_" + email + "_" + mk;
+    var checkKey = "ox_month_habit_check_" + email + "_v2";
+    var goalsKey = "ox_month_goals_map_v1_" + email;
+    var gKey = now.getFullYear() + "_" + (now.getMonth() + 1);
+    var seedPayload = {};
+    seedPayload[titlesKey] = JSON.stringify([
+      { t: "Walk", p: 0 },
+      { t: "Read", p: 2 },
+      { t: "Stretch", p: 1 },
+    ]);
+    seedPayload[checkKey] = JSON.stringify({
+      [today]: { Walk: "o", Read: "x" },
+    });
+    seedPayload[goalsKey] = JSON.stringify({
+      [gKey]: 70,
+    });
+    seedPayload.ox_month_appearance_mode_v1 = "dark";
+
     var store = {
-      exists: false,
-      revision: 0,
-      payload: {},
+      exists: true,
+      revision: 1,
+      payload: seedPayload,
     };
 
     window.__OX_MONTH_SYNC_FETCH__ =

@@ -8,13 +8,18 @@
   --ox-x: #ff3b3b;
   --ox-on-o: #000000;
   --ox-on-x: #ffffff;
-  --ox-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, "Noto Sans KR", sans-serif;
-  --ox-radius-12: 12px;
-  --ox-radius-6: 6px;
-  --ox-cell: 40px;
-  --ox-shell-max: 1120px;
+  /* Flutter uses platform default; keep system stack + KR */
+  --ox-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto,
+    Helvetica, Arial, "Noto Sans KR", sans-serif;
+  --ox-radius-14: 14px; /* SettingsListStyle.cardRadius / stats cards */
+  --ox-radius-12: 12px; /* TodayCheck habit card / home CTA */
+  --ox-radius-6: 6px; /* day-part chip */
+  --ox-cell: 40px; /* MainHomeScreen _kGridCellSize */
+  /* Phone-first shell — match app width, not wide desktop dashboard */
+  --ox-shell-max: 430px;
   --ox-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ox-settings-gap: 6px;
+  --ox-press: 0.1;
 }
 
 .oxm-app[data-theme="dark"] {
@@ -71,8 +76,9 @@ body.oxm-body:has(.oxm-app[data-theme="light"]) {
   transition: background 0.25s var(--ox-ease), color 0.25s var(--ox-ease);
 }
 
-/* Full-width web shell (app look, not phone bezel) */
-.oxm-shell {
+/* Narrow phone-centered shell (MainHomeScreen feel on any viewport) */
+.oxm-shell,
+.oxm-phone {
   width: min(100%, var(--ox-shell-max));
   margin: 0 auto;
   min-height: 100dvh;
@@ -82,17 +88,23 @@ body.oxm-body:has(.oxm-app[data-theme="light"]) {
   background: var(--ox-bg);
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
+  position: relative;
 }
 
-/* Back-compat if an older HTML still uses .oxm-phone */
-.oxm-phone {
-  width: min(100%, var(--ox-shell-max));
-  margin: 0 auto;
-  min-height: 100dvh;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: var(--ox-bg);
+@media (min-width: 480px) {
+  body.oxm-body {
+    background: #050505;
+  }
+
+  body.oxm-body:has(.oxm-app[data-theme="light"]) {
+    background: #e8e8ed;
+  }
+
+  .oxm-shell,
+  .oxm-phone {
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-menu-border) 70%, transparent);
+    min-height: min(100dvh, 920px);
+  }
 }
 
 .oxm-view[hidden] {
@@ -305,22 +317,22 @@ body.oxm-body:has(.oxm-app[data-theme="light"]) {
   display: flex;
   flex-direction: column;
   min-height: 0;
-  gap: 0;
 }
 
+/* Flutter: Spacer + month/grid + Spacer — vertically centered */
 .oxm-home-middle {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   min-height: 0;
-  padding: 8px 0 16px;
+  padding: 8px 0 12px;
 }
 
 .oxm-month-nav {
   display: flex;
   align-items: center;
-  padding: 0 8px;
+  padding: 0 4px;
 }
 
 .oxm-month-nav__label {
@@ -328,18 +340,19 @@ body.oxm-body:has(.oxm-app[data-theme="light"]) {
   margin: 0;
   text-align: center;
   color: var(--ox-label);
-  font-size: clamp(22px, 2.4vw, 28px);
+  font-size: 26px;
   font-weight: 700;
   line-height: 1.1;
 }
 
 .oxm-grid-scroll {
   margin-top: 12px;
-  padding: 0 16px;
-  overflow: auto;
+  padding: 0 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  flex: 1;
-  min-height: 0;
+  flex: 0 1 auto;
+  max-height: none;
 }
 
 .oxm-habit-table {
@@ -388,27 +401,32 @@ body.oxm-body:has(.oxm-app[data-theme="light"]) {
 }
 
 .oxm-today-block {
-  padding: 0 16px 8px;
-  flex-shrink: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 16px 16px 12px;
 }
 
 .oxm-today-block__label {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   color: var(--ox-subtitle);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 
 .oxm-habit-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-height: 38vh;
+  gap: 12px; /* today_check_screen habit row gap */
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+  min-height: 0;
 }
 
 /* TodayCheckScreen _HabitRow */
@@ -512,17 +530,17 @@ body.oxm-body:has(.oxm-app[data-theme="light"]) {
 .oxm-ox--o.is-on {
   background: var(--ox-o);
   color: var(--ox-on-o);
-  box-shadow: 0 0 8px rgba(0, 255, 135, 0.45);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--ox-o) 45%, transparent);
 }
 
 .oxm-ox--x.is-on {
   background: var(--ox-x);
   color: var(--ox-on-x);
-  box-shadow: 0 0 8px rgba(255, 59, 59, 0.45);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--ox-x) 45%, transparent);
 }
 
 .oxm-home-footer {
-  padding: 8px 28px 28px;
+  padding: 8px 28px 28px; /* MainHomeScreen Today check pad */
   flex-shrink: 0;
 }
 
@@ -537,8 +555,14 @@ body.oxm-body:has(.oxm-app[data-theme="light"]) {
   font: inherit;
   font-size: 15px;
   font-weight: 600;
-  cursor: default;
-  opacity: 0.85;
+  cursor: pointer;
+  opacity: 1;
+  transition: background 0.12s var(--ox-ease);
+}
+
+.oxm-btn-outline:hover,
+.oxm-btn-outline:active {
+  background: color-mix(in srgb, var(--ox-label) 6%, transparent);
 }
 
 .oxm-banner {
@@ -622,54 +646,57 @@ body.oxm-body:has(.oxm-app[data-theme="light"]) {
 
 .oxm-habit-add {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   align-items: stretch;
 }
 
 .oxm-habit-part {
   flex: 0 0 auto;
-  min-width: 4.5rem;
+  min-width: 4.75rem;
   border: 1px solid var(--ox-menu-border);
-  border-radius: var(--ox-radius-6);
+  border-radius: var(--ox-radius-12);
   background: var(--ox-input);
   color: var(--ox-label);
-  padding: 10px 8px;
+  padding: 0 10px;
   font-family: inherit;
   font-size: 13px;
+  font-weight: 600;
 }
 
 .oxm-habit-add input {
   flex: 1 1 auto;
-  min-width: 8rem;
-  width: 0;
-  border: 1px solid var(--ox-menu-border);
-  border-radius: var(--ox-radius-6);
+  min-width: 0;
+  border: none;
+  border-radius: var(--ox-radius-12);
   background: var(--ox-input);
   color: var(--ox-label);
-  padding: 10px 12px;
-  font-size: 14px;
+  padding: 0 14px;
+  font-size: 15px;
+  min-height: 52px;
 }
 
 .oxm-habit-add input:focus {
-  outline: 2px solid var(--ox-o);
-  outline-offset: 1px;
+  outline: none;
+  box-shadow: 0 0 0 1.5px var(--ox-o);
 }
 
 .oxm-btn-filled--small {
-  width: auto;
-  flex: 0 0 auto;
-  height: auto;
-  min-height: 40px;
-  padding: 10px 12px;
-  font-size: 13px;
-  white-space: nowrap;
+  width: 52px;
+  flex: 0 0 52px;
+  height: 52px;
+  min-height: 52px;
+  padding: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  border-radius: var(--ox-radius-12);
 }
 
 .oxm-habit-add .oxm-btn-filled {
-  width: auto;
-  flex: 0 0 auto;
+  width: 52px;
+  flex: 0 0 52px;
 }
 
 .oxm-habit-actions {
@@ -716,32 +743,20 @@ body.oxm-body:has(.oxm-app[data-theme="light"]) {
 
 .oxm-habit-table th.oxm-habit-col,
 .oxm-habit-table td.oxm-habit-col {
-  position: sticky;
-  left: 0;
-  z-index: 1;
-  min-width: 100px;
-  max-width: 180px;
-  width: 140px;
-  text-align: left;
-  padding: 4px 10px;
-  background: var(--ox-bg);
-  font-size: 13px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  display: none; /* MainHomeScreen has no habit-name column */
 }
 
 .oxm-cell--editable {
   cursor: pointer;
 }
 
-.oxm-cell--editable:hover {
-  outline: 1px solid var(--ox-o);
+.oxm-cell--editable:active {
+  background: color-mix(in srgb, var(--ox-label) 10%, transparent);
 }
 
 .oxm-cell--disabled {
   opacity: 0.35;
-  cursor: not-allowed;
+  cursor: default;
 }
 
 .oxm-panel {
@@ -753,48 +768,124 @@ body.oxm-body:has(.oxm-app[data-theme="light"]) {
 .oxm-panel-body {
   flex: 1;
   overflow: auto;
-  padding: 16px 20px 28px;
+  padding: 20px 16px 24px; /* settings_screen list pad */
+  -webkit-overflow-scrolling: touch;
 }
 
-.oxm-panel-label {
-  margin: 0 0 6px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--ox-hint);
+/* SettingsListStyle cards */
+.oxm-settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ox-settings-gap);
 }
 
-.oxm-panel-label--mt {
-  margin-top: 20px;
+.oxm-settings-card {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 0;
+  padding: 8px 12px;
+  min-height: 48px;
+  border-radius: var(--ox-radius-14);
+  border: 1px solid color-mix(in srgb, var(--ox-label) 35%, transparent);
+  background: var(--ox-card);
+  color: var(--ox-label);
+  font: inherit;
+  cursor: pointer;
+}
+
+.oxm-app[data-theme="light"] .oxm-settings-card {
+  border-color: color-mix(in srgb, var(--ox-label) 22%, transparent);
+}
+
+.oxm-settings-card--static {
+  cursor: default;
+  padding: 12px;
+}
+
+.oxm-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.oxm-settings-row__title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.oxm-settings-row__meta {
+  color: var(--ox-subtitle);
+  font-size: 13px;
+}
+
+.oxm-settings-chevron {
+  color: var(--ox-subtitle);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.oxm-settings-section {
+  margin-top: 4px;
 }
 
 .oxm-panel-email {
-  margin: 0 0 8px;
+  margin: 4px 0 0;
   word-break: break-all;
+  font-size: 13px;
+  color: var(--ox-subtitle);
 }
 
-.oxm-goal-row {
-  display: flex;
-  gap: 8px;
-  align-items: stretch;
+.oxm-goal-card {
+  padding: 16px 12px 14px;
+}
+
+.oxm-goal-heading {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--ox-label) 88%, transparent);
+}
+
+.oxm-goal-pct {
+  margin: 0 0 4px;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--ox-o);
+  line-height: 1.1;
 }
 
 .oxm-goal-input {
-  flex: 1;
-  min-width: 0;
-  border: 1px solid var(--ox-menu-border);
-  border-radius: var(--ox-radius-6);
-  background: var(--ox-input);
-  color: var(--ox-label);
-  padding: 10px 12px;
-  font-size: 14px;
+  display: block;
+  width: 100%;
+  margin: 8px 0 12px;
+  accent-color: var(--ox-o);
+  height: 28px;
+}
+
+.oxm-goal-save {
+  width: 100%;
+  height: auto;
+  min-height: 48px;
+  padding: 14px;
+  border-radius: var(--ox-radius-14);
+  font-weight: 700;
+}
+
+.oxm-accent-block {
+  padding: 12px;
 }
 
 .oxm-accent-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-top: 10px;
 }
 
 .oxm-accent-swatch {
@@ -815,9 +906,143 @@ body.oxm-body:has(.oxm-app[data-theme="light"]) {
 
 .oxm-panel-links {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--ox-settings-gap);
+  margin-top: 4px;
+}
+
+.oxm-panel-links .oxm-settings-card {
+  text-decoration: none;
+}
+
+.oxm-btn-danger {
+  background: transparent;
+  border-color: #ff5252;
+  color: #ff5252;
+  margin-top: 4px;
+}
+
+.oxm-stats-month {
+  margin: 0 0 16px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--ox-label);
+}
+
+.oxm-stats-card {
+  padding: 18px 12px;
+  border-radius: var(--ox-radius-14);
+  border: 1px solid var(--ox-menu-border);
+  background: var(--ox-input);
+  margin-bottom: 12px;
+}
+
+.oxm-stats-card__title {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--ox-label) 90%, transparent);
+}
+
+.oxm-stats-rank {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.oxm-stats-rank li {
+  display: flex;
+  justify-content: space-between;
   gap: 12px;
-  margin-top: 24px;
+  padding: 8px 0;
+  border-top: 1px solid color-mix(in srgb, var(--ox-menu-border) 70%, transparent);
+  font-size: 14px;
+}
+
+.oxm-stats-rank li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.oxm-stats-rank__name {
+  font-weight: 600;
+  color: var(--ox-label);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.oxm-stats-rank__meta {
+  color: var(--ox-subtitle);
+  flex-shrink: 0;
+}
+
+.oxm-stats-counts {
+  display: flex;
+  justify-content: space-around;
+  gap: 12px;
+  text-align: center;
+}
+
+.oxm-stats-count__label {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.oxm-stats-count__label--o {
+  color: var(--ox-o);
+}
+
+.oxm-stats-count__label--x {
+  color: var(--ox-x);
+}
+
+.oxm-stats-count__value {
+  margin: 6px 0 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--ox-label);
+}
+
+.oxm-stats-highlight {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 16px;
+  border-radius: var(--ox-radius-14);
+  border: 1px solid var(--ox-menu-border);
+  background: var(--ox-input);
+  margin-bottom: 12px;
+}
+
+.oxm-stats-highlight__icon {
+  font-size: 22px;
+  line-height: 1;
+  color: var(--ox-o);
+}
+
+.oxm-stats-highlight__kicker {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--ox-label) 85%, transparent);
+}
+
+.oxm-stats-highlight__name {
+  margin: 8px 0 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ox-label);
+}
+
+.oxm-stats-highlight__rate {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--ox-subtitle);
 }
 
 .oxm-stats-line {
@@ -826,107 +1051,283 @@ body.oxm-body:has(.oxm-app[data-theme="light"]) {
   font-size: 15px;
 }
 
-.oxm-stats-list {
-  margin: 12px 0 0;
-  padding-left: 1.2em;
+.oxm-today-day-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 8px 0;
+}
+
+.oxm-today-day-nav__label {
+  margin: 0;
+  min-width: 10rem;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ox-label);
+}
+
+@media (max-width: 359px) {
+  .oxm-home-bar__title {
+    font-size: 18px;
+    letter-spacing: 1.5px;
+  }
+
+  .oxm-month-nav__label {
+    font-size: 22px;
+  }
+}
+
+/* —— Screen titles (Flutter AppBar / settings) —— */
+.oxm-title-settings {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.oxm-title-screen {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.oxm-divider--soft {
+  height: 0.5px;
+  background: var(--ox-menu-border);
+}
+
+/* —— Habits manage (MonthHabitsTheme) —— */
+.oxm-habits-body {
+  padding-top: 20px;
+}
+
+.oxm-habits-section {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ox-label);
+}
+
+.oxm-manage-list {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.oxm-manage-card {
+  padding: 12px 14px;
+  border-radius: var(--ox-radius-12);
+  border: 1px solid var(--ox-menu-border);
+  background: transparent;
+}
+
+.oxm-manage-card__top {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.oxm-manage-card__name {
+  flex: 1;
+  margin: 0;
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ox-label);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.oxm-icon-action {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--ox-label);
+  width: 40px;
+  height: 40px;
+  display: inline-grid;
+  place-items: center;
+  cursor: pointer;
+  border-radius: 999px;
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.oxm-icon-action:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.oxm-icon-action--danger {
+  color: #ff5252;
+}
+
+.oxm-segment {
+  display: flex;
+  margin-top: 8px;
+  border-radius: var(--ox-radius-12);
+  overflow: hidden;
+  border: 1px solid var(--ox-menu-border);
+  background: var(--ox-input);
+}
+
+.oxm-segment__btn {
+  appearance: none;
+  border: none;
+  flex: 1;
+  min-height: 36px;
+  padding: 6px 4px;
+  background: transparent;
+  color: var(--ox-subtitle);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.oxm-segment__btn.is-on {
+  background: var(--ox-label);
+  color: var(--ox-bg);
+}
+
+.oxm-segment__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.oxm-habit-add--manage {
+  margin: 0 0 20px;
+}
+
+.oxm-accent-block--plain {
+  margin-top: 16px;
+  padding: 0;
+}
+
+.oxm-part-chip--static {
+  cursor: default;
+  pointer-events: none;
+}
+
+/* —— Bottom sheet / modal (Flutter sheet feel) —— */
+.oxm-sheet {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.oxm-sheet[hidden] {
+  display: none !important;
+}
+
+.oxm-sheet__backdrop {
+  appearance: none;
+  border: none;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+}
+
+.oxm-sheet__panel {
+  position: relative;
+  z-index: 1;
+  background: var(--ox-card);
+  border-radius: 16px 16px 0 0;
+  padding: 8px 20px calc(20px + env(safe-area-inset-bottom));
+  border: 1px solid var(--ox-menu-border);
+  border-bottom: none;
+  max-height: min(72vh, 520px);
+  overflow: auto;
+}
+
+.oxm-sheet__handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--ox-subtitle) 55%, transparent);
+  margin: 4px auto 14px;
+}
+
+.oxm-sheet__title {
+  margin: 0 0 12px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ox-label);
+  text-align: center;
+}
+
+.oxm-sheet__body {
+  margin-bottom: 16px;
+}
+
+.oxm-sheet__msg {
+  margin: 0;
   color: var(--ox-subtitle);
   font-size: 14px;
+  line-height: 1.45;
+  text-align: center;
 }
 
-.oxm-stats-list li {
-  margin-bottom: 6px;
+.oxm-sheet__input {
+  width: 100%;
+  border: none;
+  border-radius: var(--ox-radius-12);
+  background: var(--ox-input);
+  color: var(--ox-label);
+  font: inherit;
+  font-size: 16px;
+  padding: 14px 16px;
+  min-height: 52px;
 }
 
-/* Desktop web: month grid + today side-by-side (not a phone frame) */
-@media (min-width: 900px) {
-  body.oxm-body {
-    background: #050505;
-  }
-
-  .oxm-app[data-theme="light"] {
-    /* page chrome follows app theme via .oxm-app fill */
-  }
-
-  .oxm-shell,
-  .oxm-phone {
-    width: min(100% - 48px, var(--ox-shell-max));
-    margin: 0 auto;
-    min-height: 100dvh;
-    box-shadow: none;
-    border-inline: 1px solid color-mix(in srgb, var(--ox-menu-border) 80%, transparent);
-  }
-
-  .oxm-home-bar {
-    padding: 12px 20px;
-  }
-
-  .oxm-home-bar__title {
-    font-size: 24px;
-    letter-spacing: 3px;
-  }
-
-  .oxm-banner,
-  .oxm-empty-sync {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-
-  .oxm-home-body {
-    flex-direction: row;
-    align-items: stretch;
-    gap: 0;
-    padding: 0 8px 16px;
-  }
-
-  .oxm-home-middle {
-    flex: 1.55;
-    min-width: 0;
-    border-right: 1px solid var(--ox-menu-border);
-    padding: 8px 8px 8px 4px;
-  }
-
-  .oxm-today-block {
-    flex: 0 0 min(360px, 34%);
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-    padding: 16px 16px 8px;
-    overflow: auto;
-  }
-
-  .oxm-habit-list {
-    flex: 1;
-    overflow: auto;
-  }
-
-  .oxm-home-footer {
-    display: none;
-  }
-
-  .oxm-auth {
-    max-width: 420px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  .oxm-grid-scroll {
-    padding: 0 12px;
-  }
-
-  .oxm-habit-table th,
-  .oxm-habit-table td {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    font-size: 14px;
-  }
+.oxm-sheet__input:focus {
+  outline: none;
+  box-shadow: 0 0 0 1.5px var(--ox-o);
 }
 
-@media (max-width: 899px) {
-  .oxm-shell,
-  .oxm-phone {
-    width: 100%;
-    max-width: 100%;
-  }
+.oxm-sheet__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.oxm-sheet__btn {
+  appearance: none;
+  width: 100%;
+  min-height: 48px;
+  border-radius: var(--ox-radius-14);
+  border: 1px solid var(--ox-menu-border);
+  background: transparent;
+  color: var(--ox-label);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.oxm-sheet__btn--primary {
+  border: none;
+  background: var(--ox-o);
+  color: var(--ox-on-o);
+}
+
+.oxm-sheet__btn--danger {
+  border: none;
+  background: #ff5252;
+  color: #ffffff;
+}
+
+.oxm-sheet__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
 }
