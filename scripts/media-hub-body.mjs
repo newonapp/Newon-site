@@ -10,8 +10,9 @@ import {
   iso8601Duration,
 } from "./media-data.mjs";
 
-const LATEST_LIMIT = 8;
-const PLATFORM_LIMIT = 4;
+/** Desktop uses 3 columns — keep counts as multiples of 3 (6 / 9) so the last row is full. */
+const LATEST_LIMIT = 9;
+const PLATFORM_LIMIT = 6;
 
 function t(item, lang, koKey, enKey) {
   return lang === "ko" ? item[koKey] || item[enKey] || "" : item[enKey] || item[koKey] || "";
@@ -138,7 +139,7 @@ function platformSection(platform, items, copy, lang, social) {
       <h2 class="mh-eyebrow" id="mh-${platform}-title">${title}</h2>
       ${viewAll}
     </div>
-    <div class="${isIg ? "mh-ig-grid" : "mh-grid"}">${cards}</div>
+    <div class="${isIg ? "mh-ig-grid" : "mh-grid"}" data-mh-fill-rows="3">${cards}</div>
   </section>`;
 }
 
@@ -246,7 +247,7 @@ export function buildMediaHubBody(copies, lang, opts = {}) {
     <div class="mh-filters" role="tablist" aria-label="${escapeHtml(copy.filterAria || "Filter media")}">${filters}</div>
     <section class="mh-latest" aria-labelledby="mh-latest-title">
       <h2 class="mh-eyebrow" id="mh-latest-title">${escapeHtml(copy.latestTitle || "LATEST MEDIA")}</h2>
-      <div class="mh-grid" data-rs-filter-grid>${cards}</div>
+      <div class="mh-grid" data-rs-filter-grid data-mh-fill-rows="3">${cards}</div>
       <p class="mh-filter-empty" data-rs-filter-empty hidden>${emptyMsg}</p>
     </section>
     </div>

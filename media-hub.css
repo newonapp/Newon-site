@@ -673,6 +673,14 @@ a.mh-ig-card:hover .mh-link,
   display: none;
 }
 
+/* Desktop 3-col only: hide trailing cards so the last row is full (6 / 9). */
+@media (min-width: 961px) {
+  .mh-grid > .is-row-trim:not(.is-filtered-out):not([hidden]),
+  .mh-ig-grid > .is-row-trim:not(.is-filtered-out):not([hidden]) {
+    display: none !important;
+  }
+}
+
 @media (max-width: 960px) {
   .mh-featured__grid {
     grid-template-columns: 1fr;
