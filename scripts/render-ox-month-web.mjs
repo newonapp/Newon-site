@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from "url";
 import { LANGS, OG_LOCALE, SITE_ORIGIN } from "./hub-utils.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
-const ASSET_V = "20260907oxmw7";
+const ASSET_V = "20260907oxmw8";
 
 const COPY = {
   ko: {
@@ -126,7 +126,7 @@ ${hreflangs()}
   </head>
   <body class="oxm-body">
     <div id="oxm-app" class="oxm-app" data-theme="dark">
-      <div class="oxm-phone">
+      <div class="oxm-shell">
         <section id="oxm-view-loading" class="oxm-view oxm-view--fill oxm-center" hidden>
           <div class="oxm-spinner" aria-hidden="true"></div>
           <p class="oxm-muted">${c.loading}</p>

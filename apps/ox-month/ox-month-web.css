@@ -13,7 +13,7 @@
   --ox-radius-12: 12px;
   --ox-radius-6: 6px;
   --ox-cell: 40px;
-  --ox-shell-max: 430px;
+  --ox-shell-max: 1120px;
   --ox-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -58,6 +58,11 @@ body.oxm-body {
   -webkit-font-smoothing: antialiased;
 }
 
+body.oxm-body:has(.oxm-app[data-theme="light"]) {
+  background: #f5f5f7;
+  color: #000;
+}
+
 .oxm-app {
   min-height: 100dvh;
   min-height: 100vh;
@@ -66,8 +71,8 @@ body.oxm-body {
   transition: background 0.25s var(--ox-ease), color 0.25s var(--ox-ease);
 }
 
-/* Phone-width app shell centered on desktop (do not stretch like a dashboard) */
-.oxm-phone {
+/* Full-width web shell (app look, not phone bezel) */
+.oxm-shell {
   width: min(100%, var(--ox-shell-max));
   margin: 0 auto;
   min-height: 100dvh;
@@ -77,6 +82,17 @@ body.oxm-body {
   background: var(--ox-bg);
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Back-compat if an older HTML still uses .oxm-phone */
+.oxm-phone {
+  width: min(100%, var(--ox-shell-max));
+  margin: 0 auto;
+  min-height: 100dvh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--ox-bg);
 }
 
 .oxm-view[hidden] {
@@ -289,21 +305,22 @@ body.oxm-body {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  gap: 0;
 }
 
 .oxm-home-middle {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 0;
-  padding: 8px 0;
+  padding: 8px 0 16px;
 }
 
 .oxm-month-nav {
   display: flex;
   align-items: center;
-  padding: 0 4px;
+  padding: 0 8px;
 }
 
 .oxm-month-nav__label {
@@ -311,16 +328,18 @@ body.oxm-body {
   margin: 0;
   text-align: center;
   color: var(--ox-label);
-  font-size: 26px;
+  font-size: clamp(22px, 2.4vw, 28px);
   font-weight: 700;
   line-height: 1.1;
 }
 
 .oxm-grid-scroll {
   margin-top: 12px;
-  padding: 0 12px;
-  overflow-x: auto;
+  padding: 0 16px;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
+  flex: 1;
+  min-height: 0;
 }
 
 .oxm-habit-table {
@@ -678,12 +697,13 @@ body.oxm-body {
   position: sticky;
   left: 0;
   z-index: 1;
-  min-width: 88px;
-  max-width: 120px;
+  min-width: 100px;
+  max-width: 180px;
+  width: 140px;
   text-align: left;
-  padding: 4px 8px;
+  padding: 4px 10px;
   background: var(--ox-bg);
-  font-size: 12px;
+  font-size: 13px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -702,14 +722,96 @@ body.oxm-body {
   cursor: not-allowed;
 }
 
+/* Desktop web: month grid + today side-by-side (not a phone frame) */
 @media (min-width: 900px) {
   body.oxm-body {
-    background: #0a0a0a;
+    background: #050505;
   }
 
+  .oxm-app[data-theme="light"] {
+    /* page chrome follows app theme via .oxm-app fill */
+  }
+
+  .oxm-shell,
   .oxm-phone {
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
-    min-height: min(100dvh, 900px);
-    margin-top: max(0px, calc((100dvh - 900px) / 2));
+    width: min(100% - 48px, var(--ox-shell-max));
+    margin: 0 auto;
+    min-height: 100dvh;
+    box-shadow: none;
+    border-inline: 1px solid color-mix(in srgb, var(--ox-menu-border) 80%, transparent);
+  }
+
+  .oxm-home-bar {
+    padding: 12px 20px;
+  }
+
+  .oxm-home-bar__title {
+    font-size: 24px;
+    letter-spacing: 3px;
+  }
+
+  .oxm-banner,
+  .oxm-empty-sync {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .oxm-home-body {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+    padding: 0 8px 16px;
+  }
+
+  .oxm-home-middle {
+    flex: 1.55;
+    min-width: 0;
+    border-right: 1px solid var(--ox-menu-border);
+    padding: 8px 8px 8px 4px;
+  }
+
+  .oxm-today-block {
+    flex: 0 0 min(360px, 34%);
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 16px 16px 8px;
+    overflow: auto;
+  }
+
+  .oxm-habit-list {
+    flex: 1;
+    overflow: auto;
+  }
+
+  .oxm-home-footer {
+    display: none;
+  }
+
+  .oxm-auth {
+    max-width: 420px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .oxm-grid-scroll {
+    padding: 0 12px;
+  }
+
+  .oxm-habit-table th,
+  .oxm-habit-table td {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 899px) {
+  .oxm-shell,
+  .oxm-phone {
+    width: 100%;
+    max-width: 100%;
   }
 }
