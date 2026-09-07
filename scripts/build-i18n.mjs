@@ -507,13 +507,14 @@ writeInquirySuccessPages();
 renderBusinessCollabDetails();
 renderBusinessServices();
 
-/** robots.txt at site root (allow indexed pages; hide QR card + admin). */
+/** robots.txt at site root (allow indexed pages; hide QR card, IR, admin). */
 function writeRobotsTxt() {
   const body = [
     "User-agent: *",
     "Allow: /",
     "Disallow: /card-n7x4k9",
     "Disallow: /card-n7x4k9/",
+    "Disallow: /ir/",
     "Disallow: /admin/",
     "Disallow: /admin/growth/",
     "",
