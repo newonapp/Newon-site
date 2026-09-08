@@ -25,10 +25,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/ir/ir.css?v=20260908ir22" />
+    <link rel="stylesheet" href="/ir/ir.css?v=20260908ir24" />
   </head>
   <body class="ir-body">
     <a class="ir-skip" href="#ir-main">본문으로</a>
@@ -50,6 +50,8 @@
     <main id="ir-main" class="ir-main">
       <!-- 01 HERO -->
       <section class="ir-slide ir-hero" id="hero" aria-label="01 NEWON">
+        <div class="ir-frame" aria-hidden="true"></div>
+        <p class="ir-ghost" aria-hidden="true">IR</p>
         <div class="ir-inner ir-split" data-ir-reveal>
           <div>
             <p class="ir-n">01 / NEWON</p>
@@ -141,7 +143,9 @@
       </nav>
 
       <!-- 02 FOUNDER EXECUTION -->
-      <section class="ir-slide ir-slide--dark" id="execution" aria-label="02 실행">
+      <section class="ir-slide ir-slide--dark ir-exec" id="execution" aria-label="02 실행">
+        <div class="ir-frame ir-frame--light" aria-hidden="true"></div>
+        <p class="ir-ghost ir-ghost--light" aria-hidden="true">02</p>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">02 / FOUNDER EXECUTION</p>
           <h2 class="ir-h2">한 명이, 처음부터 끝까지.</h2>
@@ -174,12 +178,13 @@
       </section>
 
       <!-- 03 WHY / PROBLEM -->
-      <section class="ir-slide" id="why" aria-label="03 WHY NEWON">
+      <section class="ir-slide ir-slide--paper" id="why" aria-label="03 WHY NEWON">
+        <div class="ir-frame" aria-hidden="true"></div>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">03 / WHY NEWON</p>
           <h2 class="ir-h2">생활은 연결되어 있지만,<br />사용하는 서비스는 분리되어 있다.</h2>
           <p class="ir-lead">
-            각 문제를 전문 제품으로 해결하고, 하나의 경험으로 연결합니다. Problem → Products → Connection.
+            Newon은 일상에서 반복되는 문제를 발견하고, 이를 디지털 제품으로 해결한 뒤 검증하고 연결하는 회사입니다.
           </p>
           <p class="ir-why__sink" aria-label="분리된 생활 축">
             <span>FINANCE</span><span>HEALTH</span><span>HABITS</span><span>FAMILY</span
@@ -197,7 +202,8 @@
       </section>
 
       <!-- 04 PORTFOLIO -->
-      <section class="ir-slide" id="products" aria-label="04 11 DIGITAL PRODUCTS">
+      <section class="ir-slide ir-products" id="products" aria-label="04 11 DIGITAL PRODUCTS">
+        <div class="ir-frame" aria-hidden="true"></div>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">04 / 11 DIGITAL PRODUCTS</p>
           <p class="ir-eyebrow">포트폴리오</p>
@@ -319,58 +325,59 @@
 
       <!-- 05 COMPANY PORTFOLIO -->
       <section class="ir-slide ir-slide--dark ir-firm" id="company" aria-label="05 NEWON BUSINESS PORTFOLIO">
+        <div class="ir-frame ir-frame--light" aria-hidden="true"></div>
+        <p class="ir-ghost ir-ghost--light" aria-hidden="true">05</p>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">05 / BUSINESS PORTFOLIO</p>
           <p class="ir-flag ir-flag--ghost">PRODUCT &amp; VENTURE STUDIO</p>
           <h2 class="ir-firm__title">BEYOND<br />11 APPS.</h2>
           <p class="ir-lead">newon.app에 이미 있는 회사 구조입니다. 존재하지 않는 사업을 넣지 않습니다.</p>
           <div class="ir-firm__arch" aria-label="Newon company architecture">
+            <article class="ir-firm__ax ir-firm__ax--1">
+              <em>01</em>
+              <strong>PRODUCTS</strong>
+              <p>11 Apps <i>LIVE</i></p>
+              <p>AI <i>CURRENT WEB</i></p>
+              <p>Games <i>EARLY</i></p>
+              <p>Tools <i>LIVE WEB</i></p>
+            </article>
             <div class="ir-firm__hub">
               <span>NEWON</span>
               <em>ONE COMPANY</em>
+              <b>5 AXES</b>
             </div>
-            <ol class="ir-firm__axes">
-              <li>
-                <em>01</em>
-                <strong>PRODUCTS</strong>
-                <p>11 Apps <i>LIVE</i></p>
-                <p>AI <i>CURRENT WEB</i></p>
-                <p>Games <i>EARLY</i></p>
-                <p>Tools <i>LIVE WEB</i></p>
-              </li>
-              <li>
-                <em>02</em>
-                <strong>BUSINESS</strong>
-                <p>Build</p>
-                <p>Automation</p>
-                <p>Research</p>
-                <p>Solutions</p>
-              </li>
-              <li>
-                <em>03</em>
-                <strong>STUDIO</strong>
-                <p>Brand</p>
-                <p>Digital</p>
-                <p>Content</p>
-                <p>IP</p>
-              </li>
-              <li>
-                <em>04</em>
-                <strong>RESOURCES</strong>
-                <p>Store <i>DIGITAL</i></p>
-                <p>Insights</p>
-                <p>Blog</p>
-                <p>Labs <i>EXPERIMENT</i></p>
-              </li>
-              <li class="is-end">
-                <em>05</em>
-                <strong>PLATFORM</strong>
-                <p>Newon Web <i>LIVE</i></p>
-                <p>Newon+</p>
-                <p>Account</p>
-                <p>AI Layer</p>
-              </li>
-            </ol>
+            <article class="ir-firm__ax ir-firm__ax--2">
+              <em>02</em>
+              <strong>BUSINESS</strong>
+              <p>Build</p>
+              <p>Automation</p>
+              <p>Research</p>
+              <p>Solutions</p>
+            </article>
+            <article class="ir-firm__ax ir-firm__ax--3">
+              <em>03</em>
+              <strong>STUDIO</strong>
+              <p>Brand</p>
+              <p>Digital</p>
+              <p>Content</p>
+              <p>IP</p>
+            </article>
+            <article class="ir-firm__ax ir-firm__ax--4">
+              <em>04</em>
+              <strong>RESOURCES</strong>
+              <p>Store <i>DIGITAL</i></p>
+              <p>Insights</p>
+              <p>Blog</p>
+              <p>Labs <i>EXPERIMENT</i></p>
+            </article>
+            <article class="ir-firm__ax ir-firm__ax--5 is-end">
+              <em>05</em>
+              <strong>PLATFORM</strong>
+              <p>Newon Web <i>LIVE</i></p>
+              <p>Newon+</p>
+              <p>Account</p>
+              <p>AI Layer</p>
+            </article>
           </div>
           <p class="ir-firm__flow">
             CLIENT PROBLEM → BUSINESS → BUILD / AUTOMATE / RESEARCH → INSIGHT → NEWON PRODUCTS
@@ -379,7 +386,8 @@
       </section>
 
       <!-- 06 PRODUCT EXPANSION A -->
-      <section class="ir-slide" id="expand-a" aria-label="06 제품 발전 01">
+      <section class="ir-slide ir-slide--paper" id="expand-a" aria-label="06 제품 발전 01">
+        <div class="ir-frame" aria-hidden="true"></div>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">06 / PRODUCT EXPANSION</p>
           <h2 class="ir-h2">금융 · 건강에서 자동화와 커머스로.</h2>
@@ -424,6 +432,7 @@
 
       <!-- 07 PRODUCT EXPANSION B -->
       <section class="ir-slide ir-slide--dark" id="expand-b" aria-label="07 제품 발전 02">
+        <div class="ir-frame ir-frame--light" aria-hidden="true"></div>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">07 / PRODUCT EXPANSION</p>
           <h2 class="ir-h2">가족 · 챌린지 · 여행의 다음 단계.</h2>
@@ -495,6 +504,8 @@
 
       <!-- 07 NEWON+ -->
       <section class="ir-slide ir-slide--dark ir-plus" id="newon-plus" aria-label="08 Newon+">
+        <div class="ir-frame ir-frame--light" aria-hidden="true"></div>
+        <p class="ir-ghost ir-ghost--light" aria-hidden="true">+</p>
         <div class="ir-inner ir-plus__grid" data-ir-reveal>
           <div class="ir-plus__copy">
             <p class="ir-n">08 / NEWON+</p>
@@ -565,6 +576,7 @@
 
       <!-- 09 NEWON WEB -->
       <section class="ir-slide" id="web" aria-label="09 NEWON WEB">
+        <div class="ir-frame" aria-hidden="true"></div>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">09 / NEWON WEB</p>
           <div class="ir-webhead">
@@ -576,6 +588,10 @@
               <p class="ir-lead">모든 사업축이 만나는 공식 웹. 창업자가 직접 기획 · 디자인 · 개발 · 배포했습니다.</p>
             </div>
             <figure class="ir-webshot">
+              <div class="ir-webshot__bar" aria-hidden="true">
+                <i></i><i></i><i></i>
+                <span>www.newon.app</span>
+              </div>
               <img
                 src="/ir/web-live.jpg"
                 alt="newon.app 공식 웹 — 실제 배포된 화면"
@@ -623,7 +639,8 @@
       </section>
 
       <!-- 09 AI -->
-      <section class="ir-slide" id="intelligence" aria-label="10 AI">
+      <section class="ir-slide ir-slide--paper ir-ig" id="intelligence" aria-label="10 AI">
+        <div class="ir-frame" aria-hidden="true"></div>
         <div class="ir-inner" data-ir-reveal>
           <div class="ir-ig__head">
             <div>
@@ -647,6 +664,7 @@
 
       <!-- 10 COMMERCE -->
       <section class="ir-slide" id="commerce" aria-label="11 커머스">
+        <div class="ir-frame" aria-hidden="true"></div>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">11 / COMMERCE · MARKET · BOOKING</p>
           <span class="ir-flag">PLANNED · PHASE 04 · VISION</span>
@@ -693,6 +711,7 @@
 
       <!-- 12 STUDIO + BUSINESS -->
       <section class="ir-slide ir-slide--dark" id="studio" aria-label="12 STUDIO + BUSINESS">
+        <div class="ir-frame ir-frame--light" aria-hidden="true"></div>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">12 / BUSINESS · STUDIO</p>
           <p class="ir-flag ir-flag--ghost">CURRENT WEB · 역할이 다름</p>
@@ -726,49 +745,77 @@
       </section>
 
       <!-- 13 BUSINESS MODEL -->
-      <section class="ir-slide" id="model" aria-label="13 BUSINESS MODEL">
+      <section class="ir-slide ir-slide--paper" id="model" aria-label="13 BUSINESS MODEL">
+        <div class="ir-frame" aria-hidden="true"></div>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">13 / BUSINESS MODEL</p>
           <h2 class="ir-h2">Revenue Architecture.</h2>
-          <p class="ir-lead">현재 돈을 만들 수 있는 축과, 이후 규모를 키우는 축을 나눕니다. 검증된 MAU · MRR은 넣지 않습니다.</p>
-          <div class="ir-revsplit">
-            <div>
-              <p class="ir-flag">CURRENT / EARLY</p>
-              <h3>지금 가능한 축</h3>
-              <ul>
-                <li><strong>B2B SERVICES</strong> Build · Automation · Studio · Solutions</li>
-                <li><strong>PRODUCT REVENUE</strong> 앱별 월/연 구독 <em>PLANNED / EARLY</em></li>
-                <li><strong>DIGITAL STORE</strong> 템플릿 · 가이드 · 디지털 상품 <em>CURRENT WEB</em></li>
-              </ul>
-            </div>
-            <div class="is-next">
-              <p class="ir-flag">PLANNED</p>
-              <h3>규모를 키우는 축</h3>
-              <ul>
-                <li>Newon+ Membership</li>
-                <li>Commerce · Marketplace · Booking</li>
-                <li>Brand Partnership</li>
-              </ul>
-            </div>
+          <p class="ir-lead">수익모델의 존재와 매출 발생을 구분합니다. 검증된 MAU · MRR · 매출은 넣지 않습니다.</p>
+          <div class="ir-rev3" aria-label="Revenue status">
+            <article class="is-now">
+              <em>CURRENT MODEL</em>
+              <h3>APP SUBSCRIPTIONS</h3>
+              <p>앱별 월/연 구독. 스토어에 출시·운영 중인 수익모델입니다.</p>
+            </article>
+            <article>
+              <em>EARLY REVENUE</em>
+              <h3>STUDIO / B2B</h3>
+              <p>Build · Automation · Research · Solutions · Studio. 웹에 공개된 서비스 상품.</p>
+            </article>
+            <article class="is-next">
+              <em>PLANNED SCALE</em>
+              <h3>SCALE LAYERS</h3>
+              <p>Membership · Commerce · Marketplace · Booking · Partnership</p>
+            </article>
           </div>
           <div class="ir-rev" aria-label="Revenue layers">
-            <div class="ir-rev__layer is-now"><span>CURRENT</span><strong>B2B SERVICES</strong><i>Build · Automation · Studio · Solutions</i></div>
-            <div class="ir-rev__layer"><span>EARLY</span><strong>DIGITAL STORE</strong><i>템플릿 · 가이드 · 디지털 상품</i></div>
-            <div class="ir-rev__layer"><span>PLANNED</span><strong>01 SUBSCRIPTION</strong><i>앱별 월/연 구독</i></div>
-            <div class="ir-rev__layer"><span>PLANNED</span><strong>02 NEWON+ MEMBERSHIP</strong><i>통합 멤버십 / 패키지</i></div>
-            <div class="ir-rev__layer"><span>PLANNED</span><strong>04 COMMERCE</strong><i>Pillmate · BabyLog · PetLog · My World</i></div>
-            <div class="ir-rev__layer"><span>PLANNED</span><strong>05–06 MARKET / BOOKING</strong><i>Baby · Pet · Travel</i></div>
-            <div class="ir-rev__layer"><span>PLANNED</span><strong>07 PARTNERSHIP</strong><i>Brand Challenge · Distribution</i></div>
+            <div class="ir-rev__layer is-now"><span>CURRENT MODEL</span><strong>APP SUBSCRIPTIONS</strong><i>앱별 월/연 구독 · LIVE STRUCTURE</i></div>
+            <div class="ir-rev__layer"><span>EARLY REVENUE</span><strong>STUDIO / B2B</strong><i>Build · Automation · Research · Solutions · Studio</i></div>
+            <div class="ir-rev__layer"><span>EARLY / WEB</span><strong>DIGITAL STORE</strong><i>템플릿 · 가이드 · 디지털 상품</i></div>
+            <div class="ir-rev__layer"><span>PLANNED SCALE</span><strong>NEWON+ MEMBERSHIP</strong><i>통합 멤버십 / 패키지</i></div>
+            <div class="ir-rev__layer"><span>PLANNED SCALE</span><strong>COMMERCE / MARKET / BOOKING</strong><i>Pillmate · BabyLog · PetLog · My World</i></div>
+            <div class="ir-rev__layer"><span>PLANNED SCALE</span><strong>PARTNERSHIP</strong><i>Brand Challenge · Distribution</i></div>
           </div>
         </div>
       </section>
 
       <!-- 14 GROWTH + RESOURCES + FLYWHEEL -->
       <section class="ir-slide" id="growth" aria-label="14 GROWTH ENGINE">
+        <div class="ir-frame" aria-hidden="true"></div>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">14 / GROWTH · RESOURCES</p>
+          <p class="ir-flag">PRODUCT &amp; VENTURE STUDIO</p>
           <h2 class="ir-h2">ONE COMPANY.<br />MULTIPLE GROWTH ENGINES.</h2>
-          <p class="ir-lead">검증된 사용자 수 · 매출은 넣지 않습니다. Resources는 직접 매출보다 Discovery → Trust → Product 구조입니다.</p>
+          <p class="ir-lead">앱 11개가 전부가 아닙니다. newon.app에 있는 회사 전체 사업축입니다.</p>
+          <p class="ir-port5__label">NEWON BUSINESS PORTFOLIO</p>
+          <ol class="ir-port5" aria-label="Newon business portfolio">
+            <li>
+              <em>01</em>
+              <strong>PRODUCTS</strong>
+              <p>11 Apps · AI · Games · Tools</p>
+            </li>
+            <li>
+              <em>02</em>
+              <strong>BUSINESS</strong>
+              <p>Build · Automation · Research · Solutions</p>
+            </li>
+            <li>
+              <em>03</em>
+              <strong>STUDIO</strong>
+              <p>Brand · Digital · Content · IP</p>
+            </li>
+            <li>
+              <em>04</em>
+              <strong>RESOURCES</strong>
+              <p>Store · Insights · Blog · Labs</p>
+            </li>
+            <li class="is-end">
+              <em>05</em>
+              <strong>PLATFORM</strong>
+              <p>Newon Web · Newon+ · Account · AI Layer</p>
+            </li>
+          </ol>
+          <p class="ir-tract__label">EXECUTION METRICS</p>
           <dl class="ir-tract" aria-label="Verified execution metrics">
             <div><dt>6M</dt><dd>MONTHS</dd></div>
             <div><dt>11</dt><dd>APPS</dd></div>
@@ -777,27 +824,29 @@
             <div><dt>177</dt><dd>RELEASED</dd></div>
             <div><dt>01</dt><dd>FOUNDER</dd></div>
           </dl>
-          <ol class="ir-res4" aria-label="Newon Resources">
-            <li><em>STORE</em><strong>Digital goods</strong><p>템플릿 · 가이드 · 디지털 상품</p></li>
-            <li><em>INSIGHTS</em><strong>Knowledge</strong><p>제품 · 소비자 · 시장 관찰</p></li>
-            <li><em>BLOG</em><strong>Acquisition</strong><p>SEO · 콘텐츠 · 스토리</p></li>
-            <li><em>LABS</em><strong>Experiment</strong><p>프로토타입 → Validate → Product</p></li>
-          </ol>
-          <p class="ir-wheel" aria-label="Company flywheel">
-            <span>PRODUCTS → Users / Data</span>
-            <span>BUSINESS → Revenue / Problems</span>
-            <span>STUDIO → Brand / Creative</span>
-            <span>RESOURCES → Content / Experiments</span>
-            <span>WEB → Distribution / Leads</span>
-            <span>NEWON+ → Retention</span>
-            <span class="is-end">INSIGHT → NEW PRODUCTS</span>
-          </p>
+          <div class="ir-wheel" aria-label="Company flywheel">
+            <div class="ir-wheel__core">
+              <strong>NEWON</strong>
+              <em>FLYWHEEL</em>
+            </div>
+            <ol class="ir-wheel__ring">
+              <li><b>01</b><span>PRODUCTS</span><em>Users / Data</em></li>
+              <li><b>02</b><span>BUSINESS</span><em>Revenue / Problems</em></li>
+              <li><b>03</b><span>STUDIO</span><em>Brand / Creative</em></li>
+              <li><b>04</b><span>RESOURCES</span><em>Content / Experiments</em></li>
+              <li><b>05</b><span>WEB</span><em>Distribution / Leads</em></li>
+              <li><b>06</b><span>NEWON+</span><em>Retention</em></li>
+              <li class="is-end"><b>07</b><span>INSIGHT</span><em>New Products</em></li>
+            </ol>
+          </div>
           <p class="ir-wheel__mantra">BUILD. LEARN. DISTRIBUTE. CONNECT. REPEAT.</p>
         </div>
       </section>
 
       <!-- 14 GLOBAL -->
-      <section class="ir-slide" id="global" aria-label="15 GLOBAL">
+      <section class="ir-slide ir-global" id="global" aria-label="15 GLOBAL">
+        <div class="ir-frame" aria-hidden="true"></div>
+        <p class="ir-ghost" aria-hidden="true">177</p>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">15 / GLOBAL</p>
           <h2 class="ir-global__title">
@@ -838,7 +887,8 @@
       </section>
 
       <!-- 16 ROADMAP -->
-      <section class="ir-slide" id="roadmap" aria-label="16 ROADMAP">
+      <section class="ir-slide ir-slide--paper" id="roadmap" aria-label="16 ROADMAP">
+        <div class="ir-frame" aria-hidden="true"></div>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">16 / COMPANY ROADMAP</p>
           <p class="ir-road__mantra">BIG VISION. FOCUSED EXECUTION.</p>
@@ -901,6 +951,8 @@
 
       <!-- 16 SEED -->
       <section class="ir-slide ir-slide--dark ir-seed" id="seed" aria-label="17 SEED ROUND">
+        <div class="ir-frame ir-frame--light" aria-hidden="true"></div>
+        <p class="ir-ghost ir-ghost--light" aria-hidden="true">SEED</p>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">17 / SEED ROUND</p>
           <p class="ir-seed__status">RAISING · TARGET · SEEKING</p>
@@ -921,42 +973,49 @@
       </section>
 
       <!-- 17 USE OF FUNDS -->
-      <section class="ir-slide" id="funds" aria-label="18 USE OF FUNDS">
+      <section class="ir-slide ir-slide--paper" id="funds" aria-label="18 USE OF FUNDS">
+        <div class="ir-frame" aria-hidden="true"></div>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">18 / USE OF FUNDS</p>
           <p class="ir-flag">PROPOSED USE OF FUNDS</p>
           <h2 class="ir-h2">왜 3억인가.</h2>
           <p class="ir-lead">확정 예산이 아니라 이번 라운드의 제안 배분입니다. 모든 비전을 한 번에 사는 금액이 아닙니다.</p>
           <ol class="ir-funds">
-            <li>
+            <li style="--p: 30">
               <em>30%</em>
               <strong>₩90M</strong>
               <h3>CORE PRODUCTS + NEWON+</h3>
+              <i class="ir-funds__bar" aria-hidden="true"></i>
             </li>
-            <li>
+            <li style="--p: 25">
               <em>25%</em>
               <strong>₩75M</strong>
               <h3>GROWTH / USER ACQUISITION</h3>
+              <i class="ir-funds__bar" aria-hidden="true"></i>
             </li>
-            <li>
+            <li style="--p: 15">
               <em>15%</em>
               <strong>₩45M</strong>
               <h3>AI / AUTOMATION / INFRASTRUCTURE</h3>
+              <i class="ir-funds__bar" aria-hidden="true"></i>
             </li>
-            <li>
+            <li style="--p: 10">
               <em>10%</em>
               <strong>₩30M</strong>
               <h3>COMMERCE / BOOKING MVP</h3>
+              <i class="ir-funds__bar" aria-hidden="true"></i>
             </li>
-            <li>
+            <li style="--p: 10">
               <em>10%</em>
               <strong>₩30M</strong>
               <h3>SPECIALIZED TALENT / QA / DESIGN</h3>
+              <i class="ir-funds__bar" aria-hidden="true"></i>
             </li>
-            <li class="is-end">
+            <li class="is-end" style="--p: 10">
               <em>10%</em>
               <strong>₩30M</strong>
               <h3>OPERATIONS / LEGAL / FINANCE / RESERVE</h3>
+              <i class="ir-funds__bar" aria-hidden="true"></i>
             </li>
           </ol>
           <p class="ir-funds__total">TOTAL <strong>₩300M</strong></p>
@@ -965,6 +1024,8 @@
 
       <!-- 19 VISION -->
       <section class="ir-slide ir-vision" id="vision" aria-label="19 VISION">
+        <div class="ir-frame" aria-hidden="true"></div>
+        <p class="ir-ghost" aria-hidden="true">N</p>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">19 / VISION</p>
           <div class="ir-vision__grid">
@@ -987,6 +1048,7 @@
 
       <!-- 19 PARTNERS -->
       <section class="ir-slide ir-slide--dark" id="connection" aria-label="20 PARTNERS">
+        <div class="ir-frame ir-frame--light" aria-hidden="true"></div>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">20 / PARTNERS · INVESTORS</p>
           <p class="ir-kicker">WE'RE LOOKING FOR</p>
@@ -1037,6 +1099,7 @@
 
       <!-- 20 CONTACT -->
       <section class="ir-slide ir-contact" id="closing" aria-label="21 CONTACT">
+        <div class="ir-frame" aria-hidden="true"></div>
         <div class="ir-inner ir-contact__grid" data-ir-reveal>
           <div class="ir-contact__copy">
             <p class="ir-n">21 / CONTACT</p>
