@@ -16,7 +16,6 @@
   --ir-max: 1280px;
   --ir-font: "Noto Sans KR", "Noto Sans", "Noto Sans JP", "Noto Sans Devanagari", -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --ir-display: "Instrument Serif", "Times New Roman", serif;
 }
 
 *,
@@ -265,9 +264,8 @@ a {
 
 .ir-h1 {
   margin: 0;
-  font-family: var(--ir-display);
-  font-weight: 400;
-  letter-spacing: -0.04em;
+  font-weight: 700;
+  letter-spacing: -0.045em;
   line-height: 0.92;
 }
 
@@ -725,11 +723,10 @@ a {
 }
 
 .ir-hero__word {
-  font-family: var(--ir-display);
   font-size: clamp(3.5rem, 13vw, 8.5rem);
-  font-weight: 400;
-  letter-spacing: -0.05em;
-  line-height: 0.86;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
   margin: 0;
 }
 
@@ -1835,11 +1832,10 @@ a {
 
 /* 13 Global */
 .ir-global__title {
-  font-family: var(--ir-display);
-  font-weight: 400;
-  font-size: clamp(2.1rem, 5vw, 3.6rem);
-  letter-spacing: -0.04em;
-  line-height: 1;
+  font-weight: 700;
+  font-size: clamp(1.85rem, 4.4vw, 3.15rem);
+  letter-spacing: -0.05em;
+  line-height: 1.05;
   margin: 0;
   max-width: 14em;
 }
@@ -3201,11 +3197,10 @@ a {
 
 .ir-webhead__live {
   margin: 0 0 0.55rem;
-  font-family: var(--ir-display);
   font-size: clamp(2.4rem, 6vw, 4.4rem);
-  font-weight: 400;
-  letter-spacing: -0.045em;
-  line-height: 0.88;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
 }
 
 .ir-webhead .ir-h2 {
@@ -3481,11 +3476,10 @@ a {
 
 .ir-seed__amount {
   margin: 0.55rem 0 0;
-  font-family: var(--ir-display);
   font-size: clamp(4.2rem, 12vw, 8rem);
-  font-weight: 400;
-  letter-spacing: -0.06em;
-  line-height: 0.84;
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  line-height: 0.88;
 }
 
 .ir-seed__sub {
@@ -3562,10 +3556,8 @@ a {
 
 .ir-funds strong {
   margin-top: 0.35rem;
-  font-family: var(--ir-display);
-  font-weight: 400;
   font-size: clamp(1.8rem, 3.4vw, 2.6rem);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.05em;
 }
 
 .ir-funds h3 {
@@ -3875,11 +3867,10 @@ a {
 
 .ir-firm__title {
   margin: 0;
-  font-family: var(--ir-display);
-  font-size: clamp(2.4rem, 6.4vw, 4.6rem);
-  font-weight: 400;
-  letter-spacing: -0.045em;
-  line-height: 0.86;
+  font-size: clamp(2.4rem, 7vw, 5.2rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
 }
 
 .ir-firm__arch {
@@ -3956,11 +3947,10 @@ a {
 }
 
 .ir-firm__hub span {
-  font-family: var(--ir-display);
-  font-size: clamp(2.8rem, 6.4vw, 5rem);
-  font-weight: 400;
-  letter-spacing: -0.05em;
-  line-height: 0.84;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.88;
 }
 
 .ir-firm__hub em {
@@ -4219,9 +4209,8 @@ a {
 }
 
 .ir-wheel__core strong {
-  font-family: var(--ir-display);
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 0.9;
 }
@@ -4512,7 +4501,6 @@ a {
   right: clamp(0.8rem, 2vw, 1.6rem);
   top: clamp(0.4rem, 1.4vw, 0.9rem);
   margin: 0;
-  font-family: var(--ir-display);
   font-size: clamp(4.5rem, 14vw, 10rem);
   line-height: 0.8;
   letter-spacing: -0.06em;
@@ -4599,8 +4587,7 @@ a {
 }
 
 .ir-exec__num {
-  font-family: var(--ir-display);
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .ir-why__sink {
@@ -4741,13 +4728,11 @@ a {
 }
 
 .ir-contact__headline {
-  font-family: var(--ir-display);
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .ir-vision__big {
-  font-family: var(--ir-display);
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .ir-vision__col--end .ir-vision__big {
