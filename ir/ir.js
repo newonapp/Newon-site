@@ -14,17 +14,17 @@
     "nav.web": "Web",
     "nav.studio": "Studio",
     "nav.model": "Model",
-    "nav.seed": "Seed",
+    "nav.seed": "Invest",
     "nav.contact": "Contact",
-    "hero.eyebrow": 'Seed IR<span class="ir-eyebrow__sep">·</span>Product &amp; venture studio',
+    "hero.eyebrow": 'IR<span class="ir-eyebrow__sep">·</span>Product &amp; venture studio',
     "hero.stackAria": "Key facts",
     "hero.apps": "11 apps.",
     "hero.web": "One web.",
     "hero.months": "6 months.",
     "hero.founder": "1 founder.",
-    "hero.sub": "A 22-year-old founder who built<br />11 apps and Newon Web<br />in 6 months",
-    "hero.craft": "Planning · UX/UI · development · launch · distribution — in-house",
-    "hero.ctaSeed": "Seed round ↓",
+    "hero.sub": "A 22-year-old solo founder who planned,<br />built, and shipped 11 apps and Newon Web<br />in 6 months",
+    "hero.craft": "Plan → design → build → ship — in-house",
+    "hero.ctaSeed": "Investment &amp; Partnership ↓",
     "hero.ctaContact": "Contact",
     "glance.aria": "At a glance",
     "glance.at": "At a glance",
@@ -53,15 +53,15 @@
     "p02.n": "02 / Founder execution",
     "p02.h": "One person. End to end.",
     "p02.lead":
-      "11 apps are not the end state. They show Newon’s ability to turn daily problems into products, then validate them fast.",
+      "A 22-year-old solo founder plans, designs, builds, and ships in-house. 11 apps are not the end — they are the start of one Newon ecosystem.",
     "p02.rowAria": "Execution facts",
-    "p02.age": "Founder age",
+    "p02.age": "Solo founder",
     "p02.time": "Build time",
     "p02.apps": "Apps",
     "p02.web": "Web",
     "p02.verbsAria": "Operating principle",
     "p02.verbs": "Build wide. Validate fast. Focus deep. Connect what works.",
-    "p02.verbsEm": "11 products were the start. Next is focus.",
+    "p02.verbsEm": "Separate apps into one Newon ecosystem. Next is focus.",
     "p03.n": "03 / Why Newon",
     "p03.h": "Life is connected.<br />The services we use are not.",
     "p03.lead":
@@ -212,7 +212,7 @@
     "p11.n": "11 / Commerce · market · booking",
     "p11.flag": "PLANNED · PHASE 04 · Expansion",
     "p11.lead":
-      "This seed round does not build all of this. After core-product validation, we connect it in Phase 04 expansion.",
+      "We do not build all of this now. After core-product validation, we connect it in Phase 04 expansion.",
     "p11.storeP": "B2C COMMERCE. Newon/brand → sells goods to users.",
     "p11.s1": "Pillmate → supplements",
     "p11.s2": "BabyLog → baby goods",
@@ -244,7 +244,8 @@
     "p12.loop5": "New product insight",
     "p13.n": "13 / Revenue model",
     "p13.h": "Revenue structure.",
-    "p13.lead": "We separate having a model from having revenue. Verified MAU, MRR, and sales are not included.",
+    "p13.lead":
+      "The structure can expand Subscription → Commerce → SaaS/B2B → Platform. We separate having a model from having revenue.",
     "p13.now": "Current model",
     "p13.sub": "App subscriptions",
     "p13.subP": "Monthly/yearly per app. A live store revenue model.",
@@ -297,7 +298,7 @@
     "p16.n": "16 / Company roadmap",
     "p16.mantra": "A large vision. Focused execution.",
     "p16.h": "We do not do everything at once.",
-    "p16.lead": "This ₩300M seed accelerates focus → validate → connect. It is a company roadmap, not apps only.",
+    "p16.lead": "We accelerate focus → validate → connect. It is a company roadmap, not apps only.",
     "p16.p1": "01 Done",
     "p16.p1a": "11 apps",
     "p16.p1c": "Business · studio",
@@ -319,20 +320,31 @@
     "p16.p5a": "B2B solutions",
     "p16.p5b": "Global · distribution",
     "p16.p5d": "New markets",
-    "p17.n": "17 / Seed round",
-    "p17.status": "TARGET RAISE · Raising",
+    "p17.n": "17 / Investment &amp; Partnership",
+    "p17.status": "Open to Investment &amp; Strategic Partnerships",
+    "p17.h": "Let's Build<br />the Next Newon",
     "p17.why":
-      "The purpose of this Seed Round is not to scale all 11 services at once. It is to choose core products, validate users, retention, and profitability, and build a Newon+-centered connection layer.",
-    "p18.n": "18 / Use of funds",
-    "p18.flag": "TARGET RAISE · proposed use of funds",
-    "p18.h": "Why ₩300M.",
-    "p18.lead": "₩300M → what we do → what we prove. It is not an amount that buys the whole vision at once.",
+      "This is not a round to scale all 11 services at once. It is to choose core products, validate users, retention, and profitability, and build a Newon+ connection layer for one ecosystem.",
+    "p17.u1": "Deepen existing apps and expand the Newon ecosystem",
+    "p17.u2": "Acquire users and grow brand / marketing",
+    "p17.u3": "Commerce expansion for BabyLog, PetLog, Pillmate, and more",
+    "p17.u4": "Expand SaaS, automation, and enterprise solutions",
+    "p17.u5": "Acquire global users and expand overseas markets",
+    "p18.n": "18 / Use of Funds",
+    "p18.flag": "GROWTH PLAN",
+    "p18.h": "Where growth goes.",
+    "p18.lead": "We do not buy the whole vision at once. Focus follows Product · Growth · Commerce · SaaS / B2B · Global.",
+    "p18.d1": "Deepen existing apps and expand the Newon ecosystem",
+    "p18.d2": "Acquire users and grow brand / marketing",
+    "p18.d3": "Commerce expansion for BabyLog, PetLog, Pillmate, and more",
+    "p18.d4": "Expand SaaS, automation, and enterprise solutions",
+    "p18.d5": "Acquire global users and expand overseas markets",
     "p18.g1": "Focus / connect",
     "p18.g2": "Validate / acquire",
-    "p18.g4": "Controlled proof",
-    "p18.g5": "Product quality",
-    "p18.g6": "Company base",
-    "p18.total": "Total <strong>₩300M</strong> · Focus. Validate. Connect.",
+    "p18.g3": "Controlled expansion",
+    "p18.g4": "Enterprise / automation",
+    "p18.g5": "Korea → Global",
+    "p18.total": "Focus. Validate. Connect. · Korea → Global",
     "p19.n": "19 / Vision",
     "p19.today": "Today",
     "p19.t1": "11 apps<br />+ web<br />+ studio",
@@ -347,9 +359,9 @@
     "p20.s1": "Capital",
     "p20.s2": "Partners",
     "p20.s5": "Global network",
-    "p20.seed": "₩300M seed round",
+    "p20.seed": "Investment &amp; Partnership",
     "p20.i1": "Investors",
-    "p20.i1p": "₩300M raising",
+    "p20.i1p": "Open to follow-up meetings",
     "p20.i2p": "Connect products and channels",
     "p20.i3p": "Challenges and collabs",
     "p20.i4p": "Later vertical expansion",
@@ -362,9 +374,9 @@
     "p21.front": "Front",
     "p21.back": "Back · See Newon →",
     "p21.qr": "See Newon via QR",
-    "p21.foot": "Newon IR · Seed round · ₩300M raising",
+    "p21.foot": "Newon IR · Open to Investment &amp; Strategic Partnerships",
     "title": "NEWON IR — 11 apps + Newon Web",
-    "desc": "Newon IR. 11 apps and Newon Web built in 6 months. Seed round ₩300M, raising."
+    "desc": "Newon IR. A 22-year-old solo founder built 11 apps and Newon Web in 6 months. Open to investment and partnership."
   };
 
   function currentLang() {
@@ -499,9 +511,24 @@
     });
   }
 
+  function isPrintMode() {
+    try {
+      return new URLSearchParams(window.location.search).get("print") === "1";
+    } catch (_) {
+      return false;
+    }
+  }
+
   function boot() {
     applyLang(currentLang());
     bindLang();
+    if (isPrintMode()) {
+      document.documentElement.setAttribute("data-ir-print", "1");
+      document.querySelectorAll("[data-ir-reveal]").forEach(function (el) {
+        el.classList.add("is-in");
+      });
+      return;
+    }
     reveal();
     navSpy();
   }
