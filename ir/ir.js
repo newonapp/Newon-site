@@ -310,7 +310,7 @@
     "p14.d7": "B2C + B2B feedback loop",
     "p15.n": "15 / Global distribution",
     "p15.flag": "Product footprint · not traction",
-    "p15.h": "13 languages.<br />Released in 177 countries.",
+    "p15.h": "13 languages. Released in 177 countries.",
     "p15.lead":
       "Built in Korea. Released and distributed to 177 countries via App Store / Google Play. 177 is countries available, not users.",
     "p15.note": "Website: 9 languages · Apps: 13 languages",

@@ -8092,7 +8092,226 @@ html[data-ir-lang="en"] .ir-contact__role:not(.ir-contact__role--en) {
   display: none !important;
 }
 
-/* ——— 17: mast + 3 axioms + full-width ledger ——— */
+/* 15 only — dense board, no empty towers, readable type */
+#global.ir-slide {
+  background: #fff;
+  overflow: hidden;
+  justify-content: flex-start;
+  padding: 0.7rem 0.85rem 0.65rem;
+}
+
+#global .ir-inner {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+}
+
+#global .ir-com,
+#global .ir-global__hero,
+#global .ir-global__langs,
+#global .ir-global__facts,
+#global .ir-global__mark,
+#global .ir-global__meta,
+#global .ir-global__top,
+#global .ir-global__nums,
+#global .ir-global__foot,
+#global .ir-global__pair,
+#global .ir-global__head,
+#global .ir-global__board,
+#global .ir-ghost {
+  display: none !important;
+}
+
+#global .ir-g__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.7rem;
+}
+
+#global .ir-g__top .ir-n,
+#global .ir-g__top .ir-flag {
+  margin: 0;
+}
+
+#global .ir-g__h {
+  margin: 0.2rem 0 0;
+  font-size: clamp(1.85rem, 3.6vw, 2.45rem);
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+  color: #000;
+  max-width: none;
+}
+
+#global .ir-g__lead {
+  margin: 0.35rem 0 0.5rem;
+  max-width: none;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  font-weight: 600;
+  color: #111;
+}
+
+#global .ir-g__nums {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #000;
+}
+
+#global .ir-g__nums article {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.7rem 1rem;
+  align-items: center;
+  min-height: 0;
+  padding: 0.65rem 0.85rem;
+  border-right: 1px solid #000;
+  background: #fff;
+}
+
+#global .ir-g__nums article:last-child {
+  border-right: 0;
+}
+
+#global .ir-g__nums strong {
+  font-size: clamp(2.8rem, 6vw, 3.8rem);
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  line-height: 0.85;
+  color: #000;
+}
+
+#global .ir-g__nums em {
+  display: block;
+  font-style: normal;
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #000;
+}
+
+#global .ir-g__nums p {
+  margin: 0.22rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  font-weight: 600;
+  color: #111;
+}
+
+#global .ir-g__nums span {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #000;
+}
+
+#global .ir-g__langs {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  border: 1px solid #000;
+  border-top: 0;
+}
+
+#global .ir-g__langs span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: flex-start;
+  gap: 0.2rem;
+  min-height: 0;
+  height: 100%;
+  padding: 0.5rem 0.8rem;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  background: #fff !important;
+  color: #000 !important;
+}
+
+#global .ir-g__langs b {
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #000;
+}
+
+#global .ir-g__langs i {
+  font-style: normal;
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-weight: 600;
+  color: #111;
+}
+
+#global .ir-g__langs span:nth-child(3n) {
+  border-right: 0;
+}
+
+#global .ir-g__langs span:nth-child(n + 7) {
+  border-bottom: 0;
+}
+
+#global .ir-g__facts {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.25fr;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid #000;
+  border-top: 0;
+}
+
+#global .ir-g__facts li {
+  display: grid;
+  grid-template-columns: 2.05rem minmax(0, 1fr);
+  gap: 0.65rem 0.75rem;
+  align-items: center;
+  padding: 0.6rem 0.75rem;
+  border-right: 1px solid #000;
+  background: #fff;
+}
+
+#global .ir-g__facts li:last-child {
+  border-right: 0;
+}
+
+#global .ir-g__facts b {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.05rem;
+  height: 2.05rem;
+  border: 1px solid #000;
+  background: #000;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+#global .ir-g__facts strong {
+  display: block;
+  font-size: 1.05rem;
+  letter-spacing: -0.03em;
+  color: #000;
+}
+
+#global .ir-g__facts p {
+  margin: 0.18rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  font-weight: 600;
+  color: #111;
+}
+
+
 #seed .ir-seed__kicker,
 #seed .ir-ghost,
 #seed .ir-seed__plan,
@@ -8250,18 +8469,22 @@ html[data-ir-lang="en"] .ir-contact__role:not(.ir-contact__role--en) {
   #seed.ir-slide { min-height: 0; overflow: visible; }
 
   #intelligence .ir-com,
-  #global .ir-com {
+  #global .ir-g__nums,
+  #global .ir-g__facts {
     grid-template-columns: 1fr;
   }
 
-  #intelligence .ir-com__col,
-  #global .ir-com__col {
+  #global .ir-g__langs {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+  }
+
+  #intelligence .ir-com__col {
     border-right: 0;
     border-bottom: 1px solid #000;
   }
 
-  #intelligence .ir-com__col:last-child,
-  #global .ir-com__col:last-child {
+  #intelligence .ir-com__col:last-child {
     border-bottom: 0;
   }
 
@@ -8386,6 +8609,127 @@ html[data-ir-lang="en"] .ir-contact__role:not(.ir-contact__role--en) {
     border-top: 1px solid #000 !important;
     font-size: 0.6rem !important;
     padding-top: 0.35rem !important;
+  }
+
+  #global .ir-com {
+    display: none !important;
+  }
+
+  #global .ir-g__h {
+    font-size: 1.85rem !important;
+    color: #000 !important;
+    margin: 0.12rem 0 0 !important;
+  }
+
+  #global .ir-g__lead {
+    font-size: 0.86rem !important;
+    font-weight: 600 !important;
+    color: #111 !important;
+    margin: 0.22rem 0 0.32rem !important;
+  }
+
+  #global .ir-g__nums {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    border: 1px solid #000 !important;
+  }
+
+  #global .ir-g__nums article {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    align-items: center;
+    padding: 0.45rem 0.7rem !important;
+    border-right: 1px solid #000 !important;
+    background: #fff !important;
+  }
+
+  #global .ir-g__nums strong {
+    font-size: 3.05rem !important;
+    color: #000 !important;
+    line-height: 0.85;
+  }
+
+  #global .ir-g__nums em,
+  #global .ir-g__nums span {
+    color: #000 !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+  }
+
+  #global .ir-g__nums p {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    color: #111 !important;
+  }
+
+  #global .ir-g__langs {
+    flex: 1 1 auto;
+    min-height: 2.35in;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+    border: 1px solid #000 !important;
+    border-top: 0 !important;
+  }
+
+  #global .ir-g__langs span {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    background: #fff !important;
+    color: #000 !important;
+    border-right: 1px solid #000 !important;
+    border-bottom: 1px solid #000 !important;
+    padding: 0.4rem 0.65rem !important;
+    min-height: 0 !important;
+    height: 100% !important;
+  }
+
+  #global .ir-g__langs span:nth-child(3n) { border-right: 0 !important; }
+  #global .ir-g__langs span:nth-child(n + 7) { border-bottom: 0 !important; }
+
+  #global .ir-g__langs b {
+    font-size: 1.22rem !important;
+    color: #000 !important;
+  }
+
+  #global .ir-g__langs i {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #111 !important;
+  }
+
+  #global .ir-g__facts {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1.25fr !important;
+    border: 1px solid #000 !important;
+    border-top: 0 !important;
+  }
+
+  #global .ir-g__facts li {
+    display: grid !important;
+    grid-template-columns: 1.9rem minmax(0, 1fr) !important;
+    padding: 0.45rem 0.6rem !important;
+    background: #fff !important;
+    border-right: 1px solid #000 !important;
+  }
+
+  #global .ir-g__facts b {
+    background: #000 !important;
+    color: #fff !important;
+    border-color: #000 !important;
+  }
+
+  #global .ir-g__facts strong {
+    font-size: 0.95rem !important;
+    color: #000 !important;
+  }
+
+  #global .ir-g__facts p {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    color: #111 !important;
   }
 
   #seed.ir-slide {
