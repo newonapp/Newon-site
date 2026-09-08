@@ -301,6 +301,22 @@ export const MEDIA_ITEMS_HUB = [
 
   /* —— Instagram (@newon.app) — thumbnail + external link (no embed) —— */
   {
+    id: "ig-DdAZGE7n4eU",
+    platform: "instagram",
+    category: "PRODUCT",
+    igType: "POST",
+    titleKo: "다섯 번째 앱은 Pillmate — 약·영양제 복용 관리",
+    titleEn: "Fifth up: Pillmate — meds and supplements, on time",
+    descriptionKo: "복용 알림·복용 체크·재고·가족 약 관리까지, 매일 챙겨야 하는 약과 영양제를 한곳에서.",
+    descriptionEn: "Dose reminders, check-ins, inventory, and family tracking — daily meds and supplements in one place.",
+    date: "2026-09-08",
+    url: "https://www.instagram.com/newon.app/p/DdAZGE7n4eU/",
+    embedUrl: null,
+    thumbnail: "/media-thumbs/ig-DdAZGE7n4eU.jpg",
+    duration: null,
+    featured: true,
+  },
+  {
     id: "ig-Dc9y_tEHzrL",
     platform: "instagram",
     category: "PRODUCT",
@@ -314,7 +330,6 @@ export const MEDIA_ITEMS_HUB = [
     embedUrl: null,
     thumbnail: "/media-thumbs/ig-Dc9y_tEHzrL.jpg",
     duration: null,
-    featured: true,
   },
   {
     id: "ig-Dc5KNRQH1Md",
