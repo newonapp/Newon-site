@@ -205,8 +205,11 @@
     "p19.t3": "Web<br />NEWON+<br />AI",
     "p10.note":
       "Shared AI infrastructure. Privacy first. User consent required. This round lays the base. Full-product expansion comes later.",
+    "ai.pipe": "Pipeline",
+    "ai.rules": "Principles",
     "ai.1": "Product data",
     "ai.2": "Context",
+    "ai.3": "AI",
     "ai.4": "Personalization",
     "ai.7": "Action",
     "ai.p1": "Shared AI infrastructure",
