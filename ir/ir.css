@@ -3183,15 +3183,22 @@ a {
   color: rgba(255, 255, 255, 0.62);
 }
 
+#web.ir-slide {
+  overflow: hidden;
+}
+
 .ir-webhead {
   display: grid;
   gap: 1.25rem;
   align-items: start;
+  overflow: visible;
+  padding-right: 0;
+  padding-bottom: 0;
 }
 
 @media (min-width: 900px) {
   .ir-webhead {
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns: 0.95fr 1.05fr;
   }
 }
 
@@ -3225,9 +3232,9 @@ a {
 }
 
 .ir-webshot {
-  margin: 0;
+  margin: 0 14px 14px 0;
   border: 1px solid var(--ir-black);
-  background: #111;
+  background: #fff;
   overflow: hidden;
   box-shadow: 10px 12px 0 #000;
 }
@@ -3261,14 +3268,16 @@ a {
 }
 
 .ir-webshot img {
-  width: 118%;
-  max-width: none;
+  display: block;
+  width: 100%;
+  max-width: 100%;
   height: auto;
-  max-height: 14rem;
-  margin-left: -8%;
+  max-height: none;
+  margin-left: 0;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
-  object-position: 12% 8%;
+  object-fit: contain;
+  object-position: top center;
+  background: #fff;
 }
 
 .ir-webshot figcaption {
@@ -5416,10 +5425,11 @@ a {
   }
 
   .ir-webshot img {
-    max-height: 1.85in;
+    max-height: 2.15in;
     width: 100%;
     margin-left: 0;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: top center;
   }
 
   #company,
@@ -5443,8 +5453,23 @@ a {
     font-size: 2rem;
   }
 
+  #web {
+    overflow: hidden;
+  }
+
+  #web .ir-webhead {
+    padding-right: 0;
+    padding-bottom: 0;
+  }
+
+  #web .ir-webshot {
+    margin: 0;
+  }
+
   #web .ir-webshot img {
-    max-height: 1.15in;
+    max-height: 1.85in;
+    object-fit: contain;
+    object-position: top center;
   }
 
   #web .ir-web3 {
