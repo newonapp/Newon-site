@@ -356,13 +356,12 @@
     "p20.i5p": "Stores and distribution",
     "p20.i6p": "Released in 177 countries",
     "p21.n": "21 / Contact",
-    "p21.flag": "TARGET RAISE · ₩300M raising",
-    "p21.h": "Contact.",
-    "p21.lead": "From 11 apps + web to one ecosystem.",
+    "p21.h": "From 11 apps + web<br /><span>into one ecosystem.</span>",
     "p21.role": "Founder · App Developer",
     "p21.front": "Front",
-    "p21.back": "Back · QR",
-    "p21.qr": "Card back · Newon card",
+    "p21.back": "Back · See Newon →",
+    "p21.qr": "See Newon via QR",
+    "p21.foot": "Newon IR · Seed round · ₩300M raising",
     "title": "NEWON IR — 11 apps + Newon Web",
     "desc": "Newon IR. 11 apps and Newon Web built in 6 months. Seed round ₩300M, raising."
   };
