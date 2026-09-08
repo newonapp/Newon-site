@@ -3092,13 +3092,17 @@ a {
 }
 
 .ir-why__flow li.is-end {
-  background: transparent;
-  color: inherit;
+  background: #000;
+  color: #fff;
 }
 
 .ir-why__flow li.is-end span,
 .ir-why__flow li.is-end p {
-  color: var(--ir-muted);
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.ir-why__flow li.is-end strong {
+  color: #fff;
 }
 
 .ir-why__axes {
