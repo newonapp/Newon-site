@@ -356,6 +356,7 @@
     "p20.i5p": "Stores and distribution",
     "p20.i6p": "Released in 177 countries",
     "p21.n": "21 / Contact",
+    "p21.name": "Nawon Kyung",
     "p21.h": "From 11 apps + web<br /><span>into one ecosystem.</span>",
     "p21.role": "Founder · App Developer",
     "p21.front": "Front",
