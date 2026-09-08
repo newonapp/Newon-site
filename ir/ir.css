@@ -8112,3 +8112,243 @@ html[data-ir-lang="en"] .ir-contact__role:not(.ir-contact__role--en) {
     color: inherit !important;
   }
 }
+
+/* 10 / 15 / 17 only — unified fills, print-stable rules, full-bleed dark */
+#intelligence.ir-slide,
+#global.ir-slide {
+  background: #fff;
+}
+
+#intelligence .ir-ig__stack,
+#intelligence .ir-ig__rules,
+#global .ir-global__langs,
+#global .ir-global__meta {
+  gap: 0;
+  background: transparent;
+  border: 1.5px solid #000;
+}
+
+#intelligence .ir-ig__stack li,
+#intelligence .ir-ig__stack li.is-ai,
+#intelligence .ir-ig__stack li:last-child,
+#intelligence .ir-ig__rules li,
+#intelligence .ir-ig__rules li.is-end,
+#global .ir-global__langs span,
+#global .ir-global__meta div,
+#global .ir-global__meta div:nth-child(2),
+#global .ir-global__meta div:nth-child(4),
+#global .ir-global__mark {
+  background: #fff !important;
+  color: inherit !important;
+  border-color: #000 !important;
+}
+
+#intelligence .ir-ig__stack li span,
+#intelligence .ir-ig__stack li.is-ai span,
+#intelligence .ir-ig__rules li em,
+#intelligence .ir-ig__rules li strong,
+#intelligence .ir-ig__rules li span,
+#global .ir-global__mark strong,
+#global .ir-global__mark span,
+#global .ir-global__meta div em,
+#global .ir-global__meta div strong,
+#global .ir-global__meta div span {
+  color: inherit !important;
+}
+
+#intelligence .ir-ig__stack li {
+  border-right: 1.5px solid #000;
+}
+
+#intelligence .ir-ig__stack li:last-child {
+  border-right: 0;
+}
+
+#intelligence .ir-ig__rules li {
+  border-right: 1.5px solid #000;
+  min-height: 5.6rem;
+}
+
+#intelligence .ir-ig__rules li:last-child {
+  border-right: 0;
+}
+
+#global .ir-global__mark {
+  border: 1.5px solid #000;
+}
+
+#global .ir-global__langs span {
+  border-right: 1.5px solid #000;
+}
+
+#global .ir-global__langs span:last-child {
+  border-right: 0;
+}
+
+#global .ir-global__meta div {
+  border-right: 1.5px solid #000;
+}
+
+#global .ir-global__meta div:last-child {
+  border-right: 0;
+}
+
+#seed.ir-slide {
+  background: #000;
+}
+
+#seed .ir-seed__why,
+#seed .ir-seed__use {
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.62);
+}
+
+#seed .ir-seed__use li {
+  background: transparent !important;
+  color: #fff !important;
+  border-right: 1.5px solid rgba(255, 255, 255, 0.62);
+}
+
+#seed .ir-seed__use li:last-child {
+  border-right: 0;
+}
+
+@media print {
+  #intelligence.ir-slide,
+  #global.ir-slide {
+    background: #fff !important;
+    padding: 0.26in 0.3in 0.22in !important;
+  }
+
+  #intelligence .ir-inner,
+  #global .ir-inner,
+  #seed .ir-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: none;
+    width: 100%;
+  }
+
+  #intelligence .ir-ig__stack {
+    flex: 1 1 auto;
+    min-height: 2.55in;
+    grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+    border: 1.35pt solid #000 !important;
+  }
+
+  #intelligence .ir-ig__stack li,
+  #intelligence .ir-ig__stack li:last-child,
+  #intelligence .ir-ig__stack li.is-ai {
+    background: #fff !important;
+    color: inherit !important;
+    border-right: 1.35pt solid #000 !important;
+    box-shadow: none !important;
+  }
+
+  #intelligence .ir-ig__stack li:last-child {
+    border-right: 0 !important;
+  }
+
+  #intelligence .ir-ig__rules {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    border: 1.35pt solid #000 !important;
+    margin-top: 0.22rem;
+  }
+
+  #intelligence .ir-ig__rules li,
+  #intelligence .ir-ig__rules li.is-end {
+    background: #fff !important;
+    color: inherit !important;
+    border-right: 1.35pt solid #000 !important;
+    box-shadow: none !important;
+    min-height: 1.15in;
+  }
+
+  #intelligence .ir-ig__rules li:last-child {
+    border-right: 0 !important;
+  }
+
+  #intelligence .ir-ig__stack li.is-ai span,
+  #intelligence .ir-ig__rules li.is-end em,
+  #intelligence .ir-ig__rules li.is-end strong,
+  #intelligence .ir-ig__rules li.is-end span {
+    color: inherit !important;
+  }
+
+  #global .ir-global__langs,
+  #global .ir-global__meta {
+    border: 1.35pt solid #000 !important;
+  }
+
+  #global .ir-global__mark,
+  #global .ir-global__langs span,
+  #global .ir-global__meta div,
+  #global .ir-global__meta div:nth-child(2),
+  #global .ir-global__meta div:nth-child(4) {
+    background: #fff !important;
+    color: inherit !important;
+    box-shadow: none !important;
+  }
+
+  #global .ir-global__mark {
+    border: 1.35pt solid #000 !important;
+  }
+
+  #global .ir-global__langs span,
+  #global .ir-global__meta div {
+    border-right: 1.35pt solid #000 !important;
+  }
+
+  #global .ir-global__langs span:last-child,
+  #global .ir-global__meta div:last-child {
+    border-right: 0 !important;
+  }
+
+  #global .ir-global__mark strong,
+  #global .ir-global__mark span,
+  #global .ir-global__meta div em,
+  #global .ir-global__meta div strong,
+  #global .ir-global__meta div span {
+    color: inherit !important;
+  }
+
+  #global .ir-global__langs {
+    min-height: 0.72in;
+  }
+
+  #global .ir-global__meta {
+    flex: 1 1 auto;
+    min-height: 2.45in;
+  }
+
+  #seed.ir-slide {
+    background: #000 !important;
+    padding: 0.28in 0.32in 0.24in !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #seed .ir-seed__why,
+  #seed .ir-seed__use {
+    border: 1.35pt solid rgba(255, 255, 255, 0.7) !important;
+    background: transparent !important;
+  }
+
+  #seed .ir-seed__use {
+    flex: 1 1 auto;
+    min-height: 2.7in;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+
+  #seed .ir-seed__use li {
+    background: transparent !important;
+    color: #fff !important;
+    border-right: 1.35pt solid rgba(255, 255, 255, 0.7) !important;
+    box-shadow: none !important;
+  }
+
+  #seed .ir-seed__use li:last-child {
+    border-right: 0 !important;
+  }
+}
