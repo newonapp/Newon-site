@@ -209,6 +209,11 @@
     "ai.2": "Context",
     "ai.4": "Personalization",
     "ai.7": "Action",
+    "ai.p1": "Shared AI infrastructure",
+    "ai.p2": "Privacy first",
+    "ai.p3": "User consent required",
+    "ai.p4": "This round · the base",
+    "ai.p4s": "Full-product expansion comes later",
     "p11.n": "11 / Commerce · market · booking",
     "p11.flag": "PLANNED · PHASE 04 · Expansion",
     "p11.lead":

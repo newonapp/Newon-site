@@ -6507,10 +6507,92 @@ html[data-ir-lang="en"] .ir-contact__role:not(.ir-contact__role--en) {
   color: var(--ir-soft);
 }
 
+#intelligence .ir-ig__stack li.is-ai {
+  background: #000;
+  color: #fff;
+}
+
+#intelligence .ir-ig__stack li.is-ai span {
+  color: rgba(255, 255, 255, 0.55);
+}
+
 #intelligence .ir-ig__stack li:not(:last-child)::after {
   top: 1.15rem;
   right: 0.55rem;
   opacity: 0.22;
+}
+
+.ir-ig__rules {
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border: 1px solid var(--ir-black);
+}
+
+.ir-ig__rules li {
+  padding: 1.05rem 1rem 1.1rem;
+  border-right: 1px solid var(--ir-black);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 6.2rem;
+}
+
+.ir-ig__rules li:last-child {
+  border-right: 0;
+}
+
+.ir-ig__rules li.is-end {
+  background: #000;
+  color: #fff;
+}
+
+.ir-ig__rules em {
+  font-style: normal;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  opacity: 0.45;
+}
+
+.ir-ig__rules strong {
+  margin-top: 0.7rem;
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+
+.ir-ig__rules span {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 650;
+  opacity: 0.7;
+  line-height: 1.35;
+}
+
+.ir-seed__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.85fr);
+  gap: 1.25rem 1.75rem;
+  align-items: end;
+}
+
+.ir-seed__copy .ir-n {
+  margin-bottom: 0.45rem;
+}
+
+.ir-seed__why {
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 1.15rem 1.2rem 1.2rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  max-width: none;
 }
 
 /* 11 / 커머스 */
@@ -6922,6 +7004,22 @@ html[data-ir-lang="en"] .ir-contact__role:not(.ir-contact__role--en) {
 
   #global .ir-global__langs span:nth-child(n + 6) {
     border-top: 1px solid var(--ir-black);
+  }
+
+  .ir-ig__rules {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ir-ig__rules li:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .ir-ig__rules li:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--ir-black);
+  }
+
+  .ir-seed__top {
+    grid-template-columns: 1fr;
   }
 
   #vision .ir-vision__col,
@@ -7416,5 +7514,326 @@ html[data-ir-lang="en"] .ir-contact__role:not(.ir-contact__role--en) {
   #global .ir-global__meta strong,
   #global .ir-global__meta div:nth-child(2) strong {
     font-size: 2.7rem !important;
+  }
+
+  /* 05 — 5 axes fill the dark frame */
+  #company.ir-slide {
+    padding: 0.28in 0.32in 0.24in !important;
+    justify-content: flex-start !important;
+  }
+
+  #company .ir-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: none;
+    width: 100%;
+  }
+
+  #company .ir-n,
+  #company .ir-flag {
+    margin-bottom: 0.18rem;
+  }
+
+  #company .ir-firm__title {
+    font-size: 2.35rem !important;
+    line-height: 0.92;
+  }
+
+  #company .ir-lead {
+    margin: 0.28rem 0 0;
+    font-size: 0.78rem;
+    max-width: 46em;
+  }
+
+  #company .ir-firm__arch {
+    flex: 1 1 auto;
+    margin-top: 0.42rem !important;
+    display: grid !important;
+    grid-template-columns: 1fr minmax(12rem, 0.82fr) 1fr !important;
+    grid-template-rows: 1fr 1fr auto !important;
+    grid-template-areas:
+      "p1 hub p2"
+      "p3 hub p4"
+      "plat plat plat" !important;
+    gap: 0.28rem 0.32rem !important;
+    min-height: 0;
+  }
+
+  #company .ir-firm__hub { grid-area: hub !important; }
+  #company .ir-firm__ax--1 { grid-area: p1 !important; }
+  #company .ir-firm__ax--2 { grid-area: p2 !important; }
+  #company .ir-firm__ax--3 { grid-area: p3 !important; }
+  #company .ir-firm__ax--4 { grid-area: p4 !important; }
+  #company .ir-firm__ax--5 { grid-area: plat !important; }
+
+  #company .ir-firm__ax,
+  #company .ir-firm__hub {
+    min-height: 0 !important;
+    height: auto;
+  }
+
+  #company .ir-firm__ax.is-core {
+    background: #fff !important;
+    color: #000 !important;
+    border-color: #fff !important;
+  }
+
+  #company .ir-firm__ax {
+    padding: 0.55rem 0.65rem 0.6rem !important;
+  }
+
+  #company .ir-firm__hub {
+    padding: 0.7rem 0.75rem !important;
+  }
+
+  #company .ir-firm__hub span {
+    font-size: 3.1rem !important;
+  }
+
+  #company .ir-firm__ax--5 {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.9rem !important;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  #company .ir-firm__flow {
+    margin-top: 0.32rem !important;
+    padding-top: 0.28rem !important;
+    font-size: 0.58rem;
+  }
+
+  /* 09 — first screen almost full-bleed */
+  #web .ir-web3 {
+    display: none !important;
+  }
+
+  #web.ir-slide {
+    padding: 0.18in 0.22in 0.16in !important;
+  }
+
+  #web .ir-webhead--compact {
+    margin: 0 0 0.12rem;
+  }
+
+  #web .ir-webshot img,
+  #web .ir-webshot--fill img {
+    object-position: center 28% !important;
+  }
+
+  /* 10 — 7-step stack + principles fill the page */
+  #intelligence.ir-slide {
+    padding: 0.28in 0.32in 0.24in !important;
+    justify-content: flex-start !important;
+  }
+
+  #intelligence .ir-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: none;
+    width: 100%;
+  }
+
+  #intelligence .ir-ig__head {
+    align-items: end;
+    gap: 0.7rem 1.2rem;
+  }
+
+  #intelligence .ir-h2 {
+    font-size: 2.45rem !important;
+    margin: 0.2rem 0 0;
+  }
+
+  #intelligence .ir-ig__note {
+    font-size: 0.78rem;
+    max-width: 28em;
+  }
+
+  #intelligence .ir-ig__stack {
+    flex: 1 1 auto;
+    display: grid !important;
+    grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+    margin-top: 0.45rem !important;
+    min-height: 2.35in;
+  }
+
+  #intelligence .ir-ig__stack li,
+  #intelligence .ir-ig__stack li:last-child {
+    min-height: 0 !important;
+    padding: 0.7rem 0.55rem 0.75rem !important;
+    font-size: 1.05rem;
+    background: #fff !important;
+    color: inherit !important;
+  }
+
+  #intelligence .ir-ig__stack li.is-ai {
+    background: #000 !important;
+    color: #fff !important;
+  }
+
+  #intelligence .ir-ig__stack li.is-ai span {
+    color: rgba(255, 255, 255, 0.55) !important;
+  }
+
+  #intelligence .ir-ig__rules {
+    flex: 0 0 auto;
+    margin-top: 0.28rem;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  #intelligence .ir-ig__rules li {
+    min-height: 1.35in;
+    padding: 0.7rem 0.75rem 0.75rem;
+  }
+
+  #intelligence .ir-ig__rules li.is-end {
+    background: #000 !important;
+    color: #fff !important;
+  }
+
+  #intelligence .ir-ig__rules strong {
+    font-size: 1.12rem;
+  }
+
+  /* 15 — denser headline + metrics, no empty stretch */
+  #global .ir-global__top {
+    grid-template-columns: 1.55fr 0.62fr !important;
+    gap: 0.28rem 0.7rem;
+  }
+
+  #global .ir-global__title {
+    font-size: 2.85rem !important;
+  }
+
+  #global .ir-global__mark {
+    background: #000;
+    color: #fff;
+    padding: 0.7rem 0.8rem 0.75rem !important;
+  }
+
+  #global .ir-global__mark strong {
+    font-size: 4.8rem;
+  }
+
+  #global .ir-global__langs {
+    min-height: 0.78in;
+    margin-top: 0.32rem;
+  }
+
+  #global .ir-global__langs span {
+    min-height: 0.78in;
+    font-size: 0.88rem;
+  }
+
+  #global .ir-global__meta {
+    min-height: 2.35in;
+  }
+
+  #global .ir-global__meta div:nth-child(2),
+  #global .ir-global__meta div:nth-child(4) {
+    background: #000 !important;
+    color: #fff !important;
+  }
+
+  #global .ir-global__meta div:nth-child(2) em,
+  #global .ir-global__meta div:nth-child(2) span,
+  #global .ir-global__meta div:nth-child(4) em,
+  #global .ir-global__meta div:nth-child(4) span {
+    color: rgba(255, 255, 255, 0.72) !important;
+  }
+
+  #global .ir-global__meta strong,
+  #global .ir-global__meta div:nth-child(2) strong {
+    font-size: 3.05rem !important;
+  }
+
+  /* 17 — hero + tall growth plan */
+  #seed.ir-slide {
+    padding: 0.28in 0.32in 0.24in !important;
+    justify-content: flex-start !important;
+  }
+
+  #seed .ir-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: none;
+    width: 100%;
+  }
+
+  #seed .ir-seed__top {
+    display: grid !important;
+    grid-template-columns: 1.25fr 0.9fr !important;
+    gap: 0.45rem 1.1rem;
+    align-items: stretch;
+  }
+
+  #seed .ir-seed__amount--title {
+    font-size: 2.55rem !important;
+    max-width: none !important;
+    margin-top: 0.35rem;
+  }
+
+  #seed .ir-seed__mantra {
+    margin-top: 0.45rem;
+    font-size: 1.15rem;
+  }
+
+  #seed .ir-seed__why {
+    margin: 0 !important;
+    max-width: none !important;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    padding: 0.85rem 0.9rem !important;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  #seed .ir-seed__funds-label {
+    margin-top: 0.45rem;
+    font-size: 0.58rem;
+  }
+
+  #seed .ir-seed__use {
+    flex: 1 1 auto;
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    margin-top: 0.22rem !important;
+    min-height: 2.55in;
+    counter-reset: seeduse;
+  }
+
+  #seed .ir-seed__use li {
+    padding: 0.7rem 0.65rem 0.75rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    counter-increment: seeduse;
+  }
+
+  #seed .ir-seed__use li::before {
+    content: counter(seeduse, decimal-leading-zero);
+    display: block;
+    margin-bottom: 0.55rem;
+    font-size: 2.15rem;
+    font-weight: 700;
+    letter-spacing: -0.08em;
+    line-height: 0.9;
+    opacity: 0.38;
+  }
+
+  #seed .ir-seed__use em {
+    font-size: 0.82rem !important;
+    margin-bottom: 0.55rem;
+  }
+
+  #seed .ir-seed__use span {
+    font-size: 0.8rem !important;
+    line-height: 1.4;
+    margin-top: 0.45rem;
   }
 }

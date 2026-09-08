@@ -28,7 +28,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/ir/ir.css?v=20260908ir56" />
+    <link rel="stylesheet" href="/ir/ir.css?v=20260908ir57" />
   </head>
   <body class="ir-body">
     <a class="ir-skip" href="#ir-main" data-i18n="skip">본문으로</a>
@@ -660,12 +660,31 @@
           <ol class="ir-ig__stack">
             <li><span>01</span><span data-i18n="ai.1">제품 데이터</span></li>
             <li><span>02</span><span data-i18n="ai.2">맥락</span></li>
-            <li><span>03</span>AI</li>
+            <li class="is-ai"><span>03</span>AI</li>
             <li><span>04</span><span data-i18n="ai.4">개인화</span></li>
             <li><span>05</span><span data-i18n="p08.rec">추천</span></li>
             <li><span>06</span><span data-i18n="life.auto">자동화</span></li>
             <li><span>07</span><span data-i18n="ai.7">실행</span></li>
           </ol>
+          <ul class="ir-ig__rules">
+            <li>
+              <em>01</em>
+              <strong data-i18n="ai.p1">공통 AI 인프라</strong>
+            </li>
+            <li>
+              <em>02</em>
+              <strong data-i18n="ai.p2">프라이버시 우선</strong>
+            </li>
+            <li>
+              <em>03</em>
+              <strong data-i18n="ai.p3">사용자 동의 전제</strong>
+            </li>
+            <li class="is-end">
+              <em>04</em>
+              <strong data-i18n="ai.p4">이번 라운드 · 기반</strong>
+              <span data-i18n="ai.p4s">전 제품 확장은 이후</span>
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -942,15 +961,19 @@
         <div class="ir-frame ir-frame--light" aria-hidden="true"></div>
         <p class="ir-ghost ir-ghost--light" aria-hidden="true">NEXT</p>
         <div class="ir-inner" data-ir-reveal>
-          <p class="ir-n" data-i18n="p17.n">17 / Investment &amp; Partnership</p>
-          <p class="ir-seed__kicker">INVESTMENT &amp; PARTNERSHIP</p>
-          <p class="ir-seed__status" data-i18n="p17.status">Open to Investment &amp; Strategic Partnerships</p>
-          <h2 class="ir-seed__amount ir-seed__amount--title" data-i18n="p17.h">다음 Newon을<br />같이 만듭니다</h2>
-          <p class="ir-seed__mantra">FOCUS. VALIDATE. CONNECT.</p>
-          <p class="ir-lead ir-seed__why" data-i18n="p17.why">
-            11개 서비스를 동시에 키우는 라운드가 아닙니다. 핵심 제품을 고르고, 사용자·리텐션·수익성을 검증하며,
-            Newon+로 하나의 생태계 연결 기반을 만듭니다.
-          </p>
+          <div class="ir-seed__top">
+            <div class="ir-seed__copy">
+              <p class="ir-n" data-i18n="p17.n">17 / Investment &amp; Partnership</p>
+              <p class="ir-seed__kicker">INVESTMENT &amp; PARTNERSHIP</p>
+              <p class="ir-seed__status" data-i18n="p17.status">Open to Investment &amp; Strategic Partnerships</p>
+              <h2 class="ir-seed__amount ir-seed__amount--title" data-i18n="p17.h">다음 Newon을<br />같이 만듭니다</h2>
+              <p class="ir-seed__mantra">FOCUS. VALIDATE. CONNECT.</p>
+            </div>
+            <p class="ir-lead ir-seed__why" data-i18n="p17.why">
+              11개 서비스를 동시에 키우는 라운드가 아닙니다. 핵심 제품을 고르고, 사용자·리텐션·수익성을 검증하며,
+              Newon+로 하나의 생태계 연결 기반을 만듭니다.
+            </p>
+          </div>
           <p class="ir-seed__funds-label">Use of Funds · Growth Plan</p>
           <ol class="ir-seed__use" aria-label="Use of Funds">
             <li><em>Product</em><span data-i18n="p17.u1">기존 앱 고도화 및 Newon 생태계 확장</span></li>
@@ -1133,6 +1156,6 @@
       </section>
     </main>
 
-    <script src="/ir/ir.js?v=20260908ir18" defer></script>
+    <script src="/ir/ir.js?v=20260908ir19" defer></script>
   </body>
 </html>
