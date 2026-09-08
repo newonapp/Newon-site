@@ -7837,3 +7837,278 @@ html[data-ir-lang="en"] .ir-contact__role:not(.ir-contact__role--en) {
     margin-top: 0.45rem;
   }
 }
+
+/* Unified cell fills per slide + print-stable rules */
+.ir-slide:not(.ir-slide--dark) .ir-why__flow li.is-end,
+.ir-slide:not(.ir-slide--dark) .ir-why__sink b,
+.ir-slide:not(.ir-slide--dark) .ir-ig__stack li.is-ai,
+.ir-slide:not(.ir-slide--dark) .ir-ig__stack li:last-child,
+.ir-slide:not(.ir-slide--dark) .ir-ig__rules li.is-end,
+.ir-slide:not(.ir-slide--dark) .ir-vision__col--end,
+.ir-slide:not(.ir-slide--dark) .ir-rank li.is-end,
+.ir-slide:not(.ir-slide--dark) .ir-loop li.is-end,
+.ir-slide:not(.ir-slide--dark) .ir-funds li.is-end,
+.ir-slide:not(.ir-slide--dark) .ir-wheel__ring li.is-end,
+.ir-slide:not(.ir-slide--dark) .ir-path4 span.is-end,
+.ir-slide:not(.ir-slide--dark) .ir-port5 li.is-end,
+.ir-slide:not(.ir-slide--dark) .ir-exec4 article.is-end,
+#global .ir-global__mark,
+#global .ir-global__meta div:nth-child(2),
+#global .ir-global__meta div:nth-child(4),
+#vision .ir-vision__col:last-child,
+#vision .ir-vision__col--end,
+#intelligence .ir-ig__stack li.is-ai,
+#intelligence .ir-ig__rules li.is-end {
+  background: #fff !important;
+  color: inherit !important;
+}
+
+.ir-slide:not(.ir-slide--dark) .ir-why__flow li.is-end span,
+.ir-slide:not(.ir-slide--dark) .ir-why__flow li.is-end p,
+.ir-slide:not(.ir-slide--dark) .ir-why__flow li.is-end strong,
+.ir-slide:not(.ir-slide--dark) .ir-ig__stack li.is-ai span,
+.ir-slide:not(.ir-slide--dark) .ir-ig__rules li.is-end em,
+.ir-slide:not(.ir-slide--dark) .ir-ig__rules li.is-end strong,
+.ir-slide:not(.ir-slide--dark) .ir-ig__rules li.is-end span,
+.ir-slide:not(.ir-slide--dark) .ir-vision__col--end .ir-cap,
+.ir-slide:not(.ir-slide--dark) .ir-vision__col--end .ir-vision__big,
+.ir-slide:not(.ir-slide--dark) .ir-vision__col--end p,
+#global .ir-global__mark strong,
+#global .ir-global__mark span,
+#global .ir-global__meta div:nth-child(2) em,
+#global .ir-global__meta div:nth-child(2) span,
+#global .ir-global__meta div:nth-child(2) strong,
+#global .ir-global__meta div:nth-child(4) em,
+#global .ir-global__meta div:nth-child(4) span,
+#global .ir-global__meta div:nth-child(4) strong,
+#vision .ir-vision__col--end .ir-cap,
+#vision .ir-vision__col--end .ir-vision__big,
+#intelligence .ir-ig__stack li.is-ai span {
+  color: inherit !important;
+}
+
+.ir-why__sink b {
+  background: #fff;
+  color: inherit;
+  border: 1.25px solid var(--ir-black);
+  font-weight: 700;
+}
+
+#global .ir-global__mark {
+  border: 1.25px solid var(--ir-black);
+}
+
+.ir-slide--dark .ir-firm__ax.is-core,
+.ir-slide--dark .ir-firm__ax.is-end,
+.ir-slide--dark .ir-firm__hub,
+.ir-slide--dark .ir-plus__apps article.is-core,
+.ir-slide--dark .ir-plus__caps article.is-end,
+.ir-slide--dark .ir-loop li.is-end,
+.ir-slide--dark .ir-twin article.is-end,
+.ir-slide--dark .ir-xgrid--dark article.is-end {
+  background: #0b0b0b !important;
+  color: #fff !important;
+}
+
+.ir-why__flow,
+.ir-ig__stack,
+.ir-ig__rules,
+.ir-global__langs,
+.ir-global__meta,
+.ir-vision__grid--5,
+.ir-seed__use,
+.ir-rank,
+.ir-com,
+.ir-web3,
+.ir-xgrid,
+.ir-loop,
+.ir-funds,
+.ir-look,
+.ir-def {
+  border-width: 1.25px;
+}
+
+.ir-slide--dark .ir-firm__ax,
+.ir-slide--dark .ir-firm__hub,
+.ir-slide--dark .ir-seed__why,
+.ir-slide--dark .ir-seed__use,
+.ir-slide--dark .ir-plus__apps article,
+.ir-slide--dark .ir-plus__fly li,
+.ir-slide--dark .ir-twin article,
+.ir-slide--dark .ir-loop li,
+.ir-slide--dark .ir-xgrid--dark article {
+  border-color: rgba(255, 255, 255, 0.48) !important;
+}
+
+.ir-slide--dark .ir-seed__use {
+  border: 1.25px solid rgba(255, 255, 255, 0.48);
+}
+
+.ir-slide--dark .ir-seed__use li {
+  border-right: 1.25px solid rgba(255, 255, 255, 0.48);
+}
+
+.ir-slide--dark .ir-seed__use li:last-child {
+  border-right: 0;
+}
+
+.ir-slide--dark .ir-firm__ax,
+.ir-slide--dark .ir-firm__hub {
+  border-width: 1.25px;
+}
+
+@media print {
+  .ir-why__flow li.is-end,
+  .ir-why__sink b,
+  #web .ir-flag,
+  #intelligence .ir-ig__stack li,
+  #intelligence .ir-ig__stack li:last-child,
+  #intelligence .ir-ig__stack li.is-ai,
+  #intelligence .ir-ig__rules li,
+  #intelligence .ir-ig__rules li.is-end,
+  #global .ir-global__mark,
+  #global .ir-global__meta div,
+  #global .ir-global__meta div:nth-child(2),
+  #global .ir-global__meta div:nth-child(4),
+  #vision .ir-vision__col,
+  #vision .ir-vision__col--end,
+  #vision .ir-vision__col:last-child,
+  #growth .ir-rank li,
+  #growth .ir-rank li.is-end {
+    background: #fff !important;
+    color: inherit !important;
+  }
+
+  .ir-why__flow li.is-end span,
+  .ir-why__flow li.is-end p,
+  .ir-why__flow li.is-end strong,
+  #intelligence .ir-ig__stack li.is-ai span,
+  #intelligence .ir-ig__rules li.is-end em,
+  #intelligence .ir-ig__rules li.is-end strong,
+  #intelligence .ir-ig__rules li.is-end span,
+  #global .ir-global__mark strong,
+  #global .ir-global__mark span,
+  #global .ir-global__meta div em,
+  #global .ir-global__meta div span,
+  #global .ir-global__meta div strong,
+  #vision .ir-vision__col--end .ir-cap,
+  #vision .ir-vision__col--end .ir-vision__big,
+  #vision .ir-vision__grid--5 .ir-vision__col--end .ir-vision__big {
+    color: inherit !important;
+  }
+
+  #company .ir-firm__ax.is-core,
+  #company .ir-firm__ax.is-end,
+  #company .ir-firm__hub,
+  #seed .ir-seed__why,
+  #seed .ir-seed__use li,
+  #newon-plus .ir-plus__apps article,
+  #newon-plus .ir-plus__apps article.is-core,
+  #newon-plus .ir-plus__fly li,
+  #studio .ir-twin article,
+  #studio .ir-twin article.is-end {
+    background: #0b0b0b !important;
+    color: #fff !important;
+  }
+
+  /* Hairlines collapse in Chrome PDF; draw overlapping 1.15pt rules instead. */
+  .ir-why__flow,
+  .ir-ig__stack,
+  .ir-ig__rules,
+  .ir-global__langs,
+  .ir-global__meta,
+  .ir-vision__grid--5,
+  .ir-rank,
+  .ir-com,
+  .ir-web3,
+  .ir-xgrid,
+  .ir-loop,
+  .ir-funds,
+  .ir-def,
+  .ir-look {
+    gap: 0 !important;
+    background: transparent !important;
+    border: 1.15pt solid #000 !important;
+  }
+
+  .ir-why__flow {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  .ir-vision__grid--5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+
+  .ir-why__flow li,
+  .ir-ig__stack li,
+  .ir-ig__rules li,
+  .ir-global__langs span,
+  .ir-global__meta div,
+  .ir-vision__col,
+  .ir-vision__col--end,
+  .ir-rank li,
+  .ir-com__col,
+  .ir-web3 article,
+  .ir-xgrid article,
+  .ir-loop li,
+  .ir-funds li,
+  .ir-def li,
+  .ir-look__item {
+    box-shadow: inset 0 0 0 0.65pt #000;
+    border-right: 1.15pt solid #000 !important;
+    border-bottom: 0 !important;
+  }
+
+  .ir-why__flow li:last-child,
+  .ir-ig__stack li:last-child,
+  .ir-ig__rules li:last-child,
+  .ir-global__langs span:last-child,
+  .ir-global__meta div:last-child,
+  .ir-vision__col:last-child,
+  .ir-vision__col--end,
+  .ir-rank li:last-child,
+  .ir-com__col:last-child,
+  .ir-web3 article:last-child,
+  .ir-xgrid article:last-child,
+  .ir-loop li:last-child,
+  .ir-funds li:last-child {
+    border-right: 0 !important;
+  }
+
+  #company .ir-firm__ax,
+  #company .ir-firm__hub {
+    border: 1.15pt solid rgba(255, 255, 255, 0.55) !important;
+    box-shadow: none;
+  }
+
+  #company .ir-firm__ax.is-core {
+    background: #0b0b0b !important;
+    color: #fff !important;
+    border-color: rgba(255, 255, 255, 0.55) !important;
+  }
+
+  #seed .ir-seed__why,
+  #seed .ir-seed__use {
+    border: 1.15pt solid rgba(255, 255, 255, 0.55) !important;
+  }
+
+  #seed .ir-seed__use li {
+    border-right: 1.15pt solid rgba(255, 255, 255, 0.55) !important;
+    box-shadow: none;
+  }
+
+  #seed .ir-seed__use li:last-child {
+    border-right: 0 !important;
+  }
+
+  #global .ir-global__mark {
+    border: 1.15pt solid #000 !important;
+  }
+
+  .ir-why__sink span,
+  .ir-why__sink b {
+    border: 1.15pt solid #000 !important;
+    background: #fff !important;
+    color: inherit !important;
+  }
+}
