@@ -28,7 +28,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/ir/ir.css?v=20260908ir54" />
+    <link rel="stylesheet" href="/ir/ir.css?v=20260908ir56" />
   </head>
   <body class="ir-body">
     <a class="ir-skip" href="#ir-main" data-i18n="skip">본문으로</a>
@@ -578,38 +578,33 @@
       </section>
 
       <!-- 09 NEWON WEB -->
-      <section class="ir-slide" id="web" aria-label="09 Newon Web">
+      <section class="ir-slide ir-webpage" id="web" aria-label="09 Newon Web">
         <div class="ir-frame" aria-hidden="true"></div>
         <div class="ir-inner" data-ir-reveal>
           <p class="ir-n">09 / NEWON WEB</p>
-          <div class="ir-webhead">
-            <div>
-              <p class="ir-flag ir-flag--live" data-i18n="web.liveFlag">현재 · 운영 중</p>
-              <p class="ir-webhead__live" data-i18n="web.liveH">NEWON.APP<br />운영 중.</p>
-              <h2 class="ir-h2" data-i18n="web.h">디지털<br />본부.</h2>
-              <p class="ir-webhead__url"><a href="https://www.newon.app/" data-i18n="web.hub">유통 허브</a></p>
-              <p class="ir-lead" data-i18n="web.lead">회사의 모든 사업축이 만나는 디지털 본부 / 유통 허브.</p>
-            </div>
-            <figure class="ir-webshot">
-              <div class="ir-webshot__bar" aria-hidden="true">
-                <i></i><i></i><i></i>
-                <span>www.newon.app</span>
-              </div>
-              <img
-                src="/ir/web-live.jpg?v=20260908"
-                alt="newon.app 공식 웹 — 실제 배포된 화면"
-                width="1440"
-                height="810"
-                loading="lazy"
-              />
-              <figcaption data-i18n="web.cap">현재 · www.newon.app</figcaption>
-            </figure>
+          <div class="ir-webhead ir-webhead--compact">
+            <p class="ir-flag ir-flag--live" data-i18n="web.liveFlag">현재 · 운영 중</p>
+            <p class="ir-webhead__live" data-i18n="web.liveH">NEWON.APP 운영 중.</p>
+            <h2 class="ir-h2" data-i18n="web.h">디지털 본부 · 유통 허브</h2>
+            <p class="ir-lead" data-i18n="web.lead">회사의 모든 사업축이 만나는 디지털 본부 / 유통 허브.</p>
           </div>
+          <figure class="ir-webshot ir-webshot--fill">
+            <div class="ir-webshot__bar" aria-hidden="true">
+              <i></i><i></i><i></i>
+              <span>www.newon.app</span>
+            </div>
+            <img
+              src="/ir/web-live.jpg?v=20260908web2"
+              alt="newon.app 공식 웹 — 실제 배포된 첫 화면"
+              width="1600"
+              height="1000"
+              loading="eager"
+              decoding="sync"
+            />
+            <figcaption data-i18n="web.cap">현재 · www.newon.app</figcaption>
+          </figure>
           <p class="ir-webmap" aria-label="웹을 본부로">
             <span data-i18n="p05.products">제품</span><span data-i18n="p05.biz">비즈니스</span><span data-i18n="p05.studio">스튜디오</span><span data-i18n="p05.resource">리소스</span><span data-i18n="p05.company">회사</span>
-          </p>
-          <p class="ir-webmap ir-webmap--out">
-            <span data-i18n="web.discover">탐색</span><span data-i18n="p05.content">콘텐츠</span><span data-i18n="web.leadN">리드</span><span data-i18n="web.dist">유통</span><span data-i18n="p05.brand">브랜드</span><span data-i18n="web.partner">파트너십</span>
           </p>
           <div class="ir-web3">
             <article>
@@ -832,15 +827,23 @@
         <div class="ir-frame" aria-hidden="true"></div>
         <p class="ir-ghost" aria-hidden="true">177</p>
         <div class="ir-inner" data-ir-reveal>
-          <p class="ir-n" data-i18n="p15.n">15 / 글로벌 배포</p>
-          <p class="ir-flag" data-i18n="p15.flag">제품 발자국 · 트랙션 아님</p>
-          <h2 class="ir-global__title" data-i18n="p15.h">
-            13개 언어.<br />
-            177개국 출시.
-          </h2>
-          <p class="ir-lead" data-i18n="p15.lead">
-            한국에서 만들고, App Store / Google Play로 177개국에 출시·배포되어 있습니다. 177은 사용자 수가 아니라 출시 가능 국가 수입니다.
-          </p>
+          <div class="ir-global__top">
+            <div class="ir-global__copy">
+              <p class="ir-n" data-i18n="p15.n">15 / 글로벌 배포</p>
+              <p class="ir-flag" data-i18n="p15.flag">제품 발자국 · 트랙션 아님</p>
+              <h2 class="ir-global__title" data-i18n="p15.h">
+                13개 언어.<br />
+                177개국 출시.
+              </h2>
+              <p class="ir-lead" data-i18n="p15.lead">
+                한국에서 만들고, App Store / Google Play로 177개국에 출시·배포되어 있습니다. 177은 사용자 수가 아니라 출시 가능 국가 수입니다.
+              </p>
+            </div>
+            <p class="ir-global__mark">
+              <strong>177</strong>
+              <span data-i18n="p15.releaseS">개국 출시</span>
+            </p>
+          </div>
           <div class="ir-global__langs" aria-label="웹사이트 언어">
             <span>KO</span><span>EN</span><span>JA</span><span>ES</span><span>PT-BR</span
             ><span>FR</span><span>DE</span><span>HI</span><span>ID</span>
@@ -1130,6 +1133,6 @@
       </section>
     </main>
 
-    <script src="/ir/ir.js?v=20260908ir17" defer></script>
+    <script src="/ir/ir.js?v=20260908ir18" defer></script>
   </body>
 </html>

@@ -181,8 +181,8 @@
     "p08.path":
       'SSO → profile → app link → subscribe → package → membership → recommend → AI → perks → <span class="ir-flag">PLANNED</span> Newon Store',
     "web.liveFlag": "Now · live",
-    "web.liveH": "NEWON.APP<br />is live.",
-    "web.h": "Digital<br />HQ.",
+    "web.liveH": "NEWON.APP is live.",
+    "web.h": "Digital HQ · Distribution hub",
     "web.hub": "Distribution hub",
     "web.lead": "The digital HQ / distribution hub where every company axis meets.",
     "web.cap": "Now · www.newon.app",
