@@ -301,6 +301,22 @@ export const MEDIA_ITEMS_HUB = [
 
   /* —— Instagram (@newon.app) — thumbnail + external link (no embed) —— */
   {
+    id: "ig-DdDcG0NH3Bh",
+    platform: "instagram",
+    category: "PRODUCT",
+    igType: "POST",
+    titleKo: "여섯 번째 앱은 Savy — AI가 소비를 분석하는 가계부",
+    titleEn: "Sixth up: Savy — an AI ledger that analyzes spending",
+    descriptionKo: "AI 소비 패턴 분석·돈 관리 질문, 수입·지출과 카테고리별 소비 흐름을 한눈에.",
+    descriptionEn: "AI spending analysis, money Q&A, plus income, expenses, and category flows at a glance.",
+    date: "2026-09-09",
+    url: "https://www.instagram.com/newon.app/p/DdDcG0NH3Bh/",
+    embedUrl: null,
+    thumbnail: "/media-thumbs/ig-DdDcG0NH3Bh.jpg",
+    duration: null,
+    featured: true,
+  },
+  {
     id: "ig-DdAZGE7n4eU",
     platform: "instagram",
     category: "PRODUCT",
@@ -314,7 +330,6 @@ export const MEDIA_ITEMS_HUB = [
     embedUrl: null,
     thumbnail: "/media-thumbs/ig-DdAZGE7n4eU.jpg",
     duration: null,
-    featured: true,
   },
   {
     id: "ig-Dc9y_tEHzrL",
