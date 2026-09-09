@@ -1,0 +1,294 @@
+/**
+ * Phone / small-screen polish only.
+ * All rules live inside max-width: 720px so desktop layout is untouched.
+ */
+@media (max-width: 720px) {
+  /* ——— Shared page gutters ——— */
+  .bp-inner,
+  .bs-inner,
+  .ns-inner,
+  .bz-inner {
+    width: min(100% - 1.75rem, var(--bp-max, 1120px));
+  }
+
+  /* ——— Header: compact toolbar ——— */
+  .lang-select.lang-select--toolbar,
+  .navbar-bar__controls--brand-toolbar .lang-select.lang-select--toolbar,
+  .snav-actions .lang-select.lang-select--toolbar {
+    width: min(6.75rem, 30vw);
+    min-width: 0;
+    padding-inline: 0.55rem 1.5rem;
+    font-size: 0.8125rem;
+  }
+
+  .lang-menu.lang-menu--toolbar .lang-menu__btn {
+    max-width: min(6.75rem, 30vw);
+    font-size: 0.8125rem;
+  }
+
+  /* ——— Home hero ——— */
+  .hero--ecosystem .hero-actions--eco {
+    max-width: min(100%, 20.5rem);
+    padding-inline: 0.15rem;
+    gap: 0.5rem;
+  }
+
+  .hero--ecosystem .hero-btn-primary,
+  .hero--ecosystem .hero-btn-secondary {
+    flex: 1 1 100%;
+    min-height: 3rem;
+  }
+
+  .hero--ecosystem .hub-strip {
+    gap: 0.55rem 1.05rem;
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    padding-inline: 0.5rem;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero--ecosystem .hub-strip a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: 0.35rem 0.2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .hero--ecosystem .hero-store-links {
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero--ecosystem .hero-store-link {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .hero--ecosystem .hero-sub,
+  .hero--ecosystem .hero-desc {
+    padding-inline: 0.35rem;
+    text-wrap: pretty;
+    word-break: keep-all;
+  }
+
+  .hero--ecosystem .hero-desc br {
+    display: none;
+  }
+
+  /* ——— Business / Studio / Resources pillar heroes ——— */
+  .bp-hero {
+    padding: 1.65rem 0 2.25rem;
+  }
+
+  .bp-hero__grid {
+    gap: 1.35rem;
+    align-items: start;
+  }
+
+  .bp-hero__title {
+    font-size: clamp(1.7rem, 7.2vw, 2.15rem);
+    line-height: 1.28;
+    margin-bottom: 0.9rem;
+  }
+
+  .bp-hero__lead {
+    margin-bottom: 1.35rem;
+    font-size: 1rem;
+    line-height: 1.62;
+    max-width: none;
+  }
+
+  /* Desktop soft-breaks often look uneven on narrow screens */
+  .bp-hero__lead br,
+  .bs-hero__lead br,
+  .ns-lead br {
+    display: none;
+  }
+
+  .bp-hero__actions,
+  .bs-hero__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    width: 100%;
+  }
+
+  .bp-hero__actions .bp-btn,
+  .bs-hero__actions .bs-btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 3rem;
+  }
+
+  /* Decorative outline mark crowds the first viewport on phones */
+  .bp-hero__visual--mark {
+    display: none;
+  }
+
+  .bp-crumb {
+    padding-top: 0.85rem;
+    padding-bottom: 0.35rem;
+  }
+
+  .bp-crumb__list {
+    font-size: 0.8125rem;
+  }
+
+  .bp-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Explore tabs: easier horizontal swipe */
+  .bp-explore__tabs {
+    gap: 0.35rem;
+    padding-bottom: 0.35rem;
+  }
+
+  .bp-explore__tab {
+    padding: 0.7rem 0.85rem;
+  }
+
+  /* ——— Business service heroes ——— */
+  .bs-hero {
+    padding: 1.5rem 0 2.15rem;
+  }
+
+  .bs-hero__title {
+    font-size: clamp(1.75rem, 7.4vw, 2.35rem);
+    line-height: 1.24;
+  }
+
+  .bs-hero__lead {
+    font-size: 1rem;
+    max-width: none;
+  }
+
+  .bs-crumb {
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ——— Studio / hub heroes ——— */
+  .ns-hero {
+    padding: 1.35rem 0 2.15rem;
+  }
+
+  .ns-hero .ns-title {
+    font-size: clamp(1.7rem, 7vw, 2.2rem);
+    line-height: 1.28;
+  }
+
+  .ns-hero .ns-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    width: 100%;
+  }
+
+  .ns-hero .ns-actions .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 3rem;
+  }
+
+  .ns-hero .ns-rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.55rem;
+    justify-content: flex-start;
+    margin-top: 1.15rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+  }
+
+  .ns-hero .ns-rail__sep {
+    opacity: 0.45;
+  }
+
+  .ns-hero__visual {
+    margin-top: 0.35rem;
+  }
+
+  .ns-hero .ns-board__mark {
+    display: none;
+  }
+
+  .ns-hero .ns-lead {
+    word-break: keep-all;
+    text-wrap: pretty;
+  }
+
+  .ns-hero .ns-lead br {
+    display: none;
+  }
+
+  /* ——— Business hub editorial ——— */
+  .bz-hero--ed .bz-hero__title {
+    font-size: clamp(2rem, 9.5vw, 2.65rem);
+    line-height: 1.22;
+  }
+
+  .bz-hero--ed .bz-hero__lead {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    word-break: keep-all;
+    text-wrap: pretty;
+  }
+
+  .bz-hero--ed .bz-hero__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    width: 100%;
+  }
+
+  .bz-hero--ed .bz-hero__btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 3rem;
+  }
+
+  /* ——— Contact ——— */
+  .studio-contact__list,
+  .contact-channels,
+  .co-contact__list {
+    gap: 0.75rem;
+  }
+
+  /* ——— Generic section breathing room ——— */
+  .bp-sec,
+  .bs-section {
+    padding-block: 2.5rem;
+  }
+
+  .bp-sec__head,
+  .bs-section > .bs-inner > .bs-eyebrow {
+    margin-bottom: 1.15rem;
+  }
+}
+
+/* Extra-narrow phones */
+@media (max-width: 390px) {
+  .bp-hero__title,
+  .bs-hero__title,
+  .ns-hero .ns-title {
+    font-size: clamp(1.55rem, 7.6vw, 1.9rem);
+  }
+
+  .hero--ecosystem .hub-strip {
+    gap: 0.45rem 0.85rem;
+  }
+
+  .hero--ecosystem .hub-strip a {
+    font-size: 0.7rem;
+  }
+}

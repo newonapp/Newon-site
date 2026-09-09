@@ -1,0 +1,198 @@
+[
+  {
+    "slug": "babylog",
+    "name": "BabyLog",
+    "type": "apps",
+    "platforms": "iOS / Android",
+    "status": "live"
+  },
+  {
+    "slug": "savy",
+    "name": "SAVY",
+    "type": "apps",
+    "platforms": "iOS / Android",
+    "status": "live"
+  },
+  {
+    "slug": "myworld",
+    "name": "My World",
+    "type": "apps",
+    "platforms": "iOS / Android",
+    "status": "live"
+  },
+  {
+    "slug": "pillmate",
+    "name": "Pillmate",
+    "type": "apps",
+    "platforms": "iOS / Android",
+    "status": "live"
+  },
+  {
+    "slug": "ox-month",
+    "name": "OX MONTH",
+    "type": "apps",
+    "platforms": "iOS / Android",
+    "status": "live"
+  },
+  {
+    "slug": "newon-plus",
+    "name": "Newon+",
+    "type": "apps",
+    "platforms": "iOS / Android",
+    "status": "live"
+  },
+  {
+    "slug": "petlog",
+    "name": "PetLog",
+    "type": "apps",
+    "platforms": "iOS / Android",
+    "status": "live"
+  },
+  {
+    "slug": "goalup",
+    "name": "GoalUp",
+    "type": "apps",
+    "platforms": "iOS / Android",
+    "status": "live"
+  },
+  {
+    "slug": "countup",
+    "name": "CountUp",
+    "type": "apps",
+    "platforms": "iOS / Android",
+    "status": "live"
+  },
+  {
+    "slug": "subping",
+    "name": "SubPing",
+    "type": "apps",
+    "platforms": "iOS / Android",
+    "status": "live"
+  },
+  {
+    "slug": "piggyup",
+    "name": "PiggyUp",
+    "type": "apps",
+    "platforms": "iOS / Android",
+    "status": "live"
+  },
+  {
+    "slug": "404-human",
+    "name": "404: HUMAN",
+    "type": "games",
+    "platforms": "Web",
+    "status": "live"
+  },
+  {
+    "slug": "review-ai",
+    "name": "review-ai",
+    "type": "ai",
+    "platforms": "—",
+    "status": "building"
+  },
+  {
+    "slug": "content-ai",
+    "name": "content-ai",
+    "type": "ai",
+    "platforms": "—",
+    "status": "concept"
+  },
+  {
+    "slug": "launch-ai",
+    "name": "launch-ai",
+    "type": "ai",
+    "platforms": "—",
+    "status": "concept"
+  },
+  {
+    "slug": "cs-ai",
+    "name": "cs-ai",
+    "type": "ai",
+    "platforms": "—",
+    "status": "concept"
+  },
+  {
+    "slug": "review",
+    "name": "review",
+    "type": "saas",
+    "platforms": "—",
+    "status": "building"
+  },
+  {
+    "slug": "qr",
+    "name": "qr",
+    "type": "saas",
+    "platforms": "—",
+    "status": "building"
+  },
+  {
+    "slug": "link",
+    "name": "link",
+    "type": "saas",
+    "platforms": "—",
+    "status": "concept"
+  },
+  {
+    "slug": "form",
+    "name": "form",
+    "type": "saas",
+    "platforms": "—",
+    "status": "concept"
+  },
+  {
+    "slug": "newon-project-starter-kit",
+    "name": "newon-project-starter-kit",
+    "type": "store",
+    "platforms": "Digital",
+    "status": "live"
+  },
+  {
+    "slug": "app-launch-kit",
+    "name": "app-launch-kit",
+    "type": "store",
+    "platforms": "Digital",
+    "status": "building"
+  },
+  {
+    "slug": "mvp-planning-kit",
+    "name": "mvp-planning-kit",
+    "type": "store",
+    "platforms": "Digital",
+    "status": "building"
+  },
+  {
+    "slug": "website-launch-checklist",
+    "name": "website-launch-checklist",
+    "type": "store",
+    "platforms": "Digital",
+    "status": "building"
+  },
+  {
+    "slug": "business-planning-workbook",
+    "name": "business-planning-workbook",
+    "type": "store",
+    "platforms": "Digital",
+    "status": "building"
+  },
+  {
+    "slug": "product-research-template",
+    "name": "product-research-template",
+    "type": "store",
+    "platforms": "Digital",
+    "status": "building"
+  },
+  {
+    "slug": "founder-dashboard",
+    "name": "founder-dashboard",
+    "type": "store",
+    "platforms": "Digital",
+    "status": "concept"
+  },
+  {
+    "slug": "product-roadmap",
+    "name": "product-roadmap",
+    "type": "store",
+    "platforms": "Digital",
+    "status": "concept"
+  }
+]

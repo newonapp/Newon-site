@@ -1,0 +1,612 @@
+/**
+ * Newon site-wide dark mode — black canvas, readable light type.
+ * Loaded last. Attribute: html[data-newon-shell-theme="dark"]
+ * (set by theme-shell.js)
+ */
+
+html[data-newon-shell-theme="dark"] {
+  color-scheme: dark;
+  --bg: #000000;
+  --bg-elevated: #000000;
+  --surface: #000000;
+  --border: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.22);
+  --text: #f5f5f5;
+  --text-muted: rgba(245, 245, 245, 0.68);
+  --text-soft: rgba(245, 245, 245, 0.48);
+  --accent: #ffffff;
+  --gnav-text: #b0b0b0;
+  --gnav-text-strong: #f5f5f5;
+  --gnav-muted: #8a8a8a;
+  --gnav-faint: #666666;
+  --gnav-border: rgba(255, 255, 255, 0.1);
+  --gnav-hover: rgba(255, 255, 255, 0.06);
+  --gnav-panel-bg: #000000;
+  --gnav-bar-bg: #000000;
+  --gnav-bar-bg-scrolled: #000000;
+}
+
+html[data-newon-shell-theme="dark"],
+html[data-newon-shell-theme="dark"] body {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+
+/* ── Shared page shells ── */
+html[data-newon-shell-theme="dark"] :is(
+  .hs-home,
+  .rs-page,
+  .co-page,
+  .bz-page,
+  .bz-page--ed,
+  .bs-page,
+  .ab-page,
+  .nb-page,
+  .nw-page,
+  .nr-page,
+  .ld-page,
+  .sd-page,
+  .ps-page,
+  .hub-page,
+  .games-page,
+  .apps-page,
+  .saas-page,
+  .ai-page,
+  .tools-page,
+  .pf-page,
+  .cr-page,
+  .ok-page,
+  .ideas-page,
+  .studio-page,
+  .media-page,
+  main,
+  .page
+) {
+  background-color: #000000;
+  color: #f5f5f5;
+}
+
+/* ── Company ── */
+html[data-newon-shell-theme="dark"] .co-page {
+  --co-ink: #f5f5f5;
+  --co-muted: #a8a8a8;
+  --co-soft: #888888;
+  --co-faint: #6e6e6e;
+  --co-line: rgba(255, 255, 255, 0.12);
+  --co-line-strong: rgba(255, 255, 255, 0.22);
+  --co-surface: #000000;
+  --co-panel: #0a0a0a;
+  --co-bg: #000000;
+  --co-fill: #f5f5f5;
+  --co-on-fill: #000000;
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+
+/* ── Resources ── */
+html[data-newon-shell-theme="dark"] .rs-page {
+  --rs-ink: #f5f5f5;
+  --rs-muted: #a8a8a8;
+  --rs-soft: #8a8a8a;
+  --rs-line: rgba(255, 255, 255, 0.12);
+  --rs-line-strong: rgba(255, 255, 255, 0.22);
+  --rs-surface: #000000;
+  --rs-bg: #000000;
+  --bp-ink: #f5f5f5;
+  --bp-muted: #a8a8a8;
+  --bp-faint: #8a8a8a;
+  --bp-line: rgba(255, 255, 255, 0.12);
+  --bp-hover: rgba(255, 255, 255, 0.06);
+  --bp-bg: #000000;
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+
+/* ── Business hub / service ── */
+html[data-newon-shell-theme="dark"] .bz-page--ed {
+  --bz-ink: #f5f5f5;
+  --bz-paper: #000000;
+  --bz-muted: #a8a8a8;
+  --bz-soft: #888888;
+  --bz-line: rgba(255, 255, 255, 0.12);
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+
+html[data-newon-shell-theme="dark"] .bs-page {
+  --bs-ink: #f5f5f5;
+  --bs-text: #f5f5f5;
+  --bs-muted: #a8a8a8;
+  --bs-soft: #8a8a8a;
+  --bs-line: rgba(255, 255, 255, 0.12);
+  --bs-line-strong: rgba(255, 255, 255, 0.22);
+  --bs-surface: #000000;
+  --bs-panel: #0a0a0a;
+  --bs-bg: #000000;
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+
+html[data-newon-shell-theme="dark"] .bs-section--surface {
+  background: #000000 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ── About ── */
+html[data-newon-shell-theme="dark"] .ab-page {
+  --ab-bg: #000000;
+  --ab-ink: #f5f5f5;
+  --ab-paper: #000000;
+  --ab-soft: #0a0a0a;
+  --ab-mute: rgba(245, 245, 245, 0.62);
+  --ab-line: rgba(255, 255, 255, 0.12);
+  --ab-line-strong: rgba(255, 255, 255, 0.22);
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+
+/* ── Studio / creative ── */
+html[data-newon-shell-theme="dark"] .cr-page {
+  --cr-bg: #000000;
+  --cr-ink: #f5f5f5;
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+
+/* ── News / blog / media / store / tools hubs ── */
+html[data-newon-shell-theme="dark"] :is(.nw-page, .nr-page, .nb-page, .sd-page, .tools-page, .media-page) {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+
+/* ── Product / apps / saas / ai hubs ── */
+html[data-newon-shell-theme="dark"] .hub-page:has(.apps-page),
+html[data-newon-shell-theme="dark"] .hub-page:has(.saas-page),
+html[data-newon-shell-theme="dark"] .hub-page:has(.ai-page),
+html[data-newon-shell-theme="dark"] .hub-page:has(.games-page) {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+
+html[data-newon-shell-theme="dark"] .saas-page {
+  --saas-ink: #f5f5f5;
+  --saas-muted: #a8a8a8;
+  --saas-line: rgba(255, 255, 255, 0.14);
+  --saas-soft: #0a0a0a;
+  --saas-card: #0a0a0a;
+}
+
+/* ── Footer / chrome ── */
+html[data-newon-shell-theme="dark"] :is(.site-footer, .studio-footer, .gnav.site-header, header.gnav, .mobile-nav, .gnav-mega__panel) {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-newon-shell-theme="dark"] .gnav__link,
+html[data-newon-shell-theme="dark"] .gnav__brand,
+html[data-newon-shell-theme="dark"] .gnav-mega__row-title,
+html[data-newon-shell-theme="dark"] .studio-footer a,
+html[data-newon-shell-theme="dark"] .studio-footer p {
+  color: #f5f5f5;
+}
+
+html[data-newon-shell-theme="dark"] .gnav-mega__row-desc,
+html[data-newon-shell-theme="dark"] .gnav__link--muted,
+html[data-newon-shell-theme="dark"] .studio-footer .muted {
+  color: rgba(245, 245, 245, 0.58);
+}
+
+/* ── Forms / inputs ── */
+html[data-newon-shell-theme="dark"] :is(input, textarea, select) {
+  background: #0a0a0a;
+  color: #f5f5f5;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+html[data-newon-shell-theme="dark"] :is(input, textarea, select)::placeholder {
+  color: rgba(245, 245, 245, 0.4);
+}
+
+/* ── Buttons that assume light canvas ── */
+html[data-newon-shell-theme="dark"] .btn-primary,
+html[data-newon-shell-theme="dark"] .hs-btn--fill,
+html[data-newon-shell-theme="dark"] .bz-submit,
+html[data-newon-shell-theme="dark"] .ps-btn--primary {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+html[data-newon-shell-theme="dark"] .btn-ghost,
+html[data-newon-shell-theme="dark"] .hs-btn--ghost,
+html[data-newon-shell-theme="dark"] .ps-btn--ghost {
+  color: #f5f5f5;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+/* ── Cards / boards with hardcoded white ── */
+html[data-newon-shell-theme="dark"] :is(
+  .card,
+  .apps-card,
+  .apps-featured__item,
+  .apps-eco__panel,
+  .saas-card,
+  .tool-panel,
+  .pf-card,
+  .nw-card,
+  .lx-card,
+  .bs-get__item,
+  .bs-process__item,
+  .bs-who__item,
+  .bs-build-grid__item,
+  .co-card,
+  .rs-card,
+  .hub-card
+) {
+  background-color: #0a0a0a;
+  color: #f5f5f5;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ── Headings / body copy that hardcode near-black ── */
+html[data-newon-shell-theme="dark"] :is(
+  h1, h2, h3, h4, h5, h6,
+  p, li, dt, dd, label, legend, figcaption, th, td, blockquote
+) {
+  color: inherit;
+}
+
+/* ── Inquiry success / legal shells ── */
+html[data-newon-shell-theme="dark"] .ok-page,
+html[data-newon-shell-theme="dark"] .legal-page,
+html[data-newon-shell-theme="dark"] .delete-account-page {
+  --ok-bg: #000000;
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+
+/* ── Portfolio ── */
+html[data-newon-shell-theme="dark"] .pf-page,
+html[data-newon-shell-theme="dark"] .portfolio-page {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+
+/* ── Ideas ── */
+html[data-newon-shell-theme="dark"] .ideas-page,
+html[data-newon-shell-theme="dark"] #ideas {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+
+/* ── Soften white washes used as section fills ── */
+html[data-newon-shell-theme="dark"] [style*="background: #fff"],
+html[data-newon-shell-theme="dark"] [style*="background:#fff"],
+html[data-newon-shell-theme="dark"] [style*="background: #ffffff"],
+html[data-newon-shell-theme="dark"] [style*="background:#ffffff"],
+html[data-newon-shell-theme="dark"] [style*="background: white"],
+html[data-newon-shell-theme="dark"] [style*="background:white"] {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+
+/* Images / logos stay as-is (no filter invert) */
+html[data-newon-shell-theme="dark"] img,
+html[data-newon-shell-theme="dark"] video,
+html[data-newon-shell-theme="dark"] svg {
+  /* intentional no-op — keep product art readable */
+}
+
+/* ── Search overlay ── */
+html[data-newon-shell-theme="dark"] .site-search,
+html[data-newon-shell-theme="dark"] .gnav-search,
+html[data-newon-shell-theme="dark"] [data-search-panel] {
+  background: #000000;
+  color: #f5f5f5;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* ── About person boards (override force-light !important) ── */
+html[data-newon-shell-theme="dark"] .ab-person,
+html[data-newon-shell-theme="dark"] .ab-person--ink,
+html[data-newon-shell-theme="dark"] .ab-person--paper,
+html[data-newon-shell-theme="dark"] .ab-person:nth-child(odd),
+html[data-newon-shell-theme="dark"] .ab-person--ink:nth-child(odd),
+html[data-newon-shell-theme="dark"] .ab-person--paper:nth-child(odd) {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+html[data-newon-shell-theme="dark"] .ab-person:hover,
+html[data-newon-shell-theme="dark"] .ab-person--ink:hover,
+html[data-newon-shell-theme="dark"] .ab-person--paper:hover {
+  background: #111111 !important;
+}
+html[data-newon-shell-theme="dark"] .ab-person__n,
+html[data-newon-shell-theme="dark"] .ab-person__title,
+html[data-newon-shell-theme="dark"] .ab-person__via {
+  color: rgba(245, 245, 245, 0.72) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  background: transparent !important;
+}
+
+/* ── Business service legacy boards ── */
+html[data-newon-shell-theme="dark"] .bs-use-board__item.is-ink,
+html[data-newon-shell-theme="dark"] .bs-use-board__item.is-paper,
+html[data-newon-shell-theme="dark"] .bs-use-board__item.is-ink:nth-child(odd),
+html[data-newon-shell-theme="dark"] .bs-use-board__item.is-paper:nth-child(odd) {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+html[data-newon-shell-theme="dark"] .bs-use-board__item.is-ink .bs-use-board__n,
+html[data-newon-shell-theme="dark"] .bs-use-board__item.is-paper .bs-use-board__n,
+html[data-newon-shell-theme="dark"] .bs-use-board__item.is-ink .bs-use-board__tag,
+html[data-newon-shell-theme="dark"] .bs-use-board__item.is-paper .bs-use-board__tag,
+html[data-newon-shell-theme="dark"] .bs-use-board__item.is-ink .bs-use-board__body,
+html[data-newon-shell-theme="dark"] .bs-use-board__item.is-paper .bs-use-board__body {
+  color: rgba(245, 245, 245, 0.68) !important;
+}
+
+/* ── Inquiry success — pure black ── */
+html[data-newon-shell-theme="dark"] .bz-ok-page {
+  --ok-bg: #000000;
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+
+
+/* ── Business / Studio menus — full black (20260830dark2) ── */
+html[data-newon-shell-theme="dark"] .ns-studio-menu.bz-page,
+html[data-newon-shell-theme="dark"] .bz-page,
+html[data-newon-shell-theme="dark"] .bz-page--ed {
+  --bz-ink: #f5f5f5 !important;
+  --bz-paper: #000000 !important;
+  --bz-mute: #a8a8a8 !important;
+  --bz-muted: #a8a8a8 !important;
+  --bz-soft: #8a8a8a !important;
+  --bz-line: rgba(255, 255, 255, 0.14) !important;
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+html[data-newon-shell-theme="dark"] .ns-hero,
+html[data-newon-shell-theme="dark"] .ns-hero__bg {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+html[data-newon-shell-theme="dark"] .ns-board {
+  background: #000000 !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  box-shadow: none !important;
+}
+html[data-newon-shell-theme="dark"] .ns-close--fold {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+html[data-newon-shell-theme="dark"] .ns-title,
+html[data-newon-shell-theme="dark"] .ns-lead,
+html[data-newon-shell-theme="dark"] .ns-kicker,
+html[data-newon-shell-theme="dark"] .bz-title,
+html[data-newon-shell-theme="dark"] .bz-label,
+html[data-newon-shell-theme="dark"] .bz-page h1,
+html[data-newon-shell-theme="dark"] .bz-page h2,
+html[data-newon-shell-theme="dark"] .bz-page h3,
+html[data-newon-shell-theme="dark"] .bz-page p,
+html[data-newon-shell-theme="dark"] .bz-page a,
+html[data-newon-shell-theme="dark"] .bz-page li {
+  color: #f5f5f5;
+}
+html[data-newon-shell-theme="dark"] .bz-page .bz-label,
+html[data-newon-shell-theme="dark"] .bz-page .bz-mute,
+html[data-newon-shell-theme="dark"] .ns-lead {
+  color: rgba(245, 245, 245, 0.68) !important;
+}
+
+/* business-pillar hardcoded whites */
+html[data-newon-shell-theme="dark"] :is(
+  .bz-pillar,
+  .bz-pillar__item,
+  .bz-pillar__card,
+  .bz-pillar__panel,
+  .bz-pillars-sec,
+  .bz-services,
+  .bz-section,
+  .bp-card,
+  .bp-panel,
+  .bp-board,
+  .bp-item
+) {
+  background-color: #000000 !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+html[data-newon-shell-theme="dark"] .bz-pillar h2,
+html[data-newon-shell-theme="dark"] .bz-pillar h3,
+html[data-newon-shell-theme="dark"] .bz-pillar p,
+html[data-newon-shell-theme="dark"] .bz-pillar a,
+html[data-newon-shell-theme="dark"] .bz-pillar span,
+html[data-newon-shell-theme="dark"] .bz-services h2,
+html[data-newon-shell-theme="dark"] .bz-services p {
+  color: #f5f5f5 !important;
+}
+
+/* company missing earlier */
+html[data-newon-shell-theme="dark"] .co-page,
+html[data-newon-shell-theme="dark"] .co-page * {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+
+/* LAST WINS — force black page shells (20260830dark3) */
+html[data-newon-shell-theme="dark"] body,
+html[data-newon-shell-theme="dark"] body main,
+html[data-newon-shell-theme="dark"] body .hub-page,
+html[data-newon-shell-theme="dark"] body .hs-home,
+html[data-newon-shell-theme="dark"] body .hs-home .hs-section,
+html[data-newon-shell-theme="dark"] body .hs-home .hs-board,
+html[data-newon-shell-theme="dark"] body .ab-page,
+html[data-newon-shell-theme="dark"] body .ab-page .ab-brand,
+html[data-newon-shell-theme="dark"] body .ab-page .ab-brand.ab-brand--intro,
+html[data-newon-shell-theme="dark"] body .ab-page .ab-brand--v3.ab-brand--intro,
+html[data-newon-shell-theme="dark"] body .ab-page section,
+html[data-newon-shell-theme="dark"] body .ns-studio-menu,
+html[data-newon-shell-theme="dark"] body .ns-studio-menu.bz-page,
+html[data-newon-shell-theme="dark"] body .ns-studio-menu .bz-section,
+html[data-newon-shell-theme="dark"] body .ns-studio-menu .bz-services,
+html[data-newon-shell-theme="dark"] body .ns-studio-menu .bz-pillars-sec,
+html[data-newon-shell-theme="dark"] body .ns-studio-menu .bz-pillar,
+html[data-newon-shell-theme="dark"] body .ns-studio-menu .bz-inner,
+html[data-newon-shell-theme="dark"] body .bz-page,
+html[data-newon-shell-theme="dark"] body .bz-page--ed,
+html[data-newon-shell-theme="dark"] body .bz-section,
+html[data-newon-shell-theme="dark"] body .bz-services,
+html[data-newon-shell-theme="dark"] body .bz-pillars-sec,
+html[data-newon-shell-theme="dark"] body .bz-pillar,
+html[data-newon-shell-theme="dark"] body .co-page,
+html[data-newon-shell-theme="dark"] body .rs-page,
+html[data-newon-shell-theme="dark"] body .bp-explore,
+html[data-newon-shell-theme="dark"] body .bp-explore__stage,
+html[data-newon-shell-theme="dark"] body .bp-explore__panel {
+  background: #000000 !important;
+  background-color: #000000 !important;
+  background-image: none !important;
+  color: #f5f5f5 !important;
+}
+
+html[data-newon-shell-theme="dark"] body .ab-page .ab-brand.ab-brand--intro,
+html[data-newon-shell-theme="dark"] body .ab-page .ab-brand--v3.ab-brand--intro {
+  background: #000000 !important;
+  color: #f5f5f5 !important;
+}
+html[data-newon-shell-theme="dark"] body .ab-page .ab-brand--intro .ab-brand__eyebrow,
+html[data-newon-shell-theme="dark"] body .ab-page .ab-brand--intro .ab-brand__word,
+html[data-newon-shell-theme="dark"] body .ab-page .ab-brand--intro .ab-brand__headline,
+html[data-newon-shell-theme="dark"] body .ab-page .ab-brand--intro .ab-brand__role,
+html[data-newon-shell-theme="dark"] body .ab-page .ab-brand--intro .ab-brand__lead,
+html[data-newon-shell-theme="dark"] body .ab-page .ab-brand--intro .ab-brand__domains li,
+html[data-newon-shell-theme="dark"] body .ab-page .ab-brand--intro .ab-brand__meaning-k,
+html[data-newon-shell-theme="dark"] body .ab-page .ab-brand--intro .ab-brand__meaning-t {
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  background: transparent !important;
+}
+html[data-newon-shell-theme="dark"] body .ab-page .ab-brand--intro .ab-btn--primary {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+html[data-newon-shell-theme="dark"] body .ab-page .ab-brand--intro .ab-btn--ghost {
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  background: transparent !important;
+}
+
+html[data-newon-shell-theme="dark"] body .ns-studio-menu :is(h1,h2,h3,h4,p,li,a,span,label,.bz-title,.bz-label,.bz-lead,.bz-pillar__title,.bz-pillar__lead,.bz-pillar__item-title,.bz-pillar__item-desc),
+html[data-newon-shell-theme="dark"] body .bz-page :is(h1,h2,h3,h4,p,li,a,span,label,.bz-title,.bz-label,.bz-lead),
+html[data-newon-shell-theme="dark"] body .ab-page :is(h1,h2,h3,h4,p,li,a,span,label),
+html[data-newon-shell-theme="dark"] body .hs-home :is(h1,h2,h3,h4,p,li,a,span,.hs-h2,.hs-lead,.hs-kicker) {
+  color: #f5f5f5 !important;
+}
+html[data-newon-shell-theme="dark"] body .ns-studio-menu :is(.bz-label,.bz-lead,.bz-pillar__item-desc,.bz-pillar__n),
+html[data-newon-shell-theme="dark"] body .ab-page :is(.ab-mute,.ab-soft,.ab-lead,.ab-eyebrow),
+html[data-newon-shell-theme="dark"] body .hs-home :is(.hs-kicker,.hs-lead) {
+  color: rgba(245, 245, 245, 0.68) !important;
+}
+
+/* Keep primary CTAs readable: white fill, black type */
+html[data-newon-shell-theme="dark"] body :is(.btn-primary,.hs-btn--fill,.bz-hero__btn--primary,.ns-actions .btn-primary,.ab-btn--primary,.gnav__cta) {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+
+
+/* NUCLEAR dark canvas — every descendant (20260830dark5) */
+html[data-newon-shell-theme="dark"] body .ns-studio-menu.bz-page,
+html[data-newon-shell-theme="dark"] body .ns-studio-menu.bz-page *:not(img):not(svg):not(path):not(canvas):not(video),
+html[data-newon-shell-theme="dark"] body .ab-page,
+html[data-newon-shell-theme="dark"] body .ab-page *:not(img):not(svg):not(path):not(canvas):not(video),
+html[data-newon-shell-theme="dark"] body .hs-home,
+html[data-newon-shell-theme="dark"] body .hs-home *:not(img):not(svg):not(path):not(canvas):not(video),
+html[data-newon-shell-theme="dark"] body .co-page,
+html[data-newon-shell-theme="dark"] body .co-page *:not(img):not(svg):not(path):not(canvas):not(video),
+html[data-newon-shell-theme="dark"] body .rs-page,
+html[data-newon-shell-theme="dark"] body .rs-page *:not(img):not(svg):not(path):not(canvas):not(video),
+html[data-newon-shell-theme="dark"] body .hub-page,
+html[data-newon-shell-theme="dark"] body .hub-page *:not(img):not(svg):not(path):not(canvas):not(video),
+html[data-newon-shell-theme="dark"] body .bz-page,
+html[data-newon-shell-theme="dark"] body .bz-page *:not(img):not(svg):not(path):not(canvas):not(video),
+html[data-newon-shell-theme="dark"] body .games-page,
+html[data-newon-shell-theme="dark"] body .games-page *:not(img):not(svg):not(path):not(canvas):not(video) {
+  background: #000000 !important;
+  background-color: #000000 !important;
+  background-image: none !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  box-shadow: none !important;
+}
+html[data-newon-shell-theme="dark"] body :is(
+  .btn-primary, .hs-btn--fill, .bz-hero__btn--primary, .ab-btn--primary,
+  .gnav__cta, .ns-actions a.btn-primary, .ps-btn--primary, .hs-final__btn,
+  a.btn-primary
+) {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+html[data-newon-shell-theme="dark"] body :is(
+  .btn-ghost, .hs-btn--ghost, .bz-hero__btn--ghost, .ab-btn--ghost, .ps-btn--ghost, .hs-final__ghost
+) {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+html[data-newon-shell-theme="dark"] body .hero-apps__icon,
+html[data-newon-shell-theme="dark"] body .hero-app-card,
+html[data-newon-shell-theme="dark"] body .apps-card__icon-wrap {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+/* Pseudo + ns-hero coverage (20260830dark6) */
+html[data-newon-shell-theme="dark"] body .ns-hero,
+html[data-newon-shell-theme="dark"] body .ns-hero__bg,
+html[data-newon-shell-theme="dark"] body .ns-hero *:not(img):not(svg):not(path):not(canvas):not(video),
+html[data-newon-shell-theme="dark"] body .ns-board,
+html[data-newon-shell-theme="dark"] body .ns-board *:not(img):not(svg):not(path) {
+  background-color: #000000 !important;
+  background-image: none !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+html[data-newon-shell-theme="dark"] body .ns-hero *::before,
+html[data-newon-shell-theme="dark"] body .ns-hero *::after,
+html[data-newon-shell-theme="dark"] body .ns-studio-menu *::before,
+html[data-newon-shell-theme="dark"] body .ns-studio-menu *::after,
+html[data-newon-shell-theme="dark"] body .bz-page *::before,
+html[data-newon-shell-theme="dark"] body .bz-page *::after,
+html[data-newon-shell-theme="dark"] body .ab-page *::before,
+html[data-newon-shell-theme="dark"] body .ab-page *::after,
+html[data-newon-shell-theme="dark"] body .hs-home *::before,
+html[data-newon-shell-theme="dark"] body .hs-home *::after,
+html[data-newon-shell-theme="dark"] body .hub-page *::before,
+html[data-newon-shell-theme="dark"] body .hub-page *::after {
+  background: #000000 !important;
+  background-color: #000000 !important;
+  background-image: none !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  box-shadow: none !important;
+}
+/* Restore white CTAs after nuclear */
+html[data-newon-shell-theme="dark"] body :is(
+  .btn-primary, .hs-btn--fill, .bz-hero__btn--primary, .ab-btn--primary,
+  .gnav__cta, .ns-actions .btn-primary, .ps-btn--primary, .hs-final__btn, a.btn-primary
+) {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
