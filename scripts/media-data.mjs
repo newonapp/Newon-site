@@ -312,7 +312,7 @@ export const MEDIA_ITEMS_HUB = [
     date: "2026-09-13",
     url: "https://www.instagram.com/newon.app/p/DdPxNsHn_2E/",
     embedUrl: null,
-    thumbnail: "/media-thumbs/ig-DdPxNsHn_2E.jpg",
+    thumbnail: "/media-thumbs/ig-DdPxNsHn_2E.jpg?v=20260914c1",
     duration: null,
     featured: true,
   },
@@ -328,7 +328,7 @@ export const MEDIA_ITEMS_HUB = [
     date: "2026-09-10",
     url: "https://www.instagram.com/newon.app/p/DdIGB4gHxz-/",
     embedUrl: null,
-    thumbnail: "/media-thumbs/ig-DdIGB4gHxz-.jpg",
+    thumbnail: "/media-thumbs/ig-DdIGB4gHxz-.jpg?v=20260914c1",
     duration: null,
   },
   {
@@ -343,7 +343,7 @@ export const MEDIA_ITEMS_HUB = [
     date: "2026-09-09",
     url: "https://www.instagram.com/newon.app/p/DdFr_90H8KV/",
     embedUrl: null,
-    thumbnail: "/media-thumbs/ig-DdFr_90H8KV.jpg",
+    thumbnail: "/media-thumbs/ig-DdFr_90H8KV.jpg?v=20260914c1",
     duration: null,
   },
   {
