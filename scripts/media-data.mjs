@@ -301,6 +301,22 @@ export const MEDIA_ITEMS_HUB = [
 
   /* —— Instagram (@newon.app) — thumbnail + external link (no embed) —— */
   {
+    id: "ig-DdSZSdan_lb",
+    platform: "instagram",
+    category: "PRODUCT",
+    igType: "POST",
+    titleKo: "열 번째 앱은 PetLog — 반려생활을 한곳에서",
+    titleEn: "Tenth up: PetLog — pet life in one place",
+    descriptionKo: "성장·생활 기록, AI 분석, 가족 공유, 일정·사진, 커뮤니티·쇼핑·중고·예약까지 반려생활 통합 관리.",
+    descriptionEn: "Growth and daily logs, AI insights, family sharing, schedules, photos, plus community, shopping, resale, and bookings.",
+    date: "2026-09-14",
+    url: "https://www.instagram.com/newon.app/p/DdSZSdan_lb/",
+    embedUrl: null,
+    thumbnail: "/media-thumbs/ig-DdSZSdan_lb.jpg?v=20260915c1",
+    duration: null,
+    featured: true,
+  },
+  {
     id: "ig-DdPxNsHn_2E",
     platform: "instagram",
     category: "PRODUCT",
@@ -314,7 +330,6 @@ export const MEDIA_ITEMS_HUB = [
     embedUrl: null,
     thumbnail: "/media-thumbs/ig-DdPxNsHn_2E.jpg?v=20260914c1",
     duration: null,
-    featured: true,
   },
   {
     id: "ig-DdIGB4gHxz-",
