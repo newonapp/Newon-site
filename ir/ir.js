@@ -146,6 +146,39 @@
     var el = document.getElementById("ir-portfolio");
     if (!el || !DATA) return;
     var n = 0;
+    var live = 0;
+    var upcoming = 0;
+    DATA.categories.forEach(function (cat) {
+      (cat.products || []).forEach(function (p) {
+        if (p.status === "released") live += 1;
+        else upcoming += 1;
+      });
+    });
+    var stats = document.getElementById("ir-port-stats");
+    if (stats) {
+      stats.innerHTML =
+        '<article class="ir-glance__card"><span class="ir-glance__n">01</span><p class="ir-glance__value">' +
+        live +
+        '</p><p class="ir-glance__label">' +
+        t(lang, "snap.live") +
+        '</p><p class="ir-glance__note">' +
+        t(lang, "snap.liveNote") +
+        "</p></article>" +
+        '<article class="ir-glance__card"><span class="ir-glance__n">02</span><p class="ir-glance__value">' +
+        upcoming +
+        '</p><p class="ir-glance__label">' +
+        t(lang, "snap.upcoming") +
+        '</p><p class="ir-glance__note">' +
+        t(lang, "snap.upcomingNote") +
+        "</p></article>" +
+        '<article class="ir-glance__card"><span class="ir-glance__n">03</span><p class="ir-glance__value">' +
+        (live + upcoming) +
+        '</p><p class="ir-glance__label">' +
+        t(lang, "snap.total") +
+        '</p><p class="ir-glance__note">' +
+        t(lang, "snap.totalNote") +
+        "</p></article>";
+    }
     el.innerHTML = DATA.categories
       .map(function (cat) {
         var label = t(lang, cat.labelKey);
@@ -535,6 +568,7 @@
             '<p class="ir-road__state">' +
             t(lang, p.key + ".state") +
             "</p></div>" +
+            (p.periodKey ? '<p class="ir-road__period">' + t(lang, p.periodKey) + "</p>" : "") +
             "<h3>" +
             t(lang, p.key) +
             "</h3>" +
@@ -544,10 +578,222 @@
                 return "<li>" + t(lang, k) + "</li>";
               })
               .join("") +
-            "</ul></article>"
+            "</ul>" +
+            (p.goalKey ? '<p class="ir-road__goal">' + t(lang, p.goalKey) + "</p>" : "") +
+            "</article>"
           );
         })
         .join("");
+  }
+
+  function renderTraction(lang) {
+    var el = document.getElementById("ir-traction");
+    if (!el || !DATA) return;
+    el.innerHTML = (DATA.tractionMetrics || [])
+      .map(function (m, i) {
+        var state = m.state === "measuring" ? "measuring" : "tracking";
+        return (
+          '<article class="bs-get__item"><span class="bs-get__n">' +
+          String(i + 1).padStart(2, "0") +
+          '</span><div class="bs-get__copy"><h3>' +
+          t(lang, "trac." + m.key) +
+          '</h3><p class="ir-track-state">' +
+          t(lang, "trac.state." + state) +
+          "</p></div></article>"
+        );
+      })
+      .join("");
+  }
+
+  function renderFocusLayers(lang) {
+    var el = document.getElementById("ir-focus-layers");
+    if (!el || !DATA) return;
+    el.innerHTML = (DATA.focusLayers || [])
+      .map(function (f) {
+        return (
+          '<article class="bs-get__item"><span class="bs-get__n">' +
+          esc(f.n) +
+          '</span><div class="bs-get__copy"><h3>' +
+          t(lang, "fstrat." + f.key + ".t") +
+          "</h3><p>" +
+          t(lang, "fstrat." + f.key + ".p") +
+          "</p></div></article>"
+        );
+      })
+      .join("");
+  }
+
+  function renderFlywheel(lang) {
+    var el = document.getElementById("ir-flywheel");
+    if (!el || !DATA) return;
+    var keys = DATA.flywheel || [];
+    function cell(k, i) {
+      return (
+        '<article class="ir-fly__cell">' +
+        '<span class="ir-fly__n">' +
+        String(i + 1).padStart(2, "0") +
+        "</span>" +
+        "<strong>" +
+        t(lang, "fly." + k) +
+        "</strong></article>"
+      );
+    }
+    // Loop layout: top L→R (0..3), bottom R←L (7..4), hub center
+    var top = keys.slice(0, 4);
+    var bottom = keys.slice(4).reverse();
+    el.className = "ir-fly";
+    el.innerHTML =
+      '<div class="ir-fly__row ir-fly__row--top">' +
+      top
+        .map(function (k, i) {
+          return cell(k, i) + (i < top.length - 1 ? '<span class="ir-fly__join" aria-hidden="true">→</span>' : "");
+        })
+        .join("") +
+      "</div>" +
+      '<div class="ir-fly__mid">' +
+      '<span class="ir-fly__turn" aria-hidden="true">↑</span>' +
+      '<div class="ir-fly__hub"><span data-i18n-skip>Newon+</span><em>' +
+      t(lang, "fly.loop") +
+      "</em></div>" +
+      '<span class="ir-fly__turn" aria-hidden="true">↓</span>' +
+      "</div>" +
+      '<div class="ir-fly__row ir-fly__row--bot">' +
+      bottom
+        .map(function (k, i) {
+          var idx = keys.indexOf(k);
+          return cell(k, idx) + (i < bottom.length - 1 ? '<span class="ir-fly__join" aria-hidden="true">←</span>' : "");
+        })
+        .join("") +
+      "</div>";
+  }
+
+  function renderGtm(lang) {
+    var el = document.getElementById("ir-gtm");
+    if (!el || !DATA) return;
+    var keys = DATA.gtmFlow || [];
+    var phases = [
+      { key: "seed", items: keys.slice(0, 3) },
+      { key: "acquire", items: keys.slice(3, 5) },
+      { key: "expand", items: keys.slice(5) },
+    ];
+    var offset = 0;
+    el.className = "ir-gtm";
+    el.innerHTML = phases
+      .map(function (ph, pi) {
+        var html =
+          (pi ? '<span class="ir-gtm__phase-join" aria-hidden="true">→</span>' : "") +
+          '<article class="ir-gtm__phase">' +
+          '<header class="ir-gtm__phase-head">' +
+          '<span class="ir-gtm__phase-n">' +
+          String(pi + 1).padStart(2, "0") +
+          "</span>" +
+          "<h3>" +
+          t(lang, "gtm.phase." + ph.key) +
+          "</h3></header>" +
+          '<ol class="ir-gtm__list">';
+        ph.items.forEach(function (k) {
+          offset += 1;
+          html +=
+            "<li><span>" +
+            String(offset).padStart(2, "0") +
+            "</span><strong>" +
+            t(lang, "gtm." + k) +
+            "</strong></li>";
+        });
+        html += "</ol></article>";
+        return html;
+      })
+      .join("");
+  }
+
+  function renderMarket(lang) {
+    var el = document.getElementById("ir-market");
+    if (!el || !DATA) return;
+    el.innerHTML = (DATA.marketBlocks || [])
+      .map(function (b) {
+        return (
+          '<article class="bs-get__item"><span class="bs-get__n">' +
+          esc(b.n) +
+          '</span><div class="bs-get__copy"><h3>' +
+          t(lang, "mopp." + b.key + ".t") +
+          "</h3><p>" +
+          t(lang, "mopp." + b.key + ".p") +
+          "</p></div></article>"
+        );
+      })
+      .join("");
+    var sam = document.getElementById("ir-market-sam");
+    if (sam) {
+      sam.innerHTML = (DATA.marketSam || [])
+        .map(function (k) {
+          return "<li>" + t(lang, "mopp.sam." + k) + "</li>";
+        })
+        .join("");
+    }
+  }
+
+  function renderCompete(lang) {
+    var el = document.getElementById("ir-compete");
+    if (!el || !DATA) return;
+    el.innerHTML = (DATA.competeCols || [])
+      .map(function (c, i) {
+        return (
+          '<article class="bs-get__item"><span class="bs-get__n">' +
+          String(i + 1).padStart(2, "0") +
+          '</span><div class="bs-get__copy"><h3>' +
+          t(lang, "comp." + c.key + ".t") +
+          "</h3><p>" +
+          t(lang, "comp." + c.key + ".p") +
+          "</p></div></article>"
+        );
+      })
+      .join("");
+  }
+
+  function renderMeasure(lang) {
+    var el = document.getElementById("ir-measure");
+    if (!el || !DATA) return;
+    el.innerHTML = (DATA.measureCards || [])
+      .map(function (m) {
+        return (
+          '<article class="bs-get__item"><span class="bs-get__n">' +
+          esc(m.n) +
+          '</span><div class="bs-get__copy"><h3>' +
+          t(lang, "meas." + m.key + ".t") +
+          "</h3><p>" +
+          t(lang, "meas." + m.key + ".p") +
+          "</p></div></article>"
+        );
+      })
+      .join("");
+  }
+
+  function renderWhyNow(lang) {
+    var el = document.getElementById("ir-why-now");
+    if (!el || !DATA) return;
+    el.innerHTML = (DATA.whyNow || [])
+      .map(function (w) {
+        return (
+          '<article class="bs-get__item"><span class="bs-get__n">' +
+          esc(w.n) +
+          '</span><div class="bs-get__copy"><h3>' +
+          t(lang, "why." + w.key + ".t") +
+          "</h3><p>" +
+          t(lang, "why." + w.key + ".p") +
+          "</p></div></article>"
+        );
+      })
+      .join("");
+  }
+
+  function renderRevLong(lang) {
+    var el = document.getElementById("ir-rev-long");
+    if (!el || !DATA) return;
+    el.innerHTML = (DATA.revLongTerm || [])
+      .map(function (k) {
+        return "<span>" + t(lang, k) + "</span>";
+      })
+      .join("");
   }
 
   function renderInvest(lang) {
@@ -661,10 +907,19 @@
     renderProblemAxes(lang);
     renderStrategy(lang);
     renderPortfolio(lang);
+    renderTraction(lang);
+    renderFocusLayers(lang);
     renderNext(lang);
     renderPlus(lang);
+    renderFlywheel(lang);
     renderRevenue(lang);
+    renderRevLong(lang);
     renderCommerce(lang);
+    renderMarket(lang);
+    renderWhyNow(lang);
+    renderCompete(lang);
+    renderGtm(lang);
+    renderMeasure(lang);
     renderRoadmap(lang);
     renderInvest(lang);
   }

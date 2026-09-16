@@ -294,7 +294,16 @@ html[data-newon-shell-theme="light"] .bs-page,
 .ir-page #model,
 .ir-page #web,
 .ir-page #global,
-.ir-page #founder {
+.ir-page #founder,
+.ir-page #traction,
+.ir-page #market,
+.ir-page #why-now,
+.ir-page #compete,
+.ir-page #gtm,
+.ir-page #measure,
+.ir-page #portfolio,
+.ir-page #commerce,
+.ir-page #roadmap {
   background: #ffffff !important;
 }
 
@@ -587,6 +596,9 @@ html[data-newon-shell-theme="light"] .bs-page,
 }
 .ir-page .bs-get.ir-fill-grid[data-count="6"] {
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+.ir-page .bs-get.ir-fill-grid[data-count="7"] {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
 }
 .ir-page .bs-get__item {
   background: #fff !important;
@@ -2039,6 +2051,281 @@ html[data-newon-shell-theme="light"] .bs-page,
   }
 }
 
+
+
+
+/* ——— Additive IR blocks (match existing tokens) ——— */
+.ir-addblock {
+  margin-top: 1.75rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--ir-line);
+}
+.ir-addblock--tight {
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+.ir-addblock__h {
+  margin: 0 0 0.55rem;
+  font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+#ir-port-stats {
+  margin: 1rem 0 1.35rem;
+}
+.ir-track-state {
+  margin: 0.15rem 0 0 !important;
+  font-size: 0.78rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+  color: var(--ir-soft) !important;
+}
+/* Flywheel — circulatory loop (distinct from GTM) */
+.ir-fly {
+  display: grid;
+  gap: 0.55rem;
+  margin: 1rem 0 0.35rem;
+}
+.ir-fly__row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  align-items: stretch;
+  gap: 0;
+  border: 1px solid var(--ir-line-strong);
+  background: #fff;
+  overflow: hidden;
+}
+.ir-fly__cell {
+  padding: 0.95rem 0.85rem 1.05rem;
+  display: grid;
+  gap: 0.4rem;
+  align-content: start;
+  min-width: 0;
+}
+.ir-fly__n {
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  color: var(--ir-soft);
+}
+.ir-fly__cell strong {
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.ir-fly__join {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  color: var(--ir-soft);
+  font-size: 0.85rem;
+  border-left: 1px solid var(--ir-line);
+  border-right: 1px solid var(--ir-line);
+  background: #fff;
+}
+.ir-fly__mid {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.65rem;
+  align-items: center;
+}
+.ir-fly__turn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--ir-line-strong);
+  color: var(--ir-soft);
+  font-size: 0.85rem;
+  background: #fff;
+}
+.ir-fly__hub {
+  display: grid;
+  gap: 0.2rem;
+  justify-items: center;
+  text-align: center;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--ir-line-strong);
+  background: #fff;
+}
+.ir-fly__hub span {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.ir-fly__hub em {
+  font-style: normal;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  color: var(--ir-muted);
+}
+
+/* GTM — three phase boards (distinct from flywheel) */
+.ir-gtm {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 0;
+  align-items: stretch;
+  margin: 1.1rem 0 1rem;
+  border: 1px solid var(--ir-line-strong);
+  background: #fff;
+  overflow: hidden;
+}
+.ir-gtm__phase {
+  padding: 1.05rem 1rem 1.15rem;
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+  min-width: 0;
+}
+.ir-gtm__phase-join {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  border-left: 1px solid var(--ir-line);
+  border-right: 1px solid var(--ir-line);
+  color: var(--ir-soft);
+  font-size: 0.95rem;
+  background: #fff;
+}
+.ir-gtm__phase-head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.ir-gtm__phase-n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border: 1px solid var(--ir-line-strong);
+  font-size: 0.6rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+}
+.ir-gtm__phase-head h3 {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+}
+.ir-gtm__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+.ir-gtm__list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.55rem;
+  align-items: baseline;
+  padding: 0.55rem 0.6rem;
+  border: 1px solid var(--ir-line);
+  background: #fff;
+}
+.ir-gtm__list li span {
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  color: var(--ir-soft);
+}
+.ir-gtm__list li strong {
+  font-size: 0.9rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+@media (max-width: 960px) {
+  .ir-fly__row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .ir-fly__join {
+    display: none;
+  }
+  .ir-fly__cell {
+    border-right: 1px solid var(--ir-line);
+    border-bottom: 1px solid var(--ir-line);
+  }
+  .ir-fly__cell:nth-child(2n) {
+    border-right: 0;
+  }
+  .ir-gtm {
+    grid-template-columns: 1fr;
+  }
+  .ir-gtm__phase-join {
+    width: auto;
+    height: auto;
+    padding: 0.35rem 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid var(--ir-line);
+    border-bottom: 1px solid var(--ir-line);
+    transform: rotate(90deg);
+  }
+}
+@media (max-width: 720px) {
+  .ir-fly__row {
+    grid-template-columns: 1fr;
+  }
+  .ir-fly__cell {
+    border-right: 0;
+  }
+  .ir-fly__mid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+.ir-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.55rem;
+}
+.ir-chip-row span {
+  display: inline-flex;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--ir-line-strong);
+  font-size: 0.78rem;
+  color: var(--ir-muted);
+  line-height: 1.2;
+}
+.ir-road__period {
+  margin: 0 0 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ir-soft);
+}
+.ir-road__goal {
+  margin: 0.85rem 0 0;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--ir-line);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ir-muted);
+}
+@media (max-width: 960px) {
+  .ir-page .bs-get.ir-fill-grid[data-count="7"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 720px) {
+  .ir-page .bs-get.ir-fill-grid[data-count="7"] {
+    grid-template-columns: 1fr !important;
+  }
+}
 
 /* ——— Shared outline hover / status (readable text) ——— */
 .ir-page .bs-get__item:hover,

@@ -17,14 +17,72 @@ window.NEWON_IR_DATA = (function () {
   var investment = {
     investmentTarget: null,
     tractionMetrics: null,
-    fundUse: ["product", "growth", "infrastructure", "team", "distribution"],
+    fundUse: ["growth", "product", "data", "infrastructure", "global"],
   };
 
   var snapshot = [
-    { value: "13+", labelKey: "snap.products", noteKey: null },
-    { value: "13", labelKey: "snap.langs", noteKey: null },
-    { value: "177", labelKey: "snap.markets", noteKey: "snap.marketsNote" },
+    { value: "11", labelKey: "snap.live", noteKey: "snap.liveNote" },
+    { value: "2", labelKey: "snap.upcoming", noteKey: "snap.upcomingNote" },
+    { value: "13", labelKey: "snap.total", noteKey: "snap.totalNote" },
   ];
+
+  /** Traction: never invent figures — tracking state only when unknown */
+  var tractionMetrics = [
+    { key: "installs", state: "tracking" },
+    { key: "registered", state: "tracking" },
+    { key: "mau", state: "tracking" },
+    { key: "paid", state: "tracking" },
+    { key: "growth", state: "measuring" },
+  ];
+
+  var focusLayers = [
+    { n: "01", key: "primary" },
+    { n: "02", key: "secondary" },
+    { n: "03", key: "ecosystem" },
+  ];
+
+  var flywheel = [
+    "acq", "core", "plus", "cross", "multi", "sub", "retain", "ltv"
+  ];
+
+  var marketBlocks = [
+    { n: "01", key: "tam" },
+    { n: "02", key: "sam" },
+    { n: "03", key: "som" },
+  ];
+
+  var marketSam = [
+    "health", "productivity", "finance", "family", "fitness", "food", "travel"
+  ];
+
+  var competeCols = [
+    { key: "single" },
+    { key: "super" },
+    { key: "newon" },
+  ];
+
+  var gtmFlow = [
+    "founder", "organic", "aso", "core", "referral", "plus", "retain"
+  ];
+
+  var measureCards = [
+    { n: "01", key: "acq" },
+    { n: "02", key: "act" },
+    { n: "03", key: "ret" },
+    { n: "04", key: "eng" },
+    { n: "05", key: "conv" },
+    { n: "06", key: "rev" },
+    { n: "07", key: "cross" },
+  ];
+
+  var whyNow = [
+    { n: "01", key: "ai" },
+    { n: "02", key: "sub" },
+    { n: "03", key: "frag" },
+    { n: "04", key: "global" },
+  ];
+
+  var revLongTerm = ["rev.lt.i1", "rev.lt.i2", "rev.lt.i3", "rev.lt.i4"];
 
   var lifeAxes = [
     { key: "axis.finance" },
@@ -289,13 +347,13 @@ window.NEWON_IR_DATA = (function () {
     {
       n: "02",
       key: "rev.mem",
-      timing: "planned",
+      timing: "next",
       items: ["rev.mem.i1", "rev.mem.i2", "rev.mem.i3"],
     },
     {
       n: "03",
       key: "rev.com",
-      timing: "planned",
+      timing: "next",
       items: [
         "rev.com.i1",
         "rev.com.i2",
@@ -343,28 +401,36 @@ window.NEWON_IR_DATA = (function () {
       phase: "01",
       key: "road.p1",
       state: "done",
-      items: ["road.p1.i1", "road.p1.i2", "road.p1.i3", "road.p1.i4", "road.p1.i5"],
+      periodKey: "road.p1.period",
+      goalKey: "road.p1.goal",
+      items: ["road.p1.i1", "road.p1.i2", "road.p1.i3", "road.p1.i4"],
     },
     {
       id: "p2",
       phase: "02",
       key: "road.p2",
       state: "current",
-      items: ["road.p2.i1", "road.p2.i2", "road.p2.i3", "road.p2.i4", "road.p2.i5", "road.p2.i6"],
+      periodKey: "road.p2.period",
+      goalKey: "road.p2.goal",
+      items: ["road.p2.i1", "road.p2.i2", "road.p2.i3", "road.p2.i4"],
     },
     {
       id: "p3",
       phase: "03",
       key: "road.p3",
       state: "next",
-      items: ["road.p3.i1", "road.p3.i2", "road.p3.i3", "road.p3.i4", "road.p3.i5"],
+      periodKey: "road.p3.period",
+      goalKey: "road.p3.goal",
+      items: ["road.p3.i1", "road.p3.i2", "road.p3.i3", "road.p3.i4"],
     },
     {
       id: "p4",
       phase: "04",
       key: "road.p4",
       state: "later",
-      items: ["road.p4.i1", "road.p4.i2", "road.p4.i3", "road.p4.i4", "road.p4.i5", "road.p4.i6"],
+      periodKey: "road.p4.period",
+      goalKey: "road.p4.goal",
+      items: ["road.p4.i1", "road.p4.i2", "road.p4.i3", "road.p4.i4"],
     },
   ];
 
@@ -372,6 +438,16 @@ window.NEWON_IR_DATA = (function () {
     STATUS: STATUS,
     investment: investment,
     snapshot: snapshot,
+    tractionMetrics: tractionMetrics,
+    focusLayers: focusLayers,
+    flywheel: flywheel,
+    marketBlocks: marketBlocks,
+    marketSam: marketSam,
+    competeCols: competeCols,
+    gtmFlow: gtmFlow,
+    measureCards: measureCards,
+    whyNow: whyNow,
+    revLongTerm: revLongTerm,
     lifeAxes: lifeAxes,
     strategySteps: strategySteps,
     categories: categories,
