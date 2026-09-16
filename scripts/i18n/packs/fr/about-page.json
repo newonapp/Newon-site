@@ -157,7 +157,8 @@
       "slugs": [
         "babylog",
         "petlog",
-        "pillmate"
+        "pillmate",
+        "fiton"
       ]
     },
     {
@@ -166,6 +167,7 @@
       "body": "Du dossier de voyage à la Newon l'adhésion — relier les expériences.",
       "slugs": [
         "myworld",
+        "eaton",
         "newon-plus"
       ]
     }
@@ -304,7 +306,7 @@
   "selectedTitle": "Produits Newon construit directement.",
   "selectedLead": "Produits représentatifs Newon planifie, construit et fonctionne.",
   "selectedAll": "VOIR TOUS LES PRODUITS →",
-  "selectedProductsMax": 11,
+  "selectedProductsMax": 14,
   "universeView": "Voir le produit",
   "statusLive": "Vivre",
   "statusProject": "Projet",
@@ -320,7 +322,9 @@
     "petlog": "Famille",
     "myworld": "Voyages/vie",
     "newon-plus": "Plateforme",
-    "404-human": "Jeux"
+    "404-human": "Jeux",
+    "eaton": "Food / Life",
+    "fiton": "Sports / Fitness"
   },
   "productOrder": [
     "ox-month",
@@ -334,6 +338,8 @@
     "piggyup",
     "petlog",
     "pillmate",
+    "eaton",
+    "fiton",
     "404-human"
   ],
   "exploreEyebrow": "EXPLORER NEWON",

@@ -87,16 +87,16 @@ const EN = {
   heroDomains: ["Apps", "UX/UI", "Build", "Launch"],
   numbersLabel: "AT A GLANCE",
   numbersTitle: "Proof in the work so far",
-  numbersHeadline: "6 months · 11 apps",
+  numbersHeadline: "6 months · 13 apps",
   numbersSupport:
     "Idea → plan → design → build → ship → operate → grow — handled in one flow.",
   stats: [
     {
       id: "apps",
-      value: "11",
+      value: "13",
       valueKind: "number",
       title: "Apps built",
-      note: "I planned and developed 11 apps in 6 months.",
+      note: "I planned and developed 13 apps in 6 months.",
       noteShort: "Planned and built in 6 months",
       href: "#projects",
       visible: true,
@@ -405,16 +405,16 @@ const COPY = {
     aboutFocusLabel: "집중 영역",
     numbersLabel: "한눈에 보기",
     numbersTitle: "지금까지의 작업 기록",
-    numbersHeadline: "6개월 · 11개 앱",
+    numbersHeadline: "6개월 · 13개 앱",
     numbersSupport:
       "아이디어 → 기획 → 디자인 → 개발 → 출시 → 운영 → 성장까지 한 흐름으로 진행했습니다.",
     stats: [
       {
         id: "apps",
-        value: "11",
+        value: "13",
         valueKind: "number",
         title: "개발한 앱",
-        note: "6개월 동안 11개의 앱을 직접 기획하고 개발했습니다.",
+        note: "6개월 동안 13개의 앱을 직접 기획하고 개발했습니다.",
         noteShort: "6개월 동안 기획·개발",
         href: "#projects",
         visible: true,
@@ -639,11 +639,11 @@ const COPY = {
     aboutP2:
       "アイデアとサービス企画からUI/UX、開発、ストア公開、運営、マーケティングまで、プロダクトが生まれ成長する全過程を自ら管理しています。",
     numbersTitle: "数字で見る Newon",
-    numbersHeadline: "6か月、11のアプリ。",
+    numbersHeadline: "6か月、13のアプリ。",
     numbersSupport:
       "アイデアから企画、UI/UX、開発、リリース、運営、マーケティングまで自ら進めました。",
     stats: [
-      { id: "apps", value: "11", valueKind: "number", title: "開発したアプリ", note: "6か月で11のアプリを自ら企画・開発しました。", noteShort: "6か月で企画・開発", href: "#projects", visible: true },
+      { id: "apps", value: "13", valueKind: "number", title: "開発したアプリ", note: "6か月で13のアプリを自ら企画・開発しました。", noteShort: "6か月で企画・開発", href: "#projects", visible: true },
       { id: "languages", value: "13", valueKind: "number", title: "対応言語", note: "Newonサービスは最大13言語に対応", visible: true },
       { id: "countries", value: "177", valueKind: "number", title: "公開国", note: "Newonのアプリを世界177か国に公開しました。", noteShort: "世界177か国で公開", visible: true },
       { id: "newon-plus", value: "Newon+", valueKind: "text", title: "アプリの統合管理", note: "複数のNewonアプリとサービスを一つのアプリで管理します。", noteShort: "複数アプリを一つで管理", visible: true },
@@ -716,11 +716,11 @@ const COPY = {
     aboutP2:
       "Desde la idea y la planificación hasta UI/UX, desarrollo, publicación, operación y marketing, gestiono todo el ciclo de cada producto digital.",
     numbersTitle: "Newon en cifras",
-    numbersHeadline: "6 meses, 11 apps.",
+    numbersHeadline: "6 meses, 13 apps.",
     numbersSupport:
       "Me encargué de todo: idea, planificación, UI/UX, desarrollo, lanzamiento, operación y marketing.",
     stats: [
-      { id: "apps", value: "11", valueKind: "number", title: "Apps creadas", note: "Planifiqué y desarrollé 11 apps en 6 meses.", noteShort: "Planificadas y creadas en 6 meses", href: "#projects", visible: true },
+      { id: "apps", value: "13", valueKind: "number", title: "Apps creadas", note: "Planifiqué y desarrollé 13 apps en 6 meses.", noteShort: "Planificadas y creadas en 6 meses", href: "#projects", visible: true },
       { id: "languages", value: "13", valueKind: "number", title: "Idiomas", note: "Los servicios Newon admiten hasta 13 idiomas", visible: true },
       { id: "countries", value: "177", valueKind: "number", title: "Países", note: "Las apps de Newon se lanzaron en 177 países.", noteShort: "Lanzadas en 177 países", visible: true },
       { id: "newon-plus", value: "Newon+", valueKind: "text", title: "Apps conectadas", note: "Gestiona las apps y servicios de Newon en una sola app.", noteShort: "Varias apps en una sola", visible: true },
@@ -793,11 +793,11 @@ const COPY = {
     aboutP2:
       "Da ideia e do planejamento ao UI/UX, desenvolvimento, publicação, operação e marketing, eu gerencio o ciclo completo de cada produto digital.",
     numbersTitle: "Newon em números",
-    numbersHeadline: "6 meses, 11 apps.",
+    numbersHeadline: "6 meses, 13 apps.",
     numbersSupport:
       "Eu conduzi tudo: ideia, planejamento, UI/UX, desenvolvimento, lançamento, operação e marketing.",
     stats: [
-      { id: "apps", value: "11", valueKind: "number", title: "Apps criados", note: "Planejei e desenvolvi 11 apps em 6 meses.", noteShort: "Planejados e criados em 6 meses", href: "#projects", visible: true },
+      { id: "apps", value: "13", valueKind: "number", title: "Apps criados", note: "Planejei e desenvolvi 13 apps em 6 meses.", noteShort: "Planejados e criados em 6 meses", href: "#projects", visible: true },
       { id: "languages", value: "13", valueKind: "number", title: "Idiomas", note: "Os serviços Newon oferecem até 13 idiomas", visible: true },
       { id: "countries", value: "177", valueKind: "number", title: "Países", note: "Os apps da Newon foram lançados em 177 países.", noteShort: "Lançados em 177 países", visible: true },
       { id: "newon-plus", value: "Newon+", valueKind: "text", title: "Apps conectados", note: "Gerencie apps e serviços Newon em um só app.", noteShort: "Vários apps em um só", visible: true },
@@ -870,11 +870,11 @@ const COPY = {
     aboutP2:
       "De l’idée et de la conception produit jusqu’à l’UI/UX, au développement, au lancement, à l’exploitation et au marketing, je gère tout le cycle de chaque produit.",
     numbersTitle: "Newon en chiffres",
-    numbersHeadline: "6 mois, 11 apps.",
+    numbersHeadline: "6 mois, 13 apps.",
     numbersSupport:
       "J’ai pris en charge l’ensemble : idée, conception, UI/UX, développement, lancement, exploitation et marketing.",
     stats: [
-      { id: "apps", value: "11", valueKind: "number", title: "Apps créées", note: "J’ai conçu et développé 11 apps en 6 mois.", noteShort: "Conçues et développées en 6 mois", href: "#projects", visible: true },
+      { id: "apps", value: "13", valueKind: "number", title: "Apps créées", note: "J’ai conçu et développé 13 apps en 6 mois.", noteShort: "Conçues et développées en 6 mois", href: "#projects", visible: true },
       { id: "languages", value: "13", valueKind: "number", title: "Langues", note: "Les services Newon prennent en charge jusqu’à 13 langues", visible: true },
       { id: "countries", value: "177", valueKind: "number", title: "Pays", note: "Les apps Newon sont lancées dans 177 pays.", noteShort: "Lancées dans 177 pays", visible: true },
       { id: "newon-plus", value: "Newon+", valueKind: "text", title: "Apps connectées", note: "Gérez les apps et services Newon dans une seule app.", noteShort: "Plusieurs apps dans une seule", visible: true },
@@ -947,11 +947,11 @@ const COPY = {
     aboutP2:
       "Von Idee und Produktkonzept über UI/UX, Entwicklung, Store-Launch, Betrieb und Marketing steuere ich den gesamten Lebenszyklus jedes digitalen Produkts.",
     numbersTitle: "Newon in Zahlen",
-    numbersHeadline: "6 Monate, 11 Apps.",
+    numbersHeadline: "6 Monate, 13 Apps.",
     numbersSupport:
       "Ich habe alles selbst geführt: Idee, Konzeption, UI/UX, Entwicklung, Launch, Betrieb und Marketing.",
     stats: [
-      { id: "apps", value: "11", valueKind: "number", title: "Entwickelte Apps", note: "Ich habe in 6 Monaten 11 Apps geplant und entwickelt.", noteShort: "In 6 Monaten konzipiert und gebaut", href: "#projects", visible: true },
+      { id: "apps", value: "13", valueKind: "number", title: "Entwickelte Apps", note: "Ich habe in 6 Monaten 13 Apps geplant und entwickelt.", noteShort: "In 6 Monaten konzipiert und gebaut", href: "#projects", visible: true },
       { id: "languages", value: "13", valueKind: "number", title: "Sprachen", note: "Newon-Dienste unterstützen bis zu 13 Sprachen", visible: true },
       { id: "countries", value: "177", valueKind: "number", title: "Länder", note: "Newon-Apps wurden in 177 Ländern veröffentlicht.", noteShort: "In 177 Ländern veröffentlicht", visible: true },
       { id: "newon-plus", value: "Newon+", valueKind: "text", title: "Verbundene Apps", note: "Newon-Apps und -Dienste in einer App verwalten.", noteShort: "Mehrere Apps in einer App", visible: true },
@@ -1024,11 +1024,11 @@ const COPY = {
     aboutP2:
       "आइडिया और प्रोडक्ट प्लानिंग से UI/UX, डेवलपमेंट, स्टोर लॉन्च, संचालन और मार्केटिंग तक हर डिजिटल प्रोडक्ट का पूरा जीवन चक्र मैं संभालती हूँ।",
     numbersTitle: "आँकड़ों में Newon",
-    numbersHeadline: "6 महीने, 11 ऐप।",
+    numbersHeadline: "6 महीने, 13 ऐप।",
     numbersSupport:
       "आइडिया से प्लानिंग, UI/UX, डेवलपमेंट, लॉन्च, संचालन और मार्केटिंग तक मैंने खुद आगे बढ़ाया।",
     stats: [
-      { id: "apps", value: "11", valueKind: "number", title: "बनाए गए ऐप", note: "मैंने 6 महीने में 11 ऐप प्लान और डेवलप किए।", noteShort: "6 महीने में प्लान और बिल्ड", href: "#projects", visible: true },
+      { id: "apps", value: "13", valueKind: "number", title: "बनाए गए ऐप", note: "मैंने 6 महीने में 13 ऐप प्लान और डेवलप किए।", noteShort: "6 महीने में प्लान और बिल्ड", href: "#projects", visible: true },
       { id: "languages", value: "13", valueKind: "number", title: "भाषाएँ", note: "Newon सेवाएँ अधिकतम 13 भाषाएँ सपोर्ट करती हैं", visible: true },
       { id: "countries", value: "177", valueKind: "number", title: "देश", note: "Newon के ऐप 177 देशों में लॉन्च हुए।", noteShort: "177 देशों में लॉन्च", visible: true },
       { id: "newon-plus", value: "Newon+", valueKind: "text", title: "जुड़े ऐप", note: "कई Newon ऐप और सेवाओं को एक ऐप में मैनेज करें।", noteShort: "कई ऐप एक ही ऐप में", visible: true },
@@ -1101,11 +1101,11 @@ const COPY = {
     aboutP2:
       "Dari ide dan perencanaan produk hingga UI/UX, pengembangan, peluncuran, operasional, dan pemasaran, saya mengelola seluruh siklus setiap produk digital.",
     numbersTitle: "Newon dalam angka",
-    numbersHeadline: "6 bulan, 11 aplikasi.",
+    numbersHeadline: "6 bulan, 13 aplikasi.",
     numbersSupport:
       "Saya menangani semuanya: ide, perencanaan, UI/UX, pengembangan, peluncuran, operasional, dan pemasaran.",
     stats: [
-      { id: "apps", value: "11", valueKind: "number", title: "Aplikasi yang dibuat", note: "Saya merencanakan dan mengembangkan 11 aplikasi dalam 6 bulan.", noteShort: "Direncanakan dan dibuat dalam 6 bulan", href: "#projects", visible: true },
+      { id: "apps", value: "13", valueKind: "number", title: "Aplikasi yang dibuat", note: "Saya merencanakan dan mengembangkan 13 aplikasi dalam 6 bulan.", noteShort: "Direncanakan dan dibuat dalam 6 bulan", href: "#projects", visible: true },
       { id: "languages", value: "13", valueKind: "number", title: "Bahasa", note: "Layanan Newon mendukung hingga 13 bahasa", visible: true },
       { id: "countries", value: "177", valueKind: "number", title: "Negara", note: "Aplikasi Newon diluncurkan di 177 negara.", noteShort: "Diluncurkan di 177 negara", visible: true },
       { id: "newon-plus", value: "Newon+", valueKind: "text", title: "Aplikasi terhubung", note: "Kelola aplikasi dan layanan Newon dalam satu aplikasi.", noteShort: "Beberapa aplikasi dalam satu app", visible: true },

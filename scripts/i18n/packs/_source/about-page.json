@@ -153,19 +153,21 @@
     {
       "n": "03",
       "title": "CARE",
-      "body": "Record care for family, pets, and health — together.",
+      "body": "Record care for family, pets, health, and fitness — together.",
       "slugs": [
         "babylog",
         "petlog",
-        "pillmate"
+        "pillmate",
+        "fiton"
       ]
     },
     {
       "n": "04",
       "title": "LIFE & PLATFORM",
-      "body": "From travel records to Newon membership — connect experiences.",
+      "body": "From travel and food to Newon membership — connect experiences.",
       "slugs": [
         "myworld",
+        "eaton",
         "newon-plus"
       ]
     }
@@ -304,7 +306,7 @@
   "selectedTitle": "Products Newon builds directly.",
   "selectedLead": "Representative products Newon plans, builds, and operates.",
   "selectedAll": "VIEW ALL PRODUCTS →",
-  "selectedProductsMax": 11,
+  "selectedProductsMax": 14,
   "universeView": "View product ↗",
   "statusLive": "Live",
   "statusProject": "Project",
@@ -320,7 +322,9 @@
     "petlog": "Family",
     "myworld": "Travel / Life",
     "newon-plus": "Platform",
-    "404-human": "Games"
+    "404-human": "Games",
+    "eaton": "Food / Life",
+    "fiton": "Sports / Fitness"
   },
   "productOrder": [
     "ox-month",
@@ -334,6 +338,8 @@
     "piggyup",
     "petlog",
     "pillmate",
+    "eaton",
+    "fiton",
     "404-human"
   ],
   "exploreEyebrow": "EXPLORE NEWON",

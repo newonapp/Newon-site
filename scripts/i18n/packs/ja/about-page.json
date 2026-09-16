@@ -155,9 +155,10 @@
       "title": "CARE",
       "body": "家族、ペット、健康のケアを一緒に記録します。",
       "slugs": [
-        "ベイビーログ",
-        "ペットログ",
-        "ピルメイト"
+        "babylog",
+        "petlog",
+        "pillmate",
+        "fiton"
       ]
     },
     {
@@ -165,8 +166,9 @@
       "title": "LIFE & PLATFORM",
       "body": "旅行記録から Newon メンバーシップまで、エクスペリエンスを結び付けます。",
       "slugs": [
-        "私の世界",
-        "ニューオンプラス"
+        "myworld",
+        "eaton",
+        "newon-plus"
       ]
     }
   ],
@@ -304,7 +306,7 @@
   "selectedTitle": "製品 Newon は直接ビルドされます。",
   "selectedLead": "代表的なプロダクト Newon が企画、構築、運用を行っています。",
   "selectedAll": "すべての製品を見る→",
-  "selectedProductsMax": 11,
+  "selectedProductsMax": 14,
   "universeView": "製品を見る ↗",
   "statusLive": "ライブ",
   "statusProject": "プロジェクト",
@@ -320,21 +322,25 @@
     "petlog": "家族",
     "myworld": "旅行・生活",
     "newon-plus": "プラットフォーム",
-    "404-human": "ゲーム"
+    "404-human": "ゲーム",
+    "eaton": "Food / Life",
+    "fiton": "Sports / Fitness"
   },
   "productOrder": [
-    "牛月",
-    "ゴールアップ",
-    "賢い",
-    "ベイビーログ",
-    "私の世界",
-    "ニューオンプラス",
-    "カウントアップ",
-    "サブピング",
-    "おんぶ",
-    "ペットログ",
-    "ピルメイト",
-    "404-人間"
+    "ox-month",
+    "goalup",
+    "savy",
+    "babylog",
+    "myworld",
+    "newon-plus",
+    "countup",
+    "subping",
+    "piggyup",
+    "petlog",
+    "pillmate",
+    "eaton",
+    "fiton",
+    "404-human"
   ],
   "exploreEyebrow": "EXPLORE NEWON",
   "exploreTitle": "Newon をさらに詳しく見てみましょう。",

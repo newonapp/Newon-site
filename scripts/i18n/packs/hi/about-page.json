@@ -157,7 +157,8 @@
       "slugs": [
         "babylog",
         "petlog",
-        "pillmate"
+        "pillmate",
+        "fiton"
       ]
     },
     {
@@ -166,6 +167,7 @@
       "body": "यात्रा रिकॉर्ड से लेकर Newon सदस्यता तक - कनेक्ट अनुभव।",
       "slugs": [
         "myworld",
+        "eaton",
         "newon-plus"
       ]
     }
@@ -304,7 +306,7 @@
   "selectedTitle": "उत्पाद Newon बनाता है सीधे।",
   "selectedLead": "प्रतिनिधि उत्पाद Newon योजना बनाता है, बनाता है और संचालित करता है।",
   "selectedAll": "सभी उत्पाद देखें →",
-  "selectedProductsMax": 11,
+  "selectedProductsMax": 14,
   "universeView": "उत्पाद देखें ↗",
   "statusLive": "लाइव",
   "statusProject": "परियोजना",
@@ -320,7 +322,9 @@
     "petlog": "परिवार",
     "myworld": "यात्रा/जीवन",
     "newon-plus": "प्लेटफ़ॉर्म",
-    "404-human": "खेल"
+    "404-human": "खेल",
+    "eaton": "Food / Life",
+    "fiton": "Sports / Fitness"
   },
   "productOrder": [
     "ox-month",
@@ -334,6 +338,8 @@
     "piggyup",
     "petlog",
     "pillmate",
+    "eaton",
+    "fiton",
     "404-human"
   ],
   "exploreEyebrow": "न्यूऑन का अन्वेषण करें",

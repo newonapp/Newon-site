@@ -157,7 +157,8 @@
       "slugs": [
         "babylog",
         "petlog",
-        "pillmate"
+        "pillmate",
+        "fiton"
       ]
     },
     {
@@ -166,6 +167,7 @@
       "body": "Dari catatan perjalanan ke Newon keanggotaan - pengalaman terhubung.",
       "slugs": [
         "myworld",
+        "eaton",
         "newon-plus"
       ]
     }
@@ -304,7 +306,7 @@
   "selectedTitle": "Memproduksi Newon membangun langsung.",
   "selectedLead": "Produk representatif Newon berencana, membangun, dan beroperasi.",
   "selectedAll": "VIEW SEMUA PRODUCTS →",
-  "selectedProductsMax": 11,
+  "selectedProductsMax": 14,
   "universeView": "Lihat produk ↗",
   "statusLive": "Live",
   "statusProject": "Projek",
@@ -320,7 +322,9 @@
     "petlog": "Family",
     "myworld": "Perjalanan / Hidup",
     "newon-plus": "Platform",
-    "404-human": "Permainan"
+    "404-human": "Permainan",
+    "eaton": "Food / Life",
+    "fiton": "Sports / Fitness"
   },
   "productOrder": [
     "ox-month",
@@ -334,6 +338,8 @@
     "piggyup",
     "petlog",
     "pillmate",
+    "eaton",
+    "fiton",
     "404-human"
   ],
   "exploreEyebrow": "EXPLORE NEWON",
