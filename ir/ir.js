@@ -1,414 +1,673 @@
+/**
+ * NEWON IR — render + i18n (studio bs-* design system)
+ */
 (function () {
   "use strict";
 
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var LANG_KEY = "newon-ir-lang";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var DATA = window.NEWON_IR_DATA;
+  var I18N = window.NEWON_IR_I18N || { ko: {}, en: {} };
 
-  var EN = {
-    skip: "Skip to content",
-    "nav.aria": "IR sections",
-    "nav.start": "Start",
-    "nav.exec": "Execution",
-    "nav.products": "Products",
-    "nav.company": "Company",
-    "nav.web": "Web",
-    "nav.studio": "Studio",
-    "nav.model": "Model",
-    "nav.seed": "Invest",
-    "nav.contact": "Contact",
-    "hero.eyebrow": 'IR<span class="ir-eyebrow__sep">·</span>Product &amp; venture studio',
-    "hero.stackAria": "Key facts",
-    "hero.apps": "11 apps.",
-    "hero.web": "One web.",
-    "hero.months": "6 months.",
-    "hero.founder": "1 founder.",
-    "hero.sub": "A 22-year-old solo founder who planned,<br />built, and shipped 11 apps and Newon Web<br />in 6 months",
-    "hero.craft": "Plan → design → build → ship — in-house",
-    "hero.ctaSeed": "Investment &amp; Partnership ↓",
-    "hero.ctaContact": "Contact",
-    "glance.aria": "At a glance",
-    "glance.at": "At a glance",
-    "glance.live": "Live",
-    "glance.apps": "Apps",
-    "glance.axis": "Company timeline",
-    "time.now": "Now",
-    "time.build": "Build",
-    "time.next": "Next",
-    "time.focus": "Focus",
-    "time.connect": "Connect",
-    "time.later": "Later",
-    "time.expand": "Expand · Scale",
-    "time.expandShort": "Expand",
-    "life.aria": "Product lifecycle",
-    "life.idea": "Idea",
-    "life.plan": "Planning",
-    "life.dev": "Development",
-    "life.launch": "Launch",
-    "life.ship": "Distribution",
-    "life.ops": "Operations",
-    "life.build": "Build",
-    "life.auto": "Automation",
-    "life.research": "Research",
-    "life.solution": "Solutions",
-    "p02.n": "02 / Founder execution",
-    "p02.h": "One person. End to end.",
-    "p02.lead":
-      "A 22-year-old solo founder plans, designs, builds, and ships in-house. 11 apps are not the end — they are the start of one Newon ecosystem.",
-    "p02.rowAria": "Execution facts",
-    "p02.age": "Solo founder",
-    "p02.time": "Build time",
-    "p02.apps": "Apps",
-    "p02.web": "Web",
-    "p02.verbsAria": "Operating principle",
-    "p02.verbs": "Build wide. Validate fast. Focus deep. Connect what works.",
-    "p02.verbsEm": "Separate apps into one Newon ecosystem. Next is focus.",
-    "p03.n": "03 / Why Newon",
-    "p03.h": "Life is connected.<br />The services we use are not.",
-    "p03.lead":
-      "Newon finds repeating problems in daily life, solves them with digital products, then validates and connects what works.",
-    "p03.sinkAria": "Separated life axes",
-    "axis.finance": "Finance",
-    "axis.health": "Health",
-    "axis.habit": "Habits",
-    "axis.family": "Family",
-    "axis.pet": "Pets",
-    "axis.travel": "Travel",
-    "axis.sub": "Subscriptions",
-    "p03.s1": "Problem",
-    "p03.s1p": "Fragmented life services",
-    "p03.s2": "Product",
-    "p03.s2p": "A digital product for each",
-    "p03.s3": "Focus",
-    "p03.s3p": "Core products · retention · PMF",
-    "p03.s4": "Connect",
-    "p03.s4p": "Connect only what is proven",
-    "p04.n": "04 / 11 digital products",
-    "p04.eye": "Portfolio",
-    "p04.h": "Arranged along the axes of daily life.",
-    "p04.lead":
-      "The 11 apps are an initial portfolio. Next, we do not grow everything at once. We focus on core products by response and commercial fit.",
-    "p04.assetAria": "Company assets",
-    "p04.asset": "11 digital products",
-    "p04.apps": "Apps",
-    "p04.appsEm": "Live · 11",
-    "p04.aiEm": "Now on web",
-    "p04.games": "Games",
-    "p04.gamesEm": "Early / web",
-    "p04.tools": "Tools",
-    "p04.toolsEm": "Live on web",
-    "p04.pathAria": "Focus path",
-    "p04.path1": "Portfolio",
-    "p04.path2": "Validate",
-    "p04.path3": "Focus",
-    "p04.path4": "Connect",
-    "p04.board0": "11 digital products → one brand → Newon+ hub",
-    "tag.core": "Core",
-    "tag.daily": "Daily",
-    "tag.challenge": "Challenge",
-    "tag.travel": "Travel · Hub",
-    "p05.n": "05 / Company portfolio",
-    "p05.flag": "Product &amp; venture studio",
-    "p05.h": "Beyond<br />11 apps.",
-    "p05.lead": "The five axes are not equal. Products are the core. Web / Newon+ is infrastructure.",
-    "p05.ax1": "01 · Core",
-    "p05.products": "Products",
-    "p05.ax1a": "11 apps <i>live</i>",
-    "p05.ax1b": "AI <i>now on web</i>",
-    "p05.ax1c": "Games <i>early</i>",
-    "p05.ax1d": "Tools <i>live on web</i>",
-    "p05.oneCo": "One company",
-    "p05.five": "5 axes",
-    "p05.ax2": "02 · Early revenue",
-    "p05.biz": "Business",
-    "p05.ax3": "03 · Market edge",
-    "p05.studio": "Studio",
-    "p05.brand": "Brand",
-    "p05.digital": "Digital",
-    "p05.content": "Content",
-    "p05.ax4": "04 · Experiments",
-    "p05.resource": "Resources",
-    "p05.store": "Store <i>digital</i>",
-    "p05.insight": "Insights",
-    "p05.blog": "Blog",
-    "p05.labs": "Labs <i>experiments</i>",
-    "p05.ax5": "05 · Infrastructure",
-    "p05.platform": "Platform",
-    "p05.webLive": "Newon Web <i>live</i>",
-    "p05.account": "Account",
-    "p05.aiLayer": "AI layer",
-    "p05.company": "Company",
-    "p05.flow":
-      "Core products · infrastructure Web / Newon+ · early business / studio · experimental resources · later commerce / market / booking",
-    "p06.n": "06 / Product expansion",
-    "p06.h": "From finance and health to automation and commerce.",
-    "p06.lead": "Current features and next steps are separate. This is not a plan to do everything at once.",
-    "x.sub.now": "Subscription tracking",
-    "x.sub.next": "Auto add → payment detection → automation → shared plans → family/friends",
-    "x.savy.now": "AI ledger",
-    "x.savy.next": "Auto import → auto classify → AI analysis → budget tips → savings automation",
-    "x.pill.now": "Dose · alerts · stock · family",
-    "x.pill.next": "Personalized recs → supplement shopping / commerce",
-    "p07.n": "07 / Product expansion",
-    "p07.h": "The next step for family, challenges, and travel.",
-    "p07.lead": "Community, commerce, and booking are Phase 04 expansion. The path is open. It is not live yet.",
-    "x.baby.now": "Logs · AI · family share",
-    "x.baby.next": "Community → shopping → used goods → booking",
-    "x.pet.next": "Community → shopping → used goods → clinic/grooming/service booking",
-    "x.goal.now": "Goals",
-    "x.goal.next": "Challenges",
-    "x.count.now": "Streaks",
-    "x.count.next": "Challenges / ranking / rewards",
-    "x.piggy.now": "Saving",
-    "x.piggy.next": "Savings challenges / community / rewards",
-    "x.world.now": "Trip logs · plans",
-    "x.world.next": "AI → community → stays → flights → tours → packages → travel goods → booking",
-    "p08.eye": "Connection layer",
-    "p08.h": "One account.<br />Many products.",
-    "p08.lead": "One Newon experience. Connect proven products to deepen relationship and retention per user.",
-    "p08.rolesAria": "Newon+ roles",
-    "p08.id": "Identity",
-    "p08.mem": "Membership",
-    "p08.sub": "Subscriptions",
-    "p08.perk": "Perks",
-    "p08.rec": "Recommend",
-    "p08.cross": "Cross-discovery",
-    "p08.fly1": "Acquire",
-    "p08.fly1s": "One product",
-    "p08.fly2": "Discover more",
-    "p08.fly2s": "Other Newon products",
-    "p08.ret": "Retention",
-    "p08.eco": "Ecosystem",
-    "p08.path":
-      'SSO → profile → app link → subscribe → package → membership → recommend → AI → perks → <span class="ir-flag">PLANNED</span> Newon Store',
-    "web.liveFlag": "Now · live",
-    "web.liveH": "NEWON.APP is live.",
-    "web.h": "Digital HQ · Distribution hub",
-    "web.hub": "Distribution hub",
-    "web.lead": "The digital HQ / distribution hub where every company axis meets.",
-    "web.cap": "Now · www.newon.app",
-    "web.discover": "Discover",
-    "web.leadN": "Leads",
-    "web.dist": "Distribution",
-    "web.partner": "Partnerships",
-    "web.hq": "HQ",
-    "web.svc": "Service hub",
-    "web.webapp": "Web apps",
-    "web.store": "Store",
-    "web.later": "Later · planned",
-    "web.commerce": "Commerce",
-    "web.market": "Marketplace",
-    "web.book": "Booking",
-    "p10.n": "10 / AI · automation",
-    "p10.h": "NEWON Intelligence.",
-    "p10.flag": "Vision · seed-funded",
-    "p16.p3a": "Newon+ · account",
-    "p19.t3": "Web<br />NEWON+<br />AI",
-    "p10.note":
-      "Shared AI infrastructure. Privacy first. User consent required. This round lays the base. Full-product expansion comes later.",
-    "ai.pipe": "Pipeline",
-    "ai.pipeP": "From records in each app to action.",
-    "ai.rules": "Principles",
-    "ai.rulesP": "Shared base. Privacy first. User consent.",
-    "ai.round": "This round",
-    "ai.roundP": "Lay the base. Full-product expansion comes later.",
-    "ai.r1": "Shared infrastructure first",
-    "ai.r2": "Nothing without consent",
-    "ai.r3": "Full-product expansion later",
-    "ai.kicker": "Product data → Context → AI → Personalization → Recommend → Automate → Action",
-    "ai.flow": "DATA → ACTION",
-    "ai.1": "Product data",
-    "ai.1d": "Records from each app",
-    "ai.2": "Context",
-    "ai.2d": "Time, situation, intent",
-    "ai.3": "AI",
-    "ai.3d": "Shared infrastructure",
-    "ai.4": "Personalization",
-    "ai.4d": "Fit to the user",
-    "ai.5d": "What comes next",
-    "ai.6d": "Cut repetitive work",
-    "ai.7": "Action",
-    "ai.7d": "Make it happen",
-    "ai.p1": "Shared AI infrastructure",
-    "ai.p1d": "Every product uses the same base.",
-    "ai.p2": "Privacy first",
-    "ai.p2d": "Designed to protect data first.",
-    "ai.p3": "User consent required",
-    "ai.p3d": "Nothing without consent.",
-    "ai.p4": "This round · the base",
-    "ai.p4s": "Full-product expansion comes later.",
-    "p11.n": "11 / Commerce · market · booking",
-    "p11.flag": "PLANNED · PHASE 04 · Expansion",
-    "p11.lead":
-      "We do not build all of this now. After core-product validation, we connect it in Phase 04 expansion.",
-    "p11.storeP": "B2C COMMERCE. Newon/brand → sells goods to users.",
-    "p11.s1": "Pillmate → supplements",
-    "p11.s2": "BabyLog → baby goods",
-    "p11.s3": "PetLog → pet goods",
-    "p11.s4": "My World → travel goods",
-    "p11.marketP": "C2C / P2P MARKETPLACE. User ↔ user used-goods and trade matching.",
-    "p11.m1": "BabyLog → used baby goods",
-    "p11.m2": "PetLog → used pet goods",
-    "p11.m3": "Later vertical markets",
-    "p11.bookP": "SERVICE BOOKING. User → clinic / grooming / family services / stays / tours.",
-    "p11.b1": "PetLog → clinic / grooming",
-    "p11.b2": "BabyLog → family services",
-    "p11.b3": "My World → stays / tours / travel",
-    "p12.n": "12 / Business · studio",
-    "p12.flag": "Live on web · different roles",
-    "p12.h": "The axis that solves problems.<br />The axis that builds brands.",
-    "p12.bizH": "Build / automate / solve",
-    "p12.bizP":
-      "Product build, workflow automation, research, and digital solutions for companies and founders. Not outsourcing — a way to earn revenue, customers, market data, and technical depth.",
-    "p12.stH": "Creative / brand engine",
-    "p12.stP": "A creative engine for Newon’s own brands and for others. Not a UI freelance page.",
-    "p12.l1": "Brand — identity · strategy · naming · logo",
-    "p12.l2": "Digital — web · app · landing · product",
-    "p12.l3": "Content — social · campaigns · visual",
-    "p12.l4": "IP — characters · stickers · experimental IP",
-    "p12.loop2": "Users / data / insight",
-    "p12.loop3": "Business + studio",
-    "p12.loop4": "Revenue / customer problems",
-    "p12.loop5": "New product insight",
-    "p13.n": "13 / Revenue model",
-    "p13.h": "Revenue structure.",
-    "p13.lead":
-      "The structure can expand Subscription → Commerce → SaaS/B2B → Platform. We separate having a model from having revenue.",
-    "p13.now": "Current model",
-    "p13.sub": "App subscriptions",
-    "p13.subP": "Monthly/yearly per app. A live store revenue model.",
-    "p13.early": "Early model",
-    "p13.b2b": "Studio / B2B",
-    "p13.b2bP":
-      "Build · automation · research · solutions · studio. Public service offers on the web. No revenue figures.",
-    "p13.planned": "Planned scale",
-    "p13.scale": "Scale layer",
-    "p13.scaleP": "Membership · commerce · marketplace · booking · partnerships",
-    "p13.subI": "Monthly/yearly per app · live structure",
-    "p13.b2bI": "Build · automation · research · solutions · studio",
-    "p13.web": "Early / web",
-    "p13.dstore": "Digital store",
-    "p13.dstoreI": "Templates · guides · digital goods",
-    "p13.plus": "NEWON+ membership",
-    "p13.plusI": "Bundled membership / packages",
-    "p13.cmb": "Commerce / market / booking",
-    "p13.partI": "Brand challenges · distribution",
-    "p14.n": "14 / Defense · loop",
-    "p14.flag": "What we can claim now",
-    "p14.h": "Shipping many apps<br />is not the moat.",
-    "p14.lead":
-      "What we can claim is speed and structure. Network effects, data moats, and market dominance are not included.",
-    "p14.core": "Core",
-    "p14.infra": "Infrastructure",
-    "p14.early": "Early",
-    "p14.exp": "Experiments",
-    "p14.d1": "Fast product execution",
-    "p14.d2": "Multi-product structure",
-    "p14.d3": "Founder-led product development",
-    "p14.d4": "Shared infrastructure",
-    "p14.d5": "Cross-product expansion path",
-    "p14.d6": "Web distribution",
-    "p14.d7": "B2C + B2B feedback loop",
-    "p15.n": "15 / Global distribution",
-    "p15.flag": "Product footprint · not traction",
-    "p15.h": "13 languages. Released in 177 countries.",
-    "p15.lead":
-      "Built in Korea. Released and distributed to 177 countries via App Store / Google Play. 177 is countries available, not users.",
-    "p15.note": "Website: 9 languages · Apps: 13 languages",
-    "p15.lang": "Languages",
-    "p15.langS": "supported",
-    "p15.release": "Release",
-    "p15.releaseS": "countries",
-    "p15.stores": "Stores",
-    "p15.from": "Origin",
-    "p15.kr": "Korea",
-    "p15.fromS": "From planning to distribution",
-    "p15.releaseD": "177 is countries available, not users.",
-    "p16.n": "16 / Company roadmap",
-    "p16.mantra": "A large vision. Focused execution.",
-    "p16.h": "We do not do everything at once.",
-    "p16.lead": "We accelerate focus → validate → connect. It is a company roadmap, not apps only.",
-    "p16.p1": "01 Done",
-    "p16.p1a": "11 apps",
-    "p16.p1c": "Business · studio",
-    "p16.p1d": "Resources · brand",
-    "p16.p2": "02 Now",
-    "p16.p2a": "Core products",
-    "p16.p2b": "B2B · studio clients",
-    "p16.p2c": "Users · retention · PMF",
-    "p16.p2d": "Content / SEO",
-    "p16.p3": "03 Next",
-    "p16.p3b": "AI · web hub",
-    "p16.p3c": "Cross-product",
-    "p16.p4": "04 Later",
-    "p16.p4a": "Commerce · store",
-    "p16.p4b": "Marketplace · booking",
-    "p16.p4c": "Challenges · community",
-    "p16.p5": "05 Later",
-    "p16.scale": "Scale",
-    "p16.p5a": "B2B solutions",
-    "p16.p5b": "Global · distribution",
-    "p16.p5d": "New markets",
-    "p17.n": "17 / Investment &amp; Partnership",
-    "p17.status": "Open to Investment &amp; Strategic Partnerships",
-    "p17.h": "Let's Build<br />the Next Newon",
-    "p17.why":
-      "This is not a round to scale all 11 services at once. It is to choose core products, validate users, retention, and profitability, and build a Newon+ connection layer for one ecosystem.",
-    "p17.focusD": "Choose the core products to grow now.",
-    "p17.validD": "Validate users, retention, and profitability.",
-    "p17.connectD": "Build the Newon+ connection layer.",
-    "p17.u1": "Deepen existing apps and expand the Newon ecosystem",
-    "p17.u2": "Acquire users and grow brand / marketing",
-    "p17.u3": "Commerce expansion for BabyLog, PetLog, Pillmate, and more",
-    "p17.u4": "Expand SaaS, automation, and enterprise solutions",
-    "p17.u5": "Acquire global users and expand overseas markets",
-    "p18.n": "18 / Use of Funds",
-    "p18.flag": "GROWTH PLAN",
-    "p18.h": "Where growth goes.",
-    "p18.lead": "We do not buy the whole vision at once. Focus follows Product · Growth · Commerce · SaaS / B2B · Global.",
-    "p18.d1": "Deepen existing apps and expand the Newon ecosystem",
-    "p18.d2": "Acquire users and grow brand / marketing",
-    "p18.d3": "Commerce expansion for BabyLog, PetLog, Pillmate, and more",
-    "p18.d4": "Expand SaaS, automation, and enterprise solutions",
-    "p18.d5": "Acquire global users and expand overseas markets",
-    "p18.g1": "Focus / connect",
-    "p18.g2": "Validate / acquire",
-    "p18.g3": "Controlled expansion",
-    "p18.g4": "Enterprise / automation",
-    "p18.g5": "Korea → Global",
-    "p18.total": "Focus. Validate. Connect. · Korea → Global",
-    "p19.n": "19 / Vision",
-    "p19.today": "Today",
-    "p19.t1": "11 apps<br />+ web<br />+ studio",
-    "p19.t2": "Prove<br />what works",
-    "p19.t4": "Commerce<br />market<br />booking",
-    "p19.t5": "Global<br />platform",
-    "p19.lock": "NEWON · product &amp; venture studio · building a connected lifestyle ecosystem.",
-    "p20.n": "20 / Partners · investors",
-    "p20.kicker": "We are looking for",
-    "p20.h": "Connect.",
-    "p20.lead": "Not capital only. A network that accelerates focus → validate → connect together.",
-    "p20.s1": "Capital",
-    "p20.s2": "Partners",
-    "p20.s5": "Global network",
-    "p20.seed": "Investment &amp; Partnership",
-    "p20.i1": "Investors",
-    "p20.i1p": "Open to follow-up meetings",
-    "p20.i2p": "Connect products and channels",
-    "p20.i3p": "Challenges and collabs",
-    "p20.i4p": "Later vertical expansion",
-    "p20.i5p": "Stores and distribution",
-    "p20.i6p": "Released in 177 countries",
-    "p21.n": "21 / Contact",
-    "p21.name": "Nawon Kyung",
-    "p21.h": "From 11 apps + web<br /><span>into one ecosystem.</span>",
-    "p21.role": "Founder · App Developer",
-    "p21.front": "Front",
-    "p21.back": "Back · See Newon →",
-    "p21.qr": "See Newon via QR",
-    "p21.foot": "Newon IR · Open to Investment &amp; Strategic Partnerships",
-    "title": "NEWON IR — 11 apps + Newon Web",
-    "desc": "Newon IR. A 22-year-old solo founder built 11 apps and Newon Web in 6 months. Open to investment and partnership."
+  function t(lang, key) {
+    var pack = I18N[lang] || I18N.ko || {};
+    if (Object.prototype.hasOwnProperty.call(pack, key)) return pack[key];
+    if (I18N.ko && Object.prototype.hasOwnProperty.call(I18N.ko, key)) return I18N.ko[key];
+    return key;
+  }
+
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function statusBadge(lang, status) {
+    return '<span class="ir-badge ir-badge--' + esc(status) + '">' + t(lang, "status." + status) + "</span>";
+  }
+
+  function iconForApp(name) {
+    if (!DATA || !name) return "";
+    var found = "";
+    (DATA.categories || []).forEach(function (cat) {
+      (cat.products || []).forEach(function (p) {
+        if (!found && p.name === name) found = p.icon || "";
+      });
+    });
+    if (found) return found;
+    (DATA.nextProducts || []).forEach(function (p) {
+      if (!found && p.name === name) found = p.icon || "";
+    });
+    if (found) return found;
+    (DATA.logoRail || DATA.growthMap || []).forEach(function (p) {
+      if (!found && p.name === name) found = p.icon || "";
+    });
+    return found;
+  }
+
+  function appLogoHtml(name, size) {
+    var src = iconForApp(name);
+    if (!src) return "";
+    var s = size || 36;
+    return (
+      '<img class="ir-app-logo" src="' +
+      esc(src) +
+      '" alt="" width="' +
+      s +
+      '" height="' +
+      s +
+      '" loading="lazy" decoding="async" />'
+    );
+  }
+
+  function listHtml(lang, keys) {
+    if (!keys || !keys.length) return "";
+    return (
+      "<ul class=\"ir-mini-list\">" +
+      keys
+        .map(function (k) {
+          return "<li>" + t(lang, k) + "</li>";
+        })
+        .join("") +
+      "</ul>"
+    );
+  }
+
+  var DESC = {
+    "ox-month": "ox.desc",
+    subping: "sub.desc",
+    savy: "savy.desc",
+    piggyup: "pig.desc",
+    pillmate: "pill.desc",
+    babylog: "baby.desc",
+    petlog: "pet.desc",
+    goalup: "goal.desc",
+    countup: "count.desc",
+    "my-world": "world.desc",
+    fiton: "fit.desc",
+    eaton: "eat.desc",
+    "newon-plus": "plus.desc",
   };
+
+  function productCard(lang, catLabel, p, n) {
+    var href = (p.href || "#").replace("/ko/", lang === "en" ? "/en/" : "/ko/");
+    var num = String(n).padStart(2, "0");
+    return (
+      '<article class="bs-get__item ir-app' +
+      (p.featured ? " ir-app--featured" : "") +
+      '">' +
+      '<a class="ir-app__hit" href="' +
+      esc(href) +
+      '">' +
+      '<span class="bs-get__n" aria-hidden="true">' +
+      num +
+      "</span>" +
+      '<div class="bs-get__copy">' +
+      '<div class="ir-app__head">' +
+      '<img src="' +
+      esc(p.icon) +
+      '" alt="" width="40" height="40" loading="lazy" />' +
+      "<div>" +
+      '<p class="ir-app__cat">' +
+      esc(catLabel) +
+      "</p>" +
+      "<h3>" +
+      esc(p.name) +
+      "</h3>" +
+      "</div>" +
+      statusBadge(lang, p.status) +
+      "</div>" +
+      "<p>" +
+      t(lang, DESC[p.id] || "ox.desc") +
+      "</p>" +
+      (p.taglineKey ? "<p><strong>" + t(lang, p.taglineKey) + "</strong></p>" : "") +
+      (p.growthKey ? '<p class="ir-growth-line">' + t(lang, p.growthKey) + "</p>" : "") +
+      '<div class="ir-app__cols">' +
+      "<div><p class=\"ir-col-label\">" +
+      t(lang, "port.current") +
+      "</p>" +
+      listHtml(lang, p.currentKeys) +
+      "</div>" +
+      "<div><p class=\"ir-col-label\">" +
+      t(lang, "port.next") +
+      "</p>" +
+      listHtml(lang, p.nextKeys) +
+      "</div></div>" +
+      (p.longKey ? "<p class=\"ir-muted\">" + t(lang, "port.long") + " · " + t(lang, p.longKey) + "</p>" : "") +
+      (p.cautionKey ? "<p class=\"ir-muted\">" + t(lang, p.cautionKey) + "</p>" : "") +
+      (p.plannedNoteKey ? "<p class=\"ir-muted\">" + t(lang, p.plannedNoteKey) + "</p>" : "") +
+      "</div></a></article>"
+    );
+  }
+
+  function renderPortfolio(lang) {
+    var el = document.getElementById("ir-portfolio");
+    if (!el || !DATA) return;
+    var n = 0;
+    el.innerHTML = DATA.categories
+      .map(function (cat) {
+        var label = t(lang, cat.labelKey);
+        var cards = cat.products
+          .map(function (p) {
+            n += 1;
+            return productCard(lang, label, p, n);
+          })
+          .join("");
+        return (
+          '<div class="ir-cat">' +
+          '<p class="bs-eyebrow">' +
+          esc(label) +
+          "</p>" +
+          '<div class="bs-get bs-get--board ir-fill-grid" data-count="' +
+          cat.products.length +
+          '" data-variant="board">' +
+          cards +
+          "</div></div>"
+        );
+      })
+      .join("");
+  }
+
+  function renderNext(lang) {
+    var el = document.getElementById("ir-next");
+    if (!el || !DATA) return;
+    el.innerHTML = DATA.nextProducts
+      .map(function (p, idx) {
+        var pillars = (p.pillars || [])
+          .map(function (col, i) {
+            return (
+              '<article class="bs-get__item"><span class="bs-get__n">' +
+              String(i + 1).padStart(2, "0") +
+              '</span><div class="bs-get__copy"><h3>' +
+              t(lang, col.titleKey) +
+              "</h3>" +
+              listHtml(lang, col.itemsKey) +
+              "</div></article>"
+            );
+          })
+          .join("");
+        return (
+          '<article class="ir-next-block">' +
+          '<div class="ir-next-head">' +
+          '<img src="' +
+          esc(p.icon) +
+          '" alt="" width="52" height="52" loading="lazy" />' +
+          "<div>" +
+          '<p class="bs-eyebrow">' +
+          t(lang, p.categoryKey) +
+          "</p>" +
+          "<h3 class=\"bs-title\" style=\"font-size:1.5rem;max-width:none\">" +
+          esc(p.name) +
+          "</h3>" +
+          "</div>" +
+          statusBadge(lang, p.status) +
+          "</div>" +
+          "<p class=\"bs-lead\">" +
+          t(lang, p.headlineKey) +
+          "</p>" +
+          "<p>" +
+          t(lang, p.bodyKey) +
+          "</p>" +
+          '<p class="ir-growth-line">' +
+          t(lang, p.growthKey) +
+          "</p>" +
+          '<div class="bs-get bs-get--what" data-variant="what">' +
+          pillars +
+          "</div>" +
+          (p.laterKeys
+            ? '<p class="bs-note" style="margin-top:1rem">' +
+              t(lang, "port.long") +
+              ": " +
+              p.laterKeys.map(function (k) {
+                return t(lang, k);
+              }).join(" · ") +
+              "</p>"
+            : "") +
+          "</article>"
+        );
+      })
+      .join("");
+  }
+
+  function renderGrowth(lang) {
+    var el = document.getElementById("ir-growth");
+    if (!el || !DATA) return;
+    el.innerHTML = DATA.growthMap
+      .map(function (row, i) {
+        var parts = t(lang, row.flowKey).split(/\s*→\s*/);
+        var flow = parts
+          .map(function (part, idx) {
+            return (
+              (idx ? '<span class="ir-flow-arrow" aria-hidden="true">→</span>' : "") +
+              '<span class="ir-flow-step">' +
+              esc(part) +
+              "</span>"
+            );
+          })
+          .join("");
+        return (
+          '<article class="bs-get__item' +
+          (row.featured ? " is-featured" : "") +
+          (row.next ? " is-next" : "") +
+          '"><span class="bs-get__n">' +
+          String(i + 1).padStart(2, "0") +
+          '</span><div class="bs-get__copy"><h3><img src="' +
+          esc(row.icon) +
+          '" alt="" width="22" height="22" loading="lazy" /> ' +
+          esc(row.name) +
+          (row.next ? " " + statusBadge(lang, "in-development") : "") +
+          '</h3><div class="ir-flow-track">' +
+          flow +
+          "</div></div></article>"
+        );
+      })
+      .join("");
+  }
+
+  function renderSnapshot(lang) {
+    var el = document.getElementById("ir-snapshot");
+    if (!el || !DATA) return;
+    el.innerHTML = DATA.snapshot
+      .map(function (s, i) {
+        return (
+          '<article class="ir-glance__card">' +
+          '<span class="ir-glance__n">' +
+          String(i + 1).padStart(2, "0") +
+          "</span>" +
+          '<p class="ir-glance__value">' +
+          esc(s.value) +
+          "</p>" +
+          '<p class="ir-glance__label">' +
+          t(lang, s.labelKey) +
+          "</p>" +
+          (s.noteKey ? '<p class="ir-glance__note">' + t(lang, s.noteKey) + "</p>" : "") +
+          "</article>"
+        );
+      })
+      .join("");
+  }
+
+  function renderStrategy(lang) {
+    var el = document.getElementById("ir-strategy");
+    if (!el || !DATA) return;
+    el.innerHTML = DATA.strategySteps
+      .map(function (s) {
+        return (
+          '<article class="ir-strat-card">' +
+          '<span class="ir-strat-card__n" aria-hidden="true">' +
+          esc(s.n) +
+          "</span>" +
+          "<h3>" +
+          t(lang, "strat." + s.key + ".t") +
+          "</h3>" +
+          "<p>" +
+          t(lang, "strat." + s.key + ".p") +
+          "</p></article>"
+        );
+      })
+      .join("");
+  }
+
+  function renderPlus(lang) {
+    var feats = document.getElementById("ir-plus-feats");
+    var orbit = document.getElementById("ir-plus-orbit");
+    if (feats) {
+      feats.innerHTML = DATA.plusFeatures
+        .map(function (f, i) {
+          var n = i + 1;
+          return (
+            '<article class="bs-get__item"><span class="bs-get__n">' +
+            String(n).padStart(2, "0") +
+            '</span><div class="bs-get__copy"><h3>' +
+            t(lang, "plus.f" + n + ".t") +
+            "</h3><p>" +
+            t(lang, "plus.f" + n + ".p") +
+            "</p></div></article>"
+          );
+        })
+        .join("");
+    }
+    if (orbit) {
+      orbit.innerHTML =
+        '<div class="bs-sv"><div class="bs-sv__head"><span class="bs-sv__live"><i></i> NEWON+</span><span class="bs-sv__meta">HUB</span></div><div class="bs-sv__body"><div class="bs-sv-product__comps ir-orbit-comps">' +
+        DATA.plusOrbit
+          .map(function (p) {
+            return (
+              "<span" +
+              (p.next ? ' class="is-next"' : "") +
+              '><img src="' +
+              esc(p.icon) +
+              '" alt="" width="18" height="18" loading="lazy" /> ' +
+              esc(p.name) +
+              "</span>"
+            );
+          })
+          .join("") +
+        "</div></div></div>";
+    }
+  }
+
+  function renderIntel(lang) {
+    var flow = document.getElementById("ir-intel-flow");
+    var ex = document.getElementById("ir-intel-ex");
+    if (flow) {
+      flow.innerHTML = DATA.intelligenceFlow
+        .map(function (k) {
+          return "<li>" + t(lang, "intel." + k) + "</li>";
+        })
+        .join("");
+    }
+    if (ex) {
+      ex.innerHTML = DATA.intelligenceExamples
+        .map(function (e, i) {
+          return (
+            '<article class="bs-get__item' +
+            (e.next ? " is-next" : "") +
+            '"><span class="bs-get__n">' +
+            String(i + 1).padStart(2, "0") +
+            '</span><div class="bs-get__copy"><h3>' +
+            esc(e.name) +
+            "</h3><p>" +
+            t(lang, e.flowKey) +
+            "</p></div></article>"
+          );
+        })
+        .join("");
+    }
+  }
+
+  function renderRevenue(lang) {
+    var el = document.getElementById("ir-revenue");
+    if (!el || !DATA) return;
+    el.className = "ir-rev";
+    el.setAttribute("data-count", String(DATA.revenueLayers.length));
+    el.innerHTML = DATA.revenueLayers
+      .map(function (r) {
+        var chips = (r.items || [])
+          .map(function (k) {
+            return '<span class="ir-rev__chip">' + t(lang, k) + "</span>";
+          })
+          .join("");
+        return (
+          '<article class="ir-rev__card is-' +
+          esc(r.timing) +
+          '">' +
+          '<header class="ir-rev__head">' +
+          '<span class="ir-rev__n">' +
+          esc(r.n) +
+          "</span>" +
+          '<em class="ir-rev__timing">' +
+          t(lang, "timing." + r.timing) +
+          "</em></header>" +
+          "<h3>" +
+          t(lang, r.key) +
+          "</h3>" +
+          '<div class="ir-rev__chips">' +
+          chips +
+          "</div></article>"
+        );
+      })
+      .join("");
+  }
+
+  function renderCommerce(lang) {
+    var el = document.getElementById("ir-commerce");
+    if (!el || !DATA) return;
+
+    function storeMatrix(rows) {
+      return rows
+        .map(function (r, i) {
+          var long = r.status === "long-term";
+          return (
+            '<article class="ir-store-cell' +
+            (long ? " is-long" : "") +
+            '">' +
+            '<header class="ir-store-cell__head">' +
+            '<span class="ir-store-cell__n">' +
+            String(i + 1).padStart(2, "0") +
+            "</span>" +
+            statusBadge(lang, r.status) +
+            "</header>" +
+            '<div class="ir-store-cell__brand">' +
+            appLogoHtml(r.name, 40) +
+            "<h3>" +
+            esc(r.name) +
+            "</h3></div>" +
+            '<div class="ir-store-cell__tags">' +
+            (r.itemsKey || [])
+              .map(function (k) {
+                return "<span>" + t(lang, k) + "</span>";
+              })
+              .join("") +
+            "</div></article>"
+          );
+        })
+        .join("");
+    }
+
+    function bookStrip(rows) {
+      return rows
+        .map(function (r, i) {
+          return (
+            (i ? '<span class="ir-book-strip__join" aria-hidden="true"></span>' : "") +
+            '<article class="ir-book-item">' +
+            '<span class="ir-book-item__n">' +
+            String(i + 1).padStart(2, "0") +
+            "</span>" +
+            '<div class="ir-book-item__brand">' +
+            appLogoHtml(r.name, 36) +
+            "<h3>" +
+            esc(r.name) +
+            "</h3></div>" +
+            "<p>" +
+            (r.itemsKey || [])
+              .map(function (k) {
+                return t(lang, k);
+              })
+              .join(" · ") +
+            "</p>" +
+            statusBadge(lang, r.status) +
+            "</article>"
+          );
+        })
+        .join("");
+    }
+
+    el.innerHTML =
+      '<div class="ir-com-block">' +
+      '<div class="ir-com-block__head">' +
+      "<div><p class=\"bs-eyebrow\">" +
+      t(lang, "com.store") +
+      '</p><p class="ir-com-block__sub" data-i18n-skip>' +
+      t(lang, "com.storeHint") +
+      "</p></div>" +
+      '<span class="ir-com-count">' +
+      String(DATA.commerce.store.length).padStart(2, "0") +
+      "</span></div>" +
+      '<div class="ir-store-grid">' +
+      storeMatrix(DATA.commerce.store) +
+      "</div></div>" +
+      '<div class="ir-com-block">' +
+      '<div class="ir-com-block__head">' +
+      "<div><p class=\"bs-eyebrow\">" +
+      t(lang, "com.market") +
+      '</p><p class="ir-com-block__sub">' +
+      t(lang, "com.marketHint") +
+      "</p></div></div>" +
+      '<div class="ir-book-strip ir-book-strip--' +
+      DATA.commerce.marketplace.length +
+      '">' +
+      bookStrip(DATA.commerce.marketplace) +
+      "</div></div>" +
+      '<div class="ir-com-block">' +
+      '<div class="ir-com-block__head">' +
+      "<div><p class=\"bs-eyebrow\">" +
+      t(lang, "com.book") +
+      '</p><p class="ir-com-block__sub">' +
+      t(lang, "com.bookHint") +
+      "</p></div></div>" +
+      '<div class="ir-book-strip ir-book-strip--' +
+      DATA.commerce.booking.length +
+      '">' +
+      bookStrip(DATA.commerce.booking) +
+      "</div></div>";
+  }
+
+  function renderRoadmap(lang) {
+    var el = document.getElementById("ir-roadmap");
+    if (!el || !DATA) return;
+    el.className = "ir-road";
+    el.removeAttribute("data-count");
+    el.innerHTML =
+      '<div class="ir-road__rail" aria-hidden="true"></div>' +
+      DATA.roadmap
+        .map(function (p) {
+          return (
+            '<article class="ir-road__phase is-' +
+            esc(p.state) +
+            '">' +
+            '<div class="ir-road__head">' +
+            '<span class="ir-road__dot">' +
+            esc(p.phase) +
+            "</span>" +
+            '<p class="ir-road__state">' +
+            t(lang, p.key + ".state") +
+            "</p></div>" +
+            "<h3>" +
+            t(lang, p.key) +
+            "</h3>" +
+            '<ul class="ir-road__list">' +
+            (p.items || [])
+              .map(function (k) {
+                return "<li>" + t(lang, k) + "</li>";
+              })
+              .join("") +
+            "</ul></article>"
+          );
+        })
+        .join("");
+  }
+
+  function renderInvest(lang) {
+    var el = document.getElementById("ir-invest-focus");
+    if (!el || !DATA) return;
+    el.innerHTML = DATA.investment.fundUse
+      .map(function (k, i) {
+        return (
+          '<article class="bs-get__item"><span class="bs-get__n">' +
+          String(i + 1).padStart(2, "0") +
+          '</span><div class="bs-get__copy"><h3>' +
+          t(lang, "inv." + k) +
+          "</h3><p>" +
+          t(lang, "inv." + k + ".p") +
+          "</p></div></article>"
+        );
+      })
+      .join("");
+    var metrics = document.getElementById("ir-invest-metrics");
+    if (metrics) metrics.hidden = !(DATA.investment.investmentTarget || DATA.investment.tractionMetrics);
+  }
+
+  function renderProblemAxes(lang) {
+    var el = document.getElementById("ir-problem-axes");
+    if (!el || !DATA) return;
+    el.innerHTML = DATA.lifeAxes
+      .map(function (a) {
+        var label = typeof a === "string" ? a : t(lang, a.key);
+        return "<li>" + esc(label) + "</li>";
+      })
+      .join("");
+  }
+
+  function renderLogoRail() {
+    var el = document.getElementById("ir-logo-rail");
+    if (!el || !DATA) return;
+    var icons = [];
+    DATA.categories.forEach(function (cat) {
+      cat.products.forEach(function (p) {
+        icons.push({ icon: p.icon, name: p.name });
+      });
+    });
+    DATA.nextProducts.forEach(function (p) {
+      icons.push({ icon: p.icon, name: p.name, next: true });
+    });
+    el.innerHTML = icons
+      .map(function (p) {
+        return (
+          '<span class="ir-logo-rail__item' +
+          (p.next ? " is-next" : "") +
+          '" title="' +
+          esc(p.name) +
+          '"><img src="' +
+          esc(p.icon) +
+          '" alt="" width="36" height="36" loading="lazy" /></span>'
+        );
+      })
+      .join("");
+  }
+
+  function renderHeroNodes(lang) {
+    var el = document.getElementById("ir-hero-nodes");
+    if (!el || !DATA) return;
+    el.innerHTML = DATA.lifeAxes
+      .map(function (a, i) {
+        var label = typeof a === "string" ? a : t(lang, a.key);
+        return (
+          (i ? "<span>·</span>" : "") +
+          "<span" +
+          (i === 0 ? ' class="is-on"' : "") +
+          ">" +
+          esc(label) +
+          "</span>"
+        );
+      })
+      .join("");
+  }
+
+  function applyStatic(lang) {
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      el.innerHTML = t(lang, el.getAttribute("data-i18n"));
+    });
+    document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+      el.setAttribute("aria-label", t(lang, el.getAttribute("data-i18n-aria")));
+    });
+    var title = document.querySelector("title");
+    if (title) title.textContent = t(lang, "title");
+    var desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", t(lang, "desc"));
+    var ogt = document.querySelector('meta[property="og:title"]');
+    if (ogt) ogt.setAttribute("content", t(lang, "title"));
+    var ogd = document.querySelector('meta[property="og:description"]');
+    if (ogd) ogd.setAttribute("content", t(lang, "desc"));
+    document.querySelectorAll("[data-ir-lang]").forEach(function (btn) {
+      var on = btn.getAttribute("data-ir-lang") === lang;
+      btn.classList.toggle("is-on", on);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    var explore = document.querySelector('a[data-i18n="hero.ctaExplore"]');
+    if (explore) explore.setAttribute("href", lang === "en" ? "https://www.newon.app/en/" : "https://www.newon.app/ko/");
+  }
+
+  function renderAll(lang) {
+    lang = lang === "en" ? "en" : "ko";
+    document.documentElement.lang = lang;
+    document.documentElement.setAttribute("data-ir-lang", lang);
+    applyStatic(lang);
+    renderHeroNodes(lang);
+    renderLogoRail();
+    renderSnapshot(lang);
+    renderProblemAxes(lang);
+    renderStrategy(lang);
+    renderPortfolio(lang);
+    renderNext(lang);
+    renderPlus(lang);
+    renderRevenue(lang);
+    renderCommerce(lang);
+    renderRoadmap(lang);
+    renderInvest(lang);
+  }
 
   function currentLang() {
     try {
@@ -420,53 +679,6 @@
       if (stored === "en" || stored === "ko") return stored;
     } catch (_) {}
     return "ko";
-  }
-
-  function applyLang(lang) {
-    lang = lang === "en" ? "en" : "ko";
-    document.documentElement.lang = lang;
-    document.documentElement.setAttribute("data-ir-lang", lang);
-
-    document.querySelectorAll("[data-i18n]").forEach(function (el) {
-      var key = el.getAttribute("data-i18n");
-      if (!el.hasAttribute("data-i18n-ko")) {
-        el.setAttribute("data-i18n-ko", el.innerHTML);
-      }
-      if (lang === "en" && Object.prototype.hasOwnProperty.call(EN, key)) {
-        el.innerHTML = EN[key];
-      } else {
-        el.innerHTML = el.getAttribute("data-i18n-ko");
-      }
-    });
-
-    document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
-      var key = el.getAttribute("data-i18n-aria");
-      if (!el.hasAttribute("data-i18n-aria-ko")) {
-        el.setAttribute("data-i18n-aria-ko", el.getAttribute("aria-label") || "");
-      }
-      if (lang === "en" && Object.prototype.hasOwnProperty.call(EN, key)) {
-        el.setAttribute("aria-label", EN[key]);
-      } else {
-        el.setAttribute("aria-label", el.getAttribute("data-i18n-aria-ko"));
-      }
-    });
-
-    var title = document.querySelector("title");
-    if (title) {
-      if (!title.hasAttribute("data-i18n-ko")) title.setAttribute("data-i18n-ko", title.textContent);
-      title.textContent = lang === "en" ? EN.title : title.getAttribute("data-i18n-ko");
-    }
-    var desc = document.querySelector('meta[name="description"]');
-    if (desc) {
-      if (!desc.hasAttribute("data-i18n-ko")) desc.setAttribute("data-i18n-ko", desc.getAttribute("content") || "");
-      desc.setAttribute("content", lang === "en" ? EN.desc : desc.getAttribute("data-i18n-ko"));
-    }
-
-    document.querySelectorAll("[data-ir-lang]").forEach(function (btn) {
-      var on = btn.getAttribute("data-ir-lang") === lang;
-      btn.classList.toggle("is-on", on);
-      btn.setAttribute("aria-pressed", on ? "true" : "false");
-    });
   }
 
   function persistLang(lang) {
@@ -485,13 +697,13 @@
       btn.addEventListener("click", function () {
         var lang = btn.getAttribute("data-ir-lang") === "en" ? "en" : "ko";
         persistLang(lang);
-        applyLang(lang);
+        renderAll(lang);
       });
     });
   }
 
   function reveal() {
-    var nodes = document.querySelectorAll("[data-ir-reveal]");
+    var nodes = document.querySelectorAll("[data-bs-reveal], [data-ir-reveal]");
     if (!nodes.length) return;
     if (reduce || !("IntersectionObserver" in window)) {
       nodes.forEach(function (el) {
@@ -508,7 +720,7 @@
           }
         });
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
     );
     nodes.forEach(function (el) {
       io.observe(el);
@@ -516,7 +728,7 @@
   }
 
   function navSpy() {
-    var links = document.querySelectorAll(".ir-nav__link");
+    var links = document.querySelectorAll(".ir-nav .bs-nav__link");
     if (!links.length || !("IntersectionObserver" in window)) return;
     var map = {};
     links.forEach(function (a) {
@@ -530,11 +742,11 @@
           var link = map[entry.target.id];
           if (!link) return;
           links.forEach(function (el) {
-            el.classList.toggle("is-on", el === link);
+            el.classList.toggle("is-active", el === link);
           });
         });
       },
-      { rootMargin: "-30% 0px -55% 0px", threshold: 0.01 }
+      { rootMargin: "-28% 0px -55% 0px", threshold: 0.01 }
     );
     Object.keys(map).forEach(function (id) {
       var sec = document.getElementById(id);
@@ -542,24 +754,9 @@
     });
   }
 
-  function isPrintMode() {
-    try {
-      return new URLSearchParams(window.location.search).get("print") === "1";
-    } catch (_) {
-      return false;
-    }
-  }
-
   function boot() {
-    applyLang(currentLang());
+    renderAll(currentLang());
     bindLang();
-    if (isPrintMode()) {
-      document.documentElement.setAttribute("data-ir-print", "1");
-      document.querySelectorAll("[data-ir-reveal]").forEach(function (el) {
-        el.classList.add("is-in");
-      });
-      return;
-    }
     reveal();
     navSpy();
   }

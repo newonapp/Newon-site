@@ -445,6 +445,8 @@ function verify() {
   required.push(path.join(OUT, "card-n7x4k9", "nawon-kyung.vcf"));
   required.push(path.join(OUT, "ir", "index.html"));
   required.push(path.join(OUT, "ir", "ir.css"));
+  required.push(path.join(OUT, "ir", "ir-data.js"));
+  required.push(path.join(OUT, "ir", "ir-i18n.js"));
   required.push(path.join(OUT, "ir", "ir.js"));
   required.push(path.join(OUT, "portfolio", "index.html"));
   required.push(path.join(OUT, "portfolio", "portfolio.css"));
