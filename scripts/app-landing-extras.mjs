@@ -644,6 +644,288 @@ export const APP_LANDING = [
       text("방문 지역과 여행 통계 확인", "Explore visited places and travel stats"),
     ],
   },
+  {
+    ns: "eo",
+    name: "EatOn",
+    hash: "#eaton-app",
+    logo: "/eaton-logo.png",
+    deletePath: "eaton/delete-account/",
+    status: "coming_soon",
+    related: ["mw", "np", "sv"],
+    heroValue: text(
+      "오늘 뭐 먹지? 이제 EatOn에서 한 번에.",
+      "What to eat today? Find it all in EatOn.",
+    ),
+    glance: {
+      accent: "eo",
+      snapshot: text("먹고 싶은 모든 순간을 하나로 연결합니다.", "Connect every craving in one place."),
+      bestFor: text(
+        "오늘 뭘 먹을지 고민하고, 요리·외식·배달 정보를 여러 서비스에서 따로 찾는 분",
+        "Anyone who juggles cooking, dining out, and delivery across too many apps",
+      ),
+      coreItems: [
+        text("인기 레시피", "Popular recipes"),
+        text("AI 레시피 요약", "AI recipe summary"),
+        text("맛집 탐색", "Restaurant discovery"),
+        text("배달 탐색", "Delivery discovery"),
+        text("재료 쇼핑", "Ingredient shopping"),
+      ],
+      platforms: ["iOS", "Android"],
+      showLang: false,
+      showAvail: false,
+      sideExtra: { key: "food", label: text("🍴 카테고리", "🍴 Category"), value: text("Food / Lifestyle", "Food / Lifestyle") },
+    },
+    values: [
+      {
+        title: text("레시피를 한곳에서 비교", "Compare recipes in one place"),
+        body: text(
+          "YouTube, Instagram, Blog에 흩어진 레시피를 한 화면에서 탐색하고 원하는 콘텐츠를 선택할 수 있습니다.",
+          "Browse recipes from YouTube, Instagram, and blogs in one view and pick what fits.",
+        ),
+      },
+      {
+        title: text("AI가 긴 레시피를 짧게", "AI shortens long recipes"),
+        body: text(
+          "레시피 링크를 입력하면 AI가 재료, 조리 시간, 조리 순서, 핵심 팁을 간단하게 정리합니다.",
+          "Paste a recipe link and AI summarizes ingredients, time, steps, and key tips.",
+        ),
+      },
+      {
+        title: text("먹는 방법까지 모두 연결", "Connect every way to eat"),
+        body: text(
+          "직접 요리, 외식, 배달까지 하나의 음식에서 여러 선택지를 연결해 탐색할 수 있습니다.",
+          "From one dish, explore cook-at-home, dining out, and delivery options together.",
+        ),
+      },
+    ],
+    beforeAfter: [
+      {
+        before: text("요리 레시피를 유튜브, 인스타, 블로그에서 각각 검색", "Searching recipes separately on YouTube, Instagram, and blogs"),
+        after: text("하나의 요리에서 여러 플랫폼의 인기 레시피를 한눈에 비교", "Comparing popular recipes across platforms for one dish"),
+      },
+      {
+        before: text("긴 영상과 긴 레시피 글을 직접 확인", "Reading long videos and recipe posts yourself"),
+        after: text("링크 입력 후 AI가 핵심 재료와 조리 과정을 간단하게 정리", "Pasting a link so AI summarizes ingredients and steps"),
+      },
+      {
+        before: text("맛집 정보를 방송, SNS, 유튜브에서 따로 검색", "Hunting restaurant tips across broadcasts, SNS, and YouTube"),
+        after: text("방송 · YouTube · SNS · 블루리본 정보를 한곳에서 탐색", "Exploring broadcast, YouTube, SNS, and Blue Ribbon mentions together"),
+      },
+      {
+        before: text("레시피 확인 후 필요한 재료를 다시 검색", "Searching ingredients again after finding a recipe"),
+        after: text("레시피에서 필요한 재료와 쇼핑 정보를 바로 연결", "Connecting ingredients and shopping options from the recipe"),
+      },
+    ],
+    compareRows: [],
+    previewCaps: [
+      text("오늘 먹고 싶은 요리를 발견하세요", "Discover what you want to cook today"),
+      text("YouTube · Instagram · Blog 레시피를 한곳에서", "Recipes from YouTube, Instagram, and blogs in one place"),
+      text("링크 하나면 AI가 핵심만", "Paste a link — AI keeps the essentials"),
+      text("유명한 곳만 빠르게 발견하세요", "Find notable places faster"),
+    ],
+    faqOnly: [
+      {
+        q: text("EatOn은 어떤 앱인가요?", "What is EatOn?"),
+        a: text(
+          "EatOn은 요리, 외식, 배달, 레시피, 재료 쇼핑을 하나로 연결해 탐색할 수 있는 통합 푸드 플랫폼입니다.",
+          "EatOn is a food platform that connects cooking, dining out, delivery, recipes, and ingredient shopping in one place.",
+        ),
+      },
+      {
+        q: text("레시피는 어디에서 확인할 수 있나요?", "Where do recipes come from?"),
+        a: text(
+          "YouTube, Instagram, Blog 등 다양한 플랫폼의 레시피 콘텐츠를 연결해 탐색할 수 있도록 구성합니다.",
+          "We connect recipe content from platforms such as YouTube, Instagram, and blogs so you can explore them together.",
+        ),
+      },
+      {
+        q: text("AI 레시피 기능은 어떻게 사용하나요?", "How does AI recipe summary work?"),
+        a: text(
+          "지원되는 레시피 링크를 입력하면 AI가 재료, 조리 과정, 시간, 핵심 팁 등 주요 내용을 간단하게 정리합니다.",
+          "Paste a supported recipe link and AI summarizes ingredients, steps, timing, and key tips.",
+        ),
+      },
+      {
+        q: text("EatOn에서 직접 배달 주문도 가능한가요?", "Can I place delivery orders inside EatOn?"),
+        a: text(
+          "현재 EatOn은 인기 음식과 매장을 탐색하고 관련 서비스로 연결하는 경험을 중심으로 제공합니다. 앱 안에서 직접 결제·주문하는 기능은 출시 범위에 포함되지 않을 수 있습니다.",
+          "EatOn focuses on discovering popular food and places and connecting you to related services. In-app checkout may not be part of the initial release.",
+        ),
+      },
+      {
+        q: text("재료 가격도 비교할 수 있나요?", "Can I compare ingredient prices?"),
+        a: text(
+          "연결된 쇼핑 채널의 상품을 탐색하고 가격을 비교해 볼 수 있도록 구성합니다. 실시간 최저가 보장 기능은 아닙니다.",
+          "You can browse linked shopping channels and compare listed prices. This is not a real-time lowest-price guarantee.",
+        ),
+      },
+      {
+        q: text("어떤 맛집 정보를 볼 수 있나요?", "What restaurant info can I see?"),
+        a: text(
+          "방송, YouTube, SNS, 블루리본 등 다양한 출처에서 주목받은 맛집을 한눈에 탐색할 수 있도록 구성합니다. 제휴·추천을 단정하지 않는 탐색 정보입니다.",
+          "Explore places mentioned across broadcasts, YouTube, SNS, and Blue Ribbon-style sources. This is discovery information, not an affiliation claim.",
+        ),
+      },
+      {
+        q: text("내 데이터는 어떻게 처리되나요?", "How is my data handled?"),
+        a: text(
+          "수집 항목과 처리 방식은 기능에 따라 다를 수 있습니다. 자세한 내용은 Newon 개인정보 처리방침을 확인해 주세요.",
+          "Data practices may vary by feature. Please review Newon’s Privacy Policy for details.",
+        ),
+      },
+      {
+        q: text("도움이 필요하면 어디로 문의하나요?", "Where can I get help?"),
+        a: text(
+          "newon@newon.app 또는 사이트 문의하기를 통해 Newon에 연락해 주세요.",
+          "Contact Newon at newon@newon.app or via the site inquiry form.",
+        ),
+      },
+    ],
+  },
+  {
+    ns: "fo",
+    name: "FitOn",
+    hash: "#fiton-app",
+    logo: "/fiton-logo.png",
+    deletePath: "fiton/delete-account/",
+    status: "coming_soon",
+    related: ["eo", "mw", "np"],
+    heroValue: text(
+      "하고 싶은 모든 운동을 FitOn 하나에서.",
+      "Every workout you want — in FitOn.",
+    ),
+    glance: {
+      accent: "fo",
+      snapshot: text("모든 운동을 하나의 플랫폼에서.", "Every workout on one platform."),
+      bestFor: text(
+        "여러 운동 앱을 따로 쓰지 않고 운동 탐색부터 기록, 분석, 소통까지 한곳에서 관리하고 싶은 분",
+        "Anyone who wants discovery, logging, analysis, and community in one place instead of many apps",
+      ),
+      coreItems: [
+        text("모든 스포츠 탐색", "Explore every sport"),
+        text("운동 기록", "Workout logging"),
+        text("AI 운동 분석", "AI workout analysis"),
+        text("운동 커뮤니티", "Workout community"),
+        text("운동 통계", "Workout stats"),
+        text("운동 캘린더", "Workout calendar"),
+      ],
+      platforms: ["iOS", "Android"],
+      showLang: false,
+      showAvail: false,
+      sideExtra: {
+        key: "fitness",
+        label: text("🏃 카테고리", "🏃 Category"),
+        value: text("Sports / Fitness / Lifestyle", "Sports / Fitness / Lifestyle"),
+      },
+    },
+    values: [
+      {
+        title: text("모든 운동을 하나로", "Every workout in one place"),
+        body: text(
+          "한 종목에만 제한되지 않고 다양한 스포츠와 운동을 한 플랫폼에서 탐색하고 관리합니다.",
+          "Not limited to one sport—explore and manage many activities on one platform.",
+        ),
+      },
+      {
+        title: text("AI가 운동 흐름 분석", "AI analyzes your workout flow"),
+        body: text(
+          "운동 기록과 목표를 기반으로 운동 빈도, 성과, 지속성, 목표 달성 흐름을 분석합니다.",
+          "Analyze frequency, progress, consistency, and goal flow from your logs and goals.",
+        ),
+      },
+      {
+        title: text("기록에서 커뮤니티까지", "From logs to community"),
+        body: text(
+          "운동 기록만 남기는 것이 아니라 다른 사용자들과 운동 경험과 정보를 공유할 수 있습니다.",
+          "Go beyond logging—share experiences and tips with other active people.",
+        ),
+      },
+    ],
+    beforeAfter: [
+      {
+        before: text("러닝, 헬스, 스포츠마다 다른 앱 사용", "Using different apps for running, gym, and sports"),
+        after: text("다양한 운동과 스포츠 기록을 FitOn 하나에서 관리", "Managing many sports logs in FitOn alone"),
+      },
+      {
+        before: text("운동 기록만 숫자로 확인", "Checking workouts as numbers only"),
+        after: text("AI가 운동 패턴과 목표 달성 흐름까지 분석", "AI analyzing patterns and goal progress"),
+      },
+      {
+        before: text("운동 기록과 커뮤니티를 따로 이용", "Using logging and community in separate apps"),
+        after: text("운동 기록과 운동 커뮤니티를 하나로 연결", "Connecting logs and community in one place"),
+      },
+      {
+        before: text("운동복과 운동 용품을 각각 검색", "Searching apparel and gear separately"),
+        after: text("FitOn에서 인기 스포츠 상품과 가격 정보를 함께 탐색", "Exploring popular gear and listed prices in FitOn"),
+      },
+    ],
+    compareRows: [],
+    previewCaps: [
+      text("오늘 어떤 운동을 할까요?", "What will you train today?"),
+      text("모든 운동 기록을 한곳에서", "All workout logs in one place"),
+      text("AI가 내 운동 흐름을 분석합니다", "AI analyzes your workout flow"),
+      text("운동하는 사람들과 함께", "Train with others"),
+      text("인기 운동복과 운동 용품을 한눈에", "Popular gear at a glance"),
+    ],
+    faqOnly: [
+      {
+        q: text("FitOn은 어떤 앱인가요?", "What is FitOn?"),
+        a: text(
+          "FitOn은 다양한 스포츠와 운동을 탐색하고 기록하며 AI 운동 분석, 커뮤니티, 챌린지, 스포츠 쇼핑까지 연결하는 통합 스포츠·피트니스 플랫폼입니다.",
+          "FitOn is a sports & fitness platform that connects exploring and logging workouts with AI analysis, community, challenges, and sports shopping.",
+        ),
+      },
+      {
+        q: text("어떤 운동을 기록할 수 있나요?", "Which workouts can I log?"),
+        a: text(
+          "러닝, 헬스, 홈트, 축구, 농구, 테니스, 수영, 골프, 사이클링, 등산, 요가 등 다양한 운동과 스포츠를 지원하는 방향으로 구성합니다. 실제 지원 종목은 출시 범위에 따라 달라질 수 있습니다.",
+          "We aim to support running, gym, home workouts, soccer, basketball, tennis, swimming, golf, cycling, hiking, yoga, and more. Exact sports may vary by release.",
+        ),
+      },
+      {
+        q: text("AI 운동 분석은 무엇을 분석하나요?", "What does AI workout analysis cover?"),
+        a: text(
+          "운동 빈도, 운동 시간, 종목, 목표 달성률, 기록 변화 등 사용자의 운동 데이터를 기반으로 일반적인 운동 패턴과 성과를 분석합니다.",
+          "It analyzes general patterns and progress from frequency, time, sport mix, goal progress, and record changes.",
+        ),
+      },
+      {
+        q: text("운동 커뮤니티에서는 무엇을 할 수 있나요?", "What can I do in the community?"),
+        a: text(
+          "운동 인증, 기록, 루틴, 스포츠 이야기, 운동 팁 등을 다른 사용자들과 공유할 수 있습니다.",
+          "Share check-ins, records, routines, sports stories, and tips with others.",
+        ),
+      },
+      {
+        q: text("운동복이나 운동 용품도 볼 수 있나요?", "Can I browse gear and apparel?"),
+        a: text(
+          "인기 운동복, 운동화, 스포츠 장비와 운동 용품을 탐색하고 연결된 쇼핑 채널의 가격 정보를 비교할 수 있도록 구성합니다. 실시간 최저가 보장은 아닙니다.",
+          "Explore popular apparel, shoes, and equipment and compare listed prices on linked channels. This is not a real-time lowest-price guarantee.",
+        ),
+      },
+      {
+        q: text("FitOn이 의료 또는 부상 진단을 제공하나요?", "Does FitOn provide medical or injury diagnosis?"),
+        a: text(
+          "아니요. FitOn의 AI 분석은 일반적인 운동 기록과 피트니스 정보 제공을 위한 기능이며 의료 진단이나 치료를 제공하지 않습니다.",
+          "No. FitOn’s AI analysis is for general workout logs and fitness information—not medical diagnosis or treatment.",
+        ),
+      },
+      {
+        q: text("내 데이터는 어떻게 처리되나요?", "How is my data handled?"),
+        a: text(
+          "수집 항목과 처리 방식은 기능에 따라 다를 수 있습니다. 자세한 내용은 Newon 개인정보 처리방침을 확인해 주세요.",
+          "Data practices may vary by feature. Please review Newon’s Privacy Policy for details.",
+        ),
+      },
+      {
+        q: text("도움이 필요하면 어디로 문의하나요?", "Where can I get help?"),
+        a: text(
+          "newon@newon.app 또는 사이트 문의하기를 통해 Newon에 연락해 주세요.",
+          "Contact Newon at newon@newon.app or via the site inquiry form.",
+        ),
+      },
+    ],
+  },
 ];
 
 function appFor(ns) {
@@ -751,7 +1033,7 @@ export function localeKeysForApp(lang, app) {
   app.previewCaps.forEach((caption, index) => {
     keys[`previewCap${index + 1}`] = pick(caption);
   });
-  [...sharedFaq, ...(app.faqExtra || [])].forEach((faq, index) => {
+  [...(app.faqOnly || [...sharedFaq, ...(app.faqExtra || [])])].forEach((faq, index) => {
     keys[`faq${index + 1}Q`] = pick(faq.q);
     keys[`faq${index + 1}A`] = pick(faq.a);
   });
@@ -896,7 +1178,8 @@ ${app.compareRows.map((_, index) => {
 
 export function faqHtml(ns) {
   const app = appFor(ns);
-  const count = sharedFaq.length + (app.faqExtra?.length || 0);
+  const faqs = app.faqOnly || [...sharedFaq, ...(app.faqExtra || [])];
+  const count = faqs.length;
   return `<section id="${ns}-faq" class="ox-section al-faq ox-reveal-on-scroll" aria-labelledby="${ns}-faq-title">
       <div class="ox-container">
         ${sectionHead(ns, "faq", "faqLabel", "faqTitle", "❓")}
@@ -945,6 +1228,16 @@ ${related.map((entry) => `          <a class="al-related__card" href="${entry.ha
 
 export function finalCtaHtml(ns) {
   const app = appFor(ns);
+  if (app.status === "coming_soon") {
+    return `<section id="${ns}-final-cta" class="ox-section al-final-cta ox-reveal-on-scroll" aria-labelledby="${ns}-final-cta-title">
+      <div class="ox-container al-final-cta__inner">
+        <img class="al-final-cta__logo" src="${app.logo}" alt="" width="96" height="96" loading="lazy" decoding="async" />
+        <p class="al-final-cta__name">${app.name}</p>
+        <h2 id="${ns}-final-cta-title" class="al-final-cta__headline">${token(ns, "heroValueLine")}</h2>
+        <p class="al-final-cta__soon">${token(ns, "comingSoonLabel")}</p>
+      </div>
+    </section>`;
+  }
   return `<section id="${ns}-final-cta" class="ox-section al-final-cta ox-reveal-on-scroll" aria-labelledby="${ns}-final-cta-title">
       <div class="ox-container al-final-cta__inner">
         <img class="al-final-cta__logo" src="${app.logo}" alt="" width="96" height="96" loading="lazy" decoding="async" />

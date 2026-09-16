@@ -24,7 +24,7 @@ export const APPS_SHOWCASE_META = {
   "ox-month": {
     category: "productivity",
     categoryLabel: "Productivity",
-    tint: "#ffffff",
+    tint: "#E8E8E8",
     showcaseFeatured: false,
     taglineKo: "매일의 행동을 O/X로 기록하고 한 달의 변화를 확인하는 월간 기록 앱.",
     taglineEn: "Track daily actions with O/X and see a month of change at a glance.",
@@ -34,7 +34,7 @@ export const APPS_SHOWCASE_META = {
   goalup: {
     category: "productivity",
     categoryLabel: "Productivity",
-    tint: "#ffffff",
+    tint: "#E4D4F5",
     showcaseFeatured: false,
     taglineKo: "목표를 계획하고 실행 과정을 기록하며 꾸준한 성장을 돕는 목표 관리 앱.",
     taglineEn: "Plan goals, log progress, and stay consistent with focused growth tracking.",
@@ -44,7 +44,7 @@ export const APPS_SHOWCASE_META = {
   countup: {
     category: "productivity",
     categoryLabel: "Productivity",
-    tint: "#ffffff",
+    tint: "#D4E4F8",
     showcaseFeatured: false,
     taglineKo: "중요한 숫자와 반복 기록을 간단하게 쌓아가는 카운트 기록 앱.",
     taglineEn: "Count what matters — simple tallies for habits, practice, and streaks.",
@@ -54,7 +54,7 @@ export const APPS_SHOWCASE_META = {
   savy: {
     category: "finance",
     categoryLabel: "Finance",
-    tint: "#ffffff",
+    tint: "#D5EED9",
     showcaseFeatured: true,
     taglineKo: "소비 흐름을 기록하고 분석해 더 나은 소비 결정을 돕는 개인 금융 앱.",
     taglineEn: "Log spending and income, then understand your money with clear insights.",
@@ -66,7 +66,7 @@ export const APPS_SHOWCASE_META = {
   subping: {
     category: "finance",
     categoryLabel: "Finance",
-    tint: "#ffffff",
+    tint: "#F8D9C8",
     showcaseFeatured: false,
     taglineKo: "구독 서비스를 한곳에서 관리하고 결제 일정을 놓치지 않도록 돕는 구독 관리 앱.",
     taglineEn: "Manage subscriptions in one place and never miss a renewal date.",
@@ -76,7 +76,7 @@ export const APPS_SHOWCASE_META = {
   piggyup: {
     category: "finance",
     categoryLabel: "Finance",
-    tint: "#ffffff",
+    tint: "#F8E6B8",
     showcaseFeatured: false,
     taglineKo: "절약 기록과 챌린지를 통해 저축 습관을 만드는 서비스.",
     taglineEn: "Build saving habits with challenges, logs, and gentle coaching.",
@@ -86,7 +86,7 @@ export const APPS_SHOWCASE_META = {
   pillmate: {
     category: "health",
     categoryLabel: "Health",
-    tint: "#ffffff",
+    tint: "#D4EBEF",
     showcaseFeatured: false,
     taglineKo: "복약 일정과 기록을 관리하고 꾸준한 복용을 돕는 건강 관리 앱.",
     taglineEn: "Medication schedules and reminders that help you stay consistent.",
@@ -96,7 +96,7 @@ export const APPS_SHOWCASE_META = {
   babylog: {
     category: "family",
     categoryLabel: "Family",
-    tint: "#ffffff",
+    tint: "#FAD4E0",
     showcaseFeatured: true,
     taglineKo: "아이의 성장과 가족의 순간을 함께 기록하는 육아 기록 서비스.",
     taglineEn: "Capture growth and family moments in one shared baby journal.",
@@ -108,7 +108,7 @@ export const APPS_SHOWCASE_META = {
   petlog: {
     category: "family",
     categoryLabel: "Family",
-    tint: "#ffffff",
+    tint: "#D8EFE6",
     showcaseFeatured: false,
     taglineKo: "반려동물의 일상, 건강, 기록을 한곳에서 관리하는 반려생활 서비스.",
     taglineEn: "Daily care, health notes, and memories for the pets you love.",
@@ -118,17 +118,37 @@ export const APPS_SHOWCASE_META = {
   myworld: {
     category: "travel",
     categoryLabel: "Travel",
-    tint: "#ffffff",
+    tint: "#DCE8F5",
     showcaseFeatured: false,
     taglineKo: "여행한 국가와 도시, 추억과 기록을 나만의 세계 지도에 남기는 여행 기록 앱.",
     taglineEn: "Map countries, cities, and travel memories on your personal world map.",
     featuresKo: ["여행 지도", "여행 기록", "AI 리포트"],
     featuresEn: ["Travel map", "Journals", "AI reports"],
   },
+  eaton: {
+    category: "lifestyle",
+    categoryLabel: "Lifestyle",
+    tint: "#D8F5E0",
+    showcaseFeatured: false,
+    taglineKo: "요리·외식·배달을 하나로 연결하는 AI 푸드 플랫폼.",
+    taglineEn: "An AI food platform that connects cooking, dining out, and delivery.",
+    featuresKo: ["요리", "외식", "배달", "AI 레시피"],
+    featuresEn: ["Cooking", "Dining out", "Delivery", "AI recipes"],
+  },
+  fiton: {
+    category: "health",
+    categoryLabel: "Health",
+    tint: "#E4D8F8",
+    showcaseFeatured: false,
+    taglineKo: "운동·스포츠·AI 분석·커뮤니티를 연결하는 피트니스 플랫폼.",
+    taglineEn: "A fitness platform connecting workouts, sports, AI analysis, and community.",
+    featuresKo: ["운동", "스포츠", "AI 분석", "커뮤니티"],
+    featuresEn: ["Workout", "Sports", "AI analysis", "Community"],
+  },
   "newon-plus": {
     category: "lifestyle",
     categoryLabel: "Lifestyle",
-    tint: "#ffffff",
+    tint: "#E0E4F0",
     showcaseFeatured: false,
     ecosystem: true,
     taglineKo: "Newon의 여러 서비스를 하나의 경험으로 연결하는 통합 서비스.",
@@ -170,7 +190,11 @@ export function buildAppsShowcase(lang = "ko") {
       portfolioUrl: `../portfolio/${entry.slug}/`,
       appStoreUrl: live.appStoreUrl || "",
       googlePlayUrl: live.googlePlayUrl || "",
-      status: "live",
+      status:
+        ((live.appStoreUrl || "").startsWith("http") ||
+          (live.googlePlayUrl || "").startsWith("http"))
+          ? "live"
+          : "coming_soon",
     };
   });
 }

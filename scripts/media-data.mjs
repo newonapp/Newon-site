@@ -301,6 +301,22 @@ export const MEDIA_ITEMS_HUB = [
 
   /* —— Instagram (@newon.app) — thumbnail + external link (no embed) —— */
   {
+    id: "ig-DdVdd2xnz2t",
+    platform: "instagram",
+    category: "NEWON",
+    igType: "POST",
+    titleKo: "열한 번째 앱은 Newon+ — 11개 앱을 하나로",
+    titleEn: "Eleventh up: Newon+ — eleven apps, one platform",
+    descriptionKo: "흩어진 Newon 앱을 하나의 계정·공간으로 연결하는 통합 플랫폼. 기록·목표·돈·건강·가족·여행을 이어 갑니다.",
+    descriptionEn: "One account and one home for every Newon app — logs, goals, money, health, family, and travel connected.",
+    date: "2026-09-15",
+    url: "https://www.instagram.com/newon.app/p/DdVdd2xnz2t/",
+    embedUrl: null,
+    thumbnail: "/media-thumbs/ig-DdVdd2xnz2t.jpg?v=20260916c1",
+    duration: null,
+    featured: true,
+  },
+  {
     id: "ig-DdSZSdan_lb",
     platform: "instagram",
     category: "PRODUCT",
@@ -314,7 +330,6 @@ export const MEDIA_ITEMS_HUB = [
     embedUrl: null,
     thumbnail: "/media-thumbs/ig-DdSZSdan_lb.jpg?v=20260915c1",
     duration: null,
-    featured: true,
   },
   {
     id: "ig-DdPxNsHn_2E",

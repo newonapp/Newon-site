@@ -19,6 +19,8 @@
     ["countup-app", "#countup-app"],
     ["newon-plus-app", "#newon-plus-app"],
     ["myworld-app", "#myworld-app"],
+    ["eaton-app", "#eaton-app"],
+    ["fiton-app", "#fiton-app"],
   ];
 
   /** Home section ids used for in-page restore when no app shell is open. */

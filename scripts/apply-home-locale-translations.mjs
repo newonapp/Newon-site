@@ -32,6 +32,7 @@ const PATCHES = {
       heroCatHabits: "習慣",
       heroCatMembership: "メンバーシップ",
       heroCatTravel: "旅行",
+      heroCatLifestyle: "ライフスタイル",
       meaningLabel: "アイデンティティ",
       meaningTitle: "名前の意味",
       meaningP1Html:
@@ -109,6 +110,7 @@ const PATCHES = {
       heroCatHabits: "Hábitos",
       heroCatMembership: "Membresía",
       heroCatTravel: "Viajes",
+      heroCatLifestyle: "Estilo de vida",
       meaningLabel: "Identidad",
       meaningTitle: "Qué significa el nombre",
       meaningP1Html:
@@ -184,6 +186,7 @@ const PATCHES = {
       heroCatHabits: "Hábitos",
       heroCatMembership: "Assinatura",
       heroCatTravel: "Viagens",
+      heroCatLifestyle: "Estilo de vida",
       meaningLabel: "Identidade",
       meaningTitle: "O significado do nome",
       meaningP1Html:
@@ -259,6 +262,7 @@ const PATCHES = {
       heroCatHabits: "Habitudes",
       heroCatMembership: "Abonnement",
       heroCatTravel: "Voyage",
+      heroCatLifestyle: "Style de vie",
       meaningLabel: "Identité",
       meaningTitle: "Sens du nom",
       meaningP1Html:
@@ -334,6 +338,7 @@ const PATCHES = {
       heroCatHabits: "Gewohnheiten",
       heroCatMembership: "Mitgliedschaft",
       heroCatTravel: "Reisen",
+      heroCatLifestyle: "Lifestyle",
       meaningLabel: "Identität",
       meaningTitle: "Bedeutung des Namens",
       meaningP1Html:
@@ -409,6 +414,7 @@ const PATCHES = {
       heroCatHabits: "आदतें",
       heroCatMembership: "सदस्यता",
       heroCatTravel: "यात्रा",
+      heroCatLifestyle: "जीवनशैली",
       meaningLabel: "पहचान",
       meaningTitle: "नाम का अर्थ",
       meaningP1Html:
@@ -484,6 +490,7 @@ const PATCHES = {
       heroCatHabits: "Kebiasaan",
       heroCatMembership: "Keanggotaan",
       heroCatTravel: "Perjalanan",
+      heroCatLifestyle: "Gaya hidup",
       meaningLabel: "Identitas",
       meaningTitle: "Arti nama",
       meaningP1Html:

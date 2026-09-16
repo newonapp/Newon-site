@@ -42,7 +42,7 @@
     /* Keep legacy app-landing selectors (ox-month etc.) in sync */
     document.documentElement.setAttribute("data-theme", theme);
     var appRoots = document.querySelectorAll(
-      "#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app"
+      "#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app"
     );
     appRoots.forEach(function (el) {
       el.setAttribute("data-theme", theme);

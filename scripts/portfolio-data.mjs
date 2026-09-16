@@ -144,6 +144,30 @@ export const APP_CATALOG = [
     maxShots: 7,
     indexShots: 0,
   },
+  {
+    slug: "eaton",
+    ns: "eo",
+    name: "EatOn",
+    icon: "/eaton-logo.png",
+    homeHash: "#eaton-app",
+    shotPrefix: "eo",
+    shotDir: "i18n-ko",
+    featured: false,
+    maxShots: 0,
+    indexShots: 0,
+  },
+  {
+    slug: "fiton",
+    ns: "fo",
+    name: "FitOn",
+    icon: "/fiton-logo.png",
+    homeHash: "#fiton-app",
+    shotPrefix: "fo",
+    shotDir: "i18n-ko",
+    featured: false,
+    maxShots: 0,
+    indexShots: 0,
+  },
 ];
 
 /** App Store developer pages are not product store links — hide as App Store CTA. */
@@ -163,6 +187,8 @@ export const NAV_FLYOUT_SLUGS = [
   "countup",
   "newon-plus",
   "myworld",
+  "eaton",
+  "fiton",
 ];
 
 const NAV_FLYOUT_META = {
@@ -177,6 +203,8 @@ const NAV_FLYOUT_META = {
   countup: { descKey: "countupDesc", hintKey: "mobileCountupHint" },
   "newon-plus": { descKey: "newonPlusDesc", hintKey: "mobileNewonPlusHint", menuName: "Newon" },
   myworld: { descKey: "myworldDesc", hintKey: "mobileMyworldHint" },
+  eaton: { descKey: "eatonDesc", hintKey: "mobileEatonHint" },
+  fiton: { descKey: "fitonDesc", hintKey: "mobileFitonHint" },
 };
 
 /** Extra apps shown on the Business ecosystem (not in the portfolio catalog). */
@@ -193,8 +221,9 @@ export const BUSINESS_APP_EXTRAS = [
 export const BUSINESS_ECOSYSTEM = [
   { titleKey: "business.catProductivity", slugs: ["ox-month", "goalup", "countup"] },
   { titleKey: "business.catFinance", slugs: ["savy", "subping", "piggyup"] },
-  { titleKey: "business.catHealth", slugs: ["pillmate"] },
+  { titleKey: "business.catHealth", slugs: ["pillmate", "fiton"] },
   { titleKey: "business.catFamily", slugs: ["babylog", "petlog", "myworld"] },
+  { titleKey: "business.catLifestyle", slugs: ["eaton"] },
   { titleKey: "business.catGames", slugs: ["404-human"] },
   { titleKey: "business.catMembership", slugs: ["newon-plus"] },
 ];

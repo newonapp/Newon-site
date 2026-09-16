@@ -116,18 +116,38 @@
       colorEnd: "#EBF2F9",
       href: "#myworld-app",
     },
+    {
+      name: "EatOn",
+      slug: "eaton",
+      category: "Lifestyle",
+      descriptionKey: "eaton",
+      icon: "/eaton-logo.png",
+      color: "#D8F5E0",
+      colorEnd: "#EBF9EF",
+      href: "#eaton-app",
+    },
+    {
+      name: "FitOn",
+      slug: "fiton",
+      category: "Health",
+      descriptionKey: "fiton",
+      icon: "/fiton-logo.png",
+      color: "#E4D8F8",
+      colorEnd: "#F0EAFB",
+      href: "#fiton-app",
+    },
   ];
 
   var ROW_LAYOUTS = [
     {
-      apps: ["babylog", "goalup", "savy", "pillmate", "ox-month", "petlog", "countup", "subping", "piggyup", "newon-plus", "myworld"],
+      apps: ["babylog", "goalup", "savy", "pillmate", "ox-month", "petlog", "countup", "subping", "piggyup", "newon-plus", "myworld", "eaton", "fiton"],
       direction: "ltr",
-      duration: 40,
+      duration: 44,
     },
     {
-      apps: ["myworld", "newon-plus", "piggyup", "subping", "countup", "petlog", "ox-month", "pillmate", "savy", "goalup", "babylog"],
+      apps: ["fiton", "eaton", "myworld", "newon-plus", "piggyup", "subping", "countup", "petlog", "ox-month", "pillmate", "savy", "goalup", "babylog"],
       direction: "rtl",
-      duration: 48,
+      duration: 52,
     },
   ];
 

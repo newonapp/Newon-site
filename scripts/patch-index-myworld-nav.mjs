@@ -4,7 +4,7 @@
  * (no duplicates, correct logos). Idempotent — safe to re-run on every build.
  *
  * Order: OX MONTH → SubPing → Pillmate → SAVY → BabyLog → PetLog →
- *        PiggyUp → GoalUp → CountUp → Newon → My World → 404: HUMAN
+ *        PiggyUp → GoalUp → CountUp → Newon → My World → EatOn → FitOn
  */
 import fs from "fs";
 import path from "path";
@@ -125,20 +125,29 @@ const APPS = [
     drawerKey: "drawerMw",
   },
   {
-    id: "fh",
-    href: "/{{LANG_DIR}}/404-human/",
-    top: "/{{LANG_DIR}}/404-human/",
-    logo: "/404-human-logo.png",
-    name: "404: HUMAN",
-    desc: "{{t:nav.human404Desc}}",
-    navHint: "{{t:nav.mobileHuman404Hint}}",
-    drawerKey: "drawerFh",
-    badge: "GAME",
+    id: "eo",
+    href: "#eaton-app",
+    top: "#eaton-app",
+    logo: "/eaton-logo.png",
+    name: "EatOn",
+    desc: "{{t:nav.eatonDesc}}",
+    navHint: "{{t:nav.mobileEatonHint}}",
+    drawerKey: "drawerEo",
+  },
+  {
+    id: "fo",
+    href: "#fiton-app",
+    top: "#fiton-app",
+    logo: "/fiton-logo.png",
+    name: "FitOn",
+    desc: "{{t:nav.fitonDesc}}",
+    navHint: "{{t:nav.mobileFitonHint}}",
+    drawerKey: "drawerFo",
   },
 ];
 
 const EXPECTED_COUNT = APPS.length;
-const PAGE_PREFIXES = ["ox", "sp", "pm", "sv", "bl", "pl", "pu", "gu", "cu", "np", "mw", "nt"];
+const PAGE_PREFIXES = ["ox", "sp", "pm", "sv", "bl", "pl", "pu", "gu", "cu", "np", "mw", "eo", "fo", "nt"];
 
 function detectCurrentId(block) {
   const m =
@@ -196,12 +205,15 @@ function flyoutItem(app, isCurrent) {
 
 function mobileHint(app, pagePrefix, isCurrent) {
   if (!pagePrefix) return app.navHint;
-  // External / non-page entries always use nav.* hints
-  if (app.id === "fh") return app.navHint;
+  // EatOn / FitOn: always use nav.* until per-app drawer keys exist
+  if (app.id === "eo" || app.id === "fo") return app.navHint;
   // My World page has full drawer* keys including drawerNp / drawerMw
-  if (pagePrefix === "mw") return `{{t:mw.${app.drawerKey}}}`;
+  if (pagePrefix === "mw") {
+    if (app.id === "eo" || app.id === "fo") return app.navHint;
+    return `{{t:mw.${app.drawerKey}}}`;
+  }
   if (pagePrefix === "np") {
-    if (app.id === "mw") return app.navHint; // np locale has no drawerMw
+    if (app.id === "mw" || app.id === "eo" || app.id === "fo") return app.navHint;
     return `{{t:np.${app.drawerKey}}}`;
   }
   if (isCurrent) return `{{t:${pagePrefix}.${app.drawerKey}}}`;
@@ -307,6 +319,7 @@ const files = [
   path.join(ROOT, "templates", "pillmate-app-inc.html"),
   path.join(ROOT, "templates", "savy-app-inc.html"),
   path.join(ROOT, "templates", "babylog-app-inc.html"),
+  path.join(ROOT, "templates", "subping-page.html"),
 ];
 
 for (const f of files) {

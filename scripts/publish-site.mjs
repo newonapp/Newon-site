@@ -105,6 +105,8 @@ const PUBLISH_ROOT_IMAGES = [
   "newon-wordmark-chrome-dark.png",
   "newon-wordmark-chrome-dark.webp",
   "myworld-logo.png",
+  "eaton-logo.png",
+  "fiton-logo.png",
   "404-human-logo.png",
   "subping-hero-mark.png",
   "feature-grid.png",

@@ -64,7 +64,7 @@ html[data-newon-shell-theme="dark"] .apps-page {
   margin: 0;
   max-width: 14em;
   font-size: clamp(2.15rem, 5vw, 3.35rem);
-  font-weight: 720;
+  font-weight: 740;
   letter-spacing: -0.055em;
   line-height: 1.12;
   white-space: normal;
@@ -75,9 +75,10 @@ html[data-newon-shell-theme="dark"] .apps-page {
 .apps-hero__lead {
   margin: 1.15rem 0 0;
   max-width: 34rem;
-  font-size: 1.0625rem;
+  font-size: 1.1rem;
   line-height: 1.72;
-  color: var(--text-muted);
+  letter-spacing: -0.01em;
+  color: color-mix(in srgb, var(--text) 68%, var(--text-muted));
   white-space: normal;
   text-wrap: pretty;
 }
@@ -487,12 +488,12 @@ html[data-newon-shell-theme="dark"] .apps-featured__visual {
   width: 4.75rem;
   height: 4.75rem;
   border-radius: 20px;
-  background: #ffffff;
-  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--apps-tint, #f4f4f4) 55%, #ffffff);
+  border: 1px solid color-mix(in srgb, var(--border) 70%, var(--apps-tint, var(--border)));
 }
 
 html[data-newon-shell-theme="dark"] .apps-card__icon-wrap {
-  background: var(--apps-tint, var(--apps-surface));
+  background: color-mix(in srgb, var(--apps-tint, var(--apps-surface)) 42%, var(--apps-surface));
   border-color: transparent;
 }
 
@@ -510,26 +511,28 @@ html[data-newon-shell-theme="dark"] .apps-card__icon-wrap {
 
 .apps-card__cat {
   margin: 0 0 0.4rem;
-  font-size: 0.6875rem;
-  font-weight: 650;
-  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-soft);
+  color: color-mix(in srgb, var(--text) 48%, var(--text-soft));
 }
 
 .apps-card__name {
   margin: 0;
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: clamp(1.28rem, 2.2vw, 1.42rem);
+  font-weight: 750;
   letter-spacing: -0.035em;
+  line-height: 1.2;
   color: var(--text);
 }
 
 .apps-card__tagline {
   margin: 0.7rem 0 0;
-  font-size: 0.9375rem;
-  line-height: 1.62;
-  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  color: color-mix(in srgb, var(--text) 72%, var(--text-muted));
   flex: 1;
 }
 
@@ -539,8 +542,9 @@ html[data-newon-shell-theme="dark"] .apps-card__icon-wrap {
   align-items: center;
   gap: 0.35rem;
   margin: 1.05rem 0 0;
-  font-size: 0.8125rem;
-  color: var(--text-soft);
+  font-size: 0.84rem;
+  font-weight: 550;
+  color: color-mix(in srgb, var(--text) 55%, var(--text-soft));
 }
 
 .apps-card__dot { opacity: 0.45; }
@@ -605,6 +609,20 @@ html[data-newon-shell-theme="dark"] .apps-card__icon-wrap {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-soft);
+}
+
+.apps-store--soon .apps-store__soon {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text) 4%, var(--apps-card));
+  color: color-mix(in srgb, var(--text) 72%, var(--text-muted));
+  font-size: 0.875rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
 }
 
 .apps-store__btns {

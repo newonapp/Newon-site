@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T06:37:27.966Z",
+  "generatedAt": "2026-09-15T16:13:10.070Z",
   "note": "Business leads, waitlist, and newsletter submissions are collected via FormSubmit to newon@newon.app. Activate the inbox at formsubmit.co if not done yet.",
   "products": [
     {
@@ -203,6 +203,44 @@
       "icon": "/piggyup-logo.png",
       "homeHash": "#piggyup-app",
       "url": "/ko/#piggyup-app",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": false,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "eaton",
+      "slug": "eaton",
+      "type": "apps",
+      "status": "live",
+      "name": "EatOn",
+      "taglineKey": null,
+      "tagline": "EatOn",
+      "icon": "/eaton-logo.png",
+      "homeHash": "#eaton-app",
+      "url": "/ko/#eaton-app",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "featured": false,
+      "launchDate": null,
+      "pricing": "free"
+    },
+    {
+      "id": "fiton",
+      "slug": "fiton",
+      "type": "apps",
+      "status": "live",
+      "name": "FitOn",
+      "taglineKey": null,
+      "tagline": "FitOn",
+      "icon": "/fiton-logo.png",
+      "homeHash": "#fiton-app",
+      "url": "/ko/#fiton-app",
       "platforms": [
         "iOS",
         "Android"

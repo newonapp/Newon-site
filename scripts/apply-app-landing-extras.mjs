@@ -91,10 +91,44 @@ for (const lang of SITE_LANGS) {
       cu: "titleCountup",
       np: "titleNewonPlus",
       mw: "titleMyworld",
+      eo: "titleEaton",
+      fo: "titleFiton",
     };
     for (const app of APP_LANDING) {
       const key = map[app.ns];
       if (!key || j.meta[key] == null) continue;
+      if (app.ns === "eo") {
+        j.meta.titleEaton =
+          lang === "ko"
+            ? "EatOn | 요리·외식·배달·AI 레시피 통합 푸드 플랫폼 | Newon"
+            : "EatOn | Cooking · Dining · Delivery · AI Recipes Food Platform | Newon";
+        j.meta.descEaton =
+          lang === "ko"
+            ? "EatOn은 YouTube, Instagram, Blog의 인기 레시피부터 AI 레시피 요약, 유명 맛집, 배달 음식, 재료 쇼핑까지 한곳에서 탐색하는 통합 푸드 플랫폼입니다."
+            : "EatOn brings popular recipes from YouTube, Instagram, and blogs together with AI recipe summaries, restaurant discovery, delivery exploration, and ingredient shopping.";
+        if (typeof j.meta.keywords === "string" && !/\bEatOn\b/.test(j.meta.keywords)) {
+          j.meta.keywords = j.meta.keywords.includes("My World")
+            ? j.meta.keywords.replace("My World", "My World, EatOn")
+            : `${j.meta.keywords}, EatOn`;
+        }
+        continue;
+      }
+      if (app.ns === "fo") {
+        j.meta.titleFiton =
+          lang === "ko"
+            ? "FitOn | 운동·스포츠·AI 운동 분석 통합 플랫폼 | Newon"
+            : "FitOn | Workout · Sports · AI Analysis Platform | Newon";
+        j.meta.descFiton =
+          lang === "ko"
+            ? "FitOn은 러닝, 헬스, 홈트, 축구, 농구, 테니스 등 다양한 운동과 스포츠를 기록하고 AI 분석, 커뮤니티, 챌린지, 스포츠 쇼핑까지 연결하는 통합 피트니스 플랫폼입니다."
+            : "FitOn connects running, gym, home workouts, soccer, basketball, tennis, and more with AI analysis, community, challenges, and sports shopping.";
+        if (typeof j.meta.keywords === "string" && !/\bFitOn\b/.test(j.meta.keywords)) {
+          j.meta.keywords = j.meta.keywords.includes("EatOn")
+            ? j.meta.keywords.replace("EatOn", "EatOn, FitOn")
+            : `${j.meta.keywords}, FitOn`;
+        }
+        continue;
+      }
       const line = keysFor(lang, app).heroValueLine;
       if (!line) continue;
       j.meta[key] = `${app.name} — ${line}`;

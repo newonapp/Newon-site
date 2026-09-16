@@ -21,7 +21,10 @@ if (!s.includes('id="myworld-app"')) {
 } else {
   const inc = fs.readFileSync(path.join(ROOT, "templates", "myworld-app-inc.html"), "utf8");
   const start = s.indexOf('<div id="myworld-app"');
-  const end = s.indexOf(marker);
+  // Prefer EatOn marker when present so refreshing My World does not wipe EatOn.
+  const eatonMarker = '<div id="eaton-app"';
+  const endMarker = s.includes(eatonMarker) ? eatonMarker : marker;
+  const end = s.indexOf(endMarker);
   if (start >= 0 && end > start) {
     s = s.slice(0, start) + inc + "\n\n    " + s.slice(end);
     console.log("refreshed myworld-app section");

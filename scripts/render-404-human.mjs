@@ -41,6 +41,7 @@ const APP_DEFS = [
   { hash: "countup-app", logo: "/countup-logo.png", name: "CountUp", descKey: "nav.countupDesc" },
   { hash: "newon-plus-app", logo: "/newon-plus-logo.png", name: "Newon", descKey: "nav.newonPlusDesc" },
   { hash: "myworld-app", logo: "/myworld-logo.png", name: "My World", descKey: "nav.myworldDesc" },
+  { hash: "eaton-app", logo: "/eaton-logo.png", name: "EatOn", descKey: "nav.eatonDesc" },
 ];
 
 function loadJson(file) {

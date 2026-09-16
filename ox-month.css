@@ -8,11 +8,11 @@
   /* Compact single-row app chrome (sits under global gnav when present) */
   --ox-header-h: 52px;
   --ox-chrome-offset: var(--ox-header-h);
-  --ox-section-y: clamp(3.75rem, 9vw, 6rem);
+  --ox-section-y: clamp(3.5rem, 8vw, 5.5rem);
   --ox-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] {
   --ox-bg: #000000;
   --ox-bg-soft: #000000;
   --ox-surface: #000000;
@@ -25,15 +25,15 @@
   --ox-hero-img-bg: rgba(255, 255, 255, 0.04);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] {
   --ox-bg: #ffffff;
   --ox-bg-soft: #ffffff;
   --ox-surface: #ffffff;
-  --ox-border: rgba(0, 0, 0, 0.1);
-  --ox-border-hover: rgba(0, 0, 0, 0.16);
+  --ox-border: rgba(0, 0, 0, 0.12);
+  --ox-border-hover: rgba(0, 0, 0, 0.2);
   --ox-text: #0a0a0a;
-  --ox-muted: rgba(10, 10, 10, 0.65);
-  --ox-faint: rgba(10, 10, 10, 0.48);
+  --ox-muted: rgba(10, 10, 10, 0.72);
+  --ox-faint: rgba(10, 10, 10, 0.56);
   --ox-accent: #0a0a0a;
   --ox-hero-img-bg: rgba(0, 0, 0, 0.03);
 }
@@ -48,7 +48,7 @@ html {
   scroll-behavior: smooth;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app).ox-page {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app).ox-page {
   font-family: var(--ox-font);
   font-size: 1rem;
   line-height: 1.65;
@@ -128,7 +128,7 @@ body:has(.gnav) .ox-header {
     0 10px 36px rgba(0, 0, 0, 0.12);
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"]
   .ox-header.is-scrolled {
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.04) inset,
@@ -219,7 +219,7 @@ body:has(.gnav) .ox-header {
     0 0 0 1px var(--ox-border);
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"]
   .navbar-bar--ox
   .navbar-app-showcase__icon-img {
   box-shadow:
@@ -254,7 +254,7 @@ body:has(.gnav) .ox-header {
 }
 
 @media (max-width: 639px) {
-  :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app).ox-page {
+  :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app).ox-page {
     --ox-header-h: 48px;
   }
 
@@ -362,7 +362,7 @@ body:has(.gnav) .ox-header {
   background-color: color-mix(in srgb, var(--ox-surface) 96%, transparent);
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"]
   .lang-switcher--ox
   .lang-menu.lang-menu--toolbar
   .lang-menu__btn,
@@ -373,7 +373,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"]
   .lang-switcher--ox
   .lang-menu.lang-menu--toolbar
   .lang-menu__btn:hover,
@@ -383,7 +383,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   border-color: rgba(0, 0, 0, 0.14);
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"]
   .lang-switcher--ox
   .lang-select.lang-select--toolbar {
   background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23707070' d='M6 8L1 3h10z'/%3E%3C/svg%3E") no-repeat right 0.55rem center;
@@ -391,7 +391,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   color: #161616;
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"]
   .lang-switcher--ox
   .lang-select.lang-select--toolbar {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23bdbdbd' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
@@ -451,25 +451,25 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   }
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .lang-switcher--ox .lang-select {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .lang-switcher--ox .lang-select {
   background-color: color-mix(in srgb, var(--ox-surface) 82%, transparent);
   border-color: var(--ox-border);
   color: var(--ox-text);
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"]
   .lang-switcher--ox
   .lang-select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23707070' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"]
   .lang-switcher--ox
   .lang-select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23bdbdbd' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)
   .lang-switcher--ox
   .lang-select:hover {
   border-color: var(--ox-border-hover);
@@ -512,7 +512,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.1);
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"]
   .ox-brand:hover
   img {
   box-shadow:
@@ -612,7 +612,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
     0 4px 14px rgba(0, 0, 0, 0.1);
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"]
   .ox-theme-toggle:hover {
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.06) inset,
@@ -727,8 +727,8 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   pointer-events: none;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-hero::before,
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-hero::before {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-hero::before,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-hero::before {
   background: none;
 }
 
@@ -784,12 +784,12 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   opacity: 0.88;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-badge--secondary {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-badge--secondary {
   border-color: color-mix(in srgb, var(--ox-border) 85%, var(--ox-text) 15%);
   background: rgba(255, 255, 255, 0.03);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-badge--secondary {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-badge--secondary {
   background: color-mix(in srgb, var(--ox-text) 4%, transparent);
 }
 
@@ -802,31 +802,32 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 .ox-hero h1 {
-  margin: 0 0 1.125rem;
-  font-size: clamp(2.35rem, 5.5vw, 3.5rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.11;
+  margin: 0 0 0.85rem;
+  font-size: clamp(2.5rem, 5.8vw, 3.6rem);
+  font-weight: 760;
+  letter-spacing: -0.055em;
+  line-height: 1.08;
   color: var(--ox-text);
 }
 
 .ox-subtitle {
-  margin: 0 0 0.5rem;
-  font-size: clamp(1.05rem, 2.3vw, 1.28rem);
-  font-weight: 500;
-  color: var(--ox-muted);
-  line-height: 1.55;
+  margin: 0 0 0.55rem;
+  font-size: clamp(1.12rem, 2.4vw, 1.38rem);
+  font-weight: 650;
+  color: var(--ox-text);
+  line-height: 1.45;
+  letter-spacing: -0.025em;
   white-space: pre-line;
   overflow-wrap: break-word;
   word-break: keep-all;
 }
 
 .ox-hero-reach-summary {
-  margin: 0 0 1rem;
-  font-size: clamp(1rem, 2.1vw, 1.08rem);
+  margin: 0 0 1.1rem;
+  font-size: clamp(1.02rem, 2.1vw, 1.12rem);
   font-weight: 500;
-  color: var(--ox-muted);
-  line-height: 1.6;
+  color: color-mix(in srgb, var(--ox-text) 70%, var(--ox-muted));
+  line-height: 1.68;
   letter-spacing: -0.01em;
   overflow-wrap: break-word;
   word-break: keep-all;
@@ -858,7 +859,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   user-select: none;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-btn-soon {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-btn-soon {
   background: rgba(255, 255, 255, 0.06);
 }
 
@@ -947,11 +948,11 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   letter-spacing: -0.02em;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-store-badge {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-store-badge {
   background: rgba(255, 255, 255, 0.06);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-store-badge:hover {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-store-badge:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
@@ -967,7 +968,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset, 0 24px 56px rgba(0, 0, 0, 0.35);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-hero-frame {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-hero-frame {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
 
@@ -994,14 +995,14 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
     0 18px 42px rgba(0, 0, 0, 0.35);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-hero-frame--logo .ox-hero-logo-img {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-hero-frame--logo .ox-hero-logo-img {
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--ox-text) 8%, transparent),
     0 16px 36px rgba(0, 0, 0, 0.12);
 }
 
 /* OX MONTH / SubPing — 앱 소개 아래 가로 스크롤 스크린샷 (각 썸네일 폭 = 히어로 로고와 동일 max-width) */
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .sp-showcase-scroll {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .sp-showcase-scroll {
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
@@ -1012,20 +1013,20 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   outline: none;
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .sp-showcase-scroll:focus-visible {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .sp-showcase-scroll:focus-visible {
   outline: 2px solid color-mix(in srgb, var(--ox-text) 45%, transparent);
   outline-offset: 3px;
   border-radius: 10px;
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .sp-showcase-scroll__track {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .sp-showcase-scroll__track {
   display: flex;
   gap: 0.75rem;
   width: max-content;
   padding: 0.15rem 0.25rem 0.35rem;
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .sp-showcase-scroll__item {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .sp-showcase-scroll__item {
   flex: 0 0 auto;
   scroll-snap-align: start;
   width: min(220px, 52vw);
@@ -1033,7 +1034,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   box-sizing: border-box;
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .sp-showcase-scroll__item img {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .sp-showcase-scroll__item img {
   display: block;
   width: 100%;
   height: auto;
@@ -1160,13 +1161,13 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   text-align: center;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"]
   .ox-app-intro__panel {
   background: #ffffff;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"]
   .ox-app-intro__panel {
   background: #000000;
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 6%, transparent) inset;
@@ -1186,7 +1187,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   display: none;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)
   .ox-premium-tagline {
   max-width: 28rem;
   margin-inline: auto;
@@ -1195,7 +1196,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   line-height: 1.55;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)
   .ox-section-head {
   overflow-wrap: break-word;
   word-break: keep-all;
@@ -1248,20 +1249,20 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 .ox-section-label {
-  margin: 0 0 0.625rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: none;
-  color: var(--ox-faint);
+  margin: 0 0 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ox-text) 52%, var(--ox-muted));
 }
 
 .ox-section h2 {
-  margin: 0 0 0.25rem;
-  font-size: clamp(1.625rem, 3.5vw, 2.125rem);
-  font-weight: 700;
-  letter-spacing: -0.028em;
-  line-height: 1.22;
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.7rem, 3.4vw, 2.2rem);
+  font-weight: 750;
+  letter-spacing: -0.045em;
+  line-height: 1.2;
   color: var(--ox-text);
 }
 
@@ -1386,7 +1387,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   color: var(--ox-faint);
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app, #piggyup-app, #goalup-app, #countup-app,#myworld-app,#human404-app, #newon-plus-app, #human404-app)[data-theme="dark"]
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app, #piggyup-app, #goalup-app, #countup-app,#myworld-app,#eaton-app,#fiton-app,#human404-app, #newon-plus-app, #human404-app)[data-theme="dark"]
   .ox-review-card {
   background: linear-gradient(
     165deg,
@@ -1395,7 +1396,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   );
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app, #piggyup-app, #goalup-app, #countup-app,#myworld-app,#human404-app, #newon-plus-app, #human404-app)[data-theme="light"]
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app, #piggyup-app, #goalup-app, #countup-app,#myworld-app,#eaton-app,#fiton-app,#human404-app, #newon-plus-app, #human404-app)[data-theme="light"]
   .ox-review-card {
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--ox-text) 4%, transparent) inset,
@@ -1465,7 +1466,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   margin: 0 0 0.35rem !important;
   font-size: 0.875rem !important;
   font-weight: 500;
-  color: var(--ox-muted) !important;
+  color: color-mix(in srgb, var(--ox-text) 72%, var(--ox-muted)) !important;
   line-height: 1.55 !important;
   overflow-wrap: break-word;
   word-break: keep-all;
@@ -1585,7 +1586,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   max-width: none;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-showcase-figure {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-showcase-figure {
   background: var(--ox-surface);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
 }
@@ -1653,7 +1654,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-step-media {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-step-media {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.07);
 }
 
@@ -1765,11 +1766,11 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
     box-shadow 0.3s var(--ox-ease);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-premium-card {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-premium-card {
   background: #ffffff;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-premium-card {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-premium-card {
   background: #000000;
 }
 
@@ -1778,7 +1779,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-premium-card:hover {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-premium-card:hover {
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
 }
 
@@ -1828,12 +1829,12 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
     0 24px 48px rgba(0, 0, 0, 0.18);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-premium-highlight {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-premium-highlight {
   background: #000000;
   box-shadow: none;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-premium-highlight {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-premium-highlight {
   background: #ffffff;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
@@ -1916,11 +1917,11 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   z-index: -1;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-accent::after {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-accent::after {
   background: rgba(0, 0, 0, 0.08);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-accent::after {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-accent::after {
   background: rgba(255, 255, 255, 0.16);
 }
 
@@ -2008,19 +2009,19 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 /* Newon의 앱 드롭다운 — OX 화면 테마 연동 */
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__trigger {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .apps-flyout__trigger {
   font-size: 1.0625rem;
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--ox-muted);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__trigger:hover,
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__trigger[aria-expanded="true"] {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .apps-flyout__trigger:hover,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .apps-flyout__trigger[aria-expanded="true"] {
   color: var(--ox-text);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__panel {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .apps-flyout__panel {
   background: color-mix(in srgb, var(--ox-surface) 92%, transparent);
   -webkit-backdrop-filter: blur(18px) saturate(1.15);
   backdrop-filter: blur(18px) saturate(1.15);
@@ -2030,72 +2031,72 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
     0 28px 56px rgba(0, 0, 0, 0.4);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"]
   .apps-flyout__panel {
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--ox-text) 5%, transparent) inset,
     0 20px 48px rgba(0, 0, 0, 0.1);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"]
   .ox-header.is-scrolled {
   box-shadow:
     0 1px 0 color-mix(in srgb, var(--ox-text) 4%, transparent) inset,
     0 10px 36px rgba(0, 0, 0, 0.08);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__item:hover {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .apps-flyout__item:hover {
   background: color-mix(in srgb, var(--ox-text) 8%, transparent);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__item--current {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .apps-flyout__item--current {
   background: color-mix(in srgb, var(--ox-text) 6%, transparent);
   box-shadow: 0 0 0 1px var(--ox-border-hover) inset;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__icon {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .apps-flyout__icon {
   border-color: var(--ox-border);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .apps-flyout__desc {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .apps-flyout__desc {
   color: var(--ox-faint);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer {
   border-color: var(--ox-border);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer__summary {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer__summary {
   font-size: 1.0625rem;
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--ox-muted);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer[open] .mobile-apps-drawer__summary {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer[open] .mobile-apps-drawer__summary {
   color: var(--ox-text);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer__item {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer__item {
   border-color: var(--ox-border);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer__hint {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer__hint {
   color: var(--ox-faint);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer__item--current {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-mobile-menu .mobile-apps-drawer__item--current {
   background: color-mix(in srgb, var(--ox-text) 5%, transparent);
 }
 
 /* OX 구간 스크롤 리빌 */
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-reveal-on-scroll:not(.is-visible) {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-reveal-on-scroll:not(.is-visible) {
   opacity: 1;
   transform: none;
   filter: none;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-reveal-on-scroll.is-visible {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-reveal-on-scroll.is-visible {
   animation: none;
   opacity: 1;
   transform: none;
@@ -2115,12 +2116,12 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   }
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-feature-card {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-feature-card {
   position: relative;
   overflow: hidden;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-feature-card::after {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-feature-card::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -2136,7 +2137,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   pointer-events: none;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-feature-card:hover::after {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-feature-card:hover::after {
   opacity: 1;
 }
 
@@ -2154,17 +2155,17 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
     box-shadow: none;
   }
 
-  :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app).ox-page {
+  :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app).ox-page {
     transition: none;
   }
 
-  :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-reveal-on-scroll:not(.is-visible) {
+  :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-reveal-on-scroll:not(.is-visible) {
     opacity: 1;
     transform: none;
     filter: none;
   }
 
-  :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-reveal-on-scroll.is-visible {
+  :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-reveal-on-scroll.is-visible {
     animation: none;
   }
 
@@ -2178,31 +2179,31 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 /* SubPing detail */
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .sp-intro-html p {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .sp-intro-html p {
   margin: 0 0 1rem;
-  color: var(--ox-muted);
+  color: color-mix(in srgb, var(--ox-text) 72%, var(--ox-muted));
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .sp-intro-html p:last-child {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .sp-intro-html p:last-child {
   margin-bottom: 0;
 }
 
 /* SubPing 앱 소개 — lead / closing + 본문 포인트(strong) */
-:is(#subping-app) .sp-intro-html p.ox-app-intro__lead {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .sp-intro-html p.ox-app-intro__lead {
   color: var(--ox-text) !important;
   font-size: 0.96875rem !important;
 }
 
-:is(#subping-app) .sp-intro-html p.ox-app-intro__lead strong {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .sp-intro-html p.ox-app-intro__lead strong {
   font-weight: 700;
 }
 
-:is(#subping-app) .sp-intro-html p:not(.ox-app-intro__lead):not(.ox-app-intro__closing) strong {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .sp-intro-html p:not(.ox-app-intro__lead):not(.ox-app-intro__closing) strong {
   color: var(--ox-text);
   font-weight: 700;
 }
 
-:is(#subping-app) .sp-intro-html p.ox-app-intro__closing {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .sp-intro-html p.ox-app-intro__closing {
   margin-top: 1.375rem !important;
   padding-top: 1.125rem;
   border-top: 1px solid var(--ox-border);
@@ -2213,35 +2214,35 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   line-height: 1.55 !important;
 }
 
-:is(#subping-app) .sp-intro-html p.ox-app-intro__closing strong {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .sp-intro-html p.ox-app-intro__closing strong {
   font-weight: 700;
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-subtitle--sp {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-subtitle--sp {
   font-size: 0.875rem;
   opacity: 0.92;
   margin: 0.2rem 0 0;
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-container.narrow {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-container.narrow {
   max-width: 720px;
 }
 
 /* 추천 섹션 제목: 프리미엄(✨)과 동일 타이포 + 🎯, 가운데 정렬 */
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) .ox-reco-head {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-reco-head {
   text-align: center;
 }
 
 /* 추천 제목만 살짝 위로 (OX MONTH · SubPing · Pillmate · SAVY · BabyLog 공통) */
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
-  :is(#sp-reco-title, #ox-reco-title, #pm-reco-title, #sv-reco-title, #bl-reco-title, #pl-reco-title, #pu-reco-title, #gu-reco-title, #cu-reco-title, #mw-reco-title, #np-reco-title).ox-premium-heading {
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)
+  :is(#sp-reco-title, #ox-reco-title, #pm-reco-title, #sv-reco-title, #bl-reco-title, #pl-reco-title, #pu-reco-title, #gu-reco-title, #cu-reco-title, #mw-reco-title, #eo-reco-title, #fo-reco-title, #np-reco-title).ox-premium-heading {
   margin-top: -0.5rem;
   margin-bottom: 1rem;
 }
 
 /* 앱 페이지 “추천” 블록: 그리드 + 카드 (styles.css 다크 surface 덮어씀) */
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
-  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #eo-reco, #fo-reco, #np-reco)
   .co-build-list {
   list-style: none;
   margin: 1rem 0 0;
@@ -2254,8 +2255,8 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 @media (min-width: 640px) {
-  :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
-    :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+  :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)
+    :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #eo-reco, #fo-reco, #np-reco)
     .co-build-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
@@ -2263,7 +2264,7 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   }
 
   /* OX MONTH: 항목 3개 — 아래줄 한 칸 가운데(한 칸 너비와 동일) */
-  :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app) #ox-reco .co-build-list li:nth-child(3):last-child {
+  :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) #ox-reco .co-build-list li:nth-child(3):last-child {
     grid-column: 1 / -1;
     justify-self: center;
     width: 100%;
@@ -2271,8 +2272,8 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   }
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
-  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #eo-reco, #fo-reco, #np-reco)
   .co-build-list
   li {
   margin: 0;
@@ -2299,8 +2300,8 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
     box-shadow 0.3s var(--ox-ease);
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
-  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #eo-reco, #fo-reco, #np-reco)
   .co-build-list
   li:hover {
   border-color: var(--ox-border-hover);
@@ -2308,16 +2309,16 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
-  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #eo-reco, #fo-reco, #np-reco)
   .co-build-list
   li {
   background: #000000;
   color: var(--ox-muted);
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
-  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"]
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #eo-reco, #fo-reco, #np-reco)
   .co-build-list
   li {
   background: #fff;
@@ -2325,16 +2326,16 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--ox-text) 6%, transparent) inset;
 }
 
-:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"]
-  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+:is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"]
+  :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #eo-reco, #fo-reco, #np-reco)
   .co-build-list
   li:hover {
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)
-    :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #np-reco)
+  :is(#ox-month, #subping-app, #pillmate-app, #savy-app, #babylog-app, #petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)
+    :is(#sp-reco, #ox-reco, #pm-reco, #sv-reco, #bl-reco, #pl-reco, #pu-reco, #gu-reco, #cu-reco, #mw-reco, #eo-reco, #fo-reco, #np-reco)
     .co-build-list
     li:hover {
     transform: none;
@@ -2342,47 +2343,47 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   }
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .apps-flyout__panel {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .apps-flyout__panel {
   background: #000000;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .apps-flyout__panel {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .apps-flyout__panel {
   background: #ffffff;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-header,
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-header.is-scrolled {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-header,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-header.is-scrolled {
   background: rgba(0, 0, 0, 0.94);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-header,
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-header.is-scrolled {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-header,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-header.is-scrolled {
   background: rgba(255, 255, 255, 0.94);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-visual-strip,
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-feature-card,
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-closing,
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-footer {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-visual-strip,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-feature-card,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-closing,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-footer {
   background: #000000;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-visual-strip,
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-feature-card,
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-closing,
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-footer {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-visual-strip,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-feature-card,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-closing,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-footer {
   background: #ffffff;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-section,
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-hero,
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-mobile-menu {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-section,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-hero,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"] .ox-mobile-menu {
   background: #000000;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-section,
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-hero,
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-mobile-menu {
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-section,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-hero,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="light"] .ox-mobile-menu {
   background: #ffffff;
 }
 
@@ -2449,17 +2450,17 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 }
 
 /* Dark mode — pure black surfaces + readable copy on all app pages */
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"]
   :is(.ox-showcase, .ox-premium, .ox-app-intro, .ox-steps, .ox-showcase-dual) {
   background: #000000;
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"]
   :is(.ox-desc, .ox-hero-reach-summary, .ox-section-label, .ox-step p, .ox-step h3) {
   color: var(--ox-muted);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"]
   .lang-menu__panel {
   background: #000000;
   color: #f5f5f5;
@@ -2469,12 +2470,12 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
     0 22px 48px rgba(0, 0, 0, 0.65);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"]
   .lang-menu__option:hover {
   background: rgba(255, 255, 255, 0.08);
 }
 
-:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#newon-plus-app,#human404-app)[data-theme="dark"]
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app)[data-theme="dark"]
   .lang-menu__check {
   color: #f5f5f5;
 }
@@ -2564,4 +2565,81 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
     font-size: 1rem;
     line-height: 1.6;
   }
+}
+
+
+/* === apps-hub quality redesign (all 13 app intros) === */
+/* Rounded boxes restored; keep readable type */
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) {
+  --ox-radius: 12px;
+  --ox-radius-lg: 16px;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-badge {
+  border-radius: 999px !important;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-store-badge {
+  border-radius: 12px !important;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-feature-card,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-review-card,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-premium-card,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-step,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-hero-frame,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-app-intro__panel,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .co-build-list li,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-snap,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-ba,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-faq__item,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-related__card,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-final-cta {
+  border-radius: var(--ox-radius-lg) !important;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-hero-frame--logo .ox-hero-logo-img {
+  border-radius: clamp(20px, 4.5vw, 28px) !important;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-snap__platforms span,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .sp-showcase-soon {
+  border-radius: 18px !important;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-snap__plat {
+  border-radius: 999px !important;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .apps-store__soon,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-final-cta__soon {
+  border-radius: 999px;
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-hero-value {
+  margin: 0.65rem 0 0;
+  font-size: clamp(1.1rem, 2.35vw, 1.32rem);
+  font-weight: 720;
+  letter-spacing: -0.03em;
+  line-height: 1.4;
+  color: var(--ox-text);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-feature-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.18rem;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  color: var(--ox-text);
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-feature-lead {
+  font-size: 0.98rem;
+  line-height: 1.62;
+  color: color-mix(in srgb, var(--ox-text) 74%, var(--ox-muted));
+}
+
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-feature-note {
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--ox-text) 58%, var(--ox-muted));
 }

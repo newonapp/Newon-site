@@ -19,10 +19,14 @@ function t(flat, flatEn, key, fb = "") {
   return escapeHtml(v != null && v !== "" ? String(v) : fb);
 }
 
+function isPublicStoreUrl(url) {
+  return typeof url === "string" && /^https?:\/\//i.test(url.trim());
+}
+
 function storeLinks(app, flat, flatEn) {
   const parts = [];
   const name = escapeHtml(app.name);
-  if (app.appStoreUrl) {
+  if (isPublicStoreUrl(app.appStoreUrl)) {
     const tip = t(flat, flatEn, "studio.appsStoreAppleTip", "View on the App Store");
     const aria = t(flat, flatEn, "studio.appsStoreAppleAria", "{name} on the App Store").replace(
       "{name}",
@@ -38,7 +42,7 @@ function storeLinks(app, flat, flatEn) {
       </a>`
     );
   }
-  if (app.googlePlayUrl) {
+  if (isPublicStoreUrl(app.googlePlayUrl)) {
     const tip = t(flat, flatEn, "studio.appsStoreGoogleTip", "View on Google Play");
     const aria = t(flat, flatEn, "studio.appsStoreGoogleAria", "{name} on Google Play").replace(
       "{name}",
@@ -54,7 +58,15 @@ function storeLinks(app, flat, flatEn) {
       </a>`
     );
   }
-  if (!parts.length) return "";
+  if (!parts.length) {
+    const hero = String(pick(flat, flatEn, "studio.appsHeroTitle") || "");
+    const soonLabel =
+      String(pick(flat, flatEn, "studio.appsComingSoon") || "").trim() ||
+      (/[가-힣]/.test(hero) ? "출시 예정" : "Coming soon");
+    return `<div class="apps-store apps-store--soon" role="status">
+    <span class="apps-store__soon">${escapeHtml(soonLabel)}</span>
+  </div>`;
+  }
   return `<div class="apps-store" role="group" aria-label="${t(flat, flatEn, "studio.appsAvailableOn", "Available on")}">
     <span class="apps-store__label">${t(flat, flatEn, "studio.appsAvailableOn", "Available on")}</span>
     <div class="apps-store__btns">${parts.join("")}</div>

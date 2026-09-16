@@ -1,13 +1,22 @@
 /* Shared app-landing extras — polished product sections for all ox-page shells */
 
 .ox-hero-value {
-  margin: 0.55rem 0 0;
+  margin: 0.65rem 0 0;
   max-width: 34rem;
-  font-size: clamp(1.02rem, 2.2vw, 1.2rem);
-  font-weight: 650;
-  letter-spacing: -0.025em;
-  line-height: 1.45;
+  font-size: clamp(1.1rem, 2.35vw, 1.3rem);
+  font-weight: 720;
+  letter-spacing: -0.03em;
+  line-height: 1.4;
   color: var(--ox-text);
+}
+
+.ox-hero-reach-summary {
+  margin: 0.55rem 0 0;
+  max-width: 36rem;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  color: color-mix(in srgb, var(--ox-text) 74%, var(--ox-muted, #6b7280));
 }
 
 /* ── Product Snapshot (Overview / 한눈에 보기) ── */
@@ -28,6 +37,8 @@
 .al-glance[data-accent="cu"] { --al-accent: #ca8a04; }
 .al-glance[data-accent="np"] { --al-accent: #171717; }
 .al-glance[data-accent="mw"] { --al-accent: #0d9488; }
+.al-glance[data-accent="eo"] { --al-accent: #34d399; }
+.al-glance[data-accent="fo"] { --al-accent: #8b5cf6; }
 .al-glance[data-accent="fh"],
 .al-glance[data-accent="404"] { --al-accent: #8f1d1d; }
 
@@ -178,7 +189,7 @@
   top: 1.05rem;
   bottom: 0.1rem;
   width: 2px;
-  border-radius: 999px;
+  border-radius: 2px;
   background: color-mix(in srgb, var(--al-accent) 70%, transparent);
 }
 
@@ -384,7 +395,7 @@
   position: relative;
   padding: 0.45rem 0.9rem 0.45rem 1rem;
   border: 1px solid color-mix(in srgb, var(--ox-border) 72%, var(--al-accent));
-  border-radius: 999px;
+  border-radius: 2px;
   background: color-mix(in srgb, var(--ox-surface) 92%, transparent);
   box-shadow: 0 1px 0 color-mix(in srgb, var(--ox-text) 4%, transparent);
   font-size: 0.95rem;
@@ -433,7 +444,7 @@
   min-height: 1.7rem;
   padding: 0.28rem 0.7rem;
   border: 1px solid color-mix(in srgb, var(--al-accent) 32%, var(--ox-border));
-  border-radius: 999px;
+  border-radius: 2px;
   background: color-mix(in srgb, var(--al-accent) 8%, var(--ox-surface));
   color: var(--al-accent);
   font-size: 0.72rem;
@@ -802,7 +813,7 @@
   flex-shrink: 0;
   width: 1.35rem;
   height: 1.35rem;
-  border-radius: 999px;
+  border-radius: 2px;
   border: 1px solid var(--ox-border);
   background: color-mix(in srgb, var(--ox-bg) 70%, var(--ox-surface) 30%);
   position: relative;
@@ -869,7 +880,7 @@
   text-decoration: none;
   padding: 0.45rem 0.75rem;
   border: 1px solid var(--ox-border);
-  border-radius: 999px;
+  border-radius: 2px;
   background: var(--ox-surface);
   transition:
     color 0.15s ease,
@@ -1003,6 +1014,65 @@
   justify-content: center;
   gap: 0.65rem;
   margin-top: 0.55rem;
+}
+
+.al-final-cta__soon {
+  margin: 0.75rem 0 0;
+  color: var(--ox-muted, #6b7280);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* EatOn / FitOn — screenshot slots until real captures ship */
+:is(#eaton-app, #fiton-app) .sp-showcase-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  aspect-ratio: 9 / 19.5;
+  min-height: 24rem;
+  box-sizing: border-box;
+  padding: 1.25rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--ox-border) 88%, var(--ox-text));
+  border-radius: 18px;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--ox-text) 4.5%, var(--ox-surface)) 0%,
+      var(--ox-surface) 42%
+    );
+  text-align: center;
+}
+
+:is(#eaton-app, #fiton-app) .sp-showcase-soon__label {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: var(--ox-text);
+  opacity: 0.78;
+}
+
+:is(#eaton-app, #fiton-app) .sp-showcase-soon__cap {
+  margin: 0;
+  max-width: 11ch;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  color: var(--ox-muted, #6b7280);
+}
+
+:is(#eaton-app, #fiton-app)[data-theme="dark"] .sp-showcase-soon {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--ox-text) 7%, var(--ox-surface)) 0%,
+      var(--ox-surface) 48%
+    );
 }
 
 .al-final-cta__btn {

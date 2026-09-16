@@ -24,6 +24,8 @@ const LOGOS = {
   bl: LOGO("/babylog-logo.png"),
   pl: LOGO("/petlog-logo.png"),
   mw: LOGO("/myworld-logo.png"),
+  eo: LOGO("/eaton-logo.png"),
+  fo: LOGO("/fiton-logo.png"),
   np: LOGO("/newon-plus-logo.png"),
 };
 
@@ -37,16 +39,16 @@ const PRODUCT_HTML = {
   li3: (title) =>
     `<span class="co-product-card__title"><strong>${title}</strong></span><span class="co-product-card__logos">${LOGOS.bl}${LOGOS.pl}${LOGOS.mw}</span><span class="co-product-card__apps">BabyLog · PetLog · My World</span>`,
   li4: (title) =>
-    `<span class="co-product-card__title"><strong>${title}</strong></span><span class="co-product-card__logos co-product-card__logos--all">${LOGOS.ox}${LOGOS.gu}${LOGOS.cu}${LOGOS.savy}${LOGOS.sp}${LOGOS.pu}${LOGOS.pm}${LOGOS.bl}${LOGOS.pl}${LOGOS.mw}</span><span class="co-product-card__apps">OX MONTH · GoalUp · CountUp · Savy · SubPing · PiggyUp · Pillmate · BabyLog · PetLog · My World</span>`,
+    `<span class="co-product-card__title"><strong>${title}</strong></span><span class="co-product-card__logos co-product-card__logos--all">${LOGOS.ox}${LOGOS.gu}${LOGOS.cu}${LOGOS.savy}${LOGOS.sp}${LOGOS.pu}${LOGOS.pm}${LOGOS.bl}${LOGOS.pl}${LOGOS.mw}${LOGOS.eo}${LOGOS.fo}</span><span class="co-product-card__apps">OX MONTH · GoalUp · CountUp · Savy · SubPing · PiggyUp · Pillmate · BabyLog · PetLog · My World · EatOn · FitOn</span>`,
   li5: (title) =>
     `<span class="co-product-card__title"><strong>${title}</strong></span><span class="co-product-card__logos">${LOGOS.np}</span><span class="co-product-card__apps">Newon+</span>`,
 };
 
 const NEWON_PLUS_APPS =
-  `<span class="co-newon-plus-apps"><span class="co-newon-plus-apps__line">OX MONTH · GoalUp · CountUp · Savy · SubPing</span><span class="co-newon-plus-apps__line">PiggyUp · Pillmate · BabyLog · PetLog · My World</span></span>`;
+  `<span class="co-newon-plus-apps"><span class="co-newon-plus-apps__line">OX MONTH · GoalUp · CountUp · Savy · SubPing</span><span class="co-newon-plus-apps__line">PiggyUp · Pillmate · BabyLog · PetLog · My World · EatOn · FitOn</span></span>`;
 
 const APPS_LIST =
-  "OX MONTH · GoalUp · CountUp · Savy · SubPing · PiggyUp · Pillmate · BabyLog · PetLog · My World";
+  "OX MONTH · GoalUp · CountUp · Savy · SubPing · PiggyUp · Pillmate · BabyLog · PetLog · My World · EatOn · FitOn";
 
 /** Per-language home/meta/footer/about/np patches */
 const LANG = {
@@ -59,7 +61,7 @@ const LANG = {
       twitterDescription:
         "Newon — 앱·AI·웹 제품을 만들고 운영하는 Product Studio입니다.",
       keywords:
-        "Newon, 뉴온, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, Product & Venture Studio",
+        "Newon, 뉴온, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, EatOn, FitOn, Newon+, Product & Venture Studio",
       orgDescription: "Product & Venture Studio — apps, AI, games, and web products",
     },
     about: {
@@ -130,7 +132,7 @@ const LANG = {
       twitterDescription:
         "Newon — Product & Venture Studio building and operating digital products.",
       keywords:
-        "Newon, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, Newon+, Product & Venture Studio",
+        "Newon, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, EatOn, FitOn, Newon+, Product & Venture Studio",
       orgDescription: "Product & Venture Studio — apps, AI, games, and web products",
     },
     about: {
@@ -209,7 +211,7 @@ const I18N_EXTRA = {
       twitterDescription:
         "Newon — Product & Venture Studio building and operating digital products.",
       keywords:
-        "Newon, newon.app, アプリスタジオ, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, 旅行記録, 訪問国, 旅行マップ, travel journal, travel tracker, visited countries",
+        "Newon, newon.app, アプリスタジオ, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, EatOn, FitOn, 旅行記録, 訪問国, 旅行マップ, travel journal, travel tracker, visited countries",
       orgDescription: "アイデアを現実にするアプリスタジオ · 11のライフアプリ",
     },
     about: { statApps: "12アプリを運営", lead: "Newonは生産性・金融・健康・家族・旅行を支えるアプリスタジオです。" },
@@ -268,7 +270,7 @@ const I18N_EXTRA = {
       description:
         "Newon es un estudio de apps que convierte ideas en realidad. 12 apps de productividad, salud, finanzas, familia y viajes—OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World y Newon+.",
       keywords:
-        "Newon, newon.app, estudio de apps, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, diario de viajes, rastreador de viajes, países visitados, mapa de viajes, travel journal, travel tracker",
+        "Newon, newon.app, estudio de apps, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, EatOn, FitOn, diario de viajes, rastreador de viajes, países visitados, mapa de viajes, travel journal, travel tracker",
       orgDescription: "Estudio de apps que convierte ideas en realidad · 12 apps de vida",
     },
     about: { statApps: "12 servicios de apps", lead: "Newon crea apps de productividad, finanzas, salud, familia y viajes." },
@@ -328,7 +330,7 @@ const I18N_EXTRA = {
       description:
         "A Newon é um estúdio de apps que transforma ideias em realidade. 12 apps de produtividade, saúde, finanças, família e viagens—OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World e Newon+.",
       keywords:
-        "Newon, newon.app, estúdio de apps, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, diário de viagem, rastreador de viagem, países visitados, mapa de viagem, travel journal, travel tracker",
+        "Newon, newon.app, estúdio de apps, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, EatOn, FitOn, diário de viagem, rastreador de viagem, países visitados, mapa de viagem, travel journal, travel tracker",
       orgDescription: "Estúdio de apps que transforma ideias em realidade · 12 apps de vida",
     },
     about: { statApps: "12 serviços de apps", lead: "A Newon cria apps de produtividade, finanças, saúde, família e viagens." },
@@ -410,7 +412,7 @@ LANG.fr = buildFromEn({
     description:
       "Newon est un studio d'apps qui transforme les idées en réalité. 12 apps pour la productivité, la santé, la finance, la famille et les voyages.",
     keywords:
-      "Newon, journal de voyage, carte de voyage, pays visités, travel journal, travel tracker, My World, GoalUp, CountUp",
+      "Newon, journal de voyage, carte de voyage, pays visités, travel journal, travel tracker, My World, EatOn, FitOn, GoalUp, CountUp",
     orgDescription: "Studio d'apps qui transforme les idées en réalité · 12 apps de vie",
   },
       about: { statApps: "12 services d'apps", lead: "Newon crée des apps pour la productivité, la finance, la santé, la famille et les voyages." },
@@ -462,7 +464,7 @@ LANG.de = buildFromEn({
     description:
       "Newon ist ein App-Studio, das Ideen Wirklichkeit werden lässt. 12 Apps für Produktivität, Gesundheit, Finanzen, Familie und Reisen.",
     keywords:
-      "Newon, Reisetagebuch, Reise-Tracker, besuchte Länder, travel journal, travel tracker, My World, GoalUp, CountUp",
+      "Newon, Reisetagebuch, Reise-Tracker, besuchte Länder, travel journal, travel tracker, My World, EatOn, FitOn, GoalUp, CountUp",
     orgDescription: "App-Studio, das Ideen Wirklichkeit werden lässt · 11 Life-Apps",
   },
       about: { statApps: "12 App-Dienste", lead: "Newon entwickelt Apps für Produktivität, Finanzen, Gesundheit, Familie und Reisen." },
@@ -514,7 +516,7 @@ LANG.hi = buildFromEn({
     description:
       "Newon एक ऐप स्टूडियो है जो विचारों को वास्तविकता बनाता है। उत्पादकता, स्वास्थ्य, वित्त, परिवार और यात्रा के लिए 12 ऐप्स।",
     keywords:
-      "Newon, यात्रा जर्नल, यात्रा ट्रैकर, देखे गए देश, travel journal, travel tracker, My World",
+      "Newon, यात्रा जर्नल, यात्रा ट्रैकर, देखे गए देश, travel journal, travel tracker, My World, EatOn, FitOn",
     orgDescription: "विचारों को वास्तविकता बनाने वाला ऐप स्टूडियो · 11 लाइफ ऐप्स",
   },
       about: { statApps: "12 ऐप सेवाएँ", lead: "Newon उत्पादकता, वित्त, स्वास्थ्य, परिवार और यात्रा के लिए ऐप्स बनाता है।" },
@@ -566,7 +568,7 @@ LANG.id = buildFromEn({
     description:
       "Newon adalah studio aplikasi yang mewujudkan ide. 12 aplikasi untuk produktivitas, kesehatan, keuangan, keluarga, dan perjalanan.",
     keywords:
-      "Newon, jurnal perjalanan, pelacak perjalanan, negara dikunjungi, travel journal, travel tracker, My World",
+      "Newon, jurnal perjalanan, pelacak perjalanan, negara dikunjungi, travel journal, travel tracker, My World, EatOn, FitOn",
     orgDescription: "Studio aplikasi yang mewujudkan ide · 12 aplikasi kehidupan",
   },
       about: { statApps: "12 layanan aplikasi", lead: "Newon membuat aplikasi untuk produktivitas, keuangan, kesehatan, keluarga, dan perjalanan." },

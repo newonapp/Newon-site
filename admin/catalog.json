@@ -77,6 +77,20 @@
     "status": "live"
   },
   {
+    "slug": "eaton",
+    "name": "EatOn",
+    "type": "apps",
+    "platforms": "iOS / Android",
+    "status": "live"
+  },
+  {
+    "slug": "fiton",
+    "name": "FitOn",
+    "type": "apps",
+    "platforms": "iOS / Android",
+    "status": "live"
+  },
+  {
     "slug": "404-human",
     "name": "404: HUMAN",
     "type": "games",

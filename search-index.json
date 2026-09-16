@@ -132,6 +132,30 @@
     ]
   },
   {
+    "title": "EatOn",
+    "desc": "EatOn",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#eaton-app",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "FitOn",
+    "desc": "FitOn",
+    "type": "apps",
+    "url": "https://www.newon.app/ko/#fiton-app",
+    "lang": "ko",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
     "title": "404: HUMAN",
     "desc": "",
     "type": "games",
@@ -941,6 +965,30 @@
     "desc": "PiggyUp",
     "type": "apps",
     "url": "https://www.newon.app/en/#piggyup-app",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "EatOn",
+    "desc": "EatOn",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#eaton-app",
+    "lang": "en",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "FitOn",
+    "desc": "FitOn",
+    "type": "apps",
+    "url": "https://www.newon.app/en/#fiton-app",
     "lang": "en",
     "featured": false,
     "tags": [
@@ -1766,6 +1814,30 @@
     ]
   },
   {
+    "title": "EatOn",
+    "desc": "EatOn",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#eaton-app",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "FitOn",
+    "desc": "FitOn",
+    "type": "apps",
+    "url": "https://www.newon.app/ja/#fiton-app",
+    "lang": "ja",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
     "title": "404: HUMAN",
     "desc": "",
     "type": "games",
@@ -2575,6 +2647,30 @@
     "desc": "PiggyUp",
     "type": "apps",
     "url": "https://www.newon.app/es/#piggyup-app",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "EatOn",
+    "desc": "EatOn",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#eaton-app",
+    "lang": "es",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "FitOn",
+    "desc": "FitOn",
+    "type": "apps",
+    "url": "https://www.newon.app/es/#fiton-app",
     "lang": "es",
     "featured": false,
     "tags": [
@@ -3400,6 +3496,30 @@
     ]
   },
   {
+    "title": "EatOn",
+    "desc": "EatOn",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#eaton-app",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "FitOn",
+    "desc": "FitOn",
+    "type": "apps",
+    "url": "https://www.newon.app/pt-br/#fiton-app",
+    "lang": "pt-br",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
     "title": "404: HUMAN",
     "desc": "",
     "type": "games",
@@ -4209,6 +4329,30 @@
     "desc": "PiggyUp",
     "type": "apps",
     "url": "https://www.newon.app/fr/#piggyup-app",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "EatOn",
+    "desc": "EatOn",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#eaton-app",
+    "lang": "fr",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "FitOn",
+    "desc": "FitOn",
+    "type": "apps",
+    "url": "https://www.newon.app/fr/#fiton-app",
     "lang": "fr",
     "featured": false,
     "tags": [
@@ -5034,6 +5178,30 @@
     ]
   },
   {
+    "title": "EatOn",
+    "desc": "EatOn",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#eaton-app",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "FitOn",
+    "desc": "FitOn",
+    "type": "apps",
+    "url": "https://www.newon.app/de/#fiton-app",
+    "lang": "de",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
     "title": "404: HUMAN",
     "desc": "",
     "type": "games",
@@ -5851,6 +6019,30 @@
     ]
   },
   {
+    "title": "EatOn",
+    "desc": "EatOn",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#eaton-app",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "FitOn",
+    "desc": "FitOn",
+    "type": "apps",
+    "url": "https://www.newon.app/hi/#fiton-app",
+    "lang": "hi",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
     "title": "404: HUMAN",
     "desc": "",
     "type": "games",
@@ -6660,6 +6852,30 @@
     "desc": "PiggyUp",
     "type": "apps",
     "url": "https://www.newon.app/id/#piggyup-app",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "EatOn",
+    "desc": "EatOn",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#eaton-app",
+    "lang": "id",
+    "featured": false,
+    "tags": [
+      "apps",
+      "live"
+    ]
+  },
+  {
+    "title": "FitOn",
+    "desc": "FitOn",
+    "type": "apps",
+    "url": "https://www.newon.app/id/#fiton-app",
     "lang": "id",
     "featured": false,
     "tags": [
