@@ -301,6 +301,22 @@ export const MEDIA_ITEMS_HUB = [
 
   /* —— Instagram (@newon.app) — thumbnail + external link (no embed) —— */
   {
+    id: "ig-DdYgDwhFCH0",
+    platform: "instagram",
+    category: "NEWON",
+    igType: "POST",
+    titleKo: "11개의 앱은 끝이 아니라 시작입니다",
+    titleEn: "Eleven apps are the beginning, not the end",
+    descriptionKo: "11개 앱 소개를 마친 뒤, Newon+ 생태계와 다음 성장을 향해 갑니다. AI·커뮤니티·쇼핑·구독, 웹·B2B까지 확장.",
+    descriptionEn: "After introducing all 11 apps, Newon moves to the next chapter — Newon+ ecosystem, AI, community, shopping, subscriptions, plus web and B2B.",
+    date: "2026-09-17",
+    url: "https://www.instagram.com/newon.app/p/DdYgDwhFCH0/",
+    embedUrl: null,
+    thumbnail: "/media-thumbs/ig-DdYgDwhFCH0.jpg?v=20260918c1",
+    duration: null,
+    featured: true,
+  },
+  {
     id: "ig-DdVdd2xnz2t",
     platform: "instagram",
     category: "NEWON",
@@ -314,7 +330,6 @@ export const MEDIA_ITEMS_HUB = [
     embedUrl: null,
     thumbnail: "/media-thumbs/ig-DdVdd2xnz2t.jpg?v=20260916c1",
     duration: null,
-    featured: true,
   },
   {
     id: "ig-DdSZSdan_lb",
