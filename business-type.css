@@ -1,0 +1,13 @@
+/**
+ * Business typography — responsive root scale for hub, service, pillar, creative pages.
+ * Works with rem bumps in business-*.css so body copy and labels stay readable on all viewports.
+ */
+html:has(.bz-page),
+html:has(.bs-page),
+html:has(.bp-page),
+html:has(.cr-page),
+html:has(.bz-ok-page),
+html:has(.ai-page),
+html:has(.ns-hero) {
+  font-size: clamp(16.75px, 16.15px + 0.28vw, 17.5px);
+}

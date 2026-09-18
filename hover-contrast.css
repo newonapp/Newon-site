@@ -1,0 +1,357 @@
+/* Hover contrast safety — keep text readable on hover (all surfaces).
+   Load last so it wins over leftover invert/light-hover conflicts. */
+
+/* ——— About: studio invert — beat soft-gray :not() hover rules ——— */
+.ab-page .ab-metrics__cell:hover,
+.ab-page .ab-mission__card:hover,
+.ab-page .ab-mission__card:first-child:hover,
+.ab-page .ab-mission__card--ink:hover,
+.ab-page .ab-build__card:hover,
+.ab-page .ab-build__card:first-child:hover,
+.ab-page .ab-build__card--ink:hover,
+.ab-page .ab-build__card:not(.ab-build__card--ink):not(:first-child):hover,
+.ab-page .ab-principle--tile:hover,
+.ab-page .ab-principle--tile:not(.is-featured):hover,
+.ab-page .ab-principle--tile.is-featured:hover,
+.ab-page .ab-product:hover,
+.ab-page .ab-explore__panel:hover,
+.ab-page .ab-explore__panel:nth-child(1):hover,
+.ab-page .ab-explore__panel:nth-child(4):hover,
+.ab-page .ab-explore__panel--invert:hover,
+.ab-page .ab-role:hover,
+.ab-page .ab-glance .ab-role:first-child:hover,
+.ab-page .ab-work__step:hover,
+.ab-page .ab-why__type:hover,
+.ab-page .ab-space:hover,
+.ab-page .ab-problem:hover,
+.ab-page .ab-journey__step:hover,
+.ab-page .ab-eco__item:hover,
+.ab-page .ab-areas__chip:hover,
+.ab-page .ab-person:hover,
+.ab-page .ab-person:not(.ab-person--ink):hover,
+.ab-page .ab-person--ink:hover,
+.ab-page .ab-person--paper:hover {
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+  border-color: #0a0a0a !important;
+}
+
+.ab-page .ab-metrics__cell:hover *,
+.ab-page .ab-mission__card:hover *,
+.ab-page .ab-build__card:hover *,
+.ab-page .ab-build__card:not(.ab-build__card--ink):not(:first-child):hover *,
+.ab-page .ab-principle--tile:hover *,
+.ab-page .ab-principle--tile:not(.is-featured):hover *,
+.ab-page .ab-product:hover *,
+.ab-page .ab-explore__panel:hover *,
+.ab-page .ab-role:hover *,
+.ab-page .ab-work__step:hover *,
+.ab-page .ab-why__type:hover *,
+.ab-page .ab-space:hover *,
+.ab-page .ab-journey__step:hover *,
+.ab-page .ab-eco__item:hover *,
+.ab-page .ab-person:hover *,
+.ab-page .ab-person:not(.ab-person--ink):hover *,
+.ab-page .ab-person--ink:hover *,
+.ab-page .ab-person--paper:hover * {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+.ab-page .ab-mission__card:hover .ab-mission__card-body,
+.ab-page .ab-mission__card:hover .ab-mission__n,
+.ab-page .ab-build__card:hover .ab-build__body,
+.ab-page .ab-build__card:hover .ab-build__n,
+.ab-page .ab-build__card:hover .ab-build__go,
+.ab-page .ab-product:hover .ab-product__desc,
+.ab-page .ab-product:hover .ab-product__cat,
+.ab-page .ab-product:hover .ab-product__status,
+.ab-page .ab-product:hover .ab-product__go,
+.ab-page .ab-explore__panel:hover .ab-explore__body,
+.ab-page .ab-explore__panel:hover .ab-explore__n,
+.ab-page .ab-explore__panel:hover .ab-explore__go,
+.ab-page .ab-role:hover .ab-role__tag,
+.ab-page .ab-role:hover .ab-role__n,
+.ab-page .ab-work__step:hover .ab-work__body,
+.ab-page .ab-work__step:hover .ab-work__n,
+.ab-page .ab-why__type:hover .ab-why__list li,
+.ab-page .ab-why__type:hover .ab-why__plus,
+.ab-page .ab-metrics__cell:hover .ab-metrics__n,
+.ab-page .ab-metrics__cell:hover .ab-metrics__label,
+.ab-page .ab-principle--tile:hover .ab-principle__body,
+.ab-page .ab-principle--tile:hover .ab-principle__n,
+.ab-page .ab-principle--tile:not(.is-featured):hover .ab-principle__body,
+.ab-page .ab-principle--tile:not(.is-featured):hover .ab-principle__n,
+.ab-page .ab-space:hover .ab-space__body,
+.ab-page .ab-space:hover .ab-space__n,
+.ab-page .ab-space:hover .ab-space__count,
+.ab-page .ab-journey__step:hover .ab-journey__body,
+.ab-page .ab-journey__step:hover .ab-journey__year,
+.ab-page .ab-eco__item:hover .ab-eco__body,
+.ab-page .ab-eco__item:hover .ab-eco__go,
+.ab-page .ab-person:hover .ab-person__body,
+.ab-page .ab-person:hover .ab-person__n,
+.ab-page .ab-person:hover .ab-person__via,
+.ab-page .ab-person:hover .ab-person__tags li,
+.ab-page .ab-person:not(.ab-person--ink):hover .ab-person__body,
+.ab-page .ab-person:not(.ab-person--ink):hover .ab-person__n,
+.ab-page .ab-person:not(.ab-person--ink):hover .ab-person__via,
+.ab-page .ab-person:not(.ab-person--ink):hover .ab-person__tags li {
+  color: rgba(255, 255, 255, 0.78) !important;
+  background: transparent !important;
+}
+
+.ab-page .ab-mission__card:hover .ab-mission__n,
+.ab-page .ab-build__card:hover .ab-build__n,
+.ab-page .ab-explore__panel:hover .ab-explore__n,
+.ab-page .ab-work__step:hover .ab-work__n,
+.ab-page .ab-principle--tile:hover .ab-principle__n,
+.ab-page .ab-person:hover .ab-person__n,
+.ab-page .ab-space:hover .ab-space__n,
+.ab-page .ab-metrics__cell:hover .ab-metrics__n {
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  background: transparent !important;
+  color: #ffffff !important;
+}
+
+.ab-page .ab-product:hover .ab-product__logo,
+.ab-page .ab-explore__panel:hover .ab-explore__logos .ab-logo,
+.ab-page .ab-explore__panel:hover .ab-explore__logos img,
+.ab-page .ab-space:hover .ab-space__app {
+  border-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+/* ——— Business: use-case board (black hover → light text) ——— */
+.bs-use-board__item:hover,
+.bs-use-board__item:hover .bs-use-board__title {
+  color: #ffffff;
+}
+.bs-use-board__item:hover .bs-use-board__n {
+  color: rgba(255, 255, 255, 0.55);
+}
+.bs-use-board__item:hover .bs-use-board__tag {
+  color: rgba(255, 255, 255, 0.78);
+  border-color: rgba(255, 255, 255, 0.28);
+  background: transparent;
+}
+.bs-use-board__item:hover .bs-use-board__body {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+/* Dark shell: use-board flips to light hover — keep dark text */
+html[data-newon-shell-theme="dark"] .bs-use-board__item:hover,
+html[data-newon-shell-theme="dark"] .bs-use-board__item:hover .bs-use-board__title {
+  color: #0a0a0a;
+}
+html[data-newon-shell-theme="dark"] .bs-use-board__item:hover .bs-use-board__n {
+  color: rgba(0, 0, 0, 0.4);
+}
+html[data-newon-shell-theme="dark"] .bs-use-board__item:hover .bs-use-board__tag {
+  color: rgba(0, 0, 0, 0.55);
+  border-color: rgba(0, 0, 0, 0.2);
+  background: transparent;
+}
+html[data-newon-shell-theme="dark"] .bs-use-board__item:hover .bs-use-board__body {
+  color: rgba(0, 0, 0, 0.62);
+}
+
+/* ——— Business: flow-stage light hover (keep stroke dark) ——— */
+.bs-page:not([data-bs-analytics^="studio_"])
+  .bs-flow-stage-grid--flow
+  .bs-flow-stage-grid__item:hover
+  .bs-flow-stage-grid__n {
+  -webkit-text-stroke-color: rgba(10, 10, 10, 0.18);
+  color: transparent;
+}
+.bs-page:not([data-bs-analytics^="studio_"])
+  .bs-flow-stage-grid--flow
+  .bs-flow-stage-grid__item:hover
+  h3 {
+  color: #0a0a0a;
+}
+.bs-page:not([data-bs-analytics^="studio_"])
+  .bs-flow-stage-grid--flow
+  .bs-flow-stage-grid__item:hover
+  p {
+  color: var(--bs-muted, rgba(10, 10, 10, 0.62));
+}
+
+/* ——— Business: light/transparent get + process hovers ——— */
+.bs-page[data-bs-analytics^="studio_"] .bs-get--who .bs-get__item:hover h3,
+.bs-page[data-bs-analytics^="studio_"] .bs-get--what .bs-get__item:hover h3,
+.bs-page[data-bs-analytics^="studio_"] .bs-get--axiom .bs-get__item:hover h3,
+.bs-page[data-bs-analytics^="studio_"] .bs-get--signal .bs-get__item:hover h3,
+.bs-page[data-bs-analytics^="studio_"] .bs-get--compare .bs-get__item:hover h3 {
+  color: inherit;
+}
+.bs-page[data-bs-analytics^="studio_"] .bs-get--who .bs-get__item:hover p,
+.bs-page[data-bs-analytics^="studio_"] .bs-get--what .bs-get__item:hover p,
+.bs-page[data-bs-analytics^="studio_"] .bs-get--axiom .bs-get__item:hover p,
+.bs-page[data-bs-analytics^="studio_"] .bs-get--signal .bs-get__item:hover p,
+.bs-page[data-bs-analytics^="studio_"] .bs-get--compare .bs-get__item:hover p {
+  color: var(--bs-muted, rgba(10, 10, 10, 0.62));
+}
+.bs-page:not([data-bs-analytics^="studio_"]) .bs-process--steps .bs-process__item:hover h3 {
+  color: inherit;
+}
+.bs-page:not([data-bs-analytics^="studio_"]) .bs-process--steps .bs-process__item:hover p {
+  color: var(--bs-muted, rgba(10, 10, 10, 0.62));
+}
+.bs-page:not([data-bs-analytics^="studio_"]) .bs-areas--signal .bs-areas__item:hover h3,
+.bs-page:not([data-bs-analytics^="studio_"]) .bs-areas--caps .bs-areas__item:hover h3 {
+  color: inherit;
+}
+.bs-page:not([data-bs-analytics^="studio_"]) .bs-areas--signal .bs-areas__item:hover p,
+.bs-page:not([data-bs-analytics^="studio_"]) .bs-areas--caps .bs-areas__item:hover p {
+  color: var(--bs-muted, rgba(10, 10, 10, 0.62));
+}
+
+/* Deliver included / catalog light wash */
+.bs-page[data-bs-analytics^="studio_"] .bs-deliver--included .bs-deliver__item:hover,
+.bs-page:not([data-bs-analytics^="studio_"]) .bs-deliver--included .bs-deliver__item:hover {
+  color: inherit;
+}
+.bs-page[data-bs-analytics^="studio_"] .bs-deliver--included .bs-deliver__item:hover .bs-deliver__t,
+.bs-page:not([data-bs-analytics^="studio_"]) .bs-deliver--included .bs-deliver__item:hover .bs-deliver__t {
+  color: inherit;
+}
+.bs-page[data-bs-analytics^="studio_"] .bs-deliver--included .bs-deliver__item:hover .bs-deliver__b,
+.bs-page:not([data-bs-analytics^="studio_"]) .bs-deliver--included .bs-deliver__item:hover .bs-deliver__b {
+  color: var(--bs-muted, rgba(10, 10, 10, 0.62));
+}
+
+/* ——— Home studio: light product hover ——— */
+.hs-prod-feat:hover {
+  color: #0a0a0a;
+}
+.hs-prod-feat:hover .hs-prod-feat__name,
+.hs-prod-feat:hover .hs-prod-feat__go {
+  color: #0a0a0a;
+}
+.hs-prod-feat:hover .hs-prod-feat__desc,
+.hs-prod-feat:hover .hs-prod-feat__cat,
+.hs-prod-feat:hover .hs-prod-feat__status,
+.hs-prod-feat:hover .hs-prod-feat__meta {
+  color: rgba(10, 10, 10, 0.55);
+}
+.hs-prod-feat--ink:hover,
+.hs-prod-feat--hero:hover {
+  color: #f5f5f5;
+}
+.hs-prod-feat--ink:hover .hs-prod-feat__name,
+.hs-prod-feat--hero:hover .hs-prod-feat__name,
+.hs-prod-feat--ink:hover .hs-prod-feat__go,
+.hs-prod-feat--hero:hover .hs-prod-feat__go {
+  color: #fff;
+}
+.hs-prod-feat--ink:hover .hs-prod-feat__desc,
+.hs-prod-feat--hero:hover .hs-prod-feat__desc,
+.hs-prod-feat--ink:hover .hs-prod-feat__cat,
+.hs-prod-feat--hero:hover .hs-prod-feat__cat,
+.hs-prod-feat--ink:hover .hs-prod-feat__status,
+.hs-prod-feat--hero:hover .hs-prod-feat__status,
+.hs-prod-feat--ink:hover .hs-prod-feat__meta,
+.hs-prod-feat--hero:hover .hs-prod-feat__meta {
+  color: rgba(245, 245, 245, 0.55);
+}
+
+/* ——— Tools: invert hover keeps nested text readable ——— */
+.tools-card:hover .tools-card__name,
+.tools-card:hover .tools-card__desc,
+.tools-card:hover .tools-card__foot,
+.tools-card:hover .tools-card__go,
+.tools-quick__card:hover .tools-quick__copy strong,
+.tools-quick__card:hover .tools-quick__copy em,
+.tools-quick__card:hover .tools-quick__copy p,
+.tools-quick__card:hover .tools-quick__arrow {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+.tools-card:hover .tools-card__icon,
+.tools-quick__card:hover .tools-quick__icon {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.85) !important;
+  background: transparent !important;
+}
+html[data-newon-shell-theme="dark"] .tools-card:hover .tools-card__name,
+html[data-newon-shell-theme="dark"] .tools-card:hover .tools-card__desc,
+html[data-newon-shell-theme="dark"] .tools-card:hover .tools-card__foot,
+html[data-newon-shell-theme="dark"] .tools-card:hover .tools-card__go,
+html[data-newon-shell-theme="dark"] .tools-quick__card:hover .tools-quick__copy strong,
+html[data-newon-shell-theme="dark"] .tools-quick__card:hover .tools-quick__copy em,
+html[data-newon-shell-theme="dark"] .tools-quick__card:hover .tools-quick__copy p,
+html[data-newon-shell-theme="dark"] .tools-quick__card:hover .tools-quick__arrow {
+  color: #0a0a0a !important;
+}
+html[data-newon-shell-theme="dark"] .tools-card:hover .tools-card__icon,
+html[data-newon-shell-theme="dark"] .tools-quick__card:hover .tools-quick__icon {
+  color: #0a0a0a !important;
+  border-color: #0a0a0a !important;
+}
+
+.rs-explore__item:hover .rs-explore__name,
+.rs-explore__item:focus-visible .rs-explore__name,
+.rs-explore__item.is-current .rs-explore__name {
+  color: inherit;
+}
+.rs-page[data-rs-hub="index"] .rx-mini:hover .rx-mini__title,
+.rs-page[data-rs-hub="index"] .rx-mini:hover .rx-mini__cta {
+  color: #fff;
+}
+
+/* Dark theme shells: flip paper/ink safety */
+html[data-newon-shell-theme="dark"] .ab-product:hover {
+  background: #141414;
+  color: #f5f5f5;
+}
+html[data-newon-shell-theme="dark"] .ab-product:hover .ab-product__name,
+html[data-newon-shell-theme="dark"] .ab-product:hover .ab-product__go {
+  color: #fff;
+}
+html[data-newon-shell-theme="dark"] .ab-product:hover .ab-product__desc,
+html[data-newon-shell-theme="dark"] .ab-product:hover .ab-product__cat,
+html[data-newon-shell-theme="dark"] .ab-product:hover .ab-product__status {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+html[data-newon-shell-theme="dark"] .ab-build__card:hover {
+  background: #141414;
+  color: #f5f5f5;
+}
+html[data-newon-shell-theme="dark"] .ab-build__card:hover .ab-build__title {
+  color: #fff;
+}
+html[data-newon-shell-theme="dark"] .ab-build__card:hover .ab-build__n,
+html[data-newon-shell-theme="dark"] .ab-build__card:hover .ab-build__body,
+html[data-newon-shell-theme="dark"] .ab-build__card:hover .ab-build__go {
+  color: rgba(245, 245, 245, 0.5);
+}
+html[data-newon-shell-theme="dark"] .ab-build__card:first-child:hover {
+  background: #f5f5f5;
+  color: #0a0a0a;
+}
+html[data-newon-shell-theme="dark"] .ab-build__card:first-child:hover .ab-build__title {
+  color: #0a0a0a;
+}
+html[data-newon-shell-theme="dark"] .ab-build__card:first-child:hover .ab-build__n,
+html[data-newon-shell-theme="dark"] .ab-build__card:first-child:hover .ab-build__body,
+html[data-newon-shell-theme="dark"] .ab-build__card:first-child:hover .ab-build__go {
+  color: rgba(10, 10, 10, 0.55);
+}
+
+html[data-newon-shell-theme="dark"] .ab-person:hover,
+html[data-newon-shell-theme="dark"] .ab-person--ink:hover,
+html[data-newon-shell-theme="dark"] .ab-person--paper:hover {
+  color: inherit;
+}
+html[data-newon-shell-theme="dark"] .ab-person:hover .ab-person__title {
+  color: #f5f5f5;
+}
+html[data-newon-shell-theme="dark"] .ab-person:hover .ab-person__n {
+  color: rgba(255, 255, 255, 0.28);
+}
+html[data-newon-shell-theme="dark"] .ab-person:hover .ab-person__body,
+html[data-newon-shell-theme="dark"] .ab-person:hover .ab-person__via,
+html[data-newon-shell-theme="dark"] .ab-person:hover .ab-person__tags li {
+  color: rgba(255, 255, 255, 0.72);
+}
