@@ -10,8 +10,8 @@ import { buildHomeStudioBody } from "./home-page-body.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
-const CSS_VER = "20260830finalrail1";
-const JS_VER = "20260830finalrail1";
+const CSS_VER = "20260920story9";
+const JS_VER = "20260920story9";
 
 function patchHome(html, body) {
   // Prefer HQ class; normalize legacy opener to HQ without touching hero.

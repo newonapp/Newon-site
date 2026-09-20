@@ -39,6 +39,19 @@
     min-height: 3rem;
   }
 
+  .hero--ecosystem.hero--vision .hero-actions--vision .hero-btn-primary,
+  .hero--ecosystem.hero--vision .hero-actions--vision .hero-btn-secondary {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .hero--ecosystem.hero--vision .hero-desc--primary,
+  .hero--ecosystem.hero--vision .hero-desc--areas {
+    padding-inline: 0;
+    text-wrap: pretty;
+    word-break: keep-all;
+  }
+
   .hero--ecosystem .hub-strip {
     gap: 0.55rem 1.05rem;
     margin-top: 0.85rem;

@@ -1835,6 +1835,9 @@ html[data-newon-shell-theme="light"]
   max-height: 100dvh;
 }
 
+/* Vision hero — left-aligned company framing (homepage first viewport only) */
+/* Homepage vision hero styles live in home-studio.css (home-only). */
+
 .hero--classic {
   justify-content: center;
   min-height: 0;
@@ -2587,9 +2590,10 @@ html[data-newon-shell-theme="dark"] .hero-desc {
   animation-delay: var(--hero-enter-delay, 0ms);
 }
 
-/* First-screen ecosystem: never wait on JS/animation — always visible */
-.hero--ecosystem .hero-eco-enter,
-.hero--ecosystem.hero--entered .hero-eco-enter {
+/* First-screen ecosystem: never wait on JS/animation — always visible
+   (vision hero re-enables a short CSS entrance below) */
+.hero--ecosystem:not(.hero--vision) .hero-eco-enter,
+.hero--ecosystem:not(.hero--vision).hero--entered .hero-eco-enter {
   opacity: 1 !important;
   transform: none !important;
   animation: none !important;
@@ -2816,6 +2820,10 @@ html[data-newon-shell-theme="dark"] .hero-desc {
     display: none;
   }
 
+  .hero--ecosystem.hero--vision .hero-scroll {
+    display: flex;
+  }
+
   /* In-page sections: clear sticky header + apps tab */
   #home.site-shell section[id],
   #home.site-shell .about-hub,
@@ -2872,6 +2880,10 @@ html[data-newon-shell-theme="dark"] .hero-desc {
   font-size: 0.65rem;
 }
 
+.hero--ecosystem.hero--vision .hero-scroll {
+  display: flex;
+}
+
 .hero--classic .hero-scroll {
   position: static;
   transform: none;
@@ -2888,6 +2900,10 @@ html[data-newon-shell-theme="dark"] .hero-desc {
 
   .hero--ecosystem .hero-scroll {
     display: none;
+  }
+
+  .hero--ecosystem.hero--vision .hero-scroll {
+    display: flex;
   }
 }
 

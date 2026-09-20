@@ -60,7 +60,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css?v=20260904a11y1" />
-    <link rel="stylesheet" href="/gnav-mega.css?v=20260904a11y1" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20260920nav7b" />
     <link rel="preload" as="image" type="image/webp" href="/newon-wordmark-chrome.webp" />
     <link rel="stylesheet" href="/ox-month.css?v=20260916round1" />
     <link rel="stylesheet" href="/app-landing-extras.css?v=20260916round1" />
@@ -71,7 +71,7 @@
     <script src="/lang-nav.js?v=20260825studio"></script>
     <script src="/analytics.js?v=20260904sec1" defer></script>
     <script src="/search.js?v=20260904a11y1" defer></script>
-    <script src="/site-chrome.js?v=20260904a11y1" defer></script>
+    <script src="/site-chrome.js?v=20260920nav7b" defer></script>
     <script src="/home-studio.js?v=20260828home2" defer></script>
     <link rel="stylesheet" href="/site-dark.css?v=20260902perf1" />
     <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
@@ -83,130 +83,59 @@
     <div id="home" class="site-shell">
 
       <main id="main">
-<section id="top" class="hero hero--ecosystem hero--entered reveal-on-scroll is-visible">
+<section id="top" class="hero hero--ecosystem hero--vision hero--logo hero--entered reveal-on-scroll is-visible">
           <div class="hero-bg" aria-hidden="true"></div>
-          <div class="container hero-inner hero-inner--centered">
-            <div class="hero-copy hero-copy--centered">
+          <div class="container hero-inner hero-inner--vision">
+            <div class="hero-copy hero-copy--vision">
               <p class="hero-eyebrow hero-eco-enter" style="--hero-enter-delay: 40ms">{{t:home.heroEyebrow}}</p>
-              <h1 class="hero-brand-mark hero-eco-enter" style="--hero-enter-delay: 80ms">
+
+              <div class="hero-brand-mark hero-eco-enter" style="--hero-enter-delay: 120ms">
                 <picture class="hero-brand-mark__picture hero-brand-mark__picture--light">
                   <source type="image/webp" srcset="/newon-wordmark-chrome.webp" />
                   <img
-                  class="hero-brand-mark__img hero-brand-mark__img--light"
-                  src="/newon-wordmark-chrome.png"
-                  alt="{{t:home.heroLogoAlt}}"
-                  width="948"
-                  height="361"
-                  decoding="sync"
-                  fetchpriority="high"
-                />
+                    class="hero-brand-mark__img hero-brand-mark__img--light"
+                    src="/newon-wordmark-chrome.png"
+                    alt="{{t:home.heroLogoAlt}}"
+                    width="948"
+                    height="361"
+                    decoding="sync"
+                    fetchpriority="high"
+                  />
                 </picture>
-                <img
-                  class="hero-brand-mark__img hero-brand-mark__img--dark"
-                  data-src="/newon-wordmark-chrome-dark.webp" data-src-fallback="/newon-wordmark-chrome-dark.png"
-                  alt=""
-                  width="948"
-                  height="361"
-                  decoding="async"
-                  fetchpriority="low"
-                  aria-hidden="true"
-                />
-              </h1>
-              <p class="hero-sub hero-eco-enter" style="--hero-enter-delay: 220ms">{{t:home.heroSub}}</p>
-              <p class="hero-desc hero-eco-enter" style="--hero-enter-delay: 300ms">{{t:home.heroDesc}}</p>
-              <div class="hero-actions hero-actions--eco hero-eco-enter" style="--hero-enter-delay: 380ms">
+                <picture class="hero-brand-mark__picture hero-brand-mark__picture--dark">
+                  <source type="image/webp" srcset="/newon-wordmark-chrome-dark.webp" />
+                  <img
+                    class="hero-brand-mark__img hero-brand-mark__img--dark"
+                    src="/newon-wordmark-chrome-dark.png"
+                    alt=""
+                    width="948"
+                    height="361"
+                    decoding="async"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
+
+              <h1 class="hero-title hero-eco-enter" style="--hero-enter-delay: 220ms">{{html:home.heroTitleHtml}}</h1>
+              <p class="hero-sub hero-eco-enter" style="--hero-enter-delay: 300ms">{{t:home.heroSub}}</p>
+
+              <div class="hero-actions hero-actions--vision hero-eco-enter" style="--hero-enter-delay: 380ms">
                 <a
                   class="btn btn-primary hero-btn-primary"
-                  href="/{{LANG_DIR}}/apps/"
-                  aria-label="{{t:home.btnExploreAppsAria}}"
-                >{{t:home.btnExploreApps}}</a>
+                  href="#story-consumer"
+                  aria-label="{{t:home.btnExploreBusinessAria}}"
+                >{{t:home.btnExploreBusiness}}</a>
                 <a
                   class="btn btn-ghost hero-btn-secondary"
-                  href="/{{LANG_DIR}}/business/inquiry/"
-                  aria-label="{{t:home.btnExploreNewonAria}}"
-                >{{t:home.btnExploreNewon}}</a>
-              </div>
-              <nav class="hub-strip hero-eco-enter" style="--hero-enter-delay: 420ms" aria-label="Newon areas">
-                <a href="/{{LANG_DIR}}/products/">{{t:home.heroStripProducts}}</a>
-                <a href="/{{LANG_DIR}}/business/">{{t:home.heroStripBusiness}}</a>
-                <a href="/{{LANG_DIR}}/studio/">{{t:home.heroStripStudio}}</a>
-                <a href="/{{LANG_DIR}}/resources/">{{t:home.heroStripResources}}</a>
-                <a href="/{{LANG_DIR}}/resources/labs/">{{t:home.heroStripLabs}}</a>
-              </nav>
-              <div class="hero-actions hero-store-links hero-eco-enter" style="--hero-enter-delay: 460ms">
-                <a
-                  class="hero-store-link hero-store-link--apple"
-                  href="https://apps.apple.com/developer/nawon-kyung/id1896528749"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="{{t:home.appStoreIconAria}}"
-                >
-                  <svg
-                    class="hero-store-link__icon"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="22"
-                    height="22"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
-                    />
-                  </svg>
-                </a>
-                <a
-                  class="hero-store-link hero-store-link--google"
-                  href="https://play.google.com/store/apps/dev?id=8016507493063681249"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="{{t:home.googlePlayIconAria}}"
-                >
-                  <svg
-                    class="hero-store-link__icon hero-store-link__icon--play"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 28 28"
-                    width="22"
-                    height="22"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path fill="#00D9FF" d="M3 4.5v19l11-9.7L3 4.5z" />
-                    <path fill="#00F076" d="M15.4 14.3 25 20.8c.6-.4 1-1 1-1.8V9c0-.7-.4-1.4-1-1.8l-9.6 6.1z" />
-                    <path fill="#FFCE00" d="M15.4 13.7 25 7.2c-.6-.4-1.3-.6-2-.4L3 4.5l12.4 9.2z" />
-                    <path fill="#FF3A44" d="M3 23.5 23 21.2c.7.1 1.4-.1 2-.5L14 14l-11 9.5z" />
-                  </svg>
-                </a>
+                  href="/{{LANG_DIR}}/about/"
+                  aria-label="{{t:home.btnLearnNewonAria}}"
+                >{{t:home.btnLearnNewon}}</a>
               </div>
             </div>
-            <div
-              class="hero-marquee"
-              data-hero-marquee
-              aria-label="{{t:home.heroMarqueeAria}}"
-            ></div>
           </div>
-          <script type="application/json" id="newon-hero-apps-labels">
-{
-  "babylog": { "description": {{js:nav.babylogDesc}}, "category": {{js:home.heroCatFamily}} },
-  "petlog": { "description": {{js:nav.petlogDesc}}, "category": {{js:home.heroCatPets}} },
-  "goalup": { "description": {{js:nav.goalupDesc}}, "category": {{js:home.heroCatGoals}} },
-  "countup": { "description": {{js:nav.countupDesc}}, "category": {{js:home.heroCatTracking}} },
-  "savy": { "description": {{js:nav.savyDesc}}, "category": {{js:home.heroCatFinance}} },
-  "subping": { "description": {{js:nav.subpingDesc}}, "category": {{js:home.heroCatFinance}} },
-  "pillmate": { "description": {{js:nav.pillmateDesc}}, "category": {{js:home.heroCatHealth}} },
-  "piggyup": { "description": {{js:nav.piggyupDesc}}, "category": {{js:home.heroCatFinance}} },
-  "ox": { "description": {{js:nav.oxDesc}}, "category": {{js:home.heroCatHabits}} },
-  "newonPlus": { "description": {{js:nav.newonPlusDesc}}, "category": {{js:home.heroCatMembership}} },
-  "myworld": { "description": {{js:nav.myworldDesc}}, "category": {{js:home.heroCatTravel}} },
-  "eaton": { "description": {{js:nav.eatonDesc}}, "category": {{js:home.heroCatLifestyle}} },
-  "fiton": { "description": {{js:nav.fitonDesc}}, "category": {{js:home.heroCatHealth}} }
-}
-          </script>
-          <script src="/hero-apps.js" defer></script>
-          <div class="hero-scroll" aria-hidden="true">
-            <span class="dot-pulse"></span>
-            <span>{{t:common.scroll}}</span>
+          <div class="hero-scroll hero-scroll--biz hero-eco-enter" style="--hero-enter-delay: 460ms" aria-hidden="true">
+            <span class="hero-scroll__label">{{t:home.heroScrollLabel}}</span>
+            <span class="hero-scroll__arrow">↓</span>
           </div>
         </section>
 
@@ -215,6 +144,14 @@
 {{HOME_STUDIO_BODY}}
         </div>
         <!-- HOME_STUDIO_END -->
+
+
+
+
+
+
+
+
 
 
 
@@ -1707,6 +1644,10 @@
 
 
 
+
+
+
+
         <section id="ox-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="ox-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -1933,6 +1874,10 @@
         </div>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -2644,6 +2589,10 @@
         </nav>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -4247,6 +4196,10 @@
 
 
 
+
+
+
+
         <section id="pm-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pm-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -4418,6 +4371,10 @@
         </div>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -5121,6 +5078,10 @@
         </nav>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -6727,6 +6688,10 @@
 
 
 
+
+
+
+
         <section id="sv-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="sv-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -6888,6 +6853,10 @@
         </div>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -7596,6 +7565,10 @@
         </nav>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -9199,6 +9172,10 @@
 
 
 
+
+
+
+
         <section id="bl-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="bl-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -9370,6 +9347,10 @@
         </div>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -10088,6 +10069,10 @@
         </nav>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -11690,6 +11675,10 @@
 
 
 
+
+
+
+
         <section id="pl-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pl-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -11861,6 +11850,10 @@
         </div>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -12579,6 +12572,10 @@
         </nav>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -14184,6 +14181,10 @@
 
 
 
+
+
+
+
         <section id="pu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="pu-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -14355,6 +14356,10 @@
         </div>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -15063,6 +15068,10 @@
         </nav>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -16675,6 +16684,10 @@
 
 
 
+
+
+
+
         <section id="gu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="gu-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -16846,6 +16859,10 @@
         </div>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -17558,6 +17575,10 @@
         </nav>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -19174,6 +19195,10 @@
 
 
 
+
+
+
+
         <section id="cu-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="cu-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -19335,6 +19360,10 @@
         </div>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -20047,6 +20076,10 @@
         </nav>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -21660,6 +21693,10 @@
 
 
 
+
+
+
+
         <section id="np-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="np-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -22063,6 +22100,10 @@
         </nav>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -23676,6 +23717,10 @@
 
 
 
+
+
+
+
         <section id="mw-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="mw-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -23847,6 +23892,10 @@
         </div>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -24559,6 +24608,10 @@
         </nav>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -26157,6 +26210,10 @@
 
 
 
+
+
+
+
         <section id="eo-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="eo-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -26284,6 +26341,10 @@
         </div>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -26998,6 +27059,10 @@
         </nav>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -28603,6 +28668,10 @@
 
 
 
+
+
+
+
         <section id="fo-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="fo-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -28736,6 +28805,10 @@
         </div>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -29468,6 +29541,10 @@
         </nav>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -31078,6 +31155,10 @@
 
 
 
+
+
+
+
         <section id="sp-intro" class="ox-section ox-app-intro ox-reveal-on-scroll" aria-labelledby="sp-intro-title">
           <div class="ox-container ox-app-intro__inner">
             <header class="ox-app-intro__head">
@@ -31251,6 +31332,10 @@
         </div>
       </div>
     </section>
+
+
+
+
 
 
 
@@ -31954,6 +32039,10 @@
         </nav>
       </div>
     </section>
+
+
+
+
 
 
 

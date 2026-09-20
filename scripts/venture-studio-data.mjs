@@ -37,19 +37,45 @@ export const LEGACY_STATUS_MAP = {
   exploring: "EXPLORING",
 };
 
-/** Top-level nav order */
-export const TOP_NAV = ["products", "business", "studio", "resources", "company"];
+/** Top-level nav order — 7 business menus */
+export const TOP_NAV = ["consumer", "ai", "lifestage", "ongil", "business", "studio", "company"];
 
 /**
- * Mega menu: exactly up to 4 editorial destinations per top menu.
- * titleKey / descKey are locale keys under nav.*
+ * Mega menu destinations per top menu.
+ * Hash hrefs (#…) link to homepage story sections (no new pages).
  */
 export const MEGA_DESTINATIONS = {
-  products: [
+  consumer: [
     { titleKey: "nav.apps", descKey: "nav.megaAppsDesc", href: "apps/", titleFb: "Apps" },
-    { titleKey: "nav.ai", descKey: "nav.megaAiDesc", href: "ai/", titleFb: "AI" },
+    { titleKey: "nav.newonPlus", descKey: "nav.newonPlusMenuDesc", href: "#newon-plus-app", titleFb: "Newon+" },
     { titleKey: "nav.games", descKey: "nav.megaGamesDesc", href: "games/", titleFb: "Games" },
     { titleKey: "nav.tools", descKey: "nav.megaToolsDesc", href: "tools/", titleFb: "Tools" },
+    { titleKey: "nav.saas", descKey: "nav.saasMenuDesc", href: "saas/", titleFb: "SaaS" },
+  ],
+  ai: [
+    { titleKey: "nav.ai", descKey: "nav.megaAiDesc", href: "ai/", titleFb: "AI" },
+    {
+      titleKey: "nav.bizAi",
+      descKey: "nav.bizAiDesc",
+      href: "business/ai-automation/",
+      titleFb: "AI Automation",
+    },
+  ],
+  lifestage: [
+    {
+      titleKey: "nav.lifeStageIntro",
+      descKey: "nav.lifeStageIntroDesc",
+      href: "#story-lifestage",
+      titleFb: "Life Stage",
+    },
+  ],
+  ongil: [
+    {
+      titleKey: "nav.ongilIntro",
+      descKey: "nav.ongilIntroDesc",
+      href: "#story-ongil",
+      titleFb: "Ongil",
+    },
   ],
   business: [
     { titleKey: "nav.bizColBuild", descKey: "nav.megaBuildDesc", href: "business/build/", titleFb: "BUILD" },
@@ -78,17 +104,16 @@ export const MEGA_DESTINATIONS = {
     { titleKey: "nav.studioContent", descKey: "nav.megaContentDesc", href: "studio/content/", titleFb: "CONTENT" },
     { titleKey: "nav.studioIp", descKey: "nav.megaIpDesc", href: "studio/ip/", titleFb: "IP" },
   ],
-  resources: [
-    { titleKey: "nav.store", descKey: "nav.megaStoreDesc", href: "resources/store/", titleFb: "STORE" },
-    { titleKey: "nav.insights", descKey: "nav.megaInsightsDesc", href: "resources/insights/", titleFb: "INSIGHTS" },
-    { titleKey: "nav.blog", descKey: "nav.megaBlogDesc", href: "resources/blog/", titleFb: "BLOG" },
-    { titleKey: "nav.labs", descKey: "nav.megaLabsDesc", href: "resources/labs/", titleFb: "LABS" },
-  ],
   company: [
     { titleKey: "nav.aboutNewon", descKey: "nav.megaAboutDesc", href: "about/", titleFb: "About" },
     { titleKey: "nav.portfolio", descKey: "nav.megaPortfolioDesc", href: "portfolio/", titleFb: "Portfolio" },
     { titleKey: "nav.newsUpdates", descKey: "nav.megaNewsDesc", href: "news/", titleFb: "News" },
     { titleKey: "nav.media", descKey: "nav.megaMediaDesc", href: "media/", titleFb: "Media" },
+    { titleKey: "nav.store", descKey: "nav.megaStoreDesc", href: "resources/store/", titleFb: "STORE" },
+    { titleKey: "nav.insights", descKey: "nav.megaInsightsDesc", href: "resources/insights/", titleFb: "INSIGHTS" },
+    { titleKey: "nav.blog", descKey: "nav.megaBlogDesc", href: "resources/blog/", titleFb: "BLOG" },
+    { titleKey: "nav.labs", descKey: "nav.megaLabsDesc", href: "resources/labs/", titleFb: "LABS" },
+    { titleKey: "nav.market", descKey: "nav.megaMarketDesc", href: "market/", titleFb: "Market" },
     { titleKey: "nav.contact", descKey: "nav.megaContactDesc", href: "business/inquiry/", titleFb: "Contact" },
   ],
 };
@@ -313,13 +338,13 @@ export const STUDIO_IA = [
   },
 ];
 
-/** @deprecated kept for any imports — prefer MEGA_DESTINATIONS.resources */
-export const RESOURCES_IA = MEGA_DESTINATIONS.resources.map((d) => ({
-  titleKey: d.titleKey,
-  descKey: d.descKey,
-  href: d.href,
-  status: "OPERATING",
-}));
+/** @deprecated former Resources mega — now under MEGA_DESTINATIONS.company */
+export const RESOURCES_IA = [
+  { titleKey: "nav.store", descKey: "nav.megaStoreDesc", href: "resources/store/", status: "OPERATING" },
+  { titleKey: "nav.insights", descKey: "nav.megaInsightsDesc", href: "resources/insights/", status: "OPERATING" },
+  { titleKey: "nav.blog", descKey: "nav.megaBlogDesc", href: "resources/blog/", status: "OPERATING" },
+  { titleKey: "nav.labs", descKey: "nav.megaLabsDesc", href: "resources/labs/", status: "OPERATING" },
+];
 
 export function studioStatusLabel(status, lang = "en") {
   const key = String(status || "")

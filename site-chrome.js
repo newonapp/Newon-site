@@ -25,31 +25,57 @@
     }
   }
 
+  function megaFor(dd) {
+    if (!dd) return null;
+    var nested = dd.querySelector(".gnav-mega");
+    if (nested) return nested;
+    var id = dd.getAttribute("data-gnav-menu");
+    if (!id) return null;
+    var root = dd.closest("[data-gnav]") || document;
+    return root.querySelector('.gnav-mega[data-gnav-mega="' + id + '"]');
+  }
+
   function closeDropdowns(except) {
     cancelClose();
     document.querySelectorAll("[data-gnav-dd]").forEach(function (dd) {
       if (except && dd === except) return;
       var trigger = dd.querySelector(".gnav-dd__trigger");
-      var panel = dd.querySelector(".gnav-mega");
+      var panel = megaFor(dd);
       dd.classList.remove("gnav-dd--open");
-      if (panel) panel.hidden = true;
+      if (panel) {
+        panel.hidden = true;
+        panel.classList.remove("gnav-mega--open");
+      }
       if (trigger) trigger.setAttribute("aria-expanded", "false");
     });
     document.documentElement.classList.remove("gnav-mega-open");
     document.body.classList.remove("gnav-mega-open");
   }
 
+  function scrollNavItemIntoView(dd) {
+    if (!dd) return;
+    var scroller = dd.closest(".gnav__nav-scroller") || dd.closest(".gnav__nav");
+    if (!scroller) return;
+    try {
+      dd.scrollIntoView({ inline: "nearest", block: "nearest", behavior: "smooth" });
+    } catch (err) {
+      dd.scrollIntoView(false);
+    }
+  }
+
   function openDropdown(dd) {
     cancelClose();
     closeDropdowns(dd);
     var trigger = dd.querySelector(".gnav-dd__trigger");
-    var panel = dd.querySelector(".gnav-mega");
+    var panel = megaFor(dd);
     if (!trigger || !panel) return;
     dd.classList.add("gnav-dd--open");
     trigger.setAttribute("aria-expanded", "true");
     panel.hidden = false;
+    panel.classList.add("gnav-mega--open");
     document.documentElement.classList.add("gnav-mega-open");
     document.body.classList.add("gnav-mega-open");
+    scrollNavItemIntoView(dd);
   }
 
   function scheduleClose() {
@@ -163,7 +189,7 @@
   function bindDropdowns() {
     document.querySelectorAll("[data-gnav-dd]").forEach(function (dd) {
       var trigger = dd.querySelector(".gnav-dd__trigger");
-      var panel = dd.querySelector(".gnav-mega");
+      var panel = megaFor(dd);
       if (!trigger || !panel) return;
 
       dd.addEventListener("mouseenter", function () {
@@ -347,6 +373,24 @@
     closeMobile();
   });
 
+  function bindNavScroll() {
+    document.querySelectorAll(".gnav__nav-scroller, .gnav__nav").forEach(function (nav) {
+      if (!nav.classList.contains("gnav__nav-scroller") && nav.querySelector(".gnav__nav-scroller")) return;
+      nav.addEventListener(
+        "wheel",
+        function (e) {
+          if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+          if (nav.scrollWidth <= nav.clientWidth + 1) return;
+          nav.scrollLeft += e.deltaY;
+          e.preventDefault();
+        },
+        { passive: false }
+      );
+      var active = nav.querySelector(".gnav-dd--active, .gnav-dd--open");
+      if (active) scrollNavItemIntoView(active);
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     bindDropdowns();
     bindMobileAccordion();
@@ -354,6 +398,7 @@
     bindMobile();
     bindSticky();
     syncLangCompact();
+    bindNavScroll();
     document.querySelectorAll("[data-snav-toggle]").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var nav = document.getElementById("snav-mobile-nav");
