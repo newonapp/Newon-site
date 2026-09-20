@@ -221,46 +221,56 @@ html[data-newon-shell-theme="dark"] .gnav.site-header .gnav__nav-scroller::-webk
   }
 }
 
-.gnav-mega__list.gnav-mega__list--editorial {
-  display: grid;
+/* Editorial megas (Consumer / AI / Life Stage / Ongil / Company): one row per item */
+.gnav-mega__list.gnav-mega__list--editorial,
+.gnav-mega__list.gnav-mega__list--editorial.gnav-mega__list--many {
+  display: flex;
+  flex-direction: column;
   gap: 0;
-  margin-top: 1.35rem;
+  margin-top: 0.35rem;
+  border-top: 1px solid var(--gnav-border);
+  grid-template-columns: none;
+}
+
+.gnav-mega__list.gnav-mega__list--editorial .gnav-mega__row {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.85rem 1rem;
+  padding: 0.95rem 0.35rem;
+  margin: 0 -0.35rem;
   border-top: 0;
+  border-bottom: 1px solid var(--gnav-border);
+  flex-direction: unset;
+}
+
+.gnav-mega__list.gnav-mega__list--editorial .gnav-mega__row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
 }
 
 @media (min-width: 720px) {
-  .gnav-mega__list.gnav-mega__list--editorial {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0 1.5rem;
+  .gnav-mega__list.gnav-mega__list--editorial .gnav-mega__row-main {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 1.5rem 2rem;
+  }
+
+  .gnav-mega__list.gnav-mega__list--editorial .gnav-mega__row-title {
+    flex: 0 0 7.5rem;
+    min-width: 7.5rem;
   }
 }
 
-@media (min-width: 980px) {
-  .gnav-mega__list.gnav-mega__list--editorial {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0 1.25rem;
-  }
-  .gnav-mega__list.gnav-mega__list--editorial .gnav-mega__row {
-    flex-direction: column;
-    display: flex;
-    align-items: flex-start;
-    gap: 0.65rem;
-    padding: 1rem 0.35rem 1.1rem;
-    border-top: 1px solid var(--gnav-border);
-    border-bottom: 0;
-    grid-template-columns: none;
-  }
-  .gnav-mega__list.gnav-mega__list--editorial .gnav-mega__row-n {
-    margin: 0;
-  }
-  .gnav-mega__list.gnav-mega__list--editorial .gnav-mega__row-arrow {
-    align-self: flex-start;
-    margin-top: 0.15rem;
-  }
-  .gnav-mega__list.gnav-mega__list--editorial.gnav-mega__list--many {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 0 1rem;
-  }
+.gnav-mega__list.gnav-mega__list--editorial .gnav-mega__row-n {
+  margin: 0;
+}
+
+.gnav-mega__list.gnav-mega__list--editorial .gnav-mega__row-arrow {
+  align-self: center;
+  margin-top: 0;
 }
 
 .gnav__link {
