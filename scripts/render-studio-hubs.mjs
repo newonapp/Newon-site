@@ -314,8 +314,8 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.aiSeoTitle"),
     description: pick(f, fe, "studio.aiMetaDescription"),
     body: aiBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260830notify1" />',
-    extraScripts: '<script src="/ai-hub.js?v=20260827ai7" defer></script>',
+    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260921cai1" />',
+    extraScripts: '<script src="/ai-hub.js?v=20260921cai1" defer></script>',
   }),
   saas: (f, fe, l) => ({
     activeNav: "products",

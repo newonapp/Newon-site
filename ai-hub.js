@@ -1,5 +1,5 @@
 /**
- * AI hub — reveal, process pulse, product nav, business use-case.
+ * Consumer AI hub — filter, reveal, detail panels.
  */
 (function () {
   "use strict";
@@ -31,161 +31,92 @@
       if (el.getBoundingClientRect().top < window.innerHeight * 0.92) el.classList.add("is-in");
       else io.observe(el);
     });
-    window.setTimeout(function () {
-      nodes.forEach(function (el) {
-        el.classList.add("is-in");
-      });
-    }, 1400);
   }
 
-  function initProcess(root) {
-    var process = root.querySelector("[data-ai-process]");
-    if (!process || reduceMotion()) return;
-    var steps = Array.prototype.slice.call(process.querySelectorAll("[data-process-step]"));
-    if (!steps.length) return;
-    var i = 0;
-    steps[0].classList.add("is-pulse");
-    window.setInterval(function () {
-      steps.forEach(function (el) {
-        el.classList.remove("is-pulse");
+  function initFilter(root) {
+    var bar = root.querySelector(".cai-filter");
+    var grid = root.querySelector("[data-cai-grid]");
+    if (!bar || !grid) return;
+    var buttons = Array.prototype.slice.call(bar.querySelectorAll("[data-cai-filter]"));
+    var cards = Array.prototype.slice.call(grid.querySelectorAll("[data-cai-card]"));
+
+    function apply(cat) {
+      buttons.forEach(function (btn) {
+        var on = btn.getAttribute("data-cai-filter") === cat;
+        btn.classList.toggle("is-active", on);
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
       });
-      steps[i % steps.length].classList.add("is-pulse");
-      i += 1;
-    }, 1600);
-  }
-
-  var BIZ_CASES = {
-    automation: [
-      ["Input", "Customer inquiry"],
-      ["AI", "Classify + Analyze"],
-      ["Action", "Generate response"],
-      ["Result", "Support workflow"]
-    ],
-    workflow: [
-      ["Input", "Existing tools"],
-      ["AI", "Connect + Orchestrate"],
-      ["Action", "Run workflow"],
-      ["Result", "Less manual work"]
-    ],
-    knowledge: [
-      ["Input", "Docs & policies"],
-      ["AI", "Retrieve + Ground"],
-      ["Action", "Answer with sources"],
-      ["Result", "Consistent knowledge"]
-    ],
-    action: [
-      ["Input", "Analysis result"],
-      ["AI", "Prioritize"],
-      ["Action", "Create next task"],
-      ["Result", "Work moves forward"]
-    ]
-  };
-
-  function renderCase(container, key) {
-    var rows = BIZ_CASES[key] || BIZ_CASES.automation;
-    container.innerHTML = rows
-      .map(function (r) {
-        return "<div><span>" + r[0] + "</span><strong>" + r[1] + "</strong></div>";
-      })
-      .join("");
-  }
-
-  function initBiz(root) {
-    var pipe = root.querySelector("[data-ai-biz-pipe]");
-    var body = root.querySelector("[data-case-body]");
-    if (!pipe || !body) return;
-    var steps = Array.prototype.slice.call(pipe.querySelectorAll("[data-biz-step]"));
-    function activate(step) {
-      steps.forEach(function (el) {
-        el.classList.toggle("is-active", el === step);
+      cards.forEach(function (card) {
+        var match = cat === "all" || card.getAttribute("data-cai-cat") === cat;
+        card.hidden = !match;
+        card.classList.toggle("is-filtered-out", !match);
       });
-      renderCase(body, step.getAttribute("data-case") || "automation");
     }
-    if (steps[0]) activate(steps[0]);
-    steps.forEach(function (step) {
-      step.addEventListener("mouseenter", function () {
-        activate(step);
-      });
-      step.addEventListener("focus", function () {
-        activate(step);
-      });
-      step.setAttribute("tabindex", "0");
+
+    bar.addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-cai-filter]");
+      if (!btn || !bar.contains(btn)) return;
+      apply(btn.getAttribute("data-cai-filter"));
     });
   }
 
-  function initNav(root) {
-    var links = Array.prototype.slice.call(root.querySelectorAll("[data-ai-nav]"));
-    var sections = Array.prototype.slice.call(root.querySelectorAll("[data-ai-section]"));
-    if (!links.length) return;
+  function initDetails(root) {
+    var panels = Array.prototype.slice.call(root.querySelectorAll("[data-cai-detail]"));
+    if (!panels.length) return;
 
-    function setActive(id) {
-      links.forEach(function (a) {
-        a.classList.toggle("is-active", a.getAttribute("data-ai-nav") === id);
+    function closeAll() {
+      panels.forEach(function (p) {
+        p.hidden = true;
+        p.classList.remove("is-open");
       });
+      root.classList.remove("has-cai-detail");
     }
 
-    links.forEach(function (a) {
-      a.addEventListener("click", function (e) {
-        var href = a.getAttribute("href");
-        if (!href || href.charAt(0) !== "#") return;
-        var target = document.querySelector(href);
-        if (!target) return;
+    function open(id) {
+      closeAll();
+      var panel = root.querySelector('[data-cai-detail="' + id + '"]');
+      if (!panel) return;
+      panel.hidden = false;
+      panel.classList.add("is-open");
+      root.classList.add("has-cai-detail");
+      if (!reduceMotion()) {
+        panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      } else {
+        panel.scrollIntoView({ block: "nearest" });
+      }
+    }
+
+    root.addEventListener("click", function (e) {
+      var openBtn = e.target.closest("[data-cai-open]");
+      if (openBtn && root.contains(openBtn)) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "start" });
-        if (history.replaceState) history.replaceState(null, "", href);
-        setActive(a.getAttribute("data-ai-nav"));
-      });
+        open(openBtn.getAttribute("data-cai-open"));
+        return;
+      }
+      if (e.target.closest("[data-cai-close]")) {
+        e.preventDefault();
+        closeAll();
+      }
     });
 
-    if (!sections.length || !("IntersectionObserver" in window)) return;
-    var io = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          setActive(entry.target.id);
-        });
-      },
-      { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 }
-    );
-    sections.forEach(function (sec) {
-      io.observe(sec);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeAll();
     });
-  }
 
-  function initCaps(root) {
-    var section = root.querySelector("[data-ai-caps]");
-    if (!section) return;
-    var rows = Array.prototype.slice.call(section.querySelectorAll("[data-cap-row]"));
-    if (!rows.length) return;
-
-    function activate(row) {
-      rows.forEach(function (r) {
-        var on = r === row;
-        r.classList.toggle("is-active", on);
-        var btn = r.querySelector("[data-cap-trigger]");
-        if (btn) btn.setAttribute("aria-expanded", on ? "true" : "false");
-      });
+    if (location.hash && location.hash.indexOf("#cai-") === 0) {
+      var hid = location.hash.slice(5);
+      if (hid) open(hid);
     }
-
-    rows.forEach(function (row) {
-      var btn = row.querySelector("[data-cap-trigger]");
-      if (!btn) return;
-      btn.addEventListener("click", function () {
-        activate(row);
-      });
-      btn.addEventListener("mouseenter", function () {
-        if (window.matchMedia("(hover: hover)").matches) activate(row);
-      });
-    });
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll("[data-ai-page]").forEach(function (root) {
-      initReveal(root);
-      initProcess(root);
-      initBiz(root);
-      initNav(root);
-      initCaps(root);
-    });
-  });
+  function init() {
+    var root = document.querySelector("[data-cai-page], [data-ai-page]");
+    if (!root) return;
+    initReveal(root);
+    initFilter(root);
+    initDetails(root);
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
 })();

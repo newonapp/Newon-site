@@ -9343,12 +9343,19 @@ html[data-newon-shell-theme="dark"] .hs-home .hs-story__status--live {
   background: rgba(255, 255, 255, 0.05);
 }
 
-.hs-home .hs-story__actions { display: flex; flex-wrap: wrap; gap: 0.65rem; align-items: center; }
+.hs-home .hs-story__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+  min-height: 3.1rem;
+}
 
 .hs-home .hs-story__cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 3.1rem;
   padding: 0.85rem 1.25rem;
   border-radius: 999px;
   background: #111;
@@ -9360,6 +9367,10 @@ html[data-newon-shell-theme="dark"] .hs-home .hs-story__status--live {
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 .hs-home .hs-story__cta:hover { background: #fff; color: #111; transform: translateY(-1px); }
+.hs-home .hs-story__cta:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
 .hs-home .hs-story__cta--ghost {
   background: transparent;
   color: #fff;
@@ -9911,23 +9922,50 @@ html[data-newon-shell-theme="dark"] .hs-home .hs-story__cta {
 }
 
 .hero--ecosystem.hero--vision.hero--logo .hero-scroll--biz {
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  width: 100%;
+  transform: none;
   bottom: max(1rem, env(safe-area-inset-bottom, 0px));
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 0.35rem;
   color: var(--hv-muted);
   font-size: 0.65rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0;
   text-transform: uppercase;
+  text-align: center;
+  pointer-events: none;
+}
+
+.hero--ecosystem.hero--vision.hero--logo .hero-scroll__label {
+  display: block;
+  letter-spacing: 0.14em;
+  /* Cancel trailing letter-spacing so the block centers with the arrow */
+  margin-inline-end: -0.14em;
+  text-align: center;
 }
 
 .hero--ecosystem.hero--vision.hero--logo .hero-scroll__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  padding: 0;
   font-size: 0.85rem;
+  line-height: 1;
   letter-spacing: 0;
+  text-align: center;
   animation: hs-hero-scroll-nudge 1.8s ease-in-out infinite;
+}
+
+@keyframes hs-hero-scroll-rise {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes hs-hero-scroll-nudge {
@@ -9940,6 +9978,12 @@ html[data-newon-shell-theme="dark"] .hs-home .hs-story__cta {
   transform: translate3d(0, 14px, 0);
   animation: hero-eco-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: var(--hero-enter-delay, 0ms);
+}
+
+.hero--ecosystem.hero--vision.hero--logo .hero-scroll--biz.hero-eco-enter {
+  /* Full-width centered cue — do not inherit hero-eco-enter translate */
+  transform: none;
+  animation-name: hs-hero-scroll-rise;
 }
 
 .hero--ecosystem.hero--vision.hero--logo .hero-brand-mark.hero-eco-enter {

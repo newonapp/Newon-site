@@ -3,7 +3,7 @@
  * Top-level: Consumer · AI · Life Stage · Ongil · Business · Studio · Company
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
-import { BUSINESS_IA, MEGA_DESTINATIONS, STUDIO_IA, TOP_NAV } from "./venture-studio-data.mjs";
+import { MEGA_DESTINATIONS, TOP_NAV } from "./venture-studio-data.mjs";
 
 const LANG_OPTIONS = [
   { dir: "ko", labelKey: "ui.langKo", short: "KO" },
@@ -195,46 +195,13 @@ function editorialMega(flat, flatEn, base, menuId, langDir = "") {
     ${megaFoot(flat, flatEn, base, menuId, langDir)}`;
 }
 
-function pillarMega(flat, flatEn, base, menuId, pillars, langDir = "") {
-  const ko = isKoLocale(langDir);
-  const cols = pillars
-    .map((pillar) => {
-      const label = escapeHtml(t(flat, flatEn, pillar.labelKey, pillar.labelFb));
-      const moreHref = href(base, pillar.detailHref || pillar.moreHref || "", langDir);
-      const cells = (pillar.items || [])
-        .map((item) => {
-          const title = escapeHtml(
-            ko && item.titleKo ? item.titleKo : t(flat, flatEn, item.titleKey, item.title || item.titleFb || "")
-          );
-          const desc = escapeHtml(
-            ko && item.desc ? item.desc : item.descEn ? item.descEn : t(flat, flatEn, item.descKey, "")
-          );
-          return `<a class="gnav-mega__cell" href="${href(base, item.href, langDir)}" role="menuitem">
-          <span class="gnav-mega__cell-title">${title}</span>
-          <span class="gnav-mega__cell-desc">${desc}</span>
-        </a>`;
-        })
-        .join("");
-      return `<div class="gnav-mega__col">
-        <a class="gnav-mega__col-label" href="${moreHref}">${label}</a>
-        <div class="gnav-mega__col-list">${cells}</div>
-      </div>`;
-    })
-    .join("");
-  const colsClass =
-    menuId === "studio" ? "gnav-mega__cols gnav-mega__cols--studio" : "gnav-mega__cols gnav-mega__cols--business";
-  return `${megaHead(flat, flatEn, menuId)}
-    <div class="${colsClass}" role="none">${cols}</div>
-    ${megaFoot(flat, flatEn, base, menuId, langDir)}`;
-}
-
 const MEGA_RENDERERS = {
   consumer: (f, fe, b, ld) => editorialMega(f, fe, b, "consumer", ld),
   ai: (f, fe, b, ld) => editorialMega(f, fe, b, "ai", ld),
   lifestage: (f, fe, b, ld) => editorialMega(f, fe, b, "lifestage", ld),
   ongil: (f, fe, b, ld) => editorialMega(f, fe, b, "ongil", ld),
-  business: (f, fe, b, ld) => pillarMega(f, fe, b, "business", BUSINESS_IA, ld),
-  studio: (f, fe, b, ld) => pillarMega(f, fe, b, "studio", STUDIO_IA, ld),
+  business: (f, fe, b, ld) => editorialMega(f, fe, b, "business", ld),
+  studio: (f, fe, b, ld) => editorialMega(f, fe, b, "studio", ld),
   company: (f, fe, b, ld) => editorialMega(f, fe, b, "company", ld),
 };
 
@@ -281,28 +248,6 @@ function langSelect(flat, flatEn, id) {
 }
 
 function flattenMobileItems(menuId) {
-  if (menuId === "business") {
-    return BUSINESS_IA.flatMap((pillar) => [
-      { labelKey: pillar.labelKey, href: pillar.detailHref, titleFb: pillar.labelFb },
-      ...pillar.items.map((item) => ({
-        labelKey: item.titleKey,
-        href: item.href,
-        titleFb: item.title || item.titleFb,
-        titleKo: item.titleKo,
-      })),
-    ]);
-  }
-  if (menuId === "studio") {
-    return STUDIO_IA.flatMap((pillar) => [
-      { labelKey: pillar.labelKey, href: pillar.moreHref, titleFb: pillar.labelFb },
-      ...pillar.items.map((item) => ({
-        labelKey: item.titleKey,
-        href: item.href,
-        titleFb: item.title,
-        titleKo: item.titleKo,
-      })),
-    ]);
-  }
   return (MEGA_DESTINATIONS[menuId] || []).slice(0, megaItemLimit(menuId)).map((d) => ({
     labelKey: d.titleKey,
     href: d.href,

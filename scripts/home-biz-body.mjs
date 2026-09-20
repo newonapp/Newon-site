@@ -44,19 +44,6 @@ function projectsBySlug(lang) {
   return Object.fromEntries(list.map((p) => [p.slug, p]));
 }
 
-function railHtml(copy) {
-  const items = copy.rail
-    .map(
-      (r, i) =>
-        `<a class="hs-story-rail__item" href="#story-${escapeHtml(r.id)}" data-story-link="${escapeHtml(r.id)}">
-          <span class="hs-story-rail__n">${String(i + 1).padStart(2, "0")}</span>
-          <span class="hs-story-rail__l">${escapeHtml(r.label)}</span>
-        </a>`
-    )
-    .join("");
-  return `<nav class="hs-story-rail" aria-label="${escapeHtml(copy.railAria)}" data-hs-story-rail>${items}</nav>`;
-}
-
 function storyVisual(story, bySlug, lang) {
   switch (story.id) {
     case "consumer": {
@@ -166,14 +153,13 @@ function ecoHtml(copy, lang) {
 export function buildBizHomeBody(lang) {
   const L = lang || "en";
   const copyLang = L === "ko" ? "ko" : "en";
-  const copy = getStoryCopy(copyLang);
+  const copy = getStoryCopy(L);
   const bySlug = projectsBySlug(copyLang);
 
   const stories = copy.stories
     .map((s, i) => storySectionHtml(s, copy, bySlug, L, i))
     .join("\n");
 
-  return `${railHtml(copy)}
-${stories}
+  return `${stories}
 ${ecoHtml(copy, L)}`;
 }

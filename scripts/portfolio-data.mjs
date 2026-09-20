@@ -291,7 +291,7 @@ export const PROCESS_STEPS = [
 export const PORTFOLIO_STATS = {
   label: "Newon in Numbers",
   title: "숫자로 보는 Newon",
-  headline: "6개월, 13개의 앱.",
+  headline: "6개월, 앱 11개.",
   supporting:
     "아이디어부터 기획, UI/UX, 개발, 출시, 운영, 마케팅까지 직접 진행했습니다.",
   items: [
@@ -306,11 +306,11 @@ export const PORTFOLIO_STATS = {
     },
     {
       id: "apps",
-      value: "13",
+      value: "11",
       valueKind: "number",
       title: "개발한 앱",
-      note: "6개월 동안 13개의 앱을 직접 기획하고 개발했습니다.",
-      noteShort: "6개월 동안 기획·개발",
+      note: "앱 11개 · 게임 1개 · 웹 1개 — 전체 서비스 13+.",
+      noteShort: "앱 11개",
       href: "#projects",
       visible: true,
     },

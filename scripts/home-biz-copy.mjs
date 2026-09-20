@@ -32,7 +32,7 @@ export const STORY_KO = {
       lead: "자기관리부터 건강, 금융생활과 가족까지. 일상에 필요한 앱을 하나의 Newon 생태계로 연결합니다.",
       keys: ["생활 앱", "Newon+", "통합 경험"],
       tone: "consumer",
-      cta: "앱 살펴보기",
+      cta: "앱 둘러보기",
       ctaHref: "apps/",
       next: "Newon AI",
       visualCap: "운영 중인 Newon 앱 · Newon+ 중심 연결",
@@ -47,7 +47,7 @@ export const STORY_KO = {
       lead: "개인에게는 일상과 목표를 돕는 AI 비서를, 기업에는 업무 효율과 의사결정을 지원하는 AI 솔루션을 구상합니다.",
       keys: ["개인 AI", "기업용 AI", "AI Agent"],
       tone: "ai",
-      cta: "Newon AI 알아보기 →",
+      cta: "AI 서비스 알아보기",
       ctaHref: "ai/",
       next: "Life Stage",
       note: "개인에게는 일정·목표·정보 탐색을 돕는 AI 비서를, 기업에는 문서·지식 검색·반복 업무를 지원하는 AI Agent와 자동화 솔루션을 제공합니다.",
@@ -61,8 +61,8 @@ export const STORY_KO = {
       lead: "사회초년생부터 은퇴 이후까지. 삶의 단계마다 필요한 정보와 서비스를 연결하는 플랫폼을 구상합니다.",
       keys: ["생애주기", "생활 정보", "전문가 연결"],
       tone: "life",
-      cta: null,
-      ctaHref: null,
+      cta: "Life Stage 알아보기",
+      ctaHref: "#story-lifestage",
       next: "Ongil",
       note: "사회 진출·직장·주거·결혼·육아·은퇴까지. 생애 단계에 맞는 정보와 서비스, 전문가 및 필요한 자원을 한곳에서 연결합니다.",
     },
@@ -76,8 +76,8 @@ export const STORY_KO = {
       lead: "시니어가 필요한 생활지원 서비스를 쉽게 찾고, 가족과 필요한 순간에 연결되는 플랫폼을 구상합니다.",
       keys: ["시니어 생활", "돌봄 연결", "가족"],
       tone: "ongil",
-      cta: null,
-      ctaHref: null,
+      cta: "Ongil 알아보기",
+      ctaHref: "#story-ongil",
       next: "Newon Business",
       note: "시니어의 일상생활·건강·돌봄·지역 정보부터 가족과의 소통까지. 필요한 서비스와 전문가를 쉽고 편리하게 연결하는 시니어 생활 플랫폼을 지향합니다.",
     },
@@ -90,7 +90,7 @@ export const STORY_KO = {
       lead: "반복되는 업무를 줄이고, 기업의 운영과 성장을 돕는 소프트웨어를 만듭니다.",
       keys: ["SaaS", "업무 자동화", "기업용 AI"],
       tone: "biz",
-      cta: "Business 알아보기",
+      cta: "비즈니스 솔루션 알아보기",
       ctaHref: "business/",
       next: "Newon Studio",
       note: "기업의 웹·앱·업무 시스템 구축부터 SaaS·업무 자동화·운영 솔루션까지. 조직의 문제를 실제로 해결하는 디지털 서비스를 제공합니다.",
@@ -104,8 +104,8 @@ export const STORY_KO = {
       lead: "브랜드의 시작부터 웹과 앱의 기획, 디자인과 개발까지 연결합니다.",
       keys: ["브랜드", "웹 · 앱", "디지털 제작"],
       tone: "studio",
-      cta: "Studio 살펴보기",
-      ctaHref: "studio/",
+      cta: "포트폴리오 보기",
+      ctaHref: "portfolio/",
       next: null,
       note: "브랜드 전략과 아이덴티티부터 로고·웹·앱 UI/UX·콘텐츠·캠페인까지. 아이디어가 일관된 브랜드 경험과 디지털 제품으로 이어지도록 설계합니다.",
     },
@@ -166,7 +166,7 @@ export const STORY_EN = {
       lead: "We envision an AI assistant that helps individuals with daily life and goals, and AI solutions that support business efficiency and decisions.",
       keys: ["Personal AI", "Business AI", "AI Agent"],
       tone: "ai",
-      cta: "Explore Newon AI →",
+      cta: "Explore AI services",
       ctaHref: "ai/",
       next: "Life Stage",
       note: "For individuals: an AI assistant for schedules, goals, and finding information. For companies: AI Agents and automation that support documents, knowledge search, and repetitive work.",
@@ -180,8 +180,8 @@ export const STORY_EN = {
       lead: "From early career to life after retirement — a platform direction that connects information and services for each stage.",
       keys: ["Life journey", "Living info", "Expert links"],
       tone: "life",
-      cta: null,
-      ctaHref: null,
+      cta: "Explore Life Stage",
+      ctaHref: "#story-lifestage",
       next: "Ongil",
       note: "From starting a career to work, housing, marriage, parenting, and retirement — connecting stage-fit information, services, experts, and resources in one place.",
     },
@@ -195,8 +195,8 @@ export const STORY_EN = {
       lead: "Helping seniors find living support more easily, and connecting with family when it matters — a planned platform.",
       keys: ["Senior living", "Care links", "Family"],
       tone: "ongil",
-      cta: null,
-      ctaHref: null,
+      cta: "Explore Ongil",
+      ctaHref: "#story-ongil",
       next: "Newon Business",
       note: "From senior daily living, health, care, and local info to family connection — aiming for a senior life platform that makes needed services and experts easy to reach.",
     },
@@ -209,7 +209,7 @@ export const STORY_EN = {
       lead: "Software that reduces repetitive work and supports how companies operate and grow.",
       keys: ["SaaS", "Automation", "Business AI"],
       tone: "biz",
-      cta: "Explore Business",
+      cta: "Explore business solutions",
       ctaHref: "business/",
       next: "Newon Studio",
       note: "From building company web, apps, and work systems to SaaS, automation, and operations solutions — delivering digital services that solve real organizational problems.",
@@ -223,8 +223,8 @@ export const STORY_EN = {
       lead: "From brand beginnings to web and app planning, design, and development.",
       keys: ["Brand", "Web · App", "Digital production"],
       tone: "studio",
-      cta: "Explore Studio",
-      ctaHref: "studio/",
+      cta: "View portfolio",
+      ctaHref: "portfolio/",
       next: null,
       note: "From brand strategy and identity to logo, web, app UI/UX, content, and campaigns — designing so ideas become a coherent brand experience and digital product.",
     },
@@ -251,11 +251,76 @@ export const STORY_EN = {
   },
 };
 
+/** CTA labels for non-KO/EN locales (story body stays EN; CTAs localize). */
+const STORY_CTA_I18N = {
+  ja: {
+    consumer: "アプリを見る",
+    ai: "AIサービスを見る",
+    lifestage: "Life Stageを見る",
+    ongil: "Ongilを見る",
+    business: "ビジネスソリューションを見る",
+    studio: "ポートフォリオを見る",
+  },
+  es: {
+    consumer: "Explorar apps",
+    ai: "Conocer servicios de IA",
+    lifestage: "Conocer Life Stage",
+    ongil: "Conocer Ongil",
+    business: "Explorar soluciones business",
+    studio: "Ver portfolio",
+  },
+  "pt-br": {
+    consumer: "Explorar apps",
+    ai: "Conhecer serviços de IA",
+    lifestage: "Conhecer Life Stage",
+    ongil: "Conhecer Ongil",
+    business: "Explorar soluções business",
+    studio: "Ver portfólio",
+  },
+  fr: {
+    consumer: "Découvrir les apps",
+    ai: "Découvrir les services IA",
+    lifestage: "Découvrir Life Stage",
+    ongil: "Découvrir Ongil",
+    business: "Découvrir les solutions business",
+    studio: "Voir le portfolio",
+  },
+  de: {
+    consumer: "Apps entdecken",
+    ai: "KI-Services entdecken",
+    lifestage: "Life Stage entdecken",
+    ongil: "Ongil entdecken",
+    business: "Business-Lösungen entdecken",
+    studio: "Portfolio ansehen",
+  },
+  hi: {
+    consumer: "ऐप्स देखें",
+    ai: "AI सेवाएँ जानें",
+    lifestage: "Life Stage जानें",
+    ongil: "Ongil जानें",
+    business: "बिज़नेस समाधान जानें",
+    studio: "पोर्टफोलियो देखें",
+  },
+  id: {
+    consumer: "Jelajahi aplikasi",
+    ai: "Pelajari layanan AI",
+    lifestage: "Pelajari Life Stage",
+    ongil: "Pelajari Ongil",
+    business: "Pelajari solusi bisnis",
+    studio: "Lihat portofolio",
+  },
+};
+
 export function getStoryCopy(lang) {
   const base = lang === "ko" ? STORY_KO : STORY_EN;
-  const stories = base.stories.map((s) => ({
-    ...s,
-    status: STORY_STATUS_BY_ID[s.id] || "planned",
-  }));
+  const ctaMap = STORY_CTA_I18N[lang] || null;
+  const stories = base.stories.map((s) => {
+    const next = {
+      ...s,
+      status: STORY_STATUS_BY_ID[s.id] || "planned",
+    };
+    if (ctaMap && ctaMap[s.id]) next.cta = ctaMap[s.id];
+    return next;
+  });
   return { ...base, stories };
 }
