@@ -51,6 +51,14 @@ const KO = {
     messages: "소통 미리보기",
     help: "도움 요청 미리보기",
     roles: "역할 분담 미리보기",
+    jumpCare: "돌봄",
+    jumpFamily: "가족",
+    jumpDay: "하루",
+    jumpCareAreas: "건강·생활",
+    jumpLeisure: "여가",
+    jumpRoad: "방향",
+    extraBadge: "부가",
+    coreBadge: "핵심",
   },
   hero: {
     kicker: "NEWON ONGIL",
@@ -59,7 +67,6 @@ const KO = {
     leads: [
       "돌봄, 안전, 건강 생활 관리와 일상 지원을 연결하는 시니어 케어 플랫폼을 구축합니다.",
       "가족과 필요한 서비스를 연결하되, 정보는 본인이 동의한 범위에서만 공유됩니다.",
-      "현재는 사업 소개입니다. 방문 돌봄 예약, 실시간 매칭, 응급 구조는 아직 제공하지 않습니다.",
     ],
     ctaMain: "Ongil 살펴보기",
     ctaSub: "서비스 살펴보기",
@@ -282,7 +289,7 @@ const KO = {
   },
   eco: {
     kicker: "10 · Ecosystem & Business",
-    title: "취미에서 시작해,\n일상의 모든 순간으로.",
+    title: "돌봄에서 시작해,\n일상의 연결로.",
     axes: [
       { id: "hobby", name: "취미·활동", items: ["Ongil Hobby", "Ongil Learn", "Ongil Active", "Ongil Travel", "Ongil Culture", "Ongil Community"] },
       { id: "family", name: "가족 연결", items: ["Ongil Family", "가족 소통", "공유 일정", "공동 계획", "생활 도움 요청", "정보 공유 설정"] },
@@ -373,6 +380,14 @@ const EN = {
     messages: "Conversation preview",
     help: "Help request preview",
     roles: "Role preview",
+    jumpCare: "Care",
+    jumpFamily: "Family",
+    jumpDay: "A day",
+    jumpCareAreas: "Health & living",
+    jumpLeisure: "Leisure",
+    jumpRoad: "Direction",
+    extraBadge: "Extra",
+    coreBadge: "Core",
   },
   hero: {
     kicker: "NEWON ONGIL",
@@ -381,7 +396,6 @@ const EN = {
     leads: [
       "A senior-care platform we are building for care, safety, health routines, and daily living support.",
       "Family connection is part of care — information is shared only in the range the person agrees to.",
-      "This page is a business introduction. Home-care booking, live matching, and emergency rescue are not offered yet.",
     ],
     ctaMain: "Explore Ongil",
     ctaSub: "See the services",
@@ -604,7 +618,7 @@ const EN = {
   },
   eco: {
     kicker: "10 · Ecosystem & Business",
-    title: "Start with a hobby,\nand reach every moment of the day.",
+    title: "Start with care,\nand reach a connected daily life.",
     axes: [
       { id: "hobby", name: "Hobby & activity", items: ["Ongil Hobby", "Ongil Learn", "Ongil Active", "Ongil Travel", "Ongil Culture", "Ongil Community"] },
       { id: "family", name: "Family connection", items: ["Ongil Family", "Family talk", "Shared calendar", "Plans together", "Daily help requests", "Sharing settings"] },

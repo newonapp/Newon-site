@@ -27,7 +27,7 @@ import { renderOngilSection } from "./home-ongil-body.mjs";
 import { getOngilCopy } from "./home-ongil-copy.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const NOG_VER = "20260921nog1";
+const NOG_VER = "20260921nog5";
 const SKIP_DIRS = new Set(["node_modules", "_publish", ".git", "docs", "app-icons"]);
 
 const SEO = {
@@ -91,6 +91,7 @@ function langFromFile(file) {
 }
 
 function patchHtml(file) {
+  if (file.includes(`${path.sep}ongil${path.sep}`)) return;
   let html = fs.readFileSync(file, "utf8");
   const orig = html;
   html = html.replace(/href="((?:\.\.\/)+)#story-ongil"/g, 'href="$1ongil/"');

@@ -10,7 +10,7 @@ function age10(lang) {
     ko: {
       age: "10대",
       name: "미래를 준비하는 첫걸음",
-      intro: "학교생활과 진로를 고민하고, 나만의 미래를 탐색하며 성인이 되기 위한 기초를 준비하는 시기.",
+      intro: "학교생활과 진로를 고민하고, 미래를 탐색하며 성인 생활을 준비할 수 있는 시기.",
       topics: [
         "학교생활과 학습 습관",
         "내신·수능·입시 준비",
@@ -31,7 +31,7 @@ function age10(lang) {
     en: {
       age: "Teens",
       name: "First steps toward the future",
-      intro: "A time to navigate school and career questions, explore a future of your own, and prepare the basics of becoming an adult.",
+      intro: "A time to navigate school and career questions, explore a future of your own, and prepare the basics of adult life.",
       topics: [
         "School life and study habits",
         "Grades, exams, and admissions prep",
@@ -469,7 +469,7 @@ function heroClosePatch(lang) {
   const T = {
     ko: {
       hero: {
-        lead: "진로, 경제생활, 취업, 독립, 가족, 건강, 은퇴처럼 전 연령이 처음 마주하는 생애 상황에 정보와 준비를 연결하는 플랫폼입니다.",
+        lead: "진로와 취업, 독립과 가족, 건강과 은퇴까지. 삶의 변화 앞에서 필요한 정보와 서비스를 쉽게 찾을 수 있도록 연결하는 생애주기 플랫폼을 만들어갑니다.",
         ctaMain: "Life Stage 살펴보기",
         ctaSub: "핵심 서비스 알아보기",
       },
@@ -489,23 +489,23 @@ function heroClosePatch(lang) {
       },
       connect: {
         title: "필요한 순간,\n사람과 서비스를 연결합니다.",
-        expertLead: "관련 분야의 전문가를 탐색하고 연결하는 서비스",
-        servicesLead: "생활에 필요한 서비스를 찾고 비교하는 서비스",
-        communityLead: "경험과 정보를 공유하는 공간",
+        expertLead: "향후 관련 분야의 전문가를 탐색하고 연결하려는 방향입니다.",
+        servicesLead: "향후 생활에 필요한 서비스를 찾고 비교하려는 방향입니다.",
+        communityLead: "경험과 정보를 공유하는 공간을 만들어 가려는 방향입니다.",
       },
       revenue: {
         title: "개인의 일상에서,\n교육과 기업, 사회 전체로.",
         lead: "Life Stage는 개인 사용자를 시작으로 전문가·서비스 공급자, 교육기관, 기업, 공공기관으로 확장하는 구조를 검토합니다.",
       },
       close: {
-        lead: "전 연령의 생애 상황을 이해하고 준비하도록 돕는 플랫폼을 만들어 갑니다. 현재 페이지는 사업 소개이며, 실제 상담·예약 서비스는 아직 없습니다.",
+        lead: "20대부터 70대까지, 삶의 변화 앞에서 필요한 정보와 서비스를 연결하는 생애주기 플랫폼을 만들어 갑니다. 현재 페이지는 사업 소개이며, 실제 상담·예약 서비스는 아직 없습니다.",
         ctaMain: "사업 및 협업 문의",
         ctaSub: "Newon의 다른 사업 살펴보기",
       },
     },
     en: {
       hero: {
-        lead: "An all-age platform that connects information and preparation for career, money, work, independence, family, health, and retirement.",
+        lead: "Career and work, independence and family, health and retirement. Life Stage is building a lifecycle platform that helps people find the information and services a life change requires.",
         ctaMain: "Explore Life Stage",
         ctaSub: "See core services",
       },
@@ -525,16 +525,16 @@ function heroClosePatch(lang) {
       },
       connect: {
         title: "When you need help,\npeople and services connect.",
-        expertLead: "Find and connect with specialists in the fields that matter.",
-        servicesLead: "Find and compare the living services a situation needs.",
-        communityLead: "A place to share experience and information.",
+        expertLead: "A future direction: explore specialists in the fields that matter.",
+        servicesLead: "A future direction: find and compare living services a situation needs.",
+        communityLead: "A future place to share experience and information.",
       },
       revenue: {
         title: "From one person’s day\nto schools, companies, and the public.",
         lead: "Life Stage is exploring a path from individuals to experts and services, then schools, companies, and public institutions.",
       },
       close: {
-        lead: "A platform we are building so every age can understand and prepare first life moments. This page is an introduction — advice and booking are not live yet.",
+        lead: "A lifecycle platform we are building to connect information and services for life changes from the 20s through the 70s. This page is an introduction — advice and booking are not live yet.",
         ctaMain: "Business and partnership inquiry",
         ctaSub: "See Newon’s other businesses",
       },
@@ -626,13 +626,13 @@ function sitCats(lang) {
     ko: [
       { id: "study", n: "A", title: "학업과 사회 진출", blurb: "입시 · 진로 · 성인 준비 · 아르바이트 · 첫 취업", sitIds: ["exam", "major", "adult", "parttime", "firstjob"] },
       { id: "life", n: "B", title: "독립과 생활", blurb: "첫 독립 · 결혼 준비 · 첫 육아", sitIds: ["independent", "marriage", "baby"] },
-      { id: "work", n: "C", title: "일과 새로운 도전", blurb: "이직 · 창업 준비", sitIds: ["career", "startup"] },
+      { id: "work", n: "C", title: "일과 새로운 도전", blurb: "이직 · 경력 전환", sitIds: ["career", "startup"] },
       { id: "family", n: "D", title: "가족과 다음 삶", blurb: "가족 돌봄 · 은퇴 이후", sitIds: ["care", "retire"] },
     ],
     en: [
       { id: "study", n: "A", title: "Study and starting out", blurb: "Admissions · path · adult prep · first work", sitIds: ["exam", "major", "adult", "parttime", "firstjob"] },
       { id: "life", n: "B", title: "Independence and living", blurb: "Moving out · marriage · first child", sitIds: ["independent", "marriage", "baby"] },
-      { id: "work", n: "C", title: "Work and new challenges", blurb: "Job change · starting a business", sitIds: ["career", "startup"] },
+      { id: "work", n: "C", title: "Work and new challenges", blurb: "Job change · career turn", sitIds: ["career", "startup"] },
       { id: "family", n: "D", title: "Family and the next chapter", blurb: "Family care · life after work", sitIds: ["care", "retire"] },
     ],
   };
@@ -666,7 +666,7 @@ function ageHighlights(lang) {
       20: { name: "새로운 시작", highlights: ["독립", "첫 직장", "금융 기초"] },
       30: { name: "삶의 기반", highlights: ["커리어", "주거·재무", "가족생활"] },
       40: { name: "일과 삶의 균형", highlights: ["커리어 전환", "자녀 교육", "가족 돌봄"] },
-      50: { name: "새로운 전환", highlights: ["재취업·창업", "은퇴 준비", "건강·여가"] },
+      50: { name: "새로운 전환", highlights: ["일과 생활 변화", "은퇴 준비", "건강·여가"] },
       60: { name: "다음 일상", highlights: ["평생교육", "사회활동", "은퇴 이후 생활"] },
       70: { name: "나다운 삶", highlights: ["디지털 생활", "여가·관계", "생활 지원"] },
     },
@@ -675,7 +675,7 @@ function ageHighlights(lang) {
       20: { name: "A new start", highlights: ["Independence", "First job", "Money basics"] },
       30: { name: "Building a base", highlights: ["Career", "Housing & money", "Family life"] },
       40: { name: "Work-life balance", highlights: ["Career shifts", "Children’s education", "Family care"] },
-      50: { name: "A new turn", highlights: ["Return or startup", "Later-life prep", "Health & leisure"] },
+      50: { name: "A new turn", highlights: ["Work-life change", "Later-life prep", "Health & leisure"] },
       60: { name: "The next everyday", highlights: ["Lifelong learning", "Community", "Life after work"] },
       70: { name: "A life in your way", highlights: ["Digital life", "Leisure & bonds", "Living support"] },
     },
@@ -771,7 +771,7 @@ export function enrichLifeStage(copy, lang) {
         { id: "job", label: "첫 직장", q: "첫 직장에서 알아야 할 것은 무엇인가요?", a: "채용 절차와 근로계약, 급여명세서처럼 일을 시작하기 전 확인할 항목부터 살펴볼 수 있습니다. 관심 직무를 고르면 준비 순서를 단계별로 정리할 수 있습니다." },
         { id: "wed", label: "결혼 준비", q: "결혼 준비는 어떤 순서로 해야 하나요?", a: "일정과 예산을 먼저 맞춘 뒤, 공동생활에서 결정할 항목과 행정·주거 준비를 나눠 보세요. 각 단계는 지식 콘텐츠와 체크리스트로 이어질 수 있습니다." },
         { id: "care", label: "가족 돌봄", q: "부모님 돌봄을 어떻게 준비해야 하나요?", a: "일상에서 필요한 도움의 종류를 먼저 적고, 가족 역할과 일정을 나눈 뒤 관련 제도와 서류를 확인할 수 있습니다." },
-        { id: "retire", label: "은퇴 이후", q: "은퇴 후 새로운 일을 시작하고 싶어요.", a: "유지하고 싶은 일상과 관심 분야를 정리한 뒤, 관련 교육과 재취업·창업 지원 프로그램을 탐색할 수 있습니다." },
+        { id: "retire", label: "은퇴 이후", q: "은퇴 후 새로운 일을 시작하고 싶어요.", a: "유지하고 싶은 일상과 관심 분야를 정리한 뒤, 관련 교육과 재취업·사회활동 정보를 탐색할 수 있습니다." },
         { id: "exam", label: "대학·전공", q: "대학과 전공을 어떻게 탐색해야 하나요?", a: "먼저 관심 분야와 배우고 싶은 내용을 정리해 보세요. 이후 관련 학과의 교육과정과 진로 정보를 비교하고, 관심 대학의 공식 모집요강을 확인할 수 있습니다." },
         { id: "adult", label: "성인 준비", q: "곧 성인이 되는데 무엇부터 준비해야 할까요?", a: "금융과 생활 행정, 근로계약, 독립 준비처럼 일상에서 필요한 기본 지식부터 살펴볼 수 있습니다." },
       ]
@@ -780,7 +780,7 @@ export function enrichLifeStage(copy, lang) {
         { id: "job", label: "First job", q: "What should I know at a first job?", a: "Begin with hiring steps, the work contract, and a payslip. Pick a role of interest and turn prep into a step-by-step list." },
         { id: "wed", label: "Marriage prep", q: "In what order should marriage prep go?", a: "Align dates and a budget first, then split shared-life decisions from admin and housing. Each step can connect to knowledge and a checklist." },
         { id: "care", label: "Family care", q: "How should I prepare to support a parent?", a: "Name the kinds of daily help needed, share family roles and dates, then check related programs and documents." },
-        { id: "retire", label: "After work", q: "I want to start something new after work.", a: "Write the everyday you want to keep and the fields you care about, then explore related education and return-to-work or startup-support programs." },
+        { id: "retire", label: "After work", q: "I want to start something new after work.", a: "Write the everyday you want to keep and the fields you care about, then explore related education, return-to-work, and community programs." },
         { id: "exam", label: "University & major", q: "How should I explore universities and majors?", a: "Start with the fields and subjects you want to learn. Then compare program details and career notes, and read the official admissions guide for schools you care about." },
         { id: "adult", label: "Adult prep", q: "I’m becoming an adult soon. What should I prepare first?", a: "Begin with everyday money, admin, work contracts, and moving-out basics." },
       ];

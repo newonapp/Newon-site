@@ -5,13 +5,14 @@ import { escapeHtml } from "./hub-utils.mjs";
 import { getOngilCopy } from "./home-ongil-copy.mjs";
 
 const DISCOVER_FEATURED = new Set(["art", "music", "sport", "travel", "cook", "read"]);
+const PILLAR_ORDER = ["care", "family", "hobby"];
 
 function nl(s) {
   return escapeHtml(s || "").replace(/\n/g, "<br>");
 }
 
-function titleBlock(kicker, title, lead) {
-  return `<header class="nls-head">
+function titleBlock(kicker, title, lead, extraClass = "") {
+  return `<header class="nls-head${extraClass ? ` ${extraClass}` : ""}">
     ${kicker ? `<p class="nls-kicker">${escapeHtml(kicker)}</p>` : ""}
     <h2 class="nls-title">${nl(title)}</h2>
     ${lead ? `<p class="nls-lead">${escapeHtml(lead)}</p>` : ""}
@@ -35,25 +36,67 @@ function tabBtn(group, key, label, selected, extraClass = "", extraAttr = "") {
   return `<button type="button" class="nls-tab${extraClass}${selected ? " is-active" : ""}" data-nls-tab data-nls-group="${escapeHtml(group)}" data-nls-key="${escapeHtml(key)}"${extraAttr} role="tab" aria-selected="${selected ? "true" : "false"}" tabindex="${selected ? "0" : "-1"}">${label}</button>`;
 }
 
-function attrJson(value) {
-  return escapeHtml(JSON.stringify(value));
-}
-
 function ecoHref(lang, slug) {
   if (slug === "lifestage") return `/${lang}/lifestage/`;
   return `/${lang}/portfolio/${slug}/`;
 }
 
-function heroBlock(c, lang) {
-  const axes = (c.hero.axes || [])
+function orderedPillars(items) {
+  const map = Object.fromEntries((items || []).map((it) => [it.id, it]));
+  return PILLAR_ORDER.map((id, i) => {
+    const it = map[id];
+    if (!it) return null;
+    return { ...it, n: String(i + 1).padStart(2, "0") };
+  }).filter(Boolean);
+}
+
+function heroVisual(c) {
+  const steps = c.roadmap.steps || [];
+  const axes = c.hero.axes || [];
+  const care = axes.find((a) => a.id === "care") || axes[0] || { name: "", keys: "" };
+  const family = axes.find((a) => a.id === "family") || axes[1] || { name: "", keys: "" };
+  const hobby = axes.find((a) => a.id === "hobby") || axes[2] || { name: "", keys: "" };
+  const nodes = steps
     .map(
-      (a) => `<article class="nog-axis">
-        <p class="nls-mini">${escapeHtml(a.name)}</p>
-        <strong>${escapeHtml(a.keys)}</strong>
-      </article>`
+      (s) => `<button type="button" class="nls-node" data-nls-tab data-nls-group="hero" data-nls-key="${escapeHtml(s.n)}" data-name="${escapeHtml(s.title)}" data-age="${escapeHtml(s.n)}" aria-pressed="false">
+        <span class="nls-node__n">${escapeHtml(s.n)}</span>
+        <span class="nls-node__age">${escapeHtml(s.n)}</span>
+        <span class="nls-node__name">${escapeHtml(s.title)}</span>
+      </button>`
     )
     .join("");
-  const leads = (c.hero.leads || []).map((t) => `<p class="nls-lead">${escapeHtml(t)}</p>`).join("");
+  return `<div class="nls-visual" aria-label="${escapeHtml(c.hero.theme)}">
+    <div class="nls-sv">
+      <div class="nls-sv__head">
+        <span class="nls-sv__live"><i></i> CARE TIMELINE</span>
+        <span class="nls-sv__meta">DIRECTION</span>
+      </div>
+      <div class="nls-sv__rail">${nodes}</div>
+      <div class="nls-sv__grid">
+        <article class="nls-sv__now" data-nls-now data-default-title="${escapeHtml(care.name)}" data-default-age="${escapeHtml(care.keys)}">
+          <p class="nls-sv__k">NOW</p>
+          <strong data-nls-now-title>${escapeHtml(care.name)}</strong>
+          <em data-nls-now-age>${escapeHtml(care.keys)}</em>
+        </article>
+        <article>
+          <p class="nls-sv__k">FAMILY</p>
+          <strong>${escapeHtml(family.name)}</strong>
+          <em>${escapeHtml(family.keys)}</em>
+        </article>
+        <article>
+          <p class="nls-sv__k">CONNECT</p>
+          <strong>${escapeHtml(hobby.name)}</strong>
+          <em>${escapeHtml(hobby.keys)}</em>
+        </article>
+      </div>
+    </div>
+  </div>`;
+}
+
+function heroBlock(c, lang) {
+  const lead = (c.hero.leads || [])[0]
+    ? `<p class="nls-lead">${escapeHtml(c.hero.leads[0])}</p>`
+    : "";
   return `<div class="nls-crumb">
       <a href="/${escapeHtml(lang)}/">NEWON</a>
       <span aria-hidden="true">/</span>
@@ -64,52 +107,49 @@ function heroBlock(c, lang) {
       <div class="nls-hero__copy">
         <p class="nls-kicker">${escapeHtml(c.hero.kicker)}<span class="nls-kicker__sep" aria-hidden="true">·</span><span>${escapeHtml(c.hero.theme)}</span></p>
         <h1 id="story-ongil-title" class="nls-hero__title">${c.hero.titleHtml}</h1>
-        ${leads}
+        ${lead}
         <div class="nls-actions">
           <a class="nls-btn" href="#nog-pillars" data-nls-scroll>${escapeHtml(c.hero.ctaMain)} →</a>
-          <a class="nls-btn nls-btn--ghost" href="#nog-discover" data-nls-scroll>${escapeHtml(c.hero.ctaSub)}</a>
+          <a class="nls-btn nls-btn--ghost" href="#nog-family" data-nls-scroll>${escapeHtml(c.hero.ctaSub)}</a>
         </div>
         <p class="nls-note">${escapeHtml(c.hero.status)}</p>
       </div>
-      <div class="nls-visual" aria-hidden="true">
-        <div class="nog-axes">${axes}</div>
-      </div>
+      ${heroVisual(c)}
     </div>
   </div>`;
 }
 
 function pillarsBlock(c) {
-  const tabs = c.pillars.items
-    .map((it) =>
-      tabBtn(
-        "pillar",
-        it.id,
-        `<span class="nls-age-tab__age">${escapeHtml(it.n)}</span><strong class="nls-age-tab__name">${escapeHtml(it.name)}</strong><span>${escapeHtml(it.lead)}</span>`,
-        false,
-        " nog-card-tab"
-      )
-    )
-    .join("");
-  const panels = c.pillars.items
+  const items = orderedPillars(c.pillars.items);
+  const cards = items
     .map((it) => {
-      return `<article class="nls-panel" data-nls-panel data-nls-group="pillar" data-nls-key="${escapeHtml(it.id)}" hidden>
-        <p class="nls-panel__kicker">${escapeHtml(it.n)} · ${escapeHtml(it.name)}</p>
-        <h4 class="nls-panel__title">${escapeHtml(it.name)}</h4>
-        <p class="nls-panel__intro">${escapeHtml(it.lead)}</p>
-        <p class="nls-mini">${escapeHtml(c.ui.features)}</p>
+      const tone = it.id === "care" ? "care" : it.id === "family" ? "family" : "hobby";
+      const badge =
+        it.id === "hobby"
+          ? `<span class="nog-badge">${escapeHtml(c.ui.extraBadge)}</span>`
+          : it.id === "care"
+            ? `<span class="nog-badge nog-badge--core">${escapeHtml(c.ui.coreBadge)}</span>`
+            : "";
+      return `<article class="nog-pillar nog-pillar--${tone}">
+        <p class="nog-pillar__n">${escapeHtml(it.n)}</p>
+        ${badge}
+        <h3 class="nog-pillar__name">${escapeHtml(it.name)}</h3>
+        <p class="nog-pillar__lead">${escapeHtml(it.lead)}</p>
         ${list(it.features, "nls-chips")}
-        ${list(it.details, "nls-points")}
-        <p class="nls-mini">${escapeHtml(c.ui.caseLabel)}</p>
-        ${list(it.cases, "nls-list")}
+        <details class="nls-more nog-pillar__more">
+          <summary>${escapeHtml(c.ui.more)}</summary>
+          <div class="nls-more__body">
+            ${list(it.details, "nls-points")}
+            <p class="nls-mini">${escapeHtml(c.ui.caseLabel)}</p>
+            ${list(it.cases, "nls-list")}
+          </div>
+        </details>
       </article>`;
     })
     .join("");
-  return `<div id="nog-pillars" class="nls-block" data-hs-section>
+  return `<div id="nog-pillars" class="nls-block nog-block--pillars" data-hs-section>
     ${titleBlock(c.pillars.kicker, c.pillars.title, "")}
-    <p class="nls-note">${escapeHtml(c.ui.pickPillar)}</p>
-    <div class="nls-tabs nog-tabs-3" role="tablist">${tabs}</div>
-    ${emptyHint("pillar", c.ui.pickPillar)}
-    <div class="nls-panels">${panels}</div>
+    <div class="nog-pillars">${cards}</div>
   </div>`;
 }
 
@@ -130,226 +170,132 @@ function discoverBlock(c) {
     .join("");
   const panels = c.discover.items
     .map(
-      (it) => `<article class="nls-panel" data-nls-panel data-nls-group="disc" data-nls-key="${escapeHtml(it.id)}" hidden>
-        <p class="nls-panel__kicker">${escapeHtml(it.name)}</p>
+      (it) => `<article class="nls-panel nog-disc-panel" data-nls-panel data-nls-group="disc" data-nls-key="${escapeHtml(it.id)}" hidden>
         <h4 class="nls-panel__title">${escapeHtml(it.name)}</h4>
         <p class="nls-panel__intro">${escapeHtml(it.intro)}</p>
-        <p class="nls-mini">${escapeHtml(c.ui.start)}</p>
-        <p>${escapeHtml(it.start)}</p>
-        <p class="nls-mini">${escapeHtml(c.ui.home)}</p>
-        <p>${escapeHtml(it.home)}</p>
-        <p class="nls-mini">${escapeHtml(c.ui.together)}</p>
-        <p>${escapeHtml(it.together)}</p>
-        <p class="nls-mini">${escapeHtml(c.ui.check)}</p>
-        <p>${escapeHtml(it.check)}</p>
-        <p class="nls-mini">${escapeHtml(c.ui.next)}</p>
-        <p>${escapeHtml(it.next)}</p>
-      </article>`
-    )
-    .join("");
-  return `<div id="nog-discover" class="nls-block nls-block--band" data-hs-section>
-    ${titleBlock(c.discover.kicker, c.discover.title, c.discover.lead)}
-    <p class="nls-note">${escapeHtml(c.discover.filterNote)}</p>
-    <p class="nls-note">${escapeHtml(c.ui.pickInterest)}</p>
-    <div class="nls-tabs nog-disc-grid" role="tablist">${tabs}</div>
-    <p class="nls-actions"><button type="button" class="nls-btn nls-btn--ghost" data-nog-more data-label-all="${escapeHtml(c.ui.showAll)}" data-label-less="${escapeHtml(c.ui.showLess)}">${escapeHtml(c.ui.showAll)}</button></p>
-    ${emptyHint("disc", c.ui.pickInterest)}
-    <div class="nls-panels">${panels}</div>
-  </div>`;
-}
-
-function journeyBlock(c) {
-  const cases = c.journey.cases
-    .map((it, i) =>
-      tabBtn(
-        "jcase",
-        it.id,
-        `<strong>${escapeHtml(it.name)}</strong>`,
-        i === 0,
-        "",
-        ` data-nls-name="${escapeHtml(it.name)}" data-nls-bodies="${attrJson(it.bodies)}"`
-      )
-    )
-    .join("");
-  const steps = c.journey.steps
-    .map((s, i) =>
-      tabBtn(
-        "jstep",
-        s.id,
-        `<span>${escapeHtml(s.n)}</span><strong>${escapeHtml(s.name)}</strong><em>${escapeHtml(s.lead)}</em>`,
-        i === 0,
-        " nog-step-tab",
-        ` data-nls-idx="${i}"`
-      )
-    )
-    .join("");
-  const first = c.journey.cases[0] || { name: "", bodies: [] };
-  return `<div id="nog-journey" class="nls-block" data-hs-section>
-    ${titleBlock(c.journey.kicker, c.journey.title, c.journey.lead)}
-    <p class="nls-note">${escapeHtml(c.ui.pickCase)}</p>
-    <p class="nls-mini">${escapeHtml(c.ui.caseLabel)}</p>
-    <div class="nls-tabs" role="tablist">${cases}</div>
-    <p class="nls-note">${escapeHtml(c.ui.pickStep)}</p>
-    <div class="nls-tabs nog-steps" role="tablist">${steps}</div>
-    <article class="nls-panel nog-journey-panel">
-      <p class="nls-panel__kicker">${escapeHtml(c.ui.caseLabel)}</p>
-      <h4 class="nls-panel__title" data-nog-jtitle>${escapeHtml(first.name)}</h4>
-      <p class="nls-panel__intro" data-nog-jtext>${escapeHtml((first.bodies || [])[0] || "")}</p>
-      <p class="nls-note">${escapeHtml(c.ui.bookingNote)}</p>
-    </article>
-  </div>`;
-}
-
-function hobbyBlock(c) {
-  const tabs = c.hobby.items
-    .map((it) => tabBtn("hobby", it.id, `<strong>${escapeHtml(it.name)}</strong><span>${escapeHtml(it.lead)}</span>`, false, " nog-card-tab"))
-    .join("");
-  const panels = c.hobby.items
-    .map(
-      (it) => `<article class="nls-panel" data-nls-panel data-nls-group="hobby" data-nls-key="${escapeHtml(it.id)}" hidden>
-        <p class="nls-panel__kicker">${escapeHtml(it.name)}</p>
-        <h4 class="nls-panel__title">${escapeHtml(it.name)}</h4>
-        <p class="nls-panel__intro">${escapeHtml(it.lead)}</p>
-        ${list(it.points, "nls-points")}
-        ${it.note ? `<p class="nls-note">${escapeHtml(it.note)}</p>` : ""}
+        <div class="nog-disc-grid4">
+          <div><p class="nls-mini">${escapeHtml(c.ui.start)}</p><p>${escapeHtml(it.start)}</p></div>
+          <div><p class="nls-mini">${escapeHtml(c.ui.home)}</p><p>${escapeHtml(it.home)}</p></div>
+          <div><p class="nls-mini">${escapeHtml(c.ui.together)}</p><p>${escapeHtml(it.together)}</p></div>
+          <div><p class="nls-mini">${escapeHtml(c.ui.next)}</p><p>${escapeHtml(it.next)}</p></div>
+        </div>
+        <p class="nls-note">${escapeHtml(c.ui.check)}: ${escapeHtml(it.check)}</p>
       </article>`
     )
     .join("");
   const extras = (c.hobby.extraGroups || [])
     .map((g) => `<div class="nog-extra"><p class="nls-mini">${escapeHtml(g.title)}</p>${list(g.items, "nls-chips")}</div>`)
     .join("");
-  return `<div id="nog-hobby" class="nls-block nls-block--band" data-hs-section>
-    ${titleBlock(c.hobby.kicker, c.hobby.title, "")}
-    <p class="nls-note">${escapeHtml(c.ui.pickHobby)}</p>
+  return `<div id="nog-discover" class="nls-block nls-block--band nog-block--leisure" data-hs-section>
+    ${titleBlock(c.discover.kicker, c.discover.title, c.discover.lead)}
+    <p class="nls-note">${escapeHtml(c.discover.filterNote)}</p>
     <div class="nls-tabs nog-disc-grid" role="tablist">${tabs}</div>
-    ${emptyHint("hobby", c.ui.pickHobby)}
+    <p class="nls-actions"><button type="button" class="nls-btn nls-btn--ghost" data-nog-more data-label-all="${escapeHtml(c.ui.showAll)}" data-label-less="${escapeHtml(c.ui.showLess)}">${escapeHtml(c.ui.showAll)}</button></p>
+    ${emptyHint("disc", c.ui.pickInterest)}
     <div class="nls-panels">${panels}</div>
     ${moreBlock(c.ui.extra, `<p class="nls-lead">${escapeHtml(c.hobby.extraLead)}</p><p class="nls-note">${escapeHtml(c.ui.bookingNote)}</p><div class="nog-extras">${extras}</div>`)}
   </div>`;
 }
 
 function familyBlock(c) {
-  const featTabs = c.family.features
-    .map((it) => tabBtn("ffeat", it.id, escapeHtml(it.name), false))
-    .join("");
-  const featPanels = c.family.features
+  const feats = (c.family.features || [])
     .map(
-      (it) => `<article class="nls-panel" data-nls-panel data-nls-group="ffeat" data-nls-key="${escapeHtml(it.id)}" hidden>
-        <h4 class="nls-panel__title">${escapeHtml(it.name)}</h4>
-        ${list(it.items, "nls-points")}
+      (it) => `<article class="nog-feat">
+        <h3>${escapeHtml(it.name)}</h3>
+        ${list((it.items || []).slice(0, 3), "nls-points")}
       </article>`
     )
     .join("");
   const sceneTabs = c.family.scenes
-    .map((it, i) => tabBtn("scene", it.id, escapeHtml(it.name), i === 0))
+    .map((it, i) => tabBtn("scene", it.id, escapeHtml(it.name), i === 0, " nog-scene-tab"))
     .join("");
   const scenePanels = c.family.scenes
     .map(
       (it, i) => `<article class="nls-panel nog-scene" data-nls-panel data-nls-group="scene" data-nls-key="${escapeHtml(it.id)}"${i === 0 ? "" : " hidden"}>
         <h4 class="nls-panel__title">${escapeHtml(it.name)}</h4>
         <div class="nog-scene-grid">
-          <div><p class="nls-mini">${escapeHtml(c.ui.calendar)}</p>${list(it.calendar, "nls-list")}</div>
-          <div><p class="nls-mini">${escapeHtml(c.ui.messages)}</p>${list(it.messages, "nls-list")}</div>
-          <div><p class="nls-mini">${escapeHtml(c.ui.help)}</p>${list(it.help, "nls-list")}</div>
-          <div><p class="nls-mini">${escapeHtml(c.ui.roles)}</p>${list(it.roles, "nls-list")}</div>
+          <div class="nog-scene-card"><p class="nls-mini">${escapeHtml(c.ui.calendar)}</p>${list(it.calendar, "nls-list")}</div>
+          <div class="nog-scene-card"><p class="nls-mini">${escapeHtml(c.ui.messages)}</p>${list(it.messages, "nls-list")}</div>
+          <div class="nog-scene-card"><p class="nls-mini">${escapeHtml(c.ui.help)}</p>${list(it.help, "nls-list")}</div>
+          <div class="nog-scene-card"><p class="nls-mini">${escapeHtml(c.ui.roles)}</p>${list(it.roles, "nls-list")}</div>
         </div>
       </article>`
     )
     .join("");
-  return `<div id="nog-family" class="nls-block" data-hs-section>
+  return `<div id="nog-family" class="nls-block nog-block--family" data-hs-section>
     ${titleBlock(c.family.kicker, c.family.title, c.family.lead)}
     <p class="nls-note">${escapeHtml(c.ui.consent)}</p>
-    <p class="nls-mini">${escapeHtml(c.ui.features)}</p>
-    <div class="nls-tabs" role="tablist">${featTabs}</div>
-    ${emptyHint("ffeat", c.ui.pickFamily)}
-    <div class="nls-panels">${featPanels}</div>
-    <p class="nls-note">${escapeHtml(c.ui.pickFamily)}</p>
-    <div class="nls-tabs" role="tablist">${sceneTabs}</div>
-    <div class="nls-panels">${scenePanels}</div>
+    <div class="nog-family">
+      <div class="nog-family__feats">${feats}</div>
+      <div class="nog-family__preview">
+        <p class="nls-mini">${escapeHtml(c.ui.pickFamily)}</p>
+        <div class="nls-tabs nog-scene-tabs" role="tablist">${sceneTabs}</div>
+        <div class="nls-panels nog-device">${scenePanels}</div>
+      </div>
+    </div>
   </div>`;
 }
 
 function careBlock(c) {
-  const tabs = c.care.items
-    .map((it) => tabBtn("care", it.id, escapeHtml(it.name), false))
-    .join("");
-  const panels = c.care.items
+  const tiles = (c.care.items || [])
     .map(
-      (it) => `<article class="nls-panel" data-nls-panel data-nls-group="care" data-nls-key="${escapeHtml(it.id)}" hidden>
-        <h4 class="nls-panel__title">${escapeHtml(it.name)}</h4>
+      (it, i) => `<article class="nog-care-tile${i === 0 ? " nog-care-tile--lead" : ""}">
+        <p class="nog-care-tile__n">${String(i + 1).padStart(2, "0")}</p>
+        <h3>${escapeHtml(it.name)}</h3>
         ${list(it.points, "nls-points")}
-        <p class="nls-note">${escapeHtml(c.ui.consent)}</p>
       </article>`
     )
     .join("");
-  return `<div id="nog-care" class="nls-block nls-block--band" data-hs-section>
+  return `<div id="nog-care" class="nls-block nls-block--band nog-block--care" data-hs-section>
     ${titleBlock(c.care.kicker, c.care.title, "")}
     <p class="nls-note">${escapeHtml(c.care.note)}</p>
-    <p class="nls-note">${escapeHtml(c.ui.pickCare)}</p>
-    <div class="nls-tabs" role="tablist">${tabs}</div>
-    ${emptyHint("care", c.ui.pickCare)}
-    <div class="nls-panels">${panels}</div>
+    <div class="nog-care-grid">${tiles}</div>
+    <p class="nls-note">${escapeHtml(c.ui.consent)}</p>
   </div>`;
 }
 
 function dayBlock(c) {
-  const tabs = c.day.moments
-    .map((it, i) => tabBtn("day", it.id, escapeHtml(it.name), i === 0))
-    .join("");
-  const panels = c.day.moments
+  const moments = (c.day.moments || [])
     .map(
-      (it, i) => `<article class="nls-panel" data-nls-panel data-nls-group="day" data-nls-key="${escapeHtml(it.id)}"${i === 0 ? "" : " hidden"}>
-        <h4 class="nls-panel__title">${escapeHtml(it.name)}</h4>
-        <p class="nls-panel__intro">${escapeHtml(it.body)}</p>
+      (it, i) => `<article class="nog-moment">
+        <span class="nog-moment__n">${String(i + 1).padStart(2, "0")}</span>
+        <h3>${escapeHtml(it.name)}</h3>
+        <p>${escapeHtml(it.body)}</p>
       </article>`
     )
     .join("");
-  return `<div id="nog-day" class="nls-block" data-hs-section>
+  return `<div id="nog-day" class="nls-block nog-block--day" data-hs-section>
     ${titleBlock(c.day.kicker, c.day.title, "")}
     <p class="nls-note">${escapeHtml(c.ui.dayNote)}</p>
-    <p class="nls-note">${escapeHtml(c.ui.pickDay)}</p>
-    <div class="nls-tabs" role="tablist">${tabs}</div>
-    <div class="nls-panels">${panels}</div>
+    <div class="nog-day">${moments}</div>
   </div>`;
 }
 
 function knowledgeBlock(c) {
-  const fields = c.knowledge.fields
-    .map((it) => tabBtn("know", it.id, escapeHtml(it.name), false))
-    .join("");
-  const fieldPanels = c.knowledge.fields
+  const fields = (c.knowledge.fields || [])
     .map(
-      (it) => `<article class="nls-panel" data-nls-panel data-nls-group="know" data-nls-key="${escapeHtml(it.id)}" hidden>
-        <h4 class="nls-panel__title">${escapeHtml(it.name)}</h4>
-        <p class="nls-panel__intro">${escapeHtml(it.intro)}</p>
-        <p class="nls-note">${escapeHtml(c.ui.learnPreview)}</p>
+      (it) => `<article class="nog-know">
+        <h3>${escapeHtml(it.name)}</h3>
+        <p>${escapeHtml(it.intro)}</p>
       </article>`
     )
     .join("");
-  const lessons = c.knowledge.lessons
-    .map((it, i) => tabBtn("lesson", it.id, escapeHtml(it.name), i === 0))
-    .join("");
-  const lessonPanels = c.knowledge.lessons
-    .map((it, i) => {
-      const steps = `<ol class="nls-list nog-ol">${(it.steps || [])
-        .map((s, n) => `<li><span>${String(n + 1).padStart(2, "0")}</span> ${escapeHtml(s)}</li>`)
-        .join("")}</ol>`;
-      return `<article class="nls-panel" data-nls-panel data-nls-group="lesson" data-nls-key="${escapeHtml(it.id)}"${i === 0 ? "" : " hidden"}>
-        <h4 class="nls-panel__title">${escapeHtml(it.name)}</h4>
-        ${steps}
-        <p class="nls-note">${escapeHtml(c.ui.learnPreview)}</p>
-      </article>`;
-    })
-    .join("");
-  return `<div id="nog-knowledge" class="nls-block nls-block--band" data-hs-section>
+  const firstLesson = (c.knowledge.lessons || [])[0];
+  const lesson = firstLesson
+    ? `<aside class="nog-lesson">
+        <p class="nls-mini">${escapeHtml(c.ui.learnPreview)}</p>
+        <h3>${escapeHtml(firstLesson.name)}</h3>
+        <ol class="nls-list nog-ol">${(firstLesson.steps || [])
+          .map((s, n) => `<li><span>${String(n + 1).padStart(2, "0")}</span> ${escapeHtml(s)}</li>`)
+          .join("")}</ol>
+      </aside>`
+    : "";
+  return `<div id="nog-knowledge" class="nls-block nog-block--know" data-hs-section>
     ${titleBlock(c.knowledge.kicker, c.knowledge.title, "")}
-    <p class="nls-note">${escapeHtml(c.ui.pickKnow)}</p>
-    <div class="nls-tabs" role="tablist">${fields}</div>
-    ${emptyHint("know", c.ui.pickKnow)}
-    <div class="nls-panels">${fieldPanels}</div>
-    <p class="nls-mini">${escapeHtml(c.ui.learnPreview)}</p>
-    <div class="nls-tabs" role="tablist">${lessons}</div>
-    <div class="nls-panels">${lessonPanels}</div>
+    <div class="nog-know-layout">
+      <div class="nog-know-grid">${fields}</div>
+      ${lesson}
+    </div>
   </div>`;
 }
 
@@ -370,73 +316,54 @@ function ecoBlock(c, lang) {
       </a>`
     )
     .join("");
-  return `<div id="nog-eco" class="nls-block" data-hs-section>
+  return `<div id="nog-eco" class="nls-block nls-block--band nog-block--eco" data-hs-section>
     ${titleBlock(c.eco.kicker, c.eco.title, "")}
     <div class="nog-extras">${axes}</div>
-    <p class="nls-mini">${escapeHtml(c.eco.baseName)}</p>
-    ${list(c.eco.base, "nls-chips")}
     <p class="nls-note">${escapeHtml(c.eco.nameNote)}</p>
     <p class="nls-mini">${escapeHtml(c.eco.linksTitle)}</p>
     <p class="nls-note">${escapeHtml(c.ui.futureLink)}</p>
     <div class="nog-links">${links}</div>
-    <article class="nls-panel">
+    <article class="nog-vs">
       <p class="nls-mini">${escapeHtml(c.eco.vsTitle)}</p>
       <p>${escapeHtml(c.eco.vs)}</p>
-      <p class="nls-note">${escapeHtml(c.ui.vsNote)}</p>
     </article>
   </div>`;
 }
 
 function businessBlock(c) {
-  const tabs = c.business.items
-    .map((it) => tabBtn("biz", it.id, `<span>${escapeHtml(it.n)}</span><strong>${escapeHtml(it.name)}</strong>`, false, " nog-card-tab"))
-    .join("");
-  const panels = c.business.items
+  const rows = (c.business.items || [])
     .map(
-      (it) => `<article class="nls-panel" data-nls-panel data-nls-group="biz" data-nls-key="${escapeHtml(it.id)}" hidden>
-        <p class="nls-panel__kicker">${escapeHtml(it.n)}</p>
-        <h4 class="nls-panel__title">${escapeHtml(it.name)}</h4>
-        ${list(it.items, "nls-points")}
+      (it) => `<article class="nog-biz">
+        <p class="nog-biz__n">${escapeHtml(it.n)}</p>
+        <div>
+          <h3>${escapeHtml(it.name)}</h3>
+          ${list(it.items, "nls-chips")}
+        </div>
       </article>`
     )
     .join("");
-  return `<div id="nog-business" class="nls-block nls-block--band" data-hs-section>
+  return `<div id="nog-business" class="nls-block nog-block--biz" data-hs-section>
     ${titleBlock(c.business.kicker, c.business.title, "")}
     <p class="nls-note">${escapeHtml(c.business.note)}</p>
-    <div class="nls-tabs nog-tabs-3" role="tablist">${tabs}</div>
-    ${emptyHint("biz", c.ui.pickHobby)}
-    <div class="nls-panels">${panels}</div>
+    <div class="nog-biz-list">${rows}</div>
   </div>`;
 }
 
 function roadmapBlock(c) {
-  const tabs = c.roadmap.steps
-    .map((s, i) => tabBtn("road", s.n, `<span>${escapeHtml(s.n)}</span><strong>${escapeHtml(s.title)}</strong>`, i === 0, " nog-card-tab"))
-    .join("");
-  const panels = c.roadmap.steps
-    .map(
-      (s, i) => `<article class="nls-panel" data-nls-panel data-nls-group="road" data-nls-key="${escapeHtml(s.n)}"${i === 0 ? "" : " hidden"}>
-        <p class="nls-panel__kicker">${escapeHtml(s.n)}</p>
-        <h4 class="nls-panel__title">${escapeHtml(s.title)}</h4>
-        <p class="nls-panel__intro">${escapeHtml(s.body)}</p>
-      </article>`
-    )
-    .join("");
-  const steps = c.roadmap.steps
+  const steps = (c.roadmap.steps || [])
     .map(
       (s) => `<li>
         <span>${escapeHtml(s.n)}</span>
-        <strong>${escapeHtml(s.title)}</strong>
-        <p>${escapeHtml(s.body)}</p>
+        <div>
+          <strong>${escapeHtml(s.title)}</strong>
+          <p>${escapeHtml(s.body)}</p>
+        </div>
       </li>`
     )
     .join("");
-  return `<div id="nog-roadmap" class="nls-block" data-hs-section>
+  return `<div id="nog-roadmap" class="nls-block nog-block--road" data-hs-section>
     ${titleBlock(c.roadmap.kicker, c.roadmap.title, "")}
     <p class="nls-note">${escapeHtml(c.roadmap.note)}</p>
-    <p class="nls-note">${escapeHtml(c.ui.pickRoad)}</p>
-    <div class="nls-tabs nog-tabs-3" role="tablist">${tabs}</div>
-    <div class="nls-panels">${panels}</div>
     <ol class="nls-road">${steps}</ol>
   </div>`;
 }
@@ -462,17 +389,15 @@ export function renderOngilSection(lang, opts = {}) {
   const back = opts.detail
     ? `<p class="nls-closebar"><a class="nls-btn nls-btn--ghost" href="/${escapeHtml(L)}/#story-ongil">${escapeHtml(c.ui.back)}</a></p>`
     : "";
-  return `<section id="ongil-detail" class="nls" data-story="ongil" aria-labelledby="story-ongil-title">
+  return `<section id="ongil-detail" class="nls nog" data-story="ongil" aria-labelledby="story-ongil-title">
   <div class="nls__wrap">
     ${back}
     ${heroBlock(c, L)}
     ${pillarsBlock(c)}
-    ${discoverBlock(c)}
-    ${journeyBlock(c)}
-    ${hobbyBlock(c)}
+    ${dayBlock(c)}
     ${familyBlock(c)}
     ${careBlock(c)}
-    ${dayBlock(c)}
+    ${discoverBlock(c)}
     ${knowledgeBlock(c)}
     ${ecoBlock(c, L)}
     ${businessBlock(c)}

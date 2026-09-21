@@ -35,14 +35,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css?v=20260904a11y1" />
-    <link rel="stylesheet" href="/gnav-mega.css?v=20260902nav1" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
-    <link rel="stylesheet" href="/home-ongil.css?v=20260921nog1" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20260920revert1" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
+    <link rel="stylesheet" href="/home-ongil.css?v=20260921nog5" />
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
 <script src="/theme-shell.js?v=20260904perf1"></script>
     <script src="/lang-nav.js?v=20260825studio"></script>
     <script src="/analytics.js?v=20260904sec1" defer></script>
-</head>
+    <link rel="stylesheet" href="/site-dark.css?v=20260902perf1" />
+    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
+  </head>
   <body>
     <a class="skip-link" href="#hub-main">सामग्री पर जाएँ</a>
     <header class="gnav site-header gnav--five" data-gnav>
@@ -367,26 +369,26 @@
           <div class="gnav__util">
             <a class="gnav__cta" href="../business/inquiry/">Contact</a>
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-gnav-legacy">भाषा</label>
-    <select id="lang-select-gnav-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="भाषा">
+    <label class="visually-hidden" for="lang-select-gnav-hub">भाषा</label>
+    <select id="lang-select-gnav-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="भाषा">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">अंग्रेज़ी</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">पोर्टुगुएस (ब्राजील)</option><option value="fr" data-short="FR">फ़्रांसीसी</option><option value="de" data-short="DE">deutsch</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">बहासा इंडोनेशिया</option>
     </select>
   </div>
             <button type="button" class="gnav__theme" data-theme-toggle data-label-light="लाइट मोड" data-label-dark="डार्क मोड" title="थीम बदलें" aria-label="डार्क मोड"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-legacy" aria-label="Menu">
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-hub" aria-label="Menu">
               <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
             </button>
           </div>
         </div>
       </div>
-      <div id="gnav-mobile-legacy" class="gnav-mobile" hidden aria-hidden="true">
+      <div id="gnav-mobile-hub" class="gnav-mobile" hidden aria-hidden="true">
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
       <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menu">
         <div class="gnav-mobile__scroll">
           <div class="gnav-mobile__util-row">
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-mobile-legacy">भाषा</label>
-    <select id="lang-select-mobile-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="भाषा">
+    <label class="visually-hidden" for="lang-select-mobile-hub">भाषा</label>
+    <select id="lang-select-mobile-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="भाषा">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">अंग्रेज़ी</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">पोर्टुगुएस (ब्राजील)</option><option value="fr" data-short="FR">फ़्रांसीसी</option><option value="de" data-short="DE">deutsch</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">बहासा इंडोनेशिया</option>
     </select>
   </div>
@@ -449,9 +451,9 @@
     </div>
     </header>
     <main id="hub-main" class="hub-page">
-      <section id="ongil-detail" class="nls" data-story="ongil" aria-labelledby="story-ongil-title">
+      <section id="ongil-detail" class="nls nog" data-story="ongil" aria-labelledby="story-ongil-title">
   <div class="nls__wrap">
-    <p class="nls-closebar"><a class="nls-btn nls-btn--ghost" href="/hi/ongil/">Back to Ongil on the homepage</a></p>
+    <p class="nls-closebar"><a class="nls-btn nls-btn--ghost" href="/hi/#story-ongil">Back to Ongil on the homepage</a></p>
     <div class="nls-crumb">
       <a href="/hi/">NEWON</a>
       <span aria-hidden="true">/</span>
@@ -462,508 +464,409 @@
       <div class="nls-hero__copy">
         <p class="nls-kicker">NEWON ONGIL<span class="nls-kicker__sep" aria-hidden="true">·</span><span>CARE FIRST. STAY CONNECTED.</span></p>
         <h1 id="story-ongil-title" class="nls-hero__title">बुज़ुर्गों की देखभाल और सुरक्षा,<br>परिवार और रोज़मर्रा से जुड़ी।</h1>
-        <p class="nls-lead">देखभाल, सुरक्षा, स्वास्थ्य दिनचर्या और रोज़मर्रा सहायता जोड़ने वाला सीनियर केयर प्लेटफ़ॉर्म।</p><p class="nls-lead">परिवार साझा देखभाल के लिए जुड़ता है। जानकारी व्यक्ति की सहमति की सीमा में ही साझा होती है।</p><p class="nls-lead">यह पृष्ठ व्यवसाय परिचय है। होम-केयर बुकिंग, लाइव मैचिंग और आपातकालीन बचाव अभी नहीं हैं।</p>
+        <p class="nls-lead">देखभाल, सुरक्षा, स्वास्थ्य दिनचर्या और रोज़मर्रा सहायता जोड़ने वाला सीनियर केयर प्लेटफ़ॉर्म।</p>
         <div class="nls-actions">
           <a class="nls-btn" href="#nog-pillars" data-nls-scroll>Ongil देखें →</a>
-          <a class="nls-btn nls-btn--ghost" href="#nog-discover" data-nls-scroll>सेवाएँ देखें</a>
+          <a class="nls-btn nls-btn--ghost" href="#nog-family" data-nls-scroll>सेवाएँ देखें</a>
         </div>
         <p class="nls-note">यह व्यवसाय परिचय और अवधारणा पूर्वावलोकन है।</p>
       </div>
-      <div class="nls-visual" aria-hidden="true">
-        <div class="nog-axes"><article class="nog-axis">
-        <p class="nls-mini">देखभाल · सुरक्षा</p>
-        <strong>केयर लिंक · हालचाल · रोज़मर्रा मदद</strong>
-      </article><article class="nog-axis">
-        <p class="nls-mini">परिवार</p>
-        <strong>साझा देखभाल · केवल सहमति पर</strong>
-      </article><article class="nog-axis">
-        <p class="nls-mini">शौक</p>
-        <strong>अतिरिक्त क्षेत्र · कक्षा · समूह</strong>
-      </article></div>
+      <div class="nls-visual" aria-label="CARE FIRST. STAY CONNECTED.">
+    <div class="nls-sv">
+      <div class="nls-sv__head">
+        <span class="nls-sv__live"><i></i> CARE TIMELINE</span>
+        <span class="nls-sv__meta">DIRECTION</span>
+      </div>
+      <div class="nls-sv__rail"><button type="button" class="nls-node" data-nls-tab data-nls-group="hero" data-nls-key="01" data-name="शौक खोज और तारीखें" data-age="01" aria-pressed="false">
+        <span class="nls-node__n">01</span>
+        <span class="nls-node__age">01</span>
+        <span class="nls-node__name">शौक खोज और तारीखें</span>
+      </button><button type="button" class="nls-node" data-nls-tab data-nls-group="hero" data-nls-key="02" data-name="पारिवारिक जुड़ाव और स्वास्थ्य व जीवन" data-age="02" aria-pressed="false">
+        <span class="nls-node__n">02</span>
+        <span class="nls-node__age">02</span>
+        <span class="nls-node__name">पारिवारिक जुड़ाव और स्वास्थ्य व जीवन</span>
+      </button><button type="button" class="nls-node" data-nls-tab data-nls-group="hero" data-nls-key="03" data-name="बुकिंग लिंक और समुदाय" data-age="03" aria-pressed="false">
+        <span class="nls-node__n">03</span>
+        <span class="nls-node__age">03</span>
+        <span class="nls-node__name">बुकिंग लिंक और समुदाय</span>
+      </button><button type="button" class="nls-node" data-nls-tab data-nls-group="hero" data-nls-key="04" data-name="पूरा वरिष्ठ जीवन मंच" data-age="04" aria-pressed="false">
+        <span class="nls-node__n">04</span>
+        <span class="nls-node__age">04</span>
+        <span class="nls-node__name">पूरा वरिष्ठ जीवन मंच</span>
+      </button></div>
+      <div class="nls-sv__grid">
+        <article class="nls-sv__now" data-nls-now data-default-title="देखभाल · सुरक्षा" data-default-age="केयर लिंक · हालचाल · रोज़मर्रा मदद">
+          <p class="nls-sv__k">NOW</p>
+          <strong data-nls-now-title>देखभाल · सुरक्षा</strong>
+          <em data-nls-now-age>केयर लिंक · हालचाल · रोज़मर्रा मदद</em>
+        </article>
+        <article>
+          <p class="nls-sv__k">FAMILY</p>
+          <strong>परिवार</strong>
+          <em>साझा देखभाल · केवल सहमति पर</em>
+        </article>
+        <article>
+          <p class="nls-sv__k">CONNECT</p>
+          <strong>शौक</strong>
+          <em>अतिरिक्त क्षेत्र · कक्षा · समूह</em>
+        </article>
       </div>
     </div>
   </div>
-    <div id="nog-pillars" class="nls-block" data-hs-section>
+    </div>
+  </div>
+    <div id="nog-pillars" class="nls-block nog-block--pillars" data-hs-section>
     <header class="nls-head">
     <p class="nls-kicker">02 · Three Pillars</p>
     <h2 class="nls-title">देखभाल और सुरक्षा से<br>परिवार और रोज़मर्रा सहायता तक।</h2>
     
   </header>
-    <p class="nls-note">तीन मुख्य सेवाओं में से एक चुनें, तो विवरण और उपयोग के उदाहरण दिखेंगे।</p>
-    <div class="nls-tabs nog-tabs-3" role="tablist"><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="pillar" data-nls-key="hobby" role="tab" aria-selected="false" tabindex="-1"><span class="nls-age-tab__age">01</span><strong class="nls-age-tab__name">शौक और गतिविधि</strong><span>जो करना चाहते हैं उसे खोजें, सीखें और लोगों के साथ आनंद लें।</span></button><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="pillar" data-nls-key="family" role="tab" aria-selected="false" tabindex="-1"><span class="nls-age-tab__age">02</span><strong class="nls-age-tab__name">पारिवारिक जुड़ाव</strong><span>हर व्यक्ति के दिन का सम्मान करें, और ज़रूरी पल में जुड़ें।</span></button><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="pillar" data-nls-key="care" role="tab" aria-selected="false" tabindex="-1"><span class="nls-age-tab__age">03</span><strong class="nls-age-tab__name">स्वास्थ्य, जीवन और सहयोग</strong><span>स्वास्थ्य और रोज़मर्रा संभालें, और ज़रूरत पर जीवन सहयोग खोजें।</span></button></div>
-    <p class="nls-empty" data-nls-empty="pillar">तीन मुख्य सेवाओं में से एक चुनें, तो विवरण और उपयोग के उदाहरण दिखेंगे।</p>
-    <div class="nls-panels"><article class="nls-panel" data-nls-panel data-nls-group="pillar" data-nls-key="hobby" hidden>
-        <p class="nls-panel__kicker">01 · शौक और गतिविधि</p>
-        <h4 class="nls-panel__title">शौक और गतिविधि</h4>
-        <p class="nls-panel__intro">जो करना चाहते हैं उसे खोजें, सीखें और लोगों के साथ आनंद लें।</p>
-        <p class="nls-mini">मुख्य कार्य</p>
-        <ul class="nls-chips"><li>रुचियाँ और शौक खोजना</li><li>कक्षा, समूह और यात्रा की जानकारी</li><li>आवेदन, बुकिंग और तारीखें संभालना</li><li>गतिविधि का रिकॉर्ड और लोगों से मिलना</li></ul>
-        <ul class="nls-points"><li>रुचि, अनुभव, अकेले या साथ, ऑनलाइन या ऑफ़लाइन, इलाका और कितनी दूर जा सकते हैं — इन्हीं से गतिविधि खोजें।</li><li>तारीख, जगह, शुल्क, सामग्री और पहुँच एक जगह देखें।</li><li>शामिल होने के बाद रिकॉर्ड रखें और अगली कक्षा या समूह देखें।</li></ul>
-        <p class="nls-mini">उपयोग के उदाहरण</p>
-        <ul class="nls-list"><li>शुरुआती जलरंग कक्षा ढूँढना और कृति का रिकॉर्ड रखना</li><li>शुरुआती park golf समूह में शामिल होना और अगली तारीख तय करना</li></ul>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="pillar" data-nls-key="family" hidden>
-        <p class="nls-panel__kicker">02 · पारिवारिक जुड़ाव</p>
-        <h4 class="nls-panel__title">पारिवारिक जुड़ाव</h4>
-        <p class="nls-panel__intro">हर व्यक्ति के दिन का सम्मान करें, और ज़रूरी पल में जुड़ें।</p>
-        <p class="nls-mini">मुख्य कार्य</p>
-        <ul class="nls-chips"><li>कुशलक्षेम और संदेश</li><li>पारिवारिक साझा कैलेंडर</li><li>साथ के शौक और यात्राएँ</li><li>मदद के अनुरोध और साझा भूमिकाएँ</li></ul>
-        <ul class="nls-points"><li>परिवार हर पल नहीं देखता। लोग वही तारीखें और जानकारी साझा करते हैं, जो वे चुनते हैं।</li><li>प्रदर्शनी, सैर या क्लिनिक विज़िट साथ प्लान करें, और खरीदारी या साथ चलने की मदद माँगें।</li><li>संवेदनशील जानकारी अलग सहमति के बिना साझा नहीं होती।</li></ul>
-        <p class="nls-mini">उपयोग के उदाहरण</p>
-        <ul class="nls-list"><li>सप्ताहांत की प्रदर्शनी और भोजन साथ प्लान करना</li><li>क्लिनिक विज़िट और साथ जाने का तालमेल</li></ul>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="pillar" data-nls-key="care" hidden>
-        <p class="nls-panel__kicker">03 · स्वास्थ्य, जीवन और सहयोग</p>
-        <h4 class="nls-panel__title">स्वास्थ्य, जीवन और सहयोग</h4>
-        <p class="nls-panel__intro">स्वास्थ्य और रोज़मर्रा संभालें, और ज़रूरत पर जीवन सहयोग खोजें।</p>
-        <p class="nls-mini">मुख्य कार्य</p>
+    <div class="nog-pillars"><article class="nog-pillar nog-pillar--care">
+        <p class="nog-pillar__n">01</p>
+        <span class="nog-badge nog-badge--core">Core</span>
+        <h3 class="nog-pillar__name">स्वास्थ्य, जीवन और सहयोग</h3>
+        <p class="nog-pillar__lead">स्वास्थ्य और रोज़मर्रा संभालें, और ज़रूरत पर जीवन सहयोग खोजें।</p>
         <ul class="nls-chips"><li>दवा और क्लिनिक की तारीखें</li><li>भोजन, खरीदारी और बाहर जाना</li><li>स्वास्थ्य से जुड़ी जीवन नोट्स जो आप लिखते हैं</li><li>सहयोग की जानकारी और सेवा खोज</li></ul>
-        <ul class="nls-points"><li>दवा, क्लिनिक, भोजन, खरीदारी और बाहर जाना शौक और समूह की तारीखों के साथ देखें।</li><li>जीवन और सहयोग की जानकारी खोज और तैयारी पर केंद्रित है।</li><li>Ongil निदान, नुस्खा या आपातकाल नहीं संभालता।</li></ul>
-        <p class="nls-mini">उपयोग के उदाहरण</p>
-        <ul class="nls-list"><li>सुबह की कक्षा और दोपहर की क्लिनिक एक कैलेंडर पर देखना</li><li>ज़रूरी मदद लिखना और परिवार के साथ भूमिका बाँटना</li></ul>
-      </article></div>
-  </div>
-    <div id="nog-discover" class="nls-block nls-block--band" data-hs-section>
-    <header class="nls-head">
-    <p class="nls-kicker">03 · Discover</p>
-    <h2 class="nls-title">शौक और अवकाश<br>अतिरिक्त सेवा क्षेत्र हैं।</h2>
-    <p class="nls-lead">Ongil का केंद्र देखभाल और सुरक्षा है। कक्षा, समूह और यात्रा अतिरिक्त अवकाश हैं; नीचे पूर्वावलोकन है।</p>
-  </header>
-    <p class="nls-note">गतिविधियाँ केवल उम्र से सीमित नहीं होतीं। खोज रुचि, अनुभव, साथ, ऑनलाइन या ऑफ़लाइन, इलाका, यात्रा सीमा, दिन और समय, बजट और पहुँच के इर्द-गिर्द बनाई गई है।</p>
-    <p class="nls-note">एक रुचि चुनें, तो शुरू करने का तरीका और गतिविधियाँ दिखेंगी।</p>
-    <div class="nls-tabs nog-disc-grid" role="tablist"><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="art" data-nls-featured="1" role="tab" aria-selected="false" tabindex="-1"><strong>कला और शिल्प</strong><span>हाथ से बने समय से दिन की लय बदलें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="music" data-nls-featured="1" role="tab" aria-selected="false" tabindex="-1"><strong>संगीत और मंच</strong><span>सुनें या बजाएँ, और मंच व लोगों से मिलें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="sport" data-nls-featured="1" role="tab" aria-selected="false" tabindex="-1"><strong>खेल और रोज़ की हलचल</strong><span>शरीर के अनुकूल हलचल से दिन जीवंत रखें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="travel" data-nls-featured="1" role="tab" aria-selected="false" tabindex="-1"><strong>यात्रा और बाहर निकलना</strong><span>पास की सैर से एक दिन की यात्रा तक, घर से निकलने की लय खोजें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="cook" data-nls-featured="1" role="tab" aria-selected="false" tabindex="-1"><strong>खाना और बेकिंग</strong><span>बनाने की प्रक्रिया ही दिन का आनंद बन जाती है।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="read" data-nls-featured="1" role="tab" aria-selected="false" tabindex="-1"><strong>पढ़ना और लिखना</strong><span>किताबों से सोच फैलाएँ और बात जारी रखें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="photo" data-nls-featured="0" hidden role="tab" aria-selected="false" tabindex="-1"><strong>फ़ोटो और वीडियो</strong><span>रोज़ के दृश्य रिकॉर्ड करें और देखने का दूसरा तरीका बाँटें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="garden" data-nls-featured="0" hidden role="tab" aria-selected="false" tabindex="-1"><strong>बाग और प्रकृति</strong><span>पौधों और बाहरी हवा से दिन धीमा करें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="lang" data-nls-featured="0" hidden role="tab" aria-selected="false" tabindex="-1"><strong>भाषा और जीवनभर सीखना</strong><span>नई भाषा या कक्षा से दिन में चमक जोड़ें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="digital" data-nls-featured="0" hidden role="tab" aria-selected="false" tabindex="-1"><strong>डिजिटल और तकनीक</strong><span>रोज़मर्रा की डिजिटल चीज़ें अपनी गति से सीखें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="culture" data-nls-featured="0" hidden role="tab" aria-selected="false" tabindex="-1"><strong>संस्कृति और इतिहास</strong><span>जगह और कहानी से दुनिया चौड़ी करें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="volunteer" data-nls-featured="0" hidden role="tab" aria-selected="false" tabindex="-1"><strong>स्वयंसेवा और नागरिक जीवन</strong><span>समय और हुनर बाँटें, और नए लोगों से मिलें।</span></button></div>
-    <p class="nls-actions"><button type="button" class="nls-btn nls-btn--ghost" data-nog-more data-label-all="सभी रुचियाँ देखें" data-label-less="चुनी हुई रुचियाँ दिखाएँ">सभी रुचियाँ देखें</button></p>
-    <p class="nls-empty" data-nls-empty="disc">एक रुचि चुनें, तो शुरू करने का तरीका और गतिविधियाँ दिखेंगी।</p>
-    <div class="nls-panels"><article class="nls-panel" data-nls-panel data-nls-group="disc" data-nls-key="art" hidden>
-        <p class="nls-panel__kicker">कला और शिल्प</p>
-        <h4 class="nls-panel__title">कला और शिल्प</h4>
-        <p class="nls-panel__intro">हाथ से बने समय से दिन की लय बदलें।</p>
-        <p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p>
-        <p>जलरंग, ड्राइंग, मिट्टी का काम, बुनाई</p>
-        <p class="nls-mini">घर पर</p>
-        <p>मूल ड्राइंग और ऑनलाइन कक्षाएँ</p>
-        <p class="nls-mini">कक्षाएँ और समूह</p>
-        <p>स्थानीय कला कक्षाएँ और शिल्प समूह</p>
-        <p class="nls-mini">शुरू करने से पहले जाँचें</p>
-        <p>सामग्री, कक्षा शैली, जगह, पहुँच, शुल्क</p>
-        <p class="nls-mini">आगे क्या आ सकता है</p>
-        <p>कृति रिकॉर्ड, नियमित कक्षाएँ, रुचि समूह</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="disc" data-nls-key="music" hidden>
-        <p class="nls-panel__kicker">संगीत और मंच</p>
-        <h4 class="nls-panel__title">संगीत और मंच</h4>
-        <p class="nls-panel__intro">सुनें या बजाएँ, और मंच व लोगों से मिलें।</p>
-        <p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p>
-        <p>कोरस, यूकुलेले, गाने की कक्षा, पहली प्रस्तुतियाँ</p>
-        <p class="nls-mini">घर पर</p>
-        <p>सुनने की गाइड और ऑनलाइन पाठ</p>
-        <p class="nls-mini">कक्षाएँ और समूह</p>
-        <p>स्थानीय कोरस, वाद्य कक्षाएँ, कार्यक्रम समूह</p>
-        <p class="nls-mini">शुरू करने से पहले जाँचें</p>
-        <p>वाद्य किराया, स्तर, स्थल पहुँच, शुल्क</p>
-        <p class="nls-mini">आगे क्या आ सकता है</p>
-        <p>नियमित अभ्यास, छोटी प्रस्तुति, अगला शो</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="disc" data-nls-key="sport" hidden>
-        <p class="nls-panel__kicker">खेल और रोज़ की हलचल</p>
-        <h4 class="nls-panel__title">खेल और रोज़ की हलचल</h4>
-        <p class="nls-panel__intro">शरीर के अनुकूल हलचल से दिन जीवंत रखें।</p>
-        <p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p>
-        <p>चलना, तैराकी, योग, टेबल टेनिस, park golf</p>
-        <p class="nls-mini">घर पर</p>
-        <p>स्ट्रेचिंग और साथ करने की गाइड</p>
-        <p class="nls-mini">कक्षाएँ और समूह</p>
-        <p>सामुदायिक खेल कक्षाएँ और शुरुआती समूह</p>
-        <p class="nls-mini">शुरू करने से पहले जाँचें</p>
-        <p>तीव्रता, सामान, जगह, आवाजाही, शर्तें</p>
-        <p class="nls-mini">आगे क्या आ सकता है</p>
-        <p>नियमित तारीख, अन्य सामुदायिक खेल</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="disc" data-nls-key="travel" hidden>
-        <p class="nls-panel__kicker">यात्रा और बाहर निकलना</p>
-        <h4 class="nls-panel__title">यात्रा और बाहर निकलना</h4>
-        <p class="nls-panel__intro">पास की सैर से एक दिन की यात्रा तक, घर से निकलने की लय खोजें।</p>
-        <p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p>
-        <p>मोहल्ले की सैर, एक दिन की यात्रा, संस्कृति की सैर</p>
-        <p class="nls-mini">घर पर</p>
-        <p>पहले रास्ता, सामान सूची और पहुँच जाँचें</p>
-        <p class="nls-mini">कक्षाएँ और समूह</p>
-        <p>परिवार, मित्र या यात्रा कार्यक्रम</p>
-        <p class="nls-mini">शुरू करने से पहले जाँचें</p>
-        <p>रास्ता, विश्राम, बजट, बुकिंग शर्तें</p>
-        <p class="nls-mini">आगे क्या आ सकता है</p>
-        <p>अगली जगह, उसी विषय की गतिविधियाँ</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="disc" data-nls-key="cook" hidden>
-        <p class="nls-panel__kicker">खाना और बेकिंग</p>
-        <h4 class="nls-panel__title">खाना और बेकिंग</h4>
-        <p class="nls-panel__intro">बनाने की प्रक्रिया ही दिन का आनंद बन जाती है।</p>
-        <p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p>
-        <p>रोज़ का खाना, सरल बेकिंग, मौसमी व्यंजन</p>
-        <p class="nls-mini">घर पर</p>
-        <p>रेसिपी के साथ बनाना और ऑनलाइन कक्षाएँ</p>
-        <p class="nls-mini">कक्षाएँ और समूह</p>
-        <p>खाना कक्षाएँ और बाँटने वाले समूह</p>
-        <p class="nls-mini">शुरू करने से पहले जाँचें</p>
-        <p>सामग्री लागत, कक्षा आकार, रसोई, आवाजाही</p>
-        <p class="nls-mini">आगे क्या आ सकता है</p>
-        <p>मेनू नोट्स, अगली कक्षा, खरीदारी सूची</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="disc" data-nls-key="read" hidden>
-        <p class="nls-panel__kicker">पढ़ना और लिखना</p>
-        <h4 class="nls-panel__title">पढ़ना और लिखना</h4>
-        <p class="nls-panel__intro">किताबों से सोच फैलाएँ और बात जारी रखें।</p>
-        <p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p>
-        <p>विधा खोजना, पंक्तियाँ नकल करना, छोटी नोट्स</p>
-        <p class="nls-mini">घर पर</p>
-        <p>निजी पढ़ाई और ऑनलाइन किताब चर्चा</p>
-        <p class="nls-mini">कक्षाएँ और समूह</p>
-        <p>पुस्तकालय और स्थानीय रीडिंग समूह</p>
-        <p class="nls-mini">शुरू करने से पहले जाँचें</p>
-        <p>किताब, समूह शैली, जगह, तारीख</p>
-        <p class="nls-mini">आगे क्या आ सकता है</p>
-        <p>अगली किताब, नियमित समूह, लेखन कक्षा</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="disc" data-nls-key="photo" hidden>
-        <p class="nls-panel__kicker">फ़ोटो और वीडियो</p>
-        <h4 class="nls-panel__title">फ़ोटो और वीडियो</h4>
-        <p class="nls-panel__intro">रोज़ के दृश्य रिकॉर्ड करें और देखने का दूसरा तरीका बाँटें।</p>
-        <p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p>
-        <p>फ़ोन फ़ोटो, सैर पर शूट, छोटे क्लिप</p>
-        <p class="nls-mini">घर पर</p>
-        <p>शूटिंग की बुनियाद और शुरुआती संपादन</p>
-        <p class="nls-mini">कक्षाएँ और समूह</p>
-        <p>फ़ोटो वॉक और बाँटने वाले समूह</p>
-        <p class="nls-mini">शुरू करने से पहले जाँचें</p>
-        <p>उपकरण, जगह, मौसम, पहुँच</p>
-        <p class="nls-mini">आगे क्या आ सकता है</p>
-        <p>कृति रिकॉर्ड, प्रदर्शनियाँ, अगली सैर</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="disc" data-nls-key="garden" hidden>
-        <p class="nls-panel__kicker">बाग और प्रकृति</p>
-        <h4 class="nls-panel__title">बाग और प्रकृति</h4>
-        <p class="nls-panel__intro">पौधों और बाहरी हवा से दिन धीमा करें।</p>
-        <p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p>
-        <p>घर के पौधे, छोटी क्यारी, पार्क सैर</p>
-        <p class="nls-mini">घर पर</p>
-        <p>पौधों की देखभाल गाइड</p>
-        <p class="nls-mini">कक्षाएँ और समूह</p>
-        <p>वनस्पति उद्यान की सैर और बाग कक्षाएँ</p>
-        <p class="nls-mini">शुरू करने से पहले जाँचें</p>
-        <p>जगह, सामग्री, मौसम, बाहर जाना</p>
-        <p class="nls-mini">आगे क्या आ सकता है</p>
-        <p>बाग नोट्स, मौसमी कार्यक्रम</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="disc" data-nls-key="lang" hidden>
-        <p class="nls-panel__kicker">भाषा और जीवनभर सीखना</p>
-        <h4 class="nls-panel__title">भाषा और जीवनभर सीखना</h4>
-        <p class="nls-panel__intro">नई भाषा या कक्षा से दिन में चमक जोड़ें।</p>
-        <p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p>
-        <p>रोज़ की बातचीत, सुलेख, सामान्य ज्ञान कक्षाएँ</p>
-        <p class="nls-mini">घर पर</p>
-        <p>छोटी अध्ययन दिनचर्या और ऑनलाइन पाठ</p>
-        <p class="nls-mini">कक्षाएँ और समूह</p>
-        <p>जीवनभर सीखने और संस्कृति केंद्र की कक्षाएँ</p>
-        <p class="nls-mini">शुरू करने से पहले जाँचें</p>
-        <p>स्तर, सामग्री, समय, जगह</p>
-        <p class="nls-mini">आगे क्या आ सकता है</p>
-        <p>अगला स्तर, अध्ययन समूह</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="disc" data-nls-key="digital" hidden>
-        <p class="nls-panel__kicker">डिजिटल और तकनीक</p>
-        <h4 class="nls-panel__title">डिजिटल और तकनीक</h4>
-        <p class="nls-panel__intro">रोज़मर्रा की डिजिटल चीज़ें अपनी गति से सीखें।</p>
-        <p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p>
-        <p>स्मार्टफ़ोन, कियोस्क, मोबाइल बुकिंग</p>
-        <p class="nls-mini">घर पर</p>
-        <p>कदम-दर-कदम शुरुआती गाइड</p>
-        <p class="nls-mini">कक्षाएँ और समूह</p>
-        <p>डिजिटल कक्षाएँ और प्रश्न समूह</p>
-        <p class="nls-mini">शुरू करने से पहले जाँचें</p>
-        <p>डिवाइस, कक्षा की गति, जगह, सहयोग</p>
-        <p class="nls-mini">आगे क्या आ सकता है</p>
-        <p>असली बुकिंग का अभ्यास, अगला डिजिटल विषय</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="disc" data-nls-key="culture" hidden>
-        <p class="nls-panel__kicker">संस्कृति और इतिहास</p>
-        <h4 class="nls-panel__title">संस्कृति और इतिहास</h4>
-        <p class="nls-panel__intro">जगह और कहानी से दुनिया चौड़ी करें।</p>
-        <p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p>
-        <p>संग्रहालय, गाइडेड वॉक, स्थानीय इतिहास कक्षाएँ</p>
-        <p class="nls-mini">घर पर</p>
-        <p>प्रदर्शनी और इतिहास का परिचय</p>
-        <p class="nls-mini">कक्षाएँ और समूह</p>
-        <p>गाइडेड कार्यक्रम और देखने वाले समूह</p>
-        <p class="nls-mini">शुरू करने से पहले जाँचें</p>
-        <p>तारीखें, आवाजाही, विश्राम जगह, टिकट</p>
-        <p class="nls-mini">आगे क्या आ सकता है</p>
-        <p>अगली प्रदर्शनी, उसी विषय की कक्षा</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="disc" data-nls-key="volunteer" hidden>
-        <p class="nls-panel__kicker">स्वयंसेवा और नागरिक जीवन</p>
-        <h4 class="nls-panel__title">स्वयंसेवा और नागरिक जीवन</h4>
-        <p class="nls-panel__intro">समय और हुनर बाँटें, और नए लोगों से मिलें।</p>
-        <p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p>
-        <p>हुनर बाँटना, स्थानीय सफाई, सीखने में सहयोग</p>
-        <p class="nls-mini">घर पर</p>
-        <p>शामिल होने से पहले भूमिका और तैयारी जाँचें</p>
-        <p class="nls-mini">कक्षाएँ और समूह</p>
-        <p>स्थानीय स्वयंसेवी समूह और क्लब</p>
-        <p class="nls-mini">शुरू करने से पहले जाँचें</p>
-        <p>तीव्रता, समय, जगह, आयोजक</p>
-        <p class="nls-mini">आगे क्या आ सकता है</p>
-        <p>नियमित भागीदारी, अन्य नागरिक गतिविधियाँ</p>
-      </article></div>
-  </div>
-    <div id="nog-journey" class="nls-block" data-hs-section>
-    <header class="nls-head">
-    <p class="nls-kicker">04 · Activity Journey</p>
-    <h2 class="nls-title">रुचि जगने के पल से<br>उस दिन तक जिसे आप लोगों के साथ बाँटते हैं।</h2>
-    <p class="nls-lead">Ongil केवल शौक सूची पर नहीं रुकता। यह खोज, सीखना, समूह ढूँढना, आवेदन, तारीख संभालना, शामिल होना, लोगों से मिलना और आगे बढ़ना जोड़ता है।</p>
-  </header>
-    <p class="nls-note">गतिविधि की कहानी चुनें, फिर एक चरण दबाएँ, तो उस हिस्से का विवरण दिखेगा।</p>
-    <p class="nls-mini">उपयोग के उदाहरण</p>
-    <div class="nls-tabs" role="tablist"><button type="button" class="nls-tab is-active" data-nls-tab data-nls-group="jcase" data-nls-key="watercolor" data-nls-name="जलरंग सीखना" data-nls-bodies="[&quot;जलरंग चुनें और जाँचें कि शुरुआती शामिल हो सकते हैं या नहीं।&quot;,&quot;मूल उपकरण, कक्षा शैली, ऑनलाइन शुरुआत और स्थानीय ऑफ़लाइन कक्षाएँ तुलना करें।&quot;,&quot;स्थानीय संस्कृति केंद्र की कला कक्षाएँ और ड्राइंग समूह देखें।&quot;,&quot;तारीख, जगह, शुल्क, सामग्री और रद्द करने की शर्तें जाँचकर आवेदन करें। लाइव भुगतान अभी जुड़ा नहीं है।&quot;,&quot;कक्षा की तारीख, आवाजाही योजना, रंग-कागज़ की सूची और रिमाइंडर व्यवस्थित करें।&quot;,&quot;कक्षा में शामिल हों, मूल तकनीक सीखें और पहली कृति पूरी करें।&quot;,&quot;कृति और कक्षा दूसरों के साथ बाँटें, और अगली बार साथ की बात करें।&quot;,&quot;कृति सहेजें और अगली कक्षा या नियमित समूह देखें।&quot;]" role="tab" aria-selected="true" tabindex="0"><strong>जलरंग सीखना</strong></button><button type="button" class="nls-tab" data-nls-tab data-nls-group="jcase" data-nls-key="parkgolf" data-nls-name="Park golf शुरू करना" data-nls-bodies="[&quot;Park golf चुनें और तीव्रता व शुरुआती पहुँच जाँचें। केवल उम्र फैसला नहीं करती।&quot;,&quot;मूल नियम, सामान, कपड़े और शुरुआती पाठ जाँचें।&quot;,&quot;स्थानीय पाठ और शुरुआती समूह देखें।&quot;,&quot;तारीख, जगह, शर्तें और पहुँच जाँचने के बाद आवेदन की झलक देखें।&quot;,&quot;तारीख, आवाजाही योजना और सामान सूची कैलेंडर पर रखें।&quot;,&quot;अपने गतिविधि स्तर के अनुरूप कार्यक्रम में शामिल हों।&quot;,&quot;जिनके साथ खेले, उनसे अगली तारीख की बात करें।&quot;,&quot;नियमित समूह और अन्य सामुदायिक खेल देखें।&quot;]" role="tab" aria-selected="false" tabindex="-1"><strong>Park golf शुरू करना</strong></button><button type="button" class="nls-tab" data-nls-tab data-nls-group="jcase" data-nls-key="bookclub" data-nls-name="रीडिंग समूह में शामिल होना" data-nls-bodies="[&quot;विधा चुनें और तय करें कि अकेले पढ़ेंगे या साथ।&quot;,&quot;समूह कैसे चलता है, किताब और चर्चा शैली जाँचें।&quot;,&quot;स्थानीय पुस्तकालय और रीडिंग समूह देखें।&quot;,&quot;तारीख, शर्तें और ऑनलाइन या ऑफ़लाइन होना जाँचें।&quot;,&quot;पढ़ने का समय, बैठक की तारीख और ले जाने वाले प्रश्न प्लान करें।&quot;,&quot;पढ़ें और समूह में विचार बाँटें।&quot;,&quot;किताबों और रुचियों पर बात करें, और अगला शीर्षक साथ चुनें।&quot;,&quot;अगली किताब, नियमित समूह या लेखन कक्षा खोजें।&quot;]" role="tab" aria-selected="false" tabindex="-1"><strong>रीडिंग समूह में शामिल होना</strong></button><button type="button" class="nls-tab" data-nls-tab data-nls-group="jcase" data-nls-key="daytrip" data-nls-name="एक दिन की यात्रा" data-nls-bodies="[&quot;थीम्स और गंतव्य उस यात्रा सीमा में देखें, जिसे आप संभाल सकते हैं।&quot;,&quot;पहले रास्ता, सामान सूची, पहुँच और विश्राम जाँचें।&quot;,&quot;परिवार या मित्रों के साथ जाना, या यात्रा कार्यक्रम देखें।&quot;,&quot;यातायात और कार्यक्रम की बुकिंग व रद्द शर्तें जाँचें। कोई नकली «बुक हो गया» स्थिति नहीं दिखाई जाती।&quot;,&quot;निकलने का समय, जगहें, सामान और परिवार में कौन योजना देख सकता है, यह व्यवस्थित करें।&quot;,&quot;यात्रा का आनंद लें और दिन में आराम भी रखें।&quot;,&quot;अनुभव और फ़ोटो बाँटें, और आगे कहाँ जाना है बात करें।&quot;,&quot;अगली जगह और उसी विषय की संस्कृति या प्रकृति गतिविधियाँ देखें।&quot;]" role="tab" aria-selected="false" tabindex="-1"><strong>एक दिन की यात्रा</strong></button></div>
-    <p class="nls-note">चरण चुनें, तो लंबा विवरण दिखेगा।</p>
-    <div class="nls-tabs nog-steps" role="tablist"><button type="button" class="nls-tab nog-step-tab is-active" data-nls-tab data-nls-group="jstep" data-nls-key="s1" data-nls-idx="0" role="tab" aria-selected="true" tabindex="0"><span>01</span><strong>खोजना</strong><em>रुचि और जीने के तरीके से मेल खाते शौक और गतिविधियाँ देखें।</em></button><button type="button" class="nls-tab nog-step-tab" data-nls-tab data-nls-group="jstep" data-nls-key="s2" data-nls-idx="1" role="tab" aria-selected="false" tabindex="-1"><span>02</span><strong>सीखना</strong><em>बुनियाद, सामग्री, शुरुआती गाइड और ऑनलाइन या ऑफ़लाइन कक्षाएँ जाँचें।</em></button><button type="button" class="nls-tab nog-step-tab" data-nls-tab data-nls-group="jstep" data-nls-key="s3" data-nls-idx="2" role="tab" aria-selected="false" tabindex="-1"><span>03</span><strong>समूह ढूँढना</strong><em>उसी रुचि वाले समूह और स्थानीय गतिविधियाँ देखें।</em></button><button type="button" class="nls-tab nog-step-tab" data-nls-tab data-nls-group="jstep" data-nls-key="s4" data-nls-idx="3" role="tab" aria-selected="false" tabindex="-1"><span>04</span><strong>आवेदन और बुकिंग</strong><em>तारीख, जगह, लागत और शर्तें जाँचें, फिर आवेदन या बुकिंग करें।</em></button><button type="button" class="nls-tab nog-step-tab" data-nls-tab data-nls-group="jstep" data-nls-key="s5" data-nls-idx="4" role="tab" aria-selected="false" tabindex="-1"><span>05</span><strong>तारीख संभालना</strong><em>तारीख, सामान सूची, आवाजाही योजना और रिमाइंडर रखें।</em></button><button type="button" class="nls-tab nog-step-tab" data-nls-tab data-nls-group="jstep" data-nls-key="s6" data-nls-idx="5" role="tab" aria-selected="false" tabindex="-1"><span>06</span><strong>शामिल होना</strong><em>कक्षा या समूह में भाग लें और नया अनुभव बनाएँ।</em></button><button type="button" class="nls-tab nog-step-tab" data-nls-tab data-nls-group="jstep" data-nls-key="s7" data-nls-idx="6" role="tab" aria-selected="false" tabindex="-1"><span>07</span><strong>लोगों से मिलना</strong><em>उसी रुचि वाले लोगों से बात करें और आगे की योजना बनाएँ।</em></button><button type="button" class="nls-tab nog-step-tab" data-nls-tab data-nls-group="jstep" data-nls-key="s8" data-nls-idx="7" role="tab" aria-selected="false" tabindex="-1"><span>08</span><strong>आगे बढ़ना</strong><em>रिकॉर्ड रखें और अगली कक्षा, समूह या यात्रा देखें।</em></button></div>
-    <article class="nls-panel nog-journey-panel">
-      <p class="nls-panel__kicker">उपयोग के उदाहरण</p>
-      <h4 class="nls-panel__title" data-nog-jtitle>जलरंग सीखना</h4>
-      <p class="nls-panel__intro" data-nog-jtext>जलरंग चुनें और जाँचें कि शुरुआती शामिल हो सकते हैं या नहीं।</p>
-      <p class="nls-note">आवेदन और बुकिंग भविष्य की सेवा संरचना के रूप में दिखाई गई हैं, लाइव चेकआउट नहीं।</p>
-    </article>
-  </div>
-    <div id="nog-hobby" class="nls-block nls-block--band" data-hs-section>
-    <header class="nls-head">
-    <p class="nls-kicker">05 · Hobby &amp; Community</p>
-    <h2 class="nls-title">सीखना, चलना, बाहर जाना<br>और नए लोगों से मिलना।</h2>
-    
-  </header>
-    <p class="nls-note">सेवा चुनें, तो उसके कार्य दिखेंगे।</p>
-    <div class="nls-tabs nog-disc-grid" role="tablist"><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="hobby" data-nls-key="hobby" role="tab" aria-selected="false" tabindex="-1"><strong>Ongil Hobby</strong><span>शौक</span></button><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="hobby" data-nls-key="learn" role="tab" aria-selected="false" tabindex="-1"><strong>Ongil Learn</strong><span>सीखना</span></button><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="hobby" data-nls-key="active" role="tab" aria-selected="false" tabindex="-1"><strong>Ongil Active</strong><span>बाहर की हलचल</span></button><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="hobby" data-nls-key="travel" role="tab" aria-selected="false" tabindex="-1"><strong>Ongil Travel</strong><span>यात्रा और सैर</span></button><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="hobby" data-nls-key="culture" role="tab" aria-selected="false" tabindex="-1"><strong>Ongil Culture</strong><span>संस्कृति और फुर्सत</span></button><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="hobby" data-nls-key="community" role="tab" aria-selected="false" tabindex="-1"><strong>Ongil Community</strong><span>रुचि समूह</span></button></div>
-    <p class="nls-empty" data-nls-empty="hobby">सेवा चुनें, तो उसके कार्य दिखेंगे।</p>
-    <div class="nls-panels"><article class="nls-panel" data-nls-panel data-nls-group="hobby" data-nls-key="hobby" hidden>
-        <p class="nls-panel__kicker">Ongil Hobby</p>
-        <h4 class="nls-panel__title">Ongil Hobby</h4>
-        <p class="nls-panel__intro">शौक</p>
-        <ul class="nls-points"><li>शौक के अनुसार शुरुआती गाइड</li><li>ऑनलाइन और ऑफ़लाइन कक्षा खोज</li><li>सामग्री और अनुमानित लागत</li><li>गतिविधि तारीखें</li><li>कृति और अनुभव रिकॉर्ड</li><li>अगली गतिविधि खोजना</li></ul>
+        <details class="nls-more nog-pillar__more">
+          <summary>और देखें</summary>
+          <div class="nls-more__body">
+            <ul class="nls-points"><li>दवा, क्लिनिक, भोजन, खरीदारी और बाहर जाना शौक और समूह की तारीखों के साथ देखें।</li><li>जीवन और सहयोग की जानकारी खोज और तैयारी पर केंद्रित है।</li><li>Ongil निदान, नुस्खा या आपातकाल नहीं संभालता।</li></ul>
+            <p class="nls-mini">उपयोग के उदाहरण</p>
+            <ul class="nls-list"><li>सुबह की कक्षा और दोपहर की क्लिनिक एक कैलेंडर पर देखना</li><li>ज़रूरी मदद लिखना और परिवार के साथ भूमिका बाँटना</li></ul>
+          </div>
+        </details>
+      </article><article class="nog-pillar nog-pillar--family">
+        <p class="nog-pillar__n">02</p>
         
-      </article><article class="nls-panel" data-nls-panel data-nls-group="hobby" data-nls-key="learn" hidden>
-        <p class="nls-panel__kicker">Ongil Learn</p>
-        <h4 class="nls-panel__title">Ongil Learn</h4>
-        <p class="nls-panel__intro">सीखना</p>
-        <ul class="nls-points"><li>भाषा, संगीत, कला और डिजिटल कक्षाएँ</li><li>स्थानीय जीवनभर सीखने के कार्यक्रम</li><li>स्तर की जानकारी</li><li>अध्ययन तारीखें और प्रगति</li><li>नए कौशल और काम से जुड़ा सीखना</li></ul>
-        
-      </article><article class="nls-panel" data-nls-panel data-nls-group="hobby" data-nls-key="active" hidden>
-        <p class="nls-panel__kicker">Ongil Active</p>
-        <h4 class="nls-panel__title">Ongil Active</h4>
-        <p class="nls-panel__intro">बाहर की हलचल</p>
-        <ul class="nls-points"><li>चलना, तैराकी, योग, नृत्य, टेबल टेनिस, park golf</li><li>सामुदायिक खेल कार्यक्रम</li><li>गतिविधि स्तर से खोज</li><li>व्यायाम तारीखें</li><li>साथ चलने वाले समूह</li></ul>
-        <p class="nls-note">कोई शामिल हो सकता है या नहीं, यह केवल उम्र से तय नहीं होता।</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="hobby" data-nls-key="travel" hidden>
-        <p class="nls-panel__kicker">Ongil Travel</p>
-        <h4 class="nls-panel__title">Ongil Travel</h4>
-        <p class="nls-panel__intro">यात्रा और सैर</p>
-        <ul class="nls-points"><li>एक दिन की यात्रा, देश और विदेश</li><li>संस्कृति, प्रकृति और आराम विषय</li><li>आवाजाही की सहजता और पहुँच</li><li>यात्रा योजना और बजट</li><li>परिवार या मित्रों के साथ तारीख साझा</li><li>कार्यक्रम बुकिंग का जुड़ाव</li></ul>
-        
-      </article><article class="nls-panel" data-nls-panel data-nls-group="hobby" data-nls-key="culture" hidden>
-        <p class="nls-panel__kicker">Ongil Culture</p>
-        <h4 class="nls-panel__title">Ongil Culture</h4>
-        <p class="nls-panel__intro">संस्कृति और फुर्सत</p>
-        <ul class="nls-points"><li>प्रस्तुति, फ़िल्म, प्रदर्शनी, संग्रहालय, उत्सव</li><li>स्थानीय संस्कृति कार्यक्रम</li><li>पसंदीदा कार्यक्रम सहेजना</li><li>साथ का समूह खोजना</li><li>टिकट और कार्यक्रम बुकिंग का जुड़ाव</li></ul>
-        
-      </article><article class="nls-panel" data-nls-panel data-nls-group="hobby" data-nls-key="community" hidden>
-        <p class="nls-panel__kicker">Ongil Community</p>
-        <h4 class="nls-panel__title">Ongil Community</h4>
-        <p class="nls-panel__intro">रुचि समूह</p>
-        <ul class="nls-points"><li>शौक और इलाके से खोज</li><li>ऑनलाइन और ऑफ़लाइन समूह</li><li>समूह शुरू करना या शामिल होना</li><li>तारीखें और सूचनाएँ</li><li>पोस्ट, फ़ोटो, अनुभव</li><li>प्रश्न और उत्तर</li><li>हुनर बाँटना और स्वयंसेवा</li><li>नए लोगों से मिलना</li></ul>
-        
-      </article></div>
-    <details class="nls-more"><summary>बुकिंग, समय और समूह की दिशा</summary><div class="nls-more__body"><p class="nls-lead">गतिविधि जानकारी, आवेदन, तारीखें, समूह और रिकॉर्ड एक प्रवाह के रूप में डिज़ाइन किए गए हैं। यह भविष्य की संरचना है, लाइव बुकिंग सिस्टम नहीं।</p><p class="nls-note">आवेदन और बुकिंग भविष्य की सेवा संरचना के रूप में दिखाई गई हैं, लाइव चेकआउट नहीं।</p><div class="nog-extras"><div class="nog-extra"><p class="nls-mini">गतिविधि विवरण</p><ul class="nls-chips"><li>नाम और परिचय</li><li>क्षेत्र और शुरुआती पहुँच</li><li>ऑनलाइन या ऑफ़लाइन</li><li>इलाका और जगह</li><li>तारीख, समय, अवधि</li><li>शुल्क और सामग्री</li><li>आवाजाही और पहुँच</li><li>आयोजक, रद्द शर्तें, संपर्क</li></ul></div><div class="nog-extra"><p class="nls-mini">आवेदन और बुकिंग</p><ul class="nls-chips"><li>तारीख और संख्या चुनना</li><li>आवेदन जानकारी पुष्टि</li><li>रिकॉर्ड संभालना</li><li>बदलाव और रद्द नोट्स</li><li>स्थिति देखना</li><li>साथियों के साथ तारीख साझा करना</li></ul></div><div class="nog-extra"><p class="nls-mini">तारीखें, समूह, रिकॉर्ड</p><ul class="nls-chips"><li>शौक, कक्षा, समूह और यात्रा की तारीखें</li><li>सामान सूचियाँ</li><li>रुचि और इलाका फ़िल्टर</li><li>शामिल होने के अनुरोध और सूचनाएँ</li><li>फ़ोटो और मेमो</li><li>दृश्यता सेटिंग</li></ul></div></div></div></details>
-  </div>
-    <div id="nog-family" class="nls-block" data-hs-section>
-    <header class="nls-head">
-    <p class="nls-kicker">06 · Family Connection</p>
-    <h2 class="nls-title">हर व्यक्ति के दिन का सम्मान करें,<br>और ज़रूरी पल में साथ आएँ।</h2>
-    <p class="nls-lead">परिवार को हर पल देखने या संभालने की ज़रूरत नहीं। Ongil उन जानकारी और तारीखों को साझा करने में मदद करता है, जो लोग चाहते हैं, और मदद चाहिए तब साथ रहने में।</p>
-  </header>
-    <p class="nls-note">स्वास्थ्य और जीवन की जानकारी परिवार के साथ केवल उसी दायरे में साझा होती है, जो व्यक्ति खुद चुनता है।</p>
-    <p class="nls-mini">मुख्य कार्य</p>
-    <div class="nls-tabs" role="tablist"><button type="button" class="nls-tab" data-nls-tab data-nls-group="ffeat" data-nls-key="talk" role="tab" aria-selected="false" tabindex="-1">कुशलक्षेम और बात</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="ffeat" data-nls-key="cal" role="tab" aria-selected="false" tabindex="-1">पारिवारिक साझा कैलेंडर</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="ffeat" data-nls-key="together" role="tab" aria-selected="false" tabindex="-1">साथ के शौक और यात्राएँ</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="ffeat" data-nls-key="ask" role="tab" aria-selected="false" tabindex="-1">रोज़ की मदद माँगना</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="ffeat" data-nls-key="roles" role="tab" aria-selected="false" tabindex="-1">भूमिका बाँटना</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="ffeat" data-nls-key="health" role="tab" aria-selected="false" tabindex="-1">स्वास्थ्य तारीखें साझा करना</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="ffeat" data-nls-key="care" role="tab" aria-selected="false" tabindex="-1">सहयोग की योजना</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="ffeat" data-nls-key="auth" role="tab" aria-selected="false" tabindex="-1">साझा करना और अनुमति</button></div>
-    <p class="nls-empty" data-nls-empty="ffeat">पारिवारिक स्थिति चुनें, तो कैलेंडर, मदद और भूमिका की झलक बदलेगी।</p>
-    <div class="nls-panels"><article class="nls-panel" data-nls-panel data-nls-group="ffeat" data-nls-key="talk" hidden>
-        <h4 class="nls-panel__title">कुशलक्षेम और बात</h4>
-        <ul class="nls-points"><li>पारिवारिक संदेश</li><li>कॉल कनेक्शन</li><li>फ़ोटो और रोज़ की नोट्स</li><li>वर्षगाँठ और पारिवारिक कार्यक्रम</li></ul>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="ffeat" data-nls-key="cal" hidden>
-        <h4 class="nls-panel__title">पारिवारिक साझा कैलेंडर</h4>
-        <ul class="nls-points"><li>पारिवारिक मिलन</li><li>क्लिनिक विज़िट</li><li>शौक, कक्षा और यात्रा की तारीखें</li><li>हर तारीख कौन देखे, चुनें</li></ul>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="ffeat" data-nls-key="together" hidden>
-        <h4 class="nls-panel__title">साथ के शौक और यात्राएँ</h4>
-        <ul class="nls-points"><li>परिवार के साथ करने की गतिविधियाँ खोजना</li><li>प्रदर्शनी, कार्यक्रम, सैर प्लान</li><li>यात्रा तारीखें और सामान सूची साझा</li><li>संयुक्त बुकिंग की दिशा</li></ul>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="ffeat" data-nls-key="ask" hidden>
-        <h4 class="nls-panel__title">रोज़ की मदद माँगना</h4>
-        <ul class="nls-points"><li>खरीदारी</li><li>आवाजाही और साथ चलना</li><li>दस्तावेज़ जाँचना</li><li>डिजिटल सेवा उपयोग में मदद</li><li>अनुरोध स्वीकारना और प्रगति देखना</li></ul>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="ffeat" data-nls-key="roles" hidden>
-        <h4 class="nls-panel__title">भूमिका बाँटना</h4>
-        <ul class="nls-points"><li>परिवार सदस्य के अनुसार काम</li><li>व्यक्ति नियुक्त करना</li><li>तारीखें मिलाना</li><li>क्या हो चुका है देखना</li></ul>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="ffeat" data-nls-key="health" hidden>
-        <h4 class="nls-panel__title">स्वास्थ्य तारीखें साझा करना</h4>
-        <ul class="nls-points"><li>क्लिनिक और जाँच तारीखें</li><li>दवा से जुड़ी तारीखें</li><li>कोई साथ जाएगा या नहीं</li><li>केवल वह जानकारी जो व्यक्ति चुनता है</li></ul>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="ffeat" data-nls-key="care" hidden>
-        <h4 class="nls-panel__title">सहयोग की योजना</h4>
-        <ul class="nls-points"><li>ज़रूरी मदद लिखना</li><li>परिवार में सहयोग तारीखें मिलाना</li><li>संबंधित सेवाएँ खोजना</li><li>भूमिका बाँटना</li></ul>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="ffeat" data-nls-key="auth" hidden>
-        <h4 class="nls-panel__title">साझा करना और अनुमति</h4>
-        <ul class="nls-points"><li>परिवार सदस्य के अनुसार साझा दायरा</li><li>हर तारीख की सेटिंग</li><li>संवेदनशील जानकारी के लिए अलग सहमति</li><li>साझा बंद करना और पहुँच बदलना</li></ul>
-      </article></div>
-    <p class="nls-note">पारिवारिक स्थिति चुनें, तो कैलेंडर, मदद और भूमिका की झलक बदलेगी।</p>
-    <div class="nls-tabs" role="tablist"><button type="button" class="nls-tab is-active" data-nls-tab data-nls-group="scene" data-nls-key="weekend" role="tab" aria-selected="true" tabindex="0">साथ का सप्ताहांत</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="scene" data-nls-key="hobby" role="tab" aria-selected="false" tabindex="-1">शौक साझा करना</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="scene" data-nls-key="help" role="tab" aria-selected="false" tabindex="-1">रोज़ की मदद माँगना</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="scene" data-nls-key="hospital" role="tab" aria-selected="false" tabindex="-1">क्लिनिक विज़िट की तैयारी</button></div>
-    <div class="nls-panels"><article class="nls-panel nog-scene" data-nls-panel data-nls-group="scene" data-nls-key="weekend">
-        <h4 class="nls-panel__title">साथ का सप्ताहांत</h4>
-        <div class="nog-scene-grid">
-          <div><p class="nls-mini">साझा कैलेंडर की झलक</p><ul class="nls-list"><li>शनिवार 14:00 प्रदर्शनी</li><li>शनिवार 18:00 पारिवारिक भोजन</li><li>रविवार सुबह पास की सैर</li></ul></div>
-          <div><p class="nls-mini">बातचीत की झलक</p><ul class="nls-list"><li>क्या इस सप्ताहांत प्रदर्शनी चलें?</li><li>ऐसा रेस्तराँ चुनें जहाँ पहुँचना आसान हो।</li></ul></div>
-          <div><p class="nls-mini">मदद अनुरोध की झलक</p><ul class="nls-list"><li>स्थल तक साथ चलना</li><li>मेनू और बुकिंग शर्तें साथ जाँचना</li></ul></div>
-          <div><p class="nls-mini">भूमिका की झलक</p><ul class="nls-list"><li>योजना सुझाना · आप</li><li>साथ चलना · परिवार</li><li>रेस्तराँ पुष्टि · परिवार</li></ul></div>
-        </div>
-      </article><article class="nls-panel nog-scene" data-nls-panel data-nls-group="scene" data-nls-key="hobby" hidden>
-        <h4 class="nls-panel__title">शौक साझा करना</h4>
-        <div class="nog-scene-grid">
-          <div><p class="nls-mini">साझा कैलेंडर की झलक</p><ul class="nls-list"><li>बुधवार 10:00 जलरंग कक्षा</li><li>शुक्रवार 15:00 ड्राइंग समूह</li></ul></div>
-          <div><p class="nls-mini">बातचीत की झलक</p><ul class="nls-list"><li>इस सप्ताह की कक्षा तारीख साझा कर रहा/रही हूँ।</li><li>अगले महीने की प्रदर्शनी साथ चलें?</li></ul></div>
-          <div><p class="nls-mini">मदद अनुरोध की झलक</p><ul class="nls-list"><li>सामग्री इकट्ठा करने में मदद</li><li>प्रदर्शनी तारीखें खोजना</li></ul></div>
-          <div><p class="nls-mini">भूमिका की झलक</p><ul class="nls-list"><li>कक्षा में शामिल · आप</li><li>तारीख देखना · परिवार</li><li>साथ करने की चीज़ खोजना · साझा</li></ul></div>
-        </div>
-      </article><article class="nls-panel nog-scene" data-nls-panel data-nls-group="scene" data-nls-key="help" hidden>
-        <h4 class="nls-panel__title">रोज़ की मदद माँगना</h4>
-        <div class="nog-scene-grid">
-          <div><p class="nls-mini">साझा कैलेंडर की झलक</p><ul class="nls-list"><li>मंगलवार खरीदारी</li><li>गुरुवार दस्तावेज़ जाँच</li></ul></div>
-          <div><p class="nls-mini">बातचीत की झलक</p><ul class="nls-list"><li>इस सप्ताह की खरीदारी सूची साझा की।</li><li>क्या मोबाइल बुकिंग स्क्रीन साथ देख सकते हैं?</li></ul></div>
-          <div><p class="nls-mini">मदद अनुरोध की झलक</p><ul class="nls-list"><li>खरीदारी</li><li>डिजिटल सेवा उपयोग में मदद</li><li>दस्तावेज़ जाँचना</li></ul></div>
-          <div><p class="nls-mini">भूमिका की झलक</p><ul class="nls-list"><li>अनुरोध · आप</li><li>खरीदारी · परिवार A</li><li>डिजिटल मदद · परिवार B</li></ul></div>
-        </div>
-      </article><article class="nls-panel nog-scene" data-nls-panel data-nls-group="scene" data-nls-key="hospital" hidden>
-        <h4 class="nls-panel__title">क्लिनिक विज़िट की तैयारी</h4>
-        <div class="nog-scene-grid">
-          <div><p class="nls-mini">साझा कैलेंडर की झलक</p><ul class="nls-list"><li>शुक्रवार 09:30 क्लिनिक विज़िट</li></ul></div>
-          <div><p class="nls-mini">बातचीत की झलक</p><ul class="nls-list"><li>क्लिनिक तारीख साझा कर रहा/रही हूँ। साथ आ सकें तो बताएँ।</li><li>क्या सामान सूची साथ जाँचें?</li></ul></div>
-          <div><p class="nls-mini">मदद अनुरोध की झलक</p><ul class="nls-list"><li>साथ जाने की पुष्टि</li><li>आवाजाही योजना</li><li>सामान सूची</li></ul></div>
-          <div><p class="nls-mini">भूमिका की झलक</p><ul class="nls-list"><li>तारीख साझा · आप</li><li>साथ चलना · परिवार</li><li>आवाजाही पुष्टि · परिवार</li></ul></div>
-        </div>
+        <h3 class="nog-pillar__name">पारिवारिक जुड़ाव</h3>
+        <p class="nog-pillar__lead">हर व्यक्ति के दिन का सम्मान करें, और ज़रूरी पल में जुड़ें।</p>
+        <ul class="nls-chips"><li>कुशलक्षेम और संदेश</li><li>पारिवारिक साझा कैलेंडर</li><li>साथ के शौक और यात्राएँ</li><li>मदद के अनुरोध और साझा भूमिकाएँ</li></ul>
+        <details class="nls-more nog-pillar__more">
+          <summary>और देखें</summary>
+          <div class="nls-more__body">
+            <ul class="nls-points"><li>परिवार हर पल नहीं देखता। लोग वही तारीखें और जानकारी साझा करते हैं, जो वे चुनते हैं।</li><li>प्रदर्शनी, सैर या क्लिनिक विज़िट साथ प्लान करें, और खरीदारी या साथ चलने की मदद माँगें।</li><li>संवेदनशील जानकारी अलग सहमति के बिना साझा नहीं होती।</li></ul>
+            <p class="nls-mini">उपयोग के उदाहरण</p>
+            <ul class="nls-list"><li>सप्ताहांत की प्रदर्शनी और भोजन साथ प्लान करना</li><li>क्लिनिक विज़िट और साथ जाने का तालमेल</li></ul>
+          </div>
+        </details>
+      </article><article class="nog-pillar nog-pillar--hobby">
+        <p class="nog-pillar__n">03</p>
+        <span class="nog-badge">Extra</span>
+        <h3 class="nog-pillar__name">शौक और गतिविधि</h3>
+        <p class="nog-pillar__lead">जो करना चाहते हैं उसे खोजें, सीखें और लोगों के साथ आनंद लें।</p>
+        <ul class="nls-chips"><li>रुचियाँ और शौक खोजना</li><li>कक्षा, समूह और यात्रा की जानकारी</li><li>आवेदन, बुकिंग और तारीखें संभालना</li><li>गतिविधि का रिकॉर्ड और लोगों से मिलना</li></ul>
+        <details class="nls-more nog-pillar__more">
+          <summary>और देखें</summary>
+          <div class="nls-more__body">
+            <ul class="nls-points"><li>रुचि, अनुभव, अकेले या साथ, ऑनलाइन या ऑफ़लाइन, इलाका और कितनी दूर जा सकते हैं — इन्हीं से गतिविधि खोजें।</li><li>तारीख, जगह, शुल्क, सामग्री और पहुँच एक जगह देखें।</li><li>शामिल होने के बाद रिकॉर्ड रखें और अगली कक्षा या समूह देखें।</li></ul>
+            <p class="nls-mini">उपयोग के उदाहरण</p>
+            <ul class="nls-list"><li>शुरुआती जलरंग कक्षा ढूँढना और कृति का रिकॉर्ड रखना</li><li>शुरुआती park golf समूह में शामिल होना और अगली तारीख तय करना</li></ul>
+          </div>
+        </details>
       </article></div>
   </div>
-    <div id="nog-care" class="nls-block nls-block--band" data-hs-section>
-    <header class="nls-head">
-    <p class="nls-kicker">07 · Health &amp; Care</p>
-    <h2 class="nls-title">ताकि आनंद वाले दिन चलते रहें,<br>स्वास्थ्य और जीवन साथ चलें।</h2>
-    
-  </header>
-    <p class="nls-note">Ongil निदान, नुस्खा या आपातकाल नहीं चलाता। ध्यान तारीखों, जानकारी और मदद खोजने पर है।</p>
-    <p class="nls-note">क्षेत्र चुनें, तो स्वास्थ्य, जीवन और सहयोग के कार्य दिखेंगे।</p>
-    <div class="nls-tabs" role="tablist"><button type="button" class="nls-tab" data-nls-tab data-nls-group="care" data-nls-key="med" role="tab" aria-selected="false" tabindex="-1">स्वास्थ्य और दवा</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="care" data-nls-key="food" role="tab" aria-selected="false" tabindex="-1">भोजन और खरीदारी</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="care" data-nls-key="out" role="tab" aria-selected="false" tabindex="-1">बाहर जाना और आवाजाही</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="care" data-nls-key="home" role="tab" aria-selected="false" tabindex="-1">घर की रोज़ की मदद</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="care" data-nls-key="care" role="tab" aria-selected="false" tabindex="-1">सहयोग और विशेषज्ञ सेवाएँ</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="care" data-nls-key="all" role="tab" aria-selected="false" tabindex="-1">एक कैलेंडर</button></div>
-    <p class="nls-empty" data-nls-empty="care">क्षेत्र चुनें, तो स्वास्थ्य, जीवन और सहयोग के कार्य दिखेंगे।</p>
-    <div class="nls-panels"><article class="nls-panel" data-nls-panel data-nls-group="care" data-nls-key="med" hidden>
-        <h4 class="nls-panel__title">स्वास्थ्य और दवा</h4>
-        <ul class="nls-points"><li>दवा तारीखें और रिमाइंडर</li><li>क्लिनिक और जाँच तारीखें</li><li>स्वास्थ्य से जुड़ी जीवन नोट्स जो आप लिखते हैं</li><li>सहमति के साथ परिवार को तारीख साझा</li></ul>
-        <p class="nls-note">स्वास्थ्य और जीवन की जानकारी परिवार के साथ केवल उसी दायरे में साझा होती है, जो व्यक्ति खुद चुनता है।</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="care" data-nls-key="food" hidden>
-        <h4 class="nls-panel__title">भोजन और खरीदारी</h4>
-        <ul class="nls-points"><li>भोजन योजना</li><li>खरीदारी सूची</li><li>सामग्री और घरेलू सामान खोजना</li><li>परिवार की साझा खरीदारी सूची</li><li>डिलीवरी और खरीदारी सेवा जुड़ाव</li></ul>
-        <p class="nls-note">स्वास्थ्य और जीवन की जानकारी परिवार के साथ केवल उसी दायरे में साझा होती है, जो व्यक्ति खुद चुनता है।</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="care" data-nls-key="out" hidden>
-        <h4 class="nls-panel__title">बाहर जाना और आवाजाही</h4>
-        <ul class="nls-points"><li>क्लिनिक, कक्षा, समूह या यात्रा से जुड़ी बाहर जाने की योजना</li><li>यातायात और पहुँच जानकारी</li><li>आवाजाही सहयोग और साथ खोजना</li><li>परिवार के साथ बाहर जाने की तारीख साझा</li></ul>
-        <p class="nls-note">स्वास्थ्य और जीवन की जानकारी परिवार के साथ केवल उसी दायरे में साझा होती है, जो व्यक्ति खुद चुनता है।</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="care" data-nls-key="home" hidden>
-        <h4 class="nls-panel__title">घर की रोज़ की मदद</h4>
-        <ul class="nls-points"><li>सफाई, कपड़े, घर रखरखाव</li><li>घरेलू और मरम्मत सेवाएँ खोजना</li><li>जीवन सूचियाँ</li><li>स्थानीय जीवन सेवाएँ जोड़ना</li></ul>
-        <p class="nls-note">स्वास्थ्य और जीवन की जानकारी परिवार के साथ केवल उसी दायरे में साझा होती है, जो व्यक्ति खुद चुनता है।</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="care" data-nls-key="care" hidden>
-        <h4 class="nls-panel__title">सहयोग और विशेषज्ञ सेवाएँ</h4>
-        <ul class="nls-points"><li>सहयोग सेवाओं के प्रकार</li><li>पारिवारिक सहयोग योजना</li><li>जीवन सहयोग सेवाएँ खोजना</li><li>संगठन और विशेषज्ञ जानकारी</li><li>सेवा उपयोग की तैयारी और तारीखें संभालना</li></ul>
-        <p class="nls-note">स्वास्थ्य और जीवन की जानकारी परिवार के साथ केवल उसी दायरे में साझा होती है, जो व्यक्ति खुद चुनता है।</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="care" data-nls-key="all" hidden>
-        <h4 class="nls-panel__title">एक कैलेंडर</h4>
-        <ul class="nls-points"><li>शौक और कक्षा तारीखें</li><li>समूह और यात्रा तारीखें</li><li>दवा और क्लिनिक तारीखें</li><li>पारिवारिक तारीखें</li><li>जीवन सेवा तारीखें</li><li>प्रकार से फ़िल्टर</li><li>वैकल्पिक पारिवारिक साझा</li></ul>
-        <p class="nls-note">स्वास्थ्य और जीवन की जानकारी परिवार के साथ केवल उसी दायरे में साझा होती है, जो व्यक्ति खुद चुनता है।</p>
-      </article></div>
-  </div>
-    <div id="nog-day" class="nls-block" data-hs-section>
+    <div id="nog-day" class="nls-block nog-block--day" data-hs-section>
     <header class="nls-head">
     <p class="nls-kicker">08 · A Day with Ongil</p>
     <h2 class="nls-title">जो आप करना चाहते हैं और जो करना ज़रूरी है<br>एक ही दिन में बैठ सकते हैं।</h2>
     
   </header>
     <p class="nls-note">यह एक उदाहरण है कि तीन सेवाएँ एक दिन में कैसे मिल सकती हैं — हर वरिष्ठ का यही कार्यक्रम नहीं।</p>
-    <p class="nls-note">दिन का एक पल चुनें, तो तीन सेवाएँ एक दिन में कैसे मिल सकती हैं, यह दिखेगा।</p>
-    <div class="nls-tabs" role="tablist"><button type="button" class="nls-tab is-active" data-nls-tab data-nls-group="day" data-nls-key="morning" role="tab" aria-selected="true" tabindex="0">सुबह</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="day" data-nls-key="am" role="tab" aria-selected="false" tabindex="-1">सुबह बाद</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="day" data-nls-key="pm" role="tab" aria-selected="false" tabindex="-1">दोपहर</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="day" data-nls-key="evening" role="tab" aria-selected="false" tabindex="-1">शाम</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="day" data-nls-key="tomorrow" role="tab" aria-selected="false" tabindex="-1">कल</button></div>
-    <div class="nls-panels"><article class="nls-panel" data-nls-panel data-nls-group="day" data-nls-key="morning">
-        <h4 class="nls-panel__title">सुबह</h4>
-        <p class="nls-panel__intro">आज की तारीखें और दवा रिमाइंडर जाँचें। सुबह की कक्षा और दोपहर का समूह एक नज़र में देखें।</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="day" data-nls-key="am" hidden>
-        <h4 class="nls-panel__title">सुबह बाद</h4>
-        <p class="nls-panel__intro">जिस कक्षा की आपको परवाह है उसमें शामिल हों, या नया शौक देखें। सामान और आवाजाही तारीख के साथ रहती है।</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="day" data-nls-key="pm" hidden>
-        <h4 class="nls-panel__title">दोपहर</h4>
-        <p class="nls-panel__intro">स्थानीय समूह में शामिल हों और उसी रुचि वाले लोगों से मिलें। अगली गतिविधि वहीं से खोजी जा सकती है।</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="day" data-nls-key="evening" hidden>
-        <h4 class="nls-panel__title">शाम</h4>
-        <p class="nls-panel__intro">आज का अनुभव परिवार के साथ बाँटें और सप्ताहांत प्लान करें। साझा दायरा आप चुनते हैं।</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="day" data-nls-key="tomorrow" hidden>
-        <h4 class="nls-panel__title">कल</h4>
-        <p class="nls-panel__intro">अगली कक्षा, समूह, क्लिनिक और पारिवारिक तारीखें एक जगह देखें। चाहत और ज़रूरत एक ही कैलेंडर पर हैं।</p>
+    <div class="nog-day"><article class="nog-moment">
+        <span class="nog-moment__n">01</span>
+        <h3>सुबह</h3>
+        <p>आज की तारीखें और दवा रिमाइंडर जाँचें। सुबह की कक्षा और दोपहर का समूह एक नज़र में देखें।</p>
+      </article><article class="nog-moment">
+        <span class="nog-moment__n">02</span>
+        <h3>सुबह बाद</h3>
+        <p>जिस कक्षा की आपको परवाह है उसमें शामिल हों, या नया शौक देखें। सामान और आवाजाही तारीख के साथ रहती है।</p>
+      </article><article class="nog-moment">
+        <span class="nog-moment__n">03</span>
+        <h3>दोपहर</h3>
+        <p>स्थानीय समूह में शामिल हों और उसी रुचि वाले लोगों से मिलें। अगली गतिविधि वहीं से खोजी जा सकती है।</p>
+      </article><article class="nog-moment">
+        <span class="nog-moment__n">04</span>
+        <h3>शाम</h3>
+        <p>आज का अनुभव परिवार के साथ बाँटें और सप्ताहांत प्लान करें। साझा दायरा आप चुनते हैं।</p>
+      </article><article class="nog-moment">
+        <span class="nog-moment__n">05</span>
+        <h3>कल</h3>
+        <p>अगली कक्षा, समूह, क्लिनिक और पारिवारिक तारीखें एक जगह देखें। चाहत और ज़रूरत एक ही कैलेंडर पर हैं।</p>
       </article></div>
   </div>
-    <div id="nog-knowledge" class="nls-block nls-block--band" data-hs-section>
+    <div id="nog-family" class="nls-block nog-block--family" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">06 · Family Connection</p>
+    <h2 class="nls-title">हर व्यक्ति के दिन का सम्मान करें,<br>और ज़रूरी पल में साथ आएँ।</h2>
+    <p class="nls-lead">परिवार को हर पल देखने या संभालने की ज़रूरत नहीं। Ongil उन जानकारी और तारीखों को साझा करने में मदद करता है, जो लोग चाहते हैं, और मदद चाहिए तब साथ रहने में।</p>
+  </header>
+    <p class="nls-note">स्वास्थ्य और जीवन की जानकारी परिवार के साथ केवल उसी दायरे में साझा होती है, जो व्यक्ति खुद चुनता है।</p>
+    <div class="nog-family">
+      <div class="nog-family__feats"><article class="nog-feat">
+        <h3>कुशलक्षेम और बात</h3>
+        <ul class="nls-points"><li>पारिवारिक संदेश</li><li>कॉल कनेक्शन</li><li>फ़ोटो और रोज़ की नोट्स</li></ul>
+      </article><article class="nog-feat">
+        <h3>पारिवारिक साझा कैलेंडर</h3>
+        <ul class="nls-points"><li>पारिवारिक मिलन</li><li>क्लिनिक विज़िट</li><li>शौक, कक्षा और यात्रा की तारीखें</li></ul>
+      </article><article class="nog-feat">
+        <h3>साथ के शौक और यात्राएँ</h3>
+        <ul class="nls-points"><li>परिवार के साथ करने की गतिविधियाँ खोजना</li><li>प्रदर्शनी, कार्यक्रम, सैर प्लान</li><li>यात्रा तारीखें और सामान सूची साझा</li></ul>
+      </article><article class="nog-feat">
+        <h3>रोज़ की मदद माँगना</h3>
+        <ul class="nls-points"><li>खरीदारी</li><li>आवाजाही और साथ चलना</li><li>दस्तावेज़ जाँचना</li></ul>
+      </article><article class="nog-feat">
+        <h3>भूमिका बाँटना</h3>
+        <ul class="nls-points"><li>परिवार सदस्य के अनुसार काम</li><li>व्यक्ति नियुक्त करना</li><li>तारीखें मिलाना</li></ul>
+      </article><article class="nog-feat">
+        <h3>स्वास्थ्य तारीखें साझा करना</h3>
+        <ul class="nls-points"><li>क्लिनिक और जाँच तारीखें</li><li>दवा से जुड़ी तारीखें</li><li>कोई साथ जाएगा या नहीं</li></ul>
+      </article><article class="nog-feat">
+        <h3>सहयोग की योजना</h3>
+        <ul class="nls-points"><li>ज़रूरी मदद लिखना</li><li>परिवार में सहयोग तारीखें मिलाना</li><li>संबंधित सेवाएँ खोजना</li></ul>
+      </article><article class="nog-feat">
+        <h3>साझा करना और अनुमति</h3>
+        <ul class="nls-points"><li>परिवार सदस्य के अनुसार साझा दायरा</li><li>हर तारीख की सेटिंग</li><li>संवेदनशील जानकारी के लिए अलग सहमति</li></ul>
+      </article></div>
+      <div class="nog-family__preview">
+        <p class="nls-mini">पारिवारिक स्थिति चुनें, तो कैलेंडर, मदद और भूमिका की झलक बदलेगी।</p>
+        <div class="nls-tabs nog-scene-tabs" role="tablist"><button type="button" class="nls-tab nog-scene-tab is-active" data-nls-tab data-nls-group="scene" data-nls-key="weekend" role="tab" aria-selected="true" tabindex="0">साथ का सप्ताहांत</button><button type="button" class="nls-tab nog-scene-tab" data-nls-tab data-nls-group="scene" data-nls-key="hobby" role="tab" aria-selected="false" tabindex="-1">शौक साझा करना</button><button type="button" class="nls-tab nog-scene-tab" data-nls-tab data-nls-group="scene" data-nls-key="help" role="tab" aria-selected="false" tabindex="-1">रोज़ की मदद माँगना</button><button type="button" class="nls-tab nog-scene-tab" data-nls-tab data-nls-group="scene" data-nls-key="hospital" role="tab" aria-selected="false" tabindex="-1">क्लिनिक विज़िट की तैयारी</button></div>
+        <div class="nls-panels nog-device"><article class="nls-panel nog-scene" data-nls-panel data-nls-group="scene" data-nls-key="weekend">
+        <h4 class="nls-panel__title">साथ का सप्ताहांत</h4>
+        <div class="nog-scene-grid">
+          <div class="nog-scene-card"><p class="nls-mini">साझा कैलेंडर की झलक</p><ul class="nls-list"><li>शनिवार 14:00 प्रदर्शनी</li><li>शनिवार 18:00 पारिवारिक भोजन</li><li>रविवार सुबह पास की सैर</li></ul></div>
+          <div class="nog-scene-card"><p class="nls-mini">बातचीत की झलक</p><ul class="nls-list"><li>क्या इस सप्ताहांत प्रदर्शनी चलें?</li><li>ऐसा रेस्तराँ चुनें जहाँ पहुँचना आसान हो।</li></ul></div>
+          <div class="nog-scene-card"><p class="nls-mini">मदद अनुरोध की झलक</p><ul class="nls-list"><li>स्थल तक साथ चलना</li><li>मेनू और बुकिंग शर्तें साथ जाँचना</li></ul></div>
+          <div class="nog-scene-card"><p class="nls-mini">भूमिका की झलक</p><ul class="nls-list"><li>योजना सुझाना · आप</li><li>साथ चलना · परिवार</li><li>रेस्तराँ पुष्टि · परिवार</li></ul></div>
+        </div>
+      </article><article class="nls-panel nog-scene" data-nls-panel data-nls-group="scene" data-nls-key="hobby" hidden>
+        <h4 class="nls-panel__title">शौक साझा करना</h4>
+        <div class="nog-scene-grid">
+          <div class="nog-scene-card"><p class="nls-mini">साझा कैलेंडर की झलक</p><ul class="nls-list"><li>बुधवार 10:00 जलरंग कक्षा</li><li>शुक्रवार 15:00 ड्राइंग समूह</li></ul></div>
+          <div class="nog-scene-card"><p class="nls-mini">बातचीत की झलक</p><ul class="nls-list"><li>इस सप्ताह की कक्षा तारीख साझा कर रहा/रही हूँ।</li><li>अगले महीने की प्रदर्शनी साथ चलें?</li></ul></div>
+          <div class="nog-scene-card"><p class="nls-mini">मदद अनुरोध की झलक</p><ul class="nls-list"><li>सामग्री इकट्ठा करने में मदद</li><li>प्रदर्शनी तारीखें खोजना</li></ul></div>
+          <div class="nog-scene-card"><p class="nls-mini">भूमिका की झलक</p><ul class="nls-list"><li>कक्षा में शामिल · आप</li><li>तारीख देखना · परिवार</li><li>साथ करने की चीज़ खोजना · साझा</li></ul></div>
+        </div>
+      </article><article class="nls-panel nog-scene" data-nls-panel data-nls-group="scene" data-nls-key="help" hidden>
+        <h4 class="nls-panel__title">रोज़ की मदद माँगना</h4>
+        <div class="nog-scene-grid">
+          <div class="nog-scene-card"><p class="nls-mini">साझा कैलेंडर की झलक</p><ul class="nls-list"><li>मंगलवार खरीदारी</li><li>गुरुवार दस्तावेज़ जाँच</li></ul></div>
+          <div class="nog-scene-card"><p class="nls-mini">बातचीत की झलक</p><ul class="nls-list"><li>इस सप्ताह की खरीदारी सूची साझा की।</li><li>क्या मोबाइल बुकिंग स्क्रीन साथ देख सकते हैं?</li></ul></div>
+          <div class="nog-scene-card"><p class="nls-mini">मदद अनुरोध की झलक</p><ul class="nls-list"><li>खरीदारी</li><li>डिजिटल सेवा उपयोग में मदद</li><li>दस्तावेज़ जाँचना</li></ul></div>
+          <div class="nog-scene-card"><p class="nls-mini">भूमिका की झलक</p><ul class="nls-list"><li>अनुरोध · आप</li><li>खरीदारी · परिवार A</li><li>डिजिटल मदद · परिवार B</li></ul></div>
+        </div>
+      </article><article class="nls-panel nog-scene" data-nls-panel data-nls-group="scene" data-nls-key="hospital" hidden>
+        <h4 class="nls-panel__title">क्लिनिक विज़िट की तैयारी</h4>
+        <div class="nog-scene-grid">
+          <div class="nog-scene-card"><p class="nls-mini">साझा कैलेंडर की झलक</p><ul class="nls-list"><li>शुक्रवार 09:30 क्लिनिक विज़िट</li></ul></div>
+          <div class="nog-scene-card"><p class="nls-mini">बातचीत की झलक</p><ul class="nls-list"><li>क्लिनिक तारीख साझा कर रहा/रही हूँ। साथ आ सकें तो बताएँ।</li><li>क्या सामान सूची साथ जाँचें?</li></ul></div>
+          <div class="nog-scene-card"><p class="nls-mini">मदद अनुरोध की झलक</p><ul class="nls-list"><li>साथ जाने की पुष्टि</li><li>आवाजाही योजना</li><li>सामान सूची</li></ul></div>
+          <div class="nog-scene-card"><p class="nls-mini">भूमिका की झलक</p><ul class="nls-list"><li>तारीख साझा · आप</li><li>साथ चलना · परिवार</li><li>आवाजाही पुष्टि · परिवार</li></ul></div>
+        </div>
+      </article></div>
+      </div>
+    </div>
+  </div>
+    <div id="nog-care" class="nls-block nls-block--band nog-block--care" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">07 · Health &amp; Care</p>
+    <h2 class="nls-title">ताकि आनंद वाले दिन चलते रहें,<br>स्वास्थ्य और जीवन साथ चलें।</h2>
+    
+  </header>
+    <p class="nls-note">Ongil निदान, नुस्खा या आपातकाल नहीं चलाता। ध्यान तारीखों, जानकारी और मदद खोजने पर है।</p>
+    <div class="nog-care-grid"><article class="nog-care-tile nog-care-tile--lead">
+        <p class="nog-care-tile__n">01</p>
+        <h3>स्वास्थ्य और दवा</h3>
+        <ul class="nls-points"><li>दवा तारीखें और रिमाइंडर</li><li>क्लिनिक और जाँच तारीखें</li><li>स्वास्थ्य से जुड़ी जीवन नोट्स जो आप लिखते हैं</li><li>सहमति के साथ परिवार को तारीख साझा</li></ul>
+      </article><article class="nog-care-tile">
+        <p class="nog-care-tile__n">02</p>
+        <h3>भोजन और खरीदारी</h3>
+        <ul class="nls-points"><li>भोजन योजना</li><li>खरीदारी सूची</li><li>सामग्री और घरेलू सामान खोजना</li><li>परिवार की साझा खरीदारी सूची</li><li>डिलीवरी और खरीदारी सेवा जुड़ाव</li></ul>
+      </article><article class="nog-care-tile">
+        <p class="nog-care-tile__n">03</p>
+        <h3>बाहर जाना और आवाजाही</h3>
+        <ul class="nls-points"><li>क्लिनिक, कक्षा, समूह या यात्रा से जुड़ी बाहर जाने की योजना</li><li>यातायात और पहुँच जानकारी</li><li>आवाजाही सहयोग और साथ खोजना</li><li>परिवार के साथ बाहर जाने की तारीख साझा</li></ul>
+      </article><article class="nog-care-tile">
+        <p class="nog-care-tile__n">04</p>
+        <h3>घर की रोज़ की मदद</h3>
+        <ul class="nls-points"><li>सफाई, कपड़े, घर रखरखाव</li><li>घरेलू और मरम्मत सेवाएँ खोजना</li><li>जीवन सूचियाँ</li><li>स्थानीय जीवन सेवाएँ जोड़ना</li></ul>
+      </article><article class="nog-care-tile">
+        <p class="nog-care-tile__n">05</p>
+        <h3>सहयोग और विशेषज्ञ सेवाएँ</h3>
+        <ul class="nls-points"><li>सहयोग सेवाओं के प्रकार</li><li>पारिवारिक सहयोग योजना</li><li>जीवन सहयोग सेवाएँ खोजना</li><li>संगठन और विशेषज्ञ जानकारी</li><li>सेवा उपयोग की तैयारी और तारीखें संभालना</li></ul>
+      </article><article class="nog-care-tile">
+        <p class="nog-care-tile__n">06</p>
+        <h3>एक कैलेंडर</h3>
+        <ul class="nls-points"><li>शौक और कक्षा तारीखें</li><li>समूह और यात्रा तारीखें</li><li>दवा और क्लिनिक तारीखें</li><li>पारिवारिक तारीखें</li><li>जीवन सेवा तारीखें</li><li>प्रकार से फ़िल्टर</li><li>वैकल्पिक पारिवारिक साझा</li></ul>
+      </article></div>
+    <p class="nls-note">स्वास्थ्य और जीवन की जानकारी परिवार के साथ केवल उसी दायरे में साझा होती है, जो व्यक्ति खुद चुनता है।</p>
+  </div>
+    <div id="nog-discover" class="nls-block nls-block--band nog-block--leisure" data-hs-section>
+    <header class="nls-head">
+    <p class="nls-kicker">03 · Discover</p>
+    <h2 class="nls-title">शौक और अवकाश<br>अतिरिक्त सेवा क्षेत्र हैं।</h2>
+    <p class="nls-lead">Ongil का केंद्र देखभाल और सुरक्षा है। कक्षा, समूह और यात्रा अतिरिक्त अवकाश हैं; नीचे पूर्वावलोकन है।</p>
+  </header>
+    <p class="nls-note">गतिविधियाँ केवल उम्र से सीमित नहीं होतीं। खोज रुचि, अनुभव, साथ, ऑनलाइन या ऑफ़लाइन, इलाका, यात्रा सीमा, दिन और समय, बजट और पहुँच के इर्द-गिर्द बनाई गई है।</p>
+    <div class="nls-tabs nog-disc-grid" role="tablist"><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="art" data-nls-featured="1" role="tab" aria-selected="false" tabindex="-1"><strong>कला और शिल्प</strong><span>हाथ से बने समय से दिन की लय बदलें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="music" data-nls-featured="1" role="tab" aria-selected="false" tabindex="-1"><strong>संगीत और मंच</strong><span>सुनें या बजाएँ, और मंच व लोगों से मिलें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="sport" data-nls-featured="1" role="tab" aria-selected="false" tabindex="-1"><strong>खेल और रोज़ की हलचल</strong><span>शरीर के अनुकूल हलचल से दिन जीवंत रखें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="travel" data-nls-featured="1" role="tab" aria-selected="false" tabindex="-1"><strong>यात्रा और बाहर निकलना</strong><span>पास की सैर से एक दिन की यात्रा तक, घर से निकलने की लय खोजें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="cook" data-nls-featured="1" role="tab" aria-selected="false" tabindex="-1"><strong>खाना और बेकिंग</strong><span>बनाने की प्रक्रिया ही दिन का आनंद बन जाती है।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="read" data-nls-featured="1" role="tab" aria-selected="false" tabindex="-1"><strong>पढ़ना और लिखना</strong><span>किताबों से सोच फैलाएँ और बात जारी रखें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="photo" data-nls-featured="0" hidden role="tab" aria-selected="false" tabindex="-1"><strong>फ़ोटो और वीडियो</strong><span>रोज़ के दृश्य रिकॉर्ड करें और देखने का दूसरा तरीका बाँटें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="garden" data-nls-featured="0" hidden role="tab" aria-selected="false" tabindex="-1"><strong>बाग और प्रकृति</strong><span>पौधों और बाहरी हवा से दिन धीमा करें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="lang" data-nls-featured="0" hidden role="tab" aria-selected="false" tabindex="-1"><strong>भाषा और जीवनभर सीखना</strong><span>नई भाषा या कक्षा से दिन में चमक जोड़ें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="digital" data-nls-featured="0" hidden role="tab" aria-selected="false" tabindex="-1"><strong>डिजिटल और तकनीक</strong><span>रोज़मर्रा की डिजिटल चीज़ें अपनी गति से सीखें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="culture" data-nls-featured="0" hidden role="tab" aria-selected="false" tabindex="-1"><strong>संस्कृति और इतिहास</strong><span>जगह और कहानी से दुनिया चौड़ी करें।</span></button><button type="button" class="nls-tab nog-disc-tab" data-nls-tab data-nls-group="disc" data-nls-key="volunteer" data-nls-featured="0" hidden role="tab" aria-selected="false" tabindex="-1"><strong>स्वयंसेवा और नागरिक जीवन</strong><span>समय और हुनर बाँटें, और नए लोगों से मिलें।</span></button></div>
+    <p class="nls-actions"><button type="button" class="nls-btn nls-btn--ghost" data-nog-more data-label-all="सभी रुचियाँ देखें" data-label-less="चुनी हुई रुचियाँ दिखाएँ">सभी रुचियाँ देखें</button></p>
+    <p class="nls-empty" data-nls-empty="disc">एक रुचि चुनें, तो शुरू करने का तरीका और गतिविधियाँ दिखेंगी।</p>
+    <div class="nls-panels"><article class="nls-panel nog-disc-panel" data-nls-panel data-nls-group="disc" data-nls-key="art" hidden>
+        <h4 class="nls-panel__title">कला और शिल्प</h4>
+        <p class="nls-panel__intro">हाथ से बने समय से दिन की लय बदलें।</p>
+        <div class="nog-disc-grid4">
+          <div><p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p><p>जलरंग, ड्राइंग, मिट्टी का काम, बुनाई</p></div>
+          <div><p class="nls-mini">घर पर</p><p>मूल ड्राइंग और ऑनलाइन कक्षाएँ</p></div>
+          <div><p class="nls-mini">कक्षाएँ और समूह</p><p>स्थानीय कला कक्षाएँ और शिल्प समूह</p></div>
+          <div><p class="nls-mini">आगे क्या आ सकता है</p><p>कृति रिकॉर्ड, नियमित कक्षाएँ, रुचि समूह</p></div>
+        </div>
+        <p class="nls-note">शुरू करने से पहले जाँचें: सामग्री, कक्षा शैली, जगह, पहुँच, शुल्क</p>
+      </article><article class="nls-panel nog-disc-panel" data-nls-panel data-nls-group="disc" data-nls-key="music" hidden>
+        <h4 class="nls-panel__title">संगीत और मंच</h4>
+        <p class="nls-panel__intro">सुनें या बजाएँ, और मंच व लोगों से मिलें।</p>
+        <div class="nog-disc-grid4">
+          <div><p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p><p>कोरस, यूकुलेले, गाने की कक्षा, पहली प्रस्तुतियाँ</p></div>
+          <div><p class="nls-mini">घर पर</p><p>सुनने की गाइड और ऑनलाइन पाठ</p></div>
+          <div><p class="nls-mini">कक्षाएँ और समूह</p><p>स्थानीय कोरस, वाद्य कक्षाएँ, कार्यक्रम समूह</p></div>
+          <div><p class="nls-mini">आगे क्या आ सकता है</p><p>नियमित अभ्यास, छोटी प्रस्तुति, अगला शो</p></div>
+        </div>
+        <p class="nls-note">शुरू करने से पहले जाँचें: वाद्य किराया, स्तर, स्थल पहुँच, शुल्क</p>
+      </article><article class="nls-panel nog-disc-panel" data-nls-panel data-nls-group="disc" data-nls-key="sport" hidden>
+        <h4 class="nls-panel__title">खेल और रोज़ की हलचल</h4>
+        <p class="nls-panel__intro">शरीर के अनुकूल हलचल से दिन जीवंत रखें।</p>
+        <div class="nog-disc-grid4">
+          <div><p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p><p>चलना, तैराकी, योग, टेबल टेनिस, park golf</p></div>
+          <div><p class="nls-mini">घर पर</p><p>स्ट्रेचिंग और साथ करने की गाइड</p></div>
+          <div><p class="nls-mini">कक्षाएँ और समूह</p><p>सामुदायिक खेल कक्षाएँ और शुरुआती समूह</p></div>
+          <div><p class="nls-mini">आगे क्या आ सकता है</p><p>नियमित तारीख, अन्य सामुदायिक खेल</p></div>
+        </div>
+        <p class="nls-note">शुरू करने से पहले जाँचें: तीव्रता, सामान, जगह, आवाजाही, शर्तें</p>
+      </article><article class="nls-panel nog-disc-panel" data-nls-panel data-nls-group="disc" data-nls-key="travel" hidden>
+        <h4 class="nls-panel__title">यात्रा और बाहर निकलना</h4>
+        <p class="nls-panel__intro">पास की सैर से एक दिन की यात्रा तक, घर से निकलने की लय खोजें।</p>
+        <div class="nog-disc-grid4">
+          <div><p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p><p>मोहल्ले की सैर, एक दिन की यात्रा, संस्कृति की सैर</p></div>
+          <div><p class="nls-mini">घर पर</p><p>पहले रास्ता, सामान सूची और पहुँच जाँचें</p></div>
+          <div><p class="nls-mini">कक्षाएँ और समूह</p><p>परिवार, मित्र या यात्रा कार्यक्रम</p></div>
+          <div><p class="nls-mini">आगे क्या आ सकता है</p><p>अगली जगह, उसी विषय की गतिविधियाँ</p></div>
+        </div>
+        <p class="nls-note">शुरू करने से पहले जाँचें: रास्ता, विश्राम, बजट, बुकिंग शर्तें</p>
+      </article><article class="nls-panel nog-disc-panel" data-nls-panel data-nls-group="disc" data-nls-key="cook" hidden>
+        <h4 class="nls-panel__title">खाना और बेकिंग</h4>
+        <p class="nls-panel__intro">बनाने की प्रक्रिया ही दिन का आनंद बन जाती है।</p>
+        <div class="nog-disc-grid4">
+          <div><p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p><p>रोज़ का खाना, सरल बेकिंग, मौसमी व्यंजन</p></div>
+          <div><p class="nls-mini">घर पर</p><p>रेसिपी के साथ बनाना और ऑनलाइन कक्षाएँ</p></div>
+          <div><p class="nls-mini">कक्षाएँ और समूह</p><p>खाना कक्षाएँ और बाँटने वाले समूह</p></div>
+          <div><p class="nls-mini">आगे क्या आ सकता है</p><p>मेनू नोट्स, अगली कक्षा, खरीदारी सूची</p></div>
+        </div>
+        <p class="nls-note">शुरू करने से पहले जाँचें: सामग्री लागत, कक्षा आकार, रसोई, आवाजाही</p>
+      </article><article class="nls-panel nog-disc-panel" data-nls-panel data-nls-group="disc" data-nls-key="read" hidden>
+        <h4 class="nls-panel__title">पढ़ना और लिखना</h4>
+        <p class="nls-panel__intro">किताबों से सोच फैलाएँ और बात जारी रखें।</p>
+        <div class="nog-disc-grid4">
+          <div><p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p><p>विधा खोजना, पंक्तियाँ नकल करना, छोटी नोट्स</p></div>
+          <div><p class="nls-mini">घर पर</p><p>निजी पढ़ाई और ऑनलाइन किताब चर्चा</p></div>
+          <div><p class="nls-mini">कक्षाएँ और समूह</p><p>पुस्तकालय और स्थानीय रीडिंग समूह</p></div>
+          <div><p class="nls-mini">आगे क्या आ सकता है</p><p>अगली किताब, नियमित समूह, लेखन कक्षा</p></div>
+        </div>
+        <p class="nls-note">शुरू करने से पहले जाँचें: किताब, समूह शैली, जगह, तारीख</p>
+      </article><article class="nls-panel nog-disc-panel" data-nls-panel data-nls-group="disc" data-nls-key="photo" hidden>
+        <h4 class="nls-panel__title">फ़ोटो और वीडियो</h4>
+        <p class="nls-panel__intro">रोज़ के दृश्य रिकॉर्ड करें और देखने का दूसरा तरीका बाँटें।</p>
+        <div class="nog-disc-grid4">
+          <div><p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p><p>फ़ोन फ़ोटो, सैर पर शूट, छोटे क्लिप</p></div>
+          <div><p class="nls-mini">घर पर</p><p>शूटिंग की बुनियाद और शुरुआती संपादन</p></div>
+          <div><p class="nls-mini">कक्षाएँ और समूह</p><p>फ़ोटो वॉक और बाँटने वाले समूह</p></div>
+          <div><p class="nls-mini">आगे क्या आ सकता है</p><p>कृति रिकॉर्ड, प्रदर्शनियाँ, अगली सैर</p></div>
+        </div>
+        <p class="nls-note">शुरू करने से पहले जाँचें: उपकरण, जगह, मौसम, पहुँच</p>
+      </article><article class="nls-panel nog-disc-panel" data-nls-panel data-nls-group="disc" data-nls-key="garden" hidden>
+        <h4 class="nls-panel__title">बाग और प्रकृति</h4>
+        <p class="nls-panel__intro">पौधों और बाहरी हवा से दिन धीमा करें।</p>
+        <div class="nog-disc-grid4">
+          <div><p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p><p>घर के पौधे, छोटी क्यारी, पार्क सैर</p></div>
+          <div><p class="nls-mini">घर पर</p><p>पौधों की देखभाल गाइड</p></div>
+          <div><p class="nls-mini">कक्षाएँ और समूह</p><p>वनस्पति उद्यान की सैर और बाग कक्षाएँ</p></div>
+          <div><p class="nls-mini">आगे क्या आ सकता है</p><p>बाग नोट्स, मौसमी कार्यक्रम</p></div>
+        </div>
+        <p class="nls-note">शुरू करने से पहले जाँचें: जगह, सामग्री, मौसम, बाहर जाना</p>
+      </article><article class="nls-panel nog-disc-panel" data-nls-panel data-nls-group="disc" data-nls-key="lang" hidden>
+        <h4 class="nls-panel__title">भाषा और जीवनभर सीखना</h4>
+        <p class="nls-panel__intro">नई भाषा या कक्षा से दिन में चमक जोड़ें।</p>
+        <div class="nog-disc-grid4">
+          <div><p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p><p>रोज़ की बातचीत, सुलेख, सामान्य ज्ञान कक्षाएँ</p></div>
+          <div><p class="nls-mini">घर पर</p><p>छोटी अध्ययन दिनचर्या और ऑनलाइन पाठ</p></div>
+          <div><p class="nls-mini">कक्षाएँ और समूह</p><p>जीवनभर सीखने और संस्कृति केंद्र की कक्षाएँ</p></div>
+          <div><p class="nls-mini">आगे क्या आ सकता है</p><p>अगला स्तर, अध्ययन समूह</p></div>
+        </div>
+        <p class="nls-note">शुरू करने से पहले जाँचें: स्तर, सामग्री, समय, जगह</p>
+      </article><article class="nls-panel nog-disc-panel" data-nls-panel data-nls-group="disc" data-nls-key="digital" hidden>
+        <h4 class="nls-panel__title">डिजिटल और तकनीक</h4>
+        <p class="nls-panel__intro">रोज़मर्रा की डिजिटल चीज़ें अपनी गति से सीखें।</p>
+        <div class="nog-disc-grid4">
+          <div><p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p><p>स्मार्टफ़ोन, कियोस्क, मोबाइल बुकिंग</p></div>
+          <div><p class="nls-mini">घर पर</p><p>कदम-दर-कदम शुरुआती गाइड</p></div>
+          <div><p class="nls-mini">कक्षाएँ और समूह</p><p>डिजिटल कक्षाएँ और प्रश्न समूह</p></div>
+          <div><p class="nls-mini">आगे क्या आ सकता है</p><p>असली बुकिंग का अभ्यास, अगला डिजिटल विषय</p></div>
+        </div>
+        <p class="nls-note">शुरू करने से पहले जाँचें: डिवाइस, कक्षा की गति, जगह, सहयोग</p>
+      </article><article class="nls-panel nog-disc-panel" data-nls-panel data-nls-group="disc" data-nls-key="culture" hidden>
+        <h4 class="nls-panel__title">संस्कृति और इतिहास</h4>
+        <p class="nls-panel__intro">जगह और कहानी से दुनिया चौड़ी करें।</p>
+        <div class="nog-disc-grid4">
+          <div><p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p><p>संग्रहालय, गाइडेड वॉक, स्थानीय इतिहास कक्षाएँ</p></div>
+          <div><p class="nls-mini">घर पर</p><p>प्रदर्शनी और इतिहास का परिचय</p></div>
+          <div><p class="nls-mini">कक्षाएँ और समूह</p><p>गाइडेड कार्यक्रम और देखने वाले समूह</p></div>
+          <div><p class="nls-mini">आगे क्या आ सकता है</p><p>अगली प्रदर्शनी, उसी विषय की कक्षा</p></div>
+        </div>
+        <p class="nls-note">शुरू करने से पहले जाँचें: तारीखें, आवाजाही, विश्राम जगह, टिकट</p>
+      </article><article class="nls-panel nog-disc-panel" data-nls-panel data-nls-group="disc" data-nls-key="volunteer" hidden>
+        <h4 class="nls-panel__title">स्वयंसेवा और नागरिक जीवन</h4>
+        <p class="nls-panel__intro">समय और हुनर बाँटें, और नए लोगों से मिलें।</p>
+        <div class="nog-disc-grid4">
+          <div><p class="nls-mini">शुरू करने के लिए अच्छी गतिविधियाँ</p><p>हुनर बाँटना, स्थानीय सफाई, सीखने में सहयोग</p></div>
+          <div><p class="nls-mini">घर पर</p><p>शामिल होने से पहले भूमिका और तैयारी जाँचें</p></div>
+          <div><p class="nls-mini">कक्षाएँ और समूह</p><p>स्थानीय स्वयंसेवी समूह और क्लब</p></div>
+          <div><p class="nls-mini">आगे क्या आ सकता है</p><p>नियमित भागीदारी, अन्य नागरिक गतिविधियाँ</p></div>
+        </div>
+        <p class="nls-note">शुरू करने से पहले जाँचें: तीव्रता, समय, जगह, आयोजक</p>
+      </article></div>
+    <details class="nls-more"><summary>बुकिंग, समय और समूह की दिशा</summary><div class="nls-more__body"><p class="nls-lead">गतिविधि जानकारी, आवेदन, तारीखें, समूह और रिकॉर्ड एक प्रवाह के रूप में डिज़ाइन किए गए हैं। यह भविष्य की संरचना है, लाइव बुकिंग सिस्टम नहीं।</p><p class="nls-note">आवेदन और बुकिंग भविष्य की सेवा संरचना के रूप में दिखाई गई हैं, लाइव चेकआउट नहीं।</p><div class="nog-extras"><div class="nog-extra"><p class="nls-mini">गतिविधि विवरण</p><ul class="nls-chips"><li>नाम और परिचय</li><li>क्षेत्र और शुरुआती पहुँच</li><li>ऑनलाइन या ऑफ़लाइन</li><li>इलाका और जगह</li><li>तारीख, समय, अवधि</li><li>शुल्क और सामग्री</li><li>आवाजाही और पहुँच</li><li>आयोजक, रद्द शर्तें, संपर्क</li></ul></div><div class="nog-extra"><p class="nls-mini">आवेदन और बुकिंग</p><ul class="nls-chips"><li>तारीख और संख्या चुनना</li><li>आवेदन जानकारी पुष्टि</li><li>रिकॉर्ड संभालना</li><li>बदलाव और रद्द नोट्स</li><li>स्थिति देखना</li><li>साथियों के साथ तारीख साझा करना</li></ul></div><div class="nog-extra"><p class="nls-mini">तारीखें, समूह, रिकॉर्ड</p><ul class="nls-chips"><li>शौक, कक्षा, समूह और यात्रा की तारीखें</li><li>सामान सूचियाँ</li><li>रुचि और इलाका फ़िल्टर</li><li>शामिल होने के अनुरोध और सूचनाएँ</li><li>फ़ोटो और मेमो</li><li>दृश्यता सेटिंग</li></ul></div></div></div></details>
+  </div>
+    <div id="nog-knowledge" class="nls-block nog-block--know" data-hs-section>
     <header class="nls-head">
     <p class="nls-kicker">09 · Ongil Knowledge</p>
     <h2 class="nls-title">कुछ नया सीखने का आनंद,<br>और वह ज्ञान जो रोज़मर्रा चाहता है।</h2>
     
   </header>
-    <p class="nls-note">सीखने का विषय चुनें, तो चरणों की झलक बदलेगी।</p>
-    <div class="nls-tabs" role="tablist"><button type="button" class="nls-tab" data-nls-tab data-nls-group="know" data-nls-key="hobby" role="tab" aria-selected="false" tabindex="-1">शौक और जीवनभर सीखना</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="know" data-nls-key="digital" role="tab" aria-selected="false" tabindex="-1">डिजिटल जीवन</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="know" data-nls-key="health" role="tab" aria-selected="false" tabindex="-1">स्वास्थ्य और जीवन जानकारी</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="know" data-nls-key="finance" role="tab" aria-selected="false" tabindex="-1">पैसा और उपभोक्ता सुरक्षा</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="know" data-nls-key="admin" role="tab" aria-selected="false" tabindex="-1">सार्वजनिक सेवाएँ</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="know" data-nls-key="family" role="tab" aria-selected="false" tabindex="-1">परिवार और सहयोग</button></div>
-    <p class="nls-empty" data-nls-empty="know">सीखने का विषय चुनें, तो चरणों की झलक बदलेगी।</p>
-    <div class="nls-panels"><article class="nls-panel" data-nls-panel data-nls-group="know" data-nls-key="hobby" hidden>
-        <h4 class="nls-panel__title">शौक और जीवनभर सीखना</h4>
-        <p class="nls-panel__intro">नया शौक शुरू करना, कक्षा खोजना, सामग्री और सीखने का तरीका, स्थानीय शिक्षा कार्यक्रम।</p>
-        <p class="nls-note">सीखने के अनुभव की झलक</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="know" data-nls-key="digital" hidden>
-        <h4 class="nls-panel__title">डिजिटल जीवन</h4>
-        <p class="nls-panel__intro">स्मार्टफ़ोन, कंप्यूटर, कियोस्क, मोबाइल बुकिंग, ऑनलाइन सेवाओं का उपयोग।</p>
-        <p class="nls-note">सीखने के अनुभव की झलक</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="know" data-nls-key="health" hidden>
-        <h4 class="nls-panel__title">स्वास्थ्य और जीवन जानकारी</h4>
-        <p class="nls-panel__intro">क्लिनिक विज़िट की तैयारी, जाँच जानकारी, दवा तारीखें, रोज़ की आदतें।</p>
-        <p class="nls-note">सीखने के अनुभव की झलक</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="know" data-nls-key="finance" hidden>
-        <h4 class="nls-panel__title">पैसा और उपभोक्ता सुरक्षा</h4>
-        <p class="nls-panel__intro">सुरक्षित भुगतान, पैसे की बुनियाद, फ़िशिंग रोकथाम, उपभोक्ता अधिकार।</p>
-        <p class="nls-note">सीखने के अनुभव की झलक</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="know" data-nls-key="admin" hidden>
-        <h4 class="nls-panel__title">सार्वजनिक सेवाएँ</h4>
-        <p class="nls-panel__intro">प्रमाणपत्र, सार्वजनिक सेवाएँ खोजना, सहयोग कार्यक्रम समझना।</p>
-        <p class="nls-note">सीखने के अनुभव की झलक</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="know" data-nls-key="family" hidden>
-        <h4 class="nls-panel__title">परिवार और सहयोग</h4>
-        <p class="nls-panel__intro">पारिवारिक बातचीत, सहयोग की तैयारी, जीवन सहयोग सेवाएँ समझना।</p>
-        <p class="nls-note">सीखने के अनुभव की झलक</p>
+    <div class="nog-know-layout">
+      <div class="nog-know-grid"><article class="nog-know">
+        <h3>शौक और जीवनभर सीखना</h3>
+        <p>नया शौक शुरू करना, कक्षा खोजना, सामग्री और सीखने का तरीका, स्थानीय शिक्षा कार्यक्रम।</p>
+      </article><article class="nog-know">
+        <h3>डिजिटल जीवन</h3>
+        <p>स्मार्टफ़ोन, कंप्यूटर, कियोस्क, मोबाइल बुकिंग, ऑनलाइन सेवाओं का उपयोग।</p>
+      </article><article class="nog-know">
+        <h3>स्वास्थ्य और जीवन जानकारी</h3>
+        <p>क्लिनिक विज़िट की तैयारी, जाँच जानकारी, दवा तारीखें, रोज़ की आदतें।</p>
+      </article><article class="nog-know">
+        <h3>पैसा और उपभोक्ता सुरक्षा</h3>
+        <p>सुरक्षित भुगतान, पैसे की बुनियाद, फ़िशिंग रोकथाम, उपभोक्ता अधिकार।</p>
+      </article><article class="nog-know">
+        <h3>सार्वजनिक सेवाएँ</h3>
+        <p>प्रमाणपत्र, सार्वजनिक सेवाएँ खोजना, सहयोग कार्यक्रम समझना।</p>
+      </article><article class="nog-know">
+        <h3>परिवार और सहयोग</h3>
+        <p>पारिवारिक बातचीत, सहयोग की तैयारी, जीवन सहयोग सेवाएँ समझना।</p>
       </article></div>
-    <p class="nls-mini">सीखने के अनुभव की झलक</p>
-    <div class="nls-tabs" role="tablist"><button type="button" class="nls-tab is-active" data-nls-tab data-nls-group="lesson" data-nls-key="start-hobby" role="tab" aria-selected="true" tabindex="0">नया शौक कैसे शुरू करें</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="lesson" data-nls-key="culture-phone" role="tab" aria-selected="false" tabindex="-1">फ़ोन पर संस्कृति कार्यक्रम खोजना</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="lesson" data-nls-key="online-class" role="tab" aria-selected="false" tabindex="-1">ऑनलाइन कक्षा में शामिल होना</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="lesson" data-nls-key="kiosk" role="tab" aria-selected="false" tabindex="-1">कियोस्क का उपयोग</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="lesson" data-nls-key="scam" role="tab" aria-selected="false" tabindex="-1">ऑनलाइन धोखाधड़ी से बचना</button><button type="button" class="nls-tab" data-nls-tab data-nls-group="lesson" data-nls-key="care-prep" role="tab" aria-selected="false" tabindex="-1">पारिवारिक सहयोग की तैयारी</button></div>
-    <div class="nls-panels"><article class="nls-panel" data-nls-panel data-nls-group="lesson" data-nls-key="start-hobby">
-        <h4 class="nls-panel__title">नया शौक कैसे शुरू करें</h4>
+      <aside class="nog-lesson">
+        <p class="nls-mini">सीखने के अनुभव की झलक</p>
+        <h3>नया शौक कैसे शुरू करें</h3>
         <ol class="nls-list nog-ol"><li><span>01</span> पसंद की गतिविधि खोजें</li><li><span>02</span> कैसे चलती है और स्तर जाँचें</li><li><span>03</span> सामग्री और लागत जानें</li><li><span>04</span> कक्षाएँ और समूह देखें</li><li><span>05</span> पहली तारीख तय करें</li><li><span>06</span> आगे की योजना बनाएँ</li></ol>
-        <p class="nls-note">सीखने के अनुभव की झलक</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="lesson" data-nls-key="culture-phone" hidden>
-        <h4 class="nls-panel__title">फ़ोन पर संस्कृति कार्यक्रम खोजना</h4>
-        <ol class="nls-list nog-ol"><li><span>01</span> रुचि चुनें</li><li><span>02</span> इलाका और तारीखें तय करें</li><li><span>03</span> कार्यक्रम जानकारी पढ़ें</li><li><span>04</span> जगह और पहुँच जाँचें</li><li><span>05</span> पसंदीदा कार्यक्रम सहेजें</li><li><span>06</span> परिवार के साथ साझा करना तय करें</li></ol>
-        <p class="nls-note">सीखने के अनुभव की झलक</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="lesson" data-nls-key="online-class" hidden>
-        <h4 class="nls-panel__title">ऑनलाइन कक्षा में शामिल होना</h4>
-        <ol class="nls-list nog-ol"><li><span>01</span> कक्षा कैसे चलती है समझें</li><li><span>02</span> डिवाइस और ऐप तैयार करें</li><li><span>03</span> कक्षा तारीख जोड़ें</li><li><span>04</span> एक बार जुड़ना अभ्यास करें</li><li><span>05</span> भाग लें</li><li><span>06</span> अगली कक्षा खोजें</li></ol>
-        <p class="nls-note">सीखने के अनुभव की झलक</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="lesson" data-nls-key="kiosk" hidden>
-        <h4 class="nls-panel__title">कियोस्क का उपयोग</h4>
-        <ol class="nls-list nog-ol"><li><span>01</span> कियोस्क कब इस्तेमाल होते हैं देखें</li><li><span>02</span> स्क्रीन लेआउट सीखें</li><li><span>03</span> ऑर्डर या टिकट का पालन करें</li><li><span>04</span> मुश्किल हो तो मदद माँगें</li><li><span>05</span> असली जगह पर अभ्यास करें</li><li><span>06</span> अक्सर जाने वाली जगहें सहेजें</li></ol>
-        <p class="nls-note">सीखने के अनुभव की झलक</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="lesson" data-nls-key="scam" hidden>
-        <h4 class="nls-panel__title">ऑनलाइन धोखाधड़ी से बचना</h4>
-        <ol class="nls-list nog-ol"><li><span>01</span> आम तरीके जानें</li><li><span>02</span> लिंक और भुगतान अनुरोध से सावधान रहें</li><li><span>03</span> आधिकारिक रास्ते से फिर जाँचें</li><li><span>04</span> कौन सी व्यक्तिगत जानकारी साझा करेंगे तय करें</li><li><span>05</span> परिवार से पुष्टि माँगें</li><li><span>06</span> रिपोर्ट या सलाह कहाँ लें जानें</li></ol>
-        <p class="nls-note">सीखने के अनुभव की झलक</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="lesson" data-nls-key="care-prep" hidden>
-        <h4 class="nls-panel__title">पारिवारिक सहयोग की तैयारी</h4>
-        <ol class="nls-list nog-ol"><li><span>01</span> ज़रूरी मदद लिखें</li><li><span>02</span> परिवार में भूमिका बाँटें</li><li><span>03</span> तारीखें और साझा दायरा तय करें</li><li><span>04</span> संबंधित सेवा प्रकार जानें</li><li><span>05</span> कागज़ और संपर्क इकट्ठा करें</li><li><span>06</span> आगे क्या जाँचना है छोड़ दें</li></ol>
-        <p class="nls-note">सीखने के अनुभव की झलक</p>
-      </article></div>
+      </aside>
+    </div>
   </div>
-    <div id="nog-eco" class="nls-block" data-hs-section>
+    <div id="nog-eco" class="nls-block nls-block--band nog-block--eco" data-hs-section>
     <header class="nls-head">
     <p class="nls-kicker">10 · Ecosystem &amp; Business</p>
     <h2 class="nls-title">एक शौक से शुरू करें,<br>और दिन के हर पल तक पहुँचें।</h2>
@@ -979,8 +882,6 @@
         <p class="nls-mini">स्वास्थ्य, जीवन और सहयोग</p>
         <ul class="nls-chips"><li>Ongil Health</li><li>Ongil Daily</li><li>Ongil Food &amp; Shopping</li><li>Ongil Mobility</li><li>Ongil Care</li></ul>
       </div></div>
-    <p class="nls-mini">साझा आधार</p>
-    <ul class="nls-chips"><li>Ongil Knowledge</li><li>Ongil Calendar</li><li>Ongil Activity &amp; Booking</li><li>Ongil Service Connection</li></ul>
     <p class="nls-note">ये नाम संरचना बताते हैं। ये लाइव स्वतंत्र ऐप नहीं हैं।</p>
     <p class="nls-mini">Newon में Ongil कैसे जुड़ सकता है</p>
     <p class="nls-note">भविष्य का जुड़ाव</p>
@@ -1006,85 +907,81 @@
         <span>Life Stage</span>
         <em>हर उम्र के लिए जीवन ज्ञान, योजना और कार्रवाई मंच</em>
       </a></div>
-    <article class="nls-panel">
+    <article class="nog-vs">
       <p class="nls-mini">Life Stage और Ongil</p>
       <p>Life Stage हर उम्र का मंच है। Ongil वरिष्ठ शौक, गतिविधि, परिवार, स्वास्थ्य, जीवन और सहयोग के लिए अलग व्यवसाय है। स्वचालित डेटा साझा और लाइव ऐप एकीकरण अभी बने नहीं हैं; उन्हें केवल भविष्य की दिशा के रूप में बताया गया है।</p>
-      <p class="nls-note">Life Stage हर उम्र के लिए है। Ongil बुज़ुर्गों और परिवारों के लिए देखभाल-केंद्रित सीनियर केयर व्यवसाय है।</p>
     </article>
   </div>
-    <div id="nog-business" class="nls-block nls-block--band" data-hs-section>
+    <div id="nog-business" class="nls-block nog-block--biz" data-hs-section>
     <header class="nls-head">
     <p class="nls-kicker">11 · Business Expansion</p>
     <h2 class="nls-title">एक व्यक्ति के शौक और दिन से<br>परिवार और स्थानीय समुदाय तक।</h2>
     
   </header>
     <p class="nls-note">अनिश्चित कीमतें, आय, साझेदार, उपयोगकर्ता संख्या और बुकिंग मात्रा नहीं दिखाई जातीं।</p>
-    <div class="nls-tabs nog-tabs-3" role="tablist"><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="biz" data-nls-key="person" role="tab" aria-selected="false" tabindex="-1"><span>01</span><strong>व्यक्ति</strong></button><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="biz" data-nls-key="family" role="tab" aria-selected="false" tabindex="-1"><span>02</span><strong>परिवार</strong></button><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="biz" data-nls-key="supply" role="tab" aria-selected="false" tabindex="-1"><span>03</span><strong>कक्षा, समूह और जीवन सेवा प्रदाता</strong></button><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="biz" data-nls-key="org" role="tab" aria-selected="false" tabindex="-1"><span>04</span><strong>कंपनियाँ और शिक्षा</strong></button><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="biz" data-nls-key="city" role="tab" aria-selected="false" tabindex="-1"><span>05</span><strong>शहर और समुदाय</strong></button></div>
-    <p class="nls-empty" data-nls-empty="biz">सेवा चुनें, तो उसके कार्य दिखेंगे।</p>
-    <div class="nls-panels"><article class="nls-panel" data-nls-panel data-nls-group="biz" data-nls-key="person" hidden>
-        <p class="nls-panel__kicker">01</p>
-        <h4 class="nls-panel__title">व्यक्ति</h4>
-        <ul class="nls-points"><li>मूल शौक और जीवन जानकारी</li><li>प्रीमियम गतिविधि और तारीख उपकरण</li><li>गहरा शौक सीखना</li><li>अधिक व्यक्तिगत गतिविधि खोज</li><li>प्रीमियम स्वास्थ्य और जीवन उपकरण</li></ul>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="biz" data-nls-key="family" hidden>
-        <p class="nls-panel__kicker">02</p>
-        <h4 class="nls-panel__title">परिवार</h4>
-        <ul class="nls-points"><li>पारिवारिक साझा कैलेंडर</li><li>बात और साझा भूमिकाएँ</li><li>परिवार के लिए प्रीमियम कार्य</li><li>जीवन सहयोग जुड़ाव</li><li>पारिवारिक गतिविधियाँ और यात्रा योजनाएँ</li></ul>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="biz" data-nls-key="supply" hidden>
-        <p class="nls-panel__kicker">03</p>
-        <h4 class="nls-panel__title">कक्षा, समूह और जीवन सेवा प्रदाता</h4>
-        <ul class="nls-points"><li>कक्षाएँ और कार्यक्रम दर्ज करना</li><li>तारीख, आवेदन और बुकिंग उपकरण</li><li>प्रतिभागी और ग्राहक प्रबंधन</li><li>खोज और जुड़ाव</li><li>अनुबंध के अनुसार प्लेटफ़ॉर्म शुल्क और साझेदारी आय</li></ul>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="biz" data-nls-key="org" hidden>
-        <p class="nls-panel__kicker">04</p>
-        <h4 class="nls-panel__title">कंपनियाँ और शिक्षा</h4>
-        <ul class="nls-points"><li>वरिष्ठ शौक और जीवनभर सीखने के कार्यक्रम</li><li>डिजिटल जीवन शिक्षा</li><li>कर्मचारी परिवार सहयोग</li><li>सेवानिवृत्ति से पहले और बाद का जीवन व फुर्सत</li><li>कार्यस्थल लाभ जुड़ाव</li></ul>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="biz" data-nls-key="city" hidden>
-        <p class="nls-panel__kicker">05</p>
-        <h4 class="nls-panel__title">शहर और समुदाय</h4>
-        <ul class="nls-points"><li>स्थानीय शौक, संस्कृति और खेल कार्यक्रम</li><li>वरिष्ठ डिजिटल शिक्षा</li><li>समुदाय और नागरिक भागीदारी</li><li>जीवन और सहयोग जानकारी</li><li>स्थानीय कार्यक्रम खोजना और शामिल होना</li></ul>
+    <div class="nog-biz-list"><article class="nog-biz">
+        <p class="nog-biz__n">01</p>
+        <div>
+          <h3>व्यक्ति</h3>
+          <ul class="nls-chips"><li>मूल शौक और जीवन जानकारी</li><li>प्रीमियम गतिविधि और तारीख उपकरण</li><li>गहरा शौक सीखना</li><li>अधिक व्यक्तिगत गतिविधि खोज</li><li>प्रीमियम स्वास्थ्य और जीवन उपकरण</li></ul>
+        </div>
+      </article><article class="nog-biz">
+        <p class="nog-biz__n">02</p>
+        <div>
+          <h3>परिवार</h3>
+          <ul class="nls-chips"><li>पारिवारिक साझा कैलेंडर</li><li>बात और साझा भूमिकाएँ</li><li>परिवार के लिए प्रीमियम कार्य</li><li>जीवन सहयोग जुड़ाव</li><li>पारिवारिक गतिविधियाँ और यात्रा योजनाएँ</li></ul>
+        </div>
+      </article><article class="nog-biz">
+        <p class="nog-biz__n">03</p>
+        <div>
+          <h3>कक्षा, समूह और जीवन सेवा प्रदाता</h3>
+          <ul class="nls-chips"><li>कक्षाएँ और कार्यक्रम दर्ज करना</li><li>तारीख, आवेदन और बुकिंग उपकरण</li><li>प्रतिभागी और ग्राहक प्रबंधन</li><li>खोज और जुड़ाव</li><li>अनुबंध के अनुसार प्लेटफ़ॉर्म शुल्क और साझेदारी आय</li></ul>
+        </div>
+      </article><article class="nog-biz">
+        <p class="nog-biz__n">04</p>
+        <div>
+          <h3>कंपनियाँ और शिक्षा</h3>
+          <ul class="nls-chips"><li>वरिष्ठ शौक और जीवनभर सीखने के कार्यक्रम</li><li>डिजिटल जीवन शिक्षा</li><li>कर्मचारी परिवार सहयोग</li><li>सेवानिवृत्ति से पहले और बाद का जीवन व फुर्सत</li><li>कार्यस्थल लाभ जुड़ाव</li></ul>
+        </div>
+      </article><article class="nog-biz">
+        <p class="nog-biz__n">05</p>
+        <div>
+          <h3>शहर और समुदाय</h3>
+          <ul class="nls-chips"><li>स्थानीय शौक, संस्कृति और खेल कार्यक्रम</li><li>वरिष्ठ डिजिटल शिक्षा</li><li>समुदाय और नागरिक भागीदारी</li><li>जीवन और सहयोग जानकारी</li><li>स्थानीय कार्यक्रम खोजना और शामिल होना</li></ul>
+        </div>
       </article></div>
   </div>
-    <div id="nog-roadmap" class="nls-block" data-hs-section>
+    <div id="nog-roadmap" class="nls-block nog-block--road" data-hs-section>
     <header class="nls-head">
     <p class="nls-kicker">12 · Roadmap</p>
     <h2 class="nls-title">एक शौक से शुरू करें,<br>और रोज़मर्रा को चौड़ा करें।</h2>
     
   </header>
     <p class="nls-note">यह विकास की दिशा है, लॉन्च तारीख या व्यवसाय परिणाम नहीं।</p>
-    <p class="nls-note">चरण चुनें, तो विकास की दिशा दिखेगी।</p>
-    <div class="nls-tabs nog-tabs-3" role="tablist"><button type="button" class="nls-tab nog-card-tab is-active" data-nls-tab data-nls-group="road" data-nls-key="01" role="tab" aria-selected="true" tabindex="0"><span>01</span><strong>शौक खोज और तारीखें</strong></button><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="road" data-nls-key="02" role="tab" aria-selected="false" tabindex="-1"><span>02</span><strong>पारिवारिक जुड़ाव और स्वास्थ्य व जीवन</strong></button><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="road" data-nls-key="03" role="tab" aria-selected="false" tabindex="-1"><span>03</span><strong>बुकिंग लिंक और समुदाय</strong></button><button type="button" class="nls-tab nog-card-tab" data-nls-tab data-nls-group="road" data-nls-key="04" role="tab" aria-selected="false" tabindex="-1"><span>04</span><strong>पूरा वरिष्ठ जीवन मंच</strong></button></div>
-    <div class="nls-panels"><article class="nls-panel" data-nls-panel data-nls-group="road" data-nls-key="01">
-        <p class="nls-panel__kicker">01</p>
-        <h4 class="nls-panel__title">शौक खोज और तारीखें</h4>
-        <p class="nls-panel__intro">रुचि खोज, कक्षा और समूह जानकारी, गतिविधि तारीखें और मूल जीवन उपकरण बनाना।</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="road" data-nls-key="02" hidden>
-        <p class="nls-panel__kicker">02</p>
-        <h4 class="nls-panel__title">पारिवारिक जुड़ाव और स्वास्थ्य व जीवन</h4>
-        <p class="nls-panel__intro">पारिवारिक बात, साझा कैलेंडर, मदद अनुरोध, दवा और क्लिनिक तारीखें तथा जीवन उपकरण बढ़ाना।</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="road" data-nls-key="03" hidden>
-        <p class="nls-panel__kicker">03</p>
-        <h4 class="nls-panel__title">बुकिंग लिंक और समुदाय</h4>
-        <p class="nls-panel__intro">कक्षा, समूह और अनुभव बुकिंग लिंक, गतिविधि रिकॉर्ड, रुचि समुदाय और प्रदाता जुड़ाव बढ़ाना।</p>
-      </article><article class="nls-panel" data-nls-panel data-nls-group="road" data-nls-key="04" hidden>
-        <p class="nls-panel__kicker">04</p>
-        <h4 class="nls-panel__title">पूरा वरिष्ठ जीवन मंच</h4>
-        <p class="nls-panel__intro">शौक, यात्रा, स्वास्थ्य, जीवन और सहयोग जोड़ना, और कंपनियों, शिक्षा, शहरों व समुदाय तक फैलाना।</p>
-      </article></div>
     <ol class="nls-road"><li>
         <span>01</span>
-        <strong>शौक खोज और तारीखें</strong>
-        <p>रुचि खोज, कक्षा और समूह जानकारी, गतिविधि तारीखें और मूल जीवन उपकरण बनाना।</p>
+        <div>
+          <strong>शौक खोज और तारीखें</strong>
+          <p>रुचि खोज, कक्षा और समूह जानकारी, गतिविधि तारीखें और मूल जीवन उपकरण बनाना।</p>
+        </div>
       </li><li>
         <span>02</span>
-        <strong>पारिवारिक जुड़ाव और स्वास्थ्य व जीवन</strong>
-        <p>पारिवारिक बात, साझा कैलेंडर, मदद अनुरोध, दवा और क्लिनिक तारीखें तथा जीवन उपकरण बढ़ाना।</p>
+        <div>
+          <strong>पारिवारिक जुड़ाव और स्वास्थ्य व जीवन</strong>
+          <p>पारिवारिक बात, साझा कैलेंडर, मदद अनुरोध, दवा और क्लिनिक तारीखें तथा जीवन उपकरण बढ़ाना।</p>
+        </div>
       </li><li>
         <span>03</span>
-        <strong>बुकिंग लिंक और समुदाय</strong>
-        <p>कक्षा, समूह और अनुभव बुकिंग लिंक, गतिविधि रिकॉर्ड, रुचि समुदाय और प्रदाता जुड़ाव बढ़ाना।</p>
+        <div>
+          <strong>बुकिंग लिंक और समुदाय</strong>
+          <p>कक्षा, समूह और अनुभव बुकिंग लिंक, गतिविधि रिकॉर्ड, रुचि समुदाय और प्रदाता जुड़ाव बढ़ाना।</p>
+        </div>
       </li><li>
         <span>04</span>
-        <strong>पूरा वरिष्ठ जीवन मंच</strong>
-        <p>शौक, यात्रा, स्वास्थ्य, जीवन और सहयोग जोड़ना, और कंपनियों, शिक्षा, शहरों व समुदाय तक फैलाना।</p>
+        <div>
+          <strong>पूरा वरिष्ठ जीवन मंच</strong>
+          <p>शौक, यात्रा, स्वास्थ्य, जीवन और सहयोग जोड़ना, और कंपनियों, शिक्षा, शहरों व समुदाय तक फैलाना।</p>
+        </div>
       </li></ol>
   </div>
     <div id="nog-close" class="nls-block nls-close nls-block--ink" data-hs-section>
@@ -1127,8 +1024,8 @@
     <div class="search-modal-host"></div>
     <script src="/search.js?v=20260904a11y1" defer></script>
     <script src="/waitlist.js?v=20260904sec1" defer></script>
-    <script src="/home-ongil.js?v=20260921nog1" defer></script>
-    <script src="/site-chrome.js?v=20260904a11y1" defer></script>
+    <script src="/home-ongil.js?v=20260921nog5" defer></script>
+    <script src="/site-chrome.js?v=20260920revert1" defer></script>
     <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
 </body>
 </html>

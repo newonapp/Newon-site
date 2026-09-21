@@ -27,18 +27,53 @@ import { renderLifeStageSection } from "./home-lifestage-body.mjs";
 import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const NLS_VER = "20260921nls19";
+const NLS_VER = "20260921nls20";
 
 const SEO = {
   ko: {
-    title: "Life Stage | Newon — 인생의 다양한 처음을 준비하고 연결하다.",
+    title: "Life Stage | Newon — 인생의 새로운 순간마다, 필요한 정보를 연결합니다.",
     description:
-      "진로, 경제생활, 취업, 독립, 가족, 건강, 은퇴처럼 전 연령의 생애 상황을 연결하는 플랫폼입니다. 현재는 사업 소개이며, 개인별 분석·AI 상담·예약은 아직 이용할 수 없습니다.",
+      "진로와 취업, 독립과 가족, 건강과 은퇴까지. 삶의 변화 앞에서 필요한 정보와 서비스를 연결하는 생애주기 플랫폼을 소개합니다. 개인별 분석·AI 상담·예약은 아직 이용할 수 없습니다.",
   },
   en: {
-    title: "Life Stage | Newon — First moments in life, prepared and connected.",
+    title: "Life Stage | Newon — At each new moment in life, we connect the information you need.",
     description:
-      "An all-age platform for career, money, work, independence, family, health, and retirement. This page is a business introduction — personal analysis, AI advice, and booking are not live yet.",
+      "Career and work, independence and family, health and retirement. An introduction to the lifecycle platform Newon is building. Personal analysis, AI advice, and booking are not live yet.",
+  },
+  ja: {
+    title: "Life Stage | Newon — 人生の新しい瞬間ごとに、必要な情報をつなぎます。",
+    description:
+      "進路と就職、独立と家族、健康と退職まで。人生の変化の前で必要な情報とサービスをつなぐライフサイクル・プラットフォームの紹介です。個別分析・AI相談・予約はまだ利用できません。",
+  },
+  es: {
+    title: "Life Stage | Newon — En cada momento nuevo de la vida, conectamos la información que necesitas.",
+    description:
+      "Carrera y trabajo, independencia y familia, salud y jubilación. Presentación de la plataforma de ciclo de vida que Newon está construyendo. El análisis personal, el consejo de IA y las reservas aún no están en vivo.",
+  },
+  "pt-br": {
+    title: "Life Stage | Newon — A cada momento novo da vida, conectamos a informação de que você precisa.",
+    description:
+      "Carreira e trabalho, independência e família, saúde e aposentadoria. Apresentação da plataforma de ciclo de vida que a Newon está construindo. Análise pessoal, conselho de IA e reservas ainda não estão no ar.",
+  },
+  fr: {
+    title: "Life Stage | Newon — À chaque nouveau moment de la vie, nous relions l’information dont vous avez besoin.",
+    description:
+      "Parcours et travail, indépendance et famille, santé et retraite. Présentation de la plateforme de cycle de vie que Newon construit. Analyse personnelle, conseil IA et réservations ne sont pas encore en ligne.",
+  },
+  de: {
+    title: "Life Stage | Newon — In jedem neuen Lebensmoment verbinden wir die Information, die Sie brauchen.",
+    description:
+      "Beruf und Arbeit, Selbstständigkeit und Familie, Gesundheit und Ruhestand. Vorstellung der Lebensphasen-Plattform, die Newon aufbaut. Persönliche Analyse, KI-Beratung und Buchung sind noch nicht live.",
+  },
+  hi: {
+    title: "Life Stage | Newon — जीवन के हर नए पल में, जरूरी जानकारी जोड़ते हैं।",
+    description:
+      "करियर और काम, स्वतंत्रता और परिवार, स्वास्थ्य और सेवानिवृत्ति। Newon जिस जीवन-चक्र मंच को बना रहा है, उसका परिचय। व्यक्तिगत विश्लेषण, AI सलाह और बुकिंग अभी लाइव नहीं हैं।",
+  },
+  id: {
+    title: "Life Stage | Newon — Di setiap momen baru kehidupan, kami menghubungkan informasi yang Anda butuhkan.",
+    description:
+      "Karier dan kerja, kemandirian dan keluarga, kesehatan dan pensiun. Pengenalan platform siklus hidup yang sedang dibangun Newon. Analisis pribadi, saran AI, dan pemesanan belum live.",
   },
 };
 

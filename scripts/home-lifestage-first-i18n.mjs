@@ -266,7 +266,7 @@ function pack(lang, title, lead, searchLabel, searchPh, searchEmpty, searchExamp
 
 export function firstMomentsI18n(lang) {
   if (lang === "ja") {
-    return pack("ja", "初めてで途方に暮れるとき、\n何から始めますか？", "初めての給料と仕事、新しい家族と暮らし、学び、仕事のあとの日常まで。今の状況を選んでください。知るべきことから準備と実行まで、一緒に進みます。", "今、どんな初めてを経験していますか？", "初めての給料をもらいました", "合うテーマが見つかりません。別の言い方で探すか、下の分野から選んでください。", ["初めての給料をもらいました", "初めて家賃契約をします", "初出社の前です", "初めてペットを迎えます", "親のケアを準備しています", "仕事のあと、新しい趣味を探しています"], ["学びと社会生活", "経済と住まい", "関係と家族", "健康と日常", "旅と新しい始まり", "権利と問題解決"], {
+    return pack("ja", "初めてで途方に暮れるとき、\n何から始めますか？", "初めての給料と仕事、新しい家族と暮らし、学び、仕事のあとの日常まで。今の状況を選んでください。その状況で知っておくとよい情報と準備の流れを案内します。", "今、どんな初めてを経験していますか？", "初めての給料をもらいました", "合うテーマが見つかりません。別の言い方で探すか、下の分野から選んでください。", ["初めての給料をもらいました", "初めて家賃契約をします", "初出社の前です", "初めてペットを迎えます", "親のケアを準備しています", "仕事のあと、新しい趣味を探しています"], ["学びと社会生活", "経済と住まい", "関係と家族", "健康と日常", "旅と新しい始まり", "権利と問題解決"], {
       searchHint: "タイトルとキーワードで探します。AIの意味検索ではありません。",
       groupLabel: "分野",
       featuredLabel: "始めやすいテーマ",
@@ -288,7 +288,7 @@ export function firstMomentsI18n(lang) {
     });
   }
   if (lang === "es") {
-    return pack("es", "Cuando un primer momento abruma,\n¿por dónde empezar?", "El primer sueldo y el primer trabajo, una familia y un entorno nuevos, un aprendizaje nuevo y la vida después del trabajo. Elige la situación que vives ahora. Vamos de lo que hay que saber a lo que hay que preparar y hacer.", "¿Qué primera vez estás viviendo?", "Acabo de cobrar el primer sueldo", "No hay un tema coincidente. Prueba otra frase o elige un campo abajo.", ["Acabo de cobrar el primer sueldo", "Firmo el primer alquiler", "Tengo el primer día de trabajo", "Adopto una mascota", "Preparo el cuidado de un padre", "Busco un hobby después del trabajo"], ["Aprendizaje y vida laboral", "Dinero y vivienda", "Vínculos y familia", "Salud y cotidiano", "Viaje y nuevos comienzos", "Derechos y problemas"], {
+    return pack("es", "Cuando un primer momento abruma,\n¿por dónde empezar?", "El primer sueldo y el primer trabajo, una familia y un entorno nuevos, un aprendizaje nuevo y la vida después del trabajo. Elige la situación que vives ahora. Verás qué conviene saber y qué preparar.", "¿Qué primera vez estás viviendo?", "Acabo de cobrar el primer sueldo", "No hay un tema coincidente. Prueba otra frase o elige un campo abajo.", ["Acabo de cobrar el primer sueldo", "Firmo el primer alquiler", "Tengo el primer día de trabajo", "Adopto una mascota", "Preparo el cuidado de un padre", "Busco un hobby después del trabajo"], ["Aprendizaje y vida laboral", "Dinero y vivienda", "Vínculos y familia", "Salud y cotidiano", "Viaje y nuevos comienzos", "Derechos y problemas"], {
       searchHint: "Busca títulos y palabras clave. No es una búsqueda semántica con IA.",
       groupLabel: "Campos",
       featuredLabel: "Un buen lugar para empezar",
@@ -310,7 +310,7 @@ export function firstMomentsI18n(lang) {
     });
   }
   if (lang === "pt-br") {
-    return pack("pt-br", "Quando um primeiro momento pesa,\npor onde começar?", "O primeiro salário e o primeiro emprego, uma família e um lugar novos, um novo aprendizado e a vida depois do trabalho. Escolha a situação de agora. Vamos do que saber ao que preparar e fazer.", "Qual primeiro momento você vive agora?", "Recebi o primeiro salário", "Nenhum tema corresponde. Tente outra frase ou escolha um campo abaixo.", ["Recebi o primeiro salário", "Faço o primeiro contrato de aluguel", "Tenho o primeiro dia de trabalho", "Adoto um pet", "Preparo o cuidado de um pai", "Busco um hobby depois do trabalho"], ["Aprendizado e vida de trabalho", "Dinheiro e moradia", "Vínculos e família", "Saúde e cotidiano", "Viagem e novos começos", "Direitos e problemas"], {
+    return pack("pt-br", "Quando um primeiro momento pesa,\npor onde começar?", "O primeiro salário e o primeiro emprego, uma família e um lugar novos, um novo aprendizado e a vida depois do trabalho. Escolha a situação de agora. Veja o que convém saber e o que preparar.", "Qual primeiro momento você vive agora?", "Recebi o primeiro salário", "Nenhum tema corresponde. Tente outra frase ou escolha um campo abaixo.", ["Recebi o primeiro salário", "Faço o primeiro contrato de aluguel", "Tenho o primeiro dia de trabalho", "Adoto um pet", "Preparo o cuidado de um pai", "Busco um hobby depois do trabalho"], ["Aprendizado e vida de trabalho", "Dinheiro e moradia", "Vínculos e família", "Saúde e cotidiano", "Viagem e novos começos", "Direitos e problemas"], {
       searchHint: "Busca títulos e palavras-chave. Não é busca semântica com IA.",
       groupLabel: "Campos",
       featuredLabel: "Um bom lugar para começar",
@@ -332,7 +332,7 @@ export function firstMomentsI18n(lang) {
     });
   }
   if (lang === "fr") {
-    return pack("fr", "Quand une première fois dépasse,\npar où commencer ?", "Premier salaire et premier emploi, une nouvelle famille et un nouveau cadre, un nouvel apprentissage et la vie après le travail. Choisissez la situation d’aujourd’hui. Nous allons de ce qu’il faut savoir à ce qu’il faut préparer et faire.", "Quelle première fois vivez-vous ?", "Je viens de recevoir un premier salaire", "Aucun thème ne correspond. Essayez une autre phrase, ou choisissez un champ ci-dessous.", ["Je viens de recevoir un premier salaire", "Je signe un premier bail", "J’ai un premier jour de travail", "J’accueille un animal", "Je prépare l’aide à un parent", "Je cherche un loisir après le travail"], ["Apprentissage et vie professionnelle", "Argent et logement", "Liens et famille", "Santé et quotidien", "Voyage et nouveaux départs", "Droits et problèmes"], {
+    return pack("fr", "Quand une première fois dépasse,\npar où commencer ?", "Premier salaire et premier emploi, une nouvelle famille et un nouveau cadre, un nouvel apprentissage et la vie après le travail. Choisissez la situation d’aujourd’hui. Voyez ce qu’il est utile de savoir et de préparer.", "Quelle première fois vivez-vous ?", "Je viens de recevoir un premier salaire", "Aucun thème ne correspond. Essayez une autre phrase, ou choisissez un champ ci-dessous.", ["Je viens de recevoir un premier salaire", "Je signe un premier bail", "J’ai un premier jour de travail", "J’accueille un animal", "Je prépare l’aide à un parent", "Je cherche un loisir après le travail"], ["Apprentissage et vie professionnelle", "Argent et logement", "Liens et famille", "Santé et quotidien", "Voyage et nouveaux départs", "Droits et problèmes"], {
       searchHint: "Recherche par titres et mots-clés. Ce n’est pas une recherche sémantique par IA.",
       groupLabel: "Champs",
       featuredLabel: "Un bon point de départ",
@@ -354,7 +354,7 @@ export function firstMomentsI18n(lang) {
     });
   }
   if (lang === "de") {
-    return pack("de", "Wenn ein erstes Mal überfordert,\nwo fängst du an?", "Erstes Gehalt und erster Job, eine neue Familie und Umgebung, neues Lernen und der Alltag nach der Arbeit. Wähle die Situation, in der du jetzt bist. Wir gehen vom Wissen zum Vorbereiten und Tun.", "Welches erste Mal erlebst du gerade?", "Ich habe gerade das erste Gehalt bekommen", "Kein passendes Thema. Versuche eine andere Formulierung oder wähle unten ein Feld.", ["Ich habe gerade das erste Gehalt bekommen", "Ich unterschreibe den ersten Mietvertrag", "Ich habe den ersten Arbeitstag", "Ich nehme ein Haustier auf", "Ich bereite die Pflege eines Elternteils vor", "Ich suche nach der Arbeit ein Hobby"], ["Lernen und Arbeitsleben", "Geld und Wohnen", "Beziehungen und Familie", "Gesundheit und Alltag", "Reisen und neue Anfänge", "Rechte und Probleme"], {
+    return pack("de", "Wenn ein erstes Mal überfordert,\nwo fängst du an?", "Erstes Gehalt und erster Job, eine neue Familie und Umgebung, neues Lernen und der Alltag nach der Arbeit. Wähle die Situation, in der du jetzt bist. Sieh, was zu wissen und vorzubereiten ist.", "Welches erste Mal erlebst du gerade?", "Ich habe gerade das erste Gehalt bekommen", "Kein passendes Thema. Versuche eine andere Formulierung oder wähle unten ein Feld.", ["Ich habe gerade das erste Gehalt bekommen", "Ich unterschreibe den ersten Mietvertrag", "Ich habe den ersten Arbeitstag", "Ich nehme ein Haustier auf", "Ich bereite die Pflege eines Elternteils vor", "Ich suche nach der Arbeit ein Hobby"], ["Lernen und Arbeitsleben", "Geld und Wohnen", "Beziehungen und Familie", "Gesundheit und Alltag", "Reisen und neue Anfänge", "Rechte und Probleme"], {
       searchHint: "Suche in Titeln und Stichwörtern. Das ist keine KI-Bedeutungssuche.",
       groupLabel: "Felder",
       featuredLabel: "Ein guter Einstieg",
@@ -376,7 +376,7 @@ export function firstMomentsI18n(lang) {
     });
   }
   if (lang === "hi") {
-    return pack("hi", "जब पहली बार भारी लगे,\nकहाँ से शुरू करें?", "पहली तनख्वाह और पहली नौकरी, नया परिवार और परिवेश, नई सीख और काम के बाद का दिन। अभी जो स्थिति है, उसे चुनें। जानने से तैयारी और करने तक साथ चलते हैं।", "अभी कौन-सी पहली बार चल रही है?", "पहली तनख्वाह मिली है", "कोई विषय नहीं मिला। कोई और वाक्य आज़माएँ, या नीचे का क्षेत्र चुनें।", ["पहली तनख्वाह मिली है", "पहला किराया अनुबंध कर रहा/रही हूँ", "पहला कार्यदिवस है", "पहला पालतू ला रहा/रही हूँ", "माता-पिता की देखभाल तैयार कर रहा/रही हूँ", "काम के बाद नया शौक ढूँढ रहा/रही हूँ"], ["सीखना और काम का जीवन", "पैसा और आवास", "रिश्ते और परिवार", "स्वास्थ्य और रोजमर्रा", "यात्रा और नई शुरुआत", "अधिकार और समस्याएँ"], {
+    return pack("hi", "जब पहली बार भारी लगे,\nकहाँ से शुरू करें?", "पहली तनख्वाह और पहली नौकरी, नया परिवार और परिवेश, नई सीख और काम के बाद का दिन। अभी जो स्थिति है, उसे चुनें। जानने और तैयार करने योग्य बातें दिखेंगी।", "अभी कौन-सी पहली बार चल रही है?", "पहली तनख्वाह मिली है", "कोई विषय नहीं मिला। कोई और वाक्य आज़माएँ, या नीचे का क्षेत्र चुनें।", ["पहली तनख्वाह मिली है", "पहला किराया अनुबंध कर रहा/रही हूँ", "पहला कार्यदिवस है", "पहला पालतू ला रहा/रही हूँ", "माता-पिता की देखभाल तैयार कर रहा/रही हूँ", "काम के बाद नया शौक ढूँढ रहा/रही हूँ"], ["सीखना और काम का जीवन", "पैसा और आवास", "रिश्ते और परिवार", "स्वास्थ्य और रोजमर्रा", "यात्रा और नई शुरुआत", "अधिकार और समस्याएँ"], {
       searchHint: "शीर्षक और कीवर्ड से खोज। यह AI अर्थ-खोज नहीं है।",
       groupLabel: "क्षेत्र",
       featuredLabel: "शुरू करने की अच्छी जगह",
@@ -398,7 +398,7 @@ export function firstMomentsI18n(lang) {
     });
   }
   if (lang === "id") {
-    return pack("id", "Ketika pertama kali terasa berat,\nmulai dari mana?", "Gaji pertama dan kerja pertama, keluarga dan lingkungan baru, belajar baru, dan hari-hari setelah kerja. Pilih situasi yang sedang Anda jalani. Kami menemani dari yang perlu diketahui ke yang perlu disiapkan dan dilakukan.", "Pertama kali yang mana yang sedang Anda jalani?", "Saya baru menerima gaji pertama", "Tidak ada topik yang cocok. Coba ungkapan lain, atau pilih bidang di bawah.", ["Saya baru menerima gaji pertama", "Saya membuat kontrak sewa pertama", "Saya punya hari kerja pertama", "Saya mengadopsi hewan pertama", "Saya menyiapkan perawatan orang tua", "Saya mencari hobi baru setelah kerja"], ["Belajar dan kehidupan kerja", "Uang dan hunian", "Hubungan dan keluarga", "Kesehatan dan sehari-hari", "Perjalanan dan awal baru", "Hak dan masalah"], {
+    return pack("id", "Ketika pertama kali terasa berat,\nmulai dari mana?", "Gaji pertama dan kerja pertama, keluarga dan lingkungan baru, belajar baru, dan hari-hari setelah kerja. Pilih situasi yang sedang Anda jalani. Lihat apa yang berguna diketahui dan disiapkan.", "Pertama kali yang mana yang sedang Anda jalani?", "Saya baru menerima gaji pertama", "Tidak ada topik yang cocok. Coba ungkapan lain, atau pilih bidang di bawah.", ["Saya baru menerima gaji pertama", "Saya membuat kontrak sewa pertama", "Saya punya hari kerja pertama", "Saya mengadopsi hewan pertama", "Saya menyiapkan perawatan orang tua", "Saya mencari hobi baru setelah kerja"], ["Belajar dan kehidupan kerja", "Uang dan hunian", "Hubungan dan keluarga", "Kesehatan dan sehari-hari", "Perjalanan dan awal baru", "Hak dan masalah"], {
       searchHint: "Mencari judul dan kata kunci. Ini bukan pencarian makna AI.",
       groupLabel: "Bidang",
       featuredLabel: "Tempat yang baik untuk mulai",

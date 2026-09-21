@@ -15,7 +15,7 @@ export function firstMoments(lang) {
     ? {
         kicker: "LIFE STAGE · FIRST MOMENTS",
         title: "처음이라 막막한 순간,\n무엇부터 시작할까요?",
-        lead: "첫 월급과 첫 직장, 새로운 가족과 생활환경, 새로운 배움과 은퇴 후의 일상까지. 지금 처음 겪고 있는 상황을 선택해 보세요. 알아야 할 지식부터 준비와 실행까지 함께합니다.",
+        lead: "첫 월급과 첫 직장, 새로운 가족과 생활환경, 새로운 배움과 은퇴 후의 일상까지. 지금 처음 겪고 있는 상황을 선택해 보세요. 해당 상황에서 알아두면 좋은 정보와 준비 흐름을 안내합니다.",
         ageNote: "생애 첫 순간은 특정 연령에만 고정되지 않습니다. 첫 취업·독립·돌봄은 언제든 찾아올 수 있습니다.",
         pick: "주제를 선택하면 상황 설명, 지식, 준비 목록, 실행 순서를 볼 수 있습니다.",
         showAll: "전체 주제 보기",
@@ -58,7 +58,7 @@ export function firstMoments(lang) {
     : {
         kicker: "LIFE STAGE · FIRST MOMENTS",
         title: "When a first feels overwhelming,\nwhere do you start?",
-        lead: "From a first paycheck and a first job, a new family and a new place to live, to new learning and everyday life after work. Choose the first you are in now. We walk with you from what to know to what to prepare and do.",
+        lead: "From a first paycheck and a first job, a new family and a new place to live, to new learning and everyday life after work. Choose the first you are in now. See what to know and what to prepare for that situation.",
         ageNote: "A first is not locked to one age. A first job, a first move, or family care can arrive at any time.",
         pick: "Choose a topic to see the situation, what to know, a prep list, and a sequence to follow.",
         showAll: "View all topics",

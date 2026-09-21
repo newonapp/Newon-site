@@ -11,21 +11,21 @@
     empty.hidden = !!any;
   }
 
-  function showJourney() {
-    var caseBtn = root.querySelector('[data-nls-tab][data-nls-group="jcase"].is-active');
-    var stepBtn = root.querySelector('[data-nls-tab][data-nls-group="jstep"].is-active');
-    var title = root.querySelector("[data-nog-jtitle]");
-    var text = root.querySelector("[data-nog-jtext]");
-    if (!caseBtn) return;
-    var bodies = [];
-    try {
-      bodies = JSON.parse(caseBtn.getAttribute("data-nls-bodies") || "[]");
-    } catch (err) {
-      bodies = [];
+  function updateHeroNow(key) {
+    var now = root.querySelector("[data-nls-now]");
+    if (!now) return;
+    var title = now.querySelector("[data-nls-now-title]");
+    var age = now.querySelector("[data-nls-now-age]");
+    var node = key ? root.querySelector('.nls-node[data-nls-key="' + key + '"]') : null;
+    if (!node) {
+      now.classList.remove("is-on");
+      if (title) title.textContent = now.getAttribute("data-default-title") || "";
+      if (age) age.textContent = now.getAttribute("data-default-age") || "";
+      return;
     }
-    var idx = stepBtn ? Number(stepBtn.getAttribute("data-nls-idx") || 0) : 0;
-    if (title) title.textContent = caseBtn.getAttribute("data-nls-name") || "";
-    if (text) text.textContent = bodies[idx] || "";
+    now.classList.add("is-on");
+    if (title) title.textContent = node.getAttribute("data-name") || "";
+    if (age) age.textContent = node.getAttribute("data-age") || "";
   }
 
   function activate(group, key) {
@@ -46,7 +46,7 @@
       }
     });
     syncEmpty(group);
-    if (group === "jcase" || group === "jstep") showJourney();
+    if (group === "hero") updateHeroNow(key);
   }
 
   function moveTab(current, dir) {
@@ -134,8 +134,7 @@
     }
   });
 
-  ["pillar", "disc", "hobby", "ffeat", "care", "know", "biz"].forEach(syncEmpty);
-  showJourney();
+  ["disc"].forEach(syncEmpty);
   setDiscoverAll(false);
 
   function goHash() {
