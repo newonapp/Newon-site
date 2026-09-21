@@ -48,8 +48,8 @@ const KO = {
   hero: {
     kicker: "NEWON LIFE STAGE",
     theme: "YOUR LIFE, YOUR NEXT CHAPTER",
-    titleHtml: "인생의 모든 처음을,<br>더 쉽게.",
-    lead: "입시와 진로, 첫 독립과 취업, 결혼과 육아, 가족 돌봄과 은퇴까지. 삶의 새로운 단계마다 필요한 지식을 배우고, 계획하고, 실행할 수 있도록. Life Stage는 인생의 모든 순간에 필요한 정보와 서비스를 연결합니다.",
+    titleHtml: "인생의 다양한 처음을,<br>준비하고 연결하다.",
+    lead: "진로, 경제생활, 취업, 독립, 가족, 건강, 은퇴처럼 전 연령이 처음 마주하는 생애 상황에 정보와 준비를 연결하는 플랫폼입니다.",
     ctaMain: "Life Stage 알아보기",
     ctaSub: "서비스 살펴보기",
     status: "현재는 사업 소개와 콘셉트 미리보기입니다.",
@@ -199,7 +199,7 @@ const KO = {
   },
   ai: {
     title: "모르는 순간마다,\n내 상황에 맞는 안내를.",
-    lead: "복잡한 생활 정보를 이해하기 쉽게 설명하고, 지금 필요한 준비 과정을 단계별로 안내하는 Life AI.",
+    lead: "향후 제공하려는 Life AI의 방향입니다. 개인별 상담, 체크리스트 저장, 일정·예산 관리, 서비스 예약은 아직 이용할 수 없습니다.",
     features: [
       "대화형 생활 질문과 답변",
       "상황별 맞춤 정보 안내",
@@ -382,7 +382,7 @@ const KO = {
   close: {
     kicker: "LIFE STAGE · YOUR NEXT CHAPTER",
     titleHtml: "삶의 다음 단계도,<br>혼자가 아니도록.",
-    lead: "새로운 시작 앞에서 필요한 지식과 도움을 찾을 수 있도록. Life Stage는 삶의 모든 단계에서 배움과 실행, 사람과 서비스를 연결하는 플랫폼을 만들어 갑니다.",
+    lead: "전 연령의 생애 상황을 이해하고 준비하도록 돕는 플랫폼을 만들어 갑니다. 현재 페이지는 사업 소개이며, 실제 상담·예약 서비스는 아직 없습니다.",
     ctaMain: "Life Stage 자세히 알아보기",
     ctaSub: "사업 및 협업 문의",
   },
@@ -414,8 +414,8 @@ const EN = {
   hero: {
     kicker: "NEWON LIFE STAGE",
     theme: "YOUR LIFE, YOUR NEXT CHAPTER",
-    titleHtml: "Every first in life,<br>made clearer.",
-    lead: "From the first day on your own to a new job, a family, and the chapter after that. Life Stage connects the knowledge, tools, people, and services each stage of life needs.",
+    titleHtml: "First moments in life,<br>prepared and connected.",
+    lead: "An all-age platform that connects information and preparation for career, money, work, independence, family, health, and retirement.",
     ctaMain: "Explore Life Stage",
     ctaSub: "See the service structure",
     status: "This is a business introduction and concept preview.",
@@ -481,7 +481,7 @@ const EN = {
   },
   ai: {
     title: "When you do not know,\na guide that fits your case.",
-    lead: "Life AI explains complex living information in plain language and walks through the next preparations, step by step.",
+    lead: "A future Life AI direction. Personal advice, saved checklists, calendar and budget tools, and service booking are not available yet.",
     features: [
       "Conversational living Q&A",
       "Situation-based guidance",
@@ -644,7 +644,7 @@ const EN = {
   close: {
     kicker: "LIFE STAGE · YOUR NEXT CHAPTER",
     titleHtml: "The next chapter\nshould not be faced alone.",
-    lead: "So the knowledge and help you need are findable at every new start. Life Stage is building a platform that connects learning, action, people, and services across life.",
+    lead: "A platform we are building so every age can understand and prepare first life moments. This page is an introduction — advice and booking are not live yet.",
     ctaMain: "Learn more about Life Stage",
     ctaSub: "Business and partnership inquiry",
   },
@@ -688,8 +688,8 @@ const REST = {
       step: "ステップ",
     },
     hero: {
-      titleHtml: "人生のすべての初めてを、<br>もっとやさしく。",
-      lead: "初めての一人暮らしから、新しい仕事、家族、その先の暮らしまで。Life Stageは、人生の段階ごとに必要な知識と道具、人とサービスをつなぎます。",
+      titleHtml: "人生のさまざまな初めてを、<br>準備し、つなぐ。",
+      lead: "進路、経済生活、就職、独立、家族、健康、退職など、すべての年代が初めて向き合う状況に情報と準備をつなぐプラットフォームです。",
       ctaMain: "Life Stageを知る",
       ctaSub: "サービス構造を見る",
       status: "現在は事業紹介とコンセプトプレビューです。",
@@ -842,7 +842,7 @@ const REST = {
     },
     close: {
       titleHtml: "次の段階も、<br>ひとりきりにしないために。",
-      lead: "新しい始まりの前に、必要な知識と助けを見つけられるように。Life Stageは、学びと実行、人とサービスをつなぐプラットフォームをつくります。",
+      lead: "すべての年代のライフステージを理解し、準備できるようにするプラットフォームをつくります。現在のページは事業紹介で、相談・予約はまだ利用できません。",
       ctaMain: "Life Stageを詳しく見る",
       ctaSub: "事業・協働のお問い合わせ",
     },

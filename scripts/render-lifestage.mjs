@@ -31,14 +31,14 @@ const NLS_VER = "20260921nls19";
 
 const SEO = {
   ko: {
-    title: "Life Stage | Newon — 인생의 모든 처음을, 더 쉽게.",
+    title: "Life Stage | Newon — 인생의 다양한 처음을 준비하고 연결하다.",
     description:
-      "진로와 독립, 취업과 커리어, 가족과 돌봄, 은퇴 이후까지. Life Stage는 삶의 모든 단계에서 필요한 지식과 도구, 사람과 서비스를 연결하는 종합 라이프 플랫폼입니다.",
+      "진로, 경제생활, 취업, 독립, 가족, 건강, 은퇴처럼 전 연령의 생애 상황을 연결하는 플랫폼입니다. 현재는 사업 소개이며, 개인별 분석·AI 상담·예약은 아직 이용할 수 없습니다.",
   },
   en: {
-    title: "Life Stage | Newon — Every first in life, made clearer.",
+    title: "Life Stage | Newon — First moments in life, prepared and connected.",
     description:
-      "Career and independence, work and family, caregiving and later life. Life Stage connects the knowledge, tools, people, and services every stage needs.",
+      "An all-age platform for career, money, work, independence, family, health, and retirement. This page is a business introduction — personal analysis, AI advice, and booking are not live yet.",
   },
 };
 

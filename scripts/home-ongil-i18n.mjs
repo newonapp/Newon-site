@@ -2247,4 +2247,234 @@ const id = {
   },
 };
 
-export const ONGIL_I18N = { ja, es, "pt-br": ptBr, fr, de, hi, id };
+export const ONGIL_I18N = {
+  ja: overlay(ja, {
+    ui: { vsNote: "Life Stageは全年代のライフステージ。Ongilは高齢者と家族のためのケア中心のシニアケア事業です。" },
+    hero: {
+      kicker: "NEWON ONGIL",
+      theme: "CARE FIRST. STAY CONNECTED.",
+      titleHtml: "高齢者のケアと安全、<br>家族と日常をつなぐ。",
+      leads: [
+        "ケア、安全、健康の生活管理、日常支援をつなぐシニアケアプラットフォームを構築します。",
+        "家族と必要なサービスをつなぎますが、情報は本人が同意した範囲でのみ共有されます。",
+        "現在は事業紹介です。訪問ケア予約・リアルタイムマッチング・緊急救助はまだ提供していません。",
+      ],
+      ctaMain: "Ongilを見る",
+      ctaSub: "サービスを見る",
+      status: "現在は事業紹介とコンセプトのプレビューです。",
+      axes: [
+        { id: "care", name: "ケア・安全", keys: "ケア接続 · 安否 · 生活支援" },
+        { id: "family", name: "家族とのつながり", keys: "共同ケア · 同意後の共有" },
+        { id: "hobby", name: "趣味・余暇", keys: "付加領域 · 講座 · 集まり" },
+      ],
+    },
+    pillars: { title: "ケアと安全から、\n家族と日常支援まで。" },
+    discover: {
+      title: "趣味と余暇は\n付加サービス領域です。",
+      lead: "Ongilの中核はケアと安全です。講座・集まり・旅は付加的な余暇で、以下は今後の体験プレビューです。",
+    },
+    close: {
+      kicker: "ONGIL · CARE AND CONNECTION.",
+      titleHtml: "必要なケアをより近く、<br>家族と日常をより確かに。",
+      lead: "高齢者のケアと安全、健康の生活管理、日常支援、家族とのつながり。Ongilはシニアケアプラットフォームをつくります。趣味・余暇は付加領域です。",
+    },
+  }),
+  es: overlay(es, {
+    ui: { vsNote: "Life Stage cubre todas las edades. Ongil es un negocio de cuidado sénior para personas mayores y familias." },
+    hero: {
+      kicker: "NEWON ONGIL",
+      theme: "CARE FIRST. STAY CONNECTED.",
+      titleHtml: "Cuidado y seguridad<br>para personas mayores y familias.",
+      leads: [
+        "Una plataforma de cuidado sénior que conecta cuidado, seguridad, salud cotidiana y apoyo diario.",
+        "La familia se conecta para el cuidado compartido. La información se comparte solo con el consentimiento de la persona.",
+        "Esta página es una presentación. Reserva de cuidado a domicilio, matching en vivo y rescate de emergencia aún no se ofrecen.",
+      ],
+      ctaMain: "Explorar Ongil",
+      ctaSub: "Ver los servicios",
+      status: "Esta es una presentación del negocio y una vista previa del concepto.",
+      axes: [
+        { id: "care", name: "Cuidado y seguridad", keys: "Cuidado · avisos · apoyo diario" },
+        { id: "family", name: "Familia", keys: "Cuidado compartido · solo con consentimiento" },
+        { id: "hobby", name: "Ocio", keys: "Área extra · clases · grupos" },
+      ],
+    },
+    pillars: { title: "Del cuidado y la seguridad\nal apoyo familiar y diario." },
+    discover: {
+      title: "Aficiones y ocio\nson un área extra.",
+      lead: "El núcleo de Ongil es el cuidado y la seguridad. Clases, grupos y viajes son ocio extra; lo de abajo es una vista previa.",
+    },
+    close: {
+      kicker: "ONGIL · CARE AND CONNECTION.",
+      titleHtml: "El cuidado más cerca,<br>la familia más firme.",
+      lead: "Cuidado, seguridad, salud cotidiana, apoyo diario y vínculo familiar. Ongil construye una plataforma de cuidado sénior. El ocio es extra.",
+    },
+  }),
+  "pt-br": overlay(ptBr, {
+    ui: { vsNote: "Life Stage cobre todas as idades. Ongil é um negócio de cuidado sênior para pessoas idosas e famílias." },
+    hero: {
+      kicker: "NEWON ONGIL",
+      theme: "CARE FIRST. STAY CONNECTED.",
+      titleHtml: "Cuidado e segurança<br>para idosos e famílias.",
+      leads: [
+        "Uma plataforma de cuidado sênior que liga cuidado, segurança, saúde no dia a dia e apoio cotidiano.",
+        "A família se conecta para o cuidado compartilhado. Informações são compartilhadas só com o consentimento da pessoa.",
+        "Esta página é uma apresentação. Agendamento de cuidado domiciliar, matching ao vivo e resgate de emergência ainda não são oferecidos.",
+      ],
+      ctaMain: "Explorar Ongil",
+      ctaSub: "Ver os serviços",
+      status: "Esta é uma apresentação do negócio e uma prévia do conceito.",
+      axes: [
+        { id: "care", name: "Cuidado e segurança", keys: "Cuidado · avisos · apoio diário" },
+        { id: "family", name: "Família", keys: "Cuidado compartilhado · só com consentimento" },
+        { id: "hobby", name: "Lazer", keys: "Área extra · aulas · grupos" },
+      ],
+    },
+    pillars: { title: "Do cuidado e da segurança\nao apoio familiar e diário." },
+    discover: {
+      title: "Hobbies e lazer\nsão uma área extra.",
+      lead: "O núcleo da Ongil é cuidado e segurança. Aulas, grupos e viagens são lazer extra; o que está abaixo é uma prévia.",
+    },
+    close: {
+      kicker: "ONGIL · CARE AND CONNECTION.",
+      titleHtml: "Cuidado mais perto,<br>família mais firme.",
+      lead: "Cuidado, segurança, saúde no cotidiano, apoio diário e vínculo familiar. Ongil constrói uma plataforma de cuidado sênior. Lazer é extra.",
+    },
+  }),
+  fr: overlay(fr, {
+    ui: { vsNote: "Life Stage couvre tous les âges. Ongil est une activité de soins seniors pour les aînés et les familles." },
+    hero: {
+      kicker: "NEWON ONGIL",
+      theme: "CARE FIRST. STAY CONNECTED.",
+      titleHtml: "Soins et sécurité<br>pour les aînés et les familles.",
+      leads: [
+        "Une plateforme de soins seniors qui relie soins, sécurité, routines de santé et aide du quotidien.",
+        "La famille se relie pour un soin partagé. Les informations ne sont partagées qu’avec le consentement de la personne.",
+        "Cette page est une présentation. Réservation de soins à domicile, matching en direct et secours d’urgence ne sont pas encore proposés.",
+      ],
+      ctaMain: "Découvrir Ongil",
+      ctaSub: "Voir les services",
+      status: "Ceci est une présentation de l’activité et un aperçu du concept.",
+      axes: [
+        { id: "care", name: "Soins et sécurité", keys: "Soins · nouvelles · aide quotidienne" },
+        { id: "family", name: "Famille", keys: "Soin partagé · seulement avec consentement" },
+        { id: "hobby", name: "Loisirs", keys: "Zone extra · cours · groupes" },
+      ],
+    },
+    pillars: { title: "Des soins et de la sécurité\nau soutien familial et quotidien." },
+    discover: {
+      title: "Loisirs et hobbies\nsont une zone extra.",
+      lead: "Le cœur d’Ongil est le soin et la sécurité. Cours, groupes et voyages sont des loisirs extra ; ci-dessous un aperçu.",
+    },
+    close: {
+      kicker: "ONGIL · CARE AND CONNECTION.",
+      titleHtml: "Les soins plus près,<br>la famille plus sûre.",
+      lead: "Soins, sécurité, routines de santé, aide quotidienne et lien familial. Ongil construit une plateforme de soins seniors. Les loisirs sont extra.",
+    },
+  }),
+  de: overlay(de, {
+    ui: { vsNote: "Life Stage gilt für jedes Alter. Ongil ist ein Senior-Care-Angebot für ältere Menschen und Familien." },
+    hero: {
+      kicker: "NEWON ONGIL",
+      theme: "CARE FIRST. STAY CONNECTED.",
+      titleHtml: "Pflege und Sicherheit<br>für Ältere und Familien.",
+      leads: [
+        "Eine Senior-Care-Plattform für Pflege, Sicherheit, Gesundheitsalltag und alltägliche Hilfe.",
+        "Familie verbindet sich für gemeinsame Pflege. Informationen werden nur mit Einwilligung der Person geteilt.",
+        "Diese Seite ist eine Vorstellung. Hausbesuch-Buchung, Live-Matching und Notrettung werden noch nicht angeboten.",
+      ],
+      ctaMain: "Ongil entdecken",
+      ctaSub: "Dienste ansehen",
+      status: "Dies ist eine Geschäftsvorstellung und eine Konzeptvorschau.",
+      axes: [
+        { id: "care", name: "Pflege & Sicherheit", keys: "Pflege · Rückmeldung · Alltagshilfe" },
+        { id: "family", name: "Familie", keys: "Geteilte Pflege · nur mit Einwilligung" },
+        { id: "hobby", name: "Freizeit", keys: "Zusatzbereich · Kurse · Gruppen" },
+      ],
+    },
+    pillars: { title: "Von Pflege und Sicherheit\nzu Familie und Alltagshilfe." },
+    discover: {
+      title: "Hobbys und Freizeit\nsind ein Zusatzbereich.",
+      lead: "Der Kern von Ongil ist Pflege und Sicherheit. Kurse, Gruppen und Reisen sind extra; unten eine Vorschau.",
+    },
+    close: {
+      kicker: "ONGIL · CARE AND CONNECTION.",
+      titleHtml: "Pflege näher,<br>Familie fester verbunden.",
+      lead: "Pflege, Sicherheit, Gesundheitsalltag, Alltagshilfe und Familienverbindung. Ongil baut eine Senior-Care-Plattform. Freizeit ist extra.",
+    },
+  }),
+  hi: overlay(hi, {
+    ui: { vsNote: "Life Stage हर उम्र के लिए है। Ongil बुज़ुर्गों और परिवारों के लिए देखभाल-केंद्रित सीनियर केयर व्यवसाय है।" },
+    hero: {
+      kicker: "NEWON ONGIL",
+      theme: "CARE FIRST. STAY CONNECTED.",
+      titleHtml: "बुज़ुर्गों की देखभाल और सुरक्षा,<br>परिवार और रोज़मर्रा से जुड़ी।",
+      leads: [
+        "देखभाल, सुरक्षा, स्वास्थ्य दिनचर्या और रोज़मर्रा सहायता जोड़ने वाला सीनियर केयर प्लेटफ़ॉर्म।",
+        "परिवार साझा देखभाल के लिए जुड़ता है। जानकारी व्यक्ति की सहमति की सीमा में ही साझा होती है।",
+        "यह पृष्ठ व्यवसाय परिचय है। होम-केयर बुकिंग, लाइव मैचिंग और आपातकालीन बचाव अभी नहीं हैं।",
+      ],
+      ctaMain: "Ongil देखें",
+      ctaSub: "सेवाएँ देखें",
+      status: "यह व्यवसाय परिचय और अवधारणा पूर्वावलोकन है।",
+      axes: [
+        { id: "care", name: "देखभाल · सुरक्षा", keys: "केयर लिंक · हालचाल · रोज़मर्रा मदद" },
+        { id: "family", name: "परिवार", keys: "साझा देखभाल · केवल सहमति पर" },
+        { id: "hobby", name: "शौक", keys: "अतिरिक्त क्षेत्र · कक्षा · समूह" },
+      ],
+    },
+    pillars: { title: "देखभाल और सुरक्षा से\nपरिवार और रोज़मर्रा सहायता तक।" },
+    discover: {
+      title: "शौक और अवकाश\nअतिरिक्त सेवा क्षेत्र हैं।",
+      lead: "Ongil का केंद्र देखभाल और सुरक्षा है। कक्षा, समूह और यात्रा अतिरिक्त अवकाश हैं; नीचे पूर्वावलोकन है।",
+    },
+    close: {
+      kicker: "ONGIL · CARE AND CONNECTION.",
+      titleHtml: "ज़रूरी देखभाल पास,<br>परिवार अधिक स्थिर।",
+      lead: "देखभाल, सुरक्षा, स्वास्थ्य दिनचर्या, रोज़मर्रा सहायता और परिवार। Ongil सीनियर केयर प्लेटफ़ॉर्म बना रहा है। शौक अतिरिक्त हैं।",
+    },
+  }),
+  id: overlay(id, {
+    ui: { vsNote: "Life Stage untuk semua usia. Ongil adalah bisnis perawatan senior bagi lansia dan keluarga." },
+    hero: {
+      kicker: "NEWON ONGIL",
+      theme: "CARE FIRST. STAY CONNECTED.",
+      titleHtml: "Perawatan dan keamanan<br>untuk lansia dan keluarga.",
+      leads: [
+        "Platform perawatan senior yang menghubungkan perawatan, keamanan, kesehatan harian, dan dukungan sehari-hari.",
+        "Keluarga terhubung untuk perawatan bersama. Informasi dibagikan hanya dalam rentang yang disetujui orang tersebut.",
+        "Halaman ini adalah pengantar bisnis. Pemesanan perawatan rumahan, pencocokan langsung, dan penyelamatan darurat belum ditawarkan.",
+      ],
+      ctaMain: "Jelajahi Ongil",
+      ctaSub: "Lihat layanan",
+      status: "Ini adalah pengantar bisnis dan pratinjau konsep.",
+      axes: [
+        { id: "care", name: "Perawatan & keamanan", keys: "Tautan perawatan · kabar · bantuan harian" },
+        { id: "family", name: "Keluarga", keys: "Perawatan bersama · hanya dengan persetujuan" },
+        { id: "hobby", name: "Santai", keys: "Area tambahan · kelas · grup" },
+      ],
+    },
+    pillars: { title: "Dari perawatan dan keamanan\nke dukungan keluarga dan harian." },
+    discover: {
+      title: "Hobi dan waktu luang\nadalah area tambahan.",
+      lead: "Inti Ongil adalah perawatan dan keamanan. Kelas, grup, dan perjalanan adalah waktu luang tambahan; di bawah ini pratinjau.",
+    },
+    close: {
+      kicker: "ONGIL · CARE AND CONNECTION.",
+      titleHtml: "Perawatan lebih dekat,<br>keluarga lebih kokoh.",
+      lead: "Perawatan, keamanan, kesehatan harian, dukungan sehari-hari, dan keluarga. Ongil membangun platform perawatan senior. Hobi adalah tambahan.",
+    },
+  }),
+};
+
+function overlay(base, over) {
+  if (over == null) return base;
+  if (Array.isArray(base) || Array.isArray(over)) return over;
+  if (typeof base !== "object" || typeof over !== "object") return over;
+  const out = { ...base };
+  for (const k of Object.keys(over)) {
+    out[k] = k in base ? overlay(base[k], over[k]) : over[k];
+  }
+  return out;
+}
+

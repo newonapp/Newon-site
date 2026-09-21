@@ -32,14 +32,14 @@ const SKIP_DIRS = new Set(["node_modules", "_publish", ".git", "docs", "app-icon
 
 const SEO = {
   ko: {
-    title: "Ongil | Newon — 오늘도, 내가 좋아하는 일상으로.",
+    title: "Ongil | Newon — 어르신의 돌봄과 안전, 가족과 일상을 잇다.",
     description:
-      "취미·활동, 가족 연결, 건강·생활·돌봄. Ongil은 시니어가 좋아하는 일상을 이어가고 필요한 순간 가족과 연결되는 종합 생활 플랫폼입니다.",
+      "돌봄, 안전, 건강 생활 관리, 일상 지원, 가족 연결을 위한 시니어 케어 플랫폼입니다. 현재는 사업 소개이며, 방문 돌봄 예약·실시간 매칭·응급 구조는 아직 제공하지 않습니다.",
   },
   en: {
-    title: "Ongil | Newon — Today, toward a day you enjoy.",
+    title: "Ongil | Newon — Care and safety for older adults and families.",
     description:
-      "Hobbies and activity, family connection, health, living, and care. Ongil is a living platform for seniors’ today and tomorrow.",
+      "A senior-care platform for care, safety, health routines, daily living support, and family connection. This page is an introduction — home-care booking, live matching, and emergency rescue are not offered yet.",
   },
 };
 

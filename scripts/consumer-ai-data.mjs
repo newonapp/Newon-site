@@ -878,10 +878,10 @@ export function caiCopy(lang) {
   return {
     isKo,
     eyebrow: isKo ? "NEWON CONSUMER · AI" : "NEWON CONSUMER · AI",
-    title: isKo ? "일상의 모든 순간에 함께하는 AI" : "AI for every moment of daily life",
+    title: isKo ? "개인과 가족의 일상을 돕는 AI" : "AI for personal and family life",
     lead: isKo
-      ? "금융부터 건강, 가족, 자기관리, 여행과 게임까지.\nNewon의 12개 서비스는 각 분야에 특화된 AI 기능을 통해 사용자의 일상을 더욱 편리하고 스마트하게 만들어 갑니다."
-      : "From finance and health to family, self-management, travel, and games.\nNewon’s 12 services use field-specific AI to make everyday life more convenient and smarter.",
+      ? "생활 속 정보 탐색과 상황별 지원을 지향합니다.\n일부 앱의 AI 기능은 아래에서 확인할 수 있고, 여러 앱을 이해하고 대신 실행하는 AI Agent는 향후 방향입니다."
+      : "Built to find information and support daily situations for people and families.\nSome in-app AI features are listed below. An agent that reads several apps and acts on outside services is a future direction.",
     meta: isKo ? "11 APPS · 1 GAME · 12 AI EXPERIENCES" : "11 APPS · 1 GAME · 12 AI EXPERIENCES",
     filterAria: isKo ? "AI 서비스 카테고리" : "AI service categories",
     gridAria: isKo ? "Consumer AI 서비스" : "Consumer AI services",

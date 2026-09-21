@@ -469,13 +469,13 @@ function heroClosePatch(lang) {
   const T = {
     ko: {
       hero: {
-        lead: "진로와 독립, 취업과 커리어, 가족과 돌봄, 은퇴 이후의 삶까지. Life Stage는 삶의 모든 단계에서 필요한 지식과 도구, 사람과 서비스를 연결하는 종합 라이프 플랫폼입니다.",
+        lead: "진로, 경제생활, 취업, 독립, 가족, 건강, 은퇴처럼 전 연령이 처음 마주하는 생애 상황에 정보와 준비를 연결하는 플랫폼입니다.",
         ctaMain: "Life Stage 살펴보기",
         ctaSub: "핵심 서비스 알아보기",
       },
       core: {
         title: "안내받고, 계획하고, 실행합니다.",
-        lead: "Life AI가 지금 상황을 정리하고, Life Planner가 준비 목록으로 바꿉니다.",
+        lead: "향후 제공하려는 방향입니다. Life AI 상담과 Life Planner 저장은 아직 이용할 수 없습니다.",
       },
       knowledge: {
         lead: "학교와 일, 주거와 가족, 다음 삶까지. 처음 겪는 순간에 필요한 생활 지식을 분야별로 배우고 준비할 수 있도록 돕습니다.",
@@ -498,20 +498,20 @@ function heroClosePatch(lang) {
         lead: "Life Stage는 개인 사용자를 시작으로 전문가·서비스 공급자, 교육기관, 기업, 공공기관으로 확장하는 구조를 검토합니다.",
       },
       close: {
-        lead: "진로와 독립, 일과 가족, 돌봄과 그 이후의 삶까지. Life Stage는 필요한 지식과 도움을 찾고 다음 단계를 준비할 수 있는 플랫폼을 만들어 갑니다.",
+        lead: "전 연령의 생애 상황을 이해하고 준비하도록 돕는 플랫폼을 만들어 갑니다. 현재 페이지는 사업 소개이며, 실제 상담·예약 서비스는 아직 없습니다.",
         ctaMain: "사업 및 협업 문의",
         ctaSub: "Newon의 다른 사업 살펴보기",
       },
     },
     en: {
       hero: {
-        lead: "Career and independence, work and family, caregiving and life after work. Life Stage is a life platform that connects the knowledge, tools, people, and services every stage needs.",
+        lead: "An all-age platform that connects information and preparation for career, money, work, independence, family, health, and retirement.",
         ctaMain: "Explore Life Stage",
         ctaSub: "See core services",
       },
       core: {
         title: "Get guidance, plan, then do.",
-        lead: "Life AI sorts the moment. Life Planner turns it into a checklist.",
+        lead: "A future direction. Life AI advice and Life Planner saving are not available yet.",
       },
       knowledge: {
         lead: "School and work, housing and family, and the chapter after that. Life Knowledge helps people learn what first-time moments require.",
@@ -534,7 +534,7 @@ function heroClosePatch(lang) {
         lead: "Life Stage is exploring a path from individuals to experts and services, then schools, companies, and public institutions.",
       },
       close: {
-        lead: "Career and independence, work and family, caregiving and the chapter after. Life Stage is building a platform where people can find knowledge and help, and prepare the next step themselves.",
+        lead: "A platform we are building so every age can understand and prepare first life moments. This page is an introduction — advice and booking are not live yet.",
         ctaMain: "Business and partnership inquiry",
         ctaSub: "See Newon’s other businesses",
       },

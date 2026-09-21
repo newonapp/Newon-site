@@ -23,8 +23,8 @@ export const LIFE_STAGE_I18N = {
       step: "Paso",
     },
     hero: {
-      titleHtml: "Cada primer momento de la vida,<br>más claro.",
-      lead: "Desde el primer día por tu cuenta hasta un trabajo nuevo, una familia y el capítulo siguiente. Life Stage conecta el conocimiento, las herramientas, las personas y los servicios que cada etapa necesita.",
+      titleHtml: "Los primeros momentos de la vida,<br>preparados y conectados.",
+      lead: "Una plataforma para todas las edades que conecta información y preparación para carrera, dinero, trabajo, independencia, familia, salud y jubilación.",
       ctaMain: "Conocer Life Stage",
       ctaSub: "Ver la estructura del servicio",
       status: "Esta es una presentación del negocio y una vista previa del concepto.",
@@ -204,8 +204,8 @@ export const LIFE_STAGE_I18N = {
       step: "Etapa",
     },
     hero: {
-      titleHtml: "Cada primeira vez da vida,<br>mais clara.",
-      lead: "Do primeiro dia por conta própria a um novo trabalho, uma família e o capítulo seguinte. Life Stage conecta o conhecimento, as ferramentas, as pessoas e os serviços de cada etapa.",
+      titleHtml: "Cada primeira vez da vida,<br>preparada e conectada.",
+      lead: "Uma plataforma para todas as idades que liga informação e preparação para carreira, dinheiro, trabalho, independência, família, saúde e aposentadoria.",
       ctaMain: "Conhecer o Life Stage",
       ctaSub: "Ver a estrutura do serviço",
       status: "Esta é uma apresentação do negócio e uma prévia do conceito.",

@@ -23,8 +23,8 @@ export const LIFE_STAGE_I18N_MORE = {
       step: "Étape",
     },
     hero: {
-      titleHtml: "Chaque première fois de la vie,<br>plus claire.",
-      lead: "Du premier jour en autonomie à un nouveau travail, une famille et le chapitre suivant. Life Stage relie les savoirs, outils, personnes et services dont chaque étape a besoin.",
+      titleHtml: "Les premières fois de la vie,<br>préparées et reliées.",
+      lead: "Une plateforme pour tous les âges qui relie information et préparation pour le parcours, l’argent, le travail, l’indépendance, la famille, la santé et la retraite.",
       ctaMain: "Découvrir Life Stage",
       ctaSub: "Voir la structure du service",
       status: "Ceci est une présentation de l’activité et un aperçu de concept.",
@@ -204,8 +204,8 @@ export const LIFE_STAGE_I18N_MORE = {
       step: "Schritt",
     },
     hero: {
-      titleHtml: "Jedes erste Mal im Leben<br>klarer machen.",
-      lead: "Vom ersten Tag auf eigenen Beinen bis zu einem neuen Job, einer Familie und dem nächsten Kapitel. Life Stage verbindet Wissen, Werkzeuge, Menschen und Dienste, die jede Lebensphase braucht.",
+      titleHtml: "Die ersten Male im Leben<br>verstehen und vorbereiten.",
+      lead: "Eine Plattform für jedes Alter, die Information und Vorbereitung zu Beruf, Geld, Arbeit, Selbstständigkeit, Familie, Gesundheit und Ruhestand verbindet.",
       ctaMain: "Life Stage kennenlernen",
       ctaSub: "Die Service-Struktur sehen",
       status: "Dies ist eine Geschäftsvorstellung und eine Konzeptvorschau.",
@@ -385,8 +385,8 @@ export const LIFE_STAGE_I18N_MORE = {
       step: "चरण",
     },
     hero: {
-      titleHtml: "जीवन की हर पहली बार,<br>और स्पष्ट।",
-      lead: "अपने बल पर पहले दिन से नई नौकरी, परिवार और अगले अध्याय तक। Life Stage हर चरण के ज्ञान, औजार, लोगों और सेवाओं को जोड़ता है।",
+      titleHtml: "जीवन की पहली स्थितियाँ,<br>समझें और तैयार हों।",
+      lead: "करियर, आर्थिक जीवन, नौकरी, स्वतंत्रता, परिवार, स्वास्थ्य और सेवानिवृत्ति — हर उम्र के लिए जीवन-चरण मंच।",
       ctaMain: "Life Stage जानें",
       ctaSub: "सेवा संरचना देखें",
       status: "यह व्यवसाय परिचय और अवधारणा पूर्वावलोकन है।",
@@ -566,8 +566,8 @@ export const LIFE_STAGE_I18N_MORE = {
       step: "Langkah",
     },
     hero: {
-      titleHtml: "Setiap pertama kali dalam hidup,<br>lebih jelas.",
-      lead: "Dari hari pertama hidup mandiri hingga pekerjaan baru, keluarga, dan bab berikutnya. Life Stage menghubungkan pengetahuan, alat, orang, dan layanan yang dibutuhkan setiap tahap.",
+      titleHtml: "Momen pertama dalam hidup,<br>dipahami dan disiapkan.",
+      lead: "Platform semua usia yang menghubungkan informasi dan persiapan untuk karier, keuangan, kerja, mandiri, keluarga, kesehatan, dan pensiun.",
       ctaMain: "Kenali Life Stage",
       ctaSub: "Lihat struktur layanan",
       status: "Ini adalah pengenalan bisnis dan pratinjau konsep.",
