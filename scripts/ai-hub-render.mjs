@@ -220,6 +220,18 @@ function detailHtml(svc, app, ui, lang) {
 </section>`;
 }
 
+export function renderAiSwitch(flat, flatEn, { active = "personal", personalHref = "./", enterpriseHref = "enterprise/" } = {}) {
+  const personal = t(flat, flatEn, "studio.aiSwitchPersonal", "개인 AI");
+  const enterprise = t(flat, flatEn, "studio.aiSwitchEnterprise", "기업 AI");
+  const aria = t(flat, flatEn, "studio.aiSwitchAria", "Newon AI 영역");
+  return `<nav class="cai-switch" aria-label="${aria}">
+    <div class="hub-inner cai-switch__row">
+      <a class="cai-filter__btn${active === "personal" ? " is-active" : ""}" href="${escapeHtml(personalHref)}"${active === "personal" ? ' aria-current="page"' : ""}>${personal}</a>
+      <a class="cai-filter__btn${active === "enterprise" ? " is-active" : ""}" href="${escapeHtml(enterpriseHref)}"${active === "enterprise" ? ' aria-current="page"' : ""}>${enterprise}</a>
+    </div>
+  </nav>`;
+}
+
 function finaleSection(flat, flatEn) {
   const cards = [
     {
@@ -230,9 +242,9 @@ function finaleSection(flat, flatEn) {
     },
     {
       n: "02",
-      href: "../business/ai-automation/",
-      title: t(flat, flatEn, "studio.aiFinaleCta2Title", "비즈니스를 위한 AI"),
-      desc: t(flat, flatEn, "studio.aiFinaleCta2Desc", "기업의 업무와 제품에 적용할 수 있는 AI 기술과 솔루션을 살펴보세요."),
+      href: "enterprise/",
+      title: t(flat, flatEn, "studio.aiFinaleCta2Title", "기업 AI 알아보기"),
+      desc: t(flat, flatEn, "studio.aiFinaleCta2Desc", "업무 정보 탐색, 문서 활용, 기업별 AI Agent 방향을 확인하세요."),
     },
     {
       n: "03",
@@ -288,15 +300,16 @@ export function renderAiShowcaseBody(flat, flatEn, lang) {
   const titleHtml = t(flat, flatEn, "studio.aiHeroTitle", ui.title).replace(/\n/g, "<br />");
 
   return `<div class="ai-page cai-page" data-ai-page data-cai-page>
+  ${renderAiSwitch(flat, flatEn, { active: "personal", personalHref: "./", enterpriseHref: "enterprise/" })}
   <section class="cai-hero cai-hero--edit" data-ai-reveal>
     <div class="hub-inner cai-hero__grid">
       <div class="cai-hero__copy">
-        <p class="cai-hero__eyebrow">${t(flat, flatEn, "studio.aiHeroLabel", "NEWON AI / INTELLIGENCE IN ACTION")}</p>
+        <p class="cai-hero__eyebrow">${t(flat, flatEn, "studio.aiHeroLabel", "NEWON AI · PERSONAL")}</p>
         <h1 class="cai-hero__title">${titleHtml}</h1>
         <p class="cai-hero__lead">${leadHtml}</p>
         <div class="cai-hero__actions">
           <a class="cai-btn cai-btn--primary" href="#cai-services" data-cai-scroll>${t(flat, flatEn, "studio.aiHeroCtaProducts", "AI 제품 살펴보기")} ↓</a>
-          <a class="cai-btn cai-btn--ghost" href="../business/ai-automation/">${t(flat, flatEn, "studio.aiHeroCtaTech", "AI 기술 알아보기")} ↗</a>
+          <a class="cai-btn cai-btn--ghost" href="enterprise/">${t(flat, flatEn, "studio.aiHeroCtaTech", "기업 AI 알아보기")} ↗</a>
         </div>
       </div>
       <aside class="cai-hero__visual" aria-hidden="true">

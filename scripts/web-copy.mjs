@@ -16,7 +16,7 @@ export const WEB_COPY = {
     eyebrow: "WEB DEVELOPMENT",
     subEyebrow: "BUILD",
     headline: "브랜드와 제품을 위한\n웹을 만듭니다.",
-    lead: "브랜드 사이트부터 랜딩 페이지, 제품 소개 웹과 웹 서비스까지 목적에 맞는 디지털 경험을 설계하고 개발합니다. 정보 구조, UI, 반응형 구현, SEO, 문의·전환 연결, 배포까지 한 흐름으로 진행합니다.",
+    lead: "브랜드 사이트부터 랜딩 페이지, 제품 소개 웹과 웹 서비스까지 목적에 맞는 웹을 기획하고 개발·구축합니다. Newon Studio의 웹 디자인은 UI·시각 설계이며, 이 서비스는 실제 구현과 배포를 포함합니다.",
     ctaPrimary: "웹 프로젝트 문의 →",
     ctaSecondary: "작업 범위 보기 ↓",
     meta: [
@@ -411,7 +411,7 @@ export const WEB_COPY = {
     eyebrow: "WEB DEVELOPMENT",
     subEyebrow: "BUILD",
     headline: "Polished web for\nbrands and services.",
-    lead: "From brand sites and landing pages to product web and service sites — we design and build digital experiences matched to your goal. Information architecture, UI, responsive implementation, SEO, inquiry connections, and deploy in one continuous path.",
+    lead: "From brand sites and landing pages to product web and service sites — we plan, develop, and ship the site. Newon Studio web design is UI and visual design; this service includes implementation and deploy.",
     ctaPrimary: "Website project inquiry →",
     ctaSecondary: "See the scope ↓",
     meta: [

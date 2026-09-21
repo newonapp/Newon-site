@@ -26,6 +26,8 @@ import { renderStudioHeader, renderStudioFooter, renderCompanySwitcher } from ".
 import { allProducts, productsByType, AI_PRODUCTS, SAAS_PRODUCTS, GAMES_PRODUCTS, productCta } from "./products-data.mjs";
 import { renderAppsShowcaseBody } from "./apps-showcase-render.mjs";
 import { renderAiShowcaseBody } from "./ai-hub-render.mjs";
+import { renderAiEnterpriseBody } from "./ai-enterprise-render.mjs";
+import { getAiEnterpriseCopy } from "./ai-enterprise-copy.mjs";
 import { renderSaasShowcaseBody } from "./saas-hub-render.mjs";
 import { renderGamesShowcaseBody } from "./games-hub-render.mjs";
 import { renderToolsShowcaseBody, renderToolDetailBody } from "./tools-hub-render.mjs";
@@ -42,6 +44,7 @@ const HUB_PAGES = [
   "products",
   "apps",
   "ai",
+  "ai/enterprise",
   "saas",
   "games",
   "studio",
@@ -70,8 +73,8 @@ function chromeBaseForPath(pagePath) {
 function renderPage(lang, pagePath, opts) {
   const { flat, flatEn } = localeFlat(lang);
   const base = opts.base || chromeBaseForPath(pagePath);
-  const header = renderStudioHeader(flat, flatEn, { activeNav: opts.activeNav || "", base });
-  const footer = renderStudioFooter(flat, flatEn, { base });
+  const header = renderStudioHeader(flat, flatEn, { activeNav: opts.activeNav || "", base, langDir: lang.dir });
+  const footer = renderStudioFooter(flat, flatEn, { base, langDir: lang.dir });
   const switcher = opts.companySwitch
     ? renderCompanySwitcher(flat, flatEn, { active: opts.companySwitch, base })
     : "";
@@ -310,13 +313,24 @@ const HUB_RENDERERS = {
     extraScripts: '<script src="/apps-hub.js?v=20260825apps5" defer></script>',
   }),
   ai: (f, fe, l) => ({
-    activeNav: "products",
+    activeNav: "ai",
     title: pick(f, fe, "studio.aiSeoTitle"),
     description: pick(f, fe, "studio.aiMetaDescription"),
     body: aiBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260921aisaas3" />',
+    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260921aient2" />',
     extraScripts: '<script src="/ai-hub.js?v=20260921aihero3" defer></script>',
   }),
+  "ai/enterprise": (f, fe, l) => {
+    const copy = getAiEnterpriseCopy(l?.dir || "en");
+    return {
+      activeNav: "ai",
+      title: copy.seoTitle,
+      description: copy.seoDescription,
+      body: renderAiEnterpriseBody(f, fe, l),
+      extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260921aient2" />',
+      extraScripts: '<script src="/ai-hub.js?v=20260921aihero3" defer></script>',
+    };
+  },
   saas: (f, fe, l) => ({
     activeNav: "products",
     title: pick(f, fe, "studio.saasSeoTitle"),
@@ -362,9 +376,13 @@ const HUB_RENDERERS = {
 };
 
 const ONLY_HUB = process.argv[2] || "";
+const HUBS_TO_RENDER = ONLY_HUB
+  ? ONLY_HUB === "ai"
+    ? ["ai", "ai/enterprise"]
+    : [ONLY_HUB]
+  : HUB_PAGES;
 
-for (const hub of HUB_PAGES) {
-  if (ONLY_HUB && hub !== ONLY_HUB) continue;
+for (const hub of HUBS_TO_RENDER) {
   writeRootRedirect(hub);
   const fn = HUB_RENDERERS[hub];
   for (const lang of LANGS) {

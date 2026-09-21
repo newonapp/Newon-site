@@ -106,7 +106,7 @@ const PILLAR_COPY = {
         {
           title: "IDENTITY",
           tab: "IDENTITY",
-          summary: "어디서 보여도 같은 브랜드로 느껴지는 시각 언어 설계.",
+          summary: "컬러, 타이포, 그래픽 시스템을 설계합니다.",
           what: "컬러, 타이포, 그래픽 스타일을 하나의 시스템으로 정리합니다.",
           for: "브랜드 디자인 기준이 없거나 채널마다 디자인이 달라지는 팀.",
           included: "Visual Direction · Color · Typography · Graphic Style · 사용 규칙",
@@ -117,7 +117,7 @@ const PILLAR_COPY = {
         {
           title: "LOGO",
           tab: "LOGO",
-          summary: "브랜드 성격을 담은 로고와 기본 사용 시스템 제작.",
+          summary: "로고와 기본 사용 규칙을 디자인합니다.",
           what: "로고 콘셉트를 개발하고 실제 사용 가능한 파일로 정리합니다.",
           for: "신규 로고가 필요하거나 기존 로고를 개선하고 싶은 경우.",
           included: "방향 정의 · 콘셉트 · Primary/Secondary · 컬러 버전 · 기본 가이드",
@@ -172,7 +172,7 @@ const PILLAR_COPY = {
         {
           title: "IDENTITY",
           tab: "IDENTITY",
-          summary: "A visual language that feels consistent wherever the brand appears.",
+          summary: "Color, type, and graphic system for consistent use.",
           what: "Organize color, type, and graphic style into one system.",
           for: "Teams without brand standards, or brands that look different on every channel.",
           included: "Visual direction · color · typography · graphic style · usage rules",
@@ -183,7 +183,7 @@ const PILLAR_COPY = {
         {
           title: "LOGO",
           tab: "LOGO",
-          summary: "A logo and basic usage system that express the brand simply.",
+          summary: "Logo mark and basic usage rules.",
           what: "Develop logo concepts and deliver production-ready files.",
           for: "New logos, or teams improving an existing mark.",
           included: "Direction · concepts · primary/secondary · color versions · basic guide",
@@ -198,7 +198,7 @@ const PILLAR_COPY = {
   digital: {
     ko: {
       seoTitle: "DIGITAL | Newon Studio",
-      metaDescription: "Newon Studio DIGITAL — 웹, 앱 UI/UX, 랜딩, 제품 디자인. 구조부터 인터페이스까지 설계합니다.",
+      metaDescription: "Newon Studio DIGITAL — 웹·앱 UI/UX, 랜딩, 제품 디자인. Design Only. 개발·구축은 포함되지 않습니다.",
       eyebrow: "NEWON STUDIO · DIGITAL",
       headline: "웹과 제품 경험을\n설계합니다.",
       lead: "좋은 디지털 제품은 예쁜 화면만으로 완성되지 않습니다.\n정보 구조와 사용자 흐름부터 UI/UX까지 하나의 경험으로 설계합니다.",
@@ -224,7 +224,7 @@ const PILLAR_COPY = {
           for: "회사·브랜드 사이트가 필요하거나 기존 웹 UX를 개선하고 싶은 팀.",
           included: "IA · 사용자 흐름 · Wireframe · UI · Responsive · Component",
           deliverables: "Sitemap, Wireframes, Desktop/Mobile UI, Handoff",
-          timeline: "보통 2–5주",
+          timeline: "보통 5–7일",
           ready: true,
         },
         {
@@ -235,7 +235,7 @@ const PILLAR_COPY = {
           for: "앱 아이디어를 구체화하거나 MVP·UX 개선이 필요한 팀.",
           included: "User Flow · IA · Wireframe · UI · Component · Prototype",
           deliverables: "User Flow, High-fidelity UI, Prototype, Handoff Files",
-          timeline: "보통 3–6주",
+          timeline: "보통 5–10일",
           ready: true,
         },
         {
@@ -246,7 +246,7 @@ const PILLAR_COPY = {
           for: "제품 출시, 사전예약, 광고, MVP 수요 검증이 필요한 경우.",
           included: "메시지 구조 · Conversion Flow · Wireframe · UI · Mobile",
           deliverables: "Landing Structure, Final UI, CTA System, Handoff",
-          timeline: "보통 1–3주",
+          timeline: "보통 3–5일",
           ready: true,
         },
         {
@@ -257,14 +257,14 @@ const PILLAR_COPY = {
           for: "제품 전체 UX를 정리하거나 디자인 시스템이 필요한 팀.",
           included: "Product Structure · UX Flow · UI System · Design System · Prototype",
           deliverables: "Product UX Architecture, UI Design, Design System, Handoff",
-          timeline: "보통 4–8주",
+          timeline: "보통 1–2주",
           ready: true,
         },
       ],
     },
     en: {
       seoTitle: "DIGITAL | Newon Studio",
-      metaDescription: "Newon Studio DIGITAL — web, app UI/UX, landing, and product design from structure to interface.",
+      metaDescription: "Newon Studio DIGITAL — web, app UI/UX, landing, and product design. Design only — build is quoted separately.",
       eyebrow: "NEWON STUDIO · DIGITAL",
       headline: "Design web and\nproduct experience.",
       lead: "A strong digital product is not only beautiful screens. We design from information architecture and flows through UI/UX as one experience.",
@@ -290,7 +290,7 @@ const PILLAR_COPY = {
           for: "Teams needing a company/brand site, or improving existing web UX.",
           included: "IA · flows · wireframe · UI · responsive · components",
           deliverables: "Sitemap, Wireframes, Desktop/Mobile UI, Handoff",
-          timeline: "Typically 2–5 weeks",
+          timeline: "Typically 5–7 days",
           ready: true,
         },
         {
@@ -301,7 +301,7 @@ const PILLAR_COPY = {
           for: "Teams clarifying an app idea, MVP design, or UX improvement.",
           included: "User flow · IA · wireframe · UI · components · prototype",
           deliverables: "User Flow, High-fidelity UI, Prototype, Handoff Files",
-          timeline: "Typically 3–6 weeks",
+          timeline: "Typically 5–10 days",
           ready: true,
         },
         {
@@ -312,7 +312,7 @@ const PILLAR_COPY = {
           for: "Launches, waitlists, ads, or MVP demand validation.",
           included: "Message structure · conversion flow · wireframe · UI · mobile",
           deliverables: "Landing Structure, Final UI, CTA System, Handoff",
-          timeline: "Typically 1–3 weeks",
+          timeline: "Typically 3–5 days",
           ready: true,
         },
         {
@@ -323,7 +323,7 @@ const PILLAR_COPY = {
           for: "Teams organizing full-product UX or needing a design system.",
           included: "Product structure · UX flow · UI system · design system · prototype",
           deliverables: "Product UX Architecture, UI Design, Design System, Handoff",
-          timeline: "Typically 4–8 weeks",
+          timeline: "Typically 1–2 weeks",
           ready: true,
         },
       ],
@@ -354,7 +354,7 @@ const PILLAR_COPY = {
         {
           title: "SOCIAL CONTENT",
           tab: "SOCIAL",
-          summary: "SNS용 콘텐츠 방향과 제한된 범위의 디자인 제작 기준.",
+          summary: "SNS용 콘텐츠 방향과 디자인. 계정 운영은 포함되지 않습니다.",
           what: "콘텐츠 방향, 포맷, 카피·템플릿, 채널 가이드를 만듭니다. 월간 운영대행 전체는 포함되지 않습니다.",
           for: "Instagram · TikTok · Shorts 등 브랜드 채널 방향을 잡고 싶은 팀.",
           included: "콘텐츠 방향 · Pillar · 포맷 · 카피 방향 · 템플릿 · 채널 가이드",
@@ -365,7 +365,7 @@ const PILLAR_COPY = {
         {
           title: "CAMPAIGN",
           tab: "CAMPAIGN",
-          summary: "출시·프로모션을 하나의 메시지와 비주얼로 연결.",
+          summary: "캠페인 메시지와 비주얼 제작. 광고 집행은 포함되지 않습니다.",
           what: "캠페인 콘셉트, 키 메시지, 키 비주얼, 채널 에셋을 구성합니다.",
           for: "제품 출시나 프로모션·이벤트 캠페인이 필요한 팀.",
           included: "Concept · Key Message · Copy · Key Visual · Social Assets",
@@ -376,7 +376,7 @@ const PILLAR_COPY = {
         {
           title: "VISUAL CONTENT",
           tab: "VISUAL",
-          summary: "웹·SNS·프로모션용 브랜드 비주얼 에셋 제작.",
+          summary: "웹·SNS·프로모션용 이미지와 비주얼 에셋 제작.",
           what: "Visual Direction부터 채널별 사이즈 변환까지 제작합니다.",
           for: "브랜드 비주얼 에셋이 필요하거나 채널용 이미지가 부족한 팀.",
           included: "Visual Direction · Product/Social Visual · Promo Asset · 사이즈 변환",
@@ -409,7 +409,7 @@ const PILLAR_COPY = {
         {
           title: "SOCIAL CONTENT",
           tab: "SOCIAL",
-          summary: "Content direction and a limited design set for social — not full monthly ops.",
+          summary: "Content direction and design for social. Account ops not included.",
           what: "Content direction, formats, copy/templates, and channel guides. Full monthly social management is not included.",
           for: "Teams setting direction for Instagram, TikTok, Shorts, and similar brand channels.",
           included: "Direction · pillars · formats · copy direction · templates · channel guide",
@@ -420,7 +420,7 @@ const PILLAR_COPY = {
         {
           title: "CAMPAIGN",
           tab: "CAMPAIGN",
-          summary: "Launches and promotions connected by one message and visual.",
+          summary: "Campaign message and visuals. Media buying not included.",
           what: "Campaign concept, key message, key visual, and channel assets.",
           for: "Teams running product launches, promos, or event campaigns.",
           included: "Concept · key message · copy · key visual · social assets",
@@ -431,7 +431,7 @@ const PILLAR_COPY = {
         {
           title: "VISUAL CONTENT",
           tab: "VISUAL",
-          summary: "Brand visual assets for web, social, and promotions.",
+          summary: "Images and visual assets for web, social, and promotions.",
           what: "From visual direction to channel size variants.",
           for: "Teams needing brand visuals or more channel-ready imagery.",
           included: "Visual direction · product/social visual · promo asset · size variants",

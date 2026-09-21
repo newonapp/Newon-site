@@ -250,7 +250,7 @@
         "for": "Equipos que necesitan un sitio de empresa/marca, o mejorar la UX web existente.",
         "included": "Diseño sólo · IA · flujos · marco de cable · UI · receptivo · componentes",
         "deliverables": "Mapa del sitio, Wireframes, Desktop/Mobile UI, Handoff",
-        "timeline": "2 a 5 semanas",
+        "timeline": "5–7 días",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=Web+Design&area=Digital#inquiry",
         "_studioSlug": "web-design",
@@ -265,7 +265,7 @@
         "for": "Equipos que aclaran una idea de aplicación, diseño MVP o mejora UX.",
         "included": "Diseño Sólo · Flujo de usuario · IA · alambre · UI · componentes · prototipo",
         "deliverables": "UI de alta fidelidad, Prototipo, Archivos Handoff",
-        "timeline": "3 a 6 semanas",
+        "timeline": "5–10 días",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=App+UI%2FUX&area=Digital#inquiry",
         "_studioSlug": "app-ui-ux",
@@ -280,7 +280,7 @@
         "for": "Lanza, camareros, anuncios o validación de la demanda MVP.",
         "included": "Diseño sólo · Estructura del mensaje · flujo de conversión · cable · UI · móvil",
         "deliverables": "Landing Structure, Final UI, CTA System, Handoff",
-        "timeline": "1 a 3 semanas",
+        "timeline": "3–5 días",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=Landing+Page+Design&area=Digital#inquiry",
         "_studioSlug": "landing-page-design",
@@ -295,7 +295,7 @@
         "for": "Equipos organizando UX de producto completo o necesitando un sistema de diseño.",
         "included": "Diseño sólo · Estructura del producto · Flujo UX · Sistema UI · sistema de diseño · prototipo",
         "deliverables": "Product UX Architecture, UI Design, Design System, Handoff",
-        "timeline": "4 a 8 semanas",
+        "timeline": "1–2 semanas",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=Product+Design&area=Digital#inquiry",
         "_studioSlug": "product-design",
@@ -315,7 +315,7 @@
       },
       {
         "name": "App UI/UX",
-        "price": "Desde el principio 800.000",
+        "price": "Desde ₩700,000",
         "svc": 1,
         "slug": "app-ui-ux",
         "pricingType": "startingAt"
@@ -329,7 +329,7 @@
       },
       {
         "name": "Diseño de producto",
-        "price": "Desde el punto de vista 1.200.000",
+        "price": "Desde ₩1,000,000",
         "svc": 3,
         "slug": "product-design",
         "pricingType": "startingAt"

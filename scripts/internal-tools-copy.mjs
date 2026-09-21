@@ -14,8 +14,8 @@ export const INTERNAL_TOOLS_COPY = {
     crumbHere: "INTERNAL TOOLS",
     eyebrow: "03 · TOOLS",
     subEyebrow: "AUTOMATION",
-    headline: "팀의 업무 방식에 맞는\n도구를 만듭니다.",
-    lead: "스프레드시트와 여러 서비스에 흩어진 업무를 하나의 내부 시스템으로 정리합니다. 운영·관리·승인·기록이 반복되는 흐름을 화면과 권한, 데이터 구조로 설계해 팀이 실제로 쓰는 도구를 구축합니다.",
+    headline: "특정 업무를 처리하는\n내부 도구를 만듭니다.",
+    lead: "스프레드시트와 여러 서비스에 흩어진 한 가지 업무를, 팀이 실제로 쓰는 관리 화면·대시보드·도구로 정리합니다. 조직 전체를 통합하는 Internal System과는 범위가 다릅니다.",
     ctaPrimary: "INTERNAL TOOLS 견적 문의 →",
     ctaSecondary: "구축 범위 보기 ↓",
     meta: [
@@ -25,7 +25,7 @@ export const INTERNAL_TOOLS_COPY = {
       { k: "PRICE", v: "별도 견적" },
     ],
     overviewLabel: "OVERVIEW",
-    overviewTitle: "팀 업무를 위한\n내부 시스템을 만듭니다.",
+    overviewTitle: "특정 업무를 위한\n내부 도구를 만듭니다.",
     overviewBody: [
       "많은 팀은 아직 스프레드시트, 채팅, 이메일, 여러 SaaS를 넘나들며 운영 업무를 처리합니다.",
       "요청 접수, 상태 관리, 승인, 재고·일정·고객 기록처럼 반복되는 일이 도구마다 흩어지면 사람이 중간에서 복사하고 확인하는 비용이 커집니다.",
@@ -391,8 +391,8 @@ export const INTERNAL_TOOLS_COPY = {
     crumbHere: "INTERNAL TOOLS",
     eyebrow: "03 · TOOLS",
     subEyebrow: "AUTOMATION",
-    headline: "Tools shaped around\nhow your team works.",
-    lead: "We consolidate work scattered across spreadsheets and services into one internal system — designing screens, permissions, and data structures for the ops and admin flows your team actually runs.",
+    headline: "A tool for one job\nyour team actually runs.",
+    lead: "We turn one scattered ops job — spreadsheets, chat, and extra services — into an admin screen, dashboard, or tool the team can use. Different scope from Internal System, which connects several workflows across the organization.",
     ctaPrimary: "INTERNAL TOOLS inquiry →",
     ctaSecondary: "See what we build ↓",
     meta: [
@@ -402,7 +402,7 @@ export const INTERNAL_TOOLS_COPY = {
       { k: "PRICE", v: "Custom quote" },
     ],
     overviewLabel: "OVERVIEW",
-    overviewTitle: "Build an internal system\nfor how the team works.",
+    overviewTitle: "Build an internal tool\nfor a specific job.",
     overviewBody: [
       "Many teams still run operations across spreadsheets, chat, email, and multiple SaaS tools.",
       "When intake, status, approvals, inventory, schedules, and customer records live in different places, people become the integration layer.",

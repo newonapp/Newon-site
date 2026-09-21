@@ -250,7 +250,7 @@
         "for": "会社/ブランド サイト、または既存のウェブ UX を改善する必要があるチーム。",
         "included": "デザインのみ · IA · フロー · ワイヤーフレーム · UI · レスポンシブ · コンポーネント",
         "deliverables": "サイトマップ、ワイヤーフレーム、デスクトップ/モバイル UI、ハンドオフ",
-        "timeline": "2～5週間",
+        "timeline": "5〜7日",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=Web+Design&area=Digital#inquiry",
         "_studioSlug": "web-design",
@@ -265,7 +265,7 @@
         "for": "アプリのアイデア、MVP の設計、または UX の改善を明確にするチーム。",
         "included": "デザインのみ · ユーザー フロー · IA · ワイヤーフレーム · UI · コンポーネント · プロトタイプ",
         "deliverables": "ユーザー フロー、高忠実度 UI、プロトタイプ、ハンドオフ ファイル",
-        "timeline": "3～6週間",
+        "timeline": "5〜10日",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=App+UI%2FUX&area=Digital#inquiry",
         "_studioSlug": "app-ui-ux",
@@ -280,7 +280,7 @@
         "for": "発売、順番待ちリスト、広告、または MVP のデマンド検証。",
         "included": "デザインのみ · メッセージ構造 · 変換フロー · ワイヤーフレーム · UI · モバイル",
         "deliverables": "着陸構造、最終 UI、CTA システム、ハンドオフ",
-        "timeline": "1～3週間",
+        "timeline": "3〜5日",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=Landing+Page+Design&area=Digital#inquiry",
         "_studioSlug": "landing-page-design",
@@ -295,7 +295,7 @@
         "for": "フルプロダクト UX を編成するチーム、またはデザイン システムを必要とするチーム。",
         "included": "設計のみ · プロダクト構造 · UX フロー · UI システム · 設計システム · プロトタイプ",
         "deliverables": "製品 UX アーキテクチャ、UI 設計、設計システム、ハンドオフ",
-        "timeline": "4～8週間",
+        "timeline": "1–2週間",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=Product+Design&area=Digital#inquiry",
         "_studioSlug": "product-design",
@@ -315,7 +315,7 @@
       },
       {
         "name": "アプリ UI/UX",
-        "price": "₩800,000～",
+        "price": "₩700,000～",
         "svc": 1,
         "slug": "app-ui-ux",
         "pricingType": "開始時刻"
@@ -329,7 +329,7 @@
       },
       {
         "name": "プロダクトデザイン",
-        "price": "₩1,200,000～",
+        "price": "₩1,000,000～",
         "svc": 3,
         "slug": "product-design",
         "pricingType": "開始時刻"

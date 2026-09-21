@@ -250,7 +250,7 @@
         "for": "Tim membutuhkan sebuah situs perusahaan / merek, atau meningkatkan web UX yang sudah ada.",
         "included": "Mendesain Hanya Komponen",
         "deliverables": "Sitmap, Wireframes, Desktop / Mobile UI, Handoff",
-        "timeline": "2-5 minggu",
+        "timeline": "5–7 hari",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=Web+Design&area=Digital#inquiry",
         "_studioSlug": "web-design",
@@ -265,7 +265,7 @@
         "for": "Tim mengklarifikasi ide aplikasi, desain MVP, atau perbaikan UX.",
         "included": "Mendesain Hanya Arus Pengguna",
         "deliverables": "User Flow, High- Fielity UI, Prototype, Handoff Files",
-        "timeline": "3-6 minggu",
+        "timeline": "5–10 hari",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=App+UI%2FUX&area=Digital#inquiry",
         "_studioSlug": "app-ui-ux",
@@ -280,7 +280,7 @@
         "for": "Peluncuran, pelayan, iklan, atau permintaan validasi MVP.",
         "included": "Mendesain Hanya Struktur Pesan",
         "deliverables": "Struktur Landing, UI Final, Sistem CTA, Handoff",
-        "timeline": "1-3 minggu",
+        "timeline": "3–5 hari",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=Landing+Page+Design&area=Digital#inquiry",
         "_studioSlug": "landing-page-design",
@@ -295,7 +295,7 @@
         "for": "Tim pengorganisasian penuh produk UX atau membutuhkan sistem desain.",
         "included": "Mendesain hanya struktur yang Diolah mengalir sistem desain",
         "deliverables": "Produk Arsitektur UX, Desain UI, Sistem Desain, Handoff",
-        "timeline": "4-8 minggu",
+        "timeline": "1–2 minggu",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=Product+Design&area=Digital#inquiry",
         "_studioSlug": "product-design",
@@ -315,7 +315,7 @@
       },
       {
         "name": "App UI / UX",
-        "price": "Dari £800.000",
+        "price": "Dari ₩700,000",
         "svc": 1,
         "slug": "app-ui-ux",
         "pricingType": "mulai Pada"
@@ -329,7 +329,7 @@
       },
       {
         "name": "Desain Produk",
-        "price": "Dari £1,200.000",
+        "price": "Dari ₩1,000,000",
         "svc": 3,
         "slug": "product-design",
         "pricingType": "mulai Pada"

@@ -825,6 +825,75 @@ html[data-newon-shell-theme="dark"] .cai-close__btn--ghost {
   text-decoration: underline;
 }
 
+/* —— Personal | Enterprise switcher (reuses .cai-filter__btn) —— */
+.cai-switch {
+  padding: 1.15rem 0 0;
+  border-bottom: 1px solid var(--ai-line);
+}
+.cai-switch__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-bottom: 1.15rem;
+}
+.cai-switch .cai-filter__btn {
+  text-decoration: none;
+}
+
+.cai-ent .cai-hero__meta {
+  text-transform: none;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+  color: var(--ai-muted);
+  line-height: 1.55;
+  max-width: 38rem;
+}
+.cai-ent-head {
+  margin: 0 0 clamp(1.5rem, 3vw, 2rem);
+  max-width: 40rem;
+}
+.cai-ent-head .cai-hero__lead {
+  margin-top: 0.85rem;
+}
+.cai-ent-card .cai-card__title {
+  font-weight: 450;
+  color: var(--ai-muted);
+  min-height: 0;
+}
+.cai-ent-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ai-line);
+}
+.cai-ent-list li {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--ai-line);
+  align-items: baseline;
+}
+.cai-ent-list span {
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  color: var(--ai-faint);
+}
+.cai-ent-list p {
+  margin: 0;
+  color: var(--ai-ink);
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+.cai-ent-note {
+  margin: 1.5rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ai-muted);
+  max-width: 40rem;
+}
+
 /* —— Responsive —— */
 @media (max-width: 980px) {
   .cai-hero-logos {

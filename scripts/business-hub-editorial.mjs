@@ -61,9 +61,9 @@ const SERVICE_EXTRA = {
     valueKo: "반복되는 일을\n시스템에게 넘깁니다.",
     valueEn: "Hand repetitive work\nto the system.",
     bodyKo:
-      "반복 업무와 고객 응대, 콘텐츠 처리와 내부 정보 활용을 분석해 실제로 사용할 수 있는 AI workflow를 구축합니다.",
+      "고객사의 기존 도구와 업무 흐름에 AI를 적용하는 구축 프로젝트입니다. AI 제품·Agent 소개는 Newon AI의 기업 AI에서 다룹니다.",
     bodyEn:
-      "Analyze repetitive work, support, and content flows — then build AI workflows people can actually run.",
+      "A client project that applies AI to tools and work the company already runs. AI products and agents are introduced under Newon AI → Enterprise AI.",
     caps: [
       "Customer Support",
       "Review Analysis",

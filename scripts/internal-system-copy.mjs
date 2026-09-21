@@ -16,7 +16,7 @@ export const INTERNAL_SYSTEM_COPY = {
     eyebrow: "INTERNAL SYSTEM",
     subEyebrow: "SOLUTIONS",
     headline: "내부 업무는 많은데,\n시스템은 흩어져 있습니다.",
-    lead: "승인, 요청, 재고, 인사, 정산, 보고, 고객/프로젝트 관리 — 조직 내부 운영을 위한 맞춤형 웹·관리자·포털 시스템을 설계하고 구축합니다. 요구사항, 권한, 워크플로, 연동, Admin Console까지 — 내부 팀이 실제로 쓰는 시스템으로 전달합니다.",
+    lead: "승인, 요청, 재고, 인사, 정산, 보고 — 여러 내부 업무와 사용자 권한, 데이터·운영 과정을 연결하는 조직 단위의 맞춤 시스템을 설계하고 구축합니다. 특정 업무용 화면인 Internal Tools와는 범위가 다릅니다.",
     ctaPrimary: "INTERNAL SYSTEM 문의 →",
     ctaSecondary: "구축 흐름 보기 ↓",
     meta: [
@@ -411,7 +411,7 @@ export const INTERNAL_SYSTEM_COPY = {
     eyebrow: "INTERNAL SYSTEM",
     subEyebrow: "SOLUTIONS",
     headline: "Internal work is heavy.\nSystems are scattered.",
-    lead: "Approvals, requests, inventory, HR, settlement, reporting, client and project ops — we design and build custom internal web, admin, and portal systems. From requirements, permissions, and workflows through integrations and Admin Console — delivered as one system your team actually uses.",
+    lead: "Approvals, requests, inventory, HR, settlement, reporting — we design and build an organization-level system that connects several internal jobs, permissions, data, and operating flow. Different scope from Internal Tools, which is a screen or dashboard for one job.",
     ctaPrimary: "Internal system inquiry →",
     ctaSecondary: "See the build flow ↓",
     meta: [

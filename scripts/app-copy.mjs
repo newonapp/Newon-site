@@ -16,7 +16,7 @@ export const APP_COPY = {
     eyebrow: "APP PROTOTYPE",
     subEyebrow: "BUILD",
     headline: "앱 아이디어를\n실제 경험으로 만듭니다.",
-    lead: "핵심 화면과 iOS·Android 플로우가 동작하는 앱 프로토타입을 설계하고 구현합니다. 투자 미팅, 내부 공유, 개발 착수 전 — 아이디어가 실제로 어떻게 느껴지는지 빠르게 검증할 수 있습니다.",
+    lead: "핵심 화면과 iOS·Android 플로우가 동작하는 앱 프로토타입을 설계하고 구현합니다. Newon Studio의 앱 디자인은 UI 설계이며, 이 서비스는 동작하는 프로토타입 구현입니다. 완성형 스토어 앱 개발과는 범위가 다릅니다.",
     ctaPrimary: "APP PROTOTYPE 문의 →",
     ctaSecondary: "프로토타입 흐름 보기 ↓",
     meta: [
@@ -411,7 +411,7 @@ export const APP_COPY = {
     eyebrow: "APP PROTOTYPE",
     subEyebrow: "BUILD",
     headline: "Turn an app idea\ninto a real experience.",
-    lead: "We design and build interactive app prototypes with core iOS and Android flows. Before investor meetings, internal reviews, or development kickoff — validate how the idea actually feels when people use it.",
+    lead: "We design and build interactive app prototypes with core iOS and Android flows. Newon Studio app design is UI; this service is a working prototype. It is not a full store-ready app build.",
     ctaPrimary: "App prototype inquiry →",
     ctaSecondary: "See the prototype flow ↓",
     meta: [

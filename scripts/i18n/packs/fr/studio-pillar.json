@@ -250,7 +250,7 @@
         "for": "Les équipes qui ont besoin d'un site d'entreprise ou de marque, ou d'améliorer le web UX existant.",
         "included": "Conception seulement · IA · flux · trame filaire · UI · réactif · composants",
         "deliverables": "Plan du site, Cadres filaires, Interface bureau/mobile, Handoff",
-        "timeline": "2 à 5 semaines",
+        "timeline": "5–7 jours",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=Web+Design&area=Digital#inquiry",
         "_studioSlug": "web-design",
@@ -265,7 +265,7 @@
         "for": "Les équipes clarifient une idée d'application, un design MVP ou une amélioration UX.",
         "included": "Conception seulement · Flux utilisateur · IA · filaire · UI · composants · prototype",
         "deliverables": "Flux utilisateur, UI haute fidélité, Prototype, Fichiers de retrait",
-        "timeline": "3 à 6 semaines",
+        "timeline": "5–10 jours",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=App+UI%2FUX&area=Digital#inquiry",
         "_studioSlug": "app-ui-ux",
@@ -280,7 +280,7 @@
         "for": "Lancements, listes d'attente, annonces, ou MVP validation de demande.",
         "included": "Conception seulement · Structure du message · flux de conversion · cadre filaire · UI · mobile",
         "deliverables": "Structure d'atterrissage, UI finale, système CTA, remise",
-        "timeline": "1 à 3 semaines",
+        "timeline": "3–5 jours",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=Landing+Page+Design&area=Digital#inquiry",
         "_studioSlug": "landing-page-design",
@@ -295,7 +295,7 @@
         "for": "Les équipes organisent UX produit complet ou ont besoin d'un système de conception.",
         "included": "Conception uniquement · Structure du produit · Flux UX · Système d'interface utilisateur · Système de conception · prototype",
         "deliverables": "Architecture UX produit, conception UI, système de conception, main-d'œuvre",
-        "timeline": "4-8 semaines",
+        "timeline": "1–2 semaines",
         "ready": true,
         "inquiryHref": "../../business/inquiry/?category=Studio&service=Product+Design&area=Digital#inquiry",
         "_studioSlug": "product-design",
@@ -315,7 +315,7 @@
       },
       {
         "name": "UI/UX App",
-        "price": "À partir de 800 000",
+        "price": "À partir de ₩700,000",
         "svc": 1,
         "slug": "app-ui-ux",
         "pricingType": "startingAt"
@@ -329,7 +329,7 @@
       },
       {
         "name": "Conception des produits",
-        "price": "À partir de 1 200 000",
+        "price": "À partir de ₩1,000,000",
         "svc": 3,
         "slug": "product-design",
         "pricingType": "startingAt"

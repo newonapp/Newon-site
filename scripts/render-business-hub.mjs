@@ -156,15 +156,6 @@ function businessEcosystemHtml(flat, flatEn, appPrefix = "../") {
 
 const hubShell = fs.readFileSync(path.join(ROOT, "templates", "hub-shell.html"), "utf8");
 const inquiryTemplate = fs.readFileSync(path.join(ROOT, "templates", "business-inquiry.html"), "utf8");
-const enData = loadJson("en.json");
-
-for (const { file } of LANGS) {
-  if (file === "en.json") continue;
-  const locPath = path.join(ROOT, "locales", file);
-  const loc = JSON.parse(fs.readFileSync(locPath, "utf8"));
-  loc.business = fillMissing(loc.business, enData.business);
-  fs.writeFileSync(locPath, JSON.stringify(loc, null, 2) + "\n");
-}
 
 const flatEn = flatten(loadJson("en.json"));
 

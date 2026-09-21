@@ -8,7 +8,7 @@ export const AI_AUTOMATION_COPY = {
   ko: {
     seoTitle: "AI AUTOMATION | Newon Business",
     metaDescription:
-      "반복 업무와 고객 응대를 AI로 자동화합니다. 문의 분류, 초안 작성, 문서 요약, 사내 지식 검색까지 실제 워크플로에 연결합니다. Newon AI AUTOMATION.",
+      "고객사의 실제 업무 흐름에 AI를 적용하는 구축 프로젝트. 문의 분류, 초안, 문서 요약. Newon Business AI AUTOMATION.",
     crumbBusiness: "BUSINESS",
     crumbServices: "SERVICES",
     crumbAutomation: "AUTOMATION",
@@ -16,7 +16,7 @@ export const AI_AUTOMATION_COPY = {
     eyebrow: "AI AUTOMATION",
     subEyebrow: "AUTOMATION",
     headline: "반복되는 일을\n시스템에게 맡기세요.",
-    lead: "반복 업무를 분석하고 AI와 자동화를 실제 업무 흐름에 연결합니다. 문의 분류, 초안 답변, 문서 요약, 리뷰 분석, 사내 지식 검색 — 데모 챗봇이 아니라 팀이 이미 쓰는 채널·도구·프로세스에 붙는 AI 자동화를 설계하고 구축합니다.",
+    lead: "반복 업무를 분석하고, 고객사의 기존 도구·시스템·업무 흐름에 AI를 적용하는 구축 프로젝트입니다. 문의 분류, 초안 답변, 문서 요약, 리뷰 분석 — 데모 챗봇이 아니라 팀이 이미 쓰는 채널에 붙는 자동화를 설계하고 구축합니다. AI 제품·Agent 자체는 Newon AI의 기업 AI에서 소개합니다.",
     ctaPrimary: "AI AUTOMATION 문의 →",
     ctaSecondary: "자동화 흐름 보기 ↓",
     meta: [
@@ -419,7 +419,7 @@ export const AI_AUTOMATION_COPY = {
     eyebrow: "AI AUTOMATION",
     subEyebrow: "AUTOMATION",
     headline: "Automate repetitive work\nwith AI that fits the job.",
-    lead: "We map repeating work and connect AI automation to how your team already operates — inquiry classification, reply drafts, document summaries, review analysis, and internal knowledge search. Not a demo chatbot — AI attached to the channels, tools, and processes you already use.",
+    lead: "We map repeating work and attach AI to the tools, systems, and processes the company already uses — inquiry classification, reply drafts, document summaries, review analysis. Not a demo chatbot, and not the Newon AI product itself: this is a client implementation project. AI products and agents are introduced under Newon AI → Enterprise AI.",
     ctaPrimary: "AI automation inquiry →",
     ctaSecondary: "See the automation flow ↓",
     meta: [

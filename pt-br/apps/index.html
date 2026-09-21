@@ -35,16 +35,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css?v=20260904a11y1" />
-    <link rel="stylesheet" href="/gnav-mega.css?v=20260920revert1" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20260902nav1" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
     <link rel="stylesheet" href="/apps-hub.css?v=20260902appsmob1" />
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
 <script src="/theme-shell.js?v=20260904perf1"></script>
     <script src="/lang-nav.js?v=20260825studio"></script>
     <script src="/analytics.js?v=20260904sec1" defer></script>
-    <link rel="stylesheet" href="/site-dark.css?v=20260902perf1" />
-    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
-  </head>
+</head>
   <body>
     <a class="skip-link" href="#hub-main">Ir para o conteúdo</a>
     <header class="gnav site-header gnav--five" data-gnav>
@@ -56,8 +54,8 @@
           </a>
           <nav class="gnav__nav" aria-label="Main navigation">
             <div class="gnav__nav-scroller">
-            <div class="gnav-dd" data-gnav-dd data-gnav-menu="consumer">
-    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
+            <div class="gnav-dd gnav-dd--active" data-gnav-dd data-gnav-menu="consumer">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-current="page">
       Consumer<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
@@ -149,15 +147,15 @@
       <a class="gnav-mega__row" href="../ai/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">AI</span>
-        <span class="gnav-mega__row-desc">Produtos alimentados por IA</span>
+        <span class="gnav-mega__row-title">IA pessoal</span>
+        <span class="gnav-mega__row-desc">IA ligada aos serviços do dia a dia da Newon</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../business/ai-automation/" role="menuitem">
+    </a><a class="gnav-mega__row" href="../ai/enterprise/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">02</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">AI Automation</span>
-        <span class="gnav-mega__row-desc">Recursos de IA e automação de fluxo de trabalho</span>
+        <span class="gnav-mega__row-title">IA para empresas</span>
+        <span class="gnav-mega__row-desc">IA pensada para como a empresa trabalha</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a>
@@ -369,26 +367,26 @@
           <div class="gnav__util">
             <a class="gnav__cta" href="../business/inquiry/">Contact</a>
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-gnav-hub">Idioma</label>
-    <select id="lang-select-gnav-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
+    <label class="visually-hidden" for="lang-select-gnav-legacy">Idioma</label>
+    <select id="lang-select-gnav-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Inglês</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Espanhol</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Francês</option><option value="de" data-short="DE">Alemão</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonésia</option>
     </select>
   </div>
             <button type="button" class="gnav__theme" data-theme-toggle data-label-light="Modo claro" data-label-dark="Modo escuro" title="Alternar tema" aria-label="Modo escuro"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-hub" aria-label="Menu">
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-legacy" aria-label="Menu">
               <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
             </button>
           </div>
         </div>
       </div>
-      <div id="gnav-mobile-hub" class="gnav-mobile" hidden aria-hidden="true">
+      <div id="gnav-mobile-legacy" class="gnav-mobile" hidden aria-hidden="true">
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
       <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menu">
         <div class="gnav-mobile__scroll">
           <div class="gnav-mobile__util-row">
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-mobile-hub">Idioma</label>
-    <select id="lang-select-mobile-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
+    <label class="visually-hidden" for="lang-select-mobile-legacy">Idioma</label>
+    <select id="lang-select-mobile-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Inglês</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Espanhol</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Francês</option><option value="de" data-short="DE">Alemão</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonésia</option>
     </select>
   </div>
@@ -407,7 +405,7 @@
           <a class="gnav-mobile__acc-link" href="../ai/">AI</a>
           <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="AI"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../ai/">AI</a><a class="gnav-mobile__sublink" href="../business/ai-automation/">AI Automation</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../ai/">IA pessoal</a><a class="gnav-mobile__sublink" href="../ai/enterprise/">IA para empresas</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <div class="gnav-mobile__acc-head">
@@ -926,7 +924,7 @@
     <script src="/search.js?v=20260904a11y1" defer></script>
     <script src="/waitlist.js?v=20260904sec1" defer></script>
     <script src="/apps-hub.js?v=20260825apps5" defer></script>
-    <script src="/site-chrome.js?v=20260920revert1" defer></script>
+    <script src="/site-chrome.js?v=20260904a11y1" defer></script>
     <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
 </body>
 </html>
