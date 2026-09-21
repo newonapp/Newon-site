@@ -61,10 +61,11 @@ function replaceHero(html, heroHtml) {
   return html.slice(0, start) + heroHtml.trim() + html.slice(close);
 }
 
-const HERO3D_VER = "20260921s3d43";
+const HERO3D_VER = "20260922s3d53";
 
 function ensureHero3dAssets(html) {
   let out = html;
+  out = out.replace(/\s*<link href="https:\/\/fonts\.googleapis\.com\/css2\?family=Nunito:[^"]+" rel="stylesheet" \/>/g, "");
   if (out.includes("home-hero-3d.css")) {
     out = out.replace(/home-hero-3d\.css\?v=[^"]+/g, `home-hero-3d.css?v=${HERO3D_VER}`);
   } else {

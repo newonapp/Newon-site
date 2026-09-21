@@ -1,5 +1,4 @@
         <section id="top" class="hero hero--ecosystem hero--vision hero--logo hero--seoul3d hero--entered reveal-on-scroll is-visible" data-nh3d aria-label="{{t:home.hero3dAria}}">
-          <h1 class="visually-hidden">{{html:home.heroTitleHtml}}</h1>
           <div class="nh3d-track" data-nh3d-track>
             <div class="nh3d-stage" data-nh3d-stage>
               <canvas class="nh3d-canvas" data-nh3d-canvas></canvas>
@@ -15,9 +14,12 @@
               </div>
               <div class="nh3d-ui">
                 <div class="nh3d-lockup is-on" data-nh3d-lockup>
-                  <p class="nh3d-lockup__ko">{{t:home.hero3dSlogan}}</p>
-                  <p class="nh3d-lockup__kicker">{{t:home.hero3dKicker}}</p>
-                  <p class="nh3d-lockup__en">{{t:home.hero3dFinaleEn}}</p>
+                  <p class="nh3d-wordmark">
+                    <img src="/newon-wordmark-hero.png" alt="Newon" width="904" height="213" decoding="async" />
+                  </p>
+                  <h1 class="nh3d-lockup__ko">{{t:home.hero3dSlogan}}</h1>
+                  <span class="nh3d-lockup__rule" aria-hidden="true"></span>
+                  <p class="nh3d-lockup__lead">{{t:home.hero3dLead}}</p>
                 </div>
                 <ul class="nh3d-signs" data-nh3d-signs aria-hidden="true">
                   <li class="nh3d-sign" data-nh3d-sign="0"><span class="nh3d-sign__num">01</span><span class="nh3d-sign__name">NEWON CONSUMER</span></li>

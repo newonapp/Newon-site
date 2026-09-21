@@ -911,6 +911,20 @@ html[data-newon-shell-theme="dark"] .cai-close__btn--ghost {
   letter-spacing: 0.08em;
   color: var(--ai-faint);
 }
+.cai-ent-flag--build {
+  color: var(--ai-ink);
+  opacity: 0.72;
+}
+.cai-ent-legend {
+  margin: 0 0 1.25rem;
+}
+.cai-ent-list .cai-card__feats {
+  margin-top: 0.45rem;
+  flex: none;
+}
+.cai-ent-list .cai-ent-flag {
+  margin: 0.15rem 0 0.2rem;
+}
 .cai-ent-list__name {
   margin: 0 0 0.25rem;
   font-weight: 650;

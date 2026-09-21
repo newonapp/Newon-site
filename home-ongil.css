@@ -2,6 +2,7 @@
 .hub-page:has(#ongil-detail) {
   padding: 0;
   max-width: none;
+  overflow-x: clip;
 }
 
 #ongil-detail.nls,
@@ -108,7 +109,8 @@
   font-size: clamp(2.2rem, 5vw, 3.85rem);
   font-weight: 700;
   letter-spacing: -0.045em;
-  line-height: 1.18;
+  line-height: 1.28;
+  overflow-wrap: anywhere;
 }
 
 #ongil-detail.nls .nls-title {
@@ -385,10 +387,12 @@
 
 #ongil-detail.nls .nls-block--band {
   position: relative;
+  box-sizing: border-box;
   width: 100vw;
+  max-width: 100vw;
   margin-left: calc(50% - 50vw);
-  padding-left: max(1.2rem, calc((100vw - 1180px) / 2));
-  padding-right: max(1.2rem, calc((100vw - 1180px) / 2));
+  padding-left: max(1.2rem, calc(50vw - 590px));
+  padding-right: max(1.2rem, calc(50vw - 590px));
   background: var(--nls-wash);
 }
 
@@ -1011,47 +1015,65 @@
 }
 
 #ongil-detail.nls .nls-close {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100vw;
+  max-width: 100vw;
+  min-height: calc(100svh - 5.75rem);
   margin-left: calc(50% - 50vw);
-  margin-top: 0;
-  padding: clamp(2.6rem, 5.5vw, 4.2rem) max(1.2rem, calc((100vw - 1180px) / 2));
+  margin-top: 2rem;
+  padding: clamp(3.5rem, 8vw, 5.5rem) clamp(1.25rem, 4vw, 2.5rem);
   border-radius: 0;
   background: #0a0a0a;
   color: #fff;
   border-top: 0;
+  text-align: center;
 }
 
 #ongil-detail.nls .nls-close .nls-kicker,
 #ongil-detail.nls .nls-close .nls-lead,
 #ongil-detail.nls .nls-close .nls-note {
-  color: #a3a3a3;
+  color: rgba(255, 255, 255, 0.58);
 }
 
 #ongil-detail.nls .nls-close .nls-hero__title {
   color: #fff;
 }
 
+#ongil-detail.nls .nls-close .nls-hero__title,
+#ongil-detail.nls .nls-close .nls-lead,
+#ongil-detail.nls .nls-close .nls-note {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ongil-detail.nls .nls-close .nls-actions {
+  justify-content: center;
+}
+
 #ongil-detail.nls .nls-close .nls-btn {
   background: #fff;
   border-color: #fff;
-  color: #0a0a0a;
+  color: #080808;
 }
 
 #ongil-detail.nls .nls-close .nls-btn:hover {
-  opacity: 0.9;
+  opacity: 1;
   background: #fff;
   border-color: #fff;
-  color: #0a0a0a;
+  color: #080808;
 }
 
 #ongil-detail.nls .nls-close .nls-btn--ghost {
   background: transparent;
-  border-color: #404040;
+  border-color: rgba(255, 255, 255, 0.28);
   color: #fff;
 }
 
 #ongil-detail.nls .nls-close .nls-btn--ghost:hover {
-  border-color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
   color: #fff;
 }
 
@@ -1072,8 +1094,8 @@
 #ongil-detail.nls .nls-chips li {
   padding: 0.28rem 0.5rem;
   border-radius: var(--nls-radius);
-  border: 1px solid var(--nls-line);
-  background: var(--nls-wash);
+  border: 1px solid #0a0a0a;
+  background: #fff;
   font-size: 0.8rem;
   line-height: 1.35;
 }

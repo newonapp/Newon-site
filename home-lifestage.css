@@ -38,7 +38,7 @@
 }
 
 #lifestage-detail.nls .nls-block {
-  padding: clamp(2.75rem, 5.5vw, 4.5rem) 0;
+  padding: clamp(2.1rem, 4.2vw, 3.4rem) 0;
   border-top: 1px solid var(--nls-line);
 }
 
@@ -1350,7 +1350,7 @@ html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-sv__grid article.
 
 #lifestage-detail.nls .nls-bar {
   height: 2px;
-  background: #ececec;
+  background: #0a0a0a;
   margin: 0.7rem 0 1rem;
 }
 
@@ -2592,7 +2592,7 @@ html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-sv__grid article.
 
 #lifestage-detail.nls .nls-decade__scene {
   min-height: 8.5rem;
-  background: #f4f4f4;
+  background: #fff;
   position: relative;
 }
 
@@ -2603,14 +2603,8 @@ html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-sv__grid article.
   border: 1px solid #cfcfcf;
 }
 
-#lifestage-detail.nls .nls-decade[data-scene="10"] .nls-decade__scene {
-  background:
-    repeating-linear-gradient(-18deg, #f7f7f7 0 12px, #ececec 12px 13px);
-}
+#lifestage-detail.nls .nls-decade[data-scene="10"] .nls-decade__scene,
 #lifestage-detail.nls .nls-decade[data-scene="20"] .nls-decade__scene {
-  background:
-    linear-gradient(180deg, #ececec 0 42%, #f7f7f7 42%);
-}
 #lifestage-detail.nls .nls-decade[data-scene="20"] .nls-decade__scene::after {
   inset: 22% 38% 18% 18%;
 }
@@ -2698,8 +2692,23 @@ html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-sv__grid article.
   min-width: 0;
 }
 
-#lifestage-detail.nls .nls-plat .nls-status {
-  margin: 0.55rem 0 0;
+#lifestage-detail.nls .nls-plat .nls-points,
+#lifestage-detail.nls .nls-plat .nls-chips {
+  margin-top: 0.7rem;
+}
+
+#lifestage-detail.nls #nls-changes .nls-chips {
+  margin-top: 1.4rem;
+}
+
+#lifestage-detail.nls #nls-first .nls-status,
+#lifestage-detail.nls #nls-changes .nls-status,
+#lifestage-detail.nls #nls-pillars .nls-note {
+  margin-top: 0.85rem;
+}
+
+#lifestage-detail.nls .nls-road .nls-status {
+  margin: 0.35rem 0 0.15rem;
 }
 
 #lifestage-detail.nls .nls-how {
@@ -2741,6 +2750,10 @@ html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-sv__grid article.
 }
 
 @media (min-width: 900px) {
+  #lifestage-detail.nls .nls-plats--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   #lifestage-detail.nls.is-js .nls-decade {
     display: none;
   }
@@ -2761,6 +2774,12 @@ html[data-theme="dark"] #lifestage-detail.nls .nls-decade,
 html[data-theme="dark"] #lifestage-detail.nls .nls-plat {
   background: #111;
   border-color: #2a2a2a;
+}
+
+html[data-theme="dark"] #lifestage-detail.nls .nls-chips li {
+  background: #111;
+  border-color: #2a2a2a;
+  color: #f2f2f2;
 }
 
 html[data-theme="dark"] #lifestage-detail.nls .nls-rail__btn {

@@ -27,18 +27,18 @@ import { renderLifeStageSection } from "./home-lifestage-body.mjs";
 import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const NLS_VER = "20260921nls34";
+const NLS_VER = "20260922nls48";
 
 const SEO = {
   ko: {
     title: "Life Stage | Newon — 10대부터 70대까지, 생애주기 종합 플랫폼",
     description:
-      "삶의 모든 단계에, 필요한 다음을. 10대부터 70대까지 삶의 변화와 새로운 시작을 함께하는 생애주기 플랫폼입니다. 현재는 사업 소개이며, 예약·결제·가입은 아직 연결되지 않았습니다.",
+      "삶의 모든 단계에, 필요한 다음을. 10대부터 70대까지, 생애 첫 경험과 인생의 변화까지 함께하는 생애주기 플랫폼입니다. 현재는 사업 소개이며, 예약·결제·가입은 아직 연결되지 않았습니다.",
   },
   en: {
     title: "Life Stage | Newon — A life-stage platform from the teens through the 70s.",
     description:
-      "At every stage of life, the next thing you need. A platform for change and new beginnings, from the teens through the 70s. This page is an introduction — booking, payment, and sign-up are not connected yet.",
+      "At every stage of life, the next thing you need. A platform for first experiences, life changes, and new beginnings, from the teens through the 70s. This page is an introduction — booking, payment, and sign-up are not connected yet.",
   },
 };
 
@@ -72,14 +72,16 @@ function renderPage(lang) {
     CHROME_HEADER: header,
     MAIN_CONTENT: renderLifeStageSection(lang.dir, { detail: true }),
     CHROME_FOOTER: footer,
-    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=${NLS_VER}" />`,
+    EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=${NLS_VER}" />
+    <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />`,
     EXTRA_SCRIPTS: `<script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
   });
   const out = path.join(ROOT, lang.dir, "lifestage", "index.html");
   ensureDir(out);
   fs.writeFileSync(out, html);
   const ages = copy.journey.items.map((a) => a.id).join(",");
-  console.log("render-lifestage:", lang.dir, "journey", ages, "platform", copy.platform.items.length);
+  const firstN = (copy.first && copy.first.items && copy.first.items.length) || 0;
+  console.log("render-lifestage:", lang.dir, "journey", ages, "first", firstN, "platform", copy.platform.items.length);
 }
 
 writeRootRedirect("lifestage");

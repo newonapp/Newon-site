@@ -1,11 +1,16 @@
 /* Homepage Seoul × NEWON 3D hero — scoped to #top.hero--seoul3d only */
 
-#home.site-shell .hero--ecosystem.hero--seoul3d {
+#home.site-shell .hero--ecosystem.hero--seoul3d,
+#home.site-shell #top.hero--ecosystem.hero--seoul3d {
   --nh3d-gold: #e8c98a;
   --nh3d-ink: #ffffff;
   --nh3d-muted: rgba(255, 255, 255, 0.78);
   padding: 0;
   margin: 0;
+  width: 100%;
+  max-width: none;
+  left: auto;
+  right: auto;
   min-height: 0;
   max-height: none;
   height: auto;
@@ -14,6 +19,7 @@
   color: var(--nh3d-ink);
   overflow: visible;
   justify-content: stretch;
+  transform: none;
 }
 
 .hero--seoul3d .hero-bg,
@@ -30,21 +36,28 @@
 .nh3d-stage {
   position: sticky;
   top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
   height: 100svh;
   height: 100dvh;
   overflow: hidden;
+  transform: none;
   background: #1a2430 url("/assets/hero-3d/seoul-dusk-empty-plaza.png") center 42% / cover no-repeat;
 }
 
 .nh3d-canvas {
   position: absolute;
   inset: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
   display: block;
   z-index: 1;
   pointer-events: none;
   touch-action: pan-y;
+  transform: none;
   transition: opacity 0.55s ease;
 }
 
@@ -75,47 +88,68 @@
 
 .nh3d-lockup {
   position: absolute;
-  left: clamp(1.4rem, 4.2vw, 3.4rem);
-  top: 38%;
-  transform: translateY(-52%);
-  width: min(20rem, 24vw);
-  text-align: left;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -42%);
+  width: min(46rem, 92vw);
+  max-width: none;
+  text-align: center;
   opacity: 1;
   z-index: 3;
   text-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
-  transition: opacity 0.45s ease;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  pointer-events: none;
 }
 
 .nh3d-lockup:not(.is-on) {
   opacity: 0;
+  visibility: hidden;
+}
+
+.nh3d-wordmark {
+  margin: 0 auto 1.15rem;
+  width: min(38rem, 78vw);
+}
+
+.nh3d-wordmark img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 40px rgba(0, 0, 0, 0.4));
 }
 
 .nh3d-lockup__ko {
-  margin: 0 0 1.15rem;
-  font-size: clamp(1.45rem, 2.6vw, 2.35rem);
-  font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: -0.03em;
+  margin: 0;
+  font-family: inherit;
+  font-size: clamp(1.7rem, 3vw, 2.72rem);
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: -0.035em;
   color: #fff;
   white-space: pre-line;
 }
 
-.nh3d-lockup__kicker {
-  margin: 0 0 0.28rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.28em;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.88);
-  white-space: nowrap;
+.nh3d-lockup__rule {
+  display: block;
+  width: 38px;
+  height: 2px;
+  margin: 1.05rem auto 1.08rem;
+  background: rgba(255, 255, 255, 0.82);
 }
 
-.nh3d-lockup__en {
+.nh3d-lockup__lead {
   margin: 0;
-  font-size: 0.66rem;
-  letter-spacing: 0.32em;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.72);
-  white-space: nowrap;
+  font-size: clamp(0.9rem, 1.12vw, 1.06rem);
+  font-weight: 400;
+  line-height: 1.58;
+  letter-spacing: -0.018em;
+  color: rgba(255, 255, 255, 0.84);
+  white-space: pre-line;
+}
+
+.nh3d-lockup__kicker,
+.nh3d-lockup__en {
+  display: none;
 }
 
 .nh3d-caption {
@@ -250,21 +284,34 @@
 
 @media (max-width: 900px) {
   .nh3d-lockup {
-    top: calc(var(--gnav-h, 74px) + 1.05rem);
-    transform: none;
-    width: min(16rem, 62vw);
+    top: calc(50% + 0.4rem);
+    left: 50%;
+    transform: translate(-50%, -46%);
+    width: min(22.5rem, 88vw);
+    max-width: calc(100vw - 2.2rem);
+  }
+
+  .nh3d-wordmark {
+    width: min(20.5rem, 84vw);
+    margin-bottom: 0.85rem;
   }
 
   .nh3d-lockup__ko {
-    font-size: 1.12rem;
-    margin-bottom: 0.45rem;
+    font-size: clamp(1.42rem, 6.2vw, 1.72rem);
+  }
+
+  .nh3d-lockup__rule {
+    margin: 0.78rem auto 0.82rem;
+  }
+
+  .nh3d-lockup__lead {
+    font-size: clamp(0.86rem, 3.4vw, 0.96rem);
+    line-height: 1.52;
   }
 
   .nh3d-lockup__kicker,
   .nh3d-lockup__en {
-    white-space: normal;
-    letter-spacing: 0.14em;
-    max-width: 12.5rem;
+    display: none;
   }
 
   .nh3d-rail {
@@ -366,8 +413,13 @@
   visibility: visible;
 }
 
+.nh3d-sign[data-nh3d-sign="4"] .nh3d-sign__name,
+.nh3d-sign[data-nh3d-sign="5"] .nh3d-sign__name {
+  background: none;
+}
+
 .nh3d-sign__num {
-  font-size: 0.58rem;
+  font-size: 0.7rem;
   font-weight: 650;
   letter-spacing: 0.22em;
   color: rgba(255, 255, 255, 0.78);
@@ -375,11 +427,11 @@
 }
 
 .nh3d-sign__name {
-  max-width: 12.5rem;
-  padding: 0.18rem 0.55rem;
+  max-width: 15.5rem;
+  padding: 0.22rem 0.68rem;
   border-radius: 2px;
   background: rgba(8, 12, 16, 0.28);
-  font-size: clamp(0.7rem, 1.05vw, 0.92rem);
+  font-size: clamp(0.86rem, 1.28vw, 1.14rem);
   font-weight: 700;
   letter-spacing: 0.1em;
   line-height: 1.25;
@@ -389,14 +441,14 @@
 
 @media (max-width: 900px) {
   .nh3d-sign__name {
-    max-width: 7.6rem;
-    padding: 0.12rem 0.38rem;
-    font-size: 0.58rem;
+    max-width: 9.2rem;
+    padding: 0.14rem 0.46rem;
+    font-size: 0.7rem;
     letter-spacing: 0.06em;
   }
 
   .nh3d-sign__num {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
   }
 
   .nh3d-mobile-name {

@@ -22,60 +22,13 @@ function list(items, cls = "nls-points") {
   return `<ul class="${cls}">${items.map((t) => `<li>${escapeHtml(t)}</li>`).join("")}</ul>`;
 }
 
-function flag(c, planned) {
-  if (!planned) return "";
-  return `<p class="nog-status">${escapeHtml(c.ui.plannedFlag || c.ui.planned)}</p>`;
-}
-
 function notes(...parts) {
   return parts.filter(Boolean).map((t) => `<p class="nls-note">${escapeHtml(t)}</p>`).join("");
-}
-
-function cards(items, c) {
-  return (items || [])
-    .map((it) => {
-      const situations = it.situations?.length
-        ? `${it.situationsLead ? `<p class="nls-note">${escapeHtml(it.situationsLead)}</p>` : ""}${list(it.situations)}`
-        : "";
-      return `<article class="nog-svc">
-        <p class="nog-svc__n">${escapeHtml(it.n)}</p>
-        <h3>${escapeHtml(it.name)}</h3>
-        ${flag(c, it.planned)}
-        ${it.lead ? `<p class="nog-svc__lead">${escapeHtml(it.lead)}</p>` : ""}
-        ${list(it.features)}
-        ${situations}
-        ${it.note ? `<p class="nls-note">${escapeHtml(it.note)}</p>` : ""}
-      </article>`;
-    })
-    .join("");
-}
-
-function catalog(id, band, head, inner, extra = "") {
-  if (!head) return "";
-  return `<div id="${escapeHtml(id)}" class="nls-block${band ? " nls-block--band" : ""}" data-hs-section>
-    ${titleBlock(head.kicker, head.title, head.lead || "")}
-    ${inner}
-    ${extra}
-  </div>`;
 }
 
 function chips(items) {
   if (!items || !items.length) return "";
   return `<ul class="nls-chips">${items.map((t) => `<li>${escapeHtml(t)}</li>`).join("")}</ul>`;
-}
-
-function road(items) {
-  return `<ol class="nls-road">${(items || [])
-    .map(
-      (s) => `<li>
-        <span>${escapeHtml(s.n)}</span>
-        <div>
-          <strong>${escapeHtml(s.name)}</strong>
-          <p>${escapeHtml(s.body || s.lead || "")}</p>
-        </div>
-      </li>`
-    )
-    .join("")}</ol>`;
 }
 
 function heroVisual(c) {
@@ -144,36 +97,228 @@ function heroBlock(c, lang) {
 }
 
 function whyBlock(c) {
-  const paras = (c.why.body || []).map((p) => `<p>${escapeHtml(p)}</p>`).join("");
+  const rows = (c.why.body || [])
+    .map(
+      (p, i) => `<li>
+        <span>${String(i + 1).padStart(2, "0")}</span>
+        <p>${escapeHtml(p)}</p>
+      </li>`
+    )
+    .join("");
   return `<div id="nog-why" class="nls-block" data-hs-section>
-    ${titleBlock(c.why.kicker, c.why.title, "")}
-    <div class="nog-why">${paras}</div>
+    <div class="nls-split">
+      ${titleBlock(c.why.kicker, c.why.title, "")}
+      <ol class="nls-roster">${rows}</ol>
+    </div>
+  </div>`;
+}
+
+function whoBlock(c) {
+  if (!c.who) return "";
+  const items = (c.who.items || [])
+    .map(
+      (it) => `<article class="nls-lane__item">
+        <span class="nls-lane__n">${escapeHtml(it.n)}</span>
+        <div class="nls-lane__copy">
+          <h3>${escapeHtml(it.name)}</h3>
+          <p>${escapeHtml(it.lead || "")}</p>
+        </div>
+      </article>`
+    )
+    .join("");
+  return `<div id="nog-who" class="nls-block nls-block--band nog-who-sec" data-hs-section>
+    ${titleBlock(c.who.kicker, c.who.title, c.who.lead || "")}
+    <div class="nls-lane">${items}</div>
+  </div>`;
+}
+
+function servicesBlock(c) {
+  const items = (c.services.items || [])
+    .map(
+      (it) => `<article class="nls-proc__item">
+        <span class="nls-proc__n">${escapeHtml(it.n)}</span>
+        <h3>${escapeHtml(it.name)}</h3>
+        ${it.lead ? `<p>${escapeHtml(it.lead)}</p>` : ""}
+        ${it.features ? chips(it.features) : ""}
+        ${it.note ? `<p class="nls-note">${escapeHtml(it.note)}</p>` : ""}
+      </article>`
+    )
+    .join("");
+  return `<div id="nog-services" class="nls-block" data-hs-section>
+    ${titleBlock(c.services.kicker, c.services.title, c.services.lead || "")}
+    <div class="nls-proc">${items}</div>
+  </div>`;
+}
+
+function domainsBlock(c) {
+  if (!c.domains) return "";
+  const items = c.domains.items || [];
+  const rail = items
+    .map(
+      (it, i) => `<button type="button" class="nls-rail__btn${i === 0 ? " is-on" : ""}" data-nls-decade="${escapeHtml(it.n)}" aria-pressed="${i === 0 ? "true" : "false"}">
+        <em>${escapeHtml(it.n)}</em>
+      </button>`
+    )
+    .join("");
+  const cards = items
+    .map(
+      (it, i) => `<article class="nls-decade${i === 0 ? " is-on" : ""}" data-nls-decade-card="${escapeHtml(it.n)}">
+        <div class="nls-decade__mark" aria-hidden="true">
+          <b>${escapeHtml(it.n)}</b>
+          <em>${escapeHtml(c.domains.kicker || "")}</em>
+        </div>
+        <div class="nls-decade__copy">
+          <p class="nls-decade__n">${escapeHtml(it.n)}</p>
+          <h3>${escapeHtml(it.name)}</h3>
+          ${it.lead ? `<p class="nls-decade__lead">${escapeHtml(it.lead)}</p>` : ""}
+          ${it.features ? chips(it.features) : ""}
+          ${
+            it.situations?.length
+              ? `${it.situationsLead ? `<p class="nls-note">${escapeHtml(it.situationsLead)}</p>` : ""}${list(it.situations)}`
+              : ""
+          }
+          ${it.note ? `<p class="nls-note">${escapeHtml(it.note)}</p>` : ""}
+        </div>
+      </article>`
+    )
+    .join("");
+  return `<div id="nog-domains" class="nls-block nls-block--band nog-domains-sec" data-hs-section>
+    ${titleBlock(c.domains.kicker, c.domains.title, c.domains.lead || "")}
+    <div class="nls-rail" role="tablist">${rail}</div>
+    <div class="nls-journey">${cards}</div>
+  </div>`;
+}
+
+function aiBlock(c) {
+  if (!c.ai) return "";
+  const items = (c.ai.items || [])
+    .map(
+      (it) => `<article class="nls-board__item">
+        <span class="nls-board__n">${escapeHtml(it.n)}</span>
+        <h3>${escapeHtml(it.name)}</h3>
+        <p>${escapeHtml(it.lead || "")}</p>
+      </article>`
+    )
+    .join("");
+  return `<div id="nog-ai" class="nls-block" data-hs-section>
+    ${titleBlock(c.ai.kicker, c.ai.title, c.ai.lead || "")}
+    ${notes(c.ai.note)}
+    <div class="nls-board">${items}</div>
+  </div>`;
+}
+
+function commerceBlock(c) {
+  if (!c.commerce) return "";
+  const items = (c.commerce.items || [])
+    .map(
+      (it) => `<article class="nls-board__item">
+        <span class="nls-board__n">${escapeHtml(it.n)}</span>
+        <h3>${escapeHtml(it.name)}</h3>
+        <p>${escapeHtml(it.lead || "")}</p>
+      </article>`
+    )
+    .join("");
+  return `<div id="nog-commerce" class="nls-block nls-block--band nog-commerce-sec" data-hs-section>
+    ${titleBlock(c.commerce.kicker, c.commerce.title, c.commerce.lead || "")}
+    ${chips(c.commerce.models)}
+    <div class="nls-board">${items}</div>
+    ${notes(c.commerce.note)}
   </div>`;
 }
 
 function howBlock(c) {
   const steps = (c.how.steps || [])
     .map(
-      (s) => `<article class="nog-step">
-        <p class="nog-step__n">${escapeHtml(s.n)}</p>
+      (s) => `<article class="nls-step">
+        <p class="nls-step__n">${escapeHtml(s.n)}</p>
+        <div class="nls-step__copy">
+          <h3>${escapeHtml(s.name)}</h3>
+          <p>${escapeHtml(s.body)}</p>
+        </div>
+      </article>`
+    )
+    .join("");
+  return `<div id="nog-how" class="nls-block nog-how-sec" data-hs-section>
+    ${titleBlock(c.how.kicker, c.how.title, "")}
+    ${notes(c.how.note)}
+    <div class="nls-steps">${steps}</div>
+  </div>`;
+}
+
+function ecosystemBlock(c) {
+  if (!c.ecosystem) return "";
+  const rows = (c.ecosystem.items || [])
+    .map(
+      (t, i) => `<li>
+        <span>${String(i + 1).padStart(2, "0")}</span>
+        <strong>${escapeHtml(t)}</strong>
+      </li>`
+    )
+    .join("");
+  return `<div id="nog-ecosystem" class="nls-block nls-block--band" data-hs-section>
+    ${titleBlock(c.ecosystem.kicker, c.ecosystem.title, c.ecosystem.lead || "")}
+    <ol class="nls-index">${rows}</ol>
+    ${notes(c.ecosystem.note)}
+  </div>`;
+}
+
+function modelBlock(c) {
+  if (!c.model) return "";
+  const rows = (c.model.items || [])
+    .map(
+      (s) => `<li>
+        <span>${escapeHtml(s.n)}</span>
+        <div>
+          <strong>${escapeHtml(s.name)}</strong>
+          <p>${escapeHtml(s.body || "")}</p>
+        </div>
+      </li>`
+    )
+    .join("");
+  return `<div id="nog-model" class="nls-block nog-model-sec" data-hs-section>
+    ${titleBlock(c.model.kicker, c.model.title, c.model.lead || "")}
+    <ol class="nls-index">${rows}</ol>
+    ${notes(c.model.note)}
+  </div>`;
+}
+
+function expandBlock(c) {
+  const stages = (c.expand.stages || [])
+    .map(
+      (s) => `<article class="nls-flow__item">
+        <span class="nls-flow__n">${escapeHtml(s.n)}</span>
         <h3>${escapeHtml(s.name)}</h3>
         <p>${escapeHtml(s.body)}</p>
       </article>`
     )
     .join("");
-  return `<div id="nog-how" class="nls-block" data-hs-section>
-    ${titleBlock(c.how.kicker, c.how.title, "")}
-    <p class="nog-status">${escapeHtml(c.ui.planned)}</p>
-    <p class="nls-note">${escapeHtml(c.how.note)}</p>
-    <div class="nog-how">${steps}</div>
-  </div>`;
-}
-
-function expandBlock(c) {
   return `<div id="nog-expand" class="nls-block nls-block--band" data-hs-section>
     ${titleBlock(c.expand.kicker, c.expand.title, "")}
     ${notes(c.ui.expandNote, c.expand.note)}
-    ${road(c.expand.stages)}
+    <div class="nls-flow">${stages}</div>
+  </div>`;
+}
+
+function relatedBlock(c) {
+  if (!c.related) return "";
+  const rows = (c.related.items || [])
+    .map(
+      (s) => `<li>
+        <span>${escapeHtml(s.n)}</span>
+        <div>
+          <strong>${escapeHtml(s.name)}</strong>
+          <p>${escapeHtml(s.body)}</p>
+        </div>
+      </li>`
+    )
+    .join("");
+  return `<div id="nog-related" class="nls-block" data-hs-section>
+    <div class="nls-split">
+      <div>
+        ${titleBlock(c.related.kicker, c.related.title, c.related.lead || "")}
+      </div>
+      <ol class="nls-dir">${rows}</ol>
+    </div>
   </div>`;
 }
 
@@ -203,28 +348,16 @@ export function renderOngilSection(lang, opts = {}) {
     ${back}
     ${heroBlock(c, L)}
     ${whyBlock(c)}
-    ${catalog("nog-who", true, c.who, `<div class="nog-services">${cards(c.who.items, c)}</div>`)}
-    ${catalog("nog-services", false, c.services, `<div class="nog-services">${cards(c.services.items, c)}</div>`)}
-    ${catalog("nog-domains", true, c.domains, `<div class="nog-services">${cards(c.domains.items, c)}</div>`)}
-    ${catalog(
-      "nog-ai",
-      false,
-      c.ai,
-      `${flag(c, c.ai.planned)}<div class="nog-services">${cards(c.ai.items, c)}</div>`,
-      notes(c.ai.note)
-    )}
-    ${catalog(
-      "nog-commerce",
-      true,
-      c.commerce,
-      `${flag(c, c.commerce.planned)}${chips(c.commerce.models)}<div class="nog-services">${cards(c.commerce.items, c)}</div>`,
-      notes(c.commerce.note)
-    )}
+    ${whoBlock(c)}
+    ${servicesBlock(c)}
+    ${domainsBlock(c)}
+    ${aiBlock(c)}
+    ${commerceBlock(c)}
     ${howBlock(c)}
-    ${catalog("nog-ecosystem", true, c.ecosystem, chips(c.ecosystem.items), notes(c.ecosystem.note))}
-    ${catalog("nog-model", false, c.model, road(c.model.items), notes(c.model.note))}
+    ${ecosystemBlock(c)}
+    ${modelBlock(c)}
     ${expandBlock(c)}
-    ${catalog("nog-related", false, c.related, road(c.related.items))}
+    ${relatedBlock(c)}
     ${closeBlock(c, L)}
   </div>
 </section>`;

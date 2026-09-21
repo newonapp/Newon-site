@@ -1,0 +1,1049 @@
+/* Life Stage body layouts — distinct per section, scoped to #lifestage-detail */
+
+#lifestage-detail.nls .nls-split {
+  display: grid;
+  gap: 1.8rem;
+  align-items: start;
+  margin-top: 0.2rem;
+}
+
+@media (min-width: 900px) {
+  #lifestage-detail.nls .nls-split {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: 3.5rem;
+    padding-top: 0.4rem;
+  }
+
+  #lifestage-detail.nls .nls-split .nls-head {
+    max-width: none;
+    position: sticky;
+    top: 6.2rem;
+  }
+}
+
+#lifestage-detail.nls .nls-roster,
+#lifestage-detail.nls .nls-index {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--nls-line);
+}
+
+#lifestage-detail.nls .nls-roster li,
+#lifestage-detail.nls .nls-who li {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1.2rem 1.25rem;
+  border-bottom: 1px solid var(--nls-line);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#lifestage-detail.nls .nls-roster li:last-child,
+#lifestage-detail.nls .nls-who li:last-child {
+  border-bottom: 0;
+}
+
+#lifestage-detail.nls .nls-roster li:hover,
+#lifestage-detail.nls .nls-who li:hover {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-roster span,
+#lifestage-detail.nls .nls-who span,
+#lifestage-detail.nls .nls-index span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--nls-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+#lifestage-detail.nls .nls-roster li:hover span,
+#lifestage-detail.nls .nls-who li:hover span {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+#lifestage-detail.nls .nls-roster p,
+#lifestage-detail.nls .nls-who p {
+  margin: 0.35rem 0 0;
+  color: var(--nls-muted);
+  line-height: 1.6;
+}
+
+#lifestage-detail.nls .nls-roster li:hover p,
+#lifestage-detail.nls .nls-who li:hover p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+#lifestage-detail.nls .nls-who {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  background: var(--nls-line);
+  border: 1px solid var(--nls-line);
+  overflow: hidden;
+}
+
+@media (min-width: 760px) {
+  #lifestage-detail.nls .nls-who {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+#lifestage-detail.nls .nls-who li {
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr);
+  gap: 0.85rem;
+  align-self: stretch;
+  height: auto;
+  min-height: 100%;
+  padding: 1rem 1.1rem 1.05rem;
+  border-bottom: 0;
+  background: #fff;
+}
+
+#lifestage-detail.nls .nls-who strong {
+  display: block;
+  font-size: 1.18rem;
+  letter-spacing: -0.03em;
+}
+
+#lifestage-detail.nls .nls-who li:hover strong {
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-dir {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--nls-line);
+}
+
+#lifestage-detail.nls .nls-dir li {
+  display: grid;
+  grid-template-columns: 2.8rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1.2rem 0 1.25rem;
+  border-bottom: 1px solid var(--nls-line);
+  transition: background 0.2s ease, color 0.2s ease, padding 0.2s ease;
+}
+
+#lifestage-detail.nls .nls-dir li:hover {
+  background: #0a0a0a;
+  color: #fff;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#lifestage-detail.nls .nls-dir span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--nls-faint);
+}
+
+#lifestage-detail.nls .nls-dir li:hover span {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+#lifestage-detail.nls .nls-dir strong {
+  display: block;
+  font-size: 1.12rem;
+  letter-spacing: -0.03em;
+}
+
+#lifestage-detail.nls .nls-dir li:hover strong {
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-dir p {
+  margin: 0.35rem 0 0;
+  color: var(--nls-muted);
+  line-height: 1.55;
+}
+
+#lifestage-detail.nls .nls-dir li:hover p {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+#lifestage-detail.nls .nls-journey-sec .nls-rail {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0;
+  margin: 1.7rem 0 0;
+  border: 1px solid var(--nls-line);
+}
+
+#lifestage-detail.nls .nls-journey-sec .nls-rail__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  min-height: 4.2rem;
+  padding: 0.7rem 0.75rem 0.8rem;
+  border: 0;
+  border-right: 1px solid var(--nls-line);
+  background: #fff;
+  color: var(--nls-muted);
+  border-radius: 0;
+}
+
+#lifestage-detail.nls .nls-journey-sec .nls-rail__btn:last-child {
+  border-right: 0;
+}
+
+#lifestage-detail.nls .nls-journey-sec .nls-rail__btn em {
+  font-style: normal;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+}
+
+#lifestage-detail.nls .nls-journey-sec .nls-rail__btn span {
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--nls-ink);
+}
+
+#lifestage-detail.nls .nls-journey-sec .nls-rail__btn.is-on {
+  background: #0a0a0a;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#lifestage-detail.nls .nls-journey-sec .nls-rail__btn.is-on span {
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-journey {
+  margin-top: 0;
+  border: 1px solid var(--nls-line);
+  border-top: 0;
+}
+
+#lifestage-detail.nls .nls-decade {
+  display: none;
+  grid-template-columns: minmax(10rem, 0.38fr) minmax(0, 1fr);
+  border: 0;
+  min-height: 12rem;
+}
+
+#lifestage-detail.nls .nls-decade.is-on,
+#lifestage-detail.nls:not(.is-js) .nls-decade {
+  display: grid;
+}
+
+#lifestage-detail.nls .nls-decade__mark {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  padding: 1.6rem 1.4rem 1.8rem;
+  background: #0a0a0a;
+  color: #fff;
+  min-height: 11rem;
+}
+
+#lifestage-detail.nls .nls-decade__mark b {
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.92;
+}
+
+#lifestage-detail.nls .nls-decade__mark em {
+  font-style: normal;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.48);
+}
+
+#lifestage-detail.nls .nls-decade__copy {
+  padding: 1.6rem 1.5rem 1.7rem;
+}
+
+#lifestage-detail.nls .nls-decade__copy .nls-chips {
+  margin-top: 1rem;
+}
+
+#lifestage-detail.nls .nls-flow {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  gap: 1px;
+  margin-top: 1.7rem;
+  background: var(--nls-line);
+  border: 1px solid var(--nls-line);
+  overflow: hidden;
+}
+
+@media (min-width: 860px) {
+  #lifestage-detail.nls .nls-flow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+#lifestage-detail.nls .nls-flow__item {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  height: auto;
+  min-height: 100%;
+  padding: 1.05rem 1.15rem 1.1rem;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+#lifestage-detail.nls .nls-flow__n {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--nls-faint);
+}
+
+#lifestage-detail.nls .nls-flow__item h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.22rem;
+  letter-spacing: -0.03em;
+}
+
+#lifestage-detail.nls .nls-flow__item p {
+  margin: 0;
+  color: var(--nls-muted);
+  line-height: 1.58;
+}
+
+#lifestage-detail.nls .nls-flow__item:hover {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-flow__item:hover .nls-flow__n {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+#lifestage-detail.nls .nls-flow__item:hover h3 {
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-flow__item:hover p {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+#lifestage-detail.nls .nls-board {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  gap: 1px;
+  margin-top: 1.7rem;
+  background: var(--nls-line);
+  border: 1px solid var(--nls-line);
+  overflow: hidden;
+}
+
+@media (min-width: 720px) {
+  #lifestage-detail.nls .nls-board {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  #lifestage-detail.nls .nls-board {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+#lifestage-detail.nls .nls-board__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  align-self: stretch;
+  height: auto;
+  min-height: 100%;
+  padding: 1rem 1.05rem 1.05rem;
+  background: #fff;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: background 0.32s ease, color 0.32s ease, transform 0.32s ease;
+}
+
+#lifestage-detail.nls .nls-board__item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: #0a0a0a;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.35s ease;
+  z-index: 2;
+}
+
+#lifestage-detail.nls .nls-board__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  position: relative;
+  z-index: 1;
+}
+
+#lifestage-detail.nls .nls-board__n {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--nls-faint);
+}
+
+#lifestage-detail.nls .nls-board__tag {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.22rem 0.42rem;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: #fff;
+  color: #0a0a0a;
+}
+
+#lifestage-detail.nls .nls-board__item h3 {
+  margin: 0;
+  font-size: 1.12rem;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  position: relative;
+  z-index: 1;
+}
+
+#lifestage-detail.nls .nls-board__item p {
+  margin: 0;
+  color: var(--nls-muted);
+  line-height: 1.5;
+  font-size: 0.88rem;
+  position: relative;
+  z-index: 1;
+}
+
+#lifestage-detail.nls .nls-board__item .nls-chips {
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
+}
+
+#lifestage-detail.nls .nls-board__item .nls-chips li {
+  padding: 0.22rem 0.42rem;
+  font-size: 0.72rem;
+}
+
+#lifestage-detail.nls .nls-board__item:hover {
+  background: #0a0a0a;
+  color: #fff;
+  z-index: 1;
+  transform: translateY(-2px);
+}
+
+#lifestage-detail.nls .nls-board__item:hover::before {
+  transform: scaleX(1);
+  background: #f5f5f5;
+}
+
+#lifestage-detail.nls .nls-board__item:hover .nls-board__n {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+#lifestage-detail.nls .nls-board__item:hover h3 {
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-board__item:hover p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+#lifestage-detail.nls .nls-board__item:hover .nls-board__tag {
+  color: rgba(255, 255, 255, 0.88);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: transparent;
+}
+
+#lifestage-detail.nls .nls-board__item:hover .nls-chips li {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: transparent;
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-index {
+  display: grid;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 720px) {
+  #lifestage-detail.nls .nls-index {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+#lifestage-detail.nls .nls-index li {
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: center;
+  min-height: 3.4rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--nls-line);
+  border-right: 1px solid var(--nls-line);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#lifestage-detail.nls .nls-index li:hover {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-index li:hover span {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+#lifestage-detail.nls .nls-index strong {
+  font-size: 0.98rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+#lifestage-detail.nls .nls-proc {
+  display: grid;
+  margin-top: 1.7rem;
+  border: 1px solid var(--nls-line);
+}
+
+@media (min-width: 860px) {
+  #lifestage-detail.nls .nls-proc {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+#lifestage-detail.nls .nls-proc__item {
+  position: relative;
+  padding: 1.05rem 1rem 1.1rem;
+  border-bottom: 1px solid var(--nls-line);
+  background: #fff;
+  min-height: 0;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+@media (min-width: 860px) {
+  #lifestage-detail.nls .nls-proc__item {
+    border-bottom: 0;
+    border-right: 1px solid var(--nls-line);
+  }
+
+  #lifestage-detail.nls .nls-proc__item:last-child {
+    border-right: 0;
+  }
+
+  #lifestage-detail.nls .nls-proc__item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 2px;
+    background: var(--nls-line);
+  }
+
+  #lifestage-detail.nls .nls-proc__item.is-now::before,
+  #lifestage-detail.nls .nls-proc__item:hover::before {
+    background: #0a0a0a;
+  }
+}
+
+#lifestage-detail.nls .nls-proc__n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 1.6rem;
+  margin-bottom: 0.95rem;
+  padding: 0 0.4rem;
+  border: 1px solid currentColor;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+#lifestage-detail.nls .nls-proc__item h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1.08rem;
+  letter-spacing: -0.03em;
+}
+
+#lifestage-detail.nls .nls-proc__item p {
+  margin: 0;
+  color: var(--nls-muted);
+  line-height: 1.5;
+  font-size: 0.92rem;
+}
+
+#lifestage-detail.nls .nls-proc__item .nls-chips {
+  margin-top: 0.9rem;
+}
+
+#lifestage-detail.nls .nls-proc__item:hover {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-proc__item:hover h3 {
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-proc__item:hover p,
+#lifestage-detail.nls .nls-proc__item:hover .nls-status {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+#lifestage-detail.nls .nls-proc__item:hover .nls-chips li {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: transparent;
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-signal {
+  display: grid;
+  gap: 0;
+  margin-top: 1.6rem;
+  border-top: 1px solid var(--nls-line);
+}
+
+@media (min-width: 860px) {
+  #lifestage-detail.nls .nls-signal {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+#lifestage-detail.nls .nls-signal__item {
+  display: grid;
+  grid-template-columns: 3.2rem minmax(0, 1fr);
+  gap: 0.9rem;
+  padding: 1.05rem 0.2rem 1.1rem 0;
+  border-bottom: 1px solid var(--nls-line);
+}
+
+@media (min-width: 860px) {
+  #lifestage-detail.nls .nls-signal__item:nth-child(odd) {
+    padding-right: 1.6rem;
+    border-right: 1px solid var(--nls-line);
+  }
+
+  #lifestage-detail.nls .nls-signal__item:nth-child(even) {
+    padding-left: 1.6rem;
+  }
+}
+
+#lifestage-detail.nls .nls-signal__n {
+  font-size: 0.92rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  color: var(--nls-faint);
+}
+
+#lifestage-detail.nls .nls-signal__copy h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.18rem;
+  letter-spacing: -0.03em;
+}
+
+#lifestage-detail.nls .nls-signal__copy p {
+  margin: 0.35rem 0 0;
+  color: var(--nls-muted);
+  line-height: 1.55;
+}
+
+#lifestage-detail.nls .nls-signal__copy .nls-chips {
+  margin-top: 0.85rem;
+}
+
+#lifestage-detail.nls .nls-pipe {
+  display: grid;
+  gap: 0;
+  margin-top: 1.8rem;
+  border-top: 1px solid var(--nls-line);
+}
+
+@media (min-width: 860px) {
+  #lifestage-detail.nls .nls-pipe {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+#lifestage-detail.nls .nls-pipe__item {
+  padding: 1.15rem 1.1rem 0.2rem 0;
+  border-bottom: 1px solid var(--nls-line);
+}
+
+@media (min-width: 860px) {
+  #lifestage-detail.nls .nls-pipe__item {
+    padding: 1.2rem 1.3rem 0.15rem 0;
+    border-bottom: 0;
+    border-right: 1px solid var(--nls-line);
+  }
+
+  #lifestage-detail.nls .nls-pipe__item:last-child {
+    border-right: 0;
+    padding-right: 0;
+  }
+}
+
+#lifestage-detail.nls .nls-pipe__n {
+  margin: 0 0 1.1rem;
+  font-size: clamp(2.2rem, 4vw, 3.1rem);
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  line-height: 0.9;
+  color: #0a0a0a;
+}
+
+#lifestage-detail.nls .nls-pipe__item h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1.18rem;
+  letter-spacing: -0.03em;
+}
+
+#lifestage-detail.nls .nls-pipe__item p {
+  margin: 0;
+  color: var(--nls-muted);
+  line-height: 1.55;
+}
+
+#lifestage-detail.nls .nls-pipe__item.is-on .nls-pipe__n {
+  color: #0a0a0a;
+}
+
+#lifestage-detail.nls .nls-mosaic {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 1px;
+  margin-top: 1.7rem;
+  background: var(--nls-line);
+  border: 1px solid var(--nls-line);
+  overflow: hidden;
+}
+
+@media (min-width: 720px) {
+  #lifestage-detail.nls .nls-mosaic {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+#lifestage-detail.nls .nls-mosaic__item {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  height: auto;
+  min-height: 100%;
+  padding: 1.1rem 1.15rem 1.15rem;
+  background: #fff;
+  box-sizing: border-box;
+  transition: background 0.22s ease, color 0.22s ease;
+}
+
+#lifestage-detail.nls .nls-mosaic__n {
+  display: block;
+  margin-bottom: 0.55rem;
+  font-size: clamp(2rem, 3.4vw, 2.7rem);
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  line-height: 0.9;
+  color: #0a0a0a;
+}
+
+#lifestage-detail.nls .nls-mosaic__item h3 {
+  margin: 0 0 0.7rem;
+  font-size: 1.28rem;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+}
+
+#lifestage-detail.nls .nls-mosaic__item p {
+  margin: 0;
+  color: var(--nls-muted);
+  line-height: 1.6;
+}
+
+#lifestage-detail.nls .nls-mosaic__item:hover {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-mosaic__item:hover .nls-mosaic__n,
+#lifestage-detail.nls .nls-mosaic__item:hover h3 {
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-mosaic__item:hover p {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+#lifestage-detail.nls .nls-lane {
+  display: grid;
+  gap: 1px;
+  margin-top: 1.7rem;
+  background: var(--nls-line);
+  border: 1px solid var(--nls-line);
+  overflow: hidden;
+}
+
+#lifestage-detail.nls .nls-lane__item {
+  display: grid;
+  grid-template-columns: 5.2rem minmax(0, 1fr);
+  gap: 1.4rem;
+  align-items: center;
+  min-height: 0;
+  padding: 1.05rem 1.2rem;
+  background: #fff;
+  box-sizing: border-box;
+  transition: background 0.22s ease, color 0.22s ease;
+}
+
+#lifestage-detail.nls .nls-lane__n {
+  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  line-height: 0.9;
+  color: #0a0a0a;
+}
+
+#lifestage-detail.nls .nls-lane__copy h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.22rem;
+  letter-spacing: -0.03em;
+}
+
+#lifestage-detail.nls .nls-lane__copy p {
+  margin: 0;
+  color: var(--nls-muted);
+  line-height: 1.58;
+}
+
+#lifestage-detail.nls .nls-lane__item:hover {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-lane__item:hover .nls-lane__n,
+#lifestage-detail.nls .nls-lane__item:hover h3 {
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-lane__item:hover p {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+@media (max-width: 719px) {
+  #lifestage-detail.nls .nls-lane__item {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+    min-height: 0;
+    padding: 1.25rem 1.15rem;
+  }
+}
+
+@media (max-width: 899px) {
+  #lifestage-detail.nls .nls-journey-sec .nls-rail {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  #lifestage-detail.nls.is-js .nls-journey-sec .nls-decade {
+    display: none;
+  }
+
+  #lifestage-detail.nls.is-js .nls-journey-sec .nls-decade.is-on {
+    display: grid;
+  }
+
+  #lifestage-detail.nls .nls-decade {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  #lifestage-detail.nls .nls-decade__mark {
+    min-height: 8.5rem;
+  }
+}
+
+@media (max-width: 719px) {
+  #lifestage-detail.nls .nls-journey-sec .nls-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #lifestage-detail.nls .nls-index li {
+    border-right: 0;
+  }
+
+  #lifestage-detail.nls .nls-board__item {
+    min-height: 0;
+  }
+
+  #lifestage-detail.nls .nls-board__item:hover {
+    transform: none;
+  }
+
+  #lifestage-detail.nls .nls-mosaic__item {
+    min-height: 0;
+  }
+}
+
+html[data-theme="dark"] #lifestage-detail.nls .nls-roster,
+html[data-theme="dark"] #lifestage-detail.nls .nls-who,
+html[data-theme="dark"] #lifestage-detail.nls .nls-index,
+html[data-theme="dark"] #lifestage-detail.nls .nls-flow,
+html[data-theme="dark"] #lifestage-detail.nls .nls-board,
+html[data-theme="dark"] #lifestage-detail.nls .nls-mosaic,
+html[data-theme="dark"] #lifestage-detail.nls .nls-lane,
+html[data-theme="dark"] #lifestage-detail.nls .nls-proc,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-roster,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-who,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-index,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-flow,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-board,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-mosaic,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-lane,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-proc {
+  border-color: #2a2a2a;
+  background: #2a2a2a;
+}
+
+html[data-theme="dark"] #lifestage-detail.nls .nls-flow__item,
+html[data-theme="dark"] #lifestage-detail.nls .nls-board__item,
+html[data-theme="dark"] #lifestage-detail.nls .nls-mosaic__item,
+html[data-theme="dark"] #lifestage-detail.nls .nls-lane__item,
+html[data-theme="dark"] #lifestage-detail.nls .nls-proc__item,
+html[data-theme="dark"] #lifestage-detail.nls .nls-journey-sec .nls-rail__btn,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-flow__item,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-board__item,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-mosaic__item,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-lane__item,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-proc__item,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-journey-sec .nls-rail__btn {
+  background: #111;
+  color: #f2f2f2;
+  border-color: #2a2a2a;
+}
+
+html[data-theme="dark"] #lifestage-detail.nls .nls-flow__item:hover,
+html[data-theme="dark"] #lifestage-detail.nls .nls-mosaic__item:hover,
+html[data-theme="dark"] #lifestage-detail.nls .nls-lane__item:hover,
+html[data-theme="dark"] #lifestage-detail.nls .nls-dir li:hover,
+html[data-theme="dark"] #lifestage-detail.nls .nls-board__item.is-on,
+html[data-theme="dark"] #lifestage-detail.nls .nls-board__item:hover,
+html[data-theme="dark"] #lifestage-detail.nls .nls-proc__item.is-now,
+html[data-theme="dark"] #lifestage-detail.nls .nls-proc__item:hover,
+html[data-theme="dark"] #lifestage-detail.nls .nls-roster li:hover,
+html[data-theme="dark"] #lifestage-detail.nls .nls-who li:hover,
+html[data-theme="dark"] #lifestage-detail.nls .nls-index li:hover,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-flow__item:hover,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-mosaic__item:hover,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-lane__item:hover,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-dir li:hover,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-board__item.is-on,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-board__item:hover,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-proc__item.is-now,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-proc__item:hover,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-roster li:hover,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-who li:hover,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-index li:hover {
+  background: #fff;
+  color: #0a0a0a;
+}
+
+html[data-theme="dark"] #lifestage-detail.nls .nls-board__item:hover p,
+html[data-theme="dark"] #lifestage-detail.nls .nls-proc__item:hover p,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-board__item:hover p,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-proc__item:hover p {
+  color: rgba(10, 10, 10, 0.58);
+}
+
+html[data-theme="dark"] #lifestage-detail.nls .nls-pipe__n,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-pipe__n,
+html[data-theme="dark"] #lifestage-detail.nls .nls-mosaic__n,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-mosaic__n,
+html[data-theme="dark"] #lifestage-detail.nls .nls-lane__n,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-lane__n {
+  color: #fff;
+}
+
+html[data-theme="dark"] #lifestage-detail.nls .nls-mosaic__item:hover .nls-mosaic__n,
+html[data-theme="dark"] #lifestage-detail.nls .nls-mosaic__item:hover h3,
+html[data-theme="dark"] #lifestage-detail.nls .nls-mosaic__item:hover p,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-mosaic__item:hover .nls-mosaic__n,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-mosaic__item:hover h3,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-mosaic__item:hover p {
+  color: #0a0a0a;
+}
+
+html[data-theme="dark"] #lifestage-detail.nls .nls-board__tag,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-board__tag {
+  color: rgba(255, 255, 255, 0.55);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: transparent;
+}
+
+html[data-theme="dark"] #lifestage-detail.nls .nls-board__item:hover .nls-board__tag,
+html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-board__item:hover .nls-board__tag {
+  color: rgba(0, 0, 0, 0.55);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Hover invert — every descendant stays readable on black */
+#lifestage-detail.nls .nls-roster li:hover :is(h1, h2, h3, h4, p, li, a, span, button, strong, em, b),
+#lifestage-detail.nls .nls-who li:hover :is(h1, h2, h3, h4, p, li, a, span, button, strong, em, b),
+#lifestage-detail.nls .nls-dir li:hover :is(h1, h2, h3, h4, p, li, a, span, button, strong, em, b),
+#lifestage-detail.nls .nls-index li:hover :is(h1, h2, h3, h4, p, li, a, span, button, strong, em, b),
+#lifestage-detail.nls .nls-flow__item:hover :is(h1, h2, h3, h4, p, li, a, span, button, strong, em, b),
+#lifestage-detail.nls .nls-board__item:hover :is(h1, h2, h3, h4, p, li, a, span, button, strong, em, b),
+#lifestage-detail.nls .nls-mosaic__item:hover :is(h1, h2, h3, h4, p, li, a, span, button, strong, em, b),
+#lifestage-detail.nls .nls-proc__item:hover :is(h1, h2, h3, h4, p, li, a, span, button, strong, em, b),
+#lifestage-detail.nls .nls-lane__item:hover :is(h1, h2, h3, h4, p, li, a, span, button, strong, em, b),
+#lifestage-detail.nls .nls-signal__item:hover :is(h1, h2, h3, h4, p, li, a, span, button, strong, em, b) {
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-roster li:hover .nls-note,
+#lifestage-detail.nls .nls-who li:hover .nls-note,
+#lifestage-detail.nls .nls-dir li:hover .nls-note,
+#lifestage-detail.nls .nls-index li:hover .nls-note,
+#lifestage-detail.nls .nls-flow__item:hover .nls-note,
+#lifestage-detail.nls .nls-board__item:hover .nls-note,
+#lifestage-detail.nls .nls-mosaic__item:hover .nls-note,
+#lifestage-detail.nls .nls-proc__item:hover .nls-note,
+#lifestage-detail.nls .nls-lane__item:hover .nls-note,
+#lifestage-detail.nls .nls-signal__item:hover .nls-note,
+#lifestage-detail.nls .nls-proc__item:hover .nls-status {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+#lifestage-detail.nls .nls-flow__item:hover .nls-chips li,
+#lifestage-detail.nls .nls-board__item:hover .nls-chips li,
+#lifestage-detail.nls .nls-mosaic__item:hover .nls-chips li,
+#lifestage-detail.nls .nls-proc__item:hover .nls-chips li,
+#lifestage-detail.nls .nls-lane__item:hover .nls-chips li,
+#lifestage-detail.nls .nls-signal__item:hover .nls-chips li {
+  color: #fff;
+  border-color: #fff;
+  background: transparent;
+}
+
+#lifestage-detail.nls .nls-proc__item:hover .nls-proc__n {
+  color: #fff;
+  border-color: #fff;
+}

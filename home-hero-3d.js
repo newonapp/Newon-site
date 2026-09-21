@@ -679,14 +679,17 @@ function makeZone(mod, mats, quality, index, officeTex) {
     addGoldCove(group, cw, cd, cr, spec.height + 0.02, spec.rot1, zoneMats.gold, segs);
     addTrees(group, 8, cw * 0.22, cd * 0.18, spec.height + crownH + 0.12, spec.rot1, zoneMats.plant);
   }
-  const sign = makeSign(mod);
-  sign.userData.noClip = true;
-  sign.material.transparent = true;
-  sign.material.opacity = 0;
   const dMid = (spec.d0 + spec.d1) / 2;
   const wMid = (spec.w0 + spec.w1) / 2;
-  placeSign(sign, wMid, dMid, spec.height * 0.48, (spec.rot0 + spec.rot1) / 2);
-  group.add(sign);
+  let sign = null;
+  if (mod.sign !== false) {
+    sign = makeSign(mod);
+    sign.userData.noClip = true;
+    sign.material.transparent = true;
+    sign.material.opacity = 0;
+    placeSign(sign, wMid, dMid, spec.height * 0.48, (spec.rot0 + spec.rot1) / 2);
+    group.add(sign);
+  }
   const light = new THREE.PointLight(WARM, 0, 10, 2);
   light.position.set(0, spec.height * 0.5, 0);
   group.add(light);
@@ -840,7 +843,8 @@ function bindOverlay(root, progress) {
   root.classList.toggle("is-complete", complete);
   root.classList.toggle("is-scrolled", progress > 0.04);
   if (hint) hint.style.opacity = String(clamp(1 - progress / 0.08, 0, 1));
-  if (lockup) lockup.classList.toggle("is-on", true);
+  if (lockup) lockup.classList.toggle("is-on", progress < 0.05);
+  root.classList.toggle("is-intro", progress < 0.05);
   let mobileLabel = "";
   root.querySelectorAll("[data-nh3d-dot]").forEach((el) => {
     const i = Number(el.getAttribute("data-nh3d-dot"));
@@ -1045,7 +1049,7 @@ async function initHero(root) {
 }
 
 function boot() {
-  window.__NH3D_BUILD = "s3d43";
+  window.__NH3D_BUILD = "s3d53";
   const root = document.querySelector("#home #top[data-nh3d]");
   if (!root) return;
   initHero(root).catch(() => {

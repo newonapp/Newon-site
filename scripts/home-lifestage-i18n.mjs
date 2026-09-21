@@ -40,13 +40,13 @@ const ja = pack(
     title: "10代から70代まで、\n続いていく人生の旅。",
     lead: "段階ごとに変わる問いと選択。Life Stageは、今の自分に必要な情報とサービスをつなぎます。",
     items: decades([
-      ["10", "01", "10代", "可能性を見つける時期", "進路や進学、新しい経験を通して自分の方向を探る時期。", ["進路の探索", "進学情報", "学びと成長", "自立の準備"]],
-      ["20", "02", "20代", "自分の人生を始める時期", "自立と初めての仕事、新しい暮らしを始め、自分の基盤をつくる時期。", ["自立と住まい", "初めての仕事と社会生活", "暮らしのお金", "自己開発"]],
-      ["30", "03", "30代", "人生の基盤を広げる時期", "仕事と暮らしのバランス、住まい・関係・家族など、さまざまな選択に向き合う時期。", ["仕事とキャリア", "住まいと資産", "関係と家族", "健康と暮らし"]],
-      ["40", "04", "40代", "人生のバランスをつくる時期", "仕事と家族、個人の目標をともに見つめ、これからの人生を準備する時期。", ["キャリアと仕事", "家族と暮らし", "資産管理", "健康と学び"]],
-      ["50", "05", "50代", "新しい可能性を準備する時期", "これまでの経験を土台に、これからの暮らしと新しい機会を準備する時期。", ["人生の転換", "仕事のあとへの準備", "健康", "新しい学びと活動"]],
-      ["60", "06", "60代", "新しい日常を始める時期", "仕事のあとの暮らしを設計し、新しい活動と関係をつくっていく時期。", ["仕事のあとの暮らし", "余暇と趣味", "健康な一日", "社会活動"]],
-      ["70", "07", "70代", "自分らしい日常を続ける時期", "自分の暮らし方と関心に合わせて、健康で活き活きした日常を続ける時期。", ["健康な暮らし", "余暇と社会活動", "地域の暮らし情報", "必要な生活支援の探索"]],
+      ["10", "01", "10代", "可能性を見つける時期", "進路や進学、新しい経験を通して自分の方向を探る時期。", ["進路の探索", "入試・進学", "学びと成長", "資格", "お金の基礎", "趣味・サークル", "自立・社会進出の準備"]],
+      ["20", "02", "20代", "自分の人生を始める時期", "自立と初めての仕事、新しい暮らしを始め、自分の基盤をつくる時期。", ["大学", "就職と初めての仕事", "一人暮らし・住まい", "お金と資産", "自己開発", "交際・結婚の準備", "暮らしサービス"]],
+      ["30", "03", "30代", "人生の基盤を広げる時期", "仕事と暮らしのバランス、住まい・関係・家族など、さまざまな選択に向き合う時期。", ["キャリア成長", "結婚・新婚", "住まいづくり", "妊娠・出産・育児", "家計", "保険・財務", "家族の暮らし", "健康と暮らし"]],
+      ["40", "04", "40代", "人生のバランスをつくる時期", "仕事と家族、個人の目標をともに見つめ、これからの人生を準備する時期。", ["子どもの教育", "キャリア管理・転換", "住まいと資産", "健康診断", "親の扶養", "家族の余暇", "老後の準備"]],
+      ["50", "05", "50代", "新しい可能性を準備する時期", "これまでの経験を土台に、これからの暮らしと新しい機会を準備する時期。", ["引退設計", "再就職・第二の仕事", "年金と資産", "健康", "趣味・旅行", "子どもの自立", "親のケア", "新しい学びと活動"]],
+      ["60", "06", "60代", "新しい日常を始める時期", "仕事のあとの暮らしを設計し、新しい活動と関係をつくっていく時期。", ["仕事のあとの暮らし", "再就職・社会活動", "健康・運動", "年金・福祉", "旅行・趣味", "地域の集まり", "デジタル生活支援"]],
+      ["70", "07", "70代", "自分らしい日常を続ける時期", "自分の暮らし方と関心に合わせて、健康で活き活きした日常を続ける時期。", ["健康と安全", "暮らしの便利", "余暇と社会活動", "家族とのつながり", "住まい支援", "ケア・福祉サービスの接続", "地域の暮らし情報"]],
     ]),
   },
   {
@@ -96,8 +96,37 @@ const ja = pack(
     plannedFlag: "導入予定",
     journeyNote: "年代別のテーマは一般的な例です。人生のペースと必要な情報は人それぞれ異なります。",
     ongilNote: "ケアや生活支援が必要な場合、今後 Ongil とつなぐ方向を検討します。いまの二つのサービスは連動していません。",
+    areasNote: "次の六つの領域は今後の事業拡張計画です。いま提供中の機能のように見せません。",
+    relatedNote: "いま他の Newon 事業と技術的に連動したり、データが自動共有されたりはしません。以下は今後の接続の方向です。",
   }
 );
+
+ja.areas = {
+  kicker: "Business areas",
+  title: "情報からつながりまで、\n六つの拡張領域。",
+  lead: "暮らしの情報からイベント管理、専門家、コマース、コミュニティ、AIまで広げていく方向です。",
+  items: [
+    { n: "01", name: "暮らし情報とガイド", lead: "ライフステージごとの暮らし情報、主な手続き、制度・支援情報を案内します。", planned: true, topics: ["段階別の暮らし情報", "主な生活手続き", "あわせたガイド", "制度・支援情報"] },
+    { n: "02", name: "ライフイベント管理", lead: "進学、就職、引越し、結婚、出産、育児、引退など、主な人生イベントの準備を管理します。", planned: true, topics: ["進学", "就職", "引越し", "結婚", "出産・育児", "引退"] },
+    { n: "03", name: "専門家と暮らしサービスの接続", lead: "教育、住まい、財務、家族、健康、暮らしの専門家と関連サービスをつなぎます。", planned: true, topics: ["教育", "住まい", "財務", "家族", "健康", "暮らしサービス"] },
+    { n: "04", name: "ライフコマース", lead: "段階に必要な商品とサービスを探し、比べ、購入・予約につなぎます。", planned: true, topics: ["商品探索", "サービス比較", "おすすめ", "購入・予約の接続"] },
+    { n: "05", name: "コミュニティ", lead: "近いライフステージや関心を持つ人が経験と地域の集まりを共有できる場です。", planned: true, topics: ["情報共有", "経験の交流", "地域の集まり", "関心コミュニティ"] },
+    { n: "06", name: "一人ひとりに合わせたAI", lead: "個人のライフステージと暮らしの状況に合う情報探索、生活計画、サービス案内を助けます。", planned: true, topics: ["状況別の情報探索", "生活計画", "サービス案内"] },
+  ],
+};
+
+ja.related = {
+  kicker: "NEWON",
+  title: "Newonのなかで\nLife Stageが担う場所。",
+  lead: "Life Stageは Newon 六つの事業のうち、ライフサイクル・プラットフォームです。他事業の機能を直接代わりません。",
+  items: [
+    { n: "01", name: "Newon Consumer", body: "ライフステージごとに必要な暮らしアプリとサービスの接続。", planned: true },
+    { n: "02", name: "Newon AI", body: "個人の状況に合う AI ベースの暮らし支援。", planned: true },
+    { n: "03", name: "Ongil", body: "シニアの暮らし・ケアサービスと家族の接続。", planned: true },
+    { n: "04", name: "Newon Business", body: "専門家、企業、暮らしサービス提供者との事業的な接続。", planned: true },
+    { n: "05", name: "Newon Commerce", body: "ライフステージごとの商品と暮らしサービスの探索・購入接続。", planned: true },
+  ],
+};
 
 const es = pack(
   {
@@ -124,13 +153,13 @@ const es = pack(
     title: "De la adolescencia a los 70,\nun viaje que sigue.",
     lead: "Las preguntas y las elecciones cambian con cada etapa. Life Stage conecta lo que encaja con el presente.",
     items: decades([
-      ["10", "01", "Adolescencia", "Un tiempo para hallar posibilidad", "Explorar dirección a través del camino, la escuela y la experiencia.", ["Explorar el camino", "Información escolar", "Aprendizaje y crecimiento", "Prepararse para valerse"]],
-      ["20", "02", "20 años", "Un tiempo para empezar una vida propia", "Independencia, un primer trabajo y el inicio de un día a día que uno construye.", ["Independencia y vivienda", "Primer trabajo y vida adulta", "Dinero cotidiano", "Desarrollo personal"]],
-      ["30", "03", "30 años", "Un tiempo para ampliar la base", "Equilibrio entre trabajo y vida, y decisiones sobre hogar, vínculos y familia.", ["Trabajo y carrera", "Vivienda y dinero", "Vínculos y familia", "Salud y vida diaria"]],
-      ["40", "04", "40 años", "Un tiempo para el equilibrio", "Trabajo, familia y metas personales, mirando adelante.", ["Carrera y trabajo", "Familia y vida", "Gestión del dinero", "Salud y crecimiento"]],
-      ["50", "05", "50 años", "Un tiempo para preparar nueva posibilidad", "Usar lo aprendido para preparar el siguiente capítulo y nuevas oportunidades.", ["Transiciones", "Preparar los años siguientes", "Salud", "Nuevo aprendizaje y actividad"]],
-      ["60", "06", "60 años", "Un tiempo para un día a día nuevo", "Diseñar la vida después del trabajo, y nuevas actividades y relaciones.", ["Vida después del trabajo", "Ocio y aficiones", "Un día sano", "Actividad social"]],
-      ["70", "07", "70 años", "Un tiempo para seguir a tu manera", "Continuar un día sano y vivo, acorde a cómo quieres vivir.", ["Vida sana", "Ocio y comunidad", "Información local", "Buscar apoyo de vida si hace falta"]],
+      ["10", "01", "Adolescencia", "Un tiempo para hallar posibilidad", "Explorar dirección a través del camino, la escuela y la experiencia.", ["Explorar el camino", "Exámenes y estudios", "Aprendizaje y crecimiento", "Cualificaciones", "Bases de dinero", "Aficiones y clubes", "Prepararse para valerse"]],
+      ["20", "02", "20 años", "Un tiempo para empezar una vida propia", "Independencia, un primer trabajo y el inicio de un día a día que uno construye.", ["Universidad", "Primer trabajo y vida adulta", "Vivir solo y vivienda", "Dinero y patrimonio", "Desarrollo personal", "Relación y boda", "Servicios de vida"]],
+      ["30", "03", "30 años", "Un tiempo para ampliar la base", "Equilibrio entre trabajo y vida, y decisiones sobre hogar, vínculos y familia.", ["Crecimiento profesional", "Matrimonio y recién casados", "Conseguir vivienda", "Embarazo, parto y crianza", "Economía del hogar", "Seguros y finanzas", "Vida familiar", "Salud y vida diaria"]],
+      ["40", "04", "40 años", "Un tiempo para el equilibrio", "Trabajo, familia y metas personales, mirando adelante.", ["Educación de los hijos", "Carrera y cambio", "Vivienda y patrimonio", "Chequeo de salud", "Cuidado de los padres", "Ocio familiar", "Preparar la vejez"]],
+      ["50", "05", "50 años", "Un tiempo para preparar nueva posibilidad", "Usar lo aprendido para preparar el siguiente capítulo y nuevas oportunidades.", ["Plan de retiro", "Reempleo y segundo oficio", "Pensión y patrimonio", "Salud", "Aficiones y viajes", "Independencia de los hijos", "Cuidado de los padres", "Nuevo aprendizaje y actividad"]],
+      ["60", "06", "60 años", "Un tiempo para un día a día nuevo", "Diseñar la vida después del trabajo, y nuevas actividades y relaciones.", ["Vida después del trabajo", "Reempleo y actividad social", "Salud y ejercicio", "Pensión y bienestar", "Viajes y aficiones", "Encuentros locales", "Apoyo digital"]],
+      ["70", "07", "70 años", "Un tiempo para seguir a tu manera", "Continuar un día sano y vivo, acorde a cómo quieres vivir.", ["Salud y seguridad", "Conveniencia cotidiana", "Ocio y comunidad", "Vínculo familiar", "Apoyo de vivienda", "Cuidado y bienestar", "Información local"]],
     ]),
   },
   {
@@ -180,6 +209,8 @@ const es = pack(
     plannedFlag: "Previsto",
     journeyNote: "Los temas de cada década son ejemplos típicos. El ritmo y las necesidades cambian de persona a persona.",
     ongilNote: "Si hace falta cuidado o apoyo a la vida cotidiana, más adelante podríamos conectar con Ongil. Hoy los dos servicios no están vinculados.",
+    areasNote: "Las seis áreas siguientes son un plan de expansión posterior, no productos en operación.",
+    relatedNote: "Hoy Life Stage no está vinculado técnicamente a otros negocios de Newon, y los datos no se comparten de forma automática. Lo que sigue es una dirección futura.",
   }
 );
 
@@ -208,13 +239,13 @@ const ptBr = pack(
     title: "Da adolescência aos 70,\numa jornada que segue.",
     lead: "Perguntas e escolhas mudam a cada etapa. A Life Stage conecta o que combina com o presente.",
     items: decades([
-      ["10", "01", "Adolescência", "Um tempo para achar possibilidade", "Explorar direção por caminho, escola e experiência.", ["Explorar o caminho", "Informação escolar", "Aprendizado e crescimento", "Preparar-se para se virar"]],
-      ["20", "02", "20 anos", "Um tempo para começar uma vida sua", "Independência, um primeiro emprego e o início de um cotidiano que você constrói.", ["Independência e moradia", "Primeiro trabalho e vida adulta", "Dinheiro do dia a dia", "Desenvolvimento pessoal"]],
-      ["30", "03", "30 anos", "Um tempo para alargar a base", "Equilíbrio entre trabalho e vida, e escolhas de lar, vínculos e família.", ["Trabalho e carreira", "Moradia e dinheiro", "Vínculos e família", "Saúde e cotidiano"]],
-      ["40", "04", "40 anos", "Um tempo para o equilíbrio", "Trabalho, família e metas pessoais, olhando adiante.", ["Carreira e trabalho", "Família e vida", "Gestão do dinheiro", "Saúde e crescimento"]],
-      ["50", "05", "50 anos", "Um tempo para preparar nova possibilidade", "Usar o que se aprendeu para preparar o próximo capítulo e novas chances.", ["Transições", "Preparar os anos seguintes", "Saúde", "Novo aprendizado e atividade"]],
-      ["60", "06", "60 anos", "Um tempo para um cotidiano novo", "Desenhar a vida depois do trabalho, e novas atividades e relações.", ["Vida depois do trabalho", "Lazer e hobbies", "Um dia saudável", "Atividade social"]],
-      ["70", "07", "70 anos", "Um tempo para seguir do seu jeito", "Continuar um dia saudável e vivo, de acordo com como você quer viver.", ["Vida saudável", "Lazer e comunidade", "Informação local", "Buscar apoio de vida se precisar"]],
+      ["10", "01", "Adolescência", "Um tempo para achar possibilidade", "Explorar direção por caminho, escola e experiência.", ["Explorar o caminho", "Exames e estudos", "Aprendizado e crescimento", "Qualificações", "Bases de dinheiro", "Hobbies e clubes", "Preparar-se para se virar"]],
+      ["20", "02", "20 anos", "Um tempo para começar uma vida sua", "Independência, um primeiro emprego e o início de um cotidiano que você constrói.", ["Universidade", "Primeiro trabalho e vida adulta", "Morar sozinho e moradia", "Dinheiro e patrimônio", "Desenvolvimento pessoal", "Relacionamento e casamento", "Serviços de vida"]],
+      ["30", "03", "30 anos", "Um tempo para alargar a base", "Equilíbrio entre trabalho e vida, e escolhas de lar, vínculos e família.", ["Crescimento de carreira", "Casamento e recém-casados", "Conseguir moradia", "Gravidez, parto e criação", "Economia da casa", "Seguros e finanças", "Vida em família", "Saúde e cotidiano"]],
+      ["40", "04", "40 anos", "Um tempo para o equilíbrio", "Trabalho, família e metas pessoais, olhando adiante.", ["Educação dos filhos", "Carreira e transição", "Moradia e patrimônio", "Check-up de saúde", "Cuidado dos pais", "Lazer em família", "Preparar a aposentadoria"]],
+      ["50", "05", "50 anos", "Um tempo para preparar nova possibilidade", "Usar o que se aprendeu para preparar o próximo capítulo e novas chances.", ["Plano de aposentadoria", "Reemprego e segundo ofício", "Pensão e patrimônio", "Saúde", "Hobbies e viagens", "Independência dos filhos", "Cuidado dos pais", "Novo aprendizado e atividade"]],
+      ["60", "06", "60 anos", "Um tempo para um cotidiano novo", "Desenhar a vida depois do trabalho, e novas atividades e relações.", ["Vida depois do trabalho", "Reemprego e atividade social", "Saúde e exercício", "Pensão e bem-estar", "Viagens e hobbies", "Encontros locais", "Apoio digital"]],
+      ["70", "07", "70 anos", "Um tempo para seguir do seu jeito", "Continuar um dia saudável e vivo, de acordo com como você quer viver.", ["Saúde e segurança", "Conveniência do dia a dia", "Lazer e comunidade", "Vínculo familiar", "Apoio de moradia", "Cuidado e bem-estar", "Informação local"]],
     ]),
   },
   {
@@ -264,6 +295,8 @@ const ptBr = pack(
     plannedFlag: "Previsto",
     journeyNote: "Os temas de cada década são exemplos típicos. O ritmo e as necessidades mudam de pessoa para pessoa.",
     ongilNote: "Quando for preciso cuidado ou apoio à vida cotidiana, no futuro podemos conectar com a Ongil. Hoje os dois serviços não estão ligados.",
+    areasNote: "As seis áreas abaixo são um plano de expansão posterior, não produtos em operação.",
+    relatedNote: "Hoje a Life Stage não está ligada tecnicamente a outros negócios da Newon, e os dados não são compartilhados automaticamente. O que segue é uma direção futura.",
   }
 );
 
@@ -292,13 +325,13 @@ const fr = pack(
     title: "De l’adolescence à 70 ans,\nun voyage qui continue.",
     lead: "Les questions et les choix changent à chaque étape. Life Stage relie ce qui correspond au présent.",
     items: decades([
-      ["10", "01", "Adolescence", "Un temps pour trouver des possibles", "Explorer une direction par le parcours, l’école et l’expérience.", ["Explorer le parcours", "Infos scolaires", "Apprendre et grandir", "Se préparer à se débrouiller"]],
-      ["20", "02", "20 ans", "Un temps pour commencer une vie à soi", "Indépendance, premier emploi, et le début d’un quotidien que l’on construit.", ["Indépendance et logement", "Premier travail et vie adulte", "Argent du quotidien", "Développement personnel"]],
-      ["30", "03", "30 ans", "Un temps pour élargir la base", "Équilibre travail-vie, et choix autour du foyer, des liens et de la famille.", ["Travail et carrière", "Logement et argent", "Liens et famille", "Santé et quotidien"]],
-      ["40", "04", "40 ans", "Un temps pour l’équilibre", "Travail, famille et buts personnels, en regardant plus loin.", ["Carrière et travail", "Famille et vie", "Gestion de l’argent", "Santé et croissance"]],
-      ["50", "05", "50 ans", "Un temps pour préparer de nouveaux possibles", "S’appuyer sur l’expérience pour préparer le chapitre suivant et de nouvelles chances.", ["Transitions", "Préparer les années suivantes", "Santé", "Nouvel apprentissage et activité"]],
-      ["60", "06", "60 ans", "Un temps pour un quotidien nouveau", "Concevoir la vie après le travail, et de nouvelles activités et relations.", ["Vie après le travail", "Loisirs et hobbies", "Une journée saine", "Activité sociale"]],
-      ["70", "07", "70 ans", "Un temps pour continuer à sa façon", "Poursuivre une journée saine et vivante, selon la manière dont on veut vivre.", ["Vie saine", "Loisirs et communauté", "Infos locales", "Trouver un soutien de vie si besoin"]],
+      ["10", "01", "Adolescence", "Un temps pour trouver des possibles", "Explorer une direction par le parcours, l’école et l’expérience.", ["Explorer le parcours", "Examens et études", "Apprendre et grandir", "Qualifications", "Bases d’argent", "Loisirs et clubs", "Se préparer à se débrouiller"]],
+      ["20", "02", "20 ans", "Un temps pour commencer une vie à soi", "Indépendance, premier emploi, et le début d’un quotidien que l’on construit.", ["Université", "Premier travail et vie adulte", "Vivre seul et logement", "Argent et patrimoine", "Développement personnel", "Relation et mariage", "Services de vie"]],
+      ["30", "03", "30 ans", "Un temps pour élargir la base", "Équilibre travail-vie, et choix autour du foyer, des liens et de la famille.", ["Croissance de carrière", "Mariage et jeunes mariés", "Trouver un logement", "Grossesse, naissance et parentalité", "Budget du foyer", "Assurance et finances", "Vie de famille", "Santé et quotidien"]],
+      ["40", "04", "40 ans", "Un temps pour l’équilibre", "Travail, famille et buts personnels, en regardant plus loin.", ["Éducation des enfants", "Carrière et transition", "Logement et patrimoine", "Bilan de santé", "Soutien des parents", "Loisirs en famille", "Préparer la retraite"]],
+      ["50", "05", "50 ans", "Un temps pour préparer de nouveaux possibles", "S’appuyer sur l’expérience pour préparer le chapitre suivant et de nouvelles chances.", ["Plan de retraite", "Réemploi et second métier", "Pension et patrimoine", "Santé", "Loisirs et voyages", "Indépendance des enfants", "Soutien des parents", "Nouvel apprentissage et activité"]],
+      ["60", "06", "60 ans", "Un temps pour un quotidien nouveau", "Concevoir la vie après le travail, et de nouvelles activités et relations.", ["Vie après le travail", "Réemploi et activité sociale", "Santé et sport", "Pension et aides", "Voyages et loisirs", "Rencontres locales", "Aide numérique"]],
+      ["70", "07", "70 ans", "Un temps pour continuer à sa façon", "Poursuivre une journée saine et vivante, selon la manière dont on veut vivre.", ["Santé et sécurité", "Confort du quotidien", "Loisirs et communauté", "Lien familial", "Soutien au logement", "Soins et aides", "Infos locales"]],
     ]),
   },
   {
@@ -348,6 +381,8 @@ const fr = pack(
     plannedFlag: "Prévu",
     journeyNote: "Les thèmes de chaque décennie sont des exemples typiques. Le rythme et les besoins varient d’une personne à l’autre.",
     ongilNote: "Si des soins ou un soutien à la vie quotidienne sont nécessaires, nous pourrons plus tard relier Ongil. Les deux services ne sont pas liés aujourd’hui.",
+    areasNote: "Les six domaines ci-dessous sont un plan d’expansion ultérieur, pas des produits en service.",
+    relatedNote: "Aujourd’hui, Life Stage n’est pas lié techniquement aux autres activités Newon, et les données ne sont pas partagées automatiquement. Ce qui suit est une direction future.",
   }
 );
 
@@ -376,13 +411,13 @@ const de = pack(
     title: "Vom Jugendalter bis zu den 70ern,\neine Reise, die weitergeht.",
     lead: "Fragen und Entscheidungen verschieben sich mit jeder Phase. Life Stage verbindet, was zur Gegenwart passt.",
     items: decades([
-      ["10", "01", "Jugend", "Eine Zeit, Möglichkeiten zu finden", "Richtung erkunden durch Weg, Schule und neue Erfahrung.", ["Wege erkunden", "Schulinfos", "Lernen und Wachstum", "Auf eigenes Stehen vorbereiten"]],
-      ["20", "02", "20er", "Eine Zeit, ein eigenes Leben zu beginnen", "Unabhängigkeit, erster Job und der Beginn eines Alltags, den man selbst baut.", ["Unabhängigkeit und Wohnen", "Erste Arbeit und Erwachsenenleben", "Alltagsgeld", "Persönliche Entwicklung"]],
-      ["30", "03", "30er", "Eine Zeit, die Basis zu erweitern", "Balance von Arbeit und Leben, und Entscheidungen um Wohnen, Beziehungen und Familie.", ["Arbeit und Karriere", "Wohnen und Geld", "Beziehungen und Familie", "Gesundheit und Alltag"]],
-      ["40", "04", "40er", "Eine Zeit für Balance", "Arbeit, Familie und eigene Ziele zusammenhalten und vorausblicken.", ["Karriere und Arbeit", "Familie und Leben", "Geld verwalten", "Gesundheit und Wachstum"]],
-      ["50", "05", "50er", "Eine Zeit, neue Möglichkeiten vorzubereiten", "Erfahrungswissen nutzen, um das nächste Kapitel und neue Chancen vorzubereiten.", ["Übergänge", "Spätere Jahre vorbereiten", "Gesundheit", "Neues Lernen und Aktivität"]],
-      ["60", "06", "60er", "Eine Zeit für einen neuen Alltag", "Das Leben nach der Arbeit gestalten und neue Aktivitäten und Beziehungen.", ["Leben nach der Arbeit", "Freizeit und Hobbys", "Ein gesunder Tag", "Soziale Aktivität"]],
-      ["70", "07", "70er", "Eine Zeit, auf eigene Weise weiterzuleben", "Einen gesunden, lebendigen Alltag fortsetzen, der zur gewünschten Lebensweise passt.", ["Gesundes Leben", "Freizeit und Gemeinschaft", "Lokale Lebensinfos", "Lebenshilfe finden, wenn nötig"]],
+      ["10", "01", "Jugend", "Eine Zeit, Möglichkeiten zu finden", "Richtung erkunden durch Weg, Schule und neue Erfahrung.", ["Wege erkunden", "Prüfungen und Schule", "Lernen und Wachstum", "Qualifikationen", "Geld-Grundlagen", "Hobbys und Clubs", "Auf eigenes Stehen vorbereiten"]],
+      ["20", "02", "20er", "Eine Zeit, ein eigenes Leben zu beginnen", "Unabhängigkeit, erster Job und der Beginn eines Alltags, den man selbst baut.", ["Universität", "Erste Arbeit und Erwachsenenleben", "Alleinwohnen und Wohnen", "Geld und Vermögen", "Persönliche Entwicklung", "Beziehung und Heirat", "Lebensdienste"]],
+      ["30", "03", "30er", "Eine Zeit, die Basis zu erweitern", "Balance von Arbeit und Leben, und Entscheidungen um Wohnen, Beziehungen und Familie.", ["Karrierewachstum", "Heirat und frisch verheiratet", "Wohnung finden", "Schwangerschaft, Geburt, Elternsein", "Haushaltsgeld", "Versicherung und Finanzen", "Familienleben", "Gesundheit und Alltag"]],
+      ["40", "04", "40er", "Eine Zeit für Balance", "Arbeit, Familie und eigene Ziele zusammenhalten und vorausblicken.", ["Bildung der Kinder", "Karriere und Wechsel", "Wohnen und Vermögen", "Gesundheitscheck", "Eltern unterstützen", "Familienfreizeit", "Alter vorbereiten"]],
+      ["50", "05", "50er", "Eine Zeit, neue Möglichkeiten vorzubereiten", "Erfahrungswissen nutzen, um das nächste Kapitel und neue Chancen vorzubereiten.", ["Ruhestandsplanung", "Wiedereinstieg und zweiter Beruf", "Rente und Vermögen", "Gesundheit", "Hobbys und Reisen", "Selbstständigkeit der Kinder", "Elternpflege", "Neues Lernen und Aktivität"]],
+      ["60", "06", "60er", "Eine Zeit für einen neuen Alltag", "Das Leben nach der Arbeit gestalten und neue Aktivitäten und Beziehungen.", ["Leben nach der Arbeit", "Wiedereinstieg und soziales Leben", "Gesundheit und Sport", "Rente und Wohlfahrt", "Reisen und Hobbys", "Lokale Treffen", "Digitale Hilfe"]],
+      ["70", "07", "70er", "Eine Zeit, auf eigene Weise weiterzuleben", "Einen gesunden, lebendigen Alltag fortsetzen, der zur gewünschten Lebensweise passt.", ["Gesundheit und Sicherheit", "Alltagskomfort", "Freizeit und Gemeinschaft", "Familienkontakt", "Wohnunterstützung", "Pflege und Wohlfahrt", "Lokale Lebensinfos"]],
     ]),
   },
   {
@@ -432,6 +467,8 @@ const de = pack(
     plannedFlag: "Geplant",
     journeyNote: "Die Themen jeder Dekade sind typische Beispiele. Tempo und Bedarf unterscheiden sich von Mensch zu Mensch.",
     ongilNote: "Wenn Betreuung oder Lebenshilfe nötig ist, könnten wir später mit Ongil verbinden. Die beiden Dienste sind heute nicht verknüpft.",
+    areasNote: "Die sechs Bereiche unten sind ein späterer Ausbauplan, keine laufenden Produkte.",
+    relatedNote: "Life Stage ist heute nicht technisch mit anderen Newon-Geschäften verknüpft, und Daten werden nicht automatisch geteilt. Das Folgende ist eine spätere Richtung.",
   }
 );
 
@@ -460,13 +497,13 @@ const hi = pack(
     title: "किशोरावस्था से 70 तक,<br>चलता सफर.",
     lead: "हर चरण के साथ सवाल और चुनाव बदलते हैं. Life Stage वर्तमान से जुड़ी जानकारी और सेवाएँ जोड़ता है.",
     items: decades([
-      ["10", "01", "किशोर", "संभावना खोजने का समय", "रास्ता, स्कूल और अनुभव से अपनी दिशा तलाशना.", ["रास्ता खोजना", "स्कूल जानकारी", "सीखना और बढ़ना", "खुद खड़े होने की तैयारी"]],
-      ["20", "02", "20 की उम्र", "अपनी ज़िंदगी शुरू करने का समय", "स्वतंत्रता, पहली नौकरी, और एक दिन जो आप खुद बनाते हैं.", ["स्वतंत्रता और आवास", "पहला काम और वयस्क जीवन", "रोज़मर्रा का पैसा", "आत्मविकास"]],
-      ["30", "03", "30 की उम्र", "आधार बढ़ाने का समय", "काम और जीवन का संतुलन, घर, रिश्ते और परिवार के चुनाव.", ["काम और करियर", "आवास और पैसा", "रिश्ते और परिवार", "स्वास्थ्य और दिनचर्या"]],
-      ["40", "04", "40 की उम्र", "संतुलन बनाने का समय", "काम, परिवार और निजी लक्ष्य साथ रखकर आगे देखना.", ["करियर और काम", "परिवार और जीवन", "पैसे का प्रबंधन", "स्वास्थ्य और विकास"]],
-      ["50", "05", "50 की उम्र", "नई संभावना तैयार करने का समय", "सीखी बातों से अगला अध्याय और नए अवसर तैयार करना.", ["जीवन के मोड़", "बाद के वर्षों की तैयारी", "स्वास्थ्य", "नई सीख और गतिविधि"]],
-      ["60", "06", "60 की उम्र", "नया रोज़मर्रा शुरू करने का समय", "काम के बाद का जीवन गढ़ना, नई गतिविधियाँ और रिश्ते.", ["काम के बाद का जीवन", "अवकाश और शौक", "स्वस्थ दिन", "सामाजिक गतिविधि"]],
-      ["70", "07", "70 की उम्र", "अपने ढंग से दिन जारी रखने का समय", "जिस तरह जीना चाहते हैं, उस हिसाब से स्वस्थ, जीवंत दिन.", ["स्वस्थ जीवन", "अवकाश और समुदाय", "स्थानीय जानकारी", "जरूरत पर जीवन-सहायता खोजना"]],
+      ["10", "01", "किशोर", "संभावना खोजने का समय", "रास्ता, स्कूल और अनुभव से अपनी दिशा तलाशना.", ["रास्ता खोजना", "परीक्षा और पढ़ाई", "सीखना और बढ़ना", "योग्यता", "पैसे की बुनियाद", "शौक और क्लब", "खुद खड़े होने की तैयारी"]],
+      ["20", "02", "20 की उम्र", "अपनी ज़िंदगी शुरू करने का समय", "स्वतंत्रता, पहली नौकरी, और एक दिन जो आप खुद बनाते हैं.", ["विश्वविद्यालय", "पहला काम और वयस्क जीवन", "अकेले रहना और आवास", "पैसा और संपत्ति", "आत्मविकास", "रिश्ता और शादी", "जीवन सेवाएँ"]],
+      ["30", "03", "30 की उम्र", "आधार बढ़ाने का समय", "काम और जीवन का संतुलन, घर, रिश्ते और परिवार के चुनाव.", ["करियर विकास", "शादी और नवविवाहित जीवन", "घर पाना", "गर्भावस्था, जन्म, पालन", "घरेलू बजट", "बीमा और वित्त", "पारिवारिक जीवन", "स्वास्थ्य और दिनचर्या"]],
+      ["40", "04", "40 की उम्र", "संतुलन बनाने का समय", "काम, परिवार और निजी लक्ष्य साथ रखकर आगे देखना.", ["बच्चों की शिक्षा", "करियर और बदलाव", "आवास और संपत्ति", "स्वास्थ्य जाँच", "माता-पिता की देखभाल", "पारिवारिक अवकाश", "बुढ़ापे की तैयारी"]],
+      ["50", "05", "50 की उम्र", "नई संभावना तैयार करने का समय", "सीखी बातों से अगला अध्याय और नए अवसर तैयार करना.", ["सेवानिवृत्ति योजना", "पुनर्नियुक्ति और दूसरा काम", "पेंशन और संपत्ति", "स्वास्थ्य", "शौक और यात्रा", "बच्चों की स्वतंत्रता", "माता-पिता की देखभाल", "नई सीख और गतिविधि"]],
+      ["60", "06", "60 की उम्र", "नया रोज़मर्रा शुरू करने का समय", "काम के बाद का जीवन गढ़ना, नई गतिविधियाँ और रिश्ते.", ["काम के बाद का जीवन", "पुनर्नियुक्ति और सामाजिक गतिविधि", "स्वास्थ्य और व्यायाम", "पेंशन और कल्याण", "यात्रा और शौक", "स्थानीय बैठकें", "डिजिटल सहायता"]],
+      ["70", "07", "70 की उम्र", "अपने ढंग से दिन जारी रखने का समय", "जिस तरह जीना चाहते हैं, उस हिसाब से स्वस्थ, जीवंत दिन.", ["स्वास्थ्य और सुरक्षा", "रोज़मर्रा की सुविधा", "अवकाश और समुदाय", "पारिवारिक जुड़ाव", "आवास सहायता", "देखभाल और कल्याण", "स्थानीय जानकारी"]],
     ]),
   },
   {
@@ -516,6 +553,8 @@ const hi = pack(
     plannedFlag: "योजना",
     journeyNote: "हर दशक के विषय सामान्य उदाहरण हैं. गति और जरूरतें व्यक्ति के अनुसार अलग होती हैं.",
     ongilNote: "देखभाल या जीवन-सहायता चाहिए तो आगे Ongil से जोड़ने पर विचार हो सकता है. आज दोनों सेवाएँ जुड़ी नहीं हैं.",
+    areasNote: "नीचे छह क्षेत्र बाद की विस्तार योजना हैं, चल रहे उत्पाद नहीं.",
+    relatedNote: "आज Life Stage तकनीकी रूप से अन्य Newon व्यवसायों से जुड़ा नहीं है, और डेटा अपने आप साझा नहीं होता. नीचे आगे की दिशा है.",
   }
 );
 
@@ -544,13 +583,13 @@ const id = pack(
     title: "Dari remaja hingga 70-an,\nperjalanan yang terus berlanjut.",
     lead: "Pertanyaan dan pilihan bergeser di setiap tahap. Life Stage menghubungkan apa yang sesuai dengan masa kini.",
     items: decades([
-      ["10", "01", "Remaja", "Waktu menemukan kemungkinan", "Menjelajahi arah lewat jalur, sekolah, dan pengalaman baru.", ["Menjelajahi jalur", "Informasi sekolah", "Belajar dan tumbuh", "Bersiap mandiri"]],
-      ["20", "02", "20-an", "Waktu memulai hidup sendiri", "Kemandirian, pekerjaan pertama, dan awal hari-hari yang Anda bangun sendiri.", ["Kemandirian dan hunian", "Pekerjaan pertama dan hidup dewasa", "Uang sehari-hari", "Pengembangan diri"]],
-      ["30", "03", "30-an", "Waktu memperluas dasar hidup", "Keseimbangan kerja dan hidup, serta pilihan rumah, relasi, dan keluarga.", ["Kerja dan karier", "Hunian dan uang", "Relasi dan keluarga", "Kesehatan dan hari-hari"]],
-      ["40", "04", "40-an", "Waktu merancang keseimbangan", "Kerja, keluarga, dan tujuan pribadi dipegang bersama sambil menatap ke depan.", ["Karier dan kerja", "Keluarga dan hidup", "Mengelola uang", "Kesehatan dan pertumbuhan"]],
-      ["50", "05", "50-an", "Waktu menyiapkan kemungkinan baru", "Memakai pengalaman untuk menyiapkan bab berikutnya dan peluang baru.", ["Transisi hidup", "Menyiapkan tahun-tahun berikutnya", "Kesehatan", "Belajar dan kegiatan baru"]],
-      ["60", "06", "60-an", "Waktu memulai hari-hari baru", "Merancang hidup setelah kerja, serta kegiatan dan relasi baru.", ["Hidup setelah kerja", "Waktu luang dan hobi", "Hari yang sehat", "Kegiatan sosial"]],
-      ["70", "07", "70-an", "Waktu terus hidup dengan cara Anda", "Melanjutkan hari yang sehat dan hidup, sesuai cara Anda ingin tinggal.", ["Hidup sehat", "Waktu luang dan komunitas", "Informasi hidup setempat", "Mencari dukungan hidup bila perlu"]],
+      ["10", "01", "Remaja", "Waktu menemukan kemungkinan", "Menjelajahi arah lewat jalur, sekolah, dan pengalaman baru.", ["Menjelajahi jalur", "Ujian dan sekolah", "Belajar dan tumbuh", "Kualifikasi", "Dasar keuangan", "Hobi dan klub", "Bersiap mandiri"]],
+      ["20", "02", "20-an", "Waktu memulai hidup sendiri", "Kemandirian, pekerjaan pertama, dan awal hari-hari yang Anda bangun sendiri.", ["Universitas", "Pekerjaan pertama dan hidup dewasa", "Tinggal sendiri dan hunian", "Uang dan aset", "Pengembangan diri", "Hubungan dan persiapan menikah", "Layanan hidup"]],
+      ["30", "03", "30-an", "Waktu memperluas dasar hidup", "Keseimbangan kerja dan hidup, serta pilihan rumah, relasi, dan keluarga.", ["Pertumbuhan karier", "Pernikahan dan pengantin baru", "Mencari hunian", "Kehamilan, kelahiran, pengasuhan", "Keuangan rumah", "Asuransi dan keuangan", "Kehidupan keluarga", "Kesehatan dan hari-hari"]],
+      ["40", "04", "40-an", "Waktu merancang keseimbangan", "Kerja, keluarga, dan tujuan pribadi dipegang bersama sambil menatap ke depan.", ["Pendidikan anak", "Karier dan transisi", "Hunian dan aset", "Pemeriksaan kesehatan", "Mendukung orang tua", "Waktu luang keluarga", "Menyiapkan masa tua"]],
+      ["50", "05", "50-an", "Waktu menyiapkan kemungkinan baru", "Memakai pengalaman untuk menyiapkan bab berikutnya dan peluang baru.", ["Rencana pensiun", "Kerja ulang dan pekerjaan kedua", "Pensiun dan aset", "Kesehatan", "Hobi dan perjalanan", "Kemandirian anak", "Perawatan orang tua", "Belajar dan kegiatan baru"]],
+      ["60", "06", "60-an", "Waktu memulai hari-hari baru", "Merancang hidup setelah kerja, serta kegiatan dan relasi baru.", ["Hidup setelah kerja", "Kerja ulang dan kegiatan sosial", "Kesehatan dan olahraga", "Pensiun dan kesejahteraan", "Perjalanan dan hobi", "Pertemuan lokal", "Bantuan digital"]],
+      ["70", "07", "70-an", "Waktu terus hidup dengan cara Anda", "Melanjutkan hari yang sehat dan hidup, sesuai cara Anda ingin tinggal.", ["Kesehatan dan keamanan", "Kenyamanan sehari-hari", "Waktu luang dan komunitas", "Hubungan keluarga", "Dukungan hunian", "Perawatan dan kesejahteraan", "Informasi hidup setempat"]],
     ]),
   },
   {
@@ -600,6 +639,8 @@ const id = pack(
     plannedFlag: "Direncanakan",
     journeyNote: "Tema tiap dekade adalah contoh umum. Tempo dan kebutuhan berbeda untuk setiap orang.",
     ongilNote: "Jika perawatan atau dukungan hidup diperlukan, ke depan kami dapat menghubungkan dengan Ongil. Kedua layanan belum terhubung hari ini.",
+    areasNote: "Enam area di bawah adalah rencana ekspansi belakangan, bukan produk yang sudah beroperasi.",
+    relatedNote: "Hari ini Life Stage tidak terhubung secara teknis dengan bisnis Newon lain, dan data tidak dibagikan otomatis. Berikut adalah arah ke depan.",
   }
 );
 

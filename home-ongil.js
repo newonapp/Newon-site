@@ -3,6 +3,19 @@
   if (!root) return;
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  root.classList.add("is-js");
+
+  function showDecade(id) {
+    if (!id) return;
+    root.querySelectorAll("[data-nls-decade]").forEach(function (btn) {
+      var on = btn.getAttribute("data-nls-decade") === id;
+      btn.classList.toggle("is-on", on);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    root.querySelectorAll("[data-nls-decade-card]").forEach(function (card) {
+      card.classList.toggle("is-on", card.getAttribute("data-nls-decade-card") === id);
+    });
+  }
 
   root.addEventListener("click", function (e) {
     var node = e.target.closest("[data-nls-hero-node]");
@@ -14,6 +27,11 @@
       var age = root.querySelector("[data-nls-now-age]");
       if (title) title.textContent = node.getAttribute("data-name") || "";
       if (age) age.textContent = node.getAttribute("data-age") || "";
+      return;
+    }
+    var decade = e.target.closest("[data-nls-decade]");
+    if (decade && root.contains(decade)) {
+      showDecade(decade.getAttribute("data-nls-decade"));
       return;
     }
     var scroll = e.target.closest("[data-nls-scroll]");
