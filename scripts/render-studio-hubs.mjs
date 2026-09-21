@@ -167,8 +167,8 @@ function aiBody(flat, flatEn, lang) {
   return renderAiShowcaseBody(flat, flatEn, lang);
 }
 
-function saasBody(flat, flatEn) {
-  return renderSaasShowcaseBody(flat, flatEn);
+function saasBody(flat, flatEn, lang) {
+  return renderSaasShowcaseBody(flat, flatEn, lang);
 }
 
 function gamesBody(flat, flatEn, lang) {
@@ -314,16 +314,16 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.aiSeoTitle"),
     description: pick(f, fe, "studio.aiMetaDescription"),
     body: aiBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260921cai1" />',
-    extraScripts: '<script src="/ai-hub.js?v=20260921cai1" defer></script>',
+    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260921aihero3" />',
+    extraScripts: '<script src="/ai-hub.js?v=20260921aihero3" defer></script>',
   }),
   saas: (f, fe, l) => ({
     activeNav: "products",
     title: pick(f, fe, "studio.saasSeoTitle"),
     description: pick(f, fe, "studio.saasMetaDescription"),
     body: saasBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/saas-hub.css?v=20260825saas7" />',
-    extraScripts: '<script src="/saas-hub.js?v=20260825saas6" defer></script>',
+    extraCss: '<link rel="stylesheet" href="/saas-hub.css?v=20260921plus1" />',
+    extraScripts: '<script src="/saas-hub.js?v=20260921plus1" defer></script>',
   }),
   games: (f, fe, l) => ({
     activeNav: "products",
@@ -361,7 +361,10 @@ const HUB_RENDERERS = {
   }),
 };
 
+const ONLY_HUB = process.argv[2] || "";
+
 for (const hub of HUB_PAGES) {
+  if (ONLY_HUB && hub !== ONLY_HUB) continue;
   writeRootRedirect(hub);
   const fn = HUB_RENDERERS[hub];
   for (const lang of LANGS) {
@@ -379,6 +382,9 @@ for (const hub of HUB_PAGES) {
   }
 }
 
+if (ONLY_HUB) {
+  console.log("render-studio-hubs OK:", ONLY_HUB);
+} else {
 // Tool detail pages
 for (const tool of TOOLS) {
   const building = tool.status === "building" || tool.status === "coming_soon";
@@ -434,3 +440,4 @@ renderResources();
 renderStudioPillars();
 
 console.log("render-studio-hubs OK:", HUB_PAGES.join(", "));
+}

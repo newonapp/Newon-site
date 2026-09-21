@@ -1,0 +1,775 @@
+#!/usr/bin/env node
+/** Patch Consumer /saas/ Newon+ package copy into locales/*.json studio keys. */
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+
+const COPY = {
+  ko: {
+    saasSeoTitle: "Newon+ 구독 패키지 | Newon Consumer",
+    saasMetaDescription:
+      "생산성, 금융, 성장, 웰빙, 가족, 라이프, 얼티메이트. 일상의 목적에 맞게 구성된 Newon+ 구독 패키지를 소개합니다.",
+    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroTitle: "나에게 필요한 앱을,\n하나의 패키지로.",
+    plusHeroLead:
+      "금융부터 생산성, 건강과 가족까지.\n일상의 목적에 맞게 구성된 Newon의 구독 패키지를 만나보세요.",
+    plusHeroCtaPackages: "구독 패키지 둘러보기",
+    plusHeroCtaPlus: "Newon+ 알아보기",
+    plusPackagesEyebrow: "PACKAGES",
+    plusPackagesTitle: "7개의 Newon+ 구독 패키지",
+    plusPackagesLead: "목적에 맞는 앱을 묶어 구독할 수 있습니다.",
+    plusDetailCta: "자세히 보기",
+    plusSubscribeCta: "구독하기",
+    plusLearnCta: "Newon+ 알아보기",
+    plusDetailLabel: "패키지 상세",
+    plusClose: "닫기",
+    plusTogetherTitle: "함께 활용하는 방법",
+    plusPerksTitle: "구독 혜택",
+    plusPerks:
+      "Newon+ 계정으로 Newon 앱에 로그인할 수 있습니다.\nNewon+에서 구독 패키지를 선택하고 관리할 수 있습니다.\n패키지에 포함된 앱을 허브에서 확인하고 설치할 수 있습니다.",
+    plusMonthly: "월간",
+    plusYearly: "연간",
+    plusPriceInApp: "월간·연간 구독 가격은 Newon+ 앱에서 확인할 수 있습니다.",
+    plusPriceInAppShort: "앱에서 확인",
+    plusCompareCaption: "Newon+ 패키지 비교",
+    plusColPackage: "패키지",
+    plusColCount: "앱",
+    plusColApps: "포함 앱",
+    plusColPrice: "요금",
+    plusCompareEyebrow: "PRICING",
+    plusCompareTitle: "패키지 한눈에 비교",
+    plusCompareLead:
+      "표시된 앱 구성은 Newon+에서 확인된 패키지 기준입니다. 판매 가격은 앱에서 확인할 수 있습니다.",
+    plusHubTitle: "하나의 계정으로 연결되는 일상, Newon+",
+    plusHubLead:
+      "Newon+는 다양한 Newon 생활 앱을 하나의 계정으로 이용하고, 필요한 구독 패키지를 관리할 수 있도록 연결하는 통합 플랫폼입니다.",
+    plusHubFeats:
+      "하나의 계정으로 Newon 앱에 로그인합니다.\nNewon+에서 구독 패키지를 선택하고 관리합니다.\n패키지에 포함된 앱을 확인하고 설치할 수 있습니다.",
+    plusPack_productivity_name: "생산성 패키지",
+    plusPack_productivity_lead: "습관, 목표, 일일 기록을 하나의 패키지로 이어갑니다.",
+    plusPack_productivity_purpose:
+      "하루의 습관과 목표, 숫자 기록을 함께 관리하고 싶은 분을 위한 패키지입니다.",
+    plusPack_productivity_use: "OX MONTH로 하루 습관을 체크합니다.\nGoalUp으로 목표를 계획합니다.\nCountUp으로 매일의 숫자를 기록합니다.",
+    plusPack_productivity_together:
+      "OX MONTH로 오늘 할 일을 간단히 확인하고, GoalUp에서 더 큰 목표를 나눕니다.\nCountUp으로 반복 수치를 남겨 습관과 목표의 진행을 눈으로 확인합니다.",
+    plusPack_finance_name: "금융 패키지",
+    plusPack_finance_lead: "가계부, 절약, 구독 관리를 하나의 패키지로 모읍니다.",
+    plusPack_finance_purpose: "소비를 기록하고 구독과 절약을 함께 보고 싶은 분을 위한 패키지입니다.",
+    plusPack_finance_use: "Savy로 지출을 기록합니다.\nPiggyUp으로 절약 목표를 이어갑니다.\nSubPing으로 구독을 정리합니다.",
+    plusPack_finance_together:
+      "Savy에서 소비를 남기고, SubPing으로 반복 결제를 확인합니다.\nPiggyUp으로 아끼고 싶은 금액을 목표로 두고 습관을 이어갑니다.",
+    plusPack_growth_name: "성장 패키지",
+    plusPack_growth_lead: "습관과 목표에 절약 습관까지 더합니다.",
+    plusPack_growth_purpose: "자기 관리와 절약을 함께 키우고 싶은 분을 위한 패키지입니다.",
+    plusPack_growth_use:
+      "OX MONTH로 습관을 유지합니다.\nGoalUp으로 목표를 관리합니다.\nCountUp으로 기록을 쌓습니다.\nPiggyUp으로 절약을 이어갑니다.",
+    plusPack_growth_together:
+      "습관·목표·숫자 기록으로 하루를 정리하고, PiggyUp으로 절약 목표를 같은 루틴에 붙입니다.",
+    plusPack_wellbeing_name: "웰빙 패키지",
+    plusPack_wellbeing_lead: "복약, 기록, 목표로 건강 루틴을 이어갑니다.",
+    plusPack_wellbeing_purpose: "복약과 일상 기록, 목표를 건강 루틴으로 묶고 싶은 분을 위한 패키지입니다.",
+    plusPack_wellbeing_use: "Pillmate로 복약을 챙깁니다.\nCountUp으로 건강 수치를 기록합니다.\nGoalUp으로 건강 목표를 이어갑니다.",
+    plusPack_wellbeing_together:
+      "Pillmate로 복용을 놓치지 않고, CountUp과 GoalUp으로 건강 관련 숫자와 목표를 함께 봅니다.",
+    plusPack_family_name: "가족 패키지",
+    plusPack_family_lead: "아이, 복약, 반려동물을 가족과 함께 기록합니다.",
+    plusPack_family_purpose: "가족과 반려동물의 하루를 한곳에서 챙기고 싶은 분을 위한 패키지입니다.",
+    plusPack_family_use: "BabyLog로 아이의 성장을 기록합니다.\nPillmate로 복약을 관리합니다.\nPetLog로 반려동물의 하루를 남깁니다.",
+    plusPack_family_together:
+      "아이와 반려동물의 기록을 각각 남기고, Pillmate로 가족의 복약 일정을 함께 확인합니다.",
+    plusPack_life_name: "라이프 패키지",
+    plusPack_life_lead: "일과 돈의 기본 앱을 하나의 패키지로 이용합니다.",
+    plusPack_life_purpose: "생산성과 소비의 기본 앱을 함께 쓰고 싶은 분을 위한 패키지입니다.",
+    plusPack_life_use:
+      "OX MONTH, GoalUp, CountUp으로 하루를 정리합니다.\nPiggyUp과 Savy로 절약과 지출을 함께 봅니다.",
+    plusPack_life_together:
+      "습관·목표·기록을 유지하면서 Savy와 PiggyUp으로 소비와 절약을 같은 일상 위에 둡니다.",
+    plusPack_ultimate_name: "얼티메이트 패키지",
+    plusPack_ultimate_lead: "Newon+에 연결된 생활 앱을 모두 이용합니다.",
+    plusPack_ultimate_purpose: "Newon+ 멤버십에 포함된 생활 앱을 하나의 패키지로 이용하고 싶은 분을 위한 구성입니다.",
+    plusPack_ultimate_use: "생산성, 금융, 건강, 가족, 여행, 푸드, 피트니스 앱을 한 계정으로 이용합니다.",
+    plusPack_ultimate_together:
+      "Newon+에서 패키지를 선택한 뒤, 필요한 앱을 설치하고 같은 계정으로 로그인합니다.",
+  },
+  en: {
+    saasSeoTitle: "Newon+ subscription packages | Newon Consumer",
+    saasMetaDescription:
+      "Productivity, Finance, Growth, Wellbeing, Family, Life, and Ultimate. Explore Newon+ subscription packages built around everyday goals.",
+    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroTitle: "The apps you need,\nin one package.",
+    plusHeroLead:
+      "From finance and productivity to health and family.\nDiscover Newon subscription packages shaped around everyday purposes.",
+    plusHeroCtaPackages: "Browse packages",
+    plusHeroCtaPlus: "Learn about Newon+",
+    plusPackagesEyebrow: "PACKAGES",
+    plusPackagesTitle: "7 Newon+ subscription packages",
+    plusPackagesLead: "Subscribe to the apps that match your purpose.",
+    plusDetailCta: "Learn more",
+    plusSubscribeCta: "Subscribe",
+    plusLearnCta: "Learn about Newon+",
+    plusDetailLabel: "Package details",
+    plusClose: "Close",
+    plusTogetherTitle: "How to use them together",
+    plusPerksTitle: "Subscription benefits",
+    plusPerks:
+      "Sign in to Newon apps with your Newon+ account.\nChoose and manage subscription packages in Newon+.\nSee and install the apps included in your package from the hub.",
+    plusMonthly: "Monthly",
+    plusYearly: "Yearly",
+    plusPriceInApp: "Monthly and yearly prices are available in the Newon+ app.",
+    plusPriceInAppShort: "See in app",
+    plusCompareCaption: "Newon+ package comparison",
+    plusColPackage: "Package",
+    plusColCount: "Apps",
+    plusColApps: "Included apps",
+    plusColPrice: "Price",
+    plusCompareEyebrow: "PRICING",
+    plusCompareTitle: "Compare packages",
+    plusCompareLead:
+      "App lists follow the packages confirmed in Newon+. Live prices are shown in the app.",
+    plusHubTitle: "Everyday life on one account, Newon+",
+    plusHubLead:
+      "Newon+ is the platform that lets you use Newon lifestyle apps with one account and manage the subscription packages you need.",
+    plusHubFeats:
+      "Sign in to Newon apps with one account.\nChoose and manage subscription packages in Newon+.\nSee and install the apps included in your package.",
+    plusPack_productivity_name: "Productivity package",
+    plusPack_productivity_lead: "Habits, goals, and daily logs in one package.",
+    plusPack_productivity_purpose: "For anyone who wants to keep habits, goals, and number logs together.",
+    plusPack_productivity_use: "Check daily habits with OX MONTH.\nPlan goals with GoalUp.\nLog daily numbers with CountUp.",
+    plusPack_productivity_together:
+      "Use OX MONTH for today’s simple check, then break larger goals in GoalUp.\nKeep repeating numbers in CountUp so progress stays visible.",
+    plusPack_finance_name: "Finance package",
+    plusPack_finance_lead: "Budgeting, saving, and subscription tracking in one package.",
+    plusPack_finance_purpose: "For anyone who wants spending, subscriptions, and saving in one place.",
+    plusPack_finance_use: "Record spending with Savy.\nKeep saving goals with PiggyUp.\nOrganize subscriptions with SubPing.",
+    plusPack_finance_together:
+      "Log spending in Savy and review recurring payments in SubPing.\nSet a saving target in PiggyUp and keep the habit going.",
+    plusPack_growth_name: "Growth package",
+    plusPack_growth_lead: "Habits and goals, plus a saving habit.",
+    plusPack_growth_purpose: "For anyone growing self-management and saving together.",
+    plusPack_growth_use:
+      "Keep habits with OX MONTH.\nManage goals with GoalUp.\nBuild a log with CountUp.\nKeep saving with PiggyUp.",
+    plusPack_growth_together:
+      "Organize the day with habits, goals, and numbers, then attach a saving goal in PiggyUp to the same routine.",
+    plusPack_wellbeing_name: "Wellbeing package",
+    plusPack_wellbeing_lead: "Medication, logs, and goals for a health routine.",
+    plusPack_wellbeing_purpose: "For anyone who wants medication, daily logs, and goals in one health routine.",
+    plusPack_wellbeing_use: "Stay on medication with Pillmate.\nLog health numbers with CountUp.\nKeep health goals with GoalUp.",
+    plusPack_wellbeing_together:
+      "Use Pillmate so doses are not missed, and review health numbers and goals in CountUp and GoalUp.",
+    plusPack_family_name: "Family package",
+    plusPack_family_lead: "Record a child, medication, and a pet with family.",
+    plusPack_family_purpose: "For anyone who wants family and pet days in one place.",
+    plusPack_family_use: "Record a child’s growth with BabyLog.\nManage medication with Pillmate.\nLog a pet’s day with PetLog.",
+    plusPack_family_together:
+      "Keep child and pet records separately, and check family medication schedules in Pillmate.",
+    plusPack_life_name: "Life package",
+    plusPack_life_lead: "Core work and money apps in one package.",
+    plusPack_life_purpose: "For anyone who wants core productivity and spending apps together.",
+    plusPack_life_use:
+      "Organize the day with OX MONTH, GoalUp, and CountUp.\nSee saving and spending together with PiggyUp and Savy.",
+    plusPack_life_together:
+      "Keep habits, goals, and logs, then place spending and saving on the same day with Savy and PiggyUp.",
+    plusPack_ultimate_name: "Ultimate package",
+    plusPack_ultimate_lead: "Use every lifestyle app connected to Newon+.",
+    plusPack_ultimate_purpose: "For anyone who wants all lifestyle apps included in the Newon+ membership as one package.",
+    plusPack_ultimate_use: "Use productivity, finance, health, family, travel, food, and fitness apps with one account.",
+    plusPack_ultimate_together:
+      "Choose a package in Newon+, install the apps you need, and sign in with the same account.",
+  },
+  ja: {
+    saasSeoTitle: "Newon+ サブスクパッケージ | Newon Consumer",
+    saasMetaDescription:
+      "生産性、金融、成長、ウェルビーイング、家族、ライフ、アルティメット。日常の目的に合わせた Newon+ パッケージをご紹介します。",
+    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroTitle: "必要なアプリを、\nひとつのパッケージで。",
+    plusHeroLead:
+      "金融から生産性、健康と家族まで。\n日常の目的に合わせて組まれた Newon のサブスクパッケージをご覧ください。",
+    plusHeroCtaPackages: "パッケージを見る",
+    plusHeroCtaPlus: "Newon+ を知る",
+    plusPackagesEyebrow: "PACKAGES",
+    plusPackagesTitle: "7つの Newon+ パッケージ",
+    plusPackagesLead: "目的に合うアプリをまとめて購読できます。",
+    plusDetailCta: "詳しく見る",
+    plusSubscribeCta: "購読する",
+    plusLearnCta: "Newon+ を知る",
+    plusDetailLabel: "パッケージ詳細",
+    plusClose: "閉じる",
+    plusTogetherTitle: "一緒に使う方法",
+    plusPerksTitle: "購読特典",
+    plusPerks:
+      "Newon+ アカウントで Newon アプリにログインできます。\nNewon+ でパッケージを選んで管理できます。\nパッケージに含まれるアプリをハブで確認し、インストールできます。",
+    plusMonthly: "月額",
+    plusYearly: "年額",
+    plusPriceInApp: "月額・年額の価格は Newon+ アプリで確認できます。",
+    plusPriceInAppShort: "アプリで確認",
+    plusCompareCaption: "Newon+ パッケージ比較",
+    plusColPackage: "パッケージ",
+    plusColCount: "アプリ",
+    plusColApps: "含まれるアプリ",
+    plusColPrice: "料金",
+    plusCompareEyebrow: "PRICING",
+    plusCompareTitle: "パッケージを比較",
+    plusCompareLead: "表示しているアプリ構成は Newon+ で確認されたパッケージに基づきます。販売価格はアプリで確認できます。",
+    plusHubTitle: "ひとつのアカウントでつながる日常、Newon+",
+    plusHubLead:
+      "Newon+ は、さまざまな Newon 生活アプリをひとつのアカウントで利用し、必要な購読パッケージを管理できるようにつなぐ統合プラットフォームです。",
+    plusHubFeats:
+      "ひとつのアカウントで Newon アプリにログインします。\nNewon+ でパッケージを選んで管理します。\n含まれるアプリを確認してインストールできます。",
+    plusPack_productivity_name: "生産性パッケージ",
+    plusPack_productivity_lead: "習慣、目標、毎日の記録をひとつのパッケージで。",
+    plusPack_productivity_purpose: "習慣と目標、数値記録を一緒に管理したい方向けです。",
+    plusPack_productivity_use: "OX MONTH で一日の習慣を確認します。\nGoalUp で目標を計画します。\nCountUp で毎日の数字を記録します。",
+    plusPack_productivity_together:
+      "OX MONTH で今日のチェックを行い、GoalUp で大きな目標を分けます。\nCountUp で繰り返しの数字を残し、進みを目で確認します。",
+    plusPack_finance_name: "金融パッケージ",
+    plusPack_finance_lead: "家計、節約、サブスク管理をひとつのパッケージに。",
+    plusPack_finance_purpose: "支出とサブスク、節約を一緒に見たい方向けです。",
+    plusPack_finance_use: "Savy で支出を記録します。\nPiggyUp で節約目標を続けます。\nSubPing でサブスクを整理します。",
+    plusPack_finance_together:
+      "Savy で支出を残し、SubPing で繰り返し決済を確認します。\nPiggyUp で節約したい金額を目標にして習慣を続けます。",
+    plusPack_growth_name: "成長パッケージ",
+    plusPack_growth_lead: "習慣と目標に、節約の習慣を加えます。",
+    plusPack_growth_purpose: "自己管理と節約を一緒に伸ばしたい方向けです。",
+    plusPack_growth_use:
+      "OX MONTH で習慣を続けます。\nGoalUp で目標を管理します。\nCountUp で記録を積みます。\nPiggyUp で節約を続けます。",
+    plusPack_growth_together: "習慣・目標・数字で一日を整え、PiggyUp で節約目標を同じルーティンに加えます。",
+    plusPack_wellbeing_name: "ウェルビーイングパッケージ",
+    plusPack_wellbeing_lead: "服薬、記録、目標で健康ルーティンを続けます。",
+    plusPack_wellbeing_purpose: "服薬と日常記録、目標を健康ルーティンにまとめたい方向けです。",
+    plusPack_wellbeing_use: "Pillmate で服薬を管理します。\nCountUp で健康の数字を記録します。\nGoalUp で健康目標を続けます。",
+    plusPack_wellbeing_together:
+      "Pillmate で飲み忘れを防ぎ、CountUp と GoalUp で健康の数字と目標を一緒に見ます。",
+    plusPack_family_name: "家族パッケージ",
+    plusPack_family_lead: "子ども、服薬、ペットを家族と一緒に記録します。",
+    plusPack_family_purpose: "家族とペットの一日を一か所で整えたい方向けです。",
+    plusPack_family_use: "BabyLog で子どもの成長を記録します。\nPillmate で服薬を管理します。\nPetLog でペットの一日を残します。",
+    plusPack_family_together: "子どもとペットの記録をそれぞれ残し、Pillmate で家族の服薬予定を確認します。",
+    plusPack_life_name: "ライフパッケージ",
+    plusPack_life_lead: "仕事とお金の基本アプリをひとつのパッケージで。",
+    plusPack_life_purpose: "生産性と消費の基本アプリを一緒に使いたい方向けです。",
+    plusPack_life_use:
+      "OX MONTH、GoalUp、CountUp で一日を整えます。\nPiggyUp と Savy で節約と支出を一緒に見ます。",
+    plusPack_life_together:
+      "習慣・目標・記録を続けながら、Savy と PiggyUp で消費と節約を同じ日常に置きます。",
+    plusPack_ultimate_name: "アルティメットパッケージ",
+    plusPack_ultimate_lead: "Newon+ につながる生活アプリをすべて利用します。",
+    plusPack_ultimate_purpose: "Newon+ メンバーシップに含まれる生活アプリをひとつのパッケージで使いたい方向けです。",
+    plusPack_ultimate_use: "生産性、金融、健康、家族、旅行、フード、フィットネスのアプリをひとつのアカウントで利用します。",
+    plusPack_ultimate_together: "Newon+ でパッケージを選び、必要なアプリをインストールして同じアカウントでログインします。",
+  },
+  es: {
+    saasSeoTitle: "Paquetes de suscripción Newon+ | Newon Consumer",
+    saasMetaDescription:
+      "Productividad, Finanzas, Crecimiento, Bienestar, Familia, Vida y Ultimate. Descubre los paquetes Newon+ pensados para el día a día.",
+    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroTitle: "Las apps que necesitas,\nen un solo paquete.",
+    plusHeroLead:
+      "De las finanzas y la productividad a la salud y la familia.\nDescubre los paquetes de suscripción de Newon pensados para cada propósito.",
+    plusHeroCtaPackages: "Ver paquetes",
+    plusHeroCtaPlus: "Conocer Newon+",
+    plusPackagesEyebrow: "PACKAGES",
+    plusPackagesTitle: "7 paquetes de suscripción Newon+",
+    plusPackagesLead: "Suscríbete a las apps que encajan con tu propósito.",
+    plusDetailCta: "Ver más",
+    plusSubscribeCta: "Suscribirse",
+    plusLearnCta: "Conocer Newon+",
+    plusDetailLabel: "Detalle del paquete",
+    plusClose: "Cerrar",
+    plusTogetherTitle: "Cómo usarlas juntas",
+    plusPerksTitle: "Beneficios de la suscripción",
+    plusPerks:
+      "Inicia sesión en las apps de Newon con tu cuenta Newon+.\nElige y gestiona paquetes de suscripción en Newon+.\nConsulta e instala las apps incluidas desde el hub.",
+    plusMonthly: "Mensual",
+    plusYearly: "Anual",
+    plusPriceInApp: "Los precios mensual y anual se pueden ver en la app Newon+.",
+    plusPriceInAppShort: "Ver en la app",
+    plusCompareCaption: "Comparación de paquetes Newon+",
+    plusColPackage: "Paquete",
+    plusColCount: "Apps",
+    plusColApps: "Apps incluidas",
+    plusColPrice: "Precio",
+    plusCompareEyebrow: "PRICING",
+    plusCompareTitle: "Compara los paquetes",
+    plusCompareLead:
+      "La lista de apps sigue los paquetes confirmados en Newon+. Los precios de venta se ven en la app.",
+    plusHubTitle: "El día a día en una cuenta, Newon+",
+    plusHubLead:
+      "Newon+ es la plataforma que te permite usar las apps de vida de Newon con una cuenta y gestionar los paquetes de suscripción que necesitas.",
+    plusHubFeats:
+      "Inicia sesión en las apps de Newon con una cuenta.\nElige y gestiona paquetes en Newon+.\nConsulta e instala las apps incluidas.",
+    plusPack_productivity_name: "Paquete Productividad",
+    plusPack_productivity_lead: "Hábitos, metas y registros diarios en un paquete.",
+    plusPack_productivity_purpose: "Para quien quiere gestionar hábitos, metas y números juntos.",
+    plusPack_productivity_use: "Revisa hábitos diarios con OX MONTH.\nPlanifica metas con GoalUp.\nRegistra números con CountUp.",
+    plusPack_productivity_together:
+      "Usa OX MONTH para el chequeo de hoy y GoalUp para metas más grandes.\nDeja números repetidos en CountUp para ver el avance.",
+    plusPack_finance_name: "Paquete Finanzas",
+    plusPack_finance_lead: "Presupuesto, ahorro y suscripciones en un paquete.",
+    plusPack_finance_purpose: "Para quien quiere ver gasto, suscripciones y ahorro juntos.",
+    plusPack_finance_use: "Registra gastos con Savy.\nSigue metas de ahorro con PiggyUp.\nOrganiza suscripciones con SubPing.",
+    plusPack_finance_together:
+      "Anota el gasto en Savy y revisa pagos recurrentes en SubPing.\nPon un objetivo de ahorro en PiggyUp y mantén el hábito.",
+    plusPack_growth_name: "Paquete Crecimiento",
+    plusPack_growth_lead: "Hábitos y metas, más el hábito de ahorrar.",
+    plusPack_growth_purpose: "Para quien quiere crecer en autogestión y ahorro.",
+    plusPack_growth_use:
+      "Mantén hábitos con OX MONTH.\nGestiona metas con GoalUp.\nAcumula registros con CountUp.\nSigue ahorrando con PiggyUp.",
+    plusPack_growth_together:
+      "Ordena el día con hábitos, metas y números, y añade una meta de ahorro en PiggyUp a la misma rutina.",
+    plusPack_wellbeing_name: "Paquete Bienestar",
+    plusPack_wellbeing_lead: "Medicación, registros y metas para una rutina de salud.",
+    plusPack_wellbeing_purpose: "Para quien quiere unir medicación, registros y metas en una rutina de salud.",
+    plusPack_wellbeing_use: "Cuida la medicación con Pillmate.\nRegistra cifras de salud con CountUp.\nSigue metas de salud con GoalUp.",
+    plusPack_wellbeing_together:
+      "Usa Pillmate para no olvidar tomas, y revisa cifras y metas de salud en CountUp y GoalUp.",
+    plusPack_family_name: "Paquete Familia",
+    plusPack_family_lead: "Registra al niño, la medicación y la mascota en familia.",
+    plusPack_family_purpose: "Para quien quiere cuidar el día de la familia y la mascota en un solo lugar.",
+    plusPack_family_use: "Registra el crecimiento con BabyLog.\nGestiona la medicación con Pillmate.\nGuarda el día de la mascota con PetLog.",
+    plusPack_family_together:
+      "Deja registros del niño y de la mascota por separado, y revisa la medicación familiar en Pillmate.",
+    plusPack_life_name: "Paquete Vida",
+    plusPack_life_lead: "Las apps básicas de trabajo y dinero en un paquete.",
+    plusPack_life_purpose: "Para quien quiere las apps básicas de productividad y gasto juntas.",
+    plusPack_life_use:
+      "Ordena el día con OX MONTH, GoalUp y CountUp.\nMira ahorro y gasto juntos con PiggyUp y Savy.",
+    plusPack_life_together:
+      "Mantén hábitos, metas y registros, y sitúa gasto y ahorro en el mismo día con Savy y PiggyUp.",
+    plusPack_ultimate_name: "Paquete Ultimate",
+    plusPack_ultimate_lead: "Usa todas las apps de vida conectadas a Newon+.",
+    plusPack_ultimate_purpose: "Para quien quiere todas las apps de vida incluidas en Newon+ en un solo paquete.",
+    plusPack_ultimate_use: "Usa apps de productividad, finanzas, salud, familia, viajes, comida y fitness con una cuenta.",
+    plusPack_ultimate_together: "Elige un paquete en Newon+, instala las apps que necesites e inicia sesión con la misma cuenta.",
+  },
+  "pt-br": {
+    saasSeoTitle: "Pacotes de assinatura Newon+ | Newon Consumer",
+    saasMetaDescription:
+      "Produtividade, Finanças, Crescimento, Bem-estar, Família, Vida e Ultimate. Conheça os pacotes Newon+ feitos para o dia a dia.",
+    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroTitle: "Os apps que você precisa,\nem um só pacote.",
+    plusHeroLead:
+      "Das finanças e da produtividade à saúde e à família.\nConheça os pacotes de assinatura da Newon pensados para cada propósito.",
+    plusHeroCtaPackages: "Ver pacotes",
+    plusHeroCtaPlus: "Conhecer o Newon+",
+    plusPackagesEyebrow: "PACKAGES",
+    plusPackagesTitle: "7 pacotes de assinatura Newon+",
+    plusPackagesLead: "Assine os apps que combinam com o seu propósito.",
+    plusDetailCta: "Saiba mais",
+    plusSubscribeCta: "Assinar",
+    plusLearnCta: "Conhecer o Newon+",
+    plusDetailLabel: "Detalhes do pacote",
+    plusClose: "Fechar",
+    plusTogetherTitle: "Como usar juntos",
+    plusPerksTitle: "Benefícios da assinatura",
+    plusPerks:
+      "Entre nos apps da Newon com a conta Newon+.\nEscolha e gerencie pacotes de assinatura no Newon+.\nVeja e instale os apps incluídos no hub.",
+    plusMonthly: "Mensal",
+    plusYearly: "Anual",
+    plusPriceInApp: "Os preços mensal e anual podem ser vistos no app Newon+.",
+    plusPriceInAppShort: "Ver no app",
+    plusCompareCaption: "Comparação de pacotes Newon+",
+    plusColPackage: "Pacote",
+    plusColCount: "Apps",
+    plusColApps: "Apps incluídos",
+    plusColPrice: "Preço",
+    plusCompareEyebrow: "PRICING",
+    plusCompareTitle: "Compare os pacotes",
+    plusCompareLead:
+      "A lista de apps segue os pacotes confirmados no Newon+. Os preços de venda aparecem no app.",
+    plusHubTitle: "O dia a dia em uma conta, Newon+",
+    plusHubLead:
+      "O Newon+ é a plataforma que permite usar os apps de vida da Newon com uma conta e gerenciar os pacotes de assinatura de que você precisa.",
+    plusHubFeats:
+      "Entre nos apps da Newon com uma conta.\nEscolha e gerencie pacotes no Newon+.\nVeja e instale os apps incluídos.",
+    plusPack_productivity_name: "Pacote Produtividade",
+    plusPack_productivity_lead: "Hábitos, metas e registros diários em um pacote.",
+    plusPack_productivity_purpose: "Para quem quer gerenciar hábitos, metas e números juntos.",
+    plusPack_productivity_use: "Confira hábitos diários com o OX MONTH.\nPlaneje metas com o GoalUp.\nRegistre números com o CountUp.",
+    plusPack_productivity_together:
+      "Use o OX MONTH para o check de hoje e o GoalUp para metas maiores.\nDeixe números repetidos no CountUp para ver o progresso.",
+    plusPack_finance_name: "Pacote Finanças",
+    plusPack_finance_lead: "Orçamento, economia e assinaturas em um pacote.",
+    plusPack_finance_purpose: "Para quem quer ver gastos, assinaturas e economia juntos.",
+    plusPack_finance_use: "Registre gastos com o Savy.\nMantenha metas de economia com o PiggyUp.\nOrganize assinaturas com o SubPing.",
+    plusPack_finance_together:
+      "Anote gastos no Savy e revise pagamentos recorrentes no SubPing.\nDefina uma meta de economia no PiggyUp e mantenha o hábito.",
+    plusPack_growth_name: "Pacote Crescimento",
+    plusPack_growth_lead: "Hábitos e metas, mais o hábito de economizar.",
+    plusPack_growth_purpose: "Para quem quer crescer em autogestão e economia.",
+    plusPack_growth_use:
+      "Mantenha hábitos com o OX MONTH.\nGerencie metas com o GoalUp.\nAcumule registros com o CountUp.\nContinue economizando com o PiggyUp.",
+    plusPack_growth_together:
+      "Organize o dia com hábitos, metas e números e acrescente uma meta de economia no PiggyUp à mesma rotina.",
+    plusPack_wellbeing_name: "Pacote Bem-estar",
+    plusPack_wellbeing_lead: "Medicação, registros e metas para uma rotina de saúde.",
+    plusPack_wellbeing_purpose: "Para quem quer unir medicação, registros e metas em uma rotina de saúde.",
+    plusPack_wellbeing_use: "Cuide da medicação com o Pillmate.\nRegistre números de saúde com o CountUp.\nMantenha metas de saúde com o GoalUp.",
+    plusPack_wellbeing_together:
+      "Use o Pillmate para não esquecer doses e revise números e metas de saúde no CountUp e no GoalUp.",
+    plusPack_family_name: "Pacote Família",
+    plusPack_family_lead: "Registre a criança, a medicação e o pet em família.",
+    plusPack_family_purpose: "Para quem quer cuidar do dia da família e do pet em um só lugar.",
+    plusPack_family_use: "Registre o crescimento com o BabyLog.\nGerencie a medicação com o Pillmate.\nGuarde o dia do pet com o PetLog.",
+    plusPack_family_together:
+      "Deixe registros da criança e do pet em separado e confira a medicação da família no Pillmate.",
+    plusPack_life_name: "Pacote Vida",
+    plusPack_life_lead: "Os apps básicos de trabalho e dinheiro em um pacote.",
+    plusPack_life_purpose: "Para quem quer os apps básicos de produtividade e gastos juntos.",
+    plusPack_life_use:
+      "Organize o dia com OX MONTH, GoalUp e CountUp.\nVeja economia e gastos juntos com PiggyUp e Savy.",
+    plusPack_life_together:
+      "Mantenha hábitos, metas e registros e coloque gastos e economia no mesmo dia com Savy e PiggyUp.",
+    plusPack_ultimate_name: "Pacote Ultimate",
+    plusPack_ultimate_lead: "Use todos os apps de vida ligados ao Newon+.",
+    plusPack_ultimate_purpose: "Para quem quer todos os apps de vida incluídos no Newon+ em um só pacote.",
+    plusPack_ultimate_use: "Use apps de produtividade, finanças, saúde, família, viagem, comida e fitness com uma conta.",
+    plusPack_ultimate_together: "Escolha um pacote no Newon+, instale os apps de que precisa e entre com a mesma conta.",
+  },
+  fr: {
+    saasSeoTitle: "Forfaits d’abonnement Newon+ | Newon Consumer",
+    saasMetaDescription:
+      "Productivité, Finance, Croissance, Bien-être, Famille, Vie et Ultimate. Découvrez les forfaits Newon+ conçus pour le quotidien.",
+    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroTitle: "Les apps dont vous avez besoin,\nen un seul forfait.",
+    plusHeroLead:
+      "De la finance et de la productivité à la santé et à la famille.\nDécouvrez les forfaits d’abonnement Newon conçus pour chaque usage.",
+    plusHeroCtaPackages: "Parcourir les forfaits",
+    plusHeroCtaPlus: "Découvrir Newon+",
+    plusPackagesEyebrow: "PACKAGES",
+    plusPackagesTitle: "7 forfaits d’abonnement Newon+",
+    plusPackagesLead: "Abonnez-vous aux apps qui correspondent à votre usage.",
+    plusDetailCta: "En savoir plus",
+    plusSubscribeCta: "S’abonner",
+    plusLearnCta: "Découvrir Newon+",
+    plusDetailLabel: "Détail du forfait",
+    plusClose: "Fermer",
+    plusTogetherTitle: "Comment les utiliser ensemble",
+    plusPerksTitle: "Avantages de l’abonnement",
+    plusPerks:
+      "Connectez-vous aux apps Newon avec votre compte Newon+.\nChoisissez et gérez vos forfaits dans Newon+.\nConsultez et installez les apps incluses depuis le hub.",
+    plusMonthly: "Mensuel",
+    plusYearly: "Annuel",
+    plusPriceInApp: "Les tarifs mensuels et annuels sont visibles dans l’app Newon+.",
+    plusPriceInAppShort: "Voir dans l’app",
+    plusCompareCaption: "Comparaison des forfaits Newon+",
+    plusColPackage: "Forfait",
+    plusColCount: "Apps",
+    plusColApps: "Apps incluses",
+    plusColPrice: "Tarif",
+    plusCompareEyebrow: "PRICING",
+    plusCompareTitle: "Comparer les forfaits",
+    plusCompareLead:
+      "Les listes d’apps suivent les forfaits confirmés dans Newon+. Les prix de vente sont indiqués dans l’app.",
+    plusHubTitle: "Le quotidien sur un compte, Newon+",
+    plusHubLead:
+      "Newon+ est la plateforme qui permet d’utiliser les apps de vie Newon avec un seul compte et de gérer les forfaits d’abonnement dont vous avez besoin.",
+    plusHubFeats:
+      "Connectez-vous aux apps Newon avec un seul compte.\nChoisissez et gérez vos forfaits dans Newon+.\nConsultez et installez les apps incluses.",
+    plusPack_productivity_name: "Forfait Productivité",
+    plusPack_productivity_lead: "Habitudes, objectifs et journaux quotidiens dans un forfait.",
+    plusPack_productivity_purpose: "Pour gérer ensemble habitudes, objectifs et chiffres.",
+    plusPack_productivity_use: "Cochez les habitudes du jour avec OX MONTH.\nPlanifiez vos objectifs avec GoalUp.\nNotez les chiffres du jour avec CountUp.",
+    plusPack_productivity_together:
+      "Utilisez OX MONTH pour le contrôle du jour, puis découpez les plus grands objectifs dans GoalUp.\nGardez les chiffres répétitifs dans CountUp pour voir la progression.",
+    plusPack_finance_name: "Forfait Finance",
+    plusPack_finance_lead: "Budget, économies et abonnements dans un forfait.",
+    plusPack_finance_purpose: "Pour voir ensemble dépenses, abonnements et économies.",
+    plusPack_finance_use: "Enregistrez les dépenses avec Savy.\nTenez vos objectifs d’épargne avec PiggyUp.\nOrganisez les abonnements avec SubPing.",
+    plusPack_finance_together:
+      "Notez les dépenses dans Savy et vérifiez les paiements récurrents dans SubPing.\nFixez un objectif d’épargne dans PiggyUp et gardez l’habitude.",
+    plusPack_growth_name: "Forfait Croissance",
+    plusPack_growth_lead: "Habitudes et objectifs, plus l’habitude d’épargner.",
+    plusPack_growth_purpose: "Pour faire grandir ensemble autogestion et épargne.",
+    plusPack_growth_use:
+      "Gardez vos habitudes avec OX MONTH.\nGérez vos objectifs avec GoalUp.\nConstruisez un journal avec CountUp.\nContinuez d’épargner avec PiggyUp.",
+    plusPack_growth_together:
+      "Organisez la journée avec habitudes, objectifs et chiffres, puis ajoutez un objectif d’épargne PiggyUp à la même routine.",
+    plusPack_wellbeing_name: "Forfait Bien-être",
+    plusPack_wellbeing_lead: "Médicaments, journaux et objectifs pour une routine santé.",
+    plusPack_wellbeing_purpose: "Pour relier médicaments, journaux et objectifs dans une routine santé.",
+    plusPack_wellbeing_use: "Suivez les prises avec Pillmate.\nNotez les chiffres santé avec CountUp.\nTenez vos objectifs santé avec GoalUp.",
+    plusPack_wellbeing_together:
+      "Utilisez Pillmate pour ne pas manquer une prise, et relisez chiffres et objectifs santé dans CountUp et GoalUp.",
+    plusPack_family_name: "Forfait Famille",
+    plusPack_family_lead: "Enregistrez l’enfant, les médicaments et l’animal en famille.",
+    plusPack_family_purpose: "Pour suivre le quotidien de la famille et de l’animal au même endroit.",
+    plusPack_family_use: "Notez la croissance avec BabyLog.\nGérez les médicaments avec Pillmate.\nGardez la journée de l’animal avec PetLog.",
+    plusPack_family_together:
+      "Tenez les journaux de l’enfant et de l’animal séparément, et vérifiez le planning des médicaments dans Pillmate.",
+    plusPack_life_name: "Forfait Vie",
+    plusPack_life_lead: "Les apps essentielles du travail et de l’argent dans un forfait.",
+    plusPack_life_purpose: "Pour utiliser ensemble les apps essentielles de productivité et de dépenses.",
+    plusPack_life_use:
+      "Organisez la journée avec OX MONTH, GoalUp et CountUp.\nVoyez épargne et dépenses ensemble avec PiggyUp et Savy.",
+    plusPack_life_together:
+      "Gardez habitudes, objectifs et journaux, puis placez dépenses et épargne sur la même journée avec Savy et PiggyUp.",
+    plusPack_ultimate_name: "Forfait Ultimate",
+    plusPack_ultimate_lead: "Utilisez toutes les apps de vie liées à Newon+.",
+    plusPack_ultimate_purpose: "Pour utiliser toutes les apps de vie incluses dans Newon+ en un seul forfait.",
+    plusPack_ultimate_use: "Utilisez les apps de productivité, finance, santé, famille, voyage, nourriture et fitness avec un compte.",
+    plusPack_ultimate_together: "Choisissez un forfait dans Newon+, installez les apps dont vous avez besoin et connectez-vous avec le même compte.",
+  },
+  de: {
+    saasSeoTitle: "Newon+ Abo-Pakete | Newon Consumer",
+    saasMetaDescription:
+      "Produktivität, Finanzen, Wachstum, Wohlbefinden, Familie, Leben und Ultimate. Entdecken Sie Newon+ Pakete für den Alltag.",
+    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroTitle: "Die Apps, die Sie brauchen,\nin einem Paket.",
+    plusHeroLead:
+      "Von Finanzen und Produktivität bis Gesundheit und Familie.\nEntdecken Sie Newon-Abo-Pakete für den Alltag.",
+    plusHeroCtaPackages: "Pakete ansehen",
+    plusHeroCtaPlus: "Newon+ kennenlernen",
+    plusPackagesEyebrow: "PACKAGES",
+    plusPackagesTitle: "7 Newon+ Abo-Pakete",
+    plusPackagesLead: "Abonnieren Sie die Apps, die zu Ihrem Zweck passen.",
+    plusDetailCta: "Mehr erfahren",
+    plusSubscribeCta: "Abonnieren",
+    plusLearnCta: "Newon+ kennenlernen",
+    plusDetailLabel: "Paketdetails",
+    plusClose: "Schließen",
+    plusTogetherTitle: "So nutzen Sie sie zusammen",
+    plusPerksTitle: "Abo-Vorteile",
+    plusPerks:
+      "Melden Sie sich mit Ihrem Newon+-Konto in Newon-Apps an.\nWählen und verwalten Sie Abo-Pakete in Newon+.\nSehen und installieren Sie enthaltene Apps im Hub.",
+    plusMonthly: "Monatlich",
+    plusYearly: "Jährlich",
+    plusPriceInApp: "Monats- und Jahrespreise sehen Sie in der Newon+-App.",
+    plusPriceInAppShort: "In der App prüfen",
+    plusCompareCaption: "Newon+ Paketvergleich",
+    plusColPackage: "Paket",
+    plusColCount: "Apps",
+    plusColApps: "Enthaltene Apps",
+    plusColPrice: "Preis",
+    plusCompareEyebrow: "PRICING",
+    plusCompareTitle: "Pakete vergleichen",
+    plusCompareLead:
+      "Die App-Listen folgen den in Newon+ bestätigten Paketen. Verkaufspreise stehen in der App.",
+    plusHubTitle: "Der Alltag auf einem Konto, Newon+",
+    plusHubLead:
+      "Newon+ ist die Plattform, mit der Sie Newon-Alltags-Apps mit einem Konto nutzen und die benötigten Abo-Pakete verwalten.",
+    plusHubFeats:
+      "Melden Sie sich mit einem Konto in Newon-Apps an.\nWählen und verwalten Sie Pakete in Newon+.\nSehen und installieren Sie enthaltene Apps.",
+    plusPack_productivity_name: "Produktivitätspaket",
+    plusPack_productivity_lead: "Gewohnheiten, Ziele und Tageslogs in einem Paket.",
+    plusPack_productivity_purpose: "Für alle, die Gewohnheiten, Ziele und Zahlen zusammenhalten wollen.",
+    plusPack_productivity_use: "Tägliche Gewohnheiten mit OX MONTH prüfen.\nZiele mit GoalUp planen.\nTägliche Zahlen mit CountUp festhalten.",
+    plusPack_productivity_together:
+      "Nutzen Sie OX MONTH für den Check von heute und GoalUp für größere Ziele.\nHalten Sie wiederkehrende Zahlen in CountUp fest, damit Fortschritt sichtbar bleibt.",
+    plusPack_finance_name: "Finanzpaket",
+    plusPack_finance_lead: "Haushaltsbuch, Sparen und Abo-Verwaltung in einem Paket.",
+    plusPack_finance_purpose: "Für alle, die Ausgaben, Abos und Sparen zusammen sehen wollen.",
+    plusPack_finance_use: "Ausgaben mit Savy erfassen.\nSparziele mit PiggyUp halten.\nAbos mit SubPing ordnen.",
+    plusPack_finance_together:
+      "Notieren Sie Ausgaben in Savy und prüfen Sie wiederkehrende Zahlungen in SubPing.\nSetzen Sie in PiggyUp ein Sparziel und halten Sie die Gewohnheit.",
+    plusPack_growth_name: "Wachstumspaket",
+    plusPack_growth_lead: "Gewohnheiten und Ziele, plus Spargewohnheit.",
+    plusPack_growth_purpose: "Für alle, die Selbstmanagement und Sparen gemeinsam ausbauen wollen.",
+    plusPack_growth_use:
+      "Gewohnheiten mit OX MONTH halten.\nZiele mit GoalUp verwalten.\nLogs mit CountUp aufbauen.\nSparen mit PiggyUp fortsetzen.",
+    plusPack_growth_together:
+      "Ordnen Sie den Tag mit Gewohnheiten, Zielen und Zahlen und hängen Sie ein Sparziel in PiggyUp an dieselbe Routine.",
+    plusPack_wellbeing_name: "Wohlbefinden-Paket",
+    plusPack_wellbeing_lead: "Medikation, Logs und Ziele für eine Gesundheitsroutine.",
+    plusPack_wellbeing_purpose: "Für alle, die Medikation, Logs und Ziele in einer Gesundheitsroutine bündeln wollen.",
+    plusPack_wellbeing_use: "Medikation mit Pillmate im Blick behalten.\nGesundheitszahlen mit CountUp loggen.\nGesundheitsziele mit GoalUp halten.",
+    plusPack_wellbeing_together:
+      "Nutzen Sie Pillmate, damit Einnahmen nicht fehlen, und prüfen Sie Zahlen und Ziele in CountUp und GoalUp.",
+    plusPack_family_name: "Familienpaket",
+    plusPack_family_lead: "Kind, Medikation und Haustier gemeinsam festhalten.",
+    plusPack_family_purpose: "Für alle, die den Tag von Familie und Haustier an einem Ort behalten wollen.",
+    plusPack_family_use: "Wachstum mit BabyLog festhalten.\nMedikation mit Pillmate verwalten.\nDen Tag des Haustiers mit PetLog sichern.",
+    plusPack_family_together:
+      "Führen Sie Kind- und Haustierlogs getrennt und prüfen Sie den Medikationsplan der Familie in Pillmate.",
+    plusPack_life_name: "Leben-Paket",
+    plusPack_life_lead: "Die Basis-Apps für Arbeit und Geld in einem Paket.",
+    plusPack_life_purpose: "Für alle, die Basis-Apps für Produktivität und Ausgaben zusammen nutzen wollen.",
+    plusPack_life_use:
+      "Ordnen Sie den Tag mit OX MONTH, GoalUp und CountUp.\nSehen Sie Sparen und Ausgaben zusammen mit PiggyUp und Savy.",
+    plusPack_life_together:
+      "Halten Sie Gewohnheiten, Ziele und Logs und legen Sie Ausgaben und Sparen mit Savy und PiggyUp auf denselben Tag.",
+    plusPack_ultimate_name: "Ultimate-Paket",
+    plusPack_ultimate_lead: "Nutzen Sie alle mit Newon+ verbundenen Alltags-Apps.",
+    plusPack_ultimate_purpose: "Für alle, die alle in Newon+ enthaltenen Alltags-Apps als ein Paket nutzen wollen.",
+    plusPack_ultimate_use: "Nutzen Sie Produktivitäts-, Finanz-, Gesundheits-, Familien-, Reise-, Food- und Fitness-Apps mit einem Konto.",
+    plusPack_ultimate_together: "Wählen Sie ein Paket in Newon+, installieren Sie die benötigten Apps und melden Sie sich mit demselben Konto an.",
+  },
+  hi: {
+    saasSeoTitle: "Newon+ सब्सक्रिप्शन पैकेज | Newon Consumer",
+    saasMetaDescription:
+      "प्रोडक्टिविटी, वित्त, ग्रोथ, वेलबीइंग, परिवार, लाइफ और अल्टिमेट। रोज़मर्रा के उद्देश्य के हिसाब से बने Newon+ पैकेज देखें।",
+    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroTitle: "जरूरी ऐप्स,\nएक पैकेज में।",
+    plusHeroLead:
+      "वित्त और प्रोडक्टिविटी से स्वास्थ्य और परिवार तक।\nरोज़मर्रा के उद्देश्य के हिसाब से बने Newon सब्सक्रिप्शन पैकेज देखें।",
+    plusHeroCtaPackages: "पैकेज देखें",
+    plusHeroCtaPlus: "Newon+ जानें",
+    plusPackagesEyebrow: "PACKAGES",
+    plusPackagesTitle: "7 Newon+ सब्सक्रिप्शन पैकेज",
+    plusPackagesLead: "अपने उद्देश्य से मेल खाने वाले ऐप्स सब्सक्राइब करें।",
+    plusDetailCta: "और जानें",
+    plusSubscribeCta: "सब्सक्राइब करें",
+    plusLearnCta: "Newon+ जानें",
+    plusDetailLabel: "पैकेज विवरण",
+    plusClose: "बंद करें",
+    plusTogetherTitle: "इन्हें साथ कैसे इस्तेमाल करें",
+    plusPerksTitle: "सब्सक्रिप्शन लाभ",
+    plusPerks:
+      "Newon+ खाते से Newon ऐप्स में साइन इन करें।\nNewon+ में सब्सक्रिप्शन पैकेज चुनें और प्रबंधित करें।\nहब से शामिल ऐप्स देखें और इंस्टॉल करें।",
+    plusMonthly: "मासिक",
+    plusYearly: "वार्षिक",
+    plusPriceInApp: "मासिक और वार्षिक कीमत Newon+ ऐप में देखी जा सकती है।",
+    plusPriceInAppShort: "ऐप में देखें",
+    plusCompareCaption: "Newon+ पैकेज तुलना",
+    plusColPackage: "पैकेज",
+    plusColCount: "ऐप्स",
+    plusColApps: "शामिल ऐप्स",
+    plusColPrice: "कीमत",
+    plusCompareEyebrow: "PRICING",
+    plusCompareTitle: "पैकेज तुलना करें",
+    plusCompareLead: "ऐप सूची Newon+ में पुष्टि किए गए पैकेज पर आधारित है। बिक्री कीमत ऐप में दिखती है।",
+    plusHubTitle: "एक खाते से जुड़ा रोज़, Newon+",
+    plusHubLead:
+      "Newon+ वह प्लेटफ़ॉर्म है जिससे आप Newon जीवन ऐप्स को एक खाते से इस्तेमाल कर सकते हैं और जरूरी सब्सक्रिप्शन पैकेज प्रबंधित कर सकते हैं।",
+    plusHubFeats:
+      "एक खाते से Newon ऐप्स में साइन इन करें।\nNewon+ में पैकेज चुनें और प्रबंधित करें।\nशामिल ऐप्स देखें और इंस्टॉल करें।",
+    plusPack_productivity_name: "प्रोडक्टिविटी पैकेज",
+    plusPack_productivity_lead: "आदत, लक्ष्य और दैनिक लॉग एक पैकेज में।",
+    plusPack_productivity_purpose: "उन लोगों के लिए जो आदत, लक्ष्य और संख्या लॉग साथ रखना चाहते हैं।",
+    plusPack_productivity_use: "OX MONTH से रोज़ की आदत जाँचें।\nGoalUp से लक्ष्य योजना बनाएँ।\nCountUp से रोज़ की संख्या लिखें।",
+    plusPack_productivity_together:
+      "आज की जाँच OX MONTH से करें और बड़े लक्ष्य GoalUp में बाँटें।\nCountUp में दोहराई जाने वाली संख्या रखें ताकि प्रगति दिखे।",
+    plusPack_finance_name: "वित्त पैकेज",
+    plusPack_finance_lead: "बजट, बचत और सब्सक्रिप्शन एक पैकेज में।",
+    plusPack_finance_purpose: "उन लोगों के लिए जो खर्च, सब्सक्रिप्शन और बचत साथ देखना चाहते हैं।",
+    plusPack_finance_use: "Savy से खर्च लिखें।\nPiggyUp से बचत लक्ष्य जारी रखें।\nSubPing से सब्सक्रिप्शन व्यवस्थित करें।",
+    plusPack_finance_together:
+      "Savy में खर्च लिखें और SubPing में दोहराए जाने वाले भुगतान देखें।\nPiggyUp में बचत लक्ष्य रखें और आदत जारी रखें।",
+    plusPack_growth_name: "ग्रोथ पैकेज",
+    plusPack_growth_lead: "आदत और लक्ष्य, साथ में बचत की आदत।",
+    plusPack_growth_purpose: "उन लोगों के लिए जो आत्म-प्रबंधन और बचत साथ बढ़ाना चाहते हैं।",
+    plusPack_growth_use:
+      "OX MONTH से आदत बनाए रखें।\nGoalUp से लक्ष्य प्रबंधित करें।\nCountUp से लॉग बनाएँ।\nPiggyUp से बचत जारी रखें।",
+    plusPack_growth_together:
+      "आदत, लक्ष्य और संख्या से दिन व्यवस्थित करें, फिर उसी दिनचर्या में PiggyUp का बचत लक्ष्य जोड़ें।",
+    plusPack_wellbeing_name: "वेलबीइंग पैकेज",
+    plusPack_wellbeing_lead: "दवा, लॉग और लक्ष्य से स्वास्थ्य दिनचर्या।",
+    plusPack_wellbeing_purpose: "उन लोगों के लिए जो दवा, लॉग और लक्ष्य को स्वास्थ्य दिनचर्या में जोड़ना चाहते हैं।",
+    plusPack_wellbeing_use: "Pillmate से दवा संभालें।\nCountUp से स्वास्थ्य संख्या लिखें।\nGoalUp से स्वास्थ्य लक्ष्य जारी रखें।",
+    plusPack_wellbeing_together:
+      "Pillmate से खुराक न छूटे, और CountUp व GoalUp में स्वास्थ्य संख्या और लक्ष्य देखें।",
+    plusPack_family_name: "परिवार पैकेज",
+    plusPack_family_lead: "बच्चे, दवा और पालतू को परिवार के साथ दर्ज करें।",
+    plusPack_family_purpose: "उन लोगों के लिए जो परिवार और पालतू का दिन एक जगह संभालना चाहते हैं।",
+    plusPack_family_use: "BabyLog से बच्चे की वृद्धि लिखें।\nPillmate से दवा प्रबंधित करें।\nPetLog से पालतू का दिन सहेजें।",
+    plusPack_family_together:
+      "बच्चे और पालतू के रिकॉर्ड अलग रखें, और Pillmate में परिवार की दवा समय-सारणी देखें।",
+    plusPack_life_name: "लाइफ पैकेज",
+    plusPack_life_lead: "काम और पैसे के मुख्य ऐप्स एक पैकेज में।",
+    plusPack_life_purpose: "उन लोगों के लिए जो प्रोडक्टिविटी और खर्च के मुख्य ऐप्स साथ चाहते हैं।",
+    plusPack_life_use:
+      "OX MONTH, GoalUp और CountUp से दिन व्यवस्थित करें।\nPiggyUp और Savy से बचत और खर्च साथ देखें।",
+    plusPack_life_together:
+      "आदत, लक्ष्य और लॉग बनाए रखें, फिर Savy और PiggyUp से खर्च और बचत को उसी दिन पर रखें।",
+    plusPack_ultimate_name: "अल्टिमेट पैकेज",
+    plusPack_ultimate_lead: "Newon+ से जुड़े सभी जीवन ऐप्स इस्तेमाल करें।",
+    plusPack_ultimate_purpose: "उन लोगों के लिए जो Newon+ में शामिल सभी जीवन ऐप्स एक पैकेज में चाहते हैं।",
+    plusPack_ultimate_use: "एक खाते से प्रोडक्टिविटी, वित्त, स्वास्थ्य, परिवार, यात्रा, भोजन और फिटनेस ऐप्स इस्तेमाल करें।",
+    plusPack_ultimate_together: "Newon+ में पैकेज चुनें, जरूरी ऐप्स इंस्टॉल करें और उसी खाते से साइन इन करें।",
+  },
+  id: {
+    saasSeoTitle: "Paket langganan Newon+ | Newon Consumer",
+    saasMetaDescription:
+      "Produktivitas, Keuangan, Pertumbuhan, Kesejahteraan, Keluarga, Hidup, dan Ultimate. Jelajahi paket Newon+ untuk kebutuhan sehari-hari.",
+    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroTitle: "Aplikasi yang Anda butuhkan,\ndalam satu paket.",
+    plusHeroLead:
+      "Dari keuangan dan produktivitas hingga kesehatan dan keluarga.\nTemukan paket langganan Newon yang disusun sesuai tujuan sehari-hari.",
+    plusHeroCtaPackages: "Lihat paket",
+    plusHeroCtaPlus: "Pelajari Newon+",
+    plusPackagesEyebrow: "PACKAGES",
+    plusPackagesTitle: "7 paket langganan Newon+",
+    plusPackagesLead: "Berlangganan aplikasi yang sesuai tujuan Anda.",
+    plusDetailCta: "Selengkapnya",
+    plusSubscribeCta: "Berlangganan",
+    plusLearnCta: "Pelajari Newon+",
+    plusDetailLabel: "Detail paket",
+    plusClose: "Tutup",
+    plusTogetherTitle: "Cara menggunakannya bersama",
+    plusPerksTitle: "Manfaat langganan",
+    plusPerks:
+      "Masuk ke aplikasi Newon dengan akun Newon+.\nPilih dan kelola paket langganan di Newon+.\nLihat dan pasang aplikasi yang termasuk dari hub.",
+    plusMonthly: "Bulanan",
+    plusYearly: "Tahunan",
+    plusPriceInApp: "Harga bulanan dan tahunan dapat dilihat di aplikasi Newon+.",
+    plusPriceInAppShort: "Lihat di aplikasi",
+    plusCompareCaption: "Perbandingan paket Newon+",
+    plusColPackage: "Paket",
+    plusColCount: "Aplikasi",
+    plusColApps: "Aplikasi termasuk",
+    plusColPrice: "Harga",
+    plusCompareEyebrow: "PRICING",
+    plusCompareTitle: "Bandingkan paket",
+    plusCompareLead:
+      "Daftar aplikasi mengikuti paket yang dikonfirmasi di Newon+. Harga jual ditampilkan di aplikasi.",
+    plusHubTitle: "Sehari-hari dalam satu akun, Newon+",
+    plusHubLead:
+      "Newon+ adalah platform yang memungkinkan Anda memakai aplikasi kehidupan Newon dengan satu akun dan mengelola paket langganan yang Anda butuhkan.",
+    plusHubFeats:
+      "Masuk ke aplikasi Newon dengan satu akun.\nPilih dan kelola paket di Newon+.\nLihat dan pasang aplikasi yang termasuk.",
+    plusPack_productivity_name: "Paket Produktivitas",
+    plusPack_productivity_lead: "Kebiasaan, tujuan, dan catatan harian dalam satu paket.",
+    plusPack_productivity_purpose: "Untuk siapa pun yang ingin mengelola kebiasaan, tujuan, dan angka bersama.",
+    plusPack_productivity_use: "Cek kebiasaan harian dengan OX MONTH.\nRencanakan tujuan dengan GoalUp.\nCatat angka harian dengan CountUp.",
+    plusPack_productivity_together:
+      "Gunakan OX MONTH untuk cek hari ini, lalu pecah tujuan lebih besar di GoalUp.\nSimpan angka berulang di CountUp agar progres terlihat.",
+    plusPack_finance_name: "Paket Keuangan",
+    plusPack_finance_lead: "Anggaran, tabungan, dan langganan dalam satu paket.",
+    plusPack_finance_purpose: "Untuk siapa pun yang ingin melihat pengeluaran, langganan, dan tabungan bersama.",
+    plusPack_finance_use: "Catat pengeluaran dengan Savy.\nLanjutkan target tabungan dengan PiggyUp.\nSusun langganan dengan SubPing.",
+    plusPack_finance_together:
+      "Catat pengeluaran di Savy dan tinjau pembayaran berulang di SubPing.\nTetapkan target tabungan di PiggyUp dan jaga kebiasaannya.",
+    plusPack_growth_name: "Paket Pertumbuhan",
+    plusPack_growth_lead: "Kebiasaan dan tujuan, plus kebiasaan menabung.",
+    plusPack_growth_purpose: "Untuk siapa pun yang ingin menumbuhkan pengelolaan diri dan tabungan bersama.",
+    plusPack_growth_use:
+      "Jaga kebiasaan dengan OX MONTH.\nKelola tujuan dengan GoalUp.\nBangun catatan dengan CountUp.\nLanjutkan menabung dengan PiggyUp.",
+    plusPack_growth_together:
+      "Atur hari dengan kebiasaan, tujuan, dan angka, lalu tempelkan target tabungan PiggyUp pada rutinitas yang sama.",
+    plusPack_wellbeing_name: "Paket Kesejahteraan",
+    plusPack_wellbeing_lead: "Obat, catatan, dan tujuan untuk rutinitas kesehatan.",
+    plusPack_wellbeing_purpose: "Untuk siapa pun yang ingin menggabungkan obat, catatan, dan tujuan dalam rutinitas kesehatan.",
+    plusPack_wellbeing_use: "Jaga obat dengan Pillmate.\nCatat angka kesehatan dengan CountUp.\nLanjutkan tujuan kesehatan dengan GoalUp.",
+    plusPack_wellbeing_together:
+      "Gunakan Pillmate agar dosis tidak terlewat, lalu tinjau angka dan tujuan kesehatan di CountUp dan GoalUp.",
+    plusPack_family_name: "Paket Keluarga",
+    plusPack_family_lead: "Catat anak, obat, dan hewan peliharaan bersama keluarga.",
+    plusPack_family_purpose: "Untuk siapa pun yang ingin merawat hari keluarga dan hewan peliharaan di satu tempat.",
+    plusPack_family_use: "Catat pertumbuhan anak dengan BabyLog.\nKelola obat dengan Pillmate.\nSimpan hari hewan peliharaan dengan PetLog.",
+    plusPack_family_together:
+      "Simpan catatan anak dan hewan peliharaan secara terpisah, dan cek jadwal obat keluarga di Pillmate.",
+    plusPack_life_name: "Paket Hidup",
+    plusPack_life_lead: "Aplikasi inti kerja dan uang dalam satu paket.",
+    plusPack_life_purpose: "Untuk siapa pun yang ingin aplikasi inti produktivitas dan pengeluaran bersama.",
+    plusPack_life_use:
+      "Atur hari dengan OX MONTH, GoalUp, dan CountUp.\nLihat tabungan dan pengeluaran bersama dengan PiggyUp dan Savy.",
+    plusPack_life_together:
+      "Jaga kebiasaan, tujuan, dan catatan, lalu letakkan pengeluaran dan tabungan di hari yang sama dengan Savy dan PiggyUp.",
+    plusPack_ultimate_name: "Paket Ultimate",
+    plusPack_ultimate_lead: "Gunakan semua aplikasi kehidupan yang terhubung ke Newon+.",
+    plusPack_ultimate_purpose: "Untuk siapa pun yang ingin semua aplikasi kehidupan di keanggotaan Newon+ sebagai satu paket.",
+    plusPack_ultimate_use: "Gunakan aplikasi produktivitas, keuangan, kesehatan, keluarga, perjalanan, makanan, dan kebugaran dengan satu akun.",
+    plusPack_ultimate_together: "Pilih paket di Newon+, pasang aplikasi yang dibutuhkan, dan masuk dengan akun yang sama.",
+  },
+};
+
+for (const [lang, keys] of Object.entries(COPY)) {
+  const file = path.join(ROOT, "locales", `${lang}.json`);
+  const json = JSON.parse(fs.readFileSync(file, "utf8"));
+  json.studio = json.studio || {};
+  Object.assign(json.studio, keys);
+  fs.writeFileSync(file, `${JSON.stringify(json, null, 2)}\n`);
+  console.log("patched", lang);
+}
+console.log("apply-saas-plus-locales OK");

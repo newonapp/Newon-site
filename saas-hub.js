@@ -1,5 +1,5 @@
 /**
- * SaaS hub — reveal, principle lines, product nav active state, smooth anchors.
+ * Newon+ SaaS hub — reveal, package detail, smooth in-page scroll.
  */
 (function () {
   "use strict";
@@ -25,90 +25,73 @@
           io.unobserve(entry.target);
         });
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+      { rootMargin: "0px 0px -6% 0px", threshold: 0.08 }
     );
     nodes.forEach(function (el) {
-      if (el.getBoundingClientRect().top < window.innerHeight * 0.9) el.classList.add("is-in");
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.92) el.classList.add("is-in");
       else io.observe(el);
     });
-    window.setTimeout(function () {
-      nodes.forEach(function (el) {
-        el.classList.add("is-in");
-      });
-    }, 1400);
   }
 
-  function initPrinciple(root) {
-    var section = root.querySelector("[data-saas-principle]");
-    if (!section) return;
-    var lines = Array.prototype.slice.call(section.querySelectorAll("[data-principle-line]"));
-    if (reduceMotion() || !("IntersectionObserver" in window)) {
-      lines.forEach(function (el) {
-        el.classList.add("is-in");
-      });
-      return;
-    }
-    var io = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          lines.forEach(function (line, i) {
-            window.setTimeout(function () {
-              line.classList.add("is-in");
-            }, i * 100);
-          });
-          io.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.35 }
-    );
-    io.observe(section);
+  function initScroll(root) {
+    root.addEventListener("click", function (e) {
+      var a = e.target.closest("[data-plus-scroll]");
+      if (!a || !root.contains(a)) return;
+      var href = a.getAttribute("href") || "";
+      if (href.charAt(0) !== "#") return;
+      var target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "start" });
+    });
   }
 
-  function initNav(root) {
-    var links = Array.prototype.slice.call(root.querySelectorAll("[data-saas-nav]"));
-    var sections = Array.prototype.slice.call(root.querySelectorAll("[data-saas-section]"));
-    if (!links.length) return;
+  function initDetails(root) {
+    var panels = Array.prototype.slice.call(root.querySelectorAll("[data-plus-detail]"));
+    if (!panels.length) return;
 
-    function setActive(id) {
-      links.forEach(function (a) {
-        a.classList.toggle("is-active", a.getAttribute("data-saas-nav") === id);
+    function closeAll() {
+      panels.forEach(function (p) {
+        p.hidden = true;
+        p.classList.remove("is-open");
       });
     }
 
-    links.forEach(function (a) {
-      a.addEventListener("click", function (e) {
-        var id = a.getAttribute("href");
-        if (!id || id.charAt(0) !== "#") return;
-        var target = document.querySelector(id);
-        if (!target) return;
+    function open(id) {
+      closeAll();
+      var panel = root.querySelector('[data-plus-detail="' + id + '"]');
+      if (!panel) return;
+      panel.hidden = false;
+      panel.classList.add("is-open");
+      panel.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "nearest" });
+    }
+
+    root.addEventListener("click", function (e) {
+      var openBtn = e.target.closest("[data-plus-open]");
+      if (openBtn && root.contains(openBtn)) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "start" });
-        if (history.replaceState) history.replaceState(null, "", id);
-        setActive(a.getAttribute("data-saas-nav"));
-      });
+        open(openBtn.getAttribute("data-plus-open"));
+        return;
+      }
+      if (e.target.closest("[data-plus-close]")) {
+        e.preventDefault();
+        closeAll();
+      }
     });
 
-    if (!sections.length || !("IntersectionObserver" in window)) return;
-    var io = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          setActive(entry.target.id);
-        });
-      },
-      { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 }
-    );
-    sections.forEach(function (sec) {
-      io.observe(sec);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeAll();
     });
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll("[data-saas-page]").forEach(function (root) {
-      initReveal(root);
-      initPrinciple(root);
-      initNav(root);
-    });
-  });
+  function init() {
+    var root = document.querySelector("[data-plus-page], [data-saas-page]");
+    if (!root) return;
+    initReveal(root);
+    initScroll(root);
+    initDetails(root);
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
 })();
