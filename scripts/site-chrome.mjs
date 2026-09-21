@@ -66,7 +66,7 @@ const MENU_META = {
   ongil: {
     kicker: "nav.ongilMenuLabel",
     lead: "nav.ongilMenuLead",
-    footHref: "#story-ongil",
+    footHref: "ongil/",
     footKey: "nav.ongilExploreCta",
     footFb: "View Ongil →",
   },
@@ -123,6 +123,8 @@ export function resolveActiveNav(pathname = "") {
   const parts = p.split("/").filter(Boolean);
   const seg = parts[0] || "";
   if (seg === "ai") return "ai";
+  if (seg === "lifestage") return "lifestage";
+  if (seg === "ongil") return "ongil";
   if (["products", "apps", "saas", "games", "tools"].includes(seg)) return "consumer";
   if (seg === "business") {
     if (parts[1] === "creative" || parts[1] === "design") return "studio";

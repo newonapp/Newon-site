@@ -73,7 +73,7 @@ export const MEGA_DESTINATIONS = {
     {
       titleKey: "nav.ongilIntro",
       descKey: "nav.ongilIntroDesc",
-      href: "#story-ongil",
+      href: "ongil/",
       titleFb: "Ongil",
     },
   ],

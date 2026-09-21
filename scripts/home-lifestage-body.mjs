@@ -669,7 +669,7 @@ function ecoBlock(c, lang) {
     <article class="nls-ongil">
       <p class="nls-mini">${escapeHtml(c.eco.ongilName)} · ${escapeHtml(c.eco.ongilTitle)}</p>
       <p>${escapeHtml(c.eco.ongilLead)}</p>
-      <a class="nls-btn nls-btn--ghost" href="/${escapeHtml(lang)}/#story-ongil">${escapeHtml(c.eco.ongilCta)}</a>
+      <a class="nls-btn nls-btn--ghost" href="/${escapeHtml(lang)}/ongil/">${escapeHtml(c.eco.ongilCta)}</a>
     </article>
     <p class="nls-note">${escapeHtml(c.ui.futureLink)}</p>
   </div>`;

@@ -1,0 +1,2600 @@
+/* Ongil detail — scoped to #ongil-detail */
+.hub-page:has(#ongil-detail) {
+  padding: 0;
+  max-width: none;
+}
+#ongil-detail.nls,
+#ongil-detail.nls [id^="nls-"] {
+  scroll-margin-top: 5.5rem;
+}
+
+#ongil-detail.nls {
+  --nls-ink: #171717;
+  --nls-muted: #525252;
+  --nls-faint: #6b6b6b;
+  --nls-line: #ebebeb;
+  --nls-line-strong: #d8d8d8;
+  --nls-paper: #ffffff;
+  --nls-wash: #ffffff;
+  --nls-accent: #0a0a0a;
+  --nls-accent-ink: #0a0a0a;
+  --nls-accent-soft: #ffffff;
+  --nls-radius: 2px;
+  background: #fff;
+  color: var(--nls-ink);
+  padding: 0 0 clamp(3rem, 7vw, 5rem);
+  border-top: 0;
+}
+
+#ongil-detail.nls :where(h1, h2, h3, p, li, a, span, button, strong, em) {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+#ongil-detail.nls .nls__wrap {
+  width: min(1180px, calc(100% - 2.4rem));
+  margin: 0 auto;
+}
+
+#ongil-detail.nls .nls-block {
+  padding: clamp(2.75rem, 5.5vw, 4.5rem) 0;
+  border-top: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls .nls-crumb {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 1rem 0 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-crumb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#ongil-detail.nls .nls-crumb a:hover {
+  color: var(--nls-ink);
+}
+
+#ongil-detail.nls .nls-hero {
+  padding: clamp(1.25rem, 3vw, 2rem) 0 clamp(2.5rem, 5vw, 3.75rem);
+}
+
+#ongil-detail.nls .nls-hero__grid {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  #ongil-detail.nls .nls-hero__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+}
+
+#ongil-detail.nls .nls-kicker,
+#ongil-detail.nls .nls-theme,
+#ongil-detail.nls .nls-mini,
+#ongil-detail.nls .nls-panel__kicker,
+#ongil-detail.nls .nls-flowline {
+  margin: 0 0 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-kicker__sep {
+  margin: 0 0.55rem;
+  opacity: 0.45;
+}
+
+#ongil-detail.nls .nls-theme {
+  color: var(--nls-faint);
+  letter-spacing: 0.16em;
+}
+
+#ongil-detail.nls .nls-hero__title,
+#ongil-detail.nls .nls-title {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 3.85rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.18;
+}
+
+#ongil-detail.nls .nls-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.55rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+#ongil-detail.nls .nls-lead {
+  margin: 1.15rem 0 0;
+  max-width: 34rem;
+  font-size: clamp(1rem, 1.65vw, 1.1rem);
+  line-height: 1.65;
+  color: var(--nls-muted);
+  overflow-wrap: anywhere;
+}
+
+#ongil-detail.nls .nls-flowline {
+  margin: 1rem 0 0;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-note {
+  margin: 0.7rem 0 0;
+  max-width: 44rem;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.75rem;
+}
+
+#ongil-detail.nls .nls-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
+  border: 1px solid #1a1a1a;
+  border-radius: var(--nls-radius);
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+#ongil-detail.nls .nls-btn--ghost {
+  background: transparent;
+  color: var(--nls-ink);
+  border-color: var(--nls-line);
+}
+
+#ongil-detail.nls .nls-btn:hover,
+#ongil-detail.nls .nls-btn:focus-visible {
+  opacity: 0.88;
+  background: #0a0a0a;
+  border-color: #1a1a1a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-btn--ghost:hover,
+#ongil-detail.nls .nls-btn--ghost:focus-visible {
+  opacity: 1;
+  background: transparent;
+  color: var(--nls-ink);
+  border-color: color-mix(in srgb, var(--nls-ink) 35%, var(--nls-line));
+}
+
+#ongil-detail.nls .nls-badge {
+  display: inline-block;
+  margin: 0 0 0.85rem;
+  padding: 0.22rem 0.5rem;
+  border: 1px solid var(--nls-line);
+  border-radius: var(--nls-radius);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--nls-ink);
+  background: var(--nls-accent-soft);
+}
+
+#ongil-detail.nls .nls-badge--preview {
+  color: var(--nls-ink);
+  background: #fff;
+}
+
+#ongil-detail.nls .nls-visual,
+#ongil-detail.nls .nls-sv {
+  width: 100%;
+  min-width: 0;
+}
+
+#ongil-detail.nls .nls-sv__rail {
+  min-width: 0;
+}
+
+#ongil-detail.nls .nls-sv {
+  padding: 1.1rem 1.15rem 1.2rem;
+  border: 1px solid var(--nls-line);
+  border-radius: var(--nls-radius);
+  background: #fff;
+}
+
+#ongil-detail.nls .nls-sv__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-sv__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--nls-ink);
+}
+
+#ongil-detail.nls .nls-sv__live i {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #0a0a0a;
+}
+
+#ongil-detail.nls .nls-sv__rail {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.28rem;
+  margin-bottom: 0.9rem;
+  overflow-x: auto;
+}
+
+#ongil-detail.nls .nls-node {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1 1 0;
+  min-height: 44px;
+  min-width: 0;
+  padding: 0.4rem 0.28rem;
+  border: 1px solid var(--nls-line);
+  border-radius: var(--nls-radius);
+  background: #fff;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+#ongil-detail.nls .nls-node__n {
+  display: none;
+}
+
+#ongil-detail.nls .nls-node__age {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-node__name {
+  display: none;
+}
+
+#ongil-detail.nls .nls-node.is-active {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-node.is-active .nls-node__n,
+#ongil-detail.nls .nls-node.is-active .nls-node__age {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+#ongil-detail.nls .nls-sv__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem;
+}
+
+#ongil-detail.nls .nls-sv__grid article.is-on {
+  grid-column: 1 / -1;
+}
+
+#ongil-detail.nls .nls-sv__now {
+  grid-column: 1 / -1;
+}
+
+#ongil-detail.nls .nls-sv__grid strong {
+  display: block;
+  font-size: 0.92rem;
+  letter-spacing: -0.02em;
+}
+
+#ongil-detail.nls .nls-sv__grid article {
+  padding: 0.85rem 0.85rem;
+  border: 1px solid var(--nls-line);
+  border-radius: var(--nls-radius);
+  background: #fff;
+  min-width: 0;
+}
+
+#ongil-detail.nls .nls-sv__grid article.is-on {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-sv__k {
+  margin: 0 0 0.35rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-sv__grid article.is-on .nls-sv__k,
+#ongil-detail.nls .nls-sv__grid article.is-on em {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#ongil-detail.nls .nls-sv__grid strong {
+  display: block;
+  font-size: 0.86rem;
+  letter-spacing: -0.02em;
+}
+
+#ongil-detail.nls .nls-sv__grid em {
+  display: block;
+  margin-top: 0.2rem;
+  font-style: normal;
+  font-size: 0.75rem;
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls .nls-node:focus-visible,
+#ongil-detail.nls .nls-tab:focus-visible,
+#ongil-detail.nls .nls-know:focus-visible,
+#ongil-detail.nls .nls-venture:focus-visible,
+#ongil-detail.nls .nls-learn__btn:focus-visible,
+#ongil-detail.nls .nls-check:focus-within {
+  outline: 2px solid var(--nls-accent);
+  outline-offset: 2px;
+}
+
+#ongil-detail.nls .nls-split,
+#ongil-detail.nls .nls-two,
+#ongil-detail.nls .nls-know-detail,
+#ongil-detail.nls .nls-sit-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 1.25rem 1.75rem;
+  align-items: start;
+}
+
+#ongil-detail.nls .nls-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+#ongil-detail.nls .nls-tabs--ages {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
+}
+
+#ongil-detail.nls .nls-tab,
+#ongil-detail.nls .nls-know,
+#ongil-detail.nls .nls-venture {
+  display: flex;
+  align-items: flex-start;
+  min-height: 44px;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--nls-line);
+  border-radius: var(--nls-radius);
+  background: var(--nls-paper);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+#ongil-detail.nls .nls-tabs--ages .nls-tab {
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+#ongil-detail.nls .nls-tabs--ages em {
+  font-style: normal;
+  font-weight: 650;
+}
+
+#ongil-detail.nls .nls-tab.is-active,
+#ongil-detail.nls .nls-know.is-active,
+#ongil-detail.nls .nls-venture.is-active {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+  box-shadow: none;
+}
+
+#ongil-detail.nls .nls-panel {
+  padding: 1.15rem 1.2rem;
+  background: var(--nls-paper);
+  border: 1px solid var(--nls-line);
+  border-radius: var(--nls-radius);
+}
+
+#ongil-detail.nls .nls-panel__title {
+  margin: 0 0 0.55rem;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+#ongil-detail.nls .nls-panel__intro,
+#ongil-detail.nls .nls-panel p,
+#ongil-detail.nls .nls-card p,
+#ongil-detail.nls .nls-example {
+  margin: 0 0 0.75rem;
+  line-height: 1.6;
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls .nls-chips,
+#ongil-detail.nls .nls-points,
+#ongil-detail.nls .nls-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#ongil-detail.nls .nls-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+#ongil-detail.nls .nls-chips li {
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--nls-line);
+  border-radius: var(--nls-radius);
+  background: #fff;
+  font-size: 0.86rem;
+}
+
+#ongil-detail.nls .nls-points li {
+  position: relative;
+  padding: 0.28rem 0 0.28rem 0.9rem;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+#ongil-detail.nls .nls-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  width: 0.45rem;
+  height: 1px;
+  background: var(--nls-accent);
+}
+
+#ongil-detail.nls .nls-sit-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.45rem;
+}
+
+#ongil-detail.nls .nls-sit-wrap {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  margin-top: 1rem;
+}
+
+#ongil-detail.nls .nls-sit-grid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+#ongil-detail.nls .nls-know-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin: 1.1rem 0;
+}
+
+#ongil-detail.nls .nls-know {
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+#ongil-detail.nls .nls-know__n {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-learn {
+  padding: 1.15rem 1.2rem;
+  background: var(--nls-ink);
+  color: #f4f4f4;
+  border-radius: var(--nls-radius);
+}
+
+#ongil-detail.nls .nls-learn .nls-mini,
+#ongil-detail.nls .nls-learn .nls-note,
+#ongil-detail.nls .nls-learn__lead {
+  color: rgba(244, 244, 244, 0.62);
+}
+
+#ongil-detail.nls .nls-learn h4 {
+  margin: 0 0 0.45rem;
+  font-size: 1.15rem;
+}
+
+#ongil-detail.nls .nls-learn__list {
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+#ongil-detail.nls .nls-learn__step {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+#ongil-detail.nls .nls-learn__btn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.7rem 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#ongil-detail.nls .nls-learn__btn span {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+#ongil-detail.nls .nls-learn__step p {
+  display: none;
+  margin: 0 0 0.85rem;
+  padding-left: 2.1rem;
+  color: rgba(244, 244, 244, 0.72);
+  line-height: 1.55;
+}
+
+#ongil-detail.nls .nls-learn__step.is-open p {
+  display: block;
+}
+
+#ongil-detail.nls .nls-demo,
+#ongil-detail.nls .nls-card,
+#ongil-detail.nls .nls-ongil,
+#ongil-detail.nls .nls-rev {
+  padding: 1.15rem 1.2rem;
+  background: var(--nls-paper);
+  border: 1px solid var(--nls-line);
+  border-radius: var(--nls-radius);
+}
+
+#ongil-detail.nls .nls-chat__q,
+#ongil-detail.nls .nls-chat__a {
+  display: grid;
+  grid-template-columns: 1.4rem 1fr;
+  gap: 0.55rem;
+  margin: 0 0 0.85rem;
+  line-height: 1.55;
+}
+
+#ongil-detail.nls .nls-chat__q span,
+#ongil-detail.nls .nls-chat__a span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--nls-accent-ink);
+}
+
+#ongil-detail.nls .nls-chat__a {
+  padding: 0.75rem;
+  background: var(--nls-wash);
+}
+
+#ongil-detail.nls .nls-plan-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+#ongil-detail.nls .nls-plan-head h4 {
+  margin: 0;
+}
+
+#ongil-detail.nls .nls-progress {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls .nls-bar {
+  height: 3px;
+  margin: 0.85rem 0 1rem;
+  background: var(--nls-line);
+}
+
+#ongil-detail.nls .nls-bar i {
+  display: block;
+  height: 100%;
+  background: var(--nls-accent);
+}
+
+#ongil-detail.nls .nls-checks {
+  display: grid;
+  gap: 0.35rem;
+}
+
+#ongil-detail.nls .nls-check {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 44px;
+  padding: 0.2rem 0.15rem;
+  cursor: pointer;
+}
+
+#ongil-detail.nls .nls-check input {
+  width: 1.05rem;
+  height: 1.05rem;
+  accent-color: var(--nls-accent-ink);
+}
+
+#ongil-detail.nls .nls-later-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+#ongil-detail.nls .nls-later {
+  padding: 0.7rem 0.75rem;
+  border: 1px dashed var(--nls-line);
+}
+
+#ongil-detail.nls .nls-later p {
+  margin: 0.3rem 0 0.5rem;
+  font-size: 0.86rem;
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls .nls-map {
+  margin: 1.1rem 0 1.25rem;
+  padding: 1.2rem;
+  border: 1px solid var(--nls-line);
+  background: #fff;
+}
+
+#ongil-detail.nls .nls-map__hub {
+  margin: 0 0 1rem;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.22em;
+}
+
+#ongil-detail.nls .nls-map__row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+
+#ongil-detail.nls .nls-map__row--core {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+#ongil-detail.nls .nls-venture {
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+#ongil-detail.nls .nls-venture span {
+  font-size: 0.92rem;
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls .nls-venture--core {
+  border-color: #0a0a0a;
+}
+
+#ongil-detail.nls .nls-flow {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+#ongil-detail.nls .nls-flow li {
+  position: relative;
+  padding: 0.9rem 0.75rem;
+  background: var(--nls-paper);
+  border: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls .nls-flow li::after {
+  content: "";
+  position: absolute;
+  top: 1.15rem;
+  right: -0.4rem;
+  width: 0.35rem;
+  height: 1px;
+  background: var(--nls-accent);
+}
+
+#ongil-detail.nls .nls-flow li:last-child::after {
+  display: none;
+}
+
+#ongil-detail.nls .nls-flow__n {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--nls-accent-ink);
+}
+
+#ongil-detail.nls .nls-flow strong {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+#ongil-detail.nls .nls-flow p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--nls-muted);
+  line-height: 1.45;
+}
+
+#ongil-detail.nls .nls-eco {
+  display: grid;
+  gap: 1.1rem;
+  margin: 0.85rem 0 1.4rem;
+}
+
+#ongil-detail.nls .nls-app-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+#ongil-detail.nls .nls-app {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--nls-line);
+  background: var(--nls-paper);
+  color: inherit;
+  text-decoration: none;
+}
+
+#ongil-detail.nls .nls-app img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#ongil-detail.nls .nls-app:hover,
+#ongil-detail.nls .nls-app:focus-visible {
+  border-color: var(--nls-ink);
+}
+
+#ongil-detail.nls .nls-ongil {
+  margin-top: 0.4rem;
+}
+
+#ongil-detail.nls .nls-rev-row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+#ongil-detail.nls .nls-rev--2 {
+  transform: translateY(0.4rem);
+}
+
+#ongil-detail.nls .nls-rev--3 {
+  transform: translateY(0.8rem);
+}
+
+#ongil-detail.nls .nls-road {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+#ongil-detail.nls .nls-road li {
+  padding: 1rem 0.95rem;
+  background: var(--nls-paper);
+  border-top: 2px solid var(--nls-accent);
+}
+
+#ongil-detail.nls .nls-road span {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--nls-accent-ink);
+}
+
+#ongil-detail.nls .nls-road strong {
+  display: block;
+  margin-bottom: 0.45rem;
+}
+
+#ongil-detail.nls .nls-road p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--nls-muted);
+  line-height: 1.5;
+}
+
+#ongil-detail.nls .nls-close {
+  margin-top: 2rem;
+  padding: clamp(3.5rem, 8vw, 5.5rem) clamp(1.25rem, 4vw, 2.5rem);
+  background: #0a0a0a;
+  color: #fff;
+  border-top: 0;
+}
+
+#ongil-detail.nls .nls-close .nls-kicker,
+#ongil-detail.nls .nls-close .nls-lead,
+#ongil-detail.nls .nls-close .nls-note {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+#ongil-detail.nls .nls-close .nls-btn {
+  background: #fff;
+  color: #080808;
+  border-color: #fff;
+}
+
+#ongil-detail.nls .nls-close .nls-btn:hover {
+  opacity: 1;
+  background: #fff;
+}
+
+#ongil-detail.nls .nls-close .nls-btn--ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+#ongil-detail.nls .nls-close .nls-btn--ghost:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+html[data-newon-shell-theme="dark"] #ongil-detail.nls {
+  --nls-ink: #f2f2f2;
+  --nls-muted: #b8b8b8;
+  --nls-faint: #9a9a9a;
+  --nls-line: rgba(255, 255, 255, 0.1);
+  --nls-paper: #0a0a0a;
+  --nls-wash: #0a0a0a;
+  --nls-accent: #ffffff;
+  --nls-accent-ink: #ffffff;
+  --nls-accent-soft: rgba(255, 255, 255, 0.08);
+  background: #0a0a0a;
+}
+
+html[data-newon-shell-theme="dark"] #ongil-detail.nls .nls-sv,
+html[data-newon-shell-theme="dark"] #ongil-detail.nls .nls-panel,
+html[data-newon-shell-theme="dark"] #ongil-detail.nls .nls-tab,
+html[data-newon-shell-theme="dark"] #ongil-detail.nls .nls-know,
+html[data-newon-shell-theme="dark"] #ongil-detail.nls .nls-venture,
+html[data-newon-shell-theme="dark"] #ongil-detail.nls .nls-map,
+html[data-newon-shell-theme="dark"] #ongil-detail.nls .nls-node {
+  background: #0a0a0a;
+}
+
+html[data-newon-shell-theme="dark"] #ongil-detail.nls .nls-tab.is-active,
+html[data-newon-shell-theme="dark"] #ongil-detail.nls .nls-know.is-active,
+html[data-newon-shell-theme="dark"] #ongil-detail.nls .nls-venture.is-active,
+html[data-newon-shell-theme="dark"] #ongil-detail.nls .nls-node.is-active,
+html[data-newon-shell-theme="dark"] #ongil-detail.nls .nls-sv__grid article.is-on {
+  background: #fff;
+  border-color: #fff;
+  color: #0a0a0a;
+}
+
+@media (max-width: 980px) {
+  #ongil-detail.nls .nls-split,
+  #ongil-detail.nls .nls-two,
+  #ongil-detail.nls .nls-know-detail,
+  #ongil-detail.nls .nls-sit-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  #ongil-detail.nls .nls-map__row,
+  #ongil-detail.nls .nls-rev-row,
+  #ongil-detail.nls .nls-later-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #ongil-detail.nls .nls-know-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  #ongil-detail.nls .nls-flow,
+  #ongil-detail.nls .nls-road,
+  #ongil-detail.nls .nls-timeline__nodes {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  #ongil-detail.nls .nls-timeline__path,
+  #ongil-detail.nls .nls-flow li::after {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  #ongil-detail.nls .nls-know-grid,
+  #ongil-detail.nls .nls-sit-cards,
+  #ongil-detail.nls .nls-map__row,
+  #ongil-detail.nls .nls-rev-row,
+  #ongil-detail.nls .nls-later-row,
+  #ongil-detail.nls .nls-flow,
+  #ongil-detail.nls .nls-road,
+  #ongil-detail.nls .nls-timeline__nodes,
+  #ongil-detail.nls .nls-tabs--ages {
+    grid-template-columns: 1fr;
+  }
+
+  #ongil-detail.nls .nls-tabs--ages {
+    display: grid;
+  }
+}
+
+#ongil-detail.nls .nls-closebar {
+  margin: 0;
+  padding: 1rem 0 0;
+}
+
+#ongil-detail.nls .nls-closebar .nls-btn {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--nls-faint);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+#ongil-detail.nls .nls-closebar .nls-btn:hover {
+  opacity: 1;
+  background: transparent;
+  color: var(--nls-ink);
+}
+
+#ongil-detail.nls .nls-three {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+#ongil-detail.nls .nls-learn__meta {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0 0 0.85rem;
+  padding: 0 0 0.2rem 1.9rem;
+}
+
+#ongil-detail.nls .nls-learn__meta p {
+  margin: 0;
+  font-size: 0.86rem;
+  color: rgba(244, 244, 244, 0.78);
+  line-height: 1.5;
+}
+
+#ongil-detail.nls .nls-learn__meta em {
+  display: inline-block;
+  margin-right: 0.4rem;
+  font-style: normal;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(244, 244, 244, 0.5);
+}
+
+#ongil-detail.nls .nls-plan-pane[hidden],
+#ongil-detail.nls .nls-learn[hidden],
+#ongil-detail.nls .nls-flow[hidden],
+#ongil-detail.nls .nls-chat[hidden],
+#ongil-detail.nls .nls-panel[hidden],
+#ongil-detail.nls [hidden] {
+  display: none !important;
+}
+
+#ongil-detail.nls .nls-tabs--plan,
+#ongil-detail.nls .nls-tabs--learn,
+#ongil-detail.nls .nls-tabs--flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+
+@media (max-width: 980px) {
+  #ongil-detail.nls .nls-three,
+  #ongil-detail.nls .nls-rev-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  #ongil-detail.nls .nls-three {
+    grid-template-columns: 1fr;
+  }
+
+  #ongil-detail.nls .nls-tabs--ages,
+  #ongil-detail.nls .nls-timeline__nodes,
+  #ongil-detail.nls .nls-sit-cards {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.4rem;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #ongil-detail.nls .nls-tabs--ages .nls-tab,
+  #ongil-detail.nls .nls-sit {
+    flex: 0 0 auto;
+    min-width: 8.6rem;
+    scroll-snap-align: start;
+  }
+}
+
+/* ——— Visual variety: bands, boards, timelines ——— */
+#ongil-detail.nls .nls-head {
+  max-width: 40rem;
+  margin-bottom: 1.5rem;
+}
+
+#ongil-detail.nls .nls-head .nls-lead {
+  margin-top: 0.85rem;
+}
+
+#ongil-detail.nls .nls-block--band,
+#ongil-detail.nls .nls-block--ink {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding-left: max(1.2rem, calc(50vw - 590px));
+  padding-right: max(1.2rem, calc(50vw - 590px));
+}
+
+#ongil-detail.nls .nls-block--band {
+  background: #fff;
+  border-top: 0;
+  border-bottom: 0;
+}
+
+#ongil-detail.nls .nls-block--ink {
+  background: #0a0a0a;
+  color: #fff;
+  border-top: 0;
+  border-bottom: 0;
+}
+
+#ongil-detail.nls .nls-block--ink .nls-kicker,
+#ongil-detail.nls .nls-block--ink .nls-lead,
+#ongil-detail.nls .nls-block--ink .nls-note,
+#ongil-detail.nls .nls-block--ink .nls-mini {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#ongil-detail.nls .nls-block--ink .nls-tab {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-block--ink .nls-tab.is-active {
+  background: #fff;
+  border-color: #fff;
+  color: #0a0a0a;
+}
+
+#ongil-detail.nls .nls-age-board {
+  margin-top: 1.6rem;
+}
+
+#ongil-detail.nls .nls-tabs--ages {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  border: 1px solid var(--nls-line);
+  background: #fff;
+}
+
+#ongil-detail.nls .nls-tabs--ages .nls-tab {
+  min-height: 6.4rem;
+  padding: 0.75rem 0.55rem 0.7rem;
+  background: #fff;
+  border: 0;
+  border-right: 1px solid var(--nls-line);
+  border-radius: 0;
+}
+
+#ongil-detail.nls .nls-tabs--ages .nls-tab small {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 0.25rem;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--nls-muted);
+  line-height: 1.35;
+}
+
+#ongil-detail.nls .nls-tabs--ages .nls-tab.is-active small {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+#ongil-detail.nls .nls-tabs--ages .nls-tab:last-child {
+  border-right: 0;
+}
+
+#ongil-detail.nls .nls-tabs--ages .nls-tab span {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-tabs--ages .nls-tab em {
+  color: var(--nls-ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.78rem;
+  line-height: 1.25;
+}
+
+#ongil-detail.nls .nls-tabs--ages .nls-tab.is-active {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-tabs--ages .nls-tab.is-active span,
+#ongil-detail.nls .nls-tabs--ages .nls-tab.is-active em {
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-age-board .nls-panel {
+  min-height: 16rem;
+  padding: 1.6rem 1.7rem;
+  border-top: 0;
+  border-radius: 0;
+}
+
+#ongil-detail.nls .nls-case {
+  margin: 0.7rem 0 0;
+  padding: 0.85rem 0 0.85rem 1rem;
+  border-left: 2px solid #0a0a0a;
+  background: transparent;
+}
+
+#ongil-detail.nls .nls-case p {
+  margin: 0;
+  font-size: 1.02rem;
+  color: var(--nls-ink);
+}
+
+#ongil-detail.nls .nls-case span {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.88rem;
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls .nls-sit-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+#ongil-detail.nls .nls-sit-cards {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+#ongil-detail.nls .nls-sit {
+  flex-direction: column;
+  gap: 0.25rem;
+  min-height: 0;
+  padding: 0.8rem 0.85rem;
+  background: #fff;
+}
+
+#ongil-detail.nls .nls-sit__n {
+  font-size: 1.05rem;
+  font-weight: 750;
+  letter-spacing: -0.05em;
+  color: var(--nls-ink);
+}
+
+#ongil-detail.nls .nls-sit.is-active .nls-sit__n {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#ongil-detail.nls .nls-sit-panel {
+  padding: 1.5rem 1.6rem;
+}
+
+#ongil-detail.nls .nls-sit-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+#ongil-detail.nls .nls-know {
+  min-height: 0;
+  padding: 0.8rem 0.85rem;
+  background: #fff;
+}
+
+#ongil-detail.nls .nls-know__n {
+  font-size: 1.35rem;
+  font-weight: 750;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  color: var(--nls-ink);
+}
+
+#ongil-detail.nls .nls-know.is-active .nls-know__n {
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-panels--wide .nls-panel {
+  padding: 1.5rem 1.6rem;
+  border-top: 2px solid #0a0a0a;
+}
+
+#ongil-detail.nls .nls-block--ink .nls-learn {
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#ongil-detail.nls .nls-demo {
+  padding: 1.15rem;
+  border: 1px solid var(--nls-line);
+  background: #fff;
+}
+
+#ongil-detail.nls .nls-chat {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 0.85rem;
+}
+
+#ongil-detail.nls .nls-chat__q,
+#ongil-detail.nls .nls-chat__a {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  line-height: 1.55;
+}
+
+#ongil-detail.nls .nls-chat__q {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-chat__a {
+  background: #fff;
+  border: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls .nls-chat__q span,
+#ongil-detail.nls .nls-chat__a span {
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+}
+
+#ongil-detail.nls .nls-chat__q span {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#ongil-detail.nls .nls-plan-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+#ongil-detail.nls .nls-bar {
+  height: 2px;
+  background: #ececec;
+  margin: 0.7rem 0 1rem;
+}
+
+#ongil-detail.nls .nls-map {
+  padding: 1.6rem 1.4rem 1.2rem;
+}
+
+#ongil-detail.nls .nls-map__hub {
+  display: inline-block;
+  margin: 0 auto 1.2rem;
+  padding: 0.55rem 1.1rem;
+  background: #0a0a0a;
+  color: #fff;
+  letter-spacing: 0.22em;
+}
+
+#ongil-detail.nls .nls-map {
+  text-align: center;
+}
+
+#ongil-detail.nls .nls-map .nls-mini {
+  text-align: left;
+}
+
+#ongil-detail.nls .nls-flow {
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--nls-line);
+  background: #fff;
+}
+
+#ongil-detail.nls .nls-flow li {
+  position: relative;
+  padding: 0.85rem 0.85rem 0.9rem;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls .nls-flow li::after {
+  display: none;
+}
+
+#ongil-detail.nls .nls-flow li {
+  position: relative;
+  padding: 0.85rem 0.85rem 0.9rem;
+  border-right: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls .nls-flow li:last-child {
+  border-right: 0;
+}
+
+#ongil-detail.nls .nls-flow__n {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+
+#ongil-detail.nls .nls-card {
+  padding: 0.95rem 1rem 0.85rem;
+  border: 1px solid var(--nls-line);
+  background: #fff;
+}
+
+#ongil-detail.nls .nls-card--feature {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-card--feature p,
+#ongil-detail.nls .nls-card--feature .nls-mini,
+#ongil-detail.nls .nls-card--feature .nls-note,
+#ongil-detail.nls .nls-card--feature li {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+#ongil-detail.nls .nls-app {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--nls-line);
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+}
+
+#ongil-detail.nls .nls-ongil {
+  margin-top: 1.25rem;
+  padding: 1.4rem 1.5rem;
+  background: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-ongil .nls-mini,
+#ongil-detail.nls .nls-ongil p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#ongil-detail.nls .nls-ongil .nls-btn--ghost {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+#ongil-detail.nls .nls-rev {
+  padding: 1.2rem 1.1rem;
+  border-top: 2px solid #0a0a0a;
+  background: #fff;
+}
+
+#ongil-detail.nls .nls-rev--2 { transform: none; margin-top: 1.2rem; }
+#ongil-detail.nls .nls-rev--3 { transform: none; margin-top: 2.2rem; }
+#ongil-detail.nls .nls-rev--4 { margin-top: 1.2rem; }
+#ongil-detail.nls .nls-rev--5 { margin-top: 2.2rem; }
+
+#ongil-detail.nls .nls-road {
+  position: relative;
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding-left: 1.4rem;
+}
+
+#ongil-detail.nls .nls-road::before {
+  content: "";
+  position: absolute;
+  left: 0.35rem;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  width: 1px;
+  background: #0a0a0a;
+}
+
+#ongil-detail.nls .nls-road li {
+  position: relative;
+  padding: 1.1rem 0 1.4rem 0.9rem;
+  background: transparent;
+  border-top: 0;
+}
+
+#ongil-detail.nls .nls-road li::before {
+  content: "";
+  position: absolute;
+  left: -1.18rem;
+  top: 1.3rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: #0a0a0a;
+}
+
+#ongil-detail.nls .nls-close {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  text-align: center;
+}
+
+#ongil-detail.nls .nls-close .nls-hero__title,
+#ongil-detail.nls .nls-close .nls-lead {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ongil-detail.nls .nls-close .nls-actions {
+  justify-content: center;
+}
+
+@media (max-width: 980px) {
+  #ongil-detail.nls .nls-sit-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #ongil-detail.nls .nls-rev--2,
+  #ongil-detail.nls .nls-rev--3,
+  #ongil-detail.nls .nls-rev--4,
+  #ongil-detail.nls .nls-rev--5 {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  #ongil-detail.nls .nls-tabs--ages,
+  #ongil-detail.nls .nls-sit-cards,
+  #ongil-detail.nls .nls-sit-grid {
+    display: flex;
+    overflow-x: auto;
+    grid-template-columns: none;
+  }
+
+  #ongil-detail.nls .nls-tabs--ages .nls-tab,
+  #ongil-detail.nls .nls-sit,
+  #ongil-detail.nls .nls-sitcat,
+  #ongil-detail.nls .nls-know--group {
+    flex: 0 0 auto;
+    width: 11rem;
+  }
+
+  #ongil-detail.nls .nls-sit-cats,
+  #ongil-detail.nls .nls-know-groups {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ongil-detail.nls * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Compact IA: empty hints, details, groups */
+#ongil-detail.nls .nls-empty {
+  margin: 0.75rem 0 0;
+  color: var(--nls-faint);
+  font-size: 0.98rem;
+}
+
+#ongil-detail.nls .nls-empty[hidden] {
+  display: none !important;
+}
+
+#ongil-detail.nls .nls-more {
+  margin-top: 0.5rem;
+}
+
+#ongil-detail.nls .nls-more summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--nls-ink);
+  list-style: none;
+}
+
+#ongil-detail.nls .nls-more summary::-webkit-details-marker {
+  display: none;
+}
+
+#ongil-detail.nls .nls-more__body {
+  margin-top: 0.7rem;
+}
+
+#ongil-detail.nls .nls-learn__step:not(.is-open) .nls-more {
+  display: none;
+}
+
+#ongil-detail.nls .nls-block--ink .nls-more summary {
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-sit-cats,
+#ongil-detail.nls .nls-know-groups {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin: 1.1rem 0 0.6rem;
+}
+
+#ongil-detail.nls .nls-know-groups {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+#ongil-detail.nls .nls-sitcat,
+#ongil-detail.nls .nls-know--group {
+  flex-direction: column;
+  min-height: 0;
+  padding: 0.85rem 0.95rem 0.9rem;
+  background: #fff;
+}
+
+#ongil-detail.nls .nls-know--group em {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 0.3rem;
+  font-style: normal;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--nls-muted);
+  line-height: 1.4;
+}
+
+#ongil-detail.nls .nls-sitcat.is-active,
+#ongil-detail.nls .nls-know--group.is-active {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-sitcat.is-active .nls-sit__n,
+#ongil-detail.nls .nls-know--group.is-active .nls-know__n,
+#ongil-detail.nls .nls-know--group.is-active em {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#ongil-detail.nls .nls-sub {
+  margin: 0 0 0.45rem;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+#ongil-detail.nls .nls-lead--tight {
+  margin-top: 0.35rem;
+  margin-bottom: 0.85rem;
+  max-width: 36rem;
+  font-size: 0.95rem;
+}
+
+#ongil-detail.nls .nls-core-grid {
+  margin-top: 1.4rem;
+  align-items: start;
+}
+
+#ongil-detail.nls .nls-sv__now:not(.is-on) {
+  background: #fff;
+  color: inherit;
+}
+
+#ongil-detail.nls .nls-age-board .nls-panel {
+  min-height: 0;
+}
+
+/* Lower sections: compact cards, readable type */
+#ongil-detail.nls .nls-sitcat {
+  min-height: 0;
+  justify-content: flex-start;
+}
+
+#ongil-detail.nls .nls-sitcat strong,
+#ongil-detail.nls .nls-know--group strong {
+  font-size: 1.05rem;
+}
+
+#ongil-detail.nls .nls-sitcat em {
+  display: block;
+  margin-top: 0.3rem;
+  font-style: normal;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--nls-muted);
+  line-height: 1.45;
+}
+
+#ongil-detail.nls .nls-sitcat.is-active em {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+#ongil-detail.nls .nls-map {
+  padding: 1.35rem 1.25rem 1.15rem;
+}
+
+#ongil-detail.nls .nls-map__row--core,
+#ongil-detail.nls .nls-map__row--expand {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+#ongil-detail.nls .nls-map__row--org {
+  grid-template-columns: 1fr;
+  margin-bottom: 0.35rem;
+}
+
+#ongil-detail.nls .nls-map__row--org .nls-venture {
+  text-align: left;
+}
+
+#ongil-detail.nls .nls-venture {
+  min-height: 0;
+  padding: 0.75rem 0.85rem;
+}
+
+#ongil-detail.nls .nls-map [data-nls-empty="venture"] {
+  margin: 0.85rem 0 0;
+  text-align: left;
+  font-size: 0.8rem;
+}
+
+#ongil-detail.nls .nls-three--connect {
+  align-items: stretch;
+}
+
+#ongil-detail.nls .nls-three--connect .nls-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0.95rem 1.05rem 0.85rem;
+}
+
+#ongil-detail.nls .nls-three--connect .nls-card h4 {
+  margin: 0.1rem 0 0.4rem;
+  font-size: 1.12rem;
+}
+
+#ongil-detail.nls .nls-three--connect .nls-card > p {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--nls-muted);
+  line-height: 1.5;
+}
+
+#ongil-detail.nls .nls-three--connect .nls-more {
+  margin-top: 0.65rem;
+  padding-top: 0;
+}
+
+#ongil-detail.nls .nls-flow:not([hidden]) {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+#ongil-detail.nls .nls-rev-row {
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--nls-line);
+  background: #fff;
+}
+
+#ongil-detail.nls .nls-rev,
+#ongil-detail.nls .nls-rev--2,
+#ongil-detail.nls .nls-rev--3,
+#ongil-detail.nls .nls-rev--4,
+#ongil-detail.nls .nls-rev--5 {
+  margin-top: 0;
+  transform: none;
+  border: 0;
+  border-right: 1px solid var(--nls-line);
+  border-radius: 0;
+  background: #fff;
+  min-height: 0;
+  padding: 0.9rem 1rem 0.8rem;
+}
+
+#ongil-detail.nls .nls-rev:last-child {
+  border-right: 0;
+}
+
+#ongil-detail.nls .nls-rev h4 {
+  margin: 0.1rem 0 0.4rem;
+  font-size: 1.05rem;
+}
+
+#ongil-detail.nls .nls-rev > p:not(.nls-mini) {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--nls-muted);
+  line-height: 1.5;
+}
+
+#ongil-detail.nls .nls-rev .nls-more {
+  margin-top: 0.5rem;
+}
+
+#ongil-detail.nls .nls-road {
+  padding-left: 1.55rem;
+}
+
+#ongil-detail.nls .nls-road li {
+  margin-bottom: 0.55rem;
+  padding: 0.9rem 1.05rem 0.95rem;
+  background: #fff;
+  border: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls .nls-road li:last-child {
+  margin-bottom: 0;
+}
+
+#ongil-detail.nls .nls-road li::before {
+  top: 1.45rem;
+  left: -1.32rem;
+}
+
+#ongil-detail.nls .nls-road p {
+  margin: 0.4rem 0 0;
+  color: var(--nls-muted);
+  line-height: 1.55;
+}
+
+#ongil-detail.nls .nls-more summary {
+  min-height: 0;
+  padding: 0.2rem 0;
+  font-size: 0.8125rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls .nls-more summary:hover,
+#ongil-detail.nls .nls-more[open] summary {
+  color: var(--nls-ink);
+}
+
+#ongil-detail.nls .nls-card--feature .nls-more summary {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#ongil-detail.nls .nls-card--feature .nls-more summary:hover,
+#ongil-detail.nls .nls-card--feature .nls-more[open] summary {
+  color: #fff;
+}
+
+@media (max-width: 1100px) {
+  #ongil-detail.nls .nls-sit-cats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #ongil-detail.nls .nls-flow:not([hidden]) {
+    display: flex;
+    overflow-x: auto;
+    grid-template-columns: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #ongil-detail.nls .nls-flow li {
+    flex: 0 0 11rem;
+    border-bottom: 0;
+  }
+
+  #ongil-detail.nls .nls-rev-row {
+    display: flex;
+    overflow-x: auto;
+    grid-template-columns: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #ongil-detail.nls .nls-rev,
+  #ongil-detail.nls .nls-rev--2,
+  #ongil-detail.nls .nls-rev--3,
+  #ongil-detail.nls .nls-rev--4,
+  #ongil-detail.nls .nls-rev--5 {
+    flex: 0 0 13.6rem;
+    margin-top: 0;
+  }
+
+  #ongil-detail.nls .nls-three--connect {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #ongil-detail.nls .nls-map__row,
+  #ongil-detail.nls .nls-map__row--core,
+  #ongil-detail.nls .nls-map__row--expand {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  #ongil-detail.nls .nls-three,
+  #ongil-detail.nls .nls-three--connect {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #ongil-detail.nls .nls-map__row,
+  #ongil-detail.nls .nls-map__row--core,
+  #ongil-detail.nls .nls-map__row--expand {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #ongil-detail.nls .nls-map__row--org {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  #ongil-detail.nls .nls-three,
+  #ongil-detail.nls .nls-three--connect {
+    grid-template-columns: 1fr;
+  }
+
+  #ongil-detail.nls .nls-three--connect .nls-card {
+    min-height: 0;
+  }
+
+  #ongil-detail.nls .nls-map__row--core,
+  #ongil-detail.nls .nls-map__row--expand {
+    display: flex;
+    overflow-x: auto;
+    grid-template-columns: none;
+    gap: 0.4rem;
+  }
+
+  #ongil-detail.nls .nls-map__row--core .nls-venture,
+  #ongil-detail.nls .nls-map__row--expand .nls-venture {
+    flex: 0 0 12.4rem;
+  }
+
+  #ongil-detail.nls .nls-sitcat {
+    width: 13.2rem;
+  }
+
+  #ongil-detail.nls .nls-flow:not([hidden]) {
+    display: flex;
+  }
+}
+
+/* Expansion: all five stages always visible */
+#ongil-detail.nls .nls-expand {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.45rem;
+  margin: 1.15rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+#ongil-detail.nls .nls-expand__item {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: start;
+  padding: 0.85rem 0.95rem 0.8rem;
+  border: 1px solid var(--nls-line);
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+#ongil-detail.nls .nls-expand__n {
+  font-size: 0.95rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+}
+
+#ongil-detail.nls .nls-expand__body h4 {
+  margin: 0 0 0.28rem;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+#ongil-detail.nls .nls-expand__body p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--nls-muted);
+  line-height: 1.5;
+}
+
+#ongil-detail.nls .nls-expand .nls-more {
+  margin-top: 0.4rem;
+}
+
+#ongil-detail.nls .nls-three--connect .nls-card,
+#ongil-detail.nls .nls-expand__item {
+  cursor: pointer;
+}
+
+#ongil-detail.nls .nls-three--connect .nls-card {
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+#ongil-detail.nls .nls-three--connect .nls-card:hover,
+#ongil-detail.nls .nls-three--connect .nls-card:focus-within,
+#ongil-detail.nls .nls-expand__item:hover,
+#ongil-detail.nls .nls-expand__item:focus-within {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-three--connect .nls-card:hover .nls-mini,
+#ongil-detail.nls .nls-three--connect .nls-card:hover h4,
+#ongil-detail.nls .nls-three--connect .nls-card:hover p,
+#ongil-detail.nls .nls-three--connect .nls-card:hover li,
+#ongil-detail.nls .nls-three--connect .nls-card:hover .nls-note,
+#ongil-detail.nls .nls-three--connect .nls-card:hover .nls-more summary,
+#ongil-detail.nls .nls-three--connect .nls-card:focus-within .nls-mini,
+#ongil-detail.nls .nls-three--connect .nls-card:focus-within h4,
+#ongil-detail.nls .nls-three--connect .nls-card:focus-within p,
+#ongil-detail.nls .nls-three--connect .nls-card:focus-within li,
+#ongil-detail.nls .nls-three--connect .nls-card:focus-within .nls-note,
+#ongil-detail.nls .nls-three--connect .nls-card:focus-within .nls-more summary,
+#ongil-detail.nls .nls-expand__item:hover .nls-expand__n,
+#ongil-detail.nls .nls-expand__item:hover h4,
+#ongil-detail.nls .nls-expand__item:hover p,
+#ongil-detail.nls .nls-expand__item:hover li,
+#ongil-detail.nls .nls-expand__item:hover .nls-more summary,
+#ongil-detail.nls .nls-expand__item:focus-within .nls-expand__n,
+#ongil-detail.nls .nls-expand__item:focus-within h4,
+#ongil-detail.nls .nls-expand__item:focus-within p,
+#ongil-detail.nls .nls-expand__item:focus-within li,
+#ongil-detail.nls .nls-expand__item:focus-within .nls-more summary {
+  color: #fff;
+}
+
+#ongil-detail.nls .nls-three--connect .nls-card:hover .nls-points li::before,
+#ongil-detail.nls .nls-three--connect .nls-card:focus-within .nls-points li::before,
+#ongil-detail.nls .nls-expand__item:hover .nls-points li::before,
+#ongil-detail.nls .nls-expand__item:focus-within .nls-points li::before {
+  background: #fff;
+}
+
+#ongil-detail.nls .nls-three--connect .nls-card:hover .nls-chips li,
+#ongil-detail.nls .nls-three--connect .nls-card:focus-within .nls-chips li,
+#ongil-detail.nls .nls-three--connect .nls-card:hover .nls-badge,
+#ongil-detail.nls .nls-three--connect .nls-card:focus-within .nls-badge,
+#ongil-detail.nls .nls-expand__item:hover .nls-badge,
+#ongil-detail.nls .nls-expand__item:focus-within .nls-badge {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+
+@media (min-width: 840px) {
+  #ongil-detail.nls .nls-expand {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  #ongil-detail.nls .nls-expand__item:nth-child(-n + 3) {
+    grid-column: span 2;
+  }
+
+  #ongil-detail.nls .nls-expand__item:nth-child(n + 4) {
+    grid-column: span 3;
+  }
+}
+
+/* Journey: 3 + 4 rows, larger type, hover invert */
+#ongil-detail.nls #nls-ages {
+  scroll-margin-top: 5.5rem;
+}
+
+#ongil-detail.nls #nls-ages > .nls-note {
+  font-size: 1.05rem;
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls #nls-ages .nls-lead {
+  font-size: clamp(1.05rem, 1.7vw, 1.18rem);
+}
+
+#ongil-detail.nls #nls-ages .nls-tabs--ages {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0.55rem;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+  counter-reset: nls-age;
+}
+
+#ongil-detail.nls #nls-ages .nls-age-tab {
+  position: relative;
+  grid-column: span 3;
+  min-height: 0;
+  min-width: 0;
+  padding: 1.05rem 1.1rem 1.1rem;
+  border: 1px solid var(--nls-line);
+  border-radius: 0;
+  background: #fff;
+  gap: 0.28rem;
+  overflow: visible;
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+#ongil-detail.nls #nls-ages .nls-age-tab:nth-child(-n + 3) {
+  grid-column: span 4;
+}
+
+#ongil-detail.nls #nls-ages .nls-age-tab::before {
+  counter-increment: nls-age;
+  content: counter(nls-age, decimal-leading-zero);
+  display: block;
+  margin-bottom: 0.15rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls #nls-ages .nls-age-tab__age {
+  font-size: 1rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--nls-ink);
+}
+
+#ongil-detail.nls #nls-ages .nls-age-tab__name {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.035em;
+  line-height: 1.28;
+  color: var(--nls-ink);
+  overflow: visible;
+  -webkit-line-clamp: unset;
+}
+
+#ongil-detail.nls #nls-ages .nls-age-tab__topics {
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+#ongil-detail.nls #nls-ages .nls-age-tab__topics li {
+  position: relative;
+  padding: 0.14rem 0 0.14rem 0.9rem;
+  font-size: 0.98rem;
+  font-weight: 400;
+  color: var(--nls-muted);
+  line-height: 1.45;
+  letter-spacing: 0;
+  text-transform: none;
+  overflow: visible;
+}
+
+#ongil-detail.nls #nls-ages .nls-age-tab__topics li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.82rem;
+  width: 0.42rem;
+  height: 1px;
+  background: currentColor;
+}
+
+#ongil-detail.nls #nls-ages .nls-age-tab:hover,
+#ongil-detail.nls #nls-ages .nls-age-tab:focus-visible,
+#ongil-detail.nls #nls-ages .nls-age-tab.is-active {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+
+#ongil-detail.nls #nls-ages .nls-age-tab:hover::before,
+#ongil-detail.nls #nls-ages .nls-age-tab:focus-visible::before,
+#ongil-detail.nls #nls-ages .nls-age-tab.is-active::before {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#ongil-detail.nls #nls-ages .nls-age-tab:hover .nls-age-tab__age,
+#ongil-detail.nls #nls-ages .nls-age-tab:hover .nls-age-tab__name,
+#ongil-detail.nls #nls-ages .nls-age-tab:hover .nls-age-tab__topics li,
+#ongil-detail.nls #nls-ages .nls-age-tab:focus-visible .nls-age-tab__age,
+#ongil-detail.nls #nls-ages .nls-age-tab:focus-visible .nls-age-tab__name,
+#ongil-detail.nls #nls-ages .nls-age-tab:focus-visible .nls-age-tab__topics li,
+#ongil-detail.nls #nls-ages .nls-age-tab.is-active .nls-age-tab__age,
+#ongil-detail.nls #nls-ages .nls-age-tab.is-active .nls-age-tab__name,
+#ongil-detail.nls #nls-ages .nls-age-tab.is-active .nls-age-tab__topics li,
+#ongil-detail.nls #nls-ages .nls-age-tab.is-active small,
+#ongil-detail.nls #nls-ages .nls-age-tab.is-active em,
+#ongil-detail.nls #nls-ages .nls-age-tab.is-active span {
+  color: #fff;
+}
+
+#ongil-detail.nls #nls-ages .nls-age-board .nls-panel {
+  min-height: 0;
+  margin-top: 0.55rem;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--nls-line);
+}
+
+#ongil-detail.nls #nls-ages .nls-empty {
+  font-size: 1.05rem;
+}
+
+@media (max-width: 720px) {
+  #ongil-detail.nls #nls-ages .nls-tabs--ages {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: visible;
+  }
+
+  #ongil-detail.nls #nls-ages .nls-age-tab,
+  #ongil-detail.nls #nls-ages .nls-age-tab:nth-child(-n + 3) {
+    grid-column: auto;
+    width: auto;
+    min-width: 0;
+    flex: none;
+  }
+}
+
+/* First Moments explorer */
+#ongil-detail.nls #nls-first .nls-first-search {
+  margin: 1.1rem 0 1.4rem;
+}
+
+#ongil-detail.nls #nls-first .nls-first-search__label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+#ongil-detail.nls #nls-first .nls-first-search__input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.7rem 0.95rem;
+  border: 1px solid var(--nls-line-strong);
+  border-radius: var(--nls-radius);
+  background: #fff;
+  color: var(--nls-ink);
+  font: inherit;
+  font-size: 1rem;
+}
+
+#ongil-detail.nls #nls-first .nls-first-search__input:focus-visible {
+  outline: 2px solid var(--nls-ink);
+  outline-offset: 2px;
+}
+
+#ongil-detail.nls #nls-first .nls-first-exs,
+#ongil-detail.nls #nls-first .nls-first-age__row,
+#ongil-detail.nls #nls-first .nls-first-svcs,
+#ongil-detail.nls #nls-first .nls-first-jumps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.55rem;
+}
+
+#ongil-detail.nls #nls-first .nls-first-ex,
+#ongil-detail.nls #nls-first .nls-first-mini,
+#ongil-detail.nls #nls-first .nls-first-hit,
+#ongil-detail.nls #nls-ages .nls-first-mini {
+  min-height: 44px;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--nls-line-strong);
+  background: #fff;
+  color: var(--nls-ink);
+  font: inherit;
+  font-size: 0.88rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+#ongil-detail.nls #nls-first .nls-first-ex:hover,
+#ongil-detail.nls #nls-first .nls-first-mini:hover,
+#ongil-detail.nls #nls-first .nls-first-hit:hover,
+#ongil-detail.nls #nls-ages .nls-first-mini:hover,
+#ongil-detail.nls #nls-first .nls-first-ex:focus-visible,
+#ongil-detail.nls #nls-first .nls-first-mini:focus-visible,
+#ongil-detail.nls #nls-first .nls-first-hit:focus-visible,
+#ongil-detail.nls #nls-ages .nls-first-mini:focus-visible {
+  border-color: var(--nls-ink);
+}
+
+#ongil-detail.nls #nls-first .nls-first-hits {
+  list-style: none;
+  margin: 0.65rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+#ongil-detail.nls #nls-first .nls-first-hits[hidden],
+#ongil-detail.nls #nls-first [data-nls-search-empty][hidden] {
+  display: none !important;
+}
+
+#ongil-detail.nls #nls-first .nls-first-hit {
+  width: 100%;
+}
+
+#ongil-detail.nls #nls-first .nls-first-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.45rem;
+}
+
+#ongil-detail.nls #nls-first .nls-first-g {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 4.6rem;
+  padding: 0.85rem 0.95rem;
+  text-align: left;
+}
+
+#ongil-detail.nls #nls-first .nls-first-g em {
+  display: block;
+  margin-top: 0.3rem;
+  font-style: normal;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--nls-muted);
+  line-height: 1.4;
+}
+
+#ongil-detail.nls #nls-first .nls-first-g.is-active em {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+#ongil-detail.nls #nls-first .nls-first-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+#ongil-detail.nls #nls-first .nls-first-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 4.5rem;
+  padding: 0.9rem 1rem;
+  text-align: left;
+}
+
+#ongil-detail.nls #nls-first .nls-first-card strong {
+  font-size: 1.02rem;
+}
+
+#ongil-detail.nls #nls-first .nls-first-card span {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--nls-muted);
+  line-height: 1.45;
+}
+
+#ongil-detail.nls #nls-first .nls-first-card.is-active span {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+#ongil-detail.nls #nls-first .nls-first-guide {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.85rem;
+}
+
+#ongil-detail.nls #nls-first .nls-first-acc {
+  border: 1px solid var(--nls-line);
+  padding: 0 0.9rem;
+}
+
+#ongil-detail.nls #nls-first .nls-first-acc summary {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+}
+
+#ongil-detail.nls #nls-first .nls-first-acc summary::-webkit-details-marker {
+  display: none;
+}
+
+#ongil-detail.nls #nls-first .nls-first-acc__body {
+  padding: 0 0 0.9rem;
+}
+
+#ongil-detail.nls #nls-first .nls-first-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+}
+
+#ongil-detail.nls #nls-first .nls-first-steps li {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+
+#ongil-detail.nls #nls-first .nls-first-steps span {
+  flex: 0 0 auto;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--nls-faint);
+}
+
+#ongil-detail.nls #nls-first .nls-first-svc {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--nls-line-strong);
+  color: inherit;
+  text-decoration: none;
+}
+
+#ongil-detail.nls #nls-first .nls-first-svc--plain {
+  color: var(--nls-muted);
+}
+
+#ongil-detail.nls #nls-first .nls-first-jump {
+  min-height: 44px;
+}
+
+#ongil-detail.nls #nls-ages .nls-first-age {
+  margin-top: 0.85rem;
+}
+
+@media (max-width: 980px) {
+  #ongil-detail.nls #nls-first .nls-first-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  #ongil-detail.nls #nls-first .nls-first-groups,
+  #ongil-detail.nls #nls-first .nls-first-cards {
+    grid-template-columns: 1fr;
+  }
+
+  #ongil-detail.nls #nls-first .nls-first-g,
+  #ongil-detail.nls #nls-first .nls-first-card {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+
+/* Ongil extras */
+#ongil-detail.nls .nog-axes {
+  display: grid;
+  gap: 0.65rem;
+}
+#ongil-detail.nls .nog-axis {
+  padding: 1.05rem 1.1rem;
+  border: 1px solid var(--nls-line);
+  background: var(--nls-paper);
+}
+#ongil-detail.nls .nog-axis strong {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.98rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+}
+#ongil-detail.nls .nog-tabs-3,
+#ongil-detail.nls .nog-disc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin: 1rem 0 0.85rem;
+}
+#ongil-detail.nls .nog-card-tab,
+#ongil-detail.nls .nog-disc-tab,
+#ongil-detail.nls .nog-step-tab {
+  flex-direction: column;
+  gap: 0.28rem;
+  min-height: 5.4rem;
+  align-items: flex-start;
+}
+#ongil-detail.nls .nog-card-tab span,
+#ongil-detail.nls .nog-disc-tab span,
+#ongil-detail.nls .nog-step-tab em {
+  font-style: normal;
+  font-weight: 450;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--nls-muted);
+}
+#ongil-detail.nls .nog-card-tab.is-active span,
+#ongil-detail.nls .nog-disc-tab.is-active span,
+#ongil-detail.nls .nog-step-tab.is-active em {
+  color: rgba(255,255,255,0.78);
+}
+#ongil-detail.nls .nog-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin: 0.85rem 0 1rem;
+}
+#ongil-detail.nls .nog-journey-panel {
+  margin-top: 0.4rem;
+}
+#ongil-detail.nls .nog-scene-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.25rem;
+}
+#ongil-detail.nls .nog-extras {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+#ongil-detail.nls .nog-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin: 0.85rem 0 1.1rem;
+}
+#ongil-detail.nls .nog-links .nls-app {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid var(--nls-line);
+  text-decoration: none;
+  color: inherit;
+}
+#ongil-detail.nls .nog-links .nls-app em {
+  font-style: normal;
+  color: var(--nls-muted);
+  font-size: 0.9rem;
+}
+#ongil-detail.nls .nog-ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#ongil-detail.nls .nog-ol li {
+  display: flex;
+  gap: 0.65rem;
+  padding: 0.35rem 0;
+}
+#ongil-detail.nls .nog-ol span {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--nls-faint);
+}
+#ongil-detail.nls .nls-panels {
+  margin-top: 0.85rem;
+}
+@media (max-width: 900px) {
+  #ongil-detail.nls .nog-tabs-3,
+  #ongil-detail.nls .nog-disc-grid,
+  #ongil-detail.nls .nog-steps,
+  #ongil-detail.nls .nog-extras,
+  #ongil-detail.nls .nog-scene-grid,
+  #ongil-detail.nls .nog-links {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 640px) {
+  #ongil-detail.nls .nog-tabs-3,
+  #ongil-detail.nls .nog-disc-grid,
+  #ongil-detail.nls .nog-steps,
+  #ongil-detail.nls .nog-extras,
+  #ongil-detail.nls .nog-scene-grid,
+  #ongil-detail.nls .nog-links,
+  #ongil-detail.nls .nls-road {
+    grid-template-columns: 1fr;
+  }
+}
