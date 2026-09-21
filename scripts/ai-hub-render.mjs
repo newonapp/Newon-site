@@ -57,6 +57,66 @@ function heroLogos(services) {
   return `<ul class="cai-hero-logos" data-cai-logos>${items}</ul>`;
 }
 
+function aiCoreVisual(kind = "expand") {
+  const expand = kind !== "gather";
+  const nodes = [
+    [240, 52],
+    [368, 108],
+    [428, 240],
+    [368, 372],
+    [240, 428],
+    [112, 372],
+    [52, 240],
+    [112, 108],
+  ];
+  const lines = nodes
+    .map(([x, y], i) => {
+      const delay = (i * 0.35).toFixed(2);
+      const sx = expand ? 240 : x;
+      const sy = expand ? 240 : y;
+      const ex = expand ? x : 240;
+      const ey = expand ? y : 240;
+      return `<line class="cai-core__link" x1="240" y1="240" x2="${x}" y2="${y}" />
+      <circle class="cai-core__pulse" cx="${sx}" cy="${sy}" r="2.2">
+        <animate attributeName="cx" values="${sx};${ex}" dur="4.8s" begin="${delay}s" repeatCount="indefinite" />
+        <animate attributeName="cy" values="${sy};${ey}" dur="4.8s" begin="${delay}s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0;0.9;0" dur="4.8s" begin="${delay}s" repeatCount="indefinite" />
+      </circle>`;
+    })
+    .join("");
+  const dots = nodes
+    .map(
+      ([x, y], i) =>
+        `<circle class="cai-core__node" cx="${x}" cy="${y}" r="6" style="--i:${i}" />`
+    )
+    .join("");
+  return `<div class="cai-core cai-core--${escapeHtml(kind)}" data-cai-core="${escapeHtml(kind)}" aria-hidden="true">
+    <svg class="cai-core__svg" viewBox="0 0 480 480" width="480" height="480" focusable="false">
+      <defs>
+        <radialGradient id="cai-core-glow-${kind}" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="rgba(186,196,255,0.78)" />
+          <stop offset="34%" stop-color="rgba(110,124,220,0.34)" />
+          <stop offset="100%" stop-color="rgba(92,108,210,0)" />
+        </radialGradient>
+        <filter id="cai-core-soft-${kind}" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="6" result="b" />
+          <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+        </filter>
+      </defs>
+      <circle class="cai-core__halo" cx="240" cy="240" r="168" fill="url(#cai-core-glow-${kind})" />
+      <circle class="cai-core__ring cai-core__ring--outer" cx="240" cy="240" r="148" />
+      <circle class="cai-core__ring cai-core__ring--mid" cx="240" cy="240" r="104" />
+      <g class="cai-core__web">${lines}${dots}</g>
+      <g class="cai-core__nucleus" filter="url(#cai-core-soft-${kind})">
+        <circle class="cai-core__body" cx="240" cy="240" r="58" />
+        <circle class="cai-core__inner" cx="240" cy="240" r="34" />
+      </g>
+      <text class="cai-core__brand" x="240" y="236" text-anchor="middle">NEWON</text>
+      <text class="cai-core__brand cai-core__brand--sub" x="240" y="258" text-anchor="middle">AI</text>
+    </svg>
+  </div>`;
+}
+
 function filterBar(ui, flat, flatEn) {
   const keyById = {
     all: "studio.caiFilterAll",
@@ -160,31 +220,38 @@ function detailHtml(svc, app, ui, lang) {
 </section>`;
 }
 
-function earlyAccessForm(flat, flatEn) {
-  return `<section class="cai-more" id="ai-early-access" data-ai-reveal>
-    <div class="cai-more__inner hub-inner">
-      <div class="cai-more__copy">
-        <p class="cai-more__eyebrow">${t(flat, flatEn, "studio.aiEarlyLabel", "NEWON AI / EARLY ACCESS")}</p>
-        <h2 class="cai-more__title">${t(flat, flatEn, "studio.aiEarlyTitle", "Newon AI product updates")}</h2>
-      </div>
-      <form class="cai-more__form waitlist-form nw-notify-form" data-waitlist-form data-product-id="newon-ai" data-form-type="waitlist">
-        <input type="hidden" name="productId" value="newon-ai" />
-        <div class="nw-notify-form__row">
-          <label class="nw-notify-form__field">
-            <span class="visually-hidden">Email</span>
-            <input type="email" name="email" class="nw-notify-form__email" placeholder="email@example.com" required autocomplete="email" aria-label="Email" />
-          </label>
-          <button type="submit" class="btn btn-primary nw-notify-form__btn">${t(flat, flatEn, "studio.aiEarlyCta", "Join waitlist")}</button>
-        </div>
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-      </form>
-      <p class="waitlist-success" data-waitlist-success hidden>${t(flat, flatEn, "studio.waitlistSuccess", "")}</p>
-      <p class="waitlist-success" data-waitlist-duplicate hidden>${t(flat, flatEn, "studio.newsletterAlready", "")}</p>
-      <p class="waitlist-error" data-waitlist-error hidden role="alert">${t(flat, flatEn, "studio.waitlistError", "")}</p>
-      <p class="cai-more__links">
-        <a href="../business/ai-automation/">${t(flat, flatEn, "studio.aiCta", "Business AI")} →</a>
-        <a href="../business/inquiry/">${t(flat, flatEn, "nav.inquiry", "Inquiry")} →</a>
-      </p>
+function finaleSection(flat, flatEn) {
+  const cards = [
+    {
+      n: "01",
+      href: "#cai-services",
+      title: t(flat, flatEn, "studio.aiFinaleCta1Title", "AI 제품 살펴보기"),
+      desc: t(flat, flatEn, "studio.aiFinaleCta1Desc", "Newon이 개발하는 AI 기반 제품과 서비스를 확인하세요."),
+    },
+    {
+      n: "02",
+      href: "../business/ai-automation/",
+      title: t(flat, flatEn, "studio.aiFinaleCta2Title", "비즈니스를 위한 AI"),
+      desc: t(flat, flatEn, "studio.aiFinaleCta2Desc", "기업의 업무와 제품에 적용할 수 있는 AI 기술과 솔루션을 살펴보세요."),
+    },
+    {
+      n: "03",
+      href: "../business/inquiry/",
+      title: t(flat, flatEn, "studio.aiFinaleCta3Title", "AI 개발 및 협업 문의"),
+      desc: t(flat, flatEn, "studio.aiFinaleCta3Desc", "AI 제품 개발과 기술 협업에 관한 문의를 남겨보세요."),
+    },
+  ]
+    .map(
+      (c) => `<a class="cai-close__btn${c.n === "01" ? " cai-close__btn--primary" : " cai-close__btn--ghost"}" href="${c.href}" data-cai-scroll>${c.title}</a>`
+    )
+    .join("");
+
+  return `<section class="cai-close" id="cai-next" data-ai-reveal>
+    <div class="hub-inner cai-close__shell">
+      <p class="cai-close__eyebrow">${t(flat, flatEn, "studio.aiFinaleLabel", "THE NEXT EXPERIENCE · NEWON AI")}</p>
+      <h2 class="cai-close__title">${t(flat, flatEn, "studio.aiFinaleTitle", "AI의 다음 가능성,\nNewon에서.").replace(/\n/g, "<br />")}</h2>
+      <p class="cai-close__lead">${t(flat, flatEn, "studio.aiFinaleLead", "개인의 일상부터 새로운 제품과 비즈니스까지.\nNewon은 AI가 실제 경험으로 이어지는 미래를 만들어 갑니다.").replace(/\n/g, "<br />")}</p>
+      <div class="cai-close__actions">${cards}</div>
     </div>
   </section>`;
 }
@@ -217,18 +284,28 @@ export function renderAiShowcaseBody(flat, flatEn, lang) {
   const cards = CAI_SERVICES.map((svc) => cardHtml(svc, bySlug[svc.slug], ui, copyLang)).join("\n");
   const details = CAI_SERVICES.map((svc) => detailHtml(svc, bySlug[svc.slug], ui, copyLang)).join("\n");
 
-  const leadHtml = escapeHtml(ui.lead).replace(/\n/g, "<br />");
+  const leadHtml = t(flat, flatEn, "studio.aiHeroLead", ui.lead).replace(/\n/g, "<br />");
+  const titleHtml = t(flat, flatEn, "studio.aiHeroTitle", ui.title).replace(/\n/g, "<br />");
 
   return `<div class="ai-page cai-page" data-ai-page data-cai-page>
-  <section class="cai-hero" data-ai-reveal>
-    <div class="cai-hero__inner hub-inner">
-      <p class="cai-hero__eyebrow">${escapeHtml(ui.eyebrow)}</p>
-      <h1 class="cai-hero__title">${escapeHtml(ui.title)}</h1>
-      <p class="cai-hero__lead">${leadHtml}</p>
-      <p class="cai-hero__meta">${escapeHtml(ui.meta)}</p>
-      <div class="cai-hero__logos-wrap" aria-label="${escapeHtml(ui.logoMarqueeAria)}">
-        ${heroLogos(CAI_SERVICES)}
+  <section class="cai-hero cai-hero--edit" data-ai-reveal>
+    <div class="hub-inner cai-hero__grid">
+      <div class="cai-hero__copy">
+        <p class="cai-hero__eyebrow">${t(flat, flatEn, "studio.aiHeroLabel", "NEWON AI / INTELLIGENCE IN ACTION")}</p>
+        <h1 class="cai-hero__title">${titleHtml}</h1>
+        <p class="cai-hero__lead">${leadHtml}</p>
+        <div class="cai-hero__actions">
+          <a class="cai-btn cai-btn--primary" href="#cai-services" data-cai-scroll>${t(flat, flatEn, "studio.aiHeroCtaProducts", "AI 제품 살펴보기")} ↓</a>
+          <a class="cai-btn cai-btn--ghost" href="../business/ai-automation/">${t(flat, flatEn, "studio.aiHeroCtaTech", "AI 기술 알아보기")} ↗</a>
+        </div>
       </div>
+      <aside class="cai-hero__visual" aria-hidden="true">
+        <p class="cai-mark">
+          <span class="cai-mark__line">AI</span>
+          <span class="cai-mark__dot"></span>
+          <span class="cai-mark__line">NEWON</span>
+        </p>
+      </aside>
     </div>
   </section>
 
@@ -244,6 +321,6 @@ export function renderAiShowcaseBody(flat, flatEn, lang) {
     </div>
   </section>
 
-  ${earlyAccessForm(flat, flatEn)}
+  ${finaleSection(flat, flatEn)}
 </div>`;
 }

@@ -10,8 +10,9 @@ import { buildHomeStudioBody } from "./home-page-body.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
-const CSS_VER = "20260920story9";
-const JS_VER = "20260920story9";
+const CSS_VER = "20260921nls1";
+const JS_VER = "20260921nls1";
+const NLS_VER = "20260921nls1";
 
 function patchHome(html, body) {
   // Prefer HQ class; normalize legacy opener to HQ without touching hero.
@@ -28,9 +29,27 @@ function patchHome(html, body) {
   const openEnd = next.indexOf(">", start) + 1;
   const closeDiv = next.lastIndexOf("</div>", end);
   next = `${next.slice(0, openEnd)}\n${body.trim()}\n        ${next.slice(closeDiv)}`;
-  return next
+  next = next
     .replace(/home-studio\.css\?v=[^"]+/g, `home-studio.css?v=${CSS_VER}`)
     .replace(/home-studio\.js\?v=[^"]+/g, `home-studio.js?v=${JS_VER}`);
+
+  if (!next.includes("home-lifestage.css")) {
+    next = next.replace(
+      /(<link rel="stylesheet" href="\/home-studio\.css\?v=[^"]+" \/>)/,
+      `$1\n    <link rel="stylesheet" href="/home-lifestage.css?v=${NLS_VER}" />`
+    );
+  } else {
+    next = next.replace(/home-lifestage\.css\?v=[^"]+/g, `home-lifestage.css?v=${NLS_VER}`);
+  }
+  if (!next.includes("home-lifestage.js")) {
+    next = next.replace(
+      /(<script src="\/home-studio\.js\?v=[^"]+" defer><\/script>)/,
+      `$1\n    <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`
+    );
+  } else {
+    next = next.replace(/home-lifestage\.js\?v=[^"]+/g, `home-lifestage.js?v=${NLS_VER}`);
+  }
+  return next;
 }
 
 for (const lang of LANGS) {

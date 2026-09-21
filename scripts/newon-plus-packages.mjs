@@ -20,8 +20,6 @@ export const PLUS_MEMBER_APPS = [
   "babylog",
   "petlog",
   "myworld",
-  "eaton",
-  "fiton",
 ];
 
 /**

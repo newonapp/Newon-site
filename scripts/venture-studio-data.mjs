@@ -65,7 +65,7 @@ export const MEGA_DESTINATIONS = {
     {
       titleKey: "nav.lifeStageIntro",
       descKey: "nav.lifeStageIntroDesc",
-      href: "#story-lifestage",
+      href: "lifestage/",
       titleFb: "Life Stage",
     },
   ],
@@ -97,22 +97,22 @@ export const MEGA_DESTINATIONS = {
       href: "business/solutions/",
       titleFb: "SOLUTIONS",
     },
+    { titleKey: "nav.insights", descKey: "nav.megaInsightsDesc", href: "resources/insights/", titleFb: "INSIGHTS" },
   ],
   studio: [
     { titleKey: "nav.studioBrand", descKey: "nav.megaBrandDesc", href: "studio/brand/", titleFb: "BRAND" },
     { titleKey: "nav.studioDigital", descKey: "nav.megaDigitalDesc", href: "studio/digital/", titleFb: "DIGITAL" },
     { titleKey: "nav.studioContent", descKey: "nav.megaContentDesc", href: "studio/content/", titleFb: "CONTENT" },
     { titleKey: "nav.studioIp", descKey: "nav.megaIpDesc", href: "studio/ip/", titleFb: "IP" },
+    { titleKey: "nav.store", descKey: "nav.megaStoreDesc", href: "resources/store/", titleFb: "STORE" },
+    { titleKey: "nav.labs", descKey: "nav.megaLabsDesc", href: "resources/labs/", titleFb: "LABS" },
   ],
   company: [
     { titleKey: "nav.aboutNewon", descKey: "nav.megaAboutDesc", href: "about/", titleFb: "About" },
     { titleKey: "nav.portfolio", descKey: "nav.megaPortfolioDesc", href: "portfolio/", titleFb: "Portfolio" },
     { titleKey: "nav.newsUpdates", descKey: "nav.megaNewsDesc", href: "news/", titleFb: "News" },
     { titleKey: "nav.media", descKey: "nav.megaMediaDesc", href: "media/", titleFb: "Media" },
-    { titleKey: "nav.store", descKey: "nav.megaStoreDesc", href: "resources/store/", titleFb: "STORE" },
-    { titleKey: "nav.insights", descKey: "nav.megaInsightsDesc", href: "resources/insights/", titleFb: "INSIGHTS" },
     { titleKey: "nav.blog", descKey: "nav.megaBlogDesc", href: "resources/blog/", titleFb: "BLOG" },
-    { titleKey: "nav.labs", descKey: "nav.megaLabsDesc", href: "resources/labs/", titleFb: "LABS" },
     { titleKey: "nav.market", descKey: "nav.megaMarketDesc", href: "market/", titleFb: "Market" },
     { titleKey: "nav.contact", descKey: "nav.megaContactDesc", href: "business/inquiry/", titleFb: "Contact" },
   ],
@@ -338,7 +338,7 @@ export const STUDIO_IA = [
   },
 ];
 
-/** @deprecated former Resources mega — now under MEGA_DESTINATIONS.company */
+/** @deprecated former Resources mega — Store/Labs live under Studio, Insights under Business. */
 export const RESOURCES_IA = [
   { titleKey: "nav.store", descKey: "nav.megaStoreDesc", href: "resources/store/", status: "OPERATING" },
   { titleKey: "nav.insights", descKey: "nav.megaInsightsDesc", href: "resources/insights/", status: "OPERATING" },

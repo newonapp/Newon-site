@@ -59,7 +59,7 @@ const MENU_META = {
   lifestage: {
     kicker: "nav.lifeStageMenuLabel",
     lead: "nav.lifeStageMenuLead",
-    footHref: "#story-lifestage",
+    footHref: "lifestage/",
     footKey: "nav.lifeStageExploreCta",
     footFb: "View Life Stage →",
   },
@@ -129,11 +129,14 @@ export function resolveActiveNav(pathname = "") {
     return "business";
   }
   if (seg === "studio") return "studio";
+  if (seg === "store" || (seg === "resources" && parts[1] === "store")) return "studio";
+  if (seg === "labs" || (seg === "resources" && parts[1] === "labs")) return "studio";
+  if (seg === "insights" || (seg === "resources" && parts[1] === "insights")) return "business";
   if (seg === "media" || (seg === "resources" && parts[1] === "media")) return "company";
   if (
     seg === "resources" ||
     seg === "company" ||
-    ["about", "portfolio", "news", "ideas", "contact", "store", "blog", "labs", "market"].includes(seg)
+    ["about", "portfolio", "news", "ideas", "contact", "blog", "market"].includes(seg)
   ) {
     return "company";
   }
@@ -146,7 +149,7 @@ const MOON_SVG = `<svg class="gnav__theme-icon" width="20" height="20" viewBox="
 
 function megaItemLimit(menuId) {
   if (menuId === "company") return 12;
-  if (menuId === "consumer" || menuId === "ai") return 8;
+  if (menuId === "consumer" || menuId === "ai" || menuId === "business" || menuId === "studio") return 8;
   return 4;
 }
 

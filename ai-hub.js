@@ -109,12 +109,49 @@
     }
   }
 
+  function initScroll(root) {
+    root.addEventListener("click", function (e) {
+      var a = e.target.closest("[data-cai-scroll]");
+      if (!a || !root.contains(a)) return;
+      var href = a.getAttribute("href") || "";
+      if (href.charAt(0) !== "#") return;
+      var target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "start" });
+      if (history.replaceState) history.replaceState(null, "", href);
+    });
+  }
+
+  function initCore(root) {
+    var cores = Array.prototype.slice.call(root.querySelectorAll("[data-cai-core]"));
+    if (!cores.length) return;
+    var canHover = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!canHover || reduceMotion()) return;
+    cores.forEach(function (core) {
+      var host = core.closest(".cai-hero__viz, .cai-finale__viz") || core;
+      host.addEventListener("pointermove", function (e) {
+        var box = host.getBoundingClientRect();
+        var x = (e.clientX - box.left) / box.width - 0.5;
+        var y = (e.clientY - box.top) / box.height - 0.5;
+        core.style.setProperty("--tx", (x * 14).toFixed(2) + "px");
+        core.style.setProperty("--ty", (y * 10).toFixed(2) + "px");
+      });
+      host.addEventListener("pointerleave", function () {
+        core.style.setProperty("--tx", "0px");
+        core.style.setProperty("--ty", "0px");
+      });
+    });
+  }
+
   function init() {
     var root = document.querySelector("[data-cai-page], [data-ai-page]");
     if (!root) return;
     initReveal(root);
     initFilter(root);
     initDetails(root);
+    initScroll(root);
+    initCore(root);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

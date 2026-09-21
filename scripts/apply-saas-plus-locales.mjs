@@ -89,7 +89,7 @@ const COPY = {
     plusPack_ultimate_name: "얼티메이트 패키지",
     plusPack_ultimate_lead: "Newon+에 연결된 생활 앱을 모두 이용합니다.",
     plusPack_ultimate_purpose: "Newon+ 멤버십에 포함된 생활 앱을 하나의 패키지로 이용하고 싶은 분을 위한 구성입니다.",
-    plusPack_ultimate_use: "생산성, 금융, 건강, 가족, 여행, 푸드, 피트니스 앱을 한 계정으로 이용합니다.",
+    plusPack_ultimate_use: "생산성, 금융, 건강, 가족, 여행 앱을 한 계정으로 이용합니다.",
     plusPack_ultimate_together:
       "Newon+에서 패키지를 선택한 뒤, 필요한 앱을 설치하고 같은 계정으로 로그인합니다.",
   },
@@ -174,7 +174,7 @@ const COPY = {
     plusPack_ultimate_name: "Ultimate package",
     plusPack_ultimate_lead: "Use every lifestyle app connected to Newon+.",
     plusPack_ultimate_purpose: "For anyone who wants all lifestyle apps included in the Newon+ membership as one package.",
-    plusPack_ultimate_use: "Use productivity, finance, health, family, travel, food, and fitness apps with one account.",
+    plusPack_ultimate_use: "Use productivity, finance, health, family, and travel apps with one account.",
     plusPack_ultimate_together:
       "Choose a package in Newon+, install the apps you need, and sign in with the same account.",
   },
@@ -256,7 +256,7 @@ const COPY = {
     plusPack_ultimate_name: "アルティメットパッケージ",
     plusPack_ultimate_lead: "Newon+ につながる生活アプリをすべて利用します。",
     plusPack_ultimate_purpose: "Newon+ メンバーシップに含まれる生活アプリをひとつのパッケージで使いたい方向けです。",
-    plusPack_ultimate_use: "生産性、金融、健康、家族、旅行、フード、フィットネスのアプリをひとつのアカウントで利用します。",
+    plusPack_ultimate_use: "生産性、金融、健康、家族、旅行のアプリをひとつのアカウントで利用します。",
     plusPack_ultimate_together: "Newon+ でパッケージを選び、必要なアプリをインストールして同じアカウントでログインします。",
   },
   es: {
@@ -340,7 +340,7 @@ const COPY = {
     plusPack_ultimate_name: "Paquete Ultimate",
     plusPack_ultimate_lead: "Usa todas las apps de vida conectadas a Newon+.",
     plusPack_ultimate_purpose: "Para quien quiere todas las apps de vida incluidas en Newon+ en un solo paquete.",
-    plusPack_ultimate_use: "Usa apps de productividad, finanzas, salud, familia, viajes, comida y fitness con una cuenta.",
+    plusPack_ultimate_use: "Usa apps de productividad, finanzas, salud, familia y viajes con una cuenta.",
     plusPack_ultimate_together: "Elige un paquete en Newon+, instala las apps que necesites e inicia sesión con la misma cuenta.",
   },
   "pt-br": {
@@ -424,7 +424,7 @@ const COPY = {
     plusPack_ultimate_name: "Pacote Ultimate",
     plusPack_ultimate_lead: "Use todos os apps de vida ligados ao Newon+.",
     plusPack_ultimate_purpose: "Para quem quer todos os apps de vida incluídos no Newon+ em um só pacote.",
-    plusPack_ultimate_use: "Use apps de produtividade, finanças, saúde, família, viagem, comida e fitness com uma conta.",
+    plusPack_ultimate_use: "Use apps de produtividade, finanças, saúde, família e viagem com uma conta.",
     plusPack_ultimate_together: "Escolha um pacote no Newon+, instale os apps de que precisa e entre com a mesma conta.",
   },
   fr: {
@@ -508,7 +508,7 @@ const COPY = {
     plusPack_ultimate_name: "Forfait Ultimate",
     plusPack_ultimate_lead: "Utilisez toutes les apps de vie liées à Newon+.",
     plusPack_ultimate_purpose: "Pour utiliser toutes les apps de vie incluses dans Newon+ en un seul forfait.",
-    plusPack_ultimate_use: "Utilisez les apps de productivité, finance, santé, famille, voyage, nourriture et fitness avec un compte.",
+    plusPack_ultimate_use: "Utilisez les apps de productivité, finance, santé, famille et voyage avec un compte.",
     plusPack_ultimate_together: "Choisissez un forfait dans Newon+, installez les apps dont vous avez besoin et connectez-vous avec le même compte.",
   },
   de: {
@@ -592,7 +592,7 @@ const COPY = {
     plusPack_ultimate_name: "Ultimate-Paket",
     plusPack_ultimate_lead: "Nutzen Sie alle mit Newon+ verbundenen Alltags-Apps.",
     plusPack_ultimate_purpose: "Für alle, die alle in Newon+ enthaltenen Alltags-Apps als ein Paket nutzen wollen.",
-    plusPack_ultimate_use: "Nutzen Sie Produktivitäts-, Finanz-, Gesundheits-, Familien-, Reise-, Food- und Fitness-Apps mit einem Konto.",
+    plusPack_ultimate_use: "Nutzen Sie Produktivitäts-, Finanz-, Gesundheits-, Familien- und Reise-Apps mit einem Konto.",
     plusPack_ultimate_together: "Wählen Sie ein Paket in Newon+, installieren Sie die benötigten Apps und melden Sie sich mit demselben Konto an.",
   },
   hi: {
@@ -675,7 +675,7 @@ const COPY = {
     plusPack_ultimate_name: "अल्टिमेट पैकेज",
     plusPack_ultimate_lead: "Newon+ से जुड़े सभी जीवन ऐप्स इस्तेमाल करें।",
     plusPack_ultimate_purpose: "उन लोगों के लिए जो Newon+ में शामिल सभी जीवन ऐप्स एक पैकेज में चाहते हैं।",
-    plusPack_ultimate_use: "एक खाते से प्रोडक्टिविटी, वित्त, स्वास्थ्य, परिवार, यात्रा, भोजन और फिटनेस ऐप्स इस्तेमाल करें।",
+    plusPack_ultimate_use: "एक खाते से प्रोडक्टिविटी, वित्त, स्वास्थ्य, परिवार और यात्रा ऐप्स इस्तेमाल करें।",
     plusPack_ultimate_together: "Newon+ में पैकेज चुनें, जरूरी ऐप्स इंस्टॉल करें और उसी खाते से साइन इन करें।",
   },
   id: {
@@ -759,7 +759,7 @@ const COPY = {
     plusPack_ultimate_name: "Paket Ultimate",
     plusPack_ultimate_lead: "Gunakan semua aplikasi kehidupan yang terhubung ke Newon+.",
     plusPack_ultimate_purpose: "Untuk siapa pun yang ingin semua aplikasi kehidupan di keanggotaan Newon+ sebagai satu paket.",
-    plusPack_ultimate_use: "Gunakan aplikasi produktivitas, keuangan, kesehatan, keluarga, perjalanan, makanan, dan kebugaran dengan satu akun.",
+    plusPack_ultimate_use: "Gunakan aplikasi produktivitas, keuangan, kesehatan, keluarga, dan perjalanan dengan satu akun.",
     plusPack_ultimate_together: "Pilih paket di Newon+, pasang aplikasi yang dibutuhkan, dan masuk dengan akun yang sama.",
   },
 };

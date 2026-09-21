@@ -314,7 +314,7 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.aiSeoTitle"),
     description: pick(f, fe, "studio.aiMetaDescription"),
     body: aiBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260921aihero3" />',
+    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260921aisaas3" />',
     extraScripts: '<script src="/ai-hub.js?v=20260921aihero3" defer></script>',
   }),
   saas: (f, fe, l) => ({
@@ -322,8 +322,8 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.saasSeoTitle"),
     description: pick(f, fe, "studio.saasMetaDescription"),
     body: saasBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/saas-hub.css?v=20260921plus1" />',
-    extraScripts: '<script src="/saas-hub.js?v=20260921plus1" defer></script>',
+    extraCss: '<link rel="stylesheet" href="/saas-hub.css?v=20260921plus7" />',
+    extraScripts: '<script src="/saas-hub.js?v=20260921plus3" defer></script>',
   }),
   games: (f, fe, l) => ({
     activeNav: "products",

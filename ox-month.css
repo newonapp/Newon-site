@@ -2569,33 +2569,36 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 
 
 /* === apps-hub quality redesign (all 13 app intros) === */
-/* Rounded boxes restored; keep readable type */
+/* Square boxes like SaaS / Newon+; app logos stay rounded */
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) {
-  --ox-radius: 12px;
-  --ox-radius-lg: 16px;
+  --ox-radius: 2px;
+  --ox-radius-lg: 2px;
 }
 
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-badge {
-  border-radius: 999px !important;
+  border-radius: 2px !important;
 }
 
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-store-badge {
-  border-radius: 12px !important;
+  border-radius: 2px !important;
 }
 
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-feature-card,
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-review-card,
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-premium-card,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-premium-block,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-premium-highlight,
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-step,
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-hero-frame,
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-app-intro__panel,
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .co-build-list li,
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-snap,
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-ba,
+:is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-ba__row,
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-faq__item,
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-related__card,
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-final-cta {
-  border-radius: var(--ox-radius-lg) !important;
+  border-radius: 2px !important;
 }
 
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-hero-frame--logo .ox-hero-logo-img {
@@ -2604,16 +2607,16 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
 
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-snap__platforms span,
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .sp-showcase-soon {
-  border-radius: 18px !important;
+  border-radius: 2px !important;
 }
 
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-snap__plat {
-  border-radius: 999px !important;
+  border-radius: 2px !important;
 }
 
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .apps-store__soon,
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .al-final-cta__soon {
-  border-radius: 999px;
+  border-radius: 2px;
 }
 
 :is(#ox-month,#subping-app,#pillmate-app,#savy-app,#babylog-app,#petlog-app,#piggyup-app,#goalup-app,#countup-app,#myworld-app,#eaton-app,#fiton-app,#newon-plus-app,#human404-app) .ox-hero-value {
@@ -2643,3 +2646,4 @@ html[data-newon-shell-theme="light"] .navbar-bar--ox .lang-menu.lang-menu--toolb
   font-size: 0.9rem;
   color: color-mix(in srgb, var(--ox-text) 58%, var(--ox-muted));
 }
+
