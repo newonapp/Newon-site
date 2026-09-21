@@ -1,5 +1,5 @@
 /**
- * Life Stage homepage section HTML. Scoped to #story-lifestage.
+ * Life Stage detail section HTML. Scoped to #lifestage-detail.
  */
 import { escapeHtml } from "./hub-utils.mjs";
 import { APP_CATALOG } from "./portfolio-data.mjs";
@@ -14,7 +14,7 @@ function nl(s) {
 function titleBlock(kicker, title, lead) {
   return `<header class="nls-head">
     ${kicker ? `<p class="nls-kicker">${escapeHtml(kicker)}</p>` : ""}
-    <h3 class="nls-title">${nl(title)}</h3>
+    <h2 class="nls-title">${nl(title)}</h2>
     ${lead ? `<p class="nls-lead">${escapeHtml(lead)}</p>` : ""}
   </header>`;
 }
@@ -24,25 +24,44 @@ function badge(label, kind = "planned") {
 }
 
 function list(items, cls = "nls-list") {
-  return `<ul class="${cls}">${items.map((t) => `<li>${escapeHtml(t)}</li>`).join("")}</ul>`;
+  return `<ul class="${cls}">${(items || []).map((t) => `<li>${escapeHtml(t)}</li>`).join("")}</ul>`;
 }
 
-function tabBtn(group, key, label, selected, extraClass = "") {
-  return `<button type="button" class="nls-tab${extraClass}${selected ? " is-active" : ""}" data-nls-tab data-nls-group="${escapeHtml(group)}" data-nls-key="${escapeHtml(key)}" role="tab" aria-selected="${selected ? "true" : "false"}" tabindex="${selected ? "0" : "-1"}">${label}</button>`;
+function moreBlock(label, inner) {
+  if (!inner) return "";
+  return `<details class="nls-more"><summary>${escapeHtml(label)}</summary><div class="nls-more__body">${inner}</div></details>`;
+}
+
+function emptyHint(group, text, startHidden = false) {
+  return `<p class="nls-empty" data-nls-empty="${escapeHtml(group)}"${startHidden ? " hidden" : ""}>${escapeHtml(text)}</p>`;
+}
+
+function tabBtn(group, key, label, selected, extraClass = "", extraAttr = "") {
+  return `<button type="button" class="nls-tab${extraClass}${selected ? " is-active" : ""}" data-nls-tab data-nls-group="${escapeHtml(group)}" data-nls-key="${escapeHtml(key)}"${extraAttr} role="tab" aria-selected="${selected ? "true" : "false"}" tabindex="${selected ? "0" : "-1"}">${label}</button>`;
+}
+
+function sitCatOf(c, sitId) {
+  const cat = (c.sitCats || []).find((g) => (g.sitIds || []).includes(sitId));
+  return cat ? cat.id : "";
+}
+
+function knowCatOf(c, fieldId) {
+  const g = (c.knowGroups || []).find((x) => (x.fieldIds || []).includes(fieldId));
+  return g ? g.id : "";
 }
 
 function heroTimeline(c) {
   const nodes = c.ages.items
     .map((a, i) => {
-      const on = i === 0;
-      return `<button type="button" class="nls-node${on ? " is-active" : ""}" data-nls-tab data-nls-group="age" data-nls-key="${escapeHtml(a.id)}" aria-pressed="${on ? "true" : "false"}">
+      return `<button type="button" class="nls-node" data-nls-tab data-nls-group="age" data-nls-key="${escapeHtml(a.id)}" data-name="${escapeHtml(a.name)}" data-age="${escapeHtml(a.age)}" aria-pressed="false">
         <span class="nls-node__n">${String(i + 1).padStart(2, "0")}</span>
         <span class="nls-node__age">${escapeHtml(a.age)}</span>
         <span class="nls-node__name">${escapeHtml(a.name)}</span>
       </button>`;
     })
     .join("");
-  const first = c.ages.items[0] || { age: "", name: "", intro: "" };
+  const all = c.ui.allStages;
+  const allSub = c.ui.allStagesSub;
   return `<div class="nls-visual" aria-label="${escapeHtml(c.hero.theme)}">
     <div class="nls-sv">
       <div class="nls-sv__head">
@@ -51,10 +70,10 @@ function heroTimeline(c) {
       </div>
       <div class="nls-sv__rail">${nodes}</div>
       <div class="nls-sv__grid">
-        <article class="is-on">
+        <article class="nls-sv__now" data-nls-now data-default-title="${escapeHtml(all)}" data-default-age="${escapeHtml(allSub)}">
           <p class="nls-sv__k">NOW</p>
-          <strong>${escapeHtml(first.name)}</strong>
-          <em>${escapeHtml(first.age)}</em>
+          <strong data-nls-now-title>${escapeHtml(all)}</strong>
+          <em data-nls-now-age>${escapeHtml(allSub)}</em>
         </article>
         <article>
           <p class="nls-sv__k">LEARN</p>
@@ -73,11 +92,19 @@ function heroTimeline(c) {
 
 function agesBlock(c) {
   const tabs = c.ages.items
-    .map((a, i) => tabBtn("age", a.id, `<span>${escapeHtml(a.age)}</span><em>${escapeHtml(a.name)}</em>`, i === 0))
+    .map((a) => {
+      const hi = (a.highlights || a.topics || []).slice(0, 3);
+      return tabBtn(
+        "age",
+        a.id,
+        `<span>${escapeHtml(a.age)}</span><em>${escapeHtml(a.name)}</em><small>${hi.map(escapeHtml).join(" · ")}</small>`,
+        false,
+        " nls-age-tab"
+      );
+    })
     .join("");
   const panels = c.ages.items
-    .map((a, i) => {
-      const hidden = i === 0 ? "" : " hidden";
+    .map((a) => {
       const groups = (a.groups || [{ title: "", topics: a.topics || [] }])
         .map(
           (g) => `<div class="nls-age-group">
@@ -89,80 +116,119 @@ function agesBlock(c) {
       const cases = (a.cases || [])
         .map((q) => `<blockquote class="nls-case"><p>${escapeHtml(q.q)}</p><span>${escapeHtml(q.a)}</span></blockquote>`)
         .join("");
-      return `<article class="nls-panel${i === 0 ? " is-active" : ""}" data-nls-panel data-nls-group="age" data-nls-key="${escapeHtml(a.id)}"${hidden}>
+      const extra = [
+        groups,
+        cases ? `<p class="nls-mini">${escapeHtml(c.ui.caseLabel || "")}</p>${cases}` : "",
+        a.note ? `<p class="nls-note">${escapeHtml(a.note)}</p>` : "",
+        a.id === "10" && c.ui.teenNote ? `<p class="nls-note">${escapeHtml(c.ui.teenNote)}</p>` : "",
+      ].join("");
+      return `<article class="nls-panel" data-nls-panel data-nls-group="age" data-nls-key="${escapeHtml(a.id)}" hidden>
         <p class="nls-panel__kicker">${escapeHtml(a.age)} · ${escapeHtml(a.name)}</p>
         <h4 class="nls-panel__title">${escapeHtml(a.name)}</h4>
         <p class="nls-panel__intro">${escapeHtml(a.intro)}</p>
-        ${groups}
-        ${cases ? `<p class="nls-mini">${escapeHtml(c.ui.caseLabel || "")}</p>${cases}` : ""}
-        ${a.note ? `<p class="nls-note">${escapeHtml(a.note)}</p>` : ""}
+        ${list((a.highlights || []).slice(0, 3), "nls-chips")}
+        ${moreBlock(c.ui.more, extra)}
       </article>`;
     })
     .join("");
-  return `<div id="nls-ages" class="nls-block" data-hs-section>
-    ${titleBlock("", c.ages.title, c.ages.lead)}
+  return `<div id="nls-ages" class="nls-block nls-block--band" data-hs-section>
+    ${titleBlock("01 · Journey", c.ages.title, c.ages.lead)}
     <p class="nls-note">${escapeHtml(c.ui.ageNote)}</p>
-    ${c.ui.teenNote ? `<p class="nls-note">${escapeHtml(c.ui.teenNote)}</p>` : ""}
-    <div class="nls-split">
+    <div class="nls-age-board">
       <div class="nls-tabs nls-tabs--ages" role="tablist">${tabs}</div>
+      ${emptyHint("age", c.ui.pickAge)}
       <div class="nls-panels">${panels}</div>
     </div>
   </div>`;
 }
 
 function sitsBlock(c) {
+  const cats = (c.sitCats || [])
+    .map(
+      (cat) => `<button type="button" class="nls-tab nls-sitcat" data-nls-filter="sitcat" data-nls-key="${escapeHtml(cat.id)}" aria-pressed="false">
+        <span class="nls-sit__n">${escapeHtml(cat.n)}</span>
+        <strong>${escapeHtml(cat.title)}</strong>
+        ${cat.blurb ? `<em>${escapeHtml(cat.blurb)}</em>` : ""}
+      </button>`
+    )
+    .join("");
   const cards = c.sits.items
-    .map((s, i) => tabBtn("sit", s.id, escapeHtml(s.title), i === 0, " nls-sit"))
+    .map((s, i) =>
+      tabBtn(
+        "sit",
+        s.id,
+        `<span class="nls-sit__n">${String(i + 1).padStart(2, "0")}</span><span>${escapeHtml(s.title)}</span>`,
+        false,
+        " nls-sit",
+        ` data-nls-filter-item="sitcat" data-nls-cat="${escapeHtml(sitCatOf(c, s.id))}" hidden`
+      )
+    )
     .join("");
   const panels = c.sits.items
-    .map((s, i) => {
-      const hidden = i === 0 ? "" : " hidden";
-      return `<article class="nls-panel nls-sit-panel${i === 0 ? " is-active" : ""}" data-nls-panel data-nls-group="sit" data-nls-key="${escapeHtml(s.id)}"${hidden}>
+    .map((s) => {
+      const extra = [
+        s.apps ? `<div><p class="nls-mini">${escapeHtml(c.ui.appsLabel)}</p><p>${escapeHtml(s.apps)}</p></div>` : "",
+        `<div><p class="nls-mini">${escapeHtml(c.sits.cLabel)}</p><p>${escapeHtml(s.connect)}</p></div>`,
+      ].join("");
+      return `<article class="nls-panel nls-sit-panel" data-nls-panel data-nls-group="sit" data-nls-key="${escapeHtml(s.id)}" hidden>
         <h4 class="nls-panel__title">${escapeHtml(s.title)}</h4>
-        ${s.desc ? `<p class="nls-mini">${escapeHtml(c.ui.sitDesc || "")}</p><p class="nls-panel__intro">${escapeHtml(s.desc)}</p>` : ""}
+        ${s.desc ? `<p class="nls-panel__intro">${escapeHtml(s.desc)}</p>` : ""}
         <div class="nls-sit-grid">
           <div><p class="nls-mini">${escapeHtml(c.sits.kLabel)}</p><p>${escapeHtml(s.knowledge)}</p></div>
           <div><p class="nls-mini">${escapeHtml(c.sits.gLabel)}</p><p>${escapeHtml(s.plan)}</p></div>
-          ${s.tools ? `<div><p class="nls-mini">${escapeHtml(c.ui.toolsLabel || "Life Stage")}</p><p>${escapeHtml(s.tools)}</p></div>` : ""}
-          ${s.apps ? `<div><p class="nls-mini">${escapeHtml(c.ui.appsLabel || "Newon")}</p><p>${escapeHtml(s.apps)}</p></div>` : ""}
-          <div><p class="nls-mini">${escapeHtml(c.sits.cLabel)}</p><p>${escapeHtml(s.connect)}</p></div>
+          ${s.tools ? `<div><p class="nls-mini">${escapeHtml(c.ui.toolsLabel)}</p><p>${escapeHtml(s.tools)}</p></div>` : ""}
         </div>
+        ${moreBlock(c.ui.moreServices, `<div class="nls-sit-grid">${extra}</div>`)}
       </article>`;
     })
     .join("");
   return `<div id="nls-sits" class="nls-block" data-hs-section>
-    ${titleBlock("", c.sits.title, c.sits.lead)}
+    ${titleBlock(c.ui.sitKicker, c.sits.title, c.sits.lead)}
     ${badge(c.ui.preview, "preview")}
     <div class="nls-sit-wrap">
+      <div class="nls-sit-cats" role="group">${cats}</div>
+      ${emptyHint("sitcat", c.ui.pickSitCat)}
       <div class="nls-sit-cards" role="tablist">${cards}</div>
+      ${emptyHint("sit", c.ui.pickSit, true)}
       <div class="nls-panels">${panels}</div>
     </div>
   </div>`;
 }
 
 function knowledgeBlock(c) {
+  const groups = (c.knowGroups || [])
+    .map((g) => {
+      const names = (g.fieldIds || [])
+        .map((id) => (c.knowledge.fields.find((f) => f.id === id) || {}).name)
+        .filter(Boolean);
+      return `<button type="button" class="nls-know nls-know--group" data-nls-filter="knowg" data-nls-key="${escapeHtml(g.id)}" aria-pressed="false">
+        <span class="nls-know__n">${escapeHtml(g.n)}</span>
+        <strong>${escapeHtml(g.title)}</strong>
+        <em>${names.map(escapeHtml).join(" · ")}</em>
+      </button>`;
+    })
+    .join("");
   const cards = c.knowledge.fields
     .map((f, i) => {
-      const on = i === 0;
-      return `<button type="button" class="nls-know${on ? " is-active" : ""}" data-nls-tab data-nls-group="know" data-nls-key="${escapeHtml(f.id)}" aria-pressed="${on ? "true" : "false"}">
+      return `<button type="button" class="nls-know" data-nls-tab data-nls-group="know" data-nls-key="${escapeHtml(f.id)}" data-nls-filter-item="knowg" data-nls-cat="${escapeHtml(knowCatOf(c, f.id))}" aria-pressed="false" hidden>
         <span class="nls-know__n">${String(i + 1).padStart(2, "0")}</span>
         <strong>${escapeHtml(f.name)}</strong>
       </button>`;
     })
     .join("");
   const panels = c.knowledge.fields
-    .map((f, i) => {
-      const on = i === 0;
-      return `<article class="nls-panel${on ? " is-active" : ""}" data-nls-panel data-nls-group="know" data-nls-key="${escapeHtml(f.id)}"${on ? "" : " hidden"}>
+    .map((f) => {
+      return `<article class="nls-panel" data-nls-panel data-nls-group="know" data-nls-key="${escapeHtml(f.id)}" hidden>
         <p class="nls-panel__kicker">${escapeHtml(f.name)}</p>
         ${list(f.points, "nls-points")}
-        <p class="nls-mini">${escapeHtml(c.ui.inDev)}</p>
-        ${list(f.topics, "nls-chips")}
+        ${moreBlock(c.ui.more, `<p class="nls-mini">${escapeHtml(c.ui.inDev)}</p>${list(f.topics, "nls-chips")}`)}
       </article>`;
     })
     .join("");
-  return `<div id="nls-knowledge" class="nls-block" data-hs-section>
-    ${titleBlock("", c.knowledge.title, c.knowledge.lead)}
+  return `<div id="nls-knowledge" class="nls-block nls-block--band" data-hs-section>
+    ${titleBlock("02 · Knowledge", c.knowledge.title, c.knowledge.lead)}
+    <div class="nls-know-groups">${groups}</div>
+    ${emptyHint("knowg", c.ui.pickKnow)}
     <div class="nls-know-grid">${cards}</div>
     <div class="nls-panels nls-panels--wide">${panels}</div>
   </div>`;
@@ -173,49 +239,47 @@ function learnBlock(c) {
     { id: "lease", title: c.knowledge.learnTitle, lead: c.knowledge.learnLead, steps: c.knowledge.steps },
   ];
   const tabs = lessons.map((l, i) => tabBtn("learn", l.id, escapeHtml(l.label || l.title), i === 0)).join("");
+  const methodNames = c.knowledge.methods || [];
   const panes = lessons
     .map((l, i) => {
       const hidden = i === 0 ? "" : " hidden";
       const steps = (l.steps || [])
         .map((s, n) => {
           const bits = [
-            s.concept ? `<p><em>${escapeHtml(c.ui.methods ? c.knowledge.methods[0] : "Concept")}</em> ${escapeHtml(s.concept)}</p>` : "",
-            s.term ? `<p><em>${escapeHtml((c.knowledge.methods || [])[1] || "Term")}</em> ${escapeHtml(s.term)}</p>` : "",
-            s.case ? `<p><em>${escapeHtml((c.knowledge.methods || [])[2] || "Case")}</em> ${escapeHtml(s.case)}</p>` : "",
-            s.quiz ? `<p><em>${escapeHtml((c.knowledge.methods || [])[4] || "Quiz")}</em> ${escapeHtml(s.quiz)}</p>` : "",
-            s.checklist ? `<p><em>${escapeHtml((c.knowledge.methods || [])[5] || "Checklist")}</em> ${escapeHtml(s.checklist)}</p>` : "",
-            s.source ? `<p><em>${escapeHtml((c.knowledge.methods || [])[6] || "Source")}</em> ${escapeHtml(s.source)}</p>` : "",
+            s.concept ? `<p><em>${escapeHtml(methodNames[0] || "Concept")}</em> ${escapeHtml(s.concept)}</p>` : "",
+            s.term ? `<p><em>${escapeHtml(methodNames[1] || "Term")}</em> ${escapeHtml(s.term)}</p>` : "",
+            s.case ? `<p><em>${escapeHtml(methodNames[2] || "Case")}</em> ${escapeHtml(s.case)}</p>` : "",
+            s.quiz ? `<p><em>${escapeHtml(methodNames[4] || "Quiz")}</em> ${escapeHtml(s.quiz)}</p>` : "",
+            s.checklist ? `<p><em>${escapeHtml(methodNames[5] || "Checklist")}</em> ${escapeHtml(s.checklist)}</p>` : "",
+            s.source ? `<p><em>${escapeHtml(methodNames[6] || "Source")}</em> ${escapeHtml(s.source)}</p>` : "",
           ].join("");
           return `<li class="nls-learn__step${n === 0 ? " is-open" : ""}">
             <button type="button" class="nls-learn__btn" data-nls-learn="${n}" aria-expanded="${n === 0 ? "true" : "false"}">
               <span>${escapeHtml(s.n)}</span>${escapeHtml(s.title)}
             </button>
             <p>${escapeHtml(s.body)}</p>
-            ${bits ? `<div class="nls-learn__meta">${bits}</div>` : ""}
+            ${bits ? moreBlock(c.ui.moreLearn, `<div class="nls-learn__meta">${bits}</div>`) : ""}
           </li>`;
         })
         .join("");
       return `<aside class="nls-learn${i === 0 ? " is-active" : ""}" data-nls-panel data-nls-group="learn" data-nls-key="${escapeHtml(l.id)}"${hidden}>
-        <p class="nls-mini">${escapeHtml(c.ui.learnPreview || c.knowledge.learnKicker)} · ${escapeHtml(c.ui.preview)}</p>
+        <p class="nls-mini">${escapeHtml(c.ui.learnPreview)} · ${escapeHtml(c.ui.preview)}</p>
         <h4>${escapeHtml(l.title)}</h4>
         <p class="nls-learn__lead">${escapeHtml(l.lead || "")}</p>
-        ${c.knowledge.methods ? list(c.knowledge.methods, "nls-chips") : ""}
         <ol class="nls-learn__list">${steps}</ol>
       </aside>`;
     })
     .join("");
-  return `<div id="nls-learn" class="nls-block" data-hs-section>
-    ${titleBlock("", c.knowledge.learnSectionTitle || c.knowledge.learnKicker, c.knowledge.learnSectionLead || "")}
+  return `<div id="nls-learn" class="nls-block nls-block--ink" data-hs-section>
+    ${titleBlock(c.ui.learnKicker, c.knowledge.learnSectionTitle || c.knowledge.learnKicker, c.knowledge.learnSectionLead || "")}
     <div class="nls-tabs nls-tabs--learn" role="tablist">${tabs}</div>
     ${panes}
     <p class="nls-note">${escapeHtml(c.knowledge.metaNote)}</p>
   </div>`;
 }
 
-function aiBlock(c) {
-  const chips = c.ai.prompts
-    .map((p, i) => tabBtn("ai", p.id, escapeHtml(p.label), i === 0))
-    .join("");
+function aiInner(c) {
+  const chips = c.ai.prompts.map((p, i) => tabBtn("ai", p.id, escapeHtml(p.label), i === 0)).join("");
   const panes = c.ai.prompts
     .map((p, i) => {
       const hidden = i === 0 ? "" : " hidden";
@@ -225,63 +289,71 @@ function aiBlock(c) {
       </div>`;
     })
     .join("");
-  return `<div id="nls-ai" class="nls-block" data-hs-section>
-    ${titleBlock("", c.ai.title, c.ai.lead)}
-    <div class="nls-two">
-      <div>
-        ${badge(c.ui.upcoming, "planned")}
-        ${list(c.ai.features, "nls-points")}
-      </div>
-      <div class="nls-demo">
-        ${badge(c.ui.aiPreview || c.ui.preview, "preview")}
-        <div class="nls-tabs nls-tabs--ai" role="tablist">${chips}</div>
-        ${panes}
-      </div>
+  const topFeatures = (c.ai.features || []).slice(0, 3);
+  const restFeatures = (c.ai.features || []).slice(3);
+  return `<div class="nls-core__pane">
+    <h3 class="nls-sub">Life AI</h3>
+    <p class="nls-lead nls-lead--tight">${escapeHtml(c.ai.lead)}</p>
+    ${badge(c.ui.aiPreview, "preview")}
+    <div class="nls-demo">
+      <div class="nls-tabs nls-tabs--ai" role="tablist">${chips}</div>
+      ${panes}
     </div>
+    ${list(topFeatures, "nls-points")}
+    ${moreBlock(c.ui.more, `${badge(c.ui.upcoming, "planned")}${list(restFeatures, "nls-points")}`)}
   </div>`;
 }
 
-function plannerBlock(c) {
+function plannerInner(c) {
   const projects = c.planner.projects || [{ id: "move", title: c.planner.demoTitle, items: c.planner.items }];
   const tabs = projects.map((p, i) => tabBtn("plan", p.id, escapeHtml(p.title), i === 0)).join("");
   const panes = projects
     .map((p, i) => {
       const hidden = i === 0 ? "" : " hidden";
-      const items = (p.items || [])
-        .map(
-          (t, n) => `<label class="nls-check">
+      const items = p.items || [];
+      const visible = items.slice(0, 6);
+      const rest = items.slice(6);
+      const check = (t, n) => `<label class="nls-check">
             <input type="checkbox" data-nls-check ${n < 2 ? "checked" : ""} />
             <span>${escapeHtml(t)}</span>
-          </label>`
-        )
-        .join("");
+          </label>`;
       return `<div class="nls-plan-pane${i === 0 ? " is-active" : ""}" data-nls-panel data-nls-group="plan" data-nls-key="${escapeHtml(p.id)}"${hidden}>
         <div class="nls-plan-head">
           <h4>${escapeHtml(p.title)}</h4>
-          <p class="nls-progress" data-nls-progress><span>${escapeHtml(c.ui.progress)}</span> <strong>2 / ${p.items.length}</strong></p>
+          <p class="nls-progress" data-nls-progress><span>${escapeHtml(c.ui.progress)}</span> <strong>2 / ${items.length}</strong></p>
         </div>
         <div class="nls-bar" aria-hidden="true"><i data-nls-bar style="width:33%"></i></div>
-        <div class="nls-checks">${items}</div>
+        <div class="nls-checks">${visible.map((t, n) => check(t, n)).join("")}</div>
+        ${rest.length ? moreBlock(c.ui.moreItems, `<div class="nls-checks">${rest.map((t, n) => check(t, n + visible.length)).join("")}</div>`) : ""}
       </div>`;
     })
     .join("");
   const later = (c.planner.later || [])
-    .map((x) => `<div class="nls-later"><strong>${escapeHtml(x.title)}</strong><p>${escapeHtml(x.body)}</p>${badge(c.ui.upcoming, "planned")}</div>`)
+    .map((x) => `<div class="nls-later"><strong>${escapeHtml(x.title)}</strong><p>${escapeHtml(x.body)}</p></div>`)
     .join("");
-  return `<div id="nls-planner" class="nls-block" data-hs-section>
-    ${titleBlock("", c.planner.title, c.planner.lead)}
-    <div class="nls-two">
-      <div>
-        ${badge(c.ui.upcoming, "planned")}
-        ${list(c.planner.features, "nls-points")}
-      </div>
-      <div class="nls-demo">
-        ${badge(c.planner.previewLabel || c.ui.preview, "preview")}
-        <div class="nls-tabs nls-tabs--plan" role="tablist">${tabs}</div>
-        ${panes}
-        <p class="nls-note">${escapeHtml(c.planner.localNote)}</p>
-        <div class="nls-later-row">${later}</div>
-      </div>
+  const topFeatures = (c.planner.features || []).slice(0, 3);
+  const restFeatures = (c.planner.features || []).slice(3);
+  return `<div class="nls-core__pane">
+    <h3 class="nls-sub">Life Planner</h3>
+    <p class="nls-lead nls-lead--tight">${escapeHtml(c.planner.lead)}</p>
+    ${badge(c.planner.previewLabel || c.ui.preview, "preview")}
+    <div class="nls-demo">
+      <div class="nls-tabs nls-tabs--plan" role="tablist">${tabs}</div>
+      ${panes}
+      <p class="nls-note">${escapeHtml(c.planner.localNote)}</p>
+      ${later ? moreBlock(c.ui.more, `<div class="nls-later-row">${later}</div>`) : ""}
+    </div>
+    ${list(topFeatures, "nls-points")}
+    ${moreBlock(c.ui.more, `${badge(c.ui.upcoming, "planned")}${list(restFeatures, "nls-points")}`)}
+  </div>`;
+}
+
+function coreBlock(c) {
+  return `<div id="nls-core" class="nls-block" data-hs-section>
+    ${titleBlock(c.ui.coreKicker, (c.core && c.core.title) || c.ai.title, (c.core && c.core.lead) || "")}
+    <div class="nls-two nls-core-grid">
+      ${aiInner(c)}
+      ${plannerInner(c)}
     </div>
   </div>`;
 }
@@ -294,41 +366,39 @@ function platformBlock(c) {
   const core = c.platform.items.filter((x) => x.layer === "core");
   const expand = c.platform.items.filter((x) => x.layer === "expand");
   const org = c.platform.items.filter((x) => x.layer === "enterprise");
-  const pill = (item, i) =>
-    `<button type="button" class="nls-venture nls-venture--${escapeHtml(item.layer)}${i === 0 && item.layer === "core" ? " is-active" : ""}" data-nls-tab data-nls-group="venture" data-nls-key="${escapeHtml(item.id)}" aria-pressed="${i === 0 && item.layer === "core" ? "true" : "false"}">
+  const pill = (item) =>
+    `<button type="button" class="nls-venture nls-venture--${escapeHtml(item.layer)}" data-nls-tab data-nls-group="venture" data-nls-key="${escapeHtml(item.id)}" aria-pressed="false">
       <strong>${escapeHtml(item.name)}</strong>
       <span>${escapeHtml(item.blurb)}</span>
     </button>`;
   const panels = c.platform.items
-    .map((item, i) => {
-      const on = i === 0;
-      return `<article class="nls-panel${on ? " is-active" : ""}" data-nls-panel data-nls-group="venture" data-nls-key="${escapeHtml(item.id)}"${on ? "" : " hidden"}>
+    .map(
+      (item) => `<article class="nls-panel" data-nls-panel data-nls-group="venture" data-nls-key="${escapeHtml(item.id)}" hidden>
         <p class="nls-panel__kicker">${escapeHtml(item.name)} · ${escapeHtml(statusLabel(c, item))}</p>
         <h4 class="nls-panel__title">${escapeHtml(item.blurb)}</h4>
         ${list(item.features, "nls-points")}
         <p class="nls-example">${escapeHtml(item.example)}</p>
-      </article>`;
-    })
+      </article>`
+    )
     .join("");
   return `<div id="nls-platform" class="nls-block" data-hs-section>
-    ${titleBlock("", c.platform.title, c.platform.lead)}
+    ${titleBlock(c.ui.ecoKicker, c.platform.title, c.platform.lead)}
     <div class="nls-map">
       <p class="nls-map__hub">LIFE STAGE</p>
       <p class="nls-mini">${escapeHtml(c.ui.core)}</p>
-      <div class="nls-map__row nls-map__row--core">${core.map((x, i) => pill(x, i)).join("")}</div>
+      <div class="nls-map__row nls-map__row--core">${core.map((x) => pill(x)).join("")}</div>
       <p class="nls-mini">${escapeHtml(c.ui.expand)}</p>
-      <div class="nls-map__row">${expand.map((x) => pill(x, 1)).join("")}</div>
+      <div class="nls-map__row nls-map__row--expand">${expand.map((x) => pill(x)).join("")}</div>
       <p class="nls-mini">${escapeHtml(c.ui.enterprise)}</p>
-      <div class="nls-map__row">${org.map((x) => pill(x, 1)).join("")}</div>
+      <div class="nls-map__row nls-map__row--org">${org.map((x) => pill(x)).join("")}</div>
+      ${emptyHint("venture", c.ui.pickVenture)}
     </div>
     <div class="nls-panels nls-panels--wide">${panels}</div>
   </div>`;
 }
 
 function flowBlock(c) {
-  const tabs = c.flow.cases
-    .map((x, i) => tabBtn("flow", x.id, escapeHtml(x.label), i === 0))
-    .join("");
+  const tabs = c.flow.cases.map((x, i) => tabBtn("flow", x.id, escapeHtml(x.label), i === 0)).join("");
   const panels = c.flow.cases
     .map((x, i) => {
       const hidden = i === 0 ? "" : " hidden";
@@ -344,8 +414,8 @@ function flowBlock(c) {
       return `<ol class="nls-flow${i === 0 ? " is-active" : ""}" data-nls-panel data-nls-group="flow" data-nls-key="${escapeHtml(x.id)}"${hidden}>${steps}</ol>`;
     })
     .join("");
-  return `<div id="nls-flow" class="nls-block" data-hs-section>
-    ${titleBlock("", c.flow.title, "")}
+  return `<div id="nls-flow" class="nls-block nls-block--band" data-hs-section>
+    ${titleBlock(c.ui.flowKicker, c.flow.title, c.ui.flowLabel || "")}
     <div class="nls-tabs nls-tabs--flow" role="tablist">${tabs}</div>
     ${panels}
   </div>`;
@@ -354,28 +424,29 @@ function flowBlock(c) {
 function connectBlock(c) {
   const comm = c.community || {};
   return `<div id="nls-connect" class="nls-block" data-hs-section>
-    ${titleBlock("", c.connect.title, "")}
-    <div class="nls-three">
-      ${comm.title ? `<article class="nls-card">
+    ${titleBlock(c.ui.connectKicker, c.connect.title, "")}
+    <div class="nls-three nls-three--connect">
+      ${
+        comm.title
+          ? `<article class="nls-card nls-card--feature">
+        <p class="nls-mini">01</p>
         <h4>${escapeHtml(comm.title)}</h4>
-        <p>${escapeHtml(comm.lead || "")}</p>
-        <p class="nls-mini">${escapeHtml(c.ui.upcoming)}</p>
-        ${list(comm.features || [], "nls-points")}
-        ${comm.safety ? `<p class="nls-note">${escapeHtml(comm.safety)}</p>` : ""}
-      </article>` : ""}
+        <p>${escapeHtml(c.connect.communityLead || comm.lead || "")}</p>
+        ${moreBlock(c.ui.more, `${badge(c.ui.upcoming, "planned")}${list(comm.features || [], "nls-points")}${comm.safety ? `<p class="nls-note">${escapeHtml(comm.safety)}</p>` : ""}`)}
+      </article>`
+          : ""
+      }
       <article class="nls-card">
+        <p class="nls-mini">02</p>
         <h4>${escapeHtml(c.connect.expertTitle)}</h4>
         <p>${escapeHtml(c.connect.expertLead)}</p>
-        ${list(c.connect.expertFields, "nls-chips")}
-        <p class="nls-mini">${escapeHtml(c.ui.upcoming)}</p>
-        ${list(c.connect.expertFuture, "nls-points")}
+        ${moreBlock(c.ui.more, `${list(c.connect.expertFields, "nls-chips")}<p class="nls-mini">${escapeHtml(c.ui.upcoming)}</p>${list(c.connect.expertFuture, "nls-points")}`)}
       </article>
       <article class="nls-card">
+        <p class="nls-mini">03</p>
         <h4>${escapeHtml(c.connect.servicesTitle)}</h4>
         <p>${escapeHtml(c.connect.servicesLead)}</p>
-        ${list(c.connect.serviceFields, "nls-chips")}
-        <p class="nls-mini">${escapeHtml(c.ui.upcoming)}</p>
-        ${list(c.connect.serviceFuture, "nls-points")}
+        ${moreBlock(c.ui.more, `${list(c.connect.serviceFields, "nls-chips")}<p class="nls-mini">${escapeHtml(c.ui.upcoming)}</p>${list(c.connect.serviceFuture, "nls-points")}`)}
       </article>
     </div>
     <p class="nls-note">${escapeHtml(c.connect.note)}</p>
@@ -405,8 +476,8 @@ function ecoBlock(c, lang) {
       </div>`;
     })
     .join("");
-  return `<div id="nls-eco" class="nls-block" data-hs-section>
-    ${titleBlock("", c.eco.title, c.eco.lead)}
+  return `<div id="nls-eco" class="nls-block nls-block--band" data-hs-section>
+    ${titleBlock(c.ui.newonKicker, c.eco.title, c.eco.lead)}
     <p class="nls-mini">${escapeHtml(c.ui.availableNow)}</p>
     <div class="nls-eco">${groups}</div>
     <article class="nls-ongil">
@@ -420,18 +491,24 @@ function ecoBlock(c, lang) {
 
 function revenueBlock(c) {
   const cols = c.revenue.pillars
-    .map(
-      (p, i) => `<article class="nls-rev nls-rev--${i + 1}">
-        <p class="nls-mini">0${i + 1}</p>
-        <h4>${escapeHtml(p.title)}</h4>
-        ${list(p.items, "nls-points")}
-      </article>`
-    )
+    .map((p, i) => {
+      const first = (p.items || [])[0] || "";
+      const rest = (p.items || []).slice(1);
+      const n = String(i + 1).padStart(2, "0");
+      return `<li class="nls-expand__item${i === 0 ? " nls-expand__item--first" : ""}">
+        <span class="nls-expand__n">${n}</span>
+        <div class="nls-expand__body">
+          <h4>${escapeHtml(p.title)}</h4>
+          ${first ? `<p>${escapeHtml(first)}</p>` : ""}
+          ${rest.length ? moreBlock(c.ui.more, list(rest, "nls-points")) : ""}
+        </div>
+      </li>`;
+    })
     .join("");
   return `<div id="nls-revenue" class="nls-block" data-hs-section>
-    ${titleBlock("", c.revenue.title, c.revenue.lead)}
+    ${titleBlock(c.ui.expandKicker, c.revenue.title, c.revenue.lead)}
     <p class="nls-note">${escapeHtml(c.ui.revenueNote)}</p>
-    <div class="nls-rev-row">${cols}</div>
+    <ol class="nls-expand">${cols}</ol>
   </div>`;
 }
 
@@ -445,8 +522,8 @@ function roadmapBlock(c) {
       </li>`
     )
     .join("");
-  return `<div id="nls-roadmap" class="nls-block" data-hs-section>
-    ${titleBlock("", c.roadmap.title, "")}
+  return `<div id="nls-roadmap" class="nls-block nls-block--band" data-hs-section>
+    ${titleBlock(c.ui.roadKicker, c.roadmap.title, "")}
     <p class="nls-note">${escapeHtml(c.ui.roadmapNote)}</p>
     <ol class="nls-road">${steps}</ol>
   </div>`;
@@ -477,7 +554,7 @@ function heroBlock(c, lang) {
 
 function closeBlock(c, lang) {
   const inquiry = `/${lang}/business/inquiry/`;
-  return `<div id="nls-close" class="nls-block nls-close" data-hs-section>
+  return `<div id="nls-close" class="nls-block nls-close nls-block--ink" data-hs-section>
     <p class="nls-kicker">${escapeHtml(c.close.kicker)}</p>
     <h2 class="nls-hero__title">${c.close.titleHtml}</h2>
     <p class="nls-lead">${escapeHtml(c.close.lead)}</p>
@@ -500,11 +577,10 @@ export function renderLifeStageSection(lang, opts = {}) {
     ${back}
     ${heroBlock(c, L)}
     ${agesBlock(c)}
-    ${sitsBlock(c)}
     ${knowledgeBlock(c)}
     ${learnBlock(c)}
-    ${aiBlock(c)}
-    ${plannerBlock(c)}
+    ${coreBlock(c)}
+    ${sitsBlock(c)}
     ${platformBlock(c)}
     ${flowBlock(c)}
     ${connectBlock(c)}

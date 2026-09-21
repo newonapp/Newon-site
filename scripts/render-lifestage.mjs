@@ -27,18 +27,18 @@ import { renderLifeStageSection } from "./home-lifestage-body.mjs";
 import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const NLS_VER = "20260921nls3";
+const NLS_VER = "20260921nls12";
 
 const SEO = {
   ko: {
     title: "Life Stage | Newon — 인생의 모든 처음을, 더 쉽게.",
     description:
-      "입시와 진로부터 독립, 취업, 가족, 은퇴까지. Life Stage는 삶의 단계마다 필요한 지식을 배우고 계획하고 실행하도록 돕는 종합 라이프 플랫폼입니다.",
+      "진로와 독립, 취업과 커리어, 가족과 돌봄, 은퇴 이후까지. Life Stage는 삶의 모든 단계에서 필요한 지식과 도구, 사람과 서비스를 연결하는 종합 라이프 플랫폼입니다.",
   },
   en: {
     title: "Life Stage | Newon — Every first in life, made clearer.",
     description:
-      "From exams and career questions to a first home, work, family, and later life. Life Stage is a platform for learning, planning, and acting at every chapter.",
+      "Career and independence, work and family, caregiving and later life. Life Stage connects the knowledge, tools, people, and services every stage needs.",
   },
 };
 
