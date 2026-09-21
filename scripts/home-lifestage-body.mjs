@@ -428,7 +428,7 @@ function connectBlock(c) {
     <div class="nls-three nls-three--connect">
       ${
         comm.title
-          ? `<article class="nls-card nls-card--feature">
+          ? `<article class="nls-card">
         <p class="nls-mini">01</p>
         <h4>${escapeHtml(comm.title)}</h4>
         <p>${escapeHtml(c.connect.communityLead || comm.lead || "")}</p>
@@ -495,7 +495,7 @@ function revenueBlock(c) {
       const first = (p.items || [])[0] || "";
       const rest = (p.items || []).slice(1);
       const n = String(i + 1).padStart(2, "0");
-      return `<li class="nls-expand__item${i === 0 ? " nls-expand__item--first" : ""}">
+      return `<li class="nls-expand__item">
         <span class="nls-expand__n">${n}</span>
         <div class="nls-expand__body">
           <h4>${escapeHtml(p.title)}</h4>

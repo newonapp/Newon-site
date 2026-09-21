@@ -1760,10 +1760,6 @@ html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-sv__grid article.
   line-height: 1.5;
 }
 
-#lifestage-detail.nls .nls-three--connect .nls-card--feature > p {
-  color: rgba(255, 255, 255, 0.72);
-}
-
 #lifestage-detail.nls .nls-three--connect .nls-more {
   margin-top: 0.65rem;
   padding-top: 0;
@@ -1977,12 +1973,8 @@ html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-sv__grid article.
   padding: 0.85rem 0.95rem 0.8rem;
   border: 1px solid var(--nls-line);
   background: #fff;
-}
-
-#lifestage-detail.nls .nls-expand__item--first {
-  background: #0a0a0a;
-  border-color: #0a0a0a;
-  color: #fff;
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
 }
 
 #lifestage-detail.nls .nls-expand__n {
@@ -2005,19 +1997,69 @@ html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-sv__grid article.
   line-height: 1.5;
 }
 
-#lifestage-detail.nls .nls-expand__item--first .nls-expand__body p,
-#lifestage-detail.nls .nls-expand__item--first .nls-mini,
-#lifestage-detail.nls .nls-expand__item--first .nls-more summary {
-  color: rgba(255, 255, 255, 0.7);
+#lifestage-detail.nls .nls-expand .nls-more {
+  margin-top: 0.4rem;
 }
 
-#lifestage-detail.nls .nls-expand__item--first .nls-more summary:hover,
-#lifestage-detail.nls .nls-expand__item--first .nls-more[open] summary {
+#lifestage-detail.nls .nls-three--connect .nls-card,
+#lifestage-detail.nls .nls-expand__item {
+  cursor: pointer;
+}
+
+#lifestage-detail.nls .nls-three--connect .nls-card {
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+#lifestage-detail.nls .nls-three--connect .nls-card:hover,
+#lifestage-detail.nls .nls-three--connect .nls-card:focus-within,
+#lifestage-detail.nls .nls-expand__item:hover,
+#lifestage-detail.nls .nls-expand__item:focus-within {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
   color: #fff;
 }
 
-#lifestage-detail.nls .nls-expand .nls-more {
-  margin-top: 0.4rem;
+#lifestage-detail.nls .nls-three--connect .nls-card:hover .nls-mini,
+#lifestage-detail.nls .nls-three--connect .nls-card:hover h4,
+#lifestage-detail.nls .nls-three--connect .nls-card:hover p,
+#lifestage-detail.nls .nls-three--connect .nls-card:hover li,
+#lifestage-detail.nls .nls-three--connect .nls-card:hover .nls-note,
+#lifestage-detail.nls .nls-three--connect .nls-card:hover .nls-more summary,
+#lifestage-detail.nls .nls-three--connect .nls-card:focus-within .nls-mini,
+#lifestage-detail.nls .nls-three--connect .nls-card:focus-within h4,
+#lifestage-detail.nls .nls-three--connect .nls-card:focus-within p,
+#lifestage-detail.nls .nls-three--connect .nls-card:focus-within li,
+#lifestage-detail.nls .nls-three--connect .nls-card:focus-within .nls-note,
+#lifestage-detail.nls .nls-three--connect .nls-card:focus-within .nls-more summary,
+#lifestage-detail.nls .nls-expand__item:hover .nls-expand__n,
+#lifestage-detail.nls .nls-expand__item:hover h4,
+#lifestage-detail.nls .nls-expand__item:hover p,
+#lifestage-detail.nls .nls-expand__item:hover li,
+#lifestage-detail.nls .nls-expand__item:hover .nls-more summary,
+#lifestage-detail.nls .nls-expand__item:focus-within .nls-expand__n,
+#lifestage-detail.nls .nls-expand__item:focus-within h4,
+#lifestage-detail.nls .nls-expand__item:focus-within p,
+#lifestage-detail.nls .nls-expand__item:focus-within li,
+#lifestage-detail.nls .nls-expand__item:focus-within .nls-more summary {
+  color: #fff;
+}
+
+#lifestage-detail.nls .nls-three--connect .nls-card:hover .nls-points li::before,
+#lifestage-detail.nls .nls-three--connect .nls-card:focus-within .nls-points li::before,
+#lifestage-detail.nls .nls-expand__item:hover .nls-points li::before,
+#lifestage-detail.nls .nls-expand__item:focus-within .nls-points li::before {
+  background: #fff;
+}
+
+#lifestage-detail.nls .nls-three--connect .nls-card:hover .nls-chips li,
+#lifestage-detail.nls .nls-three--connect .nls-card:focus-within .nls-chips li,
+#lifestage-detail.nls .nls-three--connect .nls-card:hover .nls-badge,
+#lifestage-detail.nls .nls-three--connect .nls-card:focus-within .nls-badge,
+#lifestage-detail.nls .nls-expand__item:hover .nls-badge,
+#lifestage-detail.nls .nls-expand__item:focus-within .nls-badge {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
 }
 
 @media (min-width: 840px) {
