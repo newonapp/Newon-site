@@ -2,6 +2,8 @@
  * Extra Life Stage detail content (10s, 12 sits, 15 fields, 3 lessons,
  * 3 planner projects, 6 flows, community, 5 revenue). Merged onto KO/EN.
  */
+import { extraFirstPlanner, extraFirstPrompts, firstMoments } from "./home-lifestage-first.mjs";
+
 
 function age10(lang) {
   const T = {
@@ -749,7 +751,10 @@ export function enrichLifeStage(copy, lang) {
   next.knowGroups = knowGroups(L);
   next.sitCats = sitCats(L);
   next.knowledge.lessons = orderById([...lessons(L), ...extraLessons(L)], ["lease", "exam", "pay", "wed", "care", "retire", "adult"]);
-  next.planner.projects = orderById([...plannerProjects(L), ...extraPlanner(L)], ["move", "exam", "firstjob", "wed", "baby", "care", "retire", "adult"]);
+  next.planner.projects = orderById(
+    upsertById([...plannerProjects(L), ...extraPlanner(L)], extraFirstPlanner(L)),
+    ["move", "exam", "firstjob", "wed", "baby", "care", "retire", "adult"]
+  );
   next.community = community(L);
   next.flow.cases = orderById(upsertById(next.flow.cases, extraFlows(L), false), ["independent", "job", "baby", "retire", "exam", "adult"]);
   next.revenue.pillars = next.revenue.pillars.filter((p) => p.id !== "org");
@@ -779,6 +784,9 @@ export function enrichLifeStage(copy, lang) {
         { id: "exam", label: "University & major", q: "How should I explore universities and majors?", a: "Start with the fields and subjects you want to learn. Then compare program details and career notes, and read the official admissions guide for schools you care about." },
         { id: "adult", label: "Adult prep", q: "I’m becoming an adult soon. What should I prepare first?", a: "Begin with everyday money, admin, work contracts, and moving-out basics." },
       ];
+
+  next.ai.prompts = upsertById(next.ai.prompts, extraFirstPrompts(L));
+  next.firstMoments = firstMoments(L);
 
   return next;
 }

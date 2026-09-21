@@ -2076,3 +2076,397 @@ html[data-newon-shell-theme="dark"] #lifestage-detail.nls .nls-sv__grid article.
     grid-column: span 3;
   }
 }
+
+/* Journey: 3 + 4 rows, larger type, hover invert */
+#lifestage-detail.nls #nls-ages {
+  scroll-margin-top: 5.5rem;
+}
+
+#lifestage-detail.nls #nls-ages > .nls-note {
+  font-size: 1.05rem;
+  color: var(--nls-muted);
+}
+
+#lifestage-detail.nls #nls-ages .nls-lead {
+  font-size: clamp(1.05rem, 1.7vw, 1.18rem);
+}
+
+#lifestage-detail.nls #nls-ages .nls-tabs--ages {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0.55rem;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+  counter-reset: nls-age;
+}
+
+#lifestage-detail.nls #nls-ages .nls-age-tab {
+  position: relative;
+  grid-column: span 3;
+  min-height: 0;
+  min-width: 0;
+  padding: 1.05rem 1.1rem 1.1rem;
+  border: 1px solid var(--nls-line);
+  border-radius: 0;
+  background: #fff;
+  gap: 0.28rem;
+  overflow: visible;
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+#lifestage-detail.nls #nls-ages .nls-age-tab:nth-child(-n + 3) {
+  grid-column: span 4;
+}
+
+#lifestage-detail.nls #nls-ages .nls-age-tab::before {
+  counter-increment: nls-age;
+  content: counter(nls-age, decimal-leading-zero);
+  display: block;
+  margin-bottom: 0.15rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--nls-faint);
+}
+
+#lifestage-detail.nls #nls-ages .nls-age-tab__age {
+  font-size: 1rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--nls-ink);
+}
+
+#lifestage-detail.nls #nls-ages .nls-age-tab__name {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.035em;
+  line-height: 1.28;
+  color: var(--nls-ink);
+  overflow: visible;
+  -webkit-line-clamp: unset;
+}
+
+#lifestage-detail.nls #nls-ages .nls-age-tab__topics {
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+#lifestage-detail.nls #nls-ages .nls-age-tab__topics li {
+  position: relative;
+  padding: 0.14rem 0 0.14rem 0.9rem;
+  font-size: 0.98rem;
+  font-weight: 400;
+  color: var(--nls-muted);
+  line-height: 1.45;
+  letter-spacing: 0;
+  text-transform: none;
+  overflow: visible;
+}
+
+#lifestage-detail.nls #nls-ages .nls-age-tab__topics li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.82rem;
+  width: 0.42rem;
+  height: 1px;
+  background: currentColor;
+}
+
+#lifestage-detail.nls #nls-ages .nls-age-tab:hover,
+#lifestage-detail.nls #nls-ages .nls-age-tab:focus-visible,
+#lifestage-detail.nls #nls-ages .nls-age-tab.is-active {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+
+#lifestage-detail.nls #nls-ages .nls-age-tab:hover::before,
+#lifestage-detail.nls #nls-ages .nls-age-tab:focus-visible::before,
+#lifestage-detail.nls #nls-ages .nls-age-tab.is-active::before {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#lifestage-detail.nls #nls-ages .nls-age-tab:hover .nls-age-tab__age,
+#lifestage-detail.nls #nls-ages .nls-age-tab:hover .nls-age-tab__name,
+#lifestage-detail.nls #nls-ages .nls-age-tab:hover .nls-age-tab__topics li,
+#lifestage-detail.nls #nls-ages .nls-age-tab:focus-visible .nls-age-tab__age,
+#lifestage-detail.nls #nls-ages .nls-age-tab:focus-visible .nls-age-tab__name,
+#lifestage-detail.nls #nls-ages .nls-age-tab:focus-visible .nls-age-tab__topics li,
+#lifestage-detail.nls #nls-ages .nls-age-tab.is-active .nls-age-tab__age,
+#lifestage-detail.nls #nls-ages .nls-age-tab.is-active .nls-age-tab__name,
+#lifestage-detail.nls #nls-ages .nls-age-tab.is-active .nls-age-tab__topics li,
+#lifestage-detail.nls #nls-ages .nls-age-tab.is-active small,
+#lifestage-detail.nls #nls-ages .nls-age-tab.is-active em,
+#lifestage-detail.nls #nls-ages .nls-age-tab.is-active span {
+  color: #fff;
+}
+
+#lifestage-detail.nls #nls-ages .nls-age-board .nls-panel {
+  min-height: 0;
+  margin-top: 0.55rem;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--nls-line);
+}
+
+#lifestage-detail.nls #nls-ages .nls-empty {
+  font-size: 1.05rem;
+}
+
+@media (max-width: 720px) {
+  #lifestage-detail.nls #nls-ages .nls-tabs--ages {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: visible;
+  }
+
+  #lifestage-detail.nls #nls-ages .nls-age-tab,
+  #lifestage-detail.nls #nls-ages .nls-age-tab:nth-child(-n + 3) {
+    grid-column: auto;
+    width: auto;
+    min-width: 0;
+    flex: none;
+  }
+}
+
+/* First Moments explorer */
+#lifestage-detail.nls #nls-first .nls-first-search {
+  margin: 1.1rem 0 1.4rem;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-search__label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-search__input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.7rem 0.95rem;
+  border: 1px solid var(--nls-line-strong);
+  border-radius: var(--nls-radius);
+  background: #fff;
+  color: var(--nls-ink);
+  font: inherit;
+  font-size: 1rem;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-search__input:focus-visible {
+  outline: 2px solid var(--nls-ink);
+  outline-offset: 2px;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-exs,
+#lifestage-detail.nls #nls-first .nls-first-age__row,
+#lifestage-detail.nls #nls-first .nls-first-svcs,
+#lifestage-detail.nls #nls-first .nls-first-jumps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.55rem;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-ex,
+#lifestage-detail.nls #nls-first .nls-first-mini,
+#lifestage-detail.nls #nls-first .nls-first-hit,
+#lifestage-detail.nls #nls-ages .nls-first-mini {
+  min-height: 44px;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--nls-line-strong);
+  background: #fff;
+  color: var(--nls-ink);
+  font: inherit;
+  font-size: 0.88rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-ex:hover,
+#lifestage-detail.nls #nls-first .nls-first-mini:hover,
+#lifestage-detail.nls #nls-first .nls-first-hit:hover,
+#lifestage-detail.nls #nls-ages .nls-first-mini:hover,
+#lifestage-detail.nls #nls-first .nls-first-ex:focus-visible,
+#lifestage-detail.nls #nls-first .nls-first-mini:focus-visible,
+#lifestage-detail.nls #nls-first .nls-first-hit:focus-visible,
+#lifestage-detail.nls #nls-ages .nls-first-mini:focus-visible {
+  border-color: var(--nls-ink);
+}
+
+#lifestage-detail.nls #nls-first .nls-first-hits {
+  list-style: none;
+  margin: 0.65rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-hits[hidden],
+#lifestage-detail.nls #nls-first [data-nls-search-empty][hidden] {
+  display: none !important;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-hit {
+  width: 100%;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.45rem;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-g {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 4.6rem;
+  padding: 0.85rem 0.95rem;
+  text-align: left;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-g em {
+  display: block;
+  margin-top: 0.3rem;
+  font-style: normal;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--nls-muted);
+  line-height: 1.4;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-g.is-active em {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+#lifestage-detail.nls #nls-first .nls-first-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 4.5rem;
+  padding: 0.9rem 1rem;
+  text-align: left;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-card strong {
+  font-size: 1.02rem;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-card span {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--nls-muted);
+  line-height: 1.45;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-card.is-active span {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+#lifestage-detail.nls #nls-first .nls-first-guide {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.85rem;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-acc {
+  border: 1px solid var(--nls-line);
+  padding: 0 0.9rem;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-acc summary {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-acc summary::-webkit-details-marker {
+  display: none;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-acc__body {
+  padding: 0 0 0.9rem;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-steps li {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-steps span {
+  flex: 0 0 auto;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--nls-faint);
+}
+
+#lifestage-detail.nls #nls-first .nls-first-svc {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--nls-line-strong);
+  color: inherit;
+  text-decoration: none;
+}
+
+#lifestage-detail.nls #nls-first .nls-first-svc--plain {
+  color: var(--nls-muted);
+}
+
+#lifestage-detail.nls #nls-first .nls-first-jump {
+  min-height: 44px;
+}
+
+#lifestage-detail.nls #nls-ages .nls-first-age {
+  margin-top: 0.85rem;
+}
+
+@media (max-width: 980px) {
+  #lifestage-detail.nls #nls-first .nls-first-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  #lifestage-detail.nls #nls-first .nls-first-groups,
+  #lifestage-detail.nls #nls-first .nls-first-cards {
+    grid-template-columns: 1fr;
+  }
+
+  #lifestage-detail.nls #nls-first .nls-first-g,
+  #lifestage-detail.nls #nls-first .nls-first-card {
+    width: 100%;
+    min-width: 0;
+  }
+}

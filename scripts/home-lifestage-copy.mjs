@@ -5,6 +5,7 @@
 import { LIFE_STAGE_I18N } from "./home-lifestage-i18n.mjs";
 import { LIFE_STAGE_I18N_MORE } from "./home-lifestage-i18n-more.mjs";
 import { LIFE_STAGE_REFINE } from "./home-lifestage-i18n-refine.mjs";
+import { firstMomentsI18n } from "./home-lifestage-first-i18n.mjs";
 import { enrichLifeStage, deepMergePlain } from "./home-lifestage-spec.mjs";
 
 
@@ -652,7 +653,10 @@ const EN = {
 function localizeRest(lang) {
   const table = { ...REST, ...LIFE_STAGE_I18N, ...LIFE_STAGE_I18N_MORE }[lang];
   if (!table) return enrichLifeStage(EN, "en");
-  return deepMergePlain(deepMergePlain(enrichLifeStage(EN, "en"), table), LIFE_STAGE_REFINE[lang] || {});
+  return deepMergePlain(
+    deepMergePlain(deepMergePlain(enrichLifeStage(EN, "en"), table), LIFE_STAGE_REFINE[lang] || {}),
+    firstMomentsI18n(lang) || {}
+  );
 }
 
 function deepMerge(base, over) {

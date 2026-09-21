@@ -36,6 +36,190 @@ function emptyHint(group, text, startHidden = false) {
   return `<p class="nls-empty" data-nls-empty="${escapeHtml(group)}"${startHidden ? " hidden" : ""}>${escapeHtml(text)}</p>`;
 }
 
+const APP_NAME_SLUG = {
+  BabyLog: "babylog",
+  PetLog: "petlog",
+  SAVY: "savy",
+  Savy: "savy",
+  Pillmate: "pillmate",
+  GoalUp: "goalup",
+  CountUp: "countup",
+  SubPing: "subping",
+  PiggyUp: "piggyup",
+  "OX MONTH": "ox-month",
+  "My World": "myworld",
+};
+
+function serviceChip(lang, name) {
+  const slug = APP_NAME_SLUG[name];
+  if (slug && APP_BY_SLUG[slug]) {
+    return `<a class="nls-first-svc" href="/${escapeHtml(lang)}/${escapeHtml(slug)}/">${escapeHtml(name)}</a>`;
+  }
+  return `<span class="nls-first-svc nls-first-svc--plain">${escapeHtml(name)}</span>`;
+}
+
+function firstGroupOf(fm, id) {
+  return (fm.groups || []).find((g) => (g.ids || []).includes(id)) || null;
+}
+
+function firstLinksForAge(c, ageId) {
+  const fm = c.firstMoments;
+  if (!fm) return "";
+  const ids = (fm.ageMap && fm.ageMap[ageId]) || [];
+  const byId = Object.fromEntries((fm.items || []).map((it) => [it.id, it]));
+  const chips = ids
+    .map((id) => {
+      const it = byId[id];
+      if (!it) return "";
+      return `<button type="button" class="nls-first-mini" data-nls-jump="first:${escapeHtml(id)}">${escapeHtml(it.name)}</button>`;
+    })
+    .join("");
+  if (!chips) return "";
+  return `<div class="nls-first-age"><p class="nls-mini">${escapeHtml(fm.ageLink || "")}</p><div class="nls-first-age__row">${chips}</div></div>`;
+}
+
+function firstKeys(it) {
+  return [it.name, it.question, it.keywords, it.situation, ...(it.knowledge || []), ...(it.checklist || [])]
+    .filter(Boolean)
+    .join(" ");
+}
+
+function jumpBtn(spec, label) {
+  if (!spec || !label) return "";
+  return `<button type="button" class="nls-btn nls-btn--ghost nls-first-jump" data-nls-jump="${escapeHtml(spec)}">${escapeHtml(label)}</button>`;
+}
+
+function firstAcc(open, summary, inner) {
+  if (!inner) return "";
+  return `<details class="nls-first-acc"${open ? " open" : ""}><summary>${escapeHtml(summary)}</summary><div class="nls-first-acc__body">${inner}</div></details>`;
+}
+
+function firstMomentsBlock(c, lang) {
+  const fm = c.firstMoments;
+  if (!fm || !(fm.items || []).length) return "";
+  const byId = Object.fromEntries(fm.items.map((it) => [it.id, it]));
+  const featured = new Set(fm.featured || []);
+  const planIds = new Set((c.planner.projects || []).map((p) => p.id));
+  const aiIds = new Set((c.ai.prompts || []).map((p) => p.id));
+  const sitIds = new Set((c.sits.items || []).map((s) => s.id));
+  const knowIds = new Set((c.knowledge.fields || []).map((f) => f.id));
+  const learnIds = new Set((c.knowledge.lessons || []).map((l) => l.id));
+
+  const groups = (fm.groups || [])
+    .map((g) => {
+      const names = (g.ids || [])
+        .map((id) => (byId[id] || {}).name)
+        .filter(Boolean)
+        .slice(0, 3)
+        .join(" · ");
+      return `<button type="button" class="nls-tab nls-first-g" data-nls-filter="firstg" data-nls-key="${escapeHtml(g.id)}" aria-pressed="false">
+        <strong>${escapeHtml(g.name)}</strong>
+        ${names ? `<em>${escapeHtml(names)}</em>` : ""}
+      </button>`;
+    })
+    .join("");
+
+  const examples = (fm.searchExamples || [])
+    .map((ex) => `<button type="button" class="nls-first-ex" data-nls-search-ex="${escapeHtml(ex)}">${escapeHtml(ex)}</button>`)
+    .join("");
+
+  const cards = fm.items
+    .map((it) => {
+      const g = firstGroupOf(fm, it.id);
+      const isFeat = featured.has(it.id) || it.featured;
+      const hidden = isFeat ? "" : " hidden";
+      return tabBtn(
+        "first",
+        it.id,
+        `<strong>${escapeHtml(it.name)}</strong><span>${escapeHtml(it.question)}</span>`,
+        false,
+        " nls-first-card",
+        ` data-nls-filter-item="firstg" data-nls-cat="${escapeHtml(g ? g.id : "")}" data-nls-featured="${isFeat ? "1" : "0"}" data-nls-keys="${escapeHtml(firstKeys(it))}"${hidden}`
+      );
+    })
+    .join("");
+
+  const panels = fm.items
+    .map((it) => {
+      const g = firstGroupOf(fm, it.id);
+      const qList = (it.questions || []).length ? list(it.questions, "nls-list") : "";
+      const know = list(it.knowledge, "nls-points");
+      const prep = list(it.checklist, "nls-list");
+      const steps = `<ol class="nls-first-steps">${(it.steps || [])
+        .map((s) => `<li><span>${escapeHtml(s.n || "")}</span>${escapeHtml(s.t || s.title || "")}</li>`)
+        .join("")}</ol>`;
+      const localChecks = `<div class="nls-checks">${(it.checklist || [])
+        .map((t) => `<label class="nls-check"><input type="checkbox" /><span>${escapeHtml(t)}</span></label>`)
+        .join("")}</div><p class="nls-note">${escapeHtml(fm.planNote || "")}</p>`;
+      const planJump = it.planId && planIds.has(it.planId) ? jumpBtn(`plan:${it.planId}`, fm.jumpPlan || fm.planCta) : "";
+      const aiJump = it.aiId && aiIds.has(it.aiId) ? jumpBtn(`ai:${it.aiId}`, fm.jumpAi) : "";
+      const sitJump = (it.sitIds || [])
+        .filter((id) => sitIds.has(id))
+        .slice(0, 2)
+        .map((id) => jumpBtn(`sit:${id}`, fm.jumpSit))
+        .join("");
+      const knowJump = (it.knowIds || [])
+        .filter((id) => knowIds.has(id))
+        .slice(0, 2)
+        .map((id) => jumpBtn(`know:${id}`, fm.jumpKnow))
+        .join("");
+      const learnJump = it.learnId && learnIds.has(it.learnId) ? jumpBtn(`learn:${it.learnId}`, fm.jumpLearn) : "";
+      const apps = (it.apps || []).map((name) => serviceChip(lang, name)).join("");
+      const nexts = (it.next || [])
+        .map((id) => {
+          const nx = byId[id];
+          if (!nx) return "";
+          return `<button type="button" class="nls-first-mini" data-nls-jump="first:${escapeHtml(id)}">${escapeHtml(nx.name)}</button>`;
+        })
+        .join("");
+      const linkInner = [
+        it.tools ? `<p>${escapeHtml(it.tools)}</p>` : "",
+        apps ? `<div class="nls-first-svcs">${apps}</div>` : "",
+        `<div class="nls-first-jumps">${[planJump, aiJump, sitJump, knowJump, learnJump].join("")}</div>`,
+      ].join("");
+      return `<article class="nls-panel nls-first-panel" data-nls-panel data-nls-group="first" data-nls-key="${escapeHtml(it.id)}" hidden>
+        <p class="nls-panel__kicker">${escapeHtml(g ? g.name : "")}${g ? " · " : ""}${escapeHtml(it.name)}</p>
+        <h4 class="nls-panel__title">${escapeHtml(it.name)}</h4>
+        <p class="nls-panel__intro">${escapeHtml(it.question)}</p>
+        <div class="nls-first-guide">
+          ${firstAcc(true, fm.panelSit || fm.sitLabel, `<p>${escapeHtml(it.situation || "")}</p>${qList}`)}
+          ${firstAcc(false, fm.panelKnow || fm.knowLabel, know)}
+          ${firstAcc(false, fm.panelPrep || fm.prepLabel, prep)}
+          ${firstAcc(false, fm.panelStep || fm.stepLabel, steps)}
+          ${firstAcc(false, fm.panelPlan || fm.planLabel, `${localChecks}${planJump}`)}
+          ${firstAcc(false, fm.panelLink || fm.linkLabel, linkInner)}
+          ${firstAcc(false, fm.panelNext || fm.nextLabel, `<div class="nls-first-age__row">${nexts}</div>`)}
+        </div>
+        ${it.official ? `<p class="nls-note">${escapeHtml(fm.official || "")} ${escapeHtml(it.official)}</p>` : ""}
+      </article>`;
+    })
+    .join("");
+
+  return `<div id="nls-first" class="nls-block" data-hs-section>
+    ${titleBlock(fm.kicker, fm.title, fm.lead)}
+    <p class="nls-note">${escapeHtml(fm.ageNote || "")}</p>
+    <form class="nls-first-search" role="search" action="#" onsubmit="return false">
+      <label class="nls-first-search__label" for="nls-first-q">${escapeHtml(fm.searchLabel)}</label>
+      <input id="nls-first-q" class="nls-first-search__input" type="search" enterkeyhint="search" autocomplete="off" data-nls-search="first" placeholder="${escapeHtml(fm.searchPh || "")}" />
+      <p class="nls-note">${escapeHtml(fm.searchHint || "")}</p>
+      <div class="nls-first-exs">${examples}</div>
+      <ul class="nls-first-hits" data-nls-search-out hidden></ul>
+      <p class="nls-empty" data-nls-search-empty hidden>${escapeHtml(fm.searchEmpty || "")}</p>
+    </form>
+    <p class="nls-mini">${escapeHtml(fm.groupLabel || "")}</p>
+    <div class="nls-first-groups" role="group">${groups}
+      <button type="button" class="nls-tab nls-first-g nls-first-g--feat" data-nls-first-featured aria-pressed="true">
+        <strong>${escapeHtml(fm.featuredLabel || "")}</strong>
+      </button>
+    </div>
+    ${emptyHint("firstg", fm.pickGroup, true)}
+    <div class="nls-first-cards" role="tablist">${cards}</div>
+    ${emptyHint("first", fm.pickTopic, true)}
+    <div class="nls-panels nls-panels--wide">${panels}</div>
+  </div>`;
+}
+
+
 function tabBtn(group, key, label, selected, extraClass = "", extraAttr = "") {
   return `<button type="button" class="nls-tab${extraClass}${selected ? " is-active" : ""}" data-nls-tab data-nls-group="${escapeHtml(group)}" data-nls-key="${escapeHtml(key)}"${extraAttr} role="tab" aria-selected="${selected ? "true" : "false"}" tabindex="${selected ? "0" : "-1"}">${label}</button>`;
 }
@@ -94,10 +278,11 @@ function agesBlock(c) {
   const tabs = c.ages.items
     .map((a) => {
       const hi = (a.highlights || a.topics || []).slice(0, 3);
+      const topics = hi.map((t) => `<li>${escapeHtml(t)}</li>`).join("");
       return tabBtn(
         "age",
         a.id,
-        `<span>${escapeHtml(a.age)}</span><em>${escapeHtml(a.name)}</em><small>${hi.map(escapeHtml).join(" · ")}</small>`,
+        `<span class="nls-age-tab__age">${escapeHtml(a.age)}</span><strong class="nls-age-tab__name">${escapeHtml(a.name)}</strong><ul class="nls-age-tab__topics">${topics}</ul>`,
         false,
         " nls-age-tab"
       );
@@ -121,6 +306,7 @@ function agesBlock(c) {
         cases ? `<p class="nls-mini">${escapeHtml(c.ui.caseLabel || "")}</p>${cases}` : "",
         a.note ? `<p class="nls-note">${escapeHtml(a.note)}</p>` : "",
         a.id === "10" && c.ui.teenNote ? `<p class="nls-note">${escapeHtml(c.ui.teenNote)}</p>` : "",
+        firstLinksForAge(c, a.id),
       ].join("");
       return `<article class="nls-panel" data-nls-panel data-nls-group="age" data-nls-key="${escapeHtml(a.id)}" hidden>
         <p class="nls-panel__kicker">${escapeHtml(a.age)} · ${escapeHtml(a.name)}</p>
@@ -577,6 +763,7 @@ export function renderLifeStageSection(lang, opts = {}) {
     ${back}
     ${heroBlock(c, L)}
     ${agesBlock(c)}
+    ${firstMomentsBlock(c, L)}
     ${knowledgeBlock(c)}
     ${learnBlock(c)}
     ${coreBlock(c)}
