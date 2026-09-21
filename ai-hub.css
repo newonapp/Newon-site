@@ -893,6 +893,47 @@ html[data-newon-shell-theme="dark"] .cai-close__btn--ghost {
   color: var(--ai-muted);
   max-width: 40rem;
 }
+.cai-ent-card .cai-ent-note {
+  margin-top: 0.35rem;
+  max-width: none;
+}
+.cai-ent-prose {
+  margin: 0 0 0.85rem;
+  max-width: 42rem;
+  color: var(--ai-muted);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+.cai-ent-flag {
+  margin: -0.35rem 0 0;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  color: var(--ai-faint);
+}
+.cai-ent-list__name {
+  margin: 0 0 0.25rem;
+  font-weight: 650;
+  color: var(--ai-ink);
+}
+.cai-ent-list li > div p + p {
+  color: var(--ai-muted);
+  font-size: 0.95rem;
+}
+.cai-close .cai-ent-list {
+  margin: 1.25rem 0 0;
+  border-top-color: rgba(255, 255, 255, 0.16);
+}
+.cai-close .cai-ent-list li {
+  border-bottom-color: rgba(255, 255, 255, 0.16);
+}
+.cai-close .cai-ent-list span,
+.cai-close .cai-ent-list p {
+  color: inherit;
+}
+.cai-close .cai-ent-list span {
+  opacity: 0.55;
+}
 
 /* —— Responsive —— */
 @media (max-width: 980px) {

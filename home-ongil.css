@@ -172,6 +172,9 @@
   font-weight: 650;
   letter-spacing: -0.01em;
   text-decoration: none;
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
 }
 
 #ongil-detail.nls .nls-btn--ghost {
@@ -1291,6 +1294,24 @@ html[data-theme="dark"] #ongil-detail.nls .nog-vs {
 
 #ongil-detail.nls .nog-svc .nls-note {
   margin-top: 0.9rem;
+}
+
+#ongil-detail.nls .nog-svc .nog-status {
+  margin: 0.45rem 0 0;
+}
+
+#ongil-detail.nls .nls-block .nls-chips {
+  margin-top: 1.25rem;
+}
+
+#ongil-detail.nls .nog-services + .nls-note,
+#ongil-detail.nls .nls-chips + .nog-services {
+  margin-top: 1.25rem;
+}
+
+#ongil-detail.nls .nog-status + .nls-chips,
+#ongil-detail.nls .nog-status + .nog-services {
+  margin-top: 1.15rem;
 }
 
 #ongil-detail.nls .nog-how {

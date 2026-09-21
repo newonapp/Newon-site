@@ -1,0 +1,405 @@
+/* Homepage Seoul × NEWON 3D hero — scoped to #top.hero--seoul3d only */
+
+#home.site-shell .hero--ecosystem.hero--seoul3d {
+  --nh3d-gold: #e8c98a;
+  --nh3d-ink: #ffffff;
+  --nh3d-muted: rgba(255, 255, 255, 0.78);
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+  max-height: none;
+  height: auto;
+  display: block;
+  background: #1a2430;
+  color: var(--nh3d-ink);
+  overflow: visible;
+  justify-content: stretch;
+}
+
+.hero--seoul3d .hero-bg,
+.hero--seoul3d .hero-inner,
+.hero--seoul3d .hero-scroll {
+  display: none;
+}
+
+.nh3d-track {
+  position: relative;
+  height: 720vh;
+}
+
+.nh3d-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #1a2430 url("/assets/hero-3d/seoul-dusk-empty-plaza.png") center 42% / cover no-repeat;
+}
+
+.nh3d-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 1;
+  pointer-events: none;
+  touch-action: pan-y;
+  transition: opacity 0.55s ease;
+}
+
+.nh3d-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.nh3d-fallback[hidden] {
+  display: none;
+}
+
+.nh3d-fallback__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+}
+
+.nh3d-ui {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  font-family: "Noto Sans", system-ui, sans-serif;
+}
+
+.nh3d-lockup {
+  position: absolute;
+  left: clamp(1.4rem, 4.2vw, 3.4rem);
+  top: 38%;
+  transform: translateY(-52%);
+  width: min(20rem, 24vw);
+  text-align: left;
+  opacity: 1;
+  z-index: 3;
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  transition: opacity 0.45s ease;
+}
+
+.nh3d-lockup:not(.is-on) {
+  opacity: 0;
+}
+
+.nh3d-lockup__ko {
+  margin: 0 0 1.15rem;
+  font-size: clamp(1.45rem, 2.6vw, 2.35rem);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+  color: #fff;
+  white-space: pre-line;
+}
+
+.nh3d-lockup__kicker {
+  margin: 0 0 0.28rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+  white-space: nowrap;
+}
+
+.nh3d-lockup__en {
+  margin: 0;
+  font-size: 0.66rem;
+  letter-spacing: 0.32em;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  white-space: nowrap;
+}
+
+.nh3d-caption {
+  position: absolute;
+  left: clamp(1.4rem, 4.2vw, 3.4rem);
+  bottom: clamp(4.4rem, 8vh, 6rem);
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  color: #fff;
+  min-height: 1.2em;
+  opacity: 0;
+  z-index: 3;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.nh3d-caption.is-on {
+  opacity: 1;
+}
+
+.nh3d-rail {
+  position: absolute;
+  right: clamp(1.1rem, 2.8vw, 2.2rem);
+  top: 50%;
+  transform: translateY(-50%);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  z-index: 3;
+  transition: opacity 0.45s ease;
+}
+
+.nh3d-rail::before {
+  content: "";
+  position: absolute;
+  right: 2px;
+  top: 0.2rem;
+  bottom: 0.2rem;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.nh3d-rail li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+  transition: color 0.28s ease;
+}
+
+.nh3d-rail li::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 0 0 6px transparent;
+}
+
+.nh3d-rail li.is-on {
+  color: #fff;
+}
+
+.nh3d-rail li.is-on::after {
+  background: #fff;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.16);
+}
+
+.nh3d-rail li.is-done {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.nh3d-rail li.is-done::after {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.nh3d-hint {
+  position: absolute;
+  left: clamp(1.4rem, 4.2vw, 3.4rem);
+  bottom: 1.4rem;
+  transform: none;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.72);
+  z-index: 3;
+}
+
+.nh3d-hint__arrow {
+  display: block;
+  animation: nh3d-hint 1.8s ease-in-out infinite;
+}
+
+@keyframes nh3d-hint {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(5px);
+    opacity: 1;
+  }
+}
+
+.hero--seoul3d.is-complete .nh3d-hint {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.nh3d-caption,
+.nh3d-beats,
+.nh3d-end {
+  display: none;
+}
+
+.nh3d-mobile-name {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .nh3d-lockup {
+    top: calc(var(--gnav-h, 74px) + 1.05rem);
+    transform: none;
+    width: min(16rem, 62vw);
+  }
+
+  .nh3d-lockup__ko {
+    font-size: 1.12rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .nh3d-lockup__kicker,
+  .nh3d-lockup__en {
+    white-space: normal;
+    letter-spacing: 0.14em;
+    max-width: 12.5rem;
+  }
+
+  .nh3d-rail {
+    right: 0.55rem;
+    gap: 0.48rem;
+  }
+
+  .nh3d-mobile-name {
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 4.2rem;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 0;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    z-index: 3;
+    white-space: nowrap;
+  }
+
+  .nh3d-mobile-name.is-on {
+    opacity: 1;
+  }
+}
+
+.hero--seoul3d.is-build-preview .nh3d-track {
+  height: 100svh;
+  height: 100dvh;
+}
+
+.nh3d-preview-badge {
+  position: absolute;
+  top: calc(var(--gnav-h, 74px) + 0.55rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  margin: 0;
+  padding: 0.38rem 0.8rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: #fff;
+  background: rgba(8, 12, 16, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .nh3d-preview-badge {
+    white-space: normal;
+    text-align: center;
+    max-width: 86vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nh3d-track {
+    height: 100svh;
+  }
+
+  .nh3d-hint__arrow {
+    animation: none;
+  }
+}
+
+.nh3d-signs {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+
+.nh3d-sign {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.12rem;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  text-align: center;
+  white-space: nowrap;
+  color: #fff;
+  pointer-events: none;
+}
+
+.nh3d-sign.is-on {
+  visibility: visible;
+}
+
+.nh3d-sign__num {
+  font-size: 0.58rem;
+  font-weight: 650;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.78);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+}
+
+.nh3d-sign__name {
+  max-width: 12.5rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 2px;
+  background: rgba(8, 12, 16, 0.28);
+  font-size: clamp(0.7rem, 1.05vw, 0.92rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.25;
+  white-space: normal;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+}
+
+@media (max-width: 900px) {
+  .nh3d-sign__name {
+    max-width: 7.6rem;
+    padding: 0.12rem 0.38rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+  }
+
+  .nh3d-sign__num {
+    font-size: 0.5rem;
+  }
+
+  .nh3d-mobile-name {
+    display: none;
+  }
+}

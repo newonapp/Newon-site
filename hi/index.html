@@ -74,6 +74,7 @@
     <link rel="stylesheet" href="/ox-month.css?v=20260921plusq2" />
     <link rel="stylesheet" href="/app-landing-extras.css?v=20260916round1" />
     <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
+    <link rel="stylesheet" href="/home-hero-3d.css?v=20260921s3d43" />
     <link rel="stylesheet" href="/home-studio.css?v=20260921nls1" />
     <link rel="stylesheet" href="/home-lifestage.css?v=20260921nls1" />
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
@@ -82,6 +83,7 @@
     <script src="/analytics.js?v=20260904sec1" defer></script>
     <script src="/search.js?v=20260904a11y1" defer></script>
     <script src="/site-chrome.js?v=20260904a11y1" defer></script>
+    <script type="module" src="/home-hero-3d.js?v=20260921s3d43"></script>
     <script src="/home-studio.js?v=20260921nls1" defer></script>
     <script src="/home-lifestage.js?v=20260921nls1" defer></script>
 </head>
@@ -494,59 +496,51 @@
     <div id="home" class="site-shell">
 
       <main id="main">
-<section id="top" class="hero hero--ecosystem hero--vision hero--logo hero--entered reveal-on-scroll is-visible">
-          <div class="hero-bg" aria-hidden="true"></div>
-          <div class="container hero-inner hero-inner--vision">
-            <div class="hero-copy hero-copy--vision">
-              <p class="hero-eyebrow hero-eco-enter" style="--hero-enter-delay: 40ms">NEWON · LIFE &amp; TECHNOLOGY</p>
-
-              <div class="hero-brand-mark hero-eco-enter" style="--hero-enter-delay: 120ms">
-                <picture class="hero-brand-mark__picture hero-brand-mark__picture--light">
-                  <source type="image/webp" srcset="/newon-wordmark-chrome.webp" />
-                  <img
-                    class="hero-brand-mark__img hero-brand-mark__img--light"
-                    src="/newon-wordmark-chrome.png"
-                    alt="Newon logo"
-                    width="948"
-                    height="361"
-                    decoding="sync"
-                    fetchpriority="high"
-                  />
-                </picture>
-                <picture class="hero-brand-mark__picture hero-brand-mark__picture--dark">
-                  <source type="image/webp" srcset="/newon-wordmark-chrome-dark.webp" />
-                  <img
-                    class="hero-brand-mark__img hero-brand-mark__img--dark"
-                    src="/newon-wordmark-chrome-dark.png"
-                    alt=""
-                    width="948"
-                    height="361"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </picture>
+<section id="top" class="hero hero--ecosystem hero--vision hero--logo hero--seoul3d hero--entered reveal-on-scroll is-visible" data-nh3d aria-label="Interactive scene of Newon’s six businesses assembling into one tower against the Seoul skyline">
+          <h1 class="visually-hidden">जीवन के हर चरण के लिए,<br />एक बेहतर रास्ता।</h1>
+          <div class="nh3d-track" data-nh3d-track>
+            <div class="nh3d-stage" data-nh3d-stage>
+              <canvas class="nh3d-canvas" data-nh3d-canvas></canvas>
+              <div class="nh3d-fallback" data-nh3d-fallback hidden>
+                <img
+                  class="nh3d-fallback__img"
+                  src="/assets/hero-3d/seoul-dusk-empty-plaza.png"
+                  alt=""
+                  width="1376"
+                  height="768"
+                  decoding="async"
+                />
               </div>
-
-              <h1 class="hero-title hero-eco-enter" style="--hero-enter-delay: 220ms">जीवन के हर चरण के लिए,<br />एक बेहतर रास्ता।</h1>
-              <p class="hero-sub hero-eco-enter" style="--hero-enter-delay: 300ms">Newon उन उत्पादों और सेवाओं को बनाता और जोड़ता है जिनकी लोगों को ज़रूरत है — रोज़मर्रा की छोटी समस्याओं से लेकर जीवन के बड़े बदलावों तक।</p>
-
-              <div class="hero-actions hero-actions--vision hero-eco-enter" style="--hero-enter-delay: 380ms">
-                <a
-                  class="btn btn-primary hero-btn-primary"
-                  href="#story-consumer"
-                  aria-label="Go to Newon’s six business stories"
-                >Explore 6 businesses →</a>
-                <a
-                  class="btn btn-ghost hero-btn-secondary"
-                  href="/hi/about/"
-                  aria-label="Newon के बारे में और जानें"
-                >Newon के बारे में</a>
+              <div class="nh3d-ui">
+                <div class="nh3d-lockup is-on" data-nh3d-lockup>
+                  <p class="nh3d-lockup__ko">For every moment of life,
+a better way forward.</p>
+                  <p class="nh3d-lockup__kicker">SEOUL × NEWON</p>
+                  <p class="nh3d-lockup__en">BUILDING A BETTER TOMORROW</p>
+                </div>
+                <ul class="nh3d-signs" data-nh3d-signs aria-hidden="true">
+                  <li class="nh3d-sign" data-nh3d-sign="0"><span class="nh3d-sign__num">01</span><span class="nh3d-sign__name">NEWON CONSUMER</span></li>
+                  <li class="nh3d-sign" data-nh3d-sign="1"><span class="nh3d-sign__num">02</span><span class="nh3d-sign__name">NEWON AI</span></li>
+                  <li class="nh3d-sign" data-nh3d-sign="2"><span class="nh3d-sign__num">03</span><span class="nh3d-sign__name">LIFE STAGE</span></li>
+                  <li class="nh3d-sign" data-nh3d-sign="3"><span class="nh3d-sign__num">04</span><span class="nh3d-sign__name">ONGIL</span></li>
+                  <li class="nh3d-sign" data-nh3d-sign="4"><span class="nh3d-sign__num">05</span><span class="nh3d-sign__name">NEWON BUSINESS</span></li>
+                  <li class="nh3d-sign" data-nh3d-sign="5"><span class="nh3d-sign__num">06</span><span class="nh3d-sign__name">NEWON COMMERCE</span></li>
+                </ul>
+                <p class="nh3d-mobile-name" data-nh3d-mobile-name></p>
+                <ol class="nh3d-rail" data-nh3d-rail aria-hidden="true">
+                  <li data-nh3d-dot="5"><span>06</span></li>
+                  <li data-nh3d-dot="4"><span>05</span></li>
+                  <li data-nh3d-dot="3"><span>04</span></li>
+                  <li data-nh3d-dot="2"><span>03</span></li>
+                  <li data-nh3d-dot="1"><span>02</span></li>
+                  <li data-nh3d-dot="0"><span>01</span></li>
+                </ol>
+                <p class="nh3d-hint" data-nh3d-hint>
+                  <span class="nh3d-hint__arrow">↓</span>
+                  <span>SCROLL TO EXPLORE</span>
+                </p>
               </div>
             </div>
-          </div>
-          <div class="hero-scroll hero-scroll--biz hero-eco-enter" style="--hero-enter-delay: 460ms" aria-hidden="true">
-            <span class="hero-scroll__label">EXPLORE OUR BUSINESSES</span>
-            <span class="hero-scroll__arrow">↓</span>
           </div>
         </section>
 

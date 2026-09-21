@@ -1,55 +1,46 @@
-        <section id="top" class="hero hero--ecosystem hero--vision hero--logo hero--entered reveal-on-scroll is-visible">
-          <div class="hero-bg" aria-hidden="true"></div>
-          <div class="container hero-inner hero-inner--vision">
-            <div class="hero-copy hero-copy--vision">
-              <p class="hero-eyebrow hero-eco-enter" style="--hero-enter-delay: 40ms">{{t:home.heroEyebrow}}</p>
-
-              <div class="hero-brand-mark hero-eco-enter" style="--hero-enter-delay: 120ms">
-                <picture class="hero-brand-mark__picture hero-brand-mark__picture--light">
-                  <source type="image/webp" srcset="/newon-wordmark-chrome.webp" />
-                  <img
-                    class="hero-brand-mark__img hero-brand-mark__img--light"
-                    src="/newon-wordmark-chrome.png"
-                    alt="{{t:home.heroLogoAlt}}"
-                    width="948"
-                    height="361"
-                    decoding="sync"
-                    fetchpriority="high"
-                  />
-                </picture>
-                <picture class="hero-brand-mark__picture hero-brand-mark__picture--dark">
-                  <source type="image/webp" srcset="/newon-wordmark-chrome-dark.webp" />
-                  <img
-                    class="hero-brand-mark__img hero-brand-mark__img--dark"
-                    src="/newon-wordmark-chrome-dark.png"
-                    alt=""
-                    width="948"
-                    height="361"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </picture>
+        <section id="top" class="hero hero--ecosystem hero--vision hero--logo hero--seoul3d hero--entered reveal-on-scroll is-visible" data-nh3d aria-label="{{t:home.hero3dAria}}">
+          <h1 class="visually-hidden">{{html:home.heroTitleHtml}}</h1>
+          <div class="nh3d-track" data-nh3d-track>
+            <div class="nh3d-stage" data-nh3d-stage>
+              <canvas class="nh3d-canvas" data-nh3d-canvas></canvas>
+              <div class="nh3d-fallback" data-nh3d-fallback hidden>
+                <img
+                  class="nh3d-fallback__img"
+                  src="/assets/hero-3d/seoul-dusk-empty-plaza.png"
+                  alt=""
+                  width="1376"
+                  height="768"
+                  decoding="async"
+                />
               </div>
-
-              <h1 class="hero-title hero-eco-enter" style="--hero-enter-delay: 220ms">{{html:home.heroTitleHtml}}</h1>
-              <p class="hero-sub hero-eco-enter" style="--hero-enter-delay: 300ms">{{t:home.heroSub}}</p>
-
-              <div class="hero-actions hero-actions--vision hero-eco-enter" style="--hero-enter-delay: 380ms">
-                <a
-                  class="btn btn-primary hero-btn-primary"
-                  href="#story-consumer"
-                  aria-label="{{t:home.btnExploreBusinessAria}}"
-                >{{t:home.btnExploreBusiness}}</a>
-                <a
-                  class="btn btn-ghost hero-btn-secondary"
-                  href="/{{LANG_DIR}}/about/"
-                  aria-label="{{t:home.btnLearnNewonAria}}"
-                >{{t:home.btnLearnNewon}}</a>
+              <div class="nh3d-ui">
+                <div class="nh3d-lockup is-on" data-nh3d-lockup>
+                  <p class="nh3d-lockup__ko">{{t:home.hero3dSlogan}}</p>
+                  <p class="nh3d-lockup__kicker">{{t:home.hero3dKicker}}</p>
+                  <p class="nh3d-lockup__en">{{t:home.hero3dFinaleEn}}</p>
+                </div>
+                <ul class="nh3d-signs" data-nh3d-signs aria-hidden="true">
+                  <li class="nh3d-sign" data-nh3d-sign="0"><span class="nh3d-sign__num">01</span><span class="nh3d-sign__name">NEWON CONSUMER</span></li>
+                  <li class="nh3d-sign" data-nh3d-sign="1"><span class="nh3d-sign__num">02</span><span class="nh3d-sign__name">NEWON AI</span></li>
+                  <li class="nh3d-sign" data-nh3d-sign="2"><span class="nh3d-sign__num">03</span><span class="nh3d-sign__name">LIFE STAGE</span></li>
+                  <li class="nh3d-sign" data-nh3d-sign="3"><span class="nh3d-sign__num">04</span><span class="nh3d-sign__name">ONGIL</span></li>
+                  <li class="nh3d-sign" data-nh3d-sign="4"><span class="nh3d-sign__num">05</span><span class="nh3d-sign__name">NEWON BUSINESS</span></li>
+                  <li class="nh3d-sign" data-nh3d-sign="5"><span class="nh3d-sign__num">06</span><span class="nh3d-sign__name">NEWON COMMERCE</span></li>
+                </ul>
+                <p class="nh3d-mobile-name" data-nh3d-mobile-name></p>
+                <ol class="nh3d-rail" data-nh3d-rail aria-hidden="true">
+                  <li data-nh3d-dot="5"><span>06</span></li>
+                  <li data-nh3d-dot="4"><span>05</span></li>
+                  <li data-nh3d-dot="3"><span>04</span></li>
+                  <li data-nh3d-dot="2"><span>03</span></li>
+                  <li data-nh3d-dot="1"><span>02</span></li>
+                  <li data-nh3d-dot="0"><span>01</span></li>
+                </ol>
+                <p class="nh3d-hint" data-nh3d-hint>
+                  <span class="nh3d-hint__arrow">↓</span>
+                  <span>{{t:home.hero3dScrollHint}}</span>
+                </p>
               </div>
             </div>
-          </div>
-          <div class="hero-scroll hero-scroll--biz hero-eco-enter" style="--hero-enter-delay: 460ms" aria-hidden="true">
-            <span class="hero-scroll__label">{{t:home.heroScrollLabel}}</span>
-            <span class="hero-scroll__arrow">↓</span>
           </div>
         </section>

@@ -39,6 +39,8 @@ const PUBLISH_ROOT_CORE = [
   "hub-pages.css",
   "home-studio.css",
   "home-studio.js",
+  "home-hero-3d.css",
+  "home-hero-3d.js",
   "home-lifestage.css",
   "home-lifestage.js",
   "home-ongil.css",
@@ -155,6 +157,8 @@ const PUBLISH_COPY_DIRS = [
   { from: "admin", to: "admin", required: false },
   { from: "oxmonth", to: "oxmonth", required: false },
   { from: "subping", to: "subping", required: false },
+  { from: "assets/hero-3d", to: "assets/hero-3d", required: true },
+  { from: "vendor/three", to: "vendor/three", required: true },
 ];
 
 const PUBLISH_ROOT_OPTIONAL = [

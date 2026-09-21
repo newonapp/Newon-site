@@ -27,19 +27,19 @@ import { renderOngilSection } from "./home-ongil-body.mjs";
 import { getOngilCopy } from "./home-ongil-copy.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const NOG_VER = "20260921nog11";
+const NOG_VER = "20260921nog13";
 const SKIP_DIRS = new Set(["node_modules", "_publish", ".git", "docs", "app-icons"]);
 
 const SEO = {
   ko: {
-    title: "Ongil | Newon — 시니어와 가족을 위한 생활·돌봄 플랫폼",
+    title: "Ongil | Newon — 시니어 종합 생활·돌봄 플랫폼",
     description:
-      "시니어의 일상과 필요한 돌봄, 가족의 안심을 연결하는 생활 플랫폼입니다. 현재는 사업 소개이며, 예약·결제·가입은 아직 연결되지 않았습니다.",
+      "시니어의 일상과 건강, 필요한 돌봄부터 가족과 지역사회까지. 종합 생활 플랫폼 사업 소개이며, 예약·결제·가입은 아직 연결되지 않았습니다.",
   },
   en: {
-    title: "Ongil | Newon — A living and care platform for seniors and families.",
+    title: "Ongil | Newon — A full living and care platform for seniors.",
     description:
-      "A living platform that connects seniors’ daily lives, the care they need, and peace of mind for families. This page is an introduction — booking, payment, and sign-up are not connected yet.",
+      "From daily life and health to care, family, and community. A business introduction — booking, payment, and sign-up are not connected yet.",
   },
 };
 
@@ -49,14 +49,13 @@ function localeFlat(lang) {
   return { flat: flatten(loc), flatEn: flatten(en) };
 }
 
-function seoFor(dir) {
-  return SEO[dir] || SEO.en;
-}
-
 function renderPage(lang) {
   const { flat, flatEn } = localeFlat(lang);
-  const seo = seoFor(lang.dir);
   const copy = getOngilCopy(lang.dir);
+  const seo = {
+    title: copy.seoTitle || SEO.en.title,
+    description: copy.seoDescription || SEO.en.description,
+  };
   const header = renderStudioHeader(flat, flatEn, { activeNav: "ongil", base: "../" });
   const footer = renderStudioFooter(flat, flatEn, { base: "../" });
   const canonical = `${SITE_ORIGIN}/${lang.dir}/ongil/`;

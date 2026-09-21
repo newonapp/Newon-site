@@ -1,5 +1,6 @@
 /**
  * Ongil detail section HTML. Scoped to #ongil-detail.
+ * Reuses existing nls / nog patterns. Hero CARE TIMELINE still uses the four core services.
  */
 import { escapeHtml } from "./hub-utils.mjs";
 import { getOngilCopy } from "./home-ongil-copy.mjs";
@@ -17,7 +18,64 @@ function titleBlock(kicker, title, lead) {
 }
 
 function list(items, cls = "nls-points") {
-  return `<ul class="${cls}">${(items || []).map((t) => `<li>${escapeHtml(t)}</li>`).join("")}</ul>`;
+  if (!items || !items.length) return "";
+  return `<ul class="${cls}">${items.map((t) => `<li>${escapeHtml(t)}</li>`).join("")}</ul>`;
+}
+
+function flag(c, planned) {
+  if (!planned) return "";
+  return `<p class="nog-status">${escapeHtml(c.ui.plannedFlag || c.ui.planned)}</p>`;
+}
+
+function notes(...parts) {
+  return parts.filter(Boolean).map((t) => `<p class="nls-note">${escapeHtml(t)}</p>`).join("");
+}
+
+function cards(items, c) {
+  return (items || [])
+    .map((it) => {
+      const situations = it.situations?.length
+        ? `${it.situationsLead ? `<p class="nls-note">${escapeHtml(it.situationsLead)}</p>` : ""}${list(it.situations)}`
+        : "";
+      return `<article class="nog-svc">
+        <p class="nog-svc__n">${escapeHtml(it.n)}</p>
+        <h3>${escapeHtml(it.name)}</h3>
+        ${flag(c, it.planned)}
+        ${it.lead ? `<p class="nog-svc__lead">${escapeHtml(it.lead)}</p>` : ""}
+        ${list(it.features)}
+        ${situations}
+        ${it.note ? `<p class="nls-note">${escapeHtml(it.note)}</p>` : ""}
+      </article>`;
+    })
+    .join("");
+}
+
+function catalog(id, band, head, inner, extra = "") {
+  if (!head) return "";
+  return `<div id="${escapeHtml(id)}" class="nls-block${band ? " nls-block--band" : ""}" data-hs-section>
+    ${titleBlock(head.kicker, head.title, head.lead || "")}
+    ${inner}
+    ${extra}
+  </div>`;
+}
+
+function chips(items) {
+  if (!items || !items.length) return "";
+  return `<ul class="nls-chips">${items.map((t) => `<li>${escapeHtml(t)}</li>`).join("")}</ul>`;
+}
+
+function road(items) {
+  return `<ol class="nls-road">${(items || [])
+    .map(
+      (s) => `<li>
+        <span>${escapeHtml(s.n)}</span>
+        <div>
+          <strong>${escapeHtml(s.name)}</strong>
+          <p>${escapeHtml(s.body || s.lead || "")}</p>
+        </div>
+      </li>`
+    )
+    .join("")}</ol>`;
 }
 
 function heroVisual(c) {
@@ -93,25 +151,6 @@ function whyBlock(c) {
   </div>`;
 }
 
-function servicesBlock(c) {
-  const cards = (c.services.items || [])
-    .map(
-      (it) => `<article class="nog-svc">
-        <p class="nog-svc__n">${escapeHtml(it.n)}</p>
-        <h3>${escapeHtml(it.name)}</h3>
-        <p class="nog-svc__lead">${escapeHtml(it.lead)}</p>
-        ${list(it.features)}
-        ${it.note ? `<p class="nls-note">${escapeHtml(it.note)}</p>` : ""}
-      </article>`
-    )
-    .join("");
-  return `<div id="nog-services" class="nls-block nls-block--band" data-hs-section>
-    ${titleBlock(c.services.kicker, c.services.title, c.services.lead)}
-    <div class="nog-services">${cards}</div>
-    <p class="nls-note">${escapeHtml(c.services.aiNote)}</p>
-  </div>`;
-}
-
 function howBlock(c) {
   const steps = (c.how.steps || [])
     .map(
@@ -131,22 +170,10 @@ function howBlock(c) {
 }
 
 function expandBlock(c) {
-  const stages = (c.expand.stages || [])
-    .map(
-      (s) => `<li>
-        <span>${escapeHtml(s.n)}</span>
-        <div>
-          <strong>${escapeHtml(s.name)}</strong>
-          <p>${escapeHtml(s.body)}</p>
-        </div>
-      </li>`
-    )
-    .join("");
   return `<div id="nog-expand" class="nls-block nls-block--band" data-hs-section>
     ${titleBlock(c.expand.kicker, c.expand.title, "")}
-    <p class="nls-note">${escapeHtml(c.ui.expandNote)}</p>
-    <p class="nls-note">${escapeHtml(c.expand.note)}</p>
-    <ol class="nls-road">${stages}</ol>
+    ${notes(c.ui.expandNote, c.expand.note)}
+    ${road(c.expand.stages)}
   </div>`;
 }
 
@@ -176,9 +203,28 @@ export function renderOngilSection(lang, opts = {}) {
     ${back}
     ${heroBlock(c, L)}
     ${whyBlock(c)}
-    ${servicesBlock(c)}
+    ${catalog("nog-who", true, c.who, `<div class="nog-services">${cards(c.who.items, c)}</div>`)}
+    ${catalog("nog-services", false, c.services, `<div class="nog-services">${cards(c.services.items, c)}</div>`)}
+    ${catalog("nog-domains", true, c.domains, `<div class="nog-services">${cards(c.domains.items, c)}</div>`)}
+    ${catalog(
+      "nog-ai",
+      false,
+      c.ai,
+      `${flag(c, c.ai.planned)}<div class="nog-services">${cards(c.ai.items, c)}</div>`,
+      notes(c.ai.note)
+    )}
+    ${catalog(
+      "nog-commerce",
+      true,
+      c.commerce,
+      `${flag(c, c.commerce.planned)}${chips(c.commerce.models)}<div class="nog-services">${cards(c.commerce.items, c)}</div>`,
+      notes(c.commerce.note)
+    )}
     ${howBlock(c)}
+    ${catalog("nog-ecosystem", true, c.ecosystem, chips(c.ecosystem.items), notes(c.ecosystem.note))}
+    ${catalog("nog-model", false, c.model, road(c.model.items), notes(c.model.note))}
     ${expandBlock(c)}
+    ${catalog("nog-related", false, c.related, road(c.related.items))}
     ${closeBlock(c, L)}
   </div>
 </section>`;

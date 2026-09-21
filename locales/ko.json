@@ -1238,7 +1238,13 @@
     "heroBizStudio": "Newon Studio",
     "heroBizTagStudio": "브랜드 · 웹 · 앱 제작",
     "heroBizDescStudio": "브랜드 · 웹 · 앱 제작",
-    "heroScrollLabel": "EXPLORE OUR BUSINESSES"
+    "heroScrollLabel": "EXPLORE OUR BUSINESSES",
+    "hero3dKicker": "SEOUL × NEWON",
+    "hero3dSlogan": "삶의 모든 순간을\n더 나은 방향으로.",
+    "hero3dScrollHint": "SCROLL TO EXPLORE",
+    "hero3dFinaleEn": "BUILDING A BETTER TOMORROW",
+    "hero3dAria": "서울 풍경 속에서 NEWON의 6개 사업이 하나의 건축물로 결합하는 장면",
+    "hero3dFallback": "브라우저가 3D를 표시할 수 없습니다. 스크롤하여 다음 섹션으로 이동하세요."
   },
   "footer": {
     "privacy": "개인정보 처리방침",

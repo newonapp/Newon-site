@@ -49,12 +49,39 @@ function applyTemplate(template, flat, flatEn, lang) {
 }
 
 function replaceHero(html, heroHtml) {
-  const start = html.indexOf('<section id="top"');
+  let start = html.indexOf('<section id="top"');
+  if (start === -1) {
+    const m = html.match(/<section\s+id="top"/);
+    start = m ? html.indexOf(m[0]) : -1;
+  }
   if (start === -1) throw new Error("hero section not found");
   const end = html.indexOf("</section>", start);
   if (end === -1) throw new Error("hero end not found");
   const close = end + "</section>".length;
   return html.slice(0, start) + heroHtml.trim() + html.slice(close);
+}
+
+const HERO3D_VER = "20260921s3d43";
+
+function ensureHero3dAssets(html) {
+  let out = html;
+  if (out.includes("home-hero-3d.css")) {
+    out = out.replace(/home-hero-3d\.css\?v=[^"]+/g, `home-hero-3d.css?v=${HERO3D_VER}`);
+  } else {
+    out = out.replace(
+      /<link rel="stylesheet" href="\/home-studio\.css\?v=[^"]+" \/>/,
+      `<link rel="stylesheet" href="/home-hero-3d.css?v=${HERO3D_VER}" />\n    $&`
+    );
+  }
+  if (out.includes("home-hero-3d.js")) {
+    out = out.replace(/home-hero-3d\.js\?v=[^"]+/g, `home-hero-3d.js?v=${HERO3D_VER}`);
+  } else {
+    out = out.replace(
+      /<script src="\/home-studio\.js\?v=[^"]+" defer><\/script>/,
+      `<script type="module" src="/home-hero-3d.js?v=${HERO3D_VER}"></script>\n    $&`
+    );
+  }
+  return out;
 }
 
 const heroTpl = fs.readFileSync(HERO, "utf8");
@@ -65,6 +92,7 @@ const flatEn = flatten(JSON.parse(fs.readFileSync(path.join(LOCALES, "en.json"),
   const tplPath = path.join(ROOT, "templates", "index.html");
   let tpl = fs.readFileSync(tplPath, "utf8");
   tpl = replaceHero(tpl, heroTpl);
+  tpl = ensureHero3dAssets(tpl);
   fs.writeFileSync(tplPath, tpl);
   console.log("render-home-hero: templates/index.html");
 }
@@ -79,10 +107,7 @@ for (const lang of LANGS) {
   const hero = applyTemplate(heroTpl, flat, flatEn, lang);
   let html = fs.readFileSync(file, "utf8");
   html = replaceHero(html, hero);
-  html = html
-    .replace(/styles\.css\?v=[^"]+/g, "styles.css?v=20260919logo1")
-    .replace(/home-studio\.css\?v=[^"]+/g, "home-studio.css?v=20260919logo1")
-    .replace(/home-studio\.js\?v=[^"]+/g, "home-studio.js?v=20260919logo1");
+  html = ensureHero3dAssets(html);
   fs.writeFileSync(file, html);
   console.log("render-home-hero:", lang);
 }

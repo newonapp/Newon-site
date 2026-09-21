@@ -327,7 +327,7 @@ const HUB_RENDERERS = {
       title: copy.seoTitle,
       description: copy.seoDescription,
       body: renderAiEnterpriseBody(f, fe, l),
-      extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260921aient2" />',
+      extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260921aient3" />',
       extraScripts: '<script src="/ai-hub.js?v=20260921aihero3" defer></script>',
     };
   },
