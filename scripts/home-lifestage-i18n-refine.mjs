@@ -36,10 +36,10 @@ export const LIFE_STAGE_REFINE = {
       pickKnow: "グループを選んでから、知識分野を選んでください。",
       pickVenture: "事業名を選ぶと、詳しい説明を見られます。",
       allStages: "すべての人生の段階",
-      allStagesSub: "10代から70代+",
+      allStagesSub: "10代から70代",
     },
     hero: {
-      lead: "進路と就職、独立と家族、健康と退職まで。Life Stageは人生の変化の前で必要な情報とサービスを見つけやすくつなぐライフサイクル・プラットフォームをつくっています。",
+      lead: "学校と進路、就職と独立、家族と健康、仕事のあとまで。10代から70代まで、Life Stageは人生の変化の前で必要な情報とサービスを見つけやすくつなぐライフサイクル・プラットフォームをつくっています。",
     },
     core: {
       title: "案内を受け、計画し、実行する。",
@@ -51,20 +51,20 @@ export const LIFE_STAGE_REFINE = {
       servicesLead: "今後、暮らしに必要なサービスを探し比べる方向です。",
       communityLead: "経験と情報を共有する場をつくる方向です。",
     },
-    sitCats: cats("学びと社会への一歩", "独立と暮らし", "仕事と新しい挑戦", "家族と次の暮らし", {
-      study: "入試 · 進路 · 大人の準備 · アルバイト · 初めての仕事",
-      life: "初めての独立 · 結婚準備 · 初めての育児",
-      work: "転職 · キャリア転換",
+    sitCats: cats("学びと社会への一歩", "独立と暮らし", "転職とキャリア転換", "家族と次の暮らし", {
+      study: "入試 · 進路 · 大人の準備 · アルバイト · 就職",
+      life: "独立 · 結婚 · 育児",
+      work: "転職 · 再就職 · キャリア転換",
       family: "家族のケア · 仕事のあと",
     }),
     knowGroups: groups("学び・進路", "仕事・経済", "住まい・暮らし", "関係・家族", "次の暮らし"),
     ages: {
       items: ages({
         10: { name: "未来を探る時期", highlights: ["学校生活", "進路・入試", "大人の準備"] },
-        20: { name: "新しい始まり", highlights: ["独立", "初めての仕事", "お金の基礎"] },
+        20: { name: "新しい始まり", highlights: ["独立", "職場", "お金の基礎"] },
         30: { name: "暮らしの基盤", highlights: ["キャリア", "住まい・お金", "家族の暮らし"] },
         40: { name: "仕事と暮らしのバランス", highlights: ["キャリア転換", "子どもの学び", "家族のケア"] },
-        50: { name: "新しい転換", highlights: ["仕事と暮らしの変化", "仕事のあと", "健康・余暇"] },
+        50: { name: "新しい転換", highlights: ["再就職・キャリア転換", "家族のケア", "健康・退職準備"] },
         60: { name: "次の日常", highlights: ["生涯学習", "地域の活動", "仕事のあとの暮らし"] },
         70: { name: "自分らしい暮らし", highlights: ["デジタル生活", "余暇とつながり", "生活の支援"] },
       }),
@@ -82,10 +82,10 @@ export const LIFE_STAGE_REFINE = {
       pickKnow: "Elige un grupo y luego un campo de conocimiento.",
       pickVenture: "Elige un servicio para leer la descripción.",
       allStages: "Todas las etapas de la vida",
-      allStagesSub: "De la adolescencia a los 70+",
+      allStagesSub: "De la adolescencia a los 70",
     },
     hero: {
-      lead: "Carrera y trabajo, independencia y familia, salud y jubilación. Life Stage está construyendo una plataforma de ciclo de vida que ayuda a encontrar la información y los servicios que un cambio de vida requiere.",
+      lead: "Escuela y camino, trabajo e independencia, familia y salud, y la vida después del trabajo. De la adolescencia a los 70, Life Stage construye una plataforma de ciclo de vida para hallar la información y los servicios que un cambio de vida requiere.",
     },
     core: {
       title: "Orientación, plan y acción.",
@@ -97,20 +97,20 @@ export const LIFE_STAGE_REFINE = {
       servicesLead: "Dirección futura: buscar y comparar servicios de vida.",
       communityLead: "Un espacio futuro para compartir experiencia e información.",
     },
-    sitCats: cats("Estudio y primer paso", "Independencia y vida", "Trabajo y nuevos retos", "Familia y el siguiente capítulo", {
+    sitCats: cats("Estudio y primer paso", "Independencia y vida", "Reempleo y giro profesional", "Familia y el siguiente capítulo", {
       study: "Admisión · camino · primer trabajo",
       life: "Independencia · matrimonio · primer hijo",
-      work: "Cambio de empleo · giro profesional",
+      work: "Cambio de empleo · reempleo · giro profesional",
       family: "Cuidado familiar · etapa posterior",
     }),
     knowGroups: groups("Estudio y camino", "Trabajo y dinero", "Hogar y vida", "Vínculos y familia", "Siguiente etapa"),
     ages: {
       items: ages({
         10: { name: "Un tiempo para explorar el futuro", highlights: ["Vida escolar", "Camino y admisión", "Preparar la adultez"] },
-        20: { name: "Un nuevo comienzo", highlights: ["Independencia", "Primer empleo", "Bases de dinero"] },
+        20: { name: "Un nuevo comienzo", highlights: ["Independencia", "Vida laboral", "Bases de dinero"] },
         30: { name: "La base de la vida", highlights: ["Carrera", "Vivienda y dinero", "Vida familiar"] },
         40: { name: "Equilibrio trabajo-vida", highlights: ["Cambio de carrera", "Educación de los hijos", "Cuidado familiar"] },
-        50: { name: "Un nuevo giro", highlights: ["Cambio trabajo-vida", "Preparar la etapa", "Salud y ocio"] },
+        50: { name: "Un nuevo giro", highlights: ["Reempleo y giro", "Cuidado familiar", "Salud y jubilación"] },
         60: { name: "El siguiente día a día", highlights: ["Aprendizaje continuo", "Comunidad", "Vida después del trabajo"] },
         70: { name: "Una vida a tu manera", highlights: ["Vida digital", "Ocio y vínculos", "Apoyo cotidiano"] },
       }),
@@ -128,10 +128,10 @@ export const LIFE_STAGE_REFINE = {
       pickKnow: "Escolha um grupo e depois um campo de conhecimento.",
       pickVenture: "Escolha um serviço para ler a descrição.",
       allStages: "Todas as etapas da vida",
-      allStagesSub: "Da adolescência aos 70+",
+      allStagesSub: "Da adolescência aos 70",
     },
     hero: {
-      lead: "Carreira e trabalho, independência e família, saúde e aposentadoria. O Life Stage está construindo uma plataforma de ciclo de vida que ajuda a encontrar informação e serviços que uma mudança de vida pede.",
+      lead: "Escola e caminho, trabalho e independência, família e saúde, e a vida depois do trabalho. Da adolescência aos 70, o Life Stage constrói uma plataforma de ciclo de vida para achar informação e serviços que uma mudança de vida pede.",
     },
     core: {
       title: "Orientação, plano e ação.",
@@ -143,20 +143,20 @@ export const LIFE_STAGE_REFINE = {
       servicesLead: "Direção futura: encontrar e comparar serviços de vida.",
       communityLead: "Um espaço futuro para compartilhar experiência e informação.",
     },
-    sitCats: cats("Estudo e primeiro passo", "Independência e vida", "Trabalho e novos desafios", "Família e o próximo capítulo", {
+    sitCats: cats("Estudo e primeiro passo", "Independência e vida", "Reemprego e virada de carreira", "Família e o próximo capítulo", {
       study: "Admissão · caminho · primeiro emprego",
       life: "Independência · casamento · primeiro filho",
-      work: "Mudança de emprego · virada de carreira",
+      work: "Mudança de emprego · reemprego · virada de carreira",
       family: "Cuidado familiar · próxima etapa",
     }),
     knowGroups: groups("Estudo e caminho", "Trabalho e dinheiro", "Casa e vida", "Vínculos e família", "Próxima etapa"),
     ages: {
       items: ages({
         10: { name: "Um tempo para explorar o futuro", highlights: ["Vida escolar", "Caminho e vestibular", "Preparar a vida adulta"] },
-        20: { name: "Um novo começo", highlights: ["Independência", "Primeiro emprego", "Bases de dinheiro"] },
+        20: { name: "Um novo começo", highlights: ["Independência", "Vida no trabalho", "Bases de dinheiro"] },
         30: { name: "A base da vida", highlights: ["Carreira", "Moradia e dinheiro", "Vida em família"] },
         40: { name: "Equilíbrio trabalho-vida", highlights: ["Mudança de carreira", "Educação dos filhos", "Cuidado familiar"] },
-        50: { name: "Uma nova virada", highlights: ["Mudança trabalho-vida", "Preparar a etapa", "Saúde e lazer"] },
+        50: { name: "Uma nova virada", highlights: ["Reemprego e virada", "Cuidado familiar", "Saúde e aposentadoria"] },
         60: { name: "O próximo cotidiano", highlights: ["Aprendizado contínuo", "Comunidade", "Vida depois do trabalho"] },
         70: { name: "Uma vida do seu jeito", highlights: ["Vida digital", "Lazer e vínculos", "Apoio do dia a dia"] },
       }),
@@ -174,10 +174,10 @@ export const LIFE_STAGE_REFINE = {
       pickKnow: "Choisissez un groupe, puis un domaine de connaissance.",
       pickVenture: "Choisissez un service pour lire la description.",
       allStages: "Toutes les étapes de la vie",
-      allStagesSub: "De l’adolescence à 70+",
+      allStagesSub: "De l’adolescence à 70 ans",
     },
     hero: {
-      lead: "Parcours et travail, indépendance et famille, santé et retraite. Life Stage construit une plateforme de cycle de vie pour trouver l’information et les services qu’un changement de vie demande.",
+      lead: "École et parcours, travail et indépendance, famille et santé, et la vie après le travail. De l’adolescence à 70 ans, Life Stage construit une plateforme de cycle de vie pour trouver l’information et les services qu’un changement de vie demande.",
     },
     core: {
       title: "S’orienter, planifier, agir.",
@@ -189,20 +189,20 @@ export const LIFE_STAGE_REFINE = {
       servicesLead: "Direction future : trouver et comparer des services de vie.",
       communityLead: "Un lieu futur pour partager expériences et informations.",
     },
-    sitCats: cats("Études et premier pas", "Indépendance et vie", "Travail et nouveaux défis", "Famille et chapitre suivant", {
+    sitCats: cats("Études et premier pas", "Indépendance et vie", "Retour à l’emploi et reconversion", "Famille et chapitre suivant", {
       study: "Admission · parcours · premier emploi",
       life: "Indépendance · mariage · premier enfant",
-      work: "Changement d’emploi · reconversion",
+      work: "Changement d’emploi · retour à l’emploi · reconversion",
       family: "Aide familiale · après le travail",
     }),
     knowGroups: groups("Études et chemin", "Travail et argent", "Logement et vie", "Liens et famille", "Chapitre suivant"),
     ages: {
       items: ages({
         10: { name: "Un temps pour explorer l’avenir", highlights: ["Vie scolaire", "Voie et admissions", "Préparer l’âge adulte"] },
-        20: { name: "Un nouveau départ", highlights: ["Indépendance", "Premier emploi", "Bases d’argent"] },
+        20: { name: "Un nouveau départ", highlights: ["Indépendance", "Vie au travail", "Bases d’argent"] },
         30: { name: "Les bases de la vie", highlights: ["Carrière", "Logement et argent", "Vie de famille"] },
         40: { name: "Équilibre travail-vie", highlights: ["Changement de carrière", "Éducation des enfants", "Aide familiale"] },
-        50: { name: "Un nouveau tournant", highlights: ["Changement travail-vie", "Préparer la suite", "Santé et loisirs"] },
+        50: { name: "Un nouveau tournant", highlights: ["Retour à l’emploi", "Aide familiale", "Santé et retraite"] },
         60: { name: "Le quotidien suivant", highlights: ["Apprendre encore", "Communauté", "Vie après le travail"] },
         70: { name: "Une vie à sa manière", highlights: ["Vie numérique", "Loisirs et liens", "Soutien du quotidien"] },
       }),
@@ -220,10 +220,10 @@ export const LIFE_STAGE_REFINE = {
       pickKnow: "Wählen Sie eine Gruppe, dann ein Wissensfeld.",
       pickVenture: "Wählen Sie einen Dienst, um die Beschreibung zu lesen.",
       allStages: "Jede Lebensphase",
-      allStagesSub: "Von Teenagern bis 70+",
+      allStagesSub: "Vom Jugendalter bis 70",
     },
     hero: {
-      lead: "Beruf und Arbeit, Selbstständigkeit und Familie, Gesundheit und Ruhestand. Life Stage baut eine Lebensphasen-Plattform, die Information und Dienste für Lebenswechsel leichter findbar macht.",
+      lead: "Schule und Weg, Arbeit und Unabhängigkeit, Familie und Gesundheit, und das Leben danach. Vom Jugendalter bis 70 baut Life Stage eine Lebensphasen-Plattform, die Information und Dienste für Lebenswechsel leichter findbar macht.",
     },
     core: {
       title: "Orientierung, Plan, Umsetzung.",
@@ -235,20 +235,20 @@ export const LIFE_STAGE_REFINE = {
       servicesLead: "Künftige Richtung: Lebensdienste finden und vergleichen.",
       communityLead: "Ein künftiger Ort, um Erfahrung und Information zu teilen.",
     },
-    sitCats: cats("Lernen und erster Schritt", "Unabhängigkeit und Alltag", "Arbeit und neue Wege", "Familie und nächstes Kapitel", {
+    sitCats: cats("Lernen und erster Schritt", "Unabhängigkeit und Alltag", "Wiedereinstieg und Karrierewechsel", "Familie und nächstes Kapitel", {
       study: "Aufnahme · Weg · erster Job",
       life: "Auszug · Heirat · erstes Kind",
-      work: "Jobwechsel · Karrierewechsel",
+      work: "Jobwechsel · Wiedereinstieg · Karrierewechsel",
       family: "Familienpflege · danach",
     }),
     knowGroups: groups("Lernen und Weg", "Arbeit und Geld", "Wohnen und Alltag", "Bindungen und Familie", "Nächstes Kapitel"),
     ages: {
       items: ages({
         10: { name: "Eine Zeit, die Zukunft zu erkunden", highlights: ["Schulleben", "Weg und Zulassung", "Vorbereitung aufs Erwachsenwerden"] },
-        20: { name: "Ein neuer Start", highlights: ["Unabhängigkeit", "Erster Job", "Geld-Grundlagen"] },
+        20: { name: "Ein neuer Start", highlights: ["Unabhängigkeit", "Arbeitsleben", "Geld-Grundlagen"] },
         30: { name: "Das Fundament des Lebens", highlights: ["Karriere", "Wohnen und Geld", "Familienleben"] },
         40: { name: "Balance von Arbeit und Leben", highlights: ["Karrierewechsel", "Bildung der Kinder", "Familienfürsorge"] },
-        50: { name: "Eine neue Wende", highlights: ["Arbeit-Leben-Wechsel", "Spätere Phase", "Gesundheit und Freizeit"] },
+        50: { name: "Eine neue Wende", highlights: ["Wiedereinstieg", "Familienpflege", "Gesundheit und Ruhestand"] },
         60: { name: "Der nächste Alltag", highlights: ["Lebenslanges Lernen", "Gemeinschaft", "Leben nach der Arbeit"] },
         70: { name: "Ein Leben auf eigene Weise", highlights: ["Digitales Leben", "Freizeit und Bindungen", "Alltagsunterstützung"] },
       }),
@@ -266,10 +266,10 @@ export const LIFE_STAGE_REFINE = {
       pickKnow: "पहले समूह चुनें, फिर ज्ञान क्षेत्र।",
       pickVenture: "विवरण पढ़ने के लिए सेवा चुनें।",
       allStages: "जीवन का हर चरण",
-      allStagesSub: "किशोरावस्था से 70+",
+      allStagesSub: "किशोरावस्था से 70 तक",
     },
     hero: {
-      lead: "करियर और काम, स्वतंत्रता और परिवार, स्वास्थ्य और सेवानिवृत्ति। Life Stage एक जीवन-चक्र मंच बना रहा है, ताकि जीवन के बदलाव में जरूरी जानकारी और सेवाएँ आसानी से मिल सकें।",
+      lead: "स्कूल और रास्ता, काम और स्वतंत्रता, परिवार और स्वास्थ्य, और काम के बाद का जीवन। किशोरावस्था से 70 तक Life Stage एक जीवन-चक्र मंच बना रहा है, ताकि जीवन के बदलाव में जरूरी जानकारी और सेवाएँ आसानी से मिल सकें।",
     },
     core: {
       title: "मार्गदर्शन, योजना, फिर करना।",
@@ -281,20 +281,20 @@ export const LIFE_STAGE_REFINE = {
       servicesLead: "भावी दिशा: जीवन सेवाएँ खोजना और तुलना करना।",
       communityLead: "अनुभव और जानकारी साझा करने की भावी जगह।",
     },
-    sitCats: cats("पढ़ाई और पहली शुरुआत", "स्वतंत्रता और जीवन", "काम और नई चुनौतियाँ", "परिवार और अगला अध्याय", {
+    sitCats: cats("पढ़ाई और पहली शुरुआत", "स्वतंत्रता और जीवन", "पुनः रोजगार और करियर मोड़", "परिवार और अगला अध्याय", {
       study: "प्रवेश · रास्ता · पहली नौकरी",
       life: "स्वतंत्रता · विवाह · पहला बच्चा",
-      work: "नौकरी बदलना · करियर मोड़",
+      work: "नौकरी बदलना · पुनः रोजगार · करियर मोड़",
       family: "परिवार की देखभाल · अगला चरण",
     }),
     knowGroups: groups("पढ़ाई और रास्ता", "काम और धन", "घर और जीवन", "रिश्ते और परिवार", "अगला अध्याय"),
     ages: {
       items: ages({
         10: { name: "भविष्य खोजने का समय", highlights: ["स्कूल जीवन", "रास्ता और प्रवेश", "वयस्क तैयारी"] },
-        20: { name: "एक नई शुरुआत", highlights: ["स्वतंत्रता", "पहली नौकरी", "पैसे की बुनियाद"] },
+        20: { name: "एक नई शुरुआत", highlights: ["स्वतंत्रता", "कार्य जीवन", "पैसे की बुनियाद"] },
         30: { name: "जीवन की नींव", highlights: ["करियर", "आवास और धन", "पारिवारिक जीवन"] },
         40: { name: "काम और जीवन का संतुलन", highlights: ["करियर बदलाव", "बच्चों की शिक्षा", "परिवार की देखभाल"] },
-        50: { name: "एक नया मोड़", highlights: ["काम-जीवन बदलाव", "अगली तैयारी", "स्वास्थ्य और अवकाश"] },
+        50: { name: "एक नया मोड़", highlights: ["पुनः रोजगार", "परिवार की देखभाल", "स्वास्थ्य और सेवानिवृत्ति"] },
         60: { name: "अगला रोज़मर्रा", highlights: ["जीवनभर सीखना", "समुदाय", "काम के बाद का जीवन"] },
         70: { name: "अपने ढंग का जीवन", highlights: ["डिजिटल जीवन", "अवकाश और रिश्ते", "दैनिक सहयोग"] },
       }),
@@ -312,10 +312,10 @@ export const LIFE_STAGE_REFINE = {
       pickKnow: "Pilih kelompok, lalu bidang pengetahuan.",
       pickVenture: "Pilih layanan untuk membaca deskripsi.",
       allStages: "Setiap tahap kehidupan",
-      allStagesSub: "Remaja hingga 70+",
+      allStagesSub: "Remaja hingga 70-an",
     },
     hero: {
-      lead: "Karier dan kerja, kemandirian dan keluarga, kesehatan dan pensiun. Life Stage sedang membangun platform siklus hidup agar informasi dan layanan untuk perubahan hidup lebih mudah ditemukan.",
+      lead: "Sekolah dan jalur, kerja dan kemandirian, keluarga dan kesehatan, dan hidup setelah kerja. Dari remaja hingga 70-an, Life Stage membangun platform siklus hidup agar informasi dan layanan untuk perubahan hidup lebih mudah ditemukan.",
     },
     core: {
       title: "Panduan, rencana, lalu tindakan.",
@@ -327,20 +327,20 @@ export const LIFE_STAGE_REFINE = {
       servicesLead: "Arah masa depan: mencari dan membandingkan layanan hidup.",
       communityLead: "Tempat masa depan untuk berbagi pengalaman dan informasi.",
     },
-    sitCats: cats("Belajar dan langkah awal", "Kemandirian dan hidup", "Kerja dan tantangan baru", "Keluarga dan bab berikutnya", {
+    sitCats: cats("Belajar dan langkah awal", "Kemandirian dan hidup", "Bekerja lagi dan perubahan karier", "Keluarga dan bab berikutnya", {
       study: "Masuk · jalur · kerja pertama",
       life: "Mandiri · menikah · anak pertama",
-      work: "Pindah kerja · perubahan karier",
+      work: "Pindah kerja · bekerja lagi · perubahan karier",
       family: "Perawatan keluarga · bab berikutnya",
     }),
     knowGroups: groups("Belajar dan jalur", "Kerja dan uang", "Rumah dan hidup", "Ikatan dan keluarga", "Bab berikutnya"),
     ages: {
       items: ages({
         10: { name: "Waktu menjajaki masa depan", highlights: ["Hidup sekolah", "Jalur dan masuk", "Persiapan dewasa"] },
-        20: { name: "Awal yang baru", highlights: ["Kemandirian", "Pekerjaan pertama", "Dasar uang"] },
+        20: { name: "Awal yang baru", highlights: ["Kemandirian", "Kehidupan kerja", "Dasar uang"] },
         30: { name: "Fondasi hidup", highlights: ["Karier", "Hunian dan uang", "Hidup keluarga"] },
         40: { name: "Keseimbangan kerja-hidup", highlights: ["Pindah karier", "Pendidikan anak", "Perawatan keluarga"] },
-        50: { name: "Belokan baru", highlights: ["Perubahan kerja-hidup", "Persiapan tahap", "Kesehatan dan waktu luang"] },
+        50: { name: "Belokan baru", highlights: ["Bekerja lagi", "Perawatan keluarga", "Kesehatan dan pensiun"] },
         60: { name: "Sehari-hari berikutnya", highlights: ["Belajar seumur hidup", "Komunitas", "Hidup setelah kerja"] },
         70: { name: "Hidup dengan caramu", highlights: ["Hidup digital", "Waktu luang dan ikatan", "Dukungan sehari-hari"] },
       }),

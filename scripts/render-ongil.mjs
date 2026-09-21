@@ -27,19 +27,19 @@ import { renderOngilSection } from "./home-ongil-body.mjs";
 import { getOngilCopy } from "./home-ongil-copy.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const NOG_VER = "20260921nog5";
+const NOG_VER = "20260921nog11";
 const SKIP_DIRS = new Set(["node_modules", "_publish", ".git", "docs", "app-icons"]);
 
 const SEO = {
   ko: {
-    title: "Ongil | Newon — 어르신의 돌봄과 안전, 가족과 일상을 잇다.",
+    title: "Ongil | Newon — 시니어와 가족을 위한 생활·돌봄 플랫폼",
     description:
-      "돌봄, 안전, 건강 생활 관리, 일상 지원, 가족 연결을 위한 시니어 케어 플랫폼입니다. 현재는 사업 소개이며, 방문 돌봄 예약·실시간 매칭·응급 구조는 아직 제공하지 않습니다.",
+      "시니어의 일상과 필요한 돌봄, 가족의 안심을 연결하는 생활 플랫폼입니다. 현재는 사업 소개이며, 예약·결제·가입은 아직 연결되지 않았습니다.",
   },
   en: {
-    title: "Ongil | Newon — Care and safety for older adults and families.",
+    title: "Ongil | Newon — A living and care platform for seniors and families.",
     description:
-      "A senior-care platform for care, safety, health routines, daily living support, and family connection. This page is an introduction — home-care booking, live matching, and emergency rescue are not offered yet.",
+      "A living platform that connects seniors’ daily lives, the care they need, and peace of mind for families. This page is an introduction — booking, payment, and sign-up are not connected yet.",
   },
 };
 
@@ -79,7 +79,7 @@ function renderPage(lang) {
   const out = path.join(ROOT, lang.dir, "ongil", "index.html");
   ensureDir(out);
   fs.writeFileSync(out, html);
-  console.log("render-ongil:", lang.dir, "pillars", copy.pillars.items.length, "discover", copy.discover.items.length);
+  console.log("render-ongil:", lang.dir, "services", copy.services.items.length);
 }
 
 function langFromFile(file) {

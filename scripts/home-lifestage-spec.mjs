@@ -9,18 +9,16 @@ function age10(lang) {
   const T = {
     ko: {
       age: "10대",
-      name: "미래를 준비하는 첫걸음",
-      intro: "학교생활과 진로를 고민하고, 미래를 탐색하며 성인 생활을 준비할 수 있는 시기.",
+      name: "미래를 탐색하는 시기",
+      intro: "학교생활과 진로를 탐색하고, 진학과 성인 생활을 준비할 수 있는 시기입니다. 모든 10대가 같은 경로를 따르는 것은 아닙니다.",
       topics: [
         "학교생활과 학습 습관",
-        "내신·수능·입시 준비",
+        "진로 탐색과 진학 준비",
         "대학 및 학과 탐색",
-        "진로와 직업 탐색",
-        "자격증과 다양한 진로 선택",
-        "첫 아르바이트와 근로계약",
-        "금융과 소비 습관",
+        "첫 아르바이트와 경제생활",
+        "디지털 생활",
+        "관계와 일상생활",
         "성인 준비와 생활 행정",
-        "대학생활·취업·독립 준비",
       ],
       cases: [
         { q: "대학과 학과를 어떻게 선택해야 할까요?", a: "관심 분야와 배우고 싶은 내용을 먼저 정리한 뒤, 학과 교육과정과 공식 모집요강을 비교하는 흐름을 안내합니다." },
@@ -30,18 +28,16 @@ function age10(lang) {
     },
     en: {
       age: "Teens",
-      name: "First steps toward the future",
-      intro: "A time to navigate school and career questions, explore a future of your own, and prepare the basics of adult life.",
+      name: "A time to explore the future",
+      intro: "A time to explore school life and a path forward, and to prepare for further study and adult life. Not every teen follows the same route.",
       topics: [
         "School life and study habits",
-        "Grades, exams, and admissions prep",
+        "Path exploration and further study",
         "Exploring universities and majors",
-        "Career and job exploration",
-        "Credentials and other pathways",
-        "First part-time work and contracts",
-        "Money and spending habits",
+        "First part-time work and money",
+        "Digital life",
+        "Relationships and everyday life",
         "Adult-prep and everyday admin",
-        "Campus, work, and moving-out prep",
       ],
       cases: [
         { q: "How should I choose a university and major?", a: "Start with what you want to learn, then compare program details and official admissions guides." },
@@ -208,7 +204,7 @@ function lessons(lang) {
       },
       {
         id: "adult",
-        label: "성인 준비",
+        label: "성인이 되는 과정",
         title: "성인이 되기 전 알아야 할 생활 지식",
         lead: "생활 절차, 금융, 근로계약, 독립 준비를 한 흐름으로 살펴보는 학습 경험 미리보기입니다.",
         steps: [
@@ -222,7 +218,7 @@ function lessons(lang) {
       },
       {
         id: "lease",
-        label: "첫 독립",
+        label: "독립과 자취",
         title: "처음 전월세 계약할 때 알아야 할 것",
         lead: "전월세 차이부터 계약 이후 절차까지 이어지는 학습 경험 미리보기입니다.",
         steps: [
@@ -252,7 +248,7 @@ function lessons(lang) {
       },
       {
         id: "adult",
-        label: "Adult prep",
+        label: "Becoming an adult",
         title: "Living knowledge before adulthood",
         lead: "A learning-experience preview of admin, money, work contracts, and moving-out prep.",
         steps: [
@@ -266,7 +262,7 @@ function lessons(lang) {
       },
       {
         id: "lease",
-        label: "First move-out",
+        label: "Living independently",
         title: "What to know before a first lease",
         lead: "A learning-experience preview from lease types to post-contract steps.",
         steps: [
@@ -316,7 +312,7 @@ function extraFlows(lang) {
       },
       {
         id: "adult",
-        label: "성인 준비",
+        label: "성인이 되는 과정",
         steps: [
           { t: "상황 선택", d: "곧 성인이 되어 생활 절차를 준비하고 있어요." },
           { t: "지식 학습", d: "행정, 금융, 근로계약, 독립 기초를 배워요." },
@@ -342,7 +338,7 @@ function extraFlows(lang) {
       },
       {
         id: "adult",
-        label: "Adult prep",
+        label: "Becoming an adult",
         steps: [
           { t: "Choose a situation", d: "I’m preparing everyday procedures before adulthood." },
           { t: "Learn", d: "Learn admin, money, work-contract, and moving-out basics." },
@@ -416,7 +412,7 @@ function uiPatch(lang) {
       pickKnow: "그룹을 선택한 뒤 지식 분야를 고르세요.",
       pickVenture: "사업명을 선택하면 자세한 설명을 볼 수 있습니다.",
       allStages: "모든 삶의 단계",
-      allStagesSub: "10대부터 70대+",
+      allStagesSub: "10대부터 70대",
       coreKicker: "03 · Core",
       learnKicker: "Learning",
       sitKicker: "04 · Situation",
@@ -450,7 +446,7 @@ function uiPatch(lang) {
       pickKnow: "Choose a group, then a knowledge field.",
       pickVenture: "Select a service to read the full description.",
       allStages: "Every life stage",
-      allStagesSub: "Teens through 70+",
+      allStagesSub: "Teens through 70s",
       coreKicker: "03 · Core",
       learnKicker: "Learning",
       sitKicker: "04 · Situation",
@@ -469,7 +465,7 @@ function heroClosePatch(lang) {
   const T = {
     ko: {
       hero: {
-        lead: "진로와 취업, 독립과 가족, 건강과 은퇴까지. 삶의 변화 앞에서 필요한 정보와 서비스를 쉽게 찾을 수 있도록 연결하는 생애주기 플랫폼을 만들어갑니다.",
+        lead: "학교와 진로, 취업과 독립, 가족과 건강, 은퇴 이후까지. 10대부터 70대까지, 삶의 변화 앞에서 필요한 정보와 서비스를 쉽게 찾을 수 있도록 연결하는 생애주기 플랫폼을 만들어갑니다.",
         ctaMain: "Life Stage 살펴보기",
         ctaSub: "핵심 서비스 알아보기",
       },
@@ -498,14 +494,14 @@ function heroClosePatch(lang) {
         lead: "Life Stage는 개인 사용자를 시작으로 전문가·서비스 공급자, 교육기관, 기업, 공공기관으로 확장하는 구조를 검토합니다.",
       },
       close: {
-        lead: "20대부터 70대까지, 삶의 변화 앞에서 필요한 정보와 서비스를 연결하는 생애주기 플랫폼을 만들어 갑니다. 현재 페이지는 사업 소개이며, 실제 상담·예약 서비스는 아직 없습니다.",
+        lead: "10대부터 70대까지, 삶의 변화 앞에서 필요한 정보와 서비스를 연결하는 생애주기 플랫폼을 만들어 갑니다. 나이는 탐색을 위한 구분일 뿐, 지금 마주한 상황에서 시작합니다. 현재 페이지는 사업 소개이며, 실제 상담·예약 서비스는 아직 없습니다.",
         ctaMain: "사업 및 협업 문의",
         ctaSub: "Newon의 다른 사업 살펴보기",
       },
     },
     en: {
       hero: {
-        lead: "Career and work, independence and family, health and retirement. Life Stage is building a lifecycle platform that helps people find the information and services a life change requires.",
+        lead: "School and path, work and independence, family and health, and life after work. From teens through the 70s, Life Stage is building a lifecycle platform that helps people find the information and services a life change requires.",
         ctaMain: "Explore Life Stage",
         ctaSub: "See core services",
       },
@@ -534,7 +530,7 @@ function heroClosePatch(lang) {
         lead: "Life Stage is exploring a path from individuals to experts and services, then schools, companies, and public institutions.",
       },
       close: {
-        lead: "A lifecycle platform we are building to connect information and services for life changes from the 20s through the 70s. This page is an introduction — advice and booking are not live yet.",
+        lead: "A lifecycle platform we are building to connect information and services for life changes from teens through the 70s. Age is a browsing aid, not a script. This page is an introduction — advice and booking are not live yet.",
         ctaMain: "Business and partnership inquiry",
         ctaSub: "See Newon’s other businesses",
       },
@@ -552,7 +548,7 @@ function extraLessons(lang) {
         { n: "03", title: "급여명세서 읽기", body: "공제 항목과 실수령액을 확인합니다.", concept: "세전 금액과 실제 받는 금액은 다릅니다.", term: "실수령액은 공제 후 실제로 받는 금액입니다.", case: "4대 보험과 세금이 빠져 나가는 구조를 봅니다.", quiz: "명세서에서 실수령액을 찾았나요?", checklist: "명세서 항목 메모", source: "근로·세금 공식 안내" },
         { n: "04", title: "한 달 예산 체크리스트", body: "배운 구분을 실행 목록으로 만듭니다.", concept: "지식은 목록이 되어야 관리로 이어집니다.", term: "예산은 항목별 한도를 정한 사용 계획입니다.", case: "주 단위로 지출을 점검하는 습관을 만듭니다.", quiz: "이번 주 한도를 정했나요?", checklist: "한 달 예산 6항목", source: "학습 내용 요약" },
       ] },
-      { id: "wed", label: "결혼 준비", title: "결혼 준비는 어떤 순서로 볼까?", lead: "일정과 예산, 공동생활 결정을 나누는 학습 경험 미리보기입니다.", steps: [
+      { id: "wed", label: "결혼과 새로운 가족", title: "결혼 준비는 어떤 순서로 볼까?", lead: "일정과 예산, 공동생활 결정을 나누는 학습 경험 미리보기입니다.", steps: [
         { n: "01", title: "일정과 예산을 먼저 맞추기", body: "날짜와 쓸 수 있는 금액을 함께 정합니다.", concept: "준비 항목은 예산 안에서 우선순위가 달라집니다.", term: "총예산은 예식·주거·행정 비용을 합한 금액입니다.", case: "같은 준비도 규모에 따라 비용이 크게 달라집니다.", quiz: "대략 예산을 적어 보았나요?", checklist: "일정/예산 칸", source: "생활 계획 안내" },
         { n: "02", title: "공동생활에서 결정할 항목", body: "주거, 생활비, 가족 역할을 목록으로 봅니다.", concept: "결혼 준비는 예식만이 아니라 이후 생활입니다.", term: "공동생활비는 두 사람이 나누어 쓰는 일상 비용입니다.", case: "주거 형태와 생활비 분담을 먼저 대화하는 경우가 많습니다.", quiz: "결정할 항목 세 가지를 적었나요?", checklist: "공동생활 결정 목록", source: "가족·생활 안내" },
         { n: "03", title: "행정과 주거 준비", body: "필요한 서류와 주거 일정을 확인합니다.", concept: "행정 일정과 주거 일정이 겹칠 수 있습니다.", term: "혼인신고는 혼인 사실을 공식으로 알리는 절차입니다.", case: "이사와 신고 날짜를 한 달력에 모읍니다.", quiz: "이번 달 행정 항목이 있나요?", checklist: "서류와 주거 일정", source: "공공 행정 안내" },
@@ -566,7 +562,7 @@ function extraLessons(lang) {
       ] },
       { id: "retire", label: "은퇴 이후 생활", title: "은퇴 이후, 어떤 일상을 만들까?", lead: "하루 일과와 배움, 관계를 정리하는 학습 경험 미리보기입니다.", steps: [
         { n: "01", title: "유지하고 싶은 일상 적기", body: "건강, 관계, 하루 리듬을 먼저 봅니다.", concept: "은퇴 준비는 생활비만이 아니라 일상의 설계입니다.", term: "생활 리듬은 하루를 보내는 반복된 흐름입니다.", case: "아침 시간, 이동, 사람을 만나는 패턴을 적습니다.", quiz: "유지하고 싶은 일상 세 가지를 적었나요?", checklist: "일상 목록", source: "은퇴 생활 안내" },
-        { n: "02", title: "배우고 싶은 활동 탐색", body: "평생교육, 취미, 지역 프로그램을 비교합니다.", concept: "새로운 일은 취업만이 아니라 배움과 활동도 포함합니다.", term: "평생교육은 나이에 관계없이 이어가는 학습입니다.", case: "지역 센터와 온라인 강좌를 함께 봅니다.", quiz: "관심 활동 두 가지를 골랐나요?", checklist: "활동 후보 목록", source: "지역·교육 공식 안내" },
+        { n: "02", title: "배우고 싶은 활동 탐색", body: "평생교육, 취미, 지역 프로그램을 비교합니다.", concept: "새로운 일상은 취업만이 아니라 배움과 활동도 포함합니다.", term: "평생교육은 나이에 관계없이 이어가는 학습입니다.", case: "지역 센터와 온라인 강좌를 함께 봅니다.", quiz: "관심 활동 두 가지를 골랐나요?", checklist: "활동 후보 목록", source: "지역·교육 공식 안내" },
         { n: "03", title: "생활비와 일정 점검", body: "필요한 비용과 주간 일정을 맞춰 봅니다.", concept: "활동 계획은 생활비와 체력을 함께 봅니다.", term: "생활비는 주거·식비·건강·여가를 합한 일상 비용입니다.", case: "주 2회 활동과 휴식일을 나눠 봅니다.", quiz: "한 주 일정을 그려 보았나요?", checklist: "주간 일정과 비용", source: "생활 계획 안내" },
         { n: "04", title: "다음 일상 체크리스트", body: "일상, 활동, 비용을 한 목록으로 모읍니다.", concept: "작은 실험부터 일상에 넣습니다.", term: "체크리스트는 이번 달에 시도할 항목을 고정합니다.", case: "한 가지 배움과 한 가지 모임을 먼저 넣습니다.", quiz: "이번 달 시도 항목이 있나요?", checklist: "은퇴 이후 6항목", source: "학습 내용 요약" },
       ] },
@@ -578,7 +574,7 @@ function extraLessons(lang) {
         { n: "03", title: "Read a payslip", body: "Find deductions and take-home pay.", concept: "Gross pay is not what arrives.", term: "Take-home pay is what you receive after deductions.", case: "Insurance and tax lines change the total.", quiz: "Did you find take-home pay on the slip?", checklist: "Note payslip lines", source: "Official work and tax guides" },
         { n: "04", title: "A one-month budget checklist", body: "Turn the split into an action list.", concept: "Knowledge becomes management when it is a list.", term: "A budget sets a limit per category.", case: "Check spending once a week.", quiz: "Have you set a limit for this week?", checklist: "Six monthly budget items", source: "Lesson summary" },
       ] },
-      { id: "wed", label: "Marriage prep", title: "In what order should marriage prep go?", lead: "A learning-experience preview for dates, budget, and shared-life decisions.", steps: [
+      { id: "wed", label: "Marriage and family", title: "In what order should marriage prep go?", lead: "A learning-experience preview for dates, budget, and shared-life decisions.", steps: [
         { n: "01", title: "Align dates and budget first", body: "Set a date range and a spendable amount together.", concept: "Priorities change inside a budget.", term: "A total budget combines ceremony, housing, and admin costs.", case: "The same item can cost very different amounts at different scales.", quiz: "Have you written a rough budget?", checklist: "Date / budget boxes", source: "Life-planning guides" },
         { n: "02", title: "Decisions for shared living", body: "List housing, living costs, and family roles.", concept: "Prep is not only a ceremony — it is the life after.", term: "Shared living costs are everyday amounts two people split.", case: "Housing type and cost-sharing often come first in conversation.", quiz: "Have you listed three decisions?", checklist: "Shared-life decision list", source: "Family and living guides" },
         { n: "03", title: "Admin and housing prep", body: "Check documents and housing dates.", concept: "Admin dates and housing dates can overlap.", term: "A marriage registration makes the marriage official.", case: "Put a move and a filing on one calendar.", quiz: "Is there an admin item this month?", checklist: "Documents and housing dates", source: "Public admin guides" },
@@ -604,16 +600,16 @@ function extraLessons(lang) {
 function extraPlanner(lang) {
   const T = {
     ko: [
-      { id: "firstjob", title: "첫 취업", items: ["관심 직무 정리하기", "채용 일정 확인하기", "이력서 점검하기", "면접 준비 항목 정리하기", "근로계약 확인 포인트 적기", "첫 출근 준비 목록 만들기"] },
-      { id: "wed", title: "결혼 준비", items: ["일정과 예산 맞추기", "공동생활 결정 항목 적기", "행정 서류 확인하기", "주거 일정 정리하기", "가족 역할 나누기", "준비 우선순위 정하기"] },
-      { id: "baby", title: "첫 육아", items: ["출산 준비 항목 확인하기", "가족 일정 나누기", "초기 생활비 정리하기", "지원 제도 찾아보기", "준비물 목록 만들기", "돌봄 역할 정하기"] },
+      { id: "firstjob", title: "취업과 직장생활", items: ["관심 직무 정리하기", "채용 일정 확인하기", "이력서 점검하기", "면접 준비 항목 정리하기", "근로계약 확인 포인트 적기", "첫 출근 준비 목록 만들기"] },
+      { id: "wed", title: "결혼과 새로운 가족", items: ["일정과 예산 맞추기", "공동생활 결정 항목 적기", "행정 서류 확인하기", "주거 일정 정리하기", "가족 역할 나누기", "준비 우선순위 정하기"] },
+      { id: "baby", title: "임신·출산·육아", items: ["출산 준비 항목 확인하기", "가족 일정 나누기", "초기 생활비 정리하기", "지원 제도 찾아보기", "준비물 목록 만들기", "돌봄 역할 정하기"] },
       { id: "care", title: "가족 돌봄", items: ["필요한 도움 종류 적기", "가족 역할 나누기", "주간 일정 만들기", "관련 제도 확인하기", "필요 서류 목록 정리하기", "긴급 연락망 적기"] },
       { id: "retire", title: "은퇴 준비", items: ["유지하고 싶은 일상 적기", "관심 활동 고르기", "주간 리듬 그려보기", "생활비 항목 점검하기", "지역 프로그램 찾아보기", "이번 달 시도 항목 정하기"] },
     ],
     en: [
-      { id: "firstjob", title: "First job", items: ["List roles of interest", "Check hiring dates", "Review a resume", "List interview prep items", "Note work-contract checks", "Make a first-day list"] },
-      { id: "wed", title: "Marriage prep", items: ["Align dates and budget", "List shared-life decisions", "Check admin documents", "Organize housing dates", "Share family roles", "Set prep priorities"] },
-      { id: "baby", title: "First child", items: ["Check birth-prep items", "Share a family calendar", "Sketch early living costs", "Find support programs", "Make a supplies list", "Agree care roles"] },
+      { id: "firstjob", title: "Work and workplace", items: ["List roles of interest", "Check hiring dates", "Review a resume", "List interview prep items", "Note work-contract checks", "Make a first-day list"] },
+      { id: "wed", title: "Marriage and family", items: ["Align dates and budget", "List shared-life decisions", "Check admin documents", "Organize housing dates", "Share family roles", "Set prep priorities"] },
+      { id: "baby", title: "Pregnancy, birth & parenting", items: ["Check birth-prep items", "Share a family calendar", "Sketch early living costs", "Find support programs", "Make a supplies list", "Agree care roles"] },
       { id: "care", title: "Family care", items: ["List kinds of help needed", "Share family roles", "Make a weekly calendar", "Check related programs", "List required documents", "Write an emergency list"] },
       { id: "retire", title: "Life after work", items: ["Write everyday things to keep", "Pick activities of interest", "Sketch a weekly rhythm", "Check living-cost lines", "Find local programs", "Choose a try-this-month item"] },
     ],
@@ -624,15 +620,15 @@ function extraPlanner(lang) {
 function sitCats(lang) {
   const T = {
     ko: [
-      { id: "study", n: "A", title: "학업과 사회 진출", blurb: "입시 · 진로 · 성인 준비 · 아르바이트 · 첫 취업", sitIds: ["exam", "major", "adult", "parttime", "firstjob"] },
-      { id: "life", n: "B", title: "독립과 생활", blurb: "첫 독립 · 결혼 준비 · 첫 육아", sitIds: ["independent", "marriage", "baby"] },
-      { id: "work", n: "C", title: "일과 새로운 도전", blurb: "이직 · 경력 전환", sitIds: ["career", "startup"] },
+      { id: "study", n: "A", title: "학업과 사회 진출", blurb: "입시 · 진로 · 성인 준비 · 아르바이트 · 취업", sitIds: ["exam", "major", "adult", "parttime", "firstjob"] },
+      { id: "life", n: "B", title: "독립과 생활", blurb: "독립 · 결혼 · 육아", sitIds: ["independent", "marriage", "baby"] },
+      { id: "work", n: "C", title: "이직과 경력 전환", blurb: "이직 · 재취업 · 경력 전환", sitIds: ["career", "startup"] },
       { id: "family", n: "D", title: "가족과 다음 삶", blurb: "가족 돌봄 · 은퇴 이후", sitIds: ["care", "retire"] },
     ],
     en: [
-      { id: "study", n: "A", title: "Study and starting out", blurb: "Admissions · path · adult prep · first work", sitIds: ["exam", "major", "adult", "parttime", "firstjob"] },
-      { id: "life", n: "B", title: "Independence and living", blurb: "Moving out · marriage · first child", sitIds: ["independent", "marriage", "baby"] },
-      { id: "work", n: "C", title: "Work and new challenges", blurb: "Job change · career turn", sitIds: ["career", "startup"] },
+      { id: "study", n: "A", title: "Study and starting out", blurb: "Admissions · path · adult prep · part-time work", sitIds: ["exam", "major", "adult", "parttime", "firstjob"] },
+      { id: "life", n: "B", title: "Independence and living", blurb: "Moving out · marriage · parenting", sitIds: ["independent", "marriage", "baby"] },
+      { id: "work", n: "C", title: "Job change and career turns", blurb: "Job change · return-to-work · career turn", sitIds: ["career", "startup"] },
       { id: "family", n: "D", title: "Family and the next chapter", blurb: "Family care · life after work", sitIds: ["care", "retire"] },
     ],
   };
@@ -662,20 +658,20 @@ function knowGroups(lang) {
 function ageHighlights(lang) {
   const T = {
     ko: {
-      10: { name: "미래를 탐색하는 시기", highlights: ["학교생활", "진로·입시", "성인 준비"] },
-      20: { name: "새로운 시작", highlights: ["독립", "첫 직장", "금융 기초"] },
+      10: { name: "미래를 탐색하는 시기", highlights: ["학교생활", "진로 탐색", "성인 준비"] },
+      20: { name: "새로운 시작", highlights: ["독립", "직장생활", "금융 기초"] },
       30: { name: "삶의 기반", highlights: ["커리어", "주거·재무", "가족생활"] },
       40: { name: "일과 삶의 균형", highlights: ["커리어 전환", "자녀 교육", "가족 돌봄"] },
-      50: { name: "새로운 전환", highlights: ["일과 생활 변화", "은퇴 준비", "건강·여가"] },
+      50: { name: "새로운 전환", highlights: ["재취업·경력 전환", "가족 돌봄", "건강·은퇴 준비"] },
       60: { name: "다음 일상", highlights: ["평생교육", "사회활동", "은퇴 이후 생활"] },
       70: { name: "나다운 삶", highlights: ["디지털 생활", "여가·관계", "생활 지원"] },
     },
     en: {
-      10: { name: "A time to explore the future", highlights: ["School life", "Path & admissions", "Adult prep"] },
-      20: { name: "A new start", highlights: ["Independence", "First job", "Money basics"] },
+      10: { name: "A time to explore the future", highlights: ["School life", "Path exploration", "Adult prep"] },
+      20: { name: "A new start", highlights: ["Independence", "Work life", "Money basics"] },
       30: { name: "Building a base", highlights: ["Career", "Housing & money", "Family life"] },
       40: { name: "Work-life balance", highlights: ["Career shifts", "Children’s education", "Family care"] },
-      50: { name: "A new turn", highlights: ["Work-life change", "Later-life prep", "Health & leisure"] },
+      50: { name: "A new turn", highlights: ["Return-to-work", "Family care", "Health & later-life prep"] },
       60: { name: "The next everyday", highlights: ["Lifelong learning", "Community", "Life after work"] },
       70: { name: "A life in your way", highlights: ["Digital life", "Leisure & bonds", "Living support"] },
     },
@@ -767,22 +763,22 @@ export function enrichLifeStage(copy, lang) {
 
   next.ai.prompts = L === "ko"
     ? [
-        { id: "move", label: "첫 독립", q: "처음 독립하는데 무엇부터 준비해야 할까요?", a: "먼저 주거 예산과 이사 일정을 정리해 보세요. 이후 원하는 지역과 주거 형태를 비교하고, 계약 전 확인할 항목을 준비할 수 있습니다." },
-        { id: "job", label: "첫 직장", q: "첫 직장에서 알아야 할 것은 무엇인가요?", a: "채용 절차와 근로계약, 급여명세서처럼 일을 시작하기 전 확인할 항목부터 살펴볼 수 있습니다. 관심 직무를 고르면 준비 순서를 단계별로 정리할 수 있습니다." },
-        { id: "wed", label: "결혼 준비", q: "결혼 준비는 어떤 순서로 해야 하나요?", a: "일정과 예산을 먼저 맞춘 뒤, 공동생활에서 결정할 항목과 행정·주거 준비를 나눠 보세요. 각 단계는 지식 콘텐츠와 체크리스트로 이어질 수 있습니다." },
+        { id: "move", label: "독립과 자취", q: "처음 독립하는데 무엇부터 준비해야 할까요?", a: "먼저 주거 예산과 이사 일정을 정리해 보세요. 이후 원하는 지역과 주거 형태를 비교하고, 계약 전 확인할 항목을 준비할 수 있습니다." },
+        { id: "job", label: "취업과 직장생활", q: "첫 직장에서 알아야 할 것은 무엇인가요?", a: "채용 절차와 근로계약, 급여명세서처럼 일을 시작하기 전 확인할 항목부터 살펴볼 수 있습니다. 관심 직무를 고르면 준비 순서를 단계별로 정리할 수 있습니다." },
+        { id: "wed", label: "결혼과 새로운 가족", q: "결혼 준비는 어떤 순서로 해야 하나요?", a: "일정과 예산을 먼저 맞춘 뒤, 공동생활에서 결정할 항목과 행정·주거 준비를 나눠 보세요. 각 단계는 지식 콘텐츠와 체크리스트로 이어질 수 있습니다." },
         { id: "care", label: "가족 돌봄", q: "부모님 돌봄을 어떻게 준비해야 하나요?", a: "일상에서 필요한 도움의 종류를 먼저 적고, 가족 역할과 일정을 나눈 뒤 관련 제도와 서류를 확인할 수 있습니다." },
-        { id: "retire", label: "은퇴 이후", q: "은퇴 후 새로운 일을 시작하고 싶어요.", a: "유지하고 싶은 일상과 관심 분야를 정리한 뒤, 관련 교육과 재취업·사회활동 정보를 탐색할 수 있습니다." },
-        { id: "exam", label: "대학·전공", q: "대학과 전공을 어떻게 탐색해야 하나요?", a: "먼저 관심 분야와 배우고 싶은 내용을 정리해 보세요. 이후 관련 학과의 교육과정과 진로 정보를 비교하고, 관심 대학의 공식 모집요강을 확인할 수 있습니다." },
-        { id: "adult", label: "성인 준비", q: "곧 성인이 되는데 무엇부터 준비해야 할까요?", a: "금융과 생활 행정, 근로계약, 독립 준비처럼 일상에서 필요한 기본 지식부터 살펴볼 수 있습니다." },
+        { id: "retire", label: "은퇴 이후의 삶", q: "은퇴 후 새로운 일상과 활동을 시작하고 싶어요.", a: "유지하고 싶은 일상과 관심 분야를 정리한 뒤, 관련 교육과 재취업·사회활동 정보를 탐색할 수 있습니다." },
+        { id: "exam", label: "대학과 진로 선택", q: "대학과 전공을 어떻게 탐색해야 하나요?", a: "먼저 관심 분야와 배우고 싶은 내용을 정리해 보세요. 이후 관련 학과의 교육과정과 진로 정보를 비교하고, 관심 대학의 공식 모집요강을 확인할 수 있습니다." },
+        { id: "adult", label: "성인이 되는 과정", q: "곧 성인이 되는데 무엇부터 준비해야 할까요?", a: "금융과 생활 행정, 근로계약, 독립 준비처럼 일상에서 필요한 기본 지식부터 살펴볼 수 있습니다." },
       ]
     : [
-        { id: "move", label: "First move-out", q: "I’m moving out for the first time. What should I prepare first?", a: "Start with a housing budget and a moving calendar. Then compare areas and housing types, and list what to check before you sign." },
-        { id: "job", label: "First job", q: "What should I know at a first job?", a: "Begin with hiring steps, the work contract, and a payslip. Pick a role of interest and turn prep into a step-by-step list." },
-        { id: "wed", label: "Marriage prep", q: "In what order should marriage prep go?", a: "Align dates and a budget first, then split shared-life decisions from admin and housing. Each step can connect to knowledge and a checklist." },
+        { id: "move", label: "Living independently", q: "I’m moving out for the first time. What should I prepare first?", a: "Start with a housing budget and a moving calendar. Then compare areas and housing types, and list what to check before you sign." },
+        { id: "job", label: "Work and workplace", q: "What should I know at a first job?", a: "Begin with hiring steps, the work contract, and a payslip. Pick a role of interest and turn prep into a step-by-step list." },
+        { id: "wed", label: "Marriage and family", q: "In what order should marriage prep go?", a: "Align dates and a budget first, then split shared-life decisions from admin and housing. Each step can connect to knowledge and a checklist." },
         { id: "care", label: "Family care", q: "How should I prepare to support a parent?", a: "Name the kinds of daily help needed, share family roles and dates, then check related programs and documents." },
-        { id: "retire", label: "After work", q: "I want to start something new after work.", a: "Write the everyday you want to keep and the fields you care about, then explore related education, return-to-work, and community programs." },
-        { id: "exam", label: "University & major", q: "How should I explore universities and majors?", a: "Start with the fields and subjects you want to learn. Then compare program details and career notes, and read the official admissions guide for schools you care about." },
-        { id: "adult", label: "Adult prep", q: "I’m becoming an adult soon. What should I prepare first?", a: "Begin with everyday money, admin, work contracts, and moving-out basics." },
+        { id: "retire", label: "Life after work", q: "I want to start a new daily life and activities after work.", a: "Write the everyday you want to keep and the fields you care about, then explore related education, return-to-work, and community programs." },
+        { id: "exam", label: "Study and path choices", q: "How should I explore universities and majors?", a: "Start with the fields and subjects you want to learn. Then compare program details and career notes, and read the official admissions guide for schools you care about." },
+        { id: "adult", label: "Becoming an adult", q: "I’m becoming an adult soon. What should I prepare first?", a: "Begin with everyday money, admin, work contracts, and moving-out basics." },
       ];
 
   next.ai.prompts = upsertById(next.ai.prompts, extraFirstPrompts(L));

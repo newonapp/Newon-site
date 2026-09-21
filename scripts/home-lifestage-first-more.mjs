@@ -5,7 +5,7 @@ function t(id, fields) {
 
 export const KO_MORE = [
   t("drive", {
-    name: "첫 운전·첫 자동차",
+    name: "운전과 자동차",
     question: "처음 운전을 시작하거나 자동차를 마련할 때 무엇을 준비해야 할까요?",
     situation: "면허와 연습부터 차량 이용 방식, 보험·등록·유지비까지 처음 한 흐름으로 보는 순간입니다. 보험료와 차량 가격은 임의로 적지 않습니다.",
     questions: ["운전 목적과 한 달 유지비 한도를 적었는가?", "구매·렌트·리스 중 무엇을 비교하는가?", "사고 시 연락 순서를 아는가?"],
@@ -31,7 +31,7 @@ export const KO_MORE = [
     keywords: "운전 면허 자동차 차량 중고차 렌트 리스 보험 사고 주차 주유",
   }),
   t("pet", {
-    name: "첫 반려동물 입양",
+    name: "반려동물과 함께",
     question: "처음 반려동물을 가족으로 맞이할 때 무엇을 준비해야 할까요?",
     situation: "충동 입양이 아니라, 생활환경과 비용을 먼저 본 뒤 입양 경로와 돌봄을 준비하는 순간입니다.",
     questions: ["하루 돌봄 시간과 주거 규칙이 맞는가?", "초기 비용과 매달 양육비를 나눴는가?", "여행·부재 시 돌봄 계획이 있는가?"],
@@ -57,7 +57,7 @@ export const KO_MORE = [
     keywords: "반려동물 강아지 고양이 입양 펫 동물등록 예방접종 양육비 펫로그",
   }),
   t("love", {
-    name: "첫 연애·첫 이별",
+    name: "관계와 이별",
     question: "처음 가까운 관계를 맺거나 이별을 경험할 때 무엇을 알아두면 좋을까요?",
     situation: "연애는 필수가 아닙니다. 서로의 경계와 안전을 존중하고, 관계가 달라져도 일상을 이어 가는 순간입니다. 특정 관계를 유지하거나 끝내라고 권하지 않습니다.",
     questions: ["나의 기대와 경계를 말로 설명할 수 있는가?", "상대의 거절과 동의를 구분하는가?", "이별 후 생활에서 무엇이 달라지는가?"],
@@ -83,7 +83,7 @@ export const KO_MORE = [
     keywords: "연애 이별 연인 관계 데이트 경계 동의 안전 헤어짐",
   }),
   t("divorce", {
-    name: "첫 이혼·별거·재혼",
+    name: "이혼·별거·재혼",
     question: "가족관계와 생활환경이 크게 달라질 때 무엇을 준비해야 할까요?",
     situation: "주거·생활비·자녀 일정과 필요한 행정·상담 경로를 정리하는 순간입니다. 도덕적 판단을 하지 않으며, 개별 사건의 법률 결과를 단정하지 않습니다.",
     questions: ["지금 바꿀 주거와 생활비를 적었는가?", "자녀 일정과 소통 창구가 있는가?", "어느 공식 상담 창구를 볼지 정했는가?"],
@@ -109,7 +109,7 @@ export const KO_MORE = [
     keywords: "이혼 별거 재혼 양육 재산 가정법원 상담 주거 생활비",
   }),
   t("grief", {
-    name: "첫 사별·장례",
+    name: "사별과 장례",
     question: "가까운 사람을 처음 떠나보냈을 때 어떤 절차와 도움이 필요할까요?",
     situation: "당장 필요한 절차와 가족 역할을 확인하고, 이후 행정·금융을 이어서 보는 순간입니다. 애도에 정해진 기간이나 올바른 감정 표현은 없습니다.",
     questions: ["지금 당장 누구에게 연락해야 하는가?", "가족과 나눌 역할이 있는가?", "이후 서류·금융을 어디에 적을 것인가?"],
@@ -135,7 +135,7 @@ export const KO_MORE = [
     keywords: "사별 장례 사망 상속 유산 보험금 사망신고 애도",
   }),
   t("child", {
-    name: "첫 아이의 성장·교육",
+    name: "아이의 성장과 교육",
     question: "아이가 성장하며 처음 겪는 교육과 생활 변화를 어떻게 준비할까요?",
     situation: "어린이집부터 초등학교 입학, 학사 일정과 돌봄을 아이의 속도에 맞춰 보는 순간입니다. 모든 아이의 경로가 같다고 전제하지 않습니다.",
     questions: ["지금 필요한 교육·돌봄 단계가 무엇인가?", "신청·입학 일정을 달력에 넣었는가?", "준비물과 교육비를 나눴는가?"],
@@ -161,7 +161,7 @@ export const KO_MORE = [
     keywords: "입학 초등학교 유치원 어린이집 학부모 교육비 방과후 돌봄 성장",
   }),
   t("insure", {
-    name: "첫 보험 가입·보험금 청구",
+    name: "보험 가입과 청구",
     question: "처음 보험에 가입하거나 보험금을 청구할 때 무엇을 확인해야 할까요?",
     situation: "필요한 보장과 약관을 비교하고, 청구 시 서류와 절차를 확인하는 순간입니다. 특정 상품을 추천하거나 지급을 단정하지 않습니다.",
     questions: ["지금 필요한 보장이 무엇인가?", "제외 사항과 중복 보장을 보았는가?", "청구에 필요한 서류를 아는가?"],
@@ -187,9 +187,9 @@ export const KO_MORE = [
     keywords: "보험 보험금 청구 약관 실비 자동차보험 보장 납입",
   }),
   t("tax", {
-    name: "첫 세금 신고·연말정산",
+    name: "세금과 연말정산",
     question: "처음 세금 신고나 연말정산을 할 때 무엇부터 확인해야 할까요?",
-    situation: "근로소득자의 연말정산과 개인 신고에 집중합니다. 창업·사업자 가이드로 확장하지 않습니다.",
+    situation: "근로소득자의 연말정산과 개인 신고에 집중합니다.",
     questions: ["내 소득 유형이 근로·기타 중 어디에 가까운가?", "필요한 증빙을 모았는가?", "공식 신고 서비스 경로를 아는가?"],
     knowledge: ["소득과 세금의 기본 개념", "원천징수와 급여명세서", "연말정산의 기본 구조", "종합소득세 신고 대상 확인", "공제와 증빙의 개념", "신고·납부 일정", "공식 신고 서비스 이용", "결과와 서류 보관", "오류 확인과 상담 경로"],
     checklist: ["소득 유형 메모", "명세서 저장", "증빙 폴더", "신고 일정", "납부 여부 확인", "다음 해 캘린더"],
@@ -213,7 +213,7 @@ export const KO_MORE = [
     keywords: "연말정산 세금 종합소득세 원천징수 공제 홈택스 신고 납부",
   }),
   t("buyhome", {
-    name: "첫 내 집 마련",
+    name: "내 집 마련",
     question: "처음 주택을 구입할 때 어떤 비용과 절차를 확인해야 할까요?",
     situation: "임차가 아니라 구입 자금·대출 개념·권리관계·취득 비용을 보는 순간입니다. 구입을 필수 인생 목표로 두지 않으며, 대출 승인이나 시세 상승을 보장하지 않습니다.",
     questions: ["구입 목적과 월 부담 한도를 숫자로 정했는가?", "권리관계와 부대비용을 보았는가?", "잔금·등기 순서를 아는가?"],
@@ -239,7 +239,7 @@ export const KO_MORE = [
     keywords: "내집마련 주택 구입 매매 대출 잔금 등기 취득세 아파트 집 사기 집사기",
   }),
   t("abroad", {
-    name: "첫 유학·워킹홀리데이·귀국",
+    name: "유학과 워킹홀리데이",
     question: "처음 해외에서 공부하거나 생활하고, 다시 돌아올 때 무엇을 준비해야 할까요?",
     situation: "일반 여행이 아니라 학교·프로그램·체류 자격과 귀국 후 재정비에 초점을 둡니다. 비자 요건은 공식 경로로 확인합니다.",
     questions: ["목적(학업·워홀·체류)이 분명한가?", "학비·생활비를 나눴는가?", "귀국 전 정리할 계약이 적혀 있는가?"],
@@ -265,7 +265,7 @@ export const KO_MORE = [
     keywords: "유학 워킹홀리데이 워홀 귀국 비자 체류 어학연수 출국",
   }),
   t("access", {
-    name: "첫 질병·장애 이후 생활 변화",
+    name: "질병·장애 이후의 삶",
     question: "건강이나 생활환경이 달라졌을 때 일상을 어떻게 조정할 수 있을까요?",
     situation: "사람을 일률적인 도움 대상으로 두지 않습니다. 필요한 조정을 스스로 고르고, 의료 진단·치료를 대신하지 않습니다.",
     questions: ["달라진 필요는 무엇인가?", "주거·이동에서 바꾸고 싶은 것은?", "누구에게 어떤 정보를 공유할지 정했는가?"],
@@ -291,7 +291,7 @@ export const KO_MORE = [
     keywords: "장애 질병 재활 보조기기 접근성 직장복귀 지원제도 생활조정",
   }),
   t("local", {
-    name: "첫 새로운 지역 생활",
+    name: "새 지역 생활",
     question: "처음 새로운 동네나 지역으로 이사했을 때 어떻게 적응하면 좋을까요?",
     situation: "생활권과 공공서비스, 지역 활동을 스스로 찾아 일정을 만드는 순간입니다. 확인하지 않은 업체·프로그램의 운영 여부를 만들지 않습니다.",
     questions: ["가까운 병원·마트·교통을 적었는가?", "전입 등 행정은 끝났는가?", "이번 달에 가볼 지역 활동이 있는가?"],
@@ -317,7 +317,7 @@ export const KO_MORE = [
     keywords: "이사 전입 동네 지역 주민센터 생활권 동호회 적응",
   }),
   t("digital", {
-    name: "첫 디지털 생활",
+    name: "디지털 생활",
     question: "스마트폰과 온라인 서비스를 처음 이용할 때 무엇부터 배우면 좋을까요?",
     situation: "기기 경험이 적다고 특정 나이를 낮춰 보지 않습니다. 계정·보안부터 검색·결제·사기 예방까지 내 속도로 익히는 순간입니다.",
     questions: ["지금 꼭 쓰는 앱이나 업무가 무엇인가?", "비밀번호와 본인인증을 안전하게 두었는가?", "의심 문자·링크를 확인하는가?"],
@@ -343,9 +343,9 @@ export const KO_MORE = [
     keywords: "스마트폰 키오스크 인터넷 계정 비밀번호 피싱 스미싱 모바일 디지털",
   }),
   t("hobby", {
-    name: "첫 나만의 취미·사회활동",
+    name: "취미와 새로운 활동",
     question: "처음 새로운 취미를 시작하거나 사람들과 함께하는 활동에 참여하려면 어떻게 할까요?",
-    situation: "은퇴 후에만 시작하는 활동이 아닙니다. 10대부터 70대 이상까지 관심사에 맞는 입문 활동을 고르는 순간입니다.",
+    situation: "은퇴 후에만 시작하는 활동이 아닙니다. 관심사에 맞는 입문 활동을 고르는 순간입니다.",
     questions: ["혼자 할지 함께 할지 정했는가?", "첫 활동의 일정·비용·준비물을 아는가?", "다음으로 이어갈 모임이 있는가?"],
     knowledge: ["관심사 탐색", "혼자 즐기는 취미", "온라인·오프라인 강좌", "지역 동호회와 모임", "문화·예술·체육", "봉사와 재능 나눔", "일정과 비용", "첫 모임 준비", "새로운 사람과의 교류", "기록과 다음 목표"],
     checklist: ["관심 키워드", "입문 활동 하나", "일정과 장소", "비용·준비물", "첫 참여 날짜", "다음 활동 메모"],
@@ -372,7 +372,7 @@ export const KO_MORE = [
 
 export const EN_MORE = [
   t("drive", {
-    name: "First driving & first car",
+    name: "Driving and cars",
     question: "What do you prepare to start driving or to get a car?",
     situation: "A moment from a licence and practice to how you use a car, insurance, registration, and running costs. No invented premiums or car prices.",
     questions: ["Did you write why you drive and a monthly running-cost cap?", "Are you comparing buy, rent, and lease?", "Do you know who to call after a crash?"],
@@ -398,7 +398,7 @@ export const EN_MORE = [
     keywords: "drive licence car vehicle used rent lease insurance crash parking fuel",
   }),
   t("pet", {
-    name: "First pet",
+    name: "Living with a pet",
     question: "What do you prepare before a first pet joins the home?",
     situation: "Not an impulse adoption. A moment to check living conditions and cost, then the path and care.",
     questions: ["Do daily care time and housing rules fit?", "Did you split setup cost and monthly cost?", "Is there a care plan when you travel?"],
@@ -424,7 +424,7 @@ export const EN_MORE = [
     keywords: "pet dog cat adopt animal registration vaccine petlog",
   }),
   t("love", {
-    name: "First relationship & first breakup",
+    name: "Relationships and breakups",
     question: "What helps when you first get close to someone, or when a relationship ends?",
     situation: "A relationship is not required. A moment to respect boundaries and safety, and to keep your everyday if things change. No advice to stay or leave.",
     questions: ["Can you say your hopes and limits?", "Do you treat no as an answer?", "What in daily life changes after a breakup?"],
@@ -450,7 +450,7 @@ export const EN_MORE = [
     keywords: "dating relationship breakup partner consent boundary safety",
   }),
   t("divorce", {
-    name: "First divorce, separation & later shared life",
+    name: "Divorce, separation, remarriage",
     question: "What do you prepare when family life and housing change in a big way?",
     situation: "A moment to sort housing, living costs, a child’s calendar, and official counseling paths. No moral judgment, and no legal outcome.",
     questions: ["Did you write housing and living costs that will change?", "Is there a calendar and a talk path for a child?", "Which official counseling window will you use?"],
@@ -476,7 +476,7 @@ export const EN_MORE = [
     keywords: "divorce separation remarry custody property counseling housing",
   }),
   t("grief", {
-    name: "First bereavement & funeral",
+    name: "Bereavement and funerals",
     question: "What steps and help may be needed after a first death close to you?",
     situation: "A moment to see immediate steps and family roles, then later admin and money. There is no required timeline or ‘right’ way to grieve.",
     questions: ["Who do you call right now?", "Are family roles written?", "Where will later papers and money tasks sit?"],
@@ -502,7 +502,7 @@ export const EN_MORE = [
     keywords: "bereavement funeral death inheritance estate insurance grief",
   }),
   t("child", {
-    name: "First school years & a child’s growth",
+    name: "A child's growth and school",
     question: "How do you prepare the education and living changes as a child grows?",
     situation: "A moment from childcare through a first school, calendars, and after-school care — at the child’s pace. Not every child follows the same path.",
     questions: ["What education or care step is needed now?", "Are application and start dates on a calendar?", "Did you split supplies and education costs?"],
@@ -528,7 +528,7 @@ export const EN_MORE = [
     keywords: "school kindergarten preschool parent education after-school growth",
   }),
   t("insure", {
-    name: "First insurance & a first claim",
+    name: "Insurance and claims",
     question: "What do you check when you first buy cover or make a claim?",
     situation: "A moment to compare the cover you need and the terms, then papers and process for a claim. No product pitch and no promised payout.",
     questions: ["What cover do you actually need?", "Did you read exclusions and overlap?", "Do you know the claim papers?"],
@@ -554,9 +554,9 @@ export const EN_MORE = [
     keywords: "insurance claim policy premium health motor cover",
   }),
   t("tax", {
-    name: "First tax return & year-end settlement",
+    name: "Taxes and year-end filing",
     question: "Where do you start on a first tax filing or year-end settlement?",
-    situation: "Focused on a worker’s year-end settlement and a personal filing. Not a business-startup guide.",
+    situation: "Focused on a worker’s year-end settlement and a personal filing.",
     questions: ["Is your income closer to wages or something else?", "Did you gather the proofs you need?", "Do you know the official filing window?"],
     knowledge: ["Income and tax as concepts", "Withholding and the payslip", "The shape of year-end settlement", "Whether a full return may apply", "Deductions and proof", "Filing and payment dates", "Using the official filing service", "Keeping the result", "Errors and counseling"],
     checklist: ["A note of income type", "Saved payslips", "A proof folder", "Filing dates", "Payment check", "Next year’s calendar"],
@@ -580,7 +580,7 @@ export const EN_MORE = [
     keywords: "tax return year-end withholding deduction filing payment",
   }),
   t("buyhome", {
-    name: "First home purchase",
+    name: "Buying a home",
     question: "What costs and steps do you check when you first buy a home?",
     situation: "A purchase flow — funds, the idea of a loan, rights in the property, and extra costs — not a rental. Buying is not a required life goal. No promised approval or price rise.",
     questions: ["Are purpose and a monthly burden a number?", "Did you check rights and extra costs?", "Do you know the order of balance payment and registration?"],
@@ -606,7 +606,7 @@ export const EN_MORE = [
     keywords: "buy home purchase mortgage deposit registration stamp duty house",
   }),
   t("abroad", {
-    name: "First study, working holiday & return",
+    name: "Study abroad and working holiday",
     question: "What do you prepare to study or live abroad, and to come home again?",
     situation: "Not a holiday. Focus on school or program, stay status, and rebuilding life on return. Confirm visas on official channels.",
     questions: ["Is the purpose study, a working holiday, or a stay?", "Did you split fees and living costs?", "Did you list contracts to close before return?"],
@@ -632,7 +632,7 @@ export const EN_MORE = [
     keywords: "study abroad working holiday visa stay return language school",
   }),
   t("access", {
-    name: "First life change after illness or disability",
+    name: "Life after illness or disability",
     question: "How can daily life be adjusted when health or the environment changes?",
     situation: "People are not framed as a single group that always needs help. You choose the adjustments. This is not diagnosis or treatment.",
     questions: ["What need changed?", "What would you change in housing or travel?", "Who may see which information?"],
@@ -658,7 +658,7 @@ export const EN_MORE = [
     keywords: "disability illness rehab aid accessibility return-to-work adjustment",
   }),
   t("local", {
-    name: "First life in a new area",
+    name: "Life in a new area",
     question: "How do you settle when you first move to a new neighborhood?",
     situation: "A moment to map daily life, public services, and local activities yourself. No invented shops or programs.",
     questions: ["Did you write nearby clinic, shop, and transport?", "Is address admin done?", "Is there one local activity this month?"],
@@ -684,7 +684,7 @@ export const EN_MORE = [
     keywords: "move neighborhood local office catchment club settle",
   }),
   t("digital", {
-    name: "First digital life",
+    name: "Digital life",
     question: "Where do you start when you first use a phone and online services?",
     situation: "Less device experience is not tied to one age. A moment to learn accounts and safety, then search, payment, and scam prevention at your pace.",
     questions: ["Which app or task do you need now?", "Are password and identity checks stored safely?", "Do you pause on odd messages and links?"],
@@ -710,9 +710,9 @@ export const EN_MORE = [
     keywords: "smartphone kiosk internet account password phishing smishing mobile digital",
   }),
   t("hobby", {
-    name: "First hobby & civic life",
+    name: "Hobbies and new activities",
     question: "How do you start a new hobby or join an activity with people?",
-    situation: "Not only after work. A moment for teens through later life to pick a beginner activity that fits an interest.",
+    situation: "Not only after work. A moment to pick a beginner activity that fits an interest.",
     questions: ["Alone or with people?", "Do you know the first date, cost, and gear?", "Is there a next group to continue?"],
     knowledge: ["Explore interests", "Hobbies you do alone", "Online and in-person classes", "Local clubs", "Culture, art, sport", "Volunteering and sharing skill", "Dates and cost", "Prep for a first gathering", "Meeting people", "A record and a next aim"],
     checklist: ["Interest keywords", "One beginner activity", "Date and place", "Cost and gear", "A first-join date", "A next-activity note"],
