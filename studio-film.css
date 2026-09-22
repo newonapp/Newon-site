@@ -45,8 +45,15 @@
   pointer-events: none;
 }
 
-#studio-film.st-film .st-film__video::-webkit-media-controls {
+#studio-film.st-film .st-film__video::-webkit-media-controls,
+#studio-film.st-film .st-film__video::-webkit-media-controls-enclosure,
+#studio-film.st-film .st-film__video::-webkit-media-controls-start-playback-button,
+#studio-film.st-film .st-film__video::-webkit-media-controls-play-button {
   display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 

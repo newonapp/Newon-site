@@ -27,7 +27,7 @@ import { renderLifeStageSection } from "./home-lifestage-body.mjs";
 import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const NLS_VER = "20260922loop1";
+const NLS_VER = "20260922loop2";
 
 const SEO = {
   ko: {
@@ -74,7 +74,8 @@ function renderPage(lang) {
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />`,
-    EXTRA_SCRIPTS: `<script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
+    EXTRA_SCRIPTS: `<script src="/film-keep.js?v=${NLS_VER}"></script>
+    <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
   });
   const out = path.join(ROOT, lang.dir, "lifestage", "index.html");
   ensureDir(out);

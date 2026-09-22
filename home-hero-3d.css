@@ -45,8 +45,15 @@
   pointer-events: none;
 }
 
-#home.site-shell #top.hero--film .nhv-video::-webkit-media-controls {
+#home.site-shell #top.hero--film .nhv-video::-webkit-media-controls,
+#home.site-shell #top.hero--film .nhv-video::-webkit-media-controls-enclosure,
+#home.site-shell #top.hero--film .nhv-video::-webkit-media-controls-start-playback-button,
+#home.site-shell #top.hero--film .nhv-video::-webkit-media-controls-play-button {
   display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 

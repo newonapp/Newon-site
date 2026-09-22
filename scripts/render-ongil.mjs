@@ -27,7 +27,7 @@ import { renderOngilSection } from "./home-ongil-body.mjs";
 import { getOngilCopy } from "./home-ongil-copy.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const NOG_VER = "20260922loop1";
+const NOG_VER = "20260922loop2";
 const SKIP_DIRS = new Set(["node_modules", "_publish", ".git", "docs", "app-icons"]);
 
 const SEO = {
@@ -74,7 +74,8 @@ function renderPage(lang) {
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/home-ongil.css?v=${NOG_VER}" />
     <link rel="stylesheet" href="/home-ongil-layout.css?v=${NOG_VER}" />`,
-    EXTRA_SCRIPTS: `<script src="/home-ongil.js?v=${NOG_VER}" defer></script>`,
+    EXTRA_SCRIPTS: `<script src="/film-keep.js?v=${NOG_VER}"></script>
+    <script src="/home-ongil.js?v=${NOG_VER}" defer></script>`,
   });
   const out = path.join(ROOT, lang.dir, "ongil", "index.html");
   ensureDir(out);

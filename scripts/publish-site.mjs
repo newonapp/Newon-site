@@ -41,6 +41,7 @@ const PUBLISH_ROOT_CORE = [
   "home-studio.js",
   "home-hero-3d.css",
   "home-hero-3d.js",
+  "film-keep.js",
   "home-lifestage.css",
   "home-lifestage-layout.css",
   "home-lifestage.js",

@@ -146,78 +146,9 @@
 
   function initFilm(root) {
     var film = root.querySelector("[data-nai-film]");
-    var video = film && film.querySelector(".nai-film__video");
     if (!film) return;
-    var arm = function () {
-      if (!video) return;
-      var source = video.querySelector("source");
-      if (source && source.src && video.getAttribute("src") !== source.src) {
-        video.src = source.src;
-      }
-      video.muted = true;
-      video.defaultMuted = true;
-      video.volume = 0;
-      video.loop = true;
-      video.autoplay = true;
-      video.playsInline = true;
-      video.preload = "auto";
-      video.setAttribute("muted", "");
-      video.setAttribute("autoplay", "");
-      video.setAttribute("loop", "");
-      video.setAttribute("playsinline", "");
-      video.setAttribute("webkit-playsinline", "");
-      video.setAttribute("preload", "auto");
-      video.removeAttribute("controls");
-    };
-    var tryPlay = function () {
-      if (!video) return;
-      arm();
-      film.classList.remove("is-static");
-      try {
-        if (video.ended) video.currentTime = 0;
-      } catch (err) {
-        /* ignore */
-      }
-      var play = video.play();
-      if (play && typeof play.catch === "function") play.catch(function () {});
-    };
-    var restart = function () {
-      try {
-        video.currentTime = 0;
-      } catch (err) {
-        /* ignore */
-      }
-      tryPlay();
-    };
-    if (video) {
-      arm();
-      video.addEventListener("ended", restart);
-      video.addEventListener("pause", function () {
-        if (document.visibilityState === "visible") tryPlay();
-      });
-      video.addEventListener("canplay", tryPlay);
-      video.addEventListener("canplaythrough", tryPlay);
-      video.addEventListener("loadeddata", tryPlay);
-      video.addEventListener("playing", function () {
-        film.classList.remove("is-static");
-      });
-      document.addEventListener("visibilitychange", function () {
-        if (document.visibilityState === "visible") tryPlay();
-      });
-      window.addEventListener("pageshow", tryPlay);
-      window.addEventListener("focus", tryPlay);
-      document.addEventListener("pointerdown", tryPlay, { passive: true });
-      document.addEventListener("touchstart", tryPlay, { passive: true });
-      setInterval(function () {
-        if (document.visibilityState === "visible" && (video.paused || video.ended)) {
-          tryPlay();
-        }
-      }, 800);
-      tryPlay();
-    }
     requestAnimationFrame(function () {
       film.classList.add("is-ready");
-      tryPlay();
     });
   }
 

@@ -100,12 +100,15 @@ export function renderAiFilmHero(kind, lang) {
       <div class="nai-film__fallback" aria-hidden="true"></div>
       <video
         class="nai-film__video"
+        src="${escapeHtml(AI_FILM_SRC)}"
         autoplay
         muted
         loop
         playsinline
+        webkit-playsinline
         preload="auto"
-        poster="/assets/hero-film/ai-poster.jpg"
+        disablepictureinpicture
+        controlslist="nodownload nofullscreen noremoteplayback"
         aria-hidden="true"
       >
         <source src="${escapeHtml(AI_FILM_SRC)}" type="video/mp4" />

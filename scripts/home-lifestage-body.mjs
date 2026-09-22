@@ -70,12 +70,15 @@ function heroBlock(c, lang) {
       <div class="nls-film__fallback" aria-hidden="true"></div>
       <video
         class="nls-film__video"
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_102608_5fa1187d-9ac6-44fb-82ab-54376200abc0.mp4"
         autoplay
         muted
         loop
         playsinline
+        webkit-playsinline
         preload="auto"
-        poster="/assets/hero-film/livon-poster.jpg"
+        disablepictureinpicture
+        controlslist="nodownload nofullscreen noremoteplayback"
         aria-hidden="true"
       >
         <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_102608_5fa1187d-9ac6-44fb-82ab-54376200abc0.mp4" type="video/mp4" />

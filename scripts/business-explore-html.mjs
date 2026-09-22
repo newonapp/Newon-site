@@ -7,7 +7,7 @@ import { businessExploreCloseHtml } from "./business-explore-close.mjs";
 import { BIZ_FILM_SRC, getBusinessFilmCopy } from "./business-film-copy.mjs";
 
 const CSS_V = "20260830wrap1";
-const FILM_V = "20260922loop1";
+const FILM_V = "20260922loop2";
 
 function t(flat, flatEn, key, fb = "") {
   const v = pick(flat, flatEn, key);
@@ -37,12 +37,15 @@ export function businessExploreHtml(flat, flatEn, lang = "en") {
     <div class="bz-film__fallback" aria-hidden="true"></div>
     <video
       class="bz-film__video"
+      src="${escapeHtml(BIZ_FILM_SRC)}"
       autoplay
       muted
       loop
       playsinline
+      webkit-playsinline
       preload="auto"
-      poster="/assets/hero-film/business-poster.jpg"
+      disablepictureinpicture
+      controlslist="nodownload nofullscreen noremoteplayback"
       aria-hidden="true"
     >
       <source src="${escapeHtml(BIZ_FILM_SRC)}" type="video/mp4" />
@@ -64,6 +67,7 @@ export function businessExploreHtml(flat, flatEn, lang = "en") {
   ${services}
 </div>
 ${close}
+<script src="/film-keep.js?v=${FILM_V}"></script>
 <script src="/business-film.js?v=${FILM_V}" defer></script>
 <script src="/business-pillar.js?v=${CSS_V}" defer></script>`;
 }

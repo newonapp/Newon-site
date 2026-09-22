@@ -79,12 +79,15 @@ function heroBlock(c, lang) {
       <div class="nog-film__fallback" aria-hidden="true"></div>
       <video
         class="nog-film__video"
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4"
         autoplay
         muted
         loop
         playsinline
+        webkit-playsinline
         preload="auto"
-        poster="/assets/hero-film/ongil-poster.jpg"
+        disablepictureinpicture
+        controlslist="nodownload nofullscreen noremoteplayback"
         aria-hidden="true"
       >
         <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4" type="video/mp4" />

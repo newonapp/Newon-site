@@ -1041,6 +1041,16 @@ html[data-newon-shell-theme="dark"] .cai-close__btn--ghost {
   pointer-events: none;
 }
 
+.ai-page .nai-film__video::-webkit-media-controls,
+.ai-page .nai-film__video::-webkit-media-controls-enclosure,
+.ai-page .nai-film__video::-webkit-media-controls-start-playback-button,
+.ai-page .nai-film__video::-webkit-media-controls-play-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
 
 .ai-page .nai-film__lockup {
   position: absolute;

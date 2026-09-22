@@ -2838,6 +2838,16 @@ html[data-theme="dark"] #lifestage-detail.nls .nls-id__path {
   pointer-events: none;
 }
 
+#lifestage-detail.nls .nls-film__video::-webkit-media-controls,
+#lifestage-detail.nls .nls-film__video::-webkit-media-controls-enclosure,
+#lifestage-detail.nls .nls-film__video::-webkit-media-controls-start-playback-button,
+#lifestage-detail.nls .nls-film__video::-webkit-media-controls-play-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
 
 #lifestage-detail.nls .nls-film__lockup {
   position: absolute;

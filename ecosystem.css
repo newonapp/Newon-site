@@ -50,8 +50,15 @@
   pointer-events: none;
 }
 
-#ecosystem-detail.eco .eco-film__video::-webkit-media-controls {
+#ecosystem-detail.eco .eco-film__video::-webkit-media-controls,
+#ecosystem-detail.eco .eco-film__video::-webkit-media-controls-enclosure,
+#ecosystem-detail.eco .eco-film__video::-webkit-media-controls-start-playback-button,
+#ecosystem-detail.eco .eco-film__video::-webkit-media-controls-play-button {
   display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 

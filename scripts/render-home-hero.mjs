@@ -61,7 +61,7 @@ function replaceHero(html, heroHtml) {
   return html.slice(0, start) + heroHtml.trim() + html.slice(close);
 }
 
-const HERO3D_VER = "20260922loop1";
+const HERO3D_VER = "20260922loop2";
 
 function ensureHero3dAssets(html) {
   let out = html;

@@ -11,10 +11,12 @@ export function renderEcosystemSection(lang) {
       <div class="eco-film__fallback" aria-hidden="true"></div>
       <video
         class="eco-film__video"
+        src="${ECO_MP4}"
         autoplay
         muted
         loop
         playsinline
+        webkit-playsinline
         preload="auto"
         disablepictureinpicture
         controlslist="nodownload nofullscreen noremoteplayback"

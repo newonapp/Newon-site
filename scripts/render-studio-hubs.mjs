@@ -188,7 +188,7 @@ function studioBody(flat, flatEn, lang = "en") {
   const close = studioExploreCloseHtml(flat, flatEn, lang);
   const film = getStudioFilmCopy(lang);
   const cssV = "20260830wrap1";
-  const filmV = "20260922loop1";
+  const filmV = "20260922loop2";
   const oldTitle = t(
     "studioHub.heroTitle",
     ko ? "브랜드의 시작부터 디지털 제품까지 구현합니다." : "From brand start to digital product."
@@ -205,10 +205,12 @@ function studioBody(flat, flatEn, lang = "en") {
     <div class="st-film__fallback" aria-hidden="true"></div>
     <video
       class="st-film__video"
+      src="${escapeHtml(STUDIO_FILM_SRC)}"
       autoplay
       muted
       loop
       playsinline
+      webkit-playsinline
       preload="auto"
       disablepictureinpicture
       controlslist="nodownload nofullscreen noremoteplayback"
@@ -231,6 +233,7 @@ function studioBody(flat, flatEn, lang = "en") {
 </section>
 ${studioServicesHtml(flat, flatEn, lang)}
 ${close}
+<script src="/film-keep.js?v=${filmV}"></script>
 <script src="/studio-film.js?v=${filmV}" defer></script>
 <script src="/business-pillar.js?v=${cssV}" defer></script>`;
 }
@@ -301,8 +304,8 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.aiSeoTitle"),
     description: pick(f, fe, "studio.aiMetaDescription"),
     body: aiBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260922loop1" />',
-    extraScripts: '<script src="/ai-hub.js?v=20260922loop1" defer></script>',
+    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260922loop2" />',
+    extraScripts: '<script src="/film-keep.js?v=20260922loop2"></script>\n    <script src="/ai-hub.js?v=20260922loop2" defer></script>',
   }),
   "ai/enterprise": (f, fe, l) => {
     const copy = getAiEnterpriseCopy(l?.dir || "en");
@@ -311,8 +314,8 @@ const HUB_RENDERERS = {
       title: copy.seoTitle,
       description: copy.seoDescription,
       body: renderAiEnterpriseBody(f, fe, l),
-      extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260922loop1" />',
-      extraScripts: '<script src="/ai-hub.js?v=20260922loop1" defer></script>',
+      extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260922loop2" />',
+      extraScripts: '<script src="/film-keep.js?v=20260922loop2"></script>\n    <script src="/ai-hub.js?v=20260922loop2" defer></script>',
     };
   },
   saas: (f, fe, l) => ({
