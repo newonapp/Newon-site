@@ -161,6 +161,7 @@ const PUBLISH_COPY_DIRS = [
   { from: "oxmonth", to: "oxmonth", required: false },
   { from: "subping", to: "subping", required: false },
   { from: "assets/hero-3d", to: "assets/hero-3d", required: true },
+  { from: "assets/hero-film", to: "assets/hero-film", required: true },
   { from: "vendor/three", to: "vendor/three", required: true },
 ];
 

@@ -1243,8 +1243,8 @@
     "hero3dLead": "일상부터 AI, 생애주기와 비즈니스까지.\n삶과 일을 연결하는 소프트웨어를 만듭니다.",
     "hero3dScrollHint": "SCROLL TO EXPLORE",
     "hero3dFinaleEn": "BUILDING A BETTER TOMORROW",
-    "hero3dAria": "서울 풍경 속에서 NEWON의 6개 사업이 하나의 건축물로 결합하는 장면",
-    "hero3dFallback": "브라우저가 3D를 표시할 수 없습니다. 스크롤하여 다음 섹션으로 이동하세요."
+    "hero3dAria": "Newon 메인 화면. 배경 영상이 재생됩니다.",
+    "hero3dFallback": "영상을 재생할 수 없습니다. 스크롤하여 다음 섹션으로 이동하세요."
   },
   "footer": {
     "privacy": "개인정보 처리방침",

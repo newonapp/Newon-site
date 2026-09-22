@@ -1240,8 +1240,8 @@
     "hero3dLead": "From everyday life to AI, life stages, and business.\nSoftware that connects life and work.",
     "hero3dScrollHint": "SCROLL TO EXPLORE",
     "hero3dFinaleEn": "BUILDING A BETTER TOMORROW",
-    "hero3dAria": "Interactive scene of Newon’s six businesses assembling into one tower against the Seoul skyline",
-    "hero3dFallback": "This browser cannot display 3D. Scroll to continue to the next section."
+    "hero3dAria": "Newon home. A background film plays behind the brand lockup.",
+    "hero3dFallback": "This browser cannot play the background film. Scroll to continue to the next section."
   },
   "footer": {
     "privacy": "Privacy Policy",

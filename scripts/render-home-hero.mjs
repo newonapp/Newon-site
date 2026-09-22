@@ -61,7 +61,7 @@ function replaceHero(html, heroHtml) {
   return html.slice(0, start) + heroHtml.trim() + html.slice(close);
 }
 
-const HERO3D_VER = "20260922s3d53";
+const HERO3D_VER = "20260922film2";
 
 function ensureHero3dAssets(html) {
   let out = html;
@@ -75,11 +75,12 @@ function ensureHero3dAssets(html) {
     );
   }
   if (out.includes("home-hero-3d.js")) {
+    out = out.replace(/<script type="module" src="\/home-hero-3d\.js\?v=[^"]+"><\/script>/g, `<script src="/home-hero-3d.js?v=${HERO3D_VER}" defer></script>`);
     out = out.replace(/home-hero-3d\.js\?v=[^"]+/g, `home-hero-3d.js?v=${HERO3D_VER}`);
   } else {
     out = out.replace(
       /<script src="\/home-studio\.js\?v=[^"]+" defer><\/script>/,
-      `<script type="module" src="/home-hero-3d.js?v=${HERO3D_VER}"></script>\n    $&`
+      `<script src="/home-hero-3d.js?v=${HERO3D_VER}" defer></script>\n    $&`
     );
   }
   return out;
