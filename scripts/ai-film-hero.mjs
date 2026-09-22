@@ -104,7 +104,7 @@ export function renderAiFilmHero(kind, lang) {
         muted
         loop
         playsinline
-        preload="metadata"
+        preload="auto"
         poster="/assets/hero-film/ai-poster.jpg"
         aria-hidden="true"
       >

@@ -83,7 +83,7 @@ function heroBlock(c, lang) {
         muted
         loop
         playsinline
-        preload="metadata"
+        preload="auto"
         poster="/assets/hero-film/ongil-poster.jpg"
         aria-hidden="true"
       >

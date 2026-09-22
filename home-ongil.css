@@ -1422,10 +1422,6 @@ html[data-theme="dark"] #ongil-detail.nls .nog-svc {
   pointer-events: none;
 }
 
-#ongil-detail.nls .nog-film.is-static .nog-film__video {
-  visibility: hidden;
-  opacity: 0;
-}
 
 #ongil-detail.nls .nog-film__lockup {
   position: absolute;
@@ -1612,9 +1608,6 @@ html[data-theme="dark"] #ongil-detail.nls .nog-svc {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #ongil-detail.nls .nog-film__video {
-    display: none;
-  }
 
   #ongil-detail.nls .nog-film__wordmark,
   #ongil-detail.nls .nog-film__slogan,

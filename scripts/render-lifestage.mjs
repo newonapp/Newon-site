@@ -27,7 +27,7 @@ import { renderLifeStageSection } from "./home-lifestage-body.mjs";
 import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const NLS_VER = "20260922nls50";
+const NLS_VER = "20260922loop1";
 
 const SEO = {
   ko: {

@@ -2838,10 +2838,6 @@ html[data-theme="dark"] #lifestage-detail.nls .nls-id__path {
   pointer-events: none;
 }
 
-#lifestage-detail.nls .nls-film.is-static .nls-film__video {
-  visibility: hidden;
-  opacity: 0;
-}
 
 #lifestage-detail.nls .nls-film__lockup {
   position: absolute;
@@ -3022,9 +3018,6 @@ html[data-theme="dark"] #lifestage-detail.nls .nls-id__path {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #lifestage-detail.nls .nls-film__video {
-    display: none;
-  }
 
   #lifestage-detail.nls .nls-film__wordmark,
   #lifestage-detail.nls .nls-film__slogan,

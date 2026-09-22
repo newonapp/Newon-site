@@ -7,7 +7,7 @@ import { businessExploreCloseHtml } from "./business-explore-close.mjs";
 import { BIZ_FILM_SRC, getBusinessFilmCopy } from "./business-film-copy.mjs";
 
 const CSS_V = "20260830wrap1";
-const FILM_V = "20260922biz2";
+const FILM_V = "20260922loop1";
 
 function t(flat, flatEn, key, fb = "") {
   const v = pick(flat, flatEn, key);
@@ -41,7 +41,7 @@ export function businessExploreHtml(flat, flatEn, lang = "en") {
       muted
       loop
       playsinline
-      preload="metadata"
+      preload="auto"
       poster="/assets/hero-film/business-poster.jpg"
       aria-hidden="true"
     >

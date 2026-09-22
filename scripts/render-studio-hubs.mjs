@@ -188,7 +188,7 @@ function studioBody(flat, flatEn, lang = "en") {
   const close = studioExploreCloseHtml(flat, flatEn, lang);
   const film = getStudioFilmCopy(lang);
   const cssV = "20260830wrap1";
-  const filmV = "20260922st1";
+  const filmV = "20260922loop1";
   const oldTitle = t(
     "studioHub.heroTitle",
     ko ? "브랜드의 시작부터 디지털 제품까지 구현합니다." : "From brand start to digital product."
@@ -209,7 +209,7 @@ function studioBody(flat, flatEn, lang = "en") {
       muted
       loop
       playsinline
-      preload="metadata"
+      preload="auto"
       disablepictureinpicture
       controlslist="nodownload nofullscreen noremoteplayback"
       aria-hidden="true"
@@ -301,8 +301,8 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.aiSeoTitle"),
     description: pick(f, fe, "studio.aiMetaDescription"),
     body: aiBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260922aifilm2" />',
-    extraScripts: '<script src="/ai-hub.js?v=20260922aifilm2" defer></script>',
+    extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260922loop1" />',
+    extraScripts: '<script src="/ai-hub.js?v=20260922loop1" defer></script>',
   }),
   "ai/enterprise": (f, fe, l) => {
     const copy = getAiEnterpriseCopy(l?.dir || "en");
@@ -311,8 +311,8 @@ const HUB_RENDERERS = {
       title: copy.seoTitle,
       description: copy.seoDescription,
       body: renderAiEnterpriseBody(f, fe, l),
-      extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260922aifilm2" />',
-      extraScripts: '<script src="/ai-hub.js?v=20260922aifilm2" defer></script>',
+      extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260922loop1" />',
+      extraScripts: '<script src="/ai-hub.js?v=20260922loop1" defer></script>',
     };
   },
   saas: (f, fe, l) => ({

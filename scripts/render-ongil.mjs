@@ -27,7 +27,7 @@ import { renderOngilSection } from "./home-ongil-body.mjs";
 import { getOngilCopy } from "./home-ongil-copy.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const NOG_VER = "20260922nog30";
+const NOG_VER = "20260922loop1";
 const SKIP_DIRS = new Set(["node_modules", "_publish", ".git", "docs", "app-icons"]);
 
 const SEO = {

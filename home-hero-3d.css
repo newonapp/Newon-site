@@ -49,10 +49,6 @@
   display: none !important;
 }
 
-#home.site-shell #top.hero--film.is-static .nhv-video {
-  visibility: hidden;
-  opacity: 0;
-}
 
 #home.site-shell #top.hero--film .nh3d-lockup {
   position: absolute;

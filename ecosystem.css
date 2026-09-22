@@ -54,10 +54,6 @@
   display: none !important;
 }
 
-#ecosystem-detail.eco .eco-film.is-static .eco-film__video {
-  visibility: hidden;
-  opacity: 0;
-}
 
 #ecosystem-detail.eco .eco-film__lockup {
   position: absolute;
@@ -196,9 +192,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #ecosystem-detail.eco .eco-film__video {
-    display: none;
-  }
 
   #ecosystem-detail.eco .eco-film__wordmark,
   #ecosystem-detail.eco .eco-film__slogan,

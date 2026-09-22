@@ -49,10 +49,6 @@
   display: none !important;
 }
 
-#studio-film.st-film.is-static .st-film__video {
-  visibility: hidden;
-  opacity: 0;
-}
 
 #studio-film.st-film .st-film__lockup {
   position: absolute;
@@ -244,9 +240,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #studio-film.st-film .st-film__video {
-    display: none;
-  }
 
   #studio-film.st-film .st-film__wordmark,
   #studio-film.st-film .st-film__slogan,

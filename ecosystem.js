@@ -3,68 +3,82 @@
   if (!film) return;
 
   var video = film.querySelector(".eco-film__video");
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function freezeFilm() {
-    film.classList.add("is-static");
-    if (video) {
-      video.pause();
-      video.removeAttribute("autoplay");
-    }
+  if (!video) {
+    requestAnimationFrame(function () {
+      film.classList.add("is-ready");
+    });
+    return;
   }
 
-  function tryPlay() {
-    if (!video || reduce || film.classList.contains("is-static")) return;
+  function arm() {
+    var source = video.querySelector("source");
+    if (source && source.src && video.getAttribute("src") !== source.src) {
+      video.src = source.src;
+    }
     video.muted = true;
     video.defaultMuted = true;
+    video.volume = 0;
     video.loop = true;
     video.autoplay = true;
     video.playsInline = true;
+    video.preload = "auto";
+    video.setAttribute("muted", "");
+    video.setAttribute("autoplay", "");
+    video.setAttribute("loop", "");
     video.setAttribute("playsinline", "");
     video.setAttribute("webkit-playsinline", "");
+    video.setAttribute("preload", "auto");
     video.removeAttribute("controls");
+  }
+
+  function tryPlay() {
+    arm();
+    film.classList.remove("is-static");
+    try {
+      if (video.ended) video.currentTime = 0;
+    } catch (err) {
+      /* ignore */
+    }
     var play = video.play();
-    if (play && typeof play.catch === "function") {
-      play.catch(function () {
-        /* Keep the solid fallback instead of swapping in another image. */
-      });
-    }
+    if (play && typeof play.catch === "function") play.catch(function () {});
   }
 
-  if (reduce) {
-    freezeFilm();
-  } else if (video) {
-    video.addEventListener("error", freezeFilm, { once: true });
-    video.addEventListener(
-      "canplay",
-      function () {
-        film.classList.remove("is-static");
-        tryPlay();
-      },
-      { once: true }
-    );
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) tryPlay();
-            else if (entry.intersectionRatio === 0 && video && !video.paused) video.pause();
-          });
-        },
-        { threshold: [0, 0.18] }
-      );
-      io.observe(film);
-    } else {
-      tryPlay();
+  function restart() {
+    try {
+      video.currentTime = 0;
+    } catch (err) {
+      /* ignore */
     }
+    tryPlay();
   }
 
+  arm();
+  video.addEventListener("ended", restart);
+  video.addEventListener("pause", function () {
+    if (document.visibilityState === "visible") tryPlay();
+  });
+  video.addEventListener("canplay", tryPlay);
+  video.addEventListener("canplaythrough", tryPlay);
+  video.addEventListener("loadeddata", tryPlay);
+  video.addEventListener("playing", function () {
+    film.classList.remove("is-static");
+  });
   document.addEventListener("visibilitychange", function () {
     if (document.visibilityState === "visible") tryPlay();
-    else if (video && !video.paused) video.pause();
   });
+  window.addEventListener("pageshow", tryPlay);
+  window.addEventListener("focus", tryPlay);
+  document.addEventListener("pointerdown", tryPlay, { passive: true });
+  document.addEventListener("touchstart", tryPlay, { passive: true });
+  setInterval(function () {
+    if (document.visibilityState === "visible" && (video.paused || video.ended)) {
+      tryPlay();
+    }
+  }, 800);
 
+  tryPlay();
   requestAnimationFrame(function () {
     film.classList.add("is-ready");
+    tryPlay();
   });
 })();

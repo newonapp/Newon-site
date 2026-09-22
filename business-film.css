@@ -47,10 +47,6 @@
   pointer-events: none;
 }
 
-#business-film.bz-film.is-static .bz-film__video {
-  visibility: hidden;
-  opacity: 0;
-}
 
 #business-film.bz-film .bz-film__lockup {
   position: absolute;
@@ -242,10 +238,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #business-film.bz-film .bz-film__video {
-    display: none;
-  }
-
   #business-film.bz-film .bz-film__wordmark,
   #business-film.bz-film .bz-film__slogan,
   #business-film.bz-film .bz-film__lead,

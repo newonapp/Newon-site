@@ -3,71 +3,78 @@
   if (!hero) return;
 
   const video = hero.querySelector(".nhv-video");
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  const markReady = () => {
-    hero.classList.add("is-ready");
-  };
-
-  const freeze = () => {
-    hero.classList.add("is-static");
-    if (video) {
-      video.pause();
-      video.removeAttribute("autoplay");
-    }
-  };
-
-  const tryPlay = () => {
-    if (!video || reduced || hero.classList.contains("is-static")) return;
-    video.muted = true;
-    video.defaultMuted = true;
-    video.loop = true;
-    video.playsInline = true;
-    video.setAttribute("playsinline", "");
-    video.setAttribute("webkit-playsinline", "");
-    video.removeAttribute("controls");
-    const play = video.play();
-    if (play && typeof play.catch === "function") {
-      play.catch(() => freeze());
-    }
-  };
-
-  if (reduced) {
-    freeze();
-    markReady();
+  if (!video) {
+    requestAnimationFrame(() => hero.classList.add("is-ready"));
     return;
   }
 
-  if (video) {
+  const arm = () => {
+    const source = video.querySelector("source");
+    if (source && source.src && video.getAttribute("src") !== source.src) {
+      video.src = source.src;
+    }
+    video.muted = true;
+    video.defaultMuted = true;
+    video.volume = 0;
     video.loop = true;
-    video.addEventListener("error", freeze, { once: true });
-    video.addEventListener("stalled", () => {
-      if (video.readyState < 2) freeze();
-    });
-    video.addEventListener(
-      "canplay",
-      () => {
-        hero.classList.remove("is-static");
-        tryPlay();
-      },
-      { once: true }
-    );
-  }
+    video.autoplay = true;
+    video.playsInline = true;
+    video.preload = "auto";
+    video.setAttribute("muted", "");
+    video.setAttribute("autoplay", "");
+    video.setAttribute("loop", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    video.setAttribute("preload", "auto");
+    video.removeAttribute("controls");
+  };
 
-  if ("IntersectionObserver" in window && video) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) tryPlay();
-          else if (!video.paused) video.pause();
-        });
-      },
-      { threshold: 0.18 }
-    );
-    io.observe(hero);
-  } else {
+  const tryPlay = () => {
+    arm();
+    hero.classList.remove("is-static");
+    try {
+      if (video.ended) video.currentTime = 0;
+    } catch (err) {
+      /* ignore */
+    }
+    const play = video.play();
+    if (play && typeof play.catch === "function") play.catch(() => {});
+  };
+
+  const restart = () => {
+    try {
+      video.currentTime = 0;
+    } catch (err) {
+      /* ignore */
+    }
     tryPlay();
-  }
+  };
 
-  requestAnimationFrame(markReady);
+  arm();
+  video.addEventListener("ended", restart);
+  video.addEventListener("pause", () => {
+    if (document.visibilityState === "visible") tryPlay();
+  });
+  video.addEventListener("canplay", tryPlay);
+  video.addEventListener("canplaythrough", tryPlay);
+  video.addEventListener("loadeddata", tryPlay);
+  video.addEventListener("playing", () => hero.classList.remove("is-static"));
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") tryPlay();
+  });
+  window.addEventListener("pageshow", tryPlay);
+  window.addEventListener("focus", tryPlay);
+  document.addEventListener("pointerdown", tryPlay, { passive: true });
+  document.addEventListener("touchstart", tryPlay, { passive: true });
+  setInterval(() => {
+    if (document.visibilityState === "visible" && (video.paused || video.ended)) {
+      tryPlay();
+    }
+  }, 800);
+
+  tryPlay();
+  requestAnimationFrame(() => {
+    hero.classList.add("is-ready");
+    tryPlay();
+  });
 })();
