@@ -10,7 +10,7 @@ import { buildHomeStudioBody } from "./home-page-body.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
-const CSS_VER = "20260922eco6";
+const CSS_VER = "20260922fix1";
 const JS_VER = "20260921nls1";
 const NLS_VER = "20260921nls1";
 const HC_VER = "20260922co2";

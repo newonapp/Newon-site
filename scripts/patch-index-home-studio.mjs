@@ -49,24 +49,43 @@ function patchIndex(html, block) {
   return html.slice(0, startIdx) + block.trim() + "\n\n      " + html.slice(endIdx);
 }
 
+const HOME_CSS_VER = "20260922fix1";
+const HOME_JS_VER = "20260921nls1";
+const HC_VER = "20260922co2";
+
 function ensureAssets(html) {
   let out = html;
   if (!out.includes('href="/home-studio.css')) {
     out = out.replace(
-      '<link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />',
-      '<link rel="stylesheet" href="/hub-pages.css?v=20260826bw1" />\n    <link rel="stylesheet" href="/home-studio.css?v=20260826bw1" />'
+      /(<link rel="stylesheet" href="\/hub-pages\.css\?v=[^"]+" \/>)/,
+      `$1\n    <link rel="stylesheet" href="/home-studio.css?v=${HOME_CSS_VER}" />`
     );
   } else {
-    out = out.replace(/home-studio\.css\?v=[^"]+/, "home-studio.css?v=20260828home2");
-    out = out.replace(/hub-pages\.css\?v=[^"]+/, "hub-pages.css?v=20260828home2");
+    out = out.replace(/home-studio\.css\?v=[^"]+/, `home-studio.css?v=${HOME_CSS_VER}`);
+  }
+  if (!out.includes('href="/home-company.css')) {
+    out = out.replace(
+      /(<link rel="stylesheet" href="\/home-lifestage\.css\?v=[^"]+" \/>)/,
+      `$1\n    <link rel="stylesheet" href="/home-company.css?v=${HC_VER}" />`
+    );
+  } else {
+    out = out.replace(/home-company\.css\?v=[^"]+/, `home-company.css?v=${HC_VER}`);
   }
   if (!out.includes('src="/home-studio.js')) {
     out = out.replace(
-      '<script src="/site-chrome.js?v=20260826gnav3" defer></script>',
-      '<script src="/site-chrome.js?v=20260826gnav3" defer></script>\n    <script src="/home-studio.js?v=20260826ps3" defer></script>'
+      /(<script src="\/site-chrome\.js\?v=[^"]+" defer><\/script>)/,
+      `$1\n    <script src="/home-studio.js?v=${HOME_JS_VER}" defer></script>`
     );
   } else {
-    out = out.replace(/home-studio\.js\?v=[^"]+/, "home-studio.js?v=20260828home2");
+    out = out.replace(/home-studio\.js\?v=[^"]+/, `home-studio.js?v=${HOME_JS_VER}`);
+  }
+  if (!out.includes('src="/home-company.js')) {
+    out = out.replace(
+      /(<script src="\/home-lifestage\.js\?v=[^"]+" defer><\/script>)/,
+      `$1\n    <script src="/home-company.js?v=${HC_VER}" defer></script>`
+    );
+  } else {
+    out = out.replace(/home-company\.js\?v=[^"]+/, `home-company.js?v=${HC_VER}`);
   }
   return out;
 }
