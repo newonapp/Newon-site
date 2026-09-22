@@ -74,7 +74,7 @@ function renderPage(lang) {
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/home-lifestage.css?v=${NLS_VER}" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=${NLS_VER}" />`,
-    EXTRA_SCRIPTS: `<script src="/film-keep.js?v=${NLS_VER}"></script>
+    EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260922play1"></script>
     <script src="/home-lifestage.js?v=${NLS_VER}" defer></script>`,
   });
   const out = path.join(ROOT, lang.dir, "lifestage", "index.html");

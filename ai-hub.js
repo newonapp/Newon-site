@@ -105,7 +105,7 @@
 
     if (location.hash && location.hash.indexOf("#cai-") === 0) {
       var hid = location.hash.slice(5);
-      if (hid) open(hid);
+      if (hid && hid !== "hero") open(hid);
     }
   }
 
@@ -161,6 +161,19 @@
     initDetails(root);
     initScroll(root);
     initCore(root);
+    function scrollHashHero() {
+      if (location.hash !== "#cai-hero") return;
+      var hero = document.getElementById("cai-hero");
+      if (!hero) return;
+      var y = Math.max(0, Math.round(hero.getBoundingClientRect().top + (window.pageYOffset || 0)));
+      window.scrollTo(0, y);
+      hero.scrollIntoView({ behavior: "auto", block: "start" });
+    }
+    window.requestAnimationFrame(scrollHashHero);
+    window.setTimeout(scrollHashHero, 80);
+    window.setTimeout(scrollHashHero, 320);
+    window.addEventListener("hashchange", scrollHashHero);
+    window.addEventListener("load", scrollHashHero);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

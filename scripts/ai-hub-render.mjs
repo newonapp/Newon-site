@@ -301,8 +301,12 @@ export function renderAiShowcaseBody(flat, flatEn, lang) {
   const titleHtml = t(flat, flatEn, "studio.aiHeroTitle", ui.title).replace(/\n/g, "<br />");
 
   return `<div class="ai-page cai-page" data-ai-page data-cai-page>
-  ${renderAiFilmHero("personal", langDir)}
-  ${renderAiSwitch(flat, flatEn, { active: "personal", personalHref: "./", enterpriseHref: "enterprise/" })}
+  ${renderAiFilmHero("personal", langDir, {
+    personal: t(flat, flatEn, "studio.aiSwitchPersonal", "개인 AI"),
+    enterprise: t(flat, flatEn, "studio.aiSwitchEnterprise", "기업 AI"),
+    personalHref: "#cai-hero",
+    enterpriseHref: "enterprise/#cai-hero",
+  })}
   <section id="cai-hero" class="cai-hero cai-hero--edit" data-ai-reveal>
     <div class="hub-inner cai-hero__grid">
       <div class="cai-hero__copy">

@@ -88,9 +88,11 @@ html[data-newon-shell-theme="dark"] .apps-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: min(48rem, calc(100vw - 2.4rem));
+  box-sizing: border-box;
+  width: calc(100vw - 1.6rem);
+  max-width: calc(100vw - 1.6rem);
   margin: 0;
-  padding: 1.4rem 1rem 1.6rem;
+  padding: 1.4rem 0.2rem 1.6rem;
   transform: translate(-50%, -48%);
   text-align: center;
 }
@@ -123,12 +125,13 @@ html[data-newon-shell-theme="dark"] .apps-page {
 
 .apps-film__wordmark {
   margin: 0 0 2.15rem;
+  max-width: 100%;
   color: #fff !important;
   font-family: "Noto Sans", "Noto Sans KR", "Pretendard", sans-serif;
-  font-size: clamp(6.2rem, 22vw, 12.5rem);
+  font-size: clamp(2.2rem, calc((100vw - 2rem) / 7.2), 8.6rem);
   font-weight: 700;
   letter-spacing: -0.06em;
-  line-height: 0.92;
+  line-height: 1;
   white-space: nowrap;
   text-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
   background: transparent !important;
@@ -271,24 +274,18 @@ html[data-newon-shell-theme="dark"] .apps-page {
   background: transparent !important;
 }
 
-@media (max-width: 980px) {
-  .apps-film__wordmark {
-    font-size: clamp(3.6rem, 14vw, 7.4rem);
-    white-space: nowrap;
-  }
-}
-
 @media (max-width: 760px) {
   .apps-film__lockup {
     top: 52%;
-    width: min(44rem, calc(100vw - 1.6rem));
-    padding: 1rem 0.5rem 1.2rem;
+    width: calc(100vw - 1.2rem);
+    max-width: calc(100vw - 1.2rem);
+    padding: 1rem 0.15rem 1.2rem;
     transform: translate(-50%, -46%);
   }
 
   .apps-film__wordmark {
-    font-size: clamp(3.15rem, 16.5vw, 5.4rem);
-    margin-bottom: 1.45rem;
+    font-size: clamp(2rem, calc((100vw - 1.4rem) / 7.2), 4.2rem);
+    margin-bottom: 1.65rem;
   }
 
   .apps-film__slogan {
@@ -322,8 +319,8 @@ html[data-newon-shell-theme="dark"] .apps-page {
   }
 
   .apps-film__wordmark {
-    font-size: clamp(3.2rem, 12vw, 7.4rem);
-    margin-bottom: 1.25rem;
+    font-size: clamp(2rem, calc((100vw - 2rem) / 7.4), 6.2rem);
+    margin-bottom: 1.45rem;
   }
 }
 

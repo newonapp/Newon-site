@@ -74,7 +74,7 @@ function renderPage(lang) {
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/home-ongil.css?v=${NOG_VER}" />
     <link rel="stylesheet" href="/home-ongil-layout.css?v=${NOG_VER}" />`,
-    EXTRA_SCRIPTS: `<script src="/film-keep.js?v=${NOG_VER}"></script>
+    EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260922play1"></script>
     <script src="/home-ongil.js?v=${NOG_VER}" defer></script>`,
   });
   const out = path.join(ROOT, lang.dir, "ongil", "index.html");

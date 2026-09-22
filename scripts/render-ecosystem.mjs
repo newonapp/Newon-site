@@ -27,7 +27,7 @@ import { renderEcosystemSection } from "./ecosystem-body.mjs";
 import { getEcosystemCopy } from "./ecosystem-copy.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const ECO_VER = "20260922mid1";
+const ECO_VER = "20260922close1";
 
 function localeFlat(lang) {
   const en = loadJson("en.json");
@@ -55,7 +55,7 @@ function renderPage(lang) {
     MAIN_CONTENT: renderEcosystemSection(lang.dir),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/ecosystem.css?v=${ECO_VER}" />`,
-    EXTRA_SCRIPTS: `<script src="/film-keep.js?v=${ECO_VER}"></script>
+    EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260922play1"></script>
     <script src="/ecosystem.js?v=${ECO_VER}" defer></script>`,
   });
   const out = path.join(ROOT, lang.dir, "ecosystem", "index.html");

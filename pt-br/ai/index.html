@@ -35,14 +35,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css?v=20260904a11y1" />
-    <link rel="stylesheet" href="/gnav-mega.css?v=20260902nav1" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
-    <link rel="stylesheet" href="/ai-hub.css?v=20260922loop2" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20260920revert1" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
+    <link rel="stylesheet" href="/ai-hub.css?v=20260922aibtn3" />
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
 <script src="/theme-shell.js?v=20260904perf1"></script>
     <script src="/lang-nav.js?v=20260825studio"></script>
     <script src="/analytics.js?v=20260904sec1" defer></script>
-</head>
+    <link rel="stylesheet" href="/site-dark.css?v=20260902perf1" />
+    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
+  </head>
   <body>
     <a class="skip-link" href="#hub-main">Ir para o conteúdo</a>
     <header class="gnav site-header gnav--five" data-gnav>
@@ -374,26 +376,26 @@
           <div class="gnav__util">
             <a class="gnav__cta" href="../business/inquiry/">Contact</a>
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-gnav-legacy">Idioma</label>
-    <select id="lang-select-gnav-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
+    <label class="visually-hidden" for="lang-select-gnav-hub">Idioma</label>
+    <select id="lang-select-gnav-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Inglês</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Espanhol</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Francês</option><option value="de" data-short="DE">Alemão</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonésia</option>
     </select>
   </div>
             <button type="button" class="gnav__theme" data-theme-toggle data-label-light="Modo claro" data-label-dark="Modo escuro" title="Alternar tema" aria-label="Modo escuro"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-legacy" aria-label="Menu">
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-hub" aria-label="Menu">
               <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
             </button>
           </div>
         </div>
       </div>
-      <div id="gnav-mobile-legacy" class="gnav-mobile" hidden aria-hidden="true">
+      <div id="gnav-mobile-hub" class="gnav-mobile" hidden aria-hidden="true">
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
       <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menu">
         <div class="gnav-mobile__scroll">
           <div class="gnav-mobile__util-row">
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-mobile-legacy">Idioma</label>
-    <select id="lang-select-mobile-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
+    <label class="visually-hidden" for="lang-select-mobile-hub">Idioma</label>
+    <select id="lang-select-mobile-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Idioma">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Inglês</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Espanhol</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Francês</option><option value="de" data-short="DE">Alemão</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonésia</option>
     </select>
   </div>
@@ -462,13 +464,15 @@
       <div class="nai-film__fallback" aria-hidden="true"></div>
       <video
         class="nai-film__video"
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260723_145606_ab143199-b593-4941-bb1b-9afca215416b.mp4"
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260723_145606_ab143199-b593-4941-bb1b-9afca215416b.mp4"
         autoplay
         muted
         loop
         playsinline
-          webkit-playsinline
+        webkit-playsinline
         preload="auto"
+        disablepictureinpicture
+        controlslist="nodownload nofullscreen noremoteplayback"
         aria-hidden="true"
       >
         <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260723_145606_ab143199-b593-4941-bb1b-9afca215416b.mp4" type="video/mp4" />
@@ -478,18 +482,16 @@
         <p class="nai-film__wordmark">Newon AI</p>
         <p class="nai-film__slogan">Uma IA mais perto<br>do seu dia a dia.</p>
         <p class="nai-film__lead">Das perguntas do cotidiano ao planejamento e à ação.<br>Criamos uma IA que entende a vida pessoal e acompanha.</p>
+        <div class="nai-film__actions">
+          <a class="btn btn-primary" href="#cai-hero" data-cai-scroll aria-current="page">IA pessoal</a>
+          <a class="btn btn-ghost" href="enterprise/#cai-hero">IA para empresas</a>
+        </div>
       </div>
       <a class="nai-film__cue" href="#cai-hero" data-cai-scroll>
         <span class="visually-hidden">Continue to the introduction</span>
       </a>
     </div>
   </section>
-  <nav class="cai-switch" aria-label="Seções da Newon AI">
-    <div class="hub-inner cai-switch__row">
-      <a class="cai-filter__btn is-active" href="./" aria-current="page">IA pessoal</a>
-      <a class="cai-filter__btn" href="enterprise/">IA para empresas</a>
-    </div>
-  </nav>
   <section id="cai-hero" class="cai-hero cai-hero--edit" data-ai-reveal>
     <div class="hub-inner cai-hero__grid">
       <div class="cai-hero__copy">
@@ -1490,9 +1492,9 @@
     <div class="search-modal-host"></div>
     <script src="/search.js?v=20260904a11y1" defer></script>
     <script src="/waitlist.js?v=20260904sec1" defer></script>
-    <script src="/film-keep.js?v=20260922loop2"></script>
-    <script src="/ai-hub.js?v=20260922loop2" defer></script>
-    <script src="/site-chrome.js?v=20260904a11y1" defer></script>
+    <script src="/film-keep.js?v=20260922play1"></script>
+    <script src="/ai-hub.js?v=20260922aibtn3" defer></script>
+    <script src="/site-chrome.js?v=20260920revert1" defer></script>
     <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
 </body>
 </html>

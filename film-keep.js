@@ -40,12 +40,21 @@
     function tryPlay() {
       arm();
       host.classList.remove("is-static");
-      if (!video.paused && !video.ended) return;
+      if (video.readyState < 1) {
+        try {
+          video.load();
+        } catch (err) {
+          /* ignore */
+        }
+      }
       try {
-        if (video.ended) video.currentTime = 0;
+        if (video.ended || (video.duration && video.currentTime >= video.duration - 0.05)) {
+          video.currentTime = 0;
+        }
       } catch (err) {
         /* ignore */
       }
+      if (!video.paused && !video.ended) return;
       var play = video.play();
       if (play && typeof play.catch === "function") play.catch(function () {});
     }
@@ -71,16 +80,30 @@
     video.addEventListener("playing", function () {
       host.classList.remove("is-static");
     });
+    video.addEventListener("timeupdate", function () {
+      if (!video.duration) return;
+      if (video.currentTime >= video.duration - 0.12) {
+        try {
+          video.currentTime = 0.05;
+        } catch (err) {
+          /* ignore */
+        }
+        if (video.paused) tryPlay();
+      }
+    });
     document.addEventListener("visibilitychange", function () {
       if (document.visibilityState === "visible") tryPlay();
     });
     window.addEventListener("pageshow", tryPlay);
     window.addEventListener("focus", tryPlay);
+    ["pointerdown", "touchstart", "click", "keydown"].forEach(function (ev) {
+      document.addEventListener(ev, tryPlay, { capture: true, passive: true });
+    });
     setInterval(function () {
       if (document.visibilityState === "visible" && (video.paused || video.ended)) {
         tryPlay();
       }
-    }, 700);
+    }, 400);
     tryPlay();
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
@@ -108,6 +131,12 @@
       var host = pair[0];
       if (!host) return;
       keepFilm(host, host.querySelector(pair[1]));
+    });
+    document.querySelectorAll("video.nhv-video, video[class*='film__video'], video.games-hero__video").forEach(function (video) {
+      var host =
+        video.closest("[data-bz-film], [data-st-film], [data-eco-film], [data-nog-film], [data-nls-film], [data-nai-film], [data-games-film], [data-apps-film], .hero--film") ||
+        video.parentElement;
+      keepFilm(host, video);
     });
   }
 

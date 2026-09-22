@@ -91,10 +91,15 @@ function copyFor(kind, lang) {
 }
 
 /** @param {"personal"|"enterprise"} kind */
-export function renderAiFilmHero(kind, lang) {
+export function renderAiFilmHero(kind, lang, switcher = {}) {
   const L = lang || "en";
   const c = copyFor(kind, L);
-  const next = kind === "enterprise" ? "cai-hero" : "cai-hero";
+  const personal = switcher.personal || (L === "ko" ? "개인 AI" : "Personal AI");
+  const enterprise = switcher.enterprise || (L === "ko" ? "기업 AI" : "Enterprise AI");
+  const personalHref = switcher.personalHref || (kind === "enterprise" ? "../#cai-hero" : "#cai-hero");
+  const enterpriseHref = switcher.enterpriseHref || (kind === "enterprise" ? "#cai-hero" : "enterprise/#cai-hero");
+  const personalNow = kind === "personal";
+  const enterpriseNow = kind === "enterprise";
   return `<section class="nai-film" data-nai-film aria-label="Newon AI">
     <div class="nai-film__stage">
       <div class="nai-film__fallback" aria-hidden="true"></div>
@@ -118,8 +123,12 @@ export function renderAiFilmHero(kind, lang) {
         <p class="nai-film__wordmark">Newon AI</p>
         <p class="nai-film__slogan">${c.sloganHtml}</p>
         <p class="nai-film__lead">${c.leadHtml}</p>
+        <div class="nai-film__actions">
+          <a class="btn ${personalNow ? "btn-primary" : "btn-ghost"}" href="${escapeHtml(personalHref)}"${personalNow ? ' data-cai-scroll aria-current="page"' : ""}>${escapeHtml(personal)}</a>
+          <a class="btn ${enterpriseNow ? "btn-primary" : "btn-ghost"}" href="${escapeHtml(enterpriseHref)}"${enterpriseNow ? ' data-cai-scroll aria-current="page"' : ""}>${escapeHtml(enterprise)}</a>
+        </div>
       </div>
-      <a class="nai-film__cue" href="#${next}" data-cai-scroll>
+      <a class="nai-film__cue" href="#cai-hero" data-cai-scroll>
         <span class="visually-hidden">${L === "ko" ? "기존 소개로 이동" : "Continue to the introduction"}</span>
       </a>
     </div>

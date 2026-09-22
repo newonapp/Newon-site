@@ -67,7 +67,7 @@ export function businessExploreHtml(flat, flatEn, lang = "en") {
   ${services}
 </div>
 ${close}
-<script src="/film-keep.js?v=${FILM_V}"></script>
+<script src="/film-keep.js?v=20260922play1"></script>
 <script src="/business-film.js?v=${FILM_V}" defer></script>
 <script src="/business-pillar.js?v=${CSS_V}" defer></script>`;
 }
