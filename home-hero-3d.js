@@ -21,9 +21,11 @@
     if (!video || reduced || hero.classList.contains("is-static")) return;
     video.muted = true;
     video.defaultMuted = true;
+    video.loop = true;
     video.playsInline = true;
     video.setAttribute("playsinline", "");
     video.setAttribute("webkit-playsinline", "");
+    video.removeAttribute("controls");
     const play = video.play();
     if (play && typeof play.catch === "function") {
       play.catch(() => freeze());
@@ -37,6 +39,7 @@
   }
 
   if (video) {
+    video.loop = true;
     video.addEventListener("error", freeze, { once: true });
     video.addEventListener("stalled", () => {
       if (video.readyState < 2) freeze();

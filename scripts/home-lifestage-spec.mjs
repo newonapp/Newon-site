@@ -1,5 +1,5 @@
 /**
- * Extra Life Stage detail content (10s, 12 sits, 15 fields, 3 lessons,
+ * Extra Livon detail content (10s, 12 sits, 15 fields, 3 lessons,
  * 3 planner projects, 6 flows, community, 5 revenue). Merged onto KO/EN.
  */
 import { extraFirstPlanner, extraFirstPrompts, firstMoments } from "./home-lifestage-first.mjs";
@@ -395,7 +395,7 @@ function uiPatch(lang) {
       examNote: "입시 정보는 학년도·대학·모집단위·전형별로 달라지므로 공식 모집요강과 관련 기관 자료를 기준으로 제공합니다. 합격 가능성을 보장하거나 예측하지 않습니다.",
       aiPreview: "AI 서비스 콘셉트 미리보기",
       learnPreview: "학습 경험 미리보기",
-      toolsLabel: "관련 Life Stage 기능",
+      toolsLabel: "관련 Livon 기능",
       appsLabel: "연결 가능한 Newon 서비스",
       sitDesc: "현재 상황",
       caseLabel: "대표 질문",
@@ -426,10 +426,10 @@ function uiPatch(lang) {
     en: {
       back: "Back to businesses",
       teenNote: "Teen features will be designed with age-appropriate privacy and safety. We do not recommend adult financial products or unsuitable services to minors.",
-      examNote: "Admissions information changes by year, school, unit, and track. Official guides are the source of record. Life Stage does not predict or guarantee admission.",
+      examNote: "Admissions information changes by year, school, unit, and track. Official guides are the source of record. Livon does not predict or guarantee admission.",
       aiPreview: "AI service concept preview",
       learnPreview: "Learning experience preview",
-      toolsLabel: "Related Life Stage features",
+      toolsLabel: "Related Livon features",
       appsLabel: "Connectable Newon services",
       sitDesc: "This situation",
       caseLabel: "Typical questions",
@@ -466,7 +466,7 @@ function heroClosePatch(lang) {
     ko: {
       hero: {
         lead: "학교와 진로, 취업과 독립, 가족과 건강, 은퇴 이후까지. 10대부터 70대까지, 삶의 변화 앞에서 필요한 정보와 서비스를 쉽게 찾을 수 있도록 연결하는 생애주기 플랫폼을 만들어갑니다.",
-        ctaMain: "Life Stage 살펴보기",
+        ctaMain: "Livon 살펴보기",
         ctaSub: "핵심 서비스 알아보기",
       },
       core: {
@@ -491,7 +491,7 @@ function heroClosePatch(lang) {
       },
       revenue: {
         title: "개인의 일상에서,\n교육과 기업, 사회 전체로.",
-        lead: "Life Stage는 개인 사용자를 시작으로 전문가·서비스 공급자, 교육기관, 기업, 공공기관으로 확장하는 구조를 검토합니다.",
+        lead: "Livon은 개인 사용자를 시작으로 전문가·서비스 공급자, 교육기관, 기업, 공공기관으로 확장하는 구조를 검토합니다.",
       },
       close: {
         lead: "10대부터 70대까지, 삶의 변화 앞에서 필요한 정보와 서비스를 연결하는 생애주기 플랫폼을 만들어 갑니다. 나이는 탐색을 위한 구분일 뿐, 지금 마주한 상황에서 시작합니다. 현재 페이지는 사업 소개이며, 실제 상담·예약 서비스는 아직 없습니다.",
@@ -501,8 +501,8 @@ function heroClosePatch(lang) {
     },
     en: {
       hero: {
-        lead: "School and path, work and independence, family and health, and life after work. From teens through the 70s, Life Stage is building a lifecycle platform that helps people find the information and services a life change requires.",
-        ctaMain: "Explore Life Stage",
+        lead: "School and path, work and independence, family and health, and life after work. From teens through the 70s, Livon is building a lifecycle platform that helps people find the information and services a life change requires.",
+        ctaMain: "Explore Livon",
         ctaSub: "See core services",
       },
       core: {
@@ -527,7 +527,7 @@ function heroClosePatch(lang) {
       },
       revenue: {
         title: "From one person’s day\nto schools, companies, and the public.",
-        lead: "Life Stage is exploring a path from individuals to experts and services, then schools, companies, and public institutions.",
+        lead: "Livon is exploring a path from individuals to experts and services, then schools, companies, and public institutions.",
       },
       close: {
         lead: "A lifecycle platform we are building to connect information and services for life changes from teens through the 70s. Age is a browsing aid, not a script. This page is an introduction — advice and booking are not live yet.",

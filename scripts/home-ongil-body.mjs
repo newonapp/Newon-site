@@ -74,24 +74,31 @@ function heroVisual(c) {
 }
 
 function heroBlock(c, lang) {
-  return `<div class="nls-crumb">
-      <a href="/${escapeHtml(lang)}/">NEWON</a>
-      <span aria-hidden="true">/</span>
-      <span>ONGIL</span>
-    </div>
-    <div class="nls-hero" data-hs-section>
-    <div class="nls-hero__grid">
-      <div class="nls-hero__copy">
-        <p class="nls-kicker">${escapeHtml(c.hero.kicker)}</p>
-        <h1 id="story-ongil-title" class="nls-hero__title">${c.hero.titleHtml}</h1>
-        <p class="nls-lead">${escapeHtml(c.hero.lead)}</p>
-        <p class="nog-status">${escapeHtml(c.hero.status)}</p>
-        <div class="nls-actions">
+  return `<div class="nog-film" data-nog-film data-hs-section>
+    <div class="nog-film__stage">
+      <div class="nog-film__fallback" aria-hidden="true"></div>
+      <video
+        class="nog-film__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="/assets/hero-film/ongil-poster.jpg"
+        aria-hidden="true"
+      >
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4" type="video/mp4" />
+      </video>
+      <div class="nog-film__lockup">
+        <div class="nog-film__veil" aria-hidden="true"></div>
+        <p class="nog-film__wordmark">Ongil</p>
+        <h1 id="story-ongil-title" class="nog-film__slogan">${c.hero.titleHtml}</h1>
+        <p class="nog-film__lead">${escapeHtml(c.hero.lead)}</p>
+        <div class="nog-film__actions">
           <a class="nls-btn" href="#nog-why" data-nls-scroll>${escapeHtml(c.hero.ctaMain)} →</a>
           <a class="nls-btn nls-btn--ghost" href="/${escapeHtml(lang)}/business/inquiry/">${escapeHtml(c.hero.ctaSub)}</a>
         </div>
       </div>
-      ${heroVisual(c)}
     </div>
   </div>`;
 }
@@ -344,9 +351,9 @@ export function renderOngilSection(lang, opts = {}) {
     ? `<p class="nls-closebar"><a class="nls-btn nls-btn--ghost" href="/${escapeHtml(L)}/#story-ongil">${escapeHtml(c.ui.back)}</a></p>`
     : "";
   return `<section id="ongil-detail" class="nls nog" data-story="ongil" aria-labelledby="story-ongil-title">
+    ${heroBlock(c, L)}
   <div class="nls__wrap">
     ${back}
-    ${heroBlock(c, L)}
     ${whyBlock(c)}
     ${whoBlock(c)}
     ${servicesBlock(c)}

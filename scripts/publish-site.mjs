@@ -47,6 +47,8 @@ const PUBLISH_ROOT_CORE = [
   "home-ongil.css",
   "home-ongil-layout.css",
   "home-ongil.js",
+  "ecosystem.css",
+  "ecosystem.js",
   "apps-hub.css",
   "apps-hub.js",
   "ai-hub.css",
@@ -65,6 +67,10 @@ const PUBLISH_ROOT_CORE = [
   "pillar-service.css",
   "pillar-service.js",
   "business-page.css",
+  "business-film.css",
+  "business-film.js",
+  "studio-film.css",
+  "studio-film.js",
   "business-creative.css",
   "business-creative.js",
   "newon-studio.css",
@@ -146,6 +152,7 @@ const PUBLISH_COPY_DIRS = [
   { from: "tools", to: "tools", required: true },
   { from: "products", to: "products", required: false },
   { from: "ai", to: "ai", required: false },
+  { from: "ecosystem", to: "ecosystem", required: false },
   { from: "saas", to: "saas", required: false },
   { from: "games", to: "games", required: false },
   { from: "studio", to: "studio", required: false },
@@ -163,6 +170,7 @@ const PUBLISH_COPY_DIRS = [
   { from: "assets/hero-3d", to: "assets/hero-3d", required: true },
   { from: "assets/hero-film", to: "assets/hero-film", required: true },
   { from: "vendor/three", to: "vendor/three", required: true },
+  { from: "vendor/hls", to: "vendor/hls", required: false },
 ];
 
 const PUBLISH_ROOT_OPTIONAL = [

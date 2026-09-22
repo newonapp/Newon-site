@@ -1,4 +1,4 @@
-/** Localized labels for Life Stage IA refine. Merged onto enriched EN. */
+/** Localized labels for Livon IA refine. Merged onto enriched EN. */
 
 function cats(study, life, work, family, blurbs = {}) {
   return [
@@ -39,7 +39,7 @@ export const LIFE_STAGE_REFINE = {
       allStagesSub: "10代から70代",
     },
     hero: {
-      lead: "学校と進路、就職と独立、家族と健康、仕事のあとまで。10代から70代まで、Life Stageは人生の変化の前で必要な情報とサービスを見つけやすくつなぐライフサイクル・プラットフォームをつくっています。",
+      lead: "学校と進路、就職と独立、家族と健康、仕事のあとまで。10代から70代まで、Livonは人生の変化の前で必要な情報とサービスを見つけやすくつなぐライフサイクル・プラットフォームをつくっています。",
     },
     core: {
       title: "案内を受け、計画し、実行する。",
@@ -85,7 +85,7 @@ export const LIFE_STAGE_REFINE = {
       allStagesSub: "De la adolescencia a los 70",
     },
     hero: {
-      lead: "Escuela y camino, trabajo e independencia, familia y salud, y la vida después del trabajo. De la adolescencia a los 70, Life Stage construye una plataforma de ciclo de vida para hallar la información y los servicios que un cambio de vida requiere.",
+      lead: "Escuela y camino, trabajo e independencia, familia y salud, y la vida después del trabajo. De la adolescencia a los 70, Livon construye una plataforma de ciclo de vida para hallar la información y los servicios que un cambio de vida requiere.",
     },
     core: {
       title: "Orientación, plan y acción.",
@@ -131,7 +131,7 @@ export const LIFE_STAGE_REFINE = {
       allStagesSub: "Da adolescência aos 70",
     },
     hero: {
-      lead: "Escola e caminho, trabalho e independência, família e saúde, e a vida depois do trabalho. Da adolescência aos 70, o Life Stage constrói uma plataforma de ciclo de vida para achar informação e serviços que uma mudança de vida pede.",
+      lead: "Escola e caminho, trabalho e independência, família e saúde, e a vida depois do trabalho. Da adolescência aos 70, o Livon constrói uma plataforma de ciclo de vida para achar informação e serviços que uma mudança de vida pede.",
     },
     core: {
       title: "Orientação, plano e ação.",
@@ -177,7 +177,7 @@ export const LIFE_STAGE_REFINE = {
       allStagesSub: "De l’adolescence à 70 ans",
     },
     hero: {
-      lead: "École et parcours, travail et indépendance, famille et santé, et la vie après le travail. De l’adolescence à 70 ans, Life Stage construit une plateforme de cycle de vie pour trouver l’information et les services qu’un changement de vie demande.",
+      lead: "École et parcours, travail et indépendance, famille et santé, et la vie après le travail. De l’adolescence à 70 ans, Livon construit une plateforme de cycle de vie pour trouver l’information et les services qu’un changement de vie demande.",
     },
     core: {
       title: "S’orienter, planifier, agir.",
@@ -223,7 +223,7 @@ export const LIFE_STAGE_REFINE = {
       allStagesSub: "Vom Jugendalter bis 70",
     },
     hero: {
-      lead: "Schule und Weg, Arbeit und Unabhängigkeit, Familie und Gesundheit, und das Leben danach. Vom Jugendalter bis 70 baut Life Stage eine Lebensphasen-Plattform, die Information und Dienste für Lebenswechsel leichter findbar macht.",
+      lead: "Schule und Weg, Arbeit und Unabhängigkeit, Familie und Gesundheit, und das Leben danach. Vom Jugendalter bis 70 baut Livon eine Lebensphasen-Plattform, die Information und Dienste für Lebenswechsel leichter findbar macht.",
     },
     core: {
       title: "Orientierung, Plan, Umsetzung.",
@@ -269,7 +269,7 @@ export const LIFE_STAGE_REFINE = {
       allStagesSub: "किशोरावस्था से 70 तक",
     },
     hero: {
-      lead: "स्कूल और रास्ता, काम और स्वतंत्रता, परिवार और स्वास्थ्य, और काम के बाद का जीवन। किशोरावस्था से 70 तक Life Stage एक जीवन-चक्र मंच बना रहा है, ताकि जीवन के बदलाव में जरूरी जानकारी और सेवाएँ आसानी से मिल सकें।",
+      lead: "स्कूल और रास्ता, काम और स्वतंत्रता, परिवार और स्वास्थ्य, और काम के बाद का जीवन। किशोरावस्था से 70 तक Livon एक जीवन-चक्र मंच बना रहा है, ताकि जीवन के बदलाव में जरूरी जानकारी और सेवाएँ आसानी से मिल सकें।",
     },
     core: {
       title: "मार्गदर्शन, योजना, फिर करना।",
@@ -315,7 +315,7 @@ export const LIFE_STAGE_REFINE = {
       allStagesSub: "Remaja hingga 70-an",
     },
     hero: {
-      lead: "Sekolah dan jalur, kerja dan kemandirian, keluarga dan kesehatan, dan hidup setelah kerja. Dari remaja hingga 70-an, Life Stage membangun platform siklus hidup agar informasi dan layanan untuk perubahan hidup lebih mudah ditemukan.",
+      lead: "Sekolah dan jalur, kerja dan kemandirian, keluarga dan kesehatan, dan hidup setelah kerja. Dari remaja hingga 70-an, Livon membangun platform siklus hidup agar informasi dan layanan untuk perubahan hidup lebih mudah ditemukan.",
     },
     core: {
       title: "Panduan, rencana, lalu tindakan.",

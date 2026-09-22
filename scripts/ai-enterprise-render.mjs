@@ -5,6 +5,7 @@
 import { escapeHtml } from "./hub-utils.mjs";
 import { getAiEnterpriseCopy } from "./ai-enterprise-copy.mjs";
 import { renderAiSwitch } from "./ai-hub-render.mjs";
+import { renderAiFilmHero } from "./ai-film-hero.mjs";
 
 function nl(s) {
   return escapeHtml(String(s || "").replace(/<br\s*\/?>/gi, "\n")).replace(/\n/g, "<br />");
@@ -73,8 +74,9 @@ export function renderAiEnterpriseBody(flat, flatEn, lang) {
   const c = getAiEnterpriseCopy(langDir);
 
   return `<div class="ai-page cai-page cai-ent" data-ai-page>
+  ${renderAiFilmHero("enterprise", langDir)}
   ${renderAiSwitch(flat, flatEn, { active: "enterprise", personalHref: "../", enterpriseHref: "./" })}
-  <section class="cai-hero cai-hero--edit" data-ai-reveal>
+  <section id="cai-hero" class="cai-hero cai-hero--edit" data-ai-reveal>
     <div class="hub-inner cai-hero__grid">
       <div class="cai-hero__copy">
         <p class="cai-hero__eyebrow">${escapeHtml(c.kicker)}</p>

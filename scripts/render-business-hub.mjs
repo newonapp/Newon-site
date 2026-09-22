@@ -156,6 +156,7 @@ function businessEcosystemHtml(flat, flatEn, appPrefix = "../") {
 
 const hubShell = fs.readFileSync(path.join(ROOT, "templates", "hub-shell.html"), "utf8");
 const inquiryTemplate = fs.readFileSync(path.join(ROOT, "templates", "business-inquiry.html"), "utf8");
+const exploreOnly = process.argv.includes("--explore-only");
 
 const flatEn = flatten(loadJson("en.json"));
 
@@ -195,6 +196,8 @@ for (const { dir, file, htmlLang } of LANGS) {
   fs.mkdirSync(exploreDir, { recursive: true });
   fs.writeFileSync(path.join(exploreDir, "index.html"), explore);
 
+  if (exploreOnly) continue;
+
   // Inquiry hub — /business/inquiry/
   let inquiry = inquiryTemplate;
   inquiry = inquiry.replace(/\{\{LANG_DIR\}\}/g, dir);
@@ -225,11 +228,13 @@ for (const { dir, file, htmlLang } of LANGS) {
   fs.writeFileSync(path.join(inquiryDir, "index.html"), inquiry);
 }
 
-writeInquirySuccessPages();
-renderBusinessServices();
-renderBusinessPillars();
-renderPillarServices();
-renderCreative();
+if (!exploreOnly) {
+  writeInquirySuccessPages();
+  renderBusinessServices();
+  renderBusinessPillars();
+  renderPillarServices();
+  renderCreative();
+}
 
 const pub = path.join(ROOT, "_publish");
 if (fs.existsSync(pub)) {
@@ -244,4 +249,8 @@ if (fs.existsSync(pub)) {
   }
 }
 
-console.log("render-business-hub: wrote explore + inquiry hub pages (9 langs)");
+console.log(
+  exploreOnly
+    ? "render-business-hub: wrote explore hub pages only (9 langs)"
+    : "render-business-hub: wrote explore + inquiry hub pages (9 langs)"
+);

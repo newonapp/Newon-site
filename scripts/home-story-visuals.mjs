@@ -142,7 +142,7 @@ export function visualAi(lang = "en") {
   });
 }
 
-/** 03 Life Stage — horizontal journey timeline */
+/** 03 Livon — horizontal journey timeline */
 export function visualLifeStage() {
   return panelShell({
     mod: "life",

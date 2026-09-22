@@ -6,14 +6,14 @@ function scope(ui, pillars, first, changes) {
 
 const ja = scope(
   {
-    pillarsNote: "この三つは別アプリや別ブランドではなく、一つの Life Stage プラットフォームの中で広げていく事業領域です。",
+    pillarsNote: "この三つは別アプリや別ブランドではなく、一つの Livon プラットフォームの中で広げていく事業領域です。",
     firstNote: "次の八つの分野は今後の事業拡張計画です。いま使える機能や申込画面ではありません。",
     changeNote: "人生の変化は今後の拡張計画です。別の実行画面や申込機能ではありません。",
   },
   {
-    kicker: "Life Stage scope",
+    kicker: "Livon scope",
     title: "一つのプラットフォームで、\n三つに広げていきます。",
-    lead: "年代別のライフサイクル、人生の初めて、人生の変化を、一つの Life Stage のなかでつなぎます。",
+    lead: "年代別のライフサイクル、人生の初めて、人生の変化を、一つの Livon のなかでつなぎます。",
     items: [
       { n: "01", name: "年代別ライフサイクル", lead: "10代から70代まで、各段階に必要な暮らしの情報とサービスをつなぎます。" },
       { n: "02", name: "人生の初めて", lead: "初めての大人、就職、経済活動、投資、自立、結婚、育児など、人生で初めて経験するすべての瞬間を支えます。", planned: true },
@@ -45,14 +45,14 @@ const ja = scope(
 
 const es = scope(
   {
-    pillarsNote: "Estas tres no son apps ni marcas aparte. Son áreas de expansión dentro de una sola plataforma Life Stage.",
+    pillarsNote: "Estas tres no son apps ni marcas aparte. Son áreas de expansión dentro de una sola plataforma Livon.",
     firstNote: "Los ocho campos de abajo son un plan de expansión posterior, no un producto en vivo ni un flujo de solicitud.",
     changeNote: "Los cambios de vida son un plan de expansión posterior, no una pantalla de uso ni una función de solicitud.",
   },
   {
-    kicker: "Life Stage scope",
+    kicker: "Livon scope",
     title: "Una plataforma,\ntres direcciones para crecer.",
-    lead: "Etapas por edad, primeras experiencias y cambios de vida, conectados dentro de un solo Life Stage.",
+    lead: "Etapas por edad, primeras experiencias y cambios de vida, conectados dentro de un solo Livon.",
     items: [
       { n: "01", name: "Ciclo de vida por edad", lead: "De la adolescencia a los 70, conectamos información y servicios de vida para cada etapa." },
       { n: "02", name: "Primeras experiencias", lead: "Primera adultez, primer empleo, primer dinero, primera inversión, primera independencia, primer matrimonio, primera crianza.", planned: true },
@@ -84,14 +84,14 @@ const es = scope(
 
 const ptBr = scope(
   {
-    pillarsNote: "Esses três não são apps ou marcas separadas. São áreas de expansão dentro de uma única plataforma Life Stage.",
+    pillarsNote: "Esses três não são apps ou marcas separadas. São áreas de expansão dentro de uma única plataforma Livon.",
     firstNote: "Os oito campos abaixo são um plano de expansão posterior, não um produto ativo nem um fluxo de inscrição.",
     changeNote: "Mudanças de vida são um plano de expansão posterior, não uma tela de uso nem um pedido.",
   },
   {
-    kicker: "Life Stage scope",
+    kicker: "Livon scope",
     title: "Uma plataforma,\ntrês direções para crescer.",
-    lead: "Etapas por idade, primeiras experiências e mudanças de vida — ligadas dentro de um só Life Stage.",
+    lead: "Etapas por idade, primeiras experiências e mudanças de vida — ligadas dentro de um só Livon.",
     items: [
       { n: "01", name: "Ciclo de vida por idade", lead: "Da adolescência aos 70, ligamos informação e serviços de vida para cada etapa." },
       { n: "02", name: "Primeiras experiências", lead: "Primeira vida adulta, primeiro emprego, primeiro dinheiro, primeiro investimento, primeira independência, primeiro casamento, primeira criação dos filhos.", planned: true },
@@ -123,14 +123,14 @@ const ptBr = scope(
 
 const fr = scope(
   {
-    pillarsNote: "Ces trois axes ne sont pas des applications ou des marques séparées. Ce sont des domaines d’expansion d’une seule plateforme Life Stage.",
+    pillarsNote: "Ces trois axes ne sont pas des applications ou des marques séparées. Ce sont des domaines d’expansion d’une seule plateforme Livon.",
     firstNote: "Les huit domaines ci-dessous sont un plan d’expansion ultérieur, pas un produit en ligne ni un parcours de demande.",
     changeNote: "Les changements de vie sont un plan d’expansion ultérieur, pas un écran d’usage ni une fonction de demande.",
   },
   {
-    kicker: "Life Stage scope",
+    kicker: "Livon scope",
     title: "Une plateforme,\ntrois directions pour grandir.",
-    lead: "Les étapes selon l’âge, les premières fois et les changements de vie — reliés dans un seul Life Stage.",
+    lead: "Les étapes selon l’âge, les premières fois et les changements de vie — reliés dans un seul Livon.",
     items: [
       { n: "01", name: "Cycle de vie selon l’âge", lead: "De l’adolescence à 70 ans, nous relions l’information et les services de vie de chaque étape." },
       { n: "02", name: "Premières expériences", lead: "Première vie adulte, premier emploi, premier argent, premier investissement, première indépendance, premier mariage, première parentalité.", planned: true },
@@ -167,9 +167,9 @@ const de = scope(
     changeNote: "Lebensveränderungen sind ein späterer Ausbauplan, keine Nutzungsoberfläche und keine Antragsfunktion.",
   },
   {
-    kicker: "Life Stage scope",
+    kicker: "Livon scope",
     title: "Eine Plattform,\ndrei Richtungen zum Wachsen.",
-    lead: "Lebensphasen nach Alter, erste Erfahrungen und Lebensveränderungen — verbunden in einem Life Stage.",
+    lead: "Lebensphasen nach Alter, erste Erfahrungen und Lebensveränderungen — verbunden in einem Livon.",
     items: [
       { n: "01", name: "Lebensphasen nach Alter", lead: "Von den Teenagerjahren bis zu den 70ern verbinden wir Alltagsinformation und Dienste für jede Phase." },
       { n: "02", name: "Erste Erfahrungen", lead: "Erstes Erwachsensein, erster Job, erstes Geld, erste Anlage, erste Selbstständigkeit, erste Ehe, erste Elternschaft.", planned: true },
@@ -201,14 +201,14 @@ const de = scope(
 
 const hi = scope(
   {
-    pillarsNote: "ये तीन अलग ऐप या ब्रांड नहीं हैं। ये एक ही Life Stage प्लेटफ़ॉर्म के अंदर विस्तार के क्षेत्र हैं।",
+    pillarsNote: "ये तीन अलग ऐप या ब्रांड नहीं हैं। ये एक ही Livon प्लेटफ़ॉर्म के अंदर विस्तार के क्षेत्र हैं।",
     firstNote: "नीचे के आठ क्षेत्र बाद की विस्तार योजना हैं, अभी चल रहा उत्पाद या आवेदन प्रवाह नहीं।",
     changeNote: "जीवन के बदलाव बाद की विस्तार योजना हैं, अलग उपयोग स्क्रीन या आवेदन सुविधा नहीं।",
   },
   {
-    kicker: "Life Stage scope",
+    kicker: "Livon scope",
     title: "एक प्लेटफ़ॉर्म,\nतीन दिशाएँ आगे बढ़ने की।",
-    lead: "आयु के अनुसार जीवन चरण, पहली बार के अनुभव, और जीवन के बदलाव — एक Life Stage के अंदर जुड़े।",
+    lead: "आयु के अनुसार जीवन चरण, पहली बार के अनुभव, और जीवन के बदलाव — एक Livon के अंदर जुड़े।",
     items: [
       { n: "01", name: "आयु के अनुसार जीवन चक्र", lead: "किशोरावस्था से 70 तक, हर चरण के लिए जीवन की जानकारी और सेवाएँ जोड़ते हैं।" },
       { n: "02", name: "पहली बार के अनुभव", lead: "पहली वयस्कता, पहली नौकरी, पहला पैसा, पहला निवेश, पहली स्वतंत्रता, पहली शादी, पहली परवरिश।", planned: true },
@@ -240,14 +240,14 @@ const hi = scope(
 
 const id = scope(
   {
-    pillarsNote: "Ketiga hal ini bukan aplikasi atau merek terpisah. Ini area ekspansi di dalam satu platform Life Stage.",
+    pillarsNote: "Ketiga hal ini bukan aplikasi atau merek terpisah. Ini area ekspansi di dalam satu platform Livon.",
     firstNote: "Delapan bidang di bawah adalah rencana ekspansi kemudian, bukan produk yang sudah berjalan atau alur pendaftaran.",
     changeNote: "Perubahan hidup adalah rencana ekspansi kemudian, bukan layar penggunaan atau fungsi pendaftaran.",
   },
   {
-    kicker: "Life Stage scope",
+    kicker: "Livon scope",
     title: "Satu platform,\ntiga arah untuk tumbuh.",
-    lead: "Tahap hidup menurut usia, pengalaman pertama, dan perubahan hidup — terhubung di dalam satu Life Stage.",
+    lead: "Tahap hidup menurut usia, pengalaman pertama, dan perubahan hidup — terhubung di dalam satu Livon.",
     items: [
       { n: "01", name: "Siklus hidup menurut usia", lead: "Dari remaja hingga 70-an, kami menghubungkan informasi dan layanan hidup untuk setiap tahap." },
       { n: "02", name: "Pengalaman pertama", lead: "Dewasa pertama, pekerjaan pertama, uang pertama, investasi pertama, kemandirian pertama, pernikahan pertama, pengasuhan pertama.", planned: true },

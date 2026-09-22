@@ -55,4 +55,56 @@
   }
   if (document.readyState === "complete") goHash();
   else window.addEventListener("load", goHash);
+
+  var film = root.querySelector("[data-nog-film]");
+  var video = film && film.querySelector(".nog-film__video");
+  if (film) {
+    var freezeFilm = function () {
+      film.classList.add("is-static");
+      if (video) {
+        video.pause();
+        video.removeAttribute("autoplay");
+      }
+    };
+    var tryPlay = function () {
+      if (!video || reduce || film.classList.contains("is-static")) return;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
+      var play = video.play();
+      if (play && typeof play.catch === "function") play.catch(freezeFilm);
+    };
+    if (reduce) {
+      freezeFilm();
+    } else if (video) {
+      video.addEventListener("error", freezeFilm, { once: true });
+      video.addEventListener(
+        "canplay",
+        function () {
+          film.classList.remove("is-static");
+          tryPlay();
+        },
+        { once: true }
+      );
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) tryPlay();
+              else if (!video.paused) video.pause();
+            });
+          },
+          { threshold: 0.18 }
+        );
+        io.observe(film);
+      } else {
+        tryPlay();
+      }
+    }
+    requestAnimationFrame(function () {
+      film.classList.add("is-ready");
+    });
+  }
 })();

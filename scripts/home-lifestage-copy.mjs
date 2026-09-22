@@ -1,5 +1,5 @@
 /**
- * Life Stage detail-page copy. KO / EN are complete; other locales merge overlays onto EN.
+ * Livon detail-page copy. KO / EN are complete; other locales merge overlays onto EN.
  * First-moment / knowledge data files stay in the repo but are not shown on this intro page.
  */
 import { LIFE_STAGE_I18N } from "./home-lifestage-i18n.mjs";
@@ -18,7 +18,7 @@ function deepMerge(base, over) {
 
 const KO = {
   ui: {
-    back: "홈의 Life Stage 소개로",
+    back: "홈의 Livon 소개로",
     planned: "향후 이용 흐름",
     expandNote: "현재 운영 현황이 아니라 향후 사업 확장 계획입니다.",
     conceptNote: "현재는 사업 소개입니다. 예약·결제·가입은 아직 연결되지 않았습니다.",
@@ -27,33 +27,33 @@ const KO = {
     ongilNote: "돌봄과 생활지원이 필요한 경우, 향후 Ongil과 연결하는 방향을 검토합니다. 현재 두 서비스는 연동되어 있지 않습니다.",
     areasNote: "아래 여섯 영역은 향후 사업 확장 계획입니다. 현재 운영 중인 기능처럼 보이지 않습니다.",
     relatedNote: "현재 다른 Newon 사업과 기술적으로 연동되거나 데이터가 자동 공유되지 않습니다. 아래는 향후 연결 방향입니다.",
-    pillarsNote: "세 가지는 서로 다른 앱이나 브랜드가 아니라, 하나의 Life Stage 플랫폼 안에서 넓혀 갈 사업 영역입니다.",
+    pillarsNote: "세 가지는 서로 다른 앱이나 브랜드가 아니라, 하나의 Livon 플랫폼 안에서 넓혀 갈 사업 영역입니다.",
     firstNote: "아래 여덟 분야는 향후 사업 확장 계획입니다. 실제 이용 화면이나 신청 기능이 아닙니다.",
     changeNote: "인생의 변화는 향후 확장 계획입니다. 별도의 실행 화면이나 신청 기능이 아닙니다.",
   },
   hero: {
-    kicker: "NEWON LIFE STAGE",
-    brand: "LIFE STAGE",
+    kicker: "NEWON Livon",
+    brand: "Livon",
     titleHtml: "삶의 모든 단계에,<br>필요한 다음을.",
     lead: "10대부터 70대까지. 생애 첫 경험과 인생의 변화까지 함께하는 생애주기 플랫폼.",
-    ctaMain: "Life Stage 살펴보기",
+    ctaMain: "Livon 살펴보기",
     ctaSub: "사업 문의",
     status: "현재는 사업 소개입니다.",
     pathLabel: "10대부터 70대까지",
   },
   why: {
-    kicker: "Why Life Stage",
+    kicker: "Why Livon",
     title: "삶이 달라질 때마다,\n필요한 정보도 달라집니다.",
     body: [
       "진학과 진로를 고민하는 순간부터 독립과 첫 직장, 주거와 가족, 은퇴 이후의 새로운 일상까지.",
       "삶의 단계가 달라질 때마다 마주하는 선택과 필요한 정보도 달라집니다.",
-      "Life Stage는 이러한 변화 속에서 자신의 상황에 맞는 정보와 서비스를 보다 쉽게 찾을 수 있도록 돕는 것을 목표로 합니다.",
+      "Livon은 이러한 변화 속에서 자신의 상황에 맞는 정보와 서비스를 보다 쉽게 찾을 수 있도록 돕는 것을 목표로 합니다.",
     ],
   },
   journey: {
     kicker: "Life Journey",
     title: "10대부터 70대까지,\n이어지는 삶의 여정.",
-    lead: "삶의 단계마다 달라지는 고민과 선택. Life Stage는 각자의 현재에 필요한 정보와 서비스를 연결합니다.",
+    lead: "삶의 단계마다 달라지는 고민과 선택. Livon은 각자의 현재에 필요한 정보와 서비스를 연결합니다.",
     items: [
       {
         id: "10",
@@ -114,9 +114,9 @@ const KO = {
     ],
   },
   pillars: {
-    kicker: "Life Stage scope",
+    kicker: "Livon scope",
     title: "하나의 플랫폼에서,\n세 가지로 넓혀갑니다.",
-    lead: "연령별 생애주기, 생애 첫 경험, 인생의 변화를 하나의 Life Stage 안에서 연결합니다.",
+    lead: "연령별 생애주기, 생애 첫 경험, 인생의 변화를 하나의 Livon 안에서 연결합니다.",
     items: [
       {
         n: "01",
@@ -347,8 +347,8 @@ const KO = {
   },
   related: {
     kicker: "NEWON",
-    title: "Newon 안에서\nLife Stage가 맡는 자리.",
-    lead: "Life Stage는 Newon 여섯 사업 가운데 생애주기 플랫폼입니다. 다른 사업의 기능을 직접 대신하지 않습니다.",
+    title: "Newon 안에서\nLivon이 맡는 자리.",
+    lead: "Livon은 Newon 여섯 사업 가운데 생애주기 플랫폼입니다. 다른 사업의 기능을 직접 대신하지 않습니다.",
     items: [
       { n: "01", name: "Newon Consumer", body: "생애 단계별 필요한 생활 앱과 서비스 연결.", planned: true },
       { n: "02", name: "Newon AI", body: "개인 상황에 맞는 AI 기반 생활 지원.", planned: true },
@@ -358,9 +358,9 @@ const KO = {
     ],
   },
   close: {
-    kicker: "LIFE STAGE VISION",
+    kicker: "Livon VISION",
     titleHtml: "삶이 달라져도,<br>연결은 이어집니다.",
-    lead: "Life Stage는 각자의 삶의 속도와 선택을 존중하며, 새로운 시작과 변화의 순간마다 필요한 정보와 서비스를 연결하는 플랫폼으로 성장해 나갑니다.",
+    lead: "Livon은 각자의 삶의 속도와 선택을 존중하며, 새로운 시작과 변화의 순간마다 필요한 정보와 서비스를 연결하는 플랫폼으로 성장해 나갑니다.",
     ctaMain: "사업 및 협업 문의",
     ctaSub: "Newon의 다른 사업 살펴보기",
   },
@@ -368,7 +368,7 @@ const KO = {
 
 const EN = {
   ui: {
-    back: "Back to Life Stage on the homepage",
+    back: "Back to Livon on the homepage",
     planned: "Planned journey",
     expandNote: "A future expansion plan, not a claim of current operations.",
     conceptNote: "This page is a business introduction. Booking, payment, and sign-up are not connected yet.",
@@ -376,34 +376,34 @@ const EN = {
     journeyNote: "The themes for each decade are typical examples. Pace and needs differ from person to person.",
     ongilNote: "When care or living support is needed, we may later connect with Ongil. The two services are not linked today.",
     areasNote: "The six areas below are a later expansion plan, not live products.",
-    relatedNote: "Life Stage is not technically linked to other Newon businesses today, and data is not shared automatically. The links below are later directions.",
-    pillarsNote: "These three are not separate apps or brands. They are expansion areas inside one Life Stage platform.",
+    relatedNote: "Livon is not technically linked to other Newon businesses today, and data is not shared automatically. The links below are later directions.",
+    pillarsNote: "These three are not separate apps or brands. They are expansion areas inside one Livon platform.",
     firstNote: "The eight fields below are a later expansion plan, not a live product or apply flow.",
     changeNote: "Life changes are a later expansion plan, not a separate tool or application screen.",
   },
   hero: {
-    kicker: "NEWON LIFE STAGE",
-    brand: "LIFE STAGE",
+    kicker: "NEWON Livon",
+    brand: "Livon",
     titleHtml: "At every stage of life,<br>the next thing you need.",
     lead: "From the teens through the 70s. A life-stage platform for first experiences, life changes, and new beginnings.",
-    ctaMain: "Explore Life Stage",
+    ctaMain: "Explore Livon",
     ctaSub: "Business inquiry",
     status: "This page is a business introduction.",
     pathLabel: "Teens to 70s",
   },
   why: {
-    kicker: "Why Life Stage",
+    kicker: "Why Livon",
     title: "When life changes,\nthe information you need changes too.",
     body: [
       "From school and career questions to living on your own, a first job, a home, family, and a new daily life after work.",
       "Each stage brings different choices, and different information.",
-      "Life Stage aims to make it easier to find information and services that fit where you are.",
+      "Livon aims to make it easier to find information and services that fit where you are.",
     ],
   },
   journey: {
     kicker: "Life Journey",
     title: "From the teens to the 70s,\none continuing journey.",
-    lead: "Questions and choices shift with each stage. Life Stage connects the information and services that fit the present.",
+    lead: "Questions and choices shift with each stage. Livon connects the information and services that fit the present.",
     items: [
       {
         id: "10",
@@ -464,9 +464,9 @@ const EN = {
     ],
   },
   pillars: {
-    kicker: "Life Stage scope",
+    kicker: "Livon scope",
     title: "One platform,\nthree directions to grow.",
-    lead: "Age-based life stages, first experiences, and life changes — connected inside one Life Stage.",
+    lead: "Age-based life stages, first experiences, and life changes — connected inside one Livon.",
     items: [
       {
         n: "01",
@@ -697,8 +697,8 @@ const EN = {
   },
   related: {
     kicker: "NEWON",
-    title: "Life Stage’s place\ninside Newon.",
-    lead: "Life Stage is the life-cycle platform among Newon’s six businesses. It does not replace the others.",
+    title: "Livon’s place\ninside Newon.",
+    lead: "Livon is the life-cycle platform among Newon’s six businesses. It does not replace the others.",
     items: [
       { n: "01", name: "Newon Consumer", body: "Connect living apps and services that fit each life stage.", planned: true },
       { n: "02", name: "Newon AI", body: "AI living support that fits the person’s situation.", planned: true },
@@ -708,9 +708,9 @@ const EN = {
     ],
   },
   close: {
-    kicker: "LIFE STAGE VISION",
+    kicker: "Livon VISION",
     titleHtml: "Even as life changes,<br>the connection continues.",
-    lead: "Life Stage respects each person’s pace and choices, and grows as a platform that connects the information and services needed at every new beginning and change.",
+    lead: "Livon respects each person’s pace and choices, and grows as a platform that connects the information and services needed at every new beginning and change.",
     ctaMain: "Business and partnership inquiry",
     ctaSub: "See Newon’s other businesses",
   },

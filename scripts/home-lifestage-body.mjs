@@ -1,5 +1,5 @@
 /**
- * Life Stage detail section HTML. Scoped to #lifestage-detail.
+ * Livon detail section HTML. Scoped to #lifestage-detail.
  */
 import { escapeHtml } from "./hub-utils.mjs";
 import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
@@ -65,24 +65,31 @@ function heroVisual(c) {
 }
 
 function heroBlock(c, lang) {
-  return `<div class="nls-crumb">
-      <a href="/${escapeHtml(lang)}/">NEWON</a>
-      <span aria-hidden="true">/</span>
-      <span>LIFE STAGE</span>
-    </div>
-    <div class="nls-hero" data-hs-section>
-    <div class="nls-hero__grid">
-      <div class="nls-hero__copy">
-        <p class="nls-kicker">${escapeHtml(c.hero.kicker)}</p>
-        <h1 id="story-lifestage-title" class="nls-hero__title">${c.hero.titleHtml}</h1>
-        <p class="nls-lead">${escapeHtml(c.hero.lead)}</p>
-        <p class="nls-status">${escapeHtml(c.hero.status)}</p>
-        <div class="nls-actions">
+  return `<div class="nls-film" data-nls-film data-hs-section>
+    <div class="nls-film__stage">
+      <div class="nls-film__fallback" aria-hidden="true"></div>
+      <video
+        class="nls-film__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="/assets/hero-film/livon-poster.jpg"
+        aria-hidden="true"
+      >
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_102608_5fa1187d-9ac6-44fb-82ab-54376200abc0.mp4" type="video/mp4" />
+      </video>
+      <div class="nls-film__lockup">
+        <div class="nls-film__veil" aria-hidden="true"></div>
+        <p class="nls-film__wordmark">Livon</p>
+        <h1 id="story-lifestage-title" class="nls-film__slogan">${c.hero.titleHtml}</h1>
+        <p class="nls-film__lead">${escapeHtml(c.hero.lead)}</p>
+        <div class="nls-film__actions">
           <a class="nls-btn" href="#nls-why" data-nls-scroll>${escapeHtml(c.hero.ctaMain)} →</a>
           <a class="nls-btn nls-btn--ghost" href="/${escapeHtml(lang)}/business/inquiry/">${escapeHtml(c.hero.ctaSub)}</a>
         </div>
       </div>
-      ${heroVisual(c)}
     </div>
   </div>`;
 }
@@ -317,9 +324,9 @@ export function renderLifeStageSection(lang, opts = {}) {
     ? `<p class="nls-closebar"><a class="nls-btn nls-btn--ghost" href="/${escapeHtml(L)}/#story-lifestage">${escapeHtml(c.ui.back)}</a></p>`
     : "";
   return `<section id="lifestage-detail" class="nls" data-story="lifestage" aria-labelledby="story-lifestage-title">
+    ${heroBlock(c, L)}
   <div class="nls__wrap">
     ${back}
-    ${heroBlock(c, L)}
     ${whyBlock(c)}
     ${journeyBlock(c)}
     ${pillarsBlock(c)}

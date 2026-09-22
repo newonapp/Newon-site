@@ -1,9 +1,6 @@
 /* Newon homepage film hero — first screen only. Does not restyle .hs-home. */
 #home.site-shell #top.hero.hero--ecosystem.hero--film {
-  --nhv-sky: #d7e6ef;
-  --nhv-meadow: #7faf6c;
-  --eco-top: 0;
-  --eco-bottom: 0;
+  --nhv-fallback: #111111;
   position: relative;
   z-index: 1;
   isolation: isolate;
@@ -17,7 +14,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background: var(--nhv-sky);
+  background: var(--nhv-fallback);
 }
 
 #home.site-shell #top.hero--film .nhv-stage {
@@ -27,17 +24,14 @@
   height: 100%;
   min-height: 0;
   overflow: hidden;
-  background:
-    linear-gradient(180deg, #d7e6ef 0%, #c5d9b8 42%, #6f9f5c 100%);
+  background: var(--nhv-fallback);
 }
 
 #home.site-shell #top.hero--film .nhv-fallback {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background:
-    url("/assets/hero-film/poster.jpg") center 58% / cover no-repeat,
-    linear-gradient(180deg, #d7e6ef 0%, #c5d9b8 42%, #6f9f5c 100%);
+  background: var(--nhv-fallback);
 }
 
 #home.site-shell #top.hero--film .nhv-video {
@@ -47,8 +41,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 58%;
+  object-position: center center;
   pointer-events: none;
+}
+
+#home.site-shell #top.hero--film .nhv-video::-webkit-media-controls {
+  display: none !important;
 }
 
 #home.site-shell #top.hero--film.is-static .nhv-video {
@@ -72,38 +70,13 @@
   pointer-events: none;
 }
 
-#home.site-shell #top.hero--film .nh3d-lockup__veil {
-  position: absolute;
-  left: 50%;
-  top: 46%;
-  z-index: 0;
-  width: min(46rem, 118%);
-  height: min(28rem, 148%);
-  transform: translate(-50%, -50%);
-  background:
-    radial-gradient(
-      ellipse 58% 52% at 50% 48%,
-      rgba(8, 14, 12, 0.42) 0%,
-      rgba(8, 14, 12, 0.22) 46%,
-      rgba(8, 14, 12, 0) 78%
-    );
-  pointer-events: none;
-}
-
-#home.site-shell #top.hero--film .nh3d-lockup__wordmark,
-#home.site-shell #top.hero--film .nh3d-lockup__slogan,
-#home.site-shell #top.hero--film .nh3d-lockup__rule,
-#home.site-shell #top.hero--film .nh3d-lockup__lead {
-  position: relative;
-  z-index: 1;
-}
-
 #home.site-shell #top.hero--film .nh3d-lockup__wordmark {
   display: block;
+  position: relative;
+  top: -2.1rem;
   width: min(38rem, 78vw);
   height: auto;
   margin: 0 0 1.15rem;
-  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.28));
 }
 
 #home.site-shell #top.hero--film .nh3d-lockup__slogan {
@@ -115,7 +88,6 @@
   letter-spacing: -0.045em;
   line-height: 1.28;
   white-space: pre-line;
-  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.38);
 }
 
 #home.site-shell #top.hero--film .nh3d-lockup__rule {
@@ -124,7 +96,6 @@
   height: 1px;
   margin: 1.05rem 0 0.95rem;
   background: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 #home.site-shell #top.hero--film .nh3d-lockup__lead {
@@ -137,7 +108,6 @@
   letter-spacing: -0.02em;
   line-height: 1.62;
   white-space: pre-line;
-  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.36);
 }
 
 #home.site-shell #top.hero--film .nh3d-lockup__wordmark,
@@ -195,10 +165,8 @@
     font-size: 0.9rem;
   }
 
-  #home.site-shell #top.hero--film .nhv-video,
-  #home.site-shell #top.hero--film .nhv-fallback {
-    object-position: center 62%;
-    background-position: center 62%;
+  #home.site-shell #top.hero--film .nhv-video {
+    object-position: center 42%;
   }
 }
 
@@ -215,10 +183,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #home.site-shell #top.hero--film .nhv-video {
-    display: none;
-  }
-
   #home.site-shell #top.hero--film .nh3d-lockup__wordmark,
   #home.site-shell #top.hero--film .nh3d-lockup__slogan,
   #home.site-shell #top.hero--film .nh3d-lockup__rule,

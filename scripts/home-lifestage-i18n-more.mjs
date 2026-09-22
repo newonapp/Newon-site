@@ -1,4 +1,4 @@
-/** FR / DE / HI / ID overlays for Life Stage. Merged onto EN. */
+/** FR / DE / HI / ID overlays for Livon. Merged onto EN. */
 
 export const LIFE_STAGE_I18N_MORE = {
   fr: {
@@ -24,8 +24,8 @@ export const LIFE_STAGE_I18N_MORE = {
     },
     hero: {
       titleHtml: "À chaque nouveau moment de la vie,<br>nous relions l’information dont vous avez besoin.",
-      lead: "École et parcours, travail et indépendance, famille et santé, et la vie après le travail. De l’adolescence à 70 ans, Life Stage construit une plateforme de cycle de vie pour trouver l’information et les services qu’un changement de vie demande.",
-      ctaMain: "Découvrir Life Stage",
+      lead: "École et parcours, travail et indépendance, famille et santé, et la vie après le travail. De l’adolescence à 70 ans, Livon construit une plateforme de cycle de vie pour trouver l’information et les services qu’un changement de vie demande.",
+      ctaMain: "Découvrir Livon",
       ctaSub: "Voir la structure du service",
       status: "Ceci est une présentation de l’activité et un aperçu de concept.",
     },
@@ -111,7 +111,7 @@ export const LIFE_STAGE_I18N_MORE = {
     },
     platform: {
       title: "Commencer par le savoir.\nS’étendre à toute la vie.",
-      lead: "Life Stage s’étend des savoirs et outils d’action vers l’IA, la communauté, les spécialistes, les services et les solutions pour organisations.",
+      lead: "Livon s’étend des savoirs et outils d’action vers l’IA, la communauté, les spécialistes, les services et les solutions pour organisations.",
       items: [
         { id: "knowledge", layer: "core", name: "Life Knowledge", blurb: "Savoirs de vie et apprentissage par étapes", status: "planned", features: ["Bases par domaine", "Termes, cas, guides", "Lien vers les listes"], example: "Apprendre un premier bail des bases jusqu’aux points à vérifier" },
         { id: "ai", layer: "core", name: "Life AI", blurb: "Guidance de vie adaptée au moment", status: "planned", features: ["Questions de situation", "Ordre de préparation", "Suggestions de savoirs"], example: "Transformer une question d’indépendance en chemin de préparation" },
@@ -145,8 +145,8 @@ export const LIFE_STAGE_I18N_MORE = {
       note: "Les contrôles de titres et les domaines réglementés (droit, finance, santé) nécessitent un examen séparé avant lancement. Nous n’affichons pas de spécialistes, notes ou volumes inventés.",
     },
     eco: {
-      title: "Commencer dans Life Stage.\nContinuer dans les apps du quotidien Newon.",
-      lead: "Life Stage aide à préparer et à agir. Les apps Newon enregistrent déjà le quotidien. La synchronisation automatique n’existe pas encore — voici la liaison prévue.",
+      title: "Commencer dans Livon.\nContinuer dans les apps du quotidien Newon.",
+      lead: "Livon aide à préparer et à agir. Les apps Newon enregistrent déjà le quotidien. La synchronisation automatique n’existe pas encore — voici la liaison prévue.",
       groups: [
         { id: "finance", title: "Argent et coût de la vie", slugs: ["savy", "subping", "piggyup"] },
         { id: "habit", title: "Objectifs, habitudes et temps", slugs: ["goalup", "ox-month", "countup"] },
@@ -154,12 +154,12 @@ export const LIFE_STAGE_I18N_MORE = {
         { id: "plus", title: "Un compte et un abonnement", slugs: ["newon-plus"] },
       ],
       ongilTitle: "Vie et soin des aînés",
-      ongilLead: "Ongil est une activité de soin aux aînés, axée sur la sécurité, le quotidien et le lien familial. Life Stage relie l’information aux changements de vie à tout âge et ne remplace pas les soins d’Ongil.",
+      ongilLead: "Ongil est une activité de soin aux aînés, axée sur la sécurité, le quotidien et le lien familial. Livon relie l’information aux changements de vie à tout âge et ne remplace pas les soins d’Ongil.",
       ongilCta: "Voir Ongil",
     },
     revenue: {
       title: "Du quotidien d’une personne\naux services pour entreprises et villes.",
-      lead: "Life Stage examine un chemin des personnes vers spécialistes et partenaires, puis vers entreprises et institutions.",
+      lead: "Livon examine un chemin des personnes vers spécialistes et partenaires, puis vers entreprises et institutions.",
       pillars: [
         { id: "person", title: "Pour les personnes", items: ["Savoirs de vie de base", "IA et outils de plan premium", "Packs de préparation", "Apprentissage plus profond"] },
         { id: "supply", title: "Pour spécialistes et partenaires", items: ["Connexion de conseil", "Partenariats de services", "Outils de réservation et clients", "Accords de plateforme"] },
@@ -178,7 +178,7 @@ export const LIFE_STAGE_I18N_MORE = {
     close: {
       titleHtml: "Le chapitre suivant<br>ne devrait pas se vivre seul.",
       lead: "Une plateforme de cycle de vie qui relie information et services face aux changements, de l’adolescence à 70 ans. L’âge est un guide d’exploration. Cette page est une présentation : conseil et réservations ne sont pas encore en ligne.",
-      ctaMain: "En savoir plus sur Life Stage",
+      ctaMain: "En savoir plus sur Livon",
       ctaSub: "Demande business et partenariat",
     },
   },
@@ -205,8 +205,8 @@ export const LIFE_STAGE_I18N_MORE = {
     },
     hero: {
       titleHtml: "In jedem neuen Lebensmoment<br>verbinden wir die Information, die Sie brauchen.",
-      lead: "Schule und Weg, Arbeit und Unabhängigkeit, Familie und Gesundheit, und das Leben danach. Vom Jugendalter bis 70 baut Life Stage eine Lebensphasen-Plattform, die Information und Dienste für Lebenswechsel leichter findbar macht.",
-      ctaMain: "Life Stage kennenlernen",
+      lead: "Schule und Weg, Arbeit und Unabhängigkeit, Familie und Gesundheit, und das Leben danach. Vom Jugendalter bis 70 baut Livon eine Lebensphasen-Plattform, die Information und Dienste für Lebenswechsel leichter findbar macht.",
+      ctaMain: "Livon kennenlernen",
       ctaSub: "Die Service-Struktur sehen",
       status: "Dies ist eine Geschäftsvorstellung und eine Konzeptvorschau.",
     },
@@ -292,7 +292,7 @@ export const LIFE_STAGE_I18N_MORE = {
     },
     platform: {
       title: "Mit Wissen beginnen.\nÜber das ganze Leben wachsen.",
-      lead: "Life Stage wächst von Lebenswissen und Handlungswerkzeugen zu KI, Community, Fachleuten, Diensten und Lösungen für Organisationen.",
+      lead: "Livon wächst von Lebenswissen und Handlungswerkzeugen zu KI, Community, Fachleuten, Diensten und Lösungen für Organisationen.",
       items: [
         { id: "knowledge", layer: "core", name: "Life Knowledge", blurb: "Lebenswissen und Lernen in Schritten", status: "planned", features: ["Grundlagen je Feld", "Begriffe, Fälle, Leitfäden", "Listenverbindung"], example: "Einen ersten Mietvertrag von den Basics bis zu den Prüfpunkten lernen" },
         { id: "ai", layer: "core", name: "Life AI", blurb: "Persönliche Lebensführung für den Moment", status: "planned", features: ["Situationsfragen", "Vorbereitungsreihenfolge", "Wissensvorschläge"], example: "Eine Auszugsfrage in einen Vorbereitungsweg verwandeln" },
@@ -326,8 +326,8 @@ export const LIFE_STAGE_I18N_MORE = {
       note: "Nachweise und regulierte Felder wie Recht, Finanzen und Gesundheit brauchen vor dem Launch eine eigene Prüfung. Wir zeigen keine erfundenen Fachleute, Bewertungen oder Anzahlen.",
     },
     eco: {
-      title: "In Life Stage beginnen.\nIm Newon-Alltag weitergehen.",
-      lead: "Life Stage hilft vorzubereiten und zu handeln. Bestehende Newon-Apps erfassen schon den Alltag. Automatische Synchronisation gibt es noch nicht — das ist die geplante Verbindung.",
+      title: "In Livon beginnen.\nIm Newon-Alltag weitergehen.",
+      lead: "Livon hilft vorzubereiten und zu handeln. Bestehende Newon-Apps erfassen schon den Alltag. Automatische Synchronisation gibt es noch nicht — das ist die geplante Verbindung.",
       groups: [
         { id: "finance", title: "Geld und Lebenshaltungskosten", slugs: ["savy", "subping", "piggyup"] },
         { id: "habit", title: "Ziele, Gewohnheiten und Zeit", slugs: ["goalup", "ox-month", "countup"] },
@@ -335,12 +335,12 @@ export const LIFE_STAGE_I18N_MORE = {
         { id: "plus", title: "Ein Konto und Mitgliedschaft", slugs: ["newon-plus"] },
       ],
       ongilTitle: "Leben und Pflege im Alter",
-      ongilLead: "Ongil ist ein Senior-Care-Geschäft mit Fokus auf Sicherheit, Alltagshilfe und Familienverbindung. Life Stage verbindet Information zu Lebenswechseln in jedem Alter und ersetzt Ongils Pflege nicht.",
+      ongilLead: "Ongil ist ein Senior-Care-Geschäft mit Fokus auf Sicherheit, Alltagshilfe und Familienverbindung. Livon verbindet Information zu Lebenswechseln in jedem Alter und ersetzt Ongils Pflege nicht.",
       ongilCta: "Ongil ansehen",
     },
     revenue: {
       title: "Vom Alltag einer Person\nzu Diensten für Unternehmen und Städte.",
-      lead: "Life Stage prüft einen Weg von Einzelpersonen zu Fachleuten und Partnern, dann zu Unternehmen und Institutionen.",
+      lead: "Livon prüft einen Weg von Einzelpersonen zu Fachleuten und Partnern, dann zu Unternehmen und Institutionen.",
       pillars: [
         { id: "person", title: "Für Einzelpersonen", items: ["Grundlegendes Lebenswissen", "Premium-KI und Planungstools", "Vorbereitungspakete", "Vertieftes Lernen"] },
         { id: "supply", title: "Für Fachleute und Partner", items: ["Beratungsverbindung", "Dienstpartnerschaften", "Buchung und Kunden", "Plattformvereinbarungen"] },
@@ -359,7 +359,7 @@ export const LIFE_STAGE_I18N_MORE = {
     close: {
       titleHtml: "Das nächste Kapitel<br>sollte niemand allein gehen.",
       lead: "Eine Lebensphasen-Plattform, die Information und Dienste bei Veränderungen vom Jugendalter bis 70+ verbindet. Das Alter ist eine Orientierung, kein Drehbuch. Diese Seite ist eine Vorstellung: Beratung und Buchung sind noch nicht live.",
-      ctaMain: "Mehr über Life Stage",
+      ctaMain: "Mehr über Livon",
       ctaSub: "Anfrage zu Geschäft und Partnerschaft",
     },
   },
@@ -386,8 +386,8 @@ export const LIFE_STAGE_I18N_MORE = {
     },
     hero: {
       titleHtml: "जीवन के हर नए पल में,<br>जरूरी जानकारी जोड़ते हैं।",
-      lead: "स्कूल और रास्ता, काम और स्वतंत्रता, परिवार और स्वास्थ्य, और काम के बाद का जीवन। किशोरावस्था से 70 तक Life Stage एक जीवन-चक्र मंच बना रहा है, ताकि जीवन के बदलाव में जरूरी जानकारी और सेवाएँ आसानी से मिल सकें।",
-      ctaMain: "Life Stage जानें",
+      lead: "स्कूल और रास्ता, काम और स्वतंत्रता, परिवार और स्वास्थ्य, और काम के बाद का जीवन। किशोरावस्था से 70 तक Livon एक जीवन-चक्र मंच बना रहा है, ताकि जीवन के बदलाव में जरूरी जानकारी और सेवाएँ आसानी से मिल सकें।",
+      ctaMain: "Livon जानें",
       ctaSub: "सेवा संरचना देखें",
       status: "यह व्यवसाय परिचय और अवधारणा पूर्वावलोकन है।",
     },
@@ -473,7 +473,7 @@ export const LIFE_STAGE_I18N_MORE = {
     },
     platform: {
       title: "ज्ञान से शुरू करें।\nपूरे जीवन तक बढ़ें।",
-      lead: "Life Stage जीवन ज्ञान और क्रिया उपकरणों से AI, समुदाय, विशेषज्ञ, सेवाओं और संगठनों के समाधान तक फैलता है।",
+      lead: "Livon जीवन ज्ञान और क्रिया उपकरणों से AI, समुदाय, विशेषज्ञ, सेवाओं और संगठनों के समाधान तक फैलता है।",
       items: [
         { id: "knowledge", layer: "core", name: "Life Knowledge", blurb: "जीवन ज्ञान और चरणबद्ध सीखना", status: "planned", features: ["क्षेत्र आधार", "शब्द, मामले, गाइड", "सूची से जोड़"], example: "पहले किराए को आधार से जाँच तक सीखना" },
         { id: "ai", layer: "core", name: "Life AI", blurb: "इस क्षण के अनुकूल जीवन मार्गदर्शन", status: "planned", features: ["स्थिति प्रश्न", "तैयारी क्रम", "ज्ञान सुझाव"], example: "स्वतंत्रता के प्रश्न को तैयारी पथ बनाना" },
@@ -507,8 +507,8 @@ export const LIFE_STAGE_I18N_MORE = {
       note: "योग्यता जाँच और कानून, वित्त, स्वास्थ्य जैसे विनियमित क्षेत्र लॉन्च से पहले अलग समीक्षा चाहते हैं। हम काल्पनिक विशेषज्ञ, रेटिंग या संख्या नहीं दिखाते।",
     },
     eco: {
-      title: "Life Stage से शुरू करें।\nNewon के दैनिक ऐप्स में जारी रखें।",
-      lead: "Life Stage तैयारी और कार्रवाई में मदद करता है। मौजूदा Newon ऐप्स पहले से दैनिक जीवन दर्ज करते हैं। स्वचालित सिंक अभी नहीं है — यह नियोजित कनेक्शन है।",
+      title: "Livon से शुरू करें।\nNewon के दैनिक ऐप्स में जारी रखें।",
+      lead: "Livon तैयारी और कार्रवाई में मदद करता है। मौजूदा Newon ऐप्स पहले से दैनिक जीवन दर्ज करते हैं। स्वचालित सिंक अभी नहीं है — यह नियोजित कनेक्शन है।",
       groups: [
         { id: "finance", title: "पैसा और जीवन खर्च", slugs: ["savy", "subping", "piggyup"] },
         { id: "habit", title: "लक्ष्य, आदतें और समय", slugs: ["goalup", "ox-month", "countup"] },
@@ -516,12 +516,12 @@ export const LIFE_STAGE_I18N_MORE = {
         { id: "plus", title: "एक खाता और सदस्यता", slugs: ["newon-plus"] },
       ],
       ongilTitle: "वरिष्ठ जीवन और देखभाल",
-      ongilLead: "Ongil वरिष्ठ देखभाल, सुरक्षा और दैनिक सहायता पर केंद्रित व्यवसाय है। Life Stage हर उम्र के जीवन बदलाव के लिए जानकारी जोड़ता है और Ongil की देखभाल की जगह नहीं लेता।",
+      ongilLead: "Ongil वरिष्ठ देखभाल, सुरक्षा और दैनिक सहायता पर केंद्रित व्यवसाय है। Livon हर उम्र के जीवन बदलाव के लिए जानकारी जोड़ता है और Ongil की देखभाल की जगह नहीं लेता।",
       ongilCta: "Ongil देखें",
     },
     revenue: {
       title: "एक व्यक्ति के दिन से\nकंपनी और समाज की सेवाओं तक।",
-      lead: "Life Stage व्यक्तियों से विशेषज्ञों और साझेदारों, फिर कंपनियों और संस्थानों तक का मार्ग देख रहा है।",
+      lead: "Livon व्यक्तियों से विशेषज्ञों और साझेदारों, फिर कंपनियों और संस्थानों तक का मार्ग देख रहा है।",
       pillars: [
         { id: "person", title: "व्यक्तियों के लिए", items: ["मूल जीवन ज्ञान", "प्रीमियम AI और योजना उपकरण", "तैयारी पैकेज", "गहरा अध्ययन"] },
         { id: "supply", title: "विशेषज्ञों और साझेदारों के लिए", items: ["सलाह कनेक्शन", "जीवन सेवा साझेदारी", "बुकिंग और ग्राहक उपकरण", "प्लेटफ़ॉर्म समझौते"] },
@@ -540,7 +540,7 @@ export const LIFE_STAGE_I18N_MORE = {
     close: {
       titleHtml: "अगला अध्याय<br>अकेले न हो।",
       lead: "किशोरावस्था से 70 तक जीवन बदलाव के लिए जानकारी और सेवाएँ जोड़ने वाला मंच। उम्र खोजने का सहारा है, पटकथा नहीं। यह पृष्ठ परिचय है — सलाह और बुकिंग अभी लाइव नहीं हैं।",
-      ctaMain: "Life Stage के बारे में और जानें",
+      ctaMain: "Livon के बारे में और जानें",
       ctaSub: "व्यवसाय और सहयोग पूछताछ",
     },
   },
@@ -567,8 +567,8 @@ export const LIFE_STAGE_I18N_MORE = {
     },
     hero: {
       titleHtml: "Di setiap momen baru kehidupan,<br>kami menghubungkan informasi yang Anda butuhkan.",
-      lead: "Sekolah dan jalur, kerja dan kemandirian, keluarga dan kesehatan, dan hidup setelah kerja. Dari remaja hingga 70-an, Life Stage membangun platform siklus hidup agar informasi dan layanan untuk perubahan hidup lebih mudah ditemukan.",
-      ctaMain: "Kenali Life Stage",
+      lead: "Sekolah dan jalur, kerja dan kemandirian, keluarga dan kesehatan, dan hidup setelah kerja. Dari remaja hingga 70-an, Livon membangun platform siklus hidup agar informasi dan layanan untuk perubahan hidup lebih mudah ditemukan.",
+      ctaMain: "Kenali Livon",
       ctaSub: "Lihat struktur layanan",
       status: "Ini adalah pengenalan bisnis dan pratinjau konsep.",
     },
@@ -654,7 +654,7 @@ export const LIFE_STAGE_I18N_MORE = {
     },
     platform: {
       title: "Mulai dari pengetahuan.\nTumbuh di seluruh hidup.",
-      lead: "Life Stage berkembang dari pengetahuan hidup dan alat tindakan menuju AI, komunitas, ahli, layanan, dan solusi untuk organisasi.",
+      lead: "Livon berkembang dari pengetahuan hidup dan alat tindakan menuju AI, komunitas, ahli, layanan, dan solusi untuk organisasi.",
       items: [
         { id: "knowledge", layer: "core", name: "Life Knowledge", blurb: "Pengetahuan hidup dan belajar bertahap", status: "planned", features: ["Dasar per bidang", "Istilah, kasus, panduan", "Tautan daftar"], example: "Belajar sewa pertama dari dasar sampai yang harus dicek" },
         { id: "ai", layer: "core", name: "Life AI", blurb: "Panduan hidup yang sesuai dengan momen ini", status: "planned", features: ["Pertanyaan situasi", "Urutan persiapan", "Saran pengetahuan"], example: "Mengubah pertanyaan mandiri menjadi jalur persiapan" },
@@ -688,8 +688,8 @@ export const LIFE_STAGE_I18N_MORE = {
       note: "Pemeriksaan kredensial dan bidang teregulasi seperti hukum, keuangan, dan kesehatan perlu tinjauan terpisah sebelum peluncuran. Kami tidak menampilkan ahli, rating, atau jumlah yang dibuat-buat.",
     },
     eco: {
-      title: "Mulai di Life Stage.\nLanjut di aplikasi sehari-hari Newon.",
-      lead: "Life Stage membantu menyiapkan dan bertindak. Aplikasi Newon yang ada sudah mencatat kehidupan sehari-hari. Sinkron otomatis belum tersedia — ini adalah rencana koneksi.",
+      title: "Mulai di Livon.\nLanjut di aplikasi sehari-hari Newon.",
+      lead: "Livon membantu menyiapkan dan bertindak. Aplikasi Newon yang ada sudah mencatat kehidupan sehari-hari. Sinkron otomatis belum tersedia — ini adalah rencana koneksi.",
       groups: [
         { id: "finance", title: "Uang dan biaya hidup", slugs: ["savy", "subping", "piggyup"] },
         { id: "habit", title: "Tujuan, kebiasaan, dan waktu", slugs: ["goalup", "ox-month", "countup"] },
@@ -697,12 +697,12 @@ export const LIFE_STAGE_I18N_MORE = {
         { id: "plus", title: "Satu akun dan keanggotaan", slugs: ["newon-plus"] },
       ],
       ongilTitle: "Hidup dan perawatan senior",
-      ongilLead: "Ongil adalah bisnis perawatan senior yang berfokus pada keamanan, dukungan harian, dan ikatan keluarga. Life Stage menghubungkan informasi untuk perubahan hidup di segala usia dan tidak menggantikan perawatan Ongil.",
+      ongilLead: "Ongil adalah bisnis perawatan senior yang berfokus pada keamanan, dukungan harian, dan ikatan keluarga. Livon menghubungkan informasi untuk perubahan hidup di segala usia dan tidak menggantikan perawatan Ongil.",
       ongilCta: "Lihat Ongil",
     },
     revenue: {
       title: "Dari hari seseorang\nke layanan bagi perusahaan dan kota.",
-      lead: "Life Stage meninjau jalur dari individu ke ahli dan mitra, lalu ke perusahaan dan institusi.",
+      lead: "Livon meninjau jalur dari individu ke ahli dan mitra, lalu ke perusahaan dan institusi.",
       pillars: [
         { id: "person", title: "Untuk individu", items: ["Pengetahuan hidup dasar", "AI dan alat rencana premium", "Paket persiapan", "Belajar lebih dalam"] },
         { id: "supply", title: "Untuk ahli dan mitra", items: ["Koneksi konseling", "Kemitraan layanan", "Alat pemesanan dan klien", "Perjanjian platform"] },
@@ -721,7 +721,7 @@ export const LIFE_STAGE_I18N_MORE = {
     close: {
       titleHtml: "Bab berikutnya<br>sebaiknya tidak dijalani sendirian.",
       lead: "Platform siklus hidup yang menghubungkan informasi dan layanan untuk perubahan hidup dari remaja hingga 70+. Usia adalah panduan jelajah, bukan naskah. Halaman ini adalah pengenalan — saran dan pemesanan belum live.",
-      ctaMain: "Pelajari Life Stage lebih lanjut",
+      ctaMain: "Pelajari Livon lebih lanjut",
       ctaSub: "Pertanyaan bisnis dan kolaborasi",
     },
   },

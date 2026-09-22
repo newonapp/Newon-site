@@ -61,11 +61,19 @@ function replaceHero(html, heroHtml) {
   return html.slice(0, start) + heroHtml.trim() + html.slice(close);
 }
 
-const HERO3D_VER = "20260922film2";
+const HERO3D_VER = "20260922film5";
 
 function ensureHero3dAssets(html) {
   let out = html;
   out = out.replace(/\s*<link href="https:\/\/fonts\.googleapis\.com\/css2\?family=Nunito:[^"]+" rel="stylesheet" \/>/g, "");
+  out = out.replace(
+    /\s*<link href="https:\/\/fonts\.googleapis\.com\/css2\?family=Instrument\+Serif[^"]+" rel="stylesheet" \/>/g,
+    ""
+  );
+  out = out.replace(
+    /\s*<link href="https:\/\/fonts\.googleapis\.com\/css2\?family=Inter[^"]+" rel="stylesheet" \/>/g,
+    ""
+  );
   if (out.includes("home-hero-3d.css")) {
     out = out.replace(/home-hero-3d\.css\?v=[^"]+/g, `home-hero-3d.css?v=${HERO3D_VER}`);
   } else {

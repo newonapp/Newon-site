@@ -177,7 +177,9 @@
     "megaNewsDesc": "Mises à jour officielles",
     "megaContactDesc": "Contactez-nous",
     "resourcesExploreCta": "Explorer les ressources →",
-    "companyExploreCta": "À propos de Newon →"
+    "companyExploreCta": "À propos de Newon →",
+    "ecosystem": "Écosystème Newon",
+    "megaEcosystemDesc": "Apps, IA, vie et business — une connexion Newon"
   },
   "footer": {
     "privacy": "politique de confidentialité",

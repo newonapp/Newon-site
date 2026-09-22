@@ -1,4 +1,4 @@
-/** Life Stage detail i18n overlays merged onto EN. */
+/** Livon detail i18n overlays merged onto EN. */
 
 function pack(hero, why, journey, platform, how, expand, close, ui = {}) {
   return { ui, hero, why, journey, platform, how, expand, close };
@@ -17,28 +17,28 @@ function decades(rows) {
 
 const ja = pack(
   {
-    kicker: "NEWON LIFE STAGE",
-    brand: "LIFE STAGE",
+    kicker: "NEWON Livon",
+    brand: "Livon",
     titleHtml: "人生のすべての段階に、<br>必要な次を。",
     lead: "10代から70代まで。人生の変化と新しい始まりに寄り添うライフサイクル・プラットフォーム。",
-    ctaMain: "Life Stageを見る",
+    ctaMain: "Livonを見る",
     ctaSub: "事業に関するお問い合わせ",
     status: "現在は事業紹介です。",
     pathLabel: "10代から70代まで",
   },
   {
-    kicker: "Why Life Stage",
+    kicker: "Why Livon",
     title: "人生が変わるたびに、\n必要な情報も変わります。",
     body: [
       "進学や進路を考えるときから、自立と初めての仕事、住まいと家族、仕事のあとの新しい日常まで。",
       "人生の段階が変わると、向き合う選択と必要な情報も変わります。",
-      "Life Stageは、その変化のなかで、今の自分に合う情報とサービスをより見つけやすくすることを目指します。",
+      "Livonは、その変化のなかで、今の自分に合う情報とサービスをより見つけやすくすることを目指します。",
     ],
   },
   {
     kicker: "Life Journey",
     title: "10代から70代まで、\n続いていく人生の旅。",
-    lead: "段階ごとに変わる問いと選択。Life Stageは、今の自分に必要な情報とサービスをつなぎます。",
+    lead: "段階ごとに変わる問いと選択。Livonは、今の自分に必要な情報とサービスをつなぎます。",
     items: decades([
       ["10", "01", "10代", "可能性を見つける時期", "進路や進学、新しい経験を通して自分の方向を探る時期。", ["進路の探索", "入試・進学", "学びと成長", "資格", "お金の基礎", "趣味・サークル", "自立・社会進出の準備"]],
       ["20", "02", "20代", "自分の人生を始める時期", "自立と初めての仕事、新しい暮らしを始め、自分の基盤をつくる時期。", ["大学", "就職と初めての仕事", "一人暮らし・住まい", "お金と資産", "自己開発", "交際・結婚の準備", "暮らしサービス"]],
@@ -82,14 +82,14 @@ const ja = pack(
     ],
   },
   {
-    kicker: "LIFE STAGE VISION",
+    kicker: "Livon VISION",
     titleHtml: "人生が変わっても、<br>つながりは続きます。",
-    lead: "Life Stageは、一人ひとりのペースと選択を尊重し、新しい始まりと変化のたびに必要な情報とサービスをつなぐプラットフォームとして成長していきます。",
+    lead: "Livonは、一人ひとりのペースと選択を尊重し、新しい始まりと変化のたびに必要な情報とサービスをつなぐプラットフォームとして成長していきます。",
     ctaMain: "事業・協業に関するお問い合わせ",
     ctaSub: "Newonのほかの事業を見る",
   },
   {
-    back: "ホームの Life Stage 紹介へ",
+    back: "ホームの Livon 紹介へ",
     planned: "今後の利用の流れ",
     expandNote: "現在の運営状況ではなく、今後の事業拡張計画です。",
     conceptNote: "現在は事業紹介です。予約・決済・登録はまだつながっていません。",
@@ -117,8 +117,8 @@ ja.areas = {
 
 ja.related = {
   kicker: "NEWON",
-  title: "Newonのなかで\nLife Stageが担う場所。",
-  lead: "Life Stageは Newon 六つの事業のうち、ライフサイクル・プラットフォームです。他事業の機能を直接代わりません。",
+  title: "Newonのなかで\nLivonが担う場所。",
+  lead: "Livonは Newon 六つの事業のうち、ライフサイクル・プラットフォームです。他事業の機能を直接代わりません。",
   items: [
     { n: "01", name: "Newon Consumer", body: "ライフステージごとに必要な暮らしアプリとサービスの接続。", planned: true },
     { n: "02", name: "Newon AI", body: "個人の状況に合う AI ベースの暮らし支援。", planned: true },
@@ -130,28 +130,28 @@ ja.related = {
 
 const es = pack(
   {
-    kicker: "NEWON LIFE STAGE",
-    brand: "LIFE STAGE",
+    kicker: "NEWON Livon",
+    brand: "Livon",
     titleHtml: "En cada etapa de la vida,<br>lo siguiente que hace falta.",
     lead: "De la adolescencia a los 70. Una plataforma de ciclo de vida para el cambio y los nuevos comienzos.",
-    ctaMain: "Conocer Life Stage",
+    ctaMain: "Conocer Livon",
     ctaSub: "Consulta de negocio",
     status: "Esta página es una introducción al negocio.",
     pathLabel: "De la adolescencia a los 70",
   },
   {
-    kicker: "Why Life Stage",
+    kicker: "Why Livon",
     title: "Cuando la vida cambia,\ntambién cambia la información que necesitas.",
     body: [
       "Desde la escuela y el camino profesional hasta vivir por cuenta propia, el primer trabajo, el hogar, la familia y un día a día nuevo después del trabajo.",
       "Cada etapa trae otras decisiones y otra información.",
-      "Life Stage busca facilitar encontrar información y servicios que encajen con el momento que vives.",
+      "Livon busca facilitar encontrar información y servicios que encajen con el momento que vives.",
     ],
   },
   {
     kicker: "Life Journey",
     title: "De la adolescencia a los 70,\nun viaje que sigue.",
-    lead: "Las preguntas y las elecciones cambian con cada etapa. Life Stage conecta lo que encaja con el presente.",
+    lead: "Las preguntas y las elecciones cambian con cada etapa. Livon conecta lo que encaja con el presente.",
     items: decades([
       ["10", "01", "Adolescencia", "Un tiempo para hallar posibilidad", "Explorar dirección a través del camino, la escuela y la experiencia.", ["Explorar el camino", "Exámenes y estudios", "Aprendizaje y crecimiento", "Cualificaciones", "Bases de dinero", "Aficiones y clubes", "Prepararse para valerse"]],
       ["20", "02", "20 años", "Un tiempo para empezar una vida propia", "Independencia, un primer trabajo y el inicio de un día a día que uno construye.", ["Universidad", "Primer trabajo y vida adulta", "Vivir solo y vivienda", "Dinero y patrimonio", "Desarrollo personal", "Relación y boda", "Servicios de vida"]],
@@ -195,14 +195,14 @@ const es = pack(
     ],
   },
   {
-    kicker: "LIFE STAGE VISION",
+    kicker: "Livon VISION",
     titleHtml: "Aunque la vida cambie,<br>la conexión sigue.",
-    lead: "Life Stage respeta el ritmo y las elecciones de cada persona, y crece como plataforma que conecta la información y los servicios necesarios en cada comienzo y cada cambio.",
+    lead: "Livon respeta el ritmo y las elecciones de cada persona, y crece como plataforma que conecta la información y los servicios necesarios en cada comienzo y cada cambio.",
     ctaMain: "Consulta de negocio y colaboración",
     ctaSub: "Ver otros negocios de Newon",
   },
   {
-    back: "Volver a Life Stage en la portada",
+    back: "Volver a Livon en la portada",
     planned: "Recorrido previsto",
     expandNote: "Un plan de expansión futuro, no un estado actual de operación.",
     conceptNote: "Esta página es una introducción al negocio. Reserva, pago y registro aún no están conectados.",
@@ -210,34 +210,34 @@ const es = pack(
     journeyNote: "Los temas de cada década son ejemplos típicos. El ritmo y las necesidades cambian de persona a persona.",
     ongilNote: "Si hace falta cuidado o apoyo a la vida cotidiana, más adelante podríamos conectar con Ongil. Hoy los dos servicios no están vinculados.",
     areasNote: "Las seis áreas siguientes son un plan de expansión posterior, no productos en operación.",
-    relatedNote: "Hoy Life Stage no está vinculado técnicamente a otros negocios de Newon, y los datos no se comparten de forma automática. Lo que sigue es una dirección futura.",
+    relatedNote: "Hoy Livon no está vinculado técnicamente a otros negocios de Newon, y los datos no se comparten de forma automática. Lo que sigue es una dirección futura.",
   }
 );
 
 const ptBr = pack(
   {
-    kicker: "NEWON LIFE STAGE",
-    brand: "LIFE STAGE",
+    kicker: "NEWON Livon",
+    brand: "Livon",
     titleHtml: "Em cada etapa da vida,<br>o próximo que você precisa.",
     lead: "Da adolescência aos 70. Uma plataforma de ciclo de vida para mudança e novos começos.",
-    ctaMain: "Conhecer Life Stage",
+    ctaMain: "Conhecer Livon",
     ctaSub: "Consulta de negócio",
     status: "Esta página é uma introdução ao negócio.",
     pathLabel: "Da adolescência aos 70",
   },
   {
-    kicker: "Why Life Stage",
+    kicker: "Why Livon",
     title: "Quando a vida muda,\na informação de que você precisa também muda.",
     body: [
       "Da escola e do caminho profissional à vida por conta própria, o primeiro emprego, o lar, a família e um cotidiano novo depois do trabalho.",
       "Cada etapa traz outras escolhas e outra informação.",
-      "A Life Stage busca facilitar encontrar informação e serviços que combinem com o momento em que você está.",
+      "A Livon busca facilitar encontrar informação e serviços que combinem com o momento em que você está.",
     ],
   },
   {
     kicker: "Life Journey",
     title: "Da adolescência aos 70,\numa jornada que segue.",
-    lead: "Perguntas e escolhas mudam a cada etapa. A Life Stage conecta o que combina com o presente.",
+    lead: "Perguntas e escolhas mudam a cada etapa. A Livon conecta o que combina com o presente.",
     items: decades([
       ["10", "01", "Adolescência", "Um tempo para achar possibilidade", "Explorar direção por caminho, escola e experiência.", ["Explorar o caminho", "Exames e estudos", "Aprendizado e crescimento", "Qualificações", "Bases de dinheiro", "Hobbies e clubes", "Preparar-se para se virar"]],
       ["20", "02", "20 anos", "Um tempo para começar uma vida sua", "Independência, um primeiro emprego e o início de um cotidiano que você constrói.", ["Universidade", "Primeiro trabalho e vida adulta", "Morar sozinho e moradia", "Dinheiro e patrimônio", "Desenvolvimento pessoal", "Relacionamento e casamento", "Serviços de vida"]],
@@ -281,14 +281,14 @@ const ptBr = pack(
     ],
   },
   {
-    kicker: "LIFE STAGE VISION",
+    kicker: "Livon VISION",
     titleHtml: "Mesmo quando a vida muda,<br>a conexão continua.",
-    lead: "A Life Stage respeita o ritmo e as escolhas de cada pessoa, e cresce como plataforma que conecta a informação e os serviços necessários em cada começo e cada mudança.",
+    lead: "A Livon respeita o ritmo e as escolhas de cada pessoa, e cresce como plataforma que conecta a informação e os serviços necessários em cada começo e cada mudança.",
     ctaMain: "Consulta de negócio e parceria",
     ctaSub: "Ver outros negócios da Newon",
   },
   {
-    back: "Voltar à Life Stage na página inicial",
+    back: "Voltar à Livon na página inicial",
     planned: "Percurso previsto",
     expandNote: "Um plano de expansão futuro, não o estado atual da operação.",
     conceptNote: "Esta página é uma introdução ao negócio. Reserva, pagamento e cadastro ainda não estão conectados.",
@@ -296,34 +296,34 @@ const ptBr = pack(
     journeyNote: "Os temas de cada década são exemplos típicos. O ritmo e as necessidades mudam de pessoa para pessoa.",
     ongilNote: "Quando for preciso cuidado ou apoio à vida cotidiana, no futuro podemos conectar com a Ongil. Hoje os dois serviços não estão ligados.",
     areasNote: "As seis áreas abaixo são um plano de expansão posterior, não produtos em operação.",
-    relatedNote: "Hoje a Life Stage não está ligada tecnicamente a outros negócios da Newon, e os dados não são compartilhados automaticamente. O que segue é uma direção futura.",
+    relatedNote: "Hoje a Livon não está ligada tecnicamente a outros negócios da Newon, e os dados não são compartilhados automaticamente. O que segue é uma direção futura.",
   }
 );
 
 const fr = pack(
   {
-    kicker: "NEWON LIFE STAGE",
-    brand: "LIFE STAGE",
+    kicker: "NEWON Livon",
+    brand: "Livon",
     titleHtml: "À chaque étape de la vie,<br>la suite dont vous avez besoin.",
     lead: "De l’adolescence à 70 ans. Une plateforme de cycle de vie pour le changement et les nouveaux départs.",
-    ctaMain: "Découvrir Life Stage",
+    ctaMain: "Découvrir Livon",
     ctaSub: "Demande professionnelle",
     status: "Cette page est une présentation de l’activité.",
     pathLabel: "De l’adolescence à 70 ans",
   },
   {
-    kicker: "Why Life Stage",
+    kicker: "Why Livon",
     title: "Quand la vie change,\nl’information dont vous avez besoin change aussi.",
     body: [
       "De l’école et du parcours au premier logement, au premier emploi, au foyer, à la famille, et à un quotidien nouveau après le travail.",
       "Chaque étape apporte d’autres choix, et d’autres informations.",
-      "Life Stage vise à rendre plus facile de trouver les informations et services qui correspondent au moment où vous êtes.",
+      "Livon vise à rendre plus facile de trouver les informations et services qui correspondent au moment où vous êtes.",
     ],
   },
   {
     kicker: "Life Journey",
     title: "De l’adolescence à 70 ans,\nun voyage qui continue.",
-    lead: "Les questions et les choix changent à chaque étape. Life Stage relie ce qui correspond au présent.",
+    lead: "Les questions et les choix changent à chaque étape. Livon relie ce qui correspond au présent.",
     items: decades([
       ["10", "01", "Adolescence", "Un temps pour trouver des possibles", "Explorer une direction par le parcours, l’école et l’expérience.", ["Explorer le parcours", "Examens et études", "Apprendre et grandir", "Qualifications", "Bases d’argent", "Loisirs et clubs", "Se préparer à se débrouiller"]],
       ["20", "02", "20 ans", "Un temps pour commencer une vie à soi", "Indépendance, premier emploi, et le début d’un quotidien que l’on construit.", ["Université", "Premier travail et vie adulte", "Vivre seul et logement", "Argent et patrimoine", "Développement personnel", "Relation et mariage", "Services de vie"]],
@@ -367,14 +367,14 @@ const fr = pack(
     ],
   },
   {
-    kicker: "LIFE STAGE VISION",
+    kicker: "Livon VISION",
     titleHtml: "Même si la vie change,<br>la connexion continue.",
-    lead: "Life Stage respecte le rythme et les choix de chacun, et grandit comme une plateforme qui relie les informations et services nécessaires à chaque nouveau départ et chaque changement.",
+    lead: "Livon respecte le rythme et les choix de chacun, et grandit comme une plateforme qui relie les informations et services nécessaires à chaque nouveau départ et chaque changement.",
     ctaMain: "Demande professionnelle et partenariat",
     ctaSub: "Voir les autres activités de Newon",
   },
   {
-    back: "Retour à Life Stage sur l’accueil",
+    back: "Retour à Livon sur l’accueil",
     planned: "Parcours prévu",
     expandNote: "Un plan d’expansion futur, pas l’état actuel de l’exploitation.",
     conceptNote: "Cette page est une présentation de l’activité. Réservation, paiement et inscription ne sont pas encore connectés.",
@@ -382,34 +382,34 @@ const fr = pack(
     journeyNote: "Les thèmes de chaque décennie sont des exemples typiques. Le rythme et les besoins varient d’une personne à l’autre.",
     ongilNote: "Si des soins ou un soutien à la vie quotidienne sont nécessaires, nous pourrons plus tard relier Ongil. Les deux services ne sont pas liés aujourd’hui.",
     areasNote: "Les six domaines ci-dessous sont un plan d’expansion ultérieur, pas des produits en service.",
-    relatedNote: "Aujourd’hui, Life Stage n’est pas lié techniquement aux autres activités Newon, et les données ne sont pas partagées automatiquement. Ce qui suit est une direction future.",
+    relatedNote: "Aujourd’hui, Livon n’est pas lié techniquement aux autres activités Newon, et les données ne sont pas partagées automatiquement. Ce qui suit est une direction future.",
   }
 );
 
 const de = pack(
   {
-    kicker: "NEWON LIFE STAGE",
-    brand: "LIFE STAGE",
+    kicker: "NEWON Livon",
+    brand: "Livon",
     titleHtml: "In jeder Lebensphase<br>das Nächste, das Sie brauchen.",
     lead: "Vom Jugendalter bis zu den 70ern. Eine Lebensphasen-Plattform für Wandel und neue Anfänge.",
-    ctaMain: "Life Stage entdecken",
+    ctaMain: "Livon entdecken",
     ctaSub: "Geschäftsanfrage",
     status: "Diese Seite ist eine Geschäftsvorstellung.",
     pathLabel: "Vom Jugendalter bis zu den 70ern",
   },
   {
-    kicker: "Why Life Stage",
+    kicker: "Why Livon",
     title: "Wenn sich das Leben ändert,\nändert sich auch die Information, die Sie brauchen.",
     body: [
       "Von Schule und Weg über das eigene Wohnen, den ersten Job, Zuhause, Familie bis zu einem neuen Alltag nach der Arbeit.",
       "Jede Phase bringt andere Entscheidungen und andere Informationen.",
-      "Life Stage will es leichter machen, Informationen und Dienste zu finden, die zum jetzigen Moment passen.",
+      "Livon will es leichter machen, Informationen und Dienste zu finden, die zum jetzigen Moment passen.",
     ],
   },
   {
     kicker: "Life Journey",
     title: "Vom Jugendalter bis zu den 70ern,\neine Reise, die weitergeht.",
-    lead: "Fragen und Entscheidungen verschieben sich mit jeder Phase. Life Stage verbindet, was zur Gegenwart passt.",
+    lead: "Fragen und Entscheidungen verschieben sich mit jeder Phase. Livon verbindet, was zur Gegenwart passt.",
     items: decades([
       ["10", "01", "Jugend", "Eine Zeit, Möglichkeiten zu finden", "Richtung erkunden durch Weg, Schule und neue Erfahrung.", ["Wege erkunden", "Prüfungen und Schule", "Lernen und Wachstum", "Qualifikationen", "Geld-Grundlagen", "Hobbys und Clubs", "Auf eigenes Stehen vorbereiten"]],
       ["20", "02", "20er", "Eine Zeit, ein eigenes Leben zu beginnen", "Unabhängigkeit, erster Job und der Beginn eines Alltags, den man selbst baut.", ["Universität", "Erste Arbeit und Erwachsenenleben", "Alleinwohnen und Wohnen", "Geld und Vermögen", "Persönliche Entwicklung", "Beziehung und Heirat", "Lebensdienste"]],
@@ -453,14 +453,14 @@ const de = pack(
     ],
   },
   {
-    kicker: "LIFE STAGE VISION",
+    kicker: "Livon VISION",
     titleHtml: "Auch wenn sich das Leben ändert,<br>bleibt die Verbindung.",
-    lead: "Life Stage achtet Tempo und Wahl jedes Menschen und wächst als Plattform, die bei jedem neuen Anfang und Wandel die nötigen Informationen und Dienste verbindet.",
+    lead: "Livon achtet Tempo und Wahl jedes Menschen und wächst als Plattform, die bei jedem neuen Anfang und Wandel die nötigen Informationen und Dienste verbindet.",
     ctaMain: "Geschäft- und Partnerschaftsanfrage",
     ctaSub: "Weitere Newon-Geschäfte ansehen",
   },
   {
-    back: "Zurück zu Life Stage auf der Startseite",
+    back: "Zurück zu Livon auf der Startseite",
     planned: "Geplanter Ablauf",
     expandNote: "Ein künftiger Ausbauplan, kein aktueller Betrieb.",
     conceptNote: "Diese Seite ist eine Geschäftsvorstellung. Buchung, Zahlung und Anmeldung sind noch nicht verbunden.",
@@ -468,34 +468,34 @@ const de = pack(
     journeyNote: "Die Themen jeder Dekade sind typische Beispiele. Tempo und Bedarf unterscheiden sich von Mensch zu Mensch.",
     ongilNote: "Wenn Betreuung oder Lebenshilfe nötig ist, könnten wir später mit Ongil verbinden. Die beiden Dienste sind heute nicht verknüpft.",
     areasNote: "Die sechs Bereiche unten sind ein späterer Ausbauplan, keine laufenden Produkte.",
-    relatedNote: "Life Stage ist heute nicht technisch mit anderen Newon-Geschäften verknüpft, und Daten werden nicht automatisch geteilt. Das Folgende ist eine spätere Richtung.",
+    relatedNote: "Livon ist heute nicht technisch mit anderen Newon-Geschäften verknüpft, und Daten werden nicht automatisch geteilt. Das Folgende ist eine spätere Richtung.",
   }
 );
 
 const hi = pack(
   {
-    kicker: "NEWON LIFE STAGE",
-    brand: "LIFE STAGE",
+    kicker: "NEWON Livon",
+    brand: "Livon",
     titleHtml: "जीवन के हर चरण में,<br>वह अगला जो चाहिए.",
     lead: "किशोरावस्था से 70 तक. बदलाव और नई शुरुआत के लिए एक जीवन-चक्र मंच.",
-    ctaMain: "Life Stage देखें",
+    ctaMain: "Livon देखें",
     ctaSub: "व्यवसाय पूछताछ",
     status: "यह पृष्ठ व्यवसाय परिचय है.",
     pathLabel: "किशोरावस्था से 70 तक",
   },
   {
-    kicker: "Why Life Stage",
+    kicker: "Why Livon",
     title: "जब जीवन बदलता है,\nजरूरी जानकारी भी बदलती है.",
     body: [
       "स्कूल और रास्ते से लेकर अपने घर, पहली नौकरी, परिवार और काम के बाद के नए दिन तक.",
       "हर चरण में चुनाव और जानकारी अलग होती है.",
-      "Life Stage का लक्ष्य है कि आप जहाँ हैं, उसके अनुकूल जानकारी और सेवाएँ ढूँढना आसान हो.",
+      "Livon का लक्ष्य है कि आप जहाँ हैं, उसके अनुकूल जानकारी और सेवाएँ ढूँढना आसान हो.",
     ],
   },
   {
     kicker: "Life Journey",
     title: "किशोरावस्था से 70 तक,<br>चलता सफर.",
-    lead: "हर चरण के साथ सवाल और चुनाव बदलते हैं. Life Stage वर्तमान से जुड़ी जानकारी और सेवाएँ जोड़ता है.",
+    lead: "हर चरण के साथ सवाल और चुनाव बदलते हैं. Livon वर्तमान से जुड़ी जानकारी और सेवाएँ जोड़ता है.",
     items: decades([
       ["10", "01", "किशोर", "संभावना खोजने का समय", "रास्ता, स्कूल और अनुभव से अपनी दिशा तलाशना.", ["रास्ता खोजना", "परीक्षा और पढ़ाई", "सीखना और बढ़ना", "योग्यता", "पैसे की बुनियाद", "शौक और क्लब", "खुद खड़े होने की तैयारी"]],
       ["20", "02", "20 की उम्र", "अपनी ज़िंदगी शुरू करने का समय", "स्वतंत्रता, पहली नौकरी, और एक दिन जो आप खुद बनाते हैं.", ["विश्वविद्यालय", "पहला काम और वयस्क जीवन", "अकेले रहना और आवास", "पैसा और संपत्ति", "आत्मविकास", "रिश्ता और शादी", "जीवन सेवाएँ"]],
@@ -539,14 +539,14 @@ const hi = pack(
     ],
   },
   {
-    kicker: "LIFE STAGE VISION",
+    kicker: "Livon VISION",
     titleHtml: "जीवन बदले तो भी,<br>जुड़ाव बना रहता है.",
-    lead: "Life Stage हर व्यक्ति की गति और पसंद का सम्मान करता है, और हर नई शुरुआत व बदलाव पर जरूरी जानकारी और सेवाएँ जोड़ने वाले मंच के रूप में बढ़ता है.",
+    lead: "Livon हर व्यक्ति की गति और पसंद का सम्मान करता है, और हर नई शुरुआत व बदलाव पर जरूरी जानकारी और सेवाएँ जोड़ने वाले मंच के रूप में बढ़ता है.",
     ctaMain: "व्यवसाय और साझेदारी पूछताछ",
     ctaSub: "Newon के अन्य व्यवसाय देखें",
   },
   {
-    back: "होम पर Life Stage परिचय पर वापस",
+    back: "होम पर Livon परिचय पर वापस",
     planned: "नियोजित उपयोग प्रवाह",
     expandNote: "भविष्य की विस्तार योजना, वर्तमान संचालन नहीं.",
     conceptNote: "यह पृष्ठ व्यवसाय परिचय है. बुकिंग, भुगतान और साइन-अप अभी जुड़े नहीं हैं.",
@@ -554,34 +554,34 @@ const hi = pack(
     journeyNote: "हर दशक के विषय सामान्य उदाहरण हैं. गति और जरूरतें व्यक्ति के अनुसार अलग होती हैं.",
     ongilNote: "देखभाल या जीवन-सहायता चाहिए तो आगे Ongil से जोड़ने पर विचार हो सकता है. आज दोनों सेवाएँ जुड़ी नहीं हैं.",
     areasNote: "नीचे छह क्षेत्र बाद की विस्तार योजना हैं, चल रहे उत्पाद नहीं.",
-    relatedNote: "आज Life Stage तकनीकी रूप से अन्य Newon व्यवसायों से जुड़ा नहीं है, और डेटा अपने आप साझा नहीं होता. नीचे आगे की दिशा है.",
+    relatedNote: "आज Livon तकनीकी रूप से अन्य Newon व्यवसायों से जुड़ा नहीं है, और डेटा अपने आप साझा नहीं होता. नीचे आगे की दिशा है.",
   }
 );
 
 const id = pack(
   {
-    kicker: "NEWON LIFE STAGE",
-    brand: "LIFE STAGE",
+    kicker: "NEWON Livon",
+    brand: "Livon",
     titleHtml: "Di setiap tahap kehidupan,<br>hal berikutnya yang Anda butuhkan.",
     lead: "Dari remaja hingga 70-an. Platform siklus hidup untuk perubahan dan awal yang baru.",
-    ctaMain: "Jelajahi Life Stage",
+    ctaMain: "Jelajahi Livon",
     ctaSub: "Pertanyaan bisnis",
     status: "Halaman ini adalah pengenalan bisnis.",
     pathLabel: "Dari remaja hingga 70-an",
   },
   {
-    kicker: "Why Life Stage",
+    kicker: "Why Livon",
     title: "Saat hidup berubah,\ninformasi yang Anda butuhkan juga berubah.",
     body: [
       "Dari sekolah dan jalur, hidup mandiri, pekerjaan pertama, rumah, keluarga, hingga hari-hari baru setelah bekerja.",
       "Setiap tahap membawa pilihan berbeda, dan informasi berbeda.",
-      "Life Stage bertujuan memudahkan menemukan informasi dan layanan yang sesuai dengan posisi Anda sekarang.",
+      "Livon bertujuan memudahkan menemukan informasi dan layanan yang sesuai dengan posisi Anda sekarang.",
     ],
   },
   {
     kicker: "Life Journey",
     title: "Dari remaja hingga 70-an,\nperjalanan yang terus berlanjut.",
-    lead: "Pertanyaan dan pilihan bergeser di setiap tahap. Life Stage menghubungkan apa yang sesuai dengan masa kini.",
+    lead: "Pertanyaan dan pilihan bergeser di setiap tahap. Livon menghubungkan apa yang sesuai dengan masa kini.",
     items: decades([
       ["10", "01", "Remaja", "Waktu menemukan kemungkinan", "Menjelajahi arah lewat jalur, sekolah, dan pengalaman baru.", ["Menjelajahi jalur", "Ujian dan sekolah", "Belajar dan tumbuh", "Kualifikasi", "Dasar keuangan", "Hobi dan klub", "Bersiap mandiri"]],
       ["20", "02", "20-an", "Waktu memulai hidup sendiri", "Kemandirian, pekerjaan pertama, dan awal hari-hari yang Anda bangun sendiri.", ["Universitas", "Pekerjaan pertama dan hidup dewasa", "Tinggal sendiri dan hunian", "Uang dan aset", "Pengembangan diri", "Hubungan dan persiapan menikah", "Layanan hidup"]],
@@ -625,14 +625,14 @@ const id = pack(
     ],
   },
   {
-    kicker: "LIFE STAGE VISION",
+    kicker: "Livon VISION",
     titleHtml: "Meski hidup berubah,<br>koneksi tetap berlanjut.",
-    lead: "Life Stage menghormati tempo dan pilihan setiap orang, dan tumbuh sebagai platform yang menghubungkan informasi dan layanan yang dibutuhkan di setiap awal baru dan setiap perubahan.",
+    lead: "Livon menghormati tempo dan pilihan setiap orang, dan tumbuh sebagai platform yang menghubungkan informasi dan layanan yang dibutuhkan di setiap awal baru dan setiap perubahan.",
     ctaMain: "Pertanyaan bisnis dan kemitraan",
     ctaSub: "Lihat bisnis Newon lainnya",
   },
   {
-    back: "Kembali ke pengenalan Life Stage di beranda",
+    back: "Kembali ke pengenalan Livon di beranda",
     planned: "Alur penggunaan yang direncanakan",
     expandNote: "Rencana ekspansi masa depan, bukan klaim operasi saat ini.",
     conceptNote: "Halaman ini adalah pengenalan bisnis. Pemesanan, pembayaran, dan pendaftaran belum terhubung.",
@@ -640,7 +640,7 @@ const id = pack(
     journeyNote: "Tema tiap dekade adalah contoh umum. Tempo dan kebutuhan berbeda untuk setiap orang.",
     ongilNote: "Jika perawatan atau dukungan hidup diperlukan, ke depan kami dapat menghubungkan dengan Ongil. Kedua layanan belum terhubung hari ini.",
     areasNote: "Enam area di bawah adalah rencana ekspansi belakangan, bukan produk yang sudah beroperasi.",
-    relatedNote: "Hari ini Life Stage tidak terhubung secara teknis dengan bisnis Newon lain, dan data tidak dibagikan otomatis. Berikut adalah arah ke depan.",
+    relatedNote: "Hari ini Livon tidak terhubung secara teknis dengan bisnis Newon lain, dan data tidak dibagikan otomatis. Berikut adalah arah ke depan.",
   }
 );
 

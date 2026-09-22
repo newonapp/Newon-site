@@ -46,6 +46,7 @@ export const TOP_NAV = ["consumer", "ai", "lifestage", "ongil", "business", "stu
  */
 export const MEGA_DESTINATIONS = {
   consumer: [
+    { titleKey: "nav.ecosystem", descKey: "nav.megaEcosystemDesc", href: "ecosystem/", titleFb: "Newon Ecosystem" },
     { titleKey: "nav.apps", descKey: "nav.megaAppsDesc", href: "apps/", titleFb: "Apps" },
     { titleKey: "nav.newonPlus", descKey: "nav.newonPlusMenuDesc", href: "#newon-plus-app", titleFb: "Newon+" },
     { titleKey: "nav.games", descKey: "nav.megaGamesDesc", href: "games/", titleFb: "Games" },
@@ -66,7 +67,7 @@ export const MEGA_DESTINATIONS = {
       titleKey: "nav.lifeStageIntro",
       descKey: "nav.lifeStageIntroDesc",
       href: "lifestage/",
-      titleFb: "Life Stage",
+      titleFb: "Livon",
     },
   ],
   ongil: [

@@ -1,0 +1,213 @@
+/* Newon Ecosystem first-screen film. Scoped to #ecosystem-detail. */
+.hub-page:has(#ecosystem-detail) {
+  padding: 0;
+  max-width: none;
+  overflow-x: clip;
+}
+
+#ecosystem-detail.eco {
+  background: #000;
+  color: #fff;
+  padding: 0;
+}
+
+#ecosystem-detail.eco .eco-film {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  width: 100vw;
+  max-width: 100vw;
+  margin: calc(-1 * var(--gnav-h, 74px)) 0 0 calc(50% - 50vw);
+  min-height: 100svh;
+  height: 100svh;
+  max-height: 100svh;
+  overflow: hidden;
+  background: #000;
+}
+
+#ecosystem-detail.eco .eco-film__stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+#ecosystem-detail.eco .eco-film__fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #000;
+}
+
+#ecosystem-detail.eco .eco-film__video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+  pointer-events: none;
+}
+
+#ecosystem-detail.eco .eco-film__video::-webkit-media-controls {
+  display: none !important;
+}
+
+#ecosystem-detail.eco .eco-film.is-static .eco-film__video {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#ecosystem-detail.eco .eco-film__lockup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(56rem, calc(100vw - 1.6rem));
+  margin: 0;
+  padding: 1.4rem 1rem 1.6rem;
+  transform: translate(-50%, -48%);
+  text-align: center;
+}
+
+#ecosystem-detail.eco .eco-film__veil {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  z-index: 0;
+  width: min(52rem, 124%);
+  height: min(30rem, 150%);
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(
+      ellipse 58% 52% at 50% 46%,
+      rgba(8, 16, 18, 0.28) 0%,
+      rgba(8, 16, 18, 0.1) 48%,
+      rgba(8, 16, 18, 0) 78%
+    );
+  pointer-events: none;
+}
+
+#ecosystem-detail.eco .eco-film__wordmark,
+#ecosystem-detail.eco .eco-film__slogan,
+#ecosystem-detail.eco .eco-film__lead {
+  position: relative;
+  z-index: 1;
+}
+
+#ecosystem-detail.eco .eco-film__wordmark {
+  margin: 0 0 2.15rem;
+  color: #fff;
+  font-family: "Noto Sans", "Noto Sans KR", "Pretendard", sans-serif;
+  font-size: clamp(6.2rem, 22vw, 12.5rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+}
+
+#ecosystem-detail.eco .eco-film__slogan {
+  margin: 0;
+  color: #fff;
+  font-family: "Noto Sans KR", "Noto Sans", "Pretendard", sans-serif;
+  font-size: clamp(1.45rem, 3.2vw, 2.35rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.28;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.36);
+}
+
+#ecosystem-detail.eco .eco-film__lead {
+  margin: 0.95rem 0 0;
+  max-width: 28rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: "Noto Sans KR", "Noto Sans", "Pretendard", sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  font-weight: 430;
+  letter-spacing: -0.02em;
+  line-height: 1.62;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.34);
+}
+
+#ecosystem-detail.eco .eco-film__wordmark,
+#ecosystem-detail.eco .eco-film__slogan,
+#ecosystem-detail.eco .eco-film__lead {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+#ecosystem-detail.eco .eco-film.is-ready .eco-film__wordmark,
+#ecosystem-detail.eco .eco-film.is-ready .eco-film__slogan,
+#ecosystem-detail.eco .eco-film.is-ready .eco-film__lead {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+#ecosystem-detail.eco .eco-film.is-ready .eco-film__wordmark {
+  transition-delay: 0.12s;
+}
+
+#ecosystem-detail.eco .eco-film.is-ready .eco-film__slogan {
+  transition-delay: 0.3s;
+}
+
+#ecosystem-detail.eco .eco-film.is-ready .eco-film__lead {
+  transition-delay: 0.48s;
+}
+
+@media (max-width: 760px) {
+  #ecosystem-detail.eco .eco-film__lockup {
+    top: 52%;
+    width: min(56rem, calc(100vw - 1.2rem));
+    padding: 1rem 0.4rem 1.2rem;
+    transform: translate(-50%, -46%);
+  }
+
+  #ecosystem-detail.eco .eco-film__wordmark {
+    font-size: clamp(4rem, 22vw, 6.6rem);
+    margin-bottom: 1.65rem;
+  }
+
+  #ecosystem-detail.eco .eco-film__slogan {
+    font-size: clamp(1.28rem, 5.8vw, 1.75rem);
+  }
+
+  #ecosystem-detail.eco .eco-film__lead {
+    max-width: 22rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-height: 720px) {
+  #ecosystem-detail.eco .eco-film__lockup {
+    top: 50%;
+    padding-block: 0.7rem;
+  }
+
+  #ecosystem-detail.eco .eco-film__wordmark {
+    font-size: clamp(3.8rem, 15vw, 7.4rem);
+    margin-bottom: 1.45rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ecosystem-detail.eco .eco-film__video {
+    display: none;
+  }
+
+  #ecosystem-detail.eco .eco-film__wordmark,
+  #ecosystem-detail.eco .eco-film__slogan,
+  #ecosystem-detail.eco .eco-film__lead,
+  #ecosystem-detail.eco .eco-film.is-ready .eco-film__wordmark,
+  #ecosystem-detail.eco .eco-film.is-ready .eco-film__slogan,
+  #ecosystem-detail.eco .eco-film.is-ready .eco-film__lead {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

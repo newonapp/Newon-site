@@ -12,6 +12,7 @@ import {
   caiCopy,
   localizeService,
 } from "./consumer-ai-data.mjs";
+import { renderAiFilmHero } from "./ai-film-hero.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -300,8 +301,9 @@ export function renderAiShowcaseBody(flat, flatEn, lang) {
   const titleHtml = t(flat, flatEn, "studio.aiHeroTitle", ui.title).replace(/\n/g, "<br />");
 
   return `<div class="ai-page cai-page" data-ai-page data-cai-page>
+  ${renderAiFilmHero("personal", langDir)}
   ${renderAiSwitch(flat, flatEn, { active: "personal", personalHref: "./", enterpriseHref: "enterprise/" })}
-  <section class="cai-hero cai-hero--edit" data-ai-reveal>
+  <section id="cai-hero" class="cai-hero cai-hero--edit" data-ai-reveal>
     <div class="hub-inner cai-hero__grid">
       <div class="cai-hero__copy">
         <p class="cai-hero__eyebrow">${t(flat, flatEn, "studio.aiHeroLabel", "NEWON AI · PERSONAL")}</p>

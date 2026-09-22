@@ -1,6 +1,6 @@
 /**
  * Shared site chrome — Global Navigation with editorial mega menus.
- * Top-level: Consumer · AI · Life Stage · Ongil · Business · Studio · Company
+ * Top-level: Consumer · AI · Livon · Ongil · Business · Studio · Company
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
 import { MEGA_DESTINATIONS, TOP_NAV } from "./venture-studio-data.mjs";
@@ -30,7 +30,7 @@ const NAV_LABEL_KEYS = {
 const NAV_LABEL_FB = {
   consumer: "Consumer",
   ai: "AI",
-  lifestage: "Life Stage",
+  lifestage: "Livon",
   ongil: "Ongil",
   business: "Business",
   studio: "Studio",
@@ -61,7 +61,7 @@ const MENU_META = {
     lead: "nav.lifeStageMenuLead",
     footHref: "lifestage/",
     footKey: "nav.lifeStageExploreCta",
-    footFb: "View Life Stage →",
+    footFb: "View Livon →",
   },
   ongil: {
     kicker: "nav.ongilMenuLabel",
@@ -125,7 +125,7 @@ export function resolveActiveNav(pathname = "") {
   if (seg === "ai") return "ai";
   if (seg === "lifestage") return "lifestage";
   if (seg === "ongil") return "ongil";
-  if (["products", "apps", "saas", "games", "tools"].includes(seg)) return "consumer";
+  if (["products", "apps", "saas", "games", "tools", "ecosystem"].includes(seg)) return "consumer";
   if (seg === "business") {
     if (parts[1] === "creative" || parts[1] === "design") return "studio";
     return "business";

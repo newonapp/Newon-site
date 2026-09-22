@@ -148,7 +148,7 @@ export const ONGIL_I18N_REST = {
       title: "La place d’Ongil\ndans Newon.",
       lead: "Ongil est l’activité Newon centrée sur la vie et le soin des aînés. Une coopération est possible plus tard. Aujourd’hui les produits ne sont pas liés techniquement, et les données ne sont pas partagées automatiquement.",
       items: [
-        { n: "01", name: "Life Stage", body: "Une plateforme pour les changements de vie et les nouveaux départs, de l’adolescence aux soixante-dix ans. Elle ne remplace pas le focus d’Ongil sur la vie et le soin des aînés." },
+        { n: "01", name: "Livon", body: "Une plateforme pour les changements de vie et les nouveaux départs, de l’adolescence aux soixante-dix ans. Elle ne remplace pas le focus d’Ongil sur la vie et le soin des aînés." },
         { n: "02", name: "Ongil", body: "Une plateforme centrée sur le quotidien et le soin des aînés, et sur le lien avec famille et communauté." },
         { n: "03", name: "NEWON AI", body: "Technologies et services d’IA qui peuvent soutenir une information de vie sur mesure et une orientation." },
         { n: "04", name: "Consumer · Business · Commerce", body: "Applications du quotidien, solutions pour entreprises et institutions, et commerce de biens et de services de vie. Les détails restent sur ces pages." },
@@ -310,7 +310,7 @@ export const ONGIL_I18N_REST = {
       title: "Ongils Platz\ninnerhalb von Newon.",
       lead: "Ongil ist das Newon-Geschäft mit Fokus auf Seniorenleben und Pflege. Zusammenarbeit ist später möglich. Heute sind die Produkte nicht technisch verbunden, und Daten werden nicht automatisch geteilt.",
       items: [
-        { n: "01", name: "Life Stage", body: "Eine Plattform für Lebenswechsel und neue Anfänge von den Teenagerjahren bis in die Siebziger. Sie ersetzt Ongils Fokus auf Seniorenleben und Pflege nicht." },
+        { n: "01", name: "Livon", body: "Eine Plattform für Lebenswechsel und neue Anfänge von den Teenagerjahren bis in die Siebziger. Sie ersetzt Ongils Fokus auf Seniorenleben und Pflege nicht." },
         { n: "02", name: "Ongil", body: "Eine Plattform mit Fokus auf Alltag und Pflege von Seniorinnen und Senioren sowie auf Familien- und Gemeinschaftsverbindung." },
         { n: "03", name: "NEWON AI", body: "KI-Technik und Dienste, die zugeschnittene Lebensinformation und Führung stützen können." },
         { n: "04", name: "Consumer · Business · Commerce", body: "Alltags-Apps, Lösungen für Unternehmen und Institutionen sowie Handel mit Waren und Lebensdiensten. Details bleiben auf diesen Seiten." },
@@ -472,7 +472,7 @@ export const ONGIL_I18N_REST = {
       title: "Newon में\nOngil का स्थान.",
       lead: "Ongil Newon का वरिष्ठ जीवन और देखभाल पर केंद्रित व्यवसाय है। बाद में सहयोग संभव। आज उत्पाद तकनीकी रूप से जुड़े नहीं, और डेटा अपने आप साझा नहीं होता।",
       items: [
-        { n: "01", name: "Life Stage", body: "किशोरावस्था से सत्तर तक जीवन बदलाव और नई शुरुआत का प्लेटफ़ॉर्म। Ongil के वरिष्ठ जीवन-देखभाल फोकस की जगह नहीं लेता।" },
+        { n: "01", name: "Livon", body: "किशोरावस्था से सत्तर तक जीवन बदलाव और नई शुरुआत का प्लेटफ़ॉर्म। Ongil के वरिष्ठ जीवन-देखभाल फोकस की जगह नहीं लेता।" },
         { n: "02", name: "Ongil", body: "वरिष्ठों के रोजमर्रा और देखभाल, तथा परिवार और समुदाय जोड़ पर केंद्रित प्लेटफ़ॉर्म।" },
         { n: "03", name: "NEWON AI", body: "AI तकनीक और सेवाएँ जो अनुकूल जीवन जानकारी और मार्गदर्शन का समर्थन कर सकती हैं।" },
         { n: "04", name: "Consumer · Business · Commerce", body: "रोजमर्रा ऐप, कंपनियों-संस्थानों के समाधान, तथा सामान और जीवन सेवा व्यापार। विवरण उन्हीं पृष्ठों पर।" },
@@ -634,7 +634,7 @@ export const ONGIL_I18N_REST = {
       title: "Tempat Ongil\ndi dalam Newon.",
       lead: "Ongil adalah bisnis Newon yang berfokus pada hidup dan perawatan senior. Kerja sama mungkin nanti. Hari ini produk tidak tertaut secara teknis, dan data tidak dibagikan otomatis.",
       items: [
-        { n: "01", name: "Life Stage", body: "Platform untuk perubahan hidup dan awal baru dari remaja hingga tujuh puluhan. Tidak menggantikan fokus Ongil pada hidup dan perawatan senior." },
+        { n: "01", name: "Livon", body: "Platform untuk perubahan hidup dan awal baru dari remaja hingga tujuh puluhan. Tidak menggantikan fokus Ongil pada hidup dan perawatan senior." },
         { n: "02", name: "Ongil", body: "Platform yang berfokus pada hari-hari dan perawatan senior, serta hubungan keluarga dan komunitas." },
         { n: "03", name: "NEWON AI", body: "Teknologi dan layanan AI yang dapat mendukung informasi hidup yang disesuaikan dan panduan." },
         { n: "04", name: "Consumer · Business · Commerce", body: "Aplikasi sehari-hari, solusi untuk perusahaan dan lembaga, serta perdagangan barang dan layanan hidup. Rincian tetap di halaman itu." },
