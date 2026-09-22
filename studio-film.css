@@ -180,6 +180,7 @@
 #studio-film.st-film .st-film__actions {
   opacity: 0;
   transform: translateY(12px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
 }
 
 #studio-film.st-film.is-ready .st-film__wordmark,
@@ -188,7 +189,6 @@
 #studio-film.st-film.is-ready .st-film__actions {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.9s ease, transform 0.9s ease;
 }
 
 #studio-film.st-film.is-ready .st-film__wordmark {

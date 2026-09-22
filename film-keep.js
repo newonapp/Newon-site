@@ -83,8 +83,12 @@
     }, 700);
     tryPlay();
     requestAnimationFrame(function () {
-      host.classList.add("is-ready");
-      tryPlay();
+      requestAnimationFrame(function () {
+        if (!host.hasAttribute("data-lockup-reveal")) {
+          host.classList.add("is-ready");
+        }
+        tryPlay();
+      });
     });
   }
 
@@ -97,6 +101,8 @@
       [document.querySelector("[data-nog-film]"), ".nog-film__video"],
       [document.querySelector("[data-nls-film]"), ".nls-film__video"],
       [document.querySelector("[data-nai-film]"), ".nai-film__video"],
+      [document.querySelector("[data-games-film]"), ".games-hero__video"],
+      [document.querySelector("[data-apps-film]"), ".apps-film__video"],
     ];
     pairs.forEach(function (pair) {
       var host = pair[0];

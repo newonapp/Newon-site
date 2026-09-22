@@ -3,11 +3,12 @@
   padding: 0;
   max-width: none;
   overflow-x: clip;
+  background: #ffffff;
 }
 
 #ecosystem-detail.eco {
-  background: #000;
-  color: #fff;
+  background: #ffffff;
+  color: #111111;
   padding: 0;
 }
 
@@ -210,4 +211,1113 @@
     transform: none;
     transition: none;
   }
+}
+
+/* Story below the film. Does not restyle .eco-film. */
+#ecosystem-detail.eco .eco-story {
+  position: relative;
+  z-index: 2;
+  background: #ffffff;
+  color: #111111;
+}
+
+#ecosystem-detail.eco .eco-block {
+  padding: clamp(5.5rem, 12vw, 8.5rem) 0;
+  scroll-margin-top: calc(var(--gnav-h, 74px) + 0.8rem);
+}
+
+#ecosystem-detail.eco .eco-block--intro {
+  padding-top: clamp(4.5rem, 10vw, 7rem);
+}
+
+#ecosystem-detail.eco .eco-block--close {
+  padding-bottom: clamp(6rem, 14vw, 9rem);
+}
+
+#ecosystem-detail.eco .eco-wrap {
+  width: min(68rem, calc(100vw - 2.4rem));
+  margin: 0 auto;
+}
+
+#ecosystem-detail.eco .eco-wrap--narrow {
+  width: min(40rem, calc(100vw - 2.4rem));
+  text-align: center;
+}
+
+#ecosystem-detail.eco .eco-block__head {
+  margin: 0 0 1.8rem;
+}
+
+#ecosystem-detail.eco .eco-wrap--narrow .eco-block__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#ecosystem-detail.eco .eco-kicker {
+  margin: 0 0 1.15rem;
+  color: rgba(17, 17, 17, 0.42);
+  font-family: "Noto Sans", "Pretendard", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+#ecosystem-detail.eco .eco-title {
+  margin: 0;
+  color: #111111;
+  font-family: "Noto Sans KR", "Noto Sans", "Pretendard", sans-serif;
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.18;
+}
+
+#ecosystem-detail.eco .eco-copy {
+  margin: 0 0 0.95rem;
+  max-width: 36rem;
+  color: rgba(17, 17, 17, 0.78);
+  font-family: "Noto Sans KR", "Noto Sans", "Pretendard", sans-serif;
+  font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+  font-weight: 430;
+  letter-spacing: -0.02em;
+  line-height: 1.7;
+}
+
+#ecosystem-detail.eco .eco-wrap--narrow .eco-copy {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ecosystem-detail.eco .eco-copy--soft {
+  color: rgba(17, 17, 17, 0.56);
+}
+
+#ecosystem-detail.eco .eco-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2.4rem;
+}
+
+#ecosystem-detail.eco .eco-grid--areas {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+#ecosystem-detail.eco .eco-grid--menus {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#ecosystem-detail.eco .eco-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100%;
+  padding: 1.45rem 1.35rem 1.35rem;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 2px;
+  background: #ffffff;
+  color: inherit;
+  text-align: left;
+  text-decoration: none;
+  transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+#ecosystem-detail.eco .eco-card:hover,
+#ecosystem-detail.eco .eco-card:focus-within {
+  transform: translateY(-4px);
+  border-color: rgba(17, 17, 17, 0.28);
+  background: #f7f7f7;
+}
+
+#ecosystem-detail.eco .eco-card__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+#ecosystem-detail.eco .eco-card__name {
+  margin: 0 0 0.85rem;
+  color: #111111;
+  font-family: "Noto Sans", "Pretendard", sans-serif;
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.15;
+}
+
+#ecosystem-detail.eco .eco-card__lead {
+  margin: 0 0 0.55rem;
+  color: rgba(17, 17, 17, 0.82);
+  font-family: "Noto Sans KR", "Noto Sans", "Pretendard", sans-serif;
+  font-size: 0.98rem;
+  font-weight: 550;
+  letter-spacing: -0.025em;
+  line-height: 1.5;
+}
+
+#ecosystem-detail.eco .eco-card__desc {
+  margin: 0 0 1.35rem;
+  color: rgba(17, 17, 17, 0.56);
+  font-family: "Noto Sans KR", "Noto Sans", "Pretendard", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.62;
+}
+
+#ecosystem-detail.eco .eco-card__go {
+  margin-top: auto;
+  color: #111111;
+  font-family: "Noto Sans KR", "Noto Sans", "Pretendard", sans-serif;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.28);
+  padding-bottom: 0.12rem;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+#ecosystem-detail.eco .eco-card:hover .eco-card__go,
+#ecosystem-detail.eco .eco-card:focus-visible .eco-card__go {
+  border-bottom-color: #111111;
+  transform: translateX(2px);
+}
+
+#ecosystem-detail.eco .eco-card__status {
+  color: rgba(17, 17, 17, 0.4);
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+#ecosystem-detail.eco .eco-map {
+  position: relative;
+  width: min(36rem, 100%);
+  height: min(32rem, 78vw);
+  margin: 3rem auto 0;
+}
+
+#ecosystem-detail.eco .eco-map__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#ecosystem-detail.eco .eco-map__line {
+  stroke: rgba(17, 17, 17, 0.18);
+  stroke-width: 0.35;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+#ecosystem-detail.eco .eco-map.is-in .eco-map__line {
+  animation: eco-draw 1.15s ease forwards;
+}
+
+#ecosystem-detail.eco .eco-map.is-in .eco-map__line:nth-child(2) { animation-delay: 0.08s; }
+#ecosystem-detail.eco .eco-map.is-in .eco-map__line:nth-child(3) { animation-delay: 0.16s; }
+#ecosystem-detail.eco .eco-map.is-in .eco-map__line:nth-child(4) { animation-delay: 0.24s; }
+#ecosystem-detail.eco .eco-map.is-in .eco-map__line:nth-child(5) { animation-delay: 0.32s; }
+#ecosystem-detail.eco .eco-map.is-in .eco-map__line:nth-child(6) { animation-delay: 0.4s; }
+
+@keyframes eco-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+#ecosystem-detail.eco .eco-map__hub,
+#ecosystem-detail.eco .eco-map__node {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(17, 17, 17, 0.16);
+  background: #ffffff;
+  color: #111111;
+  font-family: "Noto Sans", "Pretendard", sans-serif;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+#ecosystem-detail.eco .eco-map__hub {
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  min-width: 10.5rem;
+  padding: 1rem 1.15rem;
+  border-color: rgba(17, 17, 17, 0.28);
+  font-size: 0.92rem;
+}
+
+#ecosystem-detail.eco .eco-map__node {
+  font-size: 0.82rem;
+}
+
+#ecosystem-detail.eco .eco-map__node:hover,
+#ecosystem-detail.eco .eco-map__node:focus-visible {
+  transform: translate(-50%, calc(-50% - 3px));
+  border-color: #111111;
+  background: #f5f5f5;
+}
+
+#ecosystem-detail.eco .eco-map__node--0 { left: 22%; top: 14%; transform: translate(-50%, -50%); }
+#ecosystem-detail.eco .eco-map__node--1 { left: 78%; top: 14%; transform: translate(-50%, -50%); }
+#ecosystem-detail.eco .eco-map__node--2 { left: 8%; top: 50%; transform: translate(-50%, -50%); }
+#ecosystem-detail.eco .eco-map__node--3 { left: 92%; top: 50%; transform: translate(-50%, -50%); }
+#ecosystem-detail.eco .eco-map__node--4 { left: 26%; top: 88%; transform: translate(-50%, -50%); }
+#ecosystem-detail.eco .eco-map__node--5 { left: 74%; top: 88%; transform: translate(-50%, -50%); }
+
+#ecosystem-detail.eco .eco-keys {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.8rem 2rem;
+  margin-top: 2.6rem;
+  text-align: left;
+}
+
+#ecosystem-detail.eco .eco-keys__label {
+  margin: 0 0 0.85rem;
+  color: rgba(17, 17, 17, 0.4);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+#ecosystem-detail.eco .eco-keys__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#ecosystem-detail.eco .eco-chip {
+  padding: 0.55rem 0.85rem;
+  border: 1px solid rgba(17, 17, 17, 0.14);
+  color: #111111;
+  font-family: "Noto Sans KR", "Noto Sans", "Pretendard", sans-serif;
+  font-size: 0.92rem;
+  letter-spacing: -0.02em;
+}
+
+#ecosystem-detail.eco .eco-chip--next {
+  border-style: dashed;
+  color: rgba(17, 17, 17, 0.58);
+}
+
+#ecosystem-detail.eco .eco-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 2.2rem;
+}
+
+#ecosystem-detail.eco .eco-actions .btn {
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
+  border-radius: 2px;
+  font-weight: 600;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+#ecosystem-detail.eco .eco-actions .btn:hover,
+#ecosystem-detail.eco .eco-actions .btn:focus-visible {
+  transform: translateY(-2px);
+}
+
+#ecosystem-detail.eco .eco-actions .btn-primary {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+#ecosystem-detail.eco .eco-actions .btn-ghost {
+  background: transparent;
+  color: #111111;
+  border-color: rgba(17, 17, 17, 0.28);
+}
+
+#ecosystem-detail.eco .eco-actions .btn-primary:hover,
+#ecosystem-detail.eco .eco-actions .btn-primary:focus-visible {
+  background: #ffffff;
+  border-color: #111111;
+  color: #111111;
+}
+
+#ecosystem-detail.eco .eco-actions .btn-ghost:hover,
+#ecosystem-detail.eco .eco-actions .btn-ghost:focus-visible {
+  background: #f5f5f5;
+  border-color: #111111;
+  color: #111111;
+}
+
+#ecosystem-detail.eco [data-eco-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+#ecosystem-detail.eco [data-eco-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+#ecosystem-detail.eco [data-eco-reveal][data-eco-delay="1"].is-in { transition-delay: 0.08s; }
+#ecosystem-detail.eco [data-eco-reveal][data-eco-delay="2"].is-in { transition-delay: 0.16s; }
+#ecosystem-detail.eco [data-eco-reveal][data-eco-delay="3"].is-in { transition-delay: 0.24s; }
+#ecosystem-detail.eco [data-eco-reveal][data-eco-delay="4"].is-in { transition-delay: 0.32s; }
+#ecosystem-detail.eco [data-eco-reveal][data-eco-delay="5"].is-in { transition-delay: 0.4s; }
+#ecosystem-detail.eco [data-eco-reveal][data-eco-delay="6"].is-in { transition-delay: 0.48s; }
+
+#ecosystem-detail.eco.is-static-motion [data-eco-reveal],
+#ecosystem-detail.eco.is-static-motion [data-eco-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+#ecosystem-detail.eco.is-static-motion .eco-map__line,
+#ecosystem-detail.eco.is-static-motion .eco-map.is-in .eco-map__line,
+#ecosystem-detail.eco.is-static-motion .eco-orbit.is-in .eco-orbit__ticks,
+#ecosystem-detail.eco.is-static-motion .eco-orbit.is-in .eco-orbit__spokes line {
+  stroke-dashoffset: 0;
+  animation: none;
+}
+
+@media (max-width: 980px) {
+  #ecosystem-detail.eco .eco-grid--areas,
+  #ecosystem-detail.eco .eco-grid--menus {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  #ecosystem-detail.eco .eco-wrap,
+  #ecosystem-detail.eco .eco-wrap--narrow {
+    width: min(68rem, calc(100vw - 1.6rem));
+  }
+
+  #ecosystem-detail.eco .eco-grid--areas,
+  #ecosystem-detail.eco .eco-grid--menus,
+  #ecosystem-detail.eco .eco-keys {
+    grid-template-columns: 1fr;
+  }
+
+  #ecosystem-detail.eco .eco-title {
+    font-size: clamp(1.7rem, 8vw, 2.3rem);
+  }
+
+  #ecosystem-detail.eco .eco-map {
+    display: grid;
+    gap: 0.7rem;
+    height: auto;
+    margin-top: 2.2rem;
+  }
+
+  #ecosystem-detail.eco .eco-map__lines {
+    display: none;
+  }
+
+  #ecosystem-detail.eco .eco-map__hub,
+  #ecosystem-detail.eco .eco-map__node {
+    position: static;
+    transform: none;
+    width: 100%;
+    white-space: normal;
+  }
+
+  #ecosystem-detail.eco .eco-map__node:hover,
+  #ecosystem-detail.eco .eco-map__node:focus-visible {
+    transform: translateY(-2px);
+  }
+
+  #ecosystem-detail.eco .eco-actions {
+    flex-direction: column;
+  }
+
+  #ecosystem-detail.eco .eco-actions .btn {
+    width: 100%;
+  }
+
+  #ecosystem-detail.eco .eco-card:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ecosystem-detail.eco [data-eco-reveal],
+  #ecosystem-detail.eco [data-eco-reveal].is-in,
+  #ecosystem-detail.eco .eco-card,
+  #ecosystem-detail.eco .eco-card:hover,
+  #ecosystem-detail.eco .eco-actions .btn,
+  #ecosystem-detail.eco .eco-map__node,
+  #ecosystem-detail.eco .eco-map__node:hover {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+
+  #ecosystem-detail.eco .eco-map__line,
+  #ecosystem-detail.eco .eco-map.is-in .eco-map__line {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}
+
+/* ── s1–s5 redesign. Film and #eco-explore stay as they are. ── */
+#ecosystem-detail.eco .eco-chapter {
+  margin: 0 0 0.4rem;
+  color: rgba(17, 17, 17, 0.08);
+  font-family: "Noto Sans", "Pretendard", sans-serif;
+  font-size: clamp(5.5rem, 14vw, 10rem);
+  font-weight: 750;
+  letter-spacing: -0.08em;
+  line-height: 0.78;
+}
+
+#ecosystem-detail.eco .eco-wrap--intro,
+#ecosystem-detail.eco .eco-wrap--connect {
+  width: min(72rem, calc(100vw - 2.4rem));
+  text-align: left;
+}
+
+#ecosystem-detail.eco .eco-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
+}
+
+#ecosystem-detail.eco .eco-block--intro .eco-title {
+  font-size: clamp(2.4rem, 5.4vw, 4.1rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+
+#ecosystem-detail.eco .eco-intro__copy .eco-copy {
+  max-width: none;
+}
+
+#ecosystem-detail.eco .eco-block--areas {
+  background: #f6f6f6;
+}
+
+#ecosystem-detail.eco .eco-block__head--split {
+  max-width: 34rem;
+}
+
+#ecosystem-detail.eco .eco-areas__lead,
+#ecosystem-detail.eco .eco-next__lead {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem 2.4rem;
+  margin-bottom: 2.4rem;
+}
+
+#ecosystem-detail.eco .eco-areas__lead .eco-copy,
+#ecosystem-detail.eco .eco-next__lead .eco-copy {
+  max-width: none;
+  margin-bottom: 0;
+}
+
+#ecosystem-detail.eco .eco-areas {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(17, 17, 17, 0.12);
+}
+
+#ecosystem-detail.eco .eco-area {
+  display: grid;
+  grid-template-columns: 3.2rem minmax(10rem, 16rem) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.2rem 1.6rem;
+  padding: 1.35rem 0.2rem;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.28s ease, color 0.28s ease, padding 0.28s ease;
+}
+
+#ecosystem-detail.eco .eco-area__n {
+  color: rgba(17, 17, 17, 0.38);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+}
+
+#ecosystem-detail.eco .eco-area__name {
+  color: #111111;
+  font-family: "Noto Sans", "Pretendard", sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+#ecosystem-detail.eco .eco-area__desc {
+  color: rgba(17, 17, 17, 0.56);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+#ecosystem-detail.eco .eco-area__go {
+  color: #111111;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#ecosystem-detail.eco .eco-area:hover,
+#ecosystem-detail.eco .eco-area:focus-visible {
+  background: #111111;
+  color: #ffffff;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#ecosystem-detail.eco .eco-area:hover .eco-area__n,
+#ecosystem-detail.eco .eco-area:hover .eco-area__name,
+#ecosystem-detail.eco .eco-area:hover .eco-area__desc,
+#ecosystem-detail.eco .eco-area:hover .eco-area__go,
+#ecosystem-detail.eco .eco-area:focus-visible .eco-area__n,
+#ecosystem-detail.eco .eco-area:focus-visible .eco-area__name,
+#ecosystem-detail.eco .eco-area:focus-visible .eco-area__desc,
+#ecosystem-detail.eco .eco-area:focus-visible .eco-area__go {
+  color: #ffffff;
+}
+
+#ecosystem-detail.eco .eco-block--commerce .eco-title {
+  max-width: 22ch;
+}
+
+#ecosystem-detail.eco .eco-menus {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.8rem;
+  border-top: 1px solid rgba(17, 17, 17, 0.12);
+}
+
+#ecosystem-detail.eco .eco-menu {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) minmax(16rem, 0.9fr);
+  gap: 1.2rem 2rem;
+  align-items: start;
+  padding: 2rem 0.1rem 2.1rem;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.28s ease, padding 0.28s ease;
+}
+
+#ecosystem-detail.eco .eco-menu__n {
+  padding-top: 0.55rem;
+  color: rgba(17, 17, 17, 0.38);
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+}
+
+#ecosystem-detail.eco .eco-menu__name {
+  margin: 0;
+  color: #111111;
+  font-family: "Noto Sans", "Pretendard", sans-serif;
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-weight: 750;
+  letter-spacing: -0.06em;
+  line-height: 0.92;
+}
+
+#ecosystem-detail.eco .eco-menu__body {
+  max-width: 28rem;
+  padding-top: 0.45rem;
+}
+
+#ecosystem-detail.eco .eco-menu__status {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  color: rgba(17, 17, 17, 0.4);
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+#ecosystem-detail.eco .eco-menu__lead {
+  margin: 0 0 0.45rem;
+  color: #111111;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.45;
+}
+
+#ecosystem-detail.eco .eco-menu__desc {
+  margin: 0 0 1rem;
+  color: rgba(17, 17, 17, 0.54);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+#ecosystem-detail.eco .eco-menu__cta {
+  color: #111111;
+  font-size: 0.84rem;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.28);
+  padding-bottom: 0.1rem;
+}
+
+#ecosystem-detail.eco .eco-menu:hover,
+#ecosystem-detail.eco .eco-menu:focus-visible {
+  background: #f7f7f7;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#ecosystem-detail.eco .eco-menu:hover .eco-menu__cta,
+#ecosystem-detail.eco .eco-menu:focus-visible .eco-menu__cta {
+  border-bottom-color: #111111;
+}
+
+#ecosystem-detail.eco .eco-wrap--connect {
+  text-align: center;
+}
+
+#ecosystem-detail.eco .eco-block--connect .eco-block__head,
+#ecosystem-detail.eco .eco-block--connect .eco-copy {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ecosystem-detail.eco .eco-orbit {
+  position: relative;
+  width: min(34rem, calc(100vw - 1.6rem));
+  aspect-ratio: 1;
+  margin: 2.8rem auto 0;
+  color: rgba(17, 17, 17, 0.2);
+}
+
+#ecosystem-detail.eco .eco-orbit__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#ecosystem-detail.eco .eco-orbit__rings circle,
+#ecosystem-detail.eco .eco-orbit__ticks,
+#ecosystem-detail.eco .eco-orbit__spokes {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+#ecosystem-detail.eco .eco-orbit__ring-mid {
+  stroke-dasharray: 2.5 5.5;
+}
+
+#ecosystem-detail.eco .eco-orbit__ticks {
+  transform-box: view-box;
+  transform-origin: 300px 300px;
+  opacity: 0.55;
+}
+
+#ecosystem-detail.eco .eco-orbit.is-in .eco-orbit__ticks {
+  animation: eco-orbit-spin 72s linear infinite;
+}
+
+#ecosystem-detail.eco .eco-orbit.is-in .eco-orbit__spokes line {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation: eco-draw 1.15s ease forwards;
+}
+
+#ecosystem-detail.eco .eco-orbit.is-in .eco-orbit__spokes line:nth-child(2) { animation-delay: 0.06s; }
+#ecosystem-detail.eco .eco-orbit.is-in .eco-orbit__spokes line:nth-child(3) { animation-delay: 0.12s; }
+#ecosystem-detail.eco .eco-orbit.is-in .eco-orbit__spokes line:nth-child(4) { animation-delay: 0.18s; }
+#ecosystem-detail.eco .eco-orbit.is-in .eco-orbit__spokes line:nth-child(5) { animation-delay: 0.24s; }
+#ecosystem-detail.eco .eco-orbit.is-in .eco-orbit__spokes line:nth-child(6) { animation-delay: 0.3s; }
+
+@keyframes eco-orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+#ecosystem-detail.eco .eco-orbit__hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 7.4rem;
+  height: 7.4rem;
+  margin: 0;
+  padding: 0.7rem;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: #111111;
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  text-align: center;
+  box-shadow: 0 0 0 10px #ffffff, 0 0 0 11px rgba(17, 17, 17, 0.12);
+}
+
+#ecosystem-detail.eco .eco-orbit__node {
+  --r: 12.15rem;
+  position: absolute;
+  left: calc(50% + cos(var(--a)) * var(--r));
+  top: calc(50% + sin(var(--a)) * var(--r));
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 6.4rem;
+  padding: 0.5rem 0.7rem 0.55rem;
+  border: 1px solid rgba(17, 17, 17, 0.14);
+  background: #ffffff;
+  color: #111111;
+  text-decoration: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+#ecosystem-detail.eco .eco-orbit__num {
+  color: rgba(17, 17, 17, 0.4);
+  font-size: 0.58rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+}
+
+#ecosystem-detail.eco .eco-orbit__lab {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+#ecosystem-detail.eco .eco-orbit__node:hover,
+#ecosystem-detail.eco .eco-orbit__node:focus-visible {
+  background: #111111;
+  border-color: #111111;
+  color: #ffffff;
+  transform: translate(-50%, calc(-50% - 4px));
+}
+
+#ecosystem-detail.eco .eco-orbit__node:hover .eco-orbit__num,
+#ecosystem-detail.eco .eco-orbit__node:focus-visible .eco-orbit__num {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+#ecosystem-detail.eco .eco-orbit__node--0 { --a: -90deg; }
+#ecosystem-detail.eco .eco-orbit__node--1 { --a: -30deg; }
+#ecosystem-detail.eco .eco-orbit__node--2 { --a: 30deg; }
+#ecosystem-detail.eco .eco-orbit__node--3 { --a: 90deg; }
+#ecosystem-detail.eco .eco-orbit__node--4 { --a: 150deg; }
+#ecosystem-detail.eco .eco-orbit__node--5 { --a: 210deg; }
+
+#ecosystem-detail.eco .eco-rail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-top: 2.6rem;
+}
+
+#ecosystem-detail.eco .eco-rail__col {
+  padding: 1.6rem 1.5rem 1.7rem;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+#ecosystem-detail.eco .eco-rail__col--next {
+  background: #f6f6f6;
+}
+
+#ecosystem-detail.eco .eco-rail__label {
+  margin: 0 0 1.2rem;
+  color: rgba(17, 17, 17, 0.4);
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+#ecosystem-detail.eco .eco-rail__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#ecosystem-detail.eco .eco-rail__item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  color: #111111;
+  font-size: 1.35rem;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}
+
+#ecosystem-detail.eco .eco-rail__item span {
+  color: rgba(17, 17, 17, 0.38);
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+}
+
+#ecosystem-detail.eco .eco-rail__item--next {
+  color: rgba(17, 17, 17, 0.62);
+}
+
+@media (max-width: 900px) {
+  #ecosystem-detail.eco .eco-intro,
+  #ecosystem-detail.eco .eco-areas__lead,
+  #ecosystem-detail.eco .eco-next__lead,
+  #ecosystem-detail.eco .eco-rail {
+    grid-template-columns: 1fr;
+  }
+
+  #ecosystem-detail.eco .eco-area {
+    grid-template-columns: 2.4rem minmax(0, 1fr) auto;
+  }
+
+  #ecosystem-detail.eco .eco-area__desc {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  #ecosystem-detail.eco .eco-menu {
+    grid-template-columns: 2.2rem 1fr;
+  }
+
+  #ecosystem-detail.eco .eco-menu__body {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  #ecosystem-detail.eco .eco-orbit {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+    width: 100%;
+    aspect-ratio: auto;
+    height: auto;
+  }
+
+  #ecosystem-detail.eco .eco-orbit__lines {
+    display: none;
+  }
+
+  #ecosystem-detail.eco .eco-orbit__hub {
+    position: static;
+    grid-column: 1 / -1;
+    width: 6.2rem;
+    height: 6.2rem;
+    margin: 0 auto 0.3rem;
+    transform: none;
+  }
+
+  #ecosystem-detail.eco .eco-orbit__node,
+  #ecosystem-detail.eco .eco-orbit__node:hover,
+  #ecosystem-detail.eco .eco-orbit__node:focus-visible {
+    position: static;
+    min-width: 0;
+    width: 100%;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ecosystem-detail.eco .eco-orbit.is-in .eco-orbit__ticks,
+  #ecosystem-detail.eco .eco-orbit.is-in .eco-orbit__spokes line {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Beat site-dark nuclear black on this page only. Film stays dark. */
+html:has(#ecosystem-detail),
+html:has(#ecosystem-detail) body,
+html:has(#ecosystem-detail) body main,
+.hub-page:has(#ecosystem-detail),
+#ecosystem-detail.eco,
+#ecosystem-detail.eco .eco-story {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #111111 !important;
+}
+
+#ecosystem-detail.eco .eco-block--areas,
+#ecosystem-detail.eco .eco-rail__col--next,
+#ecosystem-detail.eco .eco-menu:hover,
+#ecosystem-detail.eco .eco-menu:focus-visible {
+  background: #f6f6f6 !important;
+  background-color: #f6f6f6 !important;
+}
+
+#ecosystem-detail.eco .eco-chapter {
+  color: rgba(17, 17, 17, 0.08) !important;
+  background: transparent !important;
+}
+
+#ecosystem-detail.eco .eco-area__n,
+#ecosystem-detail.eco .eco-menu__n,
+#ecosystem-detail.eco .eco-orbit__num,
+#ecosystem-detail.eco .eco-rail__label,
+#ecosystem-detail.eco .eco-rail__item span {
+  color: rgba(17, 17, 17, 0.4) !important;
+  background: transparent !important;
+}
+
+#ecosystem-detail.eco .eco-area__desc,
+#ecosystem-detail.eco .eco-menu__desc,
+#ecosystem-detail.eco .eco-rail__item--next {
+  color: rgba(17, 17, 17, 0.56) !important;
+  background: transparent !important;
+}
+
+#ecosystem-detail.eco .eco-orbit__hub {
+  background: #111111 !important;
+  background-color: #111111 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 0 10px #ffffff, 0 0 0 11px rgba(17, 17, 17, 0.12) !important;
+}
+
+#ecosystem-detail.eco .eco-area:hover,
+#ecosystem-detail.eco .eco-area:focus-visible,
+#ecosystem-detail.eco .eco-orbit__node:hover,
+#ecosystem-detail.eco .eco-orbit__node:focus-visible {
+  background: #111111 !important;
+  background-color: #111111 !important;
+  color: #ffffff !important;
+  border-color: #111111 !important;
+}
+
+#ecosystem-detail.eco .eco-area:hover .eco-area__n,
+#ecosystem-detail.eco .eco-area:hover .eco-area__name,
+#ecosystem-detail.eco .eco-area:hover .eco-area__desc,
+#ecosystem-detail.eco .eco-area:hover .eco-area__go,
+#ecosystem-detail.eco .eco-area:focus-visible .eco-area__n,
+#ecosystem-detail.eco .eco-area:focus-visible .eco-area__name,
+#ecosystem-detail.eco .eco-area:focus-visible .eco-area__desc,
+#ecosystem-detail.eco .eco-area:focus-visible .eco-area__go,
+#ecosystem-detail.eco .eco-orbit__node:hover .eco-orbit__lab,
+#ecosystem-detail.eco .eco-orbit__node:focus-visible .eco-orbit__lab {
+  color: #ffffff !important;
+  background: transparent !important;
+}
+
+#ecosystem-detail.eco .eco-orbit__node:hover .eco-orbit__num,
+#ecosystem-detail.eco .eco-orbit__node:focus-visible .eco-orbit__num {
+  color: rgba(255, 255, 255, 0.62) !important;
+  background: transparent !important;
+}
+
+#ecosystem-detail.eco .eco-story *::before,
+#ecosystem-detail.eco .eco-story *::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  color: inherit !important;
+  border-color: rgba(17, 17, 17, 0.14) !important;
+  box-shadow: none !important;
+}
+
+#ecosystem-detail.eco .eco-kicker,
+#ecosystem-detail.eco .eco-card__status,
+#ecosystem-detail.eco .eco-keys__label {
+  color: rgba(17, 17, 17, 0.4) !important;
+}
+
+#ecosystem-detail.eco .eco-copy,
+#ecosystem-detail.eco .eco-card__lead {
+  color: rgba(17, 17, 17, 0.78) !important;
+}
+
+#ecosystem-detail.eco .eco-copy--soft,
+#ecosystem-detail.eco .eco-card__desc {
+  color: rgba(17, 17, 17, 0.56) !important;
+}
+
+#ecosystem-detail.eco .eco-chip--next {
+  color: rgba(17, 17, 17, 0.58) !important;
+}
+
+#ecosystem-detail.eco .eco-card:hover,
+#ecosystem-detail.eco .eco-card:focus-within,
+#ecosystem-detail.eco .eco-map__node:hover,
+#ecosystem-detail.eco .eco-map__node:focus-visible {
+  background: #f7f7f7 !important;
+  background-color: #f7f7f7 !important;
+  border-color: rgba(17, 17, 17, 0.28) !important;
+}
+
+#ecosystem-detail.eco .eco-actions .btn-primary,
+#ecosystem-detail.eco .eco-actions a.btn-primary {
+  background: #111111 !important;
+  background-color: #111111 !important;
+  color: #ffffff !important;
+  border-color: #111111 !important;
+}
+
+#ecosystem-detail.eco .eco-actions .btn-ghost,
+#ecosystem-detail.eco .eco-actions a.btn-ghost {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: #111111 !important;
+  border-color: rgba(17, 17, 17, 0.28) !important;
+}
+
+#ecosystem-detail.eco .eco-actions .btn-primary:hover,
+#ecosystem-detail.eco .eco-actions .btn-primary:focus-visible,
+#ecosystem-detail.eco .eco-actions a.btn-primary:hover,
+#ecosystem-detail.eco .eco-actions a.btn-primary:focus-visible {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #111111 !important;
+  border-color: #111111 !important;
+}
+
+#ecosystem-detail.eco .eco-actions .btn-ghost:hover,
+#ecosystem-detail.eco .eco-actions .btn-ghost:focus-visible,
+#ecosystem-detail.eco .eco-actions a.btn-ghost:hover,
+#ecosystem-detail.eco .eco-actions a.btn-ghost:focus-visible {
+  background: #f5f5f5 !important;
+  background-color: #f5f5f5 !important;
+  color: #111111 !important;
+  border-color: #111111 !important;
+}
+
+html:has(#ecosystem-detail) :is(.site-footer, .studio-footer) {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #111111 !important;
+  border-color: rgba(17, 17, 17, 0.1) !important;
+}
+
+html:has(#ecosystem-detail) :is(.site-footer, .studio-footer) :is(a, p, span, li) {
+  color: #111111 !important;
+}
+
+html:has(#ecosystem-detail) :is(.site-footer, .studio-footer) .muted {
+  color: rgba(17, 17, 17, 0.5) !important;
 }

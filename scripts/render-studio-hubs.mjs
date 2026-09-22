@@ -188,7 +188,7 @@ function studioBody(flat, flatEn, lang = "en") {
   const close = studioExploreCloseHtml(flat, flatEn, lang);
   const film = getStudioFilmCopy(lang);
   const cssV = "20260830wrap1";
-  const filmV = "20260922loop2";
+  const filmV = "20260922fade2";
   const oldTitle = t(
     "studioHub.heroTitle",
     ko ? "브랜드의 시작부터 디지털 제품까지 구현합니다." : "From brand start to digital product."
@@ -200,7 +200,7 @@ function studioBody(flat, flatEn, lang = "en") {
 <link rel="stylesheet" href="/business-page.css?v=${cssV}" />
 <link rel="stylesheet" href="/business-pillar.css?v=${cssV}" />
 <link rel="stylesheet" href="/studio-film.css?v=${filmV}" />
-<section id="studio-film" class="st-film is-ready" data-st-film aria-label="Newon Studio">
+<section id="studio-film" class="st-film" data-st-film data-lockup-reveal aria-label="Newon Studio">
   <div class="st-film__stage">
     <div class="st-film__fallback" aria-hidden="true"></div>
     <video
@@ -296,8 +296,8 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.appsSeoTitle"),
     description: pick(f, fe, "studio.appsMetaDescription"),
     body: appsBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/apps-hub.css?v=20260902appsmob1" />',
-    extraScripts: '<script src="/apps-hub.js?v=20260825apps5" defer></script>',
+    extraCss: '<link rel="stylesheet" href="/apps-hub.css?v=20260922appprev1" />',
+    extraScripts: '<script src="/film-keep.js?v=20260922appprev1"></script>\n    <script src="/apps-hub.js?v=20260825apps5" defer></script>',
   }),
   ai: (f, fe, l) => ({
     activeNav: "ai",
@@ -331,8 +331,9 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.gamesSeoTitle"),
     description: pick(f, fe, "studio.gamesMetaDescription"),
     body: gamesBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/games-hub.css?v=20260825games5" />',
-    extraScripts: '<script src="/games-hub.js?v=20260825games4" defer></script>',
+    extraCss: '<link rel="stylesheet" href="/games-hub.css?v=20260922games3" />',
+    extraScripts: `<script src="/film-keep.js?v=20260922games3"></script>
+    <script src="/games-hub.js?v=20260922games3" defer></script>`,
   }),
   studio: (f, fe, l) => ({
     activeNav: "studio",

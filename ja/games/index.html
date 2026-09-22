@@ -35,14 +35,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css?v=20260904a11y1" />
-    <link rel="stylesheet" href="/gnav-mega.css?v=20260902nav1" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
-    <link rel="stylesheet" href="/games-hub.css?v=20260825games5" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20260920revert1" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260826nav1" />
+    <link rel="stylesheet" href="/games-hub.css?v=20260922games3" />
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
 <script src="/theme-shell.js?v=20260904perf1"></script>
     <script src="/lang-nav.js?v=20260825studio"></script>
     <script src="/analytics.js?v=20260904sec1" defer></script>
-</head>
+    <link rel="stylesheet" href="/site-dark.css?v=20260902perf1" />
+    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
+  </head>
   <body>
     <a class="skip-link" href="#hub-main">本文へスキップ</a>
     <header class="gnav site-header gnav--five" data-gnav>
@@ -54,8 +56,8 @@
           </a>
           <nav class="gnav__nav" aria-label="Main navigation">
             <div class="gnav__nav-scroller">
-            <div class="gnav-dd gnav-dd--active" data-gnav-dd data-gnav-menu="consumer">
-    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-current="page">
+            <div class="gnav-dd" data-gnav-dd data-gnav-menu="consumer">
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
       Consumer<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
@@ -374,26 +376,26 @@
           <div class="gnav__util">
             <a class="gnav__cta" href="../business/inquiry/">Contact</a>
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-gnav-legacy">言語</label>
-    <select id="lang-select-gnav-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="言語">
+    <label class="visually-hidden" for="lang-select-gnav-hub">言語</label>
+    <select id="lang-select-gnav-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="言語">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">英語</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">スペイン語</option><option value="pt-br" data-short="PT">ポルトガル語 (ブラジル)</option><option value="fr" data-short="FR">フランセ</option><option value="de" data-short="DE">ドイツ語</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">インドネシア語</option>
     </select>
   </div>
             <button type="button" class="gnav__theme" data-theme-toggle data-label-light="ライトモードに切り替え" data-label-dark="ダークモードに切り替え" title="テーマを切り替え" aria-label="ダークモードに切り替え"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-legacy" aria-label="Menu">
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-hub" aria-label="Menu">
               <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
             </button>
           </div>
         </div>
       </div>
-      <div id="gnav-mobile-legacy" class="gnav-mobile" hidden aria-hidden="true">
+      <div id="gnav-mobile-hub" class="gnav-mobile" hidden aria-hidden="true">
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
       <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menu">
         <div class="gnav-mobile__scroll">
           <div class="gnav-mobile__util-row">
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-mobile-legacy">言語</label>
-    <select id="lang-select-mobile-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="言語">
+    <label class="visually-hidden" for="lang-select-mobile-hub">言語</label>
+    <select id="lang-select-mobile-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="言語">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">英語</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">スペイン語</option><option value="pt-br" data-short="PT">ポルトガル語 (ブラジル)</option><option value="fr" data-short="FR">フランセ</option><option value="de" data-short="DE">ドイツ語</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">インドネシア語</option>
     </select>
   </div>
@@ -457,63 +459,66 @@
     </header>
     <main id="hub-main" class="hub-page">
       <div class="games-page" data-games-page>
-  <section class="games-hero" data-games-reveal>
-    <div class="games-hero__bg" aria-hidden="true" data-games-parallax>
-      <div class="games-hero__grid"></div>
-      <div class="games-hero__scan"></div>
-      <div class="games-hero__noise"></div>
-      <p class="games-hero__mark games-hero__mark--a">SYSTEM_ID / H-404</p>
-      <p class="games-hero__mark games-hero__mark--b">SECTOR 07</p>
-      <p class="games-hero__mark games-hero__mark--c">IDENTITY UNKNOWN</p>
-    </div>
-    <div class="games-hero__inner hub-inner">
-      <div class="games-hero__copy">
-        <p class="games-hero__eyebrow">NEWON GAMES / 001</p>
-        <h1 class="games-hero__title">
+  <section class="games-hero" data-games-film>
+    <div class="games-hero__stage">
+      <div class="games-hero__fallback" aria-hidden="true"></div>
+      <video
+        class="games-hero__video"
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_230900_ef8565a6-16eb-4fe9-98e4-4b972d3f436d.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+        preload="auto"
+        disablepictureinpicture
+        controlslist="nodownload nofullscreen noremoteplayback"
+        aria-hidden="true"
+      >
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_230900_ef8565a6-16eb-4fe9-98e4-4b972d3f436d.mp4" type="video/mp4" />
+      </video>
+      <div class="games-hero__lockup">
+        <div class="games-hero__veil" aria-hidden="true"></div>
+        <h1 class="games-hero__wordmark">
           <span class="games-hero__404">404:</span>
           <span class="games-hero__human">HUMAN</span>
         </h1>
-        <p class="games-hero__lead">In a world of AI,
-hide that you are the last human.</p>
-        <p class="games-hero__desc">Answer questions, choose actions, and evade AI suspicion. Every choice you make is remembered.</p>
-        <ul class="games-hero__meta">
-          <li>SURVIVAL</li>
-          <li>CHOICE</li>
-          <li>AI MEMORY</li>
-          <li>MULTIPLE ENDINGS</li>
-        </ul>
+        <p class="games-hero__slogan">In a world of AI,<br>hide that you are the last human.</p>
+        <p class="games-hero__lead">Answer questions, choose actions, and evade AI suspicion. Every choice you make is remembered.</p>
         <div class="games-hero__actions">
-          <a class="btn btn-primary games-btn" href="/404-human/play/" data-analytics="game_play_click">PLAY 404: HUMAN →</a>
-          <a class="btn btn-ghost games-btn games-btn--ghost" href="#games-premise">Learn about the game ↓</a>
+          <a class="games-hero__btn" href="/404-human/play/" data-analytics="game_play_click">PLAY 404: HUMAN →</a>
+          <a class="games-hero__btn games-hero__btn--ghost" href="#games-premise">Learn about the game ↓</a>
         </div>
         <p class="games-hero__detail"><a href="../404-human/">GAME DETAILS →</a></p>
       </div>
-      <aside class="games-surveillance" aria-hidden="true" data-games-meters>
-        <span class="ghud-c ghud-c--tl" aria-hidden="true"></span>
+    </div>
+  </section>
+  <div class="games-hud-wrap" data-games-reveal>
+    <aside class="games-surveillance" aria-hidden="true" data-games-meters>
+      <span class="ghud-c ghud-c--tl" aria-hidden="true"></span>
     <span class="ghud-c ghud-c--tr" aria-hidden="true"></span>
     <span class="ghud-c ghud-c--bl" aria-hidden="true"></span>
     <span class="ghud-c ghud-c--br" aria-hidden="true"></span>
-        <p class="games-surveillance__code">SYSTEM / SUBJECT ANALYSIS</p>
-        <div class="games-surveillance__row"><span>SUBJECT</span><strong>UNKNOWN</strong></div>
-        <div class="games-surveillance__row"><span>STATUS</span><strong>UNDER REVIEW</strong></div>
-        <div class="games-meter" data-meter="detection">
-          <div class="games-meter__head"><span>DETECTION</span><strong data-meter-val>78%</strong></div>
-          <div class="games-meter__track"><i style="--w:78%"></i></div>
-        </div>
-        <div class="games-meter" data-meter="humanity">
-          <div class="games-meter__head"><span>HUMANITY</span><strong data-meter-val>61%</strong></div>
-          <div class="games-meter__track"><i style="--w:61%"></i></div>
-        </div>
-        <div class="games-surveillance__grid">
-          <div><span>BEHAVIOR</span><strong>INCONSISTENT</strong></div>
-          <div><span>MEMORY</span><strong>04 EVENTS</strong></div>
-          <div><span>THREAT</span><strong>ELEVATED</strong></div>
-        </div>
-        <p class="games-surveillance__msg">“Behavior pattern does not match standard AI response.”</p>
-        <p class="games-surveillance__live"><i data-pulse></i> MONITORING ACTIVE</p>
-      </aside>
-    </div>
-  </section>
+      <p class="games-surveillance__code">SYSTEM / SUBJECT ANALYSIS</p>
+      <div class="games-surveillance__row"><span>SUBJECT</span><strong>UNKNOWN</strong></div>
+      <div class="games-surveillance__row"><span>STATUS</span><strong>UNDER REVIEW</strong></div>
+      <div class="games-meter" data-meter="detection">
+        <div class="games-meter__head"><span>DETECTION</span><strong data-meter-val>78%</strong></div>
+        <div class="games-meter__track"><i style="--w:78%"></i></div>
+      </div>
+      <div class="games-meter" data-meter="humanity">
+        <div class="games-meter__head"><span>HUMANITY</span><strong data-meter-val>61%</strong></div>
+        <div class="games-meter__track"><i style="--w:61%"></i></div>
+      </div>
+      <div class="games-surveillance__grid">
+        <div><span>BEHAVIOR</span><strong>INCONSISTENT</strong></div>
+        <div><span>MEMORY</span><strong>04 EVENTS</strong></div>
+        <div><span>THREAT</span><strong>ELEVATED</strong></div>
+      </div>
+      <p class="games-surveillance__msg">“Behavior pattern does not match standard AI response.”</p>
+      <p class="games-surveillance__live"><i data-pulse></i> MONITORING ACTIVE</p>
+    </aside>
+  </div>
 
   <section id="games-premise" class="games-premise" data-games-reveal>
     <div class="hub-inner games-premise__inner">
@@ -948,8 +953,9 @@ HUMAN?</h2>
     <div class="search-modal-host"></div>
     <script src="/search.js?v=20260904a11y1" defer></script>
     <script src="/waitlist.js?v=20260904sec1" defer></script>
-    <script src="/games-hub.js?v=20260825games4" defer></script>
-    <script src="/site-chrome.js?v=20260904a11y1" defer></script>
+    <script src="/film-keep.js?v=20260922games3"></script>
+    <script src="/games-hub.js?v=20260922games3" defer></script>
+    <script src="/site-chrome.js?v=20260920revert1" defer></script>
     <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
 </body>
 </html>

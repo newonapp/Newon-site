@@ -22,60 +22,66 @@ function hudCorners() {
 export function renderGamesShowcaseBody(flat, flatEn) {
   const enter = t(flat, flatEn, "studio.gamesEnter", "ENTER THE SYSTEM");
 
+  const slogan = t(flat, flatEn, "studio.gamesHeroLead", "AI만 남은 세상에서\n마지막 인간임을 숨기세요.").replace(/\n/g, "<br>");
+
   return `<div class="games-page" data-games-page>
-  <section class="games-hero" data-games-reveal>
-    <div class="games-hero__bg" aria-hidden="true" data-games-parallax>
-      <div class="games-hero__grid"></div>
-      <div class="games-hero__scan"></div>
-      <div class="games-hero__noise"></div>
-      <p class="games-hero__mark games-hero__mark--a">SYSTEM_ID / H-404</p>
-      <p class="games-hero__mark games-hero__mark--b">SECTOR 07</p>
-      <p class="games-hero__mark games-hero__mark--c">IDENTITY UNKNOWN</p>
-    </div>
-    <div class="games-hero__inner hub-inner">
-      <div class="games-hero__copy">
-        <p class="games-hero__eyebrow">${t(flat, flatEn, "studio.gamesHeroLabel", "NEWON GAMES")} / 001</p>
-        <h1 class="games-hero__title">
+  <section class="games-hero" data-games-film>
+    <div class="games-hero__stage">
+      <div class="games-hero__fallback" aria-hidden="true"></div>
+      <video
+        class="games-hero__video"
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_230900_ef8565a6-16eb-4fe9-98e4-4b972d3f436d.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+        preload="auto"
+        disablepictureinpicture
+        controlslist="nodownload nofullscreen noremoteplayback"
+        aria-hidden="true"
+      >
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_230900_ef8565a6-16eb-4fe9-98e4-4b972d3f436d.mp4" type="video/mp4" />
+      </video>
+      <div class="games-hero__lockup">
+        <div class="games-hero__veil" aria-hidden="true"></div>
+        <h1 class="games-hero__wordmark">
           <span class="games-hero__404">404:</span>
           <span class="games-hero__human">HUMAN</span>
         </h1>
-        <p class="games-hero__lead">${t(flat, flatEn, "studio.gamesHeroLead", "AI만 남은 세상에서\n마지막 인간임을 숨기세요.")}</p>
-        <p class="games-hero__desc">${t(flat, flatEn, "studio.gamesHeroDesc", "질문에 답하고, 행동을 선택하고, AI의 의심을 피하세요. 당신의 모든 선택은 기억됩니다.")}</p>
-        <ul class="games-hero__meta">
-          <li>SURVIVAL</li>
-          <li>CHOICE</li>
-          <li>AI MEMORY</li>
-          <li>MULTIPLE ENDINGS</li>
-        </ul>
+        <p class="games-hero__slogan">${slogan}</p>
+        <p class="games-hero__lead">${t(flat, flatEn, "studio.gamesHeroDesc", "질문에 답하고, 행동을 선택하고, AI의 의심을 피하세요. 당신의 모든 선택은 기억됩니다.")}</p>
         <div class="games-hero__actions">
-          <a class="btn btn-primary games-btn" href="${PLAY}" data-analytics="game_play_click">${t(flat, flatEn, "studio.gamesPlayHuman", "PLAY 404: HUMAN")} →</a>
-          <a class="btn btn-ghost games-btn games-btn--ghost" href="#games-premise">${t(flat, flatEn, "studio.gamesLearn", "게임 알아보기")} ↓</a>
+          <a class="games-hero__btn" href="${PLAY}" data-analytics="game_play_click">${t(flat, flatEn, "studio.gamesPlayHuman", "PLAY 404: HUMAN")} →</a>
+          <a class="games-hero__btn games-hero__btn--ghost" href="#games-premise">${t(flat, flatEn, "studio.gamesLearn", "게임 알아보기")} ↓</a>
         </div>
         <p class="games-hero__detail"><a href="${DETAILS}">${t(flat, flatEn, "studio.gamesDetails", "게임 상세")} →</a></p>
       </div>
-      <aside class="games-surveillance" aria-hidden="true" data-games-meters>
-        ${hudCorners()}
-        <p class="games-surveillance__code">SYSTEM / SUBJECT ANALYSIS</p>
-        <div class="games-surveillance__row"><span>SUBJECT</span><strong>UNKNOWN</strong></div>
-        <div class="games-surveillance__row"><span>STATUS</span><strong>UNDER REVIEW</strong></div>
-        <div class="games-meter" data-meter="detection">
-          <div class="games-meter__head"><span>DETECTION</span><strong data-meter-val>78%</strong></div>
-          <div class="games-meter__track"><i style="--w:78%"></i></div>
-        </div>
-        <div class="games-meter" data-meter="humanity">
-          <div class="games-meter__head"><span>HUMANITY</span><strong data-meter-val>61%</strong></div>
-          <div class="games-meter__track"><i style="--w:61%"></i></div>
-        </div>
-        <div class="games-surveillance__grid">
-          <div><span>BEHAVIOR</span><strong>INCONSISTENT</strong></div>
-          <div><span>MEMORY</span><strong>04 EVENTS</strong></div>
-          <div><span>THREAT</span><strong>ELEVATED</strong></div>
-        </div>
-        <p class="games-surveillance__msg">“Behavior pattern does not match standard AI response.”</p>
-        <p class="games-surveillance__live"><i data-pulse></i> MONITORING ACTIVE</p>
-      </aside>
     </div>
   </section>
+  <div class="games-hud-wrap" data-games-reveal>
+    <aside class="games-surveillance" aria-hidden="true" data-games-meters>
+      ${hudCorners()}
+      <p class="games-surveillance__code">SYSTEM / SUBJECT ANALYSIS</p>
+      <div class="games-surveillance__row"><span>SUBJECT</span><strong>UNKNOWN</strong></div>
+      <div class="games-surveillance__row"><span>STATUS</span><strong>UNDER REVIEW</strong></div>
+      <div class="games-meter" data-meter="detection">
+        <div class="games-meter__head"><span>DETECTION</span><strong data-meter-val>78%</strong></div>
+        <div class="games-meter__track"><i style="--w:78%"></i></div>
+      </div>
+      <div class="games-meter" data-meter="humanity">
+        <div class="games-meter__head"><span>HUMANITY</span><strong data-meter-val>61%</strong></div>
+        <div class="games-meter__track"><i style="--w:61%"></i></div>
+      </div>
+      <div class="games-surveillance__grid">
+        <div><span>BEHAVIOR</span><strong>INCONSISTENT</strong></div>
+        <div><span>MEMORY</span><strong>04 EVENTS</strong></div>
+        <div><span>THREAT</span><strong>ELEVATED</strong></div>
+      </div>
+      <p class="games-surveillance__msg">“Behavior pattern does not match standard AI response.”</p>
+      <p class="games-surveillance__live"><i data-pulse></i> MONITORING ACTIVE</p>
+    </aside>
+  </div>
 
   <section id="games-premise" class="games-premise" data-games-reveal>
     <div class="hub-inner games-premise__inner">

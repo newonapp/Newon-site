@@ -78,17 +78,69 @@ function featureTags(features) {
   return `<p class="apps-card__tags">${features.map((f) => `<span>${escapeHtml(f)}</span>`).join('<span class="apps-card__dot" aria-hidden="true">·</span>')}</p>`;
 }
 
-function heroMosaic(apps) {
-  const picks = appsForGrid(apps);
-  if (!picks.length) return "";
-  return `<div class="apps-hero__mosaic" aria-hidden="true">
-    ${picks
-      .map(
-        (a, i) =>
-          `<span class="apps-hero__mosaic-item" style="--i:${i};--apps-tint:${escapeHtml(a.tint)}"><img src="${escapeHtml(a.icon)}" alt="" width="72" height="72" loading="lazy" decoding="async" /></span>`
-      )
-      .join("")}
-  </div>`;
+const APPS_FILM_MP4 =
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260330_153826_e9005cf7-a1c7-4c7d-886f-fea22d644a9c.mp4";
+
+const APPLE_DEV = "https://apps.apple.com/kr/developer/nawon-kyung/id1896528749";
+const PLAY_DEV = "https://play.google.com/store/apps/dev?id=8016507493063681249";
+
+const FILM_COPY = {
+  ko: {
+    wordmark: "Newon App",
+    sloganHtml: "당신의 일상에 필요한 앱,<br>하나의 Newon에서.",
+    lead: "생활과 건강, 자기관리부터 다양한 일상의 순간까지. Newon의 앱을 한곳에서 만나보세요.",
+    appleAria: "Nawon Kyung Newon App Store",
+    playAria: "Nawon Kyung Newon Google Play",
+  },
+  en: {
+    wordmark: "Newon App",
+    sloganHtml: "Everyday apps you need,<br>in one Newon.",
+    lead: "From life and health to self-care and daily moments. Find Newon apps in one place.",
+    appleAria: "Nawon Kyung Newon on the App Store",
+    playAria: "Nawon Kyung Newon on Google Play",
+  },
+};
+
+function filmCopy(lang) {
+  return FILM_COPY[lang] || FILM_COPY.en;
+}
+
+const APPLE_MARK = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>`;
+
+const PLAY_MARK = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="#00D9FF" d="M2.5 3.6v16.8L13.1 12 2.5 3.6z"/><path fill="#00F076" d="M13.8 12.5 23 18.4c.6-.4.9-1 .9-1.7V7.3c0-.7-.3-1.3-.9-1.7l-9.2 6.9z"/><path fill="#FFCE00" d="M13.8 11.5 23 4.6c-.5-.4-1.2-.6-1.8-.4L2.5 3.6l11.3 7.9z"/><path fill="#FF3A44" d="M2.5 20.4 21.2 18c.6.1 1.3-.1 1.8-.5l-9.2-5.9L2.5 20.4z"/></svg>`;
+
+function appsFilm(lang) {
+  const c = filmCopy(lang);
+  return `<section class="apps-film" data-apps-film>
+    <div class="apps-film__stage">
+      <div class="apps-film__fallback" aria-hidden="true"></div>
+      <video
+        class="apps-film__video"
+        src="${APPS_FILM_MP4}"
+        autoplay
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+        preload="auto"
+        disablepictureinpicture
+        controlslist="nodownload nofullscreen noremoteplayback"
+        aria-hidden="true"
+      >
+        <source src="${APPS_FILM_MP4}" type="video/mp4" />
+      </video>
+      <div class="apps-film__lockup">
+        <div class="apps-film__veil" aria-hidden="true"></div>
+        <h1 class="apps-film__wordmark">${escapeHtml(c.wordmark)}</h1>
+        <p class="apps-film__slogan">${c.sloganHtml}</p>
+        <p class="apps-film__lead">${escapeHtml(c.lead)}</p>
+        <div class="apps-film__stores">
+          <a class="apps-film__store apps-film__store--apple" href="${APPLE_DEV}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(c.appleAria)}">${APPLE_MARK}</a>
+          <a class="apps-film__store apps-film__store--play" href="${PLAY_DEV}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(c.playAria)}">${PLAY_MARK}</a>
+        </div>
+      </div>
+    </div>
+  </section>`;
 }
 
 function appCard(app, flat, flatEn, index) {
@@ -173,25 +225,14 @@ export function renderAppsShowcaseBody(flat, flatEn, lang) {
   const cards = gridApps.map((a, i) => appCard(a, flat, flatEn, i)).join("\n");
 
   return `<div class="apps-page" data-apps-page>
-  <section class="apps-hero hub-inner">
-    <div class="apps-hero__layout">
-      <div class="apps-hero__copy">
-        <p class="apps-hero__eyebrow">${t(flat, flatEn, "studio.appsHeroLabel", "NEWON PRODUCTS / APPS")}</p>
-        <h1 class="apps-hero__title">${t(flat, flatEn, "studio.appsHeroTitle", "Apps designed for everyday life.")}</h1>
-        <p class="apps-hero__lead">${t(flat, flatEn, "studio.appsHeroLead", "")}</p>
-        <div class="apps-hero__actions">
-          <a class="btn btn-primary" href="#apps-grid">${t(flat, flatEn, "studio.appsCtaBrowse", "Browse apps")} ↓</a>
-          <a class="btn btn-ghost" href="${escapeHtml(eco?.homeUrl || "../#newon-plus-app")}">${t(flat, flatEn, "studio.appsCtaNewonPlus", "Learn about Newon+")} →</a>
-        </div>
-        <ul class="apps-hero__stats" aria-label="${t(flat, flatEn, "studio.appsStatsAria", "Product stats")}">
-          <li><strong>${escapeHtml(count)}</strong><span>${t(flat, flatEn, "studio.appsStatApps", "Apps")}</span></li>
-          <li><strong>iOS &amp; Android</strong><span>${t(flat, flatEn, "studio.appsStatPlatforms", "Platforms")}</span></li>
-          <li><strong>${t(flat, flatEn, "studio.appsStatGlobalValue", "177 countries")}</strong><span>${t(flat, flatEn, "studio.appsStatGlobal", "Availability")}</span></li>
-          <li><strong>${t(flat, flatEn, "studio.appsStatLangValue", "13 languages")}</strong><span>${t(flat, flatEn, "studio.appsStatLang", "Languages")}</span></li>
-        </ul>
-      </div>
-      ${heroMosaic(apps)}
-    </div>
+  ${appsFilm(dir)}
+  <section class="apps-stats-band">
+    <ul class="apps-stats hub-inner" aria-label="${t(flat, flatEn, "studio.appsStatsAria", "Product stats")}">
+      <li><strong>${escapeHtml(count)}</strong><span>${t(flat, flatEn, "studio.appsStatApps", "Apps")}</span></li>
+      <li><strong>iOS &amp; Android</strong><span>${t(flat, flatEn, "studio.appsStatPlatforms", "Platforms")}</span></li>
+      <li><strong>${t(flat, flatEn, "studio.appsStatGlobalValue", "177 countries")}</strong><span>${t(flat, flatEn, "studio.appsStatGlobal", "서비스 국가")}</span></li>
+      <li><strong>${t(flat, flatEn, "studio.appsStatLangValue", "13 languages")}</strong><span>${t(flat, flatEn, "studio.appsStatLang", "지원 언어")}</span></li>
+    </ul>
   </section>
 
   ${filterNav(flat, flatEn, gridApps)}

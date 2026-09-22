@@ -39,6 +39,8 @@ const PUBLISH_ROOT_CORE = [
   "hub-pages.css",
   "home-studio.css",
   "home-studio.js",
+  "home-company.css",
+  "home-company.js",
   "home-hero-3d.css",
   "home-hero-3d.js",
   "film-keep.js",

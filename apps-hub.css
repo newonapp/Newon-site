@@ -1,12 +1,13 @@
 /* Apps hub — premium editorial product showcase */
 .hub-page:has(.apps-page) {
+  padding: 0;
+  max-width: none;
   background: #ffffff;
+  overflow-x: clip;
 }
 
 html[data-newon-shell-theme="dark"] .hub-page:has(.apps-page) {
-  background:
-    radial-gradient(120% 80% at 100% -10%, rgba(255, 255, 255, 0.04), transparent 55%),
-    var(--bg, #0a0a0a);
+  background: #000000;
 }
 
 .apps-page {
@@ -25,6 +26,320 @@ html[data-newon-shell-theme="dark"] .apps-page {
 .apps-page .hub-inner {
   width: min(var(--apps-max), calc(100% - clamp(1.25rem, 4vw, 2.25rem) * 2));
   margin-inline: auto;
+}
+
+/* ── Film hero — Ongil lockup ── */
+.apps-film {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  width: 100vw;
+  max-width: 100vw;
+  margin: calc(-1 * var(--gnav-h, 74px)) 0 0 calc(50% - 50vw);
+  min-height: 100svh;
+  height: 100svh;
+  max-height: 100svh;
+  overflow: hidden;
+  background: #0a1216;
+  padding: 0;
+}
+
+.apps-film__stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #0a1216;
+}
+
+.apps-film__fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, #1a2a32 0%, #0c161c 55%, #081014 100%);
+}
+
+.apps-film__video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+  pointer-events: none;
+}
+
+.apps-film__video::-webkit-media-controls,
+.apps-film__video::-webkit-media-controls-enclosure,
+.apps-film__video::-webkit-media-controls-start-playback-button,
+.apps-film__video::-webkit-media-controls-play-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.apps-film__lockup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(48rem, calc(100vw - 2.4rem));
+  margin: 0;
+  padding: 1.4rem 1rem 1.6rem;
+  transform: translate(-50%, -48%);
+  text-align: center;
+}
+
+.apps-film__veil {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  z-index: 0;
+  width: min(52rem, 128%);
+  height: min(36rem, 170%);
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(
+      ellipse 58% 52% at 50% 46%,
+      rgba(8, 16, 18, 0.4) 0%,
+      rgba(8, 16, 18, 0.2) 46%,
+      rgba(8, 16, 18, 0) 78%
+    );
+  pointer-events: none;
+}
+
+.apps-film__wordmark,
+.apps-film__slogan,
+.apps-film__lead,
+.apps-film__stores {
+  position: relative;
+  z-index: 1;
+}
+
+.apps-film__wordmark {
+  margin: 0 0 2.15rem;
+  color: #fff !important;
+  font-family: "Noto Sans", "Noto Sans KR", "Pretendard", sans-serif;
+  font-size: clamp(6.2rem, 22vw, 12.5rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.92;
+  white-space: nowrap;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+  background: transparent !important;
+}
+
+.apps-film__slogan {
+  margin: 0;
+  color: #fff !important;
+  font-family: "Noto Sans KR", "Noto Sans", "Pretendard", sans-serif;
+  font-size: clamp(1.45rem, 3.2vw, 2.35rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.28;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.36);
+  background: transparent !important;
+}
+
+.apps-film__slogan,
+.apps-film__lead {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.apps-film__lead {
+  margin: 0.95rem 0 0;
+  max-width: 32rem;
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-family: "Noto Sans KR", "Noto Sans", "Pretendard", sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  font-weight: 430;
+  letter-spacing: -0.02em;
+  line-height: 1.62;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.34);
+  background: transparent !important;
+}
+
+.apps-film__stores {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: 1.45rem;
+}
+
+.apps-film__store {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.35rem;
+  height: 3.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px !important;
+  background: #fff !important;
+  color: #111 !important;
+  text-decoration: none;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  transition: transform 0.2s var(--apps-ease), box-shadow 0.2s var(--apps-ease);
+}
+
+.apps-film__store svg {
+  display: block;
+  width: 1.45rem;
+  height: 1.45rem;
+}
+
+.apps-film__store--apple {
+  color: #111 !important;
+}
+
+.apps-film__store:hover,
+.apps-film__store:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.34);
+  outline: none;
+}
+
+.apps-film__wordmark,
+.apps-film__slogan,
+.apps-film__lead,
+.apps-film__stores {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.apps-film.is-ready .apps-film__wordmark,
+.apps-film.is-ready .apps-film__slogan,
+.apps-film.is-ready .apps-film__lead,
+.apps-film.is-ready .apps-film__stores {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.apps-film.is-ready .apps-film__wordmark { transition-delay: 0.12s; }
+.apps-film.is-ready .apps-film__slogan { transition-delay: 0.3s; }
+.apps-film.is-ready .apps-film__lead { transition-delay: 0.48s; }
+.apps-film.is-ready .apps-film__stores { transition-delay: 0.64s; }
+
+.apps-stats-band {
+  background: #fff;
+  padding: clamp(2.25rem, 5vw, 3.75rem) 0;
+}
+
+.apps-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.75rem, 2vw, 1.35rem);
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.apps-stats li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 7.5rem;
+  padding: 1.35rem 1.1rem;
+  border: 1px solid rgba(10, 10, 10, 0.08);
+  background: #fff !important;
+  box-shadow: 0 10px 28px rgba(10, 10, 10, 0.05);
+}
+
+.apps-stats strong {
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  color: #0a0a0a !important;
+  background: transparent !important;
+}
+
+.apps-stats span {
+  font-size: 0.6875rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a8a8a !important;
+  background: transparent !important;
+}
+
+@media (max-width: 980px) {
+  .apps-film__wordmark {
+    font-size: clamp(3.6rem, 14vw, 7.4rem);
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 760px) {
+  .apps-film__lockup {
+    top: 52%;
+    width: min(44rem, calc(100vw - 1.6rem));
+    padding: 1rem 0.5rem 1.2rem;
+    transform: translate(-50%, -46%);
+  }
+
+  .apps-film__wordmark {
+    font-size: clamp(3.15rem, 16.5vw, 5.4rem);
+    margin-bottom: 1.45rem;
+  }
+
+  .apps-film__slogan {
+    font-size: clamp(1.28rem, 5.8vw, 1.75rem);
+  }
+
+  .apps-film__lead {
+    max-width: 22rem;
+    font-size: 0.9rem;
+  }
+
+  .apps-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+  }
+
+  .apps-stats strong {
+    font-size: 1.05rem;
+  }
+
+  .apps-stats li {
+    min-height: 6.4rem;
+    padding: 1.1rem 0.9rem;
+  }
+}
+
+@media (max-height: 720px) {
+  .apps-film__lockup {
+    top: 50%;
+    padding-block: 0.7rem;
+  }
+
+  .apps-film__wordmark {
+    font-size: clamp(3.2rem, 12vw, 7.4rem);
+    margin-bottom: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apps-film__wordmark,
+  .apps-film__slogan,
+  .apps-film__lead,
+  .apps-film__stores,
+  .apps-film.is-ready .apps-film__wordmark,
+  .apps-film.is-ready .apps-film__slogan,
+  .apps-film.is-ready .apps-film__lead,
+  .apps-film.is-ready .apps-film__stores {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* ── Hero ── */
@@ -1179,6 +1494,11 @@ html[data-newon-shell-theme="dark"] .apps-hero__mosaic-item {
   border-radius: 0 !important;
 }
 
+.apps-page .apps-film__store,
+.apps-page a.apps-film__store {
+  border-radius: 999px !important;
+}
+
 .apps-hero__stats li {
   border-radius: 0 !important;
   border: 1px solid rgba(10, 10, 10, 0.12);
@@ -1224,4 +1544,58 @@ html[data-newon-shell-theme="dark"] .apps-hero__stats li {
 .hub-page:has(.apps-page) .gnav__lang-select,
 .hub-page:has(.apps-page) .gnav__theme {
   border-radius: 0 !important;
+}
+
+html[data-newon-shell-theme="dark"] body .hub-page .apps-film,
+html[data-newon-shell-theme="dark"] body .hub-page .apps-film__stage,
+html[data-newon-shell-theme="dark"] body .hub-page .apps-film__fallback,
+html[data-newon-shell-theme="dark"] body .hub-page .apps-film__lockup,
+html[data-newon-shell-theme="dark"] body .hub-page .apps-film__veil,
+html[data-newon-shell-theme="dark"] body .hub-page .apps-film__wordmark,
+html[data-newon-shell-theme="dark"] body .hub-page .apps-film__slogan,
+html[data-newon-shell-theme="dark"] body .hub-page .apps-film__lead,
+html[data-newon-shell-theme="dark"] body .hub-page .apps-film__stores {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+html[data-newon-shell-theme="dark"] body .hub-page .apps-film,
+html[data-newon-shell-theme="dark"] body .hub-page .apps-film__stage,
+html[data-newon-shell-theme="dark"] body .hub-page .apps-film__fallback {
+  background: #0a1216 !important;
+  background-color: #0a1216 !important;
+}
+
+html[data-newon-shell-theme="dark"] body .hub-page .apps-film__lead {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+html[data-newon-shell-theme="dark"] body .hub-page .apps-film__store {
+  background: #fff !important;
+  background-color: #fff !important;
+  color: #111 !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  border-radius: 999px !important;
+}
+
+html[data-newon-shell-theme="dark"] body .hub-page .apps-stats-band,
+html[data-newon-shell-theme="dark"] body .hub-page .apps-stats,
+html[data-newon-shell-theme="dark"] body .hub-page .apps-stats li {
+  background: #fff !important;
+  background-color: #fff !important;
+  background-image: none !important;
+  color: #0a0a0a !important;
+}
+
+html[data-newon-shell-theme="dark"] body .hub-page .apps-stats strong {
+  color: #0a0a0a !important;
+  background: transparent !important;
+}
+
+html[data-newon-shell-theme="dark"] body .hub-page .apps-stats span {
+  color: #8a8a8a !important;
+  background: transparent !important;
 }

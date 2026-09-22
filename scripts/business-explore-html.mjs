@@ -7,7 +7,7 @@ import { businessExploreCloseHtml } from "./business-explore-close.mjs";
 import { BIZ_FILM_SRC, getBusinessFilmCopy } from "./business-film-copy.mjs";
 
 const CSS_V = "20260830wrap1";
-const FILM_V = "20260922loop2";
+const FILM_V = "20260922fade2";
 
 function t(flat, flatEn, key, fb = "") {
   const v = pick(flat, flatEn, key);
@@ -32,7 +32,7 @@ export function businessExploreHtml(flat, flatEn, lang = "en") {
 <link rel="stylesheet" href="/business-page.css?v=${CSS_V}" />
 <link rel="stylesheet" href="/business-pillar.css?v=${CSS_V}" />
 <link rel="stylesheet" href="/business-film.css?v=${FILM_V}" />
-<section id="business-film" class="bz-film is-ready" data-bz-film aria-label="Newon Business">
+<section id="business-film" class="bz-film" data-bz-film data-lockup-reveal aria-label="Newon Business">
   <div class="bz-film__stage">
     <div class="bz-film__fallback" aria-hidden="true"></div>
     <video

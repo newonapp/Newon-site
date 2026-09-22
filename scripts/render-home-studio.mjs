@@ -10,9 +10,10 @@ import { buildHomeStudioBody } from "./home-page-body.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const LANGS = ["ko", "en", "ja", "es", "pt-br", "fr", "de", "hi", "id"];
-const CSS_VER = "20260921nls1";
+const CSS_VER = "20260922eco6";
 const JS_VER = "20260921nls1";
 const NLS_VER = "20260921nls1";
+const HC_VER = "20260922co2";
 
 function patchHome(html, body) {
   // Prefer HQ class; normalize legacy opener to HQ without touching hero.
@@ -48,6 +49,22 @@ function patchHome(html, body) {
     );
   } else {
     next = next.replace(/home-lifestage\.js\?v=[^"]+/g, `home-lifestage.js?v=${NLS_VER}`);
+  }
+  if (!next.includes("home-company.css")) {
+    next = next.replace(
+      /(<link rel="stylesheet" href="\/home-lifestage\.css\?v=[^"]+" \/>)/,
+      `$1\n    <link rel="stylesheet" href="/home-company.css?v=${HC_VER}" />`
+    );
+  } else {
+    next = next.replace(/home-company\.css\?v=[^"]+/g, `home-company.css?v=${HC_VER}`);
+  }
+  if (!next.includes("home-company.js")) {
+    next = next.replace(
+      /(<script src="\/home-lifestage\.js\?v=[^"]+" defer><\/script>)/,
+      `$1\n    <script src="/home-company.js?v=${HC_VER}" defer></script>`
+    );
+  } else {
+    next = next.replace(/home-company\.js\?v=[^"]+/g, `home-company.js?v=${HC_VER}`);
   }
   return next;
 }
