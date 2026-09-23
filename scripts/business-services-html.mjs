@@ -11,28 +11,28 @@ const PILLAR_COPY = {
     titleKey: "business.pillarBuildTitle",
     titleFb: "BUILD",
     leadKey: "business.pillarBuildLead",
-    leadFb: "웹·앱·디지털 제품을 제작합니다.",
+    leadFb: "웹·앱·디지털 제품 제작",
   },
   automation: {
     num: "02",
     titleKey: "business.pillarAutoTitle",
     titleFb: "AUTOMATION",
     leadKey: "business.pillarAutoLead",
-    leadFb: "업무 자동화와 내부 운영 시스템을.",
+    leadFb: "업무 자동화·내부 운영 시스템",
   },
   solutions: {
     num: "03",
     titleKey: "business.pillarSolutionsTitle",
     titleFb: "SOLUTIONS",
     leadKey: "business.pillarSolutionsLead",
-    leadFb: "기업 맞춤형 소프트웨어를 구축합니다.",
+    leadFb: "기업 맞춤형 소프트웨어·SaaS",
   },
   care: {
     num: "04",
     titleKey: "business.pillarCareTitle",
     titleFb: "CARE",
     leadKey: "business.pillarCareLead",
-    leadFb: "출시 이후 유지보수와 운영을.",
+    leadFb: "유지보수·운영·기능 개선",
   },
 };
 

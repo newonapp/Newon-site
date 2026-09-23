@@ -1064,6 +1064,14 @@ export function businessInquiryServiceMap() {
     "WEBSITE RENEWAL": "BUILD / Website Renewal",
     "Web & App Improvement": "BUILD / Web & App Improvement",
     Booking: "AUTOMATION / Booking & Customer Management",
+    "website-maintenance": "CARE / Website Maintenance",
+    "Website Maintenance": "CARE / Website Maintenance",
+    "app-maintenance": "CARE / App Maintenance",
+    "App Maintenance": "CARE / App Maintenance",
+    stabilization: "CARE / Stabilization",
+    Stabilization: "CARE / Stabilization",
+    "tech-review": "CARE / Technical Review",
+    "Technical Review": "CARE / Technical Review",
   });
   return map;
 }
@@ -1112,10 +1120,23 @@ export function businessInquirySelectOptionsHtml(resolveLabel) {
       const label = escapeAttr(labelOf(slug, value));
       return `                <option value="${valueAttr}" data-biz-option="1" data-slug="${slug}" data-area="${cfg.category}">${label}</option>`;
     })
-    .filter(Boolean)
-    .join("\n");
+    .filter(Boolean);
 
-  return `${productLineOptions}\n${detailed}`;
+  const careExtras = [
+    { slug: "website-maintenance", value: "CARE / Website Maintenance", area: "CARE" },
+    { slug: "app-maintenance", value: "CARE / App Maintenance", area: "CARE" },
+    { slug: "stabilization", value: "CARE / Stabilization", area: "CARE" },
+    { slug: "tech-review", value: "CARE / Technical Review", area: "CARE" },
+  ];
+  for (const extra of careExtras) {
+    if (seen.has(extra.value)) continue;
+    seen.add(extra.value);
+    detailed.push(
+      `                <option value="${escapeAttr(extra.value)}" data-biz-option="1" data-slug="${extra.slug}" data-area="${extra.area}">${escapeAttr(labelOf(extra.slug, extra.value))}</option>`
+    );
+  }
+
+  return `${productLineOptions}\n${detailed.join("\n")}`;
 }
 
 /** Inquiry package prices — single source of truth. */

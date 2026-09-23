@@ -179,6 +179,7 @@ export const BUSINESS_IA = [
       { titleKey: "nav.bizMaintenance", descKey: "nav.bizMaintenanceDesc", href: "business/maintenance/", status: "OPERATING" },
       { titleKey: "nav.bizPostLaunch", descKey: "nav.bizPostLaunchDesc", href: "business/post-launch/", status: "OPERATING" },
       { titleKey: "nav.bizImprovement", descKey: "nav.bizImprovementDesc", href: "business/improvement/", status: "OPERATING" },
+      { titleKey: "nav.bizRenewal", descKey: "nav.bizRenewalDesc", href: "business/website-renewal/", status: "OPERATING" },
     ],
   },
 ];
