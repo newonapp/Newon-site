@@ -34,7 +34,7 @@
   "overviewBody": [
     "Die Idee ist klar, aber was zuerst gebaut werden soll — und wie viel — oft nicht. Weitere Funktionen verzögern den Start; Eine Demo allein kann die eigentliche Frage nicht validieren.",
     "Ein MVP muss minimal sein, aber es muss ein funktionierendes Produkt sein. Keine Folien - etwas, auf das Benutzer klicken, es eingeben und den Kernjob im Web oder in der App ausführen können.",
-    "Die MVP-ENTWICKLUNG beginnt mit der Definition des Problems und der Validierungsfrage. Dann entwerfen wir UX / UI nur um den Kernfluss herum und liefern eine lieferbare erste Version einschließlich Backend, Daten und Bereitstellung."
+    "MVP DEVELOPMENT beginnt mit der Validierungsfrage und dem Kernfluss. ₩3.000.000 und 1–2 Wochen gelten für ein kleines Starter-MVP. Login, Zahlungen, Admin und Plattformen mit mehreren Rollen sind in diesem Startpreis und Zeitraum nicht enthalten."
   ],
   "problemsLabel": "PROBLEM",
   "problemsTitle": "Hilfreich, wenn Sie sich diesen Situationen stellen.",

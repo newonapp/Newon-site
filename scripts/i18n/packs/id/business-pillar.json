@@ -563,11 +563,11 @@
         "title": "PRODUCT LAUNCH",
         "tab": "LAUNCH",
         "href": "../product-launch/",
-        "summary": "Menghubungkan ide → produk → landing → kesiapan peluncuran.",
-        "what": "Satu jalur terhubung untuk diluncurkan.",
-        "for": "Tim yang ingin ide... diluncurkan dalam satu pertunangan.",
-        "included": "Strategi",
-        "deliverables": "Produk + landing + peluncuran checklist",
+        "summary": "Persiapan peluncuran untuk produk yang sudah ada. Pengembangan produk dikutip terpisah.",
+        "what": "Harga awal ₩1.000.000 adalah persiapan peluncuran dasar. Tidak termasuk membangun produk.",
+        "for": "Tim yang membutuhkan rencana rilis untuk produk yang sudah berjalan.",
+        "included": "Tujuan peluncuran · checklist · persiapan rilis",
+        "deliverables": "Checklist peluncuran dan rencana persiapan yang dibatasi",
         "timeline": "Tergantung pada scope"
       },
       {

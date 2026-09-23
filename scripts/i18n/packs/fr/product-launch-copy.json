@@ -1,6 +1,6 @@
 {
   "seoTitle": "PRODUCT LAUNCH | NewonEntreprises",
-  "metaDescription": "Connectez l'idée au produit, à l'atterrissage et au lancement en une seule ligne – stratégie, conception, construction et liste de contrôle. Newon PRODUCT LAUNCH.",
+  "metaDescription": "À partir de ₩1 000 000, la préparation de lancement de base. La planification, le design et le développement du produit sont devisés séparément via BUILD. Newon PRODUCT LAUNCH.",
   "crumbBusiness": "ENTREPRISES",
   "crumbServices": "SERVICES",
   "crumbSolutions": "SOLUTIONS",
@@ -8,7 +8,7 @@
   "eyebrow": "PRODUCT LAUNCH",
   "subEyebrow": "SOLUTIONS",
   "headline": "Vous avez l'idée.\nLe lancement est encore dispersé.",
-  "lead": "Définition du produit, UX/UI, MVP et atterrissage construire, déployer et lancer la liste de contrôle — nous raccordons ce dont vous avez besoin d'une idée à une version publique dans un projet. Pas des paquets séparés cousus ensemble, mais un flux conçu pour votre objectif de lancement.",
+  "lead": "Le prix de départ de ₩1 000 000 couvre la préparation de lancement de base. La planification, le design et le développement d’un MVP, d’un site ou d’une app ne sont pas inclus et sont devisés séparément via BUILD.",
   "ctaPrimary": "Demande de lancement de produit →",
   "ctaSecondary": "Voir le flux de lancement",
   "meta": [
@@ -18,7 +18,7 @@
     },
     {
       "k": "BEST POUR",
-      "v": "Idée de lancement de bout en bout"
+      "v": "Aide à la préparation du lancement"
     },
     {
       "k": "Échéancier",
@@ -34,7 +34,7 @@
   "overviewBody": [
     "Lancement d'un nouveau service, fonctionnalité, ou marque prend de nombreuses pièces mobiles — définition de produit, conception, développement, atterrissage, domaine, paiements, analyse, QA, et le calendrier de mise en œuvre. Ils se dispersent facilement entre les équipes, les vendeurs et les paquets.",
     "La construction d'un seul MVP ou d'une seule page d'atterrissage atteint rarement « prêt à expédier ». Sans une vision claire des priorités et des lacunes, du calendrier et de la qualité.",
-    "PRODUCT LAUNCH définit d'abord l'objectif de lancement, puis relie la stratégie, la conception, la construction et le lancement de la préparation en un seul flux — produit, atterrissage, intégrations essentielles, et liste de contrôle alignée sur un état de navigation."
+    "Le prix de départ de PRODUCT LAUNCH est la préparation de lancement de base. Si le produit a encore besoin de design ou de développement, ce périmètre est devisé séparément via BUILD."
   ],
   "problemsLabel": "",
   "problemsTitle": "C'est utile quand on fait face à ces situations.",
@@ -448,11 +448,11 @@
   "faqs": [
     {
       "q": "En quoi cela diffère-t-il de MVP ou des paquets d'atterrissage ?",
-      "a": "MVP et LANDING sont des paquets BUILD définis. PRODUCT LAUNCH connecte la stratégie, la conception, le produit, l'atterrissage et la préparation de lancement pour un objectif en direct dans un projet."
+      "a": "MVP et landing sont des forfaits de production BUILD. Le prix de départ de PRODUCT LAUNCH, ₩1 000 000, est la préparation de lancement de base et n’inclut pas la construction du produit."
     },
     {
       "q": "En quoi est-ce différent de CUSTOM PRODUCT ?",
-      "a": "CUSTOM PRODUCT se concentre sur la construction d'un produit sur mesure. PRODUCT LAUNCH se concentre sur le flux d'idées vers le public, y compris l'atterrissage, la liste de contrôle et le déroulement."
+      "a": "CUSTOM PRODUCT est la construction d’un produit sur mesure. PRODUCT LAUNCH porte sur la préparation de mise en ligne d’un produit déjà existant, ou dont le développement est devisé à part."
     },
     {
       "q": "Comment les prix sont-ils fixés?",
@@ -460,7 +460,7 @@
     },
     {
       "q": "La conception et le développement sont-ils inclus? La conception et la construction de",
-      "a": "UX/UI peuvent être incluses dans la portée. Les surfaces requises (produit, atterrissage, admin) sont définies ensemble."
+      "a": "Ils ne sont pas inclus dans le prix de départ. Le design et le développement du produit sont devisés séparément via BUILD."
     },
     {
       "q": "Qu'y a-t-il sur la liste de contrôle de lancement?",

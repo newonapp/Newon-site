@@ -591,14 +591,15 @@ function writeRedirect(slug) {
   );
 }
 
-export function renderBusinessPillars() {
+export function renderBusinessPillars(only = null) {
   const flatEn = flatten(loadJson("en.json"));
+  const slugs = ALL_PILLAR_SLUGS.filter((slug) => !only || only.has(slug));
 
   for (const { dir, file, htmlLang } of LANGS) {
     const flat = flatten(loadJson(file));
     const lang = dir;
 
-    for (const slug of ALL_PILLAR_SLUGS) {
+    for (const slug of slugs) {
       const copy = getPillarCopy(slug, lang);
       let html = template;
       html = html.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
@@ -619,12 +620,12 @@ export function renderBusinessPillars() {
     }
   }
 
-  for (const slug of ALL_PILLAR_SLUGS) writeRedirect(slug);
+  for (const slug of slugs) writeRedirect(slug);
 
   const pub = path.join(ROOT, "_publish");
   if (fs.existsSync(pub)) {
     for (const { dir } of LANGS) {
-      for (const slug of ALL_PILLAR_SLUGS) {
+      for (const slug of slugs) {
         const src = path.join(ROOT, dir, "business", slug, "index.html");
         const destDir = path.join(pub, dir, "business", slug);
         if (!fs.existsSync(src)) continue;
@@ -632,7 +633,7 @@ export function renderBusinessPillars() {
         fs.copyFileSync(src, path.join(destDir, "index.html"));
       }
     }
-    for (const slug of ALL_PILLAR_SLUGS) {
+    for (const slug of slugs) {
       const src = path.join(ROOT, "business", slug, "index.html");
       const destDir = path.join(pub, "business", slug);
       if (!fs.existsSync(src)) continue;
@@ -645,8 +646,20 @@ export function renderBusinessPillars() {
     }
   }
 
-  console.log(`render-business-pillars: wrote ${LANGS.length * ALL_PILLAR_SLUGS.length} pages`);
+  console.log(`render-business-pillars: wrote ${LANGS.length * slugs.length} pages`);
+}
+
+function onlyArg() {
+  const arg = process.argv.find((a) => a.startsWith("--only="));
+  if (!arg) return null;
+  return new Set(
+    arg
+      .slice("--only=".length)
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
+  );
 }
 
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
-if (isMain) renderBusinessPillars();
+if (isMain) renderBusinessPillars(onlyArg());

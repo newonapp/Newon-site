@@ -4017,15 +4017,18 @@ function writeLegacyAutomationRedirects() {
   }
 }
 
-export function renderBusinessServices() {
+export function renderBusinessServices(only = null) {
   const flatEn = flatten(loadJson("en.json"));
+  const pages = BUSINESS_SERVICE_PAGES.filter((p) => !only || only.has(p.slug));
 
   for (const { dir, file, htmlLang } of LANGS) {
     const flat = flatten(loadJson(file));
     const lang = dir;
-    const copies = Object.fromEntries(BUSINESS_SERVICE_PAGES.map((p) => [p.slug, getServiceCopy(p.slug, lang)]));
+    const copies = Object.fromEntries(
+      BUSINESS_SERVICE_PAGES.map((p) => [p.slug, getServiceCopy(p.slug, lang)])
+    );
 
-    for (const page of BUSINESS_SERVICE_PAGES) {
+    for (const page of pages) {
       if (page.customPage) continue;
       const copy = copies[page.slug];
       const route = pageRoute(page);
@@ -4051,16 +4054,16 @@ export function renderBusinessServices() {
     }
   }
 
-  for (const page of BUSINESS_SERVICE_PAGES) {
+  for (const page of pages) {
     if (page.customPage) continue;
     writeRedirect(page);
   }
-  writeLegacyAutomationRedirects();
+  if (!only) writeLegacyAutomationRedirects();
 
   const pub = path.join(ROOT, "_publish");
   if (fs.existsSync(pub)) {
     for (const { dir } of LANGS) {
-      for (const page of BUSINESS_SERVICE_PAGES) {
+      for (const page of pages) {
         if (page.customPage) continue;
         const routeParts = pageRoute(page).split("/");
         const src = path.join(ROOT, dir, "business", ...routeParts, "index.html");
@@ -4070,7 +4073,7 @@ export function renderBusinessServices() {
         fs.copyFileSync(src, path.join(destDir, "index.html"));
       }
     }
-    for (const page of BUSINESS_SERVICE_PAGES) {
+    for (const page of pages) {
       if (page.customPage) continue;
       const src = path.join(ROOT, "business", page.slug, "index.html");
       const destDir = path.join(pub, "business", page.slug);
@@ -4083,10 +4086,22 @@ export function renderBusinessServices() {
   }
 
   console.log(
-    `render-business-services: ${BUSINESS_SERVICE_PAGES.filter((p) => !p.customPage).length} services × ${LANGS.length} langs`
+    `render-business-services: ${pages.filter((p) => !p.customPage).length} services × ${LANGS.length} langs`
+  );
+}
+
+function onlyArg() {
+  const arg = process.argv.find((a) => a.startsWith("--only="));
+  if (!arg) return null;
+  return new Set(
+    arg
+      .slice("--only=".length)
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
   );
 }
 
 if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith("render-business-services.mjs")) {
-  renderBusinessServices();
+  renderBusinessServices(onlyArg());
 }

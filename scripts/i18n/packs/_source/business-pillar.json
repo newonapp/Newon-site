@@ -563,11 +563,11 @@
         "title": "PRODUCT LAUNCH",
         "tab": "LAUNCH",
         "href": "../product-launch/",
-        "summary": "Connect idea → product → landing → launch readiness.",
-        "what": "One connected path to launch.",
-        "for": "Teams that want idea-to-launch in one engagement.",
-        "included": "Strategy · design · build · launch prep",
-        "deliverables": "Product + landing + launch checklist",
+        "summary": "Launch preparation for a product that already exists. Product development is quoted separately.",
+        "what": "The ₩1,000,000 starting price is basic launch preparation. It does not include building the product.",
+        "for": "Teams that need a go-live plan for a product already in progress.",
+        "included": "Launch goal · checklist · release prep",
+        "deliverables": "Launch checklist and a scoped prep plan",
         "timeline": "Depends on scope"
       },
       {

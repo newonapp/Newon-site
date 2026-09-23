@@ -30,7 +30,7 @@ export const MVP_COPY = {
     overviewBody: [
       "아이디어는 분명하지만 무엇을 먼저 만들지, 어디까지 만들지 정하지 못한 상태가 흔합니다. 기능을 많이 넣으면 출시가 늦어지고, 데모만 있으면 실제 검증이 어렵습니다.",
       "MVP는 '최소'이지만 '동작하는 제품'이어야 합니다. 슬라이드 데모가 아니라 사용자가 클릭하고 입력하고 목표를 달성할 수 있는 Web 또는 App이 필요합니다.",
-      "MVP DEVELOPMENT는 먼저 해결할 문제와 검증 질문을 정의합니다. 그다음 핵심 흐름만 남긴 UX/UI를 설계하고, 필요한 백엔드·데이터·배포까지 포함해 실제 출시 가능한 첫 버전을 만듭니다.",
+      "MVP DEVELOPMENT는 검증 질문과 핵심 흐름을 먼저 정합니다. ₩3,000,000·1–2주는 소규모 Starter입니다. 로그인, 결제, 관리자, 다중 역할 플랫폼은 이 시작가와 기간에 포함되지 않습니다.",
     ],
     problemsLabel: "PROBLEMS",
     problemsTitle: "이런 상황에서 도움이 됩니다.",
@@ -425,7 +425,7 @@ export const MVP_COPY = {
     overviewBody: [
       "The idea is clear, but what to build first — and how much — often is not. More features delay launch; a demo alone cannot validate the real question.",
       "An MVP must be minimal, but it must be a working product. Not slides — something users can click, type into, and complete the core job on web or app.",
-      "MVP DEVELOPMENT starts by defining the problem and validation question. Then we design UX/UI around the core flow only, and deliver a shippable first version including backend, data, and deploy.",
+      "MVP DEVELOPMENT starts with the validation question and the core flow. ₩3,000,000 and 1–2 weeks are a small Starter. Login, payments, admin, and multi-role platforms are not included in that starting price or timeline.",
     ],
     problemsLabel: "PROBLEMS",
     problemsTitle: "Helpful when you face these situations.",

@@ -563,11 +563,11 @@
         "title": "PRODUCTO DE LANZAMIENTO",
         "tab": "LANZAMIENTO",
         "href": "../product-launch/",
-        "summary": "Conectar idea → producto → aterrizaje → preparación de lanzamiento.",
-        "what": "Un camino conectado al lanzamiento.",
-        "for": "Equipos que quieren idea-a-lanzamiento en un compromiso.",
-        "included": "Estrategia · diseño · construcción · preparación de lanzamiento",
-        "deliverables": "Producto + aterrizaje + lista de verificación de lanzamiento",
+        "summary": "Preparación de lanzamiento para un producto que ya existe. El desarrollo del producto se cotiza aparte.",
+        "what": "El precio inicial de ₩1.000.000 es la preparación básica de lanzamiento. No incluye construir el producto.",
+        "for": "Equipos que necesitan un plan de salida para un producto ya en marcha.",
+        "included": "Objetivo de lanzamiento · lista · preparación",
+        "deliverables": "Lista de lanzamiento y plan de preparación acotado",
         "timeline": "Depende del alcance"
       },
       {

@@ -1,6 +1,6 @@
 {
   "seoTitle": "PRODUCT LAUNCH _ Newon Negócios",
-  "metaDescription": "Conecte a ideia ao produto, aterrissagem e prontidão de lançamento em uma linha — estratégia, design, construção e checklist. Newon PRODUCT LAUNCH.",
+  "metaDescription": "A partir de ₩1.000.000 cobre a preparação básica de lançamento. Planejamento, design e desenvolvimento do produto são orçados à parte pelo BUILD. Newon PRODUCT LAUNCH.",
   "crumbBusiness": "EMPRESAS",
   "crumbServices": "SERVIÇOS",
   "crumbSolutions": "SOLUÇÕES",
@@ -8,7 +8,7 @@
   "eyebrow": "PRODUCT LAUNCH",
   "subEyebrow": "SOLUÇÕES",
   "headline": "Tu tens a ideia.\nO lançamento ainda está disperso.",
-  "lead": "Definição de produto, UX/UI, MVP e landing build, implantation, and launch checklist — conectamos o que você precisa da ideia ao lançamento público em um projeto. Não pacotes separados costurados juntos, mas um fluxo projetado para o seu objetivo de lançamento.",
+  "lead": "O preço inicial de ₩1.000.000 cobre a preparação básica de lançamento. Planejamento, design e desenvolvimento de um MVP, site ou app não estão incluídos e são orçados à parte pelo BUILD.",
   "ctaPrimary": "Questionário de lançamento do produto →",
   "ctaSecondary": "Veja o fluxo de lançamento ↓",
   "meta": [
@@ -18,7 +18,7 @@
     },
     {
       "k": "MELHOR PARA",
-      "v": "Ideia para lançar de ponta a ponta"
+      "v": "Apoio à preparação de lançamento"
     },
     {
       "k": "Cronologia",
@@ -34,7 +34,7 @@
   "overviewBody": [
     "O lançamento de um novo serviço, recurso ou marca requer muitas peças móveis — definição de produto, design, desenvolvimento, pouso, domínio, pagamentos, análise, QA e timing go-live. Eles se espalham facilmente por equipes, fornecedores e pacotes.",
     "Construindo apenas um MVP ou apenas uma landing page raramente atinge ‘pronto para enviar’. Sem uma visão clara da prioridade e lacunas, agenda e oscilação de qualidade.",
-    "PRODUCT LAUNCH define o objetivo de lançamento primeiro, então conecta estratégia, design, construção e preparação de lançamento em um fluxo — produto, pouso, integrações essenciais e checklist alinhados a um estado shippable."
+    "O preço inicial de PRODUCT LAUNCH é a preparação básica de lançamento. Se o produto ainda precisar de design ou desenvolvimento, esse escopo é orçado à parte pelo BUILD."
   ],
   "problemsLabel": "PROBLEMAS",
   "problemsTitle": "Ajudante quando você enfrenta essas situações.",
@@ -448,11 +448,11 @@
   "faqs": [
     {
       "q": "Como isso é diferente do MVP ou pacotes de pouso?",
-      "a": "MVP e LANDING são pacotes definidos de BUILD. PRODUCT LAUNCH conecta estratégia, design, produto, aterrissagem e preparação de lançamento para um go-live objetivo em um projeto."
+      "a": "MVP e landing são pacotes de produção do BUILD. O preço inicial de PRODUCT LAUNCH, ₩1.000.000, é a preparação básica de lançamento e não inclui construir o produto."
     },
     {
       "q": "Como é que isto é diferente do CUSTOM PRODUCT?",
-      "a": "CUSTOM PRODUCT se concentra em construir um produto personalizado. PRODUCT LAUNCH se concentra no fluxo total de ideias para o público, incluindo pouso, checklist e go-live."
+      "a": "CUSTOM PRODUCT é a construção de um produto sob medida. PRODUCT LAUNCH foca a preparação de publicação de um produto que já existe, ou cujo desenvolvimento é orçado à parte."
     },
     {
       "q": "Como é definido o preço?",
@@ -460,7 +460,7 @@
     },
     {
       "q": "O design e o desenvolvimento estão incluídos?",
-      "a": "O design e a construção do UX/UI podem ser incluídos no escopo. Superfícies necessárias (produto, desembarque, administrador) são definidas em conjunto."
+      "a": "Não estão incluídos no preço inicial. Design e desenvolvimento do produto são orçados à parte pelo BUILD."
     },
     {
       "q": "O que está na lista de lançamento?",

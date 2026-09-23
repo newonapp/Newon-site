@@ -1,6 +1,6 @@
 {
   "seoTitle": "PRODUCT LAUNCH 124; bisnis Newon",
-  "metaDescription": "Hubungkan ide ke produk, pendaratan, dan peluncuran kesiapan dalam satu baris - strategi, desain, membangun, dan checklist. Newon PRODUCT LAUNCH.",
+  "metaDescription": "Dari ₩1.000.000 mencakup persiapan peluncuran dasar. Perencanaan, desain, dan pengembangan produk dikutip terpisah melalui BUILD. Newon PRODUCT LAUNCH.",
   "crumbBusiness": "BISNIS",
   "crumbServices": "Servis",
   "crumbSolutions": "SOLUSI",
@@ -8,7 +8,7 @@
   "eyebrow": "PRODUCT LAUNCH",
   "subEyebrow": "SOLUSI",
   "headline": "Kau punya ide.\nPeluncuran masih tersebar.",
-  "lead": "Definisi produk, _ _ KEP000 _ _, _ _ KeeP001 _ _ dan pembuatan pendaratan, penyebaran, dan peluncuran checklist - kami menghubungkan apa yang Anda butuhkan dari ide ke rilis publik dalam satu proyek. Bukan paket terpisah dijahit bersama-sama, tapi satu aliran dirancang untuk tujuan peluncuran Anda.",
+  "lead": "Harga awal ₩1.000.000 mencakup persiapan peluncuran dasar. Perencanaan, desain, dan pengembangan MVP, situs, atau aplikasi tidak termasuk dan dikutip terpisah melalui BUILD.",
   "ctaPrimary": "Penyelidikan peluncuran produk",
   "ctaSecondary": "Lihat aliran peluncurannya",
   "meta": [
@@ -18,7 +18,7 @@
     },
     {
       "k": "TERBAIK UNTUK",
-      "v": "Ide untuk meluncurkan akhir"
+      "v": "Dukungan persiapan peluncuran"
     },
     {
       "k": "GARIS WAKTU",
@@ -34,7 +34,7 @@
   "overviewBody": [
     "Meluncurkan layanan, fitur, atau merek baru mengambil banyak bagian yang bergerak - definisi produk, desain, pengembangan, pendaratan, domain, pembayaran, analitik, QA, dan pergi-waktu. Mereka dengan mudah menyebar di seluruh tim, vendor, dan paket.",
     "Bangunan hanya sebuah MVP atau hanya halaman pendaratan jarang mencapai 'siap untuk kapal.' Tanpa pandangan yang jelas prioritas dan kesenjangan, jadwal dan kualitas goyah.",
-    "PRODUCT LAUNCH mendefinisikan tujuan peluncuran pertama, kemudian menghubungkan strategi, desain, membangun, dan meluncurkan persiapan dalam satu aliran - produk, pendaratan, penting integrasi, dan checklist selaras dengan keadaan yang bisa di-shippable."
+    "Harga awal PRODUCT LAUNCH adalah persiapan peluncuran dasar. Jika produk masih perlu desain atau pengembangan, cakupan itu dikutip terpisah melalui BUILD."
   ],
   "problemsLabel": "MASALAH",
   "problemsTitle": "Membantu ketika Anda menghadapi situasi ini.",
@@ -448,11 +448,11 @@
   "faqs": [
     {
       "q": "Apa bedanya ini dengan MVP atau paket pendaratan?",
-      "a": "MVP dan LANDING sudah ditentukan - lingkup paket BUILD. PRODUCT LAUNCH menghubungkan strategi, desain, produk, pendaratan, dan meluncurkan persiapan untuk tujuan go- live dalam satu proyek."
+      "a": "MVP dan landing adalah paket produksi BUILD. Harga awal PRODUCT LAUNCH sebesar ₩1.000.000 adalah persiapan peluncuran dasar dan tidak termasuk membangun produk."
     },
     {
       "q": "Apa bedanya ini dengan CUSTOM PRODUCT?",
-      "a": "CUSTOM PRODUCT berfokus pada pembuatan produk disesuaikan. PRODUCT LAUNCH berfokus pada ide penuh ke-aliran publik termasuk pendaratan, checklist, dan go-live."
+      "a": "CUSTOM PRODUCT adalah pembangunan produk yang disesuaikan. PRODUCT LAUNCH berfokus pada persiapan rilis untuk produk yang sudah ada, atau yang pengembangannya dikutip terpisah."
     },
     {
       "q": "Bagaimana harganya?",
@@ -460,7 +460,7 @@
     },
     {
       "q": "Apakah desain dan pembangunan termasuk?",
-      "a": "UX/UI desain dan membangun dapat disertakan dalam lingkup. Permukaan yang diperlukan (produk, pendaratan, admin) didefinisikan bersama."
+      "a": "Keduanya tidak termasuk dalam harga awal. Desain dan pengembangan produk dikutip terpisah melalui BUILD."
     },
     {
       "q": "Apa yang ada di daftar cek peluncuran?",

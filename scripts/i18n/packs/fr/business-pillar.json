@@ -563,11 +563,11 @@
         "title": "LANCEMENT DES PRODUITS",
         "tab": "LANCEMENT",
         "href": "../product-launch/",
-        "summary": "Connect idée → produit → atterrissage → préparation au lancement.",
-        "what": "Un chemin connecté pour le lancement.",
-        "for": "Des équipes qui veulent lancer une idée en un seul engagement.",
-        "included": "Stratégie · conception · construction · lancement",
-        "deliverables": "Produit + atterrissage + liste de contrôle de lancement",
+        "summary": "Préparation de lancement pour un produit déjà existant. Le développement du produit est devisé à part.",
+        "what": "Le prix de départ de ₩1 000 000 est la préparation de lancement de base. Il n’inclut pas la construction du produit.",
+        "for": "Équipes qui ont besoin d’un plan de mise en ligne pour un produit déjà en cours.",
+        "included": "Objectif de lancement · checklist · préparation",
+        "deliverables": "Checklist de lancement et plan de préparation cadré",
         "timeline": "Dépend de la portée"
       },
       {

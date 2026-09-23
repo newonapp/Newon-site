@@ -8,7 +8,7 @@ export const PRODUCT_LAUNCH_COPY = {
   ko: {
     seoTitle: "PRODUCT LAUNCH | Newon Business",
     metaDescription:
-      "아이디어에서 제품·랜딩·출시 준비까지 한 라인으로 연결합니다. 전략, 디자인, 빌드, 런치 체크리스트까지 Newon PRODUCT LAUNCH.",
+      "₩1,000,000부터는 기본 출시 준비입니다. 제품 기획·디자인·개발은 BUILD 별도 견적입니다. Newon PRODUCT LAUNCH.",
     crumbBusiness: "BUSINESS",
     crumbServices: "SERVICES",
     crumbSolutions: "SOLUTIONS",
@@ -16,12 +16,12 @@ export const PRODUCT_LAUNCH_COPY = {
     eyebrow: "PRODUCT LAUNCH",
     subEyebrow: "SOLUTIONS",
     headline: "아이디어는 있는데,\n출시까지 한 줄로 이어지지 않습니다.",
-    lead: "제품 정의, UX/UI, MVP·랜딩·핵심 기능 구현, 배포, 출시 체크리스트까지 — 아이디어에서 공개까지 필요한 흐름을 하나의 프로젝트로 연결합니다. 여러 패키지를 따로 맞추지 않고, 출시 목표에 맞게 설계·구축·준비합니다.",
+    lead: "₩1,000,000 시작가는 기본 출시 준비에 적용됩니다. MVP·웹·앱의 기획, 디자인, 개발은 이 금액에 포함되지 않으며 BUILD로 별도 견적합니다.",
     ctaPrimary: "PRODUCT LAUNCH 문의 →",
     ctaSecondary: "출시 흐름 보기 ↓",
     meta: [
       { k: "SERVICE", v: "Product Launch" },
-      { k: "BEST FOR", v: "아이디어 → 출시 전체" },
+      { k: "BEST FOR", v: "출시 준비 지원" },
       { k: "TIMELINE", v: "범위에 따라 상이" },
       { k: "PRICE", v: "별도 견적" },
     ],
@@ -30,7 +30,7 @@ export const PRODUCT_LAUNCH_COPY = {
     overviewBody: [
       "신규 서비스·기능·브랜드 출시를 준비할 때 필요한 일은 많습니다. 제품 정의, 디자인, 개발, 랜딩, 도메인, 결제, 분석, QA, 공개 일정 — 각각 다른 팀·벤더·패키지로 흩어지기 쉽습니다.",
       "MVP만 만들거나 랜딩만 만드는 것으로는 ‘출시 가능한 상태’까지 가기 어렵습니다. 무엇이 먼저이고, 무엇이 빠졌는지 한눈에 보이지 않으면 일정과 품질이 흔들립니다.",
-      "PRODUCT LAUNCH는 출시 목표를 먼저 정의하고, 전략·디자인·빌드·런치 준비를 하나의 흐름으로 연결합니다. 제품, 랜딩, 필수 연동, 출시 체크리스트까지 — 공개 가능한 상태로 맞춥니다.",
+      "PRODUCT LAUNCH의 시작가는 기본 출시 준비입니다. 제품 설계와 개발이 필요하면 범위를 확인한 뒤 BUILD로 별도 견적합니다.",
     ],
     problemsLabel: "PROBLEMS",
     problemsTitle: "이런 상황에서 도움이 됩니다.",
@@ -366,11 +366,11 @@ export const PRODUCT_LAUNCH_COPY = {
     faqs: [
       {
         q: "MVP·랜딩 패키지와 어떻게 다른가요?",
-        a: "MVP나 LANDING은 정의된 범위의 BUILD 패키지입니다. PRODUCT LAUNCH는 출시 목표에 맞게 전략·디자인·제품·랜딩·런치 준비를 한 프로젝트로 연결합니다.",
+        a: "MVP와 랜딩은 BUILD의 제작 패키지입니다. PRODUCT LAUNCH의 ₩1,000,000 시작가는 기본 출시 준비이며, 제품 개발은 포함되지 않습니다.",
       },
       {
         q: "CUSTOM PRODUCT와 어떻게 다른가요?",
-        a: "CUSTOM PRODUCT는 맞춤 제품 구축 중심입니다. PRODUCT LAUNCH는 아이디어에서 공개까지 출시 전체 흐름(랜딩·체크리스트·Go-live)에 초점을 둡니다.",
+        a: "CUSTOM PRODUCT는 맞춤 제품 구축입니다. PRODUCT LAUNCH는 이미 있는 제품, 또는 개발을 별도 견적한 제품의 공개 준비에 초점을 둡니다.",
       },
       {
         q: "견적은 어떻게 산정하나요?",
@@ -378,7 +378,7 @@ export const PRODUCT_LAUNCH_COPY = {
       },
       {
         q: "디자인과 개발 모두 포함되나요?",
-        a: "범위에 따라 UX/UI 설계와 BUILD를 포함합니다. 필요한 surface(제품·랜딩·Admin)를 함께 정의합니다.",
+        a: "시작가에는 포함되지 않습니다. 제품 디자인과 개발이 필요하면 BUILD로 별도 견적합니다.",
       },
       {
         q: "출시 체크리스트에는 무엇이 포함되나요?",
@@ -403,7 +403,7 @@ export const PRODUCT_LAUNCH_COPY = {
   en: {
     seoTitle: "PRODUCT LAUNCH | Newon Business",
     metaDescription:
-      "Connect idea to product, landing, and launch readiness in one line — strategy, design, build, and checklist. Newon PRODUCT LAUNCH.",
+      "From ₩1,000,000 covers basic launch preparation. Product planning, design, and development are quoted separately through BUILD. Newon PRODUCT LAUNCH.",
     crumbBusiness: "BUSINESS",
     crumbServices: "SERVICES",
     crumbSolutions: "SOLUTIONS",
@@ -411,12 +411,12 @@ export const PRODUCT_LAUNCH_COPY = {
     eyebrow: "PRODUCT LAUNCH",
     subEyebrow: "SOLUTIONS",
     headline: "You have the idea.\nLaunch is still scattered.",
-    lead: "Product definition, UX/UI, MVP and landing build, deployment, and launch checklist — we connect what you need from idea to public release in one project. Not separate packages stitched together, but one flow designed for your launch goal.",
+    lead: "The ₩1,000,000 starting price covers basic launch preparation. Planning, design, and development of an MVP, website, or app are not included and are quoted separately through BUILD.",
     ctaPrimary: "Product launch inquiry →",
     ctaSecondary: "See the launch flow ↓",
     meta: [
       { k: "SERVICE", v: "Product Launch" },
-      { k: "BEST FOR", v: "Idea to launch end-to-end" },
+      { k: "BEST FOR", v: "Launch preparation support" },
       { k: "TIMELINE", v: "Depends on scope" },
       { k: "PRICE", v: "Custom quote" },
     ],
@@ -425,7 +425,7 @@ export const PRODUCT_LAUNCH_COPY = {
     overviewBody: [
       "Launching a new service, feature, or brand takes many moving parts — product definition, design, development, landing, domain, payments, analytics, QA, and go-live timing. They easily scatter across teams, vendors, and packages.",
       "Building only an MVP or only a landing page rarely reaches ‘ready to ship.’ Without a clear view of priority and gaps, schedule and quality wobble.",
-      "PRODUCT LAUNCH defines the launch goal first, then connects strategy, design, build, and launch prep in one flow — product, landing, essential integrations, and checklist aligned to a shippable state.",
+      "The PRODUCT LAUNCH starting price is basic launch preparation. If the product still needs design or development, that scope is quoted separately through BUILD.",
     ],
     problemsLabel: "PROBLEMS",
     problemsTitle: "Helpful when you face these situations.",
@@ -761,11 +761,11 @@ export const PRODUCT_LAUNCH_COPY = {
     faqs: [
       {
         q: "How is this different from MVP or landing packages?",
-        a: "MVP and LANDING are defined-scope BUILD packages. PRODUCT LAUNCH connects strategy, design, product, landing, and launch prep for a go-live goal in one project.",
+        a: "MVP and landing are BUILD production packages. The PRODUCT LAUNCH starting price of ₩1,000,000 is basic launch preparation and does not include building the product.",
       },
       {
         q: "How is this different from CUSTOM PRODUCT?",
-        a: "CUSTOM PRODUCT focuses on building a tailored product. PRODUCT LAUNCH focuses on the full idea-to-public flow including landing, checklist, and go-live.",
+        a: "CUSTOM PRODUCT is a tailored product build. PRODUCT LAUNCH focuses on release preparation for a product that already exists, or whose development is quoted separately.",
       },
       {
         q: "How is pricing set?",
@@ -773,7 +773,7 @@ export const PRODUCT_LAUNCH_COPY = {
       },
       {
         q: "Are design and development both included?",
-        a: "UX/UI design and build can be included in scope. Required surfaces (product, landing, admin) are defined together.",
+        a: "They are not included in the starting price. Product design and development are quoted separately through BUILD.",
       },
       {
         q: "What is on the launch checklist?",

@@ -150,12 +150,12 @@ export const SERVICE_PRICING = {
   mvp: {
     amount: 3000000,
     category: PRICING_CATEGORIES.BUILD,
-    basisKo: "MVP Starter — 아이디어에서 출시 가능한 첫 제품까지 (기본 범위)",
-    basisEn: "MVP Starter — from idea to a launchable first product (basic scope)",
+    basisKo: "소규모 MVP Starter 기본 범위",
+    basisEn: "Basic scope for a small MVP Starter",
     extraNoteKo:
-      "MVP Standard ₩4,500,000~ · MVP Custom ₩6,000,000~. 화면 수가 아니라 기능 복잡도에 따라 견적이 결정됩니다.",
+      "₩3,000,000·1–2주가 이 범위입니다. 로그인, 결제, 관리자, 다중 역할 플랫폼은 포함되지 않습니다. MVP Standard ₩4,500,000~ · MVP Custom ₩6,000,000~. 견적은 화면 수가 아니라 기능 복잡도를 따릅니다.",
     extraNoteEn:
-      "MVP Standard from ₩4,500,000 · MVP Custom from ₩6,000,000. Quotes follow feature complexity, not screen count alone.",
+      "₩3,000,000 and 1–2 weeks apply to this scope. Login, payments, admin, and multi-role platforms are not included. MVP Standard from ₩4,500,000 · MVP Custom from ₩6,000,000. Quotes follow feature complexity, not screen count alone.",
     inquiryLabelKo: "MVP",
     inquiryLabelEn: "MVP",
   },
@@ -249,6 +249,9 @@ export const SERVICE_PRICING = {
     basisKo: "프로젝트의 기능, 규모, 기술 환경과 운영 요구사항을 확인한 후 견적을 안내합니다.",
     basisEn:
       "We provide a quote after reviewing features, scale, technical environment, and operational requirements.",
+    extraNoteKo: "즉시 납품하는 기성 제품 목록은 없습니다. 재사용 가능한 기반과 신규 개발 범위는 상담 후 구분합니다.",
+    extraNoteEn:
+      "There is no catalog of ready-made products for immediate delivery. Reusable foundations and new development are separated after a review.",
     inquiryLabelKo: "White-label",
     inquiryLabelEn: "White-label",
   },
@@ -258,6 +261,10 @@ export const SERVICE_PRICING = {
     basisKo: "프로젝트의 기능, 규모, 기술 환경과 운영 요구사항을 확인한 후 견적을 안내합니다.",
     basisEn:
       "We provide a quote after reviewing features, scale, technical environment, and operational requirements.",
+    extraNoteKo:
+      "BUILD의 웹사이트·랜딩·MVP는 범위가 비교적 정해진 제작입니다. Custom Product는 그 범위에 담기지 않는 업무·권한·데이터 연결이 중심입니다.",
+    extraNoteEn:
+      "BUILD websites, landing pages, and MVPs are narrower, defined builds. Custom Product is for work, permissions, and data links that do not fit those scopes.",
     inquiryLabelKo: "Custom Product",
     inquiryLabelEn: "Custom Product",
   },
@@ -266,6 +273,10 @@ export const SERVICE_PRICING = {
     category: PRICING_CATEGORIES.SOLUTIONS,
     basisKo: "기본적인 제품 출시 지원 범위 기준",
     basisEn: "Starting point for a basic product launch support scope",
+    extraNoteKo:
+      "MVP·웹·앱의 기획·디자인·개발은 BUILD 별도 견적이며 이 시작가에 포함되지 않습니다.",
+    extraNoteEn:
+      "Planning, design, and development of an MVP, website, or app are quoted separately through BUILD and are not included.",
     inquiryLabelKo: "Product Launch",
     inquiryLabelEn: "Product Launch",
   },
@@ -845,7 +856,11 @@ export function applyServicePricing(copy, slug, lang = "ko") {
   });
 
   const extraNote = ko ? cfg.extraNoteKo || "" : cfg.extraNoteEn || "";
-  const priceNote = [basis, extraNote].filter(Boolean).join(" ");
+  const external = cfg.externalCost ? externalCostDisclaimer(lang) : "";
+  const priceNote = [basis, extraNote, external].filter(Boolean).reduce((acc, part) => {
+    if (!acc) return part;
+    return /[.!?。]$/.test(acc) ? `${acc} ${part}` : `${acc}. ${part}`;
+  }, "");
 
   const priced = {
     ...copy,
@@ -871,18 +886,22 @@ export function applyServicePricing(copy, slug, lang = "ko") {
 export function applyPillarPricing(copy, pillarSlug, lang = "ko") {
   if (!copy) return copy;
   const slugs = PILLAR_SERVICE_SLUGS[pillarSlug] || [];
-  const pricing = slugs.map((slug, i) => {
-    const cfg = SERVICE_PRICING[slug];
-    const name =
-      (lang === "ko" ? cfg?.inquiryLabelKo : cfg?.inquiryLabelEn) ||
-      slug.toUpperCase().replace(/-/g, " ");
-    return { name, price: formatPriceDisplay(slug, lang), svc: i, slug };
-  });
   const services = (copy.services || []).map((s, i) => {
     const slug = s.slug || slugs[i];
-    const timeline = formatTimelineDisplay(slug, lang);
+    const timeline = slug ? formatTimelineDisplay(slug, lang) : "";
     return timeline ? { ...s, timeline, slug } : slug ? { ...s, slug } : s;
   });
+  const pricing = services
+    .map((s, i) => {
+      const slug = s.slug || slugs[i];
+      const cfg = slug ? SERVICE_PRICING[slug] : null;
+      if (!cfg) return null;
+      const name =
+        (lang === "ko" ? cfg.inquiryLabelKo : cfg.inquiryLabelEn) ||
+        slug.toUpperCase().replace(/-/g, " ");
+      return { name, price: formatPriceDisplay(slug, lang), svc: i, slug };
+    })
+    .filter(Boolean);
   let faq = copy.faq;
   if (Array.isArray(faq) && pillarSlug === "build") {
     faq = faq.map((f) => {

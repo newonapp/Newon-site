@@ -1,6 +1,6 @@
 {
   "seoTitle": "PRODUCT LAUNCH | Newon Business",
-  "metaDescription": "Connect idea to product, landing, and launch readiness in one line — strategy, design, build, and checklist. Newon PRODUCT LAUNCH.",
+  "metaDescription": "From ₩1,000,000 covers basic launch preparation. Product planning, design, and development are quoted separately through BUILD. Newon PRODUCT LAUNCH.",
   "crumbBusiness": "BUSINESS",
   "crumbServices": "SERVICES",
   "crumbSolutions": "SOLUTIONS",
@@ -8,7 +8,7 @@
   "eyebrow": "PRODUCT LAUNCH",
   "subEyebrow": "SOLUTIONS",
   "headline": "You have the idea.\nLaunch is still scattered.",
-  "lead": "Product definition, UX/UI, MVP and landing build, deployment, and launch checklist — we connect what you need from idea to public release in one project. Not separate packages stitched together, but one flow designed for your launch goal.",
+  "lead": "The ₩1,000,000 starting price covers basic launch preparation. Planning, design, and development of an MVP, website, or app are not included and are quoted separately through BUILD.",
   "ctaPrimary": "Product launch inquiry →",
   "ctaSecondary": "See the launch flow ↓",
   "meta": [
@@ -18,7 +18,7 @@
     },
     {
       "k": "BEST FOR",
-      "v": "Idea to launch end-to-end"
+      "v": "Launch preparation support"
     },
     {
       "k": "TIMELINE",
@@ -34,7 +34,7 @@
   "overviewBody": [
     "Launching a new service, feature, or brand takes many moving parts — product definition, design, development, landing, domain, payments, analytics, QA, and go-live timing. They easily scatter across teams, vendors, and packages.",
     "Building only an MVP or only a landing page rarely reaches ‘ready to ship.’ Without a clear view of priority and gaps, schedule and quality wobble.",
-    "PRODUCT LAUNCH defines the launch goal first, then connects strategy, design, build, and launch prep in one flow — product, landing, essential integrations, and checklist aligned to a shippable state."
+    "The PRODUCT LAUNCH starting price is basic launch preparation. If the product still needs design or development, that scope is quoted separately through BUILD."
   ],
   "problemsLabel": "PROBLEMS",
   "problemsTitle": "Helpful when you face these situations.",
@@ -448,11 +448,11 @@
   "faqs": [
     {
       "q": "How is this different from MVP or landing packages?",
-      "a": "MVP and LANDING are defined-scope BUILD packages. PRODUCT LAUNCH connects strategy, design, product, landing, and launch prep for a go-live goal in one project."
+      "a": "MVP and landing are BUILD production packages. The PRODUCT LAUNCH starting price of ₩1,000,000 is basic launch preparation and does not include building the product."
     },
     {
       "q": "How is this different from CUSTOM PRODUCT?",
-      "a": "CUSTOM PRODUCT focuses on building a tailored product. PRODUCT LAUNCH focuses on the full idea-to-public flow including landing, checklist, and go-live."
+      "a": "CUSTOM PRODUCT is a tailored product build. PRODUCT LAUNCH focuses on release preparation for a product that already exists, or whose development is quoted separately."
     },
     {
       "q": "How is pricing set?",
@@ -460,7 +460,7 @@
     },
     {
       "q": "Are design and development both included?",
-      "a": "UX/UI design and build can be included in scope. Required surfaces (product, landing, admin) are defined together."
+      "a": "They are not included in the starting price. Product design and development are quoted separately through BUILD."
     },
     {
       "q": "What is on the launch checklist?",
