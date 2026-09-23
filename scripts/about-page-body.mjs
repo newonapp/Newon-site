@@ -320,7 +320,9 @@ function selectedProductsHtml(copy, products) {
         : p.category === "game" || p.filter === "game"
           ? copy.statusProject
           : copy.statusLive;
-      const desc = escapeHtml(p.oneLiner || p.summary || "");
+      const desc = escapeHtml(
+        (copy.productBlurbs && copy.productBlurbs[p.slug]) || p.oneLiner || p.summary || ""
+      );
       const icon = productIcon(p);
       const logo = icon
         ? `<span class="ab-product__logo"><img src="${escapeHtml(icon)}" alt="" width="72" height="72" loading="lazy" decoding="async" /></span>`
@@ -395,13 +397,16 @@ function buildHtml(copy) {
   const cards = (copy.buildAreas || [])
     .map((a, i) => {
       const raw = String(a.body || "");
-      const parts = raw.split(/\.\s+/);
-      const lead = parts.length > 1 ? `${parts[0]}.` : raw;
-      const tagsRaw = parts.length > 1 ? parts.slice(1).join(". ") : "";
-      const tags = tagsRaw
-        .split(/\s*[·•|]\s*/)
-        .map((t) => t.trim())
-        .filter(Boolean);
+      const splitAt = raw.indexOf(". ");
+      const rest = splitAt === -1 ? "" : raw.slice(splitAt + 2).trim();
+      const useTags = /[·•|]/.test(rest);
+      const lead = useTags ? raw.slice(0, splitAt + 1) : raw;
+      const tags = useTags
+        ? rest
+            .split(/\s*[·•|]\s*/)
+            .map((t) => t.trim())
+            .filter(Boolean)
+        : [];
       const tagList = tags.length
         ? `<ul class="ab-build__tags" aria-hidden="true">${tags
             .map((t) => `<li>${escapeHtml(t)}</li>`)

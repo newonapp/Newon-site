@@ -15,13 +15,13 @@ export function getAboutPageCopy(lang) {
 const KO = {
   seoTitle: "회사 소개 | Newon",
   metaDescription:
-    "Newon은 앱·AI·웹을 만들고 기업의 디지털 제품을 함께 설계하는 스튜디오입니다.",
+    "Newon은 일상에 필요한 디지털 서비스를 개발하고, 개인과 가족, 기업을 위한 플랫폼을 구축하는 기술 기업입니다.",
   metaKeywords:
     "Newon, 뉴온, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, EatOn, FitOn, Newon+",
   brandAria: "Newon",
   brandMarkAlt: "Newon",
   brandWord: "Newon",
-  brandLine: "Product & Venture Studio",
+  brandLine: "6개 사업",
   brandCrumb: "회사 / ABOUT",
   brandScroll: "아래로 스크롤",
   brandPointTitle: "NEWON CARD",
@@ -30,14 +30,14 @@ const KO = {
   brandMetaLeft: "NEWON",
   brandMetaRight: "EST. 2026",
   brandKicker: "NEW + ON",
-  brandTag: "앱 · AI · 게임 · 웹 — 직접 만들고 검증합니다.",
+  brandTag: "Apps · AI · LivOn · Ongil · Business · Studio",
   brandDomainsAria: "만드는 영역",
-  brandDomains: ["Apps", "AI", "Games", "Web"],
+  brandDomains: ["Apps", "AI", "LivOn", "Ongil", "Business", "Studio"],
   brandMeaning: "새로운 가능성을 실제로 작동하게 만듭니다.",
   heroEyebrow: "ABOUT NEWON",
   heroTitleHtml: "새로운 가능성을<br />제품으로 만듭니다.",
   heroLeadHtml:
-    "앱, AI, 게임, 웹 서비스를 직접 만들고 운영하며 — 그 실행력으로 기업·창업자와 함께 다음 제품 가능성을 엽니다.",
+    "Newon은 일상에 필요한 디지털 서비스를 개발하고, 개인과 가족, 기업을 위한 새로운 플랫폼을 구축하는 기술 기업입니다.",
   heroNameAria: "New + On",
   heroNameKicker: "NEW + ON",
   heroNameNew: "NEW",
@@ -71,9 +71,9 @@ const KO = {
     },
   ],
   missionEyebrow: "MISSION",
-  missionTitle: "생각을 제품으로, 제품을 다음 가능성으로.",
+  missionTitle: "삶의 다양한 순간을 연결하는 기술.",
   missionLead:
-    "Newon은 직접 제품을 만들고 운영하며, 그 과정에서 쌓인 구조와 실행력을 기업·창업자와 함께 나눕니다.",
+    "개인의 일상부터 가족과 기업까지, 필요한 서비스를 연결하는 디지털 생태계를 지향합니다.",
   missionPoints: [
     {
       n: "01",
@@ -88,7 +88,7 @@ const KO = {
     {
       n: "03",
       title: "EXPAND",
-      body: "검증된 가능성을 Business · Studio로 확장합니다.",
+      body: "Apps, AI, LivOn, Ongil, Business, Studio로 확장합니다.",
     },
   ],
   glanceEyebrow: "WHO WE BUILD FOR",
@@ -142,7 +142,7 @@ const KO = {
     {
       n: "04",
       title: "LIFE & PLATFORM",
-      body: "여행·식생활부터 Newon 멤버십까지, 경험을 이어 줍니다.",
+      body: "여행과 Newon+를 잇습니다. EatOn은 출시 예정입니다.",
       slugs: ["myworld", "eaton", "newon-plus"],
     },
   ],
@@ -162,8 +162,8 @@ const KO = {
     },
     {
       year: "EXPAND",
-      title: "Business · Studio",
-      body: "자체 제품 경험을 Business, Studio로 확장해 기업과 함께 문제를 풉니다.",
+      title: "6개 사업",
+      body: "Apps, AI, LivOn, Ongil, Business, Studio를 각각 운영·준비하며 확장합니다.",
       isNow: true,
     },
     {
@@ -173,9 +173,9 @@ const KO = {
     },
   ],
   studioNoteEyebrow: "STUDIO NOTE",
-  studioNoteTitle: "한 스튜디오, 여러 가능성.",
+  studioNoteTitle: "여섯 사업, 하나의 Newon.",
   studioNoteBody:
-    "Newon은 한 가지 앱에 머무르지 않습니다. 제품을 만들고, 기업과 협업하고, 브랜드를 설계하고, 작은 실험을 반복하며 다음 가능성을 찾습니다.",
+    "모바일 앱 운영을 기반으로 AI, 생애주기, 시니어 돌봄, 기업 서비스, 스튜디오를 전개합니다. 제공 중인 제품을 다듬고, 새 플랫폼은 단계적으로 엽니다.",
   metricLabels: {
     apps: "APPS",
     products: "PRODUCTS",
@@ -188,44 +188,44 @@ const KO = {
     {
       n: "01",
       title: "Apps",
-      body: "스토어에 공개된 11개 앱을 운영합니다. 앱 사이 데이터 공유는 순차적으로 확장할 예정입니다.",
+      body: "출시 앱 11개를 운영합니다. Newon+ 계정 연결과 앱 사이 데이터 연동은 단계적으로 확장합니다.",
       href: "../apps/",
     },
     {
       n: "02",
       title: "AI",
-      body: "일부 앱의 AI 기능은 제공 중이고, 기업용 자동화와 AI Agent는 확장 방향입니다.",
+      body: "일부 앱의 AI는 제공 중이고, 기업용 AI는 아직 출시 전입니다.",
       href: "../ai/",
     },
     {
       n: "03",
       title: "LivOn",
-      body: "10대부터 70대까지, 삶의 단계마다 필요한 정보와 생활 서비스를 연결하는 플랫폼을 준비합니다.",
+      body: "생애주기 플랫폼은 준비 중이며, 아직 출시 전입니다.",
       href: "../lifestage/",
     },
     {
       n: "04",
       title: "Ongil",
-      body: "시니어의 일상과 돌봄을 지원하고, 가족을 연결하는 생활 플랫폼을 준비합니다.",
+      body: "시니어 생활·돌봄 플랫폼은 준비 중이며, 예약·결제·제휴는 아직 없습니다.",
       href: "../ongil/",
     },
     {
       n: "05",
       title: "Business",
-      body: "기업과 사업자를 위한 소프트웨어를 구축하고, 자동화부터 운영·개선까지 지원합니다. Build · Automation · Solutions · Care",
+      body: "기업용 구축과 운영을 제공하고, 이후 SaaS와 AI는 다음 단계입니다. Build · Automation · Solutions",
       href: "../business/",
     },
     {
       n: "06",
       title: "Studio",
-      body: "브랜드의 정체성부터 디지털 화면과 콘텐츠까지 디자인으로 설계합니다. Brand · UI/UX · Content",
+      body: "브랜드, 웹, 앱 UI와 디지털 콘텐츠를 설계합니다. Brand · UI/UX · Content",
       href: "../studio/",
     },
   ],
   venturesEyebrow: "NEXT VENTURES",
   venturesTitle: "이어지는 플랫폼 사업.",
   venturesLead:
-    "자체 제품을 만드는 스튜디오를 바탕으로, 개인·기업 AI와 생애주기·시니어 생활 플랫폼으로 확장하는 방향을 잡고 있습니다.",
+    "LivOn과 Ongil은 플랫폼 준비 단계이고, 기업용 AI는 아직 출시 전입니다.",
   ventures: [
     {
       n: "01",
@@ -287,6 +287,9 @@ const KO = {
   statusLive: "운영 중",
   statusSoon: "출시 예정",
   statusProject: "프로젝트",
+  productBlurbs: {
+    "newon-plus": "통합 계정과 멤버십을 구축 중이며, 앱 연동은 단계적으로 확장합니다.",
+  },
   productCats: {
     "ox-month": "Habit / Life",
     goalup: "Productivity",
@@ -370,15 +373,15 @@ const KO = {
 };
 
 const EN = {
-  seoTitle: "About Newon | Product Studio",
+  seoTitle: "About | Newon",
   metaDescription:
-    "Newon builds apps, AI, and web products—and partners on new digital work.",
+    "Newon builds everyday digital services and new platforms for people, families, and companies.",
   metaKeywords:
     "Newon, Product Studio, Venture Studio, OX MONTH, GoalUp, CountUp, Savy, SubPing, PiggyUp, Pillmate, BabyLog, PetLog, My World, EatOn, FitOn, Newon+",
   brandAria: "Newon",
   brandMarkAlt: "Newon",
   brandWord: "Newon",
-  brandLine: "Product & Venture Studio",
+  brandLine: "6 Business Areas",
   brandCrumb: "Company / ABOUT",
   brandScroll: "Scroll down",
   brandPointTitle: "NEWON CARD",
@@ -387,14 +390,14 @@ const EN = {
   brandMetaLeft: "NEWON",
   brandMetaRight: "EST. 2026",
   brandKicker: "NEW + ON",
-  brandTag: "Apps · AI · Games · Web — built and validated by us.",
+  brandTag: "Apps · AI · LivOn · Ongil · Business · Studio",
   brandDomainsAria: "What we build",
-  brandDomains: ["Apps", "AI", "Games", "Web"],
+  brandDomains: ["Apps", "AI", "LivOn", "Ongil", "Business", "Studio"],
   brandMeaning: "Turning new possibilities on — making them real.",
   heroEyebrow: "ABOUT NEWON",
   heroTitleHtml: "Turning new possibilities<br />into products.",
   heroLeadHtml:
-    "We build and run apps, AI, games, and web services — and use that same execution to open the next product possibilities with companies and founders.",
+    "Newon builds the digital services everyday life needs, and new platforms for people, families, and companies.",
   heroNameAria: "New + On",
   heroNameKicker: "NEW + ON",
   heroNameNew: "NEW",
@@ -428,9 +431,9 @@ const EN = {
     },
   ],
   missionEyebrow: "MISSION",
-  missionTitle: "From idea to product — then to what’s next.",
+  missionTitle: "Technology that connects moments of life.",
   missionLead:
-    "Newon builds and operates products directly — then shares that structure and execution with companies and founders.",
+    "From daily life to families and companies, Newon aims to connect the services those moments need.",
   missionPoints: [
     {
       n: "01",
@@ -445,7 +448,7 @@ const EN = {
     {
       n: "03",
       title: "EXPAND",
-      body: "Expand proven work through Business and Studio.",
+      body: "Expand across Apps, AI, LivOn, Ongil, Business, and Studio.",
     },
   ],
   glanceEyebrow: "WHO WE BUILD FOR",
@@ -499,7 +502,7 @@ const EN = {
     {
       n: "04",
       title: "LIFE & PLATFORM",
-      body: "From travel and food to Newon membership — connect experiences.",
+      body: "Travel and Newon+ sit here. EatOn is still coming soon.",
       slugs: ["myworld", "eaton", "newon-plus"],
     },
   ],
@@ -519,8 +522,8 @@ const EN = {
     },
     {
       year: "EXPAND",
-      title: "Business · Studio",
-      body: "Expand product experience into work with companies through Business and Studio.",
+      title: "6 business areas",
+      body: "Apps, AI, LivOn, Ongil, Business, and Studio each operate or prepare on their own timeline.",
       isNow: true,
     },
     {
@@ -530,9 +533,9 @@ const EN = {
     },
   ],
   studioNoteEyebrow: "STUDIO NOTE",
-  studioNoteTitle: "One studio. Many possibilities.",
+  studioNoteTitle: "Six areas. One Newon.",
   studioNoteBody:
-    "Newon doesn’t stop at one app. We build products, collaborate with companies, design brands, and run small experiments to find what’s next.",
+    "From mobile apps, Newon is building AI, life-stage, senior care, business services, and a creative studio. Live products keep improving, and new platforms open in stages.",
   metricLabels: {
     apps: "APPS",
     products: "PRODUCTS",
@@ -545,44 +548,44 @@ const EN = {
     {
       n: "01",
       title: "Apps",
-      body: "We operate 11 apps that are on the stores. Sharing data across apps is a later, staged expansion.",
+      body: "11 launched apps are in operation. Newon+ account links and data sharing across apps expand in stages.",
       href: "../apps/",
     },
     {
       n: "02",
       title: "AI",
-      body: "AI features in some apps are available now. Enterprise automation and an AI Agent are a later direction.",
+      body: "AI in some apps is available now. Enterprise AI is not launched yet.",
       href: "../ai/",
     },
     {
       n: "03",
       title: "LivOn",
-      body: "A platform in preparation, connecting information and living services from the teens through the 70s.",
+      body: "The life-stage platform is in preparation and is not launched yet.",
       href: "../lifestage/",
     },
     {
       n: "04",
       title: "Ongil",
-      body: "A living platform in preparation for seniors’ daily life, care support, and family connection.",
+      body: "The senior living and care platform is in preparation. Booking, payment, and partnerships are not connected yet.",
       href: "../ongil/",
     },
     {
       n: "05",
       title: "Business",
-      body: "Software for companies and operators, from automation through operations and improvement. Build · Automation · Solutions · Care",
+      body: "Company build and operations are available now. Later SaaS and AI stay a next step. Build · Automation · Solutions",
       href: "../business/",
     },
     {
       n: "06",
       title: "Studio",
-      body: "Identity, screens, and content, designed as design work. Brand · UI/UX · Content",
+      body: "Brand, web, app UI, and digital content. Brand · UI/UX · Content",
       href: "../studio/",
     },
   ],
   venturesEyebrow: "NEXT VENTURES",
   venturesTitle: "Platforms that grow from the studio.",
   venturesLead:
-    "From the products we build, Newon is expanding toward personal and enterprise AI, plus life-stage and senior living platforms.",
+    "LivOn and Ongil are platforms in preparation. Enterprise AI is not launched yet.",
   ventures: [
     {
       n: "01",
@@ -644,6 +647,9 @@ const EN = {
   statusLive: "Live",
   statusSoon: "Coming soon",
   statusProject: "Project",
+  productBlurbs: {
+    "newon-plus": "Shared account and membership are in progress. App links expand in stages.",
+  },
   productCats: {
     "ox-month": "Habit / Life",
     goalup: "Productivity",
