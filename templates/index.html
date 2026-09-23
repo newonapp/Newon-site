@@ -64,7 +64,7 @@
     <link rel="preload" as="image" type="image/webp" href="/newon-wordmark-chrome.webp" />
     <link rel="stylesheet" href="/ox-month.css?v=20260921plusq2" />
     <link rel="stylesheet" href="/app-landing-extras.css?v=20260916round1" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260920list2" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260924foot1" />
     <link rel="stylesheet" href="/home-hero-3d.css?v=20260922loop2" />
     <link rel="stylesheet" href="/home-studio.css?v=20260922fix1" />
     <link rel="stylesheet" href="/home-lifestage.css?v=20260921nls1" />
@@ -80,7 +80,7 @@
     <script src="/home-studio.js?v=20260921nls1" defer></script>
     <script src="/home-lifestage.js?v=20260921nls1" defer></script>
     <script src="/home-company.js?v=20260922co2" defer></script>
-    <link rel="stylesheet" href="/site-dark.css?v=20260902perf1" />
+    <link rel="stylesheet" href="/site-dark.css?v=20260924foot1" />
     <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
   </head>
   <body>
@@ -504,42 +504,33 @@
       })();
       </script>
 
-      <footer class="site-footer">
-        <div class="container footer-inner">
-          <div class="footer-brand">
-            <img
-              class="footer-brand-img"
-              src="/logo-nav.png"
-              alt=""
-              width="32"
-              height="32"
-            />
-            <span>Newon</span>
-          </div>
-          <div class="footer-links">
-            <a class="footer-link" href="https://newon.app">https://newon.app</a>
-            <p class="footer-copy">{{t:footer.tagline}}</p>
-            <div class="footer-legal-links">
-              <a class="footer-legal" href="products/">Products</a>
-              <span class="footer-legal-sep" aria-hidden="true">·</span>
-              <a class="footer-legal" href="tools/">Tools</a>
-              <span class="footer-legal-sep" aria-hidden="true">·</span>
-              <a class="footer-legal" href="business/">Business</a>
-              <span class="footer-legal-sep" aria-hidden="true">·</span>
-              <a class="footer-legal" href="portfolio/">Portfolio</a>
-              <span class="footer-legal-sep" aria-hidden="true">·</span>
-              <a class="footer-legal" href="privacy/">{{t:footer.privacy}}</a>
-              <span class="footer-legal-sep" aria-hidden="true">·</span>
-              <a class="footer-legal" href="terms/">{{t:footer.terms}}</a>
-            </div>
-            <div class="footer-icon-row" role="group" aria-label="{{t:footer.socialAria}}">
+      <footer class="site-footer site-footer--brand studio-footer--compact" data-site-footer>
+        <div class="container site-foot">
+          <a class="site-foot__brand" href="/{{LANG_DIR}}/">
+            <img src="/logo-nav.png" alt="" width="34" height="34" />
+            <span>{{t:nav.brandName}}</span>
+          </a>
+          <a class="site-foot__url" href="https://newon.app">https://newon.app</a>
+          <p class="site-foot__tagline">{{t:footer.tagline}}</p>
+          <nav class="site-foot__nav" aria-label="Footer">
+            <a href="products/">{{t:nav.topConsumer}}</a>
+            <a href="ai/">{{t:nav.topAi}}</a>
+            <a href="lifestage/">{{t:nav.topLifeStage}}</a>
+            <a href="ongil/">{{t:nav.topOngil}}</a>
+            <a href="business/">{{t:nav.topBusiness}}</a>
+            <a href="studio/">{{t:nav.topStudio}}</a>
+            <a href="about/">{{t:nav.topCompany}}</a>
+            <a href="privacy/">{{t:footer.privacy}}</a>
+            <a href="terms/">{{t:footer.terms}}</a>
+          </nav>
+          <div class="site-foot__icons" role="group" aria-label="{{t:footer.socialAria}}">
               <a
-                class="footer-icon-btn"
+                class="site-foot__icon"
                 href="mailto:newon@newon.app"
                 aria-label="{{t:footer.emailAria}}"
               >
                 <svg
-                  class="footer-icon-btn__svg"
+                  class="site-foot__svg"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   width="22"
@@ -566,14 +557,14 @@
                 </svg>
               </a>
               <a
-                class="footer-icon-btn"
+                class="site-foot__icon"
                 href="{{html:footer.instagramUrl}}"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="{{t:footer.instagramAria}}"
               >
                 <svg
-                  class="footer-icon-btn__svg"
+                  class="site-foot__svg"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   width="22"
@@ -588,14 +579,14 @@
                 </svg>
               </a>
               <a
-                class="footer-icon-btn"
+                class="site-foot__icon"
                 href="{{html:footer.youtubeUrl}}"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="{{t:footer.youtubeAria}}"
               >
                 <svg
-                  class="footer-icon-btn__svg"
+                  class="site-foot__svg"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   width="22"
@@ -610,14 +601,14 @@
                 </svg>
               </a>
               <a
-                class="footer-icon-btn"
+                class="site-foot__icon"
                 href="https://www.threads.com/@newon.app.dev?invite=0"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="{{t:footer.threadsAria}}"
               >
                 <svg
-                  class="footer-icon-btn__svg"
+                  class="site-foot__svg"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   width="22"
@@ -632,14 +623,14 @@
                 </svg>
               </a>
               <a
-                class="footer-icon-btn"
+                class="site-foot__icon"
                 href="https://m.blog.naver.com/newonapp"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="{{t:footer.blogAria}}"
               >
                 <svg
-                  class="footer-icon-btn__svg"
+                  class="site-foot__svg"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   width="22"
@@ -656,14 +647,14 @@
                 </svg>
               </a>
               <a
-                class="footer-icon-btn"
+                class="site-foot__icon"
                 href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="{{t:footer.tiktokAria}}"
               >
                 <svg
-                  class="footer-icon-btn__svg"
+                  class="site-foot__svg"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   width="22"
@@ -677,9 +668,8 @@
                   />
                 </svg>
               </a>
-            </div>
           </div>
-          <p class="footer-copy">© <span id="year"></span> Newon. {{t:footer.rights}}</p>
+          <p class="site-foot__copy">© 2026 {{t:nav.brandName}}. {{t:footer.rights}}</p>
         </div>
       </footer>
     </div>

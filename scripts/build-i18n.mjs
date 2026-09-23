@@ -23,7 +23,7 @@ import { publishedArticles } from "./news-data.mjs";
 import { buildHomeStudioBody } from "./home-page-body.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
 import { businessServicesHtml } from "./business-services-html.mjs";
-import { renderGlobalHeader } from "./site-chrome.mjs";
+import { renderGlobalHeader, renderStudioFooter } from "./site-chrome.mjs";
 import { fontLinksHtml } from "./hub-utils.mjs";
 import { clampSeoDescription, isSeoDescriptionKey } from "./seo-meta.mjs";
 import { STORE_PRODUCTS, LABS_EXPERIMENTS } from "./resources-data.mjs";
@@ -333,6 +333,24 @@ function hreflangBlockPrivacyRoot() {
   return lines.join("\n");
 }
 
+function ensureBrandFooter(html, flat, flatEn, base, langDir) {
+  if (String(html).includes("site-footer--brand")) return html;
+  const footer = renderStudioFooter(flat, flatEn, { base, langDir });
+  let out = html;
+  if (!out.includes("hub-pages.css")) {
+    out = out.replace(
+      /<\/head>/,
+      `    <link rel="stylesheet" href="/hub-pages.css?v=20260924foot1" />\n  </head>`
+    );
+  } else {
+    out = out.replace(/hub-pages\.css\?v=[^"]+/g, "hub-pages.css?v=20260924foot1");
+  }
+  if (out.includes("site-dark.css")) {
+    out = out.replace(/site-dark\.css\?v=[^"]+/g, "site-dark.css?v=20260924foot1");
+  }
+  return out.replace("</body>", `${footer}\n</body>`);
+}
+
 function writeRootPrivacyPage() {
   const data = loadJson("ko.json");
   const flat = flatten(data);
@@ -346,6 +364,7 @@ function writeRootPrivacyPage() {
   pt = pt.replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml("ko"));
   pt = applyTemplate(pt, flat, flatEn);
   pt = applyLocImgs(pt, "ko");
+  pt = ensureBrandFooter(pt, flat, flatEn, "", "ko");
 
   const pd = path.join(ROOT, "privacy");
   fs.mkdirSync(pd, { recursive: true });
@@ -399,6 +418,8 @@ for (const { dir, file, htmlLang } of LANGS) {
     }
     if (page === "business") {
       pt = injectSiteChrome(pt, flat, flatEn, { activeNav: "business" });
+    } else {
+      pt = ensureBrandFooter(pt, flat, flatEn, "../", dir);
     }
     const pd = path.join(ROOT, dir, page);
     fs.mkdirSync(pd, { recursive: true });
@@ -422,6 +443,7 @@ for (const { dir, file, htmlLang } of LANGS) {
     delHtml = delHtml.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/${app.slug}/delete-account/`);
     delHtml = applyTemplate(delHtml, flat, flatEn);
     delHtml = applyLocImgs(delHtml, dir);
+    delHtml = ensureBrandFooter(delHtml, flat, flatEn, "../../", dir);
     const delOut = path.join(ROOT, dir, app.slug, "delete-account");
     fs.mkdirSync(delOut, { recursive: true });
     fs.writeFileSync(path.join(delOut, "index.html"), delHtml);
