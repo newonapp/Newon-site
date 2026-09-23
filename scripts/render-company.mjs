@@ -1457,7 +1457,7 @@ function renderCompany() {
     // PORTFOLIO index → /{lang}/portfolio/ (details keep original portfolio design)
     if (!only || only === "portfolio") {
       const copy = getCompanyCopy("portfolio", lang);
-      const html = renderPage({
+      let html = renderPage({
         htmlLang,
         ogLocale,
         canonical: `${SITE_ORIGIN}/${dir}/portfolio/`,
@@ -1466,12 +1466,24 @@ function renderCompany() {
         metaDescription: copy.metaDescription,
         pageSlug: "portfolio",
         analyticsId: "company_portfolio",
-        body: portfolioBody(copy, lang),
+        body: "",
         flat,
         flatEn,
         chromeBase,
         i18n: { emptyFilter: copy.emptyFilter || "" },
+        extraHead: `<style>
+      .nawon-embed { height: calc(100svh - var(--gnav-h, 74px)); margin: 0; padding: 0; background: #0c0c0c; }
+      .nawon-embed__frame { display: block; width: 100%; height: 100%; border: 0; background: #0c0c0c; }
+      body:has(.nawon-embed) { overflow: hidden; }
+      body:has(.nawon-embed) .site-footer { display: none; }
+    </style>`,
       });
+      html = html.replace(
+        /<main id="co-main" class="co-page"[\s\S]*?<\/main>/,
+        `<main id="co-main" class="nawon-embed" data-co-page="portfolio" data-co-analytics="company_portfolio">
+      <iframe class="nawon-embed__frame" src="/nawon/" title="Nawon"></iframe>
+    </main>`
+      );
       writeFile(path.join(ROOT, dir, "portfolio", "index.html"), html);
       pageCount += 1;
     }

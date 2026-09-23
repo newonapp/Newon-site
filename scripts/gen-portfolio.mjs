@@ -993,7 +993,7 @@ for (const langMeta of SITE_LANGS) {
   const copy = portfolioCopy(langMeta.dir);
   const apps = loadPortfolioApps(langMeta.dir);
   const langOut = path.join(ROOT, langMeta.dir, "portfolio");
-  writeFile(path.join(langOut, "index.html"), indexPage(langMeta, copy, apps));
+  // Hub index is the Nawon portfolio embed from render-company. Do not replace it.
   for (const app of apps) {
     writeFile(path.join(langOut, app.slug, "index.html"), projectPage(langMeta, copy, app, apps));
   }

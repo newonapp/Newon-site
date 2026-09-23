@@ -534,6 +534,11 @@ function verifyArtifact() {
 
 runBuild();
 runPortfolio();
+// gen-portfolio refreshes project pages. Put the Nawon hub back on /{lang}/portfolio/.
+spawnSync(process.execPath, [path.join(ROOT, "scripts", "render-company.mjs"), "--only=portfolio"], {
+  cwd: ROOT,
+  stdio: "inherit",
+}).status === 0 || process.exit(1);
 validateHuman404Game();
 assemble();
 
