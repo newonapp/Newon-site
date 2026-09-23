@@ -126,8 +126,8 @@ export const APPS_SHOWCASE_META = {
     featuresEn: ["Travel map", "Journals", "AI reports"],
   },
   eaton: {
-    category: "lifestyle",
-    categoryLabel: "Lifestyle",
+    category: "health",
+    categoryLabel: "Health",
     tint: "#D8F5E0",
     showcaseFeatured: false,
     taglineKo: "요리·외식·배달을 하나로 연결하는 AI 푸드 플랫폼.",

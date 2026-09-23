@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Render /{lang}/lifestage/ detail pages for all locales.
- * Does not restyle the homepage Livon story row.
+ * Does not restyle the homepage LivOn story row.
  */
 import fs from "fs";
 import path from "path";
@@ -31,12 +31,12 @@ const NLS_VER = "20260922loop2";
 
 const SEO = {
   ko: {
-    title: "Livon | Newon — 10대부터 70대까지, 생애주기 종합 플랫폼",
+    title: "LivOn | Newon — 10대부터 70대까지, 생애주기 종합 플랫폼",
     description:
       "삶의 모든 단계에, 필요한 다음을. 10대부터 70대까지, 생애 첫 경험과 인생의 변화까지 함께하는 생애주기 플랫폼입니다. 현재는 사업 소개이며, 예약·결제·가입은 아직 연결되지 않았습니다.",
   },
   en: {
-    title: "Livon | Newon — A life-stage platform from the teens through the 70s.",
+    title: "LivOn | Newon — A life-stage platform from the teens through the 70s.",
     description:
       "At every stage of life, the next thing you need. A platform for first experiences, life changes, and new beginnings, from the teens through the 70s. This page is an introduction — booking, payment, and sign-up are not connected yet.",
   },

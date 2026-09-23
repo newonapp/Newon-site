@@ -1,5 +1,5 @@
 /**
- * Livon “First Moments” explorer — KO / EN.
+ * LivOn “First Moments” explorer — KO / EN.
  * No first-business / startup topic.
  */
 import { KO_MORE, EN_MORE } from "./home-lifestage-first-more.mjs";
@@ -13,7 +13,7 @@ export function firstMoments(lang) {
   const ko = L === "ko";
   const ui = ko
     ? {
-        kicker: "Livon · FIRST MOMENTS",
+        kicker: "LivOn · FIRST MOMENTS",
         title: "처음이라 막막한 순간,\n무엇부터 시작할까요?",
         lead: "월급과 직장, 새로운 가족과 생활환경, 배움과 은퇴 이후의 일상까지. 지금 마주한 상황을 선택해 보세요. 해당 상황에서 알아두면 좋은 정보와 준비 흐름을 안내합니다.",
         ageNote: "삶의 변화는 특정 연령에만 고정되지 않습니다. 취업·독립·돌봄은 언제든 찾아올 수 있습니다.",
@@ -56,7 +56,7 @@ export function firstMoments(lang) {
         panelNext: "07 다음 단계",
       }
     : {
-        kicker: "Livon · FIRST MOMENTS",
+        kicker: "LivOn · FIRST MOMENTS",
         title: "When a change feels overwhelming,\nwhere do you start?",
         lead: "From pay and work, a new family and a new place to live, to new learning and everyday life after work. Choose the situation you are in now. See what to know and what to prepare.",
         ageNote: "A life change is not locked to one age. Work, moving out, or family care can arrive at any time.",
@@ -642,7 +642,7 @@ const EN_ITEMS = [
     learnId: "exam",
     apps: ["GoalUp", "CountUp", "OX MONTH"],
     tools: "Life Knowledge · Life Planner · Life Career & Education",
-    official: "Admissions and tuition change by year and unit. Official school guides are the source. Livon does not predict admission.",
+    official: "Admissions and tuition change by year and unit. Official school guides are the source. LivOn does not predict admission.",
     next: ["adult", "parttime", "job"],
   }),
   topic("adult", "02", false, {

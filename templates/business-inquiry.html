@@ -1342,6 +1342,21 @@
         border-color: var(--border);
       }
       .bz-field textarea { min-height: 8.5rem; resize: vertical; }
+      @media (max-width: 720px) {
+        #bz-type {
+          max-width: 100%;
+          height: auto;
+          min-height: 44px;
+          padding-right: 2.5rem;
+          line-height: 1.35;
+          white-space: normal;
+          text-overflow: clip;
+        }
+        #bz-type option {
+          white-space: normal;
+          line-height: 1.35;
+        }
+      }
       .bz-field-hint {
         margin: 0;
         font-size: 0.75rem;
@@ -1356,6 +1371,7 @@
         background: #fafafa;
         font-size: 0.875rem;
         color: var(--text);
+        overflow-wrap: anywhere;
       }
       html[data-newon-shell-theme="dark"] .bz-studio-selected {
         border-color: var(--border);
@@ -2120,6 +2136,8 @@
                 <option value="Studio / Visual Content" data-studio-option="1">Studio / Visual Content</option>
                 <option value="Studio / Character Lab" data-studio-option="1">Studio / Character Lab</option>
                 <option value="Studio / Experimental IP" data-studio-option="1">Studio / Experimental IP</option>
+                <option value="Studio / Monthly Design Support" data-studio-option="1">Studio / Monthly Design Support</option>
+                <option value="Studio / Design Improvement" data-studio-option="1">Studio / Design Improvement</option>
                 <option value="Store / Digital Product" data-store-option="1">Store / Digital Product</option>
                 <option value="Maintenance" data-biz-option="1">{{t:studio.formTypeMaintain}}</option>
                 <option value="partnership" data-biz-option="1">{{t:business.typePartnership}}</option>
@@ -2293,6 +2311,10 @@
           "character-lab": "Studio / Character Lab",
           "Experimental IP": "Studio / Experimental IP",
           "experimental-ip": "Studio / Experimental IP",
+          "Monthly Design Support": "Studio / Monthly Design Support",
+          "monthly-design": "Studio / Monthly Design Support",
+          "Design Improvement": "Studio / Design Improvement",
+          "design-improvement": "Studio / Design Improvement",
           partnership: "partnership",
           Partnership: "partnership",
           "product-service-collaboration": "product-service-collaboration",
@@ -2313,19 +2335,14 @@
         var qProduct = decodeParamSafe(params.get("product") || "");
         var qPrice = decodeParamSafe(params.get("price") || "");
         var STORE_TYPE = "Store / Digital Product";
-        var messageHints = {
-          ko: {
-            "AUTOMATION / Workflow Automation":
-              "1. 현재 사용하는 서비스\n2. 현재 반복하고 있는 업무\n3. Workflow가 시작되는 조건\n4. 현재 업무 처리 과정\n5. 자동화하고 싶은 단계\n6. 연결해야 할 서비스\n7. 예상 사용자 수\n8. AI 기능 필요 여부\n9. Dashboard 필요 여부\n10. 희망 일정\n11. 예산 범위\n12. 기타 요구사항"
-          },
-          en: {
-            "AUTOMATION / Workflow Automation":
-              "1. Services you use today\n2. Repetitive work you do now\n3. What triggers the workflow\n4. Current handling process\n5. Steps you want automated\n6. Services to connect\n7. Expected number of users\n8. Whether AI is needed\n9. Whether a dashboard is needed\n10. Preferred timeline\n11. Budget range\n12. Other requirements"
-          }
-        };
         var msgEl = document.getElementById("bz-message");
         var pageLang = (document.documentElement.lang || "en").slice(0, 2);
-        var hintPack = messageHints[pageLang] || messageHints.en;
+        var hintPack = {};
+        var workflowHint = {{js:business.hintWorkflow}};
+        if (workflowHint) hintPack["AUTOMATION / Workflow Automation"] = workflowHint;
+        var BIZ_PREFIX = /^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS|CARE|DESIGN)\s*\/\s*/i;
+        var BIZ_PREFIX_TEST = /^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS|CARE|DESIGN)\s*\//;
+        var BIZ_AREA_TEST = /^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS|CARE|DESIGN)$/i;
         function decodeParamSafe(v) {
           try {
             return decodeURIComponent(String(v || "").replace(/\+/g, " ")).trim();
@@ -2391,15 +2408,29 @@
           if (isStudioInflow(mapped)) return false;
           if (/^business$/i.test(qCategory)) return true;
           if (/\/business\//i.test(qSource)) return true;
-          if (mapped && /^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)\s*\//.test(mapped)) return true;
-          if (qArea && /^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)$/i.test(qArea)) return true;
+          if (mapped && BIZ_PREFIX_TEST.test(mapped)) return true;
+          if (qArea && BIZ_AREA_TEST.test(qArea)) return true;
           return false;
         }
         function humanServiceFromType(tv) {
           var v = String(tv || "").trim();
           if (!v) return "";
           if (/^Studio\s*\//i.test(v)) return v.replace(/^Studio\s*\/\s*/i, "");
-          return v.replace(/^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)\s*\/\s*/i, "");
+          return v.replace(BIZ_PREFIX, "");
+        }
+        function visibleBizLabel(tv) {
+          var text = "";
+          if (typeEl) {
+            Array.prototype.some.call(typeEl.options, function (o) {
+              if (o.value === tv) {
+                text = String(o.textContent || "").trim();
+                return true;
+              }
+              return false;
+            });
+          }
+          if (text && text !== tv) return text;
+          return humanServiceFromType(tv);
         }
         function syncServiceHidden() {
           var formEl = document.getElementById("bz-inquiry-form");
@@ -2586,9 +2617,9 @@
           if (msgEl && inquirySection.getAttribute("data-business-ph")) {
             msgEl.placeholder = inquirySection.getAttribute("data-business-ph");
           }
-          if (selectedEl && mapped && /^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)\s*\//.test(mapped)) {
+          if (selectedEl && mapped && BIZ_PREFIX_TEST.test(mapped)) {
             var bizSel = inquirySection.getAttribute("data-business-selected") || "Selected service";
-            selectedEl.textContent = bizSel + ": " + humanServiceFromType(mapped);
+            selectedEl.textContent = bizSel + ": " + visibleBizLabel(mapped);
             selectedEl.hidden = false;
           } else if (selectedEl) {
             selectedEl.hidden = true;
@@ -2681,9 +2712,9 @@
             }
             if (selectedEl && ctx === "business") {
               var bv = typeEl.value || "";
-              if (/^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)\s*\//.test(bv)) {
+              if (BIZ_PREFIX_TEST.test(bv)) {
                 var bizLabel = inquirySection.getAttribute("data-business-selected") || "Selected service";
-                selectedEl.textContent = bizLabel + ": " + humanServiceFromType(bv);
+                selectedEl.textContent = bizLabel + ": " + visibleBizLabel(bv);
                 selectedEl.hidden = false;
               } else {
                 selectedEl.hidden = true;
@@ -2756,7 +2787,7 @@
         });
       })();
     </script>
-    <script src="/business/inquiry.js?v=20260904a11y1" defer></script>
+    <script src="/business/inquiry.js?v=20260923inq1" defer></script>
     <script src="/portfolio/portfolio.js" defer></script>
     <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
   </body>

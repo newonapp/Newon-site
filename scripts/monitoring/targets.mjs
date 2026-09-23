@@ -174,6 +174,15 @@ export const BUSINESS_ROUTES = /** @type {RouteTarget[]} */ ([
     minBytes: 600,
   },
   {
+    id: "biz-care",
+    path: "/ko/business/care/",
+    level: "BUSINESS",
+    severity: "P2",
+    type: "http/content",
+    markers: ["data-gnav", "Newon"],
+    minBytes: 600,
+  },
+  {
     id: "biz-mvp",
     path: "/ko/business/mvp/",
     level: "BUSINESS",

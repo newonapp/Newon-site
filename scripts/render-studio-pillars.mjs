@@ -13,7 +13,13 @@ import { renderStudioServiceDetails } from "./render-studio-service-details.mjs"
 
 const template = fs.readFileSync(path.join(ROOT, "templates", "business-pillar.html"), "utf8");
 
-const STUDIO_LABELS = { brand: "BRAND", digital: "DIGITAL", content: "CONTENT", ip: "IP" };
+const STUDIO_LABELS = {
+  brand: "BRAND",
+  digital: "DIGITAL DESIGN",
+  content: "CONTENT & CAMPAIGN",
+  ip: "CREATIVE LAB",
+  care: "DESIGN CARE",
+};
 
 function loadJson(file) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, "locales", file), "utf8"));

@@ -221,9 +221,8 @@ export const BUSINESS_APP_EXTRAS = [
 export const BUSINESS_ECOSYSTEM = [
   { titleKey: "business.catProductivity", slugs: ["ox-month", "goalup", "countup"] },
   { titleKey: "business.catFinance", slugs: ["savy", "subping", "piggyup"] },
-  { titleKey: "business.catHealth", slugs: ["pillmate", "fiton"] },
+  { titleKey: "business.catHealth", slugs: ["pillmate", "eaton", "fiton"] },
   { titleKey: "business.catFamily", slugs: ["babylog", "petlog", "myworld"] },
-  { titleKey: "business.catLifestyle", slugs: ["eaton"] },
   { titleKey: "business.catGames", slugs: ["404-human"] },
   { titleKey: "business.catMembership", slugs: ["newon-plus"] },
 ];

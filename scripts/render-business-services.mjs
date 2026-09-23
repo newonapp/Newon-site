@@ -3857,6 +3857,14 @@ function extrasFor(slug, copy) {
       return workflowAutomationExtras(copy);
     case "design":
       return designExtras(copy);
+    case "website-renewal":
+    case "improvement":
+    case "booking":
+    case "maintenance":
+    case "post-launch":
+      return engagementSectionHtml(copy, copy.timelines || [], {
+        priceNameDefault: copy.eyebrow || "SERVICE",
+      });
     default:
       return "";
   }

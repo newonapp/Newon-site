@@ -53,7 +53,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/styles.css?v=20260904a11y1" />
     <link rel="stylesheet" href="/gnav-mega.css?v=20260902nav1" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260825studio" />
     <link rel="stylesheet" href="/ox-month.css" />
     <link rel="stylesheet" href="/portfolio/portfolio.css" />
     <script src="/theme-shell.js?v=20260904perf1"></script>
@@ -1352,6 +1352,21 @@
         border-color: var(--border);
       }
       .bz-field textarea { min-height: 8.5rem; resize: vertical; }
+      @media (max-width: 720px) {
+        #bz-type {
+          max-width: 100%;
+          height: auto;
+          min-height: 44px;
+          padding-right: 2.5rem;
+          line-height: 1.35;
+          white-space: normal;
+          text-overflow: clip;
+        }
+        #bz-type option {
+          white-space: normal;
+          line-height: 1.35;
+        }
+      }
       .bz-field-hint {
         margin: 0;
         font-size: 0.75rem;
@@ -1366,6 +1381,7 @@
         background: #fafafa;
         font-size: 0.875rem;
         color: var(--text);
+        overflow-wrap: anywhere;
       }
       html[data-newon-shell-theme="dark"] .bz-studio-selected {
         border-color: var(--border);
@@ -1631,7 +1647,7 @@
             <div class="gnav__nav-scroller">
             <div class="gnav-dd" data-gnav-dd data-gnav-menu="consumer">
     <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
-      Consumer<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Apps<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
             <div class="gnav-dd" data-gnav-dd data-gnav-menu="ai">
@@ -1641,7 +1657,7 @@
   </div>
             <div class="gnav-dd" data-gnav-dd data-gnav-menu="lifestage">
     <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true">
-      Livon<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      LivOn<svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
             <div class="gnav-dd" data-gnav-dd data-gnav-menu="ongil">
@@ -1668,7 +1684,7 @@
           <div class="gnav-mega" data-gnav-mega="consumer" role="menu" hidden>
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
-      <p class="gnav-mega__kicker">CONSUMER</p>
+      <p class="gnav-mega__kicker">APPS</p>
       <p class="gnav-mega__lead">Everyday apps and digital products</p>
     </div>
     <div class="gnav-mega__list gnav-mega__list--editorial gnav-mega__list--many" role="none">
@@ -1700,15 +1716,8 @@
         <span class="gnav-mega__row-desc">Permainan dan interaktif</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../../tools/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Tools</span>
-        <span class="gnav-mega__row-desc">Alat web siap pakai</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../../saas/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">06</span>
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">SaaS</span>
         <span class="gnav-mega__row-desc">Web subscription services</span>
@@ -1748,20 +1757,20 @@
           <div class="gnav-mega" data-gnav-mega="lifestage" role="menu" hidden>
       <div class="gnav-mega__panel">
         <div class="gnav-mega__inner"><div class="gnav-mega__head">
-      <p class="gnav-mega__kicker">Livon</p>
+      <p class="gnav-mega__kicker">LivOn</p>
       <p class="gnav-mega__lead">Services across life stages</p>
     </div>
     <div class="gnav-mega__list gnav-mega__list--editorial" role="none">
       <a class="gnav-mega__row" href="../../lifestage/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">01</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Livon</span>
+        <span class="gnav-mega__row-title">LivOn</span>
         <span class="gnav-mega__row-desc">Connect info and services for each stage of life</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a>
     </div>
-    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../lifestage/">View Livon →</a></p></div>
+    <p class="gnav-mega__foot"><a class="gnav-mega__foot-link" href="../../lifestage/">View LivOn →</a></p></div>
       </div>
     </div>
           <div class="gnav-mega" data-gnav-mega="ongil" role="menu" hidden>
@@ -1804,18 +1813,18 @@
         <span class="gnav-mega__row-desc">Bekerja dalam sistem</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../../business/research/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">PENELITIAN</span>
-        <span class="gnav-mega__row-desc">Bukti atas dugaan</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../../business/solutions/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-n" aria-hidden="true">03</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">SOLUSI</span>
         <span class="gnav-mega__row-desc">Beradaptasi teknologi untuk perusahaan</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../business/care/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">04</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">CARE</span>
+        <span class="gnav-mega__row-desc">Maintenance and operations after launch</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../../resources/insights/" role="menuitem">
@@ -1823,6 +1832,13 @@
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Wawasan</span>
         <span class="gnav-mega__row-desc">Produk, konsumen, pasar</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../tools/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">06</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">Tools</span>
+        <span class="gnav-mega__row-desc">Alat web siap pakai</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a>
@@ -1847,33 +1863,40 @@
     </a><a class="gnav-mega__row" href="../../studio/digital/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">02</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">DIGITAL</span>
+        <span class="gnav-mega__row-title">DIGITAL DESIGN</span>
         <span class="gnav-mega__row-desc">Pengalaman yang ditemui pengguna di web dan aplikasi</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../../studio/content/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">03</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">KONTEN</span>
+        <span class="gnav-mega__row-title">CONTENT &amp; CAMPAIGN</span>
         <span class="gnav-mega__row-desc">Ubah pesan merek menjadi konten dan visual</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../../studio/ip/" role="menuitem">
       <span class="gnav-mega__row-n" aria-hidden="true">04</span>
       <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">IP</span>
-        <span class="gnav-mega__row-desc">Bereksperimen dengan karakter dan aset merek baru</span>
+        <span class="gnav-mega__row-title">CREATIVE LAB</span>
+        <span class="gnav-mega__row-desc">Characters and experimental visual work</span>
+      </span>
+      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
+    </a><a class="gnav-mega__row" href="../../studio/care/" role="menuitem">
+      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+      <span class="gnav-mega__row-main">
+        <span class="gnav-mega__row-title">DESIGN CARE</span>
+        <span class="gnav-mega__row-desc">Monthly design ops and improvement of existing design</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../../resources/store/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">05</span>
+      <span class="gnav-mega__row-n" aria-hidden="true">06</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Store</span>
         <span class="gnav-mega__row-desc">Templat · panduan · barang digital</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../../resources/labs/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">06</span>
+      <span class="gnav-mega__row-n" aria-hidden="true">07</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Lab</span>
         <span class="gnav-mega__row-desc">Eksperimen · usaha · gagasan</span>
@@ -1949,26 +1972,26 @@
           <div class="gnav__util">
             <a class="gnav__cta" href="../../business/inquiry/">Contact</a>
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-gnav-legacy">Bahasa</label>
-    <select id="lang-select-gnav-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Bahasa">
+    <label class="visually-hidden" for="lang-select-gnav-hub">Bahasa</label>
+    <select id="lang-select-gnav-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Bahasa">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Bahasa inggris</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Spanyol</option><option value="pt-br" data-short="PT">Portugis (Brasil)</option><option value="fr" data-short="FR">Perancis</option><option value="de" data-short="DE">Jerman</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonesia</option>
     </select>
   </div>
             <button type="button" class="gnav__theme" data-theme-toggle data-label-light="Mode terang" data-label-dark="Mode gelap" title="Ganti tema" aria-label="Mode gelap"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-legacy" aria-label="Menu">
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-hub" aria-label="Menu">
               <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
             </button>
           </div>
         </div>
       </div>
-      <div id="gnav-mobile-legacy" class="gnav-mobile" hidden aria-hidden="true">
+      <div id="gnav-mobile-hub" class="gnav-mobile" hidden aria-hidden="true">
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
       <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menu">
         <div class="gnav-mobile__scroll">
           <div class="gnav-mobile__util-row">
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-mobile-legacy">Bahasa</label>
-    <select id="lang-select-mobile-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Bahasa">
+    <label class="visually-hidden" for="lang-select-mobile-hub">Bahasa</label>
+    <select id="lang-select-mobile-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Bahasa">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">Bahasa inggris</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Spanyol</option><option value="pt-br" data-short="PT">Portugis (Brasil)</option><option value="fr" data-short="FR">Perancis</option><option value="de" data-short="DE">Jerman</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonesia</option>
     </select>
   </div>
@@ -1977,10 +2000,10 @@
           <div class="gnav-mobile__divider" aria-hidden="true"></div>
           <div class="gnav-mobile__acc" data-gnav-acc>
         <div class="gnav-mobile__acc-head">
-          <a class="gnav-mobile__acc-link" href="../../products/">Consumer</a>
-          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Consumer"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <a class="gnav-mobile__acc-link" href="../../products/">Apps</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Apps"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../ecosystem/">Ekosistem Newon</a><a class="gnav-mobile__sublink" href="../../apps/">Apps</a><a class="gnav-mobile__sublink" href="../../#newon-plus-app">Newon+</a><a class="gnav-mobile__sublink" href="../../games/">Games</a><a class="gnav-mobile__sublink" href="../../tools/">Tools</a><a class="gnav-mobile__sublink" href="../../saas/">SaaS</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../ecosystem/">Ekosistem Newon</a><a class="gnav-mobile__sublink" href="../../apps/">Apps</a><a class="gnav-mobile__sublink" href="../../#newon-plus-app">Newon+</a><a class="gnav-mobile__sublink" href="../../games/">Games</a><a class="gnav-mobile__sublink" href="../../saas/">SaaS</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <div class="gnav-mobile__acc-head">
@@ -1991,10 +2014,10 @@
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <div class="gnav-mobile__acc-head">
-          <a class="gnav-mobile__acc-link" href="../../lifestage/">Livon</a>
-          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Livon"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <a class="gnav-mobile__acc-link" href="../../lifestage/">LivOn</a>
+          <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="LivOn"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../lifestage/">Livon</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../lifestage/">LivOn</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <div class="gnav-mobile__acc-head">
@@ -2008,14 +2031,14 @@
           <a class="gnav-mobile__acc-link" href="../../business/">Business</a>
           <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Business"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../business/build/">MEMBANGUN</a><a class="gnav-mobile__sublink" href="../../business/automation/">OTOMATISASI</a><a class="gnav-mobile__sublink" href="../../business/research/">PENELITIAN</a><a class="gnav-mobile__sublink" href="../../business/solutions/">SOLUSI</a><a class="gnav-mobile__sublink" href="../../resources/insights/">Wawasan</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../business/build/">MEMBANGUN</a><a class="gnav-mobile__sublink" href="../../business/automation/">OTOMATISASI</a><a class="gnav-mobile__sublink" href="../../business/solutions/">SOLUSI</a><a class="gnav-mobile__sublink" href="../../business/care/">CARE</a><a class="gnav-mobile__sublink" href="../../resources/insights/">Wawasan</a><a class="gnav-mobile__sublink" href="../../tools/">Tools</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <div class="gnav-mobile__acc-head">
           <a class="gnav-mobile__acc-link" href="../../studio/">Studio</a>
           <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Studio"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../studio/brand/">MEREK</a><a class="gnav-mobile__sublink" href="../../studio/digital/">DIGITAL</a><a class="gnav-mobile__sublink" href="../../studio/content/">KONTEN</a><a class="gnav-mobile__sublink" href="../../studio/ip/">IP</a><a class="gnav-mobile__sublink" href="../../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../../resources/labs/">Lab</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../../studio/brand/">MEREK</a><a class="gnav-mobile__sublink" href="../../studio/digital/">DIGITAL DESIGN</a><a class="gnav-mobile__sublink" href="../../studio/content/">CONTENT &amp; CAMPAIGN</a><a class="gnav-mobile__sublink" href="../../studio/ip/">CREATIVE LAB</a><a class="gnav-mobile__sublink" href="../../studio/care/">DESIGN CARE</a><a class="gnav-mobile__sublink" href="../../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../../resources/labs/">Lab</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <div class="gnav-mobile__acc-head">
@@ -2236,6 +2259,10 @@
                   <img src="/fiton-logo.png" alt="" width="36" height="36" decoding="async" />
                   <span>FitOn</span>
                 </a>
+                <a class="bz-app" href="../../#eaton-app">
+                  <img src="/eaton-logo.png" alt="" width="36" height="36" decoding="async" />
+                  <span>EatOn</span>
+                </a>
               </div>
             </div>
             <div class="bz-eco-card">
@@ -2252,15 +2279,6 @@
                 <a class="bz-app" href="../../#myworld-app">
                   <img src="/myworld-logo.png" alt="" width="36" height="36" decoding="async" />
                   <span>My World</span>
-                </a>
-              </div>
-            </div>
-            <div class="bz-eco-card">
-              <h3>Lifestyle · Food</h3>
-              <div class="bz-app-row">
-                <a class="bz-app" href="../../#eaton-app">
-                  <img src="/eaton-logo.png" alt="" width="36" height="36" decoding="async" />
-                  <span>EatOn</span>
                 </a>
               </div>
             </div>
@@ -2595,12 +2613,12 @@
         data-studio-selected="Selected service"
         data-studio-type-hint="Studio service"
         data-studio-select-ph="Select a service"
-        data-business-title="Business project inquiry"
-        data-business-lead="Tell us about a project that needs implementation, development, integration, or deployment. We will review scope, timeline, and budget, then follow up."
-        data-business-ph="Share the Business service you need, project goals, current stage, and any references."
-        data-business-selected="Selected service"
-        data-business-type-hint="Business service"
-        data-business-select-ph="Select a service"
+        data-business-title="Pertanyaan proyek Business"
+        data-business-lead="Ceritakan proyek yang membutuhkan implementasi, pengembangan, integrasi, atau rilis. Kami meninjau cakupan, jadwal, dan anggaran, lalu menghubungi Anda."
+        data-business-ph="Tuliskan layanan Business, tujuan proyek, tahap saat ini, dan referensi jika ada."
+        data-business-selected="Layanan yang dipilih"
+        data-business-type-hint="Layanan Business"
+        data-business-select-ph="Pilih layanan"
         data-store-title="Store purchase inquiry"
         data-store-lead="Share your contact details for this product. We will confirm by email. Instant download is not available."
         data-store-ph="Add any payment or delivery questions. The product name is included automatically."
@@ -2655,24 +2673,29 @@
                 <option value="Internal Tool" data-biz-option="1" data-slug="internal-tools" data-area="AUTOMATION">Internal Tool</option>
                 <option value="Automation" data-biz-option="1" data-slug="workflow-automation" data-area="AUTOMATION">Automation</option>
                 <option value="Design" data-biz-option="1" data-slug="design" data-area="DESIGN">Design</option>
-                <option value="BUILD / MVP" data-biz-option="1" data-slug="mvp" data-area="BUILD">BUILD / MVP</option>
-                <option value="BUILD / Website Development" data-biz-option="1" data-slug="web" data-area="BUILD">BUILD / Website Development</option>
-                <option value="BUILD / Landing Page Development" data-biz-option="1" data-slug="landing" data-area="BUILD">BUILD / Landing Page Development</option>
-                <option value="BUILD / App Prototype" data-biz-option="1" data-slug="app" data-area="BUILD">BUILD / App Prototype</option>
-                <option value="AUTOMATION / AI Automation" data-biz-option="1" data-slug="ai-automation" data-area="AUTOMATION">AUTOMATION / AI Automation</option>
-                <option value="AUTOMATION / Workflow Automation" data-biz-option="1" data-slug="workflow-automation" data-area="AUTOMATION">AUTOMATION / Workflow Automation</option>
-                <option value="AUTOMATION / Internal Tools" data-biz-option="1" data-slug="internal-tools" data-area="AUTOMATION">AUTOMATION / Internal Tools</option>
-                <option value="AUTOMATION / Data &amp; Reporting" data-biz-option="1" data-slug="data-reporting" data-area="AUTOMATION">AUTOMATION / Data &amp; Reporting</option>
-                <option value="RESEARCH / Market Research" data-biz-option="1" data-slug="market-research" data-area="RESEARCH">RESEARCH / Market Research</option>
-                <option value="RESEARCH / Competitor Analysis" data-biz-option="1" data-slug="competitor-analysis" data-area="RESEARCH">RESEARCH / Competitor Analysis</option>
-                <option value="RESEARCH / Consumer Research" data-biz-option="1" data-slug="consumer-research" data-area="RESEARCH">RESEARCH / Consumer Research</option>
-                <option value="RESEARCH / UX Audit" data-biz-option="1" data-slug="ux-audit" data-area="RESEARCH">RESEARCH / UX Audit</option>
-                <option value="RESEARCH / Trend Research" data-biz-option="1" data-slug="trend-research" data-area="RESEARCH">RESEARCH / Trend Research</option>
-                <option value="SOLUTIONS / White-label" data-biz-option="1" data-slug="white-label" data-area="SOLUTIONS">SOLUTIONS / White-label</option>
-                <option value="SOLUTIONS / Custom Product" data-biz-option="1" data-slug="custom-product" data-area="SOLUTIONS">SOLUTIONS / Custom Product</option>
-                <option value="SOLUTIONS / Product Launch" data-biz-option="1" data-slug="product-launch" data-area="SOLUTIONS">SOLUTIONS / Product Launch</option>
-                <option value="SOLUTIONS / Internal System" data-biz-option="1" data-slug="internal-system" data-area="SOLUTIONS">SOLUTIONS / Internal System</option>
-                <option value="DESIGN / Design" data-biz-option="1" data-slug="design" data-area="DESIGN">DESIGN / Design</option>
+                <option value="BUILD / MVP" data-biz-option="1" data-slug="mvp" data-area="BUILD">MVP dan prototipe</option>
+                <option value="BUILD / Website Development" data-biz-option="1" data-slug="web" data-area="BUILD">Situs perusahaan dan merek</option>
+                <option value="BUILD / Landing Page Development" data-biz-option="1" data-slug="landing" data-area="BUILD">Pembuatan landing page</option>
+                <option value="BUILD / App Prototype" data-biz-option="1" data-slug="app" data-area="BUILD">Pengembangan aplikasi mobile</option>
+                <option value="BUILD / Website Renewal" data-biz-option="1" data-slug="website-renewal" data-area="BUILD">Pembaruan dan perbaikan situs</option>
+                <option value="BUILD / Web &amp; App Improvement" data-biz-option="1" data-slug="improvement" data-area="BUILD">Penambahan dan perbaikan web atau app</option>
+                <option value="AUTOMATION / AI Automation" data-biz-option="1" data-slug="ai-automation" data-area="AUTOMATION">Otomatisasi AI</option>
+                <option value="AUTOMATION / Workflow Automation" data-biz-option="1" data-slug="workflow-automation" data-area="AUTOMATION">Otomatisasi pekerjaan berulang</option>
+                <option value="AUTOMATION / Internal Tools" data-biz-option="1" data-slug="internal-tools" data-area="AUTOMATION">Alat operasional internal</option>
+                <option value="AUTOMATION / Data &amp; Reporting" data-biz-option="1" data-slug="data-reporting" data-area="AUTOMATION">Otomatisasi data dan laporan</option>
+                <option value="AUTOMATION / Booking &amp; Customer Management" data-biz-option="1" data-slug="booking" data-area="AUTOMATION">Reservasi, pertanyaan, dan pelanggan</option>
+                <option value="RESEARCH / Market Research" data-biz-option="1" data-slug="market-research" data-area="RESEARCH">Riset pasar</option>
+                <option value="RESEARCH / Competitor Analysis" data-biz-option="1" data-slug="competitor-analysis" data-area="RESEARCH">Analisis pesaing</option>
+                <option value="RESEARCH / Consumer Research" data-biz-option="1" data-slug="consumer-research" data-area="RESEARCH">Riset konsumen</option>
+                <option value="RESEARCH / UX Audit" data-biz-option="1" data-slug="ux-audit" data-area="RESEARCH">Diagnosis UX</option>
+                <option value="RESEARCH / Trend Research" data-biz-option="1" data-slug="trend-research" data-area="RESEARCH">Riset tren</option>
+                <option value="SOLUTIONS / White-label" data-biz-option="1" data-slug="white-label" data-area="SOLUTIONS">Solusi white-label</option>
+                <option value="SOLUTIONS / Custom Product" data-biz-option="1" data-slug="custom-product" data-area="SOLUTIONS">Web dan app khusus</option>
+                <option value="SOLUTIONS / Product Launch" data-biz-option="1" data-slug="product-launch" data-area="SOLUTIONS">Dukungan peluncuran</option>
+                <option value="SOLUTIONS / Internal System" data-biz-option="1" data-slug="internal-system" data-area="SOLUTIONS">Portal dan platform operasional</option>
+                <option value="CARE / Monthly Maintenance" data-biz-option="1" data-slug="maintenance" data-area="CARE">Pemeliharaan bulanan</option>
+                <option value="CARE / Post-launch Support" data-biz-option="1" data-slug="post-launch" data-area="CARE">Dukungan setelah peluncuran</option>
+                <option value="DESIGN / Design" data-biz-option="1" data-slug="design" data-area="DESIGN">Desain</option>
                 <option value="Design" data-biz-option="1">Design</option>
                 <option value="Studio / Brand Strategy" data-studio-option="1">Studio / Brand Strategy</option>
                 <option value="Studio / Naming" data-studio-option="1">Studio / Naming</option>
@@ -2687,6 +2710,8 @@
                 <option value="Studio / Visual Content" data-studio-option="1">Studio / Visual Content</option>
                 <option value="Studio / Character Lab" data-studio-option="1">Studio / Character Lab</option>
                 <option value="Studio / Experimental IP" data-studio-option="1">Studio / Experimental IP</option>
+                <option value="Studio / Monthly Design Support" data-studio-option="1">Studio / Monthly Design Support</option>
+                <option value="Studio / Design Improvement" data-studio-option="1">Studio / Design Improvement</option>
                 <option value="Store / Digital Product" data-store-option="1">Store / Digital Product</option>
                 <option value="Maintenance" data-biz-option="1">Maintenance</option>
                 <option value="partnership" data-biz-option="1">Kemitraan</option>
@@ -2787,7 +2812,7 @@
   </footer>
 
     <script src="/search.js?v=20260904a11y1" defer></script>
-    <script src="/site-chrome.js?v=20260904a11y1" defer></script>
+    <script src="/site-chrome.js?v=20260920revert1" defer></script>
     <script>
       (function () {
         var cur = "id";
@@ -2847,7 +2872,7 @@
         var formTitleEl = document.getElementById("bz-form-title");
         var formLeadEl = document.getElementById("bz-form-lead");
         var selectedEl = document.getElementById("bz-studio-selected");
-        var businessServiceMap = {"landing":"BUILD / Landing Page Development","Landing Page Development":"BUILD / Landing Page Development","landing page development":"BUILD / Landing Page Development","BUILD / Landing Page Development":"BUILD / Landing Page Development","BUILD / LANDING PAGE DEVELOPMENT":"BUILD / Landing Page Development","web":"BUILD / Website Development","Website Development":"BUILD / Website Development","website development":"BUILD / Website Development","BUILD / Website Development":"BUILD / Website Development","BUILD / WEBSITE DEVELOPMENT":"BUILD / Website Development","app":"BUILD / App Prototype","App Prototype":"BUILD / App Prototype","app prototype":"BUILD / App Prototype","BUILD / App Prototype":"BUILD / App Prototype","BUILD / APP PROTOTYPE":"BUILD / App Prototype","mvp":"BUILD / MVP","MVP":"BUILD / MVP","BUILD / MVP":"BUILD / MVP","ai-automation":"AUTOMATION / AI Automation","AI Automation":"AUTOMATION / AI Automation","ai automation":"AUTOMATION / AI Automation","AUTOMATION / AI Automation":"AUTOMATION / AI Automation","AUTOMATION / AI AUTOMATION":"AUTOMATION / AI Automation","workflow-automation":"AUTOMATION / Workflow Automation","Workflow Automation":"AUTOMATION / Workflow Automation","workflow automation":"AUTOMATION / Workflow Automation","AUTOMATION / Workflow Automation":"AUTOMATION / Workflow Automation","AUTOMATION / WORKFLOW AUTOMATION":"AUTOMATION / Workflow Automation","data-reporting":"AUTOMATION / Data & Reporting","Data & Reporting":"AUTOMATION / Data & Reporting","data & reporting":"AUTOMATION / Data & Reporting","AUTOMATION / Data & Reporting":"AUTOMATION / Data & Reporting","AUTOMATION / DATA & REPORTING":"AUTOMATION / Data & Reporting","internal-tools":"AUTOMATION / Internal Tools","Internal Tools":"AUTOMATION / Internal Tools","internal tools":"AUTOMATION / Internal Tools","AUTOMATION / Internal Tools":"AUTOMATION / Internal Tools","AUTOMATION / INTERNAL TOOLS":"AUTOMATION / Internal Tools","market-research":"RESEARCH / Market Research","Market Research":"RESEARCH / Market Research","market research":"RESEARCH / Market Research","RESEARCH / Market Research":"RESEARCH / Market Research","RESEARCH / MARKET RESEARCH":"RESEARCH / Market Research","competitor-analysis":"RESEARCH / Competitor Analysis","Competitor Analysis":"RESEARCH / Competitor Analysis","competitor analysis":"RESEARCH / Competitor Analysis","RESEARCH / Competitor Analysis":"RESEARCH / Competitor Analysis","RESEARCH / COMPETITOR ANALYSIS":"RESEARCH / Competitor Analysis","consumer-research":"RESEARCH / Consumer Research","Consumer Research":"RESEARCH / Consumer Research","consumer research":"RESEARCH / Consumer Research","RESEARCH / Consumer Research":"RESEARCH / Consumer Research","RESEARCH / CONSUMER RESEARCH":"RESEARCH / Consumer Research","ux-audit":"RESEARCH / UX Audit","UX Audit":"RESEARCH / UX Audit","ux audit":"RESEARCH / UX Audit","RESEARCH / UX Audit":"RESEARCH / UX Audit","RESEARCH / UX AUDIT":"RESEARCH / UX Audit","trend-research":"RESEARCH / Trend Research","Trend Research":"RESEARCH / Trend Research","trend research":"RESEARCH / Trend Research","RESEARCH / Trend Research":"RESEARCH / Trend Research","RESEARCH / TREND RESEARCH":"RESEARCH / Trend Research","white-label":"SOLUTIONS / White-label","White-label":"SOLUTIONS / White-label","SOLUTIONS / White-label":"SOLUTIONS / White-label","SOLUTIONS / WHITE-LABEL":"SOLUTIONS / White-label","custom-product":"SOLUTIONS / Custom Product","Custom Product":"SOLUTIONS / Custom Product","custom product":"SOLUTIONS / Custom Product","SOLUTIONS / Custom Product":"SOLUTIONS / Custom Product","SOLUTIONS / CUSTOM PRODUCT":"SOLUTIONS / Custom Product","product-launch":"SOLUTIONS / Product Launch","Product Launch":"SOLUTIONS / Product Launch","product launch":"SOLUTIONS / Product Launch","SOLUTIONS / Product Launch":"SOLUTIONS / Product Launch","SOLUTIONS / PRODUCT LAUNCH":"SOLUTIONS / Product Launch","internal-system":"SOLUTIONS / Internal System","Internal System":"SOLUTIONS / Internal System","internal system":"SOLUTIONS / Internal System","SOLUTIONS / Internal System":"SOLUTIONS / Internal System","SOLUTIONS / INTERNAL SYSTEM":"SOLUTIONS / Internal System","design":"DESIGN / Design","Design":"DESIGN / Design","DESIGN / Design":"DESIGN / Design","DESIGN / DESIGN":"DESIGN / Design","Web":"BUILD / Website Development","WEB":"BUILD / Website Development","App":"BUILD / App Prototype","APP":"BUILD / App Prototype","Internal Tool":"AUTOMATION / Internal Tools","Internal":"AUTOMATION / Internal Tools","Automation":"AUTOMATION / Workflow Automation","AUTOMATION":"AUTOMATION / Workflow Automation","DESIGN":"DESIGN / Design","website":"BUILD / Website Development","Website":"BUILD / Website Development","WEBSITE":"BUILD / Website Development","BUILD / WEBSITE":"BUILD / Website Development","build-website":"BUILD / Website Development","LANDING PAGE":"BUILD / Landing Page Development","BUILD / LANDING":"BUILD / Landing Page Development","build-landing":"BUILD / Landing Page Development","APP PROTOTYPE":"BUILD / App Prototype","BUILD / APP":"BUILD / App Prototype","build-app":"BUILD / App Prototype","build-mvp":"BUILD / MVP","AI":"AUTOMATION / AI Automation","AI AUTOMATION":"AUTOMATION / AI Automation","WORKFLOW AUTOMATION":"AUTOMATION / Workflow Automation","automation-workflow":"AUTOMATION / Workflow Automation","INTERNAL TOOLS":"AUTOMATION / Internal Tools","automation-internal-tools":"AUTOMATION / Internal Tools","DATA & REPORTING":"AUTOMATION / Data & Reporting","automation-data-reporting":"AUTOMATION / Data & Reporting","MARKET RESEARCH":"RESEARCH / Market Research","COMPETITOR ANALYSIS":"RESEARCH / Competitor Analysis","CONSUMER RESEARCH":"RESEARCH / Consumer Research","UX AUDIT / RESEARCH":"RESEARCH / UX Audit","TREND RESEARCH":"RESEARCH / Trend Research","WHITE-LABEL":"SOLUTIONS / White-label","whitelabel":"SOLUTIONS / White-label","CUSTOM PRODUCT":"SOLUTIONS / Custom Product","PRODUCT LAUNCH":"SOLUTIONS / Product Launch","INTERNAL SYSTEM":"SOLUTIONS / Internal System"};
+        var businessServiceMap = {"landing":"BUILD / Landing Page Development","Landing Page Development":"BUILD / Landing Page Development","landing page development":"BUILD / Landing Page Development","BUILD / Landing Page Development":"BUILD / Landing Page Development","BUILD / LANDING PAGE DEVELOPMENT":"BUILD / Landing Page Development","web":"BUILD / Website Development","Website Development":"BUILD / Website Development","website development":"BUILD / Website Development","BUILD / Website Development":"BUILD / Website Development","BUILD / WEBSITE DEVELOPMENT":"BUILD / Website Development","app":"BUILD / App Prototype","App Prototype":"BUILD / App Prototype","app prototype":"BUILD / App Prototype","BUILD / App Prototype":"BUILD / App Prototype","BUILD / APP PROTOTYPE":"BUILD / App Prototype","mvp":"BUILD / MVP","MVP":"BUILD / MVP","BUILD / MVP":"BUILD / MVP","ai-automation":"AUTOMATION / AI Automation","AI Automation":"AUTOMATION / AI Automation","ai automation":"AUTOMATION / AI Automation","AUTOMATION / AI Automation":"AUTOMATION / AI Automation","AUTOMATION / AI AUTOMATION":"AUTOMATION / AI Automation","workflow-automation":"AUTOMATION / Workflow Automation","Workflow Automation":"AUTOMATION / Workflow Automation","workflow automation":"AUTOMATION / Workflow Automation","AUTOMATION / Workflow Automation":"AUTOMATION / Workflow Automation","AUTOMATION / WORKFLOW AUTOMATION":"AUTOMATION / Workflow Automation","data-reporting":"AUTOMATION / Data & Reporting","Data & Reporting":"AUTOMATION / Data & Reporting","data & reporting":"AUTOMATION / Data & Reporting","AUTOMATION / Data & Reporting":"AUTOMATION / Data & Reporting","AUTOMATION / DATA & REPORTING":"AUTOMATION / Data & Reporting","internal-tools":"AUTOMATION / Internal Tools","Internal Tools":"AUTOMATION / Internal Tools","internal tools":"AUTOMATION / Internal Tools","AUTOMATION / Internal Tools":"AUTOMATION / Internal Tools","AUTOMATION / INTERNAL TOOLS":"AUTOMATION / Internal Tools","market-research":"RESEARCH / Market Research","Market Research":"RESEARCH / Market Research","market research":"RESEARCH / Market Research","RESEARCH / Market Research":"RESEARCH / Market Research","RESEARCH / MARKET RESEARCH":"RESEARCH / Market Research","competitor-analysis":"RESEARCH / Competitor Analysis","Competitor Analysis":"RESEARCH / Competitor Analysis","competitor analysis":"RESEARCH / Competitor Analysis","RESEARCH / Competitor Analysis":"RESEARCH / Competitor Analysis","RESEARCH / COMPETITOR ANALYSIS":"RESEARCH / Competitor Analysis","consumer-research":"RESEARCH / Consumer Research","Consumer Research":"RESEARCH / Consumer Research","consumer research":"RESEARCH / Consumer Research","RESEARCH / Consumer Research":"RESEARCH / Consumer Research","RESEARCH / CONSUMER RESEARCH":"RESEARCH / Consumer Research","ux-audit":"RESEARCH / UX Audit","UX Audit":"RESEARCH / UX Audit","ux audit":"RESEARCH / UX Audit","RESEARCH / UX Audit":"RESEARCH / UX Audit","RESEARCH / UX AUDIT":"RESEARCH / UX Audit","trend-research":"RESEARCH / Trend Research","Trend Research":"RESEARCH / Trend Research","trend research":"RESEARCH / Trend Research","RESEARCH / Trend Research":"RESEARCH / Trend Research","RESEARCH / TREND RESEARCH":"RESEARCH / Trend Research","white-label":"SOLUTIONS / White-label","White-label":"SOLUTIONS / White-label","SOLUTIONS / White-label":"SOLUTIONS / White-label","SOLUTIONS / WHITE-LABEL":"SOLUTIONS / White-label","custom-product":"SOLUTIONS / Custom Product","Custom Product":"SOLUTIONS / Custom Product","custom product":"SOLUTIONS / Custom Product","SOLUTIONS / Custom Product":"SOLUTIONS / Custom Product","SOLUTIONS / CUSTOM PRODUCT":"SOLUTIONS / Custom Product","product-launch":"SOLUTIONS / Product Launch","Product Launch":"SOLUTIONS / Product Launch","product launch":"SOLUTIONS / Product Launch","SOLUTIONS / Product Launch":"SOLUTIONS / Product Launch","SOLUTIONS / PRODUCT LAUNCH":"SOLUTIONS / Product Launch","internal-system":"SOLUTIONS / Internal System","Internal System":"SOLUTIONS / Internal System","internal system":"SOLUTIONS / Internal System","SOLUTIONS / Internal System":"SOLUTIONS / Internal System","SOLUTIONS / INTERNAL SYSTEM":"SOLUTIONS / Internal System","design":"DESIGN / Design","Design":"DESIGN / Design","DESIGN / Design":"DESIGN / Design","DESIGN / DESIGN":"DESIGN / Design","website-renewal":"BUILD / Website Renewal","Website Renewal":"BUILD / Website Renewal","website renewal":"BUILD / Website Renewal","BUILD / Website Renewal":"BUILD / Website Renewal","BUILD / WEBSITE RENEWAL":"BUILD / Website Renewal","improvement":"BUILD / Web & App Improvement","Web & App Improvement":"BUILD / Web & App Improvement","web & app improvement":"BUILD / Web & App Improvement","BUILD / Web & App Improvement":"BUILD / Web & App Improvement","BUILD / WEB & APP IMPROVEMENT":"BUILD / Web & App Improvement","booking":"AUTOMATION / Booking & Customer Management","Booking & Customer Management":"AUTOMATION / Booking & Customer Management","booking & customer management":"AUTOMATION / Booking & Customer Management","AUTOMATION / Booking & Customer Management":"AUTOMATION / Booking & Customer Management","AUTOMATION / BOOKING & CUSTOMER MANAGEMENT":"AUTOMATION / Booking & Customer Management","maintenance":"CARE / Monthly Maintenance","Monthly Maintenance":"CARE / Monthly Maintenance","monthly maintenance":"CARE / Monthly Maintenance","CARE / Monthly Maintenance":"CARE / Monthly Maintenance","CARE / MONTHLY MAINTENANCE":"CARE / Monthly Maintenance","post-launch":"CARE / Post-launch Support","Post-launch Support":"CARE / Post-launch Support","post-launch support":"CARE / Post-launch Support","CARE / Post-launch Support":"CARE / Post-launch Support","CARE / POST-LAUNCH SUPPORT":"CARE / Post-launch Support","Web":"BUILD / Website Development","WEB":"BUILD / Website Development","App":"BUILD / App Prototype","APP":"BUILD / App Prototype","Internal Tool":"AUTOMATION / Internal Tools","Internal":"AUTOMATION / Internal Tools","Automation":"AUTOMATION / Workflow Automation","AUTOMATION":"AUTOMATION / Workflow Automation","DESIGN":"DESIGN / Design","website":"BUILD / Website Development","Website":"BUILD / Website Development","WEBSITE":"BUILD / Website Development","BUILD / WEBSITE":"BUILD / Website Development","build-website":"BUILD / Website Development","LANDING PAGE":"BUILD / Landing Page Development","BUILD / LANDING":"BUILD / Landing Page Development","build-landing":"BUILD / Landing Page Development","APP PROTOTYPE":"BUILD / App Prototype","BUILD / APP":"BUILD / App Prototype","build-app":"BUILD / App Prototype","build-mvp":"BUILD / MVP","AI":"AUTOMATION / AI Automation","AI AUTOMATION":"AUTOMATION / AI Automation","WORKFLOW AUTOMATION":"AUTOMATION / Workflow Automation","automation-workflow":"AUTOMATION / Workflow Automation","INTERNAL TOOLS":"AUTOMATION / Internal Tools","automation-internal-tools":"AUTOMATION / Internal Tools","DATA & REPORTING":"AUTOMATION / Data & Reporting","automation-data-reporting":"AUTOMATION / Data & Reporting","MARKET RESEARCH":"RESEARCH / Market Research","COMPETITOR ANALYSIS":"RESEARCH / Competitor Analysis","CONSUMER RESEARCH":"RESEARCH / Consumer Research","UX AUDIT / RESEARCH":"RESEARCH / UX Audit","TREND RESEARCH":"RESEARCH / Trend Research","WHITE-LABEL":"SOLUTIONS / White-label","whitelabel":"SOLUTIONS / White-label","CUSTOM PRODUCT":"SOLUTIONS / Custom Product","PRODUCT LAUNCH":"SOLUTIONS / Product Launch","INTERNAL SYSTEM":"SOLUTIONS / Internal System","CARE":"CARE / Monthly Maintenance","Maintenance":"CARE / Monthly Maintenance","MONTHLY MAINTENANCE":"CARE / Monthly Maintenance","POST-LAUNCH":"CARE / Post-launch Support","WEBSITE RENEWAL":"BUILD / Website Renewal","Booking":"AUTOMATION / Booking & Customer Management"};
         var serviceMap = Object.assign({}, businessServiceMap || {}, {
           design: "Design",
           Design: "Design",
@@ -2883,6 +2908,10 @@
           "character-lab": "Studio / Character Lab",
           "Experimental IP": "Studio / Experimental IP",
           "experimental-ip": "Studio / Experimental IP",
+          "Monthly Design Support": "Studio / Monthly Design Support",
+          "monthly-design": "Studio / Monthly Design Support",
+          "Design Improvement": "Studio / Design Improvement",
+          "design-improvement": "Studio / Design Improvement",
           partnership: "partnership",
           Partnership: "partnership",
           "product-service-collaboration": "product-service-collaboration",
@@ -2903,19 +2932,14 @@
         var qProduct = decodeParamSafe(params.get("product") || "");
         var qPrice = decodeParamSafe(params.get("price") || "");
         var STORE_TYPE = "Store / Digital Product";
-        var messageHints = {
-          ko: {
-            "AUTOMATION / Workflow Automation":
-              "1. 현재 사용하는 서비스\n2. 현재 반복하고 있는 업무\n3. Workflow가 시작되는 조건\n4. 현재 업무 처리 과정\n5. 자동화하고 싶은 단계\n6. 연결해야 할 서비스\n7. 예상 사용자 수\n8. AI 기능 필요 여부\n9. Dashboard 필요 여부\n10. 희망 일정\n11. 예산 범위\n12. 기타 요구사항"
-          },
-          en: {
-            "AUTOMATION / Workflow Automation":
-              "1. Services you use today\n2. Repetitive work you do now\n3. What triggers the workflow\n4. Current handling process\n5. Steps you want automated\n6. Services to connect\n7. Expected number of users\n8. Whether AI is needed\n9. Whether a dashboard is needed\n10. Preferred timeline\n11. Budget range\n12. Other requirements"
-          }
-        };
         var msgEl = document.getElementById("bz-message");
         var pageLang = (document.documentElement.lang || "en").slice(0, 2);
-        var hintPack = messageHints[pageLang] || messageHints.en;
+        var hintPack = {};
+        var workflowHint = "1. Layanan yang dipakai sekarang\n2. Pekerjaan berulang saat ini\n3. Pemicu alur kerja\n4. Proses penanganan saat ini\n5. Tahap yang ingin diotomatisasi\n6. Layanan yang perlu dihubungkan\n7. Perkiraan jumlah pengguna\n8. Apakah AI diperlukan\n9. Apakah dashboard diperlukan\n10. Jadwal yang diinginkan\n11. Rentang anggaran\n12. Kebutuhan lain";
+        if (workflowHint) hintPack["AUTOMATION / Workflow Automation"] = workflowHint;
+        var BIZ_PREFIX = /^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS|CARE|DESIGN)\s*\/\s*/i;
+        var BIZ_PREFIX_TEST = /^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS|CARE|DESIGN)\s*\//;
+        var BIZ_AREA_TEST = /^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS|CARE|DESIGN)$/i;
         function decodeParamSafe(v) {
           try {
             return decodeURIComponent(String(v || "").replace(/\+/g, " ")).trim();
@@ -2981,15 +3005,29 @@
           if (isStudioInflow(mapped)) return false;
           if (/^business$/i.test(qCategory)) return true;
           if (/\/business\//i.test(qSource)) return true;
-          if (mapped && /^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)\s*\//.test(mapped)) return true;
-          if (qArea && /^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)$/i.test(qArea)) return true;
+          if (mapped && BIZ_PREFIX_TEST.test(mapped)) return true;
+          if (qArea && BIZ_AREA_TEST.test(qArea)) return true;
           return false;
         }
         function humanServiceFromType(tv) {
           var v = String(tv || "").trim();
           if (!v) return "";
           if (/^Studio\s*\//i.test(v)) return v.replace(/^Studio\s*\/\s*/i, "");
-          return v.replace(/^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)\s*\/\s*/i, "");
+          return v.replace(BIZ_PREFIX, "");
+        }
+        function visibleBizLabel(tv) {
+          var text = "";
+          if (typeEl) {
+            Array.prototype.some.call(typeEl.options, function (o) {
+              if (o.value === tv) {
+                text = String(o.textContent || "").trim();
+                return true;
+              }
+              return false;
+            });
+          }
+          if (text && text !== tv) return text;
+          return humanServiceFromType(tv);
         }
         function syncServiceHidden() {
           var formEl = document.getElementById("bz-inquiry-form");
@@ -3176,9 +3214,9 @@
           if (msgEl && inquirySection.getAttribute("data-business-ph")) {
             msgEl.placeholder = inquirySection.getAttribute("data-business-ph");
           }
-          if (selectedEl && mapped && /^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)\s*\//.test(mapped)) {
+          if (selectedEl && mapped && BIZ_PREFIX_TEST.test(mapped)) {
             var bizSel = inquirySection.getAttribute("data-business-selected") || "Selected service";
-            selectedEl.textContent = bizSel + ": " + humanServiceFromType(mapped);
+            selectedEl.textContent = bizSel + ": " + visibleBizLabel(mapped);
             selectedEl.hidden = false;
           } else if (selectedEl) {
             selectedEl.hidden = true;
@@ -3271,9 +3309,9 @@
             }
             if (selectedEl && ctx === "business") {
               var bv = typeEl.value || "";
-              if (/^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)\s*\//.test(bv)) {
+              if (BIZ_PREFIX_TEST.test(bv)) {
                 var bizLabel = inquirySection.getAttribute("data-business-selected") || "Selected service";
-                selectedEl.textContent = bizLabel + ": " + humanServiceFromType(bv);
+                selectedEl.textContent = bizLabel + ": " + visibleBizLabel(bv);
                 selectedEl.hidden = false;
               } else {
                 selectedEl.hidden = true;
@@ -3346,7 +3384,7 @@
         });
       })();
     </script>
-    <script src="/business/inquiry.js?v=20260904a11y1" defer></script>
+    <script src="/business/inquiry.js?v=20260923inq1" defer></script>
     <script src="/portfolio/portfolio.js" defer></script>
     <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
   </body>

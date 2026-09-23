@@ -589,4 +589,8 @@ export const STUDIO_DETAIL_ENRICHMENTS = {
   },
 
   "experimental-ip": {},
+
+  "monthly-design": {},
+
+  "design-improvement": {},
 };

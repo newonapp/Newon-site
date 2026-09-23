@@ -8,7 +8,7 @@ import { fileURLToPath } from "url";
 import { LANGS, OG_LOCALE, SITE_ORIGIN, ROOT, escapeHtml, fontLinksHtml} from "./hub-utils.mjs";
 import { clampSeoDescription } from "./seo-meta.mjs";
 import { injectSiteChrome } from "./inject-chrome.mjs";
-import { PILLAR_SLUGS, getPillarCopy } from "./business-pillar-copy.mjs";
+import { PILLAR_SLUGS, ALL_PILLAR_SLUGS, getPillarCopy } from "./business-pillar-copy.mjs";
 import { businessInquiryHref, businessPillarInquiryHref } from "./business-pricing.mjs";
 
 const template = fs.readFileSync(path.join(ROOT, "templates", "business-pillar.html"), "utf8");
@@ -122,6 +122,11 @@ function priceForIndex(copy, index) {
 
 function shortTitle(title) {
   const t = String(title || "");
+  if (t.includes("RENEWAL")) return "RENEWAL";
+  if (t.includes("IMPROVEMENT")) return "IMPROVE";
+  if (t.includes("BOOKING")) return "BOOKING";
+  if (t.includes("MAINTENANCE")) return "CARE";
+  if (t.includes("POST-LAUNCH") || t.includes("POST LAUNCH")) return "POST";
   if (t.includes("LANDING")) return "LANDING";
   if (t.includes("MVP")) return "MVP";
   if (t.includes("WEBSITE")) return "WEBSITE";
@@ -173,7 +178,8 @@ function servicesSection(copy, pillarInquiryHref = "../inquiry/#inquiry", pillar
   const panels = services
     .map((s, i) => {
       const price = priceForIndex(copy, i);
-      const svcSlug = s.slug || copy.pricing?.[i]?.slug || "";
+      const fromHref = String(s.href || "").replace(/^\.\.\//, "").replace(/\/$/, "");
+      const svcSlug = s.slug || copy.pricing?.[i]?.slug || (fromHref && !fromHref.includes("/") && !fromHref.startsWith(".") ? fromHref : "");
       let panelInquiry = s.inquiryHref;
       if (panelInquiry === undefined) {
         panelInquiry = svcSlug
@@ -438,7 +444,7 @@ function pricingSection(copy, inquiryHref = "../inquiry/#inquiry") {
 
 function otherServices(copy, slug, lang, { slugs, labels, getCopy, titleKey = "otherTitle" } = {}) {
   const list = slugs || PILLAR_SLUGS;
-  const labelMap = labels || { build: "BUILD", automation: "AUTOMATION", research: "RESEARCH", solutions: "SOLUTIONS" };
+  const labelMap = labels || { build: "BUILD", automation: "AUTOMATION", solutions: "SOLUTIONS", care: "CARE" };
   const resolveCopy = getCopy || getPillarCopy;
   const items = list.map((s, i) => {
     const peer = resolveCopy(s, lang);
@@ -592,7 +598,7 @@ export function renderBusinessPillars() {
     const flat = flatten(loadJson(file));
     const lang = dir;
 
-    for (const slug of PILLAR_SLUGS) {
+    for (const slug of ALL_PILLAR_SLUGS) {
       const copy = getPillarCopy(slug, lang);
       let html = template;
       html = html.replace(/\{\{HTML_LANG\}\}/g, htmlLang);
@@ -613,12 +619,12 @@ export function renderBusinessPillars() {
     }
   }
 
-  for (const slug of PILLAR_SLUGS) writeRedirect(slug);
+  for (const slug of ALL_PILLAR_SLUGS) writeRedirect(slug);
 
   const pub = path.join(ROOT, "_publish");
   if (fs.existsSync(pub)) {
     for (const { dir } of LANGS) {
-      for (const slug of PILLAR_SLUGS) {
+      for (const slug of ALL_PILLAR_SLUGS) {
         const src = path.join(ROOT, dir, "business", slug, "index.html");
         const destDir = path.join(pub, dir, "business", slug);
         if (!fs.existsSync(src)) continue;
@@ -626,7 +632,7 @@ export function renderBusinessPillars() {
         fs.copyFileSync(src, path.join(destDir, "index.html"));
       }
     }
-    for (const slug of PILLAR_SLUGS) {
+    for (const slug of ALL_PILLAR_SLUGS) {
       const src = path.join(ROOT, "business", slug, "index.html");
       const destDir = path.join(pub, "business", slug);
       if (!fs.existsSync(src)) continue;
@@ -639,7 +645,7 @@ export function renderBusinessPillars() {
     }
   }
 
-  console.log(`render-business-pillars: wrote ${LANGS.length * PILLAR_SLUGS.length} pages`);
+  console.log(`render-business-pillars: wrote ${LANGS.length * ALL_PILLAR_SLUGS.length} pages`);
 }
 
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);

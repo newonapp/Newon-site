@@ -142,7 +142,7 @@ export function visualAi(lang = "en") {
   });
 }
 
-/** 03 Livon — horizontal journey timeline */
+/** 03 LivOn — horizontal journey timeline */
 export function visualLifeStage() {
   return panelShell({
     mod: "life",
@@ -242,27 +242,27 @@ export function visualBusiness() {
   });
 }
 
-/** 06 Studio — identity board: type + swatches + craft lanes */
-export function visualStudio() {
+/** 06 Commerce — same board shell as before; lanes from Newon Commerce menus. */
+export function visualCommerce() {
   return panelShell({
     mod: "studio",
-    live: "STUDIO IDENTITY BOARD",
+    live: "NEWON COMMERCE",
     meta: "LIVE",
     body: `
       <div class="hs-sv-s">
         <div class="hs-sv-s__specimen">
-          <p class="hs-sv__k">TYPE</p>
-          <p class="hs-sv-s__Aa">Aa</p>
-          <p class="hs-sv-s__word">NEWON</p>
+          <p class="hs-sv__k">MENUS</p>
+          <p class="hs-sv-s__Aa">On</p>
+          <p class="hs-sv-s__word">COMMERCE</p>
           <div class="hs-sv-s__swatches">
             <span class="is-ink"></span><span class="is-mid"></span><span class="is-soft"></span><span class="is-paper"></span>
           </div>
         </div>
         <div class="hs-sv-s__lanes">
-          <div class="is-on"><span>01</span><strong>Brand</strong><em>System</em></div>
-          <div><span>02</span><strong>Digital</strong><em>Web · App</em></div>
-          <div><span>03</span><strong>Content</strong><em>Campaign</em></div>
-          <div class="is-run"><span>04</span><strong>IP</strong><em>Experiment</em></div>
+          <div class="is-on"><span>01</span><strong>Apps</strong><em>Life apps</em></div>
+          <div><span>02</span><strong>Games</strong><em>Play</em></div>
+          <div><span>03</span><strong>Tools</strong><em>Web tools</em></div>
+          <div class="is-run"><span>04</span><strong>SaaS</strong><em>Packages</em></div>
         </div>
       </div>`,
   });

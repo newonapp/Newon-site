@@ -13,8 +13,9 @@ import {
 const LABELS = {
   build: "BUILD",
   automation: "AUTOMATION",
-  research: "RESEARCH",
   solutions: "SOLUTIONS",
+  care: "CARE",
+  research: "RESEARCH",
 };
 
 const FAQ = {

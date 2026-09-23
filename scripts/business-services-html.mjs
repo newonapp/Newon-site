@@ -1,6 +1,6 @@
 /**
- * Business hub services — 4 editorial pillars (Build / Automation / Research / Solutions).
- * Creative lives under Studio top nav.
+ * Business hub services — 4 editorial pillars (Build / Automation / Solutions / Care).
+ * Creative lives under Studio top nav. Research URLs remain as planning/diagnosis.
  */
 import { escapeHtml, pick, studioStatusBadge } from "./hub-utils.mjs";
 import { BUSINESS_IA } from "./venture-studio-data.mjs";
@@ -11,28 +11,28 @@ const PILLAR_COPY = {
     titleKey: "business.pillarBuildTitle",
     titleFb: "BUILD",
     leadKey: "business.pillarBuildLead",
-    leadFb: "아이디어를 실제 제품으로.",
+    leadFb: "웹·앱·디지털 제품을 제작합니다.",
   },
   automation: {
     num: "02",
     titleKey: "business.pillarAutoTitle",
-    titleFb: "AUTOMATE",
+    titleFb: "AUTOMATION",
     leadKey: "business.pillarAutoLead",
-    leadFb: "반복되는 업무를 시스템으로.",
-  },
-  research: {
-    num: "03",
-    titleKey: "business.pillarResearchTitle",
-    titleFb: "RESEARCH",
-    leadKey: "business.pillarResearchLead",
-    leadFb: "감이 아니라 근거를 찾습니다.",
+    leadFb: "업무 자동화와 내부 운영 시스템을.",
   },
   solutions: {
-    num: "04",
+    num: "03",
     titleKey: "business.pillarSolutionsTitle",
     titleFb: "SOLUTIONS",
     leadKey: "business.pillarSolutionsLead",
-    leadFb: "이미 만든 기술을 기업에 맞게.",
+    leadFb: "기업 맞춤형 소프트웨어를 구축합니다.",
+  },
+  care: {
+    num: "04",
+    titleKey: "business.pillarCareTitle",
+    titleFb: "CARE",
+    leadKey: "business.pillarCareLead",
+    leadFb: "출시 이후 유지보수와 운영을.",
   },
 };
 
@@ -105,7 +105,7 @@ export function businessServicesHtml(flat, flatEn, lang = "en", { prefix = "" } 
   const label = escapeHtml(t(flat, flatEn, "studio.servicesLabel", "BUSINESS"));
   const title = escapeHtml(t(flat, flatEn, "business.pillarsTitle", "How we work with you"));
   const lead = escapeHtml(
-    t(flat, flatEn, "business.pillarsLead", "Build · Automation · Research · Solutions")
+    t(flat, flatEn, "business.pillarsLead", "Build · Automation · Solutions · Care")
   );
   const blocks = BUSINESS_IA.map((col) => pillarBlock(col, flat, flatEn, lang, prefix)).join("\n");
 

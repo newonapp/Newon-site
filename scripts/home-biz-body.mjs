@@ -12,7 +12,7 @@ import {
   visualLifeStage,
   visualOngil,
   visualBusiness,
-  visualStudio,
+  visualCommerce,
 } from "./home-story-visuals.mjs";
 import { renderCompanyBefore, renderCompanyAfter } from "./home-company-body.mjs";
 
@@ -66,8 +66,8 @@ function storyVisual(story, bySlug, lang) {
       return visualOngil();
     case "business":
       return visualBusiness();
-    case "studio":
-      return visualStudio();
+    case "commerce":
+      return visualCommerce();
     default:
       return "";
   }

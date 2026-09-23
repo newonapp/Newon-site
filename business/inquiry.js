@@ -235,7 +235,7 @@
       if (tv) {
         if (/^Studio\s*\//i.test(tv)) next = tv.replace(/^Studio\s*\/\s*/i, "");
         else if (/^Store\s*\//i.test(tv)) next = preservedStoreProduct || tv.replace(/^Store\s*\/\s*/i, "");
-        else next = tv.replace(/^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS)\s*\/\s*/i, "");
+        else next = tv.replace(/^(BUILD|AUTOMATION|RESEARCH|SOLUTIONS|CARE|DESIGN)\s*\/\s*/i, "");
       }
       if (next) {
         if (!serviceField) {

@@ -584,7 +584,7 @@ function writeSitemap() {
 
   // Business hub + pillars + inquiry (not success)
   addAllLocales("business", "0.75", "monthly");
-  for (const pillar of ["build", "automation", "research", "solutions"]) {
+  for (const pillar of ["build", "automation", "research", "solutions", "care"]) {
     addAllLocales(`business/${pillar}`, "0.7", "monthly");
   }
   addAllLocales("business/inquiry", "0.55", "monthly");

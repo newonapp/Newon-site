@@ -131,7 +131,7 @@ function appsFilm(lang) {
       </video>
       <div class="apps-film__lockup">
         <div class="apps-film__veil" aria-hidden="true"></div>
-        <h1 class="apps-film__wordmark">${escapeHtml(c.wordmark)}</h1>
+        <h1 class="apps-film__wordmark">Newon<br />App</h1>
         <p class="apps-film__slogan">${c.sloganHtml}</p>
         <p class="apps-film__lead">${escapeHtml(c.lead)}</p>
         <div class="apps-film__stores">

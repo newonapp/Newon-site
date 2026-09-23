@@ -10,12 +10,14 @@ import {
 import { STUDIO_DETAIL_ENRICHMENTS, mergeStudioDetail } from "./studio-service-detail-enrichments.mjs";
 import { applyStudioKoLabels } from "./studio-section-labels.mjs";
 import { deepMerge, loadPackOverlay, resolveCopyLang } from "./i18n/copy-lang.mjs";
+import { STUDIO_CARE_DETAIL } from "./studio-care-detail-data.mjs";
 
 const CAT = {
   brand: { ko: "브랜드", en: "BRAND" },
-  digital: { ko: "디지털", en: "DIGITAL" },
-  content: { ko: "콘텐츠", en: "CONTENT" },
-  ip: { ko: "IP", en: "IP" },
+  digital: { ko: "디지털 디자인", en: "DIGITAL DESIGN" },
+  content: { ko: "콘텐츠·캠페인", en: "CONTENT & CAMPAIGN" },
+  ip: { ko: "크리에이티브 랩", en: "CREATIVE LAB" },
+  care: { ko: "디자인 케어", en: "DESIGN CARE" },
 };
 
 /** @param {'ko'|'en'} lang */
@@ -7765,6 +7767,8 @@ const DETAIL = {
   },
 
 };
+
+Object.assign(DETAIL, STUDIO_CARE_DETAIL);
 
 function pickLang(obj, lang) {
   if (!obj) return null;

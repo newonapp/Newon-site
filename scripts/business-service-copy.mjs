@@ -15,6 +15,7 @@ import { getTrendResearchCopy } from "./trend-research-copy.mjs";
 import { getCustomProductCopy } from "./custom-product-copy.mjs";
 import { getProductLaunchCopy } from "./product-launch-copy.mjs";
 import { getInternalSystemCopy } from "./internal-system-copy.mjs";
+import { getNewBusinessServiceCopy } from "./business-new-services-copy.mjs";
 import { getMvpCopy } from "./mvp-copy.mjs";
 import { getWebCopy } from "./web-copy.mjs";
 import { getAppCopy } from "./app-copy.mjs";
@@ -3305,6 +3306,8 @@ export function getServiceCopy(slug, lang) {
     copy = normalizeProductLaunchCopy(getProductLaunchCopy(l), lang);
   } else if (slug === "internal-system") {
     copy = normalizeInternalSystemCopy(getInternalSystemCopy(l), lang);
+  } else if (getNewBusinessServiceCopy(slug, lang === "ko" ? "ko" : "en")) {
+    copy = getNewBusinessServiceCopy(slug, lang === "ko" ? "ko" : "en");
   } else {
     const pack = lang === "ko" ? COPY.ko : COPY.en;
     copy = pack[slug] || COPY.en[slug];

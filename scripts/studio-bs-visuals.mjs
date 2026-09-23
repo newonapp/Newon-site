@@ -470,6 +470,8 @@ export function studioHeroVisual(slug) {
     "digital-stickers": visualStickers,
     "newon-character": visualNewonCharacter,
     "experimental-ip": visualExperimentalIp,
+    "monthly-design": visualSocial,
+    "design-improvement": visualWebDetail,
   };
   const fn = map[slug];
   return fn ? fn() : visualStrategy();

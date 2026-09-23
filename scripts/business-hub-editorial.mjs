@@ -403,11 +403,11 @@ function whyHtml(ko) {
 function howHtml(ko) {
   const title = ko ? "이해에서\n개선까지." : "From understanding\nto improvement.";
   const steps = [
-    { n: "01", en: "UNDERSTAND", ko: "문제와 목표, 사용자를 이해합니다.", enB: "Understand the problem, goals, and users." },
+    { n: "01", en: "UNDERSTAND", ko: "기획·진단으로 문제와 목표, 요구사항을 정리합니다.", enB: "Plan and diagnose: problem, goals, and requirements." },
     { n: "02", en: "DEFINE", ko: "범위와 핵심 기능, 우선순위를 정의합니다.", enB: "Define scope, core features, and priorities." },
     { n: "03", en: "BUILD", ko: "제품 경험을 설계하고 개발합니다.", enB: "Design the experience and build the product." },
     { n: "04", en: "LAUNCH", ko: "테스트 후 배포와 출시를 지원합니다.", enB: "Test, deploy, and support the launch." },
-    { n: "05", en: "IMPROVE", ko: "실제 데이터와 피드백으로 제품을 개선합니다.", enB: "Improve with real data and feedback." },
+    { n: "05", en: "IMPROVE", ko: "출시 이후 운영·유지보수와 필요한 개선을 이어갑니다.", enB: "After launch: operations, maintenance, and agreed improvements." },
   ];
   return `<section id="how-we-work" class="bz-section bz-how bz-reveal" aria-labelledby="bz-process-title">
     <div class="bz-inner">
@@ -474,24 +474,24 @@ function faqHtml(flat, flatEn, ko) {
     ? [
         ["어떤 단계의 프로젝트부터 문의할 수 있나요?", "아이디어 단계부터 출시 이후 개선까지 가능합니다. 현재 상태를 알려주시면 적합한 범위를 함께 잡습니다."],
         ["아이디어만 있어도 상담이 가능한가요?", "가능합니다. 목표와 제약만 있으면 가설과 MVP 범위를 정리하는 것부터 시작할 수 있습니다."],
-        ["기존 앱이나 웹 개선도 가능한가요?", "가능합니다. UX, 전환, 성능, 구조 개선 모두 Product Improvement로 논의할 수 있습니다."],
-        ["디자인만 의뢰할 수 있나요?", "가능합니다. 브랜드, 웹, 앱 UI/UX, 디자인 시스템까지 Design & Branding으로 진행할 수 있습니다."],
+        ["기존 앱이나 웹 개선도 가능한가요?", "가능합니다. 기술 검토 후 Web & App Improvement 또는 CARE(유지보수)로 범위를 잡습니다. 모든 스택을 보장하지는 않습니다."],
+        ["디자인만 의뢰할 수 있나요?", "가능합니다. 브랜드·로고·웹·앱 UI/UX는 Newon Studio에서 진행합니다. 구현이 필요하면 Business BUILD와 연결합니다."],
         ["iOS와 Android를 함께 개발할 수 있나요?", "가능합니다. 네이티브 또는 Flutter 등 제품 목표에 맞는 방식으로 제안합니다."],
         ["AI 기능만 기존 서비스에 추가할 수 있나요?", "가능합니다. 반복 업무·문의·콘텐츠 흐름을 분석한 뒤 실제 운영 가능한 AI workflow로 붙입니다."],
         ["프로젝트 기간은 어떻게 결정되나요?", "범위, 플랫폼, 디자인·개발 깊이, 기존 자산 여부에 따라 달라집니다. 문의 후 범위를 보면 일정을 제안합니다."],
         ["비용은 어떻게 결정되나요?", "고정 단가가 아니라 범위 기준 견적입니다. 필요한 기능과 일정에 맞춰 제안서를 드립니다."],
-        ["출시 이후 개선도 가능한가요?", "가능합니다. 출시 후 데이터와 피드백을 바탕으로 개선 사이클을 이어갈 수 있습니다."],
+        ["출시 이후 개선도 가능한가요?", "가능합니다. 출시 직후는 Post-launch Support, 이후 운영은 Monthly Maintenance(CARE)로 이어갈 수 있습니다. 무제한 신규 개발은 포함되지 않습니다."],
       ]
     : [
         ["What stage can I inquire from?", "From early idea through post-launch improvement. Share where you are and we’ll scope together."],
         ["Can I talk with only an idea?", "Yes. Goals and constraints are enough to start shaping a hypothesis and MVP scope."],
-        ["Can you improve an existing app or site?", "Yes — UX, conversion, performance, and structure under Product Improvement."],
-        ["Can I commission design only?", "Yes — brand, web, app UI/UX, and design systems under Design & Branding."],
+        ["Can you improve an existing app or site?", "Yes — after a technical review, via Web & App Improvement or CARE (maintenance). We do not support every stack."],
+        ["Can I commission design only?", "Yes — brand, logo, and web/app UI/UX live under Newon Studio. Implementation continues through Business BUILD."],
         ["Can you build iOS and Android together?", "Yes. We propose native or Flutter based on product goals."],
         ["Can you add AI to an existing service?", "Yes. We analyze the workflow, then attach a practical AI automation layer."],
         ["How is timeline decided?", "By scope, platforms, depth of design/dev, and existing assets — proposed after review."],
         ["How is pricing decided?", "Scoped quotes, not a fixed menu. We’ll propose based on needs and timeline."],
-        ["Can you improve after launch?", "Yes. We can continue with data- and feedback-driven improvement cycles."],
+        ["Can you improve after launch?", "Yes. Early weeks are Post-launch Support; ongoing ops are Monthly Maintenance (CARE). Unlimited new development is not included."],
       ];
   const items = faqs
     .map(

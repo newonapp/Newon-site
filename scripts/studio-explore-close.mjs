@@ -4,13 +4,19 @@
 import { escapeHtml, pick } from "./hub-utils.mjs";
 import { STUDIO_PILLAR_SLUGS, getStudioPillarCopy } from "./studio-pillar-copy.mjs";
 
-const LABELS = { brand: "BRAND", digital: "DIGITAL", content: "CONTENT", ip: "IP" };
+const LABELS = {
+  brand: "BRAND",
+  digital: "DIGITAL DESIGN",
+  content: "CONTENT & CAMPAIGN",
+  ip: "CREATIVE LAB",
+  care: "DESIGN CARE",
+};
 
 const FAQ = {
   ko: [
     {
       q: "Studio와 Business의 차이는 무엇인가요?",
-      a: "Studio는 Brand · UI/UX · Content · IP 등 전략·디자인·크리에이티브를 담당합니다. Business는 Build · Automation · Research · Solutions로 개발·구축·자동화·리서치를 담당합니다.",
+      a: "Studio는 Brand · Digital Design · Content & Campaign · Creative Lab · Design Care 등 전략·디자인·크리에이티브를 담당합니다. Business는 Build · Automation · Solutions · Care로 개발·구축·자동화·기술 유지보수를 담당합니다.",
     },
     {
       q: "웹 디자인을 한 뒤 개발도 맡길 수 있나요?",
@@ -29,6 +35,10 @@ const FAQ = {
       a: "Character Lab은 실험적으로 진행할 수 있습니다. Digital Stickers 등은 Coming Soon이며, Newon Character는 내부 프로젝트입니다.",
     },
     {
+      q: "월간 디자인 운영은 바로 구독인가요?",
+      a: "아니요. 구성 예시일 뿐 확정 월 구독 상품이 아닙니다. 범위 상담 후 별도 견적합니다. 소스 수정은 Business Care입니다.",
+    },
+    {
       q: "결과물은 어떤 형태로 받나요?",
       a: "서비스별로 Brand Strategy Document, UI Handoff, Campaign Assets처럼 실제 산출물 이름으로 전달합니다.",
     },
@@ -36,7 +46,7 @@ const FAQ = {
   en: [
     {
       q: "How is Studio different from Business?",
-      a: "Studio covers Brand, UI/UX, Content, and IP — strategy, design, and creative. Business covers Build, Automation, Research, and Solutions — development, systems, and research.",
+      a: "Studio covers Brand, Digital Design, Content & Campaign, Creative Lab, and Design Care — strategy, design, and creative. Business covers Build, Automation, Solutions, and Care — development, systems, and technical maintenance.",
     },
     {
       q: "Can design continue into development?",
@@ -55,11 +65,59 @@ const FAQ = {
       a: "Character Lab can run experimentally. Digital Stickers are Coming Soon, and Newon Character is an internal project.",
     },
     {
+      q: "Is Monthly Design Support a live subscription?",
+      a: "No. The tiers are composition examples, not a locked SKU. Quoted after scoping. Source edits sit in Business Care.",
+    },
+    {
       q: "What do we receive?",
       a: "Concrete deliverables by service — for example Brand Strategy Document, UI Handoff, or Campaign Assets.",
     },
   ],
 };
+
+function packagesSection(lang) {
+  const ko = lang === "ko";
+  const title = ko ? "STUDIO PACKAGES" : "STUDIO PACKAGES";
+  const lead = ko
+    ? "여러 서비스를 함께 의뢰할 수 있는 구성 제안입니다. 확정 판매 상품이 아니며 범위와 금액은 맞춤 상담·별도 견적입니다."
+    : "Suggested combinations — not locked products for sale. Scope and price are custom quotes.";
+  const items = ko
+    ? [
+        { n: "01", t: "BRAND STARTER", d: "브랜드 콘셉트 + 로고 + 기본 가이드", href: "brand/" },
+        { n: "02", t: "DIGITAL PRODUCT DESIGN", d: "사용자 흐름 + 핵심 화면 UI/UX + 기본 디자인 시스템", href: "digital/" },
+        { n: "03", t: "LAUNCH CREATIVE", d: "랜딩 디자인 + SNS + 광고 소재 디자인", href: "content/" },
+        { n: "04", t: "MONTHLY DESIGN", d: "계약 범위의 정기 디자인 운영", href: "care/monthly-design/" },
+        { n: "05", t: "BRAND & WEB", d: "아이덴티티 + 웹 디자인. 개발은 Business 별도", href: "brand/" },
+      ]
+    : [
+        { n: "01", t: "BRAND STARTER", d: "Brand concept + logo + basic guide", href: "brand/" },
+        { n: "02", t: "DIGITAL PRODUCT DESIGN", d: "Flows + key UI/UX + base design system", href: "digital/" },
+        { n: "03", t: "LAUNCH CREATIVE", d: "Landing design + social + ad assets", href: "content/" },
+        { n: "04", t: "MONTHLY DESIGN", d: "Regular design ops by contract", href: "care/monthly-design/" },
+        { n: "05", t: "BRAND & WEB", d: "Identity + web design. Build quoted via Business", href: "brand/" },
+      ];
+  const cards = items
+    .map(
+      (it) => `<a class="bp-other__card" href="${escapeHtml(it.href)}">
+      <span class="bp-other__top">
+        <span class="bp-other__n">${escapeHtml(it.n)}</span>
+        <span class="bp-other__arrow" aria-hidden="true">→</span>
+      </span>
+      <span class="bp-other__t">${escapeHtml(it.t)}</span>
+      <span class="bp-other__lead">${escapeHtml(it.d)}</span>
+    </a>`
+    )
+    .join("");
+  return `<section class="bp-sec bp-other bz-explore-nav" data-bp-reveal aria-labelledby="ns-pkg-label">
+  <div class="bp-inner">
+    <header class="bp-sec__head">
+      <p class="bp-label" id="ns-pkg-label">${title}</p>
+      <p class="bp-lead">${escapeHtml(lead)}</p>
+    </header>
+    <nav class="bp-other__grid" aria-label="${title}">${cards}</nav>
+  </div>
+</section>`;
+}
 
 function t(flat, flatEn, key, fb = "") {
   const v = pick(flat, flatEn, key);
@@ -160,6 +218,7 @@ function finalCta(flat, flatEn, lang) {
 export function studioExploreCloseHtml(flat, flatEn, lang = "en") {
   return `<div class="bp-page bz-explore-foot">
 ${pillarNav(flat, flatEn, lang)}
+${packagesSection(lang)}
 ${faqSection(flat, flatEn, lang)}
 ${finalCta(flat, flatEn, lang)}
 </div>`;

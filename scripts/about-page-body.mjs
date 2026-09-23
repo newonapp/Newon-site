@@ -433,6 +433,50 @@ function buildHtml(copy) {
 </section>`;
 }
 
+function venturesHtml(copy) {
+  const items = copy.ventures || [];
+  if (!items.length) return "";
+  const cards = items
+    .map((v) => {
+      const notes = (v.notes || [])
+        .map((n) => `<li>${escapeHtml(n)}</li>`)
+        .join("");
+      const noteList = notes
+        ? `<ul class="ab-build__tags ab-ventures__notes">${notes}</ul>`
+        : "";
+      const links = (v.links || [])
+        .map(
+          (l) =>
+            `<a class="ab-text-link" href="${escapeHtml(l.href)}">${escapeHtml(l.label)}</a>`
+        )
+        .join("");
+      const badge = v.badge
+        ? `<span class="ab-space__count">${escapeHtml(v.badge)}</span>`
+        : "";
+      return `<article class="ab-mission__card">
+      <div class="ab-space__meta">
+        <span class="ab-mission__n">${escapeHtml(v.n)}</span>
+        ${badge}
+      </div>
+      <h3 class="ab-mission__card-title">${escapeHtml(v.title)}</h3>
+      <p class="ab-mission__card-body">${escapeHtml(v.body)}</p>
+      ${noteList}
+      ${links ? `<p class="ab-section__more ab-ventures__links">${links}</p>` : ""}
+    </article>`;
+    })
+    .join("");
+  return `<section class="ab-section ab-mission ab-ventures" aria-labelledby="ab-ventures-title" data-ab-reveal>
+  <div class="ab-inner ab-mission__layout">
+    <header class="ab-mission__intro">
+      <p class="ab-eyebrow">${escapeHtml(copy.venturesEyebrow || "NEXT VENTURES")}</p>
+      <h2 id="ab-ventures-title" class="ab-title ab-title--wide">${escapeHtml(copy.venturesTitle || "")}</h2>
+      ${copy.venturesLead ? `<p class="ab-lead">${escapeHtml(copy.venturesLead)}</p>` : ""}
+    </header>
+    <div class="ab-mission__grid">${cards}</div>
+  </div>
+</section>`;
+}
+
 function workHtml(copy) {
   const steps = (copy.workSteps || [])
     .map(
@@ -623,6 +667,7 @@ ${metricsHtml(copy, stats)}
 ${whyHtml(copy)}
 ${missionHtml(copy)}
 ${buildHtml(copy)}
+${venturesHtml(copy)}
 ${glanceHtml(copy)}
 ${spacesHtml(copy, bySlug)}
 ${productAreasHtml(copy)}

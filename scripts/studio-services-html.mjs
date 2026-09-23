@@ -9,6 +9,7 @@ const PILLAR_NUM = {
   digital: "02",
   content: "03",
   ip: "04",
+  care: "05",
 };
 
 function t(flat, flatEn, key, fb = "") {
@@ -73,10 +74,27 @@ function pillarBlock(col, flat, flatEn, lang) {
 export function studioServicesHtml(flat, flatEn, lang = "en") {
   const label = escapeHtml(t(flat, flatEn, "studioHub.servicesLabel", "STUDIO"));
   const title = escapeHtml(
-    t(flat, flatEn, "studioHub.pillarsTitle", lang === "ko" ? "네 가지 영역으로 설계합니다" : "Four areas of craft")
+    t(flat, flatEn, "studioHub.pillarsTitle", lang === "ko" ? "다섯 가지 영역으로 설계합니다" : "Five areas of craft")
   );
   const lead = escapeHtml(
-    t(flat, flatEn, "studioHub.pillarsLead", "Brand · Digital · Content · IP")
+    t(
+      flat,
+      flatEn,
+      "studioHub.pillarsLead",
+      lang === "ko"
+        ? "Brand · Digital Design · Content & Campaign · Creative Lab · Design Care"
+        : "Brand · Digital Design · Content & Campaign · Creative Lab · Design Care"
+    )
+  );
+  const flow = escapeHtml(
+    t(
+      flat,
+      flatEn,
+      "studioHub.flowNote",
+      lang === "ko"
+        ? "가능한 흐름이며 모든 프로젝트의 필수는 아닙니다. 브랜드 기획 → 브랜드·디지털 디자인 → 출시용 콘텐츠 → 지속적인 디자인 운영."
+        : "A possible path — not required for every project. Brand planning → brand and digital design → launch content → ongoing design care."
+    )
   );
   const blocks = STUDIO_IA.map((col) => pillarBlock(col, flat, flatEn, lang)).join("\n");
 
@@ -91,6 +109,7 @@ export function studioServicesHtml(flat, flatEn, lang = "en") {
         <p class="bz-lead bz-sec-head__lead">${lead}</p>
       </header>
       <div class="bz-pillars">${blocks}</div>
+      <p class="bz-lead bz-sec-head__lead">${flow}</p>
     </div>
   </section>
 </div>`;

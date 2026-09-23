@@ -9,6 +9,7 @@ export const PRICING_CATEGORIES = {
   RESEARCH: "RESEARCH",
   SOLUTIONS: "SOLUTIONS",
   DESIGN: "DESIGN",
+  CARE: "CARE",
 };
 
 /**
@@ -84,6 +85,32 @@ export const SERVICE_TIMELINES = {
     timelineExtraNoteEn: "Complex scopes are scheduled by agreement after review.",
   },
   design: { timelineKo: "3–5일", timelineEn: "3–5 days" },
+  "website-renewal": {
+    timelineKo: "별도 협의",
+    timelineEn: "By agreement",
+    timelineExtraNoteKo: "기존 사이트 상태와 개선 범위를 확인한 뒤 일정을 정합니다.",
+    timelineExtraNoteEn: "Schedule is set after reviewing the current site and scope.",
+  },
+  improvement: {
+    timelineKo: "별도 협의",
+    timelineEn: "By agreement",
+    timelineExtraNoteKo: "소스·환경 검토 후 작업 가능 여부와 일정을 안내합니다.",
+    timelineExtraNoteEn: "Feasibility and schedule follow a technical review.",
+  },
+  booking: {
+    timelineKo: "별도 협의",
+    timelineEn: "By agreement",
+    timelineExtraNoteKo: "기능 수와 외부 연동 범위에 따라 달라집니다.",
+    timelineExtraNoteEn: "Depends on features and third-party integrations.",
+  },
+  maintenance: {
+    timelineKo: "계약에 따름",
+    timelineEn: "Per contract",
+  },
+  "post-launch": {
+    timelineKo: "계약에 따름",
+    timelineEn: "Per contract",
+  },
 };
 
 /** @type {Record<string, { amount?: number, custom?: boolean, category: string, externalCost?: boolean, basisKo: string, basisEn: string, extraNoteKo?: string, extraNoteEn?: string, inquiryLabelKo?: string, inquiryLabelEn?: string }>} */
@@ -261,6 +288,47 @@ export const SERVICE_PRICING = {
       "Web UI/UX from ₩600,000 · App UI/UX from ₩700,000 · Product Design from ₩1,000,000. Brand Identity is custom. Implementation continues through Business BUILD.",
     inquiryLabelKo: "Design",
     inquiryLabelEn: "Design",
+  },
+  "website-renewal": {
+    custom: true,
+    category: PRICING_CATEGORIES.BUILD,
+    basisKo: "기존 사이트 상태와 개선 범위를 확인한 뒤 견적합니다.",
+    basisEn: "Quoted after reviewing the current site and improvement scope.",
+    inquiryLabelKo: "Website Renewal",
+    inquiryLabelEn: "Website Renewal",
+  },
+  improvement: {
+    custom: true,
+    category: PRICING_CATEGORIES.BUILD,
+    basisKo: "기존 웹·앱의 코드·환경·오류를 검토한 뒤 작업 가능 여부와 범위를 안내합니다.",
+    basisEn: "Quoted after reviewing existing code, environment, and whether the work is feasible.",
+    inquiryLabelKo: "Web & App Improvement",
+    inquiryLabelEn: "Web & App Improvement",
+  },
+  booking: {
+    custom: true,
+    category: PRICING_CATEGORIES.AUTOMATION,
+    externalCost: true,
+    basisKo: "예약·문의·고객관리 기능 범위와 외부 연동 조건을 확인한 뒤 견적합니다.",
+    basisEn: "Quoted after reviewing booking/inquiry features and third-party integration conditions.",
+    inquiryLabelKo: "Booking & Customer Management",
+    inquiryLabelEn: "Booking & Customer Management",
+  },
+  maintenance: {
+    custom: true,
+    category: PRICING_CATEGORIES.CARE,
+    basisKo: "계약 범위, 시스템 상태, 작업량에 따라 별도 견적합니다. 금액·작업 시간·응답 시간은 확정 전 표시하지 않습니다.",
+    basisEn: "Quoted by contract scope, system condition, and workload. Hours and response SLAs are not listed until agreed.",
+    inquiryLabelKo: "Monthly Maintenance",
+    inquiryLabelEn: "Monthly Maintenance",
+  },
+  "post-launch": {
+    custom: true,
+    category: PRICING_CATEGORIES.CARE,
+    basisKo: "출시 이후 운영 지원 기간과 범위는 계약에 따라 정합니다.",
+    basisEn: "Post-launch support duration and scope are set in the contract.",
+    inquiryLabelKo: "Post-launch Support",
+    inquiryLabelEn: "Post-launch Support",
   },
 };
 
@@ -510,8 +578,8 @@ export const BUSINESS_PRODUCT_LINES = [
 
 /** Pillar tab order → service slug */
 export const PILLAR_SERVICE_SLUGS = {
-  build: ["mvp", "web", "landing", "app"],
-  automation: ["ai-automation", "workflow-automation", "internal-tools", "data-reporting"],
+  build: ["mvp", "web", "landing", "app", "website-renewal", "improvement"],
+  automation: ["ai-automation", "workflow-automation", "internal-tools", "data-reporting", "booking"],
   research: [
     "market-research",
     "competitor-analysis",
@@ -520,6 +588,7 @@ export const PILLAR_SERVICE_SLUGS = {
     "trend-research",
   ],
   solutions: ["white-label", "custom-product", "product-launch", "internal-system"],
+  care: ["maintenance", "post-launch"],
 };
 
 export function isCustomQuote(slug) {
@@ -664,6 +733,11 @@ export function pillarPricingNote(pillarSlug, lang = "ko") {
       ? `${scopeDisclaimer(lang)} Research는 맞춤 engagement로 진행하며, 소비자 조사의 모집·리워드·외부 비용은 별도일 수 있습니다.`
       : `${scopeDisclaimer(lang)} Research remains a custom engagement; consumer research may incur separate recruitment or third-party costs.`;
   }
+  if (pillarSlug === "care") {
+    return ko
+      ? `${scopeDisclaimer(lang)} 월간 유지보수는 무제한 신규 개발이 아니며, 금액·작업 시간·응답 시간은 계약 전 표시하지 않습니다.`
+      : `${scopeDisclaimer(lang)} Monthly care is not unlimited development. Prices, hours, and response times are not listed until agreed.`;
+  }
   return scopeDisclaimer(lang);
 }
 
@@ -805,9 +879,9 @@ export function applyPillarPricing(copy, pillarSlug, lang = "ko") {
     return { name, price: formatPriceDisplay(slug, lang), svc: i, slug };
   });
   const services = (copy.services || []).map((s, i) => {
-    const slug = slugs[i];
+    const slug = s.slug || slugs[i];
     const timeline = formatTimelineDisplay(slug, lang);
-    return timeline ? { ...s, timeline } : s;
+    return timeline ? { ...s, timeline, slug } : slug ? { ...s, slug } : s;
   });
   let faq = copy.faq;
   if (Array.isArray(faq) && pillarSlug === "build") {
@@ -855,6 +929,7 @@ const PILLAR_AREA = {
   automation: "AUTOMATION",
   research: "RESEARCH",
   solutions: "SOLUTIONS",
+  care: "CARE",
   design: "DESIGN",
 };
 
@@ -981,12 +1056,26 @@ export function businessInquiryServiceMap() {
     "SOLUTIONS / PRODUCT LAUNCH": "SOLUTIONS / Product Launch",
     "INTERNAL SYSTEM": "SOLUTIONS / Internal System",
     "SOLUTIONS / INTERNAL SYSTEM": "SOLUTIONS / Internal System",
+    CARE: "CARE / Monthly Maintenance",
+    Maintenance: "CARE / Monthly Maintenance",
+    "MONTHLY MAINTENANCE": "CARE / Monthly Maintenance",
+    "POST-LAUNCH": "CARE / Post-launch Support",
+    "Post-launch Support": "CARE / Post-launch Support",
+    "WEBSITE RENEWAL": "BUILD / Website Renewal",
+    "Web & App Improvement": "BUILD / Web & App Improvement",
+    Booking: "AUTOMATION / Booking & Customer Management",
   });
   return map;
 }
 
 /** Primary product lines first, then detailed BUILD + AUTOMATION, then Research/Solutions. */
-export function businessInquirySelectOptionsHtml() {
+export function businessInquirySelectOptionsHtml(resolveLabel) {
+  const labelOf = (slug, value) => {
+    if (typeof resolveLabel !== "function") return value;
+    const next = resolveLabel(slug, value);
+    const text = next == null ? "" : String(next).trim();
+    return text || value;
+  };
   const productLineOptions = [
     { value: "Web", slug: "web", area: "BUILD" },
     { value: "App", slug: "app", area: "BUILD" },
@@ -1009,18 +1098,19 @@ export function businessInquirySelectOptionsHtml() {
     ...(PILLAR_SERVICE_SLUGS.automation || []),
     ...(PILLAR_SERVICE_SLUGS.research || []),
     ...(PILLAR_SERVICE_SLUGS.solutions || []),
+    ...(PILLAR_SERVICE_SLUGS.care || []),
     "design",
   ];
+  const seen = new Set();
   const detailed = order
     .map((slug) => {
       const value = businessInquiryOptionValue(slug);
       const cfg = SERVICE_PRICING[slug];
-      if (!value || !cfg) return "";
-      const label = value
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/"/g, "&quot;");
-      return `                <option value="${label}" data-biz-option="1" data-slug="${slug}" data-area="${cfg.category}">${label}</option>`;
+      if (!value || !cfg || seen.has(value)) return "";
+      seen.add(value);
+      const valueAttr = escapeAttr(value);
+      const label = escapeAttr(labelOf(slug, value));
+      return `                <option value="${valueAttr}" data-biz-option="1" data-slug="${slug}" data-area="${cfg.category}">${label}</option>`;
     })
     .filter(Boolean)
     .join("\n");

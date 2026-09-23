@@ -97,7 +97,7 @@ const KO = {
       "서로 다른 목적을 가진 서비스들이 하나의 브랜드 안에서 연결되어, 사용자가 필요한 순간에 더 편리한 경험을 제공하는 생태계를 지향합니다.",
     cta: "Newon 생태계 살펴보기 ↗",
     ctaHref: "ecosystem/",
-    names: ["Consumer", "AI", "Livon", "Ongil", "Business", "Studio"],
+    names: ["Consumer", "AI", "LivOn", "Ongil", "Business", "Commerce"],
   },
   about: {
     kicker: "04 / ABOUT NEWON",
@@ -168,7 +168,7 @@ const EN = {
       "We aim for an ecosystem where services with different purposes connect inside one brand, and a more convenient experience is there when it is needed.",
     cta: "Explore Newon Ecosystem ↗",
     ctaHref: "ecosystem/",
-    names: ["Consumer", "AI", "Livon", "Ongil", "Business", "Studio"],
+    names: ["Consumer", "AI", "LivOn", "Ongil", "Business", "Commerce"],
   },
   about: {
     kicker: "04 / ABOUT NEWON",

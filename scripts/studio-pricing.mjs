@@ -211,6 +211,30 @@ export const STUDIO_SERVICE_PRICING = {
     inquiryService: "Experimental IP",
     detailSegment: "experimental-ip",
   },
+  "monthly-design": {
+    category: "care",
+    index: 0,
+    serviceName: "Monthly Design Support",
+    serviceNameKo: "월간 디자인 운영",
+    startingPrice: null,
+    pricingType: "customQuote",
+    timelineKo: "계약에 따름",
+    timelineEn: "Per contract",
+    inquiryService: "Monthly Design Support",
+    detailSegment: "monthly-design",
+  },
+  "design-improvement": {
+    category: "care",
+    index: 1,
+    serviceName: "Design Improvement",
+    serviceNameKo: "기존 디자인 개선",
+    startingPrice: null,
+    pricingType: "customQuote",
+    timelineKo: "별도 견적",
+    timelineEn: "Custom quote",
+    inquiryService: "Design Improvement",
+    detailSegment: "design-improvement",
+  },
 };
 
 export function studioServicePagePath(slug) {
@@ -231,6 +255,7 @@ export const STUDIO_PILLAR_SERVICE_SLUGS = {
   digital: ["web-design", "app-ui-ux", "landing-page-design", "product-design"],
   content: ["social-content", "campaign", "visual-content"],
   ip: ["character-lab", "digital-stickers", "newon-character", "experimental-ip"],
+  care: ["monthly-design", "design-improvement"],
 };
 
 export function formatStudioPriceDisplay(slug, lang = "ko") {
@@ -272,9 +297,17 @@ export function studioContentPricingNote(lang = "ko") {
   return `${base} Social Content starting price covers content direction plus a limited design set — not full monthly social ops. Ongoing monthly management is quoted separately.`;
 }
 
+export function studioCarePricingNote(lang = "ko") {
+  if (lang === "ko") {
+    return "Design Care는 별도 견적입니다. 월 작업량, 수정 횟수, 납기, 금액을 확정 상품처럼 표시하지 않습니다. 디자인 작업만 담당하며 소스·서버·기능 개발은 Newon Business Care입니다.";
+  }
+  return "Design Care is a custom quote. We do not list monthly volume, revision caps, turnaround, or price as a locked SKU. Visual work only — source, servers, and features sit in Newon Business Care.";
+}
+
 export function studioPillarPricingNote(pillarSlug, lang = "ko") {
   if (pillarSlug === "digital") return studioDigitalPricingNote(lang);
   if (pillarSlug === "content") return studioContentPricingNote(lang);
+  if (pillarSlug === "care") return studioCarePricingNote(lang);
   return studioScopeDisclaimer(lang);
 }
 
@@ -325,6 +358,7 @@ export function studioInquiryHref(slug, relativeBase = "../../business/inquiry/"
   else if (cfg.category === "digital") params.set("area", "Digital");
   else if (cfg.category === "content") params.set("area", "Content");
   else if (cfg.category === "ip") params.set("area", "IP");
+  else if (cfg.category === "care") params.set("area", "Care");
   if (opts.source) params.set("source", opts.source);
   return `${relativeBase}?${params.toString()}#inquiry`;
 }

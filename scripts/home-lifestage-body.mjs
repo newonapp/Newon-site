@@ -1,5 +1,5 @@
 /**
- * Livon detail section HTML. Scoped to #lifestage-detail.
+ * LivOn detail section HTML. Scoped to #lifestage-detail.
  */
 import { escapeHtml } from "./hub-utils.mjs";
 import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
@@ -85,7 +85,7 @@ function heroBlock(c, lang) {
       </video>
       <div class="nls-film__lockup">
         <div class="nls-film__veil" aria-hidden="true"></div>
-        <p class="nls-film__wordmark">Livon</p>
+        <p class="nls-film__wordmark">LivOn</p>
         <h1 id="story-lifestage-title" class="nls-film__slogan">${c.hero.titleHtml}</h1>
         <p class="nls-film__lead">${escapeHtml(c.hero.lead)}</p>
         <div class="nls-film__actions">

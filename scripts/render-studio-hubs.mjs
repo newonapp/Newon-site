@@ -84,7 +84,7 @@ function renderPage(lang, pagePath, opts) {
     HTML_LANG: lang.htmlLang,
     FONT_LINKS: fontLinksHtml(lang.dir),
     TITLE: escapeHtml(opts.title),
-    META_DESCRIPTION: escapeHtml(clampSeoDescription(opts.description)),
+    META_DESCRIPTION: escapeHtml(clampSeoDescription(opts.description, opts.seoMax || 80)),
     CANONICAL: canonical,
     OG_LOCALE: OG_LOCALE[lang.dir] || "en_US",
     // Keep full pagePath so tool details hreflang to /{lang}/tools/{slug}/ (not hub).
@@ -296,7 +296,7 @@ const HUB_RENDERERS = {
     title: pick(f, fe, "studio.appsSeoTitle"),
     description: pick(f, fe, "studio.appsMetaDescription"),
     body: appsBody(f, fe, l),
-    extraCss: '<link rel="stylesheet" href="/apps-hub.css?v=20260922appfit1" />',
+    extraCss: '<link rel="stylesheet" href="/apps-hub.css?v=20260922appfit2" />',
     extraScripts: '<script src="/film-keep.js?v=20260922play1"></script>\n    <script src="/apps-hub.js?v=20260825apps5" defer></script>',
   }),
   ai: (f, fe, l) => ({
@@ -314,8 +314,9 @@ const HUB_RENDERERS = {
       title: copy.seoTitle,
       description: copy.seoDescription,
       body: renderAiEnterpriseBody(f, fe, l),
-      extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260922aibtn3" />',
-      extraScripts: '<script src="/film-keep.js?v=20260922play1"></script>\n    <script src="/ai-hub.js?v=20260922aibtn3" defer></script>',
+      extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260923entv9" />',
+      extraScripts: '<script src="/film-keep.js?v=20260922play1"></script>\n    <script src="/ai-hub.js?v=20260923entv" defer></script>',
+      seoMax: 160,
     };
   },
   saas: (f, fe, l) => ({

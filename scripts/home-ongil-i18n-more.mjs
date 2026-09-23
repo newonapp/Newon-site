@@ -148,7 +148,7 @@ export const ONGIL_I18N_MORE = {
       title: "El lugar de Ongil\ndentro de Newon.",
       lead: "Ongil es el negocio de Newon centrado en la vida y el cuidado de las personas mayores. La cooperación es posible más adelante. Hoy los productos no están enlazados técnicamente y los datos no se comparten de forma automática.",
       items: [
-        { n: "01", name: "Livon", body: "Una plataforma para los cambios de vida y los nuevos comienzos, de la adolescencia a los setenta. No sustituye el enfoque de Ongil en vida y cuidado senior." },
+        { n: "01", name: "LivOn", body: "Una plataforma para los cambios de vida y los nuevos comienzos, de la adolescencia a los setenta. No sustituye el enfoque de Ongil en vida y cuidado senior." },
         { n: "02", name: "Ongil", body: "Una plataforma centrada en el día a día y el cuidado de las personas mayores, y en la conexión con familia y comunidad." },
         { n: "03", name: "NEWON AI", body: "Tecnología y servicios de IA que pueden apoyar información de vida a medida y orientación." },
         { n: "04", name: "Consumer · Business · Commerce", body: "Apps cotidianas, soluciones para empresas e instituciones, y comercio de bienes y servicios de vida. Los detalles quedan en esas páginas." },
@@ -310,7 +310,7 @@ export const ONGIL_I18N_MORE = {
       title: "O lugar do Ongil\ndentro da Newon.",
       lead: "O Ongil é o negócio da Newon focado na vida e no cuidado de pessoas idosas. A cooperação é possível mais adiante. Hoje os produtos não estão ligados tecnicamente, e os dados não são compartilhados automaticamente.",
       items: [
-        { n: "01", name: "Livon", body: "Uma plataforma para mudanças de vida e novos começos, da adolescência aos setenta. Não substitui o foco do Ongil em vida e cuidado senior." },
+        { n: "01", name: "LivOn", body: "Uma plataforma para mudanças de vida e novos começos, da adolescência aos setenta. Não substitui o foco do Ongil em vida e cuidado senior." },
         { n: "02", name: "Ongil", body: "Uma plataforma focada no dia a dia e no cuidado de pessoas idosas, e na conexão com família e comunidade." },
         { n: "03", name: "NEWON AI", body: "Tecnologia e serviços de IA que podem apoiar informação de vida sob medida e orientação." },
         { n: "04", name: "Consumer · Business · Commerce", body: "Apps cotidianos, soluções para empresas e instituições, e comércio de bens e serviços de vida. Os detalhes ficam nessas páginas." },

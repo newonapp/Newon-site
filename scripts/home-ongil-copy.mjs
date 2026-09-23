@@ -298,7 +298,7 @@ const KO = {
     title: "Newon 안에서\n온길이 맡는 자리.",
     lead: "온길은 Newon 여섯 사업 가운데 시니어 생활과 돌봄에 특화된 사업입니다. 현재 다른 사업과 기술적으로 연동되거나 데이터가 자동 공유되지 않습니다.",
     items: [
-      { n: "01", name: "Livon", body: "10대부터 70대까지 생애주기의 변화와 새로운 시작을 돕는 종합 플랫폼. 온길의 시니어 특화 돌봄·생활을 대체하지 않습니다." },
+      { n: "01", name: "LivOn", body: "10대부터 70대까지 생애주기의 변화와 새로운 시작을 돕는 종합 플랫폼. 온길의 시니어 특화 돌봄·생활을 대체하지 않습니다." },
       { n: "02", name: "Ongil", body: "시니어의 일상과 돌봄, 가족·지역사회 연결에 특화된 플랫폼." },
       { n: "03", name: "NEWON AI", body: "맞춤 생활정보 탐색과 안내에 활용할 수 있는 AI 기술·서비스." },
       { n: "04", name: "Consumer · Business · Commerce", body: "일상 앱 생태계, 기업·기관 솔루션, 상품·생활 서비스 거래를 각각 담당합니다." },
@@ -596,7 +596,7 @@ const EN = {
     title: "Ongil’s place\ninside Newon.",
     lead: "Ongil is the Newon business focused on senior living and care. Today the products are not technically linked, and data is not shared automatically.",
     items: [
-      { n: "01", name: "Livon", body: "A platform for life changes and new starts from the teens through the seventies. It does not replace Ongil’s senior living and care focus." },
+      { n: "01", name: "LivOn", body: "A platform for life changes and new starts from the teens through the seventies. It does not replace Ongil’s senior living and care focus." },
       { n: "02", name: "Ongil", body: "A platform focused on seniors’ daily life and care, and on family and community connection." },
       { n: "03", name: "NEWON AI", body: "AI technology and services that can support tailored living information and guidance." },
       { n: "04", name: "Consumer · Business · Commerce", body: "Everyday apps, solutions for companies and institutions, and trade in goods and living services." },

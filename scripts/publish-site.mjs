@@ -56,6 +56,8 @@ const PUBLISH_ROOT_CORE = [
   "apps-hub.js",
   "ai-hub.css",
   "ai-hub.js",
+  "ai-enterprise.css",
+  "ai-enterprise.js",
   "saas-hub.css",
   "saas-hub.js",
   "games-hub.css",

@@ -179,7 +179,19 @@
     "resourcesExploreCta": "Ressourcen entdecken →",
     "companyExploreCta": "Über Newon →",
     "ecosystem": "Newon-Ökosystem",
-    "megaEcosystemDesc": "Apps, KI, Alltag und Business — eine Newon-Verbindung"
+    "megaEcosystemDesc": "Apps, KI, Alltag und Business — eine Newon-Verbindung",
+    "bizColCare": "CARE",
+    "megaCareDesc": "Maintenance and operations after launch",
+    "bizBooking": "Booking & Customer Management",
+    "bizBookingDesc": "Bookings, inquiries, and customer history",
+    "bizMaintenance": "Monthly Maintenance",
+    "bizMaintenanceDesc": "In-contract support after launch",
+    "bizPostLaunch": "Post-launch Support",
+    "bizPostLaunchDesc": "Stabilize the first weeks after ship",
+    "bizImprovement": "Web & App Improvement",
+    "bizImprovementDesc": "Features and fixes on what you already run",
+    "bizRenewal": "Website Renewal",
+    "bizRenewalDesc": "Improve an existing site without a full rebuild"
   },
   "footer": {
     "privacy": "Datenschutz",

@@ -2796,7 +2796,7 @@ html[data-theme="dark"] #lifestage-detail.nls .nls-id__path {
   border-left-color: #fff;
 }
 
-/* Livon first-screen film hero only. Does not restyle body sections. */
+/* LivOn first-screen film hero only. Does not restyle body sections. */
 #lifestage-detail.nls .nls-film {
   position: relative;
   z-index: 1;

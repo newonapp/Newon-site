@@ -157,12 +157,14 @@ function businessEcosystemHtml(flat, flatEn, appPrefix = "../") {
 const hubShell = fs.readFileSync(path.join(ROOT, "templates", "hub-shell.html"), "utf8");
 const inquiryTemplate = fs.readFileSync(path.join(ROOT, "templates", "business-inquiry.html"), "utf8");
 const exploreOnly = process.argv.includes("--explore-only");
+const inquiryOnly = process.argv.includes("--inquiry-only");
 
 const flatEn = flatten(loadJson("en.json"));
 
 for (const { dir, file, htmlLang } of LANGS) {
   const flat = flatten(loadJson(file));
 
+  if (!inquiryOnly) {
   // Explore hub — /business/
   const exploreTitle =
     pick(flat, flatEn, "business.exploreSeoTitle") || pick(flat, flatEn, "business.seoTitle");
@@ -195,6 +197,7 @@ for (const { dir, file, htmlLang } of LANGS) {
   const exploreDir = path.join(ROOT, dir, "business");
   fs.mkdirSync(exploreDir, { recursive: true });
   fs.writeFileSync(path.join(exploreDir, "index.html"), explore);
+  }
 
   if (exploreOnly) continue;
 
@@ -208,7 +211,10 @@ for (const { dir, file, htmlLang } of LANGS) {
   inquiry = inquiry.replace(/\{\{CANONICAL\}\}/g, `${SITE_ORIGIN}/${dir}/business/inquiry/`);
   inquiry = applyTemplate(inquiry, flat, flatEn);
   const pkgPrices = businessInquiryPackagePrices(dir === "ko" ? "ko" : "en");
-  inquiry = inquiry.replace(/\{\{BUSINESS_SELECT_OPTIONS\}\}/g, businessInquirySelectOptionsHtml());
+  inquiry = inquiry.replace(
+    /\{\{BUSINESS_SELECT_OPTIONS\}\}/g,
+    businessInquirySelectOptionsHtml((slug) => pick(flat, flatEn, `business.inqOpt.${slug}`))
+  );
   inquiry = inquiry.replace(
     /\{\{BUSINESS_SERVICE_MAP_JSON\}\}/g,
     JSON.stringify(businessInquiryServiceMap())
@@ -228,7 +234,7 @@ for (const { dir, file, htmlLang } of LANGS) {
   fs.writeFileSync(path.join(inquiryDir, "index.html"), inquiry);
 }
 
-if (!exploreOnly) {
+if (!exploreOnly && !inquiryOnly) {
   writeInquirySuccessPages();
   renderBusinessServices();
   renderBusinessPillars();
@@ -252,5 +258,7 @@ if (fs.existsSync(pub)) {
 console.log(
   exploreOnly
     ? "render-business-hub: wrote explore hub pages only (9 langs)"
-    : "render-business-hub: wrote explore + inquiry hub pages (9 langs)"
+    : inquiryOnly
+      ? "render-business-hub: wrote inquiry hub pages only (9 langs)"
+      : "render-business-hub: wrote explore + inquiry hub pages (9 langs)"
 );

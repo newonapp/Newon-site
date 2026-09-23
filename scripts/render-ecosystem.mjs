@@ -27,7 +27,7 @@ import { renderEcosystemSection } from "./ecosystem-body.mjs";
 import { getEcosystemCopy } from "./ecosystem-copy.mjs";
 
 const SHELL = fs.readFileSync(path.join(ROOT, "templates/hub-shell.html"), "utf8");
-const ECO_VER = "20260922close1";
+const ECO_VER = "20260923eco3";
 
 function localeFlat(lang) {
   const en = loadJson("en.json");

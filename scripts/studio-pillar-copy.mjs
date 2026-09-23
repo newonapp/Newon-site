@@ -5,7 +5,7 @@
 import { applyStudioPillarPricing } from "./studio-pricing.mjs";
 import { deepMerge, loadPackOverlay, resolveCopyLang } from "./i18n/copy-lang.mjs";
 
-export const STUDIO_PILLAR_SLUGS = ["brand", "digital", "content", "ip"];
+export const STUDIO_PILLAR_SLUGS = ["brand", "digital", "content", "ip", "care"];
 
 const SHARED = {
   ko: {
@@ -79,6 +79,7 @@ const PILLAR_COPY = {
         { q: "네이밍의 상표권까지 보장하나요?", a: "아니요. 의미·발음·확장성은 검토하지만 상표 등록은 보장하지 않습니다. 최종 검토는 전문 변리사 확인이 필요합니다." },
         { q: "표시된 시작가는 고정 가격인가요?", a: "아니요. 기본 범위 기준 시작가이며, 프로젝트 규모·제작 범위·결과물 수에 따라 최종 견적이 달라질 수 있습니다." },
         { q: "웹·앱 개발까지 함께할 수 있나요?", a: "브랜드·UI 설계는 Studio에서, 개발·구축은 Newon Business BUILD로 연결합니다." },
+        { q: "전략·로고·아이덴티티를 한 번에 의뢰할 수 있나요?", a: "가능합니다. Brand Strategy, Identity, Logo를 하나의 브랜드 패키지로 함께 진행할 수 있습니다. 범위와 금액은 상담 후 별도 견적입니다." },
       ],
       services: [
         {
@@ -145,6 +146,7 @@ const PILLAR_COPY = {
         { q: "Do you guarantee trademark clearance?", a: "No. We review meaning and expandability, but final trademark review needs an IP attorney." },
         { q: "Is the starting price fixed?", a: "No. It is a starting price for a basic scope; final quotes vary with scale, production scope, and deliverables." },
         { q: "Can this connect to build work?", a: "Design stays in Studio; implementation continues through Newon Business BUILD." },
+        { q: "Can strategy, identity, and logo be one brief?", a: "Yes. Brand Strategy, Identity, and Logo can run as one brand package. Scope and price are quoted after consultation." },
       ],
       services: [
         {
@@ -197,9 +199,9 @@ const PILLAR_COPY = {
 
   digital: {
     ko: {
-      seoTitle: "DIGITAL | Newon Studio",
-      metaDescription: "Newon Studio DIGITAL — 웹·앱 UI/UX, 랜딩, 제품 디자인. Design Only. 개발·구축은 포함되지 않습니다.",
-      eyebrow: "NEWON STUDIO · DIGITAL",
+      seoTitle: "DIGITAL DESIGN | Newon Studio",
+      metaDescription: "Newon Studio DIGITAL DESIGN — 웹·앱 UI/UX, 랜딩, 제품 디자인. Design Only. 개발·구축은 포함되지 않습니다.",
+      eyebrow: "NEWON STUDIO · DIGITAL DESIGN",
       headline: "웹과 제품 경험을\n설계합니다.",
       lead: "좋은 디지털 제품은 예쁜 화면만으로 완성되지 않습니다.\n정보 구조와 사용자 흐름부터 UI/UX까지 하나의 경험으로 설계합니다.",
       process: [
@@ -212,7 +214,7 @@ const PILLAR_COPY = {
       faq: [
         { q: "디자인만 의뢰할 수 있나요?", a: "가능합니다. DIGITAL 시작가는 디자인(Design Only) 비용이며, UI/UX·프로토타입·핸드오프까지 범위를 맞춰 진행합니다." },
         { q: "개발도 함께 하나요?", a: "아니요. Studio DIGITAL은 개발을 포함하지 않습니다. 구현이 필요하면 Newon Business BUILD와 연계해 별도 견적을 제공합니다." },
-        { q: "기존 제품 개선도 가능한가요?", a: "가능합니다. 흐름과 화면 구조를 점검한 뒤 개선 범위를 제안합니다." },
+        { q: "기존 제품 개선도 가능한가요?", a: "가능합니다. 기존 화면의 디자인 개선은 Design Care의 기존 디자인 개선으로도 문의할 수 있습니다. 코드 수정은 Newon Business입니다." },
         { q: "반응형·모바일도 포함되나요?", a: "포함됩니다. Desktop/Mobile UI를 함께 설계합니다." },
       ],
       services: [
@@ -263,9 +265,9 @@ const PILLAR_COPY = {
       ],
     },
     en: {
-      seoTitle: "DIGITAL | Newon Studio",
-      metaDescription: "Newon Studio DIGITAL — web, app UI/UX, landing, and product design. Design only — build is quoted separately.",
-      eyebrow: "NEWON STUDIO · DIGITAL",
+      seoTitle: "DIGITAL DESIGN | Newon Studio",
+      metaDescription: "Newon Studio DIGITAL DESIGN — web, app UI/UX, landing, and product design. Design only — build is quoted separately.",
+      eyebrow: "NEWON STUDIO · DIGITAL DESIGN",
       headline: "Design web and\nproduct experience.",
       lead: "A strong digital product is not only beautiful screens. We design from information architecture and flows through UI/UX as one experience.",
       process: [
@@ -278,7 +280,7 @@ const PILLAR_COPY = {
       faq: [
         { q: "Design only?", a: "Yes. DIGITAL starting prices are design-only — UI/UX, prototype, and handoff scoped to your needs." },
         { q: "Do you also build?", a: "No. Studio DIGITAL does not include development. Implementation is quoted separately through Newon Business BUILD." },
-        { q: "Can you improve an existing product?", a: "Yes — we review flows and structure, then propose scope." },
+        { q: "Can you improve an existing product?", a: "Yes. Design improvements to live screens can also go through Design Care. Code changes sit in Newon Business." },
         { q: "Is responsive/mobile included?", a: "Yes — desktop and mobile UI together." },
       ],
       services: [
@@ -332,9 +334,9 @@ const PILLAR_COPY = {
 
   content: {
     ko: {
-      seoTitle: "CONTENT | Newon Studio",
-      metaDescription: "Newon Studio CONTENT — 소셜 콘텐츠, 캠페인, 비주얼 에셋.",
-      eyebrow: "NEWON STUDIO · CONTENT",
+      seoTitle: "CONTENT & CAMPAIGN | Newon Studio",
+      metaDescription: "Newon Studio CONTENT & CAMPAIGN — 소셜 콘텐츠, 캠페인, 비주얼 에셋. 광고 집행은 포함되지 않습니다.",
+      eyebrow: "NEWON STUDIO · CONTENT & CAMPAIGN",
       headline: "브랜드가 실제로 보이고 기억되는\n콘텐츠를 만듭니다.",
       lead: "브랜드 메시지를 SNS, 캠페인, 제품 출시와\n디지털 채널에 맞는 콘텐츠로 변환합니다.",
       process: [
@@ -346,7 +348,7 @@ const PILLAR_COPY = {
       faq: [
         { q: "콘텐츠만 따로 의뢰할 수 있나요?", a: "가능합니다. 소셜, 캠페인, 비주얼 중 필요한 범위로 진행합니다." },
         { q: "브랜드 작업과 함께해야 하나요?", a: "기존 브랜드가 있으면 맞추고, 없으면 Brand와 함께 진행할 수 있습니다." },
-        { q: "소셜 콘텐츠 시작가에 월간 운영이 포함되나요?", a: "아니요. 시작가는 기본 콘텐츠 방향과 제한된 범위의 디자인 제작 기준입니다. 월간 SNS 운영대행은 별도 견적입니다." },
+        { q: "소셜 콘텐츠 시작가에 월간 운영이 포함되나요?", a: "아니요. 시작가는 기본 콘텐츠 방향과 제한된 범위의 디자인 제작 기준입니다. 월간 SNS 운영대행과 광고 집행은 포함되지 않습니다. 정기 디자인 제작은 Design Care 월간 디자인 운영으로 별도 견적합니다." },
         { q: "모션·영상도 포함되나요?", a: "Simple Motion은 협의 후 가능합니다. 장편 영상은 기본 범위에 없습니다." },
         { q: "채널별 사이즈도 맞춰주나요?", a: "각 채널 규격에 맞춰 전달합니다." },
       ],
@@ -387,9 +389,9 @@ const PILLAR_COPY = {
       ],
     },
     en: {
-      seoTitle: "CONTENT | Newon Studio",
-      metaDescription: "Newon Studio CONTENT — social content, campaigns, and visual assets.",
-      eyebrow: "NEWON STUDIO · CONTENT",
+      seoTitle: "CONTENT & CAMPAIGN | Newon Studio",
+      metaDescription: "Newon Studio CONTENT & CAMPAIGN — social, campaign, and visual assets. Media buying is not included.",
+      eyebrow: "NEWON STUDIO · CONTENT & CAMPAIGN",
       headline: "Create content that makes the brand\nvisible and memorable.",
       lead: "We turn brand messages into content for social, campaigns, launches, and digital channels.",
       process: [
@@ -445,9 +447,9 @@ const PILLAR_COPY = {
 
   ip: {
     ko: {
-      seoTitle: "IP | Newon Studio",
-      metaDescription: "Newon Studio IP — Character Lab과 실험적 IP. 과장 없이 가능성을 탐색합니다.",
-      eyebrow: "NEWON STUDIO · IP",
+      seoTitle: "CREATIVE LAB | Newon Studio",
+      metaDescription: "Newon Studio CREATIVE LAB — Character Lab과 실험적 비주얼. 캐릭터 애니메이션·3D·영상은 기본 제공이 아니며 별도 협의입니다.",
+      eyebrow: "NEWON STUDIO · CREATIVE LAB",
       headline: "캐릭터와 새로운 IP의 가능성을\n실험합니다.",
       lead: "작은 캐릭터 콘셉트에서 시작해 디지털 표현으로 확장될 수 있는 브랜드 자산을 탐색합니다.\n실험 영역과 의뢰 가능 영역을 명확히 구분해 안내합니다.",
       process: [
@@ -519,9 +521,9 @@ const PILLAR_COPY = {
       ],
     },
     en: {
-      seoTitle: "IP | Newon Studio",
-      metaDescription: "Newon Studio IP — Character Lab and experimental IP without overselling unfinished areas.",
-      eyebrow: "NEWON STUDIO · IP",
+      seoTitle: "CREATIVE LAB | Newon Studio",
+      metaDescription: "Newon Studio CREATIVE LAB — Character Lab and experimental visuals. Character animation, 3D, and film are not default — agreed separately.",
+      eyebrow: "NEWON STUDIO · CREATIVE LAB",
       headline: "Experiment with characters\nand new IP possibilities.",
       lead: "We explore brand assets that can grow from small character concepts into digital expression. Experimental and commissionable areas are labeled clearly.",
       process: [
@@ -587,7 +589,96 @@ const PILLAR_COPY = {
           included: "Idea review · hypothesis · concept direction · prototype / pilot · next step",
           deliverables: "Experiment brief, concept / prototype pack, learning notes, next recommendation",
           timeline: "Custom quote",
-          quoteCta: "Custom project inquiry →",
+          ready: true,
+        },
+      ],
+    },
+  },
+  care: {
+    ko: {
+      seoTitle: "DESIGN CARE | Newon Studio",
+      metaDescription:
+        "Newon Studio DESIGN CARE — 월간 디자인 운영, 기존 브랜드·웹·앱 디자인 개선. 별도 견적. 소스·서버·기능은 Business Care.",
+      eyebrow: "NEWON STUDIO · DESIGN CARE",
+      headline: "만든 다음에도\n디자인을 운영합니다.",
+      lead: "정기 콘텐츠와 기존 화면의 디자인 개선을 계약 범위에서 지원합니다.\n웹·앱 코드 수정과 기술 유지보수는 Newon Business Care입니다.",
+      process: [
+        { n: "01", t: "REVIEW", d: "현재 브랜드와 필요한 작업 확인" },
+        { n: "02", t: "SCOPE", d: "월 범위 또는 개선 구간 정리" },
+        { n: "03", t: "DESIGN", d: "합의된 디자인 제작·수정" },
+        { n: "04", t: "HANDOFF", d: "파일 전달 · 개발이 필요하면 Business" },
+      ],
+      faq: [
+        { q: "지금 바로 월 구독이 되나요?", a: "확정된 월 구독 상품이 아닙니다. 범위 상담 후 별도 견적합니다." },
+        { q: "무제한 디자인인가요?", a: "아니요. 계약에 적힌 범위가 기준입니다." },
+        { q: "개발도 포함되나요?", a: "아니요. 디자인만 담당합니다. 소스·서버·기능은 Business Care입니다." },
+        { q: "기존 Digital 페이지와 무엇이 다른가요?", a: "Digital은 신규 화면 설계, Design Care는 이미 있는 자산의 운영·개선에 가깝습니다." },
+      ],
+      services: [
+        {
+          title: "MONTHLY DESIGN SUPPORT",
+          tab: "MONTHLY",
+          summary: "정기 SNS·배너·프로모션 디자인을 계약 범위에서 지원.",
+          what: "요청 접수, 합의된 포맷 제작, 브랜드에 맞춘 수정. 무제한·당일 납품 보장 없음.",
+          for: "사내 디자이너 없이 매월 콘텐츠가 필요한 브랜드.",
+          included: "요청 관리 · 합의 포맷 제작 · 작업 내역",
+          deliverables: "Design files, work log",
+          timeline: "계약에 따름",
+          ready: true,
+        },
+        {
+          title: "DESIGN IMPROVEMENT",
+          tab: "IMPROVE",
+          summary: "이미 보유한 브랜드·웹·앱 디자인을 정리하고 개선.",
+          what: "시각 일관성, UI, 흐름, 디자인 시스템. 코드 수정은 포함되지 않습니다.",
+          for: "운영 중인 브랜드나 화면을 손보고 싶은 팀.",
+          included: "현황 리뷰 · 개선 범위 · 합의 화면·자산",
+          deliverables: "Improved assets, handoff",
+          timeline: "별도 견적",
+          ready: true,
+        },
+      ],
+    },
+    en: {
+      seoTitle: "DESIGN CARE | Newon Studio",
+      metaDescription:
+        "Newon Studio DESIGN CARE — monthly design support and improvement of existing brand, web, and app design. Custom quote. Code and ops sit in Business Care.",
+      eyebrow: "NEWON STUDIO · DESIGN CARE",
+      headline: "Keep design running\nafter the first delivery.",
+      lead: "Regular content and improvements to existing screens, within a contract range.\nSource, servers, and features are Newon Business Care.",
+      process: [
+        { n: "01", t: "REVIEW", d: "Current brand and needed work" },
+        { n: "02", t: "SCOPE", d: "Monthly range or improvement slice" },
+        { n: "03", t: "DESIGN", d: "Agreed production and revisions" },
+        { n: "04", t: "HANDOFF", d: "Files — Business if build is needed" },
+      ],
+      faq: [
+        { q: "Can we subscribe today?", a: "Not a locked monthly SKU. Quoted after scoping." },
+        { q: "Unlimited design?", a: "No. The signed range applies." },
+        { q: "Is development included?", a: "No. Design only. Code and ops are Business Care." },
+        { q: "How is this different from Digital?", a: "Digital is new screen design. Design Care is running and improving what you already have." },
+      ],
+      services: [
+        {
+          title: "MONTHLY DESIGN SUPPORT",
+          tab: "MONTHLY",
+          summary: "Regular social, banner, and promo design by contract.",
+          what: "Intake, agreed formats, brand-aligned revisions. No unlimited or same-day guarantee.",
+          for: "Brands needing monthly content without a staff designer.",
+          included: "Request queue · agreed formats · work log",
+          deliverables: "Design files, work log",
+          timeline: "Per contract",
+          ready: true,
+        },
+        {
+          title: "DESIGN IMPROVEMENT",
+          tab: "IMPROVE",
+          summary: "Tidy and improve brand, web, and app design you already have.",
+          what: "Visual consistency, UI, flow, design system. No source edits.",
+          for: "Teams with live brand or screens that need a pass.",
+          included: "Review · range · agreed screens and assets",
+          deliverables: "Improved assets, handoff",
+          timeline: "Custom quote",
           ready: true,
         },
       ],
