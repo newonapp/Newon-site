@@ -213,6 +213,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   line-height: 1.7;
   color: #fff;
   text-shadow: 0 1px 12px rgba(12, 12, 12, 0.72);
+  word-break: keep-all;
 }
 .ir-hero__actions {
   display: flex;
@@ -338,6 +339,7 @@ button.ir-pill { width: auto; }
   text-align: center;
   font-size: 1.05rem;
   color: #000;
+  word-break: keep-all;
 }
 .ir-rows { list-style: none; max-width: 64rem; margin: 2rem auto 0; padding: 0; }
 .ir-row {
@@ -485,24 +487,24 @@ button.ir-pill { width: auto; }
 
 .ir-projects { padding-top: 4rem; }
 .ir-stack { max-width: 72rem; margin: 2.2rem auto 0; }
-.ir-pin { position: relative; height: 85vh; }
+.ir-pin { position: relative; height: auto; min-height: 85vh; }
 .ir-project {
   position: sticky;
   top: calc(var(--nav) + 1.25rem);
   z-index: 1;
   display: flex;
   flex-direction: column;
-  max-height: calc(100svh - 7rem);
-  overflow: hidden;
+  max-height: none;
+  overflow: visible;
   border: 2px solid var(--mist);
   border-radius: 40px;
   background: var(--ink);
   padding: 1.15rem;
 }
 .ir-project .ir-lane {
-  flex: 1 1 auto;
-  height: auto;
-  min-height: 140px;
+  flex: 0 0 auto;
+  height: min(42vh, 280px);
+  min-height: 168px;
 }
 .ir-reveal {
   opacity: 0;
@@ -543,6 +545,7 @@ button.ir-pill { width: auto; }
   font-weight: 300;
   line-height: 1.7;
   color: #fff;
+  word-break: keep-all;
 }
 .ir-prose { max-width: 46rem; margin: 0.9rem 0 0; }
 .ir-lane {
@@ -594,7 +597,7 @@ button.ir-pill { width: auto; }
   padding-top: 0.85rem;
 }
 .ir-cols h3 { font-size: 1.05rem; }
-.ir-cols p, .ir-steps p, .ir-docs p { margin: 0.35rem 0 0; font-weight: 500; line-height: 1.6; color: #fff; }
+.ir-cols p, .ir-steps p, .ir-docs p { margin: 0.35rem 0 0; font-weight: 500; line-height: 1.6; color: #fff; word-break: keep-all; overflow-wrap: break-word; }
 .ir-steps { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: 0.8rem; }
 .ir-steps li {
   display: grid;
@@ -626,9 +629,9 @@ button.ir-pill { width: auto; }
   border: 1px solid rgba(215, 226, 234, 0.22);
   border-radius: 16px;
 }
-.ir-app img { width: 2.4rem; height: 2.4rem; border-radius: 0.55rem; }
+.ir-app img { width: 2.4rem; height: 2.4rem; border-radius: 0.55rem; object-fit: contain; flex-shrink: 0; }
 .ir-app span { min-width: 0; }
-.ir-app b { display: block; font-weight: 500; }
+.ir-app b { display: block; font-weight: 500; word-break: keep-all; overflow-wrap: break-word; }
 .ir-app small, .ir-soon { color: #fff; font-size: 0.75rem; }
 .ir-soon { margin-left: auto; white-space: nowrap; }
 
@@ -647,6 +650,102 @@ button.ir-pill { width: auto; }
   font-size: 0.92rem;
 }
 .ir-cols--wide { max-width: 72rem; margin-left: auto; margin-right: auto; }
+
+#funds { overflow-x: clip; }
+.fund-uses {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.7rem;
+  max-width: 72rem;
+  margin: 2.4rem auto 0;
+  padding: 0;
+  list-style: none;
+}
+.fund-uses li {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 22px;
+  padding: 1.05rem 1rem 1.2rem;
+  background: #141414;
+}
+.fund-uses span {
+  font-family: Kanit, sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+.fund-uses h3 {
+  margin: 0.7rem 0 0;
+  font-size: 1.02rem;
+  font-weight: 600;
+  word-break: keep-all;
+}
+.fund-uses p {
+  margin: 0.4rem 0 0;
+  font-size: 0.84rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.78);
+  word-break: keep-all;
+}
+.fund-board {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  max-width: 72rem;
+  margin: 0.75rem auto 0;
+}
+.fund-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 22px;
+  padding: 1.25rem 1.25rem 1.35rem;
+  background: #141414;
+}
+.fund-kicker {
+  margin: 0;
+  font-family: Kanit, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+.fund-card h3 {
+  margin: 0.45rem 0 0;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  font-weight: 600;
+  line-height: 1.25;
+  word-break: keep-all;
+}
+.fund-card p,
+.fund-card li {
+  margin: 0.55rem 0 0;
+  font-size: 0.92rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+  word-break: keep-all;
+}
+.fund-note {
+  max-width: 40rem;
+  margin: 1.6rem auto 0;
+  text-align: center;
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+  word-break: keep-all;
+}
+@media (max-width: 860px) {
+  .fund-uses, .fund-board { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fund-move { transform: none !important; opacity: 1 !important; }
+}
 .ir-docs { max-width: 52rem; margin: 1.6rem auto 0; display: grid; gap: 1rem; }
 .ir-docs article {
   display: flex;

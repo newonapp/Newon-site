@@ -386,6 +386,20 @@
       var scale = 1 + (endScale - 1) * passed;
       item.card.style.transform = "scale(" + scale.toFixed(4) + ")";
     });
+    if (!reduced) {
+      document.querySelectorAll("#funds .fund-move").forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        var view = window.innerHeight || 1;
+        var progress = (view * 0.92 - rect.top) / (view * 0.75 + rect.height);
+        progress = Math.min(1, Math.max(0, progress));
+        var shift = Number(el.getAttribute("data-shift")) || 48;
+        var dir = el.getAttribute("data-dir");
+        var x = dir === "left" ? (1 - progress) * -shift : dir === "right" ? (1 - progress) * shift : 0;
+        var y = dir === "up" ? (1 - progress) * shift : (1 - progress) * 18;
+        el.style.transform = "translate3d(" + x.toFixed(1) + "px," + y.toFixed(1) + "px,0)";
+        el.style.opacity = (0.2 + progress * 0.8).toFixed(3);
+      });
+    }
   }
   function requestScroll() {
     if (ticking) return;

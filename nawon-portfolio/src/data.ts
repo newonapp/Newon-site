@@ -77,7 +77,7 @@ export const projects: Project[] = [
     summary: t.projects[0].summary,
     slogan: t.projects[0].slogan,
     lead: t.projects[0].lead,
-    role: t.role,
+    role: t.projects[0].role || t.role,
     href: "/ko/apps/",
     images: [businessFilms[0].src],
     alts: [businessFilms[0].alt],

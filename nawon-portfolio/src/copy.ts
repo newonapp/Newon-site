@@ -68,7 +68,7 @@ const en = {
   livePage: "Live page",
   role: "Planning, interface, and product development",
   projects: [
-    { type: "Operating", name: "Apps", summary: "We operate 11 apps that are on the stores. Sharing data across apps is a later, staged expansion.", slogan: ["Everyday apps you need,", "in one Newon."], lead: "From life and health to self-care and daily moments. Find Newon apps in one place." },
+    { type: "Live", name: "Apps", role: "Planning · UI/UX · Development", summary: "11 launched apps for habit, money, health, family, and travel. I plan, design, and build them. Links between apps expand in stages.", slogan: ["Everyday apps you need,", "in one Newon."], lead: "OX MONTH turns a daily O/X into a habit record. I planned the flow, designed the screens, and still operate the shipped app." },
     { type: "In progress", name: "AI", summary: "AI features in some apps are available now. Enterprise automation and an AI Agent are a later direction.", slogan: ["Closer AI,", "for your everyday life."], lead: "From everyday questions to planning and action. We build AI that understands personal life and stays with you." },
     { type: "In preparation", name: "LivOn", summary: "A platform in preparation, connecting information and living services from the teens through the 70s.", slogan: ["At every stage of life,", "the next thing you need."], lead: "From the teens through the 70s. A life-stage platform for first experiences, life changes, and new beginnings." },
     { type: "In preparation", name: "Ongil", summary: "A living platform in preparation for seniors’ daily life, care support, and family connection.", slogan: ["Warm connection,", "through the years of daily life."], lead: "Daily life, health, and care — connected with family and community." },
@@ -113,7 +113,7 @@ const ko = {
   livePage: "Live page",
   role: "기획, 인터페이스, 제품 개발",
   projects: [
-    { type: "운영 중", name: "Apps", summary: "스토어에 공개된 11개 앱을 운영합니다. 앱 사이 데이터 공유는 순차적으로 확장할 예정입니다.", slogan: ["Everyday apps you need,", "in one Newon."], lead: "생활과 건강, 자기관리부터 다양한 일상의 순간까지. Newon의 앱을 한곳에서 만나보세요." },
+    { type: "출시 및 운영 중", name: "Apps", role: "Planning · UI/UX · Development", summary: "습관·돈·건강·가족·여행 앱 11개를 스토어에서 운영합니다. 기획, UI/UX, 개발을 직접 했고, 앱 연동은 단계적으로 확장합니다.", slogan: ["Everyday apps you need,", "in one Newon."], lead: "OX MONTH는 하루 O/X로 습관을 남기게 기획하고, 기록 화면을 설계해 출시한 뒤 운영 중입니다." },
     { type: "진행 중", name: "AI", summary: "일부 앱의 AI 기능은 제공 중이고, 기업용 자동화와 AI Agent는 확장 방향입니다.", slogan: ["Closer AI,", "for your everyday life."], lead: "일상의 질문부터 계획과 실행까지. 개인의 삶을 이해하고 함께하는 AI를 만듭니다." },
     { type: "준비 중", name: "LivOn", summary: "10대부터 70대까지, 삶의 단계마다 필요한 정보와 생활 서비스를 연결하는 플랫폼을 준비합니다.", slogan: ["At every stage of life,", "the next thing you need."], lead: "10대부터 70대까지. 생애 첫 경험과 인생의 변화까지 함께하는 생애주기 플랫폼." },
     { type: "준비 중", name: "Ongil", summary: "시니어의 일상과 돌봄을 지원하고, 가족을 연결하는 생활 플랫폼을 준비합니다.", slogan: ["Warm connection,", "through the years of daily life."], lead: "시니어의 일상·건강·돌봄부터 가족과 지역까지 잇는 종합 생활 플랫폼입니다." },

@@ -1481,7 +1481,7 @@ function renderCompany() {
       html = html.replace(
         /<main id="co-main" class="co-page"[\s\S]*?<\/main>/,
         `<main id="co-main" class="nawon-embed" data-co-page="portfolio" data-co-analytics="company_portfolio">
-      <iframe class="nawon-embed__frame" src="/nawon/" title="Nawon"></iframe>
+      <iframe class="nawon-embed__frame" src="/nawon/?v=20260924pf10" title="Nawon"></iframe>
     </main>`
       );
       writeFile(path.join(ROOT, dir, "portfolio", "index.html"), html);
