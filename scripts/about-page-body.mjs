@@ -314,7 +314,12 @@ function selectedProductsHtml(copy, products) {
   const cards = products.slice(0, max)
     .map((p) => {
       const cat = (copy.productCats && copy.productCats[p.slug]) || p.categoryLabel || "";
-      const status = p.category === "game" || p.filter === "game" ? copy.statusProject : copy.statusLive;
+      const soon = p.slug === "eaton" || p.slug === "fiton";
+      const status = soon
+        ? copy.statusSoon || "Coming soon"
+        : p.category === "game" || p.filter === "game"
+          ? copy.statusProject
+          : copy.statusLive;
       const desc = escapeHtml(p.oneLiner || p.summary || "");
       const icon = productIcon(p);
       const logo = icon
@@ -418,14 +423,14 @@ function buildHtml(copy) {
     <header class="ab-build-sec__intro">
       <div class="ab-build-sec__kicker">
         <p class="ab-eyebrow">${escapeHtml(copy.buildEyebrow)}</p>
-        <span class="ab-build-sec__meta" aria-hidden="true">Studio · 4</span>
+        <span class="ab-build-sec__meta" aria-hidden="true">Newon · 6</span>
       </div>
       <h2 id="ab-build-title" class="ab-title ab-title--wide">${escapeHtml(copy.buildTitle)}</h2>
     </header>
     <div class="ab-build-board">
       <div class="ab-build-board__head" aria-hidden="true">
         <span class="ab-build-board__live"><i></i> AREAS</span>
-        <span>PRODUCTS · BUSINESS · STUDIO · LABS</span>
+        <span>APPS · AI · LIVON · ONGIL · BUSINESS · STUDIO</span>
       </div>
       <div class="ab-build">${cards}</div>
     </div>

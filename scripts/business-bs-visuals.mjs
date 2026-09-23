@@ -563,6 +563,147 @@ function visualPipeline() {
   return visualMvp();
 }
 
+/** Monthly maintenance — contract queue, not an internal-tool console */
+function visualMaintenance() {
+  return panelShell({
+    mod: "careops",
+    live: "CARE QUEUE",
+    meta: "CARE",
+    body: `
+      <div class="bs-sv-careops">
+        <aside class="bs-sv-careops__side">
+          <p class="bs-sv__k">CHECK</p>
+          <ul>
+            <li class="is-on"><span>01</span>Web</li>
+            <li class="is-on"><span>02</span>App</li>
+            <li><span>03</span>Env</li>
+          </ul>
+        </aside>
+        <div class="bs-sv-careops__main">
+          <p class="bs-sv__k">THIS CYCLE</p>
+          <div class="bs-sv-careops__row is-on"><span>Defect</span><em>Fix</em></div>
+          <div class="bs-sv-careops__row"><span>Copy</span><em>Edit</em></div>
+          <div class="bs-sv-careops__row is-done"><span>Deploy</span><em>Done</em></div>
+          <div class="bs-sv-careops__out">
+            <div><span>RANGE</span><strong>Agreed</strong></div>
+            <div><span>LOG</span><strong>Shared</strong></div>
+            <div><span>NEXT</span><strong>Review</strong></div>
+          </div>
+        </div>
+      </div>`,
+  });
+}
+
+/** Post-launch — first days after ship, not pre-launch Product Launch */
+function visualPostLaunch() {
+  return panelShell({
+    mod: "stabilize",
+    live: "AFTER SHIP",
+    meta: "POST",
+    body: `
+      <div class="bs-sv-stabilize">
+        <ol class="bs-sv-stabilize__rail">
+          <li class="is-done"><span>01</span><strong>Ship</strong></li>
+          <li class="is-on"><span>02</span><strong>Check</strong></li>
+          <li><span>03</span><strong>Fix</strong></li>
+          <li><span>04</span><strong>Guide</strong></li>
+        </ol>
+        <div class="bs-sv-stabilize__board">
+          <div class="is-on"><span>LIVE</span><strong>Checking</strong></div>
+          <div><span>DEFECTS</span><strong>Early</strong></div>
+          <div><span>STORE</span><strong>Review</strong></div>
+        </div>
+      </div>`,
+  });
+}
+
+/** Improvement — one range of a live product, not a full site */
+function visualBizImprovement() {
+  return panelShell({
+    mod: "range",
+    live: "ONE RANGE",
+    meta: "IMPROVE",
+    body: `
+      <div class="bs-sv-range">
+        <div class="bs-sv-range__screen">
+          <span class="is-mute"></span>
+          <span class="is-on"></span>
+          <span class="is-mute"></span>
+          <b>This flow</b>
+        </div>
+        <ul class="bs-sv-range__scope">
+          <li class="is-on"><span>01</span>Screen</li>
+          <li class="is-on"><span>02</span>Flow</li>
+          <li><span>03</span>Rest</li>
+          <li><span>04</span>Code</li>
+        </ul>
+      </div>`,
+  });
+}
+
+/** Website renewal — structure realignment, not a single-screen fix */
+function visualRenewal() {
+  return panelShell({
+    mod: "renew",
+    live: "SITE RENEWAL",
+    meta: "RENEW",
+    body: `
+      <div class="bs-sv-renew">
+        <article>
+          <p class="bs-sv__k">CURRENT</p>
+          <ul class="is-old">
+            <li></li><li></li><li></li><li></li>
+          </ul>
+        </article>
+        <article>
+          <p class="bs-sv__k">RENEW</p>
+          <ul class="is-new">
+            <li class="is-on">Home</li>
+            <li>About</li>
+            <li>Work</li>
+            <li>Contact</li>
+          </ul>
+        </article>
+        <div class="bs-sv-renew__out">
+          <div><span>IA</span><strong>Set</strong></div>
+          <div><span>CONTENT</span><strong>Moved</strong></div>
+          <div><span>FRONT</span><strong>Built</strong></div>
+        </div>
+      </div>`,
+  });
+}
+
+/** Booking — a new booking board, not a workflow graph */
+function visualBookingBoard() {
+  return panelShell({
+    mod: "book",
+    live: "BOOKING BOARD",
+    meta: "BUILD",
+    body: `
+      <div class="bs-sv-book">
+        <aside>
+          <p class="bs-sv__k">TODAY</p>
+          <ul>
+            <li><span>10:00</span><strong>Open</strong></li>
+            <li class="is-on"><span>11:00</span><strong>Held</strong></li>
+            <li><span>14:00</span><strong>Open</strong></li>
+          </ul>
+        </aside>
+        <div class="bs-sv-book__list">
+          <p class="bs-sv__k">REQUESTS</p>
+          <div class="is-on"><span>Request</span><em>New</em></div>
+          <div><span>Confirm</span><em>Owner</em></div>
+          <div><span>History</span><em>Log</em></div>
+          <div class="bs-sv-book__out">
+            <div><span>BUILD</span><strong>Quote</strong></div>
+            <div><span>FEES</span><strong>Extra</strong></div>
+            <div><span>CARE</span><strong>Later</strong></div>
+          </div>
+        </div>
+      </div>`,
+  });
+}
+
 /** @param {string} visualKey — from business-service-catalog visual field */
 export function businessHeroVisual(visualKey, slug = "") {
   const map = {
@@ -601,6 +742,13 @@ export function businessHeroVisual(visualKey, slug = "") {
     promotion: visualPromotion,
     development: visualDevelopment,
   };
-  const fn = collabSlug[slug] || map[visualKey] || map[slug];
+  const careSlug = {
+    maintenance: visualMaintenance,
+    "post-launch": visualPostLaunch,
+    improvement: visualBizImprovement,
+    "website-renewal": visualRenewal,
+    booking: visualBookingBoard,
+  };
+  const fn = careSlug[slug] || collabSlug[slug] || map[visualKey] || map[slug];
   return fn ? fn() : visualMvp();
 }

@@ -616,7 +616,6 @@ function writeSitemap() {
     "resources/store",
     "resources/insights",
     "resources/blog",
-    "resources/labs",
     "resources/newsletter",
     "resources/education",
   ]) {
@@ -627,9 +626,7 @@ function writeSitemap() {
       if (product.listed === false) continue;
       addAllLocales(`resources/store/${product.slug}`, "0.5", "monthly");
     }
-    for (const exp of LABS_EXPERIMENTS) {
-      addAllLocales(`resources/labs/${exp.slug}`, "0.45", "monthly");
-    }
+    void LABS_EXPERIMENTS;
   } catch {
     /* optional */
   }

@@ -473,14 +473,6 @@ export function buildSearchIndex(lang = "en") {
       url: `media/${m.slug}/`,
     });
   }
-  for (const e of LABS_EXPERIMENTS) {
-    items.push({
-      type: "labs",
-      title: isKo ? e.titleKo : e.titleEn,
-      description: isKo ? e.descKo : e.descEn,
-      url: `labs/${e.slug}/`,
-    });
-  }
   for (const t of EDUCATION_TOPICS) {
     items.push({
       type: "education",

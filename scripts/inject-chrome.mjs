@@ -9,17 +9,25 @@ const SiteChromeJs = "site-chrome.js?v=20260904a11y1";
 
 function injectHeadCss(html) {
   let out = html;
+  const headEnd = out.search(/<\/head>/i);
+  if (headEnd !== -1) {
+    const head = out.slice(0, headEnd);
+    let body = out.slice(headEnd);
+    body = body.replace(/\s*<link rel="stylesheet" href="\/site-dark\.css[^"]*" \/?>\s*/g, "\n");
+    body = body.replace(/\s*<link rel="stylesheet" href="\/site-mobile\.css[^"]*" \/?>\s*/g, "\n");
+    out = head + body;
+  }
   if (!out.includes("site-dark.css")) {
     out = out.replace(/<\/head>/, `    ${CHROME_HEAD_CSS}\n  </head>`);
   } else {
-    out = out.replace(/site-dark\.css\?v=[^"]+/g, "site-dark.css?v=20260902perf1");
+    out = out.replace(/site-dark\.css\?v=[^"]+/g, "site-dark.css?v=20260924foot1");
     out = out.replace(/site-mobile\.css\?v=[^"]+/g, "site-mobile.css?v=20260902nav1");
   }
-  // Remove invalid late CSS in body (legacy inject)
-  out = out.replace(/\s*<link rel="stylesheet" href="\/site-dark\.css[^"]*" \/?>\s*/g, "\n");
-  out = out.replace(/\s*<link rel="stylesheet" href="\/site-mobile\.css[^"]*" \/?>\s*/g, "\n");
   if (!out.includes("site-mobile.css")) {
-    out = out.replace(/(<link rel="stylesheet" href="\/site-dark\.css[^"]*" \/>)/, `$1\n    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />`);
+    out = out.replace(
+      /(<link rel="stylesheet" href="\/site-dark\.css[^"]*" \/>)/,
+      `$1\n    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />`
+    );
   }
   return out;
 }
@@ -81,10 +89,10 @@ export function replaceLegacyChrome(
   if (!out.includes("hub-pages.css")) {
     out = out.replace(
       /(<link rel="stylesheet" href="\/styles\.css[^"]*" \/>)/,
-      '$1\n    <link rel="stylesheet" href="/hub-pages.css?v=20260826co1" />'
+      '$1\n    <link rel="stylesheet" href="/hub-pages.css?v=20260924foot1" />'
     );
   } else {
-    out = out.replace(/hub-pages\.css\?v=[^"]+/g, "hub-pages.css?v=20260826co1");
+    out = out.replace(/hub-pages\.css\?v=[^"]+/g, "hub-pages.css?v=20260924foot1");
   }
   if (!out.includes("gnav-mega.css")) {
     out = out.replace(

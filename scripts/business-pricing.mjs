@@ -303,16 +303,16 @@ export const SERVICE_PRICING = {
   "website-renewal": {
     custom: true,
     category: PRICING_CATEGORIES.BUILD,
-    basisKo: "기존 사이트 상태와 개선 범위를 확인한 뒤 견적합니다.",
-    basisEn: "Quoted after reviewing the current site and improvement scope.",
+    basisKo: "기존 사이트와 재정비 범위를 확인한 뒤 견적합니다. 관리자·결제·로그인·서버 이전은 기본에 포함되지 않습니다.",
+    basisEn: "Quoted after reviewing the current site and renewal scope. New admin, payments, login, and server moves are not in the base scope.",
     inquiryLabelKo: "Website Renewal",
     inquiryLabelEn: "Website Renewal",
   },
   improvement: {
     custom: true,
     category: PRICING_CATEGORIES.BUILD,
-    basisKo: "기존 웹·앱의 코드·환경·오류를 검토한 뒤 작업 가능 여부와 범위를 안내합니다.",
-    basisEn: "Quoted after reviewing existing code, environment, and whether the work is feasible.",
+    basisKo: "소스·환경·권한을 검토한 뒤 견적합니다. 부분 수정과 기능 추가는 같은 금액이 아니며, 사이트 전체 리뉴얼은 별도입니다.",
+    basisEn: "Quoted after reviewing source, environment, and access. A small fix and a new feature are not the same price. A full site renewal is separate.",
     inquiryLabelKo: "Web & App Improvement",
     inquiryLabelEn: "Web & App Improvement",
   },
@@ -320,24 +320,24 @@ export const SERVICE_PRICING = {
     custom: true,
     category: PRICING_CATEGORIES.AUTOMATION,
     externalCost: true,
-    basisKo: "예약·문의·고객관리 기능 범위와 외부 연동 조건을 확인한 뒤 견적합니다.",
-    basisEn: "Quoted after reviewing booking/inquiry features and third-party integration conditions.",
+    basisKo: "신규 구축입니다. 기능과 연동을 확인한 뒤 견적하며, 외부 이용료와 구축 후 유지보수는 별도입니다.",
+    basisEn: "A new build. Quoted after features and integrations. Vendor fees and later maintenance are separate.",
     inquiryLabelKo: "Booking & Customer Management",
     inquiryLabelEn: "Booking & Customer Management",
   },
   maintenance: {
     custom: true,
     category: PRICING_CATEGORIES.CARE,
-    basisKo: "계약 범위, 시스템 상태, 작업량에 따라 별도 견적합니다. 금액·작업 시간·응답 시간은 확정 전 표시하지 않습니다.",
-    basisEn: "Quoted by contract scope, system condition, and workload. Hours and response SLAs are not listed until agreed.",
+    basisKo: "월간 계약입니다. 요금·포함 시간·대응 시간·최소 기간은 상담 후 정하며, 확정 전 표시하지 않습니다.",
+    basisEn: "A monthly contract. Fee, included time, response time, and minimum term are set in consultation and not listed until agreed.",
     inquiryLabelKo: "Monthly Maintenance",
     inquiryLabelEn: "Monthly Maintenance",
   },
   "post-launch": {
     custom: true,
     category: PRICING_CATEGORIES.CARE,
-    basisKo: "출시 이후 운영 지원 기간과 범위는 계약에 따라 정합니다.",
-    basisEn: "Post-launch support duration and scope are set in the contract.",
+    basisKo: "출시 직후 안정화의 기간과 비용은 별도 계약입니다. 개발 계약이나 Product Launch에 자동 포함되지 않습니다.",
+    basisEn: "Early stabilization is a separate contract. It is not automatically included in the build agreement or Product Launch.",
     inquiryLabelKo: "Post-launch Support",
     inquiryLabelEn: "Post-launch Support",
   },
@@ -746,8 +746,8 @@ export function pillarPricingNote(pillarSlug, lang = "ko") {
   }
   if (pillarSlug === "care") {
     return ko
-      ? `${scopeDisclaimer(lang)} 월간 유지보수는 무제한 신규 개발이 아니며, 금액·작업 시간·응답 시간은 계약 전 표시하지 않습니다.`
-      : `${scopeDisclaimer(lang)} Monthly care is not unlimited development. Prices, hours, and response times are not listed until agreed.`;
+      ? `${scopeDisclaimer(lang)} 일회성 수정과 월간 계약은 견적이 다릅니다. 금액·작업 시간·응답 시간은 계약 전 표시하지 않으며, 서버·호스팅·외부 이용료는 기본 유지보수에 포함되지 않습니다.`
+      : `${scopeDisclaimer(lang)} One-time work and monthly contracts are quoted separately. Prices, hours, and response times are not listed until agreed. Hosting and third-party fees are not included in basic care.`;
   }
   return scopeDisclaimer(lang);
 }

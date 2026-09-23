@@ -183,6 +183,12 @@ html[data-newon-shell-theme="dark"] :is(.site-footer, .studio-footer, .gnav.site
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
+html[data-newon-shell-theme="dark"] .site-footer.site-footer--brand {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border-color: transparent !important;
+}
+
 html[data-newon-shell-theme="dark"] .gnav__link,
 html[data-newon-shell-theme="dark"] .gnav__brand,
 html[data-newon-shell-theme="dark"] .gnav-mega__row-title,

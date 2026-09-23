@@ -6,7 +6,7 @@ import { businessServicesHtml } from "./business-services-html.mjs";
 import { businessExploreCloseHtml } from "./business-explore-close.mjs";
 import { BIZ_FILM_SRC, getBusinessFilmCopy } from "./business-film-copy.mjs";
 
-const CSS_V = "20260830wrap1";
+const CSS_V = "20260923pad1";
 const FILM_V = "20260922fade2";
 
 function t(flat, flatEn, key, fb = "") {
@@ -67,7 +67,7 @@ export function businessExploreHtml(flat, flatEn, lang = "en") {
   ${services}
 </div>
 ${close}
-<script src="/film-keep.js?v=20260922play1"></script>
+<script src="/film-keep.js?v=20260924play2"></script>
 <script src="/business-film.js?v=${FILM_V}" defer></script>
 <script src="/business-pillar.js?v=${CSS_V}" defer></script>`;
 }

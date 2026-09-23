@@ -354,32 +354,75 @@ const FOOTER_THREADS_URL = "https://www.threads.com/@newon.app.dev?invite=0";
 const FOOTER_BLOG_URL = "https://m.blog.naver.com/newonapp";
 const FOOTER_TIKTOK_URL = "https://www.tiktok.com/@newon.app?_r=1&_t=ZS-95LGrSuOcfF";
 
+const FOOTER_MENUS = [
+  ["consumer", "products/"],
+  ["ai", "ai/"],
+  ["lifestage", "lifestage/"],
+  ["ongil", "ongil/"],
+  ["business", "business/"],
+  ["studio", "studio/"],
+  ["company", "about/"],
+];
+
+const FOOT_SVG_OPEN = `<svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">`;
+
+function footIcon(url, label, inner, { external = true } = {}) {
+  const extra = external ? ` target="_blank" rel="noopener noreferrer"` : "";
+  return `<a class="site-foot__icon" href="${escapeHtml(url)}" aria-label="${escapeHtml(label)}"${extra}>${FOOT_SVG_OPEN}${inner}</svg></a>`;
+}
+
 export function renderStudioFooter(flat, flatEn, { base = "../", langDir = "" } = {}) {
   const brand = escapeHtml(t(flat, flatEn, "nav.brandName", "Newon"));
-  const line = escapeHtml(t(flat, flatEn, "nav.companyFooterLine", "Digital product studio"));
+  const tagline = escapeHtml(t(flat, flatEn, "footer.tagline", "Connecting ideas to reality—and making everyday life easier as a global life platform."));
+  const rights = escapeHtml(t(flat, flatEn, "footer.rights", "All rights reserved."));
   const resolve = (p) => href(base, p, langDir);
-  return `<footer class="site-footer studio-footer--compact" data-site-footer>
-    <div class="container studio-footer__inner">
-      <div class="studio-footer__brand">
-        <a class="studio-footer__logo" href="${resolve("")}">${brand}</a>
-        <p class="studio-footer__tag">${line}</p>
-      </div>
-      <div class="studio-footer__links">
-        <a href="${resolve("about/")}">${escapeHtml(t(flat, flatEn, "nav.aboutNewon", "About"))}</a>
-        <a href="${resolve("business/")}">${escapeHtml(t(flat, flatEn, "nav.topBusiness", "Business"))}</a>
-        <a href="${resolve("studio/")}">${escapeHtml(t(flat, flatEn, "nav.topStudio", "Studio"))}</a>
-        <a href="${resolve("business/inquiry/")}">${escapeHtml(t(flat, flatEn, "nav.contact", "Contact"))}</a>
-      </div>
-      <div class="studio-footer__social">
-        <a href="${FOOTER_THREADS_URL}" rel="noopener noreferrer" target="_blank">Threads</a>
-        <a href="${FOOTER_BLOG_URL}" rel="noopener noreferrer" target="_blank">Blog</a>
-        <a href="${FOOTER_TIKTOK_URL}" rel="noopener noreferrer" target="_blank">TikTok</a>
-      </div>
-      <p class="studio-footer__legal">
-        <a class="footer-legal" href="${resolve("privacy/")}">Privacy</a>
-        <a class="footer-legal" href="${resolve("terms/")}">Terms</a>
-        <a class="footer-legal" href="${resolve("products/")}">Products</a>
-      </p>
+  const menuLinks = FOOTER_MENUS.map(([id, path]) => `<a href="${resolve(path)}">${navTopLabel(flat, flatEn, id)}</a>`).join("");
+  const privacy = `<a href="${resolve("privacy/")}">${escapeHtml(t(flat, flatEn, "footer.privacy", "Privacy Policy"))}</a>`;
+  const terms = `<a href="${resolve("terms/")}">${escapeHtml(t(flat, flatEn, "footer.terms", "Terms of Service"))}</a>`;
+  const icons = [
+    footIcon(
+      "mailto:newon@newon.app",
+      t(flat, flatEn, "footer.emailAria", "Email newon@newon.app"),
+      `<path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" points="22,6 12,13 2,6"/>`,
+      { external: false }
+    ),
+    footIcon(
+      t(flat, flatEn, "footer.instagramUrl", "https://www.instagram.com/newon.app"),
+      t(flat, flatEn, "footer.instagramAria", "Newon Instagram"),
+      `<path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>`
+    ),
+    footIcon(
+      t(flat, flatEn, "footer.youtubeUrl", "https://www.youtube.com/@newonapp"),
+      t(flat, flatEn, "footer.youtubeAria", "Newon YouTube"),
+      `<path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>`
+    ),
+    footIcon(
+      t(flat, flatEn, "footer.threadsUrl", FOOTER_THREADS_URL),
+      t(flat, flatEn, "footer.threadsAria", "Newon Threads"),
+      `<path fill="currentColor" d="M18.263 11.097c-.03-3.486-1.92-5.586-5.111-5.586-2.13 0-3.922.963-4.863 2.499l2.062 1.438c.535-.843 1.272-1.543 2.628-1.543 1.528 0 2.318.85 2.544 2.431a15 15 0 0 0-2.236-.173c-4.125 0-6.068 1.867-6.068 4.336s1.943 3.99 4.804 3.99c3.139 0 5.013-2.115 5.781-4.735.798.361 1.348 1.204 1.348 2.47 0 3.387-3.907 5.232-7.22 5.232-4.885 0-8.077-3.207-8.077-8.424 0-6.392 4.223-10.487 9.9-10.487 3.808 0 5.69 1.671 6.97 3.914l2.108-1.475C21.44 2.078 18.331 0 13.663 0 6.227 0 1.168 5.277 1.168 12.934c0 7 4.953 11.066 10.856 11.066 4.878 0 9.809-2.846 9.809-7.716 0-2.545-1.46-4.231-3.569-5.187m-6.33 4.855c-1.077 0-2.026-.512-2.026-1.453 0-1.483 1.822-1.934 3.606-1.934.678 0 1.34.045 1.927.173-.422 1.927-1.671 3.215-3.508 3.214Z"/>`
+    ),
+    footIcon(
+      FOOTER_BLOG_URL,
+      t(flat, flatEn, "footer.blogAria", "Newon Blog"),
+      `<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M5 2H19A3 3 0 0 1 22 5V19A3 3 0 0 1 19 22H5A3 3 0 0 1 2 19V5A3 3 0 0 1 5 2ZM8 6.5H10.2V10.5H16V17.5H8ZM11.8 12.7H14.2V15.3H11.8Z"/>`
+    ),
+    footIcon(
+      t(flat, flatEn, "footer.tiktokUrl", FOOTER_TIKTOK_URL),
+      t(flat, flatEn, "footer.tiktokAria", "Newon TikTok"),
+      `<path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>`
+    ),
+  ].join("");
+  return `<footer class="site-footer site-footer--brand studio-footer--compact" data-site-footer>
+    <div class="container site-foot">
+      <a class="site-foot__brand" href="${resolve("")}">
+        <img src="/logo-nav.png" alt="" width="34" height="34" />
+        <span>${brand}</span>
+      </a>
+      <a class="site-foot__url" href="https://newon.app">https://newon.app</a>
+      <p class="site-foot__tagline">${tagline}</p>
+      <nav class="site-foot__nav" aria-label="Footer">${menuLinks}${privacy}${terms}</nav>
+      <div class="site-foot__icons" role="group" aria-label="${escapeHtml(t(flat, flatEn, "footer.socialAria", "Contact and social"))}">${icons}</div>
+      <p class="site-foot__copy">© 2026 ${brand}. ${rights}</p>
     </div>
   </footer>`;
 }

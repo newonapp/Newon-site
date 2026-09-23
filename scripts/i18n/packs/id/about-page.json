@@ -84,7 +84,7 @@
     {
       "n": "03",
       "title": "EXPAND",
-      "body": "Expand terbukti bekerja melalui Bisnis, Studio, dan Lab."
+      "body": "Expand terbukti bekerja melalui Business dan Studio."
     }
   ],
   "glanceEyebrow": "WHO WE BUILD FOR",
@@ -94,7 +94,7 @@
     {
       "n": "01",
       "title": "Pengguna",
-      "via": "PRODUCTS",
+      "via": "APPS",
       "body": "Orang-orang yang ingin kehidupan sehari-hari - kebiasaan, uang, kesehatan, keluarga, perjalanan - untuk merasa lebih sederhana.",
       "tags": [
         "Kebiasaan",
@@ -119,10 +119,10 @@
       "n": "03",
       "title": "COMPANIES",
       "via": "BUSINESS",
-      "body": "Perusahaan dan merek membuat layanan digital, otomatisasi, penelitian, dan pengalaman merek.",
+      "body": "Perusahaan dan merek membuat layanan digital, otomatisasi, Care, dan pengalaman merek.",
       "tags": [
         "Otomatis",
-        "Penelitian",
+        "Care",
         "Brand"
       ]
     }
@@ -188,8 +188,8 @@
     },
     {
       "year": "EXPAND",
-      "title": "Bisnis",
-      "body": "Perluas pengalaman produk dengan perusahaan melalui Bisnis, Studio, dan Lab.",
+      "title": "Business · Studio",
+      "body": "Perluas pengalaman produk dengan perusahaan melalui Business dan Studio.",
       "isNow": true
     },
     {
@@ -208,31 +208,43 @@
     "languages": "GRAAGES"
   },
   "buildEyebrow": "APA YANG PERLU TIDAK",
-  "buildTitle": "Dari produk ke eksperimen - satu studio.",
+  "buildTitle": "Dari apps sampai desain — satu Newon.",
   "buildAreas": [
     {
       "n": "01",
-      "title": "PRODUCTS",
-      "body": "Produk digital yang kita buat dan jalankan. Apps",
-      "href": "../products/"
+      "title": "Apps",
+      "body": "Kami mengoperasikan 11 apps yang ada di toko. Berbagi data antar-apps adalah perluasan bertahap.",
+      "href": "../apps/"
     },
     {
       "n": "02",
-      "title": "BUSINESS",
-      "body": "Digital membangun dan masalah memecahkan perusahaan dan pendiri. Bangun",
-      "href": "../business/"
+      "title": "AI",
+      "body": "Fitur AI di beberapa apps sudah tersedia. Otomatisasi perusahaan dan AI Agent adalah arah berikutnya.",
+      "href": "../ai/"
     },
     {
       "n": "03",
-      "title": "STULName",
-      "body": "Desain pengalaman merek dan digital. Merek",
-      "href": "../studio/"
+      "title": "LivOn",
+      "body": "Kami menyiapkan platform yang menghubungkan informasi dan layanan hidup, dari remaja hingga usia 70-an.",
+      "href": "../lifestage/"
     },
     {
       "n": "04",
-      "title": "LABS",
-      "body": "Percobaan kecil untuk memvalidasi apa yang berikutnya. Penelitian",
-      "href": "../resources/labs/"
+      "title": "Ongil",
+      "body": "Kami menyiapkan platform hidup untuk keseharian lansia, dukungan perawatan, dan hubungan keluarga.",
+      "href": "../ongil/"
+    },
+    {
+      "n": "05",
+      "title": "Business",
+      "body": "Perangkat lunak untuk perusahaan, dari otomatisasi sampai operasi dan perbaikan. Build · Automation · Solutions · Care",
+      "href": "../business/"
+    },
+    {
+      "n": "06",
+      "title": "Studio",
+      "body": "Identitas, layar, dan konten sebagai pekerjaan desain. Brand · UI/UX · Content",
+      "href": "../studio/"
     }
   ],
   "productAreasEyebrow": "PRODUCT AREAS",
@@ -387,5 +399,6 @@
   "closeTaglineEn": "",
   "closeProducts": "Lihat produk →",
   "closeBusiness": "Penyelidikan bisnis →",
-  "closePortfolio": "Portfolio →"
+  "closePortfolio": "Portfolio →",
+  "statusSoon": "Segera hadir"
 }

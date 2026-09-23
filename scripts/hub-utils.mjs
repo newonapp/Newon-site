@@ -102,7 +102,7 @@ export function fontLinksHtml(langDir = "en") {
   return `<link rel="preconnect" href="https://fonts.googleapis.com" />\n    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n    <link href="${url}" rel="stylesheet" />`;
 }
 
-export const CHROME_HEAD_CSS = `<link rel="stylesheet" href="/site-dark.css?v=20260902perf1" />\n    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />`;
+export const CHROME_HEAD_CSS = `<link rel="stylesheet" href="/site-dark.css?v=20260924foot1" />\n    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />`;
 
 export function injectFontLinks(html, langDir = "en") {
   return String(html).replace(/\{\{FONT_LINKS\}\}/g, fontLinksHtml(langDir));

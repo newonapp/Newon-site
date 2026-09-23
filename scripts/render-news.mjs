@@ -524,6 +524,18 @@ function storeButtons(article, product, loc, flat, flatEn, lang) {
 
 function relatedHtml(article, loc, flat, flatEn, lang) {
   const product = productBySlug(articleProductSlug(article));
+  const copy = articleCopy(article, lang);
+  const customHref = article.linkHref
+    ? String(article.linkHref).replace(/\{\{LANG\}\}/g, lang || "en")
+    : "";
+  const customLabel = String(copy.linkLabel || "").trim();
+  if (!product && customHref && customLabel) {
+    return `<section class="nw-related" aria-label="${escapeHtml(customLabel)}">
+          <div class="nw-related__actions">
+            <a class="nw-btn nw-btn--primary" href="${escapeHtml(customHref)}">${escapeHtml(customLabel)}</a>
+          </div>
+        </section>`;
+  }
   if (!product) return "";
   const ns = product.ns;
   const tagline =
@@ -749,7 +761,10 @@ for (const { dir, file, htmlLang } of LANGS) {
       "{{ARTICLE_LAUNCH_BADGE}}",
       article.category === "launch" ? `<p class="nw-badge nw-badge--launch">LAUNCH</p>` : ""
     );
-    page = page.replace(/\{\{ARTICLE_CAT_EN\}\}/g, escapeHtml(CAT_EN[article.category] || ""));
+    page = page.replace(
+      /\{\{ARTICLE_CAT_EN\}\}/g,
+      escapeHtml(article.categoryLabel || CAT_EN[article.category] || "")
+    );
     page = page.replace(/\{\{ARTICLE_DATE\}\}/g, escapeHtml(formatNewsDate(article.date)));
     const detailLogoSrc = product ? product.icon : article.category === "company" ? "/logo.png" : "";
     page = page.replace(

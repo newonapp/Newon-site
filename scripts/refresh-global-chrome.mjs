@@ -83,4 +83,21 @@ for (const { dir, file } of LANGS) {
   console.log(`refresh-global-chrome: ${dir} — ${n} pages`);
 }
 
+const rootIndex = path.join(ROOT, "index.html");
+if (fs.existsSync(rootIndex)) {
+  const flat = flatten(loadJson("ko.json"));
+  const html = fs.readFileSync(rootIndex, "utf8");
+  if (
+    html.includes("studio-footer--compact") ||
+    html.includes('class="site-footer"') ||
+    html.includes("gnav-dd__trigger")
+  ) {
+    const next = replaceLegacyChrome(html, flat, flatEn, { activeNav: "", base: "", langDir: "ko" });
+    if (next && next !== html) {
+      fs.writeFileSync(rootIndex, next);
+      console.log("refresh-global-chrome: /index.html");
+    }
+  }
+}
+
 console.log("refresh-global-chrome: OK");

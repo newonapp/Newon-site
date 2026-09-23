@@ -107,7 +107,6 @@ export const MEGA_DESTINATIONS = {
     { titleKey: "nav.studioIp", descKey: "nav.megaIpDesc", href: "studio/ip/", titleFb: "CREATIVE LAB" },
     { titleKey: "nav.studioCare", descKey: "nav.megaStudioCareDesc", href: "studio/care/", titleFb: "DESIGN CARE" },
     { titleKey: "nav.store", descKey: "nav.megaStoreDesc", href: "resources/store/", titleFb: "STORE" },
-    { titleKey: "nav.labs", descKey: "nav.megaLabsDesc", href: "resources/labs/", titleFb: "LABS" },
   ],
   company: [
     { titleKey: "nav.aboutNewon", descKey: "nav.megaAboutDesc", href: "about/", titleFb: "About" },
@@ -392,7 +391,6 @@ export const RESOURCES_IA = [
   { titleKey: "nav.store", descKey: "nav.megaStoreDesc", href: "resources/store/", status: "OPERATING" },
   { titleKey: "nav.insights", descKey: "nav.megaInsightsDesc", href: "resources/insights/", status: "OPERATING" },
   { titleKey: "nav.blog", descKey: "nav.megaBlogDesc", href: "resources/blog/", status: "OPERATING" },
-  { titleKey: "nav.labs", descKey: "nav.megaLabsDesc", href: "resources/labs/", status: "OPERATING" },
 ];
 
 export function studioStatusLabel(status, lang = "en") {

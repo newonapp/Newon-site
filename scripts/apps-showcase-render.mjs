@@ -101,7 +101,7 @@ const FILM_COPY = {
   },
 };
 
-function filmCopy(lang) {
+export function getAppsFilmCopy(lang) {
   return FILM_COPY[lang] || FILM_COPY.en;
 }
 
@@ -110,7 +110,7 @@ const APPLE_MARK = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
 const PLAY_MARK = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="#00D9FF" d="M2.5 3.6v16.8L13.1 12 2.5 3.6z"/><path fill="#00F076" d="M13.8 12.5 23 18.4c.6-.4.9-1 .9-1.7V7.3c0-.7-.3-1.3-.9-1.7l-9.2 6.9z"/><path fill="#FFCE00" d="M13.8 11.5 23 4.6c-.5-.4-1.2-.6-1.8-.4L2.5 3.6l11.3 7.9z"/><path fill="#FF3A44" d="M2.5 20.4 21.2 18c.6.1 1.3-.1 1.8-.5l-9.2-5.9L2.5 20.4z"/></svg>`;
 
 function appsFilm(lang) {
-  const c = filmCopy(lang);
+  const c = getAppsFilmCopy(lang);
   return `<section class="apps-film" data-apps-film>
     <div class="apps-film__stage">
       <div class="apps-film__fallback" aria-hidden="true"></div>

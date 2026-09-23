@@ -55,7 +55,7 @@ function renderPage(lang) {
     MAIN_CONTENT: renderEcosystemSection(lang.dir),
     CHROME_FOOTER: footer,
     EXTRA_CSS: `<link rel="stylesheet" href="/ecosystem.css?v=${ECO_VER}" />`,
-    EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260922play1"></script>
+    EXTRA_SCRIPTS: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/ecosystem.js?v=${ECO_VER}" defer></script>`,
   });
   const out = path.join(ROOT, lang.dir, "ecosystem", "index.html");

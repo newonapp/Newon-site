@@ -13,8 +13,8 @@ export const STUDIO_CARE_DETAIL = {
       en: "Monthly Design Support | Newon Studio",
     },
     meta: {
-      ko: "월간 디자인 운영 — 계약 범위에 따라 SNS, 배너, 프로모션, 소규모 UI 개선을 지원합니다. 별도 견적. 무제한 디자인·당일 납품을 보장하지 않습니다.",
-      en: "Monthly Design Support — SNS, banners, promo, and small UI design within an agreed range. Custom quote. Not unlimited design or same-day delivery.",
+      ko: "월 계약으로 디자인 업무를 지원합니다. SNS 정기 제작은 이 범위입니다. 작업량·기간·금액은 상담 후. 개발비는 포함되지 않습니다.",
+      en: "A monthly design contract. Regular social design sits in this range. Volume, timing, and price are set in consultation. Build fees are not included.",
     },
     headline: {
       ko: "정기적으로 필요한 디자인을\n계약 범위에서 지원합니다.",
@@ -22,14 +22,14 @@ export const STUDIO_CARE_DETAIL = {
     },
     description: {
       ko: [
-        "기업과 브랜드가 매달 반복해서 필요한 디자인 작업을 합의된 범위에서 지원하는 서비스입니다.",
-        "BASIC · STANDARD · CUSTOM은 구성 예시이며 확정 상품이 아닙니다. 월 작업량, 수정 횟수, 납기, 금액은 상담 후 별도 견적합니다.",
-        "계정 운영, 광고 집행, 웹·앱 소스 수정과 기능 개발은 포함되지 않습니다.",
+        "단발 제작이 아니라, 계약된 범위에서 디자인 업무를 계속 지원하는 월 단위 서비스입니다. SNS 정기 제작은 이 계약의 콘텐츠 작업이고, 별도 상품이 아닙니다.",
+        "BASIC · STANDARD · CUSTOM은 구성 예시이며 확정 상품이 아닙니다. 월 요금, 작업량, 수정 횟수, 납기, 최소 기간, 미사용분 이월은 상담 후 계약으로 정합니다.",
+        "브랜드·웹·앱 전체 신규 제작, 대규모 캠페인, 촬영·영상, 계정 운영, 광고 집행, 소스 수정은 포함되지 않습니다. 필요하면 별도 프로젝트입니다.",
       ],
       en: [
-        "Ongoing design support for brands that need regular visual work, scoped by contract.",
-        "BASIC, STANDARD, and CUSTOM are composition examples — not fixed products. Volume, revisions, timing, and price are quoted after consultation.",
-        "Account ops, media buying, source-code edits, and feature development are not included.",
+        "This is a monthly contract for ongoing design, not a one-off. Regular social design is content work inside this contract, not a separate product.",
+        "BASIC, STANDARD, and CUSTOM are examples, not fixed products. Monthly fee, volume, revisions, timing, minimum term, and unused-work rollover are set in the contract after consultation.",
+        "A new full identity, a full website or app design, a large campaign, photo or video, account ops, media buying, and source edits are not included. Those can be a separate project.",
       ],
     },
     overview: {
@@ -83,8 +83,8 @@ export const STUDIO_CARE_DETAIL = {
       ],
     },
     whatWeDoTitle: {
-      ko: "계약 범위에서 진행하는 작업.",
-      en: "Work we run inside the contract.",
+      ko: "계약에서 고를 수 있는 작업.",
+      en: "Work the contract can include.",
     },
     whatWeDo: {
       ko: [
@@ -172,13 +172,13 @@ export const STUDIO_CARE_DETAIL = {
     },
     notices: {
       ko: [
-        "금액, 월 작업량, 수정 횟수, 납기를 사이트에 확정 숫자로 표시하지 않습니다.",
+        "월 요금, 작업량, 수정 횟수, 납기, 최소 기간, 미사용분 이월은 확정 전 숫자로 게시하지 않습니다.",
         "무제한 디자인, 당일 납품 보장은 하지 않습니다.",
         "소스코드 수정, 서버 운영, 기능 개발은 Newon Business Care로 연결합니다.",
         "광고 매체 운영·성과 관리는 포함하지 않습니다.",
       ],
       en: [
-        "Price, monthly volume, revision caps, and turnaround are not listed as fixed numbers here.",
+        "Monthly fee, volume, revision caps, turnaround, minimum term, and unused-work rollover are not published as fixed numbers.",
         "Unlimited design and same-day delivery are not offered.",
         "Source edits, servers, and feature work go to Newon Business Care.",
         "Media buying and performance management are not included.",
@@ -186,13 +186,13 @@ export const STUDIO_CARE_DETAIL = {
     },
     faqs: {
       ko: [
-        { q: "지금 바로 구독할 수 있나요?", a: "확정된 월 구독 상품이 아닙니다. 범위 상담 후 별도 견적합니다." },
+        { q: "지금 바로 구독할 수 있나요?", a: "확정된 월 요금표가 없습니다. 범위 상담 후 월 계약으로 견적합니다. 한 번만 고치면 기존 디자인 개선입니다." },
         { q: "요청을 무제한으로 넣어도 되나요?", a: "아니요. 계약에 적힌 범위와 우선순위가 기준입니다." },
         { q: "개발도 해주나요?", a: "디자인이 범위입니다. 구현·배포·유지보수는 Newon Business입니다." },
         { q: "SNS 계정 운영도 하나요?", a: "디자인 제작이 범위입니다. 게시·댓글·광고 집행은 기본에 없습니다." },
       ],
       en: [
-        { q: "Can we subscribe immediately?", a: "This is not a locked monthly SKU. We quote after scoping." },
+        { q: "Can we subscribe immediately?", a: "There is no published monthly price list. We quote a monthly contract after scoping. A single pass is Design Improvement." },
         { q: "Unlimited requests?", a: "No. The signed range and priority list apply." },
         { q: "Do you also develop?", a: "Design only. Build, deploy, and technical care sit in Newon Business." },
         { q: "Do you run the social accounts?", a: "We design. Posting, community, and ads buying are not default." },
@@ -210,6 +210,10 @@ export const STUDIO_CARE_DETAIL = {
         en: "Monthly Design Support is visual work only. Code and operations go through Newon Business Care.",
       },
       label: { ko: "Business Care 보기 →", en: "View Business Care →" },
+    },
+    priceNote: {
+      ko: "월 계약의 별도 견적입니다. 월 요금, 작업량, 수정 횟수, 납기, 최소 기간, 미사용분 이월은 상담 후 정합니다. 개발비와 유료 자료비는 포함되지 않습니다.",
+      en: "A custom quote for a monthly contract. Fee, volume, revisions, timing, minimum term, and unused-work rollover are set in consultation. Build fees and paid assets are not included.",
     },
     heroCtaBtn: { ko: "견적 문의 →", en: "Quote inquiry →" },
     ctaLead: {
@@ -229,8 +233,8 @@ export const STUDIO_CARE_DETAIL = {
       en: "Design Improvement | Newon Studio",
     },
     meta: {
-      ko: "이미 보유한 브랜드·웹·앱 디자인을 정리하고 개선합니다. 디자인 범위. 소스 수정과 기능 개발은 Newon Business. 별도 견적.",
-      en: "Improve brand, web, and app design you already have. Design scope only. Source and features go to Newon Business. Custom quote.",
+      ko: "이미 보유한 디자인을 요청한 구간만 고치는 일회성 프로젝트입니다. 월간 운영과 견적이 다릅니다. 코드 반영은 Business. 별도 견적.",
+      en: "A one-time project to improve an agreed range of design you already have. Quoted separately from monthly support. Code changes are Business. Custom quote.",
     },
     headline: {
       ko: "이미 있는 브랜드와 화면을\n다시 정리합니다.",
@@ -238,14 +242,14 @@ export const STUDIO_CARE_DETAIL = {
     },
     description: {
       ko: [
-        "새로 처음부터 만드는 서비스가 아니라, 고객이 이미 보유한 브랜드, 웹사이트, 앱의 시각과 흐름을 점검하고 개선하는 작업입니다.",
-        "로고·응용 디자인, 웹·앱 UI, 모바일 화면, 정보 구조, 디자인 시스템 정리까지 필요한 범위만 진행합니다.",
-        "화면을 실제 코드로 반영하거나 기능을 추가하는 일은 Newon Business로 연결합니다.",
+        "이미 보유한 브랜드, 웹, 앱 디자인을 요청한 구간만 고치는 일회성 프로젝트입니다. 매달 반복 제작은 월간 디자인 운영입니다.",
+        "브랜드 시각 유지, 로고 응용, 웹·앱 화면은 필요한 만큼만 진행합니다. 전체 리뉴얼로 커지면 별도 견적입니다.",
+        "결과물은 디자인 파일입니다. 코드 반영, 기능 변경, 서버 작업은 Newon Business이며 이 견적에 포함되지 않고, 화면에 자동으로 들어가지 않습니다.",
       ],
       en: [
-        "This is not a from-scratch product. We review and improve brand, website, or app design you already own.",
-        "Scope can include logo applications, web/app UI, mobile screens, information architecture, and design-system tidy-up.",
-        "Putting screens into code or adding features continues through Newon Business.",
+        "A one-time project to change only the requested range of brand, web, or app design you already have. Repeating monthly production is Monthly Design Support.",
+        "Brand upkeep, logo use, and web or app screens are done only as far as needed. If the range becomes a full redesign, that is a separate quote.",
+        "You receive design files. Code, features, and servers are Newon Business, are not in this quote, and are not applied to the live product automatically.",
       ],
     },
     overview: {
@@ -306,8 +310,8 @@ export const STUDIO_CARE_DETAIL = {
       en: ["Review of current files", "Proposed improvement range", "Agreed screens and assets", "Handoff files when agreed"],
     },
     includedNote: {
-      ko: "시안 수, 수정 횟수, 납품 형식, 원본 파일은 프로젝트마다 다릅니다. 사이트에 단일한 조건을 걸지 않습니다.",
-      en: "Comps, revision rounds, file types, and source files vary by project. We do not publish one global SLA.",
+      ko: "원본이 없으면 같은 조건으로 진행하지 않습니다. 시안 수, 수정 횟수, 원본 제공은 계약에 있을 때만 안내합니다.",
+      en: "Missing source files are not quoted on the same terms. Comp count, revision rounds, and source-file delivery are stated only when the contract includes them.",
     },
     deliverables: {
       ko: [
@@ -321,28 +325,28 @@ export const STUDIO_CARE_DETAIL = {
     },
     process: {
       ko: [
-        { t: "AUDIT", d: "현재 브랜드·화면·자료를 확인합니다." },
-        { t: "SCOPE", d: "손볼 구간과 손대지 않을 구간을 나눕니다." },
-        { t: "DESIGN", d: "합의된 개선안을 제작합니다." },
-        { t: "HANDOFF", d: "디자인 파일을 전달하고, 구현이 필요하면 Business를 안내합니다." },
+        { t: "AUDIT", d: "기존 디자인, 원본 파일, 사용 권한, 요청 범위를 확인합니다." },
+        { t: "SCOPE", d: "수정 가능 여부를 보고 견적과 일정을 정합니다." },
+        { t: "DESIGN", d: "합의한 구간만 개선합니다." },
+        { t: "HANDOFF", d: "시안과 합의된 파일을 전달합니다. 화면 반영은 Business입니다." },
       ],
       en: [
-        { t: "AUDIT", d: "Review current brand, screens, and files." },
-        { t: "SCOPE", d: "Split what we will change from what we will leave." },
-        { t: "DESIGN", d: "Produce the agreed improvements." },
-        { t: "HANDOFF", d: "Deliver files and, if build is needed, point to Business." },
+        { t: "AUDIT", d: "Review the current design, source files, usage rights, and the requested range." },
+        { t: "SCOPE", d: "Confirm what can be changed, then set the quote and schedule." },
+        { t: "DESIGN", d: "Improve only the agreed range." },
+        { t: "HANDOFF", d: "Deliver comps and agreed files. Applying them to the product is Business." },
       ],
     },
     notices: {
       ko: [
         "이미 보유한 자산을 대상으로 합니다. 신규 브랜드·신규 앱 전체 설계는 Brand / Digital 페이지를 이용하세요.",
         "디자인 개선과 개발은 별개입니다.",
-        "모든 프로젝트에 동일한 납기나 무제한 수정을 보장하지 않습니다.",
+        "납기, 시안 수, 수정 횟수, 원본 파일은 프로젝트마다 다르며 무제한 수정을 보장하지 않습니다.",
       ],
       en: [
         "This is for assets you already have. New brand or full new-app design lives under Brand / Digital.",
         "Design improvement is separate from development.",
-        "We do not guarantee one timeline or unlimited revisions for every project.",
+        "Turnaround, comp count, revision rounds, and source files differ by project. Unlimited revisions are not offered.",
       ],
     },
     faqs: {
@@ -369,6 +373,10 @@ export const STUDIO_CARE_DETAIL = {
         en: "Putting design into a live site or app, or adding features, is Business web & app improvement.",
       },
       label: { ko: "Business 웹·앱 개선 보기 →", en: "View Business improvement →" },
+    },
+    priceNote: {
+      ko: "일회성 개선의 별도 견적입니다. 구간과 원본 파일 상태에 따라 달라지며, 전체 리뉴얼·개발비·유료 자료비는 포함되지 않습니다.",
+      en: "A custom quote for a one-time improvement. It depends on the range and whether source files exist. A full redesign, build fees, and paid assets are not included.",
     },
     heroCtaBtn: { ko: "견적 문의 →", en: "Quote inquiry →" },
     adjacentPrev: { href: "../monthly-design/", name: { ko: "월간 디자인 운영", en: "Monthly Design Support" } },

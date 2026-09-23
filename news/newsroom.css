@@ -146,7 +146,6 @@ html[data-theme="dark"] .nr-hero {
   grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.75fr);
   gap: clamp(1.5rem, 4vw, 3rem);
   align-items: center;
-  margin-top: 0.35rem;
 }
 
 .nr-latest__meta {

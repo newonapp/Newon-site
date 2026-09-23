@@ -14,6 +14,7 @@ const CSS_VER = "20260922fix1";
 const JS_VER = "20260921nls1";
 const NLS_VER = "20260921nls1";
 const HC_VER = "20260922co2";
+const NP_VER = "20260924np11";
 
 function patchHome(html, body) {
   // Prefer HQ class; normalize legacy opener to HQ without touching hero.
@@ -65,6 +66,28 @@ function patchHome(html, body) {
     );
   } else {
     next = next.replace(/home-company\.js\?v=[^"]+/g, `home-company.js?v=${HC_VER}`);
+  }
+  if (!next.includes("home-portfolio.css")) {
+    next = next.replace(
+      /(<link rel="stylesheet" href="\/home-company\.css\?v=[^"]+" \/>)/,
+      `$1\n    <link rel="stylesheet" href="/home-portfolio.css?v=${NP_VER}" />`
+    );
+  } else {
+    next = next.replace(/home-portfolio\.css\?v=[^"]+/g, `home-portfolio.css?v=${NP_VER}`);
+  }
+  if (!next.includes("home-portfolio.js")) {
+    next = next.replace(
+      /(<script src="\/home-company\.js\?v=[^"]+" defer><\/script>)/,
+      `$1\n    <script src="/home-portfolio.js?v=${NP_VER}" defer></script>`
+    );
+  } else {
+    next = next.replace(/home-portfolio\.js\?v=[^"]+/g, `home-portfolio.js?v=${NP_VER}`);
+  }
+  if (!next.includes("family=Kanit")) {
+    next = next.replace(
+      /(<link href="https:\/\/fonts\.googleapis\.com\/css2\?family=Noto\+Sans:[^"]+" \/>)/,
+      `$1\n    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />`
+    );
   }
   return next;
 }

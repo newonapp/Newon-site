@@ -452,6 +452,75 @@ export function visualExperimentalIp() {
   });
 }
 
+/** Monthly design — a month queue, not a social feed */
+export function visualMonthlyDesign() {
+  return panelShell({
+    mod: "month",
+    live: "MONTHLY QUEUE",
+    meta: "CARE",
+    body: `
+      <div class="bs-sv-month">
+        <aside class="bs-sv-month__side">
+          <p class="bs-sv__k">THIS MONTH</p>
+          <ul class="bs-sv-month__list">
+            <li class="is-done"><span>01</span><strong>Social</strong><em>Done</em></li>
+            <li class="is-on"><span>02</span><strong>Banner</strong><em>Review</em></li>
+            <li><span>03</span><strong>Promo</strong><em>Queue</em></li>
+            <li><span>04</span><strong>Small UI</strong><em>Queue</em></li>
+          </ul>
+        </aside>
+        <div class="bs-sv-month__board">
+          <p class="bs-sv__k">CADENCE</p>
+          <div class="bs-sv-month__cal" aria-hidden="true">
+            <i class="is-on"></i><i class="is-on"></i><i></i><i class="is-on"></i><i></i><i class="is-mid"></i><i></i>
+            <i></i><i class="is-on"></i><i class="is-on"></i><i></i><i class="is-mid"></i><i></i><i></i>
+            <i class="is-mid"></i><i></i><i></i><i class="is-on"></i><i></i><i></i><i></i>
+            <i></i><i></i><i class="is-on"></i><i></i><i></i><i class="is-mid"></i><i></i>
+          </div>
+          <div class="bs-sv-month__out">
+            <div><span>RANGE</span><strong>Agreed</strong></div>
+            <div><span>FILES</span><strong>Ready</strong></div>
+            <div><span>NEXT</span><strong>Review</strong></div>
+          </div>
+        </div>
+      </div>`,
+  });
+}
+
+/** Design improvement — before / after, not a new site map */
+export function visualDesignImprovement() {
+  return panelShell({
+    mod: "improve",
+    live: "DESIGN PASS",
+    meta: "IMPROVE",
+    body: `
+      <div class="bs-sv-improve">
+        <div class="bs-sv-improve__pair">
+          <article>
+            <p class="bs-sv__k">BEFORE</p>
+            <div class="bs-sv-improve__frame is-old">
+              <span></span><span></span><span></span>
+              <b></b>
+            </div>
+          </article>
+          <article>
+            <p class="bs-sv__k">AFTER</p>
+            <div class="bs-sv-improve__frame is-new">
+              <span></span><span></span><span></span>
+              <b>Clear</b>
+            </div>
+          </article>
+        </div>
+        <ul class="bs-sv-improve__scope">
+          <li class="is-on"><span>01</span>Brand</li>
+          <li class="is-on"><span>02</span>Web UI</li>
+          <li><span>03</span>App</li>
+          <li><span>04</span>Handoff</li>
+        </ul>
+      </div>`,
+  });
+}
+
 /** @param {string} slug */
 export function studioHeroVisual(slug) {
   const map = {
@@ -470,8 +539,8 @@ export function studioHeroVisual(slug) {
     "digital-stickers": visualStickers,
     "newon-character": visualNewonCharacter,
     "experimental-ip": visualExperimentalIp,
-    "monthly-design": visualSocial,
-    "design-improvement": visualWebDetail,
+    "monthly-design": visualMonthlyDesign,
+    "design-improvement": visualDesignImprovement,
   };
   const fn = map[slug];
   return fn ? fn() : visualStrategy();

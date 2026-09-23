@@ -202,10 +202,6 @@
       {
         "label": "Produits",
         "href": "../../../products/"
-      },
-      {
-        "label": "Laboratoires",
-        "href": "../../../resources/labs/"
       }
     ]
   },

@@ -14,7 +14,7 @@ import {
   visualBusiness,
   visualCommerce,
 } from "./home-story-visuals.mjs";
-import { renderCompanyBefore, renderCompanyAfter } from "./home-company-body.mjs";
+import { buildPortfolioHomeBody } from "./home-portfolio-body.mjs";
 
 const PRODUCT_SLUGS = [...NAV_FLYOUT_SLUGS];
 const HOME_HASH_BY_SLUG = Object.fromEntries(
@@ -188,17 +188,5 @@ function ecoHtml(copy, lang) {
 
 /** @param {string} lang */
 export function buildBizHomeBody(lang) {
-  const L = lang || "en";
-  const copyLang = L === "ko" ? "ko" : "en";
-  const copy = getStoryCopy(L);
-  const bySlug = projectsBySlug(copyLang);
-
-  const stories = copy.stories
-    .map((s, i) => storySectionHtml(s, copy, bySlug, L, i))
-    .join("\n");
-
-  return `${renderCompanyBefore(L)}
-${stories}
-${ecoHtml(copy, L)}
-${renderCompanyAfter(L)}`;
+  return buildPortfolioHomeBody(lang);
 }

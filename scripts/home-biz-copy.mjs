@@ -11,6 +11,7 @@ export const STORY_STATUS_BY_ID = {
   ongil: "planned",
   business: "live",
   commerce: "live",
+  games: "playable",
 };
 
 export const STORY_KO = {
@@ -21,6 +22,7 @@ export const STORY_KO = {
     live: "운영 중",
     progress: "진행 중",
     planned: "확장 계획",
+    playable: "플레이 가능",
   },
   stories: [
     {
@@ -106,8 +108,22 @@ export const STORY_KO = {
       tone: "studio",
       cta: "Newon Commerce 살펴보기",
       ctaHref: "ecosystem/#eco-commerce",
-      next: null,
+      next: "Newon Games",
       note: "Newon의 앱과 디지털 상품, 서비스 및 커머스 영역을 소개하고 연결합니다.",
+    },
+    {
+      id: "games",
+      n: "07",
+      name: "Newon Games",
+      cat: "INTERACTIVE GAME",
+      titleHtml: "AI만 남은 세상에서<br />마지막 인간임을 숨기세요.",
+      lead: "질문에 답하고, 행동을 선택하고, AI의 의심을 피하세요. 당신의 모든 선택은 기억됩니다.",
+      keys: ["404: HUMAN", "플레이 가능"],
+      tone: "games",
+      cta: "게임 둘러보기",
+      ctaHref: "games/",
+      next: null,
+      note: "Newon Games는 플레이어의 선택과 행동이 세계에 흔적을 남기는 인터랙티브 경험을 만듭니다.",
     },
   ],
   rail: [
@@ -117,13 +133,14 @@ export const STORY_KO = {
     { id: "ongil", label: "Ongil" },
     { id: "business", label: "Business" },
     { id: "commerce", label: "Commerce" },
+    { id: "games", label: "Games" },
   ],
   eco: {
     id: "story-ecosystem",
     kicker: "ONE NEWON",
-    titleHtml: "여섯 가지 사업.<br />각각의 역할이 다릅니다.",
-    lead: "생활 앱, 개인·기업 AI, 생애주기, 시니어 케어, 기업 솔루션, 커머스. 대상과 역할이 다른 여섯 사업을 운영하고 구축합니다.",
-    note: "출시된 생활 앱은 지금 이용할 수 있습니다. LivOn과 Ongil은 사업 소개 단계이며, Newon AI의 AI Agent는 향후 방향입니다.",
+    titleHtml: "일곱 가지 사업.<br />각각의 역할이 다릅니다.",
+    lead: "생활 앱, 개인·기업 AI, 생애주기, 시니어 케어, 기업 솔루션, 커머스, 게임. 대상과 역할이 다른 일곱 사업을 운영하고 구축합니다.",
+    note: "출시된 생활 앱과 404: HUMAN은 지금 이용할 수 있습니다. LivOn과 Ongil은 사업 소개 단계이며, Newon AI의 AI Agent는 향후 방향입니다.",
     center: "NEWON",
     ctaAbout: "Newon 알아보기",
     ctaAboutHref: "about/",
@@ -140,6 +157,7 @@ export const STORY_EN = {
     live: "Live",
     progress: "In progress",
     planned: "Expansion plan",
+    playable: "Playable",
   },
   stories: [
     {
@@ -225,8 +243,22 @@ export const STORY_EN = {
       tone: "studio",
       cta: "Explore Newon Commerce",
       ctaHref: "ecosystem/#eco-commerce",
-      next: null,
+      next: "Newon Games",
       note: "A place to explore and move between Newon apps, digital products, and services.",
+    },
+    {
+      id: "games",
+      n: "07",
+      name: "Newon Games",
+      cat: "INTERACTIVE GAME",
+      titleHtml: "In a world of AI,<br />hide that you are the last human.",
+      lead: "Answer questions, choose actions, and evade AI suspicion. Every choice you make is remembered.",
+      keys: ["404: HUMAN", "Playable"],
+      tone: "games",
+      cta: "Explore Games",
+      ctaHref: "games/",
+      next: null,
+      note: "Newon Games makes interactive experiences where a player’s choices and actions leave a trace in the world.",
     },
   ],
   rail: [
@@ -236,13 +268,14 @@ export const STORY_EN = {
     { id: "ongil", label: "Ongil" },
     { id: "business", label: "Business" },
     { id: "commerce", label: "Commerce" },
+    { id: "games", label: "Games" },
   ],
   eco: {
     id: "story-ecosystem",
     kicker: "ONE NEWON",
-    titleHtml: "Six businesses.<br />Six different jobs.",
-    lead: "Life apps, personal and company AI, life stages, senior care, company software, and commerce. Each business has a different customer and role.",
-    note: "Live consumer apps are available now. LivOn and Ongil are introductions. Newon AI agents are a future direction.",
+    titleHtml: "Seven businesses.<br />Seven different jobs.",
+    lead: "Life apps, personal and company AI, life stages, senior care, company software, commerce, and games. Each business has a different customer and role.",
+    note: "Live consumer apps and 404: HUMAN are available now. LivOn and Ongil are introductions. Newon AI agents are a future direction.",
     center: "NEWON",
     ctaAbout: "About Newon",
     ctaAboutHref: "about/",
@@ -260,6 +293,7 @@ const STORY_CTA_I18N = {
     ongil: "Ongilを見る",
     business: "ビジネスソリューションを見る",
     commerce: "Newon Commerceを見る",
+    games: "ゲームを見る",
   },
   es: {
     consumer: "Explorar apps",
@@ -268,6 +302,7 @@ const STORY_CTA_I18N = {
     ongil: "Conocer Ongil",
     business: "Explorar soluciones business",
     commerce: "Explorar Newon Commerce",
+    games: "Explorar Games",
   },
   "pt-br": {
     consumer: "Explorar apps",
@@ -276,6 +311,7 @@ const STORY_CTA_I18N = {
     ongil: "Conhecer Ongil",
     business: "Explorar soluções business",
     commerce: "Explorar Newon Commerce",
+    games: "Explorar Games",
   },
   fr: {
     consumer: "Découvrir les apps",
@@ -284,6 +320,7 @@ const STORY_CTA_I18N = {
     ongil: "Découvrir Ongil",
     business: "Découvrir les solutions business",
     commerce: "Découvrir Newon Commerce",
+    games: "Découvrir Games",
   },
   de: {
     consumer: "Apps entdecken",
@@ -292,6 +329,7 @@ const STORY_CTA_I18N = {
     ongil: "Ongil entdecken",
     business: "Business-Lösungen entdecken",
     commerce: "Newon Commerce entdecken",
+    games: "Games entdecken",
   },
   hi: {
     consumer: "ऐप्स देखें",
@@ -300,6 +338,7 @@ const STORY_CTA_I18N = {
     ongil: "Ongil जानें",
     business: "बिज़नेस समाधान जानें",
     commerce: "Newon Commerce देखें",
+    games: "Games देखें",
   },
   id: {
     consumer: "Jelajahi aplikasi",
@@ -308,6 +347,7 @@ const STORY_CTA_I18N = {
     ongil: "Pelajari Ongil",
     business: "Pelajari solusi bisnis",
     commerce: "Jelajahi Newon Commerce",
+    games: "Jelajahi Games",
   },
 };
 

@@ -663,11 +663,23 @@ function newsAppsSection(lang, copy) {
   </section>`;
 }
 
+function newsBrand(article) {
+  const product = productBySlug(articleProductSlug(article));
+  if (product && product.icon) return product;
+  if (article.brandIcon) return { name: article.brandName || "Newon", icon: article.brandIcon };
+  return null;
+}
+
+function articleDisplayCat(article, copy) {
+  if (article.categoryLabel) return article.categoryLabel;
+  return nrCatLabel(copy, nrNormalizeCat(article.category));
+}
+
 function newsFeaturedBlock(article, copy, lang) {
   if (!article) return "";
   const c = newsArticleCopy(article, lang);
   const cat = nrNormalizeCat(article.category);
-  const product = productBySlug(articleProductSlug(article));
+  const product = newsBrand(article);
   const href = `./${escapeHtml(article.slug)}/`;
   const logo = product && product.icon ? product.icon : "";
 
@@ -687,13 +699,12 @@ function newsFeaturedBlock(article, copy, lang) {
 
   return `<section class="nr-latest" aria-labelledby="nr-latest-title" data-nr-item data-nr-cat="${escapeHtml(cat)}">
     <div class="nr-inner">
-      <p class="nr-kicker">${escapeHtml(copy.latestFrom || copy.latestLabel || "LATEST")}</p>
       <a class="nr-latest__link" href="${href}">
         <div class="nr-latest__grid">
           <div class="nr-latest__copy">
             <p class="nr-latest__meta">
               ${productChip}
-              <span>${escapeHtml(nrCatLabel(copy, cat))}</span>
+              <span>${escapeHtml(articleDisplayCat(article, copy))}</span>
               <span aria-hidden="true">·</span>
               <time datetime="${escapeHtml(article.date)}">${escapeHtml(formatNewsDate(article.date))}</time>
             </p>
@@ -711,7 +722,7 @@ function newsFeaturedBlock(article, copy, lang) {
 function newsArchiveRow(article, copy, lang) {
   const c = newsArticleCopy(article, lang);
   const cat = nrNormalizeCat(article.category);
-  const product = productBySlug(articleProductSlug(article));
+  const product = newsBrand(article);
   const href = `./${escapeHtml(article.slug)}/`;
   const logo = product
     ? `<span class="nr-row__logo-wrap">${newsLogoMark(product, 48, "nr-row__logo")}</span>`
@@ -720,7 +731,7 @@ function newsArchiveRow(article, copy, lang) {
     ${logo}
     <div class="nr-row__meta">
       <time datetime="${escapeHtml(article.date)}">${escapeHtml(formatNewsDate(article.date))}</time>
-      <span class="nr-row__cat">${escapeHtml(nrCatLabel(copy, cat))}</span>
+      <span class="nr-row__cat">${escapeHtml(articleDisplayCat(article, copy))}</span>
       ${product ? `<span class="nr-row__app">${escapeHtml(product.name)}</span>` : ""}
     </div>
     <div class="nr-row__body">
@@ -1482,7 +1493,7 @@ function renderCompany() {
         flatEn,
         chromeBase,
         i18n: { emptyFilter: copy.emptyFilter || "" },
-        extraHead: '<link rel="stylesheet" href="/news/newsroom.css?v=20260830nrtight1" />',
+        extraHead: '<link rel="stylesheet" href="/news/newsroom.css?v=20260924news1" />',
         extraScripts: '<script src="/news/newsroom.js?v=20260830empty1" defer></script>',
       });
       writeFile(path.join(ROOT, dir, "news", "index.html"), html);

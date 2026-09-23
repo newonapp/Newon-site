@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  background: #0c0c0c;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Kanit", sans-serif;
+  color: #d7e2ea;
+  background: #0c0c0c;
+}
+
+.hero-heading {
+  background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.film-plate {
+  container-type: size;
+}
+
+.film-video {
+  pointer-events: none;
+}
+.film-video::-webkit-media-controls,
+.film-video::-webkit-media-controls-enclosure,
+.film-video::-webkit-media-controls-start-playback-button,
+.film-video::-webkit-media-controls-play-button {
+  display: none !important;
+  -webkit-appearance: none;
+  opacity: 0;
+  pointer-events: none;
+}
+.film-lockup {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 0.85rem 0.85rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.film-lockup__veil {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  z-index: 0;
+  width: 130%;
+  height: 150%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse 58% 52% at 50% 46%,
+    rgba(8, 16, 18, 0.42) 0%,
+    rgba(8, 16, 18, 0.16) 48%,
+    rgba(8, 16, 18, 0) 78%
+  );
+}
+
+.film-lockup__wordmark,
+.film-lockup__slogan {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #fff;
+  font-family: "Noto Sans", "Noto Sans KR", sans-serif;
+}
+
+.film-lockup__wordmark {
+  font-weight: 700;
+  font-size: min(28cqh, 13cqi);
+  letter-spacing: -0.06em;
+  line-height: 0.96;
+  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.32);
+}
+
+.film-lockup__slogan {
+  margin-top: 0.45em;
+  max-width: 16em;
+  font-weight: 650;
+  font-size: min(11cqh, 4.2cqi);
+  letter-spacing: -0.045em;
+  line-height: 1.28;
+  text-shadow: 0 6px 16px rgba(0, 0, 0, 0.36);
+}
+
+.hero-title {
+  background: linear-gradient(180deg, #8b939c 0%, #f4f7fa 62%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.portrait-fade {
+  -webkit-mask-image: radial-gradient(ellipse 82% 78% at 50% 44%, #000 58%, transparent 78%);
+  mask-image: radial-gradient(ellipse 82% 78% at 50% 44%, #000 58%, transparent 78%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .portrait-fade {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}

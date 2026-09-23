@@ -1,6 +1,6 @@
 /**
  * Newon Resources — hub catalog under /{lang}/resources/{slug}/
- * Primary local nav: Store · Insights · Blog · Labs
+ * Primary local nav: Store · Insights · Blog
  * Secondary (reachable, not in primary tabs): Notes · Education
  * Media lives under Company at /{lang}/media/
  */
@@ -24,13 +24,6 @@ export const RESOURCE_PAGES = [
     navLabelKey: "nav.blog",
     visual: "publication",
     path: "resources/blog/",
-    primary: true,
-  },
-  {
-    slug: "labs",
-    navLabelKey: "nav.labs",
-    visual: "terminal",
-    path: "resources/labs/",
     primary: true,
   },
   {

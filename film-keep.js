@@ -1,4 +1,8 @@
 (function () {
+  var style = document.createElement("style");
+  style.textContent = "video.nhv-video,video[class*='film__video'],video.games-hero__video,video.ir-hero__film,.np-film video,.ir-marquee__film video,.ir-lane video{pointer-events:none}video.nhv-video::-webkit-media-controls,video.nhv-video::-webkit-media-controls-start-playback-button,video[class*='film__video']::-webkit-media-controls,video[class*='film__video']::-webkit-media-controls-start-playback-button,video.games-hero__video::-webkit-media-controls-start-playback-button,video.ir-hero__film::-webkit-media-controls-start-playback-button,.np-film video::-webkit-media-controls-start-playback-button,.ir-marquee__film video::-webkit-media-controls-start-playback-button,.ir-lane video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none;opacity:0;pointer-events:none}";
+  document.head.appendChild(style);
+
   function keepFilm(host, video) {
     if (!host) return;
     if (!video) {

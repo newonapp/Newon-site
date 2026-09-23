@@ -122,7 +122,6 @@ const KO = {
     related: [
       { label: "Business", href: "../../" },
       { label: "Products", href: "../../../products/" },
-      { label: "Labs", href: "../../../resources/labs/" },
     ],
   },
   service: {
@@ -532,7 +531,6 @@ const EN = {
     related: [
       { label: "Business", href: "../../" },
       { label: "Products", href: "../../../products/" },
-      { label: "Labs", href: "../../../resources/labs/" },
     ],
   },
   service: {

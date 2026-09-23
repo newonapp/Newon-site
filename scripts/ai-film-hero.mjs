@@ -85,7 +85,7 @@ const ENTERPRISE = {
   },
 };
 
-function copyFor(kind, lang) {
+export function getAiFilmCopy(kind, lang) {
   const pack = kind === "enterprise" ? ENTERPRISE : PERSONAL;
   return pack[lang] || pack.en;
 }
@@ -93,7 +93,7 @@ function copyFor(kind, lang) {
 /** @param {"personal"|"enterprise"} kind */
 export function renderAiFilmHero(kind, lang, switcher = {}) {
   const L = lang || "en";
-  const c = copyFor(kind, L);
+  const c = getAiFilmCopy(kind, L);
   const personal = switcher.personal || (L === "ko" ? "개인 AI" : "Personal AI");
   const enterprise = switcher.enterprise || (L === "ko" ? "기업 AI" : "Enterprise AI");
   const personalHref = switcher.personalHref || (kind === "enterprise" ? "../#cai-hero" : "#cai-hero");

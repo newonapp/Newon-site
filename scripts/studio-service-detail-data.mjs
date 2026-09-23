@@ -7058,11 +7058,9 @@ const DETAIL = {
     altCtas: {
       ko: [
         { href: "../../", label: "Newon Studio 보기 →" },
-        { href: "../../../resources/labs/", label: "프로젝트 팔로우 →" },
       ],
       en: [
         { href: "../../", label: "VIEW STUDIO →" },
-        { href: "../../../resources/labs/", label: "FOLLOW THE PROJECT →" },
       ],
     },
   },

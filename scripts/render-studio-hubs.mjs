@@ -187,7 +187,7 @@ function studioBody(flat, flatEn, lang = "en") {
   };
   const close = studioExploreCloseHtml(flat, flatEn, lang);
   const film = getStudioFilmCopy(lang);
-  const cssV = "20260830wrap1";
+  const cssV = "20260923pad1";
   const filmV = "20260922fade2";
   const oldTitle = t(
     "studioHub.heroTitle",
@@ -233,7 +233,7 @@ function studioBody(flat, flatEn, lang = "en") {
 </section>
 ${studioServicesHtml(flat, flatEn, lang)}
 ${close}
-<script src="/film-keep.js?v=20260922play1"></script>
+<script src="/film-keep.js?v=20260924play2"></script>
 <script src="/studio-film.js?v=${filmV}" defer></script>
 <script src="/business-pillar.js?v=${cssV}" defer></script>`;
 }
@@ -297,7 +297,7 @@ const HUB_RENDERERS = {
     description: pick(f, fe, "studio.appsMetaDescription"),
     body: appsBody(f, fe, l),
     extraCss: '<link rel="stylesheet" href="/apps-hub.css?v=20260922appfit2" />',
-    extraScripts: '<script src="/film-keep.js?v=20260922play1"></script>\n    <script src="/apps-hub.js?v=20260825apps5" defer></script>',
+    extraScripts: '<script src="/film-keep.js?v=20260924play2"></script>\n    <script src="/apps-hub.js?v=20260825apps5" defer></script>',
   }),
   ai: (f, fe, l) => ({
     activeNav: "ai",
@@ -305,7 +305,7 @@ const HUB_RENDERERS = {
     description: pick(f, fe, "studio.aiMetaDescription"),
     body: aiBody(f, fe, l),
     extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260922aibtn3" />',
-    extraScripts: '<script src="/film-keep.js?v=20260922play1"></script>\n    <script src="/ai-hub.js?v=20260922aibtn3" defer></script>',
+    extraScripts: '<script src="/film-keep.js?v=20260924play2"></script>\n    <script src="/ai-hub.js?v=20260922aibtn3" defer></script>',
   }),
   "ai/enterprise": (f, fe, l) => {
     const copy = getAiEnterpriseCopy(l?.dir || "en");
@@ -315,7 +315,7 @@ const HUB_RENDERERS = {
       description: copy.seoDescription,
       body: renderAiEnterpriseBody(f, fe, l),
       extraCss: '<link rel="stylesheet" href="/ai-hub.css?v=20260923entv9" />',
-      extraScripts: '<script src="/film-keep.js?v=20260922play1"></script>\n    <script src="/ai-hub.js?v=20260923entv" defer></script>',
+      extraScripts: '<script src="/film-keep.js?v=20260924play2"></script>\n    <script src="/ai-hub.js?v=20260923entv" defer></script>',
       seoMax: 160,
     };
   },
@@ -333,7 +333,7 @@ const HUB_RENDERERS = {
     description: pick(f, fe, "studio.gamesMetaDescription"),
     body: gamesBody(f, fe, l),
     extraCss: '<link rel="stylesheet" href="/games-hub.css?v=20260922games3" />',
-    extraScripts: `<script src="/film-keep.js?v=20260922play1"></script>
+    extraScripts: `<script src="/film-keep.js?v=20260924play2"></script>
     <script src="/games-hub.js?v=20260922games3" defer></script>`,
   }),
   studio: (f, fe, l) => ({

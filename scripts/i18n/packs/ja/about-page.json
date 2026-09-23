@@ -84,7 +84,7 @@
     {
       "n": "03",
       "title": "EXPAND",
-      "body": "ビジネス、スタジオ、ラボを通じて実証済みの成果を拡大します。"
+      "body": "ビジネスとスタジオを通じて実証済みの成果を拡大します。"
     }
   ],
   "glanceEyebrow": "WHO WE BUILD FOR",
@@ -94,7 +94,7 @@
     {
       "n": "01",
       "title": "USERS",
-      "via": "PRODUCTS",
+      "via": "APPS",
       "body": "習慣、お金、健康、家族、旅行などの日常生活をもっとシンプルにしたいと考えている人。",
       "tags": [
         "習慣",
@@ -119,10 +119,10 @@
       "n": "03",
       "title": "COMPANIES",
       "via": "BUSINESS · STUDIO",
-      "body": "デジタル サービス、自動化、リサーチ、ブランド エクスペリエンスを構築する企業とブランド。",
+      "body": "デジタル サービス、自動化、Care、ブランド エクスペリエンスを構築する企業とブランド。",
       "tags": [
         "自動化",
-        "研究",
+        "Care",
         "ブランド"
       ]
     }
@@ -188,8 +188,8 @@
     },
     {
       "year": "EXPAND",
-      "title": "ビジネス・スタジオ・ラボ",
-      "body": "ビジネス、スタジオ、ラボを通じて、製品エクスペリエンスを企業との連携に拡張します。",
+      "title": "Business · Studio",
+      "body": "ビジネスとスタジオを通じて、製品エクスペリエンスを企業との連携に拡張します。",
       "isNow": true
     },
     {
@@ -208,31 +208,43 @@
     "languages": "LANGUAGES"
   },
   "buildEyebrow": "WHAT NEWON DOES",
-  "buildTitle": "製品から実験まで、1 つのスタジオで行います。",
+  "buildTitle": "アプリからデザインまで、ひとつの Newon。",
   "buildAreas": [
     {
       "n": "01",
-      "title": "PRODUCTS",
-      "body": "私たちが構築および運用するデジタル製品。アプリ · AI · ゲーム · ツール",
-      "href": "../products/"
+      "title": "Apps",
+      "body": "ストアで公開している11個のアプリを運営しています。アプリ間のデータ共有は段階的に拡張する予定です。",
+      "href": "../apps/"
     },
     {
       "n": "02",
-      "title": "BUSINESS",
-      "body": "企業と創業者のためのデジタル構築と問題解決。構築・自動化・研究・ソリューション",
-      "href": "../business/"
+      "title": "AI",
+      "body": "一部のアプリの AI 機能は提供中で、企業向け自動化と AI Agent は今後の方向です。",
+      "href": "../ai/"
     },
     {
       "n": "03",
-      "title": "STUDIO",
-      "body": "ブランドとデジタルエクスペリエンスのデザイン。ブランド · デジタル · コンテンツ · IP",
-      "href": "../studio/"
+      "title": "LivOn",
+      "body": "10代から70代まで、人生の段階に必要な情報と生活サービスをつなぐプラットフォームを準備しています。",
+      "href": "../lifestage/"
     },
     {
       "n": "04",
-      "title": "LABS",
-      "body": "次に何が起こるかを検証するための小さな実験。研究・試作・試験",
-      "href": "../resources/labs/"
+      "title": "Ongil",
+      "body": "シニアの日常とケアを支え、家族をつなぐ生活プラットフォームを準備しています。",
+      "href": "../ongil/"
+    },
+    {
+      "n": "05",
+      "title": "Business",
+      "body": "企業と事業者のためのソフトウェアを構築し、自動化から運営・改善まで支援します. Build · Automation · Solutions · Care",
+      "href": "../business/"
+    },
+    {
+      "n": "06",
+      "title": "Studio",
+      "body": "ブランドのアイデンティティから画面とコンテンツまで、デザインとして設計します. Brand · UI/UX · Content",
+      "href": "../studio/"
     }
   ],
   "productAreasEyebrow": "PRODUCT AREAS",
@@ -387,5 +399,6 @@
   "closeTaglineEn": "",
   "closeProducts": "製品を見る→",
   "closeBusiness": "お仕事のお問い合わせ →",
-  "closePortfolio": "ポートフォリオ →"
+  "closePortfolio": "ポートフォリオ →",
+  "statusSoon": "公開予定"
 }

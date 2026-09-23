@@ -299,9 +299,9 @@ export function studioContentPricingNote(lang = "ko") {
 
 export function studioCarePricingNote(lang = "ko") {
   if (lang === "ko") {
-    return "Design Care는 별도 견적입니다. 월 작업량, 수정 횟수, 납기, 금액을 확정 상품처럼 표시하지 않습니다. 디자인 작업만 담당하며 소스·서버·기능 개발은 Newon Business Care입니다.";
+    return "월간 운영과 일회성 개선은 모두 별도 견적이며 기준이 다릅니다. 작업량, 수정 횟수, 납기, 최소 기간은 상담 후 정합니다. 개발비와 유료 자료비는 포함되지 않습니다.";
   }
-  return "Design Care is a custom quote. We do not list monthly volume, revision caps, turnaround, or price as a locked SKU. Visual work only — source, servers, and features sit in Newon Business Care.";
+  return "Monthly support and a one-time improvement are both custom quotes, on different terms. Volume, revisions, timing, and minimum term are set in consultation. Build fees and paid assets are not included.";
 }
 
 export function studioPillarPricingNote(pillarSlug, lang = "ko") {

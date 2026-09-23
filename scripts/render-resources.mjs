@@ -867,49 +867,7 @@ export function renderResources() {
   }
 
   if (only === "labs") {
-    let count = 0;
-    for (const { dir, file, htmlLang } of LANGS) {
-      const flat = flatten(loadJson(file));
-      const lang = copyLang(dir);
-      const copies = getAllResourceCopies(lang);
-      for (const exp of getLabsExperiments()) {
-        const title = tField(exp, lang, "titleKo", "titleEn");
-        const desc = labDetailSeoDescription(exp, lang);
-        const html = renderLabDetailHtml({
-          htmlLang,
-          ogLocale: OG_LOCALE[dir] || "en_US",
-          canonical: `${SITE_ORIGIN}/${dir}/resources/labs/${exp.slug}/`,
-          hreflang: hreflangBlock(`labs/${exp.slug}`),
-          seoTitle: `${title} — Newon Labs | Newon`,
-          metaDescription: desc,
-          serviceSlug: exp.slug,
-          analyticsId: `labs_${exp.slug}`,
-          body: labDetailBody(exp, copies, lang),
-          flat,
-          flatEn,
-          chromeBase: "../../../",
-        });
-        writeFile(path.join(ROOT, dir, "resources", "labs", exp.slug, "index.html"), html);
-        count += 1;
-      }
-    }
-    const pub = path.join(ROOT, "_publish");
-    if (fs.existsSync(pub)) {
-      for (const f of ["business-service.css", "labs-detail.css", "labs-detail.js"]) {
-        const src = path.join(ROOT, f);
-        if (fs.existsSync(src)) fs.copyFileSync(src, path.join(pub, f));
-      }
-      for (const { dir } of LANGS) {
-        for (const exp of getLabsExperiments()) {
-          const src = path.join(ROOT, dir, "resources", "labs", exp.slug, "index.html");
-          if (!fs.existsSync(src)) continue;
-          const dest = path.join(pub, dir, "resources", "labs", exp.slug, "index.html");
-          fs.mkdirSync(path.dirname(dest), { recursive: true });
-          fs.copyFileSync(src, dest);
-        }
-      }
-    }
-    console.log(`render-resources: only=labs; ${count} detail pages`);
+    console.log("render-resources: labs pages are removed");
     return;
   }
 
@@ -1018,32 +976,7 @@ export function renderResources() {
       );
     }
 
-    // Lab details
-    for (const exp of getLabsExperiments()) {
-      const title = tField(exp, lang, "titleKo", "titleEn");
-      const desc = labDetailSeoDescription(exp, lang);
-      const html = renderLabDetailHtml({
-        htmlLang,
-        ogLocale: OG_LOCALE[dir] || "en_US",
-        canonical: `${SITE_ORIGIN}/${dir}/resources/labs/${exp.slug}/`,
-        hreflang: hreflangBlock(`labs/${exp.slug}`),
-        seoTitle: `${title} — Newon Labs | Newon`,
-        metaDescription: desc,
-        serviceSlug: exp.slug,
-        analyticsId: `labs_${exp.slug}`,
-        body: labDetailBody(exp, copies, lang),
-        flat,
-        flatEn,
-        chromeBase: "../../../",
-      });
-      writeFile(path.join(ROOT, dir, "resources", "labs", exp.slug, "index.html"), html);
-    }
-
-    // Legacy lab slug redirects
-    writeFile(
-      path.join(ROOT, dir, "resources", "labs", "ai-service", "index.html"),
-      metaRefreshHtml(`/${dir}/resources/labs/ai-experiment/`, "Redirect · AI Product Discovery")
-    );
+    // Labs hub and experiment pages are no longer published.
 
     // Insight details — published only
     for (const article of getPublishedInsights()) {
@@ -1104,7 +1037,7 @@ export function renderResources() {
     }
 
     // Old flat hub redirects (media canonical is /{lang}/media/ — already written above)
-    for (const slug of ["store", "blog", "labs"]) {
+    for (const slug of ["store", "blog"]) {
       writeFile(
         path.join(ROOT, dir, slug, "index.html"),
         metaRefreshHtml(`/${dir}/resources/${slug}/`, `Redirect · ${slug}`)
@@ -1128,7 +1061,7 @@ export function renderResources() {
       metaRefreshHtml(`/en/resources/${page.slug}/`, page.slug)
     );
   }
-  for (const slug of ["store", "blog", "labs"]) {
+  for (const slug of ["store", "blog"]) {
     writeFile(path.join(ROOT, slug, "index.html"), metaRefreshHtml(`/en/resources/${slug}/`, slug));
   }
   writeFile(path.join(ROOT, "media", "index.html"), metaRefreshHtml("/en/media/", "media"));
@@ -1158,7 +1091,7 @@ export function renderResources() {
         writeFile(path.join(pub, dir, "media", "index.html"), fs.readFileSync(mediaSrc, "utf8"));
       }
 
-      for (const slug of ["store", "blog", "labs"]) {
+      for (const slug of ["store", "blog"]) {
         const src = path.join(ROOT, dir, slug, "index.html");
         if (fs.existsSync(src)) {
           writeFile(path.join(pub, dir, slug, "index.html"), fs.readFileSync(src, "utf8"));

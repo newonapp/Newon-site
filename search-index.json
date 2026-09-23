@@ -583,17 +583,6 @@
     ]
   },
   {
-    "title": "labs",
-    "type": "page",
-    "url": "https://www.newon.app/ko/resources/labs/",
-    "lang": "ko",
-    "featured": true,
-    "tags": [
-      "resources",
-      "labs"
-    ]
-  },
-  {
     "title": "newsletter",
     "type": "page",
     "url": "https://www.newon.app/ko/resources/newsletter/",
@@ -717,72 +706,6 @@
       "templates",
       "template",
       "store"
-    ]
-  },
-  {
-    "title": "Review AI",
-    "desc": "사용자 리뷰를 분석해 감정, 반복 문제, 기능 요청, 긍정 신호와 제품 개선 우선순위를 추출하는 AI 실험입니다.",
-    "type": "labs",
-    "url": "https://www.newon.app/ko/resources/labs/review-ai/",
-    "lang": "ko",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon QR",
-    "desc": "브랜드 QR 생성부터 링크 관리, 스캔 분석까지 하나의 흐름으로 연결하는 QR SaaS 실험입니다.",
-    "type": "labs",
-    "url": "https://www.newon.app/ko/resources/labs/newon-qr/",
-    "lang": "ko",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon Form",
-    "desc": "문의·대기자·피드백을 하나의 흐름으로 수집하고 관리하기 위한 lightweight form experiment.",
-    "type": "labs",
-    "url": "https://www.newon.app/ko/resources/labs/newon-form/",
-    "lang": "ko",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "AI Product Discovery",
-    "desc": "반복되는 문제를 발견하고 AI가 실제로 더 나은 해결책인지 검증하는 연구입니다.",
-    "type": "labs",
-    "url": "https://www.newon.app/ko/resources/labs/ai-experiment/",
-    "lang": "ko",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Game Experiment",
-    "desc": "선택, 기억, 모순과 결과가 플레이어 경험을 어떻게 바꾸는지 연구합니다.",
-    "type": "labs",
-    "url": "https://www.newon.app/ko/resources/labs/game-experiment/",
-    "lang": "ko",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Character Lab",
-    "desc": "Newon 브랜드와 제품에 연결될 캐릭터 IP를 탐색합니다. 공개 가능한 캐릭터는 아직 없습니다.",
-    "type": "labs",
-    "url": "https://www.newon.app/ko/resources/labs/character-lab/",
-    "lang": "ko",
-    "featured": false,
-    "tags": [
-      "labs"
     ]
   },
   {
@@ -1424,17 +1347,6 @@
     ]
   },
   {
-    "title": "labs",
-    "type": "page",
-    "url": "https://www.newon.app/en/resources/labs/",
-    "lang": "en",
-    "featured": true,
-    "tags": [
-      "resources",
-      "labs"
-    ]
-  },
-  {
     "title": "newsletter",
     "type": "page",
     "url": "https://www.newon.app/en/resources/newsletter/",
@@ -1558,72 +1470,6 @@
       "templates",
       "template",
       "store"
-    ]
-  },
-  {
-    "title": "Review AI",
-    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
-    "type": "labs",
-    "url": "https://www.newon.app/en/resources/labs/review-ai/",
-    "lang": "en",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon QR",
-    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/en/resources/labs/newon-qr/",
-    "lang": "en",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon Form",
-    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/en/resources/labs/newon-form/",
-    "lang": "en",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "AI Product Discovery",
-    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
-    "type": "labs",
-    "url": "https://www.newon.app/en/resources/labs/ai-experiment/",
-    "lang": "en",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Game Experiment",
-    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
-    "type": "labs",
-    "url": "https://www.newon.app/en/resources/labs/game-experiment/",
-    "lang": "en",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
-    "type": "labs",
-    "url": "https://www.newon.app/en/resources/labs/character-lab/",
-    "lang": "en",
-    "featured": false,
-    "tags": [
-      "labs"
     ]
   },
   {
@@ -2265,17 +2111,6 @@
     ]
   },
   {
-    "title": "labs",
-    "type": "page",
-    "url": "https://www.newon.app/ja/resources/labs/",
-    "lang": "ja",
-    "featured": true,
-    "tags": [
-      "resources",
-      "labs"
-    ]
-  },
-  {
     "title": "newsletter",
     "type": "page",
     "url": "https://www.newon.app/ja/resources/newsletter/",
@@ -2399,72 +2234,6 @@
       "templates",
       "template",
       "store"
-    ]
-  },
-  {
-    "title": "Review AI",
-    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
-    "type": "labs",
-    "url": "https://www.newon.app/ja/resources/labs/review-ai/",
-    "lang": "ja",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon QR",
-    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/ja/resources/labs/newon-qr/",
-    "lang": "ja",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon Form",
-    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/ja/resources/labs/newon-form/",
-    "lang": "ja",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "AI Product Discovery",
-    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
-    "type": "labs",
-    "url": "https://www.newon.app/ja/resources/labs/ai-experiment/",
-    "lang": "ja",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Game Experiment",
-    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
-    "type": "labs",
-    "url": "https://www.newon.app/ja/resources/labs/game-experiment/",
-    "lang": "ja",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
-    "type": "labs",
-    "url": "https://www.newon.app/ja/resources/labs/character-lab/",
-    "lang": "ja",
-    "featured": false,
-    "tags": [
-      "labs"
     ]
   },
   {
@@ -3106,17 +2875,6 @@
     ]
   },
   {
-    "title": "labs",
-    "type": "page",
-    "url": "https://www.newon.app/es/resources/labs/",
-    "lang": "es",
-    "featured": true,
-    "tags": [
-      "resources",
-      "labs"
-    ]
-  },
-  {
     "title": "newsletter",
     "type": "page",
     "url": "https://www.newon.app/es/resources/newsletter/",
@@ -3240,72 +2998,6 @@
       "templates",
       "template",
       "store"
-    ]
-  },
-  {
-    "title": "Review AI",
-    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
-    "type": "labs",
-    "url": "https://www.newon.app/es/resources/labs/review-ai/",
-    "lang": "es",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon QR",
-    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/es/resources/labs/newon-qr/",
-    "lang": "es",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon Form",
-    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/es/resources/labs/newon-form/",
-    "lang": "es",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "AI Product Discovery",
-    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
-    "type": "labs",
-    "url": "https://www.newon.app/es/resources/labs/ai-experiment/",
-    "lang": "es",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Game Experiment",
-    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
-    "type": "labs",
-    "url": "https://www.newon.app/es/resources/labs/game-experiment/",
-    "lang": "es",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
-    "type": "labs",
-    "url": "https://www.newon.app/es/resources/labs/character-lab/",
-    "lang": "es",
-    "featured": false,
-    "tags": [
-      "labs"
     ]
   },
   {
@@ -3947,17 +3639,6 @@
     ]
   },
   {
-    "title": "labs",
-    "type": "page",
-    "url": "https://www.newon.app/pt-br/resources/labs/",
-    "lang": "pt-br",
-    "featured": true,
-    "tags": [
-      "resources",
-      "labs"
-    ]
-  },
-  {
     "title": "newsletter",
     "type": "page",
     "url": "https://www.newon.app/pt-br/resources/newsletter/",
@@ -4081,72 +3762,6 @@
       "templates",
       "template",
       "store"
-    ]
-  },
-  {
-    "title": "Review AI",
-    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
-    "type": "labs",
-    "url": "https://www.newon.app/pt-br/resources/labs/review-ai/",
-    "lang": "pt-br",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon QR",
-    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/pt-br/resources/labs/newon-qr/",
-    "lang": "pt-br",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon Form",
-    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/pt-br/resources/labs/newon-form/",
-    "lang": "pt-br",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "AI Product Discovery",
-    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
-    "type": "labs",
-    "url": "https://www.newon.app/pt-br/resources/labs/ai-experiment/",
-    "lang": "pt-br",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Game Experiment",
-    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
-    "type": "labs",
-    "url": "https://www.newon.app/pt-br/resources/labs/game-experiment/",
-    "lang": "pt-br",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
-    "type": "labs",
-    "url": "https://www.newon.app/pt-br/resources/labs/character-lab/",
-    "lang": "pt-br",
-    "featured": false,
-    "tags": [
-      "labs"
     ]
   },
   {
@@ -4788,17 +4403,6 @@
     ]
   },
   {
-    "title": "labs",
-    "type": "page",
-    "url": "https://www.newon.app/fr/resources/labs/",
-    "lang": "fr",
-    "featured": true,
-    "tags": [
-      "resources",
-      "labs"
-    ]
-  },
-  {
     "title": "newsletter",
     "type": "page",
     "url": "https://www.newon.app/fr/resources/newsletter/",
@@ -4922,72 +4526,6 @@
       "templates",
       "template",
       "store"
-    ]
-  },
-  {
-    "title": "Review AI",
-    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
-    "type": "labs",
-    "url": "https://www.newon.app/fr/resources/labs/review-ai/",
-    "lang": "fr",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon QR",
-    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/fr/resources/labs/newon-qr/",
-    "lang": "fr",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon Form",
-    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/fr/resources/labs/newon-form/",
-    "lang": "fr",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "AI Product Discovery",
-    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
-    "type": "labs",
-    "url": "https://www.newon.app/fr/resources/labs/ai-experiment/",
-    "lang": "fr",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Game Experiment",
-    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
-    "type": "labs",
-    "url": "https://www.newon.app/fr/resources/labs/game-experiment/",
-    "lang": "fr",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
-    "type": "labs",
-    "url": "https://www.newon.app/fr/resources/labs/character-lab/",
-    "lang": "fr",
-    "featured": false,
-    "tags": [
-      "labs"
     ]
   },
   {
@@ -5629,17 +5167,6 @@
     ]
   },
   {
-    "title": "labs",
-    "type": "page",
-    "url": "https://www.newon.app/de/resources/labs/",
-    "lang": "de",
-    "featured": true,
-    "tags": [
-      "resources",
-      "labs"
-    ]
-  },
-  {
     "title": "newsletter",
     "type": "page",
     "url": "https://www.newon.app/de/resources/newsletter/",
@@ -5763,72 +5290,6 @@
       "templates",
       "template",
       "store"
-    ]
-  },
-  {
-    "title": "Review AI",
-    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
-    "type": "labs",
-    "url": "https://www.newon.app/de/resources/labs/review-ai/",
-    "lang": "de",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon QR",
-    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/de/resources/labs/newon-qr/",
-    "lang": "de",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon Form",
-    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/de/resources/labs/newon-form/",
-    "lang": "de",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "AI Product Discovery",
-    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
-    "type": "labs",
-    "url": "https://www.newon.app/de/resources/labs/ai-experiment/",
-    "lang": "de",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Game Experiment",
-    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
-    "type": "labs",
-    "url": "https://www.newon.app/de/resources/labs/game-experiment/",
-    "lang": "de",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
-    "type": "labs",
-    "url": "https://www.newon.app/de/resources/labs/character-lab/",
-    "lang": "de",
-    "featured": false,
-    "tags": [
-      "labs"
     ]
   },
   {
@@ -6470,17 +5931,6 @@
     ]
   },
   {
-    "title": "labs",
-    "type": "page",
-    "url": "https://www.newon.app/hi/resources/labs/",
-    "lang": "hi",
-    "featured": true,
-    "tags": [
-      "resources",
-      "labs"
-    ]
-  },
-  {
     "title": "newsletter",
     "type": "page",
     "url": "https://www.newon.app/hi/resources/newsletter/",
@@ -6604,72 +6054,6 @@
       "templates",
       "template",
       "store"
-    ]
-  },
-  {
-    "title": "Review AI",
-    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
-    "type": "labs",
-    "url": "https://www.newon.app/hi/resources/labs/review-ai/",
-    "lang": "hi",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon QR",
-    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/hi/resources/labs/newon-qr/",
-    "lang": "hi",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon Form",
-    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/hi/resources/labs/newon-form/",
-    "lang": "hi",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "AI Product Discovery",
-    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
-    "type": "labs",
-    "url": "https://www.newon.app/hi/resources/labs/ai-experiment/",
-    "lang": "hi",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Game Experiment",
-    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
-    "type": "labs",
-    "url": "https://www.newon.app/hi/resources/labs/game-experiment/",
-    "lang": "hi",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
-    "type": "labs",
-    "url": "https://www.newon.app/hi/resources/labs/character-lab/",
-    "lang": "hi",
-    "featured": false,
-    "tags": [
-      "labs"
     ]
   },
   {
@@ -7311,17 +6695,6 @@
     ]
   },
   {
-    "title": "labs",
-    "type": "page",
-    "url": "https://www.newon.app/id/resources/labs/",
-    "lang": "id",
-    "featured": true,
-    "tags": [
-      "resources",
-      "labs"
-    ]
-  },
-  {
     "title": "newsletter",
     "type": "page",
     "url": "https://www.newon.app/id/resources/newsletter/",
@@ -7445,72 +6818,6 @@
       "templates",
       "template",
       "store"
-    ]
-  },
-  {
-    "title": "Review AI",
-    "desc": "An AI experiment that extracts sentiment, repeated issues, feature requests, positive signals, and product priorities from user reviews.",
-    "type": "labs",
-    "url": "https://www.newon.app/id/resources/labs/review-ai/",
-    "lang": "id",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon QR",
-    "desc": "A QR SaaS experiment connecting branded QR creation, link management, and scan analytics in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/id/resources/labs/newon-qr/",
-    "lang": "id",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Newon Form",
-    "desc": "A lightweight form experiment for collecting inquiries, waitlists, and feedback in one flow.",
-    "type": "labs",
-    "url": "https://www.newon.app/id/resources/labs/newon-form/",
-    "lang": "id",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "AI Product Discovery",
-    "desc": "Research that finds recurring problems and tests whether AI is actually a better solution.",
-    "type": "labs",
-    "url": "https://www.newon.app/id/resources/labs/ai-experiment/",
-    "lang": "id",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Game Experiment",
-    "desc": "Research into how choice, memory, contradiction, and consequence reshape player experience.",
-    "type": "labs",
-    "url": "https://www.newon.app/id/resources/labs/game-experiment/",
-    "lang": "id",
-    "featured": false,
-    "tags": [
-      "labs"
-    ]
-  },
-  {
-    "title": "Character Lab",
-    "desc": "Exploring character IP that can connect to Newon brand and products. No public characters yet.",
-    "type": "labs",
-    "url": "https://www.newon.app/id/resources/labs/character-lab/",
-    "lang": "id",
-    "featured": false,
-    "tags": [
-      "labs"
     ]
   },
   {

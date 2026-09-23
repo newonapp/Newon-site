@@ -84,7 +84,7 @@
     {
       "n": "03",
       "title": "EXPENDRE",
-      "body": "Élargir le travail éprouvé par le biais de Business, Studio et Labs."
+      "body": "Élargir le travail éprouvé par le biais de Business et Studio."
     }
   ],
   "glanceEyebrow": "Pour qui nous avons construit",
@@ -94,7 +94,7 @@
     {
       "n": "01",
       "title": "UTILISATEURS",
-      "via": "PRODUITS",
+      "via": "APPS",
       "body": "Les gens qui veulent vivre au quotidien — habitudes, argent, santé, famille, voyage — se sentent plus simples.",
       "tags": [
         "Habitude",
@@ -119,10 +119,10 @@
       "n": "03",
       "title": "ENTREPRISES",
       "via": "ENTREPRISES · ÉTUDE",
-      "body": "Entreprises et marques construisant des services numériques, l'automatisation, la recherche et l'expérience de la marque.",
+      "body": "Entreprises et marques construisant des services numériques, l'automatisation, Care et l'expérience de la marque.",
       "tags": [
         "Automatisation",
-        "Recherche",
+        "Care",
         "Marque"
       ]
     }
@@ -188,8 +188,8 @@
     },
     {
       "year": "EXPENDRE",
-      "title": "Entreprise · Studio · Laboratoires",
-      "body": "Expansion de l'expérience produit dans le travail avec les entreprises par l'intermédiaire de Business, Studio et Labs.",
+      "title": "Business · Studio",
+      "body": "Expansion de l'expérience produit dans le travail avec les entreprises par l'intermédiaire de Business et Studio.",
       "isNow": true
     },
     {
@@ -208,31 +208,43 @@
     "languages": "LANGUES"
   },
   "buildEyebrow": "QUOI NEWON LES",
-  "buildTitle": "Des produits aux expériences — un studio.",
+  "buildTitle": "Des apps au design — un Newon.",
   "buildAreas": [
     {
       "n": "01",
-      "title": "PRODUITS",
-      "body": "Les produits numériques que nous construisons et exploitons. Applications · AI · Jeux · Outils",
-      "href": "../products/"
+      "title": "Apps",
+      "body": "Nous opérons 11 apps publiées sur les stores. Le partage de données entre apps est une extension ultérieure.",
+      "href": "../apps/"
     },
     {
       "n": "02",
-      "title": "ENTREPRISES",
-      "body": "Constructions numériques et résolution de problèmes pour les entreprises et les fondateurs. Construire · Automatisation · Recherche · Solutions",
-      "href": "../business/"
+      "title": "AI",
+      "body": "Des fonctions d’AI sont disponibles dans certaines apps. L’automatisation pour les entreprises et un AI Agent sont une direction ultérieure.",
+      "href": "../ai/"
     },
     {
       "n": "03",
-      "title": "ÉTUDE",
-      "body": "Design de marque et d'expérience numérique. Marque · Digital · Contenu · IP",
-      "href": "../studio/"
+      "title": "LivOn",
+      "body": "Nous préparons une plateforme qui relie informations et services de vie, de l’adolescence aux 70 ans.",
+      "href": "../lifestage/"
     },
     {
       "n": "04",
-      "title": "LABES",
-      "body": "De petites expériences pour valider ce qui suit. Recherche · Prototype · Test",
-      "href": "../resources/labs/"
+      "title": "Ongil",
+      "body": "Nous préparons une plateforme de vie pour le quotidien des seniors, le soutien au soin et le lien familial.",
+      "href": "../ongil/"
+    },
+    {
+      "n": "05",
+      "title": "Business",
+      "body": "Des logiciels pour les entreprises, de l’automatisation à l’exploitation et à l’amélioration. Build · Automation · Solutions · Care",
+      "href": "../business/"
+    },
+    {
+      "n": "06",
+      "title": "Studio",
+      "body": "Identité, écrans et contenus, conçus comme un travail de design. Brand · UI/UX · Content",
+      "href": "../studio/"
     }
   ],
   "productAreasEyebrow": "DOMAINES DE PRODUITS",
@@ -387,5 +399,6 @@
   "closeTaglineEn": "",
   "closeProducts": "Afficher les produits →",
   "closeBusiness": "Enquête commerciale →",
-  "closePortfolio": "Portefeuille →"
+  "closePortfolio": "Portefeuille →",
+  "statusSoon": "Bientôt"
 }

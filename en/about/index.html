@@ -53,13 +53,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/styles.css?v=20260904a11y1" />
     <link rel="stylesheet" href="/gnav-mega.css?v=20260902nav1" />
-    <link rel="stylesheet" href="/hub-pages.css?v=20260826co3" />
+    <link rel="stylesheet" href="/hub-pages.css?v=20260924foot1" />
     <link rel="stylesheet" href="/about-page.css?v=20260923vent3" />
     <script src="/theme-shell.js?v=20260904perf1"></script>
     <script src="/analytics.js?v=20260904sec1" defer></script>
     <script src="/lang-nav.js?v=20260821stay2"></script>
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover4" />
-</head>
+    <link rel="stylesheet" href="/site-dark.css?v=20260924foot1" />
+    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
+  </head>
   <body>
     <a class="skip-link" href="#about-main">Skip to content</a>
     <header class="gnav site-header gnav--five" data-gnav>
@@ -250,7 +252,7 @@
       <span class="gnav-mega__row-n" aria-hidden="true">04</span>
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">CARE</span>
-        <span class="gnav-mega__row-desc">Maintenance and operations after launch</span>
+        <span class="gnav-mega__row-desc">Maintenance, operations, and improvements</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a><a class="gnav-mega__row" href="../resources/insights/" role="menuitem">
@@ -319,13 +321,6 @@
       <span class="gnav-mega__row-main">
         <span class="gnav-mega__row-title">Store</span>
         <span class="gnav-mega__row-desc">Templates · guides · digital goods</span>
-      </span>
-      <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
-    </a><a class="gnav-mega__row" href="../resources/labs/" role="menuitem">
-      <span class="gnav-mega__row-n" aria-hidden="true">07</span>
-      <span class="gnav-mega__row-main">
-        <span class="gnav-mega__row-title">Labs</span>
-        <span class="gnav-mega__row-desc">Experiments · ventures · ideas</span>
       </span>
       <span class="gnav-mega__row-arrow" aria-hidden="true">→</span>
     </a>
@@ -398,26 +393,26 @@
           <div class="gnav__util">
             <a class="gnav__cta" href="../business/inquiry/">Contact</a>
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-gnav-hub">Language</label>
-    <select id="lang-select-gnav-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Language">
+    <label class="visually-hidden" for="lang-select-gnav-legacy">Language</label>
+    <select id="lang-select-gnav-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Language">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">English</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Deutsch</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonesia</option>
     </select>
   </div>
             <button type="button" class="gnav__theme" data-theme-toggle data-label-light="Switch to light mode" data-label-dark="Switch to dark mode" title="Toggle theme" aria-label="Switch to dark mode"><svg class="gnav__theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-hub" aria-label="Menu">
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-legacy" aria-label="Menu">
               <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
             </button>
           </div>
         </div>
       </div>
-      <div id="gnav-mobile-hub" class="gnav-mobile" hidden aria-hidden="true">
+      <div id="gnav-mobile-legacy" class="gnav-mobile" hidden aria-hidden="true">
       <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="Close"></button>
       <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="Menu">
         <div class="gnav-mobile__scroll">
           <div class="gnav-mobile__util-row">
             <div class="gnav__lang" data-lang-switcher>
-    <label class="visually-hidden" for="lang-select-mobile-hub">Language</label>
-    <select id="lang-select-mobile-hub" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Language">
+    <label class="visually-hidden" for="lang-select-mobile-legacy">Language</label>
+    <select id="lang-select-mobile-legacy" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="Language">
       <option value="ko" data-short="KO">한국어</option><option value="en" data-short="EN">English</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Deutsch</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonesia</option>
     </select>
   </div>
@@ -464,7 +459,7 @@
           <a class="gnav-mobile__acc-link" href="../studio/">Studio</a>
           <button type="button" class="gnav-mobile__acc-toggle" aria-expanded="false" aria-label="Studio"><svg class="gnav-dd__chev-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
-        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../studio/brand/">BRAND</a><a class="gnav-mobile__sublink" href="../studio/digital/">DIGITAL DESIGN</a><a class="gnav-mobile__sublink" href="../studio/content/">CONTENT &amp; CAMPAIGN</a><a class="gnav-mobile__sublink" href="../studio/ip/">CREATIVE LAB</a><a class="gnav-mobile__sublink" href="../studio/care/">DESIGN CARE</a><a class="gnav-mobile__sublink" href="../resources/store/">Store</a><a class="gnav-mobile__sublink" href="../resources/labs/">Labs</a></div>
+        <div class="gnav-mobile__acc-panel" hidden><a class="gnav-mobile__sublink" href="../studio/brand/">BRAND</a><a class="gnav-mobile__sublink" href="../studio/digital/">DIGITAL DESIGN</a><a class="gnav-mobile__sublink" href="../studio/content/">CONTENT &amp; CAMPAIGN</a><a class="gnav-mobile__sublink" href="../studio/ip/">CREATIVE LAB</a><a class="gnav-mobile__sublink" href="../studio/care/">DESIGN CARE</a><a class="gnav-mobile__sublink" href="../resources/store/">Store</a></div>
       </div>
         <div class="gnav-mobile__acc" data-gnav-acc>
         <div class="gnav-mobile__acc-head">
@@ -585,7 +580,7 @@
     </article><article class="ab-mission__card">
       <span class="ab-mission__n">03</span>
       <h3 class="ab-mission__card-title">EXPAND</h3>
-      <p class="ab-mission__card-body">Expand proven work through Business, Studio, and Labs.</p>
+      <p class="ab-mission__card-body">Expand proven work through Business and Studio.</p>
     </article></div>
   </div>
 </section>
@@ -594,47 +589,63 @@
     <header class="ab-build-sec__intro">
       <div class="ab-build-sec__kicker">
         <p class="ab-eyebrow">WHAT NEWON DOES</p>
-        <span class="ab-build-sec__meta" aria-hidden="true">Studio · 4</span>
+        <span class="ab-build-sec__meta" aria-hidden="true">Newon · 6</span>
       </div>
-      <h2 id="ab-build-title" class="ab-title ab-title--wide">From products to experiments — one studio.</h2>
+      <h2 id="ab-build-title" class="ab-title ab-title--wide">From apps to design — one Newon.</h2>
     </header>
     <div class="ab-build-board">
       <div class="ab-build-board__head" aria-hidden="true">
         <span class="ab-build-board__live"><i></i> AREAS</span>
-        <span>PRODUCTS · BUSINESS · STUDIO · LABS</span>
+        <span>APPS · AI · LIVON · ONGIL · BUSINESS · STUDIO</span>
       </div>
-      <div class="ab-build"><a class="ab-build__card" href="../products/" style="--ab-i:0">
+      <div class="ab-build"><a class="ab-build__card" href="../apps/" style="--ab-i:0">
       <div class="ab-build__top">
         <span class="ab-build__n">01</span>
         <span class="ab-build__go" aria-hidden="true">↗</span>
       </div>
-      <h3 class="ab-build__title">PRODUCTS</h3>
-      <p class="ab-build__body">Digital products we build and operate.</p>
-      <ul class="ab-build__tags" aria-hidden="true"><li>Apps</li><li>AI</li><li>Games</li><li>Tools</li></ul>
-    </a><a class="ab-build__card" href="../business/" style="--ab-i:1">
+      <h3 class="ab-build__title">Apps</h3>
+      <p class="ab-build__body">We operate 11 apps that are on the stores. Sharing data across apps is a later, staged expansion.</p>
+      
+    </a><a class="ab-build__card" href="../ai/" style="--ab-i:1">
       <div class="ab-build__top">
         <span class="ab-build__n">02</span>
         <span class="ab-build__go" aria-hidden="true">↗</span>
       </div>
-      <h3 class="ab-build__title">BUSINESS</h3>
-      <p class="ab-build__body">Digital builds and problem-solving for companies and founders.</p>
-      <ul class="ab-build__tags" aria-hidden="true"><li>Build</li><li>Automation</li><li>Research</li><li>Solutions</li></ul>
-    </a><a class="ab-build__card" href="../studio/" style="--ab-i:2">
+      <h3 class="ab-build__title">AI</h3>
+      <p class="ab-build__body">AI features in some apps are available now. Enterprise automation and an AI Agent are a later direction.</p>
+      
+    </a><a class="ab-build__card" href="../lifestage/" style="--ab-i:2">
       <div class="ab-build__top">
         <span class="ab-build__n">03</span>
         <span class="ab-build__go" aria-hidden="true">↗</span>
       </div>
-      <h3 class="ab-build__title">STUDIO</h3>
-      <p class="ab-build__body">Brand and digital experience design.</p>
-      <ul class="ab-build__tags" aria-hidden="true"><li>Brand</li><li>Digital</li><li>Content</li><li>IP</li></ul>
-    </a><a class="ab-build__card" href="../resources/labs/" style="--ab-i:3">
+      <h3 class="ab-build__title">LivOn</h3>
+      <p class="ab-build__body">A platform in preparation, connecting information and living services from the teens through the 70s.</p>
+      
+    </a><a class="ab-build__card" href="../ongil/" style="--ab-i:3">
       <div class="ab-build__top">
         <span class="ab-build__n">04</span>
         <span class="ab-build__go" aria-hidden="true">↗</span>
       </div>
-      <h3 class="ab-build__title">LABS</h3>
-      <p class="ab-build__body">Small experiments to validate what’s next.</p>
-      <ul class="ab-build__tags" aria-hidden="true"><li>Research</li><li>Prototype</li><li>Testing</li></ul>
+      <h3 class="ab-build__title">Ongil</h3>
+      <p class="ab-build__body">A living platform in preparation for seniors’ daily life, care support, and family connection.</p>
+      
+    </a><a class="ab-build__card" href="../business/" style="--ab-i:4">
+      <div class="ab-build__top">
+        <span class="ab-build__n">05</span>
+        <span class="ab-build__go" aria-hidden="true">↗</span>
+      </div>
+      <h3 class="ab-build__title">Business</h3>
+      <p class="ab-build__body">Software for companies and operators, from automation through operations and improvement.</p>
+      <ul class="ab-build__tags" aria-hidden="true"><li>Build</li><li>Automation</li><li>Solutions</li><li>Care</li></ul>
+    </a><a class="ab-build__card" href="../studio/" style="--ab-i:5">
+      <div class="ab-build__top">
+        <span class="ab-build__n">06</span>
+        <span class="ab-build__go" aria-hidden="true">↗</span>
+      </div>
+      <h3 class="ab-build__title">Studio</h3>
+      <p class="ab-build__body">Identity, screens, and content, designed as design work.</p>
+      <ul class="ab-build__tags" aria-hidden="true"><li>Brand</li><li>UI/UX</li><li>Content</li></ul>
     </a></div>
     </div>
   </div>
@@ -652,8 +663,8 @@
         
       </div>
       <h3 class="ab-mission__card-title">NEWON AI</h3>
-      <p class="ab-mission__card-body">AI for people and companies. Personal AI supports daily life and information search; the direction also includes enterprise knowledge search, workflow automation, and custom AI agents.</p>
-      <ul class="ab-build__tags ab-ventures__notes"><li>Now — personal AI for daily life and information search</li><li>In development — enterprise knowledge search, automation, and custom agents. Not launched or offered to business customers yet.</li></ul>
+      <p class="ab-mission__card-body">Some apps already include AI features. Enterprise knowledge search, workflow automation, and custom AI agents are not launched yet.</p>
+      <ul class="ab-build__tags ab-ventures__notes"><li>Available — AI features in some apps</li><li>In development — enterprise knowledge search, automation, and custom agents. Not launched or offered to business customers yet.</li></ul>
       <p class="ab-section__more ab-ventures__links"><a class="ab-text-link" href="../ai/">Personal AI →</a><a class="ab-text-link" href="../ai/enterprise/">Enterprise AI →</a></p>
     </article><article class="ab-mission__card">
       <div class="ab-space__meta">
@@ -661,7 +672,7 @@
         <span class="ab-space__count">Planned expansion</span>
       </div>
       <h3 class="ab-mission__card-title">LivOn</h3>
-      <p class="ab-mission__card-body">A platform that connects information and services across life stages from teens to the 70s — school, work, independence, money, marriage, parenting, family, health, and retirement. LivOn is a planned expansion.</p>
+      <p class="ab-mission__card-body">A platform in preparation, connecting information and living services from the teens through the 70s.</p>
       
       <p class="ab-section__more ab-ventures__links"><a class="ab-text-link" href="../lifestage/">LivOn →</a></p>
     </article><article class="ab-mission__card">
@@ -670,7 +681,7 @@
         <span class="ab-space__count">Planned expansion</span>
       </div>
       <h3 class="ab-mission__card-title">Ongil</h3>
-      <p class="ab-mission__card-body">A living-and-care support platform for seniors and families — daily life, convenience, family connection, and exploring community and care services. Ongil does not currently provide care or medical services; it is a planned expansion.</p>
+      <p class="ab-mission__card-body">A platform in preparation for seniors’ daily life, care support, and family connection. Booking, payment, and partnerships are not connected yet.</p>
       
       <p class="ab-section__more ab-ventures__links"><a class="ab-text-link" href="../ongil/">Ongil →</a></p>
     </article></div>
@@ -688,7 +699,7 @@
     <div class="ab-glance__stage"><article class="ab-person ab-person--paper">
       <div class="ab-person__meta">
         <span class="ab-person__n">01</span>
-        <span class="ab-person__via">PRODUCTS</span>
+        <span class="ab-person__via">APPS</span>
       </div>
       <h3 class="ab-person__title">USERS</h3>
       <p class="ab-person__body">People who want daily life — habits, money, health, family, travel — to feel simpler.</p>
@@ -707,8 +718,8 @@
         <span class="ab-person__via">BUSINESS · STUDIO</span>
       </div>
       <h3 class="ab-person__title">COMPANIES</h3>
-      <p class="ab-person__body">Companies and brands building digital services, automation, research, and brand experience.</p>
-      <ul class="ab-person__tags" aria-label="Focus"><li>Automation</li><li>Research</li><li>Brand</li></ul>
+      <p class="ab-person__body">Companies and brands building digital services, automation, Care, and brand experience.</p>
+      <ul class="ab-person__tags" aria-label="Focus"><li>Automation</li><li>Care</li><li>Brand</li></ul>
     </article></div>
   </div>
 </section>
@@ -912,8 +923,8 @@
         <span class="ab-journey__line" aria-hidden="true"></span>
       </div>
       <div class="ab-journey__copy">
-        <h3 class="ab-journey__title">Business · Studio · Labs</h3>
-        <p class="ab-journey__body">Expand product experience into work with companies through Business, Studio, and Labs.</p>
+        <h3 class="ab-journey__title">Business · Studio</h3>
+        <p class="ab-journey__body">Expand product experience into work with companies through Business and Studio.</p>
       </div>
     </li><li class="ab-journey__step" style="--ab-i:3">
       <div class="ab-journey__marker">
@@ -942,7 +953,7 @@
   <div class="ab-inner">
     <p class="ab-eyebrow">SELECTED PRODUCTS</p>
     <h2 id="ab-selected-title" class="ab-title">Products Newon builds directly.</h2>
-    <p class="ab-lead">Representative products Newon plans, builds, and operates.</p>
+    <p class="ab-lead">Representative products Newon plans and builds.</p>
     <div class="ab-universe"><a class="ab-product" href="../#ox-month">
         <div class="ab-product__head">
           <span class="ab-product__logo"><img src="/ox-month-logo.png" alt="" width="72" height="72" loading="lazy" decoding="async" /></span>
@@ -1069,7 +1080,7 @@
           <span class="ab-product__logo"><img src="/eaton-logo.png" alt="" width="72" height="72" loading="lazy" decoding="async" /></span>
           <div class="ab-product__top">
             <span class="ab-product__cat">Food / Life</span>
-            <span class="ab-product__status">Live</span>
+            <span class="ab-product__status">Coming soon</span>
           </div>
         </div>
         <h3 class="ab-product__name">EatOn</h3>
@@ -1080,7 +1091,7 @@
           <span class="ab-product__logo"><img src="/fiton-logo.png" alt="" width="72" height="72" loading="lazy" decoding="async" /></span>
           <div class="ab-product__top">
             <span class="ab-product__cat">Sports / Fitness</span>
-            <span class="ab-product__status">Live</span>
+            <span class="ab-product__status">Coming soon</span>
           </div>
         </div>
         <h3 class="ab-product__name">FitOn</h3>
@@ -1167,32 +1178,21 @@
   </div>
 </section>
     </main>
-    <footer class="site-footer studio-footer--compact" data-site-footer>
-    <div class="container studio-footer__inner">
-      <div class="studio-footer__brand">
-        <a class="studio-footer__logo" href="../">Newon</a>
-        <p class="studio-footer__tag">Digital Product Studio</p>
-      </div>
-      <div class="studio-footer__links">
-        <a href="../about/">About Newon</a>
-        <a href="../business/">Business</a>
-        <a href="../studio/">Studio</a>
-        <a href="../business/inquiry/">Contact</a>
-      </div>
-      <div class="studio-footer__social">
-        <a href="https://www.threads.com/@newon.app.dev?invite=0" rel="noopener noreferrer" target="_blank">Threads</a>
-        <a href="https://m.blog.naver.com/newonapp" rel="noopener noreferrer" target="_blank">Blog</a>
-        <a href="https://www.tiktok.com/@newon.app?_r=1&_t=ZS-95LGrSuOcfF" rel="noopener noreferrer" target="_blank">TikTok</a>
-      </div>
-      <p class="studio-footer__legal">
-        <a class="footer-legal" href="../privacy/">Privacy</a>
-        <a class="footer-legal" href="../terms/">Terms</a>
-        <a class="footer-legal" href="../products/">Products</a>
-      </p>
+    <footer class="site-footer site-footer--brand studio-footer--compact" data-site-footer>
+    <div class="container site-foot">
+      <a class="site-foot__brand" href="../">
+        <img src="/logo-nav.png" alt="" width="34" height="34" />
+        <span>Newon</span>
+      </a>
+      <a class="site-foot__url" href="https://newon.app">https://newon.app</a>
+      <p class="site-foot__tagline">Connecting ideas to reality—and making everyday life easier as a global life platform.</p>
+      <nav class="site-foot__nav" aria-label="Footer"><a href="../products/">Apps</a><a href="../ai/">AI</a><a href="../lifestage/">LivOn</a><a href="../ongil/">Ongil</a><a href="../business/">Business</a><a href="../studio/">Studio</a><a href="../about/">Company</a><a href="../privacy/">Privacy Policy</a><a href="../terms/">Terms of Service</a></nav>
+      <div class="site-foot__icons" role="group" aria-label="Contact and social"><a class="site-foot__icon" href="mailto:newon@newon.app" aria-label="Email newon@newon.app"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" points="22,6 12,13 2,6"/></svg></a><a class="site-foot__icon" href="https://www.instagram.com/newon.app.global?igsh=MTdxZ3U3cjZyZ29p&amp;utm_source=qr" aria-label="Newon Instagram · opens in a new tab" target="_blank" rel="noopener noreferrer"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a class="site-foot__icon" href="https://youtube.com/@newonglobal?si=pviB1hC7yMuD_tXw" aria-label="Newon on YouTube · opens in a new tab" target="_blank" rel="noopener noreferrer"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a class="site-foot__icon" href="https://www.threads.com/@newon.app.dev?invite=0" aria-label="Newon on Threads · opens in a new tab" target="_blank" rel="noopener noreferrer"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.263 11.097c-.03-3.486-1.92-5.586-5.111-5.586-2.13 0-3.922.963-4.863 2.499l2.062 1.438c.535-.843 1.272-1.543 2.628-1.543 1.528 0 2.318.85 2.544 2.431a15 15 0 0 0-2.236-.173c-4.125 0-6.068 1.867-6.068 4.336s1.943 3.99 4.804 3.99c3.139 0 5.013-2.115 5.781-4.735.798.361 1.348 1.204 1.348 2.47 0 3.387-3.907 5.232-7.22 5.232-4.885 0-8.077-3.207-8.077-8.424 0-6.392 4.223-10.487 9.9-10.487 3.808 0 5.69 1.671 6.97 3.914l2.108-1.475C21.44 2.078 18.331 0 13.663 0 6.227 0 1.168 5.277 1.168 12.934c0 7 4.953 11.066 10.856 11.066 4.878 0 9.809-2.846 9.809-7.716 0-2.545-1.46-4.231-3.569-5.187m-6.33 4.855c-1.077 0-2.026-.512-2.026-1.453 0-1.483 1.822-1.934 3.606-1.934.678 0 1.34.045 1.927.173-.422 1.927-1.671 3.215-3.508 3.214Z"/></svg></a><a class="site-foot__icon" href="https://m.blog.naver.com/newonapp" aria-label="Newon on Naver Blog · opens in a new tab" target="_blank" rel="noopener noreferrer"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M5 2H19A3 3 0 0 1 22 5V19A3 3 0 0 1 19 22H5A3 3 0 0 1 2 19V5A3 3 0 0 1 5 2ZM8 6.5H10.2V10.5H16V17.5H8ZM11.8 12.7H14.2V15.3H11.8Z"/></svg></a><a class="site-foot__icon" href="https://www.tiktok.com/@newon.app?_r=1&amp;_t=ZS-95LGrSuOcfF" aria-label="Newon on TikTok · opens in a new tab" target="_blank" rel="noopener noreferrer"><svg class="site-foot__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.28v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></a></div>
+      <p class="site-foot__copy">© 2026 Newon. All rights reserved.</p>
     </div>
   </footer>
     <script src="/search.js?v=20260904a11y1" defer></script>
-    <script src="/site-chrome.js?v=20260920revert1" defer></script>
+    <script src="/site-chrome.js?v=20260904a11y1" defer></script>
     <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
     <script src="/about-page.js?v=20260828brand2" defer></script>
 </body>

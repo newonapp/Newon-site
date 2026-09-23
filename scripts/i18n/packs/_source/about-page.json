@@ -84,7 +84,7 @@
     {
       "n": "03",
       "title": "EXPAND",
-      "body": "Expand proven work through Business, Studio, and Labs."
+      "body": "Expand proven work through Business and Studio."
     }
   ],
   "glanceEyebrow": "WHO WE BUILD FOR",
@@ -94,7 +94,7 @@
     {
       "n": "01",
       "title": "USERS",
-      "via": "PRODUCTS",
+      "via": "APPS",
       "body": "People who want daily life — habits, money, health, family, travel — to feel simpler.",
       "tags": [
         "Habit",
@@ -119,10 +119,10 @@
       "n": "03",
       "title": "COMPANIES",
       "via": "BUSINESS · STUDIO",
-      "body": "Companies and brands building digital services, automation, research, and brand experience.",
+      "body": "Companies and brands building digital services, automation, Care, and brand experience.",
       "tags": [
         "Automation",
-        "Research",
+        "Care",
         "Brand"
       ]
     }
@@ -188,8 +188,8 @@
     },
     {
       "year": "EXPAND",
-      "title": "Business · Studio · Labs",
-      "body": "Expand product experience into work with companies through Business, Studio, and Labs.",
+      "title": "Business · Studio",
+      "body": "Expand product experience into work with companies through Business and Studio.",
       "isNow": true
     },
     {
@@ -208,31 +208,43 @@
     "languages": "LANGUAGES"
   },
   "buildEyebrow": "WHAT NEWON DOES",
-  "buildTitle": "From products to experiments — one studio.",
+  "buildTitle": "From apps to design — one Newon.",
   "buildAreas": [
     {
       "n": "01",
-      "title": "PRODUCTS",
-      "body": "Digital products we build and operate. Apps · AI · Games · Tools",
-      "href": "../products/"
+      "title": "Apps",
+      "body": "We operate 11 apps that are on the stores. Sharing data across apps is a later, staged expansion.",
+      "href": "../apps/"
     },
     {
       "n": "02",
-      "title": "BUSINESS",
-      "body": "Digital builds and problem-solving for companies and founders. Build · Automation · Research · Solutions",
-      "href": "../business/"
+      "title": "AI",
+      "body": "AI features in some apps are available now. Enterprise automation and an AI Agent are a later direction.",
+      "href": "../ai/"
     },
     {
       "n": "03",
-      "title": "STUDIO",
-      "body": "Brand and digital experience design. Brand · Digital · Content · IP",
-      "href": "../studio/"
+      "title": "LivOn",
+      "body": "A platform in preparation, connecting information and living services from the teens through the 70s.",
+      "href": "../lifestage/"
     },
     {
       "n": "04",
-      "title": "LABS",
-      "body": "Small experiments to validate what’s next. Research · Prototype · Testing",
-      "href": "../resources/labs/"
+      "title": "Ongil",
+      "body": "A living platform in preparation for seniors’ daily life, care support, and family connection.",
+      "href": "../ongil/"
+    },
+    {
+      "n": "05",
+      "title": "Business",
+      "body": "Software for companies and operators, from automation through operations and improvement. Build · Automation · Solutions · Care",
+      "href": "../business/"
+    },
+    {
+      "n": "06",
+      "title": "Studio",
+      "body": "Identity, screens, and content, designed as design work. Brand · UI/UX · Content",
+      "href": "../studio/"
     }
   ],
   "productAreasEyebrow": "PRODUCT AREAS",
@@ -304,7 +316,7 @@
   ],
   "selectedEyebrow": "SELECTED PRODUCTS",
   "selectedTitle": "Products Newon builds directly.",
-  "selectedLead": "Representative products Newon plans, builds, and operates.",
+  "selectedLead": "Representative products Newon plans and builds.",
   "selectedAll": "VIEW ALL PRODUCTS →",
   "selectedProductsMax": 14,
   "universeView": "View product ↗",
@@ -387,5 +399,6 @@
   "closeTaglineEn": "",
   "closeProducts": "View products →",
   "closeBusiness": "Business inquiry →",
-  "closePortfolio": "Portfolio →"
+  "closePortfolio": "Portfolio →",
+  "statusSoon": "Coming soon"
 }
