@@ -68,6 +68,12 @@ export const MEGA_DESTINATIONS = {
       href: "lifestage/",
       titleFb: "LivOn",
     },
+    {
+      titleKey: "nav.lifeStageStart",
+      descKey: "nav.lifeStageStartDesc",
+      href: "/livon/",
+      titleFb: "Start LivOn",
+    },
   ],
   ongil: [
     {
@@ -75,6 +81,12 @@ export const MEGA_DESTINATIONS = {
       descKey: "nav.ongilIntroDesc",
       href: "ongil/",
       titleFb: "Ongil",
+    },
+    {
+      titleKey: "nav.ongilStart",
+      descKey: "nav.ongilStartDesc",
+      href: "/ongil-start/",
+      titleFb: "Start Ongil",
     },
   ],
   business: [

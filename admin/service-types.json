@@ -72,6 +72,26 @@
     "label": "Design"
   },
   {
+    "value": "website-renewal",
+    "label": "Website Renewal"
+  },
+  {
+    "value": "improvement",
+    "label": "Web & App Improvement"
+  },
+  {
+    "value": "booking",
+    "label": "Booking & Customer Management"
+  },
+  {
+    "value": "maintenance",
+    "label": "Monthly Maintenance"
+  },
+  {
+    "value": "post-launch",
+    "label": "Post-launch Support"
+  },
+  {
     "value": "other",
     "label": "Other"
   }

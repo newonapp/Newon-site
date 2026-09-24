@@ -5,67 +5,70 @@ import { publicUrl } from "../data";
 import { FadeIn } from "./FadeIn";
 import { Magnet } from "./Magnet";
 
-function placeSideWords(img: HTMLImageElement, ceo: HTMLSpanElement, developer: HTMLSpanElement) {
-  const box = ceo.offsetParent as HTMLElement | null;
-  if (!box || !img.complete || !img.naturalWidth) return;
+function hairEdges(img: HTMLImageElement, box: HTMLElement, sampleY: number) {
   const ir = img.getBoundingClientRect();
   const br = box.getBoundingClientRect();
-  if (ir.width < 2 || ir.height < 2 || br.width < 2) return;
-
+  if (ir.width < 2 || ir.height < 2) return null;
   const scale = Math.min(1, 560 / ir.width);
   const canvas = document.createElement("canvas");
   canvas.width = Math.max(1, Math.round(ir.width * scale));
   canvas.height = Math.max(1, Math.round(ir.height * scale));
   const ctx = canvas.getContext("2d", { willReadFrequently: true });
-  if (!ctx) return;
+  if (!ctx) return null;
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-  const edgesAt = (offset: number) => {
-    const y = Math.max(0, Math.min(canvas.height - 1, Math.round((br.top + offset - ir.top) * scale)));
-    const row = ctx.getImageData(0, y, canvas.width, 1).data;
-    let hairL = -1;
-    let hairR = -1;
-    for (let x = 0; x < canvas.width; x += 1) {
-      if (row[x * 4 + 3] > 28) {
-        if (hairL < 0) hairL = x;
-        hairR = x;
-      }
+  const y = Math.max(0, Math.min(canvas.height - 1, Math.round((sampleY - ir.top) * scale)));
+  const row = ctx.getImageData(0, y, canvas.width, 1).data;
+  let hairL = -1;
+  let hairR = -1;
+  for (let x = 0; x < canvas.width; x += 1) {
+    if (row[x * 4 + 3] > 28) {
+      if (hairL < 0) hairL = x;
+      hairR = x;
     }
-    if (hairL < 0 || hairR < 0) return null;
-    return {
-      headL: ir.left - br.left + hairL / scale,
-      headR: ir.left - br.left + hairR / scale,
-    };
+  }
+  if (hairL < 0 || hairR < 0) return null;
+  return {
+    headL: ir.left - br.left + hairL / scale,
+    headR: ir.left - br.left + hairR / scale,
+    width: br.width,
   };
+}
 
-  const edges = edgesAt(22) || edgesAt(48) || edgesAt(8);
-  const headL = edges ? edges.headL : 0;
-  const headR = edges ? edges.headR : br.width;
-  const leftGap = headL;
-  const rightGap = br.width - headR;
-  const gap = Math.min(leftGap, rightGap);
+function placeSideWords(img: HTMLImageElement, ceo: HTMLSpanElement, developer: HTMLSpanElement) {
+  const box = ceo.offsetParent as HTMLElement | null;
+  const stage = box?.parentElement;
+  const title = stage?.querySelector("h1");
+  if (!box || !stage || !title || !img.complete || !img.naturalWidth) return;
+
+  title.style.fontSize = "";
+  const stageBox = stage.getBoundingClientRect();
+  const titleBottom = title.getBoundingClientRect().bottom - stageBox.top;
+  box.style.top = `${titleBottom + 10}px`;
 
   const probe = parseFloat(getComputedStyle(developer).fontSize) || 32;
-  const ratio = developer.getBoundingClientRect().width / probe;
+  const ratio = developer.getBoundingClientRect().width / Math.max(probe, 1);
   if (!Number.isFinite(ratio) || ratio < 2) return;
 
-  if (gap < 72) {
-    const fallback = Math.max(15, Math.min(22, (br.width * 0.46) / ratio));
-    ceo.style.fontSize = `${fallback}px`;
-    developer.style.fontSize = `${fallback}px`;
-    const ceoW = ceo.getBoundingClientRect().width;
-    const devW = developer.getBoundingClientRect().width;
-    const margin = 12;
-    ceo.style.left = `${margin + ceoW / 2}px`;
-    developer.style.left = `${br.width - margin - devW / 2}px`;
-    return;
+  const sampleY = title.getBoundingClientRect().bottom + 10 + 18;
+  const edges = hairEdges(img, box, sampleY);
+  const width = stageBox.width;
+  const headL = edges ? edges.headL : width * 0.34;
+  const headR = edges ? edges.headR : width * 0.66;
+  const gap = Math.min(headL, width - headR);
+  const margin = 14;
+  let size = Math.max(14, Math.min((Math.max(gap, 72) - margin * 2) / ratio, width * 0.04));
+  let ceoW = 0;
+  let devW = 0;
+  for (let i = 0; i < 8; i += 1) {
+    ceo.style.fontSize = `${size}px`;
+    developer.style.fontSize = `${size}px`;
+    ceoW = ceo.getBoundingClientRect().width;
+    devW = developer.getBoundingClientRect().width;
+    if (ceoW + margin * 2 <= headL && devW + margin * 2 <= width - headR) break;
+    size = Math.max(13, size * 0.88);
   }
-
-  const size = Math.min(Math.max((gap * 0.7) / ratio, 18), br.width * 0.056);
-  const leftCenter = leftGap / 2;
-  const rightCenter = headR + rightGap / 2;
-  ceo.style.fontSize = `${size}px`;
-  developer.style.fontSize = `${size}px`;
+  const leftCenter = Math.max(margin + ceoW / 2, Math.min(headL / 2, headL - margin - ceoW / 2));
+  const rightCenter = Math.min(width - margin - devW / 2, Math.max(headR + (width - headR) / 2, headR + margin + devW / 2));
   ceo.style.left = `${leftCenter}px`;
   developer.style.left = `${rightCenter}px`;
 }

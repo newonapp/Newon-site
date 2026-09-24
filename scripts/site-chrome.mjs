@@ -211,10 +211,19 @@ const MEGA_RENDERERS = {
   company: (f, fe, b, ld) => editorialMega(f, fe, b, "company", ld),
 };
 
-function navMegaItem(flat, flatEn, base, activeNav, id) {
+function navMegaItem(flat, flatEn, base, activeNav, id, langDir = "") {
   const label = navTopLabel(flat, flatEn, id);
   const active = activeNav === id ? " gnav-dd--active" : "";
   const openAttr = activeNav === id ? ' aria-current="page"' : "";
+  if (id === "lifestage" || id === "ongil") {
+    const dest = href(base, id === "lifestage" ? "lifestage/" : "ongil/", langDir);
+    return `<div class="gnav-dd${active}" data-gnav-dd data-gnav-menu="${id}">
+    <a class="gnav__link gnav-dd__label" href="${dest}"${openAttr}>${label}</a>
+    <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="${label}">
+      ${CHEVRON_SVG}
+    </button>
+  </div>`;
+  }
   return `<div class="gnav-dd${active}" data-gnav-dd data-gnav-menu="${id}">
     <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true"${openAttr}>
       ${label}${CHEVRON_SVG}
@@ -232,7 +241,7 @@ function navMegaPanel(flat, flatEn, base, id, langDir = "") {
 }
 
 function desktopNav(flat, flatEn, base, activeNav, langDir = "") {
-  const triggers = TOP_NAV.map((id) => navMegaItem(flat, flatEn, base, activeNav, id)).join("\n            ");
+  const triggers = TOP_NAV.map((id) => navMegaItem(flat, flatEn, base, activeNav, id, langDir)).join("\n            ");
   const panels = TOP_NAV.map((id) => navMegaPanel(flat, flatEn, base, id, langDir)).join("\n          ");
   return `<div class="gnav__nav-scroller">
             ${triggers}

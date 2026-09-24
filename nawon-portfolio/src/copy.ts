@@ -149,8 +149,8 @@ const ko = {
     { n: "05", title: "계속 움직인다", body: "완벽함보다 실행과 반복을 중요하게 봅니다." },
   ],
   contactHeading: "Let's build something great.",
-  contactLead: "만들고 싶은 일이 있나요?",
-  contactTalk: "이야기해 주세요.",
+  contactLead: "새로운 가능성을 함께 만들어갑니다",
+  contactTalk: "",
   blog: "블로그",
   portraitAlt: "경나원",
 };

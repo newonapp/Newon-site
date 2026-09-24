@@ -88,5 +88,30 @@
     "amount": 400000,
     "label": "Design",
     "custom": false
+  },
+  "website-renewal": {
+    "amount": 0,
+    "label": "Website Renewal",
+    "custom": true
+  },
+  "improvement": {
+    "amount": 0,
+    "label": "Web & App Improvement",
+    "custom": true
+  },
+  "booking": {
+    "amount": 0,
+    "label": "Booking & Customer Management",
+    "custom": true
+  },
+  "maintenance": {
+    "amount": 0,
+    "label": "Monthly Maintenance",
+    "custom": true
+  },
+  "post-launch": {
+    "amount": 0,
+    "label": "Post-launch Support",
+    "custom": true
   }
 }

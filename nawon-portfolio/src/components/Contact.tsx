@@ -10,17 +10,39 @@ export function Contact() {
         >
           {t.contactHeading}
         </h2>
-        <p className="mt-8 max-w-md text-lg font-light leading-snug text-mist sm:text-2xl">
+        <p className={isKo ? "mt-8 max-w-3xl text-2xl font-light leading-snug text-mist sm:text-4xl" : "mt-8 max-w-md text-lg font-light leading-snug text-mist sm:text-2xl"}>
           {t.contactLead}
-          <br />
-          {t.contactTalk}
+          {t.contactTalk ? (
+            <>
+              <br />
+              {t.contactTalk}
+            </>
+          ) : null}
         </p>
-        <a
-          href="mailto:newon@newon.app"
-          className="mt-10 inline-flex rounded-full bg-mist px-8 py-3.5 text-sm font-medium uppercase tracking-widest text-ink transition-opacity duration-200 hover:opacity-80 sm:px-12 sm:py-4 sm:text-base"
-        >
-          {t.contactMe}
-        </a>
+        {isKo ? null : (
+          <a
+            href="mailto:newon@newon.app"
+            className="mt-10 inline-flex rounded-full bg-mist px-8 py-3.5 text-sm font-medium uppercase tracking-widest text-ink transition-opacity duration-200 hover:opacity-80 sm:px-12 sm:py-4 sm:text-base"
+          >
+            {t.contactMe}
+          </a>
+        )}
+        {isKo ? (
+          <div className="mt-10 flex flex-wrap gap-3">
+            <a
+              href="https://www.newon.app/card-n7x4k9/"
+              className="inline-flex rounded-full bg-mist px-8 py-3.5 text-sm font-medium uppercase tracking-widest text-ink transition-opacity duration-200 hover:opacity-80 sm:px-12 sm:py-4 sm:text-base"
+            >
+              명함 보기
+            </a>
+            <a
+              href="https://www.newon.app/ir/"
+              className="inline-flex rounded-full bg-mist px-8 py-3.5 text-sm font-medium uppercase tracking-widest text-ink transition-opacity duration-200 hover:opacity-80 sm:px-12 sm:py-4 sm:text-base"
+            >
+              Newon IR 보기
+            </a>
+          </div>
+        ) : null}
         <p className="mt-6 text-base text-mist/80">
           <a href="mailto:newon@newon.app" className="underline-offset-4 hover:underline">
             newon@newon.app

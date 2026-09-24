@@ -6,26 +6,26 @@ export function Story() {
     <section className="relative z-10 -mt-10 rounded-t-[40px] bg-ink px-5 pb-8 pt-20 text-mist sm:-mt-12 sm:rounded-t-[50px] sm:px-8 sm:pt-24 md:-mt-14 md:rounded-t-[60px] md:px-10 md:pt-28">
       <div className="mx-auto max-w-6xl">
         <h2
-          className="hero-heading text-center font-black uppercase leading-none tracking-tight"
-          style={{ fontSize: "clamp(2.6rem, 10vw, 120px)" }}
+          className="hero-heading mx-auto max-w-full text-center font-black uppercase leading-none tracking-tight"
+          style={{ fontSize: "clamp(2.2rem, 7.4vw, 6.5rem)" }}
         >
           {t.numbersHeading}
         </h2>
-        <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:mt-16 lg:grid-cols-4">
+        <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 text-center sm:mt-16 lg:grid-cols-4">
           {t.stats.map((item, index) => (
             <FadeIn as="div" key={item.label} delay={index * 0.08} y={24}>
               <dt className={`text-sm ${isKo ? "tracking-normal" : "uppercase tracking-[0.18em]"} text-mist/55`}>{item.label}</dt>
-              <dd className="mt-2 font-black leading-none" style={{ fontSize: "clamp(3rem, 7vw, 88px)" }}>
+              <dd className="mt-2 font-black leading-none" style={{ fontSize: "clamp(2.6rem, 6vw, 5rem)" }}>
                 {item.value}
               </dd>
-              <dd className="mt-3 max-w-[16rem] text-sm font-light leading-relaxed text-mist/70 sm:text-base">{item.note}</dd>
+              <dd className="mx-auto mt-3 max-w-[14rem] text-sm font-light leading-relaxed text-mist/70 sm:text-base">{item.note}</dd>
             </FadeIn>
           ))}
         </dl>
 
         <h2
-          className="hero-heading mt-24 text-center font-black uppercase leading-none tracking-tight sm:mt-32"
-          style={{ fontSize: "clamp(2.6rem, 10vw, 120px)" }}
+          className="hero-heading mx-auto mt-28 max-w-full text-center font-black uppercase leading-none tracking-tight sm:mt-36"
+          style={{ fontSize: "clamp(2.2rem, 7.4vw, 6.5rem)" }}
         >
           {t.processHeading}
         </h2>
@@ -44,8 +44,8 @@ export function Story() {
         </FadeIn>
 
         <h2
-          className="hero-heading mt-24 text-center font-black uppercase leading-none tracking-tight sm:mt-32"
-          style={{ fontSize: "clamp(2.6rem, 10vw, 120px)" }}
+          className="hero-heading mx-auto mt-28 max-w-full text-center font-black uppercase leading-none tracking-tight sm:mt-36"
+          style={{ fontSize: "clamp(2.2rem, 7.4vw, 6.5rem)" }}
         >
           {t.principlesHeading}
         </h2>

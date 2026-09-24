@@ -187,7 +187,11 @@ html[data-newon-shell-theme="dark"] .gnav.site-header .gnav__nav-scroller::-webk
 
 .gnav.site-header .gnav__nav-scroller > .gnav-dd {
   flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
 }
+.gnav-dd > .gnav-dd__label { padding-right: 0.02rem; }
+.gnav-dd > .gnav-dd__trigger { padding-left: 0.02rem; padding-right: 0; }
 
 .gnav.site-header.gnav--five .gnav__nav-scroller {
   gap: clamp(0.55rem, 1.1vw, 1.15rem);

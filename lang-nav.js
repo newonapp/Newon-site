@@ -81,6 +81,8 @@
   /** Single-locale pages: never bounce to home on lang change. */
   var STAY_PUT_ROOTS = {
     "card-n7x4k9": 1,
+    livon: 1,
+    "ongil-start": 1,
   };
 
   function pathnameSegments() {

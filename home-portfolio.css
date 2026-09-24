@@ -284,10 +284,11 @@ html[data-newon-shell-theme="dark"] .hs-home:has(.np-home) {
 .np-row a {
   display: grid;
   gap: 0.8rem;
-  align-items: end;
-  padding: 2rem 0;
+  align-items: center;
+  padding: 1.6rem 0;
   text-decoration: none;
 }
+.np-row a > span:last-child { min-width: 0; }
 .np-row__n {
   font-family: Kanit, "Noto Sans KR", sans-serif;
   font-weight: 900;
@@ -327,6 +328,7 @@ html[data-newon-shell-theme="dark"] .hs-home:has(.np-home) {
   width: min(72rem, 100%);
   margin: 2.6rem auto 0;
   text-align: left;
+  align-items: stretch;
 }
 .np-vision {
   margin-top: -2rem;
@@ -344,9 +346,10 @@ html[data-newon-shell-theme="dark"] .hs-home:has(.np-home) {
 .np-en {
   display: block;
   margin-top: 0.7rem;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
   color: #fff !important;
 }
 .np-pillar h3 {
@@ -539,7 +542,16 @@ html[data-newon-shell-theme="dark"] .hs-home:has(.np-home) {
   -webkit-text-fill-color: #000;
 }
 .np-vision .np-pillar {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
   border-color: rgba(0, 0, 0, 0.22);
+}
+.np-vision .np-display {
+  max-width: 18ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 .np-end:not(.np-end--last) .np-pill {
   border-color: #000;
@@ -567,7 +579,7 @@ html[data-newon-shell-theme="dark"] .hs-home:has(.np-home) {
   .np-marquee__logo { width: 168px; height: 168px; }
   .np-services { border-radius: 50px 50px 0 0; }
   .np-vision { border-radius: 50px 50px 0 0; }
-  .np-row a { grid-template-columns: auto 1fr; gap: 2rem; }
+  .np-row a { grid-template-columns: 6.5rem minmax(0, 1fr); gap: 2rem; align-items: center; }
   .np-defs {
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: stretch;

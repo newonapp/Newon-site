@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ongil</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/assets/ongil-mark.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Instrument+Serif:ital@1&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css?v=20260904a11y1" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20260902nav1" />
+    <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
+    <link rel="stylesheet" href="/site-dark.css?v=20260924foot1" />
+    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
+    <script src="/theme-shell.js?v=20260904perf1"></script>
+    <script>
+      (function () {
+        var hash = (location.hash || "#ongil-home").slice(1);
+        var map = {
+          "ongil-home": "home", "home": "home",
+          "life": "life", "health": "health", "family": "family",
+          "care": "care", "learn": "learn", "community": "community",
+          "profile": "home", "saved": "home", "settings": "home", "support": "home", "share": "family"
+        };
+        document.documentElement.dataset.ogView = map[hash] || "home";
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#ongil-home">본문으로 건너뛰기</a>
+    <header class="gnav site-header gnav--five gnav--ongil" data-gnav>
+      <div class="gnav__bar">
+        <div class="gnav__inner">
+          <a class="gnav__brand" href="/ko/ongil/" aria-label="Ongil">
+            <img class="gnav__logo" src="/assets/ongil-mark.svg" alt="" width="40" height="40" decoding="async" />
+            <span class="gnav__wordmark">Ongil</span>
+          </a>
+          <nav class="gnav__nav" aria-label="Ongil 메뉴">
+            <div class="gnav__nav-scroller">
+              <div class="gnav-dd gnav-dd--active"><a class="gnav__link" href="#ongil-home" aria-current="page">홈</a></div>
+              <div class="gnav-dd"><a class="gnav__link" href="#life">내 생활</a></div>
+              <div class="gnav-dd"><a class="gnav__link" href="#health">건강 관리</a></div>
+              <div class="gnav-dd"><a class="gnav__link" href="#family">가족 연결</a></div>
+              <div class="gnav-dd"><a class="gnav__link" href="#care">돌봄·생활 서비스</a></div>
+              <div class="gnav-dd"><a class="gnav__link" href="#learn">배움·여가</a></div>
+              <div class="gnav-dd"><a class="gnav__link" href="#community">커뮤니티</a></div>
+            </div>
+          </nav>
+          <div class="gnav__util">
+            <div class="livon-tools" data-ongil-tools>
+              <button type="button" class="livon-tool" data-ongil-tool="search" aria-expanded="false" aria-controls="ongil-panel-search" aria-label="검색">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.25" stroke="currentColor" stroke-width="1.75"/><path d="M16 16.5L20 20.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+              </button>
+              <button type="button" class="livon-tool" data-ongil-tool="alerts" aria-expanded="false" aria-controls="ongil-panel-alerts" aria-label="알림">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.2 9.4a5.8 5.8 0 0 1 11.6 0c0 4.2 1.3 5.6 1.8 6.2H4.4c.5-.6 1.8-2 1.8-6.2Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M10 18.6a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+              </button>
+              <button type="button" class="livon-tool" data-ongil-tool="profile" aria-expanded="false" aria-controls="ongil-panel-profile" aria-label="마이">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8.2" r="3.1" stroke="currentColor" stroke-width="1.75"/><path d="M5.6 19.2c1.2-2.6 3.4-3.8 6.4-3.8s5.2 1.2 6.4 3.8" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+              </button>
+              <div class="livon-panel" id="ongil-panel-search" hidden>
+                <p class="livon-panel__title">통합 검색</p>
+                <form class="livon-search" data-ongil-search>
+                  <label class="visually-hidden" for="ongil-search-input">생활 정보, 서비스, 프로그램 검색</label>
+                  <input id="ongil-search-input" type="search" name="q" placeholder="생활 정보, 서비스, 프로그램" autocomplete="off" />
+                </form>
+                <p class="livon-panel__note" data-ongil-search-note>생활 정보 · 서비스 · 프로그램을 함께 찾습니다.</p>
+              </div>
+              <div class="livon-panel" id="ongil-panel-alerts" hidden>
+                <p class="livon-panel__title">알림</p>
+                <ul class="livon-panel__list">
+                  <li>일정</li>
+                  <li>복약</li>
+                  <li>가족 공유</li>
+                  <li>서비스 이용</li>
+                </ul>
+                <p class="livon-panel__note">등록된 알림이 없습니다.</p>
+              </div>
+              <div class="livon-panel livon-panel--menu" id="ongil-panel-profile" role="menu" hidden>
+                <p class="livon-panel__title">마이</p>
+                <a role="menuitem" href="#profile">프로필</a>
+                <a role="menuitem" href="#family">가족 연결</a>
+                <a role="menuitem" href="#share">공유 권한</a>
+                <a role="menuitem" href="#saved">저장한 정보</a>
+                <a role="menuitem" href="#settings">설정</a>
+                <a role="menuitem" href="#support">고객센터</a>
+              </div>
+            </div>
+            <div class="gnav__lang" data-lang-switcher>
+              <label class="visually-hidden" for="lang-select-ongil">언어</label>
+              <select id="lang-select-ongil" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="언어">
+                <option value="ko" data-short="KO" selected>한국어</option><option value="en" data-short="EN">English</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Deutsch</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonesia</option>
+              </select>
+            </div>
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-ongil" aria-label="메뉴">
+              <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="gnav-mobile-ongil" class="gnav-mobile" hidden aria-hidden="true">
+        <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="닫기"></button>
+        <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="메뉴">
+          <div class="gnav-mobile__scroll">
+            <a class="gnav-mobile__sublink" href="#ongil-home">홈</a>
+            <a class="gnav-mobile__sublink" href="#life">내 생활</a>
+            <a class="gnav-mobile__sublink" href="#health">건강 관리</a>
+            <a class="gnav-mobile__sublink" href="#family">가족 연결</a>
+            <a class="gnav-mobile__sublink" href="#care">돌봄·생활 서비스</a>
+            <a class="gnav-mobile__sublink" href="#learn">배움·여가</a>
+            <a class="gnav-mobile__sublink" href="#community">커뮤니티</a>
+          </div>
+        </div>
+      </div>
+    </header>
+        <main class="og">
+      <!-- HOME -->
+      <section class="og-screen" id="home" data-og-screen="home" aria-label="홈">
+        <section class="og-hero" id="ongil-home" aria-labelledby="ongil-title" data-og-film>
+          <div class="og-hero__frame">
+            <video class="og-hero__video" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4"></video>
+          </div>
+          <div class="og-hero__title" data-og-fade>
+            <h1 id="ongil-title" class="og-hero-title">Ongil</h1>
+          </div>
+          <div class="og-hero__foot" data-og-fade data-og-delay>
+            <p>시니어의 오늘을 한 화면에서 잇습니다. 일정과 생활, 건강 기록, 가족과 배움까지.</p>
+            <div class="og-hero__actions">
+              <a class="og-hero__primary" href="#life"><span>시작하기</span></a>
+              <a class="og-hero__secondary og-liquid-glass" href="#learn">배움·여가</a>
+            </div>
+            <p class="is-right">스스로의 하루를 잇는 생활.</p>
+          </div>
+        </section>
+
+        <section class="og-about" aria-labelledby="og-about-title">
+          <div class="og-about__card">
+            <p class="og-label">시니어 생활</p>
+            <h2 id="og-about-title" class="og-about__title" data-pull>
+              <span>Ongil은</span>
+              <span class="og-serif">스스로의 하루를 잇는 생활입니다.</span>
+              <span>건강과 돌봄에만 머물지 않고, 배움과 여가, 가족과의 연결까지 이어갑니다.</span>
+            </h2>
+            <p class="og-about__body" data-letters>건강 기록과 개인 일정은 가족에게 자동으로 공개하지 않습니다. 공유할 항목은 직접 고릅니다. 건강 관리는 진료·복약·검진처럼 직접 남기는 일정과 기록입니다. 의료 진단이나 치료 판단을 대신하지 않습니다.</p>
+          </div>
+        </section>
+
+        <section class="og-home" aria-labelledby="og-home-title">
+          <div class="bg-noise" aria-hidden="true"></div>
+          <div class="og-wrap">
+            <p class="og-label">01 홈</p>
+            <h2 id="og-home-title" class="og-h" data-pull>오늘 필요한 정보를 한눈에 보는 개인 맞춤 화면</h2>
+            <div class="og-chips">
+              <article class="og-chip"><h3>오늘의 일정</h3><p>등록된 일정이 없습니다.</p></article>
+              <article class="og-chip"><h3>오늘의 생활 정보</h3><p>등록된 생활 정보가 없습니다.</p></article>
+              <article class="og-chip"><h3>복약 알림</h3><p>등록된 복약 알림이 없습니다.</p></article>
+              <article class="og-chip"><h3>가족 소식</h3><p>공유된 가족 소식이 없습니다.</p></article>
+              <article class="og-chip"><h3>관심 지역 프로그램</h3><p>등록된 지역 프로그램이 없습니다.</p></article>
+              <article class="og-chip"><h3>자주 사용하는 서비스</h3><p>아직 연결한 서비스가 없습니다.</p></article>
+              <article class="og-chip"><h3>빠른 연락</h3><p>등록된 연락처가 없습니다.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="og-band og-mine" id="profile">
+          <div class="og-wrap">
+            <p class="og-label">마이</p>
+            <h2 class="og-h">프로필과 설정</h2>
+            <div class="og-chips">
+              <article class="og-chip" id="saved"><h3>저장한 정보</h3><p>저장한 항목이 없습니다.</p></article>
+              <article class="og-chip" id="settings"><h3>설정</h3><p>알림과 화면 설정은 로그인 이후 연결됩니다.</p></article>
+              <article class="og-chip" id="support"><h3>고객센터</h3><p>문의 채널은 아직 연결되지 않았습니다.</p></article>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- LIFE -->
+      <section class="og-screen" id="life" data-og-screen="life" aria-label="내 생활">
+        <section class="og-film" data-og-film>
+          <video class="og-film__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260407_043131_ebe2f0b5-9acc-4a4f-b2c1-7297f1a3beb9.mp4"></video>
+          <div class="og-film__lockup">
+            <div class="og-film__veil" aria-hidden="true"></div>
+            <p class="og-film__wordmark">MY LIFE</p>
+            <h1 class="og-film__slogan">매일 사용하는 생활을<br>한곳에서 이어가세요.</h1>
+            <p class="og-film__lead">캘린더, 할 일, 생활 습관부터<br>식사·운동 기록과 생활비까지.</p>
+          </div>
+        </section>
+        <section class="og-band">
+          <div class="og-wrap">
+            <p class="og-label">내 생활</p>
+            <h2 class="og-h">매일 사용하는 생활 관리 기능</h2>
+            <div class="og-chips">
+              <article class="og-chip"><h3>캘린더</h3><p>일정 관리</p></article>
+              <article class="og-chip"><h3>할 일</h3><p>오늘 할 일</p></article>
+              <article class="og-chip"><h3>생활 습관</h3><p>루틴 기록</p></article>
+              <article class="og-chip"><h3>식사·운동 기록</h3><p>일상 기록</p></article>
+              <article class="og-chip"><h3>생활비</h3><p>지출 정리</p></article>
+              <article class="og-chip"><h3>정기 납부</h3><p>납부 일정</p></article>
+              <article class="og-chip"><h3>장보기 목록</h3><p>쇼핑 준비</p></article>
+              <article class="og-chip"><h3>주거·집안일</h3><p>생활 관리</p></article>
+            </div>
+            <p class="og-empty">아직 기록된 생활이 없습니다.</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- HEALTH -->
+      <section class="og-screen" id="health" data-og-screen="health" aria-label="건강 관리">
+        <section class="og-film" data-og-film>
+          <video class="og-film__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4"></video>
+          <div class="og-film__lockup">
+            <div class="og-film__veil" aria-hidden="true"></div>
+            <p class="og-film__wordmark">HEALTH</p>
+            <h1 class="og-film__slogan">건강 일정과 기록을<br>스스로 정리하세요.</h1>
+            <p class="og-film__lead">진료·복약·검진처럼 직접 남기는 일정과 기록입니다.<br>의료 진단이나 치료 판단을 대신하지 않습니다.</p>
+          </div>
+        </section>
+        <section class="og-band">
+          <div class="og-wrap">
+            <p class="og-label">건강 관리</p>
+            <h2 class="og-h">건강 관련 일정과 개인 기록</h2>
+            <div class="og-chips">
+              <article class="og-chip"><h3>진료 일정</h3><p>직접 입력</p></article>
+              <article class="og-chip"><h3>복약 일정 및 알림</h3><p>직접 입력</p></article>
+              <article class="og-chip"><h3>건강 기록</h3><p>개인 기록</p></article>
+              <article class="og-chip"><h3>운동·활동 기록</h3><p>개인 기록</p></article>
+              <article class="og-chip"><h3>검진 일정</h3><p>직접 입력</p></article>
+              <article class="og-chip"><h3>건강 정보</h3><p>일반 정보</p></article>
+              <article class="og-chip"><h3>가족 공유 선택</h3><p>항목별 선택</p></article>
+            </div>
+            <p class="og-note">초기에는 직접 입력하는 일정·기록 관리입니다. 의료 진단이나 치료 판단과는 구분합니다.</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- FAMILY -->
+      <section class="og-screen" id="family" data-og-screen="family" aria-label="가족 연결">
+        <section class="og-film" data-og-film>
+          <video class="og-film__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260307_083826_e938b29f-a43a-41ec-a153-3d4730578ab8.mp4"></video>
+          <div class="og-film__lockup">
+            <div class="og-film__veil" aria-hidden="true"></div>
+            <p class="og-film__wordmark">FAMILY</p>
+            <h1 class="og-film__slogan">필요한 정보만<br>가족과 나눕니다.</h1>
+            <p class="og-film__lead">건강 기록과 개인 일정은 자동으로 공개하지 않습니다.<br>항목별 공유 범위를 직접 선택합니다.</p>
+          </div>
+        </section>
+        <section class="og-band">
+          <div class="og-wrap">
+            <p class="og-label">가족 연결</p>
+            <h2 class="og-h">선택적으로 나누는 가족 연결</h2>
+            <div class="og-chips">
+              <article class="og-chip"><h3>가족 초대</h3><p>연결 준비</p></article>
+              <article class="og-chip"><h3>가족 공유 일정</h3><p>함께 보는 일정</p></article>
+              <article class="og-chip"><h3>안부 메시지</h3><p>소통</p></article>
+              <article class="og-chip"><h3>가족 소식</h3><p>공유된 소식</p></article>
+              <article class="og-chip"><h3>공동 할 일</h3><p>함께 관리</p></article>
+              <article class="og-chip"><h3>중요 일정 알림</h3><p>알림</p></article>
+              <article class="og-chip" id="share"><h3>공유 정보 관리</h3><p>권한 설정</p></article>
+              <article class="og-chip"><h3>가족별 접근 권한</h3><p>항목별 선택</p></article>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- CARE -->
+      <section class="og-screen" id="care" data-og-screen="care" aria-label="돌봄·생활 서비스">
+        <section class="og-film" data-og-film>
+          <video class="og-film__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260815_032550_0386fe58-a20f-497e-bb07-d1266749cc01.mp4"></video>
+          <div class="og-film__lockup">
+            <div class="og-film__veil" aria-hidden="true"></div>
+            <p class="og-film__wordmark">CARE</p>
+            <h1 class="og-film__slogan">일상에 필요한 지원을<br>찾아보세요.</h1>
+            <p class="og-film__lead">돌봄·생활 서비스를 정보 탐색부터 차분히 살펴봅니다.</p>
+          </div>
+        </section>
+        <section class="og-band" id="care-body">
+          <div class="og-wrap">
+            <p class="og-label">돌봄·생활 서비스</p>
+            <h2 class="og-h">일상에 필요한 지원과 서비스</h2>
+            <p class="og-lead">일상에 필요한 지원과 서비스를 찾아보는 공간</p>
+            <div class="og-chips">
+              <article class="og-chip"><h3>돌봄 정보</h3><p>정보 탐색</p></article>
+              <article class="og-chip"><h3>방문 생활 지원</h3><p>정보 탐색</p></article>
+              <article class="og-chip"><h3>가사·식사 지원</h3><p>정보 탐색</p></article>
+              <article class="og-chip"><h3>이동 지원</h3><p>정보 탐색</p></article>
+              <article class="og-chip"><h3>지역 복지 서비스</h3><p>정보 탐색</p></article>
+              <article class="og-chip"><h3>공공 지원제도</h3><p>정보 탐색</p></article>
+              <article class="og-chip"><h3>서비스 비교</h3><p>정보 탐색</p></article>
+              <article class="og-chip"><h3>상담 문의</h3><p>정보 탐색</p></article>
+              <article class="og-chip"><h3>이용 일정 관리</h3><p>제공 체계가 마련된 뒤 연결됩니다.</p></article>
+            </div>
+            <p class="og-note">직접 제공하거나 제휴가 확정되지 않은 서비스는 정보 탐색으로 구분합니다. 예약·결제는 제공 체계가 마련된 뒤 추가합니다.</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- LEARN -->
+      <section class="og-screen" id="learn" data-og-screen="learn" aria-label="배움·여가">
+        <section class="og-film" data-og-film>
+          <video class="og-film__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260815_034306_229eccbe-fd8f-40fb-8002-9868ef2bb1a8.mp4"></video>
+          <div class="og-film__lockup">
+            <div class="og-film__veil" aria-hidden="true"></div>
+            <p class="og-film__wordmark">LEARN</p>
+            <h1 class="og-film__slogan">새로운 배움과 여가를<br>이어가세요.</h1>
+            <p class="og-film__lead">건강·돌봄에만 한정하지 않고,<br>스스로 배우고 즐기며 새로운 활동을 이어가는 공간입니다.</p>
+          </div>
+        </section>
+        <section class="og-band">
+          <div class="og-wrap">
+            <p class="og-label">배움·여가</p>
+            <h2 class="og-h">새로운 지식과 경험, 사회활동</h2>
+            <div class="og-chips">
+              <article class="og-chip"><h3>오늘의 이야기</h3><p>등록된 이야기가 없습니다.</p></article>
+              <article class="og-chip"><h3>생활 지식</h3><p>등록된 지식이 없습니다.</p></article>
+              <article class="og-chip"><h3>디지털 배움</h3><p>등록된 배움이 없습니다.</p></article>
+              <article class="og-chip"><h3>평생교육</h3><p>등록된 프로그램이 없습니다.</p></article>
+              <article class="og-chip"><h3>취미·문화</h3><p>등록된 프로그램이 없습니다.</p></article>
+              <article class="og-chip"><h3>여행</h3><p>등록된 정보가 없습니다.</p></article>
+              <article class="og-chip"><h3>운동 프로그램</h3><p>등록된 프로그램이 없습니다.</p></article>
+              <article class="og-chip"><h3>지역 행사</h3><p>등록된 행사가 없습니다.</p></article>
+              <article class="og-chip"><h3>동호회</h3><p>등록된 모임이 없습니다.</p></article>
+              <article class="og-chip"><h3>봉사·사회활동</h3><p>등록된 활동이 없습니다.</p></article>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- COMMUNITY -->
+      <section class="og-screen" id="community" data-og-screen="community" aria-label="커뮤니티">
+        <section class="og-film" data-og-film>
+          <video class="og-film__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_171521_25968ba2-b594-4b32-aab7-f6b69398a6fa.mp4"></video>
+          <div class="og-film__lockup">
+            <div class="og-film__veil" aria-hidden="true"></div>
+            <p class="og-film__wordmark">COMMUNITY</p>
+            <h1 class="og-film__slogan">경험과 관심사를<br>나누는 공간.</h1>
+            <p class="og-film__lead">비슷한 관심사를 가진 사람들과<br>이야기를 나누고 모임을 만나보세요.</p>
+          </div>
+        </section>
+        <section class="og-band" id="community-body">
+          <div class="og-wrap">
+            <p class="og-label">커뮤니티</p>
+            <h2 class="og-h">경험과 관심사를 나누는 소통 공간</h2>
+            <div class="og-chips">
+              <article class="og-chip"><h3>전체</h3></article>
+              <article class="og-chip"><h3>자유 이야기</h3></article>
+              <article class="og-chip"><h3>건강한 생활</h3></article>
+              <article class="og-chip"><h3>취미·문화</h3></article>
+              <article class="og-chip"><h3>배움</h3></article>
+              <article class="og-chip"><h3>여행</h3></article>
+              <article class="og-chip"><h3>지역 모임</h3></article>
+              <article class="og-chip"><h3>가족 이야기</h3></article>
+              <article class="og-chip"><h3>생활 정보</h3></article>
+              <article class="og-chip"><h3>질문과 답변</h3></article>
+            </div>
+            <p class="og-empty">등록된 게시글이 없습니다.</p>
+          </div>
+        </section>
+      </section>
+    </main>
+    <style>
+      body:has(.og) { padding-top: 0 !important; background: #000; color: #E1E0CC; }
+      .og, .og * { font-family: "Almarai", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .gnav--ongil .gnav__link { font-size: 0.92rem; white-space: nowrap; }
+      .livon-tools { position: relative; display: flex; align-items: center; gap: 0.15rem; margin-right: 0.35rem; }
+      .livon-tool { display: inline-flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; padding: 0; border: 0; border-radius: 999px; background: transparent; color: inherit; cursor: pointer; }
+      .livon-tool:hover, .livon-tool[aria-expanded="true"] { background: rgba(0,0,0,0.06); }
+      .livon-panel { position: absolute; top: calc(100% + 0.65rem); right: 0; z-index: 30; width: min(20rem, calc(100vw - 2rem)); padding: 1rem 1rem 0.85rem; background: #fff; color: #111; border: 1px solid rgba(0,0,0,0.08); border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+      .livon-panel__title { margin: 0 0 0.7rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; }
+      .livon-search input { width: 100%; height: 2.6rem; padding: 0 0.85rem; border: 1px solid rgba(0,0,0,0.14); border-radius: 10px; font: inherit; font-size: 0.95rem; }
+      .livon-panel__note { margin: 0.7rem 0 0.15rem; color: #666; font-size: 0.82rem; line-height: 1.45; }
+      .livon-panel__list { margin: 0; padding: 0; list-style: none; }
+      .livon-panel__list li, .livon-panel--menu a { display: flex; align-items: center; width: 100%; min-height: 2.4rem; padding: 0.35rem 0.15rem; border: 0; border-top: 1px solid rgba(0,0,0,0.06); background: transparent; color: inherit; font: inherit; font-size: 0.95rem; text-align: left; text-decoration: none; }
+      .livon-panel__list li:first-child, .livon-panel--menu a:first-of-type { border-top: 0; }
+      .noise-overlay, .bg-noise { position: absolute; inset: 0; pointer-events: none; }
+      .noise-overlay { opacity: 0.7; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.9'/></svg>"); }
+      .bg-noise { opacity: 0.15; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.85'/></svg>"); }
+      .og-plain-film { position: fixed; inset: 0; width: 100vw; height: 100vh; height: 100dvh; object-fit: cover; z-index: 0; pointer-events: none; }
+      .lm { position: relative; z-index: 2; height: 100svh; overflow: hidden; background: #000; color: #fff; }
+      .lm__vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out; }
+      .lm__vid.is-on { opacity: 1; }
+      .lm__float { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; pointer-events: none; transform: scale(1.03); animation: lmBob 3s ease-in-out infinite; }
+      @keyframes lmBob { 50% { transform: scale(1.03) translateY(-6px); } }
+      .lm__copy { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: calc(var(--gnav-h, 74px) + 1.5rem) 1.25rem 2rem; text-align: center; transition: color .7s ease; }
+      .lm__copy h2 { margin: 0; max-width: 18em; font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(2.4rem, 6vw, 5.5rem); line-height: 1.1; }
+      .lm.is-dark .lm__copy { color: #182C41; }
+      .lm__switch { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem 1.1rem; margin-top: 1.6rem; }
+      .lm__switch button { border: 0; border-bottom: 1px solid transparent; background: none; color: inherit; opacity: 0.5; font-family: system-ui, sans-serif; font-size: 0.82rem; cursor: pointer; padding: 0.2rem 0; }
+      .lm__switch button.is-on { opacity: 1; border-bottom-color: currentColor; }
+      .lm__switch button:hover { opacity: 0.8; }
+      .lm__switch button.is-on:hover { opacity: 1; }
+      /* Screen isolation — only active menu visible */
+      html[data-og-view] main > [data-og-screen] {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+      }
+      html[data-og-view="home"] main > #home,
+      html[data-og-view="life"] main > #life,
+      html[data-og-view="health"] main > #health,
+      html[data-og-view="family"] main > #family,
+      html[data-og-view="care"] main > #care,
+      html[data-og-view="learn"] main > #learn,
+      html[data-og-view="community"] main > #community {
+        display: block !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+      }
+      html[data-og-view="home"],
+      html[data-og-view="home"] body,
+      html[data-og-view="life"],
+      html[data-og-view="life"] body,
+      html[data-og-view="health"],
+      html[data-og-view="health"] body,
+      html[data-og-view="family"],
+      html[data-og-view="family"] body,
+      html[data-og-view="care"],
+      html[data-og-view="care"] body,
+      html[data-og-view="learn"],
+      html[data-og-view="learn"] body,
+      html[data-og-view="community"],
+      html[data-og-view="community"] body {
+        height: auto;
+        overflow: auto;
+        overflow-x: clip;
+      }
+      .og-screen { position: relative; z-index: 1; background: #000; }
+      .og-film {
+        position: relative; z-index: 1; isolation: isolate;
+        width: 100%; min-height: 100svh; height: 100svh;
+        overflow: hidden; background: #0a0a0a;
+      }
+      .og-film__bg {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        object-fit: cover; object-position: center 50%;
+        z-index: 1; pointer-events: none;
+      }
+      .og-film__lockup {
+        position: absolute; left: 50%; top: 48%; z-index: 3;
+        display: flex; flex-direction: column; align-items: center;
+        width: max-content; max-width: calc(100vw - 1.5rem);
+        margin: 0; padding: 1.4rem 0.75rem 1.6rem;
+        transform: translate(-50%, -50%); text-align: center;
+      }
+      .og-film__veil {
+        position: absolute; left: 50%; top: 46%; z-index: 0;
+        width: min(56rem, 130%); height: min(32rem, 160%);
+        transform: translate(-50%, -50%);
+        background: radial-gradient(ellipse 58% 52% at 50% 46%, rgba(8,16,18,0.28) 0%, rgba(8,16,18,0.12) 46%, rgba(8,16,18,0) 78%);
+        pointer-events: none;
+      }
+      .og-film__wordmark, .og-film__slogan, .og-film__lead, .og-film__actions {
+        position: relative; z-index: 1;
+        opacity: 0; transform: translateY(12px);
+      }
+      .og-film.is-ready .og-film__wordmark,
+      .og-film.is-ready .og-film__slogan,
+      .og-film.is-ready .og-film__lead,
+      .og-film.is-ready .og-film__actions {
+        opacity: 1; transform: translateY(0);
+        transition: opacity 0.9s ease, transform 0.9s ease;
+      }
+      .og-film.is-ready .og-film__wordmark { transition-delay: 0.12s; }
+      .og-film.is-ready .og-film__slogan { transition-delay: 0.3s; }
+      .og-film.is-ready .og-film__lead { transition-delay: 0.48s; }
+      .og-film.is-ready .og-film__actions { transition-delay: 0.64s; }
+      .og-film__wordmark {
+        margin: 0 0 1.65rem; color: #fff;
+        font-family: "Noto Sans", "Noto Sans KR", Almarai, sans-serif;
+        font-size: clamp(4.8rem, 16vw, 11rem);
+        font-weight: 700; letter-spacing: -0.055em; line-height: 1;
+        white-space: nowrap; width: max-content;
+        text-shadow: 0 10px 28px rgba(0,0,0,0.32);
+      }
+      .og-film__slogan {
+        margin: 0; color: #fff;
+        font-family: "Noto Sans KR", "Noto Sans", Almarai, sans-serif;
+        font-size: clamp(1.45rem, 3.2vw, 2.35rem);
+        font-weight: 650; letter-spacing: -0.045em; line-height: 1.28;
+        text-shadow: 0 8px 24px rgba(0,0,0,0.36);
+      }
+      .og-film__lead {
+        margin: 0.95rem 0 0; max-width: 32rem;
+        color: rgba(255,255,255,0.92);
+        font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+        font-weight: 430; letter-spacing: -0.02em; line-height: 1.62;
+        text-shadow: 0 6px 18px rgba(0,0,0,0.34);
+      }
+      .og-film__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.65rem; margin-top: 1.25rem; }
+      @media (prefers-reduced-motion: reduce) {
+        .og-film__wordmark, .og-film__slogan, .og-film__lead, .og-film__actions,
+        .og-film.is-ready .og-film__wordmark, .og-film.is-ready .og-film__slogan,
+        .og-film.is-ready .og-film__lead, .og-film.is-ready .og-film__actions,
+        .og-hero__title, .og-hero__foot,
+        .og-hero__title.is-in, .og-hero__foot.is-in {
+          opacity: 1 !important; transform: none !important; transition: none !important;
+        }
+      }
+      .og-hero {
+        position: relative;
+        z-index: 2;
+        height: 100svh;
+        min-height: 100svh;
+        padding: 0;
+        background: #000;
+        color: #fff;
+        overflow: hidden;
+      }
+      .og-hero__frame {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+        background: #000;
+        transform: scale(1.08);
+        transform-origin: center;
+      }
+      .og-hero__video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .og-hero-title {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(96px, 18vw, 280px);
+        line-height: 0.92;
+        letter-spacing: -0.02em;
+        color: #000;
+        text-align: center;
+        margin: 0;
+      }
+      .og-hero__title {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(var(--gnav-h, 74px) + 4px);
+        z-index: 2;
+        width: 100%;
+        padding: 0 1rem;
+        opacity: 0;
+        transform: translateY(1.5rem);
+        transition: opacity 1s, transform 1s;
+      }
+      .og-hero__title.is-in,
+      .og-hero__foot.is-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .og-hero__foot {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 3rem;
+        z-index: 2;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding: 0 2.5rem;
+        opacity: 0;
+        transform: translateY(1.5rem);
+        transition: opacity 1s 0.3s, transform 1s 0.3s;
+      }
+      .og-hero__foot p {
+        max-width: 220px;
+        margin: 0;
+        font-size: 0.875rem;
+        font-weight: 300;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.75);
+      }
+      .og-hero__foot p.is-right { text-align: right; }
+      .og-hero__actions {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        transform: translateX(-50%);
+      }
+      .og-hero__primary,
+      .og-hero__secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .og-hero__primary {
+        position: relative;
+        overflow: hidden;
+        background: #fff;
+        color: #000;
+      }
+      .og-hero__primary:hover { transform: scale(1.03); box-shadow: 0 0 24px 4px rgba(255,255,255,0.25); }
+      .og-hero__primary:active,
+      .og-hero__secondary:active { transform: scale(0.97); }
+      .og-hero__secondary { color: #fff; }
+      .og-hero__secondary:hover { transform: scale(1.03); }
+      .og-liquid-glass {
+        background: rgba(255,255,255,0.01);
+        background-blend-mode: luminosity;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+        position: relative;
+        overflow: hidden;
+      }
+      .og-liquid-glass::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1.4px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+      .og-plain-film { display: none !important; }
+      .og-about, .og-home, .og-features, .og-band { position: relative; background: transparent; color: #E1E0CC; }
+      .og-about::before, .og-home::before, .og-features::before, .og-band::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(180deg, rgba(0,0,0,0.42), rgba(0,0,0,0.32) 45%, rgba(0,0,0,0.62)); }
+      .og-about__card, .og-wrap { position: relative; z-index: 1; }
+      .og-about { padding: 4.5rem 1.25rem; }
+      .og-about__card { max-width: 72rem; margin: 0 auto; padding: 3.5rem 1.5rem; background: #101010; text-align: center; border-radius: 1.5rem; }
+      .og-label { margin: 0 0 1rem; color: #DEDBC8; font-size: 0.78rem; letter-spacing: 0.08em; }
+      .og-about__title { max-width: 46rem; margin: 0 auto; font-size: clamp(2rem, 5vw, 4.4rem); font-weight: 400; line-height: 0.95; }
+      .og-about__title span { display: inline; }
+      .og-serif, .og-serif * { font-family: "Instrument Serif", "Noto Serif KR", serif; font-style: italic; font-weight: 400; }
+      .og-about__body { max-width: 40rem; margin: 1.6rem auto 0; color: #DEDBC8; font-size: 1rem; font-weight: 300; line-height: 1.55; }
+      .og-about__body span { opacity: 0.2; }
+      .og-wrap { position: relative; z-index: 1; width: min(1180px, calc(100% - 2rem)); margin: 0 auto; padding: 4.5rem 0; }
+      .og-h { margin: 0 0 1.4rem; max-width: 18em; font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; color: #E1E0CC; }
+      .og-h .is-dim { display: block; color: #9ca3af; }
+      .og-lead, .og-note, .og-empty { color: #9ca3af; font-weight: 300; line-height: 1.5; }
+      .og-chips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem; }
+      .og-chip, .og-card { background: #212121; border-radius: 1.1rem; }
+      .og-chip { min-height: 7.5rem; padding: 1rem 1rem 1.1rem; }
+      .og-chip h3, .og-card h3 { margin: 0 0 0.4rem; color: #E1E0CC; font-size: 1.05rem; font-weight: 700; }
+      .og-chip p, .og-card li, .og-card__lead { margin: 0; color: #9ca3af; font-size: 0.86rem; font-weight: 300; line-height: 1.4; }
+      .og-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.45rem; align-items: stretch; }
+      .og-card { position: relative; min-height: 28rem; padding: 1rem; overflow: hidden; scroll-margin-top: 5.5rem; }
+      .og-card--video { padding: 0; }
+      .og-card--video video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .og-card--video p { position: absolute; left: 1rem; right: 1rem; bottom: 1rem; margin: 0; color: #E1E0CC; font-size: 1.35rem; }
+      .og-card img { width: 3rem; height: 3rem; border-radius: 0.7rem; object-fit: cover; }
+      .og-card h3 { margin-top: 1rem; font-size: 1.55rem; letter-spacing: -0.03em; }
+      .og-card h3 span { margin-left: 0.35rem; color: #9ca3af; font-size: 0.85rem; }
+      .og-card ul { margin: 0.8rem 0 0; padding: 0; list-style: none; }
+      .og-card li { position: relative; padding-left: 1.15rem; margin-top: 0.28rem; }
+      .og-card li::before { content: ""; position: absolute; left: 0; top: 0.35rem; width: 0.55rem; height: 0.55rem; border-radius: 999px; box-shadow: inset 0 0 0 1.5px #DEDBC8; }
+      .og-card .og-note, .og-card .og-empty { margin-top: 0.9rem; font-size: 0.82rem; }
+      .og-band { scroll-margin-top: 5.5rem; }
+      .og-mine { padding-bottom: 2rem; }
+      [data-pull] span { display: inline-block; }
+      .og-about__title span { display: inline; }
+      @media (max-width: 1100px) {
+        .og-grid, .og-chips { grid-template-columns: 1fr 1fr; }
+      }
+      @media (max-width: 860px) {
+        .og-hero__foot {
+          flex-direction: column;
+          align-items: center;
+          gap: 1.25rem;
+          bottom: 2rem;
+          padding: 0 1.25rem;
+        }
+        .og-hero__foot p {
+          max-width: 16rem;
+          text-align: center;
+        }
+        .og-hero__foot p.is-right { text-align: center; }
+        .og-hero__actions {
+          position: relative;
+          left: auto;
+          bottom: auto;
+          transform: none;
+          order: -1;
+        }
+        .og-hero-title { font-size: clamp(72px, 22vw, 160px); }
+      }
+      @media (max-width: 700px) {
+        .og-grid, .og-chips { grid-template-columns: 1fr; }
+        .og-card { min-height: 0; }
+        .og-card--video { min-height: 16rem; }
+        .gnav--ongil .gnav__nav { display: none; }
+      }
+    </style>
+    <script>
+      (function () {
+        function keepMoving(video) {
+          video.muted = true;
+          video.defaultMuted = true;
+          video.loop = true;
+          video.autoplay = true;
+          video.playsInline = true;
+          var play = video.play();
+          if (play && play.catch) play.catch(function () {});
+        }
+        function ogView(hash) {
+          hash = (hash || "").replace(/^#/, "");
+          if (!hash || hash === "ongil-home" || hash === "home" || hash === "profile" || hash === "saved" || hash === "settings" || hash === "support") return "home";
+          if (hash === "life") return "life";
+          if (hash === "health") return "health";
+          if (hash === "family" || hash === "share") return "family";
+          if (hash === "care") return "care";
+          if (hash === "learn") return "learn";
+          if (hash === "community") return "community";
+          return "home";
+        }
+        function pauseHiddenVideos(activeView) {
+          document.querySelectorAll("main > [data-og-screen]").forEach(function (screen) {
+            var on = screen.getAttribute("data-og-screen") === activeView;
+            screen.querySelectorAll("video").forEach(function (video) {
+              // First-screen film BGs stay warm/playing so menu switches never stall.
+              if (window.FilmKeep && window.FilmKeep.isHeroFilm && window.FilmKeep.isHeroFilm(video)) {
+                keepMoving(video);
+                return;
+              }
+              if (on) keepMoving(video);
+              else { try { video.pause(); } catch (e) {} }
+            });
+          });
+          if (window.FilmKeep && typeof window.FilmKeep.kick === "function") {
+            var screen = document.querySelector('main > [data-og-screen="' + activeView + '"]');
+            window.FilmKeep.kick(screen || document);
+          }
+        }
+        function revealFilms(root) {
+          (root || document).querySelectorAll("[data-og-film]").forEach(function (hero) {
+            if (hero.classList.contains("is-ready")) return;
+            var video = hero.querySelector("video");
+            var go = function () { hero.classList.add("is-ready"); };
+            if (!video) { go(); return; }
+            if (video.readyState >= 2) go();
+            else video.addEventListener("loadeddata", go, { once: true });
+            setTimeout(go, 700);
+          });
+          (root || document).querySelectorAll("[data-og-fade]").forEach(function (el) {
+            requestAnimationFrame(function () { el.classList.add("is-in"); });
+          });
+        }
+        function showOgScreen() {
+          var hash = (location.hash || "#ongil-home").slice(1);
+          var view = ogView(hash);
+          var prev = document.documentElement.dataset.ogView;
+          var switched = prev !== view;
+          document.documentElement.dataset.ogView = view;
+          document.querySelectorAll(".gnav__link, .gnav-mobile__sublink").forEach(function (link) {
+            var id = (link.getAttribute("href") || "").split("#")[1] || "ongil-home";
+            var on = ogView(id) === view;
+            if (on) link.setAttribute("aria-current", "page");
+            else link.removeAttribute("aria-current");
+            var group = link.closest(".gnav-dd");
+            if (group) group.classList.toggle("gnav-dd--active", on);
+          });
+          if (switched) {
+            window.scrollTo(0, 0);
+            pauseHiddenVideos(view);
+          }
+          var screen = document.querySelector('main > [data-og-screen="' + view + '"]');
+          if (screen) revealFilms(screen);
+          if (window.FilmKeep && typeof window.FilmKeep.kick === "function") {
+            window.FilmKeep.kick(screen || document);
+          }
+        }
+        document.addEventListener("click", function (event) {
+          var link = event.target.closest(".gnav__nav .gnav__link, .gnav-mobile__sublink");
+          if (!link) return;
+          var href = link.getAttribute("href") || "";
+          var hash = href.indexOf("#") >= 0 ? href.split("#")[1] : "";
+          if (!hash) return;
+          event.preventDefault();
+          if ((location.hash || "").slice(1) === hash) { showOgScreen(); return; }
+          location.hash = hash;
+        }, true);
+        window.addEventListener("hashchange", showOgScreen);
+        showOgScreen();
+        pauseHiddenVideos(document.documentElement.dataset.ogView || "home");
+        document.addEventListener("visibilitychange", function () {
+          if (document.visibilityState !== "visible") return;
+          pauseHiddenVideos(document.documentElement.dataset.ogView || "home");
+        });
+        document.querySelectorAll("video.og-hero__video, video.og-film__bg").forEach(function (video) {
+          keepMoving(video);
+          video.addEventListener("loadeddata", function () { keepMoving(video); });
+          video.addEventListener("waiting", function () { keepMoving(video); });
+          video.addEventListener("stalled", function () { keepMoving(video); });
+          video.addEventListener("error", function () { setTimeout(function () { keepMoving(video); }, 400); });
+          video.addEventListener("ended", function () { try { video.currentTime = 0; } catch (e) {} keepMoving(video); });
+        });
+      })();
+    </script>
+    <script src="/film-keep.js?v=20260925film3"></script>
+    <script src="/lang-nav.js?v=20260924ongil1"></script>
+    <script src="/site-chrome.js?v=20260924tab2" defer></script>
+    <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
+    <script>
+      (function () {
+        var root = document.querySelector("[data-ongil-tools]");
+        if (!root) return;
+        var buttons = root.querySelectorAll("[data-ongil-tool]");
+        function closeAll() {
+          buttons.forEach(function (btn) {
+            btn.setAttribute("aria-expanded", "false");
+            var panel = document.getElementById(btn.getAttribute("aria-controls"));
+            if (panel) panel.hidden = true;
+          });
+        }
+        buttons.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var panel = document.getElementById(btn.getAttribute("aria-controls"));
+            var open = btn.getAttribute("aria-expanded") === "true";
+            closeAll();
+            if (!open && panel) {
+              btn.setAttribute("aria-expanded", "true");
+              panel.hidden = false;
+              var field = panel.querySelector("input");
+              if (field) field.focus();
+            }
+          });
+        });
+        document.addEventListener("click", function (e) { if (!root.contains(e.target)) closeAll(); });
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeAll(); });
+        var form = root.querySelector("[data-ongil-search]");
+        var note = root.querySelector("[data-ongil-search-note]");
+        if (form && note) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            var q = String(new FormData(form).get("q") || "").trim();
+            note.textContent = q ? "‘" + q + "’에 대한 생활 정보, 서비스, 프로그램 결과가 없습니다." : "생활 정보 · 서비스 · 프로그램을 함께 찾습니다.";
+          });
+        }
+        var letters = document.querySelector("[data-letters]");
+        if (letters && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          var text = letters.textContent;
+          letters.textContent = "";
+          Array.from(text).forEach(function (ch) {
+            var s = document.createElement("span");
+            s.textContent = ch;
+            letters.appendChild(s);
+          });
+          var chars = letters.querySelectorAll("span");
+          function paint() {
+            var rect = letters.getBoundingClientRect();
+            var view = window.innerHeight || 1;
+            var start = view * 0.8;
+            var end = view * 0.2;
+            var progress = (start - rect.top) / (start - end + rect.height * 0.15);
+            chars.forEach(function (ch, i) {
+              var mark = i / chars.length;
+              var local = (progress - (mark - 0.1)) / 0.15;
+              ch.style.opacity = String(Math.max(0.2, Math.min(1, local)));
+            });
+          }
+          paint();
+          window.addEventListener("scroll", paint, { passive: true });
+        }
+      })();
+    </script>
+  </body>
+</html>

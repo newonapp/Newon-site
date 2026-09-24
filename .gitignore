@@ -40,6 +40,8 @@ scripts/.translate-cache.json
 promo/frames/
 
 # Local Cursor / preview scratch
+.tmp-*/
+.tmp-*
 .cursor-*.png
 .hero-*.png
 .hero-*.jpg

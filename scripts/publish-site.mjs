@@ -175,8 +175,9 @@ const PUBLISH_COPY_DIRS = [
   { from: "admin", to: "admin", required: false },
   { from: "oxmonth", to: "oxmonth", required: false },
   { from: "subping", to: "subping", required: false },
-  { from: "assets/hero-3d", to: "assets/hero-3d", required: true },
-  { from: "assets/hero-film", to: "assets/hero-film", required: true },
+  { from: "livon", to: "livon", required: true },
+  { from: "ongil-start", to: "ongil-start", required: true },
+  { from: "assets", to: "assets", required: true },
   { from: "vendor/three", to: "vendor/three", required: true },
   { from: "vendor/hls", to: "vendor/hls", required: false },
 ];
@@ -483,6 +484,14 @@ function verify() {
   required.push(path.join(OUT, "ko", "portfolio", "index.html"));
   required.push(path.join(OUT, "en", "portfolio", "index.html"));
   required.push(path.join(OUT, "ja", "portfolio", "index.html"));
+  required.push(path.join(OUT, "livon", "index.html"));
+  required.push(path.join(OUT, "livon", "ai-page.css"));
+  required.push(path.join(OUT, "livon", "explore-page.css"));
+  required.push(path.join(OUT, "ongil-start", "index.html"));
+  required.push(path.join(OUT, "assets", "livon-mark.jpg"));
+  required.push(path.join(OUT, "assets", "livon-mark-icon.jpg"));
+  required.push(path.join(OUT, "assets", "ongil-mark.svg"));
+  required.push(path.join(OUT, "film-keep.js"));
   required.push(path.join(OUT, "search-index.json"));
   required.push(path.join(OUT, "hub-pages.css"));
   required.push(path.join(OUT, "analytics.js"));

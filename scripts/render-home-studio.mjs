@@ -14,7 +14,7 @@ const CSS_VER = "20260922fix1";
 const JS_VER = "20260921nls1";
 const NLS_VER = "20260921nls1";
 const HC_VER = "20260922co2";
-const NP_VER = "20260924np11";
+const NP_VER = "20260924np12";
 
 function patchHome(html, body) {
   // Prefer HQ class; normalize legacy opener to HQ without touching hero.
