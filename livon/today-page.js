@@ -120,6 +120,32 @@
     return (c.sections || []).indexOf(key) >= 0;
   }
 
+
+  function lifeBoost(c, score, reasons) {
+    var stage = "";
+    try { stage = JSON.parse(localStorage.getItem("livon.lifeStage") || "\"\""); } catch (e) { stage = ""; }
+    var interests = [];
+    try { interests = JSON.parse(localStorage.getItem("livon.lifeInterests") || "[]"); } catch (e) { interests = []; }
+    if (!Array.isArray(interests)) interests = [];
+    var events = [];
+    try { events = JSON.parse(localStorage.getItem("livon.lifeEvents") || "[]"); } catch (e) { events = []; }
+    if (!Array.isArray(events)) events = [];
+    var catalog = (window.LivonLifeEvents && window.LivonLifeEvents.events) || [];
+    var blob = [c.title, c.blurb, c.category].concat(c.tags || []).join(" ").toLowerCase();
+    interests.forEach(function (it) {
+      if (blob.indexOf(String(it).toLowerCase()) >= 0) { score += 2; reasons.push("Life Stage 관심: " + it); }
+    });
+    events.forEach(function (id) {
+      var ev = catalog.find(function (e) { return e.id === id; });
+      if (!ev) return;
+      if (blob.indexOf(String(ev.title).toLowerCase()) >= 0) { score += 2; reasons.push("Life Event: " + ev.title); }
+      (ev.needs || []).forEach(function (n) {
+        if (blob.indexOf(String(n).toLowerCase().slice(0, 2)) >= 0) score += 1;
+      });
+    });
+    return { score: score, reasons: reasons };
+  }
+
   function scoreItem(c, p) {
     var score = 0;
     var reasons = [];
@@ -147,7 +173,8 @@
     });
     if (c.featured) score += 1;
     if (c.evergreen) score += 0.5;
-    return { score: score, reasons: reasons.slice(0, 2) };
+    var boosted = lifeBoost(c, score, reasons);
+    return { score: boosted.score, reasons: boosted.reasons.slice(0, 2) };
   }
 
   function daySeed() {

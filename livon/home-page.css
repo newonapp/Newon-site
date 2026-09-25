@@ -57,8 +57,8 @@
 #livon-home .lv-hm-display {
   margin: 0;
   padding: 0.08em 0 0.12em;
-  font-family: Kanit, "Noto Sans KR", sans-serif;
-  font-weight: 900;
+  font-family: "Noto Sans KR", "Noto Sans", Kanit, sans-serif;
+  font-weight: 700;
   font-size: clamp(2.15rem, 6vw, 84px);
   line-height: 1.08;
   letter-spacing: -0.04em;
@@ -542,17 +542,18 @@
 #livon-home .lv-hm-me__stage .lv-hm-eyebrow { color: rgba(255,255,255,0.45); }
 #livon-home .lv-hm-me__num {
   margin: 0.35rem 0 0;
-  font-family: Kanit, "Noto Sans KR", sans-serif;
+  font-family: "Noto Sans KR", "Noto Sans", Kanit, sans-serif;
   font-size: clamp(3.2rem, 8vw, 5.5rem);
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.06em;
   line-height: 0.92;
   color: #fff;
 }
 #livon-home .lv-hm-me__title {
   margin: 0;
+  font-family: "Noto Sans KR", "Noto Sans", Kanit, sans-serif;
   font-size: clamp(1.15rem, 2vw, 1.45rem);
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: -0.03em;
   color: rgba(255,255,255,0.88);
 }
@@ -587,8 +588,9 @@
 }
 #livon-home .lv-hm-me__form h3 {
   margin: 0;
+  font-family: "Noto Sans KR", "Noto Sans", Kanit, sans-serif;
   font-size: clamp(1.35rem, 2.4vw, 1.75rem);
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: -0.03em;
   color: #0c0c0c;
 }
@@ -658,39 +660,54 @@
 }
 
 /* MY DAY — magazine spread (hero + stats + shelf) */
-#livon-home .lv-hm-day { display: grid; gap: 1.5rem; }
+#livon-home .lv-hm-day { display: grid; gap: 1.75rem; }
 #livon-home .lv-hm-day__head {
   display: flex;
   flex-wrap: wrap;
   align-items: end;
   justify-content: space-between;
   gap: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 1.15rem;
   border-bottom: 1px solid #0c0c0c;
 }
 #livon-home .lv-hm-day__head h3 {
   margin: 0;
-  font-size: clamp(1.45rem, 2.6vw, 1.9rem);
-  font-weight: 750;
-  letter-spacing: -0.03em;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+  font-size: clamp(1.55rem, 2.8vw, 2.05rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
   color: #0c0c0c;
 }
+#livon-home .lv-hm-day__sub {
+  margin: 0.45rem 0 0;
+  max-width: 28rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #777;
+}
 #livon-home .lv-hm-day__head time {
-  font-family: Kanit, sans-serif;
-  font-size: 1.05rem;
+  font-family: "Noto Sans KR", "Noto Sans", Kanit, sans-serif;
+  font-size: 0.95rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   color: #888;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 999px;
+  background: #fff;
 }
 #livon-home .lv-hm-day__empty {
-  padding: 2.5rem 0;
+  padding: clamp(2.5rem, 5vw, 3.5rem) 1.5rem;
   text-align: center;
-  border-bottom: 1px solid #e8e8e8;
+  border: 1px solid #e8e8e8;
+  border-radius: 1.75rem;
+  background: #fafafa;
 }
 #livon-home .lv-hm-day__empty h4 {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 750;
+  margin: 0.35rem 0 0;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
   color: #0c0c0c;
 }
 #livon-home .lv-hm-day__empty > p {
@@ -699,58 +716,93 @@
   color: #666;
   line-height: 1.6;
 }
-#livon-home .lv-hm-day__empty .lv-hm-actions { justify-content: center; }
+#livon-home .lv-hm-day__empty .lv-hm-actions { justify-content: center; margin-top: 1.25rem; }
 #livon-home .lv-hm-day__spread {
   display: grid;
   gap: 1rem;
 }
 @media (min-width: 860px) {
   #livon-home .lv-hm-day__spread {
-    grid-template-columns: 1.35fr 0.65fr;
+    grid-template-columns: 1.4fr 0.7fr;
     grid-template-areas:
       "hero side"
       "shelf shelf";
+    gap: 1.1rem;
   }
   #livon-home .lv-hm-day__hero { grid-area: hero; }
   #livon-home .lv-hm-day__side { grid-area: side; }
   #livon-home .lv-hm-day__shelf { grid-area: shelf; }
 }
 #livon-home .lv-hm-day__hero {
+  position: relative;
   display: grid;
-  align-content: end;
-  gap: 0.65rem;
-  min-height: 18rem;
-  padding: 1.75rem 1.5rem;
-  border: 1px solid #0c0c0c;
-  border-radius: 1.75rem;
+  align-content: space-between;
+  gap: 1rem;
+  min-height: 19rem;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border-radius: 1.85rem;
   text-decoration: none;
-  color: #0c0c0c;
-  background: #fff;
-  transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease;
+  color: #fff;
+  background:
+    radial-gradient(ellipse 80% 70% at 85% 15%, rgba(255,255,255,0.12), transparent 55%),
+    linear-gradient(155deg, #1a1a1a 0%, #0c0c0c 55%, #050505 100%);
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease;
+}
+#livon-home .lv-hm-day__hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -40% 40%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 65%);
+  pointer-events: none;
 }
 #livon-home .lv-hm-day__hero:hover {
-  background: #0c0c0c;
-  color: #fff;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(12,12,12,0.18);
 }
-#livon-home .lv-hm-day__hero:hover .lv-hm-eyebrow,
-#livon-home .lv-hm-day__hero:hover .lv-hm-day__when,
-#livon-home .lv-hm-day__hero:hover .lv-hm-day__more em { color: rgba(255,255,255,0.55); }
+#livon-home .lv-hm-day__hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+#livon-home .lv-hm-day__hero .lv-hm-eyebrow { color: rgba(255,255,255,0.5); margin: 0; }
 #livon-home .lv-hm-day__hero h4 {
+  position: relative;
+  z-index: 1;
   margin: 0;
-  font-size: clamp(1.85rem, 4vw, 2.85rem);
-  font-weight: 850;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 700;
   letter-spacing: -0.045em;
-  line-height: 1.1;
+  line-height: 1.12;
+  color: #fff;
 }
 #livon-home .lv-hm-day__when {
-  font-family: Kanit, sans-serif;
-  font-size: 1rem;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+  font-size: 0.78rem;
   font-weight: 600;
-  color: #888;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.72);
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+}
+#livon-home .lv-hm-day__hint {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.5;
 }
 #livon-home .lv-hm-day__more {
-  margin: 0.5rem 0 0;
+  position: relative;
+  z-index: 1;
+  margin: 0.25rem 0 0;
   padding: 0;
   list-style: none;
   display: grid;
@@ -760,84 +812,118 @@
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 600;
-  border-top: 1px solid currentColor;
-  padding-top: 0.4rem;
-  opacity: 0.85;
+  border-top: 1px solid rgba(255,255,255,0.16);
+  padding-top: 0.45rem;
+  color: rgba(255,255,255,0.88);
 }
 #livon-home .lv-hm-day__more em {
   font-style: normal;
-  font-family: Kanit, sans-serif;
-  font-size: 0.85rem;
-  color: #888;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
 }
 #livon-home .lv-hm-day__cta {
-  margin-top: 0.75rem;
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
   font-size: 0.9rem;
   font-weight: 700;
+  color: #fff;
 }
+#livon-home .lv-hm-day__cta i {
+  font-style: normal;
+  transition: transform 0.2s ease;
+}
+#livon-home .lv-hm-day__hero:hover .lv-hm-day__cta i { transform: translateX(3px); }
 #livon-home .lv-hm-day__side {
   display: grid;
   gap: 1rem;
 }
 #livon-home .lv-hm-stat {
   display: grid;
-  gap: 0.2rem;
+  gap: 0.85rem;
   padding: 1.25rem 1.2rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 1.35rem;
+  border: 1px solid #e4e4e4;
+  border-radius: 1.45rem;
   text-decoration: none;
   color: #0c0c0c;
   background: #fff;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease;
 }
 #livon-home .lv-hm-stat:hover {
   border-color: #0c0c0c;
   transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(12,12,12,0.06);
 }
 #livon-home .lv-hm-stat em {
-  font-family: Kanit, sans-serif;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
   font-style: normal;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  color: #bbb;
+  letter-spacing: 0.12em;
+  color: #aaa;
+}
+#livon-home .lv-hm-stat__body {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 #livon-home .lv-hm-stat strong {
-  font-family: Kanit, sans-serif;
-  font-size: clamp(2.4rem, 5vw, 3.2rem);
-  font-weight: 850;
-  letter-spacing: -0.05em;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 999px;
+  border: 1.5px solid #0c0c0c;
+  font-family: "Noto Sans KR", "Noto Sans", Kanit, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
   line-height: 1;
 }
+#livon-home .lv-hm-stat__copy {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
 #livon-home .lv-hm-stat span {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
 #livon-home .lv-hm-stat small {
-  margin-top: 0.35rem;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: #888;
   line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 #livon-home .lv-hm-day__shelf {
-  padding: 1.35rem 0 0.25rem;
-  border-top: 1px solid #0c0c0c;
+  padding: clamp(1.25rem, 2.5vw, 1.6rem);
+  border: 1px solid #e4e4e4;
+  border-radius: 1.45rem;
+  background: #fff;
 }
 #livon-home .lv-hm-day__shelf-h {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: end;
+  justify-content: space-between;
   gap: 0.65rem 1.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
 }
-#livon-home .lv-hm-day__shelf-h .lv-hm-eyebrow { margin: 0; }
+#livon-home .lv-hm-day__shelf-h .lv-hm-eyebrow { margin: 0 0 0.3rem; }
 #livon-home .lv-hm-day__shelf-h h4 {
   margin: 0;
-  flex: 1;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
   font-size: 1.15rem;
-  font-weight: 750;
+  font-weight: 700;
   color: #0c0c0c;
 }
 #livon-home .lv-hm-day__shelf-h a {
@@ -858,20 +944,78 @@
 #livon-home .lv-hm-shelf li span,
 #livon-home .lv-hm-shelf li a {
   display: inline-block;
-  padding: 0.65rem 1rem;
+  padding: 0.7rem 1.05rem;
   border: 1px solid #0c0c0c;
   border-radius: 999px;
-  font-size: 0.92rem;
-  font-weight: 650;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: #0c0c0c;
   text-decoration: none;
   background: #fff;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
 #livon-home .lv-hm-shelf li a:hover {
   background: #0c0c0c;
   color: #fff;
+  transform: translateY(-1px);
 }
+
+/* Service flow steps */
+#livon-home .lv-hm-me__form--flow { gap: 1rem; }
+#livon-home .lv-hm-flow {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+#livon-home .lv-hm-flow a {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 1rem;
+  text-decoration: none;
+  color: #0c0c0c;
+  background: #fff;
+  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+#livon-home .lv-hm-flow a:hover {
+  border-color: #0c0c0c;
+  background: #0c0c0c;
+  color: #fff;
+  transform: translateY(-1px);
+}
+#livon-home .lv-hm-flow em {
+  font-style: normal;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: inherit;
+  opacity: 0.55;
+}
+#livon-home .lv-hm-flow strong {
+  display: block;
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+#livon-home .lv-hm-flow small {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.8rem;
+  opacity: 0.65;
+}
+#livon-home .lv-hm-flow i {
+  font-style: normal;
+  font-size: 0.95rem;
+  opacity: 0.55;
+  transition: transform 0.2s ease;
+}
+#livon-home .lv-hm-flow a:hover i { transform: translateX(3px); opacity: 1; }
 
 /* Recommendation mosaic */
 #livon-home .lv-hm-rec { display: grid; gap: 1.35rem; }

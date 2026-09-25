@@ -17,7 +17,8 @@
     program: "교육·클래스",
     place: "지역·장소",
     product: "생활 상품",
-    guide: "가이드"
+    guide: "가이드",
+    benefit: "혜택·지원"
   };
 
   var state = {
@@ -29,6 +30,7 @@
     visit: "",
     sort: "relevance",
     detailId: "",
+    viewMode: "list",
     filtersOpen: true
   };
 
@@ -103,6 +105,20 @@
   }
   function syncToMyLife(item, adding) {
     try {
+      if (window.LivonPlatform) {
+        if (adding && window.LivonPlatform.saveItem) {
+          window.LivonPlatform.saveItem({
+            id: "ex:" + item.id,
+            label: item.title,
+            type: item.type || "service",
+            href: "#ex-item-" + item.id,
+            source: "탐색",
+            folder: "나중에 보기"
+          });
+        } else if (!adding && window.LivonPlatform.removeSave) {
+          window.LivonPlatform.removeSave("ex:" + item.id);
+        }
+      }
       var store = readJSON(KEY_ML_SAVED, null);
       if (!store || typeof store !== "object") {
         store = { events: [], todos: [], goals: [], habits: [], habitLogs: {}, transactions: [],
@@ -129,9 +145,9 @@
   }
   function compareIds() {
     var list = readJSON(KEY_COMPARE, []);
-    return Array.isArray(list) ? list.slice(0, 3) : [];
+    return Array.isArray(list) ? list.slice(0, 4) : [];
   }
-  function setCompare(ids) { writeJSON(KEY_COMPARE, ids.slice(0, 3)); }
+  function setCompare(ids) { writeJSON(KEY_COMPARE, ids.slice(0, 4)); }
   function trackingOn() {
     var v = localStorage.getItem(KEY_TRACK);
     return v !== "0";
@@ -451,9 +467,13 @@
     if (sortEl) sortEl.value = state.sort;
     renderFilters();
     renderTabs(list);
+    var viewBar = '<div class="lv-ex-actions" style="margin-bottom:0.75rem">' +
+      '<button type="button" class="lv-ex-btn lv-ex-btn--sm' + (state.viewMode !== "map" ? "" : " lv-ex-btn--ghost") + '" data-lv-ex-view="list">목록</button>' +
+      '<button type="button" class="lv-ex-btn lv-ex-btn--sm' + (state.viewMode === "map" ? "" : " lv-ex-btn--ghost") + '" data-lv-ex-view="map">지도</button>' +
+      '<span class="lv-ex-note">위치 데이터가 확인된 항목만 지도에 연결합니다.</span></div>';
     if (!list.length) {
       var alts = relatedCats(state.q);
-      listHost.innerHTML = "<div class=\"lv-ex-empty\">" +
+      listHost.innerHTML = viewBar + "<div class=\"lv-ex-empty\">" +
         "<span class=\"lv-ex-badge lv-ex-badge--soon\">결과 없음</span>" +
         "<h3>일치하는 등록 서비스가 없습니다</h3>" +
         "<p>가짜 결과를 만들지 않습니다. 검색어를 바꾸거나 아래 카테고리를 확인해 보세요.</p>" +
@@ -466,7 +486,26 @@
       "</div>";
       return;
     }
-    listHost.innerHTML = "<div class=\"lv-ex-card-grid\">" + list.map(function (it) { return cardHtml(it); }).join("") + "</div>";
+    if (state.viewMode === "map") {
+      var mappable = list.filter(function (it) { return !!(it.mapQuery || it.address); });
+      listHost.innerHTML = viewBar +
+        '<div class="lv-ex-empty">' +
+          '<span class="lv-ex-badge lv-ex-badge--soon">지도 보기 · 구조 준비</span>' +
+          "<h3>List / Map 전환</h3>" +
+          "<p>실제 지도 SDK·핀 데이터 연동 전입니다. 위치가 확인된 항목만 외부 지도로 엽니다. 임의 좌표는 표시하지 않습니다.</p>" +
+          "<p class=\"lv-ex-note\">위치 확인 " + mappable.length + " / 결과 " + list.length + "</p>" +
+          (mappable.length
+            ? "<ul class=\"lv-ex-manage-list\" style=\"text-align:left\">" + mappable.slice(0, 12).map(function (it) {
+                var link = "https://map.kakao.com/?q=" + encodeURIComponent(it.mapQuery || it.address);
+                return "<li><div><strong>" + esc(it.title) + "</strong><p>" + esc(it.address || it.mapQuery) + "</p></div>" +
+                  '<div class="lv-ex-actions"><a class="lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm" href="' + esc(link) + '" target="_blank" rel="noopener noreferrer">지도</a>' +
+                  '<button type="button" class="lv-ex-btn lv-ex-btn--ghost lv-ex-btn--sm" data-lv-ex-open="' + esc(it.id) + '">상세</button></div></li>';
+              }).join("") + "</ul>"
+            : "<p>이 결과에는 주소·지도 쿼리가 있는 항목이 없습니다.</p>") +
+        "</div>";
+      return;
+    }
+    listHost.innerHTML = viewBar + "<div class=\"lv-ex-card-grid\">" + list.map(function (it) { return cardHtml(it); }).join("") + "</div>";
   }
 
   function openResults(query, opts) {
@@ -499,6 +538,54 @@
     if (m === "offline") return "오프라인";
     if (m === "both") return "온라인 · 오프라인";
     return "정보 확인 필요";
+  }
+
+
+  function isBenefitDetail(item) {
+    if (!item) return false;
+    if (item.type === "benefit" || item.layout === "benefit") return true;
+    var hay = [item.title, item.subfield, item.blurb, (item.tags || []).join(" ")].join(" ");
+    return /복지|지원|혜택|급여|청년정책/.test(hay);
+  }
+  function benefitBlocks(item) {
+    return "<h3>지원 상세</h3>" +
+      "<dl class=\"lv-ex-dl\">" +
+        "<div><dt>지원 내용</dt><dd>" + esc(item.supportDetail || item.body || item.blurb || "공식에서 확인") + "</dd></div>" +
+        "<div><dt>지원 대상</dt><dd>" + esc(item.audience || "조건은 공식에서 확인") + "</dd></div>" +
+        "<div><dt>조건</dt><dd>" + esc(item.eligibility || "개인 상황에 따라 다름 · 신청 가능을 확정하지 않음") + "</dd></div>" +
+        "<div><dt>지원 금액·혜택</dt><dd>" + esc(item.benefitAmount || item.priceLabel || "공식 안내 기준") + "</dd></div>" +
+        "<div><dt>신청 기간</dt><dd>" + esc(item.applyPeriod || "상시·회차별 · 공식 확인") + "</dd></div>" +
+        "<div><dt>필요 서류</dt><dd>" + esc(item.documents || "공식 안내 기준") + "</dd></div>" +
+        "<div><dt>신청 방법</dt><dd>" + esc(item.applyHow || "공식 페이지에서 조회·신청") + "</dd></div>" +
+        "<div><dt>제공 기관</dt><dd>" + esc(item.provider || "") + "</dd></div>" +
+        "<div><dt>공식 출처</dt><dd>" + esc(item.source || "") + "</dd></div>" +
+      "</dl>" +
+      "<p class=\"lv-ex-note\">확인해볼 만한 지원으로 안내합니다. 자동으로 신청·선정 가능하다고 표시하지 않습니다.</p>" +
+      "<div class=\"lv-ex-actions\">" +
+        (item.officialUrl ? "<a class=\"lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm\" href=\"" + esc(item.officialUrl) + "\" target=\"_blank\" rel=\"noopener noreferrer\">공식 신청·조회</a>" : "") +
+        "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--ghost lv-ex-btn--sm\" data-lv-ex-deadline-soon>마감 알림 · 준비 중</button>" +
+        "<a class=\"lv-ex-btn lv-ex-btn--ghost lv-ex-btn--sm\" href=\"#life-now\">일정에 메모</a>" +
+      "</div>";
+  }
+  function expertBlocks(item) {
+    return "<h3>전문가 프로필 · Marketplace 구조</h3>" +
+      "<p class=\"lv-ex-note\">검색 → 비교 → 상세 → 상담 선택 → 일정 → 결제 → 후기 흐름으로 확장할 수 있습니다. 결제·예약은 아직 연결되지 않았습니다.</p>" +
+      "<ul>" +
+        "<li>전문 분야 · " + esc(item.subfield || (item.compare && item.compare.field) || "안내") + "</li>" +
+        "<li>경력·자격 · " + esc((item.credentials && item.credentials.note) || "확인 정보 준비") + "</li>" +
+        "<li>상담 방식 · " + esc(modeLabel(item.mode)) + "</li>" +
+        "<li>가격 · " + esc(item.priceLabel || "서비스별") + "</li>" +
+        "<li>일정·문의 · 준비 중</li>" +
+      "</ul>";
+  }
+  function serviceBlocks(item) {
+    return "<h3>서비스 Marketplace</h3>" +
+      "<p>제공 범위 · 지역 · 가격 · 이용 방법 · 후기 · 문의 · 저장 · 비교를 한 상세에서 이어갑니다.</p>" +
+      "<ul>" +
+        "<li>제공 범위 · " + esc(item.blurb || (item.body ? String(item.body).slice(0, 80) : "") || "상세 참고") + "</li>" +
+        "<li>지역 · " + esc(item.region || "확인 필요") + "</li>" +
+        "<li>이용 방법 · " + esc(item.applyHow || "공식·업체 안내에 따름") + "</li>" +
+      "</ul>";
   }
 
   function renderDetail(id) {
@@ -538,6 +625,9 @@
           "<div class=\"lv-ex-detail__main\">" +
             "<h3>소개</h3><p>" + esc(item.body || item.blurb || "") + "</p>" +
             (item.audience ? "<h3>이용 대상</h3><p>" + esc(item.audience) + "</p>" : "") +
+            (isBenefitDetail(item) ? benefitBlocks(item) : "") +
+            (item.type === "expert" ? expertBlocks(item) : "") +
+            (item.type === "service" && !isBenefitDetail(item) ? serviceBlocks(item) : "") +
             (item.hours ? "<h3>운영 · 이용 시간</h3><p>" + esc(item.hours) + "</p>" : "") +
             "<h3>가격 · 이용 조건</h3><p>" + esc(item.priceLabel || "정보 확인 필요") +
               (item.priceType === "quote" ? " <em>(견적 방식 — 확정 가격 아님)</em>" : "") + "</p>" +
@@ -583,7 +673,7 @@
     var ids = compareIds();
     var list = ids.map(findItem).filter(Boolean);
     if (!list.length) {
-      host.innerHTML = "<div class=\"lv-ex-empty\"><h3>비교할 항목이 없습니다</h3><p>결과 카드에서 ‘비교하기’로 2~3개를 담아 보세요. 서로 다른 유형은 공통 기준이 있을 때만 비교합니다.</p></div>";
+      host.innerHTML = "<div class=\"lv-ex-empty\"><h3>비교할 항목이 없습니다</h3><p>결과 카드에서 ‘비교하기’로 2~4개를 담아 보세요. 서로 다른 유형은 공통 기준이 있을 때만 비교합니다.</p></div>";
       return;
     }
     var types = {};
@@ -597,11 +687,13 @@
       return;
     }
     var rows = [
-      { key: "field", label: "분야" },
-      { key: "range", label: "지역" },
-      { key: "mode", label: "제공 방식" },
-      { key: "price", label: "가격 안내" },
-      { key: "cred", label: "자격·출처" }
+      { key: "field", label: "분야·범위" },
+      { key: "range", label: "지역·위치" },
+      { key: "mode", label: "방식·예약" },
+      { key: "price", label: "가격" },
+      { key: "cred", label: "평점·출처" },
+      { key: "hours", label: "운영 시간" },
+      { key: "feature", label: "특징" }
     ];
     host.innerHTML =
       "<div class=\"lv-ex-compare-picks\">" + list.map(function (x) {
@@ -612,7 +704,7 @@
       "</tr></thead><tbody>" +
         rows.map(function (row) {
           return "<tr><td><strong>" + row.label + "</strong></td>" + list.map(function (x) {
-            var val = (x.compare && x.compare[row.key]) || "정보 확인 필요";
+            var val = (x.compare && x.compare[row.key]) || (row.key === "hours" ? (x.hours || "") : "") || (row.key === "feature" ? (x.blurb || x.subfield || "") : "") || "정보 확인 필요";
             return "<td>" + esc(val) + "</td>";
           }).join("") + "</tr>";
         }).join("") +
@@ -652,8 +744,8 @@
           return;
         }
       }
-      if (ids.length >= 3) {
-        alert("비교는 최대 3개까지입니다.");
+      if (ids.length >= 4) {
+        alert("비교는 최대 4개까지입니다.");
         return;
       }
       ids.push(id);
@@ -751,6 +843,16 @@
         var on2 = toggleSaveItem(fake);
         legacySave.textContent = on2 ? "저장됨" : "관심 저장";
         renderActivity();
+        return;
+      }
+      var viewBtn = e.target.closest("[data-lv-ex-view]");
+      if (viewBtn) {
+        state.viewMode = viewBtn.getAttribute("data-lv-ex-view") === "map" ? "map" : "list";
+        renderResults();
+        return;
+      }
+      if (e.target.closest("[data-lv-ex-deadline-soon]")) {
+        alert("마감 알림은 알림 센터 연동 후 제공됩니다.");
         return;
       }
       var cmp = e.target.closest("[data-lv-ex-compare-id]");

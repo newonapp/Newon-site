@@ -3,15 +3,71 @@
   var KEY_SITUATIONS = "livon.lifeSituations";
   var KEY_INTERESTS = "livon.lifeInterests";
   var KEY_GOALS = "livon.lifeGoals";
+  var KEY_EVENTS = "livon.lifeEvents";
   var KEY_SAVED = "livon.lifeSavedLocal";
   var KEY_AIQ = "livon.aiPrompt";
   var DATA = window.LivonLifeData || { stages: [], situations: [], interests: [], goals: [], transitions: [], packages: [], statusLabel: {} };
+  var EVENT_DATA = window.LivonLifeEvents || { events: [], statusLabel: {}, stageGuides: {} };
+
+  var CONNECT_MENUS = [
+    {
+      n: "01", label: "TODAY'S DISCOVERY", title: "평범한 오늘에, 새로운 발견을.",
+      desc: "여행·문화·취미·새로운 활동 추천으로 일상에 경험을 더해 보세요.",
+      feats: ["새로운 활동", "장소와 행사", "취미와 클래스", "관심 콘텐츠 저장"],
+      href: "#today", cta: "둘러보기",
+      wordmark: "DISCOVERY", slogan: "오늘, 새로운 일상을<br>발견하다.",
+      video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260419_065931_e3ca7b53-d32e-4ad5-81de-dc9d6fcfda6d.mp4"
+    },
+    {
+      n: "02", label: "MY LIFE", title: "복잡한 일상을, 나답게 정리하다.",
+      desc: "일정·목표·기록·체크리스트·저장을 한곳에서 관리하세요.",
+      feats: ["일정 및 할 일", "목표와 습관", "저장한 콘텐츠", "생활 계획 관리"],
+      href: "#life-now", cta: "시작하기",
+      wordmark: "MY LIFE", slogan: "나의 삶을 위한,<br>나만의 생활 공간.",
+      video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260324_151826_c7218672-6e92-402c-9e45-f1e0f454bdc4.mp4"
+    },
+    {
+      n: "03", label: "EXPLORE", title: "필요한 사람과 서비스를, 한곳에서.",
+      desc: "전문가·업체·기관·상품·공간을 찾고 비교해 보세요.",
+      feats: ["전문가 찾기", "생활 서비스", "교육·클래스", "지역 정보"],
+      href: "#explore", cta: "탐색하기",
+      wordmark: "EXPLORE", slogan: "필요한 사람과 서비스,<br>한곳에서.",
+      video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260819_212700_3bb9329b-5c50-4257-a09b-ca85cf3654a3.mp4"
+    },
+    {
+      n: "04", label: "COMMUNITY", title: "서로의 이야기가, 새로운 일상이 되다.",
+      desc: "질문·후기·경험을 나누고 관심사가 비슷한 사람들과 연결하세요.",
+      feats: ["질문과 답변", "경험과 후기", "관심사별 커뮤니티", "모임과 챌린지"],
+      href: "#community", cta: "둘러보기",
+      wordmark: "COMMUNITY", slogan: "서로의 이야기가 모여,<br>새로운 일상이 되다.",
+      video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"
+    },
+    {
+      n: "05", label: "LIVON AI", title: "일상의 질문부터, 앞으로의 계획까지.",
+      desc: "선택한 단계·분야 맥락으로 대화형 지원을 이어갑니다.",
+      feats: ["대화형 생활 안내", "생활 계획 생성", "체크리스트 정리", "LIVON 서비스 연결"],
+      href: "#livon-ai", cta: "시작하기",
+      wordmark: "LIVON AI", slogan: "지금의 삶에 필요한 정보부터,<br>다음 단계의 준비까지.",
+      video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260411_104032_69319010-2458-492b-b04d-b40a5dfa4482.mp4"
+    },
+    {
+      n: "06", label: "ONGIL", title: "시니어 생활과 가족을 연결하다.",
+      desc: "시니어 생활 지원과 가족 돌봄 안내는 Ongil로 이어집니다.",
+      feats: ["시니어 생활", "가족 돌봄", "생활 편의", "Ongil 연결"],
+      href: "/ongil-start/#ongil-home", cta: "이동하기",
+      wordmark: "ONGIL", slogan: "시니어 생활과<br>가족을 잇다.",
+      video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260429_115139_0fc6bd3d-3631-4d26-ab9b-28293887dcc9.mp4"
+    }
+  ];
 
   var state = {
     setupTab: "stage",
     activeField: null,
     stageId: null,
-    viewStage: null
+    viewStage: null,
+    eventFilter: "all",
+    openEventId: null,
+    svcIdx: 0
   };
 
   function $(sel, root) { return (root || document).querySelector(sel); }
@@ -72,6 +128,7 @@
       stage: readJSON(KEY_STAGE, null),
       situations: readJSON(KEY_SITUATIONS, []),
       interests: readJSON(KEY_INTERESTS, []),
+      events: readJSON(KEY_EVENTS, []),
       goals: readJSON(KEY_GOALS, [])
     };
   }
@@ -209,6 +266,104 @@
     }
   }
 
+
+  function lifeEvents() { return EVENT_DATA.events || []; }
+  function eventStatus(key) {
+    return (EVENT_DATA.statusLabel && EVENT_DATA.statusLabel[key]) || (DATA.statusLabel && DATA.statusLabel[key]) || key || "안내";
+  }
+  function stageGuide(id) {
+    return (EVENT_DATA.stageGuides && EVENT_DATA.stageGuides[id]) || { checklist: [], benefits: [], contents: [] };
+  }
+  function toggleLifeEvent(id) {
+    var list = readJSON(KEY_EVENTS, []);
+    if (!Array.isArray(list)) list = [];
+    var i = list.indexOf(id);
+    if (i >= 0) list.splice(i, 1); else list.push(id);
+    writeJSON(KEY_EVENTS, list.slice(0, 8));
+    return list;
+  }
+  function renderLifeEvents() {
+    var filters = $("[data-lv-life-event-filters]");
+    var grid = $("[data-lv-life-event-grid]");
+    var detail = $("[data-lv-life-event-detail]");
+    if (!grid) return;
+    var p = prefs();
+    var stageId = p.stage ? String(p.stage) : (state.viewStage || "");
+    var active = Array.isArray(p.events) ? p.events : [];
+    if (filters) {
+      var filtersList = [
+        { id: "all", label: "전체" },
+        { id: "mine", label: "내 선택" },
+        { id: "stage", label: "내 연령대" }
+      ];
+      filters.innerHTML = filtersList.map(function (f) {
+        return "<button type=\"button\" data-lv-life-event-filter=\"" + f.id + "\"" +
+          (state.eventFilter === f.id ? " class=\"is-on\"" : "") + ">" + esc(f.label) + "</button>";
+      }).join("");
+    }
+    var list = lifeEvents().filter(function (ev) {
+      if (state.eventFilter === "mine") return active.indexOf(ev.id) >= 0;
+      if (state.eventFilter === "stage" && stageId) return (ev.stages || []).indexOf(stageId) >= 0;
+      return true;
+    });
+    if (!list.length) {
+      grid.innerHTML = "<div class=\"lv-life-empty\">표시할 Life Event가 없습니다. 필터를 바꿔 보세요.</div>";
+    } else {
+      grid.innerHTML = list.map(function (ev, i) {
+        var on = active.indexOf(ev.id) >= 0;
+        return "<article class=\"lv-life-trans__card\">" +
+          "<span class=\"lv-life-trans__n\" aria-hidden=\"true\">" + String(i + 1).padStart(2, "0") + "</span>" +
+          "<h3>" + esc(ev.title) + (on ? " · 선택됨" : "") + (ev.planned ? " · 확장 예정" : "") + "</h3>" +
+          "<p>" + esc(ev.blurb) + "</p>" +
+          "<ol class=\"lv-life-trans__steps\">" + (ev.checklist || []).slice(0, 4).map(function (c, si) {
+            return "<li><em>" + String(si + 1).padStart(2, "0") + "</em><span>" + esc(c) + "</span></li>";
+          }).join("") + "</ol>" +
+          "<div class=\"lv-life-svc__acts\">" +
+            "<button type=\"button\" class=\"lv-life-btn lv-life-btn--" + (on ? "dark" : "outline") + " lv-life-btn--sm\" data-lv-life-event-toggle=\"" + esc(ev.id) + "\">" + (on ? "선택 해제" : "선택") + "</button>" +
+            "<button type=\"button\" class=\"lv-life-btn lv-life-btn--outline lv-life-btn--sm\" data-lv-life-event-open=\"" + esc(ev.id) + "\">가이드 보기</button>" +
+          "</div></article>";
+      }).join("");
+    }
+    if (!detail) return;
+    var openId = state.openEventId || (active[0] || null);
+    var ev = openId ? lifeEvents().find(function (e) { return e.id === openId; }) : null;
+    if (!ev) { detail.hidden = true; detail.innerHTML = ""; return; }
+    detail.hidden = false;
+    var proj = (window.LivonPlatform && window.LivonPlatform.getEventProgress) ? window.LivonPlatform.getEventProgress(ev.id) : null;
+    var pct = (proj && window.LivonPlatform.progressPercent) ? window.LivonPlatform.progressPercent(proj) : 0;
+    var areasHtml = "";
+    if (proj && proj.areas) {
+      areasHtml = "<h4 class=\"lv-life-title lv-life-title--md\">준비 영역 · 진행률 " + pct + "%</h4>" +
+        (proj.areas || []).map(function (a) {
+          return "<div style=\"margin:0.75rem 0 1rem\"><strong>" + esc(a.title) + "</strong>" +
+            "<ul class=\"lv-life-pack__includes\">" + (a.items || []).map(function (it, ii) {
+              return "<li><label><input type=\"checkbox\" data-lv-le-item=\"" + esc(ev.id) + "\" data-area=\"" + esc(a.id) + "\" data-idx=\"" + ii + "\"" + (it.done ? " checked" : "") + " /> " + esc(it.text) + "</label></li>";
+            }).join("") + "</ul></div>";
+        }).join("");
+    }
+    detail.innerHTML =
+      "<article class=\"lv-life-pack\" style=\"margin-top:1.5rem\">" +
+        "<p class=\"lv-life-pack__eyebrow\">Life Event Project</p>" +
+        "<h3>" + esc(ev.title) + (ev.planned ? " · 확장 예정" : "") + "</h3>" +
+        "<p class=\"lv-life-pack__for\">" + esc(ev.blurb) + "</p>" +
+        "<p class=\"lv-life-pack__note\">체크리스트·일정·콘텐츠·서비스를 한 프로젝트처럼 연결합니다. 예약·결제는 없습니다.</p>" +
+        areasHtml +
+        "<h4 class=\"lv-life-title lv-life-title--md\">연결</h4>" +
+        "<ul class=\"lv-life-pack__includes\">" + (ev.resources || []).map(function (r) {
+          var st = eventStatus(r.status);
+          var soon = r.status === "soon" || r.status === "planned";
+          return "<li>" + esc(st) + " · " + (soon ? esc(r.label) : ("<a href=\"" + esc(r.href || "#") + "\">" + esc(r.label) + "</a>")) + "</li>";
+        }).join("") + "</ul>" +
+        "<div class=\"lv-life-svc__acts\">" +
+          (ev.links && ev.links.lifeNow ? "<a class=\"lv-life-btn lv-life-btn--dark\" href=\"" + esc(ev.links.lifeNow) + "\">일정·할 일</a>" : "<a class=\"lv-life-btn lv-life-btn--dark\" href=\"#life-now\">내 생활</a>") +
+          (ev.links && ev.links.explore ? "<a class=\"lv-life-btn lv-life-btn--outline\" href=\"" + esc(ev.links.explore) + "\">탐색</a>" : "") +
+          (ev.links && ev.links.community ? "<a class=\"lv-life-btn lv-life-btn--outline\" href=\"" + esc(ev.links.community) + "\">커뮤니티</a>" : "") +
+          (ev.links && ev.links.today ? "<a class=\"lv-life-btn lv-life-btn--outline\" href=\"" + esc(ev.links.today) + "\">콘텐츠</a>" : "<a class=\"lv-life-btn lv-life-btn--outline\" href=\"#today\">콘텐츠</a>") +
+          (ev.links && ev.links.ai ? "<button type=\"button\" class=\"lv-life-btn lv-life-btn--outline\" data-lv-life-ai=\"" + esc(ev.links.ai) + "\">LIVON AI</button>" : "") +
+          "<button type=\"button\" class=\"lv-life-btn lv-life-btn--outline\" data-lv-le-save=\"" + esc(ev.id) + "\">저장</button>" +
+        "</div></article>";
+  }
+
   function renderStages() {
     var host = $("[data-lv-life-stages]");
     if (!host) return;
@@ -230,17 +385,6 @@
         '<div class="lv-life-services is-trio">' +
           (s.services || []).map(function (svc) { return svcCard(svc, s.id); }).join("") +
         "</div>";
-      var ai =
-        '<div class="lv-life-block-label"><p class="lv-life-kicker">Ask AI</p><h3 class="lv-life-title lv-life-title--md">이 단계에서 물어보기</h3></div>' +
-        '<div class="lv-life-aiq">' +
-          (s.ai || []).map(function (q) {
-            return '<a href="#livon-ai" data-lv-life-aiq="' + esc(q) + '" data-stage="' + esc(s.id) + '">' + esc(q) + "</a>";
-          }).join("") +
-        "</div>";
-      var community =
-        '<p class="lv-life-note">커뮤니티: ' + esc(s.community || "관련 이야기") +
-        ' — <a href="#community">게시판으로 이동</a></p>';
-
       var heroImg = '<div class="lv-life-decade__show"><img src="' + esc(s.img) + '" alt="' + esc(s.alt || "") + '" loading="lazy" /></div>';
       var copy =
         '<div class="lv-life-decade__copy">' +
@@ -249,13 +393,52 @@
           '<p class="lv-life-lead">' + esc(s.lead) + "</p>" +
           meta +
         "</div>";
-
-      /* All ages share the same 10s-style split layout + 2-col service cards */
       var top = '<div class="lv-life-decade__split">' + copy + heroImg + "</div>";
+      var guide = stageGuide(s.id);
+      var stageEvs = lifeEvents().filter(function (ev) { return (ev.stages || []).indexOf(s.id) >= 0; }).slice(0, 6);
+      var eventsBlock =
+        '<div class="lv-life-block-label"><p class="lv-life-kicker">Life Event</p><h3 class="lv-life-title lv-life-title--md">많이 겪는 Life Event</h3></div>' +
+        '<div class="lv-life-fields">' + stageEvs.map(function (ev) {
+          return '<button type="button" data-lv-life-open-event="' + esc(ev.id) + '">' + esc(ev.title) + "</button>";
+        }).join("") + "</div>" +
+        '<p class="lv-life-note"><a href="#life-events">전체 Life Event에서 선택·가이드 보기</a></p>';
+      var checks = (guide.checklist && guide.checklist.length) ? guide.checklist : (s.fields || []).slice(0, 2).reduce(function (acc, f) {
+        return acc.concat((f.steps || []).slice(0, 2));
+      }, []).slice(0, 6);
+      var checkBlock =
+        '<div class="lv-life-block-label"><p class="lv-life-kicker">Checklist</p><h3 class="lv-life-title lv-life-title--md">생활 체크리스트</h3></div>' +
+        '<ol class="lv-life-trans__steps">' + checks.map(function (c, si) {
+          return "<li><em>" + String(si + 1).padStart(2, "0") + "</em><span>" + esc(c) + "</span></li>";
+        }).join("") + "</ol>" +
+        '<p class="lv-life-note"><a href="#life-now">내 생활에서 할 일로 관리</a> · 자동 완료 추적은 준비 중</p>';
+      var contentBlock =
+        '<div class="lv-life-block-label"><p class="lv-life-kicker">Content</p><h3 class="lv-life-title lv-life-title--md">추천 콘텐츠</h3></div>' +
+        '<div class="lv-life-aiq">' + (guide.contents || []).map(function (c) {
+          return '<a href="' + esc(c.href) + '">' + esc(c.label) + "</a>";
+        }).join("") + "</div>";
+      var benefitBlock =
+        '<div class="lv-life-block-label"><p class="lv-life-kicker">Benefits</p><h3 class="lv-life-title lv-life-title--md">받을 수 있는 혜택 · 안내</h3></div>' +
+        '<ul class="lv-life-pack__includes">' + (guide.benefits || []).map(function (b) {
+          var st = eventStatus(b.status);
+          var soon = b.status === "soon" || b.status === "planned";
+          return "<li>" + esc(st) + " · " + (soon || !b.href ? esc(b.label) : ("<a href=\"" + esc(b.href) + "\">" + esc(b.label) + "</a>")) + "</li>";
+        }).join("") + "</ul>" +
+        '<p class="lv-life-note">자격·신청은 기관 공식 기준입니다.</p>';
+      var ai =
+        '<div class="lv-life-block-label"><p class="lv-life-kicker">Popular</p><h3 class="lv-life-title lv-life-title--md">인기 질문</h3></div>' +
+        '<div class="lv-life-aiq">' +
+          (s.ai || []).map(function (q) {
+            return '<a href="#livon-ai" data-lv-life-aiq="' + esc(q) + '" data-stage="' + esc(s.id) + '">' + esc(q) + "</a>";
+          }).join("") +
+        "</div>";
+      var community =
+        '<div class="lv-life-block-label"><p class="lv-life-kicker">Community</p><h3 class="lv-life-title lv-life-title--md">관련 커뮤니티</h3></div>' +
+        '<p class="lv-life-note">' + esc(s.community || "관련 이야기") +
+        ' — <a href="#community">게시판으로 이동</a> · 오프라인 모임 매칭은 확장 예정</p>';
 
       return (
         '<section class="lv-life-sec lv-life-decade" id="stage-' + esc(s.id) + '" data-stage="' + esc(s.id) + '" hidden>' +
-          top + fields + services + ai + community +
+          top + fields + eventsBlock + checkBlock + contentBlock + services + benefitBlock + ai + community +
         "</section>"
       );
     }).join("");
@@ -386,6 +569,44 @@
         "</article>"
       );
     }).join("");
+  }
+
+  function renderConnectShowcase() {
+    var tabs = $("[data-lv-life-svc-tabs]");
+    var panel = $("[data-lv-life-svc-panel]");
+    if (!tabs || !panel) return;
+    var idx = state.svcIdx || 0;
+    if (idx < 0 || idx >= CONNECT_MENUS.length) idx = 0;
+    state.svcIdx = idx;
+    var s = CONNECT_MENUS[idx];
+    tabs.innerHTML = CONNECT_MENUS.map(function (m, i) {
+      return '<button type="button" role="tab" data-lv-life-svc="' + i + '"' +
+        (i === idx ? ' class="is-on" aria-selected="true"' : ' aria-selected="false"') + ">" +
+        "<em>" + esc(m.n) + "</em><span>" + esc(m.label) + "</span></button>";
+    }).join("");
+    panel.innerHTML =
+      '<div class="lv-life-svc-card">' +
+        '<div class="lv-life-svc-card__copy">' +
+          '<p class="lv-life-eyebrow">' + esc(s.n) + " · " + esc(s.label) + "</p>" +
+          "<h3>" + esc(s.title) + "</h3>" +
+          "<p>" + esc(s.desc) + "</p>" +
+          "<ul>" + s.feats.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul>" +
+          '<a class="lv-life-btn" href="' + esc(s.href) + '">' + esc(s.cta) + "</a>" +
+        "</div>" +
+        '<div class="lv-life-svc-card__film">' +
+          '<video class="lv-life-svc-card__video" muted loop playsinline autoplay preload="metadata" src="' + esc(s.video) + '"></video>' +
+          '<div class="lv-life-svc-card__veil" aria-hidden="true"></div>' +
+          '<div class="lv-life-svc-card__lockup">' +
+            '<p class="lv-life-svc-card__wordmark">' + esc(s.wordmark) + "</p>" +
+            '<p class="lv-life-svc-card__slogan">' + s.slogan + "</p>" +
+          "</div>" +
+        "</div>" +
+      "</div>";
+    var vid = panel.querySelector(".lv-life-svc-card__video");
+    if (vid && typeof vid.play === "function") {
+      var p = vid.play();
+      if (p && typeof p.catch === "function") p.catch(function () {});
+    }
   }
 
   function renderPackages() {
@@ -622,6 +843,49 @@
         showField(btn.getAttribute("data-stage"), btn.getAttribute("data-field"));
       });
     });
+
+    $$("[data-lv-life-event-filter]", root).forEach(function (btn) {
+      if (btn._bound) return;
+      btn._bound = true;
+      btn.addEventListener("click", function () {
+        state.eventFilter = btn.getAttribute("data-lv-life-event-filter") || "all";
+        try {
+      var openEv = sessionStorage.getItem("livon.openLifeEvent");
+      if (openEv) { state.openEventId = openEv; sessionStorage.removeItem("livon.openLifeEvent"); }
+    } catch (e) {}
+    renderLifeEvents();
+        bindDynamic(document.querySelector("#life-events") || document);
+      });
+    });
+    $$("[data-lv-life-event-toggle]", root).forEach(function (btn) {
+      if (btn._bound) return;
+      btn._bound = true;
+      btn.addEventListener("click", function () {
+        toggleLifeEvent(btn.getAttribute("data-lv-life-event-toggle"));
+        renderLifeEvents();
+        bindDynamic(document.querySelector("#life-events") || document);
+      });
+    });
+    $$("[data-lv-life-event-open], [data-lv-life-open-event]", root).forEach(function (btn) {
+      if (btn._bound) return;
+      btn._bound = true;
+      btn.addEventListener("click", function () {
+        state.openEventId = btn.getAttribute("data-lv-life-event-open") || btn.getAttribute("data-lv-life-open-event");
+        renderLifeEvents();
+        bindDynamic(document.querySelector("#life-events") || document);
+        scrollToId("life-events");
+      });
+    });
+    $$("[data-lv-life-ai]", root).forEach(function (btn) {
+      if (btn._bound) return;
+      btn._bound = true;
+      btn.addEventListener("click", function () {
+        var q = btn.getAttribute("data-lv-life-ai") || "";
+        try { sessionStorage.setItem(KEY_AIQ, JSON.stringify({ q: q, stage: readJSON(KEY_STAGE, ""), at: Date.now(), source: "life-event" })); } catch (e) {}
+        location.hash = "livon-ai";
+      });
+    });
+
     $$("[data-lv-field-close]", root).forEach(function (btn) {
       if (btn._bound) return;
       btn._bound = true;
@@ -711,6 +975,16 @@
         setStage(id, { goto: true, updateHash: true });
       });
     }
+    var showcase = $("[data-lv-life-showcase]");
+    if (showcase && !showcase._boundSvc) {
+      showcase._boundSvc = true;
+      showcase.addEventListener("click", function (e) {
+        var btn = e.target.closest("[data-lv-life-svc]");
+        if (!btn || !showcase.contains(btn)) return;
+        state.svcIdx = Number(btn.getAttribute("data-lv-life-svc")) || 0;
+        renderConnectShowcase();
+      });
+    }
     $$("[data-lv-life-find]").forEach(function (btn) {
       btn.addEventListener("click", function (e) {
         e.preventDefault();
@@ -757,9 +1031,11 @@
     renderStageNav();
     renderRail();
     renderStages();
+    renderLifeEvents();
     renderSetupPanel();
     renderPriority();
     renderTransitions();
+    renderConnectShowcase();
     renderPackages();
     bindDynamic(document);
   }
@@ -795,7 +1071,9 @@
           var panel = document.getElementById("life-stages-view");
           if (panel) panel.classList.add("is-in");
         }, 50);
-      } else if (hash === "life-explore" || hash === "life-mine" || hash === "life-setup" || hash === "life-transitions" || hash === "life-packages" || hash === "life-family" || hash === "life-services" || hash === "life-ai" || hash === "life-cta" || hash === "life-field" || hash === "life-stages-view") {
+      } else if (hash === "life-transitions") {
+        scrollToId("life-events");
+      } else if (hash === "life-explore" || hash === "life-mine" || hash === "life-setup" || hash === "life-events" || hash === "life-packages" || hash === "life-family" || hash === "life-services" || hash === "life-ai" || hash === "life-cta" || hash === "life-field" || hash === "life-stages-view") {
         setTimeout(function () {
           scrollToId(hash);
           var target = document.getElementById(hash);

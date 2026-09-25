@@ -251,11 +251,14 @@ html[data-lv-view="life"] main > #life {
 }
 #life .lv-life-title {
   margin: 0;
+  padding: 0.12em 0 0.06em;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
   font-size: clamp(2.25rem, 5vw, 3.75rem);
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: -0.04em;
-  line-height: 1.08;
+  line-height: 1.12;
   color: #0a0a0a;
+  overflow: visible;
 }
 #life .lv-life-title--xl {
   font-size: clamp(2.75rem, 7vw, 5.25rem);
@@ -859,6 +862,191 @@ html[data-lv-view="life"] main > #life {
 }
 #life .lv-life-close__acts {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 0.65rem; margin-top: 1.75rem;
+}
+
+/* Connected menus — home showcase pattern */
+#life .lv-life-showcase {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.25rem;
+  text-align: left;
+}
+@media (min-width: 900px) {
+  #life .lv-life-showcase { grid-template-columns: 220px minmax(0, 1fr); align-items: start; }
+}
+#life .lv-life-showcase__nav {
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+@media (min-width: 900px) {
+  #life .lv-life-showcase__nav { flex-direction: column; overflow: visible; }
+}
+#life .lv-life-showcase__nav button {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  min-height: 3rem;
+  padding: 0.65rem 0.85rem;
+  border: 0;
+  border-bottom: 1px solid rgba(12,12,12,0.12);
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: #666;
+}
+#life .lv-life-showcase__nav button.is-on {
+  color: #0a0a0a;
+  border-bottom-color: #0a0a0a;
+  font-weight: 600;
+}
+#life .lv-life-showcase__nav em {
+  font-style: normal;
+  font-family: "Noto Sans KR", "Noto Sans", Kanit, sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.04em;
+  color: inherit;
+}
+#life .lv-life-showcase__nav span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+#life .lv-life-svc-card {
+  display: grid;
+  gap: 1.25rem;
+  border: 2px solid #0a0a0a;
+  border-radius: 40px;
+  overflow: hidden;
+  background: #0a0a0a;
+  color: #fff;
+  padding: 1.1rem;
+}
+@media (min-width: 900px) {
+  #life .lv-life-svc-card { grid-template-columns: 1.05fr 0.95fr; }
+}
+#life .lv-life-svc-card__copy {
+  padding: 0.85rem 0.85rem 0.5rem;
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+  color: #fff;
+}
+#life .lv-life-svc-card__copy .lv-life-eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+#life .lv-life-svc-card__copy h3 {
+  margin: 0;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 1.25;
+}
+#life .lv-life-svc-card__copy > p {
+  margin: 0;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+}
+#life .lv-life-svc-card__copy ul {
+  margin: 0.35rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+#life .lv-life-svc-card__copy li {
+  border: 1px solid rgba(215,226,234,0.35);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.85rem;
+  color: #fff;
+}
+#life .lv-life-svc-card__copy .lv-life-btn {
+  justify-self: start;
+  margin-top: 0.5rem;
+  background: #fff;
+  color: #0a0a0a;
+  border-color: #fff;
+}
+#life .lv-life-svc-card__film {
+  position: relative;
+  min-height: 280px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #0a0a0a;
+  container-type: size;
+}
+@media (min-width: 900px) {
+  #life .lv-life-svc-card__film { min-height: auto; }
+}
+#life .lv-life-svc-card__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+#life .lv-life-svc-card__veil {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  z-index: 1;
+  width: 130%;
+  height: 150%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse 58% 52% at 50% 46%,
+    rgba(8, 16, 18, 0.48) 0%,
+    rgba(8, 16, 18, 0.18) 48%,
+    rgba(8, 16, 18, 0) 78%
+  );
+  pointer-events: none;
+}
+#life .lv-life-svc-card__lockup {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  text-align: center;
+}
+#life .lv-life-svc-card__wordmark {
+  margin: 0;
+  color: #fff;
+  font-family: "Noto Sans KR", "Noto Sans", Kanit, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4.2cqi + 1.2rem, 2.75rem);
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+  text-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+#life .lv-life-svc-card__slogan {
+  margin: 0.55em 0 0;
+  max-width: 14em;
+  color: #fff;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.92rem, 2.2cqi + 0.55rem, 1.2rem);
+  letter-spacing: -0.04em;
+  line-height: 1.35;
+  text-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
 /* Modal */

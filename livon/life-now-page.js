@@ -9,6 +9,7 @@
   var DATA = window.LivonMyLifeData || { modules: [], checklistTemplates: [], projectTemplates: [], stages: {} };
 
   var state = {
+    savedFolder: "all",
     view: "home",
     calMonth: null,
     calMode: "month",
@@ -96,6 +97,12 @@
 
   function collectedSaved() {
     var out = [];
+    if (window.LivonPlatform && window.LivonPlatform.listSaves) {
+      window.LivonPlatform.listSaves("all").forEach(function (x) {
+        out.push({ id: x.id, label: x.label, source: (x.source || x.type || "저장") + (x.folder ? (" · " + x.folder) : ""), href: x.href || "#life-now", at: x.at || 0, folder: x.folder || "" });
+      });
+      if (out.length) return out.sort(function (a, b) { return (b.at || 0) - (a.at || 0); });
+    }
     var td = readJSON(KEY_TD_SAVED, []);
     if (Array.isArray(td)) {
       td.forEach(function (x) {
@@ -773,15 +780,23 @@
   }
 
   function viewSaved() {
+    var folders = (window.LivonPlatform && window.LivonPlatform.folders) ? window.LivonPlatform.folders() : ["나중에 보기"];
+    var folder = state.savedFolder || "all";
     var list = collectedSaved();
-    return '<p class="lv-ml-note">라이프 스테이지·오늘의 발견 등에서 저장한 항목을 모읍니다. 원본이 없으면 안내만 표시합니다.</p>' +
+    if (folder !== "all") list = list.filter(function (x) { return x.folder === folder || (folder === "나중에 보기" && !x.folder); });
+    var chips = '<div class="lv-ml-quick__row">' +
+      '<button type="button" class="lv-ml-chip-btn' + (folder === "all" ? " is-on" : "") + '" data-lv-ml-saved-folder="all">전체</button>' +
+      folders.map(function (f) {
+        return '<button type="button" class="lv-ml-chip-btn' + (folder === f ? " is-on" : "") + '" data-lv-ml-saved-folder="' + esc(f) + '">' + esc(f) + "</button>";
+      }).join("") + "</div>";
+    return '<p class="lv-ml-note">LIVON 전체 저장을 한곳에서 관리합니다. 폴더로 정리할 수 있습니다.</p>' + chips +
       (list.length
-        ? '<ul class="lv-ml-manage-list">' + list.map(function (x) {
+        ? '<ul class="lv-ml-manage-list" style="margin-top:1rem">' + list.map(function (x) {
             return "<li><div><strong>" + esc(x.label) + "</strong><p>" + esc(x.source) + "</p></div>" +
               '<div class="lv-ml-row-acts"><a href="' + esc(x.href) + '">원본</a>' +
               '<button type="button" data-lv-ml-add-event-from-saved="' + esc(x.label) + '">일정에 추가</button></div></li>';
           }).join("") + "</ul>"
-        : emptyBox("저장한 항목이 없습니다.", '<a class="lv-ml-btn lv-ml-btn--dark lv-ml-btn--sm" href="#today">오늘의 발견</a>'));
+        : emptyBox("이 폴더에 저장된 항목이 없습니다.", '<a class="lv-ml-btn lv-ml-btn--dark lv-ml-btn--sm" href="#today">오늘의 발견</a> <a class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" href="#explore">탐색</a>'));
   }
 
   function viewExperiences(store) {
@@ -796,10 +811,16 @@
   function viewFamily() {
     return '<div class="lv-ml-empty">' +
       '<span class="lv-ml-badge">준비 중</span>' +
-      "<h3>가족 공유는 아직 열려 있지 않습니다</h3>" +
-      "<p>초대·권한·공유 캘린더는 인증과 백엔드 권한 체계가 갖춰진 뒤 제공합니다. 지금은 개인 일정만 이 기기에서 관리할 수 있습니다. 부모님 돌봄 전문 서비스는 Ongil로 연결합니다.</p>" +
+      "<h3>Family Space</h3>" +
+      "<p>나와 가족(예: 엄마·아빠·배우자·자녀)을 초대하고, 동의한 일정·할 일·돌봄 정보만 공유하는 구조를 준비 중입니다. 초대·권한·결제는 아직 연결되지 않았습니다.</p>" +
+      '<ul class="lv-ml-manage-list" style="text-align:left;margin:1rem 0">' +
+        "<li><div><strong>나</strong><p>기본 프로필 · 이 기기</p></div></li>" +
+        "<li><div><strong>가족 초대</strong><p>확장 예정 · 인증 후 제공</p></div></li>" +
+        "<li><div><strong>공유 범위</strong><p>선택한 항목만 · 동의 없이 수집하지 않음</p></div></li>" +
+      "</ul>" +
       '<div class="lv-ml-actions"><a class="lv-ml-btn lv-ml-btn--dark" href="/ongil-start/#care">Ongil 돌봄</a>' +
-      '<button type="button" class="lv-ml-btn lv-ml-btn--outline" data-lv-ml-goto="calendar">개인 일정 관리</button></div>' +
+      '<a class="lv-ml-btn lv-ml-btn--outline" href="#life-family">생애 단계로 가족 탐색</a>' +
+      '<button type="button" class="lv-ml-btn lv-ml-btn--outline" data-lv-ml-goto="calendar">개인 일정</button></div>' +
     "</div>";
   }
 
@@ -862,99 +883,39 @@
   }
 
   function viewSettings() {
-    var stage = readJSON(KEY_STAGE, null);
-    var interests = readJSON(KEY_ML_INTERESTS, []);
-    if (!interests.length) interests = readJSON(KEY_LIFE_INTERESTS, []);
-    var situations = readJSON(KEY_SITUATIONS, []);
-    var stageMeta = (DATA.stages || {})[stage];
-    return '<div class="lv-ml-settings">' +
-      '<div class="lv-ml-block-label"><h3 class="lv-ml-title lv-ml-title--md">나의 라이프 스테이지</h3></div>' +
-      "<p>" + esc(stageMeta ? stageMeta.age + " · " + stageMeta.name : "미설정") + "</p>" +
-      '<div class="lv-ml-actions"><button type="button" class="lv-ml-btn lv-ml-btn--dark lv-ml-btn--sm" data-lv-ml-find>스테이지 변경</button>' +
-      '<a class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" href="#life">라이프 스테이지 화면</a></div>' +
-      '<p class="lv-ml-note">스테이지를 바꿔도 일정·목표·기록·저장 콘텐츠는 삭제되지 않습니다.</p>' +
-      '<div class="lv-ml-block-label"><h3 class="lv-ml-title lv-ml-title--md">관심 분야</h3></div>' +
-      '<div class="lv-ml-chips">' + (DATA.interestOptions || []).map(function (v) {
-        return '<button type="button" data-lv-ml-set-interest="' + esc(v) + '"' + (interests.indexOf(v) >= 0 ? ' class="is-on"' : "") + ">" + esc(v) + "</button>";
-      }).join("") + "</div>" +
-      '<div class="lv-ml-block-label"><h3 class="lv-ml-title lv-ml-title--md">생활 상황</h3></div>' +
-      '<div class="lv-ml-chips">' + (DATA.situations || []).map(function (v) {
-        return '<button type="button" data-lv-ml-set-situation="' + esc(v) + '"' + (situations.indexOf(v) >= 0 ? ' class="is-on"' : "") + ">" + esc(v) + "</button>";
-      }).join("") + "</div>" +
-      '<div class="lv-ml-block-label"><h3 class="lv-ml-title lv-ml-title--md">데이터</h3></div>' +
-      '<p class="lv-ml-note">브라우저 알림·푸시·가족 공유·계정 동기화는 아직 제공되지 않습니다.</p>' +
-      '<button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" data-lv-ml-export>데이터 JSON 내보내기</button> ' +
-      '<button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" data-lv-ml-clear>내 생활 데이터 초기화</button>' +
-    "</div>";
-  }
-
-  function refreshDashboard() {
-    renderStats();
-    renderTimeline();
-    renderTodayTodos();
-    renderActiveGoals();
-    renderRecentSaved();
-    renderModules();
-  }
-
-  function refreshAll() {
-    refreshDashboard();
-    if (state.view && state.view !== "home") renderPanel(state.view);
-  }
-
-  function findItem(type, id) {
     var store = loadStore();
-    var map = {
-      event: store.events, todo: store.todos, goal: store.goals, habit: store.habits,
-      tx: store.transactions, journal: store.journal, experience: store.experiences,
-      checklist: store.checklists, project: store.projects, health: store.health
-    };
-    var list = map[type] || [];
-    return list.find(function (x) { return x.id === id; }) || null;
+    var snap = (window.LivonPlatform && window.LivonPlatform.profileSnapshot) ? window.LivonPlatform.profileSnapshot() : {};
+    var prefs = (window.LivonPlatform && window.LivonPlatform.alertPrefs) ? window.LivonPlatform.alertPrefs() : {};
+    var types = (window.LivonPlatform && window.LivonPlatform.alertTypes) ? window.LivonPlatform.alertTypes : [];
+    var region = snap.region || {};
+    var stageTxt = snap.stage ? String(snap.stage) : "미설정";
+    var sitTxt = (snap.situations || []).join(" · ") || "없음";
+    var interestTxt = [].concat(snap.interests || [], snap.goals || []).slice(0, 8).join(" · ") || "없음";
+    var evTxt = (snap.events || []).join(", ") || "없음";
+    return '<p class="lv-ml-note">민감한 정보는 필수 입력이 아닙니다. 값은 이 기기에만 저장됩니다.</p>' +
+      '<div class="lv-ml-block-label"><p class="lv-ml-kicker">Profile</p><h3 class="lv-ml-title lv-ml-title--md">기본 · Life Stage</h3></div>' +
+      '<ul class="lv-ml-manage-list">' +
+        "<li><div><strong>Life Stage</strong><p>" + esc(stageTxt) + '</p></div><div class="lv-ml-row-acts"><a href="#life-setup">변경</a></div></li>' +
+        "<li><div><strong>생활 상황</strong><p>" + esc(sitTxt) + "</p></div></li>" +
+        "<li><div><strong>관심사 · 목표</strong><p>" + esc(interestTxt) + "</p></div></li>" +
+        "<li><div><strong>진행 중 Life Event</strong><p>" + esc(evTxt) + '</p></div><div class="lv-ml-row-acts"><a href="#life-events">관리</a></div></li>' +
+        "<li><div><strong>저장</strong><p>" + esc(String(snap.savesCount || 0)) + '개</p></div><div class="lv-ml-row-acts"><button type="button" data-lv-ml-goto="saved">저장함</button></div></li>' +
+      "</ul>" +
+      '<div class="lv-ml-block-label" style="margin-top:1.5rem"><p class="lv-ml-kicker">Region</p><h3 class="lv-ml-title lv-ml-title--md">지역 설정</h3></div>' +
+      '<p class="lv-ml-note">시/도 → 시/군/구. 위치 데이터가 없는 항목을 지도에 임의 표시하지 않습니다.</p>' +
+      '<label class="lv-ml-field">시/도<input data-lv-ml-region-sido value="' + esc(region.sido || "") + '" placeholder="예: 서울" maxlength="20" /></label>' +
+      '<label class="lv-ml-field">시/군/구<input data-lv-ml-region-sgg value="' + esc(region.sgg || "") + '" placeholder="예: 마포구" maxlength="20" /></label>' +
+      '<p style="margin-top:0.75rem"><button type="button" class="lv-ml-btn lv-ml-btn--dark lv-ml-btn--sm" data-lv-ml-region-save>지역 저장</button></p>' +
+      '<div class="lv-ml-block-label" style="margin-top:1.5rem"><p class="lv-ml-kicker">Alerts</p><h3 class="lv-ml-title lv-ml-title--md">알림 종류 ON/OFF</h3></div>' +
+      '<ul class="lv-ml-manage-list">' + types.map(function (a) {
+        return "<li><div><strong>" + esc(a.label) + "</strong><p>" + ((a.id === "booking" || a.id === "family") ? "준비 중" : "선호 설정") + "</p></div>" +
+          '<div class="lv-ml-row-acts"><label><input type="checkbox" data-lv-ml-alert="' + esc(a.id) + '"' + (prefs[a.id] !== false ? " checked" : "") + " /> 받기</label></div></li>";
+      }).join("") + "</ul>" +
+      '<p class="lv-ml-note" style="margin-top:1rem">앱 설정 · 주 시작 ' + esc(String((store.settings && store.settings.weekStartsOn) || 0)) + " · " + esc((store.settings && store.settings.currency) || "KRW") + "</p>" +
+      '<p><button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" data-lv-onboard-reopen>온보딩 다시 보기</button></p>';
   }
 
-  function deleteItem(type, id) {
-    if (!confirmDelete()) return;
-    var store = loadStore();
-    var key = {
-      event: "events", todo: "todos", goal: "goals", habit: "habits",
-      tx: "transactions", journal: "journal", experience: "experiences",
-      checklist: "checklists", project: "projects", health: "health"
-    }[type];
-    if (!key) return;
-    store[key] = (store[key] || []).filter(function (x) { return x.id !== id; });
-    if (type === "habit" && store.habitLogs) delete store.habitLogs[id];
-    saveStore(store);
-    refreshAll();
-  }
 
-  function initHero() {
-    var hero = $("[data-lv-ml-hero]");
-    if (!hero) return;
-    requestAnimationFrame(function () { hero.classList.add("is-ready"); });
-  }
-
-  function initReveal() {
-    var nodes = $$("#life-now [data-lv-reveal]");
-    if (!nodes.length) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      nodes.forEach(function (n) { n.classList.add("is-in"); });
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) { entry.target.classList.add("is-in"); io.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1 });
-    nodes.forEach(function (n) { io.observe(n); });
-  }
-
-  function openAgeModal() {
-    var modal = $("#lv-ml-age-modal");
-    if (!modal) return;
-    modal.hidden = false;
-    document.body.style.overflow = "hidden";
-  }
   function closeAgeModal() {
     var modal = $("#lv-ml-age-modal");
     if (!modal) return;
@@ -976,6 +937,35 @@
 
   function bind() {
     document.addEventListener("click", function (e) {
+      var sf = e.target.closest("[data-lv-ml-saved-folder]");
+      if (sf) {
+        e.preventDefault();
+        state.savedFolder = sf.getAttribute("data-lv-ml-saved-folder") || "all";
+        gotoView("saved");
+        return;
+      }
+      var al = e.target.closest("input[data-lv-ml-alert]");
+      if (al && window.LivonPlatform && window.LivonPlatform.setAlertPref) {
+        window.LivonPlatform.setAlertPref(al.getAttribute("data-lv-ml-alert"), !!al.checked);
+        return;
+      }
+      if (e.target.closest("[data-lv-ml-region-save]") && window.LivonPlatform && window.LivonPlatform.setRegion) {
+        e.preventDefault();
+        var sidoEl = $("[data-lv-ml-region-sido]");
+        var sggEl = $("[data-lv-ml-region-sgg]");
+        window.LivonPlatform.setRegion({
+          sido: String((sidoEl && sidoEl.value) || "").trim(),
+          sgg: String((sggEl && sggEl.value) || "").trim()
+        });
+        alert("지역이 이 기기에 저장되었습니다.");
+        return;
+      }
+      if (e.target.closest("[data-lv-onboard-reopen]") && window.LivonPlatform && window.LivonPlatform.openOnboarding) {
+        e.preventDefault();
+        window.LivonPlatform.openOnboarding();
+        return;
+      }
+
       var goto = e.target.closest("[data-lv-ml-goto]");
       if (goto) {
         e.preventDefault();
@@ -1267,4 +1257,5 @@
       window.LivonMyLife.onShow(hash || "life-now");
     }
   });
+  window.LivonLifeNow = { goto: function (v) { gotoView(v); } };
 })();
