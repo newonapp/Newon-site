@@ -17,13 +17,14 @@
     <link rel="stylesheet" href="/livon/life-page.css?v=20260925life23" />
     <link rel="stylesheet" href="/livon/life-now-page.css?v=20260925ml15" />
     <link rel="stylesheet" href="/livon/explore-page.css?v=20260925ex7" />
-    <link rel="stylesheet" href="/livon/community-page.css?v=20260925cm11" />
+    <link rel="stylesheet" href="/livon/community-page.css?v=20260925cm13" />
     <link rel="stylesheet" href="/livon/today-page.css?v=20260925td15" />
-    <link rel="stylesheet" href="/livon/ai-page.css?v=20260925ai8" />
+    <link rel="stylesheet" href="/livon/ai-page.css?v=20260925ai10" />
     <link rel="stylesheet" href="/livon/home-page.css?v=20260925hm16" />
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
     <link rel="stylesheet" href="/site-dark.css?v=20260924foot1" />
     <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
+    <link rel="stylesheet" href="/livon/connected-menus.css?v=20260925a" />
     <script src="/theme-shell.js?v=20260904perf1"></script>
   </head>
   <body>
@@ -774,13 +775,7 @@
                   <h2 class="lv-td-title lv-td-title--md">관심 분야와<br>관련 서비스 연결</h2>
                   <p class="lv-td-lead">발견은 여기서, 이용·관리는 각 메뉴에서.</p>
                 </header>
-                <div class="lv-td-connect-grid">
-                  <a class="lv-td-tile" href="#life"><h3>라이프 스테이지</h3><p>생애 단계별 생활 분야로 이어가기</p><span>이동 →</span></a>
-                  <a class="lv-td-tile" href="#life-now"><h3>내 생활</h3><p>저장·일정·방문 계획 관리</p><span>이동 →</span></a>
-                  <a class="lv-td-tile" href="#explore"><h3>탐색</h3><p>장소·기관·예약 서비스 찾기</p><span>이동 →</span></a>
-                  <a class="lv-td-tile" href="#community"><h3>커뮤니티</h3><p>후기·질문·경험 나누기</p><span>이동 →</span></a>
-                  <a class="lv-td-tile" href="#livon-ai"><h3>LIVON AI</h3><p>관심사 기반 활동 계획 대화</p><span>이동 →</span></a>
-                </div>
+                <div class="lv-connect" data-lv-connect="today"></div>
                 <div class="lv-td-saved-box" data-lv-td-saved></div>
               </div>
             </section>
@@ -1697,13 +1692,7 @@
                 <p class="lv-cm-eyebrow">Connected Life</p>
                 <h2 class="lv-cm-title lv-cm-title--md">나눈 이야기가,<br>새로운 경험으로 이어지도록.</h2>
               </header>
-              <nav class="lv-cm-index" aria-label="LIVON 연결">
-                <a href="#life"><em>01</em><strong>라이프 스테이지</strong><span>생애주기 정보 → 커뮤니티</span></a>
-                <a href="#today"><em>02</em><strong>오늘의 발견</strong><span>활동 → 관련 모임</span></a>
-                <a href="#explore"><em>03</em><strong>탐색</strong><span>전문가 · 서비스 연결</span></a>
-                <a href="#life-now"><em>04</em><strong>내 생활</strong><span>가입·저장·일정</span></a>
-                <a href="/ko/ongil/"><em>05</em><strong>Ongil</strong><span>시니어 생활·돌봄</span></a>
-              </nav>
+              <div class="lv-connect" data-lv-connect="community"></div>
             </div>
           </section>
 
@@ -1897,7 +1886,7 @@
               <header class="lv-ai-head">
                 <p class="lv-ai-eyebrow">Preferences</p>
                 <h2 class="lv-ai-title lv-ai-title--md">개인화 설정</h2>
-                <p class="lv-ai-lead">직접 설정한 정보만 필요한 범위에서 활용합니다. 이 기기(localStorage)에 저장됩니다.</p>
+                <p class="lv-ai-lead">관심사와 생활 목표에 맞춰 답변을 받아보세요. 설정은 이 기기에 저장되며 언제든 바꿀 수 있습니다.</p>
               </header>
               <form class="lv-ai-settings" data-lv-ai-settings>
                 <label class="lv-ai-field">생애 단계
@@ -3187,10 +3176,11 @@
     <script src="/livon/explore-data.js?v=20260925ex9"></script>
     <script src="/livon/explore-page.js?v=20260925ex9"></script>
     <script src="/livon/community-data.js?v=20260925cm12"></script>
-    <script src="/livon/community-page.js?v=20260925cm11"></script>
+    <script src="/livon/community-page.js?v=20260925cm12"></script>
     <script src="/livon/today-data.js?v=20260925td16"></script>
     <script src="/livon/today-page.js?v=20260925td18"></script>
     <script src="/livon/ai-page.js?v=20260925ai7"></script>
+    <script src="/livon/connected-menus.js?v=20260925a"></script>
     <script src="/livon/home-page.js?v=20260925hm18"></script>
 
 

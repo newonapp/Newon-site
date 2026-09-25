@@ -1254,3 +1254,26 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   #livon-ai .lv-ai-sidebar [data-lv-ai-sidebar-close] { display: none; }
 }
 
+
+/* Compact preferences using the site's existing monochrome form styles. */
+#livon-ai #ai-settings { padding-block: clamp(2rem, 4vw, 3.5rem); }
+#livon-ai #ai-settings .lv-ai-inner { display: grid; grid-template-columns: minmax(240px, .8fr) minmax(0, 1.6fr); align-items: start; gap: 2rem; }
+#livon-ai #ai-settings .lv-ai-head { margin: 0; }
+#livon-ai #ai-settings .lv-ai-settings { max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; padding: 1.5rem; background: #fff; border: 1px solid #ececec; }
+#livon-ai #ai-settings .lv-ai-field { min-width: 0; }
+#livon-ai #ai-settings .lv-ai-field input,
+#livon-ai #ai-settings .lv-ai-field select { width: 100%; min-width: 0; box-sizing: border-box; background: #fff; color: #0a0a0a; }
+#livon-ai #ai-settings .lv-ai-field input:focus-visible,
+#livon-ai #ai-settings .lv-ai-field select:focus-visible { outline: 2px solid #0a0a0a; outline-offset: 2px; }
+#livon-ai #ai-settings .lv-ai-field:nth-child(5) { grid-column: 1 / -1; }
+#livon-ai #ai-settings .lv-ai-check { grid-column: 1 / -1; margin: 0; align-items: center; }
+#livon-ai #ai-settings .lv-ai-check input { accent-color: #0a0a0a; flex: 0 0 auto; }
+#livon-ai #ai-settings .lv-ai-actions { grid-column: 1 / -1; margin: .25rem 0 0; justify-content: flex-end; }
+#livon-ai #ai-settings .lv-ai-note { grid-column: 1 / -1; margin: 0; }
+@media (max-width: 800px) {
+  #livon-ai #ai-settings .lv-ai-inner { grid-template-columns: 1fr; gap: 1.25rem; }
+}
+@media (max-width: 480px) {
+  #livon-ai #ai-settings .lv-ai-settings { grid-template-columns: 1fr; padding: 1rem; gap: .85rem; }
+  #livon-ai #ai-settings .lv-ai-actions .lv-ai-btn { width: 100%; justify-content: center; }
+}

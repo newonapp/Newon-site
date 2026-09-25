@@ -1037,3 +1037,28 @@ html[data-lv-view="community"] main > #community {
   #community .lv-cm-side { order: 2; }
 }
 
+
+/* Compact layout using the existing community typography and controls. */
+#community #cm-home { padding-block: 2.5rem; }
+#community #cm-home .lv-cm-head { margin-bottom: 1.25rem; }
+#community #cm-home .lv-cm-home__layout { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+#community #cm-home .lv-cm-compose-bar { padding: 1.25rem; margin-block: 1rem; background: #fff; }
+#community #cm-home .lv-cm-tabs { margin-top: 0; }
+#community #cm-home .lv-cm-empty { margin-top: .85rem; padding: 1.5rem; border: 1px solid #ececec; }
+#community #cm-home .lv-cm-empty p { max-width: none; }
+#community #cm-home .lv-cm-side { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .85rem; }
+#community #cm-home .lv-cm-side__block { display: flex; flex-direction: column; align-items: flex-start; gap: .55rem; min-width: 0; }
+#community #cm-home .lv-cm-side__block:nth-child(2) { grid-column: span 2; }
+#community #cm-home .lv-cm-side__block h3 { margin: 0; }
+#community #cm-home .lv-cm-side__block .lv-cm-note { margin: 0; padding: 0; border: 0; background: transparent; }
+#community #cm-home .lv-cm-side__block .lv-cm-btn { margin-top: auto; }
+#community #cm-home .lv-cm-compose-bar .lv-cm-note { padding: 0; border: 0; background: transparent; }
+#community #cm-home .lv-cm-search { max-width: none; }
+@media (max-width: 700px) {
+  #community #cm-home .lv-cm-side { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #community #cm-home .lv-cm-side__block:nth-child(2) { grid-column: span 2; grid-row: 1; }
+}
+@media (max-width: 420px) {
+  #community #cm-home .lv-cm-side { grid-template-columns: 1fr; }
+  #community #cm-home .lv-cm-side__block:nth-child(2) { grid-column: auto; }
+}

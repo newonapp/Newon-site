@@ -295,8 +295,8 @@
     }
     if (!list.length) {
       host.innerHTML = "<div class=\"lv-cm-empty\">" +
-        "<h3>" + (state.q ? "검색 결과가 없어요" : "아직 등록된 이야기가 없어요. 첫 번째 이야기를 나눠보세요.") + "</h3>" +
-        "<p>" + (state.q ? "관련 카테고리를 보거나 검색어를 바꿔 보세요." : "질문·경험·후기를 남기면 피드에 표시됩니다. 가짜 게시글은 만들지 않습니다.") + "</p>" +
+        "<h3>" + (state.q ? "검색 결과가 없어요" : "첫 이야기를 기다리고 있어요.") + "</h3>" +
+        "<p>" + (state.q ? "관련 카테고리를 보거나 검색어를 바꿔 보세요." : "궁금한 점이나 오늘의 경험을 나눠보세요. 나의 이야기가 새로운 연결의 시작이 됩니다.") + "</p>" +
         "<div class=\"lv-cm-actions\">" +
           "<button type=\"button\" class=\"lv-cm-btn lv-cm-btn--dark\" data-lv-cm-compose=\"" + (state.tab === "question" ? "question" : "story") + "\">글 작성하기</button>" +
           "<a class=\"lv-cm-btn lv-cm-btn--ghost\" href=\"#cm-communities\">커뮤니티 탐색하기</a>" +
