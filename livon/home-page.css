@@ -1,0 +1,1499 @@
+/* LIVON Home story body — Newon main visual language. Does NOT restyle .livon-hero */
+#livon-home {
+  display: block;
+  background: #0c0c0c;
+}
+#livon-home > .livon-hero {
+  /* preserve existing hero rules from index.html */
+}
+
+#livon-home .lv-hm {
+  --ink: #0c0c0c;
+  --mist: #fff;
+  --nav: var(--gnav-h, 74px);
+  position: relative;
+  z-index: 2;
+  background: #0c0c0c;
+  color: #fff;
+  font-family: Kanit, "Noto Sans KR", "Noto Sans", Pretendard, sans-serif;
+}
+#livon-home .lv-hm :where(h1,h2,h3,p,li,a,span,button,strong,em,label,input,textarea) {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+#livon-home .lv-hm-inner {
+  width: min(1120px, calc(100% - clamp(1.25rem, 4vw, 3rem) * 2));
+  margin: 0 auto;
+}
+#livon-home .lv-hm-inner--center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#livon-home .lv-hm-sec {
+  padding: clamp(5rem, 10vw, 8rem) 0;
+  background: #0c0c0c;
+  color: #fff;
+  border-top: 0;
+}
+#livon-home .lv-hm-kicker {
+  margin: 0 0 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+}
+#livon-home .lv-hm-eyebrow {
+  margin: 0 0 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+#livon-home .lv-hm-display {
+  margin: 0;
+  padding: 0.08em 0 0.12em;
+  font-family: Kanit, "Noto Sans KR", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.15rem, 6vw, 84px);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: #fff;
+}
+#livon-home .lv-hm-display--brand {
+  font-size: clamp(3.2rem, 12vw, 120px);
+  letter-spacing: -0.05em;
+}
+#livon-home .lv-hm-display--xl {
+  font-size: clamp(2.4rem, 7vw, 72px);
+}
+#livon-home .lv-hm-slogan {
+  margin: 2rem 0 0;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  font-weight: 500;
+  line-height: 1.45;
+  color: #fff;
+}
+#livon-home .lv-hm-lead {
+  margin: 1.5rem auto 0;
+  max-width: 38rem;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.88);
+}
+#livon-home .lv-hm-lead--soft { color: rgba(255,255,255,0.62); }
+#livon-home .lv-hm-note {
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.55;
+}
+#livon-home .lv-hm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.75rem;
+}
+#livon-home .lv-hm-actions--center { justify-content: center; }
+#livon-home .lv-hm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.7rem 1.35rem;
+  border: 1px solid #fff;
+  border-radius: 999px;
+  background: #fff;
+  color: #0c0c0c;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+#livon-home .lv-hm-btn:hover { background: #fff; opacity: 0.9; }
+#livon-home .lv-hm-btn--ghost {
+  background: transparent;
+  color: #fff;
+  opacity: 1;
+}
+#livon-home .lv-hm-btn--ghost:hover {
+  background: rgba(255,255,255,0.08);
+  opacity: 1;
+}
+#livon-home .lv-hm-btn--sm {
+  min-height: 2.4rem;
+  padding: 0.4rem 0.95rem;
+  font-size: 0.85rem;
+}
+
+/* 01 Meaning — centered brand + pillar cards (Newon about/vision) */
+#livon-home .lv-hm-sec--meaning {
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: clamp(5rem, 12vw, 9rem);
+}
+#livon-home .lv-hm-pillars {
+  display: grid;
+  gap: 1rem;
+  width: min(72rem, 100%);
+  margin: 3rem auto 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+@media (min-width: 900px) {
+  #livon-home .lv-hm-pillars { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+#livon-home .lv-hm-pillar {
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 1.5rem;
+  padding: 1.45rem 1.4rem 1.55rem;
+  background: transparent;
+}
+#livon-home .lv-hm-num {
+  display: block;
+  font-family: Kanit, "Noto Sans KR", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #fff;
+}
+#livon-home .lv-hm-en {
+  display: block;
+  margin-top: 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.7);
+}
+#livon-home .lv-hm-pillar h3 {
+  margin: 0.85rem 0 0;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.3;
+  color: #fff;
+}
+#livon-home .lv-hm-pillar p {
+  margin: 0.55rem 0 0;
+  font-weight: 500;
+  font-size: clamp(0.92rem, 1.3vw, 1.05rem);
+  line-height: 1.6;
+  color: rgba(255,255,255,0.78);
+}
+
+/* 02 Journey — dark timeline + film panel */
+#livon-home .lv-hm-sec--journey {
+  text-align: center;
+  margin-top: -1.5rem;
+  border-radius: 40px 40px 0 0;
+  background: #0c0c0c;
+}
+#livon-home .lv-hm-sec--journey .lv-hm-lead { margin-left: auto; margin-right: auto; }
+#livon-home .lv-hm-journey { margin-top: clamp(2rem, 5vw, 3rem); text-align: left; }
+#livon-home .lv-hm-journey__rail {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.25rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+#livon-home .lv-hm-journey__rail button {
+  flex: 0 0 auto;
+  min-height: 2.65rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+#livon-home .lv-hm-journey__rail button.is-on {
+  background: #fff;
+  border-color: #fff;
+  color: #0c0c0c;
+}
+#livon-home .lv-hm-journey__stage {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.85);
+  border-radius: 40px;
+  background: #0c0c0c;
+  min-height: min(52vh, 440px);
+}
+@media (min-width: 900px) {
+  #livon-home .lv-hm-journey__stage { grid-template-columns: 1.1fr 0.9fr; }
+}
+#livon-home .lv-hm-journey__visual {
+  min-height: 240px;
+  background: #1a1a1a center/cover no-repeat;
+  border-radius: 28px;
+  margin: 1rem;
+}
+@media (min-width: 900px) {
+  #livon-home .lv-hm-journey__visual { min-height: auto; }
+}
+#livon-home .lv-hm-journey__copy {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  display: grid;
+  align-content: center;
+  gap: 0.55rem;
+}
+#livon-home .lv-hm-journey__copy h3 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+#livon-home .lv-hm-journey__copy p { margin: 0; color: rgba(255,255,255,0.75); line-height: 1.6; }
+#livon-home .lv-hm-keywords {
+  margin: 0.35rem 0 0 !important;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.55) !important;
+  letter-spacing: 0.02em;
+}
+
+/* 03 Services — white lift panel like Newon .np-services */
+#livon-home .lv-hm-sec--services {
+  position: relative;
+  z-index: 2;
+  margin-top: -2rem;
+  border-radius: 40px 40px 0 0;
+  background: #fff;
+  color: #0c0c0c;
+  padding: clamp(5rem, 10vw, 7rem) 0 clamp(4rem, 8vw, 6rem);
+  text-align: center;
+}
+#livon-home .lv-hm-sec--services .lv-hm-kicker,
+#livon-home .lv-hm-sec--services .lv-hm-eyebrow { color: #0c0c0c; }
+#livon-home .lv-hm-sec--services .lv-hm-display {
+  color: #0c0c0c;
+  -webkit-text-fill-color: #0c0c0c;
+}
+#livon-home .lv-hm-sec--services .lv-hm-lead {
+  color: #333;
+  margin-left: auto;
+  margin-right: auto;
+}
+#livon-home .lv-hm-showcase {
+  width: min(1120px, calc(100% - clamp(1.25rem, 4vw, 3rem) * 2));
+  margin: 2.75rem auto 0;
+  display: grid;
+  gap: 1.25rem;
+  text-align: left;
+}
+@media (min-width: 900px) {
+  #livon-home .lv-hm-showcase { grid-template-columns: 220px minmax(0, 1fr); align-items: start; }
+}
+#livon-home .lv-hm-showcase__nav {
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+@media (min-width: 900px) {
+  #livon-home .lv-hm-showcase__nav { flex-direction: column; overflow: visible; }
+}
+#livon-home .lv-hm-showcase__nav button {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  min-height: 3rem;
+  padding: 0.65rem 0.85rem;
+  border: 0;
+  border-bottom: 1px solid rgba(12,12,12,0.12);
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: #666;
+}
+#livon-home .lv-hm-showcase__nav button.is-on {
+  color: #0c0c0c;
+  border-bottom-color: #0c0c0c;
+}
+#livon-home .lv-hm-showcase__nav em {
+  font-style: normal;
+  font-family: Kanit, "Noto Sans KR", sans-serif;
+  font-weight: 900;
+  font-size: 1.35rem;
+  letter-spacing: -0.04em;
+  color: inherit;
+}
+#livon-home .lv-hm-showcase__nav span {
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+}
+#livon-home .lv-hm-svc {
+  display: grid;
+  gap: 1.25rem;
+  border: 2px solid #0c0c0c;
+  border-radius: 40px;
+  overflow: hidden;
+  background: #0c0c0c;
+  color: #fff;
+  padding: 1.1rem;
+}
+@media (min-width: 900px) {
+  #livon-home .lv-hm-svc { grid-template-columns: 1.05fr 0.95fr; }
+}
+#livon-home .lv-hm-svc__copy {
+  padding: 0.85rem 0.85rem 0.5rem;
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+  color: #fff;
+}
+#livon-home .lv-hm-svc__copy .lv-hm-eyebrow { color: rgba(255,255,255,0.55); }
+#livon-home .lv-hm-svc__copy h3 {
+  margin: 0;
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+#livon-home .lv-hm-svc__copy p { margin: 0; color: rgba(255,255,255,0.75); line-height: 1.65; }
+#livon-home .lv-hm-svc__copy ul {
+  margin: 0.35rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+#livon-home .lv-hm-svc__copy li {
+  border: 1px solid rgba(215,226,234,0.35);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.85rem;
+  color: #fff;
+}
+#livon-home .lv-hm-svc__copy .lv-hm-btn {
+  justify-self: start;
+  margin-top: 0.5rem;
+}
+#livon-home .lv-hm-svc__film {
+  position: relative;
+  min-height: 280px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #0c0c0c;
+  container-type: size;
+}
+@media (min-width: 900px) {
+  #livon-home .lv-hm-svc__film { min-height: auto; }
+}
+#livon-home .lv-hm-svc__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+#livon-home .lv-hm-svc__veil {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  z-index: 1;
+  width: 130%;
+  height: 150%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse 58% 52% at 50% 46%,
+    rgba(8, 16, 18, 0.48) 0%,
+    rgba(8, 16, 18, 0.18) 48%,
+    rgba(8, 16, 18, 0) 78%
+  );
+  pointer-events: none;
+}
+#livon-home .lv-hm-svc__lockup {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  text-align: center;
+}
+#livon-home .lv-hm-svc__wordmark {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #fff;
+  font-family: Kanit, "Noto Sans KR", "Noto Sans", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.6rem, 4.2cqi + 1.2rem, 2.75rem);
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+  text-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+#livon-home .lv-hm-svc__slogan {
+  position: relative;
+  z-index: 1;
+  margin: 0.55em 0 0;
+  max-width: 14em;
+  color: #fff;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+  font-weight: 650;
+  font-size: clamp(0.92rem, 2.2cqi + 0.55rem, 1.2rem);
+  letter-spacing: -0.04em;
+  line-height: 1.35;
+  text-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+#livon-home .lv-hm-svc__visual {
+  display: none;
+}
+
+/* Shared section heads */
+#livon-home .lv-hm-head { margin: 0 0 2.5rem; }
+#livon-home .lv-hm-head--split {
+  display: grid;
+  gap: 1.5rem;
+  align-items: end;
+}
+@media (min-width: 900px) {
+  #livon-home .lv-hm-head--split {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+  }
+}
+#livon-home .lv-hm-head--center {
+  text-align: center;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+#livon-home .lv-hm-head--center .lv-hm-lead { margin-left: auto; margin-right: auto; }
+
+/* 04 My LIVON — editorial personal hub (no gray fills) */
+#livon-home .lv-hm-sec--mylivon {
+  background: #fff;
+  color: #0c0c0c;
+  border-radius: 40px 40px 0 0;
+  margin-top: -1.5rem;
+  position: relative;
+  z-index: 3;
+}
+#livon-home .lv-hm-sec--mylivon .lv-hm-kicker,
+#livon-home .lv-hm-sec--mylivon .lv-hm-display { color: #0c0c0c; }
+#livon-home .lv-hm-sec--mylivon .lv-hm-lead { color: #444; margin-left: 0; margin-top: 0; }
+#livon-home .lv-hm-sec--mylivon .lv-hm-note { color: #888; margin: 0; font-size: 0.9rem; }
+#livon-home .lv-hm-sec--mylivon .lv-hm-eyebrow { color: #999; }
+#livon-home .lv-hm-sec--mylivon .lv-hm-btn {
+  background: #0c0c0c;
+  border-color: #0c0c0c;
+  color: #fff;
+}
+#livon-home .lv-hm-sec--mylivon .lv-hm-btn--ghost {
+  background: transparent;
+  border-color: #0c0c0c;
+  color: #0c0c0c;
+}
+#livon-home .lv-hm-dash {
+  display: grid;
+  gap: 3.5rem;
+}
+
+/* Stage dial + personalize form */
+#livon-home .lv-hm-me {
+  display: grid;
+  gap: 0;
+  border: 1px solid #0c0c0c;
+  border-radius: 2rem;
+  overflow: hidden;
+  background: #fff;
+}
+@media (min-width: 880px) {
+  #livon-home .lv-hm-me {
+    grid-template-columns: minmax(14rem, 0.42fr) 1fr;
+  }
+}
+#livon-home .lv-hm-me__stage {
+  display: grid;
+  align-content: center;
+  gap: 0.55rem;
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  background: #0c0c0c;
+  color: #fff;
+  min-height: 16rem;
+}
+#livon-home .lv-hm-me__stage .lv-hm-eyebrow { color: rgba(255,255,255,0.45); }
+#livon-home .lv-hm-me__num {
+  margin: 0.35rem 0 0;
+  font-family: Kanit, "Noto Sans KR", sans-serif;
+  font-size: clamp(3.2rem, 8vw, 5.5rem);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 0.92;
+  color: #fff;
+}
+#livon-home .lv-hm-me__title {
+  margin: 0;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  color: rgba(255,255,255,0.88);
+}
+#livon-home .lv-hm-me__hint {
+  margin: 0.85rem 0 0;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.45;
+}
+#livon-home .lv-hm-me__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+#livon-home .lv-hm-me__tags li {
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+}
+#livon-home .lv-hm-me__form {
+  display: grid;
+  align-content: start;
+  gap: 0.95rem;
+  padding: clamp(1.5rem, 3.5vw, 2.25rem);
+  background: #fff;
+}
+#livon-home .lv-hm-me__form h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  color: #0c0c0c;
+}
+#livon-home .lv-hm-me__desc {
+  margin: 0;
+  max-width: 34rem;
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.98rem;
+}
+#livon-home .lv-hm-me__row {
+  display: grid;
+  gap: 0.85rem;
+  align-items: end;
+  margin-top: 0.25rem;
+}
+@media (min-width: 640px) {
+  #livon-home .lv-hm-me__row {
+    grid-template-columns: 1fr auto;
+  }
+}
+#livon-home .lv-hm-field {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 650;
+  color: #555;
+}
+#livon-home .lv-hm-field input,
+#livon-home .lv-hm-field select {
+  min-height: 3rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 0.9rem;
+  padding: 0.55rem 0.95rem;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: #fff;
+  color: #0c0c0c;
+  outline: none;
+}
+#livon-home .lv-hm-field input:focus,
+#livon-home .lv-hm-field select:focus { border-color: #0c0c0c; }
+#livon-home .lv-hm-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+#livon-home .lv-hm-chips button {
+  border: 1px solid #d0d0d0;
+  border-radius: 999px;
+  background: transparent;
+  padding: 0.45rem 0.9rem;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #333;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+#livon-home .lv-hm-chips button:hover { border-color: #0c0c0c; }
+#livon-home .lv-hm-chips button.is-on {
+  background: #0c0c0c;
+  border-color: #0c0c0c;
+  color: #fff;
+}
+
+/* MY DAY — magazine spread (hero + stats + shelf) */
+#livon-home .lv-hm-day { display: grid; gap: 1.5rem; }
+#livon-home .lv-hm-day__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #0c0c0c;
+}
+#livon-home .lv-hm-day__head h3 {
+  margin: 0;
+  font-size: clamp(1.45rem, 2.6vw, 1.9rem);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  color: #0c0c0c;
+}
+#livon-home .lv-hm-day__head time {
+  font-family: Kanit, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #888;
+}
+#livon-home .lv-hm-day__empty {
+  padding: 2.5rem 0;
+  text-align: center;
+  border-bottom: 1px solid #e8e8e8;
+}
+#livon-home .lv-hm-day__empty h4 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 750;
+  color: #0c0c0c;
+}
+#livon-home .lv-hm-day__empty > p {
+  margin: 0.65rem auto 0;
+  max-width: 28rem;
+  color: #666;
+  line-height: 1.6;
+}
+#livon-home .lv-hm-day__empty .lv-hm-actions { justify-content: center; }
+#livon-home .lv-hm-day__spread {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 860px) {
+  #livon-home .lv-hm-day__spread {
+    grid-template-columns: 1.35fr 0.65fr;
+    grid-template-areas:
+      "hero side"
+      "shelf shelf";
+  }
+  #livon-home .lv-hm-day__hero { grid-area: hero; }
+  #livon-home .lv-hm-day__side { grid-area: side; }
+  #livon-home .lv-hm-day__shelf { grid-area: shelf; }
+}
+#livon-home .lv-hm-day__hero {
+  display: grid;
+  align-content: end;
+  gap: 0.65rem;
+  min-height: 18rem;
+  padding: 1.75rem 1.5rem;
+  border: 1px solid #0c0c0c;
+  border-radius: 1.75rem;
+  text-decoration: none;
+  color: #0c0c0c;
+  background: #fff;
+  transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease;
+}
+#livon-home .lv-hm-day__hero:hover {
+  background: #0c0c0c;
+  color: #fff;
+  transform: translateY(-2px);
+}
+#livon-home .lv-hm-day__hero:hover .lv-hm-eyebrow,
+#livon-home .lv-hm-day__hero:hover .lv-hm-day__when,
+#livon-home .lv-hm-day__hero:hover .lv-hm-day__more em { color: rgba(255,255,255,0.55); }
+#livon-home .lv-hm-day__hero h4 {
+  margin: 0;
+  font-size: clamp(1.85rem, 4vw, 2.85rem);
+  font-weight: 850;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+}
+#livon-home .lv-hm-day__when {
+  font-family: Kanit, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #888;
+}
+#livon-home .lv-hm-day__more {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+}
+#livon-home .lv-hm-day__more li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-top: 1px solid currentColor;
+  padding-top: 0.4rem;
+  opacity: 0.85;
+}
+#livon-home .lv-hm-day__more em {
+  font-style: normal;
+  font-family: Kanit, sans-serif;
+  font-size: 0.85rem;
+  color: #888;
+}
+#livon-home .lv-hm-day__cta {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+#livon-home .lv-hm-day__side {
+  display: grid;
+  gap: 1rem;
+}
+#livon-home .lv-hm-stat {
+  display: grid;
+  gap: 0.2rem;
+  padding: 1.25rem 1.2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 1.35rem;
+  text-decoration: none;
+  color: #0c0c0c;
+  background: #fff;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+#livon-home .lv-hm-stat:hover {
+  border-color: #0c0c0c;
+  transform: translateY(-2px);
+}
+#livon-home .lv-hm-stat em {
+  font-family: Kanit, sans-serif;
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #bbb;
+}
+#livon-home .lv-hm-stat strong {
+  font-family: Kanit, sans-serif;
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
+  font-weight: 850;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+#livon-home .lv-hm-stat span {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+#livon-home .lv-hm-stat small {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: #888;
+  line-height: 1.4;
+}
+#livon-home .lv-hm-day__shelf {
+  padding: 1.35rem 0 0.25rem;
+  border-top: 1px solid #0c0c0c;
+}
+#livon-home .lv-hm-day__shelf-h {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.65rem 1.25rem;
+  margin-bottom: 1rem;
+}
+#livon-home .lv-hm-day__shelf-h .lv-hm-eyebrow { margin: 0; }
+#livon-home .lv-hm-day__shelf-h h4 {
+  margin: 0;
+  flex: 1;
+  font-size: 1.15rem;
+  font-weight: 750;
+  color: #0c0c0c;
+}
+#livon-home .lv-hm-day__shelf-h a {
+  color: #0c0c0c;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+#livon-home .lv-hm-day__shelf-h a:hover { text-decoration: underline; }
+#livon-home .lv-hm-shelf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#livon-home .lv-hm-shelf li span,
+#livon-home .lv-hm-shelf li a {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+  border: 1px solid #0c0c0c;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 650;
+  color: #0c0c0c;
+  text-decoration: none;
+  background: #fff;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+#livon-home .lv-hm-shelf li a:hover {
+  background: #0c0c0c;
+  color: #fff;
+}
+
+/* Recommendation mosaic */
+#livon-home .lv-hm-rec { display: grid; gap: 1.35rem; }
+#livon-home .lv-hm-rec__head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.35rem 1.5rem;
+  align-items: end;
+}
+#livon-home .lv-hm-rec__head .lv-hm-eyebrow { grid-column: 1; }
+#livon-home .lv-hm-rec__head h3 {
+  margin: 0;
+  grid-column: 1;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  color: #0c0c0c;
+}
+#livon-home .lv-hm-rec__more {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: end;
+  color: #0c0c0c;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+#livon-home .lv-hm-rec__more:hover { text-decoration: underline; }
+#livon-home .lv-hm-rec__mosaic {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr 1fr;
+}
+@media (min-width: 800px) {
+  #livon-home .lv-hm-rec__mosaic {
+    grid-template-columns: 1.35fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    min-height: 22rem;
+  }
+  #livon-home .lv-hm-rec__card.is-hero {
+    grid-row: 1 / span 2;
+    min-height: 22rem;
+  }
+  #livon-home .lv-hm-rec__card.is-wide {
+    grid-column: 2 / span 2;
+  }
+}
+#livon-home .lv-hm-rec__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 10rem;
+  padding: 1.15rem 1.1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 1.35rem;
+  text-decoration: none;
+  color: #0c0c0c;
+  background: #fff;
+  overflow: hidden;
+  transition: border-color 0.2s ease, transform 0.22s ease;
+}
+#livon-home .lv-hm-rec__card:hover {
+  border-color: #0c0c0c;
+  transform: translateY(-3px);
+}
+#livon-home .lv-hm-rec__card.has-img {
+  color: #fff;
+  background: #161616 center/cover no-repeat;
+  border-color: transparent;
+}
+#livon-home .lv-hm-rec__card.has-img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.12) 55%, transparent 100%);
+}
+#livon-home .lv-hm-rec__card em,
+#livon-home .lv-hm-rec__card strong { position: relative; z-index: 1; }
+#livon-home .lv-hm-rec__card em {
+  font-style: normal;
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+#livon-home .lv-hm-rec__card strong {
+  margin-top: 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+#livon-home .lv-hm-rec__card.is-hero strong {
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+}
+
+/* 05 Today — magazine feature + strip + banner */
+#livon-home .lv-hm-sec--today {
+  background: #0c0c0c;
+  margin-top: -1.5rem;
+  border-radius: 40px 40px 0 0;
+  position: relative;
+  z-index: 4;
+}
+#livon-home .lv-hm-sec--today .lv-hm-day__empty {
+  border-bottom-color: rgba(255,255,255,0.18);
+}
+#livon-home .lv-hm-sec--today .lv-hm-day__empty h4 { color: #fff; }
+#livon-home .lv-hm-sec--today .lv-hm-day__empty > p { color: rgba(255,255,255,0.55); }
+#livon-home .lv-hm-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.25rem;
+  justify-content: center;
+}
+#livon-home .lv-hm-cats a {
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+#livon-home .lv-hm-cats a:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: #fff;
+}
+#livon-home .lv-hm-today {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+#livon-home .lv-hm-mag__feature,
+#livon-home .lv-hm-mag__cell,
+#livon-home .lv-hm-mag__banner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  text-decoration: none;
+  color: #fff;
+  background: #161616 center/cover no-repeat;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: border-color 0.2s ease, transform 0.25s ease;
+}
+#livon-home .lv-hm-mag__feature:hover,
+#livon-home .lv-hm-mag__cell:hover,
+#livon-home .lv-hm-mag__banner:hover {
+  border-color: rgba(255,255,255,0.55);
+  transform: translateY(-2px);
+}
+#livon-home .lv-hm-mag__feature {
+  min-height: min(48vh, 440px);
+  padding: 2rem 1.65rem;
+}
+#livon-home .lv-hm-mag__feature.is-plain,
+#livon-home .lv-hm-mag__cell.is-plain,
+#livon-home .lv-hm-mag__banner.is-plain {
+  background: transparent;
+  border-color: rgba(255,255,255,0.28);
+}
+#livon-home .lv-hm-mag__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.15) 50%, transparent 100%);
+  pointer-events: none;
+}
+#livon-home .lv-hm-mag__feature.is-plain .lv-hm-mag__veil,
+#livon-home .lv-hm-mag__cell.is-plain .lv-hm-mag__veil,
+#livon-home .lv-hm-mag__banner.is-plain .lv-hm-mag__veil { display: none; }
+#livon-home .lv-hm-mag__copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.3rem;
+}
+#livon-home .lv-hm-mag__copy em {
+  font-style: normal;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+#livon-home .lv-hm-mag__copy strong {
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+#livon-home .lv-hm-mag__feature .lv-hm-mag__copy strong {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  max-width: 16em;
+}
+#livon-home .lv-hm-mag__copy small {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+}
+#livon-home .lv-hm-mag__strip {
+  display: grid;
+  gap: 0.85rem;
+}
+@media (min-width: 800px) {
+  #livon-home .lv-hm-mag__strip {
+    grid-template-columns: 1.2fr 1fr 1fr;
+    min-height: 16rem;
+  }
+}
+#livon-home .lv-hm-mag__cell {
+  min-height: 11rem;
+  padding: 1.15rem;
+}
+#livon-home .lv-hm-mag__cell.is-focus {
+  min-height: 14rem;
+}
+#livon-home .lv-hm-mag__banner {
+  min-height: 10rem;
+  padding: 1.35rem 1.5rem;
+}
+@media (min-width: 800px) {
+  #livon-home .lv-hm-mag__banner {
+    min-height: 11rem;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  #livon-home .lv-hm-mag__banner .lv-hm-mag__copy {
+    max-width: 36rem;
+  }
+}
+
+/* 06 Connect — stacked editorial blocks (not twin cards) */
+#livon-home .lv-hm-sec--connect {
+  background: #0c0c0c;
+  color: #fff;
+}
+#livon-home .lv-hm-ex-block,
+#livon-home .lv-hm-cm-block {
+  margin-top: 3.5rem;
+  display: grid;
+  gap: 1.75rem;
+}
+#livon-home .lv-hm-ex-block {
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+}
+@media (min-width: 900px) {
+  #livon-home .lv-hm-ex-block {
+    grid-template-columns: 0.95fr 1.05fr;
+    grid-template-areas:
+      "intro rows"
+      "cta rows";
+    align-items: start;
+    column-gap: 3rem;
+  }
+  #livon-home .lv-hm-ex-block__intro { grid-area: intro; }
+  #livon-home .lv-hm-ex-rows { grid-area: rows; }
+  #livon-home .lv-hm-ex-block > .lv-hm-btn { grid-area: cta; justify-self: start; }
+}
+#livon-home .lv-hm-ex-block__intro h3,
+#livon-home .lv-hm-cm-block__intro h3 {
+  margin: 0;
+  font-size: clamp(1.55rem, 3vw, 2.15rem);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+  color: #fff;
+}
+#livon-home .lv-hm-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.35rem;
+}
+#livon-home .lv-hm-search--xl input { min-height: 3.15rem; font-size: 1rem; }
+#livon-home .lv-hm-search input {
+  flex: 1;
+  min-width: 10rem;
+  min-height: 2.85rem;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  outline: none;
+}
+#livon-home .lv-hm-search input:focus { border-color: #fff; }
+#livon-home .lv-hm-search input::placeholder { color: rgba(255,255,255,0.4); }
+#livon-home .lv-hm-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+#livon-home .lv-hm-tags a {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  color: rgba(255,255,255,0.82);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+#livon-home .lv-hm-tags a:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.06);
+}
+#livon-home .lv-hm-ex-ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.18);
+}
+#livon-home .lv-hm-ex-ol li { border-bottom: 1px solid rgba(255,255,255,0.18); }
+#livon-home .lv-hm-ex-ol a {
+  display: grid;
+  grid-template-columns: 3.25rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1.15rem 0.15rem;
+  text-decoration: none;
+  color: #fff;
+  transition: padding-left 0.2s ease;
+}
+#livon-home .lv-hm-ex-ol a:hover { padding-left: 0.45rem; }
+#livon-home .lv-hm-ex-ol__n {
+  font-family: Kanit, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: rgba(255,255,255,0.4);
+}
+#livon-home .lv-hm-ex-ol__body {
+  display: grid;
+  gap: 0.2rem;
+}
+#livon-home .lv-hm-ex-ol__body strong {
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+#livon-home .lv-hm-ex-ol__body em {
+  font-style: normal;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+}
+
+/* Community — giant lead quote + numbered rail */
+@media (min-width: 900px) {
+  #livon-home .lv-hm-cm-block {
+    grid-template-columns: 0.85fr 1.15fr;
+    grid-template-areas:
+      "intro feed"
+      "cta feed";
+    column-gap: 3rem;
+    align-items: start;
+  }
+  #livon-home .lv-hm-cm-block__intro { grid-area: intro; }
+  #livon-home .lv-hm-cm-feed { grid-area: feed; }
+  #livon-home .lv-hm-cm-block > .lv-hm-btn { grid-area: cta; justify-self: start; }
+}
+#livon-home .lv-hm-cm-feed {
+  display: grid;
+  gap: 1.25rem;
+}
+#livon-home .lv-hm-cm-lead {
+  position: relative;
+  display: grid;
+  gap: 0.55rem;
+  padding: 2rem 1.5rem 1.75rem;
+  border: 1px solid #fff;
+  border-radius: 1.5rem;
+  text-decoration: none;
+  color: #fff;
+  overflow: hidden;
+  transition: transform 0.22s ease, background 0.22s ease;
+}
+#livon-home .lv-hm-cm-lead:hover {
+  background: #fff;
+  color: #0c0c0c;
+  transform: translateY(-2px);
+}
+#livon-home .lv-hm-cm-lead:hover em,
+#livon-home .lv-hm-cm-lead:hover span { color: #666; }
+#livon-home .lv-hm-cm-lead:hover .lv-hm-cm-lead__mark { color: rgba(0,0,0,0.12); }
+#livon-home .lv-hm-cm-lead__mark {
+  position: absolute;
+  top: -0.15em;
+  right: 0.35rem;
+  font-family: Kanit, Georgia, serif;
+  font-size: clamp(5rem, 12vw, 8rem);
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255,255,255,0.12);
+  pointer-events: none;
+}
+#livon-home .lv-hm-cm-lead em {
+  position: relative;
+  z-index: 1;
+  font-style: normal;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+#livon-home .lv-hm-cm-lead strong {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1.45rem, 2.8vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+#livon-home .lv-hm-cm-lead span {
+  position: relative;
+  z-index: 1;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.58);
+  max-width: 34rem;
+}
+#livon-home .lv-hm-cm-rail {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.18);
+}
+#livon-home .lv-hm-cm-rail li { border-bottom: 1px solid rgba(255,255,255,0.18); }
+#livon-home .lv-hm-cm-rail a {
+  display: grid;
+  grid-template-columns: 2.75rem 1fr;
+  gap: 0.15rem 1rem;
+  padding: 1rem 0.1rem;
+  text-decoration: none;
+  color: #fff;
+  transition: padding-left 0.2s ease;
+}
+#livon-home .lv-hm-cm-rail a:hover { padding-left: 0.4rem; }
+#livon-home .lv-hm-cm-rail em {
+  grid-row: 1 / span 2;
+  font-family: Kanit, sans-serif;
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  align-self: start;
+  padding-top: 0.15rem;
+}
+#livon-home .lv-hm-cm-rail strong {
+  font-size: 1.05rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+#livon-home .lv-hm-cm-rail small {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+#livon-home .lv-hm-cm-empty {
+  padding: 2rem 1.25rem;
+  border: 1px dashed rgba(255,255,255,0.28);
+  border-radius: 1.25rem;
+  text-align: center;
+}
+#livon-home .lv-hm-cm-empty p {
+  margin: 0;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.55;
+}
+
+/* 07 AI */
+#livon-home .lv-hm-sec--ai {
+  text-align: center;
+  background: #0c0c0c;
+}
+#livon-home .lv-hm-sec--ai .lv-hm-lead { margin-left: auto; margin-right: auto; }
+#livon-home .lv-hm-ai {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 2rem auto 0;
+  padding: 0.75rem;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 1.25rem;
+  background: rgba(255,255,255,0.04);
+  max-width: 40rem;
+}
+#livon-home .lv-hm-ai input {
+  flex: 1;
+  min-width: 12rem;
+  min-height: 2.75rem;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 1rem;
+  color: #fff;
+  outline: none;
+}
+#livon-home .lv-hm-ai input::placeholder { color: rgba(255,255,255,0.4); }
+#livon-home .lv-hm-ai-prompts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1rem auto 0;
+  max-width: 44rem;
+  justify-content: center;
+}
+#livon-home .lv-hm-ai-prompts button {
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+  background: transparent;
+  padding: 0.55rem 0.9rem;
+  font: inherit;
+  font-size: 0.88rem;
+  text-align: left;
+  cursor: pointer;
+  color: rgba(255,255,255,0.85);
+}
+#livon-home .lv-hm-ai-prompts button:hover { border-color: #fff; }
+#livon-home .lv-hm-sec--ai .lv-hm-note {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 32rem;
+}
+
+/* 08 Start */
+#livon-home .lv-hm-sec--start {
+  background: #0c0c0c;
+  color: #fff;
+  text-align: center;
+  padding: clamp(6rem, 14vw, 10rem) 0;
+  min-height: 70svh;
+  display: flex;
+  align-items: center;
+}
+#livon-home .lv-hm-start { width: 100%; }
+#livon-home .lv-hm-sec--start .lv-hm-display { margin-inline: auto; }
+#livon-home .lv-hm-sec--start .lv-hm-lead {
+  color: rgba(255,255,255,0.7);
+  margin-inline: auto;
+}
+
+/* Reveal — readable without JS */
+#livon-home [data-lv-hm-reveal] {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  #livon-home.is-hm-motion [data-lv-hm-reveal]:not(.is-in) {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  #livon-home.is-hm-motion [data-lv-hm-reveal].is-in {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #livon-home [data-lv-hm-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+@media (max-width: 720px) {
+  #livon-home.is-hm-motion [data-lv-hm-reveal]:not(.is-in) {
+    transform: translateY(10px);
+    transition-duration: 0.45s;
+  }
+  #livon-home .lv-hm-journey__stage,
+  #livon-home .lv-hm-svc {
+    border-radius: 28px;
+  }
+  #livon-home .lv-hm-sec--services,
+  #livon-home .lv-hm-sec--mylivon,
+  #livon-home .lv-hm-sec--journey,
+  #livon-home .lv-hm-sec--today {
+    border-radius: 28px 28px 0 0;
+  }
+}
+
+/* Global search results in gnav panel */
+.lv-hm-search-results {
+  margin-top: 0.75rem;
+  max-height: 240px;
+  overflow: auto;
+}
+.lv-hm-search-results ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lv-hm-search-results a {
+  display: block;
+  padding: 0.45rem 0;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.lv-hm-search-results em {
+  display: inline-block;
+  margin-right: 0.4rem;
+  font-style: normal;
+  font-size: 0.75rem;
+  color: #888;
+}

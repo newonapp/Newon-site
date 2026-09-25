@@ -75,7 +75,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
 }
 #livon-ai .lv-ai-sec--flush { border-top: 0; padding-top: clamp(2.5rem, 5vw, 3.5rem); }
 #livon-ai .lv-ai-sec--band {
-  background: #f6f6f6;
+  background: #fff;
   margin-inline: calc(50% - 50vw);
   padding-inline: calc(50vw - 50%);
   width: 100vw;
@@ -223,7 +223,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   color: #fff;
   border-color: rgba(255,255,255,0.72);
 }
-#livon-ai .lv-ai-film__btn:hover { background: #f3f3f3; color: #111; }
+#livon-ai .lv-ai-film__btn:hover { background: #fff; color: #111; }
 #livon-ai .lv-ai-film__btn--ghost:hover {
   background: rgba(255,255,255,0.12);
   border-color: #fff;
@@ -309,7 +309,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   cursor: pointer;
 }
 #livon-ai .lv-ai-btn--ghost { background: #fff; color: #0a0a0a; }
-#livon-ai .lv-ai-btn--ghost:hover { background: #f5f5f5; }
+#livon-ai .lv-ai-btn--ghost:hover { background: #fff; }
 #livon-ai .lv-ai-btn--light { background: #fff; color: #0a0a0a; border-color: #fff; }
 #livon-ai .lv-ai-btn--outline-light {
   background: transparent; color: #fff; border-color: rgba(255,255,255,0.55);
@@ -325,7 +325,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   border-bottom: 1px solid #e8e8e8;
   text-decoration: none; color: inherit;
 }
-#livon-ai .lv-ai-value:hover { background: #fafafa; }
+#livon-ai .lv-ai-value:hover { background: #fff; }
 @media (min-width: 800px) {
   #livon-ai .lv-ai-value { grid-template-columns: 8rem 1fr auto; align-items: baseline; }
 }
@@ -343,7 +343,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
 #livon-ai .lv-ai-empty {
   padding: clamp(1.75rem, 3vw, 2.5rem);
   border: 1px solid #e6e6e6;
-  background: #fafafa;
+  background: #fff;
   border-radius: 2px;
 }
 #livon-ai .lv-ai-badge {
@@ -383,7 +383,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   border: 1px solid #ddd;
   padding: 0.35rem;
   border-radius: 2px;
-  background: #fafafa;
+  background: #fff;
 }
 #livon-ai .lv-ai-ask__input {
   flex: 1;
@@ -427,7 +427,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
 #livon-ai .lv-ai-prompts button[aria-pressed="true"] {
   border-color: #0a0a0a;
   color: #0a0a0a;
-  background: #f4f4f4;
+  background: #fff;
 }
 
 #livon-ai .lv-ai-stage-tabs {
@@ -447,7 +447,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   cursor: pointer;
 }
 #livon-ai .lv-ai-stage-tabs button.is-on {
-  border-color: #0a0a0a; color: #0a0a0a; background: #f4f4f4;
+  border-color: #0a0a0a; color: #0a0a0a; background: #fff;
 }
 #livon-ai .lv-ai-stage-panel {
   display: grid;
@@ -587,7 +587,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  background: #fafafa;
+  background: #fff;
   min-height: 16rem;
 }
 #livon-ai .lv-ai-chat__msgs p {
@@ -656,7 +656,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
 }
 #livon-ai .lv-ai-aside {
   border: 1px solid #e6e6e6;
-  background: #fafafa;
+  background: #fff;
   padding: 1.25rem;
 }
 #livon-ai .lv-ai-aside dl {
@@ -715,3 +715,542 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   overflow: hidden; clip: rect(0,0,0,0);
   white-space: nowrap; border: 0;
 }
+
+#livon-ai .lv-ai-panel[hidden],
+#livon-ai .lv-ai-sidebar-backdrop[hidden],
+#livon-ai [data-lv-ai-stop][hidden],
+#livon-ai [data-lv-ai-panel-toggle][hidden],
+#livon-ai [data-lv-ai-clear-input][hidden],
+#livon-ai [data-lv-ai-welcome][hidden],
+#livon-ai [data-lv-ai-msgs][hidden] {
+  display: none !important;
+}
+
+#livon-ai .lv-ai-sec--workspace {
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+#livon-ai .lv-ai-workspace {
+  --ai-side: 260px;
+  --ai-panel: 300px;
+  display: grid;
+  grid-template-columns: var(--ai-side) minmax(0, 1fr);
+  gap: 0;
+  min-height: min(72vh, 760px);
+  max-width: 1280px;
+  margin: 0 auto;
+  border: 1px solid #ececec;
+  background: #fff;
+  position: relative;
+}
+#livon-ai .lv-ai-workspace.has-panel,
+#livon-ai .lv-ai-workspace:has([data-lv-ai-panel]:not([hidden])) {
+  grid-template-columns: var(--ai-side) minmax(0, 1fr) var(--ai-panel);
+}
+
+#livon-ai .lv-ai-sidebar {
+  border-right: 1px solid #ececec;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0.85rem;
+}
+#livon-ai .lv-ai-sidebar__bar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.65rem;
+}
+#livon-ai .lv-ai-sidebar__bar .lv-ai-btn { flex: 1; }
+#livon-ai .lv-ai-side-search input {
+  width: 100%;
+  min-height: 2.4rem;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid #e4e4e4;
+  border-radius: 2px;
+  font: inherit;
+  background: #fff;
+  margin-bottom: 0.65rem;
+}
+#livon-ai .lv-ai-thread-list {
+  flex: 1;
+  overflow: auto;
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+}
+#livon-ai .lv-ai-thread {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.25rem;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 0.15rem;
+}
+#livon-ai .lv-ai-thread.is-on { border-color: #0a0a0a; background: #fff; }
+#livon-ai .lv-ai-thread__main {
+  border: 0;
+  background: none;
+  text-align: left;
+  padding: 0.45rem 0.5rem;
+  font: inherit;
+  cursor: pointer;
+  display: grid;
+  gap: 0.15rem;
+}
+#livon-ai .lv-ai-thread__main strong {
+  font-size: 0.9rem;
+  font-weight: 650;
+  line-height: 1.3;
+}
+#livon-ai .lv-ai-thread__main span {
+  font-size: 0.75rem;
+  color: #888;
+}
+#livon-ai .lv-ai-thread__acts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+#livon-ai .lv-ai-thread__acts button {
+  border: 0;
+  background: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  cursor: pointer;
+  color: #777;
+  font-size: 0.9rem;
+}
+#livon-ai .lv-ai-sidebar__foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid #ececec;
+  margin-top: 0.5rem;
+}
+
+#livon-ai .lv-ai-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: #fff;
+}
+#livon-ai .lv-ai-main__top {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid #ececec;
+}
+#livon-ai .lv-ai-main__title { flex: 1; min-width: 0; }
+#livon-ai .lv-ai-main__title .lv-ai-eyebrow { margin: 0 0 0.2rem; }
+#livon-ai .lv-ai-chat-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#livon-ai .lv-ai-main__acts {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+#livon-ai .lv-ai-status {
+  font-size: 0.75rem;
+  font-weight: 650;
+  color: #888;
+  letter-spacing: 0.04em;
+}
+#livon-ai .lv-ai-status.is-ok { color: #1a7a3a; }
+#livon-ai .lv-ai-status.is-warn { color: #9a6b00; }
+#livon-ai .lv-ai-status.is-busy { color: #0a0a0a; }
+
+#livon-ai .lv-ai-stream {
+  flex: 1;
+  overflow: auto;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  scroll-behavior: smooth;
+}
+#livon-ai .lv-ai-welcome { max-width: 52rem; margin: 0 auto; }
+#livon-ai .lv-ai-welcome .lv-ai-lead { margin-bottom: 1.5rem; }
+#livon-ai .lv-ai-suggest-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+@media (min-width: 720px) {
+  #livon-ai .lv-ai-suggest-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  #livon-ai .lv-ai-suggest-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+#livon-ai .lv-ai-suggest {
+  display: grid;
+  gap: 0.35rem;
+  text-align: left;
+  padding: 1.1rem 1.15rem;
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+#livon-ai .lv-ai-suggest:hover { border-color: #0a0a0a; transform: translateY(-2px); }
+#livon-ai .lv-ai-suggest em {
+  font-style: normal;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #8a8a8a;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#livon-ai .lv-ai-suggest strong { font-size: 1.05rem; font-weight: 750; }
+#livon-ai .lv-ai-suggest span { font-size: 0.9rem; color: #555; line-height: 1.5; }
+#livon-ai .lv-ai-suggest small { font-size: 0.8rem; color: #888; margin-top: 0.25rem; }
+
+#livon-ai .lv-ai-msgs {
+  max-width: 46rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+#livon-ai .lv-ai-bubble {
+  display: grid;
+  gap: 0.45rem;
+}
+#livon-ai .lv-ai-bubble--user {
+  justify-items: end;
+}
+#livon-ai .lv-ai-bubble--user .lv-ai-bubble__body {
+  max-width: min(36rem, 92%);
+  padding: 0.85rem 1rem;
+  background: #0a0a0a;
+  color: #fff;
+  border-radius: 14px 14px 4px 14px;
+  line-height: 1.55;
+}
+#livon-ai .lv-ai-bubble--ai .lv-ai-bubble__body,
+#livon-ai .lv-ai-bubble--sys .lv-ai-bubble__body,
+#livon-ai .lv-ai-bubble--error .lv-ai-bubble__body {
+  max-width: 100%;
+  padding: 1rem 0;
+  color: #222;
+  line-height: 1.7;
+}
+#livon-ai .lv-ai-bubble--error .lv-ai-bubble__body {
+  padding: 1rem;
+  border: 1px solid #ececec;
+  background: #fff;
+}
+#livon-ai .lv-ai-bubble__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  color: #777;
+}
+#livon-ai .lv-ai-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid #0a0a0a;
+  font-size: 0.65rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+}
+#livon-ai .lv-ai-bubble__body h4 {
+  margin: 0.85rem 0 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 750;
+}
+#livon-ai .lv-ai-bubble__body p { margin: 0.35rem 0; }
+#livon-ai .lv-ai-bubble__body ul {
+  margin: 0.4rem 0;
+  padding-left: 1.2rem;
+}
+#livon-ai .lv-ai-bubble__body code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: #fff;
+  padding: 0.05em 0.3em;
+}
+#livon-ai .lv-ai-code {
+  overflow: auto;
+  padding: 0.85rem;
+  background: #fff;
+  border: 1px solid #ececec;
+  font-size: 0.82rem;
+}
+#livon-ai .lv-ai-bubble__acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+#livon-ai .lv-ai-bubble__acts button {
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-size: 0.8rem;
+  color: #666;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+#livon-ai .lv-ai-related {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid #efefef;
+  display: grid;
+  gap: 0.4rem;
+}
+#livon-ai .lv-ai-related__item {
+  display: grid;
+  gap: 0.1rem;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+#livon-ai .lv-ai-related__item em {
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #8a8a8a;
+  font-family: ui-monospace, Menlo, monospace;
+}
+#livon-ai .lv-ai-related__item strong { font-weight: 700; }
+
+#livon-ai .lv-ai-composer {
+  border-top: 1px solid #ececec;
+  padding: 0.85rem 1.1rem 1rem;
+  background: #fff;
+}
+#livon-ai .lv-ai-composer__form {
+  display: grid;
+  gap: 0.55rem;
+  border: 1px solid #e4e4e4;
+  padding: 0.65rem 0.75rem;
+  background: #fff;
+}
+#livon-ai .lv-ai-composer textarea {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  resize: none;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  min-height: 2.75rem;
+  max-height: 10rem;
+  outline: none;
+  color: #111;
+}
+#livon-ai .lv-ai-composer__acts {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+}
+#livon-ai .lv-ai-composer .lv-ai-note { margin: 0.55rem 0 0; }
+#livon-ai .lv-ai-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#livon-ai .lv-ai-panel {
+  border-left: 1px solid #ececec;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+#livon-ai .lv-ai-panel__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #ececec;
+}
+#livon-ai .lv-ai-panel__bar h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 750;
+}
+#livon-ai .lv-ai-panel__body {
+  padding: 1rem;
+  overflow: auto;
+  flex: 1;
+}
+#livon-ai .lv-ai-plan-card h3 {
+  margin: 0.25rem 0 0.45rem;
+  font-size: 1.15rem;
+  font-weight: 750;
+}
+#livon-ai .lv-ai-plan-card ol { padding-left: 1.2rem; }
+#livon-ai .lv-ai-check-list {
+  list-style: none;
+  margin: 0.75rem 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+#livon-ai .lv-ai-check-list label {
+  display: flex;
+  gap: 0.45rem;
+  align-items: flex-start;
+  cursor: pointer;
+  font-size: 0.92rem;
+}
+#livon-ai .lv-ai-link-list {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.55rem;
+}
+#livon-ai .lv-ai-link-list h4 { margin: 0; font-size: 0.9rem; }
+#livon-ai .lv-ai-link-list a {
+  display: grid;
+  gap: 0.15rem;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid #eee;
+}
+#livon-ai .lv-ai-link-list em {
+  font-style: normal;
+  font-size: 0.7rem;
+  color: #8a8a8a;
+  letter-spacing: 0.08em;
+}
+
+#livon-ai .lv-ai-icon-btn {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid #e4e4e4;
+  background: #fff;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+#livon-ai .lv-ai-text-btn {
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.82rem;
+  color: #555;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+#livon-ai .lv-ai-btn--sm {
+  min-height: 2.35rem;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.85rem;
+}
+#livon-ai .lv-ai-btn--dark {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+#livon-ai .lv-ai-only-mobile { display: none; }
+#livon-ai .lv-ai-sidebar-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  border: 0;
+  z-index: 4;
+}
+
+#livon-ai .lv-ai-guide-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+@media (min-width: 800px) {
+  #livon-ai .lv-ai-guide-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+#livon-ai .lv-ai-guide-card {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.25rem 1.2rem;
+  border: 1px solid #e8e8e8;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+#livon-ai .lv-ai-guide-card:hover { border-color: #0a0a0a; transform: translateY(-2px); }
+#livon-ai .lv-ai-guide-card em {
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: #8a8a8a;
+  font-family: ui-monospace, Menlo, monospace;
+}
+#livon-ai .lv-ai-guide-card strong { font-size: 1.1rem; font-weight: 750; }
+#livon-ai .lv-ai-guide-card span { font-size: 0.92rem; color: #555; line-height: 1.5; }
+
+#livon-ai .lv-ai-settings {
+  display: grid;
+  gap: 0.85rem;
+  max-width: 32rem;
+}
+#livon-ai .lv-ai-field {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: #444;
+}
+#livon-ai .lv-ai-field input,
+#livon-ai .lv-ai-field select {
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  font: inherit;
+}
+#livon-ai .lv-ai-check {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: 0.92rem;
+  color: #444;
+}
+
+@media (max-width: 980px) {
+  #livon-ai .lv-ai-workspace,
+  #livon-ai .lv-ai-workspace:has([data-lv-ai-panel]:not([hidden])) {
+    grid-template-columns: 1fr;
+    min-height: min(78vh, 820px);
+  }
+  #livon-ai .lv-ai-sidebar {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: min(300px, 86vw);
+    z-index: 5;
+    transform: translateX(-105%);
+    transition: transform 0.25s ease;
+    box-shadow: 8px 0 30px rgba(0,0,0,0.12);
+  }
+  #livon-ai .lv-ai-sidebar.is-open { transform: none; }
+  #livon-ai .lv-ai-sidebar [data-lv-ai-sidebar-close] { display: inline-grid; }
+  #livon-ai .lv-ai-only-mobile { display: inline-grid; }
+  #livon-ai .lv-ai-panel {
+    position: absolute;
+    inset: auto 0 0 0;
+    max-height: min(70vh, 520px);
+    z-index: 6;
+    border-left: 0;
+    border-top: 1px solid #ececec;
+    box-shadow: 0 -12px 40px rgba(0,0,0,0.12);
+  }
+}
+@media (min-width: 981px) {
+  #livon-ai .lv-ai-sidebar [data-lv-ai-sidebar-close] { display: none; }
+}
+

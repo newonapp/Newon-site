@@ -73,7 +73,7 @@ html[data-lv-view="explore"] main > #explore {
 }
 #explore .lv-ex-sec--flush { border-top: 0; padding-top: clamp(2rem, 4vw, 3rem); }
 #explore .lv-ex-sec--band {
-  background: #f6f6f6;
+  background: #fff;
   margin-inline: calc(50% - 50vw);
   padding-inline: calc(50vw - 50%);
   width: 100vw;
@@ -223,7 +223,7 @@ html[data-lv-view="explore"] main > #explore {
 }
 #explore .lv-ex-film__btn:hover,
 #explore .lv-ex-film__btn:focus-visible {
-  background: #f3f3f3;
+  background: #fff;
   border-color: #f3f3f3;
   color: #111;
 }
@@ -336,7 +336,7 @@ html[data-lv-view="explore"] main > #explore {
 #explore .lv-ex-chips button.is-on {
   border-color: #0a0a0a;
   color: #0a0a0a;
-  background: #f4f4f4;
+  background: #fff;
 }
 #explore .lv-ex-recent {
   margin: 0.35rem 0 0;
@@ -426,7 +426,7 @@ html[data-lv-view="explore"] main > #explore {
   background: #fff;
   color: #0a0a0a;
 }
-#explore .lv-ex-btn--ghost:hover { background: #f5f5f5; }
+#explore .lv-ex-btn--ghost:hover { background: #fff; }
 #explore .lv-ex-btn:hover { background: #222; color: #fff; }
 #explore .lv-ex-btn--ghost:hover { color: #0a0a0a; }
 #explore .lv-ex-btn--light {
@@ -464,7 +464,7 @@ html[data-lv-view="explore"] main > #explore {
   color: inherit;
   transition: background .2s;
 }
-#explore .lv-ex-row:hover { background: #fafafa; }
+#explore .lv-ex-row:hover { background: #fff; }
 #explore .lv-ex-row__n {
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.75rem;
@@ -636,7 +636,7 @@ html[data-lv-view="explore"] main > #explore {
   margin: 1.5rem 0 0;
   padding: 1rem 1.15rem;
   border: 1px dashed #cfcfcf;
-  background: #fafafa;
+  background: #fff;
   font-size: 0.9rem;
   line-height: 1.55;
   color: #555;
@@ -658,7 +658,7 @@ html[data-lv-view="explore"] main > #explore {
   position: relative;
   overflow: hidden;
   border-radius: 2px;
-  background: #f0f0f0;
+  background: #fff;
   aspect-ratio: 4 / 3;
 }
 #explore .lv-ex-media img {
@@ -740,7 +740,7 @@ html[data-lv-view="explore"] main > #explore {
   gap: 1.25rem;
   padding: 1.35rem;
   border: 1px solid #e6e6e6;
-  background: #fafafa;
+  background: #fff;
   border-radius: 2px;
 }
 #explore .lv-ex-meta dl { margin: 0; }
@@ -799,7 +799,7 @@ html[data-lv-view="explore"] main > #explore {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #666;
-  background: #f7f7f7;
+  background: #fff;
 }
 #explore .lv-ex-badge--soon { border-color: #ddd; color: #888; }
 
@@ -886,16 +886,11 @@ html[data-lv-view="explore"] main > #explore {
 #explore .lv-ex-filters button.is-on {
   border-color: #0a0a0a;
   color: #0a0a0a;
-  background: #f4f4f4;
+  background: #fff;
 }
 
 /* Reveal */
 #explore [data-lv-ex-reveal] {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-#explore [data-lv-ex-reveal].is-in {
   opacity: 1;
   transform: none;
 }
@@ -908,3 +903,373 @@ html[data-lv-view="explore"] main > #explore {
     transition: none !important;
   }
 }
+
+/* ——— Explore OS expansion ——— */
+#explore .lv-ex-title--sm {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+#explore .lv-ex-block-label { margin: clamp(2rem, 4vw, 3rem) 0 1rem; }
+#explore .lv-ex-search__box { position: relative; }
+#explore .lv-ex-search__clear {
+  position: absolute;
+  right: 5.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  background: transparent;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: #666;
+}
+#explore .lv-ex-text-btn {
+  border: 0;
+  background: none;
+  color: #777;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+#explore .lv-ex-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+@media (min-width: 720px) {
+  #explore .lv-ex-cat-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+#explore .lv-ex-cat {
+  display: grid;
+  gap: 0.35rem;
+  text-align: left;
+  padding: 1.1rem 1rem;
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+#explore .lv-ex-cat:hover { border-color: #0a0a0a; transform: translateY(-2px); }
+#explore .lv-ex-cat em {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  font-style: normal;
+  color: #999;
+  letter-spacing: 0.08em;
+}
+#explore .lv-ex-cat strong { font-size: 1.05rem; font-weight: 750; }
+#explore .lv-ex-cat span { font-size: 0.82rem; color: #666; line-height: 1.45; }
+#explore .lv-ex-cat b { font-size: 0.75rem; font-weight: 650; color: #888; }
+
+#explore .lv-ex-pref {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+#explore .lv-ex-pref select {
+  min-height: 2.5rem;
+  margin-left: 0.35rem;
+  border: 1px solid #e0e0e0;
+  padding: 0.35rem 0.55rem;
+  font: inherit;
+}
+
+#explore .lv-ex-activity-grid {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 800px) {
+  #explore .lv-ex-activity-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+#explore .lv-ex-mini {
+  padding: 1.15rem;
+  border: 1px solid #ececec;
+  background: #fff;
+}
+#explore .lv-ex-mini h4 { margin: 0 0 0.65rem; font-size: 0.95rem; }
+#explore .lv-ex-mini ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35rem; }
+#explore .lv-ex-mini button {
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  color: #111;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+#explore .lv-ex-results {
+  display: none;
+  padding: clamp(2rem, 4vw, 3rem) 0;
+  border-top: 1px solid #ececec;
+  background: #fff;
+}
+#explore .lv-ex-results.is-open { display: block; }
+#explore .lv-ex-results[hidden] { display: none !important; }
+#explore .lv-ex-results__layout {
+  display: grid;
+  gap: 1.25rem;
+}
+@media (min-width: 960px) {
+  #explore .lv-ex-results__layout { grid-template-columns: 240px minmax(0, 1fr); align-items: start; }
+}
+#explore .lv-ex-side {
+  padding: 1rem;
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  position: sticky;
+  top: calc(var(--gnav-h, 74px) + 12px);
+}
+#explore .lv-ex-side.is-collapsed .lv-ex-filters { display: none; }
+#explore .lv-ex-side__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+#explore .lv-ex-filter-group { margin-bottom: 1rem; }
+#explore .lv-ex-filter-group > p {
+  margin: 0 0 0.45rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#explore .lv-ex-filters .lv-ex-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#explore .lv-ex-results__bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+#explore .lv-ex-results__tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+#explore .lv-ex-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: #555;
+}
+#explore .lv-ex-sort select {
+  min-height: 2.4rem;
+  border: 1px solid #e0e0e0;
+  padding: 0.3rem 0.5rem;
+  font: inherit;
+  background: #fff;
+}
+#explore .lv-ex-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+#explore .lv-ex-tabs button {
+  border: 1px solid #e4e4e4;
+  background: #fff;
+  padding: 0.45rem 0.8rem;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+#explore .lv-ex-tabs button.is-on {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+
+#explore .lv-ex-card-grid {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 720px) {
+  #explore .lv-ex-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  #explore .lv-ex-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+#explore .lv-ex-card {
+  display: grid;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  overflow: hidden;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+#explore .lv-ex-card:hover { border-color: #0a0a0a; transform: translateY(-2px); }
+#explore .lv-ex-card__media {
+  display: block;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  background: #fff;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+#explore .lv-ex-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+#explore .lv-ex-card--expert .lv-ex-card__media { aspect-ratio: 1 / 1; max-height: 220px; }
+#explore .lv-ex-card--product .lv-ex-card__media { aspect-ratio: 4 / 3; }
+#explore .lv-ex-card--place .lv-ex-card__body { border-left: 3px solid #0a0a0a; }
+#explore .lv-ex-card--program .lv-ex-card__price { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+#explore .lv-ex-card__body { padding: 1rem 1.05rem 1.15rem; display: grid; gap: 0.4rem; }
+#explore .lv-ex-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: #777;
+}
+#explore .lv-ex-card h3 { margin: 0; font-size: 1.1rem; font-weight: 750; }
+#explore .lv-ex-card h3 button {
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-weight: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+}
+#explore .lv-ex-card__provider { margin: 0; font-size: 0.88rem; color: #555; }
+#explore .lv-ex-card__reason {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #888;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#explore .lv-ex-card__price { margin: 0.15rem 0 0; font-size: 0.9rem; font-weight: 650; }
+#explore .lv-ex-card__acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+}
+
+#explore .lv-ex-btn--sm {
+  min-height: 2.35rem;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.85rem;
+}
+#explore .lv-ex-btn--dark {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+#explore .lv-ex-actions--stack {
+  display: grid;
+  gap: 0.45rem;
+}
+
+#explore #ex-detail[hidden],
+#explore [data-lv-ex-detail-sec][hidden] { display: none !important; }
+#explore .lv-ex-detail__hero {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+}
+@media (min-width: 900px) {
+  #explore .lv-ex-detail__hero { grid-template-columns: 1.1fr 0.9fr; align-items: end; }
+}
+#explore .lv-ex-detail__hero img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+#explore .lv-ex-detail--expert .lv-ex-detail__hero img { aspect-ratio: 4 / 5; max-height: 420px; }
+#explore .lv-ex-detail__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+@media (min-width: 900px) {
+  #explore .lv-ex-detail__grid { grid-template-columns: 1.2fr 0.8fr; }
+}
+#explore .lv-ex-detail__main h3 {
+  margin: 1.35rem 0 0.4rem;
+  font-size: 1rem;
+  font-weight: 750;
+}
+#explore .lv-ex-detail__main h3:first-child { margin-top: 0; }
+#explore .lv-ex-detail__main p { margin: 0; color: #444; line-height: 1.7; }
+#explore .lv-ex-detail__main em { color: #777; font-style: normal; font-size: 0.9em; }
+#explore .lv-ex-detail__side {
+  padding: 1.15rem;
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  height: fit-content;
+  position: sticky;
+  top: calc(var(--gnav-h, 74px) + 12px);
+}
+#explore .lv-ex-detail__side dl { margin: 0 0 1rem; display: grid; gap: 0.65rem; }
+#explore .lv-ex-detail__side dt {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #999;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#explore .lv-ex-detail__side dd { margin: 0.15rem 0 0; font-weight: 650; }
+
+#explore .lv-ex-compare-picks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+#explore .lv-ex-compare-picks span,
+#explore .lv-ex-compare-picks li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid #e4e4e4;
+  background: #fff;
+  font-size: 0.9rem;
+}
+#explore .lv-ex-compare th button {
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  #explore .lv-ex-search__clear { right: 4.75rem; }
+  #explore .lv-ex-side { position: static; }
+  #explore .lv-ex-detail__side { position: static; }
+}
+

@@ -197,6 +197,7 @@ const ALL_PUBLISH_ROOT_FILES = [...PUBLISH_ROOT_CORE, ...PUBLISH_ROOT_IMAGES];
 function copyDir(src, dest) {
   fs.mkdirSync(dest, { recursive: true });
   for (const ent of fs.readdirSync(src, { withFileTypes: true })) {
+    if (ent.name === "__pycache__" || ent.name === ".DS_Store" || ent.name.endsWith(".pyc")) continue;
     const s = path.join(src, ent.name);
     const d = path.join(dest, ent.name);
     if (ent.isDirectory()) copyDir(s, d);
@@ -487,6 +488,13 @@ function verify() {
   required.push(path.join(OUT, "livon", "index.html"));
   required.push(path.join(OUT, "livon", "ai-page.css"));
   required.push(path.join(OUT, "livon", "explore-page.css"));
+  required.push(path.join(OUT, "livon", "home-page.css"));
+  required.push(path.join(OUT, "livon", "today-data.js"));
+  required.push(path.join(OUT, "livon", "life-data.js"));
+  required.push(path.join(OUT, "livon", "community-data.js"));
+  required.push(path.join(OUT, "livon", "explore-data.js"));
+  required.push(path.join(OUT, "livon", "assets", "topics", "hangang.jpg"));
+  required.push(path.join(OUT, "livon", "assets", "topics", "pottery.jpg"));
   required.push(path.join(OUT, "ongil-start", "index.html"));
   required.push(path.join(OUT, "assets", "livon-mark.jpg"));
   required.push(path.join(OUT, "assets", "livon-mark-icon.jpg"));
