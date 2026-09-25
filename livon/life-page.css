@@ -1,0 +1,1771 @@
+/* LivOn life-stage page — scoped to #life */
+#life.lv-lum {
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  background: #fff;
+}
+#life .lv-life { position: relative; z-index: 1; background: #fff; color: #171717; }
+#life .lv-life :where(h1,h2,h3,p,li,a,span,button,strong,em,label) {
+  word-break: keep-all; overflow-wrap: break-word;
+  font-family: "Noto Sans KR", "Noto Sans", Pretendard, sans-serif;
+}
+
+/* Scroll unlock only for life view */
+html[data-lv-view="life"],
+html[data-lv-view="life"] body {
+  height: auto !important;
+  overflow: auto !important;
+  overflow-x: clip !important;
+}
+html[data-lv-view="life"] main {
+  height: auto !important;
+  overflow: visible !important;
+}
+html[data-lv-view="life"] main > #life {
+  display: block !important;
+}
+
+/* Hero — keep existing video; overlay matches nls-film */
+#life .lv-life__hero {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100svh;
+  height: 100svh;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+#life .lv-life__hero .lv-lum__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+  z-index: 1;
+  pointer-events: none;
+}
+#life .lv-life__lockup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  max-width: calc(100vw - 2.4rem);
+  margin: 0;
+  padding: 1.4rem 1rem 1.6rem;
+  transform: translate(-50%, -48%);
+  text-align: center;
+}
+#life .lv-life__veil {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  z-index: 0;
+  width: min(56rem, 130%);
+  height: min(32rem, 160%);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse 58% 52% at 50% 46%, rgba(8,16,18,0.28) 0%, rgba(8,16,18,0.12) 46%, rgba(8,16,18,0) 78%);
+  pointer-events: none;
+}
+#life .lv-life__wordmark,
+#life .lv-life__slogan,
+#life .lv-life__lead,
+#life .lv-life__actions {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(12px);
+}
+#life .lv-life__hero.is-ready .lv-life__wordmark,
+#life .lv-life__hero.is-ready .lv-life__slogan,
+#life .lv-life__hero.is-ready .lv-life__lead,
+#life .lv-life__hero.is-ready .lv-life__actions {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+#life .lv-life__hero.is-ready .lv-life__wordmark { transition-delay: 0.12s; }
+#life .lv-life__hero.is-ready .lv-life__slogan { transition-delay: 0.3s; }
+#life .lv-life__hero.is-ready .lv-life__lead { transition-delay: 0.48s; }
+#life .lv-life__hero.is-ready .lv-life__actions { transition-delay: 0.64s; }
+#life .lv-life__wordmark {
+  margin: 0 0 2.15rem;
+  color: #fff;
+  font-family: "Noto Sans", "Noto Sans KR", Pretendard, sans-serif;
+  font-size: clamp(6.2rem, 22vw, 12.5rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  white-space: nowrap;
+  width: max-content;
+  max-width: none;
+  text-shadow: 0 10px 28px rgba(0,0,0,0.32);
+}
+#life .lv-life__slogan {
+  margin: 0;
+  color: #fff;
+  font-family: "Noto Sans KR", "Noto Sans", Pretendard, sans-serif;
+  font-size: clamp(1.45rem, 3.2vw, 2.35rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.28;
+  text-shadow: 0 8px 24px rgba(0,0,0,0.36);
+}
+#life .lv-life__lead {
+  margin: 0.95rem 0 0;
+  max-width: 32rem;
+  color: rgba(255,255,255,0.92);
+  font-family: "Noto Sans KR", "Noto Sans", Pretendard, sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  font-weight: 430;
+  letter-spacing: -0.02em;
+  line-height: 1.62;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.34);
+}
+#life .lv-life__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+#life .lv-life-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  background: #fff;
+  color: #111;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+#life .lv-life-btn--ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,0.72);
+}
+#life .lv-life-btn:hover,
+#life .lv-life-btn:focus-visible {
+  background: #fff;
+  border-color: #f3f3f3;
+  color: #111;
+}
+#life .lv-life-btn--ghost:hover,
+#life .lv-life-btn--ghost:focus-visible {
+  background: rgba(255,255,255,0.12);
+  border-color: #fff;
+  color: #fff;
+}
+#life .lv-life-btn--dark {
+  background: #0a0a0a;
+  color: #fff;
+  border-color: #1a1a1a;
+}
+#life .lv-life-btn--outline {
+  background: transparent;
+  color: #171717;
+  border-color: #d8d8d8;
+}
+#life .lv-life-btn--outline:hover {
+  border-color: #171717;
+  background: transparent;
+  color: #171717;
+}
+#life .lv-life-btn--sm {
+  min-height: 2.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+#life .lv-life-btn--ghost-ink {
+  background: transparent;
+  color: #171717;
+  border-color: #d8d8d8;
+}
+#life .lv-life-btn--ghost-ink:hover {
+  border-color: #171717;
+  background: transparent;
+  color: #171717;
+}
+
+/* Body — business-hub editorial language (middle only) */
+#life .lv-life__wrap {
+  width: min(1200px, calc(100% - clamp(1.25rem, 4vw, 3rem) * 2));
+  margin: 0 auto;
+  padding: 0 0 clamp(2rem, 5vw, 3.5rem);
+}
+#life .lv-life-sec {
+  padding: clamp(4.5rem, 10vw, 7.5rem) 0;
+  border-top: 1px solid #e6e6e6;
+  scroll-margin-top: calc(var(--gnav-h, 74px) + 1rem);
+}
+#life .lv-life-sec--band {
+  background: #fff;
+  margin-inline: calc(50% - 50vw);
+  padding-inline: calc(50vw - 50%);
+  width: 100vw;
+  border-top: 1px solid #e6e6e6;
+}
+#life .lv-life-sec--band > .lv-life-sec__inner {
+  width: min(1200px, calc(100% - clamp(1.25rem, 4vw, 3rem) * 2));
+  margin: 0 auto;
+}
+#life .lv-life-sec--ink {
+  background: #0a0a0a;
+  color: #f5f5f5;
+  margin-inline: calc(50% - 50vw);
+  padding-inline: calc(50vw - 50%);
+  width: 100vw;
+  border-top: 0;
+}
+#life .lv-life-sec--ink > .lv-life-sec__inner {
+  width: min(1200px, calc(100% - clamp(1.25rem, 4vw, 3rem) * 2));
+  margin: 0 auto;
+}
+#life .lv-life-sec--ink .lv-life-title,
+#life .lv-life-sec--ink .lv-life-kicker { color: #f5f5f5; }
+#life .lv-life-sec--ink .lv-life-lead { color: #a8a8a8; }
+#life .lv-life-sec--ink .lv-life-kicker { color: rgba(255,255,255,0.72); }
+
+#life .lv-life-kicker {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #525252;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#life .lv-life-title {
+  margin: 0;
+  padding: 0.12em 0 0.06em;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.12;
+  color: #0a0a0a;
+  overflow: visible;
+}
+#life .lv-life-title--xl {
+  font-size: clamp(2.75rem, 7vw, 5.25rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+#life .lv-life-title--md {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+#life .lv-life-lead {
+  margin: 1rem 0 0;
+  max-width: 38rem;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #404040;
+}
+#life .lv-life-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
+
+/* Explore — horizontal editorial cards */
+#life .lv-life-rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(260px, 300px);
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+#life .lv-life-card {
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e6e6e6;
+  border-radius: 2px;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: border-color .25s ease, transform .25s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  padding: 0;
+  min-width: 260px;
+}
+#life .lv-life-card:hover,
+#life .lv-life-card.is-on {
+  border-color: #0a0a0a;
+  transform: translateY(-3px);
+}
+#life .lv-life-card__media {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 0.75rem;
+}
+#life .lv-life-card__img {
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: contain;
+  display: block;
+}
+#life .lv-life-card__body { padding: 1.15rem 1.15rem 1.35rem; }
+#life .lv-life-card__age {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #525252;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#life .lv-life-card__name {
+  margin: 0.45rem 0 0;
+  font-size: 1.35rem;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+#life .lv-life-card__desc {
+  margin: 0.55rem 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #404040;
+}
+#life .lv-life-card__go {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  border-bottom: 1px solid currentColor;
+}
+
+/* My stage */
+#life .lv-life-panel {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid #e6e6e6;
+  border-radius: 2px;
+  background: #fff;
+}
+@media (min-width: 900px) {
+  #life .lv-life-panel { grid-template-columns: 1.25fr 0.9fr; align-items: start; }
+}
+#life .lv-life-chips {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.25rem 0 0; padding: 0; list-style: none;
+}
+#life .lv-life-chips li { margin: 0; padding: 0; }
+#life .lv-life-chips button {
+  margin: 0;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 2px;
+  background: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  font-family: inherit;
+  min-height: 2.6rem;
+  transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+#life .lv-life-chips button.is-on {
+  border-color: #0a0a0a;
+  color: #0a0a0a;
+  background: #fff;
+}
+
+/* Decade sections — studio/editorial, no overlapping marks */
+#life .lv-life-sec--stages {
+  background: #fff;
+  padding-top: clamp(3.5rem, 7vw, 5.5rem);
+}
+#life .lv-life-switch {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2rem auto 2.5rem;
+  max-width: 48rem;
+}
+#life .lv-life-switch button {
+  min-height: 2.75rem;
+  padding: 0.55rem 1.15rem;
+  border: 1px solid #d4d4d4;
+  border-radius: 999px;
+  background: #fff;
+  color: #222;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+#life .lv-life-switch button:hover { border-color: #0a0a0a; }
+#life .lv-life-switch button.is-on {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+#life .lv-life-decade {
+  scroll-margin-top: calc(var(--gnav-h, 74px) + 1rem);
+}
+#life .lv-life-decade[hidden] {
+  display: none !important;
+}
+#life .lv-life-decade.is-active-stage {
+  display: block;
+  padding-top: 0.25rem;
+}
+#life .lv-life-decade__show {
+  background: #fff;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  aspect-ratio: 4 / 3;
+}
+#life .lv-life-decade__show img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+#life .lv-life-decade__split {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3.25rem);
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  #life .lv-life-decade__split {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: clamp(2.5rem, 5vw, 4rem);
+  }
+  #life .lv-life-decade__split.is-flip {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  }
+  #life .lv-life-decade__split.is-flip .lv-life-decade__show { order: 2; }
+  #life .lv-life-decade__split .lv-life-decade__show { margin-bottom: 0; }
+}
+#life .lv-life-decade__copy { position: relative; }
+#life .lv-life-decade__n {
+  margin: 0 0 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #525252;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#life .lv-life-decade__meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e6e6e6;
+}
+#life .lv-life-decade__meta p {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #525252;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#life .lv-life-decade__meta strong {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: #0a0a0a;
+  text-transform: none;
+  font-family: "Noto Sans KR", "Noto Sans", Pretendard, sans-serif;
+}
+
+#life .lv-life-decade__stack {
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+#life .lv-life-decade__stack .lv-life-decade__show {
+  aspect-ratio: 21 / 9;
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+#life .lv-life-decade__stack-copy {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+@media (min-width: 900px) {
+  #life .lv-life-decade__stack-copy {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    align-items: end;
+  }
+}
+
+#life .lv-life-decade__banner {
+  position: relative;
+  margin-inline: calc(50% - 50vw);
+  width: 100vw;
+  background: #0a0a0a;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+#life .lv-life-decade__banner-in {
+  width: min(1200px, calc(100% - clamp(1.25rem, 4vw, 3rem) * 2));
+  margin: 0 auto;
+  display: grid;
+  gap: 0;
+}
+@media (min-width: 900px) {
+  #life .lv-life-decade__banner-in { grid-template-columns: 1fr 1fr; align-items: stretch; min-height: 420px; }
+}
+#life .lv-life-decade__banner .lv-life-decade__show {
+  margin: 0;
+  border-radius: 0;
+  background: #141414;
+  aspect-ratio: auto;
+  min-height: 280px;
+  height: 100%;
+}
+#life .lv-life-decade__banner-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.25rem, 4vw, 3rem);
+  color: #fff;
+}
+#life .lv-life-decade__banner-copy .lv-life-kicker,
+#life .lv-life-decade__banner-copy .lv-life-decade__n { color: rgba(255,255,255,0.7); }
+#life .lv-life-decade__banner-copy .lv-life-title { color: #fff; }
+#life .lv-life-decade__banner-copy .lv-life-lead { color: rgba(255,255,255,0.82); }
+#life .lv-life-decade__banner-copy .lv-life-decade__meta { border-top-color: rgba(255,255,255,0.18); }
+#life .lv-life-decade__banner-copy .lv-life-decade__meta p { color: rgba(255,255,255,0.65); }
+#life .lv-life-decade__banner-copy .lv-life-decade__meta strong { color: #fff; }
+
+#life .lv-life-decade__rail {
+  display: grid;
+  gap: 0;
+  margin-top: 1.5rem;
+  border-top: 1px solid #e6e6e6;
+}
+#life .lv-life-decade__rail div {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1rem;
+  padding: 1.05rem 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+#life .lv-life-decade__rail em {
+  font-style: normal;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #525252;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#life .lv-life-decade__rail span {
+  font-size: 1.05rem;
+  font-weight: 650;
+  color: #0a0a0a;
+  letter-spacing: -0.02em;
+}
+
+#life .lv-life-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.65rem;
+  margin: 1.5rem 0 0;
+}
+#life .lv-life-fields button {
+  min-height: 3.25rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 2px;
+  background: #fff;
+  text-align: left;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 650;
+  cursor: pointer;
+  color: #0a0a0a;
+  transition: border-color .2s ease, background .2s ease;
+}
+#life .lv-life-fields button:hover,
+#life .lv-life-fields button.is-on {
+  border-color: #0a0a0a;
+  background: #fff;
+}
+
+#life .lv-life-services {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+@media (min-width: 720px) {
+  #life .lv-life-services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+#life .lv-life-services.is-stack {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  #life .lv-life-services.is-trio { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+#life .lv-life-svc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: clamp(1.35rem, 2.6vw, 1.85rem);
+  border: 1px solid #0a0a0a;
+  border-radius: 0;
+  background: #fff;
+  transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease;
+}
+#life .lv-life-svc:hover {
+  background: #0a0a0a;
+  color: #fff;
+  transform: translateY(-3px);
+}
+#life .lv-life-svc:hover .lv-life-svc__n,
+#life .lv-life-svc:hover p,
+#life .lv-life-svc:hover ul,
+#life .lv-life-svc:hover .lv-life-svc__why { color: rgba(255,255,255,0.62); }
+#life .lv-life-svc:hover .lv-life-btn--dark {
+  background: #fff;
+  color: #0a0a0a;
+  border-color: #fff;
+}
+#life .lv-life-svc:hover .lv-life-btn--outline,
+#life .lv-life-svc:hover .lv-life-btn--ghost-ink {
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+#life .lv-life-svc__n {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888;
+  font-family: Kanit, ui-monospace, Menlo, Consolas, monospace;
+}
+#life .lv-life-svc h4 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+#life .lv-life-svc > p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #444;
+}
+#life .lv-life-svc ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+#life .lv-life-svc ul li {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid currentColor;
+  border-radius: 0;
+  font-size: 0.8rem;
+  font-weight: 650;
+  opacity: 0.75;
+}
+#life .lv-life-svc__why {
+  margin: 0.15rem 0 0;
+  font-size: 0.82rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: #666;
+}
+#life .lv-life-svc__acts {
+  display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: auto; padding-top: 0.85rem;
+}
+#life .lv-life-empty {
+  margin: 1.25rem 0 0;
+  padding: 1.35rem 1.5rem;
+  border: 1px dashed #c8c8c8;
+  border-radius: 2px;
+  color: #525252;
+  font-size: 1rem;
+  line-height: 1.65;
+  background: #fff;
+}
+#life .lv-life-aiq {
+  display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.25rem;
+}
+#life .lv-life-aiq a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.85rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 2px;
+  background: #fff;
+  color: #0a0a0a;
+  text-decoration: none;
+  font-size: 0.98rem;
+  font-weight: 600;
+  transition: border-color .2s ease;
+}
+#life .lv-life-aiq a:hover { border-color: #0a0a0a; }
+#life .lv-life-sec--ink .lv-life-aiq a {
+  background: transparent;
+  border-color: rgba(255,255,255,0.22);
+  color: #fff;
+}
+#life .lv-life-sec--ink .lv-life-aiq a:hover { border-color: #fff; }
+#life .lv-life-note {
+  margin: 1.15rem 0 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #525252;
+}
+#life .lv-life-block-label {
+  margin: clamp(2.5rem, 5vw, 3.5rem) 0 0;
+  padding-top: clamp(1.75rem, 3vw, 2.25rem);
+  border-top: 1px solid #e6e6e6;
+}
+#life .lv-life-block-label:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
+
+#life .lv-life-grid {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 700px) {
+  #life .lv-life-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #life .lv-life-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1000px) {
+  #life .lv-life-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  #life .lv-life-grid--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+#life .lv-life-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.5rem 1.35rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 2px;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  min-height: 100%;
+  transition: border-color .2s ease, transform .25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#life .lv-life-tile:hover { border-color: #0a0a0a; transform: translateY(-2px); }
+#life .lv-life-tile h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+}
+#life .lv-life-tile p {
+  margin: 0;
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #404040;
+}
+#life .lv-life-tile span {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  border-bottom: 1px solid currentColor;
+  align-self: flex-start;
+  padding-bottom: 1px;
+}
+
+#life .lv-life-index {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid #e6e6e6;
+  margin-top: 1.5rem;
+}
+#life .lv-life-index a {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid #e6e6e6;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity .2s ease;
+}
+#life .lv-life-index a:hover { opacity: 0.7; }
+#life .lv-life-index em {
+  font-style: normal;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #8a8a8a;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#life .lv-life-index strong {
+  font-size: 1.15rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+#life .lv-life-index span {
+  font-size: 0.85rem;
+  color: #8a8a8a;
+}
+
+/* CTA close */
+#life .lv-life-close {
+  text-align: center;
+  padding: clamp(3rem, 8vw, 5.5rem) 1.2rem;
+  background: #0a0a0a;
+  color: #fff;
+  margin-inline: calc(50% - 50vw);
+  width: 100vw;
+}
+#life .lv-life-close .lv-life-title { color: #fff; }
+#life .lv-life-close .lv-life-lead {
+  margin-left: auto; margin-right: auto;
+  color: rgba(255,255,255,0.78);
+}
+#life .lv-life-close__acts {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 0.65rem; margin-top: 1.75rem;
+}
+
+/* Connected menus — home showcase pattern */
+#life .lv-life-showcase {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.25rem;
+  text-align: left;
+}
+@media (min-width: 900px) {
+  #life .lv-life-showcase { grid-template-columns: 220px minmax(0, 1fr); align-items: start; }
+}
+#life .lv-life-showcase__nav {
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+@media (min-width: 900px) {
+  #life .lv-life-showcase__nav { flex-direction: column; overflow: visible; }
+}
+#life .lv-life-showcase__nav button {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  min-height: 3rem;
+  padding: 0.65rem 0.85rem;
+  border: 0;
+  border-bottom: 1px solid rgba(12,12,12,0.12);
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: #666;
+}
+#life .lv-life-showcase__nav button.is-on {
+  color: #0a0a0a;
+  border-bottom-color: #0a0a0a;
+  font-weight: 600;
+}
+#life .lv-life-showcase__nav em {
+  font-style: normal;
+  font-family: "Noto Sans KR", "Noto Sans", Kanit, sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.04em;
+  color: inherit;
+}
+#life .lv-life-showcase__nav span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+#life .lv-life-svc-card {
+  display: grid;
+  gap: 1.25rem;
+  border: 2px solid #0a0a0a;
+  border-radius: 40px;
+  overflow: hidden;
+  background: #0a0a0a;
+  color: #fff;
+  padding: 1.1rem;
+}
+@media (min-width: 900px) {
+  #life .lv-life-svc-card { grid-template-columns: 1.05fr 0.95fr; }
+}
+#life .lv-life-svc-card__copy {
+  padding: 0.85rem 0.85rem 0.5rem;
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+  color: #fff;
+}
+#life .lv-life-svc-card__copy .lv-life-eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+#life .lv-life-svc-card__copy h3 {
+  margin: 0;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 1.25;
+}
+#life .lv-life-svc-card__copy > p {
+  margin: 0;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+}
+#life .lv-life-svc-card__copy ul {
+  margin: 0.35rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+#life .lv-life-svc-card__copy li {
+  border: 1px solid rgba(215,226,234,0.35);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.85rem;
+  color: #fff;
+}
+#life .lv-life-svc-card__copy .lv-life-btn {
+  justify-self: start;
+  margin-top: 0.5rem;
+  background: #fff;
+  color: #0a0a0a;
+  border-color: #fff;
+}
+#life .lv-life-svc-card__film {
+  position: relative;
+  min-height: 280px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #0a0a0a;
+  container-type: size;
+}
+@media (min-width: 900px) {
+  #life .lv-life-svc-card__film { min-height: auto; }
+}
+#life .lv-life-svc-card__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+#life .lv-life-svc-card__veil {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  z-index: 1;
+  width: 130%;
+  height: 150%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse 58% 52% at 50% 46%,
+    rgba(8, 16, 18, 0.48) 0%,
+    rgba(8, 16, 18, 0.18) 48%,
+    rgba(8, 16, 18, 0) 78%
+  );
+  pointer-events: none;
+}
+#life .lv-life-svc-card__lockup {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  text-align: center;
+}
+#life .lv-life-svc-card__wordmark {
+  margin: 0;
+  color: #fff;
+  font-family: "Noto Sans KR", "Noto Sans", Kanit, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4.2cqi + 1.2rem, 2.75rem);
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+  text-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+#life .lv-life-svc-card__slogan {
+  margin: 0.55em 0 0;
+  max-width: 14em;
+  color: #fff;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.92rem, 2.2cqi + 0.55rem, 1.2rem);
+  letter-spacing: -0.04em;
+  line-height: 1.35;
+  text-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Modal */
+#life .lv-life-modal[hidden],
+.lv-life-modal[hidden] { display: none !important; }
+.lv-life-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+.lv-life-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  border: 0;
+  cursor: pointer;
+}
+.lv-life-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: min(420px, calc(100vw - 2rem));
+  max-height: min(80vh, 560px);
+  overflow: auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+}
+.lv-life-modal__panel h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+}
+.lv-life-modal__panel p {
+  margin: 0.65rem 0 0;
+  color: #525252;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+}
+.lv-life-modal__list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 1.25rem 0 0;
+}
+.lv-life-modal__list button {
+  min-height: 3rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid #ebebeb;
+  border-radius: 2px;
+  background: #fff;
+  text-align: left;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+}
+.lv-life-modal__list button:hover,
+.lv-life-modal__list button:focus-visible {
+  border-color: #171717;
+  outline: none;
+}
+.lv-life-modal__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 0;
+  background: transparent;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #171717;
+}
+.lv-life-modal__foot {
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  color: #6b6b6b;
+}
+
+/* Reveal */
+#life [data-lv-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+#life [data-lv-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  #life .lv-life__wordmark,
+  #life .lv-life__slogan,
+  #life .lv-life__lead,
+  #life .lv-life__actions,
+  #life .lv-life__hero.is-ready .lv-life__wordmark,
+  #life .lv-life__hero.is-ready .lv-life__slogan,
+  #life .lv-life__hero.is-ready .lv-life__lead,
+  #life .lv-life__hero.is-ready .lv-life__actions,
+  #life [data-lv-reveal],
+  #life [data-lv-reveal].is-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+@media (max-width: 760px) {
+  #life .lv-life__lockup {
+    top: 52%;
+    width: max-content;
+    max-width: calc(100vw - 1.6rem);
+    padding: 1rem 0.5rem 1.2rem;
+    transform: translate(-50%, -46%);
+  }
+  #life .lv-life__wordmark {
+    margin-bottom: 1.65rem;
+  }
+  #life .lv-life__lead { max-width: 22rem; }
+}
+@media (max-height: 720px) {
+  #life .lv-life__lockup {
+    top: 50%;
+    padding-block: 0.7rem;
+  }
+  #life .lv-life__wordmark {
+    margin-bottom: 1.45rem;
+  }
+}
+
+/* Modal buttons (modals live outside #life) */
+.lv-life-modal .lv-life-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
+  border: 1px solid #1a1a1a;
+  border-radius: 2px;
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  cursor: pointer;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+}
+.lv-life-modal .lv-life-btn--dark { background: #0a0a0a; color: #fff; }
+
+/* Sticky stage nav */
+#life .lv-life-sticky {
+  position: sticky;
+  top: var(--gnav-h, 74px);
+  z-index: 40;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e6e6e6;
+  transform: translateY(-120%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .35s ease, opacity .35s ease;
+}
+#life .lv-life-sticky.is-show {
+  transform: none;
+  opacity: 1;
+  pointer-events: auto;
+}
+#life .lv-life-sticky__inner {
+  width: min(1200px, calc(100% - clamp(1.25rem, 4vw, 3rem) * 2));
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3.25rem;
+  padding: 0.35rem 0;
+}
+#life .lv-life-sticky__label {
+  margin: 0;
+  flex: 0 0 auto;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #6b6b6b;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#life .lv-life-sticky__track {
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+#life .lv-life-sticky__track::-webkit-scrollbar { display: none; }
+#life .lv-life-sticky__link {
+  flex: 0 0 auto;
+  min-height: 2.35rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 650;
+  color: #525252;
+  cursor: pointer;
+  white-space: nowrap;
+}
+#life .lv-life-sticky__link:hover,
+#life .lv-life-sticky__link.is-on {
+  border-color: #0a0a0a;
+  color: #0a0a0a;
+  background: #fff;
+}
+
+#life .lv-life-head--center { text-align: center; }
+#life .lv-life-head--center .lv-life-lead { margin-left: auto; margin-right: auto; }
+#life .lv-life-sec--intro { border-top: 0; padding-top: clamp(3.5rem, 8vw, 5.5rem); }
+
+#life .lv-life-card__focus {
+  margin: 0.65rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #6b6b6b;
+  letter-spacing: -0.01em;
+}
+#life .lv-life-card__img {
+  width: 100%;
+  height: 200px;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Setup */
+#life .lv-life-setup__steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0 0 1.25rem;
+}
+#life .lv-life-setup__steps button {
+  min-height: 2.75rem;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 2px;
+  background: #fff;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 650;
+  color: #525252;
+  cursor: pointer;
+}
+#life .lv-life-setup__steps button.is-on {
+  border-color: #0a0a0a;
+  color: #0a0a0a;
+  background: #fff;
+}
+#life .lv-life-setup__panel { margin-bottom: 1.25rem; }
+#life .lv-life-setup__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid #e6e6e6;
+}
+#life .lv-life-setup__acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Priority / split */
+#life .lv-life-split {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 2.75rem);
+  width: min(1200px, calc(100% - clamp(1.25rem, 4vw, 3rem) * 2));
+  margin: 0 auto;
+}
+@media (min-width: 900px) {
+  #life .lv-life-split {
+    grid-template-columns: 1fr;
+  }
+  #life .lv-life-split > :first-child {
+    max-width: 38rem;
+  }
+}
+#life .lv-life-why {
+  margin-top: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+#life .lv-life-priority .lv-life-services {
+  margin-top: 0;
+}
+#life .lv-life-priority .lv-life-svc {
+  background: transparent;
+  border-color: rgba(255,255,255,0.28);
+  color: #fff;
+}
+#life .lv-life-priority .lv-life-svc:hover {
+  background: #fff;
+  color: #0a0a0a;
+  border-color: #fff;
+}
+#life .lv-life-priority .lv-life-svc:hover .lv-life-svc__n,
+#life .lv-life-priority .lv-life-svc:hover > p,
+#life .lv-life-priority .lv-life-svc:hover ul,
+#life .lv-life-priority .lv-life-svc:hover .lv-life-svc__why { color: #666; }
+#life .lv-life-priority .lv-life-svc:hover .lv-life-btn--dark {
+  background: #0a0a0a;
+  color: #fff;
+  border-color: #0a0a0a;
+}
+#life .lv-life-priority .lv-life-svc:hover .lv-life-btn--outline,
+#life .lv-life-priority .lv-life-svc:hover .lv-life-btn--ghost-ink {
+  color: #0a0a0a;
+  border-color: #0a0a0a;
+}
+#life .lv-life-priority .lv-life-svc h4 { color: inherit; }
+#life .lv-life-priority .lv-life-svc > p,
+#life .lv-life-priority .lv-life-svc ul { color: rgba(255,255,255,0.62); }
+#life .lv-life-priority .lv-life-svc__n,
+#life .lv-life-priority .lv-life-svc__why { color: rgba(255,255,255,0.5); }
+#life .lv-life-priority .lv-life-empty {
+  background: transparent;
+  border-color: rgba(255,255,255,0.28);
+  color: rgba(255,255,255,0.7);
+}
+#life .lv-life-priority .lv-life-btn--outline,
+#life .lv-life-priority .lv-life-btn--ghost-ink {
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+#life .lv-life-priority .lv-life-btn--dark {
+  background: #fff;
+  color: #0a0a0a;
+  border-color: #fff;
+}
+
+/* Field detail */
+#life #life-field[hidden] { display: none !important; }
+#life .lv-life-field__inner {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid #e6e6e6;
+  border-radius: 2px;
+  background: #fff;
+}
+#life .lv-life-field__inner.is-edu { border-left: 4px solid #0a0a0a; }
+#life .lv-life-field__inner.is-travel { background: #fff; }
+#life .lv-life-field__inner.is-home { background: #fff; }
+#life .lv-life-field__inner.is-finance { border-top: 3px solid #0a0a0a; }
+#life .lv-life-field__inner.is-health { background: #fff; }
+#life .lv-life-field__grid {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+@media (min-width: 880px) {
+  #life .lv-life-field__grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); }
+}
+#life .lv-life-field__aside {
+  padding: 1.35rem 1.4rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 2px;
+  background: #fff;
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+#life .lv-life-field__aside p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #404040;
+}
+#life .lv-life-chips--static {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+#life .lv-life-chips--static li {
+  padding: 0.45rem 0.8rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 2px;
+  background: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #404040;
+}
+#life .lv-life-steps {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: life-step;
+  display: grid;
+  gap: 0.65rem;
+}
+#life .lv-life-steps li {
+  counter-increment: life-step;
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: #303030;
+}
+#life .lv-life-steps li::before {
+  content: counter(life-step, decimal-leading-zero);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #6b6b6b;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  padding-top: 0.2rem;
+}
+
+/* Transitions — editorial 3-up cards */
+#life .lv-life-trans {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+  border-top: 0;
+}
+@media (min-width: 720px) {
+  #life .lv-life-trans { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1020px) {
+  #life .lv-life-trans { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+#life .lv-life-trans__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 100%;
+  padding: clamp(1.4rem, 2.8vw, 1.85rem);
+  border: 1px solid #0a0a0a;
+  border-radius: 0;
+  background: #fff;
+  transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease;
+}
+#life .lv-life-trans__card:hover {
+  background: #0a0a0a;
+  color: #fff;
+  transform: translateY(-3px);
+}
+#life .lv-life-trans__card:hover .lv-life-trans__n,
+#life .lv-life-trans__card:hover > p,
+#life .lv-life-trans__card:hover .lv-life-trans__steps em { color: rgba(255,255,255,0.5); }
+#life .lv-life-trans__card:hover .lv-life-btn--outline {
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+#life .lv-life-trans__card:hover .lv-life-btn--dark {
+  background: #fff;
+  color: #0a0a0a;
+  border-color: #fff;
+}
+#life .lv-life-trans__n {
+  font-family: Kanit, sans-serif;
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-weight: 850;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  color: #0a0a0a;
+}
+#life .lv-life-trans__card:hover .lv-life-trans__n { color: #fff; }
+#life .lv-life-trans__card h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.2vw, 1.65rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+#life .lv-life-trans__card > p {
+  margin: 0;
+  color: #555;
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+#life .lv-life-trans__steps {
+  margin: 0.35rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+#life .lv-life-trans__steps li {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.55rem;
+  align-items: baseline;
+  font-size: 0.95rem;
+  font-weight: 650;
+  line-height: 1.4;
+}
+#life .lv-life-trans__steps em {
+  font-family: Kanit, sans-serif;
+  font-style: normal;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #999;
+}
+#life .lv-life-trans__card .lv-life-svc__acts {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+/* Packages — curated magazine tiles */
+#life .lv-life-packs {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+}
+@media (min-width: 720px) {
+  #life .lv-life-packs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  #life .lv-life-packs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+#life .lv-life-pack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: clamp(1.4rem, 2.8vw, 1.9rem);
+  border: 1px solid #0a0a0a;
+  border-radius: 0;
+  background: #fff;
+  min-height: 100%;
+  transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease;
+}
+#life .lv-life-pack.is-accent {
+  background: #0a0a0a;
+  color: #fff;
+}
+#life .lv-life-pack:hover {
+  transform: translateY(-3px);
+}
+#life .lv-life-pack:not(.is-accent):hover {
+  background: #0a0a0a;
+  color: #fff;
+}
+#life .lv-life-pack.is-accent:hover {
+  background: #fff;
+  color: #0a0a0a;
+}
+#life .lv-life-pack__eyebrow {
+  margin: 0;
+  font-family: Kanit, ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+#life .lv-life-pack h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+#life .lv-life-pack__for {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.45;
+  opacity: 0.85;
+}
+#life .lv-life-pack__note {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  opacity: 0.5;
+}
+#life .lv-life-pack__includes {
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+#life .lv-life-pack__includes li {
+  padding: 0.35rem 0.75rem;
+  border: 1px solid currentColor;
+  border-radius: 0;
+  font-size: 0.82rem;
+  font-weight: 650;
+  opacity: 0.8;
+}
+#life .lv-life-pack__steps {
+  margin: 0.5rem 0 0;
+  padding: 0.85rem 0 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem 0.85rem;
+  border-top: 1px solid currentColor;
+  opacity: 0.92;
+}
+#life .lv-life-pack__steps li {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.4rem;
+  align-items: baseline;
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+#life .lv-life-pack__steps em {
+  font-family: Kanit, sans-serif;
+  font-style: normal;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  opacity: 0.5;
+}
+#life .lv-life-pack .lv-life-svc__acts {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+#life .lv-life-pack.is-accent .lv-life-btn--outline,
+#life .lv-life-pack:not(.is-accent):hover .lv-life-btn--outline {
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+#life .lv-life-pack.is-accent .lv-life-btn--dark,
+#life .lv-life-pack:not(.is-accent):hover .lv-life-btn--dark {
+  background: #fff;
+  color: #0a0a0a;
+  border-color: #fff;
+}
+#life .lv-life-pack.is-accent:hover .lv-life-btn--outline {
+  color: #0a0a0a;
+  border-color: #0a0a0a;
+}
+#life .lv-life-pack.is-accent:hover .lv-life-btn--dark {
+  background: #0a0a0a;
+  color: #fff;
+  border-color: #0a0a0a;
+}
+
+/* Family */
+#life .lv-life-family {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+#life .lv-life-family__grid {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+@media (min-width: 700px) {
+  #life .lv-life-family__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+#life .lv-life-family__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  align-items: flex-start;
+  min-height: 6.5rem;
+  padding: 1.25rem 1.2rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 2px;
+  background: #fff;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: border-color .2s ease, transform .25s ease;
+}
+#life .lv-life-family__card:hover {
+  border-color: #0a0a0a;
+  transform: translateY(-2px);
+}
+#life .lv-life-family__card strong {
+  font-size: 1.1rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+#life .lv-life-family__card span {
+  font-size: 0.95rem;
+  color: #525252;
+}
+#life .lv-life-family__card.is-ongil {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+#life .lv-life-family__card.is-ongil span { color: rgba(255,255,255,0.72); }
+
+#life .lv-life-note a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+#life .lv-life-sec--ink .lv-life-note a { color: #fff; }
+
+@media (max-width: 640px) {
+  #life .lv-life-sticky__label { display: none; }
+  #life .lv-life-setup__bar { flex-direction: column; align-items: stretch; }
+}

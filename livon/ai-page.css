@@ -1,0 +1,1279 @@
+/* LivOn AI — scoped to #livon-ai; explore-film hero + editorial body */
+#livon-ai.lv-lum,
+#livon-ai.lv-ai {
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  background: #fff;
+}
+#livon-ai .lv-ai {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  color: #0a0a0a;
+  font-family: "Noto Sans KR", "Noto Sans", Pretendard, sans-serif;
+}
+#livon-ai .lv-ai :where(h1,h2,h3,p,li,a,span,button,strong,em,label,input,textarea) {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+html[data-lv-view="livon-ai"],
+html[data-lv-view="livon-ai"] body {
+  height: auto !important;
+  overflow: auto !important;
+  overflow-x: clip !important;
+}
+html[data-lv-view="livon-ai"] main {
+  height: auto !important;
+  overflow: visible !important;
+}
+html[data-lv-view="livon-ai"] main > #livon-ai {
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+#livon-ai .lv-ai-inner {
+  width: min(1120px, calc(100% - clamp(1.25rem, 4vw, 3rem) * 2));
+  margin: 0 auto;
+}
+#livon-ai .lv-ai-eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8a8a8a;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#livon-ai .lv-ai-title {
+  margin: 0;
+  font-size: clamp(2.35rem, 5.6vw, 4.35rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  color: #0a0a0a;
+}
+#livon-ai .lv-ai-title--md {
+  font-size: clamp(1.85rem, 3.8vw, 2.85rem);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 1.12;
+}
+#livon-ai .lv-ai-lead {
+  margin: 1.25rem 0 0;
+  max-width: 36rem;
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  line-height: 1.72;
+  color: #555;
+  font-weight: 430;
+}
+#livon-ai .lv-ai-sec {
+  padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+  border-top: 1px solid #ececec;
+}
+#livon-ai .lv-ai-sec--flush { border-top: 0; padding-top: clamp(2.5rem, 5vw, 3.5rem); }
+#livon-ai .lv-ai-sec--band {
+  background: #fff;
+  margin-inline: calc(50% - 50vw);
+  padding-inline: calc(50vw - 50%);
+  width: 100vw;
+  border-top: 1px solid #e8e8e8;
+}
+#livon-ai .lv-ai-sec--ink {
+  background: #0a0a0a;
+  color: #f3f3f3;
+  margin-inline: calc(50% - 50vw);
+  padding-inline: calc(50vw - 50%);
+  width: 100vw;
+  border-top: 0;
+}
+#livon-ai .lv-ai-sec--ink .lv-ai-title { color: #fff; }
+#livon-ai .lv-ai-sec--ink .lv-ai-lead { color: #a8a8a8; }
+#livon-ai .lv-ai-sec--ink .lv-ai-eyebrow { color: rgba(255,255,255,0.5); }
+#livon-ai .lv-ai-head { margin-bottom: clamp(2rem, 4vw, 3rem); max-width: 40rem; }
+
+/* Film hero */
+#livon-ai .lv-ai-film {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100svh;
+  height: 100svh;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+#livon-ai .lv-ai-film__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+  z-index: 1;
+  pointer-events: none;
+}
+#livon-ai .lv-ai-film__lockup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(44rem, calc(100vw - 2.4rem));
+  margin: 0;
+  padding: 1.4rem 1rem 1.6rem;
+  transform: translate(-50%, -48%);
+  text-align: center;
+}
+#livon-ai .lv-ai-film__veil {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  z-index: 0;
+  width: min(48rem, 122%);
+  height: min(32rem, 160%);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse 58% 52% at 50% 46%, rgba(8,16,18,0.28) 0%, rgba(8,16,18,0.12) 46%, rgba(8,16,18,0) 78%);
+  pointer-events: none;
+}
+#livon-ai .lv-ai-film__wordmark,
+#livon-ai .lv-ai-film__slogan,
+#livon-ai .lv-ai-film__lead,
+#livon-ai .lv-ai-film__actions {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(12px);
+}
+#livon-ai .lv-ai-film.is-ready .lv-ai-film__wordmark,
+#livon-ai .lv-ai-film.is-ready .lv-ai-film__slogan,
+#livon-ai .lv-ai-film.is-ready .lv-ai-film__lead,
+#livon-ai .lv-ai-film.is-ready .lv-ai-film__actions {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+#livon-ai .lv-ai-film.is-ready .lv-ai-film__wordmark { transition-delay: 0.12s; }
+#livon-ai .lv-ai-film.is-ready .lv-ai-film__slogan { transition-delay: 0.3s; }
+#livon-ai .lv-ai-film.is-ready .lv-ai-film__lead { transition-delay: 0.48s; }
+#livon-ai .lv-ai-film.is-ready .lv-ai-film__actions { transition-delay: 0.64s; }
+#livon-ai .lv-ai-film__wordmark {
+  margin: 0 0 2.15rem;
+  color: #fff;
+  font-family: "Noto Sans", "Noto Sans KR", Pretendard, sans-serif;
+  font-size: clamp(6.2rem, 22vw, 12.5rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 10px 28px rgba(0,0,0,0.32);
+}
+#livon-ai .lv-ai-film__slogan {
+  margin: 0;
+  color: #fff;
+  font-family: "Noto Sans KR", "Noto Sans", Pretendard, sans-serif;
+  font-size: clamp(1.45rem, 3.2vw, 2.35rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.28;
+  text-shadow: 0 8px 24px rgba(0,0,0,0.36);
+}
+#livon-ai .lv-ai-film__lead {
+  margin: 0.95rem 0 0;
+  max-width: 32rem;
+  color: rgba(255,255,255,0.92);
+  font-family: "Noto Sans KR", "Noto Sans", Pretendard, sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  font-weight: 430;
+  letter-spacing: -0.02em;
+  line-height: 1.62;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.34);
+}
+#livon-ai .lv-ai-film__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+#livon-ai .lv-ai-film__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 3.1rem;
+  padding: 0.75rem 1.35rem;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  background: #fff;
+  color: #111;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+#livon-ai .lv-ai-film__btn--ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,0.72);
+}
+#livon-ai .lv-ai-film__btn:hover { background: #fff; color: #111; }
+#livon-ai .lv-ai-film__btn--ghost:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: #fff;
+  color: #fff;
+}
+@media (max-width: 760px) {
+  #livon-ai .lv-ai-film__lockup {
+    top: 52%;
+    width: min(44rem, calc(100vw - 1.6rem));
+    padding: 1rem 0.5rem 1.2rem;
+    transform: translate(-50%, -46%);
+  }
+  #livon-ai .lv-ai-film__wordmark {
+    font-size: clamp(3.6rem, 18vw, 6.6rem);
+    margin-bottom: 1.65rem;
+  }
+  #livon-ai .lv-ai-film__slogan { font-size: clamp(1.28rem, 5.8vw, 1.75rem); }
+  #livon-ai .lv-ai-film__lead { max-width: 22rem; font-size: 0.9rem; }
+}
+@media (max-height: 720px) {
+  #livon-ai .lv-ai-film__lockup { top: 50%; padding-block: 0.7rem; }
+  #livon-ai .lv-ai-film__wordmark {
+    font-size: clamp(3.8rem, 15vw, 7.4rem);
+    margin-bottom: 1.45rem;
+  }
+}
+
+/* Sticky nav */
+#livon-ai .lv-ai-nav {
+  position: sticky;
+  top: var(--gnav-h, 74px);
+  z-index: 40;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid #ececec;
+}
+#livon-ai .lv-ai-nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  overflow: auto;
+  scrollbar-width: none;
+}
+#livon-ai .lv-ai-nav__inner::-webkit-scrollbar { display: none; }
+#livon-ai .lv-ai-nav__label {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: #aaa;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#livon-ai .lv-ai-nav__track { display: flex; gap: 0.1rem; min-width: max-content; }
+#livon-ai .lv-ai-nav a {
+  flex: 0 0 auto;
+  padding: 0.45rem 0.7rem;
+  color: #777;
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-bottom: 2px solid transparent;
+}
+#livon-ai .lv-ai-nav a:hover,
+#livon-ai .lv-ai-nav a.is-on { color: #0a0a0a; border-bottom-color: #0a0a0a; }
+
+#livon-ai .lv-ai-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.7rem 1.25rem;
+  border: 1px solid #0a0a0a;
+  border-radius: 999px;
+  background: #0a0a0a;
+  color: #fff;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  text-decoration: none;
+  cursor: pointer;
+}
+#livon-ai .lv-ai-btn--ghost { background: #fff; color: #0a0a0a; }
+#livon-ai .lv-ai-btn--ghost:hover { background: #fff; }
+#livon-ai .lv-ai-btn--light { background: #fff; color: #0a0a0a; border-color: #fff; }
+#livon-ai .lv-ai-btn--outline-light {
+  background: transparent; color: #fff; border-color: rgba(255,255,255,0.55);
+}
+#livon-ai .lv-ai-actions {
+  display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.5rem;
+}
+
+#livon-ai .lv-ai-values { display: grid; gap: 0; border-top: 1px solid #e8e8e8; }
+#livon-ai .lv-ai-value {
+  display: grid; gap: 0.75rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid #e8e8e8;
+  text-decoration: none; color: inherit;
+}
+#livon-ai .lv-ai-value:hover { background: #fff; }
+@media (min-width: 800px) {
+  #livon-ai .lv-ai-value { grid-template-columns: 8rem 1fr auto; align-items: baseline; }
+}
+#livon-ai .lv-ai-value__n {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.75rem; color: #aaa; letter-spacing: 0.08em;
+}
+#livon-ai .lv-ai-value strong {
+  display: block; font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+  font-weight: 750; letter-spacing: -0.03em;
+}
+#livon-ai .lv-ai-value p { margin: 0.35rem 0 0; color: #666; font-size: 0.95rem; line-height: 1.55; }
+#livon-ai .lv-ai-value__go { font-size: 0.875rem; font-weight: 650; white-space: nowrap; }
+
+#livon-ai .lv-ai-empty {
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  border-radius: 2px;
+}
+#livon-ai .lv-ai-badge {
+  display: inline-block;
+  margin-bottom: 0.85rem;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  color: #777;
+}
+#livon-ai .lv-ai-empty h3 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 750;
+}
+#livon-ai .lv-ai-empty p {
+  margin: 0.65rem 0 0;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 36rem;
+}
+
+#livon-ai .lv-ai-ask {
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+#livon-ai .lv-ai-ask__box {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+  border: 1px solid #ddd;
+  padding: 0.35rem;
+  border-radius: 2px;
+  background: #fff;
+}
+#livon-ai .lv-ai-ask__input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  padding: 0.85rem 0.9rem;
+  font: inherit;
+  font-size: 1rem;
+  background: transparent;
+}
+#livon-ai .lv-ai-ask__go {
+  border: 0;
+  background: #0a0a0a;
+  color: #fff;
+  padding: 0 1.25rem;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+  border-radius: 2px;
+}
+#livon-ai .lv-ai-prompts {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin: 1.25rem 0 0; padding: 0; list-style: none;
+}
+#livon-ai .lv-ai-prompts button {
+  min-height: 2.5rem;
+  padding: 0.45rem 0.95rem;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  background: #fff;
+  color: #555;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+#livon-ai .lv-ai-prompts button:hover { border-color: #0a0a0a; color: #0a0a0a; }
+#livon-ai .lv-ai-prompts button.is-on,
+#livon-ai .lv-ai-prompts button[aria-pressed="true"] {
+  border-color: #0a0a0a;
+  color: #0a0a0a;
+  background: #fff;
+}
+
+#livon-ai .lv-ai-stage-tabs {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin: 0 0 1.5rem; padding: 0; list-style: none;
+}
+#livon-ai .lv-ai-stage-tabs button {
+  min-height: 2.4rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  background: #fff;
+  color: #666;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+#livon-ai .lv-ai-stage-tabs button.is-on {
+  border-color: #0a0a0a; color: #0a0a0a; background: #fff;
+}
+#livon-ai .lv-ai-stage-panel {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  #livon-ai .lv-ai-stage-panel { grid-template-columns: 1.1fr 0.9fr; }
+}
+#livon-ai .lv-ai-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #111;
+  aspect-ratio: 4 / 3;
+}
+#livon-ai .lv-ai-media img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+#livon-ai .lv-ai-media__cap {
+  position: absolute; left: 1rem; bottom: 1rem;
+  color: #fff; font-size: 0.8rem; font-weight: 650;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+#livon-ai .lv-ai-split {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  #livon-ai .lv-ai-split { grid-template-columns: 1.05fr 0.95fr; }
+  #livon-ai .lv-ai-split.is-flip { grid-template-columns: 0.95fr 1.05fr; }
+  #livon-ai .lv-ai-split.is-flip .lv-ai-media { order: -1; }
+}
+
+#livon-ai .lv-ai-moment { padding: 2rem 0; border-bottom: 1px solid #e8e8e8; }
+#livon-ai .lv-ai-moment:last-child { border-bottom: 0; }
+#livon-ai .lv-ai-moment h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+}
+#livon-ai .lv-ai-moment p { margin: 0.5rem 0 0; color: #666; line-height: 1.55; }
+
+#livon-ai .lv-ai-plan {
+  display: grid;
+  gap: 1.5rem;
+}
+@media (min-width: 900px) {
+  #livon-ai .lv-ai-plan { grid-template-columns: 0.9fr 1.1fr; }
+}
+#livon-ai .lv-ai-plan__q {
+  padding: 1.25rem;
+  background: #111;
+  color: #fff;
+  border-radius: 2px;
+}
+#livon-ai .lv-ai-plan__q p { margin: 0.5rem 0 0; line-height: 1.55; color: #ddd; }
+#livon-ai .lv-ai-plan__steps {
+  margin: 0; padding: 0; list-style: none; counter-reset: aistep;
+}
+#livon-ai .lv-ai-plan__steps li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e8e8e8;
+  counter-increment: aistep;
+}
+#livon-ai .lv-ai-plan__steps li::before {
+  content: counter(aistep, decimal-leading-zero);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  color: #aaa;
+  padding-top: 0.2rem;
+}
+#livon-ai .lv-ai-plan__steps strong { display: block; font-size: 1.05rem; }
+
+#livon-ai .lv-ai-mosaic {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  min-height: 22rem;
+}
+#livon-ai .lv-ai-mosaic a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.15rem;
+  color: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  background: #1a1a1a center/cover no-repeat;
+  min-height: 10rem;
+}
+#livon-ai .lv-ai-mosaic a:first-child { grid-row: 1 / span 2; min-height: 100%; }
+#livon-ai .lv-ai-mosaic a::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.72) 100%);
+}
+#livon-ai .lv-ai-mosaic a > * { position: relative; z-index: 1; }
+#livon-ai .lv-ai-mosaic span {
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#livon-ai .lv-ai-mosaic strong {
+  display: block; margin-top: 0.35rem;
+  font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 750;
+}
+@media (max-width: 760px) {
+  #livon-ai .lv-ai-mosaic { grid-template-columns: 1fr; }
+  #livon-ai .lv-ai-mosaic a:first-child { grid-row: auto; }
+}
+
+#livon-ai .lv-ai-chat {
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  min-height: 28rem;
+  display: flex;
+  flex-direction: column;
+}
+#livon-ai .lv-ai-chat__head {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #ececec;
+}
+#livon-ai .lv-ai-chat__head strong { display: block; font-size: 1.05rem; }
+#livon-ai .lv-ai-chat__head span { color: #777; font-size: 0.9rem; }
+#livon-ai .lv-ai-chat__msgs {
+  flex: 1;
+  overflow: auto;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  background: #fff;
+  min-height: 16rem;
+}
+#livon-ai .lv-ai-chat__msgs p {
+  margin: 0;
+  max-width: 85%;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+#livon-ai .lv-ai-chat__msgs .is-bot {
+  align-self: flex-start;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  color: #333;
+}
+#livon-ai .lv-ai-chat__msgs .is-user {
+  align-self: flex-end;
+  background: #0a0a0a;
+  color: #fff;
+}
+#livon-ai .lv-ai-chat__foot {
+  padding: 0.85rem;
+  border-top: 1px solid #ececec;
+}
+#livon-ai .lv-ai-chat__foot .lv-ai-ask__box { background: #fff; }
+
+#livon-ai .lv-ai-index {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid #e8e8e8;
+}
+#livon-ai .lv-ai-index a {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #e8e8e8;
+  text-decoration: none;
+  color: inherit;
+}
+@media (min-width: 700px) {
+  #livon-ai .lv-ai-index a {
+    grid-template-columns: 3rem 1fr auto;
+    align-items: baseline;
+    gap: 1rem;
+  }
+}
+#livon-ai .lv-ai-index em {
+  font-style: normal;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  color: #aaa;
+}
+#livon-ai .lv-ai-index strong {
+  font-size: 1.1rem;
+  font-weight: 750;
+}
+#livon-ai .lv-ai-index span { color: #777; font-size: 0.9rem; }
+
+#livon-ai .lv-ai-dr {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+@media (min-width: 900px) {
+  #livon-ai .lv-ai-dr { grid-template-columns: 1.2fr 0.8fr; }
+}
+#livon-ai .lv-ai-aside {
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  padding: 1.25rem;
+}
+#livon-ai .lv-ai-aside dl {
+  margin: 0 0 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+#livon-ai .lv-ai-aside dl:last-child { margin: 0; padding: 0; border: 0; }
+#livon-ai .lv-ai-aside dt {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #999;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#livon-ai .lv-ai-aside dd { margin: 0.35rem 0 0; font-size: 0.95rem; }
+
+#livon-ai .lv-ai-note {
+  margin-top: 1.25rem;
+  color: #777;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+#livon-ai .lv-ai-final {
+  text-align: center;
+  padding-block: clamp(5rem, 12vw, 9rem);
+}
+#livon-ai .lv-ai-final .lv-ai-title { margin-inline: auto; }
+#livon-ai .lv-ai-final .lv-ai-lead { margin-inline: auto; }
+#livon-ai .lv-ai-final .lv-ai-actions { justify-content: center; }
+
+#livon-ai [data-lv-ai-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+#livon-ai [data-lv-ai-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  #livon-ai .lv-ai-film__wordmark,
+  #livon-ai .lv-ai-film__slogan,
+  #livon-ai .lv-ai-film__lead,
+  #livon-ai .lv-ai-film__actions,
+  #livon-ai [data-lv-ai-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+#livon-ai .lv-ai-panel[hidden],
+#livon-ai .lv-ai-sidebar-backdrop[hidden],
+#livon-ai [data-lv-ai-stop][hidden],
+#livon-ai [data-lv-ai-panel-toggle][hidden],
+#livon-ai [data-lv-ai-clear-input][hidden],
+#livon-ai [data-lv-ai-welcome][hidden],
+#livon-ai [data-lv-ai-msgs][hidden] {
+  display: none !important;
+}
+
+#livon-ai .lv-ai-sec--workspace {
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+#livon-ai .lv-ai-workspace {
+  --ai-side: 260px;
+  --ai-panel: 300px;
+  display: grid;
+  grid-template-columns: var(--ai-side) minmax(0, 1fr);
+  gap: 0;
+  min-height: min(72vh, 760px);
+  max-width: 1280px;
+  margin: 0 auto;
+  border: 1px solid #ececec;
+  background: #fff;
+  position: relative;
+}
+#livon-ai .lv-ai-workspace.has-panel,
+#livon-ai .lv-ai-workspace:has([data-lv-ai-panel]:not([hidden])) {
+  grid-template-columns: var(--ai-side) minmax(0, 1fr) var(--ai-panel);
+}
+
+#livon-ai .lv-ai-sidebar {
+  border-right: 1px solid #ececec;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0.85rem;
+}
+#livon-ai .lv-ai-sidebar__bar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.65rem;
+}
+#livon-ai .lv-ai-sidebar__bar .lv-ai-btn { flex: 1; }
+#livon-ai .lv-ai-side-search input {
+  width: 100%;
+  min-height: 2.4rem;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid #e4e4e4;
+  border-radius: 2px;
+  font: inherit;
+  background: #fff;
+  margin-bottom: 0.65rem;
+}
+#livon-ai .lv-ai-thread-list {
+  flex: 1;
+  overflow: auto;
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+}
+#livon-ai .lv-ai-thread {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.25rem;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 0.15rem;
+}
+#livon-ai .lv-ai-thread.is-on { border-color: #0a0a0a; background: #fff; }
+#livon-ai .lv-ai-thread__main {
+  border: 0;
+  background: none;
+  text-align: left;
+  padding: 0.45rem 0.5rem;
+  font: inherit;
+  cursor: pointer;
+  display: grid;
+  gap: 0.15rem;
+}
+#livon-ai .lv-ai-thread__main strong {
+  font-size: 0.9rem;
+  font-weight: 650;
+  line-height: 1.3;
+}
+#livon-ai .lv-ai-thread__main span {
+  font-size: 0.75rem;
+  color: #888;
+}
+#livon-ai .lv-ai-thread__acts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+#livon-ai .lv-ai-thread__acts button {
+  border: 0;
+  background: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  cursor: pointer;
+  color: #777;
+  font-size: 0.9rem;
+}
+#livon-ai .lv-ai-sidebar__foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid #ececec;
+  margin-top: 0.5rem;
+}
+
+#livon-ai .lv-ai-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: #fff;
+}
+#livon-ai .lv-ai-main__top {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid #ececec;
+}
+#livon-ai .lv-ai-main__title { flex: 1; min-width: 0; }
+#livon-ai .lv-ai-main__title .lv-ai-eyebrow { margin: 0 0 0.2rem; }
+#livon-ai .lv-ai-chat-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#livon-ai .lv-ai-main__acts {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+#livon-ai .lv-ai-status {
+  font-size: 0.75rem;
+  font-weight: 650;
+  color: #888;
+  letter-spacing: 0.04em;
+}
+#livon-ai .lv-ai-status.is-ok { color: #1a7a3a; }
+#livon-ai .lv-ai-status.is-warn { color: #9a6b00; }
+#livon-ai .lv-ai-status.is-busy { color: #0a0a0a; }
+
+#livon-ai .lv-ai-stream {
+  flex: 1;
+  overflow: auto;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  scroll-behavior: smooth;
+}
+#livon-ai .lv-ai-welcome { max-width: 52rem; margin: 0 auto; }
+#livon-ai .lv-ai-welcome .lv-ai-lead { margin-bottom: 1.5rem; }
+#livon-ai .lv-ai-suggest-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+@media (min-width: 720px) {
+  #livon-ai .lv-ai-suggest-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  #livon-ai .lv-ai-suggest-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+#livon-ai .lv-ai-suggest {
+  display: grid;
+  gap: 0.35rem;
+  text-align: left;
+  padding: 1.1rem 1.15rem;
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+#livon-ai .lv-ai-suggest:hover { border-color: #0a0a0a; transform: translateY(-2px); }
+#livon-ai .lv-ai-suggest em {
+  font-style: normal;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #8a8a8a;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+#livon-ai .lv-ai-suggest strong { font-size: 1.05rem; font-weight: 750; }
+#livon-ai .lv-ai-suggest span { font-size: 0.9rem; color: #555; line-height: 1.5; }
+#livon-ai .lv-ai-suggest small { font-size: 0.8rem; color: #888; margin-top: 0.25rem; }
+
+#livon-ai .lv-ai-msgs {
+  max-width: 46rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+#livon-ai .lv-ai-bubble {
+  display: grid;
+  gap: 0.45rem;
+}
+#livon-ai .lv-ai-bubble--user {
+  justify-items: end;
+}
+#livon-ai .lv-ai-bubble--user .lv-ai-bubble__body {
+  max-width: min(36rem, 92%);
+  padding: 0.85rem 1rem;
+  background: #0a0a0a;
+  color: #fff;
+  border-radius: 14px 14px 4px 14px;
+  line-height: 1.55;
+}
+#livon-ai .lv-ai-bubble--ai .lv-ai-bubble__body,
+#livon-ai .lv-ai-bubble--sys .lv-ai-bubble__body,
+#livon-ai .lv-ai-bubble--error .lv-ai-bubble__body {
+  max-width: 100%;
+  padding: 1rem 0;
+  color: #222;
+  line-height: 1.7;
+}
+#livon-ai .lv-ai-bubble--error .lv-ai-bubble__body {
+  padding: 1rem;
+  border: 1px solid #ececec;
+  background: #fff;
+}
+#livon-ai .lv-ai-bubble__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  color: #777;
+}
+#livon-ai .lv-ai-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid #0a0a0a;
+  font-size: 0.65rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+}
+#livon-ai .lv-ai-bubble__body h4 {
+  margin: 0.85rem 0 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 750;
+}
+#livon-ai .lv-ai-bubble__body p { margin: 0.35rem 0; }
+#livon-ai .lv-ai-bubble__body ul {
+  margin: 0.4rem 0;
+  padding-left: 1.2rem;
+}
+#livon-ai .lv-ai-bubble__body code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: #fff;
+  padding: 0.05em 0.3em;
+}
+#livon-ai .lv-ai-code {
+  overflow: auto;
+  padding: 0.85rem;
+  background: #fff;
+  border: 1px solid #ececec;
+  font-size: 0.82rem;
+}
+#livon-ai .lv-ai-bubble__acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+#livon-ai .lv-ai-bubble__acts button {
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-size: 0.8rem;
+  color: #666;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+#livon-ai .lv-ai-related {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid #efefef;
+  display: grid;
+  gap: 0.4rem;
+}
+#livon-ai .lv-ai-related__item {
+  display: grid;
+  gap: 0.1rem;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+#livon-ai .lv-ai-related__item em {
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #8a8a8a;
+  font-family: ui-monospace, Menlo, monospace;
+}
+#livon-ai .lv-ai-related__item strong { font-weight: 700; }
+
+#livon-ai .lv-ai-composer {
+  border-top: 1px solid #ececec;
+  padding: 0.85rem 1.1rem 1rem;
+  background: #fff;
+}
+#livon-ai .lv-ai-composer__form {
+  display: grid;
+  gap: 0.55rem;
+  border: 1px solid #e4e4e4;
+  padding: 0.65rem 0.75rem;
+  background: #fff;
+}
+#livon-ai .lv-ai-composer textarea {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  resize: none;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  min-height: 2.75rem;
+  max-height: 10rem;
+  outline: none;
+  color: #111;
+}
+#livon-ai .lv-ai-composer__acts {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+}
+#livon-ai .lv-ai-composer .lv-ai-note { margin: 0.55rem 0 0; }
+#livon-ai .lv-ai-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#livon-ai .lv-ai-panel {
+  border-left: 1px solid #ececec;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+#livon-ai .lv-ai-panel__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #ececec;
+}
+#livon-ai .lv-ai-panel__bar h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 750;
+}
+#livon-ai .lv-ai-panel__body {
+  padding: 1rem;
+  overflow: auto;
+  flex: 1;
+}
+#livon-ai .lv-ai-plan-card h3 {
+  margin: 0.25rem 0 0.45rem;
+  font-size: 1.15rem;
+  font-weight: 750;
+}
+#livon-ai .lv-ai-plan-card ol { padding-left: 1.2rem; }
+#livon-ai .lv-ai-check-list {
+  list-style: none;
+  margin: 0.75rem 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+#livon-ai .lv-ai-check-list label {
+  display: flex;
+  gap: 0.45rem;
+  align-items: flex-start;
+  cursor: pointer;
+  font-size: 0.92rem;
+}
+#livon-ai .lv-ai-link-list {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.55rem;
+}
+#livon-ai .lv-ai-link-list h4 { margin: 0; font-size: 0.9rem; }
+#livon-ai .lv-ai-link-list a {
+  display: grid;
+  gap: 0.15rem;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid #eee;
+}
+#livon-ai .lv-ai-link-list em {
+  font-style: normal;
+  font-size: 0.7rem;
+  color: #8a8a8a;
+  letter-spacing: 0.08em;
+}
+
+#livon-ai .lv-ai-icon-btn {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid #e4e4e4;
+  background: #fff;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+#livon-ai .lv-ai-text-btn {
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.82rem;
+  color: #555;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+#livon-ai .lv-ai-btn--sm {
+  min-height: 2.35rem;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.85rem;
+}
+#livon-ai .lv-ai-btn--dark {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
+#livon-ai .lv-ai-only-mobile { display: none; }
+#livon-ai .lv-ai-sidebar-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  border: 0;
+  z-index: 4;
+}
+
+#livon-ai .lv-ai-guide-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+@media (min-width: 800px) {
+  #livon-ai .lv-ai-guide-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+#livon-ai .lv-ai-guide-card {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.25rem 1.2rem;
+  border: 1px solid #e8e8e8;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+#livon-ai .lv-ai-guide-card:hover { border-color: #0a0a0a; transform: translateY(-2px); }
+#livon-ai .lv-ai-guide-card em {
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: #8a8a8a;
+  font-family: ui-monospace, Menlo, monospace;
+}
+#livon-ai .lv-ai-guide-card strong { font-size: 1.1rem; font-weight: 750; }
+#livon-ai .lv-ai-guide-card span { font-size: 0.92rem; color: #555; line-height: 1.5; }
+
+#livon-ai .lv-ai-settings {
+  display: grid;
+  gap: 0.85rem;
+  max-width: 32rem;
+}
+#livon-ai .lv-ai-field {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: #444;
+}
+#livon-ai .lv-ai-field input,
+#livon-ai .lv-ai-field select {
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  font: inherit;
+}
+#livon-ai .lv-ai-check {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: 0.92rem;
+  color: #444;
+}
+
+@media (max-width: 980px) {
+  #livon-ai .lv-ai-workspace,
+  #livon-ai .lv-ai-workspace:has([data-lv-ai-panel]:not([hidden])) {
+    grid-template-columns: 1fr;
+    min-height: min(78vh, 820px);
+  }
+  #livon-ai .lv-ai-sidebar {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: min(300px, 86vw);
+    z-index: 5;
+    transform: translateX(-105%);
+    transition: transform 0.25s ease;
+    box-shadow: 8px 0 30px rgba(0,0,0,0.12);
+  }
+  #livon-ai .lv-ai-sidebar.is-open { transform: none; }
+  #livon-ai .lv-ai-sidebar [data-lv-ai-sidebar-close] { display: inline-grid; }
+  #livon-ai .lv-ai-only-mobile { display: inline-grid; }
+  #livon-ai .lv-ai-panel {
+    position: absolute;
+    inset: auto 0 0 0;
+    max-height: min(70vh, 520px);
+    z-index: 6;
+    border-left: 0;
+    border-top: 1px solid #ececec;
+    box-shadow: 0 -12px 40px rgba(0,0,0,0.12);
+  }
+}
+@media (min-width: 981px) {
+  #livon-ai .lv-ai-sidebar [data-lv-ai-sidebar-close] { display: none; }
+}
+
+
+/* Compact preferences using the site's existing monochrome form styles. */
+#livon-ai #ai-settings { padding-block: clamp(2rem, 4vw, 3.5rem); }
+#livon-ai #ai-settings .lv-ai-inner { display: grid; grid-template-columns: minmax(240px, .8fr) minmax(0, 1.6fr); align-items: start; gap: 2rem; }
+#livon-ai #ai-settings .lv-ai-head { margin: 0; }
+#livon-ai #ai-settings .lv-ai-settings { max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; padding: 1.5rem; background: #fff; border: 1px solid #ececec; }
+#livon-ai #ai-settings .lv-ai-field { min-width: 0; }
+#livon-ai #ai-settings .lv-ai-field input,
+#livon-ai #ai-settings .lv-ai-field select { width: 100%; min-width: 0; box-sizing: border-box; background: #fff; color: #0a0a0a; }
+#livon-ai #ai-settings .lv-ai-field input:focus-visible,
+#livon-ai #ai-settings .lv-ai-field select:focus-visible { outline: 2px solid #0a0a0a; outline-offset: 2px; }
+#livon-ai #ai-settings .lv-ai-field:nth-child(5) { grid-column: 1 / -1; }
+#livon-ai #ai-settings .lv-ai-check { grid-column: 1 / -1; margin: 0; align-items: center; }
+#livon-ai #ai-settings .lv-ai-check input { accent-color: #0a0a0a; flex: 0 0 auto; }
+#livon-ai #ai-settings .lv-ai-actions { grid-column: 1 / -1; margin: .25rem 0 0; justify-content: flex-end; }
+#livon-ai #ai-settings .lv-ai-note { grid-column: 1 / -1; margin: 0; }
+@media (max-width: 800px) {
+  #livon-ai #ai-settings .lv-ai-inner { grid-template-columns: 1fr; gap: 1.25rem; }
+}
+@media (max-width: 480px) {
+  #livon-ai #ai-settings .lv-ai-settings { grid-template-columns: 1fr; padding: 1rem; gap: .85rem; }
+  #livon-ai #ai-settings .lv-ai-actions .lv-ai-btn { width: 100%; justify-content: center; }
+}

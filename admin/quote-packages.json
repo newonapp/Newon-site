@@ -1,0 +1,182 @@
+[
+  {
+    "id": "landing",
+    "group": "WEB",
+    "label": "Landing",
+    "amount": 700000,
+    "custom": false,
+    "timelineKo": "3–5일",
+    "timelineEn": "3–5 days",
+    "serviceSlug": "landing"
+  },
+  {
+    "id": "business-website",
+    "group": "WEB",
+    "label": "Business Website",
+    "amount": 1200000,
+    "custom": false,
+    "timelineKo": "5–10일",
+    "timelineEn": "5–10 days",
+    "serviceSlug": "web"
+  },
+  {
+    "id": "web-service",
+    "group": "WEB",
+    "label": "Web Service",
+    "amount": 1800000,
+    "custom": false,
+    "timelineKo": "1–3주",
+    "timelineEn": "1–3 weeks",
+    "serviceSlug": "web"
+  },
+  {
+    "id": "app-prototype",
+    "group": "APP",
+    "label": "App Prototype",
+    "amount": 1000000,
+    "custom": false,
+    "timelineKo": "3–7일",
+    "timelineEn": "3–7 days",
+    "serviceSlug": "app"
+  },
+  {
+    "id": "app-development",
+    "group": "APP",
+    "label": "App Development",
+    "amount": 2500000,
+    "custom": false,
+    "timelineKo": "1–3주",
+    "timelineEn": "1–3 weeks",
+    "serviceSlug": "app"
+  },
+  {
+    "id": "mvp-starter",
+    "group": "MVP",
+    "label": "MVP Starter",
+    "amount": 3000000,
+    "custom": false,
+    "timelineKo": "1–2주",
+    "timelineEn": "1–2 weeks",
+    "serviceSlug": "mvp"
+  },
+  {
+    "id": "mvp-standard",
+    "group": "MVP",
+    "label": "MVP Standard",
+    "amount": 4500000,
+    "custom": false,
+    "timelineKo": "2–3주",
+    "timelineEn": "2–3 weeks",
+    "serviceSlug": "mvp"
+  },
+  {
+    "id": "mvp-custom",
+    "group": "MVP",
+    "label": "MVP Custom",
+    "amount": 6000000,
+    "custom": false,
+    "timelineKo": "별도 협의",
+    "timelineEn": "By agreement",
+    "serviceSlug": "mvp"
+  },
+  {
+    "id": "admin-dashboard",
+    "group": "INTERNAL",
+    "label": "Admin Dashboard",
+    "amount": 1500000,
+    "custom": false,
+    "timelineKo": "5–10일",
+    "timelineEn": "5–10 days",
+    "serviceSlug": "internal-tools"
+  },
+  {
+    "id": "internal-tool",
+    "group": "INTERNAL",
+    "label": "Internal Tool",
+    "amount": 2500000,
+    "custom": false,
+    "timelineKo": "1–2주",
+    "timelineEn": "1–2 weeks",
+    "serviceSlug": "internal-tools"
+  },
+  {
+    "id": "custom-business-system",
+    "group": "INTERNAL",
+    "label": "Custom Business System",
+    "amount": 4000000,
+    "custom": false,
+    "timelineKo": "2–4주 / 별도 협의",
+    "timelineEn": "2–4 weeks / by agreement",
+    "serviceSlug": "internal-system"
+  },
+  {
+    "id": "workflow-automation",
+    "group": "AUTOMATION",
+    "label": "Workflow Automation",
+    "amount": 1000000,
+    "custom": false,
+    "timelineKo": "3–7일",
+    "timelineEn": "3–7 days",
+    "serviceSlug": "workflow-automation"
+  },
+  {
+    "id": "business-automation",
+    "group": "AUTOMATION",
+    "label": "Business Automation",
+    "amount": 2000000,
+    "custom": false,
+    "timelineKo": "1–2주",
+    "timelineEn": "1–2 weeks",
+    "serviceSlug": "ai-automation"
+  },
+  {
+    "id": "custom-automation",
+    "group": "AUTOMATION",
+    "label": "Custom Automation",
+    "amount": 0,
+    "custom": true,
+    "timelineKo": "별도 견적",
+    "timelineEn": "Custom quote",
+    "serviceSlug": "ai-automation"
+  },
+  {
+    "id": "landing-ui",
+    "group": "DESIGN",
+    "label": "Landing UI",
+    "amount": 400000,
+    "custom": false,
+    "timelineKo": "3–5일",
+    "timelineEn": "3–5 days",
+    "serviceSlug": "design"
+  },
+  {
+    "id": "web-ui-ux",
+    "group": "DESIGN",
+    "label": "Web UI/UX",
+    "amount": 600000,
+    "custom": false,
+    "timelineKo": "5–7일",
+    "timelineEn": "5–7 days",
+    "serviceSlug": "design"
+  },
+  {
+    "id": "app-ui-ux",
+    "group": "DESIGN",
+    "label": "App UI/UX",
+    "amount": 700000,
+    "custom": false,
+    "timelineKo": "5–10일",
+    "timelineEn": "5–10 days",
+    "serviceSlug": "design"
+  },
+  {
+    "id": "product-design",
+    "group": "DESIGN",
+    "label": "Product Design",
+    "amount": 1000000,
+    "custom": false,
+    "timelineKo": "1–2주",
+    "timelineEn": "1–2 weeks",
+    "serviceSlug": "design"
+  }
+]

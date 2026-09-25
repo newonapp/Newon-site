@@ -1,0 +1,3188 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LivOn</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/assets/livon-mark.jpg" type="image/jpeg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Kanit:wght@500;700;900&family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;500&family=Silkscreen:wght@400;700&family=Instrument+Serif:ital@0;1&family=UnifrakturCook:wght@700&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css?v=20260904a11y1" />
+    <link rel="stylesheet" href="/gnav-mega.css?v=20260902nav1" />
+    <link rel="stylesheet" href="/home-lifestage.css?v=20260924livon1" />
+    <link rel="stylesheet" href="/home-lifestage-layout.css?v=20260922loop1" />
+    <link rel="stylesheet" href="/livon/life-page.css?v=20260925life23" />
+    <link rel="stylesheet" href="/livon/life-now-page.css?v=20260925ml15" />
+    <link rel="stylesheet" href="/livon/explore-page.css?v=20260925ex7" />
+    <link rel="stylesheet" href="/livon/community-page.css?v=20260925cm13" />
+    <link rel="stylesheet" href="/livon/today-page.css?v=20260925td15" />
+    <link rel="stylesheet" href="/livon/ai-page.css?v=20260925ai10" />
+    <link rel="stylesheet" href="/livon/home-page.css?v=20260925hm16" />
+    <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
+    <link rel="stylesheet" href="/site-dark.css?v=20260924foot1" />
+    <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
+    <link rel="stylesheet" href="/livon/connected-menus.css?v=20260925a" />
+    <script src="/theme-shell.js?v=20260904perf1"></script>
+  </head>
+  <body>
+    <script>
+      (function () {
+        var hash = (location.hash || "#livon-home").slice(1);
+        var view = "home";
+        if (hash === "life" || hash === "life-stages" || hash.indexOf("stage-") === 0 || (hash.indexOf("life-") === 0 && hash !== "life-now")) view = "life";
+        else if (hash === "today" || hash.indexOf("td-") === 0) view = "today";
+        else if (hash === "life-now" || hash.indexOf("ml-") === 0 || hash.indexOf("profile-") === 0) view = "life-now";
+        else if (hash === "explore" || hash.indexOf("ex-") === 0) view = "explore";
+        else if (hash === "community" || hash.indexOf("cm-") === 0) view = "community";
+        else if (hash === "livon-ai" || hash.indexOf("ai-") === 0) view = "livon-ai";
+        document.documentElement.dataset.lvView = view;
+      })();
+    </script>
+    <a class="skip-link" href="#livon-home">본문으로 건너뛰기</a>
+    <header class="gnav site-header gnav--five" data-gnav>
+      <div class="gnav__bar">
+        <div class="gnav__inner">
+          <a class="gnav__brand" href="/ko/lifestage/" aria-label="LivOn">
+            <img class="gnav__logo" src="/assets/livon-mark-icon.jpg" alt="" width="40" height="40" decoding="async" />
+            <span class="gnav__wordmark">LivOn</span>
+          </a>
+          <nav class="gnav__nav" aria-label="LivOn 메뉴">
+            <div class="gnav__nav-scroller">
+              <div class="gnav-dd gnav-dd--active">
+                <a class="gnav__link" href="#livon-home" aria-current="page">홈</a>
+              </div>
+              <div class="gnav-dd">
+                <a class="gnav__link" href="#life">라이프 스테이지</a>
+              </div>
+              <div class="gnav-dd">
+                <a class="gnav__link" href="#today">오늘의 발견</a>
+              </div>
+              <div class="gnav-dd">
+                <a class="gnav__link" href="#life-now">내 생활</a>
+              </div>
+              <div class="gnav-dd">
+                <a class="gnav__link" href="#explore">탐색</a>
+              </div>
+              <div class="gnav-dd">
+                <a class="gnav__link" href="#community">커뮤니티</a>
+              </div>
+              <div class="gnav-dd">
+                <a class="gnav__link" href="#livon-ai">LIVON AI</a>
+              </div>
+            </div>
+          </nav>
+          <div class="gnav__util">
+            <div class="livon-tools" data-livon-tools>
+              <button type="button" class="livon-tool" data-livon-tool="search" aria-expanded="false" aria-controls="livon-panel-search" aria-label="검색">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.25" stroke="currentColor" stroke-width="1.75"/><path d="M16 16.5L20 20.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+              </button>
+              <button type="button" class="livon-tool" data-livon-tool="alerts" aria-expanded="false" aria-controls="livon-panel-alerts" aria-label="알림">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.2 9.4a5.8 5.8 0 0 1 11.6 0c0 4.2 1.3 5.6 1.8 6.2H4.4c.5-.6 1.8-2 1.8-6.2Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M10 18.6a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+              </button>
+              <button type="button" class="livon-tool" data-livon-tool="saved" aria-expanded="false" aria-controls="livon-panel-saved" aria-label="저장">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4.8h10a1 1 0 0 1 1 1V20l-6-3.4L6 20V5.8a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg>
+              </button>
+              <button type="button" class="livon-tool" data-livon-tool="profile" aria-expanded="false" aria-controls="livon-panel-profile" aria-label="프로필">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8.2" r="3.1" stroke="currentColor" stroke-width="1.75"/><path d="M5.6 19.2c1.2-2.6 3.4-3.8 6.4-3.8s5.2 1.2 6.4 3.8" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+              </button>
+              <div class="livon-panel" id="livon-panel-search" data-livon-panel="search" hidden>
+                <p class="livon-panel__title">통합 검색</p>
+                <form class="livon-search" data-livon-search>
+                  <label class="visually-hidden" for="livon-search-input">콘텐츠, Life Stage, 전문가, 서비스, 혜택, 커뮤니티 검색</label>
+                  <input id="livon-search-input" type="search" name="q" placeholder="무엇을 찾고 있나요?" autocomplete="off" />
+                </form>
+                <p class="livon-panel__note" data-livon-search-note>콘텐츠 · Life Stage · Life Event · 전문가 · 서비스 · 혜택 · 커뮤니티</p>
+                <div data-livon-search-body></div>
+              </div>
+              <div class="livon-panel" id="livon-panel-alerts" data-livon-panel="alerts" hidden>
+                <p class="livon-panel__title">알림</p>
+                <div data-livon-alerts-body>
+                  <ul class="livon-panel__list">
+                    <li>일정</li>
+                    <li>할 일</li>
+                    <li>Life Event</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="livon-panel" id="livon-panel-saved" data-livon-panel="saved" hidden>
+                <p class="livon-panel__title">저장</p>
+                <div data-livon-saved-body>
+                  <ul class="livon-panel__list">
+                    <li>저장함에서 통합 관리</li>
+                    <li><a href="#ml-panel">내 생활 · 저장함</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="livon-panel livon-panel--menu" id="livon-panel-profile" data-livon-panel="profile" role="menu" hidden>
+                <p class="livon-panel__title">프로필</p>
+                <a role="menuitem" href="#ml-panel" data-lv-plat-profile="settings">마이 · 설정</a>
+                <a role="menuitem" href="#life-setup">Life Stage · 관심사</a>
+                <a role="menuitem" href="#life-events">진행 중 Life Event</a>
+                <a role="menuitem" href="#ml-panel" data-lv-plat-profile="saved">저장한 항목</a>
+                <a role="menuitem" href="#ml-panel" data-lv-plat-profile="family">가족 연결</a>
+                <a role="menuitem" href="#ml-panel" data-lv-plat-profile="settings">알림 · 개인정보</a>
+                <button type="button" role="menuitem" data-livon-logout>로그아웃</button>
+              </div>
+            </div>
+            <div class="gnav__lang" data-lang-switcher>
+              <label class="visually-hidden" for="lang-select-livon">언어</label>
+              <select id="lang-select-livon" class="gnav__lang-select" data-lang-select data-lang-compact aria-label="언어">
+                <option value="ko" data-short="KO" selected>한국어</option><option value="en" data-short="EN">English</option><option value="ja" data-short="JA">日本語</option><option value="es" data-short="ES">Español</option><option value="pt-br" data-short="PT">Português (Brasil)</option><option value="fr" data-short="FR">Français</option><option value="de" data-short="DE">Deutsch</option><option value="hi" data-short="HI">हिन्दी</option><option value="id" data-short="ID">Bahasa Indonesia</option>
+              </select>
+            </div>
+            <button type="button" class="gnav__menu-btn" data-gnav-toggle aria-expanded="false" aria-controls="gnav-mobile-livon" aria-label="메뉴">
+              <span class="gnav__menu-icon" aria-hidden="true"><span></span><span></span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="gnav-mobile-livon" class="gnav-mobile" hidden aria-hidden="true">
+        <button type="button" class="gnav-mobile__backdrop" data-gnav-close tabindex="-1" aria-label="닫기"></button>
+        <div class="gnav-mobile__panel" role="dialog" aria-modal="true" aria-label="메뉴">
+          <div class="gnav-mobile__scroll">
+            <a class="gnav-mobile__sublink" href="#livon-home">홈</a>
+            <a class="gnav-mobile__sublink" href="#life">라이프 스테이지</a>
+            <a class="gnav-mobile__sublink" href="#today">오늘의 발견</a>
+            <a class="gnav-mobile__sublink" href="#life-now">내 생활</a>
+            <a class="gnav-mobile__sublink" href="#explore">탐색</a>
+            <a class="gnav-mobile__sublink" href="#community">커뮤니티</a>
+            <a class="gnav-mobile__sublink" href="#livon-ai">LIVON AI</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section id="livon-home" data-lv-screen="home" aria-label="홈">
+      <section class="livon-hero" aria-labelledby="livon-home-title">
+        <div class="livon-hero__bg" data-livon-bg>
+          <video
+            data-livon-video
+            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_080827_a9e5ad52-b6ee-4e79-b393-d936f179cfd7.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            crossorigin="anonymous"
+          ></video>
+          <canvas data-livon-canvas></canvas>
+        </div>
+        <div class="livon-hero__title" data-livon-fade>
+          <h1 id="livon-home-title" class="hero-title">LivOn</h1>
+        </div>
+        <div class="livon-hero__foot" data-livon-fade data-livon-delay>
+          <p>10대부터 70대까지. 생애 첫 경험과 인생의 변화까지 함께합니다.</p>
+          <div class="livon-hero__actions">
+            <a class="livon-hero__primary" href="#life"><span>시작하기</span></a>
+            <a class="livon-hero__secondary liquid-glass" href="#today">오늘의 발견</a>
+          </div>
+          <p class="is-right">삶의 모든 단계에, 필요한 다음을.</p>
+        </div>
+      </section>
+
+      <div class="lv-hm" data-lv-hm>
+        <section class="lv-hm-sec lv-hm-sec--meaning" id="hm-meaning" data-lv-hm-reveal>
+          <div class="lv-hm-inner lv-hm-inner--center">
+            <p class="lv-hm-kicker">01 / THE MEANING OF LIVON</p>
+            <h2 class="lv-hm-display lv-hm-display--brand">LIVON</h2>
+            <p class="lv-hm-slogan">삶의 모든 순간을, 하나의 LIVON에서.</p>
+            <p class="lv-hm-lead">LIVON은 성장과 독립, 새로운 도전과 일상의 변화까지 삶의 다양한 순간에 필요한 정보와 경험을 연결하는 생활 플랫폼입니다.</p>
+            <p class="lv-hm-lead lv-hm-lead--soft">10대부터 70대 이후까지. 지금 나에게 필요한 것을 발견하고, 일상을 관리하며, 다음 단계를 준비할 수 있도록 돕습니다.</p>
+            <ol class="lv-hm-pillars" data-lv-hm-pillars>
+              <li class="lv-hm-pillar" data-lv-hm-reveal>
+                <span class="lv-hm-num">01</span>
+                <span class="lv-hm-en">DISCOVER</span>
+                <h3>새로운 가능성을 발견하다.</h3>
+                <p>나의 관심사와 생활 단계에 맞는 정보, 활동, 경험을 찾아보세요.</p>
+              </li>
+              <li class="lv-hm-pillar" data-lv-hm-reveal>
+                <span class="lv-hm-num">02</span>
+                <span class="lv-hm-en">ORGANIZE</span>
+                <h3>나의 일상을 정리하다.</h3>
+                <p>일정과 목표, 할 일과 관심 콘텐츠를 한곳에서 관리하세요.</p>
+              </li>
+              <li class="lv-hm-pillar" data-lv-hm-reveal>
+                <span class="lv-hm-num">03</span>
+                <span class="lv-hm-en">CONNECT</span>
+                <h3>필요한 사람과 서비스를 연결하다.</h3>
+                <p>전문가와 생활 서비스, 비슷한 관심사를 가진 사람들을 만나보세요.</p>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="lv-hm-sec lv-hm-sec--journey" id="hm-journey" data-lv-hm-reveal>
+          <div class="lv-hm-inner lv-hm-inner--center">
+            <p class="lv-hm-kicker">02 / LIFE JOURNEY</p>
+            <h2 class="lv-hm-display">삶의 단계마다,<br>새로운 가능성을.</h2>
+            <p class="lv-hm-lead">지금의 나에게 필요한 정보부터 앞으로의 새로운 경험까지. 나의 생애 단계에 맞는 생활을 발견해 보세요.</p>
+            <div class="lv-hm-journey" data-lv-hm-journey>
+              <div class="lv-hm-journey__rail" role="tablist" aria-label="생애 단계" data-lv-hm-stage-tabs></div>
+              <div class="lv-hm-journey__stage" data-lv-hm-stage-panel>
+                <div class="lv-hm-journey__visual" data-lv-hm-stage-visual aria-hidden="true"></div>
+                <div class="lv-hm-journey__copy">
+                  <p class="lv-hm-eyebrow" data-lv-hm-stage-label>20대</p>
+                  <h3 data-lv-hm-stage-title>독립과 도전</h3>
+                  <p data-lv-hm-stage-desc>새로운 경험으로 나만의 삶을 만들어가는 시간.</p>
+                  <p class="lv-hm-keywords" data-lv-hm-stage-keys>독립 · 커리어 · 경험</p>
+                  <div class="lv-hm-actions">
+                    <a class="lv-hm-btn" data-lv-hm-stage-link href="#stage-20">이 단계 자세히 보기</a>
+                    <button type="button" class="lv-hm-btn lv-hm-btn--ghost" data-lv-hm-set-stage>나의 라이프 스테이지 설정</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="lv-hm-sec lv-hm-sec--services" id="hm-services" data-lv-hm-reveal>
+          <div class="lv-hm-inner lv-hm-inner--center">
+            <p class="lv-hm-kicker">03 / DISCOVER LIVON</p>
+            <h2 class="lv-hm-display">나의 일상을 넓히는,<br>여섯 가지 연결.</h2>
+            <p class="lv-hm-lead">삶의 단계를 살펴보고, 새로운 경험을 발견하고, 일상을 관리하고, 필요한 사람과 서비스를 찾아보세요.</p>
+          </div>
+          <div class="lv-hm-showcase" data-lv-hm-showcase>
+            <div class="lv-hm-showcase__nav" role="tablist" aria-label="서비스" data-lv-hm-svc-tabs></div>
+            <article class="lv-hm-showcase__panel" data-lv-hm-svc-panel></article>
+          </div>
+        </section>
+
+        <section class="lv-hm-sec lv-hm-sec--mylivon" id="hm-mylivon" data-lv-hm-reveal>
+          <div class="lv-hm-inner">
+            <header class="lv-hm-head lv-hm-head--split">
+              <div>
+                <p class="lv-hm-kicker">05 / TODAY'S LIVON</p>
+                <h2 class="lv-hm-display">오늘의 LIVON.</h2>
+              </div>
+              <div>
+                <p class="lv-hm-lead">일정·할 일·목표·발견·저장을 한곳에서 확인하세요. 등록한 실제 데이터만 표시합니다.</p>
+                <p class="lv-hm-note">설정값은 이 기기에 저장됩니다. 계정 동기화는 아직 연결되지 않았습니다.</p>
+              </div>
+            </header>
+            <div class="lv-hm-dash" data-lv-hm-dash></div>
+          </div>
+        </section>
+
+        <section class="lv-hm-sec lv-hm-sec--mylivon" id="hm-events" data-lv-hm-reveal>
+          <div class="lv-hm-inner">
+            <header class="lv-hm-head lv-hm-head--center">
+              <p class="lv-hm-kicker">07 / LIFE EVENT</p>
+              <h2 class="lv-hm-display">내가 준비 중인<br>변화.</h2>
+              <p class="lv-hm-lead">입학·취업·독립·육아·은퇴처럼 실제 인생 이벤트를 고르면 체크리스트와 관련 서비스로 이어집니다.</p>
+              <p class="lv-hm-note">여러 개 선택할 수 있습니다. 선택은 이 기기에만 저장됩니다.</p>
+            </header>
+            <div class="lv-hm-chips" data-lv-hm-events></div>
+            <div class="lv-hm-actions lv-hm-actions--center">
+              <a class="lv-hm-btn" href="#life-events">라이프 스테이지에서 자세히</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="lv-hm-sec lv-hm-sec--today" id="hm-today" data-lv-hm-reveal>
+          <div class="lv-hm-inner">
+            <header class="lv-hm-head lv-hm-head--center">
+              <p class="lv-hm-kicker">08 / TODAY'S DISCOVERY</p>
+              <h2 class="lv-hm-display">오늘, 나를 위한<br>새로운 발견.</h2>
+              <p class="lv-hm-lead">익숙한 일상에서 벗어나 새로운 장소와 활동, 배움과 경험을 만나보세요.</p>
+            </header>
+            <div class="lv-hm-cats" data-lv-hm-today-cats></div>
+            <div class="lv-hm-today" data-lv-hm-today></div>
+            <div class="lv-hm-actions lv-hm-actions--center">
+              <a class="lv-hm-btn" href="#today">오늘의 발견 전체 보기</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="lv-hm-sec lv-hm-sec--connect" id="hm-connect" data-lv-hm-reveal>
+          <div class="lv-hm-inner">
+            <header class="lv-hm-head lv-hm-head--center">
+              <p class="lv-hm-kicker">09 / EXPLORE &amp; CONNECT</p>
+              <h2 class="lv-hm-display">필요한 것을 찾고,<br>서로의 경험을 나누다.</h2>
+              <p class="lv-hm-lead">생활에 필요한 전문가와 서비스를 탐색하고, 비슷한 관심사를 가진 사람들의 이야기에서 새로운 정보를 발견해 보세요.</p>
+            </header>
+
+            <div class="lv-hm-ex-block" data-lv-hm-ex-block>
+              <div class="lv-hm-ex-block__intro">
+                <p class="lv-hm-eyebrow">EXPLORE</p>
+                <h3>생활에 필요한 사람과 서비스.</h3>
+                <form class="lv-hm-search lv-hm-search--xl" data-lv-hm-explore-form>
+                  <label class="visually-hidden" for="hm-ex-q">탐색 검색</label>
+                  <input id="hm-ex-q" type="search" name="q" placeholder="전문가, 서비스, 교육 검색" autocomplete="off" />
+                  <button type="submit" class="lv-hm-btn">검색</button>
+                </form>
+                <ul class="lv-hm-tags" data-lv-hm-ex-cats></ul>
+              </div>
+              <div class="lv-hm-ex-rows" data-lv-hm-ex-list></div>
+              <a class="lv-hm-btn lv-hm-btn--ghost" href="#explore">필요한 서비스 찾기</a>
+            </div>
+
+            <div class="lv-hm-cm-block" data-lv-hm-cm-block>
+              <div class="lv-hm-cm-block__intro">
+                <p class="lv-hm-eyebrow">COMMUNITY</p>
+                <h3>함께 나누는 일상의 이야기.</h3>
+                <ul class="lv-hm-tags">
+                  <li><a href="#cm-home">일상 이야기</a></li>
+                  <li><a href="#cm-qa">질문·답변</a></li>
+                  <li><a href="#cm-communities">관심 커뮤니티</a></li>
+                  <li><a href="#cm-groups">모임·활동</a></li>
+                </ul>
+              </div>
+              <div class="lv-hm-cm-feed" data-lv-hm-cm-list></div>
+              <a class="lv-hm-btn" href="#community">커뮤니티 둘러보기</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="lv-hm-sec lv-hm-sec--ai" id="hm-ai" data-lv-hm-reveal>
+          <div class="lv-hm-inner">
+            <p class="lv-hm-kicker">10 / LIVON AI</p>
+            <h2 class="lv-hm-display">궁금한 일상부터,<br>앞으로의 계획까지.</h2>
+            <p class="lv-hm-lead">복잡한 생활 속 질문을 정리하고, 새로운 목표를 계획하고, 나에게 필요한 정보와 서비스를 찾아보세요.</p>
+            <form class="lv-hm-ai" data-lv-hm-ai-form>
+              <label class="visually-hidden" for="hm-ai-q">LIVON AI에게 질문</label>
+              <input id="hm-ai-q" type="text" name="q" placeholder="LIVON AI에게 무엇이든 물어보세요." autocomplete="off" data-lv-hm-ai-q />
+              <button type="submit" class="lv-hm-btn">AI에게 물어보기</button>
+            </form>
+            <div class="lv-hm-ai-prompts" data-lv-hm-ai-prompts>
+              <button type="button" data-lv-hm-aiq="다음 달 이사를 준비하려면 무엇부터 해야 해?">“다음 달 이사를 준비하려면 무엇부터 해야 해?”</button>
+              <button type="button" data-lv-hm-aiq="이번 주 해야 할 일을 정리해 줘.">“이번 주 해야 할 일을 정리해 줘.”</button>
+              <button type="button" data-lv-hm-aiq="새로운 취미를 시작하고 싶어.">“새로운 취미를 시작하고 싶어.”</button>
+              <button type="button" data-lv-hm-aiq="나에게 필요한 생활 서비스를 찾아줘.">“나에게 필요한 생활 서비스를 찾아줘.”</button>
+            </div>
+            <p class="lv-hm-note">질문은 LIVON AI 대화 화면으로 전달됩니다. 홈에서 가짜 답변을 만들지 않습니다.</p>
+          </div>
+        </section>
+
+        <section class="lv-hm-sec lv-hm-sec--start" id="hm-start" data-lv-hm-reveal>
+          <div class="lv-hm-inner lv-hm-start">
+            <p class="lv-hm-kicker">11 / START YOUR LIFE</p>
+            <h2 class="lv-hm-display lv-hm-display--xl">지금의 나에게 필요한 것부터,<br>LIVON에서.</h2>
+            <p class="lv-hm-lead">새로운 경험을 발견하고, 나의 일상을 정리하고, 앞으로의 삶을 준비해 보세요.</p>
+            <div class="lv-hm-actions lv-hm-actions--center">
+              <a class="lv-hm-btn" href="#life">나의 라이프 스테이지 찾기</a>
+              <a class="lv-hm-btn lv-hm-btn--ghost" href="#today">오늘의 발견 시작하기</a>
+              <a class="lv-hm-btn lv-hm-btn--ghost" href="#life-now">내 생활 시작하기</a>
+              <a class="lv-hm-btn lv-hm-btn--ghost" href="#livon-ai">LIVON AI에게 물어보기</a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      </section>
+
+      <section class="lv-lum" id="life" data-lv-screen="life" aria-label="라이프 스테이지">
+        <div class="lv-life">
+          <div class="lv-life__hero" data-lv-life-hero>
+            <video class="lv-lum__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260429_115139_0fc6bd3d-3631-4d26-ab9b-28293887dcc9.mp4"></video>
+            <div class="lv-life__lockup">
+              <div class="lv-life__veil" aria-hidden="true"></div>
+              <p class="lv-life__wordmark">LIFE STAGE</p>
+              <h1 class="lv-life__slogan" id="life-hero-title">삶의 모든 단계에,<br>필요한 다음을.</h1>
+              <p class="lv-life__lead">10대부터 70대 이후까지.<br>지금의 나에게 필요한 생활 서비스와<br>앞으로의 새로운 가능성을 발견해 보세요.</p>
+              <div class="lv-life__actions">
+                <button type="button" class="lv-life-btn" data-lv-life-find>나의 라이프 스테이지 찾기</button>
+                <a class="lv-life-btn lv-life-btn--ghost" href="#life-explore" data-lv-life-scroll>모든 생애 단계 살펴보기</a>
+              </div>
+            </div>
+          </div>
+
+          <nav class="lv-life-sticky" aria-label="생애 단계 바로가기" data-lv-life-sticky>
+            <div class="lv-life-sticky__inner">
+              <p class="lv-life-sticky__label">STAGES</p>
+              <div class="lv-life-sticky__track" data-lv-life-stage-nav></div>
+              <a class="lv-life-btn lv-life-btn--outline lv-life-btn--sm" href="#life-setup" data-lv-life-scroll>맞춤 설정</a>
+            </div>
+          </nav>
+
+          <div class="lv-life__wrap">
+            <section class="lv-life-sec lv-life-sec--intro" id="life-explore" data-lv-reveal>
+              <header class="lv-life-head lv-life-head--center">
+                <p class="lv-life-kicker">Life Journey</p>
+                <h2 class="lv-life-title">당신의 지금은<br>어떤 순간인가요?</h2>
+                <p class="lv-life-lead">7개 생애 단계를 자유롭게 살펴보고,<br>지금의 나에게 맞는 생활 분야와 서비스로 이어가세요.<br>연령은 추천 기준일 뿐, 이용을 제한하지 않습니다.</p>
+              </header>
+              <div class="lv-life-rail" role="list" data-lv-life-rail></div>
+            </section>
+
+            <section class="lv-life-sec lv-life-sec--band" id="life-setup" data-lv-reveal>
+              <div class="lv-life-setup" data-lv-life-setup>
+                <header class="lv-life-head">
+                  <p class="lv-life-kicker">Personalize</p>
+                  <h2 class="lv-life-title">나에게 맞는<br>생활 기준을 골라보세요.</h2>
+                  <p class="lv-life-lead">생애 단계 · 생활 상황 · 관심 분야 · 목표를 선택하면<br>관련 서비스를 우선 보여 드립니다. 언제든 수정하거나 건너뛸 수 있습니다.</p>
+                </header>
+                <div class="lv-life-setup__steps" role="tablist" aria-label="맞춤 설정 단계">
+                  <button type="button" class="is-on" data-lv-setup-tab="stage" role="tab" aria-selected="true">1 생애 단계</button>
+                  <button type="button" data-lv-setup-tab="situation" role="tab" aria-selected="false">2 생활 상황</button>
+                  <button type="button" data-lv-setup-tab="interest" role="tab" aria-selected="false">3 관심 분야</button>
+                  <button type="button" data-lv-setup-tab="goal" role="tab" aria-selected="false">4 현재 목표</button>
+                </div>
+                <div class="lv-life-setup__panel" data-lv-setup-panel></div>
+                <div class="lv-life-setup__bar">
+                  <p class="lv-life-note" data-lv-life-stage-label>선택된 라이프 스테이지: 없음</p>
+                  <div class="lv-life-setup__acts">
+                    <button type="button" class="lv-life-btn lv-life-btn--outline" data-lv-setup-skip>건너뛰기</button>
+                    <button type="button" class="lv-life-btn lv-life-btn--outline" data-lv-setup-reset>초기화</button>
+                    <button type="button" class="lv-life-btn lv-life-btn--dark" data-lv-setup-apply>적용하고 탐색</button>
+                  </div>
+                </div>
+                <p class="lv-life-note">선택값은 이 기기에만 저장됩니다. 계정 연동·클라우드 저장은 아직 연결되지 않았습니다. 불필요한 개인정보는 요구하지 않습니다.</p>
+              </div>
+            </section>
+
+            <section class="lv-life-sec lv-life-sec--ink" id="life-mine" data-lv-reveal>
+              <div class="lv-life-split">
+                <div>
+                  <p class="lv-life-kicker">For You</p>
+                  <h2 class="lv-life-title">선택한 기준으로<br>우선 보여줄 서비스.</h2>
+                  <p class="lv-life-lead">규칙 기반 우선 노출입니다. AI 추천이라고 표시하지 않습니다. 전체 서비스는 아래 생애 단계에서 자유롭게 볼 수 있습니다.</p>
+                  <div class="lv-life-why" data-lv-life-why>맞춤 설정을 적용하면 추천 이유가 여기에 표시됩니다.</div>
+                </div>
+                <div class="lv-life-priority" data-lv-life-priority>
+                  <div class="lv-life-empty">아직 우선 노출할 항목이 없습니다. 위에서 생애 단계나 관심 분야를 선택해 보세요.</div>
+                </div>
+              </div>
+            </section>
+
+            <section class="lv-life-sec lv-life-sec--stages" id="life-stages-view" data-lv-reveal>
+              <header class="lv-life-head lv-life-head--center">
+                <p class="lv-life-kicker">Life Stages</p>
+                <h2 class="lv-life-title">생애 단계별<br>생활 서비스를 살펴보세요.</h2>
+                <p class="lv-life-lead">10대부터 70대까지. 버튼을 누르면 해당 단계의 가이드와 서비스가 같은 구성으로 표시됩니다.</p>
+              </header>
+              <nav class="lv-life-switch" aria-label="생애 단계 선택" data-lv-life-switch role="tablist"></nav>
+              <div data-lv-life-stages></div>
+            </section>
+
+            <section class="lv-life-sec" id="life-field" data-lv-reveal hidden>
+              <div class="lv-life-field" data-lv-life-field-view></div>
+            </section>
+
+            <section class="lv-life-sec lv-life-sec--band" id="life-events" data-lv-reveal>
+              <header class="lv-life-head">
+                <p class="lv-life-kicker">Life Event</p>
+                <h2 class="lv-life-title">내가 준비 중인 변화.<br>인생의 전환점부터 다음 단계까지.</h2>
+                <p class="lv-life-lead">입학·취업·독립·육아·은퇴처럼 인생 이벤트를 고르면<br>체크리스트와 관련 서비스·커뮤니티로 이어집니다. 예약·결제는 연결하지 않습니다.</p>
+              </header>
+              <div class="lv-life-chips" data-lv-life-event-filters role="group" aria-label="Life Event 필터"></div>
+              <div class="lv-life-trans" data-lv-life-event-grid></div>
+              <div data-lv-life-event-detail hidden></div>
+            </section>
+
+            <section class="lv-life-sec" id="life-packages" data-lv-reveal>
+              <header class="lv-life-head">
+                <p class="lv-life-kicker">Service Packages</p>
+                <h2 class="lv-life-title">주제별로 묶은<br>생활 서비스 큐레이션.</h2>
+                <p class="lv-life-lead">결제·예약이 없는 안내형 패키지입니다.<br>통합 상품처럼 표시하지 않습니다.</p>
+              </header>
+              <div class="lv-life-packs" data-lv-life-packages></div>
+            </section>
+
+            <section class="lv-life-sec lv-life-sec--band" id="life-family" data-lv-reveal>
+              <div class="lv-life-family">
+                <div>
+                  <p class="lv-life-kicker">Family Explore</p>
+                  <h2 class="lv-life-title">가족을 위한<br>생애 단계도 살펴보세요.</h2>
+                  <p class="lv-life-lead">본인 외 자녀·배우자·부모님에게 필요한 분야를<br>별도로 탐색할 수 있습니다. 동의 없이 정보를 수집하지 않습니다.</p>
+                </div>
+                <div class="lv-life-family__grid">
+                  <button type="button" class="lv-life-family__card" data-lv-life-goto="stage-10"><strong>자녀 · 10대</strong><span>성장과 발견</span></button>
+                  <button type="button" class="lv-life-family__card" data-lv-life-goto="stage-20"><strong>청년 가족 · 20대</strong><span>독립과 도전</span></button>
+                  <button type="button" class="lv-life-family__card" data-lv-life-goto="stage-30"><strong>배우자 · 30대</strong><span>성장과 균형</span></button>
+                  <button type="button" class="lv-life-family__card" data-lv-life-goto="stage-60"><strong>부모님 · 60대</strong><span>새로운 시작</span></button>
+                  <button type="button" class="lv-life-family__card" data-lv-life-goto="stage-70"><strong>부모님 · 70대+</strong><span>여유와 연결</span></button>
+                  <a class="lv-life-family__card is-ongil" href="/ongil-start/#care"><strong>시니어 돌봄</strong><span>Ongil로 연결</span></a>
+                </div>
+                <p class="lv-life-note">가족 일정·기록·공유는 <a href="#life-now">내 생활</a>에서 관리합니다.</p>
+              </div>
+            </section>
+
+            <section class="lv-life-sec" id="life-services" data-lv-reveal>
+              <header class="lv-life-head lv-life-head--center">
+                <p class="lv-life-kicker">Connected Menus</p>
+                <h2 class="lv-life-title">발견은 여기서,<br>이용은 각 메뉴에서.</h2>
+                <p class="lv-life-lead">라이프 스테이지는 안내와 연결 허브입니다.<br>다른 메뉴 기능을 중복 구현하지 않습니다.</p>
+              </header>
+              <div class="lv-life-showcase" data-lv-life-showcase>
+                <div class="lv-life-showcase__nav" role="tablist" aria-label="연결 메뉴" data-lv-life-svc-tabs></div>
+                <article class="lv-life-showcase__panel" data-lv-life-svc-panel></article>
+              </div>
+            </section>
+
+            <section class="lv-life-sec lv-life-sec--ink" id="life-ai" data-lv-reveal>
+              <header class="lv-life-head">
+                <p class="lv-life-kicker">Ask LIVON AI</p>
+                <h2 class="lv-life-title">지금 필요한 다음을<br>함께 정리해 보세요.</h2>
+                <p class="lv-life-lead">질문을 고르면 LIVON AI로 이어집니다.<br>선택한 생애 단계 맥락이 함께 전달됩니다.</p>
+              </header>
+              <div class="lv-life-aiq" data-lv-life-ai-global>
+                <a href="#livon-ai" data-lv-life-aiq="지금 나에게 필요한 생활 정보를 찾아 줘.">지금 나에게 필요한 생활 정보를 찾아 줘.</a>
+                <a href="#livon-ai" data-lv-life-aiq="새로운 취미를 추천해 줘.">새로운 취미를 추천해 줘.</a>
+                <a href="#livon-ai" data-lv-life-aiq="이번 주말에 할 만한 활동을 알려 줘.">이번 주말에 할 만한 활동을 알려 줘.</a>
+                <a href="#livon-ai" data-lv-life-aiq="앞으로의 생활 계획을 세워 줘.">앞으로의 생활 계획을 세워 줘.</a>
+              </div>
+            </section>
+
+            <section class="lv-life-close" id="life-cta" data-lv-reveal>
+              <p class="lv-life-kicker">Next</p>
+              <h2 class="lv-life-title">생애 단계에 맞는<br>생활을 이어가세요.</h2>
+              <div class="lv-life-close__acts">
+                <button type="button" class="lv-life-btn" data-lv-life-find>나의 라이프 스테이지 찾기</button>
+                <a class="lv-life-btn lv-life-btn--ghost" href="#life-explore" data-lv-life-scroll>모든 생애 단계 살펴보기</a>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="lv-td" id="today" data-lv-screen="today" aria-label="오늘의 발견">
+        <div class="lv-td">
+          <section class="lv-td-film" id="td-hero" data-lv-td-hero aria-labelledby="td-hero-title">
+            <video class="lv-td-film__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260419_065931_e3ca7b53-d32e-4ad5-81de-dc9d6fcfda6d.mp4"></video>
+            <div class="lv-td-film__lockup">
+              <div class="lv-td-film__veil" aria-hidden="true"></div>
+              <p class="lv-td-film__wordmark">DISCOVERY</p>
+              <h1 class="lv-td-film__slogan" id="td-hero-title">오늘, 새로운 일상을<br>발견하다.</h1>
+              <p class="lv-td-film__lead">새로운 장소와 경험, 배움과 영감까지.<br>평범한 하루를 특별하게 만드는<br>발견을 만나보세요.</p>
+              <div class="lv-td-film__actions">
+                <a class="lv-td-film__btn" href="#td-pick" data-lv-td-scroll>오늘의 발견 살펴보기</a>
+                <a class="lv-td-film__btn lv-td-film__btn--ghost" href="#td-foryou" data-lv-td-scroll>나를 위한 맞춤 발견</a>
+              </div>
+            </div>
+          </section>
+
+          <nav class="lv-td-nav" aria-label="오늘의 발견 섹션" data-lv-td-sticky>
+            <div class="lv-td-inner lv-td-nav__inner">
+              <p class="lv-td-nav__label">BROWSE</p>
+              <div class="lv-td-nav__track">
+                <a href="#td-pick">대표</a>
+                <a href="#td-foryou">맞춤</a>
+                <a href="#td-week">이번 주</a>
+                <a href="#td-places">장소</a>
+                <a href="#td-hobby">체험</a>
+                <a href="#td-learn">배움</a>
+                <a href="#td-together">함께</a>
+                <a href="#td-season">계절</a>
+                <a href="#td-everyday">일상</a>
+                <a href="#td-editorial">이야기</a>
+                <a href="#td-library">검색</a>
+                <a href="#td-connect">연결</a>
+              </div>
+            </div>
+          </nav>
+
+          <div class="lv-td-body">
+            <section class="lv-td-sec lv-td-sec--flush" id="td-pick" data-lv-td-reveal>
+              <div class="lv-td-inner">
+                <header class="lv-td-head">
+                  <p class="lv-td-eyebrow">Today's Pick</p>
+                  <h2 class="lv-td-title lv-td-title--md">오늘의 대표 발견</h2>
+                  <p class="lv-td-lead">검증된 콘텐츠와 상시 추천 가이드를 날짜 기준으로 소개합니다.<br>없는 행사를 자동 생성하지 않습니다.</p>
+                </header>
+                <div data-lv-td-hero-picks></div>
+              </div>
+            </section>
+
+            <section class="lv-td-sec lv-td-sec--band" id="td-foryou" data-lv-td-reveal>
+              <div class="lv-td-inner">
+                <header class="lv-td-head">
+                  <p class="lv-td-eyebrow">For You</p>
+                  <h2 class="lv-td-title lv-td-title--md">나를 위한<br>맞춤 발견</h2>
+                  <p class="lv-td-lead">관심사·예산·동행·활동 유형을 고르면 관련 콘텐츠를 우선 보여 드립니다.<br>규칙 기반 추천이며 AI 추천이라고 표시하지 않습니다.</p>
+                </header>
+                <div class="lv-td-setup" data-lv-td-setup>
+                  <div class="lv-td-setup__tabs" role="tablist" aria-label="맞춤 설정">
+                    <button type="button" class="is-on" data-lv-td-tab="interest" role="tab" aria-selected="true">관심 분야</button>
+                    <button type="button" data-lv-td-tab="region" role="tab" aria-selected="false">선호 지역</button>
+                    <button type="button" data-lv-td-tab="budget" role="tab" aria-selected="false">예산</button>
+                    <button type="button" data-lv-td-tab="companion" role="tab" aria-selected="false">동행</button>
+                    <button type="button" data-lv-td-tab="type" role="tab" aria-selected="false">활동 유형</button>
+                    <button type="button" data-lv-td-tab="place" role="tab" aria-selected="false">실내·야외</button>
+                    <button type="button" data-lv-td-tab="mode" role="tab" aria-selected="false">온·오프라인</button>
+                  </div>
+                  <div class="lv-td-setup__panel" data-lv-td-setup-panel></div>
+                  <div class="lv-td-setup__bar">
+                    <p class="lv-td-note" data-lv-td-why>맞춤 조건을 선택하면 추천 이유가 표시됩니다.</p>
+                    <div class="lv-td-actions">
+                      <button type="button" class="lv-td-btn lv-td-btn--ghost" data-lv-td-reset>초기화</button>
+                      <button type="button" class="lv-td-btn" data-lv-td-apply>적용하기</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="lv-td-priority" data-lv-td-priority></div>
+              </div>
+            </section>
+
+            <section class="lv-td-sec" id="td-week" data-lv-td-reveal>
+              <div class="lv-td-inner">
+                <header class="lv-td-head lv-td-head--row">
+                  <div>
+                    <p class="lv-td-eyebrow">This Week</p>
+                    <h2 class="lv-td-title lv-td-title--md">이번 주<br>새로운 경험</h2>
+                    <p class="lv-td-lead">날짜가 확인된 안내와 상시 체험 가이드입니다.<br>종료된 행사는 목록에서 제외합니다.</p>
+                  </div>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="week">전체 보기</a>
+                </header>
+                <div class="lv-td-filters" data-lv-td-week-filters>
+                  <button type="button" class="is-on" data-lv-td-week="all">전체</button>
+                  <button type="button" data-lv-td-week="today">오늘</button>
+                  <button type="button" data-lv-td-week="weekend">이번 주말</button>
+                  <button type="button" data-lv-td-week="free">무료</button>
+                </div>
+                <div data-lv-td-week></div>
+              </div>
+            </section>
+
+            <section class="lv-td-sec lv-td-sec--band" id="td-places" data-lv-td-reveal>
+              <div class="lv-td-inner">
+                <header class="lv-td-head lv-td-head--row">
+                  <div>
+                    <p class="lv-td-eyebrow">Places</p>
+                    <h2 class="lv-td-title lv-td-title--md">새로운 장소<br>발견</h2>
+                    <p class="lv-td-lead">이미지와 위치 중심. 주소·운영시간은 출처가 확인된 항목만 표시합니다.</p>
+                  </div>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="place">전체 보기</a>
+                </header>
+                <div data-lv-td-places></div>
+              </div>
+            </section>
+
+            <section class="lv-td-sec" id="td-hobby" data-lv-td-reveal>
+              <div class="lv-td-inner">
+                <header class="lv-td-head lv-td-head--row">
+                  <div>
+                    <p class="lv-td-eyebrow">Experiences</p>
+                    <h2 class="lv-td-title lv-td-title--md">새로운 취미와<br>체험</h2>
+                    <p class="lv-td-lead">활동 이미지와 소요 시간 중심. 예약·결제는 탐색 또는 공식 페이지로 연결합니다.</p>
+                  </div>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="experience">전체 보기</a>
+                </header>
+                <div data-lv-td-hobby></div>
+              </div>
+            </section>
+
+            <section class="lv-td-sec lv-td-sec--ink" id="td-learn" data-lv-td-reveal>
+              <div class="lv-td-inner">
+                <header class="lv-td-head lv-td-head--row">
+                  <div>
+                    <p class="lv-td-eyebrow">Learning</p>
+                    <h2 class="lv-td-title lv-td-title--md">새로운 배움과<br>지식</h2>
+                    <p class="lv-td-lead">과정·난이도 중심. 학습 일정은 내 생활에서 관리합니다.</p>
+                  </div>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="learn">전체 보기</a>
+                </header>
+                <div data-lv-td-learn></div>
+              </div>
+            </section>
+
+            <section class="lv-td-sec" id="td-together" data-lv-td-reveal>
+              <div class="lv-td-inner">
+                <header class="lv-td-head lv-td-head--row">
+                  <div>
+                    <p class="lv-td-eyebrow">Together</p>
+                    <h2 class="lv-td-title lv-td-title--md">함께하는<br>새로운 경험</h2>
+                    <p class="lv-td-lead">동행 대상별 활동을 소개합니다. 모임·게시글 관리는 커뮤니티에서 이어갑니다.</p>
+                  </div>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="together">전체 보기</a>
+                </header>
+                <div data-lv-td-together></div>
+              </div>
+            </section>
+
+            <section class="lv-td-sec lv-td-sec--band" id="td-season" data-lv-td-reveal>
+              <div class="lv-td-inner">
+                <header class="lv-td-head lv-td-head--row">
+                  <div>
+                    <p class="lv-td-eyebrow">Seasonal</p>
+                    <h2 class="lv-td-title lv-td-title--md">계절과 시기에<br>맞는 발견</h2>
+                    <p class="lv-td-lead" data-lv-td-season-label>현재 계절 콘텐츠를 우선 표시합니다.</p>
+                  </div>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="season">전체 보기</a>
+                </header>
+                <div data-lv-td-season></div>
+              </div>
+            </section>
+
+            <section class="lv-td-sec" id="td-everyday" data-lv-td-reveal>
+              <div class="lv-td-inner">
+                <header class="lv-td-head lv-td-head--row">
+                  <div>
+                    <p class="lv-td-eyebrow">Everyday</p>
+                    <h2 class="lv-td-title lv-td-title--md">일상을 바꾸는<br>작은 발견</h2>
+                    <p class="lv-td-lead">읽기 편한 에디토리얼. 변경될 수 있는 정보는 출처와 확인 날짜를 표시합니다.</p>
+                  </div>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="life">전체 보기</a>
+                </header>
+                <div data-lv-td-everyday></div>
+              </div>
+            </section>
+
+            <section class="lv-td-sec lv-td-sec--band" id="td-editorial" data-lv-td-reveal>
+              <div class="lv-td-inner">
+                <header class="lv-td-head lv-td-head--row">
+                  <div>
+                    <p class="lv-td-eyebrow">Livon Stories</p>
+                    <h2 class="lv-td-title lv-td-title--md">LIVON이<br>전하는 이야기</h2>
+                    <p class="lv-td-lead">기획형 에디토리얼. 광고·제휴와 구분합니다.</p>
+                  </div>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="editorial">전체 보기</a>
+                </header>
+                <div data-lv-td-editorial></div>
+              </div>
+            </section>
+
+            <section class="lv-td-sec" id="td-detail" data-lv-td-reveal hidden>
+              <div class="lv-td-inner">
+                <div class="lv-td-detail" data-lv-td-detail></div>
+              </div>
+            </section>
+
+            <section class="lv-td-sec lv-td-sec--band" id="td-library" data-lv-td-reveal>
+              <div class="lv-td-inner">
+                <header class="lv-td-head">
+                  <p class="lv-td-eyebrow">Search &amp; Filter</p>
+                  <h2 class="lv-td-title lv-td-title--md">발견 콘텐츠<br>검색</h2>
+                  <p class="lv-td-lead">오늘의 발견 콘텐츠만 검색합니다. 전문가·업체 종합 검색은 탐색에서.</p>
+                </header>
+                <form class="lv-td-search" data-lv-td-form>
+                  <label class="visually-hidden" for="lv-td-q">검색어</label>
+                  <input id="lv-td-q" type="search" name="q" placeholder="키워드로 검색" data-lv-td-q autocomplete="off" />
+                  <button type="submit" class="lv-td-btn">검색</button>
+                </form>
+                <div class="lv-td-filters" data-lv-td-lib-filters>
+                  <button type="button" class="is-on" data-lv-td-cat="all">전체</button>
+                  <button type="button" data-lv-td-cat="place">장소</button>
+                  <button type="button" data-lv-td-cat="experience">체험</button>
+                  <button type="button" data-lv-td-cat="learn">배움</button>
+                  <button type="button" data-lv-td-cat="together">함께</button>
+                  <button type="button" data-lv-td-cat="season">계절</button>
+                  <button type="button" data-lv-td-cat="life">생활</button>
+                  <button type="button" data-lv-td-cat="editorial">이야기</button>
+                  <button type="button" data-lv-td-cat="event">행사</button>
+                </div>
+                <p class="lv-td-note" data-lv-td-count></p>
+                <div data-lv-td-library></div>
+              </div>
+            </section>
+
+            <section class="lv-td-sec" id="td-connect" data-lv-td-reveal>
+              <div class="lv-td-inner">
+                <header class="lv-td-head">
+                  <p class="lv-td-eyebrow">Connected</p>
+                  <h2 class="lv-td-title lv-td-title--md">관심 분야와<br>관련 서비스 연결</h2>
+                  <p class="lv-td-lead">발견은 여기서, 이용·관리는 각 메뉴에서.</p>
+                </header>
+                <div class="lv-connect" data-lv-connect="today"></div>
+                <div class="lv-td-saved-box" data-lv-td-saved></div>
+              </div>
+            </section>
+
+            <section class="lv-td-close" id="td-cta" data-lv-td-reveal>
+              <p class="lv-td-eyebrow">Next</p>
+              <h2 class="lv-td-title">오늘의 작은 발견이,<br>내일의 일상으로.</h2>
+              <div class="lv-td-actions" style="justify-content:center;margin-top:1.75rem">
+                <a class="lv-td-btn" href="#td-pick" data-lv-td-scroll>오늘의 발견 살펴보기</a>
+                <a class="lv-td-btn lv-td-btn--ghost" href="#td-foryou" data-lv-td-scroll>나를 위한 맞춤 발견</a>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="lv-lum" id="life-now" data-lv-screen="life-now" aria-label="내 생활">
+        <div class="lv-ml">
+          <div class="lv-ml__hero" data-lv-ml-hero>
+            <video class="lv-lum__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260324_151826_c7218672-6e92-402c-9e45-f1e0f454bdc4.mp4"></video>
+            <div class="lv-ml__lockup">
+              <div class="lv-ml__veil" aria-hidden="true"></div>
+              <p class="lv-ml__wordmark">MY LIFE</p>
+              <h1 class="lv-ml__slogan">나의 삶을 위한,<br>나만의 생활 공간.</h1>
+              <p class="lv-ml__lead">오늘의 일상부터 앞으로의 계획까지.<br>나에게 중요한 모든 것을<br>한곳에서 관리하세요.</p>
+              <div class="lv-ml__actions">
+                <a class="lv-ml-btn" href="#ml-home" data-lv-ml-scroll>내 생활 시작하기</a>
+                <a class="lv-ml-btn lv-ml-btn--ghost" href="#ml-home" data-lv-ml-scroll>오늘의 나 보기</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="lv-ml__wrap">
+            <nav class="lv-ml-nav" aria-label="내 생활 기능" data-lv-ml-nav>
+              <div class="lv-ml-nav__inner">
+                <p class="lv-ml-nav__label">MANAGE</p>
+                <div class="lv-ml-nav__track">
+                  <a href="#ml-home" data-lv-ml-goto="home" class="is-on">대시보드</a>
+                  <a href="#ml-panel" data-lv-ml-goto="calendar">일정</a>
+                  <a href="#ml-panel" data-lv-ml-goto="todos">할 일</a>
+                  <a href="#ml-panel" data-lv-ml-goto="goals">목표·습관</a>
+                  <a href="#ml-panel" data-lv-ml-goto="money">생활비</a>
+                  <a href="#ml-panel" data-lv-ml-goto="health">건강</a>
+                  <a href="#ml-panel" data-lv-ml-goto="saved">저장함</a>
+                  <a href="#ml-panel" data-lv-ml-goto="experiences">경험</a>
+                  <a href="#ml-panel" data-lv-ml-goto="family">가족</a>
+                  <a href="#ml-panel" data-lv-ml-goto="journal">기록</a>
+                  <a href="#ml-panel" data-lv-ml-goto="projects">전환 준비</a>
+                  <a href="#ml-panel" data-lv-ml-goto="report">리포트</a>
+                  <a href="#ml-panel" data-lv-ml-goto="settings">설정</a>
+                </div>
+              </div>
+            </nav>
+
+            <section class="lv-ml-sec lv-ml-sec--flush" id="ml-home" data-lv-reveal>
+              <div class="lv-ml-dash" data-lv-ml-dash>
+                <header class="lv-ml-head">
+                  <p class="lv-ml-kicker">Today</p>
+                  <h2 class="lv-ml-title" data-lv-ml-today-label>오늘의 나</h2>
+                  <p class="lv-ml-lead">실제 저장한 일정·할 일·목표만 표시합니다. 데이터가 없으면 빈 상태로 안내합니다.</p>
+                </header>
+
+                <div class="lv-ml-stats" data-lv-ml-stats></div>
+
+                <div class="lv-ml-quick" aria-label="빠른 실행">
+                  <p class="lv-ml-kicker">Quick actions</p>
+                  <div class="lv-ml-quick__row">
+                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="event">일정 추가</button>
+                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="todo">할 일 추가</button>
+                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="goal">목표 만들기</button>
+                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="habit">습관 추가</button>
+                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="tx">지출 기록</button>
+                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="journal">생활 기록</button>
+                    <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="experience">경험 계획</button>
+                  </div>
+                  <p class="lv-ml-note">선택값은 이 기기에만 저장됩니다. 계정 동기화·클라우드 백업은 아직 연결되지 않았습니다.</p>
+                </div>
+
+                <div class="lv-ml-split-dash">
+                  <div>
+                    <div class="lv-ml-block-label"><p class="lv-ml-kicker">Timeline</p><h3 class="lv-ml-title lv-ml-title--md">오늘의 일정</h3></div>
+                    <div data-lv-ml-timeline></div>
+                  </div>
+                  <div>
+                    <div class="lv-ml-block-label"><p class="lv-ml-kicker">Tasks</p><h3 class="lv-ml-title lv-ml-title--md">오늘의 할 일</h3></div>
+                    <div data-lv-ml-today-todos></div>
+                  </div>
+                </div>
+
+                <div class="lv-ml-block-label"><p class="lv-ml-kicker">Plans</p><h3 class="lv-ml-title lv-ml-title--md">진행 중인 나의 계획</h3></div>
+                <div data-lv-ml-active-goals></div>
+
+                <div class="lv-ml-block-label"><p class="lv-ml-kicker">Saved</p><h3 class="lv-ml-title lv-ml-title--md">최근 저장한 발견과 서비스</h3></div>
+                <div data-lv-ml-recent-saved></div>
+
+                <div class="lv-ml-modules">
+                  <header class="lv-ml-head">
+                    <p class="lv-ml-kicker">All modules</p>
+                    <h2 class="lv-ml-title lv-ml-title--md">생활의 모든 영역을 한곳에서</h2>
+                  </header>
+                  <div class="lv-ml-module-grid" data-lv-ml-modules></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="lv-ml-sec lv-ml-sec--band" id="ml-panel" data-lv-reveal>
+              <div class="lv-ml-sec__inner">
+                <div class="lv-ml-panel-bar">
+                  <button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" data-lv-ml-goto="home">← 대시보드</button>
+                  <h2 class="lv-ml-title lv-ml-title--md" data-lv-ml-panel-title>관리</h2>
+                  <div data-lv-ml-panel-actions></div>
+                </div>
+                <div class="lv-ml-panel" data-lv-ml-panel></div>
+              </div>
+            </section>
+
+            <section class="lv-ml-close" id="ml-cta" data-lv-reveal>
+              <p class="lv-ml-kicker">Next</p>
+              <h2 class="lv-ml-title">일상을 정리하고,<br>다음을 준비하세요.</h2>
+              <div class="lv-ml-close__acts">
+                <button type="button" class="lv-ml-btn" data-lv-ml-add="event">일정 추가</button>
+                <a class="lv-ml-btn lv-ml-btn--ghost" href="#today">오늘의 발견</a>
+                <a class="lv-ml-btn lv-ml-btn--ghost" href="#life">라이프 스테이지</a>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="lv-lum" id="explore" data-lv-screen="explore" aria-label="탐색">
+        <div class="lv-ex">
+          <section class="lv-ex-film" id="ex-hero" data-lv-ex-hero aria-labelledby="ex-hero-title">
+            <video class="lv-ex-film__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260819_212700_3bb9329b-5c50-4257-a09b-ca85cf3654a3.mp4"></video>
+            <div class="lv-ex-film__lockup">
+              <div class="lv-ex-film__veil" aria-hidden="true"></div>
+              <p class="lv-ex-film__wordmark">EXPLORE</p>
+              <h1 class="lv-ex-film__slogan" id="ex-hero-title">필요한 사람과 서비스,<br>한곳에서.</h1>
+              <p class="lv-ex-film__lead">전문가부터 일상의 작은 도움까지.<br>나에게 필요한 서비스를 찾고 비교해 보세요.</p>
+              <div class="lv-ex-film__actions">
+                <a class="lv-ex-film__btn" href="#ex-home" data-lv-ex-scroll>서비스 검색하기</a>
+                <a class="lv-ex-film__btn lv-ex-film__btn--ghost" href="#ex-home" data-lv-ex-scroll>카테고리 둘러보기</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec lv-ex-sec--flush" id="ex-home" aria-labelledby="ex-search-title">
+            <div class="lv-ex-inner">
+              <header class="lv-ex-head">
+                <p class="lv-ex-eyebrow">Search</p>
+                <h2 class="lv-ex-title lv-ex-title--md" id="ex-search-title">어떤 전문가나 서비스를<br>찾고 있나요?</h2>
+                <p class="lv-ex-lead">등록·확인된 공공 기관·공식 안내·가이드만 검색됩니다. 없는 결과는 가짜로 만들지 않습니다.</p>
+              </header>
+              <form class="lv-ex-search" data-lv-ex-form role="search" aria-label="통합 검색">
+                <div class="lv-ex-search__box">
+                  <label class="visually-hidden" for="lv-ex-q">검색</label>
+                  <input id="lv-ex-q" class="lv-ex-search__input" type="search" name="q" autocomplete="off" placeholder="어떤 전문가나 서비스를 찾고 있나요?" data-lv-ex-input list="lv-ex-ac" />
+                  <datalist id="lv-ex-ac" data-lv-ex-ac></datalist>
+                  <button type="button" class="lv-ex-search__clear" data-lv-ex-clear hidden aria-label="검색어 지우기">×</button>
+                  <button class="lv-ex-search__go" type="submit">검색</button>
+                </div>
+                <ul class="lv-ex-chips" data-lv-ex-suggest aria-label="검색 예시"></ul>
+                <p class="lv-ex-recent" data-lv-ex-recent hidden></p>
+              </form>
+
+              <div class="lv-ex-block-label">
+                <p class="lv-ex-eyebrow">Categories</p>
+                <h3 class="lv-ex-title lv-ex-title--sm">대표 카테고리</h3>
+              </div>
+              <div class="lv-ex-cat-grid" data-lv-ex-cats></div>
+
+              <div class="lv-ex-for-you" data-lv-ex-foryou></div>
+
+              <div class="lv-ex-recent-panel" data-lv-ex-activity></div>
+            </div>
+          </section>
+
+          <nav class="lv-ex-nav" aria-label="탐색 섹션" data-lv-ex-nav>
+            <div class="lv-ex-inner lv-ex-nav__inner">
+              <p class="lv-ex-nav__label">BROWSE</p>
+              <div class="lv-ex-nav__track">
+                <a href="#ex-home" data-lv-ex-goto="home">홈</a>
+                <a href="#ex-results" data-lv-ex-goto="results">결과</a>
+                <a href="#ex-detail" data-lv-ex-goto="detail">상세</a>
+                <a href="#ex-compare" data-lv-ex-goto="compare">비교</a>
+                <a href="#ex-categories">분야</a>
+                <a href="#ex-experts">전문가</a>
+                <a href="#ex-services">서비스</a>
+                <a href="#ex-local">지역</a>
+                <a href="#ex-programs">교육</a>
+                <a href="#ex-housing">주거</a>
+                <a href="#ex-family">가족</a>
+                <a href="#ex-health">건강</a>
+                <a href="#ex-career">커리어</a>
+                <a href="#ex-leisure">여가</a>
+                <a href="#ex-senior">시니어</a>
+                <a href="#ex-commerce">상품</a>
+                <a href="#ex-cta">시작</a>
+              </div>
+            </div>
+          </nav>
+
+          <div class="lv-ex-results" id="ex-results" aria-live="polite" hidden>
+            <div class="lv-ex-inner lv-ex-results__layout">
+              <aside class="lv-ex-side" data-lv-ex-side>
+                <div class="lv-ex-side__head">
+                  <h2 class="lv-ex-title lv-ex-title--sm">필터</h2>
+                  <button type="button" class="lv-ex-btn lv-ex-btn--ghost lv-ex-btn--sm" data-lv-ex-toggle-filters>접기</button>
+                </div>
+                <div class="lv-ex-filters" data-lv-ex-filters></div>
+              </aside>
+              <div class="lv-ex-results__main">
+                <div class="lv-ex-results__bar">
+                  <div>
+                    <h2 class="lv-ex-results__q" data-lv-ex-q>탐색 결과</h2>
+                    <p class="lv-ex-note" data-lv-ex-count></p>
+                  </div>
+                  <div class="lv-ex-results__tools">
+                    <label class="lv-ex-sort">정렬
+                      <select data-lv-ex-sort>
+                        <option value="relevance">관련도순</option>
+                        <option value="newest">최신 확인순</option>
+                        <option value="price">가격 안내순</option>
+                        <option value="region">지역순</option>
+                      </select>
+                    </label>
+                    <button type="button" class="lv-ex-btn lv-ex-btn--ghost lv-ex-btn--sm" data-lv-ex-close-results>닫기</button>
+                  </div>
+                </div>
+                <div class="lv-ex-tabs" data-lv-ex-tabs role="tablist" aria-label="유형별 결과"></div>
+                <div class="lv-ex-results__list" data-lv-ex-list></div>
+              </div>
+            </div>
+          </div>
+
+          <section class="lv-ex-sec lv-ex-sec--band" id="ex-detail" data-lv-ex-detail-sec hidden>
+            <div class="lv-ex-inner" data-lv-ex-detail></div>
+          </section>
+
+          <section class="lv-ex-sec lv-ex-sec--flush" id="ex-categories" data-lv-ex-reveal>
+            <div class="lv-ex-inner">
+              <header class="lv-ex-head">
+                <p class="lv-ex-eyebrow">Categories</p>
+                <h2 class="lv-ex-title lv-ex-title--md">삶의 모든 분야를,<br>하나의 공간에서.</h2>
+                <p class="lv-ex-lead">지금의 나에게 필요한 생활 분야를 선택하고<br>관련 정보와 전문가, 서비스를 찾아보세요.</p>
+              </header>
+              <ul class="lv-ex-rows">
+                <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="교육과 진로" data-lv-ex-type="guide"><span class="lv-ex-row__n">01</span><span><h3 class="lv-ex-row__title">교육과 진로</h3><p class="lv-ex-row__desc">학습, 진학, 전공 탐색, 진로 상담, 자격증, 직업교육, 평생교육</p></span><span class="lv-ex-row__go">탐색 →</span></a></li>
+                <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="커리어와 일" data-lv-ex-type="guide"><span class="lv-ex-row__n">02</span><span><h3 class="lv-ex-row__title">커리어와 일</h3><p class="lv-ex-row__desc">취업, 이직, 경력 전환, 재취업, 직무 교육, 일자리, 창업 관련 생활 정보</p></span><span class="lv-ex-row__go">탐색 →</span></a></li>
+                <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="주거와 생활" data-lv-ex-type="service"><span class="lv-ex-row__n">03</span><span><h3 class="lv-ex-row__title">주거와 생활</h3><p class="lv-ex-row__desc">독립, 자취, 주거 정보, 이사, 청소, 수리, 인테리어, 생활 편의</p></span><span class="lv-ex-row__go">탐색 →</span></a></li>
+                <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="금융과 생활비" data-lv-ex-type="guide"><span class="lv-ex-row__n">04</span><span><h3 class="lv-ex-row__title">금융과 생활비</h3><p class="lv-ex-row__desc">예산 관리, 저축, 보험 정보, 세금 관련 일반 정보, 연금, 은퇴 준비</p></span><span class="lv-ex-row__go">탐색 →</span></a></li>
+                <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="가족과 관계" data-lv-ex-type="service"><span class="lv-ex-row__n">05</span><span><h3 class="lv-ex-row__title">가족과 관계</h3><p class="lv-ex-row__desc">결혼, 동거, 육아, 가족 활동, 가족 상담, 부모님 생활 지원</p></span><span class="lv-ex-row__go">탐색 →</span></a></li>
+                <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="건강과 웰니스" data-lv-ex-type="service"><span class="lv-ex-row__n">06</span><span><h3 class="lv-ex-row__title">건강과 웰니스</h3><p class="lv-ex-row__desc">운동, 건강한 생활, 영양, 심리 상담, 건강검진, 생활 습관</p></span><span class="lv-ex-row__go">탐색 →</span></a></li>
+                <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="여행과 여가" data-lv-ex-type="place"><span class="lv-ex-row__n">07</span><span><h3 class="lv-ex-row__title">여행과 여가</h3><p class="lv-ex-row__desc">여행, 숙박, 전시, 공연, 문화시설, 지역 체험, 취미 활동</p></span><span class="lv-ex-row__go">탐색 →</span></a></li>
+                <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="지역 생활" data-lv-ex-type="place"><span class="lv-ex-row__n">08</span><span><h3 class="lv-ex-row__title">지역 생활</h3><p class="lv-ex-row__desc">지역 행사, 공공시설, 교육시설, 문화시설, 생활 편의 서비스</p></span><span class="lv-ex-row__go">탐색 →</span></a></li>
+                <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="시니어와 돌봄" data-lv-ex-type="service"><span class="lv-ex-row__n">09</span><span><h3 class="lv-ex-row__title">시니어와 돌봄</h3><p class="lv-ex-row__desc">시니어 생활, 평생교육, 사회활동, 생활 지원, 가족 돌봄, Ongil 서비스</p></span><span class="lv-ex-row__go">탐색 →</span></a></li>
+                <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="생활 상품과 쇼핑" data-lv-ex-type="product"><span class="lv-ex-row__n">10</span><span><h3 class="lv-ex-row__title">생활 상품과 쇼핑</h3><p class="lv-ex-row__desc">생활 필수품, 주거용품, 육아용품, 취미용품, 시니어 생활용품</p></span><span class="lv-ex-row__go">탐색 →</span></a></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec lv-ex-sec--band" id="ex-stages" data-lv-ex-reveal>
+            <div class="lv-ex-inner">
+              <header class="lv-ex-head">
+                <p class="lv-ex-eyebrow">Life stages</p>
+                <h2 class="lv-ex-title lv-ex-title--md">삶의 단계마다<br>필요한 선택을 찾아보세요.</h2>
+                <p class="lv-ex-lead">연령대별 추천은 탐색을 돕는 기준이며,<br>다른 연령대의 정보와 서비스 접근을 제한하지 않습니다.</p>
+              </header>
+              <div class="lv-ex-stages">
+                <a class="lv-ex-stage" href="#ex-results" data-lv-ex-cat="10대 학습 진로 취미" data-lv-ex-type="guide"><p class="lv-ex-stage__age">Teens</p><h3 class="lv-ex-stage__name">10대</h3><p class="lv-ex-stage__tags">학습 · 진로 · 교육 · 취미 · 청소년 활동</p></a>
+                <a class="lv-ex-stage" href="#ex-results" data-lv-ex-cat="20대 취업 독립 주거" data-lv-ex-type="guide"><p class="lv-ex-stage__age">20s</p><h3 class="lv-ex-stage__name">20대</h3><p class="lv-ex-stage__tags">취업 · 독립 · 주거 · 생활비 · 자기계발</p></a>
+                <a class="lv-ex-stage" href="#ex-results" data-lv-ex-cat="30대 커리어 가족 육아" data-lv-ex-type="guide"><p class="lv-ex-stage__age">30s</p><h3 class="lv-ex-stage__name">30대</h3><p class="lv-ex-stage__tags">커리어 · 주거 · 가족 · 육아 · 건강</p></a>
+                <a class="lv-ex-stage" href="#ex-results" data-lv-ex-cat="40대 가족 건강 부모님" data-lv-ex-type="guide"><p class="lv-ex-stage__age">40s</p><h3 class="lv-ex-stage__name">40대</h3><p class="lv-ex-stage__tags">가족 · 자녀 교육 · 건강 · 부모님 지원</p></a>
+                <a class="lv-ex-stage" href="#ex-results" data-lv-ex-cat="50대 경력 전환 은퇴 준비" data-lv-ex-type="guide"><p class="lv-ex-stage__age">50s</p><h3 class="lv-ex-stage__name">50대</h3><p class="lv-ex-stage__tags">경력 전환 · 은퇴 준비 · 평생교육 · 여행</p></a>
+                <a class="lv-ex-stage" href="#ex-results" data-lv-ex-cat="60대 은퇴 후 생활" data-lv-ex-type="guide"><p class="lv-ex-stage__age">60s</p><h3 class="lv-ex-stage__name">60대</h3><p class="lv-ex-stage__tags">은퇴 후 생활 · 일자리 · 지역 활동 · 여가</p></a>
+                <a class="lv-ex-stage" href="#ex-results" data-lv-ex-cat="70대 이상 돌봄 생활 편의" data-lv-ex-type="service"><p class="lv-ex-stage__age">70+</p><h3 class="lv-ex-stage__name">70대 이상</h3><p class="lv-ex-stage__tags">생활 편의 · 가족 소통 · 지역 활동 · 돌봄</p></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec" id="ex-experts" data-lv-ex-reveal>
+            <div class="lv-ex-inner">
+              <header class="lv-ex-head">
+                <p class="lv-ex-eyebrow">Experts</p>
+                <h2 class="lv-ex-title lv-ex-title--md">나에게 필요한<br>전문가를 만나보세요.</h2>
+                <p class="lv-ex-lead">삶의 중요한 선택부터 일상의 작은 고민까지.<br>필요한 분야의 전문가를 찾아보고 상담과 서비스를 연결해 보세요.</p>
+              </header>
+              <div class="lv-ex-domains">
+                <article class="lv-ex-domain">
+                  <div><h3>교육·진로 전문가</h3><p>진로 상담, 학습 코치, 진학·전공 상담, 자격증·외국어 강사</p></div>
+                  <ul class="lv-ex-pills">
+                    <li><button type="button" data-lv-ex-cat="진로 상담사" data-lv-ex-type="expert">진로 상담사</button></li>
+                    <li><button type="button" data-lv-ex-cat="학습 코치" data-lv-ex-type="expert">학습 코치</button></li>
+                    <li><button type="button" data-lv-ex-cat="입시 진학 상담" data-lv-ex-type="expert">입시·진학</button></li>
+                    <li><button type="button" data-lv-ex-cat="자격증 강사" data-lv-ex-type="expert">자격증 강사</button></li>
+                  </ul>
+                </article>
+                <article class="lv-ex-domain">
+                  <div><h3>커리어 전문가</h3><p>취업·이직 컨설팅, 면접 코칭, 직무 멘토, 중장년 재취업</p></div>
+                  <ul class="lv-ex-pills">
+                    <li><button type="button" data-lv-ex-cat="취업 컨설턴트" data-lv-ex-type="expert">취업 컨설턴트</button></li>
+                    <li><button type="button" data-lv-ex-cat="경력 전환 코치" data-lv-ex-type="expert">경력 전환</button></li>
+                    <li><button type="button" data-lv-ex-cat="이력서 면접 전문가" data-lv-ex-type="expert">이력서·면접</button></li>
+                    <li><button type="button" data-lv-ex-cat="재취업 전문가" data-lv-ex-type="expert">재취업</button></li>
+                  </ul>
+                </article>
+                <article class="lv-ex-domain">
+                  <div><h3>주거·생활 전문가</h3><p>중개, 이사, 정리수납, 인테리어, 청소·수리 서비스</p></div>
+                  <ul class="lv-ex-pills">
+                    <li><button type="button" data-lv-ex-cat="공인중개사" data-lv-ex-type="expert">공인중개사</button></li>
+                    <li><button type="button" data-lv-ex-cat="이사 전문가" data-lv-ex-type="expert">이사</button></li>
+                    <li><button type="button" data-lv-ex-cat="정리수납 전문가" data-lv-ex-type="expert">정리수납</button></li>
+                    <li><button type="button" data-lv-ex-cat="인테리어 전문가" data-lv-ex-type="expert">인테리어</button></li>
+                  </ul>
+                </article>
+                <article class="lv-ex-domain">
+                  <div><h3>금융·법률·세무</h3><p>자격·면허 확인이 필요한 분야입니다. 확인되지 않은 전문가에게 검증 배지를 부여하지 않습니다.</p></div>
+                  <ul class="lv-ex-pills">
+                    <li><button type="button" data-lv-ex-cat="재무 상담" data-lv-ex-type="expert">재무 상담</button></li>
+                    <li><button type="button" data-lv-ex-cat="세무사" data-lv-ex-type="expert">세무사</button></li>
+                    <li><button type="button" data-lv-ex-cat="변호사" data-lv-ex-type="expert">변호사</button></li>
+                    <li><button type="button" data-lv-ex-cat="노무사" data-lv-ex-type="expert">노무사</button></li>
+                  </ul>
+                </article>
+                <article class="lv-ex-domain">
+                  <div><h3>가족·육아 · 건강 · 시니어</h3><p>육아·가족 상담, 심리·영양·운동, 시니어 생활·돌봄 전문가</p></div>
+                  <ul class="lv-ex-pills">
+                    <li><button type="button" data-lv-ex-cat="육아 상담" data-lv-ex-type="expert">육아 상담</button></li>
+                    <li><button type="button" data-lv-ex-cat="심리 상담" data-lv-ex-type="expert">심리 상담</button></li>
+                    <li><button type="button" data-lv-ex-cat="운동 지도" data-lv-ex-type="expert">운동 지도</button></li>
+                    <li><button type="button" data-lv-ex-cat="시니어 돌봄" data-lv-ex-type="expert">시니어·돌봄</button></li>
+                  </ul>
+                </article>
+              </div>
+              <div class="lv-ex-empty" style="margin-top:2rem">
+                <span class="lv-ex-badge lv-ex-badge--soon">프로필 · 예약 연동 예정</span>
+                <h3>전문가 상세 프로필과 상담 예약</h3>
+                <p>프로필(경력·자격·상담 방식·비용·후기)과 예약·결제는 전문가 검증·운영 정책과 백엔드 연동 후 활성화됩니다. 현재는 분야별 탐색 구조와 관심 저장만 이용할 수 있습니다.</p>
+                <div class="lv-ex-actions">
+                  <button type="button" class="lv-ex-btn" data-lv-ex-cat="전문가" data-lv-ex-type="expert">전문가 검색 열기</button>
+                  <button type="button" class="lv-ex-btn lv-ex-btn--ghost" data-lv-ex-save="전문가 찾기">관심 저장</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec lv-ex-sec--band" id="ex-consult" data-lv-ex-reveal>
+            <div class="lv-ex-inner lv-ex-dr">
+              <div>
+                <p class="lv-ex-eyebrow">Consultation</p>
+                <h2 class="lv-ex-title lv-ex-title--md">상담과 예약은<br>확인된 이후에만.</h2>
+                <p class="lv-ex-lead">화상·음성·채팅·방문·현장 서비스·그룹 클래스까지<br>상담 방식을 선택할 수 있는 흐름을 설계합니다.</p>
+                <ol class="lv-ex-steps">
+                  <li><div><h3>전문가 · 서비스 선택</h3><p>분야와 지역, 상담 방식을 고릅니다.</p></div></li>
+                  <li><div><h3>일정 · 비용 · 규정 확인</h3><p>가능 시간과 취소·환불 규정을 확인합니다.</p></div></li>
+                  <li><div><h3>신청 · 결제 · 확정</h3><p>실제 결제·예약 시스템이 연결된 경우에만 확정 상태가 표시됩니다.</p></div></li>
+                  <li><div><h3>내 생활 반영 · 후기</h3><p>확정된 일정만 내 생활에 반영하고, 이용 확인 후 후기를 작성합니다.</p></div></li>
+                </ol>
+                <p class="lv-ex-note"><strong>현재 상태:</strong> 상담·예약·결제 UI 구조만 준비되어 있으며, 실제 예약 확정·결제는 운영되지 않습니다.</p>
+              </div>
+              <aside class="lv-ex-meta">
+                <dl><dt>Mode</dt><dd>온라인 · 오프라인</dd></dl>
+                <dl><dt>Status</dt><dd>구조 설계 완료</dd></dl>
+                <dl><dt>Next</dt><dd>자격 검증 · 예약 API</dd></dl>
+                <dl><dt>Honesty</dt><dd>가짜 확정 배지 없음</dd></dl>
+              </aside>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec" id="ex-services" data-lv-ex-reveal>
+            <div class="lv-ex-inner">
+              <div class="lv-ex-split">
+                <div>
+                  <p class="lv-ex-eyebrow">Services</p>
+                  <h2 class="lv-ex-title lv-ex-title--md">일상에 필요한 서비스도,<br>LIVON에서.</h2>
+                  <p class="lv-ex-lead">주거 · 가족 · 개인 생활 · 시니어 · 지역 생활 서비스를<br>검색하고 비교할 수 있는 마켓플레이스 구조로 확장합니다.</p>
+                  <ul class="lv-ex-rows" style="margin-top:1.75rem">
+                    <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="주거 서비스" data-lv-ex-type="service"><span class="lv-ex-row__n">01</span><span><h3 class="lv-ex-row__title">주거 서비스</h3><p class="lv-ex-row__desc">이사, 청소, 정리수납, 수리, 인테리어, 가전 설치</p></span><span class="lv-ex-row__go">→</span></a></li>
+                    <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="가족 서비스" data-lv-ex-type="service"><span class="lv-ex-row__n">02</span><span><h3 class="lv-ex-row__title">가족 서비스</h3><p class="lv-ex-row__desc">육아 지원, 가족 활동, 교육, 상담, 생활 지원</p></span><span class="lv-ex-row__go">→</span></a></li>
+                    <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="개인 생활 서비스" data-lv-ex-type="service"><span class="lv-ex-row__n">03</span><span><h3 class="lv-ex-row__title">개인 생활 서비스</h3><p class="lv-ex-row__desc">운동, 취미 클래스, 자기계발, 생활 코칭</p></span><span class="lv-ex-row__go">→</span></a></li>
+                    <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="시니어 생활 서비스" data-lv-ex-type="service"><span class="lv-ex-row__n">04</span><span><h3 class="lv-ex-row__title">시니어 생활 서비스</h3><p class="lv-ex-row__desc">생활 편의, 방문 지원, 디지털 교육, 이동 지원</p></span><span class="lv-ex-row__go">→</span></a></li>
+                    <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="지역 생활 서비스" data-lv-ex-type="place"><span class="lv-ex-row__n">05</span><span><h3 class="lv-ex-row__title">지역 생활 서비스</h3><p class="lv-ex-row__desc">지역 시설, 공공서비스, 생활 편의 업체, 지역 프로그램</p></span><span class="lv-ex-row__go">→</span></a></li>
+                  </ul>
+                </div>
+                <div class="lv-ex-media">
+                  <img src="/livon/assets/topics/housing.jpg" alt="" width="1400" height="1050" loading="lazy" />
+                  <span class="lv-ex-media__cap">주거 · 홈서비스 · 생활 편의</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec lv-ex-sec--ink" id="ex-local" data-lv-ex-reveal>
+            <div class="lv-ex-inner">
+              <header class="lv-ex-head">
+                <p class="lv-ex-eyebrow">Nearby</p>
+                <h2 class="lv-ex-title lv-ex-title--md">가까운 곳에서 시작되는<br>새로운 생활.</h2>
+                <p class="lv-ex-lead">위치 권한 없이도 지역을 직접 입력해 탐색할 수 있습니다.<br>지도에는 실제 위치가 확인된 장소만 표시합니다.</p>
+              </header>
+              <div class="lv-ex-empty" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.18)">
+                <span class="lv-ex-badge" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);color:#ccc">지도 · 위치 API 연동 예정</span>
+                <h3 style="color:#fff">지역 검색 · 지도 / 목록 전환</h3>
+                <p style="color:#a8a8a8">거리별 검색, 문화시설, 평생교육 기관, 지역 행사, 공공시설, 시니어 복지시설 탐색 UI를 준비합니다. 허위 핀이나 가짜 업체 위치를 표시하지 않습니다.</p>
+                <div class="lv-ex-actions">
+                  <button type="button" class="lv-ex-btn lv-ex-btn--light" data-lv-ex-cat="지역 생활 서비스" data-lv-ex-type="place">지역 키워드로 검색</button>
+                  <button type="button" class="lv-ex-btn lv-ex-btn--outline-light" data-lv-ex-save="지역 서비스">관심 저장</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec" id="ex-programs" data-lv-ex-reveal>
+            <div class="lv-ex-inner">
+              <header class="lv-ex-head">
+                <p class="lv-ex-eyebrow">Education</p>
+                <h2 class="lv-ex-title lv-ex-title--md">새로운 배움은,<br>언제나 시작할 수 있으니까.</h2>
+                <p class="lv-ex-lead">진로·직업교육·자격증·외국어·디지털·취미·평생교육·재취업·시니어 교육</p>
+              </header>
+              <div class="lv-ex-mosaic">
+                <a class="lv-ex-tile" style="background-image:url(/livon/assets/topics/students.jpg)" href="#ex-results" data-lv-ex-cat="평생교육" data-lv-ex-type="program"><span>Lifelong</span><strong>평생교육 · 재취업</strong><p>수강 신청 시스템이 없으면 교육기관 공식 페이지로 연결합니다.</p></a>
+                <a class="lv-ex-tile" style="background-image:url(/livon/assets/topics/study.jpg)" href="#ex-results" data-lv-ex-cat="자격증" data-lv-ex-type="program"><span>Certificate</span><strong>자격증 · 직업교육</strong></a>
+                <a class="lv-ex-tile" style="background-image:url(/livon/assets/topics/hobby.jpg)" href="#ex-results" data-lv-ex-cat="취미 클래스" data-lv-ex-type="program"><span>Class</span><strong>취미 · 디지털 교육</strong></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec lv-ex-sec--band" id="ex-housing" data-lv-ex-reveal>
+            <div class="lv-ex-inner lv-ex-split is-flip">
+              <div class="lv-ex-media">
+                <img src="/livon/assets/topics/housing.jpg" alt="" width="1400" height="1050" loading="lazy" />
+                <span class="lv-ex-media__cap">자취 · 이사 · 인테리어</span>
+              </div>
+              <div>
+                <p class="lv-ex-eyebrow">Housing</p>
+                <h2 class="lv-ex-title lv-ex-title--md">새로운 공간에서<br>시작되는 새로운 일상.</h2>
+                <p class="lv-ex-lead">자취 준비, 주거 정보, 이사, 청소·정리수납, 인테리어, 가전 설치·수리, 주거 전문가 상담.</p>
+                <p class="lv-ex-note"><strong>부동산 매물·가격</strong>은 실제 확인된 데이터만 사용하며, 업데이트 날짜와 출처를 표시합니다. 현재 매물 DB는 연결되어 있지 않습니다.</p>
+                <div class="lv-ex-actions">
+                  <button type="button" class="lv-ex-btn" data-lv-ex-cat="자취 준비" data-lv-ex-type="guide">자취 준비 탐색</button>
+                  <button type="button" class="lv-ex-btn lv-ex-btn--ghost" data-lv-ex-cat="이사 서비스" data-lv-ex-type="service">이사 서비스</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec" id="ex-family" data-lv-ex-reveal>
+            <div class="lv-ex-inner">
+              <header class="lv-ex-head">
+                <p class="lv-ex-eyebrow">Family</p>
+                <h2 class="lv-ex-title lv-ex-title--md">소중한 사람들과<br>함께하는 삶을 위해.</h2>
+                <p class="lv-ex-lead">결혼·동거 준비, 가족 활동, 육아·부모 교육, 가족 상담, 아동 교육, 가족 여행, 부모님 생활 지원.</p>
+              </header>
+              <div class="lv-ex-dr">
+                <ul class="lv-ex-pills">
+                  <li><button type="button" data-lv-ex-cat="육아 전문가" data-lv-ex-type="expert">육아 전문가</button></li>
+                  <li><button type="button" data-lv-ex-cat="가족 상담" data-lv-ex-type="expert">가족 상담</button></li>
+                  <li><button type="button" data-lv-ex-cat="가족 여행" data-lv-ex-type="place">가족 여행</button></li>
+                  <li><button type="button" data-lv-ex-cat="부모님 돌봄" data-lv-ex-type="service">부모님 돌봄</button></li>
+                  <li><button type="button" data-lv-ex-cat="부모 교육" data-lv-ex-type="program">부모 교육</button></li>
+                </ul>
+                <aside class="lv-ex-meta">
+                  <dl><dt>Privacy</dt><dd>미성년·상담 별도 권한</dd></dl>
+                  <dl><dt>Link</dt><dd>내 생활 가족 공유</dd></dl>
+                  <dl><dt>Status</dt><dd>카테고리 UI 준비</dd></dl>
+                </aside>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec lv-ex-sec--band" id="ex-health" data-lv-ex-reveal>
+            <div class="lv-ex-inner lv-ex-split">
+              <div>
+                <p class="lv-ex-eyebrow">Wellness</p>
+                <h2 class="lv-ex-title lv-ex-title--md">건강한 일상을 위한<br>다양한 선택.</h2>
+                <p class="lv-ex-lead">운동, 건강검진·의료기관 정보, 영양, 심리 상담, 생활 습관, 중장년·시니어 건강 프로그램.</p>
+                <p class="lv-ex-note">LIVON의 생활 정보와 전문 의료 서비스는 구분합니다. 의료기관·의료 서비스는 확인된 정보와 자격·면허를 기반으로만 제공합니다.</p>
+                <div class="lv-ex-actions">
+                  <button type="button" class="lv-ex-btn" data-lv-ex-cat="심리 상담" data-lv-ex-type="expert">심리 상담</button>
+                  <button type="button" class="lv-ex-btn lv-ex-btn--ghost" data-lv-ex-cat="운동 피트니스" data-lv-ex-type="service">운동·피트니스</button>
+                </div>
+              </div>
+              <div class="lv-ex-media">
+                <img src="/livon/assets/topics/fitness.jpg" alt="" width="1400" height="1050" loading="lazy" />
+                <span class="lv-ex-media__cap">웰니스 · 운동 · 생활 습관</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec" id="ex-career" data-lv-ex-reveal>
+            <div class="lv-ex-inner">
+              <header class="lv-ex-head">
+                <p class="lv-ex-eyebrow">Career</p>
+                <h2 class="lv-ex-title lv-ex-title--md">새로운 시작을<br>준비하는 모든 순간에.</h2>
+                <p class="lv-ex-lead">진로·취업 상담, 이력서·면접, 경력 전환, 직업교육, 재취업, 은퇴 준비, 인생 2막 프로그램.</p>
+              </header>
+              <ul class="lv-ex-rows">
+                <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="진로 상담" data-lv-ex-type="expert"><span class="lv-ex-row__n">01</span><span><h3 class="lv-ex-row__title">진로 및 취업 상담</h3><p class="lv-ex-row__desc">전문가 찾기와 상담 신청 구조</p></span><span class="lv-ex-row__go">→</span></a></li>
+                <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="경력 전환" data-lv-ex-type="program"><span class="lv-ex-row__n">02</span><span><h3 class="lv-ex-row__title">경력 전환 · 재취업</h3><p class="lv-ex-row__desc">교육 프로그램과 준비 체크리스트</p></span><span class="lv-ex-row__go">→</span></a></li>
+                <li><a class="lv-ex-row" href="#ex-results" data-lv-ex-cat="은퇴 준비" data-lv-ex-type="guide"><span class="lv-ex-row__n">03</span><span><h3 class="lv-ex-row__title">은퇴 준비 · 인생 2막</h3><p class="lv-ex-row__desc">생활 정보와 프로그램 탐색</p></span><span class="lv-ex-row__go">→</span></a></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec lv-ex-sec--band" id="ex-leisure" data-lv-ex-reveal>
+            <div class="lv-ex-inner">
+              <header class="lv-ex-head">
+                <p class="lv-ex-eyebrow">Leisure</p>
+                <h2 class="lv-ex-title lv-ex-title--md">새로운 경험으로<br>일상을 더 풍요롭게.</h2>
+                <p class="lv-ex-lead">오늘의 발견이 활동을 제안한다면, 탐색은 조건을 정해 직접 찾는 공간입니다.</p>
+              </header>
+              <div class="lv-ex-mosaic">
+                <a class="lv-ex-tile" style="background-image:url(/livon/assets/topics/travel.jpg)" href="#ex-results" data-lv-ex-cat="가족 여행" data-lv-ex-type="place"><span>Travel</span><strong>여행 · 숙박</strong><p>공식 예약 페이지 연결 방식으로 확장합니다.</p></a>
+                <a class="lv-ex-tile" style="background-image:url(/livon/assets/topics/museum.jpg)" href="#ex-results" data-lv-ex-cat="전시 공연" data-lv-ex-type="place"><span>Culture</span><strong>전시 · 공연</strong></a>
+                <a class="lv-ex-tile" style="background-image:url(/livon/assets/topics/hobby.jpg)" href="#ex-results" data-lv-ex-cat="취미 클래스" data-lv-ex-type="program"><span>Hobby</span><strong>취미 · 지역 체험</strong></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec" id="ex-senior" data-lv-ex-reveal>
+            <div class="lv-ex-inner lv-ex-split">
+              <div>
+                <p class="lv-ex-eyebrow">Senior · Ongil</p>
+                <h2 class="lv-ex-title lv-ex-title--md">새로운 삶의 단계에도,<br>필요한 서비스를 가까이.</h2>
+                <p class="lv-ex-lead">시니어 생활 정보, 평생교육, 여가, 디지털 교육, 생활 편의, 가족 지원, 돌봄·복지 정보.</p>
+                <p class="lv-ex-note"><strong>역할 구분:</strong> LIVON은 생애주기 생활 서비스 탐색·연결, Ongil은 시니어 생활·돌봄 특화 서비스입니다.</p>
+                <div class="lv-ex-actions">
+                  <a class="lv-ex-btn" href="/ko/ongil/">Ongil 살펴보기 →</a>
+                  <button type="button" class="lv-ex-btn lv-ex-btn--ghost" data-lv-ex-cat="시니어 생활" data-lv-ex-type="service">시니어 서비스 탐색</button>
+                </div>
+              </div>
+              <div class="lv-ex-media">
+                <img src="/livon/assets/topics/senior.jpg" alt="" width="1400" height="1050" loading="lazy" />
+                <span class="lv-ex-media__cap">시니어 생활 · 가족과 연결</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec lv-ex-sec--band" id="ex-commerce" data-lv-ex-reveal>
+            <div class="lv-ex-inner">
+              <header class="lv-ex-head">
+                <p class="lv-ex-eyebrow">Commerce</p>
+                <h2 class="lv-ex-title lv-ex-title--md">지금의 생활에<br>필요한 상품까지.</h2>
+                <p class="lv-ex-lead">자취·주거용품, 가전, 육아·가족, 건강·운동, 여행, 취미·교육, 시니어 생활용품.</p>
+              </header>
+              <div class="lv-ex-empty">
+                <span class="lv-ex-badge lv-ex-badge--soon">외부 판매처 연결 예정</span>
+                <h3>장바구니·결제·배송은 구축 후 운영</h3>
+                <p>현재는 상품 카테고리 구조와 관심 저장을 제공하며, 실제 판매·결제·배송 전에는 외부 판매처 연결 방식으로 확장합니다. 허위 재고·가격을 표시하지 않습니다.</p>
+                <div class="lv-ex-actions">
+                  <button type="button" class="lv-ex-btn" data-lv-ex-cat="자취 주거용품" data-lv-ex-type="product">주거용품 탐색</button>
+                  <button type="button" class="lv-ex-btn lv-ex-btn--ghost" data-lv-ex-save="생활 상품">관심 저장</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec" id="ex-compare" data-lv-ex-reveal>
+            <div class="lv-ex-inner">
+              <header class="lv-ex-head">
+                <p class="lv-ex-eyebrow">Compare</p>
+                <h2 class="lv-ex-title lv-ex-title--md">같은 유형끼리,<br>조건을 나란히.</h2>
+                <p class="lv-ex-lead">동일 카테고리 2~3개만 비교합니다. 없는 값은 채우지 않으며, LIVON이 ‘최고’를 임의 평가하지 않습니다.</p>
+              </header>
+              <div data-lv-ex-compare></div>
+              <p class="lv-ex-note"><strong>후기:</strong> 실제 등록 후기가 있을 때만 표시합니다. 허위 평점을 생성하지 않습니다.</p>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec lv-ex-sec--band" id="ex-recommend" data-lv-ex-reveal>
+            <div class="lv-ex-inner">
+              <header class="lv-ex-head">
+                <p class="lv-ex-eyebrow">For you</p>
+                <h2 class="lv-ex-title lv-ex-title--md">지금의 관심에 맞는<br>서비스.</h2>
+                <p class="lv-ex-lead">관심사·스테이지·최근 탐색을 규칙으로 추천합니다. AI 추천이라고 표시하지 않습니다.</p>
+              </header>
+              <div data-lv-ex-recommend></div>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec" id="ex-mylife" data-lv-ex-reveal>
+            <div class="lv-ex-inner">
+              <header class="lv-ex-head">
+                <p class="lv-ex-eyebrow">My Life sync</p>
+                <h2 class="lv-ex-title lv-ex-title--md">탐색에서 발견한 것을<br>내 생활로.</h2>
+                <p class="lv-ex-lead">저장한 정보, 관심 전문가·서비스·프로그램, 체크리스트를 내 생활과 연결합니다. 실제 예약·신청이 완료된 경우에만 이용 내역을 표시합니다.</p>
+              </header>
+              <div class="lv-ex-actions">
+                <a class="lv-ex-btn" href="#life-now">내 생활에서 관심 목록 보기</a>
+                <a class="lv-ex-btn lv-ex-btn--ghost" href="#ex-experts">전문가 찾기</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ex-sec lv-ex-sec--ink lv-ex-final" id="ex-cta" data-lv-ex-reveal>
+            <div class="lv-ex-inner">
+              <p class="lv-ex-eyebrow">Start</p>
+              <h2 class="lv-ex-title">삶의 모든 선택을,<br>LIVON에서 시작하세요.</h2>
+              <p class="lv-ex-lead">나에게 필요한 정보와 전문가,<br>다양한 생활 서비스와 새로운 경험까지.<br><br>지금의 삶에 필요한 모든 것을<br>LIVON에서 발견하고 연결해 보세요.</p>
+              <div class="lv-ex-actions">
+                <a class="lv-ex-btn lv-ex-btn--light" href="#ex-experts">나에게 필요한 전문가 찾기</a>
+                <a class="lv-ex-btn lv-ex-btn--outline-light" href="#ex-services">생활 서비스 둘러보기</a>
+                <a class="lv-ex-btn lv-ex-btn--outline-light" href="#life-now">내 생활에서 관심 목록 보기</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+
+      <section class="lv-cm" id="community" data-lv-screen="community" aria-label="커뮤니티">
+        <div class="lv-cm">
+          <section class="lv-cm-film" id="cm-hero" data-lv-cm-hero aria-labelledby="cm-hero-title">
+            <video class="lv-cm-film__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"></video>
+            <div class="lv-cm-film__lockup">
+              <div class="lv-cm-film__veil" aria-hidden="true"></div>
+              <p class="lv-cm-film__wordmark">COMMUNITY</p>
+              <h1 class="lv-cm-film__slogan" id="cm-hero-title">서로의 이야기가 모여,<br>새로운 일상이 되다.</h1>
+              <p class="lv-cm-film__lead">일상의 작은 질문부터 새로운 도전까지.<br>비슷한 관심사를 가진 사람들과<br>경험을 나누고 함께해 보세요.</p>
+              <div class="lv-cm-film__actions">
+                <a class="lv-cm-film__btn" href="#cm-home" data-lv-cm-scroll>이야기 보러가기</a>
+                <a class="lv-cm-film__btn lv-cm-film__btn--ghost" href="#cm-home" data-lv-cm-compose="story">글 작성하기</a>
+              </div>
+            </div>
+          </section>
+
+          <nav class="lv-cm-nav" aria-label="커뮤니티 섹션">
+            <div class="lv-cm-inner lv-cm-nav__inner">
+              <p class="lv-cm-nav__label">BROWSE</p>
+              <div class="lv-cm-nav__track">
+                <a href="#cm-home">피드</a>
+                <a href="#cm-communities">커뮤니티</a>
+                <a href="#cm-stages">생애주기</a>
+                <a href="#cm-interests">관심사</a>
+                <a href="#cm-local">동네</a>
+                <a href="#cm-qa">질문</a>
+                <a href="#cm-groups">모임</a>
+                <a href="#cm-programs">챌린지</a>
+                <a href="#cm-mine">나의</a>
+                <a href="#cm-safe">안전</a>
+                <a href="#cm-cta">시작</a>
+              </div>
+            </div>
+          </nav>
+
+          <section class="lv-cm-sec lv-cm-sec--flush" id="cm-home" data-lv-cm-reveal>
+            <div class="lv-cm-inner lv-cm-home">
+              <header class="lv-cm-head lv-cm-head--tight">
+                <p class="lv-cm-eyebrow">Feed</p>
+                <h2 class="lv-cm-title lv-cm-title--md">오늘은 어떤 이야기를<br>나누고 싶나요?</h2>
+              </header>
+
+              <form class="lv-cm-search" data-lv-cm-form role="search" aria-label="커뮤니티 검색">
+                <div class="lv-cm-search__box">
+                  <label class="visually-hidden" for="lv-cm-q">관심사, 지역, 질문 검색</label>
+                  <input id="lv-cm-q" class="lv-cm-search__input" type="search" placeholder="관심사, 지역, 질문을 검색해 보세요." data-lv-cm-q autocomplete="off" />
+                  <button type="button" class="lv-cm-search__clear" data-lv-cm-clear hidden aria-label="검색어 지우기">×</button>
+                  <button class="lv-cm-search__go" type="submit">검색</button>
+                </div>
+              </form>
+
+              <div class="lv-cm-compose-bar" aria-label="글쓰기">
+                <p class="lv-cm-compose-bar__lead"><strong>오늘은 어떤 이야기를 나누고 싶나요?</strong></p>
+                <div class="lv-cm-actions">
+                  <button type="button" class="lv-cm-btn lv-cm-btn--dark" data-lv-cm-compose="question">질문하기</button>
+                  <button type="button" class="lv-cm-btn" data-lv-cm-compose="experience">경험 공유하기</button>
+                  <button type="button" class="lv-cm-btn lv-cm-btn--ghost" data-lv-cm-compose="review">후기 작성하기</button>
+                  <button type="button" class="lv-cm-btn lv-cm-btn--ghost" data-lv-cm-compose="story">일반 글쓰기</button>
+                </div>
+                <p class="lv-cm-note">글·댓글·좋아요는 이 기기에 저장됩니다. 계정 동기화·푸시 알림은 아직 연결되지 않았습니다.</p>
+              </div>
+
+              <div class="lv-cm-home__layout">
+                <div class="lv-cm-feed-col">
+                  <div class="lv-cm-tabs" role="tablist" aria-label="피드 탭" data-lv-cm-tabs></div>
+                  <div class="lv-cm-search-meta" data-lv-cm-search-meta hidden></div>
+                  <div class="lv-cm-feed" data-lv-cm-feed></div>
+                </div>
+                <aside class="lv-cm-side" data-lv-cm-side aria-label="보조 탐색"></aside>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-cm-sec lv-cm-sec--band" id="cm-detail" data-lv-cm-detail-sec hidden>
+            <div class="lv-cm-inner" data-lv-cm-detail></div>
+          </section>
+
+          <section class="lv-cm-sec" id="cm-communities" data-lv-cm-reveal>
+            <div class="lv-cm-inner">
+              <header class="lv-cm-head">
+                <p class="lv-cm-eyebrow">Communities</p>
+                <h2 class="lv-cm-title lv-cm-title--md">관심사로 모이는<br>커뮤니티.</h2>
+                <p class="lv-cm-lead">회원·게시글 수는 이 기기에 저장된 실제 데이터로 계산합니다.</p>
+              </header>
+              <div class="lv-cm-comm-grid" data-lv-cm-comm-list></div>
+            </div>
+          </section>
+
+          <div class="lv-cm-modal" data-lv-cm-modal hidden>
+            <button type="button" class="lv-cm-modal__backdrop" data-lv-cm-modal-close aria-label="닫기"></button>
+            <div class="lv-cm-modal__panel" role="dialog" aria-modal="true" aria-labelledby="lv-cm-modal-title">
+              <button type="button" class="lv-cm-modal__close" data-lv-cm-modal-close aria-label="닫기">×</button>
+              <h2 id="lv-cm-modal-title" data-lv-cm-modal-title>글쓰기</h2>
+              <form class="lv-cm-form" data-lv-cm-write novalidate></form>
+            </div>
+          </div>
+
+          <section class="lv-cm-sec lv-cm-sec--band" id="cm-stages" data-lv-cm-reveal>
+            <div class="lv-cm-inner">
+              <header class="lv-cm-head">
+                <p class="lv-cm-eyebrow">Life Stage Community</p>
+                <h2 class="lv-cm-title lv-cm-title--md">삶의 단계마다,<br>나누고 싶은 이야기가 있습니다.</h2>
+                <p class="lv-cm-lead">연령대별 분류는 탐색을 돕는 기준이며,<br>성인 사용자는 다른 생애주기도 자유롭게 둘러볼 수 있습니다.</p>
+              </header>
+              <div class="lv-cm-stages">
+                <a class="lv-cm-stage" href="#cm-home" data-lv-cm-join="stage-10" data-lv-cm-label="10대 커뮤니티" style="--cm-stage-img:url(/livon/assets/topics/students.jpg)">
+                  <span class="lv-cm-stage__media" aria-hidden="true"></span>
+                  <p class="lv-cm-stage__age">01 · Teens</p>
+                  <h3 class="lv-cm-stage__name">10대 — 성장과 발견</h3>
+                  <p class="lv-cm-stage__tags">학습 · 진로 · 학교생활 · 취미 · 청소년 활동</p>
+                  <span class="lv-cm-stage__go">관심 등록 →</span>
+                </a>
+                <a class="lv-cm-stage" href="#cm-home" data-lv-cm-join="stage-20" data-lv-cm-label="20대 커뮤니티" style="--cm-stage-img:url(/livon/assets/topics/twenties.jpg)">
+                  <span class="lv-cm-stage__media" aria-hidden="true"></span>
+                  <p class="lv-cm-stage__age">02 · 20s</p>
+                  <h3 class="lv-cm-stage__name">20대 — 독립과 도전</h3>
+                  <p class="lv-cm-stage__tags">취업 · 자취 · 생활비 · 연애 · 여행</p>
+                  <span class="lv-cm-stage__go">관심 등록 →</span>
+                </a>
+                <a class="lv-cm-stage" href="#cm-home" data-lv-cm-join="stage-30" data-lv-cm-label="30대 커뮤니티" style="--cm-stage-img:url(/livon/assets/topics/family.jpg)">
+                  <span class="lv-cm-stage__media" aria-hidden="true"></span>
+                  <p class="lv-cm-stage__age">03 · 30s</p>
+                  <h3 class="lv-cm-stage__name">30대 — 성장과 균형</h3>
+                  <p class="lv-cm-stage__tags">커리어 · 주거 · 가족 · 육아 · 자기계발</p>
+                  <span class="lv-cm-stage__go">관심 등록 →</span>
+                </a>
+                <a class="lv-cm-stage" href="#cm-home" data-lv-cm-join="stage-40" data-lv-cm-label="40대 커뮤니티" style="--cm-stage-img:url(/livon/assets/topics/childcare.jpg)">
+                  <span class="lv-cm-stage__media" aria-hidden="true"></span>
+                  <p class="lv-cm-stage__age">04 · 40s</p>
+                  <h3 class="lv-cm-stage__name">40대 — 삶의 확장</h3>
+                  <p class="lv-cm-stage__tags">가족 · 건강 · 부모님 지원 · 지역 활동</p>
+                  <span class="lv-cm-stage__go">관심 등록 →</span>
+                </a>
+                <a class="lv-cm-stage" href="#cm-home" data-lv-cm-join="stage-50" data-lv-cm-label="50대 커뮤니티" style="--cm-stage-img:url(/livon/assets/topics/fifties.jpg)">
+                  <span class="lv-cm-stage__media" aria-hidden="true"></span>
+                  <p class="lv-cm-stage__age">05 · 50s</p>
+                  <h3 class="lv-cm-stage__name">50대 — 새로운 전환</h3>
+                  <p class="lv-cm-stage__tags">경력 전환 · 은퇴 준비 · 평생교육 · 여행</p>
+                  <span class="lv-cm-stage__go">관심 등록 →</span>
+                </a>
+                <a class="lv-cm-stage" href="#cm-home" data-lv-cm-join="stage-60" data-lv-cm-label="60대 커뮤니티" style="--cm-stage-img:url(/livon/assets/topics/senior.jpg)">
+                  <span class="lv-cm-stage__media" aria-hidden="true"></span>
+                  <p class="lv-cm-stage__age">06 · 60s</p>
+                  <h3 class="lv-cm-stage__name">60대 — 새로운 시작</h3>
+                  <p class="lv-cm-stage__tags">은퇴 후 생활 · 지역 모임 · 문화생활</p>
+                  <span class="lv-cm-stage__go">관심 등록 →</span>
+                </a>
+                <a class="lv-cm-stage" href="#cm-home" data-lv-cm-join="stage-70" data-lv-cm-label="70대 이상 커뮤니티" style="--cm-stage-img:url(/livon/assets/topics/senior.jpg)">
+                  <span class="lv-cm-stage__media" aria-hidden="true"></span>
+                  <p class="lv-cm-stage__age">07 · 70+</p>
+                  <h3 class="lv-cm-stage__name">70대 이상 — 여유와 연결</h3>
+                  <p class="lv-cm-stage__tags">일상 · 여가 · 가족 소통 · 시니어 생활</p>
+                  <span class="lv-cm-stage__go">관심 등록 →</span>
+                </a>
+              </div>
+              <p class="lv-cm-note"><strong>청소년 보호:</strong> 청소년 전용 공간은 성인 커뮤니티와 접근·소통 규칙을 분리합니다. 미성년자의 민감 정보 공개와 비공개 연락은 제한됩니다.</p>
+            </div>
+          </section>
+
+          <section class="lv-cm-sec" id="cm-interests" data-lv-cm-reveal>
+            <div class="lv-cm-inner">
+              <header class="lv-cm-head">
+                <p class="lv-cm-eyebrow">Interest Community</p>
+                <h2 class="lv-cm-title lv-cm-title--md">나이보다 가까운,<br>우리의 공통 관심사.</h2>
+                <p class="lv-cm-lead">삶의 단계가 달라도<br>같은 관심사를 가진 사람들과 연결될 수 있습니다.</p>
+              </header>
+              <ul class="lv-cm-rows">
+                <li><a class="lv-cm-row" href="#cm-home" data-lv-cm-join="int-edu" data-lv-cm-label="교육과 진로"><span class="lv-cm-row__n">01</span><span><h3 class="lv-cm-row__title">교육과 진로</h3><p class="lv-cm-row__desc">공부, 진학, 자격증, 직업교육, 평생교육</p></span><span class="lv-cm-row__go">관심 등록 →</span></a></li>
+                <li><a class="lv-cm-row" href="#cm-home" data-lv-cm-join="int-career" data-lv-cm-label="커리어와 일"><span class="lv-cm-row__n">02</span><span><h3 class="lv-cm-row__title">커리어와 일</h3><p class="lv-cm-row__desc">취업, 이직, 재취업, 경력 전환, 직무 경험</p></span><span class="lv-cm-row__go">관심 등록 →</span></a></li>
+                <li><a class="lv-cm-row" href="#cm-home" data-lv-cm-join="int-home" data-lv-cm-label="주거와 생활"><span class="lv-cm-row__n">03</span><span><h3 class="lv-cm-row__title">주거와 생활</h3><p class="lv-cm-row__desc">자취, 독립, 이사, 인테리어, 생활 팁</p></span><span class="lv-cm-row__go">관심 등록 →</span></a></li>
+                <li><a class="lv-cm-row" href="#cm-home" data-lv-cm-join="int-family" data-lv-cm-label="가족과 관계"><span class="lv-cm-row__n">04</span><span><h3 class="lv-cm-row__title">가족과 관계</h3><p class="lv-cm-row__desc">결혼, 동거, 육아, 가족 생활, 부모님 지원</p></span><span class="lv-cm-row__go">관심 등록 →</span></a></li>
+                <li><a class="lv-cm-row" href="#cm-home" data-lv-cm-join="int-health" data-lv-cm-label="건강과 웰니스"><span class="lv-cm-row__n">05</span><span><h3 class="lv-cm-row__title">건강과 웰니스</h3><p class="lv-cm-row__desc">운동, 산책, 생활 습관, 마음 챙김</p></span><span class="lv-cm-row__go">관심 등록 →</span></a></li>
+                <li><a class="lv-cm-row" href="#cm-home" data-lv-cm-join="int-travel" data-lv-cm-label="여행과 문화"><span class="lv-cm-row__n">06</span><span><h3 class="lv-cm-row__title">여행과 문화</h3><p class="lv-cm-row__desc">여행, 전시, 공연, 영화, 맛집, 카페</p></span><span class="lv-cm-row__go">관심 등록 →</span></a></li>
+                <li><a class="lv-cm-row" href="#cm-home" data-lv-cm-join="int-hobby" data-lv-cm-label="취미와 배움"><span class="lv-cm-row__n">07</span><span><h3 class="lv-cm-row__title">취미와 배움</h3><p class="lv-cm-row__desc">독서, 음악, 미술, 사진, 요리, 외국어</p></span><span class="lv-cm-row__go">관심 등록 →</span></a></li>
+                <li><a class="lv-cm-row" href="#cm-local" data-lv-cm-join="int-local" data-lv-cm-label="지역 생활"><span class="lv-cm-row__n">08</span><span><h3 class="lv-cm-row__title">지역 생활</h3><p class="lv-cm-row__desc">동네 소식, 지역 행사, 문화시설</p></span><span class="lv-cm-row__go">관심 등록 →</span></a></li>
+                <li><a class="lv-cm-row" href="#cm-home" data-lv-cm-join="int-senior" data-lv-cm-label="시니어 생활"><span class="lv-cm-row__n">09</span><span><h3 class="lv-cm-row__title">시니어 생활</h3><p class="lv-cm-row__desc">은퇴 후 활동, 평생교육, 지역 모임</p></span><span class="lv-cm-row__go">관심 등록 →</span></a></li>
+                <li><a class="lv-cm-row" href="#cm-home" data-lv-cm-join="int-finance" data-lv-cm-label="금융과 생활비"><span class="lv-cm-row__n">10</span><span><h3 class="lv-cm-row__title">금융과 생활비</h3><p class="lv-cm-row__desc">예산, 저축, 소비, 은퇴 준비 일반 정보</p></span><span class="lv-cm-row__go">관심 등록 →</span></a></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="lv-cm-sec lv-cm-sec--ink" id="cm-local" data-lv-cm-reveal>
+            <div class="lv-cm-inner">
+              <header class="lv-cm-head">
+                <p class="lv-cm-eyebrow">Local Community</p>
+                <h2 class="lv-cm-title lv-cm-title--md">우리 동네에서,<br>새로운 일상을 만나보세요.</h2>
+                <p class="lv-cm-lead">위치 권한 없이도 지역을 직접 선택해 탐색할 수 있습니다.<br>정확한 주거지 주소는 공개하지 않습니다.</p>
+              </header>
+              <div class="lv-cm-empty" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.18)">
+                <span class="lv-cm-badge" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);color:#ccc">지도 · 지역 게시글 연동 예정</span>
+                <h3 style="color:#fff">지역 선택 · 동네 게시글 · 지역 모임</h3>
+                <p style="color:#a8a8a8">지역 행사, 문화시설, 생활 서비스 후기, 지역 Q&amp;A UI를 준비합니다. 허위 위치 핀이나 가짜 동네 게시글을 표시하지 않습니다.</p>
+                <div class="lv-cm-actions">
+                  <button type="button" class="lv-cm-btn lv-cm-btn--light" data-lv-cm-save="지역 커뮤니티" data-lv-cm-label="지역 커뮤니티">관심 저장</button>
+                  <a class="lv-cm-btn lv-cm-btn--outline-light" href="#cm-groups">모임 둘러보기</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-cm-sec" id="cm-qa" data-lv-cm-reveal>
+            <div class="lv-cm-inner lv-cm-split">
+              <div>
+                <p class="lv-cm-eyebrow">Questions &amp; Experiences</p>
+                <h2 class="lv-cm-title lv-cm-title--md">궁금한 것은 묻고,<br>경험한 것은 나눠보세요.</h2>
+                <p class="lv-cm-lead">질문, 경험 공유, 생활 팁, 후기까지.<br>의료·법률·금융은 일반 경험과 전문가 상담을 구분합니다.</p>
+                <div class="lv-cm-actions">
+                  <button type="button" class="lv-cm-btn lv-cm-btn--dark" data-lv-cm-compose="question">질문하기</button>
+                  <a class="lv-cm-btn lv-cm-btn--ghost" href="#cm-home" data-lv-cm-tab-jump="question">질문 피드</a>
+                  <a class="lv-cm-btn lv-cm-btn--ghost" href="#explore">탐색 · 전문가</a>
+                </div>
+              </div>
+              <div class="lv-cm-media">
+                <img src="/livon/assets/topics/twenties.jpg" alt="" width="1400" height="1050" loading="lazy" />
+                <span class="lv-cm-media__cap">경험 공유 · 질문과 답변</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-cm-sec lv-cm-sec--band" id="cm-groups" data-lv-cm-reveal>
+            <div class="lv-cm-inner">
+              <header class="lv-cm-head">
+                <p class="lv-cm-eyebrow">Meetups</p>
+                <h2 class="lv-cm-title lv-cm-title--md">모임은 커뮤니티와<br>다른 기능입니다.</h2>
+                <p class="lv-cm-lead">오프라인 모임은 신고·차단·검수·미성년자 보호가 준비된 뒤 활성화합니다.</p>
+              </header>
+              <div class="lv-cm-empty">
+                <span class="lv-cm-badge">오프라인 모임 미공개</span>
+                <h3>지금은 관심 주제만 저장할 수 있습니다</h3>
+                <p>참가자 연락처·정확한 위치를 자동 공개하지 않습니다. 확정된 온라인 관심만 내 생활 일정에 선택 추가할 수 있도록 설계합니다.</p>
+                <div class="lv-cm-actions">
+                  <button type="button" class="lv-cm-btn" data-lv-cm-join="group-book" data-lv-cm-label="독서 모임">독서 관심</button>
+                  <button type="button" class="lv-cm-btn lv-cm-btn--ghost" data-lv-cm-join="group-study" data-lv-cm-label="스터디">스터디 관심</button>
+                  <button type="button" class="lv-cm-btn lv-cm-btn--ghost" data-lv-cm-join="group-walk" data-lv-cm-label="운동과 산책">산책 관심</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-cm-sec" id="cm-experts" data-lv-cm-reveal>
+            <div class="lv-cm-inner lv-cm-dr">
+              <div>
+                <p class="lv-cm-eyebrow">Expert Q&amp;A</p>
+                <h2 class="lv-cm-title lv-cm-title--md">전문가 검증 전에는<br>운영 중으로 열지 않습니다.</h2>
+                <p class="lv-cm-lead">공개 Q&amp;A와 개인 상담을 구분합니다. 검증되지 않은 답변에 전문가 배지를 붙이지 않습니다.</p>
+                <div class="lv-cm-actions">
+                  <a class="lv-cm-btn" href="#explore">탐색에서 전문가 찾기</a>
+                  <button type="button" class="lv-cm-btn lv-cm-btn--ghost" data-lv-cm-compose="question">일반 질문하기</button>
+                </div>
+                <p class="lv-cm-note"><strong>자격 표시:</strong> 검증되지 않은 전문가에게 인증 배지를 부여하지 않습니다.</p>
+              </div>
+              <aside class="lv-cm-meta">
+                <dl><dt>Public</dt><dd>일반 경험 답변</dd></dl>
+                <dl><dt>Private</dt><dd>상담은 탐색</dd></dl>
+                <dl><dt>Status</dt><dd>전문가 Q&amp;A 미공개</dd></dl>
+              </aside>
+            </div>
+          </section>
+
+          <section class="lv-cm-sec lv-cm-sec--band" id="cm-programs" data-lv-cm-reveal>
+            <div class="lv-cm-inner">
+              <header class="lv-cm-head">
+                <p class="lv-cm-eyebrow">Challenges</p>
+                <h2 class="lv-cm-title lv-cm-title--md">함께 시작하고,<br>나의 실천을 기록하세요.</h2>
+                <p class="lv-cm-lead">진행률은 내가 기록한 실천만으로 계산합니다. 다른 사람의 민감 기록은 공개되지 않습니다.</p>
+              </header>
+              <div class="lv-cm-challenge-grid" data-lv-cm-challenges></div>
+            </div>
+          </section>
+
+          <section class="lv-cm-sec" id="cm-mine" data-lv-cm-reveal>
+            <div class="lv-cm-inner">
+              <header class="lv-cm-head">
+                <p class="lv-cm-eyebrow">My Community</p>
+                <h2 class="lv-cm-title lv-cm-title--md">나의 활동.</h2>
+                <p class="lv-cm-lead">작성·저장·가입·챌린지를 한곳에서 확인합니다.</p>
+              </header>
+              <div data-lv-cm-mine></div>
+              <div class="lv-cm-actions">
+                <a class="lv-cm-btn" href="#life-now">내 생활에서 확인</a>
+                <button type="button" class="lv-cm-btn lv-cm-btn--ghost" data-lv-cm-compose="story">글 작성하기</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-cm-sec lv-cm-sec--band" id="cm-safe" data-lv-cm-reveal>
+            <div class="lv-cm-inner lv-cm-dr">
+              <div>
+                <p class="lv-cm-eyebrow">Safe Community</p>
+                <h2 class="lv-cm-title lv-cm-title--md">누구나 안심하고,<br>자신의 이야기를 나눌 수 있도록.</h2>
+                <p class="lv-cm-lead">신고·차단, 공개 범위, 스팸 관리, 미성년자 보호 정책을 기준으로 운영합니다.</p>
+                <p class="lv-cm-note"><strong>현재:</strong> 안전 정책 안내와 구조만 제공합니다. 공개 1:1 메시지·오프라인 모임은 보호 기능이 준비되기 전에 활성화하지 않습니다.</p>
+              </div>
+              <aside class="lv-cm-meta">
+                <dl><dt>Report</dt><dd>게시글 · 댓글 신고</dd></dl>
+                <dl><dt>Block</dt><dd>사용자 차단</dd></dl>
+                <dl><dt>Youth</dt><dd>연령별 보호 정책</dd></dl>
+                <dl><dt>Privacy</dt><dd>민감 정보 비공개</dd></dl>
+              </aside>
+            </div>
+          </section>
+
+          <section class="lv-cm-sec" id="cm-connect" data-lv-cm-reveal>
+            <div class="lv-cm-inner">
+              <header class="lv-cm-head">
+                <p class="lv-cm-eyebrow">Connected Life</p>
+                <h2 class="lv-cm-title lv-cm-title--md">나눈 이야기가,<br>새로운 경험으로 이어지도록.</h2>
+              </header>
+              <div class="lv-connect" data-lv-connect="community"></div>
+            </div>
+          </section>
+
+          <section class="lv-cm-sec lv-cm-sec--ink lv-cm-final" id="cm-cta" data-lv-cm-reveal>
+            <div class="lv-cm-inner">
+              <p class="lv-cm-eyebrow">Life is better together</p>
+              <h2 class="lv-cm-title">서로의 이야기가 모여,<br>더 넓은 삶이 됩니다.</h2>
+              <p class="lv-cm-lead">나와 비슷한 경험을 가진 사람들과 이야기를 나누고,<br>새로운 관심사와 활동을 함께 발견하세요.<br><br>당신의 다음 이야기도<br>LIVON에서 시작됩니다.</p>
+              <div class="lv-cm-actions">
+                <a class="lv-cm-btn lv-cm-btn--light" href="#cm-find">나에게 맞는 커뮤니티 찾기</a>
+                <a class="lv-cm-btn lv-cm-btn--outline-light" href="#cm-groups">모임과 활동 둘러보기</a>
+                <a class="lv-cm-btn lv-cm-btn--outline-light" href="#cm-mine">나의 커뮤니티 확인하기</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+
+      <section class="lv-ai" id="livon-ai" data-lv-screen="livon-ai" aria-label="LIVON AI">
+        <div class="lv-ai">
+          <section class="lv-ai-film" id="ai-hero" data-lv-ai-hero aria-labelledby="ai-hero-title">
+            <video class="lv-ai-film__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260411_104032_69319010-2458-492b-b04d-b40a5dfa4482.mp4"></video>
+            <div class="lv-ai-film__lockup">
+              <div class="lv-ai-film__veil" aria-hidden="true"></div>
+              <p class="lv-ai-film__wordmark">LIVON AI</p>
+              <h1 class="lv-ai-film__slogan" id="ai-hero-title">지금의 삶에 필요한 정보부터,<br>다음 단계의 준비까지.</h1>
+              <p class="lv-ai-film__lead">처음 마주하는 변화부터<br>새로운 시작을 준비하는 순간까지.<br>지금의 생활에 필요한 정보와 다음 단계를 알아보세요.</p>
+              <div class="lv-ai-film__actions">
+                <a class="lv-ai-film__btn" href="#ai-chat">LIVON AI 시작하기</a>
+                <a class="lv-ai-film__btn lv-ai-film__btn--ghost" href="#ai-guide">LIVON AI 알아보기</a>
+              </div>
+            </div>
+          </section>
+
+          <nav class="lv-ai-nav" aria-label="LIVON AI 섹션">
+            <div class="lv-ai-inner lv-ai-nav__inner">
+              <p class="lv-ai-nav__label">BROWSE</p>
+              <div class="lv-ai-nav__track">
+                <a href="#ai-chat">대화</a>
+                <a href="#ai-guide">안내</a>
+                <a href="#ai-connect">연결</a>
+                <a href="#ai-settings">설정</a>
+                <a href="#ai-trust">신뢰</a>
+                <a href="#ai-cta">시작</a>
+              </div>
+            </div>
+          </nav>
+
+          <section class="lv-ai-sec lv-ai-sec--flush lv-ai-sec--workspace" id="ai-chat" data-lv-ai-reveal>
+            <div class="lv-ai-workspace" data-lv-ai-workspace>
+              <aside class="lv-ai-sidebar" data-lv-ai-sidebar aria-label="대화 목록">
+                <div class="lv-ai-sidebar__bar">
+                  <button type="button" class="lv-ai-btn lv-ai-btn--dark lv-ai-btn--sm" data-lv-ai-new>새 대화</button>
+                  <button type="button" class="lv-ai-icon-btn" data-lv-ai-sidebar-close aria-label="목록 닫기">×</button>
+                </div>
+                <label class="lv-ai-side-search">
+                  <span class="visually-hidden">대화 검색</span>
+                  <input type="search" placeholder="대화 검색" data-lv-ai-thread-q autocomplete="off" />
+                </label>
+                <div class="lv-ai-thread-list" data-lv-ai-threads></div>
+                <div class="lv-ai-sidebar__foot">
+                  <button type="button" class="lv-ai-text-btn" data-lv-ai-open-settings>AI 설정</button>
+                  <button type="button" class="lv-ai-text-btn" data-lv-ai-clear-all>전체 삭제</button>
+                </div>
+              </aside>
+
+              <div class="lv-ai-main">
+                <div class="lv-ai-main__top">
+                  <button type="button" class="lv-ai-icon-btn lv-ai-only-mobile" data-lv-ai-sidebar-open aria-label="대화 목록">☰</button>
+                  <div class="lv-ai-main__title">
+                    <p class="lv-ai-eyebrow">LIVON AI</p>
+                    <h2 class="lv-ai-chat-title" data-lv-ai-title>새 대화</h2>
+                  </div>
+                  <div class="lv-ai-main__acts">
+                    <button type="button" class="lv-ai-btn lv-ai-btn--ghost lv-ai-btn--sm" data-lv-ai-panel-toggle hidden>생활 패널</button>
+                    <span class="lv-ai-status" data-lv-ai-status aria-live="polite"></span>
+                  </div>
+                </div>
+
+                <div class="lv-ai-stream" data-lv-ai-stream>
+                  <div class="lv-ai-welcome" data-lv-ai-welcome>
+                    <p class="lv-ai-eyebrow">LIVON AI</p>
+                    <h2 class="lv-ai-title lv-ai-title--md">지금 어떤 도움이<br>필요하세요?</h2>
+                    <p class="lv-ai-lead">생활 속 궁금한 점부터 새로운 계획까지. 나의 일상을 LIVON AI와 함께 정리해 보세요.</p>
+                    <div class="lv-ai-suggest-grid" data-lv-ai-suggests>
+                      <button type="button" class="lv-ai-suggest" data-lv-ai-ask="다음 달에 이사할 예정인데 무엇부터 준비해야 해?">
+                        <em>01</em><strong>생활 계획 만들기</strong>
+                        <span>독립, 이사, 여행, 새로운 목표까지 필요한 준비를 함께 정리해요.</span>
+                        <small>“다음 달에 이사할 예정인데 무엇부터 준비해야 해?”</small>
+                      </button>
+                      <button type="button" class="lv-ai-suggest" data-lv-ai-ask="이번 주말에 새로운 취미를 시작하고 싶어.">
+                        <em>02</em><strong>새로운 경험 찾기</strong>
+                        <span>관심사와 일정에 맞는 활동, 배움, 장소를 찾아보세요.</span>
+                        <small>“이번 주말에 새로운 취미를 시작하고 싶어.”</small>
+                      </button>
+                      <button type="button" class="lv-ai-suggest" data-lv-ai-ask="처음 독립하는데 어떤 생활 서비스가 필요할까?">
+                        <em>03</em><strong>전문가·서비스 찾기</strong>
+                        <span>필요한 전문가, 기관, 생활 서비스를 찾는 과정을 도와드려요.</span>
+                        <small>“처음 독립하는데 어떤 생활 서비스가 필요할까?”</small>
+                      </button>
+                      <button type="button" class="lv-ai-suggest" data-lv-ai-ask="이번 주 해야 할 일을 우선순위별로 정리해 줘.">
+                        <em>04</em><strong>나의 일정 정리하기</strong>
+                        <span>복잡한 일정과 할 일을 정리하고 실행할 수 있는 계획을 만들어 보세요.</span>
+                        <small>“이번 주 해야 할 일을 우선순위별로 정리해 줘.”</small>
+                      </button>
+                      <button type="button" class="lv-ai-suggest" data-lv-ai-ask="취업을 준비하면서 생활비도 관리하고 싶어.">
+                        <em>05</em><strong>생애 단계별 생활 안내</strong>
+                        <span>지금 나에게 필요한 생활 정보와 앞으로 준비할 일을 알아보세요.</span>
+                        <small>“취업을 준비하면서 생활비도 관리하고 싶어.”</small>
+                      </button>
+                      <button type="button" class="lv-ai-suggest" data-lv-ai-ask="해야 할 일이 너무 많은데 어디서부터 시작하면 좋을까?">
+                        <em>06</em><strong>일상 속 고민 정리하기</strong>
+                        <span>생각이 복잡할 때 상황을 정리하고 선택지를 살펴보세요.</span>
+                        <small>“해야 할 일이 너무 많은데 어디서부터 시작하면 좋을까?”</small>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="lv-ai-msgs" data-lv-ai-msgs hidden></div>
+                </div>
+
+                <div class="lv-ai-composer" data-lv-ai-composer>
+                  <form data-lv-ai-form class="lv-ai-composer__form">
+                    <label class="visually-hidden" for="ai-chat-q">메시지 입력</label>
+                    <textarea id="ai-chat-q" rows="1" data-lv-ai-chat-q placeholder="LIVON AI에게 무엇이든 물어보세요." autocomplete="off"></textarea>
+                    <div class="lv-ai-composer__acts">
+                      <button type="button" class="lv-ai-text-btn" data-lv-ai-clear-input hidden>입력 지우기</button>
+                      <button type="button" class="lv-ai-btn lv-ai-btn--ghost lv-ai-btn--sm" data-lv-ai-stop hidden>중지</button>
+                      <button type="submit" class="lv-ai-btn lv-ai-btn--dark lv-ai-btn--sm" data-lv-ai-send disabled>전송</button>
+                    </div>
+                  </form>
+                  <p class="lv-ai-note" data-lv-ai-api-note>실제 AI 응답은 서버 API 키가 연결된 경우에만 제공됩니다. 키가 없으면 연결 안내와 재시도만 표시하며, 가짜 답변은 만들지 않습니다.</p>
+                </div>
+              </div>
+
+              <aside class="lv-ai-panel" data-lv-ai-panel hidden aria-label="생활 패널">
+                <div class="lv-ai-panel__bar">
+                  <h3>생활 패널</h3>
+                  <button type="button" class="lv-ai-icon-btn" data-lv-ai-panel-close aria-label="패널 닫기">×</button>
+                </div>
+                <div class="lv-ai-panel__body" data-lv-ai-panel-body>
+                  <p class="lv-ai-note">계획·추천·저장 미리보기가 여기에 표시됩니다. AI 또는 사용자가 초안을 만들기 전에는 비어 있습니다.</p>
+                </div>
+              </aside>
+              <div class="lv-ai-sidebar-backdrop" data-lv-ai-sidebar-backdrop hidden></div>
+            </div>
+          </section>
+
+          <section class="lv-ai-sec" id="ai-guide" data-lv-ai-reveal>
+            <div class="lv-ai-inner">
+              <header class="lv-ai-head">
+                <p class="lv-ai-eyebrow">How it helps</p>
+                <h2 class="lv-ai-title lv-ai-title--md">대화에서 시작해<br>일상으로 이어집니다.</h2>
+                <p class="lv-ai-lead">긴 소개 대신, 바로 질문하고 필요한 메뉴로 연결하세요.</p>
+              </header>
+              <div class="lv-ai-guide-grid">
+                <a class="lv-ai-guide-card" href="#ai-chat" data-lv-ai-ask="첫 독립을 준비하려면 무엇부터 해야 할까?"><em>01</em><strong>상황 정리</strong><span>질문과 맥락을 바탕으로 준비 항목을 나눕니다.</span></a>
+                <a class="lv-ai-guide-card" href="#ai-chat" data-lv-ai-ask="이사 준비 체크리스트를 만들어 줘."><em>02</em><strong>계획 초안</strong><span>체크리스트·일정 초안을 만들고 승인 후 저장합니다.</span></a>
+                <a class="lv-ai-guide-card" href="#today"><em>03</em><strong>오늘의 발견</strong><span>실제 등록된 장소·활동만 연결합니다.</span></a>
+                <a class="lv-ai-guide-card" href="#explore"><em>04</em><strong>탐색</strong><span>공식·등록된 전문가·서비스로 이동합니다.</span></a>
+                <a class="lv-ai-guide-card" href="#community"><em>05</em><strong>커뮤니티</strong><span>공개 게시글·관심 커뮤니티만 연결합니다.</span></a>
+                <a class="lv-ai-guide-card" href="#life-now"><em>06</em><strong>내 생활</strong><span>승인한 할 일·목표·일정만 반영됩니다.</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ai-sec lv-ai-sec--band" id="ai-connect" data-lv-ai-reveal>
+            <div class="lv-ai-inner lv-ai-split">
+              <div>
+                <p class="lv-ai-eyebrow">Connections</p>
+                <h2 class="lv-ai-title lv-ai-title--md">LIVON 메뉴와<br>실제로 연결됩니다.</h2>
+                <p class="lv-ai-lead">존재하지 않는 장소·전문가·후기를 만들지 않습니다. 데이터가 없으면 검색 조건만 정리해 해당 메뉴로 안내합니다.</p>
+                <div class="lv-ai-actions">
+                  <a class="lv-ai-btn" href="#life">라이프 스테이지</a>
+                  <a class="lv-ai-btn lv-ai-btn--ghost" href="#today">오늘의 발견</a>
+                  <a class="lv-ai-btn lv-ai-btn--ghost" href="#explore">탐색</a>
+                  <a class="lv-ai-btn lv-ai-btn--ghost" href="#community">커뮤니티</a>
+                  <a class="lv-ai-btn lv-ai-btn--ghost" href="#life-now">내 생활</a>
+                </div>
+              </div>
+              <div class="lv-ai-empty">
+                <span class="lv-ai-badge">저장 원칙</span>
+                <h3>AI 초안 → 확인 → 선택 저장 → 내 생활</h3>
+                <p>승인 없이 일정·할 일·목표를 자동 저장하지 않습니다. 의료·법률·금융은 일반 안내와 전문가 상담을 구분합니다.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ai-sec" id="ai-settings" data-lv-ai-reveal>
+            <div class="lv-ai-inner">
+              <header class="lv-ai-head">
+                <p class="lv-ai-eyebrow">Preferences</p>
+                <h2 class="lv-ai-title lv-ai-title--md">개인화 설정</h2>
+                <p class="lv-ai-lead">관심사와 생활 목표에 맞춰 답변을 받아보세요. 설정은 이 기기에 저장되며 언제든 바꿀 수 있습니다.</p>
+              </header>
+              <form class="lv-ai-settings" data-lv-ai-settings>
+                <label class="lv-ai-field">생애 단계
+                  <select name="stage">
+                    <option value="">선택 안 함</option>
+                    <option value="10">10대</option>
+                    <option value="20">20대</option>
+                    <option value="30">30대</option>
+                    <option value="40">40대</option>
+                    <option value="50">50대</option>
+                    <option value="60">60대</option>
+                    <option value="70">70대 이상</option>
+                  </select>
+                </label>
+                <label class="lv-ai-field">관심 분야
+                  <input name="interests" placeholder="예: 주거, 취업, 취미" maxlength="120" />
+                </label>
+                <label class="lv-ai-field">선호 지역
+                  <input name="region" placeholder="예: 서울, 온라인" maxlength="40" />
+                </label>
+                <label class="lv-ai-field">생활 목표
+                  <input name="goal" placeholder="예: 독립 준비" maxlength="80" />
+                </label>
+                <label class="lv-ai-field">답변 길이
+                  <select name="answerLength">
+                    <option value="balanced">균형</option>
+                    <option value="short">짧게</option>
+                    <option value="detailed">자세히</option>
+                  </select>
+                </label>
+                <label class="lv-ai-check"><input type="checkbox" name="personalize" checked /> 개인화 사용</label>
+                <label class="lv-ai-check"><input type="checkbox" name="shareLifeData" /> 내 생활 데이터 최소 참조 허용 (승인된 범위)</label>
+                <div class="lv-ai-actions">
+                  <button type="submit" class="lv-ai-btn lv-ai-btn--dark">설정 저장</button>
+                </div>
+                <p class="lv-ai-note">대화 기록도 이 기기에 저장됩니다. 서버 계정 동기화는 아직 없습니다.</p>
+              </form>
+            </div>
+          </section>
+
+          <section class="lv-ai-sec lv-ai-sec--band" id="ai-trust" data-lv-ai-reveal>
+            <div class="lv-ai-inner">
+              <header class="lv-ai-head">
+                <p class="lv-ai-eyebrow">Privacy &amp; Trust</p>
+                <h2 class="lv-ai-title lv-ai-title--md">필요한 정보는 명확하게,<br>개인의 생활은 신중하게.</h2>
+              </header>
+              <div class="lv-ai-values">
+                <div class="lv-ai-value"><span class="lv-ai-value__n">01</span><span><strong>사용자 선택에 따른 개인화</strong><p>연령대만으로 민감한 상태를 추정하지 않습니다.</p></span></div>
+                <div class="lv-ai-value"><span class="lv-ai-value__n">02</span><span><strong>저장 전 확인과 승인</strong><p>일정·할 일 반영은 사용자가 확인한 뒤에만 진행됩니다.</p></span></div>
+                <div class="lv-ai-value"><span class="lv-ai-value__n">03</span><span><strong>출처와 확인 날짜</strong><p>확인되지 않은 가격·일정을 확정적으로 안내하지 않습니다.</p></span></div>
+                <div class="lv-ai-value"><span class="lv-ai-value__n">04</span><span><strong>대화·개인정보 관리</strong><p>대화 삭제와 설정은 이 화면에서 관리합니다.</p></span></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="lv-ai-sec lv-ai-sec--ink lv-ai-final" id="ai-cta" data-lv-ai-reveal>
+            <div class="lv-ai-inner">
+              <p class="lv-ai-eyebrow">YOUR LIFE, YOUR NEXT STEP</p>
+              <h2 class="lv-ai-title">지금의 삶에서,<br>다음의 가능성으로.</h2>
+              <p class="lv-ai-lead">나에게 필요한 정보를 찾고,<br>다음 단계를 LIVON에서 시작해 보세요.</p>
+              <div class="lv-ai-actions">
+                <a class="lv-ai-btn lv-ai-btn--light" href="#ai-chat">LIVON AI 시작하기</a>
+                <a class="lv-ai-btn lv-ai-btn--outline-light" href="#life">라이프 스테이지</a>
+                <a class="lv-ai-btn lv-ai-btn--outline-light" href="#life-now">내 생활</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap');
+      @font-face {
+        font-family: 'Dirtyline';
+        src: url('https://fonts.cdnfonts.com/s/15011/Dirtyline36DaysofType.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      body { font-family: 'Barlow', sans-serif; background: #000; }
+      body:has(.livon-hero) { padding-top: 0 !important; }
+      html[data-lv-view]:not([data-lv-view="home"]):not([data-lv-view="life"]):not([data-lv-view="life-now"]):not([data-lv-view="explore"]):not([data-lv-view="community"]):not([data-lv-view="today"]):not([data-lv-view="livon-ai"]),
+      html[data-lv-view]:not([data-lv-view="home"]):not([data-lv-view="life"]):not([data-lv-view="life-now"]):not([data-lv-view="explore"]):not([data-lv-view="community"]):not([data-lv-view="today"]):not([data-lv-view="livon-ai"]) body {
+        height: 100%;
+        overflow: hidden;
+      }
+      html[data-lv-view]:not([data-lv-view="home"]):not([data-lv-view="life"]):not([data-lv-view="life-now"]):not([data-lv-view="explore"]):not([data-lv-view="community"]):not([data-lv-view="today"]):not([data-lv-view="livon-ai"]) main {
+        position: relative;
+        height: 100svh;
+        overflow: hidden;
+      }
+      /* Hard screen isolation — only the active menu screen is visible */
+      html[data-lv-view] main > [data-lv-screen],
+      html[data-lv-view]:not([data-lv-view="home"]) main > #livon-home,
+      html[data-lv-view]:not([data-lv-view="life"]) main > #life,
+      html[data-lv-view]:not([data-lv-view="today"]) main > #today,
+      html[data-lv-view]:not([data-lv-view="life-now"]) main > #life-now,
+      html[data-lv-view]:not([data-lv-view="explore"]) main > #explore,
+      html[data-lv-view]:not([data-lv-view="community"]) main > #community,
+      html[data-lv-view]:not([data-lv-view="livon-ai"]) main > #livon-ai {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+      }
+      html[data-lv-view="home"] main > #livon-home,
+      html[data-lv-view="life"] main > #life,
+      html[data-lv-view="today"] main > #today,
+      html[data-lv-view="life-now"] main > #life-now,
+      html[data-lv-view="explore"] main > #explore,
+      html[data-lv-view="community"] main > #community,
+      html[data-lv-view="livon-ai"] main > #livon-ai {
+        display: block !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+      }
+      html[data-lv-view="home"],
+      html[data-lv-view="home"] body,
+      html[data-lv-view="life"],
+      html[data-lv-view="life"] body,
+      html[data-lv-view="life-now"],
+      html[data-lv-view="life-now"] body,
+      html[data-lv-view="explore"],
+      html[data-lv-view="explore"] body,
+      html[data-lv-view="community"],
+      html[data-lv-view="community"] body,
+      html[data-lv-view="today"],
+      html[data-lv-view="today"] body,
+      html[data-lv-view="livon-ai"],
+      html[data-lv-view="livon-ai"] body {
+        height: auto;
+        overflow: auto;
+        overflow-x: clip;
+      }
+      html[data-lv-view="home"] main,
+      html[data-lv-view="life"] main,
+      html[data-lv-view="life-now"] main,
+      html[data-lv-view="explore"] main,
+      html[data-lv-view="community"] main,
+      html[data-lv-view="today"] main,
+      html[data-lv-view="livon-ai"] main {
+        position: relative;
+        height: auto;
+        overflow: visible;
+      }
+      .lv-cta { position: relative; z-index: 2; height: 100svh; min-height: 100svh; overflow: hidden; background: #000; }
+      .lv-cta__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .lv-cta .liquid-glass { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); backdrop-filter: blur(20px) saturate(140%); -webkit-backdrop-filter: blur(20px) saturate(140%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 10px 30px rgba(0,0,0,0.25); }
+      .lv-cta__dash { position: relative; z-index: 10; width: min(1100px, 100%); height: min(100%, 720px); margin: 0 auto; }
+      .lv-cta__frame { display: grid; width: 100%; height: 100%; grid-template-columns: minmax(200px, 32%) 1fr; gap: 0.75rem; padding: 0.75rem; border-radius: 1rem; overflow: hidden; box-sizing: border-box; }
+      .lv-cta__chat { display: flex; flex-direction: column; min-height: 0; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(8,8,10,0.6); backdrop-filter: blur(24px); }
+      .lv-cta__chat header { display: flex; gap: 0.55rem; align-items: center; padding: 0.8rem 0.9rem; }
+      .lv-cta__chat header span { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 999px; background: rgba(255,255,255,0.05); font-size: 14px; }
+      .lv-cta__chat strong { display: block; font-size: 0.875rem; }
+      .lv-cta__chat small { display: block; color: rgba(255,255,255,0.4); font-size: 11px; }
+      .lv-cta__msgs { flex: 1; overflow: auto; scrollbar-width: none; display: flex; flex-direction: column; gap: 0.8rem; padding: 0.6rem 1rem 1rem; }
+      .lv-cta__msgs::-webkit-scrollbar { display: none; }
+      .lv-cta__msgs p { max-width: 85%; margin: 0; border-radius: 1rem; padding: 0.55rem 0.9rem; font-size: 0.82rem; line-height: 1.45; animation: lvRise .6s ease-out both; }
+      .lv-cta__msgs .is-bot { align-self: flex-start; background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.05); }
+      .lv-cta__msgs .is-user { align-self: flex-end; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+      .lv-cta__chat form { display: flex; gap: 0.4rem; align-items: center; margin: 0.5rem; padding: 0.35rem 0.35rem 0.35rem 0.7rem; border-radius: 1rem; }
+      .lv-cta__chat textarea { flex: 1; resize: none; border: 0; background: transparent; color: #fff; font: inherit; font-size: 0.8rem; outline: none; }
+      .lv-cta__chat form button { display: grid; place-items: center; width: 2rem; height: 2rem; border: 0; border-radius: 0.7rem; background: #fff; color: #000; cursor: pointer; }
+      .lv-cta__chat form .material-symbols-outlined { font-size: 16px; }
+      .lv-cta__velo { position: relative; overflow: hidden; border-radius: 1rem; background: hsl(201 100% 13%); }
+      .lv-cta__velo video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .lv-cta__vnav, .lv-cta__vhero { position: relative; z-index: 1; }
+      .lv-cta__vnav { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.7rem 0.9rem; }
+      .lv-cta__vnav b { font-family: "Instrument Serif", serif; font-weight: 400; letter-spacing: -0.03em; }
+      .lv-cta__vnav b sup { font-size: 0.5em; }
+      .lv-cta__vnav span { color: rgba(255,255,255,0.6); font-size: 10px; }
+      .lv-cta__vnav em, .lv-cta__vhero > span { border-radius: 999px; padding: 0.35rem 0.7rem; font-size: 10px; font-style: normal; }
+      .lv-cta__vhero { padding: 1.2rem 1rem 1.4rem; text-align: center; }
+      .lv-cta__vhero h3 { margin: 0 auto; max-width: 90%; font-family: "Instrument Serif", serif; font-weight: 400; font-size: clamp(1.1rem, 2vw, 2.1rem); line-height: 0.95; letter-spacing: -0.03em; animation: lvRise .8s ease-out both; }
+      .lv-cta__vhero h3 em { font-style: normal; color: rgba(255,255,255,0.55); }
+      .lv-cta__vhero p { margin: 0.8rem auto 0; max-width: 28rem; color: rgba(255,255,255,0.6); font-size: 12px; line-height: 1.5; animation: lvRise .8s ease-out .25s both; }
+      .lv-cta__vhero > span { display: inline-block; margin-top: 0.9rem; animation: lvRise .8s ease-out .5s both; }
+      .lv-cta__grass { position: absolute; z-index: 30; left: 0; right: 0; bottom: -8vh; width: 100%; max-height: 28vh; object-fit: cover; object-position: center bottom; pointer-events: none; }
+      @keyframes lvRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+      @media (max-width: 800px) {
+        .lv-cta__dash { height: min(100%, 78svh); }
+        .lv-cta__frame { grid-template-columns: 1fr; }
+        .lv-cta__chat { display: none; }
+        .lv-cta__vnav span { display: none; }
+      }
+      html[data-lv-view="life-now"] .vn { display: flex !important; }
+      .vn {
+        --vn-poster: url("https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260908_122011_59c97465-4d23-4fdc-ac40-f6832f573e28.png&w=1920&q=85");
+        --vn-ease: cubic-bezier(.22,1,.36,1);
+        position: relative;
+        z-index: 2;
+        min-height: 100svh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        color: #0b0b0c;
+      }
+      .vn__media { position: absolute; inset: 0; z-index: 0; }
+      .vn__media img { display: none; }
+      .vn__media video { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 1; }
+      .vn__media::before { content: ""; display: none; position: absolute; inset: -8%; z-index: 0; background: var(--vn-poster) center 22% / cover no-repeat; filter: blur(30px) saturate(104%); transform: scale(1.05); }
+      .vn__media::after { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; background: linear-gradient(to bottom, rgba(226,236,243,.55) 0%, rgba(226,236,243,.18) 34%, rgba(226,236,243,0) 58%), radial-gradient(120% 70% at 50% 0%, rgba(255,255,255,.35), rgba(255,255,255,0) 60%); }
+      .vn__inner { position: relative; z-index: 10; flex: 1; display: flex; justify-content: center; padding: calc(var(--gnav-h, 74px) + clamp(1.5rem, 5vh, 4.5rem)) clamp(1.25rem, 4vw, 3.6rem) 0; pointer-events: none; }
+      .vn__headline { margin: 0; font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: clamp(2.7rem, 6.3vw, 6.75rem); line-height: 1.06; letter-spacing: -0.005em; text-align: center; color: #0b0b0c; }
+      .vn__line { display: block; overflow: hidden; white-space: nowrap; padding-bottom: 0.06em; margin-bottom: -0.06em; }
+      .vn__line > span { display: block; transform: translateY(110%); opacity: 0; animation: vnLine 1.25s var(--vn-ease) forwards; }
+      .vn__line:nth-child(1) > span { animation-delay: .55s; }
+      .vn__line:nth-child(2) > span { animation-delay: .68s; }
+      @keyframes vnMedia { to { transform: scale(1); filter: blur(0); opacity: 1; } }
+      @keyframes vnLine { to { transform: translateY(0); opacity: 1; } }
+      @media (max-width: 900px) {
+        .vn__media img, .vn__media video { object-position: center 60%; }
+        .vn__inner { align-items: flex-start; }
+        .vn__line { white-space: normal; }
+        .vn__headline { font-size: clamp(2.4rem, 6.4vw, 3.6rem); max-width: 15ch; }
+      }
+      @media (max-width: 900px) and (orientation: portrait) {
+        .vn__media::before { display: block; }
+        .vn__media img, .vn__media video { inset: 0; top: 0; height: 100%; object-position: center; -webkit-mask-image: none; mask-image: none; }
+      }
+      @media (max-width: 560px) {
+        .vn__headline { font-size: clamp(2.15rem, 9.4vw, 3.1rem); line-height: 1.12; max-width: 11ch; }
+        .vn__inner { padding-top: calc(var(--gnav-h, 74px) + clamp(1.75rem, 7vh, 3rem)); }
+        .vn__media img, .vn__media video { object-position: center 58%; }
+      }
+      @media (max-width: 380px) { .vn__headline { font-size: 2rem; } }
+      @media (prefers-reduced-motion: reduce) {
+        .vn__media { animation: none; opacity: 1; transform: none; filter: none; }
+        .vn__line > span { animation: none; transform: none; opacity: 1; }
+      }
+      #lifestage-detail.nls { position: relative; z-index: 2; font-family: "Noto Sans KR", "Noto Sans", sans-serif; }
+      #lifestage-detail.nls .lv-life-grid { display: grid; gap: 0.75rem; margin-top: 1.25rem; }
+      #lifestage-detail.nls .lv-life-form { display: grid; gap: 0.75rem; margin-top: 1rem; }
+      #lifestage-detail.nls input,
+      #lifestage-detail.nls select,
+      #lifestage-detail.nls textarea { width: 100%; border: 1px solid var(--nls-line, #ebebeb); padding: 0.7rem 0.8rem; font: inherit; background: #fff; color: inherit; }
+      #lifestage-detail.nls .lv-check { display: flex; gap: 0.65rem; align-items: flex-start; padding: 0.6rem 0; border-top: 1px solid var(--nls-line, #ebebeb); }
+      #lifestage-detail.nls .lv-bar { height: 2px; background: #ebebeb; margin: 0.8rem 0; }
+      #lifestage-detail.nls .lv-bar span { display: block; height: 100%; background: #0a0a0a; }
+      #lifestage-detail.nls.is-large { font-size: 1.15rem; }
+      @media (min-width: 800px) {
+        #lifestage-detail.nls .lv-life-grid--2 { grid-template-columns: 1fr 1fr; }
+        #lifestage-detail.nls .lv-life-grid--3 { grid-template-columns: 1fr 1fr 1fr; }
+      }
+      .livon-hero__bg canvas { display: none; }
+      .livon-hero {
+        position: relative;
+        z-index: 2;
+        height: 100svh;
+        min-height: 100svh;
+        background: #000;
+        color: #fff;
+        overflow: hidden;
+      }
+      .livon-hero__bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        transform: scale(1.08);
+        transform-origin: center;
+      }
+      .livon-hero__bg video,
+      .livon-hero__bg canvas {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .hero-title {
+        font-family: 'Instrument Serif', serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(96px, 18vw, 280px);
+        line-height: 0.92;
+        letter-spacing: -0.02em;
+        color: #fff;
+        text-align: center;
+        margin: 0;
+      }
+      .livon-hero__title {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(var(--gnav-h, 74px) + 4px);
+        z-index: 2;
+        width: 100%;
+        padding: 0 1rem;
+        opacity: 0;
+        transform: translateY(1.5rem);
+        transition: opacity 1s, transform 1s;
+      }
+      .livon-hero__title.is-in,
+      .livon-hero__foot.is-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .livon-hero__foot {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 3rem;
+        z-index: 2;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding: 0 2.5rem;
+        opacity: 0;
+        transform: translateY(1.5rem);
+        transition: opacity 1s 0.3s, transform 1s 0.3s;
+      }
+      .livon-hero__foot p {
+        max-width: 220px;
+        margin: 0;
+        font-size: 0.875rem;
+        font-weight: 300;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.75);
+      }
+      .livon-hero__foot p.is-right { text-align: right; }
+      .livon-hero__actions {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        transform: translateX(-50%);
+      }
+      .livon-hero__primary,
+      .livon-hero__secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .livon-hero__primary {
+        position: relative;
+        overflow: hidden;
+        background: #fff;
+        color: #000;
+      }
+      .livon-hero__primary:hover { transform: scale(1.03); box-shadow: 0 0 24px 4px rgba(255,255,255,0.25); }
+      .livon-hero__primary:active,
+      .livon-hero__secondary:active { transform: scale(0.97); }
+      .livon-hero__secondary { color: #fff; }
+      .livon-hero__secondary:hover { transform: scale(1.03); }
+      .liquid-glass {
+        background: rgba(255,255,255,0.01);
+        background-blend-mode: luminosity;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+        position: relative;
+        overflow: hidden;
+      }
+      .liquid-glass::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1.4px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+      .liquid-glass-strong {
+        background: rgba(255,255,255,0.01);
+        background-blend-mode: luminosity;
+        backdrop-filter: blur(50px);
+        -webkit-backdrop-filter: blur(50px);
+        box-shadow: 4px 4px 4px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.15);
+        position: relative;
+        overflow: hidden;
+      }
+      .liquid-glass-strong::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1.4px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.2) 80%, rgba(255,255,255,0.5) 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+      .livon-story {
+        position: relative;
+        background: transparent;
+        color: #fff;
+        font-family: "Noto Sans KR", "Noto Sans", "Barlow", sans-serif;
+      }
+      .lv-story-film {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .lv-sec { position: relative; min-height: 100vh; padding: 6.5rem 0 4rem; overflow: hidden; background: transparent; }
+      .lv-sec:not(.lv-sec--film)::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.38) 40%, rgba(0,0,0,0.68));
+      }
+      .lv-sec--film { min-height: 100vh; }
+      .lv-fadevid {
+        position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
+        opacity: 0; transition: opacity 0.55s linear;
+      }
+      .lv-story-film.lv-fadevid {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        object-fit: cover;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .lv-sec__bg { position: absolute; inset: 0; background: #000 center/cover no-repeat; }
+      .lv-sec__veil { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.42) 30%, rgba(0,0,0,0.72)); }
+      .lv-sec__inner { position: relative; z-index: 2; width: min(1180px, calc(100% - 4rem)); margin: 0 auto; }
+      .lv-kicker { margin: 0 0 1.5rem; font-family: "Barlow", "Noto Sans KR", sans-serif; font-weight: 400; font-size: 0.95rem; color: rgba(255,255,255,0.8); }
+      .lv-display { margin: 0; font-family: "Instrument Serif", "Noto Serif KR", serif; font-style: italic; font-weight: 400; font-size: clamp(3.4rem, 8vw, 6rem); line-height: 0.9; letter-spacing: -0.04em; color: #fff; }
+      .lv-lead { max-width: 36rem; margin: 1.25rem 0 0; color: rgba(255,255,255,0.9); font-family: "Barlow", "Noto Sans KR", sans-serif; font-weight: 300; font-size: 1rem; line-height: 1.6; }
+      .lv-grid { display: grid; gap: 1.5rem; margin-top: 4rem; }
+      .lv-card--tall { min-height: 360px; display: flex; flex-direction: column; padding: 1.5rem; }
+      .lv-card__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem; }
+      .lv-ico { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: 0.75rem; flex: none; font-size: 1.1rem; }
+      .lv-tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.35rem; }
+      .lv-tags span { border-radius: 999px; padding: 0.25rem 0.7rem; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.9); font-size: 11px; font-family: "Barlow", "Noto Sans KR", sans-serif; }
+      .lv-card--tall h3 { margin-top: auto; font-family: "Instrument Serif", "Noto Serif KR", serif; font-style: italic; font-size: clamp(1.8rem, 3vw, 2.4rem); letter-spacing: -0.03em; font-weight: 400; }
+      .lv-card--tall p { max-width: 32ch; color: rgba(255,255,255,0.9); font-weight: 300; }
+      .lv-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .lv-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .lv-grid--cats { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      .lv-grid--stages { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .lv-grid--dash { grid-template-columns: 1.4fr 1fr 1fr; }
+      .lv-grid--dash .lv-card:first-child { grid-row: span 2; }
+      .lv-card, .lv-stage, .lv-feature, .lv-search {
+        border-radius: 1.25rem;
+        padding: 1.35rem 1.25rem 1.2rem;
+        color: inherit;
+        text-decoration: none;
+      }
+      .lv-card h3, .lv-feature h3, .lv-stage strong { margin: 0.35rem 0 0.4rem; font-size: 1.2rem; font-weight: 500; letter-spacing: -0.03em; }
+      .lv-card p, .lv-feature p, .lv-stage small { margin: 0; color: rgba(255,255,255,0.75); font-size: 0.92rem; font-weight: 300; line-height: 1.55; }
+      .lv-card__en, .lv-stage em { display: block; margin: 0; font-family: "Instrument Serif", serif; font-style: italic; font-size: 1.15rem; color: rgba(255,255,255,0.9); }
+      .lv-stage { display: flex; flex-direction: column; align-items: flex-start; min-height: 220px; text-align: left; cursor: pointer; color: #fff; border: 0; width: 100%; }
+      .lv-stage span { font-family: "Instrument Serif", serif; font-style: italic; font-size: clamp(3rem, 5vw, 4.4rem); line-height: 0.9; }
+      .lv-stage.is-on { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.45), inset 0 1px 1px rgba(255,255,255,0.2); }
+      .lv-feature { min-height: 280px; }
+      .lv-discover { display: grid; grid-template-columns: 1.15fr 1fr; gap: 1rem; margin-top: 2.5rem; }
+      .lv-discover .lv-grid { margin-top: 0; }
+      .lv-search { display: flex; margin-top: 2rem; padding: 0.4rem; }
+      .lv-search input { width: 100%; height: 3.2rem; border: 0; background: transparent; color: #fff; font: inherit; font-size: 1.05rem; padding: 0 1rem; outline: none; }
+      .lv-search input::placeholder { color: rgba(255,255,255,0.55); }
+      .lv-prompts { margin: 0.8rem 0 1rem; padding: 0; list-style: none; }
+      .lv-prompts li { padding: 0.55rem 0; border-top: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.88); }
+      .lv-empty { margin: 1.5rem 0 0; color: rgba(255,255,255,0.7); }
+      .lv-more { display: inline-flex; margin-top: 1.75rem; color: #fff; text-decoration: none; font-weight: 500; }
+      .lv-path { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
+      .lv-path .lv-card span { font-family: "Instrument Serif", serif; font-style: italic; font-size: 2rem; }
+      @font-face {
+        font-family: "Helvetica Regular";
+        src: url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.eot");
+        src: url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.eot?#iefix") format("embedded-opentype"),
+             url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.woff2") format("woff2"),
+             url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.woff") format("woff"),
+             url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.ttf") format("truetype"),
+             url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.svg#Helvetica Regular") format("svg");
+        font-display: swap;
+      }
+      .lv-lum, .lv-lum * { font-family: "Helvetica Regular", Helvetica, Arial, sans-serif; }
+      .lv-lum { position: relative; z-index: 1; width: 100%; height: 100svh; min-height: 100svh; overflow: hidden; background: #000; }
+      .lv-lum__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+      .lv-lum__main { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 80rem; flex: 1; box-sizing: border-box; padding: calc(var(--gnav-h, 74px) + 1rem) 1rem 1.5rem; }
+      .lv-lum__cta { flex: 1; width: 100%; }
+      .lv-lum .liquid-glass { background: rgba(255,255,255,0.01); background-blend-mode: luminosity; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); border: none; box-shadow: inset 0 1px 1px rgba(255,255,255,0.1); position: relative; overflow: hidden; }
+      .lv-lum .liquid-glass::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.4px; background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; pointer-events: none; }
+      .lv-lum__foot { width: 100%; border-radius: 1.5rem; padding: 1.5rem; color: rgba(255,255,255,0.7); margin-top: 8rem; box-sizing: border-box; animation: lvLumIn 1s ease-out 0.4s both; }
+      .lv-lum__grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+      .lv-lum__brand { display: flex; align-items: center; gap: 0.6rem; color: #fff; font-size: 1.25rem; font-weight: 500; }
+      .lv-lum__grid > div > p { margin: 1rem 0 0; max-width: 24rem; font-size: 0.875rem; line-height: 1.625; }
+      .lv-lum__links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+      .lv-lum__links h2 { margin: 0 0 1rem; color: #fff; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+      .lv-lum__links a { display: block; margin-top: 0.5rem; color: inherit; font-size: 0.75rem; text-decoration: none; transition: color .2s ease; }
+      .lv-lum__links a:hover { color: #fff; }
+      .lv-lum__bar { display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+      .lv-lum__bar p, .lv-lum__social span { margin: 0; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; }
+      .lv-lum__social { display: flex; align-items: center; gap: 0.85rem; }
+      .lv-lum__social a { display: grid; place-items: center; color: inherit; opacity: 0.7; transition: opacity .2s ease, color .2s ease; }
+      .lv-lum__social a:hover { opacity: 1; color: #fff; }
+      @keyframes lvLumIn { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+      @media (min-width: 768px) {
+        .lv-lum__foot { padding: 2.5rem; margin-top: 16rem; }
+        .lv-lum__grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 3rem; }
+        .lv-lum__grid > div:first-child { grid-column: span 5; }
+        .lv-lum__links { grid-column: span 7; }
+        .lv-lum__bar { flex-direction: row; gap: 1rem; }
+      }
+      .nx-hero {
+        position: relative;
+        z-index: 1;
+        height: 100svh;
+        min-height: 100svh;
+        overflow: hidden;
+        background: #000;
+        color: #fff;
+        scroll-margin-top: 0;
+      }
+      .nx-hero, .nx-hero * { font-family: "Geist", "Noto Sans KR", -apple-system, BlinkMacSystemFont, sans-serif; }
+      .nx-hero__video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
+      .nx-hero__body {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 5.5rem 1.25rem 2rem;
+      }
+      .nx-hero__main {
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .nx-hero__title {
+        max-width: 36rem;
+        margin: 0;
+        color: #010101;
+        font-size: 1.875rem;
+        font-weight: 600;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+      }
+      .nx-hero__cta { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+      .nx-hero__cta input {
+        width: 100%;
+        border: 0;
+        outline: none;
+        border-radius: 999px;
+        background: #fff;
+        color: #111827;
+        padding: 0.75rem 1.25rem;
+        font: inherit;
+        font-size: 0.875rem;
+      }
+      .nx-hero__cta input::placeholder { color: #9ca3af; }
+      .nx-hero__cta button {
+        border: 0;
+        border-radius: 999px;
+        padding: 0.75rem 1.5rem;
+        color: #fff;
+        font: inherit;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        background: linear-gradient(to bottom, #2B2B2B, #101010);
+      }
+      .nx-hero__cta button:hover { opacity: 0.9; }
+      .nx-hero__cards { display: flex; flex-direction: column; gap: 1rem; }
+      .nx-card {
+        border-radius: 1rem;
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        padding: 1.25rem;
+      }
+      .nx-card__num {
+        margin: 0;
+        color: #010101;
+        font-family: "Silkscreen", cursive;
+        font-size: 1.875rem;
+        font-weight: 400;
+        letter-spacing: -0.03em;
+        line-height: 1;
+      }
+      .nx-card__body { margin: 0.75rem 0 0; color: rgba(1,1,1,0.7); font-size: 0.875rem; line-height: 1.6; }
+      .nx-card__brand { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+      .nx-card__brand span {
+        display: grid; place-items: center; width: 1.5rem; height: 1.5rem;
+        border-radius: 0.25rem; background: #000; color: #fff; font-size: 0.75rem; font-weight: 700;
+      }
+      .nx-card__brand strong { color: #010101; font-size: 0.875rem; }
+      .nx-card__quote { margin: 0; color: rgba(1,1,1,0.8); font-size: 0.875rem; line-height: 1.6; }
+      .nx-card__who { display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem; }
+      .nx-card__who img { width: 2.25rem; height: 2.25rem; border-radius: 999px; object-fit: cover; background: rgba(255,255,255,0.2); }
+      .nx-card__who strong { display: block; color: #010101; font-size: 0.875rem; }
+      .nx-card__who small { display: block; color: rgba(1,1,1,0.6); font-size: 0.75rem; }
+      @media (min-width: 640px) {
+        .nx-hero__body { padding: 5.5rem 2rem 3rem; }
+        .nx-hero__title { font-size: 2.25rem; }
+        .nx-hero__cta { display: inline-flex; flex-direction: row; align-items: center; width: auto; margin-top: 2rem; border-radius: 999px; background: #fff; padding: 0.375rem; gap: 0; }
+        .nx-hero__cta input { width: 16rem; border-radius: 0; background: transparent; padding: 0.5rem 1rem; }
+        .nx-hero__cta button { padding: 0.625rem 1.5rem; }
+        .nx-hero__cards { flex-direction: row; gap: 1.25rem; }
+        .nx-card { width: 16rem; padding: 1.5rem; }
+        .nx-card__num { font-size: 2.25rem; }
+        .nx-card__body { margin-top: 1rem; }
+        .nx-card__brand { margin-bottom: 1rem; }
+        .nx-card__who { margin-top: 1.25rem; }
+      }
+      @media (min-width: 1024px) {
+        .nx-hero__body { padding: 5.5rem 3rem 4rem; }
+        .nx-hero__main { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 2rem; }
+        .nx-hero__title { color: #fff; font-size: 3.5rem; }
+        .nx-card__num, .nx-card__brand strong, .nx-card__who strong { color: #fff; }
+        .nx-card__body { color: rgba(255,255,255,0.7); }
+        .nx-card__quote { color: rgba(255,255,255,0.8); }
+        .nx-card__who small { color: rgba(255,255,255,0.6); }
+      }
+      .lv-close { text-align: center; }
+      .lv-close::before {
+        background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.18) 42%, rgba(0,0,0,0.72));
+      }
+      .lv-endvid {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+      .lv-endfade {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 10rem;
+        z-index: 2;
+        pointer-events: none;
+        background: linear-gradient(to top, #000, transparent);
+      }
+      .lv-close .lv-sec__inner,
+      .lv-close .lv-foot { position: relative; z-index: 3; }
+      .lv-close .lv-lead, .lv-close .lv-display { margin-left: auto; margin-right: auto; }
+      .lv-close__actions { display: flex; justify-content: center; gap: 0.8rem; margin-top: 2rem; flex-wrap: wrap; }
+      .lv-foot { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem 1.4rem; margin-top: 4rem; padding-top: 1.5rem; }
+      .lv-foot a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 0.92rem; }
+      .lv-card:hover, .lv-stage:hover { transform: scale(1.015); filter: brightness(1.08); }
+      .lv-reveal { transition: opacity 0.7s ease, filter 0.7s ease, transform 0.7s ease; }
+      @media (max-width: 980px) {
+        .lv-grid--3, .lv-grid--stages, .lv-discover, .lv-path, .lv-grid--dash { grid-template-columns: 1fr 1fr; }
+        .lv-grid--cats { grid-template-columns: 1fr 1fr; }
+        .lv-grid--dash .lv-card:first-child { grid-row: auto; }
+      }
+      @media (max-width: 680px) {
+        .lv-grid--3, .lv-grid--2, .lv-grid--stages, .lv-grid--cats, .lv-discover, .lv-path, .lv-grid--dash { grid-template-columns: 1fr; }
+        .lv-sec__inner { width: min(1120px, calc(100% - 1.5rem)); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .lv-reveal { transition: none; }
+      }
+      .livon-pane {
+        scroll-margin-top: 5.5rem;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0a0a0a;
+        color: #fff;
+      }
+      .livon-pane h2 {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 4.5rem);
+        font-weight: 700;
+        letter-spacing: -0.04em;
+      }
+      .livon-tools {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 0.15rem;
+        margin-right: 0.35rem;
+      }
+      .livon-tool {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.4rem;
+        height: 2.4rem;
+        padding: 0;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+      }
+      .livon-tool:hover,
+      .livon-tool[aria-expanded="true"] {
+        background: rgba(0, 0, 0, 0.06);
+      }
+      .livon-panel {
+        position: absolute;
+        top: calc(100% + 0.65rem);
+        right: 0;
+        z-index: 20;
+        width: min(20rem, calc(100vw - 2rem));
+        padding: 1rem 1rem 0.85rem;
+        background: #fff;
+        color: #111;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 16px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+      }
+      .livon-panel__title {
+        margin: 0 0 0.7rem;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+      .livon-search input {
+        width: 100%;
+        height: 2.6rem;
+        padding: 0 0.85rem;
+        border: 1px solid rgba(0, 0, 0, 0.14);
+        border-radius: 10px;
+        font: inherit;
+        font-size: 0.95rem;
+      }
+      .livon-panel__note {
+        margin: 0.7rem 0 0.15rem;
+        color: #666;
+        font-size: 0.82rem;
+        line-height: 1.45;
+      }
+      .livon-panel__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .livon-panel__list li,
+      .livon-panel--menu a,
+      .livon-panel--menu button {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-height: 2.4rem;
+        padding: 0.35rem 0.15rem;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        font-size: 0.95rem;
+        text-align: left;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .livon-panel__list li:first-child,
+      .livon-panel--menu a:first-of-type {
+        border-top: 0;
+      }
+      .livon-search-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin: 0.65rem 0 0.35rem;
+      }
+      .livon-search-tabs button {
+        min-height: 1.9rem;
+        padding: 0.2rem 0.55rem;
+        border: 1px solid rgba(0,0,0,0.14);
+        border-radius: 999px;
+        background: #fff;
+        font: inherit;
+        font-size: 0.75rem;
+        font-weight: 650;
+        cursor: pointer;
+      }
+      .livon-search-tabs button.is-on {
+        background: #0a0a0a;
+        border-color: #0a0a0a;
+        color: #fff;
+      }
+      .livon-panel [data-livon-search-body] {
+        max-height: min(55vh, 22rem);
+        overflow: auto;
+        margin-top: 0.35rem;
+      }
+      .livon-panel [data-livon-search-body] .livon-panel__list button {
+        width: 100%;
+        text-align: left;
+        border: 0;
+        border-top: 1px solid rgba(0,0,0,0.06);
+        background: transparent;
+        font: inherit;
+        font-size: 0.95rem;
+        min-height: 2.4rem;
+        cursor: pointer;
+        padding: 0.35rem 0.15rem;
+      }
+      @media (max-width: 640px) {
+        .livon-panel {
+          width: min(22rem, calc(100vw - 1.25rem));
+          right: -0.5rem;
+        }
+      }
+    </style>
+    <script>
+      (function () {
+        var root = document.querySelector("[data-livon-tools]");
+        if (!root) return;
+        var buttons = root.querySelectorAll("[data-livon-tool]");
+        function closeAll() {
+          buttons.forEach(function (btn) {
+            btn.setAttribute("aria-expanded", "false");
+            var panel = document.getElementById(btn.getAttribute("aria-controls"));
+            if (panel) panel.hidden = true;
+          });
+        }
+        buttons.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var panel = document.getElementById(btn.getAttribute("aria-controls"));
+            var open = btn.getAttribute("aria-expanded") === "true";
+            closeAll();
+            if (!open && panel) {
+              btn.setAttribute("aria-expanded", "true");
+              panel.hidden = false;
+              var field = panel.querySelector("input");
+              if (field) field.focus();
+            }
+          });
+        });
+        document.addEventListener("click", function (event) {
+          if (!root.contains(event.target)) closeAll();
+        });
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") closeAll();
+        });
+        var form = root.querySelector("[data-livon-search]");
+        var note = root.querySelector("[data-livon-search-note]");
+        if (form && note) {
+          form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            var q = new FormData(form).get("q");
+            q = q ? String(q).trim() : "";
+            if (window.LivonPlatform && typeof window.LivonPlatform.search === "function") {
+              var summary = window.LivonPlatform.search(q, "all");
+              note.textContent = summary || (q ? ("‘" + q + "’ 검색 결과를 확인하세요.") : "콘텐츠 · Life Stage · 전문가 · 서비스를 함께 찾습니다.");
+            } else if (window.LivonHome && typeof window.LivonHome.search === "function") {
+              var summary2 = window.LivonHome.search(q);
+              note.textContent = summary2 || ("‘" + q + "’ 검색 결과를 확인하세요.");
+            } else {
+              note.textContent = q ? ("‘" + q + "’에 대한 결과가 없습니다.") : "콘텐츠 · 생활 정보 · 서비스를 함께 찾습니다.";
+            }
+          });
+        }
+        root.addEventListener("click", function (e) {
+          var prof = e.target.closest("[data-lv-plat-profile]");
+          if (!prof) return;
+          var view = prof.getAttribute("data-lv-plat-profile") || "settings";
+          try { sessionStorage.setItem("livon.mlGoto", view === "family" ? "family" : view === "saved" ? "saved" : "settings"); } catch (err) {}
+        });
+        var logout = root.querySelector("[data-livon-logout]");
+        if (logout) {
+          logout.addEventListener("click", function () {
+            closeAll();
+          });
+        }
+      })();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        document.querySelectorAll("[data-livon-fade]").forEach(function (el) {
+          requestAnimationFrame(function () { el.classList.add("is-in"); });
+        });
+        var video = document.querySelector("[data-livon-video]");
+        var canvas = document.querySelector("[data-livon-canvas]");
+        var bg = document.querySelector("[data-livon-bg]");
+        if (!video || !canvas || !bg) return;
+        var frames = [];
+        var capturing = true;
+        var lastTime = -1;
+        var raf = 0;
+        function captureFrame() {
+          if (!capturing || video.readyState < 2 || video.currentTime === lastTime) return;
+          lastTime = video.currentTime;
+          var scale = Math.min(1, 960 / (video.videoWidth || 960));
+          var w = Math.max(1, Math.round(video.videoWidth * scale));
+          var h = Math.max(1, Math.round(video.videoHeight * scale));
+          var off = document.createElement("canvas");
+          off.width = w;
+          off.height = h;
+          off.getContext("2d").drawImage(video, 0, 0, w, h);
+          frames.push(off);
+        }
+        function loop() {
+          captureFrame();
+          if (!capturing) return;
+          if (video.requestVideoFrameCallback) video.requestVideoFrameCallback(loop);
+          else raf = requestAnimationFrame(loop);
+        }
+        function start() {
+          video.play().catch(function () {});
+          loop();
+        }
+        video.addEventListener("loadedmetadata", start);
+        video.addEventListener("ended", function () {
+          capturing = false;
+          cancelAnimationFrame(raf);
+          if (!frames.length) return;
+          canvas.width = frames[0].width;
+          canvas.height = frames[0].height;
+          canvas.style.display = "block";
+          video.style.display = "none";
+          var ctx = canvas.getContext("2d");
+          var index = 0;
+          var direction = 1;
+          var last = performance.now();
+          var draw = 0;
+          function render(now) {
+            draw = requestAnimationFrame(render);
+            if (now - last < 1000 / 30) return;
+            last = now;
+            ctx.drawImage(frames[index], 0, 0);
+            index += direction;
+            if (index >= frames.length - 1) { index = frames.length - 1; direction = -1; }
+            if (index <= 0) { index = 0; direction = 1; }
+          }
+          draw = requestAnimationFrame(render);
+        });
+        if (video.readyState >= 1) start();
+        var targetX = 0, targetY = 0, currentX = 0, currentY = 0, move = 0;
+        window.addEventListener("mousemove", function (event) {
+          var cx = window.innerWidth / 2;
+          var cy = window.innerHeight / 2;
+          targetX = ((event.clientX - cx) / cx) * 20;
+          targetY = ((event.clientY - cy) / cy) * 20;
+        });
+        function tick() {
+          currentX += (targetX - currentX) * 0.06;
+          currentY += (targetY - currentY) * 0.06;
+          if (window.gsap) gsap.set(bg, { x: currentX, y: currentY });
+          move = requestAnimationFrame(tick);
+        }
+        move = requestAnimationFrame(tick);
+      })();
+    </script>
+    <script src="/lang-nav.js?v=20260924livonapp"></script>
+    <script src="/film-keep.js?v=20260925film3"></script>
+    <script src="/site-chrome.js?v=20260924tab2" defer></script>
+    <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
+    <script>
+      (function () {
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var nodes = document.querySelectorAll(".livon-story .lv-reveal");
+        if (!reduce && "IntersectionObserver" in window) {
+          nodes.forEach(function (el) {
+            el.style.opacity = "0";
+            el.style.filter = "blur(10px)";
+            el.style.transform = "translateY(24px)";
+          });
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              var el = entry.target;
+              var i = Number(el.dataset.i || 0);
+              el.style.transitionDelay = Math.min(i, 6) * 80 + "ms";
+              el.style.opacity = "1";
+              el.style.filter = "blur(0px)";
+              el.style.transform = "none";
+              io.unobserve(el);
+            });
+          }, { threshold: 0.12 });
+          nodes.forEach(function (el, i) { el.dataset.i = String(i % 4); io.observe(el); });
+        }
+        function keepMoving(video) {
+          video.muted = true;
+          video.defaultMuted = true;
+          video.loop = true;
+          video.autoplay = true;
+          video.playsInline = true;
+          video.style.opacity = "1";
+          var play = video.play();
+          if (play && play.catch) play.catch(function () {});
+        }
+        function livonView(hash) {
+          if (hash === "life" || hash === "life-stages" || hash.indexOf("stage-") === 0 || (hash.indexOf("life-") === 0 && hash !== "life-now")) return "life";
+          if (hash === "today" || hash.indexOf("td-") === 0) return "today";
+          if (hash === "life-now" || hash.indexOf("ml-") === 0 || hash.indexOf("profile-") === 0) return "life-now";
+          if (hash === "explore" || hash.indexOf("ex-") === 0) return "explore";
+          if (hash === "community" || hash.indexOf("cm-") === 0) return "community";
+          if (hash === "livon-ai" || hash.indexOf("ai-") === 0) return "livon-ai";
+          if (hash === "livon-home" || hash.indexOf("hm-") === 0 || !hash) return "home";
+          return "home";
+        }
+        function pauseHiddenVideos(activeView) {
+          document.querySelectorAll("main > [data-lv-screen]").forEach(function (screen) {
+            var on = screen.getAttribute("data-lv-screen") === activeView;
+            screen.querySelectorAll("video").forEach(function (video) {
+              // First-screen film BGs stay warm/playing so menu switches never stall.
+              if (window.FilmKeep && window.FilmKeep.isHeroFilm && window.FilmKeep.isHeroFilm(video)) {
+                keepMoving(video);
+                return;
+              }
+              if (on) {
+                var play = video.play();
+                if (play && play.catch) play.catch(function () {});
+              } else {
+                try { video.pause(); } catch (e) {}
+              }
+            });
+          });
+          if (window.FilmKeep && typeof window.FilmKeep.kick === "function") {
+            window.FilmKeep.kick(document.querySelector('main > [data-lv-screen="' + activeView + '"]') || document);
+          }
+        }
+        function showLivonScreen() {
+          var hash = (location.hash || "#livon-home").slice(1);
+          var view = livonView(hash);
+          var prev = document.documentElement.dataset.lvView;
+          var switched = prev !== view;
+          document.documentElement.dataset.lvView = view;
+          document.querySelectorAll(".gnav__nav .gnav__link, .gnav-mobile__sublink").forEach(function (link) {
+            var id = (link.getAttribute("href") || "").split("#")[1] || "livon-home";
+            var on = livonView(id) === view;
+            if (on) link.setAttribute("aria-current", "page");
+            else link.removeAttribute("aria-current");
+            var group = link.closest(".gnav-dd");
+            if (group) group.classList.toggle("gnav-dd--active", on);
+          });
+          if (switched) {
+            window.scrollTo(0, 0);
+            pauseHiddenVideos(view);
+          } else if (window.FilmKeep && typeof window.FilmKeep.kick === "function") {
+            window.FilmKeep.kick(document.querySelector('main > [data-lv-screen="' + view + '"]') || document);
+          }
+          if (view === "life") {
+            if (window.LivonLife && typeof window.LivonLife.onShow === "function") {
+              window.LivonLife.onShow(hash);
+            } else if (switched && hash.indexOf("stage-") !== 0 && hash.indexOf("life-") !== 0) {
+              window.scrollTo(0, 0);
+            }
+          } else if (view === "life-now") {
+            if (window.LivonMyLife && typeof window.LivonMyLife.onShow === "function") {
+              window.LivonMyLife.onShow(hash);
+            } else if (switched && hash.indexOf("ml-") !== 0) {
+              window.scrollTo(0, 0);
+            }
+          } else if (view === "explore") {
+            if (window.LivonExplore && typeof window.LivonExplore.onShow === "function") {
+              window.LivonExplore.onShow(hash);
+            } else if (switched && hash.indexOf("ex-") !== 0) {
+              window.scrollTo(0, 0);
+            }
+          } else if (view === "today") {
+            if (window.LivonToday && typeof window.LivonToday.onShow === "function") {
+              window.LivonToday.onShow(hash);
+            } else if (switched && hash.indexOf("td-") !== 0) {
+              window.scrollTo(0, 0);
+            }
+          } else if (view === "community") {
+            if (window.LivonCommunity && typeof window.LivonCommunity.onShow === "function") {
+              window.LivonCommunity.onShow(hash);
+            } else if (switched && hash.indexOf("cm-") !== 0) {
+              window.scrollTo(0, 0);
+            }
+          } else if (view === "livon-ai") {
+            if (window.LivonAI && typeof window.LivonAI.onShow === "function") {
+              window.LivonAI.onShow(hash);
+            } else if (switched && hash.indexOf("ai-") !== 0) {
+              window.scrollTo(0, 0);
+            }
+          } else if (view === "home") {
+            if (window.LivonHome && typeof window.LivonHome.onShow === "function") {
+              window.LivonHome.onShow(hash);
+            } else if (switched && hash.indexOf("hm-") !== 0) {
+              window.scrollTo(0, 0);
+            }
+          } else if (switched) {
+            window.scrollTo(0, 0);
+          }
+        }
+        /* Instant tab switch — hash only, no full reload */
+        document.addEventListener("click", function (event) {
+          var link = event.target.closest(".gnav__nav .gnav__link, .gnav-mobile__sublink");
+          if (!link) return;
+          var href = link.getAttribute("href") || "";
+          var hash = href.indexOf("#") >= 0 ? href.split("#")[1] : "";
+          if (!hash) return;
+          event.preventDefault();
+          if ((location.hash || "").slice(1) === hash) {
+            showLivonScreen();
+            return;
+          }
+          location.hash = hash;
+        }, true);
+        window.addEventListener("hashchange", showLivonScreen);
+        showLivonScreen();
+        pauseHiddenVideos(document.documentElement.dataset.lvView || "home");
+        var vnVideo = document.getElementById("vnVideo");
+        if (vnVideo) {
+          var revealVn = function () { vnVideo.classList.add("is-ready"); };
+          if (vnVideo.readyState >= 3) revealVn();
+          else vnVideo.addEventListener("loadeddata", revealVn, { once: true });
+          var kickVn = function () {
+            var play = vnVideo.play();
+            if (play && play.catch) play.catch(function () {});
+          };
+          kickVn();
+          window.addEventListener("touchstart", kickVn, { once: true, passive: true });
+          window.addEventListener("click", kickVn, { once: true });
+        }
+        var ctaChat = document.querySelector("[data-lv-chat]");
+        if (ctaChat) {
+          ctaChat.addEventListener("submit", function (event) {
+            event.preventDefault();
+            var field = ctaChat.querySelector("textarea");
+            var text = (field.value || "").trim();
+            if (!text) return;
+            var box = document.querySelector("[data-lv-msgs]");
+            var user = document.createElement("p");
+            user.className = "is-user";
+            user.textContent = text;
+            var reply = document.createElement("p");
+            reply.className = "is-bot";
+            reply.textContent = "This course walkthrough is a preview. A live answer is not connected yet.";
+            box.appendChild(user);
+            box.appendChild(reply);
+            field.value = "";
+            box.scrollTop = box.scrollHeight;
+          });
+        }
+        var dash = document.querySelector("[data-lv-dash]");
+        var grass = document.querySelector("[data-lv-grass]");
+        if (dash && grass) {
+          var moveCta = function () {
+            if (document.documentElement.dataset.lvView !== "community") return;
+            var section = document.querySelector(".lv-cta");
+            var rect = section.getBoundingClientRect();
+            var span = rect.height + window.innerHeight;
+            var progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / span));
+            var mobile = window.innerWidth < 800;
+            dash.style.transform = "translateY(" + (120 - progress * 240) + "px)";
+            grass.style.transform = "translateY(" + (mobile ? 80 - progress * 120 : 200 - progress * 400) + "px)";
+          };
+          window.addEventListener("scroll", moveCta, { passive: true });
+          window.addEventListener("hashchange", moveCta);
+          moveCta();
+        }
+        var nxForm = document.querySelector("[data-nx-email]");
+        if (nxForm) nxForm.addEventListener("submit", function (event) { event.preventDefault(); });
+        document.querySelectorAll("main video").forEach(function (video) {
+          keepMoving(video);
+          video.addEventListener("loadeddata", function () { keepMoving(video); });
+          video.addEventListener("waiting", function () { keepMoving(video); });
+          video.addEventListener("stalled", function () { keepMoving(video); });
+          video.addEventListener("error", function () { setTimeout(function () { keepMoving(video); }, 400); });
+          video.addEventListener("pause", function () {
+            if (window.FilmKeep && window.FilmKeep.isHeroFilm && window.FilmKeep.isHeroFilm(video)) keepMoving(video);
+          });
+          video.addEventListener("ended", function () { video.currentTime = 0; keepMoving(video); });
+        });
+        document.addEventListener("visibilitychange", function () {
+          if (document.visibilityState !== "visible") return;
+          document.querySelectorAll("main video").forEach(keepMoving);
+          if (window.FilmKeep && typeof window.FilmKeep.kick === "function") window.FilmKeep.kick(document);
+        });
+        if (window.FilmKeep && typeof window.FilmKeep.kick === "function") window.FilmKeep.kick(document);
+        var stages = document.querySelector("[data-stages]");
+        if (stages) {
+          stages.addEventListener("click", function (event) {
+            var btn = event.target.closest("[data-stage]");
+            if (!btn) return;
+            stages.querySelectorAll("[data-stage]").forEach(function (el) { el.classList.toggle("is-on", el === btn); });
+          });
+        }
+        var form = document.querySelector("[data-lv-search]");
+        if (form) {
+          form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            var q = new FormData(form).get("q");
+            var open = document.querySelector('[data-livon-tool="search"]');
+            var field = document.getElementById("livon-search-input");
+            if (open) open.click();
+            if (field) {
+              field.value = q ? String(q) : "";
+              field.focus();
+            }
+          });
+        }
+      })();
+    </script>
+  
+    <div class="lv-life-modal" id="lv-life-age-modal" hidden>
+      <button type="button" class="lv-life-modal__backdrop" data-lv-life-modal-close aria-label="닫기"></button>
+      <div class="lv-life-modal__panel" role="dialog" aria-modal="true" aria-labelledby="lv-life-age-title">
+        <button type="button" class="lv-life-modal__close" data-lv-life-modal-close aria-label="닫기">×</button>
+        <h2 id="lv-life-age-title">나의 라이프 스테이지</h2>
+        <p>연령대를 선택하면 해당 상세 섹션으로 이동합니다. 다른 연령대도 자유롭게 탐색할 수 있습니다.</p>
+        <div class="lv-life-modal__list">
+          <button type="button" data-age="10">10대 — 성장과 발견</button>
+          <button type="button" data-age="20">20대 — 독립과 도전</button>
+          <button type="button" data-age="30">30대 — 성장과 균형</button>
+          <button type="button" data-age="40">40대 — 안정과 확장</button>
+          <button type="button" data-age="50">50대 — 전환과 재발견</button>
+          <button type="button" data-age="60">60대 — 새로운 시작</button>
+          <button type="button" data-age="70">70대 이상 — 여유와 연결</button>
+        </div>
+        <p class="lv-life-modal__foot">선택값은 이 기기에만 저장됩니다. 프로필 동기화는 로그인 연동 후 제공됩니다.</p>
+      </div>
+    </div>
+    <div class="lv-life-modal" id="lv-life-login-modal" hidden>
+      <button type="button" class="lv-life-modal__backdrop" data-lv-life-modal-close aria-label="닫기"></button>
+      <div class="lv-life-modal__panel" role="dialog" aria-modal="true" aria-labelledby="lv-life-login-title">
+        <button type="button" class="lv-life-modal__close" data-lv-life-modal-close aria-label="닫기">×</button>
+        <h2 id="lv-life-login-title">로그인이 필요합니다</h2>
+        <p data-lv-life-login-msg>이 기능은 로그인 후 이용할 수 있습니다. 현재 계정 연동은 준비 중입니다.</p>
+        <div style="margin-top:1.25rem;display:flex;gap:.5rem;flex-wrap:wrap">
+          <button type="button" class="lv-life-btn lv-life-btn--dark" data-lv-life-modal-close>확인</button>
+        </div>
+      </div>
+    </div>
+    <div class="lv-life-modal" id="livon-onboard-modal" hidden>
+      <button type="button" class="lv-life-modal__backdrop" data-lv-onboard-close aria-label="닫기"></button>
+      <div class="lv-life-modal__panel" role="dialog" aria-modal="true" aria-labelledby="livon-onboard-title">
+        <button type="button" class="lv-life-modal__close" data-lv-onboard-close aria-label="닫기">×</button>
+        <h2 id="livon-onboard-title">나에게 맞는 LIVON 시작</h2>
+        <p>연령대 · 생활 상태 · 지금 중요한 것만 고르면 됩니다. 민감한 정보는 묻지 않으며, 나중에 언제든 바꿀 수 있습니다.</p>
+        <p class="lv-life-modal__foot">1. 연령대</p>
+        <p class="lv-life-modal__label">연령대 · Life Stage</p>
+        <div class="lv-life-chips" data-lv-onboard-stages></div>
+        <p class="lv-life-modal__foot">2. 현재 생활 상태</p>
+        <p class="lv-life-modal__label">현재 생활 상태</p>
+        <div class="lv-life-chips" data-lv-onboard-sits></div>
+        <p class="lv-life-modal__foot">3. 현재 나에게 중요한 것</p>
+        <p class="lv-life-modal__label">현재 나에게 중요한 것 · 관심·목표</p>
+        <div class="lv-life-chips" data-lv-onboard-goals></div>
+        <div style="margin-top:1.25rem;display:flex;gap:.5rem;flex-wrap:wrap">
+          <button type="button" class="lv-life-btn lv-life-btn--dark" data-lv-onboard-apply>시작하기</button>
+          <button type="button" class="lv-life-btn lv-life-btn--outline" data-lv-onboard-skip>나중에 하기</button>
+        </div>
+        <p class="lv-life-modal__foot">선택값은 이 기기에만 저장됩니다. 계정 동기화는 준비 중입니다.</p>
+      </div>
+    </div>
+
+    <script src="/livon/life-data.js?v=20260925life19"></script>
+    <script src="/livon/life-events-data.js?v=20260925le5"></script>
+    <script src="/livon/livon-platform.js?v=20260925plat2"></script>
+    <script src="/livon/life-page.js?v=20260925life23"></script>
+
+    <div class="lv-ml-modal" id="lv-ml-age-modal" hidden>
+      <button type="button" class="lv-ml-modal__backdrop" data-lv-ml-modal-close aria-label="닫기"></button>
+      <div class="lv-ml-modal__panel" role="dialog" aria-modal="true" aria-labelledby="lv-ml-age-title">
+        <button type="button" class="lv-ml-modal__close" data-lv-ml-modal-close aria-label="닫기">×</button>
+        <h2 id="lv-ml-age-title">나의 라이프 스테이지</h2>
+        <p>현재 생애주기를 선택하세요. 다른 연령대 콘텐츠도 자유롭게 탐색할 수 있습니다.</p>
+        <div class="lv-ml-modal__list">
+          <button type="button" data-age="10">10대 — 성장과 발견</button>
+          <button type="button" data-age="20">20대 — 독립과 도전</button>
+          <button type="button" data-age="30">30대 — 성장과 균형</button>
+          <button type="button" data-age="40">40대 — 안정과 확장</button>
+          <button type="button" data-age="50">50대 — 전환과 재발견</button>
+          <button type="button" data-age="60">60대 — 새로운 시작</button>
+          <button type="button" data-age="70">70대 이상 — 여유와 연결</button>
+        </div>
+        <p class="lv-ml-modal__foot">선택값은 이 기기에만 저장됩니다.</p>
+      </div>
+    </div>
+    <div class="lv-ml-modal" id="lv-ml-login-modal" hidden>
+      <button type="button" class="lv-ml-modal__backdrop" data-lv-ml-modal-close aria-label="닫기"></button>
+      <div class="lv-ml-modal__panel" role="dialog" aria-modal="true" aria-labelledby="lv-ml-login-title">
+        <button type="button" class="lv-ml-modal__close" data-lv-ml-modal-close aria-label="닫기">×</button>
+        <h2 id="lv-ml-login-title">로그인이 필요합니다</h2>
+        <p>이 기능은 로그인 후 이용할 수 있습니다. 현재 계정 연동은 준비 중입니다.</p>
+        <div style="margin-top:1.25rem"><button type="button" class="lv-ml-btn" data-lv-ml-modal-close>확인</button></div>
+      </div>
+    </div>
+    <script src="/livon/life-now-data.js?v=20260925ml9"></script>
+    <script src="/livon/life-now-page.js?v=20260925ml16"></script>
+    <script src="/livon/explore-data.js?v=20260925ex9"></script>
+    <script src="/livon/explore-page.js?v=20260925ex9"></script>
+    <script src="/livon/community-data.js?v=20260925cm12"></script>
+    <script src="/livon/community-page.js?v=20260925cm12"></script>
+    <script src="/livon/today-data.js?v=20260925td16"></script>
+    <script src="/livon/today-page.js?v=20260925td18"></script>
+    <script src="/livon/ai-page.js?v=20260925ai7"></script>
+    <script src="/livon/connected-menus.js?v=20260925a"></script>
+    <script src="/livon/home-page.js?v=20260925hm18"></script>
+
+
+  </body>
+</html>
