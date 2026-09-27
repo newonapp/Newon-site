@@ -2,7 +2,7 @@
  * Unified product catalog for Product Studio hubs.
  * @see APP_CATALOG for live apps
  */
-import { APP_CATALOG } from "./portfolio-data.mjs";
+import { APP_CATALOG, loadPortfolioApps } from "./portfolio-data.mjs";
 
 /** @typedef {'apps'|'ai'|'saas'|'games'|'tools'|'store'|'labs'} ProductType */
 /** @typedef {'concept'|'building'|'beta'|'live'|'paused'|'archived'} ProductStatus */
@@ -109,12 +109,21 @@ export const GAMES_PRODUCTS = [
   },
 ];
 
+/** Same rule as the /apps/ showcase: an app is live only when it has a real store link. */
+function appIsLive(app, lang) {
+  const loaded = loadPortfolioApps(lang).find((a) => a.slug === app.slug) || {};
+  return (
+    String(loaded.appStoreUrl || "").startsWith("http") ||
+    String(loaded.googlePlayUrl || "").startsWith("http")
+  );
+}
+
 export function appsAsProducts(lang = "ko") {
   return APP_CATALOG.map((app) => ({
     id: app.slug,
     slug: app.slug,
     type: "apps",
-    status: "live",
+    status: appIsLive(app, lang) ? "live" : "building",
     name: app.name,
     taglineKey: null,
     tagline: app.label || app.name,
@@ -165,7 +174,9 @@ export function productCta(product, lang = "ko") {
     paused: { label: "View Project", action: "open" },
     archived: { label: "Archive", action: "open" },
   };
-  const cfg = labels[status] || labels.concept;
+  let cfg = labels[status] || labels.concept;
+  // An app that is still being prepared keeps its own intro page (e.g. #eaton-app); only the badge changes.
+  if (product.type === "apps" && product.homeHash && status !== "live") cfg = { label: "View App", action: "open" };
   let href = "#";
   if (cfg.action === "open") {
     if (product.type === "apps" && product.homeHash) href = `../${product.homeHash}`;

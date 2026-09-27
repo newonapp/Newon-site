@@ -201,7 +201,7 @@ const KO = {
       n: "03",
       title: "LivOn",
       body: "생애주기 플랫폼은 준비 중이며, 아직 출시 전입니다.",
-      href: "../lifestage/",
+      href: "../livon/",
     },
     {
       n: "04",
@@ -247,7 +247,7 @@ const KO = {
       badge: "향후 확장",
       body: "10대부터 70대까지, 삶의 단계마다 필요한 정보와 생활 서비스를 연결하는 플랫폼을 준비합니다.",
       notes: [],
-      links: [{ href: "../lifestage/", label: "LivOn 소개 →" }],
+      links: [{ href: "../livon/", label: "LivOn 소개 →" }],
     },
     {
       n: "03",
@@ -561,7 +561,7 @@ const EN = {
       n: "03",
       title: "LivOn",
       body: "The life-stage platform is in preparation and is not launched yet.",
-      href: "../lifestage/",
+      href: "../livon/",
     },
     {
       n: "04",
@@ -607,7 +607,7 @@ const EN = {
       badge: "Planned expansion",
       body: "A platform in preparation, connecting information and living services from the teens through the 70s.",
       notes: [],
-      links: [{ href: "../lifestage/", label: "LivOn →" }],
+      links: [{ href: "../livon/", label: "LivOn →" }],
     },
     {
       n: "03",

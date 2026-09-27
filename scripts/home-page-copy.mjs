@@ -46,8 +46,8 @@ const KO = {
     statusPlanned: "확장 예정",
     futureLabel: "향후 확장",
 
-    consumerEyebrow: "NEWON CONSUMER",
-    consumerTitle: "Newon Consumer",
+    consumerEyebrow: "NEWON APPS",
+    consumerTitle: "Newon Apps",
     consumerSlogan: "생활 앱 생태계",
     consumerBody:
       "일상의 다양한 순간을 연결하는 통합 서비스. 금융, 건강, 가족, 자기관리, 여행 등 일상에 필요한 다양한 서비스를 하나의 생태계로 연결합니다.",
@@ -99,7 +99,7 @@ const KO = {
     lifeStageFuture: [
       "생애주기별 맞춤 정보·추천",
       "전문가·관련 서비스 연결",
-      "Consumer · Ongil과의 연계",
+      "Apps · Ongil과의 연계",
     ],
     lifeStageCta: "자세히 보기",
     lifeStageAria: "생애주기 단계",
@@ -191,7 +191,7 @@ const KO = {
     ecoLead: "삶의 모든 순간을 연결하는 기술.",
     ecoAria: "Newon 생태계 연결",
     ecoNodes: [
-      { id: "consumer", label: "Consumer" },
+      { id: "consumer", label: "Apps" },
       { id: "ai", label: "AI" },
       { id: "lifestage", label: "LivOn" },
       { id: "ongil", label: "Ongil" },
@@ -358,8 +358,8 @@ const EN = {
     statusPlanned: "In expansion",
     futureLabel: "Roadmap",
 
-    consumerEyebrow: "NEWON CONSUMER",
-    consumerTitle: "Newon Consumer",
+    consumerEyebrow: "NEWON APPS",
+    consumerTitle: "Newon Apps",
     consumerSlogan: "A life-app ecosystem for every everyday moment",
     consumerBody:
       "We connect finance, health, family, self-management, travel, and more into one everyday ecosystem.",
@@ -411,7 +411,7 @@ const EN = {
     lifeStageFuture: [
       "Stage-based information and recommendations",
       "Expert and service connections",
-      "Links with Consumer · Ongil",
+      "Links with Apps · Ongil",
     ],
     lifeStageCta: "Explore LivOn",
     lifeStageAria: "Life stages",
@@ -503,7 +503,7 @@ const EN = {
     ecoLead: "Technology that connects every moment of life.",
     ecoAria: "Newon ecosystem connections",
     ecoNodes: [
-      { id: "consumer", label: "Consumer" },
+      { id: "consumer", label: "Apps" },
       { id: "ai", label: "AI" },
       { id: "lifestage", label: "LivOn" },
       { id: "ongil", label: "Ongil" },

@@ -594,7 +594,7 @@ function writeSitemap() {
   }
 
   // Product hubs
-  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "lifestage", "ongil", "saas", "games", "tools", "market", "contact", "media"]) {
+  for (const page of ["products", "apps", "ecosystem", "ai", "ai/enterprise", "livon", "ongil", "saas", "games", "tools", "market", "contact", "media"]) {
     addAllLocales(page, "0.65", "monthly");
   }
 

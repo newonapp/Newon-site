@@ -257,7 +257,13 @@ window.LivonLifeData = {
           ],
           "audience": "학생",
           "status": "guide",
-          "href": "#life-now"
+          "href": "#life-now",
+          "id": "study-planner",
+          "type": "Tool",
+          "cta": "계획 만들기",
+          "detail": "planner",
+          "lifeStage": "10",
+          "destination": "#ml-todos"
         },
         {
           "name": "진로 멘토링",
@@ -268,7 +274,13 @@ window.LivonLifeData = {
           ],
           "audience": "진로 고민",
           "status": "link",
-          "href": "#ex-experts"
+          "href": "#ex-experts",
+          "id": "career-mentoring",
+          "type": "Expert",
+          "cta": "멘토 찾기",
+          "detail": "mentor",
+          "lifeStage": "10",
+          "destination": "#ex-experts"
         },
         {
           "name": "취미 클래스",
@@ -279,7 +291,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "link",
-          "href": "#today"
+          "href": "#today",
+          "id": "hobby-classes",
+          "type": "Discovery",
+          "cta": "클래스 둘러보기",
+          "detail": "hobby",
+          "lifeStage": "10",
+          "destination": "#today"
         },
         {
           "name": "과목별 학습 정보",
@@ -290,7 +308,13 @@ window.LivonLifeData = {
           ],
           "audience": "학생",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "subject-learning",
+          "type": "Guide",
+          "cta": "학습 정보 보기",
+          "detail": "subjects",
+          "lifeStage": "10",
+          "destination": "#explore"
         },
         {
           "name": "진학·전공 탐색",
@@ -301,7 +325,13 @@ window.LivonLifeData = {
           ],
           "audience": "진학 준비",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "major-explorer",
+          "type": "Guide",
+          "cta": "전공 탐색하기",
+          "detail": "majors",
+          "lifeStage": "10",
+          "destination": "#explore"
         },
         {
           "name": "직업·적성 탐색",
@@ -312,7 +342,13 @@ window.LivonLifeData = {
           ],
           "audience": "진로 탐색",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "career-explorer",
+          "type": "Guide",
+          "cta": "직업 탐색하기",
+          "detail": "careers",
+          "lifeStage": "10",
+          "destination": "#explore"
         },
         {
           "name": "직업 체험",
@@ -323,7 +359,13 @@ window.LivonLifeData = {
           ],
           "audience": "청소년",
           "status": "info",
-          "href": "#today"
+          "href": "#today",
+          "id": "service-10-07",
+          "type": "Discovery",
+          "cta": "직업 체험 찾기",
+          "detail": "teen-experience",
+          "lifeStage": "10",
+          "destination": "#today"
         },
         {
           "name": "공모전·대회",
@@ -334,7 +376,13 @@ window.LivonLifeData = {
           ],
           "audience": "학생",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-10-08",
+          "type": "Discovery",
+          "cta": "공모전 찾기",
+          "detail": "teen-competition",
+          "lifeStage": "10",
+          "destination": "#explore"
         },
         {
           "name": "캠프·봉사활동",
@@ -345,7 +393,13 @@ window.LivonLifeData = {
           ],
           "audience": "청소년",
           "status": "info",
-          "href": "#today"
+          "href": "#today",
+          "id": "service-10-09",
+          "type": "Discovery",
+          "cta": "활동 찾기",
+          "detail": "teen-camp",
+          "lifeStage": "10",
+          "destination": "#today"
         },
         {
           "name": "청소년 지역 프로그램",
@@ -356,7 +410,13 @@ window.LivonLifeData = {
           ],
           "audience": "청소년",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-10-10",
+          "type": "Discovery",
+          "cta": "지역 프로그램 찾기",
+          "detail": "teen-local",
+          "lifeStage": "10",
+          "destination": "#explore"
         },
         {
           "name": "용돈·저축 관리",
@@ -367,7 +427,13 @@ window.LivonLifeData = {
           ],
           "audience": "청소년",
           "status": "guide",
-          "href": "#life-now"
+          "href": "#life-now",
+          "id": "service-10-11",
+          "type": "Tool",
+          "cta": "용돈 관리 시작하기",
+          "detail": "teen-allowance",
+          "lifeStage": "10",
+          "destination": "#ml-money"
         },
         {
           "name": "청소년 상담기관 안내",
@@ -378,7 +444,13 @@ window.LivonLifeData = {
           ],
           "audience": "청소년·보호자",
           "status": "link",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-10-12",
+          "type": "Expert",
+          "cta": "상담기관 찾기",
+          "detail": "teen-counsel",
+          "lifeStage": "10",
+          "destination": "#explore"
         }
       ],
       "ai": [
@@ -631,7 +703,14 @@ window.LivonLifeData = {
           ],
           "audience": "독립 생활",
           "status": "guide",
-          "href": "#life-now"
+          "href": "#life-now",
+          "id": "service-20-01",
+          "type": "Tool",
+          "cta": "예산 정리하기",
+          "detail": "youth-budget",
+          "dataRequirements": ["local"],
+          "lifeStage": "20",
+          "destination": "#ml-money"
         },
         {
           "name": "청년 지원제도",
@@ -641,7 +720,14 @@ window.LivonLifeData = {
           ],
           "audience": "청년",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-20-02",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "youth-policies",
+          "dataRequirements": ["api"],
+          "lifeStage": "20",
+          "destination": "#explore"
         },
         {
           "name": "여행·전시·공연",
@@ -652,7 +738,14 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "link",
-          "href": "#today"
+          "href": "#today",
+          "id": "service-20-03",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "youth-culture",
+          "dataRequirements": ["local", "api"],
+          "lifeStage": "20",
+          "destination": "#today"
         },
         {
           "name": "대학·전공·편입 정보",
@@ -663,7 +756,14 @@ window.LivonLifeData = {
           ],
           "audience": "대학생·준비생",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-20-04",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "youth-university",
+          "dataRequirements": ["local", "api"],
+          "lifeStage": "20",
+          "destination": "#explore"
         },
         {
           "name": "자격증·직무 교육",
@@ -674,7 +774,14 @@ window.LivonLifeData = {
           ],
           "audience": "취업 준비",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-20-05",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "youth-education",
+          "dataRequirements": ["api"],
+          "lifeStage": "20",
+          "destination": "#explore"
         },
         {
           "name": "채용 정보",
@@ -684,7 +791,14 @@ window.LivonLifeData = {
           ],
           "audience": "취업 준비",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-20-06",
+          "type": "Guide",
+          "cta": "채용 정보 보기",
+          "detail": "youth-jobs",
+          "dataRequirements": ["api"],
+          "lifeStage": "20",
+          "destination": "#explore"
         },
         {
           "name": "취업 멘토링",
@@ -694,7 +808,14 @@ window.LivonLifeData = {
           ],
           "audience": "취업 준비",
           "status": "link",
-          "href": "#ex-experts"
+          "href": "#ex-experts",
+          "id": "service-20-07",
+          "type": "Expert",
+          "cta": "멘토 찾기",
+          "detail": "youth-jobmentor",
+          "dataRequirements": ["partner"],
+          "lifeStage": "20",
+          "destination": "#ex-experts"
         },
         {
           "name": "이력서·면접 준비",
@@ -705,7 +826,14 @@ window.LivonLifeData = {
           ],
           "audience": "취업 준비",
           "status": "guide",
-          "href": "#life-now"
+          "href": "#life-now",
+          "id": "service-20-08",
+          "type": "Tool",
+          "cta": "취업 준비 시작하기",
+          "detail": "youth-resume",
+          "dataRequirements": ["local"],
+          "lifeStage": "20",
+          "destination": "#ml-todos"
         },
         {
           "name": "원룸·오피스텔 탐색",
@@ -715,7 +843,14 @@ window.LivonLifeData = {
           ],
           "audience": "자취 준비",
           "status": "link",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-20-09",
+          "type": "Guide",
+          "cta": "주거 서비스 찾기",
+          "detail": "youth-housing",
+          "dataRequirements": ["local", "api"],
+          "lifeStage": "20",
+          "destination": "#explore"
         },
         {
           "name": "청년 주거 지원",
@@ -725,7 +860,14 @@ window.LivonLifeData = {
           ],
           "audience": "청년",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-20-10",
+          "type": "Guide",
+          "cta": "지원제도 보기",
+          "detail": "youth-housingpolicy",
+          "dataRequirements": ["api"],
+          "lifeStage": "20",
+          "destination": "#explore"
         },
         {
           "name": "이사·입주 청소",
@@ -735,7 +877,14 @@ window.LivonLifeData = {
           ],
           "audience": "이사",
           "status": "link",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-20-11",
+          "type": "Guide",
+          "cta": "이사 준비하기",
+          "detail": "youth-moving",
+          "dataRequirements": ["local", "partner"],
+          "lifeStage": "20",
+          "destination": "#explore"
         },
         {
           "name": "가구·가전 비교",
@@ -745,7 +894,14 @@ window.LivonLifeData = {
           ],
           "audience": "자취",
           "status": "link",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-20-12",
+          "type": "Guide",
+          "cta": "비교하기",
+          "detail": "youth-products",
+          "dataRequirements": ["local", "partner"],
+          "lifeStage": "20",
+          "destination": "#explore"
         },
         {
           "name": "관계 상담기관",
@@ -755,7 +911,14 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "link",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-20-13",
+          "type": "Expert",
+          "cta": "상담기관 찾기",
+          "detail": "youth-counsel",
+          "dataRequirements": ["partner"],
+          "lifeStage": "20",
+          "destination": "#explore"
         },
         {
           "name": "취미 클래스",
@@ -765,7 +928,14 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "link",
-          "href": "#today"
+          "href": "#today",
+          "id": "hobby-classes-20",
+          "type": "Discovery",
+          "cta": "클래스 둘러보기",
+          "detail": "youth-classes",
+          "dataRequirements": ["api", "partner"],
+          "lifeStage": "20",
+          "destination": "#today"
         },
         {
           "name": "생활 서비스",
@@ -775,7 +945,14 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "link",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-20-15",
+          "type": "Guide",
+          "cta": "서비스 찾기",
+          "detail": "youth-services",
+          "dataRequirements": ["local", "partner"],
+          "lifeStage": "20",
+          "destination": "#explore"
         }
       ],
       "ai": [
@@ -1004,7 +1181,13 @@ window.LivonLifeData = {
           ],
           "audience": "이사·주거",
           "status": "link",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-30-01",
+          "type": "Guide",
+          "cta": "주거 조건 정리하기",
+          "detail": "family-housing",
+          "lifeStage": "30",
+          "destination": "#explore"
         },
         {
           "name": "육아 정보",
@@ -1014,7 +1197,13 @@ window.LivonLifeData = {
           ],
           "audience": "부모",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-30-02",
+          "type": "Guide",
+          "cta": "육아 정보 보기",
+          "detail": "family-childcare",
+          "lifeStage": "30",
+          "destination": "#explore"
         },
         {
           "name": "건강검진 정보",
@@ -1024,7 +1213,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-30-03",
+          "type": "Guide",
+          "cta": "검진 정보 확인하기",
+          "detail": "family-health",
+          "lifeStage": "30",
+          "destination": "#explore"
         },
         {
           "name": "이직·재교육",
@@ -1035,7 +1230,13 @@ window.LivonLifeData = {
           ],
           "audience": "직장인",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-30-04",
+          "type": "Tool",
+          "cta": "커리어 전환 준비하기",
+          "detail": "family-career",
+          "lifeStage": "30",
+          "destination": "#explore"
         },
         {
           "name": "직무 멘토링",
@@ -1045,7 +1246,13 @@ window.LivonLifeData = {
           ],
           "audience": "직장인",
           "status": "link",
-          "href": "#ex-experts"
+          "href": "#ex-experts",
+          "id": "service-30-05",
+          "type": "Expert",
+          "cta": "멘토 찾기",
+          "detail": "family-mentor",
+          "lifeStage": "30",
+          "destination": "#ex-experts"
         },
         {
           "name": "이사·인테리어",
@@ -1055,7 +1262,13 @@ window.LivonLifeData = {
           ],
           "audience": "이사",
           "status": "guide",
-          "href": "#life-now"
+          "href": "#life-now",
+          "id": "service-30-06",
+          "type": "Tool",
+          "cta": "이사 준비하기",
+          "detail": "family-moving",
+          "lifeStage": "30",
+          "destination": "#ml-todos"
         },
         {
           "name": "가계 재무 계획",
@@ -1065,7 +1278,13 @@ window.LivonLifeData = {
           ],
           "audience": "가정",
           "status": "guide",
-          "href": "#life-now"
+          "href": "#life-now",
+          "id": "service-30-07",
+          "type": "Tool",
+          "cta": "가계 계획 만들기",
+          "detail": "family-finance",
+          "lifeStage": "30",
+          "destination": "#ml-money"
         },
         {
           "name": "결혼 준비",
@@ -1076,7 +1295,13 @@ window.LivonLifeData = {
           ],
           "audience": "예비부부",
           "status": "guide",
-          "href": "#life-now"
+          "href": "#life-now",
+          "id": "service-30-08",
+          "type": "Tool",
+          "cta": "결혼 준비 시작하기",
+          "detail": "family-wedding",
+          "lifeStage": "30",
+          "destination": "#ml-money"
         },
         {
           "name": "가족 일정",
@@ -1086,7 +1311,13 @@ window.LivonLifeData = {
           ],
           "audience": "가족",
           "status": "guide",
-          "href": "#life-now"
+          "href": "#life-now",
+          "id": "service-30-09",
+          "type": "Tool",
+          "cta": "가족 일정 관리하기",
+          "detail": "family-calendar",
+          "lifeStage": "30",
+          "destination": "#ml-calendar"
         },
         {
           "name": "보육시설",
@@ -1096,7 +1327,13 @@ window.LivonLifeData = {
           ],
           "audience": "부모",
           "status": "link",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-30-10",
+          "type": "Discovery",
+          "cta": "보육시설 찾기",
+          "detail": "family-facilities",
+          "lifeStage": "30",
+          "destination": "#explore"
         },
         {
           "name": "부모 교육",
@@ -1106,7 +1343,13 @@ window.LivonLifeData = {
           ],
           "audience": "부모",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-30-11",
+          "type": "Discovery",
+          "cta": "부모 교육 찾기",
+          "detail": "family-parents",
+          "lifeStage": "30",
+          "destination": "#explore"
         },
         {
           "name": "육아용품",
@@ -1116,7 +1359,13 @@ window.LivonLifeData = {
           ],
           "audience": "부모",
           "status": "link",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-30-12",
+          "type": "Guide",
+          "cta": "육아용품 비교하기",
+          "detail": "family-products",
+          "lifeStage": "30",
+          "destination": "#explore"
         },
         {
           "name": "운동·영양",
@@ -1126,7 +1375,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "info",
-          "href": "#today"
+          "href": "#today",
+          "id": "service-30-13",
+          "type": "Tool",
+          "cta": "생활 루틴 만들기",
+          "detail": "family-wellness",
+          "lifeStage": "30",
+          "destination": "#today"
         },
         {
           "name": "가사·청소·수리",
@@ -1136,7 +1391,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "link",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-30-14",
+          "type": "Expert",
+          "cta": "생활 서비스 찾기",
+          "detail": "family-home",
+          "lifeStage": "30",
+          "destination": "#explore"
         },
         {
           "name": "여행·가족 체험",
@@ -1146,7 +1407,13 @@ window.LivonLifeData = {
           ],
           "audience": "가족",
           "status": "link",
-          "href": "#today"
+          "href": "#today",
+          "id": "service-30-15",
+          "type": "Discovery",
+          "cta": "가족 활동 찾기",
+          "detail": "family-experience",
+          "lifeStage": "30",
+          "destination": "#today"
         }
       ],
       "ai": [
@@ -1368,7 +1635,13 @@ window.LivonLifeData = {
           ],
           "audience": "부모",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-40-01",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "40",
+          "destination": "#explore"
         },
         {
           "name": "자산 관리 교육",
@@ -1378,7 +1651,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-40-02",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "40",
+          "destination": "#explore"
         },
         {
           "name": "부모님 돌봄 정보",
@@ -1388,7 +1667,13 @@ window.LivonLifeData = {
           ],
           "audience": "가족",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-40-03",
+          "type": "Expert",
+          "cta": "전문가 찾기",
+          "detail": "standard",
+          "lifeStage": "40",
+          "destination": "#explore"
         },
         {
           "name": "경력 개발",
@@ -1398,7 +1683,13 @@ window.LivonLifeData = {
           ],
           "audience": "직장인",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-40-04",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "40",
+          "destination": "#explore"
         },
         {
           "name": "이직·직업 교육",
@@ -1408,7 +1699,13 @@ window.LivonLifeData = {
           ],
           "audience": "직장인",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-40-05",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "40",
+          "destination": "#explore"
         },
         {
           "name": "가족 활동",
@@ -1418,7 +1715,13 @@ window.LivonLifeData = {
           ],
           "audience": "가족",
           "status": "link",
-          "href": "#today"
+          "href": "#today",
+          "id": "service-40-06",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "40",
+          "destination": "#today"
         },
         {
           "name": "부모 교육",
@@ -1428,7 +1731,13 @@ window.LivonLifeData = {
           ],
           "audience": "부모",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-40-07",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "40",
+          "destination": "#explore"
         },
         {
           "name": "주거 관리",
@@ -1438,7 +1747,13 @@ window.LivonLifeData = {
           ],
           "audience": "가정",
           "status": "guide",
-          "href": "#life-now"
+          "href": "#life-now",
+          "id": "service-40-08",
+          "type": "Tool",
+          "cta": "준비 시작하기",
+          "detail": "standard",
+          "lifeStage": "40",
+          "destination": "#ml-todos"
         },
         {
           "name": "리모델링",
@@ -1448,7 +1763,13 @@ window.LivonLifeData = {
           ],
           "audience": "주거",
           "status": "link",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-40-09",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "40",
+          "destination": "#explore"
         },
         {
           "name": "건강검진·운동",
@@ -1458,7 +1779,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-40-10",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "40",
+          "destination": "#explore"
         },
         {
           "name": "Ongil 연결",
@@ -1468,7 +1795,13 @@ window.LivonLifeData = {
           ],
           "audience": "가족",
           "status": "link",
-          "href": "/ongil-start/#care"
+          "href": "/ongil-start/#care",
+          "id": "service-40-11",
+          "type": "Expert",
+          "cta": "Ongil 살펴보기",
+          "detail": "standard",
+          "lifeStage": "40",
+          "destination": "/ongil-start/#care"
         },
         {
           "name": "가사·수리·청소",
@@ -1478,7 +1811,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "link",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-40-12",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "40",
+          "destination": "#explore"
         },
         {
           "name": "평생교육",
@@ -1488,7 +1827,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-40-13",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "40",
+          "destination": "#explore"
         },
         {
           "name": "여행·문화생활",
@@ -1498,7 +1843,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "link",
-          "href": "#today"
+          "href": "#today",
+          "id": "service-40-14",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "40",
+          "destination": "#today"
         }
       ],
       "ai": [
@@ -1724,7 +2075,13 @@ window.LivonLifeData = {
           ],
           "audience": "은퇴 준비",
           "status": "guide",
-          "href": "#life-now"
+          "href": "#life-now",
+          "id": "service-50-01",
+          "type": "Tool",
+          "cta": "준비 시작하기",
+          "detail": "standard",
+          "lifeStage": "50",
+          "destination": "#ml-projects"
         },
         {
           "name": "재취업",
@@ -1734,7 +2091,13 @@ window.LivonLifeData = {
           ],
           "audience": "경력 전환",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-50-02",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "50",
+          "destination": "#explore"
         },
         {
           "name": "취미 클래스",
@@ -1744,7 +2107,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "link",
-          "href": "#today"
+          "href": "#today",
+          "id": "hobby-classes-50",
+          "type": "Discovery",
+          "cta": "클래스 둘러보기",
+          "detail": "hobby",
+          "lifeStage": "50",
+          "destination": "#today"
         },
         {
           "name": "직업 교육",
@@ -1754,7 +2123,13 @@ window.LivonLifeData = {
           ],
           "audience": "경력 전환",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-50-04",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "50",
+          "destination": "#explore"
         },
         {
           "name": "자격증",
@@ -1764,7 +2139,13 @@ window.LivonLifeData = {
           ],
           "audience": "자기계발",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-50-05",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "50",
+          "destination": "#explore"
         },
         {
           "name": "연금 정보",
@@ -1774,7 +2155,13 @@ window.LivonLifeData = {
           ],
           "audience": "은퇴 준비",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-50-06",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "50",
+          "destination": "#explore"
         },
         {
           "name": "노후 생활비 계획",
@@ -1784,7 +2171,13 @@ window.LivonLifeData = {
           ],
           "audience": "은퇴 준비",
           "status": "guide",
-          "href": "#life-now"
+          "href": "#life-now",
+          "id": "service-50-07",
+          "type": "Tool",
+          "cta": "예산 정리하기",
+          "detail": "standard",
+          "lifeStage": "50",
+          "destination": "#ml-money"
         },
         {
           "name": "주거 정보",
@@ -1794,7 +2187,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-50-08",
+          "type": "Guide",
+          "cta": "주거 서비스 찾기",
+          "detail": "standard",
+          "lifeStage": "50",
+          "destination": "#explore"
         },
         {
           "name": "건강검진",
@@ -1804,7 +2203,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-50-09",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "50",
+          "destination": "#explore"
         },
         {
           "name": "운동·영양",
@@ -1814,7 +2219,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "info",
-          "href": "#today"
+          "href": "#today",
+          "id": "service-50-10",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "50",
+          "destination": "#today"
         },
         {
           "name": "대학 평생교육원",
@@ -1824,7 +2235,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-50-11",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "50",
+          "destination": "#explore"
         },
         {
           "name": "외국어·디지털 교육",
@@ -1834,7 +2251,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-50-12",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "50",
+          "destination": "#explore"
         },
         {
           "name": "국내외 여행",
@@ -1844,7 +2267,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "link",
-          "href": "#today"
+          "href": "#today",
+          "id": "service-50-13",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "50",
+          "destination": "#today"
         },
         {
           "name": "가족 활동",
@@ -1854,7 +2283,13 @@ window.LivonLifeData = {
           ],
           "audience": "가족",
           "status": "link",
-          "href": "#today"
+          "href": "#today",
+          "id": "service-50-14",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "50",
+          "destination": "#today"
         },
         {
           "name": "부모님 돌봄",
@@ -1864,7 +2299,13 @@ window.LivonLifeData = {
           ],
           "audience": "가족",
           "status": "link",
-          "href": "/ongil-start/#care"
+          "href": "/ongil-start/#care",
+          "id": "service-50-15",
+          "type": "Expert",
+          "cta": "Ongil 살펴보기",
+          "detail": "standard",
+          "lifeStage": "50",
+          "destination": "/ongil-start/#care"
         }
       ],
       "ai": [
@@ -2088,7 +2529,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-60-01",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "60",
+          "destination": "#explore"
         },
         {
           "name": "평생교육",
@@ -2098,7 +2545,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-60-02",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "60",
+          "destination": "#explore"
         },
         {
           "name": "여행·문화 프로그램",
@@ -2108,7 +2561,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "link",
-          "href": "#today"
+          "href": "#today",
+          "id": "service-60-03",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "60",
+          "destination": "#today"
         },
         {
           "name": "시니어 채용",
@@ -2118,7 +2577,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-60-04",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "60",
+          "destination": "#explore"
         },
         {
           "name": "재취업 교육",
@@ -2128,7 +2593,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-60-05",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "60",
+          "destination": "#explore"
         },
         {
           "name": "사회공헌 활동",
@@ -2138,7 +2609,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "info",
-          "href": "#today"
+          "href": "#today",
+          "id": "service-60-06",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "60",
+          "destination": "#today"
         },
         {
           "name": "디지털 교육",
@@ -2148,7 +2625,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-60-07",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "60",
+          "destination": "#explore"
         },
         {
           "name": "취미 동호회",
@@ -2158,7 +2641,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "link",
-          "href": "#community"
+          "href": "#community",
+          "id": "service-60-08",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "60",
+          "destination": "#community"
         },
         {
           "name": "지역 모임",
@@ -2168,7 +2657,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "link",
-          "href": "#community"
+          "href": "#community",
+          "id": "service-60-09",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "60",
+          "destination": "#community"
         },
         {
           "name": "봉사활동",
@@ -2178,7 +2673,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "info",
-          "href": "#today"
+          "href": "#today",
+          "id": "service-60-10",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "60",
+          "destination": "#today"
         },
         {
           "name": "주거 관리",
@@ -2188,7 +2689,13 @@ window.LivonLifeData = {
           ],
           "audience": "전체",
           "status": "guide",
-          "href": "#life-now"
+          "href": "#life-now",
+          "id": "service-60-11",
+          "type": "Tool",
+          "cta": "준비 시작하기",
+          "detail": "standard",
+          "lifeStage": "60",
+          "destination": "#ml-todos"
         },
         {
           "name": "이동 서비스",
@@ -2198,7 +2705,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-60-12",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "60",
+          "destination": "#explore"
         },
         {
           "name": "연금·복지 정보",
@@ -2208,7 +2721,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-60-13",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "60",
+          "destination": "#explore"
         },
         {
           "name": "지역 지원사업",
@@ -2218,7 +2737,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-60-14",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "60",
+          "destination": "#explore"
         }
       ],
       "ai": [
@@ -2439,7 +2964,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-70-01",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "70",
+          "destination": "#explore"
         },
         {
           "name": "문화 프로그램",
@@ -2449,7 +2980,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "link",
-          "href": "#today"
+          "href": "#today",
+          "id": "service-70-02",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "70",
+          "destination": "#today"
         },
         {
           "name": "Ongil 연결",
@@ -2459,7 +2996,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어·가족",
           "status": "link",
-          "href": "/ongil-start/#ongil-home"
+          "href": "/ongil-start/#ongil-home",
+          "id": "service-70-03",
+          "type": "Expert",
+          "cta": "Ongil 살펴보기",
+          "detail": "standard",
+          "lifeStage": "70",
+          "destination": "/ongil-start/#ongil-home"
         },
         {
           "name": "의료기관 탐색",
@@ -2469,7 +3012,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "link",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-70-04",
+          "type": "Expert",
+          "cta": "전문가 찾기",
+          "detail": "standard",
+          "lifeStage": "70",
+          "destination": "#explore"
         },
         {
           "name": "장보기·가사·청소",
@@ -2479,7 +3028,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "link",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-70-05",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "70",
+          "destination": "#explore"
         },
         {
           "name": "이동 지원",
@@ -2489,7 +3044,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-70-06",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "70",
+          "destination": "#explore"
         },
         {
           "name": "가족 일정·소통",
@@ -2499,7 +3060,13 @@ window.LivonLifeData = {
           ],
           "audience": "가족",
           "status": "guide",
-          "href": "#life-now"
+          "href": "#life-now",
+          "id": "service-70-07",
+          "type": "Tool",
+          "cta": "일정 정리하기",
+          "detail": "standard",
+          "lifeStage": "70",
+          "destination": "#ml-calendar"
         },
         {
           "name": "여행·취미",
@@ -2509,7 +3076,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "link",
-          "href": "#today"
+          "href": "#today",
+          "id": "service-70-08",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "70",
+          "destination": "#today"
         },
         {
           "name": "복지관·주민센터",
@@ -2519,7 +3092,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-70-09",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "70",
+          "destination": "#explore"
         },
         {
           "name": "지역 모임",
@@ -2529,7 +3108,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "link",
-          "href": "#community"
+          "href": "#community",
+          "id": "service-70-10",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "70",
+          "destination": "#community"
         },
         {
           "name": "디지털 교육",
@@ -2539,7 +3124,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-70-11",
+          "type": "Discovery",
+          "cta": "둘러보기",
+          "detail": "standard",
+          "lifeStage": "70",
+          "destination": "#explore"
         },
         {
           "name": "방문 돌봄",
@@ -2549,7 +3140,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어·가족",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-70-12",
+          "type": "Expert",
+          "cta": "전문가 찾기",
+          "detail": "standard",
+          "lifeStage": "70",
+          "destination": "#explore"
         },
         {
           "name": "생활 지원",
@@ -2559,7 +3156,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-70-13",
+          "type": "Guide",
+          "cta": "정보 보기",
+          "detail": "standard",
+          "lifeStage": "70",
+          "destination": "#explore"
         },
         {
           "name": "주거 편의·안전 정보",
@@ -2569,7 +3172,13 @@ window.LivonLifeData = {
           ],
           "audience": "시니어",
           "status": "info",
-          "href": "#explore"
+          "href": "#explore",
+          "id": "service-70-14",
+          "type": "Guide",
+          "cta": "주거 서비스 찾기",
+          "detail": "standard",
+          "lifeStage": "70",
+          "destination": "#explore"
         }
       ],
       "ai": [

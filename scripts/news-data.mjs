@@ -154,7 +154,7 @@ export const NEWS_ARTICLES = [
         title: "Newon, 6개 사업 체계로 확장… 생활 앱부터 AI·시니어 플랫폼까지",
         titleHtml: "Newon, 6개 사업 체계로 확장…<br />생활 앱부터 AI·시니어 플랫폼까지",
         summary:
-          "Newon이 기존 모바일 앱 사업을 기반으로 AI, 생애주기 플랫폼, 시니어 생활·돌봄, 기업용 솔루션, 커머스 등 6개 사업 분야를 중심으로 사업 구조를 정비했습니다.",
+          "Newon이 모바일 앱 사업을 기반으로 Apps, AI, LivOn, Ongil, Business, Studio 등 6개 사업 분야를 중심으로 사업 구조를 정비했습니다.",
         lead:
           "Newon이 다양한 생활 영역을 연결하는 디지털 서비스 기업으로의 확장을 위해 새로운 6개 사업 체계를 공개했습니다.",
         linkLabel: "Newon 사업 소개 보기",
@@ -171,12 +171,12 @@ export const NEWS_ARTICLES = [
           {
             type: "ol",
             items: [
-              "Newon Consumer — 모바일 앱 및 소비자 서비스",
+              "Newon Apps — 생활 앱·게임·Newon+ 등 소비자 디지털 제품",
               "Newon AI — 개인·기업 AI 서비스",
-              "LivOn — 생애주기 플랫폼",
-              "Ongil — 시니어 생활·돌봄 플랫폼",
-              "Newon Business — 기업용 SaaS·AI 및 디지털 서비스",
-              "Newon Commerce — 커머스 및 생활서비스 연결",
+              "LivOn — 생애주기 생활 플랫폼",
+              "Ongil — 돌봄 중심 생활 플랫폼",
+              "Newon Business — 기업용 개발·자동화·솔루션·Care",
+              "Newon Studio — 브랜드·디자인·콘텐츠·크리에이티브",
             ],
           },
           {
@@ -193,7 +193,7 @@ export const NEWS_ARTICLES = [
         title: "Newon sets out six businesses, from everyday apps to AI and a senior platform",
         titleHtml: "Newon sets out six businesses,<br />from everyday apps to AI and a senior platform",
         summary:
-          "Newon has organized its work around six areas, building on its mobile apps: AI, a life-stage platform, senior living and care, business solutions, and commerce.",
+          "Building on its mobile apps, Newon has organized its work around six businesses: Apps, AI, LivOn, Ongil, Business, and Studio.",
         lead:
           "Newon has published a six-business structure as it extends from mobile apps into digital services that connect more of everyday life.",
         linkLabel: "See Newon's businesses",
@@ -210,12 +210,12 @@ export const NEWS_ARTICLES = [
           {
             type: "ol",
             items: [
-              "Newon Consumer — mobile apps and consumer services",
+              "Newon Apps — everyday apps, games, Newon+, and other consumer digital products",
               "Newon AI — AI services for people and companies",
-              "LivOn — a life-stage platform",
-              "Ongil — a senior living and care platform",
-              "Newon Business — SaaS, AI, and digital services for companies",
-              "Newon Commerce — commerce and everyday-service connections",
+              "LivOn — a life-journey platform",
+              "Ongil — a care-centred living platform",
+              "Newon Business — development, automation, solutions, and Care for companies",
+              "Newon Studio — brand, design, content, and creative work",
             ],
           },
           {
@@ -234,22 +234,22 @@ export const NEWS_ARTICLES = [
     id: "newon-consumer-apps",
     slug: "newon-consumer-apps",
     categoryLabel: "BUSINESS",
-    brandName: "Newon Consumer",
+    brandName: "Newon Apps",
     linkHref: "/{{LANG}}/apps/",
     imageAlt: { ko: "Newon 로고", en: "Newon logo" },
     copy: {
       ko: {
-        title: "Newon Consumer, 일상을 위한 모바일 앱 생태계 확장",
-        titleHtml: "Newon Consumer,<br />일상을 위한 모바일 앱 생태계 확장",
+        title: "Newon Apps, 일상을 위한 모바일 앱 생태계 확장",
+        titleHtml: "Newon Apps,<br />일상을 위한 모바일 앱 생태계 확장",
         summary:
           "Newon이 개발·운영하는 생활 앱을 중심으로 개인의 일상과 자기관리, 금융 생활, 가족을 위한 디지털 서비스를 지속적으로 개선합니다.",
         lead:
-          "Newon Consumer는 개인과 가족의 일상에 필요한 모바일 앱을 개발하고 운영하는 소비자 서비스 사업입니다.",
+          "Newon Apps는 개인과 가족의 일상에 필요한 모바일 앱과 디지털 제품을 개발하고 운영하는 사업입니다.",
         linkLabel: "Apps 소개 보기",
         blocks: [
           {
             type: "p",
-            text: "Newon Consumer는 개인과 가족의 일상에 필요한 모바일 앱을 개발하고 운영하는 소비자 서비스 사업입니다.",
+            text: "Newon Apps는 개인과 가족의 일상에 필요한 모바일 앱과 디지털 제품을 개발하고 운영하는 사업입니다.",
           },
           {
             type: "p",
@@ -266,17 +266,17 @@ export const NEWS_ARTICLES = [
         ],
       },
       en: {
-        title: "Newon Consumer extends the mobile apps for everyday life",
-        titleHtml: "Newon Consumer extends<br />the mobile apps for everyday life",
+        title: "Newon Apps extends the mobile apps for everyday life",
+        titleHtml: "Newon Apps extends<br />the mobile apps for everyday life",
         summary:
           "Newon keeps improving the everyday apps it develops and operates, across personal life, self-management, money, and family.",
         lead:
-          "Newon Consumer develops and operates the mobile apps people and families use in daily life.",
+          "Newon Apps develops and operates the mobile apps and digital products people and families use in daily life.",
         linkLabel: "See Apps",
         blocks: [
           {
             type: "p",
-            text: "Newon Consumer develops and operates the mobile apps people and families use in daily life.",
+            text: "Newon Apps develops and operates the mobile apps and digital products people and families use in daily life.",
           },
           {
             type: "p",
@@ -355,7 +355,7 @@ export const NEWS_ARTICLES = [
     slug: "livon-life-stage",
     categoryLabel: "FUTURE BUSINESS",
     brandName: "LivOn",
-    linkHref: "/{{LANG}}/lifestage/",
+    linkHref: "/{{LANG}}/livon/",
     imageAlt: { ko: "Newon 로고", en: "Newon logo" },
     copy: {
       ko: {
@@ -384,17 +384,17 @@ export const NEWS_ARTICLES = [
         ],
       },
       en: {
-        title: "LivOn is a life-stage platform in preparation, connecting services as life changes",
-        titleHtml: "LivOn is a life-stage platform in preparation,<br />connecting services as life changes",
+        title: "LivOn is a life-journey platform in preparation, connecting services as life changes",
+        titleHtml: "LivOn is a life-journey platform in preparation,<br />connecting services as life changes",
         summary:
           "Newon is preparing a platform that connects the different needs of life from the teens through the seventies.",
         lead:
-          "LivOn is a life-stage platform meant to connect the information and services each stage of life needs.",
+          "LivOn is a life-journey platform meant to connect the information and services each stage of life needs.",
         linkLabel: "See LivOn",
         blocks: [
           {
             type: "p",
-            text: "LivOn is a life-stage platform meant to connect the information and services each stage of life needs.",
+            text: "LivOn is a life-journey platform meant to connect the information and services each stage of life needs.",
           },
           {
             type: "p",
@@ -543,21 +543,21 @@ export const NEWS_ARTICLES = [
     id: "newon-commerce",
     slug: "newon-commerce",
     categoryLabel: "BUSINESS",
-    brandName: "Newon Commerce",
+    brandName: "Newon Apps",
     linkHref: "/{{LANG}}/ecosystem/",
     imageAlt: { ko: "Newon 로고", en: "Newon logo" },
     copy: {
       ko: {
-        title: "Newon Commerce, 일상과 연결되는 커머스·생활서비스 사업 확대 구상",
-        titleHtml: "Newon Commerce,<br />일상과 연결되는 커머스·생활서비스 사업 확대 구상",
+        title: "Newon Apps, 일상과 연결되는 커머스·생활서비스 확장 구상",
+        titleHtml: "Newon Apps,<br />일상과 연결되는 커머스·생활서비스 확장 구상",
         summary:
-          "Newon의 소비자 서비스와 연결되는 상품, 생활서비스 및 새로운 거래 플랫폼을 중심으로 커머스 사업을 준비합니다.",
-        lead: "Newon Commerce는 개인과 가족의 생활에 필요한 상품과 서비스를 연결하는 커머스 사업입니다.",
-        linkLabel: "Newon Commerce 소개 보기",
+          "Newon Apps 안에서 상품·생활서비스 연결과 새로운 거래 플랫폼(ShareOn 등)을 향후 확장 방향으로 검토합니다. 독립 사업이 아닌 구상 단계입니다.",
+        lead: "상품·생활서비스 연결은 Newon의 독립 사업이 아니라, Newon Apps 안에서 검토하는 향후 확장 구상입니다.",
+        linkLabel: "Newon Apps 생태계 보기",
         blocks: [
           {
             type: "p",
-            text: "Newon Commerce는 개인과 가족의 생활에 필요한 상품과 서비스를 연결하는 커머스 사업입니다.",
+            text: "상품·생활서비스 연결은 Newon의 독립 사업이 아니라, Newon Apps 안에서 검토하는 향후 확장 구상입니다.",
           },
           {
             type: "p",
@@ -565,7 +565,7 @@ export const NEWS_ARTICLES = [
           },
           {
             type: "p",
-            text: "신규 사업 후보인 ShareOn은 사용하지 않는 물건을 가까운 이웃에게 빌려주고 필요한 물건을 지역에서 대여할 수 있도록 하는 공유경제 플랫폼으로 검토 중입니다.",
+            text: "Newon Apps의 신규 플랫폼 후보인 ShareOn은 사용하지 않는 물건을 가까운 이웃에게 빌려주고 필요한 물건을 지역에서 대여할 수 있도록 하는 공유경제 플랫폼으로 검토 중입니다.",
           },
           {
             type: "p",
@@ -573,22 +573,22 @@ export const NEWS_ARTICLES = [
           },
           {
             type: "p",
-            text: "Newon Commerce는 실제 운영 중인 서비스와 향후 추진할 사업을 구분하여 단계적으로 확장할 계획입니다.",
+            text: "Newon은 실제 운영 중인 서비스와 향후 추진할 구상을 구분하여 단계적으로 검토할 계획입니다.",
           },
         ],
       },
       en: {
-        title: "Newon Commerce is shaping commerce and everyday services connected to daily life",
-        titleHtml: "Newon Commerce is shaping commerce<br />and everyday services connected to daily life",
+        title: "Newon Apps is exploring commerce and everyday services connected to daily life",
+        titleHtml: "Newon Apps is exploring commerce<br />and everyday services connected to daily life",
         summary:
-          "Newon is preparing a commerce business around goods, everyday services, and future transaction platforms that can connect with its consumer services.",
+          "Within Newon Apps, Newon is reviewing goods, everyday services, and future transaction platforms such as ShareOn. It is a concept, not a separate business.",
         lead:
-          "Newon Commerce is the commerce business for connecting goods and services people and families need.",
-        linkLabel: "See Newon Commerce",
+          "Connecting goods and everyday services is not a separate Newon business. It is a later direction reviewed within Newon Apps.",
+        linkLabel: "See the Newon Apps ecosystem",
         blocks: [
           {
             type: "p",
-            text: "Newon Commerce is the commerce business for connecting goods and services people and families need.",
+            text: "Connecting goods and everyday services is not a separate Newon business. It is a later direction reviewed within Newon Apps.",
           },
           {
             type: "p",
@@ -596,7 +596,7 @@ export const NEWS_ARTICLES = [
           },
           {
             type: "p",
-            text: "ShareOn, a candidate for a new business, is under review as a sharing platform where unused things could be lent to nearby neighbors and needed things rented locally.",
+            text: "ShareOn, a candidate new platform within Newon Apps, is under review as a sharing platform where unused things could be lent to nearby neighbors and needed things rented locally.",
           },
           {
             type: "p",
@@ -604,7 +604,7 @@ export const NEWS_ARTICLES = [
           },
           {
             type: "p",
-            text: "Newon Commerce will keep what is operating separate from what comes later, and extend in stages.",
+            text: "Newon will keep what is operating separate from what comes later, and review it in stages.",
           },
         ],
       },

@@ -297,10 +297,10 @@ const KO = {
     note: "현재 기업 AI가 아래 서비스의 데이터를 자동으로 공유하거나 기술적으로 연동되어 있지 않습니다. 모두 향후 확장 방향입니다.",
     items: [
       { name: "Newon Apps", body: "개인 생활 앱에 필요한 AI 기능과 개인화 지원", href: "../../apps/" },
-      { name: "LivOn", body: "생애주기별 정보 탐색과 생활 서비스 안내 지원", href: "../../lifestage/" },
+      { name: "LivOn", body: "생애주기별 정보 탐색과 생활 서비스 안내 지원", href: "../../livon/" },
       { name: "Ongil", body: "시니어와 가족을 위한 생활 정보 및 서비스 탐색 지원", href: "../../ongil/" },
       { name: "Newon Business", body: "기업용 웹·앱·업무 시스템과 AI 기능의 통합 구축", href: "../../business/" },
-      { name: "Newon Commerce", body: "상품·서비스 정보 탐색 및 판매자 운영 업무 지원", href: "../../ecosystem/#eco-commerce" },
+      { name: "Newon Studio", body: "브랜드·디자인·콘텐츠 제작 과정의 AI 활용 검토", href: "../../studio/" },
     ],
   },
   roadmap: {
@@ -616,10 +616,10 @@ const EN = {
     note: "Enterprise AI does not automatically share data with the services below, and it is not technically linked to every business today. All of this is later expansion.",
     items: [
       { name: "Newon Apps", body: "AI features and personalization support for personal life apps", href: "../../apps/" },
-      { name: "LivOn", body: "Help finding information and life services by life stage", href: "../../lifestage/" },
+      { name: "LivOn", body: "Help finding information and life services by life stage", href: "../../livon/" },
       { name: "Ongil", body: "Help finding life information and services for seniors and families", href: "../../ongil/" },
       { name: "Newon Business", body: "Combined builds of company software and AI features", href: "../../business/" },
-      { name: "Newon Commerce", body: "Help finding product and service information, and seller operations", href: "../../ecosystem/#eco-commerce" },
+      { name: "Newon Studio", body: "Reviewing AI use in brand, design, and content production", href: "../../studio/" },
     ],
   },
   roadmap: {

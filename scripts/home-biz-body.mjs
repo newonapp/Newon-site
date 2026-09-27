@@ -1,5 +1,5 @@
 /**
- * Homepage below-hero: 6-business scroll storytelling.
+ * Homepage below-hero: 6-business scroll storytelling (see newon-business-units.mjs).
  * Hero is never modified here.
  */
 import { escapeHtml } from "./hub-utils.mjs";
@@ -12,7 +12,6 @@ import {
   visualLifeStage,
   visualOngil,
   visualBusiness,
-  visualCommerce,
 } from "./home-story-visuals.mjs";
 import { buildPortfolioHomeBody } from "./home-portfolio-body.mjs";
 
@@ -47,7 +46,7 @@ function projectsBySlug(lang) {
 
 function storyVisual(story, bySlug, lang) {
   switch (story.id) {
-    case "consumer": {
+    case "apps": {
       const apps = PRODUCT_SLUGS.slice(0, 8)
         .map((s) => bySlug[s])
         .filter((p) => p && p.icon)
@@ -60,14 +59,12 @@ function storyVisual(story, bySlug, lang) {
     }
     case "ai":
       return visualAi(lang);
-    case "lifestage":
+    case "livon":
       return visualLifeStage();
     case "ongil":
       return visualOngil();
     case "business":
       return visualBusiness();
-    case "commerce":
-      return visualCommerce();
     default:
       return "";
   }

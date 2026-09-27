@@ -1125,6 +1125,9 @@ html[data-lv-view="explore"] main > #explore {
 }
 #explore .lv-ex-card:hover { border-color: #0a0a0a; transform: translateY(-2px); }
 #explore .lv-ex-card__media {
+  position: relative;
+  width: 100%;
+  min-width: 0;
   display: block;
   border: 0;
   padding: 0;
@@ -1134,13 +1137,13 @@ html[data-lv-view="explore"] main > #explore {
   overflow: hidden;
 }
 #explore .lv-ex-card__media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
-#explore .lv-ex-card--expert .lv-ex-card__media { aspect-ratio: 1 / 1; max-height: 220px; }
-#explore .lv-ex-card--product .lv-ex-card__media { aspect-ratio: 4 / 3; }
 #explore .lv-ex-card--place .lv-ex-card__body { border-left: 3px solid #0a0a0a; }
 #explore .lv-ex-card--program .lv-ex-card__price { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
 #explore .lv-ex-card__body { padding: 1rem 1.05rem 1.15rem; display: grid; gap: 0.4rem; }

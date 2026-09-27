@@ -1,7 +1,13 @@
 {
   "rewrites": [
-    { "source": "/terms", "destination": "/terms/" },
-    { "source": "/privacy", "destination": "/privacy/" }
+    {
+      "source": "/terms",
+      "destination": "/terms/"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy/"
+    }
   ],
   "trailingSlash": true,
   "headers": [
@@ -14,5 +20,12 @@
         }
       ]
     }
-  ]
+  ],
+  "buildCommand": "node scripts/publish-site.mjs",
+  "outputDirectory": "_publish",
+  "functions": {
+    "api/livon/chat.mjs": {
+      "maxDuration": 40
+    }
+  }
 }

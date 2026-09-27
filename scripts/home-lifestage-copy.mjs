@@ -350,11 +350,11 @@ const KO = {
     title: "Newon 안에서\nLivOn이 맡는 자리.",
     lead: "LivOn은 Newon 여섯 사업 가운데 생애주기 플랫폼입니다. 다른 사업의 기능을 직접 대신하지 않습니다.",
     items: [
-      { n: "01", name: "Newon Consumer", body: "생애 단계별 필요한 생활 앱과 서비스 연결.", planned: true },
+      { n: "01", name: "Newon Apps", body: "생애 단계별 필요한 생활 앱과 서비스 연결.", planned: true },
       { n: "02", name: "Newon AI", body: "개인 상황에 맞는 AI 기반 생활 지원.", planned: true },
       { n: "03", name: "Ongil", body: "시니어 생활·돌봄 서비스와 가족 연결.", planned: true },
       { n: "04", name: "Newon Business", body: "전문가, 기업 및 생활 서비스 제공자와의 사업적 연결.", planned: true },
-      { n: "05", name: "Newon Commerce", body: "생애 단계별 상품과 생활 서비스의 탐색 및 구매 연결.", planned: true },
+      { n: "05", name: "Newon Studio", body: "LivOn의 브랜드와 콘텐츠를 위한 디자인·콘텐츠 협업.", planned: true },
     ],
   },
   close: {
@@ -700,11 +700,11 @@ const EN = {
     title: "LivOn’s place\ninside Newon.",
     lead: "LivOn is the life-cycle platform among Newon’s six businesses. It does not replace the others.",
     items: [
-      { n: "01", name: "Newon Consumer", body: "Connect living apps and services that fit each life stage.", planned: true },
+      { n: "01", name: "Newon Apps", body: "Connect living apps and services that fit each life stage.", planned: true },
       { n: "02", name: "Newon AI", body: "AI living support that fits the person’s situation.", planned: true },
       { n: "03", name: "Ongil", body: "Senior living and care, and family connection.", planned: true },
       { n: "04", name: "Newon Business", body: "Business links with experts, companies, and living-service providers.", planned: true },
-      { n: "05", name: "Newon Commerce", body: "Browse and buy goods and living services by life stage.", planned: true },
+      { n: "05", name: "Newon Studio", body: "Design and content collaboration for LivOn’s brand and content.", planned: true },
     ],
   },
   close: {

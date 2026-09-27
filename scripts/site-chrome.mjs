@@ -1,6 +1,7 @@
 /**
  * Shared site chrome — Global Navigation with editorial mega menus.
- * Top-level: Consumer · AI · LivOn · Ongil · Business · Studio · Company
+ * Top-level: Apps · AI · LivOn · Ongil · Business · Studio · Company
+ * (internal ids: consumer = Newon Apps, lifestage = LivOn — see newon-business-units.mjs)
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
 import { MEGA_DESTINATIONS, TOP_NAV } from "./venture-studio-data.mjs";
@@ -59,7 +60,7 @@ const MENU_META = {
   lifestage: {
     kicker: "nav.lifeStageMenuLabel",
     lead: "nav.lifeStageMenuLead",
-    footHref: "lifestage/",
+    footHref: "livon/",
     footKey: "nav.lifeStageExploreCta",
     footFb: "View LivOn →",
   },
@@ -123,7 +124,7 @@ export function resolveActiveNav(pathname = "") {
   const parts = p.split("/").filter(Boolean);
   const seg = parts[0] || "";
   if (seg === "ai") return "ai";
-  if (seg === "lifestage") return "lifestage";
+  if (seg === "livon" || seg === "lifestage") return "lifestage";
   if (seg === "ongil") return "ongil";
   if (["products", "apps", "saas", "games", "ecosystem"].includes(seg)) return "consumer";
   if (seg === "tools") return "business";
@@ -216,7 +217,7 @@ function navMegaItem(flat, flatEn, base, activeNav, id, langDir = "") {
   const active = activeNav === id ? " gnav-dd--active" : "";
   const openAttr = activeNav === id ? ' aria-current="page"' : "";
   if (id === "lifestage" || id === "ongil") {
-    const dest = href(base, id === "lifestage" ? "lifestage/" : "ongil/", langDir);
+    const dest = href(base, id === "lifestage" ? "livon/" : "ongil/", langDir);
     return `<div class="gnav-dd${active}" data-gnav-dd data-gnav-menu="${id}">
     <a class="gnav__link gnav-dd__label" href="${dest}"${openAttr}>${label}</a>
     <button type="button" class="gnav__link gnav-dd__trigger" aria-expanded="false" aria-haspopup="true" aria-label="${label}">
@@ -364,9 +365,9 @@ const FOOTER_BLOG_URL = "https://m.blog.naver.com/newonapp";
 const FOOTER_TIKTOK_URL = "https://www.tiktok.com/@newon.app?_r=1&_t=ZS-95LGrSuOcfF";
 
 const FOOTER_MENUS = [
-  ["consumer", "products/"],
+  ["consumer", "apps/"],
   ["ai", "ai/"],
-  ["lifestage", "lifestage/"],
+  ["lifestage", "livon/"],
   ["ongil", "ongil/"],
   ["business", "business/"],
   ["studio", "studio/"],

@@ -104,7 +104,7 @@ export const projects: Project[] = [
     slogan: t.projects[2].slogan,
     lead: t.projects[2].lead,
     role: t.role,
-    href: "/ko/lifestage/",
+    href: "/ko/livon/",
     images: [businessFilms[2].src],
     alts: [businessFilms[2].alt],
   },

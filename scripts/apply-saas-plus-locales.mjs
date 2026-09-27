@@ -8,10 +8,10 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 const COPY = {
   ko: {
-    saasSeoTitle: "Newon+ 구독 패키지 | Newon Consumer",
+    saasSeoTitle: "Newon+ 구독 패키지 | Newon Apps",
     saasMetaDescription:
       "생산성, 금융, 성장, 웰빙, 가족, 라이프, 얼티메이트. 일상의 목적에 맞게 구성된 Newon+ 구독 패키지를 소개합니다.",
-    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroEyebrow: "NEWON APPS · SAAS",
     plusHeroTitle: "나에게 필요한 앱을,\n하나의 패키지로.",
     plusHeroLead:
       "금융부터 생산성, 건강과 가족까지.\n일상의 목적에 맞게 구성된 Newon의 구독 패키지를 만나보세요.",
@@ -94,10 +94,10 @@ const COPY = {
       "Newon+에서 패키지를 선택한 뒤, 필요한 앱을 설치하고 같은 계정으로 로그인합니다.",
   },
   en: {
-    saasSeoTitle: "Newon+ subscription packages | Newon Consumer",
+    saasSeoTitle: "Newon+ subscription packages | Newon Apps",
     saasMetaDescription:
       "Productivity, Finance, Growth, Wellbeing, Family, Life, and Ultimate. Explore Newon+ subscription packages built around everyday goals.",
-    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroEyebrow: "NEWON APPS · SAAS",
     plusHeroTitle: "The apps you need,\nin one package.",
     plusHeroLead:
       "From finance and productivity to health and family.\nDiscover Newon subscription packages shaped around everyday purposes.",
@@ -179,10 +179,10 @@ const COPY = {
       "Choose a package in Newon+, install the apps you need, and sign in with the same account.",
   },
   ja: {
-    saasSeoTitle: "Newon+ サブスクパッケージ | Newon Consumer",
+    saasSeoTitle: "Newon+ サブスクパッケージ | Newon Apps",
     saasMetaDescription:
       "生産性、金融、成長、ウェルビーイング、家族、ライフ、アルティメット。日常の目的に合わせた Newon+ パッケージをご紹介します。",
-    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroEyebrow: "NEWON APPS · SAAS",
     plusHeroTitle: "必要なアプリを、\nひとつのパッケージで。",
     plusHeroLead:
       "金融から生産性、健康と家族まで。\n日常の目的に合わせて組まれた Newon のサブスクパッケージをご覧ください。",
@@ -260,10 +260,10 @@ const COPY = {
     plusPack_ultimate_together: "Newon+ でパッケージを選び、必要なアプリをインストールして同じアカウントでログインします。",
   },
   es: {
-    saasSeoTitle: "Paquetes de suscripción Newon+ | Newon Consumer",
+    saasSeoTitle: "Paquetes de suscripción Newon+ | Newon Apps",
     saasMetaDescription:
       "Productividad, Finanzas, Crecimiento, Bienestar, Familia, Vida y Ultimate. Descubre los paquetes Newon+ pensados para el día a día.",
-    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroEyebrow: "NEWON APPS · SAAS",
     plusHeroTitle: "Las apps que necesitas,\nen un solo paquete.",
     plusHeroLead:
       "De las finanzas y la productividad a la salud y la familia.\nDescubre los paquetes de suscripción de Newon pensados para cada propósito.",
@@ -344,10 +344,10 @@ const COPY = {
     plusPack_ultimate_together: "Elige un paquete en Newon+, instala las apps que necesites e inicia sesión con la misma cuenta.",
   },
   "pt-br": {
-    saasSeoTitle: "Pacotes de assinatura Newon+ | Newon Consumer",
+    saasSeoTitle: "Pacotes de assinatura Newon+ | Newon Apps",
     saasMetaDescription:
       "Produtividade, Finanças, Crescimento, Bem-estar, Família, Vida e Ultimate. Conheça os pacotes Newon+ feitos para o dia a dia.",
-    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroEyebrow: "NEWON APPS · SAAS",
     plusHeroTitle: "Os apps que você precisa,\nem um só pacote.",
     plusHeroLead:
       "Das finanças e da produtividade à saúde e à família.\nConheça os pacotes de assinatura da Newon pensados para cada propósito.",
@@ -428,10 +428,10 @@ const COPY = {
     plusPack_ultimate_together: "Escolha um pacote no Newon+, instale os apps de que precisa e entre com a mesma conta.",
   },
   fr: {
-    saasSeoTitle: "Forfaits d’abonnement Newon+ | Newon Consumer",
+    saasSeoTitle: "Forfaits d’abonnement Newon+ | Newon Apps",
     saasMetaDescription:
       "Productivité, Finance, Croissance, Bien-être, Famille, Vie et Ultimate. Découvrez les forfaits Newon+ conçus pour le quotidien.",
-    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroEyebrow: "NEWON APPS · SAAS",
     plusHeroTitle: "Les apps dont vous avez besoin,\nen un seul forfait.",
     plusHeroLead:
       "De la finance et de la productivité à la santé et à la famille.\nDécouvrez les forfaits d’abonnement Newon conçus pour chaque usage.",
@@ -512,10 +512,10 @@ const COPY = {
     plusPack_ultimate_together: "Choisissez un forfait dans Newon+, installez les apps dont vous avez besoin et connectez-vous avec le même compte.",
   },
   de: {
-    saasSeoTitle: "Newon+ Abo-Pakete | Newon Consumer",
+    saasSeoTitle: "Newon+ Abo-Pakete | Newon Apps",
     saasMetaDescription:
       "Produktivität, Finanzen, Wachstum, Wohlbefinden, Familie, Leben und Ultimate. Entdecken Sie Newon+ Pakete für den Alltag.",
-    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroEyebrow: "NEWON APPS · SAAS",
     plusHeroTitle: "Die Apps, die Sie brauchen,\nin einem Paket.",
     plusHeroLead:
       "Von Finanzen und Produktivität bis Gesundheit und Familie.\nEntdecken Sie Newon-Abo-Pakete für den Alltag.",
@@ -596,10 +596,10 @@ const COPY = {
     plusPack_ultimate_together: "Wählen Sie ein Paket in Newon+, installieren Sie die benötigten Apps und melden Sie sich mit demselben Konto an.",
   },
   hi: {
-    saasSeoTitle: "Newon+ सब्सक्रिप्शन पैकेज | Newon Consumer",
+    saasSeoTitle: "Newon+ सब्सक्रिप्शन पैकेज | Newon Apps",
     saasMetaDescription:
       "प्रोडक्टिविटी, वित्त, ग्रोथ, वेलबीइंग, परिवार, लाइफ और अल्टिमेट। रोज़मर्रा के उद्देश्य के हिसाब से बने Newon+ पैकेज देखें।",
-    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroEyebrow: "NEWON APPS · SAAS",
     plusHeroTitle: "जरूरी ऐप्स,\nएक पैकेज में।",
     plusHeroLead:
       "वित्त और प्रोडक्टिविटी से स्वास्थ्य और परिवार तक।\nरोज़मर्रा के उद्देश्य के हिसाब से बने Newon सब्सक्रिप्शन पैकेज देखें।",
@@ -679,10 +679,10 @@ const COPY = {
     plusPack_ultimate_together: "Newon+ में पैकेज चुनें, जरूरी ऐप्स इंस्टॉल करें और उसी खाते से साइन इन करें।",
   },
   id: {
-    saasSeoTitle: "Paket langganan Newon+ | Newon Consumer",
+    saasSeoTitle: "Paket langganan Newon+ | Newon Apps",
     saasMetaDescription:
       "Produktivitas, Keuangan, Pertumbuhan, Kesejahteraan, Keluarga, Hidup, dan Ultimate. Jelajahi paket Newon+ untuk kebutuhan sehari-hari.",
-    plusHeroEyebrow: "NEWON CONSUMER · SAAS",
+    plusHeroEyebrow: "NEWON APPS · SAAS",
     plusHeroTitle: "Aplikasi yang Anda butuhkan,\ndalam satu paket.",
     plusHeroLead:
       "Dari keuangan dan produktivitas hingga kesehatan dan keluarga.\nTemukan paket langganan Newon yang disusun sesuai tujuan sehari-hari.",

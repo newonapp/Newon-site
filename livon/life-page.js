@@ -164,6 +164,7 @@
 
   function svcCard(svc, stageId, opts) {
     opts = opts || {};
+    if (window.LivonServices && svc.id) return window.LivonServices.card(svc, stageId, opts);
     var saved = isSaved(svc.name);
     var feats = (svc.feats || []).slice(0, 3).map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("");
     var href = svc.href || "#explore";
@@ -540,7 +541,7 @@
       if (p.stage) bits.push(stageById(p.stage) ? stageById(p.stage).label : p.stage);
       if (p.situations.length) bits.push(p.situations.slice(0, 2).join(", "));
       if (p.interests.length) bits.push(p.interests.slice(0, 2).join(", "));
-      why.textContent = "우선 기준: " + (bits.join(" · ") || "선택값") + " (규칙 기반)";
+      why.textContent = bits.join(" · ") || "선택한 관심사";
     }
     host.innerHTML = '<div class="lv-life-services is-trio">' +
       scored.map(function (item) {
@@ -1051,6 +1052,7 @@
         (hash.indexOf("life-") === 0 && hash !== "life-now");
     },
     onShow: function (hash) {
+      if (window.LivonServices && window.LivonServices.open(hash)) return;
       initHero();
       updateStageLabel();
       $$("#life [data-lv-reveal]").forEach(function (n) {
@@ -1094,5 +1096,7 @@
     bindSetup();
     bind();
     updateStageLabel();
+    var hash = (location.hash || "#life").slice(1);
+    if (window.LivonLife.isLifeHash(hash)) window.LivonLife.onShow(hash);
   });
 })();

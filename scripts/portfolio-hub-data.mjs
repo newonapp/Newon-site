@@ -148,7 +148,7 @@ export function getPortfolioBeyondItems(lang = "ko") {
     {
       n: "02",
       tag: "LABS",
-      title: "Newon Labs",
+      title: "Labs",
       body: isKo
         ? "AI, SaaS, Tools, Character IP 등 제품이 되기 전 아이디어를 빠르게 실험합니다."
         : "Fast experiments in AI, SaaS, tools, and character IP before they become products.",

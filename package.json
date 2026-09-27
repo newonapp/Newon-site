@@ -46,7 +46,9 @@
     "묶기": "node scripts/prepare-manual-upload.mjs",
     "pack:pages": "node scripts/zip-publish.mjs",
     "ship": "node scripts/publish-site.mjs && bash scripts/push-to-github.sh",
-    "push:first": "bash first-time-push.sh"
+    "push:first": "bash first-time-push.sh",
+    "dev:livon": "node scripts/publish-site.mjs && node --env-file=.env scripts/serve-publish.mjs",
+    "test:livon": "node --test tests/livon/*.test.mjs"
   },
   "devDependencies": {
     "@vitalets/google-translate-api": "^9.2.1"

@@ -263,6 +263,10 @@
     s.saves.unshift({
       id: id,
       label: item.label || item.title || "저장 항목",
+      title: item.title || item.label || "저장 항목",
+      lifeStage: item.lifeStage || "",
+      data: item.data || null,
+      savedAt: Date.now(),
       type: item.type || "content",
       href: item.href || "#life-now",
       folder: item.folder || "나중에 보기",

@@ -1,5 +1,5 @@
 /**
- * Newon Consumer AI showcase — logos only, no screenshots/mocks.
+ * Newon AI · Personal AI showcase (app AI across Newon Apps) — logos only, no screenshots/mocks.
  */
 import fs from "fs";
 import path from "path";

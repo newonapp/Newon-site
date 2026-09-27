@@ -1,5 +1,5 @@
 /**
- * Newon Games hub — surveillance UI motion (restrained).
+ * Newon Apps · Games hub — surveillance UI motion (restrained).
  */
 (function () {
   "use strict";

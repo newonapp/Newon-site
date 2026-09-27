@@ -543,7 +543,7 @@ function indexPage(langMeta, copy, apps) {
           ${featured.map((a, i) => featuredCase(a, i, copy)).join("\n")}
           </div>
           <a class="pf-case" data-pf-type="games" href="${SITE}/${lang}/404-human/" style="display:block;margin-top:1rem;text-decoration:none;color:inherit">
-            <div class="pf-case__inner"><h3>404: HUMAN</h3><p class="pf-case__sum">Newon Games — Live</p></div>
+            <div class="pf-case__inner"><h3>404: HUMAN</h3><p class="pf-case__sum">Newon Apps · Games — Live</p></div>
           </a>
         </div>
       </section>

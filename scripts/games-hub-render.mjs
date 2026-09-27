@@ -1,5 +1,5 @@
 /**
- * Newon Games — 404: HUMAN official landing (surveillance / system UI).
+ * Newon Apps · Games — 404: HUMAN official landing (surveillance / system UI).
  * Play: /404-human/play/ · Details: ../404-human/
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
@@ -343,7 +343,7 @@ export function renderGamesShowcaseBody(flat, flatEn) {
 
   <section class="games-identity" data-games-reveal>
     <div class="hub-inner">
-      <p class="games-kicker games-kicker--light">NEWON GAMES</p>
+      <p class="games-kicker games-kicker--light">NEWON APPS · GAMES</p>
       <h2 class="games-identity__title">${t(flat, flatEn, "studio.gamesIdentityTitle", "우리는\n선택을 기억하는 세계를 만듭니다.")}</h2>
       <ul class="games-identity__keys">
         <li>CHOICE</li>
@@ -351,7 +351,7 @@ export function renderGamesShowcaseBody(flat, flatEn) {
         <li>MEMORY</li>
         <li>CONSEQUENCE</li>
       </ul>
-      <p class="games-identity__lead">${t(flat, flatEn, "studio.gamesIdentityLead", "Newon Games는 플레이어의 선택과 행동이 세계에 흔적을 남기는 인터랙티브 경험을 만듭니다.")}</p>
+      <p class="games-identity__lead">${t(flat, flatEn, "studio.gamesIdentityLead", "Newon Apps의 게임은 플레이어의 선택과 행동이 세계에 흔적을 남기는 인터랙티브 경험을 만듭니다.")}</p>
       <ul class="games-identity__coords">
         <li><span>GAME / 001</span><strong>404: HUMAN</strong></li>
         <li><span>GAME / 002</span><strong>CLASSIFIED</strong></li>
@@ -363,7 +363,7 @@ export function renderGamesShowcaseBody(flat, flatEn) {
   <section class="games-next" data-games-reveal aria-labelledby="games-next-title">
     <div class="hub-inner games-next__inner">
       <header class="games-next__head">
-        <p class="games-kicker games-next__kicker">${t(flat, flatEn, "studio.gamesNextLabel", "MORE FROM NEWON GAMES")}</p>
+        <p class="games-kicker games-next__kicker">${t(flat, flatEn, "studio.gamesNextLabel", "MORE GAMES FROM NEWON APPS")}</p>
         <p class="games-next__eyebrow">NEXT EXPERIMENT</p>
       </header>
 
@@ -377,7 +377,7 @@ export function renderGamesShowcaseBody(flat, flatEn) {
             <span></span><span></span><span></span><span></span>
           </div>
           <p class="games-next__lead">${t(flat, flatEn, "studio.gamesNextLead", "다음 세계는 아직 공개되지 않았습니다.")}</p>
-          <a class="games-next__link" href="./">${t(flat, flatEn, "studio.gamesNextCta", "Newon Games 업데이트 보기")}<span aria-hidden="true">→</span></a>
+          <a class="games-next__link" href="./">${t(flat, flatEn, "studio.gamesNextCta", "Newon 게임 업데이트 보기")}<span aria-hidden="true">→</span></a>
         </div>
 
         <dl class="games-next__meta">
@@ -449,7 +449,7 @@ export function renderGamesShowcaseBody(flat, flatEn) {
         <p>ESCAPE / LOCKED</p>
       </div>
     </div>
-    <p class="games-final__foot hub-inner">NEWON GAMES / 404: HUMAN</p>
+    <p class="games-final__foot hub-inner">NEWON APPS · GAMES / 404: HUMAN</p>
   </section>
 </div>`;
 }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T06:45:10.694Z",
+  "generatedAt": "2026-09-27T14:12:32.505Z",
   "note": "Business leads, waitlist, and newsletter submissions are collected via FormSubmit to newon@newon.app. Activate the inbox at formsubmit.co if not done yet.",
   "products": [
     {
@@ -215,7 +215,7 @@
       "id": "eaton",
       "slug": "eaton",
       "type": "apps",
-      "status": "live",
+      "status": "building",
       "name": "EatOn",
       "taglineKey": null,
       "tagline": "EatOn",
@@ -234,7 +234,7 @@
       "id": "fiton",
       "slug": "fiton",
       "type": "apps",
-      "status": "live",
+      "status": "building",
       "name": "FitOn",
       "taglineKey": null,
       "tagline": "FitOn",

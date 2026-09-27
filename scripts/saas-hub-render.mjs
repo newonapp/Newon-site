@@ -1,5 +1,5 @@
 /**
- * Consumer /saas/ — Newon+ packages, designed like Labs editorial archive.
+ * Newon Apps /saas/ — Newon+ packages, designed like Labs editorial archive.
  */
 import { escapeHtml, pick } from "./hub-utils.mjs";
 import { APP_CATALOG } from "./portfolio-data.mjs";
@@ -198,7 +198,7 @@ export function renderSaasShowcaseBody(flat, flatEn, lang) {
   <section class="plus-hero" data-saas-reveal>
     <div class="hub-inner plus-hero__grid">
       <div class="plus-hero__copy">
-        <p class="plus-eyebrow">${t(flat, flatEn, "studio.plusHeroEyebrow", "NEWON CONSUMER · SAAS")}</p>
+        <p class="plus-eyebrow">${t(flat, flatEn, "studio.plusHeroEyebrow", "NEWON APPS · SAAS")}</p>
         <h1 class="plus-hero__title">${titleHtml}</h1>
         <p class="plus-hero__lead">${leadHtml}</p>
         <div class="plus-hero__actions">

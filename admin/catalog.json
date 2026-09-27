@@ -81,14 +81,14 @@
     "name": "EatOn",
     "type": "apps",
     "platforms": "iOS / Android",
-    "status": "live"
+    "status": "building"
   },
   {
     "slug": "fiton",
     "name": "FitOn",
     "type": "apps",
     "platforms": "iOS / Android",
-    "status": "live"
+    "status": "building"
   },
   {
     "slug": "404-human",

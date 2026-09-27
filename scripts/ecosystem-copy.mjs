@@ -47,61 +47,61 @@ const FILM = {
 
 const SEO = {
   ko: {
-    seoTitle: "Newon 생태계 | Newon+와 13개 앱",
+    seoTitle: "Newon 생태계 | Newon+와 11개 앱",
     seoDescription:
-      "Newon+에 한 번 회원가입하면 13개 Newon 앱에서 같은 계정으로 로그인할 수 있습니다. 목표, 금융, 건강, 가족, 여행을 하나의 계정으로 연결합니다.",
+      "Newon+에 한 번 회원가입하면 11개 Newon 앱에서 같은 계정으로 로그인할 수 있습니다. 목표, 금융, 건강, 가족, 여행을 하나의 계정으로 연결합니다.",
   },
   en: {
-    seoTitle: "Newon Ecosystem | Newon+ and 13 apps",
+    seoTitle: "Newon Ecosystem | Newon+ and 11 apps",
     seoDescription:
-      "Create a Newon+ account once, then sign in to 13 Newon apps with the same account. Goals, money, health, family, and travel — one Newon account.",
+      "Create a Newon+ account once, then sign in to 11 Newon apps with the same account. Goals, money, health, family, and travel — one Newon account.",
   },
   ja: {
-    seoTitle: "Newonエコシステム | Newon+と13のアプリ",
+    seoTitle: "Newonエコシステム | Newon+と11のアプリ",
     seoDescription:
-      "Newon+に一度登録すれば、13のNewonアプリに同じアカウントでログインできます。",
+      "Newon+に一度登録すれば、11のNewonアプリに同じアカウントでログインできます。",
   },
   es: {
-    seoTitle: "Ecosistema Newon | Newon+ y 13 apps",
+    seoTitle: "Ecosistema Newon | Newon+ y 11 apps",
     seoDescription:
-      "Crea una cuenta Newon+ una vez e inicia sesión en 13 apps de Newon con la misma cuenta.",
+      "Crea una cuenta Newon+ una vez e inicia sesión en 11 apps de Newon con la misma cuenta.",
   },
   "pt-br": {
-    seoTitle: "Ecossistema Newon | Newon+ e 13 apps",
+    seoTitle: "Ecossistema Newon | Newon+ e 11 apps",
     seoDescription:
-      "Crie uma conta Newon+ uma vez e entre nas 13 apps da Newon com a mesma conta.",
+      "Crie uma conta Newon+ uma vez e entre nas 11 apps da Newon com a mesma conta.",
   },
   fr: {
-    seoTitle: "Écosystème Newon | Newon+ et 13 apps",
+    seoTitle: "Écosystème Newon | Newon+ et 11 apps",
     seoDescription:
-      "Créez un compte Newon+ une fois, puis connectez-vous aux 13 apps Newon avec le même compte.",
+      "Créez un compte Newon+ une fois, puis connectez-vous aux 11 apps Newon avec le même compte.",
   },
   de: {
-    seoTitle: "Newon-Ökosystem | Newon+ und 13 Apps",
+    seoTitle: "Newon-Ökosystem | Newon+ und 11 Apps",
     seoDescription:
-      "Einmal bei Newon+ registrieren, dann in 13 Newon-Apps mit demselben Konto anmelden.",
+      "Einmal bei Newon+ registrieren, dann in 11 Newon-Apps mit demselben Konto anmelden.",
   },
   hi: {
-    seoTitle: "Newon इकोसिस्टम | Newon+ और 13 ऐप्स",
+    seoTitle: "Newon इकोसिस्टम | Newon+ और 11 ऐप्स",
     seoDescription:
-      "Newon+ पर एक बार खाता बनाएँ, फिर 13 Newon ऐप्स में उसी खाते से लॉग इन करें।",
+      "Newon+ पर एक बार खाता बनाएँ, फिर 11 Newon ऐप्स में उसी खाते से लॉग इन करें।",
   },
   id: {
-    seoTitle: "Ekosistem Newon | Newon+ dan 13 aplikasi",
+    seoTitle: "Ekosistem Newon | Newon+ dan 11 aplikasi",
     seoDescription:
-      "Daftar Newon+ sekali, lalu masuk ke 13 aplikasi Newon dengan akun yang sama.",
+      "Daftar Newon+ sekali, lalu masuk ke 11 aplikasi Newon dengan akun yang sama.",
   },
 };
 
 const KO = {
   ...SEO.ko,
   heroKicker: "01 / ONE ACCOUNT",
-  heroTitleHtml: "하나의 계정으로,<br>13개의 일상을 연결합니다.",
+  heroTitleHtml: "하나의 계정으로,<br>11개의 일상을 연결합니다.",
   heroLead:
-    "Newon+에 한 번 회원가입하면 Newon의 13개 앱에서 별도 회원가입 없이 같은 계정으로 로그인할 수 있습니다.",
+    "Newon+에 한 번 회원가입하면 출시된 Newon 앱 11개에서 별도 회원가입 없이 같은 계정으로 로그인할 수 있습니다.",
   heroLead2:
     "금융과 소비, 목표와 습관, 건강과 가족, 여행까지. 각자의 역할을 가진 앱들이 하나의 Newon 생태계를 이룹니다.",
-  keys: ["ONE ACCOUNT", "13 CONNECTED APPS", "ONE NEWON ECOSYSTEM"],
+  keys: ["ONE ACCOUNT", "11 LIVE APPS", "ONE NEWON ECOSYSTEM"],
   heroPrimary: "생태계 살펴보기",
   heroGhost: "13개 앱 보기",
   orbitHint: "로고를 누르면 앱 소개로 이동합니다.",
@@ -140,7 +140,7 @@ const KO = {
   },
 
   domainsKicker: "04 / LIFE AREAS",
-  domainsIntro: "13개 앱은 네 가지 생활 영역으로 나뉩니다. 각 앱의 역할은 다르며, 사용자는 필요한 앱을 선택해 같은 계정으로 이용할 수 있습니다.",
+  domainsIntro: "13개 앱은 네 가지 생활 영역으로 나뉩니다. 각 앱의 역할은 다르며, 사용자는 필요한 앱을 선택해 같은 계정으로 이용할 수 있습니다. EatOn과 FitOn은 출시 준비 중입니다.",
   domains: [
     {
       id: "goals",
@@ -215,7 +215,7 @@ const KO = {
   nextBadge: "확장 계획",
   nowItems: [
     "Newon+ 통합 계정",
-    "한 번 회원가입한 계정으로 13개 앱 로그인",
+    "한 번 회원가입한 계정으로 출시된 11개 앱 로그인",
     "Newon+를 통한 앱 탐색 및 서비스 연결",
     "Newon+에서 운영 중인 구독 패키지 선택·관리",
     "각 앱에서 제공하는 개별 기능",
@@ -243,7 +243,7 @@ const KO = {
     { label: "여행·여가·새로운 경험", apps: "My World", slugs: ["myworld"] },
   ],
   livonCta: "LivOn 알아보기 →",
-  livonHref: "../lifestage/",
+  livonHref: "../livon/",
 
   ongilKicker: "08 / ONGIL",
   ongilTitleHtml: "개인의 일상에서,<br>부모님과 가족의 일상까지.",
@@ -263,7 +263,7 @@ const KO = {
 
   visionKicker: "09 / LONG VIEW",
   visionTitleHtml: "Newon+에서 시작해,<br>생활의 다음 단계로.",
-  visionLead: "이 다이어그램은 개념적인 사업 연결 구조입니다. LivOn과 Ongil은 현재 출시된 13개 앱의 일부가 아니라 향후 확장입니다.",
+  visionLead: "이 다이어그램은 개념적인 사업 연결 구조입니다. LivOn과 Ongil은 현재 출시된 11개 앱의 일부가 아니라 향후 확장입니다.",
   visionHub: "통합 계정",
   visionFuture: "향후 확장",
   visionAi: "Newon AI는 향후 개인화와 안내를 돕는 공통 기술 방향으로 확장됩니다.",
@@ -286,12 +286,12 @@ const KO = {
 const EN = {
   ...SEO.en,
   heroKicker: "01 / ONE ACCOUNT",
-  heroTitleHtml: "One account.<br>Thirteen connected days.",
+  heroTitleHtml: "One account.<br>Eleven connected days.",
   heroLead:
-    "Sign up once with Newon+, then log in to Newon’s 13 apps with the same account — without creating a new account in each app.",
+    "Sign up once with Newon+, then log in to Newon’s 11 live apps with the same account — without creating a new account in each app.",
   heroLead2:
     "Money and spending, goals and habits, health and family, travel. Each app has its own job. Together they make one Newon ecosystem.",
-  keys: ["ONE ACCOUNT", "13 CONNECTED APPS", "ONE NEWON ECOSYSTEM"],
+  keys: ["ONE ACCOUNT", "11 LIVE APPS", "ONE NEWON ECOSYSTEM"],
   heroPrimary: "Explore the ecosystem",
   heroGhost: "See 13 apps",
   orbitHint: "Tap a logo to open the app page.",
@@ -331,7 +331,7 @@ const EN = {
 
   domainsKicker: "04 / LIFE AREAS",
   domainsIntro:
-    "The 13 apps sit in four life areas. Each app has a different job. You pick the ones you need and use them with the same account.",
+    "The 13 apps sit in four life areas. Each app has a different job. You pick the ones you need and use them with the same account. EatOn and FitOn are still being prepared for launch.",
   domains: [
     {
       id: "goals",
@@ -407,7 +407,7 @@ const EN = {
   nextBadge: "Expansion plan",
   nowItems: [
     "Newon+ shared account",
-    "Sign in to 13 apps with the account you created once",
+    "Sign in to the 11 live apps with the account you created once",
     "Find and open apps from Newon+",
     "Choose and manage live Newon+ packages",
     "Each app’s own features",
@@ -435,7 +435,7 @@ const EN = {
     { label: "Travel · leisure · new experience", apps: "My World", slugs: ["myworld"] },
   ],
   livonCta: "Learn about LivOn →",
-  livonHref: "../lifestage/",
+  livonHref: "../livon/",
 
   ongilKicker: "08 / ONGIL",
   ongilTitleHtml: "From your day<br>to a parent’s day.",
@@ -456,7 +456,7 @@ const EN = {
   visionKicker: "09 / LONG VIEW",
   visionTitleHtml: "Start with Newon+.<br>Grow into the next stage of life.",
   visionLead:
-    "This diagram is a conceptual map. LivOn and Ongil are future expansions — not part of the 13 apps that are live today.",
+    "This diagram is a conceptual map. LivOn and Ongil are future expansions — not part of the 11 apps that are live today.",
   visionHub: "Shared account",
   visionFuture: "Later expansion",
   visionAi: "Newon AI is a future shared layer for personalization and guidance.",

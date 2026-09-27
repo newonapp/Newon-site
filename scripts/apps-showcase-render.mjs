@@ -1,6 +1,7 @@
 /**
  * HTML builders for /apps/ premium showcase page.
  */
+import { getCompanyNumbers } from "./newon-business-units.mjs";
 import { escapeHtml, pick } from "./hub-utils.mjs";
 import {
   APP_CATEGORIES,
@@ -221,6 +222,8 @@ export function renderAppsShowcaseBody(flat, flatEn, lang) {
   const gridApps = appsForGrid(apps);
   const eco = appsEcosystem(apps);
   const count = appsCountLabel(apps);
+  /** Headline figure = launched apps (company-metrics); the grid also lists apps coming soon. */
+  const liveAppCount = getCompanyNumbers().apps;
 
   const cards = gridApps.map((a, i) => appCard(a, flat, flatEn, i)).join("\n");
 
@@ -228,7 +231,7 @@ export function renderAppsShowcaseBody(flat, flatEn, lang) {
   ${appsFilm(dir)}
   <section class="apps-stats-band">
     <ul class="apps-stats hub-inner" aria-label="${t(flat, flatEn, "studio.appsStatsAria", "Product stats")}">
-      <li><strong>${escapeHtml(count)}</strong><span>${t(flat, flatEn, "studio.appsStatApps", "Apps")}</span></li>
+      <li><strong>${escapeHtml(liveAppCount)}</strong><span>${t(flat, flatEn, "studio.appsStatApps", "Apps")}</span></li>
       <li><strong>iOS &amp; Android</strong><span>${t(flat, flatEn, "studio.appsStatPlatforms", "Platforms")}</span></li>
       <li><strong>${t(flat, flatEn, "studio.appsStatGlobalValue", "177 countries")}</strong><span>${t(flat, flatEn, "studio.appsStatGlobal", "서비스 국가")}</span></li>
       <li><strong>${t(flat, flatEn, "studio.appsStatLangValue", "13 languages")}</strong><span>${t(flat, flatEn, "studio.appsStatLang", "지원 언어")}</span></li>

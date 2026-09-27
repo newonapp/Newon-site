@@ -301,7 +301,7 @@ const KO = {
       { n: "01", name: "LivOn", body: "10대부터 70대까지 생애주기의 변화와 새로운 시작을 돕는 종합 플랫폼. 온길의 시니어 특화 돌봄·생활을 대체하지 않습니다." },
       { n: "02", name: "Ongil", body: "시니어의 일상과 돌봄, 가족·지역사회 연결에 특화된 플랫폼." },
       { n: "03", name: "NEWON AI", body: "맞춤 생활정보 탐색과 안내에 활용할 수 있는 AI 기술·서비스." },
-      { n: "04", name: "Consumer · Business · Commerce", body: "일상 앱 생태계, 기업·기관 솔루션, 상품·생활 서비스 거래를 각각 담당합니다." },
+      { n: "04", name: "Apps · Business", body: "일상 앱 생태계와 기업·기관 솔루션을 각각 담당합니다." },
     ],
   },
   close: {
@@ -599,7 +599,7 @@ const EN = {
       { n: "01", name: "LivOn", body: "A platform for life changes and new starts from the teens through the seventies. It does not replace Ongil’s senior living and care focus." },
       { n: "02", name: "Ongil", body: "A platform focused on seniors’ daily life and care, and on family and community connection." },
       { n: "03", name: "NEWON AI", body: "AI technology and services that can support tailored living information and guidance." },
-      { n: "04", name: "Consumer · Business · Commerce", body: "Everyday apps, solutions for companies and institutions, and trade in goods and living services." },
+      { n: "04", name: "Apps · Business", body: "Everyday apps, and solutions for companies and institutions." },
     ],
   },
   close: {

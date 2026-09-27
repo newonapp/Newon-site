@@ -301,11 +301,11 @@
       if (conflicts.length) {
         if (!window.confirm("같은 날짜·시작 시간에 다른 일정이 있습니다. 그래도 저장할까요?")) return;
       }
-      upsert(store.events, {
+      upsert(store.events, Object.assign({}, state.editing || {}, {
         id: id, title: data.title, date: data.date, start: data.start || "", end: data.end || "",
         allDay: !!data.allDay, place: data.place || "", category: data.category || "개인",
         note: data.note || "", done: state.editing && state.editing.done, updatedAt: now, createdAt: (state.editing && state.editing.createdAt) || now
-      });
+      }));
     } else if (type === "todo") {
       if (!data.title) return alert("할 일을 입력해 주세요.");
       upsert(store.todos, {
@@ -323,6 +323,12 @@
         status: Number(data.progress) >= 100 ? "완료" : "진행 중",
         updatedAt: now, createdAt: (state.editing && state.editing.createdAt) || now
       });
+      // Preserve the allowance goal's amount fields when edited in My Life.
+      if (state.editing && state.editing.id === "teen-allowance-goal" && state.editing.target > 0) {
+        var allowanceGoal = store.goals.find(function (g) { return g.id === id; });
+        allowanceGoal.target = state.editing.target;
+        allowanceGoal.current = Number(data.progress) === state.editing.progress ? state.editing.current : Math.round(state.editing.target * allowanceGoal.progress / 100);
+      }
     } else if (type === "habit") {
       if (!data.title) return alert("습관을 입력해 주세요.");
       upsert(store.habits, {
@@ -357,12 +363,12 @@
       var items = String(data.items || "").split("\n").map(function (line) { return line.trim(); }).filter(Boolean)
         .map(function (text, idx) {
           var prev = state.editing && state.editing.items && state.editing.items[idx];
-          return { id: (prev && prev.id) || uid("ci"), text: text, done: prev ? !!prev.done : false };
+          return Object.assign({}, prev || {}, { id: (prev && prev.id) || uid("ci"), text: text, done: prev ? !!prev.done : false });
         });
-      upsert(store.checklists, {
+      upsert(store.checklists, Object.assign({}, state.editing || {}, {
         id: id, title: data.title, desc: data.desc || "", items: items,
         updatedAt: now, createdAt: (state.editing && state.editing.createdAt) || now
-      });
+      }));
     } else if (type === "project") {
       if (!data.title) return alert("프로젝트 제목을 입력해 주세요.");
       var steps = String(data.steps || "").split("\n").map(function (line) { return line.trim(); }).filter(Boolean)
@@ -916,6 +922,73 @@
   }
 
 
+  function refreshDashboard() {
+    renderStats();
+    renderTimeline();
+    renderTodayTodos();
+    renderActiveGoals();
+    renderRecentSaved();
+    renderModules();
+  }
+
+  function refreshAll() {
+    refreshDashboard();
+    if (state.view && state.view !== "home") renderPanel(state.view);
+  }
+
+  function findItem(type, id) {
+    var store = loadStore();
+    var map = {
+      event: store.events, todo: store.todos, goal: store.goals, habit: store.habits,
+      tx: store.transactions, journal: store.journal, experience: store.experiences,
+      checklist: store.checklists, project: store.projects, health: store.health
+    };
+    var list = map[type] || [];
+    return list.find(function (x) { return x.id === id; }) || null;
+  }
+
+  function deleteItem(type, id) {
+    if (!confirmDelete()) return;
+    var store = loadStore();
+    var key = {
+      event: "events", todo: "todos", goal: "goals", habit: "habits",
+      tx: "transactions", journal: "journal", experience: "experiences",
+      checklist: "checklists", project: "projects", health: "health"
+    }[type];
+    if (!key) return;
+    store[key] = (store[key] || []).filter(function (x) { return x.id !== id; });
+    if (type === "habit" && store.habitLogs) delete store.habitLogs[id];
+    saveStore(store);
+    refreshAll();
+  }
+
+  function initHero() {
+    var hero = $("[data-lv-ml-hero]");
+    if (!hero) return;
+    requestAnimationFrame(function () { hero.classList.add("is-ready"); });
+  }
+
+  function initReveal() {
+    var nodes = $$("#life-now [data-lv-reveal]");
+    if (!nodes.length) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      nodes.forEach(function (n) { n.classList.add("is-in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add("is-in"); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    nodes.forEach(function (n) { io.observe(n); });
+  }
+
+  function openAgeModal() {
+    var modal = $("#lv-ml-age-modal");
+    if (!modal) return;
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
   function closeAgeModal() {
     var modal = $("#lv-ml-age-modal");
     if (!modal) return;
@@ -942,8 +1015,8 @@
         e.preventDefault();
         state.savedFolder = sf.getAttribute("data-lv-ml-saved-folder") || "all";
         gotoView("saved");
-        return;
-      }
+      return;
+    }
       var al = e.target.closest("input[data-lv-ml-alert]");
       if (al && window.LivonPlatform && window.LivonPlatform.setAlertPref) {
         window.LivonPlatform.setAlertPref(al.getAttribute("data-lv-ml-alert"), !!al.checked);
@@ -976,8 +1049,8 @@
       if (add) {
         e.preventDefault();
         openForm(add.getAttribute("data-lv-ml-add"));
-        return;
-      }
+      return;
+    }
       var edit = e.target.closest("[data-lv-ml-edit]");
       if (edit) {
         e.preventDefault();

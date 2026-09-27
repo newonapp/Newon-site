@@ -14,13 +14,13 @@
     <link rel="stylesheet" href="/gnav-mega.css?v=20260902nav1" />
     <link rel="stylesheet" href="/home-lifestage.css?v=20260924livon1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20260922loop1" />
-    <link rel="stylesheet" href="/livon/life-page.css?v=20260925life23" />
+    <link rel="stylesheet" href="/livon/life-page.css?v=20260927f1" />
     <link rel="stylesheet" href="/livon/life-now-page.css?v=20260925ml15" />
-    <link rel="stylesheet" href="/livon/explore-page.css?v=20260925ex7" />
+    <link rel="stylesheet" href="/livon/explore-page.css?v=20260926img1" />
     <link rel="stylesheet" href="/livon/community-page.css?v=20260925cm13" />
     <link rel="stylesheet" href="/livon/today-page.css?v=20260925td15" />
     <link rel="stylesheet" href="/livon/ai-page.css?v=20260925ai10" />
-    <link rel="stylesheet" href="/livon/home-page.css?v=20260925hm16" />
+    <link rel="stylesheet" href="/livon/home-page.css?v=20260926aibg1" />
     <link rel="stylesheet" href="/hover-contrast.css?v=20260829hover1" />
     <link rel="stylesheet" href="/site-dark.css?v=20260924foot1" />
     <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
@@ -45,7 +45,7 @@
     <header class="gnav site-header gnav--five" data-gnav>
       <div class="gnav__bar">
         <div class="gnav__inner">
-          <a class="gnav__brand" href="/ko/lifestage/" aria-label="LivOn">
+          <a class="gnav__brand" href="/ko/livon/" aria-label="LivOn">
             <img class="gnav__logo" src="/assets/livon-mark-icon.jpg" alt="" width="40" height="40" decoding="async" />
             <span class="gnav__wordmark">LivOn</span>
           </a>
@@ -337,6 +337,9 @@
         </section>
 
         <section class="lv-hm-sec lv-hm-sec--ai" id="hm-ai" data-lv-hm-reveal>
+          <video class="lv-hm-ai-bg" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260815_032550_4c49689d-a215-41e0-bb76-8ef78f562429.mp4" type="video/mp4" />
+          </video>
           <div class="lv-hm-inner">
             <p class="lv-hm-kicker">10 / LIVON AI</p>
             <h2 class="lv-hm-display">궁금한 일상부터,<br>앞으로의 계획까지.</h2>
@@ -437,8 +440,8 @@
               <div class="lv-life-split">
                 <div>
                   <p class="lv-life-kicker">For You</p>
-                  <h2 class="lv-life-title">선택한 기준으로<br>우선 보여줄 서비스.</h2>
-                  <p class="lv-life-lead">규칙 기반 우선 노출입니다. AI 추천이라고 표시하지 않습니다. 전체 서비스는 아래 생애 단계에서 자유롭게 볼 수 있습니다.</p>
+                  <h2 class="lv-life-title">나에게 맞는 서비스</h2>
+                  <p class="lv-life-lead">선택한 생활 단계와 관심사에 맞춰 필요한 서비스를 먼저 보여드려요.</p>
                   <div class="lv-life-why" data-lv-life-why>맞춤 설정을 적용하면 추천 이유가 여기에 표시됩니다.</div>
                 </div>
                 <div class="lv-life-priority" data-lv-life-priority>
@@ -1824,7 +1827,6 @@
                       <button type="submit" class="lv-ai-btn lv-ai-btn--dark lv-ai-btn--sm" data-lv-ai-send disabled>전송</button>
                     </div>
                   </form>
-                  <p class="lv-ai-note" data-lv-ai-api-note>실제 AI 응답은 서버 API 키가 연결된 경우에만 제공됩니다. 키가 없으면 연결 안내와 재시도만 표시하며, 가짜 답변은 만들지 않습니다.</p>
                 </div>
               </div>
 
@@ -1918,11 +1920,11 @@
                   </select>
                 </label>
                 <label class="lv-ai-check"><input type="checkbox" name="personalize" checked /> 개인화 사용</label>
-                <label class="lv-ai-check"><input type="checkbox" name="shareLifeData" /> 내 생활 데이터 최소 참조 허용 (승인된 범위)</label>
+                <label class="lv-ai-check"><input type="checkbox" name="shareLifeData" /> 내 생활 데이터 참조 (아직 연결되지 않음)</label>
                 <div class="lv-ai-actions">
                   <button type="submit" class="lv-ai-btn lv-ai-btn--dark">설정 저장</button>
                 </div>
-                <p class="lv-ai-note">대화 기록도 이 기기에 저장됩니다. 서버 계정 동기화는 아직 없습니다.</p>
+                <p class="lv-ai-note">대화는 이 브라우저에 저장됩니다. 질문·최근 대화와 허용한 개인화 설정은 AI 답변을 위해 OpenAI에 전달됩니다. 계정 동기화는 아직 없습니다.</p>
               </form>
             </div>
           </section>
@@ -3139,10 +3141,20 @@
       </div>
     </div>
 
-    <script src="/livon/life-data.js?v=20260925life19"></script>
+    <script src="/livon/life-data.js?v=20260927f1"></script>
     <script src="/livon/life-events-data.js?v=20260925le5"></script>
-    <script src="/livon/livon-platform.js?v=20260925plat2"></script>
-    <script src="/livon/life-page.js?v=20260925life23"></script>
+    <script src="/livon/livon-platform.js?v=20260926y1"></script>
+    <script src="/livon/service-details-data.js?v=20260926y1"></script>
+    <script src="/livon/service-details.js?v=20260927f1"></script>
+    <script src="/livon/service-youth-data.js?v=20260926y1"></script>
+    <script src="/livon/service-youth.js?v=20260926t2"></script>
+    <script src="/livon/opportunities-data.js?v=20260926t2"></script>
+    <script src="/livon/service-teen-data.js?v=20260926t2"></script>
+    <script src="/livon/service-teen.js?v=20260926t2"></script>
+    <script src="/livon/service-tools.js?v=20260927f1"></script>
+    <script src="/livon/service-family-data.js?v=20260927f1"></script>
+    <script src="/livon/service-family.js?v=20260927f1"></script>
+    <script src="/livon/life-page.js?v=20260926y1"></script>
 
     <div class="lv-ml-modal" id="lv-ml-age-modal" hidden>
       <button type="button" class="lv-ml-modal__backdrop" data-lv-ml-modal-close aria-label="닫기"></button>
@@ -3172,14 +3184,14 @@
       </div>
     </div>
     <script src="/livon/life-now-data.js?v=20260925ml9"></script>
-    <script src="/livon/life-now-page.js?v=20260925ml16"></script>
-    <script src="/livon/explore-data.js?v=20260925ex9"></script>
+    <script src="/livon/life-now-page.js?v=20260927f1"></script>
+    <script src="/livon/explore-data.js?v=20260926img1"></script>
     <script src="/livon/explore-page.js?v=20260925ex9"></script>
     <script src="/livon/community-data.js?v=20260925cm12"></script>
     <script src="/livon/community-page.js?v=20260925cm12"></script>
     <script src="/livon/today-data.js?v=20260925td16"></script>
     <script src="/livon/today-page.js?v=20260925td18"></script>
-    <script src="/livon/ai-page.js?v=20260925ai7"></script>
+    <script src="/livon/ai-page.js?v=20260926y1"></script>
     <script src="/livon/connected-menus.js?v=20260925a"></script>
     <script src="/livon/home-page.js?v=20260925hm18"></script>
 

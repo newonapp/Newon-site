@@ -120,11 +120,11 @@ ja.related = {
   title: "Newonのなかで\nLivOnが担う場所。",
   lead: "LivOnは Newon 六つの事業のうち、ライフサイクル・プラットフォームです。他事業の機能を直接代わりません。",
   items: [
-    { n: "01", name: "Newon Consumer", body: "ライフステージごとに必要な暮らしアプリとサービスの接続。", planned: true },
+    { n: "01", name: "Newon Apps", body: "ライフステージごとに必要な暮らしアプリとサービスの接続。", planned: true },
     { n: "02", name: "Newon AI", body: "個人の状況に合う AI ベースの暮らし支援。", planned: true },
     { n: "03", name: "Ongil", body: "シニアの暮らし・ケアサービスと家族の接続。", planned: true },
     { n: "04", name: "Newon Business", body: "専門家、企業、暮らしサービス提供者との事業的な接続。", planned: true },
-    { n: "05", name: "Newon Commerce", body: "ライフステージごとの商品と暮らしサービスの探索・購入接続。", planned: true },
+    { n: "05", name: "Newon Studio", body: "LivOnのブランドとコンテンツのためのデザイン・コンテンツ協業。", planned: true },
   ],
 };
 

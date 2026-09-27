@@ -218,11 +218,11 @@ export const REST = {
       note: "いま他のNewon事業と技術的に連動したり、データが自動共有されたりはしません。以下は今後の接続の方向です。",
       items: [
         P({ n: "01", title: "Newon Business", body: "企業向けSaaS、業務管理、ビジネスソリューションとの接続。" }),
-        P({ n: "02", title: "Newon Consumer", body: "消費者サービス運営と顧客体験改善のためのAI活用。" }),
+        P({ n: "02", title: "Newon Apps", body: "アプリ運営と顧客体験改善のためのAI活用。" }),
         P({ n: "03", title: "Newon AI", body: "AI Agentおよび共通AI技術基盤との接続。" }),
         P({ n: "04", title: "LivOn", body: "ライフステージの暮らしサービスに関わる企業・専門サービスとの接続。" }),
         P({ n: "05", title: "Ongil", body: "シニアの暮らし・ケア分野の企業および機関向けAI拡張。" }),
-        P({ n: "06", title: "Newon Commerce", body: "商品、注文、顧客管理、コマース運営の自動化との接続。" }),
+        P({ n: "06", title: "Newon Studio", body: "ブランド・デザイン・コンテンツ制作でのAI活用の検討。" }),
       ],
     },
     note: "企業AIは製品・機能・Agentを設計します。Newon BusinessのAI Automationは業務の流れにAIを適用する構築です。二つの事業は需要と機能をやり取りできますが、現在は技術的に自動連携していません。",

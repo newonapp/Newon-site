@@ -1,5 +1,5 @@
 /**
- * Newon Labs — interactive prototypes (client-only).
+ * Labs (Resources) — interactive prototypes (client-only).
  * No fake live AI/backend: all DEMO / PROTOTYPE heuristics.
  */
 (function () {

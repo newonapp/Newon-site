@@ -877,14 +877,14 @@ export function caiCopy(lang) {
   const isKo = lang === "ko";
   return {
     isKo,
-    eyebrow: isKo ? "NEWON CONSUMER · AI" : "NEWON CONSUMER · AI",
+    eyebrow: isKo ? "NEWON APPS · AI" : "NEWON APPS · AI",
     title: isKo ? "개인의 일상을 위한 AI" : "AI for everyday life",
     lead: isKo
       ? "생활 관리부터 금융·소비, 건강 관련 기록, 자기관리와 여행까지. Newon의 생활 서비스에 AI를 연결합니다.\n일부 앱의 AI 기능은 아래에서 확인할 수 있고, 여러 앱을 이해하고 대신 실행하는 AI Agent는 향후 방향입니다."
       : "Everyday living, money, health records, self-management, and travel — AI connected to Newon’s lifestyle services.\nSome in-app AI features are listed below. An agent that reads several apps and acts on outside services is a future direction.",
     meta: isKo ? "11 APPS · 1 GAME · 12 AI EXPERIENCES" : "11 APPS · 1 GAME · 12 AI EXPERIENCES",
     filterAria: isKo ? "AI 서비스 카테고리" : "AI service categories",
-    gridAria: isKo ? "Consumer AI 서비스" : "Consumer AI services",
+    gridAria: isKo ? "앱 AI 서비스" : "App AI services",
     detailCta: isKo ? "AI 자세히 알아보기" : "Explore AI details",
     detailClose: isKo ? "닫기" : "Close",
     appDetail: isKo ? "앱 자세히 보기" : "View app details",
@@ -899,7 +899,7 @@ export function caiCopy(lang) {
     statusLegend: isKo ? "기능 상태" : "Feature status",
     moreNewonAi: isKo ? "Newon AI 제품 · Early Access" : "Newon AI products · Early Access",
     moreBiz: isKo ? "비즈니스 AI 문의" : "Business AI inquiry",
-    logoMarqueeAria: isKo ? "Newon Consumer 서비스 로고" : "Newon Consumer service logos",
+    logoMarqueeAria: isKo ? "Newon Apps 서비스 로고" : "Newon Apps service logos",
   };
 }
 

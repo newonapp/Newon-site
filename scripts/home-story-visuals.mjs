@@ -242,7 +242,7 @@ export function visualBusiness() {
   });
 }
 
-/** 06 Commerce — same board shell as before; lanes from Newon Commerce menus. */
+/** Legacy commerce board visual (no longer used on the home page — Commerce is not a top-level business). */
 export function visualCommerce() {
   return panelShell({
     mod: "studio",

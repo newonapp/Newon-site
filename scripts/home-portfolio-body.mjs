@@ -12,22 +12,20 @@ import { getAiFilmCopy } from "./ai-film-hero.mjs";
 import { getLifeStageCopy } from "./home-lifestage-copy.mjs";
 import { getOngilCopy } from "./home-ongil-copy.mjs";
 import { getBusinessFilmCopy } from "./business-film-copy.mjs";
-import { getEcosystemCopy } from "./ecosystem-copy.mjs";
+import { getStudioFilmCopy, STUDIO_FILM_SRC } from "./studio-film-copy.mjs";
 
 const FILM = {
-  consumer:
+  apps:
     "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260330_153826_e9005cf7-a1c7-4c7d-886f-fea22d644a9c.mp4",
   ai: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260723_145606_ab143199-b593-4941-bb1b-9afca215416b.mp4",
-  lifestage:
+  livon:
     "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_102608_5fa1187d-9ac6-44fb-82ab-54376200abc0.mp4",
   ongil:
     "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260323_071151_38c3924f-c312-48af-a196-3fbb80e4226f.mp4",
   business:
     "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_204103_f607742e-09da-4cf5-bb06-4e67b0a531de.mp4",
-  commerce:
-    "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4",
-  games:
-    "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_230900_ef8565a6-16eb-4fe9-98e4-4b972d3f436d.mp4",
+  // Same opening film as /{lang}/studio/ (studio-film-copy.mjs).
+  studio: STUDIO_FILM_SRC,
 };
 
 function href(lang, path) {
@@ -53,19 +51,14 @@ function filmLockup(id, lang) {
   const life = getLifeStageCopy(lang);
   const ongil = getOngilCopy(lang);
   const business = getBusinessFilmCopy(lang);
-  const eco = getEcosystemCopy(lang);
-  const gamesSlogan =
-    lang === "ko"
-      ? "AI만 남은 세상에서<br>마지막 인간임을 숨기세요."
-      : "In a world of AI,<br>hide that you are the last human.";
+  const studio = getStudioFilmCopy(lang);
   const map = {
-    consumer: { wordmark: "Newon<br>App", slogan: apps.sloganHtml },
+    apps: { wordmark: "Newon<br>Apps", slogan: apps.sloganHtml },
     ai: { wordmark: "Newon AI", slogan: ai.sloganHtml },
-    lifestage: { wordmark: "LivOn", slogan: life.hero.titleHtml },
+    livon: { wordmark: "LivOn", slogan: life.hero.titleHtml },
     ongil: { wordmark: "Ongil", slogan: ongil.hero.titleHtml },
     business: { wordmark: "Newon Business", slogan: business.sloganHtml },
-    commerce: { wordmark: "Newon<br>Ecosystem", slogan: eco.sloganHtml },
-    games: { wordmark: "404:<br>HUMAN", slogan: gamesSlogan },
+    studio: { wordmark: "Newon Studio", slogan: studio.sloganHtml },
   };
   return map[id] || { wordmark: "", slogan: "" };
 }

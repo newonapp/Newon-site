@@ -167,7 +167,7 @@ export const LAB_DETAIL_CONTENT = {
         },
         {
           q: "지금 서비스로 바로 쓸 수 있나요?",
-          a: "아닙니다. Newon Labs 실험 단계입니다. 검증이 끝나면 제품·서비스로 이어질 수 있습니다.",
+          a: "아닙니다. Labs 실험 단계입니다. 검증이 끝나면 제품·서비스로 이어질 수 있습니다.",
         },
         {
           q: "어떤 리뷰 데이터를 쓰나요?",
@@ -179,7 +179,7 @@ export const LAB_DETAIL_CONTENT = {
         },
       ],
       seoDescription:
-        "사용자 리뷰에서 반복 문제와 요구를 찾아 제품 개선 신호로 구조화하는 Review AI 실험 — Newon Labs.",
+        "사용자 리뷰에서 반복 문제와 요구를 찾아 제품 개선 신호로 구조화하는 Review AI 실험 — Labs.",
     },
     en: {
       headline: "Not an AI that reads reviews.\nAn AI that supports product decisions.",
@@ -331,7 +331,7 @@ export const LAB_DETAIL_CONTENT = {
         },
         {
           q: "Can we use this as a product today?",
-          a: "Not yet. It is a Newon Labs experiment. Validated work may graduate into products and services.",
+          a: "Not yet. It is a Labs experiment. Validated work may graduate into products and services.",
         },
         {
           q: "What review data do you use?",
@@ -343,7 +343,7 @@ export const LAB_DETAIL_CONTENT = {
         },
       ],
       seoDescription:
-        "Review AI — structuring user reviews into product decision signals. A Newon Labs experiment.",
+        "Review AI — structuring user reviews into product decision signals. A Labs experiment.",
     },
   },
 
@@ -512,7 +512,7 @@ export const LAB_DETAIL_CONTENT = {
         },
       ],
       seoDescription:
-        "Newon QR — 링크 생성에서 스캔·방문 관찰까지 연결하는 유틸리티 실험. Newon Labs.",
+        "Newon QR — 링크 생성에서 스캔·방문 관찰까지 연결하는 유틸리티 실험. Labs.",
     },
     en: {
       headline: "From a QR that makes links\nto a QR that reads response.",
@@ -676,7 +676,7 @@ export const LAB_DETAIL_CONTENT = {
         },
       ],
       seoDescription:
-        "Newon QR — from link creation to observing scan and visit flow. A Newon Labs utility experiment.",
+        "Newon QR — from link creation to observing scan and visit flow. A Labs utility experiment.",
     },
   },
 
@@ -841,11 +841,11 @@ export const LAB_DETAIL_CONTENT = {
         },
         {
           q: "유료 서비스인가요?",
-          a: "Newon Labs 실험입니다. 검증 후 제품화 여부가 결정됩니다.",
+          a: "Labs 실험입니다. 검증 후 제품화 여부가 결정됩니다.",
         },
       ],
       seoDescription:
-        "Newon Form — 질문 제작부터 응답 정리까지 짧은 입력 흐름을 실험하는 Newon Labs 유틸리티.",
+        "Newon Form — 질문 제작부터 응답 정리까지 짧은 입력 흐름을 실험하는 Labs 유틸리티.",
     },
     en: {
       headline: "Spend less time building questions.\nSpend more time understanding answers.",
@@ -1005,11 +1005,11 @@ export const LAB_DETAIL_CONTENT = {
         },
         {
           q: "Is this a paid product?",
-          a: "It is a Newon Labs experiment. Productization depends on validation.",
+          a: "It is a Labs experiment. Productization depends on validation.",
         },
       ],
       seoDescription:
-        "Newon Form — a short input flow from building questions to organizing answers. A Newon Labs utility experiment.",
+        "Newon Form — a short input flow from building questions to organizing answers. A Labs utility experiment.",
     },
   },
 
@@ -1178,7 +1178,7 @@ export const LAB_DETAIL_CONTENT = {
         },
       ],
       seoDescription:
-        "AI Discovery — 만들 가치가 있는 문제를 찾는 Newon Labs AI 탐색 실험.",
+        "AI Discovery — 만들 가치가 있는 문제를 찾는 Labs AI 탐색 실험.",
     },
     en: {
       headline: "Beyond AI that generates answers —\ncan AI find problems worth building?",
@@ -1342,7 +1342,7 @@ export const LAB_DETAIL_CONTENT = {
         },
       ],
       seoDescription:
-        "AI Discovery — finding problems worth building. A Newon Labs AI exploration experiment.",
+        "AI Discovery — finding problems worth building. A Labs AI exploration experiment.",
     },
   },
 
@@ -1510,7 +1510,7 @@ export const LAB_DETAIL_CONTENT = {
         },
       ],
       seoDescription:
-        "Game Experiment — 선택, 기억, 결과가 짧은 세션에서 작동하는지 검증하는 Newon Labs 실험.",
+        "Game Experiment — 선택, 기억, 결과가 짧은 세션에서 작동하는지 검증하는 Labs 실험.",
     },
     en: {
       headline: "Can a game that remembers choice\nmake players more tense?",
@@ -1673,7 +1673,7 @@ export const LAB_DETAIL_CONTENT = {
         },
       ],
       seoDescription:
-        "Game Experiment — testing whether choice, memory, and consequence work in short sessions. A Newon Labs experiment.",
+        "Game Experiment — testing whether choice, memory, and consequence work in short sessions. A Labs experiment.",
     },
   },
 
@@ -1842,7 +1842,7 @@ export const LAB_DETAIL_CONTENT = {
         },
       ],
       seoDescription:
-        "Character Lab — 단발 마스코트가 아닌 확장 가능한 캐릭터 IP 시스템을 검증하는 Newon Labs 실험.",
+        "Character Lab — 단발 마스코트가 아닌 확장 가능한 캐릭터 IP 시스템을 검증하는 Labs 실험.",
     },
     en: {
       headline: "Not one character —\ncan we build a scalable IP system?",
@@ -2006,7 +2006,7 @@ export const LAB_DETAIL_CONTENT = {
         },
       ],
       seoDescription:
-        "Character Lab — validating a scalable character IP system, not a single mascot. A Newon Labs experiment.",
+        "Character Lab — validating a scalable character IP system, not a single mascot. A Labs experiment.",
     },
   },
 };

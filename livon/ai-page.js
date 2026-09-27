@@ -2,10 +2,8 @@
   var STORE_KEY = "livon.aiStore.v1";
   var KEY_ML = "livon.mlStore.v1";
   var KEY_SAVED = "livon.aiSaved";
-  var API_CANDIDATES = [
-    "/api/livon-ai",
-    "http://127.0.0.1:8767/api/livon-ai"
-  ];
+  var API_BASE = "/api/livon";
+  var CONNECTION_ERROR = "LIVON AI에 일시적으로 연결할 수 없습니다. 잠시 후 다시 시도해 주세요.";
 
   var state = {
     threadId: "",
@@ -409,53 +407,50 @@
   }
 
   function detectApi() {
-    return API_CANDIDATES.reduce(function (chain, base) {
-      return chain.then(function (found) {
-        if (found) return found;
-        return fetch(base + "/health", { method: "GET" })
-          .then(function (r) { return r.ok ? r.json() : null; })
-          .then(function (j) {
-            if (j && j.ok) {
-              state.apiBase = base;
-              state.apiConfigured = !!j.configured;
-              return base;
-            }
-            return null;
-          })
-          .catch(function () { return null; });
-      });
-    }, Promise.resolve(null)).then(function (base) {
-      var note = $("[data-lv-ai-api-note]");
-      if (!base) {
+    return fetch("/api/health", { cache: "no-store", signal: AbortSignal.timeout(5000) })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        var ready = !!(j && j.status === "ok" && j.aiConfigured && j.protectionConfigured);
+        state.apiConfigured = ready;
+        if (!state.sending) setStatus(ready ? "연결 준비됨" : "연결 대기", ready ? "ok" : "warn");
+        var note = $("[data-lv-ai-api-note]");
+        if (note) note.textContent = ready
+          ? "AI 답변을 요청할 수 있습니다. 대화는 이 브라우저에 저장되며, 최근 대화와 허용한 설정만 AI에 전달됩니다."
+          : CONNECTION_ERROR;
+      }).catch(function () {
         state.apiConfigured = false;
-        setStatus("API 미연결", "warn");
-        if (note) note.textContent = "AI 서버가 실행 중이지 않습니다. `python3 livon/ai_api_server.py`와 OPENAI_API_KEY가 필요합니다. 가짜 답변은 표시하지 않습니다.";
-      } else if (!state.apiConfigured) {
-        setStatus("키 미설정", "warn");
-        if (note) note.textContent = "API 서버는 응답하지만 OPENAI_API_KEY가 없습니다. 환경변수 설정 후 서버를 다시 실행해 주세요.";
-      } else {
-        setStatus("연결됨", "ok");
-        if (note) note.textContent = "실제 AI 모델에 연결되어 있습니다. 저장은 항상 사용자 승인 후에만 반영됩니다.";
-      }
-      return base;
-    });
+        if (!state.sending) setStatus("연결 대기", "warn");
+        var note = $("[data-lv-ai-api-note]");
+        if (note) note.textContent = CONNECTION_ERROR;
+      });
   }
 
-  function chatRequest(messages, signal) {
-    if (!state.apiBase) {
-      return Promise.reject({ error: "not_configured", message: "AI 서버가 연결되지 않았습니다." });
+  function requestPayload(thread, q) {
+    var recent = thread.messages.slice(0, -1).filter(function (m) {
+      return m.role === "user" || m.role === "assistant";
+    }).slice(-12);
+    var size = 0, conversation = [];
+    for (var i = recent.length - 1; i >= 0; i--) {
+      size += recent[i].content.length;
+      if (size > 12000) break;
+      conversation.unshift({ role: recent[i].role, content: recent[i].content });
     }
-    var store = loadStore();
-    return fetch(state.apiBase + "/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: messages, settings: store.settings }),
-      signal: signal
+    var settings = loadStore().settings;
+    var context = { answerLength: settings.answerLength, personalize: settings.personalize === true };
+    if (context.personalize) ["stage", "interests", "region", "goal"].forEach(function (k) { context[k] = settings[k] || ""; });
+    return { message: q, conversation: conversation, context: context };
+  }
+
+  function chatRequest(payload, signal) {
+    return fetch(API_BASE + "/chat", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload), signal: signal
     }).then(function (r) {
-      return r.json().then(function (j) {
-        if (!r.ok || !j.ok) {
-          var err = new Error(j.message || "답변을 불러오지 못했어요.");
-          err.payload = j;
+      return r.json().catch(function () { throw new Error(CONNECTION_ERROR); }).then(function (j) {
+        if (!r.ok || !j.success) {
+          var err = new Error(j.error || CONNECTION_ERROR);
+          err.code = j.code;
+          if (location.hostname === "localhost" || location.hostname === "127.0.0.1") console.warn("[LIVON AI]", j.code || "HTTP_ERROR", r.status);
           throw err;
         }
         return j;
@@ -477,107 +472,58 @@
     opts = opts || {};
     var q = String(text || "").trim();
     if (!q || state.sending) return;
-    var store = loadStore();
+    if (q.length > 4000) { setStatus("메시지는 4,000자 이내로 입력해 주세요.", "warn"); return; }
     var thread = ensureThread();
-    if (!(thread.messages || []).length || thread.title === "새 대화") {
-      thread.title = q.slice(0, 28) + (q.length > 28 ? "…" : "");
-    }
-    thread.messages.push({ role: "user", content: q, at: Date.now() });
+    if (!thread.messages.length || thread.title === "새 대화") thread.title = q.slice(0, 28) + (q.length > 28 ? "…" : "");
+    if (!opts.retry) thread.messages.push({ role: "user", content: q, at: Date.now() });
+    else if (thread.messages.length && thread.messages[thread.messages.length - 1].role === "error") thread.messages.pop();
+    var payload = opts.payload || requestPayload(thread, q);
     thread.updatedAt = Date.now();
-    // persist thread back
-    store = loadStore();
+    var store = loadStore();
     var idx = store.threads.findIndex(function (t) { return t.id === thread.id; });
     if (idx >= 0) store.threads[idx] = thread; else store.threads.unshift(thread);
-    saveStore(store);
-    state.threadId = thread.id;
-    renderThreads();
-    renderMessages();
-
-    var ta = $("[data-lv-ai-chat-q]");
-    if (ta && !opts.keepInput) { ta.value = ""; autoResize(ta); updateSendEnabled(); }
-
+    if (!saveStore(store)) return;
+    var requestThreadId = thread.id;
+    state.threadId = requestThreadId;
     state.sending = true;
+    renderThreads(); renderMessages();
+    var ta = $("[data-lv-ai-chat-q]");
+    if (ta && !opts.keepInput) { ta.value = ""; autoResize(ta); }
     updateSendEnabled();
     var stop = $("[data-lv-ai-stop]");
     if (stop) stop.hidden = false;
+    setStatus("전송 중…", "busy");
+    var controller = new AbortController();
+    state.abort = controller;
+    var timedOut = false;
+    var timer = setTimeout(function () { timedOut = true; controller.abort(); }, 35000);
     setStatus("답변 생성 중…", "busy");
 
-    var history = thread.messages.filter(function (m) { return m.role === "user" || m.role === "assistant"; })
-      .map(function (m) { return { role: m.role, content: m.content }; });
-
-    var controller = typeof AbortController !== "undefined" ? new AbortController() : null;
-    state.abort = controller;
-
-    function fail(msg) {
+    return chatRequest(payload, controller.signal).then(function (res) {
       var st = loadStore();
-      var th = st.threads.find(function (t) { return t.id === state.threadId; });
-      if (th) {
-        th.messages.push({ role: "error", content: msg || "답변을 불러오지 못했어요. 잠시 후 다시 시도해 주세요.", at: Date.now() });
-        th.updatedAt = Date.now();
-        saveStore(st);
+      var th = st.threads.find(function (t) { return t.id === requestThreadId; });
+      if (!th) return;
+      var enriched = appendLocalLinks(q, res.message);
+      th.messages.push({ role: "assistant", content: enriched.text, linksHtml: enriched.linksHtml, at: Date.now() });
+      th.updatedAt = Date.now(); saveStore(st);
+      if (state.threadId === requestThreadId) {
+        var plan = extractPlan(enriched.text);
+        if (plan || enriched.links.length) openPanel(plan, enriched.links);
       }
-      // Still surface local links honestly (not as AI answers)
-      var links = searchLocalLinks(q);
-      if (links.length) openPanel(null, links);
-      finish();
-      renderMessages();
-      renderThreads();
-    }
-    function finish() {
-      state.sending = false;
-      state.abort = null;
+      setStatus(res.truncated ? "답변 길이 제한에 도달했습니다. 이어서 질문해 주세요." : "완료", "ok");
+    }).catch(function (err) {
+      var msg = timedOut ? "답변 생성 시간이 초과되었습니다. 다시 시도해 주세요."
+        : controller.signal.aborted ? "답변 생성을 중지했습니다. 다시 시도할 수 있습니다."
+        : err instanceof TypeError ? "네트워크 연결을 확인하고 다시 시도해 주세요." : err.message || CONNECTION_ERROR;
+      var st = loadStore();
+      var th = st.threads.find(function (t) { return t.id === requestThreadId; });
+      if (th) { th.messages.push({ role: "error", content: msg, request: payload, at: Date.now() }); th.updatedAt = Date.now(); saveStore(st); }
+      setStatus(msg, "warn");
+    }).finally(function () {
+      clearTimeout(timer); state.sending = false; state.abort = null;
       if (stop) stop.hidden = true;
-      updateSendEnabled();
-      detectApi();
-    }
-
-    var run = function () {
-      return chatRequest(history, controller && controller.signal)
-        .then(function (res) {
-          var enriched = appendLocalLinks(q, res.content || "");
-          var st = loadStore();
-          var th = st.threads.find(function (t) { return t.id === state.threadId; });
-          if (!th) return;
-          th.messages.push({
-            role: "assistant",
-            content: enriched.text,
-            linksHtml: enriched.linksHtml,
-            at: Date.now(),
-            model: res.model || ""
-          });
-          th.updatedAt = Date.now();
-          saveStore(st);
-          var plan = extractPlan(enriched.text);
-          if (plan || (enriched.links && enriched.links.length)) openPanel(plan, enriched.links);
-          finish();
-          renderMessages();
-          renderThreads();
-        })
-        .catch(function (err) {
-          if (err && err.name === "AbortError") {
-            finish();
-            setStatus("중지됨", "warn");
-            return;
-          }
-          var msg = (err && err.message) || "답변을 불러오지 못했어요. 잠시 후 다시 시도해 주세요.";
-          if (err && err.payload && err.payload.error === "not_configured") {
-            msg = err.payload.message || "AI API 키가 설정되지 않았습니다. 서버 환경변수 OPENAI_API_KEY가 필요합니다.";
-          }
-          fail(msg);
-        });
-    };
-
-    if (!state.apiBase) {
-      detectApi().then(function () {
-        if (!state.apiBase || !state.apiConfigured) {
-          fail("AI 서버/API 키가 연결되지 않아 실제 답변을 받을 수 없습니다. 설정 후 다시 시도해 주세요.");
-        } else run();
-      });
-    } else if (!state.apiConfigured) {
-      fail("OPENAI_API_KEY가 설정되지 않았습니다. 가짜 답변은 표시하지 않습니다.");
-    } else {
-      run();
-    }
+      updateSendEnabled(); renderMessages(); renderThreads();
+    });
   }
 
   function fillPrompt(q) {
@@ -751,29 +697,13 @@
       }
       if (e.target.closest("[data-lv-ai-retry]")) {
         e.preventDefault();
+        if (state.sending) return;
         var thCur = currentThread();
-        if (!thCur) return;
-        var lastUser = null;
-        for (var i = thCur.messages.length - 1; i >= 0; i--) {
-          if (thCur.messages[i].role === "user") { lastUser = thCur.messages[i].content; break; }
-        }
-        // remove trailing error
-        var st4 = loadStore();
-        var th4 = st4.threads.find(function (t) { return t.id === state.threadId; });
-        if (th4 && th4.messages.length && th4.messages[th4.messages.length - 1].role === "error") {
-          th4.messages.pop();
-          saveStore(st4);
-        }
-        if (lastUser) {
-          // resend without duplicating user message: pop last user then send again
-          var st5 = loadStore();
-          var th5 = st5.threads.find(function (t) { return t.id === state.threadId; });
-          if (th5 && th5.messages.length && th5.messages[th5.messages.length - 1].role === "user") {
-            th5.messages.pop();
-            saveStore(st5);
-          }
-          sendMessage(lastUser);
-        }
+        if (!thCur || !thCur.messages.length) return;
+        var last = thCur.messages[thCur.messages.length - 1];
+        if (last.role !== "error") return;
+        var lastUser = thCur.messages.slice().reverse().find(function (m) { return m.role === "user"; });
+        if (lastUser) sendMessage(lastUser.content, { retry: true, payload: last.request });
         return;
       }
       var copy = e.target.closest("[data-lv-ai-copy]");
@@ -787,6 +717,7 @@
       var regen = e.target.closest("[data-lv-ai-regen]");
       if (regen) {
         e.preventDefault();
+        if (state.sending) return;
         var thr = currentThread();
         if (!thr) return;
         var mi = Number(regen.getAttribute("data-lv-ai-regen"));
@@ -835,7 +766,7 @@
         updateSendEnabled();
       });
       ta.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" && !e.shiftKey) {
+        if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
           e.preventDefault();
           if (!ta.value.trim() || state.sending) return;
           sendMessage(ta.value);
@@ -879,7 +810,10 @@
       if (!raw) return;
       sessionStorage.removeItem("livon.aiPrompt");
       var data = JSON.parse(raw);
-      if (data && data.q) setTimeout(function () { sendMessage(data.q); }, 120);
+      if (data && data.q) setTimeout(function () {
+        if (data.draftOnly) { fillPrompt(data.q); setStatus("내용을 확인한 뒤 전송해 주세요.", "ok"); }
+        else sendMessage(data.q);
+      }, 120);
     } catch (e) {}
   }
 

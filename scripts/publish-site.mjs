@@ -176,6 +176,8 @@ const PUBLISH_COPY_DIRS = [
   { from: "oxmonth", to: "oxmonth", required: false },
   { from: "subping", to: "subping", required: false },
   { from: "livon", to: "livon", required: true },
+  /** Legacy /lifestage/ → /{lang}/livon/ redirect stub (written by render-lifestage.mjs). */
+  { from: "lifestage", to: "lifestage", required: false },
   { from: "ongil-start", to: "ongil-start", required: true },
   { from: "assets", to: "assets", required: true },
   { from: "vendor/three", to: "vendor/three", required: true },
@@ -197,7 +199,7 @@ const ALL_PUBLISH_ROOT_FILES = [...PUBLISH_ROOT_CORE, ...PUBLISH_ROOT_IMAGES];
 function copyDir(src, dest) {
   fs.mkdirSync(dest, { recursive: true });
   for (const ent of fs.readdirSync(src, { withFileTypes: true })) {
-    if (ent.name === "__pycache__" || ent.name === ".DS_Store" || ent.name.endsWith(".pyc")) continue;
+    if (ent.name === "__pycache__" || ent.name === ".DS_Store" || ent.name.endsWith(".pyc") || ent.name.endsWith(".py") || ent.name === ".env" || ent.name.startsWith(".env.")) continue;
     const s = path.join(src, ent.name);
     const d = path.join(dest, ent.name);
     if (ent.isDirectory()) copyDir(s, d);

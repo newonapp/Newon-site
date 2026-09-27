@@ -183,22 +183,23 @@ function portfolioStrip(lang = "en") {
 </section>`;
 }
 
+/** Business process: 문의 → 요구사항 분석 → 제안/견적 → 설계 → 개발 → QA → 배포 → Care, in the existing 5-card strip. */
 function processStrip(lang = "en") {
   const ko = lang === "ko";
   const steps = ko
     ? [
-        { n: "01", t: "DISCOVER", d: "요구사항과 목표 확인" },
-        { n: "02", t: "DEFINE", d: "범위 · 일정 · 견적 확정" },
-        { n: "03", t: "BUILD", d: "디자인 · 개발 · 검증" },
-        { n: "04", t: "REVIEW", d: "피드백 및 수정" },
-        { n: "05", t: "LAUNCH", d: "배포 · 출시 · 납품" },
+        { n: "01", t: "DISCOVER", d: "문의 · 요구사항 분석" },
+        { n: "02", t: "DEFINE", d: "제안 · 견적 · 범위 확정" },
+        { n: "03", t: "BUILD", d: "설계 · 개발" },
+        { n: "04", t: "REVIEW", d: "QA · 피드백 반영" },
+        { n: "05", t: "LAUNCH", d: "배포 · 출시 이후 Care" },
       ]
     : [
-        { n: "01", t: "DISCOVER", d: "Align on goals and requirements" },
-        { n: "02", t: "DEFINE", d: "Lock scope, timeline, and quote" },
-        { n: "03", t: "BUILD", d: "Design, develop, and validate" },
-        { n: "04", t: "REVIEW", d: "Feedback and revisions" },
-        { n: "05", t: "LAUNCH", d: "Deploy, ship, and hand off" },
+        { n: "01", t: "DISCOVER", d: "Inquiry and requirements analysis" },
+        { n: "02", t: "DEFINE", d: "Proposal, quote, and scope" },
+        { n: "03", t: "BUILD", d: "Design and development" },
+        { n: "04", t: "REVIEW", d: "QA and revisions" },
+        { n: "05", t: "LAUNCH", d: "Deploy, then Care after launch" },
       ];
   const note = ko
     ? "소규모 프로젝트는 불필요하게 복잡한 절차 없이 빠르게 진행할 수 있습니다."

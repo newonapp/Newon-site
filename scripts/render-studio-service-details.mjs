@@ -40,7 +40,9 @@ function chromeBaseForPath(pagePath) {
   const depth = String(pagePath || "")
     .split("/")
     .filter(Boolean).length;
-  return "../".repeat(depth + 1);
+  // /{lang}/<pagePath>/ → back to /{lang}/ (was depth + 1, which escaped to the site root
+  // and broke /ongil/, /resources/* and LivOn links in the global header/footer).
+  return "../".repeat(depth);
 }
 
 function renderPage(lang, pagePath, opts) {

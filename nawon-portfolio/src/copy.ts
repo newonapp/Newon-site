@@ -74,7 +74,7 @@ const en = {
     { type: "In preparation", name: "Ongil", summary: "A living platform in preparation for seniors’ daily life, care support, and family connection.", slogan: ["Warm connection,", "through the years of daily life."], lead: "Daily life, health, and care — connected with family and community." },
     { type: "Service", name: "Business", summary: "Software for companies and operators, from automation through operations and improvement. Build · Automation · Solutions · Care", slogan: ["Expanding what business can do,", "with technology."], lead: "From enterprise software to AI and work automation. We build digital solutions that connect how companies operate and grow." },
     { type: "Service", name: "Studio", summary: "Identity, screens, and content, designed as design work. Brand · UI/UX · Content", slogan: ["From idea to reality,", "from experience to new value."], lead: "From brand planning to design and development. We turn thinking into real digital experiences." },
-    { type: "Playable", name: "Games", summary: "404: HUMAN is a choice-driven interactive game where you survive as the last human in an AI-only world.", slogan: ["In a world of AI,", "hide that you are the last human."], lead: "Answer questions, choose actions, and evade AI suspicion. Every choice you make is remembered." },
+    { type: "Apps · Games · Playable", name: "Games", summary: "404: HUMAN is a choice-driven interactive game where you survive as the last human in an AI-only world.", slogan: ["In a world of AI,", "hide that you are the last human."], lead: "Answer questions, choose actions, and evade AI suspicion. Every choice you make is remembered." },
   ],
   contactHeading: "Let's build something great.",
   contactLead: "Have a project in mind?",
@@ -119,7 +119,7 @@ const ko = {
     { type: "준비 중", name: "Ongil", summary: "시니어의 일상과 돌봄을 지원하고, 가족을 연결하는 생활 플랫폼을 준비합니다.", slogan: ["Warm connection,", "through the years of daily life."], lead: "시니어의 일상·건강·돌봄부터 가족과 지역까지 잇는 종합 생활 플랫폼입니다." },
     { type: "서비스", name: "Business", summary: "기업과 사업자를 위한 소프트웨어를 구축하고, 자동화부터 운영·개선까지 지원합니다. Build · Automation · Solutions · Care", slogan: ["Expanding what business can do,", "with technology."], lead: "기업용 소프트웨어부터 AI와 업무 자동화까지. 기업의 운영과 성장을 연결하는 디지털 솔루션을 만듭니다." },
     { type: "서비스", name: "Studio", summary: "브랜드의 정체성부터 디지털 화면과 콘텐츠까지 디자인으로 설계합니다. Brand · UI/UX · Content", slogan: ["From idea to reality,", "from experience to new value."], lead: "브랜드 기획부터 디자인과 개발까지. 생각을 실제 디지털 경험으로 만듭니다." },
-    { type: "플레이 가능", name: "Games", summary: "404: HUMAN은 AI만 남은 세계에서 마지막 인간으로 살아남는 선택형 인터랙티브 게임입니다.", slogan: ["In a world of AI,", "hide that you are the last human."], lead: "질문에 답하고, 행동을 선택하고, AI의 의심을 피하세요. 당신의 모든 선택은 기억됩니다." },
+    { type: "Apps · Games · 플레이 가능", name: "Games", summary: "404: HUMAN은 AI만 남은 세계에서 마지막 인간으로 살아남는 선택형 인터랙티브 게임입니다.", slogan: ["In a world of AI,", "hide that you are the last human."], lead: "질문에 답하고, 행동을 선택하고, AI의 의심을 피하세요. 당신의 모든 선택은 기억됩니다." },
   ],
   numbersHeading: "In numbers",
   stats: [

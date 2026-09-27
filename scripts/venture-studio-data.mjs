@@ -37,7 +37,7 @@ export const LEGACY_STATUS_MAP = {
   exploring: "EXPLORING",
 };
 
-/** Top-level nav order — 7 business menus */
+/** Top-level nav order — 6 businesses + Company (consumer = Newon Apps, lifestage = LivOn) */
 export const TOP_NAV = ["consumer", "ai", "lifestage", "ongil", "business", "studio", "company"];
 
 /**
@@ -65,7 +65,7 @@ export const MEGA_DESTINATIONS = {
     {
       titleKey: "nav.lifeStageIntro",
       descKey: "nav.lifeStageIntroDesc",
-      href: "lifestage/",
+      href: "livon/",
       titleFb: "LivOn",
     },
     {
