@@ -12,6 +12,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { spawnSync } from "child_process";
 import { publishedArticles } from "./news-data.mjs";
+import { DELETE_ACCOUNT_APPS } from "./delete-account-data.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -173,11 +174,17 @@ const PUBLISH_COPY_DIRS = [
   { from: "market", to: "market", required: false },
   { from: "contact", to: "contact", required: false },
   { from: "admin", to: "admin", required: false },
-  { from: "oxmonth", to: "oxmonth", required: false },
-  { from: "subping", to: "subping", required: false },
+  /** Root /{app}/delete-account/ redirect stubs (written by build-i18n) — required by App Store / Google Play listings. */
+  ...DELETE_ACCOUNT_APPS.map((app) => ({
+    from: `${app.slug}/delete-account`,
+    to: `${app.slug}/delete-account`,
+    required: true,
+  })),
   { from: "livon", to: "livon", required: true },
   /** Legacy /lifestage/ → /{lang}/livon/ redirect stub (written by render-lifestage.mjs). */
   { from: "lifestage", to: "lifestage", required: false },
+  /** Root /ongil/ → /{lang}/ongil/ redirect stub (written by render-ongil.mjs). */
+  { from: "ongil", to: "ongil", required: false },
   { from: "ongil-start", to: "ongil-start", required: true },
   { from: "assets", to: "assets", required: true },
   { from: "vendor/three", to: "vendor/three", required: true },

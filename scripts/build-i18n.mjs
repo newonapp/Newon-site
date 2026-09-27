@@ -465,7 +465,7 @@ writeRootPrivacyPage();
 function writeRootDeleteAccountRedirects() {
   const list = JSON.stringify(LANGS.map((l) => l.dir));
   for (const app of DELETE_ACCOUNT_APPS) {
-    const html = `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="robots" content="noindex"/><title>Redirect</title><script>(function(){var L=${list};var d="ko";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/${app.slug}/delete-account/"+(location.hash||""));})();</script></head><body><p style="font-family:system-ui,sans-serif;padding:1.5rem"><a href="/ko/${app.slug}/delete-account/">${app.name} account deletion — continue</a></p></body></html>`;
+    const html = `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="robots" content="noindex"/><noscript><meta http-equiv="refresh" content="0;url=/ko/${app.slug}/delete-account/"/></noscript><title>${app.name} — Delete account</title><script>(function(){var L=${list};var d="ko";try{var v=localStorage.getItem("newon-lang-dir");if(v&&L.indexOf(v)!==-1)d=v;}catch(e){}location.replace("/"+d+"/${app.slug}/delete-account/"+(location.hash||""));})();</script></head><body><p style="font-family:system-ui,sans-serif;padding:1.5rem"><a href="/ko/${app.slug}/delete-account/">${app.name} account deletion — continue</a></p></body></html>`;
     const dir = path.join(ROOT, app.slug, "delete-account");
     fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(path.join(dir, "index.html"), html);
