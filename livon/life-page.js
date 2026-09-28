@@ -259,7 +259,7 @@
     });
 
     if (opts.updateHash !== false) {
-      var next = "#stage-" + id;
+      var next = window.LivonLifeHub ? "#life/" + id + "s" : "#stage-" + id;
       if (location.hash !== next) history.replaceState(null, "", next);
     }
     if (opts.scroll) {
@@ -372,15 +372,22 @@
       var meta =
         '<div class="lv-life-decade__meta">' +
           "<div><p>FOCUS</p><strong>" + esc(s.focus) + "</strong></div>" +
-          "<div><p>FIELDS</p><strong>" + esc(String((s.fields || []).length)) + "개 생활 분야</strong></div>" +
+          "<div><p>FIELDS</p><strong data-lh-count=\"" + esc(s.id) + "\">" + esc(String((s.fields || []).length)) + "개 생활 분야</strong></div>" +
         "</div>";
-      var fields =
-        '<div class="lv-life-block-label"><p class="lv-life-kicker">Life Fields</p><h3 class="lv-life-title lv-life-title--md">생활 분야</h3></div>' +
-        '<div class="lv-life-fields" data-lv-life-fields="' + esc(s.id) + '">' +
-          (s.fields || []).map(function (f) {
-            return '<button type="button" data-field="' + esc(f.id) + '" data-stage="' + esc(s.id) + '">' + esc(f.name) + "</button>";
-          }).join("") +
-        "</div>";
+      /* Life Stage hub: popular topics + interest categories come from life-topics.json (LivonLifeHub). */
+      var fields = window.LivonLifeHub
+        ? '<div class="lv-life-block-label"><p class="lv-life-kicker">Popular Topics</p><h3 class="lv-life-title lv-life-title--md">지금 많이 찾는 주제</h3></div>' +
+          '<div data-lh-hero="' + esc(s.id) + '"></div>' +
+          '<div data-lh-featured="' + esc(s.id) + '"></div>' +
+          '<div class="lv-life-block-label"><p class="lv-life-kicker">Interests</p><h3 class="lv-life-title lv-life-title--md">관심 분야</h3></div>' +
+          '<div data-lh-categories="' + esc(s.id) + '"></div>' +
+          '<p class="lv-life-note"><a href="#life/search/">모든 연령대에서 주제·가이드·정책 검색하기</a></p>'
+        : '<div class="lv-life-block-label"><p class="lv-life-kicker">Life Fields</p><h3 class="lv-life-title lv-life-title--md">생활 분야</h3></div>' +
+          '<div class="lv-life-fields" data-lv-life-fields="' + esc(s.id) + '">' +
+            (s.fields || []).map(function (f) {
+              return '<button type="button" data-field="' + esc(f.id) + '" data-stage="' + esc(s.id) + '">' + esc(f.name) + "</button>";
+            }).join("") +
+          "</div>";
       var services =
         '<div class="lv-life-block-label"><p class="lv-life-kicker">Services</p><h3 class="lv-life-title lv-life-title--md">관련 생활 서비스</h3></div>' +
         '<div class="lv-life-services is-trio">' +
@@ -446,8 +453,11 @@
 
     renderStageSwitch();
     var initial = "10";
+    var hubStage = window.LivonLifeHub ? window.LivonLifeHub.stageIdFromHash(location.hash) : null;
     if (location.hash.indexOf("#stage-") === 0) {
       initial = location.hash.replace("#stage-", "");
+    } else if (hubStage) {
+      initial = hubStage;
     } else if (state.viewStage) {
       initial = state.viewStage;
     } else {
@@ -457,6 +467,7 @@
     state.viewStage = String(initial);
     renderStageSwitch();
     showStageView(initial, { updateHash: false });
+    if (window.LivonLifeHub) window.LivonLifeHub.renderStageBlocks();
   }
 
   function renderSetupPanel() {
@@ -1048,11 +1059,18 @@
       return hash === "life" ||
         hash === "life-stages" ||
         hash.indexOf("stage-") === 0 ||
+        hash.indexOf("life/") === 0 ||
         hash.indexOf("field-") === 0 ||
         (hash.indexOf("life-") === 0 && hash !== "life-now");
     },
     onShow: function (hash) {
+      var hub = window.LivonLifeHub;
+      if (hub && hash.indexOf("life-service-") === 0) hub.hide();
       if (window.LivonServices && window.LivonServices.open(hash)) return;
+      /* Topic / category / services / search routes: #life/{stage}/{topic}... */
+      if (hub && hub.open("#" + hash)) return;
+      var hubStage = hub ? hub.stageIdFromHash(hash) : null;
+      if (hubStage) hash = "stage-" + hubStage;
       initHero();
       updateStageLabel();
       $$("#life [data-lv-reveal]").forEach(function (n) {

@@ -200,7 +200,9 @@
   background: #0c0c0c;
 }
 #livon-home .lv-hm-sec--journey .lv-hm-lead { margin-left: auto; margin-right: auto; }
-#livon-home .lv-hm-journey { margin-top: clamp(2rem, 5vw, 3rem); text-align: left; }
+#livon-home .lv-hm-journey { margin-top: clamp(2rem, 5vw, 3rem); text-align: left; width: 100%; max-width: 100%; min-width: 0; align-self: stretch; box-sizing: border-box; }
+#livon-home .lv-hm-journey__copy { min-width: 0; overflow-wrap: anywhere; }
+#livon-home .lv-hm-journey__copy .lv-hm-actions, #livon-home .lv-hm-journey__copy [class*="acts"] { flex-wrap: wrap; }
 #livon-home .lv-hm-journey__rail {
   display: flex;
   gap: 0.45rem;

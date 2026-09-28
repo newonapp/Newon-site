@@ -595,3 +595,206 @@ window.LivonTodayData = {
     }
   ]
 };
+
+/* ─────────────────────────────────────────────────────────────
+   Today V1 · Discovery links (2026-09-28)
+   References only — Life Stage topics stay in /livon/life-topics.json,
+   services/policies in the same file, places/classes in explore-data.js.
+   Fields added to existing contents (all optional):
+     points[]        핵심 내용
+     guide[]         {title, body} 단계별 가이드
+     checklist[]     {id, text} 내 생활에 추가할 수 있는 항목
+     lifeTopicIds[]  life-topics.json topic ids (reverse links are computed at runtime)
+     serviceIds[]    life-topics.json serviceTypes ids
+     policyIds[]     life-topics.json policies ids (공식 포털)
+     exploreIds[]    explore-data.js item ids
+     updatedAt       실제 작성·수정일 (없으면 checkedAt 사용)
+   ───────────────────────────────────────────────────────────── */
+(function (D) {
+  if (!D || !Array.isArray(D.contents)) return;
+  function ck(list) { return list.map(function (text, i) { return { id: "c" + (i + 1), text: text }; }); }
+  function g(list) { return list.map(function (x) { return { title: x[0], body: x[1] }; }); }
+
+  var LINKS = {
+    "place-hangang": { points: ["구간마다 시설·주차·편의시설이 다르니 공식 안내에서 먼저 확인하세요.", "산책·자전거·피크닉처럼 머무는 방식에 맞춰 구간을 고르면 편합니다."], serviceIds: ["exercise", "travel-plan"], exploreIds: ["ex-sports", "ex-tour"], lifeTopicIds: ["60s.walking-plan"] },
+    "place-namsan": { points: ["오르막 구간이 있어 편한 신발과 물을 준비하세요.", "해 질 무렵 전망이 좋지만 귀가 동선을 미리 확인하세요."], serviceIds: ["exercise", "travel-plan"], exploreIds: ["ex-tour"], lifeTopicIds: ["40s.exercise-schedule"] },
+    "place-mmca": { points: ["관별 전시와 관람 조건은 공식 홈페이지에서 확인하세요.", "관람 전 보고 싶은 전시 1~2개를 정해 두면 덜 지칩니다."], serviceIds: ["culture"], exploreIds: ["ex-mmca", "ex-culture"], lifeTopicIds: ["20s.culture-calendar"] },
+    "place-library": { points: ["이용 조건과 열람실 운영은 도서관 공식 안내를 따릅니다.", "공부·독서 목적을 정하고 가면 하루를 알차게 쓸 수 있습니다."], serviceIds: ["study-plan", "education-course"], exploreIds: ["ex-nl", "ex-seoul-library"] },
+    "exp-pottery": { points: ["첫 수업은 체험형 원데이로 시작해 보는 방법이 있습니다.", "가격·일정·준비물은 운영처 공식 안내를 확인하세요."], serviceIds: ["hobby-class"], exploreIds: ["ex-allilearn"], lifeTopicIds: ["50s.hobby-project"] },
+    "exp-baking": { points: ["집에서 할 수 있는 간단한 레시피부터 시작해도 충분합니다.", "도구는 자주 쓰게 될 때 하나씩 늘리세요."], serviceIds: ["hobby-class"], exploreIds: ["ex-allilearn"], lifeTopicIds: ["70s.easy-hobby"] },
+    "exp-yoga": { points: ["처음에는 짧고 가벼운 동작으로 몸 상태를 살피세요.", "통증이나 지병이 있으면 운동 전 의료진과 상의하세요."], serviceIds: ["exercise"], exploreIds: ["ex-sports"] },
+    "exp-photo": { points: ["스마트폰만으로도 빛과 구도를 연습할 수 있습니다.", "사람을 찍을 때는 먼저 동의를 구하세요."], serviceIds: ["hobby-class", "culture"], exploreIds: ["ex-allilearn"] },
+    "learn-kmooc": { points: ["관심 주제의 무료 공개 강의를 먼저 한두 개 들어 보세요.", "주간 학습 시간을 정하면 끝까지 듣기 쉽습니다."], serviceIds: ["education-course", "study-plan"], exploreIds: ["ex-lifelong"] },
+    "learn-finance": {
+      points: ["수입·지출 기록이 모든 돈 관리의 출발점입니다.", "금융상품 선택은 개인 상황에 따라 다르니 공식 정보와 상담을 활용하세요."],
+      checklist: ck(["한 달 고정지출 적어 보기", "주간 생활비 한도 정하기", "구독·자동이체 목록 점검하기", "비상금 통장 분리 여부 확인하기", "궁금한 금융 용어 3개 찾아보기"]),
+      serviceIds: ["budget", "finance-info", "finance-consult"], policyIds: ["pol-kinfa"], exploreIds: ["ex-nts"]
+    },
+    "learn-digital-senior": { points: ["서두르지 않고 같은 기능을 여러 번 연습하는 것이 가장 빠릅니다.", "지역 복지관·평생교육기관의 교육을 활용해 보세요."], serviceIds: ["digital-help", "education-course"], exploreIds: ["ex-lifelong", "ex-ongil"] },
+    "together-solo": { points: ["이동 1곳, 머무는 곳 1곳으로 동선을 짧게 잡으세요.", "혼자 가기 편한 도서관·전시·산책로를 후보로 두면 좋습니다."], serviceIds: ["culture", "travel-plan"], exploreIds: ["ex-culture", "ex-seoul-library"] },
+    "together-family": { points: ["아이·어르신의 체력에 맞춰 이동 시간을 줄이세요.", "화장실·쉼터 위치를 미리 확인하면 나들이가 편해집니다."], serviceIds: ["travel-plan", "culture"], exploreIds: ["ex-tour"] },
+    "together-date": { points: ["전시 관람 후 가까운 산책로를 이어 붙이면 동선이 자연스럽습니다.", "관람 조건과 운영 시간은 공식 안내를 확인하세요."], serviceIds: ["culture"], exploreIds: ["ex-mmca", "ex-culture"] },
+    "season-spring": { points: ["기온 차가 커서 겉옷을 챙기세요.", "공원 행사는 운영처 공지를 확인하세요."], serviceIds: ["travel-plan"], exploreIds: ["ex-tour"] },
+    "season-summer": {
+      points: ["한낮 야외 활동을 줄이고 실내 문화시설을 활용해 보세요.", "무더위 속 외출은 물과 휴식을 먼저 챙기세요."],
+      checklist: ck(["가까운 실내 문화시설 찾아보기", "운영 시간·휴관일 확인하기", "물과 간단한 간식 챙기기", "한낮을 피한 이동 시간 정하기", "귀가 교통편 확인하기"]),
+      serviceIds: ["culture"], exploreIds: ["ex-culture", "ex-nl"]
+    },
+    "season-autumn": {
+      points: ["일교차가 커서 보온 준비가 필요합니다.", "캠핑장·산행 코스는 운영 여부와 안전 공지를 먼저 확인하세요."],
+      checklist: ck(["목적지 운영 여부 확인하기", "일몰 시간 확인하기", "보온 옷과 우비 챙기기", "비상 연락처 공유하기", "쓰레기 되가져올 봉투 준비하기"]),
+      serviceIds: ["travel-plan"], exploreIds: ["ex-tour"], lifeTopicIds: ["50s.long-stay-travel"]
+    },
+    "season-winter": { points: ["실내에서 오래 즐길 수 있는 취미를 하나 정해 보세요.", "연말 공연은 공식 예매처 공지를 확인하세요."], serviceIds: ["hobby-class", "culture"], exploreIds: ["ex-culture", "ex-allilearn"] },
+    "life-declutter": {
+      points: ["한 번에 다 하지 않고 30분·한 구역씩 정리합니다.", "버릴 것보다 ‘자주 쓰는 것의 자리’를 먼저 정하세요."],
+      guide: g([["구역 하나 고르기", "서랍 한 칸, 신발장처럼 30분 안에 끝낼 수 있는 곳을 고릅니다."], ["모두 꺼내기", "안의 물건을 꺼내 한눈에 봅니다."], ["세 가지로 나누기", "자주 씀 · 가끔 씀 · 정리할 것으로 나눕니다."], ["자리 정하기", "자주 쓰는 물건을 손이 닿는 곳에 둡니다."], ["정리할 것 처리", "재사용·나눔·분리배출 기준을 확인해 처리합니다."]]),
+      checklist: ck(["이번 주 정리할 구역 1곳 정하기", "30분 타이머 맞추기", "정리할 물건 따로 모으기", "분리배출 요일 확인하기", "다음 주 정리 구역 적어 두기"]),
+      serviceIds: ["cleaning", "storage"], exploreIds: ["ex-interior-guide", "ex-clean-guide"]
+    },
+    "life-public": {
+      points: ["자주 쓰는 증명서와 민원은 정부24에서 온라인으로 확인할 수 있습니다.", "본인 인증 수단을 미리 준비해 두면 편합니다."],
+      guide: g([["필요한 민원 확인", "발급하려는 증명서나 신청할 민원 이름을 정확히 적습니다."], ["공식 사이트 접속", "정부24 공식 주소로 접속합니다."], ["본인 인증", "사용 가능한 인증 수단으로 로그인합니다."], ["신청·발급", "안내에 따라 신청하고 결과를 저장합니다."], ["보관", "발급 문서는 필요한 곳에만 제출하고 안전하게 보관합니다."]]),
+      serviceIds: ["public-docs", "digital-help"], policyIds: ["pol-gov24"]
+    },
+    "life-green": { points: ["장바구니·텀블러처럼 매일 쓰는 것 하나부터 바꿔 보세요.", "분리배출 기준은 지역마다 다를 수 있어 지자체 안내를 확인하세요."], serviceIds: ["community-join"] },
+    "edit-daytrip": {
+      points: ["이동 2곳 · 경험 2가지 · 여유 1번이면 하루가 무리 없습니다.", "마지막 교통편을 먼저 확인하고 일정을 거꾸로 짜 보세요."],
+      guide: g([["출발·귀가 시간 정하기", "마지막 교통편을 기준으로 하루 길이를 정합니다."], ["경험 2가지 고르기", "꼭 하고 싶은 것 두 가지만 고릅니다."], ["이동 2번으로 묶기", "가까운 곳끼리 묶어 이동을 줄입니다."], ["여유 1번 넣기", "카페·산책처럼 쉬는 시간을 일정에 넣습니다."], ["공식 정보 확인", "운영 시간·휴무를 출발 전날 다시 확인합니다."]]),
+      serviceIds: ["travel-plan"], exploreIds: ["ex-tour"]
+    },
+    "edit-hobby-start": {
+      points: ["장비보다 매주 같은 시간을 확보하는 것이 먼저입니다.", "4주 정도 해 보고 계속할지 정하면 부담이 적습니다."],
+      guide: g([["관심 3가지 적기", "해 보고 싶은 취미를 세 가지 적습니다."], ["가장 가벼운 시작 고르기", "원데이 수업·무료 강의처럼 부담 적은 방법을 고릅니다."], ["주간 시간 정하기", "매주 같은 요일·시간을 비워 둡니다."], ["4주 해 보기", "기록을 남기며 한 달 정도 이어 봅니다."], ["계속할지 정하기", "즐거웠던 점을 기준으로 이어갈지 결정합니다."]]),
+      checklist: ck(["해 보고 싶은 취미 3개 적기", "원데이·무료 과정 찾아보기", "매주 취미 시간 정하기", "4주 기록 시작하기"]),
+      serviceIds: ["hobby-class", "education-course", "community-join"], exploreIds: ["ex-allilearn", "ex-lifelong"]
+    },
+    "edit-generations": { points: ["세대가 달라도 새로운 경험은 ‘시간·동행·예산’ 조건에서 시작됩니다.", "가족과 함께할 활동은 가장 체력이 약한 사람 기준으로 고르세요."], serviceIds: ["community-join", "culture"] },
+    "event-howto": {
+      points: ["LIVON은 행사 일정을 자동으로 만들지 않습니다.", "공식 문화 포털과 지자체 공지에서 최신 일정을 확인하세요."],
+      guide: g([["지역·날짜 정하기", "갈 수 있는 지역과 날짜를 먼저 정합니다."], ["공식 캘린더 검색", "문화포털·지자체 공지에서 행사 목록을 찾습니다."], ["조건 확인", "관람료·예매·연령 제한을 확인합니다."], ["교통·동선 확인", "행사장 교통편과 귀가 시간을 확인합니다."]]),
+      serviceIds: ["culture"], exploreIds: ["ex-culture"]
+    },
+    "event-popup-guide": {
+      points: ["운영 기간이 짧아 방문 전 공식 계정 공지를 확인하세요.", "대기·구매 조건은 운영처 안내를 따릅니다."],
+      checklist: ck(["운영 기간과 시간 확인하기", "입장·구매 조건 확인하기", "대기 시간 대비하기", "결제 수단 챙기기", "귀가 동선 확인하기"]),
+      serviceIds: ["culture"], exploreIds: ["ex-culture"]
+    }
+  };
+
+  var UPDATED = "2026-09-28";
+  var SEEDS = [
+    {
+      id: "td-indep-missed", type: "life", category: "독립", title: "첫 독립을 준비할 때 놓치기 쉬운 것",
+      blurb: "집을 구하는 것만큼 중요한 계약 확인·전입신고·생활비 계산, 처음 독립할 때 자주 놓치는 부분을 정리했습니다.",
+      body: "첫 독립은 집을 고르는 순간보다 그 전후의 확인이 더 중요합니다. 보증금과 월세 외에 관리비·공과금·통신비가 더해지고, 계약 전에는 등기부 등 공적 서류와 계약 조건을 확인해야 합니다. 이사 후에는 전입신고와 생활 인프라 연결이 필요합니다. 계약·법률 판단이 필요한 부분은 공식 안내나 전문가 상담으로 확인하세요.",
+      img: "/livon/assets/topics/housing.jpg", alt: "새 집의 빈 방", tags: ["독립", "주거", "생활 정보", "20대"],
+      source: "LIVON 생활 가이드", status: "guide", evergreen: true, featured: true, reason: "처음 혼자 살 집을 준비할 때",
+      layout: "grid", sections: ["everyday"], links: {}, updatedAt: UPDATED,
+      points: ["월세만이 아니라 관리비·공과금·통신비까지 합친 월 주거비로 예산을 잡으세요.", "계약 전 공적 서류와 계약 조건 확인은 건너뛰지 마세요.", "이사 후 전입신고와 전기·가스·인터넷 연결 일정을 미리 정하세요."],
+      guide: g([["월 주거비 계산", "보증금·월세·관리비·공과금·통신비를 합쳐 한 달 비용을 계산합니다."], ["계약 전 확인", "등기부 등 공적 서류와 특약을 확인하고, 판단이 어려우면 전문가와 상담합니다."], ["이사 일정 정하기", "계약일·잔금일·이사일을 한 달력에 적습니다."], ["생활 인프라 연결", "전기·가스·수도·인터넷 개통 날짜를 이사일에 맞춥니다."], ["전입신고", "이사 후 정해진 기간 안에 전입신고를 합니다. 기준은 정부24에서 확인하세요."]]),
+      checklist: ck(["관리비·공과금 포함 월 주거비 계산하기", "계약 전 확인할 서류 목록 만들기", "계약·잔금·이사 날짜 한곳에 적기", "전기·가스·인터넷 개통 일정 잡기", "전입신고 방법 확인하기", "첫 달 생활비 예산 정하기"]),
+      lifeTopicIds: ["20s.first-independence", "20s.independence-budget", "20s.rental-check", "20s.moving-preparation", "20s.living-expenses"],
+      serviceIds: ["contract-check", "budget", "utilities", "internet", "moving"], policyIds: ["pol-myhome", "pol-gov24"], exploreIds: ["ex-molit-housing", "ex-move-guide"]
+    },
+    {
+      id: "td-moving-checklist", type: "life", category: "이사", title: "이사 준비 체크리스트",
+      blurb: "이사 날짜가 정해졌다면 한 달 전부터 이사 당일, 이사 후까지 해야 할 일을 순서대로 확인하세요.",
+      body: "이사는 날짜를 정한 순간부터 할 일이 겹칩니다. 이사 방식과 업체 비교, 짐 줄이기, 공과금 정산, 주소 변경처럼 시기별로 나누면 놓치는 일이 줄어듭니다. 업체 이용 조건과 비용은 각 업체의 공식 견적과 계약서를 기준으로 확인하세요.",
+      img: "/livon/assets/topics/moving.jpg", alt: "이삿짐 상자", tags: ["이사", "주거", "생활 정보"],
+      source: "LIVON 생활 가이드", status: "guide", evergreen: true, reason: "이사 날짜가 정해졌을 때",
+      layout: "grid", sections: ["everyday"], links: {}, updatedAt: UPDATED,
+      points: ["업체는 여러 곳의 견적과 계약 조건을 비교하세요.", "짐은 이사 전에 줄일수록 비용과 시간이 줄어듭니다.", "공과금 정산과 주소 변경은 이사 전후로 나눠 처리하세요."],
+      guide: g([["한 달 전", "이사 방식을 정하고 업체 견적을 비교합니다."], ["2주 전", "버릴 짐과 가져갈 짐을 나누고 대형 폐기물 처리 방법을 확인합니다."], ["1주 전", "공과금 정산 일정과 인터넷 이전을 신청합니다."], ["이사 당일", "파손 여부를 확인하고 계약서·영수증을 보관합니다."], ["이사 후", "전입신고와 주소 변경, 새 집 점검을 합니다."]]),
+      checklist: ck(["이사 방식 정하기", "업체 견적 2곳 이상 비교하기", "버릴 짐 정리하기", "대형 폐기물 처리 방법 확인하기", "공과금 정산 일정 잡기", "인터넷 이전 신청하기", "전입신고·주소 변경하기", "새 집 파손·누수 점검하기"]),
+      lifeTopicIds: ["20s.moving-preparation", "30s.moving-family", "20s.first-independence"],
+      serviceIds: ["moving", "cleaning", "storage", "internet", "utilities"], policyIds: ["pol-gov24"], exploreIds: ["ex-move-guide", "ex-clean-guide"]
+    },
+    {
+      id: "td-emergency-fund", type: "life", category: "돈 관리", title: "비상금, 어떻게 시작할까",
+      blurb: "갑작스러운 지출에 대비하는 비상금을 생활비 기준으로 목표를 정하고 따로 모으는 방법을 정리했습니다.",
+      body: "비상금은 수익을 내기 위한 돈이 아니라 예상하지 못한 지출에 대비하는 돈입니다. 한 달 필수 지출을 먼저 계산하고, 그 기준으로 목표를 정해 생활비와 분리된 곳에 조금씩 모읍니다. 어떤 금융상품이 적합한지는 개인 상황에 따라 다르므로 공식 정보와 상담을 활용하세요. LIVON은 특정 상품을 추천하지 않습니다.",
+      img: "/livon/assets/topics/finance.jpg", alt: "메모와 계산기", tags: ["금융", "생활 정보", "돈"],
+      source: "LIVON 생활 가이드", status: "guide", evergreen: true, reason: "갑작스러운 지출이 걱정될 때",
+      layout: "grid", sections: ["everyday"], links: {}, updatedAt: UPDATED,
+      points: ["목표는 ‘한 달 필수 지출’을 기준으로 정합니다.", "생활비 통장과 분리해 두어야 쉽게 쓰지 않습니다.", "금융상품 선택은 공식 정보와 상담으로 확인하세요."],
+      guide: g([["필수 지출 계산", "주거비·식비·교통비·통신비 등 매달 꼭 나가는 돈을 합칩니다."], ["목표 정하기", "필수 지출을 기준으로 현실적인 첫 목표를 정합니다."], ["분리하기", "생활비와 다른 곳에 비상금을 둡니다."], ["자동으로 모으기", "월급날 일정 금액이 옮겨지도록 정합니다."], ["쓴 뒤 다시 채우기", "비상금을 썼다면 채우는 계획을 다시 세웁니다."]]),
+      checklist: ck(["한 달 필수 지출 계산하기", "첫 비상금 목표 정하기", "생활비와 분리할 곳 정하기", "월급날 자동이체 설정하기", "비상금 사용 기준 적어 두기"]),
+      lifeTopicIds: ["20s.emergency-fund", "20s.saving-plan", "10s.saving-goal", "30s.household-cashflow", "40s.annual-expenses"],
+      serviceIds: ["budget", "finance-info", "finance-consult"], policyIds: ["pol-kinfa"]
+    },
+    {
+      id: "td-checkup-prep", type: "life", category: "건강", title: "건강검진, 받기 전에 확인할 것",
+      blurb: "검진 대상 여부와 일정, 검진 전 준비와 결과 확인까지 공식 안내를 기준으로 챙길 것을 정리했습니다.",
+      body: "건강검진 대상과 항목은 가입 자격과 나이 등에 따라 다르며 국민건강보험 공식 안내에서 확인할 수 있습니다. 검진 전 식사·복용약 관련 안내는 검진기관의 지시를 따르세요. 결과지의 의미와 추가 검사가 필요한지는 의료진과 상담해 판단합니다. 이 글은 일반 정보이며 진단이나 치료를 대신하지 않습니다.",
+      img: "/livon/assets/topics/fitness.jpg", alt: "운동하는 사람", tags: ["건강", "생활 정보", "건강검진"],
+      source: "LIVON 생활 가이드", status: "guide", evergreen: true, reason: "올해 검진을 아직 받지 않았을 때",
+      layout: "grid", sections: ["everyday"], links: {}, updatedAt: UPDATED,
+      points: ["검진 대상과 항목은 공식 안내에서 확인하세요.", "검진 전 준비는 검진기관의 안내를 따르세요.", "결과 해석과 추가 검사 여부는 의료진과 상담하세요."],
+      guide: g([["대상 확인", "국민건강보험 안내에서 올해 검진 대상인지 확인합니다."], ["기관·날짜 정하기", "검진기관을 정하고 예약 방법을 확인합니다."], ["사전 안내 확인", "식사·복용약 등 검진 전 안내를 확인합니다."], ["질문 적어 가기", "평소 불편한 증상과 복용약을 메모해 갑니다."], ["결과 상담", "결과를 받으면 의료진과 상담하고 후속 일정을 기록합니다."]]),
+      checklist: ck(["올해 검진 대상인지 확인하기", "검진기관과 날짜 정하기", "검진 전 안내사항 확인하기", "복용약·증상 메모하기", "결과 상담 일정 기록하기"]),
+      lifeTopicIds: ["20s.checkup-prep", "40s.health-check-40", "40s.checkup-followup", "60s.checkup-consult", "50s.health-records"],
+      serviceIds: ["health-checkup"], policyIds: ["pol-nhis"], exploreIds: ["ex-nhis"]
+    },
+    {
+      id: "td-youth-policy", type: "life", category: "정책·지원", title: "청년 지원정책, 공식 포털에서 찾는 순서",
+      blurb: "주거·일자리·금융 등 청년 지원 제도를 공식 포털에서 찾고, 신청 서류와 마감을 놓치지 않는 방법을 정리했습니다.",
+      body: "청년 지원 제도는 기관과 지역마다 대상·조건·신청 기간이 다릅니다. 통합 포털에서 관심 분야로 검색하고, 각 공고의 원문에서 대상과 제출 서류를 확인하세요. LIVON은 신청 가능 여부를 판단하지 않으며, 최신 조건은 공식 공고를 기준으로 합니다.",
+      img: "/livon/assets/topics/public-service.jpg", alt: "공공 서비스 창구", tags: ["정책", "지원", "주거", "취업", "20대"],
+      source: "LIVON 생활 가이드", status: "guide", evergreen: true, reason: "받을 수 있는 지원이 있는지 궁금할 때",
+      layout: "grid", sections: ["everyday"], links: {}, updatedAt: UPDATED,
+      points: ["통합 포털에서 분야별로 먼저 검색하세요.", "대상·조건·기간은 반드시 공고 원문으로 확인하세요.", "서류와 마감일을 한곳에 기록하면 놓치지 않습니다."],
+      guide: g([["관심 분야 정하기", "주거·일자리·금융·교육 중 필요한 분야를 고릅니다."], ["통합 포털 검색", "온통청년 등 공식 포털에서 분야와 지역으로 검색합니다."], ["공고 원문 확인", "대상·조건·신청 기간을 원문에서 확인합니다."], ["서류 준비", "필요 서류와 발급처를 목록으로 만듭니다."], ["마감 기록", "신청 마감일과 결과 발표일을 달력에 적습니다."]]),
+      checklist: ck(["필요한 지원 분야 정하기", "공식 포털에서 공고 3개 찾기", "공고 원문의 대상·조건 확인하기", "필요 서류 목록 만들기", "신청 마감일 기록하기"]),
+      lifeTopicIds: ["20s.youth-policy", "20s.policy-documents", "20s.housing-application"],
+      serviceIds: ["housing-info", "welfare", "job-training", "public-docs"], policyIds: ["pol-youthcenter", "pol-myhome", "pol-work24"], exploreIds: ["ex-youth", "ex-molit-housing"]
+    },
+    {
+      id: "td-startup-first-weeks", type: "editorial", category: "창업", title: "창업 아이디어, 첫 2주에 확인할 것",
+      blurb: "큰 비용을 쓰기 전에 문제·고객·비용을 작게 확인하는 순서를 정리했습니다. 사업자등록 등 절차는 공식 안내를 기준으로 합니다.",
+      body: "창업 초기에는 아이디어를 크게 만드는 것보다 ‘정말 필요한 사람이 있는지’를 작게 확인하는 일이 먼저입니다. 예상 고객과 직접 이야기하고, 최소한의 형태로 시험해 본 뒤 비용을 계산합니다. 사업자등록·세금 등 절차는 국세청 등 공식 안내를 확인하고, 판단이 필요한 부분은 전문가와 상담하세요.",
+      img: "/livon/assets/topics/career.jpg", alt: "노트북과 메모", tags: ["창업", "커리어", "새로운 도전"],
+      source: "LIVON 생활 가이드", status: "guide", evergreen: true, reason: "창업 아이디어를 처음 점검할 때",
+      layout: "editorial", sections: ["editorial"], links: {}, updatedAt: UPDATED,
+      points: ["해결하려는 문제를 한 문장으로 적어 보세요.", "예상 고객 여러 명과 직접 이야기해 보세요.", "지원사업 공고는 K-Startup 등 공식 포털에서 확인하세요."],
+      guide: g([["문제 한 문장", "누구의 어떤 불편을 해결하는지 한 문장으로 적습니다."], ["고객 대화", "예상 고객과 대화하며 실제로 불편을 겪는지 확인합니다."], ["작게 시험", "최소한의 형태로 제공해 보고 반응을 기록합니다."], ["비용 계산", "초기 비용과 월 운영비를 나눠 계산합니다."], ["공식 절차 확인", "사업자등록·지원사업 공고를 공식 포털에서 확인합니다."]]),
+      checklist: ck(["해결할 문제 한 문장으로 쓰기", "예상 고객 5명과 대화하기", "작은 시험 방법 정하기", "초기 비용 목록 만들기", "창업 지원 공고 확인하기"]),
+      lifeTopicIds: ["20s.idea-validation", "20s.first-customers", "20s.business-plan", "20s.startup-cost", "30s.pilot-operation"],
+      serviceIds: ["startup", "finance-consult"], policyIds: ["pol-kstartup", "pol-hometax"], exploreIds: ["ex-nts"]
+    },
+    {
+      id: "td-scam-message", type: "life", category: "디지털 안전", title: "문자·전화 사칭, 이렇게 확인하세요",
+      blurb: "가족·기관을 사칭해 돈이나 개인정보를 요구하는 연락을 알아보는 방법과, 의심될 때 해야 할 일을 정리했습니다.",
+      body: "사칭 연락은 급하게 돈을 보내라고 하거나, 링크 접속·앱 설치를 요구하는 경우가 많습니다. 연락을 끊고 가족이나 기관의 공식 번호로 직접 다시 확인하세요. 이미 돈을 보냈거나 정보를 알려 줬다면 즉시 112 또는 거래 금융회사에 알리세요.",
+      img: "/livon/assets/topics/senior-digital.jpg", alt: "스마트폰을 보는 사람", tags: ["디지털", "생활 정보", "안전", "금융"],
+      source: "LIVON 생활 가이드", status: "guide", evergreen: true, featured: true, reason: "모르는 번호의 급한 연락을 받았을 때",
+      layout: "grid", sections: ["everyday"], links: {}, updatedAt: UPDATED,
+      points: ["급하게 송금을 요구하면 먼저 의심하세요.", "문자 속 링크를 누르거나 앱을 설치하지 마세요.", "공식 번호로 직접 다시 확인하세요."],
+      guide: g([["멈추기", "급하다는 말에 바로 행동하지 않고 연락을 끊습니다."], ["직접 확인", "가족이나 기관의 공식 번호로 다시 연락합니다."], ["링크·앱 차단", "문자 속 링크와 설치 요청은 따르지 않습니다."], ["피해 시 신고", "송금했거나 정보를 알려 줬다면 즉시 112와 금융회사에 알립니다."]]),
+      checklist: ck(["가족과 확인 약속 정하기", "은행 공식 번호 저장하기", "모르는 링크 누르지 않기", "112 번호 적어 두기"]),
+      lifeTopicIds: ["70s.message-safety", "60s.financial-scam-check", "60s.smartphone-security", "10s.account-security"],
+      serviceIds: ["digital-help", "finance-info"], policyIds: ["pol-kinfa"]
+    },
+    {
+      id: "td-parent-care-start", type: "editorial", category: "가족 돌봄", title: "부모님 돌봄, 처음 이야기를 꺼낼 때",
+      blurb: "부모님께 필요한 도움을 함께 확인하고, 가족과 역할을 나누고, 공식 돌봄 제도를 알아보는 첫 순서를 정리했습니다.",
+      body: "돌봄 이야기는 부모님이 원하시는 생활 방식을 듣는 것에서 시작합니다. 필요한 도움의 종류를 함께 정리하고, 가족 간 역할과 비용 부담을 미리 이야기해 두면 갈등이 줄어듭니다. 장기요양 등 공적 제도의 대상과 절차는 공식 안내를 기준으로 확인하세요.",
+      img: "/livon/assets/topics/generations.jpg", alt: "세대가 함께하는 모습", tags: ["가족", "돌봄", "관계", "40대", "50대"],
+      source: "LIVON 생활 가이드", status: "guide", evergreen: true, reason: "부모님 돌봄을 처음 고민할 때",
+      layout: "editorial", sections: ["editorial"], links: {}, updatedAt: UPDATED,
+      points: ["부모님이 원하시는 생활 방식을 먼저 들으세요.", "가족 간 역할과 비용 부담은 미리 합의하세요.", "공적 돌봄 제도는 공식 안내에서 확인하세요."],
+      guide: g([["먼저 듣기", "부모님이 원하시는 생활과 걱정을 듣습니다."], ["필요한 도움 정리", "식사·이동·병원·집안일 등 도움이 필요한 부분을 적습니다."], ["가족 역할 나누기", "형제자매와 역할·연락·비용 부담을 나눕니다."], ["제도 알아보기", "장기요양·복지 서비스의 대상과 절차를 공식 안내에서 확인합니다."], ["다시 점검하기", "상황이 바뀌면 정기적으로 함께 다시 이야기합니다."]]),
+      checklist: ck(["부모님과 이야기할 시간 정하기", "필요한 도움 목록 만들기", "가족 역할 분담 적기", "장기요양 제도 안내 확인하기", "비상 연락망 만들기"]),
+      lifeTopicIds: ["40s.parent-care-40", "40s.care-needs", "40s.care-family-plan", "50s.longtermcare-prep", "50s.caregiver-rest"],
+      serviceIds: ["parent-care", "welfare"], policyIds: ["pol-longtermcare", "pol-bokjiro"], exploreIds: ["ex-bokjiro", "ex-ongil"]
+    }
+  ];
+
+  D.contents.forEach(function (c) {
+    var extra = LINKS[c.id];
+    if (!extra) return;
+    Object.keys(extra).forEach(function (k) { if (c[k] === undefined) c[k] = extra[k]; });
+  });
+  SEEDS.forEach(function (s) { if (!D.contents.some(function (c) { return c.id === s.id; })) D.contents.push(s); });
+  D.linksVersion = "2026-09-28";
+})(window.LivonTodayData);

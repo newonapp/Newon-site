@@ -79,7 +79,36 @@
     var list = readJSON(KEY_SAVED, []);
     return Array.isArray(list) ? list : [];
   }
-  function isSaved(id) { return saved().some(function (x) { return x.id === id; }); }
+  function platformSaved(id) {
+    var P = window.LivonPlatform;
+    if (!P || !P.listSaves) return false;
+    return P.listSaves("all").some(function (s) { return /^life-hub:\w+:td:/.test(s.id) && s.id.slice(s.id.indexOf(":td:") + 4) === id; });
+  }
+  function isSaved(id) { return platformSaved(id); }
+  /* Old Today saves (livon.tdSaved → platform ids "td:{id}") are converted to the shared
+     Life Stage/Today id "life-hub:{type}:td:{id}" so the same content has one saved state
+     everywhere. Converted ids are removed from the legacy list so they are not re-imported;
+     unknown ids are left as they were. */
+  function migrateLegacySaves() {
+    var P = window.LivonPlatform;
+    if (!P || !P.saveItem || !P.listSaves || !P.removeSave) return;
+    var legacy = saved(), keep = [], changed = false;
+    var ids = legacy.map(function (x) { return x && (x.id || x); }).concat(P.listSaves("all").filter(function (x) { return /^td:/.test(x.id); }).map(function (x) { return x.id.slice(3); }));
+    legacy.forEach(function (x) { if (!byId(x && (x.id || x))) keep.push(x); });
+    /* prune first: LivonPlatform re-imports the legacy list whenever its saved panel refreshes */
+    if (keep.length !== legacy.length) writeJSON(KEY_SAVED, keep);
+    ids.forEach(function (id) {
+      var c = byId(id);
+      if (!c) return;
+      var old = P.listSaves("all").find(function (x) { return x.id === "td:" + id; });
+      if (!platformSaved(id)) {
+        P.saveItem({ id: "life-hub:" + saveType(c) + ":td:" + c.id, title: c.title, label: c.title, type: "life-" + saveType(c), href: "#today/" + c.id, source: "오늘의 발견", lifeStage: "", folder: old && old.folder, data: { kind: saveType(c), refId: "td:" + c.id } });
+      }
+      if (old) P.removeSave(old.id);
+      changed = true;
+    });
+    return changed;
+  }
   function toggleSave(id, label) {
     var list = saved();
     var exists = list.some(function (x) { return x.id === id; });
@@ -205,6 +234,12 @@
     return html;
   }
 
+  function saveType(c) { return c.type === "place" ? "place" : (c.type === "learn" || c.type === "experience") ? "class" : "content"; }
+  function saveHtml(c, cls) {
+    var on = isSaved(c.id);
+    return '<button type="button" class="' + cls + '" data-lh-save="' + saveType(c) + '" data-lh-id="td:' + esc(c.id) + '" data-lh-title="' + esc(c.title) + '" data-lh-href="#today/' + esc(c.id) +
+      '" data-lh-label="저장" aria-pressed="' + on + '" aria-label="' + esc(c.title) + ' 저장">' + (on ? "저장됨" : "저장") + "</button>";
+  }
   function card(c, variant, opts) {
     opts = opts || {};
     variant = variant || "grid";
@@ -227,7 +262,7 @@
             (c.reason ? '<p class="lv-td-note">추천 이유 · ' + esc(c.reason) + "</p>" : "") +
             '<div class="lv-td-actions">' +
               '<button type="button" class="lv-td-btn" data-lv-td-open="' + esc(c.id) + '">상세 보기</button>' +
-              '<button type="button" class="lv-td-btn lv-td-btn--ghost' + (savedOn ? " is-on" : "") + '" data-lv-td-save="' + esc(c.id) + '" data-lv-td-label="' + esc(c.title) + '">' + (savedOn ? "저장됨" : "관심 저장") + "</button>" +
+              saveHtml(c, "lv-td-btn lv-td-btn--ghost") +
               '<button type="button" class="lv-td-btn lv-td-btn--ghost" data-lv-td-share="' + esc(c.id) + '">공유</button>' +
             "</div>" +
           "</div>" +
@@ -270,7 +305,7 @@
             '<p class="lv-td-note">' + esc(statusLabel(c.status)) + (c.source ? " · " + esc(c.source) : "") + (c.checkedAt || DATA.checkedAt ? " · 확인 " + esc(c.checkedAt || DATA.checkedAt) : "") + "</p>" +
             '<div class="lv-td-actions">' +
               '<button type="button" class="lv-td-btn lv-td-btn--sm" data-lv-td-open="' + esc(c.id) + '">자세히</button>' +
-              '<button type="button" class="lv-td-btn lv-td-btn--ghost lv-td-btn--sm" data-lv-td-save="' + esc(c.id) + '" data-lv-td-label="' + esc(c.title) + '">' + (savedOn ? "저장됨" : "저장") + "</button>" +
+              saveHtml(c, "lv-td-btn lv-td-btn--ghost lv-td-btn--sm") +
             "</div>" +
           "</div>" +
         "</article>"
@@ -286,7 +321,7 @@
           (opts.why ? '<p class="lv-td-card__why">' + esc(opts.why) + "</p>" : "") +
           '<div class="lv-td-actions">' +
             '<button type="button" class="lv-td-btn lv-td-btn--sm" data-lv-td-open="' + esc(c.id) + '">상세</button>' +
-            '<button type="button" class="lv-td-btn lv-td-btn--ghost lv-td-btn--sm' + (savedOn ? " is-on" : "") + '" data-lv-td-save="' + esc(c.id) + '" data-lv-td-label="' + esc(c.title) + '">' + (savedOn ? "저장됨" : "저장") + "</button>" +
+            saveHtml(c, "lv-td-btn lv-td-btn--ghost lv-td-btn--sm") +
           "</div>" +
         "</div>" +
       "</article>"
@@ -463,6 +498,7 @@
   }
 
   function showDetail(id) {
+    if (window.LivonTodayFeed) return window.LivonTodayFeed.openDetail(id);
     var c = byId(id);
     var sec = $("#td-detail");
     var host = $("[data-lv-td-detail]");
@@ -517,6 +553,7 @@
   }
 
   function hideDetail() {
+    if (window.LivonTodayFeed) { window.LivonTodayFeed.closeDetail(); return; }
     var sec = $("#td-detail");
     if (sec) sec.hidden = true;
     state.detailId = null;
@@ -525,7 +562,8 @@
   function renderSavedBox() {
     var host = $("[data-lv-td-saved]");
     if (!host) return;
-    var s = saved();
+    var P = window.LivonPlatform;
+    var s = (P && P.listSaves ? P.listSaves("all") : []).filter(function (x) { return /^life-hub:\w+:td:/.test(x.id); }).map(function (x) { return { id: x.id, label: x.title || x.label }; });
     var p = prefs();
     if (!s.length && !p.interests.length) {
       host.innerHTML = '<div class="lv-td-empty"><span class="lv-td-badge">이 기기</span><h3>아직 저장한 발견이 없습니다</h3><p>관심 분야를 고르거나 콘텐츠를 저장하면 이곳에 모입니다. 계정 동기화 전에는 이 기기에만 저장됩니다.</p></div>';
@@ -595,8 +633,9 @@
     document.addEventListener("click", function (e) {
       var open = e.target.closest("[data-lv-td-open]");
       if (open) {
+        if (e.target.closest("[data-lh-save],[data-lv-td-share]") && e.target.closest("[data-lh-save],[data-lv-td-share]") !== open) return;
         e.preventDefault();
-        showDetail(open.getAttribute("data-lv-td-open"));
+        location.hash = "today/" + open.getAttribute("data-lv-td-open");
         return;
       }
       var close = e.target.closest("[data-lv-td-close]");
@@ -621,7 +660,7 @@
       if (share) {
         e.preventDefault();
         var item = byId(share.getAttribute("data-lv-td-share"));
-        var url = location.origin + location.pathname + "#td-item-" + (item ? item.id : "");
+        var url = "https://www.newon.app/livon/today/" + (item ? item.id : "") + "/";
         var title = item ? item.title : "LIVON 오늘의 발견";
         if (navigator.share) navigator.share({ title: title, url: url }).catch(function () {});
         else if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url);
@@ -631,8 +670,9 @@
       if (hide) {
         e.preventDefault();
         hideItem(hide.getAttribute("data-lv-td-hide"));
-        hideDetail();
         renderAll();
+        if (window.LivonTodayFeed) window.LivonTodayFeed.render();
+        if (location.hash.indexOf("#today/") === 0) location.hash = "today";
         return;
       }
       var tab = e.target.closest("[data-lv-td-tab]");
@@ -728,18 +768,27 @@
       });
     }
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") hideDetail();
-    });
+      if (e.key !== "Escape" || document.documentElement.dataset.lvView !== "today") return;
+      if (document.querySelector(".lh-modal, .lv-life-modal:not([hidden])")) return;
+      if (window.LivonTodayFeed && window.LivonTodayFeed.isDetailOpen()) location.hash = "today";
+    }, true); /* capture: runs before the modal's own Escape handler removes it */
   }
 
   function onShow(hash) {
-    renderSavedBox();
-    if (!hash || hash === "today" || hash === "td-hero") {
-      window.scrollTo(0, 0);
+    if (hash.indexOf("td-item-") === 0) {
+      var legacy = hash.replace("td-item-", "");
+      history.replaceState(null, "", "#today/" + legacy);
+      hash = "today/" + legacy;
+    }
+    if (hash.indexOf("today/") === 0) {
+      showDetail(decodeURIComponent(hash.slice(6)));
       return;
     }
-    if (hash.indexOf("td-item-") === 0) {
-      showDetail(hash.replace("td-item-", ""));
+    hideDetail();
+    renderSavedBox();
+    if (window.LivonLifeHub && window.LivonLifeHub.saves) window.LivonLifeHub.saves.refresh();
+    if (!hash || hash === "today" || hash === "td-hero") {
+      window.scrollTo(0, 0);
       return;
     }
     if (hash.indexOf("td-") === 0) setTimeout(function () { scrollToId(hash); }, 40);
@@ -747,6 +796,7 @@
 
   function init() {
     if (!$("#today")) return;
+    migrateLegacySaves();
     renderAll();
     bindFilm();
     bindReveal();
@@ -759,7 +809,7 @@
   window.LivonToday = {
     onShow: onShow,
     isTodayHash: function (hash) {
-      return hash === "today" || hash.indexOf("td-") === 0;
+      return hash === "today" || hash.indexOf("today/") === 0 || hash.indexOf("td-") === 0;
     }
   };
 

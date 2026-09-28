@@ -87,6 +87,22 @@
   function writeJSON(key, value) {
     try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch (e) { return false; }
   }
+  /* Inline confirmation next to the button (replaces blocking alert()). */
+  function flash(anchor, text) {
+    if (!anchor || !anchor.parentNode) return;
+    var n = anchor.parentNode.querySelector(".lv-hm-flash");
+    if (!n) {
+      n = document.createElement("p");
+      n.className = "lv-hm-flash";
+      n.setAttribute("role", "status");
+      n.setAttribute("aria-live", "polite");
+      n.style.cssText = "flex-basis:100%;margin:.6rem 0 0;font-size:.85rem;line-height:1.5;";
+      anchor.parentNode.insertBefore(n, anchor.nextSibling);
+    }
+    n.textContent = "";
+    setTimeout(function () { n.textContent = text; }, 30);
+  }
+
   function gnavOffset() {
     return (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--gnav-h"), 10) || 74) + 8;
   }
@@ -134,7 +150,7 @@
     if (title) title.textContent = s.title;
     if (desc) desc.textContent = s.desc;
     if (keys) keys.textContent = s.keys;
-    if (link) link.href = "#stage-" + s.id;
+    if (link) link.href = "#life/" + s.id + "s";
     if (visual) visual.style.backgroundImage = "url(" + s.img + ")";
     renderStageTabs();
   }
@@ -223,8 +239,16 @@
     var t = todayKey();
     var events = (ml && Array.isArray(ml.events)) ? ml.events.filter(function (e) { return e.date === t; }) : [];
     var todos = (ml && Array.isArray(ml.todos)) ? ml.todos.filter(function (x) { return !x.done && (!x.due || x.due === t || x.due >= t); }).slice(0, 4) : [];
-    var goals = (ml && Array.isArray(ml.goals)) ? ml.goals.filter(function (g) { return g.status !== "완료"; }).slice(0, 3) : [];
-    var saved = readJSON(KEY_TD_SAVED, []);
+    /* 진행 중 목표 only (완료·보류 제외); progress comes from linked My Life todos, never a typed-in % */
+    var goals = (ml && Array.isArray(ml.goals)) ? ml.goals.filter(function (g) { return g.status !== "완료" && g.status !== "보류"; }).slice(0, 3) : [];
+    var goalLinked = function (g) {
+      var l = (ml && Array.isArray(ml.todos)) ? ml.todos.filter(function (x) { return x.goalId === g.id; }) : [];
+      return l.length ? " · 할 일 " + l.filter(function (x) { return x.done; }).length + "/" + l.length : "";
+    };
+    /* 저장한 콘텐츠: shared LivonPlatform store (Life Stage · 오늘의 발견 · 탐색), legacy list as fallback */
+    var saved = window.LivonPlatform && window.LivonPlatform.listSaves
+      ? window.LivonPlatform.listSaves("all").map(function (x) { return { id: x.id, label: x.title || x.label }; })
+      : readJSON(KEY_TD_SAVED, []);
     if (!Array.isArray(saved)) saved = [];
     var cmSaved = (ml && Array.isArray(ml.savedCommunity)) ? ml.savedCommunity : [];
     var stageMeta = STAGES.find(function (s) { return s.id === stage; });
@@ -335,7 +359,7 @@
               "<div class=\"lv-hm-stat__copy\">" +
                 "<span>진행 중 목표</span>" +
                 (goals.length
-                  ? "<small>" + esc(goals[0].title) + (goals[0].progress != null ? " · " + goals[0].progress + "%" : "") + "</small>"
+                  ? "<small>" + esc(goals[0].title) + esc(goalLinked(goals[0])) + "</small>"
                   : "<small>진행 중 목표가 없습니다</small>") +
               "</div>" +
             "</div>" +
@@ -587,7 +611,7 @@
         if (!s) return;
         writeJSON(KEY_STAGE, s.id);
         renderDash();
-        alert(s.label + "을(를) 나의 라이프 스테이지로 이 기기에 저장했습니다.");
+        flash($("[data-lv-hm-set-stage]"), s.label + "을(를) 나의 라이프 스테이지로 이 기기에 저장했습니다.");
         return;
       }
       var svc = e.target.closest("[data-lv-hm-svc]");
@@ -616,7 +640,7 @@
         if (sel) writeJSON(KEY_STAGE, sel.value || "");
         if (reg) writeJSON(KEY_REGION, reg.value.trim());
         renderDash();
-        alert("설정이 이 기기에 저장되었습니다.");
+        flash($("[data-lv-hm-save-prefs]"), "설정이 이 기기에 저장되었습니다.");
         return;
       }
       var aiq = e.target.closest("[data-lv-hm-aiq]");

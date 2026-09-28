@@ -500,6 +500,11 @@ function verify() {
   required.push(path.join(OUT, "livon", "home-page.css"));
   required.push(path.join(OUT, "livon", "today-data.js"));
   required.push(path.join(OUT, "livon", "life-data.js"));
+  required.push(path.join(OUT, "livon", "life-hub.js"));
+  required.push(path.join(OUT, "livon", "life-topics.json"));
+  required.push(path.join(OUT, "livon", "life", "20s", "first-independence", "index.html"));
+  required.push(path.join(OUT, "livon", "today-feed.js"));
+  required.push(path.join(OUT, "livon", "today", "td-indep-missed", "index.html"));
   required.push(path.join(OUT, "livon", "community-data.js"));
   required.push(path.join(OUT, "livon", "explore-data.js"));
   required.push(path.join(OUT, "livon", "assets", "topics", "hangang.jpg"));
@@ -567,6 +572,16 @@ spawnSync(process.execPath, [path.join(ROOT, "scripts", "render-company.mjs"), "
 }).status === 0 || process.exit(1);
 validateHuman404Game();
 assemble();
+// LIVON Life Stage direct URLs (/livon/life/{stage}/{topic}/ → /livon/#life/...).
+spawnSync(process.execPath, [path.join(ROOT, "scripts", "render-livon-life-routes.mjs"), "--out", path.join(OUT, "livon")], {
+  cwd: ROOT,
+  stdio: "inherit",
+}).status === 0 || process.exit(1);
+// LIVON 오늘의 발견 direct URLs (/livon/today/{id}/ → /livon/#today/{id}).
+spawnSync(process.execPath, [path.join(ROOT, "scripts", "render-livon-today-routes.mjs"), "--out", path.join(OUT, "livon")], {
+  cwd: ROOT,
+  stdio: "inherit",
+}).status === 0 || process.exit(1);
 
 verify();
 verifyArtifact();

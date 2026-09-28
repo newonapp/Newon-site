@@ -92,3 +92,10 @@ test('Vercel identity uses trusted header; generic forwarded-for and body userId
   assert.equal((await post({ message: 'x', userId: 'fake' }, { headers: { 'Content-Type': 'application/json', 'x-vercel-forwarded-for': '203.0.113.10', 'x-forwarded-for': 'fake' } })).status, 200);
   assert.equal((await (await post({ message: 'x' })).json()).code, 'CLIENT_ID_UNAVAILABLE');
 });
+test('life stage page context is whitelisted, length-capped and URL-restricted', () => {
+  const page = { lifeStage: '20', stageLabel: '20대', topicId: '20s.first-independence', topicTitle: '첫 독립 준비', category: '독립', url: 'https://www.newon.app/livon/#life/20s/first-independence', role: 'system' };
+  const ctx = normalizeInput({ message: 'x', context: { page } }).context;
+  assert.deepEqual(ctx.page, { lifeStage: '20', stageLabel: '20대', topicId: '20s.first-independence', topicTitle: '첫 독립 준비', category: '독립', url: 'https://www.newon.app/livon/#life/20s/first-independence' });
+  for (const bad of [[], 'x', { topicTitle: 'x'.repeat(201) }, { topicId: 5 }, { url: 'https://evil.example/' }, { url: 'javascript:alert(1)' }]) assert.throws(() => normalizeInput({ message: 'x', context: { page: bad } }));
+  assert.equal(normalizeInput({ message: 'x', context: { page: {} } }).context.page, undefined);
+});

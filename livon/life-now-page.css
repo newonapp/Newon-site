@@ -1890,3 +1890,225 @@ html[data-lv-view="life-now"] main > #life-now {
   border-bottom: 1px solid #0a0a0a;
 }
 #life-now .lv-ml-panel-bar .lv-ml-title { margin: 0; flex: 1; }
+
+/* ——— My Life V1: tasks, filters, goals, saved, interests (existing tokens only) ——— */
+#life-now .lv-ml-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+#life-now .lv-ml-chip-btn,
+#life-now .lv-ml-row-acts button,
+#life-now .lv-ml-row-acts a,
+#life-now .lv-ml-btn--sm { min-height: 44px; }
+#life-now .lv-ml-row-acts a { display: inline-flex; align-items: center; }
+#life-now a.lv-ml-module { text-decoration: none; }
+#life-now .lv-ml-nav a:focus-visible,
+#life-now .lv-ml-chip-btn:focus-visible,
+#life-now .lv-ml-row-acts button:focus-visible,
+#life-now .lv-ml-row-acts a:focus-visible,
+#life-now .lv-ml-btn:focus-visible,
+#life-now .lv-ml-module:focus-visible,
+#life-now .lv-ml-cal__cell:focus-visible,
+#life-now .lv-ml-week__day:focus-visible,
+#life-now .lv-ml-task input:focus-visible,
+#life-now .lv-ml-tags button:focus-visible,
+#life-now .lv-ml-task__link:focus-visible,
+.lv-ml-modal button:focus-visible,
+.lv-ml-modal input:focus-visible,
+.lv-ml-modal select:focus-visible,
+.lv-ml-modal textarea:focus-visible {
+  outline: 2px solid #0a0a0a;
+  outline-offset: 2px;
+}
+#life-now .lv-ml-modules .lv-ml-module:focus-visible { outline-color: #fff; }
+#life-now [data-lv-ml-today-label]:focus,
+#life-now [data-lv-ml-panel-title]:focus { outline: none; }
+#life-now .lv-ml-cal__cell { min-height: 44px; }
+
+#life-now .lv-ml-filterbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.6rem 1rem;
+  margin-bottom: 0.4rem;
+}
+#life-now .lv-ml-filter { margin-top: 0; }
+#life-now .lv-ml-count {
+  display: inline-block;
+  min-width: 1.4em;
+  margin-left: 0.2rem;
+  font-size: 0.78em;
+  font-weight: 700;
+  opacity: 0.7;
+}
+#life-now .lv-ml-field--inline { display: grid; gap: 0.25rem; min-width: 0; }
+#life-now .lv-ml-field--inline select,
+#life-now .lv-ml-inline-form input {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid #0a0a0a;
+  border-radius: 0;
+  background: #fff;
+  font: inherit;
+  font-size: 0.95rem;
+  color: #0a0a0a;
+}
+#life-now .lv-ml-inline-form { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0.5rem; margin-top: 1rem; }
+#life-now .lv-ml-inline-form .lv-ml-field { flex: 1 1 12rem; min-width: 0; }
+#life-now .lv-ml-inline-form input[aria-invalid="true"] { border-color: #b3261e; }
+#life-now .lv-ml-inline-acts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin: 1rem 0 0;
+}
+#life-now .lv-ml-inline-acts .lv-ml-note { margin: 0; }
+
+/* task rows: real checkbox + label, source and goal lines */
+#life-now .lv-ml-tasks > li { align-items: start; }
+#life-now .lv-ml-task__main {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: start;
+  min-width: 0;
+}
+#life-now .lv-ml-task__main input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  margin: 11px;
+  accent-color: #0a0a0a;
+  cursor: pointer;
+}
+#life-now .lv-ml-task__dot {
+  width: 8px;
+  height: 8px;
+  margin: 18px;
+  background: #0a0a0a;
+}
+#life-now .lv-ml-task__body { min-width: 0; padding-top: 0.55rem; }
+#life-now .lv-ml-task__title {
+  display: block;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+#life-now .lv-ml-task.is-done .lv-ml-task__title { text-decoration: line-through; color: #8a8a8a; }
+#life-now .lv-ml-task.is-overdue .lv-ml-task__meta { color: #b3261e; }
+#life-now .lv-ml-task__meta { margin: 0.2rem 0 0; font-size: 0.86rem; color: #555; }
+#life-now .lv-ml-task__link {
+  min-height: 44px;
+  margin: -0.55rem 0 -0.3rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 1.02rem;
+  font-weight: 700;
+  text-align: left;
+  color: #0a0a0a;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+#life-now .lv-ml-src { margin: 0.3rem 0 0; font-size: 0.84rem; color: #555; overflow-wrap: anywhere; }
+#life-now .lv-ml-src__k {
+  display: inline-block;
+  margin-right: 0.25rem;
+  padding: 0 0.35rem;
+  border: 1px solid #0a0a0a;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0a0a0a;
+}
+#life-now .lv-ml-src a { color: #0a0a0a; font-weight: 700; text-underline-offset: 3px; display: inline-block; padding: 0.35rem 0; }
+#life-now .lv-ml-tasks--compact > li { padding: 0.55rem 0; }
+
+/* goals */
+#life-now .lv-ml-goal-grid--full { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 900px) {
+  #life-now .lv-ml-goal-grid--full { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+#life-now .lv-ml-goal-card--full:hover { background: #fff; color: inherit; transform: none; }
+#life-now .lv-ml-goal-card--full:hover p { color: #555; }
+#life-now .lv-ml-goal-card--full:hover .lv-ml-progress { background: #e8e8e8; }
+#life-now .lv-ml-goal-card--full:hover .lv-ml-progress > span { background: #0a0a0a; }
+#life-now .lv-ml-goal-card__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.6rem; }
+#life-now .lv-ml-goal-card__head h4 { margin: 0; overflow-wrap: anywhere; }
+#life-now .lv-ml-badge--on { background: #0a0a0a; color: #fff; }
+#life-now .lv-ml-badge--hold { background: #fff; color: #0a0a0a; border: 1px dashed #0a0a0a; }
+#life-now .lv-ml-badge--done { background: #fff; color: #555; border: 1px solid #bbb; }
+#life-now .lv-ml-subhead { margin: 1rem 0 0.35rem; font-size: 0.85rem; font-weight: 800; letter-spacing: -0.01em; }
+#life-now .lv-ml-row-acts--wrap { margin-top: 0.9rem; }
+#life-now .lv-ml-title small { font-size: 0.5em; font-weight: 700; color: #777; margin-left: 0.3rem; }
+
+/* interests */
+#life-now .lv-ml-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0; padding: 0; list-style: none; }
+#life-now .lv-ml-tags li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1rem;
+  padding-left: 0.85rem;
+  border: 1px solid #0a0a0a;
+  background: #0a0a0a;
+  color: #fff;
+  font-weight: 650;
+}
+#life-now .lv-ml-tags button {
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+#life-now .lv-ml-tags button:focus-visible { outline-color: #fff; outline-offset: -4px; }
+#life-now .lv-ml-empty--info { text-align: left; }
+#life-now .lv-ml-journal-body { white-space: pre-line; overflow-wrap: anywhere; }
+#life-now .lv-ml-manage-list > li > div:first-child { min-width: 0; overflow-wrap: anywhere; }
+
+/* modal: form errors, checkbox lists, confirm dialog */
+.lv-ml-form__err { margin: 0; min-height: 0; color: #b3261e; font-size: 0.9rem; font-weight: 650; }
+.lv-ml-form__err:empty { display: none; }
+.lv-ml-field [aria-invalid="true"] { border-color: #b3261e; }
+.lv-ml-fieldset { margin: 0; padding: 0; border: 0; display: grid; gap: 0.1rem; }
+.lv-ml-fieldset legend { margin-bottom: 0.4rem; font-size: 0.9rem; font-weight: 700; }
+.lv-ml-check-row { display: flex; align-items: center; gap: 0.6rem; min-height: 44px; cursor: pointer; }
+.lv-ml-check-row input { width: 20px; height: 20px; accent-color: #0a0a0a; flex: 0 0 auto; }
+.lv-ml-modal .lv-ml-note { margin: 0; font-size: 0.85rem; color: #666; }
+.lv-ml-modal .lv-ml-note a { color: #0a0a0a; font-weight: 700; }
+.lv-ml-modal--confirm { z-index: 240; }
+.lv-ml-modal--confirm .lv-ml-modal__panel p { margin: 0 0 1rem; line-height: 1.6; color: #333; }
+.lv-ml-modal .lv-ml-btn--danger { background: #b3261e; border-color: #b3261e; color: #fff; }
+.lv-ml-modal .lv-ml-form__acts { flex-wrap: wrap; }
+@media (max-width: 380px) {
+  .lv-ml-modal .lv-ml-form__acts .lv-ml-btn { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #life-now .lv-ml-chip-btn,
+  #life-now .lv-ml-goal-card { transition: none; }
+}
+#life-now .lv-ml-check-inline,
+#life-now .lv-ml-row-acts label,
+#life-now .lv-ml-mini-check label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+#life-now .lv-ml-check-inline input,
+#life-now .lv-ml-row-acts label input,
+#life-now .lv-ml-mini-check input { width: 20px; height: 20px; accent-color: #0a0a0a; }
+/* the management panel is one reading column (the old 2-column grid scattered list items) */
+#life-now .lv-ml-panel[data-lv-ml-panel] { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+#life-now .lv-ml-panel[data-lv-ml-panel] > .lv-ml-block-label { margin-top: 0.75rem; margin-bottom: 0; }
+#life-now .lv-ml-manage-list > li.lv-ml-task.is-done { text-decoration: none; color: inherit; }
+#life-now .lv-ml-tasks--compact > li { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
+#life-now .lv-ml-tasks--compact .lv-ml-row-acts { padding-left: 44px; }
