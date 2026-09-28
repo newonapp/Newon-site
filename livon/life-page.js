@@ -98,14 +98,14 @@
     return (DATA.statusLabel && DATA.statusLabel[key]) || key || "안내";
   }
   function gnavOffset() {
-    return (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--gnav-h")) || 74) + 56;
+    return (window.LivonStickyOffset ? window.LivonStickyOffset() : (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--gnav-h"), 10) || 74) + 52) + 8;
   }
 
   function scrollToId(id) {
     var el = document.getElementById(id);
     if (!el) return;
     var top = el.getBoundingClientRect().top + window.pageYOffset - gnavOffset();
-    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    window.scrollTo({ top: Math.max(0, top), behavior: (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ? "auto" : "smooth" });
   }
 
   function resolveServices(stage, names) {
@@ -800,9 +800,11 @@
     var sticky = $("[data-lv-life-sticky]");
     var hero = $("[data-lv-life-hero]");
     if (!sticky || !hero) return;
+    sticky.inert = true; /* hidden (opacity 0) bar must not take keyboard focus */
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         sticky.classList.toggle("is-show", !e.isIntersecting);
+        sticky.inert = e.isIntersecting;
       });
     }, { threshold: 0.05 });
     io.observe(hero);

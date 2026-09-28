@@ -14,7 +14,8 @@
 html[data-lv-view="life-now"],
 html[data-lv-view="life-now"] body {
   height: auto !important;
-  overflow: auto !important;
+  /* visible (not auto) keeps the viewport as the scroller so position: sticky works. */
+  overflow: visible !important;
   overflow-x: clip !important;
 }
 html[data-lv-view="life-now"] main {
@@ -185,7 +186,7 @@ html[data-lv-view="life-now"] main > #life-now {
 #life-now .lv-ml-kicker {
   margin: 0 0 1rem;
   font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.14em;
-  text-transform: uppercase; color: #8a8a8a;
+  text-transform: uppercase; color: #737373;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 #life-now .lv-ml-title {
@@ -261,7 +262,7 @@ html[data-lv-view="life-now"] main > #life-now {
   color: #8a8a8a; font-size: 0.95rem; line-height: 1.6; background: #fff;
 }
 #life-now .lv-ml-note {
-  margin: 1.15rem 0 0; font-size: 0.9rem; line-height: 1.6; color: #8a8a8a;
+  margin: 1.15rem 0 0; font-size: 0.9rem; line-height: 1.6; color: #737373;
 }
 #life-now .lv-ml-panel {
   display: grid; gap: 1.5rem;
@@ -489,14 +490,14 @@ html[data-lv-view="life-now"] main > #life-now {
   margin: 0;
   font-size: 0.65rem;
   letter-spacing: 0.14em;
-  color: #aaa;
+  color: #737373;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 #life-now .lv-ml-nav__track { display: flex; gap: 0.1rem; min-width: max-content; }
 #life-now .lv-ml-nav a {
   flex: 0 0 auto;
   padding: 0.45rem 0.7rem;
-  color: #777;
+  color: #737373;
   text-decoration: none;
   font-size: 0.72rem;
   font-weight: 700;
@@ -692,7 +693,7 @@ html[data-lv-view="life-now"] main > #life-now {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #8a8a8a;
+  color: #737373;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 #life-now .lv-ml-stat strong {
@@ -942,6 +943,7 @@ html[data-lv-view="life-now"] main > #life-now {
   gap: 0.15rem;
   padding: 0.25rem;
 }
+#life-now .lv-ml-cal__dow { padding: 0.15rem 0; text-align: center; font-size: 0.75rem; font-weight: 700; color: #666; }
 #life-now .lv-ml-cal__cell.is-empty { border: 0; background: transparent; cursor: default; }
 #life-now .lv-ml-cal__cell.is-today { border-color: #0a0a0a; }
 #life-now .lv-ml-cal__cell strong { font-size: 0.9rem; }
@@ -1385,7 +1387,7 @@ html[data-lv-view="life-now"] main > #life-now {
   font-family: Kanit, ui-monospace, Menlo, Consolas, monospace;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #8a8a8a;
+  color: #737373;
 }
 #life-now .lv-ml-title--md {
   font-size: clamp(1.3rem, 2.4vw, 1.7rem);
@@ -1399,7 +1401,7 @@ html[data-lv-view="life-now"] main > #life-now {
   color: #555;
 }
 #life-now .lv-ml-block-label { margin: clamp(1.35rem, 2.8vw, 1.9rem) 0 0.75rem; }
-#life-now .lv-ml-note { color: #999; font-size: 0.8rem; }
+#life-now .lv-ml-note { color: #737373; font-size: 0.8rem; }
 
 #life-now .lv-ml-nav {
   position: sticky;
@@ -1429,14 +1431,14 @@ html[data-lv-view="life-now"] main > #life-now {
   margin: 0;
   font-size: 0.65rem;
   letter-spacing: 0.14em;
-  color: #aaa;
+  color: #737373;
   font-family: Kanit, ui-monospace, Menlo, Consolas, monospace;
 }
 #life-now .lv-ml-nav__track { display: flex; gap: 0.1rem; min-width: max-content; }
 #life-now .lv-ml-nav a {
   flex: 0 0 auto;
   padding: 0.4rem 0.7rem;
-  color: #777;
+  color: #737373;
   text-decoration: none;
   font-size: 0.78rem;
   font-weight: 700;
@@ -1536,7 +1538,7 @@ html[data-lv-view="life-now"] main > #life-now {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #888;
+  color: #737373;
   font-family: Kanit, ui-monospace, Menlo, Consolas, monospace;
 }
 #life-now .lv-ml-stat strong {
@@ -1556,6 +1558,10 @@ html[data-lv-view="life-now"] main > #life-now {
   font-weight: 600;
   color: #666;
 }
+#life-now .lv-ml-stat--hero p,
+#life-now .lv-ml-stat--hero span { color: rgba(255,255,255,0.62); }
+#life-now .lv-ml-stat--hero:hover p,
+#life-now .lv-ml-stat--hero:hover span { color: #666; }
 
 /* Quick actions */
 #life-now .lv-ml-quick {
@@ -1925,6 +1931,7 @@ html[data-lv-view="life-now"] main > #life-now {
 #life-now [data-lv-ml-today-label]:focus,
 #life-now [data-lv-ml-panel-title]:focus { outline: none; }
 #life-now .lv-ml-cal__cell { min-height: 44px; }
+@media (max-width: 360px) { #life-now .lv-ml-cal { gap: 0.2rem; } #life-now .lv-ml-cal__cell { padding: 0.1rem; } }
 
 #life-now .lv-ml-filterbar {
   display: flex;
@@ -2044,7 +2051,7 @@ html[data-lv-view="life-now"] main > #life-now {
 #life-now .lv-ml-badge--done { background: #fff; color: #555; border: 1px solid #bbb; }
 #life-now .lv-ml-subhead { margin: 1rem 0 0.35rem; font-size: 0.85rem; font-weight: 800; letter-spacing: -0.01em; }
 #life-now .lv-ml-row-acts--wrap { margin-top: 0.9rem; }
-#life-now .lv-ml-title small { font-size: 0.5em; font-weight: 700; color: #777; margin-left: 0.3rem; }
+#life-now .lv-ml-title small { font-size: 0.5em; font-weight: 700; color: #737373; margin-left: 0.3rem; }
 
 /* interests */
 #life-now .lv-ml-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0; padding: 0; list-style: none; }
@@ -2112,3 +2119,6 @@ html[data-lv-view="life-now"] main > #life-now {
 #life-now .lv-ml-manage-list > li.lv-ml-task.is-done { text-decoration: none; color: inherit; }
 #life-now .lv-ml-tasks--compact > li { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
 #life-now .lv-ml-tasks--compact .lv-ml-row-acts { padding-left: 44px; }
+
+/* Contrast: list titles inside empty-state cards. */
+#life-now .lv-ml-empty .lv-ml-manage-list strong { color: #0a0a0a; }

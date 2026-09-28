@@ -15,7 +15,8 @@
 html[data-lv-view="life"],
 html[data-lv-view="life"] body {
   height: auto !important;
-  overflow: auto !important;
+  /* visible (not auto) keeps the viewport as the scroller so position: sticky works. */
+  overflow: visible !important;
   overflow-x: clip !important;
 }
 html[data-lv-view="life"] main {
@@ -1567,7 +1568,7 @@ html[data-lv-view="life"] main > #life {
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: #999;
+  color: #737373;
 }
 #life .lv-life-trans__card .lv-life-svc__acts {
   margin-top: auto;
@@ -1808,7 +1809,7 @@ html[data-lv-view="life"] main > #life {
 #life #life-service-detail { width: min(1200px, 100%); box-sizing: border-box; padding-inline: clamp(1.25rem, 4vw, 3rem); padding-bottom: 5rem; }
 #life .lv-ls-breadcrumb { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-bottom: 2rem; border-bottom: 1px solid #dedede; }
 #life .lv-ls-breadcrumb > a { border: 0; padding-left: 0; }
-#life .lv-ls-breadcrumb > span { color: #777; font-size: .8rem; }
+#life .lv-ls-breadcrumb > span { color: #737373; font-size: .8rem; }
 #life .lv-ls-heading { padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(2rem, 4vw, 3.5rem); max-width: 850px; }
 #life .lv-ls-heading .lv-life-kicker { font-size: .75rem; letter-spacing: .12em; margin-bottom: 1.25rem; }
 #life .lv-ls-heading .lv-life-title { font-size: clamp(2.3rem, 5.2vw, 4.2rem); font-weight: 800; line-height: 1.2; }
@@ -2031,11 +2032,7 @@ html[data-lv-view="life"] main > #life {
  #life [data-ls-card],#life [data-ls-card] .lv-ls-primary span {transition:none;}
  #life [data-ls-card]:hover,#life [data-ls-card]:hover .lv-ls-primary span {transform:none;}
 }
-/* Preserve every header action without overlapping the brand on small phones. */
-@media(max-width:480px) {
- html[data-lv-view="life"] .gnav__wordmark {display:none;}
- html[data-lv-view="life"] .gnav__brand {flex-shrink:0;}
-}
+/* Small-phone header rules live in livon/index.html so every LIVON view shares them. */
 
 /* Stage 30 uses the existing Life Stage detail typography and controls. */
 #life .lv-family-quick {display:flex;flex-wrap:wrap;gap:8px;padding:8px 0 24px;border-bottom:1px solid #ddd;}
@@ -2109,7 +2106,7 @@ html[data-lv-view="life"] main > #life {
 /* section blocks */
 #life .lh-block { scroll-margin-top: calc(var(--gnav-h, 74px) + 1rem); }
 #life .lh-block__head { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .5rem 1rem; }
-#life .lh-block__head .lv-life-kicker { flex: 0 0 100%; margin: 0; font-family: Kanit, ui-monospace, Menlo, monospace; font-size: .75rem; letter-spacing: .12em; color: #888; }
+#life .lh-block__head .lv-life-kicker { flex: 0 0 100%; margin: 0; font-family: Kanit, ui-monospace, Menlo, monospace; font-size: .75rem; letter-spacing: .12em; color: #737373; }
 #life .lh-block__head .lv-life-title--md { margin: 0; flex: 1 1 auto; min-width: 0; font-size: clamp(1.3rem, 2.6vw, 1.8rem); line-height: 1.35; }
 #life .lh-block__head h3:focus { outline: none; }
 #life .lh-block__tools { display: flex; flex-wrap: wrap; gap: .4rem; }
@@ -2133,7 +2130,7 @@ html[data-lv-view="life"] main > #life {
 #life .lh-guide summary::-webkit-details-marker { display: none; }
 #life .lh-guide summary::after { content: "+"; margin-left: auto; font-weight: 400; font-size: 1.25rem; }
 #life .lh-guide details[open] summary::after { content: "−"; }
-#life .lh-guide em, #life .lh-step em { flex: 0 0 auto; font-style: normal; font-family: Kanit, ui-monospace, Menlo, monospace; font-size: .8rem; color: #888; min-width: 1.75rem; }
+#life .lh-guide em, #life .lh-step em { flex: 0 0 auto; font-style: normal; font-family: Kanit, ui-monospace, Menlo, monospace; font-size: .8rem; color: #737373; min-width: 1.75rem; }
 #life .lh-guide details p { margin: 0 0 1.1rem 2.75rem; color: #555; line-height: 1.8; }
 #life .lh-step--flat { display: flex; gap: 1rem; align-items: baseline; padding: 1rem 0; }
 #life .lh-bullets { margin: 1.25rem 0 0; padding-left: 1.1rem; line-height: 1.9; color: #444; }
@@ -2153,7 +2150,7 @@ html[data-lv-view="life"] main > #life {
 #life .lh-cats { grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr)); }
 #life .lh-chip { display: flex; flex-direction: column; justify-content: center; gap: .15rem; min-height: 3.25rem; padding: .75rem 1rem; border: 1px solid #e6e6e6; border-radius: 2px; background: #fff; color: #0a0a0a; text-decoration: none; font-weight: 650; font-size: .95rem; transition: border-color .2s ease; }
 #life .lh-chip:hover { border-color: #0a0a0a; }
-#life .lh-chip small { font-weight: 400; font-size: .75rem; color: #777; }
+#life .lh-chip small { font-weight: 400; font-size: .75rem; color: #737373; }
 #life .lh-filters { margin-top: 1rem; }
 #life .lh-filters button { min-height: 44px; }
 
@@ -2200,3 +2197,6 @@ html[data-lv-view="life"] main > #life {
   #life #life-hub-view .lv-life-svc { transition: none; }
   #life #life-hub-view .lv-life-svc:hover { transform: none; }
 }
+
+/* Contrast: kicker on the dark closing section. */
+#life .lv-life-close .lv-life-kicker { color: #8c8c8c; }

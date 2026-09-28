@@ -64,13 +64,13 @@
     try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
   }
   function gnavOffset() {
-    return (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--gnav-h"), 10) || 74) + 8;
+    return (window.LivonStickyOffset ? window.LivonStickyOffset() : (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--gnav-h"), 10) || 74) + 52) + 8;
   }
   function scrollToId(id) {
     var el = document.getElementById(id);
     if (!el) return;
     var top = el.getBoundingClientRect().top + window.pageYOffset - gnavOffset();
-    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    window.scrollTo({ top: Math.max(0, top), behavior: (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ? "auto" : "smooth" });
   }
   function items() { return Array.isArray(DATA.items) ? DATA.items : []; }
   function findItem(id) { return items().find(function (x) { return x.id === id; }); }

@@ -72,7 +72,7 @@
     return ["일", "월", "화", "수", "목", "금", "토"][d.getDay()];
   }
   function gnavOffset() {
-    return (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--gnav-h"), 10) || 74) + 52;
+    return (window.LivonStickyOffset ? window.LivonStickyOffset() : (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--gnav-h"), 10) || 74) + 52) + 8;
   }
   function reducedMotion() {
     return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
@@ -1238,7 +1238,7 @@
       var first = new Date(y, m, 1);
       var startPad = first.getDay();
       var daysInMonth = new Date(y, m + 1, 0).getDate();
-      var cells = [];
+      var cells = ["일", "월", "화", "수", "목", "금", "토"].map(function (w) { return '<div class="lv-ml-cal__dow" aria-hidden="true">' + w + "</div>"; });
       for (var i = 0; i < startPad; i++) cells.push('<div class="lv-ml-cal__cell is-empty"></div>');
       for (var d = 1; d <= daysInMonth; d++) {
         var ds = y + "-" + (m + 1 < 10 ? "0" : "") + (m + 1) + "-" + (d < 10 ? "0" : "") + d;
@@ -2219,7 +2219,11 @@
 
   /* Public data API for other LIVON screens (LIVON AI approved saves). Same rules as the My Life UI:
      validation, duplicate detection (status "duplicate" — nothing is written) and source preservation. */
-  var api = { saveTodo: saveTodo, saveGoal: saveGoal, findDuplicateTodo: function (title) { return findDuplicateTodo(loadStore(), title, ""); } };
+  var api = { saveTodo: saveTodo, saveGoal: saveGoal, findDuplicateTodo: function (title) { return findDuplicateTodo(loadStore(), title, ""); },
+    /* read-only snapshots for the LIVON home preview (no separate task/calendar logic there) */
+    snapshot: function () { return JSON.parse(JSON.stringify(loadStore())); },
+    saved: function () { return collectedSaved(); },
+    recentViewed: function () { return recentViewed(); } };
 
   window.LivonMyLife = {
     api: api,

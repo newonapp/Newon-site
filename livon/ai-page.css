@@ -21,7 +21,8 @@
 html[data-lv-view="livon-ai"],
 html[data-lv-view="livon-ai"] body {
   height: auto !important;
-  overflow: auto !important;
+  /* visible (not auto) keeps the viewport as the scroller so position: sticky works. */
+  overflow: visible !important;
   overflow-x: clip !important;
 }
 html[data-lv-view="livon-ai"] main {
@@ -44,7 +45,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   font-weight: 650;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #8a8a8a;
+  color: #737373;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 #livon-ai .lv-ai-title {
@@ -275,14 +276,14 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   margin: 0;
   font-size: 0.65rem;
   letter-spacing: 0.14em;
-  color: #aaa;
+  color: #737373;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 #livon-ai .lv-ai-nav__track { display: flex; gap: 0.1rem; min-width: max-content; }
 #livon-ai .lv-ai-nav a {
   flex: 0 0 auto;
   padding: 0.45rem 0.7rem;
-  color: #777;
+  color: #737373;
   text-decoration: none;
   font-size: 0.72rem;
   font-weight: 700;
@@ -331,7 +332,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
 }
 #livon-ai .lv-ai-value__n {
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.75rem; color: #aaa; letter-spacing: 0.08em;
+  font-size: 0.75rem; color: #737373; letter-spacing: 0.08em;
 }
 #livon-ai .lv-ai-value strong {
   display: block; font-size: clamp(1.25rem, 2.2vw, 1.55rem);
@@ -356,7 +357,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   font-size: 0.7rem;
   font-weight: 650;
   letter-spacing: 0.06em;
-  color: #777;
+  color: #737373;
 }
 #livon-ai .lv-ai-empty h3 {
   margin: 0;
@@ -676,7 +677,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
 
 #livon-ai .lv-ai-note {
   margin-top: 1.25rem;
-  color: #777;
+  color: #737373;
   font-size: 0.9rem;
   line-height: 1.55;
 }
@@ -906,12 +907,12 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: #8a8a8a;
+  color: #737373;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 #livon-ai .lv-ai-suggest strong { font-size: 1.05rem; font-weight: 750; }
 #livon-ai .lv-ai-suggest span { font-size: 0.9rem; color: #555; line-height: 1.5; }
-#livon-ai .lv-ai-suggest small { font-size: 0.8rem; color: #888; margin-top: 0.25rem; }
+#livon-ai .lv-ai-suggest small { font-size: 0.8rem; color: #737373; margin-top: 0.25rem; }
 
 #livon-ai .lv-ai-msgs {
   max-width: 46rem;
@@ -1189,7 +1190,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   font-style: normal;
   font-size: 0.7rem;
   letter-spacing: 0.1em;
-  color: #8a8a8a;
+  color: #737373;
   font-family: ui-monospace, Menlo, monospace;
 }
 #livon-ai .lv-ai-guide-card strong { font-size: 1.1rem; font-weight: 750; }
@@ -1218,6 +1219,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   display: flex;
   gap: 0.5rem;
   align-items: flex-start;
+  min-height: 44px;
   font-size: 0.92rem;
   color: #444;
 }
@@ -1338,7 +1340,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
 #livon-ai .lv-ai-context__x { min-width: 44px; min-height: 44px; border: 0; background: none; font-size: 1.1rem; cursor: pointer; }
 #livon-ai .lv-ai-count { font-size: 0.75rem; color: #777; margin-right: auto; }
 #livon-ai .lv-ai-count.is-over { color: #b3261e; font-weight: 700; }
-#livon-ai .lv-ai-privacy { margin: 0.5rem 0 0; font-size: 0.75rem; line-height: 1.45; color: #777; }
+#livon-ai .lv-ai-privacy { margin: 0.5rem 0 0; font-size: 0.75rem; line-height: 1.45; color: #737373; }
 #livon-ai .lv-ai-suggest-label { margin: 1.25rem 0 0.5rem; }
 #livon-ai .lv-ai-notice { margin: 0.75rem 0; }
 #livon-ai .lv-ai-related--panel { border-top: 0; padding-top: 0; }

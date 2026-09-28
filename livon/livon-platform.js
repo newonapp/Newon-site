@@ -463,14 +463,39 @@
     save(s);
     closeOnboarding();
   }
+  var onboardReturn = null;
   function closeOnboarding() {
     var m = document.getElementById("livon-onboard-modal");
-    if (m) m.hidden = true;
+    if (!m || m.hidden) return;
+    m.hidden = true;
+    if (onboardReturn && document.contains(onboardReturn) && onboardReturn !== document.body) {
+      try { onboardReturn.focus({ preventScroll: true }); } catch (e) {}
+    }
+    onboardReturn = null;
+  }
+  /* Dialog keyboard: Escape = "나중에 하기", Tab stays inside the dialog. */
+  function onboardKeydown(e) {
+    var m = document.getElementById("livon-onboard-modal");
+    if (!m || m.hidden) return;
+    if (e.key === "Escape") { e.preventDefault(); skipOnboarding(); return; }
+    if (e.key !== "Tab") return;
+    var f = Array.prototype.filter.call(m.querySelectorAll("button:not([tabindex='-1']), a[href], input, select, textarea"), function (el) { return el.offsetParent !== null && !el.disabled; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (!m.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   }
   function openOnboarding() {
     var m = document.getElementById("livon-onboard-modal");
     if (!m) return;
+    if (m.hidden) onboardReturn = document.activeElement;
     m.hidden = false;
+    if (!m._kbBound) { m._kbBound = true; document.addEventListener("keydown", onboardKeydown); }
+    setTimeout(function () {
+      var c = m.querySelector(".lv-life-modal__close");
+      if (c && !m.hidden) c.focus({ preventScroll: true });
+    }, 0);
     var stageHost = m.querySelector("[data-lv-onboard-stages]");
     var sitHost = m.querySelector("[data-lv-onboard-sits]");
     var goalHost = m.querySelector("[data-lv-onboard-goals]");

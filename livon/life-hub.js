@@ -702,7 +702,7 @@
       var target = document.getElementById(jump.getAttribute("href").slice(1));
       if (target) {
         var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        var top = target.getBoundingClientRect().top + window.pageYOffset - ((document.querySelector(".gnav") || {}).offsetHeight || 72) - 12;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - (window.LivonStickyOffset ? window.LivonStickyOffset() : ((document.querySelector(".gnav") || {}).offsetHeight || 72)) - 12;
         window.scrollTo({ top: Math.max(0, top), behavior: reduce ? "auto" : "smooth" });
         var h = target.querySelector("h3"); if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
       }

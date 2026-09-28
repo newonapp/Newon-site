@@ -21,7 +21,8 @@
 html[data-lv-view="community"],
 html[data-lv-view="community"] body {
   height: auto !important;
-  overflow: auto !important;
+  /* visible (not auto) keeps the viewport as the scroller so position: sticky works. */
+  overflow: visible !important;
   overflow-x: clip !important;
 }
 html[data-lv-view="community"] main {
@@ -42,7 +43,7 @@ html[data-lv-view="community"] main > #community {
   font-weight: 650;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #8a8a8a;
+  color: #737373;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 #community .lv-cm-title {
@@ -275,14 +276,14 @@ html[data-lv-view="community"] main > #community {
   margin: 0;
   font-size: 0.65rem;
   letter-spacing: 0.14em;
-  color: #aaa;
+  color: #737373;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 #community .lv-cm-nav__track { display: flex; gap: 0.1rem; min-width: max-content; }
 #community .lv-cm-nav a {
   flex: 0 0 auto;
   padding: 0.45rem 0.7rem;
-  color: #777;
+  color: #737373;
   text-decoration: none;
   font-size: 0.72rem;
   font-weight: 700;
@@ -431,7 +432,7 @@ html[data-lv-view="community"] main > #community {
 #community .lv-cm-row.is-on .lv-cm-row__go { color: #0a0a0a; }
 #community .lv-cm-row__n {
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.75rem; color: #aaa; min-width: 1.75rem;
+  font-size: 0.75rem; color: #737373; min-width: 1.75rem;
 }
 #community .lv-cm-row__title {
   margin: 0; font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 750; letter-spacing: -0.03em;
@@ -519,7 +520,7 @@ html[data-lv-view="community"] main > #community {
 }
 #community .lv-cm-meta dl { margin: 0; }
 #community .lv-cm-meta dt {
-  margin: 0; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: #999;
+  margin: 0; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: #737373;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 #community .lv-cm-meta dd {
@@ -1114,7 +1115,7 @@ html[data-lv-view="community"] main > #community {
 #community .lv-cm-note--plain a { color: #0a0a0a; font-weight: 700; }
 #community .lv-cm-note[hidden] { display: none; }
 #community .lv-cm-more { margin: 1.25rem 0 0; text-align: center; }
-#community .lv-cm-count { font-size: 0.8em; font-weight: 600; color: #777; }
+#community .lv-cm-count { font-size: 0.8em; font-weight: 600; color: #737373; }
 #community .lv-cm-counter { float: right; font-size: 0.78rem; color: #888; font-weight: 500; }
 #community .lv-cm-field > span em { font-style: normal; color: #b3261e; }
 

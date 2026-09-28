@@ -42,7 +42,7 @@
   }
   function reducedMotion() { return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches); }
   function gnavOffset() {
-    return (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--gnav-h"), 10) || 74) + 8;
+    return (window.LivonStickyOffset ? window.LivonStickyOffset() : (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--gnav-h"), 10) || 74) + 52) + 8;
   }
   function scrollToId(id) {
     var el = document.getElementById(id);
@@ -433,6 +433,7 @@
       var th = Threads.get(requestThreadId);
       if (th) { th.messages.push({ role: "error", content: info.msg, kind: info.kind, at: Date.now() }); th.updatedAt = Date.now(); Threads.put(th); }
       setStatus(info.kind === "cancelled" ? "중지됨" : "오류", "warn");
+      announce(info.msg);
       if (info.kind === "unconfigured") showApiNote(info.msg, "warn");
     }).then(function () {
       clearTimeout(timer); state.sending = false; state.abort = null;

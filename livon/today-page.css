@@ -21,7 +21,8 @@
 html[data-lv-view="today"],
 html[data-lv-view="today"] body {
   height: auto !important;
-  overflow: auto !important;
+  /* visible (not auto) keeps the viewport as the scroller so position: sticky works. */
+  overflow: visible !important;
   overflow-x: clip !important;
 }
 html[data-lv-view="today"] main {
@@ -42,7 +43,7 @@ html[data-lv-view="today"] main > #today {
   font-weight: 650;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #8a8a8a;
+  color: #737373;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 #today .lv-td-title {
@@ -273,14 +274,14 @@ html[data-lv-view="today"] main > #today {
   margin: 0;
   font-size: 0.65rem;
   letter-spacing: 0.14em;
-  color: #aaa;
+  color: #737373;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 #today .lv-td-nav__track { display: flex; gap: 0.1rem; min-width: max-content; }
 #today .lv-td-nav a {
   flex: 0 0 auto;
   padding: 0.45rem 0.7rem;
-  color: #777;
+  color: #737373;
   text-decoration: none;
   font-size: 0.72rem;
   font-weight: 700;
@@ -677,7 +678,7 @@ html[data-lv-view="today"] main > #today {
 
 #today .lv-td-note {
   margin-top: 1.25rem;
-  color: #777;
+  color: #737373;
   font-size: 0.9rem;
   line-height: 1.55;
 }
@@ -977,7 +978,7 @@ html[data-lv-view="today"] main > #today {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #888;
+  color: #737373;
   font-family: Kanit, ui-monospace, Menlo, Consolas, monospace;
 }
 #today .lv-td-rail-card__body strong {
@@ -1111,7 +1112,7 @@ html[data-lv-view="today"] main > #today {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #888;
+  color: #737373;
   font-family: Kanit, ui-monospace, Menlo, Consolas, monospace;
 }
 #today .lv-td-story__body h3 {
@@ -1332,7 +1333,7 @@ html[data-lv-view="today"] main > #today {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #888;
+  color: #737373;
   font-family: Kanit, ui-monospace, Menlo, Consolas, monospace;
 }
 #today .lv-td-facts dd {
