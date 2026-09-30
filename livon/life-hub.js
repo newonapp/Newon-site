@@ -82,10 +82,13 @@
     category: function (id) { return Repo.idx ? Repo.idx.cat[id] || null : null; },
     categoriesOf: function (stage) { return stage ? stage.categoryIds.map(Repo.category).filter(Boolean) : []; },
     topicsOf: function (cat) { return cat ? cat.topicIds.map(Repo.topic).filter(Boolean) : []; },
-    service: function (id) { return Repo.idx ? Repo.idx.svc[id] || null : null; },
-    policy: function (id) { return Repo.idx ? Repo.idx.pol[id] || null : null; },
+    /* services / policies pass the LIVON Data Platform gate (expired or unsourced rows are not shown as real) */
+    service: function (id) { var x = Repo.idx ? Repo.idx.svc[id] || null : null; return x && gate("svc:" + id) ? x : null; },
+    policy: function (id) { var x = Repo.idx ? Repo.idx.pol[id] || null : null; return x && gate("pol:" + id) ? x : null; },
     expert: function (id) { return Repo.idx ? Repo.idx.expert[id] || null : null; }
   };
+
+  function gate(entityId) { var SD = window.LivonScreenData; try { return !SD || SD.visible(entityId); } catch (e) { return true; } }
 
   var listeners = [];
   function notify() { listeners.forEach(function (fn) { try { fn(Repo.status); } catch (e) {} }); }
@@ -93,15 +96,15 @@
   /* ───────── Sources: existing LIVON data (read-only adapters) ───────── */
   var Sources = {
     explore: function (id) {
-      var d = window.LivonExploreData;
-      var it = d && (d.items || []).find(function (x) { return x.id === id; });
+      var d = window.LivonExploreData, SD = window.LivonScreenData;
+      var it = SD ? SD.exploreById(id) : d && (d.items || []).find(function (x) { return x.id === id; });
       if (!it) return null;
       return { ref: "ex:" + id, kind: it.type, title: it.title, body: it.blurb || "", provider: it.provider || "",
         href: "#ex-item-" + id, official: safeHttp(it.url || it.officialUrl), source: "탐색 · " + (it.provider || "공식 안내") };
     },
     today: function (id) {
-      var d = window.LivonTodayData;
-      var it = d && (d.contents || []).find(function (x) { return x.id === id; });
+      var d = window.LivonTodayData, SD = window.LivonScreenData;
+      var it = SD ? SD.todayById(id) : d && (d.contents || []).find(function (x) { return x.id === id; });
       if (!it) return null;
       return { ref: "td:" + id, kind: it.type, title: it.title, body: it.blurb || "", provider: it.source || "",
         href: "#td-item-" + id, official: safeHttp(it.officialUrl), source: "오늘의 발견 · " + (it.source || "LIVON") };

@@ -469,7 +469,8 @@
     return {
       id: "livon-static", kind: "static", sourceType: "editorial",
       status: function () { return { configured: true, sources: ["LivonLifeData", "LivonLifeEvents", "LivonTodayData", "LivonExploreData", "LivonCommunityData", "lifeTopics"].filter(function (k) { return k === "lifeTopics" ? !!sources.lifeTopics : !!g(k); }) }; },
-      load: function () {
+      load: function () { return Promise.resolve(this.loadSync()); },
+      loadSync: function () {
         var out = [];
         var LT = sources.lifeTopics || null, LD = g("LivonLifeData"), LE = g("LivonLifeEvents"), TD = g("LivonTodayData"), EX = g("LivonExploreData"), CM = g("LivonCommunityData");
         var ltStages = LT && LT.stages ? LT.stages : [];
@@ -480,13 +481,13 @@
           out.push({ id: "stage:" + s.id, type: "lifeStage", title: s.label || lt.label, summary: s.lead || lt.heroLead, description: s.desc || lt.title,
             label: s.label || lt.label, heroTitle: lt.heroTitle || s.title, focus: s.focus, ageMin: ages[0], ageMax: ages[1], targetAges: { min: ages[0], max: ages[1] },
             lifeStages: [s.id], image: s.img, href: "#life/" + stageSlug(s.id), sourceName: "LIVON", sourceType: "editorial", status: "published",
-            relations: { topicIds: (lt.featuredTopicIds || []).map(function (x) { return "topic:" + x; }) } });
+            relations: { topicIds: (lt.featuredTopicIds || []).map(function (x) { return "topic:" + x; }) }, _raw: s });
         });
         /* Life Events */
         (LE && LE.events || []).forEach(function (ev) {
           out.push({ id: "le:" + ev.id, type: "lifeEvent", title: ev.title, summary: ev.blurb, lifeStages: ev.stages, lifeEvents: [ev.id],
             situations: ev.situations, needs: ev.needs, checklist: ev.checklist, tags: (ev.needs || []).concat(ev.situations || []),
-            href: "#life", sourceName: "LIVON", sourceType: "editorial", status: "published", meta: { aiPrompt: ev.links && ev.links.ai } });
+            href: "#life", sourceName: "LIVON", sourceType: "editorial", status: "published", meta: { aiPrompt: ev.links && ev.links.ai }, _raw: ev });
         });
         /* Life Stage topics → content (guide) */
         (LT && LT.topics || []).forEach(function (tp) {
@@ -498,13 +499,14 @@
           out.push({ id: "topic:" + tp.id, type: "content", contentKind: "topic", title: tp.title, summary: tp.description, category: tp.category, subCategory: tp.categoryId,
             tags: [tp.category, tp.communityInterest].filter(Boolean), lifeStages: [tp.lifeStageId], checklist: (tp.checklist || []).map(function (c) { return c.text; }),
             href: topicHref(tp), sourceName: "LIVON", sourceType: "editorial", status: "published", updatedAt: LT.updatedAt, relations: rel,
-            meta: { communityInterest: tp.communityInterest, aiPrompt: (tp.aiPrompts || [])[0] } });
+            meta: { communityInterest: tp.communityInterest, aiPrompt: (tp.aiPrompts || [])[0] }, _raw: tp });
         });
         /* official portals (policy links; LIVON does not restate eligibility or amounts) */
         (LT && LT.policies || []).forEach(function (p) {
           out.push({ id: "pol:" + p.id, type: "policy", title: p.name, summary: p.target, description: p.conditions, agency: p.provider, eligibility: p.target,
             policyKind: p.kind, periodText: p.period, officialUrl: p.sourceUrl, sourceUrl: p.sourceUrl, sourceName: p.provider, sourceType: "official",
-            retrievedAt: p.checkedAt, updatedAt: p.checkedAt, href: p.sourceUrl, status: "published", availabilityType: "always", tags: [p.provider] });
+            retrievedAt: p.checkedAt, updatedAt: p.checkedAt, href: p.sourceUrl, status: p.publishStatus || "published", availabilityType: "always", tags: [p.provider],
+            applicationStart: p.applicationStart, applicationEnd: p.applicationEnd, expiresAt: p.expiresAt, _raw: p });
         });
         /* service types (Life Stage › services) */
         (LT && LT.serviceTypes || []).forEach(function (s) {
@@ -512,7 +514,7 @@
             process: s.process, prepare: s.prepare, features: s.features, tags: [s.group], href: "#life/services/" + s.id,
             officialUrl: typeof s.externalUrl === "string" ? s.externalUrl : null, sourceName: "LIVON", sourceType: "editorial", status: "published",
             bookingType: s.partner ? "partner" : "none", availabilityType: "on_request",
-            relations: { classIds: (s.relatedExploreIds || []).map(refToId), serviceIds: (s.relatedToolIds || []).map(function (x) { return "tool:" + x; }) } });
+            relations: { classIds: (s.relatedExploreIds || []).map(refToId), serviceIds: (s.relatedToolIds || []).map(function (x) { return "tool:" + x; }) }, _raw: s });
         });
         /* per-stage tools (My Life tools / guides) */
         (LD && LD.stages || []).forEach(function (st) {
@@ -520,12 +522,13 @@
             if (!s.id) return;
             out.push({ id: "tool:" + s.id, type: "service", title: s.name, summary: s.desc, category: s.type, serviceGroup: "도구", audience: s.audience,
               features: s.feats, tags: s.feats, lifeStages: [s.lifeStage || st.id], href: /^#[\w-]+$/.test(s.destination || "") ? s.destination : "#life-now",
-              sourceName: "LIVON", sourceType: "editorial", status: s.status === "soon" ? "draft" : "published", availabilityType: "always", meta: { tool: true } });
+              sourceName: "LIVON", sourceType: "editorial", status: "published", availabilityType: s.status === "soon" ? "unknown" : "always",
+              meta: { tool: true, comingSoon: s.status === "soon", uiStatus: s.status }, _raw: s });
           });
         });
         /* Today contents */
         (TD && TD.contents || []).forEach(function (c) {
-          var type = TODAY_TYPE[c.type] || "content";
+          var type = c.type === "event" && c.startDate ? "event" : TODAY_TYPE[c.type] || "content";
           var official = c.officialUrl || null;
           out.push({ id: "td:" + c.id, type: type, title: c.title, summary: c.blurb, description: c.body, category: c.category, tags: c.tags,
             region: c.region || null, online: /온라인/.test(c.onlineOffline || c.region || "") ? true : (/오프라인/.test(c.onlineOffline || "") ? false : null),
@@ -536,11 +539,12 @@
             officialUrl: official, sourceUrl: official, sourceName: c.source || "LIVON", sourceType: official ? "official" : "editorial",
             verificationStatus: official ? "source_linked" : null,
             retrievedAt: c.checkedAt || TD.checkedAt, updatedAt: c.updatedAt || c.checkedAt || TD.checkedAt,
-            href: "#today/" + c.id, status: "published", availabilityType: c.evergreen ? "always" : "unknown",
+            href: "#today/" + c.id, status: c.publishStatus || "published", availabilityType: c.evergreen ? "always" : "unknown",
+            startDate: c.startDate, endDate: c.endDate, applicationEnd: c.applicationEnd, expiresAt: c.expiresAt,
             bookingType: "none",
             relations: { topicIds: (c.lifeTopicIds || []).map(function (x) { return "topic:" + x; }), placeIds: [], classIds: (c.exploreIds || []).map(refToId),
               serviceIds: (c.serviceIds || []).map(function (x) { return "svc:" + x; }), policyIds: (c.policyIds || []).map(function (x) { return "pol:" + x; }) },
-            meta: { todayCategory: c.type, featured: !!c.featured, evergreen: !!c.evergreen, seasons: c.seasons || [], companion: c.companion || [], reason: c.reason, uiStatus: c.status } });
+            meta: { todayCategory: c.type, featured: !!c.featured, evergreen: !!c.evergreen, seasons: c.seasons || [], companion: c.companion || [], reason: c.reason, uiStatus: c.status }, _raw: c });
         });
         /* Explore items */
         var EXPLORE_TYPE = { expert: "provider", program: "program", service: "service", place: "place", product: "content" };
@@ -565,21 +569,22 @@
             officialUrl: official, sourceUrl: official, sourceName: x.source || x.provider || "LIVON", sourceType: srcType,
             verificationStatus: official ? (cred === "verified" ? "official_source" : "source_linked") : null,
             providerId: type !== "provider" ? provId : null,
-            retrievedAt: x.checkedAt || EX.checkedAt, updatedAt: x.checkedAt || EX.checkedAt, href: "#ex-item-" + x.id, status: "published",
+            retrievedAt: x.checkedAt || EX.checkedAt, updatedAt: x.checkedAt || EX.checkedAt, href: "#ex-item-" + x.id, status: x.publishStatus || "published",
+            startDate: x.startDate, endDate: x.endDate, applicationStart: x.applicationStart, applicationEnd: x.applicationEnd, expiresAt: x.expiresAt,
             bookingType: "none", availabilityType: "unknown",
-            meta: { uiType: x.type, layout: x.layout, credentialNote: x.credentials && x.credentials.note, internalUrl: internal } });
+            meta: { uiType: x.type, layout: x.layout, credentialNote: x.credentials && x.credentials.note, internalUrl: internal }, _raw: x });
         });
         Object.keys(providers).forEach(function (k) { out.push(providers[k]); });
         /* Community: groups and challenges (read-only descriptions; posts stay on the device) */
         (CM && CM.communities || []).forEach(function (c) {
           out.push({ id: "cm:" + c.id, type: "communityContent", communityKind: "group", title: c.name, summary: c.desc, interest: c.interest, join: c.join,
-            tags: [c.interest], image: c.img, href: "#cm-groups", sourceName: "LIVON", sourceType: "editorial", status: "published" });
+            tags: [c.interest], image: c.img, href: "#cm-groups", sourceName: "LIVON", sourceType: "editorial", status: "published", _raw: c });
         });
         (CM && CM.challenges || []).forEach(function (c) {
           out.push({ id: "ch:" + c.id, type: "communityContent", communityKind: "challenge", title: c.title, summary: c.desc, interest: c.field, days: c.days,
-            tags: [c.field], href: "#community", sourceName: "LIVON", sourceType: "editorial", status: "published" });
+            tags: [c.field], href: "#community", sourceName: "LIVON", sourceType: "editorial", status: "published", _raw: c });
         });
-        return Promise.resolve(out);
+        return out;
       }
     };
   }
@@ -672,7 +677,7 @@
     o = o || {};
     var adapters = o.adapters || [];
     var clock = typeof o.now === "function" ? o.now : function () { return o.now != null ? o.now : Date.now(); };
-    var store = [], byId = {}, idx = {}, reverse = {}, report = [], loaded = false, loading = null;
+    var store = [], byId = {}, idx = {}, rawById = {}, reverse = {}, report = [], loaded = false, loading = null;
     function defaults(q) { return Object.assign({ includeSamples: !!o.includeSamples }, q || {}); }
 
     function add(raw, adapter, rep) {
@@ -683,6 +688,7 @@
       if (byId[e.id]) { rep.duplicates++; return; } /* first adapter wins; later adapters cannot overwrite curated rows */
       e.meta.adapter = adapter.id;
       store.push(e); byId[e.id] = e; idx[e.id] = indexEntity(e);
+      if (raw && raw._raw && typeof raw._raw === "object") rawById[e.id] = raw._raw;
       rep.accepted++;
     }
     function buildReverse() {
@@ -711,10 +717,23 @@
         }
       });
     }
+    /* synchronous load for adapters that already hold their rows in memory (curated files): screens render at once */
+    function loadSync() {
+      store = []; byId = {}; idx = {}; rawById = {}; report = [];
+      adapters.forEach(function (a) {
+        var rep = { adapter: a.id, kind: a.kind, accepted: 0, rejected: 0, duplicates: 0, warnings: 0, errors: [], failed: false };
+        report.push(rep);
+        if (typeof a.loadSync !== "function") { rep.failed = true; rep.async = true; return; }
+        try { (a.loadSync({ now: clock() }) || []).forEach(function (raw) { add(raw, a, rep); }); } catch (e) { rep.failed = true; }
+      });
+      inferEventTopics(); buildReverse();
+      loaded = true;
+      return api;
+    }
     function load(force) {
       if (loaded && !force) return Promise.resolve(api);
       if (loading && !force) return loading;
-      store = []; byId = {}; idx = {}; report = [];
+      store = []; byId = {}; idx = {}; rawById = {}; report = [];
       loading = adapters.reduce(function (p, a) {
         return p.then(function () {
           var rep = { adapter: a.id, kind: a.kind, accepted: 0, rejected: 0, duplicates: 0, warnings: 0, errors: [], failed: false };
@@ -938,6 +957,18 @@
 
     var api = {
       load: load,
+      loadSync: loadSync,
+      /* the original curated record behind an entity (screens render it unchanged); null for external rows */
+      source: function (id) { return rawById[id] || null; },
+      /* why an entity is not shown: null when visible */
+      hiddenReason: function (id, q) {
+        var e = byId[id]; if (!e) return "missing";
+        var st = lifecycleStatus(e, clock());
+        if (st !== "published") return st;
+        if (e.sample && !(q && q.includeSamples)) return "sample";
+        if (e.provenanceMissing && !(q && q.includeUnsourced)) return "unsourced";
+        return null;
+      },
       get loaded() { return loaded; },
       report: function () { return report.map(function (r) { return Object.assign({}, r, { errors: r.errors.slice() }); }); },
       size: function () { return store.length; },

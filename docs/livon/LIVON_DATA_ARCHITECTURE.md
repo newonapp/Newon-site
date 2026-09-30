@@ -173,3 +173,27 @@ Adapter 계약은 `{ id, kind, sourceType, status(), load(ctx) → Promise<raw[]
 2. Admin은 `createDraft → transition(review) → validateForPublish → transition(published)` 흐름을 그대로 서버에서 실행합니다.
 3. 검색을 서버로 옮길 때는 같은 `search(query, filters)` 계약을 `/api/livon/search`로 노출하고, 브라우저 Repository가 그 결과를 받게 합니다. UI 코드는 바꾸지 않습니다.
 4. 화면 전환 순서(권장): Today(`getTodayFeed`) → Explore(`explore`) → Life Stage(`getLifeStageGraph`) → 통합 검색(`search`). 한 화면씩 진행하며 디자인은 그대로 둡니다.
+
+## 11. Screen Migration V1 (2026-10-01, 브랜치 `livon-data-screens-v1`)
+
+모든 화면은 이제 목록을 **Data Platform repository를 거쳐** 받습니다. 렌더링 코드와 디자인은 그대로입니다.
+
+```
+curated files ─ StaticAdapter ─ repository (published·미만료·출처 있음·샘플 아님·중복 없음)
+                                   └ livon/data/livon-screen-data.js (LivonScreenData)
+                                        ├ todayContents()   → today-page.js contents(), today-feed.js TD(), home-page.js tdList()
+                                        ├ exploreItems()    → explore-page.js items(), today-feed.js EX(), home-page.js exList()
+                                        ├ lifeEvents()      → life-page.js lifeEvents(), home-page.js EVENTS
+                                        ├ topics/policies/serviceTypes() + visible() → life-hub.js (정책·서비스·관련 콘텐츠 gate)
+                                        └ lifeEventSearchEntries() → explore-search.js (Life Event를 통합검색에 추가)
+```
+
+- **원본 레코드를 그대로 전달합니다.** repository는 무엇을 보여줄지만 결정하므로, 카드·상세 화면의 HTML이 바뀌지 않습니다.
+- **fallback:** platform이 없거나 오류가 나면 각 파일의 배열을 그대로 씁니다. 사이트가 멈추지 않습니다.
+- **만료·출처 gate:** curated 레코드에 `startDate / endDate / applicationEnd / expiresAt`가 있으면 기간이 지난 뒤 오늘의 발견·탐색·홈·검색·라이프 스테이지 어디에도 나오지 않습니다. 공식 링크가 깨진 행(`javascript:` 등)이나 스키마에서 거부된 행도 표시하지 않습니다.
+- **통합검색:** Life Event 34개가 "Life Event" 유형으로 검색됩니다. 결과를 누르면 해당 이벤트가 열린 Life Event 가이드로 이동합니다(`livon.openLifeEvent`).
+- **내 생활 호환:** 저장된 id(`life-hub:{type}:{ref}`, `td:`, `ex:`, 주제 id 등)는 **바꾸지 않습니다.**
+  - `LivonScreenData.entityId(save)`와 `resolveSave(save)`가 platform id로 매핑합니다.
+  - 나중에 만료된 항목도 사용자 목록에서 지우지 않습니다. `visible:false, reason:"expired"`로만 알려줍니다.
+- **데이터 품질:** `node scripts/livon-data-quality.mjs`가 중복·만료·출처 없음·잘못된 URL·끊긴 관계·빈 카테고리·검색 결과 → 상세 화면 연결을 검사합니다. 문제가 있으면 exit 1로 끝납니다.
+- 테스트: `tests/livon/screen-migration.test.mjs` (S-1 ~ S-10)

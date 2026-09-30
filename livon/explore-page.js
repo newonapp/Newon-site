@@ -78,7 +78,8 @@
     var top = el.getBoundingClientRect().top + window.pageYOffset - gnavOffset();
     window.scrollTo({ top: Math.max(0, top), behavior: (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ? "auto" : "smooth" });
   }
-  function items() { return Array.isArray(DATA.items) ? DATA.items : []; }
+  /* list served by the LIVON Data Platform (visible rows only); the file's own array if the platform is unavailable */
+  function items() { return window.LivonScreenData ? window.LivonScreenData.exploreItems() : (Array.isArray(DATA.items) ? DATA.items : []); }
   function findItem(id) { return items().find(function (x) { return x.id === id; }); }
 
   function recentQueries() {
@@ -657,7 +658,7 @@
         (x.todo.start ? "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--ghost lv-ex-btn--sm\" data-livon-entity-todo=\"" + esc(x.entityId) + "\" data-kind=\"start\">교육 시작일을 할 일에 추가</button>" : "") + "</div>" : "") +
       "<p class=\"lv-ex-hint\">" + esc(x.attribution || "") + "</p></details>" : "";
     var stages = (x.stageIds || []).slice(0, 3).map(function (id) { return "<span class=\"lv-ex-tag\">" + esc(ageLabel(id)) + "</span>"; }).join("");
-    return "<article class=\"lv-ex-card lv-ex-card--text lv-ex-card--" + esc(x.type) + "\"" + (x.external ? "" : " data-lv-ex-go=\"" + esc(x.href) + "\"") + ">" +
+    return "<article class=\"lv-ex-card lv-ex-card--text lv-ex-card--" + esc(x.type) + "\"" + (x.external ? "" : " data-lv-ex-go=\"" + esc(x.href) + "\"") + (x.eventId ? " data-lv-le-open=\"" + esc(x.eventId) + "\"" : "") + ">" +
       (x.img ? "<a class=\"lv-ex-card__media\" href=\"" + esc(x.external ? x.href : x.href) + "\" tabindex=\"-1\" aria-hidden=\"true\"" + (x.external ? " target=\"_blank\" rel=\"noopener noreferrer\"" : "") + "><img src=\"" + esc(x.img) + "\" alt=\"\" loading=\"lazy\" width=\"640\" height=\"400\" /></a>" : "") +
       "<div class=\"lv-ex-card__body\"><div class=\"lv-ex-card__meta\">" + (x.official ? "<span class=\"lv-ex-badge\">공식 출처</span>" : "") + (x.trustLabel ? "<span class=\"lv-ex-badge\">" + esc(x.trustLabel) + "</span>" : "") + "<span>" + esc(x.typeLabel) + "</span><span>" + esc(x.meta || "") + "</span>" + (x.status ? "<span>" + esc(x.status) + "</span>" : "") + "</div>" +
       "<h4>" + (x.external ? esc(x.title) : "<a href=\"" + esc(x.href) + "\">" + esc(x.title) + "</a>") + "</h4>" +
@@ -1388,6 +1389,9 @@
         renderResults();
         return;
       }
+      /* a Life Event search result opens that event in the Life Event guide (same session key as the platform search) */
+      var leOpen = e.target.closest("[data-lv-le-open]");
+      if (leOpen) { try { sessionStorage.setItem("livon.openLifeEvent", leOpen.getAttribute("data-lv-le-open")); } catch (err) {} }
       var goCard = e.target.closest("[data-lv-ex-go]");
       if (goCard && !e.target.closest("a,button,input,label")) { location.hash = goCard.getAttribute("data-lv-ex-go").replace(/^#/, ""); return; }
       var openCat = e.target.closest("[data-lv-ex-open-cat]");

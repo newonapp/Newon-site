@@ -7,7 +7,11 @@
   var KEY_REGION = "livon.hmRegion";
   var KEY_SITUATIONS = "livon.lifeSituations";
   var KEY_EVENTS = "livon.lifeEvents";
-  var EVENTS = (window.LivonLifeEvents && window.LivonLifeEvents.events) || [];
+  /* lists served by the LIVON Data Platform (visible rows only); the files' own arrays if the platform is unavailable */
+  var SD = window.LivonScreenData;
+  var EVENTS = SD ? SD.lifeEvents() : (window.LivonLifeEvents && window.LivonLifeEvents.events) || [];
+  function tdList() { return SD ? SD.todayContents() : (window.LivonTodayData && window.LivonTodayData.contents) || []; }
+  function exList() { return SD ? SD.exploreItems() : (window.LivonExploreData && window.LivonExploreData.items) || []; }
   var SIT_LABELS = (window.LivonLifeEvents && window.LivonLifeEvents.situationLabels) || {};
   var EVENT_STATUS = (window.LivonLifeEvents && window.LivonLifeEvents.statusLabel) || {};
 
@@ -424,7 +428,7 @@
     lifeHtml += "</div>";
 
     var recs = recommendItems(interests, stage).slice(0, 5);
-    var todayData = (window.LivonTodayData && window.LivonTodayData.contents) || [];
+    var todayData = tdList();
     var recHtml = "<div class=\"lv-hm-rec\">" +
       "<div class=\"lv-hm-rec__head\">" +
         "<p class=\"lv-hm-eyebrow\">FOR YOU</p>" +
@@ -459,7 +463,7 @@
   function recommendItems(interests, stage) {
     var out = [];
     var q = (interests || []).join(" ") + " " + stage;
-    var today = (window.LivonTodayData && window.LivonTodayData.contents) || [];
+    var today = tdList();
     today.forEach(function (c) {
       if (interests.length) {
         var tags = c.tags || [];
@@ -470,7 +474,7 @@
       }
       out.push({ kind: "발견", title: c.title, href: "#today/" + c.id });
     });
-    var explore = (window.LivonExploreData && window.LivonExploreData.items) || [];
+    var explore = exList();
     explore.slice(0, 40).forEach(function (c) {
       if (interests.length) {
         var hit = interests.some(function (i) {
@@ -486,7 +490,7 @@
   function renderToday() {
     var cats = $("[data-lv-hm-today-cats]");
     var host = $("[data-lv-hm-today]");
-    var list = (window.LivonTodayData && window.LivonTodayData.contents) || [];
+    var list = tdList();
     if (cats) {
       var sections = [["오늘의 발견", "td-pick"], ["이번 주", "td-week"], ["새로운 장소", "td-places"], ["취미·체험", "td-hobby"], ["배움", "td-learn"], ["함께하기", "td-together"], ["계절", "td-season"]];
       cats.innerHTML = sections.map(function (x) {
@@ -545,7 +549,7 @@
       }).join("");
     }
     if (!list) return;
-    var items = Array.isArray(data.items) ? data.items.slice(0, 5) : [];
+    var items = exList().slice(0, 5);
     if (!items.length) {
       list.innerHTML = "<p class=\"lv-hm-note\">등록된 서비스가 없습니다.</p>";
       return;

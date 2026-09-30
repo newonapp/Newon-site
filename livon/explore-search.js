@@ -90,11 +90,15 @@
   var index = null, indexWithLife = false;
   function build() {
     var r = repo(), out = [];
+    /* lists served by the LIVON Data Platform (visible rows only: no expired / unsourced / sample / draft rows); files as fallback */
+    var SD = window.LivonScreenData;
     var T = window.LivonTodayData || { contents: [] }, E = window.LivonExploreData || { items: [] };
+    if (SD) { T = Object.assign({}, T, { contents: SD.todayContents() }); E = Object.assign({}, E, { items: SD.exploreItems() }); }
+    var TOPICS = r ? (SD ? SD.topics() : r.data.topics) : [], SERVICES = r ? (SD ? SD.serviceTypes() : r.data.serviceTypes) : [], POLICIES = r ? (SD ? SD.policies() : r.data.policies) : [];
     var stageOfTopic = {}, stageLabel = {};
     if (r) {
       r.data.stages.forEach(function (s) { stageLabel[s.id] = s.label; });
-      r.data.topics.forEach(function (t) {
+      TOPICS.forEach(function (t) {
         stageOfTopic[t.id] = t.lifeStageId;
         var href = "#life/" + t.stageSlug + "/" + t.slug;
         out.push(entry({
@@ -105,7 +109,7 @@
           save: { type: "topic", id: t.id, title: t.title, href: href, stage: t.lifeStageId }
         }));
       });
-      r.data.serviceTypes.forEach(function (s) {
+      SERVICES.forEach(function (s) {
         var href = "#life/services/" + s.id;
         out.push(entry({
           key: "svc:" + s.id, type: "service", typeLabel: "서비스 유형", title: s.name, desc: s.description, category: s.group, tags: [s.group],
@@ -113,7 +117,7 @@
           save: { type: "service", id: s.id, title: s.name, href: href, stage: "" }
         }));
       });
-      r.data.policies.forEach(function (p) {
+      POLICIES.forEach(function (p) {
         var url = safeHttp(p.sourceUrl); if (!url) return;
         out.push(entry({
           key: "pol:" + p.id, type: "policy", typeLabel: "공식 포털", official: true, title: p.name, desc: p.target, category: p.provider, tags: [p.provider],
@@ -126,7 +130,7 @@
       var type = c.type === "place" ? "place" : (c.type === "learn" || c.type === "experience") ? "class" : c.type === "event" ? "event" : "content";
       var ref = "td:" + c.id, stages = [];
       (c.lifeTopicIds || []).forEach(function (id) { if (stageOfTopic[id]) stages.push(stageOfTopic[id]); });
-      if (r) r.data.topics.forEach(function (t) { if (t.relatedContentIds.indexOf(ref) >= 0 || t.relatedClassIds.indexOf(ref) >= 0 || t.relatedPlaceIds.indexOf(ref) >= 0) stages.push(t.lifeStageId); });
+      if (r) TOPICS.forEach(function (t) { if (t.relatedContentIds.indexOf(ref) >= 0 || t.relatedClassIds.indexOf(ref) >= 0 || t.relatedPlaceIds.indexOf(ref) >= 0) stages.push(t.lifeStageId); });
       var href = "#today/" + c.id, saveType = type === "place" ? "place" : type === "class" ? "class" : "content";
       out.push(entry({
         key: ref, type: type, typeLabel: type === "event" ? "행사 안내" : "오늘의 발견", title: c.title, desc: c.blurb, category: c.category, tags: c.tags || [],
@@ -148,6 +152,10 @@
         exploreItem: true, save: { type: saveType, id: "ex:" + i.id, title: i.title, href: href, stage: "" }
       }));
     });
+    /* Life Events (Data Platform) — searchable with their own type label; they open the Life Event guide */
+    if (SD && typeof SD.lifeEventSearchEntries === "function") {
+      try { SD.lifeEventSearchEntries().forEach(function (x) { out.push(entry(x)); }); } catch (err) {}
+    }
     /* Real Data Layer: entities from external providers only (LIVON's own data is indexed above).
        No active provider → nothing is added and the existing results/empty states stay as they are. */
     var RD = window.LivonData;

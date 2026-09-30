@@ -37,7 +37,8 @@
     window.scrollTo({ top: Math.max(0, top), behavior: (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ? "auto" : "smooth" });
   }
 
-  function contents() { return DATA.contents || []; }
+  /* list served by the LIVON Data Platform (visible rows only); the file's own array if the platform is unavailable */
+  function contents() { return window.LivonScreenData ? window.LivonScreenData.todayContents() : (DATA.contents || []); }
   function byId(id) { return contents().find(function (c) { return c.id === id; }) || null; }
   function statusLabel(k) { return (DATA.statusLabel && DATA.statusLabel[k]) || k || "안내"; }
   var IMG_FALLBACK = "/livon/assets/topics/daytrip.jpg";

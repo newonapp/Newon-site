@@ -271,7 +271,7 @@
   }
 
 
-  function lifeEvents() { return EVENT_DATA.events || []; }
+  function lifeEvents() { return window.LivonScreenData ? window.LivonScreenData.lifeEvents() : (EVENT_DATA.events || []); }
   function eventStatus(key) {
     return (EVENT_DATA.statusLabel && EVENT_DATA.statusLabel[key]) || (DATA.statusLabel && DATA.statusLabel[key]) || key || "안내";
   }

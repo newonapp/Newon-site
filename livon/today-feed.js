@@ -41,8 +41,9 @@
   function weekSeed() { var d = new Date(); var start = new Date(d.getFullYear(), 0, 1); return d.getFullYear() + "w" + Math.floor((d - start) / 604800000); }
   function jitter(key, seed) { return (hash32(key + "|" + seed) % 1000) / 1000; }
 
-  function TD() { return window.LivonTodayData || { contents: [] }; }
-  function EX() { return window.LivonExploreData || { items: [] }; }
+  /* same data objects, with the lists served by the LIVON Data Platform (visible rows only; falls back to the files) */
+  function TD() { var d = window.LivonTodayData || { contents: [] }, S = window.LivonScreenData; return S ? Object.assign({}, d, { contents: S.todayContents() }) : d; }
+  function EX() { var d = window.LivonExploreData || { items: [] }, S = window.LivonScreenData; return S ? Object.assign({}, d, { items: S.exploreItems() }) : d; }
   function hub() { return window.LivonLifeHub || null; }
   function repo() { var h = hub(); return h && h.repo && h.repo.status === "ready" ? h.repo : null; }
   function repoStatus() { var h = hub(); return h && h.repo ? h.repo.status : "error"; }
