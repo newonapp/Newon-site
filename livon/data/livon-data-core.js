@@ -648,7 +648,8 @@
     dedupe: function (list) { return dedupe(list, function (id) { var p = registry.get(id); return p ? p.priority : 0; }); },
     status: function () { return { providers: registry.list(), monitor: repo.monitor.get(), size: repo.size() }; },
     /* external (non-builtin) providers only — builtin data is already indexed by the existing screens */
-    external: function (list) { return (list || []).filter(function (e) { var p = registry.get(e.provider); return p && !p.builtin; }); },
+    /* external rows also pass the LIVON Data Platform gate (expired / unsourced / lower-priority duplicate → not shown) */
+    external: function (list) { var gate = root.LivonDataGate; return (list || []).filter(function (e) { var p = registry.get(e.provider); return p && !p.builtin && (typeof gate !== "function" || gate(e.id)); }); },
     searchEntries: function () { return LivonData.external(repo.list()).map(toSearchEntry); },
     forTopic: function (topic, type, limit) { return LivonData.external(repo.listByTopic(topic, { type: type, limit: limit || 6 })); },
     forToday: function (content, type, limit) {

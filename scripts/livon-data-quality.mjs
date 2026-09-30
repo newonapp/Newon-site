@@ -82,7 +82,43 @@ export function qualityReport(ctx) {
       if (!ok) badHref.add(it.key + ' → ' + href);
     }
   }
-  const blocking = q.duplicates + q.unsourced + invalidUrls.length + dangling.length + badHref.size;
+  /* ── extended checks (Real Data Integration V1) ── */
+  const reps = repo.report();
+  const sum = (key, codes) => reps.reduce((n, r) => n + codes.reduce((m, c) => m + ((r[key] || {})[c] || 0), 0), 0);
+  const all = repo.all({ includeSamples: true, includeUnsourced: true, includeExpired: true, includeDuplicates: true });
+  const idCount = {}, srcCount = {};
+  all.forEach(e => { idCount[e.id] = (idCount[e.id] || 0) + 1; if (e.sourceId && e.sourceType !== 'editorial' && e.sourceType !== 'internal') srcCount[e.sourceId] = (srcCount[e.sourceId] || 0) + 1; });
+  const orphanRelations = [];
+  all.forEach(e => Object.values(e.relations || {}).flat().forEach(id => { if (!repo.getById(id, { any: true }) && !/^tool:/.test(id)) orphanRelations.push(e.id + ' → ' + id); }));
+  const exCatIds = new Set(ctx.LivonExploreData.categories.map(c => c.id));
+  const todayTypes8 = new Set(['place', 'experience', 'learn', 'together', 'season', 'life', 'editorial', 'event']);
+  const unsupportedCategory = ctx.LivonExploreData.items.flatMap(x => (x.categoryIds || []).filter(c => !exCatIds.has(c)).map(c => 'ex:' + x.id + ' ' + c))
+    .concat(ctx.LivonTodayData.contents.filter(c => !todayTypes8.has(c.type)).map(c => 'td:' + c.id + ' ' + c.type));
+  /* time-bound curated rows without an official date: kept undated on purpose (evergreen portals / guides) — never guessed */
+  const timeBound = { event: 1, program: 1, policy: 1, class: 1 };
+  const undatedTimeBound = all.filter(e => timeBound[e.type] && (e.sourceType === 'editorial' || e.sourceType === 'official' || e.sourceType === 'internal')
+    && !e.startDate && !e.endDate && !e.applicationEnd && !e.expiresAt).map(e => e.id);
+  const now = Date.now();
+  const checks = {
+    missingId: sum('errorCodes', ['id']),
+    duplicateId: reps.reduce((n, r) => n + r.duplicates, 0) + Object.values(idCount).filter(n => n > 1).length,
+    duplicateSourceId: Object.values(srcCount).filter(n => n > 1).length,
+    invalidUrl: sum('warningCodes', ['sourceUrl:invalid', 'officialUrl:invalid', 'bookingUrl:invalid']),
+    missingSource: sum('errorCodes', ['sourceName', 'sourceType', 'policy:officialUrl']) + q.unsourced,
+    invalidDate: sum('warningCodes', ['startDate:invalid', 'endDate:invalid', 'applicationStart:invalid', 'applicationEnd:invalid', 'expiresAt:invalid', 'updatedAt:invalid', 'retrievedAt:invalid', 'publishedAt:invalid', 'sourceUpdatedAt:invalid', 'lastCheckedAt:invalid']) + sum('errorCodes', ['event:startDate']),
+    endBeforeStart: sum('warningCodes', ['endDate:before-start', 'applicationEnd:before-start']),
+    expired: all.filter(e => repo.hiddenReason(e.id) === 'expired').length,
+    stale: all.filter(e => repo.freshness(e) === 'stale').length,
+    orphanRelations,
+    invalidEntityType: sum('errorCodes', ['type']),
+    unsupportedCategory,
+    missingTitle: sum('errorCodes', ['title']),
+    malformedCoordinates: sum('warningCodes', ['coordinates:dropped']),
+    rejected: reps.reduce((n, r) => n + r.rejected, 0),
+    undatedTimeBound: { count: undatedTimeBound.length, note: 'curated portals/guides without an official date — left null on purpose (dates are never guessed)', ids: undatedTimeBound }
+  };
+  const blocking = q.duplicates + q.unsourced + invalidUrls.length + dangling.length + badHref.size
+    + checks.missingId + checks.duplicateId + checks.invalidEntityType + checks.missingTitle + orphanRelations.length + unsupportedCategory.length;
   return {
     counts: { total: q.total, visible: q.visible, sample: q.sample, expired: q.expired, unsourced: q.unsourced, draft: q.draft, comingSoon: q.comingSoon, duplicates: q.duplicates, sameTitleVariants: q.sameTitleVariants, bySourceType: q.bySourceType, byType: q.byType },
     screens: { today: SD.todayContents().length + '/' + ctx.LivonTodayData.contents.length, explore: SD.exploreItems().length + '/' + ctx.LivonExploreData.items.length,
@@ -91,6 +127,7 @@ export function qualityReport(ctx) {
     invalidUrls, dangling, unresolvedTools,
     emptyCategories: { explore: exploreCats.filter(c => !c.n).map(c => c.id), today: todayTypes.filter(c => !c.n).map(c => c.id), lifeStages: stageTopics.filter(c => !c.n).map(c => c.id) },
     search: { probes: probe.length, results, byTypeLabel: typesSeen, brokenOrDuplicate: [...badHref] },
+    freshness: q.freshness, checks,
     blocking
   };
 }

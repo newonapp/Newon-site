@@ -37,7 +37,21 @@
     archived: ["draft"]
   };
   /* where a record comes from */
-  var SOURCE_TYPES = ["official", "public_api", "partner", "editorial", "internal", "user", "fixture"];
+  /* official = 정부·지자체 공식 페이지 · public_api = 공공기관 공개 API/데이터셋 · partner = 직접 검증 파트너
+     platform = 민간 플랫폼 API (예: Kakao Local — 공식 데이터로 표시하지 않음) · editorial = LIVON 편집 · internal = Newon 자체 서비스 */
+  var SOURCE_TYPES = ["official", "public_api", "partner", "platform", "editorial", "internal", "user", "fixture"];
+  /* Source priority when the same thing arrives from several sources (higher wins). docs/livon/LIVON_REAL_DATA_ARCHITECTURE.md */
+  var SOURCE_PRIORITY = { official: 100, public_api: 80, partner: 60, internal: 50, editorial: 40, platform: 30, user: 10, fixture: 0 };
+  /* Freshness per type (days): how long after the last check (lastCheckedAt) or the source's own update (sourceUpdatedAt) a record
+     counts as "fresh". A LIVON fetch time alone (retrievedAt) is never a check. null = evergreen type (no freshness). */
+  var FRESHNESS_POLICY = { event: 7, program: 14, "class": 14, policy: 30, place: 180, expert: 90, provider: 180, service: 180, content: 365,
+    lifeStage: null, lifeEvent: null, communityContent: null };
+  var FRESHNESS = ["fresh", "stale", "expired", "unknown"];
+  /* private platform providers: their rows are never "official" (server manifest sourceKind private-platform) */
+  var PLATFORM_PROVIDERS = { "kr-kakao-place": 1 };
+  /* official category names → Life Events (category mapping only; ages are never inferred) */
+  var CATEGORY_LIFE_EVENTS = { "창업": ["startup"], "일자리": ["first-job", "job-change"], "취업": ["first-job"], "주거": ["independent", "move"],
+    "금융": ["saving", "loan"], "결혼": ["marriage"], "출산": ["childbirth"], "육아": ["parenting"], "보육": ["parenting"], "은퇴": ["retire-prep"] };
   /* what LIVON can say about it — only official_source / partner_verified count as "verified" */
   var VERIFICATION = ["unverified", "editorial", "source_linked", "official_source", "partner_verified", "needs_review"];
   var PRICE_TYPES = ["free", "paid", "varies", "quote", "external", "unknown"];
@@ -71,6 +85,11 @@
   var TODAY_IDS = TODAY_CATEGORIES.map(function (c) { return c.id; });
   var REGIONS = ["서울", "경기", "인천", "부산", "대구", "광주", "대전", "울산", "세종", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"];
   var NATIONWIDE = { "전국": 1, "온라인": 1 };
+  /* official long names → the short region names LIVON's filters use */
+  var REGION_ALIAS = { "서울특별시": "서울", "부산광역시": "부산", "대구광역시": "대구", "인천광역시": "인천", "광주광역시": "광주", "대전광역시": "대전", "울산광역시": "울산",
+    "세종특별자치시": "세종", "경기도": "경기", "강원도": "강원", "강원특별자치도": "강원", "충청북도": "충북", "충청남도": "충남", "전라북도": "전북", "전북특별자치도": "전북",
+    "전라남도": "전남", "경상북도": "경북", "경상남도": "경남", "제주도": "제주", "제주특별자치도": "제주" };
+  function regionName(v) { var s = cleanText(v, 30); if (!s) return null; return REGION_ALIAS[s] || s; }
   /* query expansion for Search V1 (small, explicit; weight 0.5 of a direct hit) */
   var SYNONYMS = {
     "이사": ["독립", "자취", "주거", "입주", "청소"], "독립": ["자취", "이사", "주거"], "자취": ["독립", "주거"], "집": ["주거", "주택"],
@@ -111,10 +130,12 @@
     if (v == null || v === "") return null;
     if (typeof v === "number") { var dn = new Date(v); return isNaN(dn) ? null : dn.toISOString(); }
     if (typeof v !== "string") return null;
-    var s = v.trim().replace(/\./g, "-");
+    /* "2026.10.20" → "2026-10-20" (only the date part; ".000Z" milliseconds stay) */
+    var s = v.trim().replace(/^(\d{4})\.(\d{1,2})\.(\d{1,2})\.?/, function (m, y, mo, d) { return y + "-" + ("0" + mo).slice(-2) + "-" + ("0" + d).slice(-2); });
     if (/^\d{8}$/.test(s)) s = s.slice(0, 4) + "-" + s.slice(4, 6) + "-" + s.slice(6);
     if (!/^\d{4}-\d{2}-\d{2}([T ][0-9:.]+(Z|[+-]\d{2}:?\d{2})?)?$/.test(s)) return null;
-    var d = new Date(s.length === 10 ? s + (endOfDay ? "T23:59:59+09:00" : "T00:00:00+09:00") : s.replace(" ", "T"));
+    /* a bare date is a whole Korea day; a date-time without a zone is Korea time too (official APIs publish KST) */
+    var d = new Date(s.length === 10 ? s + (endOfDay ? "T23:59:59+09:00" : "T00:00:00+09:00") : s.replace(" ", "T") + (/(Z|[+-]\d{2}:?\d{2})$/.test(s) ? "" : "+09:00"));
     if (isNaN(d)) return null;
     var y = d.getUTCFullYear();
     return y < 1990 || y > 2100 ? null : d.toISOString();
@@ -140,12 +161,13 @@
     content: { text: ["contentKind", "body"], list: ["checklist", "points"] },
     lifeStage: { text: ["label", "heroTitle", "focus"], number: ["ageMin", "ageMax"] },
     lifeEvent: { text: ["situation"], list: ["checklist", "needs", "situations"] },
-    place: { text: ["placeType", "openingHours", "indoorOutdoor", "address"], list: ["facilities"] },
-    event: { text: ["organizer", "venue", "eventStatus"] },
-    program: { text: ["organizer", "eligibility", "format", "duration", "audience"] },
-    policy: { text: ["agency", "eligibility", "benefits", "jurisdiction", "policyKind", "periodText"] },
-    expert: { text: ["name", "organization", "trustLevel", "role"], list: ["specialties", "consultationMethods"] },
-    provider: { text: ["providerKind", "audience"], list: ["offers"] },
+    place: { text: ["placeType", "openingHours", "indoorOutdoor", "address", "phone"], list: ["facilities"] },
+    event: { text: ["organizer", "venue", "eventStatus", "eventType"] },
+    program: { text: ["organizer", "eligibility", "format", "duration", "audience", "target", "applyMethod"] },
+    policy: { text: ["agency", "eligibility", "benefits", "jurisdiction", "policyKind", "periodText", "target", "applyMethod"] },
+    /* experts: only a work contact a public body published for a public role (workPhone); never a personal number */
+    expert: { text: ["name", "organization", "trustLevel", "role", "workPhone", "serviceArea"], list: ["specialties", "consultationMethods"] },
+    provider: { text: ["providerKind", "audience", "phone"], list: ["offers"] },
     service: { text: ["serviceGroup", "audience", "forWhom"], list: ["process", "prepare", "features"] },
     "class": { text: ["organizer", "difficulty", "duration", "format"], number: ["capacity"] },
     communityContent: { text: ["communityKind", "interest", "join"], number: ["days"] }
@@ -186,7 +208,7 @@
       lifeStages: uniq(cleanList(raw.lifeStages, 7, 4).map(stageOf)),
       lifeEvents: cleanList(raw.lifeEvents, 20, 60),
       targetAges: null,
-      region: cleanText(raw.region, 30), location: null, coordinates: null,
+      region: regionName(raw.region), location: null, coordinates: null,
       online: typeof raw.online === "boolean" ? raw.online : null,
       price: null, priceType: oneOf(raw.priceType, PRICE_TYPES, "unknown"),
       startDate: isoDate(raw.startDate), endDate: isoDate(raw.endDate, true),
@@ -200,6 +222,9 @@
       verificationStatus: oneOf(raw.verificationStatus, VERIFICATION, null), verified: false,
       status: oneOf(raw.status, STATUSES, "draft"),
       publishedAt: isoDate(raw.publishedAt), updatedAt: isoDate(raw.updatedAt), retrievedAt: isoDate(raw.retrievedAt), expiresAt: isoDate(raw.expiresAt, true),
+      /* provenance: the source's own update date · the last time LIVON (or a job) checked it · the source's record id */
+      sourceUpdatedAt: isoDate(raw.sourceUpdatedAt), lastCheckedAt: isoDate(raw.lastCheckedAt),
+      sourceId: cleanText(raw.sourceId, 200), officialId: cleanText(raw.officialId, 200), alsoFrom: [], duplicateOf: null,
       href: safeHref(raw.href),
       sample: sourceType === "fixture",
       provenanceMissing: false,
@@ -207,7 +232,7 @@
       domains: [],
       meta: {}
     };
-    ["startDate", "endDate", "applicationStart", "applicationEnd", "expiresAt", "updatedAt", "retrievedAt", "publishedAt"].forEach(function (k) {
+    ["startDate", "endDate", "applicationStart", "applicationEnd", "expiresAt", "updatedAt", "retrievedAt", "publishedAt", "sourceUpdatedAt", "lastCheckedAt"].forEach(function (k) {
       if (raw[k] && !e[k]) warnings.push(k + ":invalid");
     });
     ["sourceUrl", "officialUrl", "bookingUrl"].forEach(function (k) { if (raw[k] && !e[k]) warnings.push(k + ":invalid"); });
@@ -252,17 +277,22 @@
     if (type === "event" && !e.startDate) errors.push("event:startDate");
     if (type === "expert") e.name = e.name || title;
 
-    /* ── provenance ── */
+    /* ── provenance ──
+       traceable = a source link, or (for a data feed) the source's name + its own record id (TourAPI contentid, 기업마당 공고 ID …) */
     var linked = !!(e.sourceUrl || e.officialUrl);
-    if (FACTUAL[type] && !linked && ["editorial", "user", "fixture", "internal"].indexOf(sourceType) < 0) {
+    var feed = ["official", "public_api", "partner", "platform"].indexOf(sourceType) >= 0;
+    var traceable = linked || (feed && !!e.sourceId && !!sourceName);
+    if (FACTUAL[type] && !traceable && ["editorial", "user", "fixture", "internal"].indexOf(sourceType) < 0) {
       e.provenanceMissing = true; warnings.push("provenance:missing");
     }
     if (e.verificationStatus === "partner_verified" && sourceType !== "partner") { warnings.push("verification:partner-only"); e.verificationStatus = null; }
-    if ((e.verificationStatus === "official_source" || e.verificationStatus === "source_linked") && !linked) { warnings.push("verification:no-link"); e.verificationStatus = null; }
+    if (e.verificationStatus === "official_source" && ["official", "public_api"].indexOf(sourceType) < 0) { warnings.push("verification:official-only"); e.verificationStatus = null; }
+    if ((e.verificationStatus === "official_source" || e.verificationStatus === "source_linked") && !traceable) { warnings.push("verification:no-link"); e.verificationStatus = null; }
     if (!e.verificationStatus) {
       e.verificationStatus = e.provenanceMissing ? "unverified"
         : sourceType === "editorial" ? "editorial"
-        : (sourceType === "official" || sourceType === "public_api") && linked ? "official_source"
+        : (sourceType === "official" || sourceType === "public_api") && traceable ? "official_source"
+        : sourceType === "platform" && traceable ? "source_linked"
         : linked ? "source_linked" : "unverified";
     }
     if (e.provenanceMissing) e.verificationStatus = "unverified";
@@ -276,10 +306,18 @@
   }
 
   /* the date after which a record no longer counts as current */
+  /*
+   * The date after which a record no longer counts as current (per type):
+   *   event            → the event itself is over (endDate, else startDate day)
+   *   policy           → the application closed (applicationEnd, else endDate)
+   *   program / class  → the course ended (endDate); see lifecycleStatus for "closed and already started"
+   */
   function effectiveEnd(e) {
     if (e.expiresAt) return e.expiresAt;
     if (!TIME_BOUND[e.type]) return null;
-    return e.applicationEnd || e.endDate || (e.type === "event" ? e.startDate : null);
+    if (e.type === "event") return e.endDate || e.startDate;
+    if (e.type === "policy") return e.applicationEnd || e.endDate;
+    return e.endDate || e.applicationEnd;
   }
   /* stored status + dates → status right now (a published record past its end is "expired") */
   function lifecycleStatus(e, at) {
@@ -288,13 +326,26 @@
     var end = effectiveEnd(e);
     if (end && t(end) < now) return "expired";
     if (e.expiresAt && t(e.expiresAt) < now) return "expired";
+    /* a course nobody can join any more: registration closed AND it already started */
+    if ((e.type === "program" || e.type === "class") && e.applicationEnd && e.startDate && t(e.applicationEnd) < now && t(e.startDate) < now) return "expired";
     return "published";
+  }
+  /* fresh · stale · expired · unknown — by type (FRESHNESS_POLICY); expired always wins */
+  function freshnessStatus(e, at) {
+    var now = at == null ? Date.now() : at;
+    if (lifecycleStatus(e, now) === "expired") return "expired";
+    var days = FRESHNESS_POLICY[e.type];
+    if (days == null) return "unknown";
+    var ref = Math.max(t(e.lastCheckedAt) || 0, t(e.sourceUpdatedAt) || 0);
+    if (!ref) return "unknown";
+    return now - ref <= days * DAY ? "fresh" : "stale";
   }
   function isVisible(e, at, o) {
     o = o || {};
     if (lifecycleStatus(e, at) !== "published" && !(o.includeExpired && lifecycleStatus(e, at) === "expired")) return false;
     if (e.sample && !o.includeSamples) return false;
     if (e.provenanceMissing && !o.includeUnsourced) return false;
+    if (e.duplicateOf && !o.includeDuplicates) return false;
     return true;
   }
 
@@ -328,22 +379,34 @@
       applicationEnd: pick(x, "applicationEnd", "registrationEnd") || (isObj(x.applicationPeriod) ? x.applicationPeriod.end : null),
       image: pick(x, "image") || (isObj(x.media) ? x.media.thumbnail : null),
       sourceName: pick(x, "sourceName") || src.providerName || ctx.sourceName || null,
-      sourceType: pick(x, "sourceType") || ctx.sourceType || "public_api",
+      sourceType: pick(x, "sourceType") || (PLATFORM_PROVIDERS[provider] ? "platform" : ctx.sourceType || "public_api"),
       sourceUrl: pick(x, "sourceUrl") || src.sourceUrl || null,
       officialUrl: pick(x, "officialUrl", "officialSource") || null,
       bookingUrl: pick(x, "bookingUrl", "externalBookingUrl", "registrationUrl", "applicationUrl", "reservationUrl") || null,
       retrievedAt: pick(x, "retrievedAt") || src.fetchedAt || null, updatedAt: pick(x, "updatedAt") || src.updatedAt || null,
+      sourceUpdatedAt: pick(x, "sourceUpdatedAt") || src.updatedAt || null, lastCheckedAt: pick(x, "lastCheckedAt", "lastVerifiedAt") || null,
+      sourceId: localId != null ? provider + ":" + localId : null, officialId: pick(x, "officialId") || null,
       expiresAt: pick(x, "expiresAt"),
       status: pick(x, "status") && STATUSES.indexOf(x.status) >= 0 ? x.status : "published",
       providerId: pick(x, "providerRef"),
       href: pick(x, "href"),
       relations: isObj(x.relations) ? x.relations : (x.topicIds ? { topicIds: x.topicIds } : null),
-      meta: { upstreamProvider: provider }
+      lifeEvents: lifeEventsFromCategory(x),
+      meta: { upstreamProvider: provider, lifeEventLink: lifeEventsFromCategory(x).length ? "official-category" : null }
     };
+  }
+  /* Life Events only from an official category name (never from free text, never from an assumed age) */
+  function lifeEventsFromCategory(x) {
+    var out = (Array.isArray(x.lifeEvents) ? x.lifeEvents : []).slice();
+    [x.category].concat(x.metadata && x.metadata.fields ? String(x.metadata.fields).split(",") : []).forEach(function (c) {
+      var k = String(c || "").trim();
+      (CATEGORY_LIFE_EVENTS[k] || []).forEach(function (le) { if (out.indexOf(le) < 0) out.push(le); });
+    });
+    return out;
   }
   function normalizeEvent(x, ctx) {
     var r = baseFrom(x, "event", ctx);
-    r.organizer = x.organizer; r.venue = x.venue; r.eventStatus = x.eventStatus;
+    r.organizer = x.organizer; r.venue = x.venue; r.eventStatus = x.eventStatus; r.eventType = x.eventType;
     if (x.eventStatus === "cancelled") r.status = "archived";
     return r;
   }
@@ -355,11 +418,16 @@
     if (x.mapUrl && !x.officialUrl) { r.sourceUrl = r.sourceUrl || x.mapUrl; r.officialUrl = null; }
     r.bookingType = x.reservationUrl ? "external" : "none";
     r.availabilityType = "always";
+    r.phone = x.contact && x.contact.phone || x.phone || null; /* a facility/business number as published, not a person */
     return r;
   }
   function normalizeProgram(x, ctx) {
     var r = baseFrom(x, "program", ctx);
     r.organizer = x.organizer; r.eligibility = x.eligibility; r.format = x.format; r.duration = x.duration;
+    r.target = x.target || x.eligibility; r.applyMethod = x.applyMethod;
+    if (typeof x.online === "boolean") r.online = x.online;
+    else if (/온라인/.test(x.format || "") && !/오프라인|혼합|병행/.test(x.format || "")) r.online = true;
+    else if (/오프라인|집체|현장/.test(x.format || "") && !/온라인|혼합|병행/.test(x.format || "")) r.online = false;
     r.bookingType = r.bookingUrl ? "external" : "none"; r.availabilityType = r.startDate ? "scheduled" : "unknown";
     return r;
   }
@@ -373,6 +441,7 @@
     var r = baseFrom(x, "policy", ctx);
     r.agency = x.agency || x.provider; r.eligibility = x.eligibility || x.target; r.benefits = x.benefits; r.jurisdiction = x.jurisdiction;
     r.policyKind = x.kind || "policy"; r.periodText = x.period || (isObj(x.applicationPeriod) ? x.applicationPeriod.note : null);
+    r.target = x.target || x.eligibility; r.applyMethod = x.applyMethod;
     r.officialUrl = r.officialUrl || x.sourceUrl || (isObj(x.source) ? x.source.sourceUrl : null);
     r.verificationStatus = null;
     return r;
@@ -380,7 +449,9 @@
   function normalizeExpert(x, ctx) {
     var r = baseFrom(x, "expert", ctx);
     r.name = x.name || x.title; r.organization = x.organization; r.role = x.role;
-    r.specialties = x.specialties; r.consultationMethods = x.consultationMethods; r.trustLevel = x.trustLevel;
+    r.specialties = x.specialties; r.consultationMethods = x.consultationMethods; r.trustLevel = x.trustLevel; r.serviceArea = x.serviceArea;
+    /* only the work contact a public body published for a public role; nothing else about the person */
+    r.workPhone = x.trustLevel === "public_designated" && x.contact && x.contact.phone ? x.contact.phone : null;
     /* a data feed never makes anyone "partner verified" */
     r.verificationStatus = null;
     r.bookingType = x.externalBookingUrl ? "external" : "inquiry"; r.availabilityType = "on_request";
@@ -498,14 +569,14 @@
             expertIds: (tp.relatedExpertIds || []).map(refToId) };
           out.push({ id: "topic:" + tp.id, type: "content", contentKind: "topic", title: tp.title, summary: tp.description, category: tp.category, subCategory: tp.categoryId,
             tags: [tp.category, tp.communityInterest].filter(Boolean), lifeStages: [tp.lifeStageId], checklist: (tp.checklist || []).map(function (c) { return c.text; }),
-            href: topicHref(tp), sourceName: "LIVON", sourceType: "editorial", status: "published", updatedAt: LT.updatedAt, relations: rel,
+            href: topicHref(tp), sourceName: "LIVON", sourceType: "editorial", status: "published", updatedAt: LT.updatedAt, lastCheckedAt: LT.updatedAt, relations: rel,
             meta: { communityInterest: tp.communityInterest, aiPrompt: (tp.aiPrompts || [])[0] }, _raw: tp });
         });
         /* official portals (policy links; LIVON does not restate eligibility or amounts) */
         (LT && LT.policies || []).forEach(function (p) {
           out.push({ id: "pol:" + p.id, type: "policy", title: p.name, summary: p.target, description: p.conditions, agency: p.provider, eligibility: p.target,
             policyKind: p.kind, periodText: p.period, officialUrl: p.sourceUrl, sourceUrl: p.sourceUrl, sourceName: p.provider, sourceType: "official",
-            retrievedAt: p.checkedAt, updatedAt: p.checkedAt, href: p.sourceUrl, status: p.publishStatus || "published", availabilityType: "always", tags: [p.provider],
+            retrievedAt: p.checkedAt, updatedAt: p.checkedAt, lastCheckedAt: p.checkedAt, href: p.sourceUrl, status: p.publishStatus || "published", availabilityType: "always", tags: [p.provider],
             applicationStart: p.applicationStart, applicationEnd: p.applicationEnd, expiresAt: p.expiresAt, _raw: p });
         });
         /* service types (Life Stage › services) */
@@ -538,7 +609,7 @@
             body: c.body, points: c.points, checklist: c.checklist,
             officialUrl: official, sourceUrl: official, sourceName: c.source || "LIVON", sourceType: official ? "official" : "editorial",
             verificationStatus: official ? "source_linked" : null,
-            retrievedAt: c.checkedAt || TD.checkedAt, updatedAt: c.updatedAt || c.checkedAt || TD.checkedAt,
+            retrievedAt: c.checkedAt || TD.checkedAt, updatedAt: c.updatedAt || c.checkedAt || TD.checkedAt, lastCheckedAt: c.checkedAt || TD.checkedAt,
             href: "#today/" + c.id, status: c.publishStatus || "published", availabilityType: c.evergreen ? "always" : "unknown",
             startDate: c.startDate, endDate: c.endDate, applicationEnd: c.applicationEnd, expiresAt: c.expiresAt,
             bookingType: "none",
@@ -559,7 +630,7 @@
           var provId = x.provider && x.provider !== "LIVON" && x.provider !== "LIVON 생활 가이드" ? "prov:" + norm(x.provider) : null;
           if (provId && !providers[provId] && type !== "provider") providers[provId] = { id: provId, type: "provider", title: x.provider, providerKind: "institution",
             summary: x.provider + " 공식 안내", sourceName: x.source || x.provider, sourceType: srcType, officialUrl: official, sourceUrl: official,
-            retrievedAt: x.checkedAt, updatedAt: x.checkedAt, status: "published", href: official, offers: [x.type] };
+            retrievedAt: x.checkedAt, updatedAt: x.checkedAt, lastCheckedAt: x.checkedAt, status: "published", href: official, offers: [x.type] };
           out.push({ id: "ex:" + x.id, type: type, title: x.title, summary: x.blurb, description: x.body, category: x.subfield, subCategory: (x.categoryIds || []).join(","),
             tags: x.tags, domains: (x.categoryIds || []).map(function (k) { return EXPLORE_CATEGORY_DOMAIN[k]; }).filter(Boolean),
             region: x.region || null, online: x.mode === "online" ? true : x.mode === "offline" ? false : null,
@@ -569,7 +640,7 @@
             officialUrl: official, sourceUrl: official, sourceName: x.source || x.provider || "LIVON", sourceType: srcType,
             verificationStatus: official ? (cred === "verified" ? "official_source" : "source_linked") : null,
             providerId: type !== "provider" ? provId : null,
-            retrievedAt: x.checkedAt || EX.checkedAt, updatedAt: x.checkedAt || EX.checkedAt, href: "#ex-item-" + x.id, status: x.publishStatus || "published",
+            retrievedAt: x.checkedAt || EX.checkedAt, updatedAt: x.checkedAt || EX.checkedAt, lastCheckedAt: x.checkedAt || EX.checkedAt, href: "#ex-item-" + x.id, status: x.publishStatus || "published",
             startDate: x.startDate, endDate: x.endDate, applicationStart: x.applicationStart, applicationEnd: x.applicationEnd, expiresAt: x.expiresAt,
             bookingType: "none", availabilityType: "unknown",
             meta: { uiType: x.type, layout: x.layout, credentialNote: x.credentials && x.credentials.note, internalUrl: internal }, _raw: x });
@@ -599,13 +670,17 @@
     return {
       id: o.id || "livon-public-data", kind: "public", sourceType: "public_api",
       status: function () { return { configured: !!(o.entities || o.load || (root.LivonData && root.LivonData.repository)) }; },
-      load: function () {
+      load: function (ctx) {
         var p = o.entities ? Promise.resolve(o.entities) : o.load ? Promise.resolve().then(o.load)
           : root.LivonData && root.LivonData.repository ? Promise.resolve(root.LivonData.external(root.LivonData.repository.list())) : Promise.resolve([]);
         return p.then(function (list) {
           return (Array.isArray(list) ? list : []).map(function (x) {
             var fn = o.normalize || normalizeRealDataEntity;
             var r = fn(x, { sourceType: "public_api", provider: x && x.provider });
+            /* an unknown / missing type still goes to canonicalize so it is counted as rejected with a reason */
+            if (!r && x && typeof x === "object") r = { id: x.id, type: String(x.type || ""), title: x.title, sourceType: "public_api", sourceName: x.source && x.source.providerName || null };
+            /* LIVON retrieved it now if the row does not say when (a fetch time — never a source date) */
+            if (r && !r.retrievedAt) r.retrievedAt = new Date(ctx && ctx.now || Date.now()).toISOString();
             return r;
           }).filter(Boolean);
         }).catch(function () { return []; });
@@ -682,7 +757,12 @@
 
     function add(raw, adapter, rep) {
       var r = canonicalize(Object.assign({ sourceType: adapter.sourceType }, raw));
-      if (!r.ok) { rep.rejected++; if (rep.errors.length < 20) rep.errors.push({ id: raw && raw.id || null, errors: r.errors }); return; }
+      if (!r.ok) {
+        rep.rejected++; if (rep.errors.length < 20) rep.errors.push({ id: raw && raw.id || null, errors: r.errors });
+        r.errors.forEach(function (c) { rep.errorCodes[c] = (rep.errorCodes[c] || 0) + 1; });
+        return;
+      }
+      r.warnings.forEach(function (c) { rep.warningCodes[c] = (rep.warningCodes[c] || 0) + 1; });
       var e = r.entity;
       if (r.warnings.length) rep.warnings += r.warnings.length;
       if (byId[e.id]) { rep.duplicates++; return; } /* first adapter wins; later adapters cannot overwrite curated rows */
@@ -721,14 +801,63 @@
     function loadSync() {
       store = []; byId = {}; idx = {}; rawById = {}; report = [];
       adapters.forEach(function (a) {
-        var rep = { adapter: a.id, kind: a.kind, accepted: 0, rejected: 0, duplicates: 0, warnings: 0, errors: [], failed: false };
+        var rep = { adapter: a.id, kind: a.kind, accepted: 0, rejected: 0, duplicates: 0, warnings: 0, errors: [], errorCodes: {}, warningCodes: {}, merged: 0, failed: false };
         report.push(rep);
         if (typeof a.loadSync !== "function") { rep.failed = true; rep.async = true; return; }
         try { (a.loadSync({ now: clock() }) || []).forEach(function (raw) { add(raw, a, rep); }); } catch (e) { rep.failed = true; }
       });
-      inferEventTopics(); buildReverse();
+      finalize();
       loaded = true;
       return api;
+    }
+    function finalize() { inferEventTopics(); crossSourceDedupe(); buildReverse(); }
+    /*
+     * Cross-source duplicates (docs/livon/LIVON_REAL_DATA_ARCHITECTURE.md §Dedupe). Two rows are the same thing only on strong evidence:
+     *   · the same official id (officialId), or
+     *   · the same official detail URL (host + path — never a bare home page), or
+     *   · the same normalized title AND ≥ 2 of { start day, address, organizer/agency, official URL }.
+     * A title alone never merges (age-variant LIVON guides share titles on purpose); two curated rows never merge;
+     * rows of one adapter with the same source id are handled by the id itself.
+     * The row with the higher SOURCE_PRIORITY stays (tie → newer source/check date); the other is kept but hidden
+     * (duplicateOf) and listed in the winner's alsoFrom.
+     */
+    function dedupeKey(e) {
+      var url = (e.officialUrl || e.sourceUrl || "").replace(/^https?:\/\/(www\.)?/i, "").replace(/#.*$/, "").replace(/\/+$/, "");
+      return {
+        official: e.officialId ? norm(e.officialId) : "",
+        url: url.indexOf("/") > 0 ? url.toLowerCase() : "",
+        title: norm(e.title), day: (e.startDate || "").slice(0, 10),
+        addr: norm(e.location && e.location.address || ""), org: norm(e.organizer || e.agency || e.organization || ""),
+        /* places only: ≈100 m grid and the facility's phone count as one signal each, never alone */
+        geo: e.type === "place" && e.coordinates ? e.coordinates.lat.toFixed(3) + "," + e.coordinates.lng.toFixed(3) : "",
+        phone: e.type === "place" ? String(e.phone || "").replace(/\D/g, "") : ""
+      };
+    }
+    function rank(e) { return (SOURCE_PRIORITY[e.sourceType] || 0) * 1e13 + (t(e.sourceUpdatedAt || e.lastCheckedAt || e.updatedAt) || 0); }
+    function curated(e) { return e.sourceType === "editorial" || e.sourceType === "internal"; }
+    function crossSourceDedupe() {
+      var dup = 0;
+      store.forEach(function (e) { e.duplicateOf = null; e.alsoFrom = []; });
+      store.forEach(function (e) {
+        if (curated(e) || e.duplicateOf) return;
+        var k = dedupeKey(e), twin = null;
+        store.some(function (m) {
+          /* rows of the same source never merge with each other (their own ids already tell them apart) */
+          if (m === e || m.type !== e.type || m.duplicateOf || (m.meta.upstreamProvider || m.meta.adapter) === (e.meta.upstreamProvider || e.meta.adapter)) return false;
+          var mk = dedupeKey(m);
+          var strong = (k.official && k.official === mk.official) || (k.url && k.url === mk.url);
+          var extra = ["day", "addr", "org", "url", "geo", "phone"].filter(function (f) { return k[f] && k[f] === mk[f]; }).length;
+          if (strong || (k.title && k.title === mk.title && extra >= 2)) { twin = m; return true; }
+          return false;
+        });
+        if (!twin) return;
+        var keep = rank(e) > rank(twin) ? e : twin, drop = keep === e ? twin : e;
+        drop.duplicateOf = keep.id;
+        keep.alsoFrom = keep.alsoFrom.concat([{ id: drop.id, sourceName: drop.sourceName, sourceType: drop.sourceType, sourceUrl: drop.sourceUrl || drop.officialUrl || null }]);
+        dup++;
+        report.forEach(function (r) { if (r.adapter === drop.meta.adapter) r.merged++; });
+      });
+      return dup;
     }
     function load(force) {
       if (loaded && !force) return Promise.resolve(api);
@@ -736,14 +865,14 @@
       store = []; byId = {}; idx = {}; rawById = {}; report = [];
       loading = adapters.reduce(function (p, a) {
         return p.then(function () {
-          var rep = { adapter: a.id, kind: a.kind, accepted: 0, rejected: 0, duplicates: 0, warnings: 0, errors: [], failed: false };
+          var rep = { adapter: a.id, kind: a.kind, accepted: 0, rejected: 0, duplicates: 0, warnings: 0, errors: [], errorCodes: {}, warningCodes: {}, merged: 0, failed: false };
           report.push(rep);
           return Promise.resolve().then(function () { return a.load({ now: clock() }); }).then(function (rows) {
             (Array.isArray(rows) ? rows : []).forEach(function (raw) { add(raw, a, rep); });
           }).catch(function () { rep.failed = true; });
         });
       }, Promise.resolve()).then(function () {
-        inferEventTopics(); buildReverse();
+        finalize();
         loaded = true; loading = null;
         return api;
       });
@@ -814,6 +943,7 @@
     function result(score, matched) {
       return function (e) {
         return { id: e.id, type: e.type, typeLabel: TYPE_LABEL[e.type], title: e.title, summary: e.summary, href: e.href, region: e.region,
+          sourceType: e.sourceType, freshness: freshnessStatus(e, clock()), retrievedAt: e.retrievedAt, lastCheckedAt: e.lastCheckedAt, officialUrl: e.officialUrl,
           sourceName: e.sourceName, verificationStatus: e.verificationStatus, verified: e.verified, score: Math.round(score * 100) / 100, matched: matched, entity: e };
       };
     }
@@ -967,6 +1097,7 @@
         if (st !== "published") return st;
         if (e.sample && !(q && q.includeSamples)) return "sample";
         if (e.provenanceMissing && !(q && q.includeUnsourced)) return "unsourced";
+        if (e.duplicateOf && !(q && q.includeDuplicates)) return "duplicate";
         return null;
       },
       get loaded() { return loaded; },
@@ -994,7 +1125,8 @@
       getTodayFeed: todayFeed,
       getRecommendations: recommendations,
       facets: facets,
-      lifecycleStatus: function (e) { return lifecycleStatus(e, clock()); }
+      lifecycleStatus: function (e) { return lifecycleStatus(e, clock()); },
+      freshness: function (idOrEntity) { var e = typeof idOrEntity === "string" ? byId[idOrEntity] : idOrEntity; return e ? freshnessStatus(e, clock()) : "unknown"; }
     };
     return api;
   }
@@ -1017,7 +1149,8 @@
     TYPES: TYPES, TYPE_LABEL: TYPE_LABEL, STATUSES: STATUSES, TRANSITIONS: TRANSITIONS, SOURCE_TYPES: SOURCE_TYPES, VERIFICATION: VERIFICATION,
     PRICE_TYPES: PRICE_TYPES, BOOKING_TYPES: BOOKING_TYPES, AVAILABILITY_TYPES: AVAILABILITY_TYPES, DOMAINS: DOMAINS.map(function (d) { return { id: d.id, label: d.label }; }),
     TODAY_CATEGORIES: TODAY_CATEGORIES, RELATION_KEYS: RELATION_KEYS, TYPE_FIELDS: TYPE_FIELDS,
-    canonicalize: canonicalize, effectiveEnd: effectiveEnd, lifecycleStatus: lifecycleStatus, isVisible: isVisible,
+    canonicalize: canonicalize, effectiveEnd: effectiveEnd, lifecycleStatus: lifecycleStatus, isVisible: isVisible, freshnessStatus: freshnessStatus,
+    SOURCE_PRIORITY: SOURCE_PRIORITY, FRESHNESS_POLICY: FRESHNESS_POLICY, FRESHNESS: FRESHNESS, PLATFORM_PROVIDERS: PLATFORM_PROVIDERS, CATEGORY_LIFE_EVENTS: CATEGORY_LIFE_EVENTS,
     normalizeEvent: normalizeEvent, normalizePlace: normalizePlace, normalizeProgram: normalizeProgram, normalizeClass: normalizeClass,
     normalizePolicy: normalizePolicy, normalizeExpert: normalizeExpert, normalizeService: normalizeService, normalizeContent: normalizeContent,
     normalizeRealDataEntity: normalizeRealDataEntity,

@@ -25,7 +25,13 @@
   function P() { return root.LivonDataPlatform || null; }
   function hubData() { var h = root.LivonLifeHub && root.LivonLifeHub.repo; return h && h.status === "ready" ? h.data : null; }
 
+  var building = false;
   function build() {
+    if (building) return null;
+    building = true;
+    try { return buildNow(); } finally { building = false; }
+  }
+  function buildNow() {
     var platform = P();
     if (!platform || typeof platform.createRepository !== "function") return null;
     var topics = hubData();
@@ -48,6 +54,27 @@
     if (!repo || (!builtWithTopics && hubData())) build();
     return repo;
   }
+  /* real public data arrives later than the curated files: rebuild on the next read after the real-data layer changes */
+  var realDataSeen = 0;
+  function watchRealData() {
+    var R = root.LivonData && root.LivonData.repository;
+    if (!R || typeof R.onChange !== "function" || watchRealData.bound) return;
+    watchRealData.bound = true;
+    R.onChange(function () { realDataSeen++; repo = null; });
+  }
+  watchRealData();
+  /*
+   * Gate for the real-data layer (livon-data-core.js external()): an external row the Data Platform hides — expired,
+   * without a source link, or a lower-priority duplicate of the same thing — is not shown on any screen.
+   * A row the platform has not seen yet is left to the real-data layer's own rules.
+   */
+  root.LivonDataGate = function (entityId) {
+    if (building) return true; /* the bridge itself is reading the external rows */
+    var r = get();
+    if (!r) return true;
+    var reason = r.hiddenReason(entityId);
+    return reason === null || reason === "missing";
+  };
 
   /* original records whose entity is visible, in the file's own order; fallback = the file's array */
   function pass(list, prefix, keyOf) {
@@ -147,16 +174,40 @@
       return { entityId: id, known: !!e, visible: !!e && !r.hiddenReason(id), reason: r.hiddenReason(id) };
     },
 
+    /* ── provider health (future Admin): one row per real-data provider, counts and codes only ── */
+    providerHealth: function () {
+      var D = root.LivonData, r = get();
+      var status = D && typeof D.status === "function" ? D.status() : { providers: [], monitor: [] };
+      var mon = {}; (status.monitor || []).forEach(function (m) { mon[m.provider] = m; });
+      var rows = r ? r.all({ includeExpired: true, includeUnsourced: true, includeDuplicates: true }) : [];
+      return (status.providers || []).filter(function (p) { return !p.builtin; }).map(function (p) {
+        var m = mon[p.id] || {}, mine = rows.filter(function (e) { return e.meta.upstreamProvider === p.id; });
+        return {
+          provider: p.id, name: p.name, status: p.status, requiresKey: !!p.requiresKey,
+          lastSuccess: m.lastSuccessAt ? new Date(m.lastSuccessAt).toISOString() : null, lastFailure: m.lastFailureAt ? new Date(m.lastFailureAt).toISOString() : null,
+          lastFetch: m.lastSuccessAt || m.lastFailureAt ? new Date(Math.max(m.lastSuccessAt || 0, m.lastFailureAt || 0)).toISOString() : null,
+          fetched: (m.itemCount || 0) + (m.rejectedCount || 0), accepted: mine.filter(function (e) { return !r.hiddenReason(e.id); }).length,
+          rejected: m.rejectedCount || 0, duplicates: mine.filter(function (e) { return e.duplicateOf; }).length,
+          expired: mine.filter(function (e) { return r.hiddenReason(e.id) === "expired"; }).length, recordCount: mine.length,
+          errorType: m.errorCode || null, fromCache: !!m.fromCache
+        };
+      });
+    },
+    realDataChanges: function () { return realDataSeen; },
+
     /* ── data quality (counts only; used by QA and the Explore/Today empty states) ── */
     quality: function () {
       var r = get();
       if (!r) return { available: false, error: lastError ? String(lastError.message || lastError) : "platform missing" };
-      var all = r.all({ includeSamples: true, includeUnsourced: true, includeExpired: true });
+      var all = r.all({ includeSamples: true, includeUnsourced: true, includeExpired: true, includeDuplicates: true });
       var q = { available: true, builds: builds, withTopics: builtWithTopics, total: all.length, visible: 0, sample: 0, expired: 0, unsourced: 0, draft: 0, comingSoon: 0,
-        bySourceType: {}, byType: {}, duplicates: 0, sameTitleVariants: 0 };
+        bySourceType: {}, byType: {}, duplicates: 0, sameTitleVariants: 0, freshness: {}, external: 0, hiddenDuplicates: 0 };
       var titles = {}, variants = {};
       all.forEach(function (e) {
         var why = r.hiddenReason(e.id);
+        var fr = r.freshness(e); q.freshness[fr] = (q.freshness[fr] || 0) + 1;
+        if (e.sourceType !== "editorial" && e.sourceType !== "internal") q.external++;
+        if (why === "duplicate") q.hiddenDuplicates++;
         if (!why) q.visible++;
         else if (why === "expired") q.expired++;
         else if (why === "unsourced") q.unsourced++;
