@@ -1,5 +1,6 @@
 import { ChatError, LIMITS, normalizeInput, checkRateLimit, generateReply, isProduction } from './chat.mjs';
 import { applyCors, CorsError } from './cors.mjs';
+import { groundingRefs } from './ai/tools.mjs';
 
 export function json(res, status, body) {
   res.statusCode = status;
@@ -25,7 +26,19 @@ async function readBody(req) {
   try { return typeof body === 'string' ? JSON.parse(body) : body; }
   catch { throw new ChatError(400, 'INVALID_JSON'); }
 }
-export function createChatHandler({ env = process.env, fetcher = fetch, limiter = checkRateLimit } = {}) {
+/*
+ * Server-side grounding (LIVON Data Platform): fills the free "LIVON 참고 항목" slots with real LIVON items for the question.
+ * Read-only, in-memory, never stored. A slow or failing lookup never blocks the answer (≤ 1.5 s, then client refs only).
+ * LIVON_AI_SERVER_REFS=0 turns it off.
+ */
+export async function withServerRefs(input, env, grounder = groundingRefs) {
+  if (!grounder || env.LIVON_AI_SERVER_REFS === '0') return input;
+  try {
+    const refs = await Promise.race([grounder(input), new Promise(res => setTimeout(() => res(null), 1500).unref?.())]);
+    return Array.isArray(refs) ? { ...input, refs: refs.slice(0, LIMITS.refs) } : input;
+  } catch { return input; }
+}
+export function createChatHandler({ env = process.env, fetcher = fetch, limiter = checkRateLimit, grounder = groundingRefs } = {}) {
   return async (req, res) => {
     const controller = new AbortController();
     const cancel = () => { if (!res.writableEnded) controller.abort(); };
@@ -44,7 +57,9 @@ export function createChatHandler({ env = process.env, fetcher = fetch, limiter 
       if (!ip) throw new ChatError(503, 'CLIENT_ID_UNAVAILABLE');
       await limiter(ip, env, fetcher);
       if (controller.signal.aborted) return;
-      const reply = await generateReply(input, { env, fetcher, signal: controller.signal });
+      const grounded = await withServerRefs(input, env, grounder);
+      if (controller.signal.aborted) return;
+      const reply = await generateReply(grounded, { env, fetcher, signal: controller.signal });
       if (!res.destroyed) json(res, 200, reply);
     } catch (error) {
       const safe = error instanceof ChatError ? error : new ChatError(500, 'SERVER_ERROR');

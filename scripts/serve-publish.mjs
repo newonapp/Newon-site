@@ -8,6 +8,8 @@ import chat from "../api/livon/chat.mjs";
 import health from "../api/health.mjs";
 import data from "../api/livon/data.mjs";
 import userdata from "../api/livon/userdata.mjs";
+import aiChat from "../api/livon/ai/chat.mjs";
+import dataStatus from "../api/livon/data/status.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -45,6 +47,8 @@ function safePath(urlPath) {
 const server = http.createServer((req, res) => {
   const route = (req.url || "/").split("?")[0].replace(/\/$/, "");
   if (route === "/api/livon/chat") return chat(req, res);
+  if (route === "/api/livon/ai/chat") return aiChat(req, res);
+  if (route === "/api/livon/data/status") return dataStatus(req, res);
   if (route === "/api/health") return health(req, res);
   if (route === "/api/livon/data") return data(req, res);
   if (route === "/api/livon/userdata") return userdata(req, res);

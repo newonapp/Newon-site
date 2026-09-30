@@ -8,7 +8,7 @@
  * HTML이 참조하는 이미지·CSS·JS·로케일·i18n 이미지는 모두 이 스크립트가 같은 트리로 복사합니다.
  */
 import { newonAuthConfigFromEnv, newonAuthConfigScript } from "./newon-auth-config.mjs";
-import { livonApiOriginFromEnv, livonApiConfigScript } from "./livon-api-config.mjs";
+import { livonApiOriginFromEnv, livonApiOriginsFromEnv, livonApiConfigScript } from "./livon-api-config.mjs";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -583,10 +583,12 @@ spawnSync(process.execPath, [path.join(ROOT, "scripts", "render-livon-today-rout
   const cfg = newonAuthConfigFromEnv(process.env);
   if (cfg) fs.writeFileSync(path.join(OUT, "newon-auth", "newon-auth-config.js"), newonAuthConfigScript(cfg), "utf8");
 }
-// LIVON API origin (public): written only when LIVON_API_ORIGIN is a valid https origin (otherwise same-origin /api).
+// LIVON API origin (public): written only when LIVON_API_ORIGIN / LIVON_API_ORIGIN_PREVIEW is a valid https origin
+// (otherwise same-origin /api). Production and preview hosts pick their own origin in the browser.
 {
   const origin = livonApiOriginFromEnv(process.env);
-  if (origin) fs.writeFileSync(path.join(OUT, "livon", "livon-api-config.js"), livonApiConfigScript(origin), "utf8");
+  const { preview } = livonApiOriginsFromEnv(process.env);
+  if (origin || preview) fs.writeFileSync(path.join(OUT, "livon", "livon-api-config.js"), livonApiConfigScript(origin, preview), "utf8");
 }
 
 verify();

@@ -442,6 +442,7 @@
       var info = timedOut ? errorFor(504, "TIMEOUT")
         : state.userAborted ? { kind: "cancelled", msg: "답변 생성을 중지했습니다. 필요하면 다시 시도할 수 있습니다." }
         : err && err.info ? err.info
+        : typeof navigator !== "undefined" && navigator.onLine === false ? { kind: "offline", msg: "인터넷에 연결되어 있지 않습니다. 연결을 확인한 뒤 다시 시도해 주세요." }
         : { kind: "network", msg: "네트워크 연결을 확인하고 다시 시도해 주세요." };
       var th = Threads.get(requestThreadId);
       if (th) { th.messages.push({ role: "error", content: info.msg, kind: info.kind, at: Date.now() }); th.updatedAt = Date.now(); Threads.put(th); }

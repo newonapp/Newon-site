@@ -1,0 +1,26 @@
+{
+  "_notice": "FIXTURE — test-only sample rows in the shape the LIVON real-data layer / /api/livon/data returns. Not real data. Never shipped (tests/ is not published).",
+  "realDataEntities": [
+    { "id": "kr-youth-policy:policy:Y-001", "type": "policy", "provider": "kr-youth-policy", "providerId": "Y-001", "title": "[샘플] 청년 월세 지원", "summary": "무주택 청년 월세 지원 (샘플)", "tags": ["주거", "월세"], "lifeStages": ["20", "30"], "agency": "국토교통부", "officialSource": "https://www.example.go.kr/policy/Y-001", "applicationPeriod": { "start": "2026-09-01", "end": "2026-12-31" }, "source": { "providerName": "온통청년 (샘플)", "sourceUrl": "https://www.example.go.kr/policy/Y-001", "fetchedAt": "2026-09-29T00:00:00Z" }, "location": { "city": "서울특별시" } },
+    { "id": "kr-business-event:event:E-9", "type": "event", "provider": "kr-business-event", "providerId": "E-9", "title": "[샘플] 청년 창업 설명회", "summary": "창업 준비 설명회 (샘플)", "tags": ["창업"], "lifeStages": ["20", "30"], "organizer": "서울창업센터", "schedule": { "startAt": "2026-10-10T10:00:00+09:00", "endAt": "2026-10-10T12:00:00+09:00" }, "registrationUrl": "https://www.example.or.kr/e9/apply", "source": { "providerName": "기업마당 (샘플)", "sourceUrl": "https://www.example.or.kr/e9" }, "location": { "city": "서울", "address": "서울 중구 세종대로 110" } },
+    { "id": "kr-business-event:event:E-old", "type": "event", "provider": "kr-business-event", "providerId": "E-old", "title": "[샘플] 지난 박람회", "tags": ["창업"], "schedule": { "startAt": "2026-03-01T10:00:00+09:00", "endAt": "2026-03-02T18:00:00+09:00" }, "source": { "providerName": "기업마당 (샘플)", "sourceUrl": "https://www.example.or.kr/old" } },
+    { "id": "kr-lifelong-class:program:L-3", "type": "program", "provider": "kr-lifelong-class", "providerId": "L-3", "title": "[샘플] 시니어 스마트폰 교실", "tags": ["디지털", "시니어"], "lifeStages": ["60", "70"], "organizer": "구립도서관", "schedule": { "startAt": "2026-10-05", "endAt": "2026-11-30" }, "registrationEnd": "2026-10-04", "pricing": { "type": "free" }, "source": { "providerName": "전국평생학습강좌 (샘플)", "sourceUrl": "https://www.example.go.kr/class/L-3" }, "location": { "city": "대구" } },
+    { "id": "kr-kakao-place:place:P-7", "type": "place", "provider": "kr-kakao-place", "providerId": "P-7", "title": "[샘플] 동네 도서관", "category": "도서관", "mapUrl": "https://place.map.example.com/7", "source": { "providerName": "Kakao Local (샘플)", "sourceUrl": "https://place.map.example.com/7" }, "location": { "city": "서울", "address": "서울 마포구 어딘가 1", "latitude": 37.55, "longitude": 126.91 } },
+    { "id": "kr-public-tax-expert:expert:T-2", "type": "expert", "provider": "kr-public-tax-expert", "providerId": "T-2", "name": "[샘플] 마을세무사", "title": "[샘플] 마을세무사", "specialties": ["세무 상담"], "trustLevel": "partner_verified", "source": { "providerName": "마을세무사 (샘플)", "sourceUrl": "https://www.example.go.kr/tax/T-2" } }
+  ],
+  "canonicalSamples": [
+    { "id": "fx:class:bake", "type": "class", "title": "[샘플] 주말 베이킹 클래스", "summary": "샘플 클래스", "tags": ["베이킹", "취미"], "region": "서울", "startDate": "2026-10-11", "endDate": "2026-10-11", "sourceName": "Fixture", "sourceType": "fixture", "sourceUrl": "https://example.com/bake", "status": "published", "href": "#today/exp-baking" }
+  ],
+  "malformed": [
+    null, "text", 42, [],
+    { "type": "unknown", "id": "x:1", "title": "잘못된 유형", "sourceName": "X", "sourceType": "official" },
+    { "type": "place", "id": "x:2", "sourceName": "X", "sourceType": "official" },
+    { "type": "place", "id": "x:3", "title": "<script>alert(1)</script>장소", "sourceType": "official" },
+    { "type": "policy", "id": "x:4", "title": "출처 없는 정책", "sourceName": "X", "sourceType": "official", "status": "published" },
+    { "type": "event", "id": "x:5", "title": "날짜 없는 행사", "sourceName": "X", "sourceType": "official", "sourceUrl": "https://example.org/x5", "status": "published" },
+    { "type": "place", "id": "x 6 <bad>", "title": "id 오류", "sourceName": "X", "sourceType": "official" }
+  ],
+  "unsourced": [
+    { "type": "place", "id": "x:unsourced-place", "title": "출처 링크 없는 장소", "summary": "링크 없음", "sourceName": "어딘가", "sourceType": "public_api", "status": "published", "region": "서울", "tags": ["도서관"] }
+  ]
+}
