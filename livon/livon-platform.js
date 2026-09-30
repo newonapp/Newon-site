@@ -37,13 +37,17 @@
     { id: "community", label: "커뮤니티" }
   ];
 
+  /* stored value must keep the shape the caller expects (old schema / corrupted data → fallback, null entries dropped) */
+  function fitShape(v, fb) { if (Array.isArray(fb)) return Array.isArray(v) ? v.filter(function (x) { return x != null; }) : fb; if (fb && typeof fb === "object") return v && typeof v === "object" && !Array.isArray(v) ? v : fb; return v; }
   function readJSON(key, fallback) {
+    var UD = window.LivonUserData; if (UD) return UD.read(key, fallback);   /* repository → local adapter (same key, same JSON) */
     try {
       var raw = localStorage.getItem(key);
-      return raw ? JSON.parse(raw) : fallback;
+      return fitShape(raw ? JSON.parse(raw) : fallback, fallback);
     } catch (e) { return fallback; }
   }
   function writeJSON(key, value) {
+    var UD = window.LivonUserData; if (UD) return UD.write(key, value);
     try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch (e) { return false; }
   }
   function esc(s) {
@@ -263,6 +267,10 @@
     s.saves.unshift({
       id: id,
       label: item.label || item.title || "저장 항목",
+      title: item.title || item.label || "저장 항목",
+      lifeStage: item.lifeStage || "",
+      data: item.data || null,
+      savedAt: Date.now(),
       type: item.type || "content",
       href: item.href || "#life-now",
       folder: item.folder || "나중에 보기",
@@ -339,12 +347,12 @@
     migrateLegacySaves();
     var list = listSaves("all").slice(0, 8);
     if (!list.length) {
-      host.innerHTML = "<ul class=\"livon-panel__list\"><li>저장된 항목이 없습니다</li><li><a href=\"#today\">오늘의 발견</a></li><li><a href=\"#explore\">탐색</a></li><li><a href=\"#ml-panel\">내 생활 저장함</a></li></ul>";
+      host.innerHTML = "<ul class=\"livon-panel__list\"><li>저장된 항목이 없습니다</li><li><a href=\"#today\">오늘의 발견</a></li><li><a href=\"#explore\">탐색</a></li><li><a href=\"#ml-saved\">내 생활 저장함</a></li></ul>";
       return;
     }
     host.innerHTML = "<ul class=\"livon-panel__list\">" + list.map(function (x) {
       return "<li><a href=\"" + esc(x.href) + "\">" + esc(x.label) + "</a></li>";
-    }).join("") + "<li><a href=\"#ml-panel\" data-lv-plat-goto-saved>저장함 전체</a></li></ul>";
+    }).join("") + "<li><a href=\"#ml-saved\" data-lv-plat-goto-saved>저장함 전체</a></li></ul>";
   }
 
   /* ——— Alerts ——— */
@@ -352,7 +360,7 @@
     var s = load();
     if (s.alerts.length) return s;
     var ml = readJSON(KEY_ML, null);
-    var todos = (ml && ml.todos) || [];
+    var todos = ml && Array.isArray(ml.todos) ? ml.todos : [];
     var open = todos.filter(function (t) { return !t.done; }).slice(0, 2);
     open.forEach(function (t) {
       s.alerts.push({ id: "todo-" + t.id, type: "todo", title: "할 일 · " + (t.title || ""), href: "#life-now", at: Date.now(), read: false });
@@ -380,7 +388,7 @@
               return "<li><a href=\"" + esc(a.href || "#life-now") + "\">" + esc(a.title) + "</a></li>";
             }).join("")
           : "<li>표시할 알림이 없습니다</li>") +
-        "<li><a href=\"#ml-panel\" data-lv-plat-goto-settings>알림 설정</a></li>" +
+        "<li><a href=\"#ml-settings\" data-lv-plat-goto-settings>알림 설정</a></li>" +
       "</ul>";
   }
   function setAlertPref(type, on) {
@@ -459,14 +467,39 @@
     save(s);
     closeOnboarding();
   }
+  var onboardReturn = null;
   function closeOnboarding() {
     var m = document.getElementById("livon-onboard-modal");
-    if (m) m.hidden = true;
+    if (!m || m.hidden) return;
+    m.hidden = true;
+    if (onboardReturn && document.contains(onboardReturn) && onboardReturn !== document.body) {
+      try { onboardReturn.focus({ preventScroll: true }); } catch (e) {}
+    }
+    onboardReturn = null;
+  }
+  /* Dialog keyboard: Escape = "나중에 하기", Tab stays inside the dialog. */
+  function onboardKeydown(e) {
+    var m = document.getElementById("livon-onboard-modal");
+    if (!m || m.hidden) return;
+    if (e.key === "Escape") { e.preventDefault(); skipOnboarding(); return; }
+    if (e.key !== "Tab") return;
+    var f = Array.prototype.filter.call(m.querySelectorAll("button:not([tabindex='-1']), a[href], input, select, textarea"), function (el) { return el.offsetParent !== null && !el.disabled; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (!m.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   }
   function openOnboarding() {
     var m = document.getElementById("livon-onboard-modal");
     if (!m) return;
+    if (m.hidden) onboardReturn = document.activeElement;
     m.hidden = false;
+    if (!m._kbBound) { m._kbBound = true; document.addEventListener("keydown", onboardKeydown); }
+    setTimeout(function () {
+      var c = m.querySelector(".lv-life-modal__close");
+      if (c && !m.hidden) c.focus({ preventScroll: true });
+    }, 0);
     var stageHost = m.querySelector("[data-lv-onboard-stages]");
     var sitHost = m.querySelector("[data-lv-onboard-sits]");
     var goalHost = m.querySelector("[data-lv-onboard-goals]");
@@ -528,13 +561,14 @@
       if (res && res.getAttribute("data-lv-plat-result")) {
         try { sessionStorage.setItem("livon.openLifeEvent", res.getAttribute("data-lv-plat-result")); } catch (err) {}
       }
+      /* #ml-saved / #ml-settings are real My Life routes (direct URL, refresh, back/forward) */
       if (e.target.closest("[data-lv-plat-goto-saved]")) {
-        location.hash = "ml-panel";
-        try { sessionStorage.setItem("livon.mlGoto", "saved"); } catch (err) {}
+        e.preventDefault();
+        location.hash = "ml-saved";
       }
       if (e.target.closest("[data-lv-plat-goto-settings]")) {
-        location.hash = "ml-panel";
-        try { sessionStorage.setItem("livon.mlGoto", "settings"); } catch (err) {}
+        e.preventDefault();
+        location.hash = "ml-settings";
       }
     });
 
@@ -620,10 +654,7 @@
       var goto = sessionStorage.getItem("livon.mlGoto");
       if (goto) {
         sessionStorage.removeItem("livon.mlGoto");
-        setTimeout(function () {
-          location.hash = "ml-panel";
-          if (window.LivonLifeNow && window.LivonLifeNow.goto) window.LivonLifeNow.goto(goto);
-        }, 400);
+        setTimeout(function () { location.hash = "ml-" + String(goto).replace(/[^a-z-]/g, ""); }, 400);
       }
     } catch (e) {}
   }

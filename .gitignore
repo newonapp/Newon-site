@@ -73,3 +73,7 @@ screenshots-ko-zips/
 screenshots-ko.zip
 .preview-shots/
 .chrome-*/
+
+# Private planning material and Python caches (not part of the site)
+docs/strategy/
+__pycache__/

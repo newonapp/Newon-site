@@ -4,6 +4,10 @@
  * If the port is busy, tries 8900, 8901, … up to 15 times.
  */
 import http from "node:http";
+import chat from "../api/livon/chat.mjs";
+import health from "../api/health.mjs";
+import data from "../api/livon/data.mjs";
+import userdata from "../api/livon/userdata.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -39,6 +43,11 @@ function safePath(urlPath) {
 }
 
 const server = http.createServer((req, res) => {
+  const route = (req.url || "/").split("?")[0].replace(/\/$/, "");
+  if (route === "/api/livon/chat") return chat(req, res);
+  if (route === "/api/health") return health(req, res);
+  if (route === "/api/livon/data") return data(req, res);
+  if (route === "/api/livon/userdata") return userdata(req, res);
   if (!fs.existsSync(ROOT)) {
     res.writeHead(500, { "Content-Type": "text/plain; charset=utf-8" });
     res.end("_publish 폴더가 없습니다. 먼저: npm run publish\n");

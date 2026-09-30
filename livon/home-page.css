@@ -200,7 +200,9 @@
   background: #0c0c0c;
 }
 #livon-home .lv-hm-sec--journey .lv-hm-lead { margin-left: auto; margin-right: auto; }
-#livon-home .lv-hm-journey { margin-top: clamp(2rem, 5vw, 3rem); text-align: left; }
+#livon-home .lv-hm-journey { margin-top: clamp(2rem, 5vw, 3rem); text-align: left; width: 100%; max-width: 100%; min-width: 0; align-self: stretch; box-sizing: border-box; }
+#livon-home .lv-hm-journey__copy { min-width: 0; overflow-wrap: anywhere; }
+#livon-home .lv-hm-journey__copy .lv-hm-actions, #livon-home .lv-hm-journey__copy [class*="acts"] { flex-wrap: wrap; }
 #livon-home .lv-hm-journey__rail {
   display: flex;
   gap: 0.45rem;
@@ -499,8 +501,8 @@
 #livon-home .lv-hm-sec--mylivon .lv-hm-kicker,
 #livon-home .lv-hm-sec--mylivon .lv-hm-display { color: #0c0c0c; }
 #livon-home .lv-hm-sec--mylivon .lv-hm-lead { color: #444; margin-left: 0; margin-top: 0; }
-#livon-home .lv-hm-sec--mylivon .lv-hm-note { color: #888; margin: 0; font-size: 0.9rem; }
-#livon-home .lv-hm-sec--mylivon .lv-hm-eyebrow { color: #999; }
+#livon-home .lv-hm-sec--mylivon .lv-hm-note { color: #737373; margin: 0; font-size: 0.9rem; }
+#livon-home .lv-hm-sec--mylivon .lv-hm-eyebrow { color: #737373; }
 #livon-home .lv-hm-sec--mylivon .lv-hm-btn {
   background: #0c0c0c;
   border-color: #0c0c0c;
@@ -683,14 +685,14 @@
   max-width: 28rem;
   font-size: 0.92rem;
   line-height: 1.55;
-  color: #777;
+  color: #737373;
 }
 #livon-home .lv-hm-day__head time {
   font-family: "Noto Sans KR", "Noto Sans", Kanit, sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.06em;
-  color: #888;
+  color: #737373;
   padding: 0.45rem 0.85rem;
   border: 1px solid #e6e6e6;
   border-radius: 999px;
@@ -865,7 +867,7 @@
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: #aaa;
+  color: #737373;
 }
 #livon-home .lv-hm-stat__body {
   display: flex;
@@ -898,7 +900,7 @@
 }
 #livon-home .lv-hm-stat small {
   font-size: 0.84rem;
-  color: #888;
+  color: #737373;
   line-height: 1.4;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1043,6 +1045,7 @@
   font-weight: 700;
   text-decoration: none;
 }
+#livon-home .lv-hm-rec__more { display: inline-flex; align-items: center; min-height: 44px; }
 #livon-home .lv-hm-rec__more:hover { text-decoration: underline; }
 #livon-home .lv-hm-rec__mosaic {
   display: grid;
@@ -1359,7 +1362,7 @@
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.62);
 }
 #livon-home .lv-hm-ex-ol__body {
   display: grid;
@@ -1505,8 +1508,28 @@
 
 /* 07 AI */
 #livon-home .lv-hm-sec--ai {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   text-align: center;
   background: #0c0c0c;
+}
+#hm-ai .lv-hm-ai-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: -2;
+}
+#livon-home #hm-ai::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.48);
+  pointer-events: none;
+  z-index: -1;
 }
 #livon-home .lv-hm-sec--ai .lv-hm-lead { margin-left: auto; margin-right: auto; }
 #livon-home .lv-hm-ai {
@@ -1641,3 +1664,38 @@
   font-size: 0.75rem;
   color: #888;
 }
+
+/* ── Home V1 final: 이어서 하기 · 내 라이프 스테이지 (existing dark section tokens) ── */
+#livon-home .lv-hm-sec--continue { padding: clamp(2.5rem, 5vw, 3.75rem) 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+#livon-home .lv-hm-sec--continue[hidden] { display: none; }
+#livon-home .lv-hm-continue__head h2 { margin: 0 0 0.35rem; font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 750; letter-spacing: -0.03em; }
+#livon-home .lv-hm-sec--continue .lv-hm-note { margin: 0; color: rgba(255,255,255,0.62); font-size: 0.875rem; }
+#livon-home .lv-hm-continue { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+#livon-home .lv-hm-continue__card,
+#livon-home .lv-hm-mystage__list a {
+  display: grid; gap: 0.3rem; min-height: 44px; padding: 1rem 1.1rem;
+  border: 1px solid rgba(255,255,255,0.16); border-radius: 1.1rem;
+  color: #fff; text-decoration: none; transition: border-color 0.2s ease, background 0.2s ease;
+}
+#livon-home .lv-hm-continue__card:hover,
+#livon-home .lv-hm-mystage__list a:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
+#livon-home .lv-hm-continue__card em { font-style: normal; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; color: rgba(255,255,255,0.62); }
+#livon-home .lv-hm-continue__card strong,
+#livon-home .lv-hm-mystage__list strong { font-size: 1rem; font-weight: 700; line-height: 1.4; }
+#livon-home .lv-hm-continue__card small,
+#livon-home .lv-hm-mystage__list small { font-size: 0.8125rem; color: rgba(255,255,255,0.7); }
+#livon-home .lv-hm-mystage { width: 100%; margin-top: clamp(1.75rem, 4vw, 2.5rem); text-align: left; }
+#livon-home .lv-hm-mystage__card { padding: clamp(1.25rem, 3vw, 1.75rem); border: 1px solid rgba(255,255,255,0.16); border-radius: 1.5rem; }
+#livon-home .lv-hm-mystage__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+#livon-home .lv-hm-mystage__head h3 { margin: 0; font-size: clamp(1.2rem, 2.4vw, 1.6rem); font-weight: 750; letter-spacing: -0.03em; }
+#livon-home .lv-hm-mystage__head .lv-hm-actions { margin-top: 0; }
+#livon-home .lv-hm-mystage .lv-hm-note { margin: 0.5rem 0 0; color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; }
+#livon-home .lv-hm-mystage__grid { display: grid; gap: 1.25rem; margin-top: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+#livon-home .lv-hm-mystage__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+#livon-home .lv-hm-mystage > .lv-hm-mystage__card > .lv-hm-actions { margin-top: 1.25rem; }
+#livon-home .lv-hm-cm-empty .lv-hm-actions { margin-top: 1rem; justify-content: center; }
+#livon-home :is(.lv-hm-continue__card, .lv-hm-mystage__list a, .lv-hm-mystage .lv-hm-btn):focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  #livon-home .lv-hm-continue__card, #livon-home .lv-hm-mystage__list a { transition: none; }
+}
+#livon-home .lv-hm-cats a { display: inline-flex; align-items: center; min-height: 44px; }

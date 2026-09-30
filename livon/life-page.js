@@ -80,10 +80,12 @@
       .replace(/"/g, "&quot;");
   }
 
+  /* stored value must keep the shape the caller expects (old schema / corrupted data → fallback, null entries dropped) */
+  function fitShape(v, fb) { if (Array.isArray(fb)) return Array.isArray(v) ? v.filter(function (x) { return x != null; }) : fb; if (fb && typeof fb === "object") return v && typeof v === "object" && !Array.isArray(v) ? v : fb; return v; }
   function readJSON(key, fallback) {
     try {
       var raw = localStorage.getItem(key);
-      return raw ? JSON.parse(raw) : fallback;
+      return fitShape(raw ? JSON.parse(raw) : fallback, fallback);
     } catch (e) { return fallback; }
   }
   function writeJSON(key, value) {
@@ -98,14 +100,14 @@
     return (DATA.statusLabel && DATA.statusLabel[key]) || key || "안내";
   }
   function gnavOffset() {
-    return (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--gnav-h")) || 74) + 56;
+    return (window.LivonStickyOffset ? window.LivonStickyOffset() : (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--gnav-h"), 10) || 74) + 52) + 8;
   }
 
   function scrollToId(id) {
     var el = document.getElementById(id);
     if (!el) return;
     var top = el.getBoundingClientRect().top + window.pageYOffset - gnavOffset();
-    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    window.scrollTo({ top: Math.max(0, top), behavior: (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ? "auto" : "smooth" });
   }
 
   function resolveServices(stage, names) {
@@ -126,12 +128,13 @@
   function prefs() {
     return {
       stage: readJSON(KEY_STAGE, null),
-      situations: readJSON(KEY_SITUATIONS, []),
-      interests: readJSON(KEY_INTERESTS, []),
-      events: readJSON(KEY_EVENTS, []),
-      goals: readJSON(KEY_GOALS, [])
+      situations: textList(KEY_SITUATIONS),
+      interests: textList(KEY_INTERESTS),
+      events: textList(KEY_EVENTS),
+      goals: textList(KEY_GOALS)
     };
   }
+  function textList(key) { return readJSON(key, []).filter(function (x) { return typeof x === "string"; }); }
 
   function savedList() {
     return readJSON(KEY_SAVED, []);
@@ -164,6 +167,7 @@
 
   function svcCard(svc, stageId, opts) {
     opts = opts || {};
+    if (window.LivonServices && svc.id) return window.LivonServices.card(svc, stageId, opts);
     var saved = isSaved(svc.name);
     var feats = (svc.feats || []).slice(0, 3).map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("");
     var href = svc.href || "#explore";
@@ -258,7 +262,7 @@
     });
 
     if (opts.updateHash !== false) {
-      var next = "#stage-" + id;
+      var next = window.LivonLifeHub ? "#life/" + id + "s" : "#stage-" + id;
       if (location.hash !== next) history.replaceState(null, "", next);
     }
     if (opts.scroll) {
@@ -371,15 +375,22 @@
       var meta =
         '<div class="lv-life-decade__meta">' +
           "<div><p>FOCUS</p><strong>" + esc(s.focus) + "</strong></div>" +
-          "<div><p>FIELDS</p><strong>" + esc(String((s.fields || []).length)) + "개 생활 분야</strong></div>" +
+          "<div><p>FIELDS</p><strong data-lh-count=\"" + esc(s.id) + "\">" + esc(String((s.fields || []).length)) + "개 생활 분야</strong></div>" +
         "</div>";
-      var fields =
-        '<div class="lv-life-block-label"><p class="lv-life-kicker">Life Fields</p><h3 class="lv-life-title lv-life-title--md">생활 분야</h3></div>' +
-        '<div class="lv-life-fields" data-lv-life-fields="' + esc(s.id) + '">' +
-          (s.fields || []).map(function (f) {
-            return '<button type="button" data-field="' + esc(f.id) + '" data-stage="' + esc(s.id) + '">' + esc(f.name) + "</button>";
-          }).join("") +
-        "</div>";
+      /* Life Stage hub: popular topics + interest categories come from life-topics.json (LivonLifeHub). */
+      var fields = window.LivonLifeHub
+        ? '<div class="lv-life-block-label"><p class="lv-life-kicker">Popular Topics</p><h3 class="lv-life-title lv-life-title--md">지금 많이 찾는 주제</h3></div>' +
+          '<div data-lh-hero="' + esc(s.id) + '"></div>' +
+          '<div data-lh-featured="' + esc(s.id) + '"></div>' +
+          '<div class="lv-life-block-label"><p class="lv-life-kicker">Interests</p><h3 class="lv-life-title lv-life-title--md">관심 분야</h3></div>' +
+          '<div data-lh-categories="' + esc(s.id) + '"></div>' +
+          '<p class="lv-life-note"><a href="#life/search/">모든 연령대에서 주제·가이드·정책 검색하기</a></p>'
+        : '<div class="lv-life-block-label"><p class="lv-life-kicker">Life Fields</p><h3 class="lv-life-title lv-life-title--md">생활 분야</h3></div>' +
+          '<div class="lv-life-fields" data-lv-life-fields="' + esc(s.id) + '">' +
+            (s.fields || []).map(function (f) {
+              return '<button type="button" data-field="' + esc(f.id) + '" data-stage="' + esc(s.id) + '">' + esc(f.name) + "</button>";
+            }).join("") +
+          "</div>";
       var services =
         '<div class="lv-life-block-label"><p class="lv-life-kicker">Services</p><h3 class="lv-life-title lv-life-title--md">관련 생활 서비스</h3></div>' +
         '<div class="lv-life-services is-trio">' +
@@ -445,8 +456,11 @@
 
     renderStageSwitch();
     var initial = "10";
+    var hubStage = window.LivonLifeHub ? window.LivonLifeHub.stageIdFromHash(location.hash) : null;
     if (location.hash.indexOf("#stage-") === 0) {
       initial = location.hash.replace("#stage-", "");
+    } else if (hubStage) {
+      initial = hubStage;
     } else if (state.viewStage) {
       initial = state.viewStage;
     } else {
@@ -456,6 +470,7 @@
     state.viewStage = String(initial);
     renderStageSwitch();
     showStageView(initial, { updateHash: false });
+    if (window.LivonLifeHub) window.LivonLifeHub.renderStageBlocks();
   }
 
   function renderSetupPanel() {
@@ -540,7 +555,7 @@
       if (p.stage) bits.push(stageById(p.stage) ? stageById(p.stage).label : p.stage);
       if (p.situations.length) bits.push(p.situations.slice(0, 2).join(", "));
       if (p.interests.length) bits.push(p.interests.slice(0, 2).join(", "));
-      why.textContent = "우선 기준: " + (bits.join(" · ") || "선택값") + " (규칙 기반)";
+      why.textContent = bits.join(" · ") || "선택한 관심사";
     }
     host.innerHTML = '<div class="lv-life-services is-trio">' +
       scored.map(function (item) {
@@ -788,9 +803,11 @@
     var sticky = $("[data-lv-life-sticky]");
     var hero = $("[data-lv-life-hero]");
     if (!sticky || !hero) return;
+    sticky.inert = true; /* hidden (opacity 0) bar must not take keyboard focus */
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         sticky.classList.toggle("is-show", !e.isIntersecting);
+        sticky.inert = e.isIntersecting;
       });
     }, { threshold: 0.05 });
     io.observe(hero);
@@ -816,7 +833,9 @@
         var name = btn.getAttribute("data-lv-life-save");
         var on = toggleSave(name);
         btn.textContent = on ? "저장됨" : "저장하기";
-        openLoginNotice("관심 서비스는 이 기기에 저장됩니다. 계정 동기화·클라우드 저장은 아직 연결되지 않았습니다.");
+        /* one storage notice per session (shared with life-hub's save notice) — no repeated warnings */
+        var seen = false; try { seen = sessionStorage.getItem("livon.lifeHub.saveAck") === "true"; } catch (e) {}
+        if (!seen) { try { sessionStorage.setItem("livon.lifeHub.saveAck", "true"); } catch (e) {} openLoginNotice("현재 이 기기에 저장됩니다. 브라우저 데이터를 삭제하거나 다른 기기에서 이용하면 저장 내용이 유지되지 않을 수 있습니다."); }
       });
     });
     $$("[data-lv-life-share]", root).forEach(function (btn) {
@@ -1047,10 +1066,18 @@
       return hash === "life" ||
         hash === "life-stages" ||
         hash.indexOf("stage-") === 0 ||
+        hash.indexOf("life/") === 0 ||
         hash.indexOf("field-") === 0 ||
         (hash.indexOf("life-") === 0 && hash !== "life-now");
     },
     onShow: function (hash) {
+      var hub = window.LivonLifeHub;
+      if (hub && hash.indexOf("life-service-") === 0) hub.hide();
+      if (window.LivonServices && window.LivonServices.open(hash)) return;
+      /* Topic / category / services / search routes: #life/{stage}/{topic}... */
+      if (hub && hub.open("#" + hash)) return;
+      var hubStage = hub ? hub.stageIdFromHash(hash) : null;
+      if (hubStage) hash = "stage-" + hubStage;
       initHero();
       updateStageLabel();
       $$("#life [data-lv-reveal]").forEach(function (n) {
@@ -1094,5 +1121,7 @@
     bindSetup();
     bind();
     updateStageLabel();
+    var hash = (location.hash || "#life").slice(1);
+    if (window.LivonLife.isLifeHash(hash)) window.LivonLife.onShow(hash);
   });
 })();

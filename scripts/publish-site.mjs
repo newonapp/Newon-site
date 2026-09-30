@@ -7,6 +7,8 @@
  * 배포 단위는 오직 _publish/ 한 폴더입니다. (Git에는 소스만 커밋; Pages에는 Actions가 _publish 업로드)
  * HTML이 참조하는 이미지·CSS·JS·로케일·i18n 이미지는 모두 이 스크립트가 같은 트리로 복사합니다.
  */
+import { newonAuthConfigFromEnv, newonAuthConfigScript } from "./newon-auth-config.mjs";
+import { livonApiOriginFromEnv, livonApiConfigScript } from "./livon-api-config.mjs";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -176,6 +178,8 @@ const PUBLISH_COPY_DIRS = [
   { from: "oxmonth", to: "oxmonth", required: false },
   { from: "subping", to: "subping", required: false },
   { from: "livon", to: "livon", required: true },
+  /** Newon+ consumer auth foundation (shared by Newon web services; anonymous until a Newon+ project is configured). */
+  { from: "newon-auth", to: "newon-auth", required: true },
   { from: "ongil-start", to: "ongil-start", required: true },
   { from: "assets", to: "assets", required: true },
   { from: "vendor/three", to: "vendor/three", required: true },
@@ -197,7 +201,7 @@ const ALL_PUBLISH_ROOT_FILES = [...PUBLISH_ROOT_CORE, ...PUBLISH_ROOT_IMAGES];
 function copyDir(src, dest) {
   fs.mkdirSync(dest, { recursive: true });
   for (const ent of fs.readdirSync(src, { withFileTypes: true })) {
-    if (ent.name === "__pycache__" || ent.name === ".DS_Store" || ent.name.endsWith(".pyc")) continue;
+    if (ent.name === "__pycache__" || ent.name === ".DS_Store" || ent.name.endsWith(".pyc") || ent.name.endsWith(".py") || ent.name === ".env" || ent.name.startsWith(".env.")) continue;
     const s = path.join(src, ent.name);
     const d = path.join(dest, ent.name);
     if (ent.isDirectory()) copyDir(s, d);
@@ -491,6 +495,11 @@ function verify() {
   required.push(path.join(OUT, "livon", "home-page.css"));
   required.push(path.join(OUT, "livon", "today-data.js"));
   required.push(path.join(OUT, "livon", "life-data.js"));
+  required.push(path.join(OUT, "livon", "life-hub.js"));
+  required.push(path.join(OUT, "livon", "life-topics.json"));
+  required.push(path.join(OUT, "livon", "life", "20s", "first-independence", "index.html"));
+  required.push(path.join(OUT, "livon", "today-feed.js"));
+  required.push(path.join(OUT, "livon", "today", "td-indep-missed", "index.html"));
   required.push(path.join(OUT, "livon", "community-data.js"));
   required.push(path.join(OUT, "livon", "explore-data.js"));
   required.push(path.join(OUT, "livon", "assets", "topics", "hangang.jpg"));
@@ -558,6 +567,27 @@ spawnSync(process.execPath, [path.join(ROOT, "scripts", "render-company.mjs"), "
 }).status === 0 || process.exit(1);
 validateHuman404Game();
 assemble();
+// LIVON Life Stage direct URLs (/livon/life/{stage}/{topic}/ → /livon/#life/...).
+spawnSync(process.execPath, [path.join(ROOT, "scripts", "render-livon-life-routes.mjs"), "--out", path.join(OUT, "livon")], {
+  cwd: ROOT,
+  stdio: "inherit",
+}).status === 0 || process.exit(1);
+// LIVON 오늘의 발견 direct URLs (/livon/today/{id}/ → /livon/#today/{id}).
+spawnSync(process.execPath, [path.join(ROOT, "scripts", "render-livon-today-routes.mjs"), "--out", path.join(OUT, "livon")], {
+  cwd: ROOT,
+  stdio: "inherit",
+}).status === 0 || process.exit(1);
+
+// Newon+ public web config: written only when every NEWON_PLUS_FIREBASE_* public value is set (otherwise stays empty).
+{
+  const cfg = newonAuthConfigFromEnv(process.env);
+  if (cfg) fs.writeFileSync(path.join(OUT, "newon-auth", "newon-auth-config.js"), newonAuthConfigScript(cfg), "utf8");
+}
+// LIVON API origin (public): written only when LIVON_API_ORIGIN is a valid https origin (otherwise same-origin /api).
+{
+  const origin = livonApiOriginFromEnv(process.env);
+  if (origin) fs.writeFileSync(path.join(OUT, "livon", "livon-api-config.js"), livonApiConfigScript(origin), "utf8");
+}
 
 verify();
 verifyArtifact();

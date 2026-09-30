@@ -5,6 +5,7 @@ window.LivonCommunityData = {
     experience: "경험 공유",
     review: "후기",
     info: "생활 정보",
+    tip: "생활 팁",
     meetup: "모임 관련"
   },
   questionFields: [

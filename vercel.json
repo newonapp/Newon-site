@@ -1,7 +1,13 @@
 {
   "rewrites": [
-    { "source": "/terms", "destination": "/terms/" },
-    { "source": "/privacy", "destination": "/privacy/" }
+    {
+      "source": "/terms",
+      "destination": "/terms/"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy/"
+    }
   ],
   "trailingSlash": true,
   "headers": [
@@ -13,6 +19,72 @@
           "value": "text/plain; charset=utf-8"
         }
       ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), payment=(), usb=(), geolocation=(self)"
+        }
+      ]
+    },
+    {
+      "source": "/((?!livon/?$).*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy-Report-Only",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://db.onlinewebfonts.com https://fonts.cdnfonts.com; font-src 'self' data: https://fonts.gstatic.com https://db.onlinewebfonts.com https://fonts.cdnfonts.com; img-src 'self' data: blob: https:; media-src 'self' blob: https://d8j0ntlcm91z4.cloudfront.net; connect-src 'self' https://api.newon.app https://formsubmit.co https://*.googleapis.com https://www.gstatic.com https://d8j0ntlcm91z4.cloudfront.net; frame-src 'self' https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com https://*.firebaseapp.com; worker-src 'self' blob:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co"
+        }
+      ]
+    },
+    {
+      "source": "/livon",
+      "headers": [
+        {
+          "key": "Content-Security-Policy-Report-Only",
+          "value": "default-src 'self'; script-src 'self' 'sha256-HE9gv0/Aro5orXoO2L/bav3366hJCESHFiyxlZRbmVM=' 'sha256-KcScIVO2wMZNzVBRRQLLFNOa1gTxJRKQzq365Qr0PUA=' 'sha256-diUzsrHW83tMx13b5aKkuX1oa9ru9GlMHWOLWcIzJso=' 'sha256-YAWhtFmmGpVKQjE81VpNFcO7595W9om9i0htAbMpv+E=' https://cdn.jsdelivr.net https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://db.onlinewebfonts.com https://fonts.cdnfonts.com; font-src 'self' data: https://fonts.gstatic.com https://db.onlinewebfonts.com https://fonts.cdnfonts.com; img-src 'self' data: blob: https: http://tong.visitkorea.or.kr; media-src 'self' blob: https://d8j0ntlcm91z4.cloudfront.net; connect-src 'self' https://d8j0ntlcm91z4.cloudfront.net https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://www.gstatic.com; frame-src 'self' https://*.firebaseapp.com; worker-src 'self' blob:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"
+        }
+      ]
+    },
+    {
+      "source": "/livon/",
+      "headers": [
+        {
+          "key": "Content-Security-Policy-Report-Only",
+          "value": "default-src 'self'; script-src 'self' 'sha256-HE9gv0/Aro5orXoO2L/bav3366hJCESHFiyxlZRbmVM=' 'sha256-KcScIVO2wMZNzVBRRQLLFNOa1gTxJRKQzq365Qr0PUA=' 'sha256-diUzsrHW83tMx13b5aKkuX1oa9ru9GlMHWOLWcIzJso=' 'sha256-YAWhtFmmGpVKQjE81VpNFcO7595W9om9i0htAbMpv+E=' https://cdn.jsdelivr.net https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://db.onlinewebfonts.com https://fonts.cdnfonts.com; font-src 'self' data: https://fonts.gstatic.com https://db.onlinewebfonts.com https://fonts.cdnfonts.com; img-src 'self' data: blob: https: http://tong.visitkorea.or.kr; media-src 'self' blob: https://d8j0ntlcm91z4.cloudfront.net; connect-src 'self' https://d8j0ntlcm91z4.cloudfront.net https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://www.gstatic.com; frame-src 'self' https://*.firebaseapp.com; worker-src 'self' blob:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
-  ]
+  ],
+  "buildCommand": "node scripts/vercel-build.mjs",
+  "outputDirectory": "_publish",
+  "functions": {
+    "api/livon/chat.mjs": {
+      "maxDuration": 40
+    },
+    "api/livon/data.mjs": {
+      "maxDuration": 40
+    },
+    "api/livon/userdata.mjs": {
+      "maxDuration": 30
+    }
+  }
 }

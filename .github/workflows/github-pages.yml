@@ -36,6 +36,17 @@ jobs:
         env:
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_RUN_ID: ${{ github.run_id }}
+          # Public, optional: https origin of the LIVON API (Vercel). Unset → LIVON calls same-origin /api (no API on Pages).
+          # Set it as a repository VARIABLE (Settings → Secrets and variables → Actions → Variables), not a secret.
+          LIVON_API_ORIGIN: ${{ vars.LIVON_API_ORIGIN }}
+          # Public Newon+ Firebase WEB client config (safe to ship to browsers; never a service account or private key).
+          # Repository VARIABLES only. Empty → no login UI and no Firebase SDK request (LIVON stays anonymous).
+          NEWON_PLUS_FIREBASE_API_KEY: ${{ vars.NEWON_PLUS_FIREBASE_API_KEY }}
+          NEWON_PLUS_FIREBASE_AUTH_DOMAIN: ${{ vars.NEWON_PLUS_FIREBASE_AUTH_DOMAIN }}
+          NEWON_PLUS_FIREBASE_PROJECT_ID: ${{ vars.NEWON_PLUS_FIREBASE_PROJECT_ID }}
+          NEWON_PLUS_FIREBASE_APP_ID: ${{ vars.NEWON_PLUS_FIREBASE_APP_ID }}
+          NEWON_PLUS_AUTH_PROVIDERS: ${{ vars.NEWON_PLUS_AUTH_PROVIDERS }}
+          NEWON_PLUS_AUTH_PERSISTENCE: ${{ vars.NEWON_PLUS_AUTH_PERSISTENCE }}
 
       - name: Publish to gh-pages
         id: publish
