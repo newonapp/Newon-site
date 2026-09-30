@@ -9,6 +9,8 @@ node scripts/livon-content-quality.mjs --json report.json # full per-record repo
 node --test tests/livon/content-quality.test.mjs          # CQ-1 … CQ-25
 ```
 
+The evaluator itself lives in `livon/data/livon-content-quality.js`. The CLI and the local Data Manager (`docs/livon/LIVON_DATA_MANAGER.md`) run that one implementation, so there is no second copy of the rules.
+
 The script loads the data files, the Data Platform, the screen bridge and the search index the same way the browser
 does, and makes no network requests. The quality score is internal only: nothing in `livon/` reads it, and CQ-25
 checks this.
@@ -83,6 +85,7 @@ Flags (only the ones needed):
 | `WEAK_SEARCH_METADATA` | No category and no tags. |
 | `UNSOURCED_SPECIFIC` | States an amount with no official link. |
 | `TIME_SENSITIVE_CLAIM` | A year, or "현재 운영/모집/신청 중", stated as fact. |
+| `FIELD_CONFLICT` | Added in Data Manager V1: two fields of one record disagree, e.g. a budget amount next to "프로그램별 상이". Currently td:place-mmca and td:exp-pottery. Never auto-corrected. |
 | `ORPHAN` | Not shown anywhere and not referenced. |
 
 ## 3. Before → after

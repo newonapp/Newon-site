@@ -302,6 +302,13 @@ function assemble() {
     copyDir(src, dest);
   }
 
+  /* LIVON Data Manager (/livon/admin/) is a local-only QA tool: it is never published. */
+  fs.rmSync(path.join(OUT, "livon", "admin"), { recursive: true, force: true });
+  if (fs.existsSync(path.join(OUT, "livon", "admin"))) {
+    console.error("publish-site: livon/admin must not be published");
+    process.exit(1);
+  }
+
   for (const name of PUBLISH_ROOT_OPTIONAL) {
     copyFileIfExists(path.join(ROOT, name), path.join(OUT, name));
   }

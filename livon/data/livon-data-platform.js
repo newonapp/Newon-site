@@ -1080,12 +1080,28 @@
       var f = { types: ctx.types, region: ctx.region, lifeStage: ctx.lifeStage, lifeEvent: ctx.lifeEvent, category: ctx.category };
       var list = applyFilters(visible(ctx), f);
       var interests = (ctx.interests || []).map(norm);
+      /* Context check for all-age rows: a row whose own category is a life-event category (육아, 보육, 창업, 은퇴 …)
+         belongs to that event's life stages (from the Life Event catalog). Asked for another stage, it is left out —
+         e.g. the 아이사랑 childcare portal (category 육아 → Life Event 육아 → 20·30·40대) is not recommended to 70대,
+         even though its "돌봄" tag matches. Tags and search are untouched; rows with a stage of their own are unaffected. */
+      var eventStages = {};
+      store.forEach(function (x) { if (x.type === "lifeEvent") eventStages[x.id.replace(/^le:/, "")] = x.lifeStages; });
+      function contextStages(e) {
+        var evs = CATEGORY_LIFE_EVENTS[String(e.category || "").trim()] || [];
+        return uniq([].concat.apply([], evs.map(function (k) { return eventStages[k] || []; })));
+      }
+      var want = ctx.lifeStage ? stageOf(ctx.lifeStage) : null;
+      if (want) list = list.filter(function (e) { if (e.lifeStages.length) return true; var cs = contextStages(e); return !cs.length || cs.indexOf(want) >= 0; });
       var scored = list.map(function (e) {
-        var s = (e.verified ? 1 : 0) + (e.meta.featured ? 1 : 0);
-        if (ctx.lifeStage && e.lifeStages.indexOf(stageOf(ctx.lifeStage)) >= 0) s += 2;
-        s += 2 * e.tags.map(norm).filter(function (x) { return interests.indexOf(x) >= 0; }).length;
-        if (ctx.region && e.region === ctx.region) s += 2;
-        return { entity: e, score: s };
+        var s = 0, why = [];
+        if (e.verified) { s += 1; why.push("verified +1"); }
+        if (e.meta.featured) { s += 1; why.push("featured +1"); }
+        if (want && e.lifeStages.indexOf(want) >= 0) { s += 2; why.push("life stage " + want + " +2"); }
+        var hit = e.tags.map(norm).filter(function (x) { return interests.indexOf(x) >= 0; });
+        if (hit.length) { s += 2 * hit.length; why.push("interest " + hit.join(",") + " +" + 2 * hit.length); }
+        if (ctx.region && e.region === ctx.region) { s += 2; why.push("region +2"); }
+        if (ctx.lifeEvent) why.push("life event " + String(ctx.lifeEvent).replace(/^le:/, "") + " (filter)");
+        return { entity: e, score: s, reasons: why };
       });
       scored.sort(function (a, b) { return b.score - a.score || a.entity.title.localeCompare(b.entity.title); });
       return { method: "rule-based", items: scored.slice(0, ctx.limit || 10) };

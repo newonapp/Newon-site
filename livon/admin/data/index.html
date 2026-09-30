@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>LIVON Data Manager · local</title>
+  <link rel="stylesheet" href="/livon/admin/data/data-manager.css">
+</head>
+<body>
+  <!-- Local-only QA tool. Not linked from LIVON, not published (scripts/publish-site.mjs removes livon/admin),
+       and refuses to run on any host other than localhost / 127.0.0.1 / ::1 / *.localhost / *.test. -->
+  <a class="dm-skip" href="#dm-main">본문으로 건너뛰기</a>
+  <div id="dm-app" data-dm-state="checking" aria-live="polite">
+    <p class="dm-boot">Loading…</p>
+  </div>
+  <script src="/livon/admin/data/data-manager-core.js"></script>
+  <script src="/livon/admin/data/data-manager.js"></script>
+</body>
+</html>

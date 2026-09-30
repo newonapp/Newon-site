@@ -237,6 +237,30 @@
     }
     return total;
   }
+  /* ───────── debug explanation (local Data Manager only; reuses the same scoring functions, changes nothing) ───────── */
+  var DIRECT_LABEL = { 120: "title = word", 80: "title starts with word", 55: "a title word starts with word", 35: "title contains word",
+    130: "title = word + category/tag", 90: "title starts with word + category/tag", 65: "title word + category/tag", 45: "title contains word + category/tag",
+    30: "a category/tag word starts with word", 15: "category/tag contains word", 14: "a description word starts with word", 8: "description contains word", 5: "related text (guide/checklist)" };
+  function explainItem(item, tokens) {
+    return tokens.map(function (tok) {
+      var d = tokenScore(item, tok);
+      if (d) return { token: tok, kind: "direct", score: d, field: DIRECT_LABEL[d] || "direct" };
+      var best = 0, via = "";
+      (SYN[tok] || []).forEach(function (syn) { var v = synScore(item, norm(syn)); if (v > best) { best = v; via = syn; } });
+      if (best) return { token: tok, kind: "synonym", score: best, field: (best === 30 ? "title" : "category/tag") + " word starts with synonym “" + via + "”" };
+      (ALIAS[tok] || []).forEach(function (syn) { var v = synScore(item, norm(syn)) * 0.4; if (v > best) { best = v; via = syn; } });
+      if (best) return { token: tok, kind: "alias", score: best, field: (best === 12 ? "title" : "category/tag") + " word starts with alias “" + via + "” (ranks below direct matches)" };
+      return { token: tok, kind: "none", score: 0, field: "" };
+    });
+  }
+  function explain(q, f) {
+    var tokens = tokensOf(q), r = search(q, f);
+    return { query: String(q || ""), tokens: tokens, dropped: uniq(String(q || "").trim().split(/\s+/).map(norm).filter(Boolean)).filter(function (t) { return tokens.indexOf(t) < 0; }),
+      total: r.total, items: r.items.map(function (h, i) {
+        var parts = h.via ? [{ token: "", kind: "related", score: h.score, field: "linked from “" + h.via + "” (a strong match)" }] : explainItem(h.item, tokens);
+        return { rank: i + 1, key: h.item.key, title: h.item.title, type: h.item.type, typeLabel: h.item.typeLabel, score: h.score, parts: parts };
+      }) };
+  }
   function tokensOf(q) {
     var toks = uniq(String(q || "").trim().split(/\s+/).map(norm).filter(Boolean));
     var kept = toks.filter(function (t) { return !FILLER[t]; });
@@ -324,7 +348,7 @@
 
   window.LivonSearch = {
     TYPES: TYPES, CATS: CATS, EXCAT: EXCAT, LEGACY_TYPE: LEGACY_TYPE, RECOMMENDED: RECOMMENDED,
-    search: search, suggest: suggest, index: getIndex, rebuild: function () { index = null; suggestPool = null; return getIndex(); },
+    search: search, suggest: suggest, index: getIndex, explain: explain, rebuild: function () { index = null; suggestPool = null; return getIndex(); },
     /* community posts are not part of the cached index; only the suggestion pool may hold their titles */
     invalidate: function () { suggestPool = null; },
     lifeStatus: lifeStatus, norm: norm, typeLabel: function (id) { var t = TYPES.find(function (x) { return x.id === id; }); return t ? t.label : id; },
