@@ -50,6 +50,8 @@
   /* private platform providers: their rows are never "official" (server manifest sourceKind private-platform) */
   var PLATFORM_PROVIDERS = { "kr-kakao-place": 1 };
   /* official category names → Life Events (category mapping only; ages are never inferred) */
+  /* stage tool card types (life-data.js) → Korean labels, same as service-details-data.js */
+  var TOOL_TYPE_LABEL = { Tool: "도구", Guide: "가이드", Expert: "전문가·기관", Discovery: "활동·콘텐츠", AI: "AI 상담" };
   var CATEGORY_LIFE_EVENTS = { "창업": ["startup"], "일자리": ["first-job", "job-change"], "취업": ["first-job"], "주거": ["independent", "move"],
     "금융": ["saving", "loan"], "결혼": ["marriage"], "출산": ["childbirth"], "육아": ["parenting"], "보육": ["parenting"], "은퇴": ["retire-prep"] };
   /* what LIVON can say about it — only official_source / partner_verified count as "verified" */
@@ -94,8 +96,10 @@
   var SYNONYMS = {
     "이사": ["독립", "자취", "주거", "입주", "청소"], "독립": ["자취", "이사", "주거"], "자취": ["독립", "주거"], "집": ["주거", "주택"],
     "취업": ["구직", "일자리", "커리어"], "일자리": ["취업", "구직"], "이직": ["커리어", "경력"], "돈": ["금융", "생활비", "저축"],
-    "육아": ["보육", "자녀", "출산"], "병원": ["건강", "의료"], "운동": ["건강", "스포츠"], "은퇴": ["노후", "연금", "시니어"],
-    "노후": ["은퇴", "연금", "시니어"], "여행": ["관광", "나들이"], "공부": ["학습", "교육"], "자격증": ["자격", "시험"]
+    "육아": ["보육", "자녀", "출산", "양육"], "병원": ["건강", "의료"], "운동": ["건강", "스포츠"], "은퇴": ["노후", "연금", "시니어"],
+    "노후": ["은퇴", "연금", "시니어"], "여행": ["관광", "나들이"], "공부": ["학습", "교육"], "자격증": ["자격", "시험"],
+    "구직": ["취업", "일자리", "채용"], "창업": ["사업", "스타트업"], "사업": ["창업", "사업자"], "주거": ["집", "주택", "이사"],
+    "양육": ["육아", "보육", "자녀"], "재취업": ["취업", "일자리", "커리어"], "배움": ["교육", "학습", "강좌"], "우울": ["마음", "정신건강"]
   };
 
   /* ───────────────────────── Sanitising (shared with livon-data-schema.js when loaded) ───────────────────────── */
@@ -296,6 +300,8 @@
         : linked ? "source_linked" : "unverified";
     }
     if (e.provenanceMissing) e.verificationStatus = "unverified";
+    /* time-bound row with no official date: kept (evergreen portal / guide) but marked — a date is never guessed */
+    if (TIME_BOUND[type] && !e.startDate && !e.endDate && !e.applicationStart && !e.applicationEnd && !e.expiresAt) e.meta.requiresDateVerification = true;
     e.verified = e.verificationStatus === "official_source" || e.verificationStatus === "partner_verified";
     if (e.sample) e.verified = false;
 
@@ -550,7 +556,7 @@
           var lt = ltStages.filter(function (x) { return x.id === s.id; })[0] || {};
           var ages = lt.ageRange || [Number(s.id), s.id === "70" ? null : Number(s.id) + 9];
           out.push({ id: "stage:" + s.id, type: "lifeStage", title: s.label || lt.label, summary: s.lead || lt.heroLead, description: s.desc || lt.title,
-            label: s.label || lt.label, heroTitle: lt.heroTitle || s.title, focus: s.focus, ageMin: ages[0], ageMax: ages[1], targetAges: { min: ages[0], max: ages[1] },
+            label: s.label || lt.label, heroTitle: lt.heroTitle || s.title, focus: s.focus, tags: String(s.focus || "").split(/\s*·\s*/).filter(Boolean), ageMin: ages[0], ageMax: ages[1], targetAges: { min: ages[0], max: ages[1] },
             lifeStages: [s.id], image: s.img, href: "#life/" + stageSlug(s.id), sourceName: "LIVON", sourceType: "editorial", status: "published",
             relations: { topicIds: (lt.featuredTopicIds || []).map(function (x) { return "topic:" + x; }) }, _raw: s });
         });
@@ -558,7 +564,9 @@
         (LE && LE.events || []).forEach(function (ev) {
           out.push({ id: "le:" + ev.id, type: "lifeEvent", title: ev.title, summary: ev.blurb, lifeStages: ev.stages, lifeEvents: [ev.id],
             situations: ev.situations, needs: ev.needs, checklist: ev.checklist, tags: (ev.needs || []).concat(ev.situations || []),
-            href: "#life", sourceName: "LIVON", sourceType: "editorial", status: "published", meta: { aiPrompt: ev.links && ev.links.ai }, _raw: ev });
+            category: ev.category || null,
+            relations: { topicIds: (ev.topicIds || []).map(function (x) { return "topic:" + x; }) },
+            href: "#life", sourceName: "LIVON", sourceType: "editorial", status: "published", meta: { aiPrompt: ev.links && ev.links.ai, planned: !!ev.planned }, _raw: ev });
         });
         /* Life Stage topics → content (guide) */
         (LT && LT.topics || []).forEach(function (tp) {
@@ -574,7 +582,7 @@
         });
         /* official portals (policy links; LIVON does not restate eligibility or amounts) */
         (LT && LT.policies || []).forEach(function (p) {
-          out.push({ id: "pol:" + p.id, type: "policy", title: p.name, summary: p.target, description: p.conditions, agency: p.provider, eligibility: p.target,
+          out.push({ id: "pol:" + p.id, type: "policy", title: p.name, summary: p.summary || p.target, description: p.conditions, category: p.kind === "portal" ? "공식 포털" : null, agency: p.provider, eligibility: p.target,
             policyKind: p.kind, periodText: p.period, officialUrl: p.sourceUrl, sourceUrl: p.sourceUrl, sourceName: p.provider, sourceType: "official",
             retrievedAt: p.checkedAt, updatedAt: p.checkedAt, lastCheckedAt: p.checkedAt, href: p.sourceUrl, status: p.publishStatus || "published", availabilityType: "always", tags: [p.provider],
             applicationStart: p.applicationStart, applicationEnd: p.applicationEnd, expiresAt: p.expiresAt, _raw: p });
@@ -585,13 +593,13 @@
             process: s.process, prepare: s.prepare, features: s.features, tags: [s.group], href: "#life/services/" + s.id,
             officialUrl: typeof s.externalUrl === "string" ? s.externalUrl : null, sourceName: "LIVON", sourceType: "editorial", status: "published",
             bookingType: s.partner ? "partner" : "none", availabilityType: "on_request",
-            relations: { classIds: (s.relatedExploreIds || []).map(refToId), serviceIds: (s.relatedToolIds || []).map(function (x) { return "tool:" + x; }) }, _raw: s });
+            relations: { classIds: (s.relatedExploreIds || []).map(refToId), contentIds: (s.relatedContentIds || []).map(refToId), serviceIds: (s.relatedToolIds || []).map(function (x) { return "tool:" + x; }) }, _raw: s });
         });
         /* per-stage tools (My Life tools / guides) */
         (LD && LD.stages || []).forEach(function (st) {
           (st.services || []).forEach(function (s) {
             if (!s.id) return;
-            out.push({ id: "tool:" + s.id, type: "service", title: s.name, summary: s.desc, category: s.type, serviceGroup: "도구", audience: s.audience,
+            out.push({ id: "tool:" + s.id, type: "service", title: s.name, summary: s.desc, category: TOOL_TYPE_LABEL[s.type] || s.type, serviceGroup: "도구", audience: s.audience,
               features: s.feats, tags: s.feats, lifeStages: [s.lifeStage || st.id], href: /^#[\w-]+$/.test(s.destination || "") ? s.destination : "#life-now",
               sourceName: "LIVON", sourceType: "editorial", status: "published", availabilityType: s.status === "soon" ? "unknown" : "always",
               meta: { tool: true, comingSoon: s.status === "soon", uiStatus: s.status }, _raw: s });
@@ -629,8 +637,10 @@
           var cred = x.credentials && x.credentials.status;
           var provId = x.provider && x.provider !== "LIVON" && x.provider !== "LIVON 생활 가이드" ? "prov:" + norm(x.provider) : null;
           if (provId && !providers[provId] && type !== "provider") providers[provId] = { id: provId, type: "provider", title: x.provider, providerKind: "institution",
-            summary: x.provider + " 공식 안내", sourceName: x.source || x.provider, sourceType: srcType, officialUrl: official, sourceUrl: official,
-            retrievedAt: x.checkedAt, updatedAt: x.checkedAt, lastCheckedAt: x.checkedAt, status: "published", href: official, offers: [x.type] };
+            summary: "LIVON 탐색의 ‘" + x.title + "’ 안내를 제공하는 기관입니다. 이용·신청은 기관 공식 채널에서 확인하세요.", category: x.subfield || null, tags: (x.tags || []).slice(0, 6),
+            domains: (x.categoryIds || []).map(function (k) { return EXPLORE_CATEGORY_DOMAIN[k]; }).filter(Boolean),
+            sourceName: x.source || x.provider, sourceType: srcType, officialUrl: official, sourceUrl: official, meta: internal ? { internalUrl: internal } : undefined,
+            retrievedAt: x.checkedAt, updatedAt: x.checkedAt, lastCheckedAt: x.checkedAt, status: "published", href: official || internal, offers: [x.type] };
           out.push({ id: "ex:" + x.id, type: type, title: x.title, summary: x.blurb, description: x.body, category: x.subfield, subCategory: (x.categoryIds || []).join(","),
             tags: x.tags, domains: (x.categoryIds || []).map(function (k) { return EXPLORE_CATEGORY_DOMAIN[k]; }).filter(Boolean),
             region: x.region || null, online: x.mode === "online" ? true : x.mode === "offline" ? false : null,
@@ -648,11 +658,11 @@
         Object.keys(providers).forEach(function (k) { out.push(providers[k]); });
         /* Community: groups and challenges (read-only descriptions; posts stay on the device) */
         (CM && CM.communities || []).forEach(function (c) {
-          out.push({ id: "cm:" + c.id, type: "communityContent", communityKind: "group", title: c.name, summary: c.desc, interest: c.interest, join: c.join,
+          out.push({ id: "cm:" + c.id, type: "communityContent", communityKind: "group", title: c.name, summary: c.desc, category: c.interest || null, interest: c.interest, join: c.join,
             tags: [c.interest], image: c.img, href: "#cm-groups", sourceName: "LIVON", sourceType: "editorial", status: "published", _raw: c });
         });
         (CM && CM.challenges || []).forEach(function (c) {
-          out.push({ id: "ch:" + c.id, type: "communityContent", communityKind: "challenge", title: c.title, summary: c.desc, interest: c.field, days: c.days,
+          out.push({ id: "ch:" + c.id, type: "communityContent", communityKind: "challenge", title: c.title, summary: c.desc, category: c.field || null, interest: c.field, days: c.days,
             tags: [c.field], href: "#community", sourceName: "LIVON", sourceType: "editorial", status: "published", _raw: c });
         });
         return out;
@@ -784,6 +794,12 @@
       var events = store.filter(function (e) { return e.type === "lifeEvent"; });
       var topics = store.filter(function (e) { return e.type === "content" && e.contentKind === "topic"; });
       events.forEach(function (ev) {
+        var evKey = ev.lifeEvents[0] || ev.id.replace(/^le:/, "");
+        /* curated links (life-events-data.js topicIds) first — only ids that exist are kept */
+        var picked = (ev.relations.topicIds || []).filter(function (id) { return byId[id] && byId[id].contentKind === "topic"; });
+        ev.relations.topicIds = picked;
+        picked.forEach(function (h) { var tp = byId[h]; tp.lifeEvents = uniq(tp.lifeEvents.concat([evKey])); });
+        if (picked.length) ev.meta.topicLinks = "curated";
         var key = norm(ev.title);
         if (key.length < 2) return;
         var hits = topics.filter(function (tp) {
@@ -791,9 +807,9 @@
           return norm(tp.title + " " + (tp.category || "")).indexOf(key) >= 0;
         }).map(function (tp) { return tp.id; });
         if (hits.length) {
-          ev.relations.topicIds = uniq((ev.relations.topicIds || []).concat(hits)).slice(0, 12);
-          ev.meta.topicLinks = "inferred";
-          hits.forEach(function (h) { var tp = byId[h]; tp.lifeEvents = uniq(tp.lifeEvents.concat([ev.lifeEvents[0] || ev.id.replace(/^le:/, "")])); });
+          ev.relations.topicIds = uniq(picked.concat(hits)).slice(0, 12);
+          ev.meta.topicLinks = picked.length ? "curated+inferred" : "inferred";
+          hits.forEach(function (h) { var tp = byId[h]; if (ev.relations.topicIds.indexOf(h) >= 0) tp.lifeEvents = uniq(tp.lifeEvents.concat([evKey])); });
         }
       });
     }

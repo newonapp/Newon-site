@@ -24,6 +24,7 @@ window.LivonLifeEvents = {
       "id": "enroll",
       "title": "입학",
       "blurb": "새 학교·학기 시작에 맞춰 일정과 준비를 정리합니다.",
+      "topicIds": ["10s.school-life", "10s.assignment-calendar", "20s.university-life"],
       "stages": [
         "10",
         "20"
@@ -71,6 +72,7 @@ window.LivonLifeEvents = {
       "id": "advance",
       "title": "진학",
       "blurb": "다음 단계 진학을 위한 일정·전형·탐색을 모읍니다.",
+      "topicIds": ["10s.college-prep", "10s.admission-calendar", "10s.major-comparison", "10s.subject-career-map"],
       "stages": [
         "10",
         "20"
@@ -112,6 +114,7 @@ window.LivonLifeEvents = {
       "id": "graduate",
       "title": "졸업",
       "blurb": "졸업 이후 취업·진학·독립 갈래를 정리합니다.",
+      "topicIds": ["20s.first-job", "20s.career-design", "20s.first-independence"],
       "stages": [
         "20",
         "30"
@@ -160,6 +163,7 @@ window.LivonLifeEvents = {
       "id": "first-job",
       "title": "첫 취업",
       "blurb": "이력·면접·입사 준비를 단계별로 연결합니다.",
+      "topicIds": ["20s.first-job", "20s.resume-portfolio", "20s.interview-practice", "20s.first-workplace"],
       "stages": [
         "20",
         "30"
@@ -252,6 +256,7 @@ window.LivonLifeEvents = {
       "id": "job-change",
       "title": "이직",
       "blurb": "이직 동기·조건·타임라인을 정리합니다.",
+      "topicIds": ["30s.job-change-30", "30s.job-offer-compare", "40s.career-shift-40", "40s.transferable-skills", "50s.second-career-50", "50s.career-profile", "50s.work-options"],
       "stages": [
         "20",
         "30",
@@ -680,6 +685,7 @@ window.LivonLifeEvents = {
       "id": "pregnancy",
       "title": "임신",
       "blurb": "임신 중 생활 준비 정보를 모읍니다. 의료 조언은 제공하지 않습니다.",
+      "topicIds": ["30s.birth-30", "30s.birth-support"],
       "stages": [
         "20",
         "30",
@@ -865,6 +871,7 @@ window.LivonLifeEvents = {
       "id": "home-buy",
       "title": "내 집 마련",
       "blurb": "주거·금융 정보 탐색을 돕습니다. 대출 심사는 제공하지 않습니다.",
+      "topicIds": ["30s.housing-30", "30s.home-viewing"],
       "stages": [
         "30",
         "40",
@@ -1055,6 +1062,7 @@ window.LivonLifeEvents = {
       "id": "later-life",
       "title": "노후 준비",
       "blurb": "건강·관계·지역 활동 중심으로 노후 생활을 설계합니다.",
+      "topicIds": ["60s.retired-life-60", "60s.weekly-rhythm", "60s.future-care-wishes", "70s.living-budget"],
       "stages": [
         "60",
         "70"
@@ -1102,7 +1110,8 @@ window.LivonLifeEvents = {
     {
       "id": "campus-life",
       "title": "대학생활",
-      "blurb": "확장 예정 Life Event입니다. 구조는 준비되어 있으며 상세 가이드는 단계적으로 채워집니다.",
+      "blurb": "수업·학점·동아리·학비까지 대학생활을 처음 꾸릴 때 챙길 것을 모읍니다.",
+      "topicIds": ["20s.university-life", "20s.scholarship-plan"],
       "stages": [
         "20"
       ],
@@ -1137,7 +1146,8 @@ window.LivonLifeEvents = {
     {
       "id": "cert",
       "title": "자격증",
-      "blurb": "확장 예정 Life Event입니다. 구조는 준비되어 있으며 상세 가이드는 단계적으로 채워집니다.",
+      "blurb": "관심 자격증의 시험 정보를 찾고 준비 일정을 세울 때 필요한 것을 모읍니다.",
+      "topicIds": ["20s.course-choice", "40s.retraining-choice"],
       "stages": [
         "20",
         "30",
@@ -1174,7 +1184,7 @@ window.LivonLifeEvents = {
     {
       "id": "freelance",
       "title": "프리랜서",
-      "blurb": "확장 예정 Life Event입니다. 구조는 준비되어 있으며 상세 가이드는 단계적으로 채워집니다.",
+      "blurb": "프리랜서로 일할 때 계약·일정·수입 기록에서 챙길 것을 정리합니다.",
       "stages": [
         "20",
         "30",
@@ -1211,7 +1221,7 @@ window.LivonLifeEvents = {
     {
       "id": "car",
       "title": "차량 구매",
-      "blurb": "확장 예정 Life Event입니다. 구조는 준비되어 있으며 상세 가이드는 단계적으로 채워집니다.",
+      "blurb": "차량 구매 전 예산·유지비·보험처럼 비교할 항목을 정리합니다.",
       "stages": [
         "20",
         "30",
@@ -1248,7 +1258,7 @@ window.LivonLifeEvents = {
     {
       "id": "abroad",
       "title": "해외생활",
-      "blurb": "확장 예정 Life Event입니다. 구조는 준비되어 있으며 상세 가이드는 단계적으로 채워집니다.",
+      "blurb": "해외에서 지내기 전 서류·생활비·연락 방법처럼 준비할 것을 정리합니다.",
       "stages": [
         "20",
         "30",
@@ -1285,7 +1295,8 @@ window.LivonLifeEvents = {
     {
       "id": "newlywed",
       "title": "신혼생활",
-      "blurb": "확장 예정 Life Event입니다. 구조는 준비되어 있으며 상세 가이드는 단계적으로 채워집니다.",
+      "blurb": "결혼 후 함께 사는 생활에서 가계·가사·일정을 맞추는 방법을 모읍니다.",
+      "topicIds": ["30s.shared-housework", "30s.household-cashflow", "30s.financial-goals"],
       "stages": [
         "20",
         "30"
@@ -1321,7 +1332,8 @@ window.LivonLifeEvents = {
     {
       "id": "first-salary",
       "title": "첫 월급",
-      "blurb": "확장 예정 Life Event입니다. 구조는 준비되어 있으며 상세 가이드는 단계적으로 채워집니다.",
+      "blurb": "첫 월급을 받은 뒤 고정비·저축·지출 기록을 처음 정리할 때 봅니다.",
+      "topicIds": ["20s.salary-management", "20s.saving-plan", "20s.emergency-fund"],
       "stages": [
         "20",
         "30"
@@ -1357,7 +1369,8 @@ window.LivonLifeEvents = {
     {
       "id": "saving",
       "title": "저축 시작",
-      "blurb": "확장 예정 Life Event입니다. 구조는 준비되어 있으며 상세 가이드는 단계적으로 채워집니다.",
+      "blurb": "저축 목표를 세우고 비상금부터 꾸준히 모으는 방법을 정리합니다.",
+      "topicIds": ["20s.saving-plan", "20s.emergency-fund", "30s.asset-30"],
       "stages": [
         "20",
         "30",
@@ -1394,7 +1407,8 @@ window.LivonLifeEvents = {
     {
       "id": "loan",
       "title": "대출 준비",
-      "blurb": "확장 예정 Life Event입니다. 구조는 준비되어 있으며 상세 가이드는 단계적으로 채워집니다.",
+      "blurb": "대출을 알아보기 전 상환 계획과 비용, 상담 창구를 먼저 확인합니다.",
+      "topicIds": ["40s.debt-calendar", "50s.financial-doc-review"],
       "stages": [
         "30",
         "40",
@@ -1431,7 +1445,7 @@ window.LivonLifeEvents = {
     {
       "id": "checkup",
       "title": "건강검진",
-      "blurb": "확장 예정 Life Event입니다. 구조는 준비되어 있으며 상세 가이드는 단계적으로 채워집니다.",
+      "blurb": "건강검진 대상 확인부터 결과 상담까지 필요한 준비를 정리합니다.",
       "stages": [
         "30",
         "40",
@@ -1469,7 +1483,8 @@ window.LivonLifeEvents = {
     {
       "id": "habit-health",
       "title": "생활습관 개선",
-      "blurb": "확장 예정 Life Event입니다. 구조는 준비되어 있으며 상세 가이드는 단계적으로 채워집니다.",
+      "blurb": "수면·식사·운동처럼 매일의 습관을 조금씩 바꾸는 방법을 모읍니다.",
+      "topicIds": ["20s.health-20", "30s.health-30", "40s.exercise-schedule", "50s.exercise-class"],
       "stages": [
         "20",
         "30",
@@ -1507,7 +1522,8 @@ window.LivonLifeEvents = {
     {
       "id": "parent-health",
       "title": "부모 건강관리",
-      "blurb": "확장 예정 Life Event입니다. 구조는 준비되어 있으며 상세 가이드는 단계적으로 채워집니다.",
+      "blurb": "부모님의 진료·검진 일정과 건강 기록을 함께 챙기는 방법을 모읍니다.",
+      "topicIds": ["40s.care-needs", "40s.screening-schedule", "50s.health-records"],
       "stages": [
         "40",
         "50",
@@ -1544,7 +1560,8 @@ window.LivonLifeEvents = {
     {
       "id": "first-trip",
       "title": "첫 해외여행",
-      "blurb": "확장 예정 Life Event입니다. 구조는 준비되어 있으며 상세 가이드는 단계적으로 채워집니다.",
+      "blurb": "첫 해외여행 전 여권·예산·일정처럼 미리 확인할 것을 정리합니다.",
+      "topicIds": ["20s.travel-20", "20s.travel-budget"],
       "stages": [
         "20",
         "30"
@@ -1580,7 +1597,7 @@ window.LivonLifeEvents = {
     {
       "id": "long-trip",
       "title": "장기여행",
-      "blurb": "확장 예정 Life Event입니다. 구조는 준비되어 있으며 상세 가이드는 단계적으로 채워집니다.",
+      "blurb": "오래 머무는 여행 전 예산·숙소·생활 관리처럼 필요한 준비를 모읍니다.",
       "stages": [
         "20",
         "30",

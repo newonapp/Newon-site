@@ -12,7 +12,7 @@
 (function () {
   "use strict";
 
-  var DATA_URL = "/livon/life-topics.json?v=20260928td1";
+  var DATA_URL = "/livon/life-topics.json?v=20261001cq1";
   var SITE_ORIGIN = "https://www.newon.app";
   var KEY_CHECKS = "livon.lifeHub.checklist.v1";
   var KEY_ML = "livon.mlStore.v1";

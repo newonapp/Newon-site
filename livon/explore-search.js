@@ -60,6 +60,16 @@
     "창업": ["스타트업", "사업자", "사업계획"], "커리어": ["이직", "경력", "직무"], "정책": ["지원", "제도", "공고"], "지원": ["정책", "제도", "공고"],
     "이사": ["이삿짐", "입주"], "연금": ["노후"], "취미": ["클래스", "여가", "문화"]
   };
+  /* Content Quality V1: two-way synonyms and everyday phrasings. Kept out of SYN so the suggestion chips stay as they are. */
+  var ALIAS = {
+    "구직": ["취업", "일자리", "채용"], "사업": ["창업", "사업자"], "집": ["주거", "주택"], "양육": ["육아", "보육", "자녀"],
+    "노후": ["은퇴", "연금"], "은퇴": ["노후", "연금"], "재취업": ["취업", "일자리"], "키우기": ["육아", "양육", "보육", "자녀"],
+    "배우고": ["배움", "클래스", "강좌", "평생교육", "학습"], "배우기": ["배움", "클래스", "강좌", "평생교육", "학습"], "배움": ["클래스", "강좌", "평생교육", "학습"],
+    "우울": ["마음", "정신건강"], "스트레스": ["마음", "정신건강"], "치매": ["장기요양", "돌봄", "부모님"], "요양": ["장기요양", "돌봄"],
+    "요리": ["베이킹", "식사"], "청약": ["주택", "주거", "마이홈"]
+  };
+  /* filler words in natural queries ("배우고 싶어", "창업 방법 알려줘") — dropped when another word remains */
+  var FILLER = { "싶어": 1, "싶다": 1, "싶어요": 1, "싶은": 1, "알려줘": 1, "알려주세요": 1, "방법": 1, "어떻게": 1, "하려면": 1, "하고": 1, "좀": 1 };
   var RECOMMENDED = ["독립", "취업", "창업", "주거", "재테크", "건강", "육아", "돌봄", "여행"];
 
   function norm(s) { return String(s == null ? "" : s).toLowerCase().replace(/[\s·・,./()\[\]'"“”‘’!?~\-_:;|+]+/g, ""); }
@@ -120,7 +130,7 @@
       POLICIES.forEach(function (p) {
         var url = safeHttp(p.sourceUrl); if (!url) return;
         out.push(entry({
-          key: "pol:" + p.id, type: "policy", typeLabel: "공식 포털", official: true, title: p.name, desc: p.target, category: p.provider, tags: [p.provider],
+          key: "pol:" + p.id, type: "policy", typeLabel: "공식 포털", official: true, title: p.name, desc: p.summary || p.target, category: p.provider, tags: [p.provider],
           meta: "공식 포털 · " + p.provider, href: url, external: true, stageIds: [], date: p.checkedAt || "",
           save: { type: "policy", id: p.id, title: p.name + " · " + p.provider, href: "#ex-results?q=" + encodeURIComponent(p.provider), stage: "" }
         }));
@@ -220,12 +230,18 @@
     for (var i = 0; i < tokens.length; i++) {
       var tok = tokens[i], best = tokenScore(item, tok);
       if (!best) (SYN[tok] || []).forEach(function (syn) { best = Math.max(best, synScore(item, norm(syn))); });
+      /* everyday aliases rank below any direct match of the word itself (title 12 · category 8 < description 14) */
+      if (!best) (ALIAS[tok] || []).forEach(function (syn) { best = Math.max(best, synScore(item, norm(syn)) * 0.4); });
       if (!best) return 0;
       total += best;
     }
     return total;
   }
-  function tokensOf(q) { return uniq(String(q || "").trim().split(/\s+/).map(norm).filter(Boolean)); }
+  function tokensOf(q) {
+    var toks = uniq(String(q || "").trim().split(/\s+/).map(norm).filter(Boolean));
+    var kept = toks.filter(function (t) { return !FILLER[t]; });
+    return kept.length ? kept : toks;
+  }
   function stageFromQuery(q) { var m = /([1-7]0)\s*(대|s)/.exec(String(q || "")); return m ? m[1] : ""; }
 
   function passes(item, f, skipType) {
