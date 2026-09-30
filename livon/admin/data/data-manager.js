@@ -17,9 +17,7 @@
     return;
   }
 
-  var SCRIPTS = ["/livon/life-data.js", "/livon/life-events-data.js", "/livon/explore-data.js", "/livon/community-data.js", "/livon/today-data.js",
-    "/livon/data/livon-data-config.js", "/livon/data/livon-data-schema.js", "/livon/data/livon-data-platform.js", "/livon/data/livon-screen-data.js",
-    "/livon/life-hub.js", "/livon/explore-search.js", "/livon/data/livon-content-quality.js"];
+  var SCRIPTS = DM.DATA_SCRIPTS;
   var VIEWS = [
     ["dashboard", "Dashboard"], ["explorer", "Content Explorer"], ["quality", "Quality Review"], ["queue", "Review Queue"], ["duplicates", "Duplicates"],
     ["relations", "Relations"], ["gaps", "Content Gaps"], ["sources", "Sources"], ["unsourced", "Unsourced / Conflicts"], ["dates", "Date Review"],

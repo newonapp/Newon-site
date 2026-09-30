@@ -39,5 +39,5 @@ export function startServer({ port = 8790, host = '127.0.0.1', root = ROOT } = {
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const i = process.argv.indexOf('--port');
   const port = i > 0 ? Number(process.argv[i + 1]) : 8790;
-  startServer({ port }).then(s => console.log(`LIVON Data Manager (local, read-only): http://127.0.0.1:${s.address().port}/livon/admin/data/`));
+  startServer({ port }).then(s => console.log(`LIVON Admin (local): http://127.0.0.1:${s.address().port}/livon/admin/\nLIVON Data Manager (local, read-only): http://127.0.0.1:${s.address().port}/livon/admin/data/`));
 }

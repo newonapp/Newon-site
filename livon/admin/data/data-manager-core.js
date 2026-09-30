@@ -17,6 +17,10 @@
     return h === "localhost" || h === "127.0.0.1" || h === "::1" || /\.localhost$/.test(h) || /\.test$/.test(h);
   }
 
+  /* the LIVON data scripts the local tools load (same files as the site, in the site's order) */
+  var DATA_SCRIPTS = ["/livon/life-data.js", "/livon/life-events-data.js", "/livon/explore-data.js", "/livon/community-data.js", "/livon/today-data.js",
+    "/livon/data/livon-data-config.js", "/livon/data/livon-data-schema.js", "/livon/data/livon-data-platform.js", "/livon/data/livon-screen-data.js",
+    "/livon/life-hub.js", "/livon/explore-search.js", "/livon/data/livon-content-quality.js"];
   var SCREENS = ["HOME", "TODAY", "LIFE STAGE", "EXPLORE", "SEARCH", "MY LIFE", "DETAIL", "COMMUNITY"];
   var STAGES = ["10", "20", "30", "40", "50", "60", "70"];
   var GRADES = ["Excellent", "Good", "Needs Review", "Poor"];
@@ -272,7 +276,7 @@
         r.flags.forEach(function (f) {
           var p = FLAG_PRIORITY[f]; if (!p) return;
           var gap = f === "MISSING_RELATION" && m.gapEvents.indexOf(r.id) >= 0;
-          items.push({ priority: p, rule: gap ? "CONTENT_GAP" : f, recordId: r.id, title: r.title, type: r.type, note: gap ? "no matching guide exists yet — not an error" : (r.notes || []).join("; ") });
+          items.push({ priority: p, rule: gap ? "CONTENT_GAP" : f, recordId: r.id, title: r.title, type: r.type, note: gap ? "no matching guide exists yet — not an error" : /UNSOURCED_SPECIFIC|FIELD_CONFLICT|BROKEN_RELATION/.test(f) ? (r.notes || []).join("; ") : "" });
         });
       });
       taxonomy(m).nearDuplicates.forEach(function (p) { items.push({ priority: "P4", rule: "TAXONOMY_REVIEW", recordId: null, title: p.a + " ↔ " + p.b, type: "category", note: p.basis }); });
@@ -425,6 +429,18 @@
     return "﻿" + lines.join("\r\n") + "\r\n";
   }
 
+  /* generic table export for reports (same rules: whitelisted columns, no secret-like column, CSV injection-safe) */
+  function exportTable(rows, columns, format, meta) {
+    var cols = (columns || []).filter(function (c) { return !FORBIDDEN_EXPORT_KEY.test(c); });
+    var pick = function (r) { var o = {}; cols.forEach(function (c) { var v = r[c]; o[c] = Array.isArray(v) ? v.slice() : v == null ? null : typeof v === "object" ? JSON.stringify(v) : v; }); return o; };
+    if (format === "csv") {
+      var lines = [cols.join(",")];
+      rows.forEach(function (r) { var o = pick(r); lines.push(cols.map(function (c) { return csvCell(o[c]); }).join(",")); });
+      return "\ufeff" + lines.join("\r\n") + "\r\n";
+    }
+    return JSON.stringify({ tool: "LIVON Admin (local)", readOnly: true, report: (meta && meta.report) || null, generatedAt: (meta && meta.generatedAt) || null, count: rows.length, columns: cols, rows: rows.map(pick) }, null, 2);
+  }
+
   /* ───────── local review state (never touches curated data) ───────── */
   var REVIEW_KEY = "livon.dataManager.review.v1";
   var REVIEW_VALUES = { reviewed: 1, "needs-review": 1, keep: 1, review: 1 };
@@ -460,6 +476,6 @@
     duplicateGroups: duplicateGroups, taxonomy: taxonomy, ctas: ctas, reviewQueue: reviewQueue, relationExplorer: relationExplorer,
     contentGaps: contentGaps, sources: sources, unsourced: unsourced, dateReview: dateReview, freshness: freshness,
     searchTest: searchTest, runSearchSet: runSearchSet, recommend: recommend, stageFromAge: stageFromAge, coverage: coverage,
-    exportJSON: exportJSON, exportCSV: exportCSV, reviewStore: reviewStore
+    exportJSON: exportJSON, exportCSV: exportCSV, exportTable: exportTable, reviewStore: reviewStore, DATA_SCRIPTS: DATA_SCRIPTS, GRADES: GRADES, STAGES: STAGES
   };
 })(typeof window !== "undefined" ? window : globalThis);
