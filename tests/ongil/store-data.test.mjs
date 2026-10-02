@@ -457,7 +457,8 @@ test('OG-STO-44 account delete: Store adds no collection; saved products go with
   saved.save(S.productSavedInput(S.normalizeProduct(raw())));
   storage.clear();
   assert.equal(saved.count(), 0);
-  assert.equal(COLLECTIONS.length, 23, 'no new collection in Phase 7');
+  // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
+  assert.equal(COLLECTIONS.length, 24, 'no new collection in Phase 7; Phase 9 added analytics');
   assert.match(APP_CODE, /storeView\.render\(\);/);
 });
 
@@ -551,8 +552,9 @@ test('OG-STO-56 regression: no new network, backend, key, commerce API or fixtur
   }
   assert.equal((APP.match(/\bfetch\(/g) || []).length, 1, 'fetch is still injected once');
   /* Phase 8 moved the version on again: integration-v2 / ?v=20261003i8 (BEFORE: store-v1 / 20261003s7) */
-  assert.match(APP, /version: 'integration-v2'/);
-  assert.match(INDEX, /app\.js\?v=20261003i8/);
+  /* Phase 9 moved the version on: admin-v1 / ?v=20261003a9 (BEFORE: integration-v2 / 20261003i8). The version now lives in APP_VERSION. */
+  assert.match(APP, /const APP_VERSION = 'admin-v1';/);
+  assert.match(INDEX, /app\.js\?v=20261003a9/);
   assert.match(INDEX, /ongil-care\.css\?v=20261003s7/);
   assert.match(SEARCH, /export function createStoreProvider\(getItems\)/);
   assert.match(AREAS.find((a) => a.id === 'store').notice, /결제, 주문, 배송 기능은 없습니다/);

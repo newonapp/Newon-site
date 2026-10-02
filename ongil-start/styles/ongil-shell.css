@@ -48,6 +48,7 @@ html[data-og-view="community"] main > [data-og-screen="community"],
 html[data-og-view="store"] main > [data-og-screen="store"],
 html[data-og-view="saved"] main > [data-og-screen="saved"],
 html[data-og-view="account"] main > [data-og-screen="account"] { display: block; }
+html[data-og-view="admin"] main > [data-og-screen="admin"] { display: block; }
 html[data-og-view], html[data-og-view] body { height: auto; overflow: auto; overflow-x: clip; }
 
 .og-screen { position: relative; z-index: 1; background: var(--og-bg); }

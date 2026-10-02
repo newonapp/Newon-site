@@ -31,7 +31,7 @@ const MESSAGES = {
   REGION_REQUIRED: '지역을 골라 주세요.',
 };
 
-export function createCareView({ host, doc, saved, profile, sources, onFamily }) {
+export function createCareView({ host, doc, saved, profile, sources, onFamily, onOpen = null }) {
   const state = { category: '', type: '', region: '', query: '', items: [], attribution: '', lastLoad: null };
   let ticket = 0;
   let cards = null;
@@ -263,6 +263,8 @@ export function createCareView({ host, doc, saved, profile, sources, onFamily })
   }
 
   function openDetail(item, from, mode = 'detail') {
+    /* [P9] a detail opened from a row (not a re-render inside the dialog): the owner is told, with the item only */
+    if (from && mode === 'detail' && typeof onOpen === 'function') onOpen(item);
     const d = ensureDialog();
     opener = from || opener;
     clear(d);

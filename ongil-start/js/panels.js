@@ -19,7 +19,16 @@ export const NO_PUSH_NOTE = '알림은 ONGIL 안에서만 보여요. 휴대폰 �
 /* append, skipping what is absent (Element.append would print the word "null") */
 const put = (node, ...kids) => node.append(...kids.filter((k) => k !== null && k !== undefined && k !== false));
 
-export function createPanels({ root, search, notifications }) {
+export function createPanels({ root, search, notifications, onSearch = null, onResultOpen = null }) {
+  /* optional observers (counting only): a failure in one can never affect the panel */
+  const tell = (fn, arg) => {
+    if (typeof fn !== 'function') return;
+    try {
+      fn(arg);
+    } catch {
+      /* ignore */
+    }
+  };
   const buttons = [...root.querySelectorAll('[data-og-tool]')];
   const panelOf = (btn) => document.getElementById(btn.getAttribute('aria-controls'));
 
@@ -81,7 +90,7 @@ export function createPanels({ root, search, notifications }) {
   function resultRow(r) {
     const text = describe(r);
     const inner = [el('span', { class: 'og-panel__result-title', text: r.title }), text ? el('span', { class: 'og-panel__result-desc', text }) : null];
-    return el('li', { 'data-og-search-type': r.contentType || r.type }, r.route ? el('a', { href: r.route }, inner) : el('span', {}, inner));
+    return el('li', { 'data-og-search-type': r.contentType || r.type }, r.route ? el('a', { href: r.route, onclick: () => tell(onResultOpen, r) }, inner) : el('span', {}, inner));
   }
 
   async function runSearch() {
@@ -104,6 +113,8 @@ export function createPanels({ root, search, notifications }) {
     if (mine !== ticket) return;
     clear(results);
     setState(outcome.state);
+    /* numbers only: how long the query was, how much came back, from how many providers */
+    if (outcome.state !== 'empty-query') tell(onSearch, { queryLength: outcome.query.length, total: outcome.total, providerCount: outcome.groups.length, state: outcome.state });
     if (outcome.state === 'empty-query') {
       showScope();
       announce(searchStatus, '찾을 말을 입력해 주세요.');

@@ -140,3 +140,17 @@ a.og-item__title { display: inline-flex; align-items: center; min-height: var(--
   .og-panel { position: fixed; top: calc(var(--gnav-h, 74px) + 0.4rem); right: 1rem; left: 1rem; width: auto; }
   .og-dialog__actions .og-btn { flex: 1 1 auto; }
 }
+
+/* [P9] 운영 보기 (#admin): the Home / My Life cards and tabs, with label–value rows that wrap on a phone. No table, no chart. */
+.og-admin > .og-notice { max-width: 60rem; margin: 0 0 1rem; }
+.og-admin-actions { margin: 0 0 1.2rem; }
+.og-admin-group { min-width: 0; padding-top: 0.6rem; border-top: 1px solid var(--og-line); }
+.og-admin-group:first-child { padding-top: 0; border-top: 0; }
+.og-admin-rows li { flex-wrap: wrap; align-items: flex-start; gap: 0.1rem 1rem; }
+.og-admin-rows .og-life-days__date { flex: 0 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.og-admin-value { flex: 1 1 12rem; min-width: 0; text-align: right; color: var(--og-ink); overflow-wrap: anywhere; }
+.og-admin-list { margin: 0.3rem 0 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; color: var(--og-ink); font-size: var(--og-size-body); overflow-wrap: anywhere; }
+.og-admin-list .og-admin-value { text-align: left; }
+@media (max-width: 480px) {
+  .og-admin-value { flex-basis: 100%; text-align: left; color: var(--og-ink-soft); }
+}

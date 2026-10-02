@@ -671,7 +671,8 @@ test('OG-IN8-46 route ownership: one owner per content type, and the owner scree
     assert.match(INDEX, new RegExp(`data-og-screen="${view}"`));
   }
   assert.deepEqual([R.ownerOf('CLASS'), R.ownerOf('EVENT'), R.ownerOf('CARE_SERVICE'), R.ownerOf('PUBLIC_BENEFIT'), R.ownerOf('NOPE')], ['enjoy', 'enjoy', 'care', 'care', '']);
-  assert.deepEqual([...R.SECTIONED_VIEWS], ['life', 'care', 'enjoy', 'community', 'store']);
+  // Phase 9: the internal operations view has sections too (#admin/data …). BEFORE: five sectioned views. AFTER: + admin.
+  assert.deepEqual([...R.SECTIONED_VIEWS], ['life', 'care', 'enjoy', 'community', 'store', 'admin']);
 });
 
 test('OG-IN8-47 search and saved agree: the same item opens the same owner screen from either', async () => {
@@ -707,7 +708,8 @@ test('OG-IN8-49 forward navigation: links are plain addresses; nothing hijacks h
   assert.equal(/history\.(back|forward|go)\(/.test(PRODUCTION), false);
   assert.equal(/onpopstate|addEventListener\('popstate'/.test(PRODUCTION), false);
   /* search results, saved rows and notifications are real <a href="#…"> links */
-  assert.ok(JS['panels.js'].includes("r.route ? el('a', { href: r.route }, inner) : el('span', {}, inner)"));
+  // Phase 9: the result link also tells an optional observer that it was opened (counting only). Still a plain <a href>.
+  assert.ok(JS['panels.js'].includes("r.route ? el('a', { href: r.route, onclick: () => tell(onResultOpen, r) }, inner) : el('span', {}, inner)"));
   assert.ok(JS['panels.js'].includes("el('a', { class: 'og-panel__btn', href: n.route, 'data-og-note-open': n.id"));
   assert.ok(JS['saved-view.js'].includes("el('a', { class: 'og-btn og-btn--ghost', href: a.ownerRoute, 'data-og-saved-open': 'owner'"));
   assert.equal(/location\.(assign|replace)\(|location\.href\s*=|window\.open\(/.test(PRODUCTION), false, 'no script-driven navigation to an arbitrary address');
@@ -737,7 +739,10 @@ test('OG-IN8-51 privacy matrix: what each class of data may do — search, saved
   for (const cls of ['PRIVATE', 'HEALTH_ADJACENT', 'STANDARD']) for (const c of by(cls)) assert.deepEqual(allowed(c), { search: false, sync: false, family: false, community: false }, c);
   assert.deepEqual(allowed('saved'), { search: true, sync: true, family: false, community: false }, 'saved: public items only, item by item');
   assert.deepEqual(allowed('notifications'), { search: false, sync: false, family: false, community: false });
-  assert.equal(COLLECTIONS.length, 23, 'Phase 8 adds no collection');
+  // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
+  assert.equal(COLLECTIONS.length, 24, 'Phase 8 added no collection; Phase 9 added analytics');
+  assert.deepEqual(by('OPERATIONAL'), ['analytics']);
+  assert.deepEqual(allowed('analytics'), { search: false, sync: false, family: false, community: false });
   assert.deepEqual(Object.keys(CLASSIFICATION).sort(), [...COLLECTIONS].sort(), 'every collection is classified');
   /* PUBLIC content (care, enjoy, store) is never stored: it lives in memory for the visit */
   assert.equal(COLLECTIONS.some((c) => /care|enjoy|product|store|search/i.test(c)), false);
@@ -887,12 +892,15 @@ test('OG-IN8-64 no page error sources: missing nodes, empty lists and unknown ty
 });
 
 test('OG-IN8-65 regression: no new collection, backend, network, dependency or fixture in production; version moved on', () => {
-  assert.equal(COLLECTIONS.length, 23);
-  assert.match(JS['app.js'], /version: 'integration-v2'/);
-  assert.match(INDEX, /app\.js\?v=20261003i8/);
+  // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
+  assert.equal(COLLECTIONS.length, 24);
+  /* Phase 9 moved the version on: admin-v1 / ?v=20261003a9 (BEFORE: integration-v2 / 20261003i8). The version now lives in APP_VERSION. */
+  assert.match(JS['app.js'], /const APP_VERSION = 'admin-v1';/);
+  assert.match(INDEX, /app\.js\?v=20261003a9/);
   assert.equal(/firebase|supabase|openai|anthropic|api[_-]?key|Bearer /i.test(PRODUCTION), false);
   assert.equal(/\bfetch\(|XMLHttpRequest|WebSocket|EventSource|sendBeacon/.test(CODE['routes.js'] + CODE['search.js'] + CODE['saved.js'] + CODE['saved-view.js'] + CODE['notifications.js'] + CODE['panels.js']), false);
   assert.equal(/TEST FIXTURE|example\.test|fixture/i.test(PRODUCTION), false, 'no QA data in production source');
   for (const f of ['routes.js', 'search.js', 'saved-view.js', 'notifications.js', 'panels.js']) for (const m of JS[f].matchAll(/from '([^']+)'/g)) assert.ok(fs.existsSync(path.join(JS_DIR, m[1])), `${f} → ${m[1]}`);
-  assert.equal(fs.readdirSync(JS_DIR).filter((f) => f.endsWith('.js')).length, 60, '59 modules + routes.js');
+  // Phase 9: + analytics.js, instrument.js, source-status.js, admin.js, admin-view.js
+  assert.equal(fs.readdirSync(JS_DIR).filter((f) => f.endsWith('.js')).length, 65, '60 modules + the five Phase 9 modules');
 });

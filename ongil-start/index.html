@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/site-dark.css?v=20260924foot1" />
     <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
     <link rel="stylesheet" href="/ongil-start/styles/ongil-tokens.css?v=20261002p1" />
-    <link rel="stylesheet" href="/ongil-start/styles/ongil-shell.css?v=20261003i8" />
-    <link rel="stylesheet" href="/ongil-start/styles/ongil-app.css?v=20261003i8" />
+    <link rel="stylesheet" href="/ongil-start/styles/ongil-shell.css?v=20261003a9" />
+    <link rel="stylesheet" href="/ongil-start/styles/ongil-app.css?v=20261003a9" />
     <link rel="stylesheet" href="/ongil-start/styles/ongil-home.css?v=20261002c1" />
     <link rel="stylesheet" href="/ongil-start/styles/ongil-life.css?v=20261002h1" />
     <link rel="stylesheet" href="/ongil-start/styles/ongil-care.css?v=20261003s7" />
@@ -34,7 +34,8 @@
           "community": "community", "store": "store",
           "saved": "saved",
           "account": "account", "profile": "account", "settings": "account",
-          "support": "home"
+          "support": "home",
+          "admin": "admin"
         };
         document.documentElement.dataset.ogView = map[hash] || "home";
       })();
@@ -282,6 +283,18 @@
           </div>
         </div>
       </section>
+
+      <!-- ADMIN (internal: no menu entry; a local operations view, not a secured admin page) -->
+      <section class="og-screen" id="admin" data-og-screen="admin" aria-labelledby="og-admin-title">
+        <div class="og-page">
+          <div class="og-wrap">
+            <p class="og-label" lang="en">LOCAL OPERATIONS VIEW</p>
+            <h1 class="og-page__title" id="og-admin-title" tabindex="-1">운영 보기</h1>
+            <p class="og-lead">이 기기에서 ONGIL이 어떤 상태인지 살펴봅니다. 로그인이나 권한 확인이 없는 화면이며, 다른 사람의 정보는 볼 수 없습니다.</p>
+            <div class="og-band og-admin" data-og-admin></div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <dialog class="og-dialog" id="og-onboarding" aria-labelledby="og-onboarding-title">
@@ -293,6 +306,6 @@
     <script src="/lang-dropdown.js?v=20260904lang1" defer></script>
     <!-- Where the data API lives (public, written at build time). Used only by Home's 내 주변, and only when the user asks. -->
     <script src="/livon/livon-api-config.js"></script>
-    <script type="module" src="/ongil-start/js/app.js?v=20261003i8"></script>
+    <script type="module" src="/ongil-start/js/app.js?v=20261003a9"></script>
   </body>
 </html>

@@ -257,7 +257,8 @@ test('OG-FC-1 delete ONGIL data: the two new collections are erased with everyth
   assert.equal(storage.clear(), true);
   assert.deepEqual(storage.list(), []);
   // Phase 6 added communityPosts, groupDrafts and meetupDrafts (20 → 23); the family collections are still erased with the rest
-  assert.equal(COLLECTIONS.length, 23);
+  // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
+  assert.equal(COLLECTIONS.length, 24);
   assert.match(read('js', 'account-view.js'), /가족 공유 설정과 도움 요청도 함께 지웁니다/);
 });
 
@@ -330,8 +331,10 @@ test('OG-FC-10 regression: shells, routes, Home layout, sync list, network bound
   // Phase 7: 스토어 has its own view as well, so the shell loop skips it too.
   assert.match(APP, /if \(area\.id === 'home' \|\| area\.id === 'life' \|\| area\.id === 'family' \|\| area\.id === 'care' \|\| area\.id === 'enjoy' \|\| area\.id === 'community' \|\| area\.id === 'store'\) continue;/);
   assert.equal((APP.match(/\bfetch\(/g) || []).length, 1, 'fetch injected once');
-  assert.match(APP, /const nearbySource = createLifelongClassSource\(dataApi\);/);
-  assert.match(APP, /facility: createFacilitySource\(dataApi\),/);
+  // Phase 9: every source is wrapped by observeSource (state and counts for the local operations view). The source object,
+  // its load() and its answers are unchanged. BEFORE: createLifelongClassSource(dataApi). AFTER: observeSource(createLifelongClassSource(dataApi), …).
+  assert.match(APP, /const nearbySource = observeSource\(createLifelongClassSource\(dataApi\), \{ id: 'lifelong-class'/);
+  assert.match(APP, /facility: observeSource\(createFacilitySource\(dataApi\), /); // Phase 9: observed, as above
   for (const f of fs.readdirSync(path.join(ROOT, 'ongil-start', 'js')).filter((x) => x.endsWith('.js') && x !== 'data-source.js')) assert.equal(/fetcher\(/.test(strip(read('js', f))), false, f);
   assert.match(INDEX, /<section class="og-band" data-og-modules="family"/);
   assert.match(INDEX, /<section class="og-band" data-og-modules="care"/);

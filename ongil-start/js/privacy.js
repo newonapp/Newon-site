@@ -10,6 +10,9 @@
  *   HEALTH_ADJACENT  check-ins, medication (+ logs), symptoms and health notes — not medical records, but close enough
  *                    to be treated with care. A future sync of these needs its own explicit consent (see PHASE_3 doc).
  *
+ *   OPERATIONAL       (Phase 9) daily counters of which screens and features were used — numbers only, kept 14 days,
+ *                    shown on the local operations view. Never synced, searched or shared.
+ *
  * Rules enforced here and checked by tests:
  *   - PRIVATE and HEALTH_ADJACENT collections are never syncable, never searchable, never shareable with family.
  *   - STANDARD collections are local-only for now as well; they may become syncable later, with consent.
@@ -18,7 +21,7 @@
  */
 import { COLLECTIONS } from './storage.js';
 
-export const DATA_CLASSES = Object.freeze(['APP', 'STANDARD', 'PRIVATE', 'HEALTH_ADJACENT']);
+export const DATA_CLASSES = Object.freeze(['APP', 'STANDARD', 'PRIVATE', 'HEALTH_ADJACENT', 'OPERATIONAL']);
 
 export const CLASSIFICATION = Object.freeze({
   profile: 'APP',
@@ -44,6 +47,8 @@ export const CLASSIFICATION = Object.freeze({
   communityPosts: 'PRIVATE',
   groupDrafts: 'PRIVATE',
   meetupDrafts: 'PRIVATE',
+  /* Phase 9: usage counters (analytics.js). Counts of events only — no content, no identifier. Device only: never synced, searched or shared. */
+  analytics: 'OPERATIONAL',
 });
 
 export const CONTRACT_CLASSES = Object.freeze({

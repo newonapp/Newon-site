@@ -70,12 +70,17 @@ export function typeLabel(type) {
 
 /* ───────── routes ───────── */
 
+/* the local operations view (Phase 9) has four parts */
+export const ADMIN_SECTIONS = Object.freeze(['overview', 'data', 'analytics', 'privacy']);
+export const resolveAdminSection = (name) => (typeof name === 'string' && ADMIN_SECTIONS.includes(name) ? name : '');
+
 const SECTION_CHECK = Object.freeze({
   life: (s) => !!resolveSection(s),
   care: (s) => !!resolveCareSection(s),
   enjoy: (s) => !!resolveEnjoySection(s),
   community: (s) => !!resolveCommunitySection(s),
   store: (s) => !!resolveStoreSection(s),
+  admin: (s) => !!resolveAdminSection(s),
 });
 export const SECTIONED_VIEWS = Object.freeze(Object.keys(SECTION_CHECK));
 export function sectionValid(view, section) {

@@ -16,11 +16,16 @@ import { createNotificationCenter } from './notifications.js';
 import { createAccount } from './account.js';
 import { createSearch, createAreaProvider, createSavedProvider, createCareProvider, createEnjoyProvider, createStoreProvider } from './search.js';
 import { AREAS, PRIMARY_AREAS, areaById } from './areas.js';
-import { createRouter, hashFor } from './router.js';
+import { createRouter, hashFor, resolveView } from './router.js';
 import { createNavigation } from './navigation.js';
 import { createFilms } from './film.js';
 import { renderArea } from './views.js';
 import { createSavedView } from './saved-view.js';
+import { createAnalytics, lengthBucket, sizeBucket, providerBucket } from './analytics.js';
+import { createInstrumentation } from './instrument.js';
+import { createSourceRegistry, observeSource } from './source-status.js';
+import { createAdminView } from './admin-view.js';
+import { resolveAdminSection, contentType } from './routes.js';
 import { canonicalHash } from './routes.js';
 import { createAccountView } from './account-view.js';
 import { createOnboardingView, renderInvitation } from './onboarding-view.js';
@@ -58,26 +63,37 @@ const html = doc.documentElement;
 
 const storage = createStorage({ backend: resolveBackend(win) });
 const profile = createProfileStore(storage);
-const saved = createSavedStore(storage);
+/*
+ * Phase 9 — local, privacy-preserving usage counters and the one place that feeds them (instrument.js). The stores
+ * below are wrapped once, here; no screen calls analytics itself. Nothing is sent anywhere and no id is created.
+ */
+const APP_VERSION = 'admin-v1';
+const analytics = createAnalytics({ storage });
+const instrument = createInstrumentation((name, props) => analytics.track(name, props, html.dataset.ogView || ''));
+/* what each public-data source did during this visit (state and counts only), for the local operations view */
+const sourceStatus = createSourceRegistry();
+
+const saved = instrument.saved(createSavedStore(storage));
 const onboarding = createOnboarding({ storage, profile });
 const notifications = createNotificationCenter({ storage, profile });
 const account = createAccount({ storage });
-const checkIn = createCheckInStore(storage);
-const schedule = createScheduleStore(storage);
+const checkIn = instrument.checkIn(createCheckInStore(storage));
+const schedule = instrument.schedule(createScheduleStore(storage));
 const medication = createMedicationStore(storage);
 const dailyLife = createDailyLifeStore(storage);
-const tasks = createTaskStore(storage);
-const routines = createRoutineStore(storage);
+const tasks = instrument.tasks(createTaskStore(storage));
+const routines = instrument.routines(createRoutineStore(storage));
 const sleep = createSleepStore(storage);
 const expenses = createExpenseStore(storage);
 const journal = createJournalStore(storage);
 const symptoms = createSymptomStore(storage);
 const healthNotes = createHealthNoteStore(storage);
-const familySharing = createFamilySharingStore(storage);
-const helpRequests = createHelpRequestStore(storage);
-const communityPosts = createPostStore(storage);
-const meetupDrafts = createMeetupStore(storage);
-const groupDrafts = createGroupStore(storage, { meetups: meetupDrafts });
+const familySharing = instrument.familySharing(createFamilySharingStore(storage));
+const helpRequests = instrument.helpRequests(createHelpRequestStore(storage));
+const communityPosts = instrument.posts(createPostStore(storage));
+const meetupStore = createMeetupStore(storage);
+const meetupDrafts = instrument.meetups(meetupStore);
+const groupDrafts = instrument.groups(createGroupStore(storage, { meetups: meetupStore }));
 
 /* set by a Home shortcut that continues in My Life; used once, when My Life is shown */
 let pendingLifeAdd = null;
@@ -107,7 +123,7 @@ const dataApi = {
   apiUrl: (path) => (apiConfig ? apiConfig.url(path) : path),
   fetcher: typeof win.fetch === 'function' ? (url, init) => win.fetch(url, init) : null,
 };
-const nearbySource = createLifelongClassSource(dataApi);
+const nearbySource = observeSource(createLifelongClassSource(dataApi), { id: 'lifelong-class', label: '평생학습 강좌', provider: 'kr-lifelong-class', purpose: '지역의 평생학습 강좌 찾기', features: ['홈 › 내 주변', '즐길거리'] }, sourceStatus);
 
 /* 즐길거리 view, created further down; Home's 오늘 뭐 하지? reads it lazily */
 let enjoyView = null;
@@ -164,11 +180,12 @@ const care = createCareView({
   saved,
   profile,
   sources: {
-    facility: createFacilitySource(dataApi),
-    services: createUnconnectedSource('services', '돌봄 서비스'),
-    benefits: createUnconnectedSource('benefits', '복지 혜택'),
+    facility: observeSource(createFacilitySource(dataApi), { id: 'care-facility', label: '기관·시설', provider: 'kr-kakao-place', purpose: '가까운 복지관·보건소 같은 기관 찾기', features: ['돌봄·서비스'] }, sourceStatus),
+    services: observeSource(createUnconnectedSource('services', '돌봄 서비스'), { id: 'care-services', label: '돌봄 서비스', provider: '', purpose: '돌봄 서비스 정보 (자료 없음)', features: ['돌봄·서비스'] }, sourceStatus),
+    benefits: observeSource(createUnconnectedSource('benefits', '복지 혜택'), { id: 'care-benefits', label: '복지 혜택', provider: '', purpose: '복지 혜택 정보 (자료 없음)', features: ['돌봄·서비스'] }, sourceStatus),
   },
   onFamily: () => true,
+  onOpen: instrument.careOpened,
 });
 /* global search may find PUBLIC care items that were actually loaded on that screen — never a personal record */
 search.registerProvider(createCareProvider(() => care.items()));
@@ -183,7 +200,12 @@ enjoyView = createEnjoyView({
   saved,
   profile,
   schedule,
-  sources: { lifelong: nearbySource, tour: createTourPlaceSource(dataApi), place: createEnjoyPlaceSource(dataApi) },
+  sources: {
+    lifelong: nearbySource,
+    tour: observeSource(createTourPlaceSource(dataApi), { id: 'tour-place', label: '관광 정보', provider: 'kr-tourapi', purpose: '관광지·문화시설·레포츠 정보 찾기', features: ['즐길거리'] }, sourceStatus),
+    place: observeSource(createEnjoyPlaceSource(dataApi), { id: 'enjoy-place', label: '장소', provider: 'kr-kakao-place', purpose: '공원·박물관 같은 장소 찾기', features: ['즐길거리'] }, sourceStatus),
+  },
+  onOpen: instrument.enjoyOpened,
   /* review: opens the community form with a little filled in; nothing is saved until the user saves */
   onReview: (item) => {
     pendingReview = reviewPrefill(item);
@@ -215,7 +237,8 @@ const storeView = createStoreView({
   host: doc.querySelector('[data-og-modules="store"]'),
   doc,
   saved,
-  source: createProductSource(),
+  source: observeSource(createProductSource(), { id: 'products', label: '상품 정보', provider: '', purpose: '상품 정보 (자료 없음)', features: ['스토어'] }, sourceStatus),
+  onOpen: instrument.productOpened,
 });
 search.registerProvider(createStoreProvider(() => storeView.items()));
 
@@ -227,7 +250,30 @@ const showCommunity = (section) => {
 };
 
 const navigation = createNavigation({ doc });
-const panels = createPanels({ root: doc.querySelector('[data-og-tools]'), search, notifications });
+const panels = createPanels({
+  root: doc.querySelector('[data-og-tools]'),
+  search,
+  notifications,
+  /* a search is counted by the LENGTH BUCKET of the query and the size of the answer — the words are never kept */
+  onSearch: (o) => instrument.track('search_submit', { queryLength: lengthBucket(o.queryLength), resultCount: sizeBucket(o.total), providerCount: providerBucket(o.providerCount), outcome: o.state }),
+  onResultOpen: (r) => instrument.track('search_result_open', { contentType: r.providerId === 'areas' ? 'MENU' : contentType(r.contentType || r.type) }),
+});
+
+/*
+ * Phase 9 — 운영 보기 (#admin): a local, read-only operations view. No menu entry, no sign-in, no server: it shows
+ * this copy of ONGIL only and says so. It reads no health, family or journal record, and no title or text of any record.
+ */
+const adminView = createAdminView({
+  host: doc.querySelector('[data-og-admin]'),
+  version: APP_VERSION,
+  hostname: win.location.hostname,
+  storage,
+  search,
+  saved,
+  sources: sourceStatus,
+  analytics,
+  loaded: () => ({ care: care.items().length, enjoy: enjoyView.items().length, store: storeView.items().length }),
+});
 
 const openOnboarding = (from) => onboardingView.open(from);
 const refreshInvitation = () => {
@@ -287,6 +333,7 @@ const router = createRouter({
     if (view === 'enjoy' && section && !resolveEnjoySection(section)) win.history.replaceState(null, '', '#enjoy');
     if (view === 'community' && section && !resolveCommunitySection(section)) win.history.replaceState(null, '', '#community');
     if (view === 'store' && section && !resolveStoreSection(section)) win.history.replaceState(null, '', '#store');
+    if (view === 'admin' && section && !resolveAdminSection(section)) win.history.replaceState(null, '', '#admin');
     /* Phase 8: every other malformed address — a section on a screen that has none (#health/x), extra parts (#store/a/b),
        odd characters — is corrected to the screen itself, so no address is left pointing at something that is not there */
     if (win.location.hash.includes('/')) {
@@ -300,12 +347,15 @@ const router = createRouter({
       if (view === 'enjoy') enjoyView.show(section);
       if (view === 'community') showCommunity(section);
       if (view === 'store') storeView.show(section);
+      if (view === 'admin') adminView.show(section);
       return;
     }
     navigation.setCurrent(view);
     panels.closeAll();
     films.show(view);
-    doc.title = viewTitle(areaById(view));
+    doc.title = view === 'admin' ? '운영 보기 | Ongil' : viewTitle(areaById(view));
+    instrument.track('screen_view', { view, hasSection: section ? 'yes' : 'no' });
+    if (view === 'admin') adminView.show(section);
     if (view === 'account') accountView.render();
     if (view === 'saved') savedView.render();
     if (view === 'family') familyView.refresh();
@@ -366,8 +416,18 @@ win.setInterval(checkDay, 60000);
 bindSkipLink(doc);
 bindScrollCues(doc, win);
 refreshInvitation();
+/* Phase 9: the router is silent when a malformed section replaces no section on the same screen
+   (#admin → #admin/OVERVIEW), so the address is also corrected here. replaceState raises no hashchange: no loop. */
+win.addEventListener('hashchange', () => {
+  const hash = win.location.hash;
+  const view = resolveView(hash);
+  if (!view || !hash.includes('/')) return;
+  const fixed = canonicalHash(hash) || hashFor(view);
+  if (fixed && !fixed.includes('/') && fixed !== hash) win.history.replaceState(null, '', fixed);
+});
+instrument.track('app_open');
 router.start();
 html.dataset.ogReady = 'true';
 
 /* one stable handle for later phases and for manual checks; no secrets, nothing privileged */
-win.Ongil = Object.freeze({ version: 'integration-v2', storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes, familySharing, helpRequests, care, enjoy: enjoyView, communityPosts, groupDrafts, meetupDrafts, store: storeView });
+win.Ongil = Object.freeze({ version: APP_VERSION, analytics, sources: sourceStatus, storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes, familySharing, helpRequests, care, enjoy: enjoyView, communityPosts, groupDrafts, meetupDrafts, store: storeView });

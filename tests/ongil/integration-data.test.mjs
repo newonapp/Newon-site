@@ -371,7 +371,8 @@ test('OG-IN-14 erase: all twenty-three ONGIL collections go, everything else on 
   w.life.expenses.add({ category: 'food', amount: 1000 });
   w.life.sleep.save({ quality: 'good' });
   w.profile.updateProfile({ nickname: '온길' });
-  assert.equal(COLLECTIONS.length, 23);
+  // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
+  assert.equal(COLLECTIONS.length, 24);
   assert.deepEqual(w.storage.list().sort(), [...COLLECTIONS].sort(), 'all twenty-three hold something');
   assert.equal(w.storage.clear(), true);
   assert.deepEqual(w.storage.list(), []);

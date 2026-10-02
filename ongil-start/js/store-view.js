@@ -50,7 +50,7 @@ const MESSAGES = {
   NO_ANSWER: '지금은 상품 정보를 받아오지 못했어요. 잠시 뒤 다시 확인해 주세요.',
 };
 
-export function createStoreView({ host, doc, saved, source }) {
+export function createStoreView({ host, doc, saved, source, onOpen = null }) {
   const state = { status: 'loading', reason: '', items: [], category: '', brand: '', seller: '', query: '', shown: STORE_PAGE, compare: [] };
   let cards = null;
   let dialog = null;
@@ -349,6 +349,8 @@ export function createStoreView({ host, doc, saved, source }) {
   }
 
   function openDetail(p, from, mode = 'detail') {
+    /* [P9] a detail opened from a row (not a re-render inside the dialog): the owner is told, with the item only */
+    if (from && mode === 'detail' && typeof onOpen === 'function') onOpen(p);
     const d = ensureDialog();
     if (from) opener = from;
     clear(d);

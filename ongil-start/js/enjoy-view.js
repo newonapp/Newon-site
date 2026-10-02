@@ -66,7 +66,7 @@ const MESSAGES = {
 };
 
 /* onReview (Phase 6): optional; the review button hands the item to whoever owns writing (nothing is written here) */
-export function createEnjoyView({ host, doc, saved, profile, schedule, sources, onReview = null, now = () => Date.now() }) {
+export function createEnjoyView({ host, doc, saved, profile, schedule, sources, onReview = null, onOpen = null, now = () => Date.now() }) {
   const state = { category: '', type: '', filterCategory: '', region: '', query: '', sort: 'title', shown: PAGE_SIZE, items: [], sourceStatus: {} };
   let ticket = 0;
   let cards = null;
@@ -367,6 +367,8 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
   }
 
   function openDetail(item, from, mode = 'detail') {
+    /* [P9] a detail opened from a row (not a re-render inside the dialog): the owner is told, with the item only */
+    if (from && mode === 'detail' && typeof onOpen === 'function') onOpen(item);
     const d = ensureDialog();
     if (from) opener = from;
     clear(d);

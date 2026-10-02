@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { AREAS, PRIMARY_AREAS, GLOBAL_AREAS, GLOBAL_ENTRIES } from '../../ongil-start/js/areas.js';
-import { VIEWS, PRIMARY_VIEWS, GLOBAL_VIEWS, OVERLAYS, ROUTE_ALIASES, resolveView, hashFor } from '../../ongil-start/js/router.js';
+import { VIEWS, INTERNAL_VIEWS, PRIMARY_VIEWS, GLOBAL_VIEWS, OVERLAYS, ROUTE_ALIASES, resolveView, hashFor } from '../../ongil-start/js/router.js';
 import { viewTitle } from '../../ongil-start/js/accessibility.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -56,12 +56,15 @@ test('OG-IA-3 global layer: search and notifications are overlays, saved and acc
 
 test('OG-RT-1 every view has exactly one screen, a level-1 heading and (primary areas) a module region', () => {
   const screens = [...BODY.matchAll(/<section class="og-screen" id="([a-z]+)" data-og-screen="([a-z]+)" aria-labelledby="([a-z-]+)">/g)];
-  assert.deepEqual(screens.map((m) => m[2]), [...VIEWS]);
+  // Phase 9: one internal view was added — the local operations view (#admin). It has a screen and a heading like any view,
+  // but no menu entry and no area. BEFORE: screens = VIEWS. AFTER: VIEWS followed by INTERNAL_VIEWS.
+  assert.deepEqual(screens.map((m) => m[2]), [...VIEWS, ...INTERNAL_VIEWS]);
+  assert.deepEqual([...INTERNAL_VIEWS], ['admin']);
   for (const [, id, view, label] of screens) {
     assert.equal(id, view);
     assert.match(BODY, new RegExp(`<h1[^>]*id="${label}"[^>]*tabindex="-1"|<h1[^>]*tabindex="-1"[^>]*id="${label}"|<h1 id="${label}"[^>]*tabindex="-1"`), `${view} heading`);
   }
-  assert.equal((BODY.match(/<h1\b/g) || []).length, VIEWS.length, 'one h1 per view (only one view is shown at a time)');
+  assert.equal((BODY.match(/<h1\b/g) || []).length, VIEWS.length + INTERNAL_VIEWS.length, 'one h1 per view (only one view is shown at a time)');
   for (const view of PRIMARY_VIEWS) assert.match(BODY, new RegExp(`<section class="og-band" data-og-modules="${view}" aria-labelledby="og-${view}-section-title">`));
   assert.match(BODY, /data-og-saved/);
   assert.match(BODY, /data-og-account/);

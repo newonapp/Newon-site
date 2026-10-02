@@ -63,7 +63,8 @@ test('OG-IV-1 Home shows tasks and routines through My Life\'s stores and the sh
   // Phase 3 added symptoms + healthNotes (16 → 18); still no Home-only collection (checked above)
   // Phase 4 added familySharing + helpRequests (18 → 20); still no Home-only collection
   // Phase 6 added communityPosts + groupDrafts + meetupDrafts (20 → 23); still no Home-only collection
-  assert.equal(COLLECTIONS.length, 23);
+  // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
+  assert.equal(COLLECTIONS.length, 24);
 });
 
 test('OG-IV-2 "할 일 추가" on Home continues in My Life\'s own task form', () => {

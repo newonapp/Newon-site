@@ -320,7 +320,9 @@ test('OG-EN-30 Nearby shared normalization: Home 내 주변 items are the same n
   const b = api({ items: { [LIFELONG_PROVIDER]: [lifelong(1)] } });
   await createLifelongClassSource(b.opts).load({ region: '서울', query: '서예', limit: 20 });
   assert.match(b.calls[1].url, /&query=%EC%84%9C%EC%98%88&status=open&limit=20$/);
-  assert.match(APP, /sources: \{ lifelong: nearbySource, tour: createTourPlaceSource\(dataApi\), place: createEnjoyPlaceSource\(dataApi\) \}/, 'one lifelong source object for both screens');
+  // Phase 9: the tour and place sources are wrapped by observeSource; the lifelong source is still the one object Home uses.
+  // BEFORE: sources: { lifelong: nearbySource, tour: createTourPlaceSource(dataApi), place: createEnjoyPlaceSource(dataApi) } on one line.
+  assert.match(APP, /sources: \{\s*lifelong: nearbySource,\s*tour: observeSource\(createTourPlaceSource\(dataApi\), [^\n]*\),\s*place: observeSource\(createEnjoyPlaceSource\(dataApi\), [^\n]*\),\s*\}/, 'one lifelong source object for both screens');
 });
 
 test('OG-EN-31 Global Search: loaded public enjoy items are findable, with a clear type label', async () => {
@@ -476,7 +478,8 @@ test('OG-EN-47 no page errors: null children skipped, no markup strings, no geol
 
 test('OG-EN-48 account delete safety: no new collection; saved and calendar entries go with the ONGIL erase', () => {
   // Phase 5 added no collection (20). Phase 6 then added three community collections (23) — none of them for 즐길거리.
-  assert.equal(COLLECTIONS.length, 23, 'Phase 5 added no collection; Phase 6 added three community ones');
+  // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
+  assert.equal(COLLECTIONS.length, 24, 'Phase 5 added no collection; Phase 6 added three community ones; Phase 9 added analytics');
   const w = world();
   w.saved.toggle(E.savedInputFor(cls()));
   w.schedule.add(E.calendarDraft(cls()));
@@ -498,8 +501,10 @@ test('OG-EN-50 regression: fetch injected once, sources only in data-source.js, 
   assert.equal((APP.match(/\bfetch\(/g) || []).length, 1);
   for (const f of fs.readdirSync(path.join(ROOT, 'ongil-start', 'js')).filter((x) => x.endsWith('.js') && x !== 'data-source.js')) assert.equal(/fetcher\(|\bfetch\(/.test(strip(read('js', f)).replace(/win\.fetch\(url, init\)/, '')), false, f);
   assert.match(APP, /search\.registerProvider\(createCareProvider\(\(\) => care\.items\(\)\)\);/);
-  assert.match(APP, /const nearbySource = createLifelongClassSource\(dataApi\);/);
-  assert.match(APP, /facility: createFacilitySource\(dataApi\),/);
+  // Phase 9: wrapped by observeSource (see OG-FC-10); still created once.
+  assert.match(APP, /const nearbySource = observeSource\(createLifelongClassSource\(dataApi\), /);
+  assert.equal((APP.match(/createLifelongClassSource\(/g) || []).length, 1);
+  assert.match(APP, /facility: observeSource\(createFacilitySource\(dataApi\), /); // Phase 9: observed, as above
   assert.deepEqual(TARGETS_BY_CATEGORY.TRAVEL, ['tour-12'], 'travel = tourist information only (no lodging, no transport)');
   assert.equal(SEARCH_TARGETS.length, 12);
   assert.equal(/server\/|KAKAO_REST_API_KEY|TOURAPI_SERVICE_KEY|PUBLIC_DATA_SERVICE_KEY/.test(strip(read('js', 'data-source.js'))), false);

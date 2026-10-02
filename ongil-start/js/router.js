@@ -11,6 +11,8 @@
 export const VIEWS = Object.freeze(['home', 'life', 'health', 'family', 'care', 'enjoy', 'community', 'store', 'saved', 'account']);
 export const PRIMARY_VIEWS = Object.freeze(['home', 'life', 'health', 'family', 'care', 'enjoy', 'community', 'store']);
 export const GLOBAL_VIEWS = Object.freeze(['saved', 'account']);
+/* internal views have an address but no place in any menu (Phase 9: the local operations view) */
+export const INTERNAL_VIEWS = Object.freeze(['admin']);
 /* overlays are panels on top of the current view, not views */
 export const OVERLAYS = Object.freeze(['search', 'notifications']);
 
@@ -32,6 +34,7 @@ export const ROUTE_ALIASES = Object.freeze({
   profile: 'account',
   settings: 'account',
   support: 'home',
+  admin: 'admin',
 });
 
 const CANONICAL = Object.freeze({ home: 'ongil-home' });
@@ -47,7 +50,7 @@ export function sectionOf(hash) {
 }
 
 export function hashFor(view) {
-  if (!VIEWS.includes(view)) return '#ongil-home';
+  if (!VIEWS.includes(view) && !INTERNAL_VIEWS.includes(view)) return '#ongil-home';
   return `#${CANONICAL[view] || view}`;
 }
 

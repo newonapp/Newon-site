@@ -546,6 +546,7 @@ test('OG-CG-16 no test fixtures or QA data in production source; app is versione
   assert.doesNotMatch(COMMUNITY_SRC, /QA 글|cp_qa|gd_qa|mt_qa|fixture|lorem/i);
   /* Phase 7 moved the version on: store-v1 / ?v=20261003s7 */
   /* Phase 8 moved the version on again: integration-v2 / ?v=20261003i8 (BEFORE: store-v1 / 20261003s7) */
-  assert.match(APP, /version: 'integration-v2'/);
-  assert.match(read('index.html'), /app\.js\?v=20261003i8/);
+  /* Phase 9 moved the version on: admin-v1 / ?v=20261003a9 (BEFORE: integration-v2 / 20261003i8). The version now lives in APP_VERSION. */
+  assert.match(APP, /const APP_VERSION = 'admin-v1';/);
+  assert.match(read('index.html'), /app\.js\?v=20261003a9/);
 });
