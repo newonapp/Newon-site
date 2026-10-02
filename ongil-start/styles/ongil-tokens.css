@@ -1,0 +1,92 @@
+/*
+ * ONGIL design tokens.
+ *
+ * Every value below was read from the existing ongil-start design (dark / film identity) and given a name.
+ * Nothing here introduces a new colour, typeface, radius or motion. Where the old sheet repeated a literal,
+ * the sheet now points at the token; the rendered result is the same.
+ *
+ * The only additions are accessibility floors (control height, body size, focus ring) noted as such.
+ */
+:root {
+  /* background */
+  --og-bg: #000;
+  --og-film-bg: #0a0a0a;
+
+  /* surface */
+  --og-surface: #212121;
+  --og-surface-deep: #101010;
+
+  /* text */
+  --og-ink: #e1e0cc;
+  --og-ink-soft: #dedbc8;
+  --og-white: #fff;
+  --og-film-lead: rgba(255, 255, 255, 0.92);
+  --og-hero-foot: rgba(255, 255, 255, 0.75);
+
+  /* muted text */
+  --og-muted: #9ca3af;
+
+  /* border — the original design draws chips and cards without borders; the list bullet uses ink-soft */
+  --og-line: rgba(225, 224, 204, 0.16);
+  --og-line-strong: rgba(225, 224, 204, 0.42);
+
+  /* accent — the design's accent is white on black (primary button) */
+  --og-accent: #fff;
+  --og-accent-ink: #000;
+  --og-glow: 0 0 24px 4px rgba(255, 255, 255, 0.25);
+
+  /* header panels (light surface, as in the original search / alert panels) */
+  --og-panel-bg: #fff;
+  --og-panel-ink: #111;
+  --og-panel-muted: #666;
+  --og-panel-line: rgba(0, 0, 0, 0.06);
+  --og-panel-border: rgba(0, 0, 0, 0.08);
+  --og-panel-input-border: rgba(0, 0, 0, 0.14);
+  --og-panel-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  --og-tool-hover: rgba(0, 0, 0, 0.06);
+
+  /* radius */
+  --og-radius-card: 1.1rem;
+  --og-radius-lg: 1.5rem;
+  --og-radius-panel: 16px;
+  --og-radius-input: 10px;
+  --og-radius-pill: 9999px;
+
+  /* shadow (text over film) */
+  --og-shadow-wordmark: 0 10px 28px rgba(0, 0, 0, 0.32);
+  --og-shadow-slogan: 0 8px 24px rgba(0, 0, 0, 0.36);
+  --og-shadow-lead: 0 6px 18px rgba(0, 0, 0, 0.34);
+
+  /* spacing */
+  --og-space-section: 4.5rem;
+  --og-space-card: 1rem;
+  --og-gap-chips: 0.7rem;
+  --og-gap-grid: 0.45rem;
+  --og-wrap: min(1180px, calc(100% - 2rem));
+
+  /* type */
+  --og-font: "Almarai", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --og-font-kr: "Noto Sans KR", "Noto Sans", Almarai, sans-serif;
+  --og-font-wordmark: "Noto Sans", "Noto Sans KR", Almarai, sans-serif;
+  --og-font-serif: "Instrument Serif", "Noto Serif KR", serif;
+  --og-size-hero: clamp(96px, 18vw, 280px);
+  --og-size-wordmark: clamp(4.8rem, 16vw, 11rem);
+  --og-size-slogan: clamp(1.45rem, 3.2vw, 2.35rem);
+  --og-size-h: clamp(1.6rem, 3vw, 2.6rem);
+  --og-size-label: 0.78rem;
+  --og-size-card-title: 1.05rem;
+  --og-size-button: 0.875rem;
+
+  /* transition */
+  --og-ease-reveal: 0.9s ease;
+  --og-ease-hero: 1s;
+  --og-ease-press: 0.2s;
+
+  /* accessibility floors (new in Phase 1; they do not change the palette or the layout language) */
+  --og-control: 2.75rem; /* 44px: smallest touch target for header tools and buttons */
+  --og-input: 3rem;
+  --og-size-body: 1rem; /* body copy is never smaller than 16px */
+  --og-weight-body: 400; /* body copy is never lighter than regular */
+  --og-focus: 3px solid var(--og-white);
+  --og-focus-offset: 3px;
+}
