@@ -1698,7 +1698,8 @@
       '<div class="lv-ml-block-label" style="margin-top:1.5rem"><p class="lv-ml-kicker">For you</p><h3 class="lv-ml-title lv-ml-title--md">맞춤 설정</h3></div>' +
       '<p class="lv-ml-note">연령대·관심사·Life Event는 이 기기에서 홈, 라이프 스테이지, 오늘의 발견, 탐색, 커뮤니티의 순서를 맞추는 데만 사용돼요. 바꾸면 바로 반영돼요.</p>' +
       '<p class="lv-ml-inline-acts"><button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" data-lv-onboard-reopen>맞춤 설정 다시 하기</button> ' +
-        (PZ ? '<button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" data-lv-ml-pz-reset>맞춤 설정 초기화</button>' : "") + "</p>";
+        (PZ ? '<button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" data-lv-ml-pz-reset>맞춤 설정 초기화</button>' : "") + "</p>" +
+      (window.LivonHelp ? '<p class="lv-ml-note">' + window.LivonHelp.link("personalization-reset", "초기화하면 무엇이 지워지나요?") + ' · <a class="lv-help-link" href="#help">도움말 전체 보기</a></p>' : "");
   }
 
 

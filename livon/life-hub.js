@@ -726,7 +726,8 @@
   function saveAck(then, opener) {
     if (Account.isSignedIn() || readJSON(KEY_SAVE_ACK, false, sessionStorage)) return then();
     /* anonymous public mode: no login prompt — one local-storage notice per session, then saves go straight to this device */
-    openModal('<h2 id="lh-modal-title">이 기기에 저장됩니다</h2><p>현재 이 기기에 저장됩니다. 브라우저 데이터를 삭제하거나 다른 기기에서 이용하면 저장 내용이 유지되지 않을 수 있습니다. 저장한 항목은 <strong>내 생활 › 저장함</strong>에서 볼 수 있습니다.</p>' +
+    openModal('<h2 id="lh-modal-title">이 기기에 저장됩니다</h2><p>현재 이 기기에 저장됩니다. 브라우저 데이터를 삭제하거나 다른 기기에서 이용하면 저장 내용이 유지되지 않을 수 있습니다. 저장한 항목은 <strong>내 생활 › 저장함</strong>에서 볼 수 있습니다.' +
+      (window.LivonHelp ? ' <a class="lv-help-link" href="#help/a/local-data-storage" data-lv-help-link="local-data-storage" data-lh-modal-close>내 정보는 어디에 저장되나요?</a>' : "") + "</p>" +
       '<div class="lv-life-svc__acts"><button type="button" class="lv-life-btn lv-life-btn--dark" data-lh-save-local data-lh-autofocus>이 기기에 저장</button><button type="button" class="lv-life-btn lv-life-btn--outline" data-lh-modal-close>취소</button></div>', opener);
     pendingSave = then;
   }

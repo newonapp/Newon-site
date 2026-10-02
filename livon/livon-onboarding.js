@@ -24,6 +24,8 @@
   function esc(s) {
     return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
+  /* contextual help: a link into the Help Center (help-page.js). Nothing is shown when Help is not loaded. */
+  function help(id, label) { return window.LivonHelp && typeof window.LivonHelp.link === "function" ? " " + window.LivonHelp.link(id, label) : ""; }
   function steps() { return (P() && P().STEPS) || ["stage", "interests", "events", "preview"]; }
 
   /* ───────── markup (pure: state in, HTML out) ───────── */
@@ -105,7 +107,8 @@
       html += '<p class="lv-ob__status" role="status" aria-live="polite"></p>';
     }
     return html + actions(step) +
-      '<p class="lv-life-modal__foot">' + PRIVACY + (p.storageIsTemporary() ? " " + TEMP_NOTE : "") + "</p>";
+      '<p class="lv-life-modal__foot">' + PRIVACY + help("personalization-storage", "맞춤 설정은 어디에 저장되나요?") +
+        (p.storageIsTemporary() ? " " + TEMP_NOTE + help("storage-blocked", "저장이 막혀 있다는 뜻은?") : "") + "</p>";
   }
   var ENTRY = {
     welcome: { title: "LIVON에 오신 걸 환영해요", text: "삶의 단계와 상황에 맞는 정보·서비스·할 일을 한곳에서 찾고 관리하는 서비스예요. 회원가입 없이 바로 쓸 수 있어요.", go: "나에게 맞게 시작하기", no: "먼저 둘러보기" },
@@ -237,6 +240,7 @@
       m.addEventListener("click", function (e) {
         var t = e.target, c = function (sel) { return t.closest ? t.closest(sel) : null; };
         if (c("[data-lv-onboard-close]")) { closeKeep(); return; }
+        if (c("[data-lv-help-link]")) { persist(); hide(); return; }   /* the link opens Help: keep what was chosen, and do not cover the article with the resume note (it returns on the next visit) */
         if (c("[data-ob-later]")) { later(); return; }
         if (c("[data-ob-next]")) { go(1); return; }
         if (c("[data-ob-back]")) { go(-1); return; }

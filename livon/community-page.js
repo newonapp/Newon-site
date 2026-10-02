@@ -552,6 +552,8 @@
       '" data-lh-stage="' + esc(p.lifeStage || "") + '" data-lh-label="저장" aria-pressed="' + saved + '" aria-label="' + esc(p.title) + ' 저장">' + (saved ? "저장됨" : "저장") + "</button>";
   }
 
+  /* contextual help link (Help Center). Empty when Help is not loaded. */
+  function helpLink(id, label) { return window.LivonHelp && typeof window.LivonHelp.link === "function" ? window.LivonHelp.link(id, label) : ""; }
   function emptyHtml(title, body, acts) {
     return '<div class="lv-cm-empty"><h3>' + esc(title) + "</h3>" + (body ? "<p>" + esc(body) + "</p>" : "") + (acts ? '<div class="lv-cm-actions">' + acts + "</div>" : "") + "</div>";
   }
@@ -578,7 +580,8 @@
     if (state.tab === "following") {
       /* adapter.follows(): { available: false, status: "ACCOUNT_REQUIRED" } — no follow list is simulated */
       host.innerHTML = emptyHtml("아직 팔로우한 사용자가 없습니다.", "다른 사용자 프로필과 팔로우는 준비 중입니다. 지금은 이 기기에서 쓴 글만 있어 팔로우할 사람이 없어요. 주제별로 글을 둘러볼 수 있어요.",
-        '<a class="lv-cm-btn lv-cm-btn--dark" href="#cm-home?tab=latest">최신 글 보기</a><a class="lv-cm-btn lv-cm-btn--ghost" href="#cm-interests">주제 둘러보기</a>');
+        '<a class="lv-cm-btn lv-cm-btn--dark" href="#cm-home?tab=latest">최신 글 보기</a><a class="lv-cm-btn lv-cm-btn--ghost" href="#cm-interests">주제 둘러보기</a>') +
+        (helpLink("community-following") ? '<p class="lv-cm-note lv-cm-note--plain">' + helpLink("community-following", "팔로잉이 왜 비어 있나요?") + "</p>" : "");
       return;
     }
     if (!list.length) {
@@ -745,7 +748,7 @@
           return "<li>" + esc(r.reason) + " · " + esc(r.exists ? (r.kind === "comment" ? "댓글: " : "글: ") + r.title.slice(0, 24) : "삭제된 " + (r.kind === "comment" ? "댓글" : "글")) + " · " + esc(fmtDate(r.at)) + "</li>";
         }, '<p class="lv-cm-note">신고는 이 기기에만 기록되며 운영자나 서버로 전송되지 않습니다.</p>') +
       "</div>" +
-      '<div class="lv-cm-mine-reset"><p class="lv-cm-note">커뮤니티 기록(글·댓글·공감·신고·가입·표시 이름)은 이 기기에만 있습니다. 지워도 맞춤 설정과 내 생활의 다른 기록은 그대로 남습니다.</p>' +
+      '<div class="lv-cm-mine-reset"><p class="lv-cm-note">커뮤니티 기록(글·댓글·공감·신고·가입·표시 이름)은 이 기기에만 있습니다. 지워도 맞춤 설정과 내 생활의 다른 기록은 그대로 남습니다.' + (helpLink("community-reset") ? " " + helpLink("community-reset", "자세히") : "") + "</p>" +
         '<button type="button" class="lv-cm-btn lv-cm-btn--ghost lv-cm-btn--sm" data-lv-cm-reset-local' + (hasAny ? "" : " disabled") + ">이 기기의 커뮤니티 기록 지우기</button></div>";
   }
 
@@ -790,7 +793,7 @@
   function openReport(target, opener) {
     var already = Repo.reported(target);
     openDialog('<h2 id="lv-cm-dialog-title">' + (target.indexOf("comment:") === 0 ? "댓글 신고" : "게시글 신고") + "</h2>" +
-      '<p id="lv-cm-dialog-desc">신고는 이 기기에만 기록됩니다. 운영자나 서버로 전송되지 않으며, 신고 시스템이 연결되면 실제 검토가 가능해집니다.' + (already ? " 이 기기에서 이미 신고한 적이 있는 항목입니다." : "") + "</p>" +
+      '<p id="lv-cm-dialog-desc">신고는 이 기기에만 기록됩니다. 운영자나 서버로 전송되지 않으며, 신고 시스템이 연결되면 실제 검토가 가능해집니다.' + (already ? " 이 기기에서 이미 신고한 적이 있는 항목입니다." : "") + (helpLink("community-report") ? " " + helpLink("community-report", "신고가 운영자에게 전달되나요?") : "") + "</p>" +
       '<form data-lv-cm-report-form data-target="' + esc(target) + '"><fieldset class="lv-cm-fieldset"><legend>신고 사유</legend>' +
         REPORT_REASONS.map(function (r, i) { return '<label class="lv-cm-radio"><input type="radio" name="reason" value="' + esc(r.id) + '"' + (i === 0 ? " data-lv-cm-autofocus" : "") + " /> " + esc(r.label) + "</label>"; }).join("") +
       '</fieldset><p class="lv-cm-form__err" data-lv-cm-report-err role="alert"></p>' +
@@ -1210,6 +1213,7 @@
     document.addEventListener("click", function (e) {
       if (!e.target.closest || !e.target.closest("#community")) return;
       if (e.target.closest("[data-lv-cm-dialog-close]")) { e.preventDefault(); closeDialog(false); return; }
+      if (e.target.closest("[data-lv-help-link]")) { if (dialog) closeDialog(false); return; }   /* the link goes to Help */
       if (e.target.closest("[data-lv-cm-dialog-ok]")) { e.preventDefault(); closeDialog(true); return; }
       var scroll = e.target.closest("[data-lv-cm-scroll]");
       if (scroll) {

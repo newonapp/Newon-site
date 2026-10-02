@@ -205,6 +205,18 @@
            (LivonCommunityService.snapshot works on a copy — the stored value is never changed) */
         reportList: communityReports(raw) };
     }
+    /* Help Center content (livon/help-data.js) — read-only inspection: counts and verification, no editing here.
+       Help is its own content domain: it is not part of the curated records. */
+    function helpRows() {
+      var HD = env.LivonHelpData || root.LivonHelpData;
+      if (!HD || !Array.isArray(HD.articles)) return [];
+      var by = countBy(HD.articles, function (a) { return a.v || "UNVERIFIED"; });
+      return [
+        { key: "Help Content", value: STATUS.READY, detail: HD.articles.length + " articles · " + HD.categories.length + " categories · " + HD.contextual.length + " contextual entries" },
+        { key: "Help Verification", value: by.UNVERIFIED ? "REVIEW" : "VERIFIED", detail: Object.keys(by).sort().map(function (k) { return k + " " + by[k]; }).join(" · ") },
+        { key: "Support Backend", value: STATUS.NOT_CONNECTED, detail: "no inquiry / ticket / e-mail backend; Help offers no send action" }
+      ];
+    }
     function communityReports(raw) {
       var CS = env.LivonCommunityService || root.LivonCommunityService;
       if (!CS || typeof CS.snapshot !== "function") return [];
@@ -322,7 +334,7 @@
         { key: "Community Backend", value: STATUS.NOT_CONNECTED, detail: "device-local posts only" },
         { key: "Storage", value: STATUS.LOCAL_FIRST, detail: "admin adapter: " + (adapter ? adapter.kind : "none") + (info.persistent === false ? " · memory only (browser storage blocked)" : info.persistent ? " · localStorage" : "") },
         { key: "Provider Manifest", value: manifest ? STATUS.READY : STATUS.UNAVAILABLE, detail: manifest ? Object.keys(manifest.PROVIDER_MANIFEST).length + " providers" : "not loaded" }
-      ];
+      ].concat(helpRows());
     }
 
     /* ───────── global search / commands ───────── */

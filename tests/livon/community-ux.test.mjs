@@ -518,7 +518,7 @@ test('CU-27 Admin moderation: a report recorded in Community is reviewable in th
   const app = read('admin/admin-app.js');
   assert.match(app, /Reports recorded in LIVON Community <strong>in this browser<\/strong> \(local only — nothing was sent to a server/);
   assert.match(app, /data-ad-mod="' \+ esc\(r\.target\) \+ '"/);
-  assert.match(read('admin/index.html'), /<script src="\/livon\/community-service\.js"><\/script>\s*<script src="\/livon\/admin\/admin-store\.js">/);
+  assert.match(read('admin/index.html'), /<script src="\/livon\/community-service\.js"><\/script>[\s\S]*<script src="\/livon\/admin\/admin-store\.js">/);
 });
 
 test('CU-28 empty states: feed, following, search, saved, my posts, comments, related content, activity', () => {

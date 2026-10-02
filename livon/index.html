@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/livon/life-now-page.css?v=20260929qa1" />
     <link rel="stylesheet" href="/livon/explore-page.css?v=20260929qa1" />
     <link rel="stylesheet" href="/livon/community-page.css?v=20261002cu1" />
+    <link rel="stylesheet" href="/livon/help-page.css?v=20261002hf1" />
     <link rel="stylesheet" href="/livon/today-page.css?v=20260929qa1" />
     <link rel="stylesheet" href="/livon/ai-page.css?v=20260929qa1" />
     <link rel="stylesheet" href="/livon/home-page.css?v=20260929hm1" />
@@ -124,6 +125,7 @@
                 <a role="menuitem" href="#ml-saved" data-lv-plat-profile="saved">저장한 항목</a>
                 <a role="menuitem" href="#ml-family" data-lv-plat-profile="family">가족 연결</a>
                 <a role="menuitem" href="#ml-settings" data-lv-plat-profile="settings">알림 · 개인정보</a>
+                <a role="menuitem" href="#help">도움말</a>
                 <!-- Accounts are not connected yet: keep the logout item out of view until sign-in exists. -->
                 <button type="button" role="menuitem" data-livon-logout hidden>로그아웃</button>
               </div>
@@ -159,6 +161,7 @@
             <a class="gnav-mobile__sublink" href="#explore">탐색</a>
             <a class="gnav-mobile__sublink" href="#community">커뮤니티</a>
             <a class="gnav-mobile__sublink" href="#livon-ai">LIVON AI</a>
+            <a class="gnav-mobile__sublink" href="#help">도움말</a>
           </div>
         </div>
       </div>
@@ -2005,6 +2008,10 @@
           </section>
         </div>
       </section>
+      <section class="lv-hp" id="help" data-lv-screen="help" aria-label="도움말">
+        <p class="visually-hidden" role="status" aria-live="polite" data-lv-hp-status></p>
+        <div class="lv-hp-inner" data-lv-hp-root></div>
+      </section>
     </main>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap');
@@ -3307,7 +3314,9 @@
     <script src="/livon/explore-page.js?v=20261001sd1"></script>
     <script src="/livon/community-data.js?v=20260928cm1"></script>
     <script src="/livon/community-service.js?v=20261002cu1"></script>
-    <script src="/livon/community-page.js?v=20261002cu1"></script>
+    <script src="/livon/community-page.js?v=20261002hf1"></script>
+    <script src="/livon/help-data.js?v=20261002hf1"></script>
+    <script src="/livon/help-page.js?v=20261002hf1"></script>
     <script src="/livon/today-data.js?v=20260928td1"></script>
     <script src="/livon/today-feed.js?v=20261001sd1"></script>
     <script src="/livon/today-page.js?v=20261001sd1"></script>

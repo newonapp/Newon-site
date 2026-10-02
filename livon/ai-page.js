@@ -699,7 +699,10 @@
     showApiNote(msg + " 내 생활 › 할 일에서 확인할 수 있습니다.", "ok", '<a href="#ml-todos?source=livon-ai">내 생활에서 보기</a>');
   }
 
+  /* contextual help: "is LIVON AI available now?" next to every connection warning */
+  function helpLink() { return window.LivonHelp && typeof window.LivonHelp.link === "function" ? window.LivonHelp.link("ai-status", "LIVON AI는 지금 사용할 수 있나요?") : ""; }
   function showApiNote(text, kind, extraHtml) {
+    if (kind === "warn" && !extraHtml) extraHtml = helpLink();
     var note = $("[data-lv-ai-api-note]");
     if (!note) return;
     note.hidden = !text;
