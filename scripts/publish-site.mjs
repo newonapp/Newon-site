@@ -507,6 +507,10 @@ function verify() {
   required.push(path.join(OUT, "livon", "life", "20s", "first-independence", "index.html"));
   required.push(path.join(OUT, "livon", "today-feed.js"));
   required.push(path.join(OUT, "livon", "today", "td-indep-missed", "index.html"));
+  required.push(path.join(OUT, "livon", "seo.css"));
+  required.push(path.join(OUT, "livon", "seo-manifest.json"));
+  required.push(path.join(OUT, "livon", "help", "index.html"));
+  required.push(path.join(OUT, "livon", "life-events", "index.html"));
   required.push(path.join(OUT, "livon", "community-data.js"));
   required.push(path.join(OUT, "livon", "explore-data.js"));
   required.push(path.join(OUT, "livon", "assets", "topics", "hangang.jpg"));
@@ -581,6 +585,17 @@ spawnSync(process.execPath, [path.join(ROOT, "scripts", "render-livon-life-route
 }).status === 0 || process.exit(1);
 // LIVON 오늘의 발견 direct URLs (/livon/today/{id}/ → /livon/#today/{id}).
 spawnSync(process.execPath, [path.join(ROOT, "scripts", "render-livon-today-routes.mjs"), "--out", path.join(OUT, "livon")], {
+  cwd: ROOT,
+  stdio: "inherit",
+}).status === 0 || process.exit(1);
+
+// LIVON static SEO pages (Life Stage, Life Event, Help) + sitemap entries + seo-manifest.json, generated from the app's own data.
+// Runs after the route stubs above: indexable pages replace their redirect stub; everything else keeps the noindex stub.
+spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-seo-build.mjs"), "--out", OUT], {
+  cwd: ROOT,
+  stdio: "inherit",
+}).status === 0 || process.exit(1);
+spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-seo-quality.mjs"), "--root", OUT], {
   cwd: ROOT,
   stdio: "inherit",
 }).status === 0 || process.exit(1);

@@ -557,5 +557,19 @@
     { screen: "save-confirm", article: "local-data-storage" }
   ];
 
-  root.LivonHelpData = { version: 1, facts: facts, categories: categories, articles: articles, synonyms: synonyms, status: status, statusLabel: statusLabel, contextual: contextual };
+  /* Articles that also get a static, indexable page (/livon/help/{id}/), generated from this same file by
+     scripts/livon-seo-build.mjs. These answer questions people ask before or while using LIVON. The others explain a
+     button or a state inside the app and stay in the interactive Help only. */
+  var seoIndexable = [
+    "no-signup", "what-is-livon", "account-status",
+    "local-data-storage", "what-is-stored", "other-device", "clear-browser-data", "storage-blocked", "move-device", "save-items",
+    "why-ask-profile", "personalization-storage", "how-recommendation-works", "recommendation-ai", "other-life-stages", "what-is-life-event", "personalization-reset", "onboarding-skip",
+    "what-is-life-stage", "life-stage-topics", "what-is-today", "what-is-my-life",
+    "explore-search", "official-badge", "live-data",
+    "community-post-storage", "community-no-other-posts", "community-following", "community-report", "community-guidelines", "community-post-types", "community-for-you",
+    "ai-status", "ai-what-it-uses", "ai-personalization",
+    "ts-cannot-save", "ts-data-disappeared", "ts-other-device", "ts-ai-not-working"
+  ];
+
+  root.LivonHelpData = { version: 1, facts: facts, categories: categories, articles: articles, synonyms: synonyms, status: status, statusLabel: statusLabel, contextual: contextual, seoIndexable: seoIndexable };
 })(typeof window !== "undefined" ? window : globalThis);

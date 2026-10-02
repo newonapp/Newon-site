@@ -199,3 +199,8 @@ html:not([data-lv-view="help"]) main > #help { display: none; }
   #help .lv-hp-search .lv-hp-btn { flex: 1 1 auto; }
   #help .lv-hp-foot .lv-hp-btn { flex: 1 1 auto; }
 }
+
+/* shown only when JavaScript is off (<noscript> in index.html): links to the static guide pages */
+.lv-noscript { position: relative; z-index: 50; display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.1rem; padding: 0.9rem 1.25rem; background: #fff; color: #0a0a0a; font-family: "Noto Sans KR", system-ui, sans-serif; }
+.lv-noscript p { flex: 1 1 100%; margin: 0; font-size: 0.92rem; }
+.lv-noscript a { display: inline-flex; align-items: center; min-height: 44px; color: #0a0a0a; font-weight: 650; }
