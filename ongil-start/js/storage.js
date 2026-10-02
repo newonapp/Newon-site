@@ -27,6 +27,7 @@ export const KEY_PREFIX = `${NAMESPACE}.${STORAGE_VERSION}.`;
  *   Phase 2A : checkins · events · medications · medicationLogs · dailyLife   (Home V1, shared with My Life)
  *   Phase 2B : tasks · routines · routineLogs · sleepRecords · expenses · journal   (My Life V1)
  *   Phase 3  : symptoms · healthNotes   (Health + Check-in V1; check-in and medication reuse the Phase 2A collections)
+ *   Phase 6  : communityPosts · groupDrafts · meetupDrafts   (the user's own posts and group/meetup drafts, this device only)
  *   Phase 4  : familySharing · helpRequests   (the user's own sharing choices and help-request notes; no family record —
  *              connections, permissions, consents and shared items have contracts only, see family-contracts.js) Every name here has a privacy class in privacy.js.
  */
@@ -36,6 +37,7 @@ export const COLLECTIONS = Object.freeze([
   'tasks', 'routines', 'routineLogs', 'sleepRecords', 'expenses', 'journal',
   'symptoms', 'healthNotes',
   'familySharing', 'helpRequests',
+  'communityPosts', 'groupDrafts', 'meetupDrafts',
 ]);
 
 const MAX_VALUE_CHARS = 400000;

@@ -155,7 +155,7 @@ export function createAccountView({ host, profile, account, notifications, onboa
       },
     });
     confirmBox.append(
-      el('p', { text: '내 정보와 설정, 저장한 항목, 그리고 일정·할 일·루틴·복약·식사·운동·수면·생활비·기록·안부까지 이 기기에서 모두 지웁니다. 증상과 건강 메모, 가족 공유 설정과 도움 요청도 함께 지웁니다. 되돌릴 수 없습니다.' }),
+      el('p', { text: '내 정보와 설정, 저장한 항목, 그리고 일정·할 일·루틴·복약·식사·운동·수면·생활비·기록·안부까지 이 기기에서 모두 지웁니다. 증상과 건강 메모, 가족 공유 설정과 도움 요청도 함께 지웁니다. 커뮤니티 글과 모임 초안도 함께 지웁니다. 되돌릴 수 없습니다.' }),
       el(
         'div',
         { class: 'og-form__actions' },

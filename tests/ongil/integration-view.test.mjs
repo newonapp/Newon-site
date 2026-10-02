@@ -62,7 +62,8 @@ test('OG-IV-1 Home shows tasks and routines through My Life\'s stores and the sh
   assert.deepEqual([...COLLECTIONS].filter((c) => /home|water/i.test(c)), [], 'no Home-only or water-only collection');
   // Phase 3 added symptoms + healthNotes (16 → 18); still no Home-only collection (checked above)
   // Phase 4 added familySharing + helpRequests (18 → 20); still no Home-only collection
-  assert.equal(COLLECTIONS.length, 20);
+  // Phase 6 added communityPosts + groupDrafts + meetupDrafts (20 → 23); still no Home-only collection
+  assert.equal(COLLECTIONS.length, 23);
 });
 
 test('OG-IV-2 "할 일 추가" on Home continues in My Life\'s own task form', () => {
@@ -173,7 +174,8 @@ test('OG-IV-7 private and personal records are still not searched, and Home adds
 test('OG-IV-8 private and personal records are still not synced or shared: the classification is unchanged', () => {
   const by = (cls) => Object.keys(CLASSIFICATION).filter((k) => CLASSIFICATION[k] === cls).sort();
   // Phase 4: the user's family-sharing choices and help-request notes are PRIVATE
-  assert.deepEqual(by('PRIVATE'), ['expenses', 'familySharing', 'helpRequests', 'journal']);
+  // Phase 6: the user's community posts and group/meetup drafts are PRIVATE too
+  assert.deepEqual(by('PRIVATE'), ['communityPosts', 'expenses', 'familySharing', 'groupDrafts', 'helpRequests', 'journal', 'meetupDrafts']);
   assert.deepEqual(by('HEALTH_ADJACENT'), ['checkins', 'healthNotes', 'medicationLogs', 'medications', 'symptoms']);
   assert.deepEqual(by('STANDARD'), ['dailyLife', 'events', 'routineLogs', 'routines', 'sleepRecords', 'tasks']);
   assert.deepEqual([...SYNCABLE_COLLECTIONS], ['profile', 'preferences', 'saved', 'onboarding']);

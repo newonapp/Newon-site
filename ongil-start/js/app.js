@@ -40,6 +40,9 @@ import { createFamilySharingStore, createHelpRequestStore } from './family.js';
 import { createFamilyView } from './family-view.js';
 import { createCareView, resolveCareSection } from './care-view.js';
 import { createEnjoyView, resolveEnjoySection } from './enjoy-view.js';
+import { createPostStore, createGroupStore, createMeetupStore } from './community.js';
+import { createCommunityView, resolveCommunitySection } from './community-view.js';
+import { reviewPrefill } from './community-contracts.js';
 import { createLifeView, lifeHash, resolveSection } from './life-view.js';
 import { focusNode } from './accessibility.js';
 import { dateKey } from './dates.js';
@@ -69,6 +72,9 @@ const symptoms = createSymptomStore(storage);
 const healthNotes = createHealthNoteStore(storage);
 const familySharing = createFamilySharingStore(storage);
 const helpRequests = createHelpRequestStore(storage);
+const communityPosts = createPostStore(storage);
+const meetupDrafts = createMeetupStore(storage);
+const groupDrafts = createGroupStore(storage, { meetups: meetupDrafts });
 
 /* set by a Home shortcut that continues in My Life; used once, when My Life is shown */
 let pendingLifeAdd = null;
@@ -82,7 +88,7 @@ applyPreferences(html, profile.getPreferences());
 
 /* view shells for the areas that are still shells; Home, My Life, Family and Care have their own views */
 for (const area of PRIMARY_AREAS) {
-  if (area.id === 'home' || area.id === 'life' || area.id === 'family' || area.id === 'care' || area.id === 'enjoy') continue;
+  if (area.id === 'home' || area.id === 'life' || area.id === 'family' || area.id === 'care' || area.id === 'enjoy' || area.id === 'community') continue;
   const host = doc.querySelector(`[data-og-modules="${area.id}"]`);
   if (host) renderArea(area, host);
 }
@@ -102,6 +108,8 @@ const nearbySource = createLifelongClassSource(dataApi);
 
 /* 즐길거리 view, created further down; Home's 오늘 뭐 하지? reads it lazily */
 let enjoyView = null;
+/* a review started from 즐길거리, handed to 커뮤니티 once (memory only) */
+let pendingReview = null;
 
 const home = createHomeView({
   host: doc.querySelector('[data-og-modules="home"]'),
@@ -173,9 +181,34 @@ enjoyView = createEnjoyView({
   profile,
   schedule,
   sources: { lifelong: nearbySource, tour: createTourPlaceSource(dataApi), place: createEnjoyPlaceSource(dataApi) },
+  /* review: opens the community form with a little filled in; nothing is saved until the user saves */
+  onReview: (item) => {
+    pendingReview = reviewPrefill(item);
+    win.location.hash = '#community/write';
+  },
 });
 /* global search may find PUBLIC 즐길거리 items actually loaded on that screen — never a personal record */
 search.registerProvider(createEnjoyProvider(() => enjoyView.items()));
+
+/*
+ * Phase 6 — 커뮤니티: the user's own posts and group/meetup drafts, on this device only. No search provider is
+ * registered for them (they are personal), nothing is published, sent or notified.
+ */
+const communityView = createCommunityView({
+  host: doc.querySelector('[data-og-modules="community"]'),
+  doc,
+  posts: communityPosts,
+  groups: groupDrafts,
+  meetups: meetupDrafts,
+  saved,
+  schedule,
+});
+const showCommunity = (section) => {
+  if (pendingReview) {
+    communityView.startReview(pendingReview);
+    pendingReview = null;
+  } else communityView.show(section);
+};
 
 const navigation = createNavigation({ doc });
 const panels = createPanels({ root: doc.querySelector('[data-og-tools]'), search, notifications });
@@ -211,6 +244,7 @@ const accountView = createAccountView({
     familyView.refresh();
     care.render();
     enjoyView.render();
+    communityView.render();
     panels.updateBadge();
   },
 });
@@ -233,11 +267,12 @@ const router = createRouter({
     if (view === 'life' && section && !resolveSection(section)) win.history.replaceState(null, '', '#life');
     if (view === 'care' && section && !resolveCareSection(section)) win.history.replaceState(null, '', '#care');
     if (view === 'enjoy' && section && !resolveEnjoySection(section)) win.history.replaceState(null, '', '#enjoy');
+    if (view === 'community' && section && !resolveCommunitySection(section)) win.history.replaceState(null, '', '#community');
     if (sectionOnly) {
       if (view === 'life') showLife(section, { focus: userInitiated });
       if (view === 'care') care.show(section);
-    if (view === 'enjoy') enjoyView.show(section);
       if (view === 'enjoy') enjoyView.show(section);
+      if (view === 'community') showCommunity(section);
       return;
     }
     navigation.setCurrent(view);
@@ -248,6 +283,8 @@ const router = createRouter({
     if (view === 'saved') savedView.render();
     if (view === 'family') familyView.refresh();
     if (view === 'care') care.show(section);
+    if (view === 'enjoy' && section) enjoyView.show(section);
+    if (view === 'community') showCommunity(section);
     if (view === 'home') refreshHome();
     if (view === 'life') showLife(section, { focus: userInitiated && !!section, entered: true });
     if (userInitiated && !(view === 'life' && section)) focusView(doc, view);
@@ -303,4 +340,4 @@ router.start();
 html.dataset.ogReady = 'true';
 
 /* one stable handle for later phases and for manual checks; no secrets, nothing privileged */
-win.Ongil = Object.freeze({ version: 'enjoy-v1', storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes, familySharing, helpRequests, care, enjoy: enjoyView });
+win.Ongil = Object.freeze({ version: 'community-v1', storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes, familySharing, helpRequests, care, enjoy: enjoyView, communityPosts, groupDrafts, meetupDrafts });

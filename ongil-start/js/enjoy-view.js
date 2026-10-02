@@ -65,7 +65,8 @@ const MESSAGES = {
   REGION_NOT_SUPPORTED: '관광 정보는 아직 서울, 부산, 대구, 인천, 광주, 대전, 경기만 찾을 수 있어요.',
 };
 
-export function createEnjoyView({ host, doc, saved, profile, schedule, sources, now = () => Date.now() }) {
+/* onReview (Phase 6): optional; the review button hands the item to whoever owns writing (nothing is written here) */
+export function createEnjoyView({ host, doc, saved, profile, schedule, sources, onReview = null, now = () => Date.now() }) {
   const state = { category: '', type: '', filterCategory: '', region: '', query: '', sort: 'title', shown: PAGE_SIZE, items: [], sourceStatus: {} };
   let ticket = 0;
   let cards = null;
@@ -433,7 +434,7 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
       });
       put(
         body,
-        el('div', { class: 'og-dialog__actions' }, saveBtn, calendarDraft(item) ? el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-calendar-open': 'true', text: '내 일정에 추가', onclick: () => openDetail(item, null, 'calendar') }) : null, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-family-open': 'true', text: '가족에게 보내기', onclick: () => openDetail(item, null, 'family') }), close),
+        el('div', { class: 'og-dialog__actions' }, saveBtn, calendarDraft(item) ? el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-calendar-open': 'true', text: '내 일정에 추가', onclick: () => openDetail(item, null, 'calendar') }) : null, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-family-open': 'true', text: '가족에게 보내기', onclick: () => openDetail(item, null, 'family') }), typeof onReview === 'function' ? el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-review': 'true', text: '후기 쓰기', onclick: () => { opener = null; d.close(); onReview({ type: item.type, id: item.id, title: item.title, category: item.category }); } }) : null, close),
         el('p', { class: 'og-home-note', text: 'ONGIL이 운영하는 프로그램이 아니에요. 신청, 예약, 결제는 운영 기관이나 공식 페이지에서 직접 확인하세요.' })
       );
     }

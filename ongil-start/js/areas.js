@@ -154,14 +154,14 @@ export const AREAS = Object.freeze([
     label: '커뮤니티',
     wordmark: 'COMMUNITY',
     description: '경험과 관심사를 이웃과 나누는 곳입니다.',
-    notice: '글쓰기와 댓글은 아직 할 수 없습니다.',
+    notice: '쓴 글과 모임 초안은 이 기기에만 저장되고 다른 사람에게 보이지 않습니다. 다른 사람의 글, 댓글, 공감, 신고는 아직 없습니다.',
     empty: '아직 올라온 글이 없습니다.',
     keywords: ['이웃', '모임', '글'],
     modules: [
       slot('feed', '이야기', '이웃이 쓴 글을 읽습니다.'),
       slot('neighborhood', '내 동네', '우리 동네 이야기를 봅니다.'),
-      slot('groups', '모임', '모임을 찾고 함께합니다.'),
-      slot('mine', '내가 쓴 글', '내가 쓴 글과 댓글을 봅니다.'),
+      live('groups', '모임 준비', '모임 초안과 일정 초안을 만들어 둡니다. 아직 공개하거나 가입할 수 없습니다.'),
+      live('mine', '내가 쓴 글', '내가 쓴 글을 쓰고 고치고 저장합니다. 이 기기에만 저장됩니다.'),
     ],
   }),
   Object.freeze({

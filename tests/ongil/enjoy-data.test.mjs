@@ -151,7 +151,8 @@ test('OG-EN-10 URL safety: official only for public-sector https, organiser site
 
 test('OG-EN-11 enjoy screen: own view at #enjoy and #enjoy/<category>; categories, search, results, saved entry', () => {
   assert.match(APP, /enjoyView = createEnjoyView\(\{/);
-  assert.match(APP, /if \(area\.id === 'home' \|\| area\.id === 'life' \|\| area\.id === 'family' \|\| area\.id === 'care' \|\| area\.id === 'enjoy'\) continue;/);
+  // Phase 6: 커뮤니티 has its own view as well, so the shell loop skips it too.
+  assert.match(APP, /if \(area\.id === 'home' \|\| area\.id === 'life' \|\| area\.id === 'family' \|\| area\.id === 'care' \|\| area\.id === 'enjoy' \|\| area\.id === 'community'\) continue;/);
   assert.equal(resolveView('#enjoy/culture'), 'enjoy');
   assert.equal(sectionOf('#enjoy/culture'), 'culture');
   assert.deepEqual([resolveEnjoySection('culture'), resolveEnjoySection('booking')], ['CULTURE', '']);
@@ -361,7 +362,10 @@ test('OG-EN-34 Community no auto-post: nothing in 즐길거리 writes to communi
   assert.equal(/community|post\(|createGroup|joinGroup|meetup/i.test(VIEW + CONTRACTS), false);
   assert.deepEqual([...E.FUTURE_ENJOY_TYPES], ['TRIP', 'GROUP']);
   assert.equal(AREAS.find((a) => a.id === 'enjoy').modules.find((m) => m.id === 'groups').available, false);
-  assert.equal(COLLECTIONS.some((c) => /group|post|community/i.test(c)), false);
+  // Phase 6: 커뮤니티 owns communityPosts/groupDrafts/meetupDrafts. 즐길거리 still never touches them: its review button only
+  // hands a small prefill to app.js, and nothing is written until the user saves in 커뮤니티.
+  assert.deepEqual(COLLECTIONS.filter((c) => /group|post|community|meetup/i.test(c)), ['communityPosts', 'groupDrafts', 'meetupDrafts']);
+  assert.equal(/communityPosts|groupDrafts|meetupDrafts|posts\.add|groups\.add/.test(VIEW + CONTRACTS), false);
 });
 
 test('OG-EN-35 no booking: no booking, application, payment, lodging or transport action', () => {
@@ -470,7 +474,8 @@ test('OG-EN-47 no page errors: null children skipped, no markup strings, no geol
 });
 
 test('OG-EN-48 account delete safety: no new collection; saved and calendar entries go with the ONGIL erase', () => {
-  assert.equal(COLLECTIONS.length, 20, 'Phase 5 added no collection');
+  // Phase 5 added no collection (20). Phase 6 then added three community collections (23) — none of them for 즐길거리.
+  assert.equal(COLLECTIONS.length, 23, 'Phase 5 added no collection; Phase 6 added three community ones');
   const w = world();
   w.saved.toggle(E.savedInputFor(cls()));
   w.schedule.add(E.calendarDraft(cls()));

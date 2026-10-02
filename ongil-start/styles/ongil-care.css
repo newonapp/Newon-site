@@ -34,3 +34,9 @@
   .og-care-rows { grid-template-columns: minmax(0, 1fr); gap: 0.1rem; }
   .og-care-rows dd { margin-bottom: 0.5rem; }
 }
+
+/* [P6] 커뮤니티: long personal text keeps its line breaks and wraps */
+.og-community-body { margin: 0; color: var(--og-ink); font-size: var(--og-size-body); line-height: 1.75; white-space: pre-wrap; overflow-wrap: anywhere; }
+.og-community-name { overflow-wrap: anywhere; }
+.og-community-local { margin: 0 0 0.6rem; }
+.og-community-actions { flex-wrap: wrap; }

@@ -115,6 +115,9 @@ const CARE_LIVE = ['nearby'];
 // Phase 5: 즐길거리 has its own screen — the six categories and 지역 프로그램 work (results only when the existing
 // sources are configured); 모임 is still not built and must say so.
 const ENJOY_LIVE = ['hobby', 'learning', 'exercise', 'culture', 'outing', 'travel', 'programs'];
+// Phase 6: 커뮤니티 has two working parts — 내가 쓴 글 and 모임 준비 (both local only). 이웃 글 · 내 동네 need other
+// people and a server, and must still say 준비 중.
+const COMMUNITY_LIVE = ['groups', 'mine'];
 test('OG-VW-1 every primary area has a description, an empty state and module slots with unique ids; only Home, My Life and the built health parts are available', () => {
   for (const a of PRIMARY_AREAS) {
     assert.ok(a.description.length >= 10, a.id);
@@ -122,11 +125,12 @@ test('OG-VW-1 every primary area has a description, an empty state and module sl
     assert.ok(a.modules.length >= 4, a.id);
     assert.equal(new Set(a.modules.map((m) => m.id)).size, a.modules.length, a.id);
     for (const m of a.modules) {
-      assert.equal(m.available, a.id === 'home' || a.id === 'life' || (a.id === 'health' && HEALTH_LIVE.includes(m.id)) || (a.id === 'family' && FAMILY_LIVE.includes(m.id)) || (a.id === 'care' && CARE_LIVE.includes(m.id)) || (a.id === 'enjoy' && ENJOY_LIVE.includes(m.id)), `${a.id}.${m.id} must not claim to work before it is built`);
+      assert.equal(m.available, a.id === 'home' || a.id === 'life' || (a.id === 'health' && HEALTH_LIVE.includes(m.id)) || (a.id === 'family' && FAMILY_LIVE.includes(m.id)) || (a.id === 'care' && CARE_LIVE.includes(m.id)) || (a.id === 'enjoy' && ENJOY_LIVE.includes(m.id)) || (a.id === 'community' && COMMUNITY_LIVE.includes(m.id)), `${a.id}.${m.id} must not claim to work before it is built`);
       assert.ok(m.title && m.description);
     }
   }
   assert.deepEqual(AREAS.find((a) => a.id === 'enjoy').modules.filter((m) => !m.available).map((m) => m.id), ['groups'], 'groups/meetups are not built');
+  assert.deepEqual(AREAS.find((a) => a.id === 'community').modules.filter((m) => !m.available).map((m) => m.id), ['feed', 'neighborhood'], 'no feed of other people');
   assert.deepEqual(AREAS.find((a) => a.id === 'health').modules.filter((m) => !m.available).map((m) => m.id), ['help', 'contacts', 'hospital', 'checkup']);
   assert.equal(AREAS.find((a) => a.id === 'health').link.href, '#life/checkin');
   assert.deepEqual(AREAS.find((a) => a.id === 'family').modules.filter((m) => !m.available).map((m) => m.id), ['connect', 'schedule', 'messages']);

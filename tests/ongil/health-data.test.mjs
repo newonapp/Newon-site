@@ -2,6 +2,7 @@
 // No browser, no dependencies:  node --test tests/ongil/*.test.mjs
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import { createStorage, createMemoryBackend, COLLECTIONS, KEY_PREFIX } from '../../ongil-start/js/storage.js';
 import { createCheckInStore, writableDay, CHECKIN_DELIVERY } from '../../ongil-start/js/checkin.js';
 import { createMedicationStore } from '../../ongil-start/js/medication.js';
@@ -453,7 +454,10 @@ test('OG-HL-25 Community exclusion: no health record reaches Community or Saved'
   w.life.checkIn.save({ status: 'hard' });
   assert.deepEqual(w.saved.list(), [], 'nothing is saved or recommended from health records');
   const community = AREAS.find((a) => a.id === 'community');
-  assert.ok(community.modules.every((m) => !m.available), 'Community has no working module that could show health data');
+  // Phase 6: 커뮤니티 now has two working parts (내가 쓴 글, 모임 준비) — both hold only what the user types. No health
+  // record is attached, offered or read there (checked in OG-CM-19); the neighbours' feed still does not exist.
+  assert.deepEqual(community.modules.filter((m) => m.available).map((m) => m.id), ['groups', 'mine']);
+  assert.equal(/checkIn|symptoms|healthNotes|medication/.test(fs.readFileSync(new URL('../../ongil-start/js/community-view.js', import.meta.url), 'utf8')), false);
 });
 
 test('OG-HL-26 Family exclusion: nothing about health is shared; the family switch stays off', () => {

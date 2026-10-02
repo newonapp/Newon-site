@@ -256,7 +256,8 @@ test('OG-FC-1 delete ONGIL data: the two new collections are erased with everyth
   assert.deepEqual(storage.list().sort(), ['familySharing', 'helpRequests']);
   assert.equal(storage.clear(), true);
   assert.deepEqual(storage.list(), []);
-  assert.equal(COLLECTIONS.length, 20);
+  // Phase 6 added communityPosts, groupDrafts and meetupDrafts (20 → 23); the family collections are still erased with the rest
+  assert.equal(COLLECTIONS.length, 23);
   assert.match(read('js', 'account-view.js'), /가족 공유 설정과 도움 요청도 함께 지웁니다/);
 });
 
@@ -325,7 +326,8 @@ test('OG-FC-9 no horizontal overflow sources: grid children may shrink and long 
 });
 
 test('OG-FC-10 regression: shells, routes, Home layout, sync list, network boundary', () => {
-  assert.match(APP, /if \(area\.id === 'home' \|\| area\.id === 'life' \|\| area\.id === 'family' \|\| area\.id === 'care' \|\| area\.id === 'enjoy'\) continue;/);
+  // Phase 6: 커뮤니티 has its own view as well, so the shell loop skips it too.
+  assert.match(APP, /if \(area\.id === 'home' \|\| area\.id === 'life' \|\| area\.id === 'family' \|\| area\.id === 'care' \|\| area\.id === 'enjoy' \|\| area\.id === 'community'\) continue;/);
   assert.equal((APP.match(/\bfetch\(/g) || []).length, 1, 'fetch injected once');
   assert.match(APP, /const nearbySource = createLifelongClassSource\(dataApi\);/);
   assert.match(APP, /facility: createFacilitySource\(dataApi\),/);
