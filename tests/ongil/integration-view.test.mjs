@@ -161,7 +161,8 @@ test('OG-IV-7 private and personal records are still not searched, and Home adds
   search.registerProvider(createAreaProvider(AREAS));
   search.registerProvider(createSavedProvider(createSavedStore(storage)));
   for (const q of ['홈에보이는비밀할일', '홈에보이는비밀루틴', '비밀']) assert.deepEqual((await search.query(q)).results, [], q);
-  assert.equal((APP.match(/search\.registerProvider\(/g) || []).length, 4, 'menus, saved items, public care and public 즐길거리 content only');
+  // Phase 7: the fifth provider is public product information loaded on the 스토어 screen (createStoreProvider).
+  assert.equal((APP.match(/search\.registerProvider\(/g) || []).length, 5, 'menus, saved items, public care, public 즐길거리 and public product content only');
   // Phase 5: a fourth provider, 즐길거리, searches only PUBLIC enjoy items loaded on that screen (never a personal record).
   assert.match(APP, /search\.registerProvider\(createEnjoyProvider\(\(\) => enjoyView\.items\(\)\)\);/);
   // Phase 4: a third provider, 돌봄·서비스, searches only PUBLIC care items loaded on that screen (never a personal record).

@@ -40,3 +40,23 @@
 .og-community-name { overflow-wrap: anywhere; }
 .og-community-local { margin: 0 0 0.6rem; }
 .og-community-actions { flex-wrap: wrap; }
+
+/* [P7] 스토어: text-first product rows, a real image only when the source gave one, stacked comparison */
+.og-store-cats .og-pick { flex: 0 1 auto; }
+.og-store-name, .og-store-text { overflow-wrap: anywhere; min-width: 0; }
+.og-store-item .og-home-item__main { min-width: 0; }
+.og-store-actions { flex-wrap: wrap; }
+.og-store-figure { margin: 0 0 1rem; }
+.og-store-image { display: block; width: 100%; max-height: 16rem; object-fit: contain; border-radius: var(--og-radius-card); background: var(--og-surface); }
+.og-store-features { margin: 0.3rem 0 0.8rem; padding-left: 1.2rem; display: grid; gap: 0.3rem; color: var(--og-ink); font-size: var(--og-size-body); }
+.og-store-compare { display: grid; gap: 1rem; }
+.og-store-compare__row { min-width: 0; padding-top: 0.6rem; border-top: 1px solid var(--og-line); }
+.og-store-compare__values { margin: 0.3rem 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0.2rem 1rem; }
+.og-store-compare__values dt { color: var(--og-ink-soft); font-size: var(--og-size-body); grid-row: 1; }
+.og-store-compare__values dd { margin: 0; color: var(--og-ink); font-size: var(--og-size-body); grid-row: 2; }
+.og-store-missing { color: var(--og-ink-soft); font-style: italic; }
+@media (max-width: 640px) {
+  .og-store-compare__values { grid-template-columns: minmax(0, 1fr); }
+  .og-store-compare__values dt, .og-store-compare__values dd { grid-row: auto; }
+  .og-store-compare__values dd { margin-bottom: 0.5rem; }
+}

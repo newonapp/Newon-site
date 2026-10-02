@@ -22,7 +22,9 @@ export function createSavedView({ host, saved, storage }) {
   }
 
   function itemRow(item) {
-    const title = item.href ? el('a', { class: 'og-item__title', href: item.href, text: item.title }) : el('span', { class: 'og-item__title', text: item.title });
+    /* [P7] a saved item that points outside ONGIL (a seller or source page) opens in a new window and says so */
+    const external = /^https:\/\//.test(item.href || '');
+    const title = item.href ? el('a', { class: 'og-item__title', href: item.href, target: external ? '_blank' : null, rel: external ? 'noopener noreferrer' : null, 'aria-label': external ? `${item.title} (새 창)` : null, text: item.title }) : el('span', { class: 'og-item__title', text: item.title });
     return el(
       'li',
       { class: 'og-item', 'data-og-saved-key': item.key },

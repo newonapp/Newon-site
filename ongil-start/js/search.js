@@ -14,9 +14,13 @@
  *   care   — PUBLIC care items that were actually loaded on the 돌봄·서비스 screen during this visit (facilities
  *            from the connected place search). Never a personal record; empty when nothing was loaded.
  *   enjoy  — PUBLIC 즐길거리 items (강좌, 장소 …) actually loaded on that screen during this visit (Phase 5)
- * Posts and products get their own providers in later phases.
+ * Phase 7 provider:
+ *   store  — PUBLIC product information actually loaded on the 스토어 screen during this visit (type label 상품).
+ *            Empty when no product source is connected (the production state).
+ * Community posts are personal (this device only) and never get a provider.
  */
 import { LIMITS, safeText, safeHref } from './contracts.js';
+import { productCategoryById } from './store-contracts.js';
 
 export function normalizeQuery(q) {
   return safeText(typeof q === 'string' ? q : '', LIMITS.query);
@@ -137,6 +141,20 @@ export function createEnjoyProvider(getItems) {
       return (Array.isArray(items) ? items : [])
         .filter((it) => it && LABELS[it.type] && matches(q, it.title, it.summary, it.organization, it.location, it.address))
         .map((it) => ({ type: it.type, id: `${it.type}:${it.id}`, title: it.title, description: [LABELS[it.type], it.organization || it.address, it.sourceName].filter(Boolean).join(' · '), href: `#enjoy/${String(it.category || '').toLowerCase()}` }));
+    },
+  };
+}
+
+/* getItems() → the products the 스토어 screen has loaded (public information only) */
+export function createStoreProvider(getItems) {
+  return {
+    id: 'store',
+    label: '상품',
+    search(q) {
+      const items = typeof getItems === 'function' ? getItems() : [];
+      return (Array.isArray(items) ? items : [])
+        .filter((it) => it && typeof it.id === 'string' && matches(q, it.name, it.summary, it.brand, ...(Array.isArray(it.features) ? it.features : [])))
+        .map((it) => ({ type: 'PRODUCT', id: `PRODUCT:${it.id}`, title: it.name, description: ['상품', it.brand, it.sellerName].filter(Boolean).join(' · '), href: productCategoryById(it.category) ? `#store/${productCategoryById(it.category).slug}` : '#store' }));
     },
   };
 }

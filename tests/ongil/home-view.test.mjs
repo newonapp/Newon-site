@@ -168,7 +168,9 @@ test('OG-HM-11 private Home data is not searchable: only menus and saved items a
   for (const q of ['비밀스러운병원예약', '비밀스러운약이름', '도움이 필요해요']) assert.deepEqual((await search.query(q)).results, [], q);
   assert.deepEqual(search.providerIds(), ['areas', 'saved']);
   const app = read('js', 'app.js');
-  assert.equal((app.match(/search\.registerProvider\(/g) || []).length, 4, 'no provider was added for schedule, medication or check-in (the third and fourth are public care and 즐길거리 content)');
+  // Phase 7: the fifth provider is public product information loaded on the 스토어 screen (createStoreProvider).
+  assert.equal((app.match(/search\.registerProvider\(/g) || []).length, 5, 'no provider was added for schedule, medication or check-in (the third to fifth are public care, 즐길거리 and product content)');
+  assert.match(app, /search\.registerProvider\(createStoreProvider\(\(\) => storeView\.items\(\)\)\);/);
   // Phase 5: a fourth provider, 즐길거리, searches only PUBLIC enjoy items loaded on that screen (never a personal record).
   assert.match(app, /search\.registerProvider\(createEnjoyProvider\(\(\) => enjoyView\.items\(\)\)\);/);
   // Phase 4: a third provider, 돌봄·서비스, searches only PUBLIC care items loaded on that screen (never a personal record).

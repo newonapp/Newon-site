@@ -237,6 +237,32 @@ export function normalizeSavedItem(input, now = Date.now()) {
   };
 }
 
+/*
+ * Saved sync policy (Phase 7). The "saved" collection holds public items (a programme, a place, a product …) AND
+ * the user's own community posts, which are on this device only. A future sync must never forward the whole
+ * collection blindly: each SavedItem has a policy by its type, and LOCAL_ONLY items are filtered out before any
+ * change leaves the device (account.js syncChange). Nothing syncs in Phase 7 — this is the contract only.
+ * Stored items are unchanged (backward compatible): the policy is derived from the type, never written.
+ */
+export const SAVED_SYNC_POLICIES = Object.freeze(['SYNCABLE', 'LOCAL_ONLY']);
+export const SAVED_SYNC_POLICY = Object.freeze({
+  SERVICE: 'SYNCABLE',
+  BENEFIT: 'SYNCABLE',
+  FACILITY: 'SYNCABLE',
+  PROGRAM: 'SYNCABLE',
+  PLACE: 'SYNCABLE',
+  POST: 'LOCAL_ONLY',
+  PRODUCT: 'SYNCABLE',
+});
+/* unknown types are LOCAL_ONLY (fail closed) */
+export function savedSyncPolicy(itemOrType) {
+  const type = typeof itemOrType === 'string' ? itemOrType : isPlainObject(itemOrType) ? itemOrType.type : '';
+  return Object.prototype.hasOwnProperty.call(SAVED_SYNC_POLICY, type) ? SAVED_SYNC_POLICY[type] : 'LOCAL_ONLY';
+}
+export function syncableSavedItems(items) {
+  return (Array.isArray(items) ? items : []).filter((it) => savedSyncPolicy(it) === 'SYNCABLE');
+}
+
 /* ───────── Notification (shape only; nothing produces one in Phase 1) ───────── */
 
 export function normalizeNotification(input, now = Date.now()) {

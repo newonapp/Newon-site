@@ -107,7 +107,7 @@ select.og-input { appearance: auto; }
 .og-item__type { margin: 0 0 0.2rem; color: var(--og-ink-soft); font-size: 1rem; font-weight: 700; } /* [P2C] 0.95rem → 1rem */
 .og-item__heading { margin: 0 0 0.3rem; font-size: 1.15rem; font-weight: 700; }
 .og-item__title { color: var(--og-ink); overflow-wrap: anywhere; }
-a.og-item__title { text-decoration: underline; text-underline-offset: 0.2em; }
+a.og-item__title { display: inline-flex; align-items: center; min-height: var(--og-control); text-decoration: underline; text-underline-offset: 0.2em; } /* [P7] a saved item's link is a 44px target */
 .og-item__desc, .og-item__meta { margin: 0; color: var(--og-muted); overflow-wrap: anywhere; }
 
 /* onboarding dialog */

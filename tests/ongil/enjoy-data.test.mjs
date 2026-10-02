@@ -152,7 +152,8 @@ test('OG-EN-10 URL safety: official only for public-sector https, organiser site
 test('OG-EN-11 enjoy screen: own view at #enjoy and #enjoy/<category>; categories, search, results, saved entry', () => {
   assert.match(APP, /enjoyView = createEnjoyView\(\{/);
   // Phase 6: 커뮤니티 has its own view as well, so the shell loop skips it too.
-  assert.match(APP, /if \(area\.id === 'home' \|\| area\.id === 'life' \|\| area\.id === 'family' \|\| area\.id === 'care' \|\| area\.id === 'enjoy' \|\| area\.id === 'community'\) continue;/);
+  // Phase 7: 스토어 has its own view as well, so the shell loop skips it too.
+  assert.match(APP, /if \(area\.id === 'home' \|\| area\.id === 'life' \|\| area\.id === 'family' \|\| area\.id === 'care' \|\| area\.id === 'enjoy' \|\| area\.id === 'community' \|\| area\.id === 'store'\) continue;/);
   assert.equal(resolveView('#enjoy/culture'), 'enjoy');
   assert.equal(sectionOf('#enjoy/culture'), 'culture');
   assert.deepEqual([resolveEnjoySection('culture'), resolveEnjoySection('booking')], ['CULTURE', '']);

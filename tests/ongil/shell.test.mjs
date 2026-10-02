@@ -248,7 +248,16 @@ test('OG-NF-1 no claim of a feature that does not exist', () => {
 test('OG-NF-2 store has no checkout, cart, price, stock or order of any kind', () => {
   const store = BODY.slice(BODY.indexOf('id="store"'), BODY.indexOf('<!-- SAVED -->'));
   assert.equal(/<form|<input|type="submit"/.test(store), false);
-  for (const f of JS_FILES) assert.equal(/checkout|cart|payment|price|stock|orderId|shipping/i.test(CODE[f]), false, f);
+  /*
+   * Phase 7: the Product contract carries the source's price text (priceText, PRICE_NOTE) and store-contracts.js
+   * declares STORE_COMMERCE with every commerce capability false. Outside those two tokens and that one
+   * declaration, no file mentions checkout, cart, payment, price, stock, order ids or shipping.
+   */
+  const STORE_FILES = ['store-contracts.js', 'store-view.js'];
+  for (const f of JS_FILES) {
+    const code = STORE_FILES.includes(f) ? CODE[f].replace(/export const STORE_COMMERCE = Object\.freeze\(\{[^}]*\}\);/, '').replace(/\bpriceText\b|\bPRICE_NOTE\b/g, '') : CODE[f];
+    assert.equal(/checkout|cart|payment|price|stock|orderId|shipping/i.test(code), false, f);
+  }
   assert.match(AREAS.find((a) => a.id === 'store').notice, /결제, 주문, 배송 기능은 없습니다/);
 });
 

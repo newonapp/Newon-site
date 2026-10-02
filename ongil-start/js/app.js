@@ -14,7 +14,7 @@ import { createSavedStore } from './saved.js';
 import { createOnboarding } from './onboarding.js';
 import { createNotificationCenter } from './notifications.js';
 import { createAccount } from './account.js';
-import { createSearch, createAreaProvider, createSavedProvider, createCareProvider, createEnjoyProvider } from './search.js';
+import { createSearch, createAreaProvider, createSavedProvider, createCareProvider, createEnjoyProvider, createStoreProvider } from './search.js';
 import { AREAS, PRIMARY_AREAS, areaById } from './areas.js';
 import { createRouter } from './router.js';
 import { createNavigation } from './navigation.js';
@@ -43,6 +43,8 @@ import { createEnjoyView, resolveEnjoySection } from './enjoy-view.js';
 import { createPostStore, createGroupStore, createMeetupStore } from './community.js';
 import { createCommunityView, resolveCommunitySection } from './community-view.js';
 import { reviewPrefill } from './community-contracts.js';
+import { createStoreView, resolveStoreSection } from './store-view.js';
+import { createProductSource } from './store-source.js';
 import { createLifeView, lifeHash, resolveSection } from './life-view.js';
 import { focusNode } from './accessibility.js';
 import { dateKey } from './dates.js';
@@ -88,7 +90,7 @@ applyPreferences(html, profile.getPreferences());
 
 /* view shells for the areas that are still shells; Home, My Life, Family and Care have their own views */
 for (const area of PRIMARY_AREAS) {
-  if (area.id === 'home' || area.id === 'life' || area.id === 'family' || area.id === 'care' || area.id === 'enjoy' || area.id === 'community') continue;
+  if (area.id === 'home' || area.id === 'life' || area.id === 'family' || area.id === 'care' || area.id === 'enjoy' || area.id === 'community' || area.id === 'store') continue;
   const host = doc.querySelector(`[data-og-modules="${area.id}"]`);
   if (host) renderArea(area, host);
 }
@@ -203,6 +205,19 @@ const communityView = createCommunityView({
   saved,
   schedule,
 });
+/*
+ * Phase 7 — 스토어: product discovery only. No product source is connected in this repository, so the screen says
+ * "아직 연결된 상품이 없어요." No cart, checkout, payment, order or shipping; nothing reads health records.
+ * Products actually loaded on the screen (public information) are searchable as 상품.
+ */
+const storeView = createStoreView({
+  host: doc.querySelector('[data-og-modules="store"]'),
+  doc,
+  saved,
+  source: createProductSource(),
+});
+search.registerProvider(createStoreProvider(() => storeView.items()));
+
 const showCommunity = (section) => {
   if (pendingReview) {
     communityView.startReview(pendingReview);
@@ -245,6 +260,7 @@ const accountView = createAccountView({
     care.render();
     enjoyView.render();
     communityView.render();
+    storeView.render();
     panels.updateBadge();
   },
 });
@@ -268,11 +284,13 @@ const router = createRouter({
     if (view === 'care' && section && !resolveCareSection(section)) win.history.replaceState(null, '', '#care');
     if (view === 'enjoy' && section && !resolveEnjoySection(section)) win.history.replaceState(null, '', '#enjoy');
     if (view === 'community' && section && !resolveCommunitySection(section)) win.history.replaceState(null, '', '#community');
+    if (view === 'store' && section && !resolveStoreSection(section)) win.history.replaceState(null, '', '#store');
     if (sectionOnly) {
       if (view === 'life') showLife(section, { focus: userInitiated });
       if (view === 'care') care.show(section);
       if (view === 'enjoy') enjoyView.show(section);
       if (view === 'community') showCommunity(section);
+      if (view === 'store') storeView.show(section);
       return;
     }
     navigation.setCurrent(view);
@@ -285,6 +303,7 @@ const router = createRouter({
     if (view === 'care') care.show(section);
     if (view === 'enjoy' && section) enjoyView.show(section);
     if (view === 'community') showCommunity(section);
+    if (view === 'store') storeView.show(section);
     if (view === 'home') refreshHome();
     if (view === 'life') showLife(section, { focus: userInitiated && !!section, entered: true });
     if (userInitiated && !(view === 'life' && section)) focusView(doc, view);
@@ -340,4 +359,4 @@ router.start();
 html.dataset.ogReady = 'true';
 
 /* one stable handle for later phases and for manual checks; no secrets, nothing privileged */
-win.Ongil = Object.freeze({ version: 'community-v1', storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes, familySharing, helpRequests, care, enjoy: enjoyView, communityPosts, groupDrafts, meetupDrafts });
+win.Ongil = Object.freeze({ version: 'store-v1', storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes, familySharing, helpRequests, care, enjoy: enjoyView, communityPosts, groupDrafts, meetupDrafts, store: storeView });

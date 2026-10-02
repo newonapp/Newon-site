@@ -327,7 +327,8 @@ test('OG-FC-9 no horizontal overflow sources: grid children may shrink and long 
 
 test('OG-FC-10 regression: shells, routes, Home layout, sync list, network boundary', () => {
   // Phase 6: 커뮤니티 has its own view as well, so the shell loop skips it too.
-  assert.match(APP, /if \(area\.id === 'home' \|\| area\.id === 'life' \|\| area\.id === 'family' \|\| area\.id === 'care' \|\| area\.id === 'enjoy' \|\| area\.id === 'community'\) continue;/);
+  // Phase 7: 스토어 has its own view as well, so the shell loop skips it too.
+  assert.match(APP, /if \(area\.id === 'home' \|\| area\.id === 'life' \|\| area\.id === 'family' \|\| area\.id === 'care' \|\| area\.id === 'enjoy' \|\| area\.id === 'community' \|\| area\.id === 'store'\) continue;/);
   assert.equal((APP.match(/\bfetch\(/g) || []).length, 1, 'fetch injected once');
   assert.match(APP, /const nearbySource = createLifelongClassSource\(dataApi\);/);
   assert.match(APP, /facility: createFacilitySource\(dataApi\),/);

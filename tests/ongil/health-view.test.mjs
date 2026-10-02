@@ -150,7 +150,8 @@ test('OG-HL-40 regression: wiring, routes, Home layout, quick actions, search, s
   /* search still has two providers; no health provider was registered */
   // Phase 4: + public care provider (3); no health provider
   // Phase 5: + public 즐길거리 provider (4); still no health provider
-  assert.equal((APP.match(/search\.registerProvider\(/g) || []).length, 4);
+  // Phase 7: the fifth provider is public product information loaded on the 스토어 screen (createStoreProvider).
+  assert.equal((APP.match(/search\.registerProvider\(/g) || []).length, 5);
   assert.equal(/registerProvider\(create(Health|Symptom|CheckIn|Medication)/.test(APP), false);
   /* nothing in the health files talks to a network, schedules an OS notification or touches family */
   assert.equal(/fetch\(|XMLHttpRequest|sendBeacon|WebSocket|new Notification|Notification\.requestPermission|serviceWorker|setTimeout|setInterval/.test(HEALTH_CODE), false);

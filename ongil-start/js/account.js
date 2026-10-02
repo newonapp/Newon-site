@@ -14,12 +14,23 @@
  * No identity is ever read from storage, the URL or UI input.
  */
 import { maySync } from './privacy.js';
+import { isPlainObject, syncableSavedItems } from './contracts.js';
 
 export const SYNCABLE_COLLECTIONS = Object.freeze(['profile', 'preferences', 'saved', 'onboarding']);
 
 /* a collection is forwarded only when it is listed above AND privacy.js classifies it as APP */
 export function isSyncable(collection) {
   return SYNCABLE_COLLECTIONS.includes(collection) && maySync(collection);
+}
+
+/*
+ * What an adapter may receive for one storage change. For "saved", LOCAL_ONLY items (community posts) are removed
+ * item by item (contracts.js SAVED_SYNC_POLICY), so a private post can never leave the device with the collection.
+ */
+export function syncChange(change) {
+  if (!change || !isSyncable(change.collection)) return null;
+  if (change.collection !== 'saved' || !isPlainObject(change.value)) return change;
+  return { ...change, value: { ...change.value, items: syncableSavedItems(change.value.items) } };
 }
 
 export function createAccount({ storage }) {
@@ -49,9 +60,10 @@ export function createAccount({ storage }) {
     disconnectSyncAdapter();
     adapter = candidate;
     unsubscribe = storage.subscribe((change) => {
-      if (!isSyncable(change.collection)) return;
+      const outgoing = syncChange(change);
+      if (!outgoing) return;
       try {
-        const r = adapter.push(change);
+        const r = adapter.push(outgoing);
         if (r && typeof r.catch === 'function') r.catch(() => {});
       } catch {
         /* a sync failure never breaks local use */

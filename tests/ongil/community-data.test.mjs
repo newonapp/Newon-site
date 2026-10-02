@@ -282,7 +282,8 @@ test('OG-CM-28 community code has no network, no backend, no Firebase, no AI', (
 
 test('OG-CM-29 community posts are not registered as a global search provider', () => {
   const regs = APP_CODE.match(/search\.registerProvider\(/g) || [];
-  assert.equal(regs.length, 4);
+  /* Phase 7: + createStoreProvider (public products); still none for community */
+  assert.equal(regs.length, 5);
   assert.doesNotMatch(APP_CODE, /registerProvider\([^)]*communit/i);
   assert.doesNotMatch(APP_CODE, /registerProvider\([^)]*(groupDrafts|meetupDrafts|communityPosts)/);
 });
@@ -541,8 +542,9 @@ test('OG-CG-15 long text wraps instead of overflowing; body keeps line breaks', 
   assert.doesNotMatch(VIEW, /innerHTML|insertAdjacentHTML|outerHTML\s*=/);
 });
 
-test('OG-CG-16 no test fixtures or QA data in production source; app is versioned community-v1', () => {
+test('OG-CG-16 no test fixtures or QA data in production source; app is versioned (community-v1, then store-v1)', () => {
   assert.doesNotMatch(COMMUNITY_SRC, /QA 글|cp_qa|gd_qa|mt_qa|fixture|lorem/i);
-  assert.match(APP, /version: 'community-v1'/);
-  assert.match(read('index.html'), /app\.js\?v=20261003c6/);
+  /* Phase 7 moved the version on: store-v1 / ?v=20261003s7 */
+  assert.match(APP, /version: 'store-v1'/);
+  assert.match(read('index.html'), /app\.js\?v=20261003s7/);
 });

@@ -111,7 +111,8 @@ test('OG-PV-3 private data is not searched: journal, expenses, tasks, events, ro
   search.registerProvider(createAreaProvider(AREAS));
   search.registerProvider(createSavedProvider(w.saved));
   for (const q of ['찾으면안되는일기내용', '찾으면안되는지출메모', '4242', '찾으면안되는할일', '찾으면안되는일정', '찾으면안되는루틴', '찾으면안되는수면메모']) assert.deepEqual((await search.query(q)).results, [], q);
-  assert.equal((read('js', 'app.js').match(/search\.registerProvider\(/g) || []).length, 4, 'menus, saved items, public care and public 즐길거리 content only');
+  // Phase 7: the fifth provider is public product information loaded on the 스토어 screen (createStoreProvider).
+  assert.equal((read('js', 'app.js').match(/search\.registerProvider\(/g) || []).length, 5, 'menus, saved items, public care, public 즐길거리 and public product content only');
   // Phase 5: a fourth provider, 즐길거리, searches only PUBLIC enjoy items loaded on that screen (never a personal record).
   assert.match(read('js', 'app.js'), /search\.registerProvider\(createEnjoyProvider\(\(\) => enjoyView\.items\(\)\)\);/);
   // Phase 4: a third provider, 돌봄·서비스, searches only PUBLIC care items loaded on that screen (never a personal record).
