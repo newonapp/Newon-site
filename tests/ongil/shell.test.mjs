@@ -101,15 +101,15 @@ test('OG-RT-5 titles name the view', () => {
 
 /* ───────── view shells ───────── */
 
-// Phase 2A: Home's nine modules are implemented (available); the other seven areas are still slots.
-test('OG-VW-1 every primary area has a description, an empty state and module slots with unique ids; only Home is available', () => {
+// Phase 2A: Home's nine modules are implemented (available). Phase 2B: My Life's eight. The other six areas are still slots.
+test('OG-VW-1 every primary area has a description, an empty state and module slots with unique ids; only Home and My Life are available', () => {
   for (const a of PRIMARY_AREAS) {
     assert.ok(a.description.length >= 10, a.id);
     assert.ok(a.empty && /없습니다/.test(a.empty), `${a.id} empty state`);
     assert.ok(a.modules.length >= 4, a.id);
     assert.equal(new Set(a.modules.map((m) => m.id)).size, a.modules.length, a.id);
     for (const m of a.modules) {
-      assert.equal(m.available, a.id === 'home', `${a.id}.${m.id} must not claim to work before it is built`);
+      assert.equal(m.available, a.id === 'home' || a.id === 'life', `${a.id}.${m.id} must not claim to work before it is built`);
       assert.ok(m.title && m.description);
     }
   }

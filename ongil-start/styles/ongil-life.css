@@ -1,0 +1,63 @@
+/*
+ * My Life V1 (Phase 2B). Tokens only; the cards, picks, lists and forms are the Home components.
+ * Added here: the four-tab bar, the month grid, the summary tiles and long personal text.
+ */
+
+/* four tabs — large, always visible, no horizontal scrolling on a phone */
+.og-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; margin: 0 0 1.5rem; max-width: 40rem; }
+.og-tab { position: relative; min-height: 3.25rem; padding: 0.6rem 0.4rem; border: 1.5px solid var(--og-line-strong); border-radius: var(--og-radius-card); background: transparent; color: var(--og-ink); font-family: inherit; font-size: 1.15rem; font-weight: var(--og-weight-body); cursor: pointer; scroll-margin-top: calc(var(--gnav-h, 74px) + 1rem); }
+.og-tab[aria-selected="true"] { border-color: var(--og-ink); background: var(--og-surface); font-weight: 700; }
+.og-tab[aria-selected="true"]::after { content: ""; position: absolute; left: 25%; right: 25%; bottom: 0.45rem; height: 3px; border-radius: 3px; background: var(--og-ink); } /* the chosen tab is marked by a bar, not by colour alone */
+.og-tabs { scroll-margin-top: calc(var(--gnav-h, 74px) + 1rem); }
+
+.og-life-panel { display: grid; gap: 1rem; max-width: 60rem; }
+.og-life-panel[hidden] { display: none; }
+.og-life-panel:focus { outline: none; }
+
+/* summary tiles */
+.og-life-tiles { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; }
+.og-life-tile { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.2rem 0.8rem; align-items: center; padding: 1rem 1.1rem; border-radius: var(--og-radius-card); background: var(--og-surface); }
+.og-band .og-life-tile__title { grid-column: 1; margin: 0; font-size: 1rem; font-weight: var(--og-weight-body); color: var(--og-ink-soft); }
+.og-band .og-life-tile__value { grid-column: 1; margin: 0; font-size: 1.3rem; font-weight: 700; color: var(--og-ink); overflow-wrap: anywhere; }
+.og-band .og-life-tile__detail { grid-column: 1; margin: 0; font-size: 1rem; color: var(--og-muted); overflow-wrap: anywhere; }
+.og-life-tile .og-btn { grid-column: 2; grid-row: 1 / span 3; }
+
+.og-band .og-life-value { margin: 0; font-size: 1.3rem; font-weight: 700; color: var(--og-ink); }
+.og-life-sub { margin: 0.4rem 0 0; font-size: 1.1rem; font-weight: 700; color: var(--og-ink); }
+.og-life-days { margin: 0; padding: 0; list-style: none; display: grid; }
+.og-life-days li { display: flex; justify-content: space-between; gap: 1rem; min-height: 2.6rem; align-items: center; padding: 0.3rem 0; border-top: 1px solid var(--og-line); font-size: var(--og-size-body); color: var(--og-ink); }
+.og-life-days li:first-child { border-top: 0; }
+.og-life-days__date { color: var(--og-ink-soft); }
+
+/* month navigation and grid */
+.og-cal { display: grid; gap: 0.8rem; }
+.og-cal__nav { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.og-band .og-cal__month { margin: 0; font-size: 1.3rem; font-weight: 700; color: var(--og-ink); text-align: center; }
+.og-cal__grid { width: 100%; border-collapse: separate; border-spacing: 2px; table-layout: fixed; }
+.og-cal__grid th { padding: 0.3rem 0; font-size: 1rem; font-weight: var(--og-weight-body); color: var(--og-ink-soft); text-align: center; }
+.og-cal__cell { padding: 0; text-align: center; }
+.og-cal__day { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; min-height: 3rem; padding: 0.15rem 0; border: 1.5px solid transparent; border-radius: 0.8rem; background: transparent; color: var(--og-ink); font-family: inherit; font-size: 1.1rem; line-height: 1.1; cursor: pointer; }
+.og-cal__day:hover { border-color: var(--og-line-strong); }
+.og-cal__day[aria-current="date"] { border-color: var(--og-ink); border-style: dashed; } /* today: dashed ring */
+.og-cal__day[aria-pressed="true"] { background: var(--og-ink); color: var(--og-accent-ink); border-color: var(--og-ink); border-style: solid; font-weight: 700; } /* chosen day: filled */
+.og-cal__mark { height: 0.8rem; font-size: 1.2rem; line-height: 0.7; }
+.og-cal__selected { margin: 0.4rem 0 0; font-size: 1.25rem; font-weight: 700; color: var(--og-ink); }
+
+/* plain (uncheckable) rows and long personal text */
+.og-home-item__main--plain { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 0.2rem; }
+.og-band .og-home-item__text { grid-column: 1 / -1; margin: 0.3rem 0 0; color: var(--og-ink-soft); font-size: var(--og-size-body); line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
+.og-home-item__check ~ .og-home-item__text { grid-column: 2; }
+.og-input--area { min-height: 9rem; max-width: none; padding: 0.8rem 0.9rem; line-height: 1.7; resize: vertical; }
+.og-input[type="date"] { max-width: 14rem; color-scheme: dark; }
+.og-choice--day { padding: 0.5rem 0.8rem 0.5rem 0.65rem; }
+.og-private-note { margin-top: 0.8rem; }
+
+@media (max-width: 700px) {
+  .og-life-tiles { grid-template-columns: 1fr; }
+  .og-tab { font-size: 1.1rem; }
+  .og-cal__nav .og-btn { padding-inline: 0.7rem; }
+}
+@media (max-width: 480px) {
+  .og-cal__grid { border-spacing: 1px; }
+  .og-cal__day { min-height: 2.9rem; font-size: 1.05rem; border-radius: 0.65rem; }
+}

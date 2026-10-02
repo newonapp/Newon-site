@@ -31,14 +31,15 @@ test('OG-ST-1 every key lives in the ongil.v1 namespace', () => {
   for (const k of backend.keys()) assert.ok(k.startsWith('ongil.v1.'), k);
 });
 
-// Phase 2A added five collections for Home V1; family data and health records still have none.
+// Phase 2A added five collections for Home V1 and Phase 2B six for My Life; family data and health records still have none.
+// The list is asserted in full so that a new collection can never appear without this test (and its privacy class) being updated.
 test('OG-ST-2 unknown collections are refused (family data and health records have no collection)', () => {
   const { storage } = world();
   for (const c of ['health', 'family', 'checkin', 'medication', '__proto__', '', 'livon.platform.v1']) {
     assert.throws(() => storage.get(c), /UNKNOWN_COLLECTION/);
     assert.throws(() => storage.set(c, {}), /UNKNOWN_COLLECTION/);
   }
-  assert.deepEqual([...COLLECTIONS], ['profile', 'preferences', 'onboarding', 'saved', 'notifications', 'checkins', 'events', 'medications', 'medicationLogs', 'dailyLife']);
+  assert.deepEqual([...COLLECTIONS], ['profile', 'preferences', 'onboarding', 'saved', 'notifications', 'checkins', 'events', 'medications', 'medicationLogs', 'dailyLife', 'tasks', 'routines', 'routineLogs', 'sleepRecords', 'expenses', 'journal']);
   for (const c of ['familyConnections', 'familyPermissions', 'healthRecords', 'devices']) assert.equal(COLLECTIONS.includes(c), false, c);
 });
 

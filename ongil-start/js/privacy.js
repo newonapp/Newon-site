@@ -1,0 +1,70 @@
+/*
+ * Data classification — every stored collection has exactly one class, and the class decides what may
+ * ever leave this device.
+ *
+ *   APP              profile, preferences, onboarding, saved, notifications — settings and bookmarks
+ *   STANDARD         everyday records: calendar events, tasks, routines (+ logs), daily life, sleep
+ *   PRIVATE          living expenses and the journal — the user's money and the user's own writing
+ *   HEALTH_ADJACENT  check-ins and medication (+ logs) — not medical records, but close enough to be treated with care
+ *
+ * Rules enforced here and checked by tests:
+ *   - PRIVATE and HEALTH_ADJACENT collections are never syncable, never searchable, never shareable with family.
+ *   - STANDARD collections are local-only for now as well; they may become syncable later, with consent.
+ *   - Only APP collections that account.js lists are forwarded to a sync adapter.
+ *   - No personal record of any class is offered to global search.
+ */
+import { COLLECTIONS } from './storage.js';
+
+export const DATA_CLASSES = Object.freeze(['APP', 'STANDARD', 'PRIVATE', 'HEALTH_ADJACENT']);
+
+export const CLASSIFICATION = Object.freeze({
+  profile: 'APP',
+  preferences: 'APP',
+  onboarding: 'APP',
+  saved: 'APP',
+  notifications: 'APP',
+  events: 'STANDARD',
+  tasks: 'STANDARD',
+  routines: 'STANDARD',
+  routineLogs: 'STANDARD',
+  dailyLife: 'STANDARD',
+  sleepRecords: 'STANDARD',
+  expenses: 'PRIVATE',
+  journal: 'PRIVATE',
+  checkins: 'HEALTH_ADJACENT',
+  medications: 'HEALTH_ADJACENT',
+  medicationLogs: 'HEALTH_ADJACENT',
+});
+
+export const CONTRACT_CLASSES = Object.freeze({
+  CalendarEvent: 'STANDARD',
+  Task: 'STANDARD',
+  Routine: 'STANDARD',
+  RoutineLog: 'STANDARD',
+  DailyLife: 'STANDARD',
+  SleepRecord: 'STANDARD',
+  ExpenseRecord: 'PRIVATE',
+  JournalEntry: 'PRIVATE',
+  Medication: 'HEALTH_ADJACENT',
+  MedicationLog: 'HEALTH_ADJACENT',
+  CheckIn: 'HEALTH_ADJACENT',
+});
+
+export function classOf(collection) {
+  return Object.prototype.hasOwnProperty.call(CLASSIFICATION, collection) ? CLASSIFICATION[collection] : null;
+}
+
+/* a collection may be handed to a sync adapter only if it is an APP collection; anything else needs a consent design first */
+export function maySync(collection) {
+  return classOf(collection) === 'APP';
+}
+export function maySearchGlobally(collection) {
+  return collection === 'saved';
+}
+export function familySharingAllowed() {
+  return false;
+}
+
+export function unclassified() {
+  return COLLECTIONS.filter((c) => classOf(c) === null);
+}

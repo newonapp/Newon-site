@@ -29,7 +29,14 @@ import { createMedicationStore } from './medication.js';
 import { createDailyLifeStore } from './daily-life.js';
 import { createLifelongClassSource } from './data-source.js';
 import { createHomeView } from './home-view.js';
+import { createTaskStore } from './tasks.js';
+import { createRoutineStore } from './routines.js';
+import { createSleepStore } from './sleep.js';
+import { createExpenseStore } from './expenses.js';
+import { createJournalStore } from './journal.js';
+import { createLifeView } from './life-view.js';
 import { focusNode } from './accessibility.js';
+import { dateKey } from './dates.js';
 import { createPanels } from './panels.js';
 import { applyPreferences, viewTitle, focusView, bindSkipLink, bindScrollCues } from './accessibility.js';
 
@@ -47,6 +54,11 @@ const checkIn = createCheckInStore(storage);
 const schedule = createScheduleStore(storage);
 const medication = createMedicationStore(storage);
 const dailyLife = createDailyLifeStore(storage);
+const tasks = createTaskStore(storage);
+const routines = createRoutineStore(storage);
+const sleep = createSleepStore(storage);
+const expenses = createExpenseStore(storage);
+const journal = createJournalStore(storage);
 
 const search = createSearch();
 search.registerProvider(createAreaProvider(AREAS));
@@ -54,9 +66,9 @@ search.registerProvider(createSavedProvider(saved, SAVED_TYPE_LABELS));
 
 applyPreferences(html, profile.getPreferences());
 
-/* view shells for the seven areas that are still shells; Home has its own view */
+/* view shells for the six areas that are still shells; Home and My Life have their own views */
 for (const area of PRIMARY_AREAS) {
-  if (area.id === 'home') continue;
+  if (area.id === 'home' || area.id === 'life') continue;
   const host = doc.querySelector(`[data-og-modules="${area.id}"]`);
   if (host) renderArea(area, host);
 }
@@ -84,6 +96,12 @@ const films = createFilms({
   win,
   getMotion: () => profile.getPreferences().motion,
   setMotion: (motion) => profile.updatePreferences({ motion }),
+});
+
+/* My Life reads the same schedule and daily-life stores as Home: one set of records, two screens */
+const life = createLifeView({
+  host: doc.querySelector('[data-og-modules="life"]'),
+  stores: { schedule, tasks, routines, dailyLife, sleep, expenses, journal },
 });
 
 const navigation = createNavigation({ doc });
@@ -116,6 +134,7 @@ const accountView = createAccountView({
     applyPreferences(html, profile.getPreferences());
     films.apply();
     refreshHome();
+    life.refresh();
     panels.updateBadge();
   },
 });
@@ -123,7 +142,11 @@ const accountView = createAccountView({
 const router = createRouter({
   win,
   doc,
-  onChange: ({ view, userInitiated }) => {
+  onChange: ({ view, userInitiated, section, sectionOnly }) => {
+    if (sectionOnly) {
+      if (view === 'life') life.show(section, { focus: userInitiated });
+      return;
+    }
     navigation.setCurrent(view);
     panels.closeAll();
     films.show(view);
@@ -131,7 +154,8 @@ const router = createRouter({
     if (view === 'account') accountView.render();
     if (view === 'saved') savedView.render();
     if (view === 'home') refreshHome();
-    if (userInitiated) focusView(doc, view);
+    if (view === 'life') life.show(section, { focus: userInitiated && !!section });
+    if (userInitiated && !(view === 'life' && section)) focusView(doc, view);
   },
 });
 
@@ -164,9 +188,14 @@ doc.addEventListener('click', (event) => {
 });
 
 /* the calendar day can change while the page stays open (left overnight, or reopened from the background) */
+let lifeDay = dateKey();
 const checkDay = () => {
   if (router.current() === 'home' && home.dayChanged() && !onboardingView.isOpen()) refreshHome();
   else home.greet();
+  if (router.current() === 'life' && lifeDay !== dateKey()) {
+    lifeDay = dateKey();
+    life.refresh();
+  }
 };
 doc.addEventListener('visibilitychange', () => {
   if (doc.visibilityState === 'visible') checkDay();
@@ -180,4 +209,4 @@ router.start();
 html.dataset.ogReady = 'true';
 
 /* one stable handle for later phases and for manual checks; no secrets, nothing privileged */
-win.Ongil = Object.freeze({ version: 'home-v1', storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife });
+win.Ongil = Object.freeze({ version: 'my-life-v1', storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal });

@@ -199,7 +199,10 @@ test('OG-DL-1 daily life saves plain counts and refuses out-of-range values', ()
   assert.equal(dailyLife.update({ exercise: true }).ok, true);
   const d = dailyLife.get();
   assert.deepEqual([d.meals, d.water, d.exercise, d.date], [2, 3, true, '2026-10-02']);
-  assert.deepEqual(Object.keys(d).sort(), ['date', 'exercise', 'meals', 'schemaVersion', 'updatedAt', 'water']);
+  /* Phase 2B extended DailyLife with optional detail (which meals, exercise type / minutes / memo). The Phase 2A fields are
+     unchanged and a record written by Home alone carries the new fields as "not said". */
+  assert.deepEqual(Object.keys(d).sort(), ['date', 'exercise', 'exerciseMemo', 'exerciseMinutes', 'exerciseType', 'mealSlots', 'meals', 'schemaVersion', 'updatedAt', 'water']);
+  assert.deepEqual([d.mealSlots, d.exerciseType, d.exerciseMinutes, d.exerciseMemo], [null, '', null, '']);
   for (const bad of [{ meals: 4 }, { meals: -1 }, { meals: 1.5 }, { water: 21 }, { water: -1 }, { exercise: 'yes' }]) assert.equal(dailyLife.update(bad).ok, false, JSON.stringify(bad));
   assert.deepEqual([dailyLife.get().meals, dailyLife.get().water], [2, 3]);
   for (const k of ['score', 'grade', 'target', 'goal']) assert.equal(k in d, false, k);

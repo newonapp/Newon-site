@@ -5,7 +5,7 @@
  * document titles, and the "areas" search provider.
  *
  * modules[].available is true only for what really works. Home's nine modules became available with Home V1
- * (Phase 2A); every other area is still a set of slots, rendered as "준비 중", that never pretend to work.
+ * (Phase 2A) and My Life's eight with My Life V1 (Phase 2B); every other area is still a set of slots, rendered as "준비 중", that never pretend to work.
  */
 const slot = (id, title, description, available = false) => Object.freeze({ id, title, description, available });
 const live = (id, title, description) => slot(id, title, description, true);
@@ -42,14 +42,14 @@ export const AREAS = Object.freeze([
     empty: '아직 적어 둔 일정이나 기록이 없습니다.',
     keywords: ['생활', '기록'],
     modules: [
-      slot('calendar', '캘린더', '약속과 일정을 날짜별로 봅니다.'),
-      slot('tasks', '할 일', '해야 할 일을 적고 끝낸 일을 표시합니다.'),
-      slot('routine', '루틴', '매일 반복하는 일을 정해 둡니다.'),
-      slot('meals', '식사', '식사를 간단히 적어 둡니다.'),
-      slot('exercise', '운동', '걷기와 운동을 적어 둡니다.'),
-      slot('sleep', '수면', '잠든 시간과 일어난 시간을 적어 둡니다.'),
-      slot('expenses', '생활비', '쓴 돈을 간단히 적어 둡니다.'),
-      slot('journal', '기록', '하루를 글로 남깁니다.'),
+      live('calendar', '캘린더', '약속과 일정을 날짜별로 봅니다.'),
+      live('tasks', '할 일', '해야 할 일을 적고 끝낸 일을 표시합니다.'),
+      live('routine', '루틴', '요일마다 반복하는 일을 정해 두고 표시합니다.'),
+      live('meals', '식사', '아침, 점심, 저녁 식사를 적어 둡니다.'),
+      live('exercise', '운동', '걷기와 운동을 적어 둡니다.'),
+      live('sleep', '수면', '잠든 시간과 일어난 시간을 적어 둡니다.'),
+      live('expenses', '생활비', '쓴 돈을 간단히 적어 둡니다.'),
+      live('journal', '기록', '하루를 글로 남깁니다.'),
     ],
   }),
   Object.freeze({

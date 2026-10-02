@@ -25,9 +25,14 @@ export const KEY_PREFIX = `${NAMESPACE}.${STORAGE_VERSION}.`;
  * Known collections. A name that is not listed here is refused.
  *   Phase 1  : profile · preferences · onboarding · saved · notifications
  *   Phase 2A : checkins · events · medications · medicationLogs · dailyLife   (Home V1, shared with My Life)
- * Family data and health records still have no collection.
+ *   Phase 2B : tasks · routines · routineLogs · sleepRecords · expenses · journal   (My Life V1)
+ * Family data and health records still have no collection. Every name here has a privacy class in privacy.js.
  */
-export const COLLECTIONS = Object.freeze(['profile', 'preferences', 'onboarding', 'saved', 'notifications', 'checkins', 'events', 'medications', 'medicationLogs', 'dailyLife']);
+export const COLLECTIONS = Object.freeze([
+  'profile', 'preferences', 'onboarding', 'saved', 'notifications',
+  'checkins', 'events', 'medications', 'medicationLogs', 'dailyLife',
+  'tasks', 'routines', 'routineLogs', 'sleepRecords', 'expenses', 'journal',
+]);
 
 const MAX_VALUE_CHARS = 400000;
 

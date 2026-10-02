@@ -81,5 +81,12 @@ export function createScheduleStore(storage, { now = () => Date.now(), today = (
       .sort((a, b) => (a.time === '' ? 1 : 0) - (b.time === '' ? 1 : 0) || a.time.localeCompare(b.time) || a.createdAt - b.createdAt || a.id.localeCompare(b.id));
   }
 
-  return Object.freeze({ add, update, toggle, remove, get, listForDate, count: () => read().length });
+  /* { 'YYYY-MM-DD': number of events } for one month, from a single read — used by the calendar grid */
+  function countsForMonth(month) {
+    const out = {};
+    for (const it of read()) if (it.date.startsWith(`${month}-`)) out[it.date] = (out[it.date] || 0) + 1;
+    return out;
+  }
+
+  return Object.freeze({ add, update, toggle, remove, get, listForDate, countsForMonth, count: () => read().length });
 }

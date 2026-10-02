@@ -13,7 +13,14 @@
  *
  * No identity is ever read from storage, the URL or UI input.
  */
+import { maySync } from './privacy.js';
+
 export const SYNCABLE_COLLECTIONS = Object.freeze(['profile', 'preferences', 'saved', 'onboarding']);
+
+/* a collection is forwarded only when it is listed above AND privacy.js classifies it as APP */
+export function isSyncable(collection) {
+  return SYNCABLE_COLLECTIONS.includes(collection) && maySync(collection);
+}
 
 export function createAccount({ storage }) {
   let adapter = null;
@@ -42,7 +49,7 @@ export function createAccount({ storage }) {
     disconnectSyncAdapter();
     adapter = candidate;
     unsubscribe = storage.subscribe((change) => {
-      if (!SYNCABLE_COLLECTIONS.includes(change.collection)) return;
+      if (!isSyncable(change.collection)) return;
       try {
         const r = adapter.push(change);
         if (r && typeof r.catch === 'function') r.catch(() => {});
