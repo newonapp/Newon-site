@@ -1189,6 +1189,8 @@
     createDraft: createDraft, validateForPublish: validateForPublish, transition: transition,
     StaticAdapter: StaticAdapter, PublicDataAdapter: PublicDataAdapter, PartnerAdapter: PartnerAdapter, InternalAdapter: InternalAdapter,
     createRepository: createRepository,
+    /* the domains a piece of text belongs to (same classifier the entities use) */
+    domainsOfText: function (text) { var out = []; text = String(text || ""); DOMAINS.forEach(function (d) { if (d.re.test(text)) out.push(d.id); }); return out; },
     shared: sharedRepository
   };
 })(typeof window !== "undefined" ? window : globalThis);

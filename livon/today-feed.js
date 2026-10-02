@@ -216,7 +216,10 @@
       var n = /^#today\/([\w-]+)$/.exec(t.sourceHref || "");
       if (n) add(byKey("td:" + n[1]), 1);
     });
-    return { stage: typeof stage === "string" && /^[1-7]0$/.test(stage) ? stage : "", interests: interests, weights: weights, personalized: !!(stage || interests.length || signals) };
+    /* Life Events chosen in onboarding / My Life (ids) — an extra ranking signal, nothing is hidden */
+    var events = readJSON("livon.lifeEvents", []);
+    events = (Array.isArray(events) ? events : []).filter(function (x) { return typeof x === "string"; });
+    return { stage: typeof stage === "string" && /^[1-7]0$/.test(stage) ? stage : "", interests: interests, events: events, weights: weights, personalized: !!(stage || interests.length || events.length || signals) };
   }
   function score(item, p) {
     var s = 0;
@@ -224,6 +227,8 @@
     var blob = [item.title, item.desc, item.category].concat(item.tags || []).join(" ");
     var hits = 0;
     p.interests.forEach(function (it) { if (hits < 2 && it && blob.indexOf(it) >= 0) { s += 2; hits++; } });
+    var PZ = window.LivonPersonalization;
+    if (PZ && p.events && p.events.length && PZ.eventBoost(blob, p.events)) s += 2;
     item.cats.forEach(function (c) { s += Math.min(p.weights[c] || 0, 4); });
     if (item.actionable) s += 0.4;
     if (item.featured) s += 0.4;
@@ -674,6 +679,7 @@
     if (h && h.repo) h.repo.load().then(refresh, refresh);
   }
 
+  document.addEventListener("livon:personalization", function () { try { refresh(); } catch (e) {} });
   window.LivonTodayFeed = {
     openDetail: openDetail, closeDetail: closeDetail, isDetailOpen: function () { return !!detailId; },
     render: refresh, setTab: setTab, recent: recent, pushRecent: pushRecent, profile: profile,

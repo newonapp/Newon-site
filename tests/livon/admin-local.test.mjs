@@ -302,7 +302,7 @@ test('AD-23 export: JSON and CSV for every report, whitelisted columns', () => {
 });
 test('AD-24 system: environment, anonymous mode, platform, records, live external 0, AI/account/community not connected, storage local-first', async () => {
   const S = Object.fromEntries(svc.system(await svc.adapterInfo()).map(s => [s.key, s.value]));
-  deq(S, { Environment: 'LOCAL', 'Anonymous Mode': 'ACTIVE', 'Data Platform': 'READY', 'Quality Evaluator': 'READY', 'Curated Records': '530', 'Live External': '0', AI: 'NOT CONNECTED',
+  deq(S, { Environment: 'LOCAL', 'Anonymous Mode': 'ACTIVE', 'Data Platform': 'READY', 'Quality Evaluator': 'READY', 'Curated Records': '530', 'Live External': '0', 'Personalization Engine': 'LOCAL RULE-BASED', AI: 'NOT CONNECTED',
     Account: 'DEFERRED', 'Community Backend': 'NOT CONNECTED', Storage: 'LOCAL-FIRST', 'Provider Manifest': 'READY' });
   assert.match(src('livon/admin/admin-service.js'), /var STATUS = \{/, 'status words defined in one place');
 });

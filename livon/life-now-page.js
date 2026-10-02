@@ -1666,17 +1666,22 @@
     var prefs = (window.LivonPlatform && window.LivonPlatform.alertPrefs) ? window.LivonPlatform.alertPrefs() : {};
     var types = (window.LivonPlatform && window.LivonPlatform.alertTypes) ? window.LivonPlatform.alertTypes : [];
     var region = snap.region || {};
-    var stageTxt = snap.stage ? String(snap.stage) : "미설정";
+    var PZ = window.LivonPersonalization, prof = PZ ? PZ.getProfile() : null;
+    var stageTxt = prof ? (PZ.stageLabel(prof.lifeStage) || "미설정") : (snap.stage ? String(snap.stage) : "미설정");
     var sitTxt = (snap.situations || []).join(" · ") || "없음";
-    var evTxt = (snap.events || []).join(", ") || "없음";
+    /* Life Events are stored as ids; show their names */
+    var evTxt = prof
+      ? (prof.lifeEvents.map(function (id) { var ev = PZ.eventById(id); return ev ? ev.title : ""; }).filter(Boolean).join(" · ") || "없음")
+      : ((snap.events || []).join(", ") || "없음");
+    var editBtn = function (step, label) { return PZ ? '<button type="button" data-lv-onboard-edit="' + step + '" aria-label="' + label + ' 변경">변경</button>' : ""; };
     return '<div data-livon-account-panel hidden></div>' +
       '<p class="lv-ml-note">민감한 정보는 필수 입력이 아닙니다. 값은 이 기기에만 저장됩니다.</p>' +
       '<div class="lv-ml-block-label"><p class="lv-ml-kicker">Profile</p><h3 class="lv-ml-title lv-ml-title--md">기본 · Life Stage</h3></div>' +
       '<ul class="lv-ml-manage-list">' +
-        "<li><div><strong>Life Stage</strong><p>" + esc(stageTxt) + '</p></div><div class="lv-ml-row-acts"><a href="#life-setup">변경</a></div></li>' +
+        "<li><div><strong>Life Stage</strong><p>" + esc(stageTxt) + '</p></div><div class="lv-ml-row-acts">' + (editBtn("stage", "Life Stage") || '<a href="#life-setup">변경</a>') + "</div></li>" +
         "<li><div><strong>생활 상황</strong><p>" + esc(sitTxt) + "</p></div></li>" +
-        "<li><div><strong>관심사</strong><p>" + esc(readInterests().join(" · ") || "없음") + '</p></div><div class="lv-ml-row-acts"><a href="#ml-interests">관리</a></div></li>' +
-        "<li><div><strong>진행 중 Life Event</strong><p>" + esc(evTxt) + '</p></div><div class="lv-ml-row-acts"><a href="#life-events">관리</a></div></li>' +
+        "<li><div><strong>내 관심사</strong><p>" + esc(readInterests().join(" · ") || "없음") + '</p></div><div class="lv-ml-row-acts">' + editBtn("interests", "관심사") + ' <a href="#ml-interests">관리</a></div></li>' +
+        "<li><div><strong>내 Life Events</strong><p>" + esc(evTxt) + '</p></div><div class="lv-ml-row-acts">' + editBtn("events", "Life Event") + ' <a href="#life-events">살펴보기</a></div></li>' +
         "<li><div><strong>저장</strong><p>" + esc(String(snap.savesCount || 0)) + '개</p></div><div class="lv-ml-row-acts"><a href="#ml-saved">저장 보기</a></div></li>' +
       "</ul>" +
       '<div class="lv-ml-block-label" style="margin-top:1.5rem"><p class="lv-ml-kicker">Region</p><h3 class="lv-ml-title lv-ml-title--md">지역 설정</h3></div>' +
@@ -1690,7 +1695,10 @@
           '<div class="lv-ml-row-acts"><label><input type="checkbox" data-lv-ml-alert="' + esc(a.id) + '"' + (prefs[a.id] !== false ? " checked" : "") + " /> 받기</label></div></li>";
       }).join("") + "</ul>" +
       '<p class="lv-ml-note" style="margin-top:1rem">앱 설정 · 주 시작 ' + esc(String((store.settings && store.settings.weekStartsOn) || 0)) + " · " + esc((store.settings && store.settings.currency) || "KRW") + "</p>" +
-      '<p><button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" data-lv-onboard-reopen>온보딩 다시 보기</button></p>';
+      '<div class="lv-ml-block-label" style="margin-top:1.5rem"><p class="lv-ml-kicker">For you</p><h3 class="lv-ml-title lv-ml-title--md">맞춤 설정</h3></div>' +
+      '<p class="lv-ml-note">연령대·관심사·Life Event는 이 기기에서 홈, 라이프 스테이지, 오늘의 발견, 탐색, 커뮤니티의 순서를 맞추는 데만 사용돼요. 바꾸면 바로 반영돼요.</p>' +
+      '<p class="lv-ml-inline-acts"><button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" data-lv-onboard-reopen>맞춤 설정 다시 하기</button> ' +
+        (PZ ? '<button type="button" class="lv-ml-btn lv-ml-btn--outline lv-ml-btn--sm" data-lv-ml-pz-reset>맞춤 설정 초기화</button>' : "") + "</p>";
   }
 
 
@@ -1912,7 +1920,19 @@
       }
       if (e.target.closest("[data-lv-onboard-reopen]") && window.LivonPlatform && window.LivonPlatform.openOnboarding) {
         e.preventDefault();
-        window.LivonPlatform.openOnboarding();
+        window.LivonPlatform.openOnboarding({ step: "stage" });
+        return;
+      }
+      if (e.target.closest("[data-lv-ml-pz-reset]") && window.LivonPersonalization) {
+        e.preventDefault();
+        confirmDialog({ title: "맞춤 설정을 초기화할까요?", body: "연령대, 관심사, Life Event 선택만 지워요. 저장한 항목, 할 일, 목표, 일정, 커뮤니티 글은 그대로 남아요.", ok: "초기화" }).then(function (yes) {
+          if (!yes) return;
+          window.LivonPersonalization.reset();
+          renderPanel("settings");
+          if (window.LivonHome && window.LivonHome.render) window.LivonHome.render();
+          try { document.dispatchEvent(new CustomEvent("livon:personalization")); } catch (err) {}
+          announce("맞춤 설정을 초기화했어요. 다른 기록은 그대로예요.");
+        });
         return;
       }
 
@@ -2231,6 +2251,10 @@
     saved: function () { return collectedSaved(); },
     recentViewed: function () { return recentViewed(); } };
 
+  /* onboarding / preference change elsewhere → refresh the settings or interests panel if it is open */
+  document.addEventListener("livon:personalization", function () {
+    try { if (state.view === "settings" || state.view === "interests") renderPanel(state.view); } catch (e) {}
+  });
   window.LivonMyLife = {
     api: api,
     onShow: function (hash) {

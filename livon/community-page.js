@@ -407,7 +407,9 @@
     interests.forEach(function (i) { catsOfText(i).forEach(function (c) { cats[c] = 1; }); });
     var joinedCats = {};
     store.joined.forEach(function (j) { if (COMM_CAT[j.id]) joinedCats[COMM_CAT[j.id]] = 1; });
-    return { stage: typeof stage === "string" && /^[1-7]0$/.test(stage) ? stage : "", interests: interests, cats: cats, joinedCats: joinedCats };
+    var events = readJSON("livon.lifeEvents", []);
+    events = (Array.isArray(events) ? events : []).filter(function (x) { return typeof x === "string"; });
+    return { stage: typeof stage === "string" && /^[1-7]0$/.test(stage) ? stage : "", interests: interests, events: events, cats: cats, joinedCats: joinedCats };
   }
   function forYouScore(p, sig) {
     var s = 0;
@@ -416,6 +418,9 @@
     if (p.category && sig.joinedCats[p.category]) s += 1;
     var blob = [p.title, (p.tags || []).join(" ")].join(" ");
     if (sig.interests.some(function (i) { return i && blob.indexOf(i) >= 0; })) s += 1;
+    /* a Life Event the user chose (title / needs words in the post title or tags) — local rule, no inference about the person */
+    var PZ = window.LivonPersonalization;
+    if (PZ && sig.events && sig.events.length && PZ.eventBoost(blob, sig.events)) s += 2;
     return s;
   }
   function matchesQuery(p, q) {

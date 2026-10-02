@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/gnav-mega.css?v=20260902nav1" />
     <link rel="stylesheet" href="/home-lifestage.css?v=20260924livon1" />
     <link rel="stylesheet" href="/home-lifestage-layout.css?v=20260922loop1" />
-    <link rel="stylesheet" href="/livon/life-page.css?v=20260929qa1" />
+    <link rel="stylesheet" href="/livon/life-page.css?v=20261002ob1" />
     <link rel="stylesheet" href="/livon/life-now-page.css?v=20260929qa1" />
     <link rel="stylesheet" href="/livon/explore-page.css?v=20260929qa1" />
     <link rel="stylesheet" href="/livon/community-page.css?v=20260929qa1" />
@@ -3230,26 +3230,12 @@
         </div>
       </div>
     </div>
-    <div class="lv-life-modal" id="livon-onboard-modal" hidden>
-      <button type="button" class="lv-life-modal__backdrop" data-lv-onboard-close aria-label="닫기"></button>
+    <aside class="lv-ob-entry" id="livon-onboard-entry" role="region" aria-labelledby="livon-onboard-entry-title" hidden></aside>
+    <div class="lv-life-modal lv-ob" id="livon-onboard-modal" hidden>
+      <button type="button" class="lv-life-modal__backdrop" data-lv-onboard-close aria-label="닫기" tabindex="-1"></button>
       <div class="lv-life-modal__panel" role="dialog" aria-modal="true" aria-labelledby="livon-onboard-title">
         <button type="button" class="lv-life-modal__close" data-lv-onboard-close aria-label="닫기">×</button>
-        <h2 id="livon-onboard-title">나에게 맞는 LIVON 시작</h2>
-        <p>연령대 · 생활 상태 · 지금 중요한 것만 고르면 됩니다. 민감한 정보는 묻지 않으며, 나중에 언제든 바꿀 수 있습니다.</p>
-        <p class="lv-life-modal__foot">1. 연령대</p>
-        <p class="lv-life-modal__label">연령대 · Life Stage</p>
-        <div class="lv-life-chips" data-lv-onboard-stages></div>
-        <p class="lv-life-modal__foot">2. 현재 생활 상태</p>
-        <p class="lv-life-modal__label">현재 생활 상태</p>
-        <div class="lv-life-chips" data-lv-onboard-sits></div>
-        <p class="lv-life-modal__foot">3. 현재 나에게 중요한 것</p>
-        <p class="lv-life-modal__label">현재 나에게 중요한 것 · 관심·목표</p>
-        <div class="lv-life-chips" data-lv-onboard-goals></div>
-        <div style="margin-top:1.25rem;display:flex;gap:.5rem;flex-wrap:wrap">
-          <button type="button" class="lv-life-btn lv-life-btn--dark" data-lv-onboard-apply>시작하기</button>
-          <button type="button" class="lv-life-btn lv-life-btn--outline" data-lv-onboard-skip>나중에 하기</button>
-        </div>
-        <p class="lv-life-modal__foot">선택값은 이 기기에만 저장됩니다. 계정 동기화는 준비 중입니다.</p>
+        <div data-lv-ob-body></div>
       </div>
     </div>
 
@@ -3262,7 +3248,9 @@
     <script src="/newon-auth/newon-auth.js?v=20260930acct1"></script>
     <script src="/livon/data/livon-sync.js?v=20260930acct2"></script>
     <script src="/livon/data/livon-auth-bridge.js?v=20260930anon1"></script>
-    <script src="/livon/livon-platform.js?v=20260930anon2"></script>
+    <script src="/livon/livon-platform.js?v=20261002ob1"></script>
+    <script src="/livon/livon-personalization.js?v=20261002ob1"></script>
+    <script src="/livon/livon-onboarding.js?v=20261002ob1"></script>
     <script src="/livon/livon-api-config.js?v=20260930api2"></script>
     <script src="/livon/data/livon-data-config.js?v=20260929api1"></script>
     <script src="/livon/data/livon-data-schema.js?v=20260929tx1"></script>

@@ -20,7 +20,7 @@
   /* the LIVON data scripts the local tools load (same files as the site, in the site's order) */
   var DATA_SCRIPTS = ["/livon/life-data.js", "/livon/life-events-data.js", "/livon/explore-data.js", "/livon/community-data.js", "/livon/today-data.js",
     "/livon/data/livon-data-config.js", "/livon/data/livon-data-schema.js", "/livon/data/livon-data-platform.js", "/livon/data/livon-screen-data.js",
-    "/livon/life-hub.js", "/livon/explore-search.js", "/livon/data/livon-content-quality.js"];
+    "/livon/life-hub.js", "/livon/explore-search.js", "/livon/data/livon-content-quality.js", "/livon/livon-personalization.js"];
   var SCREENS = ["HOME", "TODAY", "LIFE STAGE", "EXPLORE", "SEARCH", "MY LIFE", "DETAIL", "COMMUNITY"];
   var STAGES = ["10", "20", "30", "40", "50", "60", "70"];
   var GRADES = ["Excellent", "Good", "Needs Review", "Poor"];
@@ -396,6 +396,18 @@
     return { context: ctx, method: r.method, items: r.items.map(function (x, i) { return { rank: i + 1, id: x.entity.id, title: x.entity.title, type: x.entity.type, score: x.score, reasons: x.reasons || [] }; }) };
   }
 
+  /* Onboarding profile simulation: the same rule the public onboarding uses, run on a profile typed into the tool.
+     It never reads a visitor's stored profile — recommend(profile) is given the scenario explicitly. */
+  function simulateOnboarding(m, input) {
+    var PZ = root.LivonPersonalization;
+    input = input || {};
+    var profile = { lifeStage: input.lifeStage || stageFromAge(input.age) || "", interests: arr(input.interests).filter(Boolean), lifeEvents: arr(input.lifeEvents).filter(Boolean) };
+    if (!PZ || typeof PZ.recommend !== "function") return { available: false, profile: profile, items: [], gaps: [] };
+    var r = PZ.recommend(profile, { limit: input.limit || 20 });
+    return { available: true, engine: PZ.ENGINE, method: r.method, profile: PZ.sanitizeProfile(profile), personalized: r.personalized, gaps: r.gaps,
+      items: r.items.map(function (x, i) { return { rank: i + 1, id: x.id, title: x.title, type: x.type, kind: x.kind, score: x.score, reasons: x.reasons.map(function (y) { return y.type + ":" + y.value + (y.via ? " (via " + y.via + ")" : ""); }), why: x.why }; }) };
+  }
+
   /* ───────── coverage ───────── */
   function coverage(m) {
     return memo(m, "coverage", function () {
@@ -476,6 +488,6 @@
     duplicateGroups: duplicateGroups, taxonomy: taxonomy, ctas: ctas, reviewQueue: reviewQueue, relationExplorer: relationExplorer,
     contentGaps: contentGaps, sources: sources, unsourced: unsourced, dateReview: dateReview, freshness: freshness,
     searchTest: searchTest, runSearchSet: runSearchSet, recommend: recommend, stageFromAge: stageFromAge, coverage: coverage,
-    exportJSON: exportJSON, exportCSV: exportCSV, exportTable: exportTable, reviewStore: reviewStore, DATA_SCRIPTS: DATA_SCRIPTS, GRADES: GRADES, STAGES: STAGES
+    simulateOnboarding: simulateOnboarding, exportJSON: exportJSON, exportCSV: exportCSV, exportTable: exportTable, reviewStore: reviewStore, DATA_SCRIPTS: DATA_SCRIPTS, GRADES: GRADES, STAGES: STAGES
   };
 })(typeof window !== "undefined" ? window : globalThis);

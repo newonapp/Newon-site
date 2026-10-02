@@ -21,7 +21,7 @@
   /* ───────── helpers ───────── */
   function esc(v) { return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function badge(t, k) { return '<span class="ad-badge' + (k ? " ad-badge--" + k : "") + '">' + esc(t) + "</span>"; }
-  function statusBadge(s) { var k = { READY: "ok", ACTIVE: "ok", LIVE: "ok", "LOCAL-FIRST": "info", "LOCAL ONLY": "info", "CODE READY": "info", "NOT CONNECTED": "warn", "NOT CONFIGURED": "warn", "BACKEND REQUIRED": "gap", DEFERRED: "gap", ERROR: "bad", UNAVAILABLE: "bad" }[s]; return badge(s, k); }
+  function statusBadge(s) { var k = { READY: "ok", ACTIVE: "ok", LIVE: "ok", "LOCAL-FIRST": "info", "LOCAL ONLY": "info", "LOCAL RULE-BASED": "info", "CODE READY": "info", "NOT CONNECTED": "warn", "NOT CONFIGURED": "warn", "BACKEND REQUIRED": "gap", DEFERRED: "gap", ERROR: "bad", UNAVAILABLE: "bad" }[s]; return badge(s, k); }
   function flagKind(f) { return /BROKEN|INVALID|MISSING_SOURCE|MISSING_SUMMARY|ORPHAN/.test(f) ? "bad" : /UNSOURCED|CONFLICT|DATE|STALE|TIME/.test(f) ? "warn" : /MISSING_RELATION|CONTENT_GAP/.test(f) ? "gap" : ""; }
   function flags(list, id) { return '<span class="ad-flags">' + (list || []).map(function (f) { var gap = f === "MISSING_RELATION" && svc.model && svc.model.gapEvents.indexOf(id) >= 0; return badge(gap ? "CONTENT GAP" : f, gap ? "gap" : flagKind(f)); }).join("") + "</span>"; }
   function rec(id, label) { return '<a href="#record/' + encodeURIComponent(id) + '">' + esc(label || id) + "</a>"; }

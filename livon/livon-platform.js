@@ -25,7 +25,6 @@
     { id: "service", label: "서비스" },
     { id: "system", label: "LIVON 안내" }
   ];
-  var ONBOARD_GOALS = ["공부", "취업", "커리어", "돈", "주거", "건강", "가족", "여행", "취미", "인간관계", "육아", "부모 돌봄"];
   var POPULAR_QUERIES = ["첫 취업", "독립", "이사", "자격증", "육아", "주거", "시니어", "건강", "취미", "커뮤니티"];
   var SEARCH_TABS = [
     { id: "all", label: "전체" },
@@ -442,85 +441,11 @@
     return proj;
   }
 
-  /* ——— Onboarding ——— */
-  function needsOnboarding() {
-    var s = load();
-    if (s.onboarded || s.onboardSkipped) return false;
-    var stage = readJSON(KEY_STAGE, null);
-    return !stage;
-  }
-  function completeOnboarding(data) {
-    if (data.stage) writeJSON(KEY_STAGE, data.stage);
-    if (data.situations) writeJSON(KEY_SITUATIONS, data.situations.slice(0, 4));
-    if (data.interests) writeJSON(KEY_INTERESTS, data.interests.slice(0, 8));
-    if (data.goals) writeJSON(KEY_GOALS, data.goals.slice(0, 6));
-    var s = load();
-    s.onboarded = true;
-    s.onboardSkipped = false;
-    save(s);
-    closeOnboarding();
-    if (window.LivonHome && window.LivonHome.render) window.LivonHome.render();
-  }
-  function skipOnboarding() {
-    var s = load();
-    s.onboardSkipped = true;
-    save(s);
-    closeOnboarding();
-  }
-  var onboardReturn = null;
-  function closeOnboarding() {
-    var m = document.getElementById("livon-onboard-modal");
-    if (!m || m.hidden) return;
-    m.hidden = true;
-    if (onboardReturn && document.contains(onboardReturn) && onboardReturn !== document.body) {
-      try { onboardReturn.focus({ preventScroll: true }); } catch (e) {}
-    }
-    onboardReturn = null;
-  }
-  /* Dialog keyboard: Escape = "나중에 하기", Tab stays inside the dialog. */
-  function onboardKeydown(e) {
-    var m = document.getElementById("livon-onboard-modal");
-    if (!m || m.hidden) return;
-    if (e.key === "Escape") { e.preventDefault(); skipOnboarding(); return; }
-    if (e.key !== "Tab") return;
-    var f = Array.prototype.filter.call(m.querySelectorAll("button:not([tabindex='-1']), a[href], input, select, textarea"), function (el) { return el.offsetParent !== null && !el.disabled; });
-    if (!f.length) return;
-    var first = f[0], last = f[f.length - 1];
-    if (!m.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
-    else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-  }
-  function openOnboarding() {
-    var m = document.getElementById("livon-onboard-modal");
-    if (!m) return;
-    if (m.hidden) onboardReturn = document.activeElement;
-    m.hidden = false;
-    if (!m._kbBound) { m._kbBound = true; document.addEventListener("keydown", onboardKeydown); }
-    setTimeout(function () {
-      var c = m.querySelector(".lv-life-modal__close");
-      if (c && !m.hidden) c.focus({ preventScroll: true });
-    }, 0);
-    var stageHost = m.querySelector("[data-lv-onboard-stages]");
-    var sitHost = m.querySelector("[data-lv-onboard-sits]");
-    var goalHost = m.querySelector("[data-lv-onboard-goals]");
-    var stages = (window.LivonLifeData && window.LivonLifeData.stages) || [];
-    var sits = (window.LivonLifeData && window.LivonLifeData.situations) || Object.keys((window.LivonLifeEvents && window.LivonLifeEvents.situationLabels) || {});
-    if (stageHost) {
-      stageHost.innerHTML = stages.map(function (s) {
-        return "<button type=\"button\" data-onboard-stage=\"" + esc(s.id) + "\">" + esc(s.label) + "</button>";
-      }).join("");
-    }
-    if (sitHost) {
-      sitHost.innerHTML = (Array.isArray(sits) ? sits : []).slice(0, 10).map(function (v) {
-        var label = (window.LivonLifeEvents && window.LivonLifeEvents.situationLabels && window.LivonLifeEvents.situationLabels[v]) || v;
-        return "<button type=\"button\" data-onboard-sit=\"" + esc(v) + "\">" + esc(label) + "</button>";
-      }).join("");
-    }
-    if (goalHost) {
-      goalHost.innerHTML = ONBOARD_GOALS.map(function (g) {
-        return "<button type=\"button\" data-onboard-goal=\"" + esc(g) + "\">" + esc(g) + "</button>";
-      }).join("");
-    }
+  /* ——— Onboarding ———
+     The flow lives in livon-onboarding.js (UI) and livon-personalization.js (profile, first-run state, rules).
+     It is never opened automatically: this is only the shared entry point other screens call. */
+  function openOnboarding(opts) {
+    if (window.LivonOnboarding && typeof window.LivonOnboarding.open === "function") window.LivonOnboarding.open(opts);
   }
 
   function profileSnapshot() {
@@ -598,58 +523,11 @@
     });
   }
 
-  function bindOnboarding() {
-    var m = document.getElementById("livon-onboard-modal");
-    if (!m || m._bound) return;
-    m._bound = true;
-    var state = { stage: "", situations: [], goals: [] };
-    m.addEventListener("click", function (e) {
-      if (e.target.matches("[data-lv-onboard-close]") || e.target.closest("[data-lv-onboard-skip]")) {
-        skipOnboarding();
-        return;
-      }
-      var st = e.target.closest("[data-onboard-stage]");
-      if (st) {
-        state.stage = st.getAttribute("data-onboard-stage");
-        m.querySelectorAll("[data-onboard-stage]").forEach(function (b) { b.classList.toggle("is-on", b === st); });
-        return;
-      }
-      var sit = e.target.closest("[data-onboard-sit]");
-      if (sit) {
-        var v = sit.getAttribute("data-onboard-sit");
-        var i = state.situations.indexOf(v);
-        if (i >= 0) state.situations.splice(i, 1); else state.situations.push(v);
-        sit.classList.toggle("is-on");
-        return;
-      }
-      var g = e.target.closest("[data-onboard-goal]");
-      if (g) {
-        var gv = g.getAttribute("data-onboard-goal");
-        var gi = state.goals.indexOf(gv);
-        if (gi >= 0) state.goals.splice(gi, 1); else state.goals.push(gv);
-        g.classList.toggle("is-on");
-        return;
-      }
-      if (e.target.closest("[data-lv-onboard-apply]")) {
-        completeOnboarding({
-          stage: state.stage,
-          situations: state.situations,
-          interests: state.goals.slice(0, 8),
-          goals: state.goals
-        });
-      }
-    });
-  }
-
   function init() {
     migrateLegacySaves();
     bindPanels();
-    bindOnboarding();
     refreshSavedPanel();
     refreshAlertsPanel();
-    if (needsOnboarding()) {
-      setTimeout(openOnboarding, 600);
-    }
     try {
       var goto = sessionStorage.getItem("livon.mlGoto");
       if (goto) {

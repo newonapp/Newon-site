@@ -27,7 +27,7 @@ export function loadLivon({ lifeTopics, patch } = {}) {
   vm.createContext(ctx);
   for (const f of ['life-data.js', 'life-events-data.js', 'explore-data.js', 'community-data.js', 'today-data.js']) vm.runInContext(read(f), ctx, { filename: f });
   if (patch) patch(ctx);
-  for (const f of ['data/livon-data-config.js', 'data/livon-data-schema.js', 'data/livon-data-platform.js', 'data/livon-screen-data.js', 'life-hub.js', 'explore-search.js', 'data/livon-content-quality.js']) vm.runInContext(read(f), ctx, { filename: f });
+  for (const f of ['data/livon-data-config.js', 'data/livon-data-schema.js', 'data/livon-data-platform.js', 'data/livon-screen-data.js', 'life-hub.js', 'explore-search.js', 'data/livon-content-quality.js', 'livon-personalization.js']) vm.runInContext(read(f), ctx, { filename: f });
   ctx.LivonLifeHub.repo.use(lifeTopics || JSON.parse(read('life-topics.json')));
   return ctx;
 }

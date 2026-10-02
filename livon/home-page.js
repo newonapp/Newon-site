@@ -813,13 +813,25 @@
             return "<li><a href=\"" + esc(topicHref(x.t)) + "\"><strong>" + esc(x.t.title) + "</strong><small>" + x.done + " / " + x.total + (x.done === x.total ? " 완료" : " 진행") + "</small></a></li>";
           }).join("") + "</ul></div>"
       : "";
+    /* onboarding profile (Life Events / interests): topics with the reason they are shown. Empty profile → nothing changes. */
+    var PZ = window.LivonPersonalization, prof = PZ ? PZ.getProfile() : null, pzTopics = [];
+    if (repo && PZ && PZ.hasSignals(prof) && (prof.lifeEvents.length || !stageMeta)) {
+      pzTopics = PZ.recommend(prof, { kinds: ["topic"], limit: 3 }).items.map(function (x) {
+        return { t: repo.topic(String(x.id).replace(/^topic:/, "")), why: x.why };
+      }).filter(function (x) { return x.t; });
+    }
+    var pzCol = pzTopics.length
+      ? "<div class=\"lv-hm-mystage__col\"><p class=\"lv-hm-eyebrow\">추천 주제</p><ul class=\"lv-hm-mystage__list\">" + pzTopics.map(function (x) {
+          return "<li><a href=\"" + esc(topicHref(x.t)) + "\"><strong>" + esc(x.t.title) + "</strong><small>" + esc(x.why || x.t.category || "") + "</small></a></li>";
+        }).join("") + "</ul></div>"
+      : "";
     if (!stageMeta) {
       host.innerHTML =
         "<div class=\"lv-hm-mystage__card\">" +
           "<div class=\"lv-hm-mystage__head\"><div><p class=\"lv-hm-eyebrow\">MY LIFE STAGE</p>" +
           "<h3>아직 라이프 스테이지를 설정하지 않았어요</h3>" +
           "<p class=\"lv-hm-note\">설정하면 그 단계의 주제와 체크리스트 진행 상황을 이곳에 보여 드립니다. 설정 전에는 개인화하지 않습니다.</p></div></div>" +
-          ((progressHtml || realDataCols("")) ? "<div class=\"lv-hm-mystage__grid\">" + progressHtml + realDataCols("") + "</div>" : "") +
+          ((pzCol || progressHtml || realDataCols("")) ? "<div class=\"lv-hm-mystage__grid\">" + pzCol + progressHtml + realDataCols("") + "</div>" : "") +
           "<div class=\"lv-hm-actions\"><button type=\"button\" class=\"lv-hm-btn\" data-lv-hm-onboard>내 라이프 스테이지 설정하기</button>" +
           "<a class=\"lv-hm-btn lv-hm-btn--ghost\" href=\"#life\">라이프 스테이지 둘러보기</a></div>" +
         "</div>";
@@ -833,6 +845,7 @@
       var st = repo.stage(stageMeta.id);
       var topics = st ? (st.featuredTopicIds || []).map(repo.topic).filter(Boolean) : [];
       topics = byInterest(topics.map(function (t) { return { t: t, title: t.title, category: t.category + " " + (t.communityInterest || ""), tags: [] }; }), getInterests()).map(function (x) { return x.t; }).slice(0, 3);
+      if (pzTopics.length) topics = pzTopics.map(function (x) { return x.t; });
       var seen = {}, services = [];
       topics.forEach(function (t) {
         (t.relatedServiceIds || []).forEach(function (id) {
@@ -841,13 +854,13 @@
         });
       });
       body = "<div class=\"lv-hm-mystage__grid\">" +
-        "<div class=\"lv-hm-mystage__col\"><p class=\"lv-hm-eyebrow\">추천 주제</p>" +
+        (pzCol || "<div class=\"lv-hm-mystage__col\"><p class=\"lv-hm-eyebrow\">추천 주제</p>" +
           (topics.length
             ? "<ul class=\"lv-hm-mystage__list\">" + topics.map(function (t) {
                 return "<li><a href=\"" + esc(topicHref(t)) + "\"><strong>" + esc(t.title) + "</strong><small>" + esc(t.category || "") + "</small></a></li>";
               }).join("") + "</ul>"
             : "<p class=\"lv-hm-note\">이 단계에 등록된 주제가 아직 없습니다.</p>") +
-        "</div>" +
+        "</div>") +
         (progressHtml || "<div class=\"lv-hm-mystage__col\"><p class=\"lv-hm-eyebrow\">진행 중인 체크리스트</p><p class=\"lv-hm-note\">주제 상세에서 체크리스트를 표시하면 진행 상황이 여기에 나타납니다.</p></div>") +
         (services.length
           ? "<div class=\"lv-hm-mystage__col\"><p class=\"lv-hm-eyebrow\">관련 서비스</p><ul class=\"lv-hm-mystage__list\">" + services.map(function (sv) {

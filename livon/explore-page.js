@@ -391,16 +391,26 @@
     var stage = localStorage.getItem(KEY_STAGE) || "";
     var prefRegion = localStorage.getItem(KEY_REGION) || "";
     var recent = viewedList();
+    /* onboarding profile: Life Event reasons, and no cross-age recommendation (browsing every category stays as it is) */
+    var PZ = window.LivonPersonalization, prof = PZ ? PZ.getProfile() : null, recById = {}, allowed = null;
+    if (PZ && PZ.hasSignals(prof)) {
+      PZ.recommend(prof, { limit: 400 }).items.forEach(function (x) { recById[x.id] = x; });
+      allowed = prof.lifeStage ? PZ.allowedIds(prof.lifeStage) : null;
+      if (prof.lifeStage) stage = prof.lifeStage;
+    }
     var scored = items().map(function (it) {
       var s = 0;
       var reasons = [];
-      interests.forEach(function (interest) {
+      var fits = !allowed || !!allowed["ex:" + it.id];
+      var rec = recById["ex:" + it.id];
+      if (rec && rec.reasons[0] && rec.reasons[0].type === "event") { s += 3; reasons.push(rec.why); }
+      if (fits) interests.forEach(function (interest) {
         if (scoreItem(it, interest) > 0) {
           s += 3;
           reasons.push("관심 · " + interest);
         }
       });
-      if (stage && scoreItem(it, stage) > 0) {
+      if (fits && stage && scoreItem(it, stage) > 0) {
         s += 2;
         reasons.push("스테이지 연결");
       }
@@ -1665,6 +1675,7 @@
     if (document.documentElement.dataset.lvView === "explore") onShow(hash || "explore");
   }
 
+  document.addEventListener("livon:personalization", function () { try { renderForYou(); } catch (e) {} });
   window.LivonExplore = {
     onShow: onShow,
     /* re-render an open result list in place (no scroll) — used when real data arrives after the page opened */

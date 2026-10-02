@@ -230,6 +230,12 @@
       out = '<p class="dm-note">Context: ' + esc(JSON.stringify(res.context)) + " · " + esc(res.method) + "</p>" + table("Recommendations", ["#", "Title", "Type", "Score", "Reason"], res.items.map(function (x) {
         return "<tr>" + num(x.rank) + "<td>" + openBtn(x.id, x.title) + "</td><td>" + esc(x.type) + "</td>" + num(x.score) + "<td>" + esc(x.reasons.join(" · ")) + "</td></tr>";
       }), { empty: "No recommendation for this context." });
+      /* the public onboarding rule on the same scenario (simulation only — no visitor profile is read) */
+      var sim = DM.simulateOnboarding(model, { age: r.age, lifeStage: r.lifeStage, lifeEvents: r.lifeEvent ? [r.lifeEvent] : [], interests: r.interests.split(/[,\s]+/) });
+      if (sim.available) out += '<p class="dm-note">Onboarding profile simulation · ' + esc(sim.engine) + " · profile " + esc(JSON.stringify(sim.profile)) + (sim.gaps.length ? " · content gap: " + esc(sim.gaps.map(function (g) { return g.id; }).join(", ")) : "") + "</p>" +
+        table("Onboarding recommendations", ["#", "Title", "Kind", "Score", "Why (user-facing)", "Reasons"], sim.items.map(function (x) {
+          return "<tr>" + num(x.rank) + "<td>" + openBtn(x.id, x.title) + "</td><td>" + esc(x.kind) + "</td>" + num(x.score) + "<td>" + esc(x.why) + "</td><td>" + esc(x.reasons.join(" · ")) + "</td></tr>";
+        }), { empty: "No onboarding recommendation for this scenario (generic order is used)." });
     }
     return '<form class="dm-toolbar" data-dm-recform><div class="dm-field"><label for="dm-ra">Age</label><input id="dm-ra" name="age" type="number" min="10" max="120" value="' + esc(r.age) + '"></div>' +
       '<div class="dm-field"><label for="dm-rs">Life Stage</label><select id="dm-rs" name="lifeStage"><option value="">from age</option>' + F.lifeStage.map(function (s) { return '<option value="' + s + '"' + (r.lifeStage === s ? " selected" : "") + ">" + s + "대</option>"; }).join("") + "</select></div>" +

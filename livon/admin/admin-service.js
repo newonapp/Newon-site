@@ -16,7 +16,7 @@
 
   /* ───────── one place for status words ───────── */
   var STATUS = { READY: "READY", ACTIVE: "ACTIVE", LOCAL_ONLY: "LOCAL ONLY", CODE_READY: "CODE READY", NOT_CONNECTED: "NOT CONNECTED",
-    NOT_CONFIGURED: "NOT CONFIGURED", BACKEND_REQUIRED: "BACKEND REQUIRED", DEFERRED: "DEFERRED", LOCAL_FIRST: "LOCAL-FIRST", ERROR: "ERROR", UNAVAILABLE: "UNAVAILABLE" };
+    NOT_CONFIGURED: "NOT CONFIGURED", BACKEND_REQUIRED: "BACKEND REQUIRED", DEFERRED: "DEFERRED", LOCAL_FIRST: "LOCAL-FIRST", LOCAL_RULE_BASED: "LOCAL RULE-BASED", ERROR: "ERROR", UNAVAILABLE: "UNAVAILABLE" };
 
   var NAV = [
     { id: "overview", label: "Overview" }, { id: "content", label: "Content" }, { id: "life-stage", label: "Life Stage" }, { id: "life-events", label: "Life Events" },
@@ -307,6 +307,7 @@
         { key: "Quality Evaluator", value: model ? STATUS.READY : STATUS.ERROR, detail: "livon/data/livon-content-quality.js (shared with the CLI)" },
         { key: "Curated Records", value: String(records.length), detail: "" },
         { key: "Live External", value: String(live), detail: "records from real-data providers" },
+        { key: "Personalization Engine", value: STATUS.LOCAL_RULE_BASED, detail: "onboarding profile (Life Stage · interests · Life Events) stays in the visitor's browser; the admin never reads or collects it" },
         { key: "AI", value: STATUS.NOT_CONNECTED, detail: "no API origin in this local session" },
         { key: "Account", value: STATUS.DEFERRED, detail: "NEWON+ account backend deferred" },
         { key: "Community Backend", value: STATUS.NOT_CONNECTED, detail: "device-local posts only" },

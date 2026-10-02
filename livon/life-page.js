@@ -1059,6 +1059,13 @@
     bindDynamic(document);
   }
 
+  document.addEventListener("livon:personalization", function () {
+    var s = readJSON(KEY_STAGE, null);
+    updateStageLabel();
+    if (!s || !stageById(s) || /^#(stage-|life\/)/.test(location.hash || "")) return;
+    state.viewStage = String(s);
+    try { renderStageSwitch(); showStageView(String(s), { updateHash: false }); } catch (e) {}
+  });
   window.LivonLife = {
     setStage: setStage,
     scrollToId: scrollToId,

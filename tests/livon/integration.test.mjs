@@ -92,16 +92,19 @@ test('My Life month calendar labels the weekdays', () => {
 function platform() {
   const mem = () => { const m = new Map(); return { getItem: k => m.get(k) ?? null, setItem: (k, v) => m.set(k, String(v)), removeItem: k => m.delete(k) }; };
   const listeners = {};
-  const el = (extra = {}) => Object.assign({ hidden: true, innerHTML: '', offsetParent: {}, disabled: false, focused: 0, focus() { this.focused++; doc.activeElement = this; }, querySelector: () => null, querySelectorAll: () => [], addEventListener() {}, contains: () => false }, extra);
+  const el = (extra = {}) => Object.assign({ hidden: true, innerHTML: '', offsetParent: {}, disabled: false, focused: 0, focus() { this.focused++; doc.activeElement = this; }, querySelector: () => null, querySelectorAll: () => [], addEventListener() {}, setAttribute() {}, contains: () => false }, extra);
   const close = el({ hidden: false });
   const opener = el({ hidden: false });
+  const title = el({ hidden: false });
+  const body = el({ hidden: false, querySelector: s => (s === '#livon-onboard-title' ? title : null) });
+  const entry = el({ hidden: true });
   const modal = el({ hidden: true });
-  modal.querySelector = s => (s === '.lv-life-modal__close' ? close : el());
+  modal.querySelector = s => (s === '.lv-life-modal__close' ? close : s === '[data-lv-ob-body]' ? body : s === '#livon-onboard-title' ? title : el());
   modal.querySelectorAll = () => [close];
-  modal.contains = n => n === close;
+  modal.contains = n => n === close || n === title;
   const doc = {
     readyState: 'complete', activeElement: opener, documentElement: { dataset: {} }, body: {},
-    getElementById: id => (id === 'livon-onboard-modal' ? modal : null),
+    getElementById: id => (id === 'livon-onboard-modal' ? modal : id === 'livon-onboard-entry' ? entry : null),
     querySelector: () => null, querySelectorAll: () => [],
     addEventListener: (t, f) => { (listeners[t] = listeners[t] || []).push(f); },
     contains: () => true
@@ -109,23 +112,28 @@ function platform() {
   const ctx = { document: doc, localStorage: mem(), sessionStorage: mem(), location: { hash: '' }, setTimeout: f => f(), console, navigator: {} };
   ctx.window = ctx;
   vm.createContext(ctx);
-  vm.runInContext(read('livon-platform.js'), ctx);
+  for (const f of ['life-data.js', 'life-events-data.js', 'livon-platform.js', 'livon-personalization.js', 'livon-onboarding.js']) vm.runInContext(read(f), ctx);
   const key = (k, extra = {}) => { const e = Object.assign({ key: k, shiftKey: false, prevented: false, preventDefault() { this.prevented = true; } }, extra); (listeners.keydown || []).forEach(f => f(e)); return e; };
-  return { ctx, modal, close, opener, key, doc };
+  return { ctx, modal, close, opener, title, entry, key, doc };
 }
 
-test('onboarding dialog: opens with focus inside, Escape = "later", focus returns to the opener', () => {
-  const { ctx, modal, close, opener, key, doc } = platform();
-  // first visit auto-opens (setTimeout runs immediately in this harness)
+test('onboarding dialog: never opens by itself; opened by the user it traps focus, Escape closes it and focus returns', () => {
+  const { ctx, modal, close, opener, title, entry, key, doc } = platform();
+  // first visit: only the small, non-blocking note is shown — the dialog stays closed
+  assert.equal(modal.hidden, true, 'no forced dialog on arrival');
+  assert.equal(entry.hidden, false, 'arrival note shown');
+  assert.match(entry.innerHTML, /나에게 맞게 시작하기[\s\S]*먼저 둘러보기/);
+  ctx.LivonPlatform.openOnboarding();
   assert.equal(modal.hidden, false);
-  assert.ok(close.focused >= 1, 'focus moved into the dialog');
+  assert.ok(title.focused >= 1, 'focus moved into the dialog');
   doc.activeElement = close;
   const tab = key('Tab');
   assert.equal(tab.prevented, true, 'Tab is kept inside the dialog');
   key('Escape');
   assert.equal(modal.hidden, true);
-  assert.equal(JSON.parse(ctx.localStorage.getItem('livon.platform.v1')).onboardSkipped, true);
   assert.equal(doc.activeElement, opener, 'focus restored');
+  // closing keeps the progress (resume); it does not mark the user as skipped
+  assert.equal(ctx.LivonPersonalization.state(), 'IN_PROGRESS');
   // Escape with the dialog closed does nothing
   assert.equal(key('Escape').prevented, false);
 });
