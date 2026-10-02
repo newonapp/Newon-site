@@ -35,13 +35,15 @@ test('OG-ST-1 every key lives in the ongil.v1 namespace', () => {
 // The list is asserted in full so that a new collection can never appear without this test (and its privacy class) being updated.
 // Phase 3 (Health + Check-in V1) added exactly two: 'symptoms' and 'healthNotes' (HEALTH_ADJACENT). A generic 'healthRecords'
 // store still does not exist and is still refused below; family data still has no collection.
+// Phase 4 added the user's OWN family-sharing choices and help-request notes ('familySharing', 'helpRequests', PRIVATE).
+// Records about family members (connections, permissions) still have no collection and are still refused below.
 test('OG-ST-2 unknown collections are refused (family data and health records have no collection)', () => {
   const { storage } = world();
   for (const c of ['health', 'family', 'checkin', 'medication', '__proto__', '', 'livon.platform.v1']) {
     assert.throws(() => storage.get(c), /UNKNOWN_COLLECTION/);
     assert.throws(() => storage.set(c, {}), /UNKNOWN_COLLECTION/);
   }
-  assert.deepEqual([...COLLECTIONS], ['profile', 'preferences', 'onboarding', 'saved', 'notifications', 'checkins', 'events', 'medications', 'medicationLogs', 'dailyLife', 'tasks', 'routines', 'routineLogs', 'sleepRecords', 'expenses', 'journal', 'symptoms', 'healthNotes']);
+  assert.deepEqual([...COLLECTIONS], ['profile', 'preferences', 'onboarding', 'saved', 'notifications', 'checkins', 'events', 'medications', 'medicationLogs', 'dailyLife', 'tasks', 'routines', 'routineLogs', 'sleepRecords', 'expenses', 'journal', 'symptoms', 'healthNotes', 'familySharing', 'helpRequests']);
   for (const c of ['familyConnections', 'familyPermissions', 'healthRecords', 'devices']) assert.equal(COLLECTIONS.includes(c), false, c);
 });
 

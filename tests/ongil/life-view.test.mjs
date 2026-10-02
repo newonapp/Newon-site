@@ -64,7 +64,8 @@ test('OG-LF-1 My Life route: #life and #life/<section>; fourteen sections in fiv
   assert.match(SRC['life-view.js'], /id: 'og-life-section-title'/);
   const life = AREAS.find((a) => a.id === 'life');
   assert.ok(life.modules.every((m) => m.available === true));
-  assert.match(read('js', 'app.js'), /if \(area\.id === 'home' \|\| area\.id === 'life'\) continue;/);
+  // Phase 4: 가족 and 돌봄·서비스 got their own views too, so they are also skipped by the shell loop. Phase 5: 즐길거리 too.
+  assert.match(read('js', 'app.js'), /if \(area\.id === 'home' \|\| area\.id === 'life' \|\| area\.id === 'family' \|\| area\.id === 'care' \|\| area\.id === 'enjoy'\) continue;/);
 });
 
 /* ───────── overview ───────── */

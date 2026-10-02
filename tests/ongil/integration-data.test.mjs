@@ -350,9 +350,10 @@ test('OG-IN-13 corrupted storage: every collection, every kind of damage — not
 
 /* ───────── erase ───────── */
 
-// Phase 3: two health collections were added (symptoms, healthNotes), so "all sixteen" became "all eighteen". The check is unchanged:
+// Phase 3: two health collections were added (symptoms, healthNotes), so "all sixteen" became "all eighteen".
+// Phase 4: two more (familySharing, helpRequests) → "all twenty". The check is unchanged:
 // every ONGIL collection holds something before, nothing after, and every foreign key survives.
-test('OG-IN-14 erase: all eighteen ONGIL collections go, everything else on the device stays, and both screens read empty', () => {
+test('OG-IN-14 erase: all twenty ONGIL collections go, everything else on the device stays, and both screens read empty', () => {
   const foreign = { 'livon.mlStore.v1': '{"keep":true}', 'newon-app-theme': 'dark', 'ongil-unrelated': 'x', 'ongil.v2.future': 'y', 'ongil.v1': 'z', 'newon.ongil.v1.tasks': 'w' };
   const w = world(foreign);
   const onboarding = createOnboarding({ storage: w.storage, profile: w.profile });
@@ -369,8 +370,8 @@ test('OG-IN-14 erase: all eighteen ONGIL collections go, everything else on the 
   w.life.expenses.add({ category: 'food', amount: 1000 });
   w.life.sleep.save({ quality: 'good' });
   w.profile.updateProfile({ nickname: '온길' });
-  assert.equal(COLLECTIONS.length, 18);
-  assert.deepEqual(w.storage.list().sort(), [...COLLECTIONS].sort(), 'all eighteen hold something');
+  assert.equal(COLLECTIONS.length, 20);
+  assert.deepEqual(w.storage.list().sort(), [...COLLECTIONS].sort(), 'all twenty hold something');
   assert.equal(w.storage.clear(), true);
   assert.deepEqual(w.storage.list(), []);
   assert.deepEqual(w.backend.keys().filter((k) => k.startsWith(KEY_PREFIX)), []);

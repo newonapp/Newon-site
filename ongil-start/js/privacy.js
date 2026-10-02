@@ -4,7 +4,8 @@
  *
  *   APP              profile, preferences, onboarding, saved, notifications — settings and bookmarks
  *   STANDARD         everyday records: calendar events, tasks, routines (+ logs), daily life, sleep
- *   PRIVATE          living expenses and the journal — the user's money and the user's own writing
+ *   PRIVATE          living expenses, the journal, family-sharing choices and help-request notes — the user's money,
+ *                    the user's own writing, and decisions about other people
  *   HEALTH_ADJACENT  check-ins, medication (+ logs), symptoms and health notes — not medical records, but close enough
  *                    to be treated with care. A future sync of these needs its own explicit consent (see PHASE_3 doc).
  *
@@ -37,6 +38,8 @@ export const CLASSIFICATION = Object.freeze({
   medicationLogs: 'HEALTH_ADJACENT',
   symptoms: 'HEALTH_ADJACENT',
   healthNotes: 'HEALTH_ADJACENT',
+  familySharing: 'PRIVATE',
+  helpRequests: 'PRIVATE',
 });
 
 export const CONTRACT_CLASSES = Object.freeze({
@@ -53,6 +56,8 @@ export const CONTRACT_CLASSES = Object.freeze({
   CheckIn: 'HEALTH_ADJACENT',
   SymptomRecord: 'HEALTH_ADJACENT',
   HealthNote: 'HEALTH_ADJACENT',
+  FamilySharingPreference: 'PRIVATE',
+  HelpRequest: 'PRIVATE',
 });
 
 export function classOf(collection) {

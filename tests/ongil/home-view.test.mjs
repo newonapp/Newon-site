@@ -70,12 +70,15 @@ test('OG-HM-4 family card shows the real state: not connected, nothing sent, lin
   for (const fake of ['딸', '아들', '손주', '며느리', '사위', '님이 보냈', '새 메시지', '읽지 않은 메시지', '가족 소식 1']) assert.equal(ALL.includes(fake), false, fake);
 });
 
-test('OG-HM-5 "오늘 뭐 하지?" offers the five categories and leads to 즐길거리 — no invented programme', () => {
-  assert.deepEqual([...ENJOY_CATEGORIES], ['취미', '배움', '운동', '문화', '나들이']);
-  assert.match(SRC['home-explore.js'], /class: 'og-linkchip', href: '#enjoy'/);
-  assert.match(SRC['home-explore.js'], /createEnjoyCard\(\{ recommend = null \} = \{\}\)/);
-  assert.match(SRC['home-view.js'], /today: createEnjoyCard\(\)/, 'no recommendation source is connected in Phase 2A');
-  assert.match(SRC['home-explore.js'], /추천할 프로그램은 아직 준비 중입니다/);
+// Phase 5: 즐길거리 exists, so the card offers its six categories (여행 added), each opening that category, and may list
+// a few items the user actually found there this visit — explicitly "not a recommendation". The invented-content check
+// below is unchanged.
+test('OG-HM-5 "오늘 뭐 하지?" offers the six categories and leads to 즐길거리 — no invented programme', () => {
+  assert.deepEqual([...ENJOY_CATEGORIES], ['취미', '배움', '운동', '문화', '나들이', '여행']);
+  assert.match(SRC['home-explore.js'], /class: 'og-linkchip', href: `#enjoy\/\$\{ENJOY_LINKS\[name\]\}`/);
+  assert.match(SRC['home-explore.js'], /createEnjoyCard\(\{ loaded = null \} = \{\}\)/);
+  assert.match(SRC['home-view.js'], /today: createEnjoyCard\(\{ loaded: enjoyLoaded \}\)/, 'only what was loaded on 즐길거리; no recommendation source');
+  assert.match(SRC['home-explore.js'], /추천이 아니라 즐길거리 화면에서 찾아 본 것 가운데 몇 가지예요/);
   for (const fake of ['교실 모집', '특강', '축제', '무료 체험', '선착순', '오늘의 추천:', '인기 프로그램']) assert.equal(ALL.includes(fake), false, fake);
 });
 
@@ -165,7 +168,11 @@ test('OG-HM-11 private Home data is not searchable: only menus and saved items a
   for (const q of ['비밀스러운병원예약', '비밀스러운약이름', '도움이 필요해요']) assert.deepEqual((await search.query(q)).results, [], q);
   assert.deepEqual(search.providerIds(), ['areas', 'saved']);
   const app = read('js', 'app.js');
-  assert.equal((app.match(/search\.registerProvider\(/g) || []).length, 2, 'no provider was added for schedule, medication or check-in');
+  assert.equal((app.match(/search\.registerProvider\(/g) || []).length, 4, 'no provider was added for schedule, medication or check-in (the third and fourth are public care and 즐길거리 content)');
+  // Phase 5: a fourth provider, 즐길거리, searches only PUBLIC enjoy items loaded on that screen (never a personal record).
+  assert.match(app, /search\.registerProvider\(createEnjoyProvider\(\(\) => enjoyView\.items\(\)\)\);/);
+  // Phase 4: a third provider, 돌봄·서비스, searches only PUBLIC care items loaded on that screen (never a personal record).
+  assert.match(app, /search\.registerProvider\(createCareProvider\(\(\) => care\.items\(\)\)\);/);
   const hit = await search.query('오늘 일정');
   assert.deepEqual([hit.results[0].id, hit.results[0].href], ['home.schedule', '#ongil-home']);
 });

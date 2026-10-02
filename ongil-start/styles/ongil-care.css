@@ -1,0 +1,36 @@
+/*
+ * Family V1 + Care V1 (Phase 4). Tokens only; cards, picks, lists, fields and dialogs are the existing components.
+ * Added here: the two screens' card stacks, the sharing radios, the detail rows and short point lists.
+ */
+
+.og-family-grid, .og-care-grid { display: grid; gap: 1rem; max-width: 60rem; }
+
+/* 내가 공유할 내용: one fieldset per category, each choice a full-width row (the label is the touch target) */
+.og-share { margin: 0; padding: 0.9rem 0 0; border: 0; border-top: 1px solid var(--og-line); min-width: 0; }
+.og-share:first-child { border-top: 0; padding-top: 0; }
+.og-share .og-choices__list { display: grid; gap: 0.4rem; }
+.og-share__opt { display: flex; align-items: center; gap: 0.7rem; min-height: var(--og-control); padding: 0.5rem 0.9rem; border: 1.5px solid var(--og-line-strong); border-radius: var(--og-radius-card); color: var(--og-ink); font-size: var(--og-size-body); cursor: pointer; overflow-wrap: anywhere; }
+.og-share__opt input { flex: none; width: 1.4rem; height: 1.4rem; margin: 0; accent-color: var(--og-ink); }
+.og-share__opt:has(input:checked) { border-color: var(--og-ink); background: var(--og-surface); font-weight: 700; } /* the native radio dot carries the state; the frame repeats it */
+.og-share .og-confirm { margin-top: 0.6rem; }
+
+.og-family-points { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.4rem; color: var(--og-ink); font-size: var(--og-size-body); }
+
+/* 돌봄·서비스 */
+.og-care-cats .og-pick { flex: 0 1 auto; }
+.og-care-about { margin-top: 1rem; }
+.og-care-about p, .og-care-unconnected p { margin: 0.3rem 0 0; overflow-wrap: anywhere; }
+.og-care-unconnected { margin-top: 0.6rem; padding: 0.9rem 1rem; border: 1px dashed var(--og-line-strong); border-radius: var(--og-radius-card); }
+
+/* detail: label / value rows that wrap on a phone */
+.og-care-rows { margin: 0; display: grid; grid-template-columns: minmax(6rem, auto) minmax(0, 1fr); gap: 0.5rem 1rem; }
+.og-care-rows dt { color: var(--og-ink-soft); font-size: var(--og-size-body); }
+.og-care-rows dd { margin: 0; color: var(--og-ink); font-size: var(--og-size-body); overflow-wrap: anywhere; }
+.og-care-dialog .og-dialog__actions .og-btn { min-height: var(--og-control); }
+.og-care-dialog .og-dialog__body > * { min-width: 0; }
+.og-care-dialog .og-dialog__title { overflow-wrap: anywhere; }
+
+@media (max-width: 480px) {
+  .og-care-rows { grid-template-columns: minmax(0, 1fr); gap: 0.1rem; }
+  .og-care-rows dd { margin-bottom: 0.5rem; }
+}

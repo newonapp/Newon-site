@@ -53,7 +53,9 @@ export function buildHomeSummary(stores, now = () => Date.now()) {
   return { today, ...parts, checkin, items, empty: items.length === 0 };
 }
 
-export function createHomeView({ host, doc, stores, source, now = () => Date.now(), onAddTask }) {
+/* family (Phase 4): { sharing, help } — the user's own family-sharing choices and help-request notes, for the 가족 card only */
+/* enjoyLoaded (Phase 5): () → 즐길거리 items found on that screen this visit, for 오늘 뭐 하지? */
+export function createHomeView({ host, doc, stores, source, family = null, enjoyLoaded = null, now = () => Date.now(), onAddTask }) {
   const { profile, checkIn, schedule, medication, dailyLife, saved, familyConnection, tasks, routines } = stores;
   let summaryHost = null;
   let renderedDay = null;
@@ -88,8 +90,8 @@ export function createHomeView({ host, doc, stores, source, now = () => Date.now
       routines: createHomeRoutinesCard({ routines, onChange: renderSummary }),
       medication: medicationCard,
       'life-check': createDailyLifeCard({ dailyLife }),
-      'family-update': createFamilyCard({ familyConnection }),
-      today: createEnjoyCard(),
+      'family-update': createFamilyCard({ familyConnection, family }),
+      today: createEnjoyCard({ loaded: enjoyLoaded }),
       nearby: createNearbyCard({ profile, source, saved }),
       'quick-actions': createQuickActionsCard({
         actions: {

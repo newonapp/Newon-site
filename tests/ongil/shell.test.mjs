@@ -107,6 +107,14 @@ test('OG-RT-5 titles name the view', () => {
 // linked from the area. Exactly those four may say they work; 도움 요청 · 긴급 연락망 · 병원 · 검진 are still not built and must not.
 // My Life gained the four 건강 sections. Every other area still has no working module.
 const HEALTH_LIVE = ['check-in', 'life-check', 'medication', 'records'];
+// Phase 4: 가족 has two working parts (내가 공유할 내용, 도움 요청 — both local only); 연결·일정 나누기·소식은 still not built.
+// 돌봄·서비스 has one (가까운 기관 찾기, results only when the existing place search is configured); the service and benefit
+// categories have no data source and still say 준비 중.
+const FAMILY_LIVE = ['sharing', 'requests'];
+const CARE_LIVE = ['nearby'];
+// Phase 5: 즐길거리 has its own screen — the six categories and 지역 프로그램 work (results only when the existing
+// sources are configured); 모임 is still not built and must say so.
+const ENJOY_LIVE = ['hobby', 'learning', 'exercise', 'culture', 'outing', 'travel', 'programs'];
 test('OG-VW-1 every primary area has a description, an empty state and module slots with unique ids; only Home, My Life and the built health parts are available', () => {
   for (const a of PRIMARY_AREAS) {
     assert.ok(a.description.length >= 10, a.id);
@@ -114,12 +122,14 @@ test('OG-VW-1 every primary area has a description, an empty state and module sl
     assert.ok(a.modules.length >= 4, a.id);
     assert.equal(new Set(a.modules.map((m) => m.id)).size, a.modules.length, a.id);
     for (const m of a.modules) {
-      assert.equal(m.available, a.id === 'home' || a.id === 'life' || (a.id === 'health' && HEALTH_LIVE.includes(m.id)), `${a.id}.${m.id} must not claim to work before it is built`);
+      assert.equal(m.available, a.id === 'home' || a.id === 'life' || (a.id === 'health' && HEALTH_LIVE.includes(m.id)) || (a.id === 'family' && FAMILY_LIVE.includes(m.id)) || (a.id === 'care' && CARE_LIVE.includes(m.id)) || (a.id === 'enjoy' && ENJOY_LIVE.includes(m.id)), `${a.id}.${m.id} must not claim to work before it is built`);
       assert.ok(m.title && m.description);
     }
   }
+  assert.deepEqual(AREAS.find((a) => a.id === 'enjoy').modules.filter((m) => !m.available).map((m) => m.id), ['groups'], 'groups/meetups are not built');
   assert.deepEqual(AREAS.find((a) => a.id === 'health').modules.filter((m) => !m.available).map((m) => m.id), ['help', 'contacts', 'hospital', 'checkup']);
   assert.equal(AREAS.find((a) => a.id === 'health').link.href, '#life/checkin');
+  assert.deepEqual(AREAS.find((a) => a.id === 'family').modules.filter((m) => !m.available).map((m) => m.id), ['connect', 'schedule', 'messages']);
   const ids = (id) => AREAS.find((a) => a.id === id).modules.map((m) => m.id);
   assert.deepEqual(ids('home'), ['greeting', 'check-in', 'schedule', 'tasks', 'routines', 'medication', 'life-check', 'family-update', 'today', 'nearby', 'quick-actions']);
   assert.deepEqual(ids('life'), ['calendar', 'tasks', 'routine', 'meals', 'water', 'exercise', 'sleep', 'expenses', 'journal', 'checkin', 'symptoms', 'medication', 'health-notes']);

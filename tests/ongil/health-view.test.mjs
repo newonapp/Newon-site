@@ -148,7 +148,10 @@ test('OG-HL-40 regression: wiring, routes, Home layout, quick actions, search, s
   assert.match(JS['home-today.js'], /href: '#life\/medication'/);
   assert.match(JS['home-view.js'], /'check-in': createCheckInCard\(\{ checkIn, onChange: renderSummary \}\)/);
   /* search still has two providers; no health provider was registered */
-  assert.equal((APP.match(/search\.registerProvider\(/g) || []).length, 2);
+  // Phase 4: + public care provider (3); no health provider
+  // Phase 5: + public 즐길거리 provider (4); still no health provider
+  assert.equal((APP.match(/search\.registerProvider\(/g) || []).length, 4);
+  assert.equal(/registerProvider\(create(Health|Symptom|CheckIn|Medication)/.test(APP), false);
   /* nothing in the health files talks to a network, schedules an OS notification or touches family */
   assert.equal(/fetch\(|XMLHttpRequest|sendBeacon|WebSocket|new Notification|Notification\.requestPermission|serviceWorker|setTimeout|setInterval/.test(HEALTH_CODE), false);
   assert.equal(/family|Family/.test(HEALTH_CODE.replace(/sharedWithFamily: false/g, '')), false);
@@ -160,7 +163,8 @@ test('OG-HL-40 regression: wiring, routes, Home layout, quick actions, search, s
   assert.match(health.notice, /의료 진단이나 치료 판단을 대신하지 않습니다/);
   assert.match(JS['views.js'], /if \(area\.link\) primary\.append/);
   /* the erase copy names the new records */
-  assert.match(JS['account-view.js'], /증상과 건강 메모도 함께 지웁니다/);
+  // Phase 4 extended the same sentence with the family records
+  assert.match(JS['account-view.js'], /증상과 건강 메모, 가족 공유 설정과 도움 요청도 함께 지웁니다/);
   /* no markup strings */
   assert.equal(/innerHTML|outerHTML|insertAdjacentHTML/.test(HEALTH_CODE), false);
 });

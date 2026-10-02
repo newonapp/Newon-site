@@ -14,7 +14,7 @@ import { createSavedStore } from './saved.js';
 import { createOnboarding } from './onboarding.js';
 import { createNotificationCenter } from './notifications.js';
 import { createAccount } from './account.js';
-import { createSearch, createAreaProvider, createSavedProvider } from './search.js';
+import { createSearch, createAreaProvider, createSavedProvider, createCareProvider, createEnjoyProvider } from './search.js';
 import { AREAS, PRIMARY_AREAS, areaById } from './areas.js';
 import { createRouter } from './router.js';
 import { createNavigation } from './navigation.js';
@@ -27,7 +27,7 @@ import { createCheckInStore } from './checkin.js';
 import { createScheduleStore } from './schedule.js';
 import { createMedicationStore } from './medication.js';
 import { createDailyLifeStore } from './daily-life.js';
-import { createLifelongClassSource } from './data-source.js';
+import { createLifelongClassSource, createFacilitySource, createUnconnectedSource, createEnjoyPlaceSource, createTourPlaceSource } from './data-source.js';
 import { createHomeView } from './home-view.js';
 import { createTaskStore } from './tasks.js';
 import { createRoutineStore } from './routines.js';
@@ -36,6 +36,10 @@ import { createExpenseStore } from './expenses.js';
 import { createJournalStore } from './journal.js';
 import { createSymptomStore } from './symptoms.js';
 import { createHealthNoteStore } from './health-notes.js';
+import { createFamilySharingStore, createHelpRequestStore } from './family.js';
+import { createFamilyView } from './family-view.js';
+import { createCareView, resolveCareSection } from './care-view.js';
+import { createEnjoyView, resolveEnjoySection } from './enjoy-view.js';
 import { createLifeView, lifeHash, resolveSection } from './life-view.js';
 import { focusNode } from './accessibility.js';
 import { dateKey } from './dates.js';
@@ -63,6 +67,8 @@ const expenses = createExpenseStore(storage);
 const journal = createJournalStore(storage);
 const symptoms = createSymptomStore(storage);
 const healthNotes = createHealthNoteStore(storage);
+const familySharing = createFamilySharingStore(storage);
+const helpRequests = createHelpRequestStore(storage);
 
 /* set by a Home shortcut that continues in My Life; used once, when My Life is shown */
 let pendingLifeAdd = null;
@@ -74,9 +80,9 @@ search.registerProvider(createSavedProvider(saved, SAVED_TYPE_LABELS));
 
 applyPreferences(html, profile.getPreferences());
 
-/* view shells for the six areas that are still shells; Home and My Life have their own views */
+/* view shells for the areas that are still shells; Home, My Life, Family and Care have their own views */
 for (const area of PRIMARY_AREAS) {
-  if (area.id === 'home' || area.id === 'life') continue;
+  if (area.id === 'home' || area.id === 'life' || area.id === 'family' || area.id === 'care' || area.id === 'enjoy') continue;
   const host = doc.querySelector(`[data-og-modules="${area.id}"]`);
   if (host) renderArea(area, host);
 }
@@ -87,16 +93,25 @@ for (const area of PRIMARY_AREAS) {
  * checks the route's status first and reports "unavailable" quietly when there is nothing to use.
  */
 const apiConfig = win.LivonApi && typeof win.LivonApi.url === 'function' ? win.LivonApi : null;
-const nearbySource = createLifelongClassSource({
+/* one data-API handle (the site's existing route) shared by the two sources that may ask it — fetch is injected once */
+const dataApi = {
   apiUrl: (path) => (apiConfig ? apiConfig.url(path) : path),
   fetcher: typeof win.fetch === 'function' ? (url, init) => win.fetch(url, init) : null,
-});
+};
+const nearbySource = createLifelongClassSource(dataApi);
+
+/* 즐길거리 view, created further down; Home's 오늘 뭐 하지? reads it lazily */
+let enjoyView = null;
 
 const home = createHomeView({
   host: doc.querySelector('[data-og-modules="home"]'),
   doc,
   stores: { profile, checkIn, schedule, medication, dailyLife, tasks, routines, saved, familyConnection: onboarding.familyConnection },
   source: nearbySource,
+  /* the 가족 card states only local facts: sharing choices made, help requests written (not sent) */
+  family: { sharing: familySharing, help: helpRequests },
+  /* 오늘 뭐 하지?: what the user found on 즐길거리 this visit (set once that screen exists, below) */
+  enjoyLoaded: () => (enjoyView ? enjoyView.items() : []),
   /* Home has no task form of its own: "할 일 추가" opens the one in 내 생활 › 할 일 */
   onAddTask: () => {
     pendingLifeAdd = 'tasks';
@@ -118,6 +133,49 @@ const life = createLifeView({
   /* 건강 (Phase 3): check-in and medication are the very objects Home uses; all four stay on this device */
   health: { checkIn, symptoms, medication, healthNotes },
 });
+
+/* Phase 4 — 가족: the user's own sharing choices and help-request notes. No family is connected; nothing is sent. */
+const familyView = createFamilyView({
+  host: doc.querySelector('[data-og-modules="family"]'),
+  sharing: familySharing,
+  help: helpRequests,
+  profile,
+  familyConnection: onboarding.familyConnection,
+});
+
+/*
+ * Phase 4 — 돌봄·서비스: facilities through the existing place search (asked only on the user's button);
+ * care services and benefits have no source yet and say so. Loaded results live in memory for the visit only.
+ */
+const care = createCareView({
+  host: doc.querySelector('[data-og-modules="care"]'),
+  doc,
+  saved,
+  profile,
+  sources: {
+    facility: createFacilitySource(dataApi),
+    services: createUnconnectedSource('services', '돌봄 서비스'),
+    benefits: createUnconnectedSource('benefits', '복지 혜택'),
+  },
+  onFamily: () => true,
+});
+/* global search may find PUBLIC care items that were actually loaded on that screen — never a personal record */
+search.registerProvider(createCareProvider(() => care.items()));
+
+/*
+ * Phase 5 — 즐길거리: 평생학습 강좌 (the same source object Home's 내 주변 uses), 관광 정보 and 장소, each asked only on
+ * the user's button. Loaded results live in memory for the visit only.
+ */
+enjoyView = createEnjoyView({
+  host: doc.querySelector('[data-og-modules="enjoy"]'),
+  doc,
+  saved,
+  profile,
+  schedule,
+  sources: { lifelong: nearbySource, tour: createTourPlaceSource(dataApi), place: createEnjoyPlaceSource(dataApi) },
+});
+/* global search may find PUBLIC 즐길거리 items actually loaded on that screen — never a personal record */
+search.registerProvider(createEnjoyProvider(() => enjoyView.items()));
 
 const navigation = createNavigation({ doc });
 const panels = createPanels({ root: doc.querySelector('[data-og-tools]'), search, notifications });
@@ -150,6 +208,9 @@ const accountView = createAccountView({
     films.apply();
     refreshHome();
     life.refresh();
+    familyView.refresh();
+    care.render();
+    enjoyView.render();
     panels.updateBadge();
   },
 });
@@ -170,8 +231,13 @@ const router = createRouter({
   onChange: ({ view, userInitiated, section, sectionOnly }) => {
     /* an address that names no section of My Life shows 요약 and is corrected, instead of a broken screen */
     if (view === 'life' && section && !resolveSection(section)) win.history.replaceState(null, '', '#life');
+    if (view === 'care' && section && !resolveCareSection(section)) win.history.replaceState(null, '', '#care');
+    if (view === 'enjoy' && section && !resolveEnjoySection(section)) win.history.replaceState(null, '', '#enjoy');
     if (sectionOnly) {
       if (view === 'life') showLife(section, { focus: userInitiated });
+      if (view === 'care') care.show(section);
+    if (view === 'enjoy') enjoyView.show(section);
+      if (view === 'enjoy') enjoyView.show(section);
       return;
     }
     navigation.setCurrent(view);
@@ -180,6 +246,8 @@ const router = createRouter({
     doc.title = viewTitle(areaById(view));
     if (view === 'account') accountView.render();
     if (view === 'saved') savedView.render();
+    if (view === 'family') familyView.refresh();
+    if (view === 'care') care.show(section);
     if (view === 'home') refreshHome();
     if (view === 'life') showLife(section, { focus: userInitiated && !!section, entered: true });
     if (userInitiated && !(view === 'life' && section)) focusView(doc, view);
@@ -235,4 +303,4 @@ router.start();
 html.dataset.ogReady = 'true';
 
 /* one stable handle for later phases and for manual checks; no secrets, nothing privileged */
-win.Ongil = Object.freeze({ version: 'health-v1', storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes });
+win.Ongil = Object.freeze({ version: 'enjoy-v1', storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes, familySharing, helpRequests, care, enjoy: enjoyView });

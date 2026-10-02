@@ -7,51 +7,36 @@
  * timeout, malformed response). It is a normal state, shown as plain words — never as an error dump.
  * Nothing is invented: with no usable answer the item list is empty.
  *
- * Phase 2A source: regional lifelong-learning classes, through the data route that already exists in this
- * repository (GET <api>/api/livon/data, provider "kr-lifelong-class"; server/livon/data/). The route keeps the
- * API key on the server and answers ?action=status with booleans only. Whether a production key is set is not
- * known from the code, so every call first asks the route for its status and gives up quietly otherwise.
- * Only the user's region name (시·도) is sent, and only after the user presses the button.
+ * Every source goes through the data route that already exists in this repository (GET <api>/api/livon/data,
+ * server/livon/data/). The route keeps the API keys on the server and answers ?action=status with booleans only.
+ * Whether a production key is set is not known from the code (no provider is live-verified), so every load first
+ * asks the route for its status and gives up quietly otherwise. Nothing is requested before the user presses a button.
+ *
+ *   createLifelongClassSource   kr-lifelong-class   평생학습 강좌      Home 내 주변 (Phase 2A) · 즐길거리 (Phase 5)
+ *   createFacilitySource        kr-kakao-place      기관·시설          돌봄·서비스 (Phase 4)
+ *   createEnjoyPlaceSource      kr-kakao-place      공원·박물관 …      즐길거리 (Phase 5)
+ *   createTourPlaceSource       kr-tourapi          관광지·문화시설·레포츠  즐길거리 (Phase 5)
+ *   createUnconnectedSource     —                   no source yet (care services, benefits, events)
+ *
+ * Normalisation of what comes back lives in the contracts files (care-contracts.js, enjoy-contracts.js); the
+ * lifelong-learning answer is normalised once (enjoy-contracts fromLifelong) for both Home and 즐길거리.
  */
-import { safeText, safeHref, REGIONS } from './contracts.js';
+import { safeText, REGIONS } from './contracts.js';
+import { fromLifelong, normalizeProgram } from './enjoy-contracts.js';
 
 export const SOURCE_STATES = Object.freeze(['ready', 'empty', 'unavailable']);
 export const LIFELONG_PROVIDER = 'kr-lifelong-class';
+export const KAKAO_PLACE_PROVIDER = 'kr-kakao-place';
+export const TOUR_PROVIDER = 'kr-tourapi';
 const DATA_PATH = '/api/livon/data';
 const TIMEOUT_MS = 8000;
 const MAX_ITEMS = 6;
 
 const unavailable = (reason) => ({ state: 'unavailable', reason, items: [], attribution: '' });
 
-function cleanProgram(raw) {
-  if (!raw || typeof raw !== 'object' || raw.type !== 'program') return null;
-  const title = safeText(raw.title, 120);
-  const id = typeof raw.providerId === 'string' ? raw.providerId.trim() : '';
-  if (!title || !id) return null;
-  const loc = raw.location && typeof raw.location === 'object' ? raw.location : {};
-  const schedule = raw.schedule && typeof raw.schedule === 'object' ? raw.schedule : {};
-  const contact = raw.contact && typeof raw.contact === 'object' ? raw.contact : {};
-  const source = raw.source && typeof raw.source === 'object' ? raw.source : {};
-  return {
-    id,
-    title,
-    organizer: safeText(raw.organizer, 80),
-    venue: safeText(raw.venue, 80),
-    address: safeText(loc.address, 120),
-    days: safeText(raw.days, 40),
-    time: safeText(raw.timeText, 20),
-    period: [safeText(schedule.startAt, 10), safeText(schedule.endAt, 10)].filter(Boolean).join(' ~ '),
-    href: /^https:\/\//i.test(String(contact.website || '')) ? safeHref(contact.website) : '',
-    attribution: safeText(source.attribution || source.providerName, 160),
-  };
-}
-
-/*
- * createLifelongClassSource({ apiUrl, fetcher })
- *   apiUrl(path) → absolute or same-origin URL of the data route (the page takes it from the site's API config)
- *   fetcher      → fetch-compatible function; injected so tests never touch the network
- */
-export function createLifelongClassSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS } = {}) {
+/* one small client for the route: GET only, no credentials, a timeout, and null for anything that is not { ok: true } */
+function dataClient({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS }) {
+  const usable = typeof apiUrl === 'function' && typeof fetcher === 'function';
   async function getJson(query) {
     const controller = typeof AbortController === 'function' ? new AbortController() : null;
     const timer = controller ? setTimeout(() => controller.abort(), timeoutMs) : null;
@@ -66,19 +51,158 @@ export function createLifelongClassSource({ apiUrl, fetcher, timeoutMs = TIMEOUT
       if (timer) clearTimeout(timer);
     }
   }
-
-  async function load({ region } = {}) {
-    if (typeof apiUrl !== 'function' || typeof fetcher !== 'function') return unavailable('NOT_CONNECTED');
-    if (!REGIONS.some((r) => r.id === region)) return unavailable('REGION_REQUIRED');
+  /* status first: true only when the route says this provider has a key */
+  async function configured(provider) {
     const status = await getJson('?action=status');
-    const provider = status && status.providers && status.providers[LIFELONG_PROVIDER];
-    if (!provider || provider.configured !== true) return unavailable('NOT_CONFIGURED');
-    const data = await getJson(`?provider=${LIFELONG_PROVIDER}&region=${encodeURIComponent(region)}&status=open&limit=${MAX_ITEMS}`);
+    const p = status && status.providers && status.providers[provider];
+    return !!p && p.configured === true;
+  }
+  return { usable, getJson, configured };
+}
+
+/* ───────── 평생학습 강좌 (kr-lifelong-class) ───────── */
+
+/*
+ * load({ region, query?, limit?, category? }) → items: Enjoy CLASS items (enjoy-contracts) with the few display names
+ * Home's 내 주변 card uses (href, organizer, venue, period, days, time, attribution) — derived from the same
+ * normalised item, so Home and 즐길거리 never normalise the provider differently.
+ * Only the region name (and an optional search word) is sent, and only after the user presses a button.
+ */
+export function createLifelongClassSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS } = {}) {
+  const api = dataClient({ apiUrl, fetcher, timeoutMs });
+
+  async function load({ region, query = '', limit = MAX_ITEMS, category = 'LEARNING' } = {}) {
+    if (!api.usable) return unavailable('NOT_CONNECTED');
+    if (!REGIONS.some((r) => r.id === region)) return unavailable('REGION_REQUIRED');
+    const q = safeText(query, 30);
+    const max = Number.isInteger(limit) && limit >= 1 && limit <= 50 ? limit : MAX_ITEMS;
+    if (!(await api.configured(LIFELONG_PROVIDER))) return unavailable('NOT_CONFIGURED');
+    const data = await api.getJson(`?provider=${LIFELONG_PROVIDER}&region=${encodeURIComponent(region)}${q ? `&query=${encodeURIComponent(q)}` : ''}&status=open&limit=${max}`);
     if (!data || !Array.isArray(data.items)) return unavailable('NO_ANSWER');
-    const items = data.items.map(cleanProgram).filter(Boolean).slice(0, MAX_ITEMS);
+    const items = [];
+    for (const raw of data.items) {
+      const input = fromLifelong(raw, category);
+      if (!input) continue;
+      let item;
+      try {
+        item = normalizeProgram(input);
+      } catch {
+        continue;
+      }
+      items.push({ ...item, href: item.sourceUrl, organizer: item.organization, venue: item.location, period: [item.startDate, item.endDate].filter(Boolean).join(' ~ '), days: item.scheduleText, time: '', attribution: item.sourceName });
+      if (items.length >= max) break;
+    }
     if (items.length === 0) return { state: 'empty', items: [], attribution: '' };
     return { state: 'ready', items, attribution: items[0].attribution };
   }
 
   return Object.freeze({ id: 'lifelong-class', label: '평생학습 강좌', kind: 'program', load });
+}
+
+/* ───────── Phase 4: 돌봄·서비스 — 기관·시설 (kr-kakao-place) ───────── */
+
+/*
+ * Facilities (기관·시설) through the existing place search. Kakao Local is a private platform, so the source is
+ * named as such and its map page is offered as a map link — never as an official source. Only "<시·도> <기관 종류>"
+ * is sent (e.g. "서울 보건소"), and only after the user presses the button. Public care services and benefits have
+ * NO source in this repository yet (createUnconnectedSource).
+ */
+const FACILITY_LIMIT = 15;
+
+function cleanFacility(raw, kind) {
+  if (!raw || typeof raw !== 'object' || raw.type !== 'place') return null;
+  const providerId = typeof raw.providerId === 'string' && /^\d{1,20}$/.test(raw.providerId) ? raw.providerId : '';
+  const name = safeText(raw.title, 120);
+  if (!providerId || !name) return null;
+  const loc = raw.location && typeof raw.location === 'object' ? raw.location : {};
+  const contact = raw.contact && typeof raw.contact === 'object' ? raw.contact : {};
+  return {
+    type: 'FACILITY',
+    id: `kakao-${providerId}`,
+    name,
+    kind,
+    placeType: safeText(raw.placeType, 80),
+    address: safeText(loc.roadAddress || loc.address, 160),
+    region: REGIONS.some((r) => r.id === loc.region) ? loc.region : '',
+    phone: typeof contact.phone === 'string' ? contact.phone : '',
+    sourceName: '카카오 (Kakao Local)',
+    sourceUrl: '',
+    mapUrl: typeof raw.mapUrl === 'string' ? raw.mapUrl : '',
+    updatedAt: '',
+  };
+}
+
+async function kakaoSearch(api, words, limit) {
+  if (!(await api.configured(KAKAO_PLACE_PROVIDER))) return { error: 'NOT_CONFIGURED' };
+  const data = await api.getJson(`?provider=${KAKAO_PLACE_PROVIDER}&query=${encodeURIComponent(words)}&page=1&limit=${limit}`);
+  if (!data || !Array.isArray(data.items)) return { error: 'NO_ANSWER' };
+  return { items: data.items };
+}
+
+export function createFacilitySource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS } = {}) {
+  const api = dataClient({ apiUrl, fetcher, timeoutMs });
+  /* load({ region, kind: { id, query } }) → { state, items (raw Facility input — care-contracts sanitises), attribution } */
+  async function load({ region, kind } = {}) {
+    if (!api.usable) return unavailable('NOT_CONNECTED');
+    if (!REGIONS.some((r) => r.id === region)) return unavailable('REGION_REQUIRED');
+    if (!kind || typeof kind.query !== 'string' || !/^[가-힣 ()]{2,20}$/.test(kind.query)) return unavailable('KIND_REQUIRED');
+    const r = await kakaoSearch(api, `${region} ${kind.query}`, FACILITY_LIMIT);
+    if (r.error) return unavailable(r.error);
+    const items = r.items.map((raw) => cleanFacility(raw, kind.id)).filter(Boolean).slice(0, FACILITY_LIMIT);
+    if (items.length === 0) return { state: 'empty', items: [], attribution: '' };
+    return { state: 'ready', items, attribution: '장소 정보 출처: Kakao Local (민간 지도 서비스, 공식 기관 자료 아님)' };
+  }
+  return Object.freeze({ id: 'facility', label: '기관·시설', kind: 'facility', load });
+}
+
+/* ───────── Phase 5: 즐길거리 — places ───────── */
+
+/*
+ * Enjoyable places by a search word (공원, 박물관 …) through the same Kakao route. Raw answers are returned; the
+ * 즐길거리 screen normalises them with enjoy-contracts fromKakaoPlace (same model as every other Enjoy place).
+ */
+const PLACE_LIMIT = 15;
+export function createEnjoyPlaceSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS } = {}) {
+  const api = dataClient({ apiUrl, fetcher, timeoutMs });
+  async function load({ region, word } = {}) {
+    if (!api.usable) return unavailable('NOT_CONNECTED');
+    if (!REGIONS.some((r) => r.id === region)) return unavailable('REGION_REQUIRED');
+    if (typeof word !== 'string' || !/^[가-힣]{2,10}$/.test(word)) return unavailable('WORD_REQUIRED');
+    const r = await kakaoSearch(api, `${region} ${word}`, PLACE_LIMIT);
+    if (r.error) return unavailable(r.error);
+    const items = r.items.filter((x) => x && typeof x === 'object' && x.type === 'place').slice(0, PLACE_LIMIT);
+    if (items.length === 0) return { state: 'empty', items: [], attribution: '' };
+    return { state: 'ready', items, attribution: '장소 정보 출처: Kakao Local (민간 지도 서비스)' };
+  }
+  return Object.freeze({ id: 'enjoy-place', label: '장소 (카카오)', kind: 'place', load });
+}
+
+/*
+ * 관광지 · 문화시설 · 레포츠 through kr-tourapi (한국관광공사). The route accepts a region only for the 시·도 its
+ * adapter has a code for (server/livon/data/providers/tourapi.mjs REGION_CODES); other regions are answered here as
+ * 'unavailable' instead of sending a request the route would refuse. 숙박·쇼핑·음식점 are never asked for.
+ */
+export const TOUR_REGIONS = Object.freeze(['서울', '부산', '대구', '인천', '광주', '대전', '경기']);
+const TOUR_TYPE_IDS = Object.freeze(['12', '14', '28']);
+const TOUR_LIMIT = 20;
+export function createTourPlaceSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS } = {}) {
+  const api = dataClient({ apiUrl, fetcher, timeoutMs });
+  async function load({ region, contentType } = {}) {
+    if (!api.usable) return unavailable('NOT_CONNECTED');
+    if (!REGIONS.some((r) => r.id === region)) return unavailable('REGION_REQUIRED');
+    if (!TOUR_REGIONS.includes(region)) return unavailable('REGION_NOT_SUPPORTED');
+    if (!TOUR_TYPE_IDS.includes(contentType)) return unavailable('TYPE_REQUIRED');
+    if (!(await api.configured(TOUR_PROVIDER))) return unavailable('NOT_CONFIGURED');
+    const data = await api.getJson(`?provider=${TOUR_PROVIDER}&region=${encodeURIComponent(region)}&type=${contentType}&page=1&limit=${TOUR_LIMIT}`);
+    if (!data || !Array.isArray(data.items)) return unavailable('NO_ANSWER');
+    const items = data.items.filter((x) => x && typeof x === 'object' && x.type === 'place').slice(0, TOUR_LIMIT);
+    if (items.length === 0) return { state: 'empty', items: [], attribution: '' };
+    return { state: 'ready', items, attribution: '관광 정보 출처: 한국관광공사 (TourAPI)' };
+  }
+  return Object.freeze({ id: 'tour-place', label: '관광 정보', kind: 'place', load });
+}
+
+/* services, benefits and events: no source exists yet. Real objects, so a screen has one way to ask and one answer. */
+export function createUnconnectedSource(id, label) {
+  return Object.freeze({ id, label, kind: id, connected: false, load: async () => unavailable('NOT_CONNECTED') });
 }

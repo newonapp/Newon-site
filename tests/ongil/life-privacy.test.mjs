@@ -60,10 +60,11 @@ test('OG-PV-1 every collection has a class; private and health-adjacent data may
   assert.deepEqual(Object.keys(CLASSIFICATION).sort(), [...COLLECTIONS].sort());
   for (const c of Object.values(CLASSIFICATION)) assert.ok(DATA_CLASSES.includes(c));
   const by = (cls) => Object.keys(CLASSIFICATION).filter((k) => CLASSIFICATION[k] === cls).sort();
-  assert.deepEqual(by('PRIVATE'), ['expenses', 'journal']);
+  // Phase 4: familySharing and helpRequests are PRIVATE (contracts FamilySharingPreference, HelpRequest)
+  assert.deepEqual(by('PRIVATE'), ['expenses', 'familySharing', 'helpRequests', 'journal']);
   assert.deepEqual(by('HEALTH_ADJACENT'), ['checkins', 'healthNotes', 'medicationLogs', 'medications', 'symptoms']);
   assert.deepEqual(by('STANDARD'), ['dailyLife', 'events', 'routineLogs', 'routines', 'sleepRecords', 'tasks']);
-  assert.deepEqual({ ...CONTRACT_CLASSES }, { CalendarEvent: 'STANDARD', Task: 'STANDARD', Routine: 'STANDARD', RoutineLog: 'STANDARD', DailyLife: 'STANDARD', SleepRecord: 'STANDARD', ExpenseRecord: 'PRIVATE', JournalEntry: 'PRIVATE', Medication: 'HEALTH_ADJACENT', MedicationLog: 'HEALTH_ADJACENT', CheckIn: 'HEALTH_ADJACENT', SymptomRecord: 'HEALTH_ADJACENT', HealthNote: 'HEALTH_ADJACENT' });
+  assert.deepEqual({ ...CONTRACT_CLASSES }, { CalendarEvent: 'STANDARD', Task: 'STANDARD', Routine: 'STANDARD', RoutineLog: 'STANDARD', DailyLife: 'STANDARD', SleepRecord: 'STANDARD', ExpenseRecord: 'PRIVATE', JournalEntry: 'PRIVATE', Medication: 'HEALTH_ADJACENT', MedicationLog: 'HEALTH_ADJACENT', CheckIn: 'HEALTH_ADJACENT', SymptomRecord: 'HEALTH_ADJACENT', HealthNote: 'HEALTH_ADJACENT', FamilySharingPreference: 'PRIVATE', HelpRequest: 'PRIVATE' });
   for (const c of COLLECTIONS) {
     if (classOf(c) === 'APP') continue;
     assert.equal(maySync(c), false, c);
@@ -109,7 +110,11 @@ test('OG-PV-3 private data is not searched: journal, expenses, tasks, events, ro
   search.registerProvider(createAreaProvider(AREAS));
   search.registerProvider(createSavedProvider(w.saved));
   for (const q of ['찾으면안되는일기내용', '찾으면안되는지출메모', '4242', '찾으면안되는할일', '찾으면안되는일정', '찾으면안되는루틴', '찾으면안되는수면메모']) assert.deepEqual((await search.query(q)).results, [], q);
-  assert.equal((read('js', 'app.js').match(/search\.registerProvider\(/g) || []).length, 2, 'still only menus and saved items');
+  assert.equal((read('js', 'app.js').match(/search\.registerProvider\(/g) || []).length, 4, 'menus, saved items, public care and public 즐길거리 content only');
+  // Phase 5: a fourth provider, 즐길거리, searches only PUBLIC enjoy items loaded on that screen (never a personal record).
+  assert.match(read('js', 'app.js'), /search\.registerProvider\(createEnjoyProvider\(\(\) => enjoyView\.items\(\)\)\);/);
+  // Phase 4: a third provider, 돌봄·서비스, searches only PUBLIC care items loaded on that screen (never a personal record).
+  assert.match(read('js', 'app.js'), /search\.registerProvider\(createCareProvider\(\(\) => care\.items\(\)\)\);/);
   assert.equal(/registerProvider|createSearch|notifications\.add\(/.test(CODE), false, 'My Life registers no search provider and raises no notification');
   const hit = await search.query('생활비');
   assert.deepEqual([hit.results[0].id, hit.results[0].href], ['life.expenses', '#life'], 'the menu entry is found; its content is not');

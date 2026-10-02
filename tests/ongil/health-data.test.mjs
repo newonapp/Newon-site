@@ -464,7 +464,10 @@ test('OG-HL-26 Family exclusion: nothing about health is shared; the family swit
   w.life.checkIn.save({ status: 'help', body: 'low', pain: 'yes' });
   w.life.symptoms.save({ symptoms: ['dizzy'], intensity: 'strong' });
   assert.deepEqual(seen, ['checkins', 'symptoms'], 'one local write each and nothing else — no alert, no family record');
-  assert.equal(COLLECTIONS.some((c) => /family/i.test(c)), false);
+  // Phase 4: 'familySharing' holds only the user's OWN choices (default none). There is still no collection for family
+  // members, connections, permissions or anything received from family.
+  assert.deepEqual(COLLECTIONS.filter((c) => /family/i.test(c)), ['familySharing']);
+  assert.equal(COLLECTIONS.some((c) => /familyConnections|familyPermissions|familyMembers|sharedItems|consents/i.test(c)), false);
 });
 
 test('OG-HL-27 sync exclusion: a connected adapter never receives health records; the sync list is unchanged', () => {

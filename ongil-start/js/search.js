@@ -10,7 +10,11 @@
  * Phase 1 providers (real, local data only):
  *   areas  — ONGIL's own menus and the sections inside them
  *   saved  — what the user has saved on this device
- * Services, programs, places, posts and products get their own providers in later phases.
+ * Phase 4 provider:
+ *   care   — PUBLIC care items that were actually loaded on the 돌봄·서비스 screen during this visit (facilities
+ *            from the connected place search). Never a personal record; empty when nothing was loaded.
+ *   enjoy  — PUBLIC 즐길거리 items (강좌, 장소 …) actually loaded on that screen during this visit (Phase 5)
+ * Posts and products get their own providers in later phases.
  */
 import { LIMITS, safeText, safeHref } from './contracts.js';
 
@@ -104,6 +108,35 @@ export function createSavedProvider(savedStore, typeLabels = {}) {
         .list()
         .filter((it) => matches(q, it.title, it.description))
         .map((it) => ({ type: it.type, id: it.key, title: it.title, description: [typeLabels[it.type], it.description].filter(Boolean).join(' · '), href: it.href || '#saved' }));
+    },
+  };
+}
+
+/* getItems() → the care items the screen has loaded (public information only; nothing personal is ever passed here) */
+export function createCareProvider(getItems) {
+  return {
+    id: 'care',
+    label: '돌봄·서비스',
+    search(q) {
+      const items = typeof getItems === 'function' ? getItems() : [];
+      return (Array.isArray(items) ? items : [])
+        .filter((it) => it && ['CARE_SERVICE', 'PUBLIC_BENEFIT', 'FACILITY'].includes(it.type) && matches(q, it.title, it.summary, it.address))
+        .map((it) => ({ type: it.type, id: `${it.type}:${it.id}`, title: it.title, description: [it.address || it.summary, it.sourceName].filter(Boolean).join(' · '), href: it.type === 'FACILITY' ? '#care/facility' : `#care/${it.category}` }));
+    },
+  };
+}
+
+/* getItems() → the 즐길거리 items the screen has loaded (public information only) */
+export function createEnjoyProvider(getItems) {
+  const LABELS = { PROGRAM: '프로그램', CLASS: '강좌', EVENT: '행사', PLACE: '장소' };
+  return {
+    id: 'enjoy',
+    label: '즐길거리',
+    search(q) {
+      const items = typeof getItems === 'function' ? getItems() : [];
+      return (Array.isArray(items) ? items : [])
+        .filter((it) => it && LABELS[it.type] && matches(q, it.title, it.summary, it.organization, it.location, it.address))
+        .map((it) => ({ type: it.type, id: `${it.type}:${it.id}`, title: it.title, description: [LABELS[it.type], it.organization || it.address, it.sourceName].filter(Boolean).join(' · '), href: `#enjoy/${String(it.category || '').toLowerCase()}` }));
     },
   };
 }

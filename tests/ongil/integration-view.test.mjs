@@ -61,7 +61,8 @@ test('OG-IV-1 Home shows tasks and routines through My Life\'s stores and the sh
   for (const name of ['createTaskStore', 'createRoutineStore', 'createDailyLifeStore', 'createScheduleStore']) assert.equal((APP.match(new RegExp(`${name}\\(storage\\)`, 'g')) || []).length, 1, `${name} is created once`);
   assert.deepEqual([...COLLECTIONS].filter((c) => /home|water/i.test(c)), [], 'no Home-only or water-only collection');
   // Phase 3 added symptoms + healthNotes (16 → 18); still no Home-only collection (checked above)
-  assert.equal(COLLECTIONS.length, 18);
+  // Phase 4 added familySharing + helpRequests (18 → 20); still no Home-only collection
+  assert.equal(COLLECTIONS.length, 20);
 });
 
 test('OG-IV-2 "할 일 추가" on Home continues in My Life\'s own task form', () => {
@@ -159,7 +160,11 @@ test('OG-IV-7 private and personal records are still not searched, and Home adds
   search.registerProvider(createAreaProvider(AREAS));
   search.registerProvider(createSavedProvider(createSavedStore(storage)));
   for (const q of ['홈에보이는비밀할일', '홈에보이는비밀루틴', '비밀']) assert.deepEqual((await search.query(q)).results, [], q);
-  assert.equal((APP.match(/search\.registerProvider\(/g) || []).length, 2, 'still only menus and saved items');
+  assert.equal((APP.match(/search\.registerProvider\(/g) || []).length, 4, 'menus, saved items, public care and public 즐길거리 content only');
+  // Phase 5: a fourth provider, 즐길거리, searches only PUBLIC enjoy items loaded on that screen (never a personal record).
+  assert.match(APP, /search\.registerProvider\(createEnjoyProvider\(\(\) => enjoyView\.items\(\)\)\);/);
+  // Phase 4: a third provider, 돌봄·서비스, searches only PUBLIC care items loaded on that screen (never a personal record).
+  assert.match(APP, /search\.registerProvider\(createCareProvider\(\(\) => care\.items\(\)\)\);/);
   assert.equal(/registerProvider|createSearch|notifications\.add\(|saved\.save\(\{ type: '(TASK|ROUTINE|JOURNAL|EXPENSE)/.test(SCREEN_CODE), false, 'no screen registers a search source, raises a notification or saves a personal record as a Saved item');
   for (const c of COLLECTIONS) assert.equal(maySearchGlobally(c), c === 'saved', c);
 });
@@ -167,7 +172,8 @@ test('OG-IV-7 private and personal records are still not searched, and Home adds
 // Phase 3: the two new health collections joined HEALTH_ADJACENT; nothing moved between classes and the sync list is unchanged.
 test('OG-IV-8 private and personal records are still not synced or shared: the classification is unchanged', () => {
   const by = (cls) => Object.keys(CLASSIFICATION).filter((k) => CLASSIFICATION[k] === cls).sort();
-  assert.deepEqual(by('PRIVATE'), ['expenses', 'journal']);
+  // Phase 4: the user's family-sharing choices and help-request notes are PRIVATE
+  assert.deepEqual(by('PRIVATE'), ['expenses', 'familySharing', 'helpRequests', 'journal']);
   assert.deepEqual(by('HEALTH_ADJACENT'), ['checkins', 'healthNotes', 'medicationLogs', 'medications', 'symptoms']);
   assert.deepEqual(by('STANDARD'), ['dailyLife', 'events', 'routineLogs', 'routines', 'sleepRecords', 'tasks']);
   assert.deepEqual([...SYNCABLE_COLLECTIONS], ['profile', 'preferences', 'saved', 'onboarding']);

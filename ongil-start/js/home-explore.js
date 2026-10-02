@@ -11,14 +11,22 @@ import { setRegionState } from './views.js';
 
 /* ───────── 가족 ───────── */
 
-export function createFamilyCard({ familyConnection }) {
+/*
+ * Phase 4: besides the (still unavailable) connection, Home may state two local facts — how many sharing choices the
+ * user has made and how many help requests are written but not sent. No family activity exists, so none is shown.
+ */
+export function createFamilyCard({ familyConnection, family = null }) {
   const card = createCard({ slot: 'family-update', title: '가족', level: 3 });
   function render() {
     const state = familyConnection();
+    const chosen = family ? family.sharing.count() : 0;
+    const open = family ? family.help.openCount() : 0;
     clear(card.body);
     card.root.dataset.ogState = 'empty';
     card.body.append(
       el('p', { class: 'og-home-empty', 'data-og-family-status': state.status, text: '아직 연결된 가족이 없어요.' }),
+      chosen ? el('p', { class: 'og-home-count', 'data-og-family-chosen': String(chosen), text: `공유하도록 고른 항목 ${chosen}개 (연결 전이라 아무에게도 보이지 않아요)` }) : null,
+      open ? el('p', { class: 'og-home-count', 'data-og-family-help': String(open), text: `적어 둔 도움 요청 ${open}개 (보내지 않음)` }) : null,
       el('p', { class: 'og-home-note', text: '가족 연결은 준비 중입니다. 연결하기 전에는 어떤 내용도 가족에게 전달되지 않습니다.' }),
       el('div', { class: 'og-form__actions' }, el('a', { class: 'og-btn og-btn--ghost', href: '#family', text: '가족 화면 보기' }))
     );
@@ -29,21 +37,32 @@ export function createFamilyCard({ familyConnection }) {
 
 /* ───────── 오늘 뭐 하지? ───────── */
 
-export const ENJOY_CATEGORIES = Object.freeze(['취미', '배움', '운동', '문화', '나들이']);
+/* Phase 5: the six 즐길거리 categories, each opening that category (#enjoy/<id>) */
+export const ENJOY_CATEGORIES = Object.freeze(['취미', '배움', '운동', '문화', '나들이', '여행']);
+const ENJOY_LINKS = Object.freeze({ 취미: 'hobby', 배움: 'learning', 운동: 'exercise', 문화: 'culture', 나들이: 'outing', 여행: 'travel' });
 
 /*
- * recommend: an optional source { load() → { state, items } } for later phases. Phase 2A passes none,
- * so the card shows the categories only — no programme, event or place is made up.
+ * loaded: () → the 즐길거리 items the user actually found on that screen during this visit (Phase 5). Home shows a few
+ * of them as they are — a list to look at again, not a recommendation: nothing is ranked, scored or personalised.
+ * With nothing loaded, the card shows the categories only. No programme, event or place is made up.
  */
-export function createEnjoyCard({ recommend = null } = {}) {
+export function createEnjoyCard({ loaded = null } = {}) {
   const card = createCard({ slot: 'today', title: '오늘 뭐 하지?', level: 3, lead: '해 보고 싶은 것을 골라 보세요.' });
   function render() {
+    const items = typeof loaded === 'function' ? loaded().slice(0, 3) : [];
     clear(card.body);
-    card.root.dataset.ogRecommend = recommend ? 'connected' : 'none';
-    card.body.append(
-      el('ul', { class: 'og-linkchips', 'aria-label': '즐길거리 종류' }, ENJOY_CATEGORIES.map((name) => el('li', {}, el('a', { class: 'og-linkchip', href: '#enjoy', 'aria-label': `${name} — 즐길거리 화면으로 이동` }, name)))),
-      el('p', { class: 'og-home-note', text: '추천할 프로그램은 아직 준비 중입니다. 지금은 즐길거리 화면으로 이동합니다.' })
-    );
+    card.root.dataset.ogState = items.length ? 'filled' : 'empty';
+    card.body.append(el('ul', { class: 'og-linkchips', 'aria-label': '즐길거리 종류' }, ENJOY_CATEGORIES.map((name) => el('li', {}, el('a', { class: 'og-linkchip', href: `#enjoy/${ENJOY_LINKS[name]}`, 'aria-label': `${name} — 즐길거리 화면으로 이동` }, name)))));
+    if (items.length) {
+      card.body.append(
+        el('h4', { class: 'og-life-sub', text: '즐길거리에서 찾아 본 것' }),
+        el('ul', { class: 'og-home-items', 'aria-label': '즐길거리에서 찾아 본 것', 'data-og-home-enjoy': String(items.length) }, items.map((i) => el('li', { class: 'og-home-item' }, el('div', { class: 'og-home-item__main og-home-item__main--plain' }, el('p', { class: 'og-home-item__title', text: i.title }), el('p', { class: 'og-home-item__meta', text: [i.type === 'PLACE' ? '장소' : i.type === 'CLASS' ? '강좌' : i.type === 'EVENT' ? '행사' : '프로그램', i.region].filter(Boolean).join(' · ') }))))),
+        el('p', { class: 'og-home-note', text: '추천이 아니라 즐길거리 화면에서 찾아 본 것 가운데 몇 가지예요. 자세한 내용은 즐길거리에서 볼 수 있어요.' }),
+        el('div', { class: 'og-form__actions' }, el('a', { class: 'og-btn og-btn--ghost', href: '#enjoy', text: '즐길거리에서 이어 보기' }))
+      );
+    } else {
+      card.body.append(el('p', { class: 'og-home-note', text: '분류를 누르면 즐길거리 화면에서 지역의 강좌와 장소를 찾아볼 수 있어요.' }));
+    }
   }
   render();
   return { card, render };
