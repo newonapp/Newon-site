@@ -143,11 +143,15 @@ test('OG-SC-3 Home lists today only, timed first in order, then untimed', () => 
 
 /* ───────── medication ───────── */
 
-test('OG-MD-1 medication: create, update, delete — only name, time and memo are kept', () => {
+// Phase 3: a medication also keeps the days it is taken (daysOfWeek, every day by default) for 내 생활 › 건강.
+// The point of this test is unchanged and still checked: no dose, no interaction or other medical field is ever kept.
+test('OG-MD-1 medication: create, update, delete — only name, time, days and memo are kept', () => {
   const { medication } = world();
   const a = medication.add({ name: '혈압약', time: '08:00', memo: '아침 식후', dose: '10mg', interactions: ['x'] });
   assert.equal(a.ok, true);
-  assert.deepEqual(Object.keys(a.medication).sort(), ['createdAt', 'id', 'memo', 'name', 'schemaVersion', 'time', 'updatedAt']);
+  assert.deepEqual(Object.keys(a.medication).sort(), ['createdAt', 'daysOfWeek', 'id', 'memo', 'name', 'schemaVersion', 'time', 'updatedAt']);
+  assert.deepEqual(a.medication.daysOfWeek, [0, 1, 2, 3, 4, 5, 6], 'every day unless the user picks days');
+  assert.equal('dose' in a.medication || 'interactions' in a.medication, false);
   assert.equal(medication.add({ name: '' }).reason, 'INVALID_NAME');
   assert.equal(medication.add({ name: '약', time: '8시' }).reason, 'INVALID_TIME');
   const u = medication.update(a.medication.id, { name: '혈압약 (아침)', memo: '' });

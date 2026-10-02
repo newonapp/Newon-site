@@ -27,8 +27,10 @@ const CODE = strip(ALL);
 const CSS = read('styles', 'ongil-home.css');
 const home = AREAS.find((a) => a.id === 'home');
 
-test('OG-HM-1 all nine Home modules exist and are marked available', () => {
-  assert.deepEqual(home.modules.map((m) => m.id), ['greeting', 'check-in', 'schedule', 'medication', 'life-check', 'family-update', 'today', 'nearby', 'quick-actions']);
+// Phase 2C: Home gained two modules — 오늘 할 일 (tasks) and 오늘 루틴 (routines), showing My Life's own records.
+// The list is now eleven; every other check of this test is unchanged.
+test('OG-HM-1 all eleven Home modules exist and are marked available', () => {
+  assert.deepEqual(home.modules.map((m) => m.id), ['greeting', 'check-in', 'schedule', 'tasks', 'routines', 'medication', 'life-check', 'family-update', 'today', 'nearby', 'quick-actions']);
   assert.ok(home.modules.every((m) => m.available === true));
   assert.match(INDEX, /<p class="og-greeting" data-og-greeting data-og-slot="home\.greeting">/);
   const slots = HOME_LEVELS.flatMap((r) => r.slots);
@@ -39,8 +41,12 @@ test('OG-HM-1 all nine Home modules exist and are marked available', () => {
   assert.match(SRC['home-view.js'], /'data-og-extra': 'home'/);
 });
 
+// Phase 2C: a fifth row (오늘 할 일 · 오늘 루틴) sits between today's cards and the care cards, and rows are named.
+// Still four visual levels, two modules a row, most important first — and the row names are now asserted too.
 test('OG-HM-2 Home has a hierarchy: four levels, two modules each, most important first', () => {
-  assert.deepEqual(HOME_LEVELS.map((r) => [r.level, [...r.slots]]), [[1, ['check-in', 'schedule']], [2, ['medication', 'life-check']], [3, ['family-update', 'today']], [4, ['nearby', 'quick-actions']]]);
+  assert.deepEqual(HOME_LEVELS.map((r) => [r.level, [...r.slots]]), [[1, ['check-in', 'schedule']], [2, ['tasks', 'routines']], [2, ['medication', 'life-check']], [3, ['family-update', 'today']], [4, ['nearby', 'quick-actions']]]);
+  assert.deepEqual(HOME_LEVELS.map((r) => r.group), ['today', 'plan', 'care', 'connection', 'discovery']);
+  assert.ok(HOME_LEVELS.every((r, i) => i === 0 || r.level >= HOME_LEVELS[i - 1].level), 'weight never rises further down the page');
   const level = (slot) => Number(new RegExp(`createCard\\(\\{ slot: '${slot}', title: '[^']+', level: (\\d)`).exec(ALL)[1]);
   for (const row of HOME_LEVELS) for (const slot of row.slots) assert.equal(level(slot), row.level, slot);
   for (const n of [1, 2, 3, 4]) assert.match(CSS, new RegExp(`\\.og-home-card--l${n} \\{`));
@@ -89,8 +95,13 @@ test('OG-HM-6 nearby: asked only on a button press; unavailable and empty are pl
   assert.match(read('js', 'app.js'), /source: nearbySource/);
 });
 
-test('OG-HM-7 quick actions: two real actions, four real routes, no assistant', () => {
-  assert.deepEqual(QUICK_ACTIONS.map((a) => [a.id, a.label, a.kind]), [['add-event', '일정 추가', 'action'], ['add-medication', '약 추가', 'action'], ['life', '내 생활 보기', 'route'], ['enjoy', '즐길거리 찾기', 'route'], ['family', '가족 보기', 'route'], ['care', '돌봄·서비스 찾기', 'route']]);
+// Phase 2C: "할 일 추가" became a real action (it opens My Life's task form) and "가족 보기" left the shortcuts —
+// the 가족 card right above already links to the family view. Still six shortcuts; each action must be wired.
+test('OG-HM-7 quick actions: three real actions, three real routes, no assistant', () => {
+  assert.deepEqual(QUICK_ACTIONS.map((a) => [a.id, a.label, a.kind]), [['add-event', '일정 추가', 'action'], ['add-task', '할 일 추가', 'action'], ['add-medication', '약 추가', 'action'], ['life', '내 생활 보기', 'route'], ['enjoy', '즐길거리 찾기', 'route'], ['care', '돌봄·서비스 찾기', 'route']]);
+  for (const a of QUICK_ACTIONS.filter((x) => x.kind === 'action')) assert.ok(SRC['home-view.js'].includes(`'${a.id}': () =>`), `${a.id} is wired`);
+  assert.match(SRC['home-view.js'], /'add-task': \(\) => onAddTask && onAddTask\(\)/);
+  assert.match(read('js', 'app.js'), /pendingLifeAdd = 'tasks';\s*win\.location\.hash = lifeHash\('tasks'\);/);
   for (const a of QUICK_ACTIONS.filter((x) => x.kind === 'route')) assert.equal(resolveView(a.href), a.id);
   assert.match(SRC['home-view.js'], /'add-event': \(\) => reveal\(scheduleCard\.card, scheduleCard\.openAdd\)/);
   assert.match(SRC['home-view.js'], /'add-medication': \(\) => reveal\(medicationCard\.card, medicationCard\.openAdd\)/);

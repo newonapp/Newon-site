@@ -11,8 +11,9 @@
  *   getItems() · describe(item) → { title, meta[], text? }
  *   onAdd(values) · onUpdate(id, values) · onRemove(id) · errorText(reason)
  *   checkable (default true): isDone(item) · onToggle(item, checked) · toggleText · doneWord · checkWord
- *   canAdd / canEdit (default true): a list that only shows and checks, e.g. today's routines
+ *   canAdd / canEdit (default true): a list that only shows and checks, e.g. today's routines; canAdd may be a function
  *   afterChange(): called after any change so the owner can refresh what depends on the list
+ *   before() / after(): extra nodes above the list and below its buttons (a heading, links to the full screen)
  */
 import { el, clear } from './dom.js';
 import { makeField, eul } from './home-ui.js';
@@ -21,7 +22,7 @@ export function createListCard({ card, config }) {
   let mode = { type: 'idle', id: null };
   let pendingFocus = null;
   const checkable = config.checkable !== false;
-  const canAdd = config.canAdd !== false;
+  const mayAdd = () => (typeof config.canAdd === 'function' ? config.canAdd() : config.canAdd !== false);
   const canEdit = config.canEdit !== false;
   const changed = () => typeof config.afterChange === 'function' && config.afterChange();
 
@@ -125,12 +126,17 @@ export function createListCard({ card, config }) {
     if (config.before) card.body.append(config.before());
     if (items.length === 0 && mode.type !== 'add') card.body.append(el('p', { class: 'og-home-empty', text: typeof config.emptyText === 'function' ? config.emptyText() : config.emptyText }));
     if (items.length) card.body.append(el('ul', { class: 'og-home-items', 'aria-label': typeof config.listLabel === 'function' ? config.listLabel() : config.listLabel }, items.map(row)));
+    const canAdd = mayAdd();
     if (canAdd && mode.type === 'add') {
       const f = form(null);
       card.body.append(f.node);
       if (pendingFocus === 'form') queueMicrotask(() => f.first.focus());
     } else if (canAdd) {
       card.body.append(el('div', { class: 'og-form__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--primary', 'data-og-focus': 'add', text: config.addLabel, onclick: () => setMode({ type: 'add', id: null }, 'form') })));
+    }
+    if (config.after) {
+      const extra = config.after();
+      if (extra) card.body.append(extra);
     }
     if (config.note) card.body.append(el('p', { class: 'og-home-note', text: config.note }));
     if (pendingFocus && pendingFocus !== 'form' && pendingFocus !== 'confirm') {

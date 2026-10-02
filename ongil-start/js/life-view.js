@@ -3,27 +3,41 @@
  *
  *   요약   today and this week, from what the user actually wrote
  *   일정   캘린더 · 할 일 · 루틴
- *   생활   식사 · 운동 · 수면
+ *   생활   식사 · 물 · 운동 · 수면       ← one date bar for all four; past days can be corrected (Phase 2C)
  *   기록   생활비 · 기록(일기)            ← private; the summary shows only whether something was written
+ *   건강   안부와 몸 상태 · 증상 · 복약 · 건강 메모   ← Phase 3; the same date bar as 생활 (moved between the two tabs)
  *
- * Nine areas, four tabs: on a phone the user sees four large choices, not a wall of nine.
- * Addresses: #life (요약) and #life/<section> — e.g. #life/calendar, #life/journal.
+ * Fourteen areas, five tabs: on a phone the user sees five large choices, not a wall of fourteen.
+ * Addresses: #life (요약) and #life/<section> — e.g. #life/calendar, #life/journal; a tab's own name works too
+ * (#life/plan, #life/daily, #life/records, #life/health). An unknown section falls back to 요약.
  * Everything is local. No statistic is invented: where nothing was written the summary says so.
  */
 import { el, clear } from './dom.js';
 import { createCard } from './home-ui.js';
 import { createCalendarSection, createTasksSection, createRoutinesSection } from './life-plan.js';
-import { createMealsSection, createExerciseSection, createSleepSection } from './life-daily.js';
+import { createDailyGroup } from './life-daily.js';
 import { createExpensesSection, createJournalSection } from './life-records.js';
+import { createHealthGroup } from './life-health.js';
 import { dateKey, formatDay, formatTime, weekOf, monthKey } from './dates.js';
 
-export const LIFE_SECTIONS = Object.freeze(['overview', 'calendar', 'tasks', 'routines', 'meals', 'exercise', 'sleep', 'expenses', 'journal']);
+export const LIFE_SECTIONS = Object.freeze(['overview', 'calendar', 'tasks', 'routines', 'meals', 'water', 'exercise', 'sleep', 'expenses', 'journal', 'checkin', 'symptoms', 'medication', 'health-notes']);
 export const LIFE_GROUPS = Object.freeze([
   Object.freeze({ id: 'overview', label: '요약', sections: Object.freeze(['overview']) }),
   Object.freeze({ id: 'plan', label: '일정', sections: Object.freeze(['calendar', 'tasks', 'routines']) }),
-  Object.freeze({ id: 'daily', label: '생활', sections: Object.freeze(['meals', 'exercise', 'sleep']) }),
+  Object.freeze({ id: 'daily', label: '생활', sections: Object.freeze(['meals', 'water', 'exercise', 'sleep']) }),
   Object.freeze({ id: 'records', label: '기록', sections: Object.freeze(['expenses', 'journal']) }),
+  Object.freeze({ id: 'health', label: '건강', sections: Object.freeze(['checkin', 'symptoms', 'medication', 'health-notes']) }),
 ]);
+/* the tabs whose cards follow the shared date bar */
+export const DATED_GROUPS = Object.freeze(['daily', 'health']);
+/* a tab's own name is also an address: it opens the tab at its first section */
+export const SECTION_ALIASES = Object.freeze({ plan: 'calendar', daily: 'meals', records: 'expenses', health: 'checkin' });
+/* the section an address names, or '' when it names none (the caller then falls back to 요약) */
+export function resolveSection(name) {
+  if (typeof name !== 'string' || name === '') return '';
+  if (LIFE_SECTIONS.includes(name)) return name;
+  return Object.prototype.hasOwnProperty.call(SECTION_ALIASES, name) ? SECTION_ALIASES[name] : '';
+}
 export const groupOf = (section) => LIFE_GROUPS.find((g) => g.sections.includes(section)) || LIFE_GROUPS[0];
 export const lifeHash = (section) => (section && section !== 'overview' && LIFE_SECTIONS.includes(section) ? `#life/${section}` : '#life');
 
@@ -50,6 +64,7 @@ export function buildOverview(stores, now = () => Date.now()) {
     tasks: { open: tasks.openCount(), dueToday: tasks.dueOn(today).filter((t) => !t.completed).length },
     routines: { total: todayRoutines.length, done: todayRoutines.filter((r) => r.completed).length },
     meals: { count: day.meals },
+    water: { count: day.water },
     exercise: { done: day.exercise },
     sleep: night ? { recorded: true, bedTime: night.bedTime, wakeTime: night.wakeTime } : { recorded: false },
     private: { expenseEntriesThisMonth: expenses.countForMonth(monthKey(today)), journalToday: journal.hasEntry(today) },
@@ -57,12 +72,18 @@ export function buildOverview(stores, now = () => Date.now()) {
   };
 }
 
-export function createLifeView({ host, stores, now = () => Date.now() }) {
+/*
+ * health (Phase 3): { checkIn, symptoms, medication, healthNotes } — the same store objects Home uses. Kept apart
+ * from `stores` because they are HEALTH_ADJACENT: the summary (buildOverview) never reads them.
+ */
+export function createLifeView({ host, stores, health, now = () => Date.now() }) {
   let current = 'overview';
   const panels = {};
   const tabs = {};
   let sections = null;
   let overviewCards = null;
+  let daily = null;
+  let healthGroup = null;
 
   function tile(section, title, value, detail) {
     return el('li', { class: 'og-life-tile', 'data-og-life-tile': section }, el('h4', { class: 'og-life-tile__title', text: title }), el('p', { class: 'og-life-tile__value', text: value }), detail ? el('p', { class: 'og-life-tile__detail', text: detail }) : null, el('a', { class: 'og-btn og-btn--ghost og-btn--small', href: lifeHash(section), 'aria-label': `${title} 보기`, text: '보기' }));
@@ -83,6 +104,7 @@ export function createLifeView({ host, stores, now = () => Date.now() }) {
         tile('tasks', '남은 할 일', o.tasks.open ? `${o.tasks.open}개` : '없어요', o.tasks.dueToday ? `오늘까지 ${o.tasks.dueToday}개` : ''),
         tile('routines', '오늘 루틴', o.routines.total ? `${o.routines.total}개 가운데 ${o.routines.done}개 했어요` : '없어요', ''),
         tile('meals', '식사', `${o.meals.count}끼`, ''),
+        tile('water', '물', `${o.water.count}잔`, ''),
         tile('exercise', '운동', o.exercise.done ? '했어요' : '아직이에요', ''),
         tile('sleep', '지난밤 수면', sleepText[0], sleepText[1]),
         /* private areas: whether something was written, never what */
@@ -110,16 +132,36 @@ export function createLifeView({ host, stores, now = () => Date.now() }) {
     const calendar = createCalendarSection({ schedule: stores.schedule, tasks: stores.tasks, now });
     const tasks = createTasksSection({ tasks: stores.tasks, onChange: () => calendar.render() });
     const routines = createRoutinesSection({ routines: stores.routines });
+    daily = createDailyGroup({ dailyLife: stores.dailyLife, sleep: stores.sleep, now, onDateChange: () => healthGroup && healthGroup.render() });
+    healthGroup = createHealthGroup({
+      ...health,
+      now,
+      getDate: daily.nav.date,
+      onPick: (d) => {
+        daily.nav.set(d);
+        const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        daily.nav.node.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        const label = daily.nav.node.querySelector('[data-og-daynav="date"]');
+        if (label) label.focus();
+      },
+    });
     sections = {
       overview: { cards: [overviewCards.today, overviewCards.week], render: renderOverview },
       calendar: { cards: [calendar.card], render: calendar.render, api: calendar },
-      tasks: { cards: [tasks.card], render: tasks.render },
+      tasks: { cards: [tasks.card], render: tasks.render, openAdd: tasks.openAdd },
       routines: { cards: routines.cards, render: routines.render },
-      meals: (({ card, render }) => ({ cards: [card], render }))(createMealsSection({ dailyLife: stores.dailyLife, now })),
-      exercise: (({ card, render }) => ({ cards: [card], render }))(createExerciseSection({ dailyLife: stores.dailyLife })),
-      sleep: (({ card, render }) => ({ cards: [card], render }))(createSleepSection({ sleep: stores.sleep, now })),
+      /* the four 생활 cards share one date bar, so the group renders as a whole (once, from its first section) */
+      meals: { cards: [daily.meals.card], render: daily.render },
+      water: { cards: [daily.water.card], render: () => {} },
+      exercise: { cards: [daily.exercise.card], render: () => {} },
+      sleep: { cards: [daily.sleep.card], render: () => {} },
       expenses: (({ card, render }) => ({ cards: [card], render }))(createExpensesSection({ expenses: stores.expenses, now })),
       journal: (({ card, render }) => ({ cards: [card], render }))(createJournalSection({ journal: stores.journal, now })),
+      /* the 건강 cards share the date bar too, so the group renders as a whole from its first section */
+      checkin: { cards: [healthGroup.checkin.card], render: healthGroup.render },
+      symptoms: { cards: [healthGroup.symptoms.card], render: () => {} },
+      medication: { cards: [healthGroup.medication.card, healthGroup.plan.card], render: () => {}, openAdd: healthGroup.plan.openAdd },
+      'health-notes': { cards: [healthGroup.notes.card], render: () => {}, openAdd: healthGroup.notes.openAdd },
     };
     for (const id of LIFE_SECTIONS) for (const card of sections[id].cards) card.root.dataset.ogLifeSection = id;
 
@@ -128,7 +170,8 @@ export function createLifeView({ host, stores, now = () => Date.now() }) {
       const tab = el('button', { type: 'button', class: 'og-tab', role: 'tab', id: `og-life-tab-${group.id}`, 'aria-controls': `og-life-panel-${group.id}`, 'aria-selected': 'false', tabindex: '-1', 'data-og-life-tab': group.id, text: group.label, onclick: () => { window.location.hash = lifeHash(group.sections[0]); } });
       tabs[group.id] = tab;
       tablist.append(tab);
-      panels[group.id] = el('div', { class: 'og-life-panel', role: 'tabpanel', id: `og-life-panel-${group.id}`, 'aria-labelledby': tab.id, tabindex: '-1', hidden: true }, group.sections.flatMap((s) => sections[s].cards.map((c) => c.root)));
+      const cards = group.sections.flatMap((s) => sections[s].cards.map((c) => c.root));
+      panels[group.id] = el('div', { class: 'og-life-panel', role: 'tabpanel', id: `og-life-panel-${group.id}`, 'aria-labelledby': tab.id, tabindex: '-1', hidden: true }, group.id === 'daily' ? [daily.nav.node, ...cards, daily.recent.card.root] : group.id === 'health' ? [healthGroup.intro, el('div', { class: 'og-daynav-slot', 'data-og-daynav-slot': 'health' }), ...cards, healthGroup.history.card.root] : cards);
     }
     /* left / right move between tabs, as tab lists do */
     tablist.addEventListener('keydown', (event) => {
@@ -163,15 +206,23 @@ export function createLifeView({ host, stores, now = () => Date.now() }) {
    * show(section): select the tab that holds the section, re-read its data, and (optionally) move to the section.
    * Called on entering 내 생활 and whenever the address changes within it — so anything changed on Home is current here.
    */
-  function show(section, { focus = false } = {}) {
-    current = LIFE_SECTIONS.includes(section) ? section : 'overview';
+  function show(section, { focus = false, entered = false } = {}) {
+    current = resolveSection(section) || 'overview';
+    /* arriving from another screen starts the 생활 cards on today; moving between tabs keeps the chosen day */
+    if (entered) daily.resetDate();
     const group = groupOf(current);
+    /* one date bar, shown in whichever dated tab is open */
+    if (group.id === 'daily' && daily.nav.node.parentNode !== panels.daily) panels.daily.prepend(daily.nav.node);
+    if (group.id === 'health') panels.health.querySelector('[data-og-daynav-slot]').append(daily.nav.node);
+    if (DATED_GROUPS.includes(group.id)) daily.nav.render();
     for (const g of LIFE_GROUPS) {
       const on = g.id === group.id;
       tabs[g.id].setAttribute('aria-selected', on ? 'true' : 'false');
       tabs[g.id].tabIndex = on ? 0 : -1;
       panels[g.id].hidden = !on;
     }
+    /* a status line describes the last action here; after a visit elsewhere it may no longer be true */
+    for (const s of group.sections) for (const card of sections[s].cards) card.status.textContent = '';
     for (const s of group.sections) sections[s].render();
     host.dataset.ogLifeSection = current;
     /* a person moving along the tab bar keeps their place on it; anyone arriving another way is taken to the section */
@@ -189,5 +240,13 @@ export function createLifeView({ host, stores, now = () => Date.now() }) {
 
   build();
   show('overview');
-  return Object.freeze({ show, current: () => current, refresh: () => show(current) });
+  /* open the "add" form of a section that has one (used by Home's "할 일 추가") */
+  function openAdd(section) {
+    const target = sections[resolveSection(section)];
+    if (!target || typeof target.openAdd !== 'function') return false;
+    target.openAdd();
+    return true;
+  }
+
+  return Object.freeze({ show, openAdd, current: () => current, refresh: () => show(current), day: () => daily.date() });
 }

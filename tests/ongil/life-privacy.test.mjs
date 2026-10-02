@@ -54,15 +54,16 @@ function world(seed) {
   };
 }
 
+// Phase 3: symptoms and healthNotes are HEALTH_ADJACENT, with contracts SymptomRecord and HealthNote. Same rules apply to them.
 test('OG-PV-1 every collection has a class; private and health-adjacent data may not sync, be searched or be shared', () => {
   assert.deepEqual(unclassified(), []);
   assert.deepEqual(Object.keys(CLASSIFICATION).sort(), [...COLLECTIONS].sort());
   for (const c of Object.values(CLASSIFICATION)) assert.ok(DATA_CLASSES.includes(c));
   const by = (cls) => Object.keys(CLASSIFICATION).filter((k) => CLASSIFICATION[k] === cls).sort();
   assert.deepEqual(by('PRIVATE'), ['expenses', 'journal']);
-  assert.deepEqual(by('HEALTH_ADJACENT'), ['checkins', 'medicationLogs', 'medications']);
+  assert.deepEqual(by('HEALTH_ADJACENT'), ['checkins', 'healthNotes', 'medicationLogs', 'medications', 'symptoms']);
   assert.deepEqual(by('STANDARD'), ['dailyLife', 'events', 'routineLogs', 'routines', 'sleepRecords', 'tasks']);
-  assert.deepEqual({ ...CONTRACT_CLASSES }, { CalendarEvent: 'STANDARD', Task: 'STANDARD', Routine: 'STANDARD', RoutineLog: 'STANDARD', DailyLife: 'STANDARD', SleepRecord: 'STANDARD', ExpenseRecord: 'PRIVATE', JournalEntry: 'PRIVATE', Medication: 'HEALTH_ADJACENT', MedicationLog: 'HEALTH_ADJACENT', CheckIn: 'HEALTH_ADJACENT' });
+  assert.deepEqual({ ...CONTRACT_CLASSES }, { CalendarEvent: 'STANDARD', Task: 'STANDARD', Routine: 'STANDARD', RoutineLog: 'STANDARD', DailyLife: 'STANDARD', SleepRecord: 'STANDARD', ExpenseRecord: 'PRIVATE', JournalEntry: 'PRIVATE', Medication: 'HEALTH_ADJACENT', MedicationLog: 'HEALTH_ADJACENT', CheckIn: 'HEALTH_ADJACENT', SymptomRecord: 'HEALTH_ADJACENT', HealthNote: 'HEALTH_ADJACENT' });
   for (const c of COLLECTIONS) {
     if (classOf(c) === 'APP') continue;
     assert.equal(maySync(c), false, c);
@@ -152,14 +153,19 @@ test('OG-LF-7 tabs, calendar and forms are operable without a mouse and state is
   assert.match(plan, /tabindex: isSelected \? '0' : '-1', 'aria-pressed': isSelected \? 'true' : 'false', 'aria-current': key === today\(now\) \? 'date' : null, 'aria-label': dayLabel/);
   for (const key of ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown']) assert.ok(plan.includes(key), key);
   assert.match(plan, /parts\.push\(`일정 \$\{events\}개`\)/, 'a day with events says so in its name, not only with a dot');
-  for (const label of ['이전 달', '다음 달', '오늘로 가기', '할 일 골라 보기', '오늘 먹은 끼니', '운동 종류', '오늘 걷기·운동']) assert.ok(ALL.includes(`'${label}'`), label);
+  for (const label of ['이전 달', '다음 달', '오늘로 가기', '할 일 골라 보기', '운동 종류']) assert.ok(ALL.includes(`'${label}'`), label);
+  // Phase 2C: 식사 and 운동 can be recorded for a chosen day, so their group names carry the day ("오늘" or the date)
+  // instead of a fixed "오늘". The groups must still be named — and so must the new 물 group and the date bar.
+  for (const label of ['`${word} 먹은 끼니`', '`${word} 걷기·운동`', '`${word} 마신 물`', "'기록할 날짜'"]) assert.ok(ALL.includes(`'aria-label': ${label}`), label);
+  assert.match(ALL, /export const dayWord = \(date, today\) => \(date === today \? '오늘' : formatDateKey\(date\)\);/);
   assert.match(CSS, /\.og-tab\[aria-selected="true"\]::after \{/);
   assert.match(CSS, /\.og-cal__day\[aria-current="date"\] \{ border-color: var\(--og-ink\); border-style: dashed; \}/);
   assert.match(CSS, /\.og-tab \{[^}]*min-height: 3\.25rem/);
   assert.match(CSS, /\.og-cal__day \{[^}]*min-height: 3rem/);
   assert.match(CSS, /@media \(max-width: 480px\) \{[\s\S]*\.og-cal__day \{ min-height: 2\.9rem/);
   assert.match(CSS, /table-layout: fixed/);
-  assert.match(CSS, /\.og-tabs \{ display: grid; grid-template-columns: repeat\(4, minmax\(0, 1fr\)\)/, 'four tabs fit a phone without scrolling');
+  // Phase 3: a fifth tab (건강). Still a grid of equal columns — no horizontal scrolling — and checked at 390px in the browser.
+  assert.match(CSS, /\.og-tabs \{ display: grid; grid-template-columns: repeat\(5, minmax\(0, 1fr\)\)/, 'five tabs fit a phone without scrolling');
   assert.equal(/lv-|livon|--nls-/i.test(CSS.replace(/\/\*[\s\S]*?\*\//g, '')), false);
   assert.equal(/#[0-9a-f]{3,6}\b/i.test(CSS.replace(/\/\*[\s\S]*?\*\//g, '')), false, 'colours come from tokens');
   /* every list that can delete goes through the shared confirmation */

@@ -34,7 +34,9 @@ import { createRoutineStore } from './routines.js';
 import { createSleepStore } from './sleep.js';
 import { createExpenseStore } from './expenses.js';
 import { createJournalStore } from './journal.js';
-import { createLifeView } from './life-view.js';
+import { createSymptomStore } from './symptoms.js';
+import { createHealthNoteStore } from './health-notes.js';
+import { createLifeView, lifeHash, resolveSection } from './life-view.js';
 import { focusNode } from './accessibility.js';
 import { dateKey } from './dates.js';
 import { createPanels } from './panels.js';
@@ -59,6 +61,12 @@ const routines = createRoutineStore(storage);
 const sleep = createSleepStore(storage);
 const expenses = createExpenseStore(storage);
 const journal = createJournalStore(storage);
+const symptoms = createSymptomStore(storage);
+const healthNotes = createHealthNoteStore(storage);
+
+/* set by a Home shortcut that continues in My Life; used once, when My Life is shown */
+let pendingLifeAdd = null;
+let lifeDay = dateKey();
 
 const search = createSearch();
 search.registerProvider(createAreaProvider(AREAS));
@@ -87,8 +95,13 @@ const nearbySource = createLifelongClassSource({
 const home = createHomeView({
   host: doc.querySelector('[data-og-modules="home"]'),
   doc,
-  stores: { profile, checkIn, schedule, medication, dailyLife, saved, familyConnection: onboarding.familyConnection },
+  stores: { profile, checkIn, schedule, medication, dailyLife, tasks, routines, saved, familyConnection: onboarding.familyConnection },
   source: nearbySource,
+  /* Home has no task form of its own: "할 일 추가" opens the one in 내 생활 › 할 일 */
+  onAddTask: () => {
+    pendingLifeAdd = 'tasks';
+    win.location.hash = lifeHash('tasks');
+  },
 });
 
 const films = createFilms({
@@ -102,6 +115,8 @@ const films = createFilms({
 const life = createLifeView({
   host: doc.querySelector('[data-og-modules="life"]'),
   stores: { schedule, tasks, routines, dailyLife, sleep, expenses, journal },
+  /* 건강 (Phase 3): check-in and medication are the very objects Home uses; all four stay on this device */
+  health: { checkIn, symptoms, medication, healthNotes },
 });
 
 const navigation = createNavigation({ doc });
@@ -139,12 +154,24 @@ const accountView = createAccountView({
   },
 });
 
+function showLife(section, options) {
+  life.show(section, options);
+  lifeDay = dateKey();
+  if (pendingLifeAdd) {
+    const target = pendingLifeAdd;
+    pendingLifeAdd = null;
+    life.openAdd(target);
+  }
+}
+
 const router = createRouter({
   win,
   doc,
   onChange: ({ view, userInitiated, section, sectionOnly }) => {
+    /* an address that names no section of My Life shows 요약 and is corrected, instead of a broken screen */
+    if (view === 'life' && section && !resolveSection(section)) win.history.replaceState(null, '', '#life');
     if (sectionOnly) {
-      if (view === 'life') life.show(section, { focus: userInitiated });
+      if (view === 'life') showLife(section, { focus: userInitiated });
       return;
     }
     navigation.setCurrent(view);
@@ -154,7 +181,7 @@ const router = createRouter({
     if (view === 'account') accountView.render();
     if (view === 'saved') savedView.render();
     if (view === 'home') refreshHome();
-    if (view === 'life') life.show(section, { focus: userInitiated && !!section });
+    if (view === 'life') showLife(section, { focus: userInitiated && !!section, entered: true });
     if (userInitiated && !(view === 'life' && section)) focusView(doc, view);
   },
 });
@@ -188,7 +215,6 @@ doc.addEventListener('click', (event) => {
 });
 
 /* the calendar day can change while the page stays open (left overnight, or reopened from the background) */
-let lifeDay = dateKey();
 const checkDay = () => {
   if (router.current() === 'home' && home.dayChanged() && !onboardingView.isOpen()) refreshHome();
   else home.greet();
@@ -209,4 +235,4 @@ router.start();
 html.dataset.ogReady = 'true';
 
 /* one stable handle for later phases and for manual checks; no secrets, nothing privileged */
-win.Ongil = Object.freeze({ version: 'my-life-v1', storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal });
+win.Ongil = Object.freeze({ version: 'health-v1', storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes });

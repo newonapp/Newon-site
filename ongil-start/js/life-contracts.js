@@ -14,10 +14,11 @@ const opt = (id, label) => Object.freeze({ id, label });
 
 export const CHECKIN_STATUSES = Object.freeze([opt('good', '좋아요'), opt('okay', '괜찮아요'), opt('hard', '조금 힘들어요'), opt('help', '도움이 필요해요')]);
 
-export const LIFE_LIMITS = Object.freeze({ eventTitle: 80, medicationName: 40, memo: 100, meals: 3, water: 20, events: 1000, medications: 50, days: 366, logDays: 120, exerciseMinutes: 600, taskTitle: 80, tasks: 500, routineTitle: 40, routines: 30, expenses: 2000, amount: 100000000, journalText: 1000, journalEntries: 300 });
+export const LIFE_LIMITS = Object.freeze({ eventTitle: 80, medicationName: 40, memo: 100, meals: 3, water: 20, events: 1000, medications: 50, days: 366, logDays: 120, exerciseMinutes: 600, taskTitle: 80, tasks: 500, routineTitle: 40, routines: 30, expenses: 2000, amount: 100000000, journalText: 1000, journalEntries: 300, checkinMemo: 200, medicationLogDays: 366, symptomOther: 40, symptomNote: 200, healthNoteText: 300, healthNotes: 700, healthNotesPerDay: 10 });
 
 const ID_RE = /^[a-z]{2,4}_[a-z0-9]{6,40}$/;
 const stamp = (value, fallback) => (Number.isSafeInteger(value) && value > 0 ? value : fallback);
+const oneOf = (value, options, fallback = '') => (options.some((o) => o.id === value) ? value : fallback);
 const intIn = (value, min, max, fallback) => (Number.isInteger(value) && value >= min && value <= max ? value : fallback);
 
 export function newId(prefix, now = Date.now(), random = Math.random) {
@@ -27,11 +28,39 @@ export function isId(value) {
   return typeof value === 'string' && ID_RE.test(value);
 }
 
+/*
+ * CheckIn — one record per local day.
+ *   status   기분 (Phase 2A "오늘의 안부"): good · okay · hard · help
+ * Phase 3 adds optional, self-reported detail. Each field is written only when the user chose it, so a
+ * Phase 2A record (status only) is read unchanged and a Home-only check-in keeps exactly its old shape.
+ *   body     몸 상태 (컨디션): good · okay · tired · low
+ *   energy   에너지: enough · okay · low
+ *   pain     통증이 있었는지: yes · no
+ *   memo     짧은 메모
+ * A record needs at least one of them. None of these is a measurement, a score or a judgement.
+ */
+export const CHECKIN_BODY = Object.freeze([opt('good', '좋아요'), opt('okay', '보통이에요'), opt('tired', '피곤해요'), opt('low', '컨디션이 떨어져요')]);
+export const CHECKIN_ENERGY = Object.freeze([opt('enough', '충분해요'), opt('okay', '보통이에요'), opt('low', '부족해요')]);
+export const CHECKIN_PAIN = Object.freeze([opt('no', '없어요'), opt('yes', '있어요')]);
+export const CHECKIN_FIELDS = Object.freeze(['status', 'body', 'energy', 'pain', 'memo']);
+
 export function normalizeCheckIn(input, now = Date.now()) {
   if (!isPlainObject(input)) throw new ContractError('INVALID_CHECKIN');
   if (!isDateKey(input.date)) throw new ContractError('INVALID_DATE');
-  if (!CHECKIN_STATUSES.some((s) => s.id === input.status)) throw new ContractError('INVALID_STATUS');
-  return { schemaVersion: SCHEMA_VERSION, id: `checkin:${input.date}`, date: input.date, status: input.status, createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
+  const hasStatus = input.status !== undefined && input.status !== null && input.status !== '';
+  if (hasStatus && !CHECKIN_STATUSES.some((s) => s.id === input.status)) throw new ContractError('INVALID_STATUS');
+  const extra = {};
+  const body = oneOf(input.body, CHECKIN_BODY);
+  const energy = oneOf(input.energy, CHECKIN_ENERGY);
+  const pain = oneOf(input.pain, CHECKIN_PAIN);
+  const memo = safeText(input.memo, LIFE_LIMITS.checkinMemo);
+  if (body) extra.body = body;
+  if (energy) extra.energy = energy;
+  if (pain) extra.pain = pain;
+  if (memo) extra.memo = memo;
+  /* an empty check-in is not a record: the old error code is kept for it */
+  if (!hasStatus && Object.keys(extra).length === 0) throw new ContractError('INVALID_STATUS');
+  return { schemaVersion: SCHEMA_VERSION, id: `checkin:${input.date}`, date: input.date, ...(hasStatus ? { status: input.status } : {}), ...extra, createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
 }
 
 export function normalizeEvent(input, now = Date.now()) {
@@ -52,14 +81,22 @@ export function normalizeMedication(input, now = Date.now()) {
   if (!name) throw new ContractError('INVALID_NAME');
   const time = input.time === undefined || input.time === null || input.time === '' ? '' : input.time;
   if (time !== '' && !isTime(time)) throw new ContractError('INVALID_TIME');
-  return { schemaVersion: SCHEMA_VERSION, id: input.id, name, time, memo: safeText(input.memo, LIFE_LIMITS.memo), createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
+  /* Phase 3: the days it is taken (0 = Sunday … 6 = Saturday). Missing or empty = every day, so Phase 2A entries read as 매일. */
+  const picked = Array.isArray(input.daysOfWeek) ? ALL_DAYS.filter((d) => input.daysOfWeek.includes(d)) : [];
+  const daysOfWeek = picked.length ? picked : [...ALL_DAYS];
+  return { schemaVersion: SCHEMA_VERSION, id: input.id, name, time, daysOfWeek, memo: safeText(input.memo, LIFE_LIMITS.memo), createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
 }
+export const ALL_DAYS = Object.freeze([0, 1, 2, 3, 4, 5, 6]);
+export const takesOn = (medication, weekday) => Array.isArray(medication.daysOfWeek) && medication.daysOfWeek.includes(weekday);
 
 export function normalizeMedicationLog(input, now = Date.now()) {
   if (!isPlainObject(input)) throw new ContractError('INVALID_LOG');
   if (!isId(input.medicationId)) throw new ContractError('INVALID_ID');
   if (!isDateKey(input.date)) throw new ContractError('INVALID_DATE');
-  return { medicationId: input.medicationId, date: input.date, taken: input.taken === true, updatedAt: stamp(input.updatedAt, now) };
+  /* Phase 3: the name and time as they were when the mark was made, so editing the medication later does not rewrite the past */
+  const name = safeText(input.name, LIFE_LIMITS.medicationName);
+  const time = isTime(input.time) ? input.time : '';
+  return { medicationId: input.medicationId, date: input.date, taken: input.taken === true, ...(name ? { name, time } : {}), updatedAt: stamp(input.updatedAt, now) };
 }
 
 /*
@@ -120,7 +157,6 @@ export const SLEEP_QUALITIES = Object.freeze([opt('good', '좋았어요'), opt('
 export const EXPENSE_CATEGORIES = Object.freeze([opt('food', '식비'), opt('living', '생활'), opt('transport', '교통'), opt('health', '건강'), opt('hobby', '취미'), opt('other', '기타')]);
 export const JOURNAL_MOODS = Object.freeze([opt('good', '좋았어요'), opt('okay', '보통이에요'), opt('hard', '힘들었어요')]);
 
-const oneOf = (value, options, fallback = '') => (options.some((o) => o.id === value) ? value : fallback);
 const optionalTime = (value, code) => {
   if (value === undefined || value === null || value === '') return '';
   if (!isTime(value)) throw new ContractError(code);
@@ -199,4 +235,34 @@ export function normalizeJournal(input, now = Date.now()) {
   const text = journalText(input.text);
   if (!text) throw new ContractError('INVALID_TEXT');
   return { schemaVersion: SCHEMA_VERSION, id: input.id, date: input.date, text, mood: oneOf(input.mood, JOURNAL_MOODS), createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
+}
+
+/* ───────── Phase 3: SymptomRecord · HealthNote ───────── */
+
+/*
+ * SymptomRecord — what the user felt on one local day, chosen from a short list or typed under 기타.
+ * One record per day (the day's list is edited, not stacked). intensity is the user's own word for how it felt
+ * (약하게 / 보통 / 강하게): it is not a medical severity and nothing is inferred from it.
+ */
+export const SYMPTOM_TYPES = Object.freeze([opt('headache', '두통'), opt('dizzy', '어지러움'), opt('cough', '기침'), opt('runnyNose', '콧물'), opt('throat', '목 불편'), opt('stomachache', '복통'), opt('digestion', '소화 불편'), opt('muscle', '근육통'), opt('fatigue', '피로'), opt('other', '기타')]);
+export const SYMPTOM_FEELINGS = Object.freeze([opt('mild', '약하게'), opt('moderate', '보통'), opt('strong', '강하게')]);
+
+export function normalizeSymptoms(input, now = Date.now()) {
+  if (!isPlainObject(input)) throw new ContractError('INVALID_SYMPTOMS');
+  if (!isDateKey(input.date)) throw new ContractError('INVALID_DATE');
+  const list = Array.isArray(input.symptoms) ? SYMPTOM_TYPES.map((t) => t.id).filter((id) => input.symptoms.includes(id)) : [];
+  const other = list.includes('other') ? safeText(input.other, LIFE_LIMITS.symptomOther) : '';
+  const note = safeText(input.note, LIFE_LIMITS.symptomNote);
+  if (list.length === 0 && !note) throw new ContractError('EMPTY_RECORD');
+  return { schemaVersion: SCHEMA_VERSION, id: `symptoms:${input.date}`, date: input.date, symptoms: list, other, intensity: list.length ? oneOf(input.intensity, SYMPTOM_FEELINGS) : '', note, createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
+}
+
+/* HealthNote — a free note for one local day ("병원 다녀옴"). Several per day are allowed; each is edited or removed on its own. */
+export function normalizeHealthNote(input, now = Date.now()) {
+  if (!isPlainObject(input)) throw new ContractError('INVALID_NOTE');
+  if (!isId(input.id)) throw new ContractError('INVALID_ID');
+  if (!isDateKey(input.date)) throw new ContractError('INVALID_DATE');
+  const text = journalText(input.text).slice(0, LIFE_LIMITS.healthNoteText);
+  if (!text) throw new ContractError('INVALID_TEXT');
+  return { schemaVersion: SCHEMA_VERSION, id: input.id, date: input.date, text, createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
 }

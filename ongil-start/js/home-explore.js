@@ -149,10 +149,10 @@ export function createNearbyCard({ profile, source, saved }) {
 
 export const QUICK_ACTIONS = Object.freeze([
   Object.freeze({ id: 'add-event', label: '일정 추가', kind: 'action' }),
+  Object.freeze({ id: 'add-task', label: '할 일 추가', kind: 'action' }),
   Object.freeze({ id: 'add-medication', label: '약 추가', kind: 'action' }),
   Object.freeze({ id: 'life', label: '내 생활 보기', kind: 'route', href: '#life' }),
   Object.freeze({ id: 'enjoy', label: '즐길거리 찾기', kind: 'route', href: '#enjoy' }),
-  Object.freeze({ id: 'family', label: '가족 보기', kind: 'route', href: '#family' }),
   Object.freeze({ id: 'care', label: '돌봄·서비스 찾기', kind: 'route', href: '#care' }),
 ]);
 

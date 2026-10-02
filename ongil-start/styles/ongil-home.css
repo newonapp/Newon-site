@@ -12,6 +12,20 @@
 .og-greeting__date { display: block; margin-top: 0.3rem; }
 
 .og-home .og-lead { margin-bottom: 1.75rem; }
+
+/* [P2C] what is left today — plain counts in one quiet line of pills, above the cards; hidden when there is nothing */
+.og-home-summary { margin: -0.5rem 0 1.5rem; }
+.og-home-summary[hidden] { display: none; }
+.og-home-summary__list { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.og-home-summary__item { display: inline-flex; align-items: baseline; gap: 0.5rem; padding: 0.55rem 1rem; border: 1px solid var(--og-line-strong); border-radius: var(--og-radius-pill); font-size: 1.05rem; color: var(--og-ink-soft); }
+.og-home-summary__value { color: var(--og-ink); font-weight: 700; }
+
+/* [P2C] links from a Home card to the full screen in My Life */
+.og-band .og-home-more { margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+.og-home-more__link { display: inline-flex; align-items: center; min-height: var(--og-control); color: var(--og-ink); font-size: 1.05rem; font-weight: 700; text-underline-offset: 0.25em; }
+.og-home-more__link::after { content: " →"; white-space: pre; }
+.og-home-after { display: grid; gap: 0.8rem; }
+.og-band .og-home-count { margin: 0; color: var(--og-ink-soft); font-size: 1.05rem; }
 .og-home-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 0 0 1rem; align-items: start; }
 
 .og-home-card { min-width: 0; padding: 1.5rem 1.4rem; border-radius: var(--og-radius-lg); color: var(--og-ink); scroll-margin-top: calc(var(--gnav-h, 74px) + 1rem); }
@@ -25,10 +39,11 @@
 .og-home-card__lead { margin: 0 0 1rem; color: var(--og-ink-soft); font-size: 1.1rem; }
 .og-home-card--l1 .og-home-card__lead { font-size: 1.3rem; color: var(--og-white); }
 .og-home-card__body { display: grid; gap: 1rem; }
+.og-home-card__body > * { min-width: 0; } /* [P2C] a long unbroken word inside a card wraps instead of widening the card */
 .og-home-card__status { margin: 0.6rem 0 0; }
 .og-home-card__status:empty { min-height: 0; margin: 0; }
 .og-home-empty { margin: 0; color: var(--og-ink-soft); font-size: 1.1rem; }
-.og-band .og-home-note { margin: 0; color: var(--og-muted); font-size: 0.95rem; line-height: 1.5; }
+.og-band .og-home-note { margin: 0; color: var(--og-muted); font-size: 1rem; line-height: 1.55; overflow-wrap: anywhere; } /* [P2C] 0.95rem → 1rem: text people read is never under 16px */
 .og-home-help { margin: 0; background: var(--og-surface); }
 .og-home-help p { margin: 0 0 0.4rem; }
 .og-home-help p:last-child { margin: 0; }

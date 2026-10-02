@@ -24,6 +24,11 @@ export function createCard({ area = 'home', slot, title, level, lead, heading = 
   return { root, body, status, titleId, titleNode, say: (message) => announce(status, message), focusTitle: () => titleNode.focus() };
 }
 
+/* links from a Home card to the screen that holds the full list: [{ label, href }] */
+export function moreLinks(links) {
+  return el('p', { class: 'og-home-more' }, links.map((l) => el('a', { class: 'og-home-more__link', href: l.href, text: l.label })));
+}
+
 /* Korean object particle for a word: 일정 → 을, 생활비 → 를 (by whether the last syllable has a final consonant) */
 export function eul(word) {
   const code = String(word).charCodeAt(String(word).length - 1);

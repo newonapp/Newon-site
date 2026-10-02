@@ -102,20 +102,27 @@ test('OG-RT-5 titles name the view', () => {
 /* ───────── view shells ───────── */
 
 // Phase 2A: Home's nine modules are implemented (available). Phase 2B: My Life's eight. The other six areas are still slots.
-test('OG-VW-1 every primary area has a description, an empty state and module slots with unique ids; only Home and My Life are available', () => {
+// Phase 2C: Home shows My Life's tasks and routines (eleven modules) and My Life records water (nine modules).
+// Phase 3: 건강·안부 now has four working parts (check-in, life-check, medication, records), kept in 내 생활 › 건강 and
+// linked from the area. Exactly those four may say they work; 도움 요청 · 긴급 연락망 · 병원 · 검진 are still not built and must not.
+// My Life gained the four 건강 sections. Every other area still has no working module.
+const HEALTH_LIVE = ['check-in', 'life-check', 'medication', 'records'];
+test('OG-VW-1 every primary area has a description, an empty state and module slots with unique ids; only Home, My Life and the built health parts are available', () => {
   for (const a of PRIMARY_AREAS) {
     assert.ok(a.description.length >= 10, a.id);
     assert.ok(a.empty && /없습니다/.test(a.empty), `${a.id} empty state`);
     assert.ok(a.modules.length >= 4, a.id);
     assert.equal(new Set(a.modules.map((m) => m.id)).size, a.modules.length, a.id);
     for (const m of a.modules) {
-      assert.equal(m.available, a.id === 'home' || a.id === 'life', `${a.id}.${m.id} must not claim to work before it is built`);
+      assert.equal(m.available, a.id === 'home' || a.id === 'life' || (a.id === 'health' && HEALTH_LIVE.includes(m.id)), `${a.id}.${m.id} must not claim to work before it is built`);
       assert.ok(m.title && m.description);
     }
   }
+  assert.deepEqual(AREAS.find((a) => a.id === 'health').modules.filter((m) => !m.available).map((m) => m.id), ['help', 'contacts', 'hospital', 'checkup']);
+  assert.equal(AREAS.find((a) => a.id === 'health').link.href, '#life/checkin');
   const ids = (id) => AREAS.find((a) => a.id === id).modules.map((m) => m.id);
-  assert.deepEqual(ids('home'), ['greeting', 'check-in', 'schedule', 'medication', 'life-check', 'family-update', 'today', 'nearby', 'quick-actions']);
-  assert.deepEqual(ids('life'), ['calendar', 'tasks', 'routine', 'meals', 'exercise', 'sleep', 'expenses', 'journal']);
+  assert.deepEqual(ids('home'), ['greeting', 'check-in', 'schedule', 'tasks', 'routines', 'medication', 'life-check', 'family-update', 'today', 'nearby', 'quick-actions']);
+  assert.deepEqual(ids('life'), ['calendar', 'tasks', 'routine', 'meals', 'water', 'exercise', 'sleep', 'expenses', 'journal', 'checkin', 'symptoms', 'medication', 'health-notes']);
   assert.equal(ids('store').length, 10);
 });
 

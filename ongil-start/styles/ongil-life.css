@@ -4,7 +4,7 @@
  */
 
 /* four tabs — large, always visible, no horizontal scrolling on a phone */
-.og-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; margin: 0 0 1.5rem; max-width: 40rem; }
+.og-tabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.5rem; margin: 0 0 1.5rem; max-width: 48rem; } /* [P3] five tabs: 건강 added */
 .og-tab { position: relative; min-height: 3.25rem; padding: 0.6rem 0.4rem; border: 1.5px solid var(--og-line-strong); border-radius: var(--og-radius-card); background: transparent; color: var(--og-ink); font-family: inherit; font-size: 1.15rem; font-weight: var(--og-weight-body); cursor: pointer; scroll-margin-top: calc(var(--gnav-h, 74px) + 1rem); }
 .og-tab[aria-selected="true"] { border-color: var(--og-ink); background: var(--og-surface); font-weight: 700; }
 .og-tab[aria-selected="true"]::after { content: ""; position: absolute; left: 25%; right: 25%; bottom: 0.45rem; height: 3px; border-radius: 3px; background: var(--og-ink); } /* the chosen tab is marked by a bar, not by colour alone */
@@ -29,6 +29,23 @@
 .og-life-days li:first-child { border-top: 0; }
 .og-life-days__date { color: var(--og-ink-soft); }
 
+/* [P2C] one date bar for 식사 · 물 · 운동 · 수면: 이전 날 · 날짜 · 다음 날 · 오늘 */
+.og-daynav { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; gap: 0.5rem; align-items: center; padding: 0.8rem; border: 1.5px solid var(--og-line-strong); border-radius: var(--og-radius-card); scroll-margin-top: calc(var(--gnav-h, 74px) + 1rem); }
+.og-band .og-daynav__date { margin: 0; text-align: center; font-size: 1.25rem; font-weight: 700; color: var(--og-ink); overflow-wrap: anywhere; }
+.og-daynav__date:focus { outline: none; }
+.og-daynav__date:focus-visible { outline: 2px solid var(--og-ink); outline-offset: 4px; border-radius: 0.4rem; }
+.og-daynav__state { color: var(--og-ink-soft); font-weight: var(--og-weight-body); white-space: pre; }
+.og-daynav__btn { min-height: 3rem; }
+.og-daynav__btn:disabled { opacity: 0.4; cursor: default; }
+
+/* [P2C] the last seven days: each date is a button that opens that day in the cards above */
+.og-life-days--pick li { flex-wrap: wrap; gap: 0.2rem 1rem; padding: 0.35rem 0; }
+.og-life-days__pick { min-height: var(--og-control); padding: 0.3rem 0.9rem; margin-left: -0.9rem; border: 1.5px solid transparent; border-radius: var(--og-radius-pill); background: transparent; color: var(--og-ink); font-family: inherit; font-size: var(--og-size-body); font-weight: 700; text-align: left; text-decoration: underline; text-underline-offset: 0.25em; cursor: pointer; }
+.og-life-days__pick:hover { border-color: var(--og-line-strong); }
+.og-life-days__pick[aria-pressed="true"] { border-color: var(--og-ink); text-decoration: none; }
+.og-life-days__pick[aria-pressed="true"]::after { content: " ✓"; white-space: pre; } /* the chosen day carries a tick, not only a ring */
+.og-life-days__text { color: var(--og-ink-soft); overflow-wrap: anywhere; }
+
 /* month navigation and grid */
 .og-cal { display: grid; gap: 0.8rem; }
 .og-cal__nav { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
@@ -52,9 +69,22 @@
 .og-choice--day { padding: 0.5rem 0.8rem 0.5rem 0.65rem; }
 .og-private-note { margin-top: 0.8rem; }
 
+/* [P3] 건강 tab: questions with large single choices, the shared date bar's place, one safety note */
+.og-health-q { display: grid; gap: 0.5rem; }
+.og-health-q + .og-health-q { margin-top: 0.4rem; }
+.og-daynav-slot:empty { display: none; }
+.og-health-intro { margin: 0; }
+.og-health-delete .og-confirm[hidden] { display: none; }
+.og-health-delete .og-confirm { margin-top: 0.4rem; }
+.og-home-card__body > * { min-width: 0; }
+
 @media (max-width: 700px) {
   .og-life-tiles { grid-template-columns: 1fr; }
-  .og-tab { font-size: 1.1rem; }
+  /* phone: the date on its own line, the three buttons under it */
+  .og-daynav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .og-daynav__date { grid-column: 1 / -1; grid-row: 1; padding: 0.2rem 0; }
+  .og-daynav__btn { padding-inline: 0.4rem; }
+  .og-tab { font-size: 1.1rem; padding-inline: 0.2rem; }
   .og-cal__nav .og-btn { padding-inline: 0.7rem; }
 }
 @media (max-width: 480px) {

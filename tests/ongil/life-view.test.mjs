@@ -46,13 +46,15 @@ function world(seed) {
 
 /* ───────── route ───────── */
 
-test('OG-LF-1 My Life route: #life and #life/<section>; nine sections in four tabs', () => {
+// Phase 2C: 물 (water) became a section of the 생활 tab, so there are ten sections. Still four tabs, still one tab per section.
+// Phase 3: the 건강 tab adds four sections — fourteen sections in five tabs, still one tab per section.
+test('OG-LF-1 My Life route: #life and #life/<section>; fourteen sections in five tabs', () => {
   assert.equal(resolveView('#life'), 'life');
   for (const s of LIFE_SECTIONS) assert.equal(resolveView(`#life/${s}`), 'life', s);
   assert.deepEqual([sectionOf('#life'), sectionOf('#life/calendar'), sectionOf('#life/journal'), sectionOf('#life/a/b'), sectionOf('#life/<x>'), sectionOf('')], ['', 'calendar', 'journal', '', '', '']);
   assert.equal(hashFor('life'), '#life');
-  assert.deepEqual([...LIFE_SECTIONS], ['overview', 'calendar', 'tasks', 'routines', 'meals', 'exercise', 'sleep', 'expenses', 'journal']);
-  assert.deepEqual(LIFE_GROUPS.map((g) => [g.label, [...g.sections]]), [['요약', ['overview']], ['일정', ['calendar', 'tasks', 'routines']], ['생활', ['meals', 'exercise', 'sleep']], ['기록', ['expenses', 'journal']]]);
+  assert.deepEqual([...LIFE_SECTIONS], ['overview', 'calendar', 'tasks', 'routines', 'meals', 'water', 'exercise', 'sleep', 'expenses', 'journal', 'checkin', 'symptoms', 'medication', 'health-notes']);
+  assert.deepEqual(LIFE_GROUPS.map((g) => [g.label, [...g.sections]]), [['요약', ['overview']], ['일정', ['calendar', 'tasks', 'routines']], ['생활', ['meals', 'water', 'exercise', 'sleep']], ['기록', ['expenses', 'journal']], ['건강', ['checkin', 'symptoms', 'medication', 'health-notes']]]);
   assert.deepEqual(LIFE_GROUPS.flatMap((g) => g.sections), [...LIFE_SECTIONS], 'every section belongs to exactly one tab');
   assert.deepEqual([groupOf('tasks').id, groupOf('sleep').id, groupOf('journal').id, groupOf('nope').id], ['plan', 'daily', 'records', 'overview']);
   assert.deepEqual([lifeHash('overview'), lifeHash('calendar'), lifeHash('nope'), lifeHash('')], ['#life', '#life/calendar', '#life', '#life']);

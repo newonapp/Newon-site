@@ -37,6 +37,8 @@ export function renderArea(area, host) {
 
   const primary = el('div', { class: 'og-region', 'data-og-region': 'primary', 'aria-labelledby': headingId, role: 'region' });
   setRegionState(primary, 'empty', area.empty);
+  /* an area whose records are kept on another screen says where (Phase 3: 건강·안부 → 내 생활 › 건강) */
+  if (area.link) primary.append(el('p', { class: 'og-form__actions' }, el('a', { class: 'og-btn og-btn--primary', href: area.link.href, 'data-og-area-link': area.id, text: area.link.label })));
   wrap.append(primary);
 
   if (area.modules.length) {

@@ -16,7 +16,7 @@ body:has(.og) { padding-top: 0 !important; background: var(--og-bg); color: var(
 .og-search { display: flex; gap: 0.4rem; }
 .og-search input { flex: 1; min-width: 0; height: var(--og-control); padding: 0 0.85rem; border: 1px solid var(--og-panel-input-border); border-radius: var(--og-radius-input); font: inherit; font-size: 1rem; color: var(--og-panel-ink); background: var(--og-panel-bg); }
 .og-search button { height: var(--og-control); padding: 0 1rem; border: 0; border-radius: var(--og-radius-input); background: var(--og-panel-ink); color: var(--og-panel-bg); font: inherit; font-size: 1rem; font-weight: 700; cursor: pointer; }
-.og-panel__note { margin: 0.7rem 0 0.15rem; color: #555; font-size: 0.95rem; line-height: 1.5; } /* [P1] 0.82rem #666 → 0.95rem #555 */
+.og-panel__note { margin: 0.7rem 0 0.15rem; color: #555; font-size: 1rem; line-height: 1.5; } /* [P1] 0.82rem #666 → 0.95rem #555; [P2C] → 1rem */
 .og-panel__group { margin: 0.9rem 0 0.2rem; font-size: 0.9rem; font-weight: 700; color: #555; }
 .og-panel__list { margin: 0; padding: 0; list-style: none; }
 .og-panel__list li { border-top: 1px solid var(--og-panel-line); }
@@ -24,7 +24,7 @@ body:has(.og) { padding-top: 0 !important; background: var(--og-bg); color: var(
 .og-panel__list a, .og-panel__list li > span { display: flex; flex-direction: column; justify-content: center; gap: 0.1rem; min-height: var(--og-control); padding: 0.45rem 0.15rem; color: inherit; font-size: 1rem; text-decoration: none; }
 .og-panel__list a:hover .og-panel__result-title { text-decoration: underline; }
 .og-panel__result-title { font-weight: 700; }
-.og-panel__result-desc { color: #555; font-size: 0.9rem; line-height: 1.4; }
+.og-panel__result-desc { color: #555; font-size: 1rem; line-height: 1.4; } /* [P2C] 0.9rem → 1rem */
 .og-panel__more { display: inline-flex; align-items: center; min-height: var(--og-control); color: inherit; font-size: 1rem; font-weight: 700; }
 .og-panel a:focus-visible, .og-panel button:focus-visible, .og-panel input:focus-visible { outline: 3px solid var(--og-panel-ink); outline-offset: 2px; }
 .og-tool:focus-visible { outline: 3px solid currentColor; outline-offset: 2px; }

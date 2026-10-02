@@ -4,8 +4,8 @@
  * Used by: navigation labels (checked against index.html by tests), view shells (views.js),
  * document titles, and the "areas" search provider.
  *
- * modules[].available is true only for what really works. Home's nine modules became available with Home V1
- * (Phase 2A) and My Life's eight with My Life V1 (Phase 2B); every other area is still a set of slots, rendered as "준비 중", that never pretend to work.
+ * modules[].available is true only for what really works. Home's modules became available with Home V1 (Phase 2A; 오늘 할 일 and
+ * 오늘 루틴 joined in Phase 2C) and My Life's with My Life V1 (Phase 2B; 물 joined in Phase 2C); every other area is still a set of slots, rendered as "준비 중", that never pretend to work.
  */
 const slot = (id, title, description, available = false) => Object.freeze({ id, title, description, available });
 const live = (id, title, description) => slot(id, title, description, true);
@@ -24,12 +24,14 @@ export const AREAS = Object.freeze([
       live('greeting', '오늘의 인사', '시간에 맞는 인사와 오늘 날짜를 보여 줍니다.'),
       live('check-in', '오늘의 안부', '오늘 어떤지 스스로 골라 남깁니다.'),
       live('schedule', '오늘 일정', '오늘 일정을 적고 끝낸 일정을 표시합니다.'),
+      live('tasks', '오늘 할 일', '오늘까지 할 일을 보고 끝낸 일을 표시합니다.'),
+      live('routines', '오늘 루틴', '오늘 요일의 루틴을 보고 한 루틴을 표시합니다.'),
       live('medication', '복약', '약 이름과 시간을 적어 두고 먹은 약을 표시합니다.'),
       live('life-check', '오늘의 생활', '식사, 물, 걷기·운동을 가볍게 표시합니다.'),
       live('family-update', '가족', '가족 연결 상태를 봅니다.'),
       live('today', '오늘 뭐 하지?', '즐길거리 종류를 골라 살펴봅니다.'),
       live('nearby', '내 주변', '사는 지역의 평생학습 강좌를 찾아봅니다.'),
-      live('quick-actions', '빠른 실행', '일정과 약을 바로 추가하고 자주 가는 화면을 엽니다.'),
+      live('quick-actions', '빠른 실행', '일정, 할 일, 약을 바로 추가하고 자주 가는 화면을 엽니다.'),
     ],
   }),
   Object.freeze({
@@ -46,10 +48,15 @@ export const AREAS = Object.freeze([
       live('tasks', '할 일', '해야 할 일을 적고 끝낸 일을 표시합니다.'),
       live('routine', '루틴', '요일마다 반복하는 일을 정해 두고 표시합니다.'),
       live('meals', '식사', '아침, 점심, 저녁 식사를 적어 둡니다.'),
+      live('water', '물', '마신 물을 잔 수로 적어 둡니다.'),
       live('exercise', '운동', '걷기와 운동을 적어 둡니다.'),
       live('sleep', '수면', '잠든 시간과 일어난 시간을 적어 둡니다.'),
       live('expenses', '생활비', '쓴 돈을 간단히 적어 둡니다.'),
       live('journal', '기록', '하루를 글로 남깁니다.'),
+      live('checkin', '안부와 몸 상태', '기분, 몸 상태, 에너지, 통증을 스스로 골라 둡니다.'),
+      live('symptoms', '증상', '느낀 증상을 날짜별로 적어 둡니다.'),
+      live('medication', '복약', '약과 먹는 요일을 적고 먹은 날을 표시합니다.'),
+      live('health-notes', '건강 메모', '병원에 다녀온 일 같은 메모를 남깁니다.'),
     ],
   }),
   Object.freeze({
@@ -58,20 +65,22 @@ export const AREAS = Object.freeze([
     hash: '#health',
     label: '건강·안부',
     wordmark: 'HEALTH',
-    description: '안부와 건강 일정을 스스로 적고 정리하는 곳입니다.',
+    description: '안부와 건강 기록을 스스로 적고 정리하는 곳입니다.',
     notice:
       'ONGIL은 의료 진단이나 치료 판단을 대신하지 않습니다. 위급한 상황을 알아차리거나 대신 신고하지도 않습니다. 위급할 때는 119에 직접 전화해 주세요.',
-    empty: '아직 적어 둔 안부나 건강 일정이 없습니다.',
+    /* Phase 3: the records themselves live in 내 생활 › 건강 (one date bar with 생활); this area points there */
+    empty: '이 화면에 따로 저장된 기록은 없습니다. 건강 기록은 ‘내 생활 › 건강’에서 적고 날짜별로 다시 볼 수 있어요.',
+    link: Object.freeze({ href: '#life/checkin', label: '내 생활 › 건강 열기' }),
     keywords: ['건강', '안부', '병원', '약'],
     modules: [
-      slot('check-in', '안부 체크', '오늘 잘 지내는지 스스로 표시합니다.'),
-      slot('life-check', '생활 체크', '식사, 운동, 수면을 표시합니다.'),
+      live('check-in', '안부와 몸 상태', '기분, 몸 상태, 에너지를 스스로 골라 둡니다.'),
+      live('life-check', '생활 체크', '식사, 물, 운동, 수면을 표시합니다.'),
       slot('help', '도움 요청', '도움이 필요할 때 알릴 사람을 정해 둡니다.'),
       slot('contacts', '긴급 연락망', '급할 때 연락할 번호를 적어 둡니다.'),
-      slot('medication', '복약', '약 이름과 먹을 시간을 직접 적어 둡니다.'),
+      live('medication', '복약', '약 이름, 먹을 시간과 요일을 직접 적고 먹은 날을 표시합니다.'),
       slot('hospital', '병원', '진료 예약 날짜를 적어 둡니다.'),
       slot('checkup', '검진', '건강검진 일정을 적어 둡니다.'),
-      slot('records', '건강 기록', '직접 잰 수치와 메모를 남깁니다.'),
+      live('records', '증상·건강 메모', '느낀 증상과 메모를 날짜별로 남깁니다.'),
     ],
   }),
   Object.freeze({
