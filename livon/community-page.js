@@ -14,6 +14,12 @@
   var SVC = window.LivonCommunityService;
   if (!SVC) return;   /* community-service.js (model · rules · adapters) is required */
   var STORE_KEY = SVC.STORE_KEY;
+  /* a card photo drawn as a background: fetched near the viewport when the media loader is present */
+  function bgPhoto(url) {
+    if (!url) return ' style="background-image:url()"';
+    var M = window.LivonMedia;
+    return M && M.bgAttr ? M.bgAttr(url, esc) : ' style="background-image:url(' + esc(url) + ')"';
+  }
   var KEY_LEGACY_JOINED = "livon.cmJoined";
   var KEY_LEGACY_INTERESTS = "livon.cmInterests";
   var KEY_ML = "livon.mlStore.v1";
@@ -394,6 +400,7 @@
     },
     isSaved: function (postId) {
       var P = window.LivonPlatform;
+      if (P && P.hasSave) return P.hasSave(saveId(postId));
       return !!(P && P.listSaves && P.listSaves("all").some(function (s) { return s.id === saveId(postId); }));
     },
     savedPosts: function () {
@@ -523,7 +530,7 @@
     var answered = p.type === "question" ? (p.resolved ? "해결됨" : (comments ? "댓글 " + comments : "답변 대기")) : "";
     var href = "#cm-post-" + esc(p.id);
     return '<article class="lv-cm-card lv-cm-card--' + esc(p.type) + (p.image ? " has-image" : "") + '" aria-labelledby="lv-cm-t-' + esc(p.id) + '">' +
-      (p.image ? '<a class="lv-cm-card__media" href="' + href + '" data-lv-cm-go tabindex="-1" aria-hidden="true"><img src="' + esc(p.image) + '" alt="" loading="lazy" /></a>' : "") +
+      (p.image ? '<a class="lv-cm-card__media" href="' + href + '" data-lv-cm-go tabindex="-1" aria-hidden="true"><img src="' + esc(p.image) + '" alt="" decoding="async" loading="lazy" /></a>' : "") +
       '<div class="lv-cm-card__body">' +
         '<div class="lv-cm-card__meta">' +
           '<span class="lv-cm-badge">' + esc(typeLabel(p.type)) + "</span>" +
@@ -659,7 +666,7 @@
       var joined = isJoined(store, c.id);
       var feed = "#cm-home?" + (COMM_CAT[c.id] ? "cat=" + COMM_CAT[c.id] : "stage=" + String(c.id).slice(6));
       return '<article class="lv-cm-comm">' +
-        '<div class="lv-cm-comm__media" style="background-image:url(' + esc(c.img || "") + ')"></div>' +
+        '<div class="lv-cm-comm__media"' + bgPhoto(c.img) + '></div>' +
         '<div class="lv-cm-comm__body">' +
           '<p class="lv-cm-eyebrow">' + esc(c.interest || c.stage || "") + "</p>" +
           "<h3>" + esc(c.name) + "</h3>" +
@@ -1105,7 +1112,7 @@
         "</div>" +
         '<p class="lv-cm-card__author">' + esc(post.authorNick || "나") + (post.authorId === "local" ? " · 내 글" : "") + "</p>" +
         '<h2 class="lv-cm-title lv-cm-title--md" id="lv-cm-detail-title" tabindex="-1">' + esc(post.title) + "</h2>" +
-        (post.image ? '<img class="lv-cm-detail__img" src="' + esc(post.image) + '" alt="" />' : "") +
+        (post.image ? '<img class="lv-cm-detail__img" src="' + esc(post.image) + '" alt="" decoding="async" />' : "") +
         '<div class="lv-cm-detail__body">' + esc(post.body).replace(/\n/g, "<br>") + "</div>" +
         ((post.tags || []).length ? '<p class="lv-cm-card__tags">' + (post.tags || []).map(function (t) { return '<a href="#cm-home?q=' + encodeURIComponent(t) + '">#' + esc(t) + "</a>"; }).join(" ") + "</p>" : "") +
         '<div class="lv-cm-actions lv-cm-detail__acts">' +
@@ -1698,7 +1705,7 @@
   window.LivonCommunityRepo = Repo;
   window.LivonCommunity = {
     onShow: onShow,
-    openCompose: function (type) { init(); openCompose(type); },
+    openCompose: function (type) { if (window.LivonBoot) window.LivonBoot.ensure("community"); init(); openCompose(type); },
     openPost: function (id) { location.hash = "cm-post-" + id; },
     _test: {
       repo: Repo, loadStore: loadStore, migrate: migrate, validatePost: validatePost, parseTags: parseTags, filterFeed: filterFeed,
@@ -1714,6 +1721,7 @@
     if (document.documentElement.dataset.lvView === "community") onShow(hash || "community");
     else renderAll();
   }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  if (window.LivonBoot && typeof window.LivonBoot.view === "function") window.LivonBoot.view("community", boot);
+  else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 })();

@@ -82,6 +82,11 @@
 
   function $(sel, root) { return (root || document).querySelector(sel); }
   function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  /* a card photo drawn as a background: fetched near the viewport when the media loader is present */
+  function bgPhoto(url) {
+    var M = window.LivonMedia;
+    return M && M.bgAttr ? M.bgAttr(url, esc) : " style=\"background-image:url(" + esc(url) + ")\"";
+  }
   function esc(s) {
     return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
@@ -184,7 +189,7 @@
           "<a class=\"lv-hm-btn\" href=\"" + esc(s.href) + "\">" + esc(s.cta) + "</a>" +
         "</div>" +
         "<div class=\"lv-hm-svc__film\" aria-hidden=\"false\">" +
-          "<video class=\"lv-hm-svc__video\" muted loop playsinline autoplay preload=\"metadata\" src=\"" + esc(s.video) + "\"></video>" +
+          "<video class=\"lv-hm-svc__video\" muted loop playsinline autoplay preload=\"none\" data-src=\"" + esc(s.video) + "\"></video>" +
           "<div class=\"lv-hm-svc__veil\" aria-hidden=\"true\"></div>" +
           "<div class=\"lv-hm-svc__lockup\">" +
             "<p class=\"lv-hm-svc__wordmark\">" + esc(s.wordmark) + "</p>" +
@@ -450,7 +455,7 @@
         if (i === 3) cls += " is-wide";
         if (img) cls += " has-img";
         recHtml += "<a class=\"" + cls + "\" href=\"" + esc(r.href) + "\"" +
-          (img ? " style=\"background-image:url(" + esc(img) + ")\"" : "") + ">" +
+          (img ? bgPhoto(img) : "") + ">" +
           "<em>" + esc(r.kind) + "</em><strong>" + esc(r.title) + "</strong></a>";
       });
       recHtml += "</div>";
@@ -510,7 +515,7 @@
 
     host.innerHTML =
       "<a class=\"lv-hm-mag__feature" + (featured.img ? "" : " is-plain") + "\" href=\"#today/" + esc(featured.id) + "\"" +
-        (featured.img ? " style=\"background-image:url(" + esc(featured.img) + ")\"" : "") + ">" +
+        (featured.img ? bgPhoto(featured.img) : "") + ">" +
         "<span class=\"lv-hm-mag__veil\" aria-hidden=\"true\"></span>" +
         "<span class=\"lv-hm-mag__copy\">" +
           "<em>" + esc(featured.category || featured.type || "발견") + "</em>" +
@@ -519,7 +524,7 @@
         "</span></a>" +
       "<div class=\"lv-hm-mag__strip\">" + strip.map(function (c, i) {
         return "<a class=\"lv-hm-mag__cell" + (c.img ? "" : " is-plain") + (i === 0 ? " is-focus" : "") + "\" href=\"#today/" + esc(c.id) + "\"" +
-          (c.img ? " style=\"background-image:url(" + esc(c.img) + ")\"" : "") + ">" +
+          (c.img ? bgPhoto(c.img) : "") + ">" +
           "<span class=\"lv-hm-mag__veil\" aria-hidden=\"true\"></span>" +
           "<span class=\"lv-hm-mag__copy\">" +
             "<em>" + esc(c.category || "") + "</em>" +
@@ -529,7 +534,7 @@
       }).join("") + "</div>" +
       (last
         ? "<a class=\"lv-hm-mag__banner" + (last.img ? "" : " is-plain") + "\" href=\"#today/" + esc(last.id) + "\"" +
-            (last.img ? " style=\"background-image:url(" + esc(last.img) + ")\"" : "") + ">" +
+            (last.img ? bgPhoto(last.img) : "") + ">" +
             "<span class=\"lv-hm-mag__veil\" aria-hidden=\"true\"></span>" +
             "<span class=\"lv-hm-mag__copy\">" +
               "<em>" + esc(last.category || "") + "</em>" +
@@ -952,8 +957,10 @@
     else renderAll();
   }
 
-  window.LivonHome = { onShow: onShow, search: unifiedSearch, render: renderAll };
+  /* render(): other screens call it after a profile change; before Home has started there is nothing to refresh */
+  window.LivonHome = { onShow: onShow, search: unifiedSearch, render: function () { if (window.LivonBoot && !window.LivonBoot.isStarted("home")) return; renderAll(); } };
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  if (window.LivonBoot && typeof window.LivonBoot.view === "function") window.LivonBoot.view("home", init);
+  else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

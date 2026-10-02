@@ -73,3 +73,16 @@ html[data-lv-view] .gnav__nav .gnav__link { min-width: 24px; justify-content: ce
   html[data-lv-view] :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible { outline: 3px solid Highlight; outline-offset: 2px; }
   .lv-motion-toggle { border-color: ButtonText; background: ButtonFace; color: ButtonText; forced-color-adjust: none; }
 }
+
+/* ---------- large text on a small screen (390px + 200% text): grid and flex children may shrink to their
+   container and long words may wrap, so nothing is cut off at the edge ---------- */
+#livon-home .lv-hm-me > *, #livon-home .lv-hm-mag__copy, #livon-home .lv-hm-mag__copy > *,
+#livon-home .lv-hm-me__form > *, #livon-home .lv-hm-ex-block > *, #livon-home .lv-hm-ex-block__intro > *, #livon-home .lv-hm-search > *,
+#life .lv-life-pack__steps, #life .lv-life-pack__steps > *, #life .lv-life-pack__steps li > *,
+#life .lv-life-packs > *, #life .lv-life-pack > *, #community .lv-cm-stages > *, #community .lv-cm-stage > *,
+#community .lv-cm-row > :not(.lv-cm-row__n),
+#livon-home .lv-hm-me__row > *, #livon-home .lv-hm-field > *, #livon-home .lv-hm-ex-ol, #livon-home .lv-hm-ex-ol > *,
+#livon-home .lv-hm-ex-ol a > *, #livon-home .lv-hm-ex-ol__body > * { min-width: 0; overflow-wrap: anywhere; }
+#community .lv-cm-row__go { white-space: normal; }
+#explore .lv-ex-sort { flex-wrap: wrap; min-width: 0; max-width: 100%; }
+#explore .lv-ex-sort select { max-width: 100%; min-width: 0; }

@@ -1043,6 +1043,7 @@
     if (document.documentElement.dataset.lvView === "livon-ai") onShow(hash || "livon-ai");
     else { renderThreads(); renderMessages(); }
   }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  if (window.LivonBoot && typeof window.LivonBoot.view === "function") window.LivonBoot.view("livon-ai", boot);
+  else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 })();

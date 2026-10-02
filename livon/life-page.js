@@ -196,7 +196,7 @@
       var fields = (s.fields || []).slice(0, 3).map(function (f) { return esc(f.name); }).join(" · ");
       return (
         '<button type="button" class="lv-life-card" data-lv-life-goto="stage-' + esc(s.id) + '" data-stage="' + esc(s.id) + '">' +
-          '<div class="lv-life-card__media"><img class="lv-life-card__img" src="' + esc(s.img) + '" alt="' + esc(s.alt || "") + '" loading="lazy" /></div>' +
+          '<div class="lv-life-card__media"><img class="lv-life-card__img" src="' + esc(s.img) + '" alt="' + esc(s.alt || "") + '" loading="lazy" decoding="async" /></div>' +
           '<div class="lv-life-card__body">' +
             '<p class="lv-life-card__age">' + esc(s.label) + "</p>" +
             '<p class="lv-life-card__name">' + esc(s.title) + "</p>" +
@@ -396,7 +396,7 @@
         '<div class="lv-life-services is-trio">' +
           (s.services || []).map(function (svc) { return svcCard(svc, s.id); }).join("") +
         "</div>";
-      var heroImg = '<div class="lv-life-decade__show"><img src="' + esc(s.img) + '" alt="' + esc(s.alt || "") + '" loading="lazy" /></div>';
+      var heroImg = '<div class="lv-life-decade__show"><img src="' + esc(s.img) + '" alt="' + esc(s.alt || "") + '" loading="lazy" decoding="async" /></div>';
       var copy =
         '<div class="lv-life-decade__copy">' +
           '<p class="lv-life-decade__n">' + esc(s.n) + " · " + esc(s.label) + "</p>" +
@@ -609,7 +609,7 @@
           '<a class="lv-life-btn" href="' + esc(s.href) + '">' + esc(s.cta) + "</a>" +
         "</div>" +
         '<div class="lv-life-svc-card__film">' +
-          '<video class="lv-life-svc-card__video" muted loop playsinline autoplay preload="metadata" src="' + esc(s.video) + '"></video>' +
+          '<video class="lv-life-svc-card__video" muted loop playsinline autoplay preload="none" data-src="' + esc(s.video) + '"></video>' +
           '<div class="lv-life-svc-card__veil" aria-hidden="true"></div>' +
           '<div class="lv-life-svc-card__lockup">' +
             '<p class="lv-life-svc-card__wordmark">' + esc(s.wordmark) + "</p>" +
@@ -1117,7 +1117,7 @@
     }
   };
 
-  document.addEventListener("DOMContentLoaded", function () {
+  var start = function () {
     if (!DATA.stages || !DATA.stages.length) {
       console.warn("[LivonLife] life-data missing");
     }
@@ -1130,5 +1130,7 @@
     updateStageLabel();
     var hash = (location.hash || "#life").slice(1);
     if (window.LivonLife.isLifeHash(hash)) window.LivonLife.onShow(hash);
-  });
+  };
+  if (window.LivonBoot && typeof window.LivonBoot.view === "function") window.LivonBoot.view("life", start);
+  else document.addEventListener("DOMContentLoaded", start);
 })();

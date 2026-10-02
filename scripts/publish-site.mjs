@@ -510,6 +510,8 @@ function verify() {
   required.push(path.join(OUT, "livon", "seo.css"));
   required.push(path.join(OUT, "livon", "livon-a11y.css"));
   required.push(path.join(OUT, "livon", "livon-a11y.js"));
+  required.push(path.join(OUT, "livon", "livon-media.js"));
+  required.push(path.join(OUT, "livon", "livon-boot.js"));
   required.push(path.join(OUT, "livon", "seo-manifest.json"));
   required.push(path.join(OUT, "livon", "help", "index.html"));
   required.push(path.join(OUT, "livon", "life-events", "index.html"));
@@ -520,6 +522,7 @@ function verify() {
   required.push(path.join(OUT, "ongil-start", "index.html"));
   required.push(path.join(OUT, "assets", "livon-mark.jpg"));
   required.push(path.join(OUT, "assets", "livon-mark-icon.jpg"));
+  required.push(path.join(OUT, "assets", "livon-mark-icon-120.jpg"));
   required.push(path.join(OUT, "assets", "ongil-mark.svg"));
   required.push(path.join(OUT, "film-keep.js"));
   required.push(path.join(OUT, "search-index.json"));
@@ -603,6 +606,11 @@ spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-seo-quality.mjs")
 }).status === 0 || process.exit(1);
 // LIVON accessibility: static checks on the app page, its CSS/JS templates and every generated static page.
 spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-accessibility-quality.mjs"), "--root", OUT], {
+  cwd: ROOT,
+  stdio: "inherit",
+}).status === 0 || process.exit(1);
+// LIVON performance: static budgets and loading rules (video/data-src, start-up scheduler, fonts, image sizes, static pages).
+spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-performance-quality.mjs"), "--root", OUT], {
   cwd: ROOT,
   stdio: "inherit",
 }).status === 0 || process.exit(1);

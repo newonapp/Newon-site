@@ -685,6 +685,7 @@
     render: refresh, setTab: setTab, recent: recent, pushRecent: pushRecent, profile: profile,
     _test: { pool: pool, catsOfContent: catsOfContent, catsOfTopic: catsOfTopic, listFor: listFor, relatedTopicsOf: relatedTopicsOf, score: score, saveKey: saveKey, CATS: CATS }
   };
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  if (window.LivonBoot && typeof window.LivonBoot.view === "function") window.LivonBoot.view("today", init);
+  else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

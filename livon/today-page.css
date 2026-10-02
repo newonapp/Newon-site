@@ -395,7 +395,7 @@ html[data-lv-view="today"] main > #today {
 
 #today .lv-td-stages {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16.5rem), 1fr));
   gap: 0.9rem;
 }
 #today .lv-td-stage {

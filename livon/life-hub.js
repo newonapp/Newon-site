@@ -155,7 +155,9 @@
   var SAVE_TYPES = { topic: "주제", guide: "가이드", checklist: "체크리스트", content: "콘텐츠", policy: "정책", service: "서비스", expert: "전문가", class: "클래스", place: "장소", community: "커뮤니티 글" };
   function saveId(type, id) { return "life-hub:" + type + ":" + id; }
   function isSaved(type, id) {
-    return !!window.LivonPlatform && window.LivonPlatform.listSaves("all").some(function (s) { return s.id === saveId(type, id); });
+    var P = window.LivonPlatform;
+    if (P && P.hasSave) return P.hasSave(saveId(type, id));
+    return !!P && P.listSaves("all").some(function (s) { return s.id === saveId(type, id); });
   }
   function doSave(item) {
     if (!window.LivonPlatform) { status("저장 기능을 불러오지 못했습니다. 새로고침 후 다시 시도해 주세요."); return false; }

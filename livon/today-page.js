@@ -85,7 +85,8 @@
   function platformSaved(id) {
     var P = window.LivonPlatform;
     if (!P || !P.listSaves) return false;
-    return P.listSaves("all").some(function (s) { return /^life-hub:\w+:td:/.test(s.id) && s.id.slice(s.id.indexOf(":td:") + 4) === id; });
+    var ids = P.saveIds ? P.saveIds() : P.listSaves("all").map(function (s) { return s.id; });
+    return ids.some(function (sid) { return /^life-hub:\w+:td:/.test(sid) && sid.slice(sid.indexOf(":td:") + 4) === id; });
   }
   function isSaved(id) { return platformSaved(id); }
   /* Old Today saves (livon.tdSaved → platform ids "td:{id}") are converted to the shared
@@ -817,6 +818,7 @@
     }
   };
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  if (window.LivonBoot && typeof window.LivonBoot.view === "function") window.LivonBoot.view("today", init);
+  else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

@@ -2297,15 +2297,14 @@
     }
   };
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function () {
-      init();
-      if (!inited) return;
-      refreshDashboard();
-      if (document.documentElement.dataset.lvView === "life-now") window.LivonMyLife.onShow((location.hash || "").slice(1) || "life-now");
-    });
-  } else {
+  var start = function () {
     init();
-  }
+    if (!inited) return;
+    refreshDashboard();
+    if (document.documentElement.dataset.lvView === "life-now") window.LivonMyLife.onShow((location.hash || "").slice(1) || "life-now");
+  };
+  if (window.LivonBoot && typeof window.LivonBoot.view === "function") window.LivonBoot.view("life-now", start);
+  else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
+  else init();
   window.LivonLifeNow = { goto: function (v) { gotoView(v); } };
 })();

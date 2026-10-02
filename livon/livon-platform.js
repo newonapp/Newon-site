@@ -302,6 +302,21 @@
     if (folder && folder !== "all") list = list.filter(function (x) { return x.folder === folder; });
     return list;
   }
+  /* "is this saved?" is asked once per card on a screen. The answer comes from an index of ids that is rebuilt only when
+     the stored text changes, so a screen with many cards does not parse the whole store once per card. */
+  var saveIndexMemo = { raw: null, ids: [], set: {} };
+  function saveIndex() {
+    var raw = null;
+    try { raw = localStorage.getItem(KEY_PLATFORM); } catch (e) {}
+    if (raw == null || raw !== saveIndexMemo.raw) {
+      var ids = load().saves.map(function (x) { return String(x && x.id); }), set = {};
+      ids.forEach(function (id) { set[id] = true; });
+      saveIndexMemo = { raw: raw, ids: ids, set: set };
+    }
+    return saveIndexMemo;
+  }
+  function hasSave(id) { return Object.prototype.hasOwnProperty.call(saveIndex().set, String(id)); }
+  function saveIds() { return saveIndex().ids.slice(); }
   function syncLegacySave(item) {
     if (!item) return;
     if (item.type === "today" || (item.id && String(item.id).indexOf("td:") === 0)) {
@@ -546,6 +561,8 @@
     removeSave: removeSave,
     setSaveFolder: setSaveFolder,
     listSaves: listSaves,
+    hasSave: hasSave,
+    saveIds: saveIds,
     folders: function () { return load().folders.slice(); },
     alertTypes: ALERT_TYPES,
     setAlertPref: setAlertPref,

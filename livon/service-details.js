@@ -15,7 +15,7 @@
   function options(values) { return values.map(function (v) { return '<option value="' + esc(v) + '">' + esc(v) + '</option>'; }).join(''); }
   function select(name, title, values) { return '<label>' + esc(title) + '<select name="' + name + '">' + options(values) + '</select></label>'; }
   function input(name, title, type, extra) { return '<label>' + esc(title) + '<input name="' + name + '" type="' + (type || 'text') + '" ' + (extra || '') + ' /></label>'; }
-  function saved(id) { return !!window.LivonPlatform && window.LivonPlatform.listSaves('all').some(function (s) { return s.id === id; }); }
+  function saved(id) { var P = window.LivonPlatform; if (P && P.hasSave) return P.hasSave(id); return !!P && P.listSaves('all').some(function (s) { return s.id === id; }); }
   function notice(text) { var n = document.getElementById('life-service-status'); if (n) n.textContent = text; }
   function saveItem(id, title, type, url, stage) {
     if (!window.LivonPlatform) return notice('저장 기능을 불러오지 못했습니다. 새로고침해 주세요.');

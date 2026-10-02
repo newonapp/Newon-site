@@ -777,10 +777,12 @@
       if (r.warnings.length) rep.warnings += r.warnings.length;
       if (byId[e.id]) { rep.duplicates++; return; } /* first adapter wins; later adapters cannot overwrite curated rows */
       e.meta.adapter = adapter.id;
-      store.push(e); byId[e.id] = e; idx[e.id] = indexEntity(e);
+      store.push(e); byId[e.id] = e;   /* the search index of a record is built on its first search (fieldsOf) */
       if (raw && raw._raw && typeof raw._raw === "object") rawById[e.id] = raw._raw;
       rep.accepted++;
     }
+    /* search fields of one record, computed once per repository and only when a search needs them */
+    function fieldsOf(e) { return idx[e.id] || (idx[e.id] = indexEntity(e)); }
     function buildReverse() {
       reverse = {};
       store.forEach(function (e) {
@@ -938,7 +940,7 @@
       function scoreAll(requireAll) {
         var hits = [];
         base.forEach(function (e) {
-          var fields = idx[e.id], total = 0, matched = [], all = true;
+          var fields = fieldsOf(e), total = 0, matched = [], all = true;
           toks.forEach(function (tok) {
             var s = scoreToken(fields, tok);
             if (!s) (SYNONYMS[tok] || []).forEach(function (syn) { s = Math.max(s, scoreToken(fields, norm(syn)) * 0.5); });

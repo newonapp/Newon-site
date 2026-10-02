@@ -497,6 +497,7 @@
   function day(iso) { var t = iso ? Date.parse(iso) : NaN; return isNaN(t) ? "" : new Date(t + 9 * 3600e3).toISOString().slice(0, 10).replace(/-/g, "."); }
   function isSaved(e) {
     var P = root.LivonPlatform;
+    if (P && P.hasSave) return P.hasSave("ext:" + e.id);
     return !!(P && P.listSaves && P.listSaves("all").some(function (x) { return x.id === "ext:" + e.id; }));
   }
   /* say exactly what the date means: verified by a person, updated by the source, or only collected */

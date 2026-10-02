@@ -505,7 +505,7 @@
     var inCompare = compareIds().indexOf(item.id) >= 0;
     return "<article class=\"lv-ex-card lv-ex-card--" + esc(layout) + "\">" +
       "<button type=\"button\" class=\"lv-ex-card__media\" data-lv-ex-open=\"" + esc(item.id) + "\" aria-label=\"" + esc(item.title) + " 상세\">" +
-        (item.img ? "<img src=\"" + esc(item.img) + "\" alt=\"\" loading=\"lazy\" width=\"640\" height=\"400\" />" : "") +
+        (item.img ? "<img src=\"" + esc(item.img) + "\" alt=\"\" decoding=\"async\" loading=\"lazy\" width=\"640\" height=\"400\" />" : "") +
       "</button>" +
       "<div class=\"lv-ex-card__body\">" +
         "<div class=\"lv-ex-card__meta\">" + credBadge(item) +
@@ -669,7 +669,7 @@
       "<p class=\"lv-ex-hint\">" + esc(x.attribution || "") + "</p></details>" : "";
     var stages = (x.stageIds || []).slice(0, 3).map(function (id) { return "<span class=\"lv-ex-tag\">" + esc(ageLabel(id)) + "</span>"; }).join("");
     return "<article class=\"lv-ex-card lv-ex-card--text lv-ex-card--" + esc(x.type) + "\"" + (x.external ? "" : " data-lv-ex-go=\"" + esc(x.href) + "\"") + (x.eventId ? " data-lv-le-open=\"" + esc(x.eventId) + "\"" : "") + ">" +
-      (x.img ? "<a class=\"lv-ex-card__media\" href=\"" + esc(x.external ? x.href : x.href) + "\" tabindex=\"-1\" aria-hidden=\"true\"" + (x.external ? " target=\"_blank\" rel=\"noopener noreferrer\"" : "") + "><img src=\"" + esc(x.img) + "\" alt=\"\" loading=\"lazy\" width=\"640\" height=\"400\" /></a>" : "") +
+      (x.img ? "<a class=\"lv-ex-card__media\" href=\"" + esc(x.external ? x.href : x.href) + "\" tabindex=\"-1\" aria-hidden=\"true\"" + (x.external ? " target=\"_blank\" rel=\"noopener noreferrer\"" : "") + "><img src=\"" + esc(x.img) + "\" alt=\"\" decoding=\"async\" loading=\"lazy\" width=\"640\" height=\"400\" /></a>" : "") +
       "<div class=\"lv-ex-card__body\"><div class=\"lv-ex-card__meta\">" + (x.official ? "<span class=\"lv-ex-badge\">공식 출처</span>" : "") + (x.trustLabel ? "<span class=\"lv-ex-badge\">" + esc(x.trustLabel) + "</span>" : "") + "<span>" + esc(x.typeLabel) + "</span><span>" + esc(x.meta || "") + "</span>" + (x.status ? "<span>" + esc(x.status) + "</span>" : "") + "</div>" +
       "<h4>" + (x.external ? esc(x.title) : "<a href=\"" + esc(x.href) + "\">" + esc(x.title) + "</a>") + "</h4>" +
       "<p>" + esc(x.desc || "") + "</p>" + (stages ? "<p class=\"lv-ex-tags\">" + stages + "</p>" : "") +
@@ -1064,6 +1064,7 @@
     else location.hash = h;
   }
   function openResults(query, opts) {
+    if (window.LivonBoot) window.LivonBoot.ensure("explore");   /* called from other screens: start this one first */
     opts = opts || {};
     var L = S();
     state.q = String(query == null ? "" : query).trim().slice(0, 80);
@@ -1179,7 +1180,7 @@
       "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm\" data-lv-ex-back-results>← 결과로</button>" +
       "<article class=\"lv-ex-detail lv-ex-detail--" + esc(item.layout || item.type) + "\">" +
         "<div class=\"lv-ex-detail__hero\">" +
-          (item.img ? "<img src=\"" + esc(item.img) + "\" alt=\"\" width=\"1200\" height=\"700\" />" : "") +
+          (item.img ? "<img src=\"" + esc(item.img) + "\" alt=\"\" decoding=\"async\" width=\"1200\" height=\"700\" />" : "") +
           "<div class=\"lv-ex-detail__hero-copy\">" +
             credBadge(item) +
             "<p class=\"lv-ex-eyebrow\">" + esc(TYPE_LABEL[item.type] || "") + " · " + esc(item.subfield || "") + "</p>" +
@@ -1702,6 +1703,7 @@
     serialize: function () { return serialize(); }
   };
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  if (window.LivonBoot && typeof window.LivonBoot.view === "function") window.LivonBoot.view("explore", init);
+  else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
