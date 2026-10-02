@@ -66,7 +66,7 @@ function app({ local = {}, raw = {}, blocked = false, screens = false } = {}) {
   let homeRenders = 0;
   ctx.LivonHome = { render() { homeRenders++; } };
   ctx.setTimeout = f => { f(); return 0; };
-  const files = ['livon-platform.js', 'livon-onboarding.js'].concat(screens ? ['today-feed.js', 'community-page.js', 'life-now-data.js', 'life-now-page.js'] : []);
+  const files = ['livon-platform.js', 'livon-onboarding.js'].concat(screens ? ['today-feed.js', 'community-service.js', 'community-page.js', 'life-now-data.js', 'life-now-page.js'] : []);
   for (const f of files) vm.runInContext(read(f), ctx, { filename: f });
   const target = (attr, value) => {
     const t = mk();
@@ -574,7 +574,8 @@ test('ON-37 Community: Life Events join the existing For You signals', () => {
   const a = app({ screens: true, local: { [K.stage]: '30', [K.interests]: ['가족'], [K.events]: ['parenting'] } });
   const C = a.ctx.LivonCommunity._test, sig = C.userSignals(C.loadStore());
   assert.deepEqual([...sig.events], ['parenting']);
-  assert.match(read('community-page.js'), /PZ\.eventBoost\(blob, sig\.events\)\) s \+= 2/);
+  assert.match(read('community-service.js'), /PZ\.eventBoost\(blob, events\)/);
+  assert.equal(C.forYou({ id: 'p', title: '육아 휴직 후기', tags: [], category: '' }, sig).why, '선택한 ‘육아’ 관련');
   assert.doesNotMatch(read('community-page.js'), /LivonPersonalization\.(complete|update|reset)/, 'Community never changes the profile');
 });
 

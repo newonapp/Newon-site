@@ -178,7 +178,14 @@
       var body;
       if (tab === "groups") body = table("Curated groups (" + C.curated.groups.length + ")", ["Group", "Interest", "Quality"], C.curated.groups.map(function (g) { return "<tr><td>" + rec(g.id, g.title) + "</td><td>" + esc(g.category) + "</td>" + num(g.score) + "</tr>"; })) + '<div class="ad-section">' + table("Curated challenges (" + C.curated.challenges.length + ")", ["Challenge", "Field", "Quality"], C.curated.challenges.map(function (g) { return "<tr><td>" + rec(g.id, g.title) + "</td><td>" + esc(g.category) + "</td>" + num(g.score) + "</tr>"; })) + "</div>";
       else if (tab === "profiles") body = empty("Profiles — BACKEND REQUIRED", "Member profiles exist only with an account backend (NEWON+ is deferred). No profile data is shown or invented.");
-      else if (tab === "reports") body = !C.device.available ? empty("No device data", C.device.reason) : C.device.reports ? '<p class="ad-note">' + C.device.reports + " report(s) stored in this browser. Report content stays on the device; handling requires the community backend.</p>" : empty("No reports", "No report exists in this browser's community store.");
+      else if (tab === "reports") body = !C.device.available ? empty("No device data", C.device.reason) : !C.device.reportList.length ? empty("No reports", "No report exists in this browser's community store.") :
+        '<div class="ad-callout ad-callout--warn">Reports recorded in LIVON Community <strong>in this browser</strong> (local only — nothing was sent to a server, and no other device is visible). The mark you set is a local simulation stored in the Admin; the post or comment is not changed.</div>' +
+        table("Local reports (" + C.device.reportList.length + ")", ["Reported item", "Reason", "Recorded", "Item", "Local moderation"], C.device.reportList.map(function (r) {
+          var cur = mod[r.target] || "", sid = "ad-rep-" + esc(r.id);
+          return "<tr><td>" + esc(r.kind) + " <code>" + esc(r.targetId) + "</code>" + (r.title ? "<br>" + esc(r.title) : "") + "</td><td>" + esc(r.reason) + " <code>" + esc(r.reasonId) + "</code></td><td>" + esc(r.at ? new Date(r.at).toISOString().slice(0, 16).replace("T", " ") : "—") + "</td><td>" + badge(r.exists ? "EXISTS" : "DELETED", r.exists ? "ok" : "warn") +
+            '</td><td><label class="ad-sr" for="' + sid + '">Local moderation for ' + esc(r.target) + '</label><select id="' + sid + '" data-ad-mod="' + esc(r.target) + '"><option value="">—</option>' +
+            LivonAdminStore.MODERATION_STATES.map(function (st) { return '<option value="' + st + '"' + (cur === st ? " selected" : "") + ">" + st + "</option>"; }).join("") + "</select></td></tr>";
+        }));
       else {
         if (!C.device.available) body = empty("No posts in this browser", C.device.reason + ". Posts written on other devices are not visible — there is no server.");
         else if (!C.device.posts.length) body = empty("No posts", "The community store in this browser has no posts.");

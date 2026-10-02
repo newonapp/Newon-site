@@ -27,7 +27,7 @@ function app({ store, local = {}, platform = true } = {}) {
   if (store) ctx.localStorage.setItem(CM, JSON.stringify(store));
   for (const [k, v] of Object.entries(local)) ctx.localStorage.setItem(k, JSON.stringify(v));
   vm.createContext(ctx);
-  for (const f of ['data/livon-user-data.js', 'explore-data.js', 'today-data.js', 'community-data.js', 'life-hub.js', 'explore-search.js', 'today-feed.js', 'community-page.js', 'life-now-data.js', 'life-now-page.js']) vm.runInContext(read(f), ctx);
+  for (const f of ['data/livon-user-data.js', 'explore-data.js', 'today-data.js', 'community-data.js', 'life-hub.js', 'explore-search.js', 'today-feed.js', 'community-service.js', 'community-page.js', 'life-now-data.js', 'life-now-page.js']) vm.runInContext(read(f), ctx);
   ctx.LivonLifeHub.repo.use(LIFE);
   const raw = () => JSON.parse(ctx.localStorage.getItem(CM) || 'null');
   return { ctx, T: ctx.LivonCommunity._test, R: ctx.LivonCommunityRepo, hub: ctx.LivonLifeHub, S: ctx.LivonSearch, saves, raw };
@@ -50,7 +50,11 @@ test('post CRUD + validation (title, body, category, lengths, tags)', () => {
   const { R, raw } = app();
   assert.equal(R.create(post({ title: '  ' })).field, 'title');
   assert.equal(R.create(post({ body: '' })).field, 'body');
-  assert.equal(R.create(post({ category: '' })).field, 'category');
+  const noCat = R.create(post({ category: '' }));   // Community UX V1: type · title · body are enough
+  assert.equal(noCat.status, 'ok'); assert.equal(noCat.post.category, 'etc');
+  assert.equal(R.remove(noCat.post.id).status, 'ok');
+  assert.equal(R.create(post({ type: 'poll' })).field, 'type');
+  assert.equal(R.create(post({ tags: '<b>x</b>' })).field, 'tags');
   assert.equal(R.create(post({ title: 'x'.repeat(81) })).field, 'title');
   assert.equal(R.create(post({ body: 'x'.repeat(5001) })).field, 'body');
   assert.equal(R.create(post({ tags: 'a,b,c,d,e,f,g,h,i' })).field, 'tags');
@@ -195,10 +199,11 @@ test('report is stored locally with post id, reason and time only', () => {
   const { R, raw } = app();
   const p = R.create(post()).post;
   assert.equal(R.report('post:' + p.id, '아무 사유').status, 'invalid');
-  const r = R.report('post:' + p.id, '스팸·광고');
+  const r = R.report('post:' + p.id, '스팸·광고');   // a reason recorded by the earlier build is still understood
   assert.equal(r.status, 'ok');
   const rec = raw().reports[0];
-  assert.deepEqual(Object.keys(rec).sort(), ['at', 'id', 'reason', 'status', 'target']);
+  assert.deepEqual(Object.keys(rec).sort(), ['at', 'id', 'reason', 'reasonId', 'status', 'target']);
+  assert.deepEqual([rec.reasonId, rec.reason], ['spam', '스팸']);
   assert.equal(rec.status, 'local-only');
   assert.equal(R.reported('post:' + p.id), true);
 });

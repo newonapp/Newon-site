@@ -200,7 +200,16 @@
       if (!o || typeof o !== "object") return { available: false, reason: "community store is malformed (left untouched)" };
       var posts = Array.isArray(o.posts) ? o.posts.filter(function (p) { return p && p.id; }) : [];
       return { available: true, posts: posts.map(function (p) { return { id: String(p.id), title: String(p.title || "").slice(0, 80), type: p.type || "story", visibility: p.visibility || "public", deleted: !!p.deleted, draft: !!p.draft, category: p.category || "", createdAt: p.createdAt || null }; }),
-        comments: Array.isArray(o.comments) ? o.comments.length : 0, reports: Array.isArray(o.reports) ? o.reports.length : 0, saves: Array.isArray(o.saves) ? o.saves.length : 0, joined: Array.isArray(o.joined) ? o.joined.length : 0 };
+        comments: Array.isArray(o.comments) ? o.comments.length : 0, reports: Array.isArray(o.reports) ? o.reports.length : 0, saves: Array.isArray(o.saves) ? o.saves.length : 0, joined: Array.isArray(o.joined) ? o.joined.length : 0,
+        /* the reports the visitor recorded in LIVON Community, read through the same model the Community uses
+           (LivonCommunityService.snapshot works on a copy — the stored value is never changed) */
+        reportList: communityReports(raw) };
+    }
+    function communityReports(raw) {
+      var CS = env.LivonCommunityService || root.LivonCommunityService;
+      if (!CS || typeof CS.snapshot !== "function") return [];
+      var snap = CS.snapshot(raw);
+      return snap.available ? snap.reportList : [];
     }
     function community(storeRaw) {
       need();
@@ -420,7 +429,7 @@
       return adapter.getReviewStates().then(function (all) { var prev = all[key] || "OPEN"; return adapter.setReviewState(key, state).then(function () { return audit("review.state", key, { state: prev }, { state: state }); }).then(function () { return state; }); });
     }
     function setModeration(postId, state) {
-      var key = "post:" + postId;
+      var key = /^(post|comment):.+/.test(String(postId)) ? String(postId) : "post:" + postId;   /* a reported comment keeps its own key */
       return adapter.getModeration().then(function (all) { var prev = all[key] || null; return adapter.setModeration(key, state || null).then(function () { return audit("moderation.state", key, { state: prev }, { state: state || null }); }).then(function () { return state || null; }); });
     }
 

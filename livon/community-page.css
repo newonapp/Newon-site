@@ -1190,3 +1190,26 @@ html[data-lv-view="community"] main > #community {
   line-height: 1.35;
 }
 #community .lv-cm-card__meta { align-items: center; }
+
+/* ───────── Community UX V1: For You reason, linked LIVON information, guidelines, local reset ───────── */
+#community .lv-cm-card__why { margin: 0.2rem 0 0; font-size: 0.82rem; color: #555; }
+#community .lv-cm-detail__info { margin-top: 1.75rem; }
+#community .lv-cm-detail__info h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+#community .lv-cm-info-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.1rem; }
+#community .lv-cm-info-list li { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.5rem; min-width: 0; }
+#community .lv-cm-info-list a { display: inline-flex; align-items: center; min-height: 44px; min-width: 0; color: #0a0a0a; font-weight: 650; text-underline-offset: 3px; overflow-wrap: anywhere; }
+#community .lv-cm-info-list a:focus-visible,
+#community .lv-cm-rules a:focus-visible { outline: 2px solid #0a0a0a; outline-offset: 2px; }
+#community .lv-cm-rules__title { margin: 1.5rem 0 0.5rem; font-size: 1rem; }
+#community .lv-cm-rules { margin: 0; padding: 0 0 0 1.1rem; display: grid; gap: 0.45rem; line-height: 1.6; overflow-wrap: anywhere; }
+#community .lv-cm-mine-reset { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #ececec; display: grid; gap: 0.6rem; justify-items: start; }
+#community .lv-cm-mine-reset button[disabled] { opacity: 0.5; cursor: not-allowed; }
+#community .lv-cm-autosave { margin: 0; font-size: 0.82rem; color: #555; }
+#community .lv-cm-restored { padding: 0.6rem 0.75rem; background: #f6f6f6; border-radius: 0.5rem; }
+#community .lv-cm-filter-row .lv-cm-field--inline { flex: 1 1 9.5rem; }
+#community .lv-cm-filter-row select { width: 100%; }
+@media (max-width: 480px) {
+  /* replies stay readable on a phone: a thin rule instead of a deep indent, long words wrap */
+  #community .lv-cm-replies { margin-left: 0.35rem; padding-left: 0.6rem; }
+  #community .lv-cm-comment__body, #community .lv-cm-detail__body { overflow-wrap: anywhere; }
+}

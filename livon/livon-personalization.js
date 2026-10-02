@@ -318,6 +318,11 @@
     if (allowed.length && allowed.indexOf(stage) < 0) return false;
     return true;
   }
+  /* the same age-context rule for free text that has no curated tags (a community post title) */
+  function textAgeOk(text, stage) {
+    var st = validStage(stage);
+    return !st || ageContextOk({ title: String(text || ""), category: "", tags: [], lifeStages: [], domains: [] }, st);
+  }
   var SKIP_TYPES = { lifeStage: 1, lifeEvent: 1, provider: 1, communityContent: 1 };
   function candidates(r, stage) {
     var list = [];
@@ -454,7 +459,7 @@
     state: state, entry: entry, hasExistingData: hasExistingData, storageIsTemporary: storageIsTemporary,
     start: start, saveDraft: saveDraft, draft: function () { var m = meta(); return { step: m.step || "stage", draft: m.draft }; },
     complete: complete, skip: skip, update: update, reset: reset,
-    recommend: recommend, preview: preview, reasonText: reasonText, eventBoost: eventBoost, allowedIds: allowedIds,
+    recommend: recommend, preview: preview, reasonText: reasonText, eventBoost: eventBoost, allowedIds: allowedIds, textAgeOk: textAgeOk,
     aiContext: aiContext, exportForAccount: exportForAccount,
     _log: function () { return log.slice(); }
   };

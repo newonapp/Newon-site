@@ -140,8 +140,18 @@ On finish the onboarding calls `LivonHome.render()`.
 
 ## Community integration
 
-`community-page.js`: Life Events join the existing "For You" signals (+2 on a matching post). Community only reads
-the profile; it never writes it, and no profile value is attached to posts or comments.
+Updated by LIVON Community + Onboarding Integration V1 (see `LIVON_COMMUNITY_UX.md`).
+
+- `community-page.js` `userSignals()` reads the profile through `LivonPersonalization.getProfile()`. The community
+  store (`livon.cmStore.v1`) holds no copy of Life Stage, interests or Life Events, and no second profile exists.
+- `community-service.js` `forYou(post, signals)` ranks the For You tab: the post's Life Event chosen by the reader
+  +4, Life Event words in the post +2 (`eventBoost`), same Life Stage +3, category of an interest +2, interest word +1,
+  category of a joined group +1. Every boosted card shows the first reason ("선택한 ‘육아’ 관련", "30대 글", "관심사 ‘가족’").
+- Age context: a post written for another band, a post whose Life Event does not belong to the reader's band, and a
+  post about 육아·보육·출산·결혼 outside those bands (`textAgeOk`) is never boosted. It stays readable in 최신.
+- Without a profile the For You tab is the latest order and says so, with a button that opens this onboarding.
+- Ownership: Community only reads the profile. `Repo.resetLocal()` (커뮤니티 기록 지우기) clears community data only;
+  `LivonPersonalization.reset()` clears the three preference keys only. Each is tested against the other.
 
 ## Settings
 
