@@ -254,7 +254,9 @@ prediction of position.
 Not done in this phase. When a deployment is approved:
 
 1. Decide the launch: deploying with indexing ON opens LIVON to search. To deploy while staying closed, build with
-   `LIVON_SEO_INDEX=off`.
+   `LIVON_SEO_INDEX=off`. The production build (`.github/workflows/github-pages.yml`, main → gh-pages) reads it from the
+   repository variable `LIVON_SEO_INDEX` (forwarded since Release Candidate V1); unset = ON. `off`, `false`, `0` and `no`
+   all close it. See `LIVON_RELEASE_MANIFEST.md`.
 2. Confirm what the production build injects: `LIVON_API_ORIGIN` (LIVON AI) and the Newon+ Firebase variables change
    what the Help articles should say about AI and accounts.
 3. After deploy, fetch a few URLs and check the status code, `robots` meta and canonical

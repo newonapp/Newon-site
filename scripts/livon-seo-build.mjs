@@ -9,6 +9,7 @@
  *
  *   node scripts/livon-seo-build.mjs --out _publish            (run by scripts/publish-site.mjs)
  *   LIVON_SEO_INDEX=off …                                      pre-launch: every page noindex, nothing in the sitemap
+ *                                                               (also "false", "0", "no"; unset = ON)
  *
  * Rules
  *   - Nothing is written for the pages: every sentence comes from the curated data or the Help articles.
@@ -370,7 +371,9 @@ export function applyIndexingToApp(html, indexing) {
 function main() {
   const i = process.argv.indexOf("--out");
   const out = path.resolve(ROOT, i > 0 ? process.argv[i + 1] : "_publish");
-  const indexing = String(process.env.LIVON_SEO_INDEX || "on").toLowerCase() !== "off";
+  /* unset → ON (launch default). "off", "false", "0", "no" (any case, surrounding spaces ignored) → closed, so a
+     repository variable written as "false" or " off" can never open LIVON by accident. */
+  const indexing = !/^(off|false|0|no)$/.test(String(process.env.LIVON_SEO_INDEX || "on").trim().toLowerCase());
   const S = loadSources();
   const manifest = buildManifest(S, { indexing });
   const pages = renderPages(S, manifest);

@@ -39,6 +39,9 @@ jobs:
           # Public, optional: https origin of the LIVON API (Vercel). Unset → LIVON calls same-origin /api (no API on Pages).
           # Set it as a repository VARIABLE (Settings → Secrets and variables → Actions → Variables), not a secret.
           LIVON_API_ORIGIN: ${{ vars.LIVON_API_ORIGIN }}
+          # Public, optional: LIVON search indexing switch (repository VARIABLE). "off" → every LIVON page noindex and no LIVON
+          # URL in the sitemap. Unset → the generator default (ON). Launch decision: docs/livon/LIVON_RELEASE_MANIFEST.md.
+          LIVON_SEO_INDEX: ${{ vars.LIVON_SEO_INDEX }}
           # Public Newon+ Firebase WEB client config (safe to ship to browsers; never a service account or private key).
           # Repository VARIABLES only. Empty → no login UI and no Firebase SDK request (LIVON stays anonymous).
           NEWON_PLUS_FIREBASE_API_KEY: ${{ vars.NEWON_PLUS_FIREBASE_API_KEY }}
