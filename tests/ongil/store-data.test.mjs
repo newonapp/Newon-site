@@ -550,8 +550,9 @@ test('OG-STO-56 regression: no new network, backend, key, commerce API or fixtur
     assert.doesNotMatch(code, /QA 상품|qa-\d|fixture|example\.test|lorem/i, f);
   }
   assert.equal((APP.match(/\bfetch\(/g) || []).length, 1, 'fetch is still injected once');
-  assert.match(APP, /version: 'store-v1'/);
-  assert.match(INDEX, /app\.js\?v=20261003s7/);
+  /* Phase 8 moved the version on again: integration-v2 / ?v=20261003i8 (BEFORE: store-v1 / 20261003s7) */
+  assert.match(APP, /version: 'integration-v2'/);
+  assert.match(INDEX, /app\.js\?v=20261003i8/);
   assert.match(INDEX, /ongil-care\.css\?v=20261003s7/);
   assert.match(SEARCH, /export function createStoreProvider\(getItems\)/);
   assert.match(AREAS.find((a) => a.id === 'store').notice, /결제, 주문, 배송 기능은 없습니다/);
@@ -569,8 +570,11 @@ test('OG-STO-57 the menu, the hero and the screen describe the same Store: ten c
 
 test('OG-STO-58 a saved product opens its seller page safely from the Saved screen: 44px link, new window, noopener', () => {
   const view = read('js', 'saved-view.js');
-  assert.match(view, /const external = \/\^https:\\\/\\\/\/\.test\(item\.href \|\| ''\);/);
-  assert.match(view, /target: external \? '_blank' : null, rel: external \? 'noopener noreferrer' : null/);
+  // Phase 8: the Saved row no longer makes its title a link. It has two named actions instead — the owner screen and,
+  // for a safe https address, "출처 보기 (새 창)". BEFORE: title link with target/rel when external. AFTER: a separate
+  // external button, still https-only, new window, noopener — and never for a LOCAL_ONLY type.
+  assert.match(view, /const external = def && def\.external && \/\^https:\\\/\\\/\/\.test\(item\.href \|\| ''\) \? item\.href : '';/);
+  assert.match(view, /href: a\.externalUrl, target: '_blank', rel: 'noopener noreferrer', 'data-og-saved-open': 'external'/);
   assert.match(read('styles', 'ongil-app.css'), /a\.og-item__title \{ display: inline-flex; align-items: center; min-height: var\(--og-control\);/);
   const { saved } = env();
   saved.save(S.productSavedInput(S.normalizeProduct(raw(1))));

@@ -16,11 +16,12 @@ import { createNotificationCenter } from './notifications.js';
 import { createAccount } from './account.js';
 import { createSearch, createAreaProvider, createSavedProvider, createCareProvider, createEnjoyProvider, createStoreProvider } from './search.js';
 import { AREAS, PRIMARY_AREAS, areaById } from './areas.js';
-import { createRouter } from './router.js';
+import { createRouter, hashFor } from './router.js';
 import { createNavigation } from './navigation.js';
 import { createFilms } from './film.js';
 import { renderArea } from './views.js';
 import { createSavedView } from './saved-view.js';
+import { canonicalHash } from './routes.js';
 import { createAccountView } from './account-view.js';
 import { createOnboardingView, renderInvitation } from './onboarding-view.js';
 import { createCheckInStore } from './checkin.js';
@@ -238,7 +239,8 @@ const refreshHome = () => {
   refreshInvitation();
 };
 
-const savedView = createSavedView({ host: doc.querySelector('[data-og-saved]'), saved, storage });
+/* 저장함: a saved post can be checked against the posts on this device, so a deleted post is said to be gone (never rebuilt) */
+const savedView = createSavedView({ host: doc.querySelector('[data-og-saved]'), saved, storage, origins: { POST: (id) => !!communityPosts.get(id) } });
 const accountView = createAccountView({
   host: doc.querySelector('[data-og-account]'),
   profile,
@@ -285,6 +287,13 @@ const router = createRouter({
     if (view === 'enjoy' && section && !resolveEnjoySection(section)) win.history.replaceState(null, '', '#enjoy');
     if (view === 'community' && section && !resolveCommunitySection(section)) win.history.replaceState(null, '', '#community');
     if (view === 'store' && section && !resolveStoreSection(section)) win.history.replaceState(null, '', '#store');
+    /* Phase 8: every other malformed address — a section on a screen that has none (#health/x), extra parts (#store/a/b),
+       odd characters — is corrected to the screen itself, so no address is left pointing at something that is not there */
+    if (win.location.hash.includes('/')) {
+      /* an address the validator refuses outright (odd characters) still belongs to this screen */
+      const fixed = canonicalHash(win.location.hash) || hashFor(view);
+      if (fixed && !fixed.includes('/') && fixed !== win.location.hash) win.history.replaceState(null, '', fixed);
+    }
     if (sectionOnly) {
       if (view === 'life') showLife(section, { focus: userInitiated });
       if (view === 'care') care.show(section);
@@ -302,6 +311,8 @@ const router = createRouter({
     if (view === 'family') familyView.refresh();
     if (view === 'care') care.show(section);
     if (view === 'enjoy' && section) enjoyView.show(section);
+    /* Phase 8: 즐길거리 keeps the category (and what was found) from earlier in the visit; the address says so too */
+    if (view === 'enjoy' && !section && enjoyView.category()) win.history.replaceState(null, '', `#enjoy/${enjoyView.category().toLowerCase()}`);
     if (view === 'community') showCommunity(section);
     if (view === 'store') storeView.show(section);
     if (view === 'home') refreshHome();
@@ -359,4 +370,4 @@ router.start();
 html.dataset.ogReady = 'true';
 
 /* one stable handle for later phases and for manual checks; no secrets, nothing privileged */
-win.Ongil = Object.freeze({ version: 'store-v1', storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes, familySharing, helpRequests, care, enjoy: enjoyView, communityPosts, groupDrafts, meetupDrafts, store: storeView });
+win.Ongil = Object.freeze({ version: 'integration-v2', storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes, familySharing, helpRequests, care, enjoy: enjoyView, communityPosts, groupDrafts, meetupDrafts, store: storeView });

@@ -126,7 +126,9 @@ test('OG-ON-6 "connect family now" only records the wish — no connection is ev
 
 test('OG-NT-1 nothing is delivered in Phase 1 and the list starts empty', () => {
   const { notifications } = world();
-  assert.deepEqual({ ...DELIVERY }, { push: false, server: false, inApp: true });
+  // Phase 8: DELIVERY names every channel that does not exist, so no screen can imply one. BEFORE: { push, server, inApp }.
+  // AFTER: e-mail and text message are listed too — all false; only the in-app list exists.
+  assert.deepEqual({ ...DELIVERY }, { push: false, server: false, email: false, sms: false, inApp: true });
   assert.deepEqual(notifications.list(), []);
   assert.equal(notifications.unreadCount(), 0);
   assert.equal(notifications.preferences().length, 9);
@@ -188,7 +190,9 @@ test('OG-AC-3 a configured adapter receives later changes only, and a failing ad
 test('OG-SE-1 no provider data means an empty result — never an invented one', async () => {
   const s = createSearch();
   assert.deepEqual((await s.query('방문요양')).results, []);
-  s.registerProvider({ id: 'empty', label: 'x', search: () => [] });
+  // Phase 8: a provider must declare its scope (PUBLIC or LOCAL_PRIVATE) — a provider without one is refused, so nothing
+  // can join global search by accident. BEFORE: { id, label, search }. AFTER: scope: 'PUBLIC' added. The assertions are unchanged.
+  s.registerProvider({ id: 'empty', label: 'x', scope: 'PUBLIC', search: () => [] });
   const r = await s.query('아무거나');
   assert.deepEqual([r.results, r.groups, r.failed], [[], [], []]);
   assert.deepEqual((await s.query('   ')).results, []);
@@ -215,13 +219,20 @@ test('OG-SE-2 area and saved providers return real local data', async () => {
   assert.deepEqual((await s.query('동네 공원')).results, []);
   saved.save({ type: 'PLACE', id: 'park', title: '동네 공원', href: '#enjoy' });
   const park = await s.query('동네 공원');
-  assert.deepEqual([park.results.length, park.results[0].providerId, park.results[0].href], [1, 'saved', '#enjoy']);
+  // Phase 8: a saved item found by search opens the Saved screen (where 열기 / 출처 보기 / 저장 취소 are separate, clearly
+  // named actions). BEFORE: the result carried the item's own href ('#enjoy' here — but for most saved items an outside
+  // https page, so a search result could leave ONGIL). AFTER: '#saved'; the item's owner route is checked as well.
+  assert.deepEqual([park.results.length, park.results[0].providerId, park.results[0].href, park.results[0].route], [1, 'saved', '#saved', '#saved']);
+  assert.deepEqual([park.results[0].type, park.results[0].contentType, park.results[0].typeLabel, park.results[0].scope], ['PLACE', 'PLACE', '장소', 'PUBLIC']);
 });
 
 test('OG-SE-3 provider failures are isolated and results are sanitised', async () => {
   const s = createSearch();
-  s.registerProvider({ id: 'boom', label: 'x', search: () => { throw new Error('down'); } });
-  s.registerProvider({ id: 'web', label: '외부', search: async () => [{ id: 1, title: 'ok', href: 'javascript:alert(1)' }, { id: 2, title: '' }, null, 'str'] });
+  // Phase 8: scope is required (see OG-SE-1). The isolation and sanitising assertions are unchanged, and a provider
+  // without a scope is now also refused.
+  s.registerProvider({ id: 'boom', label: 'x', scope: 'PUBLIC', search: () => { throw new Error('down'); } });
+  assert.throws(() => s.registerProvider({ id: 'noscope', label: 'x', search: () => [] }), /INVALID_PROVIDER/);
+  s.registerProvider({ id: 'web', label: '외부', scope: 'PUBLIC', search: async () => [{ id: 1, title: 'ok', href: 'javascript:alert(1)' }, { id: 2, title: '' }, null, 'str'] });
   const r = await s.query('ok');
   assert.deepEqual(r.failed, ['boom']);
   assert.equal(r.results.length, 1);

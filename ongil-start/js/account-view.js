@@ -100,7 +100,7 @@ export function createAccountView({ host, profile, account, notifications, onboa
     const list = el(
       'fieldset',
       { class: 'og-choices' },
-      el('legend', { class: 'og-field__label', text: '받고 싶은 알림' }),
+      el('legend', { class: 'og-field__label', text: 'ONGIL 안에서 보고 싶은 알림 종류' }),
       el(
         'div',
         { class: 'og-choices__list' },
@@ -115,7 +115,7 @@ export function createAccountView({ host, profile, account, notifications, onboa
               checked: t.enabled,
               onchange: (event) => {
                 const r = notifications.setPreference(t.id, event.target.checked);
-                announce(status, r.ok ? `${t.label} 알림을 ${event.target.checked ? '받도록' : '받지 않도록'} 설정했습니다.` : '설정을 저장하지 못했습니다.');
+                announce(status, r.ok ? `${t.label} 알림을 ONGIL 안에서 ${event.target.checked ? '보도록' : '보지 않도록'} 골라 두었습니다.` : '설정을 저장하지 못했습니다.');
               },
             }),
             el('span', { text: t.label })
@@ -123,7 +123,13 @@ export function createAccountView({ host, profile, account, notifications, onboa
         )
       )
     );
-    return section('알림 설정', el('p', { class: 'og-notice', role: 'note', text: '알림을 보내는 기능은 아직 연결되지 않았습니다. 지금은 선택한 내용만 저장해 둡니다.' }), list);
+    return section(
+      '알림 설정',
+      el('p', { class: 'og-notice', role: 'note', text: '알림을 보내는 기능은 아직 연결되지 않았습니다. 지금은 선택한 내용만 저장해 둡니다.' }),
+      /* Phase 8: say exactly what a choice does and does not do */
+      el('p', { class: 'og-notice', role: 'note', 'data-og-note-delivery': 'in-app', text: '아직 ONGIL이 만드는 알림은 없어요. 고른 종류는 나중에 ONGIL 안의 알림 목록에 쓰여요. 휴대폰 알림(푸시), 문자, 이메일은 보내지 않아요.' }),
+      list
+    );
   }
 
   function familySection() {

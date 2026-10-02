@@ -25,6 +25,13 @@ body:has(.og) { padding-top: 0 !important; background: var(--og-bg); color: var(
 .og-panel__list a:hover .og-panel__result-title { text-decoration: underline; }
 .og-panel__result-title { font-weight: 700; }
 .og-panel__result-desc { color: #555; font-size: 1rem; line-height: 1.4; } /* [P2C] 0.9rem → 1rem */
+/* [P8] rows with actions (notifications) and small buttons inside a panel — 44px targets, state said in words */
+.og-panel__item { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.55rem 0.15rem; }
+.og-panel__item.is-unread .og-panel__result-title::before { content: "● "; }
+.og-panel__actions { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.3rem; }
+.og-panel__btn { display: inline-flex; align-items: center; justify-content: center; min-height: var(--og-control); padding: 0 0.9rem; border: 1px solid var(--og-panel-input-border); border-radius: var(--og-radius-input); background: transparent; color: var(--og-panel-ink); font: inherit; font-size: 1rem; font-weight: 700; text-decoration: none; cursor: pointer; }
+.og-panel__list a.og-panel__btn { flex-direction: row; min-height: var(--og-control); padding: 0 0.9rem; }
+.og-panel__result-title, .og-panel__result-desc { overflow-wrap: anywhere; }
 .og-panel__more { display: inline-flex; align-items: center; min-height: var(--og-control); color: inherit; font-size: 1rem; font-weight: 700; }
 .og-panel a:focus-visible, .og-panel button:focus-visible, .og-panel input:focus-visible { outline: 3px solid var(--og-panel-ink); outline-offset: 2px; }
 .og-tool:focus-visible { outline: 3px solid currentColor; outline-offset: 2px; }

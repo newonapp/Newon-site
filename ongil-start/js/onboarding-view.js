@@ -15,7 +15,7 @@ const COPY = Object.freeze({
   region: { title: '사는 지역은 어디인가요?', type: 'select', options: REGIONS },
   interests: { title: '관심 있는 것을 골라 주세요', lead: '여러 개를 고를 수 있습니다.', type: 'checkbox', options: INTERESTS },
   needs: { title: '어떤 도움이 필요하신가요?', lead: '여러 개를 고를 수 있습니다.', type: 'checkbox', options: NEEDS },
-  notifications: { title: '어떤 알림을 받고 싶으신가요?', type: 'radio', options: NOTIFICATION_PRESETS, note: '알림을 보내는 기능은 아직 연결되지 않았습니다. 지금은 고른 내용만 저장해 둡니다.' },
+  notifications: { title: '어떤 알림을 받고 싶으신가요?', type: 'radio', options: NOTIFICATION_PRESETS, note: '알림을 보내는 기능은 아직 연결되지 않았습니다. 지금은 고른 내용만 저장해 둡니다. 휴대폰 알림(푸시), 문자, 이메일은 보내지 않아요.' },
   family: { title: '가족과 연결하고 싶으신가요?', type: 'radio', options: FAMILY_INTENTS, note: '가족 연결 기능은 아직 준비 중입니다. ‘지금 연결하고 싶어요’를 골라도 지금은 연결되지 않으며, 원하신다는 것만 적어 둡니다.' },
   complete: { title: '준비가 끝났습니다', lead: '답해 주신 내용을 이 기기에 저장했습니다. 내 정보에서 언제든 바꿀 수 있습니다.' },
 });

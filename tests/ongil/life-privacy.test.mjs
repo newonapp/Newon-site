@@ -119,7 +119,9 @@ test('OG-PV-3 private data is not searched: journal, expenses, tasks, events, ro
   assert.match(read('js', 'app.js'), /search\.registerProvider\(createCareProvider\(\(\) => care\.items\(\)\)\);/);
   assert.equal(/registerProvider|createSearch|notifications\.add\(/.test(CODE), false, 'My Life registers no search provider and raises no notification');
   const hit = await search.query('생활비');
-  assert.deepEqual([hit.results[0].id, hit.results[0].href], ['life.expenses', '#life'], 'the menu entry is found; its content is not');
+  // Phase 8: a menu entry that has its own address opens that section. BEFORE: every section result opened its area
+  // ('#life'). AFTER: '#life/expenses'. Still the menu entry only — the description is the menu's, never a record.
+  assert.deepEqual([hit.results[0].id, hit.results[0].href, hit.results[0].typeLabel], ['life.expenses', '#life/expenses', '메뉴'], 'the menu entry is found; its content is not');
 });
 
 test('OG-PV-4 "erase ONGIL data" removes every collection, new ones included, and nothing that is not ONGIL', () => {
