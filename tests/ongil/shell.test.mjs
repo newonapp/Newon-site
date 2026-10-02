@@ -43,13 +43,18 @@ test('OG-IA-2 desktop bar and mobile sheet list the same eight areas; the sheet 
 });
 
 test('OG-IA-3 global layer: search and notifications are overlays, saved and account are views, the assistant is reserved', () => {
-  assert.deepEqual([...OVERLAYS], ['search', 'notifications']);
-  assert.deepEqual(GLOBAL_ENTRIES.filter((e) => e.enabled).map((e) => e.id), ['search', 'notifications', 'saved', 'account']);
-  assert.deepEqual(GLOBAL_ENTRIES.filter((e) => !e.enabled).map((e) => e.id), ['assistant']);
-  for (const tool of ['search', 'notifications']) assert.match(BODY, new RegExp(`data-og-tool="${tool}" aria-expanded="false" aria-controls="og-panel-${tool}" aria-label="[^"]+"`));
+  // Phase 10: the reserved assistant entry is now real — ONGIL 도우미, a third header panel (no language model connected).
+  // BEFORE: overlays search, notifications; 'assistant' listed but disabled; no assistant UI in the page.
+  // AFTER: overlays search, notifications, assistant; all five global entries enabled; the page has the panel, and it
+  // says what it is ("정해진 요청만 … 자유로운 대화는 아직 하지 않아요") instead of claiming an AI that answers anything.
+  assert.deepEqual([...OVERLAYS], ['search', 'notifications', 'assistant']);
+  assert.deepEqual(GLOBAL_ENTRIES.filter((e) => e.enabled).map((e) => e.id), ['search', 'notifications', 'saved', 'account', 'assistant']);
+  assert.deepEqual(GLOBAL_ENTRIES.filter((e) => !e.enabled).map((e) => e.id), []);
+  for (const tool of ['search', 'notifications', 'assistant']) assert.match(BODY, new RegExp(`data-og-tool="${tool}" aria-expanded="false" aria-controls="og-panel-${tool}" aria-label="[^"]+"`));
   assert.match(BODY, /<a class="og-tool og-tool--wide" href="#saved" data-og-nav aria-label="저장">/);
   assert.match(BODY, /<a class="og-tool og-tool--wide" href="#account" data-og-nav aria-label="내 정보">/);
-  assert.equal(/ONGIL AI|assistant/i.test(BODY), false, 'no assistant UI in Phase 1');
+  assert.equal(/ONGIL AI|무엇이든 물어|AI가 답변|챗봇/.test(BODY), false, 'the panel is named ONGIL 도우미 and makes no claim of an AI that answers anything');
+  assert.match(BODY, /data-og-assistant-mode="NOT_CONNECTED">ONGIL에서 할 일을 찾아드려요\. 정해진 요청만 알아듣고, 자유로운 대화는 아직 하지 않아요\.</);
 });
 
 /* ───────── routes ───────── */

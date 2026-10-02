@@ -23,7 +23,7 @@ const timeText = (ms) => {
   const d = new Date(ms);
   return `${formatDate(ms)} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 };
-const LABEL_OF = { view: '화면', hasSection: '세부 화면', queryLength: '검색어 길이', resultCount: '결과 수', providerCount: 'provider 수', outcome: '결과 상태', contentType: '종류' };
+const LABEL_OF = { view: '화면', hasSection: '세부 화면', queryLength: '검색어 길이', resultCount: '결과 수', providerCount: 'provider 수', outcome: '결과 상태', contentType: '종류', intent: '요청 종류', tool: '추가한 것', result: '결과' };
 const VALUE_OF = { home: '홈', life: '내 생활', health: '건강·안부', family: '가족', care: '돌봄·서비스', enjoy: '즐길거리', community: '커뮤니티', store: '스토어', saved: '저장', account: '내 정보', admin: '운영 보기', yes: '있음', no: '없음', results: '결과 있음', partial: '일부만', 'no-results': '결과 없음', error: '오류', SERVICE: '서비스', BENEFIT: '혜택·복지', FACILITY: '기관·시설', PROGRAM: '프로그램', PLACE: '장소', POST: '글', PRODUCT: '상품', MENU: '메뉴' };
 
 export function createAdminView({ host, version, hostname, storage, search, saved, sources, analytics, loaded }) {
@@ -49,6 +49,7 @@ export function createAdminView({ host, version, hostname, storage, search, save
         ['저장함 종류', `${s.savedTypes}개`, 'saved-types'],
         ['알림 종류', `${s.notificationTypes}개`, 'notification-types'],
         ['사용 기록', `이벤트 ${s.analytics.events}종 · ${s.analytics.retentionDays}일 보관`, 'analytics'],
+        ['ONGIL 도우미', `언어 모델 연결 없음 (NOT CONNECTED) · 요청 종류 ${s.assistant.intents}개 · 저장하는 동작 ${s.assistant.writeTools}개`, 'assistant'],
       ])
     );
     clear(cards.features.body);

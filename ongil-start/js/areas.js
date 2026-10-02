@@ -220,7 +220,8 @@ export const GLOBAL_ENTRIES = Object.freeze([
   Object.freeze({ id: 'notifications', label: '알림', kind: 'overlay', enabled: true }),
   Object.freeze({ id: 'saved', label: '저장', kind: 'view', enabled: true }),
   Object.freeze({ id: 'account', label: '내 정보', kind: 'view', enabled: true }),
-  Object.freeze({ id: 'assistant', label: 'ONGIL AI', kind: 'overlay', enabled: false }),
+  /* Phase 10: ONGIL 도우미 — a header panel (assistant-view.js). No language model is connected. */
+  Object.freeze({ id: 'assistant', label: 'ONGIL 도우미', kind: 'overlay', enabled: true }),
 ]);
 
 export function areaById(id) {

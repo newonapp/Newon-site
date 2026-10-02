@@ -334,8 +334,10 @@ test('OG-AN-1 event contract: { name, timestamp, screen, properties } and nothin
   assert.deepEqual(A.normalizeEvent('app_open', 'text', { now: NOW }).properties, {});
 });
 
-test('OG-AN-2 event allowlist: exactly the eighteen named events; anything else is refused', () => {
-  assert.deepEqual([...A.EVENT_NAMES], ['app_open', 'screen_view', 'search_submit', 'search_result_open', 'saved_add', 'saved_remove', 'checkin_saved', 'calendar_event_created', 'task_created', 'routine_completed', 'family_settings_changed', 'help_request_draft_created', 'care_item_opened', 'enjoy_item_opened', 'product_opened', 'community_post_saved', 'group_draft_created', 'meetup_draft_created']);
+test('OG-AN-2 event allowlist: exactly the named events (18 from Phase 9 + 4 from Phase 10); anything else is refused', () => {
+  // Phase 10: four ONGIL 도우미 events were added (ai_open, ai_intent_matched, ai_action_confirmed, ai_action_cancelled) with
+  // three closed-set properties (intent, tool, result). BEFORE: 18 events, 7 properties. AFTER: 22 events, 10 properties.
+  assert.deepEqual([...A.EVENT_NAMES], ['app_open', 'screen_view', 'search_submit', 'search_result_open', 'saved_add', 'saved_remove', 'checkin_saved', 'calendar_event_created', 'task_created', 'routine_completed', 'family_settings_changed', 'help_request_draft_created', 'care_item_opened', 'enjoy_item_opened', 'product_opened', 'community_post_saved', 'group_draft_created', 'meetup_draft_created', 'ai_open', 'ai_intent_matched', 'ai_action_confirmed', 'ai_action_cancelled']);
   assert.deepEqual(Object.keys(A.EVENT_LABELS), [...A.EVENT_NAMES]);
   assert.equal(Object.isFrozen(A.EVENTS) && Object.values(A.EVENTS).every(Object.isFrozen), true);
   const w = world();
@@ -357,12 +359,13 @@ test('OG-AN-3 property allowlist: a property not listed for its event, or a valu
 });
 
 test('OG-AN-4 free text cannot be expressed: every property is a short closed list of tokens', () => {
-  assert.deepEqual(Object.keys(A.PROPERTIES), ['view', 'hasSection', 'queryLength', 'resultCount', 'providerCount', 'outcome', 'contentType']);
+  // Phase 10: + intent, tool, result — enum names only (the longest is PREPARE_FAMILY_SHARE), so the token limit is 24 (BEFORE: 12) and a list may hold 24 values (BEFORE: 12).
+  assert.deepEqual(Object.keys(A.PROPERTIES), ['view', 'hasSection', 'queryLength', 'resultCount', 'providerCount', 'outcome', 'contentType', 'intent', 'tool', 'result']);
   for (const k of ['query', 'q', 'text', 'title', 'body', 'name', 'note', 'memo', 'message', 'amount', 'price', 'address', 'phone', 'email', 'location', 'latitude', 'longitude', 'region', 'id', 'itemId', 'userId', 'deviceId', 'status', 'medication', 'symptom', 'category', 'level', 'date', 'time', 'url', 'href']) assert.equal(k in A.PROPERTIES, false, k);
   for (const [k, values] of Object.entries(A.PROPERTIES)) {
     assert.equal(Object.isFrozen(values), true, k);
-    assert.ok(values.length <= 12, k);
-    for (const v of values) assert.match(v, /^[A-Za-z0-9+_-]{1,12}$/, `${k}=${v}`);
+    assert.ok(values.length <= 24, k);
+    for (const v of values) assert.match(v, /^[A-Za-z0-9+_-]{1,24}$/, `${k}=${v}`);
   }
   assert.equal(A.ALL_COUNTERS.every((c) => /^[a-z_]+(\|[A-Za-z]+=[A-Za-z0-9+_-]+)?$/.test(c)), true);
 });
@@ -425,14 +428,15 @@ test('OG-AN-9 storage shape: daily totals only — no raw event, no timestamp, n
 
 test('OG-AN-10 bounded: the counter names are a finite set, so a day cannot grow without limit', () => {
   assert.equal(A.ALL_COUNTERS.length, new Set(A.ALL_COUNTERS).size);
-  assert.ok(A.ALL_COUNTERS.length < 120, String(A.ALL_COUNTERS.length));
+  // Phase 10: the four 도우미 events add 35 counters. BEFORE: < 120 counters, 18 events × 400 = 7,200, < 6,000 chars. AFTER: < 160, 22 × 400 = 8,800, < 8,000.
+  assert.ok(A.ALL_COUNTERS.length < 160, String(A.ALL_COUNTERS.length));
   const w = world();
-  for (let i = 0; i < 400; i++) for (const name of A.EVENT_NAMES) w.analytics.track(name, { view: A.PROPERTIES.view[i % 11], hasSection: i % 2 ? 'yes' : 'no', queryLength: A.PROPERTIES.queryLength[i % 4], resultCount: A.PROPERTIES.resultCount[i % 4], providerCount: A.PROPERTIES.providerCount[i % 6], outcome: A.PROPERTIES.outcome[i % 4], contentType: A.PROPERTIES.contentType[i % 8], junk: `x${i}` }, 'home');
+  for (let i = 0; i < 400; i++) for (const name of A.EVENT_NAMES) w.analytics.track(name, { view: A.PROPERTIES.view[i % 11], hasSection: i % 2 ? 'yes' : 'no', queryLength: A.PROPERTIES.queryLength[i % 4], resultCount: A.PROPERTIES.resultCount[i % 4], providerCount: A.PROPERTIES.providerCount[i % 6], outcome: A.PROPERTIES.outcome[i % 4], contentType: A.PROPERTIES.contentType[i % 8], intent: A.PROPERTIES.intent[i % 24], tool: A.PROPERTIES.tool[i % 2], result: A.PROPERTIES.result[i % 5], junk: `x${i}` }, 'home');
   const day = JSON.parse(rawAnalytics(w)).days['2026-10-03'];
   assert.equal(Object.keys(day).every((k) => A.ALL_COUNTERS.includes(k)), true);
   assert.equal(Object.keys(day).length, A.ALL_COUNTERS.length, 'every counter used, and not one more');
   assert.ok(rawAnalytics(w).length < 6000, `7,200 events stay small: ${rawAnalytics(w).length} chars`);
-  assert.equal(w.analytics.summary().total, 7200);
+  assert.equal(w.analytics.summary().total, 8800);
 });
 
 test('OG-AN-11 retention: fourteen days are kept, older days are dropped on the next write', () => {
@@ -700,7 +704,7 @@ test('OG-AN-31 wrapped stores keep every method and return the same answers; onl
   assert.equal(w.calls.length, 1);
   const src = code(INSTRUMENT_SRC);
   assert.equal(/\.title|\.body|\.name|\.note|\.memo|\.amount|\.address|\.phone|\.status|\.category|\.level|\.id\b/.test(src), false, 'no field of a record is read');
-  assert.deepEqual([...new Set([...src.matchAll(/track\('([a-z_]+)'/g)].map((m) => m[1]))].sort(), A.EVENT_NAMES.filter((n) => !['app_open', 'screen_view', 'search_submit', 'search_result_open'].includes(n)).sort());
+  assert.deepEqual([...new Set([...src.matchAll(/track\('([a-z_]+)'/g)].map((m) => m[1]))].sort(), A.EVENT_NAMES.filter((n) => !['app_open', 'screen_view', 'search_submit', 'search_result_open'].includes(n) && !n.startsWith('ai_')).sort()); // Phase 10: the ai_* events are sent by app.js through instrument.track, like the search events
 });
 
 test('OG-AN-32 source states: NOT_REQUESTED → LOADING → SUCCESS / EMPTY / UNAVAILABLE / ERROR, from real answers', async () => {
@@ -902,7 +906,8 @@ test('OG-AQ-12 no new network surface: Phase 9 adds no request, endpoint, backen
 test('OG-AQ-13 no dependency: every import is a relative ONGIL module; LIVON and shared code are not touched or used', () => {
   for (const f of allJs()) for (const m of js(f).matchAll(/from '([^']+)'/g)) assert.match(m[1], /^\.\/[a-z-]+\.js$/, `${f} imports ${m[1]}`);
   for (const f of P9) assert.equal(/livon|\.\.\/|newon-app|shared\//i.test(code(js(f))), false, f);
-  assert.equal(allJs().length, 65, 'sixty modules + analytics, source-status, instrument, admin, admin-view');
+  // Phase 10: + assistant-intents.js, assistant-tools.js, assistant-view.js. BEFORE: 65. AFTER: 68.
+  assert.equal(allJs().length, 68, 'sixty modules + the five of Phase 9 + the three of Phase 10');
   for (const f of P9) assert.ok(fs.existsSync(path.join(JS_DIR, f)), f);
 });
 
@@ -925,12 +930,13 @@ test('OG-AQ-15 wiring: the screen exists before paint, has a title, and is rende
   assert.match(APP, /loaded: \(\) => \(\{ care: care\.items\(\)\.length, enjoy: enjoyView\.items\(\)\.length, store: storeView\.items\(\)\.length \}\)/, 'counts are asked for at render time');
 });
 
-test('OG-AQ-16 version and cache: the app says admin-v1 and the changed files have a new address', () => {
-  assert.match(APP, /const APP_VERSION = 'admin-v1';/);
-  assert.match(APP, /win\.Ongil = Object\.freeze\(\{ version: APP_VERSION, analytics, sources: sourceStatus,/);
-  assert.match(HTML, /ongil-shell\.css\?v=20261003a9/);
-  assert.match(HTML, /ongil-app\.css\?v=20261003a9/);
-  assert.match(HTML, /js\/app\.js\?v=20261003a9/);
+test('OG-AQ-16 version and cache: the app states its version and the changed files have a new address', () => {
+  // Phase 10 moved the version on. BEFORE: admin-v1 / ?v=20261003a9. AFTER: assistant-v1 / ?v=20261003b10.
+  assert.match(APP, /const APP_VERSION = 'assistant-v1';/);
+  assert.match(APP, /win\.Ongil = Object\.freeze\(\{ version: APP_VERSION, assistant, assistantView, analytics, sources: sourceStatus,/);
+  assert.match(HTML, /ongil-shell\.css\?v=20261003b10/);
+  assert.match(HTML, /ongil-app\.css\?v=20261003b10/);
+  assert.match(HTML, /js\/app\.js\?v=20261003b10/);
 });
 
 test('OG-AQ-17 performance: one small write per event and a tiny summary — no list of events to scan', () => {
@@ -975,8 +981,9 @@ test('OG-AQ-19 regression — privacy boundaries from earlier phases still hold 
 test('OG-AQ-20 documentation and suite: the Phase 9 document has every required section; no earlier test file is gone', () => {
   const doc = read('docs/ongil/PHASE_9_ADMIN_ANALYTICS_V1.md');
   for (const h of ['OBJECTIVE', 'AUDIT', 'ADMIN POSITIONING', 'ADMIN ROUTES', 'SYSTEM STATUS', 'FEATURE STATUS', 'DATA SOURCES', 'CONTENT STATUS', 'ANALYTICS ARCHITECTURE', 'EVENT CONTRACT', 'EVENT ALLOWLIST', 'PRIVACY', 'RETENTION', 'INSTRUMENTATION', 'DATA MANAGER', 'SEARCH OPERATIONS', 'SAVED OPERATIONS', 'NOTIFICATION OPERATIONS', 'PRIVACY MATRIX', 'SECURITY LIMITATIONS', 'ADMIN ACTIONS', 'ACCESSIBILITY', 'RESPONSIVE', 'PERFORMANCE', 'TESTS', 'KNOWN LIMITATIONS', 'PRODUCTION MIGRATION', 'PHASE 10 HANDOFF']) assert.match(doc, new RegExp(`^## (\\d+\\. )?${h}$`, 'm'), h);
-  for (const name of A.EVENT_NAMES) assert.ok(doc.includes(`\`${name}\``), `${name} is documented`);
+  // Phase 10: the ai_* events are documented in PHASE_10_ONGIL_AI_V1.md (checked by OG-AI-78)
+  for (const name of A.EVENT_NAMES.filter((n) => !n.startsWith('ai_'))) assert.ok(doc.includes(`\`${name}\``), `${name} is documented`);
   assert.equal(/LIVE VERIFIED(?!")|screen reader: VERIFIED/.test(doc.replace(/never[^\n]*LIVE VERIFIED|no[^\n]*LIVE VERIFIED|not[^\n]*LIVE VERIFIED/gi, '')), false);
   const tests = fs.readdirSync(path.join(ROOT, 'tests/ongil')).filter((f) => f.endsWith('.test.mjs')).sort();
-  assert.deepEqual(tests, ['admin-analytics', 'care-data', 'community-data', 'cross-product', 'enjoy-data', 'family-data', 'foundation-data', 'foundation-flows', 'health-data', 'health-view', 'home-data', 'home-view', 'integration-data', 'integration-view', 'life-data', 'life-privacy', 'life-view', 'shell', 'store-data'].map((n) => `${n}.test.mjs`));
+  assert.deepEqual(tests, ['admin-analytics', 'assistant', 'care-data', 'community-data', 'cross-product', 'enjoy-data', 'family-data', 'foundation-data', 'foundation-flows', 'health-data', 'health-view', 'home-data', 'home-view', 'integration-data', 'integration-view', 'life-data', 'life-privacy', 'life-view', 'shell', 'store-data'].map((n) => `${n}.test.mjs`));
 });

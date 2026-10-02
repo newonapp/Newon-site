@@ -55,6 +55,9 @@ import { createLifeView, lifeHash, resolveSection } from './life-view.js';
 import { focusNode } from './accessibility.js';
 import { dateKey } from './dates.js';
 import { createPanels } from './panels.js';
+import { createAssistant } from './assistant-tools.js';
+import { createAssistantView } from './assistant-view.js';
+import { safeRoute } from './routes.js';
 import { applyPreferences, viewTitle, focusView, bindSkipLink, bindScrollCues } from './accessibility.js';
 
 const doc = document;
@@ -67,7 +70,7 @@ const profile = createProfileStore(storage);
  * Phase 9 — local, privacy-preserving usage counters and the one place that feeds them (instrument.js). The stores
  * below are wrapped once, here; no screen calls analytics itself. Nothing is sent anywhere and no id is created.
  */
-const APP_VERSION = 'admin-v1';
+const APP_VERSION = 'assistant-v1';
 const analytics = createAnalytics({ storage });
 const instrument = createInstrumentation((name, props) => analytics.track(name, props, html.dataset.ogView || ''));
 /* what each public-data source did during this visit (state and counts only), for the local operations view */
@@ -260,6 +263,30 @@ const panels = createPanels({
 });
 
 /*
+ * Phase 10 — ONGIL 도우미: a header panel that matches a typed request to what ONGIL can already do. No language
+ * model is connected. Its tools get exactly these handles — the calendar, tasks, routines, saved items, the public
+ * search and the family-connection state — and nothing else: no storage, profile, health, journal or expense store.
+ * A calendar entry or a task is saved only after the person presses 확인. Requests are never stored or sent.
+ */
+const assistant = createAssistant({ schedule, tasks, routines, saved, search, familyConnection: onboarding.familyConnection });
+const assistantView = createAssistantView({
+  root: doc.querySelector('[data-og-tools]'),
+  assistant,
+  /* a result can only name a screen inside ONGIL; the address is checked once more before it is used */
+  onNavigate: (route) => {
+    const safe = safeRoute(route);
+    if (safe) win.location.hash = safe;
+  },
+  /* counted as kinds only: which sort of request, which tool, how it ended — never the words */
+  onEvent: (name, detail = {}) => {
+    if (name === 'open') instrument.track('ai_open');
+    if (name === 'intent') instrument.track('ai_intent_matched', { intent: detail.intent, result: detail.status });
+    if (name === 'confirmed') instrument.track('ai_action_confirmed', { tool: detail.tool, result: detail.status });
+    if (name === 'cancelled') instrument.track('ai_action_cancelled', { tool: detail.tool });
+  },
+});
+
+/*
  * Phase 9 — 운영 보기 (#admin): a local, read-only operations view. No menu entry, no sign-in, no server: it shows
  * this copy of ONGIL only and says so. It reads no health, family or journal record, and no title or text of any record.
  */
@@ -430,4 +457,4 @@ router.start();
 html.dataset.ogReady = 'true';
 
 /* one stable handle for later phases and for manual checks; no secrets, nothing privileged */
-win.Ongil = Object.freeze({ version: APP_VERSION, analytics, sources: sourceStatus, storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes, familySharing, helpRequests, care, enjoy: enjoyView, communityPosts, groupDrafts, meetupDrafts, store: storeView });
+win.Ongil = Object.freeze({ version: APP_VERSION, assistant, assistantView, analytics, sources: sourceStatus, storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes, familySharing, helpRequests, care, enjoy: enjoyView, communityPosts, groupDrafts, meetupDrafts, store: storeView });

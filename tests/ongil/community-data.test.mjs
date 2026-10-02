@@ -547,6 +547,7 @@ test('OG-CG-16 no test fixtures or QA data in production source; app is versione
   /* Phase 7 moved the version on: store-v1 / ?v=20261003s7 */
   /* Phase 8 moved the version on again: integration-v2 / ?v=20261003i8 (BEFORE: store-v1 / 20261003s7) */
   /* Phase 9 moved the version on: admin-v1 / ?v=20261003a9 (BEFORE: integration-v2 / 20261003i8). The version now lives in APP_VERSION. */
-  assert.match(APP, /const APP_VERSION = 'admin-v1';/);
-  assert.match(read('index.html'), /app\.js\?v=20261003a9/);
+  /* Phase 10 moved the version on: assistant-v1 / ?v=20261003b10 (BEFORE: admin-v1 / 20261003a9) — ONGIL 도우미 was added. */
+  assert.match(APP, /const APP_VERSION = 'assistant-v1';/);
+  assert.match(read('index.html'), /app\.js\?v=20261003b10/);
 });

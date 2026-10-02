@@ -895,12 +895,13 @@ test('OG-IN8-65 regression: no new collection, backend, network, dependency or f
   // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
   assert.equal(COLLECTIONS.length, 24);
   /* Phase 9 moved the version on: admin-v1 / ?v=20261003a9 (BEFORE: integration-v2 / 20261003i8). The version now lives in APP_VERSION. */
-  assert.match(JS['app.js'], /const APP_VERSION = 'admin-v1';/);
-  assert.match(INDEX, /app\.js\?v=20261003a9/);
+  /* Phase 10 moved the version on: assistant-v1 / ?v=20261003b10 (BEFORE: admin-v1 / 20261003a9) — ONGIL 도우미 was added. */
+  assert.match(JS['app.js'], /const APP_VERSION = 'assistant-v1';/);
+  assert.match(INDEX, /app\.js\?v=20261003b10/);
   assert.equal(/firebase|supabase|openai|anthropic|api[_-]?key|Bearer /i.test(PRODUCTION), false);
   assert.equal(/\bfetch\(|XMLHttpRequest|WebSocket|EventSource|sendBeacon/.test(CODE['routes.js'] + CODE['search.js'] + CODE['saved.js'] + CODE['saved-view.js'] + CODE['notifications.js'] + CODE['panels.js']), false);
   assert.equal(/TEST FIXTURE|example\.test|fixture/i.test(PRODUCTION), false, 'no QA data in production source');
   for (const f of ['routes.js', 'search.js', 'saved-view.js', 'notifications.js', 'panels.js']) for (const m of JS[f].matchAll(/from '([^']+)'/g)) assert.ok(fs.existsSync(path.join(JS_DIR, m[1])), `${f} → ${m[1]}`);
   // Phase 9: + analytics.js, instrument.js, source-status.js, admin.js, admin-view.js
-  assert.equal(fs.readdirSync(JS_DIR).filter((f) => f.endsWith('.js')).length, 65, '60 modules + the five Phase 9 modules');
+  assert.equal(fs.readdirSync(JS_DIR).filter((f) => f.endsWith('.js')).length, 68, '60 modules + the five Phase 9 modules + the three Phase 10 modules (assistant-intents, assistant-tools, assistant-view)');
 });

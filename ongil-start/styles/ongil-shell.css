@@ -35,6 +35,23 @@ body:has(.og) { padding-top: 0 !important; background: var(--og-bg); color: var(
 .og-panel__more { display: inline-flex; align-items: center; min-height: var(--og-control); color: inherit; font-size: 1rem; font-weight: 700; }
 .og-panel a:focus-visible, .og-panel button:focus-visible, .og-panel input:focus-visible { outline: 3px solid var(--og-panel-ink); outline-offset: 2px; }
 .og-tool:focus-visible { outline: 3px solid currentColor; outline-offset: 2px; }
+/* [P10] ONGIL 도우미: the same header panel as 통합검색, a little wider for a request and its result */
+.og-panel--assistant { width: min(26rem, calc(100vw - 2rem)); max-height: min(78vh, 40rem); }
+.og-assist__chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.3rem 0 0; padding: 0; list-style: none; }
+.og-assist__entries { margin: 0.4rem 0 0; padding: 0; list-style: none; }
+.og-assist__entry { padding: 0.7rem 0 0.8rem; border-top: 1px solid var(--og-panel-line); }
+.og-assist__entry:first-child { border-top: 0; }
+.og-assist__entry p { margin: 0 0 0.3rem; }
+.og-assist__entry > .og-panel__result-title { font-size: 1.05rem; }
+.og-assist__summary { margin: 0.3rem 0 0.5rem; padding: 0.5rem 0.75rem; list-style: none; border: 1px solid var(--og-panel-input-border); border-radius: var(--og-radius-input); }
+.og-assist__summary li { display: flex; flex-wrap: wrap; gap: 0.1rem 0.75rem; padding: 0.15rem 0; }
+.og-assist__primary { background: var(--og-panel-ink); color: var(--og-panel-bg); border-color: var(--og-panel-ink); }
+.og-assist__close { margin-top: 0.8rem; }
+.og-panel__btn:disabled { opacity: 0.55; cursor: default; }
+/* three header tools on a phone: the mark stays, the word beside it gives way (the link keeps its name for screen readers) */
+@media (max-width: 430px) {
+  .gnav--ongil .gnav__wordmark { display: none; }
+}
 
 /* screen isolation — only the active view is shown */
 main > [data-og-screen] { display: none; }

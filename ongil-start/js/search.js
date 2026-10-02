@@ -87,13 +87,15 @@ export function createSearch() {
    * (every provider that ran failed). `total` counts what was found; `results` holds at most SEARCH_GROUP_LIMIT per
    * provider, and a group says when it was cut (`truncated`), so a count on screen is never larger than what is shown.
    */
-  async function query(input) {
+  async function query(input, { only = null } = {}) {
     const q = normalizeQuery(input);
     const out = { query: q, state: 'empty-query', results: [], groups: [], failed: [], failedLabels: [], total: 0 };
     if (!q) return out;
     let ran = 0;
     for (const p of providers.values()) {
       if (p.scope !== 'PUBLIC') continue;
+      /* Phase 10: a caller may ask a subset of the PUBLIC providers by id (ONGIL 도우미 asks one at a time) */
+      if (Array.isArray(only) && !only.includes(p.id)) continue;
       ran += 1;
       let rows = [];
       try {

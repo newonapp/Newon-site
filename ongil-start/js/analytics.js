@@ -42,6 +42,10 @@ export const PROPERTIES = Object.freeze({
   providerCount: Object.freeze(['0', '1', '2', '3', '4', '5+']),
   outcome: Object.freeze(['results', 'partial', 'no-results', 'error']),
   contentType: CONTENT,
+  /* Phase 10 — ONGIL 도우미: which kind of request, which tool, how it ended. Never the words that were typed. */
+  intent: Object.freeze(['VIEW_TODAY', 'VIEW_SCHEDULE', 'VIEW_TASKS', 'VIEW_ROUTINES', 'VIEW_SAVED', 'SEARCH_CARE', 'SEARCH_ENJOY', 'SEARCH_STORE', 'ADD_CALENDAR', 'ADD_TASK', 'OPEN_HOME', 'OPEN_LIFE', 'OPEN_HEALTH', 'OPEN_FAMILY', 'OPEN_CARE', 'OPEN_ENJOY', 'OPEN_COMMUNITY', 'OPEN_STORE', 'OPEN_SAVED', 'PREPARE_FAMILY_SHARE', 'HEALTH_SAFETY', 'NOT_AVAILABLE', 'HELP', 'UNSUPPORTED']),
+  tool: Object.freeze(['create_calendar_event', 'create_task']),
+  result: Object.freeze(['SUCCESS', 'EMPTY', 'UNAVAILABLE', 'ERROR', 'NEEDS_CONFIRMATION']),
 });
 
 /* the allowlist: an event not listed here is refused; a property not listed for its event is dropped */
@@ -64,6 +68,10 @@ export const EVENTS = Object.freeze({
   community_post_saved: Object.freeze([]),
   group_draft_created: Object.freeze([]),
   meetup_draft_created: Object.freeze([]),
+  ai_open: Object.freeze([]),
+  ai_intent_matched: Object.freeze(['intent', 'result']),
+  ai_action_confirmed: Object.freeze(['tool', 'result']),
+  ai_action_cancelled: Object.freeze(['tool']),
 });
 export const EVENT_NAMES = Object.freeze(Object.keys(EVENTS));
 export const EVENT_LABELS = Object.freeze({
@@ -85,6 +93,10 @@ export const EVENT_LABELS = Object.freeze({
   community_post_saved: '내 글 저장',
   group_draft_created: '모임 초안 만들기',
   meetup_draft_created: '모임 일정 초안 만들기',
+  ai_open: 'ONGIL 도우미 열기',
+  ai_intent_matched: '도우미에 요청하기',
+  ai_action_confirmed: '도우미 추가 확인',
+  ai_action_cancelled: '도우미 추가 취소',
 });
 
 /* numbers become buckets before they are counted: an exact length or count is never kept */

@@ -23,6 +23,7 @@ import { PRIMARY_AREAS } from './areas.js';
 import { SOURCE_STATE_LABELS, REASON_LABELS, LIVE_VERIFIED } from './source-status.js';
 import { EVENT_NAMES, ALL_COUNTERS, RETENTION_DAYS, TRANSMISSION, IDENTIFIERS } from './analytics.js';
 import { DELIVERY, PRODUCERS } from './notifications.js';
+import { MODEL, INTENT_IDS } from './assistant-intents.js';
 
 export const ADMIN_MODE = Object.freeze({ kind: 'LOCAL_OPERATIONS_VIEW', serverAuth: false, rbac: false, remoteAuditLog: false, remoteUsers: false, remoteModeration: false, remoteAnalytics: false, remoteDataEdit: false, liveProviderChecks: false });
 export const ADMIN_TABS = Object.freeze([
@@ -89,6 +90,8 @@ export function buildSystemStatus({ version = '', hostname = '', storage, search
     savedTypes: SAVED_TYPES.length,
     notificationTypes: NOTIFICATION_TYPES.length,
     analytics: { events: EVENT_NAMES.length, counters: ALL_COUNTERS.length, retentionDays: RETENTION_DAYS },
+    /* Phase 10: ONGIL 도우미 is a local matcher — no model is connected; the only things it may save are a calendar entry and a task */
+    assistant: { model: MODEL.connected ? 'CONNECTED' : 'NOT_CONNECTED', intents: INTENT_IDS.length, writeTools: 2 },
   };
 }
 

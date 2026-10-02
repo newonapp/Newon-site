@@ -14,7 +14,7 @@ export const GLOBAL_VIEWS = Object.freeze(['saved', 'account']);
 /* internal views have an address but no place in any menu (Phase 9: the local operations view) */
 export const INTERNAL_VIEWS = Object.freeze(['admin']);
 /* overlays are panels on top of the current view, not views */
-export const OVERLAYS = Object.freeze(['search', 'notifications']);
+export const OVERLAYS = Object.freeze(['search', 'notifications', 'assistant']);
 
 export const ROUTE_ALIASES = Object.freeze({
   '': 'home',
