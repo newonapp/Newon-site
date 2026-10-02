@@ -195,7 +195,7 @@
     rail.innerHTML = stages().map(function (s) {
       var fields = (s.fields || []).slice(0, 3).map(function (f) { return esc(f.name); }).join(" · ");
       return (
-        '<button type="button" class="lv-life-card" role="listitem" data-lv-life-goto="stage-' + esc(s.id) + '" data-stage="' + esc(s.id) + '">' +
+        '<button type="button" class="lv-life-card" data-lv-life-goto="stage-' + esc(s.id) + '" data-stage="' + esc(s.id) + '">' +
           '<div class="lv-life-card__media"><img class="lv-life-card__img" src="' + esc(s.img) + '" alt="' + esc(s.alt || "") + '" loading="lazy" /></div>' +
           '<div class="lv-life-card__body">' +
             '<p class="lv-life-card__age">' + esc(s.label) + "</p>" +
@@ -302,7 +302,7 @@
       ];
       filters.innerHTML = filtersList.map(function (f) {
         return "<button type=\"button\" data-lv-life-event-filter=\"" + f.id + "\"" +
-          (state.eventFilter === f.id ? " class=\"is-on\"" : "") + ">" + esc(f.label) + "</button>";
+          (state.eventFilter === f.id ? " class=\"is-on\" aria-pressed=\"true\"" : " aria-pressed=\"false\"") + ">" + esc(f.label) + "</button>";
       }).join("");
     }
     var list = lifeEvents().filter(function (ev) {
@@ -481,22 +481,22 @@
     if (state.setupTab === "stage") {
       html = '<div class="lv-life-chips" role="group" aria-label="생애 단계">' +
         stages().map(function (s) {
-          return '<button type="button" data-setup-stage="' + esc(s.id) + '"' + (p.stage === s.id ? ' class="is-on"' : "") + ">" + esc(s.label) + " · " + esc(s.title) + "</button>";
+          return '<button type="button" data-setup-stage="' + esc(s.id) + '"' + (p.stage === s.id ? ' class="is-on" data-lv-chip aria-pressed="true"' : ' data-lv-chip aria-pressed="false"') + ">" + esc(s.label) + " · " + esc(s.title) + "</button>";
         }).join("") + "</div>";
     } else if (state.setupTab === "situation") {
       html = '<div class="lv-life-chips" role="group" aria-label="생활 상황">' +
         (DATA.situations || []).map(function (v) {
-          return '<button type="button" data-setup-multi="situation" data-val="' + esc(v) + '"' + (p.situations.indexOf(v) >= 0 ? ' class="is-on"' : "") + ">" + esc(v) + "</button>";
+          return '<button type="button" data-setup-multi="situation" data-val="' + esc(v) + '"' + (p.situations.indexOf(v) >= 0 ? ' class="is-on" data-lv-chip aria-pressed="true"' : ' data-lv-chip aria-pressed="false"') + ">" + esc(v) + "</button>";
         }).join("") + "</div>";
     } else if (state.setupTab === "interest") {
       html = '<div class="lv-life-chips" role="group" aria-label="관심 분야">' +
         (DATA.interests || []).map(function (v) {
-          return '<button type="button" data-setup-multi="interest" data-val="' + esc(v) + '"' + (p.interests.indexOf(v) >= 0 ? ' class="is-on"' : "") + ">" + esc(v) + "</button>";
+          return '<button type="button" data-setup-multi="interest" data-val="' + esc(v) + '"' + (p.interests.indexOf(v) >= 0 ? ' class="is-on" data-lv-chip aria-pressed="true"' : ' data-lv-chip aria-pressed="false"') + ">" + esc(v) + "</button>";
         }).join("") + "</div>";
     } else {
       html = '<div class="lv-life-chips" role="group" aria-label="현재 목표">' +
         (DATA.goals || []).map(function (v) {
-          return '<button type="button" data-setup-multi="goal" data-val="' + esc(v) + '"' + (p.goals.indexOf(v) >= 0 ? ' class="is-on"' : "") + ">" + esc(v) + "</button>";
+          return '<button type="button" data-setup-multi="goal" data-val="' + esc(v) + '"' + (p.goals.indexOf(v) >= 0 ? ' class="is-on" data-lv-chip aria-pressed="true"' : ' data-lv-chip aria-pressed="false"') + ">" + esc(v) + "</button>";
         }).join("") + "</div>";
     }
     panel.innerHTML = html + '<p class="lv-life-note">복수 선택 가능 · 언제든 수정 · 개인정보를 추가로 요구하지 않습니다.</p>';

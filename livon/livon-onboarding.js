@@ -201,6 +201,8 @@
     if (!p) return;
     p.complete(ui.draft);
     hide(); hideEntry(); notify();
+    /* the dialog is gone: say that the choices were saved (screen readers get no other confirmation) */
+    if (window.LivonA11y && typeof window.LivonA11y.say === "function") window.LivonA11y.say("맞춤 설정을 저장했습니다.");
   }
   function go(delta) {
     var list = steps(), i = list.indexOf(ui.step) + delta;

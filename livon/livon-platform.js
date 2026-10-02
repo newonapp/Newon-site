@@ -205,7 +205,7 @@
   function renderSearchResults(host, q, tab) {
     var results = searchAll(q, tab);
     var tabs = SEARCH_TABS.map(function (t) {
-      return "<button type=\"button\" data-lv-plat-tab=\"" + t.id + "\"" + (tab === t.id ? " class=\"is-on\"" : "") + ">" + esc(t.label) + "</button>";
+      return "<button type=\"button\" data-lv-plat-tab=\"" + t.id + "\"" + (tab === t.id ? " class=\"is-on\" data-lv-chip aria-pressed=\"true\"" : " data-lv-chip aria-pressed=\"false\"") + ">" + esc(t.label) + "</button>";
     }).join("");
     var body = "";
     if (!results.length) {

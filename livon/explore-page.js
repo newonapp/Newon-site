@@ -657,7 +657,7 @@
     var goLabel = x.realData && x.actionLabel ? x.actionLabel : "공식 사이트";
     var go = x.external
       ? (x.href ? "<a class=\"lv-ex-btn " + (x.tel ? "lv-ex-btn--outline" : "lv-ex-btn--dark") + " lv-ex-btn--sm\" href=\"" + esc(x.href) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + esc(goLabel) + " <span aria-hidden=\"true\">↗</span><span class=\"visually-hidden\"> (새 창)</span></a>" : "")
-      : "<a class=\"lv-ex-btn lv-ex-btn--dark lv-ex-btn--sm\" href=\"" + esc(x.href) + "\">자세히 보기</a>";
+      : "<a class=\"lv-ex-btn lv-ex-btn--dark lv-ex-btn--sm\" href=\"" + esc(x.href) + "\">자세히 보기<span class=\"visually-hidden\">: " + esc(x.title) + "</span></a>";
     if (x.realData && x.entityId && !save) {
       var LPs = window.LivonPlatform, sv = !!(LPs && LPs.listSaves && LPs.listSaves("all").some(function (y) { return y.id === "ext:" + x.entityId; }));
       save = "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm\" data-livon-entity-save=\"" + esc(x.entityId) + "\" aria-pressed=\"" + sv + "\">" + (sv ? "저장됨" : "저장") + "</button>";
@@ -1174,6 +1174,7 @@
       return x.id !== id && (x.categoryIds || []).some(function (c) { return (item.categoryIds || []).indexOf(c) >= 0; });
     }).slice(0, 3);
 
+    var titleHadFocus = !!document.activeElement && document.activeElement.id === "lv-ex-detail-title";
     host.innerHTML =
       "<button type=\"button\" class=\"lv-ex-btn lv-ex-btn--outline lv-ex-btn--sm\" data-lv-ex-back-results>← 결과로</button>" +
       "<article class=\"lv-ex-detail lv-ex-detail--" + esc(item.layout || item.type) + "\">" +
@@ -1182,7 +1183,7 @@
           "<div class=\"lv-ex-detail__hero-copy\">" +
             credBadge(item) +
             "<p class=\"lv-ex-eyebrow\">" + esc(TYPE_LABEL[item.type] || "") + " · " + esc(item.subfield || "") + "</p>" +
-            "<h2 class=\"lv-ex-title lv-ex-title--md\">" + esc(item.title) + "</h2>" +
+            "<h2 class=\"lv-ex-title lv-ex-title--md\" id=\"lv-ex-detail-title\" tabindex=\"-1\">" + esc(item.title) + "</h2>" +
             "<p class=\"lv-ex-lead\">" + esc(item.provider || "") + "</p>" +
           "</div>" +
         "</div>" +
@@ -1230,6 +1231,20 @@
     location.hash = "ex-item-" + id;
     scrollToId("ex-detail");
     renderActivity();
+    /* a newly opened detail: the tab title names it and focus moves to its heading (keyboard and screen-reader users land on the content) */
+    setTitle(item.title);
+    if (state.focusedDetail !== id || titleHadFocus) {
+      state.focusedDetail = id;
+      var dh = document.getElementById("lv-ex-detail-title");
+      if (dh) { try { dh.focus({ preventScroll: true }); } catch (e) { dh.focus(); } }
+    }
+  }
+
+  var EX_TITLE = "탐색 · LIVON";
+  function setTitle(name) {
+    var t = document.title;
+    if (name) { document.title = name + " · " + EX_TITLE; return; }
+    if (t !== EX_TITLE && t.slice(-(EX_TITLE.length + 3)) === " · " + EX_TITLE) document.title = EX_TITLE;
   }
 
   function renderCompare() {
@@ -1578,8 +1593,8 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        links.forEach(function (a) { a.classList.remove("is-on"); });
-        if (map[entry.target.id]) map[entry.target.id].classList.add("is-on");
+        links.forEach(function (a) { a.classList.remove("is-on"); a.removeAttribute("aria-current"); });
+        if (map[entry.target.id]) { map[entry.target.id].classList.add("is-on"); map[entry.target.id].setAttribute("aria-current", "location"); }
       });
     }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
     Object.keys(map).forEach(function (id) {
@@ -1605,6 +1620,7 @@
   }
 
   function onShow(hash) {
+    if (String(hash || "").indexOf("ex-item-") !== 0) { state.focusedDetail = null; setTitle(""); }
     renderRecentLine();
     renderActivity();
     renderForYou();

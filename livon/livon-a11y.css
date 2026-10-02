@@ -1,0 +1,75 @@
+/* LIVON accessibility layer (loaded last). Small, targeted overrides — the visual design stays as it is.
+   Sections: focus placement · focus indicators · form-field boundaries ·
+   motion control · reduced motion · forced colors. */
+
+/* ---------- focus placement: keep the focused element clear of the fixed header and sticky sub-navigation ---------- */
+html[data-lv-view] { scroll-padding-top: calc(var(--gnav-h, 74px) + 64px); scroll-padding-bottom: 24px; }
+main > [data-lv-screen]:focus { outline: none; }
+
+/* ---------- focus indicators where only a 1px border colour changed, or nothing did ---------- */
+#livon-home .lv-hm-ai:focus-within { outline: 2px solid #fff; outline-offset: 2px; }
+#livon-home .lv-hm-search input:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+#livon-home .lv-hm-field input:focus-visible,
+#livon-home .lv-hm-field select:focus-visible { outline: 2px solid #0c0c0c; outline-offset: 2px; }
+html .livon-search input:focus-visible { outline: 2px solid #0a0a0a; outline-offset: 2px; }
+:is(#community, #explore, #life-now, #livon-ai, #today, #life, #help, .lv-ml-modal, .lv-life-modal, .lv-cm-modal, .lv-ai-modal) :is(input, select, textarea):focus-visible { outline: 2px solid #0a0a0a; outline-offset: 2px; }
+:is(#community .lv-cm-search__box, #explore .lv-ex-search__box, #livon-ai .lv-ai-composer__form):focus-within { outline: 2px solid #0a0a0a; outline-offset: 2px; }
+:is(#community .lv-cm-search__box, #explore .lv-ex-search__box, #livon-ai .lv-ai-composer__form) :is(input, textarea):focus-visible { outline: none; }
+
+/* buttons and links inside dialogs (the full-screen backdrop is not a tab stop) */
+:is(.lv-life-modal, .lv-ml-modal, .lv-cm-modal, .lv-ai-modal) :is(button, a):not([class*="backdrop"]):focus-visible { outline: 2px solid #0a0a0a; outline-offset: 2px; }
+
+/* a sticky filter column taller than the window scrolls on its own, so every filter can be reached and seen */
+@media (min-width: 960px) {
+  #explore .lv-ex-side { max-height: calc(100vh - var(--gnav-h, 74px) - 24px); overflow-y: auto; overscroll-behavior: contain; }
+}
+
+/* ---------- form fields: the boundary reaches 3:1 against its background (WCAG 1.4.11) ---------- */
+html #livon-home .lv-hm-field :is(input, select),
+html :is(#community, .lv-cm-modal) .lv-cm-field :is(input, select, textarea):not([aria-invalid="true"]),
+html #explore :is(.lv-ex-pref, .lv-ex-sort) select,
+html #livon-ai :is(.lv-ai-side-search, .lv-ai-field) :is(input, select, textarea),
+html :is(#life-now, .lv-ml-modal) .lv-ml-field :is(input, select, textarea):not([aria-invalid="true"]),
+html .livon-search input { border-color: #858585; }
+html #livon-ai .lv-ai-composer__form:not(:focus-within) { border-color: #858585; }
+html #livon-home .lv-hm-search input:not(:focus),
+html #livon-home .lv-hm-ai:not(:focus-within) { border-color: rgba(255, 255, 255, 0.62); }
+
+/* ---------- Home hero, narrow screens: the two captions and the buttons stack instead of overlapping ---------- */
+@media (max-width: 860px) {
+  #livon-home .livon-hero__foot { flex-direction: column; align-items: center; gap: 0.9rem; padding: 0 1.25rem; bottom: 2rem; }
+  #livon-home .livon-hero__foot p, #livon-home .livon-hero__foot p.is-right { max-width: 30rem; text-align: center; }
+  #livon-home .livon-hero__actions { position: static; transform: none; flex-wrap: wrap; justify-content: center; }
+}
+
+/* ---------- target size: one-character navigation links are at least 24px wide ---------- */
+html[data-lv-view] .gnav__nav .gnav__link { min-width: 24px; justify-content: center; text-align: center; }
+
+/* ---------- motion control on the film headers ---------- */
+.lv-motion-toggle {
+  position: absolute; right: clamp(0.75rem, 2vw, 1.5rem); top: calc(var(--gnav-h, 74px) + 0.75rem); z-index: 6;
+  width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255, 255, 255, 0.7); border-radius: 50%;
+  background: rgba(10, 10, 10, 0.55); color: #fff; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.lv-motion-toggle:hover { background: rgba(10, 10, 10, 0.8); }
+.lv-motion-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.lv-motion-toggle__icon { display: block; width: 12px; height: 14px; border-left: 4px solid currentColor; border-right: 4px solid currentColor; box-sizing: border-box; }
+.lv-motion-toggle[aria-pressed="true"] .lv-motion-toggle__icon { width: 0; height: 0; border-style: solid; border-width: 8px 0 8px 13px; border-color: transparent transparent transparent currentColor; margin-left: 3px; }
+
+/* ---------- reduced motion: nothing keeps moving, nothing scrolls smoothly ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html[data-lv-view], html[data-lv-view] * { scroll-behavior: auto !important; }
+  html[data-lv-view] *, html[data-lv-view] *::before, html[data-lv-view] *::after {
+    animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- forced colors (Windows High Contrast): selection and focus stay visible ---------- */
+@media (forced-colors: active) {
+  html[data-lv-view] :is([aria-pressed="true"], [aria-selected="true"], [aria-current], [aria-checked="true"]) {
+    outline: 2px solid Highlight; outline-offset: -2px;
+  }
+  html[data-lv-view] :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible { outline: 3px solid Highlight; outline-offset: 2px; }
+  .lv-motion-toggle { border-color: ButtonText; background: ButtonFace; color: ButtonText; forced-color-adjust: none; }
+}

@@ -1692,7 +1692,7 @@
       '<div class="lv-ml-block-label" style="margin-top:1.5rem"><p class="lv-ml-kicker">Alerts</p><h3 class="lv-ml-title lv-ml-title--md">알림 종류 ON/OFF</h3></div>' +
       '<ul class="lv-ml-manage-list">' + types.map(function (a) {
         return "<li><div><strong>" + esc(a.label) + "</strong><p>" + ((a.id === "booking" || a.id === "family") ? "준비 중" : "선호 설정") + "</p></div>" +
-          '<div class="lv-ml-row-acts"><label><input type="checkbox" data-lv-ml-alert="' + esc(a.id) + '"' + (prefs[a.id] !== false ? " checked" : "") + " /> 받기</label></div></li>";
+          '<div class="lv-ml-row-acts"><label><input type="checkbox" data-lv-ml-alert="' + esc(a.id) + '"' + (prefs[a.id] !== false ? " checked" : "") + ' /> <span class="visually-hidden">' + esc(a.label) + " 알림 </span>받기</label></div></li>";
       }).join("") + "</ul>" +
       '<p class="lv-ml-note" style="margin-top:1rem">앱 설정 · 주 시작 ' + esc(String((store.settings && store.settings.weekStartsOn) || 0)) + " · " + esc((store.settings && store.settings.currency) || "KRW") + "</p>" +
       '<div class="lv-ml-block-label" style="margin-top:1.5rem"><p class="lv-ml-kicker">For you</p><h3 class="lv-ml-title lv-ml-title--md">맞춤 설정</h3></div>' +

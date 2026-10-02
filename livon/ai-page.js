@@ -782,8 +782,8 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        links.forEach(function (a) { a.classList.remove("is-on"); });
-        if (map[entry.target.id]) map[entry.target.id].classList.add("is-on");
+        links.forEach(function (a) { a.classList.remove("is-on"); a.removeAttribute("aria-current"); });
+        if (map[entry.target.id]) { map[entry.target.id].classList.add("is-on"); map[entry.target.id].setAttribute("aria-current", "location"); }
       });
     }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
     Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });

@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="/site-dark.css?v=20260924foot1" />
     <link rel="stylesheet" href="/site-mobile.css?v=20260902nav1" />
     <link rel="stylesheet" href="/livon/connected-menus.css?v=20260925a" />
+    <link rel="stylesheet" href="/livon/livon-a11y.css?v=20261002a11y1" />
     <script src="/theme-shell.js?v=20260904perf1"></script>
   </head>
   <body>
@@ -70,7 +71,7 @@
         <div class="gnav__inner">
           <a class="gnav__brand" href="/ko/lifestage/" aria-label="LivOn">
             <img class="gnav__logo" src="/assets/livon-mark-icon.jpg" alt="" width="40" height="40" decoding="async" />
-            <span class="gnav__wordmark">LivOn</span>
+            <span class="gnav__wordmark" lang="en">LivOn</span>
           </a>
           <nav class="gnav__nav" aria-label="LivOn 메뉴">
             <div class="gnav__nav-scroller">
@@ -221,7 +222,7 @@
         <section class="lv-hm-sec lv-hm-sec--continue" id="hm-continue" data-lv-hm-continue aria-labelledby="hm-continue-title" hidden>
           <div class="lv-hm-inner">
             <header class="lv-hm-continue__head">
-              <p class="lv-hm-eyebrow">CONTINUE</p>
+              <p class="lv-hm-eyebrow" lang="en">CONTINUE</p>
               <h2 id="hm-continue-title">이어서 하기</h2>
               <p class="lv-hm-note">이 기기에 저장된 할 일·목표·최근 본 항목·저장한 콘텐츠만 보여 줍니다.</p>
             </header>
@@ -340,7 +341,7 @@
 
             <div class="lv-hm-ex-block" data-lv-hm-ex-block>
               <div class="lv-hm-ex-block__intro">
-                <p class="lv-hm-eyebrow">EXPLORE</p>
+                <p class="lv-hm-eyebrow" lang="en">EXPLORE</p>
                 <h3>생활에 필요한 사람과 서비스.</h3>
                 <form class="lv-hm-search lv-hm-search--xl" data-lv-hm-explore-form>
                   <label class="visually-hidden" for="hm-ex-q">탐색 검색</label>
@@ -355,7 +356,7 @@
 
             <div class="lv-hm-cm-block" data-lv-hm-cm-block>
               <div class="lv-hm-cm-block__intro">
-                <p class="lv-hm-eyebrow">COMMUNITY</p>
+                <p class="lv-hm-eyebrow" lang="en">COMMUNITY</p>
                 <h3>함께 나누는 일상의 이야기.</h3>
                 <ul class="lv-hm-tags">
                   <li><a href="#cm-home">일상 이야기</a></li>
@@ -431,7 +432,7 @@
             <video class="lv-lum__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260429_115139_0fc6bd3d-3631-4d26-ab9b-28293887dcc9.mp4"></video>
             <div class="lv-life__lockup">
               <div class="lv-life__veil" aria-hidden="true"></div>
-              <p class="lv-life__wordmark">LIFE STAGE</p>
+              <p class="lv-life__wordmark" lang="en">LIFE STAGE</p>
               <h1 class="lv-life__slogan" id="life-hero-title">삶의 모든 단계에,<br>필요한 다음을.</h1>
               <p class="lv-life__lead">10대부터 70대 이후까지.<br>지금의 나에게 필요한 생활 서비스와<br>앞으로의 새로운 가능성을 발견해 보세요.</p>
               <div class="lv-life__actions">
@@ -452,17 +453,17 @@
           <div class="lv-life__wrap">
             <section class="lv-life-sec lv-life-sec--intro" id="life-explore" data-lv-reveal>
               <header class="lv-life-head lv-life-head--center">
-                <p class="lv-life-kicker">Life Journey</p>
+                <p class="lv-life-kicker" lang="en">Life Journey</p>
                 <h2 class="lv-life-title">당신의 지금은<br>어떤 순간인가요?</h2>
                 <p class="lv-life-lead">7개 생애 단계를 자유롭게 살펴보고,<br>지금의 나에게 맞는 생활 분야와 서비스로 이어가세요.<br>연령은 추천 기준일 뿐, 이용을 제한하지 않습니다.</p>
               </header>
-              <div class="lv-life-rail" role="list" data-lv-life-rail></div>
+              <div class="lv-life-rail" role="group" aria-label="생애 단계 선택" data-lv-life-rail></div>
             </section>
 
             <section class="lv-life-sec lv-life-sec--band" id="life-setup" data-lv-reveal>
               <div class="lv-life-setup" data-lv-life-setup>
                 <header class="lv-life-head">
-                  <p class="lv-life-kicker">Personalize</p>
+                  <p class="lv-life-kicker" lang="en">Personalize</p>
                   <h2 class="lv-life-title">나에게 맞는<br>생활 기준을 골라보세요.</h2>
                   <p class="lv-life-lead">생애 단계 · 생활 상황 · 관심 분야 · 목표를 선택하면<br>관련 서비스를 우선 보여 드립니다. 언제든 수정하거나 건너뛸 수 있습니다.</p>
                 </header>
@@ -488,7 +489,7 @@
             <section class="lv-life-sec lv-life-sec--ink" id="life-mine" data-lv-reveal>
               <div class="lv-life-split">
                 <div>
-                  <p class="lv-life-kicker">For You</p>
+                  <p class="lv-life-kicker" lang="en">For You</p>
                   <h2 class="lv-life-title">나에게 맞는 서비스</h2>
                   <p class="lv-life-lead">선택한 생활 단계와 관심사에 맞춰 필요한 서비스를 먼저 보여드려요.</p>
                   <div class="lv-life-why" data-lv-life-why>맞춤 설정을 적용하면 추천 이유가 여기에 표시됩니다.</div>
@@ -501,7 +502,7 @@
 
             <section class="lv-life-sec lv-life-sec--stages" id="life-stages-view" data-lv-reveal>
               <header class="lv-life-head lv-life-head--center">
-                <p class="lv-life-kicker">Life Stages</p>
+                <p class="lv-life-kicker" lang="en">Life Stages</p>
                 <h2 class="lv-life-title">생애 단계별<br>생활 서비스를 살펴보세요.</h2>
                 <p class="lv-life-lead">10대부터 70대까지. 버튼을 누르면 해당 단계의 가이드와 서비스가 같은 구성으로 표시됩니다.</p>
               </header>
@@ -515,7 +516,7 @@
 
             <section class="lv-life-sec lv-life-sec--band" id="life-events" data-lv-reveal>
               <header class="lv-life-head">
-                <p class="lv-life-kicker">Life Event</p>
+                <p class="lv-life-kicker" lang="en">Life Event</p>
                 <h2 class="lv-life-title">내가 준비 중인 변화.<br>인생의 전환점부터 다음 단계까지.</h2>
                 <p class="lv-life-lead">입학·취업·독립·육아·은퇴처럼 인생 이벤트를 고르면<br>체크리스트와 관련 서비스·커뮤니티로 이어집니다. 예약·결제는 연결하지 않습니다.</p>
               </header>
@@ -526,7 +527,7 @@
 
             <section class="lv-life-sec" id="life-packages" data-lv-reveal>
               <header class="lv-life-head">
-                <p class="lv-life-kicker">Service Packages</p>
+                <p class="lv-life-kicker" lang="en">Service Packages</p>
                 <h2 class="lv-life-title">주제별로 묶은<br>생활 서비스 큐레이션.</h2>
                 <p class="lv-life-lead">결제·예약이 없는 안내형 패키지입니다.<br>통합 상품처럼 표시하지 않습니다.</p>
               </header>
@@ -536,7 +537,7 @@
             <section class="lv-life-sec lv-life-sec--band" id="life-family" data-lv-reveal>
               <div class="lv-life-family">
                 <div>
-                  <p class="lv-life-kicker">Family Explore</p>
+                  <p class="lv-life-kicker" lang="en">Family Explore</p>
                   <h2 class="lv-life-title">가족을 위한<br>생애 단계도 살펴보세요.</h2>
                   <p class="lv-life-lead">본인 외 자녀·배우자·부모님에게 필요한 분야를<br>별도로 탐색할 수 있습니다. 동의 없이 정보를 수집하지 않습니다.</p>
                 </div>
@@ -554,7 +555,7 @@
 
             <section class="lv-life-sec" id="life-services" data-lv-reveal>
               <header class="lv-life-head lv-life-head--center">
-                <p class="lv-life-kicker">Connected Menus</p>
+                <p class="lv-life-kicker" lang="en">Connected Menus</p>
                 <h2 class="lv-life-title">발견은 여기서,<br>이용은 각 메뉴에서.</h2>
                 <p class="lv-life-lead">라이프 스테이지는 안내와 연결 허브입니다.<br>다른 메뉴 기능을 중복 구현하지 않습니다.</p>
               </header>
@@ -566,7 +567,7 @@
 
             <section class="lv-life-sec lv-life-sec--ink" id="life-ai" data-lv-reveal>
               <header class="lv-life-head">
-                <p class="lv-life-kicker">Ask LIVON AI</p>
+                <p class="lv-life-kicker" lang="en">Ask LIVON AI</p>
                 <h2 class="lv-life-title">지금 필요한 다음을<br>함께 정리해 보세요.</h2>
                 <p class="lv-life-lead">질문을 고르면 LIVON AI로 이어집니다.<br>선택한 생애 단계 맥락이 함께 전달됩니다.</p>
               </header>
@@ -579,7 +580,7 @@
             </section>
 
             <section class="lv-life-close" id="life-cta" data-lv-reveal>
-              <p class="lv-life-kicker">Next</p>
+              <p class="lv-life-kicker" lang="en">Next</p>
               <h2 class="lv-life-title">생애 단계에 맞는<br>생활을 이어가세요.</h2>
               <div class="lv-life-close__acts">
                 <button type="button" class="lv-life-btn" data-lv-life-find>나의 라이프 스테이지 찾기</button>
@@ -596,7 +597,7 @@
             <video class="lv-td-film__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260419_065931_e3ca7b53-d32e-4ad5-81de-dc9d6fcfda6d.mp4"></video>
             <div class="lv-td-film__lockup">
               <div class="lv-td-film__veil" aria-hidden="true"></div>
-              <p class="lv-td-film__wordmark">DISCOVERY</p>
+              <p class="lv-td-film__wordmark" lang="en">DISCOVERY</p>
               <h1 class="lv-td-film__slogan" id="td-hero-title">오늘, 새로운 일상을<br>발견하다.</h1>
               <p class="lv-td-film__lead">새로운 장소와 경험, 배움과 영감까지.<br>평범한 하루를 특별하게 만드는<br>발견을 만나보세요.</p>
               <div class="lv-td-film__actions">
@@ -630,7 +631,7 @@
             <section class="lv-td-sec lv-td-sec--flush" id="td-pick" data-lv-td-reveal>
               <div class="lv-td-inner">
                 <header class="lv-td-head">
-                  <p class="lv-td-eyebrow">Discovery Feed</p>
+                  <p class="lv-td-eyebrow" lang="en">Discovery Feed</p>
                   <h2 class="lv-td-title lv-td-title--md">오늘의 발견</h2>
                   <p class="lv-td-lead">오늘의 발견 콘텐츠와 라이프 스테이지 주제, 장소·클래스·공식 정보를 한 피드에서 살펴보세요.<br>조회수·인기 순위·후기를 만들어 보여주지 않습니다.</p>
                 </header>
@@ -642,7 +643,7 @@
             <section class="lv-td-sec lv-td-sec--band" id="td-foryou" data-lv-td-reveal>
               <div class="lv-td-inner">
                 <header class="lv-td-head">
-                  <p class="lv-td-eyebrow">For You</p>
+                  <p class="lv-td-eyebrow" lang="en">For You</p>
                   <h2 class="lv-td-title lv-td-title--md">나를 위한<br>맞춤 발견</h2>
                   <p class="lv-td-lead">관심사·예산·동행·활동 유형을 고르면 관련 콘텐츠를 우선 보여 드립니다.<br>규칙 기반 추천이며 AI 추천이라고 표시하지 않습니다.</p>
                 </header>
@@ -673,19 +674,19 @@
               <div class="lv-td-inner">
                 <header class="lv-td-head lv-td-head--row">
                   <div>
-                    <p class="lv-td-eyebrow">This Week</p>
+                    <p class="lv-td-eyebrow" lang="en">This Week</p>
                     <h2 class="lv-td-title lv-td-title--md">이번 주<br>새로운 경험</h2>
                     <p class="lv-td-lead">날짜가 확인된 안내와 상시 체험 가이드입니다.<br>종료된 행사는 목록에서 제외합니다.</p>
                   </div>
-                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="week">전체 보기</a>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="week">전체 보기<span class="visually-hidden">: 이번 주</span></a>
                 </header>
-                <div class="lv-td-filters" data-lv-td-week-filters>
-                  <button type="button" class="is-on" data-lv-td-week="all">전체</button>
-                  <button type="button" data-lv-td-week="today">오늘</button>
-                  <button type="button" data-lv-td-week="weekend">이번 주말</button>
-                  <button type="button" data-lv-td-week="free">무료</button>
+                <div class="lv-td-filters" data-lv-td-week-filters role="group" aria-label="이번 주 발견 필터">
+                  <button type="button" class="is-on" aria-pressed="true" data-lv-td-week="all">전체</button>
+                  <button type="button" aria-pressed="false" data-lv-td-week="today">오늘</button>
+                  <button type="button" aria-pressed="false" data-lv-td-week="weekend">이번 주말</button>
+                  <button type="button" aria-pressed="false" data-lv-td-week="free">무료</button>
                 </div>
-                <div data-lv-td-week></div>
+                <div data-lv-td-week-list></div>
               </div>
             </section>
 
@@ -693,11 +694,11 @@
               <div class="lv-td-inner">
                 <header class="lv-td-head lv-td-head--row">
                   <div>
-                    <p class="lv-td-eyebrow">Places</p>
+                    <p class="lv-td-eyebrow" lang="en">Places</p>
                     <h2 class="lv-td-title lv-td-title--md">새로운 장소<br>발견</h2>
                     <p class="lv-td-lead">이미지와 위치 중심. 주소·운영시간은 출처가 확인된 항목만 표시합니다.</p>
                   </div>
-                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="place">전체 보기</a>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="place">전체 보기<span class="visually-hidden">: 장소</span></a>
                 </header>
                 <div data-lv-td-places></div>
               </div>
@@ -707,11 +708,11 @@
               <div class="lv-td-inner">
                 <header class="lv-td-head lv-td-head--row">
                   <div>
-                    <p class="lv-td-eyebrow">Experiences</p>
+                    <p class="lv-td-eyebrow" lang="en">Experiences</p>
                     <h2 class="lv-td-title lv-td-title--md">새로운 취미와<br>체험</h2>
                     <p class="lv-td-lead">활동 이미지와 소요 시간 중심. 예약·결제는 탐색 또는 공식 페이지로 연결합니다.</p>
                   </div>
-                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="experience">전체 보기</a>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="experience">전체 보기<span class="visually-hidden">: 체험</span></a>
                 </header>
                 <div data-lv-td-hobby></div>
               </div>
@@ -721,11 +722,11 @@
               <div class="lv-td-inner">
                 <header class="lv-td-head lv-td-head--row">
                   <div>
-                    <p class="lv-td-eyebrow">Learning</p>
+                    <p class="lv-td-eyebrow" lang="en">Learning</p>
                     <h2 class="lv-td-title lv-td-title--md">새로운 배움과<br>지식</h2>
                     <p class="lv-td-lead">과정·난이도 중심. 학습 일정은 내 생활에서 관리합니다.</p>
                   </div>
-                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="learn">전체 보기</a>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="learn">전체 보기<span class="visually-hidden">: 배움</span></a>
                 </header>
                 <div data-lv-td-learn></div>
               </div>
@@ -735,11 +736,11 @@
               <div class="lv-td-inner">
                 <header class="lv-td-head lv-td-head--row">
                   <div>
-                    <p class="lv-td-eyebrow">Together</p>
+                    <p class="lv-td-eyebrow" lang="en">Together</p>
                     <h2 class="lv-td-title lv-td-title--md">함께하는<br>새로운 경험</h2>
                     <p class="lv-td-lead">동행 대상별 활동을 소개합니다. 모임·게시글 관리는 커뮤니티에서 이어갑니다.</p>
                   </div>
-                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="together">전체 보기</a>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="together">전체 보기<span class="visually-hidden">: 함께</span></a>
                 </header>
                 <div data-lv-td-together></div>
               </div>
@@ -749,11 +750,11 @@
               <div class="lv-td-inner">
                 <header class="lv-td-head lv-td-head--row">
                   <div>
-                    <p class="lv-td-eyebrow">Seasonal</p>
+                    <p class="lv-td-eyebrow" lang="en">Seasonal</p>
                     <h2 class="lv-td-title lv-td-title--md">계절과 시기에<br>맞는 발견</h2>
                     <p class="lv-td-lead" data-lv-td-season-label>현재 계절 콘텐츠를 우선 표시합니다.</p>
                   </div>
-                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="season">전체 보기</a>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="season">전체 보기<span class="visually-hidden">: 계절</span></a>
                 </header>
                 <div data-lv-td-season></div>
               </div>
@@ -763,11 +764,11 @@
               <div class="lv-td-inner">
                 <header class="lv-td-head lv-td-head--row">
                   <div>
-                    <p class="lv-td-eyebrow">Everyday</p>
+                    <p class="lv-td-eyebrow" lang="en">Everyday</p>
                     <h2 class="lv-td-title lv-td-title--md">일상을 바꾸는<br>작은 발견</h2>
                     <p class="lv-td-lead">읽기 편한 에디토리얼. 변경될 수 있는 정보는 출처와 확인 날짜를 표시합니다.</p>
                   </div>
-                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="life">전체 보기</a>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="life">전체 보기<span class="visually-hidden">: 생활</span></a>
                 </header>
                 <div data-lv-td-everyday></div>
               </div>
@@ -777,11 +778,11 @@
               <div class="lv-td-inner">
                 <header class="lv-td-head lv-td-head--row">
                   <div>
-                    <p class="lv-td-eyebrow">Livon Stories</p>
+                    <p class="lv-td-eyebrow" lang="en">Livon Stories</p>
                     <h2 class="lv-td-title lv-td-title--md">LIVON이<br>전하는 이야기</h2>
                     <p class="lv-td-lead">기획형 에디토리얼. 광고·제휴와 구분합니다.</p>
                   </div>
-                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="editorial">전체 보기</a>
+                  <a class="lv-td-btn lv-td-btn--ghost" href="#td-library" data-lv-td-viewall="editorial">전체 보기<span class="visually-hidden">: 이야기</span></a>
                 </header>
                 <div data-lv-td-editorial></div>
               </div>
@@ -796,7 +797,7 @@
             <section class="lv-td-sec lv-td-sec--band" id="td-library" data-lv-td-reveal>
               <div class="lv-td-inner">
                 <header class="lv-td-head">
-                  <p class="lv-td-eyebrow">Search &amp; Filter</p>
+                  <p class="lv-td-eyebrow" lang="en">Search &amp; Filter</p>
                   <h2 class="lv-td-title lv-td-title--md">발견 콘텐츠<br>검색</h2>
                   <p class="lv-td-lead">오늘의 발견 콘텐츠만 검색합니다. 전문가·업체 종합 검색은 탐색에서.</p>
                 </header>
@@ -805,16 +806,16 @@
                   <input id="lv-td-q" type="search" name="q" placeholder="키워드로 검색" data-lv-td-q autocomplete="off" />
                   <button type="submit" class="lv-td-btn">검색</button>
                 </form>
-                <div class="lv-td-filters" data-lv-td-lib-filters>
-                  <button type="button" class="is-on" data-lv-td-cat="all">전체</button>
-                  <button type="button" data-lv-td-cat="place">장소</button>
-                  <button type="button" data-lv-td-cat="experience">체험</button>
-                  <button type="button" data-lv-td-cat="learn">배움</button>
-                  <button type="button" data-lv-td-cat="together">함께</button>
-                  <button type="button" data-lv-td-cat="season">계절</button>
-                  <button type="button" data-lv-td-cat="life">생활</button>
-                  <button type="button" data-lv-td-cat="editorial">이야기</button>
-                  <button type="button" data-lv-td-cat="event">행사</button>
+                <div class="lv-td-filters" data-lv-td-lib-filters role="group" aria-label="발견 유형 필터">
+                  <button type="button" class="is-on" aria-pressed="true" data-lv-td-cat="all">전체</button>
+                  <button type="button" aria-pressed="false" data-lv-td-cat="place">장소</button>
+                  <button type="button" aria-pressed="false" data-lv-td-cat="experience">체험</button>
+                  <button type="button" aria-pressed="false" data-lv-td-cat="learn">배움</button>
+                  <button type="button" aria-pressed="false" data-lv-td-cat="together">함께</button>
+                  <button type="button" aria-pressed="false" data-lv-td-cat="season">계절</button>
+                  <button type="button" aria-pressed="false" data-lv-td-cat="life">생활</button>
+                  <button type="button" aria-pressed="false" data-lv-td-cat="editorial">이야기</button>
+                  <button type="button" aria-pressed="false" data-lv-td-cat="event">행사</button>
                 </div>
                 <p class="lv-td-note" data-lv-td-count></p>
                 <div data-lv-td-library></div>
@@ -824,7 +825,7 @@
             <section class="lv-td-sec" id="td-connect" data-lv-td-reveal>
               <div class="lv-td-inner">
                 <header class="lv-td-head">
-                  <p class="lv-td-eyebrow">Connected</p>
+                  <p class="lv-td-eyebrow" lang="en">Connected</p>
                   <h2 class="lv-td-title lv-td-title--md">관심 분야와<br>관련 서비스 연결</h2>
                   <p class="lv-td-lead">발견은 여기서, 이용·관리는 각 메뉴에서.</p>
                 </header>
@@ -834,7 +835,7 @@
             </section>
 
             <section class="lv-td-close" id="td-cta" data-lv-td-reveal>
-              <p class="lv-td-eyebrow">Next</p>
+              <p class="lv-td-eyebrow" lang="en">Next</p>
               <h2 class="lv-td-title">오늘의 작은 발견이,<br>내일의 일상으로.</h2>
               <div class="lv-td-actions" style="justify-content:center;margin-top:1.75rem">
                 <a class="lv-td-btn" href="#td-pick" data-lv-td-scroll>오늘의 발견 살펴보기</a>
@@ -852,7 +853,7 @@
             <video class="lv-lum__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260324_151826_c7218672-6e92-402c-9e45-f1e0f454bdc4.mp4"></video>
             <div class="lv-ml__lockup">
               <div class="lv-ml__veil" aria-hidden="true"></div>
-              <p class="lv-ml__wordmark">MY LIFE</p>
+              <p class="lv-ml__wordmark" lang="en">MY LIFE</p>
               <h1 class="lv-ml__slogan">나의 삶을 위한,<br>나만의 생활 공간.</h1>
               <p class="lv-ml__lead">오늘의 일상부터 앞으로의 계획까지.<br>나에게 중요한 모든 것을<br>한곳에서 관리하세요.</p>
               <div class="lv-ml__actions">
@@ -890,19 +891,19 @@
             <section class="lv-ml-sec lv-ml-sec--flush" id="ml-home" data-lv-reveal>
               <div class="lv-ml-dash" data-lv-ml-dash>
                 <header class="lv-ml-head">
-                  <p class="lv-ml-kicker">Today</p>
+                  <p class="lv-ml-kicker" lang="en">Today</p>
                   <h2 class="lv-ml-title" data-lv-ml-today-label>오늘의 나</h2>
                   <p class="lv-ml-lead">실제 저장한 일정·할 일·목표만 표시합니다. 데이터가 없으면 빈 상태로 안내합니다.</p>
                 </header>
 
                 <div class="lv-ml-stats" data-lv-ml-stats></div>
 
-                <div class="lv-ml-block-label"><p class="lv-ml-kicker">Priority</p><h3 class="lv-ml-title lv-ml-title--md">먼저 볼 것</h3></div>
+                <div class="lv-ml-block-label"><p class="lv-ml-kicker" lang="en">Priority</p><h3 class="lv-ml-title lv-ml-title--md">먼저 볼 것</h3></div>
                 <p class="lv-ml-note">기한·오늘 일정 시간·직접 정한 우선순위만 기준으로 합니다. 임의로 추천하지 않습니다.</p>
                 <div data-lv-ml-priority></div>
 
                 <div class="lv-ml-quick" aria-label="빠른 실행">
-                  <p class="lv-ml-kicker">Quick actions</p>
+                  <p class="lv-ml-kicker" lang="en">Quick actions</p>
                   <div class="lv-ml-quick__row">
                     <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="event">일정 추가</button>
                     <button type="button" class="lv-ml-chip-btn" data-lv-ml-add="todo">할 일 추가</button>
@@ -917,27 +918,27 @@
 
                 <div class="lv-ml-split-dash">
                   <div>
-                    <div class="lv-ml-block-label"><p class="lv-ml-kicker">Timeline</p><h3 class="lv-ml-title lv-ml-title--md">오늘의 일정</h3></div>
+                    <div class="lv-ml-block-label"><p class="lv-ml-kicker" lang="en">Timeline</p><h3 class="lv-ml-title lv-ml-title--md">오늘의 일정</h3></div>
                     <div data-lv-ml-timeline></div>
                   </div>
                   <div>
-                    <div class="lv-ml-block-label"><p class="lv-ml-kicker">Tasks</p><h3 class="lv-ml-title lv-ml-title--md">오늘의 할 일</h3></div>
+                    <div class="lv-ml-block-label"><p class="lv-ml-kicker" lang="en">Tasks</p><h3 class="lv-ml-title lv-ml-title--md">오늘의 할 일</h3></div>
                     <div data-lv-ml-today-todos></div>
                   </div>
                 </div>
 
-                <div class="lv-ml-block-label"><p class="lv-ml-kicker">Plans</p><h3 class="lv-ml-title lv-ml-title--md">진행 중인 나의 계획</h3></div>
+                <div class="lv-ml-block-label"><p class="lv-ml-kicker" lang="en">Plans</p><h3 class="lv-ml-title lv-ml-title--md">진행 중인 나의 계획</h3></div>
                 <div data-lv-ml-active-goals></div>
 
-                <div class="lv-ml-block-label"><p class="lv-ml-kicker">Saved</p><h3 class="lv-ml-title lv-ml-title--md">최근 저장한 항목</h3></div>
+                <div class="lv-ml-block-label"><p class="lv-ml-kicker" lang="en">Saved</p><h3 class="lv-ml-title lv-ml-title--md">최근 저장한 항목</h3></div>
                 <div data-lv-ml-recent-saved></div>
 
-                <div class="lv-ml-block-label"><p class="lv-ml-kicker">Recent</p><h3 class="lv-ml-title lv-ml-title--md">최근 본 항목</h3></div>
+                <div class="lv-ml-block-label"><p class="lv-ml-kicker" lang="en">Recent</p><h3 class="lv-ml-title lv-ml-title--md">최근 본 항목</h3></div>
                 <div data-lv-ml-recent-viewed></div>
 
                 <div class="lv-ml-modules">
                   <header class="lv-ml-head">
-                    <p class="lv-ml-kicker">All modules</p>
+                    <p class="lv-ml-kicker" lang="en">All modules</p>
                     <h2 class="lv-ml-title lv-ml-title--md">생활의 모든 영역을 한곳에서</h2>
                   </header>
                   <div class="lv-ml-module-grid" data-lv-ml-modules></div>
@@ -957,7 +958,7 @@
             </section>
 
             <section class="lv-ml-close" id="ml-cta" data-lv-reveal>
-              <p class="lv-ml-kicker">Next</p>
+              <p class="lv-ml-kicker" lang="en">Next</p>
               <h2 class="lv-ml-title">일상을 정리하고,<br>다음을 준비하세요.</h2>
               <div class="lv-ml-close__acts">
                 <button type="button" class="lv-ml-btn" data-lv-ml-add="event">일정 추가</button>
@@ -975,7 +976,7 @@
             <video class="lv-ex-film__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260819_212700_3bb9329b-5c50-4257-a09b-ca85cf3654a3.mp4"></video>
             <div class="lv-ex-film__lockup">
               <div class="lv-ex-film__veil" aria-hidden="true"></div>
-              <p class="lv-ex-film__wordmark">EXPLORE</p>
+              <p class="lv-ex-film__wordmark" lang="en">EXPLORE</p>
               <h1 class="lv-ex-film__slogan" id="ex-hero-title">필요한 사람과 서비스,<br>한곳에서.</h1>
               <p class="lv-ex-film__lead">생활 주제부터 서비스·장소·공식 지원까지.<br>필요한 것을 한곳에서 검색하고 비교해 보세요.</p>
               <div class="lv-ex-film__actions">
@@ -988,7 +989,7 @@
           <section class="lv-ex-sec lv-ex-sec--flush" id="ex-home" aria-labelledby="ex-search-title">
             <div class="lv-ex-inner">
               <header class="lv-ex-head">
-                <p class="lv-ex-eyebrow">Search</p>
+                <p class="lv-ex-eyebrow" lang="en">Search</p>
                 <h2 class="lv-ex-title lv-ex-title--md" id="ex-search-title">무엇을 찾고 있나요?</h2>
                 <p class="lv-ex-lead">라이프 스테이지 주제·오늘의 발견·서비스·장소·클래스·공식 지원 정보를 한 번에 검색합니다.<br>없는 결과는 가짜로 만들지 않습니다.</p>
               </header>
@@ -1008,7 +1009,7 @@
               </form>
 
               <div class="lv-ex-block-label">
-                <p class="lv-ex-eyebrow">Categories</p>
+                <p class="lv-ex-eyebrow" lang="en">Categories</p>
                 <h3 class="lv-ex-title lv-ex-title--sm">대표 카테고리</h3>
               </div>
               <div class="lv-ex-cat-grid" data-lv-ex-cats></div>
@@ -1044,7 +1045,7 @@
             </div>
           </nav>
 
-          <div class="lv-ex-results" id="ex-results" aria-live="polite" hidden>
+          <div class="lv-ex-results" id="ex-results" hidden>
             <div class="lv-ex-inner lv-ex-results__layout">
               <aside class="lv-ex-side" data-lv-ex-side>
                 <div class="lv-ex-side__head">
@@ -1057,7 +1058,7 @@
                 <div class="lv-ex-results__bar">
                   <div>
                     <h2 class="lv-ex-results__q" data-lv-ex-q>탐색 결과</h2>
-                    <p class="lv-ex-note" data-lv-ex-count></p>
+                    <p class="lv-ex-note" data-lv-ex-count role="status"></p>
                   </div>
                   <div class="lv-ex-results__tools">
                     <label class="lv-ex-sort">정렬
@@ -1082,7 +1083,7 @@
           <section class="lv-ex-sec lv-ex-sec--flush" id="ex-categories" data-lv-ex-reveal>
             <div class="lv-ex-inner">
               <header class="lv-ex-head">
-                <p class="lv-ex-eyebrow">Categories</p>
+                <p class="lv-ex-eyebrow" lang="en">Categories</p>
                 <h2 class="lv-ex-title lv-ex-title--md">삶의 모든 분야를,<br>하나의 공간에서.</h2>
                 <p class="lv-ex-lead">지금의 나에게 필요한 생활 분야를 선택하고<br>관련 정보와 전문가, 서비스를 찾아보세요.</p>
               </header>
@@ -1104,7 +1105,7 @@
           <section class="lv-ex-sec lv-ex-sec--band" id="ex-stages" data-lv-ex-reveal>
             <div class="lv-ex-inner">
               <header class="lv-ex-head">
-                <p class="lv-ex-eyebrow">Life stages</p>
+                <p class="lv-ex-eyebrow" lang="en">Life stages</p>
                 <h2 class="lv-ex-title lv-ex-title--md">삶의 단계마다<br>필요한 선택을 찾아보세요.</h2>
                 <p class="lv-ex-lead">연령대별 추천은 탐색을 돕는 기준이며,<br>다른 연령대의 정보와 서비스 접근을 제한하지 않습니다.</p>
               </header>
@@ -1123,7 +1124,7 @@
           <section class="lv-ex-sec" id="ex-experts" data-lv-ex-reveal>
             <div class="lv-ex-inner">
               <header class="lv-ex-head">
-                <p class="lv-ex-eyebrow">Experts</p>
+                <p class="lv-ex-eyebrow" lang="en">Experts</p>
                 <h2 class="lv-ex-title lv-ex-title--md">나에게 필요한<br>전문가를 만나보세요.</h2>
                 <p class="lv-ex-lead">삶의 중요한 선택부터 일상의 작은 고민까지.<br>필요한 분야의 전문가를 찾아보고 상담과 서비스를 연결해 보세요.</p>
               </header>
@@ -1189,7 +1190,7 @@
           <section class="lv-ex-sec lv-ex-sec--band" id="ex-consult" data-lv-ex-reveal>
             <div class="lv-ex-inner lv-ex-dr">
               <div>
-                <p class="lv-ex-eyebrow">Consultation</p>
+                <p class="lv-ex-eyebrow" lang="en">Consultation</p>
                 <h2 class="lv-ex-title lv-ex-title--md">상담과 예약은<br>확인된 이후에만.</h2>
                 <p class="lv-ex-lead">화상·음성·채팅·방문·현장 서비스·그룹 클래스까지<br>상담 방식을 선택할 수 있는 흐름을 설계합니다.</p>
                 <ol class="lv-ex-steps">
@@ -1213,7 +1214,7 @@
             <div class="lv-ex-inner">
               <div class="lv-ex-split">
                 <div>
-                  <p class="lv-ex-eyebrow">Services</p>
+                  <p class="lv-ex-eyebrow" lang="en">Services</p>
                   <h2 class="lv-ex-title lv-ex-title--md">일상에 필요한 서비스도,<br>LIVON에서.</h2>
                   <p class="lv-ex-lead">주거 · 가족 · 개인 생활 · 시니어 · 지역 생활 서비스를<br>검색하고 비교할 수 있는 마켓플레이스 구조로 확장합니다.</p>
                   <ul class="lv-ex-rows" style="margin-top:1.75rem">
@@ -1235,7 +1236,7 @@
           <section class="lv-ex-sec lv-ex-sec--ink" id="ex-local" data-lv-ex-reveal>
             <div class="lv-ex-inner">
               <header class="lv-ex-head">
-                <p class="lv-ex-eyebrow">Nearby</p>
+                <p class="lv-ex-eyebrow" lang="en">Nearby</p>
                 <h2 class="lv-ex-title lv-ex-title--md">가까운 곳에서 시작되는<br>새로운 생활.</h2>
                 <p class="lv-ex-lead">위치 권한 없이도 지역을 직접 입력해 탐색할 수 있습니다.<br>지도에는 실제 위치가 확인된 장소만 표시합니다.</p>
               </header>
@@ -1254,7 +1255,7 @@
           <section class="lv-ex-sec" id="ex-programs" data-lv-ex-reveal>
             <div class="lv-ex-inner">
               <header class="lv-ex-head">
-                <p class="lv-ex-eyebrow">Education</p>
+                <p class="lv-ex-eyebrow" lang="en">Education</p>
                 <h2 class="lv-ex-title lv-ex-title--md">새로운 배움은,<br>언제나 시작할 수 있으니까.</h2>
                 <p class="lv-ex-lead">진로·직업교육·자격증·외국어·디지털·취미·평생교육·재취업·시니어 교육</p>
               </header>
@@ -1273,7 +1274,7 @@
                 <span class="lv-ex-media__cap">자취 · 이사 · 인테리어</span>
               </div>
               <div>
-                <p class="lv-ex-eyebrow">Housing</p>
+                <p class="lv-ex-eyebrow" lang="en">Housing</p>
                 <h2 class="lv-ex-title lv-ex-title--md">새로운 공간에서<br>시작되는 새로운 일상.</h2>
                 <p class="lv-ex-lead">자취 준비, 주거 정보, 이사, 청소·정리수납, 인테리어, 가전 설치·수리, 주거 전문가 상담.</p>
                 <p class="lv-ex-note"><strong>부동산 매물·가격</strong>은 실제 확인된 데이터만 사용하며, 업데이트 날짜와 출처를 표시합니다. 현재 매물 DB는 연결되어 있지 않습니다.</p>
@@ -1288,7 +1289,7 @@
           <section class="lv-ex-sec" id="ex-family" data-lv-ex-reveal>
             <div class="lv-ex-inner">
               <header class="lv-ex-head">
-                <p class="lv-ex-eyebrow">Family</p>
+                <p class="lv-ex-eyebrow" lang="en">Family</p>
                 <h2 class="lv-ex-title lv-ex-title--md">소중한 사람들과<br>함께하는 삶을 위해.</h2>
                 <p class="lv-ex-lead">결혼·동거 준비, 가족 활동, 육아·부모 교육, 가족 상담, 아동 교육, 가족 여행, 부모님 생활 지원.</p>
               </header>
@@ -1312,7 +1313,7 @@
           <section class="lv-ex-sec lv-ex-sec--band" id="ex-health" data-lv-ex-reveal>
             <div class="lv-ex-inner lv-ex-split">
               <div>
-                <p class="lv-ex-eyebrow">Wellness</p>
+                <p class="lv-ex-eyebrow" lang="en">Wellness</p>
                 <h2 class="lv-ex-title lv-ex-title--md">건강한 일상을 위한<br>다양한 선택.</h2>
                 <p class="lv-ex-lead">운동, 건강검진·의료기관 정보, 영양, 심리 상담, 생활 습관, 중장년·시니어 건강 프로그램.</p>
                 <p class="lv-ex-note">LIVON의 생활 정보와 전문 의료 서비스는 구분합니다. 의료기관·의료 서비스는 확인된 정보와 자격·면허를 기반으로만 제공합니다.</p>
@@ -1331,7 +1332,7 @@
           <section class="lv-ex-sec" id="ex-career" data-lv-ex-reveal>
             <div class="lv-ex-inner">
               <header class="lv-ex-head">
-                <p class="lv-ex-eyebrow">Career</p>
+                <p class="lv-ex-eyebrow" lang="en">Career</p>
                 <h2 class="lv-ex-title lv-ex-title--md">새로운 시작을<br>준비하는 모든 순간에.</h2>
                 <p class="lv-ex-lead">진로·취업 상담, 이력서·면접, 경력 전환, 직업교육, 재취업, 은퇴 준비, 인생 2막 프로그램.</p>
               </header>
@@ -1346,7 +1347,7 @@
           <section class="lv-ex-sec lv-ex-sec--band" id="ex-leisure" data-lv-ex-reveal>
             <div class="lv-ex-inner">
               <header class="lv-ex-head">
-                <p class="lv-ex-eyebrow">Leisure</p>
+                <p class="lv-ex-eyebrow" lang="en">Leisure</p>
                 <h2 class="lv-ex-title lv-ex-title--md">새로운 경험으로<br>일상을 더 풍요롭게.</h2>
                 <p class="lv-ex-lead">오늘의 발견이 활동을 제안한다면, 탐색은 조건을 정해 직접 찾는 공간입니다.</p>
               </header>
@@ -1361,7 +1362,7 @@
           <section class="lv-ex-sec" id="ex-senior" data-lv-ex-reveal>
             <div class="lv-ex-inner lv-ex-split">
               <div>
-                <p class="lv-ex-eyebrow">Senior · Ongil</p>
+                <p class="lv-ex-eyebrow" lang="en">Senior · Ongil</p>
                 <h2 class="lv-ex-title lv-ex-title--md">새로운 삶의 단계에도,<br>필요한 서비스를 가까이.</h2>
                 <p class="lv-ex-lead">시니어 생활 정보, 평생교육, 여가, 디지털 교육, 생활 편의, 가족 지원, 돌봄·복지 정보.</p>
                 <p class="lv-ex-note"><strong>역할 구분:</strong> LIVON은 생애주기 생활 서비스 탐색·연결, Ongil은 시니어 생활·돌봄 특화 서비스입니다.</p>
@@ -1380,7 +1381,7 @@
           <section class="lv-ex-sec lv-ex-sec--band" id="ex-commerce" data-lv-ex-reveal>
             <div class="lv-ex-inner">
               <header class="lv-ex-head">
-                <p class="lv-ex-eyebrow">Commerce</p>
+                <p class="lv-ex-eyebrow" lang="en">Commerce</p>
                 <h2 class="lv-ex-title lv-ex-title--md">지금의 생활에<br>필요한 상품까지.</h2>
                 <p class="lv-ex-lead">자취·주거용품, 가전, 육아·가족, 건강·운동, 여행, 취미·교육, 시니어 생활용품.</p>
               </header>
@@ -1399,7 +1400,7 @@
           <section class="lv-ex-sec" id="ex-compare" data-lv-ex-reveal>
             <div class="lv-ex-inner">
               <header class="lv-ex-head">
-                <p class="lv-ex-eyebrow">Compare</p>
+                <p class="lv-ex-eyebrow" lang="en">Compare</p>
                 <h2 class="lv-ex-title lv-ex-title--md">같은 유형끼리,<br>조건을 나란히.</h2>
                 <p class="lv-ex-lead">동일 카테고리 2~3개만 비교합니다. 없는 값은 채우지 않으며, LIVON이 ‘최고’를 임의 평가하지 않습니다.</p>
               </header>
@@ -1411,7 +1412,7 @@
           <section class="lv-ex-sec lv-ex-sec--band" id="ex-recommend" data-lv-ex-reveal>
             <div class="lv-ex-inner">
               <header class="lv-ex-head">
-                <p class="lv-ex-eyebrow">For you</p>
+                <p class="lv-ex-eyebrow" lang="en">For you</p>
                 <h2 class="lv-ex-title lv-ex-title--md">지금의 관심에 맞는<br>서비스.</h2>
                 <p class="lv-ex-lead">관심사·스테이지·최근 탐색을 규칙으로 추천합니다. AI 추천이라고 표시하지 않습니다.</p>
               </header>
@@ -1422,7 +1423,7 @@
           <section class="lv-ex-sec" id="ex-mylife" data-lv-ex-reveal>
             <div class="lv-ex-inner">
               <header class="lv-ex-head">
-                <p class="lv-ex-eyebrow">My Life sync</p>
+                <p class="lv-ex-eyebrow" lang="en">My Life sync</p>
                 <h2 class="lv-ex-title lv-ex-title--md">탐색에서 발견한 것을<br>내 생활로.</h2>
                 <p class="lv-ex-lead">저장한 정보, 관심 전문가·서비스·프로그램, 체크리스트를 내 생활과 연결합니다. 실제 예약·신청이 완료된 경우에만 이용 내역을 표시합니다.</p>
               </header>
@@ -1435,7 +1436,7 @@
 
           <section class="lv-ex-sec lv-ex-sec--ink lv-ex-final" id="ex-cta" data-lv-ex-reveal>
             <div class="lv-ex-inner">
-              <p class="lv-ex-eyebrow">Start</p>
+              <p class="lv-ex-eyebrow" lang="en">Start</p>
               <h2 class="lv-ex-title">삶의 모든 선택을,<br>LIVON에서 시작하세요.</h2>
               <p class="lv-ex-lead">나에게 필요한 정보와 전문가,<br>다양한 생활 서비스와 새로운 경험까지.<br><br>지금의 삶에 필요한 모든 것을<br>LIVON에서 발견하고 연결해 보세요.</p>
               <div class="lv-ex-actions">
@@ -1456,7 +1457,7 @@
             <video class="lv-cm-film__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"></video>
             <div class="lv-cm-film__lockup">
               <div class="lv-cm-film__veil" aria-hidden="true"></div>
-              <p class="lv-cm-film__wordmark">COMMUNITY</p>
+              <p class="lv-cm-film__wordmark" lang="en">COMMUNITY</p>
               <h1 class="lv-cm-film__slogan" id="cm-hero-title">서로의 이야기가 모여,<br>새로운 일상이 되다.</h1>
               <p class="lv-cm-film__lead">일상의 작은 질문부터 새로운 도전까지.<br>비슷한 관심사를 가진 사람들과<br>경험을 나누고 함께해 보세요.</p>
               <div class="lv-cm-film__actions">
@@ -1488,7 +1489,7 @@
           <section class="lv-cm-sec lv-cm-sec--flush" id="cm-home" data-lv-cm-reveal>
             <div class="lv-cm-inner lv-cm-home">
               <header class="lv-cm-head lv-cm-head--tight">
-                <p class="lv-cm-eyebrow">Feed</p>
+                <p class="lv-cm-eyebrow" lang="en">Feed</p>
                 <h2 class="lv-cm-title lv-cm-title--md">오늘은 어떤 이야기를<br>나누고 싶나요?</h2>
               </header>
 
@@ -1531,7 +1532,7 @@
           <section class="lv-cm-sec" id="cm-communities" data-lv-cm-reveal>
             <div class="lv-cm-inner">
               <header class="lv-cm-head">
-                <p class="lv-cm-eyebrow">Communities</p>
+                <p class="lv-cm-eyebrow" lang="en">Communities</p>
                 <h2 class="lv-cm-title lv-cm-title--md">관심사로 모이는<br>커뮤니티.</h2>
                 <p class="lv-cm-lead">게시글 수는 이 기기에 작성된 글만 셉니다.<br>회원 수는 계정 연결 전까지 표시하지 않습니다.</p>
               </header>
@@ -1551,7 +1552,7 @@
           <section class="lv-cm-sec lv-cm-sec--band" id="cm-stages" data-lv-cm-reveal>
             <div class="lv-cm-inner">
               <header class="lv-cm-head">
-                <p class="lv-cm-eyebrow">Life Stage Community</p>
+                <p class="lv-cm-eyebrow" lang="en">Life Stage Community</p>
                 <h2 class="lv-cm-title lv-cm-title--md">삶의 단계마다,<br>나누고 싶은 이야기가 있습니다.</h2>
                 <p class="lv-cm-lead">연령대별 분류는 탐색을 돕는 기준이며,<br>성인 사용자는 다른 생애주기도 자유롭게 둘러볼 수 있습니다.</p>
               </header>
@@ -1613,7 +1614,7 @@
           <section class="lv-cm-sec" id="cm-interests" data-lv-cm-reveal>
             <div class="lv-cm-inner">
               <header class="lv-cm-head">
-                <p class="lv-cm-eyebrow">Interest Community</p>
+                <p class="lv-cm-eyebrow" lang="en">Interest Community</p>
                 <h2 class="lv-cm-title lv-cm-title--md">나이보다 가까운,<br>우리의 공통 관심사.</h2>
                 <p class="lv-cm-lead">삶의 단계가 달라도<br>같은 관심사를 가진 사람들과 연결될 수 있습니다.</p>
               </header>
@@ -1635,7 +1636,7 @@
           <section class="lv-cm-sec lv-cm-sec--ink" id="cm-local" data-lv-cm-reveal>
             <div class="lv-cm-inner">
               <header class="lv-cm-head">
-                <p class="lv-cm-eyebrow">Local Community</p>
+                <p class="lv-cm-eyebrow" lang="en">Local Community</p>
                 <h2 class="lv-cm-title lv-cm-title--md">우리 동네에서,<br>새로운 일상을 만나보세요.</h2>
                 <p class="lv-cm-lead">위치 권한 없이도 지역을 직접 선택해 탐색할 수 있습니다.<br>정확한 주거지 주소는 공개하지 않습니다.</p>
               </header>
@@ -1654,7 +1655,7 @@
           <section class="lv-cm-sec" id="cm-qa" data-lv-cm-reveal>
             <div class="lv-cm-inner lv-cm-split">
               <div>
-                <p class="lv-cm-eyebrow">Questions &amp; Experiences</p>
+                <p class="lv-cm-eyebrow" lang="en">Questions &amp; Experiences</p>
                 <h2 class="lv-cm-title lv-cm-title--md">궁금한 것은 묻고,<br>경험한 것은 나눠보세요.</h2>
                 <p class="lv-cm-lead">질문, 경험 공유, 생활 팁, 후기까지.<br>의료·법률·금융은 일반 경험과 전문가 상담을 구분합니다.</p>
                 <div class="lv-cm-actions">
@@ -1673,7 +1674,7 @@
           <section class="lv-cm-sec lv-cm-sec--band" id="cm-groups" data-lv-cm-reveal>
             <div class="lv-cm-inner">
               <header class="lv-cm-head">
-                <p class="lv-cm-eyebrow">Meetups</p>
+                <p class="lv-cm-eyebrow" lang="en">Meetups</p>
                 <h2 class="lv-cm-title lv-cm-title--md">모임은 커뮤니티와<br>다른 기능입니다.</h2>
                 <p class="lv-cm-lead">오프라인 모임은 신고·차단·검수·미성년자 보호가 준비된 뒤 활성화합니다.</p>
               </header>
@@ -1693,7 +1694,7 @@
           <section class="lv-cm-sec" id="cm-experts" data-lv-cm-reveal>
             <div class="lv-cm-inner lv-cm-dr">
               <div>
-                <p class="lv-cm-eyebrow">Expert Q&amp;A</p>
+                <p class="lv-cm-eyebrow" lang="en">Expert Q&amp;A</p>
                 <h2 class="lv-cm-title lv-cm-title--md">전문가 검증 전에는<br>운영 중으로 열지 않습니다.</h2>
                 <p class="lv-cm-lead">공개 Q&amp;A와 개인 상담을 구분합니다. 검증되지 않은 답변에 전문가 배지를 붙이지 않습니다.</p>
                 <div class="lv-cm-actions">
@@ -1713,7 +1714,7 @@
           <section class="lv-cm-sec lv-cm-sec--band" id="cm-programs" data-lv-cm-reveal>
             <div class="lv-cm-inner">
               <header class="lv-cm-head">
-                <p class="lv-cm-eyebrow">Challenges</p>
+                <p class="lv-cm-eyebrow" lang="en">Challenges</p>
                 <h2 class="lv-cm-title lv-cm-title--md">함께 시작하고,<br>나의 실천을 기록하세요.</h2>
                 <p class="lv-cm-lead">진행률은 내가 기록한 실천만으로 계산합니다. 다른 사람의 민감 기록은 공개되지 않습니다.</p>
               </header>
@@ -1724,7 +1725,7 @@
           <section class="lv-cm-sec" id="cm-mine" data-lv-cm-reveal>
             <div class="lv-cm-inner">
               <header class="lv-cm-head">
-                <p class="lv-cm-eyebrow">My Community</p>
+                <p class="lv-cm-eyebrow" lang="en">My Community</p>
                 <h2 class="lv-cm-title lv-cm-title--md">나의 활동.</h2>
                 <p class="lv-cm-lead">이 기기에서 작성·저장·공감한 글과 가입·챌린지를 확인합니다.</p>
               </header>
@@ -1739,7 +1740,7 @@
           <section class="lv-cm-sec lv-cm-sec--band" id="cm-safe" data-lv-cm-reveal>
             <div class="lv-cm-inner lv-cm-dr">
               <div>
-                <p class="lv-cm-eyebrow">Safe Community</p>
+                <p class="lv-cm-eyebrow" lang="en">Safe Community</p>
                 <h2 class="lv-cm-title lv-cm-title--md">누구나 안심하고,<br>자신의 이야기를 나눌 수 있도록.</h2>
                 <p class="lv-cm-lead">신고·차단, 공개 범위, 스팸 관리, 미성년자 보호 정책을 기준으로 운영합니다.</p>
                 <p class="lv-cm-note"><strong>현재:</strong> 안전 정책 안내와 구조만 제공합니다. 공개 1:1 메시지·오프라인 모임은 보호 기능이 준비되기 전에 활성화하지 않습니다.</p>
@@ -1758,7 +1759,7 @@
           <section class="lv-cm-sec" id="cm-connect" data-lv-cm-reveal>
             <div class="lv-cm-inner">
               <header class="lv-cm-head">
-                <p class="lv-cm-eyebrow">Connected Life</p>
+                <p class="lv-cm-eyebrow" lang="en">Connected Life</p>
                 <h2 class="lv-cm-title lv-cm-title--md">나눈 이야기가,<br>새로운 경험으로 이어지도록.</h2>
               </header>
               <div class="lv-connect" data-lv-connect="community"></div>
@@ -1767,7 +1768,7 @@
 
           <section class="lv-cm-sec lv-cm-sec--ink lv-cm-final" id="cm-cta" data-lv-cm-reveal>
             <div class="lv-cm-inner">
-              <p class="lv-cm-eyebrow">Life is better together</p>
+              <p class="lv-cm-eyebrow" lang="en">Life is better together</p>
               <h2 class="lv-cm-title">서로의 이야기가 모여,<br>더 넓은 삶이 됩니다.</h2>
               <p class="lv-cm-lead">나와 비슷한 경험을 가진 사람들과 이야기를 나누고,<br>새로운 관심사와 활동을 함께 발견하세요.<br><br>당신의 다음 이야기도<br>LIVON에서 시작됩니다.</p>
               <div class="lv-cm-actions">
@@ -1787,7 +1788,7 @@
             <video class="lv-ai-film__bg" autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260411_104032_69319010-2458-492b-b04d-b40a5dfa4482.mp4"></video>
             <div class="lv-ai-film__lockup">
               <div class="lv-ai-film__veil" aria-hidden="true"></div>
-              <p class="lv-ai-film__wordmark">LIVON AI</p>
+              <p class="lv-ai-film__wordmark" lang="en">LIVON AI</p>
               <h1 class="lv-ai-film__slogan" id="ai-hero-title">지금의 삶에 필요한 정보부터,<br>다음 단계의 준비까지.</h1>
               <p class="lv-ai-film__lead">처음 마주하는 변화부터<br>새로운 시작을 준비하는 순간까지.<br>지금의 생활에 필요한 정보와 다음 단계를 알아보세요.</p>
               <div class="lv-ai-film__actions">
@@ -1833,7 +1834,7 @@
                 <div class="lv-ai-main__top">
                   <button type="button" class="lv-ai-icon-btn lv-ai-only-mobile" data-lv-ai-sidebar-open aria-label="대화 기록 열기" aria-expanded="false">☰</button>
                   <div class="lv-ai-main__title">
-                    <p class="lv-ai-eyebrow">LIVON AI</p>
+                    <p class="lv-ai-eyebrow" lang="en">LIVON AI</p>
                     <h2 class="lv-ai-chat-title" data-lv-ai-title>새 대화</h2>
                   </div>
                   <div class="lv-ai-main__acts">
@@ -1844,7 +1845,7 @@
 
                 <div class="lv-ai-stream" data-lv-ai-stream role="region" aria-label="대화 내용" tabindex="0">
                   <div class="lv-ai-welcome" data-lv-ai-welcome>
-                    <p class="lv-ai-eyebrow">LIVON AI</p>
+                    <p class="lv-ai-eyebrow" lang="en">LIVON AI</p>
                     <h2 class="lv-ai-title lv-ai-title--md">오늘 무엇을<br>도와드릴까요?</h2>
                     <p class="lv-ai-lead">생활 질문부터 계획·체크리스트까지 정리해 드려요. 만든 계획은 확인하고 승인한 항목만 내 생활에 추가됩니다.</p>
                     <p class="lv-ai-eyebrow lv-ai-suggest-label" id="lv-ai-suggest-label">빠르게 시작하기 · 이런 질문을 해보세요</p>
@@ -1918,7 +1919,7 @@
           <section class="lv-ai-sec" id="ai-guide" data-lv-ai-reveal>
             <div class="lv-ai-inner">
               <header class="lv-ai-head">
-                <p class="lv-ai-eyebrow">How it helps</p>
+                <p class="lv-ai-eyebrow" lang="en">How it helps</p>
                 <h2 class="lv-ai-title lv-ai-title--md">대화에서 시작해<br>일상으로 이어집니다.</h2>
                 <p class="lv-ai-lead">긴 소개 대신, 바로 질문하고 필요한 메뉴로 연결하세요.</p>
               </header>
@@ -1936,7 +1937,7 @@
           <section class="lv-ai-sec lv-ai-sec--band" id="ai-connect" data-lv-ai-reveal>
             <div class="lv-ai-inner lv-ai-split">
               <div>
-                <p class="lv-ai-eyebrow">Connections</p>
+                <p class="lv-ai-eyebrow" lang="en">Connections</p>
                 <h2 class="lv-ai-title lv-ai-title--md">LIVON 메뉴와<br>실제로 연결됩니다.</h2>
                 <p class="lv-ai-lead">존재하지 않는 장소·전문가·후기를 만들지 않습니다. 데이터가 없으면 검색 조건만 정리해 해당 메뉴로 안내합니다.</p>
                 <div class="lv-ai-actions">
@@ -1958,7 +1959,7 @@
           <section class="lv-ai-sec" id="ai-settings" data-lv-ai-reveal>
             <div class="lv-ai-inner">
               <header class="lv-ai-head">
-                <p class="lv-ai-eyebrow">Preferences</p>
+                <p class="lv-ai-eyebrow" lang="en">Preferences</p>
                 <h2 class="lv-ai-title lv-ai-title--md">개인화 설정</h2>
                 <p class="lv-ai-lead">관심사와 생활 목표에 맞춰 답변을 받아보세요. 설정은 이 기기에 저장되며 언제든 바꿀 수 있습니다.</p>
               </header>
@@ -2005,7 +2006,7 @@
           <section class="lv-ai-sec lv-ai-sec--band" id="ai-trust" data-lv-ai-reveal>
             <div class="lv-ai-inner">
               <header class="lv-ai-head">
-                <p class="lv-ai-eyebrow">Privacy &amp; Trust</p>
+                <p class="lv-ai-eyebrow" lang="en">Privacy &amp; Trust</p>
                 <h2 class="lv-ai-title lv-ai-title--md">필요한 정보는 명확하게,<br>개인의 생활은 신중하게.</h2>
               </header>
               <div class="lv-ai-values">
@@ -2019,7 +2020,7 @@
 
           <section class="lv-ai-sec lv-ai-sec--ink lv-ai-final" id="ai-cta" data-lv-ai-reveal>
             <div class="lv-ai-inner">
-              <p class="lv-ai-eyebrow">YOUR LIFE, YOUR NEXT STEP</p>
+              <p class="lv-ai-eyebrow" lang="en">YOUR LIFE, YOUR NEXT STEP</p>
               <h2 class="lv-ai-title">지금의 삶에서,<br>다음의 가능성으로.</h2>
               <p class="lv-ai-lead">나에게 필요한 정보를 찾고,<br>다음 단계를 LIVON에서 시작해 보세요.</p>
               <div class="lv-ai-actions">
@@ -3234,7 +3235,7 @@
     </script>
   
     <div class="lv-life-modal" id="lv-life-age-modal" hidden>
-      <button type="button" class="lv-life-modal__backdrop" data-lv-life-modal-close aria-label="닫기"></button>
+      <button type="button" class="lv-life-modal__backdrop" data-lv-life-modal-close aria-label="닫기" tabindex="-1"></button>
       <div class="lv-life-modal__panel" role="dialog" aria-modal="true" aria-labelledby="lv-life-age-title">
         <button type="button" class="lv-life-modal__close" data-lv-life-modal-close aria-label="닫기">×</button>
         <h2 id="lv-life-age-title">나의 라이프 스테이지</h2>
@@ -3252,7 +3253,7 @@
       </div>
     </div>
     <div class="lv-life-modal" id="lv-life-login-modal" hidden>
-      <button type="button" class="lv-life-modal__backdrop" data-lv-life-modal-close aria-label="닫기"></button>
+      <button type="button" class="lv-life-modal__backdrop" data-lv-life-modal-close aria-label="닫기" tabindex="-1"></button>
       <div class="lv-life-modal__panel" role="dialog" aria-modal="true" aria-labelledby="lv-life-login-title">
         <button type="button" class="lv-life-modal__close" data-lv-life-modal-close aria-label="닫기">×</button>
         <h2 id="lv-life-login-title">안내</h2>
@@ -3304,7 +3305,7 @@
     <script src="/livon/life-page.js?v=20261001sd1"></script>
 
     <div class="lv-ml-modal" id="lv-ml-age-modal" hidden>
-      <button type="button" class="lv-ml-modal__backdrop" data-lv-ml-modal-close aria-label="닫기"></button>
+      <button type="button" class="lv-ml-modal__backdrop" data-lv-ml-modal-close aria-label="닫기" tabindex="-1"></button>
       <div class="lv-ml-modal__panel" role="dialog" aria-modal="true" aria-labelledby="lv-ml-age-title">
         <button type="button" class="lv-ml-modal__close" data-lv-ml-modal-close aria-label="닫기">×</button>
         <h2 id="lv-ml-age-title">나의 라이프 스테이지</h2>
@@ -3322,7 +3323,7 @@
       </div>
     </div>
     <div class="lv-ml-modal" id="lv-ml-login-modal" hidden>
-      <button type="button" class="lv-ml-modal__backdrop" data-lv-ml-modal-close aria-label="닫기"></button>
+      <button type="button" class="lv-ml-modal__backdrop" data-lv-ml-modal-close aria-label="닫기" tabindex="-1"></button>
       <div class="lv-ml-modal__panel" role="dialog" aria-modal="true" aria-labelledby="lv-ml-login-title">
         <button type="button" class="lv-ml-modal__close" data-lv-ml-modal-close aria-label="닫기">×</button>
         <h2 id="lv-ml-login-title">안내</h2>
@@ -3347,6 +3348,7 @@
     <script src="/livon/connected-menus.js?v=20260925a"></script>
     <script src="/livon/home-page.js?v=20261001sd1"></script>
     <script src="/livon/livon-account-ui.js?v=20260930anon1"></script>
+    <script src="/livon/livon-a11y.js?v=20261002a11y1"></script>
 
 
   </body>

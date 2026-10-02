@@ -332,7 +332,7 @@ test('CU-17 replies: one level only — a reply to a reply joins the same thread
   const r2 = a.R.addComment(ids.walk, '답글의 답글', r1.id).comment;
   assert.deepEqual([r1.parentId, r2.parentId], [root.id, root.id]);
   const store = a.T.loadStore(), h = a.T.commentsHtml(store.posts.find(p => p.id === ids.walk), store);
-  assert.equal((h.match(/<ul class="lv-cm-replies">/g) || []).length, 1, 'a single nested list');
+  assert.equal((h.match(/<ul class="lv-cm-replies"[^>]*>/g) || []).length, 1, 'a single nested list');
   assert.equal((h.match(/class="lv-cm-comment is-reply"/g) || []).length, 2);
   assert.doesNotMatch(h.slice(h.indexOf('lv-cm-replies')), /data-lv-cm-reply="/, 'no reply button on a reply');
   // deleting a comment that has replies keeps the thread readable

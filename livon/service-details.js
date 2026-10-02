@@ -46,7 +46,7 @@
     return '<article class="lv-life-svc" data-ls-card="' + id + '"><p class="lv-life-svc__n">' + esc(D.types[s.type]) + ' · ' + esc(s.audience) + cardMark(s.type) + '</p>' +
       '<h4><a href="' + url + '">' + esc(s.name) + '</a></h4><p>' + esc(s.desc) + '</p>' + list((s.feats || []).slice(0, 3)) +
       ((opts || {}).why ? '<p class="lv-life-svc__why">' + esc(reason(s)) + '</p>' : '') +
-      '<div class="lv-life-svc__acts lv-ls-primary">' + link(s.cta, url, true).replace('</a>', '<span aria-hidden="true">→</span></a>') + '</div><div class="lv-life-svc__acts lv-ls-secondary">' +
+      '<div class="lv-life-svc__acts lv-ls-primary">' + link(s.cta, url, true).replace('</a>', '<span aria-hidden="true">→</span></a>') + '</div><div class="lv-life-svc__acts lv-ls-secondary" role="group" aria-label="' + esc(s.name) + '">' +
       button(on ? '저장됨' : '저장하기', 'data-ls-save="' + id + '" aria-pressed="' + on + '"') + button('공유', 'data-ls-share="' + id + '"') + button('AI에 묻기', 'data-ls-ai="' + id + '"') + '</div></article>';
   }
   function ask(s, extra) {

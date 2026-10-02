@@ -508,6 +508,8 @@ function verify() {
   required.push(path.join(OUT, "livon", "today-feed.js"));
   required.push(path.join(OUT, "livon", "today", "td-indep-missed", "index.html"));
   required.push(path.join(OUT, "livon", "seo.css"));
+  required.push(path.join(OUT, "livon", "livon-a11y.css"));
+  required.push(path.join(OUT, "livon", "livon-a11y.js"));
   required.push(path.join(OUT, "livon", "seo-manifest.json"));
   required.push(path.join(OUT, "livon", "help", "index.html"));
   required.push(path.join(OUT, "livon", "life-events", "index.html"));
@@ -596,6 +598,11 @@ spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-seo-build.mjs"), 
   stdio: "inherit",
 }).status === 0 || process.exit(1);
 spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-seo-quality.mjs"), "--root", OUT], {
+  cwd: ROOT,
+  stdio: "inherit",
+}).status === 0 || process.exit(1);
+// LIVON accessibility: static checks on the app page, its CSS/JS templates and every generated static page.
+spawnSync(process.execPath, [path.join(ROOT, "scripts", "livon-accessibility-quality.mjs"), "--root", OUT], {
   cwd: ROOT,
   stdio: "inherit",
 }).status === 0 || process.exit(1);

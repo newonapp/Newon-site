@@ -784,7 +784,7 @@ html[data-lv-view="community"] main > #community {
   flex-wrap: wrap;
   gap: 0.4rem;
   font-size: 0.75rem;
-  color: #777;
+  color: #737373;
 }
 #community .lv-cm-card__author { margin: 0; font-size: 0.88rem; font-weight: 650; }
 #community .lv-cm-card h3 { margin: 0; font-size: 1.15rem; font-weight: 750; }
@@ -799,7 +799,7 @@ html[data-lv-view="community"] main > #community {
   color: inherit;
 }
 #community .lv-cm-card__preview { margin: 0; color: #555; line-height: 1.55; }
-#community .lv-cm-card__tags { margin: 0; font-size: 0.82rem; color: #888; }
+#community .lv-cm-card__tags { margin: 0; font-size: 0.82rem; color: #737373; }
 #community .lv-cm-card__acts {
   display: flex;
   flex-wrap: wrap;
@@ -1116,7 +1116,7 @@ html[data-lv-view="community"] main > #community {
 #community .lv-cm-note[hidden] { display: none; }
 #community .lv-cm-more { margin: 1.25rem 0 0; text-align: center; }
 #community .lv-cm-count { font-size: 0.8em; font-weight: 600; color: #737373; }
-#community .lv-cm-counter { float: right; font-size: 0.78rem; color: #888; font-weight: 500; }
+#community .lv-cm-counter { float: right; font-size: 0.78rem; color: #737373; font-weight: 500; }
 #community .lv-cm-field > span em { font-style: normal; color: #b3261e; }
 
 #community .lv-cm-card__body,

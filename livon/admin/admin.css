@@ -115,3 +115,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .ad-toolbar .ad-field { flex: 1 1 140px; }
   .ad-toolbar .ad-field select { width: 100%; }
 }
+
+/* Accessibility: form-field boundaries reach 3:1 against the panel; small text links get a 24px target. */
+.ad-gsearch input, .ad-field input, .ad-field select, .ad-field textarea, .ad-palette__in input, .ad-table select { border-color: #85827a; }
+.ad-kv dt a { display: inline-block; min-width: 24px; min-height: 24px; line-height: 24px; }
+@media (forced-colors: active) { .ad-nav a[aria-current="page"], .ad-results li[aria-selected="true"], .ad-palette li[aria-selected="true"] { outline: 2px solid Highlight; outline-offset: -2px; } }
+html { scroll-padding-top: 72px; }   /* focused content stays clear of the sticky top bar */

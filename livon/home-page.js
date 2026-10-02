@@ -230,7 +230,7 @@
     }
     host.innerHTML = EVENTS.map(function (ev) {
       var on = active.indexOf(ev.id) >= 0;
-      return "<button type=\"button\" data-lv-hm-event=\"" + esc(ev.id) + "\"" + (on ? " class=\"is-on\"" : "") + ">" + esc(ev.title) + "</button>";
+      return "<button type=\"button\" data-lv-hm-event=\"" + esc(ev.id) + "\"" + (on ? " class=\"is-on\" data-lv-chip aria-pressed=\"true\"" : " data-lv-chip aria-pressed=\"false\"") + ">" + esc(ev.title) + "</button>";
     }).join("");
   }
 
@@ -324,14 +324,14 @@
           "<div class=\"lv-hm-chips\" data-lv-hm-sit-chips>" +
             Object.keys(SIT_LABELS).map(function (k) {
               var on = situations.indexOf(k) >= 0;
-              return "<button type=\"button\" data-lv-hm-sit=\"" + esc(k) + "\"" + (on ? " class=\"is-on\"" : "") + ">" + esc(SIT_LABELS[k]) + "</button>";
+              return "<button type=\"button\" data-lv-hm-sit=\"" + esc(k) + "\"" + (on ? " class=\"is-on\" data-lv-chip aria-pressed=\"true\"" : " data-lv-chip aria-pressed=\"false\"") + ">" + esc(SIT_LABELS[k]) + "</button>";
             }).join("") +
           "</div>" +
           "<p class=\"lv-hm-eyebrow\">관심사</p>" +
           "<div class=\"lv-hm-chips\" data-lv-hm-interest-chips>" +
             INTEREST_OPTS.map(function (name) {
               var on = interests.indexOf(name) >= 0;
-              return "<button type=\"button\" data-lv-hm-interest=\"" + esc(name) + "\"" + (on ? " class=\"is-on\"" : "") + ">" + esc(name) + "</button>";
+              return "<button type=\"button\" data-lv-hm-interest=\"" + esc(name) + "\"" + (on ? " class=\"is-on\" data-lv-chip aria-pressed=\"true\"" : " data-lv-chip aria-pressed=\"false\"") + ">" + esc(name) + "</button>";
             }).join("") +
           "</div>" +
           "<div class=\"lv-hm-me__row\">" +

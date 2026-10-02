@@ -580,7 +580,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   border-bottom: 1px solid #ececec;
 }
 #livon-ai .lv-ai-chat__head strong { display: block; font-size: 1.05rem; }
-#livon-ai .lv-ai-chat__head span { color: #777; font-size: 0.9rem; }
+#livon-ai .lv-ai-chat__head span { color: #737373; font-size: 0.9rem; }
 #livon-ai .lv-ai-chat__msgs {
   flex: 1;
   overflow: auto;
@@ -646,7 +646,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   font-size: 1.1rem;
   font-weight: 750;
 }
-#livon-ai .lv-ai-index span { color: #777; font-size: 0.9rem; }
+#livon-ai .lv-ai-index span { color: #737373; font-size: 0.9rem; }
 
 #livon-ai .lv-ai-dr {
   display: grid;
@@ -807,7 +807,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
 }
 #livon-ai .lv-ai-thread__main span {
   font-size: 0.75rem;
-  color: #888;
+  color: #737373;
 }
 #livon-ai .lv-ai-thread__acts {
   display: flex;
@@ -820,7 +820,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   width: 1.75rem;
   height: 1.75rem;
   cursor: pointer;
-  color: #777;
+  color: #737373;
   font-size: 0.9rem;
 }
 #livon-ai .lv-ai-sidebar__foot {
@@ -865,7 +865,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
 #livon-ai .lv-ai-status {
   font-size: 0.75rem;
   font-weight: 650;
-  color: #888;
+  color: #737373;
   letter-spacing: 0.04em;
 }
 #livon-ai .lv-ai-status.is-ok { color: #1a7a3a; }
@@ -953,7 +953,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
   align-items: center;
   gap: 0.45rem;
   font-size: 0.8rem;
-  color: #777;
+  color: #737373;
 }
 #livon-ai .lv-ai-mark {
   display: inline-grid;
@@ -1338,7 +1338,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
 #livon-ai .lv-ai-context__k { font-weight: 800; }
 #livon-ai .lv-ai-context__v { flex: 1 1 10rem; min-width: 0; color: #333; overflow-wrap: anywhere; }
 #livon-ai .lv-ai-context__x { min-width: 44px; min-height: 44px; border: 0; background: none; font-size: 1.1rem; cursor: pointer; }
-#livon-ai .lv-ai-count { font-size: 0.75rem; color: #777; margin-right: auto; }
+#livon-ai .lv-ai-count { font-size: 0.75rem; color: #737373; margin-right: auto; }
 #livon-ai .lv-ai-count.is-over { color: #b3261e; font-weight: 700; }
 #livon-ai .lv-ai-privacy { margin: 0.5rem 0 0; font-size: 0.75rem; line-height: 1.45; color: #737373; }
 #livon-ai .lv-ai-suggest-label { margin: 1.25rem 0 0.5rem; }
@@ -1360,7 +1360,7 @@ html[data-lv-view="livon-ai"] main > #livon-ai {
 #livon-ai .lv-ai-pick { display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: center; gap: 0 0.25rem; }
 #livon-ai .lv-ai-pick input[type="checkbox"] { width: 20px; height: 20px; margin: 12px; accent-color: #0a0a0a; }
 #livon-ai .lv-ai-pick input[type="text"] { min-height: 44px; min-width: 0; padding: 0.4rem 0.6rem; border: 1px solid #e0e0e0; font: inherit; }
-#livon-ai .lv-ai-pick.is-dup input[type="text"] { color: #888; background: #f7f7f7; }
+#livon-ai .lv-ai-pick.is-dup input[type="text"] { color: #6b6b6b; background: #f7f7f7; }
 #livon-ai .lv-ai-pick__dup { grid-column: 2; font-size: 0.78rem; color: #6b4d00; }
 #livon-ai .lv-ai-modal .lv-ai-check { display: flex; align-items: center; gap: 0.5rem; min-height: 44px; }
 #livon-ai .lv-ai-modal .lv-ai-field { display: grid; gap: 0.35rem; }

@@ -244,7 +244,7 @@
   }
   function primaryLink(item, text, cls) {
     if (item.external) return item.href ? '<a class="' + cls + '" href="' + esc(item.href) + '" target="_blank" rel="noopener noreferrer" data-td-key="' + esc(item.key) + '">' + esc(text || "공식 사이트") + ' <span aria-hidden="true">↗</span><span class="lh-sr"> (새 창)</span></a>' : "";
-    return '<a class="' + cls + '" href="' + esc(item.href) + '" data-td-key="' + esc(item.key) + '">' + esc(text || "자세히") + "</a>";
+    return '<a class="' + cls + '" href="' + esc(item.href) + '" data-td-key="' + esc(item.key) + '">' + esc(text || "자세히") + '<span class="visually-hidden">: ' + esc(item.title || "") + "</span></a>";
   }
   function stageTags(item) {
     return item.stageIds.slice(0, 3).map(function (id) { var l = stageLabel(id); return l ? '<span class="td-tag">' + esc(l) + "</span>" : ""; }).join("");
@@ -535,7 +535,7 @@
       // 01 Hero
       '<header class="td-dhero"><div class="lv-td-detail__hero">' + imgTag(c.img || "/livon/assets/topics/daytrip.jpg", c.alt) + "</div>" +
         '<p class="lv-td-eyebrow">' + esc([c.category, item.typeLabel].filter(Boolean).join(" · ")) + "</p>" +
-        '<h2 class="lv-td-title lv-td-title--md" tabindex="-1" data-td-title-focus>' + esc(c.title) + "</h2>" +
+        '<h2 class="lv-td-title lv-td-title--md" aria-level="1" tabindex="-1" data-td-title-focus>' + esc(c.title) + "</h2>" +
         '<p class="lv-td-lead">' + esc(c.blurb) + "</p>" +
         (stageChips ? '<p class="td-tags" aria-label="관련 라이프 스테이지">' + stageChips + "</p>" : "") +
         '<div class="lv-td-actions td-dactions">' + saveBtn(item) + shareBtn + todoBtn + aiBtn("lv-td-btn") + "</div></header>" +
@@ -576,7 +576,7 @@
 
   function notFound(id) {
     return '<nav class="td-crumbs" aria-label="현재 위치"><ol><li><a href="#livon-home">LIVON</a></li><li><a href="#today">오늘의 발견</a></li><li><span aria-current="page">찾을 수 없음</span></li></ol></nav>' +
-      '<h2 class="lv-td-title lv-td-title--md" tabindex="-1" data-td-title-focus>콘텐츠를 찾을 수 없습니다.</h2>' +
+      '<h2 class="lv-td-title lv-td-title--md" aria-level="1" tabindex="-1" data-td-title-focus>콘텐츠를 찾을 수 없습니다.</h2>' +
       empty("주소가 바뀌었거나 삭제된 콘텐츠일 수 있습니다.", "오늘의 발견에서 다시 찾아 주세요.", '<a class="lv-td-btn lv-td-btn--sm" href="#today">오늘의 발견으로</a>');
   }
 

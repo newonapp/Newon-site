@@ -24,6 +24,8 @@
   function statusBadge(s) { var k = { READY: "ok", ACTIVE: "ok", LIVE: "ok", "LOCAL-FIRST": "info", "LOCAL ONLY": "info", "LOCAL RULE-BASED": "info", "CODE READY": "info", "NOT CONNECTED": "warn", "NOT CONFIGURED": "warn", "BACKEND REQUIRED": "gap", DEFERRED: "gap", ERROR: "bad", UNAVAILABLE: "bad" }[s]; return badge(s, k); }
   function flagKind(f) { return /BROKEN|INVALID|MISSING_SOURCE|MISSING_SUMMARY|ORPHAN/.test(f) ? "bad" : /UNSOURCED|CONFLICT|DATE|STALE|TIME/.test(f) ? "warn" : /MISSING_RELATION|CONTENT_GAP/.test(f) ? "gap" : ""; }
   function flags(list, id) { return '<span class="ad-flags">' + (list || []).map(function (f) { var gap = f === "MISSING_RELATION" && svc.model && svc.model.gapEvents.indexOf(id) >= 0; return badge(gap ? "CONTENT GAP" : f, gap ? "gap" : flagKind(f)); }).join("") + "</span>"; }
+  /* a valid, unique id for a form control built from a free-text key (keys can contain spaces and symbols) */
+  function domId(prefix, key) { var s = String(key), h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0; return prefix + s.replace(/[^A-Za-z0-9_-]+/g, "-").slice(0, 40) + "-" + h.toString(36); }
   function rec(id, label) { return '<a href="#record/' + encodeURIComponent(id) + '">' + esc(label || id) + "</a>"; }
   function num(n) { return '<td class="num">' + esc(n == null ? "—" : n) + "</td>"; }
   function kv(title, obj) { var keys = Object.keys(obj || {}); return '<section class="ad-card" aria-label="' + esc(title) + '"><h2>' + esc(title) + '</h2>' + (keys.length ? '<dl class="ad-kv">' + keys.map(function (k) { return "<dt>" + esc(k) + "</dt><dd>" + esc(obj[k]) + "</dd>"; }).join("") + "</dl>" : empty("No data", "Nothing to count.")) + "</section>"; }
@@ -73,7 +75,7 @@
     var pager = '<nav class="ad-pager" aria-label="Pages"><span data-ad-count>' + res.total + ' records</span><button type="button" class="ad-btn ad-btn--ghost" data-ad-page="' + (res.page - 1) + '"' + (res.page <= 1 ? " disabled" : "") + ">Previous</button><span>Page " + res.page + " / " + res.pages + '</span><button type="button" class="ad-btn ad-btn--ghost" data-ad-page="' + (res.page + 1) + '"' + (res.page >= res.pages ? " disabled" : "") + ">Next</button></nav>";
     var rows = res.items.map(function (r) { return "<tr><td><code>" + rec(r.id) + "</code></td><td>" + esc(r.type) + "</td><td>" + esc(r.title) + "</td><td>" + esc(r.category || "") + "</td><td>" + esc(r.general ? "general" : r.ageGroup.join(",")) + "</td><td>" + esc(r.sourceClass + " · " + (r.sourceName || "")) + "</td>" + num(r.score) + "<td>" + flags(r.flags, r.id) + "</td><td>" + esc(r.screens.length) + "</td></tr>"; });
     return '<p class="ad-note">READ-ONLY view of the 530 curated records (same model as the Data Manager). Open a record to inspect it or to create a LOCAL DRAFT.</p>' + tools + pager +
-      (res.total ? table("Content (" + res.total + ")", ["ID", "Type", "Title", "Category", "Age", "Source", "Score", "Flags", "Screens"], rows) : empty("No results for these filters", "Change the search or reset the filters.")) + pager;
+      (res.total ? table("Content (" + res.total + ")", ["ID", "Type", "Title", "Category", "Age", "Source", "Score", "Flags", "Screens"], rows) : empty("No results for these filters", "Change the search or reset the filters.")) + pager.replace('aria-label="Pages"', 'aria-label="Pages, below the table"').replace(" data-ad-count", "");
   };
 
   V.record = function (param) {
@@ -225,7 +227,7 @@
         '<div class="ad-field"><label for="ad-rs">State</label><select id="ad-rs" data-ad-rs><option value="">All</option>' + LivonAdminStore.REVIEW_STATES.map(function (s) { return '<option value="' + s + '"' + (local.reviewState === s ? " selected" : "") + ">" + s + "</option>"; }).join("") + "</select></div></div>" +
         (Q.counts.P0 === 0 ? '<p class="ad-note">' + badge("P0 = 0", "ok") + " no blocking issue.</p>" : "") +
         table("Issues (" + items.length + (items.length > shown.length ? ", first " + shown.length + " shown" : "") + ")", ["P", "Rule", "Record", "Note", "State"], shown.map(function (i) {
-          return "<tr><td>" + i.priority + "</td><td>" + badge(i.rule, flagKind(i.rule)) + "</td><td>" + (i.recordId ? rec(i.recordId, i.title) : esc(i.title)) + "</td><td>" + esc(i.note) + '</td><td><label class="ad-sr" for="ad-st-' + esc(i.key) + '">State of ' + esc(i.key) + '</label><select id="ad-st-' + esc(i.key) + '" data-ad-istate="' + esc(i.key) + '">' +
+          return "<tr><td>" + i.priority + "</td><td>" + badge(i.rule, flagKind(i.rule)) + "</td><td>" + (i.recordId ? rec(i.recordId, i.title) : esc(i.title)) + "</td><td>" + esc(i.note) + '</td><td><label class="ad-sr" for="' + domId("ad-st-", i.key) + '">State of ' + esc(i.key) + '</label><select id="' + domId("ad-st-", i.key) + '" data-ad-istate="' + esc(i.key) + '">' +
             LivonAdminStore.REVIEW_STATES.map(function (s) { return '<option value="' + s + '"' + (i.state === s ? " selected" : "") + ">" + s + "</option>"; }).join("") + "</select></td></tr>";
         }), local.reviewP || local.reviewState ? "No issue matches these filters." : "No review issue — the queue is empty.");
     });
@@ -303,7 +305,7 @@
       '<nav aria-label="Admin sections"><ul class="ad-nav">' + nav + '</ul><p class="ad-nav-group" id="ad-future-h">Future (backend required)</p><ul class="ad-nav ad-nav--future" aria-labelledby="ad-future-h">' + fut + '</ul><p class="ad-nav-group">Tools</p><ul class="ad-nav"><li><a href="/livon/admin/data/">Data Manager ↗</a></li></ul></nav></aside>' +
       '<header class="ad-top"><div class="ad-gsearch"><label class="ad-sr" for="ad-gq">Search the Admin</label><input id="ad-gq" type="search" role="combobox" aria-expanded="false" aria-controls="ad-gres" aria-autocomplete="list" autocomplete="off" placeholder="Search content, life stages, events, sources, providers, issues…"><ul id="ad-gres" class="ad-results" role="listbox" aria-label="Search results" hidden></ul></div>' +
       '<button type="button" class="ad-btn ad-btn--ghost" data-ad-palette aria-keyshortcuts="Control+K Meta+K">Commands <kbd>Ctrl/⌘ K</kbd></button><span class="ad-note" data-ad-storage></span></header>' +
-      '<main id="ad-main" class="ad-main" tabindex="-1"><div class="ad-head"><h1 data-ad-title></h1></div><div data-ad-view></div></main></div>' +
+      '<main id="ad-main" class="ad-main" tabindex="-1"><div class="ad-head"><h1 data-ad-title></h1></div><div data-ad-view></div></main><p class="ad-sr" role="status" data-ad-live></p></div>' +
       '<dialog id="ad-palette" class="ad-palette" aria-label="Command palette"><div class="ad-palette__in"><label class="ad-sr" for="ad-pq">Command or record</label><input id="ad-pq" type="text" role="combobox" aria-expanded="true" aria-controls="ad-plist" autocomplete="off" placeholder="Go to…, Open…, or a record title"></div><ul id="ad-plist" role="listbox" aria-label="Commands"></ul></dialog>';
     app.setAttribute("data-ad-state", "ready");
   }
@@ -326,6 +328,9 @@
         if (seq !== renderSeq) return;
         host.innerHTML = html || "";
         host.setAttribute("data-ad-current", view);
+        /* one short status line per render (the page name and, when there is one, the record count) instead of a live region around the whole app */
+        var live = app.querySelector("[data-ad-live]"), cnt = host.querySelector("[data-ad-count]");
+        if (live) live.textContent = titleFor(view) + (cnt ? ": " + cnt.textContent : "");
         if (focus) app.querySelector("#ad-main").focus();
         else if (active && document.getElementById(active) && host.contains(document.getElementById(active))) { var el = document.getElementById(active); el.focus(); if (el.type === "search" && el.setSelectionRange) el.setSelectionRange(el.value.length, el.value.length); }
       });

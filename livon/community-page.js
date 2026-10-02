@@ -1020,13 +1020,13 @@
     var roots = list.filter(function (c) { return !c.parentId; });
     function one(c, isReply) {
       var kids = isReply ? [] : list.filter(function (x) { return x.parentId === c.id; });
-      var kidsHtml = kids.length ? '<ul class="lv-cm-replies">' + kids.map(function (k) { return one(k, true); }).join("") + "</ul>" : "";
+      var kidsHtml = kids.length ? '<ul class="lv-cm-replies" aria-label="답글 ' + kids.length + '개">' + kids.map(function (k) { return one(k, true); }).join("") + "</ul>" : "";
       if (c.deleted) return '<li class="lv-cm-comment is-deleted"><p>삭제된 댓글입니다.</p>' + kidsHtml + "</li>";
       var own = c.authorId === "local";
       var editing = state.editCommentId === c.id;
       var body = editing
-        ? '<form class="lv-cm-comment-edit" data-lv-cm-comment-edit="' + esc(c.id) + '"><label class="lv-cm-field"><span>댓글 수정</span><textarea name="body" rows="3" maxlength="' + LIMITS.comment + '">' + esc(c.body) + '</textarea></label>' +
-            '<p class="lv-cm-form__err" data-lv-cm-cerr role="alert"></p><div class="lv-cm-comment__acts"><button type="submit">저장</button><button type="button" data-lv-cm-comment-cancel>취소</button></div></form>'
+        ? '<form class="lv-cm-comment-edit" data-lv-cm-comment-edit="' + esc(c.id) + '"><label class="lv-cm-field"><span>댓글 수정</span><textarea name="body" rows="3" maxlength="' + LIMITS.comment + '" aria-describedby="lv-cm-cerr-edit">' + esc(c.body) + '</textarea></label>' +
+            '<p class="lv-cm-form__err" id="lv-cm-cerr-edit" data-lv-cm-cerr role="alert"></p><div class="lv-cm-comment__acts"><button type="submit">저장</button><button type="button" data-lv-cm-comment-cancel>취소</button></div></form>'
         : '<p class="lv-cm-comment__body">' + esc(c.body).replace(/\n/g, "<br>") + "</p>";
       return '<li class="lv-cm-comment' + (isReply ? " is-reply" : "") + '" id="lv-cm-c-' + esc(c.id) + '">' +
         '<p class="lv-cm-comment__meta"><strong>' + esc(c.authorNick || "나") + "</strong> · " + esc(fmtDate(c.createdAt)) + (c.updatedAt ? " · 수정됨" : "") +
@@ -1043,11 +1043,11 @@
     var replyTo = state.replyTo ? list.find(function (c) { return c.id === state.replyTo && !c.deleted; }) : null;
     return '<section class="lv-cm-detail__comments" aria-labelledby="lv-cm-comments-title">' +
       '<h3 id="lv-cm-comments-title">댓글 ' + n + "</h3>" +
-      (roots.length ? '<ul class="lv-cm-comments">' + roots.map(function (c) { return one(c, false); }).join("") + "</ul>" : '<p class="lv-cm-note lv-cm-note--plain">아직 댓글이 없습니다.</p>') +
+      (roots.length ? '<ul class="lv-cm-comments" aria-labelledby="lv-cm-comments-title">' + roots.map(function (c) { return one(c, false); }).join("") + "</ul>" : '<p class="lv-cm-note lv-cm-note--plain">아직 댓글이 없습니다.</p>') +
       '<form class="lv-cm-comment-form" id="lv-cm-comment-form" data-lv-cm-comment-form data-post="' + esc(post.id) + '">' +
         (replyTo ? '<p class="lv-cm-note lv-cm-note--plain">‘' + esc(String(replyTo.body).slice(0, 30)) + '’에 답글 작성 중 · <button type="button" class="lv-cm-text-btn" data-lv-cm-reply-cancel>답글 취소</button></p>' : "") +
-        '<label class="lv-cm-field"><span>' + (replyTo ? "답글" : "댓글") + " " + counter("comment", LIMITS.comment, "") + '</span><textarea name="body" maxlength="' + LIMITS.comment + '" rows="3" placeholder="개인정보는 적지 마세요."></textarea></label>' +
-        '<p class="lv-cm-form__err" data-lv-cm-cerr role="alert"></p>' +
+        '<label class="lv-cm-field"><span>' + (replyTo ? "답글" : "댓글") + " " + counter("comment", LIMITS.comment, "") + '</span><textarea name="body" maxlength="' + LIMITS.comment + '" rows="3" placeholder="개인정보는 적지 마세요." aria-describedby="lv-cm-cerr"></textarea></label>' +
+        '<p class="lv-cm-form__err" id="lv-cm-cerr" data-lv-cm-cerr role="alert"></p>' +
         '<button type="submit" class="lv-cm-btn lv-cm-btn--dark lv-cm-btn--sm">' + (replyTo ? "답글 등록" : "댓글 등록") + "</button>" +
       "</form></section>";
   }
@@ -1564,7 +1564,7 @@
         e.preventDefault();
         var cid = f.getAttribute("data-lv-cm-comment-edit");
         var r1 = Repo.editComment(cid, new FormData(f).get("body"));
-        if (r1.status === "invalid") { var e1 = f.querySelector("[data-lv-cm-cerr]"); if (e1) e1.textContent = r1.msg; return; }
+        if (r1.status === "invalid") { var e1 = f.querySelector("[data-lv-cm-cerr]"); if (e1) e1.textContent = r1.msg; var t1 = f.querySelector("textarea"); if (t1) { t1.setAttribute("aria-invalid", "true"); t1.focus(); } return; }
         state.editCommentId = "";
         rerenderAfterChange();
         var b1 = $('[data-lv-cm-edit-comment="' + cid + '"]'); if (b1) b1.focus({ preventScroll: true });

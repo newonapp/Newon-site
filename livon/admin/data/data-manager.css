@@ -104,3 +104,9 @@ button, input, select { font: inherit; color: inherit; }
   .dm-toolbar .dm-field { flex: 1 1 140px; }
   .dm-toolbar .dm-field select { width: 100%; }
 }
+
+/* Accessibility: form-field boundaries reach 3:1 against the panel; link-style buttons in tables get a 24px target. */
+.dm-field input, .dm-field select, .dm-table select { border-color: #85827a; }
+.dm-btn--link { padding-block: 2px; min-height: 24px; }   /* a 24px target */
+@media (forced-colors: active) { [aria-current="page"] { outline: 2px solid Highlight; outline-offset: -2px; } }
+html { scroll-padding-top: 16px; }

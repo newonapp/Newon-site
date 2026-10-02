@@ -101,7 +101,7 @@
     });
     var pager = '<nav class="dm-pager" aria-label="Pages"><span data-dm-count>' + res.total + " records</span><button type=\"button\" class=\"dm-btn dm-btn--ghost\" data-dm-page=\"" + (res.page - 1) + '"' + (res.page <= 1 ? " disabled" : "") + '>Previous</button><span>Page ' + res.page + " / " + res.pages +
       '</span><button type="button" class="dm-btn dm-btn--ghost" data-dm-page="' + (res.page + 1) + '"' + (res.page >= res.pages ? " disabled" : "") + '>Next</button><button type="button" class="dm-btn dm-btn--ghost" data-dm-export="filtered-json">Export filtered JSON</button><button type="button" class="dm-btn dm-btn--ghost" data-dm-export="filtered-csv">Export filtered CSV</button></nav>';
-    return controls + pager + table("Records (" + res.total + ")", ["ID", "Type", "Title", "Category", "Age", "Life Stage", "Life Event", "Source", "Score", "Flags", "Review"], rows, { empty: "No record matches these filters." }) + pager;
+    return controls + pager + table("Records (" + res.total + ")", ["ID", "Type", "Title", "Category", "Age", "Life Stage", "Life Event", "Source", "Score", "Flags", "Review"], rows, { empty: "No record matches these filters." }) + pager.replace('aria-label="Pages"', 'aria-label="Pages, below the table"').replace(" data-dm-count", "");
   };
 
   V.quality = function () {
@@ -325,7 +325,7 @@
   function shell() {
     app.innerHTML = '<div class="dm-shell"><aside class="dm-side" aria-label="Data Manager sections"><p class="dm-brand">LIVON Data Manager</p><p class="dm-badges">' + badge("LOCAL", "local") + badge("READ-ONLY") + badge("QA", "warn") + "</p>" +
       '<nav aria-label="Sections"><ul class="dm-nav">' + VIEWS.map(function (v) { return '<li><a href="#' + v[0] + '" data-dm-nav="' + v[0] + '">' + esc(v[1]) + "</a></li>"; }).join("") + "</ul></nav></aside>" +
-      '<main id="dm-main" class="dm-main" tabindex="-1"><header class="dm-head"><h1 data-dm-title></h1><span class="dm-note">' + model.records.length + " records · built " + esc(new Date().toLocaleString()) + ' · not published · not linked from LIVON</span></header><div data-dm-view></div></main></div>' +
+      '<main id="dm-main" class="dm-main" tabindex="-1"><header class="dm-head"><h1 data-dm-title></h1><span class="dm-note">' + model.records.length + " records · built " + esc(new Date().toLocaleString()) + ' · not published · not linked from LIVON</span></header><div data-dm-view></div></main><p class="dm-sr" role="status" data-dm-live></p></div>' +
       '<dialog id="dm-inspector" class="dm-dialog" aria-labelledby="dm-insp-title"></dialog>';
     app.setAttribute("data-dm-state", "ready");
   }
@@ -339,6 +339,8 @@
     var active = document.activeElement && document.activeElement.id;
     host.innerHTML = V[v[0]]();
     host.setAttribute("data-dm-current", v[0]);
+    var live = app.querySelector("[data-dm-live]"), cnt = host.querySelector("[data-dm-count]");
+    if (live) live.textContent = v[1] + (cnt ? ": " + cnt.textContent : "");
     if (focusMain) app.querySelector("#dm-main").focus({ preventScroll: false });
     else if (active && document.getElementById(active) && host.contains(document.getElementById(active))) { var el = document.getElementById(active); el.focus(); if (el.setSelectionRange && el.type === "search") { var n = el.value.length; el.setSelectionRange(n, n); } }
   }
