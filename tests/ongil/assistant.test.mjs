@@ -1089,11 +1089,12 @@ test('OG-AI-78 regression and documentation: areas, routes, collections and earl
   assert.equal(COLLECTIONS.length, 24);
   assert.equal(fs.readdirSync(JS_DIR).filter((f) => f.endsWith('.js')).length, 68);
   assert.deepEqual(createSearch().providerIds(), []);
-  assert.match(APP, /const APP_VERSION = 'assistant-v1';/);
+  // Phase 11: the version moved on (BEFORE assistant-v1, AFTER hardening-v1) and one test file was added (BEFORE 20, AFTER 21).
+  assert.match(APP, /const APP_VERSION = 'hardening-v1';/);
   for (const tool of ['search', 'notifications', 'assistant']) assert.match(HTML, new RegExp(`data-og-tool="${tool}" aria-expanded="false" aria-controls="og-panel-${tool}"`));
   assert.equal(fs.existsSync(path.join(ROOT, 'server/ongil')), false, 'no ONGIL backend or server route was added');
   const tests = fs.readdirSync(path.join(ROOT, 'tests/ongil')).filter((f) => f.endsWith('.test.mjs'));
-  assert.equal(tests.length, 20);
+  assert.equal(tests.length, 21);
   const doc = read('docs/ongil/PHASE_10_ONGIL_AI_V1.md');
   for (const h of ['OBJECTIVE', 'POSITIONING', 'CURRENT MODE', 'ARCHITECTURE', 'INTENTS', 'MATCHER', 'TOOL REGISTRY', 'TOOL CONTRACT', 'READ TOOLS', 'NAVIGATION TOOLS', 'WRITE TOOLS', 'CONFIRMATION', 'DATE PARSING', 'RESULT CONTRACT', 'HEALTH SAFETY', 'FAMILY BOUNDARY', 'PRIVACY', 'ANALYTICS', 'ROUTE SAFETY', 'SECURITY', 'ACCESSIBILITY', 'RESPONSIVE', 'PERFORMANCE', 'TESTS', 'KNOWN LIMITATIONS', 'MODEL MIGRATION', 'BACKEND REQUIREMENTS', 'PHASE 11 HANDOFF']) assert.match(doc, new RegExp(`^## (\\d+\\. )?${h}$`, 'm'), h);
   for (const id of I.INTENT_IDS) assert.ok(doc.includes(`\`${id}\``), `${id} is documented`);

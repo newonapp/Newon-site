@@ -58,7 +58,7 @@ import { createPanels } from './panels.js';
 import { createAssistant } from './assistant-tools.js';
 import { createAssistantView } from './assistant-view.js';
 import { safeRoute } from './routes.js';
-import { applyPreferences, viewTitle, focusView, bindSkipLink, bindScrollCues } from './accessibility.js';
+import { applyPreferences, viewTitle, focusView, bindSkipLink, bindScrollCues, resetTabStart } from './accessibility.js';
 
 const doc = document;
 const win = window;
@@ -70,7 +70,7 @@ const profile = createProfileStore(storage);
  * Phase 9 — local, privacy-preserving usage counters and the one place that feeds them (instrument.js). The stores
  * below are wrapped once, here; no screen calls analytics itself. Nothing is sent anywhere and no id is created.
  */
-const APP_VERSION = 'assistant-v1';
+const APP_VERSION = 'hardening-v1';
 const analytics = createAnalytics({ storage });
 const instrument = createInstrumentation((name, props) => analytics.track(name, props, html.dataset.ogView || ''));
 /* what each public-data source did during this visit (state and counts only), for the local operations view */
@@ -443,8 +443,18 @@ win.setInterval(checkDay, 60000);
 bindSkipLink(doc);
 bindScrollCues(doc, win);
 refreshInvitation();
+/* "#og-main" and other ids on this page are places, not screens: they are left alone */
+function inPageTarget(hash) {
+  const id = typeof hash === 'string' ? hash.slice(1) : '';
+  return /^[A-Za-z][\w-]{0,60}$/.test(id) && !!doc.getElementById(id);
+}
 /* Phase 9: the router is silent when a malformed section replaces no section on the same screen
    (#admin → #admin/OVERVIEW), so the address is also corrected here. replaceState raises no hashchange: no loop. */
+/* Phase 11: an address that names no screen (and no place on this page) keeps the screen that is showing — and now says so */
+win.addEventListener('hashchange', () => {
+  const hash = win.location.hash;
+  if (hash && !resolveView(hash) && !inPageTarget(hash)) win.history.replaceState(null, '', hashFor(router.current()));
+});
 win.addEventListener('hashchange', () => {
   const hash = win.location.hash;
   const view = resolveView(hash);
@@ -454,7 +464,11 @@ win.addEventListener('hashchange', () => {
 });
 instrument.track('app_open');
 router.start();
+if (win.location.hash && !resolveView(win.location.hash) && !inPageTarget(win.location.hash)) win.history.replaceState(null, '', hashFor(router.current()));
 html.dataset.ogReady = 'true';
+/* the first Tab should reach "본문으로 건너뛰기" (see accessibility.js); once now, once after the shared scripts have finished */
+resetTabStart(doc);
+win.addEventListener('load', () => win.setTimeout(() => resetTabStart(doc), 0));
 
 /* one stable handle for later phases and for manual checks; no secrets, nothing privileged */
 win.Ongil = Object.freeze({ version: APP_VERSION, assistant, assistantView, analytics, sources: sourceStatus, storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes, familySharing, helpRequests, care, enjoy: enjoyView, communityPosts, groupDrafts, meetupDrafts, store: storeView });

@@ -9,9 +9,15 @@
  * nothing here recommends starting, stopping or changing a medicine, and an unmarked one is stated as a fact
  * ("아직 복용하지 않았어요"), never as a warning. The time is shown on screen only; no OS notification is set.
  * add · update · remove · list · setTaken · isTaken · listForDate · historyForDate · loggedDates
+ *
+ * Phase 11 — plan and history are separate:
+ *   · removing a medication removes it from the PLAN only. Days already marked keep their mark, with the name and
+ *     time saved in the mark, and are shown as "지운 약" (read-only). Nothing is rewritten or lost.
+ *   · changing the days keeps the earlier days with the date the change took effect (`schedule`), so a past day
+ *     that was not marked is still read with the days that were set at that time.
  */
 import { SCHEMA_VERSION, ContractError, isPlainObject } from './contracts.js';
-import { normalizeMedication, normalizeMedicationLog, newId, pruneDays, LIFE_LIMITS, isId, takesOn } from './life-contracts.js';
+import { normalizeMedication, normalizeMedicationLog, newId, pruneDays, LIFE_LIMITS, isId, medicationDaysOn } from './life-contracts.js';
 import { dateKey, isDateKey, weekdayOf } from './dates.js';
 import { writableDay } from './checkin.js';
 
@@ -74,23 +80,38 @@ export function createMedicationStore(storage, { now = () => Date.now(), today =
     } catch (e) {
       return fail(e);
     }
+    /* the days changed: remember what applied until today, and that the new days apply from today */
+    const before = items[index];
+    if (before.daysOfWeek.join() !== medication.daysOfWeek.join()) {
+      const earlier = Array.isArray(before.schedule) && before.schedule.length ? before.schedule : [{ from: dateKey(before.createdAt), daysOfWeek: before.daysOfWeek }];
+      medication = normalizeMedication({ ...medication, schedule: [...earlier.filter((s) => s.from !== today()), { from: today(), daysOfWeek: medication.daysOfWeek }] }, now());
+    }
     items[index] = medication;
     return write(items) ? { ok: true, medication } : { ok: false, reason: 'STORAGE_UNAVAILABLE' };
   }
 
-  /* removing a medication also removes its marks, so no orphan log refers to a name that no longer exists */
+  /*
+   * Removes the medication from the plan. Its marks stay (Phase 11): each already carries the name and time it was
+   * marked with; a mark from before snapshots existed is given the name it has now, so no mark is left unnamed.
+   * The marks are written first — if that fails nothing is removed.
+   */
   function remove(id) {
     const items = read();
-    const next = items.filter((it) => it.id !== id);
-    if (next.length === items.length) return { ok: false, reason: 'NOT_FOUND' };
+    const target = items.find((it) => it.id === id);
+    if (!target) return { ok: false, reason: 'NOT_FOUND' };
     const logs = readLogs();
-    const cleaned = {};
+    let touched = false;
+    const kept = {};
     for (const [day, marks] of Object.entries(logs)) {
       if (!isPlainObject(marks)) continue;
-      const rest = Object.fromEntries(Object.entries(marks).filter(([mid]) => mid !== id));
-      if (Object.keys(rest).length) cleaned[day] = rest;
+      const mark = isPlainObject(marks[id]) ? marks[id] : null;
+      if (mark && !(typeof mark.name === 'string' && mark.name)) {
+        kept[day] = { ...marks, [id]: { ...mark, name: target.name, time: target.time } };
+        touched = true;
+      } else kept[day] = marks;
     }
-    return { ok: write(next) && writeLogs(cleaned) };
+    if (touched && !writeLogs(kept)) return { ok: false, reason: 'STORAGE_UNAVAILABLE' };
+    return { ok: write(items.filter((it) => it.id !== id)) };
   }
 
   /* marks one day; today or a past day inside the kept window can be corrected, a future day cannot */
@@ -120,7 +141,7 @@ export function createMedicationStore(storage, { now = () => Date.now(), today =
   function listForDate(date = today()) {
     const weekday = weekdayOf(date);
     return list()
-      .filter((m) => takesOn(m, weekday))
+      .filter((m) => medicationDaysOn(m, date).includes(weekday))
       .map((m) => ({ ...m, taken: isTaken(m.id, date) }));
   }
 
@@ -129,7 +150,8 @@ export function createMedicationStore(storage, { now = () => Date.now(), today =
    *   - a medication marked that day is shown with the name and time saved with the mark
    *   - a medication that was planned that day (weekday, and already written down by then) but not marked is
    *     shown as not marked — a plain fact, no warning
-   * Each row: { id, name, time, memo, taken, marked }.
+   *   - a mark whose medication was later removed from the plan is still shown, as it was marked (removed: true)
+   * Each row: { id, name, time, memo, taken, marked, removed }.
    */
   function historyForDate(date = today()) {
     if (!isDateKey(date)) return [];
@@ -137,12 +159,26 @@ export function createMedicationStore(storage, { now = () => Date.now(), today =
     const day = readLogs()[date];
     const marks = isPlainObject(day) ? day : {};
     const rows = [];
-    for (const m of list()) {
+    const plan = list();
+    const known = new Set(plan.map((m) => m.id));
+    for (const m of plan) {
       const mark = isPlainObject(marks[m.id]) ? marks[m.id] : null;
-      const planned = takesOn(m, weekday) && dateKey(m.createdAt) <= date;
+      const planned = medicationDaysOn(m, date).includes(weekday) && dateKey(m.createdAt) <= date;
       if (!mark && !planned) continue;
       const snap = mark && typeof mark.name === 'string' && mark.name ? mark : null;
-      rows.push({ id: m.id, name: snap ? snap.name : m.name, time: snap ? (typeof snap.time === 'string' ? snap.time : '') : m.time, memo: m.memo, daysOfWeek: m.daysOfWeek, taken: !!mark && mark.taken === true, marked: !!mark });
+      rows.push({ id: m.id, name: snap ? snap.name : m.name, time: snap ? (typeof snap.time === 'string' ? snap.time : '') : m.time, memo: m.memo, daysOfWeek: m.daysOfWeek, taken: !!mark && mark.taken === true, marked: !!mark, removed: false });
+    }
+    /* marks of medications no longer in the plan: history, read-only */
+    for (const [mid, mark] of Object.entries(marks)) {
+      if (known.has(mid) || !isId(mid) || !isPlainObject(mark)) continue;
+      let log;
+      try {
+        log = normalizeMedicationLog({ medicationId: mid, date, taken: mark.taken === true, name: mark.name, time: mark.time, updatedAt: mark.updatedAt }, now());
+      } catch {
+        continue;
+      }
+      if (!log.name) continue;
+      rows.push({ id: mid, name: log.name, time: log.time || '', memo: '', daysOfWeek: [], taken: log.taken, marked: true, removed: true });
     }
     return rows.sort((a, b) => (a.time === '' ? 1 : 0) - (b.time === '' ? 1 : 0) || a.time.localeCompare(b.time) || a.name.localeCompare(b.name));
   }

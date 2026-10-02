@@ -91,3 +91,9 @@
   .og-cal__grid { border-spacing: 1px; }
   .og-cal__day { min-height: 2.9rem; font-size: 1.05rem; border-radius: 0.65rem; }
 }
+
+/* [P11] small phones: the month grid uses the card's own side padding, so a day is 44px wide from 360px up
+   (at 320px seven days leave 40px each — the row stays 46px tall) */
+@media (max-width: 380px) {
+  .og-cal__grid { width: calc(100% + 2rem); margin-inline: -1rem; }
+}

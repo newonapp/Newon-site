@@ -340,6 +340,7 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
     const card = cards.groups;
     clear(card.body);
     const list = groups.list();
+    const meetupCounts = meetups.countsByGroup();
     card.root.dataset.ogState = list.length ? 'filled' : 'empty';
     const group = state.groupId ? groups.get(state.groupId) : null;
     if (state.groupId && !group) state.groupId = '';
@@ -373,7 +374,7 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
           el(
             'ul',
             { class: 'og-home-items', 'aria-label': '내 모임 초안' },
-            list.map((g) => el('li', { class: 'og-home-item', 'data-og-group': g.id }, el('div', { class: 'og-home-item__main og-home-item__main--plain' }, el('p', { class: 'og-home-item__title', text: g.name }), el('p', { class: 'og-home-item__meta', text: ['초안', labelOf(GROUP_CATEGORIES, g.category), labelOf(MEETING_STYLES, g.meetingStyle), g.region, `일정 초안 ${meetups.listFor(g.id).length}개`].filter(Boolean).join(' · ') }), g.description ? el('p', { class: 'og-home-item__text', text: summaryOf(g.description) }) : null), el('div', { class: 'og-home-item__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-group-open': g.id, 'aria-label': `‘${g.name}’ 초안 열기`, text: '열기', onclick: () => { state.groupId = g.id; renderGroups(); card.focusTitle(); } }))))
+            list.map((g) => el('li', { class: 'og-home-item', 'data-og-group': g.id }, el('div', { class: 'og-home-item__main og-home-item__main--plain' }, el('p', { class: 'og-home-item__title', text: g.name }), el('p', { class: 'og-home-item__meta', text: ['초안', labelOf(GROUP_CATEGORIES, g.category), labelOf(MEETING_STYLES, g.meetingStyle), g.region, `일정 초안 ${meetupCounts[g.id] || 0}개`].filter(Boolean).join(' · ') }), g.description ? el('p', { class: 'og-home-item__text', text: summaryOf(g.description) }) : null), el('div', { class: 'og-home-item__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-group-open': g.id, 'aria-label': `‘${g.name}’ 초안 열기`, text: '열기', onclick: () => { state.groupId = g.id; renderGroups(); card.focusTitle(); } }))))
           )
         );
     }

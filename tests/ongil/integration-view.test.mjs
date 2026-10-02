@@ -254,9 +254,9 @@ test('OG-IV-10 body text size: nothing people read in ONGIL is under 16px (1rem)
     '.og-label': 'the short capital label above a heading (MY LIFE)',
     '.og-band .og-label, .og-page .og-label': 'the same label inside a band or page',
     '.gnav--ongil .gnav__link': 'the site header menu, sized by the shared header',
-    '.og-pick__mark': 'the tick glyph inside a choice',
-    '.og-panel__title': 'the caption of the search / notification panel',
-    '.og-panel__group': 'the group caption inside a panel',
+    // Phase 11 (release hardening): three of the listed exceptions were removed by raising them to 1rem — the tick glyph
+    // (.og-pick__mark 0.95rem), the panel caption (.og-panel__title 0.95rem) and the panel group caption
+    // (.og-panel__group 0.9rem). BEFORE: seven allowed rules. AFTER: four.
     '.og-chip p, .og-card li, .og-card__lead': 'legacy shell rule; ONGIL chips override it to body size (checked below)',
   };
   const small = [];

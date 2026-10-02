@@ -12,12 +12,12 @@ body:has(.og) { padding-top: 0 !important; background: var(--og-bg); color: var(
 .og-tool:hover, .og-tool[aria-expanded="true"], .og-tool[aria-current="page"] { background: var(--og-tool-hover); }
 .og-tool[aria-current="page"]::after { content: ""; position: absolute; left: 30%; right: 30%; bottom: 0.3rem; height: 2px; border-radius: 2px; background: currentColor; } /* [P1] current view is not shown by colour alone */
 .og-panel { position: absolute; top: calc(100% + 0.65rem); right: 0; z-index: 30; width: min(22rem, calc(100vw - 2rem)); max-height: min(70vh, 32rem); overflow: auto; padding: 1rem 1rem 0.85rem; background: var(--og-panel-bg); color: var(--og-panel-ink); border: 1px solid var(--og-panel-border); border-radius: var(--og-radius-panel); box-shadow: var(--og-panel-shadow); }
-.og-panel__title { margin: 0 0 0.7rem; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.04em; } /* [P1] 0.78rem → 0.95rem */
+.og-panel__title { margin: 0 0 0.7rem; font-size: 1rem; font-weight: 700; letter-spacing: 0.04em; } /* [P1] 0.78rem → 0.95rem; [P11] → 1rem */
 .og-search { display: flex; gap: 0.4rem; }
 .og-search input { flex: 1; min-width: 0; height: var(--og-control); padding: 0 0.85rem; border: 1px solid var(--og-panel-input-border); border-radius: var(--og-radius-input); font: inherit; font-size: 1rem; color: var(--og-panel-ink); background: var(--og-panel-bg); }
 .og-search button { height: var(--og-control); padding: 0 1rem; border: 0; border-radius: var(--og-radius-input); background: var(--og-panel-ink); color: var(--og-panel-bg); font: inherit; font-size: 1rem; font-weight: 700; cursor: pointer; }
 .og-panel__note { margin: 0.7rem 0 0.15rem; color: #555; font-size: 1rem; line-height: 1.5; } /* [P1] 0.82rem #666 → 0.95rem #555; [P2C] → 1rem */
-.og-panel__group { margin: 0.9rem 0 0.2rem; font-size: 0.9rem; font-weight: 700; color: #555; }
+.og-panel__group { margin: 0.9rem 0 0.2rem; font-size: 1rem; font-weight: 700; color: #555; } /* [P11] 0.9rem → 1rem */
 .og-panel__list { margin: 0; padding: 0; list-style: none; }
 .og-panel__list li { border-top: 1px solid var(--og-panel-line); }
 .og-panel__list li:first-child { border-top: 0; }
@@ -51,6 +51,15 @@ body:has(.og) { padding-top: 0 !important; background: var(--og-bg); color: var(
 /* three header tools on a phone: the mark stays, the word beside it gives way (the link keeps its name for screen readers) */
 @media (max-width: 430px) {
   .gnav--ongil .gnav__wordmark { display: none; }
+}
+/* [P11 review] the shared language button is 34px high by default: give it ONGIL's 44px touch height (height only, layout unchanged) */
+.gnav--ongil .lang-menu.lang-menu--chrome .lang-menu__btn { min-height: 44px; }
+/* [P11] the narrowest phones (320–359px): tighter header spacing so the mark and the three 44px tools do not overlap */
+@media (max-width: 359px) {
+  .gnav--ongil .gnav__inner { padding-inline: 10px; gap: 6px; }
+  .gnav--ongil .gnav__util { gap: 2px; }
+  .gnav--ongil .og-tools { gap: 0; margin-right: 0; }
+  .gnav--ongil .gnav__lang-select { padding-left: 6px; }
 }
 
 /* screen isolation — only the active view is shown */

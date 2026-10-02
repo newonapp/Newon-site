@@ -932,11 +932,12 @@ test('OG-AQ-15 wiring: the screen exists before paint, has a title, and is rende
 
 test('OG-AQ-16 version and cache: the app states its version and the changed files have a new address', () => {
   // Phase 10 moved the version on. BEFORE: admin-v1 / ?v=20261003a9. AFTER: assistant-v1 / ?v=20261003b10.
-  assert.match(APP, /const APP_VERSION = 'assistant-v1';/);
+  // Phase 11 moved it on again. BEFORE: assistant-v1 / ?v=20261003b10. AFTER: hardening-v1 / ?v=20261003r11.
+  assert.match(APP, /const APP_VERSION = 'hardening-v1';/);
   assert.match(APP, /win\.Ongil = Object\.freeze\(\{ version: APP_VERSION, assistant, assistantView, analytics, sources: sourceStatus,/);
-  assert.match(HTML, /ongil-shell\.css\?v=20261003b10/);
-  assert.match(HTML, /ongil-app\.css\?v=20261003b10/);
-  assert.match(HTML, /js\/app\.js\?v=20261003b10/);
+  assert.match(HTML, /ongil-shell\.css\?v=20261003r11/);
+  assert.match(HTML, /ongil-app\.css\?v=20261003r11/);
+  assert.match(HTML, /js\/app\.js\?v=20261003r11/);
 });
 
 test('OG-AQ-17 performance: one small write per event and a tiny summary — no list of events to scan', () => {
@@ -985,5 +986,5 @@ test('OG-AQ-20 documentation and suite: the Phase 9 document has every required 
   for (const name of A.EVENT_NAMES.filter((n) => !n.startsWith('ai_'))) assert.ok(doc.includes(`\`${name}\``), `${name} is documented`);
   assert.equal(/LIVE VERIFIED(?!")|screen reader: VERIFIED/.test(doc.replace(/never[^\n]*LIVE VERIFIED|no[^\n]*LIVE VERIFIED|not[^\n]*LIVE VERIFIED/gi, '')), false);
   const tests = fs.readdirSync(path.join(ROOT, 'tests/ongil')).filter((f) => f.endsWith('.test.mjs')).sort();
-  assert.deepEqual(tests, ['admin-analytics', 'assistant', 'care-data', 'community-data', 'cross-product', 'enjoy-data', 'family-data', 'foundation-data', 'foundation-flows', 'health-data', 'health-view', 'home-data', 'home-view', 'integration-data', 'integration-view', 'life-data', 'life-privacy', 'life-view', 'shell', 'store-data'].map((n) => `${n}.test.mjs`));
+  assert.deepEqual(tests, ['admin-analytics', 'assistant', 'care-data', 'community-data', 'cross-product', 'enjoy-data', 'family-data', 'foundation-data', 'foundation-flows', 'health-data', 'health-view', 'home-data', 'home-view', 'integration-data', 'integration-view', 'life-data', 'life-privacy', 'life-view', 'release-hardening', 'shell', 'store-data'].map((n) => `${n}.test.mjs`)); // Phase 11: + release-hardening
 });

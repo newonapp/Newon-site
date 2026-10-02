@@ -53,7 +53,7 @@
 .og-picks--stack { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .og-pick { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 3rem; padding: 0.6rem 1.1rem; border: 1.5px solid var(--og-line-strong); border-radius: var(--og-radius-pill); background: transparent; color: var(--og-ink); font-family: inherit; font-size: 1.05rem; font-weight: var(--og-weight-body); text-align: left; cursor: pointer; }
 .og-picks--stack .og-pick { border-radius: var(--og-radius-card); min-height: 3.5rem; font-size: 1.15rem; }
-.og-pick__mark { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 1.4rem; height: 1.4rem; border: 1.5px solid var(--og-line-strong); border-radius: 50%; font-size: 0.95rem; line-height: 1; }
+.og-pick__mark { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 1.4rem; height: 1.4rem; border: 1.5px solid var(--og-line-strong); border-radius: 50%; font-size: 1rem; line-height: 1; }
 .og-pick[aria-pressed="true"] { border-color: var(--og-ink); background: var(--og-bg); font-weight: 700; }
 .og-pick[aria-pressed="true"] .og-pick__mark { border-color: var(--og-ink); background: var(--og-ink); color: var(--og-accent-ink); }
 .og-home-card--l1 .og-pick[aria-pressed="true"] { background: var(--og-surface); }

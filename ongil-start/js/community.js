@@ -144,5 +144,12 @@ export function createMeetupStore(storage, { now = () => Date.now(), makeId = ()
     return next.length === items.length ? true : s.write(next);
   }
 
-  return Object.freeze({ listFor, add: (groupId, input) => save(groupId, input), update: (id, input) => save(null, input, id), remove, removeForGroup, count: () => s.read().length });
+  /* Phase 11: { groupId: number of meetup drafts } from ONE read — the group list used to read the collection once per group */
+  function countsByGroup() {
+    const out = {};
+    for (const m of all()) out[m.groupId] = (out[m.groupId] || 0) + 1;
+    return out;
+  }
+
+  return Object.freeze({ listFor, countsByGroup, add: (groupId, input) => save(groupId, input), update: (id, input) => save(null, input, id), remove, removeForGroup, count: () => s.read().length });
 }

@@ -53,3 +53,17 @@ export function bindScrollCues(doc, win) {
     focusNode(target);
   });
 }
+
+/*
+ * Phase 11: the shared site scripts rebuild part of the header after load, which leaves the browser's tab starting
+ * point inside the header — the first Tab then lands on the menu and skips "본문으로 건너뛰기". When nothing has
+ * focus yet, the starting point is put back at the very top (an empty, unnamed marker before the skip link), so the
+ * first Tab reaches the skip link. Nothing is focused afterwards and nothing is announced.
+ */
+export function resetTabStart(doc) {
+  const marker = doc.querySelector('[data-og-tab-start]');
+  if (!marker || (doc.activeElement && doc.activeElement !== doc.body)) return false;
+  marker.focus({ preventScroll: true });
+  marker.blur();
+  return true;
+}

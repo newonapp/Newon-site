@@ -84,10 +84,32 @@ export function normalizeMedication(input, now = Date.now()) {
   /* Phase 3: the days it is taken (0 = Sunday … 6 = Saturday). Missing or empty = every day, so Phase 2A entries read as 매일. */
   const picked = Array.isArray(input.daysOfWeek) ? ALL_DAYS.filter((d) => input.daysOfWeek.includes(d)) : [];
   const daysOfWeek = picked.length ? picked : [...ALL_DAYS];
-  return { schemaVersion: SCHEMA_VERSION, id: input.id, name, time, daysOfWeek, memo: safeText(input.memo, LIFE_LIMITS.memo), createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
+  const out = { schemaVersion: SCHEMA_VERSION, id: input.id, name, time, daysOfWeek, memo: safeText(input.memo, LIFE_LIMITS.memo), createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
+  /* Phase 11: which days applied FROM which date, kept when the days are changed, so a past day is read with the
+     days that were set then. Absent on entries that never changed (and on everything written before Phase 11). */
+  const schedule = normalizeMedicationSchedule(input.schedule);
+  if (schedule.length) out.schedule = schedule;
+  return out;
+}
+export const MEDICATION_SCHEDULE_MAX = 24;
+export function normalizeMedicationSchedule(value) {
+  const seen = new Map();
+  for (const step of Array.isArray(value) ? value : []) {
+    if (!isPlainObject(step) || !isDateKey(step.from) || !Array.isArray(step.daysOfWeek)) continue;
+    const days = ALL_DAYS.filter((d) => step.daysOfWeek.includes(d));
+    if (days.length) seen.set(step.from, days);
+  }
+  return [...seen.keys()].sort().slice(-MEDICATION_SCHEDULE_MAX).map((from) => ({ from, daysOfWeek: seen.get(from) }));
+}
+/* the days that applied on `date`: the latest step that had started by then; before the first step, the first step's days */
+export function medicationDaysOn(medication, date) {
+  const steps = Array.isArray(medication.schedule) ? medication.schedule : [];
+  if (!steps.length) return medication.daysOfWeek;
+  let days = steps[0].daysOfWeek;
+  for (const step of steps) if (step.from <= date) days = step.daysOfWeek;
+  return days;
 }
 export const ALL_DAYS = Object.freeze([0, 1, 2, 3, 4, 5, 6]);
-export const takesOn = (medication, weekday) => Array.isArray(medication.daysOfWeek) && medication.daysOfWeek.includes(weekday);
 
 export function normalizeMedicationLog(input, now = Date.now()) {
   if (!isPlainObject(input)) throw new ContractError('INVALID_LOG');

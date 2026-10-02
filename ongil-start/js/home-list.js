@@ -18,8 +18,15 @@
 import { el, clear } from './dom.js';
 import { makeField, eul } from './home-ui.js';
 
+/* Phase 11: a long list is shown a page at a time (+ 더 보기), so a card never puts hundreds of rows in the page */
+export const LIST_PAGE = 50;
+export const STORAGE_ERROR_TEXT = '이 기기에 저장하지 못했어요. 브라우저의 저장 공간이 가득 찼거나 꺼져 있을 수 있어요. 오래된 기록을 지운 뒤 다시 해 주세요.';
+
 export function createListCard({ card, config }) {
   let mode = { type: 'idle', id: null };
+  let shown = LIST_PAGE;
+  /* a row the user is working on (or has just added) must be on screen even when it sorts past the first page */
+  let keepVisible = null;
   let pendingFocus = null;
   const checkable = config.checkable !== false;
   const mayAdd = () => (typeof config.canAdd === 'function' ? config.canAdd() : config.canAdd !== false);
@@ -50,11 +57,14 @@ export function createListCard({ card, config }) {
       if (!result.ok) {
         const bad = fields.find((f) => f.spec.errors && f.spec.errors.includes(result.reason)) || fields[0];
         bad.input.setAttribute('aria-invalid', 'true');
-        error.textContent = config.errorText(result.reason);
+        /* Phase 11: a write the browser refused (storage full or switched off) says so — "try again" alone does not help */
+        error.textContent = result.reason === 'STORAGE_UNAVAILABLE' || result.reason === 'STORAGE_FULL' ? STORAGE_ERROR_TEXT : config.errorText(result.reason);
         bad.input.focus();
         return;
       }
       card.say(item ? `${config.itemName}${eul(config.itemName)} 고쳤습니다.` : `${config.itemName}${eul(config.itemName)} 추가했습니다.`);
+      const saved = Object.values(result).find((v) => v && typeof v === 'object' && typeof v.id === 'string');
+      keepVisible = item ? item.id : saved ? saved.id : null;
       changed();
       setMode({ type: 'idle', id: null }, item ? `edit:${item.id}` : 'add');
     });
@@ -64,7 +74,9 @@ export function createListCard({ card, config }) {
   function mainOf(item, d, done) {
     const meta = d.meta.length ? el('p', { class: 'og-home-item__meta', text: d.meta.join(' · ') }) : null;
     const text = d.text ? el('p', { class: 'og-home-item__text', text: d.text }) : null;
-    if (!checkable) return el('div', { class: 'og-home-item__main og-home-item__main--plain' }, el('p', { class: 'og-home-item__title', text: d.title }), meta, text);
+    /* a row that is history only (Phase 11: a mark of a medication since removed from the plan) is shown, not changed */
+    const locked = typeof config.isLocked === 'function' && config.isLocked(item);
+    if (!checkable || locked) return el('div', { class: 'og-home-item__main og-home-item__main--plain' }, el('p', { class: 'og-home-item__title', text: locked && done ? `${d.title} (${config.doneWord})` : d.title }), meta, text);
     const checkId = `og-check-${item.id}`;
     const box = el('input', {
       type: 'checkbox',
@@ -125,7 +137,19 @@ export function createListCard({ card, config }) {
     card.root.dataset.ogState = items.length ? 'filled' : 'empty';
     if (config.before) card.body.append(config.before());
     if (items.length === 0 && mode.type !== 'add') card.body.append(el('p', { class: 'og-home-empty', text: typeof config.emptyText === 'function' ? config.emptyText() : config.emptyText }));
-    if (items.length) card.body.append(el('ul', { class: 'og-home-items', 'aria-label': typeof config.listLabel === 'function' ? config.listLabel() : config.listLabel }, items.map(row)));
+    const wanted = mode.id || keepVisible;
+    if (wanted) {
+      const at = items.findIndex((it) => it.id === wanted);
+      if (at >= shown) shown = at + 1;
+    }
+    keepVisible = null;
+    const page = items.slice(0, shown);
+    if (items.length) card.body.append(el('ul', { class: 'og-home-items', 'aria-label': typeof config.listLabel === 'function' ? config.listLabel() : config.listLabel }, page.map(row)));
+    if (items.length > page.length) {
+      card.body.append(
+        el('div', { class: 'og-form__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-focus': 'more', 'data-og-list-more': String(items.length - page.length), text: `더 보기 (${items.length - page.length}개 남음)`, onclick: () => { shown += LIST_PAGE; pendingFocus = 'more'; render(); } }))
+      );
+    }
     const canAdd = mayAdd();
     if (canAdd && mode.type === 'add') {
       const f = form(null);
@@ -147,5 +171,5 @@ export function createListCard({ card, config }) {
     pendingFocus = null;
   }
 
-  return Object.freeze({ render, openAdd: () => setMode({ type: 'add', id: null }, 'form'), reset: () => { mode = { type: 'idle', id: null }; pendingFocus = null; render(); } });
+  return Object.freeze({ render, openAdd: () => setMode({ type: 'add', id: null }, 'form'), reset: () => { mode = { type: 'idle', id: null }; pendingFocus = null; shown = LIST_PAGE; render(); } });
 }

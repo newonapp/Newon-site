@@ -554,8 +554,9 @@ test('OG-STO-56 regression: no new network, backend, key, commerce API or fixtur
   /* Phase 8 moved the version on again: integration-v2 / ?v=20261003i8 (BEFORE: store-v1 / 20261003s7) */
   /* Phase 9 moved the version on: admin-v1 / ?v=20261003a9 (BEFORE: integration-v2 / 20261003i8). The version now lives in APP_VERSION. */
   /* Phase 10 moved the version on: assistant-v1 / ?v=20261003b10 (BEFORE: admin-v1 / 20261003a9) — ONGIL 도우미 was added. */
-  assert.match(APP, /const APP_VERSION = 'assistant-v1';/);
-  assert.match(INDEX, /app\.js\?v=20261003b10/);
+  /* Phase 11 moved the version on: hardening-v1 / ?v=20261003r11 (BEFORE: assistant-v1 / 20261003b10) — release hardening changed app.js and two stylesheets. */
+  assert.match(APP, /const APP_VERSION = 'hardening-v1';/);
+  assert.match(INDEX, /app\.js\?v=20261003r11/);
   assert.match(INDEX, /ongil-care\.css\?v=20261003s7/);
   assert.match(SEARCH, /export function createStoreProvider\(getItems\)/);
   assert.match(AREAS.find((a) => a.id === 'store').notice, /결제, 주문, 배송 기능은 없습니다/);

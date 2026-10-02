@@ -281,9 +281,11 @@ export function createMedicationDaySection({ medication, now = () => Date.now(),
       isDone: (item) => item.taken,
       describe: (item) => {
         const today = getDate() === dateKey(now());
-        const state = item.taken ? '' : today ? '아직 복용하지 않았어요' : '표시하지 않았어요';
-        return { title: item.name, meta: [item.time ? formatTime(item.time) : '', state].filter(Boolean) };
+        const state = item.taken ? '' : item.removed ? '먹지 않음으로 표시' : today ? '아직 복용하지 않았어요' : '표시하지 않았어요';
+        return { title: item.name, meta: [item.time ? formatTime(item.time) : '', state, item.removed ? '목록에서 지운 약 · 기록만 남아 있어요' : ''].filter(Boolean) };
       },
+      /* a mark of a medication since removed from 내 약 목록 is history: shown as it was, not changed */
+      isLocked: (item) => item.removed === true,
       toggleText: (item, checked) => (checked ? `${word()} ‘${item.name}’을(를) 먹은 약으로 표시했습니다.` : `${word()} ‘${item.name}’ 표시를 풀었습니다.`),
       onToggle: (item, checked) => medication.setTaken(item.id, checked, getDate()),
       afterChange: onChange,
@@ -306,7 +308,7 @@ export function createMedicationPlanSection({ medication, onChange }) {
       emptyText: '적어 둔 약이 없어요.',
       addLabel: '약 추가',
       checkable: false,
-      note: '직접 적어 두는 메모입니다. ONGIL은 약이나 복용량을 정하거나 권하지 않습니다. 고친 내용은 앞으로의 날에 쓰이고, 이미 표시한 날의 기록은 그대로 남습니다.',
+      note: '직접 적어 두는 메모입니다. ONGIL은 약이나 복용량을 정하거나 권하지 않습니다. 고친 내용은 앞으로의 날에 쓰이고, 이미 표시한 날의 기록은 그대로 남습니다. 약을 목록에서 지워도 표시해 둔 날의 기록은 남습니다.',
       fields: [
         { name: 'name', label: '약 이름', type: 'text', required: true, maxlength: LIFE_LIMITS.medicationName, errors: ['INVALID_NAME'] },
         { name: 'time', label: '먹는 시간', type: 'time', required: false, errors: ['INVALID_TIME'] },

@@ -164,10 +164,28 @@ export function createStorage({ backend = createMemoryBackend(), now = () => Dat
     return COLLECTIONS.filter((c) => keys.includes(KEY_PREFIX + c));
   }
 
-  /* removes ONGIL's own keys only */
+  /*
+   * removes ONGIL's own keys only. Phase 11: besides the known collections, any other key under ONGIL's prefix is
+   * removed too (one left by an older or newer version of ONGIL), so "erase" leaves nothing of ONGIL behind.
+   * A key of another product (livon.*, newon-*) never starts with the prefix and is never touched.
+   */
   function clear() {
     let ok = true;
     for (const c of list()) ok = remove(c) && ok;
+    let keys = [];
+    try {
+      keys = backend.keys();
+    } catch {
+      return false;
+    }
+    for (const key of keys) {
+      if (typeof key !== 'string' || !key.startsWith(KEY_PREFIX)) continue;
+      try {
+        backend.removeItem(key);
+      } catch {
+        ok = false;
+      }
+    }
     return ok;
   }
 

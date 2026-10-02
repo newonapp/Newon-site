@@ -182,7 +182,10 @@ test('OG-MD-2 "taken" is per day: today can be marked and unmarked, tomorrow sta
   assert.equal(w.medication.isTaken(a.id, '2026-10-02'), true);
 });
 
-test('OG-MD-3 deleting a medication removes its marks too', () => {
+// Phase 11 (release hardening): deleting a medication used to delete its past marks too — a loss of the person's own
+// history (known limitation since Phase 3). BEFORE: the day's marks held only the other medication. AFTER: the plan
+// entry is gone, both marks are still there, and the removed one still carries the name it was marked with.
+test('OG-MD-3 deleting a medication removes it from the plan and keeps its marks', () => {
   const w = world();
   const a = w.medication.add({ name: '혈압약' }).medication;
   const b = w.medication.add({ name: '비타민' }).medication;
@@ -190,7 +193,9 @@ test('OG-MD-3 deleting a medication removes its marks too', () => {
   w.medication.setTaken(b.id, true);
   w.medication.remove(a.id);
   const logs = w.storage.get('medicationLogs').items;
-  assert.deepEqual(Object.keys(logs['2026-10-02']), [b.id]);
+  assert.deepEqual(w.medication.list().map((m) => m.id), [b.id]);
+  assert.deepEqual(Object.keys(logs['2026-10-02']).sort(), [a.id, b.id].sort());
+  assert.deepEqual([logs['2026-10-02'][a.id].taken, logs['2026-10-02'][a.id].name], [true, '혈압약']);
 });
 
 /* ───────── daily life ───────── */
