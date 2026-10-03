@@ -269,6 +269,24 @@ test('OG-NF-2 store has no checkout, cart, price, stock or order of any kind', (
   assert.match(AREAS.find((a) => a.id === 'store').notice, /결제, 주문, 배송 기능은 없습니다/);
 });
 
+test('OG-NF-2b the price-text exception lets nothing else through: no order, purchase, inventory, delivery or completed-commerce copy in store code', () => {
+  /*
+   * OG-NF-2 removes exactly priceText, PRICE_NOTE and the pinned STORE_COMMERCE declaration before its check. That word
+   * list never named inventory, purchase, generic order calls or delivery, nor Korean "completed" commerce copy, so this
+   * pins them for every store file and the store section of the page. Negative copy ("결제, 주문, 배송을 하지 않아요")
+   * and the source's price text stay allowed.
+   */
+  const FORBIDDEN = /inventory|purchas|placeOrder|createOrder|submitOrder|orderNumber|addToBag|buyNow|\bbuy\b|deliver|fulfil|refund|invoice|receipt|\bsku\b|결제\s*(완료|되었|됐|하기|진행)|주문\s*(완료|되었|됐|하기|접수|번호)|구매\s*(완료|되었|됐|하기)|배송\s*(중|완료|시작|조회|예정)|재고|장바구니|품절/i;
+  const scrub = (code) => code.replace(/export const STORE_COMMERCE = Object\.freeze\(\{[^}]*\}\);/, '').replace(/\bpriceText\b|\bPRICE_NOTE\b/g, '');
+  const violates = (code) => FORBIDDEN.test(scrub(code)) || /checkout|cart|payment|stock|orderId|shipping/i.test(scrub(code));
+  /* the check itself catches what slipped past OG-NF-2's list */
+  for (const bad of ['placeOrder(item)', 'inventoryCount: 3', 'purchase()', 'deliveryDate', '주문 완료', '결제되었습니다', '구매 완료', '배송 중', 'priceText; checkout()']) assert.equal(violates(bad), true, bad);
+  for (const ok of ['priceText', 'PRICE_NOTE', '결제, 주문, 배송을 하지 않아요', 'export const STORE_COMMERCE = Object.freeze({ mode: \'EXTERNAL_LINK\', cart: false, checkout: false });']) assert.equal(violates(ok), false, ok);
+  for (const f of JS_FILES.filter((x) => /^store-/.test(x))) assert.equal(violates(CODE[f]), false, f);
+  const section = BODY.slice(BODY.indexOf('id="store"'), BODY.indexOf('<!-- SAVED -->'));
+  assert.equal(violates(section), false, 'index.html store section');
+});
+
 test('OG-NF-3 health and family are shells: no storage, no sharing, no automation', () => {
   for (const f of JS_FILES) {
     assert.equal(/diagnos|emergencyCall|autoCall|shareWithFamily|grantPermission|inviteCode|tel:/i.test(CODE[f]), false, f);

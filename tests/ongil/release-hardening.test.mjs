@@ -1196,3 +1196,42 @@ test('RH-46 header touch height: the language button in the ONGIL header gets th
   assert.match(shell, /\.gnav--ongil \.lang-menu\.lang-menu--chrome \.lang-menu__btn \{ min-height: 44px; \}/);
   assert.match(read('ongil-start/index.html'), /<header[^>]*class="[^"]*gnav--ongil/);
 });
+
+test('RH-47 storage blocked: every screen — not only 내 정보 — says once that nothing typed here survives the window, and no content sits under that note', () => {
+  /* the start-up block in app.js, run against a minimal page: once when storage is memory-only, never when it is local */
+  const src = APP.slice(APP.indexOf('if (!storage.persistent) {'), APP.indexOf('const profile = createProfileStore(storage);'));
+  assert.ok(src.length > 0 && src.length < 1500, 'one small block right after createStorage');
+  const page = () => {
+    const kids = [];
+    const node = (tag) => ({ tag, className: '', dataset: {}, attrs: {}, textContent: '', offsetHeight: 73, setAttribute(k, v) { this.attrs[k] = v; } });
+    const main = { style: {}, kids, prepend: (n) => kids.unshift(n), querySelector: (sel) => (sel === '[data-og-storage="memory"]' ? kids.find((k) => k.dataset.ogStorage === 'memory') || null : null) };
+    const html = { style: {} };
+    const observed = [];
+    const win = { ResizeObserver: class { constructor(fn) { this.fn = fn; } observe(n) { observed.push([n, this.fn]); } }, addEventListener() {} };
+    const doc = { getElementById: (id) => (id === 'og-main' ? main : null), createElement: node };
+    return { main, html, win, doc, observed };
+  };
+  const run = (persistent, p) => new Function('storage', 'doc', 'win', 'html', src)({ persistent }, p.doc, p.win, p.html);
+  const blocked = page();
+  run(false, blocked);
+  run(false, blocked);
+  assert.equal(blocked.main.kids.length, 1, 'exactly one note, even if the block runs twice');
+  const [note] = blocked.main.kids;
+  assert.equal(note.tag, 'p');
+  assert.equal(note.className, 'og-notice');
+  assert.equal(note.attrs.role, 'note');
+  assert.equal(note.textContent, '이 브라우저에서는 저장이 막혀 있습니다. 창을 닫으면 입력한 내용이 사라집니다.');
+  assert.ok(JS['account-view.js'].includes(note.textContent), 'same words as 내 정보');
+  assert.equal(blocked.main.style.paddingTop, '73px');
+  assert.equal(blocked.html.style.scrollPaddingTop, '73px');
+  note.offsetHeight = 99; blocked.observed[0][1]();
+  assert.equal(blocked.main.style.paddingTop, '99px', 'a narrower screen with a taller note still covers nothing');
+  const local = page();
+  run(true, local);
+  assert.equal(local.main.kids.length, 0);
+  assert.equal(local.main.style.paddingTop, undefined);
+  /* the note is pinned under the ONGIL header, inside an ONGIL sheet, and never styled into a success message */
+  const shell = read('ongil-start/styles/ongil-shell.css');
+  assert.match(shell, /main > \.og-notice\[data-og-storage="memory"\] \{ position: fixed; top: var\(--gnav-h, 74px\);[^}]*z-index: 20;/);
+  assert.equal(/저장(했|되었|됨)/.test(src), false);
+});

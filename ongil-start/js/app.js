@@ -65,6 +65,26 @@ const win = window;
 const html = doc.documentElement;
 
 const storage = createStorage({ backend: resolveBackend(win) });
+/*
+ * Storage blocked (private mode, site data off): the app still runs from memory, so every screen says once — not only
+ * 내 정보 — that what is typed here is gone when the window closes. Screens' own "추가했습니다" messages stay truthful.
+ */
+if (!storage.persistent) {
+  const main = doc.getElementById('og-main');
+  if (main && !main.querySelector('[data-og-storage="memory"]')) {
+    const note = doc.createElement('p');
+    note.className = 'og-notice';
+    note.setAttribute('role', 'note');
+    note.dataset.ogStorage = 'memory';
+    note.textContent = '이 브라우저에서는 저장이 막혀 있습니다. 창을 닫으면 입력한 내용이 사라집니다.';
+    main.prepend(note);
+    /* the note is fixed under the header; <main> keeps its height free and scrolled-to sections stop below it */
+    const reserve = () => { main.style.paddingTop = `${note.offsetHeight}px`; html.style.scrollPaddingTop = `${note.offsetHeight}px`; };
+    reserve();
+    if (typeof win.ResizeObserver === 'function') new win.ResizeObserver(reserve).observe(note);
+    else win.addEventListener('resize', reserve);
+  }
+}
 const profile = createProfileStore(storage);
 /*
  * Phase 9 — local, privacy-preserving usage counters and the one place that feeds them (instrument.js). The stores
