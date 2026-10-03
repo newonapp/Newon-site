@@ -11,7 +11,7 @@
  * Card photos that a template draws as a CSS background cannot use loading="lazy", so the template writes
  * data-lv-bg="…" instead of the style and the photo is applied here when the card comes near the viewport.
  *
- * A video host that cannot be reached is not retried in a loop: after two errors the video is detached and it is
+ * A video host that cannot be reached is not retried in a loop: after two failed attempts the video is detached and it is
  * tried again only when the browser comes back online or the screen is opened again.
  *
  * The pause control (livon-a11y.js) and "reduce motion" work as before: a paused film still shows its first frame.
@@ -91,8 +91,19 @@
     video.__lvOff = true;
     detach(video);
   }
+  /* Another script (film-keep.js) may call load() again while a request is still open. Such a request is cancelled, not
+     failed, so it never raises an error event and would not be counted. Once a film has failed, a new attempt that starts
+     before the film ever played counts too: one retry is allowed, the next attempt detaches the film. */
+  function onLoadStart(e) {
+    var video = e.target;
+    if (!video || video.tagName !== "VIDEO" || video.__lvStarted || !video.__lvFails) return;
+    video.__lvRetries = (video.__lvRetries || 0) + 1;
+    if (video.__lvRetries < FAIL_LIMIT) return;
+    video.__lvOff = true;
+    detach(video);
+  }
   function retry() {
-    all("video").forEach(function (video) { if (video.__lvOff) { video.__lvOff = false; video.__lvFails = 0; } });
+    all("video").forEach(function (video) { if (video.__lvOff) { video.__lvOff = false; video.__lvFails = 0; video.__lvRetries = 0; } });
     syncHeaders();
     all("video[data-src]").forEach(function (video) { if (!isHeader(video) && video.__lvSeen) attach(video); });
   }
@@ -107,13 +118,17 @@
       }, { rootMargin: "600px 0px" });
     }
     doc.addEventListener("error", onError, true);
-    doc.addEventListener("playing", function (e) { if (e.target && e.target.tagName === "VIDEO") { e.target.__lvStarted = true; e.target.__lvFails = 0; } }, true);
+    doc.addEventListener("loadstart", onLoadStart, true);
+    doc.addEventListener("playing", function (e) { if (e.target && e.target.tagName === "VIDEO") { e.target.__lvStarted = true; e.target.__lvFails = 0; e.target.__lvRetries = 0; } }, true);
     root.addEventListener("hashchange", function () {
-      all(HEADER).forEach(function (video) { if (video.__lvOff) { video.__lvOff = false; video.__lvFails = 0; } });
+      all(HEADER).forEach(function (video) { if (video.__lvOff) { video.__lvOff = false; video.__lvFails = 0; video.__lvRetries = 0; } });
       root.setTimeout(syncHeaders, 0);   /* after the router has set the new view */
     });
     root.addEventListener("online", retry);
-    syncHeaders();
+    /* header films receive their src after film-keep.js has finished its own start-up: at DOMContentLoaded it calls load()
+       on every hero film, which cancels a request that is already open and sends it again (two wasted film requests per
+       visit, and up to four requests for an unreachable host). film-keep.js registered its listener first, so it runs first. */
+    if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", syncHeaders); else syncHeaders();
     watchAll(doc);
     watchAllBg(doc);
     if ("MutationObserver" in root) {

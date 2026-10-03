@@ -52,7 +52,11 @@ export const RC_FIXES = ['.github/workflows/github-pages.yml', 'scripts/livon-se
 /* livon-v1-completion: the NEWON backend production hardening (main f65dfab06), brought onto the RC as one commit */
 export const BACKEND_HARDENING = { subject: 'Prepare NEWON backend for production deployment', files: ['.env.example', 'vercel.json', 'scripts/verify-api-deployment.mjs', 'server/livon/chat.mjs', 'server/livon/data/cache.mjs', 'server/livon/data/http.mjs', 'server/livon/data/limit.mjs', 'server/livon/health.mjs', 'server/livon/ratelimit.mjs', 'server/livon/redis-env.mjs'] };
 /* later completion commits (product fixes) list their files here */
-export const COMPLETION_FIXES = [];
+/* Product Completion Audit (livon-v1-completion): header search on the shared index, derived alerts, legacy-save removal,
+   film request de-duplication, separate-API-origin URLs — see docs/livon/LIVON_PRODUCT_COMPLETION_AUDIT.md and tests/livon/completion.test.mjs */
+export const COMPLETION_FIXES = ['livon/index.html', 'livon/livon-platform.js', 'livon/livon-media.js', 'livon/ai-page.js', 'livon/livon-api-config.js', 'scripts/livon-api-config.mjs',
+  /* with the data server reachable (LIVON_API_ORIGIN set in production): Help reports the public data that really arrived */
+  'livon/help-data.js', 'livon/help-page.js'];
 
 /* ───────── static SEO roots: the same generator the build runs, closed and open ───────── */
 function makeRoot(env) {

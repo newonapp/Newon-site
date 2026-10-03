@@ -22,7 +22,8 @@
     follow: "ACCOUNT_REQUIRED",          /* following needs accounts: not available */
     reports: "LOCAL_ONLY",               /* a report is a record in this browser, not sent anywhere */
     ai: "NOT_CONNECTED",                 /* no AI server is configured for this site (livon-api-config.js) */
-    liveData: "NOT_CONNECTED",           /* real-time public data needs the data server, which is not connected */
+    liveData: "NOT_CONNECTED",           /* the source default: no data server origin. A build that sets LIVON_API_ORIGIN may
+                                            receive public data; help-page.js then reports what this browser actually received */
     support: "NOT_CONNECTED",            /* no inquiry / ticket backend */
     help: "READY"
   };
@@ -77,7 +78,7 @@
     { id: "what-is-stored", cat: "data", v: "CODE_VERIFIED",
       title: "이 기기에 저장되는 것과 서버에 저장되지 않는 것",
       short: "LIVON에서 직접 고르거나 쓴 내용은 전부 이 브라우저에 있고, 서버에는 아무것도 보관하지 않아요.",
-      body: ["이 브라우저에 저장되는 것: 맞춤 설정(연령대·관심 분야·Life Event), 저장한 항목, 내 생활의 일정·할 일·목표·기록, 체크리스트 진행 상태, 커뮤니티 글·댓글·공감·신고 기록, 최근 본 항목, LIVON AI 대화 기록.", "서버에 저장되지 않는 것: 위의 모든 내용. LIVON은 지금 사용자 정보를 받아 두는 서버가 없어요.", "예외는 하나예요. LIVON AI가 연결된 환경에서 질문을 보내면, 그 질문과 함께 보낸 내용은 답변을 만들기 위해 AI 서버로 전달돼요."],
+      body: ["이 브라우저에 저장되는 것: 맞춤 설정(연령대·관심 분야·Life Event), 저장한 항목, 내 생활의 일정·할 일·목표·기록, 체크리스트 진행 상태, 커뮤니티 글·댓글·공감·신고 기록, 최근 본 항목, LIVON AI 대화 기록.", "서버에 저장되지 않는 것: 위의 모든 내용. LIVON은 지금 사용자 정보를 받아 두는 서버가 없어요.", "보내는 경우는 두 가지예요. LIVON AI가 연결된 환경에서 질문을 보내면, 그 질문과 함께 보낸 내용은 답변을 만들기 위해 AI 서버로 전달돼요.", "데이터 서버가 연결된 환경에서 탐색으로 장소나 훈련 과정을 검색하면, 검색어가 그 정보를 받아 오기 위해 데이터 서버로 전달돼요. ‘내 위치 기준으로 찾기’를 눌렀을 때만 약 100m 단위로 줄인 위치가 함께 가고, 저장되지 않아요."],
       related: ["local-data-storage", "ai-what-it-uses", "clear-browser-data"], feature: ["내 생활 › 설정", "#ml-settings"],
       kw: ["저장", "서버", "목록", "무엇", "개인정보", "수집", "데이터"] },
     { id: "other-device", cat: "data", hf: "HF-3", popular: true, v: "CODE_VERIFIED",
@@ -265,8 +266,8 @@
       kw: ["검색", "전체 검색", "커뮤니티 검색", "차이", "찾기"] },
     { id: "live-data", cat: "explore", v: "CODE_VERIFIED",
       title: "실시간 공공 데이터가 연결되어 있나요?",
-      short: "아직 연결되어 있지 않아요. 지금 보이는 정보는 LIVON이 정리해 둔 안내와 공식 사이트 링크예요.",
-      body: ["주변 장소나 직업훈련 과정처럼 실시간 데이터가 필요한 영역은 데이터 서버가 연결되어야 보여요. 연결되지 않은 동안에는 준비 중으로 표시돼요.", "그래서 모집 기간, 잔여 인원, 현재 가격처럼 자주 바뀌는 값은 공식 사이트에서 확인해야 해요."],
+      short: "데이터 서버가 연결되어 응답할 때만, 일부 영역에서 보여요. 그 밖의 정보는 LIVON이 정리해 둔 안내와 공식 사이트 링크예요.",
+      body: ["평생학습 강좌, 마을세무사, 주변 장소, 직업훈련 과정처럼 공공기관이 공개한 데이터는 데이터 서버가 연결되어야 보여요. 연결되지 않았거나 응답이 없으면 그 부분은 준비 중으로 표시되고, 정리해 둔 안내만 보여요.", "받아 온 데이터에도 모집 기간, 잔여 인원, 현재 가격처럼 자주 바뀌는 값이 있어요. 신청하기 전에는 공식 사이트에서 확인해야 해요.", "지금 이 브라우저에서 받아 온 공공 데이터가 있는지는 ‘서비스 상태’에서 볼 수 있어요."],
       related: ["official-badge", "what-is-today", "explore-search"], feature: ["서비스 상태", "#help/status"],
       kw: ["공공 데이터", "실시간", "연결", "데이터", "API", "최신", "행사", "장소"] },
 

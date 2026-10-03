@@ -51,7 +51,15 @@ export function livonApiConfigScript(origin = '', preview = '') {
   root.LivonApi = Object.freeze({
     env: env,
     base: ok,
-    url: function (path) { return ok + (String(path).charAt(0) === "/" ? path : "/" + path); }
+    /* A separate API origin is a Vercel deployment of this repository: vercel.json has "trailingSlash": true, so it answers
+       /api/x with a 308 redirect to /api/x/. A cross-origin fetch cannot pass that redirect (it carries no CORS headers, and a
+       preflight never follows a redirect), so URLs for a separate origin carry the slash: /api/health/, /api/livon/data/?...  */
+    url: function (path) {
+      var p = String(path).charAt(0) === "/" ? String(path) : "/" + path;
+      if (!ok) return p;
+      var i = p.search(/[?#]/), head = i < 0 ? p : p.slice(0, i), tail = i < 0 ? "" : p.slice(i);
+      return ok + (head.charAt(head.length - 1) === "/" ? head : head + "/") + tail;
+    }
   });
 })(typeof window !== "undefined" ? window : globalThis);
 `;

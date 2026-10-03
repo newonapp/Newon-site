@@ -177,9 +177,29 @@
         (withShort ? "<span>" + esc(fill(a.short)) + "</span>" : "") + "<small>" + esc((catById[a.cat] || {}).label || "") + "</small></a></li>";
     }).join("") + "</ul>";
   }
+  /* Public data is the one row whose truth depends on the deployment: a build with a data server origin may receive
+     public data. The row then says what THIS browser has actually received (LivonData.status()), never what is merely
+     configured. Without received data it stays exactly as written in help-data.js. */
+  function liveDataNow() {
+    var L = window.LivonData, st = null;
+    try { st = L && typeof L.status === "function" ? L.status() : null; } catch (e) { st = null; }
+    var names = [];
+    ((st && st.providers) || []).forEach(function (p) {
+      if (p && !p.builtin && p.requiresServer && p.status === "active" && p.name && names.indexOf(p.name) < 0) names.push(p.name);
+    });
+    return names;
+  }
+  function statusNow(s) {
+    if (s.id !== "live-data") return { state: s.state, label: D.statusLabel[s.state] || "", text: s.text };
+    var names = liveDataNow();
+    if (!names.length) return { state: s.state, label: D.statusLabel[s.state] || "", text: s.text };
+    return { state: "available", label: "일부 연결됨",
+      text: "지금 이 브라우저에서 받아 온 공공 데이터가 있어요: " + names.join(", ") + ". 그 밖의 영역은 정리해 둔 안내와 공식 링크를 보여 줘요." };
+  }
   function statusRows(list) {
-    return '<ul class="lv-hp-status">' + list.map(function (s) {
-      return '<li><div class="lv-hp-status__head"><strong>' + esc(s.label) + '</strong><span class="lv-hp-badge lv-hp-badge--' + esc(s.state) + '">' + esc(D.statusLabel[s.state] || "") + "</span></div>" +
+    return '<ul class="lv-hp-status">' + list.map(function (s0) {
+      var now = statusNow(s0), s = { label: s0.label, article: s0.article, state: now.state, text: now.text };
+      return '<li><div class="lv-hp-status__head"><strong>' + esc(s.label) + '</strong><span class="lv-hp-badge lv-hp-badge--' + esc(s.state) + '"' + (s0.id === "live-data" ? " data-lv-hp-live" : "") + ">" + esc(now.label) + "</span></div>" +
         "<p>" + esc(fill(s.text)) + ' <a href="#help/a/' + esc(s.article) + '">자세히<span class="visually-hidden">: ' + esc(s.label) + "</span></a></p></li>";
     }).join("") + "</ul>";
   }
@@ -253,7 +273,7 @@
   function viewStatus() {
     return crumbs([["도움말", "#help"], ["서비스 상태", ""]]) +
       '<header class="lv-hp-head"><h1 class="lv-hp-title lv-hp-title--md" id="lv-hp-h" tabindex="-1">서비스 상태</h1>' +
-      '<p class="lv-hp-lead">지금 버전에서 쓸 수 있는 기능과 아직 연결되지 않은 기능이에요. 실시간 점검 결과가 아니라 현재 구성 안내예요.</p></header>' +
+      '<p class="lv-hp-lead">지금 버전에서 쓸 수 있는 기능과 아직 연결되지 않은 기능이에요. 실시간 점검 결과가 아니라 현재 구성 안내예요. 공공 데이터 항목만 이 브라우저가 실제로 받아 온 내용을 기준으로 표시해요.</p></header>' +
       statusRows(D.status) + footNav("");
   }
   function viewNotFound() {
@@ -302,6 +322,9 @@
   function bind() {
     if (bound) return;
     bound = true;
+    /* public data arrives after the page: an open status view follows it (no focus change, no scroll) */
+    var R = window.LivonData && window.LivonData.repository;
+    if (R && typeof R.onChange === "function") R.onChange(function () { if (current.view === "status") render({ view: "status" }); });
     document.addEventListener("submit", function (e) {
       var f = e.target;
       if (!f || !f.matches || !f.matches("[data-lv-hp-search]")) return;
