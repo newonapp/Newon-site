@@ -3,10 +3,14 @@ import { applyCors, CorsError } from './cors.mjs';
 import { PROVIDERS } from './data/http.mjs';
 import { json } from './http.mjs';
 import { userdataStatus } from './userdata/http.mjs';
+import { dataLimitMode, dataLimitPolicy } from './data/limit.mjs';
+import { redisRestConfig } from './redis-env.mjs';
 
 /*
  * GET /api/health — deployment check. Booleans, counts and a timestamp only: never a key, token, URL or limit secret.
  *   aiConfigured / protectionConfigured are kept for the LIVON AI page (livon/ai-page.js detectApi).
+ *   data.rateLimit.mode: 'shared' (Upstash + secret) | 'instance' (production without them) | 'off' (development);
+ *   data.sharedCache: whether the data cache is shared through Upstash. Never which variable names or values are set.
  */
 export function createHealthHandler({ env = process.env, now = () => Date.now() } = {}) {
   return (req, res) => {
@@ -27,7 +31,8 @@ export function createHealthHandler({ env = process.env, now = () => Date.now() 
       status: 'ok', service: 'livon-api', time: new Date(now()).toISOString(),
       aiConfigured, protectionConfigured: protection,
       ai: { configured: aiConfigured, protectionConfigured: protection, limitsValid, ready: aiConfigured && protection && limitsValid },
-      data: { providers, configuredCount: Object.values(providers).filter(p => p.configured).length, total: Object.keys(providers).length },
+      data: { providers, configuredCount: Object.values(providers).filter(p => p.configured).length, total: Object.keys(providers).length,
+        rateLimit: { mode: dataLimitMode(env), limitsValid: dataLimitPolicy(env).valid }, sharedCache: !!redisRestConfig(env) },
       userdata: (u => ({ enabled: u.enabled, database: u.database, auth: u.auth, ready: u.enabled && u.database && u.auth && protection }))(userdataStatus(env))
     });
   };

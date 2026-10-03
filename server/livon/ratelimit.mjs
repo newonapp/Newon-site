@@ -7,6 +7,7 @@
  */
 import { createHmac } from 'node:crypto';
 import { isProduction, protectionConfigured } from './chat.mjs';
+import { redisRestConfig } from './redis-env.mjs';
 
 export const BUCKET_SCRIPT = `
 for i=1,#KEYS do
@@ -37,10 +38,11 @@ export async function limitBuckets({ scope, identity, caps, env = {}, fetcher = 
   }
   const id = createHmac('sha256', env.LIVON_RATE_LIMIT_SECRET).update(scope + ':' + identity).digest('hex');
   const keys = caps.map((_, i) => `livon:${scope}:${id}:${i}`);
+  const redis = redisRestConfig(env);
   try {
-    const r = await fetcher(env.UPSTASH_REDIS_REST_URL, {
+    const r = await fetcher(redis.url, {
       method: 'POST', signal: AbortSignal.timeout(3000),
-      headers: { Authorization: `Bearer ${env.UPSTASH_REDIS_REST_TOKEN}`, 'Content-Type': 'application/json' },
+      headers: { Authorization: `Bearer ${redis.token}`, 'Content-Type': 'application/json' },
       body: JSON.stringify(['EVAL', BUCKET_SCRIPT, String(keys.length), ...keys, ...caps.flat().map(String)])
     });
     if (!r.ok) throw new Error('limiter');

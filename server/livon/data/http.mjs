@@ -18,6 +18,8 @@
  *   - API keys come from environment variables and never appear in responses or logs
  *   - upstream errors become fixed codes (NOT_CONFIGURED / TIMEOUT / UPSTREAM_ERROR …); bodies are discarded
  *   - one upstream refresh per provider at a time; results are cached (see cache.mjs)
+ *   - provider calls (cache misses only) are limited per client and per provider site-wide (see limit.mjs):
+ *     429 RATE_LIMIT / 503 UPSTREAM_LIMIT with Retry-After; cache hits are never counted or refused
  *   - a response whose rows ALL fail the shared schema is an invalid response (never cached, never "0 results")
  *
  * Operations: createDataHandler(...).diagnostics() → per provider { configured, status, lastErrorCategory, lastAt,
@@ -28,6 +30,7 @@ import { createRequire } from 'node:module';
 import { json } from '../http.mjs';
 import { createServerCache, memoryCache } from './cache.mjs';
 import { applyCors, CorsError } from '../cors.mjs';
+import { createDataLimiter, DataLimitError, clientAddress } from './limit.mjs';
 import * as youth from './providers/youthcenter.mjs';
 import * as bizinfo from './providers/bizinfo.mjs';
 import * as bizEvent from './providers/bizinfo-event.mjs';
@@ -156,13 +159,13 @@ const POST_KEYS = ['provider', 'action', 'lat', 'lng', 'radius', 'query', 'categ
 const BODY_MAX = 2048;
 
 class DataError extends Error {
-  constructor(status, code) { super(code); this.status = status; this.code = code; }
+  constructor(status, code, retryAfter) { super(code); this.status = status; this.code = code; if (retryAfter) this.retryAfter = retryAfter; }
 }
 const ERROR_TEXT = {
   METHOD_NOT_ALLOWED: '허용되지 않은 요청입니다.', BAD_REQUEST: '요청 형식이 올바르지 않습니다.', UNKNOWN_PROVIDER: '지원하지 않는 데이터 제공처입니다.',
   NOT_CONFIGURED: '이 데이터 제공처는 아직 연결되지 않았습니다.', UPSTREAM_ERROR: '제공처 데이터를 지금 불러올 수 없습니다.', TIMEOUT: '제공처 응답이 지연되고 있습니다.',
   UPSTREAM_LIMIT: '제공처 호출 한도를 넘었습니다. 잠시 후 다시 시도해 주세요.', SERVER_ERROR: '데이터를 불러오지 못했습니다.',
-  ORIGIN_NOT_ALLOWED: '허용되지 않은 요청입니다.'
+  ORIGIN_NOT_ALLOWED: '허용되지 않은 요청입니다.', RATE_LIMIT: '요청이 많습니다. 잠시 후 다시 시도해 주세요.'
 };
 const kakaoWindow = kakao.LIMITS.maxPageable;
 const UPSTREAM_CODES = { TIMEOUT: [504, 'TIMEOUT'], NETWORK: [502, 'UPSTREAM_ERROR'], HTTP_4XX: [502, 'UPSTREAM_ERROR'], HTTP_5XX: [502, 'UPSTREAM_ERROR'], PARSE: [502, 'UPSTREAM_ERROR'], INVALID_DATA: [502, 'UPSTREAM_ERROR'], QUOTA: [503, 'UPSTREAM_LIMIT'] };
@@ -208,8 +211,14 @@ function validPhotos(list) {
   return v.ok ? v.entity.photos : [];
 }
 
-export function createDataHandler({ env = process.env, fetcher = fetch, cache = createServerCache(env, fetcher), now = () => Date.now(), log = null } = {}) {
+export function createDataHandler({ env = process.env, fetcher = fetch, cache = createServerCache(env, fetcher), now = () => Date.now(), log = null, limiter = createDataLimiter({ env, fetcher, now }) } = {}) {
   const inflight = new Map();
+  /* only a call that is about to reach the provider is counted (limit.mjs); a refusal is a DataError the caller passes on */
+  async function guard(p, ctx) {
+    if (!limiter) return;
+    try { await limiter.check(p.id, ctx && ctx.ip); }
+    catch (e) { if (e instanceof DataLimitError) throw new DataError(e.status, e.code, e.retryAfter); throw new DataError(500, 'SERVER_ERROR'); }
+  }
   const privateCache = memoryCache({ maxEntries: 200 });   /* never shared/persistent: nearby place results only */
   const warn = log || ((...a) => { if (!env.VERCEL && env.NODE_ENV !== 'production') console.warn(...a); });
   /* diagnostics: counters + fixed codes per provider id — nothing request-specific is kept */
@@ -228,12 +237,14 @@ export function createDataHandler({ env = process.env, fetcher = fetch, cache = 
     return out;
   }
 
-  async function entities(p, filter = {}) {
+  async function entities(p, filter = {}, ctx = null) {
     const fk = Object.keys(filter).sort().map(k => k + '=' + filter[k]).join('&');
     const key = `livon:data:v1:${p.id}${fk ? ':' + fk : ''}`;
     const hit = await cache.get(key);
     if (hit && Array.isArray(hit.items)) { track(p.id, 'hit'); return { ...hit, cached: true }; }
     track(p.id, 'miss');
+    if (inflight.has(key)) return inflight.get(key);
+    await guard(p, ctx);
     if (inflight.has(key)) return inflight.get(key);
     const job = (async () => {
       track(p.id, 'load');
@@ -252,12 +263,14 @@ export function createDataHandler({ env = process.env, fetcher = fetch, cache = 
   }
 
   /* on-demand search (one upstream page per request, cached, identical concurrent requests share one call) */
-  async function searchPage(p, params) {
+  async function searchPage(p, params, ctx = null) {
     const key = p.cacheKey(params);
     const store = p.privateCache(params) ? privateCache : cache;
     const hit = await store.get(key);
     if (hit && Array.isArray(hit.items)) { track(p.id, 'hit'); return { ...hit, cached: true }; }
     track(p.id, 'miss');
+    if (inflight.has(key)) return inflight.get(key);
+    await guard(p, ctx);
     if (inflight.has(key)) return inflight.get(key);
     const job = (async () => {
       track(p.id, 'load');
@@ -300,11 +313,11 @@ export function createDataHandler({ env = process.env, fetcher = fetch, cache = 
       raw[k] = String(v);
     }
     if (raw.lat == null || raw.lng == null) throw new DataError(400, 'BAD_REQUEST');
-    return runSearch(p, raw, res);
+    return runSearch(p, raw, res, { ip: clientAddress(req, env) });
   }
 
   /* shared by GET and POST: validate → configured? → one upstream page */
-  async function runSearch(p, raw, res) {
+  async function runSearch(p, raw, res, ctx = null) {
     if (raw.page != null && !/^\d{1,4}$/.test(raw.page)) throw new DataError(400, 'BAD_REQUEST');
     if (raw.limit != null && !/^\d{1,4}$/.test(raw.limit)) throw new DataError(400, 'BAD_REQUEST');
     let params;
@@ -314,8 +327,8 @@ export function createDataHandler({ env = process.env, fetcher = fetch, cache = 
     if (p.empty(params)) return json(res, 200, { ok: true, provider: p.id, page: params.page, limit: lim, total: null, hasMore: false, fetchedAt: null, cached: false, items: [] });
     let data;
     rec(p.id).requests++;
-    try { data = await searchPage(p, params); outcome(p.id, 'available'); }
-    catch (err) { outcome(p.id, stateForError(err && err.code), (err && UPSTREAM_CODES[err.code] && err.code) || 'UNKNOWN'); const m = UPSTREAM_CODES[err && err.code] || [502, 'UPSTREAM_ERROR']; throw new DataError(m[0], m[1]); }
+    try { data = await searchPage(p, params, ctx); outcome(p.id, 'available'); }
+    catch (err) { if (err instanceof DataError) throw err; outcome(p.id, stateForError(err && err.code), (err && UPSTREAM_CODES[err.code] && err.code) || 'UNKNOWN'); const m = UPSTREAM_CODES[err && err.code] || [502, 'UPSTREAM_ERROR']; throw new DataError(m[0], m[1]); }
     const out = { ok: true, provider: p.id, page: params.page, limit: lim, total: data.total, hasMore: data.hasMore, fetchedAt: data.fetchedAt, cached: data.cached, items: data.items };
     if (data.photos) out.photos = data.photos;
     return json(res, 200, out);
@@ -348,7 +361,7 @@ export function createDataHandler({ env = process.env, fetcher = fetch, cache = 
       if (p.mode === 'search') {
         const raw = {}; for (const k of p.params) { const v = url.searchParams.get(k); if (v != null) raw[k] = v; }
         if (!p.getCoords && (raw.lat != null || raw.lng != null || raw.radius != null)) throw new DataError(400, 'BAD_REQUEST');   /* position → POST */
-        return await runSearch(p, raw, res);
+        return await runSearch(p, raw, res, { ip: clientAddress(req, env) });
       }
       const page = intParam(url.searchParams.get('page'), 1, LIMITS.maxPage, 1);
       const limit = intParam(url.searchParams.get('limit'), 1, LIMITS.maxLimit, LIMITS.defaultLimit);
@@ -363,8 +376,8 @@ export function createDataHandler({ env = process.env, fetcher = fetch, cache = 
       if (!p.configured(env)) throw new DataError(503, 'NOT_CONFIGURED');
       let data;
       rec(p.id).requests++;
-      try { data = await entities(p, p.postFilter ? {} : filter); outcome(p.id, 'available'); }
-      catch (err) { outcome(p.id, stateForError(err && err.code), (err && UPSTREAM_CODES[err.code] && err.code) || 'UNKNOWN'); const m = UPSTREAM_CODES[err && err.code] || [502, 'UPSTREAM_ERROR']; throw new DataError(m[0], m[1]); }
+      try { data = await entities(p, p.postFilter ? {} : filter, { ip: clientAddress(req, env) }); outcome(p.id, 'available'); }
+      catch (err) { if (err instanceof DataError) throw err; outcome(p.id, stateForError(err && err.code), (err && UPSTREAM_CODES[err.code] && err.code) || 'UNKNOWN'); const m = UPSTREAM_CODES[err && err.code] || [502, 'UPSTREAM_ERROR']; throw new DataError(m[0], m[1]); }
       /* post-filter providers: one cached window, filtered per request (no extra upstream call per filter) */
       const all = p.postFilter && Object.keys(filter).length ? data.items.filter(e => p.match(e, filter)) : data.items;
       const start = (page - 1) * limit;
@@ -372,10 +385,12 @@ export function createDataHandler({ env = process.env, fetcher = fetch, cache = 
       return json(res, 200, { ok: true, provider: p.id, page, limit, total: all.length, hasMore: start + limit < all.length, fetchedAt: data.fetchedAt, cached: data.cached, items });
     } catch (error) {
       const safe = error instanceof DataError ? error : new DataError(500, 'SERVER_ERROR');
-      warn('[LIVON DATA]', safe.code, safe.status); /* fixed code + status only: never keys, URLs or bodies */
-      return json(res, safe.status, { ok: false, code: safe.code, error: ERROR_TEXT[safe.code] || ERROR_TEXT.SERVER_ERROR });
+      warn('[LIVON DATA]', safe.code, safe.status); /* fixed code + status only: never keys, URLs, bodies or client addresses */
+      if (safe.retryAfter) res.setHeader('Retry-After', String(safe.retryAfter));
+      return json(res, safe.status, { ok: false, code: safe.code, error: ERROR_TEXT[safe.code] || ERROR_TEXT.SERVER_ERROR, ...(safe.retryAfter ? { retryAfter: safe.retryAfter } : {}) });
     }
   };
   handler.diagnostics = diagnostics;
+  handler.limitMode = limiter ? limiter.mode : 'off';
   return handler;
 }
