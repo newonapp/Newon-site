@@ -348,7 +348,7 @@ test('RH-08 secret scan: nothing that looks like a key, token, credential or pri
   const strip = (text) => text.replace(/https:\/\/d8j0ntlcm91z4\.cloudfront\.net\/[A-Za-z0-9_./-]+\.mp4/g, '');
   const files = { ...Object.fromEntries(JS_FILES.map((f) => [`js/${f}`, JS[f]])), ...Object.fromEntries(CSS_FILES.map((f) => [`styles/${f}`, CSS[f]])), 'index.html': HTML };
   for (const [name, text] of Object.entries(files)) for (const shape of SHAPES) assert.equal(shape.test(strip(text)), false, `${name} matches ${shape}`);
-  assert.equal((HTML.match(/https:\/\/d8j0ntlcm91z4\.cloudfront\.net\/[A-Za-z0-9_./-]+\.mp4/g) || []).length, 7, 'seven public film files, one per screen with a film');
+  assert.equal((HTML.match(/https:\/\/d8j0ntlcm91z4\.cloudfront\.net\/[A-Za-z0-9_./-]+\.mp4/g) || []).length, 8, 'eight public film files, one per screen with a film (Completion V2: + Store)');
   /* names of server settings do not appear in the client either; the API location comes from the site's public config object */
   assert.equal(/OPENAI|UPSTASH|FIREBASE_|_API_KEY|_SECRET|_TOKEN|process\.env|import\.meta\.env/.test(`${ALL_CODE}\n${HTML}`), false);
   assert.match(APP, /const apiConfig = win\.LivonApi && typeof win\.LivonApi\.url === 'function' \? win\.LivonApi : null;/);
@@ -582,18 +582,24 @@ test('RH-16 320 responsive: the narrowest phone keeps the mark and three 44px to
   assert.match(CSS['ongil-tokens.css'], /--og-control: 2\.75rem;/);
   assert.match(CSS['ongil-tokens.css'], /--og-wrap: min\(1180px, calc\(100% - 2rem\)\);/, 'content is the screen minus 16px each side at any width');
   assert.match(CSS['ongil-app.css'], /\.og-panel \{ position: fixed; top: calc\(var\(--gnav-h, 74px\) \+ 0\.4rem\); right: 1rem; left: 1rem; width: auto; \}/, 'header panels become a sheet as wide as the screen');
-  /* the one measured exception at 320px: seven calendar days leave 40px each (46px tall) — stated, not hidden */
-  assert.match(CSS['ongil-life.css'], /at 320px seven days leave 40px each/);
+  /* Completion V2 closed the one measured exception at 320px (seven calendar days were 40px wide): see RH-17 */
+  assert.match(CSS['ongil-life.css'], /every day is at least 44 × 44 px at 320px/);
+  assert.equal(/at 320px seven days leave 40px each/.test(CSS['ongil-life.css']), false);
 });
 
-test('RH-17 360 responsive: the month grid uses the card\'s padding so a day is 44px wide from 360px up', () => {
-  assert.match(CSS['ongil-life.css'], /@media \(max-width: 380px\) \{\n {2}\.og-cal__grid \{ width: calc\(100% \+ 2rem\); margin-inline: -1rem; \}\n\}/);
+test('RH-17 320–380 responsive: the month grid uses the card\'s padding and the page gutter so a day is 44px wide from 320px up', () => {
+  /* Completion V2. BEFORE: width calc(100% + 2rem), 2px spacing → 40px days at 320px. AFTER: the calendar card takes 12px
+     of the 16px page gutter on each side, the grid takes the card's padding and its cells sit edge to edge, so 320px
+     gives (320 − 8) / 7 = 44.6px days, inside the card. */
+  assert.match(CSS['ongil-life.css'], /@media \(max-width: 380px\) \{\n {2}\.og-home-card\[data-og-slot="life\.calendar"\] \{ margin-inline: calc\(-1rem \+ 4px\); \}\n {2}\.og-cal__grid \{ width: calc\(100% \+ 2\.2rem\); margin-inline: -1\.1rem; border-spacing: 0; \}\n {2}\.og-cal__day \{ min-height: 2\.9rem; \}\n\}/);
   assert.match(CSS['ongil-life.css'], /\.og-cal__grid \{ width: 100%; border-collapse: separate; border-spacing: 2px; table-layout: fixed; \}/);
   assert.match(CSS['ongil-life.css'], /\.og-cal__day \{[^}]*min-height: 3rem;/);
   /* 360 − 2×16 (page) − 2×17.6 (card) + 32 (this rule) = 324.8 → seven columns of 46px. Measured in the browser: 46 × 46. */
   const available = 360 - 32 - 35.2 + 32;
   assert.ok((available - 8) / 7 >= 44, String((available - 8) / 7));
-  assert.ok((320 - 32 - 35.2 + 32 - 8) / 7 < 44, 'and why 320 cannot reach it');
+  /* at 380px and below: 12px of each page gutter go to the card, the card's padding (2×17.6) to the grid, no spacing */
+  for (const w of [320, 340, 360, 380]) assert.ok((w - 32 + 24 - 35.2 + 35.2) / 7 >= 44, `${w}px → ${(w - 8) / 7}`);
+  assert.ok(320 - 32 + 24 <= 320 - 8, 'the card (and the grid in it) is never wider than the screen');
 });
 
 test('RH-18 430 responsive: the wordmark gives way at 430px and below — one rule, no jump in the tools', () => {
@@ -1142,7 +1148,9 @@ test('RH-43 cache / version consistency: every local file the page loads carries
   assert.deepEqual(local.filter((u) => !/\?v=[0-9a-z]+$/.test(u)), ['/livon/livon-api-config.js']);
   const ongil = Object.fromEntries(local.filter((u) => u.startsWith('/ongil-start/')).map((u) => [u.replace(/^\/ongil-start\/(styles|js)\//, '').replace(/\?v=.*/, ''), u.split('?v=')[1]]));
   assert.deepEqual(Object.keys(ongil).sort(), ['app.js', 'ongil-app.css', 'ongil-care.css', 'ongil-home.css', 'ongil-life.css', 'ongil-shell.css', 'ongil-tokens.css']);
-  for (const f of ['app.js', 'ongil-shell.css', 'ongil-app.css', 'ongil-life.css', 'ongil-tokens.css', 'ongil-home.css']) assert.equal(ongil[f], '20261003r11', `${f} changed in Phase 11 and has the release's version`);
+  for (const f of ['ongil-shell.css', 'ongil-app.css', 'ongil-tokens.css', 'ongil-home.css']) assert.equal(ongil[f], '20261003r11', `${f} changed in Phase 11 and has the release's version`);
+  /* Completion V2 changed app.js (and the modules it imports) and ongil-life.css: those two, and only those, moved on */
+  for (const f of ['app.js', 'ongil-life.css']) assert.equal(ongil[f], '20261004v12', `${f} changed in Completion V2`);
   assert.match(APP, /const APP_VERSION = 'hardening-v1';/);
   /* modules are imported by relative path with no version of their own: they are revalidated by the host's default
      caching (no immutable / long max-age rule exists for /ongil-start in the deployment config) */
@@ -1172,7 +1180,7 @@ test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', ()
   assert.deepEqual([...VIEWS], ['home', 'life', 'health', 'family', 'care', 'enjoy', 'community', 'store', 'saved', 'account']);
   assert.deepEqual([...INTERNAL_VIEWS], ['admin']);
   assert.equal(COLLECTIONS.length, 25);
-  assert.equal(JS_FILES.length, 69, 'no module was added or removed in Phase 11; Completion V1 added health-measures');
+  assert.equal(JS_FILES.length, 70, 'no module was added or removed in Phase 11; Completion V1 added health-measures; Completion V2 added health-appointments');
   assert.equal(CSS_FILES.length, 6);
   assert.deepEqual([A.EVENT_NAMES.length, C.SAVED_TYPES.length, C.NOTIFICATION_TYPES.length, R.CONTENT_TYPE_IDS.length], [22, 7, 9, 7]);
   const w = world();
@@ -1181,7 +1189,7 @@ test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', ()
   assert.equal(assistant.tools.ids().length, 22);
   const tests = fs.readdirSync(path.join(ROOT, 'tests/ongil')).filter((f) => f.endsWith('.test.mjs'));
   // Phase 12: production-release.test.mjs was added (BEFORE 21, AFTER 22). API connection: production-api.test.mjs (BEFORE 22, AFTER 23). Completion V1: health-measures.test.mjs (AFTER 24).
-  assert.equal(tests.length, 24);
+  assert.equal(tests.length, 25); // Completion V2: + health-calendar.test.mjs
   for (const f of ['livon', 'server/livon', 'tests/livon']) assert.ok(fs.existsSync(path.join(ROOT, f)), `${f} is still there, untouched by ONGIL`);
   assert.equal(fs.existsSync(path.join(ROOT, 'server/ongil')), false);
   const doc = read('docs/ongil/PHASE_11_RELEASE_HARDENING_V1.md');

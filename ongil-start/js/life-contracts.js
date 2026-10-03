@@ -14,7 +14,7 @@ const opt = (id, label) => Object.freeze({ id, label });
 
 export const CHECKIN_STATUSES = Object.freeze([opt('good', '좋아요'), opt('okay', '괜찮아요'), opt('hard', '조금 힘들어요'), opt('help', '도움이 필요해요')]);
 
-export const LIFE_LIMITS = Object.freeze({ eventTitle: 80, medicationName: 40, memo: 100, meals: 3, water: 20, events: 1000, medications: 50, days: 366, logDays: 120, exerciseMinutes: 600, taskTitle: 80, tasks: 500, routineTitle: 40, routines: 30, expenses: 2000, amount: 100000000, journalText: 1000, journalEntries: 300, checkinMemo: 200, medicationLogDays: 366, symptomOther: 40, symptomNote: 200, healthNoteText: 300, healthNotes: 700, healthNotesPerDay: 10 });
+export const LIFE_LIMITS = Object.freeze({ eventTitle: 80, medicationName: 40, memo: 100, meals: 3, water: 20, events: 1000, medications: 50, days: 366, logDays: 120, exerciseMinutes: 600, taskTitle: 80, tasks: 500, routineTitle: 40, routines: 30, expenses: 2000, amount: 100000000, journalText: 1000, journalEntries: 300, checkinMemo: 200, medicationLogDays: 366, symptomOther: 40, symptomNote: 200, healthNoteText: 300, healthNotes: 700, healthNotesPerDay: 10, eventMemo: 200, screeningType: 40 });
 
 const ID_RE = /^[a-z]{2,4}_[a-z0-9]{6,40}$/;
 const stamp = (value, fallback) => (Number.isSafeInteger(value) && value > 0 ? value : fallback);
@@ -63,6 +63,29 @@ export function normalizeCheckIn(input, now = Date.now()) {
   return { schemaVersion: SCHEMA_VERSION, id: `checkin:${input.date}`, date: input.date, ...(hasStatus ? { status: input.status } : {}), ...extra, createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
 }
 
+/*
+ * CalendarEvent kinds (Completion V2). One calendar, one collection: a hospital visit or a health screening is a
+ * CalendarEvent with an optional `kind`, never a second schedule store.
+ *   GENERAL              every event written before this field existed; stored WITHOUT `kind` (the old shape, unchanged)
+ *   MEDICAL_APPOINTMENT  title = 병원 이름 · memo = 진료 목적/메모
+ *   HEALTH_SCREENING     title = 검진 기관 · screeningType = 검진 종류 · memo = 준비 메모
+ * The two health kinds are personal health records: kept on this device, never searched, shared, indexed or counted
+ * by content, and read by the assistant only as "병원 일정" / "건강검진" (see isHealthEvent). ONGIL only keeps the date:
+ * no result, judgement, advice or booking is ever stored or shown.
+ */
+export const EVENT_KINDS = Object.freeze([opt('GENERAL', '일정'), opt('MEDICAL_APPOINTMENT', '병원 일정'), opt('HEALTH_SCREENING', '건강검진')]);
+export const HEALTH_EVENT_KINDS = Object.freeze(['MEDICAL_APPOINTMENT', 'HEALTH_SCREENING']);
+export function eventKind(event) {
+  return isPlainObject(event) && HEALTH_EVENT_KINDS.includes(event.kind) ? event.kind : 'GENERAL';
+}
+export function isHealthEvent(event) {
+  return eventKind(event) !== 'GENERAL';
+}
+export function eventKindLabel(kind) {
+  const k = EVENT_KINDS.find((o) => o.id === kind);
+  return k ? k.label : '일정';
+}
+
 export function normalizeEvent(input, now = Date.now()) {
   if (!isPlainObject(input)) throw new ContractError('INVALID_EVENT');
   if (!isId(input.id)) throw new ContractError('INVALID_ID');
@@ -71,7 +94,18 @@ export function normalizeEvent(input, now = Date.now()) {
   if (!isDateKey(input.date)) throw new ContractError('INVALID_DATE');
   const time = input.time === undefined || input.time === null || input.time === '' ? '' : input.time;
   if (time !== '' && !isTime(time)) throw new ContractError('INVALID_TIME');
-  return { schemaVersion: SCHEMA_VERSION, id: input.id, title, date: input.date, time, completed: input.completed === true, createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
+  const out = { schemaVersion: SCHEMA_VERSION, id: input.id, title, date: input.date, time, completed: input.completed === true, createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
+  /* a GENERAL event keeps exactly the old shape; an unknown kind is read as GENERAL (its extra fields are dropped) */
+  const kind = eventKind(input);
+  if (kind === 'GENERAL') return out;
+  out.kind = kind;
+  const memo = safeText(input.memo, LIFE_LIMITS.eventMemo);
+  if (memo) out.memo = memo;
+  if (kind === 'HEALTH_SCREENING') {
+    const screeningType = safeText(input.screeningType, LIFE_LIMITS.screeningType);
+    if (screeningType) out.screeningType = screeningType;
+  }
+  return out;
 }
 
 export function normalizeMedication(input, now = Date.now()) {

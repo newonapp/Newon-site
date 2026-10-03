@@ -1,10 +1,14 @@
 /*
  * Schedule — CalendarEvent store. Home shows one day; the full calendar (Phase 2B) reads the same collection.
- * add · update · toggle · remove · get · listForDate
+ * add · update · toggle · remove · get · listForDate · countsForMonth · listUpcoming
+ *
+ * Completion V2: 건강·안부's 병원 일정 and 건강검진 are events of this same store with a `kind` (life-contracts.js),
+ * so the calendar and the health screen always show one set of records. A kind is set when the event is made and
+ * is never changed by an edit (the calendar's own form only changes title, date and time).
  */
 import { SCHEMA_VERSION, ContractError, isPlainObject } from './contracts.js';
-import { normalizeEvent, newId, LIFE_LIMITS } from './life-contracts.js';
-import { dateKey } from './dates.js';
+import { normalizeEvent, newId, LIFE_LIMITS, eventKind } from './life-contracts.js';
+import { dateKey, isDateKey } from './dates.js';
 
 export function createScheduleStore(storage, { now = () => Date.now(), today = () => dateKey(now()), makeId = () => newId('ev', now()) } = {}) {
   function read() {
@@ -31,7 +35,7 @@ export function createScheduleStore(storage, { now = () => Date.now(), today = (
     const src = isPlainObject(input) ? input : {};
     let event;
     try {
-      event = normalizeEvent({ id: makeId(), title: src.title, date: src.date === undefined ? today() : src.date, time: src.time, completed: false, createdAt: now(), updatedAt: now() }, now());
+      event = normalizeEvent({ id: makeId(), title: src.title, date: src.date === undefined ? today() : src.date, time: src.time, kind: src.kind, memo: src.memo, screeningType: src.screeningType, completed: false, createdAt: now(), updatedAt: now() }, now());
     } catch (e) {
       return fail(e);
     }
@@ -47,7 +51,7 @@ export function createScheduleStore(storage, { now = () => Date.now(), today = (
     if (index < 0) return { ok: false, reason: 'NOT_FOUND' };
     const p = isPlainObject(patch) ? patch : {};
     const allowed = {};
-    for (const key of ['title', 'date', 'time', 'completed']) if (key in p) allowed[key] = p[key];
+    for (const key of ['title', 'date', 'time', 'completed', 'memo', 'screeningType']) if (key in p) allowed[key] = p[key];
     let event;
     try {
       event = normalizeEvent({ ...items[index], ...allowed, id, createdAt: items[index].createdAt, updatedAt: now() }, now());
@@ -88,5 +92,14 @@ export function createScheduleStore(storage, { now = () => Date.now(), today = (
     return out;
   }
 
-  return Object.freeze({ add, update, toggle, remove, get, listForDate, countsForMonth, count: () => read().length });
+  /* events of one kind from `from` (a local day) on, soonest first — 건강·안부 shows today's and coming ones */
+  function listUpcoming(kind, from = today()) {
+    const start = isDateKey(from) ? from : today();
+    return read()
+      .filter((it) => eventKind(it) === kind && it.date >= start)
+      .sort((a, b) => a.date.localeCompare(b.date) || (a.time === '' ? 1 : 0) - (b.time === '' ? 1 : 0) || a.time.localeCompare(b.time) || a.createdAt - b.createdAt);
+  }
+  const countPast = (kind, before = today()) => read().filter((it) => eventKind(it) === kind && it.date < before).length;
+
+  return Object.freeze({ add, update, toggle, remove, get, listForDate, countsForMonth, listUpcoming, countPast, count: () => read().length });
 }

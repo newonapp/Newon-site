@@ -58,7 +58,7 @@ test('OG-HM-3 hero greeting: time of day and date, nickname optional, poster can
   assert.match(SRC['home-view.js'], /formatDay\(now\(\)\)/);
   assert.match(read('js', 'film.js'), /getAttribute\('poster'\)/);
   assert.equal(/poster="/.test(INDEX), false, 'no poster asset exists yet, so none is referenced');
-  assert.equal((INDEX.match(/<video/g) || []).length, 7);
+  assert.equal((INDEX.match(/<video/g) || []).length, 8); // Completion V2: + the Store film
 });
 
 test('OG-HM-4 family card shows the real state: not connected, nothing sent, link to the family view', () => {

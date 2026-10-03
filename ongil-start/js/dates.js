@@ -130,3 +130,18 @@ export function formatDateKey(key) {
   const d = toDate(key);
   return d ? formatDay(d.getTime()) : '';
 }
+
+/* Completion V2 (week / day views) — "10월 4일" and "10월 4일 – 10월 10일" from local day keys (no UTC) */
+export function formatMonthDay(key) {
+  const p = parseDateKey(key);
+  return p ? `${p.month}월 ${p.day}일` : '';
+}
+export function formatWeekRange(days) {
+  if (!Array.isArray(days) || !days.length) return '';
+  const first = parseDateKey(days[0]);
+  const last = parseDateKey(days[days.length - 1]);
+  if (!first || !last) return '';
+  const start = first.year === last.year ? formatMonthDay(days[0]) : `${first.year}년 ${formatMonthDay(days[0])}`;
+  const end = first.year === last.year ? formatMonthDay(days[days.length - 1]) : `${last.year}년 ${formatMonthDay(days[days.length - 1])}`;
+  return `${start} – ${end}`;
+}

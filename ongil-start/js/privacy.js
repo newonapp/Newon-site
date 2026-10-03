@@ -20,6 +20,7 @@
  *   - No personal record of any class is offered to global search.
  */
 import { COLLECTIONS } from './storage.js';
+import { isHealthEvent } from './life-contracts.js';
 
 export const DATA_CLASSES = Object.freeze(['APP', 'STANDARD', 'PRIVATE', 'HEALTH_ADJACENT', 'OPERATIONAL']);
 
@@ -87,6 +88,19 @@ export function maySearchGlobally(collection) {
 }
 export function familySharingAllowed() {
   return false;
+}
+
+/*
+ * Completion V2: a 병원 일정 or 건강검진 is a CalendarEvent kept in the STANDARD `events` collection (one calendar), but
+ * the record itself is HEALTH_ADJACENT. Whatever later syncs, searches or shares calendar events reads this first and
+ * leaves these out; today nothing does (events are local-only, global search has no calendar provider, family sharing
+ * is off).
+ */
+export function eventClass(event) {
+  return isHealthEvent(event) ? 'HEALTH_ADJACENT' : 'STANDARD';
+}
+export function eventShareableWithFamily(event) {
+  return familySharingAllowed() && !isHealthEvent(event);
 }
 
 export function unclassified() {

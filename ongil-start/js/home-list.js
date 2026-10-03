@@ -49,6 +49,12 @@ export function createListCard({ card, config }) {
       error,
       el('div', { class: 'og-form__actions' }, el('button', { type: 'submit', class: 'og-btn og-btn--primary', text: '저장' }), el('button', { type: 'button', class: 'og-btn og-btn--ghost', text: '취소', onclick: () => setMode({ type: 'idle', id: null }, item ? `edit:${item.id}` : 'add') }))
     );
+    /* Completion V2: Escape leaves the form the same way 취소 does, and focus goes back to the button that opened it */
+    node.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      setMode({ type: 'idle', id: null }, item ? `edit:${item.id}` : 'add');
+    });
     node.addEventListener('submit', (event) => {
       event.preventDefault();
       const values = Object.fromEntries(fields.map((f) => [f.spec.name, f.get()]));
@@ -117,7 +123,7 @@ export function createListCard({ card, config }) {
         'li',
         { class: 'og-home-item og-home-item--confirm', 'data-og-item': item.id },
         main,
-        el('div', { class: 'og-confirm', role: 'group', 'aria-label': '지우기 확인' }, el('p', { text: `‘${d.title}’을(를) 지울까요? 되돌릴 수 없습니다.` }), el('div', { class: 'og-form__actions' }, cancel, el('button', { type: 'button', class: 'og-btn og-btn--danger', text: '지우기', onclick: () => { config.onRemove(item.id); card.say(`‘${d.title}’을(를) 지웠습니다.`); changed(); setMode({ type: 'idle', id: null }, 'title'); } })))
+        el('div', { class: 'og-confirm', role: 'group', 'aria-label': '지우기 확인', onkeydown: (event) => { if (event.key === 'Escape') { event.preventDefault(); setMode({ type: 'idle', id: null }, `delete:${item.id}`); } } }, el('p', { text: `‘${d.title}’을(를) 지울까요? 되돌릴 수 없습니다.` }), el('div', { class: 'og-form__actions' }, cancel, el('button', { type: 'button', class: 'og-btn og-btn--danger', text: '지우기', onclick: () => { config.onRemove(item.id); card.say(`‘${d.title}’을(를) 지웠습니다.`); changed(); setMode({ type: 'idle', id: null }, 'title'); } })))
       );
     }
     const actions = canEdit

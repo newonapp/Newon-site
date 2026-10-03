@@ -23,7 +23,7 @@
  */
 import { safeText, savedSyncPolicy, SAVED_TYPE_LABELS, isPlainObject } from './contracts.js';
 import { dateKey, isDateKey, isTime, formatDateKey, formatTime } from './dates.js';
-import { LIFE_LIMITS } from './life-contracts.js';
+import { LIFE_LIMITS, isHealthEvent, eventKind, eventKindLabel } from './life-contracts.js';
 import { safeRoute, PUBLIC_CONTENT_TYPES, CONTENT_TYPES } from './routes.js';
 import { hashFor } from './router.js';
 import { CARE_CATEGORY_IDS, careCategoryById } from './care-contracts.js';
@@ -125,7 +125,8 @@ function buildRegistry({ schedule, tasks, routines, saved, search, familyConnect
   const publicSaved = (type) => saved.list().filter((it) => savedSyncPolicy(it) === 'SYNCABLE' && PUBLIC_CONTENT_TYPES.includes(it.type) && (!type || it.type === type));
   const cut = (rows) => ({ items: rows.slice(0, RESULT_ITEMS_MAX), more: Math.max(0, rows.length - RESULT_ITEMS_MAX) });
 
-  const scheduleRows = (date) => schedule.listForDate(date).map((e) => item(e.title, [e.time ? formatTime(e.time) : '시간 없음', e.completed ? '마침' : ''].filter(Boolean).join(' · '), '#life/calendar'));
+  /* Completion V2: a 병원 일정 / 건강검진 is read as its kind only — never its hospital, memo or 검진 종류 */
+  const scheduleRows = (date) => schedule.listForDate(date).map((e) => item(isHealthEvent(e) ? eventKindLabel(eventKind(e)) : e.title, [e.time ? formatTime(e.time) : '시간 없음', e.completed ? '마침' : ''].filter(Boolean).join(' · '), '#life/calendar'));
   const taskRows = (date) => tasks.dueOn(date).map((t) => item(t.title, t.completed ? '마침' : '아직 안 함', '#life/tasks'));
   const routineRows = (date) => routines.listForDate(date).map((r) => item(r.title, [r.time ? formatTime(r.time) : '', r.completed ? '마침' : '아직 안 함'].filter(Boolean).join(' · '), '#life/routines'));
 

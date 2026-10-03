@@ -43,6 +43,7 @@ import { createJournalStore } from './journal.js';
 import { createSymptomStore } from './symptoms.js';
 import { createHealthNoteStore } from './health-notes.js';
 import { createHealthMeasureStore } from './health-measures.js';
+import { createHealthSchedule } from './health-appointments.js';
 import { createFamilySharingStore, createHelpRequestStore } from './family.js';
 import { createFamilyView } from './family-view.js';
 import { createCareView, resolveCareSection } from './care-view.js';
@@ -136,6 +137,9 @@ for (const area of PRIMARY_AREAS) {
   const host = doc.querySelector(`[data-og-modules="${area.id}"]`);
   if (host) renderArea(area, host);
 }
+
+/* Completion V2 — 건강·안부 › 병원 일정 · 건강검진: events of the one calendar store, drawn again every time the screen opens */
+const healthSchedule = createHealthSchedule({ host: doc.querySelector('[data-og-extra="health"]'), schedule });
 
 /*
  * The one external source Home can ask (내 주변). The API location comes from the site's existing API config
@@ -408,6 +412,7 @@ const router = createRouter({
     if (view === 'account') accountView.render();
     if (view === 'saved') savedView.render();
     if (view === 'family') familyView.refresh();
+    if (view === 'health') healthSchedule.render();
     if (view === 'care') care.show(section);
     if (view === 'enjoy' && section) enjoyView.show(section);
     /* Phase 8: 즐길거리 keeps the category (and what was found) from earlier in the visit; the address says so too */

@@ -7,29 +7,50 @@
 import { el } from './dom.js';
 import { createCard, choiceButton } from './home-ui.js';
 import { createListCard } from './home-list.js';
-import { LIFE_LIMITS, TASK_PRIORITIES } from './life-contracts.js';
-import { dateKey, formatTime, formatDateKey, monthKey, monthGrid, formatMonth, shiftMonth, addDays, weekdayOf, parseDateKey, WEEKDAY_LABELS } from './dates.js';
+import { LIFE_LIMITS, TASK_PRIORITIES, isHealthEvent, eventKind, eventKindLabel } from './life-contracts.js';
+import { dateKey, formatTime, formatDateKey, monthKey, monthGrid, formatMonth, shiftMonth, addDays, weekdayOf, parseDateKey, weekOf, formatWeekRange, WEEKDAY_LABELS } from './dates.js';
 
 const WEEKDAY_NAMES = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
 const today = (now) => dateKey(now());
 
 /* ───────── 캘린더 ───────── */
 
-export function createCalendarSection({ schedule, tasks, now = () => Date.now() }) {
-  const card = createCard({ area: 'life', slot: 'calendar', title: '캘린더', level: 1, lead: '날짜를 고르면 그날 일정이 보입니다.' });
+/* Completion V2: the same calendar shown three ways. Month is the Phase 2B grid; Week and Day read the same stores.
+   Nothing new is stored: 월 · 주 · 일 is a way of looking, kept for this visit only. */
+export const CALENDAR_VIEWS = Object.freeze([Object.freeze({ id: 'month', label: '월' }), Object.freeze({ id: 'week', label: '주' }), Object.freeze({ id: 'day', label: '일' })]);
+const VIEW_WORDS = Object.freeze({ month: '월 보기', week: '주 보기', day: '일 보기' });
+const STEP_WORDS = Object.freeze({ month: ['이전 달', '다음 달'], week: ['이전 주', '다음 주'], day: ['이전 날', '다음 날'] });
+
+/* a health event says what it is (병원 일정 · 건강검진) next to its time — a word, not a colour */
+const eventMeta = (e) => [e.time ? formatTime(e.time) : '', isHealthEvent(e) ? eventKindLabel(eventKind(e)) : '', e.screeningType || ''].filter(Boolean);
+
+export function createCalendarSection({ schedule, tasks, routines = null, now = () => Date.now() }) {
+  const card = createCard({ area: 'life', slot: 'calendar', title: '캘린더', level: 1, lead: '날짜를 고르면 그날 일정이 보입니다. 월 · 주 · 일로 바꿔 볼 수 있어요.' });
   let selected = today(now);
   let month = monthKey(selected);
+  let view = 'month';
   const errors = { INVALID_TITLE: '일정 이름을 적어 주세요.', INVALID_TIME: '시간을 다시 골라 주세요.', INVALID_DATE: '날짜를 다시 골라 주세요.', LIMIT: '일정이 너무 많습니다. 지난 일정을 지워 주세요.' };
+
+  const focusIn = (selector) => {
+    const node = card.body.querySelector(selector);
+    if (node) node.focus();
+  };
 
   function select(key, { focus = false } = {}) {
     selected = key;
     month = monthKey(key);
     list.reset();
-    if (focus) {
-      const button = card.body.querySelector(`[data-og-day="${key}"]`);
-      if (button) button.focus();
-    }
+    if (focus) focusIn(`[data-og-day="${key}"]`);
     card.say(`${formatDateKey(key)}을 골랐습니다.`);
+  }
+
+  function setView(next) {
+    if (!VIEW_WORDS[next]) return;
+    view = next;
+    month = monthKey(selected);
+    list.reset();
+    focusIn(`[data-og-cal-view="${next}"]`);
+    card.say(`${VIEW_WORDS[next]}로 바꿨습니다. ${title()}`);
   }
 
   function dayLabel(key, events, due) {
@@ -37,7 +58,38 @@ export function createCalendarSection({ schedule, tasks, now = () => Date.now() 
     if (key === today(now)) parts.push('오늘');
     if (events) parts.push(`일정 ${events}개`);
     if (due) parts.push(`할 일 ${due}개`);
+    if (!events && !due) parts.push('일정 없음');
     return parts.join(', ');
+  }
+
+  /* arrow keys move day by day and week by week; Page Up / Page Down change the month (week / day: the week) */
+  function keys(node) {
+    node.addEventListener('keydown', (event) => {
+      const steps = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: view === 'week' ? -1 : -7, ArrowDown: view === 'week' ? 1 : 7 };
+      let target = null;
+      if (event.key in steps) target = addDays(selected, steps[event.key]);
+      else if (event.key === 'Home') target = addDays(selected, -weekdayOf(selected));
+      else if (event.key === 'End') target = addDays(selected, 6 - weekdayOf(selected));
+      else if ((event.key === 'PageUp' || event.key === 'PageDown') && view === 'month') {
+        const next = shiftMonth(month, event.key === 'PageUp' ? -1 : 1);
+        const day = Math.min(parseDateKey(selected).day, monthGrid(next).flat().filter(Boolean).length);
+        target = `${next}-${String(day).padStart(2, '0')}`;
+      } else if (event.key === 'PageUp' || event.key === 'PageDown') target = addDays(selected, event.key === 'PageUp' ? -7 : 7);
+      if (!target) return;
+      event.preventDefault();
+      select(target, { focus: true });
+    });
+    return node;
+  }
+
+  function dayButton(key, counts, due, extraClass = '') {
+    const isSelected = key === selected;
+    return el(
+      'button',
+      { type: 'button', class: `og-cal__day${extraClass}`, 'data-og-day': key, tabindex: isSelected ? '0' : '-1', 'aria-pressed': isSelected ? 'true' : 'false', 'aria-current': key === today(now) ? 'date' : null, 'aria-label': dayLabel(key, counts, due), onclick: () => select(key, { focus: true }) },
+      el('span', { class: 'og-cal__num', text: String(parseDateKey(key).day) }),
+      el('span', { class: 'og-cal__mark', 'aria-hidden': 'true', text: counts || due ? '•' : '' })
+    );
   }
 
   function grid() {
@@ -56,65 +108,111 @@ export function createCalendarSection({ schedule, tasks, now = () => Date.now() 
             {},
             week.map((key) => {
               if (!key) return el('td', { class: 'og-cal__cell og-cal__cell--empty' });
-              const isSelected = key === selected;
-              const has = !!(counts[key] || due[key]);
-              return el(
-                'td',
-                { class: 'og-cal__cell', role: 'gridcell' },
-                el(
-                  'button',
-                  { type: 'button', class: 'og-cal__day', 'data-og-day': key, tabindex: isSelected ? '0' : '-1', 'aria-pressed': isSelected ? 'true' : 'false', 'aria-current': key === today(now) ? 'date' : null, 'aria-label': dayLabel(key, counts[key] || 0, due[key] || 0), onclick: () => select(key, { focus: true }) },
-                  el('span', { class: 'og-cal__num', text: String(parseDateKey(key).day) }),
-                  el('span', { class: 'og-cal__mark', 'aria-hidden': 'true', text: has ? '•' : '' })
-                )
-              );
+              return el('td', { class: 'og-cal__cell', role: 'gridcell' }, dayButton(key, counts[key] || 0, due[key] || 0));
             })
           )
         )
       )
     );
-    /* arrow keys move day by day and week by week; Page Up / Page Down change the month */
-    table.addEventListener('keydown', (event) => {
-      const steps = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 };
-      let target = null;
-      if (event.key in steps) target = addDays(selected, steps[event.key]);
-      else if (event.key === 'Home') target = addDays(selected, -weekdayOf(selected));
-      else if (event.key === 'End') target = addDays(selected, 6 - weekdayOf(selected));
-      else if (event.key === 'PageUp' || event.key === 'PageDown') {
-        const next = shiftMonth(month, event.key === 'PageUp' ? -1 : 1);
-        const day = Math.min(parseDateKey(selected).day, monthGrid(next).flat().filter(Boolean).length);
-        target = `${next}-${String(day).padStart(2, '0')}`;
-      }
-      if (!target) return;
-      event.preventDefault();
-      select(target, { focus: true });
-    });
-    return table;
+    return keys(table);
   }
+
+  /* 주: the seven days of the selected day's week, each with its events and the tasks due that day */
+  function week() {
+    const days = weekOf(selected);
+    return keys(
+      el(
+        'ol',
+        { class: 'og-cal-week', 'aria-label': `${formatWeekRange(days)} 한 주` },
+        days.map((key) => {
+          const events = schedule.listForDate(key);
+          const due = tasks.dueOn(key);
+          const routineCount = routines ? routines.listForDate(key).length : 0;
+          const lines = [
+            ...events.map((e) => el('li', { class: 'og-cal-week__line', 'data-og-cal-kind': eventKind(e) }, [eventMeta(e).join(' · '), e.title].filter(Boolean).join(' '))),
+            ...due.map((t) => el('li', { class: 'og-cal-week__line og-cal-week__line--task' }, `할 일 · ${t.title}${t.completed ? ' (끝냄)' : ''}`)),
+          ];
+          return el(
+            'li',
+            { class: key === selected ? 'og-cal-week__day is-selected' : 'og-cal-week__day', 'data-og-cal-week-day': key },
+            el(
+              'button',
+              { type: 'button', class: 'og-cal-week__head', 'data-og-day': key, tabindex: key === selected ? '0' : '-1', 'aria-pressed': key === selected ? 'true' : 'false', 'aria-current': key === today(now) ? 'date' : null, 'aria-label': dayLabel(key, events.length, due.length), onclick: () => select(key, { focus: true }) },
+              el('span', { class: 'og-cal-week__wd', text: WEEKDAY_LABELS[weekdayOf(key)] }),
+              el('span', { class: 'og-cal-week__num', text: String(parseDateKey(key).day) }),
+              key === today(now) ? el('span', { class: 'og-cal-week__today', text: '오늘' }) : null,
+              key === selected ? el('span', { class: 'og-cal-week__pick', 'aria-hidden': 'true', text: '✓' }) : null
+            ),
+            lines.length || routineCount
+              ? el('ul', { class: 'og-cal-week__lines' }, lines, routineCount ? el('li', { class: 'og-cal-week__line og-cal-week__line--routine' }, `루틴 ${routineCount}개`) : null)
+              : el('p', { class: 'og-cal-week__empty', text: '일정 없음' })
+          );
+        })
+      )
+    );
+  }
+
+  /* 일: what else that day holds — tasks due and the routines set for its weekday (the events are the list below) */
+  function day() {
+    const due = tasks.dueOn(selected);
+    const routineRows = routines ? routines.listForDate(selected) : [];
+    const block = (heading, rows, empty) =>
+      el('section', { class: 'og-cal-day__block', 'aria-label': heading }, el('h5', { class: 'og-cal-day__title', text: heading }), rows.length ? el('ul', { class: 'og-cal-day__list' }, rows) : el('p', { class: 'og-cal-day__empty', text: empty }));
+    return el(
+      'div',
+      { class: 'og-cal-day', 'data-og-cal-day': selected },
+      block('이 날까지 할 일', due.map((t) => el('li', { text: `${t.title}${t.completed ? ' (끝냄)' : ''}` })), '이 날까지 할 일이 없어요.'),
+      routines ? block('이 날 루틴', routineRows.map((r) => el('li', { text: [r.time ? formatTime(r.time) : '', r.title, r.completed ? '(했어요)' : ''].filter(Boolean).join(' ') })), '이 날 요일에 해당하는 루틴이 없어요.') : null
+    );
+  }
+
+  const title = () => (view === 'month' ? formatMonth(month) : view === 'week' ? formatWeekRange(weekOf(selected)) : selected === today(now) ? `${formatDateKey(selected)} (오늘)` : formatDateKey(selected));
+  const showsToday = () => (view === 'month' ? month === monthKey(today(now)) && selected === today(now) : view === 'week' ? weekOf(selected).includes(today(now)) && selected === today(now) : selected === today(now));
 
   function header() {
     const move = (delta) => {
-      month = shiftMonth(month, delta);
-      const days = monthGrid(month).flat().filter(Boolean);
-      selected = month === monthKey(today(now)) ? today(now) : days[0];
+      if (view === 'month') {
+        month = shiftMonth(month, delta);
+        const days = monthGrid(month).flat().filter(Boolean);
+        selected = month === monthKey(today(now)) ? today(now) : days[0];
+      } else {
+        selected = addDays(selected, view === 'week' ? delta * 7 : delta);
+        month = monthKey(selected);
+      }
       list.reset();
-      card.say(`${formatMonth(month)}을 보고 있습니다.`);
+      card.say(`${title()}을 보고 있습니다.`);
     };
+    const [prevWord, nextWord] = STEP_WORDS[view];
     const dueToday = tasks.dueOn(selected).filter((t) => !t.completed);
+    const viewId = `og-cal-views-${card.titleId}`;
     return el(
       'div',
-      { class: 'og-cal' },
+      { class: 'og-cal', 'data-og-cal-mode': view },
+      el(
+        'div',
+        { class: 'og-cal__views' },
+        el('p', { class: 'visually-hidden', id: viewId, text: '보기 방식' }),
+        el(
+          'div',
+          { class: 'og-picks og-cal__view-picks', role: 'group', 'aria-labelledby': viewId },
+          CALENDAR_VIEWS.map((v) => {
+            const b = choiceButton({ label: v.label, ariaLabel: VIEW_WORDS[v.id], pressed: view === v.id, onChoose: () => setView(v.id) });
+            b.dataset.ogCalView = v.id;
+            return b;
+          })
+        )
+      ),
       el(
         'div',
         { class: 'og-cal__nav' },
-        el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-cal': 'prev', text: '이전 달', onclick: () => { move(-1); card.body.querySelector('[data-og-cal="prev"]').focus(); } }),
-        el('p', { class: 'og-cal__month', text: formatMonth(month) }),
-        el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-cal': 'next', text: '다음 달', onclick: () => { move(1); card.body.querySelector('[data-og-cal="next"]').focus(); } })
+        el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-cal': 'prev', text: prevWord, onclick: () => { move(-1); focusIn('[data-og-cal="prev"]'); } }),
+        el('p', { class: 'og-cal__month', 'aria-live': 'polite', text: title() }),
+        el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-cal': 'next', text: nextWord, onclick: () => { move(1); focusIn('[data-og-cal="next"]'); } })
       ),
-      month === monthKey(today(now)) && selected === today(now) ? null : el('div', { class: 'og-form__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--text', text: '오늘로 가기', onclick: () => select(today(now), { focus: true }) })),
-      grid(),
+      showsToday() ? null : el('div', { class: 'og-form__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--text', 'data-og-cal': 'today', text: '오늘로 가기', onclick: () => select(today(now), { focus: true }) })),
+      view === 'month' ? grid() : view === 'week' ? week() : null,
       el('h4', { class: 'og-cal__selected', 'data-og-cal-selected': selected, text: selected === today(now) ? `${formatDateKey(selected)} (오늘)` : formatDateKey(selected) }),
-      dueToday.length ? el('p', { class: 'og-home-note', 'data-og-cal-due': String(dueToday.length), text: `이 날까지 할 일: ${dueToday.map((t) => t.title).join(', ')}` }) : null
+      view === 'day' ? day() : dueToday.length ? el('p', { class: 'og-home-note', 'data-og-cal-due': String(dueToday.length), text: `이 날까지 할 일: ${dueToday.map((t) => t.title).join(', ')}` }) : null
     );
   }
 
@@ -135,17 +233,18 @@ export function createCalendarSection({ schedule, tasks, now = () => Date.now() 
       ],
       getItems: () => schedule.listForDate(selected),
       isDone: (item) => item.completed,
-      describe: (item) => ({ title: item.title, meta: item.time ? [formatTime(item.time)] : [] }),
+      describe: (item) => ({ title: item.title, meta: eventMeta(item) }),
       toggleText: (item, checked) => (checked ? `‘${item.title}’을(를) 끝낸 일정으로 표시했습니다.` : `‘${item.title}’ 표시를 풀었습니다.`),
       onToggle: (item, checked) => schedule.update(item.id, { completed: checked }),
       onAdd: (values) => schedule.add({ title: values.title, date: values.date, time: values.time }),
+      /* an edit here changes title, date and time only: a 병원 일정 stays a 병원 일정 and keeps its memo */
       onUpdate: (id, values) => schedule.update(id, { title: values.title, date: values.date, time: values.time }),
       onRemove: (id) => schedule.remove(id),
       errorText: (reason) => errors[reason] || '저장하지 못했습니다. 다시 시도해 주세요.',
     },
   });
   list.render();
-  return { card, render: list.reset, select, selected: () => selected, month: () => month };
+  return { card, render: list.reset, select, selected: () => selected, month: () => month, view: () => view, setView };
 }
 
 /* ───────── 할 일 ───────── */

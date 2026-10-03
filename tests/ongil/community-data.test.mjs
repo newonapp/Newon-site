@@ -550,5 +550,5 @@ test('OG-CG-16 no test fixtures or QA data in production source; app is versione
   /* Phase 10 moved the version on: assistant-v1 / ?v=20261003b10 (BEFORE: admin-v1 / 20261003a9) — ONGIL 도우미 was added. */
   /* Phase 11 moved the version on: hardening-v1 / ?v=20261003r11 (BEFORE: assistant-v1 / 20261003b10) — release hardening changed app.js and two stylesheets. */
   assert.match(APP, /const APP_VERSION = 'hardening-v1';/);
-  assert.match(read('index.html'), /app\.js\?v=20261003r11/);
+  assert.match(read('index.html'), /app\.js\?v=20261004v12/); // Completion V2: app.js changed
 });

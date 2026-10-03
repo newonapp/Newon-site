@@ -129,7 +129,7 @@ export function createLifeView({ host, stores, health, now = () => Date.now() })
   function build() {
     clear(host);
     overviewCards = { today: createCard({ area: 'life', slot: 'overview', title: '오늘', level: 1 }), week: createCard({ area: 'life', slot: 'overview-week', title: '이번 주', level: 3 }) };
-    const calendar = createCalendarSection({ schedule: stores.schedule, tasks: stores.tasks, now });
+    const calendar = createCalendarSection({ schedule: stores.schedule, tasks: stores.tasks, routines: stores.routines, now });
     const tasks = createTasksSection({ tasks: stores.tasks, onChange: () => calendar.render() });
     const routines = createRoutinesSection({ routines: stores.routines });
     daily = createDailyGroup({ dailyLife: stores.dailyLife, sleep: stores.sleep, now, onDateChange: () => healthGroup && healthGroup.render() });

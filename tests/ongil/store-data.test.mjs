@@ -556,7 +556,7 @@ test('OG-STO-56 regression: no new network, backend, key, commerce API or fixtur
   /* Phase 10 moved the version on: assistant-v1 / ?v=20261003b10 (BEFORE: admin-v1 / 20261003a9) — ONGIL 도우미 was added. */
   /* Phase 11 moved the version on: hardening-v1 / ?v=20261003r11 (BEFORE: assistant-v1 / 20261003b10) — release hardening changed app.js and two stylesheets. */
   assert.match(APP, /const APP_VERSION = 'hardening-v1';/);
-  assert.match(INDEX, /app\.js\?v=20261003r11/);
+  assert.match(INDEX, /app\.js\?v=20261004v12/); // Completion V2: app.js changed
   assert.match(INDEX, /ongil-care\.css\?v=20261003s7/);
   assert.match(SEARCH, /export function createStoreProvider\(getItems\)/);
   assert.match(AREAS.find((a) => a.id === 'store').notice, /결제, 주문, 배송 기능은 없습니다/);
@@ -568,7 +568,9 @@ test('OG-STO-57 the menu, the hero and the screen describe the same Store: ten c
   assert.ok(area.modules.every((m) => m.available === false), 'no product source is connected, so no category claims to have products');
   assert.match(area.notice, /결제, 주문, 배송 기능은 없습니다\. 아직 연결된 상품 정보가 없어/);
   assert.match(INDEX, /id="og-store-title" tabindex="-1">일상에 필요한 물건을<br>한곳에서 만나보세요\.<\/h1>/);
-  assert.match(INDEX, /ONGIL은 직접 팔지 않고, 결제와 주문 기능은 없습니다\./);
+  /* Completion V2: the hero lead is the Store's own line (and the hero has its film); what is not there is stated on the screen itself */
+  assert.match(INDEX, /<p class="og-film__lead">생활의 편리함부터 건강·안전, 취미와 스마트 기기까지\.<br>시니어의 더 나은 일상을 위한 제품을 살펴보세요\.<\/p>/);
+  assert.match(area.notice, /결제, 주문, 배송 기능은 없습니다\./);
   assert.equal(/장바구니|구매하기|결제하기|주문하기|바로 구매|최저가|할인|베스트|인기 상품|추천 상품/.test(INDEX + VIEW + JSON.stringify(area)), false, 'no shop wording anywhere');
 });
 

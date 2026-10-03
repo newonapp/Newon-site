@@ -59,6 +59,32 @@
 .og-cal__day[aria-pressed="true"] { background: var(--og-ink); color: var(--og-accent-ink); border-color: var(--og-ink); border-style: solid; font-weight: 700; } /* chosen day: filled */
 .og-cal__mark { height: 0.8rem; font-size: 1.2rem; line-height: 0.7; }
 .og-cal__selected { margin: 0.4rem 0 0; font-size: 1.25rem; font-weight: 700; color: var(--og-ink); }
+/* [V2] 월 · 주 · 일: the three choices are the same pressed buttons (✓ + filled) as every other choice */
+.og-cal__views { display: flex; justify-content: center; }
+.og-cal__view-picks { flex-wrap: nowrap; width: 100%; max-width: 24rem; }
+.og-cal__view-picks .og-pick { flex: 1 1 0; min-width: 2.75rem; padding-inline: 0.5rem; justify-content: center; } /* three equal buttons that share the card's width */
+/* [V2] week: one row per day — a 44px+ day button, then that day's events and tasks in words */
+.og-cal-week { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.og-cal-week__day { display: grid; grid-template-columns: 3.6rem minmax(0, 1fr); gap: 0.7rem; align-items: start; padding: 0.45rem 0; border-top: 1px solid var(--og-line); }
+.og-cal-week__day:first-child { border-top: 0; }
+.og-cal-week__head { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 2.75rem; min-height: 3.4rem; padding: 0.2rem; border: 1.5px solid transparent; border-radius: 0.8rem; background: transparent; color: var(--og-ink); font-family: inherit; line-height: 1.1; cursor: pointer; }
+.og-cal-week__head:hover { border-color: var(--og-line-strong); }
+.og-cal-week__head[aria-current="date"] { border-color: var(--og-ink); border-style: dashed; }
+.og-cal-week__head[aria-pressed="true"] { background: var(--og-ink); color: var(--og-accent-ink); border-color: var(--og-ink); border-style: solid; font-weight: 700; }
+.og-cal-week__wd { font-size: 1rem; }
+.og-cal-week__num { font-size: 1.2rem; font-weight: 700; }
+.og-cal-week__today { font-size: 1rem; }
+.og-cal-week__pick { position: absolute; top: 0.1rem; right: 0.3rem; font-size: 1rem; line-height: 1; }
+.og-cal-week__lines { display: grid; gap: 0.25rem; margin: 0; padding: 0.55rem 0 0; list-style: none; font-size: 1.05rem; color: var(--og-ink); overflow-wrap: anywhere; min-width: 0; }
+.og-cal-week__line--task, .og-cal-week__line--routine { color: var(--og-ink-soft); }
+.og-cal-week__empty { margin: 0; padding-top: 0.9rem; color: var(--og-ink-soft); }
+/* [V2] day: tasks due and that weekday's routines under the chosen date (the events are the list below) */
+.og-cal-day { display: grid; gap: 0.8rem; }
+.og-cal-day__title { margin: 0; font-size: 1.1rem; font-weight: 700; color: var(--og-ink); }
+.og-cal-day__list { margin: 0.3rem 0 0; padding-left: 1.2rem; overflow-wrap: anywhere; }
+.og-cal-day__empty { margin: 0.3rem 0 0; color: var(--og-ink-soft); }
+/* [V2] 건강·안부 › 병원 일정 · 건강검진: two cards under the screen's notice, the same card style as My Life */
+.og-health-schedule { display: grid; gap: 1rem; margin-top: 1rem; }
 
 /* plain (uncheckable) rows and long personal text */
 .og-home-item__main--plain { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 0.2rem; }
@@ -92,8 +118,11 @@
   .og-cal__day { min-height: 2.9rem; font-size: 1.05rem; border-radius: 0.65rem; }
 }
 
-/* [P11] small phones: the month grid uses the card's own side padding, so a day is 44px wide from 360px up
-   (at 320px seven days leave 40px each — the row stays 46px tall) */
+/* [P11 → V2] small phones: the calendar card takes 12px of the page gutter on each side (4px are kept), the month grid
+   uses the card's side padding, and the cells sit edge to edge — so every day is at least 44 × 44 px at 320px, the
+   grid stays inside the card, and the page itself does not widen. */
 @media (max-width: 380px) {
-  .og-cal__grid { width: calc(100% + 2rem); margin-inline: -1rem; }
+  .og-home-card[data-og-slot="life.calendar"] { margin-inline: calc(-1rem + 4px); }
+  .og-cal__grid { width: calc(100% + 2.2rem); margin-inline: -1.1rem; border-spacing: 0; }
+  .og-cal__day { min-height: 2.9rem; }
 }
