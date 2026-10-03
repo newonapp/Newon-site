@@ -37,27 +37,43 @@ const unavailable = (reason) => ({ state: 'unavailable', reason, items: [], attr
 /* one small client for the route: GET only, no credentials, a timeout, and null for anything that is not { ok: true } */
 function dataClient({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS }) {
   const usable = typeof apiUrl === 'function' && typeof fetcher === 'function';
+  /* why the last request gave nothing: 'absent' = no data route at this address (404/405, e.g. GitHub Pages with no API
+     origin set) · 'down' = the route did not answer usefully (offline, timeout, 5xx, not JSON, not { ok: true }) */
+  let lastFailure = '';
   async function getJson(query) {
+    lastFailure = '';
     const controller = typeof AbortController === 'function' ? new AbortController() : null;
     const timer = controller ? setTimeout(() => controller.abort(), timeoutMs) : null;
     try {
       const response = await fetcher(apiUrl(DATA_PATH) + query, { method: 'GET', headers: { accept: 'application/json' }, credentials: 'omit', signal: controller ? controller.signal : undefined });
-      if (!response || !response.ok) return null;
+      if (!response || !response.ok) {
+        lastFailure = response && (response.status === 404 || response.status === 405) ? 'absent' : 'down';
+        return null;
+      }
       const body = await response.json();
-      return body && typeof body === 'object' && body.ok === true ? body : null;
+      if (body && typeof body === 'object' && body.ok === true) return body;
+      lastFailure = 'down';
+      return null;
     } catch {
+      lastFailure = 'down';
       return null;
     } finally {
       if (timer) clearTimeout(timer);
     }
   }
-  /* status first: true only when the route says this provider has a key */
+  /*
+   * status first. 'yes' only when the route says this provider has a key; 'no' when it says it has none or when there
+   * is no route at this address; 'down' when the route could not be asked (so the screen says "try again", not
+   * "not connected").
+   */
   async function configured(provider) {
     const status = await getJson('?action=status');
-    const p = status && status.providers && status.providers[provider];
-    return !!p && p.configured === true;
+    if (!status) return lastFailure === 'absent' ? 'no' : 'down';
+    const p = status.providers && status.providers[provider];
+    return p && p.configured === true ? 'yes' : 'no';
   }
-  return { usable, getJson, configured };
+  const notReady = (state) => (state === 'down' ? 'NO_ANSWER' : 'NOT_CONFIGURED');
+  return { usable, getJson, configured, notReady };
 }
 
 /* ───────── 평생학습 강좌 (kr-lifelong-class) ───────── */
@@ -76,7 +92,8 @@ export function createLifelongClassSource({ apiUrl, fetcher, timeoutMs = TIMEOUT
     if (!REGIONS.some((r) => r.id === region)) return unavailable('REGION_REQUIRED');
     const q = safeText(query, 30);
     const max = Number.isInteger(limit) && limit >= 1 && limit <= 50 ? limit : MAX_ITEMS;
-    if (!(await api.configured(LIFELONG_PROVIDER))) return unavailable('NOT_CONFIGURED');
+    const ready = await api.configured(LIFELONG_PROVIDER);
+    if (ready !== 'yes') return unavailable(api.notReady(ready));
     const data = await api.getJson(`?provider=${LIFELONG_PROVIDER}&region=${encodeURIComponent(region)}${q ? `&query=${encodeURIComponent(q)}` : ''}&status=open&limit=${max}`);
     if (!data || !Array.isArray(data.items)) return unavailable('NO_ANSWER');
     const items = [];
@@ -133,7 +150,8 @@ function cleanFacility(raw, kind) {
 }
 
 async function kakaoSearch(api, words, limit) {
-  if (!(await api.configured(KAKAO_PLACE_PROVIDER))) return { error: 'NOT_CONFIGURED' };
+  const ready = await api.configured(KAKAO_PLACE_PROVIDER);
+  if (ready !== 'yes') return { error: api.notReady(ready) };
   const data = await api.getJson(`?provider=${KAKAO_PLACE_PROVIDER}&query=${encodeURIComponent(words)}&page=1&limit=${limit}`);
   if (!data || !Array.isArray(data.items)) return { error: 'NO_ANSWER' };
   return { items: data.items };
@@ -192,7 +210,8 @@ export function createTourPlaceSource({ apiUrl, fetcher, timeoutMs = TIMEOUT_MS 
     if (!REGIONS.some((r) => r.id === region)) return unavailable('REGION_REQUIRED');
     if (!TOUR_REGIONS.includes(region)) return unavailable('REGION_NOT_SUPPORTED');
     if (!TOUR_TYPE_IDS.includes(contentType)) return unavailable('TYPE_REQUIRED');
-    if (!(await api.configured(TOUR_PROVIDER))) return unavailable('NOT_CONFIGURED');
+    const ready = await api.configured(TOUR_PROVIDER);
+    if (ready !== 'yes') return unavailable(api.notReady(ready));
     const data = await api.getJson(`?provider=${TOUR_PROVIDER}&region=${encodeURIComponent(region)}&type=${contentType}&page=1&limit=${TOUR_LIMIT}`);
     if (!data || !Array.isArray(data.items)) return unavailable('NO_ANSWER');
     const items = data.items.filter((x) => x && typeof x === 'object' && x.type === 'place').slice(0, TOUR_LIMIT);

@@ -60,11 +60,16 @@ export function officialUrl(value) {
     return '';
   }
 }
-/* a map page link (Kakao Map) — useful, but never presented as an official source */
+/*
+ * a map page link (Kakao Map) — useful, but never presented as an official source.
+ * Kakao Local answers its own place pages as "http://place.map.kakao.com/<id>" (the live route passes them on as
+ * given); that one host also serves https, so exactly that host is upgraded. Every other http link is still refused.
+ */
 export function mapUrl(value) {
   if (typeof value !== 'string' || value.length > 500) return '';
   try {
     const u = new URL(value.trim());
+    if (u.protocol === 'http:' && /^place\.map\.kakao\.com$/i.test(u.hostname) && !u.port) u.protocol = 'https:';
     if (u.protocol !== 'https:' || u.username || u.password) return '';
     return /(^|\.)kakao\.com$/i.test(u.hostname) ? u.href : '';
   } catch {

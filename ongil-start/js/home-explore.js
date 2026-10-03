@@ -151,6 +151,9 @@ export function createNearbyCard({ profile, source, saved }) {
           card.say(`강좌 ${result.items.length}개를 찾았습니다.`);
         } else if (result.state === 'empty') {
           setRegionState(zone, 'empty', '지금 모집 중인 강좌를 찾지 못했어요.');
+        } else if (result.reason === 'NO_ANSWER') {
+          /* the route exists but did not answer (offline, slow, a provider error): say so, and that trying again may work */
+          setRegionState(zone, 'empty', '지금은 강좌 정보를 받아오지 못했어요. 잠시 뒤 다시 눌러 주세요.');
         } else {
           /* not an error to the user: the connection simply is not there yet */
           setRegionState(zone, 'empty', '주변 정보는 아직 연결되지 않았어요. 준비되면 이 자리에서 볼 수 있습니다.');

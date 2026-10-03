@@ -148,7 +148,10 @@ test('OG-CR-11 official URL validation: https public-sector domains only; maps a
   assert.equal(C.officialUrl('https://www.nhis.or.kr/'), 'https://www.nhis.or.kr/');
   for (const bad of ['http://www.bokjiro.go.kr/', 'javascript:alert(1)', 'https://go.kr.evil.com/', 'https://user:pw@www.go.kr/', 'https://.go.kr/', 'https://www.example.com/', 'https://www.go.kr:8443/', '//www.go.kr', 'data:text/html,x']) assert.equal(C.officialUrl(bad), '', bad);
   assert.equal(C.mapUrl('https://place.map.kakao.com/1'), 'https://place.map.kakao.com/1');
-  for (const bad of ['javascript:alert(1)', 'http://place.map.kakao.com/1', 'https://kakao.com.evil.io/']) assert.equal(C.mapUrl(bad), '', bad);
+  /* Production API connection: the live Kakao route returns its place pages as http://place.map.kakao.com/<id>; that exact
+     host is upgraded to https (BEFORE: refused → no map link in production; AFTER: https link). Every other http link is refused. */
+  assert.equal(C.mapUrl('http://place.map.kakao.com/1'), 'https://place.map.kakao.com/1');
+  for (const bad of ['javascript:alert(1)', 'http://map.kakao.com/1', 'http://place.map.kakao.com:8080/1', 'http://place.map.kakao.com.evil.io/1', 'https://kakao.com.evil.io/']) assert.equal(C.mapUrl(bad), '', bad);
   assert.match(VIEW, /if \(item\.sourceUrl\) links\.push/, '"공식 안내 보기" only when a validated official URL exists');
   assert.match(VIEW, /rel: 'noopener noreferrer'/);
 });

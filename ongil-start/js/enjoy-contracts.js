@@ -193,7 +193,7 @@ export function fromTourPlace(raw, category) {
     category: enjoyCategoryById(category) ? category : tour.category,
     placeType: tour.label,
     summary: str(raw.summary),
-    region: str(loc.region),
+    region: regionName(loc.region),
     address: [str(loc.address), str(loc.detailAddress)].filter(Boolean).join(' '),
     phone: str(contact.phone),
     latitude: loc.latitude,
@@ -202,6 +202,17 @@ export function fromTourPlace(raw, category) {
     sourceUrl: str(source.sourceUrl),
     updatedAt: str(source.updatedAt),
   };
+}
+
+/*
+ * The live route names a 시·도 in full for TourAPI ("서울특별시", "경기도") and short for Kakao ("서울").
+ * ONGIL's regions are the short names; a full name is read as its short name, anything else stays empty.
+ */
+const LONG_REGION = Object.freeze({ 서울특별시: '서울', 부산광역시: '부산', 대구광역시: '대구', 인천광역시: '인천', 광주광역시: '광주', 대전광역시: '대전', 울산광역시: '울산', 세종특별자치시: '세종', 경기도: '경기', 강원도: '강원', 강원특별자치도: '강원', 충청북도: '충북', 충청남도: '충남', 전라북도: '전북', 전북특별자치도: '전북', 전라남도: '전남', 경상북도: '경북', 경상남도: '경남', 제주특별자치도: '제주', 제주도: '제주' });
+export function regionName(value) {
+  const v = str(value);
+  if (REGIONS.some((r) => r.id === v)) return v;
+  return Object.prototype.hasOwnProperty.call(LONG_REGION, v) ? LONG_REGION[v] : '';
 }
 
 /* kr-kakao-place (kakao-local.mjs toEntity) → PLACE. A private map platform: named as such, its link is a map. */
@@ -218,7 +229,7 @@ export function fromKakaoPlace(raw, category) {
     category,
     placeType: str(raw.placeType),
     summary: '',
-    region: str(loc.region),
+    region: regionName(loc.region),
     address: str(loc.roadAddress) || str(loc.address),
     phone: str(contact.phone),
     latitude: loc.latitude,
