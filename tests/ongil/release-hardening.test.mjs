@@ -1180,7 +1180,8 @@ test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', ()
   const assistant = T.createAssistant({ now: w.now, schedule: w.schedule, tasks: w.tasks, routines: w.routines, saved: w.saved, search, familyConnection });
   assert.equal(assistant.tools.ids().length, 22);
   const tests = fs.readdirSync(path.join(ROOT, 'tests/ongil')).filter((f) => f.endsWith('.test.mjs'));
-  assert.equal(tests.length, 21);
+  // Phase 12: production-release.test.mjs was added (BEFORE 21, AFTER 22).
+  assert.equal(tests.length, 22);
   for (const f of ['livon', 'server/livon', 'tests/livon']) assert.ok(fs.existsSync(path.join(ROOT, f)), `${f} is still there, untouched by ONGIL`);
   assert.equal(fs.existsSync(path.join(ROOT, 'server/ongil')), false);
   const doc = read('docs/ongil/PHASE_11_RELEASE_HARDENING_V1.md');
