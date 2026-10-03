@@ -49,6 +49,8 @@ export const CLASSIFICATION = Object.freeze({
   communityPosts: 'PRIVATE',
   groupDrafts: 'PRIVATE',
   meetupDrafts: 'PRIVATE',
+  /* Completion V3: 긴급 연락망 — other people's names and phone numbers: never synced, searched, saved, shared or counted by content */
+  emergencyContacts: 'PRIVATE',
   /* Phase 9: usage counters (analytics.js). Counts of events only — no content, no identifier. Device only: never synced, searched or shared. */
   analytics: 'OPERATIONAL',
 });
@@ -73,6 +75,7 @@ export const CONTRACT_CLASSES = Object.freeze({
   CommunityPost: 'PRIVATE',
   GroupDraft: 'PRIVATE',
   MeetupDraft: 'PRIVATE',
+  EmergencyContact: 'PRIVATE',
 });
 
 export function classOf(collection) {

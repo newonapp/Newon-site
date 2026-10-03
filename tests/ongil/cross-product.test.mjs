@@ -732,7 +732,7 @@ test('OG-IN8-50 invalid hashes: every screen has a safe fallback, and the addres
 test('OG-IN8-51 privacy matrix: what each class of data may do — search, saved, sync, family, community', () => {
   const allowed = (c) => ({ search: maySearchGlobally(c), sync: isSyncable(c), family: familySharingAllowed(), community: false });
   const by = (cls) => COLLECTIONS.filter((c) => classOf(c) === cls).sort();
-  assert.deepEqual(by('PRIVATE'), ['communityPosts', 'expenses', 'familySharing', 'groupDrafts', 'helpRequests', 'journal', 'meetupDrafts']);
+  assert.deepEqual(by('PRIVATE'), ['communityPosts', 'emergencyContacts', 'expenses', 'familySharing', 'groupDrafts', 'helpRequests', 'journal', 'meetupDrafts']);
   assert.deepEqual(by('HEALTH_ADJACENT'), ['checkins', 'healthMeasures', 'healthNotes', 'medicationLogs', 'medications', 'symptoms']);
   assert.deepEqual(by('STANDARD'), ['dailyLife', 'events', 'routineLogs', 'routines', 'sleepRecords', 'tasks']);
   assert.deepEqual(by('APP'), ['notifications', 'onboarding', 'preferences', 'profile', 'saved']);
@@ -740,7 +740,7 @@ test('OG-IN8-51 privacy matrix: what each class of data may do — search, saved
   assert.deepEqual(allowed('saved'), { search: true, sync: true, family: false, community: false }, 'saved: public items only, item by item');
   assert.deepEqual(allowed('notifications'), { search: false, sync: false, family: false, community: false });
   // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
-  assert.equal(COLLECTIONS.length, 25, 'Phase 8 added no collection; Phase 9 added analytics; Completion V1 added healthMeasures');
+  assert.equal(COLLECTIONS.length, 26, 'Phase 8 added no collection; Phase 9 added analytics; Completion V1 added healthMeasures; Completion V3 added emergencyContacts');
   assert.deepEqual(by('OPERATIONAL'), ['analytics']);
   assert.deepEqual(allowed('analytics'), { search: false, sync: false, family: false, community: false });
   assert.deepEqual(Object.keys(CLASSIFICATION).sort(), [...COLLECTIONS].sort(), 'every collection is classified');
@@ -893,16 +893,16 @@ test('OG-IN8-64 no page error sources: missing nodes, empty lists and unknown ty
 
 test('OG-IN8-65 regression: no new collection, backend, network, dependency or fixture in production; version moved on', () => {
   // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
-  assert.equal(COLLECTIONS.length, 25);
+  assert.equal(COLLECTIONS.length, 26); // Completion V3: + emergencyContacts
   /* Phase 9 moved the version on: admin-v1 / ?v=20261003a9 (BEFORE: integration-v2 / 20261003i8). The version now lives in APP_VERSION. */
   /* Phase 10 moved the version on: assistant-v1 / ?v=20261003b10 (BEFORE: admin-v1 / 20261003a9) — ONGIL 도우미 was added. */
   /* Phase 11 moved the version on: hardening-v1 / ?v=20261003r11 (BEFORE: assistant-v1 / 20261003b10) — release hardening changed app.js and two stylesheets. */
   assert.match(JS['app.js'], /const APP_VERSION = 'hardening-v1';/);
-  assert.match(INDEX, /app\.js\?v=20261004v12/); // Completion V2: app.js changed
+  assert.match(INDEX, /app\.js\?v=20261004v13/); // Completion V2 (v12) and V3 (v13): app.js changed
   assert.equal(/firebase|supabase|openai|anthropic|api[_-]?key|Bearer /i.test(PRODUCTION), false);
   assert.equal(/\bfetch\(|XMLHttpRequest|WebSocket|EventSource|sendBeacon/.test(CODE['routes.js'] + CODE['search.js'] + CODE['saved.js'] + CODE['saved-view.js'] + CODE['notifications.js'] + CODE['panels.js']), false);
   assert.equal(/TEST FIXTURE|example\.test|fixture/i.test(PRODUCTION), false, 'no QA data in production source');
   for (const f of ['routes.js', 'search.js', 'saved-view.js', 'notifications.js', 'panels.js']) for (const m of JS[f].matchAll(/from '([^']+)'/g)) assert.ok(fs.existsSync(path.join(JS_DIR, m[1])), `${f} → ${m[1]}`);
   // Phase 9: + analytics.js, instrument.js, source-status.js, admin.js, admin-view.js
-  assert.equal(fs.readdirSync(JS_DIR).filter((f) => f.endsWith('.js')).length, 70, '60 modules + the five Phase 9 modules + the three Phase 10 modules (assistant-intents, assistant-tools, assistant-view) + health-measures (Completion V1) + health-appointments (Completion V2)');
+  assert.equal(fs.readdirSync(JS_DIR).filter((f) => f.endsWith('.js')).length, 71, '60 modules + the five Phase 9 modules + the three Phase 10 modules (assistant-intents, assistant-tools, assistant-view) + health-measures (Completion V1) + health-appointments (Completion V2) + emergency-contacts (Completion V3)');
 });

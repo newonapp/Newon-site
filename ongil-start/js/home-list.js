@@ -14,6 +14,8 @@
  *   canAdd / canEdit (default true): a list that only shows and checks, e.g. today's routines; canAdd may be a function
  *   afterChange(): called after any change so the owner can refresh what depends on the list
  *   before() / after(): extra nodes above the list and below its buttons (a heading, links to the full screen)
+ *   rowActions(item) (Completion V3): extra buttons placed before 고치기 / 지우기 on a row (e.g. 전화하기, 위로)
+ *   A delete is announced only when the store says it was written; otherwise the row stays and the reason is shown.
  */
 import { el, clear } from './dom.js';
 import { makeField, eul } from './home-ui.js';
@@ -21,6 +23,8 @@ import { makeField, eul } from './home-ui.js';
 /* Phase 11: a long list is shown a page at a time (+ 더 보기), so a card never puts hundreds of rows in the page */
 export const LIST_PAGE = 50;
 export const STORAGE_ERROR_TEXT = '이 기기에 저장하지 못했어요. 브라우저의 저장 공간이 가득 찼거나 꺼져 있을 수 있어요. 오래된 기록을 지운 뒤 다시 해 주세요.';
+/* Completion V3: a delete the store did not write is never announced as done */
+const removeFailText = (r, title) => (r.reason === 'NOT_FOUND' ? `‘${title}’은(는) 이미 지워졌어요.` : STORAGE_ERROR_TEXT);
 
 export function createListCard({ card, config }) {
   let mode = { type: 'idle', id: null };
@@ -123,13 +127,14 @@ export function createListCard({ card, config }) {
         'li',
         { class: 'og-home-item og-home-item--confirm', 'data-og-item': item.id },
         main,
-        el('div', { class: 'og-confirm', role: 'group', 'aria-label': '지우기 확인', onkeydown: (event) => { if (event.key === 'Escape') { event.preventDefault(); setMode({ type: 'idle', id: null }, `delete:${item.id}`); } } }, el('p', { text: `‘${d.title}’을(를) 지울까요? 되돌릴 수 없습니다.` }), el('div', { class: 'og-form__actions' }, cancel, el('button', { type: 'button', class: 'og-btn og-btn--danger', text: '지우기', onclick: () => { config.onRemove(item.id); card.say(`‘${d.title}’을(를) 지웠습니다.`); changed(); setMode({ type: 'idle', id: null }, 'title'); } })))
+        el('div', { class: 'og-confirm', role: 'group', 'aria-label': '지우기 확인', onkeydown: (event) => { if (event.key === 'Escape') { event.preventDefault(); setMode({ type: 'idle', id: null }, `delete:${item.id}`); } } }, el('p', { text: `‘${d.title}’을(를) 지울까요? 되돌릴 수 없습니다.` }), el('div', { class: 'og-form__actions' }, cancel, el('button', { type: 'button', class: 'og-btn og-btn--danger', text: '지우기', onclick: () => { const removed = config.onRemove(item.id); if (removed && removed.ok === false) { card.say(removeFailText(removed, d.title)); setMode({ type: 'idle', id: null }, `delete:${item.id}`); return; } card.say(`‘${d.title}’을(를) 지웠습니다.`); changed(); setMode({ type: 'idle', id: null }, 'title'); } })))
       );
     }
     const actions = canEdit
       ? el(
           'div',
           { class: 'og-home-item__actions' },
+          typeof config.rowActions === 'function' ? config.rowActions(item) : null,
           el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-focus': `edit:${item.id}`, 'aria-label': `‘${d.title}’ 고치기`, text: '고치기', onclick: () => setMode({ type: 'edit', id: item.id }, 'form') }),
           el('button', { type: 'button', class: 'og-btn og-btn--ghost og-btn--small', 'data-og-focus': `delete:${item.id}`, 'aria-label': `‘${d.title}’ 지우기`, text: '지우기', onclick: () => setMode({ type: 'delete', id: item.id }, 'confirm') })
         )

@@ -907,12 +907,12 @@ test('OG-AQ-13 no dependency: every import is a relative ONGIL module; LIVON and
   for (const f of allJs()) for (const m of js(f).matchAll(/from '([^']+)'/g)) assert.match(m[1], /^\.\/[a-z-]+\.js$/, `${f} imports ${m[1]}`);
   for (const f of P9) assert.equal(/livon|\.\.\/|newon-app|shared\//i.test(code(js(f))), false, f);
   // Phase 10: + assistant-intents.js, assistant-tools.js, assistant-view.js. BEFORE: 65. AFTER: 68.
-  assert.equal(allJs().length, 70, 'sixty modules + the five of Phase 9 + the three of Phase 10 + health-measures (Completion V1) + health-appointments (Completion V2)');
+  assert.equal(allJs().length, 71, 'sixty modules + the five of Phase 9 + the three of Phase 10 + health-measures (Completion V1) + health-appointments (Completion V2) + emergency-contacts (Completion V3)');
   for (const f of P9) assert.ok(fs.existsSync(path.join(JS_DIR, f)), f);
 });
 
 test('OG-AQ-14 storage: exactly one new collection ("analytics"), classified, and nothing personal moved', () => {
-  assert.equal(COLLECTIONS.length, 25);
+  assert.equal(COLLECTIONS.length, 26); // Completion V3: + emergencyContacts
   assert.equal(COLLECTIONS[COLLECTIONS.length - 1], 'analytics');
   assert.deepEqual(Object.keys(CLASSIFICATION).sort(), [...COLLECTIONS].sort());
   assert.deepEqual(COLLECTIONS.filter((c) => CLASSIFICATION[c] === 'OPERATIONAL'), ['analytics']);
@@ -937,9 +937,9 @@ test('OG-AQ-16 version and cache: the app states its version and the changed fil
   assert.match(APP, /win\.Ongil = Object\.freeze\(\{ version: APP_VERSION, assistant, assistantView, analytics, sources: sourceStatus,/);
   assert.match(HTML, /ongil-shell\.css\?v=20261003r11/);
   assert.match(HTML, /ongil-app\.css\?v=20261003r11/);
-  // Completion V2 moved app.js and ongil-life.css on (the files it changed). BEFORE: ?v=20261003r11. AFTER: ?v=20261004v12.
-  assert.match(HTML, /js\/app\.js\?v=20261004v12/);
-  assert.match(HTML, /ongil-life\.css\?v=20261004v12/);
+  // Completion V2 moved app.js and ongil-life.css on (BEFORE ?v=20261003r11, AFTER ?v=20261004v12); Completion V3 changed the same two files again (AFTER ?v=20261004v13).
+  assert.match(HTML, /js\/app\.js\?v=20261004v13/);
+  assert.match(HTML, /ongil-life\.css\?v=20261004v13/);
 });
 
 test('OG-AQ-17 performance: one small write per event and a tiny summary — no list of events to scan', () => {
@@ -988,5 +988,5 @@ test('OG-AQ-20 documentation and suite: the Phase 9 document has every required 
   for (const name of A.EVENT_NAMES.filter((n) => !n.startsWith('ai_'))) assert.ok(doc.includes(`\`${name}\``), `${name} is documented`);
   assert.equal(/LIVE VERIFIED(?!")|screen reader: VERIFIED/.test(doc.replace(/never[^\n]*LIVE VERIFIED|no[^\n]*LIVE VERIFIED|not[^\n]*LIVE VERIFIED/gi, '')), false);
   const tests = fs.readdirSync(path.join(ROOT, 'tests/ongil')).filter((f) => f.endsWith('.test.mjs')).sort();
-  assert.deepEqual(tests, ['admin-analytics', 'assistant', 'care-data', 'community-data', 'cross-product', 'enjoy-data', 'family-data', 'foundation-data', 'foundation-flows', 'health-calendar', 'health-data', 'health-measures', 'health-view', 'home-data', 'home-view', 'integration-data', 'integration-view', 'life-data', 'life-privacy', 'life-view', 'production-api', 'production-release', 'release-hardening', 'shell', 'store-data'].map((n) => `${n}.test.mjs`)); // Phase 11: + release-hardening · Phase 12: + production-release · API connection: + production-api · Completion V1: + health-measures · Completion V2: + health-calendar
+  assert.deepEqual(tests, ['admin-analytics', 'assistant', 'care-data', 'community-data', 'cross-product', 'emergency-contacts', 'enjoy-data', 'family-data', 'foundation-data', 'foundation-flows', 'health-calendar', 'health-data', 'health-measures', 'health-view', 'home-data', 'home-view', 'integration-data', 'integration-view', 'life-data', 'life-privacy', 'life-view', 'production-api', 'production-release', 'release-hardening', 'shell', 'store-data'].map((n) => `${n}.test.mjs`)); // Phase 11: + release-hardening · Phase 12: + production-release · API connection: + production-api · Completion V1: + health-measures · Completion V2: + health-calendar · Completion V3: + emergency-contacts
 });

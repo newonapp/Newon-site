@@ -114,7 +114,7 @@ test('OG-RT-5 titles name the view', () => {
 // Phase 3: 건강·안부 now has four working parts (check-in, life-check, medication, records), kept in 내 생활 › 건강 and
 // linked from the area. Exactly those four may say they work; 도움 요청 · 긴급 연락망 · 병원 · 검진 are still not built and must not.
 // My Life gained the four 건강 sections. Every other area still has no working module.
-const HEALTH_LIVE = ['check-in', 'life-check', 'medication', 'records', 'measures', 'hospital', 'checkup']; // Completion V1: + 건강 수치 · Completion V2: + 병원 일정, 건강검진
+const HEALTH_LIVE = ['check-in', 'life-check', 'medication', 'records', 'measures', 'hospital', 'checkup', 'contacts']; // Completion V1: + 건강 수치 · Completion V2: + 병원 일정, 건강검진
 // Phase 4: 가족 has two working parts (내가 공유할 내용, 도움 요청 — both local only); 연결·일정 나누기·소식은 still not built.
 // 돌봄·서비스 has one (가까운 기관 찾기, results only when the existing place search is configured); the service and benefit
 // categories have no data source and still say 준비 중.
@@ -139,7 +139,7 @@ test('OG-VW-1 every primary area has a description, an empty state and module sl
   }
   assert.deepEqual(AREAS.find((a) => a.id === 'enjoy').modules.filter((m) => !m.available).map((m) => m.id), ['groups'], 'groups/meetups are not built');
   assert.deepEqual(AREAS.find((a) => a.id === 'community').modules.filter((m) => !m.available).map((m) => m.id), ['feed', 'neighborhood'], 'no feed of other people');
-  assert.deepEqual(AREAS.find((a) => a.id === 'health').modules.filter((m) => !m.available).map((m) => m.id), ['help', 'contacts']); // Completion V2: 병원 일정 · 건강검진 are built
+  assert.deepEqual(AREAS.find((a) => a.id === 'health').modules.filter((m) => !m.available).map((m) => m.id), ['help']); // Completion V2: 병원 일정 · 건강검진 are built · Completion V3: 긴급 연락망 is built
   assert.equal(AREAS.find((a) => a.id === 'health').link.href, '#life/checkin');
   assert.deepEqual(AREAS.find((a) => a.id === 'family').modules.filter((m) => !m.available).map((m) => m.id), ['connect', 'schedule', 'messages']);
   const ids = (id) => AREAS.find((a) => a.id === id).modules.map((m) => m.id);
@@ -289,7 +289,9 @@ test('OG-NF-2b the price-text exception lets nothing else through: no order, pur
 
 test('OG-NF-3 health and family are shells: no storage, no sharing, no automation', () => {
   for (const f of JS_FILES) {
-    assert.equal(/diagnos|emergencyCall|autoCall|shareWithFamily|grantPermission|inviteCode|tel:/i.test(CODE[f]), false, f);
+    /* Completion V3: tel: exists in ONE module (긴급 연락망), built only by telHref from checked digits, behind a confirmation */
+    assert.equal(/diagnos|emergencyCall|autoCall|shareWithFamily|grantPermission|inviteCode/i.test(CODE[f]), false, f);
+    if (f !== 'emergency-contacts.js') assert.equal(/tel:/i.test(CODE[f]), false, f);
   }
   const health = AREAS.find((a) => a.id === 'health');
   const family = AREAS.find((a) => a.id === 'family');

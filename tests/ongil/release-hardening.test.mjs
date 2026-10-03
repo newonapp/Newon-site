@@ -220,7 +220,7 @@ test('RH-03 old storage migration: data written by earlier phases is read withou
 });
 
 test('RH-04 account erase inventory: every ONGIL key goes — known collections and stray ones — and nothing else', () => {
-  assert.equal(COLLECTIONS.length, 25);
+  assert.equal(COLLECTIONS.length, 26); // Completion V3: + emergencyContacts
   assert.deepEqual(Object.keys(CLASSIFICATION).sort(), [...COLLECTIONS].sort(), 'every collection is classified');
   assert.deepEqual(unclassified(), []);
   /* every collection a module reads or writes is a declared collection */
@@ -235,7 +235,7 @@ test('RH-04 account erase inventory: every ONGIL key goes — known collections 
   for (const c of COLLECTIONS) w.storage.set(c, { items: [] });
   fillPrivate(w);
   w.analytics.track('app_open');
-  assert.equal(w.storage.list().length, 25);
+  assert.equal(w.storage.list().length, 26); // Completion V3: + emergencyContacts
   assert.equal(w.storage.clear(), true);
   assert.deepEqual(w.backend.keys().sort(), ['livon.keep', 'newon-app-theme', 'ongil', 'ongilx.v1.tasks'], 'Phase 11: a stray key under ONGIL\'s prefix is erased too; other products are untouched');
   assert.equal(w.storage.clear(), true, 'erasing twice is harmless');
@@ -1022,7 +1022,8 @@ test('RH-34 duplicate destructive action: deleting, clearing, resetting or erasi
   assert.deepEqual([w.storage.clear(), w.storage.clear(), w.backend.keys()], [true, true, []]);
   /* in the page: every delete asks first; the answer redraws the row, so a second click has no button to land on */
   assert.match(JS['home-list.js'], /onclick: \(\) => setMode\(\{ type: 'delete', id: item\.id \}, 'confirm'\)/);
-  assert.match(JS['home-list.js'], /config\.onRemove\(item\.id\); card\.say\(`‘\$\{d\.title\}’을\(를\) 지웠습니다\.`\); changed\(\);/);
+  /* Completion V3: the delete is announced only when the store wrote it (BEFORE: announced unconditionally) */
+  assert.match(JS['home-list.js'], /const removed = config\.onRemove\(item\.id\); if \(removed && removed\.ok === false\) \{ card\.say\(removeFailText\(removed, d\.title\)\); setMode\(\{ type: 'idle', id: null \}, `delete:\$\{item\.id\}`\); return; \} card\.say\(`‘\$\{d\.title\}’을\(를\) 지웠습니다\.`\); changed\(\);/);
   for (const f of ['community-view.js', 'life-health.js', 'account-view.js', 'admin-view.js', 'home-list.js']) assert.match(JS[f], /og-confirm|confirmBox|confirmReset|question:/, `${f} asks before it deletes`);
   assert.match(JS['account-view.js'], /confirmBox\.hidden = true;/);
   assert.match(JS['assistant-view.js'], /if \(entry\.settled\) return;\n\s+entry\.settled = true;/);
@@ -1150,7 +1151,7 @@ test('RH-43 cache / version consistency: every local file the page loads carries
   assert.deepEqual(Object.keys(ongil).sort(), ['app.js', 'ongil-app.css', 'ongil-care.css', 'ongil-home.css', 'ongil-life.css', 'ongil-shell.css', 'ongil-tokens.css']);
   for (const f of ['ongil-shell.css', 'ongil-app.css', 'ongil-tokens.css', 'ongil-home.css']) assert.equal(ongil[f], '20261003r11', `${f} changed in Phase 11 and has the release's version`);
   /* Completion V2 changed app.js (and the modules it imports) and ongil-life.css: those two, and only those, moved on */
-  for (const f of ['app.js', 'ongil-life.css']) assert.equal(ongil[f], '20261004v12', `${f} changed in Completion V2`);
+  for (const f of ['app.js', 'ongil-life.css']) assert.equal(ongil[f], '20261004v13', `${f} changed in Completion V2 (v12) and again in V3 (v13)`);
   assert.match(APP, /const APP_VERSION = 'hardening-v1';/);
   /* modules are imported by relative path with no version of their own: they are revalidated by the host's default
      caching (no immutable / long max-age rule exists for /ongil-start in the deployment config) */
@@ -1179,8 +1180,8 @@ test('RH-44 external dependencies: fonts and seven film files — no package, CD
 test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', () => {
   assert.deepEqual([...VIEWS], ['home', 'life', 'health', 'family', 'care', 'enjoy', 'community', 'store', 'saved', 'account']);
   assert.deepEqual([...INTERNAL_VIEWS], ['admin']);
-  assert.equal(COLLECTIONS.length, 25);
-  assert.equal(JS_FILES.length, 70, 'no module was added or removed in Phase 11; Completion V1 added health-measures; Completion V2 added health-appointments');
+  assert.equal(COLLECTIONS.length, 26); // Completion V3: + emergencyContacts
+  assert.equal(JS_FILES.length, 71, 'no module was added or removed in Phase 11; Completion V1 added health-measures; Completion V2 added health-appointments; Completion V3 added emergency-contacts');
   assert.equal(CSS_FILES.length, 6);
   assert.deepEqual([A.EVENT_NAMES.length, C.SAVED_TYPES.length, C.NOTIFICATION_TYPES.length, R.CONTENT_TYPE_IDS.length], [22, 7, 9, 7]);
   const w = world();
@@ -1189,7 +1190,7 @@ test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', ()
   assert.equal(assistant.tools.ids().length, 22);
   const tests = fs.readdirSync(path.join(ROOT, 'tests/ongil')).filter((f) => f.endsWith('.test.mjs'));
   // Phase 12: production-release.test.mjs was added (BEFORE 21, AFTER 22). API connection: production-api.test.mjs (BEFORE 22, AFTER 23). Completion V1: health-measures.test.mjs (AFTER 24).
-  assert.equal(tests.length, 25); // Completion V2: + health-calendar.test.mjs
+  assert.equal(tests.length, 26); // Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs
   for (const f of ['livon', 'server/livon', 'tests/livon']) assert.ok(fs.existsSync(path.join(ROOT, f)), `${f} is still there, untouched by ONGIL`);
   assert.equal(fs.existsSync(path.join(ROOT, 'server/ongil')), false);
   const doc = read('docs/ongil/PHASE_11_RELEASE_HARDENING_V1.md');

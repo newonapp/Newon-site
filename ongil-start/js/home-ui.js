@@ -80,7 +80,7 @@ export function makeField(spec, value) {
     input.value = value === undefined || value === null ? '' : String(value);
   } else {
     const amount = type === 'amount';
-    input = el('input', { class: 'og-input', id, name, type: amount ? 'text' : type, inputmode: amount ? 'numeric' : null, value: value === undefined || value === null ? '' : String(value), maxlength: maxlength || (amount ? 12 : null), required, 'aria-describedby': hintId, autocomplete: 'off' });
+    input = el('input', { class: 'og-input', id, name, type: amount ? 'text' : type, inputmode: amount ? 'numeric' : type === 'tel' ? 'tel' : null, value: value === undefined || value === null ? '' : String(value), maxlength: maxlength || (amount ? 12 : null), required, 'aria-describedby': hintId, autocomplete: 'off' });
   }
   return { input, get: () => input.value, node: el('div', { class: 'og-field' }, el('label', { class: 'og-field__label', for: id }, label, optional), input, hintNode) };
 }

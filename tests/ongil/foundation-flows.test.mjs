@@ -214,8 +214,11 @@ test('OG-SE-2 area and saved providers return real local data', async () => {
      so those no longer say 준비 중; a section that is still unfinished (긴급 연락망) does. Completion V2 built 병원 일정, which no longer does. */
   assert.equal(med.results.find((r) => r.id === 'home.medication').description.includes('준비 중'), false);
   for (const id of ['life.medication', 'health.medication']) assert.equal(med.results.find((r) => r.id === id).description.includes('준비 중'), false, id);
+  /* Completion V3 built 긴급 연락망 too; 도움 요청 (health.help) is still unfinished */
+  const help = await s.query('알릴 사람');
+  assert.ok(help.results.length >= 1 && help.results.every((r) => r.description.includes('준비 중')), 'unfinished sections say so');
   const contacts = await s.query('긴급 연락망');
-  assert.ok(contacts.results.length >= 1 && contacts.results.every((r) => r.description.includes('준비 중')), 'unfinished sections say so');
+  assert.ok(contacts.results.some((r) => r.id === 'health.contacts' && !r.description.includes('준비 중')), 'a built section does not say 준비 중');
   const hospital = await s.query('병원 일정');
   assert.ok(hospital.results.some((r) => r.id === 'health.hospital' && !r.description.includes('준비 중')), 'a built section does not say 준비 중');
   assert.deepEqual((await s.query('동네 공원')).results, []);

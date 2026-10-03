@@ -126,3 +126,12 @@
   .og-cal__grid { width: calc(100% + 2.2rem); margin-inline: -1.1rem; border-spacing: 0; }
   .og-cal__day { min-height: 2.9rem; }
 }
+
+/* [V3] 건강·안부 › 긴급 연락망: a row's buttons wrap on a phone (전화하기 · 위로 · 아래로 · 주 연락처로 · 고치기 · 지우기),
+   the public numbers sit under the list, and the call dialog shows the number large */
+[data-og-slot="health.contacts-list"] .og-home-item__actions { flex-wrap: wrap; width: 100%; }
+[data-og-slot="health.contacts-list"] .og-home-item__actions .og-btn { flex: 1 1 auto; }
+.og-call-public { display: grid; gap: 0.6rem; margin-top: 0.5rem; padding-top: 1rem; border-top: 1px solid var(--og-line); }
+.og-band .og-call-public__title, .og-call-public__title { margin: 0; font-size: 1.15rem; font-weight: 700; color: var(--og-ink); }
+.og-call-public .og-form__actions { flex-wrap: wrap; }
+.og-call-number, .og-dialog .og-call-number { margin: 0; font-size: 1.6rem; font-weight: 700; color: var(--og-ink); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }

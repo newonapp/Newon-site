@@ -136,7 +136,7 @@ test('OG-HC-4 Health ↔ Calendar: one store — added on 건강·안부, on the
   assert.match(JS['health-appointments.js'], /getItems: \(\) => schedule\.listUpcoming\(kind, today\(\)\)/);
   assert.match(JS['health-appointments.js'], /onAdd: \(values\) => schedule\.add\(\{ kind, \.\.\.pick\(values\) \}\)/);
   assert.match(JS['life-plan.js'], /onUpdate: \(id, values\) => schedule\.update\(id, \{ title: values\.title, date: values\.date, time: values\.time \}\)/);
-  assert.match(JS['app.js'], /if \(view === 'health'\) healthSchedule\.render\(\);/, 'drawn again every time 건강·안부 opens');
+  assert.match(JS['app.js'], /if \(view === 'health'\) \{\s*healthSchedule\.render\(\);/, 'drawn again every time 건강·안부 opens'); // Completion V3: the same branch also redraws 긴급 연락망
   assert.match(JS['app.js'], /createHealthSchedule\(\{ host: doc\.querySelector\('\[data-og-extra="health"\]'\), schedule \}\)/, 'the same (instrumented) schedule store Home and the calendar use');
 });
 
@@ -297,8 +297,8 @@ test('OG-HC-10 Store hero: the film and the copy match the other screens (same c
 });
 
 test('OG-HC-11 cache: the files this change touched have a new address, the others keep theirs', () => {
-  assert.match(INDEX, /ongil-start\/js\/app\.js\?v=20261004v12/);
-  assert.match(INDEX, /ongil-start\/styles\/ongil-life\.css\?v=20261004v12/);
+  assert.match(INDEX, /ongil-start\/js\/app\.js\?v=20261004v13/);
+  assert.match(INDEX, /ongil-start\/styles\/ongil-life\.css\?v=20261004v13/);
   for (const f of ['ongil-tokens.css', 'ongil-shell.css', 'ongil-app.css', 'ongil-home.css']) assert.match(INDEX, new RegExp(`ongil-start/styles/${f.replace('.', '\\.')}\\?v=20261003r11`), f);
-  assert.equal((INDEX.match(/\?v=20261004v12/g) || []).length, 2, 'moved once, only where something changed');
+  assert.equal((INDEX.match(/\?v=20261004v13/g) || []).length, 2, 'moved once per change, only where something changed (V3: v12 → v13)');
 });

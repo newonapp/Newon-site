@@ -44,7 +44,7 @@ test('OG-ST-2 unknown collections are refused (family data and health records ha
     assert.throws(() => storage.get(c), /UNKNOWN_COLLECTION/);
     assert.throws(() => storage.set(c, {}), /UNKNOWN_COLLECTION/);
   }
-  assert.deepEqual([...COLLECTIONS], ['profile', 'preferences', 'onboarding', 'saved', 'notifications', 'checkins', 'events', 'medications', 'medicationLogs', 'dailyLife', 'tasks', 'routines', 'routineLogs', 'sleepRecords', 'expenses', 'journal', 'symptoms', 'healthNotes', 'healthMeasures', 'familySharing', 'helpRequests', 'communityPosts', 'groupDrafts', 'meetupDrafts', 'analytics']); // Phase 9: + analytics (usage counters, numbers only)
+  assert.deepEqual([...COLLECTIONS], ['profile', 'preferences', 'onboarding', 'saved', 'notifications', 'checkins', 'events', 'medications', 'medicationLogs', 'dailyLife', 'tasks', 'routines', 'routineLogs', 'sleepRecords', 'expenses', 'journal', 'symptoms', 'healthNotes', 'healthMeasures', 'familySharing', 'helpRequests', 'communityPosts', 'groupDrafts', 'meetupDrafts', 'emergencyContacts', 'analytics']); // Completion V3: + emergencyContacts (before analytics, which stays last) · Phase 9: + analytics (usage counters, numbers only)
   for (const c of ['familyConnections', 'familyPermissions', 'healthRecords', 'devices']) assert.equal(COLLECTIONS.includes(c), false, c);
 });
 

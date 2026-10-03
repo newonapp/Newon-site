@@ -37,7 +37,7 @@ export const RESULT_ITEMS_MAX = 8;
 export const PENDING_TTL_MS = 5 * 60 * 1000;
 export const HISTORY_MAX = 6;
 /* what ONGIL 도우미 never changes: these are done by the person, on their own screen */
-export const NO_WRITE_AREAS = Object.freeze(['checkins', 'medications', 'medicationLogs', 'symptoms', 'healthNotes', 'familySharing', 'helpRequests', 'expenses', 'journal', 'communityPosts', 'groupDrafts', 'meetupDrafts', 'routines', 'profile']);
+export const NO_WRITE_AREAS = Object.freeze(['checkins', 'medications', 'medicationLogs', 'symptoms', 'healthNotes', 'familySharing', 'helpRequests', 'expenses', 'journal', 'communityPosts', 'groupDrafts', 'meetupDrafts', 'routines', 'profile', 'emergencyContacts']);
 
 /* fixed sentences: a tool never shows a technical message */
 export const MESSAGES = Object.freeze({
@@ -356,7 +356,7 @@ const REASON_MESSAGES = Object.freeze({
   PURCHASE: 'ONGIL에서는 결제나 주문을 하지 않아요.',
   BOOKING: '예약은 ONGIL에서 할 수 없어요. 일정으로 적어 둘 수는 있어요.',
   MESSAGE: '문자나 메시지는 보내지 않아요.',
-  CALL: '전화는 걸지 않아요.',
+  CALL: '전화는 ONGIL 도우미가 걸지 않아요. 긴급 연락망을 열어 드릴게요. 연락처를 고르고 한 번 더 확인하면 전화 앱이 열려요.',
   EDIT: '이미 적어 둔 것을 고치거나 지우는 일은 도우미가 하지 않아요. 그 화면에서 직접 해 주세요.',
 });
 const SENSITIVE_NOTE = '이 기록은 직접 남겨 주세요. 도우미가 대신 적거나 고르지 않아요.';
@@ -385,6 +385,8 @@ export function createAssistant({ now = () => Date.now(), today = () => dateKey(
     const intent = INTENT_IDS.includes(m.intent) ? m.intent : 'UNSUPPORTED';
     const out = (result, toolId = '', reason = m.reason) => ({ intent, toolId, reason, result });
     if (intent === 'UNSUPPORTED') return out({ ...notServed(m.reason || 'NO_MATCH'), suggest: true });
+    /* Completion V3: a call request is never made — the person is offered 긴급 연락망 (a link, not an automatic move) */
+    if (intent === 'NOT_AVAILABLE' && m.reason === 'CALL') return out({ ...notServed('CALL'), route: '#health', routeLabel: '긴급 연락망 열기' });
     if (intent === 'NOT_AVAILABLE') return out({ ...notServed(m.reason), suggest: true });
     if (intent === 'HEALTH_SAFETY') return out(plain('UNAVAILABLE', m.reason === 'EMERGENCY' ? MESSAGES.EMERGENCY : MESSAGES.HEALTH, { title: '건강에 대한 판단', route: '#health', routeLabel: '건강·안부 화면 열기' }));
     if (intent === 'HELP') return out(cleanResult({ status: 'SUCCESS', title: 'ONGIL 도우미가 할 수 있는 것', message: '정해진 요청만 알아들어요. 아래에서 고르거나 비슷하게 적어 주세요.', items: SUGGESTIONS.map((s) => ({ title: s.label, detail: `예: ${s.text}` })) }));
