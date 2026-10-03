@@ -48,7 +48,8 @@ const SIDO = {
 export const REGIONS = Object.freeze([...new Set(Object.values(SIDO))]);
 
 const str = v => (v == null ? '' : String(v)).trim();
-function fail(code) { return Object.assign(new Error('upstream'), { code }); }
+/* extra: diagnostics only (upstream HTTP status / official result code digits) — never a key, URL or body */
+function fail(code, extra) { return Object.assign(new Error('upstream'), { code }, extra || null); }
 function bad() { return Object.assign(new Error('bad'), { code: 'BAD_REQUEST' }); }
 
 /* ───────── field helpers ───────── */
@@ -153,7 +154,7 @@ export function parseBody(textBody) {
   if (!t) throw fail('PARSE');
   if (t[0] !== '{') {
     const m = /<returnReasonCode>\s*(\d+)\s*</.exec(t) || /<resultCode>\s*(\d+)\s*</.exec(t);
-    throw fail(codeFor(m ? m[1] : '', t));
+    throw fail(codeFor(m ? m[1] : '', t), m ? { upstreamCode: m[1] } : null);
   }
   let obj; try { obj = JSON.parse(t); } catch { throw fail('PARSE'); }
   const r = obj && obj.response;
@@ -161,7 +162,7 @@ export function parseBody(textBody) {
   if (!h || typeof h !== 'object') throw fail(codeFor('', t));
   const rc = str(h.resultCode);
   if (rc === '03') return { rows: [], total: 0 };                 /* NODATA_ERROR = zero results */
-  if (rc !== '00' && rc !== '0' && rc !== '0000') throw fail(codeFor(rc, str(h.resultMsg)));
+  if (rc !== '00' && rc !== '0' && rc !== '0000') throw fail(codeFor(rc, str(h.resultMsg)), { upstreamCode: rc });
   const b = r.body && typeof r.body === 'object' ? r.body : {};
   const items = b.items;
   const rows = Array.isArray(items) ? items : items && typeof items === 'object' ? (Array.isArray(items.item) ? items.item : items.item ? [items.item] : []) : [];
@@ -230,7 +231,7 @@ export async function fetchAll({ key, fetcher, timeoutMs = 8000, budgetMs = 2500
     catch (err) { throw fail(err && (err.name === 'TimeoutError' || err.name === 'AbortError') ? 'TIMEOUT' : 'NETWORK'); }
     const body = await res.text();
     if (body.length > 20_000_000) throw fail('INVALID_DATA');
-    if (!res.ok) { if (/LIMITED_NUMBER_OF_SERVICE_REQUESTS/.test(body)) throw fail('QUOTA'); throw fail(res.status >= 500 ? 'HTTP_5XX' : 'HTTP_4XX'); }
+    if (!res.ok) { if (/LIMITED_NUMBER_OF_SERVICE_REQUESTS/.test(body)) throw fail('QUOTA'); throw fail(res.status >= 500 ? 'HTTP_5XX' : 'HTTP_4XX', { status: res.status }); }
     const r = parseBody(body);
     if (r.total != null) total = r.total;
     for (const row of r.rows) {

@@ -221,6 +221,21 @@ export function createDataHandler({ env = process.env, fetcher = fetch, cache = 
   }
   const privateCache = memoryCache({ maxEntries: 200 });   /* never shared/persistent: nearby place results only */
   const warn = log || ((...a) => { if (!env.VERCEL && env.NODE_ENV !== 'production') console.warn(...a); });
+  /*
+   * Upstream failure diagnostics — written in production too (the public answer stays the fixed code + sentence).
+   * One line of fixed fields: provider id, stage, error category, upstream HTTP status (a number), the provider's own
+   * numeric result code, the JS error class for an uncoded failure. Never a key, header, URL, query, body, coordinate
+   * or client address — nothing from the request or the upstream body is copied.
+   */
+  const diagLog = log || ((...a) => console.warn(...a));
+  function upstreamFailure(p, err, stage) {
+    const category = (err && UPSTREAM_CODES[err.code] && err.code) || 'UNKNOWN';
+    const st = err && Number.isInteger(err.status) && err.status >= 100 && err.status <= 599 ? err.status : null;
+    const rc = err && typeof err.upstreamCode === 'string' && /^\d{1,4}$/.test(err.upstreamCode) ? err.upstreamCode : null;
+    const cls = category === 'UNKNOWN' && err && typeof err.name === 'string' && /^[A-Za-z]{1,40}$/.test(err.name) ? err.name : null;
+    diagLog('[LIVON DATA] upstream ' + JSON.stringify({ provider: p.id, stage, category, upstreamStatus: st, resultCode: rc, errorClass: cls, timeout: category === 'TIMEOUT' }));
+    return category;
+  }
   /* diagnostics: counters + fixed codes per provider id — nothing request-specific is kept */
   const diag = new Map();
   const rec = id => { if (!diag.has(id)) diag.set(id, { requests: 0, cacheHits: 0, cacheMisses: 0, upstreamLoads: 0, status: null, lastErrorCategory: null, lastAt: null }); return diag.get(id); };
@@ -328,7 +343,7 @@ export function createDataHandler({ env = process.env, fetcher = fetch, cache = 
     let data;
     rec(p.id).requests++;
     try { data = await searchPage(p, params, ctx); outcome(p.id, 'available'); }
-    catch (err) { if (err instanceof DataError) throw err; outcome(p.id, stateForError(err && err.code), (err && UPSTREAM_CODES[err.code] && err.code) || 'UNKNOWN'); const m = UPSTREAM_CODES[err && err.code] || [502, 'UPSTREAM_ERROR']; throw new DataError(m[0], m[1]); }
+    catch (err) { if (err instanceof DataError) throw err; outcome(p.id, stateForError(err && err.code), upstreamFailure(p, err, 'search')); const m = UPSTREAM_CODES[err && err.code] || [502, 'UPSTREAM_ERROR']; throw new DataError(m[0], m[1]); }
     const out = { ok: true, provider: p.id, page: params.page, limit: lim, total: data.total, hasMore: data.hasMore, fetchedAt: data.fetchedAt, cached: data.cached, items: data.items };
     if (data.photos) out.photos = data.photos;
     return json(res, 200, out);
@@ -377,7 +392,7 @@ export function createDataHandler({ env = process.env, fetcher = fetch, cache = 
       let data;
       rec(p.id).requests++;
       try { data = await entities(p, p.postFilter ? {} : filter, { ip: clientAddress(req, env) }); outcome(p.id, 'available'); }
-      catch (err) { if (err instanceof DataError) throw err; outcome(p.id, stateForError(err && err.code), (err && UPSTREAM_CODES[err.code] && err.code) || 'UNKNOWN'); const m = UPSTREAM_CODES[err && err.code] || [502, 'UPSTREAM_ERROR']; throw new DataError(m[0], m[1]); }
+      catch (err) { if (err instanceof DataError) throw err; outcome(p.id, stateForError(err && err.code), upstreamFailure(p, err, 'list')); const m = UPSTREAM_CODES[err && err.code] || [502, 'UPSTREAM_ERROR']; throw new DataError(m[0], m[1]); }
       /* post-filter providers: one cached window, filtered per request (no extra upstream call per filter) */
       const all = p.postFilter && Object.keys(filter).length ? data.items.filter(e => p.match(e, filter)) : data.items;
       const start = (page - 1) * limit;
