@@ -203,8 +203,8 @@ export function createFamilyView({ host, sharing, help, profile, familyConnectio
         'ul',
         { class: 'og-family-points' },
         el('li', { text: '기본은 공유 안 함이에요. 가족과 연결만 해서는 아무것도 보이지 않아요.' }),
-        el('li', { text: '공유를 켜면 가족마다, 항목마다 한 번 더 확인해요.' }),
-        el('li', { text: '언제든 끌 수 있고, 끄면 바로 보이지 않아요.' }),
+        el('li', { text: '공유를 켤 때는 가족마다, 항목마다 한 번 더 확인하도록 만들 거예요.' }),
+        el('li', { text: '고른 내용은 지금도 언제든 끌 수 있어요. 연결한 뒤에는 끄면 바로 보이지 않게 만들 거예요.' }),
         el('li', { text: '가족이 무엇을 언제 봤는지 내가 확인할 수 있게 만들 거예요.' }),
         el('li', { text: '건강 메모, 증상 내용, 일기, 생활비는 공유 대상이 아니에요.' })
       )

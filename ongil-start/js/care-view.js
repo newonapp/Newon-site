@@ -304,7 +304,7 @@ export function createCareView({ host, doc, saved, profile, sources, onFamily, o
         },
       });
       put(body, 
-        el('div', { class: 'og-dialog__actions' }, saveBtn, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-care-family-open': 'true', text: '가족에게 보내기', onclick: () => openDetail(item, null, 'family') }), close),
+        el('div', { class: 'og-dialog__actions' }, saveBtn, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-care-family-open': 'true', text: '가족에게 보여주기', onclick: () => openDetail(item, null, 'family') }), close),
         el('p', { class: 'og-home-note', text: '예약, 신청, 결제는 ONGIL에서 할 수 없어요. 이용하려면 기관이나 공식 안내로 직접 문의하세요.' })
       );
     }

@@ -1094,7 +1094,9 @@ test('RH-39 truthful AI copy: a helper for fixed requests — no model, no free 
   never(['무엇이든 물어', '뭐든지 물어', 'AI가 답변', 'AI가 알려', '인공지능이', '챗봇', 'ChatGPT', 'GPT', '생각하고 있어요', '답변을 생성', '학습했', '똑똑한']);
   assert.ok(HTML.includes('ONGIL에서 할 일을 찾아드려요. 정해진 요청만 알아듣고, 자유로운 대화는 아직 하지 않아요.'));
   assert.match(JS['assistant-intents.js'], /export const MODEL = Object\.freeze\(\{ connected: false, provider: null, freeChat: false, medicalAdvice: false \}\);/);
-  assert.equal(T.MESSAGES.HEALTH, 'ONGIL은 건강 상태를 판단하거나 약을 권하지 않아요. 몸이 걱정되면 의사나 약사와 상의해 주세요.');
+  /* Product Completion Audit V1 — WHY: a person who types "어지러워" got only "의사나 약사와 상의" with no word about urgent help.
+     BEFORE: the sentence ended at "상의해 주세요."  AFTER: the same sentence plus the fixed 119 line. Still no judgement. */
+  assert.equal(T.MESSAGES.HEALTH, 'ONGIL은 건강 상태를 판단하거나 약을 권하지 않아요. 몸이 걱정되면 의사나 약사와 상의해 주세요. 급하다고 느끼면 119에 직접 전화해 주세요.');
   never(['진단 결과', '진단해 드', '가능성이 높습니다', '의심됩니다', '복용하세요', '드세요.', '응급입니다', '안전을 확인했', '건강 점수', '위험도']);
   /* every sentence that mentions 119 tells the person to call themselves */
   for (const s of COPY.split(/[.\n]/).filter((x) => /119/.test(x) && /[가-힣]/.test(x))) assert.match(s, /직접 전화/, s.trim());
@@ -1190,7 +1192,7 @@ test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', ()
   assert.equal(assistant.tools.ids().length, 22);
   const tests = fs.readdirSync(path.join(ROOT, 'tests/ongil')).filter((f) => f.endsWith('.test.mjs'));
   // Phase 12: production-release.test.mjs was added (BEFORE 21, AFTER 22). API connection: production-api.test.mjs (BEFORE 22, AFTER 23). Completion V1: health-measures.test.mjs (AFTER 24).
-  assert.equal(tests.length, 26); // Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs
+  assert.equal(tests.length, 27); // Completion V2: + health-calendar.test.mjs · Completion V3: + emergency-contacts.test.mjs · Product Completion Audit V1: + product-completion.test.mjs (BEFORE 26, AFTER 27)
   for (const f of ['livon', 'server/livon', 'tests/livon']) assert.ok(fs.existsSync(path.join(ROOT, f)), `${f} is still there, untouched by ONGIL`);
   assert.equal(fs.existsSync(path.join(ROOT, 'server/ongil')), false);
   const doc = read('docs/ongil/PHASE_11_RELEASE_HARDENING_V1.md');

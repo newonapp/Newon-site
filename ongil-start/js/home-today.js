@@ -6,7 +6,7 @@
  */
 import { el, clear } from './dom.js';
 import { createCard, choiceButton, moreLinks } from './home-ui.js';
-import { createListCard } from './home-list.js';
+import { createListCard, STORAGE_ERROR_TEXT } from './home-list.js';
 import { formatTime, dateKey } from './dates.js';
 import { LIFE_LIMITS } from './life-contracts.js';
 
@@ -63,9 +63,10 @@ export function createCheckInCard({ checkIn, onChange }) {
             class: 'og-btn og-btn--text',
             text: '오늘 안부 지우기',
             onclick: () => {
-              checkIn.clear();
-              card.say('오늘의 안부를 지웠습니다.');
-              if (onChange) onChange();
+              /* Product Completion Audit V1: a clear the store did not write is not announced as done */
+              const cleared = checkIn.clear();
+              card.say(cleared ? '오늘의 안부를 지웠습니다.' : STORAGE_ERROR_TEXT);
+              if (cleared && onChange) onChange();
               render();
               card.focusTitle();
             },

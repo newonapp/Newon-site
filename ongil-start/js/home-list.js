@@ -26,7 +26,13 @@ export const STORAGE_ERROR_TEXT = '이 기기에 저장하지 못했어요. 브�
 /* Completion V3: a delete the store did not write is never announced as done */
 const removeFailText = (r, title) => (r.reason === 'NOT_FOUND' ? `‘${title}’은(는) 이미 지워졌어요.` : STORAGE_ERROR_TEXT);
 
+/* Product Completion Audit V1: Home and 내 생활 draw the same record in two cards that are both in the page, so a
+   checkbox id is made unique per card — a label must tick its own box, not the one on a hidden screen */
+let CARD_SEQ = 0;
+const TOGGLE_FAIL_TEXT = '바꾸지 못했어요. 화면을 다시 연 뒤 한 번 더 해 주세요.';
+
 export function createListCard({ card, config }) {
+  const uid = ++CARD_SEQ;
   let mode = { type: 'idle', id: null };
   let shown = LIST_PAGE;
   /* a row the user is working on (or has just added) must be on screen even when it sorts past the first page */
@@ -45,7 +51,9 @@ export function createListCard({ card, config }) {
 
   function form(item) {
     const fields = config.fields.map((f) => ({ spec: f, ...makeField(f, item ? (typeof f.read === 'function' ? f.read(item) : item[f.name]) : typeof f.initial === 'function' ? f.initial() : f.initial) }));
+    const errorId = `og-list-error-${uid}-${item ? item.id : 'new'}`;
     const error = el('p', { class: 'og-form-error', role: 'alert' });
+    error.id = errorId;
     const node = el(
       'form',
       { class: 'og-form og-home-form', novalidate: true, 'aria-label': item ? `${config.itemName} 고치기` : `${config.itemName} 추가` },
@@ -62,10 +70,17 @@ export function createListCard({ card, config }) {
     node.addEventListener('submit', (event) => {
       event.preventDefault();
       const values = Object.fromEntries(fields.map((f) => [f.spec.name, f.get()]));
-      for (const f of fields) f.input.removeAttribute('aria-invalid');
+      for (const f of fields) {
+        f.input.removeAttribute('aria-invalid');
+        if (f.described === undefined) f.described = f.input.getAttribute('aria-describedby') || '';
+        if (f.described) f.input.setAttribute('aria-describedby', f.described);
+        else f.input.removeAttribute('aria-describedby');
+      }
       const result = item ? config.onUpdate(item.id, values) : config.onAdd(values);
       if (!result.ok) {
         const bad = fields.find((f) => f.spec.errors && f.spec.errors.includes(result.reason)) || fields[0];
+        /* the message stays tied to its field, so it is read again when the field is focused later */
+        bad.input.setAttribute('aria-describedby', bad.described ? `${bad.described} ${errorId}` : errorId);
         bad.input.setAttribute('aria-invalid', 'true');
         /* Phase 11: a write the browser refused (storage full or switched off) says so — "try again" alone does not help */
         error.textContent = result.reason === 'STORAGE_UNAVAILABLE' || result.reason === 'STORAGE_FULL' ? STORAGE_ERROR_TEXT : config.errorText(result.reason);
@@ -87,16 +102,19 @@ export function createListCard({ card, config }) {
     /* a row that is history only (Phase 11: a mark of a medication since removed from the plan) is shown, not changed */
     const locked = typeof config.isLocked === 'function' && config.isLocked(item);
     if (!checkable || locked) return el('div', { class: 'og-home-item__main og-home-item__main--plain' }, el('p', { class: 'og-home-item__title', text: locked && done ? `${d.title} (${config.doneWord})` : d.title }), meta, text);
-    const checkId = `og-check-${item.id}`;
+    const checkId = `og-check-${uid}-${item.id}`;
     const box = el('input', {
       type: 'checkbox',
       id: checkId,
       class: 'og-home-item__check',
       checked: done,
       onchange: (event) => {
-        config.onToggle(item, event.target.checked);
-        card.say(config.toggleText(item, event.target.checked));
-        changed();
+        /* a mark the store did not write is never announced as done (the box goes back when the card redraws) */
+        const r = config.onToggle(item, event.target.checked);
+        const failed = r === false || (!!r && r.ok === false);
+        if (failed) card.say(r && r.reason && r.reason !== 'STORAGE_UNAVAILABLE' && r.reason !== 'STORAGE_FULL' ? TOGGLE_FAIL_TEXT : STORAGE_ERROR_TEXT);
+        else card.say(config.toggleText(item, event.target.checked));
+        if (!failed) changed();
         setMode({ type: 'idle', id: null }, `check:${item.id}`);
       },
     });

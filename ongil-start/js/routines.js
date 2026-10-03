@@ -30,9 +30,12 @@ export function createRoutineStore(storage, { now = () => Date.now(), today = ()
   /* active routines scheduled on the weekday of `date`, each with that day's completion */
   function listForDate(date = today()) {
     const weekday = weekdayOf(date);
+    /* a day that was marked keeps its routine even after the routine's days were changed or it was paused */
+    const day = readLogs()[date];
+    const marked = (id) => isPlainObject(day) && isPlainObject(day[id]) && day[id].completed === true;
     return list
       .read()
-      .filter((r) => r.active && r.daysOfWeek.includes(weekday))
+      .filter((r) => (r.active && r.daysOfWeek.includes(weekday)) || marked(r.id))
       .sort(order)
       .map((r) => ({ ...r, completed: isCompleted(r.id, date) }));
   }

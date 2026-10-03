@@ -41,24 +41,34 @@ export function renderArea(area, host) {
   if (area.link) primary.append(el('p', { class: 'og-form__actions' }, el('a', { class: 'og-btn og-btn--primary', href: area.link.href, 'data-og-area-link': area.id, text: area.link.label })));
   wrap.append(primary);
 
-  if (area.modules.length) {
+  /*
+   * Product Completion Audit V1: what works and what does not are listed apart. Before, every module sat under
+   * "준비 중인 기능 — 아래 항목은 아직 사용할 수 없습니다", including the ones that work (긴급 연락망, 복약 …).
+   */
+  const chip = (m) =>
+    el(
+      'li',
+      { class: 'og-chip og-chip--slot', 'data-og-slot': `${area.id}.${m.id}`, 'data-og-available': m.available ? 'true' : 'false' },
+      el('h4', { text: m.title }),
+      el('p', { text: m.description }),
+      el('p', { class: 'og-chip__status', text: m.available ? '사용할 수 있음' : '준비 중' })
+    );
+  const ready = area.modules.filter((m) => m.available);
+  const pending = area.modules.filter((m) => !m.available);
+  if (ready.length) {
+    const readyTitleId = `og-${area.id}-ready-title`;
+    wrap.append(
+      el('h3', { class: 'og-sub', id: readyTitleId, text: '지금 쓸 수 있는 기능' }),
+      el('p', { class: 'og-sub__lead', text: area.readyLead || '아래 기능은 지금 쓸 수 있습니다.' }),
+      el('ul', { class: 'og-chips og-chips--slots', 'aria-labelledby': readyTitleId, 'data-og-modules-group': 'ready' }, ready.map(chip))
+    );
+  }
+  if (pending.length) {
     const listTitleId = `og-${area.id}-modules-title`;
     wrap.append(
       el('h3', { class: 'og-sub', id: listTitleId, text: area.id === 'store' ? '준비 중인 분류' : '준비 중인 기능' }),
       el('p', { class: 'og-sub__lead', text: '아래 항목은 아직 사용할 수 없습니다.' }),
-      el(
-        'ul',
-        { class: 'og-chips og-chips--slots', 'aria-labelledby': listTitleId },
-        area.modules.map((m) =>
-          el(
-            'li',
-            { class: 'og-chip og-chip--slot', 'data-og-slot': `${area.id}.${m.id}`, 'data-og-available': m.available ? 'true' : 'false' },
-            el('h4', { text: m.title }),
-            el('p', { text: m.description }),
-            el('p', { class: 'og-chip__status', text: m.available ? '사용할 수 있음' : '준비 중' })
-          )
-        )
-      )
+      el('ul', { class: 'og-chips og-chips--slots', 'aria-labelledby': listTitleId, 'data-og-modules-group': 'pending' }, pending.map(chip))
     );
   }
   host.append(wrap);

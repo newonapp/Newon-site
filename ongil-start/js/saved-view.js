@@ -89,8 +89,9 @@ export function createSavedView({ host, saved, storage, origins = {} }) {
           'aria-label': `‘${item.title}’ 저장 취소`,
           text: '저장 취소',
           onclick: () => {
-            saved.unsave(item.type, item.id);
-            announce(status, `‘${item.title}’ 저장을 취소했습니다.`);
+            /* Product Completion Audit V1: only a removal that was written is announced */
+            const removed = saved.unsave(item.type, item.id);
+            announce(status, removed ? `‘${item.title}’ 저장을 취소했습니다.` : '저장을 취소하지 못했어요. 브라우저의 저장 공간을 확인한 뒤 다시 해 주세요.');
             /* the row is gone after the list re-renders: keep focus on the screen */
             const next = host.querySelector('[data-og-saved-filter]') || document.getElementById('og-saved-title');
             if (next) next.focus();

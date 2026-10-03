@@ -153,3 +153,11 @@ html[data-og-view], html[data-og-view] body { height: auto; overflow: auto; over
   .og-chips { grid-template-columns: 1fr; }
   .gnav--ongil .gnav__nav { display: none; }
 }
+
+/* Product Completion Audit V1 — mobile menu: a visible way out (the sheet covers the button that opened it and, on a
+   narrow phone, the backdrop too), readable link text, and a mark on the screen that is showing */
+.gnav--ongil .og-menu-close { display: flex; align-items: center; justify-content: center; margin: 0 0 0.6rem auto; min-height: 44px; min-width: 44px; padding: 0.5rem 0.9rem; border: 1px solid var(--gnav-border, currentColor); border-radius: 9px; background: transparent; color: var(--gnav-text-strong, inherit); font: inherit; font-size: 1rem; font-weight: 700; cursor: pointer; }
+.gnav--ongil .og-menu-close:focus-visible { outline: 2px solid var(--gnav-text-strong, currentColor); outline-offset: 2px; }
+.gnav--ongil .gnav-mobile__sublink { font-size: 1rem; }
+.gnav--ongil .gnav-mobile__sublink[aria-current="page"] { font-weight: 700; color: var(--gnav-text-strong, inherit); }
+.gnav--ongil .gnav-mobile__sublink[aria-current="page"]::after { content: "✓"; margin-left: auto; font-weight: 700; }

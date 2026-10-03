@@ -48,7 +48,7 @@ const cap = (label, mode, sources = []) => Object.freeze({ label, mode, sources:
 export const FEATURE_CAPABILITIES = Object.freeze({
   home: Object.freeze([cap('오늘의 안부·일정·할 일·루틴·복약·생활', 'LOCAL_READY'), cap('내 주변 강좌', 'PUBLIC_DATA_DEPENDENT', ['lifelong-class']), cap('가족 소식', 'BACKEND_REQUIRED')]),
   life: Object.freeze([cap('캘린더·할 일·루틴·식사·물·운동·수면·생활비·기록', 'LOCAL_READY'), cap('건강 기록 (안부·증상·복약·건강 메모)', 'LOCAL_READY')]),
-  health: Object.freeze([cap('안부와 건강 기록 (내 생활 › 건강에서)', 'LOCAL_READY'), cap('도움 요청 보내기·긴급 연락', 'BACKEND_REQUIRED'), cap('병원·검진', 'FUTURE')]),
+  health: Object.freeze([cap('안부와 건강 기록 (내 생활 › 건강에서)', 'LOCAL_READY'), cap('긴급 연락망·병원 일정·건강검진', 'LOCAL_READY'), cap('도움 요청 보내기', 'BACKEND_REQUIRED')]),
   family: Object.freeze([cap('공유할 내용 고르기·도움 요청 적어 두기', 'LOCAL_READY'), cap('가족 연결·전달', 'BACKEND_REQUIRED')]),
   care: Object.freeze([cap('기관·시설 찾기', 'PUBLIC_DATA_DEPENDENT', ['care-facility']), cap('돌봄 서비스 정보', 'FUTURE', ['care-services']), cap('복지 혜택 정보', 'FUTURE', ['care-benefits'])]),
   enjoy: Object.freeze([cap('강좌·프로그램', 'PUBLIC_DATA_DEPENDENT', ['lifelong-class']), cap('관광 정보·장소', 'PUBLIC_DATA_DEPENDENT', ['tour-place', 'enjoy-place']), cap('모임', 'FUTURE')]),

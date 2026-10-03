@@ -9,7 +9,7 @@ import { el, clear } from './dom.js';
 import { USAGE_MODES, AGE_RANGES, REGIONS, INTERESTS, NEEDS, NOTIFICATION_PRESETS, FAMILY_INTENTS } from './contracts.js';
 
 const COPY = Object.freeze({
-  welcome: { title: 'ONGIL에 오신 것을 환영합니다', lead: '몇 가지만 알려 주시면 ONGIL을 나에게 맞게 준비합니다. 질문은 7개이고, 답하지 않고 넘어가도 됩니다.', note: '회원가입은 필요 없습니다. 답한 내용은 이 기기에만 저장됩니다.' },
+  welcome: { title: 'ONGIL에 오신 것을 환영합니다', lead: '몇 가지만 알려 주세요. 지역은 주변 찾기의 기본값으로, 알림 선택은 알림 설정으로 쓰고, 나머지는 내 정보에 적어 둡니다. 질문은 7개이고, 답하지 않고 넘어가도 됩니다.', note: '회원가입은 필요 없습니다. 답한 내용은 이 기기에만 저장됩니다.' },
   usage: { title: 'ONGIL을 누가 사용하나요?', type: 'radio', options: USAGE_MODES },
   age: { title: '연령대를 알려 주세요', type: 'radio', options: AGE_RANGES },
   region: { title: '사는 지역은 어디인가요?', type: 'select', options: REGIONS },
@@ -130,7 +130,7 @@ export function renderInvitation({ host, onboarding, onOpen }) {
       'div',
       { class: 'og-invite', role: 'region', 'aria-label': '처음 설정' },
       el('h3', { class: 'og-invite__title', text: fresh ? '처음 오셨나요?' : '처음 설정을 마치지 않았습니다' }),
-      el('p', { text: fresh ? '질문 7개로 ONGIL을 나에게 맞게 준비할 수 있습니다. 회원가입은 필요 없고, 나중에 해도 됩니다.' : '남은 질문에 답하면 ONGIL을 나에게 맞게 준비합니다. 내 정보에서도 언제든 할 수 있습니다.' }),
+      el('p', { text: fresh ? '질문 7개로 지역과 알림을 미리 정해 둘 수 있습니다. 회원가입은 필요 없고, 나중에 해도 됩니다.' : '남은 질문에 답하면 지역과 알림 설정을 마칩니다. 내 정보에서도 언제든 할 수 있습니다.' }),
       el('div', { class: 'og-form__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--primary', text: fresh ? '처음 설정 시작하기' : '이어서 하기', onclick: (event) => onOpen(event.currentTarget) }))
     )
   );

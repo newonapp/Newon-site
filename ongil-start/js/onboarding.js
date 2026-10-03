@@ -47,6 +47,9 @@ export function createOnboarding({ storage, profile, now = () => Date.now() }) {
       answers: cleanAnswers(src.answers),
       completedAt: Number.isSafeInteger(src.completedAt) ? src.completedAt : 0,
       updatedAt: Number.isSafeInteger(src.updatedAt) ? src.updatedAt : 0,
+      /* the notification preset complete() last wrote to Preferences ('' = none yet). A state saved before this field
+         existed and already completed had applied its answer. */
+      appliedNotifications: ids(NOTIFICATION_PRESETS).includes(src.appliedNotifications) ? src.appliedNotifications : Number.isSafeInteger(src.completedAt) && src.completedAt > 0 ? cleanAnswers(src.answers).notifications : '',
     };
   }
   function write(state) {
@@ -74,7 +77,18 @@ export function createOnboarding({ storage, profile, now = () => Date.now() }) {
         answers: cleanAnswers({ usage: p.usageMode, age: p.ageRange, region: p.region, interests: p.interests, needs: p.needs, notifications: s.answers.notifications, family: p.familyIntent }),
       });
     }
-    return write({ ...s, status: 'in_progress', stepIndex: s.stepIndex >= STEPS.length - 1 ? 0 : s.stepIndex });
+    /*
+     * Product Completion Audit V1: a draft left earlier ("나중에 하기") is resumed, but 내 정보 may have been filled in
+     * since. An answer the draft does not have is taken from the profile, and when the profile was saved after the
+     * draft, the profile's answers win — so finishing the flow can never blank what is already in 내 정보.
+     */
+    const p = profile.getProfile();
+    const fromProfile = { usage: p.usageMode, age: p.ageRange, region: p.region, interests: p.interests, needs: p.needs, family: p.familyIntent };
+    const profileNewer = p.updatedAt > s.updatedAt;
+    const has = (v) => (Array.isArray(v) ? v.length > 0 : !!v);
+    const answers = { ...s.answers };
+    for (const key of Object.keys(fromProfile)) if (has(fromProfile[key]) && (profileNewer || !has(answers[key]))) answers[key] = fromProfile[key];
+    return write({ ...s, status: 'in_progress', stepIndex: s.stepIndex >= STEPS.length - 1 ? 0 : s.stepIndex, answers: cleanAnswers(answers) });
   }
 
   function answer(step, value) {
@@ -107,6 +121,8 @@ export function createOnboarding({ storage, profile, now = () => Date.now() }) {
   function skip() {
     const s = read();
     if (s.status === 'completed') return view(s);
+    /* a flow that was completed once and only reopened ("다시 하기") stays completed when it is left */
+    if (s.completedAt > 0) return write({ ...s, status: 'completed', stepIndex: STEPS.length - 1 });
     return write({ ...s, status: 'skipped' });
   }
 
@@ -114,8 +130,11 @@ export function createOnboarding({ storage, profile, now = () => Date.now() }) {
     const s = read();
     const a = s.answers;
     profile.updateProfile({ usageMode: a.usage, ageRange: a.age, region: a.region, interests: a.interests, needs: a.needs, familyIntent: a.family });
-    if (a.notifications) profile.updatePreferences({ notifications: notificationPreset(a.notifications) });
-    return write({ ...s, status: 'completed', stepIndex: STEPS.length - 1, completedAt: now() });
+    /* the preset is written only when the answer is new: going through the flow again without touching this step keeps
+       the per-kind choices made later in 내 정보 › 알림 설정 */
+    const applyPreset = !!a.notifications && a.notifications !== s.appliedNotifications;
+    if (applyPreset) profile.updatePreferences({ notifications: notificationPreset(a.notifications) });
+    return write({ ...s, status: 'completed', stepIndex: STEPS.length - 1, completedAt: now(), appliedNotifications: a.notifications || s.appliedNotifications });
   }
 
   function reset() {

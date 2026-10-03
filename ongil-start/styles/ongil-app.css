@@ -154,3 +154,7 @@ a.og-item__title { display: inline-flex; align-items: center; min-height: var(--
 @media (max-width: 480px) {
   .og-admin-value { flex-basis: 100%; text-align: left; color: var(--og-ink-soft); }
 }
+
+/* Product Completion Audit V1 */
+.og-field[hidden] { display: none; } /* display:grid above beat the browser's [hidden] rule: a hidden field stayed on screen */
+html[data-og-view]:has(dialog[open]), html[data-og-view]:has(dialog[open]) body { overflow: hidden; } /* the page behind a modal dialog does not scroll */

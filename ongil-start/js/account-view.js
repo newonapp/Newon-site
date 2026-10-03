@@ -144,7 +144,7 @@ export function createAccountView({ host, profile, account, notifications, onboa
   function setupSection() {
     const s = onboarding.state();
     const label = s.status === 'completed' ? '처음 설정 다시 하기' : s.status === 'new' ? '처음 설정 시작하기' : '처음 설정 이어서 하기';
-    return section('처음 설정', el('p', { text: '질문 7개로 ONGIL을 나에게 맞게 준비합니다. 답하지 않고 넘어가도 됩니다.' }), el('div', { class: 'og-form__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost', text: label, onclick: (event) => onOpenOnboarding(event.currentTarget) })));
+    return section('처음 설정', el('p', { text: '질문 7개로 지역과 알림을 정해 둡니다. 답하지 않고 넘어가도 됩니다.' }), el('div', { class: 'og-form__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost', text: label, onclick: (event) => onOpenOnboarding(event.currentTarget) })));
   }
 
   function dataSection() {
@@ -161,7 +161,7 @@ export function createAccountView({ host, profile, account, notifications, onboa
       },
     });
     confirmBox.append(
-      el('p', { text: '내 정보와 설정, 저장한 항목, 그리고 일정·할 일·루틴·복약·식사·운동·수면·생활비·기록·안부까지 이 기기에서 모두 지웁니다. 증상과 건강 메모, 가족 공유 설정과 도움 요청도 함께 지웁니다. 커뮤니티 글과 모임 초안도 함께 지웁니다. 되돌릴 수 없습니다.' }),
+      el('p', { text: '내 정보와 설정, 저장한 항목, 그리고 일정·할 일·루틴·복약·식사·운동·수면·생활비·기록·안부까지 이 기기에서 모두 지웁니다. 증상과 건강 메모, 가족 공유 설정과 도움 요청도 함께 지웁니다. 건강 수치(체중·혈압·혈당·맥박), 병원 일정과 건강검진, 긴급 연락망도 함께 지웁니다. 커뮤니티 글과 모임 초안도 함께 지웁니다. 알림과 이용 횟수도 지웁니다. 되돌릴 수 없습니다.' }),
       el(
         'div',
         { class: 'og-form__actions' },
@@ -184,6 +184,9 @@ export function createAccountView({ host, profile, account, notifications, onboa
             if (typeof onErased === 'function') onErased();
             render();
             announce(status, ok ? '이 기기의 ONGIL 데이터를 모두 지웠습니다.' : '일부 데이터를 지우지 못했습니다.');
+            /* the pressed button is gone after the redraw: keep focus on the screen */
+            const title = document.getElementById('og-account-title');
+            if (title) title.focus();
           },
         })
       )

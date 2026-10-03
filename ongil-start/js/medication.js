@@ -20,6 +20,10 @@ import { SCHEMA_VERSION, ContractError, isPlainObject } from './contracts.js';
 import { normalizeMedication, normalizeMedicationLog, newId, pruneDays, LIFE_LIMITS, isId, medicationDaysOn } from './life-contracts.js';
 import { dateKey, isDateKey, weekdayOf } from './dates.js';
 import { writableDay } from './checkin.js';
+import { MAX_VALUE_CHARS } from './storage.js';
+
+/* the newest days of marks that are never trimmed to make room (see writeLogs) */
+export const LOG_KEEP_MIN_DAYS = 31;
 
 export function createMedicationStore(storage, { now = () => Date.now(), today = () => dateKey(now()), makeId = () => newId('md', now()) } = {}) {
   function read() {
@@ -47,7 +51,18 @@ export function createMedicationStore(storage, { now = () => Date.now(), today =
     const raw = storage.get('medicationLogs', null);
     return isPlainObject(raw) && isPlainObject(raw.items) ? raw.items : {};
   }
-  const writeLogs = (items) => storage.set('medicationLogs', { schemaVersion: SCHEMA_VERSION, items: pruneDays(items, LIFE_LIMITS.medicationLogDays) });
+  /*
+   * Product Completion Audit V1: with many medications the year of marks grows past what one collection may hold, and
+   * from then on no mark could be saved at all. When the log does not fit, the oldest days go first (never the last
+   * LOG_KEEP_MIN_DAYS days) so today's mark is always written.
+   */
+  function writeLogs(items) {
+    const kept = { ...pruneDays(items, LIFE_LIMITS.medicationLogDays) };
+    const wrap = () => ({ schemaVersion: SCHEMA_VERSION, items: kept });
+    const days = Object.keys(kept).sort();
+    while (days.length > LOG_KEEP_MIN_DAYS && JSON.stringify(wrap()).length > MAX_VALUE_CHARS) delete kept[days.shift()];
+    return storage.set('medicationLogs', wrap());
+  }
 
   function list() {
     return read().sort((a, b) => (a.time === '' ? 1 : 0) - (b.time === '' ? 1 : 0) || a.time.localeCompare(b.time) || a.createdAt - b.createdAt || a.id.localeCompare(b.id));
@@ -129,7 +144,7 @@ export function createMedicationStore(storage, { now = () => Date.now(), today =
     const time = before && typeof before.name === 'string' && before.name ? before.time : medication.time;
     const log = normalizeMedicationLog({ medicationId: id, date, taken: taken === true, name, time, updatedAt: now() }, now());
     day[id] = { taken: log.taken, updatedAt: log.updatedAt, ...(log.name ? { name: log.name, time: log.time } : {}) };
-    return { ok: writeLogs({ ...logs, [date]: day }), log };
+    return writeLogs({ ...logs, [date]: day }) ? { ok: true, log } : { ok: false, reason: 'STORAGE_UNAVAILABLE', log };
   }
 
   function isTaken(id, date = today()) {

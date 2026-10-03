@@ -85,13 +85,14 @@ export function createJournalSection({ journal, now = () => Date.now(), onChange
       addLabel: '기록 남기기',
       checkable: false,
       afterChange: onChange,
-      before: () => (journal.count() > JOURNAL_PAGE ? el('p', { class: 'og-home-note', text: `최근 ${JOURNAL_PAGE}개만 보입니다. 전체 ${journal.count()}개가 저장되어 있습니다.` }) : el('span', { hidden: true })),
       fields: [
         { name: 'date', label: '날짜', type: 'date', required: true, initial: () => dateKey(now()), errors: ['INVALID_DATE'] },
         { name: 'mood', label: '오늘 기분', type: 'select', required: false, options: JOURNAL_MOODS },
         { name: 'text', label: '글', type: 'textarea', required: true, maxlength: LIFE_LIMITS.journalText, hint: `${LIFE_LIMITS.journalText}자까지 쓸 수 있습니다.`, errors: ['INVALID_TEXT'] },
       ],
-      getItems: () => journal.recent(JOURNAL_PAGE),
+      /* Product Completion Audit V1: every entry can be reached (the list card pages with 더 보기) — an entry that cannot
+         be seen cannot be changed or deleted either */
+      getItems: () => journal.recent(LIFE_LIMITS.journalEntries),
       describe: (item) => ({ title: formatDateKey(item.date), meta: [labelOf(JOURNAL_MOODS, item.mood)].filter(Boolean), text: item.text }),
       onAdd: (values) => journal.add(values),
       onUpdate: (id, values) => journal.update(id, values),

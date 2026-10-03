@@ -19,7 +19,7 @@
  */
 import { el, clear } from './dom.js';
 import { createCard, choiceButton, makeField, nextId } from './home-ui.js';
-import { createListCard } from './home-list.js';
+import { createListCard, STORAGE_ERROR_TEXT } from './home-list.js';
 import { LIFE_LIMITS, CHECKIN_STATUSES, CHECKIN_BODY, CHECKIN_ENERGY, CHECKIN_PAIN, SYMPTOM_TYPES, SYMPTOM_FEELINGS, ALL_DAYS, MEASURE_TYPES, MEASURE_TIMINGS, MEASURE_LIMITS, measureText, measureType } from './life-contracts.js';
 import { dateKey, addDays, formatDateKey, formatTime, WEEKDAY_LABELS } from './dates.js';
 import { dayWord, DAILY_BACK_DAYS } from './life-daily.js';
@@ -169,9 +169,9 @@ export function createHealthCheckInSection({ checkIn, now = () => Date.now(), ge
           question: `${word} 적은 기분·몸 상태·에너지·통증·메모를 모두 지울까요? 되돌릴 수 없습니다.`,
           focusKey: 'checkin',
           onConfirm: () => {
-            checkIn.remove(date);
-            card.say(`${word} 상태 기록을 지웠습니다.`);
-            if (onChange) onChange();
+            const removed = checkIn.remove(date);
+            card.say(removed ? `${word} 상태 기록을 지웠습니다.` : STORAGE_ERROR_TEXT);
+            if (removed && onChange) onChange();
             render();
             card.focusTitle();
           },
@@ -249,9 +249,9 @@ export function createSymptomsSection({ symptoms, now = () => Date.now(), getDat
           question: `${word} 적은 증상과 메모를 모두 지울까요? 되돌릴 수 없습니다.`,
           focusKey: 'symptoms',
           onConfirm: () => {
-            symptoms.remove(date);
-            card.say(`${word} 증상 기록을 지웠습니다.`);
-            if (onChange) onChange();
+            const removed = symptoms.remove(date);
+            card.say(removed ? `${word} 증상 기록을 지웠습니다.` : STORAGE_ERROR_TEXT);
+            if (removed && onChange) onChange();
             render();
             card.focusTitle();
           },

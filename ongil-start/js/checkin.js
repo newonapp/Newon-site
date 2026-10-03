@@ -58,7 +58,8 @@ export function createCheckInStore(storage, { now = () => Date.now(), today = ()
     for (const key of CHECKIN_FIELDS) {
       if (!(key in p)) continue;
       if (options[key] && p[key] !== '' && !options[key].some((o) => o.id === p[key])) continue;
-      next[key] = p[key];
+      /* a memo of spaces only is an emptied memo */
+      next[key] = key === 'memo' && typeof p[key] === 'string' && !p[key].trim() ? '' : p[key];
     }
     let item;
     try {

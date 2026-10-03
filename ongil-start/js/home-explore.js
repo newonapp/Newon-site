@@ -5,7 +5,7 @@
  * offers the five categories and sends the user to 즐길거리 — there are no programme entries to recommend yet.
  * 내 주변 asks a real data source only when the user presses the button, and says plainly when nothing can be shown.
  */
-import { el, clear } from './dom.js';
+import { el, clear, append } from './dom.js';
 import { createCard } from './home-ui.js';
 import { setRegionState } from './views.js';
 
@@ -23,13 +23,14 @@ export function createFamilyCard({ familyConnection, family = null }) {
     const open = family ? family.help.openCount() : 0;
     clear(card.body);
     card.root.dataset.ogState = 'empty';
-    card.body.append(
+    /* append() from dom.js skips an absent line; the native Node.append would print the word "null" */
+    append(card.body, [
       el('p', { class: 'og-home-empty', 'data-og-family-status': state.status, text: '아직 연결된 가족이 없어요.' }),
       chosen ? el('p', { class: 'og-home-count', 'data-og-family-chosen': String(chosen), text: `공유하도록 고른 항목 ${chosen}개 (연결 전이라 아무에게도 보이지 않아요)` }) : null,
       open ? el('p', { class: 'og-home-count', 'data-og-family-help': String(open), text: `적어 둔 도움 요청 ${open}개 (보내지 않음)` }) : null,
       el('p', { class: 'og-home-note', text: '가족 연결은 준비 중입니다. 연결하기 전에는 어떤 내용도 가족에게 전달되지 않습니다.' }),
-      el('div', { class: 'og-form__actions' }, el('a', { class: 'og-btn og-btn--ghost', href: '#family', text: '가족 화면 보기' }))
-    );
+      el('div', { class: 'og-form__actions' }, el('a', { class: 'og-btn og-btn--ghost', href: '#family', text: '가족 화면 보기' })),
+    ]);
   }
   render();
   return { card, render };
@@ -147,7 +148,7 @@ export function createNearbyCard({ profile, source, saved }) {
         card.root.dataset.ogState = result.state;
         if (result.state === 'ready') {
           setRegionState(zone, 'ready');
-          zone.append(el('ul', { class: 'og-home-items', 'aria-label': `${region} 지역 강좌` }, result.items.map(programRow)), result.attribution ? el('p', { class: 'og-home-note', text: `자료: ${result.attribution}` }) : null);
+          append(zone, [el('ul', { class: 'og-home-items', 'aria-label': `${region} 지역 강좌` }, result.items.map(programRow)), result.attribution ? el('p', { class: 'og-home-note', text: `자료: ${result.attribution}` }) : null]);
           card.say(`강좌 ${result.items.length}개를 찾았습니다.`);
         } else if (result.state === 'empty') {
           setRegionState(zone, 'empty', '지금 모집 중인 강좌를 찾지 못했어요.');

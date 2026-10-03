@@ -289,7 +289,15 @@ export function createCommunityView({ host, doc, posts, groups, meetups, saved, 
     if (confirm) {
       const cancel = el('button', { type: 'button', class: 'og-btn og-btn--ghost', text: '취소', onclick: () => openPost(id, null) });
       put(body, el('div', { class: 'og-confirm', role: 'group', 'aria-label': '지우기 확인' }, el('p', { text: `‘${post.title}’을(를) 지울까요? 되돌릴 수 없어요.` }), el('div', { class: 'og-form__actions' }, cancel, el('button', { type: 'button', class: 'og-btn og-btn--danger', 'data-og-post-delete-confirm': 'true', text: '지우기', onclick: () => {
-        posts.remove(id);
+        const removed = posts.remove(id);
+        if (removed && removed.ok === false) {
+          /* the post is still stored: say so instead of "지웠어요" */
+          d.close();
+          renderPosts();
+          cards.posts.say('글을 지우지 못했어요. 브라우저의 저장 공간을 확인한 뒤 다시 해 주세요.');
+          cards.posts.focusTitle();
+          return;
+        }
         if (saved.isSaved('POST', id)) saved.unsave('POST', id);
         d.close();
         renderPosts();

@@ -45,7 +45,7 @@ export const COLLECTIONS = Object.freeze([
   'analytics',
 ]);
 
-const MAX_VALUE_CHARS = 400000;
+export const MAX_VALUE_CHARS = 400000;
 
 export function storageKey(collection) {
   if (!COLLECTIONS.includes(collection)) throw new Error(`UNKNOWN_COLLECTION:${String(collection)}`);

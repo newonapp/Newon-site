@@ -70,7 +70,8 @@ export const AREAS = Object.freeze([
     notice:
       'ONGIL은 의료 진단이나 치료 판단을 대신하지 않습니다. 위급한 상황을 알아차리거나 대신 신고하지도 않습니다. 위급할 때는 119에 직접 전화해 주세요.',
     /* Phase 3: the records themselves live in 내 생활 › 건강 (one date bar with 생활); this area points there */
-    empty: '이 화면에 따로 저장된 기록은 없습니다. 건강 기록은 ‘내 생활 › 건강’에서 적고 날짜별로 다시 볼 수 있어요.',
+    empty: '이 화면의 긴급 연락망·병원 일정·건강검진 말고 따로 보여 드릴 기록은 없습니다. 안부·증상·복약·건강 수치는 ‘내 생활 › 건강’에서 적고 날짜별로 다시 볼 수 있어요.',
+    readyLead: '긴급 연락망·병원 일정·건강검진은 이 화면 위쪽에서, 나머지는 ‘내 생활 › 건강’에서 쓸 수 있습니다.',
     link: Object.freeze({ href: '#life/checkin', label: '내 생활 › 건강 열기' }),
     keywords: ['건강', '안부', '병원', '약'],
     modules: [

@@ -495,6 +495,12 @@ win.addEventListener('hashchange', () => {
   const hash = win.location.hash;
   if (hash && !resolveView(hash) && !inPageTarget(hash)) win.history.replaceState(null, '', hashFor(router.current()));
 });
+/* Product Completion Audit V1: going to another screen (the browser's Back included) closes an open dialog — a modal
+   must not stay over a screen it does not belong to. Closing is each dialog's own "닫기" path. */
+win.addEventListener('hashchange', () => {
+  if (!resolveView(win.location.hash)) return;
+  for (const d of doc.querySelectorAll('dialog[open]')) if (typeof d.close === 'function') d.close();
+});
 win.addEventListener('hashchange', () => {
   const hash = win.location.hash;
   const view = resolveView(hash);

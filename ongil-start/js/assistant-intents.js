@@ -142,8 +142,10 @@ const FAMILY = /(가족|엄마|아빠|어머니|아버지|아들|딸|자녀|손�
 const FAMILY_TO = new RegExp(`${FAMILY.source}[가-힣]{0,2}(에게|한테|께|이랑|랑|하고)`);
 const SHARE = /(보여|공유|알려 ?(주|줘)|전해|보내|전달)/;
 /* an emergency is never judged here: the person is told to call for help themselves */
-const EMERGENCY = /(응급|위급|구급|11[9])/;
-const HEALTH_WORD = /(약|증상|아프|아파|아픈|통증|병|혈압|혈당|열이|어지|기침|두통|건강|몸이|컨디션)/;
+/* Product Completion Audit V1: the words a person in trouble is likely to type get the same fixed sentence — still no
+   judgement of the situation, only "call for help yourself" */
+const EMERGENCY = /(응급|위급|구급|11[9]|112|살려|쓰러|의식이|숨이 ?(안|막)|숨을 ?못|가슴이 ?(아파|아픈|아프|답답|조여|조이))/;
+const HEALTH_WORD = /(약(?!속)|증상|아프|아파|아픈|통증|병|혈압|혈당|열이|어지|기침|두통|건강|몸이|컨디션)/;
 const JUDGEMENT = /(진단|무슨 ?병|병인가|병일까|먹어도|추천|용량|얼마나 먹|부작용|응급|치료|나을까|낫|괜찮을까|괜찮은 ?건가|위험|왜 ?이래|원인)/;
 const HURTS = /(아파|아픈데|아프다|아픕니다|아파요|통증이|어지러워|어지럽|숨이)/;
 

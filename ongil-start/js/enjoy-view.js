@@ -432,11 +432,12 @@ export function createEnjoyView({ host, doc, saved, profile, schedule, sources, 
           saveBtn.setAttribute('aria-pressed', r.saved ? 'true' : 'false');
           saveBtn.textContent = r.saved ? '✓ 저장됨 (누르면 취소)' : '저장';
           renderResults();
+          renderSaved();
         },
       });
       put(
         body,
-        el('div', { class: 'og-dialog__actions' }, saveBtn, calendarDraft(item) ? el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-calendar-open': 'true', text: '내 일정에 추가', onclick: () => openDetail(item, null, 'calendar') }) : null, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-family-open': 'true', text: '가족에게 보내기', onclick: () => openDetail(item, null, 'family') }), typeof onReview === 'function' ? el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-review': 'true', text: '후기 쓰기', onclick: () => { opener = null; d.close(); onReview({ type: item.type, id: item.id, title: item.title, category: item.category }); } }) : null, close),
+        el('div', { class: 'og-dialog__actions' }, saveBtn, calendarDraft(item) ? el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-calendar-open': 'true', text: '내 일정에 추가', onclick: () => openDetail(item, null, 'calendar') }) : null, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-family-open': 'true', text: '가족에게 보여주기', onclick: () => openDetail(item, null, 'family') }), typeof onReview === 'function' ? el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-enjoy-review': 'true', text: '후기 쓰기', onclick: () => { opener = null; d.close(); onReview({ type: item.type, id: item.id, title: item.title, category: item.category }); } }) : null, close),
         el('p', { class: 'og-home-note', text: 'ONGIL이 운영하는 프로그램이 아니에요. 신청, 예약, 결제는 운영 기관이나 공식 페이지에서 직접 확인하세요.' })
       );
     }

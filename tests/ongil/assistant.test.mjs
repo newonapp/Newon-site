@@ -595,7 +595,9 @@ test('OG-AI-38 no symptom or health-note write; a medical question gets the fixe
     const a = await ask(w, text);
     assert.deepEqual([a.intent, a.toolId, a.result.status, a.result.message, a.result.route], ['HEALTH_SAFETY', '', 'UNAVAILABLE', T.MESSAGES.HEALTH, '#health'], text);
   }
-  assert.equal(T.MESSAGES.HEALTH, 'ONGIL은 건강 상태를 판단하거나 약을 권하지 않아요. 몸이 걱정되면 의사나 약사와 상의해 주세요.');
+  /* Product Completion Audit V1 — WHY: a person who types "어지러워" got only "의사나 약사와 상의" with no word about urgent help.
+     BEFORE: the sentence ended at "상의해 주세요."  AFTER: the same sentence plus the fixed 119 line. Still no judgement. */
+  assert.equal(T.MESSAGES.HEALTH, 'ONGIL은 건강 상태를 판단하거나 약을 권하지 않아요. 몸이 걱정되면 의사나 약사와 상의해 주세요. 급하다고 느끼면 119에 직접 전화해 주세요.');
   for (const text of ['이거 응급 상황이야?', '119에 전화 걸어줘', '구급차 불러줘']) {
     const a = await ask(w, text);
     assert.deepEqual([a.intent, a.reason, a.result.status, a.result.message], ['HEALTH_SAFETY', 'EMERGENCY', 'UNAVAILABLE', T.MESSAGES.EMERGENCY], text);
@@ -1095,7 +1097,8 @@ test('OG-AI-78 regression and documentation: areas, routes, collections and earl
   assert.equal(fs.existsSync(path.join(ROOT, 'server/ongil')), false, 'no ONGIL backend or server route was added');
   const tests = fs.readdirSync(path.join(ROOT, 'tests/ongil')).filter((f) => f.endsWith('.test.mjs'));
   // Phase 12: production-release.test.mjs was added (BEFORE 21, AFTER 22). API connection: production-api.test.mjs (BEFORE 22, AFTER 23). Completion V1: health-measures.test.mjs (AFTER 24). Completion V2: health-calendar.test.mjs (AFTER 25). Completion V3: emergency-contacts.test.mjs (AFTER 26).
-  assert.equal(tests.length, 26);
+  // Product Completion Audit V1: product-completion.test.mjs was added (BEFORE 26, AFTER 27).
+  assert.equal(tests.length, 27);
   const doc = read('docs/ongil/PHASE_10_ONGIL_AI_V1.md');
   for (const h of ['OBJECTIVE', 'POSITIONING', 'CURRENT MODE', 'ARCHITECTURE', 'INTENTS', 'MATCHER', 'TOOL REGISTRY', 'TOOL CONTRACT', 'READ TOOLS', 'NAVIGATION TOOLS', 'WRITE TOOLS', 'CONFIRMATION', 'DATE PARSING', 'RESULT CONTRACT', 'HEALTH SAFETY', 'FAMILY BOUNDARY', 'PRIVACY', 'ANALYTICS', 'ROUTE SAFETY', 'SECURITY', 'ACCESSIBILITY', 'RESPONSIVE', 'PERFORMANCE', 'TESTS', 'KNOWN LIMITATIONS', 'MODEL MIGRATION', 'BACKEND REQUIREMENTS', 'PHASE 11 HANDOFF']) assert.match(doc, new RegExp(`^## (\\d+\\. )?${h}$`, 'm'), h);
   for (const id of I.INTENT_IDS) assert.ok(doc.includes(`\`${id}\``), `${id} is documented`);

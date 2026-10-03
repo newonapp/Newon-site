@@ -128,9 +128,9 @@ export function createEmergencyContactStore(storage, { now = () => Date.now(), m
     } catch (e) {
       return fail(e);
     }
-    const next = contact.primary ? items.map((c) => ({ ...c, primary: false })) : items;
-    next.push(contact);
-    return saved(next, { ok: true, contact: { ...contact, order: next.length } });
+    /* a contact added as 주 연락처 goes to the top, the same as 주 연락처로 and an edit do */
+    const next = contact.primary ? [contact, ...items.map((c) => ({ ...c, primary: false }))] : [...items, contact];
+    return saved(next, { ok: true, contact: { ...contact, order: contact.primary ? 1 : next.length } });
   }
 
   function update(id, patch) {

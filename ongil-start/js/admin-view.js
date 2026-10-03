@@ -161,7 +161,7 @@ export function createAdminView({ host, version, hostname, storage, search, save
     } else {
       put(card.body, el('div', { class: 'og-form__actions' }, el('button', { type: 'button', class: 'og-btn og-btn--ghost', 'data-og-admin-action': 'reset-analytics', disabled: s.empty, text: '사용 기록 지우기', onclick: () => { confirmReset = true; renderAnalytics(); } })));
     }
-    put(card.body, el('p', { class: 'og-home-note', text: '검색어, 글, 이름, 금액, 주소, 건강 기록은 세지 않아요. 이용자 수나 매출 같은 숫자는 서버가 없어 알 수 없어요.' }));
+    put(card.body, el('p', { class: 'og-home-note', text: '검색어, 글, 이름, 금액, 주소, 건강 기록의 내용은 읽지도 남기지도 않아요. 안부를 남긴 횟수처럼 몇 번 했는지만 세요. 이용자 수나 매출 같은 숫자는 서버가 없어 알 수 없어요.' }));
     if (focus === 'title') card.focusTitle();
     else if (focus) {
       const t = host.querySelector(focus);
