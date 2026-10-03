@@ -87,7 +87,17 @@ test('CORS-1 canonical API path does not require a redirect: vercel.json sets no
 });
 
 test('CORS-1b the paths browsers really call are the canonical ones (no trailing slash) in ONGIL, LIVON and the verification script', () => {
-  assert.match(src('ongil-start/js/data-source.js'), /const DATA_PATH = '\/api\/livon\/data';/);
+  /* ONGIL's data client is not on every deployment branch (main has only ongil-start/index.html until the ONGIL branch is
+     merged). Where the file is in the source tree its DATA_PATH must be the canonical route; where it is not, there is no
+     ONGIL client to check. Existence is decided by the file system only — a read or match failure is never swallowed. */
+  const ONGIL_DATA_SOURCE = 'ongil-start/js/data-source.js';
+  if (existsSync(new URL('../../' + ONGIL_DATA_SOURCE, import.meta.url))) {
+    const ongil = src(ONGIL_DATA_SOURCE);
+    assert.match(ongil, /const DATA_PATH = '\/api\/livon\/data';/, 'ONGIL calls the canonical data route');
+    assert.doesNotMatch(ongil, /['"`]\/api\/[a-z/]*\/['"`?]/, 'no API path with a trailing slash in the ONGIL data client');
+  } else {
+    assert.equal(existsSync(new URL('../../ongil-start/js/', import.meta.url)), false, 'no ONGIL script directory on this branch: nothing in ONGIL calls the API');
+  }
   assert.match(src('livon/data/livon-data-config.js'), /LivonApi\.url\("\/api\/livon\/data"\)/);
   assert.match(src('livon/data/livon-sync.js'), /api\.url\("\/api\/health"\)/); assert.match(src('livon/data/livon-sync.js'), /api\.url\("\/api\/livon\/userdata"\)/);
   assert.match(src('livon/ai-page.js'), /API\.url\("\/api\/livon"\)/); assert.match(src('livon/ai-page.js'), /API\.url\("\/api\/health"\)/);
