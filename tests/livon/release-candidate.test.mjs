@@ -49,6 +49,10 @@ export const PHASES = [
 export const RC_BASE = 'f41d58777';
 /* product files changed by the RC (release-blocker fixes only). Empty = the RC ships the Performance V1 product unchanged. */
 export const RC_FIXES = ['.github/workflows/github-pages.yml', 'scripts/livon-seo-build.mjs'];
+/* livon-v1-completion: the NEWON backend production hardening (main f65dfab06), brought onto the RC as one commit */
+export const BACKEND_HARDENING = { subject: 'Prepare NEWON backend for production deployment', files: ['.env.example', 'vercel.json', 'scripts/verify-api-deployment.mjs', 'server/livon/chat.mjs', 'server/livon/data/cache.mjs', 'server/livon/data/http.mjs', 'server/livon/data/limit.mjs', 'server/livon/health.mjs', 'server/livon/ratelimit.mjs', 'server/livon/redis-env.mjs'] };
+/* later completion commits (product fixes) list their files here */
+export const COMPLETION_FIXES = [];
 
 /* ───────── static SEO roots: the same generator the build runs, closed and open ───────── */
 function makeRoot(env) {
@@ -90,7 +94,7 @@ test('RC-1 ancestry: every V1 phase commit is an ancestor of the RC; the RC star
   }
   /* nothing but the RC's own commits sits between Performance V1 and HEAD */
   const between = git('log', '--format=%s', RC_BASE + '..HEAD').stdout.trim().split('\n').filter(Boolean);
-  for (const s of between) assert.match(s, /^LIVON (Final Integration|Release Candidate)/, 'unexpected commit on the RC: ' + s);
+  for (const s of between) assert.ok(/^LIVON (Final Integration|Release Candidate|V1 Completion)/.test(s) || s === BACKEND_HARDENING.subject, 'unexpected commit on the RC: ' + s);
   /* the release branches the RC must not move */
   for (const [ref, at] of [['main', 'e3d7d1510'], ['livon-v1-release', '7fd6e02bf']]) {
     const r = git('rev-parse', '--short=9', ref);
@@ -423,7 +427,8 @@ test('RC-26 accessibility (static): the build gate still reports 0 errors on the
 test('RC-41 visual regression by construction: the RC ships the Performance V1 product files unchanged (or only listed RC fixes)', { skip: noGit || (!hasCommit(RC_BASE) && 'base commit missing') }, () => {
   const changed = git('diff', '--name-only', RC_BASE, 'HEAD').stdout.split('\n').filter(Boolean);
   const product = changed.filter(f => !/^(docs\/|tests\/)/.test(f));
-  assert.deepEqual(product.filter(f => !RC_FIXES.includes(f)), [], 'product files changed without an RC fix entry');
+  const allowed = new Set([...RC_FIXES, ...BACKEND_HARDENING.files, ...COMPLETION_FIXES]);
+  assert.deepEqual(product.filter(f => !allowed.has(f)), [], 'product files changed without an RC fix entry');
 });
 
 test('RC-49 release manifest: commit, ancestry, phases, counts, limitations, manual checks, env matrix, gates', () => {

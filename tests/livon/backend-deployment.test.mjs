@@ -121,7 +121,9 @@ test('BD-3 vercel.json: valid JSON, functions run in Seoul (icn1), existing sett
   assert.deepEqual(v.regions, ['icn1']);
   const known = ['rewrites', 'trailingSlash', 'headers', 'buildCommand', 'outputDirectory', 'functions', 'regions'];
   assert.deepEqual(Object.keys(v).filter(k => !known.includes(k)), []);
-  assert.deepEqual(v.functions, { 'api/livon/chat.mjs': { maxDuration: 40 }, 'api/livon/data.mjs': { maxDuration: 40 }, 'api/livon/userdata.mjs': { maxDuration: 30 } });
+  /* the LIVON V1 line adds the AI route (with the data files its tools read) and the data status route */
+  const inc = '{livon/*.js,livon/life-topics.json,livon/data/*.js}';
+  assert.deepEqual(v.functions, { 'api/livon/chat.mjs': { maxDuration: 40, includeFiles: inc }, 'api/livon/ai/chat.mjs': { maxDuration: 40, includeFiles: inc }, 'api/livon/data.mjs': { maxDuration: 40 }, 'api/livon/data/status.mjs': { maxDuration: 10 }, 'api/livon/userdata.mjs': { maxDuration: 30 } });
   assert.equal(v.buildCommand, 'node scripts/vercel-build.mjs'); assert.equal(v.outputDirectory, '_publish');
   for (const f of Object.keys(v.functions)) assert.ok(src(f).length > 0, f + ' exists');
 });
