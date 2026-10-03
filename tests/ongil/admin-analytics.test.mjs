@@ -907,12 +907,12 @@ test('OG-AQ-13 no dependency: every import is a relative ONGIL module; LIVON and
   for (const f of allJs()) for (const m of js(f).matchAll(/from '([^']+)'/g)) assert.match(m[1], /^\.\/[a-z-]+\.js$/, `${f} imports ${m[1]}`);
   for (const f of P9) assert.equal(/livon|\.\.\/|newon-app|shared\//i.test(code(js(f))), false, f);
   // Phase 10: + assistant-intents.js, assistant-tools.js, assistant-view.js. BEFORE: 65. AFTER: 68.
-  assert.equal(allJs().length, 68, 'sixty modules + the five of Phase 9 + the three of Phase 10');
+  assert.equal(allJs().length, 69, 'sixty modules + the five of Phase 9 + the three of Phase 10 + health-measures (Completion V1)');
   for (const f of P9) assert.ok(fs.existsSync(path.join(JS_DIR, f)), f);
 });
 
 test('OG-AQ-14 storage: exactly one new collection ("analytics"), classified, and nothing personal moved', () => {
-  assert.equal(COLLECTIONS.length, 24);
+  assert.equal(COLLECTIONS.length, 25);
   assert.equal(COLLECTIONS[COLLECTIONS.length - 1], 'analytics');
   assert.deepEqual(Object.keys(CLASSIFICATION).sort(), [...COLLECTIONS].sort());
   assert.deepEqual(COLLECTIONS.filter((c) => CLASSIFICATION[c] === 'OPERATIONAL'), ['analytics']);
@@ -986,5 +986,5 @@ test('OG-AQ-20 documentation and suite: the Phase 9 document has every required 
   for (const name of A.EVENT_NAMES.filter((n) => !n.startsWith('ai_'))) assert.ok(doc.includes(`\`${name}\``), `${name} is documented`);
   assert.equal(/LIVE VERIFIED(?!")|screen reader: VERIFIED/.test(doc.replace(/never[^\n]*LIVE VERIFIED|no[^\n]*LIVE VERIFIED|not[^\n]*LIVE VERIFIED/gi, '')), false);
   const tests = fs.readdirSync(path.join(ROOT, 'tests/ongil')).filter((f) => f.endsWith('.test.mjs')).sort();
-  assert.deepEqual(tests, ['admin-analytics', 'assistant', 'care-data', 'community-data', 'cross-product', 'enjoy-data', 'family-data', 'foundation-data', 'foundation-flows', 'health-data', 'health-view', 'home-data', 'home-view', 'integration-data', 'integration-view', 'life-data', 'life-privacy', 'life-view', 'production-api', 'production-release', 'release-hardening', 'shell', 'store-data'].map((n) => `${n}.test.mjs`)); // Phase 11: + release-hardening · Phase 12: + production-release · API connection: + production-api
+  assert.deepEqual(tests, ['admin-analytics', 'assistant', 'care-data', 'community-data', 'cross-product', 'enjoy-data', 'family-data', 'foundation-data', 'foundation-flows', 'health-data', 'health-measures', 'health-view', 'home-data', 'home-view', 'integration-data', 'integration-view', 'life-data', 'life-privacy', 'life-view', 'production-api', 'production-release', 'release-hardening', 'shell', 'store-data'].map((n) => `${n}.test.mjs`)); // Phase 11: + release-hardening · Phase 12: + production-release · API connection: + production-api · Completion V1: + health-measures
 });

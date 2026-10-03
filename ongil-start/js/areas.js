@@ -57,6 +57,7 @@ export const AREAS = Object.freeze([
       live('symptoms', '증상', '느낀 증상을 날짜별로 적어 둡니다.'),
       live('medication', '복약', '약과 먹는 요일을 적고 먹은 날을 표시합니다.'),
       live('health-notes', '건강 메모', '병원에 다녀온 일 같은 메모를 남깁니다.'),
+      live('measures', '건강 수치', '체중, 혈압, 혈당, 맥박을 직접 적어 둡니다.'),
     ],
   }),
   Object.freeze({
@@ -81,6 +82,7 @@ export const AREAS = Object.freeze([
       slot('hospital', '병원', '진료 예약 날짜를 적어 둡니다.'),
       slot('checkup', '검진', '건강검진 일정을 적어 둡니다.'),
       live('records', '증상·건강 메모', '느낀 증상과 메모를 날짜별로 남깁니다.'),
+      live('measures', '건강 수치', '체중, 혈압, 혈당, 맥박을 직접 적어 둡니다. 높고 낮음은 판단하지 않습니다.'),
     ],
   }),
   Object.freeze({

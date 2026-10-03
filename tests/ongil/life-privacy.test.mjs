@@ -63,9 +63,9 @@ test('OG-PV-1 every collection has a class; private and health-adjacent data may
   // Phase 4: familySharing and helpRequests are PRIVATE (contracts FamilySharingPreference, HelpRequest)
   // Phase 6: communityPosts, groupDrafts, meetupDrafts are PRIVATE (contracts CommunityPost, GroupDraft, MeetupDraft)
   assert.deepEqual(by('PRIVATE'), ['communityPosts', 'expenses', 'familySharing', 'groupDrafts', 'helpRequests', 'journal', 'meetupDrafts']);
-  assert.deepEqual(by('HEALTH_ADJACENT'), ['checkins', 'healthNotes', 'medicationLogs', 'medications', 'symptoms']);
+  assert.deepEqual(by('HEALTH_ADJACENT'), ['checkins', 'healthMeasures', 'healthNotes', 'medicationLogs', 'medications', 'symptoms']);
   assert.deepEqual(by('STANDARD'), ['dailyLife', 'events', 'routineLogs', 'routines', 'sleepRecords', 'tasks']);
-  assert.deepEqual({ ...CONTRACT_CLASSES }, { CalendarEvent: 'STANDARD', Task: 'STANDARD', Routine: 'STANDARD', RoutineLog: 'STANDARD', DailyLife: 'STANDARD', SleepRecord: 'STANDARD', ExpenseRecord: 'PRIVATE', JournalEntry: 'PRIVATE', Medication: 'HEALTH_ADJACENT', MedicationLog: 'HEALTH_ADJACENT', CheckIn: 'HEALTH_ADJACENT', SymptomRecord: 'HEALTH_ADJACENT', HealthNote: 'HEALTH_ADJACENT', FamilySharingPreference: 'PRIVATE', HelpRequest: 'PRIVATE', CommunityPost: 'PRIVATE', GroupDraft: 'PRIVATE', MeetupDraft: 'PRIVATE' });
+  assert.deepEqual({ ...CONTRACT_CLASSES }, { CalendarEvent: 'STANDARD', Task: 'STANDARD', Routine: 'STANDARD', RoutineLog: 'STANDARD', DailyLife: 'STANDARD', SleepRecord: 'STANDARD', ExpenseRecord: 'PRIVATE', JournalEntry: 'PRIVATE', Medication: 'HEALTH_ADJACENT', MedicationLog: 'HEALTH_ADJACENT', CheckIn: 'HEALTH_ADJACENT', SymptomRecord: 'HEALTH_ADJACENT', HealthNote: 'HEALTH_ADJACENT', HealthMeasure: 'HEALTH_ADJACENT', FamilySharingPreference: 'PRIVATE', HelpRequest: 'PRIVATE', CommunityPost: 'PRIVATE', GroupDraft: 'PRIVATE', MeetupDraft: 'PRIVATE' });
   for (const c of COLLECTIONS) {
     if (classOf(c) === 'APP') continue;
     assert.equal(maySync(c), false, c);

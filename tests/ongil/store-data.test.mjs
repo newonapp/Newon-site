@@ -458,7 +458,7 @@ test('OG-STO-44 account delete: Store adds no collection; saved products go with
   storage.clear();
   assert.equal(saved.count(), 0);
   // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
-  assert.equal(COLLECTIONS.length, 24, 'no new collection in Phase 7; Phase 9 added analytics');
+  assert.equal(COLLECTIONS.length, 25, 'no new collection in Phase 7; Phase 9 added analytics; Completion V1 added healthMeasures');
   assert.match(APP_CODE, /storeView\.render\(\);/);
 });
 

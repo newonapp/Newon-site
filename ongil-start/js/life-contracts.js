@@ -288,3 +288,63 @@ export function normalizeHealthNote(input, now = Date.now()) {
   if (!text) throw new ContractError('INVALID_TEXT');
   return { schemaVersion: SCHEMA_VERSION, id: input.id, date: input.date, text, createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
 }
+
+/*
+ * Health measures (Completion V1) — numbers the user read off their own device and wrote down: 체중 · 혈압 · 혈당 · 맥박.
+ * A record keeps the number exactly as written (within a plausible input range, so a typo like "1200" kg is caught).
+ * Nothing judges it: no normal range, no "high"/"low", no score, no advice. HEALTH_ADJACENT (privacy.js).
+ */
+export const MEASURE_LIMITS = Object.freeze({ memo: 100, perDay: 20, total: 1500 });
+const measure = (id, label, unit, min, max, decimals, hint) => Object.freeze({ id, label, unit, min, max, decimals, hint });
+export const MEASURE_TYPES = Object.freeze([
+  measure('weight', '체중', 'kg', 20, 300, 1, '예: 62.5'),
+  measure('bloodPressure', '혈압', 'mmHg', 40, 300, 0, '높은 값/낮은 값, 예: 120/80'),
+  measure('bloodSugar', '혈당', 'mg/dL', 10, 900, 0, '예: 105'),
+  measure('pulse', '맥박', '회/분', 20, 250, 0, '예: 72'),
+]);
+export const MEASURE_TIMINGS = Object.freeze([opt('morning', '아침에 일어나서'), opt('beforeMeal', '식사 전'), opt('afterMeal', '식사 후'), opt('bedtime', '자기 전'), opt('other', '그 밖의 때')]);
+export const measureType = (id) => MEASURE_TYPES.find((t) => t.id === id) || null;
+
+function measureNumber(raw, type) {
+  const s = String(raw == null ? '' : raw).trim().replace(/,/g, '.');
+  const re = type.decimals ? /^\d{1,3}(\.\d)?$/ : /^\d{1,3}$/;
+  if (!re.test(s)) throw new ContractError('INVALID_VALUE');
+  const n = Number(s);
+  if (!(n >= type.min && n <= type.max)) throw new ContractError('INVALID_VALUE');
+  return n;
+}
+
+/* the text a person types ("62.5", "120/80") → { value, value2 }; throws INVALID_TYPE / INVALID_VALUE */
+export function parseMeasureValue(typeId, text) {
+  const type = measureType(typeId);
+  if (!type) throw new ContractError('INVALID_TYPE');
+  if (type.id !== 'bloodPressure') return { value: measureNumber(text, type), value2: null };
+  const m = /^\s*(\d{1,3})\s*[/\s]\s*(\d{1,3})\s*$/.exec(String(text == null ? '' : text));
+  if (!m) throw new ContractError('INVALID_VALUE');
+  const high = measureNumber(m[1], type);
+  const low = measureNumber(m[2], { ...type, min: 20 });
+  if (!(high > low)) throw new ContractError('INVALID_VALUE');
+  return { value: high, value2: low };
+}
+
+/* the number as it is shown: "62.5 kg", "120/80 mmHg" */
+export function measureText(m) {
+  const type = measureType(m && m.type);
+  if (!type) return '';
+  const v = type.decimals ? String(m.value) : String(Math.round(m.value));
+  return type.id === 'bloodPressure' ? `${v}/${m.value2} ${type.unit}` : `${v} ${type.unit}`;
+}
+
+export function normalizeHealthMeasure(input, now = Date.now()) {
+  if (!isPlainObject(input)) throw new ContractError('INVALID_MEASURE');
+  if (!isId(input.id)) throw new ContractError('INVALID_ID');
+  if (!isDateKey(input.date)) throw new ContractError('INVALID_DATE');
+  const type = measureType(input.type);
+  if (!type) throw new ContractError('INVALID_TYPE');
+  /* stored numbers are checked again (a damaged or edited record is not trusted) */
+  const text = type.id === 'bloodPressure' ? `${input.value}/${input.value2}` : String(input.value);
+  const { value, value2 } = parseMeasureValue(type.id, text);
+  const timing = MEASURE_TIMINGS.some((t) => t.id === input.timing) ? input.timing : '';
+  const time = isTime(input.time) ? input.time : '';
+  return { schemaVersion: SCHEMA_VERSION, id: input.id, date: input.date, time, type: type.id, value, value2, timing, memo: safeText(input.memo, MEASURE_LIMITS.memo), createdAt: stamp(input.createdAt, now), updatedAt: stamp(input.updatedAt, now) };
+}

@@ -127,7 +127,7 @@ export const ownerOf = (type) => (contentType(type) ? CONTENT_TYPES[contentType(
 const MODULE_SECTIONS = Object.freeze({
   life: Object.freeze({ routine: 'routines' }),
   care: Object.freeze({ nearby: 'facility' }),
-  health: Object.freeze({ 'check-in': '#life/checkin', medication: '#life/medication', 'life-check': '#life/daily', records: '#life/symptoms' }),
+  health: Object.freeze({ 'check-in': '#life/checkin', medication: '#life/medication', 'life-check': '#life/daily', records: '#life/symptoms', measures: '#life/measures' }),
 });
 /* a menu entry → its section when one exists, otherwise the area itself */
 export function moduleRoute(area, moduleId) {

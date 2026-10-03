@@ -130,7 +130,7 @@ test('OG-HL-39 no fake health score: nothing is computed into a score, grade, pe
 
 test('OG-HL-40 regression: wiring, routes, Home layout, quick actions, search, sync, notifications and network unchanged', () => {
   /* 건강 tab: four sections, one alias, shares the date bar */
-  assert.deepEqual(LIFE_GROUPS.find((g) => g.id === 'health').sections, ['checkin', 'symptoms', 'medication', 'health-notes']);
+  assert.deepEqual(LIFE_GROUPS.find((g) => g.id === 'health').sections, ['checkin', 'symptoms', 'medication', 'health-notes', 'measures']);
   assert.deepEqual([...DATED_GROUPS], ['daily', 'health']);
   assert.equal(groupOf(resolveSection('health')).id, 'health');
   assert.ok(LIFE_SECTIONS.includes('health-notes'));
@@ -139,7 +139,7 @@ test('OG-HL-40 regression: wiring, routes, Home layout, quick actions, search, s
   assert.match(JS['life-daily.js'], /if \(typeof onDateChange === 'function'\) onDateChange\(\);/);
   /* one store object per kind, shared by Home and 내 생활 */
   for (const name of ['createCheckInStore', 'createMedicationStore', 'createSymptomStore', 'createHealthNoteStore']) assert.equal((APP.match(new RegExp(`${name}\\(storage\\)`, 'g')) || []).length, 1, name);
-  assert.match(APP, /health: \{ checkIn, symptoms, medication, healthNotes \}/);
+  assert.match(APP, /health: \{ checkIn, symptoms, medication, healthNotes, healthMeasures \}/);
   assert.match(APP, /stores: \{ profile, checkIn, schedule, medication, dailyLife, tasks, routines, saved, familyConnection: onboarding\.familyConnection \}/);
   /* Home: same rows, same six shortcuts, check-in and medication link into 건강 */
   assert.deepEqual(HOME_LEVELS.map((r) => r.slots.join(',')), ['check-in,schedule', 'tasks,routines', 'medication,life-check', 'family-update,today', 'nearby,quick-actions']);

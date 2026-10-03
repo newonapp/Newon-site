@@ -42,6 +42,7 @@ import { createExpenseStore } from './expenses.js';
 import { createJournalStore } from './journal.js';
 import { createSymptomStore } from './symptoms.js';
 import { createHealthNoteStore } from './health-notes.js';
+import { createHealthMeasureStore } from './health-measures.js';
 import { createFamilySharingStore, createHelpRequestStore } from './family.js';
 import { createFamilyView } from './family-view.js';
 import { createCareView, resolveCareSection } from './care-view.js';
@@ -111,6 +112,7 @@ const expenses = createExpenseStore(storage);
 const journal = createJournalStore(storage);
 const symptoms = createSymptomStore(storage);
 const healthNotes = createHealthNoteStore(storage);
+const healthMeasures = createHealthMeasureStore(storage);
 const familySharing = instrument.familySharing(createFamilySharingStore(storage));
 const helpRequests = instrument.helpRequests(createHelpRequestStore(storage));
 const communityPosts = instrument.posts(createPostStore(storage));
@@ -180,8 +182,8 @@ const films = createFilms({
 const life = createLifeView({
   host: doc.querySelector('[data-og-modules="life"]'),
   stores: { schedule, tasks, routines, dailyLife, sleep, expenses, journal },
-  /* 건강 (Phase 3): check-in and medication are the very objects Home uses; all four stay on this device */
-  health: { checkIn, symptoms, medication, healthNotes },
+  /* 건강 (Phase 3): check-in and medication are the very objects Home uses; all of them stay on this device (Completion V1: + 건강 수치) */
+  health: { checkIn, symptoms, medication, healthNotes, healthMeasures },
 });
 
 /* Phase 4 — 가족: the user's own sharing choices and help-request notes. No family is connected; nothing is sent. */
@@ -491,4 +493,4 @@ resetTabStart(doc);
 win.addEventListener('load', () => win.setTimeout(() => resetTabStart(doc), 0));
 
 /* one stable handle for later phases and for manual checks; no secrets, nothing privileged */
-win.Ongil = Object.freeze({ version: APP_VERSION, assistant, assistantView, analytics, sources: sourceStatus, storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes, familySharing, helpRequests, care, enjoy: enjoyView, communityPosts, groupDrafts, meetupDrafts, store: storeView });
+win.Ongil = Object.freeze({ version: APP_VERSION, assistant, assistantView, analytics, sources: sourceStatus, storage, profile, saved, onboarding, notifications, account, search, router, checkIn, schedule, medication, dailyLife, tasks, routines, sleep, expenses, journal, symptoms, healthNotes, healthMeasures, familySharing, helpRequests, care, enjoy: enjoyView, communityPosts, groupDrafts, meetupDrafts, store: storeView });

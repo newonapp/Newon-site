@@ -53,8 +53,8 @@ test('OG-LF-1 My Life route: #life and #life/<section>; fourteen sections in fiv
   for (const s of LIFE_SECTIONS) assert.equal(resolveView(`#life/${s}`), 'life', s);
   assert.deepEqual([sectionOf('#life'), sectionOf('#life/calendar'), sectionOf('#life/journal'), sectionOf('#life/a/b'), sectionOf('#life/<x>'), sectionOf('')], ['', 'calendar', 'journal', '', '', '']);
   assert.equal(hashFor('life'), '#life');
-  assert.deepEqual([...LIFE_SECTIONS], ['overview', 'calendar', 'tasks', 'routines', 'meals', 'water', 'exercise', 'sleep', 'expenses', 'journal', 'checkin', 'symptoms', 'medication', 'health-notes']);
-  assert.deepEqual(LIFE_GROUPS.map((g) => [g.label, [...g.sections]]), [['요약', ['overview']], ['일정', ['calendar', 'tasks', 'routines']], ['생활', ['meals', 'water', 'exercise', 'sleep']], ['기록', ['expenses', 'journal']], ['건강', ['checkin', 'symptoms', 'medication', 'health-notes']]]);
+  assert.deepEqual([...LIFE_SECTIONS], ['overview', 'calendar', 'tasks', 'routines', 'meals', 'water', 'exercise', 'sleep', 'expenses', 'journal', 'checkin', 'symptoms', 'medication', 'health-notes', 'measures']);
+  assert.deepEqual(LIFE_GROUPS.map((g) => [g.label, [...g.sections]]), [['요약', ['overview']], ['일정', ['calendar', 'tasks', 'routines']], ['생활', ['meals', 'water', 'exercise', 'sleep']], ['기록', ['expenses', 'journal']], ['건강', ['checkin', 'symptoms', 'medication', 'health-notes', 'measures']]]);
   assert.deepEqual(LIFE_GROUPS.flatMap((g) => g.sections), [...LIFE_SECTIONS], 'every section belongs to exactly one tab');
   assert.deepEqual([groupOf('tasks').id, groupOf('sleep').id, groupOf('journal').id, groupOf('nope').id], ['plan', 'daily', 'records', 'overview']);
   assert.deepEqual([lifeHash('overview'), lifeHash('calendar'), lifeHash('nope'), lifeHash('')], ['#life', '#life/calendar', '#life', '#life']);

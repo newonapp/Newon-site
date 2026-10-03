@@ -114,7 +114,7 @@ test('OG-RT-5 titles name the view', () => {
 // Phase 3: 건강·안부 now has four working parts (check-in, life-check, medication, records), kept in 내 생활 › 건강 and
 // linked from the area. Exactly those four may say they work; 도움 요청 · 긴급 연락망 · 병원 · 검진 are still not built and must not.
 // My Life gained the four 건강 sections. Every other area still has no working module.
-const HEALTH_LIVE = ['check-in', 'life-check', 'medication', 'records'];
+const HEALTH_LIVE = ['check-in', 'life-check', 'medication', 'records', 'measures']; // Completion V1: + 건강 수치
 // Phase 4: 가족 has two working parts (내가 공유할 내용, 도움 요청 — both local only); 연결·일정 나누기·소식은 still not built.
 // 돌봄·서비스 has one (가까운 기관 찾기, results only when the existing place search is configured); the service and benefit
 // categories have no data source and still say 준비 중.
@@ -144,7 +144,7 @@ test('OG-VW-1 every primary area has a description, an empty state and module sl
   assert.deepEqual(AREAS.find((a) => a.id === 'family').modules.filter((m) => !m.available).map((m) => m.id), ['connect', 'schedule', 'messages']);
   const ids = (id) => AREAS.find((a) => a.id === id).modules.map((m) => m.id);
   assert.deepEqual(ids('home'), ['greeting', 'check-in', 'schedule', 'tasks', 'routines', 'medication', 'life-check', 'family-update', 'today', 'nearby', 'quick-actions']);
-  assert.deepEqual(ids('life'), ['calendar', 'tasks', 'routine', 'meals', 'water', 'exercise', 'sleep', 'expenses', 'journal', 'checkin', 'symptoms', 'medication', 'health-notes']);
+  assert.deepEqual(ids('life'), ['calendar', 'tasks', 'routine', 'meals', 'water', 'exercise', 'sleep', 'expenses', 'journal', 'checkin', 'symptoms', 'medication', 'health-notes', 'measures']); // Completion V1: + 건강 수치
   assert.equal(ids('store').length, 10);
 });
 

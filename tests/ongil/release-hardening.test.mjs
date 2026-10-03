@@ -220,7 +220,7 @@ test('RH-03 old storage migration: data written by earlier phases is read withou
 });
 
 test('RH-04 account erase inventory: every ONGIL key goes — known collections and stray ones — and nothing else', () => {
-  assert.equal(COLLECTIONS.length, 24);
+  assert.equal(COLLECTIONS.length, 25);
   assert.deepEqual(Object.keys(CLASSIFICATION).sort(), [...COLLECTIONS].sort(), 'every collection is classified');
   assert.deepEqual(unclassified(), []);
   /* every collection a module reads or writes is a declared collection */
@@ -235,7 +235,7 @@ test('RH-04 account erase inventory: every ONGIL key goes — known collections 
   for (const c of COLLECTIONS) w.storage.set(c, { items: [] });
   fillPrivate(w);
   w.analytics.track('app_open');
-  assert.equal(w.storage.list().length, 24);
+  assert.equal(w.storage.list().length, 25);
   assert.equal(w.storage.clear(), true);
   assert.deepEqual(w.backend.keys().sort(), ['livon.keep', 'newon-app-theme', 'ongil', 'ongilx.v1.tasks'], 'Phase 11: a stray key under ONGIL\'s prefix is erased too; other products are untouched');
   assert.equal(w.storage.clear(), true, 'erasing twice is harmless');
@@ -1171,8 +1171,8 @@ test('RH-44 external dependencies: fonts and seven film files — no package, CD
 test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', () => {
   assert.deepEqual([...VIEWS], ['home', 'life', 'health', 'family', 'care', 'enjoy', 'community', 'store', 'saved', 'account']);
   assert.deepEqual([...INTERNAL_VIEWS], ['admin']);
-  assert.equal(COLLECTIONS.length, 24);
-  assert.equal(JS_FILES.length, 68, 'no module was added or removed in Phase 11');
+  assert.equal(COLLECTIONS.length, 25);
+  assert.equal(JS_FILES.length, 69, 'no module was added or removed in Phase 11; Completion V1 added health-measures');
   assert.equal(CSS_FILES.length, 6);
   assert.deepEqual([A.EVENT_NAMES.length, C.SAVED_TYPES.length, C.NOTIFICATION_TYPES.length, R.CONTENT_TYPE_IDS.length], [22, 7, 9, 7]);
   const w = world();
@@ -1180,8 +1180,8 @@ test('RH-45 regression: the shape of ONGIL V1 — and the Phase 11 document', ()
   const assistant = T.createAssistant({ now: w.now, schedule: w.schedule, tasks: w.tasks, routines: w.routines, saved: w.saved, search, familyConnection });
   assert.equal(assistant.tools.ids().length, 22);
   const tests = fs.readdirSync(path.join(ROOT, 'tests/ongil')).filter((f) => f.endsWith('.test.mjs'));
-  // Phase 12: production-release.test.mjs was added (BEFORE 21, AFTER 22). API connection: production-api.test.mjs (BEFORE 22, AFTER 23).
-  assert.equal(tests.length, 23);
+  // Phase 12: production-release.test.mjs was added (BEFORE 21, AFTER 22). API connection: production-api.test.mjs (BEFORE 22, AFTER 23). Completion V1: health-measures.test.mjs (AFTER 24).
+  assert.equal(tests.length, 24);
   for (const f of ['livon', 'server/livon', 'tests/livon']) assert.ok(fs.existsSync(path.join(ROOT, f)), `${f} is still there, untouched by ONGIL`);
   assert.equal(fs.existsSync(path.join(ROOT, 'server/ongil')), false);
   const doc = read('docs/ongil/PHASE_11_RELEASE_HARDENING_V1.md');

@@ -7,7 +7,7 @@
  *   PRIVATE          living expenses, the journal, family-sharing choices and help-request notes — the user's money,
  *                    the user's own writing, and decisions about other people; also (Phase 6) the user's own community
  *                    posts and group/meetup drafts — local writing that has not been, and cannot yet be, published
- *   HEALTH_ADJACENT  check-ins, medication (+ logs), symptoms and health notes — not medical records, but close enough
+ *   HEALTH_ADJACENT  check-ins, medication (+ logs), symptoms, health notes and health measures — not medical records, but close enough
  *                    to be treated with care. A future sync of these needs its own explicit consent (see PHASE_3 doc).
  *
  *   OPERATIONAL       (Phase 9) daily counters of which screens and features were used — numbers only, kept 14 days,
@@ -42,6 +42,7 @@ export const CLASSIFICATION = Object.freeze({
   medicationLogs: 'HEALTH_ADJACENT',
   symptoms: 'HEALTH_ADJACENT',
   healthNotes: 'HEALTH_ADJACENT',
+  healthMeasures: 'HEALTH_ADJACENT',
   familySharing: 'PRIVATE',
   helpRequests: 'PRIVATE',
   communityPosts: 'PRIVATE',
@@ -65,6 +66,7 @@ export const CONTRACT_CLASSES = Object.freeze({
   CheckIn: 'HEALTH_ADJACENT',
   SymptomRecord: 'HEALTH_ADJACENT',
   HealthNote: 'HEALTH_ADJACENT',
+  HealthMeasure: 'HEALTH_ADJACENT',
   FamilySharingPreference: 'PRIVATE',
   HelpRequest: 'PRIVATE',
   CommunityPost: 'PRIVATE',

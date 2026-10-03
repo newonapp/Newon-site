@@ -13,12 +13,14 @@
  *   복약             medicationLogs  the day's medications with the mark (Home's 복약 card writes the same log)
  *   내 약 목록       medications     the plan: name · time · days · memo (Home's 복약 card edits the same list)
  *   건강 메모        healthNotes     several free notes per day
+ *   건강 수치        healthMeasures  numbers the user wrote down (체중 · 혈압 · 혈당 · 맥박), several per day — kept as written,
+ *                                    never judged (no normal range, no high/low word, no colour); plus the last few of each kind
  *   최근 건강 기록   all of the above, last seven days, one line each — a date opens that day in the cards
  */
 import { el, clear } from './dom.js';
 import { createCard, choiceButton, makeField, nextId } from './home-ui.js';
 import { createListCard } from './home-list.js';
-import { LIFE_LIMITS, CHECKIN_STATUSES, CHECKIN_BODY, CHECKIN_ENERGY, CHECKIN_PAIN, SYMPTOM_TYPES, SYMPTOM_FEELINGS, ALL_DAYS } from './life-contracts.js';
+import { LIFE_LIMITS, CHECKIN_STATUSES, CHECKIN_BODY, CHECKIN_ENERGY, CHECKIN_PAIN, SYMPTOM_TYPES, SYMPTOM_FEELINGS, ALL_DAYS, MEASURE_TYPES, MEASURE_TIMINGS, MEASURE_LIMITS, measureText, measureType } from './life-contracts.js';
 import { dateKey, addDays, formatDateKey, formatTime, WEEKDAY_LABELS } from './dates.js';
 import { dayWord, DAILY_BACK_DAYS } from './life-daily.js';
 
@@ -34,7 +36,7 @@ export function daysText(days) {
 }
 
 /* one line per kind for a day, from what was written — used by 최근 건강 기록. Counts and the user's own choices only. */
-export function describeHealthDay({ checkIn, symptoms, medication, healthNotes }, date) {
+export function describeHealthDay({ checkIn, symptoms, medication, healthNotes, healthMeasures }, date) {
   const parts = [];
   const c = checkIn.get(date);
   if (c) {
@@ -47,6 +49,9 @@ export function describeHealthDay({ checkIn, symptoms, medication, healthNotes }
   if (meds.length) parts.push(`약 ${meds.length}개 중 ${meds.filter((m) => m.taken).length}개 먹음`);
   const notes = healthNotes.countForDate(date);
   if (notes) parts.push(`메모 ${notes}건`);
+  /* how many numbers were written, never which numbers */
+  const measures = healthMeasures ? healthMeasures.countForDate(date) : 0;
+  if (measures) parts.push(`수치 ${measures}건`);
   return parts;
 }
 
@@ -356,6 +361,67 @@ export function createHealthNotesSection({ healthNotes, now = () => Date.now(), 
   return { card, render: list.reset, openAdd: list.openAdd };
 }
 
+/* ───────── 건강 수치 ───────── */
+
+export const MEASURE_NOTE = '적은 숫자를 그대로 보관합니다. 높고 낮음을 판단하지 않아요. 수치가 걱정되면 의료진과 상담하세요.';
+
+export function createHealthMeasuresSection({ healthMeasures, now = () => Date.now(), getDate = () => dateKey(now()), onChange }) {
+  const card = createCard({ area: 'life', slot: 'health-measures', title: '건강 수치', level: 2, lead: '체중계, 혈압계, 혈당계에서 본 숫자를 적어 두세요.' });
+  const errors = {
+    INVALID_TYPE: '무엇을 쟀는지 골라 주세요.',
+    INVALID_VALUE: '숫자를 확인해 주세요. 체중은 62.5, 혈압은 120/80, 혈당은 105, 맥박은 72처럼 적어요.',
+    INVALID_TIME: '시간을 확인해 주세요.',
+    LIMIT: '이 날 기록이 가득 찼습니다. 지난 기록을 지우거나 고쳐 주세요.',
+    FUTURE_DATE: '아직 오지 않은 날에는 적을 수 없어요.',
+  };
+  const word = () => dayWord(getDate(), dateKey(now()));
+  const valueText = (item) => (item.type === 'bloodPressure' ? `${item.value}/${item.value2}` : String(item.value));
+  const list = createListCard({
+    card,
+    config: {
+      itemName: '건강 수치',
+      listLabel: () => `${word()} 건강 수치`,
+      emptyText: () => `${word()} 적은 건강 수치가 없어요.`,
+      addLabel: '건강 수치 적기',
+      checkable: false,
+      fields: [
+        { name: 'type', label: '무엇을 쟀나요', type: 'select', required: true, options: MEASURE_TYPES.map((t) => ({ id: t.id, label: `${t.label} (${t.unit})` })), initial: 'weight', errors: ['INVALID_TYPE'] },
+        { name: 'text', label: '숫자', type: 'text', required: true, maxlength: 7, hint: '체중 62.5 · 혈압 120/80 · 혈당 105 · 맥박 72', read: valueText, errors: ['INVALID_VALUE', 'LIMIT'] },
+        { name: 'timing', label: '언제 쟀나요', type: 'select', required: false, options: MEASURE_TIMINGS },
+        { name: 'time', label: '잰 시간', type: 'time', required: false, errors: ['INVALID_TIME'] },
+        { name: 'memo', label: '메모', type: 'text', required: false, maxlength: MEASURE_LIMITS.memo, hint: `${MEASURE_LIMITS.memo}자까지` },
+      ],
+      getItems: () => healthMeasures.listForDate(getDate()),
+      describe: (item) => ({
+        title: `${(measureType(item.type) || { label: '' }).label} ${measureText(item)}`,
+        meta: [item.time ? formatTime(item.time) : '', item.timing ? labelOf(MEASURE_TIMINGS, item.timing) : ''].filter(Boolean),
+        text: item.memo || '',
+      }),
+      onAdd: (values) => healthMeasures.add({ type: values.type, text: values.text, timing: values.timing, time: values.time, memo: values.memo, date: getDate() }),
+      onUpdate: (id, values) => healthMeasures.update(id, { type: values.type, text: values.text, timing: values.timing, time: values.time, memo: values.memo }),
+      onRemove: (id) => healthMeasures.remove(id),
+      afterChange: onChange,
+      errorText: (reason) => errors[reason] || '저장하지 못했습니다. 다시 시도해 주세요.',
+      /* the last five of each kind, newest first — a plain list of what was written, no line, colour or verdict */
+      after: () => {
+        const kinds = MEASURE_TYPES.map((t) => ({ t, rows: healthMeasures.recent(t.id, 5) })).filter((k) => k.rows.length);
+        if (!kinds.length) return null;
+        return el('div', { class: 'og-measure-recent', 'data-og-measure-recent': 'true' },
+          el('h4', { class: 'og-life-sub', text: '최근에 적은 수치' }),
+          kinds.map(({ t, rows }) =>
+            el('ul', { class: 'og-life-days', 'data-og-measure-kind': t.id, 'aria-label': `최근 ${t.label} 기록` },
+              rows.map((m) => el('li', {}, el('span', { class: 'og-life-days__text', text: `${t.label} · ${formatDateKey(m.date)}${m.time ? ' ' + formatTime(m.time) : ''} · ${measureText(m)}` })))
+            )
+          )
+        );
+      },
+      note: MEASURE_NOTE,
+    },
+  });
+  list.render();
+  return { card, render: list.reset, openAdd: list.openAdd };
+}
+
 /* ───────── 최근 건강 기록 ───────── */
 
 /* the last seven days (never the whole year at once) plus a date field to open any kept day */
@@ -410,7 +476,7 @@ export function createHealthHistoryCard({ stores, now = () => Date.now(), getDat
 
 /* ───────── the group ───────── */
 
-export function createHealthGroup({ checkIn, symptoms, medication, healthNotes, now = () => Date.now(), getDate, onPick }) {
+export function createHealthGroup({ checkIn, symptoms, medication, healthNotes, healthMeasures = null, now = () => Date.now(), getDate, onPick }) {
   let parts = null;
   const refreshHistory = () => parts && parts.history.render();
   const refreshDay = () => {
@@ -426,9 +492,10 @@ export function createHealthGroup({ checkIn, symptoms, medication, healthNotes, 
     /* changing the plan changes which medications the day lists */
     plan: createMedicationPlanSection({ medication, onChange: refreshDay }),
     notes: createHealthNotesSection({ healthNotes, ...shared }),
-    history: createHealthHistoryCard({ stores: { checkIn, symptoms, medication, healthNotes }, now, getDate, onPick }),
+    measures: healthMeasures ? createHealthMeasuresSection({ healthMeasures, ...shared }) : null,
+    history: createHealthHistoryCard({ stores: { checkIn, symptoms, medication, healthNotes, healthMeasures }, now, getDate, onPick }),
   };
-  const render = () => [parts.checkin, parts.symptoms, parts.medication, parts.plan, parts.notes, parts.history].forEach((p) => p.render());
+  const render = () => [parts.checkin, parts.symptoms, parts.medication, parts.plan, parts.notes, parts.measures, parts.history].filter(Boolean).forEach((p) => p.render());
   const intro = el('p', { class: 'og-notice og-health-intro', role: 'note', 'data-og-health-note': 'safety' }, el('strong', { text: HEALTH_SAFETY_NOTE }), ' 이 기기에만 저장되고 다른 사람에게 보내지 않습니다.');
   return { ...parts, intro, render };
 }

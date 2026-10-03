@@ -20,13 +20,13 @@ import { createExpensesSection, createJournalSection } from './life-records.js';
 import { createHealthGroup } from './life-health.js';
 import { dateKey, formatDay, formatTime, weekOf, monthKey } from './dates.js';
 
-export const LIFE_SECTIONS = Object.freeze(['overview', 'calendar', 'tasks', 'routines', 'meals', 'water', 'exercise', 'sleep', 'expenses', 'journal', 'checkin', 'symptoms', 'medication', 'health-notes']);
+export const LIFE_SECTIONS = Object.freeze(['overview', 'calendar', 'tasks', 'routines', 'meals', 'water', 'exercise', 'sleep', 'expenses', 'journal', 'checkin', 'symptoms', 'medication', 'health-notes', 'measures']);
 export const LIFE_GROUPS = Object.freeze([
   Object.freeze({ id: 'overview', label: '요약', sections: Object.freeze(['overview']) }),
   Object.freeze({ id: 'plan', label: '일정', sections: Object.freeze(['calendar', 'tasks', 'routines']) }),
   Object.freeze({ id: 'daily', label: '생활', sections: Object.freeze(['meals', 'water', 'exercise', 'sleep']) }),
   Object.freeze({ id: 'records', label: '기록', sections: Object.freeze(['expenses', 'journal']) }),
-  Object.freeze({ id: 'health', label: '건강', sections: Object.freeze(['checkin', 'symptoms', 'medication', 'health-notes']) }),
+  Object.freeze({ id: 'health', label: '건강', sections: Object.freeze(['checkin', 'symptoms', 'medication', 'health-notes', 'measures']) }),
 ]);
 /* the tabs whose cards follow the shared date bar */
 export const DATED_GROUPS = Object.freeze(['daily', 'health']);
@@ -73,7 +73,7 @@ export function buildOverview(stores, now = () => Date.now()) {
 }
 
 /*
- * health (Phase 3): { checkIn, symptoms, medication, healthNotes } — the same store objects Home uses. Kept apart
+ * health (Phase 3): { checkIn, symptoms, medication, healthNotes, healthMeasures? } — the same store objects Home uses. Kept apart
  * from `stores` because they are HEALTH_ADJACENT: the summary (buildOverview) never reads them.
  */
 export function createLifeView({ host, stores, health, now = () => Date.now() }) {
@@ -162,6 +162,8 @@ export function createLifeView({ host, stores, health, now = () => Date.now() })
       symptoms: { cards: [healthGroup.symptoms.card], render: () => {} },
       medication: { cards: [healthGroup.medication.card, healthGroup.plan.card], render: () => {}, openAdd: healthGroup.plan.openAdd },
       'health-notes': { cards: [healthGroup.notes.card], render: () => {}, openAdd: healthGroup.notes.openAdd },
+      /* Completion V1: 건강 수치 — the numbers the user wrote down (present when the app passes the store) */
+      measures: healthGroup.measures ? { cards: [healthGroup.measures.card], render: () => {}, openAdd: healthGroup.measures.openAdd } : { cards: [], render: () => {} },
     };
     for (const id of LIFE_SECTIONS) for (const card of sections[id].cards) card.root.dataset.ogLifeSection = id;
 

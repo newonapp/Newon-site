@@ -64,7 +64,7 @@ test('OG-IV-1 Home shows tasks and routines through My Life\'s stores and the sh
   // Phase 4 added familySharing + helpRequests (18 → 20); still no Home-only collection
   // Phase 6 added communityPosts + groupDrafts + meetupDrafts (20 → 23); still no Home-only collection
   // Phase 9: one collection was added — "analytics" (daily usage counters, numbers only; class OPERATIONAL). BEFORE: 23. AFTER: 24.
-  assert.equal(COLLECTIONS.length, 24);
+  assert.equal(COLLECTIONS.length, 25);
 });
 
 test('OG-IV-2 "할 일 추가" on Home continues in My Life\'s own task form', () => {
@@ -178,7 +178,7 @@ test('OG-IV-8 private and personal records are still not synced or shared: the c
   // Phase 4: the user's family-sharing choices and help-request notes are PRIVATE
   // Phase 6: the user's community posts and group/meetup drafts are PRIVATE too
   assert.deepEqual(by('PRIVATE'), ['communityPosts', 'expenses', 'familySharing', 'groupDrafts', 'helpRequests', 'journal', 'meetupDrafts']);
-  assert.deepEqual(by('HEALTH_ADJACENT'), ['checkins', 'healthNotes', 'medicationLogs', 'medications', 'symptoms']);
+  assert.deepEqual(by('HEALTH_ADJACENT'), ['checkins', 'healthMeasures', 'healthNotes', 'medicationLogs', 'medications', 'symptoms']);
   assert.deepEqual(by('STANDARD'), ['dailyLife', 'events', 'routineLogs', 'routines', 'sleepRecords', 'tasks']);
   assert.deepEqual([...SYNCABLE_COLLECTIONS], ['profile', 'preferences', 'saved', 'onboarding']);
   assert.deepEqual(COLLECTIONS.filter(isSyncable).sort(), ['onboarding', 'preferences', 'profile', 'saved'], 'what an adapter may actually receive');
