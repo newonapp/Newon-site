@@ -1,4 +1,5 @@
 import { createHmac } from 'node:crypto';
+import { redisRestConfig } from './redis-env.mjs';
 
 export const LIMITS = Object.freeze({ message: 4000, history: 12, historyChars: 12000, bodyBytes: 64000, output: 1200, timeout: 25000, refs: 6 });
 export const PAGE_SOURCES = Object.freeze(['life-stage', 'today', 'explore', 'mylife', 'community']);
@@ -79,7 +80,7 @@ export function normalizeInput(data) {
 
 export function isProduction(env) { return env.NODE_ENV === 'production' || !!env.VERCEL; }
 export function protectionConfigured(env) {
-  return !!(env.UPSTASH_REDIS_REST_URL?.startsWith('https://') && env.UPSTASH_REDIS_REST_TOKEN && env.LIVON_RATE_LIMIT_SECRET?.length >= 32);
+  return !!(redisRestConfig(env) && env.LIVON_RATE_LIMIT_SECRET?.length >= 32);
 }
 // Atomically enforce cooldown, IP minute/day quotas, and a site-wide daily spending circuit breaker.
 export const RATE_SCRIPT = `
@@ -133,10 +134,11 @@ export async function checkRateLimit(ip, env, fetcher = fetch) {
   }
   const identity = createHmac('sha256', env.LIVON_RATE_LIMIT_SECRET).update(ip).digest('hex');
   const keys = ['burst', 'minute', 'day'].map(k => `livon:ai:${identity}:${k}`).concat('livon:ai:global:day');
+  const redis = redisRestConfig(env);
   try {
-    const response = await fetcher(env.UPSTASH_REDIS_REST_URL, {
+    const response = await fetcher(redis.url, {
       method: 'POST', signal: AbortSignal.timeout(3000),
-      headers: { Authorization: `Bearer ${env.UPSTASH_REDIS_REST_TOKEN}`, 'Content-Type': 'application/json' },
+      headers: { Authorization: `Bearer ${redis.token}`, 'Content-Type': 'application/json' },
       body: JSON.stringify(['EVAL', RATE_SCRIPT, '4', ...keys, ...caps.flat().map(String)])
     });
     if (!response.ok) throw new Error('limiter unavailable');

@@ -2,12 +2,15 @@
  * Server-side cache for the LIVON data route.
  *
  *   memory  — per serverless instance; always on; lost on cold start
- *   upstash — shared & persistent, used automatically when UPSTASH_REDIS_REST_URL/TOKEN are set
+ *   upstash — shared & persistent, used automatically when Upstash REST is configured (server/livon/redis-env.mjs:
+ *             UPSTASH_REDIS_REST_URL/TOKEN, or Vercel's KV_REST_API_URL/TOKEN)
  *             (same Upstash database LIVON AI uses for rate limiting). Any Redis/DB can replace it
  *             by implementing get/set with the same signatures.
  * Cache failures never fail a request: they fall back to memory / a fresh upstream call.
  * Values are already-normalized LIVON entities — never raw upstream payloads or keys.
  */
+import { redisRestConfig } from '../redis-env.mjs';
+
 export function memoryCache({ maxEntries = 50 } = {}) {
   const m = new Map();
   return {
@@ -23,8 +26,9 @@ export function memoryCache({ maxEntries = 50 } = {}) {
 }
 
 export function upstashCache(env, fetcher = fetch) {
-  const url = env.UPSTASH_REDIS_REST_URL, token = env.UPSTASH_REDIS_REST_TOKEN;
-  if (!url || !url.startsWith('https://') || !token) return null;
+  const cfg = redisRestConfig(env);
+  if (!cfg) return null;
+  const { url, token } = cfg;
   const call = async cmd => {
     const r = await fetcher(url, { method: 'POST', signal: AbortSignal.timeout(2500), headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(cmd) });
     if (!r.ok) throw new Error('cache unavailable');

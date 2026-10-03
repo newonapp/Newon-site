@@ -74,6 +74,9 @@
       ]
     }
   ],
+  "regions": [
+    "icn1"
+  ],
   "buildCommand": "node scripts/vercel-build.mjs",
   "outputDirectory": "_publish",
   "functions": {
