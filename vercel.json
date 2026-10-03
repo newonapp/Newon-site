@@ -9,7 +9,6 @@
       "destination": "/privacy/"
     }
   ],
-  "trailingSlash": true,
   "headers": [
     {
       "source": "/app-ads.txt",
