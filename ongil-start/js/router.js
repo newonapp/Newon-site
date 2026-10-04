@@ -43,10 +43,16 @@ export function resolveView(hash) {
   const key = String(hash || '').replace(/^#/, '').split('/')[0];
   return Object.prototype.hasOwnProperty.call(ROUTE_ALIASES, key) ? ROUTE_ALIASES[key] : null;
 }
+/*
+ * A section is lower-case letters, digits, "-" and "_", starting with a letter. Community V2 widened it (BEFORE:
+ * letters and "-" only, 31 characters) so that a post on this device has an address: "#community/post-cp_…". Every
+ * screen still checks its own sections; anything it does not know falls back to the screen itself.
+ */
+export const SECTION_RE = /^[a-z][a-z0-9_-]{0,60}$/;
 /* the part after the first "/": "#life/calendar" → "calendar"; none → "" */
 export function sectionOf(hash) {
   const parts = String(hash || '').replace(/^#/, '').split('/');
-  return parts.length === 2 && /^[a-z][a-z-]{0,30}$/.test(parts[1]) ? parts[1] : '';
+  return parts.length === 2 && SECTION_RE.test(parts[1]) ? parts[1] : '';
 }
 
 export function hashFor(view) {
