@@ -84,7 +84,12 @@
       s[key] = out;
     }
     function map(key) { if (!isObj(s[key])) { if (s[key] != null) problems.push("malformed-" + key); s[key] = {}; } }
+    /* an id is a record's identity: the first record with an id wins, later copies are dropped (and counted) */
+    function firstOfId() { var seen = {}; return function (x) { if (seen[x.id]) return false; seen[x.id] = 1; return true; }; }
     list("posts", function (p) { return isObj(p) && typeof p.id === "string" && ID_OK.test(p.id); });
+    var postOnce = firstOfId(), np = s.posts.length;
+    s.posts = s.posts.filter(postOnce);
+    if (s.posts.length !== np) problems.push("duplicate-posts:" + (np - s.posts.length));
     /* only wrong values are repaired; a field an older build never wrote is left absent */
     s.posts.forEach(function (p) {
       if (typeof p.title !== "string") p.title = "";
@@ -96,6 +101,9 @@
       if (p.image && !IMAGE_OK.test(str(p.image).slice(0, 48))) p.image = "";
     });
     list("comments", function (c) { return isObj(c) && typeof c.id === "string" && ID_OK.test(c.id) && typeof c.postId === "string"; });
+    var commentOnce = firstOfId(), nc = s.comments.length;
+    s.comments = s.comments.filter(commentOnce);
+    if (s.comments.length !== nc) problems.push("duplicate-comments:" + (nc - s.comments.length));
     s.comments.forEach(function (c) { if (typeof c.body !== "string") c.body = ""; if ("parentId" in c && typeof c.parentId !== "string") c.parentId = ""; });
     list("reports", function (r) { return isObj(r) && typeof r.target === "string" && /^(post|comment):.+/.test(r.target) && typeof r.reason === "string"; });
     list("saves", function (x) { return typeof x === "string"; });
@@ -127,9 +135,13 @@
     return { list: list };
   }
   /* a draft only needs something to keep; publishing needs a type, a title and a body */
+  /* invisible control characters (other than line breaks and tabs) are refused: they hide text and break display */
+  var CONTROL_RE = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F\u202A-\u202E\u2066-\u2069]/;
   function validatePost(input) {
     input = input || {};
     var title = str(input.title).trim(), body = str(input.body).trim();
+    if (CONTROL_RE.test(title)) return { field: "title", msg: "제목에 보이지 않는 제어 문자가 있어요. 지우고 다시 입력해 주세요." };
+    if (CONTROL_RE.test(body)) return { field: "body", msg: "본문에 보이지 않는 제어 문자가 있어요. 지우고 다시 입력해 주세요." };
     if (input.type != null && input.type !== "" && TYPES.indexOf(input.type) < 0 && LEGACY_TYPES.indexOf(input.type) < 0) return { field: "type", msg: "글 유형을 다시 선택해 주세요." };
     if (input.draft && !title && !body) return { field: "title", msg: "임시 저장할 제목이나 본문을 입력해 주세요." };
     if (!title && !input.draft) return { field: "title", msg: "제목을 입력해 주세요." };
@@ -143,6 +155,7 @@
   function validateComment(body) {
     body = str(body).trim();
     if (!body) return { msg: "댓글 내용을 입력해 주세요." };
+    if (CONTROL_RE.test(body)) return { msg: "댓글에 보이지 않는 제어 문자가 있어요. 지우고 다시 입력해 주세요." };
     if (body.length > LIMITS.comment) return { msg: "댓글은 " + LIMITS.comment + "자 이하로 입력해 주세요." };
     return null;
   }
@@ -383,6 +396,79 @@
       comments: s.comments.length, reports: s.reports.length, reportList: reportsView(s), saves: s.saves.length, joined: s.joined.length };
   }
 
+
+  /* ───────── Community V2: delivery state ─────────
+     A post written here has never left this device. Nothing calls it "published": the honest states are
+       DRAFT       임시 저장 — only in 내 활동, never in the feed or in search
+       LOCAL_ONLY  이 기기에만 저장됨 — shown in this browser's feed; no other person can see it
+     and, once a Community server exists (RemoteCommunityRepository):
+       PENDING     sent, waiting for the server's answer
+       DELIVERED   the server accepted it (then its moderation state decides whether others see it) */
+  var DELIVERY = { DRAFT: "DRAFT", LOCAL_ONLY: "LOCAL_ONLY", PENDING: "PENDING", DELIVERED: "DELIVERED" };
+  var DELIVERY_LABEL = { DRAFT: "임시 저장 · 이 기기", LOCAL_ONLY: "이 기기에만 저장됨", PENDING: "전송 중", DELIVERED: "서버에 저장됨" };
+  function deliveryOf(post) {
+    if (!isObj(post)) return DELIVERY.LOCAL_ONLY;
+    if (post.draft) return DELIVERY.DRAFT;
+    if (originOf(post) === ORIGIN.REMOTE && (post.delivery === DELIVERY.PENDING || post.delivery === DELIVERY.DELIVERED)) return post.delivery;
+    return DELIVERY.LOCAL_ONLY;   /* a local record is LOCAL_ONLY whatever a stored field claims */
+  }
+  function deliveryLabel(post) { return DELIVERY_LABEL[deliveryOf(post)]; }
+  var DELIVERY_NOTE = "아직 다른 사용자에게 공개되지 않았어요. 커뮤니티 서버가 준비 중이라 지금은 이 기기에서만 볼 수 있어요.";
+
+  /* ───────── moderation (server-side, future) ─────────
+     ACTIVE · UNDER_REVIEW · HIDDEN · REMOVED are decided by the server and a moderator role only.
+     A local record is never moderated on the device: it is always ACTIVE here. The local Admin's marks stay in the Admin. */
+  var MODERATION_STATES = ["ACTIVE", "UNDER_REVIEW", "HIDDEN", "REMOVED"];
+  function moderationOf(record) {
+    if (originOf(record) === ORIGIN.REMOTE && MODERATION_STATES.indexOf(record && record.moderation) >= 0) return record.moderation;
+    return "ACTIVE";
+  }
+
+  /* ───────── what works now, and what needs an account / server ─────────
+     LOCAL             works in this browser today
+     ACCOUNT_REQUIRED  needs a Newon+ account (and the Community server) — the UI says so, nothing is simulated */
+  var FEATURES = {
+    posts: "LOCAL", drafts: "LOCAL", comments: "LOCAL", replies: "LOCAL", myReaction: "LOCAL", saved: "LOCAL", search: "LOCAL", myActivity: "LOCAL",
+    reportRecord: "LOCAL",
+    publicPosts: "ACCOUNT_REQUIRED", othersComments: "ACCOUNT_REQUIRED", reactionTotals: "ACCOUNT_REQUIRED", profile: "ACCOUNT_REQUIRED",
+    follow: "ACCOUNT_REQUIRED", block: "ACCOUNT_REQUIRED", reportDelivery: "ACCOUNT_REQUIRED", moderation: "ACCOUNT_REQUIRED", notifications: "ACCOUNT_REQUIRED"
+  };
+  var ACCOUNT_REQUIRED_MSG = "다른 사용자 계정이 필요한 기능이라 아직 준비 중입니다.";
+  function featureStatus(name) { return FEATURES[name] || "NOT_IMPLEMENTED"; }
+  /* block needs other people's verified accounts — there are none on a device, so nothing is "blocked" locally */
+  function block() { return { status: "unavailable", reason: "ACCOUNT_REQUIRED", msg: ACCOUNT_REQUIRED_MSG }; }
+  function profile() { return { available: false, status: "ACCOUNT_REQUIRED", msg: ACCOUNT_REQUIRED_MSG }; }
+  /* no event producer exists: the Community creates no notification of any kind */
+  var NOTIFICATION_EVENTS = ["COMMENT_CREATED", "REPLY_CREATED", "FOLLOWED", "REACTION_RECEIVED", "REPORT_RESOLVED"];
+  function notifications() { return { available: false, producer: "NONE", status: "ACCOUNT_REQUIRED", list: [] }; }
+
+  /* ───────── sort and filters: facts only (dates); nothing is ranked by engagement ───────── */
+  var SORTS = [{ id: "new", label: "최신순" }, { id: "updated", label: "최근 수정순" }];
+  function sortPosts(list, sort) {
+    var key = sort === "updated" ? function (p) { return num(p.updatedAt) || num(p.createdAt); } : function (p) { return num(p.createdAt); };
+    return list.slice().sort(function (a, b) { return key(b) - key(a); });
+  }
+
+  /* ───────── 내 활동 search: my posts, my drafts and my comments on this device ─────────
+     Separate from the LIVON-wide search: drafts and private posts are found here and nowhere else. */
+  function searchActivity(store, q, labelsOf) {
+    var a = activity(store), Q = norm(q);
+    var lab = typeof labelsOf === "function" ? labelsOf : function () { return {}; };
+    if (!Q) return { q: "", posts: [], drafts: [], comments: [], total: 0 };
+    var mine = store.posts.filter(function (p) { return p && !p.deleted && !p.draft && p.authorId === "local"; });
+    var res = {
+      q: Q,
+      posts: mine.filter(function (p) { return matchesQuery(p, Q, lab(p)); }),
+      drafts: a.drafts.filter(function (p) { return matchesQuery(p, Q, lab(p)); }),
+      comments: a.comments.filter(function (c) { var t = norm(c.body).replace(/ /g, ""); return Q.split(" ").every(function (w) { return t.indexOf(w) >= 0; }); })
+    };
+    res.total = res.posts.length + res.drafts.length + res.comments.length;
+    return res;
+  }
+
+  /* The future server contract (routes, identity, authorization, RemoteCommunityRepository) lives in
+     community-remote.js. It is not loaded by the public page: nothing in the browser talks to a Community server. */
+
   root.LivonCommunityService = {
     STORE_KEY: STORE_KEY, STORE_VERSION: STORE_VERSION, LIMITS: LIMITS, TYPES: TYPES.slice(), LEGACY_TYPES: LEGACY_TYPES.slice(), ORIGIN: ORIGIN,
     REPORT_REASONS: REPORT_REASONS.map(function (r) { return { id: r.id, label: r.label }; }), ADAPTER_METHODS: ADAPTER_METHODS.slice(),
@@ -393,6 +479,13 @@
     lifeEvents: lifeEvents, eventById: eventById, validEvent: validEvent, eventsForStage: eventsForStage,
     ageContextOk: ageContextOk, forYou: forYou, whyText: whyText,
     reasonOf: reasonOf, addReport: addReport, reportsView: reportsView, activity: activity, relatedContent: relatedContent, safeHref: safeHref,
-    createLocalAdapter: createLocalAdapter, createRemoteAdapter: createRemoteAdapter, adapter: adapter, useAdapter: useAdapter, snapshot: snapshot
+    createLocalAdapter: createLocalAdapter, createRemoteAdapter: createRemoteAdapter, adapter: adapter, useAdapter: useAdapter, snapshot: snapshot,
+    /* Community V2 */
+    DELIVERY: DELIVERY, DELIVERY_NOTE: DELIVERY_NOTE, deliveryOf: deliveryOf, deliveryLabel: deliveryLabel,
+    MODERATION_STATES: MODERATION_STATES.slice(), moderationOf: moderationOf,
+    FEATURES: FEATURES, featureStatus: featureStatus, ACCOUNT_REQUIRED_MSG: ACCOUNT_REQUIRED_MSG, block: block, profile: profile,
+    NOTIFICATION_EVENTS: NOTIFICATION_EVENTS.slice(), notifications: notifications,
+    SORTS: SORTS.map(function (x) { return { id: x.id, label: x.label }; }), sortPosts: sortPosts, searchActivity: searchActivity,
+    CONTROL_RE: CONTROL_RE
   };
 })(typeof window !== "undefined" ? window : globalThis);

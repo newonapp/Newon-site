@@ -1,5 +1,5 @@
 /*
- * LIVON Community V1 — local-first.
+ * LIVON Community V2 — local-first (posts never leave this device; see docs/livon/LIVON_COMMUNITY_V2.md).
  *
  *   UI (this file) → Repo (window.LivonCommunityRepo) → LivonCommunityService → Community Adapter → Local Adapter
  *   (community-service.js holds the model, the rules and the adapters; a future Remote Adapter replaces the local one)
@@ -52,7 +52,7 @@
   };
 
   var state = {
-    tab: "latest", cat: "", type: "", stage: "", event: "", q: "", shown: PAGE, why: {},
+    tab: "latest", cat: "", type: "", stage: "", event: "", q: "", sort: "new", saved: false, mineQ: "", shown: PAGE, why: {},
     detailId: "", editingId: null, composeType: "story", dirty: false,
     lastFeedHash: "#cm-home", modalOpener: null, replyTo: "", editCommentId: ""
   };
@@ -298,14 +298,15 @@
     },
     addComment: function (postId, body, parentId) {
       body = String(body || "").trim();
-      if (!body) return { status: "invalid", msg: "댓글 내용을 입력해 주세요." };
-      if (body.length > LIMITS.comment) return { status: "invalid", msg: "댓글은 " + LIMITS.comment + "자 이하로 입력해 주세요." };
+      var cerr = SVC.validateComment(body);
+      if (cerr) return { status: "invalid", msg: cerr.msg };
       var store = loadStore();
       if (!store.posts.some(function (p) { return p.id === postId && !p.deleted; })) return { status: "missing" };
       var last = store.comments.filter(function (c) { return c.authorId === "local"; }).slice(-1)[0];
       if (last && Date.now() - (last.createdAt || 0) < 1500) return { status: "invalid", msg: "너무 빠르게 연속으로 작성했어요. 잠시 후 다시 등록해 주세요." };
       /* replies are limited to one level: a reply to a reply attaches to its root */
       var parent = parentId ? store.comments.find(function (c) { return c.id === parentId && c.postId === postId; }) : null;
+      if (parentId && (!parent || parent.deleted)) return { status: "invalid", msg: "답글을 달 댓글을 찾을 수 없어요. 새 댓글로 남겨 주세요." };
       var rootId = parent ? (parent.parentId || parent.id) : "";
       var c = { id: uid("cmt"), postId: postId, parentId: rootId, body: body, authorNick: store.profile.nick || "나", authorId: "local", createdAt: Date.now(), deleted: false };
       store.comments.push(c);
@@ -314,8 +315,8 @@
     },
     editComment: function (id, body) {
       body = String(body || "").trim();
-      if (!body) return { status: "invalid", msg: "댓글 내용을 입력해 주세요." };
-      if (body.length > LIMITS.comment) return { status: "invalid", msg: "댓글은 " + LIMITS.comment + "자 이하로 입력해 주세요." };
+      var cerr = SVC.validateComment(body);
+      if (cerr) return { status: "invalid", msg: cerr.msg };
       var store = loadStore();
       var c = store.comments.find(function (x) { return x.id === id && !x.deleted; });
       if (!c) return { status: "missing" };
@@ -364,6 +365,12 @@
     reports: function () { return SVC.reportsView(loadStore()); },
     activity: function () { return SVC.activity(loadStore()); },
     follows: function () { return SVC.adapter().follows(); },
+    /* V2: account-bound features answer honestly; nothing is simulated */
+    block: function () { return SVC.block(); },
+    profile: function () { return SVC.profile(); },
+    notifications: function () { return SVC.notifications(); },
+    delivery: function (id) { var p = loadStore().posts.find(function (x) { return x.id === id && !x.deleted; }); return p ? SVC.deliveryOf(p) : null; },
+    searchMine: function (q) { return SVC.searchActivity(loadStore(), q, labelsOf); },
     /* the unsent post being written (autosave). One slot, new posts only; never shown in the feed or in search. */
     composeDraft: function () {
       var c = loadStore().compose;
@@ -442,13 +449,14 @@
       return (!state.cat || p.category === state.cat) && (!state.type || p.type === state.type) && (!state.stage || p.lifeStage === state.stage) &&
         (!state.event || p.lifeEvent === state.event) && matchesQuery(p, q);
     });
+    if (state.saved) list = list.filter(function (p) { return Repo.isSaved(p.id); });
     var byDate = function (a, b) { return (b.createdAt || 0) - (a.createdAt || 0); };
     if (state.tab === "foryou") {
       var sig = userSignals(store);
       return list.map(function (p) { var f = forYou(p, sig); if (f.why) state.why[p.id] = f.why; return { p: p, s: f.score }; })
         .sort(function (a, b) { return b.s - a.s || byDate(a.p, b.p); }).map(function (x) { return x.p; });
     }
-    return list.slice().sort(byDate);
+    return state.sort === "updated" ? SVC.sortPosts(list, "updated") : list.slice().sort(byDate);
   }
 
   function feedHash() {
@@ -456,6 +464,8 @@
     function add(k, v) { if (v) p.push(k + "=" + encodeURIComponent(v)); }
     if (state.tab !== "latest") add("tab", state.tab);
     add("cat", state.cat); add("type", state.type); add("stage", state.stage); add("event", state.event); add("q", state.q);
+    if (state.sort === "updated" && state.tab !== "foryou") add("sort", "updated");
+    if (state.saved) add("saved", "1");
     return "#cm-home" + (p.length ? "?" + p.join("&") : "");
   }
   function parseHash(hash) {
@@ -478,6 +488,8 @@
     state.stage = stageById(p.stage) ? p.stage : "";
     state.event = SVC.validEvent(p.event);
     state.q = String(p.q || "").slice(0, 80);
+    state.sort = p.sort === "updated" ? "updated" : "new";
+    state.saved = p.saved === "1";
     state.shown = PAGE;
   }
   function syncFeedUrl() {
@@ -511,6 +523,9 @@
           STAGES.map(function (s) { return '<option value="' + s.id + '"' + (state.stage === s.id ? " selected" : "") + ">" + esc(s.label) + "</option>"; }).join("") +
         "</select></label>" +
         '<label class="lv-cm-field lv-cm-field--inline"><span>Life Event</span><select data-lv-cm-event-filter><option value="">모든 Life Event</option>' + eventOptions(state.stage, state.event) + "</select></label>" +
+        (state.tab === "foryou" ? "" : '<label class="lv-cm-field lv-cm-field--inline"><span>정렬</span><select data-lv-cm-sort>' +
+          SVC.SORTS.map(function (o) { return '<option value="' + o.id + '"' + (state.sort === o.id ? " selected" : "") + ">" + esc(o.label) + "</option>"; }).join("") + "</select></label>") +
+        '<label class="lv-cm-check"><input type="checkbox" data-lv-cm-saved-filter' + (state.saved ? " checked" : "") + " /> <span>저장한 글만</span></label>" +
       "</div>";
   }
 
@@ -541,6 +556,7 @@
           (p.createdAt ? "<span>" + esc(fmtDate(p.createdAt)) + "</span>" : "") +
           (answered ? "<span>" + esc(answered) + "</span>" : "") +
           (p.visibility === "private" ? "<span>비공개</span>" : p.visibility === "members" ? "<span>가입 커뮤니티 공개</span>" : "") +
+          '<span class="lv-cm-delivery" data-lv-cm-delivery="' + SVC.deliveryOf(p) + '">' + esc(SVC.deliveryLabel(p)) + "</span>" +
         "</div>" +
         '<p class="lv-cm-card__author">' + esc(p.authorNick || "나") + "</p>" +
         (state.tab === "foryou" && state.why[p.id] ? '<p class="lv-cm-card__why">' + esc(state.why[p.id]) + "</p>" : "") +
@@ -575,11 +591,11 @@
     renderFilters();
     var store = loadStore();
     var list = filterFeed(store);
-    var filtered = !!(state.q || state.cat || state.type || state.stage || state.event);
+    var filtered = !!(state.q || state.cat || state.type || state.stage || state.event || state.saved);
     if (meta) {
       if (filtered && state.tab !== "following") {
         meta.hidden = false;
-        meta.innerHTML = "<p>" + [state.q ? "‘" + state.q + "’" : "", catLabel(state.cat), typeLabel(state.type), (stageById(state.stage) || {}).label, (SVC.eventById(state.event) || {}).title, "게시글 " + list.length].filter(Boolean).map(esc).join(" · ") +
+        meta.innerHTML = "<p>" + [state.q ? "‘" + state.q + "’" : "", catLabel(state.cat), typeLabel(state.type), (stageById(state.stage) || {}).label, (SVC.eventById(state.event) || {}).title, state.saved ? "저장한 글" : "", "게시글 " + list.length].filter(Boolean).map(esc).join(" · ") +
           ' · <button type="button" class="lv-cm-text-btn" data-lv-cm-reset>필터 초기화</button></p>';
       } else meta.hidden = true;
     }
@@ -595,7 +611,7 @@
       host.innerHTML = any || filtered
         ? emptyHtml("검색 결과가 없습니다.", "다른 주제나 검색어로 찾아보세요.",
             '<button type="button" class="lv-cm-btn lv-cm-btn--dark" data-lv-cm-reset>필터 초기화</button><a class="lv-cm-btn lv-cm-btn--ghost" href="#cm-interests">다른 주제 탐색</a>')
-        : emptyHtml("아직 이 기기에 작성된 글이 없습니다.", "LIVON 커뮤니티 글은 지금 이 기기에만 저장됩니다. 궁금한 점이나 경험을 먼저 나눠 보세요.",
+        : emptyHtml("아직 표시할 커뮤니티 글이 없어요.", "아직 이 기기에 작성된 글이 없습니다. 다른 사용자의 글은 아직 없고, 지금 쓰는 글은 이 기기에만 저장됩니다. 궁금한 점이나 경험을 먼저 남겨 보세요.",
             '<button type="button" class="lv-cm-btn lv-cm-btn--dark" data-lv-cm-compose="question">첫 글 작성하기</button><a class="lv-cm-btn lv-cm-btn--ghost" href="#cm-interests">관심 주제 둘러보기</a><a class="lv-cm-btn lv-cm-btn--ghost" href="#life">라이프 스테이지 둘러보기</a>');
       return;
     }
@@ -710,6 +726,24 @@
     var td = readJSON(KEY_TD_PREFS, null);
     return uniq([].concat(Array.isArray(life) ? life : [], td && Array.isArray(td.interests) ? td.interests : []));
   }
+  /* 내 활동 검색: my posts, drafts and comments on this device only (not part of the LIVON-wide search) */
+  function mineSearchHtml(store) {
+    var r = state.mineQ ? SVC.searchActivity(store, state.mineQ, labelsOf) : null;
+    var res = "";
+    if (r) {
+      var item = function (href, label, kind) { return "<li>" + (href ? '<a href="' + href + '">' : "") + esc(kind) + " · " + esc(label) + (href ? "</a>" : "") + "</li>"; };
+      var rows = r.posts.slice(0, 20).map(function (p) { return item("#cm-post-" + esc(p.id), p.title, "내 글"); })
+        .concat(r.drafts.slice(0, 20).map(function (p) { return '<li><button type="button" class="lv-cm-text-btn" data-lv-cm-edit="' + esc(p.id) + '">임시 저장 · ' + esc(p.title || "제목 없음") + "</button></li>"; }))
+        .concat(r.comments.slice(0, 20).map(function (c) { return item("#cm-post-" + esc(c.postId), String(c.body || "").slice(0, 40), "내 댓글"); }));
+      res = '<p class="lv-cm-note" role="status">‘' + esc(state.mineQ) + "’ 내 활동 " + r.total + "건" + (r.total > rows.length ? " (처음 " + rows.length + "건 표시)" : "") + "</p>" +
+        (rows.length ? '<ul class="lv-cm-mine-results">' + rows.join("") + "</ul>" : '<p class="lv-cm-note">내 글·임시 저장·댓글에서 찾지 못했어요.</p>');
+    }
+    return '<form class="lv-cm-inline lv-cm-mine-search" role="search" data-lv-cm-mine-search>' +
+      '<label class="lv-cm-field lv-cm-field--inline"><span>내 활동 검색</span><input type="search" name="mq" maxlength="80" autocomplete="off" value="' + esc(state.mineQ) + '" /></label>' +
+      '<button type="submit" class="lv-cm-btn lv-cm-btn--outline lv-cm-btn--sm">찾기</button>' +
+      (state.mineQ ? '<button type="button" class="lv-cm-btn lv-cm-btn--ghost lv-cm-btn--sm" data-lv-cm-mine-clear>지우기</button>' : "") +
+      "</form>" + '<p class="lv-cm-note lv-cm-note--plain">내 글·임시 저장 글·내 댓글에서만 찾아요. 임시 저장 글과 비공개 글은 LIVON 전체 검색에 나오지 않습니다.</p>' + res;
+  }
   function renderMine() {
     var host = $("[data-lv-cm-mine]");
     if (!host) return;
@@ -737,6 +771,7 @@
         '<p class="lv-cm-note">실명·연락처·주소는 적지 마세요. 새 글부터 이 이름이 표시됩니다.</p>' +
       "</div>" +
       (hasAny ? "" : '<p class="lv-cm-note lv-cm-note--plain">아직 이 기기에 남긴 커뮤니티 활동이 없습니다. 글을 쓰거나 저장하면 여기에 모입니다.</p>') +
+      mineSearchHtml(store) +
       '<div class="lv-cm-mine-grid">' +
         listBlock("내가 작성한 글", act.posts, "작성한 글이 없어요.", postLink) +
         listBlock("임시 저장 글", act.drafts, "임시 저장한 글이 없어요. 임시 저장 글은 피드·검색에 나오지 않습니다.", function (p) {
@@ -751,6 +786,7 @@
         listBlock("가입한 커뮤니티", joined, "가입한 커뮤니티가 없어요.", function (n) { return "<li>" + esc(n) + "</li>"; }) +
         listBlock("참여 중 챌린지", ch, "챌린지에 참여해 보세요.", function (c) { return "<li>" + esc(c.title) + "</li>"; }) +
         '<div class="lv-cm-mine-block"><h3>팔로우</h3><p class="lv-cm-note">다른 사용자 계정이 연결되지 않아 팔로우·팔로워가 없습니다.</p></div>' +
+        '<div class="lv-cm-mine-block"><h3>차단</h3><p class="lv-cm-note">' + esc(SVC.block().msg) + " 차단한 사용자가 없고, 이 기기에서 차단한 것처럼 처리하지 않습니다.</p></div>" +
         listBlock("신고 기록", reports, "남긴 신고가 없어요.", function (r) {
           return "<li>" + esc(r.reason) + " · " + esc(r.exists ? (r.kind === "comment" ? "댓글: " : "글: ") + r.title.slice(0, 24) : "삭제된 " + (r.kind === "comment" ? "댓글" : "글")) + " · " + esc(fmtDate(r.at)) + "</li>";
         }, '<p class="lv-cm-note">신고는 이 기기에만 기록되며 운영자나 서버로 전송되지 않습니다.</p>') +
@@ -887,6 +923,7 @@
       "</div></fieldset>" +
       '<label class="lv-cm-field"><span>태그 (선택, 쉼표로 구분 · 최대 ' + LIMITS.tags + '개)</span><input name="tags" autocomplete="off" value="' + esc(Array.isArray(p.tags) ? p.tags.join(", ") : String(p.tags || "")) + '" placeholder="예: 자취, 첫 계약" /></label>' +
       '<details class="lv-cm-more-opts"' + (p.communityId || p.region || (p.visibility && p.visibility !== "public") || p.image ? " open" : "") + "><summary>공개 범위 · 커뮤니티 · 지역 · 이미지</summary>" +
+        '<p class="lv-cm-note lv-cm-note--plain">공개 범위는 커뮤니티 서버가 준비되면 적용됩니다. 지금은 어떤 범위를 골라도 이 기기에만 저장돼요.</p>' +
         '<label class="lv-cm-field"><span>공개 범위</span><select name="visibility">' +
           '<option value="public"' + ((p.visibility || "public") === "public" ? " selected" : "") + ">전체 공개</option>" +
           '<option value="members"' + (p.visibility === "members" ? " selected" : "") + ">가입 커뮤니티</option>" +
@@ -906,7 +943,7 @@
       '<div class="lv-cm-form__acts">' +
         '<button type="button" class="lv-cm-btn lv-cm-btn--ghost" data-lv-cm-modal-close>취소</button>' +
         (!editPost || editPost.draft ? '<button type="button" class="lv-cm-btn lv-cm-btn--outline" data-lv-cm-draft>임시 저장</button>' : "") +
-        '<button type="submit" class="lv-cm-btn lv-cm-btn--dark">' + (editPost && !editPost.draft ? "수정 완료" : "게시") + "</button>" +
+        '<button type="submit" class="lv-cm-btn lv-cm-btn--dark">' + (editPost && !editPost.draft ? "수정 완료" : "이 기기에 저장") + "</button>" +
       "</div>";
     refreshTopicSelect(form, p.lifeTopicId || "");
     modal.hidden = false;
@@ -1005,7 +1042,7 @@
         announce("임시 저장했습니다. 임시 저장 글은 피드와 검색에 나오지 않습니다.");
         return;
       }
-      announce(editing ? "글을 수정했습니다." : "글을 게시했습니다. 이 기기에 저장되었습니다.");
+      announce(editing ? "글을 수정했습니다. 이 기기에만 저장되어 있어요." : "글을 이 기기에 저장했습니다. 아직 다른 사용자에게는 보이지 않아요.");
       var h = "#cm-post-" + res.post.id;
       if (location.hash === h) showDetail(res.post.id, { focus: true });
       else location.hash = h.slice(1);
@@ -1107,11 +1144,13 @@
           (SVC.eventById(post.lifeEvent) ? '<a href="#cm-home?event=' + esc(post.lifeEvent) + '">' + esc(SVC.eventById(post.lifeEvent).title) + "</a>" : "") +
           (comm ? "<span>" + esc(comm.name) + "</span>" : "") +
           (post.createdAt ? "<span>" + esc(fmtDate(post.createdAt)) + (post.updatedAt && post.updatedAt !== post.createdAt ? " · 수정됨" : "") + "</span>" : "") +
+          (post.updatedAt && post.createdAt && post.updatedAt - post.createdAt > 60000 ? '<span data-lv-cm-updated>최근 수정 ' + esc(fmtDate(post.updatedAt)) + "</span>" : "") +
           (post.type === "question" ? "<span>" + (post.resolved ? "해결됨" : "답변을 기다리는 중") + "</span>" : "") +
           (post.visibility === "private" ? "<span>비공개 (나만)</span>" : post.visibility === "members" ? "<span>가입 커뮤니티 공개</span>" : "") +
         "</div>" +
         '<p class="lv-cm-card__author">' + esc(post.authorNick || "나") + (post.authorId === "local" ? " · 내 글" : "") + "</p>" +
         '<h2 class="lv-cm-title lv-cm-title--md" id="lv-cm-detail-title" tabindex="-1">' + esc(post.title) + "</h2>" +
+        '<p class="lv-cm-delivery-note" data-lv-cm-delivery="' + SVC.deliveryOf(post) + '"><strong>' + esc(SVC.deliveryLabel(post)) + "</strong> · " + esc(SVC.DELIVERY_NOTE) + (saved ? " · 저장한 글" : "") + "</p>" +
         (post.image ? '<img class="lv-cm-detail__img" src="' + esc(post.image) + '" alt="" decoding="async" />' : "") +
         '<div class="lv-cm-detail__body">' + esc(post.body).replace(/\n/g, "<br>") + "</div>" +
         ((post.tags || []).length ? '<p class="lv-cm-card__tags">' + (post.tags || []).map(function (t) { return '<a href="#cm-home?q=' + encodeURIComponent(t) + '">#' + esc(t) + "</a>"; }).join(" ") + "</p>" : "") +
@@ -1121,7 +1160,8 @@
           saveButton(post, saved, "lv-cm-btn lv-cm-btn--outline") +
           '<button type="button" class="lv-cm-btn lv-cm-btn--ghost" data-lv-cm-share="' + esc(id) + '">공유</button>' +
           '<button type="button" class="lv-cm-btn lv-cm-btn--ghost" data-lv-cm-report="post:' + esc(id) + '">신고</button>' +
-          '<button type="button" class="lv-cm-btn lv-cm-btn--ghost" data-lh-ai="' + esc(JSON.stringify(aiPayload(post))) + '">LIVON AI에게 물어보기</button>' +
+          /* hand-off to LIVON AI only when the person presses it, and never for a private or members-only post */
+          (!post.visibility || post.visibility === "public" ? '<button type="button" class="lv-cm-btn lv-cm-btn--ghost" data-lh-ai="' + esc(JSON.stringify(aiPayload(post))) + '">LIVON AI에게 물어보기</button>' : "") +
           (post.authorId === "local"
             ? '<button type="button" class="lv-cm-btn lv-cm-btn--ghost" data-lv-cm-edit="' + esc(id) + '">수정</button>' +
               '<button type="button" class="lv-cm-btn lv-cm-btn--ghost" data-lv-cm-del-post="' + esc(id) + '">삭제</button>'
@@ -1252,6 +1292,13 @@
         renderFeed(); syncFeedUrl();
         var c = $('[data-lv-cm-cat="' + state.cat + '"]'); if (c) c.focus();
         announce((catLabel(state.cat) || "전체") + " 주제 · 게시글 " + filterFeed().length + "개");
+        return;
+      }
+      if (e.target.closest("[data-lv-cm-mine-clear]")) {
+        state.mineQ = "";
+        renderMine();
+        var mi2 = $("[data-lv-cm-mine-search] input"); if (mi2) mi2.focus();
+        announce("내 활동 검색을 지웠습니다.");
         return;
       }
       if (e.target.closest("[data-lv-cm-reset]")) {
@@ -1498,6 +1545,8 @@
       if (t.matches("[data-lv-cm-type-filter]")) { state.type = t.value; state.shown = PAGE; renderFeed(); syncFeedUrl(); var a = $("[data-lv-cm-type-filter]"); if (a) a.focus(); return; }
       if (t.matches("[data-lv-cm-stage-filter]")) { state.stage = t.value; state.shown = PAGE; renderFeed(); syncFeedUrl(); var b = $("[data-lv-cm-stage-filter]"); if (b) b.focus(); return; }
       if (t.matches("[data-lv-cm-event-filter]")) { state.event = SVC.validEvent(t.value); state.shown = PAGE; renderFeed(); syncFeedUrl(); var ef = $("[data-lv-cm-event-filter]"); if (ef) ef.focus(); announce("게시글 " + filterFeed().length + "개"); return; }
+      if (t.matches("[data-lv-cm-sort]")) { state.sort = t.value === "updated" ? "updated" : "new"; state.shown = PAGE; renderFeed(); syncFeedUrl(); var so = $("[data-lv-cm-sort]"); if (so) so.focus(); announce(state.sort === "updated" ? "최근 수정순으로 정렬했습니다." : "최신순으로 정렬했습니다."); return; }
+      if (t.matches("[data-lv-cm-saved-filter]")) { state.saved = !!t.checked; state.shown = PAGE; renderFeed(); syncFeedUrl(); var sv = $("[data-lv-cm-saved-filter]"); if (sv) sv.focus(); announce((state.saved ? "저장한 글 " : "글 ") + filterFeed().length + "개"); return; }
       var form = t.closest("[data-lv-cm-write]");
       if (form) {
         state.dirty = true;
@@ -1554,6 +1603,14 @@
         closeDialog(false);
         renderMine();
         announce("신고를 이 기기에 기록했습니다. 운영자나 서버로 전송되지는 않습니다.");
+        return;
+      }
+      if (f.matches("[data-lv-cm-mine-search]")) {
+        e.preventDefault();
+        state.mineQ = String(new FormData(f).get("mq") || "").trim().slice(0, 80);
+        renderMine();
+        var mi = $("[data-lv-cm-mine-search] input"); if (mi) mi.focus();
+        if (state.mineQ) { var mr = Repo.searchMine(state.mineQ); announce("내 활동에서 " + mr.total + "건을 찾았습니다."); }
         return;
       }
       if (f.matches("[data-lv-cm-profile-form]")) {
@@ -1616,6 +1673,15 @@
         var nt = $('[data-lv-cm-tab="' + state.tab + '"]'); if (nt) nt.focus();
       }
     }, true);
+
+    /* leaving the page while writing: new text is kept by autosave; unsaved edits of a saved post ask first */
+    function onLeave(e) {
+      if (!composeOpen() || !state.dirty) return;
+      if (!state.editingId) { autosaveNow(); return; }
+      if (e && e.type === "beforeunload") { e.preventDefault(); e.returnValue = ""; }
+    }
+    window.addEventListener("beforeunload", onLeave);
+    window.addEventListener("pagehide", onLeave);
 
     window.addEventListener("storage", function (e) {
       if (document.documentElement.dataset.lvView !== "community") return;
