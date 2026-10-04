@@ -820,14 +820,17 @@ test('CV2-59 200% zoom (1440 CSS px at 2× → 720 px layout): content reflows w
 });
 
 /* ═════════ scope ═════════ */
-test('CV2-60 ONGIL untouched: no ONGIL, SHAREON or server file differs from the base', () => {
-  let changed;
-  try { changed = execFileSync('git', ['diff', '--name-only', 'dd92aaa2d', '--'], { cwd: ROOT, encoding: 'utf8' }).split('\n').filter(Boolean); }
-  catch (e) { changed = null; }
-  assert.ok(Array.isArray(changed), 'git diff against the V2 base must be readable');
-  const untracked = execFileSync('git', ['ls-files', '--others', '--exclude-standard'], { cwd: ROOT, encoding: 'utf8' }).split('\n').filter(Boolean);
-  const all = changed.concat(untracked);
-  assert.deepEqual(all.filter(f => /^(ongil|ongil-start|tests\/ongil|server\/ongil)\//.test(f) || /shareon/i.test(f)), []);
-  assert.deepEqual(all.filter(f => /^server\//.test(f)), [], 'no backend was built in this phase');
+test('CV2-60 ONGIL untouched: no ONGIL, SHAREON or server file is changed by the Community V2 work', () => {
+  /* The Community V2 change set = every non-merge commit about "LIVON Community V2" (the feature and any integration
+     fix), plus uncommitted work. Measured per commit against its parent, so it stays true after merges into a main that
+     itself carries ONGIL work (diffing against a fixed base would count those). */
+  const git = (...a) => execFileSync('git', a, { cwd: ROOT, encoding: 'utf8' }).split('\n').filter(Boolean);
+  const commits = git('log', '--no-merges', '--format=%H', '--grep=LIVON Community V2', 'HEAD');
+  const pending = git('diff', '--name-only', 'HEAD', '--').concat(git('ls-files', '--others', '--exclude-standard'));
+  assert.ok(commits.length || pending.length, 'the Community V2 change set must be found');
+  const all = [...new Set(commits.flatMap(c => git('diff-tree', '--no-commit-id', '--name-only', '-r', c + '^', c)).concat(pending))];
+  assert.ok(all.includes('livon/community-service.js') || pending.length, 'the change set is the Community work');
+  assert.deepEqual(all.filter(f => /^(ongil|ongil-start|tests\/ongil|server\/ongil|api\/ongil)\//.test(f) || /shareon/i.test(f)), []);
+  assert.deepEqual(all.filter(f => /^(server|api)\//.test(f)), [], 'no backend was built in this phase');
   assert.deepEqual(all.filter(f => !/^(livon|tests\/livon|docs\/livon)\//.test(f)), [], 'changes stay inside livon/, tests/livon/, docs/livon/');
 });
