@@ -1,0 +1,105 @@
+/*
+ * Schedule — CalendarEvent store. Home shows one day; the full calendar (Phase 2B) reads the same collection.
+ * add · update · toggle · remove · get · listForDate · countsForMonth · listUpcoming
+ *
+ * Completion V2: 건강·안부's 병원 일정 and 건강검진 are events of this same store with a `kind` (life-contracts.js),
+ * so the calendar and the health screen always show one set of records. A kind is set when the event is made and
+ * is never changed by an edit (the calendar's own form only changes title, date and time).
+ */
+import { SCHEMA_VERSION, ContractError, isPlainObject } from './contracts.js';
+import { normalizeEvent, newId, LIFE_LIMITS, eventKind } from './life-contracts.js';
+import { dateKey, isDateKey } from './dates.js';
+
+export function createScheduleStore(storage, { now = () => Date.now(), today = () => dateKey(now()), makeId = () => newId('ev', now()) } = {}) {
+  function read() {
+    const raw = storage.get('events', null);
+    const items = isPlainObject(raw) && Array.isArray(raw.items) ? raw.items : [];
+    const out = [];
+    const seen = new Set();
+    for (const it of items) {
+      try {
+        const n = normalizeEvent(it, now());
+        if (seen.has(n.id)) continue;
+        seen.add(n.id);
+        out.push(n);
+      } catch {
+        /* a damaged entry is skipped */
+      }
+    }
+    return out;
+  }
+  const write = (items) => storage.set('events', { schemaVersion: SCHEMA_VERSION, items });
+  const fail = (e) => ({ ok: false, reason: e instanceof ContractError ? e.code : 'INVALID_EVENT' });
+
+  function add(input) {
+    const src = isPlainObject(input) ? input : {};
+    let event;
+    try {
+      event = normalizeEvent({ id: makeId(), title: src.title, date: src.date === undefined ? today() : src.date, time: src.time, kind: src.kind, memo: src.memo, screeningType: src.screeningType, completed: false, createdAt: now(), updatedAt: now() }, now());
+    } catch (e) {
+      return fail(e);
+    }
+    const items = read();
+    if (items.length >= LIFE_LIMITS.events) return { ok: false, reason: 'LIMIT' };
+    items.push(event);
+    return write(items) ? { ok: true, event } : { ok: false, reason: 'STORAGE_UNAVAILABLE' };
+  }
+
+  function update(id, patch) {
+    const items = read();
+    const index = items.findIndex((it) => it.id === id);
+    if (index < 0) return { ok: false, reason: 'NOT_FOUND' };
+    const p = isPlainObject(patch) ? patch : {};
+    const allowed = {};
+    for (const key of ['title', 'date', 'time', 'completed', 'memo', 'screeningType']) if (key in p) allowed[key] = p[key];
+    let event;
+    try {
+      event = normalizeEvent({ ...items[index], ...allowed, id, createdAt: items[index].createdAt, updatedAt: now() }, now());
+    } catch (e) {
+      return fail(e);
+    }
+    items[index] = event;
+    return write(items) ? { ok: true, event } : { ok: false, reason: 'STORAGE_UNAVAILABLE' };
+  }
+
+  function toggle(id) {
+    const current = get(id);
+    return current ? update(id, { completed: !current.completed }) : { ok: false, reason: 'NOT_FOUND' };
+  }
+
+  function remove(id) {
+    const items = read();
+    const next = items.filter((it) => it.id !== id);
+    if (next.length === items.length) return { ok: false, reason: 'NOT_FOUND' };
+    return { ok: write(next) };
+  }
+
+  function get(id) {
+    return read().find((it) => it.id === id) || null;
+  }
+
+  /* timed events first in time order, then untimed ones in the order they were written */
+  function listForDate(date = today()) {
+    return read()
+      .filter((it) => it.date === date)
+      .sort((a, b) => (a.time === '' ? 1 : 0) - (b.time === '' ? 1 : 0) || a.time.localeCompare(b.time) || a.createdAt - b.createdAt || a.id.localeCompare(b.id));
+  }
+
+  /* { 'YYYY-MM-DD': number of events } for one month, from a single read — used by the calendar grid */
+  function countsForMonth(month) {
+    const out = {};
+    for (const it of read()) if (it.date.startsWith(`${month}-`)) out[it.date] = (out[it.date] || 0) + 1;
+    return out;
+  }
+
+  /* events of one kind from `from` (a local day) on, soonest first — 건강·안부 shows today's and coming ones */
+  function listUpcoming(kind, from = today()) {
+    const start = isDateKey(from) ? from : today();
+    return read()
+      .filter((it) => eventKind(it) === kind && it.date >= start)
+      .sort((a, b) => a.date.localeCompare(b.date) || (a.time === '' ? 1 : 0) - (b.time === '' ? 1 : 0) || a.time.localeCompare(b.time) || a.createdAt - b.createdAt);
+  }
+  const countPast = (kind, before = today()) => read().filter((it) => eventKind(it) === kind && it.date < before).length;
+
+  return Object.freeze({ add, update, toggle, remove, get, listForDate, countsForMonth, listUpcoming, countPast, count: () => read().length });
+}
