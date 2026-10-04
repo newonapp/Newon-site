@@ -59,7 +59,7 @@ export const COMPLETION_FIXES = ['livon/index.html', 'livon/livon-platform.js', 
   'livon/help-data.js', 'livon/help-page.js'];
 
 /* main 652a8375f: canonical API routing + CORS fix (trailingSlash rule removed, upstream failure diagnostics) — kept from main */
-export const ROUTING_CORS_FIX = { subject: 'Fix NEWON API canonical routing and CORS for production clients', files: ['vercel.json', 'server/livon/data/http.mjs', 'server/livon/data/providers/lifelong-class.mjs'] };
+export const ROUTING_CORS_FIX = { commit: '5ae277ef1', subject: 'Fix NEWON API canonical routing and CORS for production clients', files: ['vercel.json', 'server/livon/data/http.mjs', 'server/livon/data/providers/lifelong-class.mjs'] };
 /* livon-production-v1: LIVON V1 brought onto main path by path (no merge, no cherry-pick), so the phase commits are not ancestors
    there. `source` is the completion commit whose tree was integrated, `paths` what was taken from it, `aligned` the only files
    under those paths that may differ from it (production API routing alignment + the routing/CORS test main owns). */
@@ -71,6 +71,10 @@ export const PRODUCTION_INTEGRATION = {
   aligned: ['livon/livon-api-config.js', 'livon/ai-page.js', 'livon/index.html', 'scripts/livon-api-config.mjs', 'docs/livon/LIVON_PRODUCT_COMPLETION_AUDIT.md',
     'tests/livon/completion.test.mjs', 'tests/livon/live-backend.test.mjs', 'tests/livon/release-candidate.test.mjs', 'tests/livon/api-routing-cors.test.mjs']
 };
+
+/* main e0436c916: ONGIL (another product on the same site) integrated for production. Its files are not LIVON product files;
+   they are accepted only under its own directory and only on a line that contains that integration commit. */
+export const ONGIL_PRODUCT = { subject: 'Integrate ONGIL production frontend', dir: 'ongil-start/' };
 
 /* ───────── static SEO roots: the same generator the build runs, closed and open ───────── */
 function makeRoot(env) {
@@ -133,11 +137,23 @@ test('RC-1 ancestry: every V1 phase commit is an ancestor of the RC; the RC star
     const between = git('log', '--format=%s', RC_BASE + '..HEAD').stdout.trim().split('\n').filter(Boolean);
     for (const s of between) assert.ok(/^LIVON (Final Integration|Release Candidate|V1 Completion)/.test(s) || s === BACKEND_HARDENING.subject, 'unexpected commit on the RC: ' + s);
   }
-  /* the release branches the RC must not move */
-  for (const [ref, at] of [['main', 'e3d7d1510'], ['livon-v1-release', '7fd6e02bf']]) {
-    const r = git('rev-parse', '--short=9', ref);
-    if (r.status === 0) assert.equal(r.stdout.trim(), at, ref + ' is untouched');
+  /* The release is checked by content, not by where a local branch pointer happens to be (a local `main` moves with every
+     pull). What main contributed to production must be in this tree unchanged: the routing/CORS fix files are byte-identical
+     to main's fix commit, and vercel.json still has no trailing-slash rule. */
+  if (integrated) {
+    assert.ok(hasCommit(ROUTING_CORS_FIX.commit), 'main routing/CORS fix commit ' + ROUTING_CORS_FIX.commit + ' is in this repository');
+    assert.equal(included(ROUTING_CORS_FIX.commit), true, 'main routing/CORS fix is an ancestor');
+    const kept = ROUTING_CORS_FIX.files.filter(f => f !== 'vercel.json').concat('docs/newon/API_ROUTING_CORS_FIX_V1.md');
+    const d = git('diff', '--name-only', ROUTING_CORS_FIX.commit, 'HEAD', '--', ...kept);
+    assert.equal(d.status, 0); assert.deepEqual(d.stdout.split('\n').filter(Boolean), [], 'main routing/CORS files unchanged');
+    const was = JSON.parse(git('show', ROUTING_CORS_FIX.commit + ':vercel.json').stdout), now = JSON.parse(src('vercel.json'));
+    assert.equal('trailingSlash' in now, false, 'no trailing-slash rule');
+    for (const k of Object.keys(was)) if (k !== 'functions') assert.deepEqual(now[k], was[k], 'vercel.json ' + k + ' unchanged from main');
+    for (const f of Object.keys(was.functions)) assert.equal(now.functions[f].maxDuration, was.functions[f].maxDuration, f + ' keeps its limit');
   }
+  /* the frozen V1 release branch the RC must not move (a release tag in branch form, never advanced by a pull) */
+  const rel = git('rev-parse', '--short=9', 'livon-v1-release');
+  if (rel.status === 0) assert.equal(rel.stdout.trim(), '7fd6e02bf', 'livon-v1-release is untouched');
 });
 
 const TRACKED = isGit ? git('ls-files').stdout.split('\n').filter(Boolean) : [];
@@ -466,7 +482,13 @@ test('RC-41 visual regression by construction: the RC ships the Performance V1 p
   const changed = git('diff', '--name-only', RC_BASE, 'HEAD').stdout.split('\n').filter(Boolean);
   const product = changed.filter(f => !/^(docs\/|tests\/)/.test(f));
   const allowed = new Set([...RC_FIXES, ...BACKEND_HARDENING.files, ...ROUTING_CORS_FIX.files, ...COMPLETION_FIXES]);
-  assert.deepEqual(product.filter(f => !allowed.has(f)), [], 'product files changed without an RC fix entry');
+  /* ONGIL is its own product in its own directory: accepted only where its production integration is part of the history,
+     and then only inside that directory — a LIVON, shared or any other file still needs an entry above */
+  const ongilIntegrated = git('log', '--format=%s', 'HEAD').stdout.split('\n').includes(ONGIL_PRODUCT.subject);
+  const ongil = product.filter(f => f.startsWith(ONGIL_PRODUCT.dir));
+  if (!ongilIntegrated) assert.deepEqual(ongil, [], 'ONGIL files changed on a line without the ONGIL production integration');
+  assert.deepEqual(product.filter(f => !allowed.has(f) && !f.startsWith(ONGIL_PRODUCT.dir)), [], 'product files changed without an RC fix entry');
+  for (const f of ['livon/', 'server/', 'api/', 'scripts/', 'vercel.json', 'site-chrome.js', 'styles.css']) assert.equal(f.startsWith(ONGIL_PRODUCT.dir), false);
 });
 
 test('RC-49 release manifest: commit, ancestry, phases, counts, limitations, manual checks, env matrix, gates', () => {

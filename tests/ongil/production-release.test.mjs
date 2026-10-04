@@ -64,12 +64,25 @@ test('PR-03 release version: one APP_VERSION, shown in the operations view and o
   assert.match(CODE['app.js'], /win\.Ongil = Object\.freeze\(\{ version: APP_VERSION,/);
 });
 
-test('PR-04 provider configuration: the committed API location is empty (same origin) and only an https origin can be set at build time', () => {
+test('PR-04 provider configuration: the committed API location is empty (same origin) and only an https origin can be set at build time', async () => {
   const cfg = strip(read('livon/livon-api-config.js'));
   assert.match(cfg, /var configured = "";/);
   assert.doesNotMatch(cfg, /key|token|secret/i);
   assert.match(WORKFLOW, /LIVON_API_ORIGIN: \$\{\{ vars\.LIVON_API_ORIGIN \}\}/, 'a public repository variable, never a secret');
-  assert.match(PUBLISH, /if \(origin\) fs\.writeFileSync\(path\.join\(OUT, "livon", "livon-api-config\.js"\)/);
+  /* the publish step writes the config only when a valid origin was given: the production origin, or (since the LIVON
+     production integration) the production or the preview origin. Nothing else may guard that write. */
+  assert.match(PUBLISH, /if \(origin(?: \|\| preview)?\) fs\.writeFileSync\(path\.join\(OUT, "livon", "livon-api-config\.js"\), livonApiConfigScript\(origin(?:, preview)?\), "utf8"\)/);
+  assert.equal((PUBLISH.match(/"livon-api-config\.js"\)/g) || []).length, 1, 'one place writes the API location');
+  /* what that step really writes */
+  const api = await import('../../scripts/livon-api-config.mjs');
+  assert.equal(api.livonApiOriginFromEnv({}), '', 'nothing set → nothing written, the committed same-origin file is published');
+  assert.equal(api.livonApiConfigScript(''), read('livon/livon-api-config.js'), 'committed file = the generator default');
+  assert.equal(api.livonApiOriginFromEnv({ LIVON_API_ORIGIN: 'https://api.example.app/' }), 'https://api.example.app');
+  for (const bad of ['http://api.example.app', 'https://api.example.app/api', 'https://*.example.app', 'api.example.app', 'https://user:pw@api.example.app'])
+    assert.equal(api.livonApiOriginFromEnv({ LIVON_API_ORIGIN: bad }), '', bad + ' is refused');
+  const built = strip(api.livonApiConfigScript('https://api.example.app'));
+  assert.match(built, /var configured = "https:\/\/api\.example\.app";/);
+  assert.doesNotMatch(built, /key|token|secret/i);
   assert.match(CODE['data-source.js'], /credentials: 'omit'/);
   assert.match(CODE['data-source.js'], /method: 'GET'/);
 });
