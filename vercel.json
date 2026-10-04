@@ -80,10 +80,18 @@
   "outputDirectory": "_publish",
   "functions": {
     "api/livon/chat.mjs": {
-      "maxDuration": 40
+      "maxDuration": 40,
+      "includeFiles": "{livon/*.js,livon/life-topics.json,livon/data/*.js}"
+    },
+    "api/livon/ai/chat.mjs": {
+      "maxDuration": 40,
+      "includeFiles": "{livon/*.js,livon/life-topics.json,livon/data/*.js}"
     },
     "api/livon/data.mjs": {
       "maxDuration": 40
+    },
+    "api/livon/data/status.mjs": {
+      "maxDuration": 10
     },
     "api/livon/userdata.mjs": {
       "maxDuration": 30

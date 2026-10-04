@@ -34,6 +34,15 @@ and one cross-origin probe from `https://newon.app` (GET + an empty chat `POST` 
 Cache keys bumped once for the changed scripts (`?v=20261004c1`: `livon-media.js`, `livon-platform.js`,
 `livon-api-config.js`, `ai-page.js`; `?v=20261004c2`: `help-data.js`, `help-page.js`); every other version string is unchanged.
 
+### Production integration note (2026-10-04, branch `livon-production-v1`)
+
+Defect #1 was fixed on the completion branch by adding a trailing slash in the client, because the API project then had
+`"trailingSlash": true`. `main` fixed the same failure on the server instead: the rule was removed from `vercel.json`
+(`docs/newon/API_ROUTING_CORS_FIX_V1.md`), and the canonical routes without a slash are what production serves. When LIVON was
+integrated onto `main`, the client was aligned with that: `LivonApi.url()` returns the canonical route without a trailing slash
+for a separate API origin (a slash form is normalised to it), and LC-16, LC-B6 and LB-9 check that contract. The other part of
+the fix is unchanged: the AI page asks the config for the chat URL.
+
 ## Checked and found working (no change)
 
 Home, Life Stage (7 stages / 228 topics), Life Events, Today, Explore (search, filters, detail, save), My Life (saved,

@@ -58,6 +58,20 @@ export const COMPLETION_FIXES = ['livon/index.html', 'livon/livon-platform.js', 
   /* with the data server reachable (LIVON_API_ORIGIN set in production): Help reports the public data that really arrived */
   'livon/help-data.js', 'livon/help-page.js'];
 
+/* main 652a8375f: canonical API routing + CORS fix (trailingSlash rule removed, upstream failure diagnostics) — kept from main */
+export const ROUTING_CORS_FIX = { subject: 'Fix NEWON API canonical routing and CORS for production clients', files: ['vercel.json', 'server/livon/data/http.mjs', 'server/livon/data/providers/lifelong-class.mjs'] };
+/* livon-production-v1: LIVON V1 brought onto main path by path (no merge, no cherry-pick), so the phase commits are not ancestors
+   there. `source` is the completion commit whose tree was integrated, `paths` what was taken from it, `aligned` the only files
+   under those paths that may differ from it (production API routing alignment + the routing/CORS test main owns). */
+export const PRODUCTION_INTEGRATION = {
+  source: 'fdcabc2fa',
+  subjects: ['Integrate LIVON production frontend', 'Align LIVON with production API routing'],
+  paths: ['livon', 'docs/livon', 'tests/livon', 'scripts/livon-*', 'scripts/publish-site.mjs', 'scripts/serve-publish.mjs', '.github/workflows/github-pages.yml',
+    'assets/livon-mark-icon-120.jpg', 'api/livon/ai/chat.mjs', 'api/livon/data/status.mjs', 'server/livon/ai/tools.mjs', 'server/livon/chat.mjs', 'server/livon/http.mjs'],
+  aligned: ['livon/livon-api-config.js', 'livon/ai-page.js', 'livon/index.html', 'scripts/livon-api-config.mjs', 'docs/livon/LIVON_PRODUCT_COMPLETION_AUDIT.md',
+    'tests/livon/completion.test.mjs', 'tests/livon/live-backend.test.mjs', 'tests/livon/release-candidate.test.mjs', 'tests/livon/api-routing-cors.test.mjs']
+};
+
 /* ───────── static SEO roots: the same generator the build runs, closed and open ───────── */
 function makeRoot(env) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'livon-rc-'));
@@ -91,14 +105,34 @@ const HELP = helpData();
 
 /* ───────── RC-1 … RC-5: ancestry, source, secrets, build, publish ───────── */
 test('RC-1 ancestry: every V1 phase commit is an ancestor of the RC; the RC starts at Performance V1', { skip: noGit }, () => {
+  const included = hash => git('merge-base', '--is-ancestor', hash, 'HEAD').status === 0;
+  const history = git('log', '--format=%s', 'HEAD').stdout.split('\n');
+  /* a path-level integration branch (livon-production-v1) carries the product as a tree, not as ancestors */
+  const integrated = history.includes(PRODUCTION_INTEGRATION.subjects[0]);
   for (const [name, hash, subject] of PHASES) {
     if (!hasCommit(hash)) { assert.fail(name + ' commit ' + hash + ' is not in this repository'); }
-    assert.equal(git('merge-base', '--is-ancestor', hash, 'HEAD').status, 0, name + ' ' + hash + ' is included');
+    if (!integrated) assert.equal(included(hash), true, name + ' ' + hash + ' is included');
     assert.ok(git('log', '-1', '--format=%s', hash).stdout.startsWith(subject), name + ' subject');
   }
-  /* nothing but the RC's own commits sits between Performance V1 and HEAD */
-  const between = git('log', '--format=%s', RC_BASE + '..HEAD').stdout.trim().split('\n').filter(Boolean);
-  for (const s of between) assert.ok(/^LIVON (Final Integration|Release Candidate|V1 Completion)/.test(s) || s === BACKEND_HARDENING.subject, 'unexpected commit on the RC: ' + s);
+  if (integrated) {
+    /* the phases are included by content: everything taken from the completion commit is identical to it, except the listed
+       alignment files; the first phase (already on main) is still an ancestor, and both integration commits are in the history */
+    const I = PRODUCTION_INTEGRATION;
+    assert.equal(included(PHASES[0][1]), true, PHASES[0][0] + ' is an ancestor (it is on main)');
+    for (const subj of I.subjects) assert.ok(history.includes(subj), 'integration commit: ' + subj);
+    assert.ok(hasCommit(I.source), 'the integrated completion commit ' + I.source + ' is in this repository');
+    for (const [name, hash] of PHASES) assert.equal(git('merge-base', '--is-ancestor', hash, I.source).status, 0, name + ' ' + hash + ' is included in ' + I.source);
+    const d = git('diff', '--name-only', I.source, 'HEAD', '--', ...I.paths);
+    assert.equal(d.status, 0);
+    assert.deepEqual(d.stdout.split('\n').filter(Boolean).filter(f => !I.aligned.includes(f)), [], 'LIVON tree = ' + I.source + ' except the alignment files');
+    /* main's production routing/CORS fix is part of this line */
+    assert.ok(history.includes(ROUTING_CORS_FIX.subject), 'main routing/CORS fix is an ancestor');
+    assert.ok(history.includes(BACKEND_HARDENING.subject), 'backend hardening is an ancestor');
+  } else {
+    /* nothing but the RC's own commits sits between Performance V1 and HEAD */
+    const between = git('log', '--format=%s', RC_BASE + '..HEAD').stdout.trim().split('\n').filter(Boolean);
+    for (const s of between) assert.ok(/^LIVON (Final Integration|Release Candidate|V1 Completion)/.test(s) || s === BACKEND_HARDENING.subject, 'unexpected commit on the RC: ' + s);
+  }
   /* the release branches the RC must not move */
   for (const [ref, at] of [['main', 'e3d7d1510'], ['livon-v1-release', '7fd6e02bf']]) {
     const r = git('rev-parse', '--short=9', ref);
@@ -431,7 +465,7 @@ test('RC-26 accessibility (static): the build gate still reports 0 errors on the
 test('RC-41 visual regression by construction: the RC ships the Performance V1 product files unchanged (or only listed RC fixes)', { skip: noGit || (!hasCommit(RC_BASE) && 'base commit missing') }, () => {
   const changed = git('diff', '--name-only', RC_BASE, 'HEAD').stdout.split('\n').filter(Boolean);
   const product = changed.filter(f => !/^(docs\/|tests\/)/.test(f));
-  const allowed = new Set([...RC_FIXES, ...BACKEND_HARDENING.files, ...COMPLETION_FIXES]);
+  const allowed = new Set([...RC_FIXES, ...BACKEND_HARDENING.files, ...ROUTING_CORS_FIX.files, ...COMPLETION_FIXES]);
   assert.deepEqual(product.filter(f => !allowed.has(f)), [], 'product files changed without an RC fix entry');
 });
 

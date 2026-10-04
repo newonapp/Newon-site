@@ -18,14 +18,14 @@
   root.LivonApi = Object.freeze({
     env: env,
     base: ok,
-    /* A separate API origin is a Vercel deployment of this repository: vercel.json has "trailingSlash": true, so it answers
-       /api/x with a 308 redirect to /api/x/. A cross-origin fetch cannot pass that redirect (it carries no CORS headers, and a
-       preflight never follows a redirect), so URLs for a separate origin carry the slash: /api/health/, /api/livon/data/?...  */
+    /* The API's canonical routes have no trailing slash: /api/health, /api/livon/data, /api/livon/chat. The API project
+       (Vercel) sets no "trailingSlash" rule, so those routes reach the function directly and answer with its CORS headers.
+       A slash form is not a route a browser may rely on, so for a separate API origin a trailing slash on the path is removed. */
     url: function (path) {
       var p = String(path).charAt(0) === "/" ? String(path) : "/" + path;
       if (!ok) return p;
       var i = p.search(/[?#]/), head = i < 0 ? p : p.slice(0, i), tail = i < 0 ? "" : p.slice(i);
-      return ok + (head.charAt(head.length - 1) === "/" ? head : head + "/") + tail;
+      return ok + (head.replace(/\/+$/, "") || "/") + tail;
     }
   });
 })(typeof window !== "undefined" ? window : globalThis);

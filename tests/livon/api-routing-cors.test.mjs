@@ -100,7 +100,7 @@ test('CORS-1b the paths browsers really call are the canonical ones (no trailing
   }
   assert.match(src('livon/data/livon-data-config.js'), /LivonApi\.url\("\/api\/livon\/data"\)/);
   assert.match(src('livon/data/livon-sync.js'), /api\.url\("\/api\/health"\)/); assert.match(src('livon/data/livon-sync.js'), /api\.url\("\/api\/livon\/userdata"\)/);
-  assert.match(src('livon/ai-page.js'), /API\.url\("\/api\/livon"\)/); assert.match(src('livon/ai-page.js'), /API\.url\("\/api\/health"\)/);
+  assert.match(src('livon/ai-page.js'), /API\.url\("\/api\/livon\/chat"\)/); assert.match(src('livon/ai-page.js'), /API\.url\("\/api\/health"\)/);
   const v = src('scripts/verify-api-deployment.mjs');
   assert.match(v, /base \+ '\/api\/health'/); assert.match(v, /base \+ '\/api\/livon\/data'/); assert.match(v, /redirect: 'manual'/, 'the script never follows a redirect, so a platform redirect fails the check');
   for (const p of ROUTES) assert.ok(existsSync(new URL('../../' + p.slice(1) + '.mjs', import.meta.url)), p + ' has a function file');

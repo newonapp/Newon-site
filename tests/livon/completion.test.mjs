@@ -209,7 +209,7 @@ test('LC-13 an unreachable film host: a retry that starts after a failure is cou
 test('LC-14 cache keys: the four changed scripts carry a new ?v= (other script versions are unchanged)', () => {
   assert.match(INDEX, /\/livon\/livon-media\.js\?v=20261004c1"/);
   assert.match(INDEX, /\/livon\/livon-platform\.js\?v=20261004c1"/);
-  assert.equal((INDEX.match(/\?v=20261004c1/g) || []).length, 4, 'livon-media, livon-platform, livon-api-config, ai-page');
+  assert.equal((INDEX.match(/\?v=20261004c1/g) || []).length, 2, 'livon-media, livon-platform (livon-api-config and ai-page moved on to c3: LC-16)');
 });
 
 test('LC-15 a route change closes the open header panel and the mobile menu drawer (both were left open over the new screen)', () => {
@@ -222,29 +222,34 @@ test('LC-15 a route change closes the open header panel and the mobile menu draw
   assert.match(read('site-chrome.js'), /if \(!raw \|\| raw\.charAt\(0\) === "#"\) return;/);
 });
 
-test('LC-16 separate API origin: every browser URL carries the trailing slash the Vercel API needs; same origin is unchanged', async () => {
+test('LC-16 separate API origin: every browser URL is the canonical route without a trailing slash (what the production API serves); same origin is unchanged', async () => {
   const { livonApiConfigScript } = await import('../../scripts/livon-api-config.mjs');
   const run = (code, host) => { const c = { window: {} }; c.window = c; if (host) c.location = { hostname: host }; vm.createContext(c); vm.runInContext(code, c); return c; };
   const g = run(livonApiConfigScript('https://newon-api.example.app'), 'www.newon.app');
   const u = p => g.LivonApi.url(p);
-  assert.equal(u('/api/health'), 'https://newon-api.example.app/api/health/');
-  assert.equal(u('/api/livon/chat'), 'https://newon-api.example.app/api/livon/chat/');
-  assert.equal(u('/api/livon/userdata'), 'https://newon-api.example.app/api/livon/userdata/');
-  assert.equal(u('/api/livon/data?action=status'), 'https://newon-api.example.app/api/livon/data/?action=status');
-  assert.equal(u('/api/health/'), 'https://newon-api.example.app/api/health/', 'never a double slash');
+  assert.equal(u('/api/health'), 'https://newon-api.example.app/api/health');
+  assert.equal(u('/api/livon/chat'), 'https://newon-api.example.app/api/livon/chat');
+  assert.equal(u('/api/livon/userdata'), 'https://newon-api.example.app/api/livon/userdata');
+  assert.equal(u('/api/livon/data?action=status'), 'https://newon-api.example.app/api/livon/data?action=status');
+  assert.equal(u('/api/health/'), 'https://newon-api.example.app/api/health', 'a slash form is normalised to the canonical route');
+  assert.equal(u('/api/livon/data/?action=status'), 'https://newon-api.example.app/api/livon/data?action=status', 'also in front of a query');
+  assert.equal(u('api/health'), 'https://newon-api.example.app/api/health', 'a missing leading slash is added');
+  for (const p of ['/api/health', '/api/livon/chat', '/api/livon/data', '/api/livon/userdata', '/api/livon/data?action=status']) assert.doesNotMatch(new URL(u(p)).pathname, /\/$/, p + ' has no trailing slash');
   vm.runInContext(read('livon/data/livon-data-config.js'), g);
-  assert.equal(g.LivonDataConfig.serverEndpoint + '?action=status', 'https://newon-api.example.app/api/livon/data/?action=status', 'what the data layer requests');
+  assert.equal(g.LivonDataConfig.serverEndpoint + '?action=status', 'https://newon-api.example.app/api/livon/data?action=status', 'what the data layer requests');
   const same = run(livonApiConfigScript(''), 'www.newon.app');
   assert.equal(same.LivonApi.url('/api/health'), '/api/health', 'same origin (GitHub Pages today) is unchanged');
   assert.equal(run(livonApiConfigScript('https://newon-api.example.app'), 'localhost').LivonApi.url('/api/livon/chat'), '/api/livon/chat', 'local dev server unchanged');
-  /* the slash is tied to the API deployment's configuration: if vercel.json stops adding slashes this test must be revisited */
-  assert.equal(JSON.parse(read('vercel.json')).trailingSlash, true);
+  /* the contract is tied to the API deployment: vercel.json has no trailing-slash rule, so the canonical routes are not redirected
+     (tests/livon/api-routing-cors.test.mjs CORS-1). A rule added back there must fail here as well. */
+  assert.equal('trailingSlash' in JSON.parse(read('vercel.json')), false);
   const ai = read('livon/ai-page.js');
   assert.match(ai, /var CHAT_URL = API\.url\("\/api\/livon\/chat"\);/);
   assert.match(ai, /return fetch\(CHAT_URL, \{/);
   assert.doesNotMatch(ai, /API_BASE \+/, 'no URL is glued together after the config has built it');
   assert.equal(read('livon/livon-api-config.js'), livonApiConfigScript(''), 'committed file = generated default');
-  assert.match(INDEX, /\/livon\/livon-api-config\.js\?v=20261004c1"/); assert.match(INDEX, /\/livon\/ai-page\.js\?v=20261004c1"/);
+  assert.match(INDEX, /\/livon\/livon-api-config\.js\?v=20261004c3"/); assert.match(INDEX, /\/livon\/ai-page\.js\?v=20261004c3"/);
+  assert.equal((INDEX.match(/\?v=20261004c3/g) || []).length, 2, 'production routing alignment: livon-api-config, ai-page');
 });
 
 /* ───────── browser (skipped when no local Chromium) ───────── */
@@ -378,7 +383,7 @@ test('LC-B5 header panels and the mobile menu close after a link inside them cha
   await pg.context().close();
 });
 
-test('LC-B6 production page + separate API origin that redirects /api/x → /api/x/ without CORS: the AI page reaches the API and stays honest', { skip }, async () => {
+test('LC-B6 production page + separate API origin that serves only the canonical routes (no trailing slash): the AI page reaches the API and stays honest', { skip }, async () => {
   const { livonApiConfigScript } = await import('../../scripts/livon-api-config.mjs');
   await boot();
   const SITE = 'https://www.newon.app', API = 'https://newon-api.example.app';
@@ -396,11 +401,12 @@ test('LC-B6 production page + separate API origin that redirects /api/x → /api
     if (url.origin === API) {
       seen.push(r.request().method() + ' ' + url.pathname + url.search);
       const cors = { 'Access-Control-Allow-Origin': SITE, 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type', Vary: 'Origin' };
-      /* what the live API does (vercel.json trailingSlash: true): a redirect without CORS headers */
-      if (!url.pathname.endsWith('/')) return r.fulfill({ status: 308, headers: { Location: API + url.pathname + '/' + url.search } });
+      /* the production API has no trailing-slash rule: only the canonical route is a route. A slash URL gets no function
+         answer here (404, no CORS headers), so a client that still sent one would fail this test. */
+      if (url.pathname.endsWith('/')) return r.fulfill({ status: 404, body: 'not found' });
       if (r.request().method() === 'OPTIONS') return r.fulfill({ status: 204, headers: cors });
-      if (url.pathname === '/api/health/') return r.fulfill({ status: 200, headers: cors, contentType: 'application/json', body: JSON.stringify({ status: 'ok', aiConfigured: false, protectionConfigured: true }) });
-      if (url.pathname === '/api/livon/chat/') return r.fulfill({ status: 503, headers: cors, contentType: 'application/json', body: JSON.stringify({ success: false, code: 'AI_NOT_CONFIGURED', error: 'AI 설정이 완료되지 않았습니다.' }) });
+      if (url.pathname === '/api/health') return r.fulfill({ status: 200, headers: cors, contentType: 'application/json', body: JSON.stringify({ status: 'ok', aiConfigured: false, protectionConfigured: true }) });
+      if (url.pathname === '/api/livon/chat') return r.fulfill({ status: 503, headers: cors, contentType: 'application/json', body: JSON.stringify({ success: false, code: 'AI_NOT_CONFIGURED', error: 'AI 설정이 완료되지 않았습니다.' }) });
       return r.fulfill({ status: 200, headers: cors, contentType: 'application/json', body: JSON.stringify({ ok: true, providers: {} }) });
     }
     return r.abort();
@@ -409,14 +415,15 @@ test('LC-B6 production page + separate API origin that redirects /api/x → /api
   const pg = await ctx.newPage(); const errors = []; pg.on('pageerror', e => errors.push(e.message));
   await pg.goto(SITE + '/livon/#ai-chat', { waitUntil: 'domcontentloaded' }); await pg.waitForTimeout(1500);
   assert.equal(await pg.evaluate(() => window.LivonApi.env), 'production');
-  assert.ok(seen.includes('GET /api/health/'), 'health asked at the slash URL: ' + seen.join(', '));
-  assert.ok(!seen.some(x => /^GET \/api\/health$/.test(x)), 'never the redirecting URL');
+  assert.ok(seen.includes('GET /api/health'), 'health asked at the canonical URL: ' + seen.join(', '));
+  assert.ok(!seen.some(x => /^[A-Z]+ [^?]*\/(\?|$)/.test(x)), 'no request to a trailing-slash URL: ' + seen.join(', '));
   const note = await pg.locator('[data-lv-ai-api-note]').innerText();
   assert.match(note, /AI 연결이 아직 완료되지 않았습니다/, 'the server answered: AI not configured (not "cannot check")');
   await pg.evaluate(() => window.LivonAI.sendMessage('테스트 질문'));
   await pg.locator('.lv-ai-bubble--error').waitFor();
   assert.match(await pg.locator('.lv-ai-bubble--error').innerText(), /연결이 아직 완료되지 않았습니다/, 'honest error, no invented answer');
-  assert.ok(seen.some(x => x === 'POST /api/livon/chat/'), 'chat sent to the slash URL: ' + seen.join(', '));
+  assert.ok(seen.some(x => x === 'POST /api/livon/chat'), 'chat sent to the canonical URL: ' + seen.join(', '));
+  assert.ok(!seen.some(x => /^[A-Z]+ [^?]*\/(\?|$)/.test(x)), 'still no trailing-slash URL after sending: ' + seen.join(', '));
   assert.equal(await pg.locator('.lv-ai-bubble--ai').count(), 0);
   assert.deepEqual(errors, []);
   await ctx.close();

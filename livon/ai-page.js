@@ -14,7 +14,7 @@
   var STORE_KEY = "livon.aiStore.v1";
   /* API origin comes from livon/livon-api-config.js (same origin by default; a separate https API origin in production) */
   var API = window.LivonApi || { url: function (p) { return p; } };
-  var CHAT_URL = API.url("/api/livon/chat");   /* one URL from the API config (a separate API origin gets the trailing slash it needs) */
+  var CHAT_URL = API.url("/api/livon/chat");   /* one URL from the API config (the canonical route, no trailing slash) */
   var LIMITS = { message: 4000, history: 12, historyChars: 12000, refs: 5, render: 80, clientTimeout: 35000 };
   /* the reference links the chat server accepts — kept identical to REF_HREF in server/livon/chat.mjs (completion.test compares them) */
   var REF_HREF = /^(#(life\/[1-7]0s\/[a-z0-9-]+|life\/services\/[a-z0-9-]+|today\/[a-z0-9-]+|ex-item-[\w-]+|ex-results\?[\w=&%.-]*|cm-post-[\w-]+)|https:\/\/[a-z0-9.-]+(\/[^\s"'<>]*)?)$/i;
